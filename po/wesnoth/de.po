@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-07-21 22:32-0500\n"
+"POT-Creation-Date: 2024-08-18 23:11-0500\n"
 "PO-Revision-Date: 2024-06-07 00:37+0200\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
@@ -244,7 +244,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1061
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1062
 msgid "poisoned"
 msgstr "vergiftet"
 
@@ -4276,31 +4276,31 @@ msgstr "Ungültige Deprekationsstufe (nur 1-4 erlaubt)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1061
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1062
 msgid "female^poisoned"
 msgstr "vergiftet"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1068
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1069
 msgid "female^slowed"
 msgstr "verlangsamt"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1068
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1069
 msgid "slowed"
 msgstr "verlangsamt"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1074
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1075
 msgid "female^petrified"
 msgstr "versteinert"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1074
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1075
 msgid "petrified"
 msgstr "versteinert"
 
@@ -4316,8 +4316,8 @@ msgstr "unheilbar"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3512
-#: src/scripting/game_lua_kernel.cpp:3547
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3513
+#: src/scripting/game_lua_kernel.cpp:3548
 msgid "input"
 msgstr "Eingabe"
 
@@ -5553,7 +5553,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "eine Aufstiegsentscheidung"
 
-#: src/actions/attack.cpp:583 src/actions/attack.cpp:1382
+#: src/actions/attack.cpp:584 src/actions/attack.cpp:1383
 msgid "An invalid attacker weapon got selected."
 msgstr "Für den Angreifer wurde eine ungültige Waffe ausgewählt."
 
@@ -5654,11 +5654,11 @@ msgstr[1] "$friends verbündete Einheiten gesichtet"
 msgid "(press $hotkey to keep moving)"
 msgstr "(Drückt $hotkey, um fortzufahren)"
 
-#: src/actions/undo.cpp:402
+#: src/actions/undo.cpp:401
 msgid "Redo Error"
 msgstr "Fehler beim erneuten Ausführen"
 
-#: src/actions/undo.cpp:403
+#: src/actions/undo.cpp:402
 msgid ""
 "The redo stack is out of sync. This is most commonly caused by a corrupt "
 "save file or by faulty WML code in the scenario or era. Details:"
@@ -6482,7 +6482,7 @@ msgstr "$elem ist veraltet und wurde entfernt."
 msgid "Chat message"
 msgstr "Chat-Nachricht"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:580
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:577
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
@@ -6522,7 +6522,7 @@ msgstr "%d %b"
 msgid "%b %d %Y"
 msgstr "%d %b %y"
 
-#: src/game_config.cpp:528
+#: src/game_config.cpp:525
 msgid "Invalid color in range: "
 msgstr "Ungültiger Farbbereich: "
 
@@ -7374,11 +7374,11 @@ msgstr "Von Runde an abspielen "
 msgid "(press $hotkey to deactivate)"
 msgstr "(per $hotkey deaktivieren)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2092
+#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2095
 msgid "Planning mode activated!"
 msgstr "Planungsmodus aktiviert!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2095
+#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2098
 msgid "Planning mode deactivated!"
 msgstr "Planungsmodus deaktiviert!"
 
@@ -7998,67 +7998,73 @@ msgstr ""
 "Ungültige Aktion für Partei »$side« angegeben. Gültige Aktionen sind: on, "
 "off, full."
 
-#: src/menu_events.cpp:1600
+#: src/menu_events.cpp:1567
+#, fuzzy
+#| msgid "Side '$side' is already fully AI controlled."
+msgid "Side '$side' is not a human or AI player."
+msgstr "Partei »$side« wird bereits auf diese Weise gesteuert."
+
+#: src/menu_events.cpp:1603
 msgid "Can't idle invalid side: '$side'."
 msgstr "Ruhezustand für ungültige Partei »$side« nicht aktivierbar."
 
 # Im Original wird nicht "fraction" benutzt – m.E. sind "Fraktion" und "Seite" nicht unbedingt dasselbe, bin aber kein MP
 # Kontrolle der per Netzwerk gesteuerten / netzwerkgesteuerten Fraktion »$side« kann nicht gewechselt werden.
-#: src/menu_events.cpp:1605
+#: src/menu_events.cpp:1608
 msgid "Can't idle networked side: '$side'."
 msgstr ""
 "Kontrolle der netzwerkgesteuerten Partei »$side« kann nicht gewechselt "
 "werden."
 
-#: src/menu_events.cpp:1610
+#: src/menu_events.cpp:1613
 msgid "Can't idle local ai side: '$side'."
 msgstr ""
 "Kontrolle der von einer lokalen KI gesteuerten Partei »$side« kann nicht "
 "gewechselt werden."
 
-#: src/menu_events.cpp:1671
+#: src/menu_events.cpp:1674
 msgid "Can't change control of invalid side: '$side'."
 msgstr ""
 "Die Kontrolle der ungültigen Partei »$side« kann nicht geändert werden."
 
-#: src/menu_events.cpp:1681
+#: src/menu_events.cpp:1684
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 "Die Kontrolle der Partei »$side« kann nicht geändert werden, es gibt keine "
 "Partei mit dieser Nummer."
 
-#: src/menu_events.cpp:1698
+#: src/menu_events.cpp:1701
 msgid "Can't query control of invalid side: '$side'."
 msgstr ""
 "Kontrollstatus der ungültigen Partei »$side« kann nicht abgefragt werden."
 
-#: src/menu_events.cpp:1705
+#: src/menu_events.cpp:1708
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr ""
 "Kontrollstatus der Partei »$side« kann nicht abgefragt werden, es gibt keine "
 "Partei mit dieser Nummer."
 
-#: src/menu_events.cpp:1827
+#: src/menu_events.cpp:1830
 msgid "Choose Scenario (Debug!)"
 msgstr "Szenario wählen (Debug!)"
 
-#: src/menu_events.cpp:1863
+#: src/menu_events.cpp:1866
 msgid "Debug mode activated!"
 msgstr "Debugmodus aktiviert!"
 
-#: src/menu_events.cpp:1866
+#: src/menu_events.cpp:1869
 msgid "Debug mode not available in network games"
 msgstr "Der Debugmodus ist in Mehrspielerpartien nicht verfügbar"
 
-#: src/menu_events.cpp:1873
+#: src/menu_events.cpp:1876
 msgid "Debug mode deactivated!"
 msgstr "Debugmodus deaktiviert!"
 
-#: src/menu_events.cpp:1893
+#: src/menu_events.cpp:1896
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "WARNUNG! Unsicherer Lua-Modus"
 
-#: src/menu_events.cpp:1894
+#: src/menu_events.cpp:1897
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -8070,21 +8076,21 @@ msgstr ""
 "Sicherheitslücken auf Ihrem Computer durch bösartige Erweiterungen oder "
 "andere Programme, welche möglicherweise installiert wurden."
 
-#: src/menu_events.cpp:1899
+#: src/menu_events.cpp:1902
 msgid "Unsafe mode enabled!"
 msgstr "Unsicherer Modus aktiviert!"
 
-#: src/menu_events.cpp:1948
+#: src/menu_events.cpp:1951
 msgid "Variable not found"
 msgstr "Variable nicht gefunden"
 
-#: src/menu_events.cpp:1981
+#: src/menu_events.cpp:1984
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
 "Debug-Kommando »unit: $unit« ignoriert: Es ist keine Einheit ausgewählt oder "
 "unter dem Mauszeiger."
 
-#: src/menu_events.cpp:1999
+#: src/menu_events.cpp:2002
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -8093,21 +8099,21 @@ msgstr ""
 "sind »lawful« (redlich), »neutral« (neutral), »chaotic« (lichtscheu) oder "
 "»liminal« (zwielichtig)."
 
-#: src/menu_events.cpp:2025
+#: src/menu_events.cpp:2028
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 "Möchtet Ihr wirklich die Informationen zu allen Einheiten, denen Ihr bereits "
 "begegnet seid, aus der Hilfe entfernen?"
 
-#: src/menu_events.cpp:2039
+#: src/menu_events.cpp:2042
 msgid "Invalid unit type"
 msgstr "Ungültiger Einheitentyp"
 
-#: src/menu_events.cpp:2046
+#: src/menu_events.cpp:2049
 msgid "Invalid location"
 msgstr "Ungültiger Ort"
 
-#: src/menu_events.cpp:2119 src/menu_events.cpp:2145
+#: src/menu_events.cpp:2122 src/menu_events.cpp:2148
 msgid "prompt^Command:"
 msgstr "Befehl:"
 
@@ -8911,72 +8917,72 @@ msgstr "Spiel speichern"
 msgid "Game state is corrupted"
 msgstr "Spielstand ist korrumpiert"
 
-#: src/serialization/parser.cpp:156
+#: src/serialization/parser.cpp:152
 msgid "Unexpected characters at line start"
 msgstr "Unerwartete Zeichen am Zeilenanfang"
 
-#: src/serialization/parser.cpp:183
+#: src/serialization/parser.cpp:179
 msgid "Missing closing tag for tag [$tag]"
 msgstr "Fehlende Abschlussmarkierung für Element [$tag]"
 
-#: src/serialization/parser.cpp:184
+#: src/serialization/parser.cpp:180
 msgid "expected at $pos"
 msgstr "erwartet an Position $pos"
 
-#: src/serialization/parser.cpp:185 src/serialization/parser.cpp:272
+#: src/serialization/parser.cpp:181 src/serialization/parser.cpp:268
 msgid "opened at $pos"
 msgstr "geöffnet an Position $pos"
 
-#: src/serialization/parser.cpp:203
+#: src/serialization/parser.cpp:199
 msgid "Unterminated [element] tag"
 msgstr "Nicht abgeschlossenes [element] Element"
 
-#: src/serialization/parser.cpp:219 src/serialization/parser.cpp:287
+#: src/serialization/parser.cpp:215 src/serialization/parser.cpp:283
 msgid "Invalid tag name"
 msgstr "Ungültiger Elementname"
 
-#: src/serialization/parser.cpp:225
+#: src/serialization/parser.cpp:221
 msgid "Unterminated [+element] tag"
 msgstr "Nicht abgeschlossenes [+element] Element"
 
-#: src/serialization/parser.cpp:249
+#: src/serialization/parser.cpp:245
 msgid "Invalid closing tag name"
 msgstr "Ungültiger Name für Abschlusselement"
 
-#: src/serialization/parser.cpp:255
+#: src/serialization/parser.cpp:251
 msgid "Unterminated closing tag"
 msgstr "Nicht abgeschlossenes Abschlusselement"
 
-#: src/serialization/parser.cpp:259
+#: src/serialization/parser.cpp:255
 msgid "Unexpected closing tag"
 msgstr "Unerwartetes Abschlusselement"
 
-#: src/serialization/parser.cpp:271
+#: src/serialization/parser.cpp:267
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
 msgstr "Ungültige Abschlussmarkierung [/$tag2] für Element [$tag1] gefunden"
 
-#: src/serialization/parser.cpp:273
+#: src/serialization/parser.cpp:269
 msgid "closed at $pos"
 msgstr "abgeschlossen an Position $pos"
 
-#: src/serialization/parser.cpp:309 src/serialization/parser.cpp:325
+#: src/serialization/parser.cpp:305 src/serialization/parser.cpp:321
 msgid "Empty variable name"
 msgstr "Leerer Variablenname"
 
-#: src/serialization/parser.cpp:317
+#: src/serialization/parser.cpp:313
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
 "Unerwartete Zeichen nach einem Variablennamen (erwartet werden »,« oder »=«)"
 
-#: src/serialization/parser.cpp:364 src/serialization/parser.cpp:404
+#: src/serialization/parser.cpp:360 src/serialization/parser.cpp:400
 msgid "Unterminated quoted string"
 msgstr "Nicht durch Anführungszeichen abgeschlossene Zeichenkette"
 
-#: src/serialization/parser.cpp:471
+#: src/serialization/parser.cpp:467
 msgid "at $pos"
 msgstr "an Position $pos"
 
-#: src/serialization/parser.cpp:484
+#: src/serialization/parser.cpp:480
 msgid "Value: '$value' Previous: '$previous_value'"
 msgstr "Wert: »$value« ursprünglich: »$previous_value«"
 
@@ -9139,94 +9145,94 @@ msgstr "Modell Tageszeit"
 msgid "This Time of Day is only a Stub!"
 msgstr "Diese Tageszeit ist nur ein Platzhalter!"
 
-#: src/units/abilities.cpp:965
+#: src/units/abilities.cpp:968
 msgid "Owned: "
 msgstr "Im Besitz: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:969
+#: src/units/abilities.cpp:972
 msgid "Taught: "
 msgstr "Erlernt: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:973
+#: src/units/abilities.cpp:976
 msgid "Taught: (by an enemy): "
 msgstr "Erlernt: (von einem Feind): "
 
-#: src/units/abilities.cpp:986
+#: src/units/abilities.cpp:989
 msgid "Used by opponent: "
 msgstr "Vom Gegner verwendet: "
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:472
+#: src/units/attack_type.cpp:535
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> Schaden"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> damage"
 
-#: src/units/attack_type.cpp:481
+#: src/units/attack_type.cpp:544
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "$number Schaden"
 msgstr[1] "$number Schaden"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:490
+#: src/units/attack_type.cpp:553
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> Treffer"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> Treffer"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:499
+#: src/units/attack_type.cpp:562
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number Treffer"
 msgstr[1] "$number Treffer"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:508
+#: src/units/attack_type.cpp:571
 msgid "$number| accuracy"
 msgstr "$number| Treffsicherheit"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:515
+#: src/units/attack_type.cpp:578
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">$number_or_percent|%</span> Treffsicherheit"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:522
+#: src/units/attack_type.cpp:585
 msgid "$number parry"
 msgstr "$number Parade"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:529
+#: src/units/attack_type.cpp:592
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> Parade"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:536
+#: src/units/attack_type.cpp:599
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number Bewegungspunkt"
 msgstr[1] "$number Bewegungspunkte"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:545
+#: src/units/attack_type.cpp:608
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> Bewegungspunkt"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> Bewegungspunkte"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:554
+#: src/units/attack_type.cpp:617
 msgid "$number attack used"
 msgid_plural "$number attacks used"
 msgstr[0] "$number Angriff benutzt"
 msgstr[1] "$number Angriffe benutzt"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:563
+#: src/units/attack_type.cpp:626
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> Angriff benutzt"
@@ -9276,45 +9282,45 @@ msgstr "lichtscheu"
 msgid "liminal"
 msgstr "zwielichtig"
 
-#: src/units/unit.cpp:2066
+#: src/units/unit.cpp:1939
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2072
+#: src/units/unit.cpp:1945
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> LP"
 
-#: src/units/unit.cpp:2082
+#: src/units/unit.cpp:1955
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> Bewegungspunkt"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> Bewegungspunkte"
 
-#: src/units/unit.cpp:2088
+#: src/units/unit.cpp:1961
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> Sichtweite"
 
-#: src/units/unit.cpp:2092
+#: src/units/unit.cpp:1965
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> Störung"
 
-#: src/units/unit.cpp:2097
+#: src/units/unit.cpp:1970
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> EP zur nächsten Stufe"
 
-#: src/units/unit.cpp:2101
+#: src/units/unit.cpp:1974
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> Angriff pro Runde"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> Angriffe pro Runde"
 
-#: src/units/unit.cpp:2108
+#: src/units/unit.cpp:1981
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> Kosten zur Einberufung"
 
-#: src/units/unit.cpp:2564
+#: src/units/unit.cpp:2437
 msgid "$effect_description per level"
 msgstr "$effect_description pro Stufe"
 
@@ -9340,7 +9346,7 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year NF"
 
-#: src/wesnoth.cpp:727
+#: src/wesnoth.cpp:741
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
@@ -9351,7 +9357,7 @@ msgstr ""
 "Zugriff einschränkt, oder daran, dass OneDrive den Eigene Dokumente-Ordner "
 "verwaltet."
 
-#: src/wesnoth.cpp:728
+#: src/wesnoth.cpp:742
 msgid "Logging Failure"
 msgstr "Logging-Fehler"
 

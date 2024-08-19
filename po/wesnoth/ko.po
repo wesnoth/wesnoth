@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-07-21 22:32-0500\n"
+"POT-Creation-Date: 2024-08-18 23:11-0500\n"
 "PO-Revision-Date: 2019-09-30 13:37+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -245,7 +245,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1061
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1062
 msgid "poisoned"
 msgstr "중독"
 
@@ -4320,31 +4320,31 @@ msgstr "잘못된 지원 중단 수준 (1-4이어야 함)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1061
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1062
 msgid "female^poisoned"
 msgstr "중독"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1068
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1069
 msgid "female^slowed"
 msgstr "둔화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1068
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1069
 msgid "slowed"
 msgstr "둔화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1074
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1075
 msgid "female^petrified"
 msgstr "석화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1074
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1075
 msgid "petrified"
 msgstr "석화"
 
@@ -4361,8 +4361,8 @@ msgstr "치료불가"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3512
-#: src/scripting/game_lua_kernel.cpp:3547
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3513
+#: src/scripting/game_lua_kernel.cpp:3548
 msgid "input"
 msgstr "입력"
 
@@ -5529,7 +5529,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "승급 선택"
 
-#: src/actions/attack.cpp:583 src/actions/attack.cpp:1382
+#: src/actions/attack.cpp:584 src/actions/attack.cpp:1383
 msgid "An invalid attacker weapon got selected."
 msgstr "공격에 적합하지 않은 무기가 선택되었습니다."
 
@@ -5625,13 +5625,13 @@ msgstr[0] "우호 유닛 × $friends 발견"
 msgid "(press $hotkey to keep moving)"
 msgstr "(계속 이동하려면 $hotkey 키를 누르세요)"
 
-#: src/actions/undo.cpp:402
+#: src/actions/undo.cpp:401
 #, fuzzy
 #| msgid "Game Over"
 msgid "Redo Error"
 msgstr "게임 에러"
 
-#: src/actions/undo.cpp:403
+#: src/actions/undo.cpp:402
 msgid ""
 "The redo stack is out of sync. This is most commonly caused by a corrupt "
 "save file or by faulty WML code in the scenario or era. Details:"
@@ -6447,7 +6447,7 @@ msgstr "$elem has been deprecated and removed."
 msgid "Chat message"
 msgstr "채팅 메세지 "
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:580
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:577
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
@@ -6485,7 +6485,7 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: src/game_config.cpp:528
+#: src/game_config.cpp:525
 msgid "Invalid color in range: "
 msgstr "범위 밖의 무효한 색상: "
 
@@ -7405,11 +7405,11 @@ msgstr "한 턴 진행"
 msgid "(press $hotkey to deactivate)"
 msgstr "(계속 이동하려면 $hotkey 키를 누르세요)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2092
+#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2095
 msgid "Planning mode activated!"
 msgstr "계획 모드 활성"
 
-#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2095
+#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2098
 msgid "Planning mode deactivated!"
 msgstr "계획 모드 비활성"
 
@@ -8033,55 +8033,61 @@ msgid ""
 "Invalid action provided for side '$side'. Valid actions are: on, off, full."
 msgstr ""
 
-#: src/menu_events.cpp:1600
+#: src/menu_events.cpp:1567
+#, fuzzy
+#| msgid "Side '$side' is already droided."
+msgid "Side '$side' is not a human or AI player."
+msgstr "진영 '$side' 는 이미 컴퓨터에 조작되어 있습니다."
+
+#: src/menu_events.cpp:1603
 msgid "Can't idle invalid side: '$side'."
 msgstr "무효한 진영 '$side' 를 대기상태로 할 수 없습니다."
 
-#: src/menu_events.cpp:1605
+#: src/menu_events.cpp:1608
 msgid "Can't idle networked side: '$side'."
 msgstr "네트워크상의 진영 '$side' 는 대기상태로 할 수 없습니다."
 
-#: src/menu_events.cpp:1610
+#: src/menu_events.cpp:1613
 msgid "Can't idle local ai side: '$side'."
 msgstr "로컬 AI 진영 '$side' 는 대기 상태로 할 수 없습니다."
 
-#: src/menu_events.cpp:1671
+#: src/menu_events.cpp:1674
 msgid "Can't change control of invalid side: '$side'."
 msgstr "무효한 진영 '$side' 의 컨트롤을 변경할 수 없습니다."
 
-#: src/menu_events.cpp:1681
+#: src/menu_events.cpp:1684
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "규정외의 진영 '$side' 의 컨트롤을 변경할 수 없습니다."
 
-#: src/menu_events.cpp:1698
+#: src/menu_events.cpp:1701
 msgid "Can't query control of invalid side: '$side'."
 msgstr "무효한 진영 '$side' 의 컨트롤을 확인할 수 없습니다."
 
-#: src/menu_events.cpp:1705
+#: src/menu_events.cpp:1708
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "규정외의 진영 '$side' 의 컨트롤을 확인할 수 없습니다."
 
-#: src/menu_events.cpp:1827
+#: src/menu_events.cpp:1830
 msgid "Choose Scenario (Debug!)"
 msgstr "시나리오 선택 (디버그!)"
 
-#: src/menu_events.cpp:1863
+#: src/menu_events.cpp:1866
 msgid "Debug mode activated!"
 msgstr "디버그 모드가 켜졌습니다!"
 
-#: src/menu_events.cpp:1866
+#: src/menu_events.cpp:1869
 msgid "Debug mode not available in network games"
 msgstr "네트워크 게임에서는 디버그 모드를 쓸 수 없습니다"
 
-#: src/menu_events.cpp:1873
+#: src/menu_events.cpp:1876
 msgid "Debug mode deactivated!"
 msgstr "디버그 모드가 꺼졌습니다!"
 
-#: src/menu_events.cpp:1893
+#: src/menu_events.cpp:1896
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "경고! 안전하지 않은 Lua Mode"
 
-#: src/menu_events.cpp:1894
+#: src/menu_events.cpp:1897
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -8094,19 +8100,19 @@ msgstr ""
 "\"\n"
 "지금부터 하고자 하는 것의 의미를 이해하고 있지 않으면, 속행하지 말아 주세요."
 
-#: src/menu_events.cpp:1899
+#: src/menu_events.cpp:1902
 msgid "Unsafe mode enabled!"
 msgstr "Unsafe mode enabled!"
 
-#: src/menu_events.cpp:1948
+#: src/menu_events.cpp:1951
 msgid "Variable not found"
 msgstr "변수를 찾을수 없습니다"
 
-#: src/menu_events.cpp:1981
+#: src/menu_events.cpp:1984
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
 
-#: src/menu_events.cpp:1999
+#: src/menu_events.cpp:2002
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -8114,19 +8120,19 @@ msgstr ""
 "무효한 얼라인먼트: '$alignment' 는 질서, 중립, 혼돈, 박명 중 어느 것이어야 합"
 "니다."
 
-#: src/menu_events.cpp:2025
+#: src/menu_events.cpp:2028
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "도움말에서 발견된 유닛의 정보를 삭제합니까? "
 
-#: src/menu_events.cpp:2039
+#: src/menu_events.cpp:2042
 msgid "Invalid unit type"
 msgstr "무효한 유닛 타입"
 
-#: src/menu_events.cpp:2046
+#: src/menu_events.cpp:2049
 msgid "Invalid location"
 msgstr "무효한 장소"
 
-#: src/menu_events.cpp:2119 src/menu_events.cpp:2145
+#: src/menu_events.cpp:2122 src/menu_events.cpp:2148
 msgid "prompt^Command:"
 msgstr "명령"
 
@@ -8905,73 +8911,73 @@ msgstr "게임 저장"
 msgid "Game state is corrupted"
 msgstr "게임 상태가 손상됨"
 
-#: src/serialization/parser.cpp:156
+#: src/serialization/parser.cpp:152
 msgid "Unexpected characters at line start"
 msgstr "행두에 예기치 못한 문자가 있습니다."
 
-#: src/serialization/parser.cpp:183
+#: src/serialization/parser.cpp:179
 msgid "Missing closing tag for tag [$tag]"
 msgstr "태그 [$tag] 에 대한 클로즈 태그가 없습니다."
 
-#: src/serialization/parser.cpp:184
+#: src/serialization/parser.cpp:180
 msgid "expected at $pos"
 msgstr "기대되는 위치: $pos."
 
-#: src/serialization/parser.cpp:185 src/serialization/parser.cpp:272
+#: src/serialization/parser.cpp:181 src/serialization/parser.cpp:268
 msgid "opened at $pos"
 msgstr "개방된 위치 $pos"
 
-#: src/serialization/parser.cpp:203
+#: src/serialization/parser.cpp:199
 msgid "Unterminated [element] tag"
 msgstr "닫히지 않았다. [element] 태그가 있습니다."
 
-#: src/serialization/parser.cpp:219 src/serialization/parser.cpp:287
+#: src/serialization/parser.cpp:215 src/serialization/parser.cpp:283
 msgid "Invalid tag name"
 msgstr "무효한 태그 이름입니다."
 
-#: src/serialization/parser.cpp:225
+#: src/serialization/parser.cpp:221
 msgid "Unterminated [+element] tag"
 msgstr "닫히지 않았다. [+element] 태그가 있습니다."
 
-#: src/serialization/parser.cpp:249
+#: src/serialization/parser.cpp:245
 msgid "Invalid closing tag name"
 msgstr "무효한 닫힌 태그 이름입니다."
 
-#: src/serialization/parser.cpp:255
+#: src/serialization/parser.cpp:251
 msgid "Unterminated closing tag"
 msgstr "끝나지 않은 닫힌 태그"
 
-#: src/serialization/parser.cpp:259
+#: src/serialization/parser.cpp:255
 msgid "Unexpected closing tag"
 msgstr "예기치 못한 닫힌 태그"
 
-#: src/serialization/parser.cpp:271
+#: src/serialization/parser.cpp:267
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
 msgstr "Found invalid closing tag [/$tag2] for tag [$tag1]"
 
-#: src/serialization/parser.cpp:273
+#: src/serialization/parser.cpp:269
 #, fuzzy
 #| msgid "Close"
 msgid "closed at $pos"
 msgstr "클로즈된 위치 $pos"
 
-#: src/serialization/parser.cpp:309 src/serialization/parser.cpp:325
+#: src/serialization/parser.cpp:305 src/serialization/parser.cpp:321
 msgid "Empty variable name"
 msgstr "변수 이름이 비었습니다."
 
-#: src/serialization/parser.cpp:317
+#: src/serialization/parser.cpp:313
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "변수 이름 뒤에 예기치 못한 문자가 있습니다(예상되는건 , 혹은 =)"
 
-#: src/serialization/parser.cpp:364 src/serialization/parser.cpp:404
+#: src/serialization/parser.cpp:360 src/serialization/parser.cpp:400
 msgid "Unterminated quoted string"
 msgstr "인용부가 닫히지 않은 문자열이 있습니다."
 
-#: src/serialization/parser.cpp:471
+#: src/serialization/parser.cpp:467
 msgid "at $pos"
 msgstr "위치 $pos"
 
-#: src/serialization/parser.cpp:484
+#: src/serialization/parser.cpp:480
 msgid "Value: '$value' Previous: '$previous_value'"
 msgstr "값: '$value' 예전의 값: '$previous_value'"
 
@@ -9135,41 +9141,41 @@ msgstr "시간대"
 msgid "This Time of Day is only a Stub!"
 msgstr "이 시간은 단지 일부분일 뿐이다!"
 
-#: src/units/abilities.cpp:965
+#: src/units/abilities.cpp:968
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "둔화:"
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:969
+#: src/units/abilities.cpp:972
 msgid "Taught: "
 msgstr ""
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:973
+#: src/units/abilities.cpp:976
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:986
+#: src/units/abilities.cpp:989
 msgid "Used by opponent: "
 msgstr ""
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:472
+#: src/units/attack_type.cpp:535
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> 데미지"
 
-#: src/units/attack_type.cpp:481
+#: src/units/attack_type.cpp:544
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "$number 데미지"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:490
+#: src/units/attack_type.cpp:553
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
@@ -9177,37 +9183,37 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> 공격횟수"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:499
+#: src/units/attack_type.cpp:562
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number 공격횟수"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:508
+#: src/units/attack_type.cpp:571
 msgid "$number| accuracy"
 msgstr "$number| 명중도"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:515
+#: src/units/attack_type.cpp:578
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">$number_or_percent|%</span> 명중도"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:522
+#: src/units/attack_type.cpp:585
 msgid "$number parry"
 msgstr "$number 회피"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:529
+#: src/units/attack_type.cpp:592
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> 회피"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:536
+#: src/units/attack_type.cpp:599
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "$number movement point"
@@ -9215,7 +9221,7 @@ msgid_plural "$number movement points"
 msgstr[0] "$number 이동력"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:545
+#: src/units/attack_type.cpp:608
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
@@ -9223,7 +9229,7 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> 이동력"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:554
+#: src/units/attack_type.cpp:617
 #, fuzzy
 #| msgid "$number damage"
 #| msgid_plural "$number damage"
@@ -9232,7 +9238,7 @@ msgid_plural "$number attacks used"
 msgstr[0] "$number 데미지"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:563
+#: src/units/attack_type.cpp:626
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
@@ -9289,42 +9295,42 @@ msgstr "야행성"
 msgid "liminal"
 msgstr "여명"
 
-#: src/units/unit.cpp:2066
+#: src/units/unit.cpp:1939
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|： $effect_description"
 
-#: src/units/unit.cpp:2072
+#: src/units/unit.cpp:1945
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 
-#: src/units/unit.cpp:2082
+#: src/units/unit.cpp:1955
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> 이동력"
 
-#: src/units/unit.cpp:2088
+#: src/units/unit.cpp:1961
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> 시야"
 
-#: src/units/unit.cpp:2092
+#: src/units/unit.cpp:1965
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> 방해"
 
-#: src/units/unit.cpp:2097
+#: src/units/unit.cpp:1970
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> 레벨 업에 필요한 XP"
 
-#: src/units/unit.cpp:2101
+#: src/units/unit.cpp:1974
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -9332,13 +9338,13 @@ msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> 공격 횟수"
 
-#: src/units/unit.cpp:2108
+#: src/units/unit.cpp:1981
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> 재소집 비용"
 
-#: src/units/unit.cpp:2564
+#: src/units/unit.cpp:2437
 msgid "$effect_description per level"
 msgstr "레벨에 따른 $effect_description"
 
@@ -9362,14 +9368,14 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year AF"
 
-#: src/wesnoth.cpp:727
+#: src/wesnoth.cpp:741
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:728
+#: src/wesnoth.cpp:742
 #, fuzzy
 #| msgid "Logging"
 msgid "Logging Failure"

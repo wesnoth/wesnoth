@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5+CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-07-21 22:32-0500\n"
+"POT-Creation-Date: 2024-08-18 23:11-0500\n"
 "PO-Revision-Date: 2008-11-04 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -228,7 +228,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1061
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1062
 msgid "poisoned"
 msgstr "forgiftet"
 
@@ -3961,34 +3961,34 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1061
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1062
 #, fuzzy
 msgid "female^poisoned"
 msgstr "udød"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1068
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1069
 #, fuzzy
 msgid "female^slowed"
 msgstr "loyal"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1068
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1069
 msgid "slowed"
 msgstr "langsom"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1074
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1075
 #, fuzzy
 msgid "female^petrified"
 msgstr "udød"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1074
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1075
 msgid "petrified"
 msgstr ""
 
@@ -4005,8 +4005,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3512
-#: src/scripting/game_lua_kernel.cpp:3547
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3513
+#: src/scripting/game_lua_kernel.cpp:3548
 msgid "input"
 msgstr ""
 
@@ -5159,7 +5159,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "Forfremmelser"
 
-#: src/actions/attack.cpp:583 src/actions/attack.cpp:1382
+#: src/actions/attack.cpp:584 src/actions/attack.cpp:1383
 #, fuzzy
 msgid "An invalid attacker weapon got selected."
 msgstr "Den valgte æra er ugyldig"
@@ -5281,13 +5281,13 @@ msgstr[1] "$friends venlige enheder i syne!"
 msgid "(press $hotkey to keep moving)"
 msgstr "(tryk $hotkey for at fortsætte)"
 
-#: src/actions/undo.cpp:402
+#: src/actions/undo.cpp:401
 #, fuzzy
 #| msgid "Error"
 msgid "Redo Error"
 msgstr "Fejl"
 
-#: src/actions/undo.cpp:403
+#: src/actions/undo.cpp:402
 msgid ""
 "The redo stack is out of sync. This is most commonly caused by a corrupt "
 "save file or by faulty WML code in the scenario or era. Details:"
@@ -6101,7 +6101,7 @@ msgstr ""
 "Slet snakkebeskeder.\n"
 "\n"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:580
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:577
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
@@ -6143,7 +6143,7 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %y"
 
-#: src/game_config.cpp:528
+#: src/game_config.cpp:525
 #, fuzzy
 #| msgid "Invalid color range: "
 msgid "Invalid color in range: "
@@ -7071,12 +7071,12 @@ msgstr "spil runde"
 msgid "(press $hotkey to deactivate)"
 msgstr "(tryk $hotkey for at fortsætte)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2092
+#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2095
 #, fuzzy
 msgid "Planning mode activated!"
 msgstr "Fejlfinding aktiveret!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2095
+#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2098
 #, fuzzy
 msgid "Planning mode deactivated!"
 msgstr "Fejlfinding deaktiveret!"
@@ -7699,6 +7699,10 @@ msgid ""
 "Invalid action provided for side '$side'. Valid actions are: on, off, full."
 msgstr ""
 
+#: src/menu_events.cpp:1567
+msgid "Side '$side' is not a human or AI player."
+msgstr ""
+
 # http://wesnothfr.ww7.be/article.php3?id_article=36 
 # De bruger åbenbart ordet 'droid' som verbum svarende til den
 # server-kommando, der lader en spiller i multiplayer blive spillet af
@@ -7707,13 +7711,13 @@ msgstr ""
 # standarder end bare at gøre det til et verbum :).
 # Et nogenlunde forslag ville måske være: Kan ikke udføre
 # droid-kommandoen for den ugyldige side: "$side".
-#: src/menu_events.cpp:1600
+#: src/menu_events.cpp:1603
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle invalid side: '$side'."
 msgstr "Kan ikke udføre droid-kommandoen for den ugyldige side: '$side'."
 
-#: src/menu_events.cpp:1605
+#: src/menu_events.cpp:1608
 #, fuzzy
 #| msgid "Can't droid networked side: '$side'."
 msgid "Can't idle networked side: '$side'."
@@ -7727,53 +7731,53 @@ msgstr "Kan ikke udføre droid-kommandoen for netværksside: '$side'."
 # standarder end bare at gøre det til et verbum :).
 # Et nogenlunde forslag ville måske være: Kan ikke udføre
 # droid-kommandoen for den ugyldige side: "$side".
-#: src/menu_events.cpp:1610
+#: src/menu_events.cpp:1613
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle local ai side: '$side'."
 msgstr "Kan ikke udføre droid-kommandoen for den ugyldige side: '$side'."
 
-#: src/menu_events.cpp:1671
+#: src/menu_events.cpp:1674
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Kan ikke ændre kontrol på den ugyldige side: '$side'."
 
-#: src/menu_events.cpp:1681
+#: src/menu_events.cpp:1684
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Kan ikke ændre kontrol på side der er udover grænserne: '$side'."
 
-#: src/menu_events.cpp:1698
+#: src/menu_events.cpp:1701
 #, fuzzy
 #| msgid "Can't change control of invalid side: '$side'."
 msgid "Can't query control of invalid side: '$side'."
 msgstr "Kan ikke ændre kontrol på den ugyldige side: '$side'."
 
-#: src/menu_events.cpp:1705
+#: src/menu_events.cpp:1708
 #, fuzzy
 #| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "Kan ikke ændre kontrol på side der er udover grænserne: '$side'."
 
-#: src/menu_events.cpp:1827
+#: src/menu_events.cpp:1830
 msgid "Choose Scenario (Debug!)"
 msgstr "Vælg scenarie (fejlsøgning!)"
 
-#: src/menu_events.cpp:1863
+#: src/menu_events.cpp:1866
 msgid "Debug mode activated!"
 msgstr "Fejlfinding aktiveret!"
 
-#: src/menu_events.cpp:1866
+#: src/menu_events.cpp:1869
 msgid "Debug mode not available in network games"
 msgstr "Fejlsøgningstilstand ikke tilgængelig i netværksspil"
 
-#: src/menu_events.cpp:1873
+#: src/menu_events.cpp:1876
 msgid "Debug mode deactivated!"
 msgstr "Fejlfinding deaktiveret!"
 
-#: src/menu_events.cpp:1893
+#: src/menu_events.cpp:1896
 msgid "WARNING! Unsafe Lua Mode"
 msgstr ""
 
-#: src/menu_events.cpp:1894
+#: src/menu_events.cpp:1897
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7782,39 +7786,39 @@ msgid ""
 "Do not continue unless you really know what you are doing."
 msgstr ""
 
-#: src/menu_events.cpp:1899
+#: src/menu_events.cpp:1902
 msgid "Unsafe mode enabled!"
 msgstr ""
 
-#: src/menu_events.cpp:1948
+#: src/menu_events.cpp:1951
 msgid "Variable not found"
 msgstr ""
 
-#: src/menu_events.cpp:1981
+#: src/menu_events.cpp:1984
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
 
-#: src/menu_events.cpp:1999
+#: src/menu_events.cpp:2002
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
 
-#: src/menu_events.cpp:2025
+#: src/menu_events.cpp:2028
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 
-#: src/menu_events.cpp:2039
+#: src/menu_events.cpp:2042
 #, fuzzy
 msgid "Invalid unit type"
 msgstr "Ugyldig mærkenavn"
 
-#: src/menu_events.cpp:2046
+#: src/menu_events.cpp:2049
 #, fuzzy
 msgid "Invalid location"
 msgstr "Ugyldig farve"
 
-#: src/menu_events.cpp:2119 src/menu_events.cpp:2145
+#: src/menu_events.cpp:2122 src/menu_events.cpp:2148
 msgid "prompt^Command:"
 msgstr "Kommando:"
 
@@ -8606,76 +8610,76 @@ msgstr "Gem spil"
 msgid "Game state is corrupted"
 msgstr ""
 
-#: src/serialization/parser.cpp:156
+#: src/serialization/parser.cpp:152
 msgid "Unexpected characters at line start"
 msgstr "Uventet karakter ved linjens begyndelse"
 
-#: src/serialization/parser.cpp:183
+#: src/serialization/parser.cpp:179
 #, fuzzy
 #| msgid "Missing closing tag for tag $tag at $pos"
 msgid "Missing closing tag for tag [$tag]"
 msgstr "Mangler lukkemarkering for markering $tag ved $pos"
 
-#: src/serialization/parser.cpp:184
+#: src/serialization/parser.cpp:180
 msgid "expected at $pos"
 msgstr ""
 
-#: src/serialization/parser.cpp:185 src/serialization/parser.cpp:272
+#: src/serialization/parser.cpp:181 src/serialization/parser.cpp:268
 msgid "opened at $pos"
 msgstr ""
 
-#: src/serialization/parser.cpp:203
+#: src/serialization/parser.cpp:199
 msgid "Unterminated [element] tag"
 msgstr "Ikke afsluttet [element] markering"
 
-#: src/serialization/parser.cpp:219 src/serialization/parser.cpp:287
+#: src/serialization/parser.cpp:215 src/serialization/parser.cpp:283
 msgid "Invalid tag name"
 msgstr "Ugyldig mærkenavn"
 
-#: src/serialization/parser.cpp:225
+#: src/serialization/parser.cpp:221
 msgid "Unterminated [+element] tag"
 msgstr "Uafsluttet [+element] mærke"
 
-#: src/serialization/parser.cpp:249
+#: src/serialization/parser.cpp:245
 msgid "Invalid closing tag name"
 msgstr "Invalid slutmærkenavn"
 
-#: src/serialization/parser.cpp:255
+#: src/serialization/parser.cpp:251
 msgid "Unterminated closing tag"
 msgstr "Uafsluttet slutmærke"
 
-#: src/serialization/parser.cpp:259
+#: src/serialization/parser.cpp:255
 msgid "Unexpected closing tag"
 msgstr "Uventet slutmærke"
 
-#: src/serialization/parser.cpp:271
+#: src/serialization/parser.cpp:267
 #, fuzzy
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
 msgstr "Fandt invalid slutmærke $tag2 for mærke $tag (åbnet ved $pos)"
 
-#: src/serialization/parser.cpp:273
+#: src/serialization/parser.cpp:269
 #, fuzzy
 #| msgid "Close"
 msgid "closed at $pos"
 msgstr "Luk"
 
-#: src/serialization/parser.cpp:309 src/serialization/parser.cpp:325
+#: src/serialization/parser.cpp:305 src/serialization/parser.cpp:321
 msgid "Empty variable name"
 msgstr "Tom variabelnavn"
 
-#: src/serialization/parser.cpp:317
+#: src/serialization/parser.cpp:313
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Uventede karakter efter variabelnavn (forventede , eller =)"
 
-#: src/serialization/parser.cpp:364 src/serialization/parser.cpp:404
+#: src/serialization/parser.cpp:360 src/serialization/parser.cpp:400
 msgid "Unterminated quoted string"
 msgstr "Uafsluttet citatstreng"
 
-#: src/serialization/parser.cpp:471
+#: src/serialization/parser.cpp:467
 msgid "at $pos"
 msgstr ""
 
-#: src/serialization/parser.cpp:484
+#: src/serialization/parser.cpp:480
 msgid "Value: '$value' Previous: '$previous_value'"
 msgstr ""
 
@@ -8838,28 +8842,28 @@ msgstr "Tid på døgnet"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/units/abilities.cpp:965
+#: src/units/abilities.cpp:968
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "langsom: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:969
+#: src/units/abilities.cpp:972
 msgid "Taught: "
 msgstr ""
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:973
+#: src/units/abilities.cpp:976
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:986
+#: src/units/abilities.cpp:989
 msgid "Used by opponent: "
 msgstr ""
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:472
+#: src/units/attack_type.cpp:535
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
@@ -8867,7 +8871,7 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "per runde"
 msgstr[1] "per runde"
 
-#: src/units/attack_type.cpp:481
+#: src/units/attack_type.cpp:544
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -8877,7 +8881,7 @@ msgstr[0] "skade"
 msgstr[1] "skade"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:490
+#: src/units/attack_type.cpp:553
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
@@ -8886,7 +8890,7 @@ msgstr[0] "per runde"
 msgstr[1] "per runde"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:499
+#: src/units/attack_type.cpp:562
 #, fuzzy
 #| msgid "strike"
 #| msgid_plural "strikes"
@@ -8896,7 +8900,7 @@ msgstr[0] "slag"
 msgstr[1] "slag"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:508
+#: src/units/attack_type.cpp:571
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -8904,14 +8908,14 @@ msgid "$number| accuracy"
 msgstr "skade"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:515
+#: src/units/attack_type.cpp:578
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "per runde"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:522
+#: src/units/attack_type.cpp:585
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -8919,14 +8923,14 @@ msgid "$number parry"
 msgstr "skade"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:529
+#: src/units/attack_type.cpp:592
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "per runde"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:536
+#: src/units/attack_type.cpp:599
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "$number movement point"
@@ -8935,7 +8939,7 @@ msgstr[0] "Bevægelsespris"
 msgstr[1] "Bevægelsespris"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:545
+#: src/units/attack_type.cpp:608
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
@@ -8944,7 +8948,7 @@ msgstr[0] "per runde"
 msgstr[1] "per runde"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:554
+#: src/units/attack_type.cpp:617
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -8954,7 +8958,7 @@ msgstr[0] "skade"
 msgstr[1] "skade"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:563
+#: src/units/attack_type.cpp:626
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
@@ -9016,17 +9020,17 @@ msgstr "lyssky"
 msgid "liminal"
 msgstr "loyal"
 
-#: src/units/unit.cpp:2066
+#: src/units/unit.cpp:1939
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2072
+#: src/units/unit.cpp:1945
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "per runde"
 
-#: src/units/unit.cpp:2082
+#: src/units/unit.cpp:1955
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -9034,25 +9038,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "per runde"
 msgstr[1] "per runde"
 
-#: src/units/unit.cpp:2088
+#: src/units/unit.cpp:1961
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "per runde"
 
-#: src/units/unit.cpp:2092
+#: src/units/unit.cpp:1965
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "per runde"
 
-#: src/units/unit.cpp:2097
+#: src/units/unit.cpp:1970
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "per runde"
 
-#: src/units/unit.cpp:2101
+#: src/units/unit.cpp:1974
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -9061,13 +9065,13 @@ msgid_plural ""
 msgstr[0] "per runde"
 msgstr[1] "per runde"
 
-#: src/units/unit.cpp:2108
+#: src/units/unit.cpp:1981
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "per runde"
 
-#: src/units/unit.cpp:2564
+#: src/units/unit.cpp:2437
 msgid "$effect_description per level"
 msgstr "$effect_description per niveau"
 
@@ -9091,14 +9095,14 @@ msgstr ""
 msgid "$year AF"
 msgstr ""
 
-#: src/wesnoth.cpp:727
+#: src/wesnoth.cpp:741
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:728
+#: src/wesnoth.cpp:742
 #, fuzzy
 #| msgid "Loading data files"
 msgid "Logging Failure"

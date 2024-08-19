@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-07-21 22:31-0500\n"
+"POT-Creation-Date: 2024-08-18 23:11-0500\n"
 "PO-Revision-Date: 2022-10-30 11:00-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -1993,8 +1993,26 @@ msgstr "Calendário"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
+#, fuzzy
+#| msgid ""
+#| "Each year in the Wesnoth calendar is composed of 12 months. These are, in "
+#| "order:\n"
+#| "\n"
+#| "Whitefire\n"
+#| "Bleeding Moon\n"
+#| "Scatterseed\n"
+#| "Deeproot\n"
+#| "Scryer’s Bloom\n"
+#| "Thorntress\n"
+#| "Summit Star\n"
+#| "Kindlefire\n"
+#| "Stillseed\n"
+#| "Reaper’s Moon\n"
+#| "Verglas Bloom\n"
+#| "Blackfire\n"
+#| "\n"
 msgid ""
-"Each year in the Wesnoth calendar is composed of 12 months. These are, in "
+"Each year in the Wesnothian calendar is composed of 12 months. These are, in "
 "order:\n"
 "\n"
 "Whitefire\n"
@@ -2010,6 +2028,10 @@ msgid ""
 "Verglas Bloom\n"
 "Blackfire\n"
 "\n"
+"The Wesnothian calendar begins with the founding of Wesnoth in the year 1 YW "
+"(Year of Wesnoth). Years before that are counted based on the number of "
+"years before the founding of Wesnoth using BW (Before Wesnoth). After the "
+"Fall of Wesnoth dates use AF (After the Fall)."
 msgstr ""
 "O ano do calendário de Wesnoth é dividido em 12 meses. Eles são, em ordem:\n"
 "\n"
@@ -2089,12 +2111,19 @@ msgstr ""
 "Norte'</ref>. Ele desagua no <ref>dst='great_ocean' text='oceano'</ref> em "
 "<ref>dst='elensefar' text='Elensefar'</ref>."
 
+#. [topic]: id=great_river
+#: data/core/encyclopedia/geography.cfg:35
+msgid ""
+"The Ford of Abez is a crossing between Wesnoth and the Northlands, and is "
+"the westernmost point where the Great River can be crossed without ships."
+msgstr ""
+
 #
 # File: data/core/encyclopedia/geography.cfg, line: 31
 # File: data/core/encyclopedia/geography.cfg, line: 31
 # File: data/core/encyclopedia/geography.cfg, line: 31
 #. [topic]: id=great_ocean
-#: data/core/encyclopedia/geography.cfg:38
+#: data/core/encyclopedia/geography.cfg:40
 msgid "Great Ocean"
 msgstr "Grande Oceano"
 
@@ -2103,7 +2132,7 @@ msgstr "Grande Oceano"
 # File: data/core/encyclopedia/geography.cfg, line: 32
 # File: data/core/encyclopedia/geography.cfg, line: 32
 #. [topic]: id=great_ocean
-#: data/core/encyclopedia/geography.cfg:39
+#: data/core/encyclopedia/geography.cfg:41
 msgid ""
 "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
 "and all rivers eventually flow to it. Far to the west in the Great Ocean is "
@@ -2113,12 +2142,21 @@ msgstr ""
 "os rios correm até ele. Muito a oeste há um grande arquipélago chamado de "
 "<ref>dst='morogor' text='Morogor'</ref>."
 
+#. [topic]: id=great_ocean
+#. Great Ocean
+#: data/core/encyclopedia/geography.cfg:45
+msgid ""
+"The Drakes once called this ocean the World Ocean. They believe it to extend "
+"in every direction from Morogor until eventually flowing into the abyss as "
+"an immense waterfall at the edge of the world."
+msgstr ""
+
 #
 # File: data/core/encyclopedia/geography.cfg, line: 37
 # File: data/core/encyclopedia/geography.cfg, line: 37
 # File: data/core/encyclopedia/geography.cfg, line: 37
 #. [topic]: id=morogor
-#: data/core/encyclopedia/geography.cfg:44
+#: data/core/encyclopedia/geography.cfg:50
 msgid "Morogor"
 msgstr "Morogor"
 
@@ -2127,7 +2165,7 @@ msgstr "Morogor"
 # File: data/core/encyclopedia/geography.cfg, line: 38
 # File: data/core/encyclopedia/geography.cfg, line: 38
 #. [topic]: id=morogor
-#: data/core/encyclopedia/geography.cfg:45
+#: data/core/encyclopedia/geography.cfg:51
 msgid ""
 "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
 "Ocean'</ref> east of the <ref>dst='green_isle' text='Green Isle'</ref> and "
@@ -2142,12 +2180,21 @@ msgstr ""
 "ref>.\n"
 "Sua ilha central é chamada de ‘Morogor’."
 
+#. [topic]: id=morogor
+#. Geography of Morogor
+#: data/core/encyclopedia/geography.cfg:57
+msgid ""
+"<header>text='Notable land features:'</header>\n"
+"               • Mount Morogor: An active volcanic mountain in the central "
+"island of Morogor."
+msgstr ""
+
 #
 # File: data/core/encyclopedia/geography.cfg, line: 45
 # File: data/core/encyclopedia/geography.cfg, line: 45
 # File: data/core/encyclopedia/geography.cfg, line: 45
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:52
+#: data/core/encyclopedia/geography.cfg:63
 msgid "Green Isle"
 msgstr "Ilha Verde"
 
@@ -2156,19 +2203,46 @@ msgstr "Ilha Verde"
 # File: data/core/encyclopedia/geography.cfg, line: 46
 # File: data/core/encyclopedia/geography.cfg, line: 46
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:53
+#: data/core/encyclopedia/geography.cfg:64
+#, fuzzy
+#| msgid ""
+#| "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</"
+#| "ref>."
 msgid ""
-"A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
+"A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</"
+"ref>, formerly home to the Islefolk and Wesfolk."
 msgstr ""
 "Uma grande ilha localizada no <ref>dst='great_ocean' text='Grande Oceano'</"
 "ref>."
+
+#. [topic]: id=green_isle
+#. Geography of the Green Isle
+#: data/core/encyclopedia/geography.cfg:68
+msgid ""
+"<header>text='Notable cities:'</header>\n"
+"               • Southbay: The capital of the largest Islefolk Kingdom.\n"
+"               • Clearwater Port: The second largest Islefolk city and the "
+"location of a major port.\n"
+"               • Stormvale: A major Islefolk Kingdom once ruled by the "
+"ancestors of Haldric I.\n"
+"               • Jevyan's Haven: The Wesfolk capital and home of the famous "
+"lich-lord Jevyan.\n"
+"               • Blackmore: A small Wesfolk settlement.\n"
+"\n"
+"           <header>text='Notable land features:'</header>\n"
+"               • Broken Mountains: A mighty mountain range that cuts through "
+"the Green Isle.\n"
+"               • Oldwood: A mysterious wood inhabited by some woses.\n"
+"               • Swamp of Esten: A small swamp located east of the Broken "
+"Mountains."
+msgstr ""
 
 #
 # File: data/core/encyclopedia/geography.cfg, line: 51
 # File: data/core/encyclopedia/geography.cfg, line: 51
 # File: data/core/encyclopedia/geography.cfg, line: 51
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:58
+#: data/core/encyclopedia/geography.cfg:83
 msgid "Old Continent"
 msgstr "Velho Continente"
 
@@ -2177,10 +2251,16 @@ msgstr "Velho Continente"
 # File: data/core/encyclopedia/geography.cfg, line: 52
 # File: data/core/encyclopedia/geography.cfg, line: 52
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:59
+#: data/core/encyclopedia/geography.cfg:84
+#, fuzzy
+#| msgid ""
+#| "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
+#| "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgid ""
-"Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
-"<ref>dst='great_ocean' text='Great Ocean'</ref>."
+"Lies to the west of <ref>dst='morogor' text='Morogor'</ref> and the "
+"<ref>dst='green_isle' text='Green Isle'</ref> across the "
+"<ref>dst='great_ocean' text='Great Ocean'</ref>. It is the original homeland "
+"of both humans and orcs."
 msgstr ""
 "Fica a oeste de <ref>dst='morogor' text='Morogor'</ref>, além do "
 "<ref>dst='Great Ocean' text='Grande Oceano'</ref>."
@@ -2190,7 +2270,7 @@ msgstr ""
 # File: data/core/encyclopedia/geography.cfg, line: 57
 # File: data/core/encyclopedia/geography.cfg, line: 57
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:64
+#: data/core/encyclopedia/geography.cfg:89
 msgid "Great Continent"
 msgstr "Grande Continente"
 
@@ -2199,7 +2279,7 @@ msgstr "Grande Continente"
 # File: data/core/encyclopedia/geography.cfg, line: 58
 # File: data/core/encyclopedia/geography.cfg, line: 58
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:65
+#: data/core/encyclopedia/geography.cfg:90
 msgid ""
 "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
@@ -2214,7 +2294,7 @@ msgstr ""
 # File: data/core/encyclopedia/geography.cfg, line: 63
 # File: data/core/encyclopedia/geography.cfg, line: 63
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:70
+#: data/core/encyclopedia/geography.cfg:95
 msgid "Irdya"
 msgstr "Irdya"
 
@@ -2223,7 +2303,7 @@ msgstr "Irdya"
 # File: data/core/encyclopedia/geography.cfg, line: 64
 # File: data/core/encyclopedia/geography.cfg, line: 64
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:71
+#: data/core/encyclopedia/geography.cfg:96
 msgid ""
 "The name of the world in which the kingdom of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref> is situated is ‘Irdya’. This term is, however, only "
@@ -2240,12 +2320,12 @@ msgstr ""
 # File: data/core/encyclopedia/geography.cfg, line: 69
 # File: data/core/encyclopedia/geography.cfg, line: 69
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:76
+#: data/core/encyclopedia/geography.cfg:101
 msgid "Kingdom of Wesnoth"
 msgstr "Reino de Wesnoth"
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:77
+#: data/core/encyclopedia/geography.cfg:102
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -2257,46 +2337,120 @@ msgid ""
 "\n"
 "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier region. "
 "It is bounded to the south (off-map) by dense woods of which the Aethenwood "
-"may be considered a northernmost extension.\n"
-"\n"
+"may be considered a northernmost extension."
+msgstr ""
+
+#. [topic]: id=kingdom_wesnoth
+#. Geography of Wesnoth
+#: data/core/encyclopedia/geography.cfg:108
+msgid ""
 "<header>text='Notable cities:'</header>\n"
-"    • Weldyn: The capital of Wesnoth.\n"
-"    • Aldril: City lying on the Bay of Pearls.\n"
-"    • Blackwater Port: City lying south of the Bay of Pearls.\n"
-"    • Carcyn: Located between the Grey Woods and the Great River.\n"
-"    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
-"country, just west and north of Weldyn.\n"
-"    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
-"confluence of the Weldyn River and the Great River.\n"
-"    • Fort Tahn: The southernmost border outpost, controls the north/south "
-"road crossing the River Aethen.\n"
-"    • Tath: Important fort city north of Dan’Tonk, exerts control over the "
-"wilderness country around the east of the Brown Hills and north to the Ford "
-"of Abez.\n"
-"\n"
+"               • Weldyn: The capital of Wesnoth.\n"
+"               • Aldril: City lying on the Bay of Pearls.\n"
+"               • Blackwater Port: City lying south of the Bay of Pearls.\n"
+"               • Carcyn: Located between the Grey Woods and the Great "
+"River.\n"
+"               • Dan’Tonk: Wesnoth’s largest city, located in the center of "
+"the country, just west and north of Weldyn.\n"
+"               • Soradoc: The northernmost border outpost of Wesnoth, "
+"controls the confluence of the Weldyn River and the Great River.\n"
+"               • Fort Tahn: The southernmost border outpost, controls the "
+"north/south road crossing the River Aethen.\n"
+"               • Tath: Important fort city north of Dan’Tonk, exerts control "
+"over the wilderness country around the east of the Brown Hills and north to "
+"the Ford of Abez.\n"
+"               • Westin: An small yet important town in Kerlath, a province "
+"of Southern Wesnoth. The old Citadel of Westin can be found there."
+msgstr ""
+
+#. [topic]: id=kingdom_wesnoth
+#. Geography of Wesnoth
+#: data/core/encyclopedia/geography.cfg:121
+#, fuzzy
+#| msgid ""
+#| "The Kingdom of Wesnoth is located in the north-central portion of the "
+#| "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
+#| "mainline campaigns revolve around it. It is bounded on the map by the "
+#| "<ref>dst='great_river' text='Great River'</ref> to the north, the shore "
+#| "of the <ref>dst='great_ocean' text='ocean'</ref> to the west, the "
+#| "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
+#| "ref>, and the Bitter Swamp to the southeast.\n"
+#| "\n"
+#| "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
+#| "region. It is bounded to the south (off-map) by dense woods of which the "
+#| "Aethenwood may be considered a northernmost extension.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Weldyn: The capital of Wesnoth.\n"
+#| "    • Aldril: City lying on the Bay of Pearls.\n"
+#| "    • Blackwater Port: City lying south of the Bay of Pearls.\n"
+#| "    • Carcyn: Located between the Grey Woods and the Great River.\n"
+#| "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
+#| "country, just west and north of Weldyn.\n"
+#| "    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
+#| "confluence of the Weldyn River and the Great River.\n"
+#| "    • Fort Tahn: The southernmost border outpost, controls the north/"
+#| "south road crossing the River Aethen.\n"
+#| "    • Tath: Important fort city north of Dan’Tonk, exerts control over "
+#| "the wilderness country around the east of the Brown Hills and north to "
+#| "the Ford of Abez.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
+#| "    • Ford of Abez: Shallow part of the Great River, it is usually "
+#| "controlled by Wesnothian forces.\n"
+#| "    • Weldyn River: It branches from the Great River and goes south.\n"
+#| "    • Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and Fort "
+#| "Tahn, this plain is Wesnoth’s bread basket and home to most of its "
+#| "population.\n"
+#| "    • Dulatus Hills: These rolling hills bordering the Great Central "
+#| "Plain provide much of Wesnoth’s livestock and agriculture.\n"
+#| "    • Brown Hills: Wasteland surrounding Gryphon Mountain that is not "
+#| "well-populated and occasionally very dangerous.\n"
+#| "    • Horse Plains: Region of rolling plains just south of the Great "
+#| "River, bounded by Glyn’s Forest to the west and the River Weldyn to the "
+#| "east; the southern reach merges into the Central Plain. Home of the "
+#| "powerful Clans; the best horses in Wesnoth are bred here.\n"
+#| "    • Estmark Hills: Largish range rising south of the Great River and "
+#| "east of the Weldyn River. The northernmost portion, nearest the River "
+#| "Weldyn, has at various times been settled by Wesnothians, but the "
+#| "Kingdom’s control is tenuous at best and banditry is common.\n"
+#| "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one "
+#| "of Haldric II’s sons.\n"
+#| "    • Grey Woods: Large forest in the heart of the wilds of Wesnoth, "
+#| "located between Carcyn and Aldril and generally considered to be haunted."
+msgid ""
 "<header>text='Notable land features:'</header>\n"
-"    • Gryphon Mountain: Home of the fabled Gryphons.\n"
-"    • Ford of Abez: Shallow part of the Great River, it is usually "
-"controlled by Wesnothian forces.\n"
-"    • Weldyn River: It branches from the Great River and goes south.\n"
-"    • Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and Fort Tahn, "
-"this plain is Wesnoth’s bread basket and home to most of its population.\n"
-"    • Dulatus Hills: These rolling hills bordering the Great Central Plain "
-"provide much of Wesnoth’s livestock and agriculture.\n"
-"    • Brown Hills: Wasteland surrounding Gryphon Mountain that is not well-"
-"populated and occasionally very dangerous.\n"
-"    • Horse Plains: Region of rolling plains just south of the Great River, "
-"bounded by Glyn’s Forest to the west and the River Weldyn to the east; the "
-"southern reach merges into the Central Plain. Home of the powerful Clans; "
-"the best horses in Wesnoth are bred here.\n"
-"    • Estmark Hills: Largish range rising south of the Great River and east "
-"of the Weldyn River. The northernmost portion, nearest the River Weldyn, has "
-"at various times been settled by Wesnothians, but the Kingdom’s control is "
-"tenuous at best and banditry is common.\n"
-"    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one of "
-"Haldric II’s sons.\n"
-"    • Grey Woods: Large forest in the heart of the wilds of Wesnoth, located "
-"between Carcyn and Aldril and generally considered to be haunted."
+"               • Gryphon Mountain: Home of the fabled Gryphons.\n"
+"               • Ford of Abez: Shallow part of the Great River, it is "
+"usually controlled by Wesnothian forces.\n"
+"               • Weldyn River: It branches from the Great River and goes "
+"south.\n"
+"               • Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and "
+"Fort Tahn, this plain is Wesnoth’s bread basket and home to most of its "
+"population.\n"
+"               • Dulatus Hills: These rolling hills bordering the Great "
+"Central Plain provide much of Wesnoth’s livestock and agriculture.\n"
+"               • Brown Hills: Wasteland surrounding Gryphon Mountain that is "
+"not well-populated and occasionally very dangerous.\n"
+"               • Horse Plains: Region of rolling plains just south of the "
+"Great River, bounded by Glyn’s Forest to the west and the River Weldyn to "
+"the east; the southern reach merges into the Central Plain. Home of the "
+"powerful Clans; the best horses in Wesnoth are bred here.\n"
+"               • Estmark Hills: Largish range rising south of the Great "
+"River and east of the Weldyn River. The northernmost portion, nearest the "
+"River Weldyn, has at various times been settled by Wesnothians, but the "
+"Kingdom’s control is tenuous at best and banditry is common.\n"
+"               • Glyn’s Forest: Sometimes known as the Royal Forest, named "
+"for one of Haldric II’s sons.\n"
+"               • Grey Woods: Large forest in the heart of the wilds of "
+"Wesnoth, located between Carcyn and Aldril and generally considered to be "
+"haunted.\n"
+"               • Isle of Alduin: An important island off the coast of "
+"Wesnoth home to the Great Academy of Magic, where many of Wesnoth's greatest "
+"mages were trained.\n"
+"               • Green Swamp: Large swamp on the banks of the Great River "
+"northeast of the Grey Woods."
 msgstr ""
 "O Reino de Wesnoth está localizado na porção Centro-Norte do "
 "<ref>dst='great_continent' text='Grande Continente'</ref>. A maioria das "
@@ -2357,12 +2511,12 @@ msgstr ""
 # File: data/core/encyclopedia/geography.cfg, line: 100
 # File: data/core/encyclopedia/geography.cfg, line: 100
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:106
+#: data/core/encyclopedia/geography.cfg:138
 msgid "Elensefar"
 msgstr "Elensefar"
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:107
+#: data/core/encyclopedia/geography.cfg:139
 msgid ""
 "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, at times an independent country, and at times in a "
@@ -2403,52 +2557,113 @@ msgstr ""
 # File: data/core/encyclopedia/geography.cfg, line: 112
 # File: data/core/encyclopedia/geography.cfg, line: 112
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:119
+#: data/core/encyclopedia/geography.cfg:151
 msgid "Northlands"
 msgstr "Terras do Norte"
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:120
+#: data/core/encyclopedia/geography.cfg:152
 msgid ""
-"There is no government of the Northlands. Various groups of orcs, dwarves, "
-"barbarian men and even elves populate the region. The northern and eastern "
-"borders are not defined, the southern border is the <ref>dst='great_river' "
+"The Northlands are filled with unstable clans in endless conflict. It is an "
+"unlawful and perilous place plagued by its cold, icy terrain and constant "
+"war. Various groups of orcs, dwarves, men, gryphons, ogres, and even elves "
+"fight over the region. The northern and eastern borders of the Northlands "
+"are not defined, the southern border is the <ref>dst='great_river' "
 "text='Great River'</ref>, and the western border is the "
 "<ref>dst='great_ocean' text='ocean'</ref>.\n"
 "\n"
+"    Yet despite the sheer wilderness above the Northlands, the subterranean "
+"Dwarvish Kingdoms of Knalga and Kal Kartha are exceptions to their chaotic "
+"surroudings, providing both heat and protection to their people. While they "
+"may often be in conflict with orcs and trolls, the heart of Dwarvish "
+"territory is considered relatively safe in comparison."
+msgstr ""
+
+#. [topic]: id=northlands
+#. Geography of the Northlands
+#: data/core/encyclopedia/geography.cfg:158
+msgid ""
 "<header>text='Notable cities:'</header>\n"
-"    • Glamdrol: An Orcish tribal capital.\n"
-"    • Wesmere: The location of the Ka’lian — the Elvish Council.\n"
-"    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga in "
-"the southern Heart Mountains. A major trade center.\n"
-"    • Dallben and Delwyn: Human villages originally built by settlers who "
-"crossed the Great River during Wesnoth’s Golden Age expansion. Now "
-"abandoned. The forested area northeast of <ref>dst='elensefar' "
+"               • Glamdrol: An Orcish tribal capital.\n"
+"               • Wesmere: The location of the Ka’lian — the Elvish Council\n"
+"               • Dwarven Doors: A mixed human/dwarven town in the region of "
+"Knalga in the southern Heart Mountains. A major trade center.\n"
+"               • Dallben and Delwyn: Human villages originally built by "
+"settlers who crossed the Great River during Wesnoth’s Golden Age expansion. "
+"Now abandoned. The forested area northeast of <ref>dst='elensefar' "
 "text='Elensefar'</ref>, where these villages were located, was named the "
-"Annuvin province by men but was known by the elves as Wesmere.\n"
-"\n"
+"Annuvin province by men but was known by the elves as Wesmere."
+msgstr ""
+
+#. [topic]: id=northlands
+#. Geography of the Northlands
+#: data/core/encyclopedia/geography.cfg:165
+#, fuzzy
+#| msgid ""
+#| "There is no government of the Northlands. Various groups of orcs, "
+#| "dwarves, barbarian men and even elves populate the region. The northern "
+#| "and eastern borders are not defined, the southern border is the "
+#| "<ref>dst='great_river' text='Great River'</ref>, and the western border "
+#| "is the <ref>dst='great_ocean' text='ocean'</ref>.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Glamdrol: An Orcish tribal capital.\n"
+#| "    • Wesmere: The location of the Ka’lian — the Elvish Council.\n"
+#| "    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga "
+#| "in the southern Heart Mountains. A major trade center.\n"
+#| "    • Dallben and Delwyn: Human villages originally built by settlers who "
+#| "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
+#| "abandoned. The forested area northeast of <ref>dst='elensefar' "
+#| "text='Elensefar'</ref>, where these villages were located, was named the "
+#| "Annuvin province by men but was known by the elves as Wesmere.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • <ref>dst='heart_mountains' text='Heart Mountains'</ref>: A "
+#| "virtually impassable barrier between the river country and the Northern "
+#| "Plains.\n"
+#| "    • Heartfangs: the particularly forbidding stretch of high peaks "
+#| "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
+#| "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
+#| "madmen, and mages live there.\n"
+#| "    • Swamp of Dread: a very large bog located between the Heart "
+#| "Mountains and the Great River. A notoriously dangerous place.\n"
+#| "    • Lake Vrug: A large mountain lake whose river carves the only "
+#| "pathway through the Northern Mountains.\n"
+#| "    • <ref>dst='arkan_thoria' text='Arkan-thoria'</ref>: The river that "
+#| "comes out of Lake Vrug. This is the elvish name; among humans it is "
+#| "called Longlier.\n"
+#| "    • River Listra: The south-running tributary of the Great River into "
+#| "which the Arkan-thoria empties.\n"
+#| "    • Lintanir Forest: The southernmost portion of the Great Northern "
+#| "Forest, a gigantic wood whose eastern and northern boundaries are known "
+#| "only to the elves. Their capital, Elensiria, has only seldom been visited "
+#| "by humans.\n"
+#| "    • <ref>dst='great_river' text='Great River'</ref>: The origin of this "
+#| "river is somewhere in the east of the northern lands."
+msgid ""
 "<header>text='Notable land features:'</header>\n"
-"    • <ref>dst='heart_mountains' text='Heart Mountains'</ref>: A virtually "
-"impassable barrier between the river country and the Northern Plains.\n"
-"    • Heartfangs: the particularly forbidding stretch of high peaks "
-"southwest of Lake Vrug and north of the Forest of Wesmere. The most "
+"               • <ref>dst='heart_mountains' text='Heart Mountains'</ref>: A "
+"virtually impassable barrier between the river country and the Northern "
+"Plains.\n"
+"               • Heartfangs: The particularly forbidding stretch of high "
+"peaks southwest of Lake Vrug and north of the Forest of Wesmere. The most "
 "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
 "madmen, and mages live there.\n"
-"    • Swamp of Dread: a very large bog located between the Heart Mountains "
-"and the Great River. A notoriously dangerous place.\n"
-"    • Lake Vrug: A large mountain lake whose river carves the only pathway "
-"through the Northern Mountains.\n"
-"    • <ref>dst='arkan_thoria' text='Arkan-thoria'</ref>: The river that "
-"comes out of Lake Vrug. This is the elvish name; among humans it is called "
-"Longlier.\n"
-"    • River Listra: The south-running tributary of the Great River into "
-"which the Arkan-thoria empties.\n"
-"    • Lintanir Forest: The southernmost portion of the Great Northern "
-"Forest, a gigantic wood whose eastern and northern boundaries are known only "
-"to the elves. Their capital, Elensiria, has only seldom been visited by "
-"humans.\n"
-"    • <ref>dst='great_river' text='Great River'</ref>: The origin of this "
-"river is somewhere in the east of the northern lands."
+"               • Swamp of Dread: A very large bog located between the Heart "
+"Mountains and the Great River. A notoriously dangerous place.\n"
+"               • Lake Vrug: A large mountain lake whose river carves the "
+"only pathway through the Northern Mountains.\n"
+"               • <ref>dst='arkan_thoria' text='Arkan-thoria'</ref>: The "
+"river that comes out of Lake Vrug. This is the elvish name; among humans it "
+"is called Longlier.\n"
+"               • River Listra: The south-running tributary of the Great "
+"River into which the Arkan-thoria empties.\n"
+"               • Lintanir Forest: The southernmost portion of the Great "
+"Northern Forest, a gigantic wood whose eastern and northern boundaries are "
+"known only to the elves. Their capital, Elensiria, has only seldom been "
+"visited by humans.\n"
+"               • <ref>dst='great_river' text='Great River'</ref>: The origin "
+"of this river is somewhere in the east of the northern lands."
 msgstr ""
 "As Terras do Norte não são governadas por ninguém. Diversos grupos de orcs, "
 "anões, humanos bárbaros e até mesmo elfos povoam a região. As bordas norte e "
@@ -2495,12 +2710,30 @@ msgstr ""
 # File: data/core/encyclopedia/geography.cfg, line: 134
 # File: data/core/encyclopedia/geography.cfg, line: 134
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:141
+#: data/core/encyclopedia/geography.cfg:178
 msgid "Southwest Elven Lands"
 msgstr "Terras Élficas do Sudoeste"
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:142
+#: data/core/encyclopedia/geography.cfg:179
+#, fuzzy
+#| msgid ""
+#| "The Wood Elves are separate from those of the north, and have only "
+#| "intermittent relations with them and most other countries. Its borders "
+#| "are the <ref>dst='great_ocean' text='ocean'</ref> to the west, the Black "
+#| "River to the south and southeast, the lands of Wesnoth to the north and "
+#| "the Kerlath province to the east.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • None known.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • Aethenwood: The largest southern forest, it extends far to the "
+#| "south and is home to <ref>dst='..race_elf' text='elves'</ref>. Although "
+#| "the elves make no such distinction, the southern part of the forest has "
+#| "been named Southwood by denizens of Kerlath.\n"
+#| "    • Black Forest: An ancient forest of which very little is known, "
+#| "abandoned by the elves long ago."
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -2508,16 +2741,11 @@ msgid ""
 "to the south and southeast, the lands of Wesnoth to the north and the "
 "Kerlath province to the east.\n"
 "\n"
-"<header>text='Notable cities:'</header>\n"
-"    • None known.\n"
-"\n"
 "<header>text='Notable land features:'</header>\n"
 "    • Aethenwood: The largest southern forest, it extends far to the south "
 "and is home to <ref>dst='..race_elf' text='elves'</ref>. Although the elves "
 "make no such distinction, the southern part of the forest has been named "
-"Southwood by denizens of Kerlath.\n"
-"    • Black Forest: An ancient forest of which very little is known, "
-"abandoned by the elves long ago."
+"Southwood by denizens of Kerlath."
 msgstr ""
 "Os Elfos da Floresta são separados dos Elfos do norte e possuem muitopouco "
 "contato com eles e com quase todas as outras raças. Suas fronteiras são o "
@@ -2540,36 +2768,68 @@ msgstr ""
 # File: data/core/encyclopedia/geography.cfg, line: 145
 # File: data/core/encyclopedia/geography.cfg, line: 145
 #. [topic]: id=heart_mountains
-#: data/core/encyclopedia/geography.cfg:154
+#: data/core/encyclopedia/geography.cfg:187
 msgid "Heart Mountains"
 msgstr "Montanhas Coração"
 
-#
-# File: data/core/encyclopedia/geography.cfg, line: 146
-# File: data/core/encyclopedia/geography.cfg, line: 146
-# File: data/core/encyclopedia/geography.cfg, line: 146
 #. [topic]: id=heart_mountains
-#: data/core/encyclopedia/geography.cfg:155
+#. The Whitefang Clan’s primary description is in DiD
+#. Wesnoth 1.9.4 added Haggid-Dargor to the encyclopedia, but it has no other mention in mainline
+#: data/core/encyclopedia/geography.cfg:190
 msgid ""
 "A virtually impassable barrier between the <ref>dst='arkan_thoria' "
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
-"Plains'</ref>."
+"Plains'</ref>. The local orcs call them the Haggid-Dargor. The powerful "
+"Whitefang Clan in the region is named after the eastern edge of the "
+"mountains, which they call the Whitefang Mountains for their distinctive "
+"shape."
 msgstr ""
-"Uma barreira praticamente intransponível entre o <ref>dst='arkan_thoria' "
-"text='rio'</ref> counry e as <ref>dst='far_north' text='Planices do Norte'</"
-"ref>."
 
 #
 # File: data/core/encyclopedia/geography.cfg, line: 151
 # File: data/core/encyclopedia/geography.cfg, line: 151
 # File: data/core/encyclopedia/geography.cfg, line: 151
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:160
+#: data/core/encyclopedia/geography.cfg:195
 msgid "Far North"
 msgstr "Distante Norte"
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:161
+#: data/core/encyclopedia/geography.cfg:196
+#, fuzzy
+#| msgid ""
+#| "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
+#| "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' "
+#| "text='Heart Mountains'</ref>, which the Orcs call the Haggid-Dargor and "
+#| "claim (without merit) as their own. To the east lie the Unaligned Tribes "
+#| "of the Wild Steppe, who fell out of the control of the Clannate, instead "
+#| "roaming with wild human barbarians and clashing with the High Elves of "
+#| "the North Plains (known as North Elves in human lands). The High Elves "
+#| "themselves reside further east, where it is rumored they rule a vast "
+#| "kingdom.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Barag Gor, a city home to the Orcish Council\n"
+#| "    • Bitok\n"
+#| "    • Borstep\n"
+#| "    • Farzi\n"
+#| "    • Lmarig\n"
+#| "    • Melmog\n"
+#| "    • Prestim\n"
+#| "    • Tirigaz\n"
+#| "    • Dorest, the northernmost human city\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • Black Marshes\n"
+#| "    • Mountains of Dorth\n"
+#| "    • Mountains of Haag\n"
+#| "    • Greenwood\n"
+#| "    • Silent Forest\n"
+#| "    • Forest of Thelien\n"
+#| "    • River Oumph\n"
+#| "    • River Bork\n"
+#| "    • Frosty Wastes\n"
+#| "    • Barren Plains"
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
 "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' text='Heart "
@@ -2578,30 +2838,7 @@ msgid ""
 "Steppe, who fell out of the control of the Clannate, instead roaming with "
 "wild human barbarians and clashing with the High Elves of the North Plains "
 "(known as North Elves in human lands). The High Elves themselves reside "
-"further east, where it is rumored they rule a vast kingdom.\n"
-"\n"
-"<header>text='Notable cities:'</header>\n"
-"    • Barag Gor, a city home to the Orcish Council\n"
-"    • Bitok\n"
-"    • Borstep\n"
-"    • Farzi\n"
-"    • Lmarig\n"
-"    • Melmog\n"
-"    • Prestim\n"
-"    • Tirigaz\n"
-"    • Dorest, the northernmost human city\n"
-"\n"
-"<header>text='Notable land features:'</header>\n"
-"    • Black Marshes\n"
-"    • Mountains of Dorth\n"
-"    • Mountains of Haag\n"
-"    • Greenwood\n"
-"    • Silent Forest\n"
-"    • Forest of Thelien\n"
-"    • River Oumph\n"
-"    • River Bork\n"
-"    • Frosty Wastes\n"
-"    • Barren Plains"
+"further east, where it is rumored they rule a vast kingdom."
 msgstr ""
 "Frio, desolado e inacessível, o Distante Norte é o lar ancestral do Clannate "
 "Orc. Fica ao norte das <ref>dst='heart_mountains' text='Montanhas Coração'</"
@@ -2634,6 +2871,89 @@ msgstr ""
 "    • Rio Bork\n"
 "    • Vastidão Congelada\n"
 "    • Planíces Áridas"
+
+#. [topic]: id=far_north
+#. Geography of the Far North
+#: data/core/encyclopedia/geography.cfg:199
+msgid ""
+"<header>text='Notable cities:'</header>\n"
+"               • Barag Gor: A city home to the Orcish Council.\n"
+"               • Bitok\n"
+"               • Borstep\n"
+"               • Farzi\n"
+"               • Jotha: A large fortified capital of the local merfolk that "
+"lies within the bay of Jotha.\n"
+"               • Lmarig\n"
+"               • Melmog\n"
+"               • Prestim\n"
+"               • Tirigaz: A coastal orcish town that occasionally raids "
+"Jotha.\n"
+"               • Dorest: The northernmost human city."
+msgstr ""
+
+#. [topic]: id=far_north
+#. Geography of the Far North
+#: data/core/encyclopedia/geography.cfg:212
+msgid ""
+"<header>text='Notable land features:'</header>\n"
+"               • Desert of Death: An unsually dry desert in the Far North "
+"filled with venomous Sand Scuttlers. It is extremely hot by day yet chilly "
+"by night.\n"
+"               • Black Marshes: A perilous swamp north of Tirigaz filled "
+"with violent monsters.\n"
+"               • Mountains of Dorth: A set of mountains north of the Heart "
+"Mountains. Though nowhere near as dangeous as its southern neighbour, it is "
+"nonetheless deadly to inexperienced travelers.\n"
+"               • Mountains of Haag: A group of high mountains inhabited by "
+"groups of orcs, trolls and dwarves.\n"
+"               • Greenwood: An elvish forest located near the Lintanir "
+"Forest. Some say it was once connected to it, until groups of savage orcs "
+"burned much of the forest.\n"
+"               • Silent Forest: A dense forest inhabited by a few elves, "
+"once known as Gitamoth.\n"
+"               • Forest of Thelien: A dense coniferous forest sometimes "
+"inhabited by elves.\n"
+"               • River Oumph: A river flowing from the Mountains of Haag to "
+"its delta just south of Bitok.\n"
+"               • River Bork: A river of the Far North flowing from a lake "
+"next to the Mourned Hills.\n"
+"               • Frosty Wastes: A cold, snowy desert in the far north "
+"inhabited only by the occasional monster.\n"
+"               • Barren Plains: A vast, sparsely populated snowy tundra."
+msgstr ""
+
+#
+# File: data/core/encyclopedia/geography.cfg, line: 151
+# File: data/core/encyclopedia/geography.cfg, line: 151
+# File: data/core/encyclopedia/geography.cfg, line: 151
+#. [topic]: id=far_south
+#: data/core/encyclopedia/geography.cfg:228
+#, fuzzy
+#| msgid "Far North"
+msgid "Far South"
+msgstr "Distante Norte"
+
+#. [topic]: id=far_south
+#: data/core/encyclopedia/geography.cfg:229
+msgid ""
+"A vast region south of Kerlath home to the Dunefolk Civilization. It is also "
+"inhabited by many local creatures, including the Jinn and Wyverns."
+msgstr ""
+
+#. [topic]: id=far_south
+#. Geography of the Far South
+#: data/core/encyclopedia/geography.cfg:233
+msgid ""
+"<header>text='Notable land features:'</header>\n"
+"               • Sandy Wastes: A hot desert located south of Kerlath home to "
+"various Dunefolk settlements, as well as nomadic tribes inbetween. The "
+"northern parts of this desert are home to many treacherous monsters.\n"
+"               • Mountains of Peril: A tall and deadly mountain range in the "
+"far south inhabited by bands of vicious barbarians and monsters.\n"
+"               • Black Forest: An ancient and likely haunted forest of which "
+"very little is known, believed to have been once inhabited by elves. Those "
+"who enter it seldom return."
+msgstr ""
 
 #
 # File: data/core/help.cfg, line: 273
@@ -8751,11 +9071,53 @@ msgstr ""
 "amor pela noite."
 
 #
+# File: data/core/units.cfg, line: 42
+# File: data/core/units.cfg, line: 42
+# File: data/core/units.cfg, line: 42
+#. [race]: id=cats
+#: data/core/units.cfg:49
+#, fuzzy
+#| msgid "race^Bat"
+msgid "race^Cat"
+msgstr "Morcego"
+
+#
+# File: data/core/units.cfg, line: 43
+# File: data/core/units.cfg, line: 43
+# File: data/core/units.cfg, line: 43
+#. [race]: id=cats
+#: data/core/units.cfg:50
+#, fuzzy
+#| msgid "race+female^Bat"
+msgid "race+female^Cat"
+msgstr "Morcego"
+
+#
+# File: data/core/units.cfg, line: 44
+# File: data/core/units.cfg, line: 44
+# File: data/core/units.cfg, line: 44
+#. [race]: id=cats
+#: data/core/units.cfg:51
+#, fuzzy
+#| msgid "race^Bats"
+msgid "race^Cats"
+msgstr "Morcegos"
+
+#. [race]: id=cats
+#: data/core/units.cfg:52
+msgid ""
+"Big cats are nimble, solitary predators that can cause trouble for any "
+"farmer or hunter that encounter them.  The cats that hunt rodents and drive "
+"away lone wolves are tolerated by civilized folk, but some big cats are "
+"considered terrifying monsters."
+msgstr ""
+
+#
 # File: data/core/units.cfg, line: 54
 # File: data/core/units.cfg, line: 54
 # File: data/core/units.cfg, line: 54
 #. [race]: id=drake
-#: data/core/units.cfg:51
+#: data/core/units.cfg:61
 msgid "race^Drake"
 msgstr "Draconato"
 
@@ -8764,7 +9126,7 @@ msgstr "Draconato"
 # File: data/core/units.cfg, line: 55
 # File: data/core/units.cfg, line: 55
 #. [race]: id=drake
-#: data/core/units.cfg:52
+#: data/core/units.cfg:62
 msgid "race+female^Drake"
 msgstr "Draconata"
 
@@ -8773,12 +9135,12 @@ msgstr "Draconata"
 # File: data/core/units.cfg, line: 56
 # File: data/core/units.cfg, line: 56
 #. [race]: id=drake
-#: data/core/units.cfg:53
+#: data/core/units.cfg:63
 msgid "race^Drakes"
 msgstr "Draconatos"
 
 #. [race]: id=drake
-#: data/core/units.cfg:54
+#: data/core/units.cfg:64
 #, fuzzy
 #| msgid ""
 #| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
@@ -8985,7 +9347,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 90
 # File: data/core/units.cfg, line: 90
 #. [race]: id=dwarf
-#: data/core/units.cfg:87
+#: data/core/units.cfg:97
 msgid "race^Dwarf"
 msgstr "Anão"
 
@@ -8994,7 +9356,7 @@ msgstr "Anão"
 # File: data/core/units.cfg, line: 91
 # File: data/core/units.cfg, line: 91
 #. [race]: id=dwarf
-#: data/core/units.cfg:88
+#: data/core/units.cfg:98
 msgid "race+female^Dwarf"
 msgstr "Anã"
 
@@ -9003,7 +9365,7 @@ msgstr "Anã"
 # File: data/core/units.cfg, line: 92
 # File: data/core/units.cfg, line: 92
 #. [race]: id=dwarf
-#: data/core/units.cfg:89
+#: data/core/units.cfg:99
 msgid "race^Dwarves"
 msgstr "Anões"
 
@@ -9012,7 +9374,7 @@ msgstr "Anões"
 # File: data/core/units.cfg, line: 93
 # File: data/core/units.cfg, line: 93
 #. [race]: id=dwarf
-#: data/core/units.cfg:90
+#: data/core/units.cfg:100
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -9114,7 +9476,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 110
 # File: data/core/units.cfg, line: 110
 #. [race]: id=elf
-#: data/core/units.cfg:107
+#: data/core/units.cfg:117
 msgid "race^Elf"
 msgstr "Elfo"
 
@@ -9123,7 +9485,7 @@ msgstr "Elfo"
 # File: data/core/units.cfg, line: 111
 # File: data/core/units.cfg, line: 111
 #. [race]: id=elf
-#: data/core/units.cfg:108
+#: data/core/units.cfg:118
 msgid "race+female^Elf"
 msgstr "Elfa"
 
@@ -9132,12 +9494,12 @@ msgstr "Elfa"
 # File: data/core/units.cfg, line: 112
 # File: data/core/units.cfg, line: 112
 #. [race]: id=elf
-#: data/core/units.cfg:109
+#: data/core/units.cfg:119
 msgid "race^Elves"
 msgstr "Elfos"
 
 #. [race]: id=elf
-#: data/core/units.cfg:111
+#: data/core/units.cfg:121
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -9272,7 +9634,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 168
 # File: data/core/units.cfg, line: 168
 #. [race]: id=falcon
-#: data/core/units.cfg:137
+#: data/core/units.cfg:147
 msgid "race^Falcon"
 msgstr "Falção"
 
@@ -9281,7 +9643,7 @@ msgstr "Falção"
 # File: data/core/units.cfg, line: 169
 # File: data/core/units.cfg, line: 169
 #. [race]: id=falcon
-#: data/core/units.cfg:138
+#: data/core/units.cfg:148
 msgid "race+female^Falcon"
 msgstr "Falção"
 
@@ -9290,12 +9652,12 @@ msgstr "Falção"
 # File: data/core/units.cfg, line: 170
 # File: data/core/units.cfg, line: 170
 #. [race]: id=falcon
-#: data/core/units.cfg:139
+#: data/core/units.cfg:149
 msgid "race^Falcons"
 msgstr "Falções"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:140
+#: data/core/units.cfg:150
 msgid ""
 "Falcons are birds of prey, noted for their exceptional speed and agility. "
 "Lighter and with less powerful talons than other raptors, falcons instead "
@@ -9321,7 +9683,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 132
 # File: data/core/units.cfg, line: 132
 #. [race]: id=goblin
-#: data/core/units.cfg:148
+#: data/core/units.cfg:158
 msgid "race^Goblin"
 msgstr "Goblin"
 
@@ -9330,7 +9692,7 @@ msgstr "Goblin"
 # File: data/core/units.cfg, line: 133
 # File: data/core/units.cfg, line: 133
 #. [race]: id=goblin
-#: data/core/units.cfg:149
+#: data/core/units.cfg:159
 msgid "race+female^Goblin"
 msgstr "Goblin"
 
@@ -9339,7 +9701,7 @@ msgstr "Goblin"
 # File: data/core/units.cfg, line: 134
 # File: data/core/units.cfg, line: 134
 #. [race]: id=goblin
-#: data/core/units.cfg:150
+#: data/core/units.cfg:160
 msgid "race^Goblins"
 msgstr "Goblins"
 
@@ -9348,7 +9710,7 @@ msgstr "Goblins"
 # File: data/core/units.cfg, line: 135
 # File: data/core/units.cfg, line: 135
 #. [race]: id=goblin
-#: data/core/units.cfg:151
+#: data/core/units.cfg:161
 msgid ""
 "\n"
 "\n"
@@ -9381,7 +9743,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 150
 # File: data/core/units.cfg, line: 150
 #. [race]: id=gryphon
-#: data/core/units.cfg:168
+#: data/core/units.cfg:178
 msgid "race^Gryphon"
 msgstr "Grifo"
 
@@ -9390,7 +9752,7 @@ msgstr "Grifo"
 # File: data/core/units.cfg, line: 151
 # File: data/core/units.cfg, line: 151
 #. [race]: id=gryphon
-#: data/core/units.cfg:169
+#: data/core/units.cfg:179
 msgid "race+female^Gryphon"
 msgstr "Grifo"
 
@@ -9399,12 +9761,12 @@ msgstr "Grifo"
 # File: data/core/units.cfg, line: 152
 # File: data/core/units.cfg, line: 152
 #. [race]: id=gryphon
-#: data/core/units.cfg:170
+#: data/core/units.cfg:180
 msgid "race^Gryphons"
 msgstr "Grifos"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:171
+#: data/core/units.cfg:181
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -9429,7 +9791,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 322
 # File: data/core/units.cfg, line: 322
 #. [race]: id=horse
-#: data/core/units.cfg:181
+#: data/core/units.cfg:191
 msgid "race^Horse"
 msgstr "Cavalo"
 
@@ -9438,7 +9800,7 @@ msgstr "Cavalo"
 # File: data/core/units.cfg, line: 242
 # File: data/core/units.cfg, line: 242
 #. [race]: id=horse
-#: data/core/units.cfg:182
+#: data/core/units.cfg:192
 msgid "race+female^Horse"
 msgstr "Égua"
 
@@ -9447,12 +9809,12 @@ msgstr "Égua"
 # File: data/core/units.cfg, line: 323
 # File: data/core/units.cfg, line: 323
 #. [race]: id=horse
-#: data/core/units.cfg:183
+#: data/core/units.cfg:193
 msgid "race^Horses"
 msgstr "Cavalos"
 
 #. [race]: id=horse
-#: data/core/units.cfg:184
+#: data/core/units.cfg:194
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -9481,7 +9843,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 168
 # File: data/core/units.cfg, line: 168
 #. [race]: id=human
-#: data/core/units.cfg:201
+#: data/core/units.cfg:211
 msgid "race^Human"
 msgstr "Humano"
 
@@ -9490,7 +9852,7 @@ msgstr "Humano"
 # File: data/core/units.cfg, line: 169
 # File: data/core/units.cfg, line: 169
 #. [race]: id=human
-#: data/core/units.cfg:202
+#: data/core/units.cfg:212
 msgid "race+female^Human"
 msgstr "Humana"
 
@@ -9499,7 +9861,7 @@ msgstr "Humana"
 # File: data/core/units.cfg, line: 170
 # File: data/core/units.cfg, line: 170
 #. [race]: id=human
-#: data/core/units.cfg:203
+#: data/core/units.cfg:213
 msgid "race^Humans"
 msgstr "Humanos"
 
@@ -9508,7 +9870,7 @@ msgstr "Humanos"
 # File: data/core/units.cfg, line: 171
 # File: data/core/units.cfg, line: 171
 #. [race]: id=human
-#: data/core/units.cfg:204
+#: data/core/units.cfg:214
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -9594,7 +9956,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 168
 # File: data/core/units.cfg, line: 168
 #. [race]: id=dunefolk
-#: data/core/units.cfg:219
+#: data/core/units.cfg:229
 msgid "race^Dunefolk Human"
 msgstr "Humano Dunês"
 
@@ -9603,7 +9965,7 @@ msgstr "Humano Dunês"
 # File: data/core/units.cfg, line: 169
 # File: data/core/units.cfg, line: 169
 #. [race]: id=dunefolk
-#: data/core/units.cfg:220
+#: data/core/units.cfg:230
 msgid "race+female^Dunefolk Human"
 msgstr "Humana Dunêsa"
 
@@ -9612,12 +9974,12 @@ msgstr "Humana Dunêsa"
 # File: data/core/units.cfg, line: 296
 # File: data/core/units.cfg, line: 296
 #. [race]: id=dunefolk
-#: data/core/units.cfg:221
+#: data/core/units.cfg:231
 msgid "race+plural^Dunefolk"
 msgstr "Dunesianos"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:223
+#: data/core/units.cfg:233
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -9736,7 +10098,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 185
 # File: data/core/units.cfg, line: 185
 #. [race]: id=lizard
-#: data/core/units.cfg:244
+#: data/core/units.cfg:254
 msgid "race^Saurian"
 msgstr "Lagarto"
 
@@ -9745,7 +10107,7 @@ msgstr "Lagarto"
 # File: data/core/units.cfg, line: 186
 # File: data/core/units.cfg, line: 186
 #. [race]: id=lizard
-#: data/core/units.cfg:245
+#: data/core/units.cfg:255
 msgid "race+female^Saurian"
 msgstr "Lagarta"
 
@@ -9754,12 +10116,12 @@ msgstr "Lagarta"
 # File: data/core/units.cfg, line: 187
 # File: data/core/units.cfg, line: 187
 #. [race]: id=lizard
-#: data/core/units.cfg:246
+#: data/core/units.cfg:256
 msgid "race^Saurians"
 msgstr "Lagartos"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:247
+#: data/core/units.cfg:257
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -9902,7 +10264,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 197
 # File: data/core/units.cfg, line: 197
 #. [race]: id=mechanical
-#: data/core/units.cfg:273
+#: data/core/units.cfg:283
 msgid "race^Mechanical"
 msgstr "Construto"
 
@@ -9911,7 +10273,7 @@ msgstr "Construto"
 # File: data/core/units.cfg, line: 198
 # File: data/core/units.cfg, line: 198
 #. [race]: id=mechanical
-#: data/core/units.cfg:274
+#: data/core/units.cfg:284
 msgid "race+plural^Mechanical"
 msgstr "Construtos"
 
@@ -9920,7 +10282,7 @@ msgstr "Construtos"
 # File: data/core/units.cfg, line: 199
 # File: data/core/units.cfg, line: 199
 #. [race]: id=mechanical
-#: data/core/units.cfg:275
+#: data/core/units.cfg:285
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -9937,7 +10299,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 208
 # File: data/core/units.cfg, line: 208
 #. [race]: id=merman
-#: data/core/units.cfg:284
+#: data/core/units.cfg:294
 msgid "race^Merman"
 msgstr "Tritão"
 
@@ -9946,7 +10308,7 @@ msgstr "Tritão"
 # File: data/core/units.cfg, line: 209
 # File: data/core/units.cfg, line: 209
 #. [race]: id=merman
-#: data/core/units.cfg:285
+#: data/core/units.cfg:295
 msgid "race^Mermaid"
 msgstr "Sereia"
 
@@ -9955,7 +10317,7 @@ msgstr "Sereia"
 # File: data/core/units.cfg, line: 271
 # File: data/core/units.cfg, line: 271
 #. [race]: id=merman
-#: data/core/units.cfg:286
+#: data/core/units.cfg:296
 msgid "race^Merfolk"
 msgstr "Tritões"
 
@@ -9964,7 +10326,7 @@ msgstr "Tritões"
 # File: data/core/units.cfg, line: 212
 # File: data/core/units.cfg, line: 212
 #. [race]: id=merman
-#: data/core/units.cfg:288
+#: data/core/units.cfg:298
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -9993,7 +10355,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 220
 # File: data/core/units.cfg, line: 220
 #. [race]: id=monster
-#: data/core/units.cfg:296
+#: data/core/units.cfg:306
 msgid "race^Monster"
 msgstr "Monstro"
 
@@ -10002,7 +10364,7 @@ msgstr "Monstro"
 # File: data/core/units.cfg, line: 221
 # File: data/core/units.cfg, line: 221
 #. [race]: id=monster
-#: data/core/units.cfg:297
+#: data/core/units.cfg:307
 msgid "race+female^Monster"
 msgstr "Monstra"
 
@@ -10011,7 +10373,7 @@ msgstr "Monstra"
 # File: data/core/units.cfg, line: 222
 # File: data/core/units.cfg, line: 222
 #. [race]: id=monster
-#: data/core/units.cfg:298
+#: data/core/units.cfg:308
 msgid "race^Monsters"
 msgstr "Monstros"
 
@@ -10020,7 +10382,7 @@ msgstr "Monstros"
 # File: data/core/units.cfg, line: 223
 # File: data/core/units.cfg, line: 223
 #. [race]: id=monster
-#: data/core/units.cfg:299
+#: data/core/units.cfg:309
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -10035,7 +10397,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 230
 # File: data/core/units.cfg, line: 230
 #. [race]: id=naga
-#: data/core/units.cfg:306
+#: data/core/units.cfg:316
 msgid "race^Naga"
 msgstr "Naga"
 
@@ -10044,7 +10406,7 @@ msgstr "Naga"
 # File: data/core/units.cfg, line: 231
 # File: data/core/units.cfg, line: 231
 #. [race]: id=naga
-#: data/core/units.cfg:307
+#: data/core/units.cfg:317
 msgid "race^Nagini"
 msgstr "Nagini"
 
@@ -10053,7 +10415,7 @@ msgstr "Nagini"
 # File: data/core/units.cfg, line: 232
 # File: data/core/units.cfg, line: 232
 #. [race]: id=naga
-#: data/core/units.cfg:308
+#: data/core/units.cfg:318
 msgid "race^Nagas"
 msgstr "Nagas"
 
@@ -10062,7 +10424,7 @@ msgstr "Nagas"
 # File: data/core/units.cfg, line: 233
 # File: data/core/units.cfg, line: 233
 #. [race]: id=naga
-#: data/core/units.cfg:309
+#: data/core/units.cfg:319
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -10099,7 +10461,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 241
 # File: data/core/units.cfg, line: 241
 #. [race]: id=ogre
-#: data/core/units.cfg:317
+#: data/core/units.cfg:327
 msgid "race^Ogre"
 msgstr "Ogro"
 
@@ -10108,7 +10470,7 @@ msgstr "Ogro"
 # File: data/core/units.cfg, line: 242
 # File: data/core/units.cfg, line: 242
 #. [race]: id=ogre
-#: data/core/units.cfg:318
+#: data/core/units.cfg:328
 msgid "race+female^Ogre"
 msgstr "Ogra"
 
@@ -10117,12 +10479,12 @@ msgstr "Ogra"
 # File: data/core/units.cfg, line: 243
 # File: data/core/units.cfg, line: 243
 #. [race]: id=ogre
-#: data/core/units.cfg:319
+#: data/core/units.cfg:329
 msgid "race^Ogres"
 msgstr "Ogros"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:320
+#: data/core/units.cfg:330
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -10160,7 +10522,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 252
 # File: data/core/units.cfg, line: 252
 #. [race]: id=orc
-#: data/core/units.cfg:328
+#: data/core/units.cfg:338
 msgid "race^Orc"
 msgstr "Orc"
 
@@ -10169,7 +10531,7 @@ msgstr "Orc"
 # File: data/core/units.cfg, line: 253
 # File: data/core/units.cfg, line: 253
 #. [race]: id=orc
-#: data/core/units.cfg:329
+#: data/core/units.cfg:339
 msgid "race+female^Orc"
 msgstr "Orc"
 
@@ -10178,12 +10540,12 @@ msgstr "Orc"
 # File: data/core/units.cfg, line: 254
 # File: data/core/units.cfg, line: 254
 #. [race]: id=orc
-#: data/core/units.cfg:330
+#: data/core/units.cfg:340
 msgid "race^Orcs"
 msgstr "Orcs"
 
 #. [race]: id=orc
-#: data/core/units.cfg:331
+#: data/core/units.cfg:341
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -10290,7 +10652,7 @@ msgstr ""
 "físico, são frágeis e não são treinados na arte da guerra.\n"
 
 #. [race]: id=orc
-#: data/core/units.cfg:342
+#: data/core/units.cfg:352
 msgid ""
 "\n"
 "\n"
@@ -10307,7 +10669,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 92
 # File: data/core/units.cfg, line: 92
 #. [race]: id=raven
-#: data/core/units.cfg:351
+#: data/core/units.cfg:361
 #, fuzzy
 #| msgid "race^Dwarves"
 msgid "race^Raven"
@@ -10318,7 +10680,7 @@ msgstr "Anões"
 # File: data/core/units.cfg, line: 55
 # File: data/core/units.cfg, line: 55
 #. [race]: id=raven
-#: data/core/units.cfg:352
+#: data/core/units.cfg:362
 #, fuzzy
 #| msgid "race+female^Drake"
 msgid "race+female^Raven"
@@ -10329,14 +10691,14 @@ msgstr "Draconata"
 # File: data/core/units.cfg, line: 92
 # File: data/core/units.cfg, line: 92
 #. [race]: id=raven
-#: data/core/units.cfg:353
+#: data/core/units.cfg:363
 #, fuzzy
 #| msgid "race^Dwarves"
 msgid "race^Ravens"
 msgstr "Anões"
 
 #. [race]: id=raven
-#: data/core/units.cfg:354
+#: data/core/units.cfg:364
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
@@ -10360,7 +10722,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 271
 # File: data/core/units.cfg, line: 271
 #. [race]: id=troll
-#: data/core/units.cfg:365
+#: data/core/units.cfg:375
 msgid "race^Troll"
 msgstr "Troll"
 
@@ -10369,7 +10731,7 @@ msgstr "Troll"
 # File: data/core/units.cfg, line: 272
 # File: data/core/units.cfg, line: 272
 #. [race]: id=troll
-#: data/core/units.cfg:366
+#: data/core/units.cfg:376
 msgid "race+female^Troll"
 msgstr "Troll"
 
@@ -10378,12 +10740,12 @@ msgstr "Troll"
 # File: data/core/units.cfg, line: 273
 # File: data/core/units.cfg, line: 273
 #. [race]: id=troll
-#: data/core/units.cfg:367
+#: data/core/units.cfg:377
 msgid "race^Trolls"
 msgstr "Trolls"
 
 #. [race]: id=troll
-#: data/core/units.cfg:368
+#: data/core/units.cfg:378
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -10462,7 +10824,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 294
 # File: data/core/units.cfg, line: 294
 #. [race]: id=undead
-#: data/core/units.cfg:388
+#: data/core/units.cfg:398
 msgid "race^Undead"
 msgstr "Morto-Vivo"
 
@@ -10471,7 +10833,7 @@ msgstr "Morto-Vivo"
 # File: data/core/units.cfg, line: 295
 # File: data/core/units.cfg, line: 295
 #. [race]: id=undead
-#: data/core/units.cfg:389
+#: data/core/units.cfg:399
 msgid "race+female^Undead"
 msgstr "Morta-Viva"
 
@@ -10480,12 +10842,12 @@ msgstr "Morta-Viva"
 # File: data/core/units.cfg, line: 296
 # File: data/core/units.cfg, line: 296
 #. [race]: id=undead
-#: data/core/units.cfg:390
+#: data/core/units.cfg:400
 msgid "race+plural^Undead"
 msgstr "Mortos-Vivos"
 
 #. [race]: id=undead
-#: data/core/units.cfg:391
+#: data/core/units.cfg:401
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -10560,7 +10922,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 310
 # File: data/core/units.cfg, line: 310
 #. [race]: id=wolf
-#: data/core/units.cfg:404
+#: data/core/units.cfg:414
 msgid "race^Wolf"
 msgstr "Lobo"
 
@@ -10569,7 +10931,7 @@ msgstr "Lobo"
 # File: data/core/units.cfg, line: 311
 # File: data/core/units.cfg, line: 311
 #. [race]: id=wolf
-#: data/core/units.cfg:405
+#: data/core/units.cfg:415
 msgid "race+female^Wolf"
 msgstr "Loba"
 
@@ -10578,12 +10940,12 @@ msgstr "Loba"
 # File: data/core/units.cfg, line: 312
 # File: data/core/units.cfg, line: 312
 #. [race]: id=wolf
-#: data/core/units.cfg:406
+#: data/core/units.cfg:416
 msgid "race^Wolves"
 msgstr "Lobos"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:407
+#: data/core/units.cfg:417
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -10605,7 +10967,7 @@ msgstr ""
 # File: data/core/units.cfg, line: 322
 # File: data/core/units.cfg, line: 322
 #. [race]: id=wose
-#: data/core/units.cfg:416
+#: data/core/units.cfg:426
 msgid "race^Wose"
 msgstr "Wose"
 
@@ -10614,12 +10976,12 @@ msgstr "Wose"
 # File: data/core/units.cfg, line: 323
 # File: data/core/units.cfg, line: 323
 #. [race]: id=wose
-#: data/core/units.cfg:417
+#: data/core/units.cfg:427
 msgid "race^Woses"
 msgstr "Woses"
 
 #. [race]: id=wose
-#: data/core/units.cfg:418
+#: data/core/units.cfg:428
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -11140,6 +11502,19 @@ msgstr "Custo de Visão"
 #: src/help/help_topic_generators.cpp:770
 msgid "Jamming Cost"
 msgstr "Custo de Interferência"
+
+#
+# File: data/core/encyclopedia/geography.cfg, line: 146
+# File: data/core/encyclopedia/geography.cfg, line: 146
+# File: data/core/encyclopedia/geography.cfg, line: 146
+#~ msgid ""
+#~ "A virtually impassable barrier between the <ref>dst='arkan_thoria' "
+#~ "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
+#~ "Plains'</ref>."
+#~ msgstr ""
+#~ "Uma barreira praticamente intransponível entre o <ref>dst='arkan_thoria' "
+#~ "text='rio'</ref> counry e as <ref>dst='far_north' text='Planices do "
+#~ "Norte'</ref>."
 
 #
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 783

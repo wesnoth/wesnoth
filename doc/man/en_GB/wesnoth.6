@@ -64,7 +64,7 @@ Skip [story] screens and dialogue through the end of the \fBstart\fP event.
 .TP 
 \fB\-\-clock\fP
 Adds the option to show a clock for testing the drawing timer. Also adds the
-option for showing the GUI Test Dialog.
+option for showing the GUI Test Dialogue.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 overrides the loaded core with the one whose id is specified.
@@ -113,8 +113,7 @@ from \fIfile\fP open. If it is a directory, the editor will start with a load
 map dialogue opened there.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ lang\fP
-uses language \fIlang\fP (symbol) this session.  Example: \fB\-\-language
-ang_GB@latin\fP
+uses language \fIlang\fP (symbol) this session.  Example: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 sets the severity level of the log domains.  \fBall\fP can be used to match any
@@ -144,8 +143,8 @@ log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
 .TP 
 \fB\-\-no\-log\-sanitize\fP
-disables the anonymization that's normally applied when logging, for example
-replacing usernames with USER.
+disables the anonymisation that's normally applied when logging, for example
+replacing user names with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 For Windows, when used with \-\-no\-log\-to\-file, results in output being
@@ -216,8 +215,7 @@ preprocesses a specified file/folder. For each file(s) a plain .cfg file and
 a processed .cfg file will be written in specified target directory. If a
 folder is specified, it will be preprocessed recursively based on the known
 preprocessor rules. The common macros from the "data/core/macros" directory
-will be preprocessed before the specified resources.  Example: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
+will be preprocessed before the specified resources.  Example: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
 preprocessor visit:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 

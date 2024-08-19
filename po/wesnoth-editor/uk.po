@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-07-21 22:32-0500\n"
+"POT-Creation-Date: 2024-08-18 23:10-0500\n"
 "PO-Revision-Date: 2024-06-19 00:48+0300\n"
 "Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
 "discord: amakri>\n"
@@ -239,17 +239,17 @@ msgid "units"
 msgstr "бійці"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:463
+#: data/themes/editor.cfg:479
 msgid "Time Schedule Menu"
 msgstr "Меню часу доби"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:474
+#: data/themes/editor.cfg:490
 msgid "Playlist"
 msgstr "Список музики"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:480
+#: data/themes/editor.cfg:496
 msgid "Assign Time Schedule"
 msgstr "Призначити розклад часу доби"
 
@@ -273,15 +273,15 @@ msgstr "Рівень: "
 msgid "Cost: "
 msgstr "Вартість: "
 
-#: src/editor/controller/editor_controller.cpp:185
+#: src/editor/controller/editor_controller.cpp:186
 msgid "Fatal error"
 msgstr "Критична помилка"
 
-#: src/editor/controller/editor_controller.cpp:215
+#: src/editor/controller/editor_controller.cpp:216
 msgid "Do you really want to quit?"
 msgstr "Ви точно хочете вийти?"
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:218
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -289,7 +289,7 @@ msgstr ""
 "Ви точно хочете вийти? Зміни, внесені після останнього збереження будуть "
 "втрачені."
 
-#: src/editor/controller/editor_controller.cpp:219
+#: src/editor/controller/editor_controller.cpp:220
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -297,154 +297,154 @@ msgstr ""
 "Ви точно хочете вийти? Наступні карти були змінені, і всі зміни, внесені "
 "після останнього їх збереження будуть втрачені:"
 
-#: src/editor/controller/editor_controller.cpp:236
+#: src/editor/controller/editor_controller.cpp:237
 msgid "No editor time-of-day found."
 msgstr "Редактора часу доби не знайдено."
 
-#: src/editor/controller/editor_controller.cpp:876
+#: src/editor/controller/editor_controller.cpp:879
 #, fuzzy
 #| msgid "Add-on"
 msgid "Add-on Files"
 msgstr "Аддон"
 
-#: src/editor/controller/editor_controller.cpp:889
+#: src/editor/controller/editor_controller.cpp:892
 #, fuzzy
 #| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr "Підтримка буферу обміну не знайдена, зв'яжіться з менеджером пакету"
 
-#: src/editor/controller/editor_controller.cpp:1307
+#: src/editor/controller/editor_controller.cpp:1314
 msgid "Change Unit ID"
 msgstr "Змінити ID бійця"
 
-#: src/editor/controller/editor_controller.cpp:1308
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1324
+#: src/editor/controller/editor_controller.cpp:1331
 msgid "Rename Unit"
 msgstr "Перейменувати бійця"
 
-#: src/editor/controller/editor_controller.cpp:1325
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Name:"
 msgstr "Назва:"
 
-#: src/editor/map/context_manager.cpp:216
+#: src/editor/map/context_manager.cpp:220
 msgid "Load Map"
 msgstr "Завантажити карту"
 
-#: src/editor/map/context_manager.cpp:314 src/editor/map/map_context.cpp:1127
+#: src/editor/map/context_manager.cpp:318 src/editor/map/map_context.cpp:1127
 msgid "New Map"
 msgstr "Нова карта"
 
-#: src/editor/map/context_manager.cpp:327 src/editor/map/map_context.cpp:1127
+#: src/editor/map/context_manager.cpp:331 src/editor/map/map_context.cpp:1127
 msgid "New Scenario"
 msgstr "Новий сценарій"
 
-#: src/editor/map/context_manager.cpp:383
+#: src/editor/map/context_manager.cpp:387
 msgid "No Recent Files"
 msgstr "Немає недавніх файлів"
 
-#: src/editor/map/context_manager.cpp:421
+#: src/editor/map/context_manager.cpp:425
 msgid "Unnamed Area"
 msgstr "Неназвана область"
 
-#: src/editor/map/context_manager.cpp:452
+#: src/editor/map/context_manager.cpp:456
 msgid "New Side"
 msgstr "Нова сторона"
 
-#: src/editor/map/context_manager.cpp:508
+#: src/editor/map/context_manager.cpp:512
 msgid "Apply Mask"
 msgstr "Застосувати маску"
 
-#: src/editor/map/context_manager.cpp:517
+#: src/editor/map/context_manager.cpp:521
 msgid "Error loading mask"
 msgstr "Помилка при завантаженні маски"
 
-#: src/editor/map/context_manager.cpp:537
+#: src/editor/map/context_manager.cpp:541
 msgid "Identifier:"
 msgstr "Індефікатор:"
 
-#: src/editor/map/context_manager.cpp:537
+#: src/editor/map/context_manager.cpp:541
 msgid "Rename Area"
 msgstr "Переіменувати область"
 
-#: src/editor/map/context_manager.cpp:551
+#: src/editor/map/context_manager.cpp:555
 msgid "Choose Target Map"
 msgstr "Оберіть цільову карту"
 
-#: src/editor/map/context_manager.cpp:560
-#: src/editor/map/context_manager.cpp:982
+#: src/editor/map/context_manager.cpp:564
+#: src/editor/map/context_manager.cpp:990
 msgid "Error loading map"
 msgstr "Помилка при завантаженні карти"
 
-#: src/editor/map/context_manager.cpp:688
+#: src/editor/map/context_manager.cpp:696
 msgid "Save Map As"
 msgstr "Зберегти карту як"
 
-#: src/editor/map/context_manager.cpp:705
-#: src/editor/map/context_manager.cpp:754 src/editor/map/map_context.cpp:269
+#: src/editor/map/context_manager.cpp:713
+#: src/editor/map/context_manager.cpp:762 src/editor/map/map_context.cpp:269
 #: src/editor/palette/location_palette.cpp:264
 msgid "Error"
 msgstr "Помилка"
 
-#: src/editor/map/context_manager.cpp:706
-#: src/editor/map/context_manager.cpp:755
+#: src/editor/map/context_manager.cpp:714
+#: src/editor/map/context_manager.cpp:763
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
 msgstr "Ви точно хочете вийти?"
 
-#: src/editor/map/context_manager.cpp:714
-#: src/editor/map/context_manager.cpp:923
+#: src/editor/map/context_manager.cpp:722
+#: src/editor/map/context_manager.cpp:931
 msgid "This map is already open."
 msgstr "Ця карта вже відкрита."
 
-#: src/editor/map/context_manager.cpp:737
+#: src/editor/map/context_manager.cpp:745
 msgid "Save Scenario As"
 msgstr "Зберегти сценарій як"
 
-#: src/editor/map/context_manager.cpp:763
+#: src/editor/map/context_manager.cpp:771
 msgid "This scenario is already open."
 msgstr "Цей сценарій вже відкритий."
 
-#: src/editor/map/context_manager.cpp:797
+#: src/editor/map/context_manager.cpp:805
 msgid "No random map generators found."
 msgstr "Генератора випадкових карт не знайдено."
 
-#: src/editor/map/context_manager.cpp:810
-#: src/editor/map/context_manager.cpp:815
+#: src/editor/map/context_manager.cpp:818
+#: src/editor/map/context_manager.cpp:823
 msgid "Map creation failed."
 msgstr "Не вдалося створити карту."
 
-#: src/editor/map/context_manager.cpp:830
+#: src/editor/map/context_manager.cpp:838
 msgid "Unsaved Changes"
 msgstr "Незбережені зміни"
 
-#: src/editor/map/context_manager.cpp:831
+#: src/editor/map/context_manager.cpp:839
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Ви дійсно хочете відкинути всі зміни, які внесли від часу останнього "
 "збереження карти?"
 
-#: src/editor/map/context_manager.cpp:884
+#: src/editor/map/context_manager.cpp:892
 msgid "Scenario saved."
 msgstr "Сценарій збережено."
 
-#: src/editor/map/context_manager.cpp:899
+#: src/editor/map/context_manager.cpp:907
 msgid "Map saved."
 msgstr "Карту збережено."
 
-#: src/editor/map/context_manager.cpp:974
+#: src/editor/map/context_manager.cpp:982
 msgid "Loaded embedded map data"
 msgstr "Вбудовані в карту дані завантажено"
 
-#: src/editor/map/context_manager.cpp:975
-#: src/editor/map/context_manager.cpp:978
+#: src/editor/map/context_manager.cpp:983
+#: src/editor/map/context_manager.cpp:986
 msgid "Map loaded from scenario"
 msgstr "Карту завантажено з сценарію"
 
-#: src/editor/map/context_manager.cpp:978
+#: src/editor/map/context_manager.cpp:986
 msgid "Loaded referenced map file:"
 msgstr "Завантажено по посиланню файл карти:"
 

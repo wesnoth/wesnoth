@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-07-21 22:32-0500\n"
+"POT-Creation-Date: 2024-08-18 23:10-0500\n"
 "PO-Revision-Date: 2011-12-31 10:38+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -241,17 +241,17 @@ msgid "units"
 msgstr ""
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:463
+#: data/themes/editor.cfg:479
 msgid "Time Schedule Menu"
 msgstr ""
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:474
+#: data/themes/editor.cfg:490
 msgid "Playlist"
 msgstr ""
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:480
+#: data/themes/editor.cfg:496
 msgid "Assign Time Schedule"
 msgstr ""
 
@@ -275,15 +275,15 @@ msgstr ""
 msgid "Cost: "
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:185
+#: src/editor/controller/editor_controller.cpp:186
 msgid "Fatal error"
 msgstr "Kriitiline viga"
 
-#: src/editor/controller/editor_controller.cpp:215
+#: src/editor/controller/editor_controller.cpp:216
 msgid "Do you really want to quit?"
 msgstr "Kas soovid tõesti väljuda?"
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:218
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -295,7 +295,7 @@ msgstr ""
 "Kas soovid tõesti väljuda? Peale viimast salvestust tehtud muudatused "
 "lähevad kaotsi."
 
-#: src/editor/controller/editor_controller.cpp:219
+#: src/editor/controller/editor_controller.cpp:220
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -303,141 +303,141 @@ msgstr ""
 "Kas soovid tõesti väljuda? Järgnevad kaardid on muudetud ning peale viimast "
 "salvestust tehtud muudatused lähevad kaotsi:"
 
-#: src/editor/controller/editor_controller.cpp:236
+#: src/editor/controller/editor_controller.cpp:237
 msgid "No editor time-of-day found."
 msgstr "Redaktori päevaaega ei leitud."
 
-#: src/editor/controller/editor_controller.cpp:876
+#: src/editor/controller/editor_controller.cpp:879
 msgid "Add-on Files"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:889
+#: src/editor/controller/editor_controller.cpp:892
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1307
+#: src/editor/controller/editor_controller.cpp:1314
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1308
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "ID:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1324
+#: src/editor/controller/editor_controller.cpp:1331
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1325
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Name:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:216
+#: src/editor/map/context_manager.cpp:220
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:314 src/editor/map/map_context.cpp:1127
+#: src/editor/map/context_manager.cpp:318 src/editor/map/map_context.cpp:1127
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Uus kaart)"
 
-#: src/editor/map/context_manager.cpp:327 src/editor/map/map_context.cpp:1127
+#: src/editor/map/context_manager.cpp:331 src/editor/map/map_context.cpp:1127
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Scenario"
 msgstr "(Uus kaart)"
 
-#: src/editor/map/context_manager.cpp:383
+#: src/editor/map/context_manager.cpp:387
 msgid "No Recent Files"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:421
+#: src/editor/map/context_manager.cpp:425
 #, fuzzy
 #| msgid "(New Map)"
 msgid "Unnamed Area"
 msgstr "(Uus kaart)"
 
-#: src/editor/map/context_manager.cpp:452
+#: src/editor/map/context_manager.cpp:456
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Side"
 msgstr "(Uus kaart)"
 
-#: src/editor/map/context_manager.cpp:508
+#: src/editor/map/context_manager.cpp:512
 msgid "Apply Mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:517
+#: src/editor/map/context_manager.cpp:521
 msgid "Error loading mask"
 msgstr "Viga maski laadimisel"
 
-#: src/editor/map/context_manager.cpp:537
+#: src/editor/map/context_manager.cpp:541
 msgid "Identifier:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:537
+#: src/editor/map/context_manager.cpp:541
 msgid "Rename Area"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:551
+#: src/editor/map/context_manager.cpp:555
 msgid "Choose Target Map"
 msgstr "Vali sihtkaart"
 
-#: src/editor/map/context_manager.cpp:560
-#: src/editor/map/context_manager.cpp:982
+#: src/editor/map/context_manager.cpp:564
+#: src/editor/map/context_manager.cpp:990
 msgid "Error loading map"
 msgstr "Viga kaardi laadimisel"
 
-#: src/editor/map/context_manager.cpp:688
+#: src/editor/map/context_manager.cpp:696
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Salvesta kaart kui"
 
-#: src/editor/map/context_manager.cpp:705
-#: src/editor/map/context_manager.cpp:754 src/editor/map/map_context.cpp:269
+#: src/editor/map/context_manager.cpp:713
+#: src/editor/map/context_manager.cpp:762 src/editor/map/map_context.cpp:269
 #: src/editor/palette/location_palette.cpp:264
 msgid "Error"
 msgstr "Viga"
 
-#: src/editor/map/context_manager.cpp:706
-#: src/editor/map/context_manager.cpp:755
+#: src/editor/map/context_manager.cpp:714
+#: src/editor/map/context_manager.cpp:763
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
 msgstr "Kas soovid tõesti väljuda?"
 
-#: src/editor/map/context_manager.cpp:714
-#: src/editor/map/context_manager.cpp:923
+#: src/editor/map/context_manager.cpp:722
+#: src/editor/map/context_manager.cpp:931
 msgid "This map is already open."
 msgstr "See kaart on juba avatud."
 
-#: src/editor/map/context_manager.cpp:737
+#: src/editor/map/context_manager.cpp:745
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Scenario As"
 msgstr "Salvesta kaart kui"
 
-#: src/editor/map/context_manager.cpp:763
+#: src/editor/map/context_manager.cpp:771
 #, fuzzy
 #| msgid "This map is already open."
 msgid "This scenario is already open."
 msgstr "See kaart on juba avatud."
 
-#: src/editor/map/context_manager.cpp:797
+#: src/editor/map/context_manager.cpp:805
 msgid "No random map generators found."
 msgstr "Kaardigeneraatorit ei leitud."
 
-#: src/editor/map/context_manager.cpp:810
-#: src/editor/map/context_manager.cpp:815
+#: src/editor/map/context_manager.cpp:818
+#: src/editor/map/context_manager.cpp:823
 msgid "Map creation failed."
 msgstr "Kaardi loomine ebaõnnestus."
 
-#: src/editor/map/context_manager.cpp:830
+#: src/editor/map/context_manager.cpp:838
 msgid "Unsaved Changes"
 msgstr "Salvestamata muudatused"
 
-#: src/editor/map/context_manager.cpp:831
+#: src/editor/map/context_manager.cpp:839
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -446,26 +446,26 @@ msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Kas soovid loobuda kõigist peale viimast salvestust tehtud muudatustest?"
 
-#: src/editor/map/context_manager.cpp:884
+#: src/editor/map/context_manager.cpp:892
 #, fuzzy
 #| msgid "Map saved."
 msgid "Scenario saved."
 msgstr "Kaart salvestatud"
 
-#: src/editor/map/context_manager.cpp:899
+#: src/editor/map/context_manager.cpp:907
 msgid "Map saved."
 msgstr "Kaart salvestatud"
 
-#: src/editor/map/context_manager.cpp:974
+#: src/editor/map/context_manager.cpp:982
 msgid "Loaded embedded map data"
 msgstr "Laen stsenaariumist kaardi andmeid"
 
-#: src/editor/map/context_manager.cpp:975
-#: src/editor/map/context_manager.cpp:978
+#: src/editor/map/context_manager.cpp:983
+#: src/editor/map/context_manager.cpp:986
 msgid "Map loaded from scenario"
 msgstr "Kaart laetud stsenaariumist"
 
-#: src/editor/map/context_manager.cpp:978
+#: src/editor/map/context_manager.cpp:986
 #, fuzzy
 #| msgid ""
 #| "Loaded referenced map file:\n"

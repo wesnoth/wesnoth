@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-07-21 22:32-0500\n"
+"POT-Creation-Date: 2024-08-18 23:11-0500\n"
 "PO-Revision-Date: 2020-03-10 12:52+0100\n"
 "Last-Translator: Alex Alowersson <alexalowersson@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -2540,7 +2540,7 @@ msgstr "Meddelanden väntar"
 #: data/gui/themes/default/window/game_cache_options.cfg:247
 #: data/gui/themes/default/window/game_stats.cfg:843
 #: data/gui/themes/default/window/game_version.cfg:971
-#: data/gui/themes/default/window/gamestate_inspector.cfg:397
+#: data/gui/themes/default/window/gamestate_inspector.cfg:398
 #: data/gui/themes/default/window/generator_settings.cfg:190
 #: data/gui/themes/default/window/help_browser.cfg:188
 #: data/gui/themes/default/window/lobby_player_info.cfg:292
@@ -2548,7 +2548,7 @@ msgstr "Meddelanden väntar"
 #: data/gui/themes/default/window/message.cfg:135
 #: data/gui/themes/default/window/mp_alerts_options.cfg:242
 #: data/gui/themes/default/window/mp_match_history.cfg:601
-#: data/gui/themes/default/window/preferences.cfg:430
+#: data/gui/themes/default/window/preferences.cfg:444
 #: data/gui/themes/default/window/screenshot_notification.cfg:214
 #: data/gui/themes/default/window/server_info.cfg:253
 #: data/gui/themes/default/window/statistics_dialog.cfg:623
@@ -2689,7 +2689,7 @@ msgstr "OK"
 #: data/gui/themes/default/window/mp_login.cfg:257
 #: data/gui/themes/default/window/mp_method_selection.cfg:341
 #: data/gui/themes/default/window/mp_report.cfg:249
-#: data/gui/themes/default/window/mp_staging.cfg:440
+#: data/gui/themes/default/window/mp_staging.cfg:450
 #: data/gui/themes/default/window/network_transmission.cfg:111
 #: data/gui/themes/default/window/select_orb_colors.cfg:192
 #: data/gui/themes/default/window/simple_item_selector.cfg:158
@@ -3185,7 +3185,7 @@ msgstr "Välj svårighetsgrad:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/window/chat_log.cfg:36
-#: src/hotkey/hotkey_command.cpp:290
+#: src/hotkey/hotkey_command.cpp:292
 msgid "Chat Log"
 msgstr "Chattlogg"
 
@@ -3227,7 +3227,7 @@ msgstr "Nästa sida"
 
 #. [button]: id=copy
 #: data/gui/themes/default/window/chat_log.cfg:187
-#: data/gui/themes/default/window/gamestate_inspector.cfg:335
+#: data/gui/themes/default/window/gamestate_inspector.cfg:336
 #: data/gui/themes/default/window/lua_interpreter.cfg:105
 #: data/gui/themes/default/window/wml_error.cfg:124
 msgid "clipboard^Copy"
@@ -3249,7 +3249,7 @@ msgstr "Öppna spel"
 #: data/gui/themes/default/window/core_dialog.cfg:228
 #: data/gui/themes/default/window/language_selection.cfg:293
 #: src/gui/dialogs/editor/edit_unit.cpp:313
-#: src/preferences/preferences.cpp:1725
+#: src/preferences/preferences.cpp:1304
 msgid "Select"
 msgstr "Välj"
 
@@ -3743,7 +3743,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/window/editor_edit_scenario.cfg:42
-#: src/hotkey/hotkey_command.cpp:278
+#: src/hotkey/hotkey_command.cpp:280
 msgid "Edit Scenario Settings"
 msgstr "Ange scenarioinställningar"
 
@@ -3818,7 +3818,7 @@ msgstr "Statustabell"
 
 #. [label]
 #: data/gui/themes/default/window/editor_edit_side.cfg:275
-#: data/gui/themes/default/window/mp_staging.cfg:328
+#: data/gui/themes/default/window/mp_staging.cfg:338
 msgid "Gold:"
 msgstr "Guld:"
 
@@ -3831,7 +3831,7 @@ msgstr "Guld per by:"
 
 #. [label]
 #: data/gui/themes/default/window/editor_edit_side.cfg:331
-#: data/gui/themes/default/window/mp_staging.cfg:360
+#: data/gui/themes/default/window/mp_staging.cfg:370
 msgid "Income:"
 msgstr "Inkomst:"
 
@@ -3906,7 +3906,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/window/editor_edit_unit.cfg:246
-#: data/gui/themes/default/window/mp_staging.cfg:189
+#: data/gui/themes/default/window/mp_join_game.cfg:197
+#: data/gui/themes/default/window/mp_staging.cfg:200
 msgid "Gender:"
 msgstr "Kön:"
 
@@ -4114,7 +4115,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/window/editor_generate_map.cfg:43
-#: src/hotkey/hotkey_command.cpp:249
+#: src/hotkey/hotkey_command.cpp:251
 msgid "Generate Map"
 msgstr "Generera karta"
 
@@ -4171,7 +4172,7 @@ msgstr "Skapa"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/window/editor_resize_map.cfg:35
-#: src/hotkey/hotkey_command.cpp:248
+#: src/hotkey/hotkey_command.cpp:250
 msgid "Resize Map"
 msgstr "Ändra kartans storlek"
 
@@ -4499,8 +4500,8 @@ msgstr "Underhåll"
 #. [image]: id=income_icon
 #. [label]: id=side_income
 #: data/gui/themes/default/window/game_stats.cfg:118
-#: data/gui/themes/default/window/mp_join_game.cfg:273
-#: data/gui/themes/default/window/mp_join_game.cfg:286
+#: data/gui/themes/default/window/mp_join_game.cfg:281
+#: data/gui/themes/default/window/mp_join_game.cfg:294
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:439
 msgid "Income"
 msgstr "Inkomst"
@@ -4795,14 +4796,14 @@ msgid "Gamestate Inspector"
 msgstr "Inspektionsverktyg"
 
 #. [button]: id=copy
-#: data/gui/themes/default/window/gamestate_inspector.cfg:336
+#: data/gui/themes/default/window/gamestate_inspector.cfg:337
 #: data/gui/themes/default/window/wml_error.cfg:125
 msgid "Copy this report to clipboard"
 msgstr "Välj spel att öppna"
 
 #. [button]: id=lua
 #. [label]
-#: data/gui/themes/default/window/gamestate_inspector.cfg:348
+#: data/gui/themes/default/window/gamestate_inspector.cfg:349
 #: data/gui/themes/default/window/lua_interpreter.cfg:38
 msgid "Lua Console"
 msgstr "Lua-konsol"
@@ -5731,32 +5732,30 @@ msgstr "Välj vem som ska leda denna fraktion"
 
 #. [label]
 #: data/gui/themes/default/window/mp_join_game.cfg:155
-msgid "<b>Faction:</b>"
-msgstr "<b>Fraktion:</b>"
-
-#. [label]
-#: data/gui/themes/default/window/mp_join_game.cfg:187
-msgid "<b>Gender:</b>"
-msgstr "<b>Kön/b>"
+#: data/gui/themes/default/window/mp_staging.cfg:157
+#, fuzzy
+#| msgid "Action"
+msgid "Faction:"
+msgstr "Handling"
 
 #. [button]: id=cancel
-#: data/gui/themes/default/window/mp_join_game.cfg:359
+#: data/gui/themes/default/window/mp_join_game.cfg:367
 msgid "Leave"
 msgstr "Lämna"
 
 #. [label]: id=title
-#: data/gui/themes/default/window/mp_join_game.cfg:422
-#: data/gui/themes/default/window/mp_staging.cfg:559
-#: data/gui/themes/default/window/mp_staging.cfg:744
+#: data/gui/themes/default/window/mp_join_game.cfg:430
+#: data/gui/themes/default/window/mp_staging.cfg:569
+#: data/gui/themes/default/window/mp_staging.cfg:754
 msgid "Game Lobby"
 msgstr "Spellobby"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
-#: data/gui/themes/default/window/mp_join_game.cfg:491
-#: data/gui/themes/default/window/mp_staging.cfg:621
-#: data/gui/themes/default/window/mp_staging.cfg:813
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:513
+#: data/gui/themes/default/window/mp_join_game.cfg:499
+#: data/gui/themes/default/window/mp_staging.cfg:631
+#: data/gui/themes/default/window/mp_staging.cfg:823
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:509
 msgid "Waiting for players to join..."
 msgstr "Väntar på att spelare ska ansluta..."
 
@@ -5929,39 +5928,32 @@ msgstr "Ytterligare dialoger:"
 msgid "* required fields"
 msgstr ""
 
-#. [label]
-#: data/gui/themes/default/window/mp_staging.cfg:157
-#, fuzzy
-#| msgid "Action"
-msgid "Faction:"
-msgstr "Handling"
-
 #. [menu_button]: id=controller
-#: data/gui/themes/default/window/mp_staging.cfg:243
+#: data/gui/themes/default/window/mp_staging.cfg:253
 #, fuzzy
 #| msgid "Change the side's controller"
 msgid "Change the side’s controller"
 msgstr "Ändra sidans kontroller"
 
 #. [menu_button]: id=ai_controller
-#: data/gui/themes/default/window/mp_staging.cfg:259
+#: data/gui/themes/default/window/mp_staging.cfg:269
 #, fuzzy
 #| msgid "Change the AI side's behaviour"
 msgid "Change the AI side’s behaviour"
 msgstr "Ändra beteende för AI-sidor"
 
 #. [menu_button]: id=side_team
-#: data/gui/themes/default/window/mp_staging.cfg:286
+#: data/gui/themes/default/window/mp_staging.cfg:296
 msgid "Which team this side belongs to"
 msgstr "Vilket lag denna sida tillhör"
 
 #. [menu_button]: id=side_color
-#: data/gui/themes/default/window/mp_staging.cfg:302
+#: data/gui/themes/default/window/mp_staging.cfg:312
 msgid "This side’s color"
 msgstr "Denna sidas färg"
 
 #. [button]: id=ok
-#: data/gui/themes/default/window/mp_staging.cfg:423
+#: data/gui/themes/default/window/mp_staging.cfg:433
 msgid "I’m Ready"
 msgstr "Jag är klar"
 
@@ -5984,6 +5976,11 @@ msgstr "Skärm"
 #: data/gui/themes/default/window/preferences.cfg:419
 msgid "Display the game version and build information"
 msgstr "Visa information om spelversion och bygge"
+
+#. [button]: id=apply
+#: data/gui/themes/default/window/preferences.cfg:434
+msgid "Apply"
+msgstr "Verkställ"
 
 #. [label]
 #: data/gui/themes/default/window/preferences/01_general.cfg:20
@@ -6154,7 +6151,7 @@ msgstr "Snabbtangent"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:894
+#: src/gui/dialogs/preferences_dialog.cpp:895
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -6167,7 +6164,7 @@ msgstr "Kan användas under spel"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:895
+#: src/gui/dialogs/preferences_dialog.cpp:896
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -6180,7 +6177,7 @@ msgstr "Kan användas i redigeraren"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:896
+#: src/gui/dialogs/preferences_dialog.cpp:897
 #, fuzzy
 #| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
@@ -6301,30 +6298,25 @@ msgid ""
 "made add-ons"
 msgstr ""
 
-#. [label]: id=restart_msg
-#: data/gui/themes/default/window/preferences/03_display.cfg:217
-msgid "<span color='red'>*restart required</span>"
-msgstr ""
-
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/window/preferences/03_display.cfg:238
+#: data/gui/themes/default/window/preferences/03_display.cfg:224
 msgid "Combat damage indicators"
 msgstr ""
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/window/preferences/03_display.cfg:239
+#: data/gui/themes/default/window/preferences/03_display.cfg:225
 #, fuzzy
 #| msgid "Show damage and healing amounts above a unit"
 msgid "Show amount of damage inflicted or healed as fading labels above units"
 msgstr "Visa skada och helande över en trupp"
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/window/preferences/03_display.cfg:252
+#: data/gui/themes/default/window/preferences/03_display.cfg:238
 msgid "Team color indicators"
 msgstr ""
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/window/preferences/03_display.cfg:253
+#: data/gui/themes/default/window/preferences/03_display.cfg:239
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -6333,66 +6325,66 @@ msgstr ""
 "tillhör"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/themes/default/window/preferences/03_display.cfg:266
+#: data/gui/themes/default/window/preferences/03_display.cfg:252
 msgid "Grid overlay"
 msgstr ""
 
 #. [toggle_button]: id=show_grid
-#: data/gui/themes/default/window/preferences/03_display.cfg:267
+#: data/gui/themes/default/window/preferences/03_display.cfg:253
 msgid "Overlay a grid over the map"
 msgstr "Lägg ett rutnät över kartan"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/window/preferences/03_display.cfg:302
+#: data/gui/themes/default/window/preferences/03_display.cfg:288
 msgid "Animate map"
 msgstr "Animera karta"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/window/preferences/03_display.cfg:303
+#: data/gui/themes/default/window/preferences/03_display.cfg:289
 msgid "Display animated terrain graphics"
 msgstr "Visa animerad terräng-grafik"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/themes/default/window/preferences/03_display.cfg:316
+#: data/gui/themes/default/window/preferences/03_display.cfg:302
 msgid "Animate water"
 msgstr "Animera vatten"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/themes/default/window/preferences/03_display.cfg:317
+#: data/gui/themes/default/window/preferences/03_display.cfg:303
 msgid "Display animated water graphics (can be slow)"
 msgstr "Visa animerad vattengrafik (kan vara långsamt)"
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/window/preferences/03_display.cfg:332
+#: data/gui/themes/default/window/preferences/03_display.cfg:318
 #, fuzzy
 #| msgid "Show unit standing animations"
 msgid "Unit standing animations"
 msgstr "Visa animationer när trupp står still"
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/window/preferences/03_display.cfg:333
+#: data/gui/themes/default/window/preferences/03_display.cfg:319
 msgid "Continuously animate standing units on the battlefield"
 msgstr "Animera oupphörligen stillastående trupper"
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/window/preferences/03_display.cfg:351
+#: data/gui/themes/default/window/preferences/03_display.cfg:337
 #, fuzzy
 #| msgid "Show unit idle animations"
 msgid "Unit idle animations"
 msgstr "Visa animationer när trupp inte har något att göra"
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/window/preferences/03_display.cfg:352
+#: data/gui/themes/default/window/preferences/03_display.cfg:338
 msgid "Play short random animations for idle units"
 msgstr "Visa korta slumpmässiga animationer för overksamma trupper"
 
 #. [label]
-#: data/gui/themes/default/window/preferences/03_display.cfg:375
+#: data/gui/themes/default/window/preferences/03_display.cfg:361
 msgid "Frequency:"
 msgstr "Frekvens:"
 
 #. [slider]: id=idle_anim_frequency
-#: data/gui/themes/default/window/preferences/03_display.cfg:391
+#: data/gui/themes/default/window/preferences/03_display.cfg:377
 msgid "Set the frequency of unit idle animations"
 msgstr "Ange frekvensen för truppernas stillastående animeringar"
 
@@ -6823,7 +6815,7 @@ msgstr "Välj tema"
 #. [button]: id=help
 #: data/gui/themes/default/window/title_screen.cfg:178
 #: data/gui/themes/modern/dialogs/title_screen.cfg:180
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:290
 msgid "Help"
 msgstr "Hjälp"
 
@@ -7072,7 +7064,7 @@ msgstr "Rekrytera"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/window/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:208 src/gui/dialogs/preferences_dialog.cpp:268
+#: src/gui/dialogs/message.cpp:208 src/gui/dialogs/preferences_dialog.cpp:269
 #: src/gui/dialogs/transient_message.cpp:78
 msgid "Error"
 msgstr "Fel"
@@ -7149,11 +7141,11 @@ msgstr "<okänt>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1766
+#: src/filesystem.cpp:1767
 msgid "language code for localized resources^en_US"
 msgstr "sv,da,no"
 
-#: src/font/text.cpp:1055
+#: src/font/text.cpp:987
 msgid "The text contains invalid Pango markup: "
 msgstr "Texten innehåller ogiltiga Pango-taggar: "
 
@@ -8206,7 +8198,7 @@ msgid ""
 msgstr ""
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:138
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:497
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:493
 msgid "Random"
 msgstr "Slumpad"
 
@@ -8418,7 +8410,7 @@ msgid "empty"
 msgstr "tom"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:257
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:110
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:108
 msgid "this game"
 msgstr "detta spel"
 
@@ -8432,7 +8424,7 @@ msgstr "Lobby"
 msgid "Game"
 msgstr "Spel"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:514
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:510
 msgid "Waiting for players to choose factions..."
 msgstr "Väntar på att spelare ska välja fraktion..."
 
@@ -8440,33 +8432,33 @@ msgstr "Väntar på att spelare ska välja fraktion..."
 msgid "The End"
 msgstr "Slut"
 
-#: src/gui/dialogs/preferences_dialog.cpp:194
+#: src/gui/dialogs/preferences_dialog.cpp:195
 msgid "friend"
 msgstr "vän"
 
-#: src/gui/dialogs/preferences_dialog.cpp:199
+#: src/gui/dialogs/preferences_dialog.cpp:200
 msgid "ignored"
 msgstr "Ignorerad"
 
-#: src/gui/dialogs/preferences_dialog.cpp:253
-#: src/gui/dialogs/preferences_dialog.cpp:310
+#: src/gui/dialogs/preferences_dialog.cpp:254
+#: src/gui/dialogs/preferences_dialog.cpp:311
 msgid "No username specified"
 msgstr "Inget spelarnamn angivet"
 
-#: src/gui/dialogs/preferences_dialog.cpp:268
+#: src/gui/dialogs/preferences_dialog.cpp:269
 msgid "Invalid username"
 msgstr "Ogiltigt användarnamn"
 
-#: src/gui/dialogs/preferences_dialog.cpp:315
+#: src/gui/dialogs/preferences_dialog.cpp:316
 msgid "Not on friends or ignore lists"
 msgstr "FInns inte på vän- eller blockeringslista"
 
-#: src/gui/dialogs/preferences_dialog.cpp:940
-#: src/gui/dialogs/preferences_dialog.cpp:1004
+#: src/gui/dialogs/preferences_dialog.cpp:941
+#: src/gui/dialogs/preferences_dialog.cpp:1005
 msgid "No hotkey selected"
 msgstr "Ingen snabbtangent vald"
 
-#: src/gui/dialogs/preferences_dialog.cpp:968
+#: src/gui/dialogs/preferences_dialog.cpp:969
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8474,15 +8466,15 @@ msgstr ""
 "“<b>$hotkey_sequence|</b>” används av “<b>$old_hotkey_action|</b>”.\n"
 "Vill du ändra till “<b>$new_hotkey_action|</b>”?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:974
+#: src/gui/dialogs/preferences_dialog.cpp:975
 msgid "Reassign Hotkey"
 msgstr "Omfördela snabbtangent"
 
-#: src/gui/dialogs/preferences_dialog.cpp:991
+#: src/gui/dialogs/preferences_dialog.cpp:992
 msgid "All hotkeys have been reset to their default values."
 msgstr "Alla snabbtangenter har återställts till sina förvalda värden."
 
-#: src/gui/dialogs/preferences_dialog.cpp:991
+#: src/gui/dialogs/preferences_dialog.cpp:992
 msgid "Hotkeys Reset"
 msgstr "Återställ snabbtangenter"
 
@@ -8559,15 +8551,15 @@ msgstr "som tagit emot"
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
-#: src/gui/dialogs/title_screen.cpp:111 src/hotkey/hotkey_command.cpp:98
+#: src/gui/dialogs/title_screen.cpp:113 src/hotkey/hotkey_command.cpp:98
 msgid "Screenshot"
 msgstr "Skärmdump"
 
-#: src/gui/dialogs/title_screen.cpp:404
+#: src/gui/dialogs/title_screen.cpp:407
 msgid "Version $version"
 msgstr "Version $version"
 
-#: src/gui/dialogs/title_screen.cpp:502 src/hotkey/hotkey_command.cpp:306
+#: src/gui/dialogs/title_screen.cpp:505 src/hotkey/hotkey_command.cpp:309
 #, fuzzy
 #| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
@@ -8620,7 +8612,7 @@ msgstr "Denna trupp är nära befordran."
 msgid "Dismiss Unit"
 msgstr "Avskeda trupp"
 
-#: src/gui/gui.cpp:85
+#: src/gui/gui.cpp:72
 msgid "No default gui defined."
 msgstr "Inget standard-användargränssnitt definierat."
 
@@ -8664,7 +8656,7 @@ msgstr ""
 "Privat samtal med <i>“$name”</i>påbörjat. Om du inte vill ta emot "
 "meddelanden från den här användaren, skriv <i>/ignore $name</i>"
 
-#: src/gui/widgets/helper.cpp:127
+#: src/gui/widgets/helper.cpp:122
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Obligatoriska gränssnittskomponenten '$id' har inte definierats."
 
@@ -9357,324 +9349,336 @@ msgid "Loyal"
 msgstr "Lojal"
 
 #: src/hotkey/hotkey_command.cpp:218
+#, fuzzy
+#| msgid "Map Information"
+msgid "Show Tool Information"
+msgstr "Kartinformation"
+
+#: src/hotkey/hotkey_command.cpp:220
 msgid "Toggle Minimap Unit Coding"
 msgstr "Växla truppkodning på minikartan"
 
-#: src/hotkey/hotkey_command.cpp:219
+#: src/hotkey/hotkey_command.cpp:221
 msgid "Toggle Minimap Terrain Coding"
 msgstr "Växla terrängkodning på minikartan"
 
-#: src/hotkey/hotkey_command.cpp:221
+#: src/hotkey/hotkey_command.cpp:223
 msgid "Toggle Minimap Unit Drawing"
 msgstr "Växla visning av trupper på minikartan"
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:224
 msgid "Toggle Minimap Village Drawing"
 msgstr "Växla visning av byar på minikartan"
 
-#: src/hotkey/hotkey_command.cpp:223
+#: src/hotkey/hotkey_command.cpp:225
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "Uppdatera terrängövergångar"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Next Brush"
 msgstr "Nästa pensel"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:228
 msgid "Default Brush"
 msgstr "Standardpensel"
 
-#: src/hotkey/hotkey_command.cpp:227
+#: src/hotkey/hotkey_command.cpp:229
 msgid "Single Tile"
 msgstr "Enstaka ruta"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Radius One"
 msgstr "Radius 1"
 
-#: src/hotkey/hotkey_command.cpp:229
+#: src/hotkey/hotkey_command.cpp:231
 msgid "Radius Two"
 msgstr "Radius 2"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Brush NW-SE"
 msgstr "Pensel NV-SÖ"
 
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:233
 msgid "Brush SW-NE"
 msgstr "Pensle SV-NÖ"
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Cut"
 msgstr "Klipp ut"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:236
 msgid "Copy"
 msgstr "Kopiera"
 
-#: src/hotkey/hotkey_command.cpp:235
+#: src/hotkey/hotkey_command.cpp:237
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
 "Vänster musknapp klistrar in från urklipp, höger tar fram en kontextmeny."
 
-#: src/hotkey/hotkey_command.cpp:235
+#: src/hotkey/hotkey_command.cpp:237
 msgid "Paste"
 msgstr "Klistra in"
 
-#: src/hotkey/hotkey_command.cpp:236
+#: src/hotkey/hotkey_command.cpp:238
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Exportera valda koordinater till urklipp"
 
-#: src/hotkey/hotkey_command.cpp:237
+#: src/hotkey/hotkey_command.cpp:239
 msgid "Select All"
 msgstr "Markera alla"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Select Inverse"
 msgstr "Invertera markering"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:241
 msgid "Select None"
 msgstr "Markera ingen"
 
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Rotate Clipboard Clockwise"
 msgstr "Rotera urklipp medurs"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:243
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Rotera urklipp moturs"
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Flip Clipboard Horizontally"
 msgstr "Vänd urklipp horisontellt"
 
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:245
 msgid "Flip Clipboard Vertically"
 msgstr "Vänd urklipp vertikalt"
 
-#: src/hotkey/hotkey_command.cpp:244
+#: src/hotkey/hotkey_command.cpp:246
 msgid "Rotate Selection"
 msgstr "Rotera markerat"
 
-#: src/hotkey/hotkey_command.cpp:245
+#: src/hotkey/hotkey_command.cpp:247
 msgid "Flip Selection"
 msgstr "Vänd markering"
 
-#: src/hotkey/hotkey_command.cpp:246
+#: src/hotkey/hotkey_command.cpp:248
 msgid "Fill Selection"
 msgstr "Fyll markerat"
 
-#: src/hotkey/hotkey_command.cpp:247
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Randomize Tiles in Selection"
 msgstr "Slumpa rutor i markering"
 
-#: src/hotkey/hotkey_command.cpp:250
+#: src/hotkey/hotkey_command.cpp:252
 msgid "Apply a Mask"
 msgstr "Applicera en markering"
 
-#: src/hotkey/hotkey_command.cpp:251
+#: src/hotkey/hotkey_command.cpp:253
 msgid "Create Mask"
 msgstr "Skapa maskering"
 
-#: src/hotkey/hotkey_command.cpp:252
+#: src/hotkey/hotkey_command.cpp:254
 msgid "Refresh Display"
 msgstr "Rita om skärm"
 
-#: src/hotkey/hotkey_command.cpp:254
+#: src/hotkey/hotkey_command.cpp:256
 msgid "Update Terrain Transitions"
 msgstr "Uppdatera terrängövergångar"
 
-#: src/hotkey/hotkey_command.cpp:257
+#: src/hotkey/hotkey_command.cpp:259
 msgid "Toggle Terrain Transition Update"
 msgstr "Aktivera/avaktivera terrängövergångar"
 
-#: src/hotkey/hotkey_command.cpp:259
+#: src/hotkey/hotkey_command.cpp:261
 msgid "Auto-update Terrain Transitions"
 msgstr "Uppdatera terrängövergångar automatiskt"
 
-#: src/hotkey/hotkey_command.cpp:260
+#: src/hotkey/hotkey_command.cpp:262
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Uppdatera terrängövergångar automatiskt"
 
-#: src/hotkey/hotkey_command.cpp:261
+#: src/hotkey/hotkey_command.cpp:263
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Uppdatera terrängövergångar automatiskt"
 
-#: src/hotkey/hotkey_command.cpp:263
+#: src/hotkey/hotkey_command.cpp:265
 msgid "Refresh Image Cache"
 msgstr "Uppdatera bildcache"
 
-#: src/hotkey/hotkey_command.cpp:264
+#: src/hotkey/hotkey_command.cpp:266
 msgid "Draw Hex Coordinates"
 msgstr "Rita hex-koordinater"
 
-#: src/hotkey/hotkey_command.cpp:265
+#: src/hotkey/hotkey_command.cpp:267
 msgid "Draw Terrain Codes"
 msgstr "Rita terrängkoder"
 
-#: src/hotkey/hotkey_command.cpp:266
+#: src/hotkey/hotkey_command.cpp:268
 msgid "Draw Number of Bitmaps"
 msgstr "Rita antal bitmappar"
 
-#: src/hotkey/hotkey_command.cpp:268
+#: src/hotkey/hotkey_command.cpp:270
 msgid "Save Selection to Area"
 msgstr "Rotera markerat"
 
-#: src/hotkey/hotkey_command.cpp:269
+#: src/hotkey/hotkey_command.cpp:271
 msgid "Rename Selected Area"
 msgstr "Valt spel"
 
-#: src/hotkey/hotkey_command.cpp:270
+#: src/hotkey/hotkey_command.cpp:272
 msgid "Remove Selected Area"
 msgstr "Valt spel"
 
-#: src/hotkey/hotkey_command.cpp:271
+#: src/hotkey/hotkey_command.cpp:273
 msgid "Add New Area"
 msgstr "Nästa sida"
 
-#: src/hotkey/hotkey_command.cpp:273
+#: src/hotkey/hotkey_command.cpp:275
 msgid "Add-on Publishing Editor"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:274
+#: src/hotkey/hotkey_command.cpp:276
 #, fuzzy
 #| msgid "Manage Add-ons"
 msgid "Change Add-on ID"
 msgstr "Hantera extramaterial"
 
-#: src/hotkey/hotkey_command.cpp:275
+#: src/hotkey/hotkey_command.cpp:277
 #, fuzzy
 #| msgid "Delete add-on from server"
 msgid "Select active Add-on"
 msgstr "Ta bort extramaterial från servern"
 
-#: src/hotkey/hotkey_command.cpp:276
+#: src/hotkey/hotkey_command.cpp:278
 #, fuzzy
 #| msgid "Open saves folder"
 msgid "Open Add-on folder"
 msgstr "Öppna mappen för sparade spel"
 
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:281
 msgid "Edit Side"
 msgstr "Byt karta"
 
-#: src/hotkey/hotkey_command.cpp:280
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Remove Side"
 msgstr "Ta bort sida"
 
-#: src/hotkey/hotkey_command.cpp:282
+#: src/hotkey/hotkey_command.cpp:284
 msgid "Delay Shroud Updates"
 msgstr "Fördröj slöjuppdateringarna"
 
-#: src/hotkey/hotkey_command.cpp:283
+#: src/hotkey/hotkey_command.cpp:285
 msgid "Update Shroud Now"
 msgstr "Uppdatera slöjan nu"
 
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:286
 #, fuzzy
 #| msgid "Continue Move"
 msgid "Continue Interrupted Move"
 msgstr "Fortsätt draget"
 
-#: src/hotkey/hotkey_command.cpp:285
+#: src/hotkey/hotkey_command.cpp:287
 msgid "Find Label or Unit"
 msgstr "Sök efter etikett eller trupp"
 
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:288
 msgid "Speak to Ally"
 msgstr "Tala med allierad"
 
-#: src/hotkey/hotkey_command.cpp:287
+#: src/hotkey/hotkey_command.cpp:289
 msgid "Speak to All"
 msgstr "Tala med alla"
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:291
 msgid "Help about save-loading"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:291
 msgid "Hint: save-loading is unnecessary"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:293
 #, fuzzy
 #| msgid "Enter User Command"
 msgid "Enter Command"
 msgstr "Ge användarkommando"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:294
 msgid "Custom Command"
 msgstr "Användarkommando"
 
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:295
 msgid "Run Formula"
 msgstr "Kör AI-formel"
 
-#: src/hotkey/hotkey_command.cpp:294
+#: src/hotkey/hotkey_command.cpp:296
 #, fuzzy
 #| msgid "Player Chat"
 msgid "Clear Chat"
 msgstr "Spelarchatt"
 
-#: src/hotkey/hotkey_command.cpp:296
+#: src/hotkey/hotkey_command.cpp:298
 msgid "Change Language"
 msgstr "Byt språk"
 
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:299
+#, fuzzy
+#| msgid "Starting game"
+msgid "Start Game (MP)"
+msgstr "Startar spelet"
+
+#: src/hotkey/hotkey_command.cpp:300
 msgid "Refresh WML"
 msgstr "Uppdatera WML"
 
-#: src/hotkey/hotkey_command.cpp:298
+#: src/hotkey/hotkey_command.cpp:301
 msgid "Next Tip of the Day"
 msgstr "Nästa tips"
 
-#: src/hotkey/hotkey_command.cpp:299
+#: src/hotkey/hotkey_command.cpp:302
 msgid "Previous Tip of the Day"
 msgstr "Tidigare tips"
 
-#: src/hotkey/hotkey_command.cpp:300
+#: src/hotkey/hotkey_command.cpp:303
 msgid "Start Campaign"
 msgstr "Påbörja ny kampanj"
 
-#: src/hotkey/hotkey_command.cpp:301
+#: src/hotkey/hotkey_command.cpp:304
 msgid "Start Multiplayer Game"
 msgstr "Starta ett gruppspel"
 
-#: src/hotkey/hotkey_command.cpp:302
+#: src/hotkey/hotkey_command.cpp:305
 msgid "Manage Add-ons"
 msgstr "Hantera extramaterial"
 
-#: src/hotkey/hotkey_command.cpp:303
+#: src/hotkey/hotkey_command.cpp:306
 msgid "Manage Cores"
 msgstr "Hantera extramaterial"
 
-#: src/hotkey/hotkey_command.cpp:304
+#: src/hotkey/hotkey_command.cpp:307
 msgid "Start Editor"
 msgstr "Öppna kartredigeraren"
 
-#: src/hotkey/hotkey_command.cpp:305
+#: src/hotkey/hotkey_command.cpp:308
 msgid "Show Credits"
 msgstr "Visa listan över medverkande upphovsmän"
 
-#: src/hotkey/hotkey_command.cpp:308
+#: src/hotkey/hotkey_command.cpp:311
 msgid "Show Helptip"
 msgstr "Visa hjälptext"
 
-#: src/hotkey/hotkey_command.cpp:310
+#: src/hotkey/hotkey_command.cpp:313
 msgid "Show Lua Console"
 msgstr "Visa Lua-konsol"
 
-#: src/hotkey/hotkey_command.cpp:313
+#: src/hotkey/hotkey_command.cpp:316
 msgid "Unrecognized Command"
 msgstr "Okänt kommando"
 
-#: src/preferences/preferences.cpp:1682
+#: src/preferences/preferences.cpp:1261
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Inga kända teman. Försök att ändra i ett existerande spel."
 
-#: src/preferences/preferences.cpp:1719
+#: src/preferences/preferences.cpp:1298
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9684,15 +9688,15 @@ msgstr ""
 "gruppspelsfunktionalitet, och krävs om du vill vara värd för lokala "
 "nätverksspel. Normalt finns applikationen i samma mapp som spelapplikationen."
 
-#: src/preferences/preferences.cpp:1723
+#: src/preferences/preferences.cpp:1302
 msgid "Find Server Application"
 msgstr "Lokalisera serverapplikation"
 
-#: src/preferences/preferences.cpp:2428
+#: src/preferences/preferences.cpp:1747
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:2430
+#: src/preferences/preferences.cpp:1749
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -9720,6 +9724,12 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "I avsnittet '[$section|]' är den obligatoriska nyckeln '$key|' inte satt."
+
+#~ msgid "<b>Faction:</b>"
+#~ msgstr "<b>Fraktion:</b>"
+
+#~ msgid "<b>Gender:</b>"
+#~ msgstr "<b>Kön/b>"
 
 #, fuzzy
 #~| msgid "page^Copy"
@@ -9950,11 +9960,6 @@ msgstr ""
 
 #~ msgid "No ignored"
 #~ msgstr "Inga blockerade"
-
-#, fuzzy
-#~| msgid "Map Information"
-#~ msgid "Information"
-#~ msgstr "Kartinformation"
 
 #~ msgid "Do you want to open this link?"
 #~ msgstr "Vill du verkligen radera det här spelet?"
@@ -10489,9 +10494,6 @@ msgstr ""
 
 #~ msgid "Custom"
 #~ msgstr "Anpassa"
-
-#~ msgid "Apply"
-#~ msgstr "Verkställ"
 
 #~ msgid "Sample rate (Hz):"
 #~ msgstr "Samplingsfrekvens (Hz):"

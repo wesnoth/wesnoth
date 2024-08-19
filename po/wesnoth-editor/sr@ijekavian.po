@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-07-21 22:32-0500\n"
+"POT-Creation-Date: 2024-08-18 23:10-0500\n"
 "PO-Revision-Date: 2011-11-30 16:10+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -243,17 +243,17 @@ msgid "units"
 msgstr ""
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:463
+#: data/themes/editor.cfg:479
 msgid "Time Schedule Menu"
 msgstr ""
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:474
+#: data/themes/editor.cfg:490
 msgid "Playlist"
 msgstr ""
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:480
+#: data/themes/editor.cfg:496
 msgid "Assign Time Schedule"
 msgstr ""
 
@@ -277,15 +277,15 @@ msgstr ""
 msgid "Cost: "
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:185
+#: src/editor/controller/editor_controller.cpp:186
 msgid "Fatal error"
 msgstr "Кобна грешка"
 
-#: src/editor/controller/editor_controller.cpp:215
+#: src/editor/controller/editor_controller.cpp:216
 msgid "Do you really want to quit?"
 msgstr "Желите ли заиста да напустите?"
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:218
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -297,7 +297,7 @@ msgstr ""
 "Желите ли заиста да напустите? Измјене на мапи од посљедњег уписа биће "
 "изгубљене."
 
-#: src/editor/controller/editor_controller.cpp:219
+#: src/editor/controller/editor_controller.cpp:220
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -305,142 +305,142 @@ msgstr ""
 "Желите ли заиста да напустите? Сљедеће мапе су измијењене и све измјене од "
 "посљедњег уписа биће изгубљене:"
 
-#: src/editor/controller/editor_controller.cpp:236
+#: src/editor/controller/editor_controller.cpp:237
 msgid "No editor time-of-day found."
 msgstr "Нема доба дана у уређивачу."
 
-#: src/editor/controller/editor_controller.cpp:876
+#: src/editor/controller/editor_controller.cpp:879
 msgid "Add-on Files"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:889
+#: src/editor/controller/editor_controller.cpp:892
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1307
+#: src/editor/controller/editor_controller.cpp:1314
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1308
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "ID:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1324
+#: src/editor/controller/editor_controller.cpp:1331
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1325
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Name:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:216
+#: src/editor/map/context_manager.cpp:220
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:314 src/editor/map/map_context.cpp:1127
+#: src/editor/map/context_manager.cpp:318 src/editor/map/map_context.cpp:1127
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(нова мапа)"
 
-#: src/editor/map/context_manager.cpp:327 src/editor/map/map_context.cpp:1127
+#: src/editor/map/context_manager.cpp:331 src/editor/map/map_context.cpp:1127
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Scenario"
 msgstr "(нова мапа)"
 
-#: src/editor/map/context_manager.cpp:383
+#: src/editor/map/context_manager.cpp:387
 msgid "No Recent Files"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:421
+#: src/editor/map/context_manager.cpp:425
 #, fuzzy
 #| msgid "(New Map)"
 msgid "Unnamed Area"
 msgstr "(нова мапа)"
 
-#: src/editor/map/context_manager.cpp:452
+#: src/editor/map/context_manager.cpp:456
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Side"
 msgstr "(нова мапа)"
 
-#: src/editor/map/context_manager.cpp:508
+#: src/editor/map/context_manager.cpp:512
 msgid "Apply Mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:517
+#: src/editor/map/context_manager.cpp:521
 msgid "Error loading mask"
 msgstr "Грешка при учитавању маске"
 
-#: src/editor/map/context_manager.cpp:537
+#: src/editor/map/context_manager.cpp:541
 msgid "Identifier:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:537
+#: src/editor/map/context_manager.cpp:541
 msgid "Rename Area"
 msgstr ""
 
 # наслов
-#: src/editor/map/context_manager.cpp:551
+#: src/editor/map/context_manager.cpp:555
 msgid "Choose Target Map"
 msgstr "Избор циљне мапе"
 
-#: src/editor/map/context_manager.cpp:560
-#: src/editor/map/context_manager.cpp:982
+#: src/editor/map/context_manager.cpp:564
+#: src/editor/map/context_manager.cpp:990
 msgid "Error loading map"
 msgstr "Грешка при учитавању мапе"
 
-#: src/editor/map/context_manager.cpp:688
+#: src/editor/map/context_manager.cpp:696
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Сачувај мапу као"
 
-#: src/editor/map/context_manager.cpp:705
-#: src/editor/map/context_manager.cpp:754 src/editor/map/map_context.cpp:269
+#: src/editor/map/context_manager.cpp:713
+#: src/editor/map/context_manager.cpp:762 src/editor/map/map_context.cpp:269
 #: src/editor/palette/location_palette.cpp:264
 msgid "Error"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:706
-#: src/editor/map/context_manager.cpp:755
+#: src/editor/map/context_manager.cpp:714
+#: src/editor/map/context_manager.cpp:763
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
 msgstr "Желите ли заиста да напустите?"
 
-#: src/editor/map/context_manager.cpp:714
-#: src/editor/map/context_manager.cpp:923
+#: src/editor/map/context_manager.cpp:722
+#: src/editor/map/context_manager.cpp:931
 msgid "This map is already open."
 msgstr "Ова мапа је већ отворена."
 
-#: src/editor/map/context_manager.cpp:737
+#: src/editor/map/context_manager.cpp:745
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Scenario As"
 msgstr "Сачувај мапу као"
 
-#: src/editor/map/context_manager.cpp:763
+#: src/editor/map/context_manager.cpp:771
 #, fuzzy
 #| msgid "This map is already open."
 msgid "This scenario is already open."
 msgstr "Ова мапа је већ отворена."
 
-#: src/editor/map/context_manager.cpp:797
+#: src/editor/map/context_manager.cpp:805
 msgid "No random map generators found."
 msgstr "Нема ниједног генератора насумичних мапа."
 
-#: src/editor/map/context_manager.cpp:810
-#: src/editor/map/context_manager.cpp:815
+#: src/editor/map/context_manager.cpp:818
+#: src/editor/map/context_manager.cpp:823
 msgid "Map creation failed."
 msgstr "Стварање мапе није успјело."
 
-#: src/editor/map/context_manager.cpp:830
+#: src/editor/map/context_manager.cpp:838
 msgid "Unsaved Changes"
 msgstr "Несачуване измене"
 
-#: src/editor/map/context_manager.cpp:831
+#: src/editor/map/context_manager.cpp:839
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -448,27 +448,27 @@ msgstr "Несачуване измене"
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "Желите ли да одбаците све измјене над мапом од посљедњег уписа?"
 
-#: src/editor/map/context_manager.cpp:884
+#: src/editor/map/context_manager.cpp:892
 #, fuzzy
 #| msgid "Map saved."
 msgid "Scenario saved."
 msgstr "Мапа је сачувана."
 
-#: src/editor/map/context_manager.cpp:899
+#: src/editor/map/context_manager.cpp:907
 msgid "Map saved."
 msgstr "Мапа је сачувана."
 
-#: src/editor/map/context_manager.cpp:974
+#: src/editor/map/context_manager.cpp:982
 msgid "Loaded embedded map data"
 msgstr "Учитани угнијежђени подаци мапе."
 
 # >> @title:window
-#: src/editor/map/context_manager.cpp:975
-#: src/editor/map/context_manager.cpp:978
+#: src/editor/map/context_manager.cpp:983
+#: src/editor/map/context_manager.cpp:986
 msgid "Map loaded from scenario"
 msgstr "Мапа учитана из сценарија"
 
-#: src/editor/map/context_manager.cpp:978
+#: src/editor/map/context_manager.cpp:986
 #, fuzzy
 #| msgid ""
 #| "Loaded referenced map file:\n"

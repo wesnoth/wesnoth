@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-07-21 22:32-0500\n"
+"POT-Creation-Date: 2024-08-18 23:10-0500\n"
 "PO-Revision-Date: 2024-03-12 17:01+0100\n"
 "Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -236,17 +236,17 @@ msgid "units"
 msgstr "eenheden"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:463
+#: data/themes/editor.cfg:479
 msgid "Time Schedule Menu"
 msgstr "Tijd Schema Menu"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:474
+#: data/themes/editor.cfg:490
 msgid "Playlist"
 msgstr "Afspeellijst"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:480
+#: data/themes/editor.cfg:496
 msgid "Assign Time Schedule"
 msgstr "Wijs Tijd Schema Toe"
 
@@ -270,15 +270,15 @@ msgstr "Rang: "
 msgid "Cost: "
 msgstr "Kosten: "
 
-#: src/editor/controller/editor_controller.cpp:185
+#: src/editor/controller/editor_controller.cpp:186
 msgid "Fatal error"
 msgstr "Fatale fout"
 
-#: src/editor/controller/editor_controller.cpp:215
+#: src/editor/controller/editor_controller.cpp:216
 msgid "Do you really want to quit?"
 msgstr "Wil je echt afsluiten?"
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:218
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -286,7 +286,7 @@ msgstr ""
 "Wil je echt afsluiten? Wijzigingen van de kaart sinds de laatste keer "
 "opslaan gaan verloren."
 
-#: src/editor/controller/editor_controller.cpp:219
+#: src/editor/controller/editor_controller.cpp:220
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -294,152 +294,152 @@ msgstr ""
 "Wilt u echt afsluiten? De volgende kaarten zijn gewijzigd en alle "
 "wijzigingen sinds de laatste save gaan verloren:"
 
-#: src/editor/controller/editor_controller.cpp:236
+#: src/editor/controller/editor_controller.cpp:237
 msgid "No editor time-of-day found."
 msgstr "Geen editor tijd-van-dag gevonden."
 
-#: src/editor/controller/editor_controller.cpp:876
+#: src/editor/controller/editor_controller.cpp:879
 #, fuzzy
 #| msgid "Add-on"
 msgid "Add-on Files"
 msgstr "Add-on"
 
-#: src/editor/controller/editor_controller.cpp:889
+#: src/editor/controller/editor_controller.cpp:892
 #, fuzzy
 #| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr "Klembordondersteuning niet gevonden, neem contact op met packager"
 
-#: src/editor/controller/editor_controller.cpp:1307
+#: src/editor/controller/editor_controller.cpp:1314
 msgid "Change Unit ID"
 msgstr "Verander Eenheid ID"
 
-#: src/editor/controller/editor_controller.cpp:1308
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1324
+#: src/editor/controller/editor_controller.cpp:1331
 msgid "Rename Unit"
 msgstr "Hernoem Eenheid"
 
-#: src/editor/controller/editor_controller.cpp:1325
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Name:"
 msgstr "Naam:"
 
-#: src/editor/map/context_manager.cpp:216
+#: src/editor/map/context_manager.cpp:220
 msgid "Load Map"
 msgstr "Laad Kaart"
 
-#: src/editor/map/context_manager.cpp:314 src/editor/map/map_context.cpp:1127
+#: src/editor/map/context_manager.cpp:318 src/editor/map/map_context.cpp:1127
 msgid "New Map"
 msgstr "Nieuwe Kaart"
 
-#: src/editor/map/context_manager.cpp:327 src/editor/map/map_context.cpp:1127
+#: src/editor/map/context_manager.cpp:331 src/editor/map/map_context.cpp:1127
 msgid "New Scenario"
 msgstr "Nieuw Scenario"
 
-#: src/editor/map/context_manager.cpp:383
+#: src/editor/map/context_manager.cpp:387
 msgid "No Recent Files"
 msgstr "Geen Recente Bestanden"
 
-#: src/editor/map/context_manager.cpp:421
+#: src/editor/map/context_manager.cpp:425
 msgid "Unnamed Area"
 msgstr "Naamloos Gebied"
 
-#: src/editor/map/context_manager.cpp:452
+#: src/editor/map/context_manager.cpp:456
 msgid "New Side"
 msgstr "Nieuwe Kant"
 
-#: src/editor/map/context_manager.cpp:508
+#: src/editor/map/context_manager.cpp:512
 msgid "Apply Mask"
 msgstr "Pas Masker Toe"
 
-#: src/editor/map/context_manager.cpp:517
+#: src/editor/map/context_manager.cpp:521
 msgid "Error loading mask"
 msgstr "Fout bij het laden van het masker"
 
-#: src/editor/map/context_manager.cpp:537
+#: src/editor/map/context_manager.cpp:541
 msgid "Identifier:"
 msgstr "Identificatie:"
 
-#: src/editor/map/context_manager.cpp:537
+#: src/editor/map/context_manager.cpp:541
 msgid "Rename Area"
 msgstr "Hernoem Gebied"
 
-#: src/editor/map/context_manager.cpp:551
+#: src/editor/map/context_manager.cpp:555
 msgid "Choose Target Map"
 msgstr "Kies doelkaart"
 
-#: src/editor/map/context_manager.cpp:560
-#: src/editor/map/context_manager.cpp:982
+#: src/editor/map/context_manager.cpp:564
+#: src/editor/map/context_manager.cpp:990
 msgid "Error loading map"
 msgstr "Fout bij het laden van de kaart"
 
-#: src/editor/map/context_manager.cpp:688
+#: src/editor/map/context_manager.cpp:696
 msgid "Save Map As"
 msgstr "Sla Kaart Op Als"
 
-#: src/editor/map/context_manager.cpp:705
-#: src/editor/map/context_manager.cpp:754 src/editor/map/map_context.cpp:269
+#: src/editor/map/context_manager.cpp:713
+#: src/editor/map/context_manager.cpp:762 src/editor/map/map_context.cpp:269
 #: src/editor/palette/location_palette.cpp:264
 msgid "Error"
 msgstr "Fout"
 
-#: src/editor/map/context_manager.cpp:706
-#: src/editor/map/context_manager.cpp:755
+#: src/editor/map/context_manager.cpp:714
+#: src/editor/map/context_manager.cpp:763
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
 msgstr "Wil je echt afsluiten?"
 
-#: src/editor/map/context_manager.cpp:714
-#: src/editor/map/context_manager.cpp:923
+#: src/editor/map/context_manager.cpp:722
+#: src/editor/map/context_manager.cpp:931
 msgid "This map is already open."
 msgstr "Deze kaart is al geopend."
 
-#: src/editor/map/context_manager.cpp:737
+#: src/editor/map/context_manager.cpp:745
 msgid "Save Scenario As"
 msgstr "Sla Scenario Op Als"
 
-#: src/editor/map/context_manager.cpp:763
+#: src/editor/map/context_manager.cpp:771
 msgid "This scenario is already open."
 msgstr "Dit scenario is al geopend."
 
-#: src/editor/map/context_manager.cpp:797
+#: src/editor/map/context_manager.cpp:805
 msgid "No random map generators found."
 msgstr "Geen generator van willekeurige kaarten gevonden."
 
-#: src/editor/map/context_manager.cpp:810
-#: src/editor/map/context_manager.cpp:815
+#: src/editor/map/context_manager.cpp:818
+#: src/editor/map/context_manager.cpp:823
 msgid "Map creation failed."
 msgstr "Kaart aanmaken mislukt."
 
-#: src/editor/map/context_manager.cpp:830
+#: src/editor/map/context_manager.cpp:838
 msgid "Unsaved Changes"
 msgstr "Onopgeslagen wijzigingen"
 
-#: src/editor/map/context_manager.cpp:831
+#: src/editor/map/context_manager.cpp:839
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "Wilt u alle wijzigingen sinds de laatste keer opslaan ongedaan maken?"
 
-#: src/editor/map/context_manager.cpp:884
+#: src/editor/map/context_manager.cpp:892
 msgid "Scenario saved."
 msgstr "Scenario opgeslagen."
 
-#: src/editor/map/context_manager.cpp:899
+#: src/editor/map/context_manager.cpp:907
 msgid "Map saved."
 msgstr "Kaart opgeslagen."
 
-#: src/editor/map/context_manager.cpp:974
+#: src/editor/map/context_manager.cpp:982
 msgid "Loaded embedded map data"
 msgstr "Ingebedde kaartgegevens geladen"
 
-#: src/editor/map/context_manager.cpp:975
-#: src/editor/map/context_manager.cpp:978
+#: src/editor/map/context_manager.cpp:983
+#: src/editor/map/context_manager.cpp:986
 msgid "Map loaded from scenario"
 msgstr "Kaart geladen uit scenario"
 
-#: src/editor/map/context_manager.cpp:978
+#: src/editor/map/context_manager.cpp:986
 msgid "Loaded referenced map file:"
 msgstr "Geladen gerefereerde kaartbestand:"
 
