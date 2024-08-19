@@ -21,7 +21,6 @@
 
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
-#include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/message.hpp"
@@ -90,11 +89,11 @@ void editor_edit_unit::pre_show(window& win) {
 	tabs.select_tab(0);
 
 	menu_button& alignments = find_widget<menu_button>(&win, "alignment_list", false);
-	// TODO:change alignments to existing translatable strings
-	align_list_.emplace_back("label", _("lawful"));
-	align_list_.emplace_back("label", _("chaotic"));
-	align_list_.emplace_back("label", _("neutral"));
-	align_list_.emplace_back("label", _("liminal"));
+	for (auto& align : unit_alignments::values) {
+		// Show the user the translated strings,
+		// but use the untranslated align strings for generated WML
+		align_list_.emplace_back("label", t_string(static_cast<std::string>(align), "wesnoth"));
+	}
 	alignments.set_values(align_list_);
 
 	menu_button& races = find_widget<menu_button>(&win, "race_list", false);
@@ -109,11 +108,11 @@ void editor_edit_unit::pre_show(window& win) {
 
 	button& load = find_widget<button>(&win, "load_unit_type", false);
 	std::stringstream tooltip;
-	tooltip << vgettext_impl("wesnoth", "Hotkey(s): ",  {{}});
+	tooltip << t_string("Hotkey(s): ", "wesnoth");
 	#ifdef __APPLE__
-			tooltip << "cmd+o";
+		tooltip << "cmd+o";
 	#else
-			tooltip << "ctrl+o";
+		tooltip << "ctrl+o";
 	#endif
 	load.set_tooltip(tooltip.str());
 	connect_signal_mouse_left_click(load, std::bind(&editor_edit_unit::load_unit_type, this));
@@ -505,7 +504,7 @@ void editor_edit_unit::save_unit_type() {
 	utype["movement"] = find_widget<slider>(grid, "move_slider", false).get_value();
 	utype["description"] = t_string(find_widget<scroll_text>(grid, "desc_box", false).get_value(), current_textdomain);
 	utype["race"] = find_widget<menu_button>(grid, "race_list", false).get_value_string();
-	utype["alignment"] = find_widget<menu_button>(grid, "alignment_list", false).get_value_string();
+	utype["alignment"] = unit_alignments::values[find_widget<menu_button>(grid, "alignment_list", false).get_value()];
 
 	// Gender
 	if (find_widget<toggle_button>(grid, "gender_male", false).get_value()) {
