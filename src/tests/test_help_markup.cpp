@@ -445,6 +445,22 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], R"==("Yes!")==");
 
+	// Using an unknown character entity in a tag
+	output = help::parse_text("<tt>what &ndash; no</tt>");
+	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
+	BOOST_CHECK(output.has_child("tt"));
+	// Simplify the remaining tests for this one by eliminating the outer layer
+	output = output.mandatory_child("tt");
+	BOOST_CHECK(output.has_child("character_entity"));
+	BOOST_CHECK_EQUAL(output.child_count("text"), 2);
+	BOOST_CHECK_EQUAL(output.find_total_first_of("character_entity"), 1);
+	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "what ");
+	BOOST_CHECK(output.mandatory_child("text", 1).has_attribute("text"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("text", 1)["text"], " no");
+	BOOST_CHECK(output.mandatory_child("character_entity").has_attribute("name"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("character_entity")["name"], "ndash");
+
 	// Tags can be nested
 	output = help::parse_text("We like to <tt>nest <abc>various</abc> <def>tags</def> within</tt> each other!");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 3);
