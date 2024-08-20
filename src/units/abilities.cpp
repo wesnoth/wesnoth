@@ -349,8 +349,92 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 	return res;
 }
 
+namespace {
+	/**
+	 * Print "Recursion limit reached" log messages, including deduplication if the same problem has
+	 * already been logged.
+	 */
+	void show_recursion_warning(const unit& unit, const config& filter) {
+		// This function is only called when an ability is checked for the second time
+		// filter has already been parsed multiple times, so I'm not trying to optimize the performance
+		// of this; it's merely to prevent the logs getting spammed. For example, each of
+		// four_cycle_recursion_branching and event_test_filter_attack_student_weapon_condition only log
+		// 3 unique messages, but without deduplication they'd log 1280 and 392 respectively.
+		static std::vector<std::tuple<std::string, std::string>> already_shown;
+
+		auto identifier = std::tuple<std::string, std::string>{unit.id(), filter.debug()};
+		if(utils::contains(already_shown, identifier)) {
+			return;
+		}
+
+		std::string_view filter_text_view = std::get<1>(identifier);
+		utils::trim(filter_text_view);
+		ERR_NG << "Looped recursion error for unit '" << unit.id()
+		<< "' while checking ability '" << filter_text_view << "'";
+
+		// Arbitrary limit, just ensuring that having a huge number of specials causing recursion
+		// warnings can't lead to unbounded memory consumption here.
+		if(already_shown.size() > 100) {
+			already_shown.clear();
+		}
+		already_shown.push_back(std::move(identifier));
+	}
+}//anonymous namespace
+
+unit::recursion_guard unit::update_variables_recursion(const config& ability) const
+{
+	if(utils::contains(open_queries_, ability)) {
+		return recursion_guard();
+	}
+	return recursion_guard(*this, ability);
+}
+
+unit::recursion_guard::recursion_guard() = default;
+
+unit::recursion_guard::recursion_guard(const unit & u, const config& ability)
+	: parent(u.shared_from_this())
+{
+	parent->open_queries_.emplace_back(ability);
+}
+
+unit::recursion_guard::recursion_guard(unit::recursion_guard&& other)
+{
+	std::swap(parent, other.parent);
+}
+
+unit::recursion_guard::operator bool() const {
+	return bool(parent);
+}
+
+unit::recursion_guard& unit::recursion_guard::operator=(unit::recursion_guard&& other)
+{
+	// This is only intended to move ownership to a longer-living variable. Assigning to an instance that
+	// already has a parent implies that the caller is going to recurse and needs a recursion allocation,
+	// but is accidentally dropping one of the allocations that it already has; hence the asserts.
+	assert(this != &other);
+	assert(!parent);
+	std::swap(parent, other.parent);
+	return *this;
+}
+
+unit::recursion_guard::~recursion_guard()
+{
+	if(parent) {
+		// As this only expects nested recursion, simply pop the top of the open_queries_ stack
+		// without checking that the top of the stack matches the filter passed to the constructor.
+		assert(!parent->open_queries_.empty());
+		parent->open_queries_.pop_back();
+	}
+}
+
 bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
+	unit::recursion_guard filter_lock;
+	filter_lock = update_variables_recursion(cfg);
+	if(!filter_lock) {
+		show_recursion_warning(*this, cfg);
+		return false;
+	}
 	bool illuminates = ability == "illuminates";
 
 	if (auto afilter = cfg.optional_child("filter"))
@@ -423,6 +507,14 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,const map_location& loc,const unit& from) const
 {
+	unit::recursion_guard adj_lock;
+	if(cfg.has_child("affect_adjacent")){
+		adj_lock = update_variables_recursion(cfg);
+		if(!adj_lock) {
+			show_recursion_warning(*this, cfg);
+			return false;
+		}
+	}
 	bool illuminates = ability == "illuminates";
 
 	assert(dir >=0 && dir <= 5);
@@ -451,6 +543,14 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 bool unit::ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	auto filter = cfg.optional_child("filter_self");
+	unit::recursion_guard self_lock;
+	if(filter){
+		self_lock = update_variables_recursion(cfg);
+		if(!self_lock) {
+			show_recursion_warning(*this, cfg);
+			return false;
+		}
+	}
 	bool affect_self = cfg["affect_self"].to_bool(true);
 	if (!filter || !affect_self) return affect_self;
 	return unit_filter(vconfig(*filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);

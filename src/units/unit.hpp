@@ -1802,6 +1802,54 @@ public:
 	const std::set<std::string>& checking_tags() const { return checking_tags_; };
 
 	/**
+	 * Helper similar to std::unique_lock for detecting when calculations such as abilities
+	 * have entered infinite recursion.
+	 *
+	 * This assumes that there's only a single thread accessing the unit, it's a lightweight
+	 * increment/decrement counter rather than a mutex.
+	 */
+	class recursion_guard {
+		friend class unit;
+		/**
+		 * Only expected to be called in update_variables_recursion(), which handles some of the checks.
+		 */
+		explicit recursion_guard(const unit& u, const config& ability);
+	public:
+		/**
+		 * Construct an empty instance, only useful for extending the lifetime of a
+		 * recursion_guard returned from unit.update_variables_recursion() by
+		 * std::moving it to an instance declared in a larger scope.
+		 */
+		explicit recursion_guard();
+
+		/**
+		 * Returns true if a level of recursion was available at the time when update_variables_recursion()
+		 * created this object.
+		 */
+		operator bool() const;
+
+		recursion_guard(recursion_guard&& other);
+		recursion_guard(const recursion_guard& other) = delete;
+		recursion_guard& operator=(recursion_guard&&);
+		recursion_guard& operator=(const recursion_guard&) = delete;
+		~recursion_guard();
+	private:
+		std::shared_ptr<const unit> parent;
+	};
+
+	/**
+	 * Tests which might otherwise cause infinite recursion should call this, check that the
+	 * returned object evaluates to true, and then keep the object returned as long as the
+	 * recursion might occur, similar to a reentrant mutex that's limited to a small number of
+	 * reentrances.
+	 *
+	 * This only expects to be called in a single thread, but the whole of attack_type makes
+	 * that assumption, for example its' mutable members are assumed to be set up by the current
+	 * caller (or caller's caller, probably several layers up).
+	 */
+	recursion_guard update_variables_recursion(const config& ability) const;
+
+	/**
 	 * Gets the names and descriptions of this unit's abilities. Location-independent variant
 	 * with all abilities shown as active.
 	 *
@@ -2040,6 +2088,12 @@ private:
 
 	config modifications_;
 	config abilities_;
+	/**
+	 * While processing a recursive match, all the filters that are currently being checked, oldest first.
+	 * Each will have an instance of recursion_guard that is currently allocated permission to recurse, and
+	 * which will pop the config off this stack when the recursion_guard is finalized.
+	 */
+	mutable std::vector<config> open_queries_;
 
 	std::vector<config> advancements_;
 
