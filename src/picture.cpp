@@ -799,21 +799,22 @@ bool is_in_hex(const locator& i_locator)
 
 bool is_empty_hex(const locator& i_locator)
 {
-	if(!is_empty_hex_.in_cache(i_locator)) {
-		surface surf = get_surface(i_locator, HEXED).clone();
-		// emptiness of terrain image is checked during hex cut
-		// so, maybe in cache now, let's recheck
-		if(!is_empty_hex_.in_cache(i_locator)) {
-			// should never reach here
-			// but do it manually if it happens
-			// assert(false);
-			bool is_empty = false;
-			mask_surface(surf, get_hexmask(), &is_empty);
-			is_empty_hex_.add_to_cache(i_locator, is_empty);
-		}
+	if(const bool* cached_value = is_empty_hex_.locate_in_cache(i_locator)) {
+		return *cached_value;
 	}
 
-	return is_empty_hex_.access_in_cache(i_locator);
+	surface surf = get_surface(i_locator, HEXED).clone();
+
+	// Empty state should be cached during surface fetch. Let's check again
+	if(const bool* cached_value = is_empty_hex_.locate_in_cache(i_locator)) {
+		return *cached_value;
+	}
+
+	// Should never reach this point, but let's manually do it anyway.
+	bool is_empty = false;
+	mask_surface(surf, get_hexmask(), &is_empty);
+	is_empty_hex_.add_to_cache(i_locator, is_empty);
+	return is_empty;
 }
 
 bool exists(const image::locator& i_locator)
