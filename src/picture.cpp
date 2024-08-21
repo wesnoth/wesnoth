@@ -86,13 +86,14 @@ public:
 #endif
 	}
 
-	/**
-	 * Returns a const reference to cache item associated with the given key.
-	 * @throws std::out_of_range if no corresponding value is found
-	 */
-	const T& locate_in_cache(const locator& item) const
+	/** Returns a pointer to the cached value, or nullptr if not found. */
+	const T* locate_in_cache(const locator& item) const
 	{
-		return content_.at(item);
+		if(auto iter = content_.find(item); iter != content_.end()) {
+			return &iter->second;
+		} else {
+			return nullptr;
+		}
 	}
 
 	/**
@@ -673,9 +674,9 @@ surface get_surface(
 	surface_cache& imap = surfaces_[type];
 
 	// return the image if already cached
-	try {
-		return imap.locate_in_cache(i_locator);
-	} catch(const std::out_of_range&) {
+	if(const surface* cached_surf = imap.locate_in_cache(i_locator)) {
+		return *cached_surf;
+	} else {
 		DBG_IMG << "surface cache [" << type << "] miss: " << i_locator;
 	}
 
@@ -696,13 +697,18 @@ surface get_surface(
 	}
 
 	bool_cache& skip = skipped_cache_[type];
-	if(skip.in_cache(i_locator) && skip.locate_in_cache(i_locator))
-	{
-		DBG_IMG << "duplicate load: " << i_locator
-			<< " [" << type << "]"
-			<< " (" << duplicate_loads_ << "/" << total_loads_ << " total)";
-		++duplicate_loads_;
+
+	// In cache...
+	if(const bool* cached_value = skip.locate_in_cache(i_locator)) {
+		// ... and cached as true
+		if(*cached_value) {
+			DBG_IMG << "duplicate load: " << i_locator
+				<< " [" << type << "]"
+				<< " (" << duplicate_loads_ << "/" << total_loads_ << " total)";
+			++duplicate_loads_;
+		}
 	}
+
 	++total_loads_;
 
 	if(skip_cache) {
@@ -782,9 +788,9 @@ point get_size(const locator& i_locator, bool skip_cache)
 
 bool is_in_hex(const locator& i_locator)
 {
-	try {
-		return in_hex_info_.locate_in_cache(i_locator);
-	} catch(const std::out_of_range&) {
+	if(const bool* cached_value = in_hex_info_.locate_in_cache(i_locator)) {
+		return *cached_value;
+	} else {
 		bool res = in_mask_surface(get_surface(i_locator, UNSCALED), get_hexmask());
 		in_hex_info_.add_to_cache(i_locator, res);
 		return res;
@@ -807,7 +813,7 @@ bool is_empty_hex(const locator& i_locator)
 		}
 	}
 
-	return is_empty_hex_.locate_in_cache(i_locator);
+	return is_empty_hex_.access_in_cache(i_locator);
 }
 
 bool exists(const image::locator& i_locator)
@@ -948,9 +954,9 @@ texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE
 	//
 	// Now attempt to find a cached texture. If found, return it.
 	//
-	try {
-		return cache->locate_in_cache(i_locator);
-	} catch(const std::out_of_range&) {
+	if(const texture* cached_texture = cache->locate_in_cache(i_locator)) {
+		return *cached_texture;
+	} else {
 		DBG_IMG << "texture cache [" << type << "] miss: " << i_locator;
 	}
 
