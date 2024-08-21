@@ -131,7 +131,7 @@ void adjust_surface_alpha_add(surface& surf, int amount);
 void mask_surface(surface& surf, const surface& mask, bool* empty_result = nullptr, const std::string& filename = std::string());
 
 /** Check if a surface fit into a mask */
-bool in_mask_surface(surface surf, surface mask);
+bool in_mask_surface(const surface& surf, const surface& mask);
 
 /**
  * Light surf using lightmap
