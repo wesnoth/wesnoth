@@ -2145,7 +2145,7 @@ void menu_handler::custom_command()
 void menu_handler::ai_formula()
 {
 	if(!pc_.is_networked_mp()) {
-		textbox_info_.show(gui::TEXTBOX_AI, translation::sgettext("prompt^Command:"), "", false, *gui_);
+		textbox_info_.show(gui::TEXTBOX_AI, translation::sgettext("prompt^Formula:"), "", false, *gui_);
 	}
 }
 
