@@ -803,7 +803,7 @@ bool is_empty_hex(const locator& i_locator)
 		return *cached_value;
 	}
 
-	surface surf = get_surface(i_locator, HEXED).clone();
+	surface surf = get_surface(i_locator, HEXED);
 
 	// Empty state should be cached during surface fetch. Let's check again
 	if(const bool* cached_value = is_empty_hex_.locate_in_cache(i_locator)) {
@@ -811,6 +811,7 @@ bool is_empty_hex(const locator& i_locator)
 	}
 
 	// Should never reach this point, but let's manually do it anyway.
+	surf = surf.clone();
 	bool is_empty = false;
 	mask_surface(surf, get_hexmask(), &is_empty);
 	is_empty_hex_.add_to_cache(i_locator, is_empty);
