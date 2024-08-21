@@ -863,7 +863,7 @@ void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, cons
 		*empty_result = empty;
 }
 
-bool in_mask_surface(surface nsurf, surface nmask)
+bool in_mask_surface(const surface& nsurf, const surface& nmask)
 {
 	if(nsurf == nullptr) {
 		return false;
@@ -878,12 +878,12 @@ bool in_mask_surface(surface nsurf, surface nmask)
 	}
 
 	{
-		surface_lock lock(nsurf);
+		const_surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
 
 		const uint32_t* mbeg = mlock.pixels();
 		const uint32_t* mend = mbeg + nmask->w*nmask->h;
-		uint32_t* beg = lock.pixels();
+		const uint32_t* beg = lock.pixels();
 		// no need for 'end', because both surfaces have same size
 
 		while(mbeg != mend) {
