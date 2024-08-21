@@ -27,52 +27,81 @@ execute() {
         : # success
     else
         EXIT_VAL=$?
+        echo "********** !FAILURE! **********"
+        echo "********** !FAILURE! **********"
+        echo "********** !FAILURE! **********"
+        echo "********** !FAILURE! **********"
+        echo "********** !FAILURE! **********"
         error "$message failed! ($*)"
     fi
 }
 
 EXIT_VAL=-1
+# remove temp dockerfile so it doesn't get picked up by `git status`
+rm utils/dockerbuilds/CI/Dockerfile-CI-2004-master
 
 if [ "$NLS" == "only" ]; then
     export LANGUAGE=en_US.UTF-8
     export LANG=en_US.UTF-8
     export LC_ALL=en_US.UTF-8
 
-    ./utils/travis/check_utf8.sh || exit 1
-    ./utils/travis/utf8_bom_dog.sh || exit 1
+    ./utils/CI/check_utf8.sh || exit 1
+    ./utils/CI/utf8_bom_dog.sh || exit 1
     echo "Checked for invalid characters"
 
-    cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false -DENABLE_POT_UPDATE_TARGET=TRUE
+    cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false -DENABLE_POT_UPDATE_TARGET=TRUE .
     make update-po4a-man || exit 1
-    echo "Ran umake pdate-po4a-man"
+    echo "Ran cmake pdate-po4a-man"
     make update-po4a-manual || exit 1
     echo "Ran make update-po4a-manual"
     make pot-update || exit 1
     echo "Ran make pot-update"
     make mo-update || exit 1
     echo "Ran make mo-update"
+    make clean
+
+    scons translations build=release --debug=time nls=true jobs=2 || exit 1
+    echo "Ran scons translations"
+    scons pot-update || exit 1
+    echo "Ran scons pot-update"
+    scons update-po4a || exit 1
+    echo "Ran scons update-po4a"
+    scons manual || exit 1
     exit 0
-fi
-
-if [ "$TOOL" == "cmake" ]; then
-    export CCACHE_MAXSIZE=3000M
-    export CCACHE_COMPILERCHECK=content
-    export CCACHE_DIR="$CACHE_DIR"
-
-    cmake -DCMAKE_BUILD_TYPE="$CFG" -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS="$NLS" \
-          -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_STRICT_COMPILATION=false -DENABLE_LTO="$LTO" -DLTO_JOBS=2 -DENABLE_MYSQL=false \
-          -DCXX_STD="$CXX_STD" -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache && \
-          make VERBOSE=1 -j2
+elif [ "$IMAGE" == "flatpak" ]; then
+# docker's --volume means the directory is on a separate filesystem
+# flatpak-builder doesn't support this
+# therefore manually move stuff between where flatpak needs it and where CI caching can see it
+    rm -R .flatpak-builder/*
+    cp -R "$CACHE_DIR"/. .flatpak-builder/
+    jq '.modules[2].sources[0]={"type":"dir","path":"/home/wesnoth-CI"} | ."build-options".env.FLATPAK_BUILDER_N_JOBS="2"' packaging/flatpak/org.wesnoth.Wesnoth.json > utils/dockerbuilds/CI/org.wesnoth.Wesnoth.json
+    flatpak-builder --ccache --force-clean --disable-rofiles-fuse wesnoth-app utils/dockerbuilds/CI/org.wesnoth.Wesnoth.json
     EXIT_VAL=$?
-
-    ccache -s
-    ccache -z
+    rm -R "$CACHE_DIR"/*
+    cp -R .flatpak-builder/. "$CACHE_DIR"/
+    chmod -R 777 "$CACHE_DIR"/
+    exit $EXIT_VAL
 else
-    scons wesnoth wesnothd campaignd boost_unit_tests build="$CFG" \
-        ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
-        extra_flags_config="-pipe" strict=false forum_user_handler=false \
-        nls="$NLS" enable_lto="$LTO" jobs=2 --debug=time
-    EXIT_VAL=$?
+    if [ "$TOOL" == "cmake" ]; then
+        export CCACHE_MAXSIZE=3000M
+        export CCACHE_COMPILERCHECK=content
+        export CCACHE_DIR="$CACHE_DIR"
+
+        cmake -DCMAKE_BUILD_TYPE="$CFG" -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS="$NLS" \
+              -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_STRICT_COMPILATION=true -DENABLE_LTO="$LTO" -DLTO_JOBS=2 -DENABLE_MYSQL=true \
+              -DCXX_STD="$CXX_STD" -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache . && \
+              make VERBOSE=1 -j2
+        EXIT_VAL=$?
+
+        ccache -s
+        ccache -z
+    else
+        scons wesnoth wesnothd campaignd boost_unit_tests build="$CFG" \
+            ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
+            extra_flags_config="-pipe" strict=true forum_user_handler=true \
+            nls="$NLS" enable_lto="$LTO" jobs=2 --debug=time
+        EXIT_VAL=$?
+    fi
 fi
 
 if [ $EXIT_VAL != 0 ]; then
@@ -87,9 +116,9 @@ if [ "$CFG" == "debug" ]; then
     mv boost_unit_tests-debug boost_unit_tests
 fi
 
-execute "WML tests" ./run_wml_tests -g -v -c -t 20
-execute "Play tests" ./utils/travis/play_test_executor.sh
-execute "Boost unit tests" ./utils/travis/test_executor.sh
+execute "WML tests" ./run_wml_tests -g -c -t 20
+execute "Play tests" ./utils/CI/play_test_executor.sh
+execute "Boost unit tests" ./utils/CI/test_executor.sh
 
 if [ -f "errors.log" ]; then
     error $'\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n'
