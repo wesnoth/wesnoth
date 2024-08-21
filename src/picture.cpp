@@ -800,7 +800,7 @@ bool is_in_hex(const locator& i_locator)
 bool is_empty_hex(const locator& i_locator)
 {
 	if(!is_empty_hex_.in_cache(i_locator)) {
-		surface surf = get_surface(i_locator, HEXED);
+		surface surf = get_surface(i_locator, HEXED).clone();
 		// emptiness of terrain image is checked during hex cut
 		// so, maybe in cache now, let's recheck
 		if(!is_empty_hex_.in_cache(i_locator)) {
