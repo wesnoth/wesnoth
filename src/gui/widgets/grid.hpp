@@ -106,6 +106,43 @@ public:
 		queue_redraw(); // TODO: draw_manager - relayout?
 	}
 
+
+	/** Set debug border for grid */
+	void set_debug_border_mode(const widget::debug_border dbm)
+	{
+		debug_border_mode_ = dbm;
+	}
+
+	void set_debug_border_color(const color_t dbc)
+	{
+		debug_border_color_ = dbc;
+	}
+
+	/** Set debug border for rows/columns */
+	void set_row_debug_border_mode(const unsigned row, const widget::debug_border dbm)
+	{
+		    assert(row < row_debug_border_mode_.size());
+			    row_debug_border_mode_[row] = dbm;
+	}
+
+	void set_row_debug_border_color(const unsigned row, const color_t dbc)
+	{
+		    assert(row < row_debug_border_color_.size());
+			    row_debug_border_color_[row] = dbc;
+	}
+
+	void set_column_debug_border_mode(const unsigned col, const widget::debug_border dbm)
+	{
+		    assert(col < col_debug_border_mode_.size());
+			    col_debug_border_mode_[col] = dbm;
+	}
+
+	void set_column_debug_border_color(const unsigned col, const color_t dbc)
+	{
+		    assert(col < col_debug_border_color_.size());
+			    col_debug_border_color_[col] = dbc;
+	}
+
 	/***** ***** ***** ***** CHILD MANIPULATION ***** ***** ***** *****/
 
 	/**
@@ -492,6 +529,10 @@ private:
 	/** The number of grid columns. */
 	unsigned cols_;
 
+	/** Debug border for the grid */
+	widget::debug_border debug_border_mode_;
+	color_t debug_border_color_;
+
 	/***** ***** ***** ***** size caching ***** ***** ***** *****/
 
 	/** The row heights in the grid. */
@@ -505,6 +546,18 @@ private:
 
 	/** The grow factor for all columns. */
 	std::vector<unsigned> col_grow_factor_;
+
+	/** The debug border mode for all rows.  */
+	std::vector<widget::debug_border> row_debug_border_mode_;
+
+	/** The debug border color for all rows.  */
+	std::vector<color_t> row_debug_border_color_;
+
+	/** The debug border mode for all columns.  */
+	std::vector<widget::debug_border> col_debug_border_mode_;
+
+	/** The debug border color for all columns.  */
+	std::vector<color_t> col_debug_border_color_;
 
 	/**
 	 * The child items.

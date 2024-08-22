@@ -69,6 +69,12 @@ builder_widget::builder_widget(const config& cfg)
 	case 2:
 		debug_border_mode = widget::debug_border::fill;
 		break;
+	case 3:
+		debug_border_mode = widget::debug_border::dotted;
+		break;
+	case 4:
+		debug_border_mode = widget::debug_border::dashed;
+		break;
 	default:
 		WRN_GUI_P << "Widget builder: unknown debug border mode " << dbm << ".";
 	}
@@ -107,7 +113,7 @@ builder_widget_ptr create_widget_builder(const config& cfg)
 
 	// FAIL() doesn't return
 	//
-	// To fix this: add your new widget to source-lists/libwesnoth_widgets and rebuild.
+	// To fix this: add your new widget to source_lists/libwesnoth_widgets and rebuild.
 
 	FAIL("Unknown widget type " + cfg.ordered_begin()->key);
 }
@@ -193,16 +199,28 @@ builder_grid::builder_grid(const config& cfg)
 	, cols(0)
 	, row_grow_factor()
 	, col_grow_factor()
+	, row_debug_border_mode()
+	, row_debug_border_color()
+	, col_debug_border_mode()
+	, col_debug_border_color()
 	, flags()
 	, border_size()
 	, widgets()
+	, debug_border_mode()
+	, debug_border_color()
 {
 	log_scope2(log_gui_parse, "Window builder: parsing a grid");
+
+	debug_border_mode = static_cast<widget::debug_border>(cfg["debug_border_mode"].to_int());
+	debug_border_color = decode_color(cfg["debug_border_color"].str());
 
 	for(const auto& row : cfg.child_range("row")) {
 		unsigned col = 0;
 
 		row_grow_factor.push_back(row["grow_factor"]);
+
+		row_debug_border_mode.push_back(static_cast<window::debug_border>(row["debug_border_mode"].to_int()));
+		row_debug_border_color.push_back(decode_color(row["debug_border_color"].str()));
 
 		for(const auto& c : row.child_range("column")) {
 			flags.push_back(implementation::read_flags(c));
@@ -210,6 +228,9 @@ builder_grid::builder_grid(const config& cfg)
 			if(rows == 0) {
 				col_grow_factor.push_back(c["grow_factor"]);
 			}
+
+			col_debug_border_mode.push_back(static_cast<window::debug_border>(c["debug_border_mode"].to_int()));
+			col_debug_border_color.push_back(decode_color(c["debug_border_color"].str()));
 
 			widgets.push_back(create_widget_builder(c));
 
@@ -259,6 +280,8 @@ void builder_grid::build(grid& grid, optional_replacements replacements) const
 	grid.set_id(id);
 	grid.set_linked_group(linked_group);
 	grid.set_rows_cols(rows, cols);
+	grid.set_debug_border_mode(debug_border_mode);
+	grid.set_debug_border_color(debug_border_color);
 
 	log_scope2(log_gui_general, "Window builder: building grid");
 
@@ -266,6 +289,8 @@ void builder_grid::build(grid& grid, optional_replacements replacements) const
 
 	for(unsigned x = 0; x < rows; ++x) {
 		grid.set_row_grow_factor(x, row_grow_factor[x]);
+		grid.set_row_debug_border_mode(x, row_debug_border_mode[x]);
+		grid.set_row_debug_border_color(x, row_debug_border_color[x]);
 
 		for(unsigned y = 0; y < cols; ++y) {
 			if(x == 0) {
@@ -275,6 +300,9 @@ void builder_grid::build(grid& grid, optional_replacements replacements) const
 			DBG_GUI_G << "Window builder: adding child at " << x << ',' << y << ".";
 
 			const unsigned int i = x * cols + y;
+
+			grid.set_column_debug_border_mode(i, col_debug_border_mode[i]);
+			grid.set_column_debug_border_color(i, col_debug_border_color[i]);
 
 			if(replacements) {
 				auto widget = widgets[i]->build(replacements.value());

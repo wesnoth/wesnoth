@@ -125,6 +125,12 @@ struct builder_grid : public builder_widget
 	std::vector<unsigned> row_grow_factor;
 	std::vector<unsigned> col_grow_factor;
 
+	/** The debug_borders for the rows / columns. */
+	std::vector<widget::debug_border> row_debug_border_mode;
+	std::vector<color_t> row_debug_border_color;
+	std::vector<widget::debug_border> col_debug_border_mode;
+	std::vector<color_t> col_debug_border_color;
+
 	/** The flags per grid cell. */
 	std::vector<unsigned> flags;
 
@@ -133,6 +139,10 @@ struct builder_grid : public builder_widget
 
 	/** The widgets per grid cell. */
 	std::vector<builder_widget_ptr> widgets;
+
+	/** The debug_border for the grid */
+	widget::debug_border debug_border_mode;
+	color_t debug_border_color;
 
 	/** Inherited from @ref builder_widget. */
 	virtual std::unique_ptr<widget> build() const override;

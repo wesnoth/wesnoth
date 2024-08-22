@@ -529,6 +529,14 @@ void widget::draw_debug_border()
 			draw::fill(rect{{0, 0}, get_size()}, debug_border_color_);
 			break;
 
+		case debug_border::dotted:
+			draw::dotted_border(rect{{0, 0}, get_size()}, debug_border_color_);
+			break;
+
+		case debug_border::dashed:
+			draw::dashed_border(rect{{0, 0}, get_size()}, debug_border_color_);
+			break;
+
 		default:
 			assert(false);
 	}

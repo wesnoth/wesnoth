@@ -139,6 +139,30 @@ void rect(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b);
 void rect(const SDL_Rect& rect, const color_t& color);
 
 /**
+ * Draw a rectangle with a dotted border using the given colour.
+ *
+ * @param rect      The rectangle to draw, in drawing coordinates.
+ * @param r         The red   component of the drawing colour, 0-255.
+ * @param g         The green component of the drawing colour, 0-255.
+ * @param b         The blue  component of the drawing colour, 0-255.
+ * @param a         The alpha component of the drawing colour, 0-255.
+ */
+void dotted_border(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+void dotted_border(const SDL_Rect& rect, const color_t& color);
+
+/**
+ * Draw a rectangle with a dashed border using the given colour.
+ *
+ * @param rect      The rectangle to draw, in drawing coordinates.
+ * @param r         The red   component of the drawing colour, 0-255.
+ * @param g         The green component of the drawing colour, 0-255.
+ * @param b         The blue  component of the drawing colour, 0-255.
+ * @param a         The alpha component of the drawing colour, 0-255.
+ */
+void dashed_border(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+void dashed_border(const SDL_Rect& rect, const color_t& color);
+
+/**
  * Draw a line.
  *
  * Uses the current drawing colour set by set_color().

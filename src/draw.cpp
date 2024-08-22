@@ -177,6 +177,109 @@ void draw::rect(const SDL_Rect& rect, const color_t& c)
 	draw::rect(rect, c.r, c.g, c.b, c.a);
 }
 
+void draw::dotted_border(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+{
+	DBG_D << "dotted border " << rect << ' ' << color_t{r,g,b,a};
+	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
+	std::vector<SDL_Point> points;
+
+	// a little funky math here ensures the corner sizes stay relatively balanced
+	// the top/bottom
+	for(int i = rect.x; i < rect.x + rect.w; i += 2) {
+		// the top, left to right
+		points.push_back({i, rect.y});
+		// the botton, right to left
+		points.push_back({rect.x + rect.w - (i - rect.x), rect.y + rect.h - 1});
+	}
+	// the sides
+	for(int i = rect.y; i < rect.y + rect.h; i += 2) {
+		// the right, top to bottom
+		points.push_back({rect.x + rect.w - 1, i});
+		// the left, bottom to top
+		points.push_back({rect.x, rect.y + rect.h - (i - rect.y)});
+	}
+	draw::points(points);
+}
+
+void draw::dotted_border(const SDL_Rect& rect, const color_t& c)
+{
+	draw::dotted_border(rect, c.r, c.g, c.b, c.a);
+}
+
+void draw::dashed_border(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+{
+	DBG_D << "dashed border " << rect << ' ' << color_t{r,g,b,a};
+	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
+	std::vector<SDL_Point> points;
+
+	// a little funky math here ensures the corner sizes stay relatively balanced
+	// the top/bottom
+	int i;
+	for(i = rect.x; i < rect.x + rect.w - 5; i += 5) {
+		// the top, left to right, three shaded pixels
+		points.push_back({i, rect.y});
+		points.push_back({i + 1, rect.y});
+		points.push_back({i + 2, rect.y});
+		// the botton, right to left, three shaded pixels
+		points.push_back({rect.x + rect.w - (i - rect.x), rect.y + rect.h - 1});
+		points.push_back({rect.x + rect.w - (i - rect.x - 1), rect.y + rect.h - 1});
+		points.push_back({rect.x + rect.w - (i - rect.x - 2), rect.y + rect.h - 1});
+		// then skip two pixels
+	}
+	// finish up the top/bottom lines when there's not enough room left for the full five pixel sequence
+	switch(rect.x + rect.w - i) {
+		case 4:
+			[[fallthrough]];
+		case 3:
+			points.push_back({i + 2, rect.y});
+			points.push_back({rect.x + rect.w - (i - rect.x - 2), rect.y + rect.h - 1});
+			[[fallthrough]];
+		case 2:
+			points.push_back({i + 1, rect.y});
+			points.push_back({rect.x + rect.w - (i - rect.x - 1), rect.y + rect.h - 1});
+			[[fallthrough]];
+		case 1:
+			points.push_back({i, rect.y});
+			points.push_back({rect.x + rect.w - (i - rect.x), rect.y + rect.h - 1});
+	}
+	// the sides
+	for(i = rect.y; i < rect.y + rect.h - 5; i += 5) {
+		// the right, top to bottom
+		points.push_back({rect.x + rect.w - 1, i});
+		points.push_back({rect.x + rect.w - 1, i + 1});
+		points.push_back({rect.x + rect.w - 1, i + 2});
+		// the left, bottom to top
+		points.push_back({rect.x, rect.y + rect.h - (i - rect.y)});
+		points.push_back({rect.x, rect.y + rect.h - (i - rect.y - 1)});
+		points.push_back({rect.x, rect.y + rect.h - (i - rect.y - 2)});
+	}
+	// finish up the right/left lines when there's not enough room left for the full five pixel sequence
+	switch(rect.y + rect.h - i) {
+		case 4:
+			[[fallthrough]];
+		case 3:
+			points.push_back({rect.x + rect.w - 1, i + 2});
+			points.push_back({rect.x, rect.y + rect.h - (i - rect.y - 2)});
+			[[fallthrough]];
+		case 2:
+			points.push_back({rect.x + rect.w - 1, i + 1});
+			points.push_back({rect.x, rect.y + rect.h - (i - rect.y - 1)});
+			[[fallthrough]];
+		case 1:
+			 points.push_back({rect.x + rect.w - 1, i});
+			 points.push_back({rect.x, rect.y + rect.h - (i - rect.y)});
+	}
+
+	draw::points(points);
+}
+
+void draw::dashed_border(const SDL_Rect& rect, const color_t& c)
+{
+	draw::dashed_border(rect, c.r, c.g, c.b, c.a);
+}
+
+
+
 void draw::line(int from_x, int from_y, int to_x, int to_y)
 {
 	DBG_D << "line from (" << from_x << ',' << from_y

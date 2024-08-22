@@ -15,6 +15,8 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "draw.hpp"
+
 #include "gui/widgets/grid_private.hpp"
 
 #include "gui/auxiliary/iterator/walker_grid.hpp"
@@ -41,16 +43,23 @@ grid::grid(const unsigned rows, const unsigned cols)
 	: widget()
 	, rows_(rows)
 	, cols_(cols)
+	, debug_border_mode_()
+	, debug_border_color_()
 	, row_height_()
 	, col_width_()
 	, row_grow_factor_(rows)
 	, col_grow_factor_(cols)
+	, row_debug_border_mode_(rows)
+	, row_debug_border_color_(rows)
+	, col_debug_border_mode_(rows*cols)
+	, col_debug_border_color_(rows*cols)
 	, children_(rows * cols)
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
 		std::bind(&grid::request_placement, this,
 			std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
 		event::dispatcher::back_pre_child);
+
 }
 
 grid::~grid()
@@ -724,6 +733,10 @@ void grid::set_rows_cols(const unsigned rows, const unsigned cols)
 	cols_ = cols;
 	row_grow_factor_.resize(rows);
 	col_grow_factor_.resize(cols);
+	row_debug_border_mode_.resize(rows);
+	col_debug_border_mode_.resize(static_cast<size_t>(rows_) * cols_);
+	row_debug_border_color_.resize(rows);
+	col_debug_border_color_.resize(static_cast<size_t>(rows_) * cols_);
 	children_.resize(static_cast<size_t>(rows_) * cols_);
 }
 
@@ -994,6 +1007,7 @@ void grid::impl_draw_children()
 
 	assert(get_visible() == widget::visibility::visible);
 
+
 	// TODO: draw_manager - don't draw children outside clip area. This is problematic because either clip area is not correct here or widget positions are not absolute
 	for(auto & child : children_)
 	{
@@ -1021,6 +1035,58 @@ void grid::impl_draw_children()
 			continue;
 		}
 	}
+
+	//Draw grid debug border
+	switch(static_cast<unsigned>(debug_border_mode_)) {
+	case 1:
+		draw::rect(rect{{0, 0}, get_size()},debug_border_color_);
+		break;
+	case 2:
+		draw::fill(rect{{0, 0}, get_size()},debug_border_color_);
+		break;
+	case 3:
+		draw::dotted_border(rect{{0, 0}, get_size()},debug_border_color_);
+		break;
+	case 4:
+		draw::dashed_border(rect{{0, 0}, get_size()},debug_border_color_);
+	}
+
+	//Draw row/column debug borders
+	int x = 0;
+	int y = 0;
+
+	for(std::size_t row = 0; row < rows_; ++row) {
+		DBG_GUI_G << "grid::impl_draw_children(): processing row " << row;
+		for(unsigned col = 0; col < cols_; ++col) {
+			int i = row*cols_ + col;
+			DBG_GUI_G << "\tgrid::impl_draw_children(): drawing border for row " << row << ", column " << col;
+			DBG_GUI_G << "\t\tx,y,w,h = " << x << "," << y << "," << col_width_[col] << "," << row_height_[row];
+			DBG_GUI_G << "\t\tmode,color = " << static_cast<unsigned>(col_debug_border_mode_[i]) << "," <<
+				col_debug_border_color_[i];
+			switch(static_cast<unsigned>(col_debug_border_mode_[i])){
+				case 1:
+					draw::rect(rect{x,y,static_cast<int>(col_width_[col]),static_cast<int>(row_height_[row])},col_debug_border_color_[i]);
+					break;
+				case 2:
+					draw::fill(rect{x,y,static_cast<int>(col_width_[col]),static_cast<int>(row_height_[row])},col_debug_border_color_[i]);
+			}
+			x += col_width_[col];
+		}
+		DBG_GUI_G << "\tgrid::impl_draw_children(): drawing border for row " << row;
+		DBG_GUI_G << "\t\tx,y,w,h = " << 0 << "," << y << "," << x << "," << row_height_[row];
+		DBG_GUI_G << "\t\tmode,color = " << static_cast<unsigned>(row_debug_border_mode_[row]) << "," <<
+				col_debug_border_color_[row];
+		switch(static_cast<unsigned>(row_debug_border_mode_[row])){
+			case 1:
+				draw::rect(rect{0,y,x,static_cast<int>(row_height_[row])},row_debug_border_color_[row]);
+				break;
+			case 2:
+				draw::fill(rect{0,y,x,static_cast<int>(row_height_[row])},row_debug_border_color_[row]);
+		}
+		x = 0;
+		y += row_height_[row];
+	}
+
 }
 
 unsigned grid_implementation::row_request_reduce_height(
