@@ -106,7 +106,6 @@ public:
 		queue_redraw(); // TODO: draw_manager - relayout?
 	}
 
-
 	/** Set debug border for grid */
 	void set_debug_border_mode(const widget::debug_border dbm)
 	{

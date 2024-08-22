@@ -1007,7 +1007,6 @@ void grid::impl_draw_children()
 
 	assert(get_visible() == widget::visibility::visible);
 
-
 	// TODO: draw_manager - don't draw children outside clip area. This is problematic because either clip area is not correct here or widget positions are not absolute
 	for(auto & child : children_)
 	{
@@ -1069,6 +1068,12 @@ void grid::impl_draw_children()
 					break;
 				case 2:
 					draw::fill(rect{x,y,static_cast<int>(col_width_[col]),static_cast<int>(row_height_[row])},col_debug_border_color_[i]);
+					break;
+				case 3:
+					draw::dotted_border(rect{x,y,static_cast<int>(col_width_[col]),static_cast<int>(row_height_[row])},col_debug_border_color_[i]);
+					break;
+				case 4:
+					draw::dashed_border(rect{x,y,static_cast<int>(col_width_[col]),static_cast<int>(row_height_[row])},col_debug_border_color_[i]);
 			}
 			x += col_width_[col];
 		}
@@ -1082,6 +1087,12 @@ void grid::impl_draw_children()
 				break;
 			case 2:
 				draw::fill(rect{0,y,x,static_cast<int>(row_height_[row])},row_debug_border_color_[row]);
+				break;
+			case 3:
+				draw::dotted_border(rect{0,y,x,static_cast<int>(row_height_[row])},row_debug_border_color_[row]);
+				break;
+			case 4:
+				draw::dashed_border(rect{0,y,x,static_cast<int>(row_height_[row])},row_debug_border_color_[row]);
 		}
 		x = 0;
 		y += row_height_[row];
