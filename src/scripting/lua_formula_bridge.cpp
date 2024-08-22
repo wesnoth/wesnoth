@@ -231,8 +231,9 @@ lua_formula_bridge::fpointer luaW_check_formula(lua_State* L, int idx, bool allo
 		form.reset(static_cast<fwrapper*>(ud));
 		// Setting a no-op deleter guarantees the Lua-held object is not deleted
 	} else if(allow_str) {
+		form.get_deleter() = std::default_delete<fwrapper>();
 		form.reset(new fwrapper(luaL_checkstring(L, idx)));
-		// Leave deleter at default so it's deleted properly later
+		// Set deleter to default so it's deleted properly later
 	} else {
 		luaW_type_error(L, idx, "formula");
 	}
