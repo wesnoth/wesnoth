@@ -188,7 +188,7 @@ void draw::dotted_border(const SDL_Rect& rect, uint8_t r, uint8_t g, uint8_t b, 
 	for(int i = rect.x; i < rect.x + rect.w; i += 2) {
 		// the top, left to right
 		points.push_back({i, rect.y});
-		// the botton, right to left
+		// the bottom, right to left
 		points.push_back({rect.x + rect.w - (i - rect.x), rect.y + rect.h - 1});
 	}
 	// the sides
