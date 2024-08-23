@@ -44,7 +44,15 @@ function wml_actions.harm_unit(cfg)
 				if harmer and harmer.valid then
 					harmer_loc = { x = tonumber(harmer.x) or 0, y = tonumber(harmer.y) or 0 }
 				end
-				wesnoth.game_events.fire("pre harm", harmer_loc, unit_to_harm_loc, { wml.tag.primary_attack(primary_attack), wml.tag.secondary_attack(secondary_attack)})
+				if primary_attack then
+					if secondary_attack then
+						wesnoth.game_events.fire("pre harm", harmer_loc, unit_to_harm_loc, { wml.tag.primary_attack(primary_attack), wml.tag.secondary_attack(secondary_attack)})
+					else
+						wesnoth.game_events.fire("pre harm", harmer_loc, unit_to_harm_loc, { wml.tag.primary_attack(primary_attack)})
+					end
+				else 
+					wesnoth.game_events.fire("pre harm", harmer_loc, unit_to_harm_loc)
+				end
 			end
 			
 			if unit_to_harm.valid then 
