@@ -41,14 +41,6 @@ jobs:
         if: success() || failure()
         run: doxygen doc/doxygen/Doxyfile
 
-  copyright: # check takes a bit longer and does not need to run in docker
-    runs-on: ubuntu-latest
-    steps:
-      - { uses: actions/checkout@v4, with: { fetch-depth: 50 } }
-
-      - name: Copyright check
-        run: ./update_copyrights
-
   ubuntu:
     strategy:
       fail-fast: false
