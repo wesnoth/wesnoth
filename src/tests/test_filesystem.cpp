@@ -188,11 +188,11 @@ BOOST_AUTO_TEST_CASE( test_fs_wml_path )
 
 	BOOST_CHECK_EQUAL( get_wml_location("").value_or(""), "" );
 
-	BOOST_CHECK_EQUAL( get_wml_location("_main.cfg").value(), gamedata + "/data/_main.cfg" );
-	BOOST_CHECK_EQUAL( get_wml_location("core/_main.cfg").value(), gamedata + "/data/core/_main.cfg" );
-	BOOST_CHECK_EQUAL( get_wml_location(".").value(), gamedata + "/data/." );
+	BOOST_CHECK_EQUAL( get_wml_location("_main.cfg").value_or(""), gamedata + "/data/_main.cfg" );
+	BOOST_CHECK_EQUAL( get_wml_location("core/_main.cfg").value_or(""), gamedata + "/data/core/_main.cfg" );
+	BOOST_CHECK_EQUAL( get_wml_location(".", std::string("")).value_or(""), "." );
 
-	BOOST_CHECK_EQUAL( get_wml_location("~/").value(), userdata + "/data/" );
+	BOOST_CHECK_EQUAL( get_wml_location("~/").value_or(""), userdata + "/data/" );
 
 	// Inexistent paths are resolved empty.
 	BOOST_CHECK( !get_wml_location("why_would_anyone_ever_name_a_file_like_this").has_value() );
