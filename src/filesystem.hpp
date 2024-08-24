@@ -21,6 +21,7 @@
 #pragma once
 
 #include <ctime>
+#include <cstdint>
 #include <fstream>
 #include <iosfwd>
 #include <memory>
