@@ -10,7 +10,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, French, German, Turkish
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, French, German, Japanese, Turkish
  ### Units
  ### User interface
    * Help button in the leaderchoosing window works on all languages (issue #9102)
