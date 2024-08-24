@@ -30,7 +30,7 @@ namespace
 int get_next_idle_time()
 {
 	if(!prefs::get().idle_anim()) {
-		return INT_MAX;
+		return std::numeric_limits<int>::max();
 	}
 
 	const double rate = std::pow(2.0, -prefs::get().idle_anim_rate() / 10.0);
@@ -66,40 +66,40 @@ const unit_animation* unit_animation_component::choose_animation(const map_locat
 void unit_animation_component::set_standing(bool with_bars)
 {
 	if (prefs::get().show_standing_animations()&& !u_.incapacitated()) {
-		start_animation(INT_MAX, choose_animation(u_.loc_, "standing"),
+		start_animation(std::numeric_limits<int>::max(), choose_animation(u_.loc_, "standing"),
 			with_bars,  "", {0,0,0}, STATE_STANDING);
 	} else {
-		start_animation(INT_MAX, choose_animation(u_.loc_, "_disabled_"),
+		start_animation(std::numeric_limits<int>::max(), choose_animation(u_.loc_, "_disabled_"),
 			with_bars,  "", {0,0,0}, STATE_STANDING);
 	}
 }
 
 void unit_animation_component::set_ghosted(bool with_bars)
 {
-	start_animation(INT_MAX, choose_animation(u_.loc_, "_ghosted_"),
+	start_animation(std::numeric_limits<int>::max(), choose_animation(u_.loc_, "_ghosted_"),
 			with_bars);
 	anim_->pause_animation();
 }
 
 void unit_animation_component::set_disabled_ghosted(bool with_bars)
 {
-	start_animation(INT_MAX, choose_animation(u_.loc_, "_disabled_ghosted_"),
+	start_animation(std::numeric_limits<int>::max(), choose_animation(u_.loc_, "_disabled_ghosted_"),
 			with_bars);
 }
 
 void unit_animation_component::set_idling()
 {
-	start_animation(INT_MAX, choose_animation(u_.loc_, "idling"),
+	start_animation(std::numeric_limits<int>::max(), choose_animation(u_.loc_, "idling"),
 		true, "", {0,0,0}, STATE_FORGET);
 }
 
 void unit_animation_component::set_selecting()
 {
 	if (prefs::get().show_standing_animations() && !u_.incapacitated()) {
-		start_animation(INT_MAX, choose_animation(u_.loc_, "selected"),
+		start_animation(std::numeric_limits<int>::max(), choose_animation(u_.loc_, "selected"),
 			true, "", {0,0,0}, STATE_FORGET);
 	} else {
-		start_animation(INT_MAX, choose_animation(u_.loc_, "_disabled_selected_"),
+		start_animation(std::numeric_limits<int>::max(), choose_animation(u_.loc_, "_disabled_selected_"),
 			true, "", {0,0,0}, STATE_FORGET);
 	}
 }
@@ -119,7 +119,7 @@ void unit_animation_component::start_animation (int start_time, const unit_anima
 	bool accelerate = (state != STATE_FORGET && state != STATE_STANDING);
 	draw_bars_ =  with_bars;
 	anim_.reset(new unit_animation(*animation));
-	const int real_start_time = start_time == INT_MAX ? anim_->get_begin_time() : start_time;
+	const int real_start_time = start_time == std::numeric_limits<int>::max() ? anim_->get_begin_time() : start_time;
 	anim_->start_animation(real_start_time, u_.loc_, u_.loc_.get_direction(u_.facing_),
 		 text, text_color, accelerate);
 	frame_begin_time_ = anim_->get_begin_time() -1;

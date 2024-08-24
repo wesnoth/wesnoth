@@ -201,12 +201,12 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 		// work, we fallback on unknown-unit.png.
 		std::string leader_image = leader["leader_image"].str();
 		if(!::image::exists(leader_image)) {
-			leader_image = filesystem::get_independent_binary_file_path("images", leader_image);
+			auto indep_path = filesystem::get_independent_binary_file_path("images", leader_image);
 
 			// The leader TC modifier isn't appending if the independent image path can't
 			// be resolved during save_index entry creation, so we need to add it here.
-			if(!leader_image.empty()) {
-				leader_image += leader["leader_image_tc_modifier"].str();
+			if(indep_path) {
+				leader_image = indep_path.value() + leader["leader_image_tc_modifier"].str();
 			}
 		}
 
@@ -315,11 +315,16 @@ void game_load::display_savegame()
 
 void game_load::filter_text_changed(const std::string& text)
 {
+	apply_filter_text(text, false);
+}
+
+void game_load::apply_filter_text(const std::string& text, bool force)
+{
 	listbox& list = find_widget<listbox>(get_window(), "savegame_list", false);
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
-	if(words == last_words_)
+	if(words == last_words_ && !force)
 		return;
 	last_words_ = words;
 
@@ -487,7 +492,7 @@ void game_load::delete_button_callback()
 	if(index < games_.size()) {
 
 		// See if we should ask the user for deletion confirmation
-		if(prefs::get().ask_delete_saves()) {
+		if(prefs::get().ask_delete()) {
 			if(!gui2::dialogs::game_delete::execute()) {
 				return;
 			}
@@ -537,6 +542,9 @@ void game_load::handle_dir_select()
 	}
 
 	populate_game_list();
+	if(auto* filter = find_widget<text_box>(get_window(), "txtFilter", false, true)) {
+		apply_filter_text(filter->get_value(), true);
+	}
 	display_savegame();
 }
 

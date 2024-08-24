@@ -18,7 +18,6 @@
 #include "scripting/lua_widget.hpp"
 
 #include "lua/wrapper_lauxlib.h"
-#include "global.hpp"
 #include "tstring.hpp"
 #include "map/location.hpp"
 
@@ -61,16 +60,14 @@ namespace lua_check_impl
 
 	template<typename T>
 	std::enable_if_t<std::is_same_v<T, lua_index_raw>, lua_index_raw>
-	lua_check(lua_State *L, int n)
+	lua_check(lua_State * /*L*/, int n)
 	{
-		UNUSED(L);
 		return lua_index_raw{ n };
 	}
 	template<typename T>
 	std::enable_if_t<std::is_same_v<T, lua_index_raw>, lua_index_raw>
-	lua_to_or_default(lua_State *L, int n, const T& /*def*/)
+	lua_to_or_default(lua_State * /*L*/, int n, const T& /*def*/)
 	{
-		UNUSED(L);
 		return lua_index_raw{ n };
 	}
 
@@ -341,7 +338,7 @@ namespace lua_check_impl
 	lua_check(lua_State *L, int n)
 	{
 		std::string str = lua_check_impl::lua_check<std::string>(L, n);
-		std::optional<typename T::type> val = T::get_enum(str);
+		utils::optional<typename T::type> val = T::get_enum(str);
 		if(!val) {
 			luaL_argerror(L, n, ("cannot convert " + str + " to enum.").c_str());
 		}

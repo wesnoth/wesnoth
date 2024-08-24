@@ -29,8 +29,6 @@ namespace editor
 class context_manager : public filter_context
 {
 public:
-	using context_ptr = std::unique_ptr<map_context>;
-
 	context_manager(editor_display& gui, const game_config_view& game_config, const std::string& addon_id);
 	~context_manager();
 
@@ -75,15 +73,15 @@ public:
 	 */
 	void perform_refresh(const editor_action& action, bool drag_part = false);
 
-	/**
-	 * Save all maps, open dialog if not named yet, except when using
-	 * auto_save_windows which will name unnamed maps "windows_N".
-	 * Also record all filenames for future reopening.
-	 */
-	void save_all_maps(bool auto_save_windows = false);
+
+	/** Save all open map_contexts to memory */
+	void save_contexts();
+
+	/** Save all maps, show save dialogs for unsaved ones */
+	void save_all_maps();
 
 	/** Save the map, open dialog if not named yet. */
-	void save_map();
+	void save_map(bool show_confirmation = true);
 
 	editor_display& gui()
 	{
@@ -229,7 +227,7 @@ private:
 	template<typename... T>
 	int add_map_context(const T&... args);
 
-	int add_map_context_of(context_ptr&& mc);
+	int add_map_context_of(std::unique_ptr<map_context>&& mc);
 
 	/**
 	 * Replace the current map context and refresh accordingly
@@ -237,13 +235,15 @@ private:
 	template<typename... T>
 	void replace_map_context(const T&... args);
 
-	void replace_map_context_with(context_ptr&& mc);
+	void replace_map_context_with(std::unique_ptr<map_context>&& mc);
 
 	/**
 	 * Creates a default map context object, used to ensure there is always at least one.
-	 * Except when we saved windows, in which case reopen them
+	 * When we have saved contexts, reopen them instead.
 	 */
 	void create_default_context();
+
+	void create_blank_context();
 
 	/** Performs the necessary housekeeping necessary when switching contexts. */
 	void refresh_on_context_change();
@@ -266,8 +266,8 @@ private:
 	 * Save the map under a given filename. Displays an error message on failure.
 	 * @return true on success
 	 */
-	bool write_map(bool display_confirmation = false);
-	bool write_scenario(bool display_confirmation = false);
+	bool write_map(bool display_confirmation = true);
+	bool write_scenario(bool display_confirmation = true);
 
 	/**
 	 * Create a new map.
@@ -335,7 +335,7 @@ private:
 	int auto_update_transitions_;
 
 	/** The currently opened map context object */
-	std::vector<context_ptr> map_contexts_;
+	std::vector<std::unique_ptr<map_context>> map_contexts_;
 
 	/** Clipboard map_fragment -- used for copy-paste. */
 	map_fragment clipboard_;

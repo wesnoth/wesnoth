@@ -500,19 +500,19 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 	}
 }
 
-std::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory_keys(
+utils::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory_keys(
 	const wml_tag* tag, const config& cfg) const
 {
 	auto visited = std::vector<const wml_tag*>();
 	return find_mandatory_keys(tag, cfg, visited);
 }
 
-std::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory_keys(
+utils::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory_keys(
 	const wml_tag* tag, const config& cfg, std::vector<const wml_tag*>& visited) const
 {
 	// Return an empty optional if a super cycle is detected.
 	if(std::find(visited.begin(), visited.end(), tag) != visited.end()) {
-		return std::nullopt;
+		return utils::nullopt;
 	}
 
 	visited.push_back(tag);
@@ -525,7 +525,7 @@ std::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory_k
 
 		// Return an empty optional if a super cycle is detected.
 		if(!super_mandatory_keys) {
-			return std::nullopt;
+			return utils::nullopt;
 		}
 
 		super_mandatory_keys->merge(mandatory_keys);
@@ -693,7 +693,7 @@ void schema_validator::print(message_info& el)
 }
 
 schema_self_validator::schema_self_validator()
-	: schema_validator(filesystem::get_wml_location("schema/schema.cfg"), false)
+	: schema_validator(filesystem::get_wml_location("schema/schema.cfg").value(), false)
 	, type_nesting_()
 	, condition_nesting_()
 {

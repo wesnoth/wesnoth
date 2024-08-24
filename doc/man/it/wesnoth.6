@@ -67,13 +67,8 @@ Salta le schermate [storia] e i dialoghi fino alla fine dell’evento
 \fBinizio\fP.
 .TP 
 \fB\-\-clock\fP
-Aggiunge l’opzione per mostrare un orologio per testare il drawing timer.
-.TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-Deprecato, usa \fB\-\-userdata\-dir\fP.
-.TP 
-\fB\-\-config\-path\fP
-Deprecato, usa \fB\-\-userdata\-path\fP.
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ identificatore\fP
 sostituisce la directory base caricata con quella specificata
@@ -157,6 +152,10 @@ in the logs directory under the userdata folder.
 log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
 .TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
+.TP 
 \fB\-\-wnoconsole\fP
 In ambiente Windows, quando usato in combinazione con \-\-no\-log\-to\-file,
 l’output viene scritto in cerr&Cout invece che in CONOUT. Altrimenti, non ha
@@ -232,8 +231,7 @@ nella directory destinazione specificata un file .cfg piatto e un file .cfg
 processato. Se viene specificata una cartella, sarà pre\-processata
 ricorsivamente in base alle regole di pre\-processing note. Le macro comuni
 della directory "data/core/macros" saranno pre\-processate prima delle
-risorse specificate. Esempio: \fB\-p ~/wesnoth/data/campaigns/tutorial
-~/result\fP. Per ulteriori dettagli a riguardo de pre\-processore puoi
+risorse specificate. Esempio: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result\fP. Per ulteriori dettagli a riguardo de pre\-processore puoi
 consultare
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
@@ -312,17 +310,6 @@ wesnoth.
 .TP 
 \fB\-\-scenario\fP\fI\ percorso\fP
 imposta lo schema WML da utilizzare con \fB\-V,\-\-validate\fP.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ nome\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy
-Games". On Windows it is also possible to specify a directory relative to
-the process working directory by using path starting with ".\e" or "..\e".
-This defaults to the userdata path.
-.TP 
-\fB\-\-userconfig\-path\fP
-stampa il percorso della cartella di configurazione ed esce.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ nome\fP
 imposta la directory dei dati dell’utente a \fInome\fP sotto $HOME o "My

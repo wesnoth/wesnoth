@@ -878,7 +878,7 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     -- If defender is on a healing location, count that as slightly more than the healing amount
     def_damage = def_damage - 1.25 * wesnoth.terrain_types[map[defender]].healing
 
-    if (def_damage < 0) then damage = 0. end
+    if (def_damage < 0) then def_damage = 0. end
 
     -- Fraction damage (= fractional value of the unit)
     local def_value_fraction = def_damage / defender.max_hitpoints

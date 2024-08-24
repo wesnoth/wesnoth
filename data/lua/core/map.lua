@@ -274,6 +274,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		---@type location
 		local loc, n = wesnoth.map.read_location(x, y)
 		if n == 0 then error('Missing or invalid coordinate') end
+		---@diagnostic disable-next-line: return-type-mismatch
 		return setmetatable({x = loc.x, y = loc.y}, hex_mt)
 	end
 
@@ -282,7 +283,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	---@param cfg WML
 	---@param ref_unit? unit
 	---@return terrain_hex[]
-	function wesnoth.map.find(cfg, ref_unit)
+	function wesnoth.map.find(cfg, ref_unit) ---@diagnostic disable-line: duplicate-set-field
 		local hexes = find_locations(cfg, ref_unit)
 		for i = 1, #hexes do
 			hexes[i] = wesnoth.map.get(hexes[i][1], hexes[i][2])
@@ -381,14 +382,30 @@ if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
 		---@param count? integer|string A range list
 		---@return terrain_filter_tag
 		adjacent =  function(f, adj, count)
+			if type(adj) == 'table' then
+				adj = stringx.join(',', adj)
+			end
 			return { "adjacent",  f, adjacent = adj, count = count }
 		end,
 		---Match hexes from a separate list.
-		---Specify the list in the second argument to wesnoth.map.filter()
-		---@param terrain string
+		---When passing a locset_ref, specify the list
+		---in the second argument to wesnoth.map.filter()
+		---
+		---For example:
+		---```
+		---local M = wesnoth.map.create(128, 128, 'Gg')
+		---local f = wesnoth.map.filter_tags
+		---local found = M:find(f.find_in("choices"), {choices = {{1,2}, {5,6}}})
+		---```
+		---@param x integer
+		---@param y integer
 		---@return terrain_filter_tag
-		find_in =  function(terrain)
-			return { "find_in", terrain }
+		---@overload fun(xs:string, ys:string):terrain_filter_tag
+		---@overload fun(loc:location):terrain_filter_tag
+		---@overload fun(locs:location[]):terrain_filter_tag
+		---@overload fun(locset_ref:string):terrain_filter_tag
+		find_in = function(x, y)
+			return { "find_in", x, y }
 		end,
 		---Match hexes within a given distance
 		---@param r integer
@@ -411,11 +428,27 @@ if wesnoth.kernel_type() == "Mapgen Lua Kernel" then
 			return { "y", terrain }
 		end,
 		---Match a specific location
-		---@param loc location
+		---@param x integer
+		---@param y integer
 		---@return terrain_filter_tag
-		is_loc = function(loc)
-			return f.all(f.x(loc[1]), f.y(loc[2]))
-		end
+		---@overload fun(loc:location):terrain_filter_tag
+		is_loc = function(x, y)
+			local loc = wesnoth.map.read_location(x, y)
+			if not loc then return { "any" } end
+			return f.all(f.x(loc.x), f.y(loc.y))
+		end,
+		---Match terrain by Wesnoth Formula Language
+		---@param formula string|formula
+		---@return terrain_filter_tag
+		formula = function(formula)
+			return { "formula", formula }
+		end,
+		---Match any hex not on the playable area of the map,
+		---ie hexes on the border.
+		---@return terrain_filter_tag
+		onborder = function()
+			return { "onborder" }
+		end,
 	}
 
 	-- More map module stuff

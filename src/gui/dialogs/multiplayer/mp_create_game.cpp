@@ -66,21 +66,21 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	, selected_game_index_(-1)
 	, selected_rfm_index_(-1)
 	, use_map_settings_(register_bool( "use_map_settings", true,
-		[]() {return prefs::get().use_map_settings();},
-		[](bool v) {prefs::get().set_use_map_settings(v);},
+		[]() {return prefs::get().mp_use_map_settings();},
+		[](bool v) {prefs::get().set_mp_use_map_settings(v);},
 		std::bind(&mp_create_game::update_map_settings, this)))
 	, fog_(register_bool("fog", true,
-		[]() {return prefs::get().fog();},
-		[](bool v) {prefs::get().set_fog(v);}))
+		[]() {return prefs::get().mp_fog();},
+		[](bool v) {prefs::get().set_mp_fog(v);}))
 	, shroud_(register_bool("shroud", true,
-		[]() {return prefs::get().shroud();},
-		[](bool v) {prefs::get().set_shroud(v);}))
+		[]() {return prefs::get().mp_shroud();},
+		[](bool v) {prefs::get().set_mp_shroud(v);}))
 	, start_time_(register_bool("random_start_time", true,
-		[]() {return prefs::get().random_start_time();},
-		[](bool v) {prefs::get().set_random_start_time(v);}))
+		[]() {return prefs::get().mp_random_start_time();},
+		[](bool v) {prefs::get().set_mp_random_start_time(v);}))
 	, time_limit_(register_bool("time_limit", true,
-		[]() {return prefs::get().countdown();},
-		[](bool v) {prefs::get().set_countdown(v);},
+		[]() {return prefs::get().mp_countdown();},
+		[](bool v) {prefs::get().set_mp_countdown(v);},
 		std::bind(&mp_create_game::update_map_settings, this)))
 	, shuffle_sides_(register_bool("shuffle_sides", true,
 		[]() {return prefs::get().shuffle_sides();},
@@ -91,8 +91,8 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	, strict_sync_(register_bool("strict_sync", true))
 	, private_replay_(register_bool("private_replay", true))
 	, turns_(register_integer("turn_count", true,
-		[]() {return prefs::get().turns();},
-		[](int v) {prefs::get().set_turns(v);}))
+		[]() {return prefs::get().mp_turns();},
+		[](int v) {prefs::get().set_mp_turns(v);}))
 	, gold_(register_integer("village_gold", true,
 		[]() {return prefs::get().village_gold();},
 		[](int v) {prefs::get().set_village_gold(v);}))
@@ -199,7 +199,7 @@ void mp_create_game::pre_show(window& win)
 	// Helper to make sure the initially selected level type is valid
 	auto get_initial_type_index = [this]()->int {
 		const auto index = std::find_if(level_types_.begin(), level_types_.end(), [](level_type_info& info) {
-			return info.first == *level_type::get_enum(prefs::get().level_type());
+			return info.first == *level_type::get_enum(prefs::get().mp_level_type());
 		});
 
 		if(index != level_types_.end()) {
@@ -266,7 +266,7 @@ void mp_create_game::pre_show(window& win)
 	connect_signal_notify_modified(*eras_menu_button_,
 		std::bind(&mp_create_game::on_era_select, this));
 
-	const int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, prefs::get().era());
+	const int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, prefs::get().mp_era());
 	if(era_selection >= 0) {
 		eras_menu_button_->set_selected(era_selection);
 	}
@@ -344,7 +344,7 @@ void mp_create_game::pre_show(window& win)
 	win.add_to_keyboard_chain(&list);
 
 	// This handles the initial game selection as well
-	display_games_of_type(level_types_[get_initial_type_index()].first, prefs::get().level());
+	display_games_of_type(level_types_[get_initial_type_index()].first, prefs::get().mp_level());
 
 	// Initial tab selection must be done after game selection so the field widgets are set to their correct active state.
 	on_tab_select();
@@ -883,9 +883,9 @@ void mp_create_game::post_show(window& window)
 
 	if(get_retval() == retval::OK) {
 		prefs::get().set_modifications(create_engine_.active_mods());
-		prefs::get().set_level_type(static_cast<int>(create_engine_.current_level_type()));
-		prefs::get().set_level(create_engine_.current_level().id());
-		prefs::get().set_era(create_engine_.current_era().id);
+		prefs::get().set_mp_level_type(static_cast<int>(create_engine_.current_level_type()));
+		prefs::get().set_mp_level(create_engine_.current_level().id());
+		prefs::get().set_mp_era(create_engine_.current_era().id);
 
 		create_engine_.prepare_for_era_and_mods();
 

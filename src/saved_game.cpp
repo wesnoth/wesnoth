@@ -173,7 +173,7 @@ void saved_game::set_random_seed()
 	}
 
 	std::stringstream stream;
-	stream << std::setfill('0') << std::setw(8) << std::hex << randomness::generator->get_random_int(0, INT_MAX);
+	stream << std::setfill('0') << std::setw(8) << std::hex << randomness::generator->get_random_int(0, std::numeric_limits<int>::max());
 	carryover_["random_seed"] = stream.str();
 	carryover_["random_calls"] = 0;
 }

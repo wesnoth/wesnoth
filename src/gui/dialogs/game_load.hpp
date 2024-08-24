@@ -51,6 +51,14 @@ private:
 	void delete_button_callback();
 	void handle_dir_select();
 
+	/**
+	 * Implementation detail of filter_text_changed and handle_dir_select
+	 *
+	 * @param text Current contents of the textbox
+	 * @param force If true, recalculate even if the text is the same as last time
+	 */
+	void apply_filter_text(const std::string& text, bool force);
+
 	/** Part of display_savegame that might throw a config::error if the savegame data is corrupt. */
 	void display_savegame_internal(const savegame::save_info& game);
 	void display_savegame();

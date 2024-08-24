@@ -52,12 +52,14 @@
 
 #include <memory>
 #include <boost/algorithm/string.hpp>
+#include <boost/filesystem.hpp>
 
-namespace editor {
+namespace {
 
-static std::vector<std::string> saved_windows_;
+std::vector<std::unique_ptr<editor::map_context>> saved_contexts_;
+int last_context_ = 0;
 
-static const std::string get_menu_marker(const bool changed)
+const std::string get_menu_marker(const bool changed)
 {
 	std::ostringstream ss;
 	ss << "[<span ";
@@ -70,11 +72,15 @@ static const std::string get_menu_marker(const bool changed)
 	return ss.str();
 }
 
+}
+
+namespace editor {
+
 context_manager::context_manager(editor_display& gui, const game_config_view& game_config, const std::string& addon_id)
 	: locs_(nullptr)
 	, gui_(gui)
 	, game_config_(game_config)
-	, default_dir_(prefs::get().default_dir())
+	, default_dir_(filesystem::get_dir(filesystem::get_legacy_editor_dir()))
 	, current_addon_(addon_id)
 	, map_generators_()
 	, last_map_generator_(nullptr)
@@ -84,11 +90,6 @@ context_manager::context_manager(editor_display& gui, const game_config_view& ga
 	, clipboard_()
 {
 	resources::filter_con = this;
-
-	if(default_dir_.empty()) {
-		default_dir_ = filesystem::get_dir(filesystem::get_user_data_dir() + "/editor");
-	}
-
 	create_default_context();
 	init_map_generators(game_config);
 }
@@ -207,7 +208,11 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 {
 	std::string fn = get_map_context().get_filename();
 	if(fn.empty()) {
-		fn = filesystem::get_legacy_editor_dir()+"/maps";
+		if (editor_controller::current_addon_id_.empty()) {
+			fn = filesystem::get_legacy_editor_dir() + "/maps";
+		} else {
+			fn = filesystem::get_current_editor_dir(editor_controller::current_addon_id_) + "/maps";
+		}
 	}
 
 	gui2::dialogs::file_dialog dlg;
@@ -243,7 +248,7 @@ void context_manager::edit_side_dialog(int side_index)
 
 void context_manager::edit_pbl()
 {
-	if(current_addon_ != "") {
+	if(!current_addon_.empty()) {
 		std::string pbl = filesystem::get_current_editor_dir(current_addon_) + "/_server.pbl";
 		gui2::dialogs::editor_edit_pbl::execute(pbl, current_addon_);
 	}
@@ -254,8 +259,10 @@ void context_manager::change_addon_id()
 	std::string new_addon_id = current_addon_;
 	gui2::dialogs::prompt::execute(new_addon_id);
 
-	if(addon_filename_legal(new_addon_id) && filesystem::rename_dir(filesystem::get_current_editor_dir(current_addon_), filesystem::get_current_editor_dir(new_addon_id))) {
-		std::string main_cfg = filesystem::get_current_editor_dir(new_addon_id)+"/_main.cfg";
+	std::string old_dir = filesystem::get_current_editor_dir(current_addon_);
+	std::string new_dir = filesystem::get_current_editor_dir(new_addon_id);
+	if(addon_filename_legal(new_addon_id) && filesystem::rename_dir(old_dir, new_dir)) {
+		std::string main_cfg = new_dir + "/_main.cfg";
 		std::string main = filesystem::read_file(main_cfg);
 
 		// update paths
@@ -266,7 +273,7 @@ void context_manager::change_addon_id()
 
 		current_addon_ = new_addon_id;
 
-		for(context_ptr& context : map_contexts_) {
+		for(std::unique_ptr<map_context>& context : map_contexts_) {
 			context->set_addon_id(current_addon_);
 		}
 	}
@@ -673,9 +680,15 @@ void context_manager::resize_map_dialog()
 
 void context_manager::save_map_as_dialog()
 {
+	bool first_pick = false;
 	std::string input_name = get_map_context().get_filename();
 	if(input_name.empty()) {
-		input_name = filesystem::get_legacy_editor_dir()+"/maps";
+		first_pick = true;
+		if (editor_controller::current_addon_id_.empty()) {
+			input_name = filesystem::get_legacy_editor_dir() + "/maps";
+		} else {
+			input_name = filesystem::get_current_editor_dir(editor_controller::current_addon_id_) + "/maps";
+		}
 	}
 
 	gui2::dialogs::file_dialog dlg;
@@ -683,20 +696,35 @@ void context_manager::save_map_as_dialog()
 	dlg.set_title(_("Save Map As"))
 	   .set_save_mode(true)
 	   .set_path(input_name)
-	   .set_extension(".map");
+	   .set_extension(filesystem::map_extension)
+	   .set_extension(filesystem::mask_extension);
 
 	if(!dlg.show()) {
 		return;
 	}
 
-	std::size_t is_open = check_open_map(dlg.path());
+	boost::filesystem::path save_path(dlg.path());
+
+	// Show warning the first time user tries to save in a wrong folder
+	std::string last_folder = save_path.parent_path().filename().string();
+	if ((last_folder == "scenarios")
+		&& first_pick
+		&& (gui2::show_message(
+				_("Error"),
+				VGETTEXT("Do you really want to save $type1 in $type2 folder?", {{"type1", "map"}, {"type2", "scenarios"}}),
+				gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK))
+	{
+		return;
+	}
+
+	std::size_t is_open = check_open_map(save_path.string());
 	if(is_open < map_contexts_.size() && is_open != static_cast<unsigned>(current_context_index_)) {
-		gui2::show_transient_message(_("This map is already open."), dlg.path());
+		gui2::show_transient_message(_("This map is already open."), save_path.string());
 	}
 
 	std::string old_filename = get_map_context().get_filename();
 
-	get_map_context().set_filename(dlg.path());
+	get_map_context().set_filename(save_path.string());
 
 	if(!write_map(true)) {
 		get_map_context().set_filename(old_filename);
@@ -705,9 +733,11 @@ void context_manager::save_map_as_dialog()
 
 void context_manager::save_scenario_as_dialog()
 {
+	bool first_pick = false;
 	std::string input_name = get_map_context().get_filename();
 	if(input_name.empty()) {
-		input_name = filesystem::get_legacy_editor_dir()+"/scenarios";
+		first_pick = true;
+		input_name = filesystem::get_current_editor_dir(editor_controller::current_addon_id_) + "/scenarios";
 	}
 
 	gui2::dialogs::file_dialog dlg;
@@ -715,22 +745,36 @@ void context_manager::save_scenario_as_dialog()
 	dlg.set_title(_("Save Scenario As"))
 	   .set_save_mode(true)
 	   .set_path(input_name)
-	   .set_extension(".cfg")
+	   .set_extension(filesystem::wml_extension)
 	   .add_extra_path(desktop::GAME_EDITOR_MAP_DIR);
 
 	if(!dlg.show()) {
 		return;
 	}
 
-	std::size_t is_open = check_open_map(dlg.path());
+	boost::filesystem::path save_path(dlg.path());
+
+	// Show warning the first time user tries to save in a wrong folder
+	std::string last_folder = save_path.parent_path().filename().string();
+	if ((last_folder == "maps")
+		&& first_pick
+		&& (gui2::show_message(
+				_("Error"),
+				VGETTEXT("Do you really want to save $type1 in $type2 folder?", {{"type1", "scenario"}, {"type2", "maps"}}),
+				gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK))
+	{
+		return;
+	}
+
+	std::size_t is_open = check_open_map(save_path.string());
 	if(is_open < map_contexts_.size() && is_open != static_cast<unsigned>(current_context_index_)) {
-		gui2::show_transient_message(_("This scenario is already open."), dlg.path());
+		gui2::show_transient_message(_("This scenario is already open."), save_path.string());
 		return;
 	}
 
 	std::string old_filename = get_map_context().get_filename();
 
-	get_map_context().set_filename(dlg.path());
+	get_map_context().set_filename(save_path.string());
 
 	if(!write_scenario(true)) {
 		get_map_context().set_filename(old_filename);
@@ -804,34 +848,25 @@ void context_manager::fill_selection()
 	perform_refresh(editor_action_paint_area(get_map_context().map().selection(), get_selected_bg_terrain()));
 }
 
-void context_manager::save_all_maps(bool auto_save_windows)
+void context_manager::save_all_maps()
 {
 	int current = current_context_index_;
-	saved_windows_.clear();
 	for(std::size_t i = 0; i < map_contexts_.size(); ++i) {
 		switch_context(i);
-		std::string name = get_map_context().get_filename();
-		if(auto_save_windows) {
-			if(name.empty() || filesystem::is_directory(name)) {
-				std::ostringstream s;
-				s << default_dir_ << "/" << "window_" << i + 1;
-				if(!get_map_context().is_embedded() && !get_map_context().is_pure_map()) {
-					s << ".cfg";
-				} else {
-					s << ".map";
-				}
-				name = s.str();
-				get_map_context().set_filename(name);
-			}
-		}
-		saved_windows_.push_back(name);
 		save_map();
 	}
-
 	switch_context(current);
 }
 
-void context_manager::save_map()
+void context_manager::save_contexts()
+{
+	saved_contexts_.swap(map_contexts_);
+	std::swap(last_context_, current_context_index_);
+	create_blank_context();
+	switch_context(0, true);
+}
+
+void context_manager::save_map(bool show_confirmation)
 {
 	const std::string& name = get_map_context().get_filename();
 	if(name.empty() || filesystem::is_directory(name)) {
@@ -842,9 +877,9 @@ void context_manager::save_map()
 		}
 	} else {
 		if(get_map_context().is_pure_map()) {
-			write_map();
+			write_map(show_confirmation);
 		} else {
-			write_scenario();
+			write_scenario(show_confirmation);
 		}
 	}
 }
@@ -907,18 +942,20 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 		return;
 	}
 
-	if(filesystem::ends_with(filename, ".cfg")) {
-		if(editor_controller::current_addon_id_ == "") {
+	if(filesystem::is_cfg(filename)) {
+		if(editor_controller::current_addon_id_.empty()) {
 			// if no addon id has been set and the file being loaded is from an addon
 			// then use the file path to determine the addon rather than showing a dialog
-			editor_controller::current_addon_id_ = filesystem::get_addon_id_from_path(filename);
-			if(editor_controller::current_addon_id_ == "") {
+			if(auto addon_at_path = filesystem::get_addon_id_from_path(filename)) {
+				editor_controller::current_addon_id_ = addon_at_path.value();
+			} else {
 				editor_controller::current_addon_id_ = editor::initialize_addon();
 			}
+
 			set_addon_id(editor_controller::current_addon_id_);
 		}
 
-		if(editor_controller::current_addon_id_ == "") {
+		if(editor_controller::current_addon_id_.empty()) {
 			return;
 		}
 	}
@@ -926,7 +963,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)");
 	try {
 		{
-			context_ptr mc(new map_context(game_config_, filename, current_addon_));
+			auto mc = std::make_unique<map_context>(game_config_, filename, current_addon_);
 			if(mc->get_filename() != filename) {
 				if(new_context && check_switch_open_map(mc->get_filename())) {
 					return;
@@ -1009,11 +1046,11 @@ void context_manager::new_scenario(int width, int height, const t_translation::t
 template<typename... T>
 int context_manager::add_map_context(const T&... args)
 {
-	map_contexts_.emplace_back(new map_context(args...));
+	map_contexts_.emplace_back(std::make_unique<map_context>(args...));
 	return map_contexts_.size() - 1;
 }
 
-int context_manager::add_map_context_of(context_ptr&& mc)
+int context_manager::add_map_context_of(std::unique_ptr<map_context>&& mc)
 {
 	map_contexts_.emplace_back(std::move(mc));
 	return map_contexts_.size() - 1;
@@ -1022,11 +1059,10 @@ int context_manager::add_map_context_of(context_ptr&& mc)
 template<typename... T>
 void context_manager::replace_map_context(const T&... args)
 {
-	context_ptr new_mc(new map_context(args...));
-	replace_map_context_with(std::move(new_mc));
+	replace_map_context_with(std::move(std::make_unique<map_context>(args...)));
 }
 
-void context_manager::replace_map_context_with(context_ptr&& mc)
+void context_manager::replace_map_context_with(std::unique_ptr<map_context>&& mc)
 {
 	map_contexts_[current_context_index_].swap(mc);
 	refresh_on_context_change();
@@ -1034,19 +1070,23 @@ void context_manager::replace_map_context_with(context_ptr&& mc)
 
 void context_manager::create_default_context()
 {
-	if(saved_windows_.empty()) {
-		t_translation::terrain_code default_terrain =
+	if(saved_contexts_.empty()) {
+		create_blank_context();
+		switch_context(0, true);
+	} else {
+		saved_contexts_.swap(map_contexts_);
+		switch_context(last_context_, true);
+		last_context_ = 0;
+	}
+}
+
+void context_manager::create_blank_context()
+{
+	t_translation::terrain_code default_terrain =
 			t_translation::read_terrain_code(game_config::default_terrain);
 
-		const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
-		add_map_context(editor_map(44, 33, default_terrain), true, default_schedule, current_addon_);
-	} else {
-		for(const std::string& filename : saved_windows_) {
-			add_map_context(game_config_, filename, current_addon_);
-		}
-
-		saved_windows_.clear();
-	}
+	const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
+	add_map_context(editor_map(44, 33, default_terrain), true, default_schedule, current_addon_);
 }
 
 void context_manager::close_current_context()

@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2023 - 2024
-	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
+	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -45,7 +45,6 @@ multiline_text::multiline_text(const implementation::builder_styled_widget& buil
 	, text_y_offset_(0)
 	, text_height_(0)
 	, dragging_(false)
-	, line_num_(0)
 {
 	set_wants_mouse_left_double_click();
 
@@ -88,17 +87,17 @@ void multiline_text::update_canvas()
 	const unsigned start = get_selection_start();
 	const int length = static_cast<int>(get_selection_length());
 
-	// Set the cursor info.
+	// Set the composition info.
 	const unsigned edit_start = get_composition_start();
 	const int edit_length = get_composition_length();
 
 	set_maximum_length(max_input_length_);
 
-	// Set the composition info
 	unsigned comp_start_offset = 0;
 	unsigned comp_end_offset = 0;
+
 	if(edit_length == 0) {
-		// No nothing.
+		// Do nothing.
 	} else if(edit_length > 0) {
 		comp_start_offset = get_cursor_position(edit_start).x;
 		comp_end_offset = get_cursor_position(edit_start + edit_length).x;
@@ -107,12 +106,25 @@ void multiline_text::update_canvas()
 		comp_end_offset = get_cursor_position(edit_start).x;
 	}
 
-	set_line_num_from_offset();
+	// Set the selection info
+	unsigned start_offset = 0;
+	unsigned end_offset = 0;
+	if(length == 0) {
+		start_offset = start;
+		end_offset = start_offset;
+	} else if(length > 0) {
+		start_offset = start;
+		end_offset = start + length;
+	} else {
+		start_offset = start + length;
+		end_offset = start;
+	}
 
 	/***** Set in all canvases *****/
 
 	const int max_width = get_text_maximum_width();
 	const int max_height = get_text_maximum_height();
+	const point cpos = get_cursor_pos_from_index(start + length);
 
 	for(auto & tmp : get_canvases())
 	{
@@ -126,18 +138,11 @@ void multiline_text::update_canvas()
 
 		tmp.set_variable("editable", wfl::variant(is_editable()));
 
-		if (length < 0) {
-			tmp.set_variable("highlight_start", wfl::variant(get_byte_offset(start+length)));
-			tmp.set_variable("highlight_end", wfl::variant(get_byte_offset(start)));
-		} else {
-			tmp.set_variable("highlight_start", wfl::variant(get_byte_offset(start)));
-			tmp.set_variable("highlight_end", wfl::variant(get_byte_offset(start+length)));
-		}
+		tmp.set_variable("highlight_start", wfl::variant(start_offset));
+		tmp.set_variable("highlight_end", wfl::variant(end_offset));
 
-		tmp.set_variable("cursor_offset_x",
-						 wfl::variant(get_cursor_position(start + length).x));
-		tmp.set_variable("cursor_offset_y",
-						 wfl::variant(get_cursor_position(start + length).y));
+		tmp.set_variable("cursor_offset_x", wfl::variant(cpos.x));
+		tmp.set_variable("cursor_offset_y", wfl::variant(cpos.y));
 
 		tmp.set_variable("composition_offset", wfl::variant(comp_start_offset));
 		tmp.set_variable("composition_width", wfl::variant(comp_end_offset - comp_start_offset));
@@ -205,8 +210,6 @@ void multiline_text::handle_mouse_selection(point mouse, const bool start_select
 
 	offset += get_line_start_offset(line);
 
-	line_num_ = get_line_num_from_offset(offset);
-
 	set_cursor(offset, !start_selection);
 
 	update_canvas();
@@ -215,37 +218,12 @@ void multiline_text::handle_mouse_selection(point mouse, const bool start_select
 }
 
 unsigned multiline_text::get_line_end_offset(unsigned line_no) {
-	// Should be cached if needed
-	std::string line = get_lines().at(line_no);
-	// Get correct number of characters to move for multibyte utf8 string.
-	int line_size = utf8::size(line);
-	return get_line_start_offset(line_no) + line_size;
+	const auto line = get_line(line_no);
+	return (line->start_index + line->length);
 }
 
 unsigned multiline_text::get_line_start_offset(unsigned line_no) {
-	if (line_no > 0) {
-		return get_line_end_offset(line_no-1) + 1;
-	} else {
-		return 0;
-	}
-}
-
-unsigned multiline_text::get_line_num_from_offset(unsigned offset) {
-	unsigned line_start = 0, line_end = 0, line_no = 0;
-	for(unsigned i = 0; i < get_lines_count(); i++) {
-		line_start = get_line_start_offset(i);
-		line_end = get_line_end_offset(i);
-		if ((offset >= line_start) && (offset <= line_end)) {
-			line_no = i;
-			break;
-		}
-	}
-	return line_no;
-}
-
-void multiline_text::set_line_num_from_offset()
-{
-	line_num_ = get_line_num_from_offset(get_selection_start());
+	return get_line(line_no)->start_index;
 }
 
 void multiline_text::update_offsets()
@@ -341,16 +319,22 @@ void multiline_text::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 
 	handled = true;
 
-	set_line_num_from_offset();
 	size_t offset = get_selection_start();
+	const unsigned line_num = get_line_number(offset);
 
-	if (line_num_ < get_lines_count()-1) {
-		offset = offset
-				- get_line_start_offset(line_num_)
-				+ get_line_start_offset(line_num_+1);
+	if (line_num == get_lines_count()) {
+		return;
+	}
 
-		if (offset > get_line_end_offset(line_num_+1)) {
-			offset = get_line_end_offset(line_num_+1);
+	const unsigned line_start = get_line_start_offset(line_num);
+	const unsigned next_line_start = get_line_start_offset(line_num+1);
+	const unsigned next_line_end = get_line_end_offset(line_num+1);
+
+	if (line_num < get_lines_count()-1) {
+		offset = offset - line_start + next_line_start;
+
+		if (offset > next_line_end) {
+			offset = next_line_end;
 		}
 	}
 
@@ -370,16 +354,22 @@ void multiline_text::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 
 	handled = true;
 
-	set_line_num_from_offset();
 	size_t offset = get_selection_start();
+	const unsigned line_num = get_line_number(offset);
 
-	if (line_num_ > 0) {
-		offset = offset
-				- get_line_start_offset(line_num_)
-				+ get_line_start_offset(line_num_-1);
+	if (line_num == 0) {
+		return;
+	}
 
-		if (offset > get_line_end_offset(line_num_-1)) {
-			offset = get_line_end_offset(line_num_-1);
+	const unsigned line_start = get_line_start_offset(line_num);
+	const unsigned prev_line_start = get_line_start_offset(line_num-1);
+	const unsigned prev_line_end = get_line_end_offset(line_num-1);
+
+	if (line_num > 0) {
+		offset = offset - line_start + prev_line_start;
+
+		if (offset > prev_line_end) {
+			offset = prev_line_end;
 		}
 	}
 
@@ -412,10 +402,6 @@ void multiline_text::signal_handler_left_button_down(const event::ui_event event
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	/*
-	 * Copied from the base class see how we can do inheritance with the new
-	 * system...
-	 */
 	get_window()->keyboard_capture(this);
 	get_window()->mouse_capture();
 

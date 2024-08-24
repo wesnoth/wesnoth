@@ -26,12 +26,6 @@ namespace gui {
 class button : public widget
 {
 public:
-	struct error : public game::error {
-		error()
-			: game::error("GUI1 button error")
-			{}
-	};
-
 	enum TYPE { TYPE_PRESS, TYPE_CHECK, TYPE_TURBO, TYPE_IMAGE, TYPE_RADIO };
 	TYPE get_type() const { return type_; }
 

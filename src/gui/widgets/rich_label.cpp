@@ -517,7 +517,7 @@ void rich_label::set_label(const t_string& text)
 
 			// Start the text in a new paragraph if a newline follows after an image
 			if (is_image && (!floating)) {
-					if ((line.at(0) == '\n')) {
+					if (line.at(0) == '\n') {
 						x_ = 0;
 						(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
 						line = line.substr(1, line.size());

@@ -70,6 +70,7 @@ private:
 	void initialize_tabs(listbox& selector);
 	void set_resolution_list(menu_button& res_list);
 	void set_theme_list(menu_button& theme_list);
+	void set_gui2_theme_list(menu_button& theme_list);
 	listbox& setup_hotkey_list();
 
 	template<bool(*toggle_getter)(), bool(*toggle_setter)(bool), int(*vol_getter)(), void(*vol_setter)(int)>
@@ -95,6 +96,7 @@ private:
 	/** Special callback functions */
 	void handle_res_select();
 	void handle_theme_select();
+	void handle_gui2_theme_select();
 	void fullscreen_toggle_callback();
 	void add_hotkey_callback(listbox& hotkeys);
 	void remove_hotkey_callback(listbox& hotkeys);
@@ -105,8 +107,10 @@ private:
 
 	std::vector<point> resolutions_;
 	std::vector<theme_info> themes_;
+	std::vector<std::string> gui2_themes_;
 
 	int last_selected_item_;
+	unsigned current_gui_theme_;
 
 	std::vector<double> accl_speeds_;
 

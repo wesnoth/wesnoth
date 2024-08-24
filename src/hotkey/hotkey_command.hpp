@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include "global.hpp"
 #include "tooltips.hpp"
 #include "tstring.hpp"
 
@@ -100,6 +101,9 @@ enum HOTKEY_COMMAND {
 	HOTKEY_MINIMAP_CODING_TERRAIN, HOTKEY_MINIMAP_CODING_UNIT,
 	HOTKEY_MINIMAP_DRAW_UNITS, HOTKEY_MINIMAP_DRAW_VILLAGES, HOTKEY_MINIMAP_DRAW_TERRAIN,
 
+	// Multiplayer
+	HOTKEY_MP_START_GAME,
+
 	/* Gui2 specific hotkeys. */
 	TITLE_SCREEN__RELOAD_WML,
 	TITLE_SCREEN__NEXT_TIP,
@@ -130,6 +134,8 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDITOR_SCHEDULE,
 	HOTKEY_EDITOR_LOCAL_TIME,
 	HOTKEY_EDITOR_UNIT_FACING,
+
+	HOTKEY_EDITOR_HELP_TEXT_SHOWN,
 
 	// Unit
 	HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT, HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE,
@@ -193,6 +199,8 @@ enum HOTKEY_COMMAND {
 	// Addons
 	HOTKEY_EDITOR_PBL,
 	HOTKEY_EDITOR_CHANGE_ADDON_ID,
+	HOTKEY_EDITOR_SELECT_ADDON,
+	HOTKEY_EDITOR_OPEN_ADDON,
 
 	// Scenario
 	HOTKEY_EDITOR_SCENARIO_EDIT,
@@ -305,7 +313,7 @@ private:
 const std::map<std::string_view, hotkey::hotkey_command>& get_hotkey_commands();
 
 /** returns the hotkey_command with the given name */
-const hotkey_command& get_hotkey_command(const std::string& command);
+NOT_DANGLING const hotkey_command& get_hotkey_command(const std::string& command);
 
 bool is_scope_active(scope s);
 bool is_scope_active(hk_scopes s);

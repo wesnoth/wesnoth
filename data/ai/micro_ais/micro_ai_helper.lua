@@ -21,7 +21,7 @@ local function is_number(value, check_int, ai_type, name)
         if (number ~= math.floor(number)) then
             return false
         elseif (math.type(number) ~= 'integer') then
-            str = "[micro_ai] tag (" .. ai_type .. ") parameter '" .. name .. "' must be an integer. It has an integer representation, but is provided in floating-point format."
+            local str = "[micro_ai] tag (" .. ai_type .. ") parameter '" .. name .. "' must be an integer. It has an integer representation, but is provided in floating-point format."
             warn(str)
             std_print(str .. ' (see Lua console for stack trace)')
         end
@@ -365,7 +365,7 @@ function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_k
                 end
             end
             if is_invalid then
-                str = "[micro_ai] tag (" .. cfg.ai_type .. ") contains invalid parameter: [" .. t[1] .. "]"
+                local str = "[micro_ai] tag (" .. cfg.ai_type .. ") contains invalid parameter: [" .. t.tag .. "]"
                 warn(str)
                 std_print(str .. ' (see Lua console for stack trace)')
             end

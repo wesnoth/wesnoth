@@ -23,6 +23,7 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "map/label.hpp"
 #include "preferences/preferences.hpp"
 #include "serialization/binary_or_text.hpp"
@@ -190,13 +191,17 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	}
 
 	// 0.3 Not a .map or .cfg file
-	if(!filesystem::ends_with(filename, ".map") && !filesystem::ends_with(filename, ".cfg") && !filesystem::ends_with(filename, ".mask")) {
+	if(!filesystem::is_map(filename)
+		&& !filesystem::is_mask(filename)
+		&& !filesystem::is_cfg(filename))
+	{
 		std::string message = _("File does not have .map, .cfg, or .mask extension");
 		throw editor_map_load_exception(filename, message);
 	}
 
 	// 1.0 Pure map data
-	if(filesystem::ends_with(filename, ".map") || filesystem::ends_with(filename, ".mask")) {
+	if(filesystem::is_map(filename)
+		|| filesystem::is_mask(filename)) {
 		LOG_ED << "Loading map or mask file";
 		map_ = editor_map::from_string(file_string); // throws on error
 		pure_map_ = true;
@@ -234,17 +239,17 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 					const std::string& macro_argument = map_data_loc.substr(2, map_data_loc.size()-4);
 					LOG_ED << "Map looks like a scenario, trying {" << macro_argument << "}";
 
-					std::string new_filename = filesystem::get_wml_location(macro_argument, filesystem::directory_name(filesystem::get_short_wml_path(filename_)));
+					auto new_filename = filesystem::get_wml_location(macro_argument, filesystem::directory_name(filesystem::get_short_wml_path(filename_)));
 
-					if(new_filename.empty()) {
+					if(!new_filename) {
 						std::string message = _("The map file looks like a scenario, but the map_data value does not point to an existing file")
 											+ std::string("\n") + macro_argument;
 						throw editor_map_load_exception(filename, message);
 					}
 
-					LOG_ED << "New filename is: " << new_filename;
+					LOG_ED << "New filename is: " << new_filename.value();
 
-					filename_ = new_filename;
+					filename_ = new_filename.value();
 					file_string = filesystem::read_file(filename_);
 					map_ = editor_map::from_string(file_string);
 					pure_map_ = true;
@@ -384,13 +389,13 @@ config map_context::convert_scenario(const config& old_scenario)
 	config& multiplayer = cfg.add_child("multiplayer");
 	multiplayer.append_attributes(old_scenario);
 	std::string map_data = multiplayer["map_data"];
-	std::string separate_map_file = filesystem::get_current_editor_dir(addon_id_) + "/maps/" + filesystem::base_name(filename_, true) + ".map";
+	std::string separate_map_file = filesystem::get_current_editor_dir(addon_id_) + "/maps/" + filesystem::base_name(filename_, true) + filesystem::map_extension;
 
 	// check that there's embedded map data, since that's how the editor used to save scenarios
 	if(!map_data.empty()) {
 		// check if a .map file already exists as a separate standalone .map in the editor folders or if a .map file already exists in the add-on
 		if(filesystem::file_exists(separate_map_file)) {
-			separate_map_file = filesystem::get_current_editor_dir(addon_id_) + "/maps/" + filesystem::get_next_filename(filesystem::base_name(filename_, true), ".map");
+			separate_map_file = filesystem::get_current_editor_dir(addon_id_) + "/maps/" + filesystem::get_next_filename(filesystem::base_name(filename_, true), filesystem::map_extension);
 		}
 		multiplayer["id"] = filesystem::base_name(separate_map_file, true);
 
@@ -660,8 +665,8 @@ config map_context::to_config()
 	scenario["random_start_time"] = random_time_;
 
 	// write out the map data
-	scenario["map_file"] = scenario_id_ + ".map";
-	filesystem::write_file(filesystem::get_current_editor_dir(addon_id_) + "/maps/" + scenario_id_ + ".map", map_.write());
+	scenario["map_file"] = scenario_id_ + filesystem::map_extension;
+	filesystem::write_file(filesystem::get_current_editor_dir(addon_id_) + "/maps/" + scenario_id_ + filesystem::map_extension, map_.write());
 
 	// find or add the editor's start event
 	config& event = scenario.add_child("event");
@@ -723,6 +728,10 @@ config map_context::to_config()
 	}
 
 	// [unit]s
+	config traits;
+	preproc_map traits_map;
+	read(traits, *(preprocess_file(game_config::path+"/data/core/macros/traits.cfg", &traits_map)));
+
 	for(const auto& unit : units_) {
 		config& u = event.add_child("unit");
 
@@ -744,6 +753,15 @@ config map_context::to_config()
 		if(unit.unrenamable()) {
 			u["unrenamable"] = unit.unrenamable();
 		}
+
+		if(unit.loyal()) {
+			config trait_loyal;
+			read(trait_loyal, traits_map["TRAIT_LOYAL"].value);
+			u.append(trait_loyal);
+		}
+		//TODO this entire block could also be replaced by unit.write(u, true)
+		//however, the resultant config is massive and contains many attributes we don't need.
+		//need to find a middle ground here.
 	}
 
 	// [side]s
@@ -800,8 +818,7 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 	} catch(const filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
-		//TODO : Needs to be replaced with a better message later.
-		const std::string msg = VGETTEXT("Could not save the scenario: $msg", symbols);
+		const std::string msg = VGETTEXT("Could not save time schedule: $msg", symbols);
 		throw editor_map_save_exception(msg);
 	}
 
@@ -820,6 +837,7 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 		std::stringstream wml_stream;
 
 		wml_stream
+			<< "#textdomain " << current_textdomain << "\n"
 			<< "#\n"
 			<< "# This file was generated using the scenario editor.\n"
 			<< "#\n"
@@ -834,14 +852,13 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 
 		if(!wml_stream.str().empty()) {
 			filesystem::write_file(schedule_path, wml_stream.str());
+			gui2::show_transient_message("", _("Time schedule saved."));
 		}
 
 	} catch(const filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
-		//TODO : Needs to be replaced with a better message later.
-		const std::string msg = VGETTEXT("Could not save the scenario: $msg", symbols);
-
+		const std::string msg = VGETTEXT("Could not save time schedule: $msg", symbols);
 		throw editor_map_save_exception(msg);
 	}
 }

@@ -110,15 +110,6 @@ private:
 	value_type value_;
 
 public:
-	/** Default implementation, but defined out-of-line for efficiency reasons. */
-	config_attribute_value();
-	/** Default implementation, but defined out-of-line for efficiency reasons. */
-	~config_attribute_value();
-	/** Default implementation, but defined out-of-line for efficiency reasons. */
-	config_attribute_value(const config_attribute_value &);
-	/** Default implementation, but defined out-of-line for efficiency reasons. */
-	config_attribute_value &operator=(const config_attribute_value &);
-
 	// Numeric assignments:
 	config_attribute_value& operator=(bool v);
 	config_attribute_value& operator=(int v);
@@ -150,6 +141,12 @@ public:
 	std::string str(const std::string& fallback = "") const;
 	t_string t_str() const;
 
+	bool to(const bool def) const { return to_bool(def); }
+	int to(int def) const { return to_int(def); }
+	unsigned to(unsigned def) const { return to_unsigned(def); }
+	double to(double def) const { return to_double(def); }
+	std::string to(const std::string& def) const { return str(def); }
+
 	// Implicit conversions:
 	operator int() const { return to_int(); }
 	operator std::string() const { return str(); }
@@ -162,7 +159,6 @@ public:
 	/** Tests for an attribute that either was never set or was set to "". */
 	bool empty() const;
 
-
 	// Comparisons:
 	bool operator==(const config_attribute_value &other) const;
 	bool operator!=(const config_attribute_value &other) const
@@ -170,39 +166,36 @@ public:
 		return !operator==(other);
 	}
 
-	bool equals(const std::string& str) const;
-	// These function prevent t_string creation in case of c["a"] == "b" comparisons.
-	// The templates are needed to prevent using these function in case of c["a"] == 0 comparisons.
-	template<typename T>
-	std::enable_if_t<std::is_same_v<const std::string, std::add_const_t<T>>, bool>
-		friend operator==(const config_attribute_value &val, const T &str)
+	bool operator==(bool comp) const
 	{
-		return val.equals(str);
+		const bool has_bool =
+			utils::holds_alternative<yes_no>(value_) ||
+			utils::holds_alternative<true_false>(value_);
+		return has_bool && to_bool() == comp;
 	}
 
 	template<typename T>
-	std::enable_if_t<std::is_same_v<const char*, T>, bool>
-		friend operator==(const config_attribute_value& val, T str)
+	bool operator==(const T& comp) const
 	{
-		return val.equals(std::string(str));
-	}
-
-	template<typename T>
-	bool friend operator==(const T& str, const config_attribute_value& val)
-	{
-		return val == str;
+		if constexpr(std::is_convertible_v<T, std::string>) {
+			config_attribute_value v;
+			v = comp;
+			return *this == v;
+		} else {
+			return utils::holds_alternative<T>(value_) && T(*this) == comp;
+		}
 	}
 
 	template<typename T>
 	bool friend operator!=(const config_attribute_value& val, const T& str)
 	{
-		return !(val == str);
+		return !val.operator==(str);
 	}
 
 	template<typename T>
 	bool friend operator!=(const T &str, const config_attribute_value& val)
 	{
-		return !(val == str);
+		return !val.operator==(str);
 	}
 
 	// Streaming:

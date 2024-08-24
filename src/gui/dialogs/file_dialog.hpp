@@ -114,20 +114,26 @@ public:
 	file_dialog& set_filename(const std::string& value);
 
 	/**
-	 * Sets the default file extension for file names in save mode.
+	 * Sets allowed file extensions for file names in save mode.
 	 *
 	 * When this is set to a non-empty string and save mode is active, selecting
 	 * file entries will cause their name portions to be highlighted in the name
 	 * text box if their extensions match the provided template, and any time the
 	 * text box is cleared it will position the cursor before the extension as a
-	 * hint for the user.
+	 * hint for the user. Additionally, the user will not be able to save the file
+	 * with a wrong extension if this is set.
+	 *
+	 * In case of multiple extension, the first set extension is the default.
 	 *
 	 * The value provided to this method should be preceded by a dot if
 	 * applicable (e.g. ".cfg").
 	 */
 	file_dialog& set_extension(const std::string& value)
 	{
-		extension_ = value;
+		if (extension_.empty()) {
+			extension_ = value;
+		}
+		extensions_.push_back(value);
 		return *this;
 	}
 
@@ -206,6 +212,8 @@ private:
 	bool read_only_;
 	bool save_mode_;
 
+	std::vector<std::string> extensions_;
+
 	std::vector<std::string> dir_files_;
 	std::vector<std::string> dir_subdirs_;
 
@@ -256,6 +264,11 @@ private:
 	bool process_textbox_submit();
 
 	bool process_submit_common(const std::string& name);
+
+	/**
+	 * Check if the filename is valid and disable save button if invalid
+	 */
+	void check_filename();
 
 	/**
 	 * Updates the bookmarks bar state to reflect the internal state.

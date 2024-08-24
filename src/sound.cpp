@@ -196,7 +196,7 @@ void flush_cache()
 	music_cache.clear();
 }
 
-std::optional<unsigned int> get_current_track_index()
+utils::optional<unsigned int> get_current_track_index()
 {
 	if(current_track_index >= current_track_list.size()){
 		return {};
@@ -524,7 +524,7 @@ void close_sound()
 void reset_sound()
 {
 	bool music = prefs::get().music_on();
-	bool sound = prefs::get().sound_on();
+	bool sound = prefs::get().sound();
 	bool UI_sound = prefs::get().ui_sound_on();
 	bool bell = prefs::get().turn_bell();
 
@@ -645,8 +645,10 @@ static void play_new_music()
 		return;
 	}
 
-	const std::string localized = filesystem::get_localized_path(current_track->file_path());
-	const std::string& filename = localized.empty() ? current_track->file_path() : localized;
+	std::string filename = current_track->file_path();
+	if(auto localized = filesystem::get_localized_path(filename)) {
+		filename = localized.value();
+	}
 
 	auto itor = music_cache.find(filename);
 	if(itor == music_cache.end()) {
@@ -938,11 +940,11 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		}
 
 		temp_chunk.group = group;
-		const std::string& filename = filesystem::get_binary_file_location("sounds", file);
-		const std::string localized = filesystem::get_localized_path(filename);
+		const auto filename = filesystem::get_binary_file_location("sounds", file);
+		const auto localized = filesystem::get_localized_path(filename.value_or(""));
 
-		if(!filename.empty()) {
-			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(localized.empty() ? filename : localized);
+		if(filename) {
+			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(localized.value_or(filename.value()));
 			temp_chunk.set_data(Mix_LoadWAV_RW(rwops.release(), true)); // SDL takes ownership of rwops
 		} else {
 			ERR_AUDIO << "Could not load sound file '" << file << "'.";
@@ -950,7 +952,7 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		}
 
 		if(temp_chunk.get_data() == nullptr) {
-			ERR_AUDIO << "Could not load sound file '" << filename << "': " << Mix_GetError();
+			ERR_AUDIO << "Could not load sound file '" << filename.value() << "': " << Mix_GetError();
 			throw chunk_load_exception();
 		}
 
@@ -1032,14 +1034,14 @@ static void play_sound_internal(const std::string& files,
 
 void play_sound(const std::string& files, channel_group group, unsigned int repeats)
 {
-	if(prefs::get().sound_on()) {
+	if(prefs::get().sound()) {
 		play_sound_internal(files, group, repeats);
 	}
 }
 
 void play_sound_positioned(const std::string& files, int id, int repeats, unsigned int distance)
 {
-	if(prefs::get().sound_on()) {
+	if(prefs::get().sound()) {
 		play_sound_internal(files, SOUND_SOURCES, repeats, distance, id);
 	}
 }
@@ -1055,7 +1057,7 @@ void play_bell(const std::string& files)
 // Play timer with separate volume setting
 void play_timer(const std::string& files, int loop_ticks, int fadein_ticks)
 {
-	if(prefs::get().sound_on()) {
+	if(prefs::get().sound()) {
 		play_sound_internal(files, SOUND_TIMER, 0, 0, -1, loop_ticks, fadein_ticks);
 	}
 }

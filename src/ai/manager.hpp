@@ -55,7 +55,7 @@ public:
 
 	ai_composite& get_ai_ref();
 
-	const std::string describe_ai();
+	std::string describe_ai() const;
 
 	config to_config() const;
 
@@ -64,11 +64,11 @@ public:
 
 	void append_ai(const config& cfg);
 
-	const std::string get_ai_overview();
+	std::string get_ai_overview();
 
-	const std::string get_ai_structure();
+	std::string get_ai_structure();
 
-	const std::string get_ai_identifier() const;
+	std::string get_ai_identifier() const;
 
 	component* get_component(component *root, const std::string &path); // Ai debug method
 

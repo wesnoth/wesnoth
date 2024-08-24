@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-26 02:28 UTC\n"
-"PO-Revision-Date: 2024-05-22 15:36+0800\n"
+"POT-Creation-Date: 2024-06-17 15:25 UTC\n"
+"PO-Revision-Date: 2024-06-28 13:57+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -696,7 +696,7 @@ msgid ""
 "Next in our story, Rugnur retreated into the caves of Knalga. But the elves "
 "pressed on and would enter the caves shortly."
 msgstr ""
-"接下去，在我们的故事里，拉格纳撤退到了纳尔伽洞穴之中。但精灵压在后面，马上就"
+"接下去，在我们的故事里，拉格纳撤退到了纳尔迦洞穴之中。但精灵压在后面，马上就"
 "要进洞了。"
 
 #. [objective]: condition=win
@@ -2733,12 +2733,6 @@ msgstr "那你打算怎么办到呢？这山上有大群精灵，要杀我们。
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:563
-#, fuzzy
-#| msgid ""
-#| "I'm aware! Close the gates and keep them out! It should be easy to come "
-#| "up with a plan to outwit them later. Meanwhile, since the Shorbear's rune "
-#| "workshops are in here, you and your runecrafters might as well make the "
-#| "sceptre now."
 msgid ""
 "I’m aware! Close the gates and keep them out! It should be easy to come up "
 "with a plan to outwit them later. Meanwhile, since the Shorbear’s rune "
@@ -3020,11 +3014,16 @@ msgstr ""
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:457
+#, fuzzy
+#| msgid ""
+#| "The country between here and Knalga will be swarming with elves. We had "
+#| "better head back to the abandoned mines north of the Arkan-thoria, where "
+#| "we gathered our gold and coal. At least there Alanin will have some hope "
+#| "of finding us."
 msgid ""
 "The country between here and Knalga will be swarming with elves. We had "
 "better head back to the abandoned mines north of the Arkan-thoria, where we "
-"gathered our gold and coal. At least there Alanin will have some hope of "
-"finding us."
+"gathered our gold and coal."
 msgstr ""
 "这里和纳尔迦之间的地区会有很多精灵四处活动。我们最好掉头回到阿坎-索丽亚北边的"
 "废矿坑，就是我们采集黄金和煤的地方。至少在那儿阿拉宁有找到我们的希望。"
@@ -3309,16 +3308,12 @@ msgstr ""
 
 #. [message]: speaker=Hadlin  # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:588
-#, fuzzy
-#| msgid ""
-#| "I see. Well, come on in. I doubt they would be able to capture this fort, "
-#| "even if they did want to start a war, which I doubt."
 msgid ""
 "I see. Well, come on in. They could never capture this fort, even if they "
 "did want to start a war, which I doubt."
 msgstr ""
-"我知道了。好，快点进来。我不信他们有能力夺取这个要塞，即使他们发动一场战争，"
-"我不信他们会这么干。"
+"我知道了。好，快点进来。他们没有能力夺取这个要塞，即使他们发动一场战争，我不"
+"信他们会这么干。"
 
 #. [scenario]: id=8_The_Dragon
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:3
@@ -3444,18 +3439,13 @@ msgstr "您是哪位巨龙？"
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:400
-#, fuzzy
-#| msgid ""
-#| "I am Khrakrahs, greatest dragon of all time! Haldric killed Shek’kahan my "
-#| "brother, but he was weaker than me, and you will not find me so easy to "
-#| "defeat. Now get out of my volcano!"
 msgid ""
 "I am Khrakrahs, greatest dragon of all time! Haldric killed Shek’kahan my "
 "rival, but he was weaker than me, and you will not find me so easy to "
 "defeat. Now get out of my volcano!"
 msgstr ""
-"我是柯拉卡斯，历史上最伟大的龙！哈德里克杀了我的兄弟瑟卡汉，但他比我弱，你会"
-"发现我可不是那么容易被击败的。现在从我的火山里滚出去！"
+"我是柯拉卡斯，历史上最伟大的龙！哈德里克杀了我的对手沙克•卡悍，但他比我弱，你"
+"会发现我可不是那么容易被击败的。现在从我的火山里滚出去！"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:404
@@ -4625,17 +4615,12 @@ msgstr "嘎啊……"
 
 #. [note]
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:108
-#, fuzzy
-#| msgid ""
-#| "Thursagan's Rune Mastery: while Thursagan is on a keep, selecting an "
-#| "adjacent dwarf opens a dialog for obtaining temporary upgrades which last "
-#| "until the end of the scenario."
 msgid ""
 "Thursagan’s Rune Mastery: while Thursagan is on a keep, selecting an "
 "adjacent dwarf opens a dialog for obtaining temporary upgrades which last "
 "until the end of the scenario."
 msgstr ""
-"瑟萨冈的符文掌握：当瑟萨冈位于主楼时，选择相邻的矮人将打开对话框，可获得临时"
+"瑟萨冈的符文力量：当瑟萨冈位于主楼时，选择相邻的矮人将打开对话框，可获得临时"
 "升级，效果持续到场景结束。"
 
 #~ msgid "Ealin"

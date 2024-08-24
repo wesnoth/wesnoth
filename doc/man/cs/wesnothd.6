@@ -26,7 +26,7 @@ wesnothd\ – Bitva o \fBWesnoth\fP\ – síťový server pro hru více hráčů
 .
 .SH POUŽITÍ
 .
-\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|]
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
@@ -99,9 +99,9 @@ Zda bránit uživatelům, kteří nejsou registrováni použitým \fBuser_handle
 aby se přihlásili. (výchozí hodnota: false)
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
-patterns are supported. See \fBglob\fP(7)  for more details.  Default values
-(used if nothing is specified) are:
+Jména/přezdívky, jež server nepřijímá. Podporovány jsou zástupné znaky \fB*\fP
+a\ \fB?\fP. Pro více podrobností viz \fBglob\fP(7). Výchozí hodnoty (použité, když
+není nic určeno) jsou:
 \fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
@@ -125,8 +125,7 @@ hodnota: \fB10\fP vteřin)
 Zpráva dne.
 .TP 
 \fBpasswd\fP
-Heslo pro získání administrátorských práv. (Přes \fB/query admin
-\fP\fIpassword\fP.)
+Heslo pro získání administrátorských práv. (Přes \fB/query admin \fP\fIpassword\fP.)
 .TP 
 \fBreplay_save_path\fP
 Adresář, do nějž server ukládá záznamy her. (Nezapomeň na / na konci!)
@@ -237,8 +236,8 @@ Název tabulky, do které bude wesnothd ukládat svá vlastní data o\ hráčíc
 hře.
 .TP 
 \fBdb_game_content_info_table\fP
-The name of the table in which wesnothd will save its own data about game
-content (scenario/era/modifications) used in a game.
+Název tabulky, do které bude wesnothd ukládat svá vlastní data o\ herním
+obsahu (scénáři/éře/modifikacích) použitém ve hře.
 .TP 
 \fBdb_user_group_table\fP
 Název tabulky, do které tvé phpBB fórum ukládá svá data o\ skupinách
@@ -246,8 +245,8 @@ uživatelů. S\ největší pravděpodobností to bude
 <table\-prefix>_user_group (např. phpbb3_user_group).
 .TP 
 \fBdb_tournament_query\fP
-The SQL query to find tournaments to announce on login. Should return
-tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
+SQL dotaz na vyhledání turnajů, které se mají vypsat při přihlášení. Měl by
+vrátit \fBnázev\fP, \fBstav\fP a \fBurl\fP turnaje.
 .TP 
 \fBdb_connection_history_table\fP
 Název tabulky pro ukládání časů přihlášení a\ odhlášení. Je také použita pro

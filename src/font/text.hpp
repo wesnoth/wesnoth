@@ -161,8 +161,8 @@ public:
 	/**
 	 * Gets the location for the cursor, in drawing coordinates.
 	 *
-	 * @param column              The column offset of the cursor.
-	 * @param line                The line offset of the cursor.
+	 * @param column              The column character index of the cursor.
+	 * @param line                The line character index of the cursor.
 	 *
 	 * @returns                   The position of the top of the cursor. It the
 	 *                            requested location is out of range 0,0 is
@@ -172,16 +172,15 @@ public:
 		const unsigned column, const unsigned line = 0) const;
 
 	/**
-	 * Gets the correct number of columns to move the cursor
-	 * from Pango. Needed in case the text contains multibyte
-	 * characters. Return value == column if the text has no
-	 * multibyte characters.
+	 * Gets the location for the cursor, in drawing coordinates.
 	 *
-	 * @param column              The column offset of the cursor.
+	 * @param offset              The column byte index of the cursor.
 	 *
-	 * @returns                   Corrected column offset.
+	 * @returns                   The position of the top of the cursor. It the
+	 *                            requested location is out of range 0,0 is
+	 *                            returned.
 	 */
-	int get_byte_offset(const unsigned column) const;
+	point get_cursor_pos_from_index(const unsigned offset) const;
 
 	/**
 	 * Get maximum length.
@@ -234,6 +233,25 @@ public:
 	 *       least once.
 	 */
 	std::vector<std::string> get_lines() const;
+
+	/**
+	 * Get a specific line from the pango layout
+	 *
+	 * @param index    the line number of the line to retrieve
+	 *
+	 * @returns        the PangoLayoutLine* corresponding to line number index
+	 */
+	PangoLayoutLine* get_line(int index);
+
+	/**
+	 * Given a byte index, find out at which line the corresponding character
+	 * is located.
+	 *
+	 * @param offset   the byte index
+	 *
+	 * @returns        the line number corresponding to the given index
+	 */
+	int get_line_num_from_offset(const unsigned offset);
 
 	/**
 	 * Get number of lines in the text.
@@ -424,9 +442,6 @@ private:
 	 */
 	PangoAttrList* global_attribute_list_;
 
-	/** Hash for the global_attribute_list_ */
-	std::size_t attrib_hash_;
-
 	/** The pixel scale, used to render high-DPI text. */
 	int pixel_scale_;
 
@@ -435,9 +450,6 @@ private:
 
 	/** Calculates surface size. */
 	PangoRectangle calculate_size(PangoLayout& layout) const;
-
-	/** Allow specialization of std::hash for pango_text. */
-	friend struct std::hash<pango_text>;
 
 	/**
 	 * Equivalent to create_surface(viewport), where the viewport's top-left is
@@ -545,14 +557,3 @@ int get_max_height(unsigned size, font::family_class fclass = font::FONT_SANS_SE
 constexpr float get_line_spacing_factor() { return 1.3f; };
 
 } // namespace font
-
-// Specialize std::hash for pango_text
-namespace std
-{
-template<>
-struct hash<font::pango_text>
-{
-	std::size_t operator()(const font::pango_text&) const;
-};
-
-} // namespace std

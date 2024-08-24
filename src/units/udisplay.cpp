@@ -136,7 +136,7 @@ int move_unit_between(const map_location& a,
 		display& disp)
 {
 	if ( disp.fogged(a) && disp.fogged(b) ) {
-		return INT_MIN;
+		return std::numeric_limits<int>::min();
 	}
 
 	temp_unit->set_location(a);
@@ -178,7 +178,7 @@ unit_mover::unit_mover(const std::vector<map_location>& path, bool animate, bool
 	animate_(animate),
 	force_scroll_(force_scroll),
 	animator_(),
-	wait_until_(INT_MIN),
+	wait_until_(std::numeric_limits<int>::min()),
 	shown_unit_(),
 	path_(path),
 	current_(0),
@@ -393,10 +393,10 @@ void unit_mover::proceed_to(unit_ptr u, std::size_t path_index, bool update, boo
  */
 void unit_mover::wait_for_anims()
 {
-	if ( wait_until_ == INT_MAX )
+	if ( wait_until_ == std::numeric_limits<int>::max() )
 		// Wait for end (not currently used, but still supported).
 		animator_.wait_for_end();
-	else if ( wait_until_ != INT_MIN ) {
+	else if ( wait_until_ != std::numeric_limits<int>::min() ) {
 		// Wait until the specified time (used for normal movement).
 		animator_.wait_until(wait_until_);
 		// debug code, see unit_frame::redraw()
@@ -417,7 +417,7 @@ void unit_mover::wait_for_anims()
 	}
 
 	// Reset data.
-	wait_until_ = INT_MIN;
+	wait_until_ = std::numeric_limits<int>::min();
 	animator_.clear();
 
 	update_shown_unit();
@@ -622,7 +622,7 @@ void unit_attack(display * disp, game_board & board,
 	int def_hitpoints = defender.hitpoints();
 	const_attack_ptr weapon = attack.shared_from_this();
 	auto ctx = weapon->specials_context(attacker.shared_from_this(), defender.shared_from_this(), a, b, attacking, secondary_attack);
-	std::optional<decltype(ctx)> opp_ctx;
+	utils::optional<decltype(ctx)> opp_ctx;
 
 	if(secondary_attack) {
 		opp_ctx.emplace(secondary_attack->specials_context(defender.shared_from_this(), attacker.shared_from_this(), b, a, !attacking, weapon));

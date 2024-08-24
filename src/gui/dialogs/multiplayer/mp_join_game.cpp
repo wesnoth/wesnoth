@@ -413,7 +413,7 @@ void mp_join_game::generate_side_list()
 		item["label"] = description;
 		data.emplace("leader_type", item);
 
-		item["label"] = (formatter() << "<span color='#a69275'>" << side["faction_name"] << "</span>").str();
+		item["label"] = side["faction_name"];
 		data.emplace("leader_faction", item);
 
 		std::string gender_icon = "icons/icon-random.png";

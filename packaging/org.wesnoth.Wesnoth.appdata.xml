@@ -2,9 +2,6 @@
 <!-- Copyright 2017 The Battle for Wesnoth Project -->
 <component type="desktop">
   <id>org.wesnoth.Wesnoth</id>
-  <provides>
-    <id>org.wesnoth.Wesnoth.desktop</id>
-  </provides>
   <replaces>
     <id>org.wesnoth.Wesnoth.desktop</id>
   </replaces>
@@ -111,6 +108,7 @@
   <provides>
     <binary>wesnoth</binary>
     <binary>wesnothd</binary>
+    <id>org.wesnoth.Wesnoth.desktop</id>
   </provides>
   <translation type="gettext">wesnoth</translation>
   <translation type="gettext">wesnoth-lib</translation>

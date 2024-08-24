@@ -63,7 +63,8 @@ void unit_advance::pre_show(window& window)
 		// This checks if we've finished iterating over the last unit type advancements
 		// and are into the modification-based advancements.
 		if(i >= last_real_advancement_) {
-			const auto& back = sample.get_modifications().child_range("advancement").back();
+			const auto range = sample.get_modifications().child_range("advancement");
+			const auto& back = range.back();
 
 			if(back.has_attribute("image")) {
 				image_string = back["image"].str();

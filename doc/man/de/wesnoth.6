@@ -67,14 +67,8 @@ angegeben ist, wird das erste Szenario gestartet.
 \fBstart\fP\-Ereignis.
 .TP 
 \fB\-\-clock\fP
-(Entwickleroption) Fügt dem Hauptmenü einen neuen Knopf hinzu, mit welchem
-man eine Uhr mit GUI2\-Elementen zum Testen aufrufen kann.
-.TP 
-\fB\-\-config\-dir\fP\fI\ Name\fP
-Veraltete Option, bitte \fB\-\-userdata\-dir\fP benutzen.
-.TP 
-\fB\-\-config\-path\fP
-Veraltete Option, bitte \fB\-\-userdata\-path\fP benutzen.
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ Kern\-ID\fP
 Ersetzt den geladenen Kern mit dem angegebenen.
@@ -124,8 +118,7 @@ der Editor mit einem Dialog zum Laden einer Karte aus eben diesem
 Verzeichnis gestartet.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ Sprache\fP
-Benutzt für diese Sitzung die \fISprache\fP (Symbol). Beispiel: \fB\-\-language
-ang_GB@latin\fP.
+Benutzt für diese Sitzung die \fISprache\fP (Symbol). Beispiel: \fB\-\-language ang_GB@latin\fP.
 .TP 
 \fB\-\-log\-\fP\fIStufe\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
 Setzt die \fIStufe\fP der Logausgabe. Verwenden Sie \fBall\fP, um sämtliche
@@ -152,8 +145,12 @@ WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
 in the logs directory under the userdata folder.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
-whether implicit or explicit.
+Log\-Ausgabe wird in eine Datei geschrieben. Annulliert den Effekt von
+\-\-no\-log\-to\-file egal ob implizit und explizit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 Für Windows, wenn mit \-\-no\-log\-to\-file genutzt, resultiert in Schreiben der
@@ -232,8 +229,7 @@ angegeben wird, wird dieses basierend auf den bekannten
 Vorverarbeitungsregeln rekursiv verarbeitet. Für jede Eingabedatei wird im
 Zielverzeichnis eine normale .cfg\-Datei und eine vorverarbeitete .cfg\-Datei
 erzeugt. Die Kern\-Makros im »data/core/macros«\-Verzeichnis werden vor den
-angegebenen Ressourcen vorverarbeitet. Beispiel: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/ergebnis\fP. Siehe
+angegebenen Ressourcen vorverarbeitet. Beispiel: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/ergebnis\fP. Siehe
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor für
 weitere Dokumentation.
 .TP 
@@ -314,17 +310,6 @@ Zugriffsrechte wie Wesnoth.
 \fB\-S,\-\-use\-schema\fP\fI\ Pfad\fP
 Gibt den Pfad zu einem WML\-Schema an, welches für \fB\-V,\-\-validate\fP verwendet
 wird.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ Name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy
-Games". On Windows it is also possible to specify a directory relative to
-the process working directory by using path starting with ".\e" or "..\e".
-This defaults to the userdata path.
-.TP 
-\fB\-\-userconfig\-path\fP
-Zeigt an, wo sich das Verzeichnis für die Nutzereinstellungen befindet.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ Name\fP
 Setzt das Verzeichnis für Nutzerdaten (Spielstände, Erweiterungen, ...) auf

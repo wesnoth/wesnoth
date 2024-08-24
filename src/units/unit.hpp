@@ -21,11 +21,11 @@
 #include "units/ptr.hpp"
 #include "units/attack_type.hpp"
 #include "units/race.hpp"
+#include "utils/optional_fwd.hpp"
 #include "utils/variant.hpp"
 
-
 #include <bitset>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 class team;
 class unit_animation_component;
@@ -1282,6 +1282,8 @@ public:
 	/** Gets whether this unit is loyal - ie, it costs no upkeep. */
 	bool loyal() const;
 
+	void set_loyal(bool loyal);
+
 	/** Gets whether this unit is fearless - ie, unaffected by time of day. */
 	bool is_fearless() const
 	{
@@ -1863,7 +1865,7 @@ public:
 
 private:
 
-	const std::set<std::string> checking_tags_{"attacks", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison", "damage_type"};
+	const std::set<std::string> checking_tags_{"disable", "attacks", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison", "damage_type"};
 	/**
 	 * Check if an ability is active.
 	 * @param ability The type (tag name) of the ability
@@ -2044,9 +2046,9 @@ private:
 	t_string description_;
 	std::vector<t_string> special_notes_;
 
-	std::optional<std::string> usage_;
-	std::optional<std::string> halo_;
-	std::optional<std::string> ellipse_;
+	utils::optional<std::string> usage_;
+	utils::optional<std::string> halo_;
+	utils::optional<std::string> ellipse_;
 
 	bool random_traits_;
 	bool generate_name_;

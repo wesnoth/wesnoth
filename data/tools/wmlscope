@@ -47,7 +47,7 @@
 #
 # The following magic comment:
 #
-#     # prune FOOBAR
+#     # wmlscope: prune FOOBAR
 #
 # will cause wmlscope to forget about all but one of the definitions of FOOBAR
 # it has seen.  This will be useful mainly for symbols that have different
@@ -218,7 +218,7 @@ class CrossRefLister(CrossRef):
 
     def incorrectlysized(self):
         "Report incorrectly sized images that cannot be safely used for their intended purpose"
-        for (namespace, filename) in xref.filelist.generator():
+        for (namespace, filename) in xref.filelist:
             if filename.endswith(".png"):
                 fn_list = filename.split(os.sep)
                 try:
@@ -516,11 +516,11 @@ directories are given, all files under the current directory are checked.""")
         elif unchecked:
             xref.unchecked(sys.stdout)
         elif listfiles:
-            for (namespace, filename) in xref.filelist.generator():
+            for (namespace, filename) in xref.filelist:
                 print(filename)
         if collisions:
             collisions = []
-            for (namespace, filename) in xref.filelist.generator():
+            for (namespace, filename) in xref.filelist:
                 with open(filename, "rb") as ifp: # this one may be an image or a sound, so don't assume UTF8 encoding
                     m = hashlib.md5()
                     while True:

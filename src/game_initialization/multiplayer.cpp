@@ -42,7 +42,7 @@
 #include "wesnothd_connection.hpp"
 
 #include <functional>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <thread>
 
 static lg::log_domain log_mp("mp/main");
@@ -67,7 +67,7 @@ public:
 	friend void mp::send_to_server(const config&);
 	friend mp::lobby_info* mp::get_lobby_info();
 
-	mp_manager(const std::optional<std::string> host);
+	mp_manager(const utils::optional<std::string> host);
 
 	~mp_manager()
 	{
@@ -157,7 +157,7 @@ public:
 	}
 };
 
-mp_manager::mp_manager(const std::optional<std::string> host)
+mp_manager::mp_manager(const utils::optional<std::string> host)
 	: network_worker()
 	, stop(false)
 	, connection(nullptr)
@@ -682,7 +682,7 @@ void start_local_game()
 
 	prefs::get().set_message_private(false);
 
-	mp_manager(std::nullopt).enter_create_mode();
+	mp_manager(utils::nullopt).enter_create_mode();
 }
 
 void start_local_game_commandline(const commandline_options& cmdline_opts)
@@ -762,7 +762,7 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 	state.expand_mp_options();
 
 	// Should number of turns be determined from scenario data?
-	if(parameters.use_map_settings && state.get_starting_point()["turns"]) {
+	if(parameters.use_map_settings && state.get_starting_point().has_attribute("turns")) {
 		DBG_MP << "setting turns from scenario data: " << state.get_starting_point()["turns"];
 		parameters.num_turns = state.get_starting_point()["turns"];
 	}

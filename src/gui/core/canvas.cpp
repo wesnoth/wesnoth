@@ -664,7 +664,7 @@ bool canvas::update_blur(const rect& screen_region, bool force)
 	rect read_region = screen_region;
 	auto setter = draw::set_render_target({});
 	surface s = video::read_pixels_low_res(&read_region);
-	s = blur_surface(s, blur_depth_);
+	blur_surface(s, {0, 0, s->w, s->h}, blur_depth_);
 	blur_texture_ = texture(s);
 	deferred_ = false;
 	return true;

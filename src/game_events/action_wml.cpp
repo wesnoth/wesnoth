@@ -614,7 +614,7 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 		}
 	}
 
-	std::optional<std::string> errmsg = resources::gameboard->replace_map(map);
+	utils::optional<std::string> errmsg = resources::gameboard->replace_map(map);
 
 	if (errmsg) {
 		lg::log_to_chat() << *errmsg << '\n';

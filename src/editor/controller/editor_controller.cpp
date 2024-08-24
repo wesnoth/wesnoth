@@ -17,6 +17,8 @@
 
 #include "editor/map/context_manager.hpp"
 
+#include "desktop/open.hpp"
+
 #include "editor/action/action.hpp"
 #include "editor/action/action_unit.hpp"
 #include "editor/action/action_select.hpp"
@@ -33,6 +35,7 @@
 #include "gui/dialogs/editor/edit_unit.hpp"
 #include "gui/dialogs/editor/custom_tod.hpp"
 #include "gui/dialogs/editor/tod_new_schedule.hpp"
+#include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -88,7 +91,6 @@ editor_controller::editor_controller(bool clear_id)
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
 	help_manager_.reset(new help::help_manager(&game_config_));
 	context_manager_->locs_ = toolkit_->get_palette_manager()->location_palette_.get();
-	context_manager_->switch_context(0, true);
 	init_tods(game_config_);
 	init_music(game_config_);
 	get_current_map_context().set_starting_position_labels(gui());
@@ -105,6 +107,7 @@ void editor_controller::init_gui()
 	gui().set_debug_flag(display::DEBUG_COORDINATES, prefs::get().editor_draw_hex_coordinates());
 	gui().set_debug_flag(display::DEBUG_TERRAIN_CODES, prefs::get().editor_draw_terrain_codes());
 	gui().set_debug_flag(display::DEBUG_NUM_BITMAPS, prefs::get().editor_draw_num_of_bitmaps());
+	gui().set_help_string_enabled(prefs::get().editor_help_text_shown());
 //	halo_manager_.reset(new halo::manager(*gui_));
 //	resources::halo = halo_manager_.get();
 //	^ These lines no longer necessary, the gui owns its halo manager.
@@ -238,7 +241,7 @@ void editor_controller::custom_tods_dialog()
 	tod_manager& manager = *get_current_map_context().get_time_manager();
 	std::vector<time_of_day> prev_schedule = manager.times();
 
-	gui2::dialogs::custom_tod tod_dlg(manager.times(), manager.get_current_time());
+	gui2::dialogs::custom_tod tod_dlg(manager.times(), manager.get_current_time(), current_addon_id_);
 
 	/* Register callback to the dialog so that the map changes can be
 	 * previewed in real time.
@@ -251,12 +254,12 @@ void editor_controller::custom_tods_dialog()
 	tod_dlg.register_callback(update_func);
 
 	/* Autogenerate schedule id */
-	// TODO : sch_name should be translatable
 	std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	std::string sch_id = current_addon_id_+"-schedule";
-	std::string sch_name;
+	/* Set correct textdomain */
+	t_string sch_name("", "wesnoth-"+current_addon_id_);
 
-	// TODO : Needs better error handling
+	// TODO : Needs better error handling messages
 	/* Show dialog and update current schedule */
 	if(tod_dlg.show()) {
 		/* Save the new schedule */
@@ -359,8 +362,12 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		case HOTKEY_UNIT_LIST:
 			return !get_current_map_context().units().empty();
 
+		// TODO Disabling this for now until the functionality can be implemnted.
+		// See the status_table() method
 		case HOTKEY_STATUS_TABLE:
-			return !get_current_map_context().teams().empty();
+			//return !get_current_map_context().teams().empty();
+			return false;
+		/////////////////////////////
 
 		case HOTKEY_TERRAIN_DESCRIPTION:
 			return gui().mouseover_hex().valid();
@@ -380,29 +387,33 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 			return (toolkit_->is_mouse_action_set(HOTKEY_EDITOR_TOOL_UNIT) &&
 					units.find(loc) != units.end());
 		}
+
 		case HOTKEY_UNDO:
+		case HOTKEY_EDITOR_PARTIAL_UNDO:
 			return get_current_map_context().can_undo();
 		case HOTKEY_REDO:
 			return get_current_map_context().can_redo();
-		case HOTKEY_EDITOR_PARTIAL_UNDO:
-			return get_current_map_context().can_undo();
+
 		case TITLE_SCREEN__RELOAD_WML:
 		case HOTKEY_QUIT_TO_DESKTOP:
 		case HOTKEY_EDITOR_MAP_NEW:
 		case HOTKEY_EDITOR_SCENARIO_NEW:
 		case HOTKEY_EDITOR_MAP_LOAD:
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
-		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
 			return true;
 
 		// Only enable when editing a scenario
 		case HOTKEY_EDITOR_EDIT_UNIT:
 		case HOTKEY_EDITOR_CUSTOM_TODS:
+		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
 			return !get_current_map_context().is_pure_map();
 
 		case HOTKEY_EDITOR_PBL:
 		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
+		case HOTKEY_EDITOR_SELECT_ADDON:
+		case HOTKEY_EDITOR_OPEN_ADDON:
 			return true;
+
 		case HOTKEY_EDITOR_AREA_ADD:
 		case HOTKEY_EDITOR_SIDE_NEW:
 			return !get_current_map_context().is_pure_map();
@@ -504,6 +515,7 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		case HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS:
 		case HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS:
 		case HOTKEY_EDITOR_REFRESH_IMAGE_CACHE:
+		case HOTKEY_EDITOR_HELP_TEXT_SHOWN:
 		case HOTKEY_MINIMAP_CODING_TERRAIN:
 		case HOTKEY_MINIMAP_CODING_UNIT:
 		case HOTKEY_MINIMAP_DRAW_UNITS:
@@ -590,7 +602,8 @@ hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_comman
 		return gui_->debug_flag_set(display::DEBUG_TERRAIN_CODES) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
 		return gui_->debug_flag_set(display::DEBUG_NUM_BITMAPS) ? ACTION_ON : ACTION_OFF;
-
+	case HOTKEY_EDITOR_HELP_TEXT_SHOWN:
+		return gui_->help_string_enabled() ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_MINIMAP_DRAW_VILLAGES:
 		return (prefs::get().minimap_draw_villages()) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_MINIMAP_CODING_UNIT:
@@ -802,7 +815,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			quit_confirmation::quit_to_desktop();
 			return true;
 		case TITLE_SCREEN__RELOAD_WML:
-			context_manager_->save_all_maps(true);
+			context_manager_->save_contexts();
 			do_quit_ = true;
 			quit_mode_ = EXIT_RELOAD_DATA;
 			return true;
@@ -837,26 +850,52 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			return true;
 
 		case HOTKEY_EDITOR_PBL:
-			if(current_addon_id_ == "") {
-				current_addon_id_ = editor::initialize_addon();
-				context_manager_->set_addon_id(current_addon_id_);
-			}
+			initialize_addon_if_empty();
 
-			if(current_addon_id_ != "") {
+			if(!current_addon_id_.empty()) {
 				context_manager_->edit_pbl();
 			}
 			return true;
 
 		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
-			if(current_addon_id_ == "") {
-				current_addon_id_ = editor::initialize_addon();
-				context_manager_->set_addon_id(current_addon_id_);
-			}
+			initialize_addon_if_empty();
 
-			if(current_addon_id_ != "") {
+			if(!current_addon_id_.empty()) {
 				context_manager_->change_addon_id();
 			}
 			return true;
+
+		case HOTKEY_EDITOR_SELECT_ADDON:
+			current_addon_id_ = editor::initialize_addon();
+			context_manager_->set_addon_id(current_addon_id_);
+			return true;
+
+		case HOTKEY_EDITOR_OPEN_ADDON:
+		{
+			initialize_addon_if_empty();
+
+			gui2::dialogs::file_dialog dlg;
+
+			dlg.set_title(_("Add-on Files"))
+				.set_path(filesystem::get_current_editor_dir(current_addon_id_));
+
+			if (dlg.show()) {
+				std::string filepath = dlg.path();
+				if (filesystem::is_map(filepath) || filesystem::is_cfg(filepath)) {
+					// Open map or scenario
+					context_manager_->load_map(filepath, true);
+				} else {
+					// Open file using OS application for that format
+					if (desktop::open_object_is_supported()) {
+						desktop::open_object(filepath);
+					} else {
+						gui2::show_message("", _("Opening files is not supported, contact your packager"), gui2::dialogs::message::auto_close);
+					}
+				}
+			}
+
+			return true;
+		}
 
 		case HOTKEY_EDITOR_AREA_ADD:
 			add_area();
@@ -882,6 +921,14 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			bool canrecruit = un->can_recruit();
 			un->set_can_recruit(!canrecruit);
 			un->anim_comp().set_standing();
+		}
+		return true;
+		case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
+		{
+			map_location loc = gui_->mouseover_hex();
+			const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
+			bool loyal = un->loyal();
+			un->set_loyal(!loyal);
 		}
 		return true;
 		case HOTKEY_DELETE_UNIT:
@@ -994,12 +1041,9 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			context_manager_->new_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_SCENARIO_NEW:
-			if(current_addon_id_ == "") {
-				current_addon_id_ = editor::initialize_addon();
-				context_manager_->set_addon_id(current_addon_id_);
-			}
+			initialize_addon_if_empty();
 
-			if(current_addon_id_ != "") {
+			if(!current_addon_id_.empty()) {
 				context_manager_->new_scenario_dialog();
 			}
 			return true;
@@ -1013,12 +1057,9 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			context_manager_->save_map_as_dialog();
 			return true;
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
-			if(current_addon_id_ == "") {
-				current_addon_id_ = editor::initialize_addon();
-				context_manager_->set_addon_id(current_addon_id_);
-			}
+			initialize_addon_if_empty();
 
-			if(current_addon_id_ != "") {
+			if(!current_addon_id_.empty()) {
 				context_manager_->save_scenario_as_dialog();
 			}
 			return true;
@@ -1094,6 +1135,10 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			prefs::get().set_editor_draw_num_of_bitmaps(gui().debug_flag_set(display::DEBUG_NUM_BITMAPS));
 			gui().invalidate_all();
 			return true;
+		case HOTKEY_EDITOR_HELP_TEXT_SHOWN:
+			gui().set_help_string_enabled(!gui().help_string_enabled());
+			prefs::get().set_editor_help_text_shown(gui().help_string_enabled());
+			return true;
 		case HOTKEY_EDITOR_REMOVE_LOCATION: {
 			location_palette* lp = dynamic_cast<location_palette*>(&toolkit_->get_palette_manager()->active_palette());
 			if (lp) {
@@ -1107,6 +1152,13 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 		default:
 			return hotkey::command_executor::do_execute_command(cmd, press, release);
 	}
+}
+
+void editor_controller::initialize_addon_if_empty() {
+	if(current_addon_id_.empty()) {
+		current_addon_id_ = editor::initialize_addon();
+	}
+	context_manager_->set_addon_id(current_addon_id_);
 }
 
 void editor_controller::show_help()

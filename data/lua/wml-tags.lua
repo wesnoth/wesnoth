@@ -370,7 +370,7 @@ function wml_actions.remove_unit_overlay(cfg)
 		end
 		if has_already then
 			u:add_modification("object", {
-				id = cfg.object_id,
+				id = cfg.object_id or get_overlay_object_id(img),
 				wml.tag.effect {
 					apply_to = "overlay",
 					remove = img,
@@ -728,8 +728,8 @@ function wml_actions.color_adjust(cfg)
 end
 
 function wml_actions.screen_fade(cfg)
-	local color = {cfg.red or 0, cfg.green or 0, cfg.blue or 0, cfg.alpha}
-	wesnoth.interface.screen_fade(color, cfg.duration)
+	local color = {cfg.red or 0, cfg.green or 0, cfg.blue or 0, tonumber(cfg.alpha) or wml.error("invalid alpha in [screen_fade]")}
+	wesnoth.interface.screen_fade(color, tonumber(cfg.duration) or wml.error("invalid duration in [screen_fade]"))
 end
 
 function wml_actions.end_turn(cfg)

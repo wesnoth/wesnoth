@@ -63,13 +63,8 @@ scenario.
 Skip [story] screens and dialogue through the end of the \fBstart\fP event.
 .TP 
 \fB\-\-clock\fP
-Adds the option to show a clock for testing the drawing timer.
-.TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-Deprecated, use \fB\-\-userdata\-dir\fP.
-.TP 
-\fB\-\-config\-path\fP
-Deprecated, use \fB\-\-userdata\-path\fP.
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialogue.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 overrides the loaded core with the one whose id is specified.
@@ -118,8 +113,7 @@ from \fIfile\fP open. If it is a directory, the editor will start with a load
 map dialogue opened there.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ lang\fP
-uses language \fIlang\fP (symbol) this session.  Example: \fB\-\-language
-ang_GB@latin\fP
+uses language \fIlang\fP (symbol) this session.  Example: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 sets the severity level of the log domains.  \fBall\fP can be used to match any
@@ -132,8 +126,8 @@ shows the time\-stamps in log output with more precision.
 .TP 
 \fB\-\-log\-strict\fP\fI\ level\fP
 sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
-this \fIlevel\fP or more severe will cause the unit test to fail regardless of
-the victory result. Only relevant when used with \fB\-u\fP.
+this \fIlevel\fP, or more severe, will cause the unit test to fail regardless
+of the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 lists defined log domains (only the ones containing \fIfilter\fP if used) and
@@ -147,6 +141,10 @@ in the logs directory under the userdata folder.
 \fB\-\-log\-to\-file\fP
 log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymisation that's normally applied when logging, for example
+replacing user names with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 For Windows, when used with \-\-no\-log\-to\-file, results in output being
@@ -217,8 +215,7 @@ preprocesses a specified file/folder. For each file(s) a plain .cfg file and
 a processed .cfg file will be written in specified target directory. If a
 folder is specified, it will be preprocessed recursively based on the known
 preprocessor rules. The common macros from the "data/core/macros" directory
-will be preprocessed before the specified resources.  Example: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
+will be preprocessed before the specified resources.  Example: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
 preprocessor visit:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
@@ -289,17 +286,6 @@ lua the same permissions as the wesnoth executable.
 .TP 
 \fB\-S,\-\-use\-schema\fP\fI\ path\fP
 sets the WML schema for use with \fB\-V,\-\-validate\fP.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy
-Games". On Windows it is also possible to specify a directory relative to
-the process working directory by using path starting with ".\e" or "..\e".
-This defaults to the userdata path.
-.TP 
-\fB\-\-userconfig\-path\fP
-prints the path of the user configuration directory and exits.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 sets the user data directory to \fIname\fP under $HOME or "My Documents\eMy

@@ -80,21 +80,42 @@ public:
 	}
 
 	/**
+	 * Wrapper function, returns the line corresponding
+	 * to index.
+	 * See @ref font::pango_text::get_line.
+	 */
+	PangoLayoutLine* get_line(int index)
+	{
+		return text_.get_line(index);
+	}
+
+	/**
+	 * Wrapper function, return the line number
+	 * given the byte index.
+	 * See @ref font::pango_text::get_line_num_from_offset.
+	 */
+	int get_line_number(const unsigned offset)
+	{
+		return text_.get_line_num_from_offset(offset);
+	}
+
+	/**
+	 * Wrapper function, return the cursor position
+	 * given the byte index.
+	 * See @ref font::pango_text::get_cursor_pos_from_index.
+	 */
+	point get_cursor_pos_from_index(const unsigned offset) const
+	{
+		return text_.get_cursor_pos_from_index(offset);
+	}
+
+	/**
 	 * Wrapper function, return number of lines.
 	 * See @ref font::pango_text::get_lines_count.
 	 */
 	unsigned get_lines_count() const
 	{
 		return text_.get_lines_count();
-	}
-
-	/**
-	 * Wrapper function, returns corrected column offset from pango.
-	 * See @ref font::pango_text::get_byte_offset.
-	 */
-	int get_byte_offset(const unsigned column) const
-	{
-		return text_.get_byte_offset(column);
 	}
 
 	/**

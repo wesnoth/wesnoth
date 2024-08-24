@@ -26,6 +26,11 @@ const team& display_context::get_team(int side) const
 	return teams().at(side - 1);
 }
 
+bool display_context::has_team(int side) const
+{
+	return side > 0 && side <= static_cast<int>(teams().size());
+}
+
 bool display_context::would_be_discovered(const map_location & loc, int side_num, bool see_all)
 {
 	for(const map_location& u_loc : get_adjacent_tiles(loc)) {

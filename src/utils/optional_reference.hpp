@@ -15,15 +15,15 @@
 #pragma once
 
 #include <functional>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 namespace utils
 {
 /**
  * A simple wrapper class for optional reference types.
  *
- * Since std::optional (as of C++17 at least) does not support reference types (see [1]),
- * the only way to use those is std::optional<std::reference_wrapper<T>>. However, this makes
+ * Since utils::optional (as of C++17 at least) does not support reference types (see [1]),
+ * the only way to use those is utils::optional<std::reference_wrapper<T>>. However, this makes
  * the interace messy, as to access the referenced object you need an extra get() call to
  * access the value stored in the reference wrapper.
  *
@@ -45,7 +45,7 @@ public:
 	{
 	}
 
-	optional_reference(std::nullopt_t)
+	optional_reference(utils::nullopt_t)
 		: opt_()
 	{
 	}
@@ -59,7 +59,7 @@ public:
 			return opt_->get();
 		} else {
 			// We're going to drop this codepath once we can use optional::value anyway, but just
-			// noting we want this function to ultimately throw std::bad_optional_access.
+			// noting we want this function to ultimately throw utils::bad_optional_access.
 			throw std::runtime_error("Optional reference has no value");
 		}
 #endif
@@ -97,7 +97,7 @@ public:
 	}
 
 private:
-	std::optional<std::reference_wrapper<T>> opt_;
+	utils::optional<std::reference_wrapper<T>> opt_;
 };
 
 } // namespace utils

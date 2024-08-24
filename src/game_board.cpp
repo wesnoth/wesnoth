@@ -289,9 +289,9 @@ bool game_board::try_add_unit_to_recall_list(const map_location&, const unit_ptr
 	return true;
 }
 
-std::optional<std::string> game_board::replace_map(const gamemap& newmap)
+utils::optional<std::string> game_board::replace_map(const gamemap& newmap)
 {
-	std::optional<std::string> ret;
+	utils::optional<std::string> ret;
 
 	/* Remember the locations where a village is owned by a side. */
 	std::map<map_location, int> villages;

@@ -19,6 +19,7 @@
 
 #include "addon/manager_ui.hpp"
 #include "filesystem.hpp"
+#include "font/font_config.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
@@ -53,6 +54,7 @@
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
 #include "sdl/surface.hpp"
+#include "serialization/unicode.hpp"
 #include "video.hpp"
 
 #include <algorithm>
@@ -177,16 +179,12 @@ void title_screen::init_callbacks()
 	//
 	// Background and logo images
 	//
-	if(game_config::images::game_title.empty()) {
-		ERR_CF << "No title image defined";
+	if(game_config::images::game_title.empty() && game_config::images::game_title_background.empty()) {
+		// game works just fine if just one of the background images are missing
+		ERR_CF << "No titlescreen background defined in game config";
 	}
 
 	get_canvas(0).set_variable("title_image", wfl::variant(game_config::images::game_title));
-
-	if(game_config::images::game_title_background.empty()) {
-		ERR_CF << "No title background image defined";
-	}
-
 	get_canvas(0).set_variable("background_image", wfl::variant(game_config::images::game_title_background));
 
 	find_widget<image>(this, "logo-bg", false).set_image(game_config::images::game_logo_background);
@@ -208,7 +206,24 @@ void title_screen::init_callbacks()
 
 			widget["use_markup"] = "true";
 
-			widget["label"] = tip.text();
+			// Use pango markup to insert drop cap
+			// Example: Lawful units -> <span ...>L</span>awful units
+			// If tip starts with a tag, we need to insert the <span> after it
+			// then insert the </span> tag after the first character of the text
+			// after markup. Assumes that the tags themselves don't
+			// contain non-ASCII characters.
+			// Example: <i>Lawful</i> units -> <i><span ...>L</span>awful</i> units
+			const std::string& script_font = font::get_font_families(font::FONT_SCRIPT);
+			std::string tip_text = tip.text().str();
+			std::size_t pos = 0;
+			while (pos < tip_text.size() && tip_text.at(pos) == '<') {
+				pos = tip_text.find_first_of(">", pos) + 1;
+			}
+			utf8::insert(tip_text, pos+1, "</span>");
+			utf8::insert(tip_text, pos, "<span font_family='" + script_font + "' font_size='xx-large'>");
+
+			widget["label"] = tip_text;
+
 			page.emplace("tip", widget);
 
 			widget["label"] = tip.source();
@@ -314,7 +329,11 @@ void title_screen::init_callbacks()
 	// Preferences
 	//
 	register_button(*this, "preferences", hotkey::HOTKEY_PREFERENCES, [this]() {
-		gui2::dialogs::preferences_dialog::display();
+		gui2::dialogs::preferences_dialog pref_dlg;
+		pref_dlg.show();
+		if (pref_dlg.get_retval() == RELOAD_UI) {
+			set_retval(RELOAD_UI);
+		}
 
 		// Currently blurred windows don't capture well if there is something
 		// on top of them at the time of blur. Resizing the game window in
@@ -554,7 +573,7 @@ void title_screen::button_callback_cores()
 	for(const config& core : game_config_manager::get()->game_config().child_range("core")) {
 		cores.push_back(core);
 
-		if(core["id"] == prefs::get().core_id()) {
+		if(core["id"] == prefs::get().core()) {
 			current = cores.size() - 1;
 		}
 	}
@@ -563,7 +582,7 @@ void title_screen::button_callback_cores()
 	if(core_dlg.show()) {
 		const std::string& core_id = cores[core_dlg.get_choice()]["id"];
 
-		prefs::get().set_core_id(core_id);
+		prefs::get().set_core(core_id);
 		get_window()->set_retval(RELOAD_GAME_DATA);
 	}
 }

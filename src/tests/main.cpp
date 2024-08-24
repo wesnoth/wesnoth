@@ -77,6 +77,7 @@ struct wesnoth_global_fixture {
 		results_reporter::set_stream(reporter);
 //		lg::set_log_domain_severity("all",lg::debug());
 		game_config::path = filesystem::get_cwd();
+		filesystem::set_user_data_dir(std::string());
 
 		// declare this here so that it will always be at the front of the event queue.
 		events::event_context global_context;
@@ -86,6 +87,7 @@ struct wesnoth_global_fixture {
 		test_utils::get_fake_display(1024, 768);
 
 		gui2::init();
+		gui2::switch_theme("default");
 		static const gui2::event::manager gui_event_manager;
 
 		// TODO: For some reason this fails on MacOS and prevents any tests from running

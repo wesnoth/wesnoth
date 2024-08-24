@@ -87,7 +87,6 @@ pango_text::pango_text()
 	, attribute_start_offset_(0)
 	, attribute_end_offset_(0)
 	, highlight_color_()
-	, attrib_hash_(0)
 	, pixel_scale_(1)
 	, surface_buffer_()
 {
@@ -118,22 +117,9 @@ texture pango_text::render_texture(const SDL_Rect& viewport)
 
 texture pango_text::render_and_get_texture()
 {
-	// Update our settings then hash them.
 	update_pixel_scale(); // TODO: this should be in recalculate()
 	recalculate();
-	const std::size_t hash = std::hash<pango_text>{}(*this);
-	// If we already have the appropriate texture in-cache, use it.
-	if(const auto iter = rendered_cache.find(hash); iter != rendered_cache.end()) {
-		return with_draw_scale(iter->second);
-	}
-
-	if(surface text_surf = create_surface(); text_surf) {
-		const auto& [new_iter, added] = rendered_cache.try_emplace(hash, std::move(text_surf));
-		return with_draw_scale(new_iter->second);
-	}
-
-	// Render output was null for some reason. Don't cache.
-	return {};
+	return with_draw_scale(texture(create_surface()));
 }
 
 surface pango_text::render_surface(const SDL_Rect& viewport)
@@ -196,29 +182,6 @@ unsigned pango_text::insert_text(const unsigned offset, const std::string& text)
 	return len;
 }
 
-int pango_text::get_byte_offset(const unsigned column) const
-{
-	// First we need to determine the byte offset
-	std::unique_ptr<PangoLayoutIter, std::function<void(PangoLayoutIter*)>> itor(
-		pango_layout_get_iter(layout_.get()), pango_layout_iter_free);
-
-	// Go the wanted column.
-	for(std::size_t i = 0; i < column; ++i) {
-		if(!pango_layout_iter_next_char(itor.get())) {
-			// It seems that the documentation is wrong and causes and off by
-			// one error... the result should be false if already at the end of
-			// the data when started.
-			if(i + 1 == column) {
-				break;
-			}
-		}
-	}
-
-	// Get the byte offset
-	const int offset = pango_layout_iter_get_index(itor.get());
-	return offset;
-}
-
 point pango_text::get_cursor_position(const unsigned column, const unsigned line) const
 {
 	this->recalculate();
@@ -256,6 +219,11 @@ point pango_text::get_cursor_position(const unsigned column, const unsigned line
 	// Get the byte offset
 	const int offset = pango_layout_iter_get_index(itor.get());
 
+	return get_cursor_pos_from_index(offset);
+}
+
+point pango_text::get_cursor_pos_from_index(const unsigned offset) const
+{
 	// Convert the byte offset in a position.
 	PangoRectangle rect;
 	pango_layout_get_cursor_pos(layout_.get(), offset, &rect, nullptr);
@@ -362,11 +330,6 @@ void pango_text::add_attribute_size(const unsigned start_offset, const unsigned 
 		DBG_GUI_D << "attribute: size";
 		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
 
-		// Update hash
-		boost::hash_combine(attrib_hash_, attribute_start_offset_);
-		boost::hash_combine(attrib_hash_, attribute_end_offset_);
-		boost::hash_combine(attrib_hash_, size);
-
 		// Insert all attributes
 		pango_attr_list_insert(global_attribute_list_, attr);
 	}
@@ -384,11 +347,6 @@ void pango_text::add_attribute_weight(const unsigned start_offset, const unsigne
 
 		DBG_GUI_D << "attribute: weight";
 		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
-
-		// Update hash
-		boost::hash_combine(attrib_hash_, attribute_start_offset_);
-		boost::hash_combine(attrib_hash_, attribute_end_offset_);
-		boost::hash_combine(attrib_hash_, weight);
 
 		// Insert all attributes
 		pango_attr_list_insert(global_attribute_list_, attr);
@@ -409,10 +367,6 @@ void pango_text::add_attribute_style(const unsigned start_offset, const unsigned
 		DBG_GUI_D << "attribute: style";
 		DBG_GUI_D << "attribute start: " << attribute_start_offset_ << " end : " << attribute_end_offset_;
 
-		// Update hash
-		boost::hash_combine(attrib_hash_, attribute_start_offset_);
-		boost::hash_combine(attrib_hash_, attribute_end_offset_);
-
 		// Insert all attributes
 		pango_attr_list_insert(global_attribute_list_, attr);
 	}
@@ -430,11 +384,6 @@ void pango_text::add_attribute_underline(const unsigned start_offset, const unsi
 
 		DBG_GUI_D << "attribute: underline";
 		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
-
-		// Update hash
-		boost::hash_combine(attrib_hash_, attribute_start_offset_);
-		boost::hash_combine(attrib_hash_, attribute_end_offset_);
-		boost::hash_combine(attrib_hash_, underline);
 
 		// Insert all attributes
 		pango_attr_list_insert(global_attribute_list_, attr);
@@ -460,11 +409,6 @@ void pango_text::add_attribute_fg_color(const unsigned start_offset, const unsig
 		DBG_GUI_D << "attribute start: " << attribute_start_offset_ << " end : " << attribute_end_offset_;
 		DBG_GUI_D << "color: " << col_r << "," << col_g << "," << col_b;
 
-		// Update hash
-		boost::hash_combine(attrib_hash_, attribute_start_offset_);
-		boost::hash_combine(attrib_hash_, attribute_end_offset_);
-		boost::hash_combine(attrib_hash_, color.to_rgba_bytes());
-
 		// Insert all attributes
 		pango_attr_list_insert(global_attribute_list_, attr);
 	}
@@ -484,11 +428,6 @@ void pango_text::add_attribute_font_family(const unsigned start_offset, const un
 		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
 		DBG_GUI_D << "font family: " << family;
 
-		// Update hash
-		boost::hash_combine(attrib_hash_, attribute_start_offset_);
-		boost::hash_combine(attrib_hash_, attribute_end_offset_);
-		boost::hash_combine(attrib_hash_, family);
-
 		// Insert all attributes
 		pango_attr_list_insert(global_attribute_list_, attr);
 	}
@@ -499,27 +438,20 @@ void pango_text::set_highlight_area(const unsigned start_offset, const unsigned 
 	attribute_end_offset_ = end_offset;
 	highlight_color_ = color;
 
-	if (attribute_start_offset_ != attribute_end_offset_) {
-		// Highlight
-		int col_r = highlight_color_.r / 255.0 * 65535.0;
-		int col_g = highlight_color_.g / 255.0 * 65535.0;
-		int col_b = highlight_color_.b / 255.0 * 65535.0;
+	// Highlight
+	int col_r = highlight_color_.r / 255.0 * 65535.0;
+	int col_g = highlight_color_.g / 255.0 * 65535.0;
+	int col_b = highlight_color_.b / 255.0 * 65535.0;
 
-		DBG_GUI_D << "highlight start: " << attribute_start_offset_ << "end : " << attribute_end_offset_;
-		DBG_GUI_D << "highlight color: " << col_r << "," << col_g << "," << col_b;
+	DBG_GUI_D << "highlight start: " << attribute_start_offset_ << "end : " << attribute_end_offset_;
+	DBG_GUI_D << "highlight color: " << col_r << "," << col_g << "," << col_b;
 
-		PangoAttribute *attr = pango_attr_background_new(col_r, col_g, col_b);
-		attr->start_index = attribute_start_offset_;
-		attr->end_index = attribute_end_offset_;
+	PangoAttribute *attr = pango_attr_background_new(col_r, col_g, col_b);
+	attr->start_index = attribute_start_offset_;
+	attr->end_index = attribute_end_offset_;
 
-		// Update hash
-		boost::hash_combine(attrib_hash_, attribute_start_offset_);
-		boost::hash_combine(attrib_hash_, attribute_end_offset_);
-		boost::hash_combine(attrib_hash_, highlight_color_.to_rgba_bytes());
-
-		// Insert all attributes
-		pango_attr_list_insert(global_attribute_list_, attr);
-	}
+	// Insert all attributes
+	pango_attr_list_change(global_attribute_list_, attr);
 }
 
 void pango_text::clear_attribute_list() {
@@ -1171,6 +1103,18 @@ std::vector<std::string> pango_text::get_lines() const
 	return res;
 }
 
+PangoLayoutLine* pango_text::get_line(int index)
+{
+	return pango_layout_get_line_readonly(layout_.get(), index);
+}
+
+int pango_text::get_line_num_from_offset(const unsigned offset)
+{
+	int line_num = 0;
+	pango_layout_index_to_line_x(layout_.get(), offset, 0, &line_num, nullptr);
+	return line_num;
+}
+
 pango_text& get_text_renderer()
 {
 	static pango_text text_renderer;
@@ -1188,30 +1132,3 @@ int get_max_height(unsigned size, font::family_class fclass, pango_text::FONT_ST
 }
 
 } // namespace font
-
-namespace std
-{
-std::size_t hash<font::pango_text>::operator()(const font::pango_text& t) const
-{
-	std::size_t hash = 0;
-
-	boost::hash_combine(hash, t.text_);
-	boost::hash_combine(hash, t.font_class_);
-	boost::hash_combine(hash, t.font_size_);
-	boost::hash_combine(hash, t.font_style_);
-	boost::hash_combine(hash, t.foreground_color_.to_rgba_bytes());
-	boost::hash_combine(hash, t.rect_.width);
-	boost::hash_combine(hash, t.rect_.height);
-	boost::hash_combine(hash, t.maximum_width_);
-	boost::hash_combine(hash, t.maximum_height_);
-	boost::hash_combine(hash, t.alignment_);
-	boost::hash_combine(hash, t.ellipse_mode_);
-	boost::hash_combine(hash, t.add_outline_);
-
-	// Hash for the global attribute list
-	boost::hash_combine(hash, t.attrib_hash_);
-
-	return hash;
-}
-
-} // namespace std

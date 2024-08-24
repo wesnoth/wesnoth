@@ -66,7 +66,7 @@ color_t string_to_color(const std::string &cmp_str)
 		return font::BLUE_COLOR;
 	}
 
-	if (cmp_str.at(0) == '#' && cmp_str.size() == 7) {
+	if (cmp_str.size() == 7 && cmp_str.at(0) == '#') {
 		// #rrggbb color, pango format.
 		return color_t::from_hex_string(cmp_str.substr(1));
 	} else if (cmp_str.size() == 6) {

@@ -314,7 +314,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 		}
 	}
 
-	disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc, [=, adj_y = adjusted_params.y](const rect& d) {
+	disp.drawing_buffer_add(drawing_layer::unit_first, loc, [=, adj_y = adjusted_params.y](const rect& d) {
 		// Both front and back have the same origin
 		const point origin { d.x, d.y + adj_y - ellipse_floating };
 
@@ -395,7 +395,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 			}
 		};
 
-		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, [=,
+		disp.drawing_buffer_add(drawing_layer::unit_bar, loc, [=,
 			textures      = std::move(textures),
 			adj_y         = adjusted_params.y,
 			//origin        = point{xsrc + xoff, ysrc + yoff + adjusted_params.y},

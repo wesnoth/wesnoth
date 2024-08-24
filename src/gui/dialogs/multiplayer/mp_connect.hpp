@@ -76,12 +76,7 @@ private:
 			return owner_ && row_ >= 0;
 		}
 
-		bool user_defined() const
-		{
-			// An invalid selection is the same as one from the read-only list of
-			// built-in servers for interaction purposes since it can't be written to.
-			return valid() && std::size_t(row_) >= owner_->builtin_servers_.size();
-		}
+		bool user_defined() const;
 
 		unsigned row() const;
 

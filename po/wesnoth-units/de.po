@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
+"POT-Creation-Date: 2024-08-19 04:11 UTC\n"
 "PO-Revision-Date: 2024-04-04 22:33+0200\n"
 "Last-Translator: Simon Waldek <s1m0n#1701>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
@@ -176,6 +176,7 @@ msgstr "Schleuder"
 #: data/core/units/monsters/Bear.cfg:42 data/core/units/monsters/Caribe.cfg:114
 #: data/core/units/monsters/Caribe_Hunter.cfg:115
 #: data/core/units/monsters/Caribe_Nibbler.cfg:129
+#: data/core/units/monsters/Cat_Forest.cfg:92
 #: data/core/units/monsters/Giant_Spider.cfg:28
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Shadow_Jumping_Spider.cfg:87
@@ -318,7 +319,7 @@ msgstr "Flegel"
 #: data/core/units/humans/Horse_Knight.cfg:23
 #: data/core/units/humans/Horse_Paladin.cfg:39
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:58
-#: data/core/units/humans/Loyalist_Dragoon.cfg:35
+#: data/core/units/humans/Loyalist_Dragoon.cfg:54
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:27
 #: data/core/units/humans/Loyalist_Longbowman.cfg:25
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:25
@@ -338,7 +339,7 @@ msgstr "Schwert"
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Commander.cfg:55
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Lieutenant.cfg:53
 #: data/core/units/humans/Loyalist_Cavalier.cfg:45
-#: data/core/units/humans/Loyalist_Dragoon.cfg:44
+#: data/core/units/humans/Loyalist_Dragoon.cfg:63
 #: data/core/units/humans/Loyalist_Duelist.cfg:45
 #: data/core/units/humans/Loyalist_General.cfg:53
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:47
@@ -366,7 +367,7 @@ msgid "longsword"
 msgstr "Langschwert"
 
 #. [attack]: type=impact
-#: data/campaigns/Eastern_Invasion/units/Human_Konrad_King_of_Wesnoth.cfg:28
+#: data/campaigns/Eastern_Invasion/units/Human_Konrad_King_of_Wesnoth.cfg:29
 #: data/core/units/humans/Outlaw.cfg:23
 #: data/core/units/humans/Outlaw_Bandit.cfg:29
 #: data/core/units/humans/Outlaw_Fugitive.cfg:28
@@ -482,6 +483,7 @@ msgstr "Bogen"
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Soulless_Gryphon
 #. [attack]: type=pierce
+#. [variation]
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
@@ -492,6 +494,8 @@ msgstr "Bogen"
 #: data/core/units/gryphons/Gryphon_Master.cfg:28
 #: data/core/units/gryphons/Gryphon_Rider.cfg:27
 #: data/core/units/monsters/Bear.cfg:51
+#: data/core/units/monsters/Cat_Forest.cfg:82
+#: data/core/units/monsters/Cat_Jump.cfg:80
 #: data/core/units/monsters/Elder_Falcon.cfg:75
 #: data/core/units/monsters/Falcon.cfg:86
 #: data/core/units/monsters/Icemonax.cfg:53
@@ -499,9 +503,11 @@ msgstr "Bogen"
 #: data/core/units/monsters/Jinn.cfg:91
 #: data/core/units/monsters/Raven_Harbinger.cfg:83
 #: data/core/units/monsters/Roc.cfg:55
-#: data/core/units/monsters/Skeletal_Dragon.cfg:43
+#: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
+#: data/core/units/undead/Corpse_Soulless.cfg:186
+#: data/core/units/undead/Corpse_Walking.cfg:187
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:94
 #: data/core/units/undead/Spirit_Shadow.cfg:62
 msgid "claws"
@@ -629,12 +635,12 @@ msgstr "Fluch"
 #: data/core/units/undead/Corpse_Ghast.cfg:27
 #: data/core/units/undead/Corpse_Soulless.cfg:154
 #: data/core/units/undead/Corpse_Soulless.cfg:170
-#: data/core/units/undead/Corpse_Soulless.cfg:254
-#: data/core/units/undead/Corpse_Soulless.cfg:331
+#: data/core/units/undead/Corpse_Soulless.cfg:270
+#: data/core/units/undead/Corpse_Soulless.cfg:347
 #: data/core/units/undead/Corpse_Walking.cfg:155
 #: data/core/units/undead/Corpse_Walking.cfg:171
-#: data/core/units/undead/Corpse_Walking.cfg:255
-#: data/core/units/undead/Corpse_Walking.cfg:332
+#: data/core/units/undead/Corpse_Walking.cfg:271
+#: data/core/units/undead/Corpse_Walking.cfg:348
 msgid "bite"
 msgstr "Biss"
 
@@ -1923,7 +1929,7 @@ msgid ""
 "offensive swordsmanship and are capable of subverting even the strongest "
 "fortifications."
 msgstr ""
-"Die Schwertkämpfer des Dünenvolks sind bekannt dafür, ein Spiel namens "
+"Die Schwertkämpfer des Wüstenvolks sind bekannt dafür, ein Spiel namens "
 "»Laeqad« zu spielen, in denen Laeqads – dicke, robuste Schilfrohre, die "
 "mehrere Schwertlängen hoch sind – wie Speere auf sie zugeschleudert werden, "
 "und sie versuchen, das Schilfrohr der Länge nach in der Luft zu spalten. Der "
@@ -2452,7 +2458,7 @@ msgid ""
 "readily to warfare. Their unique trait of fighting best at dawn or dusk "
 "corresponds with the time when desert temperatures are the most habitable."
 msgstr ""
-"Vagabunden stellen in vielerlei Hinsicht die ideale Dünenvolkeinheit dar; "
+"Vagabunden stellen in vielerlei Hinsicht die ideale Wüstenvolkeinheit dar; "
 "flexibel, mobil, effektiv sowohl in der Deffensive, als auch in der "
 "Offensive, im Fern- als auch im Nahkampf. Sie fühlen sich in den ihnen "
 "bekannten Umgebungen am wohlsten; den Wüsten und Hügeln der südlichen "
@@ -2891,10 +2897,25 @@ msgstr ""
 "Chance haben, zu reagieren. Die Windreiter haben ihr Handwerk perfektioniert "
 "und sind die unbestrittenen Meister des Fernkampfes bei dem Wüstenvolk."
 
-#. [unit_type]: id=Wyvern Rider, race=monster, description=
+#. [unit_type]: id=Wyvern Rider, race=monster
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:4
 msgid "Wyvern Rider"
 msgstr "Lindwurmreiter"
+
+#. [unit_type]: id=Wyvern Rider, race=monster
+#: data/core/units/dunefolk/Wyvern_Rider.cfg:17
+msgid ""
+"Although generally peaceful, wyverns can easily become fierce and angry "
+"beasts when provoked. When truly enraged they can even tear apart "
+"experienced warriors with relative ease. Most travelers would run or fight "
+"in their mighty presence, yet a few are able to tame these wild creatures. "
+"These Dunefolk riders spend years, even decades of their lives bonding with "
+"them, slowly building up their trust until they have gained true mastery "
+"over the skies. The most experienced of these Wyvern riders have ascended to "
+"be the greatest and most revered travelers of the land. While they do not "
+"usually use their knowledge for warfare, they can be threatening warriors "
+"when defending their homes."
+msgstr ""
 
 # Wieland, der Schmied :) -s. Wagner, Simrock - https://de.wikipedia.org/wiki/Wieland_der_Schmied
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
@@ -3386,7 +3407,7 @@ msgstr ""
 #. in game mechanics an upgrade of the Shaman’s slowing “entangle”, but in lore has the different magic style of the Enchantress’s unit description
 #: data/core/units/elves/Enchantress.cfg:37 data/core/units/elves/Sylph.cfg:41
 msgid "ethereal web"
-msgstr ""
+msgstr "Äthernetz"
 
 #. [attack]: type=arcane
 #: data/core/units/elves/Enchantress.cfg:49
@@ -5819,6 +5840,7 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Brawler.cfg:30
+#: data/core/units/monsters/Cat_Jump.cfg:90
 #: data/core/units/monsters/Fire_Dragon.cfg:42
 #: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
@@ -6408,8 +6430,8 @@ msgstr ""
 #. [attack]: type=pierce
 #. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-#: data/core/units/undead/Corpse_Soulless.cfg:436
-#: data/core/units/undead/Corpse_Walking.cfg:437
+#: data/core/units/undead/Corpse_Soulless.cfg:452
+#: data/core/units/undead/Corpse_Walking.cfg:453
 msgid "tusk"
 msgstr "Stoßzahn"
 
@@ -6483,6 +6505,37 @@ msgstr ""
 "Knabberfische sind junge Raubfische, die oft eher neugierig als gefährlich "
 "sind. Ein einzelnes Exemplar mag keine Bedrohung darstellen, aber diese "
 "Fische sind selten allein unterwegs."
+
+#. [unit_type]: id=Forest Lion, race=cats
+#: data/core/units/monsters/Cat_Forest.cfg:4
+msgid "Forest Lion"
+msgstr ""
+
+#. [unit_type]: id=Forest Lion, race=cats
+#: data/core/units/monsters/Cat_Forest.cfg:31
+msgid ""
+"Forest Lions are light-brown cats, roughly the same size as a wolf, that "
+"hunt the woods and hills at dusk and dawn.  Their most distinctive feature "
+"is their odd, triply branched tail, which they seem to use for camouflage "
+"and disruptive patterning."
+msgstr ""
+
+#. [unit_type]: id=Jumpcat, race=cats
+#: data/core/units/monsters/Cat_Jump.cfg:4
+msgid "Jumpcat"
+msgstr ""
+
+#. [unit_type]: id=Jumpcat, race=cats
+#: data/core/units/monsters/Cat_Jump.cfg:30
+msgid ""
+"Jumpcats are opportunistic predators with keen senses and fast reflexes, but "
+"very little bulk, so they are easily dispatched if they can be hit, and "
+"easily scared off if they can't.  One of the most distinctive features of "
+"these odd creatures is the hard clump of twigs, clay, and rocks they carry "
+"on their tail, which is their primary offensive weapon.  Their actions are "
+"mostly driven by instinct, but they are sometimes used as assassins by more "
+"sophisticated handlers."
+msgstr ""
 
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:13
@@ -6739,37 +6792,24 @@ msgstr "Feuerklauen"
 
 #. [unit_type]: id=Fire Wisp, race=monster
 #: data/core/units/monsters/Fire_Wisp.cfg:4
-#, fuzzy
-#| msgid "Fire Wraith"
 msgid "Fire Wisp"
-msgstr "Feuergarde"
+msgstr "Feuerlicht"
 
 #. [unit_type]: id=Fire Wisp, race=monster
 #: data/core/units/monsters/Fire_Wisp.cfg:24
-#, fuzzy
-#| msgid ""
-#| "Fire Guardians are spirits of smoke and flame. No one is exactly sure "
-#| "where they come from, but they are occasionally summoned by powerful "
-#| "mages to do their bidding. When not being controlled they like to frolic "
-#| "in pools of lava and take great delight in burning anything they can "
-#| "reach."
 msgid ""
 "Fire Wisps are spirits of smoke and flame. When not being ordered around "
 "they like to frolic in pools of lava and take great delight in burning "
 "anything they can reach."
 msgstr ""
-"Feuerwächter sind Geister aus Rauch und Flamme. Niemand kann mit Gewissheit "
-"sagen, woher sie kommen, doch manchmal werden sie von mächtigen Magiern "
-"beschworen, um ihren Willen zu vollführen. Wenn sie nicht kontrolliert "
-"werden, planschen Feuerwächter gerne in Lavaseen und lieben es, allles zu "
+"Feuerlichter sind Geister aus Rauch und Flamme. Wenn sie nicht kontrolliert "
+"werden, planschen Feuerlichter gerne in Lavaseen und lieben es, alles zu "
 "verbrennen, dessen sie habhaft werden können."
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Wisp.cfg:29
-#, fuzzy
-#| msgid "fire breath"
 msgid "fire bash"
-msgstr "Feueratem"
+msgstr "Feuerschlag"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:8
@@ -7489,7 +7529,7 @@ msgid "Skeletal Dragon"
 msgstr "Skelettdrache"
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
-#: data/core/units/monsters/Skeletal_Dragon.cfg:27
+#: data/core/units/monsters/Skeletal_Dragon.cfg:26
 msgid ""
 "Long ago one of the mightiest living creatures, the feared Dragon has become "
 "only bones and dark sinew. Long after its death, it was raised through the "
@@ -7510,7 +7550,7 @@ msgstr ""
 "erwählt, diese Tat zu vollbringen – oder zu überleben."
 
 #. [attack]: type=blade
-#: data/core/units/monsters/Skeletal_Dragon.cfg:31
+#: data/core/units/monsters/Skeletal_Dragon.cfg:30
 msgid "jaw"
 msgstr "Kiefer"
 
@@ -8903,126 +8943,134 @@ msgstr "Insekt"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:175
 #: data/core/units/undead/Corpse_Walking.cfg:176
+#, fuzzy
+#| msgid "wc_variation^Rat"
+msgid "wc_variation^Cat"
+msgstr "Ratte"
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:191
+#: data/core/units/undead/Corpse_Walking.cfg:192
 msgid "wc_variation^Drake"
 msgstr "Drake"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:190
-#: data/core/units/undead/Corpse_Walking.cfg:191
+#: data/core/units/undead/Corpse_Soulless.cfg:206
+#: data/core/units/undead/Corpse_Walking.cfg:207
 msgid "wc_variation^Dwarf"
 msgstr "Zwerg"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:203
-#: data/core/units/undead/Corpse_Walking.cfg:204
+#: data/core/units/undead/Corpse_Soulless.cfg:219
+#: data/core/units/undead/Corpse_Walking.cfg:220
 msgid "wc_variation^Falcon"
 msgstr "Falke"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:238
-#: data/core/units/undead/Corpse_Walking.cfg:239
+#: data/core/units/undead/Corpse_Soulless.cfg:254
+#: data/core/units/undead/Corpse_Walking.cfg:255
 msgid "wc_variation^Fish"
 msgstr "Fisch"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:259
-#: data/core/units/undead/Corpse_Walking.cfg:260
+#: data/core/units/undead/Corpse_Soulless.cfg:275
+#: data/core/units/undead/Corpse_Walking.cfg:276
 msgid "wc_variation^Goblin"
 msgstr "Kobold"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:269
-#: data/core/units/undead/Corpse_Walking.cfg:293
+#: data/core/units/undead/Corpse_Soulless.cfg:285
+#: data/core/units/undead/Corpse_Walking.cfg:309
 msgid "wc_variation^Horse"
 msgstr "Ross"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:278
-#: data/core/units/undead/Corpse_Walking.cfg:302
+#: data/core/units/undead/Corpse_Soulless.cfg:294
+#: data/core/units/undead/Corpse_Walking.cfg:318
 msgid "wc_variation^Mounted"
 msgstr "Berittener"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:287
-#: data/core/units/undead/Corpse_Walking.cfg:311
+#: data/core/units/undead/Corpse_Soulless.cfg:303
+#: data/core/units/undead/Corpse_Walking.cfg:327
 msgid "wc_variation^Beast-Rider"
 msgstr "Bestienreiter"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:296
-#: data/core/units/undead/Corpse_Walking.cfg:270
+#: data/core/units/undead/Corpse_Soulless.cfg:312
+#: data/core/units/undead/Corpse_Walking.cfg:286
 msgid "wc_variation^Gryphon"
 msgstr "Greif"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:319
-#: data/core/units/undead/Corpse_Walking.cfg:320
+#: data/core/units/undead/Corpse_Soulless.cfg:335
+#: data/core/units/undead/Corpse_Walking.cfg:336
 msgid "wc_variation^Rat"
 msgstr "Ratte"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:336
-#: data/core/units/undead/Corpse_Walking.cfg:337
+#: data/core/units/undead/Corpse_Soulless.cfg:352
+#: data/core/units/undead/Corpse_Walking.cfg:353
 msgid "wc_variation^Saurian"
 msgstr "Saurianer"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:346
-#: data/core/units/undead/Corpse_Walking.cfg:347
+#: data/core/units/undead/Corpse_Soulless.cfg:362
+#: data/core/units/undead/Corpse_Walking.cfg:363
 msgid "wc_variation^Scorpion"
 msgstr "Skorpion"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:364
-#: data/core/units/undead/Corpse_Walking.cfg:365
+#: data/core/units/undead/Corpse_Soulless.cfg:380
+#: data/core/units/undead/Corpse_Walking.cfg:381
 msgid "wc_variation^Scuttler"
 msgstr "Sandkrabbler"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:373
-#: data/core/units/undead/Corpse_Walking.cfg:374
+#: data/core/units/undead/Corpse_Soulless.cfg:389
+#: data/core/units/undead/Corpse_Walking.cfg:390
 msgid "wc_variation^Spider"
 msgstr "Spinne"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:382
-#: data/core/units/undead/Corpse_Walking.cfg:383
+#: data/core/units/undead/Corpse_Soulless.cfg:398
+#: data/core/units/undead/Corpse_Walking.cfg:399
 msgid "wc_variation^Serpent"
 msgstr "Schlange"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:401
-#: data/core/units/undead/Corpse_Walking.cfg:402
+#: data/core/units/undead/Corpse_Soulless.cfg:417
+#: data/core/units/undead/Corpse_Walking.cfg:418
 msgid "wc_variation^Swimmer"
 msgstr "Schwimmer"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:419
-#: data/core/units/undead/Corpse_Walking.cfg:420
+#: data/core/units/undead/Corpse_Soulless.cfg:435
+#: data/core/units/undead/Corpse_Walking.cfg:436
 msgid "wc_variation^Troll"
 msgstr "Troll"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:428
-#: data/core/units/undead/Corpse_Walking.cfg:429
+#: data/core/units/undead/Corpse_Soulless.cfg:444
+#: data/core/units/undead/Corpse_Walking.cfg:445
 msgid "wc_variation^Boar"
 msgstr "Wildschwein"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:441
-#: data/core/units/undead/Corpse_Walking.cfg:442
+#: data/core/units/undead/Corpse_Soulless.cfg:457
+#: data/core/units/undead/Corpse_Walking.cfg:458
 msgid "wc_variation^Wose"
 msgstr "Waldschrat"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:453
-#: data/core/units/undead/Corpse_Walking.cfg:454
+#: data/core/units/undead/Corpse_Soulless.cfg:469
+#: data/core/units/undead/Corpse_Walking.cfg:470
 msgid "wc_variation^Wolf"
 msgstr "Wolf"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:466
-#: data/core/units/undead/Corpse_Walking.cfg:467
+#: data/core/units/undead/Corpse_Soulless.cfg:482
+#: data/core/units/undead/Corpse_Walking.cfg:483
 msgid "wc_variation^Bat"
 msgstr "Fledermaus"
 

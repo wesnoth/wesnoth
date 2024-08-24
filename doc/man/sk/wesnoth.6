@@ -63,13 +63,8 @@ Identifikátor scény vo zvolenej výprave. Predvolená je prvá scéna.
 Preskoč [príbehové] obrazovky a dialógy až do konca \fBstart\fP udalosti.
 .TP 
 \fB\-\-clock\fP
-Pridáva možnosť zobraziť hodiny na testovanie časovača kreslenia.
-.TP 
-\fB\-\-config\-dir\fP\fI\ názov\fP
-Zastarané, použi \fB\-\-userdata\-dir\fP.
-.TP 
-\fB\-\-config\-path\fP
-Zastarané, použite \fB\-\-userdata\-path\fP.
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id\fP
 prepíše načítané jadro jadrom, ktorého id je zadané.
@@ -116,8 +111,7 @@ použitá aj voľba \fB\-e\fP alebo \fB\-\-editor\fP, potom spustí editor s map
 tohto adresára.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ jazyk\fP
-používa jazyk \fIlang\fP (symbol) v tejto relácii. Príklad: \fB\-\-language
-ang_GB@latin\fP
+používa jazyk \fIlang\fP (symbol) v tejto relácii. Príklad: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdoména1\fP\fB,\fP\fIdoména2\fP\fB,\fP\fI...\fP
 nastaví úroveň závažnosti zapisovacích domén. \fBall\fP znamená všetky
@@ -145,6 +139,10 @@ in the logs directory under the userdata folder.
 \fB\-\-log\-to\-file\fP
 log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 Pre Windows, keď sa použije s \-\-no\-log\-to\-file, výstup sa zapíše do
@@ -217,8 +215,7 @@ spracuje preprocesorom zadaný súbor/adresár. Pre každý súbor bude do
 cieľového adresára zapísaný základný .cfg súbor a spracovaný .cfg súbor. Ak
 je zadaný adresár, bude spracovaný rekurzívne podľa pravidiel
 preprocesora. Spoločné makrá z adresára "data/core/macros" budú spracované
-pred zadanými zdrojmi (resources). Príklad: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result\fP. Pre detailné informácie o
+pred zadanými zdrojmi (resources). Príklad: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result\fP. Pre detailné informácie o
 preprocesore navštívte
 http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
@@ -290,17 +287,6 @@ rovnaké oprávnenia ako spustiteľnému súboru wesnoth.
 .TP 
 \fB\-S,\-\-use\-schema\fP\fI\ cesta\fP
 nastaví schému WML na použitie s \fB\-V,\-\-validate\fP.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ názov\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy
-Games". On Windows it is also possible to specify a directory relative to
-the process working directory by using path starting with ".\e" or "..\e".
-This defaults to the userdata path.
-.TP 
-\fB\-\-userconfig\-path\fP
-vypíše názov adresára s používateľskými nastaveniami a skončí.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ názov\fP
 nastaví adresár userdata na \fIname\fP pod $HOME alebo "My Documents\eMy Games"
@@ -397,8 +383,7 @@ nastaví frakciu danej éry pre túto stranu. Frakcia sa vyberá pomocou
 id. Frakcie sú popísané v súbore data/multiplayer.cfg.
 .TP 
 \fB\-\-turns\fP\fI\ hodnota\fP
-nastaví limit na počet ťahov pre danú scénu. Základná hodnota je \fBbez
-limitu\fP.
+nastaví limit na počet ťahov pre danú scénu. Základná hodnota je \fBbez limitu\fP.
 .
 .SH "NÁVRATOVÝ KÓD"
 .

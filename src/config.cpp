@@ -328,7 +328,7 @@ auto get_child_impl(Tchildren& children, config_key_type key, int n) -> optional
 	auto i = children.find(key);
 	if(i == children.end()) {
 		DBG_CF << "The config object has no child named »" << key << "«.";
-		return std::nullopt;
+		return utils::nullopt;
 	}
 
 	if(n < 0) {
@@ -340,7 +340,7 @@ auto get_child_impl(Tchildren& children, config_key_type key, int n) -> optional
 	} catch(const std::out_of_range&) {
 		DBG_CF << "The config object has only »" << i->second.size() << "« children named »" << key
 			   << "«; request for the index »" << n << "« cannot be honored.";
-		return std::nullopt;
+		return utils::nullopt;
 	}
 }
 
@@ -421,7 +421,7 @@ optional_config_impl<const config> config::get_deprecated_child(config_key_type 
 		return res;
 	}
 
-	return std::nullopt;
+	return utils::nullopt;
 }
 
 config::const_child_itors config::get_deprecated_child_range(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const
@@ -791,7 +791,7 @@ optional_config config::find_child(config_key_type key, const std::string& name,
 		DBG_CF << "Key »" << name << "« value »" << value << "« pair not found as child of key »" << key << "«.";
 
 
-		return std::nullopt;
+		return utils::nullopt;
 	}
 
 	const child_list::iterator j = std::find_if(i->second.begin(), i->second.end(),
@@ -807,7 +807,7 @@ optional_config config::find_child(config_key_type key, const std::string& name,
 
 	DBG_CF << "Key »" << name << "« value »" << value << "« pair not found as child of key »" << key << "«.";
 
-	return std::nullopt;
+	return utils::nullopt;
 }
 
 config& config::find_mandatory_child(config_key_type key, const std::string &name, const std::string &value)

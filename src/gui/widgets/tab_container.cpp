@@ -105,17 +105,18 @@ void tab_container::add_tab_entry(const widget_data row)
 
 void tab_container::select_tab(unsigned index)
 {
-	unsigned count = get_tab_count();
-	if (index < count) {
+	if (index < get_tab_count()) {
 		get_internal_list().select_row(index);
 		generator_->select_item(index, true);
 	}
 }
 
 void tab_container::change_selection() {
-	select_tab(get_internal_list().get_selected_row());
+	select_tab(get_active_tab_index());
 	place(get_origin(), get_size());
 	queue_redraw();
+
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 // }---------- DEFINITION ---------{

@@ -71,16 +71,7 @@ std::vector<int> side_filter::get_teams() const
 
 static bool check_side_number(const team &t, const std::string &str)
 {
-		std::vector<std::pair<int,int>> ranges = utils::parse_ranges_unsigned(str);
-		int side_number = t.side();
-
-		std::vector<std::pair<int,int>>::const_iterator range, range_end = ranges.end();
-		for (range = ranges.begin(); range != range_end; ++range) {
-			if(side_number >= range->first && side_number <= range->second) {
-				return true;
-			}
-		}
-		return false;
+	return in_ranges(t.side(), utils::parse_ranges_unsigned(str));
 }
 
 bool side_filter::match_internal(const team &t) const

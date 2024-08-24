@@ -23,7 +23,6 @@
 #include "gui/core/log.hpp"
 #include "gui/core/gui_definition.hpp"
 #include "gui/widgets/settings.hpp"
-#include "preferences/preferences.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/schema_validator.hpp"
@@ -31,14 +30,9 @@
 
 namespace gui2
 {
-static bool initialized = false;
 
 void init()
 {
-	if(initialized) {
-		return;
-	}
-
 	LOG_GUI_G << "Initializing UI subststem.";
 
 	// Save current screen size.
@@ -47,14 +41,13 @@ void init()
 	//
 	// Read and validate the WML files.
 	//
-	config cfg;
+	config guis_cfg;
 	try {
-		schema_validation::schema_validator validator(filesystem::get_wml_location("schema/gui.cfg"));
+		schema_validation::schema_validator validator(filesystem::get_wml_location("schema/gui.cfg").value());
 
 		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
-		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg"), &preproc);
-
-		read(cfg, *stream, &validator);
+		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg").value(), &preproc);
+		read(guis_cfg, *stream, &validator);
 	} catch(const config::error& e) {
 		ERR_GUI_P << e.what();
 		ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'.";
@@ -66,9 +59,7 @@ void init()
 	//
 	// Parse GUI definitions.
 	//
-	const std::string& current_theme = prefs::get().gui_theme();
-
-	for(const config& g : cfg.child_range("gui")) {
+	for(const config& g : guis_cfg.child_range("gui")) {
 		const std::string id = g["id"];
 
 		auto iter = guis.emplace(id, gui_definition(g)).first;
@@ -76,24 +67,34 @@ void init()
 		if(id == "default") {
 			default_gui = iter;
 		}
-
-		if(!current_theme.empty() && id == current_theme) {
-			current_gui = iter;
-		}
 	}
 
 	VALIDATE(default_gui != guis.end(), _("No default gui defined."));
+}
 
-	if(current_theme.empty()) {
+void switch_theme(const std::string& current_theme)
+{
+	if (current_theme.empty() || current_theme == "default") {
 		current_gui = default_gui;
-	} else if(current_gui == guis.end()) {
-		ERR_GUI_P << "Missing [gui] definition for '" << current_theme << "'";
-		current_gui = default_gui;
+	} else {
+		gui_theme_map_t::iterator gui_itor = guis.begin();
+		for (const auto& gui : guis) {
+			if (gui.first == current_theme) {
+				current_gui = gui_itor;
+			}
+
+			if (gui_itor != guis.end()) {
+				gui_itor++;
+			}
+		}
+
+		if(current_gui == guis.end()) {
+			ERR_GUI_P << "Missing [gui] definition for '" << current_theme << "'";
+			current_gui = default_gui;
+		}
 	}
 
 	current_gui->second.activate();
-
-	initialized = true;
 }
 
 } // namespace gui2

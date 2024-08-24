@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
-"PO-Revision-Date: 2024-06-02 17:17+0800\n"
+"POT-Creation-Date: 2024-08-19 04:11 UTC\n"
+"PO-Revision-Date: 2024-07-09 14:42+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -176,6 +176,7 @@ msgstr "投石器"
 #: data/core/units/monsters/Bear.cfg:42 data/core/units/monsters/Caribe.cfg:114
 #: data/core/units/monsters/Caribe_Hunter.cfg:115
 #: data/core/units/monsters/Caribe_Nibbler.cfg:129
+#: data/core/units/monsters/Cat_Forest.cfg:92
 #: data/core/units/monsters/Giant_Spider.cfg:28
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Shadow_Jumping_Spider.cfg:87
@@ -318,7 +319,7 @@ msgstr "连枷"
 #: data/core/units/humans/Horse_Knight.cfg:23
 #: data/core/units/humans/Horse_Paladin.cfg:39
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:58
-#: data/core/units/humans/Loyalist_Dragoon.cfg:35
+#: data/core/units/humans/Loyalist_Dragoon.cfg:54
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:27
 #: data/core/units/humans/Loyalist_Longbowman.cfg:25
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:25
@@ -338,7 +339,7 @@ msgstr "剑"
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Commander.cfg:55
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Lieutenant.cfg:53
 #: data/core/units/humans/Loyalist_Cavalier.cfg:45
-#: data/core/units/humans/Loyalist_Dragoon.cfg:44
+#: data/core/units/humans/Loyalist_Dragoon.cfg:63
 #: data/core/units/humans/Loyalist_Duelist.cfg:45
 #: data/core/units/humans/Loyalist_General.cfg:53
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:47
@@ -366,7 +367,7 @@ msgid "longsword"
 msgstr "长剑"
 
 #. [attack]: type=impact
-#: data/campaigns/Eastern_Invasion/units/Human_Konrad_King_of_Wesnoth.cfg:28
+#: data/campaigns/Eastern_Invasion/units/Human_Konrad_King_of_Wesnoth.cfg:29
 #: data/core/units/humans/Outlaw.cfg:23
 #: data/core/units/humans/Outlaw_Bandit.cfg:29
 #: data/core/units/humans/Outlaw_Fugitive.cfg:28
@@ -474,6 +475,7 @@ msgstr "弓"
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Soulless_Gryphon
 #. [attack]: type=pierce
+#. [variation]
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
@@ -484,6 +486,8 @@ msgstr "弓"
 #: data/core/units/gryphons/Gryphon_Master.cfg:28
 #: data/core/units/gryphons/Gryphon_Rider.cfg:27
 #: data/core/units/monsters/Bear.cfg:51
+#: data/core/units/monsters/Cat_Forest.cfg:82
+#: data/core/units/monsters/Cat_Jump.cfg:80
 #: data/core/units/monsters/Elder_Falcon.cfg:75
 #: data/core/units/monsters/Falcon.cfg:86
 #: data/core/units/monsters/Icemonax.cfg:53
@@ -491,9 +495,11 @@ msgstr "弓"
 #: data/core/units/monsters/Jinn.cfg:91
 #: data/core/units/monsters/Raven_Harbinger.cfg:83
 #: data/core/units/monsters/Roc.cfg:55
-#: data/core/units/monsters/Skeletal_Dragon.cfg:43
+#: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
+#: data/core/units/undead/Corpse_Soulless.cfg:186
+#: data/core/units/undead/Corpse_Walking.cfg:187
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:94
 #: data/core/units/undead/Spirit_Shadow.cfg:62
 msgid "claws"
@@ -620,12 +626,12 @@ msgstr "诅咒"
 #: data/core/units/undead/Corpse_Ghast.cfg:27
 #: data/core/units/undead/Corpse_Soulless.cfg:154
 #: data/core/units/undead/Corpse_Soulless.cfg:170
-#: data/core/units/undead/Corpse_Soulless.cfg:254
-#: data/core/units/undead/Corpse_Soulless.cfg:331
+#: data/core/units/undead/Corpse_Soulless.cfg:270
+#: data/core/units/undead/Corpse_Soulless.cfg:347
 #: data/core/units/undead/Corpse_Walking.cfg:155
 #: data/core/units/undead/Corpse_Walking.cfg:171
-#: data/core/units/undead/Corpse_Walking.cfg:255
-#: data/core/units/undead/Corpse_Walking.cfg:332
+#: data/core/units/undead/Corpse_Walking.cfg:271
+#: data/core/units/undead/Corpse_Walking.cfg:348
 msgid "bite"
 msgstr "咬"
 
@@ -947,7 +953,7 @@ msgid ""
 "prepare, the results are seen by the dwarves as being well worth the wait."
 msgstr ""
 "矮人雷霆卫士以他们古怪的武器闻名于世，当他们发怒时这些由木头和铁片组成的棍子"
-"会发出雷鸣般的声响。这武器的构成是个迷，使用这些武器的纳尔伽矮人们最后宁愿把"
+"会发出雷鸣般的声响。这武器的构成是个迷，使用这些武器的纳尔迦矮人们最后宁愿把"
 "秘密带进坟墓。他们甚至被认为正是武器的制造者。世人所知的最多不过是，矮人把一"
 "些奇怪的黑色粉末放进这些武器的入口，有人认为那是用来喂养关在里面的野兽的。\n"
 "\n"
@@ -2653,10 +2659,25 @@ msgstr ""
 "射中其他方法无法射中的目标。风骑将他们的技艺磨练到了极致，他们是沙丘游民中无"
 "可争议的远程战斗大师。"
 
-#. [unit_type]: id=Wyvern Rider, race=monster, description=
+#. [unit_type]: id=Wyvern Rider, race=monster
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:4
 msgid "Wyvern Rider"
 msgstr "双足飞龙骑手"
+
+#. [unit_type]: id=Wyvern Rider, race=monster
+#: data/core/units/dunefolk/Wyvern_Rider.cfg:17
+msgid ""
+"Although generally peaceful, wyverns can easily become fierce and angry "
+"beasts when provoked. When truly enraged they can even tear apart "
+"experienced warriors with relative ease. Most travelers would run or fight "
+"in their mighty presence, yet a few are able to tame these wild creatures. "
+"These Dunefolk riders spend years, even decades of their lives bonding with "
+"them, slowly building up their trust until they have gained true mastery "
+"over the skies. The most experienced of these Wyvern riders have ascended to "
+"be the greatest and most revered travelers of the land. While they do not "
+"usually use their knowledge for warfare, they can be threatening warriors "
+"when defending their homes."
+msgstr ""
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:4
@@ -2847,7 +2868,7 @@ msgid ""
 msgstr ""
 "矮人哨卫是矮人部队中的佼佼者，他们组成了战线上的堡垒。正面攻击由他们维持的防"
 "线，通常来说是根本不用考虑的作战方案。这不止是收效甚微，简直就是自杀。这些矮"
-"人身穿最强的纳尔伽铠甲，是肉搏战大师。他们可以像橡树一样一心一意地固守一片"
+"人身穿最强的纳尔迦铠甲，是肉搏战大师。他们可以像橡树一样一心一意地固守一片"
 "地。"
 
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
@@ -2897,7 +2918,7 @@ msgid ""
 "prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
 "矮人雷霆卫士以他们古怪的武器闻名于世，当他们发怒时这些由木头和铁片组成的棍子"
-"会发出雷鸣般的声响。这武器的构成是个迷，使用这些武器的纳尔伽矮人们最后宁愿把"
+"会发出雷鸣般的声响。这武器的构成是个迷，使用这些武器的纳尔迦矮人们最后宁愿把"
 "秘密带进坟墓。他们甚至被认为正是武器的制造者。世人所知的最多不过是，矮人把一"
 "些奇怪的黑色粉末放进这些武器的入口，有人认为那是用来喂养关在里面的野兽的。\n"
 "\n"
@@ -3612,18 +3633,6 @@ msgstr "恐狼骑手"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:19
-#, fuzzy
-#| msgid ""
-#| "‘Dire wolves’ differ from the common variety only in size and color. They "
-#| "typically stand taller than a horse at the shoulder, and have an appetite "
-#| "to match. Only a madman would willingly encounter them; but goblins, at "
-#| "great cost to themselves, have managed to tame and ride them.\n"
-#| "\n"
-#| "The claws of a wolf are not generally regarded as being the more "
-#| "dangerous parts, but on a beast this large, they are thicker and longer "
-#| "than iron nails. Their riders smear a poison on the front set, not unlike "
-#| "that used by the orcish assassins, making a swipe from these beasts’ paws "
-#| "into a most deadly stroke."
 msgid ""
 "While the ferocity and danger of direwolves makes them somewhat of an omen "
 "to most, the diminutive goblins have an unusual bond with these savage "
@@ -3639,9 +3648,10 @@ msgid ""
 "the orcish assassins, making a swipe from these beasts’ paws into a most "
 "deadly stroke."
 msgstr ""
-"“恐狼”和普通品种的区别仅仅在于大小和颜色。它们站起来时肩膀比马还高，胃口也和"
-"身材一样大。只有疯子才愿意和他们遭遇，但地精们则付出了很大的代价，终于成功地"
-"驯服并驾驭了它们。\n"
+"虽然恐狼的凶猛和危险使它们在某种程度上成为大多数人的预兆，但小身板的地精与这"
+"些野蛮生物有着不同寻常的联系。虽然驯服这些野兽超出了地精的能力，但如果一个勇"
+"敢的地精选择生活在狼群中并从小照顾一个幼崽，那么两者之间可以获得一定程度的尊"
+"重。在认出这个地精是自己人之后，恐狼会允许地精骑上它。\n"
 "\n"
 "通常狼爪并不被认为很危险，但长在这些巨兽身上的爪子又厚又长，比钢钉有过之而无"
 "不及。骑手在它们的前爪上涂毒，跟兽人刺客用的一样，使得这些野兽前爪的猛击成为"
@@ -3740,15 +3750,6 @@ msgstr "地精矛兵"
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:17
-#, fuzzy
-#| msgid ""
-#| "In any race, there are always those rare individuals who, by stroke of "
-#| "bad luck, are born much smaller and weaker than the rest of their kind. "
-#| "For Orcs, however, such occurrences are extraordinarily common, with "
-#| "there usually being several runts born in each litter. Known as "
-#| "‘Goblins’, these sickly creatures nearly always live short, brutal lives, "
-#| "most used merely as fodder against an enemy of their larger siblings' "
-#| "choosing while equipped with only the crudest of spears."
 msgid ""
 "In any race, there are always those rare individuals who, by stroke of bad "
 "luck, are born much smaller and weaker than the rest of their kind. For "
@@ -5162,6 +5163,7 @@ msgstr "体型异常高大强壮的人鱼有时用自己的拳头和尾巴比用
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Brawler.cfg:30
+#: data/core/units/monsters/Cat_Jump.cfg:90
 #: data/core/units/monsters/Fire_Dragon.cfg:42
 #: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
@@ -5504,6 +5506,10 @@ msgid ""
 "approaches an ant egg or breaches the shell of an adjacent brood member will "
 "spur that ant to hatch as a fully formed adult."
 msgstr ""
+"巨蚁卵有坚韧的皮革般的外壳，需要付出专门的努力才能击穿。这层外壳使得从外面很"
+"难知道居住在里面的生命的状态，但它不会阻止内部快速发育的蚂蚁幼虫了解外部的世"
+"界。任何捕食者或敌人接近蚁卵或打破相邻孵化成员的外壳时，都会促使蚂蚁孵化到完"
+"全成型。"
 
 #. [unit_type]: id=Giant Ant Egg, race=monster
 #: data/core/units/monsters/Ant_Egg.cfg:9
@@ -5617,10 +5623,8 @@ msgstr ""
 
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:4
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Soldier Ant"
-msgstr "火蚁"
+msgstr "战蚁"
 
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:19
@@ -5673,8 +5677,8 @@ msgstr ""
 #. [attack]: type=pierce
 #. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-#: data/core/units/undead/Corpse_Soulless.cfg:436
-#: data/core/units/undead/Corpse_Walking.cfg:437
+#: data/core/units/undead/Corpse_Soulless.cfg:452
+#: data/core/units/undead/Corpse_Walking.cfg:453
 msgid "tusk"
 msgstr "长牙"
 
@@ -5697,7 +5701,7 @@ msgstr ""
 #. [unit_type]: id=Caribe, race=monster
 #: data/core/units/monsters/Caribe.cfg:8
 msgid "Caribe"
-msgstr ""
+msgstr "食人鱼"
 
 #. [unit_type]: id=Caribe, race=monster
 #: data/core/units/monsters/Caribe.cfg:28
@@ -5709,11 +5713,15 @@ msgid ""
 "use to extricate themselves from situations dire to most other fish. These "
 "fish are unusually clever and should not be underestimated."
 msgstr ""
+"这种巨型食人鱼在韦尔帝附近的内陆河流中很少遇到，但它们凶猛攻击的传说已经广泛"
+"传播。他们愤怒的红眼睛嵌在一张铁甲脸上。它们的牙齿是一种危险的武器，同时它们"
+"还拥有小而瘦的手臂和爪子，可以用它们摆脱对大多数其他鱼类来说可怕的处境。这些"
+"鱼异常聪明，不应被低估。"
 
 #. [unit_type]: id=Hunter Caribe, race=monster
 #: data/core/units/monsters/Caribe_Hunter.cfg:8
 msgid "Hunter Caribe"
-msgstr ""
+msgstr "猎手食人鱼"
 
 #. [unit_type]: id=Hunter Caribe, race=monster
 #: data/core/units/monsters/Caribe_Hunter.cfg:29
@@ -5721,17 +5729,52 @@ msgid ""
 "As they age, the giant caribe become bigger and more dangerous. They also "
 "learn to use seaweed to ensnare prey or enemies."
 msgstr ""
+"随着年龄的增长，这种巨型食人鱼变得越来越大，越来越危险。它们还学会用海藻诱捕"
+"猎物或敌人。"
 
 #. [unit_type]: id=Nibbler, race=monster
 #: data/core/units/monsters/Caribe_Nibbler.cfg:8
 msgid "Nibbler"
-msgstr ""
+msgstr "鱾鱼"
 
 #. [unit_type]: id=Nibbler, race=monster
 #: data/core/units/monsters/Caribe_Nibbler.cfg:43
 msgid ""
 "Nibblers are juvenile predator fish, often more curious than dangerous. A "
 "single individual may not be a threat, but these fish seldom travel alone."
+msgstr ""
+"鱾鱼是幼年掠食型鱼类，通常好奇心多于危险性。独立的个体可能不会构成威胁，但这"
+"些鱼很少独自出行。"
+
+#. [unit_type]: id=Forest Lion, race=cats
+#: data/core/units/monsters/Cat_Forest.cfg:4
+msgid "Forest Lion"
+msgstr ""
+
+#. [unit_type]: id=Forest Lion, race=cats
+#: data/core/units/monsters/Cat_Forest.cfg:31
+msgid ""
+"Forest Lions are light-brown cats, roughly the same size as a wolf, that "
+"hunt the woods and hills at dusk and dawn.  Their most distinctive feature "
+"is their odd, triply branched tail, which they seem to use for camouflage "
+"and disruptive patterning."
+msgstr ""
+
+#. [unit_type]: id=Jumpcat, race=cats
+#: data/core/units/monsters/Cat_Jump.cfg:4
+msgid "Jumpcat"
+msgstr ""
+
+#. [unit_type]: id=Jumpcat, race=cats
+#: data/core/units/monsters/Cat_Jump.cfg:30
+msgid ""
+"Jumpcats are opportunistic predators with keen senses and fast reflexes, but "
+"very little bulk, so they are easily dispatched if they can be hit, and "
+"easily scared off if they can't.  One of the most distinctive features of "
+"these odd creatures is the hard clump of twigs, clay, and rocks they carry "
+"on their tail, which is their primary offensive weapon.  Their actions are "
+"mostly driven by instinct, but they are sometimes used as assassins by more "
+"sophisticated handlers."
 msgstr ""
 
 #. [unit_type]: id=Swamp Lizard, race=monster
@@ -5827,6 +5870,9 @@ msgid ""
 "generally territorial, but can cooperate in small groups to confront common "
 "foes or large prey."
 msgstr ""
+"在韦诺周围的一些沼泽、河流和湖泊中看到的巨型蜻蜓比体型较小、更常见的蜻蜓拥有"
+"更长的生命周期。成虫可以无限期地生存，慢慢地长到最后蜕皮。它们通常有各自的领"
+"地，但可以形成小团体合作对抗共同的敌人或大型猎物。"
 
 #. [unit_type]: id=Grand Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly_Grand.cfg:5
@@ -5836,7 +5882,7 @@ msgstr "大蜻蜓"
 #. [unit_type]: id=Grand Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly_Grand.cfg:28
 msgid "Dragonflies that survive long enough grow into a final, grander form."
-msgstr ""
+msgstr "存活足够长时间的蜻蜓会成长为最终的、更宏伟的形态。"
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Dragonfly_Grand.cfg:44
@@ -5848,7 +5894,7 @@ msgstr "蛰刺"
 #. [unit_type]: id=Dragonfly Naiad, race=monster
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:5
 msgid "Dragonfly Naiad"
-msgstr ""
+msgstr "蜻蜓幼虫"
 
 #. [unit_type]: id=Dragonfly Naiad, race=monster
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:58
@@ -5858,6 +5904,9 @@ msgid ""
 "stay submerged to breathe, which explains why the giant dragonflies are "
 "usually found only near rivers, lakes, and coves."
 msgstr ""
+"年幼的蜻蜓在水中生活，主要捕食小型鱼类或其他昆虫幼虫。它们可以在岩石和泥土上"
+"爬行，但需要呆在水下呼吸，这就解释了为什么巨型蜻蜓通常只在河流、湖泊和海湾附"
+"近发现。"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:4
@@ -6345,22 +6394,16 @@ msgstr "沙漠闪电"
 #. [unit_type]: id=Kraken, race=monster
 #: data/core/units/monsters/Kraken.cfg:5
 msgid "Kraken"
-msgstr ""
+msgstr "海怪"
 
 #. [unit_type]: id=Kraken, race=monster
 #: data/core/units/monsters/Kraken.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Cuttlefish are gigantic creatures of the seas. They can grab their "
-#| "opponents with strong tentacles, or spit a poisonous black ink from a "
-#| "distance. The best way to survive an encounter with these monsters is to "
-#| "remain ashore."
 msgid ""
 "Krakens are gigantic creatures of the seas. They can grab their opponents "
 "with strong tentacles, or spit a poisonous black ink from a distance. The "
 "best way to survive an encounter with these monsters is to remain ashore."
 msgstr ""
-"乌贼是海洋中的巨型生物。它们能用巨大的触须抓住对手，或从远处射出有毒的墨汁。"
+"海怪是海洋中的巨型生物。它们能用巨大的触须抓住对手，或从远处射出有毒的墨汁。"
 "要想从这些生物手里逃生，最好的办法就是呆在岸上。"
 
 #. [unit_type]: id=Mudcrawler, race=monster
@@ -6594,7 +6637,7 @@ msgid "Skeletal Dragon"
 msgstr "骸骨龙"
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
-#: data/core/units/monsters/Skeletal_Dragon.cfg:27
+#: data/core/units/monsters/Skeletal_Dragon.cfg:26
 msgid ""
 "Long ago one of the mightiest living creatures, the feared Dragon has become "
 "only bones and dark sinew. Long after its death, it was raised through the "
@@ -6607,7 +6650,7 @@ msgstr ""
 "去不过就是一堆骨头，不过这么想的人几乎都没有活到能改变自己想法的时候。"
 
 #. [attack]: type=blade
-#: data/core/units/monsters/Skeletal_Dragon.cfg:31
+#: data/core/units/monsters/Skeletal_Dragon.cfg:30
 msgid "jaw"
 msgstr "颚"
 
@@ -7837,128 +7880,136 @@ msgstr "臭虫"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:175
 #: data/core/units/undead/Corpse_Walking.cfg:176
+#, fuzzy
+#| msgid "wc_variation^Rat"
+msgid "wc_variation^Cat"
+msgstr "鼠"
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:191
+#: data/core/units/undead/Corpse_Walking.cfg:192
 msgid "wc_variation^Drake"
 msgstr "龙人"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:190
-#: data/core/units/undead/Corpse_Walking.cfg:191
+#: data/core/units/undead/Corpse_Soulless.cfg:206
+#: data/core/units/undead/Corpse_Walking.cfg:207
 msgid "wc_variation^Dwarf"
 msgstr "矮人"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:203
-#: data/core/units/undead/Corpse_Walking.cfg:204
+#: data/core/units/undead/Corpse_Soulless.cfg:219
+#: data/core/units/undead/Corpse_Walking.cfg:220
 msgid "wc_variation^Falcon"
 msgstr "猎隼"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:238
-#: data/core/units/undead/Corpse_Walking.cfg:239
+#: data/core/units/undead/Corpse_Soulless.cfg:254
+#: data/core/units/undead/Corpse_Walking.cfg:255
 msgid "wc_variation^Fish"
 msgstr "鱼"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:259
-#: data/core/units/undead/Corpse_Walking.cfg:260
+#: data/core/units/undead/Corpse_Soulless.cfg:275
+#: data/core/units/undead/Corpse_Walking.cfg:276
 msgid "wc_variation^Goblin"
 msgstr "地精"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:269
-#: data/core/units/undead/Corpse_Walking.cfg:293
+#: data/core/units/undead/Corpse_Soulless.cfg:285
+#: data/core/units/undead/Corpse_Walking.cfg:309
 msgid "wc_variation^Horse"
 msgstr "马"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:278
-#: data/core/units/undead/Corpse_Walking.cfg:302
+#: data/core/units/undead/Corpse_Soulless.cfg:294
+#: data/core/units/undead/Corpse_Walking.cfg:318
 msgid "wc_variation^Mounted"
 msgstr "骑手"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:287
-#: data/core/units/undead/Corpse_Walking.cfg:311
+#: data/core/units/undead/Corpse_Soulless.cfg:303
+#: data/core/units/undead/Corpse_Walking.cfg:327
 msgid "wc_variation^Beast-Rider"
 msgstr "兽骑士"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:296
-#: data/core/units/undead/Corpse_Walking.cfg:270
+#: data/core/units/undead/Corpse_Soulless.cfg:312
+#: data/core/units/undead/Corpse_Walking.cfg:286
 msgid "wc_variation^Gryphon"
 msgstr "狮鹫"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:319
-#: data/core/units/undead/Corpse_Walking.cfg:320
+#: data/core/units/undead/Corpse_Soulless.cfg:335
+#: data/core/units/undead/Corpse_Walking.cfg:336
 msgid "wc_variation^Rat"
 msgstr "鼠"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:336
-#: data/core/units/undead/Corpse_Walking.cfg:337
+#: data/core/units/undead/Corpse_Soulless.cfg:352
+#: data/core/units/undead/Corpse_Walking.cfg:353
 msgid "wc_variation^Saurian"
 msgstr "蜥蜴人"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:346
-#: data/core/units/undead/Corpse_Walking.cfg:347
+#: data/core/units/undead/Corpse_Soulless.cfg:362
+#: data/core/units/undead/Corpse_Walking.cfg:363
 msgid "wc_variation^Scorpion"
 msgstr "蝎"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:364
-#: data/core/units/undead/Corpse_Walking.cfg:365
+#: data/core/units/undead/Corpse_Soulless.cfg:380
+#: data/core/units/undead/Corpse_Walking.cfg:381
 #, fuzzy
 #| msgid "wc_variation^Spider"
 msgid "wc_variation^Scuttler"
 msgstr "蜘蛛"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:373
-#: data/core/units/undead/Corpse_Walking.cfg:374
+#: data/core/units/undead/Corpse_Soulless.cfg:389
+#: data/core/units/undead/Corpse_Walking.cfg:390
 msgid "wc_variation^Spider"
 msgstr "蜘蛛"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:382
-#: data/core/units/undead/Corpse_Walking.cfg:383
+#: data/core/units/undead/Corpse_Soulless.cfg:398
+#: data/core/units/undead/Corpse_Walking.cfg:399
 msgid "wc_variation^Serpent"
 msgstr "海蛇"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:401
-#: data/core/units/undead/Corpse_Walking.cfg:402
+#: data/core/units/undead/Corpse_Soulless.cfg:417
+#: data/core/units/undead/Corpse_Walking.cfg:418
 msgid "wc_variation^Swimmer"
 msgstr "泳者"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:419
-#: data/core/units/undead/Corpse_Walking.cfg:420
+#: data/core/units/undead/Corpse_Soulless.cfg:435
+#: data/core/units/undead/Corpse_Walking.cfg:436
 msgid "wc_variation^Troll"
 msgstr "巨魔"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:428
-#: data/core/units/undead/Corpse_Walking.cfg:429
+#: data/core/units/undead/Corpse_Soulless.cfg:444
+#: data/core/units/undead/Corpse_Walking.cfg:445
 msgid "wc_variation^Boar"
 msgstr "野猪"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:441
-#: data/core/units/undead/Corpse_Walking.cfg:442
+#: data/core/units/undead/Corpse_Soulless.cfg:457
+#: data/core/units/undead/Corpse_Walking.cfg:458
 msgid "wc_variation^Wose"
 msgstr "树人"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:453
-#: data/core/units/undead/Corpse_Walking.cfg:454
+#: data/core/units/undead/Corpse_Soulless.cfg:469
+#: data/core/units/undead/Corpse_Walking.cfg:470
 msgid "wc_variation^Wolf"
 msgstr "狼"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:466
-#: data/core/units/undead/Corpse_Walking.cfg:467
+#: data/core/units/undead/Corpse_Soulless.cfg:482
+#: data/core/units/undead/Corpse_Walking.cfg:483
 msgid "wc_variation^Bat"
 msgstr "蝙蝠"
 
@@ -8332,6 +8383,8 @@ msgid ""
 "their skeletal horses were raised from the grave by unholy magic to spread "
 "fear and destruction."
 msgstr ""
+"这些骑在骷髅马上的骑手，曾经在平原上呼啸而过的伟大战士，被邪恶的魔法从坟墓里"
+"唤醒出来，以传播恐惧和毁灭。"
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4

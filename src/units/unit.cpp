@@ -1442,133 +1442,6 @@ void unit::remove_ability_by_id(const std::string& ability)
 	}
 }
 
-static bool matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter)
-{
-	using namespace utils::config_filters;
-
-	if(!filter["affect_adjacent"].empty()){
-		bool adjacent = cfg.has_child("affect_adjacent");
-		if(filter["affect_adjacent"].to_bool() != adjacent){
-			return false;
-		}
-	}
-
-	if(!bool_matches_if_present(filter, cfg, "affect_self", true))
-		return false;
-
-	if(!bool_or_empty(filter, cfg, "affect_allies"))
-		return false;
-
-	if(!bool_matches_if_present(filter, cfg, "affect_enemies", false))
-		return false;
-
-	if(!bool_matches_if_present(filter, cfg, "cumulative", false))
-		return false;
-
-	const std::vector<std::string> filter_type = utils::split(filter["tag_name"]);
-	if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() )
-		return false;
-
-	if(!string_matches_if_present(filter, cfg, "id", ""))
-		return false;
-
-	if(tag_name == "resistance"){
-		if(!set_includes_if_present(filter, cfg, "apply_to")){
-			return false;
-		}
-	} else {
-		if(!string_matches_if_present(filter, cfg, "apply_to", "self")){
-			return false;
-		}
-	}
-
-	if(!string_matches_if_present(filter, cfg, "overwrite_specials", "none"))
-		return false;
-
-	if(!string_matches_if_present(filter, cfg, "active_on", "both"))
-		return false;
-
-	//for damage only
-	if(!string_matches_if_present(filter, cfg, "replacement_type", ""))
-		return false;
-
-	if(!string_matches_if_present(filter, cfg, "alternative_type", ""))
-		return false;
-
-	//for plague only
-	if(!string_matches_if_present(filter, cfg, "type", ""))
-		return false;
-
-	if(!filter["value"].empty()){
-		if(tag_name == "drains"){
-			if(!int_matches_if_present(filter, cfg, "value", 50)){
-				return false;
-			}
-		} else if(tag_name == "berserk"){
-			if(!int_matches_if_present(filter, cfg, "value", 1)){
-				return false;
-			}
-		} else if(tag_name == "heal_on_hit" || tag_name == "heals" || tag_name == "regenerate" || tag_name == "leadership"){
-			if(!int_matches_if_present(filter, cfg, "value" , 0)){
-				return false;
-			}
-		} else {
-			if(!int_matches_if_present(filter, cfg, "value")){
-				return false;
-			}
-		}
-	}
-
-	if(!int_matches_if_present_or_negative(filter, cfg, "add", "sub"))
-		return false;
-
-	if(!int_matches_if_present_or_negative(filter, cfg, "sub", "add"))
-		return false;
-
-	if(!double_matches_if_present(filter, cfg, "multiply"))
-		return false;
-
-	if(!double_matches_if_present(filter, cfg, "divide"))
-		return false;
-
-	//the wml_filter is used in cases where the attribute we are looking for is not
-	//previously listed or to check the contents of the sub_tags ([filter_adjacent],[filter_self],[filter_opponent] etc.
-	//If the checked set does not exactly match the content of the capability, the function returns a false response.
-	auto fwml = filter.optional_child("filter_wml");
-	if (fwml){
-		if(!cfg.matches(*fwml)){
-			return false;
-		}
-	}
-
-	// Passed all tests.
-	return true;
-}
-
-bool unit::ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const
-{
-	// Handle the basic filter.
-	bool matches = matches_ability_filter(cfg, tag_name, filter);
-
-	// Handle [and], [or], and [not] with in-order precedence
-	for (const config::any_child condition : filter.all_children_range() )
-	{
-		// Handle [and]
-		if ( condition.key == "and" )
-			matches = matches && ability_matches_filter(cfg, tag_name, condition.cfg);
-
-		// Handle [or]
-		else if ( condition.key == "or" )
-			matches = matches || ability_matches_filter(cfg, tag_name, condition.cfg);
-
-		// Handle [not]
-		else if ( condition.key == "not" )
-			matches = matches && !ability_matches_filter(cfg, tag_name, condition.cfg);
-	}
-
-	return matches;
-}
-
 void unit::remove_ability_by_attribute(const config& filter)
 {
 	set_attr_changed(UA_ABILITIES);
@@ -1592,6 +1465,7 @@ bool unit::get_attacks_changed() const
 	}
 	return false;
 }
+
 void unit::write(config& cfg, bool write_all) const
 {
 	config back;
@@ -1781,6 +1655,17 @@ bool unit::loyal() const
 	return utils::holds_alternative<upkeep_loyal>(upkeep_);
 }
 
+void unit::set_loyal(bool loyal)
+{
+	if (loyal) {
+		upkeep_ = upkeep_loyal{};
+		overlays_.push_back("misc/loyal-icon.png");
+	} else {
+		upkeep_ = upkeep_full{};
+		overlays_.erase(std::remove(overlays_.begin(), overlays_.end(), "misc/loyal-icon.png"), overlays_.end());
+	}
+}
+
 int unit::defense_modifier(const t_translation::terrain_code & terrain) const
 {
 	int def = movement_type_.defense_modifier(terrain);
@@ -1828,7 +1713,7 @@ int unit::resistance_value(unit_ability_list resistance_list, const std::string&
 	});
 
 	if(!resistance_list.empty()) {
-		unit_abilities::effect resist_effect(resistance_list, 100-res, nullptr, unit_abilities::EFFECT_CLAMP_MIN_MAX);
+		unit_abilities::effect resist_effect(resistance_list, 100-res);
 
 		res = 100 - resist_effect.get_composite_value();
 	}
@@ -2845,7 +2730,7 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 	}
 
 	try {
-		upkeep_ = upkeep.apply_visitor(upkeep_parser_visitor{});
+		upkeep_ = upkeep.apply_visitor(upkeep_parser_visitor());
 	} catch(std::invalid_argument& e) {
 		WRN_UT << "Found invalid upkeep=\"" << e.what() <<  "\" in a unit";
 		upkeep_ = upkeep_full{};
@@ -2854,7 +2739,7 @@ void unit::parse_upkeep(const config::attribute_value& upkeep)
 
 void unit::write_upkeep(config::attribute_value& upkeep) const
 {
-	upkeep = utils::visit(upkeep_type_visitor{}, upkeep_);
+	upkeep = utils::visit(upkeep_type_visitor(), upkeep_);
 }
 
 void unit::clear_changed_attributes()

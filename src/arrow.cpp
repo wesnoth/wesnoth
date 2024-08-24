@@ -30,7 +30,7 @@ static lg::log_domain log_arrows("arrows");
 #define DBG_ARR LOG_STREAM(debug, log_arrows)
 
 arrow::arrow(bool hidden)
-	: layer_(display::LAYER_ARROWS)
+	: layer_(drawing_layer::arrows)
 	, color_("red")
 	, style_(STYLE_STANDARD)
 	, path_()
@@ -271,7 +271,7 @@ void arrow::update_symbols()
 		assert(!image_filename.empty());
 
 		image::locator image = image::locator(image_filename, mods);
-		if (!image.file_exists())
+		if (!image::exists(image))
 		{
 			ERR_ARR << "Image " << image_filename << " not found.";
 			image = image::locator(game_config::images::missing);

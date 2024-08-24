@@ -107,7 +107,7 @@ void find_translations(const config& base_dir, config& addon)
 {
 	for(const config& file : base_dir.child_range("file")) {
 		const std::string& fn = file["name"].str();
-		if(filesystem::ends_with(fn, ".po")) {
+		if(boost::algorithm::ends_with(fn, ".po")) {
 			support_translation(addon, filesystem::base_name(fn, true));
 		}
 	}

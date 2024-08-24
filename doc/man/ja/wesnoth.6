@@ -53,13 +53,8 @@ Battle for \fBWesnoth\fPはターン制のファンタジー戦略ゲームで�
 \fBstart\fP イベントの終わりまで、 [story] 画面とダイアログをスキップする。
 .TP 
 \fB\-\-clock\fP
-タイマー描画のテストのための時計を表示するオプションを追加する。
-.TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-非推奨、\fB\-\-userdata\-dir\fPを使用するべき。
-.TP 
-\fB\-\-config\-path\fP
-非推奨。\fB\-\-userdata\-path\fPを使用するべき。
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 読み込んだコアを指定の ID のものに置き換える。
@@ -126,8 +121,11 @@ WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
 in the logs directory under the userdata folder.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
-whether implicit or explicit.
+ログ出力がファイルに書き込まれる。暗黙的か明示的かに関わらず、\-\-no\-log\-to\-file の効果をキャンセルする。
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 Windowsの場合に \-\-no\-log\-to\-file と共に使用すると、出力は CONOUT ではなく cerr/cout
@@ -186,8 +184,7 @@ DiffWMLパッチをWMLファイルに適用する。どちらのファイルに�
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
 指定されたファイル／フォルダをプリプロセスする。プレーン .cfg ファイルごとに、プリプロセスされた .cfg
-ファイルを指定したフォルダに生成する。フォルダを指定した場合、プリプロセッサーのルールに従ってフォルダ内は再帰的にプリプロセスされる。「data/core/macros」内の共通マクロは、指定したリソースよりも前にプリプロセスされる。例：\fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result\fP
+ファイルを指定したフォルダに生成する。フォルダを指定した場合、プリプロセッサーのルールに従ってフォルダ内は再帰的にプリプロセスされる。「data/core/macros」内の共通マクロは、指定したリソースよりも前にプリプロセスされる。例：\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result\fP
 。詳細は以下のプリプロセッサーについてを参照：https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
@@ -249,17 +246,6 @@ GUI 付きでゲームを実行する、暗黙的に \fB\-\-nogui\fP を置き�
 .TP 
 \fB\-S,\-\-use\-schema\fP\fI\ パス\fP
 \fB\-V,\-\-validate\fP と合わせてWMLスキーマを設定する。
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy
-Games". On Windows it is also possible to specify a directory relative to
-the process working directory by using path starting with ".\e" or "..\e".
-This defaults to the userdata path.
-.TP 
-\fB\-\-userconfig\-path\fP
-ユーザー設定ディレクトリの名前を表示して、終了する。
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 ユーザーデータディレクトリを $HOME 下または Windows の「My Documents\eMy Games」下の \fIname\fP
