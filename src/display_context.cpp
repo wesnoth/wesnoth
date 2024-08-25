@@ -97,7 +97,7 @@ display_context::can_move_result display_context::unit_can_move(const unit& u) c
 		distance_ranges.emplace_back(min_range , max_range);
 	}
 
-	// Merging it here, may be removed if some checks for every weapon 
+	// Merging it here, may be removed if some checks for every weapon
 	// Should be done individually (Like line-of sight)
 	std::sort(distance_ranges.begin(), distance_ranges.end());
 
@@ -110,7 +110,6 @@ display_context::can_move_result display_context::unit_can_move(const unit& u) c
 		}
 	}
 
-
 	for (const auto& range : merged_ranges) {
 		int min_distance = range.first;
 		int max_distance = range.second;
@@ -119,7 +118,7 @@ display_context::can_move_result display_context::unit_can_move(const unit& u) c
 			for (int dy = -max_distance; dy <= max_distance && !result.attack_here; ++dy) {
 				// Adjust for hex grid
 				int adjusted_dy = dy + (dx - (dx&1)) / 2;
-				
+
 				map_location locs(u.get_location().x + dx, u.get_location().y + adjusted_dy);
 				int distance = distance_between(u.get_location(), locs);
 
