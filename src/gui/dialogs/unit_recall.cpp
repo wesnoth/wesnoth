@@ -55,17 +55,6 @@ static listbox::order_pair sort_default { 2, sort_order::type::descending};
 
 REGISTER_DIALOG(unit_recall)
 
-unit_recall::unit_recall(std::vector<unit_const_ptr>& recall_list, team* team)
-	: modal_dialog(window_id())
-	, recall_list_(recall_list)
-	, selected_index_()
-	, filter_options_()
-	, last_words_()
-	, mode_(dialog_type::RECALL)
-{
-	team_ = team;
-}
-
 namespace {
 
 const color_t inactive_row_color(0x96, 0x96, 0x96);
@@ -78,11 +67,14 @@ void dump_recall_list_to_console(const T& units)
 	LOG_DP << "size: " << units.size();
 
 	std::size_t idx = 0;
-	for(const auto& u_ptr : units) {
-		LOG_DP << "\tunit[" << (idx++) << "]: " << u_ptr->id() << " name = '" << u_ptr->name() << "'";
-	}
+//	for(const auto& u_ptr : units) {
+//		LOG_DP << "\tunit[" << (idx++) << "]: " << u_ptr->id() << " name = '" << u_ptr->name() << "'";
+//	}
 }
 
+//
+// Formatting methods
+//
 const inline std::string maybe_inactive(const std::string& str, bool active)
 {
 	if(active)
@@ -182,7 +174,66 @@ std::string get_title_suffix(int side_num)
 	return msg.str();
 }
 
+<<<<<<< HEAD
 void unit_recall::pre_show()
+=======
+}  // anonymous namespace
+
+unit_recall::unit_recall(std::vector<unit_const_ptr>& recall_list, team* team)
+	: modal_dialog(window_id())
+	, selected_index_()
+	, filter_options_()
+	, last_words_()
+	, mode_(dialog_type::RECALL)
+{
+	for(const unit_const_ptr& unit : recall_list) {
+		// Quick serialization, not all attributes needed
+		config entry;
+		entry["name"] = unit->name();
+		entry["level"] = unit->level();
+		entry["gender"] = unit->gender();
+		entry["type"] = unit->type_name();
+		entry["align"] = unit_alignments::get_string(unit->alignment());
+		entry["loyal"] = unit->loyal();
+		entry["hp"] = unit->hitpoints();
+		entry["max_hp"] = unit->max_hitpoints();
+		entry["hp_color"] = unit->hp_color().to_hex_string();
+		entry["xp"] = unit->experience();
+		entry["max_xp"] = unit->max_experience();
+		entry["xp_color"] = unit->xp_color().to_hex_string();
+		entry["mp"] = unit->movement_left();
+		entry["max_mp"] = unit->total_movement();
+		entry["image"] = unit->absolute_image();
+		entry["image_mods"] = unit->image_mods();
+		entry["can_advance"] = unit->can_advance();
+		entry["can_recruit"] = unit->can_recruit();
+		entry["overlays"] = utils::join(unit->overlays());
+		entry["recall_cost"] = unit->recall_cost();
+		entry["traits"] = utils::join(unit->trait_names());
+		// Status
+		if(unit->get_state(unit::STATE_PETRIFIED)) {
+			entry["status"] = "misc/petrified.png";
+		}
+
+		if(unit->get_state(unit::STATE_POISONED)) {
+			entry["status"] = "misc/poisoned.png";
+		}
+
+		if(unit->get_state(unit::STATE_SLOWED)) {
+			entry["status"] = "misc/slowed.png";
+		}
+
+		if(unit->invisible(unit->get_location(), false)) {
+			entry["status"] = "misc/invisible.png";
+		}
+
+		recall_list_.push_back(entry);
+	}
+	team_ = team;
+}
+
+void unit_recall::pre_show(window& window)
+>>>>>>> 0970489fad7 (move to config vector)
 {
 	label& title = find_widget<label>("title", true);
 	if (team_) {
@@ -219,11 +270,11 @@ void unit_recall::pre_show()
 	//
 	// Formatting
 	//
-	for(const unit_const_ptr& unit : recall_list_) {
+	for(const config& entry : recall_list_) {
 		widget_data row_data;
 		widget_item column;
 
-		std::string mods = unit->image_mods();
+		std::string mods = entry["image_mods"];
 
 		int wb_gold = 0;
 		if (team_) {
@@ -238,18 +289,18 @@ void unit_recall::pre_show()
 		// Note: Our callers apply [filter_recall], but leave it to us
 		// to apply cost-based filtering.
 
-		int recall_cost = unit->recall_cost();
+		int recall_cost = entry["recall_cost"];
 		bool recallable = true;
 		if (team_) {
-			recall_cost = (unit->recall_cost() > -1) ? unit->recall_cost() : team_->recall_cost();
+			recall_cost = (entry["recall_cost"] > -1) ? entry["recall_cost"] : team_->recall_cost();
 			recallable = (recall_cost <= team_->gold() - wb_gold);
 		}
 
-		if(unit->can_recruit()) {
+		if(entry["can_recruit"]) {
 			mods += "~BLIT(" + unit::leader_crown() + ")";
 		}
 
-		for(const std::string& overlay : unit->overlays()) {
+		for(const std::string& overlay : utils::split(entry["overlays"])) {
 			mods += "~BLIT(" + overlay + ")";
 		}
 
@@ -267,14 +318,14 @@ void unit_recall::pre_show()
 
 		std::stringstream details;
 		if (mode_ != dialog_type::UNIT_LIST) {
-			column["label"] = unit->absolute_image() + mods;
+			column["label"] = entry["image"] + mods;
 			row_data.emplace("unit_image", column);
 		}
-		details << maybe_inactive(unit->type_name().str(), recallable);
+		details << maybe_inactive(entry["type"], recallable);
 
 		if (team_) {
 			if (recallable) {
-				details << format_cost_string(unit->recall_cost(), team_->recall_cost());
+				details << format_cost_string(entry["recall_cost"], team_->recall_cost());
 			} else {
 				details << maybe_inactive(std::to_string(recall_cost), recallable);
 			}
@@ -282,50 +333,35 @@ void unit_recall::pre_show()
 		column["label"] = details.str();
 		row_data.emplace("unit_details", column);
 
-		const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
-		column["label"] = maybe_inactive(format_name_string(name, unit->can_recruit()), recallable);
+		const std::string& name = !entry["name"].empty() ? entry["name"].str() : font::unicode_en_dash;
+		column["label"] = maybe_inactive(format_name_string(name, entry["can_recruit"]), recallable);
 		column["use_markup"] = "true";
 		row_data.emplace("unit_name", column);
 
-		column["label"] = format_movement_string(unit->movement_left(), unit->total_movement());
+		column["label"] = format_movement_string(entry["mp"], entry["max_mp"]);
 		row_data.emplace("unit_moves", column);
 
-		column["label"] = format_level_string(unit->level(), recallable);
+		column["label"] = format_level_string(entry["level"], recallable);
 		column["use_markup"] = "true";
 		row_data.emplace("unit_level", column);
 
 		std::stringstream hp_str;
 		hp_str
-			<< font::span_color(unit->hp_color())
-			<< unit->hitpoints() << "/" << unit->max_hitpoints()
+			<< "<span color='" << entry["hp_color"] << "'>"
+			<< entry["hp"] << "/" << entry["max_hp"]
 			<< "</span>";
+		PLAIN_LOG << hp_str.str();
 		column["label"] = hp_str.str();
 		row_data.emplace("unit_hp", column);
 
 		if (mode_ == dialog_type::UNIT_LIST) {
-			column["label"] = "";
-			// Status
-			if(unit->get_state(unit::STATE_PETRIFIED)) {
-				column["label"] = "misc/petrified.png";
-			}
-
-			if(unit->get_state(unit::STATE_POISONED)) {
-				column["label"] = "misc/poisoned.png";
-			}
-
-			if(unit->get_state(unit::STATE_SLOWED)) {
-				column["label"] = "misc/slowed.png";
-			}
-
-			if(unit->invisible(unit->get_location(), false)) {
-				column["label"] = "misc/invisible.png";
-			}
+			column["label"] = entry["status"];
 			row_data.emplace("unit_status", column);
 		}
 
 		std::stringstream exp_str;
-		if(unit->can_advance()) {
-			exp_str << unit->experience() << "/" << unit->max_experience();
+		if(entry["can_advance"].to_bool(false)) {
+			exp_str << entry["xp"] << "/" << entry["max_xp"];
 		} else {
 			exp_str << font::unicode_en_dash;
 		}
@@ -335,31 +371,30 @@ void unit_recall::pre_show()
 
 		// Since the table widgets use heavy formatting, we save a bare copy
 		// of certain options to filter on.
-		std::string filter_text = unit->type_name() + " " + name + " " + std::to_string(unit->level())
-			+ " " + unit_type::alignment_description(unit->alignment(), unit->gender());
-		if(const auto* race = unit->race()) {
-			filter_text += " " + race->name(unit->gender()) + " " + race->plural_name();
-		}
+		unit_alignments::type a = unit_alignments::get_enum(entry["align"]).value();
+		unit_race::GENDER g = (entry["gender"].to_int(0) == 0 ? unit_race::GENDER::MALE : unit_race::GENDER::FEMALE);
+		std::string filter_text = entry["type"] + " " + name + " " + entry["level"] + " " + unit_type::alignment_description(a, g);
+//		if(const auto* race = entry["race"]) {
+//			filter_text += " " + race->name(entry["gender"])) + " " + race->plural_name();
+//		}
 
 		if(recallable) {
 			// This is to allow filtering for recallable units by typing "vvv" in the search box.
 			// That's intended to be easy to type and unlikely to match unit or type names.
 			//
 			// TODO: document this. (Also, implement a "Hide non-recallable units" checkbox.)
-			filter_text += " " + std::string("vvv");
+			filter_text += " vvv";
 		}
 
 		if (mode_ == dialog_type::UNIT_LIST) {
-			column["label"] = utils::join(unit->trait_names(), ", ");
+			column["label"] = entry["traits"];
 		} else {
 			std::string traits;
-			for(const std::string& trait : unit->trait_names()) {
+			for(const std::string& trait : utils::split(entry["traits"])) {
 				traits += (traits.empty() ? "" : "\n") + trait;
 				filter_text += " " + trait;
 			}
-			column["label"] = maybe_inactive(
-						!traits.empty() ? traits : font::unicode_en_dash,
-						recallable);
+			column["label"] = maybe_inactive(!traits.empty() ? traits : font::unicode_en_dash, recallable);
 		}
 		row_data.emplace("unit_traits", column);
 
@@ -370,16 +405,17 @@ void unit_recall::pre_show()
 	//
 	// List sorting
 	//
-	list.register_translatable_sorting_option(0, [this](const int i) { return recall_list_[i]->type_name().str(); });
-	list.register_translatable_sorting_option(1, [this](const int i) { return recall_list_[i]->name().str(); });
-	list.register_sorting_option(2, [this](const int i) {
-		const unit& u = *recall_list_[i];
-		return std::tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
-	});
-	list.register_sorting_option(3, [this](const int i) { return recall_list_[i]->movement_left(); });
-	list.register_sorting_option(6, [this](const int i) { return recall_list_[i]->experience(); });
+	list.register_translatable_sorting_option(0, [this](const int i) { return recall_list_[i]["type"]; });
+	list.register_translatable_sorting_option(1, [this](const int i) { return recall_list_[i]["name"]; });
+//	list.register_sorting_option(2, [this](const int i) {
+//		const unit& u = *recall_list_[i];
+//		return std::tuple(recall_list_[i]["level"], -static_cast<int>(u.experience_to_advance()));
+//	});
+	list.register_sorting_option(3, [this](const int i) { return recall_list_[i]["mp"]; });
+	list.register_sorting_option(6, [this](const int i) { return recall_list_[i]["xp"]; });
 	list.register_translatable_sorting_option(7, [this](const int i) {
-		return !recall_list_[i]->trait_names().empty() ? recall_list_[i]->trait_names().front().str() : "";
+//		return !recall_list_[i]->trait_names().empty() ? recall_list_[i]->trait_names().front().str() : "";
+		return recall_list_[i]["traits"];
 	});
 
 	list.set_active_sorting_option(sort_last.first >= 0 ? sort_last	: sort_default, true);
@@ -396,21 +432,22 @@ void unit_recall::rename_unit()
 		return;
 	}
 
-	unit& selected_unit = const_cast<unit&>(*recall_list_[index].get());
+//	unit& selected_unit = const_cast<unit&>(*recall_list_[index].get());
+	const config& selected_unit = recall_list_[index];
 
-	std::string name = selected_unit.name();
+	std::string name = selected_unit["name"];
 	const std::string dialog_title(_("Rename Unit"));
 	const std::string dialog_label(_("Name:"));
 
 	if(gui2::dialogs::edit_text::execute(dialog_title, dialog_label, name)) {
-		selected_unit.rename(name);
+//		selected_unit.rename(name);
 
 		list.get_row_grid(index)->find_widget<label>("unit_name").set_label(name);
 
 		filter_options_.erase(filter_options_.begin() + index);
 		std::ostringstream filter_text;
-		filter_text << selected_unit.type_name() << " " << name << " " << std::to_string(selected_unit.level());
-		for(const std::string& trait : selected_unit.trait_names()) {
+		filter_text << selected_unit["type"] << " " << name << " " << selected_unit["level"];
+		for(const std::string& trait : utils::split(selected_unit["traits"])) {
 			filter_text << " " << trait;
 		}
 		filter_options_.insert(filter_options_.begin() + index, filter_text.str());
@@ -435,24 +472,27 @@ void unit_recall::dismiss_unit()
 		return;
 	}
 
-	const unit& u = *recall_list_[index].get();
+	const config& u = recall_list_[index];
 
 	// If the unit is of level > 1, or is close to advancing, we warn the player about it
 	std::stringstream message;
-	if(u.loyal()) {
-		message << _("This unit is loyal and requires no upkeep.") << " " << (u.gender() == unit_race::MALE
-		         ? _("Do you really want to dismiss him?")
-		         : _("Do you really want to dismiss her?"));
+	if(u["loyal"].to_bool(false)) {
+		message << _("This unit is loyal and requires no upkeep.") << " "
+				<< (u["gender"] == "male"
+					? _("Do you really want to dismiss him?")
+					: _("Do you really want to dismiss her?"));
 
-	} else if(u.level() > 1) {
-		message << _("This unit is an experienced one, having advanced levels.") << " " << (u.gender() == unit_race::MALE
-		         ? _("Do you really want to dismiss him?")
-		         : _("Do you really want to dismiss her?"));
+	} else if(u["level"].to_int(0)) {
+		message << _("This unit is an experienced one, having advanced levels.") << " "
+				<< (u["gender"] == "male"
+					? _("Do you really want to dismiss him?")
+					: _("Do you really want to dismiss her?"));
 
-	} else if(u.experience() > u.max_experience()/2) {
-		message << _("This unit is close to advancing a level.") << " " << (u.gender() == unit_race::MALE
-		         ? _("Do you really want to dismiss him?")
-		         : _("Do you really want to dismiss her?"));
+	} else if(u["xp"].to_int() > u["max_xp"].to_int()/2) {
+		message << _("This unit is close to advancing a level.") << " "
+				<< (u["gender"] == "male"
+					? _("Do you really want to dismiss him?")
+					: _("Do you really want to dismiss her?"));
 	}
 
 	if(!message.str().empty()) {
@@ -473,13 +513,13 @@ void unit_recall::dismiss_unit()
 	filter_options_.erase(filter_options_.begin() + index);
 	assert(filter_options_.size() == list.get_item_count());
 
-	LOG_DP << "Dismissing a unit, side = " << u.side() << ", id = '" << u.id() << "'";
+	LOG_DP << "Dismissing a unit, side = " << u["side"] << ", id = '" << u["id"] << "'";
 	LOG_DP << "That side's recall list:";
 	dump_recall_list_to_console(team_->recall_list());
 
 
 	// Find the unit in the recall list.
-	unit_ptr dismissed_unit = team_->recall_list().find_if_matches_id(u.id());
+	unit_ptr dismissed_unit = team_->recall_list().find_if_matches_id(u["id"]);
 	assert(dismissed_unit);
 
 	// Record the dismissal, then delete the unit.
@@ -516,7 +556,7 @@ void unit_recall::show_help()
 	if (mode_ == dialog_type::RECRUIT || mode_ == dialog_type::RECALL) {
 		help::show_help("recruit_and_recall");
 	} else {
-		help::show_help("units");
+		help::show_help("..units");
 	}
 }
 
@@ -529,12 +569,12 @@ void unit_recall::list_item_clicked()
 		return;
 	}
 
-	const unit& selected_unit = *recall_list_[selected_row].get();
+//	const unit& selected_unit = *recall_list_[selected_row].get();
 
-	find_widget<unit_preview_pane>("unit_details")
-		.set_displayed_unit(selected_unit);
-
-	find_widget<button>("rename").set_active(!selected_unit.unrenamable());
+//	find_widget<unit_preview_pane>(get_window(), "unit_details", false)
+//		.set_displayed_unit(selected_unit);
+//
+//	find_widget<button>(get_window(), "rename", false).set_active(!selected_unit.unrenamable());
 }
 
 void unit_recall::post_show()

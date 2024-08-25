@@ -53,7 +53,8 @@ public:
 	}
 
 private:
-	std::vector<unit_const_ptr>& recall_list_;
+	//std::vector<unit_const_ptr>& recall_list_;
+	std::vector<config> recall_list_;
 
 	team* team_;
 
