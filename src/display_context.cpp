@@ -87,21 +87,62 @@ display_context::can_move_result display_context::unit_can_move(const unit& u) c
 	const team& current_team = get_team(u.side());
 
 	can_move_result result = {false, false};
-	for(const map_location& adj : get_adjacent_tiles(u.get_location())) {
-		if (map().on_board(adj)) {
-			if(!result.attack_here) {
-				const unit_map::const_iterator i = units().find(adj);
-				if (i.valid() && !i->incapacitated() && current_team.is_enemy(i->side())) {
-					result.attack_here = true;
+
+	// Generating pairs of min-max ranges of all units weapons
+	const auto& attacks = u.attacks();
+	std::vector<std::pair<int, int>> distance_ranges;
+	for (const auto& attack : attacks) {
+		int min_range = attack.min_range();
+		int max_range = attack.max_range();
+		distance_ranges.emplace_back(min_range , max_range);
+	}
+
+	// Merging it here, may be removed if some checks for every weapon 
+	// Should be done individually (Like line-of sight)
+	std::sort(distance_ranges.begin(), distance_ranges.end());
+
+	std::vector<std::pair<int, int>> merged_ranges;
+	for (const auto& range : distance_ranges) {
+		if (merged_ranges.empty() || merged_ranges.back().second < range.first) {
+			merged_ranges.push_back(range);
+		} else {
+			merged_ranges.back().second = std::max(merged_ranges.back().second, range.second);
+		}
+	}
+
+
+	for (const auto& range : merged_ranges) {
+		int min_distance = range.first;
+		int max_distance = range.second;
+
+		for (int dx = -max_distance; dx <= max_distance; ++dx) {
+			for (int dy = -max_distance; dy <= max_distance; ++dy) {
+				// Adjust for hex grid
+				int adjusted_dy = dy + (dx - (dx&1)) / 2;
+				
+				map_location locs(u.get_location().x + dx, u.get_location().y + adjusted_dy);
+				int distance = distance_between(u.get_location(), locs);
+
+				if (distance < min_distance || distance > max_distance) continue;
+
+				if (map().on_board(locs)) {
+					const unit_map::const_iterator i = units().find(locs);
+					if (i.valid() && !i->incapacitated() && current_team.is_enemy(i->side()) && i->is_visible_to_team(get_team(u.side()), false)) {
+						result.attack_here = true;
+						goto attack_here_found;
+					}
 				}
 			}
-
+		}
+	}
+	attack_here_found:
+	for(const map_location& adj : get_adjacent_tiles(u.get_location())) {
+		if (map().on_board(adj)) {
 			if (!result.move && u.movement_cost(map()[adj]) <= u.movement_left()) {
 				result.move = true;
 			}
 		}
 	}
-
 	// This should probably check if the unit can teleport too
 
 	return result;
