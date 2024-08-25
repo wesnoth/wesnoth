@@ -34,7 +34,7 @@ jobs:
 
       - name: read/export image metadata
         run: |
-          mapfile -t image_files < <(git diff --name-only ${BASE_SHA} ${SHA} | grep '\.webp$')
+          mapfile -t image_files < <(git diff --name-only ${BASE_SHA} ${SHA} | egrep '\.webp$|\.png$|\.jpg$|\.jpeg$')
 
           git status
           # array of accepted copyright strings
