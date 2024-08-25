@@ -116,7 +116,7 @@ display_context::can_move_result display_context::unit_can_move(const unit& u) c
 		int max_distance = range.second;
 
 		for (int dx = -max_distance; dx <= max_distance; ++dx) {
-			for (int dy = -max_distance; dy <= max_distance; ++dy) {
+			for (int dy = -max_distance; dy <= max_distance && !result.attack_here; ++dy) {
 				// Adjust for hex grid
 				int adjusted_dy = dy + (dx - (dx&1)) / 2;
 				
@@ -129,13 +129,11 @@ display_context::can_move_result display_context::unit_can_move(const unit& u) c
 					const unit_map::const_iterator i = units().find(locs);
 					if (i.valid() && !i->incapacitated() && current_team.is_enemy(i->side()) && i->is_visible_to_team(get_team(u.side()), false)) {
 						result.attack_here = true;
-						goto attack_here_found;
 					}
 				}
 			}
 		}
 	}
-	attack_here_found:
 	for(const map_location& adj : get_adjacent_tiles(u.get_location())) {
 		if (map().on_board(adj)) {
 			if (!result.move && u.movement_cost(map()[adj]) <= u.movement_left()) {
