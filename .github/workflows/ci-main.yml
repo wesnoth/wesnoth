@@ -41,12 +41,12 @@ jobs:
         if: success() || failure()
         run: doxygen doc/doxygen/Doxyfile
 
-  copyright: # check takes a bit longer and does not need to run in docker
+  copyright: # check takes a bit longer and does not need to run in docker (sound/music only)
     runs-on: ubuntu-latest
     steps:
       - { uses: actions/checkout@v4, with: { fetch-depth: 50 } }
 
-      - name: Copyright check
+      - name: Sound/Music copyright check
         run: ./update_copyrights
 
   ubuntu:
