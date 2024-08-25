@@ -396,10 +396,10 @@ public:
 	 */
 	const config& mandatory_child(config_key_type key, int n = 0) const;
 
-	/** Euivalent to @ref mandatory_child, but returns an empty optional if the nth child was not found. */
+	/** Equivalent to @ref mandatory_child, but returns an empty optional if the nth child was not found. */
 	optional_config_impl<config> optional_child(config_key_type key, int n = 0);
 
-	/** Euivalent to @ref mandatory_child, but returns an empty optional if the nth child was not found. */
+	/** Equivalent to @ref mandatory_child, but returns an empty optional if the nth child was not found. */
 	optional_config_impl<const config> optional_child(config_key_type key, int n = 0) const;
 
 	/**
@@ -633,7 +633,6 @@ public:
 
 	const config& find_mandatory_child(config_key_type key, const std::string &name,
 		const std::string &value) const;
-
 
 private:
 	void clear_children_impl(config_key_type key);
