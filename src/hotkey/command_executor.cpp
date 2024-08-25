@@ -16,6 +16,7 @@
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_item.hpp"
 
+#include "gui/gui.hpp"
 #include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
@@ -361,6 +362,7 @@ bool command_executor::do_execute_command(const hotkey::ui_command& cmd, bool pr
 			quit_confirmation::quit_to_desktop();
 			break;
 		case HOTKEY_QUIT_GAME:
+			gui2::switch_theme(prefs::get().gui2_theme());
 			quit_confirmation::quit_to_title();
 			break;
 		case HOTKEY_SURRENDER:

@@ -38,34 +38,94 @@ void init()
 	// Save current screen size.
 	settings::update_screen_size_variables();
 
-	//
-	// Read and validate the WML files.
-	//
-	config guis_cfg;
-	try {
-		schema_validation::schema_validator validator(filesystem::get_wml_location("schema/gui.cfg").value());
+	config guis_cfg, addons_cfg;
+	preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
 
-		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
-		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg").value(), &preproc);
+	//
+	// Read and validate theme WML files from mainline
+	//
+	std::string current_file;
+	const std::string schema_file = "schema/gui.cfg";
+	try {
+		schema_validation::schema_validator validator(filesystem::get_wml_location(schema_file).value());
+
+		// Core theme files
+		current_file = "gui/_main.cfg";
+		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location(current_file).value(), &preproc);
 		read(guis_cfg, *stream, &validator);
+
 	} catch(const config::error& e) {
 		ERR_GUI_P << e.what();
-		ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'.";
+		ERR_GUI_P << "Setting: could not read gui file: " << current_file;
 	} catch(const abstract_validator::error& e) {
-		ERR_GUI_P << "Setting: could not read file 'data/schema/gui.cfg'.";
+		ERR_GUI_P << "Setting: could not read schema file: " << schema_file;
 		ERR_GUI_P << e.message;
 	}
 
 	//
-	// Parse GUI definitions.
+	// Read and validate theme WML files from addons
+	//
+
+	// Add the $user_campaign_dir/*/gui.cfg files to the addon gui config.
+	std::vector<std::string> user_dirs;
+	{
+		const std::string user_campaign_dir = filesystem::get_addons_dir();
+		std::vector<std::string> user_files;
+		filesystem::get_files_in_dir(
+			user_campaign_dir, &user_files, &user_dirs, filesystem::name_mode::ENTIRE_FILE_PATH);
+	}
+
+	for(const std::string& umc : user_dirs) {
+		try {
+			const std::string gui_file = umc + "/gui-theme.cfg";
+			current_file = filesystem::get_short_wml_path(gui_file);
+			if(filesystem::file_exists(gui_file)) {
+				config addon_cfg;
+				schema_validation::schema_validator validator(filesystem::get_wml_location(schema_file).value());
+				read(addon_cfg, *preprocess_file(gui_file, &preproc), &validator);
+				addons_cfg.append(addon_cfg);
+			}
+		} catch(const config::error& e) {
+			ERR_GUI_P << e.what();
+			ERR_GUI_P << "Setting: could not read gui file: " << current_file;
+		} catch(const abstract_validator::error& e) {
+			ERR_GUI_P << "Setting: could not read schema file: " << schema_file;
+			ERR_GUI_P << e.message;
+		}
+	}
+
+	//
+	// Parse GUI definitions from mainline
 	//
 	for(const config& g : guis_cfg.child_range("gui")) {
 		const std::string id = g["id"];
 
-		auto iter = guis.emplace(id, gui_definition(g)).first;
+		auto [iter, is_unique] = guis.try_emplace(id, g);
 
-		if(id == "default") {
-			default_gui = iter;
+		if (!is_unique) {
+			ERR_GUI_P << "GUI Theme ID '" << id << "' already exists.";
+		} else {
+			if(id == "default") {
+				default_gui = iter;
+			}
+		}
+	}
+
+	//
+	// Parse GUI definitions from addons
+	//
+	for(const config& g : addons_cfg.child_range("gui")) {
+		const std::string id = g["id"];
+
+		try {
+			auto [iter, is_unique] = guis.try_emplace(id, g);
+
+			if (!is_unique) {
+				ERR_GUI_P << "GUI Theme ID '" << id << "' already exists.";
+			}
+		} catch (const wml_exception& e) {
+			ERR_GUI_P << "Non-functional theme: " << id;
+			ERR_GUI_P << e.user_message;
 		}
 	}
 
