@@ -882,6 +882,8 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		case gui2::dialogs::title_screen::RELOAD_GAME_DATA:
 			gui2::dialogs::loading_screen::display([&config_manager]() {
 				config_manager.reload_changed_game_config();
+				gui2::init();
+				gui2::switch_theme(prefs::get().gui2_theme());
 			});
 			break;
 		case gui2::dialogs::title_screen::MAP_EDITOR:

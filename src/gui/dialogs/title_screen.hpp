@@ -71,6 +71,8 @@ private:
 
 	void init_callbacks();
 
+	void register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, std::function<void()> callback);
+
 	/***** ***** ***** ***** Callbacks ***** ***** ****** *****/
 
 	void on_resize();
@@ -90,6 +92,9 @@ private:
 
 	/** Shows the gui test window. */
 	void show_gui_test_dialog();
+
+	/** Shows the preferences dialog. */
+	void show_preferences();
 
 	void hotkey_callback_select_tests();
 
