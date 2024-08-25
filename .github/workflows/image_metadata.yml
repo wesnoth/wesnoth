@@ -56,7 +56,7 @@ jobs:
             if [ -z "$copyright" ] ; then
               echo "no Copyright EXIF tag in $file"
               exit 1
-            elif [[ ( "$copyright" != ${accepted_cr[0]} ) && ( "$copyright" != ${accepted_cr[1]}) ]] ; then
+            elif [[ ! " ${accepted_cr[*]} " =~ " ${copyright} " ]]; then
               echo "$copyright is not an accepted license"
               exit 1
             else
