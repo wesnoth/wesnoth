@@ -177,7 +177,7 @@ namespace lua_check_impl
 	}
 
 	//widget
-	//widget not supported because lua_checek returns by value
+	//lua_check for widget is not supported because lua_check returns by value
 	template<typename T>
 	std::enable_if_t<std::is_same_v<T, gui2::widget>, void>
 	lua_push(lua_State *L, gui2::widget& val)
