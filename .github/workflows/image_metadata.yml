@@ -34,7 +34,7 @@ jobs:
 
       - name: read/export image metadata
         run: |
-          mapfile -t image_files < <(git diff --name-only "$BASE_SHA" "$SHA" | grep -E '\.(webp|png|je?pg)$'))
+          mapfile -t image_files < <(git diff --name-only ${BASE_SHA} ${SHA} | egrep '\.webp$|\.png$|\.jpg$|\.jpeg$')
           git status
           # array of accepted copyright strings
           accepted_cr=("GNU GPL v2+|CC BY-SA 4.0|CC0")
