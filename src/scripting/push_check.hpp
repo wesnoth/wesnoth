@@ -344,6 +344,24 @@ namespace lua_check_impl
 		}
 		return *val;
 	}
+
+	template<class T, template<class> class U>
+			inline constexpr bool is_instance_of_v = std::false_type{};
+
+	template<template<class> class U, class V>
+				inline constexpr bool is_instance_of_v<U<V>,U> = std::true_type{};
+
+	//optional
+	template<typename T>
+		std::enable_if_t<is_instance_of_v<T, utils::optional>, T>
+		lua_check(lua_State *L, int n)
+		{
+			if(lua_isnoneornil(L, n)) {
+				return T();
+			}
+			return lua_check_impl::lua_check<typename T::value_type>(L, n);
+		}
+
 }
 
 template<typename T>
