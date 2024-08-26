@@ -88,47 +88,32 @@ display_context::can_move_result display_context::unit_can_move(const unit& u) c
 
 	can_move_result result = {false, false};
 
-	// Generating pairs of min-max ranges of all units weapons
 	const auto& attacks = u.attacks();
-	std::vector<std::pair<int, int>> distance_ranges;
-	for (const auto& attack : attacks) {
-		int min_range = attack.min_range();
-		int max_range = attack.max_range();
-		distance_ranges.emplace_back(min_range , max_range);
-	}
 
-	// Merging it here, may be removed if some checks for every weapon
-	// Should be done individually (Like line-of sight)
-	std::sort(distance_ranges.begin(), distance_ranges.end());
+	std::set<int> attackable_distances;
+    for (const auto& attack : attacks) {
+        for (int i = attack.min_range(); i <= attack.max_range(); ++i) {
+            attackable_distances.insert(i);
+        }
+    }
 
-	std::vector<std::pair<int, int>> merged_ranges;
-	for (const auto& range : distance_ranges) {
-		if (merged_ranges.empty() || merged_ranges.back().second < range.first) {
-			merged_ranges.push_back(range);
-		} else {
-			merged_ranges.back().second = std::max(merged_ranges.back().second, range.second);
-		}
-	}
+	int max_distance = *std::prev(attackable_distances.end());
 
-	for (const auto& range : merged_ranges) {
-		int min_distance = range.first;
-		int max_distance = range.second;
+	for (int dx = -max_distance; dx <= max_distance; ++dx) {
+		for (int dy = -max_distance; dy <= max_distance && !result.attack_here; ++dy) {
+			// Adjust for hex grid
+			int adjusted_dy = dy + floor(dx / 2.0);
 
-		for (int dx = -max_distance; dx <= max_distance; ++dx) {
-			for (int dy = -max_distance; dy <= max_distance && !result.attack_here; ++dy) {
-				// Adjust for hex grid
-				int adjusted_dy = dy + (dx - (dx&1)) / 2;
+			map_location locs(u.get_location().x + dx, u.get_location().y + adjusted_dy);
+			int distance = distance_between(u.get_location(), locs);
 
-				map_location locs(u.get_location().x + dx, u.get_location().y + adjusted_dy);
-				int distance = distance_between(u.get_location(), locs);
-
-				if (distance < min_distance || distance > max_distance) continue;
-
-				if (map().on_board(locs)) {
-					const unit_map::const_iterator i = units().find(locs);
-					if (i.valid() && !i->incapacitated() && current_team.is_enemy(i->side()) && i->is_visible_to_team(get_team(u.side()), false)) {
-						result.attack_here = true;
-					}
+			if (attackable_distances.find(distance) == attackable_distances.end()) {
+				continue;
+			}
+			if (map().on_board(locs)) {
+				const unit_map::const_iterator i = units().find(locs);
+				if (i.valid() && !i->incapacitated() && current_team.is_enemy(i->side()) && i->is_visible_to_team(get_team(u.side()), false)) {
+					result.attack_here = true;
 				}
 			}
 		}
