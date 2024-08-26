@@ -62,13 +62,8 @@ Id на мисията от избраната кампания. По подра
 Прескача екрани с [story] и диалог в края на събитие \fBstart\fP.
 .TP 
 \fB\-\-clock\fP
-Adds the option to show a clock for testing the drawing timer.
-.TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-Старо, използвайте \fB\-\-userdata\-dir\fP.
-.TP 
-\fB\-\-config\-path\fP
-Старо, използвайте \fB\-\-userdata\-path\fP.
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 презаписва върху зареденото ядро с посоченото.
@@ -117,8 +112,7 @@ to the file indicated by \fI\-\-output\fP.
 прозорец там за зареждане на карта.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ lang\fP
-използва езикът \fIlang\fP (символ) през тази сесия.  Например: \fB\-\-language
-ang_GB@latin\fP
+използва езикът \fIlang\fP (символ) през тази сесия.  Например: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 sets the severity level of the log domains.  \fBall\fP can be used to match any
@@ -145,6 +139,10 @@ in the logs directory under the userdata folder.
 \fB\-\-log\-to\-file\fP
 log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 For Windows, when used with \-\-no\-log\-to\-file, results in output being
@@ -216,8 +214,7 @@ preprocesses a specified file/folder. For each file(s) a plain .cfg file and
 a processed .cfg file will be written in specified target directory. If a
 folder is specified, it will be preprocessed recursively based on the known
 preprocessor rules. The common macros from the "data/core/macros" directory
-will be preprocessed before the specified resources.  Example: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
+will be preprocessed before the specified resources.  Example: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
 preprocessor visit:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
@@ -289,17 +286,6 @@ lua the same permissions as the wesnoth executable.
 .TP 
 \fB\-S,\-\-use\-schema\fP\fI\ path\fP
 поставя WML схемата за употреба с \fB\-V,\-\-validate\fP.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy
-Games". On Windows it is also possible to specify a directory relative to
-the process working directory by using path starting with ".\e" or "..\e".
-This defaults to the userdata path.
-.TP 
-\fB\-\-userconfig\-path\fP
-извежда името на директорията с информацията на играта и излиза.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 поставя директорията за настройки към \fIname\fP под $HOME или в "My

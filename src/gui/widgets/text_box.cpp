@@ -363,10 +363,6 @@ void text_box::signal_handler_left_button_down(const event::ui_event event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	/*
-	 * Copied from the base class see how we can do inheritance with the new
-	 * system...
-	 */
 	get_window()->keyboard_capture(this);
 	get_window()->mouse_capture();
 

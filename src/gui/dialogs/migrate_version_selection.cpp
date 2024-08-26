@@ -21,6 +21,7 @@
 #include "game_version.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
 #include "preferences/preferences.hpp"
@@ -43,6 +44,8 @@ void migrate_version_selection::execute()
 	migrate_version_selection mig = migrate_version_selection();
 	if(mig.versions_.size() > 0) {
 		mig.show();
+	} else {
+		gui2::show_message(_("No Other Version Found"), _("This would import settings from a previous version of Wesnoth, but no other version was found on this device"), gui2::dialogs::message::button_style::auto_close);
 	}
 }
 
@@ -89,8 +92,10 @@ void migrate_version_selection::post_show(window& window)
 
 		std::string migrate_addons_dir
 			= boost::replace_all_copy(filesystem::get_addons_dir(), current_version_str, selected);
-		std::string migrate_prefs_file
-			= boost::replace_all_copy(filesystem::get_prefs_file(), current_version_str, selected);
+		std::string migrate_synced_prefs_file
+			= boost::replace_all_copy(filesystem::get_synced_prefs_file(), current_version_str, selected);
+		std::string migrate_unsynced_prefs_file
+			= boost::replace_all_copy(filesystem::get_unsynced_prefs_file(), current_version_str, selected);
 		std::string migrate_credentials_file
 			= boost::replace_all_copy(filesystem::get_credentials_file(), current_version_str, selected);
 
@@ -129,7 +134,8 @@ void migrate_version_selection::post_show(window& window)
 		if(!already_migrated)
 #endif
 		{
-			prefs::get().migrate_preferences(migrate_prefs_file);
+			prefs::get().migrate_preferences(migrate_unsynced_prefs_file);
+			prefs::get().migrate_preferences(migrate_synced_prefs_file);
 			migrate_credentials(migrate_credentials_file);
 		}
 

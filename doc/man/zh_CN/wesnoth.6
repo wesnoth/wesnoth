@@ -52,13 +52,8 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一款回合制奇幻策略游
 在\fBstart\fP事件最后跳过[故事]画面和对话框。
 .TP 
 \fB\-\-clock\fP
-增加一个选项，显示一个时钟，用于测试画面绘制计时器。
-.TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-已废弃，请使用\fB\-\-userdata\-dir\fP。
-.TP 
-\fB\-\-config\-path\fP
-已废弃，请使用\fB\-\-userdata\-path\fP。
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 使用指定ID对应的核心作为应读取的核心。
@@ -122,6 +117,10 @@ in the logs directory under the userdata folder.
 \fB\-\-log\-to\-file\fP
 log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 For Windows, when used with \-\-no\-log\-to\-file, results in output being
@@ -236,17 +235,6 @@ with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
 .TP 
 \fB\-S,\-\-use\-schema\fP\fI\ path\fP
 设置\fB\-V,\-\-validate\fP所使用的WML schema。
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy
-Games". On Windows it is also possible to specify a directory relative to
-the process working directory by using path starting with ".\e" or "..\e".
-This defaults to the userdata path.
-.TP 
-\fB\-\-userconfig\-path\fP
-输出用户配置目录的路径并退出。
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 设置用户数据目录为$HOME或者Windows下“我的文档\我的游戏（My Documents\eMy

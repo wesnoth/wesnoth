@@ -52,7 +52,7 @@
 #endif
 
 #include <iosfwd> // needed else all files including log.hpp need to do it.
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <string>
 #include <utility>
 #include <ctime>
@@ -137,6 +137,9 @@ void set_strict_severity(severity severity);
 void set_strict_severity(const logger &lg);
 bool broke_strict();
 
+/** toggle log sanitization */
+void set_log_sanitize(bool sanitize);
+
 /**
  * Do the initial redirection to a log file if the logs directory is writable.
  * Also performs log rotation to delete old logs.
@@ -159,7 +162,7 @@ void check_log_dir_writable();
  *
  * @return true if the log directory is writable, false otherwise.
  */
-std::optional<bool> log_dir_writable();
+utils::optional<bool> log_dir_writable();
 
 /**
  * Use the defined prefix and suffix to determine if a filename is a log file.

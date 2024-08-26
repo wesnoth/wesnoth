@@ -1363,7 +1363,7 @@ std::size_t move_unit_and_record(const std::vector<map_location> &steps,
 			resources::gameboard->units().find(steps.front())->side() - 1];
 		continued_move |= !current_team.fog_or_shroud();
 	}
-	const bool skip_ally_sighted = !prefs::get().interrupt_when_ally_sighted();
+	const bool skip_ally_sighted = !prefs::get().ally_sighted_interrupts();
 
 	// Evaluate this move.
 	unit_mover mover(steps, move_spectator, continued_move, skip_ally_sighted);

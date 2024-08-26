@@ -26,8 +26,8 @@
 #include "team.hpp"
 #include "tod_manager.hpp"
 #include "units/map.hpp"
+#include "utils/optional_fwd.hpp"
 
-#include <optional>
 #include <vector>
 class game_config_view;
 
@@ -301,7 +301,7 @@ public:
 
 	const t_string get_default_context_name() const;
 
-	std::optional<int> get_xp_mod() const { return xp_mod_; }
+	utils::optional<int> get_xp_mod() const { return xp_mod_; }
 
 	bool random_start_time() const { return random_time_; }
 	bool victory_defeated() const { return !victory_defeated_ || *victory_defeated_; }
@@ -497,11 +497,11 @@ protected:
 
 private:
 	std::string addon_id_;
-	std::optional<config> previous_cfg_;
+	utils::optional<config> previous_cfg_;
 	std::string scenario_id_, scenario_name_, scenario_description_;
 
-	std::optional<int> xp_mod_;
-	std::optional<bool> victory_defeated_;
+	utils::optional<int> xp_mod_;
+	utils::optional<bool> victory_defeated_;
 	bool random_time_;
 
 	int active_area_;

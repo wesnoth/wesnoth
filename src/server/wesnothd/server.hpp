@@ -23,9 +23,10 @@
 #include "server/common/server_base.hpp"
 #include "server/wesnothd/player_connection.hpp"
 
+#include "utils/optional_fwd.hpp"
+
 #include <boost/asio/steady_timer.hpp>
 
-#include <optional>
 #include <random>
 
 namespace wesnothd
@@ -53,7 +54,7 @@ private:
 	template<class SocketPtr> void send_password_request(SocketPtr socket, const std::string& msg, const char* error_code = "", bool force_confirmation = false);
 	bool accepting_connections() const { return !graceful_restart; }
 
-	template<class SocketPtr> void handle_player(boost::asio::yield_context yield, SocketPtr socket, const player& player);
+	template<class SocketPtr> void handle_player(boost::asio::yield_context yield, SocketPtr socket, player_iterator player);
 	void handle_player_in_lobby(player_iterator player, simple_wml::document& doc);
 	void handle_player_in_game(player_iterator player, simple_wml::document& doc);
 	void handle_whisper(player_iterator player, simple_wml::node& whisper);
@@ -74,15 +75,15 @@ public:
 			player->socket()
 		);
 	}
-	void send_to_lobby(simple_wml::document& data, std::optional<player_iterator> exclude = {});
+	void send_to_lobby(simple_wml::document& data, utils::optional<player_iterator> exclude = {});
 	void send_to_player(player_iterator player, simple_wml::document& data) {
 		utils::visit(
 			[this, &data](auto&& socket) { async_send_doc_queued(socket, data); },
 			player->socket()
 		);
 	}
-	void send_server_message_to_lobby(const std::string& message, std::optional<player_iterator> exclude = {});
-	void send_server_message_to_all(const std::string& message, std::optional<player_iterator> exclude = {});
+	void send_server_message_to_lobby(const std::string& message, utils::optional<player_iterator> exclude = {});
+	void send_server_message_to_all(const std::string& message, utils::optional<player_iterator> exclude = {});
 
 	bool player_is_in_game(player_iterator player) const {
 		return player->get_game() != nullptr;
@@ -211,7 +212,7 @@ private:
 
 	void delete_game(int, const std::string& reason="");
 
-	void update_game_in_lobby(const game& g, std::optional<player_iterator> exclude = {});
+	void update_game_in_lobby(const game& g, utils::optional<player_iterator> exclude = {});
 
 	void start_new_server();
 

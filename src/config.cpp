@@ -327,8 +327,8 @@ auto get_child_impl(Tchildren& children, config_key_type key, int n) -> optional
 
 	auto i = children.find(key);
 	if(i == children.end()) {
-		DBG_CF << "The config object has no child named »" << key << "«.";
-		return std::nullopt;
+		DBG_CF << "The config object has no child named ‘" << key << "’.";
+		return utils::nullopt;
 	}
 
 	if(n < 0) {
@@ -338,9 +338,9 @@ auto get_child_impl(Tchildren& children, config_key_type key, int n) -> optional
 	try {
 		return *i->second.at(n);
 	} catch(const std::out_of_range&) {
-		DBG_CF << "The config object has only »" << i->second.size() << "« children named »" << key
-			   << "«; request for the index »" << n << "« cannot be honored.";
-		return std::nullopt;
+		DBG_CF << "The config object has only ‘" << i->second.size() << "’ children named ‘" << key
+			   << "’; request for the index ‘" << n << "’ cannot be honored.";
+		return utils::nullopt;
 	}
 }
 
@@ -351,7 +351,7 @@ config& config::mandatory_child(config_key_type key, const std::string& parent)
 	if(auto res = get_child_impl(children_, key, 0)) {
 		return *res;
 	} else {
-		throw error("Mandatory WML child »[" + std::string(key) + "]« missing in »" + parent + "«. Please report this bug.");
+		throw error("Mandatory WML child ‘[" + std::string(key) + "]’ missing in ‘" + parent + "’. Please report this bug.");
 	}
 }
 
@@ -360,7 +360,7 @@ const config& config::mandatory_child(config_key_type key, const std::string& pa
 	if(auto res = get_child_impl(children_, key, 0)) {
 		return *res;
 	} else {
-		throw error("Mandatory WML child »[" + std::string(key) + "]« missing in »" + parent + "«. Please report this bug.");
+		throw error("Mandatory WML child ‘[" + std::string(key) + "]’ missing in ‘" + parent + "’. Please report this bug.");
 	}
 }
 
@@ -421,7 +421,7 @@ optional_config_impl<const config> config::get_deprecated_child(config_key_type 
 		return res;
 	}
 
-	return std::nullopt;
+	return utils::nullopt;
 }
 
 config::const_child_itors config::get_deprecated_child_range(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const
@@ -788,10 +788,10 @@ optional_config config::find_child(config_key_type key, const std::string& name,
 {
 	const child_map::iterator i = children_.find(key);
 	if(i == children_.end()) {
-		DBG_CF << "Key »" << name << "« value »" << value << "« pair not found as child of key »" << key << "«.";
+		DBG_CF << "Key ‘" << name << "’ value ‘" << value << "’ pair not found as child of key ‘" << key << "’.";
 
 
-		return std::nullopt;
+		return utils::nullopt;
 	}
 
 	const child_list::iterator j = std::find_if(i->second.begin(), i->second.end(),
@@ -805,9 +805,9 @@ optional_config config::find_child(config_key_type key, const std::string& name,
 		return **j;
 	}
 
-	DBG_CF << "Key »" << name << "« value »" << value << "« pair not found as child of key »" << key << "«.";
+	DBG_CF << "Key ‘" << name << "’ value ‘" << value << "’ pair not found as child of key ‘" << key << "’.";
 
-	return std::nullopt;
+	return utils::nullopt;
 }
 
 config& config::find_mandatory_child(config_key_type key, const std::string &name, const std::string &value)
@@ -818,6 +818,7 @@ config& config::find_mandatory_child(config_key_type key, const std::string &nam
 	}
 	throw error("Cannot find child [" + std::string(key) + "] with " + name + "=" + value);
 }
+
 const config& config::find_mandatory_child(config_key_type key, const std::string &name, const std::string &value) const
 {
 	auto res = find_child(key, name, value);
@@ -826,7 +827,6 @@ const config& config::find_mandatory_child(config_key_type key, const std::strin
 	}
 	throw error("Cannot find child [" + std::string(key) + "] with " + name + "=" + value);
 }
-
 
 void config::clear()
 {

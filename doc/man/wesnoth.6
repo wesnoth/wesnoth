@@ -65,15 +65,7 @@ Skip [story] screens and dialog through the end of the
 event.
 .TP
 .B --clock
-Adds the option to show a clock for testing the drawing timer.
-.TP
-.BI --config-dir \ name
-Deprecated, use
-.BR --userdata-dir .
-.TP
-.B --config-path
-Deprecated, use
-.BR --userdata-path .
+Adds the option to show a clock for testing the drawing timer. Also adds the option for showing the GUI Test Dialog.
 .TP
 .BI --core \ id_core
 overrides the loaded core with the one whose id is specified.
@@ -174,6 +166,9 @@ prevents redirecting logged output to a file. The environment variable WESNOTH_N
 .TP
 .B --log-to-file
 log output is written to a file. Cancels the effect of --no-log-to-file whether implicit or explicit.
+.TP
+.B --no-log-sanitize
+disables the anonymization that's normally applied when logging, for example replacing usernames with USER.
 .TP
 .B --wnoconsole
 For Windows, when used with --no-log-to-file, results in output being written to cerr/cout instead of CONOUT. Otherwise, does nothing.
@@ -353,19 +348,6 @@ package available to lua scripts, so that they can load arbitrary packages. Do n
 .BI -S,--use-schema  \ path
 sets the WML schema for use with
 .BR -V,--validate .
-.TP
-.BI --userconfig-dir \ name
-sets the user configuration directory to
-.I name
-under $HOME or "My Documents\\My Games" for windows.
-You can also specify an absolute path for the configuration directory outside
-the $HOME or "My Documents\\My Games". On Windows it is also possible to
-specify a directory relative to the process working directory by using path
-starting with ".\\" or "..\\".
-This defaults to the userdata path.
-.TP
-.B --userconfig-path
-prints the path of the user configuration directory and exits.
 .TP
 .BI --userdata-dir \ name
 sets the userdata directory to

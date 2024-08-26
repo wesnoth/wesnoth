@@ -1,4 +1,4 @@
-## Version 1.19.1+dev
+## Version 1.19.3+dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
@@ -8,11 +8,84 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Bengali, British English, Chinese (Simplified), French, Ukrainian
+   * Updated translations: Bengali, British English, Chinese (Simplified), Japanese, Turkish
  ### Units
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+
+## Version 1.19.3
+ ### Campaigns
+   * Under the Burnings Suns
+     * S04: added sprite for the Cold Dagger item (PR #9189)
+ ### Editor
+   * Added Show Tool Information toggle option in the menus and toolbar to allow hiding the informational tooltip on the edge of the screen that shows the current editor tool's usage and palette information
+ ### Translations
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, French
+ ### Units
+   * New cat units: Jumpcat, Forest Lion, and zombie/soulless cat
+ ### User interface
+   * Added a few more images that can be shown on the new titlescreen
+ ### WML Engine
+   * Fix crash when weapon specials' filters lead to infinite recursion (issue #8940)
+   * Updated xBRZ implementation to v1.8
+
+## Version 1.19.2
+ ### Campaigns
+   * Eastern Invasion
+     * fixed Gweddry having the wrong HP values
+     * fixed the king being neutral instead of lawful
+     * fixed "Dark Shape" from being neutral instead of chaotic
+     * the king can no longer wield the plague staff
+     * the king and generals can no longer recall undead veterans
+     * S04c: achievement now only triggers when escaping with all knights alive
+     * S11/S99: flying units can no longer enter prison cells via the river
+     * S12: fixed Dra-Nak (if present) having incorrect traits and portraits
+     * S17b: AI is now more forced to recruit only higher-level units when gold reserves get too high
+     * S99: prisoners now escape if their jailers are killed
+ ### Editor
+   * Rename Load Map to Load Map/Scenario (since it can load both), Edit Scenario to Edit Scenario Settings, Save Map to just Save.
+   * Rearrange menu order
+   * Add icon for the preferences menu item (used the preexisting settings.png icon)
+   * Open folder correctly at Add-on's scenario directory instead of editor/scenarios. (#8910)
+   * Show Save Scenario As only for Scenarios
+   * Use the settings.png icon for Preferences menu item
+   * Add functionality to "Loyal" checkbox (Unit tool -> Place unit -> Right click menu) (#8445)
+   * Show warning when maps are saved in scenarios folder or vice versa (#8911)
+   * Unit List moved to Units menu from File menu to reduce some pressure from the latter.
+   * Status Table menu item disabled since it does nothing. (Should be reenabled once the functionality has been added.)
+   * Improve reload functionality in Editor (F5). Reload happens directly from memory and no temp files are needed. Also, the undo/redo stacks will be preserved. (#9024)
+   * Time Schedule Editor
+     * Browse buttons now set wesnoth style paths instead of just pasting the absolute path returned by the file dialog
+     * Change text boxes from inactive to uneditable.
+     * Code generation improvements
+     * Add copyright notice to tod_new_schedule
+     * Confirmation messages
+     * Preview buttons for image and sound files and new icons for the preview button (2 sets : preview image and preview sound)
+   * Unit Type Editor
+     * Confirmation messages
+     * New icons for the preview button (2 sets : preview image and preview sound)
+   * Add-on menu
+     * Two new menu entries for (1) opening the Add-on selection dialog, (2) opening the folder corresponding to the Add-on. The open add-on folder option shows a GUI2 file dialog at the add-on's folder which can be used to open any file. If it is a loadable map/scenario it will be opened in the editor, otherwise the OS's default application for that file will be opened.
+   * File Dialog
+     * Redesigned with new icons
+     * New Open External button that opens selected file/folder in the platform's default application (independently of what pressing Open would do). This could be used to quickly open a folder or preview the file before actually selecting it.
+     * Extension checking and filename validation. (See #8911)
+ ### Translations
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, French, German, Ukrainian
+ ### User interface
+   * When a player types something into the Load Game filter box and then changes to a different version, apply the filter immediately instead of showing the full list of files.
+   * An updated design for the titlescreen has been added. This can be toggled in the Display preferences. (#8953)
+ ### WML Engine
+   * max_value and min_value can now be used with most abilities
+   * Added unit hits and unit misses events
+ ### Miscellaneous and Bug Fixes
+   * Server-side fix for the "Something is wrong with the addon version check database supporting the multiplayer lobby." error (issue #8805)
+   * Fixed the Load Game dialog forgetting the filename filter when changing directory
+   * Removed the config-dir, userconfig-dir, config-path, and userconfig-path commandline options
+   * Moved the editor, WML persist, saves, lua command history, and most of the preferences to a separate subfolder for all data that should be synced between multiple computers
+   * Fixed Plan Unit Advance modification causing incorrect XP colour in the Advance Unit dialogue (#9047)
+   * Fixed Plan Unit Advance modification preventing undo of the first action of each turn (#9047)
 
 ## Version 1.19.1
  ### Translations

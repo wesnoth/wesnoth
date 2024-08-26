@@ -888,10 +888,10 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		}
 
 		// If any of the images is missing, then add a text description too.
-		bool all_pngs_exist = image::locator(range_png).file_exists();
-		all_pngs_exist &= image::locator(type_png).file_exists();
+		bool all_pngs_exist = image::exists(range_png);
+		all_pngs_exist &= image::exists(type_png);
 		for(const auto& png : secondary_types_png) {
-			all_pngs_exist &= image::locator(png).file_exists();
+			all_pngs_exist &= image::exists(png);
 		}
 		if(!all_pngs_exist) {
 			str << span_color(font::weapon_details_color) << "  " << "  "
@@ -951,7 +951,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		add_image(res, spacer + "~BLIT(" + range_png + ",0,5)", damage_versus.tooltip);
 		add_image(res, spacer + "~BLIT(" + type_png + ",0,5)", damage_versus.tooltip);
 		for(auto sec_exist : secondary_types_png){
-			if(image::locator(sec_exist).file_exists()){
+			if(image::exists(sec_exist)){
 				add_image(res, spacer + "~BLIT(" + sec_exist + ",0,5)", damage_versus.tooltip);
 			}
 		}

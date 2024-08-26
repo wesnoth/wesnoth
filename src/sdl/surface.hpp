@@ -109,8 +109,6 @@ private:
 	static const SDL_PixelFormat neutral_pixel_format;
 };
 
-bool operator<(const surface& a, const surface& b);
-
 std::ostream& operator<<(std::ostream& stream, const surface& surf);
 
 /**

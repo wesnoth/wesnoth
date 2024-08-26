@@ -255,6 +255,13 @@ mp_connect::server_info& mp_connect::selection::get()
 	return parent_list().at(relative_index());
 }
 
+bool mp_connect::selection::user_defined() const
+{
+	// An invalid selection is the same as one from the read-only list of
+	// built-in servers for interaction purposes since it can't be written to.
+	return valid() && std::size_t(row_) >= owner_->builtin_servers_.size();
+}
+
 unsigned mp_connect::selection::row() const
 {
 	must_be_valid();

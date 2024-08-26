@@ -37,7 +37,8 @@
 #include "font/constants.hpp"
 #include "font/standard_colors.hpp"
 #include "gettext.hpp"
-#include <optional>
+#include "utils/optional_fwd.hpp"
+#include <cstring>
 #include <list>                         // for list
 #include <memory>
 #include <sstream>
@@ -420,6 +421,6 @@ std::string generate_table(const table_spec &tab, const unsigned int spacing=fon
 unsigned image_width(const std::string &filename);
 
 // Add to the vector v an help::item for the string s, preceded by the given image if any.
-void push_tab_pair(std::vector<help::item> &v, const std::string &s, const std::optional<std::string> &image = {}, unsigned padding = 0);
+void push_tab_pair(std::vector<help::item> &v, const std::string &s, const utils::optional<std::string> &image = {}, unsigned padding = 0);
 
 } // end namespace help

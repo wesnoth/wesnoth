@@ -66,14 +66,8 @@ escenari.
 Omet les pantalles i el diàleg [story] al final de l'esdeveniment \fBstart\fP.
 .TP 
 \fB\-\-clock\fP
-Afegeix l'opció de mostrar un rellotge per a provar el temporitzador de
-dibuix.
-.TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-Obsolet. Utilitzeu \fB\-\-userdata\-dir\fP.
-.TP 
-\fB\-\-config\-path\fP
-Obsolet. Utilitzeu \fB\-\-userdata\-path\fP.
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 substitueix el nucli carregat pel de l'ID especificat.
@@ -123,8 +117,7 @@ amb el mapa del \fIfile\fP obert. Si és un directori, l'editor s'iniciarà amb
 un diàleg de càrrega de mapa obert.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ lang\fP
-utilitza la llengua \fIlang\fP (símbol) aquesta sessió. Exemple: \fB\-\-language
-ang_GB@latin\fP
+utilitza la llengua \fIlang\fP (símbol) aquesta sessió. Exemple: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 estableix el nivell de severitat dels dominis de registre.  \fBall\fP es pot
@@ -153,6 +146,10 @@ in the logs directory under the userdata folder.
 \fB\-\-log\-to\-file\fP
 log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 For Windows, when used with \-\-no\-log\-to\-file, results in output being
@@ -227,8 +224,7 @@ un fitxer normal .cfg i un fitxer processat .cfg en el directori de
 destinació especificat. Si s'especifica una carpeta, es preprocessarà
 recursivament basant\-se en les regles de preprocessador conegudes. Les
 macros comunes del directori «data/core/macros» es preprocessaran abans que
-els recursos especificats.  Exemple: \fB\-p ~/wesnoth/data/campaigns/tutorial
-~/result.\fP Per a detalls sobre el preprocessador, visiteu:
+els recursos especificats.  Exemple: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP Per a detalls sobre el preprocessador, visiteu:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
@@ -304,17 +300,6 @@ acció dona a lua els mateixos permisos que l'executable wesnoth.
 .TP 
 \fB\-S,\-\-use\-schema\fP\fI\ path\fP
 sets the WML schema for use with \fB\-V,\-\-validate\fP.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy
-Games". On Windows it is also possible to specify a directory relative to
-the process working directory by using path starting with ".\e" or "..\e".
-This defaults to the userdata path.
-.TP 
-\fB\-\-userconfig\-path\fP
-imprimeix el camí del directori de configuració d'usuari i surt.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 estableix el directori de dades de l'usuari a \fIname\fP a $HOME o «My

@@ -110,41 +110,11 @@ private:
 	using super_iterator = iterator<const wml_tag*>;
 public:
 
-	wml_tag()
-		: name_("")
-		, min_(0)
-		, max_(0)
-		, min_children_(0)
-		, max_children_(INT_MAX)
-		, super_("")
-		, tags_()
-		, keys_()
-		, links_()
-		, fuzzy_(false)
-		, any_tag_(false)
-	{
-	}
+	wml_tag() = default;
 
-	wml_tag(const std::string& name, int min, int max, const std::string& super = "", bool any = false)
-		: name_(name)
-		, min_(min)
-		, max_(max)
-		, min_children_(0)
-		, max_children_(INT_MAX)
-		, super_(super)
-		, tags_()
-		, keys_()
-		, links_()
-		, fuzzy_(name.find_first_of("*?") != std::string::npos)
-		, any_tag_(any)
-	{
-	}
+	wml_tag(const std::string& name, int min, int max, const std::string& super = "", bool any = false);
 
 	wml_tag(const config&);
-
-	~wml_tag()
-	{
-	}
 
 	/** Prints information about tag to outputstream, recursively
 	 * is used to print tag info
@@ -332,19 +302,19 @@ public:
 
 private:
 	/** name of tag. */
-	std::string name_;
+	std::string name_ = "";
 
 	/** minimum number of occurrences. */
-	int min_;
+	int min_ = 0;
 
 	/** maximum number of occurrences. */
-	int max_;
+	int max_ = 0;
 
 	/** minimum number of children. */
-	int min_children_;
+	int min_children_ = 0;
 
 	/** maximum number of children. */
-	int max_children_;
+	int max_children_ = std::numeric_limits<int>::max();
 
 	/**
 	 * name of tag to extend "super-tag"
@@ -353,7 +323,7 @@ private:
 	 * keys, children, etc. But you also want to allow extra subtags of that tags,
 	 * so just linking that tag wouldn't help at all.
 	 */
-	std::string super_;
+	std::string super_ = "";
 
 	/** children tags*/
 	tag_map tags_;
@@ -371,10 +341,10 @@ private:
 	super_list super_refs_;
 
 	/** whether this is a "fuzzy" tag. */
-	bool fuzzy_;
+	bool fuzzy_ = false;
 
 	/** whether this tag allows arbitrary subtags. */
-	bool any_tag_;
+	bool any_tag_ = false;
 
 	/**
 	 * the same as wml_tag::print(std::ostream&)

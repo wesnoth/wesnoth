@@ -90,8 +90,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                     --keyword=_ --keyword=N_ --keyword=sgettext --keyword=vgettext --keyword=VGETTEXT \
                     --keyword=_n:1,2 --keyword=N_n:1,2 --keyword=sngettext:1,2 --keyword=vngettext:1,2 --keyword=VNGETTEXT:1,2 \
                     --files-from={files_from} --copyright-holder='Wesnoth development team' --msgid-bugs-address=https://bugs.wesnoth.org/ \
-                    --output=$TARGET \
-                    ; sed -i s/charset=CHARSET/charset=UTF-8/ $TARGET \
+                    --output=- | sed s/charset=CHARSET/charset=UTF-8/ > $TARGET \
                     """.format(default_domain=domain, language=language, files_from=files_from)
                 )
                 intermediate_files.append(target_path)

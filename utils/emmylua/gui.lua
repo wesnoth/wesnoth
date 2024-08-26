@@ -88,6 +88,10 @@ function gui.show_lua_console() end
 ---@return integer
 function gui.show_dialog(cfg, preshow, postshow) end
 
+---Changes the current ui (gui2) theme
+---@param theme_id string The id of the gui2 theme to switch to
+function gui.switch_theme(theme_id) end
+
 -- Add a custom widget definition, for use in a custom dialog
 ---@param type string The type of widget the definition applies to
 ---@param id string An ID for the definition, to be referenced from WML

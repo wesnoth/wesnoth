@@ -15,6 +15,7 @@
 #pragma once
 
 #include "config.hpp"
+#include "desktop/notifications.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "gui/sort_order.hpp"
@@ -58,19 +59,6 @@ const std::string EMPTY_LOGIN = "@@";
 const int INFINITE_AUTO_SAVES = 61;
 
 const std::string default_addons_server = "add-ons.wesnoth.org";
-
-// preferences for MP alerts
-// all listed here have three variants with the suffixes: _lobby, _sound, _notif
-const std::string player_joins = "player_joins";
-const std::string player_leaves = "player_leaves";
-const std::string private_message = "private_message";
-const std::string friend_message = "friend_message";
-const std::string public_message = "public_message";
-const std::string server_message = "server_message";
-const std::string ready_for_start = "ready_for_start";
-const std::string game_has_begun = "game_has_begun";
-const std::string turn_changed = "turn_changed";
-const std::string game_created = "game_created";
 
 enum class lobby_joins { show_none, show_friends, show_all };
 
@@ -193,6 +181,14 @@ struct option
 };
 };
 
+#define PREF_GETTER_SETTER(pref, type, def)        \
+void set_##pref(const type& value) {               \
+	preferences_[prefs_list::pref] = value;        \
+}                                                  \
+type pref() const {                                \
+	return preferences_[prefs_list::pref].to(def); \
+}
+
 class prefs
 {
 	friend struct preferences_dialog_friend;
@@ -202,13 +198,6 @@ class prefs
 	public:
 		static prefs& get()
 		{
-			// for wesnoth: checks that the userdata folders have been initialized/found since if it hasn't been then it's too soon to be getting any values from it
-			// for boost: the userdata folders don't get initialized and the preferences aren't used for anything, so skip the check here
-			//            macos -  called "unit_tests"
-			//            others - called "boost_unit_tests"
-			static bool called_before_init = !(filesystem::base_name(filesystem::get_exe_path()).find("unit_tests") == std::string::npos && !filesystem::is_userdata_initialized());
-			assert(called_before_init && "Attempt to use preferences before userdata initialization");
-
 			static prefs prefs_manager;
 			return prefs_manager;
 		}
@@ -221,35 +210,53 @@ class prefs
 		void reload_preferences();
 		std::set<std::string> all_attributes();
 
-		std::string core_id();
-		void set_core_id(const std::string& root);
+		// Proxies for preferences_dialog
+		void load_hotkeys();
+		void save_hotkeys();
+		void clear_hotkeys();
 
-		bool scroll_to_action();
-		void set_scroll_to_action(bool ison);
+		// not actually preferences
+		bool show_fps();
+		void set_show_fps(bool value);
 
+		bool message_private();
+		void set_message_private(bool value);
+
+		static void disable_preferences_save() {
+			no_preferences_save = true;
+		}
+
+		static bool preferences_save() {
+			return no_preferences_save;
+		}
+
+		// getter-only
+		bool message_bell();
+		bool middle_click_scrolls();
+		/** Gets the threshold for when to scroll. This scrolling happens when the mouse is in the application and near the border. */
+		int mouse_scroll_threshold();
+		bool confirm_load_save_from_different_version();
+		bool use_twelve_hour_clock_format();
+		sort_order::type addon_manager_saved_order_direction();
+		void set_addon_manager_saved_order_direction(sort_order::type value);
+		bool get_show_deprecation(bool def);
+		bool get_scroll_when_mouse_outside(bool def);
+		bool auto_open_whisper_windows();
+		bool show_combat();
+		std::string get_chat_timestamp(const std::time_t& t);
+		compression::format save_compression_format();
+		std::vector<std::string>* get_history(const std::string& id);
+		std::vector<preferences::option>& get_advanced_preferences() {return advanced_prefs_;}
+
+		// non-trivial getters+setters
 		point resolution();
 		void set_resolution(const point& res);
 
 		int pixel_scale();
 		void set_pixel_scale(const int scale);
 
-		bool auto_pixel_scale();
-		void set_auto_pixel_scale(bool choice);
-
-		bool maximized();
-		void set_maximized(bool ison);
-
-		bool fullscreen();
-		void set_fullscreen(bool ison);
-
-		bool vsync();
-		void set_vsync(bool ison);
-
 		bool turbo();
 		void set_turbo(bool ison);
-
-		double turbo_speed();
-		void set_turbo_speed(const double speed);
 
 		int font_scaling();
 		void set_font_scaling(int scale);
@@ -258,20 +265,7 @@ class prefs
 		int keepalive_timeout();
 		void keepalive_timeout(int seconds);
 
-		bool idle_anim();
-		void set_idle_anim(const bool ison);
-
-		int idle_anim_rate();
-		void set_idle_anim_rate(int rate);
-
-		std::string language();
-		void set_language(const std::string& s);
-
-		std::string gui_theme();
-		void set_gui_theme(const std::string& s);
-
-		// Don't rename it to sound() because of a gcc-3.3 branch bug which will cause it to conflict with the sound namespace.
-		bool sound_on();
+		bool sound();
 		bool set_sound(bool ison);
 
 		unsigned int sample_rate();
@@ -295,24 +289,11 @@ class prefs
 		int music_volume();
 		void set_music_volume(int vol);
 
-		bool stop_music_in_background();
-		void set_stop_music_in_background(bool ison);
-
-		unsigned int tile_size();
-		void set_tile_size(const unsigned int size);
-
 		bool turn_bell();
 		bool set_turn_bell(bool ison);
 
 		bool ui_sound_on();
 		bool set_ui_sound(bool ison);
-
-		bool message_bell();
-
-		// Proxies for preferences_dialog
-		void load_hotkeys();
-		void save_hotkeys();
-		void clear_hotkeys();
 
 		void add_alias(const std::string& alias, const std::string& command);
 		optional_const_config get_alias();
@@ -332,92 +313,125 @@ class prefs
 		std::string moved_color();
 		void set_moved_color(const std::string& color_id);
 
-		bool show_ally_orb();
-		void set_show_ally_orb(bool show_orb);
-
-		bool show_status_on_ally_orb();
-		void set_show_status_on_ally_orb(bool show_orb);
-
-		bool show_enemy_orb();
-		void set_show_enemy_orb(bool show_orb);
-
-		bool show_moved_orb();
-		void set_show_moved_orb(bool show_orb);
-
-		bool show_unmoved_orb();
-		void set_show_unmoved_orb(bool show_orb);
-
-		bool show_partial_orb();
-		void set_show_partial_orb(bool show_orb);
-
-		bool show_disengaged_orb();
-		void set_show_disengaged_orb(bool show_orb);
-
 		int scroll_speed();
 		void set_scroll_speed(const int scroll);
 
-		bool middle_click_scrolls();
-		bool mouse_scroll_enabled();
-		void enable_mouse_scroll(bool value);
+		void set_dir_bookmarks(const config& cfg);
+		optional_const_config dir_bookmarks();
 
-		/**
-		 * Gets the threshold for when to scroll.
-		 *
-		 * This scrolling happens when the mouse is in the application and near the border.
-		 */
-		int mouse_scroll_threshold();
+		std::size_t editor_mru_limit();
+		std::vector<std::string> do_read_editor_mru();
+		void do_commit_editor_mru(const std::vector<std::string>& mru);
+		/** Retrieves the list of recently opened files. */
+		std::vector<std::string> recent_files();
+		/** Adds an entry to the recent files list. */
+		void add_recent_files_entry(const std::string& path);
 
-		int draw_delay();
-		void set_draw_delay(int value);
+		bool use_color_cursors();
+		void set_color_cursors(bool value);
 
-		bool animate_map();
-		void set_animate_map(bool value);
+		bool show_standing_animations();
+		void set_show_standing_animations(bool value);
 
-		bool animate_water();
-		void set_animate_water(bool value);
+		void show_wesnothd_server_search();
+		bool show_theme_dialog();
 
-		bool minimap_movement_coding();
-		void toggle_minimap_movement_coding();
+		void set_theme(const std::string& theme);
+		std::string theme();
 
-		bool minimap_terrain_coding();
-		void toggle_minimap_terrain_coding();
+		void set_mp_server_program_name(const std::string&);
+		std::string get_mp_server_program_name();
 
-		bool minimap_draw_units();
-		void toggle_minimap_draw_units();
+		bool parse_should_show_lobby_join(const std::string& sender, const std::string& message);
+		pref_constants::lobby_joins get_lobby_joins();
+		void set_lobby_joins(pref_constants::lobby_joins show);
 
-		bool minimap_draw_villages();
-		void toggle_minimap_draw_villages();
+		const std::map<std::string, preferences::acquaintance>& get_acquaintances();
+		const std::string get_ignored_delim();
+		std::map<std::string, std::string> get_acquaintances_nice(const std::string& filter);
+		std::pair<preferences::acquaintance*, bool> add_acquaintance(const std::string& nick, const std::string& mode, const std::string& notes);
+		void add_completed_campaign(const std::string&campaign_id, const std::string& difficulty_level);
+		bool remove_acquaintance(const std::string& nick);
+		bool is_friend(const std::string& nick);
+		bool is_ignored(const std::string& nick);
+		bool is_campaign_completed(const std::string& campaign_id);
+		bool is_campaign_completed(const std::string& campaign_id, const std::string& difficulty_level);
 
-		bool minimap_draw_terrain();
-		void toggle_minimap_draw_terrain();
+		const std::vector<game_config::server_info>& builtin_servers_list();
+		std::vector<game_config::server_info> user_servers_list();
+		void set_user_servers_list(const std::vector<game_config::server_info>& value);
 
-		bool show_fps();
-		void set_show_fps(bool value);
+		std::string network_host();
+		void set_network_host(const std::string& host);
 
-		bool ellipses();
-		void set_ellipses(bool ison);
+		std::string campaign_server();
+		void set_campaign_server(const std::string& host);
 
-		bool grid();
-		void set_grid(bool ison);
+		const config& options();
+		void set_options(const config& values);
 
-		bool confirm_load_save_from_different_version();
+		int countdown_init_time();
+		void set_countdown_init_time(int value);
+		void clear_countdown_init_time();
 
-		bool use_twelve_hour_clock_format();
+		int countdown_turn_bonus();
+		void set_countdown_turn_bonus(int value);
+		void clear_countdown_turn_bonus();
 
-		bool disable_auto_moves();
-		void set_disable_auto_moves(bool value);
+		int countdown_reservoir_time();
+		void set_countdown_reservoir_time(int value);
+		void clear_countdown_reservoir_time();
 
-		bool damage_prediction_allow_monte_carlo_simulation();
-		void set_damage_prediction_allow_monte_carlo_simulation(bool value);
+		int countdown_action_bonus();
+		void set_countdown_action_bonus(int value);
+		void clear_countdown_action_bonus();
 
-		std::string addon_manager_saved_order_name();
-		void set_addon_manager_saved_order_name(const std::string& value);
+		int village_gold();
+		void set_village_gold(int value);
 
-		sort_order::type addon_manager_saved_order_direction();
-		void set_addon_manager_saved_order_direction(sort_order::type value);
+		int village_support();
+		void set_village_support(int value);
 
-		std::string selected_achievement_group();
-		void set_selected_achievement_group(const std::string& content_for);
+		int xp_modifier();
+		void set_xp_modifier(int value);
+
+		bool remember_password();
+		void set_remember_password(bool remember);
+
+		std::string login();
+		void set_login(const std::string& login);
+
+		std::string password(const std::string& server, const std::string& login);
+		void set_password(const std::string& server, const std::string& login, const std::string& key);
+
+		const std::vector<std::string>& modifications(bool mp = true);
+		void set_modifications(const std::vector<std::string>& value, bool mp = true);
+
+		std::set<std::string>& encountered_units();
+		std::set<t_translation::terrain_code>& encountered_terrains();
+
+		// Ask for end turn confirmation
+		bool yellow_confirm();
+		bool green_confirm();
+		bool confirm_no_moves();
+
+		// Add all recruitable units as encountered so that information
+		// about them are displayed to the user in the help system.
+		void encounter_recruitable_units(const std::vector<team>& teams);
+
+		// Add all units that exist at the start to the encountered units so
+		// that information about them are displayed to the user in the help
+		// system.
+		void encounter_start_units(const unit_map& units);
+
+		// Add all units that are recallable as encountered units.
+		void encounter_recallable_units(const std::vector<team>& teams);
+
+		// Add all terrains on the map as encountered terrains.
+		void encounter_map_terrain(const gamemap& map);
+
+		// Calls all of the above functions on the current game board
+		void encounter_all_content(const game_board& gb);
 
 		/**
 		 * @param content_for The achievement group the achievement is part of.
@@ -468,286 +482,116 @@ class prefs
 		 */
 		void set_sub_achievement(const std::string& content_for, const std::string& id, const std::string& sub_id);
 
-		/**
-		 * @param addon_id The chosen addon id from the editor to store in the preferences.
-		 */
-		void set_editor_chosen_addon(const std::string& addon_id);
-
-		/**
-		 * @return The most recently selected add-on id from the editor. May be an empty string.
-		 */
-		std::string editor_chosen_addon();
-
-		void set_mp_alert_option(const std::string& id, const std::string& type, bool value);
-		bool mp_alert_option(const std::string& id, const std::string& type, bool def = false);
-		bool has_mp_alert_option(const std::string& id, const std::string& type);
-
-		void set_last_cache_cleared_version(const std::string& version);
-		std::string last_cache_cleared_version();
-
-		bool get_show_deprecation(bool def);
-
-		bool get_scroll_when_mouse_outside(bool def);
-
-		void set_dir_bookmarks(const config& cfg);
-		optional_const_config dir_bookmarks();
-
-		bool whisper_friends_only();
-		void set_whisper_friends_only(bool v);
-
-		bool auto_open_whisper_windows();
-
-		bool fi_invert();
-		void set_fi_invert(bool value);
-
-		bool fi_vacant_slots();
-		void set_fi_vacant_slots(bool value);
-
-		bool fi_friends_in_game();
-		void set_fi_friends_in_game(bool value);
-
-		bool fi_blocked_in_game();
-		void set_fi_blocked_in_game(bool value);
-
-		int editor_auto_update_transitions();
-		void set_editor_auto_update_transitions(int value);
-
-		std::string default_dir();
-
-		bool editor_draw_terrain_codes();
-		void set_editor_draw_terrain_codes(bool value);
-
-		bool editor_draw_hex_coordinates();
-		void set_editor_draw_hex_coordinates(bool value);
-
-		bool editor_draw_num_of_bitmaps();
-		void set_editor_draw_num_of_bitmaps(bool value);
-
-		std::size_t editor_mru_limit();
-		std::vector<std::string> do_read_editor_mru();
-		void do_commit_editor_mru(const std::vector<std::string>& mru);
-		/** Retrieves the list of recently opened files. */
-		std::vector<std::string> recent_files();
-		/** Adds an entry to the recent files list. */
-		void add_recent_files_entry(const std::string& path);
-
-		bool use_color_cursors();
-		void set_color_cursors(bool value);
-
-		bool show_standing_animations();
-		void set_show_standing_animations(bool value);
-
-		void show_wesnothd_server_search();
-		bool show_theme_dialog();
-
-		void set_theme(const std::string& theme);
-		std::string theme();
-
-		void set_mp_server_program_name(const std::string&);
-		std::string get_mp_server_program_name();
-
-		bool parse_should_show_lobby_join(const std::string& sender, const std::string& message);
-		pref_constants::lobby_joins get_lobby_joins();
-		void set_lobby_joins(pref_constants::lobby_joins show);
-
-		const std::map<std::string, preferences::acquaintance>& get_acquaintances();
-		const std::string get_ignored_delim();
-		std::map<std::string, std::string> get_acquaintances_nice(const std::string& filter);
-		std::pair<preferences::acquaintance*, bool> add_acquaintance(const std::string& nick, const std::string& mode, const std::string& notes);
-		void add_completed_campaign(const std::string&campaign_id, const std::string& difficulty_level);
-		bool remove_acquaintance(const std::string& nick);
-		bool is_friend(const std::string& nick);
-		bool is_ignored(const std::string& nick);
-		bool is_campaign_completed(const std::string& campaign_id);
-		bool is_campaign_completed(const std::string& campaign_id, const std::string& difficulty_level);
-
-		const std::vector<game_config::server_info>& builtin_servers_list();
-		std::vector<game_config::server_info> user_servers_list();
-		void set_user_servers_list(const std::vector<game_config::server_info>& value);
-
-		std::string network_host();
-		void set_network_host(const std::string& host);
-
-		std::string campaign_server();
-		void set_campaign_server(const std::string& host);
-
-		bool turn_dialog();
-		void set_turn_dialog(bool ison);
-
-		bool enable_whiteboard_mode_on_start();
-		void set_enable_whiteboard_mode_on_start(bool value);
-
-		bool hide_whiteboard();
-		void set_hide_whiteboard(bool value);
-
-		bool show_combat();
-
-		bool allow_observers();
-		void set_allow_observers(bool value);
-
-		bool shuffle_sides();
-		void set_shuffle_sides(bool value);
-
-		std::string random_faction_mode();
-		void set_random_faction_mode(const std::string& value);
-
-		bool use_map_settings();
-		void set_use_map_settings(bool value);
-
-		int mp_server_warning_disabled();
-		void set_mp_server_warning_disabled(int value);
-
-		bool random_start_time();
-		void set_random_start_time(bool value);
-
-		bool fog();
-		void set_fog(bool value);
-
-		bool shroud();
-		void set_shroud(bool value);
-
-		int turns();
-		void set_turns(int value);
-
-		const config& options();
-		void set_options(const config& values);
-
-		bool skip_mp_replay();
-		void set_skip_mp_replay(bool value);
-
-		bool blindfold_replay();
-		void set_blindfold_replay(bool value);
-
-		bool countdown();
-		void set_countdown(bool value);
-		int countdown_init_time();
-		void set_countdown_init_time(int value);
-		void clear_countdown_init_time();
-
-		int countdown_turn_bonus();
-		void set_countdown_turn_bonus(int value);
-		void clear_countdown_turn_bonus();
-
-		int countdown_reservoir_time();
-		void set_countdown_reservoir_time(int value);
-		void clear_countdown_reservoir_time();
-
-		int countdown_action_bonus();
-		void set_countdown_action_bonus(int value);
-		void clear_countdown_action_bonus();
-
-		int village_gold();
-		void set_village_gold(int value);
-
-		int village_support();
-		void set_village_support(int value);
-
-		int xp_modifier();
-		void set_xp_modifier(int value);
-
-		std::string era();
-		void set_era(const std::string& value);
-
-		std::string level();
-		void set_level(const std::string& value);
-		int level_type();
-		void set_level_type(int value);
-
-		const std::vector<std::string>& modifications(bool mp = true);
-		void set_modifications(const std::vector<std::string>& value, bool mp = true);
-
-		bool skip_ai_moves();
-		void set_skip_ai_moves(bool value);
-
-		void set_show_side_colors(bool value);
-		bool show_side_colors();
-
-		bool save_replays();
-		void set_save_replays(bool value);
-
-		bool delete_saves();
-		void set_delete_saves(bool value);
-
-		void set_ask_delete_saves(bool value);
-		bool ask_delete_saves();
-
-		void set_interrupt_when_ally_sighted(bool value);
-		bool interrupt_when_ally_sighted();
-
-		void set_autosavemax(int value);
-		int autosavemax();
-
-		bool show_floating_labels();
-		void set_show_floating_labels(bool value);
-
-		bool message_private();
-		void set_message_private(bool value);
-
-		// Multiplayer functions
-		std::string get_chat_timestamp(const std::time_t& t);
-		bool chat_timestamping();
-		void set_chat_timestamping(bool value);
-
-		int chat_lines();
-		void set_chat_lines(int lines);
-
-		int chat_message_aging();
-		void set_chat_message_aging(const int aging);
-
-		bool show_all_units_in_help();
-		void set_show_all_units_in_help(bool value);
-
-		compression::format save_compression_format();
-
-		std::set<std::string>& encountered_units();
-		std::set<t_translation::terrain_code>& encountered_terrains();
-
-		std::string custom_command();
-		void set_custom_command(const std::string& command);
-
-		std::vector<std::string>* get_history(const std::string& id);
-
-		// Ask for end turn confirmation
-		bool yellow_confirm();
-		bool green_confirm();
-		bool confirm_no_moves();
-
-		// Add all recruitable units as encountered so that information
-		// about them are displayed to the user in the help system.
-		void encounter_recruitable_units(const std::vector<team>& teams);
-
-		// Add all units that exist at the start to the encountered units so
-		// that information about them are displayed to the user in the help
-		// system.
-		void encounter_start_units(const unit_map& units);
-
-		// Add all units that are recallable as encountered units.
-		void encounter_recallable_units(const std::vector<team>& teams);
-
-		// Add all terrains on the map as encountered terrains.
-		void encounter_map_terrain(const gamemap& map);
-
-		// Calls all of the above functions on the current game board
-		void encounter_all_content(const game_board& gb);
-
-		bool remember_password();
-		void set_remember_password(bool remember);
-
-		std::string login();
-		void set_login(const std::string& login);
-
-		std::string password(const std::string& server, const std::string& login);
-		void set_password(const std::string& server, const std::string& login, const std::string& key);
-
-		std::vector<preferences::option>& get_advanced_preferences() {return advanced_prefs_;}
-
-		static void disable_preferences_save() {
-			no_preferences_save = true;
-		}
-
-		static bool preferences_save() {
-			return no_preferences_save;
-		}
+		PREF_GETTER_SETTER(show_ally_orb, bool, game_config::show_ally_orb)
+		PREF_GETTER_SETTER(show_status_on_ally_orb, bool, game_config::show_status_on_ally_orb)
+		PREF_GETTER_SETTER(show_enemy_orb, bool, game_config::show_enemy_orb)
+		PREF_GETTER_SETTER(show_moved_orb, bool, game_config::show_moved_orb)
+		PREF_GETTER_SETTER(show_unmoved_orb, bool, game_config::show_unmoved_orb)
+		PREF_GETTER_SETTER(show_partial_orb, bool, game_config::show_partial_orb)
+		PREF_GETTER_SETTER(show_disengaged_orb, bool, game_config::show_disengaged_orb)
+		PREF_GETTER_SETTER(core, std::string, std::string("default"))
+		PREF_GETTER_SETTER(scroll_to_action, bool, true)
+		PREF_GETTER_SETTER(auto_pixel_scale, bool, true)
+		PREF_GETTER_SETTER(maximized, bool, !fullscreen())
+		PREF_GETTER_SETTER(fullscreen, bool, true)
+		PREF_GETTER_SETTER(vsync, bool, true)
+		PREF_GETTER_SETTER(turbo_speed, double, 2.0)
+		PREF_GETTER_SETTER(idle_anim, bool, true)
+		PREF_GETTER_SETTER(idle_anim_rate, int, 0)
+		PREF_GETTER_SETTER(locale, std::string, std::string(""))
+		PREF_GETTER_SETTER(gui2_theme, std::string, std::string(""))
+		PREF_GETTER_SETTER(stop_music_in_background, bool, false)
+		PREF_GETTER_SETTER(tile_size, unsigned, 0)
+		PREF_GETTER_SETTER(mouse_scrolling, bool, true)
+		PREF_GETTER_SETTER(draw_delay, int, -1)
+		PREF_GETTER_SETTER(animate_map, bool, true)
+		PREF_GETTER_SETTER(animate_water, bool, true)
+		PREF_GETTER_SETTER(minimap_movement_coding, bool, true)
+		PREF_GETTER_SETTER(minimap_terrain_coding, bool, true)
+		PREF_GETTER_SETTER(minimap_draw_units, bool, true)
+		PREF_GETTER_SETTER(minimap_draw_villages, bool, true)
+		PREF_GETTER_SETTER(minimap_draw_terrain, bool, true)
+		PREF_GETTER_SETTER(show_side_colors, bool, true)
+		PREF_GETTER_SETTER(grid, bool, false)
+		PREF_GETTER_SETTER(disable_auto_moves, bool, false)
+		PREF_GETTER_SETTER(damage_prediction_allow_monte_carlo_simulation, bool, true)
+		PREF_GETTER_SETTER(addon_manager_saved_order_name, std::string, std::string(""))
+		PREF_GETTER_SETTER(selected_achievement_group, std::string, std::string(""))
+		/** The most recently selected add-on id from the editor. May be an empty string. */
+		PREF_GETTER_SETTER(editor_chosen_addon, std::string, std::string(""))
+		PREF_GETTER_SETTER(_last_cache_cleaned_ver, std::string, std::string(""))
+		PREF_GETTER_SETTER(lobby_whisper_friends_only, bool, false)
+		PREF_GETTER_SETTER(fi_invert, bool, false)
+		PREF_GETTER_SETTER(fi_vacant_slots, bool, false)
+		PREF_GETTER_SETTER(fi_friends_in_game, bool, false)
+		PREF_GETTER_SETTER(fi_blocked_in_game, bool, false)
+		PREF_GETTER_SETTER(editor_auto_update_transitions, int, pref_constants::TRANSITION_UPDATE_PARTIAL)
+		PREF_GETTER_SETTER(editor_draw_terrain_codes, bool, false)
+		PREF_GETTER_SETTER(editor_draw_hex_coordinates, bool, false)
+		PREF_GETTER_SETTER(editor_draw_num_of_bitmaps, bool, false)
+		PREF_GETTER_SETTER(turn_dialog, bool, false)
+		PREF_GETTER_SETTER(enable_planning_mode_on_start, bool, false)
+		PREF_GETTER_SETTER(hide_whiteboard, bool, false)
+		PREF_GETTER_SETTER(allow_observers, bool, true)
+		PREF_GETTER_SETTER(shuffle_sides, bool, false)
+		PREF_GETTER_SETTER(random_faction_mode, std::string, std::string(""))
+		PREF_GETTER_SETTER(mp_use_map_settings, bool, true)
+		PREF_GETTER_SETTER(mp_server_warning_disabled, int, 0)
+		PREF_GETTER_SETTER(mp_random_start_time, bool, true)
+		PREF_GETTER_SETTER(mp_fog, bool, true)
+		PREF_GETTER_SETTER(mp_shroud, bool, true)
+		PREF_GETTER_SETTER(mp_turns, int, 0)
+		PREF_GETTER_SETTER(skip_mp_replay, bool, false)
+		PREF_GETTER_SETTER(blindfold_replay, bool, false)
+		PREF_GETTER_SETTER(mp_countdown, bool, false)
+		PREF_GETTER_SETTER(mp_era, std::string, std::string(""))
+		PREF_GETTER_SETTER(mp_level, std::string, std::string(""))
+		PREF_GETTER_SETTER(mp_level_type, int, 0)
+		PREF_GETTER_SETTER(skip_ai_moves, bool, false)
+		PREF_GETTER_SETTER(save_replays, bool, true)
+		PREF_GETTER_SETTER(delete_saves, bool, false)
+		PREF_GETTER_SETTER(ask_delete, bool, true)
+		PREF_GETTER_SETTER(ally_sighted_interrupts, bool, true)
+		PREF_GETTER_SETTER(auto_save_max, int, 10)
+		PREF_GETTER_SETTER(floating_labels, bool, true)
+		PREF_GETTER_SETTER(chat_timestamp, bool, false)
+		PREF_GETTER_SETTER(chat_lines, int, 6)
+		PREF_GETTER_SETTER(chat_message_aging, int, 20)
+		PREF_GETTER_SETTER(show_all_units_in_help, bool, false)
+		PREF_GETTER_SETTER(custom_command, std::string, std::string(""))
+		PREF_GETTER_SETTER(player_joins_sound, bool, true)
+		PREF_GETTER_SETTER(player_joins_lobby, bool, false)
+		PREF_GETTER_SETTER(player_joins_notif, bool, false)
+		PREF_GETTER_SETTER(player_leaves_sound, bool, true)
+		PREF_GETTER_SETTER(player_leaves_lobby, bool, false)
+		PREF_GETTER_SETTER(player_leaves_notif, bool, false)
+		PREF_GETTER_SETTER(private_message_sound, bool, true)
+		PREF_GETTER_SETTER(private_message_lobby, bool, desktop::notifications::available())
+		PREF_GETTER_SETTER(private_message_notif, bool, true)
+		PREF_GETTER_SETTER(friend_message_sound, bool, false)
+		PREF_GETTER_SETTER(friend_message_lobby, bool, false)
+		PREF_GETTER_SETTER(friend_message_notif, bool, false)
+		PREF_GETTER_SETTER(public_message_sound, bool, false)
+		PREF_GETTER_SETTER(public_message_lobby, bool, false)
+		PREF_GETTER_SETTER(public_message_notif, bool, false)
+		PREF_GETTER_SETTER(server_message_sound, bool, true)
+		PREF_GETTER_SETTER(server_message_lobby, bool, false)
+		PREF_GETTER_SETTER(server_message_notif, bool, true)
+		PREF_GETTER_SETTER(ready_for_start_sound, bool, true)
+		PREF_GETTER_SETTER(ready_for_start_lobby, bool, desktop::notifications::available())
+		PREF_GETTER_SETTER(ready_for_start_notif, bool, false)
+		PREF_GETTER_SETTER(game_has_begun_sound, bool, true)
+		PREF_GETTER_SETTER(game_has_begun_lobby, bool, desktop::notifications::available())
+		PREF_GETTER_SETTER(game_has_begun_notif, bool, false)
+		PREF_GETTER_SETTER(turn_changed_sound, bool, true)
+		PREF_GETTER_SETTER(turn_changed_lobby, bool, desktop::notifications::available())
+		PREF_GETTER_SETTER(turn_changed_notif, bool, false)
+		PREF_GETTER_SETTER(game_created_sound, bool, true)
+		PREF_GETTER_SETTER(game_created_lobby, bool, desktop::notifications::available())
+		PREF_GETTER_SETTER(game_created_notif, bool, true)
+		PREF_GETTER_SETTER(editor_help_text_shown, bool, true)
+#undef PREF_GETTER_SETTER
+		void clear_mp_alert_prefs();
 
 	private:
 		prefs();
@@ -782,12 +626,10 @@ class prefs
 		void save_credentials();
 		void clear_credentials();
 
-		void clear(const std::string& key);
 		void set_child(const std::string& key, const config& val);
 		optional_const_config get_child(const std::string &key);
 		std::string get(const std::string& key, const std::string& def);
 		config::attribute_value get_as_attribute(const std::string& key);
-		void erase(const std::string& key);
 
 		std::string get_system_username();
 		/**
@@ -817,6 +659,190 @@ class prefs
 		preferences::secure_buffer build_key(const std::string& server, const std::string& login);
 		preferences::secure_buffer escape(const preferences::secure_buffer& text);
 		preferences::secure_buffer unescape(const preferences::secure_buffer& text);
+
+		std::set<std::string> unknown_synced_attributes_;
+		std::set<std::string> unknown_unsynced_attributes_;
+		std::set<std::string> unknown_synced_children_;
+		std::set<std::string> unknown_unsynced_children_;
+
+		// a bit verbose, but it being a compile time error if a preference hasn't been added is nice
+		static constexpr std::array synced_attributes_{
+			prefs_list::player_joins_sound,
+			prefs_list::player_joins_notif,
+			prefs_list::player_joins_lobby,
+			prefs_list::player_leaves_sound,
+			prefs_list::player_leaves_notif,
+			prefs_list::player_leaves_lobby,
+			prefs_list::private_message_sound,
+			prefs_list::private_message_notif,
+			prefs_list::private_message_lobby,
+			prefs_list::friend_message_sound,
+			prefs_list::friend_message_notif,
+			prefs_list::friend_message_lobby,
+			prefs_list::public_message_sound,
+			prefs_list::public_message_notif,
+			prefs_list::public_message_lobby,
+			prefs_list::server_message_sound,
+			prefs_list::server_message_notif,
+			prefs_list::server_message_lobby,
+			prefs_list::ready_for_start_sound,
+			prefs_list::ready_for_start_notif,
+			prefs_list::ready_for_start_lobby,
+			prefs_list::game_has_begun_sound,
+			prefs_list::game_has_begun_notif,
+			prefs_list::game_has_begun_lobby,
+			prefs_list::turn_changed_sound,
+			prefs_list::turn_changed_notif,
+			prefs_list::turn_changed_lobby,
+			prefs_list::game_created_sound,
+			prefs_list::game_created_notif,
+			prefs_list::game_created_lobby,
+			prefs_list::_last_cache_cleaned_ver,
+			prefs_list::addon_manager_saved_order_direction,
+			prefs_list::addon_manager_saved_order_name,
+			prefs_list::alias,
+			prefs_list::allow_observers,
+			prefs_list::ally_orb_color,
+			prefs_list::ally_sighted_interrupts,
+			prefs_list::auto_save_max,
+			prefs_list::blindfold_replay,
+			prefs_list::campaign_server,
+			prefs_list::chat_lines,
+			prefs_list::chat_timestamp,
+			prefs_list::confirm_end_turn,
+			prefs_list::custom_command,
+			prefs_list::delete_saves,
+			prefs_list::disable_auto_moves,
+			prefs_list::editor_auto_update_transitions,
+			prefs_list::editor_draw_hex_coordinates,
+			prefs_list::editor_draw_num_of_bitmaps,
+			prefs_list::editor_draw_terrain_codes,
+			prefs_list::enable_planning_mode_on_start,
+			prefs_list::encountered_terrain_list,
+			prefs_list::encountered_units,
+			prefs_list::enemy_orb_color,
+			prefs_list::fi_blocked_in_game,
+			prefs_list::fi_friends_in_game,
+			prefs_list::fi_invert,
+			prefs_list::fi_vacant_slots,
+			prefs_list::floating_labels,
+			prefs_list::grid,
+			prefs_list::hide_whiteboard,
+			prefs_list::host,
+			prefs_list::idle_anim,
+			prefs_list::idle_anim_rate,
+			prefs_list::lobby_joins,
+			prefs_list::lobby_whisper_friends_only,
+			prefs_list::locale,
+			prefs_list::login,
+			prefs_list::message_bell,
+			prefs_list::minimap_draw_terrain,
+			prefs_list::minimap_draw_units,
+			prefs_list::minimap_draw_villages,
+			prefs_list::minimap_movement_coding,
+			prefs_list::minimap_terrain_coding,
+			prefs_list::moved_orb_color,
+			prefs_list::mp_countdown,
+			prefs_list::mp_countdown_action_bonus,
+			prefs_list::mp_countdown_init_time,
+			prefs_list::mp_countdown_reservoir_time,
+			prefs_list::mp_countdown_turn_bonus,
+			prefs_list::mp_fog,
+			prefs_list::mp_level_type,
+			prefs_list::mp_random_start_time,
+			prefs_list::mp_server_warning_disabled,
+			prefs_list::mp_shroud,
+			prefs_list::mp_turns,
+			prefs_list::mp_use_map_settings,
+			prefs_list::mp_village_gold,
+			prefs_list::mp_village_support,
+			prefs_list::mp_xp_modifier,
+			prefs_list::music,
+			prefs_list::partial_orb_color,
+			prefs_list::random_faction_mode,
+			prefs_list::remember_password,
+			prefs_list::save_replays,
+			prefs_list::scroll,
+			prefs_list::scroll_threshold,
+			prefs_list::show_ally_orb,
+			prefs_list::show_disengaged_orb,
+			prefs_list::show_enemy_orb,
+			prefs_list::show_moved_orb,
+			prefs_list::show_partial_orb,
+			prefs_list::show_side_colors,
+			prefs_list::show_status_on_ally_orb,
+			prefs_list::show_unmoved_orb,
+			prefs_list::shuffle_sides,
+			prefs_list::skip_ai_moves,
+			prefs_list::skip_mp_replay,
+			prefs_list::sound,
+			prefs_list::sample_rate,
+			prefs_list::stop_music_in_background,
+			prefs_list::turbo,
+			prefs_list::turbo_speed,
+			prefs_list::turn_bell,
+			prefs_list::turn_dialog,
+			prefs_list::ui_sound,
+			prefs_list::unit_standing_animations,
+			prefs_list::unmoved_orb_color,
+			prefs_list::ask_delete,
+			prefs_list::chat_message_aging,
+			prefs_list::color_cursors,
+			prefs_list::compress_saves,
+			prefs_list::confirm_load_save_from_different_version,
+			prefs_list::damage_prediction_allow_monte_carlo_simulation,
+			prefs_list::editor_max_recent_files,
+			prefs_list::keepalive_timeout,
+			prefs_list::lobby_auto_open_whisper_windows,
+			prefs_list::middle_click_scrolls,
+			prefs_list::mouse_scrolling,
+			prefs_list::scroll_to_action,
+			prefs_list::scroll_when_mouse_outside,
+			prefs_list::show_all_units_in_help,
+			prefs_list::show_combat,
+			prefs_list::show_deprecation,
+			prefs_list::use_twelve_hour_clock_format,
+			prefs_list::mp_era,
+			prefs_list::mp_level,
+			prefs_list::mp_modifications,
+			prefs_list::selected_achievement_group,
+			prefs_list::sp_modifications,
+			prefs_list::animate_map,
+			prefs_list::animate_water,
+		};
+		static constexpr std::array synced_children_{
+			prefs_list::achievements,
+			prefs_list::completed_campaigns,
+			prefs_list::history,
+			prefs_list::options,
+		};
+		static constexpr std::array unsynced_attributes_{
+			prefs_list::auto_pixel_scale,
+			prefs_list::core,
+			prefs_list::dir_bookmarks,
+			prefs_list::draw_delay,
+			prefs_list::editor_chosen_addon,
+			prefs_list::gui2_theme,
+			prefs_list::mp_server_program_name,
+			prefs_list::pixel_scale,
+			prefs_list::sound_buffer_size,
+			prefs_list::theme,
+			prefs_list::tile_size,
+			prefs_list::vsync,
+			prefs_list::xresolution,
+			prefs_list::yresolution,
+			prefs_list::font_scale,
+			prefs_list::bell_volume,
+			prefs_list::music_volume,
+			prefs_list::sound_volume,
+			prefs_list::ui_volume,
+			prefs_list::fullscreen,
+			prefs_list::maximized,
+		};
+		static constexpr std::array unsynced_children_{
+			prefs_list::editor_recent_files,
+		};
+		static_assert(synced_attributes_.size() + synced_children_.size() + unsynced_attributes_.size() + unsynced_children_.size() == prefs_list::values.size(), "attribute missing from lists of synced or unsynced preferences!");
 };
 
 //

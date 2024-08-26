@@ -1313,7 +1313,7 @@ const topic *find_topic(const section &sec, const std::string &id)
 
 const section *find_section(const section &sec, const std::string &id)
 {
-	const auto &sit =
+	const auto sit =
 		std::find_if(sec.sections.begin(), sec.sections.end(), has_id(id));
 	if (sit != sec.sections.end()) {
 		return &*sit;
@@ -1667,7 +1667,7 @@ unsigned image_width(const std::string &filename)
 	return 0;
 }
 
-void push_tab_pair(std::vector<help::item> &v, const std::string &s, const std::optional<std::string> &image, unsigned padding)
+void push_tab_pair(std::vector<help::item> &v, const std::string &s, const utils::optional<std::string> &image, unsigned padding)
 {
 	help::item item(s, font::pango_line_width(s, normal_font_size));
 	if (image) {

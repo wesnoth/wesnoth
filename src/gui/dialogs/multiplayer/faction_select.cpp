@@ -182,15 +182,12 @@ void faction_select::on_leader_select()
 
 	// Disable the profile button if leader_type is dash or "Random"
 	button& profile_button = find_widget<button>(get_window(), "type_profile", false);
-	const std::string& leader_type = find_widget<menu_button>(get_window(), "leader_menu", false).get_value_string();
-	profile_button.set_active(unit_types.find(leader_type) != nullptr);
+	profile_button.set_active(unit_types.find(flg_manager_.current_leader()) != nullptr);
 }
 
 void faction_select::profile_button_callback()
 {
-	const std::string& leader_type = find_widget<menu_button>(get_window(), "leader_menu", false).get_value_string();
-	const unit_type* ut = unit_types.find(leader_type);
-	if(ut != nullptr) {
+	if(const unit_type* ut = unit_types.find(flg_manager_.current_leader())) {
 		prefs::get().encountered_units().insert(ut->id());
 		help::show_unit_description(*ut);
 	}

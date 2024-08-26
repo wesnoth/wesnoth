@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-26 15:07-0500\n"
+"POT-Creation-Date: 2024-08-18 23:10-0500\n"
 "PO-Revision-Date: 2024-06-06 19:04+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
@@ -239,17 +239,17 @@ msgid "units"
 msgstr "ইউনিট"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:463
+#: data/themes/editor.cfg:479
 msgid "Time Schedule Menu"
 msgstr "সময়সূচী মেনু"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:474
+#: data/themes/editor.cfg:490
 msgid "Playlist"
 msgstr "সঙ্গীতের তালিকা"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:480
+#: data/themes/editor.cfg:496
 msgid "Assign Time Schedule"
 msgstr "সময়সূচী বসান"
 
@@ -273,15 +273,15 @@ msgstr "পর্যায়: "
 msgid "Cost: "
 msgstr "মূল্য: "
 
-#: src/editor/controller/editor_controller.cpp:183
+#: src/editor/controller/editor_controller.cpp:186
 msgid "Fatal error"
 msgstr "মারাত্মক ত্রুটি"
 
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:216
 msgid "Do you really want to quit?"
 msgstr "আপনি কী সত্যিই বেরিয়ে যেতে চান?"
 
-#: src/editor/controller/editor_controller.cpp:215
+#: src/editor/controller/editor_controller.cpp:218
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -289,7 +289,7 @@ msgstr ""
 "আপনি কী সত্যিই বেরিয়ে যেতে চান? এতে শেষ সঞ্চয়ের পর হওয়া সকল পরিবর্তন হারিয়ে "
 "যাবে ।"
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:220
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -297,127 +297,152 @@ msgstr ""
 "আপনি কী সত্যিই বেরিয়ে যেতে চান? পরবর্তী মানচিত্রগুলি পাল্টানো হয়েছে এবং সেগুলিতে "
 "শেষ সঞ্চয়ের পর হওয়া সকল পরিবর্তন হারিয়ে যাবে ।"
 
-#: src/editor/controller/editor_controller.cpp:234
+#: src/editor/controller/editor_controller.cpp:237
 msgid "No editor time-of-day found."
 msgstr "পরিমার্জকের জন্য কোনো সময়সূচী পাওয়া যায়নি ।"
 
-#: src/editor/controller/editor_controller.cpp:1262
+#: src/editor/controller/editor_controller.cpp:879
+#, fuzzy
+#| msgid "Add-on"
+msgid "Add-on Files"
+msgstr "অ্যাড-অন"
+
+#: src/editor/controller/editor_controller.cpp:892
+#, fuzzy
+#| msgid "Clipboard support not found, contact your packager"
+msgid "Opening files is not supported, contact your packager"
+msgstr "ক্লিপবোর্ড সহায়তা পাওয়া যাচ্ছে না, আপনার প্যাকেজারের সঙ্গে যোগাযোগ করুন"
+
+#: src/editor/controller/editor_controller.cpp:1314
 msgid "Change Unit ID"
 msgstr "ইউনিটের আইডি পাল্টান"
 
-#: src/editor/controller/editor_controller.cpp:1263
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "ID:"
 msgstr "আইডি:"
 
-#: src/editor/controller/editor_controller.cpp:1279
+#: src/editor/controller/editor_controller.cpp:1331
 msgid "Rename Unit"
 msgstr "ইউনিটের নাম পাল্টান"
 
-#: src/editor/controller/editor_controller.cpp:1280
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Name:"
 msgstr "নাম:"
 
-#: src/editor/map/context_manager.cpp:215
+#: src/editor/map/context_manager.cpp:220
 msgid "Load Map"
 msgstr "মানচিত্র খুলুন"
 
-#: src/editor/map/context_manager.cpp:311 src/editor/map/map_context.cpp:1110
+#: src/editor/map/context_manager.cpp:318 src/editor/map/map_context.cpp:1127
 msgid "New Map"
 msgstr "নতুন মানচিত্র"
 
-#: src/editor/map/context_manager.cpp:324 src/editor/map/map_context.cpp:1110
+#: src/editor/map/context_manager.cpp:331 src/editor/map/map_context.cpp:1127
 msgid "New Scenario"
 msgstr "নতুন ঘটনাক্রম"
 
-#: src/editor/map/context_manager.cpp:380
+#: src/editor/map/context_manager.cpp:387
 msgid "No Recent Files"
 msgstr "কোনো শেষ ব্যবহৃত ফাইল নেই"
 
-#: src/editor/map/context_manager.cpp:418
+#: src/editor/map/context_manager.cpp:425
 msgid "Unnamed Area"
 msgstr "নামহীন এলাকা"
 
-#: src/editor/map/context_manager.cpp:449
+#: src/editor/map/context_manager.cpp:456
 msgid "New Side"
 msgstr "নতুন দল"
 
-#: src/editor/map/context_manager.cpp:505
+#: src/editor/map/context_manager.cpp:512
 msgid "Apply Mask"
 msgstr "মাস্ক প্রয়োগ করুন"
 
-#: src/editor/map/context_manager.cpp:514
+#: src/editor/map/context_manager.cpp:521
 msgid "Error loading mask"
 msgstr "মাস্ক খোলায় ত্রুটি"
 
-#: src/editor/map/context_manager.cpp:534
+#: src/editor/map/context_manager.cpp:541
 msgid "Identifier:"
 msgstr "আইডি:"
 
-#: src/editor/map/context_manager.cpp:534
+#: src/editor/map/context_manager.cpp:541
 msgid "Rename Area"
 msgstr "এলাকার নাম পাল্টান"
 
-#: src/editor/map/context_manager.cpp:548
+#: src/editor/map/context_manager.cpp:555
 msgid "Choose Target Map"
 msgstr "মানচিত্র পছন্দ করুন"
 
-#: src/editor/map/context_manager.cpp:557
-#: src/editor/map/context_manager.cpp:953
+#: src/editor/map/context_manager.cpp:564
+#: src/editor/map/context_manager.cpp:990
 msgid "Error loading map"
 msgstr "মানচিত্র খোলায় ত্রুটি"
 
-#: src/editor/map/context_manager.cpp:683
+#: src/editor/map/context_manager.cpp:696
 msgid "Save Map As"
 msgstr "মানচিত্র সঞ্চয় করুন এভাবে"
 
-#: src/editor/map/context_manager.cpp:694
-#: src/editor/map/context_manager.cpp:896
+#: src/editor/map/context_manager.cpp:713
+#: src/editor/map/context_manager.cpp:762 src/editor/map/map_context.cpp:269
+#: src/editor/palette/location_palette.cpp:264
+msgid "Error"
+msgstr "ত্রুটি"
+
+#: src/editor/map/context_manager.cpp:714
+#: src/editor/map/context_manager.cpp:763
+#, fuzzy
+#| msgid "Do you really want to quit?"
+msgid "Do you really want to save $type1 in $type2 folder?"
+msgstr "আপনি কী সত্যিই বেরিয়ে যেতে চান?"
+
+#: src/editor/map/context_manager.cpp:722
+#: src/editor/map/context_manager.cpp:931
 msgid "This map is already open."
 msgstr "এই মানচিত্রটি আগে থেকেই খোলা রয়েছে ।"
 
-#: src/editor/map/context_manager.cpp:715
+#: src/editor/map/context_manager.cpp:745
 msgid "Save Scenario As"
 msgstr "ঘটনাক্রম সঞ্চয় করুন এভাবে"
 
-#: src/editor/map/context_manager.cpp:727
+#: src/editor/map/context_manager.cpp:771
 msgid "This scenario is already open."
 msgstr "এই ঘটনাক্রমটি আগে থেকেই খোলা রয়েছে ।"
 
-#: src/editor/map/context_manager.cpp:761
+#: src/editor/map/context_manager.cpp:805
 msgid "No random map generators found."
 msgstr "কোনো ইতস্তত মানচিত্র সৃষ্টিকারক পাওয়া যাচ্ছে না ।"
 
-#: src/editor/map/context_manager.cpp:774
-#: src/editor/map/context_manager.cpp:779
+#: src/editor/map/context_manager.cpp:818
+#: src/editor/map/context_manager.cpp:823
 msgid "Map creation failed."
 msgstr "মানচিত্র তৈরী করা যায়নি ।"
 
-#: src/editor/map/context_manager.cpp:794
+#: src/editor/map/context_manager.cpp:838
 msgid "Unsaved Changes"
 msgstr "অসঞ্চিত পরিবর্তন"
 
-#: src/editor/map/context_manager.cpp:795
+#: src/editor/map/context_manager.cpp:839
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "শেষ সঞ্চয়ের পর মানচিত্র করা সকল পরিবর্তন বাতিল করতে চান?"
 
-#: src/editor/map/context_manager.cpp:857
+#: src/editor/map/context_manager.cpp:892
 msgid "Scenario saved."
 msgstr "ঘটনাক্রম সঞ্চিত হয়েছে ।"
 
-#: src/editor/map/context_manager.cpp:872
+#: src/editor/map/context_manager.cpp:907
 msgid "Map saved."
 msgstr "মানচিত্র সঞ্চিত হয়েছে ।"
 
-#: src/editor/map/context_manager.cpp:945
+#: src/editor/map/context_manager.cpp:982
 msgid "Loaded embedded map data"
 msgstr "অন্তর্নিহিত মানচিত্রের তথ্য খোলা হয়েছে"
 
-#: src/editor/map/context_manager.cpp:946
-#: src/editor/map/context_manager.cpp:949
+#: src/editor/map/context_manager.cpp:983
+#: src/editor/map/context_manager.cpp:986
 msgid "Map loaded from scenario"
 msgstr "ঘটনাক্রম থেকে মানচিত্র খোলা হয়েছে"
 
-#: src/editor/map/context_manager.cpp:949
+#: src/editor/map/context_manager.cpp:986
 msgid "Loaded referenced map file:"
 msgstr "নির্দেশিত মানচিত্র খোলা হয়েছে:"
 
@@ -430,19 +455,19 @@ msgstr "খেলোয়াড় $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "বর্তমান মানচিত্রের থেকে পছন্দ করা মানচিত্রের আকার আলাদা"
 
-#: src/editor/map/map_context.cpp:181
+#: src/editor/map/map_context.cpp:182
 msgid "File not found"
 msgstr "ফাইল খুঁজে পাওয়া যায়নি"
 
-#: src/editor/map/map_context.cpp:188
+#: src/editor/map/map_context.cpp:189
 msgid "Empty file"
 msgstr "ফাঁকা ফাইল"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:198
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "ফাইলটির .map, .cfg, বা .mask এক্সটেনশন নেই"
 
-#: src/editor/map/map_context.cpp:240
+#: src/editor/map/map_context.cpp:245
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -450,20 +475,15 @@ msgstr ""
 "মানচিত্র ফাইলটিকে দেখে ঘটনাক্রম মনে হচ্ছে, কিন্তু map_data-র মান অস্তিত্ব আছে এমন "
 "কোনো ফাইলের দিকে নির্দেশ করে না"
 
-#: src/editor/map/map_context.cpp:259
+#: src/editor/map/map_context.cpp:264
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
 msgstr "ইনালাইন লুয়া নির্দেশকারী '<<' অক্ষরগুলি পাওয়া গিয়েছে - বেরিয়ে যাওয়া হচ্ছে"
 
-#: src/editor/map/map_context.cpp:264
-#: src/editor/palette/location_palette.cpp:264
-msgid "Error"
-msgstr "ত্রুটি"
-
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:269
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr "ঘটনাক্রম খোলা যায়নি, মানচিত্র খোলার চেষ্টা করা হচ্ছে ।"
 
-#: src/editor/map/map_context.cpp:271
+#: src/editor/map/map_context.cpp:276
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
@@ -471,20 +491,31 @@ msgstr ""
 "মানচিত্র ফাইলটিকে দেখে ঘটনাক্রম মনে হচ্ছে, কিন্তু map_file-র মান অস্তিত্ব আছে এমন "
 "কোনো ফাইলের দিকে নির্দেশ করে না"
 
-#: src/editor/map/map_context.cpp:286
+#: src/editor/map/map_context.cpp:291
 msgid "Unable to parse file to find map data"
 msgstr "মানচিত্র ফাইল পড়ে মানচিত্রের তথ্য পাওয়া যায়নি"
 
-#: src/editor/map/map_context.cpp:804 src/editor/map/map_context.cpp:843
-#: src/editor/map/map_context.cpp:884
+#: src/editor/map/map_context.cpp:821 src/editor/map/map_context.cpp:861
+#, fuzzy
+#| msgid "Could not save the scenario: $msg"
+msgid "Could not save time schedule: $msg"
+msgstr "ঘটনাক্রম সঞ্চয় করা যাচ্ছে না: $msg"
+
+#: src/editor/map/map_context.cpp:855
+#, fuzzy
+#| msgid "Time Schedule Menu"
+msgid "Time schedule saved."
+msgstr "সময়সূচী মেনু"
+
+#: src/editor/map/map_context.cpp:901
 msgid "Could not save the scenario: $msg"
 msgstr "ঘটনাক্রম সঞ্চয় করা যাচ্ছে না: $msg"
 
-#: src/editor/map/map_context.cpp:915
+#: src/editor/map/map_context.cpp:932
 msgid "Could not save into scenario"
 msgstr "ঘটনাক্রমের মধ্যে সঞ্চয় করা যাচ্ছে না"
 
-#: src/editor/map/map_context.cpp:925
+#: src/editor/map/map_context.cpp:942
 msgid "Could not save the map: $msg"
 msgstr "মানচিত্র সঞ্চয় করা যাচ্ছে না: $msg"
 
@@ -547,14 +578,26 @@ msgstr "Cmd + ক্লিক: ভূমিরূপ প্রতিলিপি
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + ক্লিক: ভূমিরূপ প্রতিলিপি"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:94
+#: src/gui/dialogs/editor/custom_tod.cpp:96
 msgid "Clipboard support not found, contact your packager"
 msgstr "ক্লিপবোর্ড সহায়তা পাওয়া যাচ্ছে না, আপনার প্যাকেজারের সঙ্গে যোগাযোগ করুন"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:162
+#: src/gui/dialogs/editor/custom_tod.cpp:176
 msgid "Choose File"
 msgstr "ফাইল পছন্দ করুন"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:163
+#: src/gui/dialogs/editor/custom_tod.cpp:177
 msgid "Select"
 msgstr "নির্বাচন"
+
+#: src/gui/dialogs/editor/custom_tod.cpp:184
+msgid ""
+"This file is outside Wesnoth's data dirs. Do you wish to copy it into your "
+"add-on?"
+msgstr ""
+
+#: src/gui/dialogs/editor/custom_tod.cpp:188
+#: src/gui/dialogs/editor/custom_tod.cpp:195
+#: src/gui/dialogs/editor/custom_tod.cpp:202
+msgid "Confirm"
+msgstr ""

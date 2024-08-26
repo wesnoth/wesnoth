@@ -76,10 +76,10 @@ static int intf_load_wml(lua_State* L)
 	std::string schema_path = luaL_optstring(L, 3, "");
 	std::shared_ptr<schema_validation::schema_validator> validator;
 	if(!schema_path.empty()) {
-		validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location(schema_path)));
+		validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location(schema_path).value()));
 		validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 	}
-	std::string wml_file = filesystem::get_wml_location(file);
+	std::string wml_file = filesystem::get_wml_location(file).value();
 	filesystem::scoped_istream stream;
 	config result;
 	if(preprocess) {
@@ -103,7 +103,7 @@ static int intf_parse_wml(lua_State* L)
 	std::string schema_path = luaL_optstring(L, 2, "");
 	std::shared_ptr<schema_validation::schema_validator> validator;
 	if(!schema_path.empty()) {
-		validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location(schema_path)));
+		validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location(schema_path).value()));
 		validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 	}
 	config result;

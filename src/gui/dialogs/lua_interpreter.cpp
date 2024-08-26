@@ -188,7 +188,7 @@ public:
 	: prefix_()
 	, end_of_history_(true)
 #ifdef HAVE_HISTORY
-	, filename_(filesystem::get_user_config_dir() + "/lua_command_history")
+	, filename_(filesystem::get_lua_history_file())
 	{
 		using_history();
 		read_history (filename_.c_str());

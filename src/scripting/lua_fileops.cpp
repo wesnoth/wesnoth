@@ -42,7 +42,7 @@ static int intf_get_image_size(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 	image::locator img(m);
-	if(!img.file_exists()) return 0;
+	if(!image::exists(img)) return 0;
 	const point s = get_size(img);
 	lua_pushinteger(L, s.x);
 	lua_pushinteger(L, s.y);
@@ -57,7 +57,7 @@ static int intf_get_image_size(lua_State *L)
 static int intf_have_asset(lua_State* L)
 {
 	std::string type = luaL_checkstring(L, 1), name = luaL_checkstring(L, 2);
-	lua_pushboolean(L, !filesystem::get_binary_file_location(type, name).empty());
+	lua_pushboolean(L, filesystem::get_binary_file_location(type, name).has_value());
 	return 1;
 }
 
@@ -70,7 +70,7 @@ static int intf_have_asset(lua_State* L)
 static int intf_resolve_asset(lua_State* L)
 {
 	std::string type = luaL_checkstring(L, 1), name = luaL_checkstring(L, 2);
-	lua_push(L, filesystem::get_independent_binary_file_path(type, name));
+	lua_push(L, filesystem::get_independent_binary_file_path(type, name).value_or(""));
 	return 1;
 }
 
@@ -155,14 +155,14 @@ static bool resolve_filename(std::string& filename, const std::string& currentdi
 	if(!canonical_path(filename, currentdir)) {
 		return false;
 	}
-	std::string p = filesystem::get_wml_location(filename);
-	if(p.empty()) {
+	auto p = filesystem::get_wml_location(filename);
+	if(!p) {
 		return false;
 	}
 	if(rel) {
 		*rel = filename;
 	}
-	filename = p;
+	filename = p.value();
 	return true;
 }
 

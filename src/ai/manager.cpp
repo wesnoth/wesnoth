@@ -94,11 +94,11 @@ void holder::init( side_number side )
 	if (default_ai_context_ == nullptr){
 		default_ai_context_.reset(new default_ai_context_impl(*readwrite_context_,cfg_));
 	}
-	if (!this->ai_){
+	if (!ai_){
 		ai_.reset(new ai_composite(*default_ai_context_,cfg_));
 	}
 
-	if (this->ai_) {
+	if (ai_) {
 		ai_->on_create();
 		for (config &mod_ai : cfg_.child_range("modify_ai")) {
 			if (!mod_ai.has_attribute("side")) {
@@ -128,7 +128,7 @@ void holder::init( side_number side )
 holder::~holder()
 {
 	try {
-	if (this->ai_) {
+	if (ai_) {
 		LOG_AI_MANAGER << describe_ai() << "Managed AI will be deleted";
 	}
 	} catch (...) {}
@@ -136,22 +136,22 @@ holder::~holder()
 
 ai_composite& holder::get_ai_ref()
 {
-	if (!this->ai_) {
-		this->init(this->side_);
+	if (!ai_) {
+		init(side_);
 	}
-	assert(this->ai_);
+	assert(ai_);
 
-	return *this->ai_;
+	return *ai_;
 }
 
 void holder::micro_ai(const config& cfg)
 {
-	if (!this->ai_) {
-		this->init(this->side_);
+	if (!ai_) {
+		init(side_);
 	}
-	assert(this->ai_);
+	assert(ai_);
 
-	auto engine = this->ai_->get_engine_by_cfg(config{"engine", "lua"});
+	auto engine = ai_->get_engine_by_cfg(config{"engine", "lua"});
 	if(auto lua = std::dynamic_pointer_cast<engine_lua>(engine)) {
 		lua->apply_micro_ai(cfg);
 	}
@@ -159,7 +159,7 @@ void holder::micro_ai(const config& cfg)
 
 void holder::modify_ai(const config &cfg)
 {
-	if (!this->ai_) {
+	if (!ai_) {
 		// if not initialized, initialize now.
 		get_ai_ref();
 	}
@@ -169,11 +169,11 @@ void holder::modify_ai(const config &cfg)
 	DBG_AI_MOD << "side "<< side_ << " before "<<act<<"_ai_component"<<std::endl << to_config();
 	bool res = false;
 	if (act == "add") {
-		res = component_manager::add_component(&*this->ai_,cfg["path"],cfg);
+		res = component_manager::add_component(&*ai_,cfg["path"],cfg);
 	} else if (act == "change") {
-		res = component_manager::change_component(&*this->ai_,cfg["path"],cfg);
+		res = component_manager::change_component(&*ai_,cfg["path"],cfg);
 	} else if (act == "delete") {
-		res = component_manager::delete_component(&*this->ai_,cfg["path"]);
+		res = component_manager::delete_component(&*ai_,cfg["path"]);
 	} else {
 		ERR_AI_MOD << "modify_ai tag has invalid 'action' attribute " << act;
 	}
@@ -188,7 +188,7 @@ void holder::modify_ai(const config &cfg)
 
 void holder::append_ai(const config& cfg)
 {
-	if(!this->ai_) {
+	if(!ai_) {
 		get_ai_ref();
 	}
 	for(const config& aspect : cfg.child_range("aspect")) {
@@ -220,91 +220,89 @@ void holder::append_ai(const config& cfg)
 
 config holder::to_config() const
 {
-	if (!this->ai_) {
+	if (!ai_) {
 		return cfg_;
 	} else {
 		config cfg = ai_->to_config();
-		if (this->side_context_!=nullptr) {
-			cfg.merge_with(this->side_context_->to_side_context_config());
+		if (side_context_!=nullptr) {
+			cfg.merge_with(side_context_->to_side_context_config());
 		}
-		if (this->readonly_context_!=nullptr) {
-			cfg.merge_with(this->readonly_context_->to_readonly_context_config());
+		if (readonly_context_!=nullptr) {
+			cfg.merge_with(readonly_context_->to_readonly_context_config());
 		}
-		if (this->readwrite_context_!=nullptr) {
-			cfg.merge_with(this->readwrite_context_->to_readwrite_context_config());
+		if (readwrite_context_!=nullptr) {
+			cfg.merge_with(readwrite_context_->to_readwrite_context_config());
 		}
-		if (this->default_ai_context_!=nullptr) {
-			cfg.merge_with(this->default_ai_context_->to_default_ai_context_config());
+		if (default_ai_context_!=nullptr) {
+			cfg.merge_with(default_ai_context_->to_default_ai_context_config());
 		}
 
 		return cfg;
 	}
 }
 
-const std::string holder::describe_ai()
+std::string holder::describe_ai() const
 {
-	std::string sidestr = std::to_string(this->side_);
-
-	if (this->ai_!=nullptr) {
-		return this->ai_->describe_self()+std::string(" for side ")+sidestr+std::string(" : ");
+	if(ai_) {
+		return formatter() << ai_->describe_self() << " for side " << side_ << " : ";
 	} else {
-		return std::string("not initialized ai with id=[")+cfg_["id"]+std::string("] for side ")+sidestr+std::string(" : ");
+		return formatter() << "not initialized ai with id=[" << cfg_["id"] << "] for side " << side_ << " : ";
 	}
 }
 
-const std::string holder::get_ai_overview()
+std::string holder::get_ai_overview()
 {
-	if (!this->ai_) {
+	if (!ai_) {
 		get_ai_ref();
 	}
 	// These assignments are necessary because the code will otherwise not compile on some platforms with an lvalue/rvalue mismatch error
-	auto lik = this->ai_->get_leader_ignores_keep();
-	auto pl = this->ai_->get_passive_leader();
-	auto plsk = this->ai_->get_passive_leader_shares_keep();
+	auto lik = ai_->get_leader_ignores_keep();
+	auto pl = ai_->get_passive_leader();
+	auto plsk = ai_->get_passive_leader_shares_keep();
 	// In order to display booleans as yes/no rather than 1/0 or true/false
 	config cfg;
-	cfg["allow_ally_villages"] = this->ai_->get_allow_ally_villages();
-	cfg["simple_targeting"] = this->ai_->get_simple_targeting();
-	cfg["support_villages"] = this->ai_->get_support_villages();
+	cfg["allow_ally_villages"] = ai_->get_allow_ally_villages();
+	cfg["simple_targeting"] = ai_->get_simple_targeting();
+	cfg["support_villages"] = ai_->get_support_villages();
 	std::stringstream s;
-	s << "advancements:  " << this->ai_->get_advancements().get_value() << std::endl;
-	s << "aggression:  " << this->ai_->get_aggression() << std::endl;
+	s << "advancements:  " << ai_->get_advancements().get_value() << std::endl;
+	s << "aggression:  " << ai_->get_aggression() << std::endl;
 	s << "allow_ally_villages:  " << cfg["allow_ally_villages"] << std::endl;
-	s << "caution:  " << this->ai_->get_caution() << std::endl;
-	s << "grouping:  " << this->ai_->get_grouping() << std::endl;
-	s << "leader_aggression:  " << this->ai_->get_leader_aggression() << std::endl;
+	s << "caution:  " << ai_->get_caution() << std::endl;
+	s << "grouping:  " << ai_->get_grouping() << std::endl;
+	s << "leader_aggression:  " << ai_->get_leader_aggression() << std::endl;
 	s << "leader_ignores_keep:  " << utils::visit(leader_aspects_visitor(), lik) << std::endl;
-	s << "leader_value:  " << this->ai_->get_leader_value() << std::endl;
+	s << "leader_value:  " << ai_->get_leader_value() << std::endl;
 	s << "passive_leader:  " << utils::visit(leader_aspects_visitor(), pl) << std::endl;
 	s << "passive_leader_shares_keep:  " << utils::visit(leader_aspects_visitor(), plsk) << std::endl;
-	s << "recruitment_diversity:  " << this->ai_->get_recruitment_diversity() << std::endl;
+	s << "recruitment_diversity:  " << ai_->get_recruitment_diversity() << std::endl;
 	s << "recruitment_instructions:  " << std::endl << "----config begin----" << std::endl;
-	s << this->ai_->get_recruitment_instructions() << "-----config end-----" << std::endl;
-	s << "recruitment_more:  " << utils::join(this->ai_->get_recruitment_more()) << std::endl;
-	s << "recruitment_pattern:  " << utils::join(this->ai_->get_recruitment_pattern()) << std::endl;
-	s << "recruitment_randomness:  " << this->ai_->get_recruitment_randomness() << std::endl;
+	s << ai_->get_recruitment_instructions() << "-----config end-----" << std::endl;
+	s << "recruitment_more:  " << utils::join(ai_->get_recruitment_more()) << std::endl;
+	s << "recruitment_pattern:  " << utils::join(ai_->get_recruitment_pattern()) << std::endl;
+	s << "recruitment_randomness:  " << ai_->get_recruitment_randomness() << std::endl;
 	s << "recruitment_save_gold:  " << std::endl << "----config begin----" << std::endl;
-	s << this->ai_->get_recruitment_save_gold() << "-----config end-----" << std::endl;
-	s << "retreat_enemy_weight:  " << this->ai_->get_retreat_enemy_weight() << std::endl;
-	s << "retreat_factor:  " << this->ai_->get_retreat_factor() << std::endl;
-	s << "scout_village_targeting:  " << this->ai_->get_scout_village_targeting() << std::endl;
+	s << ai_->get_recruitment_save_gold() << "-----config end-----" << std::endl;
+	s << "retreat_enemy_weight:  " << ai_->get_retreat_enemy_weight() << std::endl;
+	s << "retreat_factor:  " << ai_->get_retreat_factor() << std::endl;
+	s << "scout_village_targeting:  " << ai_->get_scout_village_targeting() << std::endl;
 	s << "simple_targeting:  " << cfg["simple_targeting"] << std::endl;
 	s << "support_villages:  " << cfg["support_villages"] << std::endl;
-	s << "village_value:  " << this->ai_->get_village_value() << std::endl;
-	s << "villages_per_scout:  " << this->ai_->get_villages_per_scout() << std::endl;
+	s << "village_value:  " << ai_->get_village_value() << std::endl;
+	s << "villages_per_scout:  " << ai_->get_villages_per_scout() << std::endl;
 
 	return s.str();
 }
 
-const std::string holder::get_ai_structure()
+std::string holder::get_ai_structure()
 {
-	if (!this->ai_) {
+	if (!ai_) {
 		get_ai_ref();
 	}
-	return component_manager::print_component_tree(&*this->ai_,"");
+	return component_manager::print_component_tree(&*ai_,"");
 }
 
-const std::string holder::get_ai_identifier() const
+std::string holder::get_ai_identifier() const
 {
 	return cfg_["id"];
 }
@@ -317,12 +315,12 @@ component* holder::get_component(component *root, const std::string &path) {
 
 	if (root == nullptr) // Return root component(ai_)
 	{
-		if (!this->ai_) {
-			this->init(this->side_);
+		if (!ai_) {
+			init(side_);
 		}
-		assert(this->ai_);
+		assert(ai_);
 
-		return &*this->ai_;
+		return &*ai_;
 	}
 
 	return component_manager::get_component(root, path);

@@ -44,8 +44,15 @@ function wesnoth.map.replace_if_failed(terrain, mode) end
 ---Get a list of hexes matching a filter
 ---@param map terrain_map
 ---@param filter terrain_filter
----@param in_list? location[]
+---@param in_list location[]
 ---@return location[]
+---@overload fun(map:terrain_map, filter:terrain_filter):location[]
+---@overload fun(map:terrain_map, filter:terrain_filter, at_loc:location):location[]
+---@overload fun(map:terrain_map, filter:terrain_filter, at_x:integer, at_y:integer):location[]
+---@overload fun(map:terrain_map, filter:terrain_filter_tag):location[]
+---@overload fun(map:terrain_map, filter:terrain_filter_tag, in_list:location[]):location[]
+---@overload fun(map:terrain_map, filter:terrain_filter_tag, at_loc:location):location[]
+---@overload fun(map:terrain_map, filter:terrain_filter_tag, at_x:integer, at_y:integer):location[]
 function wesnoth.map.find(map, filter, in_list) end
 
 ---Get a list of hexes matching a filter within a given circles
@@ -54,6 +61,11 @@ function wesnoth.map.find(map, filter, in_list) end
 ---@param radius integer
 ---@param filter terrain_filter
 ---@return location[]
+---@overload fun(map:terrain_map, centers:location[], radius:integer, filter:terrain_filter):location[]
+---@overload fun(map:terrain_map, center_x:integer, center_y:integer, radius:integer, filter:terrain_filter):location[]
+---@overload fun(map:terrain_map, center:location, radius:integer, filter:terrain_filter_tag):location[]
+---@overload fun(map:terrain_map, centers:location[], radius:integer, filter:terrain_filter_tag):location[]
+---@overload fun(map:terrain_map, center_x:integer, center_y:integer, radius:integer, filter:terrain_filter_tag):location[]
 function wesnoth.map.find_in_radius(map, center, radius, filter) end
 
 ---Parse a mapgen location filter

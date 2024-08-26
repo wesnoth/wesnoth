@@ -140,7 +140,7 @@ struct builder_grid : public builder_widget
 	/** Inherited from @ref builder_widget. */
 	virtual std::unique_ptr<widget> build(const replacements_map& replacements) const override;
 
-	void build(grid& grid, optional_replacements replacements = std::nullopt) const;
+	void build(grid& grid, optional_replacements replacements = utils::nullopt) const;
 };
 
 using builder_grid_ptr = std::shared_ptr<builder_grid>;

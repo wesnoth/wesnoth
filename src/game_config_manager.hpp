@@ -22,7 +22,7 @@
 #include "filesystem.hpp"
 #include "game_config_view.hpp"
 #include "terrain/type_data.hpp"
-
+#include "utils/optional_fwd.hpp"
 
 class game_classification;
 class game_config_manager

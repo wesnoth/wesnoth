@@ -201,12 +201,12 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 		// work, we fallback on unknown-unit.png.
 		std::string leader_image = leader["leader_image"].str();
 		if(!::image::exists(leader_image)) {
-			leader_image = filesystem::get_independent_binary_file_path("images", leader_image);
+			auto indep_path = filesystem::get_independent_binary_file_path("images", leader_image);
 
 			// The leader TC modifier isn't appending if the independent image path can't
 			// be resolved during save_index entry creation, so we need to add it here.
-			if(!leader_image.empty()) {
-				leader_image += leader["leader_image_tc_modifier"].str();
+			if(indep_path) {
+				leader_image = indep_path.value() + leader["leader_image_tc_modifier"].str();
 			}
 		}
 
@@ -492,7 +492,7 @@ void game_load::delete_button_callback()
 	if(index < games_.size()) {
 
 		// See if we should ask the user for deletion confirmation
-		if(prefs::get().ask_delete_saves()) {
+		if(prefs::get().ask_delete()) {
 			if(!gui2::dialogs::game_delete::execute()) {
 				return;
 			}

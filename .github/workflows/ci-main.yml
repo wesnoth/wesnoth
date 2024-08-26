@@ -11,7 +11,7 @@ jobs:
   checks: # checks that don't need a wesnoth binary
     runs-on: ubuntu-latest
     container:
-      image: wesnoth/wesnoth:2204-master
+      image: wesnoth/wesnoth:2404-master
       options: --tty # docker create options
       env:
         CLICOLOR_FORCE: 1
@@ -41,12 +41,12 @@ jobs:
         if: success() || failure()
         run: doxygen doc/doxygen/Doxyfile
 
-  copyright: # check takes a bit longer and does not need to run in docker
+  copyright: # check takes a bit longer and does not need to run in docker (sound/music only)
     runs-on: ubuntu-latest
     steps:
       - { uses: actions/checkout@v4, with: { fetch-depth: 50 } }
 
-      - name: Copyright check
+      - name: Sound/Music copyright check
         run: ./update_copyrights
 
   ubuntu:
@@ -58,7 +58,7 @@ jobs:
           - { tool: cmake, cc: clang, cxx: clang++, cfg: release, lto: true,  sys_lua: true  }
     runs-on: ubuntu-latest
     container:
-      image: wesnoth/wesnoth:2204-master
+      image: wesnoth/wesnoth:2404-master
       options: --tty # docker create options
       env:
         TOOL: ${{ matrix.tool }}
@@ -121,17 +121,19 @@ jobs:
         if: success() || steps.build.outcome == 'success'
         run: |
           ./wesnoth --version
-          for opt in config data userconfig userdata
+          for opt in data userdata
           do
             output=$(./wesnoth --nobanner --"$opt"-path)
             if [ "$output" = "" ]; then printf 'option --%s-path prints nothing to stdout!\n' "$opt" >&2; exit 1; fi
             printf '%s-path: %s\n' "$opt" "$output"
           done
       - name: WML validation
-        if: success() || steps.build.outcome == 'success'
+        # only run on release builds (takes ~10 times as long on debug)
+        if: matrix.cfg == 'release' && (success() || steps.build.outcome == 'success')
         run: ./utils/CI/schema_validation.sh
       - name: Run WML tests
-        if: success() || steps.build.outcome == 'success'
+        # only run on release builds (takes ~6 times as long on debug)
+        if: matrix.cfg == 'release' && (success() || steps.build.outcome == 'success')
         run: ./run_wml_tests -g -c -t 20 -bt 1000
       - name: Run play tests
         if: success() || steps.build.outcome == 'success'
@@ -217,7 +219,7 @@ jobs:
   translations:
     runs-on: ubuntu-latest
     container:
-      image: wesnoth/wesnoth:2204-master
+      image: wesnoth/wesnoth:2404-master
       env:
        LANGUAGE: en_US.UTF-8
        LANG: en_US.UTF-8
@@ -237,7 +239,7 @@ jobs:
           make pot-update; echo "Ran make pot-update"
           make mo-update; echo "Ran make mo-update"
           make clean
-          
+
           scons translations build=release --debug=time nls=true jobs=2; echo "Ran scons translations"
           scons pot-update; echo "Ran scons pot-update"
           scons update-po4a; echo "Ran scons update-po4a"
@@ -251,7 +253,6 @@ jobs:
     runs-on: macos-12
     env:
       CFG: ${{ matrix.cfg }}
-      DEVELOPER_DIR: /Applications/Xcode_13.1.app/Contents/Developer
 
     steps:
       - uses: actions/checkout@v4

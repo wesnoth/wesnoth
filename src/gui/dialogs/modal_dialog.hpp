@@ -417,8 +417,6 @@ private:
 
 	/**
 	 * Initializes all fields in the dialog and set the keyboard focus.
-	 *
-	 * @param window              The window which has been shown.
 	 */
 	virtual void init_fields();
 	// TODO: Nothing else uses this. Why is it virtual?

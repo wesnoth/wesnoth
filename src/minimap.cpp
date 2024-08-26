@@ -55,8 +55,8 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 
 	DBG_DP << "Creating minimap: " << static_cast<int>(map.w() * scale * 0.75) << ", " << map.h() * scale;
 
-	const std::size_t map_width  = std::max(0, map.w()) * scale * 3 / 4;
-	const std::size_t map_height = std::max(0, map.h()) * scale;
+	const std::size_t map_width  = static_cast<size_t>(std::max(0, map.w())) * scale * 3 / 4;
+	const std::size_t map_height = static_cast<size_t>(std::max(0, map.h())) * scale;
 
 	// No map!
 	if(map_width == 0 || map_height == 0) {
@@ -144,16 +144,17 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 						}
 
 						// FIXME: use shaders instead of textures for this once we can actually do that
+						using namespace std::string_literals;
 
 						if(fogged(loc)) {
 							// Hex-shaped texture to apply #000000 at 40% opacity
-							static const texture fog_overlay = image::get_texture("terrain/minimap-fog.png");
+							static const texture fog_overlay = image::get_texture("terrain/minimap-fog.png"s);
 							draw::blit(fog_overlay, dest);
 						}
 
 						if(highlighted) {
 							// Hex-shaped texture to apply #ffffff at 40% opacity
-							static const texture fog_overlay = image::get_texture("terrain/minimap-highlight.png");
+							static const texture fog_overlay = image::get_texture("terrain/minimap-highlight.png"s);
 							draw::blit(fog_overlay, dest);
 						}
 					}

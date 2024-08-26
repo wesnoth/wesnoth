@@ -93,7 +93,7 @@ public:
 	/**
 	 * Returns the value paired with the currently actively toggled member of the group.
 	 */
-	T get_active_member_value()
+	T get_active_member_value() const
 	{
 		for(auto& member : members_) {
 			if(member.second->get_value_bool()) {

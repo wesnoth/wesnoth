@@ -52,13 +52,8 @@ Battle for \fBWesnoth\fP是一個回合制奇幻風格的策略遊戲。
 在 \fBstart\fP 事件最後跳過 [story] 畫面及對話框。
 .TP 
 \fB\-\-clock\fP
-增加一個顯示時鐘的選項用來當測試畫面繪製計時器。
-.TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-已廢棄，請使用 \fB\-\-userdata\-dir\fP。
-.TP 
-\fB\-\-config\-path\fP
-已廢棄，請使用 \fB\-\-config\-path\fP。
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 以指定 ID 的核心來覆寫被讀取的核心。
@@ -126,6 +121,10 @@ in the logs directory under the userdata folder.
 log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
 .TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
+.TP 
 \fB\-\-wnoconsole\fP
 在 Windows 系統下，當使用 \-\-no\-log\-to\-file 時，會將輸出寫入 cerr/cout 而不是 CONOUT。否則，不會有任何作用。
 .TP 
@@ -182,9 +181,7 @@ Bug。部分函式庫被認為是穩定的，即使不開啟這個選項也會�
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
 預處理指定的檔案/目錄。每個檔案未處理及已處理的 .cfg
-檔將會被寫入至指定的目標目錄中。如果有指定目錄，將會遞迴地按照已知的預處理規則預先處理。「data/core/macros」目錄裡的共用巨集將在指定資源之前被預先處理。例如：\fB\-p
-~/wesnoth/data/campaigns/tutorial
-~/result.\fP。關於預先處理器的細節請參閱：https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor。
+檔將會被寫入至指定的目標目錄中。如果有指定目錄，將會遞迴地按照已知的預處理規則預先處理。「data/core/macros」目錄裡的共用巨集將在指定資源之前被預先處理。例如：\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP。關於預先處理器的細節請參閱：https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor。
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
 以逗號分隔的清單，清單中是一連串用於 \fB\-\-preprocess\fP 指令的定義。如果 \fBSKIP_CORE\fP
@@ -243,17 +240,6 @@ https://wiki.wesnoth.org/ImagePathFunctionWML。
 .TP 
 \fB\-S,\-\-use\-schema\fP\fI\ path\fP
 設定要與 \fB\-V,\-\-validate\fP 一同使用的 WML 格式。
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy
-Games". On Windows it is also possible to specify a directory relative to
-the process working directory by using path starting with ".\e" or "..\e".
-This defaults to the userdata path.
-.TP 
-\fB\-\-userconfig\-path\fP
-印出使用者配置目錄的路徑並退出。
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 在 $HOME 或「我的文件\我的遊戲」(Windows)底下設定使用者資料目錄為 \fIname\fP 。你也可以為使用者資料目錄設定一個在 $HOME

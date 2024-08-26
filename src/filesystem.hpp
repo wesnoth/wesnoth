@@ -21,6 +21,7 @@
 #pragma once
 
 #include <ctime>
+#include <cstdint>
 #include <fstream>
 #include <iosfwd>
 #include <memory>
@@ -29,6 +30,8 @@
 
 #include "exceptions.hpp"
 #include "game_version.hpp"
+#include "global.hpp"
+#include "utils/optional_fwd.hpp"
 
 namespace game_config {
 extern std::string path;
@@ -71,6 +74,11 @@ struct file_tree_checksum;
 enum class name_mode { ENTIRE_FILE_PATH, FILE_NAME_ONLY };
 enum class filter_mode { NO_FILTER, SKIP_MEDIA_DIR, SKIP_PBL_FILES };
 enum class reorder_mode { DONT_REORDER, DO_REORDER };
+
+// default extensions
+const std::string map_extension = ".map";
+const std::string mask_extension = ".mask";
+const std::string wml_extension = ".cfg";
 
 // A list of file and directory blacklist patterns
 class blacklist_pattern_list
@@ -127,11 +135,29 @@ void get_files_in_dir(const std::string &dir,
 
 std::string get_dir(const std::string &dir);
 
-// The location of various important files:
-std::string get_prefs_file();
+/**
+ * Try to autodetect the location of the game data dir. Note that
+ * the root of the source tree currently doubles as the data dir.
+ */
+std::string autodetect_game_data_dir(std::string exe_dir);
+
+// The location of various important files/folders:
+/**
+ * location of preferences file containing preferences that are synced between computers
+ * note that wesnoth does not provide the syncing functionality itself
+ */
+std::string get_synced_prefs_file();
+/** location of preferences file containing preferences that aren't synced between computers */
+std::string get_unsynced_prefs_file();
 std::string get_credentials_file();
 std::string get_default_prefs_file();
 std::string get_save_index_file();
+std::string get_lua_history_file();
+/**
+ * parent directory for everything that should be synced between systems.
+ * implemented due to limitations of Steam's AutoCloud (non-SDK) syncing, but will also simplify things if it's ever added for any other platforms.
+ */
+std::string get_sync_dir();
 std::string get_saves_dir();
 std::string get_wml_persist_dir();
 std::string get_intl_dir();
@@ -149,11 +175,9 @@ const std::string& get_version_path_suffix();
 std::string get_next_filename(const std::string& name, const std::string& extension);
 
 bool is_userdata_initialized();
-void set_user_config_dir(const std::string& path);
 void set_user_data_dir(std::string path);
 void set_cache_dir(const std::string& path);
 
-std::string get_user_config_dir();
 std::string get_user_data_dir();
 std::string get_logs_dir();
 std::string get_cache_dir();
@@ -250,6 +274,15 @@ bool file_exists(const std::string& name);
 /** Get the modification time of a file. */
 std::time_t file_modified_time(const std::string& fname);
 
+/** Returns true if the file ends with the mapfile extension. */
+bool is_map(const std::string& filename);
+
+/** Returns true if the file ends with the wmlfile extension. */
+bool is_cfg(const std::string& filename);
+
+/** Returns true if the file ends with the maskfile extension. */
+bool is_mask(const std::string& filename);
+
 /** Returns true if the file ends with '.gz'. */
 bool is_gzip_file(const std::string& filename);
 
@@ -294,8 +327,6 @@ int file_size(const std::string& fname);
 
 /** Returns the sum of the sizes of the files contained in a directory. */
 int dir_size(const std::string& path);
-
-bool ends_with(const std::string& str, const std::string& suffix);
 
 /**
  * Returns the base filename of a file, with directory name stripped.
@@ -426,26 +457,22 @@ void clear_binary_paths_cache();
  * Returns a vector with all possible paths to a given type of binary,
  * e.g. 'images', 'sounds', etc,
  */
-const std::vector<std::string>& get_binary_paths(const std::string& type);
+NOT_DANGLING const std::vector<std::string>& get_binary_paths(const std::string& type);
 
 /**
- * Returns a complete path to the actual file of a given @a type
- * or an empty string if the file isn't present.
+ * Returns a complete path to the actual file of a given @a type, if it exists.
  */
-std::string get_binary_file_location(const std::string& type, const std::string& filename);
+utils::optional<std::string> get_binary_file_location(const std::string& type, const std::string& filename);
 
 /**
- * Returns a complete path to the actual directory of a given @a type
- * or an empty string if the directory isn't present.
+ * Returns a complete path to the actual directory of a given @a type, if it exists.
  */
-std::string get_binary_dir_location(const std::string &type, const std::string &filename);
+utils::optional<std::string> get_binary_dir_location(const std::string &type, const std::string &filename);
 
 /**
- * Returns a complete path to the actual WML file or directory
- * or an empty string if the file isn't present.
+ * Returns a translated path to the actual file or directory, if it exists. @a current_dir is needed to resolve a path starting with ".".
  */
-std::string get_wml_location(const std::string &filename,
-	const std::string &current_dir = std::string());
+utils::optional<std::string> get_wml_location(const std::string& path, const utils::optional<std::string>& current_dir = utils::nullopt);
 
 /**
  * Returns a short path to @a filename, skipping the (user) data directory.
@@ -459,7 +486,7 @@ std::string get_short_wml_path(const std::string &filename);
  *   images, units/konrad-fighter.png ->
  *   data/campaigns/Heir_To_The_Throne/images/units/konrad-fighter.png
  */
-std::string get_independent_binary_file_path(const std::string& type, const std::string &filename);
+utils::optional<std::string> get_independent_binary_file_path(const std::string& type, const std::string &filename);
 
 /**
  * Returns the appropriate invocation for a Wesnoth-related binary, assuming
@@ -473,12 +500,12 @@ std::string get_program_invocation(const std::string &program_name);
 /**
  * Returns the localized version of the given filename, if it exists.
  */
-std::string get_localized_path(const std::string& file, const std::string& suff = "");
+utils::optional<std::string> get_localized_path(const std::string& file, const std::string& suff = "");
 
 /**
  * Returns the add-on ID from a path.
  * aka the directory directly following the "add-ons" folder, or an empty string if none is found.
  */
-std::string get_addon_id_from_path(const std::string& location);
+utils::optional<std::string> get_addon_id_from_path(const std::string& location);
 
 }

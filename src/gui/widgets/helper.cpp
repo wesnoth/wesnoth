@@ -26,27 +26,22 @@
 #include "tstring.hpp"
 #include "sdl/input.hpp" // get_mouse_location
 
-
 namespace gui2
 {
 font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 {
-	static const std::map<std::string, font::pango_text::FONT_STYLE> font_style_map {
-		{"normal",    font::pango_text::STYLE_NORMAL},
-		{"bold",      font::pango_text::STYLE_BOLD},
-		{"italic",    font::pango_text::STYLE_ITALIC},
-		{"underline", font::pango_text::STYLE_UNDERLINE},
-	};
-
-	if(style.empty()) {
-		return font::pango_text::STYLE_NORMAL;
+	if(style == "bold") {
+		return font::pango_text::STYLE_BOLD;
+	} else if(style == "italic") {
+		return font::pango_text::STYLE_ITALIC;
+	} else if(style == "underline") {
+		return font::pango_text::STYLE_UNDERLINE;
 	}
 
-	if(const auto i = font_style_map.find(style); i != font_style_map.end()) {
-		return i->second;
+	if(!style.empty() && style != "normal") {
+		ERR_GUI_G << "Unknown style '" << style << "', using 'normal' instead.";
 	}
 
-	ERR_GUI_G << "Unknown style '" << style << "', using 'normal' instead.";
 	return font::pango_text::STYLE_NORMAL;
 }
 

@@ -226,6 +226,7 @@ You can make the following special build targets:
     update-po = merge message catalog templates with localized message catalogs for particular lingua
     update-po4a = update translations of manual and manpages
     af bg ca ... = linguas for update-po
+    translations = build all translations
     dist = make distribution tarball as wesnoth.tar.bz2 (*).
     data-dist = make data tarball as wesnoth-data.tar.bz2 (*).
     binary-dist = make data tarball as wesnoth-binaries.tar.bz2 (*).

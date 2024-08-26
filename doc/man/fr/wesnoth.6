@@ -66,14 +66,8 @@ Passe l'écran d'[histoire] et de dialogues jusqu'à la fin de l'événement
 \fBstart\fP
 .TP 
 \fB\-\-clock\fP
-Ajoute une option affichant une horloge pour tester les affichages dépendant
-du temps.
-.TP 
-\fB\-\-config\-dir\fP\fI\ nom\fP
-Obsolète, utilisez \fB\-\-userdata\-dir\fP.
-.TP 
-\fB\-\-config\-path\fP
-Obsolète, utilisez \fB\-\-userdata\-path\fP
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 Remplace le noyau chargé par celui spécifié par l'identifiant.
@@ -154,6 +148,10 @@ in the logs directory under the userdata folder.
 \fB\-\-log\-to\-file\fP
 log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 Quand \-\-no\-log\-to\-file est spécifiée sous Windows, les écritures de
@@ -311,18 +309,6 @@ l'exécutable de Wesnoth.
 \fB\-S,\-\-use\-schema\fP\fI\ chemin\fP
 Donne le schéma WML à utiliser dans \fB\-V,\-\-validate\fP.
 .TP 
-\fB\-\-userconfig\-dir\fP\fI\ nom\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy
-Games". On Windows it is also possible to specify a directory relative to
-the process working directory by using path starting with ".\e" or "..\e".
-This defaults to the userdata path.
-.TP 
-\fB\-\-userconfig\-path\fP
-Affiche le nom du répertoire de configuration utilisateur et quitte le
-programme.
-.TP 
 \fB\-\-userdata\-dir\fP\fI\ nom\fP
 Définit le répertoire de données à \fInom\fP dans $HOME ou dans "Mes
 Documents\eMes Jeux" pour Windows. Vous pouvez aussi indiquer un chemin
@@ -387,8 +373,7 @@ Sélectionne le type de joueur de ce camp. Valeurs possibles\ : \fBhuman\fP,
 \fBai\fP et \fBnull\fP.
 .TP 
 \fB\-\-era\fP\fI\ valeur\fP
-Utilisez cette option pour jouer à l'ère sélectionnée au lieu de l'ère \fBPar
-défaut\fP. Cette ère est sélectionnée par un identifiant. Les ères standard
+Utilisez cette option pour jouer à l'ère sélectionnée au lieu de l'ère \fBPar défaut\fP. Cette ère est sélectionnée par un identifiant. Les ères standard
 sont décrites dans le fichier \fBdata/multiplayer.cfg\fP.
 .TP 
 \fB\-\-exit\-at\-end\fP

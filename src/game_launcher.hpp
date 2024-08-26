@@ -24,7 +24,7 @@
 #include "saved_game.hpp"            // for saved_game
 #include "savegame.hpp"              // for clean_saves, etc
 #include "sound.hpp"                 // for music_thinker
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #include <string>                       // for string
 #include <vector>                       // for vector
@@ -149,5 +149,5 @@ private:
 	jump_to_campaign_info jump_to_campaign_;
 
 	bool jump_to_editor_;
-	std::optional<savegame::load_game_metadata> load_data_;
+	utils::optional<savegame::load_game_metadata> load_data_;
 };

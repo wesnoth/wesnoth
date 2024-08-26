@@ -25,7 +25,7 @@
 #include "persist_manager.hpp"
 #include "tod_manager.hpp"
 #include "game_state.hpp"
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #include <set>
 

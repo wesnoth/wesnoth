@@ -16,7 +16,7 @@ end
 
 ---A set of locations, with an optional associated value for each one.
 ---@class location_set : { [location]: any }
----@field values table<integer, any>
+---@field private values table<integer, any>
 ---@operator bnot:location_set
 ---@operator band:location_set
 ---@operator bor:location_set

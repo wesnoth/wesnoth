@@ -63,13 +63,8 @@ wesnoth \- Битва за Веснот, пошаговая стратегиче
 Пропустить экран предыстории [story] и диалог до окончания события \fBstart\fP.
 .TP 
 \fB\-\-clock\fP
-Добавить возможность показать часы, чтобы проверить таймер отображения.
-.TP 
-\fB\-\-config\-dir\fP\fI\ имя\fP
-Устарело, используйте \fB\-\-userdata\-dir\fP.
-.TP 
-\fB\-\-config\-path\fP
-Устарело, используйте \fB\-\-userdata\-path\fP.
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_ядра\fP
 перекрывает загруженное ядро тем, чей идентификатор был указан.
@@ -147,6 +142,10 @@ in the logs directory under the userdata folder.
 \fB\-\-log\-to\-file\fP
 log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 В виндоусе, когда используется вместе с \-\-no\-log\-to\-file, приводит к тому,
@@ -301,17 +300,6 @@ wesnoth.
 .TP 
 \fB\-S,\-\-use\-schema\fP\fI\ путь\fP
 устанавливает шаблон WML, используемый \fB\-V,\-\-validate\fP.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ имя\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy
-Games". On Windows it is also possible to specify a directory relative to
-the process working directory by using path starting with ".\e" or "..\e".
-This defaults to the userdata path.
-.TP 
-\fB\-\-userconfig\-path\fP
-вывести название каталога пользовательских настроек игры и выйти.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ имя\fP
 установить папку пользовательских данных в подпапку \fIимя\fP в каталоге $HOME

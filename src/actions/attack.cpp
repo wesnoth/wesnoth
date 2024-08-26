@@ -46,10 +46,11 @@
 #include "units/udisplay.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
+#include "utils/optional_fwd.hpp"
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -131,7 +132,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	// Get the weapon characteristics as appropriate.
 	auto ctx = weapon->specials_context(up, oppp, u_loc, opp_loc, attacking, opp_weapon);
-	std::optional<decltype(ctx)> opp_ctx;
+	utils::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
@@ -148,7 +149,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	{
 		const int distance = distance_between(u_loc, opp_loc);
 		const bool out_of_range = distance > weapon->max_range() || distance < weapon->min_range();
-		disable = weapon->has_special("disable") || out_of_range;
+		disable = weapon->has_special_or_ability("disable") || out_of_range;
 	}
 
 	// Handle plague.
@@ -281,7 +282,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 
 	// Get the weapon characteristics as appropriate.
 	auto ctx = weapon->specials_context(*u_type, map_location::null_location(), attacking);
-	std::optional<decltype(ctx)> opp_ctx;
+	utils::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking));
@@ -498,9 +499,14 @@ bool battle_context::better_combat(const combatant& us_a,
 	double poison_b_us = us_b.poisoned > 0 ? (us_b.poisoned - us_b.hp_dist[0]) * game_config::poison_amount : 0;
 	double poison_b_them = them_b.poisoned > 0 ? (them_b.poisoned - them_b.hp_dist[0]) * game_config::poison_amount : 0;
 
+	double attack_weight_a = us_a.u_.weapon->attack_weight();
+	double attack_weight_b = us_b.u_.weapon->attack_weight();
+	double damage_a = (them_a.u_.hp - them_a.average_hp()) * attack_weight_a;
+	double damage_b = (them_b.u_.hp - them_b.average_hp()) * attack_weight_b;
+
 	// Compare: damage to them - damage to us (average_hp replaces -damage)
-	a = (us_a.average_hp() - poison_a_us) * harm_weight - (them_a.average_hp() - poison_a_them);
-	b = (us_b.average_hp() - poison_b_us) * harm_weight - (them_b.average_hp() - poison_b_them);
+	a = (us_a.average_hp() - poison_a_us) * harm_weight + damage_a + poison_a_them;
+	b = (us_b.average_hp() - poison_b_us) * harm_weight + damage_b + poison_b_them;
 
 	if(a - b < -0.01) {
 		return false;
@@ -511,7 +517,7 @@ bool battle_context::better_combat(const combatant& us_a,
 	}
 
 	// All else equal: go for most damage.
-	return them_a.average_hp() < them_b.average_hp();
+	return damage_a >= damage_b;
 }
 
 battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr attacker,
@@ -859,7 +865,7 @@ void attack::fire_event_impl(const std::string& n, bool reverse)
 	config& d_weapon_cfg = ev_data.add_child(reverse ? "first" : "second");
 
 	// Need these to ensure weapon filters work correctly
-	std::optional<attack_type::specials_context_t> a_ctx, d_ctx;
+	utils::optional<attack_type::specials_context_t> a_ctx, d_ctx;
 
 	if(a_stats_->weapon != nullptr && a_.valid()) {
 		if(d_stats_->weapon != nullptr && d_.valid()) {

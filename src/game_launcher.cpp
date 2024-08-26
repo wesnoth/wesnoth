@@ -21,7 +21,7 @@
 #include "config.hpp"              // for config, etc
 #include "cursor.hpp"              // for set, CURSOR_TYPE::NORMAL
 #include "exceptions.hpp"          // for error
-#include "filesystem.hpp"          // for get_user_config_dir, etc
+#include "filesystem.hpp"          // for get_user_data_dir, etc
 #include "game_classification.hpp" // for game_classification, etc
 #include "game_config.hpp"         // for path, no_delay, revision, etc
 #include "game_config_manager.hpp" // for game_config_manager
@@ -110,25 +110,8 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	bool no_music = false;
 	bool no_sound = false;
 
-	// The path can be hardcoded and it might be a relative path.
-	if(!game_config::path.empty() &&
-#ifdef _WIN32
-		// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
-		game_config::path.c_str()[1] != ':'
-#else
-		game_config::path[0] != '/'
-#endif
-	)
-	{
-		game_config::path = filesystem::get_cwd() + '/' + game_config::path;
-		// font_manager_.update_font_path()
-		// To update the font path, destroy and recreate the manager
-		font_manager_.~manager();
-		new (&font_manager_) font::manager();
-	}
-
 	if(cmdline_opts_.core_id) {
-		prefs::get().set_core_id(*cmdline_opts_.core_id);
+		prefs::get().set_core(*cmdline_opts_.core_id);
 	}
 	if(cmdline_opts_.campaign) {
 		jump_to_campaign_.jump = true;
@@ -253,14 +236,13 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(!cmdline_opts.nobanner) {
 		PLAIN_LOG
 			<< "\nData directory:               " << game_config::path
-			<< "\nUser configuration directory: " << filesystem::get_user_config_dir()
 			<< "\nUser data directory:          " << filesystem::get_user_data_dir()
 			<< "\nCache directory:              " << filesystem::get_cache_dir()
 			<< "\n\n";
 	}
 
 	// disable sound in nosound mode, or when sound engine failed to initialize
-	if(no_sound || ((prefs::get().sound_on() || prefs::get().music_on() ||
+	if(no_sound || ((prefs::get().sound() || prefs::get().music_on() ||
 	                  prefs::get().turn_bell() || prefs::get().ui_sound_on()) &&
 	                 !sound::init_sound())) {
 		prefs::get().set_sound(false);
@@ -824,10 +806,10 @@ void game_launcher::start_wesnothd()
 		wesnothd_program = filesystem::get_wesnothd_name();
 	}
 
-	std::string config = filesystem::get_user_config_dir() + "/lan_server.cfg";
+	std::string config = filesystem::get_user_data_dir() + "/lan_server.cfg";
 	if (!filesystem::file_exists(config)) {
 		// copy file if it isn't created yet
-		filesystem::write_file(config, filesystem::read_file(filesystem::get_wml_location("lan_server.cfg")));
+		filesystem::write_file(config, filesystem::read_file(filesystem::get_wml_location("lan_server.cfg").value()));
 	}
 
 	LOG_GENERAL << "Starting wesnothd";
