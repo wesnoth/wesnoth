@@ -99,7 +99,7 @@ display_context::can_move_result display_context::unit_can_move(const unit& u) c
 
 	int max_distance = *std::prev(attackable_distances.end());
 
-	for (int dx = -max_distance; dx <= max_distance; ++dx) {
+	for (int dx = -max_distance; dx <= max_distance && !result.attack_here; ++dx) {
 		for (int dy = -max_distance; dy <= max_distance && !result.attack_here; ++dy) {
 			// Adjust for hex grid
 			int adjusted_dy = dy + floor(dx / 2.0);
