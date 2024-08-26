@@ -107,7 +107,7 @@ display_context::can_move_result display_context::unit_can_move(const unit& u) c
 			map_location locs(u.get_location().x + dx, u.get_location().y + adjusted_dy);
 			int distance = distance_between(u.get_location(), locs);
 
-			if (attackable_distances.find(distance) == attackable_distances.end()) {
+			if (attackable_distances.count(distance) == 0) {
 				continue;
 			}
 			if (map().on_board(locs)) {
