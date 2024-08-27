@@ -79,11 +79,7 @@ class cache_type
 public:
 	bool in_cache(const locator& item) const
 	{
-#ifdef HAVE_CXX20
-		return content_.contains(item);
-#else
-		return content_.find(item) != content_.end();
-#endif
+		return content_.find(item) != content_.end(); // TODO C++20: use content_.contains()
 	}
 
 	/** Returns a pointer to the cached value, or nullptr if not found. */
