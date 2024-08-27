@@ -17,9 +17,10 @@
 
 #include "gui/widgets/container_base.hpp"
 
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
-
+#include "gui/widgets/repeating_button.hpp"
 #include "gui/widgets/text_box.hpp"
 
 
@@ -58,26 +59,64 @@ public:
 
 	int get_value();
 
+	void set_step_size(int step)
+	{
+		VALIDATE(((!minimum_value_) || (!maximum_value_) ||
+				(step <= *maximum_value_ - *minimum_value_)),
+				"step size (" + std::to_string(step) +") must be <= the range allowed by min/max (" +
+				std::to_string(*maximum_value_ - *minimum_value_) + ").");
+		step_size_ = step;
+	};
+
+	int get_step_size() { return step_size_; }
+
+	void set_minimum_value(std::optional<int> min) {
+		VALIDATE(((!min) || (!maximum_value_) || (step_size_ <= *maximum_value_ - *min)),
+				"minimum_value (" + std::to_string(*min) + ") must be <= maximum_value (" + std::to_string(*maximum_value_) + ").");
+		minimum_value_ = min;
+		set_value(get_value());
+	}
+
+	std::optional<int> get_minimum_value() {
+		return minimum_value_;
+	}
+
+	void set_maximum_value(std::optional<int> max) {
+		VALIDATE(((!max) || (!minimum_value_) || (step_size_ <= *max - *minimum_value_)),
+				"maximum_value (" + std::to_string(*max) + ") must be <= minimum_value (" + std::to_string(*minimum_value_) + ").");
+		maximum_value_ = max;
+		set_value(get_value());
+	}
+
+	std::optional<int> get_maximum_value() {
+		return maximum_value_;
+	}
+
 	void prev()
 	{
-		// Allow negatives?
-		if (get_value() > 0) {
-			set_value(get_value() - step_size_);
-		} else {
-			if (invalid_) {
-				set_value(0);
+		const int value = get_value();
+		if(std::numeric_limits<int>::min() + step_size_ < value) {
+			if(minimum_value_) {
+				set_value(std::max(*minimum_value_, value - step_size_));
+			} else {
+				set_value(value - step_size_);
 			}
+		} else {
+			set_value(std::numeric_limits<int>::min());
 		}
 	}
 
 	void next()
 	{
-		int val = get_value();
-		if (!invalid_) {
-			// No max value
-			set_value(val + step_size_);
+		const int value = get_value();
+		if(std::numeric_limits<int>::max() - step_size_ > value) {
+			if(maximum_value_) {
+				set_value(std::min(*maximum_value_, value + step_size_));
+			} else {
+				set_value(value + step_size_);
+			}
 		} else {
-			set_value(0);
+			set_value(std::numeric_limits<int>::max());
 		}
 	}
 
@@ -107,6 +146,10 @@ private:
 	std::unique_ptr<grid> content_grid_;
 
 	int step_size_;
+
+	std::optional<int> minimum_value_;
+
+	std::optional<int> maximum_value_;
 
 	/** If the entered data is invalid. */
 	bool invalid_;
@@ -156,6 +199,14 @@ struct builder_spinner : public builder_styled_widget
 	using builder_styled_widget::build;
 
 	virtual std::unique_ptr<widget> build() const override;
+
+	std::optional<int> minimum_value_;
+
+	std::optional<int> maximum_value_;
+
+	int step_size_;
+
+	int value_;
 };
 
 } // namespace implementation

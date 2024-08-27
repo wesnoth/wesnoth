@@ -54,12 +54,22 @@ text_box* spinner::get_internal_text_box()
 	return find_widget<text_box>(this, "_text", false, true);
 }
 
-void spinner::set_value(const int val)
+void spinner::set_value(int val)
 {
+	if((minimum_value_) && (val < *minimum_value_)) {
+		val = *minimum_value_;
+	}
+	if((maximum_value_) && (val > *maximum_value_)) {
+		val = *maximum_value_;
+	}
+
 	text_box* edit_area = get_internal_text_box();
 	if (edit_area != nullptr) {
 		edit_area->set_value(std::to_string(val));
 	}
+
+	find_widget<repeating_button>(this, "_prev", false, true)->set_active((!minimum_value_) || (val > *minimum_value_));
+	find_widget<repeating_button>(this, "_next", false, true)->set_active((!maximum_value_) || (val < *maximum_value_));
 }
 
 int spinner::get_value()
@@ -72,6 +82,8 @@ int spinner::get_value()
 		text_box* edit_area = get_internal_text_box();
 		if (edit_area != nullptr) {
 			val = stoi(edit_area->get_value());
+			if((minimum_value_) && (val < *minimum_value_)) { val = *minimum_value_; }
+			if((maximum_value_) && (val > *maximum_value_)) { val = *maximum_value_; }
 			invalid_ = false;
 		} else {
 			val = 0;
@@ -94,7 +106,6 @@ void spinner::finalize_setup()
 	repeating_button* btn_next = find_widget<repeating_button>(this, "_next", false, true);
 	btn_prev->connect_signal_mouse_left_down(std::bind(&spinner::prev, this));
 	btn_next->connect_signal_mouse_left_down(std::bind(&spinner::next, this));
-
 }
 
 void spinner::set_self_active(const bool active)
@@ -152,7 +163,28 @@ namespace implementation
 
 builder_spinner::builder_spinner(const config& cfg)
 	: implementation::builder_styled_widget(cfg)
+	, step_size_(cfg["step_size"].to_int(1))
 {
+	if(cfg.has_attribute("minimum_value")) {
+		minimum_value_ = cfg["minimum_value"].to_int();
+	}
+	if(cfg.has_attribute("maximum_value")) {
+		maximum_value_ = cfg["maximum_value"].to_int();
+	}
+	VALIDATE(((!minimum_value_) || (!maximum_value_) || (*minimum_value_ <= *maximum_value_)),
+			"minimum_value (" + std::to_string(*minimum_value_) + ") must be <= maximum_value (" + std::to_string(*maximum_value_) + ").");
+
+	if(cfg.has_attribute("value")) {
+		value_ = cfg["value"].to_int();
+	} else {
+		if((minimum_value_) && (maximum_value_)) {
+			value_ = ((*minimum_value_ + *maximum_value_) / 2);
+		} else {
+			value_ = 0;
+		}
+	}
+	// value_ may not be within the min/max limits at this point,
+	// build() will take care of that.
 }
 
 std::unique_ptr<widget> builder_spinner::build() const
@@ -164,6 +196,19 @@ std::unique_ptr<widget> builder_spinner::build() const
 
 	widget->init_grid(*conf->grid);
 	widget->finalize_setup();
+
+	if(minimum_value_) { widget->set_minimum_value(minimum_value_); }
+	if(maximum_value_) { widget->set_maximum_value(*maximum_value_); }
+
+	widget->set_step_size(step_size_);
+
+	if((minimum_value_) && (value_ < *minimum_value_)) {
+		widget->set_value(*minimum_value_);
+	} else if((maximum_value_) && (value_ > *maximum_value_)) {
+		widget->set_value(*maximum_value_);
+	} else {
+		widget->set_value(value_);
+	}
 
 	DBG_GUI_G << "Window builder: placed spinner '" << id
 			  << "' with definition '" << definition << "'.";
