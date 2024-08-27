@@ -612,7 +612,7 @@ std::string unit_topic_generator::operator()() const {
 	ss << "\n" << detailed_description;
 
 	if(const auto notes = type_.special_notes(); !notes.empty()) {
-		ss << "<br/><header>" << _("Special Notes") << "</header>\n";
+		ss << "\n<header>" << _("Special Notes") << "</header>\n";
 		for(const auto& note : notes) {
 			ss << font::unicode_bullet << " <i>" << note << "</i>" << '\n';
 		}
@@ -729,7 +729,7 @@ std::string unit_topic_generator::operator()() const {
 		ss << "<img src='" << type_icon << "'/>";
 		ss << lang_type << "<jump/>";
 		std::stringstream str;
-		str << "<format>color=\"" << color << "\" text='"<< resist << "'</format>";
+		str << "<span color='" << color << "' text='"<< resist << "'/>";
 		ss << str.str() << "<br/>";
 	}
 

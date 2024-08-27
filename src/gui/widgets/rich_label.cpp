@@ -582,7 +582,7 @@ config rich_label::get_parsed_text(const config& parsed_text)
 
 			} else if (tag.key == "text") {
 
-				DBG_GUI_RL << "text: text=" << ((line.size() > 20) ? line.substr(0,20) : line) << "...";
+				DBG_GUI_RL << "text: text=" << gui2::debug_truncate(line) << "...";
 
 				(*curr_item)["font_size"] = font::SIZE_NORMAL;
 				(*curr_item)["text"] = (*curr_item)["text"].str() + line;
@@ -605,12 +605,14 @@ config rich_label::get_parsed_text(const config& parsed_text)
 					(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('ww', 0), set_var('pos_y', pos_y + text_height + " + std::to_string(0.3*font::get_max_height(font::SIZE_NORMAL)) + ")])";
 
 					// Height update
-					int ah = get_text_size(*curr_item, w_ - float_size.x).y; // no x_?
+					int ah = get_text_size(*curr_item, w_ - float_size.x).y;
 					if (tmp_h > ah) {
 						tmp_h = 0;
 					}
 					txt_height_ += ah - tmp_h;
+
 					prev_blk_height_ += txt_height_ + 0.3*font::get_max_height(font::SIZE_NORMAL);
+
 					DBG_GUI_RL << "wrap: " << prev_blk_height_ << "," << txt_height_;
 					txt_height_ = 0;
 
@@ -625,6 +627,7 @@ config rich_label::get_parsed_text(const config& parsed_text)
 					add_text_with_attribute(*curr_item, *removed_part);
 
 				} else if ((float_size.y > 0) && (text_size.y < float_size.y)) {
+					//TODO padding?
 					// text height less than floating image's height, don't split
 					DBG_GUI_RL << "no wrap";
 					(*curr_item)["actions"] = "([set_var('pos_y', pos_y + text_height)])";
@@ -701,6 +704,7 @@ void rich_label::default_text_config(config* txt_ptr, t_string text) {
 		(*txt_ptr)["h"] = "(text_height)";
 		// tw -> table width, used for wrapping text inside table cols
 		// ww -> wrap width, used for wrapping around floating image
+		// max text width shouldn't go beyond the rich_label's specified width
 		(*txt_ptr)["maximum_width"] = "(width - pos_x - ww - tw)";
 		(*txt_ptr)["actions"] = "([set_var('pos_y', pos_y + text_height)])";
 	}
@@ -713,6 +717,7 @@ void rich_label::update_canvas()
 		tmp.set_variable("pos_y", wfl::variant(0));
 		tmp.set_variable("img_x", wfl::variant(0));
 		tmp.set_variable("img_y", wfl::variant(0));
+		tmp.set_variable("width", wfl::variant(w_));
 		tmp.set_variable("tw", wfl::variant(0));
 		tmp.set_variable("ww", wfl::variant(0));
 		tmp.set_variable("padding", wfl::variant(padding_));
