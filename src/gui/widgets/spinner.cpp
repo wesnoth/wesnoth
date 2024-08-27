@@ -99,6 +99,66 @@ int spinner::get_value()
 
 	return val;
 }
+void spinner::set_step_size(int step)
+{
+	VALIDATE(((!minimum_value_) || (!maximum_value_) ||
+				(step <= *maximum_value_ - *minimum_value_)),
+			"step size (" + std::to_string(step) +") must be <= the range (" + std::to_string(*maximum_value_ - *minimum_value_) +
+			") allowed by min (" + std::to_string(*minimum_value_) + ") and max (" + std::to_string(*maximum_value_) + ").");
+	step_size_ = step;
+};
+
+int spinner::get_step_size() { return step_size_; }
+
+void spinner::set_minimum_value(utils::optional<int> min) {
+	VALIDATE(((!min) || (!maximum_value_) || (step_size_ <= *maximum_value_ - *min)),
+			"minimum_value (" + std::to_string(*min) + ") must be <= maximum_value (" + std::to_string(*maximum_value_) + ").");
+	minimum_value_ = min;
+	set_value(get_value());
+}
+
+utils::optional<int> spinner::get_minimum_value() {
+	return minimum_value_;
+}
+
+void spinner::set_maximum_value(utils::optional<int> max) {
+	VALIDATE(((!max) || (!minimum_value_) || (step_size_ <= *max - *minimum_value_)),
+			"maximum_value (" + std::to_string(*max) + ") must be >= minimum_value (" + std::to_string(*minimum_value_) + ").");
+	maximum_value_ = max;
+	set_value(get_value());
+}
+
+utils::optional<int> spinner::get_maximum_value() {
+	return maximum_value_;
+}
+
+void spinner::prev()
+{
+	const int value = get_value();
+	if(std::numeric_limits<int>::min() + step_size_ < value) {
+		if(minimum_value_) {
+			set_value(std::max(*minimum_value_, value - step_size_));
+		} else {
+			set_value(value - step_size_);
+		}
+	} else {
+		set_value(std::numeric_limits<int>::min());
+	}
+}
+
+void spinner::next()
+{
+	const int value = get_value();
+	if(std::numeric_limits<int>::max() - step_size_ > value) {
+		if(maximum_value_) {
+			set_value(std::min(*maximum_value_, value + step_size_));
+		} else {
+			set_value(value + step_size_);
+		}
+	} else {
+		set_value(std::numeric_limits<int>::max());
+	}
+}
 
 void spinner::finalize_setup()
 {
@@ -161,60 +221,60 @@ spinner_definition::resolution::resolution(const config& cfg)
 namespace implementation
 {
 
-builder_spinner::builder_spinner(const config& cfg)
-	: implementation::builder_styled_widget(cfg)
-	, step_size_(cfg["step_size"].to_int(1))
-{
-	if(cfg.has_attribute("minimum_value")) {
-		minimum_value_ = cfg["minimum_value"].to_int();
-	}
-	if(cfg.has_attribute("maximum_value")) {
-		maximum_value_ = cfg["maximum_value"].to_int();
-	}
-	VALIDATE(((!minimum_value_) || (!maximum_value_) || (*minimum_value_ <= *maximum_value_)),
-			"minimum_value (" + std::to_string(*minimum_value_) + ") must be <= maximum_value (" + std::to_string(*maximum_value_) + ").");
-
-	if(cfg.has_attribute("value")) {
-		value_ = cfg["value"].to_int();
-	} else {
-		if((minimum_value_) && (maximum_value_)) {
-			value_ = ((*minimum_value_ + *maximum_value_) / 2);
-		} else {
-			value_ = 0;
+	builder_spinner::builder_spinner(const config& cfg)
+		: implementation::builder_styled_widget(cfg)
+		  , step_size_(cfg["step_size"].to_int(1))
+	{
+		if(cfg.has_attribute("minimum_value")) {
+			minimum_value_ = cfg["minimum_value"].to_int();
 		}
-	}
-	// value_ may not be within the min/max limits at this point,
-	// build() will take care of that.
-}
+		if(cfg.has_attribute("maximum_value")) {
+			maximum_value_ = cfg["maximum_value"].to_int();
+		}
+		VALIDATE(((!minimum_value_) || (!maximum_value_) || (*minimum_value_ <= *maximum_value_)),
+				"minimum_value (" + std::to_string(*minimum_value_) + ") must be <= maximum_value (" + std::to_string(*maximum_value_) + ").");
 
-std::unique_ptr<widget> builder_spinner::build() const
-{
-	auto widget = std::make_unique<spinner>(*this);
-
-	const auto conf = widget->cast_config_to<spinner_definition>();
-	assert(conf);
-
-	widget->init_grid(*conf->grid);
-	widget->finalize_setup();
-
-	if(minimum_value_) { widget->set_minimum_value(minimum_value_); }
-	if(maximum_value_) { widget->set_maximum_value(*maximum_value_); }
-
-	widget->set_step_size(step_size_);
-
-	if((minimum_value_) && (value_ < *minimum_value_)) {
-		widget->set_value(*minimum_value_);
-	} else if((maximum_value_) && (value_ > *maximum_value_)) {
-		widget->set_value(*maximum_value_);
-	} else {
-		widget->set_value(value_);
+		if(cfg.has_attribute("value")) {
+			value_ = cfg["value"].to_int();
+		} else {
+			if((minimum_value_) && (maximum_value_)) {
+				value_ = ((*minimum_value_ + *maximum_value_) / 2);
+			} else {
+				value_ = 0;
+			}
+		}
+		// value_ may not be within the min/max limits at this point,
+		// build() will take care of that.
 	}
 
-	DBG_GUI_G << "Window builder: placed spinner '" << id
-			  << "' with definition '" << definition << "'.";
+	std::unique_ptr<widget> builder_spinner::build() const
+	{
+		auto widget = std::make_unique<spinner>(*this);
 
-	return widget;
-}
+		const auto conf = widget->cast_config_to<spinner_definition>();
+		assert(conf);
+
+		widget->init_grid(*conf->grid);
+		widget->finalize_setup();
+
+		if(minimum_value_) { widget->set_minimum_value(minimum_value_); }
+		if(maximum_value_) { widget->set_maximum_value(*maximum_value_); }
+
+		widget->set_step_size(step_size_);
+
+		if((minimum_value_) && (value_ < *minimum_value_)) {
+			widget->set_value(*minimum_value_);
+		} else if((maximum_value_) && (value_ > *maximum_value_)) {
+			widget->set_value(*maximum_value_);
+		} else {
+			widget->set_value(value_);
+		}
+
+		DBG_GUI_G << "Window builder: placed spinner '" << id
+			<< "' with definition '" << definition << "'.";
+
+		return widget;
+	}
 
 } // namespace implementation
 

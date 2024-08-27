@@ -59,66 +59,21 @@ public:
 
 	int get_value();
 
-	void set_step_size(int step)
-	{
-		VALIDATE(((!minimum_value_) || (!maximum_value_) ||
-				(step <= *maximum_value_ - *minimum_value_)),
-				"step size (" + std::to_string(step) +") must be <= the range allowed by min/max (" +
-				std::to_string(*maximum_value_ - *minimum_value_) + ").");
-		step_size_ = step;
-	};
+	void set_step_size(int step);
 
-	int get_step_size() { return step_size_; }
+	int get_step_size();
 
-	void set_minimum_value(std::optional<int> min) {
-		VALIDATE(((!min) || (!maximum_value_) || (step_size_ <= *maximum_value_ - *min)),
-				"minimum_value (" + std::to_string(*min) + ") must be <= maximum_value (" + std::to_string(*maximum_value_) + ").");
-		minimum_value_ = min;
-		set_value(get_value());
-	}
+	void set_minimum_value(utils::optional<int> min);
 
-	std::optional<int> get_minimum_value() {
-		return minimum_value_;
-	}
+	utils::optional<int> get_minimum_value();
 
-	void set_maximum_value(std::optional<int> max) {
-		VALIDATE(((!max) || (!minimum_value_) || (step_size_ <= *max - *minimum_value_)),
-				"maximum_value (" + std::to_string(*max) + ") must be <= minimum_value (" + std::to_string(*minimum_value_) + ").");
-		maximum_value_ = max;
-		set_value(get_value());
-	}
+	void set_maximum_value(utils::optional<int> max);
 
-	std::optional<int> get_maximum_value() {
-		return maximum_value_;
-	}
+	utils::optional<int> get_maximum_value();
 
-	void prev()
-	{
-		const int value = get_value();
-		if(std::numeric_limits<int>::min() + step_size_ < value) {
-			if(minimum_value_) {
-				set_value(std::max(*minimum_value_, value - step_size_));
-			} else {
-				set_value(value - step_size_);
-			}
-		} else {
-			set_value(std::numeric_limits<int>::min());
-		}
-	}
+	void prev();
 
-	void next()
-	{
-		const int value = get_value();
-		if(std::numeric_limits<int>::max() - step_size_ > value) {
-			if(maximum_value_) {
-				set_value(std::min(*maximum_value_, value + step_size_));
-			} else {
-				set_value(value + step_size_);
-			}
-		} else {
-			set_value(std::numeric_limits<int>::max());
-		}
-	}
+	void next();
 
 private:
 	/**
@@ -147,9 +102,9 @@ private:
 
 	int step_size_;
 
-	std::optional<int> minimum_value_;
+	utils::optional<int> minimum_value_;
 
-	std::optional<int> maximum_value_;
+	utils::optional<int> maximum_value_;
 
 	/** If the entered data is invalid. */
 	bool invalid_;
@@ -200,9 +155,9 @@ struct builder_spinner : public builder_styled_widget
 
 	virtual std::unique_ptr<widget> build() const override;
 
-	std::optional<int> minimum_value_;
+	utils::optional<int> minimum_value_;
 
-	std::optional<int> maximum_value_;
+	utils::optional<int> maximum_value_;
 
 	int step_size_;
 
