@@ -1,18 +1,15 @@
 name: Image metadata check CI
 
 on:
-  #push:
-  #  branches: [master]
+  push:
+    branches: [ master ]
+    paths: [ '**.webp', '**.png', '**.jpg', '**.jpeg' ]
   pull_request:
-    paths:
-      - '**.webp'
-      - '**.png'
-      - '**.jpg'
-      - '**.jpeg'
+    paths: [ '**.webp', '**.png', '**.jpg', '**.jpeg' ]
   
 jobs:
   build:
-    name: Ubuntu - Image Metadata
+    name: Image Metadata
     runs-on: ubuntu-latest
     
     permissions:
@@ -20,8 +17,8 @@ jobs:
       pull-requests: write
 
     env:
-      SHA: ${{ github.event.pull_request.head.sha }}
-      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+      HEAD_SHA: ${{ github.event_name == 'push' && github.event.after  || github.event.pull_request.head.sha }}
+      BASE_SHA: ${{ github.event_name == 'push' && github.event.before || github.event.pull_request.base.sha }}
 
     steps:
       - name: exiftool installation
@@ -32,36 +29,32 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: read/export image metadata
+      - name: check image metadata
         run: |
-          mapfile -t image_files < <(git diff --name-only ${BASE_SHA} ${SHA} | egrep '\.webp$|\.png$|\.jpg$|\.jpeg$')
-          git status
-          # array of accepted copyright strings
-          accepted_cr=("GNU GPL v2+|CC BY-SA 4.0|CC0")
+          mapfile -t image_files < <(git diff --name-only "$BASE_SHA" "$HEAD_SHA" | grep -E '\.(webp|png|je?pg)$')
           # cycle through the changed image files, make sure they have the right fields
           for file in "${image_files[@]}"; do
-            # check -Artist tag, fail if missing
-            artist="$(exiftool -Artist $file)"
-            artist="${artist#*: }"
-            if [ -z "$artist" ] ; then
-              echo "no Artist EXIF tag in $file"
-              exit 1
+            # check Artist tag, fail if missing
+            artist="$(exiftool -p '$Artist' "$file")"
+            if [ "$artist" ]; then
+              printf 'Artist tag in %s is %s\n' "$file" "$artist"
             else
-              echo "Artist tag in $file is $artist"
-            fi
-            # check -Copyright tag, fail if missing or wrong type
-            copyright="$(exiftool -Copyright $file)"
-            copyright="${copyright#*: }"
-            if [ -z "$copyright" ] ; then
-              echo "no Copyright EXIF tag in $file"
+              printf 'no Artist EXIF tag in %s\n' "$file"
               exit 1
-            elif [[ ! "|${accepted_cr[*]}|" =~ "|${copyright}|" ]]; then
-              echo "$copyright is not an accepted license"
-              exit 1
-            else
-              echo "Copyright tag in $file is $copyright"
             fi
+            # check Copyright tag, fail if missing or wrong type
+            copyright="$(exiftool -p '$Copyright' "$file")"
+            case $copyright in
+              GNU GPL v2+|CC BY-SA 4.0|CC0)
+                printf 'Copyright tag in %s is %s\n' "$file" "$copyright"
+                ;;
+              '')
+                printf 'no Copyright EXIF tag in %s\n' "$file"
+                exit 1
+                ;;
+              *)
+                printf 'Copyright tag %s in file %s is not an accepted license! Must be one of: "GNU GPL v2+", "CC BY-SA 4.0", "CC0"\n' "$copyright" "$file"
+                exit 1
+                ;;
+            esac
           done
-#      - name: The image_check step has failed
-#        if: ${{ failure() && steps.image_check.conclusion == 'failure' }}
-        
