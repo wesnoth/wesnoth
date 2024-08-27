@@ -40,6 +40,12 @@ namespace lua_check_impl
 		typename std::decay_t<T>::reference>
 	> : std::true_type {};
 
+	template<class T, template<class> class U>
+	inline constexpr bool is_instance_of_v = std::false_type{};
+
+	template<template<class> class U, class V>
+	inline constexpr bool is_instance_of_v<U<V>,U> = std::true_type{};
+
 	template<typename T, typename T2 = void>
 	struct is_map : std::false_type {};
 
@@ -171,7 +177,7 @@ namespace lua_check_impl
 	}
 
 	//widget
-	//widget not suppored becasue lua_checek returns by value
+	//lua_check for widget is not supported because lua_check returns by value
 	template<typename T>
 	std::enable_if_t<std::is_same_v<T, gui2::widget>, void>
 	lua_push(lua_State *L, gui2::widget& val)
@@ -343,6 +349,28 @@ namespace lua_check_impl
 			luaL_argerror(L, n, ("cannot convert " + str + " to enum.").c_str());
 		}
 		return *val;
+	}
+
+	//optional
+	template<typename T>
+	std::enable_if_t<is_instance_of_v<T, utils::optional>, T>
+	lua_check(lua_State *L, int n)
+	{
+		if(lua_isnoneornil(L, n)) {
+			return T();
+		}
+		return lua_check_impl::lua_check<typename T::value_type>(L, n);
+	}
+
+	template<typename T>
+	std::enable_if_t<is_instance_of_v<T, utils::optional>, void>
+	lua_push(lua_State *L, const T& opt)
+	{
+		if(opt) {
+			lua_check_impl::lua_push<typename T::value_type>(L, *opt);
+		} else {
+			lua_pushnil(L);
+		}
 	}
 }
 
