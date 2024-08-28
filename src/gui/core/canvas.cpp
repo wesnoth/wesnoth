@@ -417,7 +417,7 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	: rect_bounded_shape(cfg)
 	, cfg_(cfg)
 	, font_family_(font::str_to_family_class(cfg["font_family"]))
-	, font_size_(cfg["font_size"])
+	, font_size_(cfg["font_size"], font::SIZE_NORMAL)
 	, font_style_(decode_font_style(cfg["font_style"]))
 	, text_alignment_(cfg["text_alignment"])
 	, color_(cfg["color"])
@@ -438,11 +438,6 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	, outline_(cfg["outline"], false)
 	, actions_formula_(cfg["actions"], &functions)
 {
-
-	if(!font_size_.has_formula()) {
-		VALIDATE(font_size_(), _("Text has a font size of 0."));
-	}
-
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
 		DBG_GUI_P << "Text: found debug message '" << debug << "'.";
