@@ -22,6 +22,7 @@
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/widgets/settings.hpp"
 
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
@@ -31,6 +32,7 @@
 #include "log.hpp"
 #include "serialization/unicode.hpp"
 #include "serialization/string_utils.hpp"
+#include "sound.hpp"
 #include "wml_exception.hpp"
 
 #include <functional>
@@ -273,11 +275,13 @@ size_t rich_label::get_split_location(std::string text, const point& pos) {
 
 void rich_label::set_topic(const help::topic* topic)
 {
+	styled_widget::set_label(topic->text.parsed_text().debug());
 	text_dom_ = get_parsed_text(topic->text.parsed_text());
 }
 
 void rich_label::set_label(const t_string& text)
 {
+	styled_widget::set_label(text);
 	unparsed_text_ = text;
 	help::topic_text marked_up_text(text);
 	const config& parsed_text = marked_up_text.parsed_text();
@@ -287,7 +291,6 @@ void rich_label::set_label(const t_string& text)
 config rich_label::get_parsed_text(const config& parsed_text)
 {
 	// Initialization
-	w_ = (w_ == 0) ? styled_widget::calculate_best_size().x : w_;
 	DBG_GUI_RL << "Width: " << w_;
 	x_ = 0;
 	h_ = 0;
@@ -792,6 +795,7 @@ void rich_label::signal_handler_left_button_click(bool& handled)
 
 		if (entry.first.contains(mouse)) {
 			DBG_GUI_RL << "Clicked link! dst = " << entry.second;
+			sound::play_UI_sound(settings::sound_button_click);
 			if (link_handler_) {
 				link_handler_(entry.second);
 			} else {
@@ -898,7 +902,6 @@ std::unique_ptr<widget> builder_rich_label::build() const
 	lbl->set_link_aware(link_aware);
 	lbl->set_link_color(conf->link_color);
 	lbl->set_width(width);
-	lbl->set_label(lbl->get_label());
 
 	DBG_GUI_G << "Window builder: placed rich_label '" << id << "' with definition '"
 			  << definition << "'.";
