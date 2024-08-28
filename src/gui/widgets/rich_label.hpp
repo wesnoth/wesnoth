@@ -250,7 +250,9 @@ private:
 
 	point calculate_best_size() const override
 	{
-		return point(w_, h_);
+		point size = styled_widget::calculate_best_size();
+		point new_size(w_ == 0 ? size.x : w_, h_ == 0 ? size.y : h_);
+		return new_size;
 	}
 
 public:
