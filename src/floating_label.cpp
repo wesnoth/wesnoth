@@ -47,7 +47,7 @@ std::stack<std::set<int>> label_contexts;
 
 namespace font
 {
-floating_label::floating_label(const std::string& text, const surface& surf)
+floating_label::floating_label(const std::string& text)
 	: tex_()
 	, screen_loc_()
 	, alpha_(0)
@@ -71,9 +71,6 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 	, scroll_(ANCHOR_LABEL_SCREEN)
 	, use_markup_(true)
 {
-	if (surf.get()) {
-		tex_ = texture(surf);
-	}
 }
 
 void floating_label::move(double xmove, double ymove)
