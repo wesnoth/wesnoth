@@ -2703,62 +2703,11 @@ void display::draw_hex(const map_location& loc)
 			drawing_buffer_add(drawing_layer::grid_bottom, loc,
 				[tex = image::get_texture(grid_bottom, image::TOD_COLORED)](const rect& dest) { draw::blit(tex, dest); });
 		}
-	}
 
-	if(!is_shrouded) {
-		auto it = get_overlays().find(loc);
-		if(it != get_overlays().end()) {
-			std::vector<overlay>& overlays = it->second;
-			if(overlays.size() != 0) {
-				tod_color tod_col = tod.color + color_adjust_;
-				image::light_string lt = image::get_light_string(-1, tod_col.r, tod_col.g, tod_col.b);
+		// overlays (TODO: can we just draw all the overlays in one pass instead of per-hex?)
+		draw_overlays_at(loc);
 
-				for(const overlay& ov : overlays) {
-					bool item_visible_for_team = true;
-					if(dont_show_all_ && !ov.team_name.empty()) {
-						// dont_show_all_ imples that viewing_team() is a valid index to get_teams()
-						const std::string& current_team_name = get_teams()[viewing_team()].team_name();
-						const std::vector<std::string>& current_team_names = utils::split(current_team_name);
-						const std::vector<std::string>& team_names = utils::split(ov.team_name);
-
-						item_visible_for_team = std::find_first_of(team_names.begin(), team_names.end(),
-							current_team_names.begin(), current_team_names.end()) != team_names.end();
-					}
-
-					if(item_visible_for_team && !(fogged(loc) && !ov.visible_in_fog)) {
-						point isize = image::get_size(ov.image, image::HEXED);
-						std::string ipf = ov.image;
-
-						texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
-							? image::get_lighted_texture(ipf, lt)
-							: image::get_texture(ipf, image::HEXED);
-
-						drawing_buffer_add(drawing_layer::terrain_bg, loc, [=](const rect& dest) mutable {
-							// Adjust submerge appropriately
-							const t_translation::terrain_code terrain = get_map().get_terrain(loc);
-							const terrain_type& terrain_info = get_map().get_terrain_info(terrain);
-							const double submerge = terrain_info.unit_submerge();
-
-							submerge_data data = get_submerge_data(dest, submerge, isize, ALPHA_OPAQUE, false, false);
-							if(submerge > 0.0) {
-								// set clip for dry part
-								// smooth_shaded doesn't use the clip information so it's fine to set it up front
-								tex.set_src(data.unsub_src);
-
-								// draw underwater part
-								draw::smooth_shaded(tex, data.alpha_verts);
-							}
-							// draw dry part
-							draw::blit(tex, submerge > 0.0 ? data.unsub_dest : dest);
-						});
-					}
-				}
-			}
-		}
-	}
-
-	// village-control flags.
-	if(!is_shrouded) {
+		// village-control flags.
 		drawing_buffer_add(drawing_layer::terrain_bg, loc, [tex = get_flag(loc)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
@@ -2872,6 +2821,73 @@ void display::draw_hex(const map_location& loc)
 
 			draw::fill(bg_dest, {0, 0, 0, 0xaa});
 			draw::blit(tex, text_dest);
+		});
+	}
+}
+
+void display::draw_overlays_at(const map_location& loc)
+{
+	auto it = get_overlays().find(loc);
+	if(it == get_overlays().end()) {
+		return;
+	}
+
+	std::vector<overlay>& overlays = it->second;
+	if(overlays.empty()) {
+		return;
+	}
+
+	const time_of_day& tod = get_time_of_day(loc);
+	tod_color tod_col = tod.color + color_adjust_;
+
+	image::light_string lt = image::get_light_string(-1, tod_col.r, tod_col.g, tod_col.b);
+
+	for(const overlay& ov : overlays) {
+		if(fogged(loc) && !ov.visible_in_fog) {
+			continue;
+		}
+
+		if(dont_show_all_ && !ov.team_name.empty()) {
+			// dont_show_all_ imples that viewing_team() is a valid index to get_teams()
+			const std::string& current_team_name = get_teams()[viewing_team()].team_name();
+			const std::vector<std::string>& current_team_names = utils::split(current_team_name);
+			const std::vector<std::string>& team_names = utils::split(ov.team_name);
+
+			bool item_visible_for_team = std::find_first_of(team_names.begin(), team_names.end(),
+				current_team_names.begin(), current_team_names.end()) != team_names.end();
+
+			if(!item_visible_for_team) {
+				continue;
+			}
+		}
+
+		texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
+			? image::get_lighted_texture(ov.image, lt)
+			: image::get_texture(ov.image, image::HEXED);
+
+		// Adjust submerge appropriately
+		const t_translation::terrain_code terrain = get_map().get_terrain(loc);
+		const terrain_type& terrain_info = get_map().get_terrain_info(terrain);
+		const double submerge = terrain_info.unit_submerge();
+
+		drawing_buffer_add(drawing_layer::terrain_bg, loc, [this, tex, submerge](const rect& dest) mutable {
+			if(submerge > 0.0) {
+				submerge_data data = this->get_submerge_data(dest, submerge, tex.draw_size(), ALPHA_OPAQUE, false, false);
+
+				// set clip for dry part
+				// smooth_shaded doesn't use the clip information so it's fine to set it up front
+				// TODO: do we need to unset this?
+				tex.set_src(data.unsub_src);
+
+				// draw underwater part
+				draw::smooth_shaded(tex, data.alpha_verts);
+
+				// draw dry part
+				draw::blit(tex, data.unsub_dest);
+			} else {
+				// draw whole texture
+				draw::blit(tex, dest);
+			}
 		});
 	}
 }
