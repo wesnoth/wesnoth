@@ -2766,7 +2766,7 @@ void display::draw_hex(const map_location& loc)
 	// tod may differ from tod if hex is illuminated.
 	const std::string& tod_hex_mask = tod.image_mask;
 	if(tod_hex_mask1 || tod_hex_mask2) {
-		drawing_buffer_add(drawing_layer::terrain_fg, loc, [=](const rect& dest) mutable {
+		drawing_buffer_add(drawing_layer::terrain_fg, loc, [this](const rect& dest) mutable {
 			tod_hex_mask1.set_alpha_mod(tod_hex_alpha1);
 			draw::blit(tod_hex_mask1, dest);
 
