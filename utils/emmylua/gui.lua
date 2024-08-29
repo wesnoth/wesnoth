@@ -155,7 +155,7 @@ function gui.add_widget_definition(type, id, content) end
 ---@field max_value integer
 ---@field on_modified fun()
 
----A widget for entering integers via text_box and/or arrow keys
+---A widget for entering integers via text_box and/or arrow buttons
 ---@class spinner : widget
 ---@field value integer
 ---@field step_size integer
