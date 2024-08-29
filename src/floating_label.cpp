@@ -328,6 +328,13 @@ SDL_Rect get_floating_label_rect(int handle)
 
 floating_label_context::floating_label_context()
 {
+	// hacky but the whole floating label system needs to be redesigned...
+	for(auto& [id, label] : labels) {
+		if(label_contexts.top().count(id) > 0) {
+			label.undraw();
+		}
+	}
+
 	//TODO: 'pause' floating labels in other contexrs
 	label_contexts.emplace();
 }
