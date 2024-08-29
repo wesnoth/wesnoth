@@ -53,8 +53,6 @@ public:
 	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
-	bool can_wrap() const override;
-
 	void set_value(const int val);
 
 	int get_value();
@@ -63,13 +61,11 @@ public:
 
 	int get_step_size();
 
-	void set_minimum_value(utils::optional<int> min);
+	void set_value_range(int min, int max);
 
-	utils::optional<int> get_minimum_value();
+	int get_minimum_value();
 
-	void set_maximum_value(utils::optional<int> max);
-
-	utils::optional<int> get_maximum_value();
+	int get_maximum_value();
 
 	void prev();
 
@@ -102,9 +98,9 @@ private:
 
 	int step_size_;
 
-	utils::optional<int> minimum_value_;
+	int minimum_value_;
 
-	utils::optional<int> maximum_value_;
+	int maximum_value_;
 
 	/** If the entered data is invalid. */
 	bool invalid_;
@@ -155,11 +151,11 @@ struct builder_spinner : public builder_styled_widget
 
 	virtual std::unique_ptr<widget> build() const override;
 
-	utils::optional<int> minimum_value_;
-
-	utils::optional<int> maximum_value_;
-
 	int step_size_;
+
+	int minimum_value_;
+
+	int maximum_value_;
 
 	int value_;
 };

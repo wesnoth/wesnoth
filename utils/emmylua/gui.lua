@@ -155,6 +155,14 @@ function gui.add_widget_definition(type, id, content) end
 ---@field max_value integer
 ---@field on_modified fun()
 
+---A widget for entering integers via text_box and/or arrow keys
+---@class spinner : widget
+---@field value integer
+---@field step_size integer
+---@field min_value integer
+---@field max_value integer
+---@field on_modified fun()
+
 ---A progress bar
 ---@class progress_bar : widget
 ---@field percentage number

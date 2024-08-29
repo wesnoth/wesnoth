@@ -299,22 +299,40 @@ WIDGET_SETTER("value_compat,value", int, gui2::spinner)
 
 WIDGET_SETTER("max_value", utils::optional<int>, gui2::spinner)
 {
-	w.set_maximum_value(value);
+	if(value) {
+		w.set_value_range(w.get_minimum_value(), *value);
+	} else {
+		w.set_value_range(w.get_minimum_value(), std::numeric_limits<int>::max());
+	}
 }
 
 WIDGET_GETTER("max_value", utils::optional<int>, gui2::spinner)
 {
-	return w.get_maximum_value();
+	const utils::optional<int> o;
+	if(w.get_maximum_value() == std::numeric_limits<int>::max()) {
+		return o;
+	} else {
+		return w.get_maximum_value();
+	}
 }
 
 WIDGET_SETTER("min_value", utils::optional<int>, gui2::spinner)
 {
-	w.set_minimum_value(value);
+	if(value) {
+		w.set_value_range(*value, w.get_maximum_value());
+	} else {
+		w.set_value_range(std::numeric_limits<int>::min(), w.get_maximum_value());
+	}
 }
 
 WIDGET_GETTER("min_value", utils::optional<int>, gui2::spinner)
 {
-	return w.get_minimum_value();
+	const utils::optional<int> o;
+	if(w.get_minimum_value() == std::numeric_limits<int>::min()) {
+		return o;
+	} else {
+		return w.get_minimum_value();
+	}
 }
 
 WIDGET_GETTER("step_size", int, gui2::spinner)

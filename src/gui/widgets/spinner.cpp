@@ -42,6 +42,8 @@ spinner::spinner(const implementation::builder_spinner& builder)
 	: container_base(builder, type())
 	, state_(ENABLED)
 	, step_size_(1)
+	, minimum_value_(std::numeric_limits<int>::min())
+	, maximum_value_(std::numeric_limits<int>::max())
 	, invalid_(false)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
@@ -56,11 +58,15 @@ text_box* spinner::get_internal_text_box()
 
 void spinner::set_value(int val)
 {
-	if((minimum_value_) && (val < *minimum_value_)) {
-		val = *minimum_value_;
+	if(val < minimum_value_) {
+		DBG_GUI_G << "Value (" << val << ") < min (" << minimum_value_ <<
+			"), setting value to " << minimum_value_ << ".";
+		val = minimum_value_;
 	}
-	if((maximum_value_) && (val > *maximum_value_)) {
-		val = *maximum_value_;
+	if(val > maximum_value_) {
+		DBG_GUI_G << "Value (" << val << ") > min (" << maximum_value_ <<
+			"), setting value to " << maximum_value_ << ".";
+		val = maximum_value_;
 	}
 
 	text_box* edit_area = get_internal_text_box();
@@ -68,8 +74,10 @@ void spinner::set_value(int val)
 		edit_area->set_value(std::to_string(val));
 	}
 
-	find_widget<repeating_button>(this, "_prev", false, true)->set_active((!minimum_value_) || (val > *minimum_value_));
-	find_widget<repeating_button>(this, "_next", false, true)->set_active((!maximum_value_) || (val < *maximum_value_));
+	find_widget<repeating_button>(this, "_prev", false, true)->set_active(val > minimum_value_);
+	find_widget<repeating_button>(this, "_next", false, true)->set_active(val < maximum_value_);
+
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 int spinner::get_value()
@@ -81,9 +89,7 @@ int spinner::get_value()
 	try {
 		text_box* edit_area = get_internal_text_box();
 		if (edit_area != nullptr) {
-			val = stoi(edit_area->get_value());
-			if((minimum_value_) && (val < *minimum_value_)) { val = *minimum_value_; }
-			if((maximum_value_) && (val > *maximum_value_)) { val = *maximum_value_; }
+			val = std::clamp(stoi(edit_area->get_value()), minimum_value_, maximum_value_);
 			invalid_ = false;
 		} else {
 			val = 0;
@@ -99,36 +105,48 @@ int spinner::get_value()
 
 	return val;
 }
+
 void spinner::set_step_size(int step)
 {
-	VALIDATE(((!minimum_value_) || (!maximum_value_) ||
-				(step <= *maximum_value_ - *minimum_value_)),
-			"step size (" + std::to_string(step) +") must be <= the range (" + std::to_string(*maximum_value_ - *minimum_value_) +
-			") allowed by min (" + std::to_string(*minimum_value_) + ") and max (" + std::to_string(*maximum_value_) + ").");
-	step_size_ = step;
-};
-
-int spinner::get_step_size() { return step_size_; }
-
-void spinner::set_minimum_value(utils::optional<int> min) {
-	VALIDATE(((!min) || (!maximum_value_) || (step_size_ <= *maximum_value_ - *min)),
-			"minimum_value (" + std::to_string(*min) + ") must be <= maximum_value (" + std::to_string(*maximum_value_) + ").");
-	minimum_value_ = min;
-	set_value(get_value());
+	/* The spinner's range, and therefore the theorhetical maximum step size, can exceed max int
+	 * particularly when one or both of the values are set to "unlimited".  Cap step size at
+	 * min(max int, range).
+	 * */
+	unsigned range = maximum_value_ - minimum_value_;
+	int max_step = static_cast<int>(std::min<unsigned>(range, std::numeric_limits<int>::max()));
+	if(minimum_value_ + step > maximum_value_) { // min+step could overflow if you try hard enough
+		std::string str = "";
+		if(range > std::numeric_limits<int>::max()) {
+			str = ", and no greater than " + std::to_string(std::numeric_limits<int>::max());
+		}
+		DBG_GUI_G << "Requested step_size (" << step << ") must be <= the range (" << range <<
+			") allowed by min (" << minimum_value_ << ") and max (" << maximum_value_ <<
+		   	")" << str << ".  Setting step_size to " << max_step << ".";
+		step_size_ = max_step;
+	} else {
+		step_size_ = std::min(step, max_step);
+	}
 }
 
-utils::optional<int> spinner::get_minimum_value() {
+int spinner::get_step_size() {
+	return step_size_;
+}
+
+void spinner::set_value_range(int min, int max)
+{
+	VALIDATE((min <= max), "minimum_value (" + std::to_string(min) + ") must be <= maximum_value (" +
+			std::to_string(max) + ").");
+	minimum_value_ = min;
+	maximum_value_ = max;
+	set_step_size(step_size_);  // will adjust step as necessary based on new min/max
+	set_value(get_value());  // ensure value is in new range and next/prev buttons are updated as necessary
+}
+
+int spinner::get_minimum_value() {
 	return minimum_value_;
 }
 
-void spinner::set_maximum_value(utils::optional<int> max) {
-	VALIDATE(((!max) || (!minimum_value_) || (step_size_ <= *max - *minimum_value_)),
-			"maximum_value (" + std::to_string(*max) + ") must be >= minimum_value (" + std::to_string(*minimum_value_) + ").");
-	maximum_value_ = max;
-	set_value(get_value());
-}
-
-utils::optional<int> spinner::get_maximum_value() {
+int spinner::get_maximum_value() {
 	return maximum_value_;
 }
 
@@ -136,11 +154,7 @@ void spinner::prev()
 {
 	const int value = get_value();
 	if(std::numeric_limits<int>::min() + step_size_ < value) {
-		if(minimum_value_) {
-			set_value(std::max(*minimum_value_, value - step_size_));
-		} else {
-			set_value(value - step_size_);
-		}
+		set_value(value - step_size_);
 	} else {
 		set_value(std::numeric_limits<int>::min());
 	}
@@ -150,11 +164,7 @@ void spinner::next()
 {
 	const int value = get_value();
 	if(std::numeric_limits<int>::max() - step_size_ > value) {
-		if(maximum_value_) {
-			set_value(std::min(*maximum_value_, value + step_size_));
-		} else {
-			set_value(value + step_size_);
-		}
+		set_value(value + step_size_);
 	} else {
 		set_value(std::numeric_limits<int>::max());
 	}
@@ -181,11 +191,6 @@ bool spinner::get_active() const
 unsigned spinner::get_state() const
 {
 	return state_;
-}
-
-bool spinner::can_wrap() const
-{
-	return true;
 }
 
 void spinner::signal_handler_left_button_down(const event::ui_event event)
@@ -223,28 +228,14 @@ namespace implementation
 
 	builder_spinner::builder_spinner(const config& cfg)
 		: implementation::builder_styled_widget(cfg)
-		  , step_size_(cfg["step_size"].to_int(1))
+		, step_size_(cfg["step_size"].to_int(1))
+		, minimum_value_(cfg["minimum_value"].to_int(std::numeric_limits<int>::min()))
+		, maximum_value_(cfg["maximum_value"].to_int(std::numeric_limits<int>::max()))
+		, value_(cfg["value"].to_int(0))
 	{
-		if(cfg.has_attribute("minimum_value")) {
-			minimum_value_ = cfg["minimum_value"].to_int();
-		}
-		if(cfg.has_attribute("maximum_value")) {
-			maximum_value_ = cfg["maximum_value"].to_int();
-		}
-		VALIDATE(((!minimum_value_) || (!maximum_value_) || (*minimum_value_ <= *maximum_value_)),
-				"minimum_value (" + std::to_string(*minimum_value_) + ") must be <= maximum_value (" + std::to_string(*maximum_value_) + ").");
-
-		if(cfg.has_attribute("value")) {
-			value_ = cfg["value"].to_int();
-		} else {
-			if((minimum_value_) && (maximum_value_)) {
-				value_ = ((*minimum_value_ + *maximum_value_) / 2);
-			} else {
-				value_ = 0;
-			}
-		}
-		// value_ may not be within the min/max limits at this point,
-		// build() will take care of that.
+		VALIDATE((minimum_value_ <= maximum_value_),
+				"minimum_value (" + std::to_string(minimum_value_) + ") must be <= maximum_value (" +
+				std::to_string(maximum_value_) + ").");
 	}
 
 	std::unique_ptr<widget> builder_spinner::build() const
@@ -256,19 +247,9 @@ namespace implementation
 
 		widget->init_grid(*conf->grid);
 		widget->finalize_setup();
-
-		if(minimum_value_) { widget->set_minimum_value(minimum_value_); }
-		if(maximum_value_) { widget->set_maximum_value(*maximum_value_); }
-
+		widget->set_value_range(minimum_value_, maximum_value_);
 		widget->set_step_size(step_size_);
-
-		if((minimum_value_) && (value_ < *minimum_value_)) {
-			widget->set_value(*minimum_value_);
-		} else if((maximum_value_) && (value_ > *maximum_value_)) {
-			widget->set_value(*maximum_value_);
-		} else {
-			widget->set_value(value_);
-		}
+		widget->set_value(value_);
 
 		DBG_GUI_G << "Window builder: placed spinner '" << id
 			<< "' with definition '" << definition << "'.";
