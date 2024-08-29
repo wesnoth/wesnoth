@@ -926,13 +926,13 @@ void display::create_buttons()
 		action_work.push_back(std::move(b));
 	}
 
+	menu_buttons_ = std::move(menu_work);
+	action_buttons_ = std::move(action_work);
+
 	if (prevent_draw_) {
 		// buttons start hidden in this case
 		hide_buttons();
 	}
-
-	menu_buttons_ = std::move(menu_work);
-	action_buttons_ = std::move(action_work);
 
 	layout_buttons();
 	DBG_DP << "buttons created";
