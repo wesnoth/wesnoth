@@ -721,6 +721,8 @@ protected:
 	 */
 	virtual void draw_hex(const map_location& loc);
 
+	void draw_overlays_at(const map_location& loc);
+
 	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND};
 
 	void get_terrain_images(const map_location &loc,
