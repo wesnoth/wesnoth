@@ -109,10 +109,11 @@ int spinner::get_value()
 void spinner::set_step_size(unsigned step)
 {
 	// Limit step_size to max int so we can safely cast to int elsewhere.
-	if(step > static_cast<unsigned>(std::numeric_limits<int>::max())) {
-		DBG_GUI_G << "Requested step_size (" << step << ") must be <= " << std::to_string(std::numeric_limits<int>::max()) <<
-			", setting requested step_size to " << std::to_string(std::numeric_limits<int>::max()) << ".";
-		step = std::numeric_limits<int>::max();
+	const int limit = 655360; // ought to be enough for anybody
+	if(step > limit) {
+		DBG_GUI_G << "Requested step_size (" << step << ") must be <= " << limit <<
+			", setting requested step_size to " << limit << ".";
+		step = limit;
 	}
 
 	unsigned range = maximum_value_ - minimum_value_;
