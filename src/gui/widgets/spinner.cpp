@@ -106,29 +106,27 @@ int spinner::get_value()
 	return val;
 }
 
-void spinner::set_step_size(int step)
+void spinner::set_step_size(unsigned step)
 {
-	/* The spinner's range, and therefore the theorhetical maximum step size, can exceed max int
-	 * particularly when one or both of the values are set to "unlimited".  Cap step size at
-	 * min(max int, range).
-	 * */
+	// Limit step_size to max int so we can safely cast to int elsewhere.
+	if(step > static_cast<unsigned>(std::numeric_limits<int>::max())) {
+		DBG_GUI_G << "Requested step_size (" << step << ") must be <= " << std::to_string(std::numeric_limits<int>::max()) <<
+			", setting requested step_size to " << std::to_string(std::numeric_limits<int>::max()) << ".";
+		step = std::numeric_limits<int>::max();
+	}
+
 	unsigned range = maximum_value_ - minimum_value_;
-	int max_step = static_cast<int>(std::min<unsigned>(range, std::numeric_limits<int>::max()));
-	if(minimum_value_ + step > maximum_value_) { // min+step could overflow if you try hard enough
-		std::string str = "";
-		if(range > std::numeric_limits<int>::max()) {
-			str = ", and no greater than " + std::to_string(std::numeric_limits<int>::max());
-		}
+	if(step > range) {
 		DBG_GUI_G << "Requested step_size (" << step << ") must be <= the range (" << range <<
 			") allowed by min (" << minimum_value_ << ") and max (" << maximum_value_ <<
-		   	")" << str << ".  Setting step_size to " << max_step << ".";
-		step_size_ = max_step;
+		   	").  Setting step_size to " << range << ".";
+		step_size_ =  range;
 	} else {
-		step_size_ = std::min(step, max_step);
+		step_size_ = step;
 	}
 }
 
-int spinner::get_step_size() {
+unsigned spinner::get_step_size() {
 	return step_size_;
 }
 
@@ -153,8 +151,9 @@ int spinner::get_maximum_value() {
 void spinner::prev()
 {
 	const int value = get_value();
-	if(std::numeric_limits<int>::min() + step_size_ < value) {
-		set_value(value - step_size_);
+	const int step = static_cast<int>(step_size_);  // set_step_size() limits step_size_ to max int
+	if(std::numeric_limits<int>::min() + step < value) {
+		set_value(value - step);
 	} else {
 		set_value(std::numeric_limits<int>::min());
 	}
@@ -163,8 +162,9 @@ void spinner::prev()
 void spinner::next()
 {
 	const int value = get_value();
-	if(std::numeric_limits<int>::max() - step_size_ > value) {
-		set_value(value + step_size_);
+	const int step = static_cast<int>(step_size_);  // set_step_size() limits step_size_ to max int
+	if(std::numeric_limits<int>::max() - step > value) {
+		set_value(value + step);
 	} else {
 		set_value(std::numeric_limits<int>::max());
 	}
@@ -228,7 +228,7 @@ namespace implementation
 
 	builder_spinner::builder_spinner(const config& cfg)
 		: implementation::builder_styled_widget(cfg)
-		, step_size_(cfg["step_size"].to_int(1))
+		, step_size_(cfg["step_size"].to_unsigned(1))
 		, minimum_value_(cfg["minimum_value"].to_int(std::numeric_limits<int>::min()))
 		, maximum_value_(cfg["maximum_value"].to_int(std::numeric_limits<int>::max()))
 		, value_(cfg["value"].to_int(0))

@@ -57,9 +57,9 @@ public:
 
 	int get_value();
 
-	void set_step_size(int step);
+	void set_step_size(unsigned step);
 
-	int get_step_size();
+	unsigned get_step_size();
 
 	void set_value_range(int min, int max);
 
@@ -96,7 +96,7 @@ private:
 	/** The grid that holds the content. */
 	std::unique_ptr<grid> content_grid_;
 
-	int step_size_;
+	unsigned step_size_;
 
 	int minimum_value_;
 
@@ -151,7 +151,7 @@ struct builder_spinner : public builder_styled_widget
 
 	virtual std::unique_ptr<widget> build() const override;
 
-	int step_size_;
+	unsigned step_size_;
 
 	int minimum_value_;
 

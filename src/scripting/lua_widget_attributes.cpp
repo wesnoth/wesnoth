@@ -335,12 +335,12 @@ WIDGET_GETTER("min_value", utils::optional<int>, gui2::spinner)
 	}
 }
 
-WIDGET_GETTER("step_size", int, gui2::spinner)
+WIDGET_GETTER("step_size", unsigned, gui2::spinner)
 {
 	return w.get_step_size();
 }
 
-WIDGET_SETTER("step_size", int, gui2::spinner)
+WIDGET_SETTER("step_size", unsigned, gui2::spinner)
 {
 	w.set_step_size(value);
 }
