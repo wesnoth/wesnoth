@@ -2865,30 +2865,33 @@ void display::draw_overlays_at(const map_location& loc)
 			? image::get_lighted_texture(ov.image, lt)
 			: image::get_texture(ov.image, image::HEXED);
 
-		// Adjust submerge appropriately
-		const t_translation::terrain_code terrain = get_map().get_terrain(loc);
-		const terrain_type& terrain_info = get_map().get_terrain_info(terrain);
-		const double submerge = terrain_info.unit_submerge();
+		// Base submerge value for the terrain at this location
+		const double ter_sub = get_map().get_terrain_info(loc).unit_submerge();
 
-		drawing_buffer_add(drawing_layer::terrain_bg, loc, [this, tex, submerge](const rect& dest) mutable {
-			if(submerge > 0.0) {
-				submerge_data data = this->get_submerge_data(dest, submerge, tex.draw_size(), ALPHA_OPAQUE, false, false);
+		drawing_buffer_add(
+			drawing_layer::terrain_bg, loc, [this, tex, ter_sub, ovr_sub = ov.submerge](const rect& dest) mutable {
+				if(ovr_sub > 0.0) {
+					// Adjust submerge appropriately
+					double submerge = ter_sub * ovr_sub;
 
-				// set clip for dry part
-				// smooth_shaded doesn't use the clip information so it's fine to set it up front
-				// TODO: do we need to unset this?
-				tex.set_src(data.unsub_src);
+					submerge_data data
+						= this->get_submerge_data(dest, submerge, tex.draw_size(), ALPHA_OPAQUE, false, false);
 
-				// draw underwater part
-				draw::smooth_shaded(tex, data.alpha_verts);
+					// set clip for dry part
+					// smooth_shaded doesn't use the clip information so it's fine to set it up front
+					// TODO: do we need to unset this?
+					tex.set_src(data.unsub_src);
 
-				// draw dry part
-				draw::blit(tex, data.unsub_dest);
-			} else {
-				// draw whole texture
-				draw::blit(tex, dest);
-			}
-		});
+					// draw underwater part
+					draw::smooth_shaded(tex, data.alpha_verts);
+
+					// draw dry part
+					draw::blit(tex, data.unsub_dest);
+				} else {
+					// draw whole texture
+					draw::blit(tex, dest);
+				}
+			});
 	}
 }
 
