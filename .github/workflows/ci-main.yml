@@ -54,8 +54,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { tool: scons, cc: gcc,   cxx: g++,     cfg: debug,   lto: false, sys_lua: false }
-          - { tool: cmake, cc: clang, cxx: clang++, cfg: release, lto: true,  sys_lua: true  }
+          - { tool: scons, cc: gcc,   cxx: g++,     std: 20, cfg: debug,   lto: false, sys_lua: false }
+          - { tool: cmake, cc: clang, cxx: clang++, std: 17, cfg: release, lto: true,  sys_lua: true  }
     runs-on: ubuntu-latest
     container:
       image: wesnoth/wesnoth:2404-master
@@ -65,7 +65,7 @@ jobs:
         CFG: ${{ matrix.cfg }}
         CC: ${{ matrix.cc }}
         CXX: ${{ matrix.cxx }}
-        CXX_STD: 17
+        CXX_STD: ${{ matrix.std }}
         LTO: ${{ matrix.lto }}
         SYS_LUA: ${{ matrix.sys_lua }}
         CLICOLOR_FORCE: 1
