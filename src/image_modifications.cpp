@@ -1097,12 +1097,8 @@ REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 // xBRZ
 REGISTER_MOD_PARSER(XBRZ, args)
 {
-	int z = utils::from_chars<int>(args).value_or(0);
-	if(z < 1 || z > 5) {
-		z = 5; //only values 2 - 5 are permitted for xbrz scaling factors.
-	}
-
-	return std::make_unique<xbrz_modification>(z);
+	const int factor = std::clamp(utils::from_chars<int>(args).value_or(1), 1, 6);
+	return std::make_unique<xbrz_modification>(factor);
 }
 
 // Gaussian-like blur
