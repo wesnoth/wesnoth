@@ -686,8 +686,6 @@ public:
 	}
 
 private:
-	void init_flags_for_side_internal(std::size_t side, const std::string& side_color);
-
 	int blindfold_ctr_;
 
 protected:

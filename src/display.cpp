@@ -257,42 +257,28 @@ void display::set_theme(const std::string& new_theme)
 	queue_rerender();
 }
 
-void display::init_flags() {
-
+void display::init_flags()
+{
 	flags_.clear();
 	if (!dc_) return;
 	flags_.resize(dc_->teams().size());
 
-	std::vector<std::string> side_colors;
-	side_colors.reserve(dc_->teams().size());
-
 	for(const team& t : dc_->teams()) {
-		std::string side_color = t.color();
-		side_colors.push_back(side_color);
-		init_flags_for_side_internal(t.side() - 1, side_color);
+		reinit_flags_for_team(t);
 	}
 }
 
 void display::reinit_flags_for_team(const team& t)
 {
-	init_flags_for_side_internal(t.side() - 1, t.color());
-}
-
-void display::init_flags_for_side_internal(std::size_t n, const std::string& side_color)
-{
-	assert(dc_ != nullptr);
-	assert(n < dc_->teams().size());
-	assert(n < flags_.size());
-
-	std::string flag = dc_->teams()[n].flag();
+	std::string flag = t.flag();
 	std::string old_rgb = game_config::flag_rgb;
-	std::string new_rgb = side_color;
+	std::string new_rgb = t.color();
 
 	if(flag.empty()) {
 		flag = game_config::images::flag;
 	}
 
-	LOG_DP << "Adding flag for team " << n << " from animation " << flag;
+	LOG_DP << "Adding flag for side " << t.side() << " from animation " << flag;
 
 	// Must recolor flag image
 	animated<image::locator> temp_anim;
@@ -309,7 +295,7 @@ void display::init_flags_for_side_internal(std::size_t n, const std::string& sid
 			try {
 				time = std::max<int>(1, std::stoi(sub_items.back()));
 			} catch(const std::invalid_argument&) {
-				ERR_DP << "Invalid time value found when constructing flag for side " << n << ": " << sub_items.back();
+				ERR_DP << "Invalid time value found when constructing flag for side " << t.side() << ": " << sub_items.back();
 			}
 		}
 
@@ -319,15 +305,14 @@ void display::init_flags_for_side_internal(std::size_t n, const std::string& sid
 		temp_anim.add_frame(time, flag_image);
 	}
 
-	animated<image::locator>& f = flags_[n];
+	animated<image::locator>& f = flags_[t.side() - 1];
 	f = temp_anim;
 	auto time = f.get_end_time();
 	if (time > 0) {
 		f.start_animation(randomness::rng::default_instance().get_random_int(0, time-1), true);
-	}
-	else {
+	} else {
 		// this can happen if both flag and game_config::images::flag are empty.
-		ERR_DP << "missing flag for team" << n;
+		ERR_DP << "missing flag for side " << t.side();
 	}
 }
 
