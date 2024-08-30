@@ -326,8 +326,6 @@ bool has_hotkey_command(const std::string& id);
 class wml_hotkey_record
 {
 public:
-	wml_hotkey_record() = default;
-
 	/** Don't allow copying so objects don't get erased early. */
 	wml_hotkey_record(const wml_hotkey_record&) = delete;
 	const wml_hotkey_record& operator=(const wml_hotkey_record&) = delete;
