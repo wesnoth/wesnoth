@@ -273,6 +273,34 @@ bool frame_parsed_parameters::need_update() const
 
 const frame_parameters frame_parsed_parameters::parameters(int current_time) const
 {
+#ifdef __cpp_designated_initializers
+	return {
+		.duration = duration_,
+		.image = image_.get_current_element(current_time),
+		.image_diagonal = image_diagonal_.get_current_element(current_time),
+		.image_mod = image_mod_,
+		.halo = halo_.get_current_element(current_time),
+		.halo_x = halo_x_.get_current_element(current_time),
+		.halo_y = halo_y_.get_current_element(current_time),
+		.halo_mod = halo_mod_,
+		.sound = sound_,
+		.text = text_,
+		.text_color = text_color_,
+		.blend_with = blend_with_,
+		.blend_ratio = blend_ratio_.get_current_element(current_time),
+		.highlight_ratio = highlight_ratio_.get_current_element(current_time,1.0),
+		.offset = offset_.get_current_element(current_time,-1000),
+		.submerge = submerge_.get_current_element(current_time),
+		.x = x_.get_current_element(current_time),
+		.y = y_.get_current_element(current_time),
+		.directional_x = directional_x_.get_current_element(current_time),
+		.directional_y = directional_y_.get_current_element(current_time),
+		.auto_vflip = auto_vflip_,
+		.auto_hflip = auto_hflip_,
+		.primary_frame = primary_frame_,
+		.drawing_layer = drawing_layer_.get_current_element(current_time, get_abs_frame_layer(drawing_layer::unit_default)),
+	};
+#else
 	frame_parameters result;
 	result.duration = duration_;
 	result.image = image_.get_current_element(current_time);
@@ -299,6 +327,7 @@ const frame_parameters frame_parsed_parameters::parameters(int current_time) con
 	result.primary_frame = primary_frame_;
 	result.drawing_layer = drawing_layer_.get_current_element(current_time, get_abs_frame_layer(drawing_layer::unit_default));
 	return result;
+#endif
 }
 
 void frame_parsed_parameters::override(int duration,
