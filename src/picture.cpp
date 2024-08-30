@@ -239,8 +239,7 @@ std::ostream& operator<<(std::ostream& s, const locator& l)
 }
 
 locator::locator(const std::string& fn)
-	: type_(FILE)
-	, filename_(fn)
+	: filename_(fn)
 {
 	if(filename_.empty()) {
 		return;
@@ -260,6 +259,8 @@ locator::locator(const std::string& fn)
 		type_ = SUB_FILE;
 		modifications_ = filename_.substr(markup_field, filename_.size() - markup_field);
 		filename_ = filename_.substr(0, markup_field);
+	} else {
+		type_ = FILE;
 	}
 }
 
