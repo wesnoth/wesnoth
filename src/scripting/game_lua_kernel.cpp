@@ -5887,7 +5887,7 @@ bool game_lua_kernel::run_filter(char const *name, const unit& u)
 */
 bool game_lua_kernel::run_filter(char const *name, int nArgs)
 {
-	map_locker(this);
+	auto ml = map_locker(this);
 	lua_State *L = mState;
 	// Get the user filter by name.
 	const std::vector<std::string>& path = utils::split(name, '.', utils::STRIP_SPACES);
@@ -5919,7 +5919,7 @@ std::string game_lua_kernel::apply_effect(const std::string& name, unit& u, cons
 	luaW_pushconfig(L, cfg);
 	// Stack: unit, cfg
 	if(luaW_getglobal(L, "wesnoth", "effects", name)) {
-		map_locker(this);
+		auto ml = map_locker(this);
 		// Stack: unit, cfg, effect
 		if(lua_istable(L, -1)) {
 			// Effect is implemented by a table with __call and __descr

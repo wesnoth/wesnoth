@@ -129,7 +129,7 @@ void builder_window::read(const config& cfg)
 	DBG_GUI_P << "Window builder: reading data for window " << id_ << ".";
 
 	config::const_child_itors cfgs = cfg.child_range("resolution");
-	VALIDATE(!cfgs.empty(), _("No resolution defined."));
+	VALIDATE(!cfgs.empty(), _("No resolution defined for ") + id_);
 
 	for(const auto& i : cfgs) {
 		resolutions.emplace_back(i);

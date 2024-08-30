@@ -21,6 +21,7 @@
 #pragma once
 
 #include <ctime>
+#include <cstdint>
 #include <fstream>
 #include <iosfwd>
 #include <memory>
@@ -469,10 +470,9 @@ utils::optional<std::string> get_binary_file_location(const std::string& type, c
 utils::optional<std::string> get_binary_dir_location(const std::string &type, const std::string &filename);
 
 /**
- * Returns a complete path to the actual WML file or directory, if either exists.
+ * Returns a translated path to the actual file or directory, if it exists. @a current_dir is needed to resolve a path starting with ".".
  */
-utils::optional<std::string> get_wml_location(const std::string &filename,
-	const std::string &current_dir = std::string());
+utils::optional<std::string> get_wml_location(const std::string& path, const utils::optional<std::string>& current_dir = utils::nullopt);
 
 /**
  * Returns a short path to @a filename, skipping the (user) data directory.
