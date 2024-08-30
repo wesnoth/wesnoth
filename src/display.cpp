@@ -318,17 +318,15 @@ void display::reinit_flags_for_team(const team& t)
 
 texture display::get_flag(const map_location& loc)
 {
-	if(!get_map().is_village(loc)) {
-		return texture();
-	}
-
-	for (const team& t : dc_->teams()) {
-		if (t.owns_village(loc) && (!fogged(loc) || !dc_->get_team(viewing_side()).is_enemy(t.side())))
-		{
+	for(const team& t : dc_->teams()) {
+		if(t.owns_village(loc) && (!fogged(loc) || !dc_->get_team(viewing_side()).is_enemy(t.side()))) {
 			auto& flag = flags_[t.side() - 1];
 			flag.update_last_draw_time();
-			const image::locator &image_flag = animate_map_ ?
-				flag.get_current_frame() : flag.get_first_frame();
+
+			const image::locator& image_flag = animate_map_
+				? flag.get_current_frame()
+				: flag.get_first_frame();
+
 			return image::get_texture(image_flag, image::TOD_COLORED);
 		}
 	}
@@ -2693,7 +2691,10 @@ void display::draw_hex(const map_location& loc)
 		draw_overlays_at(loc);
 
 		// village-control flags.
-		drawing_buffer_add(drawing_layer::terrain_bg, loc, [tex = get_flag(loc)](const rect& dest) { draw::blit(tex, dest); });
+		if(get_map().is_village(loc)) {
+			drawing_buffer_add(drawing_layer::terrain_bg, loc,
+				[tex = get_flag(loc)](const rect& dest) { draw::blit(tex, dest); });
+		}
 	}
 
 	// Draw the time-of-day mask on top of the terrain in the hex.
