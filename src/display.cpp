@@ -380,12 +380,6 @@ std::string display::remove_exclusive_draw(const map_location& loc)
 	return id;
 }
 
-const time_of_day & display::get_time_of_day(const map_location& /*loc*/) const
-{
-	static time_of_day tod;
-	return tod;
-}
-
 void display::update_tod(const time_of_day* tod_override)
 {
 	const time_of_day* tod = tod_override;

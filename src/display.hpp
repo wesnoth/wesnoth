@@ -661,8 +661,7 @@ private:
 	void draw_minimap();
 
 public:
-
-	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location()) const;
+	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location()) const = 0;
 
 	virtual bool has_time_area() const {return false;}
 
