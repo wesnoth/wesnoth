@@ -16,11 +16,12 @@
 #pragma once
 
 class config;
-class filter_context;
+class game_board;
 
 #include "display.hpp"
 #include "display_chat_manager.hpp"
 #include "pathfind/pathfind.hpp"
+
 
 // This needs to be separate from display.h because of the static
 // singleton member, which will otherwise trigger link failure
@@ -29,12 +30,11 @@ class filter_context;
 class game_display : public display
 {
 public:
-	game_display(
-		const filter_context& fc,
-		std::weak_ptr<wb::manager> wb,
-		reports & reports_object,
-		const std::string& theme_id,
-		const config& level);
+	game_display(game_board& board,
+			std::weak_ptr<wb::manager> wb,
+			reports & reports_object,
+			const std::string& theme_id,
+			const config& level);
 
 	~game_display();
 
@@ -231,8 +231,6 @@ public:
 	bool maybe_rebuild();
 
 private:
-	const filter_context& fc_;
-
 	overlay_map overlay_map_;
 
 	// Locations of the attack direction indicator's parts

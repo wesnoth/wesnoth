@@ -239,7 +239,7 @@ void play_controller::init(const config& level)
 		LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks());
 		gui2::dialogs::loading_screen::progress(loading_stage::build_terrain);
 
-		gui_.reset(new game_display(gamestate(), whiteboard_manager_, *gamestate().reports_, theme(), level));
+		gui_.reset(new game_display(gamestate().board_, whiteboard_manager_, *gamestate().reports_, theme(), level));
 		map_start_ = map_location(level.child_or_empty("display").child_or_empty("location"));
 		if(start_faded_) {
 			gui_->set_fade({0,0,0,255});
