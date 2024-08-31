@@ -111,8 +111,6 @@ public:
 	/** The playing team is the team whose turn it is. */
 	std::size_t playing_team() const { return activeTeam_; }
 
-	bool team_valid() const;
-
 	/**
 	 * The viewing team is the team currently viewing the game. It's the team whose gold and income
 	 * is shown in the top bar of the default theme.

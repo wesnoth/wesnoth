@@ -661,11 +661,6 @@ const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 	return res;
 }
 
-bool display::team_valid() const
-{
-	return currentTeam_ < dc_->teams().size();
-}
-
 bool display::shrouded(const map_location& loc) const
 {
 	return is_blindfolded() || (dont_show_all_ && dc_->teams()[currentTeam_].shrouded(loc));
