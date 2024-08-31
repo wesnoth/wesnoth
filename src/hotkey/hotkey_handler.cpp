@@ -72,15 +72,15 @@ const game_state & play_controller::hotkey_handler::gamestate() const {
 bool play_controller::hotkey_handler::browse() const { return play_controller_.is_browsing(); }
 bool play_controller::hotkey_handler::linger() const { return play_controller_.is_linger_mode(); }
 
-const team & play_controller::hotkey_handler::viewing_team() const { return play_controller_.get_teams()[gui()->viewing_team()]; }
-bool play_controller::hotkey_handler::viewing_team_is_playing() const { return gui()->viewing_team() == gui()->playing_team(); }
+const team & play_controller::hotkey_handler::viewing_team() const { return play_controller_.get_teams()[gui()->viewing_team_index()]; }
+bool play_controller::hotkey_handler::viewing_team_is_playing() const { return gui()->viewing_team_index() == gui()->playing_team_index(); }
 
 void play_controller::hotkey_handler::objectives(){
 	menu_handler_.objectives();
 }
 
 void play_controller::hotkey_handler::show_statistics(){
-	menu_handler_.show_statistics(gui()->viewing_team()+1);
+	menu_handler_.show_statistics(gui()->viewing_team_index()+1);
 }
 
 void play_controller::hotkey_handler::unit_list(){

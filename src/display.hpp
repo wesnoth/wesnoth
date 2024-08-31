@@ -109,7 +109,7 @@ public:
 	const std::vector<team>& get_teams() const {return dc_->teams();}
 
 	/** The playing team is the team whose turn it is. */
-	std::size_t playing_team() const { return activeTeam_; }
+	std::size_t playing_team_index() const { return activeTeam_; }
 
 	/**
 	 * The viewing team is the team currently viewing the game. It's the team whose gold and income
@@ -119,9 +119,10 @@ public:
 	 *
 	 * The value returned is a 0-based index into the vector returned by get_teams().
 	 */
-	std::size_t viewing_team() const { return currentTeam_; }
+	std::size_t viewing_team_index() const { return currentTeam_; }
+
 	/**
-	 * The 1-based equivalent of the 0-based viewing_team() function. This is the side-number that
+	 * The 1-based equivalent of the 0-based viewing_team_index() function. This is the side-number that
 	 * WML uses.
 	 *
 	 * TODO: provide a better interface in a better place (consistent base numbers, and not in a GUI

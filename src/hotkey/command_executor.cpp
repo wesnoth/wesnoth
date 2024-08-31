@@ -404,7 +404,7 @@ void command_executor::surrender_game() {
 	if(gui2::show_message(_("Surrender"), _("Do you really want to surrender the game?"), gui2::dialogs::message::yes_no_buttons) != gui2::retval::CANCEL) {
 		playmp_controller* pmc = dynamic_cast<playmp_controller*>(resources::controller);
 		if(pmc && !pmc->is_linger_mode() && !pmc->is_observer()) {
-			pmc->surrender(display::get_singleton()->viewing_team());
+			pmc->surrender(display::get_singleton()->viewing_team_index());
 		}
 	}
 }
