@@ -2702,11 +2702,17 @@ void display::draw_hex(const map_location& loc)
 	}
 
 	// Paint arrows
-	arrows_map_t::const_iterator arrows_in_hex = arrows_map_.find(loc);
-	if(arrows_in_hex != arrows_map_.end()) {
-		for (arrow* const a : arrows_in_hex->second) {
-			a->draw_hex(loc);
+	if(auto arrows_in_hex = arrows_map_.find(loc); arrows_in_hex != arrows_map_.end()) {
+		std::vector<texture> to_draw;
+		for(const arrow* a : arrows_in_hex->second) {
+			to_draw.push_back(image::get_texture(a->get_image_for_loc(loc)));
 		}
+
+		drawing_buffer_add(drawing_layer::arrows, loc, [to_draw = std::move(to_draw)](const rect& dest) {
+			for(const texture& t : to_draw) {
+				draw::blit(t, dest);
+			}
+		});
 	}
 
 	// Apply shroud, fog and linger overlay

@@ -961,10 +961,8 @@ private:
 	/** Currently set debug flags. */
 	std::bitset<__NUM_DEBUG_FLAGS> debug_flags_;
 
-	typedef std::list<arrow*> arrows_list_t;
-	typedef std::map<map_location, arrows_list_t > arrows_map_t;
 	/** Maps the list of arrows for each location */
-	arrows_map_t arrows_map_;
+	std::map<map_location, std::list<arrow*>> arrows_map_;
 
 	tod_color color_adjust_;
 

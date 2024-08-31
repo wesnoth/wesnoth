@@ -74,7 +74,7 @@ public:
 
 	bool path_contains(const map_location& hex) const;
 
-	virtual void draw_hex(const map_location& hex);
+	image::locator get_image_for_loc(const map_location& hex) const;
 
 	/** Checks that the path is not of length 0 or 1 */
 	static bool valid_path(const arrow_path_t& path);
@@ -90,8 +90,6 @@ protected:
 	 * Invalidates every hex along the path.
 	 */
 	virtual void update_symbols();
-
-	drawing_layer layer_;
 
 	std::string color_;
 	/** represents the subdirectory that holds images for this arrow style */
