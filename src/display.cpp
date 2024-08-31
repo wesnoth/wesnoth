@@ -421,12 +421,6 @@ void display::fill_images_list(const std::string& prefix, std::vector<std::strin
 		images.emplace_back();
 }
 
-const std::string& display::get_variant(const std::vector<std::string>& variants, const map_location &loc)
-{
-	//TODO use better noise function
-	return variants[std::abs(loc.x + loc.y) % variants.size()];
-}
-
 void display::rebuild_all()
 {
 	builder_->rebuild_all();
@@ -2717,17 +2711,15 @@ void display::draw_hex(const map_location& loc)
 
 	// Apply shroud, fog and linger overlay
 
-	if(is_shrouded) {
-		// We apply void also on off-map tiles to shroud the half-hexes too
+	if(is_shrouded || fogged(loc)) {
+		// TODO: better noise function
+		const auto get_variant = [&loc](const std::vector<std::string>& variants) -> const auto& {
+			return variants[std::abs(loc.x + loc.y) % variants.size()];
+		};
+
+		const std::string& img = get_variant(is_shrouded ? shroud_images_ : fog_images_);
 		drawing_buffer_add(drawing_layer::fog_shroud, loc,
-			[tex = image::get_texture(get_variant(shroud_images_, loc), image::TOD_COLORED)](const rect& dest) {
-				draw::blit(tex, dest);
-			});
-	} else if(fogged(loc)) {
-		drawing_buffer_add(drawing_layer::fog_shroud, loc,
-			[tex = image::get_texture(get_variant(fog_images_, loc), image::TOD_COLORED)](const rect& dest) {
-				draw::blit(tex, dest);
-			});
+			[tex = image::get_texture(img, image::TOD_COLORED)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
 	if(!is_shrouded) {

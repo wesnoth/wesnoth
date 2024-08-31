@@ -732,8 +732,6 @@ protected:
 
 	static void fill_images_list(const std::string& prefix, std::vector<std::string>& images);
 
-	static const std::string& get_variant(const std::vector<std::string>& variants, const map_location &loc);
-
 	std::size_t currentTeam_;
 	bool dont_show_all_; //const team *viewpoint_;
 	/**
