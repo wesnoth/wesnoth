@@ -31,6 +31,10 @@ class game_config_manager
 public:
 	game_config_manager(const commandline_options& cmdline_opts);
 	~game_config_manager();
+
+	game_config_manager(const game_config_manager&) = delete;
+	game_config_manager& operator=(const game_config_manager&) = delete;
+
 	enum FORCE_RELOAD_CONFIG
 	{
 		/** Always reload config */
@@ -55,12 +59,9 @@ public:
 
 	static game_config_manager * get();
 
-
 private:
 	void set_enabled_addon(std::set<std::string> addon_ids);
 	void set_enabled_addon_all();
-	game_config_manager(const game_config_manager&);
-	void operator=(const game_config_manager&);
 
 	void load_game_config(bool reload_everything, const game_classification* classification, const std::string& scenario_id);
 
