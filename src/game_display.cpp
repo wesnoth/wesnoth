@@ -24,6 +24,7 @@
 #include "cursor.hpp"
 #include "display_chat_manager.hpp"
 #include "fake_unit_manager.hpp"
+#include "filter_context.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp"
 #include "preferences/preferences.hpp"
@@ -60,12 +61,14 @@ std::map<map_location, int> game_display::debugHighlights_;
  */
 std::vector<texture> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_);
 
-game_display::game_display(game_board& board,
+game_display::game_display(
+		const filter_context& fc,
 		std::weak_ptr<wb::manager> wb,
 		reports& reports_object,
 		const std::string& theme_id,
 		const config& level)
-	: display(&board, wb, reports_object, theme_id, level)
+	: display(&fc.get_disp_context(), wb, reports_object, theme_id, level)
+	, fc_(fc)
 	, overlay_map_()
 	, attack_indicator_src_()
 	, attack_indicator_dst_()
@@ -91,8 +94,8 @@ game_display::~game_display()
 void game_display::new_turn()
 {
 	if(!first_turn_) {
-		const time_of_day& tod = resources::tod_manager->get_time_of_day();
-		const time_of_day& old_tod = resources::tod_manager->get_previous_time_of_day();
+		const time_of_day& tod = fc_.get_tod_man().get_time_of_day();
+		const time_of_day& old_tod = fc_.get_tod_man().get_previous_time_of_day();
 
 		if(old_tod.image_mask != tod.image_mask) {
 			fade_tod_mask(old_tod.image_mask, tod.image_mask);
@@ -335,12 +338,12 @@ void game_display::draw_hex(const map_location& loc)
 
 const time_of_day& game_display::get_time_of_day(const map_location& loc) const
 {
-	return resources::tod_manager->get_time_of_day(loc);
+	return fc_.get_tod_man().get_time_of_day(loc);
 }
 
 bool game_display::has_time_area() const
 {
-	return resources::tod_manager->has_time_area();
+	return fc_.get_tod_man().has_time_area();
 }
 
 void game_display::layout()
