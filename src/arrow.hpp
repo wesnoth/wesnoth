@@ -35,25 +35,25 @@ public:
 	arrow& operator=(const arrow&) = delete;
 
 	explicit arrow(bool hidden = false);
-	virtual ~arrow();
+	~arrow();
 
 	/** Sets the arrow's visibility */
 	void hide();
 	void show();
 
-	virtual void set_path(const arrow_path_t& path);
+	void set_path(const arrow_path_t& path);
 
 	/** invalidates and clears the present path, forgets the previous path, clears the symbols map */
-	virtual void reset();
+	void reset();
 
 	/**
 	 * The string color parameter is in the same format expected by the
 	 * image::locator modifiers parameter. Examples: red is "red" or "FF0000" or "255,0,0".
 	 * Feel free to add another method that accepts an uint32_t as a parameter instead.
 	 */
-	virtual void set_color(const std::string& color);
+	void set_color(const std::string& color);
 
-	virtual std::string get_color() const { return color_; }
+	std::string get_color() const { return color_; }
 
 	/**
 	 * The style is simply the name of a subdirectory under images/arrows,
@@ -81,15 +81,15 @@ public:
 	/** Invalidates every hex along the given path */
 	static void invalidate_arrow_path(const arrow_path_t& path);
 
-	virtual void notify_arrow_changed();
+	void notify_arrow_changed();
 
-protected:
+private:
 
 	/**
 	 * Calculate the symbols to place along the arrow path.
 	 * Invalidates every hex along the path.
 	 */
-	virtual void update_symbols();
+	void update_symbols();
 
 	std::string color_;
 	/** represents the subdirectory that holds images for this arrow style */
