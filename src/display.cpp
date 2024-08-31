@@ -2731,10 +2731,9 @@ void display::draw_hex(const map_location& loc)
 	}
 
 	if(debug_flag_set(DEBUG_FOREGROUND)) {
+		using namespace std::string_literals;
 		drawing_buffer_add(drawing_layer::unit_default, loc,
-			[tex = image::get_texture(image::locator{"terrain/foreground.png"}, image::TOD_COLORED)](const rect& dest) {
-				draw::blit(tex, dest);
-			});
+			[tex = image::get_texture("terrain/foreground.png"s)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
 	if(on_map) {
