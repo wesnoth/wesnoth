@@ -126,8 +126,6 @@ public:
 		return gamestate().end_level_data_.has_value();
 	}
 
-	bool check_regular_game_end();
-
 	const end_level_data& get_end_level_data() const
 	{
 		return *gamestate().end_level_data_;
