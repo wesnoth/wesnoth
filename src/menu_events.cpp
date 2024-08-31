@@ -142,7 +142,7 @@ void menu_handler::status_table()
 {
 	int selected_side;
 
-	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team(), selected_side)) {
+	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team_index(), selected_side)) {
 		gui_->scroll_to_leader(selected_side);
 	}
 }
@@ -223,7 +223,7 @@ bool menu_handler::has_friends() const
 	}
 
 	for(std::size_t n = 0; n != pc_.get_teams().size(); ++n) {
-		if(n != gui_->viewing_team() && pc_.get_teams()[gui_->viewing_team()].team_name() == pc_.get_teams()[n].team_name()
+		if(n != gui_->viewing_team_index() && pc_.get_teams()[gui_->viewing_team_index()].team_name() == pc_.get_teams()[n].team_name()
 				&& pc_.get_teams()[n].is_network()) {
 			return true;
 		}
@@ -471,7 +471,7 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 				&& !invisible) {
 			const unit_movement_resetter move_reset(u);
 			const pathfind::paths& path
-					= pathfind::paths(u, false, true, pc_.get_teams()[gui_->viewing_team()], 0, false, ignore_units);
+					= pathfind::paths(u, false, true, pc_.get_teams()[gui_->viewing_team_index()], 0, false, ignore_units);
 
 			gui_->highlight_another_reach(path, hex_under_mouse);
 		}
@@ -669,12 +669,12 @@ unit_map::iterator menu_handler::current_unit()
 	const mouse_handler& mousehandler = pc_.get_mouse_handler_base();
 	const bool see_all = gui_->show_everything() || (pc_.is_replay() && pc_.get_replay_controller()->see_all());
 
-	unit_map::iterator res = board().find_visible_unit(mousehandler.get_last_hex(), pc_.get_teams()[gui_->viewing_team()], see_all);
+	unit_map::iterator res = board().find_visible_unit(mousehandler.get_last_hex(), pc_.get_teams()[gui_->viewing_team_index()], see_all);
 	if(res != pc_.get_units().end()) {
 		return res;
 	}
 
-	return board().find_visible_unit(mousehandler.get_selected_hex(), pc_.get_teams()[gui_->viewing_team()], see_all);
+	return board().find_visible_unit(mousehandler.get_selected_hex(), pc_.get_teams()[gui_->viewing_team_index()], see_all);
 }
 
 // Helpers for create_unit()
@@ -820,7 +820,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 		} else {
 			color = team::get_side_color(gui_->viewing_side());
 		}
-		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team(), team_name, color);
+		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team_index(), team_name, color);
 		if(res) {
 			resources::recorder->add_label(res);
 		}
@@ -1340,7 +1340,7 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 		if(board().is_observer()) {
 			cfg["to_sides"] = game_config::observer_team_name;
 		} else {
-			cfg["to_sides"] = pc_.get_teams()[gui_->viewing_team()].allied_human_teams();
+			cfg["to_sides"] = pc_.get_teams()[gui_->viewing_team_index()].allied_human_teams();
 		}
 	}
 
@@ -1403,7 +1403,7 @@ void menu_handler::do_search(const std::string& new_search)
 				if(std::search(
 						   name.begin(), name.end(), last_search_.begin(), last_search_.end(), utils::chars_equal_insensitive)
 						!= name.end()) {
-					if(!pc_.get_teams()[gui_->viewing_team()].is_enemy(ui->side())
+					if(!pc_.get_teams()[gui_->viewing_team_index()].is_enemy(ui->side())
 							|| !ui->invisible(ui->get_location())) {
 						found = true;
 					}

@@ -95,7 +95,7 @@ static std::string flush(std::ostringstream &s)
 
 static const time_of_day get_visible_time_of_day_at(const reports::context& rc, const map_location & hex)
 {
-	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+	const team &viewing_team = rc.teams()[rc.screen().viewing_team_index()];
 	if (viewing_team.shrouded(hex)) {
 		// Don't show time on shrouded tiles.
 		return rc.tod().get_time_of_day();
@@ -128,21 +128,21 @@ static char const *naps = "</span>";
 static const unit *get_visible_unit(const reports::context& rc)
 {
 	return rc.dc().get_visible_unit(rc.screen().displayed_unit_hex(),
-		rc.teams()[rc.screen().viewing_team()],
+		rc.teams()[rc.screen().viewing_team_index()],
 		rc.screen().show_everything());
 }
 
 static const unit *get_selected_unit(const reports::context& rc)
 {
 	return rc.dc().get_visible_unit(rc.screen().selected_hex(),
-		rc.teams()[rc.screen().viewing_team()],
+		rc.teams()[rc.screen().viewing_team_index()],
 		rc.screen().show_everything());
 }
 
 static unit_const_ptr get_selected_unit_ptr(const reports::context& rc)
 {
 	return rc.dc().get_visible_unit_shared_ptr(rc.screen().selected_hex(),
-		rc.teams()[rc.screen().viewing_team()],
+		rc.teams()[rc.screen().viewing_team_index()],
 		rc.screen().show_everything());
 }
 
@@ -448,7 +448,7 @@ static config unit_abilities(const unit* u, const map_location& loc)
 REPORT_GENERATOR(unit_abilities, rc)
 {
 	const unit *u = get_visible_unit(rc);
-	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+	const team &viewing_team = rc.teams()[rc.screen().viewing_team_index()];
 	const map_location& mouseover_hex = rc.screen().mouseover_hex();
 	const map_location& displayed_unit_hex = rc.screen().displayed_unit_hex();
 	const map_location& hex = (mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex)) ? mouseover_hex : displayed_unit_hex;
@@ -461,7 +461,7 @@ REPORT_GENERATOR(selected_unit_abilities, rc)
 
 	const map_location& mouseover_hex = rc.screen().mouseover_hex();
 	const unit *visible_unit = get_visible_unit(rc);
-	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+	const team &viewing_team = rc.teams()[rc.screen().viewing_team_index()];
 
 	if (visible_unit && u && visible_unit->id() != u->id() && mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex))
 		return unit_abilities(u, mouseover_hex);
@@ -615,7 +615,7 @@ static config unit_defense(const reports::context& rc, const unit* u, const map_
 REPORT_GENERATOR(unit_defense,rc)
 {
 	const unit *u = get_visible_unit(rc);
-	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+	const team &viewing_team = rc.teams()[rc.screen().viewing_team_index()];
 	const map_location& mouseover_hex = rc.screen().mouseover_hex();
 	const map_location& displayed_unit_hex = rc.screen().displayed_unit_hex();
 	const map_location& hex = (mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex)) ? mouseover_hex : displayed_unit_hex;
@@ -908,7 +908,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		std::map<int, std::set<std::string>, std::greater<int>> resistances;
 		std::set<std::string> seen_types;
 		const team &unit_team = rc.dc().get_team(u.side());
-		const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+		const team &viewing_team = rc.teams()[rc.screen().viewing_team_index()];
 		for (const unit &enemy : rc.units())
 		{
 			if (enemy.incapacitated()) //we can't attack statues so don't display them in this tooltip
@@ -1696,7 +1696,7 @@ REPORT_GENERATOR(position, rc)
 	str << mouseover_hex;
 
 	const unit *u = get_visible_unit(rc);
-	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+	const team &viewing_team = rc.teams()[rc.screen().viewing_team_index()];
 	if (!u ||
 	    (displayed_unit_hex != mouseover_hex &&
 	     displayed_unit_hex != rc.screen().selected_hex()) ||
@@ -1717,7 +1717,7 @@ REPORT_GENERATOR(position, rc)
 
 REPORT_GENERATOR(side_playing, rc)
 {
-	const team &active_team = rc.teams()[rc.screen().playing_team()];
+	const team &active_team = rc.teams()[rc.screen().playing_team_index()];
 	std::string flag_icon = active_team.flag_icon();
 	std::string old_rgb = game_config::flag_rgb;
 	std::string new_rgb = team::get_side_color_id(rc.screen().playing_side());
