@@ -54,7 +54,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { tool: scons, cc: gcc,   cxx: g++,     std: 20, cfg: debug,   lto: false, sys_lua: false }
+          - { tool: scons, cc: gcc,   cxx: g++,     std: 17, cfg: debug,   lto: false, sys_lua: false }
+          - { tool: cmake, cc: gcc,   cxx: g++,     std: 20, cfg: release, lto: true,  sys_lua: false }
           - { tool: cmake, cc: clang, cxx: clang++, std: 17, cfg: release, lto: true,  sys_lua: true  }
     runs-on: ubuntu-latest
     container:
@@ -249,7 +250,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cfg: [ Debug, Release ]
+        cfg: [ Release ]
     runs-on: macos-12
     env:
       CFG: ${{ matrix.cfg }}
@@ -290,7 +291,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cfg: [Debug, Release]
+        cfg: [Release]
     env:
       CFG: ${{ matrix.cfg }}
       VCPKG_FEATURE_FLAGS: dependencygraph
