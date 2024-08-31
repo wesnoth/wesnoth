@@ -829,7 +829,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 
 void menu_handler::clear_labels()
 {
-	if(gui_->team_valid() && !board().is_observer()) {
+	if(!board().is_observer()) {
 		const int res = gui2::show_message(
 			_("Clear Labels"),
 			_("Are you sure you want to clear map labels?"),

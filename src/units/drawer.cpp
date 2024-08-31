@@ -156,11 +156,6 @@ unit_drawer::unit_drawer(display& thedisp)
 	if(const game_display* game_display = dynamic_cast<class game_display*>(&disp)) {
 		units_that_can_reach_goal = game_display->units_that_can_reach_goal();
 	}
-
-	// This used to be checked in the drawing code, where it simply triggered skipping some logic.
-	// However, I think it's obsolete, and that the initialization of viewing_team_ref would already
-	// be undefined behavior in the situation where this assert fails.
-	assert(disp.team_valid());
 }
 
 void unit_drawer::redraw_unit(const unit& u) const

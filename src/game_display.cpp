@@ -347,9 +347,6 @@ void game_display::layout()
 {
 	display::layout();
 
-	if ( !team_valid() )
-		return;
-
 	refresh_report("report_clock");
 	refresh_report("report_battery");
 	refresh_report("report_countdown");
@@ -629,11 +626,7 @@ void game_display::clear_attack_indicator()
 
 std::string game_display::current_team_name() const
 {
-	if (team_valid())
-	{
-		return dc_->teams()[currentTeam_].team_name();
-	}
-	return std::string();
+	return dc_->teams()[currentTeam_].team_name();
 }
 
 void game_display::begin_game()
