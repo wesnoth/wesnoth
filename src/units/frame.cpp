@@ -271,7 +271,7 @@ bool frame_parsed_parameters::need_update() const
 	return !this->does_not_change();
 }
 
-const frame_parameters frame_parsed_parameters::parameters(int current_time) const
+frame_parameters frame_parsed_parameters::parameters(int current_time) const
 {
 #ifdef __cpp_designated_initializers
 	return {
