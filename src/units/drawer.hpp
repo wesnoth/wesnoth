@@ -45,10 +45,7 @@ private:
 	display & disp;
 	const display_context & dc;
 	const gamemap & map;
-	const std::vector<team> & teams;
 	halo::manager & halo_man;
-	std::size_t viewing_team;
-	std::size_t playing_team;
 	const team & viewing_team_ref;
 	const team & playing_team_ref;
 	bool is_blindfolded;
