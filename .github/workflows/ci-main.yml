@@ -271,6 +271,7 @@ jobs:
           [ -x "build/$CFG/unit_tests" ] || { printf 'Failed to build unit test executable!\n' >&2; exit 1; }
       - name: Create disk image
         working-directory: projectfiles/Xcode
+        continue-on-error: true  # allow failures since this is not essential and it does fail spuriously (hdiutil: create failed - Resource busy)
         run: hdiutil create -volname "Wesnoth_$CFG" -fs 'HFS+' -srcfolder "build/$CFG" -ov -format UDBZ "Wesnoth_${CFG}.dmg"
       - name: Upload disk image
         uses: actions/upload-artifact@v4
