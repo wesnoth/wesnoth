@@ -72,7 +72,6 @@ const game_state & play_controller::hotkey_handler::gamestate() const {
 bool play_controller::hotkey_handler::browse() const { return play_controller_.is_browsing(); }
 bool play_controller::hotkey_handler::linger() const { return play_controller_.is_linger_mode(); }
 
-const team & play_controller::hotkey_handler::viewing_team() const { return play_controller_.get_teams()[gui()->viewing_team_index()]; }
 bool play_controller::hotkey_handler::viewing_team_is_playing() const { return gui()->viewing_team_index() == gui()->playing_team_index(); }
 
 void play_controller::hotkey_handler::objectives(){
@@ -556,7 +555,7 @@ hotkey::ACTION_STATE play_controller::hotkey_handler::get_action_state(const hot
 	case hotkey::HOTKEY_ZOOM_DEFAULT:
 		return (gui()->get_zoom_factor() == 1.0) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_DELAY_SHROUD:
-		return viewing_team().auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
+		return gui()->viewing_team().auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
 	default:
 		return hotkey::ACTION_STATELESS;
 	}

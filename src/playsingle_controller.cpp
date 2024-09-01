@@ -747,7 +747,7 @@ void playsingle_controller::require_end_turn()
 void playsingle_controller::check_objectives()
 {
 	if(!get_teams().empty()) {
-		const team& t = get_teams()[gui_->viewing_team_index()];
+		const team& t = gui_->viewing_team();
 
 		if(!is_regular_game_end() && !is_browsing() && t.objectives_changed()) {
 			show_objectives();

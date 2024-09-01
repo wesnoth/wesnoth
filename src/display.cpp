@@ -319,7 +319,7 @@ void display::reinit_flags_for_team(const team& t)
 texture display::get_flag(const map_location& loc)
 {
 	for(const team& t : dc_->teams()) {
-		if(t.owns_village(loc) && (!fogged(loc) || !dc_->get_team(viewing_side()).is_enemy(t.side()))) {
+		if(t.owns_village(loc) && (!fogged(loc) || !viewing_team().is_enemy(t.side()))) {
 			auto& flag = flags_[t.side() - 1];
 			flag.update_last_draw_time();
 
@@ -332,6 +332,16 @@ texture display::get_flag(const map_location& loc)
 	}
 
 	return texture();
+}
+
+const team& display::playing_team() const
+{
+	return dc_->teams()[playing_team_index()];
+}
+
+const team& display::viewing_team() const
+{
+	return dc_->teams()[viewing_team_index()];
 }
 
 void display::set_team(std::size_t teamindex, bool show_everything)
@@ -2821,7 +2831,7 @@ void display::draw_overlays_at(const map_location& loc)
 
 		if(dont_show_all_ && !ov.team_name.empty()) {
 			// dont_show_all_ imples that viewing_team() is a valid index to get_teams()
-			const std::string& current_team_name = get_teams()[viewing_team_index()].team_name();
+			const std::string& current_team_name = viewing_team().team_name();
 			const std::vector<std::string>& current_team_names = utils::split(current_team_name);
 			const std::vector<std::string>& team_names = utils::split(ov.team_name);
 

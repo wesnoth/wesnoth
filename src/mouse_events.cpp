@@ -306,7 +306,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 		{
 			if (selected_unit && !selected_unit->incapacitated()) {
 				// Show the route from selected unit to mouseover hex
-				current_route_ = get_route(&*selected_unit, dest, viewing_team());
+				current_route_ = get_route(&*selected_unit, dest, gui().viewing_team());
 
 				pc_.get_whiteboard()->create_temp_move();
 
@@ -321,7 +321,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 		   && mouseover_unit.valid()
 		   && mouseover_unit) {
 			// Show the route from selected hex to mouseover unit
-			current_route_ = get_route(&*mouseover_unit, selected_hex_, viewing_team());
+			current_route_ = get_route(&*mouseover_unit, selected_hex_, gui().viewing_team());
 
 			pc_.get_whiteboard()->create_temp_move();
 
@@ -351,7 +351,7 @@ void mouse_handler::show_reach_for_unit(const unit_ptr& un)
 		//
 		// Exception: allied AI sides' moves are still hidden, on the assumption that
 		// campaign authors won't want to leak goto_x,goto_y tricks to the player.
-		if(!viewing_team().is_enemy(un->side()) && !pc_.get_teams()[un->side() - 1].is_ai()) {
+		if(!gui().viewing_team().is_enemy(un->side()) && !pc_.get_teams()[un->side() - 1].is_ai()) {
 			//unit is on our team or an allied team, show path if the unit has one
 			const map_location go_to = un->get_goto();
 			if(pc_.get_map().on_board(go_to)) {
@@ -379,7 +379,7 @@ void mouse_handler::show_reach_for_unit(const unit_ptr& un)
 			// state includes changes to units' movement.
 			wb::future_map_if_active raii;
 
-			current_paths_ = pathfind::paths(*un, false, true, viewing_team(), path_turns_);
+			current_paths_ = pathfind::paths(*un, false, true, gui().viewing_team(), path_turns_);
 		}
 
 		unselected_paths_ = true;
@@ -551,7 +551,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		} else if(!current_paths_.destinations.empty() && pc_.get_map().on_board(selected_hex_) && pc_.get_map().on_board(new_hex)) {
 			if(selected_unit && !selected_unit->incapacitated()) {
 				// Show the route from selected unit to mouseover hex
-				current_route_ = get_route(&*selected_unit, dest, viewing_team());
+				current_route_ = get_route(&*selected_unit, dest, gui().viewing_team());
 
 				pc_.get_whiteboard()->create_temp_move();
 
@@ -563,7 +563,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 
 		if(pc_.get_map().on_board(selected_hex_) && !selected_unit && mouseover_unit.valid() && mouseover_unit) {
 			// Show the route from selected hex to mouseover unit
-			current_route_ = get_route(&*mouseover_unit, selected_hex_, viewing_team());
+			current_route_ = get_route(&*mouseover_unit, selected_hex_, gui().viewing_team());
 
 			pc_.get_whiteboard()->create_temp_move();
 
@@ -648,7 +648,7 @@ unit_map::iterator mouse_handler::selected_unit()
 
 unit_map::iterator mouse_handler::find_unit(const map_location& hex)
 {
-	unit_map::iterator it = pc_.gamestate().board_.find_visible_unit(hex, viewing_team());
+	unit_map::iterator it = pc_.gamestate().board_.find_visible_unit(hex, gui().viewing_team());
 	if(it.valid()) {
 		return it;
 	}
@@ -658,18 +658,18 @@ unit_map::iterator mouse_handler::find_unit(const map_location& hex)
 
 unit_map::const_iterator mouse_handler::find_unit(const map_location& hex) const
 {
-	return pc_.gamestate().board_.find_visible_unit(hex, viewing_team());
+	return pc_.gamestate().board_.find_visible_unit(hex, gui().viewing_team());
 }
 
 unit* mouse_handler::find_unit_nonowning(const map_location& hex)
 {
-	unit_map::iterator it = pc_.gamestate().board_.find_visible_unit(hex, viewing_team());
+	unit_map::iterator it = pc_.gamestate().board_.find_visible_unit(hex, gui().viewing_team());
 	return it.valid() ? &*it : nullptr;
 }
 
 const unit* mouse_handler::find_unit_nonowning(const map_location& hex) const
 {
-	unit_map::const_iterator it = pc_.gamestate().board_.find_visible_unit(hex, viewing_team());
+	unit_map::const_iterator it = pc_.gamestate().board_.find_visible_unit(hex, gui().viewing_team());
 	return it.valid() ? &*it : nullptr;
 }
 
@@ -729,7 +729,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 
 		// Check the unit TARGET of the attack
 
-		const team& viewer = viewing_team();
+		const team& viewer = gui().viewing_team();
 
 		// Check that there's a unit at the target location
 		const unit_map::const_iterator target_unit = find_unit(loc);
@@ -795,14 +795,14 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 	return res;
 }
 
-pathfind::marked_route mouse_handler::get_route(const unit* un, map_location go_to, team& team) const
+pathfind::marked_route mouse_handler::get_route(const unit* un, map_location go_to, const team& team) const
 {
 	game_board& board = pc_.gamestate().board_;
 
 	// The pathfinder will check unit visibility (fogged/stealthy).
 	const pathfind::shortest_path_calculator calc(*un, team, board.teams(), board.map());
 
-	pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*un, viewing_team());
+	pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*un, gui().viewing_team());
 
 	pathfind::plain_route route;
 
@@ -1114,7 +1114,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		next_unit_ = unit->get_location();
 
 		{
-			current_paths_ = pathfind::paths(*unit, false, true, viewing_team(), path_turns_);
+			current_paths_ = pathfind::paths(*unit, false, true, gui().viewing_team(), path_turns_);
 		}
 
 		if(highlight) {
@@ -1162,7 +1162,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 
 			if(!gui_->fogged(u->get_location()) && !u->incapacitated() && !invisible) {
 				const pathfind::paths& path =
-					pathfind::paths(*u, false, true, viewing_team(), path_turns_, false, false);
+					pathfind::paths(*u, false, true, gui().viewing_team(), path_turns_, false, false);
 
 				if(path.destinations.find(hex) != path.destinations.end()) {
 					reaching_unit_locations.destinations.insert(u->get_location());
@@ -1578,16 +1578,6 @@ void mouse_handler::set_current_paths(const pathfind::paths& new_paths)
 	gui().set_route(nullptr);
 
 	pc_.get_whiteboard()->erase_temp_move();
-}
-
-team& mouse_handler::viewing_team()
-{
-	return pc_.get_teams()[gui().viewing_team_index()];
-}
-
-const team& mouse_handler::viewing_team() const
-{
-	return pc_.get_teams()[gui().viewing_team_index()];
 }
 
 team& mouse_handler::current_team()
