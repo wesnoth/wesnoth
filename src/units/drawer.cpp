@@ -139,12 +139,9 @@ unit_drawer::unit_drawer(display& thedisp)
 	: disp(thedisp)
 	, dc(disp.get_disp_context())
 	, map(dc.map())
-	, teams(dc.teams())
 	, halo_man(thedisp.get_halo_manager())
-	, viewing_team(disp.viewing_team_index())
-	, playing_team(disp.playing_team_index())
-	, viewing_team_ref(teams[viewing_team])
-	, playing_team_ref(teams[playing_team])
+	, viewing_team_ref(disp.viewing_team())
+	, playing_team_ref(disp.playing_team())
 	, is_blindfolded(disp.is_blindfolded())
 	, show_everything(disp.show_everything())
 	, sel_hex(disp.selected_hex())
@@ -346,15 +343,15 @@ void unit_drawer::redraw_unit(const unit& u) const
 		if(viewing_team_ref.is_enemy(side)) {
 			if(!u.incapacitated())
 				orb_img = get_orb_image(orb_status::enemy);
-		} else if(static_cast<std::size_t>(side) != playing_team + 1) {
+		} else if(side != playing_team_ref.side()) {
 			// We're looking at either the player's own unit or an ally's unit, but either way it
 			// doesn't belong to the playing_team and isn't expected to move until after its next
 			// turn refresh.
 			auto os = orb_status::moved;
-			if(static_cast<std::size_t>(side) != viewing_team + 1)
+			if(side != viewing_team_ref.side())
 				os = orb_status::allied;
 			orb_img = get_orb_image(os);
-		} else if(static_cast<std::size_t>(side) != viewing_team + 1) {
+		} else if(side != viewing_team_ref.side()) {
 			// We're looking at an ally's unit, during that ally's turn.
 			auto os = dc.unit_orb_status(u);
 			orb_img = get_playing_ally_orb_image(os);
