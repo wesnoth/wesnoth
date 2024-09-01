@@ -706,7 +706,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		}
 
 		// The selected unit must at least belong to the player currently controlling this client.
-		source_eligible &= source_unit->side() == gui_->viewing_side();
+		source_eligible &= source_unit->side() == gui_->viewing_team().side();
 		if(!source_eligible) {
 			return map_location();
 		}
@@ -715,7 +715,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		// - If whiteboard is enabled, we allow planning attacks outside of player's turn
 		// - If whiteboard is disabled, it must be the turn of the player controlling this client
 		if(!wb_active) {
-			source_eligible &= gui_->viewing_side() == pc_.current_side();
+			source_eligible &= gui_->viewing_team().side() == pc_.current_side();
 			if(!source_eligible) {
 				return map_location();
 			}
@@ -1128,7 +1128,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		gui().set_route(nullptr);
 
 		// Selection have impact only if we are not observing and it's our unit
-		if((!commands_disabled || pc_.get_whiteboard()->is_active()) && unit->side() == gui().viewing_side()) {
+		if((!commands_disabled || pc_.get_whiteboard()->is_active()) && unit->side() == gui().viewing_team().side()) {
 			if(!(browse || pc_.get_whiteboard()->unit_has_actions(&*unit))) {
 				sound::play_UI_sound("select-unit.wav");
 
@@ -1257,7 +1257,7 @@ std::size_t mouse_handler::move_unit_along_route(const std::vector<map_location>
 	if(pc_.get_map().is_keep(steps.front())) {
 		unit_map::const_iterator const u = pc_.get_units().find(steps.front());
 
-		if(u && u->can_recruit() && u->side() == gui().viewing_side()
+		if(u && u->can_recruit() && u->side() == gui().viewing_team().side()
 				&& !pc_.get_whiteboard()->allow_leader_to_move(*u)) {
 			gui2::show_transient_message("",
 					_("You cannot move your leader away from the keep with some planned recruits or recalls left."));

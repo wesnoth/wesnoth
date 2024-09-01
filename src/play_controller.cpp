@@ -363,7 +363,7 @@ void play_controller::fire_prestart()
 
 void play_controller::refresh_objectives() const
 {
-	const config cfg("side", gui_->viewing_side());
+	const config cfg("side", gui_->viewing_team().side());
 	gamestate().lua_kernel_->run_wml_action("show_objectives", vconfig(cfg),
 		game_events::queued_event("_from_interface", "", map_location(), map_location(), config()));
 }

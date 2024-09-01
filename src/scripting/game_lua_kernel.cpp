@@ -243,7 +243,7 @@ namespace {
 static int intf_get_viewing_side(lua_State *L)
 {
 	if(const display* disp = display::get_singleton()) {
-		lua_pushinteger(L, disp->viewing_side());
+		lua_pushinteger(L, disp->viewing_team().side());
 		lua_pushboolean(L, disp->show_everything());
 		return 2;
 	}

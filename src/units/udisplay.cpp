@@ -230,7 +230,7 @@ void unit_mover::replace_temporary(unit_ptr u)
 	u->set_hidden(true);
 
 	// Update cached data.
-	is_enemy_ =	resources::gameboard->get_team(u->side()).is_enemy(disp_->viewing_side());
+	is_enemy_ =	resources::gameboard->get_team(u->side()).is_enemy(disp_->viewing_team().side());
 }
 
 

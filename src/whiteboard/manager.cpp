@@ -687,7 +687,7 @@ void manager::create_temp_move()
 	if (!temp_moved_unit) temp_moved_unit =
 			future_visible_unit(resources::controller->get_mouse_handler_base().get_last_hex(), viewer_side());
 	if (!temp_moved_unit) return;
-	if (temp_moved_unit->side() != display::get_singleton()->viewing_side()) return;
+	if (temp_moved_unit->side() != display::get_singleton()->viewing_team().side()) return;
 
 	/*
 	 * DONE CHECKING PRE-CONDITIONS, CREATE THE TEMP MOVE
@@ -878,7 +878,7 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 	bool created_planned_recruit = false;
 
 	if (active_ && !executing_actions_ && !resources::controller->is_linger_mode()) {
-		if (side_num != display::get_singleton()->viewing_side())
+		if (side_num != display::get_singleton()->viewing_team().side())
 		{
 			LOG_WB <<"manager::save_recruit called for a different side than viewing side.";
 			created_planned_recruit = false;
@@ -907,7 +907,7 @@ bool manager::save_recall(const unit& unit, int side_num, const map_location& re
 
 	if (active_ && !executing_actions_ && !resources::controller->is_linger_mode())
 	{
-		if (side_num != display::get_singleton()->viewing_side())
+		if (side_num != display::get_singleton()->viewing_team().side())
 		{
 			LOG_WB <<"manager::save_recall called for a different side than viewing side.";
 			created_planned_recall = false;

@@ -125,15 +125,6 @@ public:
 	const team& viewing_team() const;
 
 	/**
-	 * The 1-based equivalent of the 0-based viewing_team_index() function. This is the side-number that
-	 * WML uses.
-	 *
-	 * TODO: provide a better interface in a better place (consistent base numbers, and not in a GUI
-	 * class).
-	 */
-	int viewing_side() const { return static_cast<int>(currentTeam_ + 1); }
-
-	/**
 	 * Sets the team controlled by the player using the computer.
 	 * Data from this team will be displayed in the game status.
 	 */
@@ -220,7 +211,6 @@ public:
 
 	/** Virtual functions shadowed in game_display. These are needed to generate reports easily, without dynamic casting. Hope to factor out eventually. */
 	virtual const map_location & displayed_unit_hex() const { return map_location::null_location(); }
-	virtual int playing_side() const { return -100; } //In this case give an obviously wrong answer to fail fast, since this could actually cause a big bug. */
 	virtual const std::set<std::string>& observers() const { static const std::set<std::string> fake_obs = std::set<std::string> (); return fake_obs; }
 
 	/**

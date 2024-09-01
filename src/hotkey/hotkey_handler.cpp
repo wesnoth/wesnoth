@@ -379,7 +379,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::ui_comma
 		return !events::commands_disabled &&
 			menu_handler_.current_unit().valid() &&
 			!(menu_handler_.current_unit()->unrenamable()) &&
-			menu_handler_.current_unit()->side() == gui()->viewing_side() &&
+			menu_handler_.current_unit()->side() == gui()->viewing_team().side() &&
 			play_controller_.get_teams()[menu_handler_.current_unit()->side() - 1].is_local_human();
 
 	default:
@@ -516,7 +516,7 @@ bool play_controller::hotkey_handler::in_context_menu(const hotkey::ui_command& 
 	case hotkey::HOTKEY_RECALL: {
 		// last_hex_ is set by mouse_events::mouse_motion
 		const map_location & last_hex = mouse_handler_.get_last_hex();
-		const int viewing_side = gui()->viewing_side();
+		const int viewing_side = gui()->viewing_team().side();
 
 		// A quick check to save us having to create the future map and
 		// possibly loop through all units.
