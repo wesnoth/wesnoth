@@ -72,8 +72,6 @@ const game_state & play_controller::hotkey_handler::gamestate() const {
 bool play_controller::hotkey_handler::browse() const { return play_controller_.is_browsing(); }
 bool play_controller::hotkey_handler::linger() const { return play_controller_.is_linger_mode(); }
 
-bool play_controller::hotkey_handler::viewing_team_is_playing() const { return gui()->viewing_team_index() == gui()->playing_team_index(); }
-
 void play_controller::hotkey_handler::objectives(){
 	menu_handler_.objectives();
 }

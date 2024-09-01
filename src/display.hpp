@@ -124,6 +124,11 @@ public:
 	const team& playing_team() const;
 	const team& viewing_team() const;
 
+	bool viewing_team_is_playing() const
+	{
+		return viewing_team_index() == playing_team_index();
+	}
+
 	/**
 	 * Sets the team controlled by the player using the computer.
 	 * Data from this team will be displayed in the game status.
