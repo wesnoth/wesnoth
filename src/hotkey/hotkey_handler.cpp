@@ -79,7 +79,7 @@ void play_controller::hotkey_handler::objectives(){
 }
 
 void play_controller::hotkey_handler::show_statistics(){
-	menu_handler_.show_statistics(gui()->viewing_team_index()+1);
+	menu_handler_.show_statistics(gui()->viewing_team().side());
 }
 
 void play_controller::hotkey_handler::unit_list(){

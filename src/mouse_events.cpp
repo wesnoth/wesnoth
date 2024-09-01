@@ -1518,7 +1518,7 @@ bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 		return false;
 	}
 
-	if(current_team().is_enemy(static_cast<int>(gui().viewing_team_index() + 1)) && it->invisible(it->get_location())) {
+	if(current_team().is_enemy(gui().viewing_team().side()) && it->invisible(it->get_location())) {
 		return false;
 	}
 
