@@ -151,7 +151,7 @@ display::display(const display_context* dc,
 	, halo_man_()
 	, wb_(wb)
 	, exclusive_unit_draw_requests_()
-	, currentTeam_(0)
+	, viewing_team_index_(0)
 	, dont_show_all_(false)
 	, xpos_(0)
 	, ypos_(0)
@@ -189,7 +189,7 @@ display::display(const display_context* dc,
 	, animate_map_(true)
 	, animate_water_(true)
 	, flags_()
-	, activeTeam_(0)
+	, playing_team_index_(0)
 	, drawing_buffer_()
 	, map_screenshot_(false)
 	, reach_map_()
@@ -344,10 +344,10 @@ const team& display::viewing_team() const
 	return dc_->teams()[viewing_team_index()];
 }
 
-void display::set_team(std::size_t teamindex, bool show_everything)
+void display::set_viewing_team_index(std::size_t teamindex, bool show_everything)
 {
 	assert(teamindex < dc_->teams().size());
-	currentTeam_ = teamindex;
+	viewing_team_index_ = teamindex;
 	if(!show_everything) {
 		labels().set_team(&dc_->teams()[teamindex]);
 		dont_show_all_ = true;
@@ -361,10 +361,10 @@ void display::set_team(std::size_t teamindex, bool show_everything)
 	}
 }
 
-void display::set_playing_team(std::size_t teamindex)
+void display::set_playing_team_index(std::size_t teamindex)
 {
 	assert(teamindex < dc_->teams().size());
-	activeTeam_ = teamindex;
+	playing_team_index_ = teamindex;
 	invalidate_game_status();
 }
 

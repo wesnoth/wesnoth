@@ -112,8 +112,8 @@ void context_manager::refresh_on_context_change()
 
 	// Reset side when switching to an existing scenario
 	if (gui().get_teams().size() > 0) {
-		gui().set_team(0, true);
-		gui().set_playing_team(0);
+		gui().set_viewing_team_index(0, true);
+		gui().set_playing_team_index(0);
 	}
 	gui().init_flags();
 
@@ -1032,8 +1032,8 @@ void context_manager::new_scenario(int width, int height, const t_translation::t
 
 	// Give the new scenario an initial side.
 	get_map_context().new_side();
-	gui().set_team(0, true);
-	gui().set_playing_team(0);
+	gui().set_viewing_team_index(0, true);
+	gui().set_playing_team_index(0);
 	gui_.init_flags();
 }
 
