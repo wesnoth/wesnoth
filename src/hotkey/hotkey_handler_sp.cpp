@@ -71,11 +71,11 @@ void playsingle_controller::hotkey_handler::recall(){
 }
 
 void playsingle_controller::hotkey_handler::toggle_shroud_updates(){
-	menu_handler_.toggle_shroud_updates(gui()->viewing_team_index()+1);
+	menu_handler_.toggle_shroud_updates(gui()->viewing_team().side());
 }
 
 void playsingle_controller::hotkey_handler::update_shroud_now(){
-	menu_handler_.update_shroud_now(gui()->viewing_team_index()+1);
+	menu_handler_.update_shroud_now(gui()->viewing_team().side());
 }
 
 void playsingle_controller::hotkey_handler::end_turn(){
