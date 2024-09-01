@@ -399,7 +399,7 @@ void play_controller::init_gui()
 void play_controller::init_side_begin()
 {
 	mouse_handler_.set_side(current_side());
-	gui_->set_playing_team(std::size_t(current_side() - 1));
+	gui_->set_playing_team_index(std::size_t(current_side() - 1));
 
 	update_viewing_player();
 
@@ -1033,7 +1033,7 @@ bool play_controller::reveal_map_default() const
 
 void play_controller::update_gui_to_player(const int team_index, const bool observe)
 {
-	gui_->set_team(team_index, observe);
+	gui_->set_viewing_team_index(team_index, observe);
 	gui_->recalculate_minimap();
 	gui_->invalidate_all();
 }

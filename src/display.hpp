@@ -109,7 +109,7 @@ public:
 	const std::vector<team>& get_teams() const {return dc_->teams();}
 
 	/** The playing team is the team whose turn it is. */
-	std::size_t playing_team_index() const { return activeTeam_; }
+	std::size_t playing_team_index() const { return playing_team_index_; }
 
 	/**
 	 * The viewing team is the team currently viewing the game. It's the team whose gold and income
@@ -119,7 +119,7 @@ public:
 	 *
 	 * The value returned is a 0-based index into the vector returned by get_teams().
 	 */
-	std::size_t viewing_team_index() const { return currentTeam_; }
+	std::size_t viewing_team_index() const { return viewing_team_index_; }
 
 	const team& playing_team() const;
 	const team& viewing_team() const;
@@ -133,13 +133,12 @@ public:
 	 * Sets the team controlled by the player using the computer.
 	 * Data from this team will be displayed in the game status.
 	 */
-	void set_team(std::size_t team, bool observe=false);
+	void set_viewing_team_index(std::size_t team, bool observe=false);
 
 	/**
-	 * set_playing_team sets the team whose turn it currently is
+	 * sets the team whose turn it currently is
 	 */
-	void set_playing_team(std::size_t team);
-
+	void set_playing_team_index(std::size_t team);
 
 	/**
 	 * Cancels all the exclusive draw requests.
@@ -729,7 +728,7 @@ protected:
 
 	static void fill_images_list(const std::string& prefix, std::vector<std::string>& images);
 
-	std::size_t currentTeam_;
+	std::size_t viewing_team_index_;
 	bool dont_show_all_; //const team *viewpoint_;
 	/**
 	 * Position of the top-left corner of the viewport, in pixels.
@@ -817,7 +816,7 @@ public:
 protected:
 
 	//TODO sort
-	std::size_t activeTeam_;
+	std::size_t playing_team_index_;
 
 	/**
 	 * Helper for rendering the map by ordering draw operations.

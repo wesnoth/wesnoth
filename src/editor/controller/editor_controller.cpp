@@ -708,8 +708,8 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 				toolkit_->get_palette_manager()->set_group(index);
 				return true;
 			case SIDE:
-				gui_->set_team(index, true);
-				gui_->set_playing_team(index);
+				gui_->set_viewing_team_index(index, true);
+				gui_->set_playing_team_index(index);
 				toolkit_->get_palette_manager()->draw_contents();
 				return true;
 			case AREA:
@@ -1086,8 +1086,8 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			gui_->init_flags();
 			return true;
 		case HOTKEY_EDITOR_SIDE_REMOVE:
-			gui_->set_team(0, true);
-			gui_->set_playing_team(0);
+			gui_->set_viewing_team_index(0, true);
+			gui_->set_playing_team_index(0);
 			get_current_map_context().remove_side();
 			return true;
 		case HOTKEY_EDITOR_SIDE_EDIT:
