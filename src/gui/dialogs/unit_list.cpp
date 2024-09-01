@@ -197,7 +197,7 @@ void show_unit_list(display& gui)
 
 	const unit_map& units = gui.get_units();
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-		if(i->side() != gui.viewing_side()) {
+		if(i->side() != gui.viewing_team().side()) {
 			continue;
 		}
 

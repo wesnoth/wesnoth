@@ -77,7 +77,7 @@ void unit_palette::setup_item(
 {
 	std::stringstream filename;
 	filename << u.image() << "~RC(" << u.flag_rgb() << '>'
-			 << team::get_side_color_id(gui_.viewing_side()) << ')';
+			 << team::get_side_color_id(gui_.viewing_team().side()) << ')';
 
 	base_image = image::get_texture(filename.str());
 	if(!base_image) {

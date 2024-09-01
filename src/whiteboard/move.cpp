@@ -545,7 +545,7 @@ int move::calculate_moves_left(unit& u)
 
 		// @todo: find a better treatment of movement points when defining moves out-of-turn
 		if(u.movement_left() - route_->move_cost < 0
-				&& resources::controller->current_side() == display::get_singleton()->viewing_side()) {
+				&& resources::controller->current_side() == display::get_singleton()->viewing_team().side()) {
 			WRN_WB << shared_from_this() << " defined with insufficient movement left.";
 		}
 

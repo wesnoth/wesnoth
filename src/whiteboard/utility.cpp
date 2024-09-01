@@ -36,7 +36,7 @@
 namespace wb {
 int viewer_side()
 {
-	return display::get_singleton()->viewing_side();
+	return display::get_singleton()->viewing_team().side();
 }
 
 side_actions_ptr viewer_actions()

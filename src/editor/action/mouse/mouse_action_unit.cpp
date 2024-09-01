@@ -122,7 +122,7 @@ std::unique_ptr<editor_action> mouse_action_unit::up_left(editor_display& disp, 
 	const unit_type &ut = *new_unit_type;
 	unit_race::GENDER gender = ut.genders().front();
 
-	unit_ptr new_unit = unit::create(ut, disp.viewing_side(), true, gender);
+	unit_ptr new_unit = unit::create(ut, disp.viewing_team().side(), true, gender);
 	auto action = std::make_unique<editor_action_unit>(hex, *new_unit);
 	return action;
 }
@@ -153,7 +153,7 @@ void mouse_action_unit::set_unit_mouse_overlay(editor_display& disp, const unit_
 {
 	std::stringstream filename;
 	filename << u.image() << "~RC(" << u.flag_rgb() << '>'
-			<< team::get_side_color_id(disp.viewing_side()) << ')';
+			<< team::get_side_color_id(disp.viewing_team().side()) << ')';
 
 	disp.set_mouseover_hex_overlay(image::get_texture(filename.str()));
 }

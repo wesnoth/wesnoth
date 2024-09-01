@@ -644,7 +644,7 @@ void menu_handler::terrain_description(mouse_handler& mousehandler)
 void menu_handler::rename_unit()
 {
 	const unit_map::iterator un = current_unit();
-	if(un == pc_.get_units().end() || gui_->viewing_side() != un->side()) {
+	if(un == pc_.get_units().end() || gui_->viewing_team().side() != un->side()) {
 		return;
 	}
 
@@ -817,7 +817,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 		if(team_only) {
 			team_name = gui_->labels().team_name();
 		} else {
-			color = team::get_side_color(gui_->viewing_side());
+			color = team::get_side_color(gui_->viewing_team().side());
 		}
 		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team_index(), team_name, color);
 		if(res) {
@@ -1328,7 +1328,7 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 	ss << time;
 	cfg["time"] = ss.str();
 
-	const int side = board().is_observer() ? 0 : gui_->viewing_side();
+	const int side = board().is_observer() ? 0 : gui_->viewing_team().side();
 	if(!board().is_observer()) {
 		cfg["side"] = side;
 	}
@@ -1464,7 +1464,7 @@ void console_handler::do_droid()
 	std::transform(action.begin(), action.end(), action.begin(), tolower);
 	// default to the current side if empty
 	const unsigned int side = side_s.empty() ? team_num_ : lexical_cast_default<unsigned int>(side_s);
-	const bool is_your_turn = menu_handler_.pc_.current_side() == static_cast<int>(menu_handler_.gui_->viewing_side());
+	const bool is_your_turn = menu_handler_.pc_.current_side() == static_cast<int>(menu_handler_.gui_->viewing_team().side());
 
 	utils::string_map symbols;
 	symbols["side"] = std::to_string(side);

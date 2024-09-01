@@ -53,21 +53,21 @@ void playsingle_controller::hotkey_handler::recruit(){
 	if (!browse())
 		menu_handler_.recruit(play_controller_.current_side(), mouse_handler_.get_last_hex());
 	else if (whiteboard_manager_->is_active())
-		menu_handler_.recruit(gui()->viewing_side(), mouse_handler_.get_last_hex());
+		menu_handler_.recruit(gui()->viewing_team().side(), mouse_handler_.get_last_hex());
 }
 
 void playsingle_controller::hotkey_handler::repeat_recruit(){
 	if (!browse())
 		menu_handler_.repeat_recruit(play_controller_.current_side(), mouse_handler_.get_last_hex());
 	else if (whiteboard_manager_->is_active())
-		menu_handler_.repeat_recruit(gui()->viewing_side(), mouse_handler_.get_last_hex());
+		menu_handler_.repeat_recruit(gui()->viewing_team().side(), mouse_handler_.get_last_hex());
 }
 
 void playsingle_controller::hotkey_handler::recall(){
 	if (!browse())
 		menu_handler_.recall(play_controller_.current_side(), mouse_handler_.get_last_hex());
 	else if (whiteboard_manager_->is_active())
-		menu_handler_.recall(gui()->viewing_side(), mouse_handler_.get_last_hex());
+		menu_handler_.recall(gui()->viewing_team().side(), mouse_handler_.get_last_hex());
 }
 
 void playsingle_controller::hotkey_handler::toggle_shroud_updates(){
