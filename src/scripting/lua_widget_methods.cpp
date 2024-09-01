@@ -229,25 +229,24 @@ namespace
 		return number_of_items(mp.get_root_node());
 	}
 
-	// Checks, and makes sure that a (lua. 1-based) index to a container widget is valid
-	// The caller still have to subtract 1 when passing the index to c++
-	// (0-based) functions
+	// converts a 1-based index given as lua paraemter to a 0-based index to be used in the c++ api.
+	// and checks that it is in range
 	template<typename TWidget>
-	void check_index(lua_State* L, int arg, TWidget& w, bool for_insertion, int& index)
+	int check_index(lua_State* L, int arg, TWidget& w, bool for_insertion, utils::optional<int>& index)
 	{
 		int nitems = number_of_items(w);
+
 		// index == nitems + 1 -> insert at the end.
 		int max = for_insertion ? nitems + 1 : nitems;
-
-		// 0 means the user didnt specify a value, so insert at end.
-		if(index == 0) {
-			assert(for_insertion);
-			index = nitems + 1;
+		if(!index) {
+			index = max;
 		}
+
 		// todo: does a "negative indicies to "
-		if(index <= 0 || index > max) {
+		if(*index <= 0 || *index > max) {
 			luaL_argerror(L, arg, "widget child index out of range");
 		}
+		return *index - 1;
 	}
 
 	void remove_treeview_node(gui2::tree_view_node& node, std::size_t pos, int number)
@@ -269,31 +268,27 @@ namespace
 /**
  * Removes an entry from a list.
  * - Arg 1: widget
- * - Arg 2: number, index of the element to delete.
- * - Arg 3: number, number of the elements to delete. (0 to delete all elements after index)
+ * - Arg 2: number (optional), index of the element to delete.
+ * - Arg 3: number (optional), number of the elements to delete. (0 to delete all elements after index)
  */
 static int intf_remove_dialog_item(lua_State* L)
 {
 	gui2::widget* w = &luaW_checkwidget(L, 1);
-	int pos = luaL_checkinteger(L, 2);
-	int number = luaL_checkinteger(L, 3);
-
-	if(pos <= 0) {
-		return luaL_argerror(L, 2, "index must be positive");
-	}
+	utils::optional<int> pos = lua_check<utils::optional<int>>(L, 2);
+	int number = lua_check<utils::optional<int>>(L, 3).value_or(1);
 
 	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w)) {
-		check_index(L, 2, *list, false, pos);
-		list->remove_row(pos - 1, number);
+		int realpos = check_index(L, 2, *list, false, pos);
+		list->remove_row(realpos, number);
 	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(w)) {
-		check_index(L, 2, *multi_page,false, pos);
-		multi_page->remove_page(pos - 1, number);
+		int realpos = check_index(L, 2, *multi_page,false, pos);
+		multi_page->remove_page(realpos, number);
 	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(w)) {
-		check_index(L, 2, *tree_view, false, pos);
-		remove_treeview_node(tree_view->get_root_node(), pos - 1, number);
+		int realpos = check_index(L, 2, *tree_view, false, pos);
+		remove_treeview_node(tree_view->get_root_node(), realpos, number);
 	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(w)) {
-		check_index(L, 2, *tree_view_node, false, pos);
-		remove_treeview_node(*tree_view_node, pos - 1, number);
+		int realpos = check_index(L, 2, *tree_view_node, false, pos);
+		remove_treeview_node(*tree_view_node, realpos, number);
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 	}
@@ -407,37 +402,31 @@ static int intf_set_dialog_focus(lua_State* L)
  * Sets a widget's state to active or inactive
  * - Arg 1: widget.
  * - Arg 2: string, the type (id of [node_definition]) of the new node.
- * - Arg 3: integer, where to insert the new node.
+ * - Arg 3: integer (optional), where to insert the new node.
  */
 static int intf_add_item_of_type(lua_State* L)
 {
 	gui2::widget* w = &luaW_checkwidget(L, 1);
 	gui2::widget* res = nullptr;
 	const std::string node_type = luaL_checkstring(L, 2);
-	int insert_pos = 0;
-	if(lua_isnumber(L, 3)) {
-		insert_pos = luaL_checkinteger(L, 3);
-		if(insert_pos <= 0) {
-			return luaL_argerror(L, 3, "index must be positive");
-		}
-	}
+	utils::optional<int> insert_pos = lua_check<utils::optional<int>>(L, 3);
 	static const gui2::widget_data data;
 
 	if(gui2::tree_view_node* twn = dynamic_cast<gui2::tree_view_node*>(w)) {
-		check_index(L, 2, *twn, true, insert_pos);
-		res = &twn->add_child(node_type, data, insert_pos - 1);
+		int realpos = check_index(L, 2, *twn, true, insert_pos);
+		res = &twn->add_child(node_type, data, realpos);
 	} else if(gui2::tree_view* tw = dynamic_cast<gui2::tree_view*>(w)) {
-		check_index(L, 2, *tw, true, insert_pos);
-		res = &tw->get_root_node().add_child(node_type, data, insert_pos - 1);
+		int realpos = check_index(L, 2, *tw, true, insert_pos);
+		res = &tw->get_root_node().add_child(node_type, data, realpos);
 	} else if(gui2::multi_page* mp = dynamic_cast<gui2::multi_page*>(w)) {
-		check_index(L, 2, *mp, true, insert_pos);
-		res = &mp->add_page(node_type, insert_pos - 1, data);
+		int realpos = check_index(L, 2, *mp, true, insert_pos);
+		res = &mp->add_page(node_type, realpos, data);
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 	}
 	if(res) {
 		luaW_pushwidget(L, *res);
-		lua_push(L, insert_pos);
+		lua_push(L, insert_pos.value());
 		return 2;
 	}
 	return 0;
