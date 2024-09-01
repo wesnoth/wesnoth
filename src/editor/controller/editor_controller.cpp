@@ -1091,7 +1091,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			get_current_map_context().remove_side();
 			return true;
 		case HOTKEY_EDITOR_SIDE_EDIT:
-			context_manager_->edit_side_dialog(gui_->viewing_team_index());
+			context_manager_->edit_side_dialog(gui_->viewing_team());
 			return true;
 
 		// Transitions

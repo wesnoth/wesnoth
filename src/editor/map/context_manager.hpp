@@ -130,7 +130,7 @@ public:
 	void edit_scenario_dialog();
 
 	/** Display a side edit dialog and process user input. */
-	void edit_side_dialog(int side_index);
+	void edit_side_dialog(const team& t);
 
 	/** Display a new map dialog and process user input. */
 	void new_map_dialog();
