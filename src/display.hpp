@@ -121,6 +121,9 @@ public:
 	 */
 	std::size_t viewing_team_index() const { return currentTeam_; }
 
+	const team& playing_team() const;
+	const team& viewing_team() const;
+
 	/**
 	 * The 1-based equivalent of the 0-based viewing_team_index() function. This is the side-number that
 	 * WML uses.

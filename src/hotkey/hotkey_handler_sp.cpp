@@ -237,16 +237,16 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ui
 
 		case hotkey::HOTKEY_DELAY_SHROUD:
 			return !linger()
-				&& (viewing_team().uses_fog() || viewing_team().uses_shroud())
+				&& (gui()->viewing_team().uses_fog() || gui()->viewing_team().uses_shroud())
 				&& viewing_team_is_playing()
-				&& viewing_team().is_local_human()
+				&& gui()->viewing_team().is_local_human()
 				&& !events::commands_disabled;
 		case hotkey::HOTKEY_UPDATE_SHROUD:
 			return !linger()
 				&& viewing_team_is_playing()
-				&& viewing_team().is_local_human()
+				&& gui()->viewing_team().is_local_human()
 				&& !events::commands_disabled
-				&& viewing_team().auto_shroud_updates() == false;
+				&& gui()->viewing_team().auto_shroud_updates() == false;
 
 		// Commands we can only do if in debug mode
 		case hotkey::HOTKEY_CREATE_UNIT:

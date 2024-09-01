@@ -476,7 +476,7 @@ int game_lua_kernel::intf_get_displayed_unit(lua_State *L)
 
 	unit_map::const_iterator ui = board().find_visible_unit(
 		game_display_->displayed_unit_hex(),
-		teams()[game_display_->viewing_team_index()],
+		game_display_->viewing_team(),
 		game_display_->show_everything());
 	if (!ui.valid()) return 0;
 

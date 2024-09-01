@@ -386,8 +386,11 @@ void manager::update_plan_hiding(std::size_t team_index)
 	}
 	validate_viewer_actions();
 }
+
 void manager::update_plan_hiding()
-	{update_plan_hiding(viewer_team());}
+{
+	update_plan_hiding(display::get_singleton()->viewing_team_index());
+}
 
 void manager::on_viewer_change(std::size_t team_index)
 {

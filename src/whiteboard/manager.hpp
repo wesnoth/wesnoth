@@ -198,7 +198,7 @@ private:
 	void validate_actions_if_needed();
 	/** Called by all of the save_***() methods after they have added their action to the queue */
 	void update_plan_hiding(std::size_t viewing_team);
-	void update_plan_hiding(); //same as above, but uses wb::viewer_team() as default argument
+	void update_plan_hiding(); //same as above, but uses display::viewer_team_index() as default argument
 
 	/** Tracks whether the whiteboard is active. */
 	bool active_;
