@@ -673,12 +673,12 @@ const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 
 bool display::shrouded(const map_location& loc) const
 {
-	return is_blindfolded() || (dont_show_all_ && dc_->teams()[currentTeam_].shrouded(loc));
+	return is_blindfolded() || (dont_show_all_ && viewing_team().shrouded(loc));
 }
 
 bool display::fogged(const map_location& loc) const
 {
-	return is_blindfolded() || (dont_show_all_ && dc_->teams()[currentTeam_].fogged(loc));
+	return is_blindfolded() || (dont_show_all_ && viewing_team().fogged(loc));
 }
 
 int display::get_location_x(const map_location& loc) const
@@ -1591,7 +1591,7 @@ void display::recalculate_minimap()
 
 	minimap_renderer_ = image::prep_minimap_for_rendering(
 		get_map(),
-		dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
+		dc_->teams().empty() ? nullptr : &viewing_team(),
 		nullptr,
 		(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr
 	);
@@ -1664,7 +1664,7 @@ void display::draw_minimap_units()
 
 	for(const auto& u : dc_->units()) {
 		if (fogged(u.get_location()) ||
-		    (dc_->teams()[currentTeam_].is_enemy(u.side()) &&
+		    (viewing_team().is_enemy(u.side()) &&
 		     u.invisible(u.get_location())) ||
 			 u.get_hidden()) {
 			continue;
@@ -1675,9 +1675,9 @@ void display::draw_minimap_units()
 
 		if(!prefs::get().minimap_movement_coding()) {
 			auto status = orb_status::allied;
-			if(dc_->teams()[currentTeam_].is_enemy(side)) {
+			if(viewing_team().is_enemy(side)) {
 				status = orb_status::enemy;
-			} else if(currentTeam_ + 1 == static_cast<unsigned>(side)) {
+			} else if(viewing_team().side() == side) {
 				status = dc_->unit_orb_status(u);
 			} else {
 				// no-op, status is already set to orb_status::allied;
@@ -3206,7 +3206,7 @@ void display::invalidate_animations_location(const map_location& loc)
 	if(get_map().is_village(loc)) {
 		const int owner = dc_->village_owner(loc) - 1;
 		if(owner >= 0 && flags_[owner].need_update()
-			&& (!fogged(loc) || !dc_->teams()[currentTeam_].is_enemy(owner + 1))) {
+			&& (!fogged(loc) || !viewing_team().is_enemy(owner + 1))) {
 			invalidate(loc);
 		}
 	}
