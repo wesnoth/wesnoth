@@ -251,10 +251,10 @@ void game_display::draw_hex(const map_location& loc)
 		if(u == nullptr) {
 			mo_top_path = &mouseover_normal_top;
 			mo_bot_path = &mouseover_normal_bot;
-		} else if(dc_->teams()[currentTeam_].is_enemy(u->side())) {
+		} else if(viewing_team().is_enemy(u->side())) {
 			mo_top_path = &mouseover_enemy_top;
 			mo_bot_path = &mouseover_enemy_bot;
-		} else if(dc_->teams()[currentTeam_].side() == u->side()) {
+		} else if(viewing_team().side() == u->side()) {
 			mo_top_path = &mouseover_self_top;
 			mo_bot_path = &mouseover_self_bot;
 		} else {
@@ -429,8 +429,8 @@ void game_display::draw_movement_info(const map_location& loc)
 	// When out-of-turn, it's still interesting to check out the terrain defs of the selected unit
 	else if (selectedHex_.valid() && loc == mouseoverHex_)
 	{
-		const unit_map::const_iterator selectedUnit = resources::gameboard->find_visible_unit(selectedHex_,dc_->teams()[currentTeam_]);
-		const unit_map::const_iterator mouseoveredUnit = resources::gameboard->find_visible_unit(mouseoverHex_,dc_->teams()[currentTeam_]);
+		const unit_map::const_iterator selectedUnit = resources::gameboard->find_visible_unit(selectedHex_,viewing_team());
+		const unit_map::const_iterator mouseoveredUnit = resources::gameboard->find_visible_unit(mouseoverHex_,viewing_team());
 		if(selectedUnit != dc_->units().end() && mouseoveredUnit == dc_->units().end()) {
 			// Display the def% of this terrain
 			int move_cost = selectedUnit->movement_cost(get_map().get_terrain(loc));
@@ -626,7 +626,7 @@ void game_display::clear_attack_indicator()
 
 std::string game_display::current_team_name() const
 {
-	return dc_->teams()[currentTeam_].team_name();
+	return viewing_team().team_name();
 }
 
 void game_display::begin_game()
