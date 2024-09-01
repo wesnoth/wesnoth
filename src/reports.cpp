@@ -1446,14 +1446,14 @@ REPORT_GENERATOR(turn, rc)
 REPORT_GENERATOR(gold, rc)
 {
 	std::ostringstream str;
-	int viewing_side = rc.screen().viewing_side();
+	const team& viewing_team = rc.screen().viewing_team();
 	// Suppose the full unit map is applied.
-	int fake_gold = rc.dc().get_team(viewing_side).gold();
+	int fake_gold = viewing_team.gold();
 
 	if (rc.wb())
-		fake_gold -= rc.wb()->get_spent_gold_for(viewing_side);
+		fake_gold -= rc.wb()->get_spent_gold_for(viewing_team.side());
 	char const *end = naps;
-	if (viewing_side != rc.screen().playing_side()) {
+	if (viewing_team.side() != rc.screen().playing_side()) {
 		str << span_color(font::GRAY_COLOR);
 	}
 	else if (fake_gold < 0) {
@@ -1469,8 +1469,7 @@ REPORT_GENERATOR(gold, rc)
 REPORT_GENERATOR(villages, rc)
 {
 	std::ostringstream str;
-	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.dc().get_team(viewing_side);
+	const team &viewing_team = rc.screen().viewing_team();
 	str << viewing_team.villages().size() << '/';
 	if (viewing_team.uses_shroud()) {
 		int unshrouded_villages = 0;
@@ -1493,8 +1492,7 @@ REPORT_GENERATOR(num_units, rc)
 REPORT_GENERATOR(upkeep, rc)
 {
 	std::ostringstream str;
-	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.dc().get_team(viewing_side);
+	const team& viewing_team = rc.screen().viewing_team();
 	team_data td(rc.dc(), viewing_team);
 	str << td.expenses << " (" << td.upkeep << ")";
 	return gray_inactive(rc,str.str(), _("Upkeep") + "\n\n" + _("The expenses incurred at the end of every turn to maintain your army. The first number is the amount of gold that will be deducted. It is equal to the number of unit levels not supported by villages. The second is the total cost of upkeep, including that covered by villages — in other words, the amount of gold that would be deducted if you lost all villages."));
@@ -1502,8 +1500,7 @@ REPORT_GENERATOR(upkeep, rc)
 
 REPORT_GENERATOR(expenses, rc)
 {
-	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.dc().get_team(viewing_side);
+	const team& viewing_team = rc.screen().viewing_team();
 	team_data td(rc.dc(), viewing_team);
 	return gray_inactive(rc,std::to_string(td.expenses));
 }
@@ -1511,11 +1508,10 @@ REPORT_GENERATOR(expenses, rc)
 REPORT_GENERATOR(income, rc)
 {
 	std::ostringstream str;
-	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.dc().get_team(viewing_side);
+	const team& viewing_team = rc.screen().viewing_team();
 	team_data td(rc.dc(), viewing_team);
 	char const *end = naps;
-	if (viewing_side != rc.screen().playing_side()) {
+	if (viewing_team.side() != rc.screen().playing_side()) {
 		if (td.net_income < 0) {
 			td.net_income = - td.net_income;
 			str << span_color(font::GRAY_COLOR);
@@ -1599,8 +1595,7 @@ REPORT_GENERATOR(terrain_info, rc)
 		// This report is used in both game and editor. get_team(viewing_side) would throw in the editor's
 		// terrain-only mode, but if the village already has an owner then we're not in that mode.
 		if(owner != 0) {
-			int viewing_side = rc.screen().viewing_side();
-			const team& viewing_team = rc.dc().get_team(viewing_side);
+			const team& viewing_team = rc.screen().viewing_team();
 
 			if(!viewing_team.fogged(mouseover_hex)) {
 				const team& owner_team = rc.dc().get_team(owner);
@@ -1627,8 +1622,7 @@ REPORT_GENERATOR(terrain_info, rc)
 REPORT_GENERATOR(terrain, rc)
 {
 	const gamemap &map = rc.map();
-	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.dc().get_team(viewing_side);
+	const team& viewing_team = rc.screen().viewing_team();
 	map_location mouseover_hex = rc.screen().mouseover_hex();
 	if (!map.on_board(mouseover_hex) || viewing_team.shrouded(mouseover_hex))
 		return config();
@@ -1643,7 +1637,7 @@ REPORT_GENERATOR(terrain, rc)
 		int owner = rc.dc().village_owner(mouseover_hex);
 		if (owner == 0 || viewing_team.fogged(mouseover_hex)) {
 			str << map.get_terrain_info(terrain).income_description();
-		} else if (owner == viewing_side) {
+		} else if (owner == viewing_team.side()) {
 			str << map.get_terrain_info(terrain).income_description_own();
 		} else if (viewing_team.is_enemy(owner)) {
 			str << map.get_terrain_info(terrain).income_description_enemy();
@@ -1772,15 +1766,14 @@ REPORT_GENERATOR(battery, /*rc*/)
 
 REPORT_GENERATOR(report_countdown, rc)
 {
-	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.dc().get_team(viewing_side);
+	const team& viewing_team = rc.screen().viewing_team();
 	int min, sec;
 	if (viewing_team.countdown_time() == 0)
 		return report_report_clock(rc);
 	std::ostringstream str;
 	sec = viewing_team.countdown_time() / 1000;
 	char const *end = naps;
-	if (viewing_side != rc.screen().playing_side())
+	if (viewing_team.side() != rc.screen().playing_side())
 		str << span_color(font::GRAY_COLOR);
 	else if (sec < 60)
 		str << "<span foreground=\"#c80000\">";
