@@ -148,7 +148,7 @@ static unit_const_ptr get_selected_unit_ptr(const reports::context& rc)
 
 static config gray_inactive(const reports::context& rc, const std::string &str, const std::string& tooltip = "")
 {
-	if ( rc.screen().viewing_team().side() == rc.screen().playing_team().side() )
+	if ( rc.screen().viewing_team_is_playing() )
 			return text_report(str, tooltip);
 
 	return text_report(span_color(font::GRAY_COLOR) + str + naps, tooltip);
@@ -1453,7 +1453,7 @@ REPORT_GENERATOR(gold, rc)
 	if (rc.wb())
 		fake_gold -= rc.wb()->get_spent_gold_for(viewing_team.side());
 	char const *end = naps;
-	if (viewing_team.side() != rc.screen().playing_team().side()) {
+	if (!rc.screen().viewing_team_is_playing()) {
 		str << span_color(font::GRAY_COLOR);
 	}
 	else if (fake_gold < 0) {
@@ -1511,7 +1511,7 @@ REPORT_GENERATOR(income, rc)
 	const team& viewing_team = rc.screen().viewing_team();
 	team_data td(rc.dc(), viewing_team);
 	char const *end = naps;
-	if (viewing_team.side() != rc.screen().playing_team().side()) {
+	if (!rc.screen().viewing_team_is_playing()) {
 		if (td.net_income < 0) {
 			td.net_income = - td.net_income;
 			str << span_color(font::GRAY_COLOR);
@@ -1773,7 +1773,7 @@ REPORT_GENERATOR(report_countdown, rc)
 	std::ostringstream str;
 	sec = viewing_team.countdown_time() / 1000;
 	char const *end = naps;
-	if (viewing_team.side() != rc.screen().playing_team().side())
+	if (!rc.screen().viewing_team_is_playing())
 		str << span_color(font::GRAY_COLOR);
 	else if (sec < 60)
 		str << "<span foreground=\"#c80000\">";

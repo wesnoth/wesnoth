@@ -1238,7 +1238,7 @@ void play_controller::check_next_scenario_is_known() {
 bool play_controller::can_use_synced_wml_menu() const
 {
 	const team& viewing_team = gui_->viewing_team();
-	return gui_->viewing_team_index() == gui_->playing_team_index() && !events::commands_disabled && viewing_team.is_local_human()
+	return gui_->viewing_team_is_playing() && !events::commands_disabled && viewing_team.is_local_human()
 		&& !is_browsing();
 }
 
