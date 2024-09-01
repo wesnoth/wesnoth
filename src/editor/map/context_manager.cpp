@@ -235,10 +235,8 @@ void context_manager::load_mru_item(unsigned index, bool force_same_context /* =
 	load_map(mru[index], !force_same_context);
 }
 
-void context_manager::edit_side_dialog(int side_index)
+void context_manager::edit_side_dialog(const team& t)
 {
-	team& t = get_map_context().teams()[side_index];
-
 	editor_team_info team_info(t);
 
 	if(gui2::dialogs::editor_edit_side::execute(team_info)) {
