@@ -127,7 +127,7 @@ display_context::can_move_result display_context::unit_can_move(const unit& u) c
 		}
 	}
 	// This should probably check if the unit can teleport too
-	
+
 	return result;
 }
 
