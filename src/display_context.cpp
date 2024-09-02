@@ -89,24 +89,24 @@ display_context::can_move_result display_context::unit_can_move(const unit& u) c
 	can_move_result result = {false, false};
 	if(u.attacks_left() > 0 && !u.attacks().empty()) {
 		const auto& attacks = u.attacks();
-	
+
 		std::set<int> attackable_distances;
 	    for (const auto& attack : attacks) {
 	        for (int i = attack.min_range(); i <= attack.max_range(); ++i) {
 	            attackable_distances.insert(i);
 	        }
 	    }
-	
+
 		int max_distance = *std::prev(attackable_distances.end());
-	
+
 		for (int dx = -max_distance; dx <= max_distance && !result.attack_here; ++dx) {
 			for (int dy = -max_distance; dy <= max_distance && !result.attack_here; ++dy) {
 				// Adjust for hex grid
 				int adjusted_dy = dy + floor(dx / 2.0);
-	
+
 				map_location locs(u.get_location().x + dx, u.get_location().y + adjusted_dy);
 				int distance = distance_between(u.get_location(), locs);
-	
+
 				if (attackable_distances.count(distance) == 0) {
 					continue;
 				}
@@ -127,7 +127,7 @@ display_context::can_move_result display_context::unit_can_move(const unit& u) c
 		}
 	}
 	// This should probably check if the unit can teleport too
-
+	
 	return result;
 }
 
