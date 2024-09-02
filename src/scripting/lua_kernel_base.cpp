@@ -16,6 +16,7 @@
 #include "scripting/lua_kernel_base.hpp"
 
 #include "game_config.hpp"
+#include "game_config_manager.hpp"
 #include "game_errors.hpp"
 #include "gui/core/gui_definition.hpp" // for remove_single_widget_definition
 #include "log.hpp"
@@ -1243,6 +1244,21 @@ int lua_kernel_base::impl_game_config_get(lua_State* L)
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("strict_lua", game_config::strict_lua);
 	return_bool_attrib("mp_debug", game_config::mp_debug);
+
+	const char* addon_type = nullptr;
+	if(strcmp(m, "eras") == 0) addon_type = "era";
+	if(strcmp(m, "modifications") == 0) addon_type = "modification";
+	if(strcmp(m, "resources") == 0) addon_type = "resource";
+	if(strcmp(m, "campaigns") == 0) addon_type = "campaign";
+
+	if(addon_type) {
+	   std::map<std::string, config> addons_list;
+	   for (const config& era : game_config_manager::get()->game_config().child_range(addon_type) ) {
+		   addons_list.emplace(era["id"].str(), era);
+	   }
+	   lua_push(L, addons_list);
+	   return 1;
+	}
 	return 0;
 }
 int lua_kernel_base::impl_game_config_set(lua_State* L)
