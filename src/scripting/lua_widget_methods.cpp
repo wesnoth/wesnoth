@@ -242,7 +242,6 @@ namespace
 			index = max;
 		}
 
-		// todo: does a "negative indicies to "
 		if(*index <= 0 || *index > max) {
 			luaL_argerror(L, arg, "widget child index out of range");
 		}
@@ -437,19 +436,22 @@ static int intf_add_item_of_type(lua_State* L)
  */
 static int intf_add_dialog_item(lua_State* L)
 {
-
 	gui2::widget* w = &luaW_checkwidget(L, 1);
+	utils::optional<int> insert_pos = lua_check<utils::optional<int>>(L, 2);
+
 	gui2::widget* res = nullptr;
 	static const gui2::widget_data data;
 
 	if(gui2::listbox* lb = dynamic_cast<gui2::listbox*>(w)) {
-		res = &lb->add_row(data);
+		int realpos = check_index(L, 2, *lb, true, insert_pos);
+		res = &lb->add_row(data, realpos);
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 	}
 	if(res) {
 		luaW_pushwidget(L, *res);
-		return 1;
+		lua_push(L, insert_pos.value());
+		return 2;
 	}
 	return 0;
 }
