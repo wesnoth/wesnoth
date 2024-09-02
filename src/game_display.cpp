@@ -271,7 +271,7 @@ void game_display::draw_hex(const map_location& loc)
 
 	// Draw reach_map information.
 	// We remove the reachability mask of the unit that we want to attack.
-	if(!is_shrouded && !reach_map_.empty() && reach_map_.find(loc) == reach_map_.end() && loc != attack_indicator_dst_) {
+	if(!is_shrouded && !reach_map_.empty() && reach_map_.find(loc) != reach_map_.end() && loc != attack_indicator_dst_) {
 		static const image::locator unreachable(game_config::images::unreachable);
 		drawing_buffer_add(drawing_layer::reachmap, loc,
 			[tex = image::get_texture(unreachable, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });

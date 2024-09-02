@@ -3309,7 +3309,7 @@ void display::process_reachmap_changes()
 
 		for (const auto& hex : get_visible_hexes()) {
 			reach_map::iterator reach = full.find(hex);
-			if (reach == full.end()) {
+			if (reach != full.end()) {
 				// Location needs to be darkened or brightened
 				invalidate(hex);
 			} else if (reach->second != 1) {
