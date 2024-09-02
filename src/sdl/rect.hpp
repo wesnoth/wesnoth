@@ -100,6 +100,12 @@ public:
 	/** The area of this rectangle, in square pixels. */
 	constexpr int area() const { return w * h; }
 
+	/** The center point of the rectangle, accounting for origin. */
+	constexpr point center() const
+	{
+		return {(x + w) / 2, (y + h) / 2};
+	}
+
 	/** False if both w and h are > 0, true otherwise. */
 	bool empty() const;
 
