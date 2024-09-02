@@ -68,14 +68,12 @@ void mp_change_control::pre_show(window& window)
 	//
 	// Initialize sides list
 	//
-	const unsigned int num_sides = menu_handler_.board().teams().size();
-
-	for(unsigned int side = 1; side <= num_sides; ++side) {
-		if(menu_handler_.board().get_team(side).hidden()) {
+	for(const team& t : menu_handler_.board().teams()) {
+		if(t.hidden()) {
 			continue;
 		}
 
-		sides_.push_back(side);
+		const int side = sides_.emplace_back(t.side());
 
 		widget_data data;
 		widget_item item;
