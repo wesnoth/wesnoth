@@ -562,58 +562,60 @@ void render_unit_image(
 	});
 
 	// SDL hax to apply an active washout tint at the correct ratio
-	if(blend_ratio > 0.0) {
-		// Get a pure-white version of the texture
-		const image::locator whiteout_locator(
-			i_locator.get_filename(),
-			i_locator.get_modifications()
-				+ new_modifications
-				+ "~CHAN(255, 255, 255, alpha)"
-		);
+	if(blend_ratio == 0.0) {
+		return;
+	}
 
-		disp->drawing_buffer_add(drawing_layer, loc, [=, tex = image::get_texture(whiteout_locator)](const rect&) mutable {
+	// Get a pure-white version of the texture
+	const image::locator whiteout_locator(
+		i_locator.get_filename(),
+		i_locator.get_modifications()
+			+ new_modifications
+			+ "~CHAN(255, 255, 255, alpha)"
+	);
+
+	disp->drawing_buffer_add(drawing_layer, loc, [=, tex = image::get_texture(whiteout_locator)](const rect&) mutable {
+		if (submerge > 0.0) {
+			// also draw submerged portion
+			// alpha_mod and color_mod are ignored,
+			// so we have to put them in the smooth shaded vertex data.
+			// This also has to incorporate the existing submerge alpha.
+			blendto.a = uint8_t(data.alpha_verts[0].color.a * blend_ratio);
+			data.alpha_verts[0].color = blendto;
+			data.alpha_verts[1].color = blendto;
+			blendto.a = uint8_t(data.alpha_verts[2].color.a * blend_ratio);
+			data.alpha_verts[2].color = blendto;
+			data.alpha_verts[3].color = blendto;
+
+			// set clip for dry part
+			// smooth_shaded doesn't use the clip information so it's fine to set it up front
+			tex.set_src(data.unsub_src);
+
+			// draw underwater part
+			draw::smooth_shaded(tex, data.alpha_verts);
+		}
+
+		tex.set_alpha_mod(alpha * blend_ratio);
+		tex.set_color_mod(blendto);
+
+		// draw dry part
+		draw::flipped(tex, submerge > 0.0 ? data.unsub_dest : dest, hreverse, vreverse);
+
+		if(uint8_t hl = float_to_color(highlight); hl > 0) {
+			tex.set_blend_mode(SDL_BLENDMODE_ADD);
+			tex.set_alpha_mod(hl);
 			if (submerge > 0.0) {
-				// also draw submerged portion
-				// alpha_mod and color_mod are ignored,
-				// so we have to put them in the smooth shaded vertex data.
-				// This also has to incorporate the existing submerge alpha.
-				blendto.a = uint8_t(data.alpha_verts[0].color.a * blend_ratio);
-				data.alpha_verts[0].color = blendto;
-				data.alpha_verts[1].color = blendto;
-				blendto.a = uint8_t(data.alpha_verts[2].color.a * blend_ratio);
-				data.alpha_verts[2].color = blendto;
-				data.alpha_verts[3].color = blendto;
-
-				// set clip for dry part
-				// smooth_shaded doesn't use the clip information so it's fine to set it up front
-				tex.set_src(data.unsub_src);
-
 				// draw underwater part
 				draw::smooth_shaded(tex, data.alpha_verts);
 			}
-
-			tex.set_alpha_mod(alpha * blend_ratio);
-			tex.set_color_mod(blendto);
-
 			// draw dry part
 			draw::flipped(tex, submerge > 0.0 ? data.unsub_dest : dest, hreverse, vreverse);
+		}
 
-			if(uint8_t hl = float_to_color(highlight); hl > 0) {
-				tex.set_blend_mode(SDL_BLENDMODE_ADD);
-				tex.set_alpha_mod(hl);
-				if (submerge > 0.0) {
-					// draw underwater part
-					draw::smooth_shaded(tex, data.alpha_verts);
-				}
-				// draw dry part
-				draw::flipped(tex, submerge > 0.0 ? data.unsub_dest : dest, hreverse, vreverse);
-			}
-
-			tex.set_color_mod(255, 255, 255);
-			tex.set_blend_mode(SDL_BLENDMODE_BLEND);
-			tex.set_alpha_mod(SDL_ALPHA_OPAQUE);
-		});
-	}
+		tex.set_color_mod(255, 255, 255);
+		tex.set_blend_mode(SDL_BLENDMODE_BLEND);
+		tex.set_alpha_mod(SDL_ALPHA_OPAQUE);
+	});
 }
 } // namespace
 
