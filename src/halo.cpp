@@ -218,8 +218,7 @@ void halo_impl::effect::update()
 	int w(tex_.w() * disp->get_zoom_factor());
 	int h(tex_.h() * disp->get_zoom_factor());
 
-	const int zero_x = disp->get_location_x(map_location::ZERO());
-	const int zero_y = disp->get_location_y(map_location::ZERO());
+	const auto [zero_x, zero_y] = disp->get_location(map_location::ZERO());
 
 	const int xpos = zero_x + abs_mid_.x - w/2;
 	const int ypos = zero_y + abs_mid_.y - h/2;

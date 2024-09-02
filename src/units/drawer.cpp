@@ -262,10 +262,8 @@ void unit_drawer::redraw_unit(const unit& u) const
 	const frame_parameters adjusted_params = ac.anim_->get_current_params(params);
 
 	const map_location dst = loc.get_direction(facing);
-	const int xsrc = disp.get_location_x(loc);
-	const int ysrc = disp.get_location_y(loc);
-	const int xdst = disp.get_location_x(dst);
-	const int ydst = disp.get_location_y(dst);
+	const auto [xsrc, ysrc] = disp.get_location(loc);
+	const auto [xdst, ydst] = disp.get_location(dst);
 
 	// We draw bars only if wanted, visible on the map view
 	bool draw_bars = ac.draw_bars_ ;

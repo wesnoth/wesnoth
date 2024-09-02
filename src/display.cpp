@@ -1895,15 +1895,13 @@ void display::toggle_default_zoom()
 
 bool display::tile_fully_on_screen(const map_location& loc) const
 {
-	int x = get_location_x(loc);
-	int y = get_location_y(loc);
+	const auto [x, y] = get_location(loc);
 	return !outside_area(map_area(), x, y);
 }
 
 bool display::tile_nearly_on_screen(const map_location& loc) const
 {
-	int x = get_location_x(loc);
-	int y = get_location_y(loc);
+	const auto [x, y] = get_location(loc);
 	const SDL_Rect &area = map_area();
 	int hw = hex_width(), hs = hex_size();
 	return x + hs >= area.x - hw && x < area.x + area.w + hw &&
@@ -2030,8 +2028,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 		if(get_map().on_board(*itor) == false) continue;
 		if(check_fogged && fogged(*itor)) continue;
 
-		int x = get_location_x(*itor);
-		int y = get_location_y(*itor);
+		const auto [x, y] = get_location(*itor);
 
 		if (!valid) {
 			minx = x;
@@ -2612,8 +2609,7 @@ void display::draw_invalidated()
 	}
 
 	for(const map_location& loc : invalidated_) {
-		int xpos = get_location_x(loc);
-		int ypos = get_location_y(loc);
+		const auto [xpos, ypos] = get_location(loc);
 
 		rect hex_rect(xpos, ypos, zoom_, zoom_);
 		if(!hex_rect.overlaps(clip_rect)) {

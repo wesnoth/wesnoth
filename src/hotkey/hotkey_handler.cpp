@@ -109,9 +109,7 @@ void play_controller::hotkey_handler::preferences(){
 }
 
 void play_controller::hotkey_handler::left_mouse_click(){
-	int x = gui()->get_location_x(gui()->mouseover_hex());
-	int y = gui()->get_location_y(gui()->mouseover_hex());
-
+	const auto [x, y] = gui()->get_location(gui()->mouseover_hex());
 	SDL_MouseButtonEvent event;
 
 	event.button = 1;
@@ -144,9 +142,7 @@ void play_controller::hotkey_handler::select_hex(){
 }
 
 void play_controller::hotkey_handler::right_mouse_click(){
-	int x = gui()->get_location_x(gui()->mouseover_hex());
-	int y = gui()->get_location_y(gui()->mouseover_hex());
-
+	const auto [x, y] = gui()->get_location(gui()->mouseover_hex());
 	SDL_MouseButtonEvent event;
 
 	event.button = 3;

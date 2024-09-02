@@ -624,10 +624,8 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 {
 	game_display* game_disp = game_display::get_singleton();
 
-	const int xsrc = game_disp->get_location_x(src);
-	const int ysrc = game_disp->get_location_y(src);
-	const int xdst = game_disp->get_location_x(dst);
-	const int ydst = game_disp->get_location_y(dst);
+	const auto [xsrc, ysrc] = game_disp->get_location(src);
+	const auto [xdst, ydst] = game_disp->get_location(dst);
 	const map_location::DIRECTION direction = src.get_relative_dir(dst);
 
 	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val);
@@ -791,10 +789,8 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 {
 	display* disp = display::get_singleton();
 
-	const int xsrc = disp->get_location_x(src);
-	const int ysrc = disp->get_location_y(src);
-	const int xdst = disp->get_location_x(dst);
-	const int ydst = disp->get_location_y(dst);
+	const auto [xsrc, ysrc] = disp->get_location(src);
+	const auto [xdst, ydst] = disp->get_location(dst);
 	const map_location::DIRECTION direction = src.get_relative_dir(dst);
 
 	const frame_parameters current_data = merge_parameters(frame_time, animation_val, engine_val);
