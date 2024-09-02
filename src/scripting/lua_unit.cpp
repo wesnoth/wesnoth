@@ -401,6 +401,9 @@ static int impl_unit_get(lua_State *L)
 	return_cfg_attrib("recall_filter", cfg = u.recall_filter());
 	return_bool_attrib("hidden", u.get_hidden());
 	return_bool_attrib("resting", u.resting());
+	return_bool_attrib("flying", u.is_flying());
+	return_bool_attrib("fearless", u.is_fearless());
+	return_bool_attrib("healthy", u.is_healthy());
 	return_string_attrib("role", u.get_role());
 	return_string_attrib("race", u.race()->id());
 	return_string_attrib("gender", gender_string(u.gender()));

@@ -337,6 +337,10 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(res);
 	} else if(key == "flying") {
 		return variant(u_.is_flying());
+	} else if(key == "fearless") {
+		return variant(u_.is_fearless());
+	} else if(key == "healthy") {
+		return variant(u_.is_healthy());
 	} else if(key == "vars") {
 		if(u_.formula_manager().formula_vars()) {
 			return variant(u_.formula_manager().formula_vars());
@@ -406,6 +410,8 @@ void unit_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "jamming_cost");
 	add_input(inputs, "defense");
 	add_input(inputs, "flying");
+	add_input(inputs, "fearless");
+	add_input(inputs, "healthy");
 	add_input(inputs, "vars");
 	add_input(inputs, "wml_vars");
 }
