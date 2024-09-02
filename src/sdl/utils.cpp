@@ -403,7 +403,7 @@ void adjust_surface_color(surface& nsurf, int red, int green, int blue)
 	if(nsurf && (red != 0 || green != 0 || blue != 0)) {
 		surface_lock lock(nsurf);
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf->w*nsurf->h;
+		uint32_t* end = beg + nsurf.area();
 
 		while(beg != end) {
 			uint8_t alpha = (*beg) >> 24;
@@ -431,7 +431,7 @@ void greyscale_image(surface& nsurf)
 	if(nsurf) {
 		surface_lock lock(nsurf);
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf->w*nsurf->h;
+		uint32_t* end = beg + nsurf.area();
 
 		while(beg != end) {
 			uint8_t alpha = (*beg) >> 24;
@@ -465,7 +465,7 @@ void monochrome_image(surface& nsurf, const int threshold)
 	if(nsurf) {
 		surface_lock lock(nsurf);
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf->w*nsurf->h;
+		uint32_t* end = beg + nsurf.area();
 
 		while(beg != end) {
 			uint8_t alpha = (*beg) >> 24;
@@ -494,7 +494,7 @@ void sepia_image(surface& nsurf)
 	if(nsurf) {
 		surface_lock lock(nsurf);
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf->w*nsurf->h;
+		uint32_t* end = beg + nsurf.area();
 
 		while(beg != end) {
 			uint8_t alpha = (*beg) >> 24;
@@ -525,7 +525,7 @@ void negative_image(surface& nsurf, const int thresholdR, const int thresholdG, 
 	if(nsurf) {
 		surface_lock lock(nsurf);
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf->w*nsurf->h;
+		uint32_t* end = beg + nsurf.area();
 
 		while(beg != end) {
 			uint8_t alpha = (*beg) >> 24;
@@ -557,7 +557,7 @@ void alpha_to_greyscale(surface& nsurf)
 	if(nsurf) {
 		surface_lock lock(nsurf);
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf->w*nsurf->h;
+		uint32_t* end = beg + nsurf.area();
 
 		while(beg != end) {
 			uint8_t alpha = (*beg) >> 24;
@@ -574,7 +574,7 @@ void wipe_alpha(surface& nsurf)
 	if(nsurf) {
 		surface_lock lock(nsurf);
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf->w*nsurf->h;
+		uint32_t* end = beg + nsurf.area();
 
 		while(beg != end) {
 
@@ -621,7 +621,7 @@ void swap_channels_image(surface& nsurf, channel r, channel g, channel b, channe
 	if(nsurf) {
 		surface_lock lock(nsurf);
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf->w*nsurf->h;
+		uint32_t* end = beg + nsurf.area();
 
 		while(beg != end) {
 			uint8_t alpha = (*beg) >> 24;
@@ -719,7 +719,7 @@ void recolor_image(surface& nsurf, const color_range_map& map_rgb)
 
 	surface_lock lock(nsurf);
 	uint32_t* beg = lock.pixels();
-	uint32_t* end = beg + nsurf->w*nsurf->h;
+	uint32_t* end = beg + nsurf.area();
 
 	while(beg != end) {
 		uint8_t alpha = (*beg) >> 24;
@@ -744,7 +744,7 @@ void brighten_image(surface& nsurf, int32_t amount)
 	if(nsurf) {
 		surface_lock lock(nsurf);
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf->w*nsurf->h;
+		uint32_t* end = beg + nsurf.area();
 
 		if (amount < 0) amount = 0;
 		while(beg != end) {
@@ -782,7 +782,7 @@ void adjust_surface_alpha_add(surface& nsurf, int amount)
 	if(nsurf) {
 		surface_lock lock(nsurf);
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf->w*nsurf->h;
+		uint32_t* end = beg + nsurf.area();
 
 		while(beg != end) {
 			uint8_t alpha = (*beg) >> 24;
@@ -832,7 +832,7 @@ void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, cons
 		const_surface_lock mlock(nmask);
 
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf->w*nsurf->h;
+		uint32_t* end = beg + nsurf.area();
 		const uint32_t* mbeg = mlock.pixels();
 		const uint32_t* mend = mbeg + nmask->w*nmask->h;
 
@@ -924,9 +924,9 @@ void light_surface(surface& nsurf, const surface &lightmap)
 		const_surface_lock llock(lightmap);
 
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf->w * nsurf->h;
+		uint32_t* end = beg + nsurf.area();
 		const uint32_t* lbeg = llock.pixels();
-		const uint32_t* lend = lbeg + lightmap->w * lightmap->h;
+		const uint32_t* lend = lbeg + lightmap.area();
 
 		while(beg != end && lbeg != lend) {
 			uint8_t alpha = (*beg) >> 24;
@@ -1276,7 +1276,7 @@ void blend_surface(surface& nsurf, const double amount, const color_t color)
 	if(nsurf) {
 		surface_lock lock(nsurf);
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf->w*nsurf->h;
+		uint32_t* end = beg + nsurf.area();
 
 		uint16_t ratio = amount * 256;
 		const uint16_t red   = ratio * color.r;

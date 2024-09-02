@@ -300,7 +300,7 @@ void adjust_alpha_modification::operator()(surface& src) const
 
 		surface_lock lock(src);
 		uint32_t* cur = lock.pixels();
-		uint32_t* const end = cur + src->w * src->h;
+		uint32_t* const end = cur + src.area();
 		uint32_t* const beg = cur;
 
 		while(cur != end) {
@@ -334,7 +334,7 @@ void adjust_channels_modification::operator()(surface& src) const
 
 		surface_lock lock(src);
 		uint32_t* cur = lock.pixels();
-		uint32_t* const end = cur + src->w * src->h;
+		uint32_t* const end = cur + src.area();
 		uint32_t* const beg = cur;
 
 		while(cur != end) {
@@ -493,7 +493,7 @@ void o_modification::operator()(surface& src) const
 
 		surface_lock lock(src);
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + src->w * src->h;
+		uint32_t* end = beg + src.area();
 
 		while(beg != end) {
 			uint8_t alpha = (*beg) >> 24;
