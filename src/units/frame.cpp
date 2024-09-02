@@ -494,7 +494,6 @@ void render_unit_image(
 	const map_location& loc,
 	const image::locator& i_locator,
 	bool hreverse,
-	bool greyscale,
 	uint8_t alpha,
 	double highlight,
 	color_t blendto,
@@ -514,19 +513,7 @@ void render_unit_image(
 		return;
 	}
 
-	// For now, we add to the existing IPF modifications for the image.
-	std::string new_modifications;
-
-	if(greyscale) {
-		new_modifications += "~GS()";
-	}
-
-	texture tex;
-	if(!new_modifications.empty()) {
-		tex = image::get_texture({i_locator.get_filename(), i_locator.get_modifications() + new_modifications});
-	} else {
-		tex = image::get_texture(i_locator);
-	}
+	texture tex = image::get_texture(i_locator);
 
 	// Clamp blend ratio so nothing weird happens
 	blend_ratio = std::clamp(blend_ratio, 0.0, 1.0);
@@ -570,7 +557,6 @@ void render_unit_image(
 	const image::locator whiteout_locator(
 		i_locator.get_filename(),
 		i_locator.get_modifications()
-			+ new_modifications
 			+ "~CHAN(255, 255, 255, alpha)"
 	);
 
@@ -714,7 +700,6 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 				src,
 				image_loc,
 				facing_west,
-				false,
 				alpha,
 				brighten,
 				current_data.blend_with ? *current_data.blend_with : color_t(),
