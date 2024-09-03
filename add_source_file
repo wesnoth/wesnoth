@@ -175,12 +175,16 @@ def add_to_source_list(filename, source_list, remove):
     sl_lines.sort()
     open(source_list_file, 'w').writelines(sl_lines)
 
-def add_to_source_lists(filename, targets, remove):
-    # remove from all tagerts if -r was specified.
-    translated_targets = source_list_target_translations.values() if remove else [source_list_target_translations[t] for t in targets]
+def add_to_source_lists(filename, targets):
+    translated_targets = [source_list_target_translations[t] for t in targets]
     print(" source_list targets:", translated_targets)
     for t in translated_targets:
-        add_to_source_list(filename, t, remove)
+        add_to_source_list(filename, t, false)
+
+def remove_from_source_lists(filename, targets):
+    # remove from all tagerts if -r was specified.
+    for t in source_list_target_translations.values():
+        add_to_source_list(filename, t, true)
 
 #==============#
 # Code::Blocks #
@@ -316,7 +320,13 @@ if __name__ == "__main__":
         sanity_check_existing_cpp_hpp(filenames)
 
     for filename in filenames:
-        print(f"adding '{filename}' to targets: {options.target}")
-        add_to_xcode(filename, options.target, options.remove)
-        add_to_source_lists(filename, options.target, options.remove)
-        add_to_code_blocks(filename, options.target, options.remove)
+        if options.remove:
+            print(f"removing '{filename}' from all targets")
+            add_to_xcode(filename, options.target, options.remove)
+            remove_from_source_lists(filename, options.target)
+            add_to_code_blocks(filename, options.target, options.remove)
+        else:
+            print(f"adding '{filename}' to targets: {options.target}")
+            add_to_xcode(filename, options.target, options.remove)
+            add_to_source_lists(filename, options.target)
+            add_to_code_blocks(filename, options.target, options.remove)
