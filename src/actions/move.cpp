@@ -138,27 +138,20 @@ void move_unit_spectator::set_unit(const unit_map::const_iterator &u)
 
 game_events::pump_result_t get_village(const map_location& loc, int side, bool *action_timebonus, bool fire_event)
 {
-	team* t = nullptr;
-	bool not_defeated = false;
-
-	for(team& tm : resources::gameboard->teams()) {
-		if(tm.side() == side) {
-			if(tm.owns_village(loc)) {
-				return {};
-			} else {
-				not_defeated = !resources::gameboard->team_is_defeated(tm);
-				t = &tm;
-				break;
-			}
-		}
+	std::vector<team> &teams = resources::gameboard->teams();
+	team *t = static_cast<unsigned>(side - 1) < teams.size() ? &teams[side - 1] : nullptr;
+	if (t && t->owns_village(loc)) {
+		return game_events::pump_result_t();
 	}
+
+	bool not_defeated = t && !resources::gameboard->team_is_defeated(*t);
 
 	bool grants_timebonus = false;
 
 	int old_owner_side = 0;
 	// We strip the village off all other sides, unless it is held by an ally
 	// and our side is already defeated (and thus we can't occupy it)
-	for(team& tm : resources::gameboard->teams()) {
+	for(team& tm : teams) {
 		int i_side = tm.side();
 		if (!t || not_defeated || t->is_enemy(i_side)) {
 			if(tm.owns_village(loc)) {
