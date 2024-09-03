@@ -398,7 +398,7 @@ static int intf_set_dialog_focus(lua_State* L)
 
 
 /**
- * Sets a widget's state to active or inactive
+ * Adds an item to a container widget that supports different types of items, for example a treeview.
  * - Arg 1: widget.
  * - Arg 2: string, the type (id of [node_definition]) of the new item.
  * - Arg 3: integer (optional), where to insert the new item.
@@ -431,7 +431,7 @@ static int intf_add_item_of_type(lua_State* L)
 	return 0;
 }
 /**
- * Sets a widget's state to active or inactive
+ * Adds an item to a container widget, for example a listbox
  * - Arg 1: widget.
  * - Arg 2: integer (optional), where to insert the new item.
  */
