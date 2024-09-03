@@ -59,12 +59,12 @@ text_box* spinner::get_internal_text_box()
 void spinner::set_value(int val)
 {
 	if(val < minimum_value_) {
-		DBG_GUI_G << "Value (" << val << ") < min (" << minimum_value_ <<
+		WRN_GUI_G << "Value (" << val << ") < min (" << minimum_value_ <<
 			"), setting value to " << minimum_value_ << ".";
 		val = minimum_value_;
 	}
 	if(val > maximum_value_) {
-		DBG_GUI_G << "Value (" << val << ") > min (" << maximum_value_ <<
+		WRN_GUI_G << "Value (" << val << ") > min (" << maximum_value_ <<
 			"), setting value to " << maximum_value_ << ".";
 		val = maximum_value_;
 	}
@@ -111,14 +111,14 @@ void spinner::set_step_size(unsigned step)
 	// Limit step_size to max int so we can safely cast to int elsewhere.
 	const int limit = 655360; // ought to be enough for anybody
 	if(step > limit) {
-		DBG_GUI_G << "Requested step_size (" << step << ") must be <= " << limit <<
+		WRN_GUI_G << "Requested step_size (" << step << ") must be <= " << limit <<
 			", setting requested step_size to " << limit << ".";
 		step = limit;
 	}
 
 	unsigned range = maximum_value_ - minimum_value_;
 	if(step > range) {
-		DBG_GUI_G << "Requested step_size (" << step << ") must be <= the range (" << range <<
+		WRN_GUI_G << "Requested step_size (" << step << ") must be <= the range (" << range <<
 			") allowed by min (" << minimum_value_ << ") and max (" << maximum_value_ <<
 		   	").  Setting step_size to " << range << ".";
 		step_size_ =  range;
