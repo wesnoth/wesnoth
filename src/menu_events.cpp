@@ -222,9 +222,12 @@ bool menu_handler::has_friends() const
 		return !gui_->observers().empty();
 	}
 
-	for(std::size_t n = 0; n != pc_.get_teams().size(); ++n) {
-		if(n != gui_->viewing_team_index() && gui_->viewing_team().team_name() == pc_.get_teams()[n].team_name()
-				&& pc_.get_teams()[n].is_network()) {
+	for(const team& t : pc_.get_teams()) {
+		if(gui_->viewing_team().side() == t.side()) {
+			continue; // Can't be friends with yourself
+		}
+
+		if(gui_->viewing_team().team_name() == t.team_name() && t.is_network()) {
 			return true;
 		}
 	}

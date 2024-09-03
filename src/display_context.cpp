@@ -123,10 +123,10 @@ orb_status display_context::unit_orb_status(const unit& u) const
 
 int display_context::village_owner(const map_location& loc) const
 {
-	const std::vector<team> & t = teams();
-	for(std::size_t i = 0; i != t.size(); ++i) {
-		if(t[i].owns_village(loc))
-			return i + 1;
+	for(const team& t : teams()) {
+		if(t.owns_village(loc)) {
+			return t.side();
+		}
 	}
 	return 0;
 }

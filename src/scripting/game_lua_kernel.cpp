@@ -3790,8 +3790,8 @@ int game_lua_kernel::intf_get_sides(lua_State* L)
 	std::vector<int> sides;
 	const vconfig ssf = luaW_checkvconfig(L, 1, true);
 	if(ssf.null()) {
-		for (unsigned side_number = 1; side_number <= teams().size(); ++side_number) {
-			sides.push_back(side_number);
+		for(const team& t : teams()) {
+			sides.push_back(t.side());
 		}
 	} else {
 		filter_context & fc = game_state_;

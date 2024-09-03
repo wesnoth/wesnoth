@@ -192,12 +192,12 @@ void helper_check_village(const map_location& loc, int side){
 
 	// Strip the village off all other sides.
 	int old_owner_side = 0;
-	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i){
-		int i_side = std::distance(teams.begin(), i) + 1;
+	for(team& tm : teams) {
+		int i_side = tm.side();
 		if(!t || has_leader || t->is_enemy(i_side)){
-			if(i->owns_village(loc)){
+			if(tm.owns_village(loc)){
 				old_owner_side = i_side;
-				i->lose_village(loc);
+				tm.lose_village(loc);
 				DBG_AI_SIM_ACTIONS << "side " << i_side << " losts village at " << loc;
 			}
 		}
