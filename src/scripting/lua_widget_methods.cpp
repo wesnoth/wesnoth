@@ -400,8 +400,8 @@ static int intf_set_dialog_focus(lua_State* L)
 /**
  * Sets a widget's state to active or inactive
  * - Arg 1: widget.
- * - Arg 2: string, the type (id of [node_definition]) of the new node.
- * - Arg 3: integer (optional), where to insert the new node.
+ * - Arg 2: string, the type (id of [node_definition]) of the new item.
+ * - Arg 3: integer (optional), where to insert the new item.
  */
 static int intf_add_item_of_type(lua_State* L)
 {
@@ -433,6 +433,7 @@ static int intf_add_item_of_type(lua_State* L)
 /**
  * Sets a widget's state to active or inactive
  * - Arg 1: widget.
+ * - Arg 2: integer (optional), where to insert the new item.
  */
 static int intf_add_dialog_item(lua_State* L)
 {
