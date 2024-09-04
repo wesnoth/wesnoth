@@ -331,6 +331,7 @@ int pango_text::xy_to_index(const point& position) const
 
 void pango_text::add_attribute_size(const unsigned start_offset, const unsigned end_offset, int size)
 {
+	size = prefs::get().font_scaled(size) * pixel_scale_;
 	attribute_start_offset_ = start_offset;
 	attribute_end_offset_ = end_offset;
 
