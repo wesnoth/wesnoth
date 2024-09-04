@@ -316,7 +316,7 @@ struct builder_rich_label : public builder_styled_widget
 
 	PangoAlignment text_alignment;
 	bool link_aware;
-	unsigned width;
+	typed_formula<unsigned> width;
 };
 
 } // namespace implementation

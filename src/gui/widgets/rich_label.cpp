@@ -887,7 +887,7 @@ builder_rich_label::builder_rich_label(const config& cfg)
 	: builder_styled_widget(cfg)
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 	, link_aware(cfg["link_aware"].to_bool(true))
-	, width(cfg["width"].to_int(500))
+	, width(cfg["width"], 500)
 {
 }
 
@@ -898,10 +898,13 @@ std::unique_ptr<widget> builder_rich_label::build() const
 	const auto conf = lbl->cast_config_to<rich_label_definition>();
 	assert(conf);
 
+	const wfl::map_formula_callable& size = get_screen_size_variables();
+	const unsigned w = width(size);
+
 	lbl->set_text_alignment(text_alignment);
 	lbl->set_link_aware(link_aware);
 	lbl->set_link_color(conf->link_color);
-	lbl->set_width(width);
+	lbl->set_width(w);
 
 	DBG_GUI_G << "Window builder: placed rich_label '" << id << "' with definition '"
 			  << definition << "'.";
