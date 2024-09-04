@@ -48,12 +48,12 @@ editor_resize_map::editor_resize_map(int& width,
 
 void editor_resize_map::pre_show(window& window)
 {
-	slider& height = find_widget<slider>(&window, "height", false);
+	slider& height = find_widget<slider>("height");
 	connect_signal_notify_modified(
 			height,
 			std::bind(&editor_resize_map::update_expand_direction, this));
 
-	slider& width = find_widget<slider>(&window, "width", false);
+	slider& width = find_widget<slider>("width");
 	connect_signal_notify_modified(
 			width,
 			std::bind(&editor_resize_map::update_expand_direction, this));
@@ -62,7 +62,7 @@ void editor_resize_map::pre_show(window& window)
 	for(int i = 0; i < 9; ++i) {
 		std::string name = name_prefix + std::to_string(i);
 		direction_buttons_[i]
-				= find_widget<toggle_button>(&window, name, false, true);
+				= find_widget<toggle_button>(name, false, true);
 
 		connect_signal_notify_modified(*direction_buttons_[i],
 			std::bind(&editor_resize_map::update_expand_direction, this));

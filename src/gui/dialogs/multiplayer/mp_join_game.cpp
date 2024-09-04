@@ -25,7 +25,6 @@
 #include "game_initialization/mp_game_utils.hpp"
 #include "game_initialization/multiplayer.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
@@ -240,7 +239,7 @@ void mp_join_game::pre_show(window& window)
 	//
 	// Set title
 	//
-	label& title = find_widget<label>(&window, "title", false);
+	label& title = find_widget<label>("title");
 	// FIXME: very hacky way to get the game name...
 	title.set_label((formatter() << level_.mandatory_child("multiplayer")["scenario"] << " " << font::unicode_em_dash << " " << get_scenario()["name"].t_str()).str());
 
@@ -252,7 +251,7 @@ void mp_join_game::pre_show(window& window)
 	//
 	// Initialize chatbox and game rooms
 	//
-	chatbox& chat = find_widget<chatbox>(&window, "chat", false);
+	chatbox& chat = find_widget<chatbox>("chat");
 
 	chat.room_window_open(N_("this game"), true, false);
 	chat.active_window_changed();
@@ -345,7 +344,7 @@ void mp_join_game::generate_side_list()
 		return;
 	}
 
-	tree_view& tree = find_widget<tree_view>(get_window(), "side_list", false);
+	tree_view& tree = find_widget<tree_view>("side_list");
 
 	tree.clear();
 	team_tree_map_.clear();
@@ -446,7 +445,7 @@ void mp_join_game::generate_side_list()
 
 		grid& row_grid = node.get_grid();
 
-		auto* select_leader_button = find_widget<button>(&row_grid, "select_leader", false, false);
+		auto* select_leader_button = &row_grid.find_widget<button>("select_leader", false);
 		if(select_leader_button) {
 			if(side["player_id"] == prefs::get().login() && side["allow_changes"].to_bool(true)) {
 				//
@@ -473,8 +472,8 @@ void mp_join_game::generate_side_list()
 		}
 
 		if(income_amt == 0) {
-			find_widget<image>(&row_grid, "income_icon", false).set_visible(widget::visibility::invisible);
-			find_widget<label>(&row_grid, "side_income", false).set_visible(widget::visibility::invisible);
+			row_grid.find_widget<image>("income_icon").set_visible(widget::visibility::invisible);
+			row_grid.find_widget<label>("side_income").set_visible(widget::visibility::invisible);
 		}
 	}
 }
@@ -502,7 +501,7 @@ void mp_join_game::network_handler()
 	}
 
 	// Update chat
-	find_widget<chatbox>(get_window(), "chat", false).process_network_data(data);
+	find_widget<chatbox>("chat").process_network_data(data);
 
 	if(!data["message"].empty()) {
 		gui2::show_transient_message(_("Response") , data["message"]);

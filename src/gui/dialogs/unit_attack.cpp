@@ -17,7 +17,6 @@
 #include "gui/dialogs/unit_attack.hpp"
 
 #include "font/text_formatting.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/attack_predictions.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -51,25 +50,25 @@ unit_attack::unit_attack(const unit_map::iterator& attacker_itor,
 
 void unit_attack::damage_calc_callback()
 {
-	const std::size_t index = find_widget<listbox>(get_window(), "weapon_list", false).get_selected_row();
+	const std::size_t index = find_widget<listbox>("weapon_list").get_selected_row();
 	attack_predictions::display(weapons_[index], attacker_itor_.get_shared_ptr(), defender_itor_.get_shared_ptr());
 }
 
 void unit_attack::pre_show(window& window)
 {
 	connect_signal_mouse_left_click(
-			find_widget<button>(&window, "damage_calculation", false),
+			find_widget<button>("damage_calculation"),
 			std::bind(&unit_attack::damage_calc_callback, this));
 
-	find_widget<unit_preview_pane>(&window, "attacker_pane", false)
+	find_widget<unit_preview_pane>("attacker_pane")
 		.set_displayed_unit(*attacker_itor_);
 
-	find_widget<unit_preview_pane>(&window, "defender_pane", false)
+	find_widget<unit_preview_pane>("defender_pane")
 		.set_displayed_unit(*defender_itor_);
 
 	selected_weapon_ = -1;
 
-	listbox& weapon_list = find_widget<listbox>(&window, "weapon_list", false);
+	listbox& weapon_list = find_widget<listbox>("weapon_list");
 	window.keyboard_capture(&weapon_list);
 
 	// Possible TODO: If a "blank weapon" is generally useful, add it as a static member in attack_type.
@@ -239,7 +238,7 @@ void unit_attack::pre_show(window& window)
 void unit_attack::post_show(window& window)
 {
 	if(get_retval() == retval::OK) {
-		selected_weapon_ = find_widget<listbox>(&window, "weapon_list", false).get_selected_row();
+		selected_weapon_ = find_widget<listbox>("weapon_list").get_selected_row();
 	}
 }
 

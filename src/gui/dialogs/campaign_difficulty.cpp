@@ -21,7 +21,6 @@
 #include "deprecation.hpp"
 #include "font/text_formatting.hpp"
 #include "game_version.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
@@ -63,7 +62,7 @@ campaign_difficulty::campaign_difficulty(const config& campaign)
 
 void campaign_difficulty::pre_show(window& window)
 {
-	listbox& list = find_widget<listbox>(&window, "listbox", false);
+	listbox& list = find_widget<listbox>("listbox");
 	window.keyboard_capture(&list);
 
 	unsigned difficulty_count = 0;
@@ -99,7 +98,7 @@ void campaign_difficulty::pre_show(window& window)
 			list.select_last_row();
 		}
 
-		styled_widget& widget = find_widget<styled_widget>(&grid, "victory", false);
+		styled_widget& widget = grid.find_widget<styled_widget>("victory");
 		if(prefs::get().is_campaign_completed(campaign_id_, d["define"])) {
 			// Use different laurels according to the difficulty level, following the
 			// pre-existing convention established in campaign_selection class.
@@ -123,7 +122,7 @@ void campaign_difficulty::pre_show(window& window)
 void campaign_difficulty::post_show(window& window)
 {
 	if(get_retval() == retval::OK) {
-		listbox& list = find_widget<listbox>(&window, "listbox", false);
+		listbox& list = find_widget<listbox>("listbox");
 		selected_difficulty_ = difficulties_.mandatory_child("difficulty", list.get_selected_row())["define"].str();
 	}
 }

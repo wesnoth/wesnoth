@@ -18,12 +18,13 @@
 #include "gui/widgets/tree_view_node.hpp"
 
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/iterator/walker_tree_node.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "sdl/rect.hpp"
+#include "wml_exception.hpp"
+
 #include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + get_tree_view().id() + "] " + __func__

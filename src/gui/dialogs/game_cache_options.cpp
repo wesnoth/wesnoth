@@ -22,7 +22,6 @@
 #include "cursor.hpp"
 #include "desktop/open.hpp"
 #include "filesystem.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
@@ -49,22 +48,22 @@ game_cache_options::game_cache_options()
 
 void game_cache_options::pre_show(window& window)
 {
-	clean_button_ = find_widget<button>(&window, "clean", false, true);
-	purge_button_ = find_widget<button>(&window, "purge", false, true);
-	size_label_ = find_widget<label>(&window, "size", false, true);
+	clean_button_ = find_widget<button>("clean", false, true);
+	purge_button_ = find_widget<button>("purge", false, true);
+	size_label_ = find_widget<label>("size", false, true);
 
 	update_cache_size_display();
 
-	text_box_base& path_box = find_widget<text_box_base>(&window, "path", false);
+	text_box_base& path_box = find_widget<text_box_base>("path");
 	path_box.set_value(cache_path_);
 	path_box.set_active(false);
 
-	button& copy = find_widget<button>(&window, "copy", false);
+	button& copy = find_widget<button>("copy");
 	connect_signal_mouse_left_click(copy,
 									std::bind(&game_cache_options::copy_to_clipboard_callback,
 												this));
 
-	button& browse = find_widget<button>(&window, "browse", false);
+	button& browse = find_widget<button>("browse");
 	connect_signal_mouse_left_click(browse,
 									std::bind(&game_cache_options::browse_cache_callback,
 												this));

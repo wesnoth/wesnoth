@@ -23,7 +23,6 @@
 #include "formatter.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 #include "gui/dialogs/multiplayer/player_list_helper.hpp"
 #include "gui/widgets/button.hpp"
@@ -81,12 +80,12 @@ void mp_staging::pre_show(window& window)
 	tooltip
 		<< vgettext_impl("wesnoth", "Hotkey(s): ",  {{}})
 		<< hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_MP_START_GAME).id);
-	find_widget<button>(get_window(), "ok", false).set_tooltip(tooltip.str());
+	find_widget<button>("ok").set_tooltip(tooltip.str());
 
 	//
 	// Set title and status widget states
 	//
-	label& title = find_widget<label>(&window, "title", false);
+	label& title = find_widget<label>("title");
 	title.set_label((formatter() << connect_engine_.params().name << " " << font::unicode_em_dash << " " << connect_engine_.scenario()["name"].t_str()).str());
 
 	update_status_label_and_buttons();
@@ -103,7 +102,7 @@ void mp_staging::pre_show(window& window)
 	//
 	// Initialize chatbox and game rooms
 	//
-	chatbox& chat = find_widget<chatbox>(&window, "chat", false);
+	chatbox& chat = find_widget<chatbox>("chat");
 
 	chat.room_window_open(N_("this game"), true, false);
 	chat.active_window_changed();
@@ -151,7 +150,7 @@ tree_view_node& mp_staging::add_side_to_team_node(ng::side_engine_ptr side, T&&.
 
 	// Add a team node if none exists
 	if(team_node == nullptr) {
-		tree_view& tree = find_widget<tree_view>(get_window(), "side_list", false);
+		tree_view& tree = find_widget<tree_view>("side_list");
 
 		widget_data tree_data;
 		widget_item tree_item;
@@ -224,7 +223,7 @@ void mp_staging::add_side_node(ng::side_engine_ptr side)
 		}
 	}
 
-	menu_button& ai_selection = find_widget<menu_button>(&row_grid, "ai_controller", false);
+	menu_button& ai_selection = row_grid.find_widget<menu_button>("ai_controller");
 
 	ai_selection.set_values(ai_options, selection);
 
@@ -240,7 +239,7 @@ void mp_staging::add_side_node(ng::side_engine_ptr side)
 		controller_names.emplace_back("label", controller.second);
 	}
 
-	menu_button& controller_selection = find_widget<menu_button>(&row_grid, "controller", false);
+	menu_button& controller_selection = row_grid.find_widget<menu_button>("controller");
 
 	controller_selection.set_values(controller_names, side->current_controller_index());
 	controller_selection.set_active(controller_names.size() > 1);
@@ -253,7 +252,7 @@ void mp_staging::add_side_node(ng::side_engine_ptr side)
 	//
 	// Leader controls
 	//
-	button& leader_select = find_widget<button>(&row_grid, "select_leader", false);
+	button& leader_select = row_grid.find_widget<button>("select_leader");
 
 	//todo: shouldn't this also be disabled when the flg settings are locked.
 	leader_select.set_active(!saved_game);
@@ -292,7 +291,7 @@ void mp_staging::add_side_node(ng::side_engine_ptr side)
 		}
 	}
 
-	menu_button& team_selection = find_widget<menu_button>(&row_grid, "side_team", false);
+	menu_button& team_selection = row_grid.find_widget<menu_button>("side_team");
 
 	team_selection.set_values(team_names, initial_team_selection);
 	//todo: shouldn't this also be disabled when team settings are locked.
@@ -312,7 +311,7 @@ void mp_staging::add_side_node(ng::side_engine_ptr side)
 		);
 	}
 
-	menu_button& color_selection = find_widget<menu_button>(&row_grid, "side_color", false);
+	menu_button& color_selection = row_grid.find_widget<menu_button>("side_color");
 
 	color_selection.set_values(color_options, side->color());
 	color_selection.set_active(!saved_game);
@@ -336,13 +335,13 @@ void mp_staging::add_side_node(ng::side_engine_ptr side)
 		slider.set_value(value);
 	};
 
-	slider& slider_gold = find_widget<slider>(&row_grid, "side_gold_slider", false);
+	slider& slider_gold = row_grid.find_widget<slider>("side_gold_slider");
 	slider_setup_helper(slider_gold, side->gold());
 
 	connect_signal_notify_modified(slider_gold, std::bind(
 		&mp_staging::on_side_slider_change<&ng::side_engine::set_gold>, this, side, std::ref(slider_gold)));
 
-	slider& slider_income = find_widget<slider>(&row_grid, "side_income_slider", false);
+	slider& slider_income = row_grid.find_widget<slider>("side_income_slider");
 	slider_setup_helper(slider_income, side->income());
 
 	connect_signal_notify_modified(slider_income, std::bind(
@@ -368,8 +367,8 @@ void mp_staging::add_side_node(ng::side_engine_ptr side)
 
 void mp_staging::on_controller_select(ng::side_engine_ptr side, grid& row_grid)
 {
-	menu_button& ai_selection         = find_widget<menu_button>(&row_grid, "ai_controller", false);
-	menu_button& controller_selection = find_widget<menu_button>(&row_grid, "controller", false);
+	menu_button& ai_selection         = row_grid.find_widget<menu_button>("ai_controller");
+	menu_button& controller_selection = row_grid.find_widget<menu_button>("controller");
 
 	if(side->controller_changed(controller_selection.get_value())) {
 		ai_selection.set_visible(side->controller() == ng::CNTR_COMPUTER ? widget::visibility::visible : widget::visibility::hidden);
@@ -398,7 +397,7 @@ void mp_staging::on_ai_select(ng::side_engine_ptr side, menu_button& ai_menu, co
 
 void mp_staging::on_color_select(ng::side_engine_ptr side, grid& row_grid)
 {
-	side->set_color(find_widget<menu_button>(&row_grid, "side_color", false).get_value());
+	side->set_color(row_grid.find_widget<menu_button>("side_color").get_value());
 
 	update_leader_display(side, row_grid);
 
@@ -422,7 +421,7 @@ void mp_staging::on_team_select(ng::side_engine_ptr side, menu_button& team_menu
 	const std::string old_team = side->team_name();
 	side->set_team(team_index);
 
-	auto& tree = find_widget<tree_view>(get_window(), "side_list", false);
+	auto& tree = find_widget<tree_view>("side_list");
 
 	// First, remove the node from the tree
 	auto node = tree.remove_node(side_tree_map_[side]);
@@ -483,34 +482,34 @@ void mp_staging::update_leader_display(ng::side_engine_ptr side, grid& row_grid)
 		current_leader = type.type_name();
 	}
 
-	find_widget<drawing>(&row_grid, "leader_image", false).set_label(new_image);
+	row_grid.find_widget<drawing>("leader_image").set_label(new_image);
 
 	// Faction and leader
 	if(!side->cfg()["name"].empty()) {
 		current_leader = formatter() << side->cfg()["name"] << " (<i>" << current_leader << "</i>)";
 	}
 
-	find_widget<label>(&row_grid, "leader_type", false).set_label(current_leader == "random" ? _("Random") : current_leader);
-	find_widget<label>(&row_grid, "leader_faction", false).set_label(side->flg().current_faction()["name"]);
+	row_grid.find_widget<label>("leader_type").set_label(current_leader == "random" ? _("Random") : current_leader);
+	row_grid.find_widget<label>("leader_faction").set_label(side->flg().current_faction()["name"]);
 
 	// Gender
 	if(current_gender != font::unicode_em_dash) {
 		const std::string gender_icon = formatter() << "icons/icon-" << current_gender << ".png";
 
-		image& icon = find_widget<image>(&row_grid, "leader_gender", false);
+		image& icon = row_grid.find_widget<image>("leader_gender");
 		icon.set_label(gender_icon);
 	}
 }
 
 void mp_staging::update_status_label_and_buttons()
 {
-	find_widget<label>(get_window(), "status_label", false).set_label(
+	find_widget<label>("status_label").set_label(
 		connect_engine_.can_start_game() ? "" : connect_engine_.sides_available()
 			? _("Waiting for players to join...")
 			: _("Waiting for players to choose factions...")
 	);
 
-	find_widget<button>(get_window(), "ok", false).set_active(connect_engine_.can_start_game());
+	find_widget<button>("ok").set_active(connect_engine_.can_start_game());
 }
 
 void mp_staging::network_handler()
@@ -527,7 +526,7 @@ void mp_staging::network_handler()
 	}
 
 	// Update chat
-	find_widget<chatbox>(get_window(), "chat", false).process_network_data(data);
+	find_widget<chatbox>("chat").process_network_data(data);
 
 	// TODO: why is this needed...
 	const bool was_able_to_start = connect_engine_.can_start_game();
@@ -553,7 +552,7 @@ void mp_staging::network_handler()
 			controller_names.emplace_back("label", controller.second);
 		}
 
-		menu_button& controller_selection = find_widget<menu_button>(&row_grid, "controller", false);
+		menu_button& controller_selection = row_grid.find_widget<menu_button>("controller");
 
 		controller_selection.set_values(controller_names, side->current_controller_index());
 		controller_selection.set_active(controller_names.size() > 1);

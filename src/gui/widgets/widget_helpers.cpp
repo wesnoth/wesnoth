@@ -15,7 +15,6 @@
 
 #include "gui/widgets/widget_helpers.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/grid.hpp"
 
 #include <cassert>
@@ -33,11 +32,11 @@ void swap_grid(grid* g, grid* content_grid, std::unique_ptr<widget> widget, cons
 	// Get the container containing the wanted widget.
 	grid* parent_grid = nullptr;
 	if(g) {
-		parent_grid = find_widget<grid>(g, id, false, false);
+		parent_grid = g->find_widget<grid>(id, false, false);
 	}
 
 	if(!parent_grid) {
-		parent_grid = find_widget<grid>(content_grid, id, true, false);
+		parent_grid = content_grid->find_widget<grid>(id, true, false);
 	}
 
 	parent_grid = dynamic_cast<grid*>(parent_grid->parent());

@@ -19,7 +19,6 @@
 
 #include "display.hpp"
 #include "formula/variant.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "sdl/point.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/widgets/button.hpp"
@@ -89,12 +88,12 @@ void story_viewer::pre_show(window& window)
 	// Special callback handle key presses
 	connect_signal_pre_key_press(window, std::bind(&story_viewer::key_press_callback, this, std::placeholders::_5));
 
-	connect_signal_mouse_left_click(find_widget<button>(&window, "next", false),
+	connect_signal_mouse_left_click(find_widget<button>("next"),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD));
-	connect_signal_mouse_left_click(find_widget<button>(&window, "prev", false),
+	connect_signal_mouse_left_click(find_widget<button>("prev"),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_BACKWARDS));
 
-	find_widget<scroll_label>(get_window(), "part_text", false)
+	find_widget<scroll_label>("part_text")
 		.connect_signal<event::LEFT_BUTTON_CLICK>(
 			std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD), queue_position::front_pre_child);
 
@@ -120,7 +119,7 @@ void story_viewer::display_part()
 {
 	static const int VOICE_SOUND_SOURCE_ID = 255;
 	// Update Back button state. Doing this here so it gets called in pre_show too.
-	find_widget<button>(get_window(), "prev", false).set_active(part_index_ != 0);
+	find_widget<button>("prev").set_active(part_index_ != 0);
 
 	//
 	// Music and sound
@@ -243,7 +242,7 @@ void story_viewer::display_part()
 	//
 	// Title
 	//
-	label& title_label = find_widget<label>(get_window(), "title", false);
+	label& title_label = find_widget<label>("title");
 
 	std::string title_text = current_part_->title();
 	bool showing_title;
@@ -265,7 +264,7 @@ void story_viewer::display_part()
 	//
 	// Story text
 	//
-	stacked_widget& text_stack = find_widget<stacked_widget>(get_window(), "text_and_control_stack", false);
+	stacked_widget& text_stack = find_widget<stacked_widget>("text_and_control_stack");
 
 	std::string new_panel_mode;
 
@@ -289,7 +288,7 @@ void story_viewer::display_part()
 	 * We use get_layer_grid here to ensure the widget is always found regardless of
 	 * whether the background is visible or not.
 	 */
-	canvas& panel_canvas = find_widget<panel>(text_stack.get_layer_grid(LAYER_BACKGROUND), "text_panel", false).get_canvas(0);
+	canvas& panel_canvas = text_stack.get_layer_grid(LAYER_BACKGROUND)->find_widget<panel>("text_panel").get_canvas(0);
 
 	panel_canvas.set_variable("panel_position", wfl::variant(new_panel_mode));
 	panel_canvas.set_variable("title_present", wfl::variant(static_cast<int>(showing_title))); // cast to 0/1
@@ -307,7 +306,7 @@ void story_viewer::display_part()
 	// Convert the story part text alignment types into the Pango equivalents
 	PangoAlignment story_text_alignment = decode_text_alignment(current_part_->story_text_alignment());
 
-	scroll_label& text_label = find_widget<scroll_label>(get_window(), "part_text", false);
+	scroll_label& text_label = find_widget<scroll_label>("part_text");
 	text_label.set_text_alignment(story_text_alignment);
 	text_label.set_text_alpha(0);
 	text_label.set_label(part_text);
@@ -398,7 +397,7 @@ void story_viewer::nav_button_callback(NAV_DIRECTION direction)
 
 		// Only set full alpha if Forward was pressed.
 		if(direction == DIR_FORWARD) {
-			find_widget<scroll_label>(get_window(), "part_text", false).set_text_alpha(ALPHA_OPAQUE);
+			find_widget<scroll_label>("part_text").set_text_alpha(ALPHA_OPAQUE);
 			flag_stack_as_dirty();
 			return;
 		}
@@ -495,7 +494,7 @@ void story_viewer::update()
 	}
 
 	unsigned short new_alpha = std::clamp<short>(fade_step_ * 25.5, 0, ALPHA_OPAQUE);
-	find_widget<scroll_label>(get_window(), "part_text", false).set_text_alpha(new_alpha);
+	find_widget<scroll_label>("part_text").set_text_alpha(new_alpha);
 
 	// The text stack also needs to be marked dirty so the background panel redraws correctly.
 	flag_stack_as_dirty();
@@ -511,7 +510,7 @@ void story_viewer::update()
 
 void story_viewer::flag_stack_as_dirty()
 {
-	find_widget<stacked_widget>(get_window(), "text_and_control_stack", false).queue_redraw();
+	find_widget<stacked_widget>("text_and_control_stack").queue_redraw();
 }
 
 } // namespace dialogs

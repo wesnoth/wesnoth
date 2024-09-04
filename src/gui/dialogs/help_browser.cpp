@@ -65,12 +65,12 @@ help_browser::help_browser(const help::section& toplevel, const std::string& ini
 
 void help_browser::pre_show(window& window)
 {
-	tree_view& topic_tree = find_widget<tree_view>(&window, "topic_tree", false);
+	tree_view& topic_tree = find_widget<tree_view>("topic_tree");
 
-	button& back_button = find_widget<button>(&window, "back", false);
-	button& next_button = find_widget<button>(&window, "next", false);
+	button& back_button = find_widget<button>("back");
+	button& next_button = find_widget<button>("next");
 
-	rich_label& topic_text = find_widget<rich_label>(&window, "topic_text", false);
+	rich_label& topic_text = find_widget<rich_label>("topic_text");
 
 	next_button.set_active(false);
 	back_button.set_active(false);
@@ -85,7 +85,7 @@ void help_browser::pre_show(window& window)
 
 	add_topics_for_section(toplevel_, topic_tree.get_root_node());
 
-	tree_view_node& initial_node = find_widget<tree_view_node>(&topic_tree, initial_topic_, false);
+	tree_view_node& initial_node = topic_tree.find_widget<tree_view_node>(initial_topic_);
 	initial_node.select_node(true);
 
 	on_topic_select();
@@ -149,11 +149,11 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 		item["label"] = topic->title;
 		data.emplace("topic_title", item);
 
-		find_widget<label>(this, "topic_title", false).set_label(topic->title);
-		find_widget<rich_label>(this, "topic_text", false).set_topic(topic);
+		find_widget<label>("topic_title").set_label(topic->title);
+		find_widget<rich_label>("topic_text").set_topic(topic);
 
 		invalidate_layout();
-		scrollbar_panel& scroll = find_widget<scrollbar_panel>(this, "topic_scroll_panel", false);
+		scrollbar_panel& scroll = find_widget<scrollbar_panel>("topic_scroll_panel");
 		scroll.scroll_vertical_scrollbar(scrollbar_base::BEGIN);
 	}
 
@@ -165,14 +165,14 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 		}
 		history_.push_back(topic_id);
 
-		find_widget<button>(this, "back", false).set_active(history_pos_ != 0);
+		find_widget<button>("back").set_active(history_pos_ != 0);
 
 	}
 }
 
 void help_browser::on_topic_select()
 {
-	tree_view& topic_tree = find_widget<tree_view>(this, "topic_tree", false);
+	tree_view& topic_tree = find_widget<tree_view>("topic_tree");
 
 	if(topic_tree.empty()) {
 		return;
@@ -191,8 +191,8 @@ void help_browser::on_history_navigate(bool backwards)
 	} else {
 		history_pos_++;
 	}
-	find_widget<button>(this, "back", false).set_active(!history_.empty() && history_pos_ != 0);
-	find_widget<button>(this, "next", false).set_active(!history_.empty() && history_pos_ != (history_.size()-1));
+	find_widget<button>("back").set_active(!history_.empty() && history_pos_ != 0);
+	find_widget<button>("next").set_active(!history_.empty() && history_pos_ != (history_.size()-1));
 
 	const std::string topic_id = history_.at(history_pos_);
 	show_topic(topic_id, false);

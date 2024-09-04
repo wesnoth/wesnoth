@@ -23,7 +23,6 @@
 #include "game_board.hpp"
 #include "game_display.hpp"
 #include "preferences/preferences.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
@@ -56,8 +55,8 @@ mp_change_control::mp_change_control(events::menu_handler& mh)
 
 void mp_change_control::pre_show(window& window)
 {
-	listbox& sides_list = find_widget<listbox>(&window, "sides_list", false);
-	listbox& nicks_list = find_widget<listbox>(&window, "nicks_list", false);
+	listbox& sides_list = find_widget<listbox>("sides_list");
+	listbox& nicks_list = find_widget<listbox>("nicks_list");
 
 	connect_signal_notify_modified(sides_list,
 		std::bind(&mp_change_control::handle_sides_list_item_clicked, this));
@@ -130,19 +129,19 @@ void mp_change_control::pre_show(window& window)
 
 void mp_change_control::handle_sides_list_item_clicked()
 {
-	selected_side_ = find_widget<listbox>(get_window(), "sides_list", false).get_selected_row();
+	selected_side_ = find_widget<listbox>("sides_list").get_selected_row();
 
 	highlight_side_nick();
 }
 
 void mp_change_control::handle_nicks_list_item_clicked()
 {
-	selected_nick_ = find_widget<listbox>(get_window(), "nicks_list", false).get_selected_row();
+	selected_nick_ = find_widget<listbox>("nicks_list").get_selected_row();
 }
 
 void mp_change_control::highlight_side_nick()
 {
-	listbox& nicks_list = find_widget<listbox>(get_window(), "nicks_list", false);
+	listbox& nicks_list = find_widget<listbox>("nicks_list");
 	const auto& teams = menu_handler_.board().teams();
 
 	int i = 0;
@@ -156,7 +155,7 @@ void mp_change_control::highlight_side_nick()
 		}
 
 		grid* row_grid = nicks_list.get_row_grid(i);
-		find_widget<label>(row_grid, nick, false).set_label(label_str);
+		row_grid->find_widget<label>(nick).set_label(label_str);
 
 		++i;
 	}

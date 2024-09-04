@@ -18,7 +18,6 @@
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
 
 #include "desktop/notifications.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -43,11 +42,11 @@ namespace gui2::dialogs
  */
 #define SETUP_ITEMS(pref_item_sound, pref_item_notif, pref_item_lobby)                                                             \
 {                                                                                                                                  \
-toggle_button* sound = find_widget<toggle_button>(&window, prefs_list::pref_item_sound, false, true);                              \
+toggle_button* sound = find_widget<toggle_button>(prefs_list::pref_item_sound, false, true);                              \
 sound->set_value(prefs::get().pref_item_sound());                                                                                  \
 connect_signal_mouse_left_click(*sound, std::bind([sound]() { prefs::get().set_##pref_item_sound(sound->get_value_bool()); }));    \
 \
-toggle_button* notif = find_widget<toggle_button>(&window, prefs_list::pref_item_notif, false, true);                              \
+toggle_button* notif = find_widget<toggle_button>(prefs_list::pref_item_notif, false, true);                              \
 \
 if (!desktop::notifications::available()) {                                                                                        \
 	notif->set_value(false);                                                                                                       \
@@ -59,7 +58,7 @@ if (!desktop::notifications::available()) {                                     
 	connect_signal_mouse_left_click(*notif, std::bind([notif]() { prefs::get().set_##pref_item_notif(notif->get_value_bool()); }));\
 }                                                                                                                                  \
 \
-toggle_button* lobby = find_widget<toggle_button>(&window, prefs_list::pref_item_lobby, false, true);                              \
+toggle_button* lobby = find_widget<toggle_button>(prefs_list::pref_item_lobby, false, true);                              \
 lobby->set_value(prefs::get().pref_item_lobby());                                                                                  \
 connect_signal_mouse_left_click(*lobby, std::bind([lobby]() { prefs::get().set_##pref_item_lobby(lobby->get_value_bool()); }));    \
 }
@@ -72,12 +71,12 @@ connect_signal_mouse_left_click(*lobby, std::bind([lobby]() { prefs::get().set_#
  * @param pref_item_lobby prefs_list constant for the lobby preference
  */
 #define RESET_DEFAULT(pref_item_sound, pref_item_notif, pref_item_lobby)                                                                 \
-find_widget<toggle_button>(&window, prefs_list::pref_item_sound, false, true)->set_value(prefs::get().pref_item_sound());  \
-find_widget<toggle_button>(&window, prefs_list::pref_item_notif, false, true)->set_value(prefs::get().pref_item_notif());  \
-find_widget<toggle_button>(&window, prefs_list::pref_item_lobby, false, true)->set_value(prefs::get().pref_item_lobby());
+window.find_widget<toggle_button>(prefs_list::pref_item_sound).set_value(prefs::get().pref_item_sound());  \
+window.find_widget<toggle_button>(prefs_list::pref_item_notif).set_value(prefs::get().pref_item_notif());  \
+window.find_widget<toggle_button>(prefs_list::pref_item_lobby).set_value(prefs::get().pref_item_lobby());
 
 
-static void revert_to_default_pref_values(window& window)
+void revert_to_default_pref_values(window& window)
 {
 	// clear existing preferences for MP alerts
 	prefs::get().clear_mp_alert_prefs();
@@ -116,26 +115,25 @@ void mp_alerts_options::pre_show(window& window)
 	SETUP_ITEMS(game_created_sound, game_created_notif, game_created_lobby)
 
 	if (!desktop::notifications::available()) {
-		label* nlabel = find_widget<label>(&window, "notification_label", false, true);
+		label* nlabel = find_widget<label>("notification_label", false, true);
 		nlabel->set_tooltip(_("This build of wesnoth does not include support for desktop notifications, contact your package manager"));
 	}
 
 	toggle_button* in_lobby;
-	in_lobby = find_widget<toggle_button>(&window, prefs_list::ready_for_start_lobby, false, true);
+	in_lobby = find_widget<toggle_button>(prefs_list::ready_for_start_lobby, false, true);
 	in_lobby->set_visible(widget::visibility::invisible);
 
-	in_lobby = find_widget<toggle_button>(&window, prefs_list::game_has_begun_lobby, false, true);
+	in_lobby = find_widget<toggle_button>(prefs_list::game_has_begun_lobby, false, true);
 	in_lobby->set_visible(widget::visibility::invisible);
 
-	in_lobby = find_widget<toggle_button>(&window, prefs_list::turn_changed_sound, false, true); // If we get a sound for this then don't remove this button
+	in_lobby = find_widget<toggle_button>(prefs_list::turn_changed_sound, false, true); // If we get a sound for this then don't remove this button
 	in_lobby->set_visible(widget::visibility::invisible);
 
-	in_lobby = find_widget<toggle_button>(&window, prefs_list::turn_changed_lobby, false, true);
+	in_lobby = find_widget<toggle_button>(prefs_list::turn_changed_lobby, false, true);
 	in_lobby->set_visible(widget::visibility::invisible);
 
-	button* defaults;
-	defaults = find_widget<button>(&window,"revert_to_defaults", false, true);
-	connect_signal_mouse_left_click(*defaults, std::bind(&revert_to_default_pref_values, std::ref(window)));
+	button& defaults = find_widget<button>("revert_to_defaults");
+	connect_signal_mouse_left_click(defaults, std::bind(&revert_to_default_pref_values, std::ref(window)));
 }
 
 void mp_alerts_options::post_show(window& /*window*/)

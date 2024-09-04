@@ -145,18 +145,18 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 
 void mp_create_game::pre_show(window& win)
 {
-	find_widget<text_box>(&win, "game_name", false).set_value(local_mode_ ? "" : ng::configure_engine::game_name_default());
+	find_widget<text_box>("game_name").set_value(local_mode_ ? "" : ng::configure_engine::game_name_default());
 
 	connect_signal_mouse_left_click(
-		find_widget<button>(&win, "random_map_regenerate", false),
+		find_widget<button>("random_map_regenerate"),
 		std::bind(&mp_create_game::regenerate_random_map, this));
 
 	connect_signal_mouse_left_click(
-		find_widget<button>(&win, "random_map_settings", false),
+		find_widget<button>("random_map_settings"),
 		std::bind(&mp_create_game::show_generator_settings, this));
 
 	connect_signal_mouse_left_click(
-		find_widget<button>(&win, "load_game", false),
+		find_widget<button>("load_game"),
 		std::bind(&mp_create_game::load_game_callback, this));
 
 	// Custom dialog close hook
@@ -170,10 +170,10 @@ void mp_create_game::pre_show(window& win)
 	//
 	// Set up filtering
 	//
-	connect_signal_notify_modified(find_widget<slider>(&win, "num_players", false),
+	connect_signal_notify_modified(find_widget<slider>("num_players"),
 		std::bind(&mp_create_game::on_filter_change<slider>, this, "num_players", true));
 
-	text_box& filter = find_widget<text_box>(&win, "game_filter", false);
+	text_box& filter = find_widget<text_box>("game_filter");
 
 	filter.set_text_changed_callback(
 		std::bind(&mp_create_game::on_filter_change<text_box>, this, "game_filter", true));
@@ -194,7 +194,7 @@ void mp_create_game::pre_show(window& win)
 		throw game::error(_("No games found."));
 	}
 
-	menu_button& game_menu_button = find_widget<menu_button>(&win, "game_types", false);
+	menu_button& game_menu_button = find_widget<menu_button>("game_types");
 
 	// Helper to make sure the initially selected level type is valid
 	auto get_initial_type_index = [this]()->int {
@@ -217,7 +217,7 @@ void mp_create_game::pre_show(window& win)
 	//
 	// Set up mods list
 	//
-	mod_list_ = &find_widget<listbox>(&win, "mod_list", false);
+	mod_list_ = &find_widget<listbox>("mod_list");
 
 	const auto& activemods = prefs::get().modifications();
 	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
@@ -229,9 +229,9 @@ void mp_create_game::pre_show(window& win)
 
 		grid* row_grid = &mod_list_->add_row(data);
 
-		find_widget<toggle_panel>(row_grid, "panel", false).set_tooltip(mod->description);
+		row_grid->find_widget<toggle_panel>("panel").set_tooltip(mod->description);
 
-		toggle_button& mog_toggle = find_widget<toggle_button>(row_grid, "mod_active_state", false);
+		toggle_button& mog_toggle = row_grid->find_widget<toggle_button>("mod_active_state");
 
 		if(std::find(activemods.begin(), activemods.end(), mod->id) != activemods.end()) {
 			create_engine_.active_mods().push_back(mod->id);
@@ -243,13 +243,13 @@ void mp_create_game::pre_show(window& win)
 
 	// No mods, hide the header
 	if(mod_list_->get_item_count() <= 0) {
-		find_widget<styled_widget>(&win, "mods_header", false).set_visible(widget::visibility::invisible);
+		find_widget<styled_widget>("mods_header").set_visible(widget::visibility::invisible);
 	}
 
 	//
 	// Set up eras menu_button
 	//
-	eras_menu_button_ = &find_widget<menu_button>(&win, "eras", false);
+	eras_menu_button_ = &find_widget<menu_button>("eras");
 
 	std::vector<config> era_names;
 	for(const auto& era : create_engine_.get_const_extras_by_type(ng::create_engine::ERA)) {
@@ -278,7 +278,7 @@ void mp_create_game::pre_show(window& win)
 	//
 	const int initial_index = static_cast<int>(random_faction_mode::get_enum(prefs::get().random_faction_mode()).value_or(random_faction_mode::type::independent));
 
-	menu_button& rfm_menu_button = find_widget<menu_button>(&win, "random_faction_mode", false);
+	menu_button& rfm_menu_button = find_widget<menu_button>("random_faction_mode");
 	rfm_menu_button.set_selected(initial_index);
 
 	connect_signal_notify_modified(rfm_menu_button,
@@ -303,15 +303,15 @@ void mp_create_game::pre_show(window& win)
 	// Timer reset button
 	//
 	connect_signal_mouse_left_click(
-		find_widget<button>(&win, "reset_timer_defaults", false),
+		find_widget<button>("reset_timer_defaults"),
 		std::bind(&mp_create_game::reset_timer_settings, this));
 
 	//
 	// Disable certain settings if we're playing a local game.
 	//
 	if(local_mode_) {
-		find_widget<text_box>(&win, "game_name", false).set_active(false);
-		find_widget<text_box>(&win, "game_password", false).set_active(false);
+		find_widget<text_box>("game_name").set_active(false);
+		find_widget<text_box>("game_password").set_active(false);
 
 		observers_->widget_set_enabled(false, false);
 		strict_sync_->widget_set_enabled(false, false);
@@ -321,7 +321,7 @@ void mp_create_game::pre_show(window& win)
 	//
 	// Set up tab control
 	//
-	listbox& tab_bar = find_widget<listbox>(&win, "tab_bar", false);
+	listbox& tab_bar = find_widget<listbox>("tab_bar");
 
 	connect_signal_notify_modified(tab_bar,
 		std::bind(&mp_create_game::on_tab_select, this));
@@ -329,14 +329,14 @@ void mp_create_game::pre_show(window& win)
 	// Allow the settings stack to find widgets in all pages, regardless of which is selected.
 	// This ensures settings (especially game settings) widgets are appropriately updated when
 	// a new game is selected, regardless of which settings tab is active at the time.
-	find_widget<stacked_widget>(&win, "pager", false).set_find_in_all_layers(true);
+	find_widget<stacked_widget>("pager").set_find_in_all_layers(true);
 
 	// We call on_tab_select farther down.
 
 	//
 	// Main games list
 	//
-	listbox& list = find_widget<listbox>(&win, "games_list", false);
+	listbox& list = find_widget<listbox>("games_list");
 
 	connect_signal_notify_modified(list,
 		std::bind(&mp_create_game::on_game_select, this));
@@ -456,7 +456,7 @@ void mp_create_game::sync_with_depcheck()
 			create_engine_.set_current_level(new_level_index.second);
 			selected_game_index_ = new_level_index.second;
 
-			auto& game_types_list = find_widget<menu_button>(get_window(), "game_types", false);
+			auto& game_types_list = find_widget<menu_button>("game_types");
 			game_types_list.set_value(std::distance(level_types_.begin(), std::find_if(level_types_.begin(), level_types_.begin(), [&](const level_type_info& info){ return info.first == new_level_index.first; })));
 
 			if(different_type) {
@@ -466,7 +466,7 @@ void mp_create_game::sync_with_depcheck()
 				// which case we cannot use display_games_of_type since it destroys the list (and its
 				// elements) which might result in segfaults. Instead, we assume that a listbox-triggered
 				// sync_with_depcheck call never changes the game type and goes to this branch instead.
-				find_widget<listbox>(get_window(), "games_list", false).select_row(new_level_index.second);
+				find_widget<listbox>("games_list").select_row(new_level_index.second);
 
 				// Override the last selection so on_game_select selects the new level
 				selected_game_index_ = -1;
@@ -488,9 +488,9 @@ void mp_create_game::sync_with_depcheck()
 template<typename T>
 void mp_create_game::on_filter_change(const std::string& id, bool do_select)
 {
-	create_engine_.apply_level_filter(find_widget<T>(get_window(), id, false).get_value());
+	create_engine_.apply_level_filter(find_widget<T>(id).get_value());
 
-	listbox& game_list = find_widget<listbox>(get_window(), "games_list", false);
+	listbox& game_list = find_widget<listbox>("games_list");
 
 	boost::dynamic_bitset<> filtered(game_list.get_item_count());
 	for(const std::size_t i : create_engine_.get_filtered_level_indices(create_engine_.current_level_type())) {
@@ -506,7 +506,7 @@ void mp_create_game::on_filter_change(const std::string& id, bool do_select)
 
 void mp_create_game::on_game_select()
 {
-	const int selected_game = find_widget<listbox>(get_window(), "games_list", false).get_selected_row();
+	const int selected_game = find_widget<listbox>("games_list").get_selected_row();
 
 	if(selected_game == selected_game_index_) {
 		return;
@@ -541,8 +541,8 @@ void mp_create_game::on_game_select()
 
 void mp_create_game::on_tab_select()
 {
-	const int i = find_widget<listbox>(get_window(), "tab_bar", false).get_selected_row();
-	find_widget<stacked_widget>(get_window(), "pager", false).select_layer(i);
+	const int i = find_widget<listbox>("tab_bar").get_selected_row();
+	find_widget<stacked_widget>("pager").select_layer(i);
 }
 
 void mp_create_game::on_mod_toggle(const std::string id, toggle_button* sender)
@@ -572,12 +572,12 @@ void mp_create_game::on_era_select()
 
 void mp_create_game::on_random_faction_mode_select()
 {
-	selected_rfm_index_ = find_widget<menu_button>(get_window(), "random_faction_mode", false).get_value();
+	selected_rfm_index_ = find_widget<menu_button>("random_faction_mode").get_value();
 }
 
 void mp_create_game::show_description(const std::string& new_description)
 {
-	styled_widget& description = find_widget<styled_widget>(get_window(), "description", false);
+	styled_widget& description = find_widget<styled_widget>("description");
 
 	description.set_label(!new_description.empty() ? new_description : _("No description available."));
 	description.set_use_markup(true);
@@ -585,7 +585,7 @@ void mp_create_game::show_description(const std::string& new_description)
 
 void mp_create_game::update_games_list()
 {
-	const int index = find_widget<menu_button>(get_window(), "game_types", false).get_value();
+	const int index = find_widget<menu_button>("game_types").get_value();
 
 	display_games_of_type(level_types_[index].first, create_engine_.current_level().id());
 }
@@ -594,7 +594,7 @@ void mp_create_game::display_games_of_type(level_type::type type, const std::str
 {
 	create_engine_.set_current_level_type(type);
 
-	listbox& list = find_widget<listbox>(get_window(), "games_list", false);
+	listbox& list = find_widget<listbox>("games_list");
 
 	list.clear();
 
@@ -612,7 +612,7 @@ void mp_create_game::display_games_of_type(level_type::type type, const std::str
 
 		grid& rg = list.add_row(data);
 
-		auto& icon = find_widget<image>(&rg, "game_icon", false);
+		auto& icon = rg.find_widget<image>("game_icon");
 		if(icon.get_label().empty()) {
 			icon.set_visible(gui2::widget::visibility::invisible);
 		}
@@ -631,8 +631,8 @@ void mp_create_game::display_games_of_type(level_type::type type, const std::str
 
 	const bool is_random_map = type == level_type::type::random_map;
 
-	find_widget<button>(get_window(), "random_map_regenerate", false).set_active(is_random_map);
-	find_widget<button>(get_window(), "random_map_settings", false).set_active(is_random_map);
+	find_widget<button>("random_map_regenerate").set_active(is_random_map);
+	find_widget<button>("random_map_settings").set_active(is_random_map);
 
 	// Override the last selection so on_game_select selects the new level
 	selected_game_index_ = -1;
@@ -662,8 +662,8 @@ int mp_create_game::convert_to_game_filtered_index(const unsigned int initial_in
 
 void mp_create_game::update_details()
 {
-	styled_widget& players = find_widget<styled_widget>(get_window(), "map_num_players", false);
-	styled_widget& map_size = find_widget<styled_widget>(get_window(), "map_size", false);
+	styled_widget& players = find_widget<styled_widget>("map_num_players");
+	styled_widget& map_size = find_widget<styled_widget>("map_size");
 
 	if(create_engine_.current_level_type() == level_type::type::random_map) {
 		// If the current random map doesn't have data, generate it
@@ -673,7 +673,7 @@ void mp_create_game::update_details()
 			create_engine_.init_generated_level_data();
 		}
 
-		find_widget<button>(get_window(), "random_map_settings", false).set_active(create_engine_.generator_has_settings());
+		find_widget<button>("random_map_settings").set_active(create_engine_.generator_has_settings());
 	}
 
 	create_engine_.current_level().set_metadata();
@@ -686,7 +686,7 @@ void mp_create_game::update_details()
 	// Set the title, with newlines replaced. Newlines are sometimes found in SP Campaign names
 	std::string title = create_engine_.current_level().name();
 	boost::replace_all(title, "\n", " " + font::unicode_em_dash + " ");
-	find_widget<styled_widget>(get_window(), "game_title", false).set_label(title);
+	find_widget<styled_widget>("game_title").set_label(title);
 
 
 	switch(create_engine_.current_level_type()) {
@@ -700,14 +700,14 @@ void mp_create_game::update_details()
 
 			create_engine_.get_state().classification().campaign = "";
 
-			find_widget<stacked_widget>(get_window(), "minimap_stack", false).select_layer(0);
+			find_widget<stacked_widget>("minimap_stack").select_layer(0);
 
 			if(current_scenario->data()["map_data"].empty()) {
 				saved_game::expand_map_file(current_scenario->data());
 				current_scenario->set_metadata();
 			}
 
-			find_widget<minimap>(get_window(), "minimap", false).set_map_data(current_scenario->data()["map_data"]);
+			find_widget<minimap>("minimap").set_map_data(current_scenario->data()["map_data"]);
 
 			players.set_label(std::to_string(current_scenario->num_players()));
 			map_size.set_label(current_scenario->map_size());
@@ -724,8 +724,8 @@ void mp_create_game::update_details()
 
 			const std::string img = formatter() << current_campaign->data()["image"] << "~SCALE_INTO(265,265)";
 
-			find_widget<stacked_widget>(get_window(), "minimap_stack", false).select_layer(1);
-			find_widget<image>(get_window(), "campaign_image", false).set_image(img);
+			find_widget<stacked_widget>("minimap_stack").select_layer(1);
+			find_widget<image>("campaign_image").set_image(img);
 
 			const int p_min = current_campaign->min_players();
 			const int p_max = current_campaign->max_players();
@@ -775,7 +775,7 @@ void mp_create_game::update_map_settings()
 	reservoir_      ->widget_set_enabled(time_limit, false);
 	action_bonus_   ->widget_set_enabled(time_limit, false);
 
-	find_widget<button>(get_window(), "reset_timer_defaults", false).set_active(time_limit);
+	find_widget<button>("reset_timer_defaults").set_active(time_limit);
 
 	if(use_map_settings) {
 		fog_       ->set_widget_value(config_engine_->fog_game_default());
@@ -809,7 +809,7 @@ std::vector<std::string> mp_create_game::get_active_mods()
 	int i = 0;
 	std::set<std::string> res;
 	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
-		if(find_widget<toggle_button>(mod_list_->get_row_grid(i), "mod_active_state", false).get_value_bool()) {
+		if(mod_list_->get_row_grid(i)->find_widget<toggle_button>("mod_active_state").get_value_bool()) {
 			res.insert(mod->id);
 		}
 		++i;
@@ -823,7 +823,7 @@ void mp_create_game::set_active_mods(const std::vector<std::string>& val)
 	int i = 0;
 	std::set<std::string> res;
 	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
-		find_widget<toggle_button>(mod_list_->get_row_grid(i), "mod_active_state", false).set_value_bool(val2.find(mod->id) != val2.end());
+		mod_list_->get_row_grid(i)->find_widget<toggle_button>("mod_active_state").set_value_bool(val2.find(mod->id) != val2.end());
 		++i;
 	}
 }
@@ -871,7 +871,7 @@ void mp_create_game::post_show(window& window)
 	plugins_context_.reset();
 
 	// Show all tabs so that find_widget works correctly
-	find_widget<stacked_widget>(&window, "pager", false).select_layer(-1);
+	find_widget<stacked_widget>("pager").select_layer(-1);
 
 	if(get_retval() == LOAD_GAME) {
 		create_engine_.prepare_for_saved_game();
@@ -972,13 +972,13 @@ void mp_create_game::post_show(window& window)
 		config_engine_->set_options(options_manager_->get_options_config());
 
 		// Set game name
-		const std::string name = find_widget<text_box>(&window, "game_name", false).get_value();
+		const std::string name = find_widget<text_box>("game_name").get_value();
 		if(!name.empty() && (name != ng::configure_engine::game_name_default())) {
 			config_engine_->set_game_name(name);
 		}
 
 		// Set game password
-		const std::string password = find_widget<text_box>(&window, "game_password", false).get_value();
+		const std::string password = find_widget<text_box>("game_password").get_value();
 		if(!password.empty()) {
 			config_engine_->set_game_password(password);
 		}

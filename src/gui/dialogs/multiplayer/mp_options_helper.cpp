@@ -17,7 +17,6 @@
 #include "gui/dialogs/multiplayer/mp_options_helper.hpp"
 
 #include "preferences/preferences.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/slider.hpp"
@@ -26,14 +25,16 @@
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
+#include "wml_exception.hpp"
+
 
 namespace gui2::dialogs
 {
 
 mp_options_helper::mp_options_helper(window& window, ng::create_engine& create_engine)
 	: create_engine_(create_engine)
-	, options_tree_(find_widget<tree_view>(&window, "custom_options", false))
-	, no_options_notice_(find_widget<styled_widget>(&window, "no_options_notice", false))
+	, options_tree_(window.find_widget<tree_view>("custom_options"))
+	, no_options_notice_(window.find_widget<styled_widget>("no_options_notice"))
 	, node_data_map_()
 	, visible_options_()
 	, options_data_()
@@ -311,7 +312,7 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 		// Add the Defaults button at the end
 		tree_view_node& node = option_node.add_child("options_default_button", empty_map);
 
-		connect_signal_mouse_left_click(find_widget<button>(&node, "reset_option_values", false),
+		connect_signal_mouse_left_click(node.find_widget<button>("reset_option_values"),
 			std::bind(&mp_options_helper::reset_options_data, this, visible_options_.back(),
 				std::placeholders::_3, std::placeholders::_4));
 	}

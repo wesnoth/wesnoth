@@ -15,7 +15,6 @@
 
 #include "gui/dialogs/theme_list.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
 #include "theme.hpp"
@@ -34,7 +33,7 @@ theme_list::theme_list(const std::vector<theme_info>& themes, int selection)
 
 void theme_list::pre_show(window& window)
 {
-	listbox& list = find_widget<listbox>(&window, "themes", false);
+	listbox& list = find_widget<listbox>("themes");
 	window.keyboard_capture(&list);
 
 	for(const auto & t : themes_)
@@ -68,7 +67,7 @@ void theme_list::post_show(window& window)
 		return;
 	}
 
-	listbox& list = find_widget<listbox>(&window, "themes", false);
+	listbox& list = find_widget<listbox>("themes");
 	index_ = list.get_selected_row();
 }
 } // namespace dialogs
