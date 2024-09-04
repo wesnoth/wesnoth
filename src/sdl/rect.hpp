@@ -147,6 +147,10 @@ public:
 	 * The point's X and Y coordinates will be added to the rectangle's.
 	 */
 	void shift(const point& p);
+
+	/** Returns a new rectangle shifted by the given relative position. */
+	rect shifted_by(int x, int y) const;
+	rect shifted_by(const point& p) const;
 };
 
 std::ostream& operator<<(std::ostream&, const rect&);
