@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/chat_log.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
@@ -364,35 +363,35 @@ public:
 	void bind(window& window)
 	{
 		LOG_CHAT_LOG << "Entering chat_log::view::bind";
-		model_.msg_label = find_widget<styled_widget>(&window, "msg", false, true);
+		model_.msg_label = window.find_widget<styled_widget>("msg", false, true);
 		model_.page_number
-				= find_widget<slider>(&window, "page_number", false, true);
+				= window.find_widget<slider>("page_number", false, true);
 		connect_signal_notify_modified(
 				*model_.page_number,
 				std::bind(&view::handle_page_number_changed, this));
 
 		model_.previous_page
-				= find_widget<button>(&window, "previous_page", false, true);
+				= window.find_widget<button>("previous_page", false, true);
 		model_.previous_page->connect_click_handler(
 				std::bind(&view::previous_page, this));
 
-		model_.next_page = find_widget<button>(&window, "next_page", false, true);
+		model_.next_page = window.find_widget<button>("next_page", false, true);
 		model_.next_page->connect_click_handler(
 				std::bind(&view::next_page, this));
 
-		model_.filter = find_widget<text_box>(&window, "filter", false, true);
+		model_.filter = window.find_widget<text_box>("filter", false, true);
 		model_.filter->set_text_changed_callback(
 				std::bind(&view::filter, this));
 		window.keyboard_capture(model_.filter);
 
-		model_.copy_button = find_widget<button>(&window, "copy", false, true);
+		model_.copy_button = window.find_widget<button>("copy", false, true);
 		connect_signal_mouse_left_click(
 				*model_.copy_button,
 				std::bind(&view::handle_copy_button_clicked,
 							this,
 							std::ref(window)));
 
-		model_.page_label = find_widget<styled_widget>(&window, "page_label", false, true);
+		model_.page_label = window.find_widget<styled_widget>("page_label", false, true);
 
 		LOG_CHAT_LOG << "Exiting chat_log::view::bind";
 	}

@@ -21,7 +21,6 @@
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
@@ -227,10 +226,10 @@ void addon_list::set_addons(const addons_list& addons)
 		grid* row_grid = &list.add_row(data);
 
 		// Set special retval for the toggle panels
-		find_widget<toggle_panel>(row_grid, "list_panel", false).set_retval(DEFAULT_ACTION_RETVAL);
+		row_grid->find_widget<toggle_panel>("list_panel").set_retval(DEFAULT_ACTION_RETVAL);
 
 		// The control button grid is excluded on lower resolutions.
-		grid* control_grid = find_widget<grid>(row_grid, "single_install_buttons", false, false);
+		grid* control_grid = row_grid->find_widget<grid>("single_install_buttons", false, false);
 		if(!control_grid) {
 			continue;
 		}
@@ -238,15 +237,15 @@ void addon_list::set_addons(const addons_list& addons)
 		//
 		// Set up the inline control buttons.
 		//
-		stacked_widget& install_update_stack = find_widget<stacked_widget>(control_grid, "install_update_stack", false);
+		stacked_widget& install_update_stack = control_grid->find_widget<stacked_widget>("install_update_stack");
 
 		// These three buttons are in the install_update_stack. Only one is shown depending on the addon's state.
-		button& install_button   = find_widget<button>(control_grid, "single_install", false);
-		button& update_button    = find_widget<button>(control_grid, "single_update", false);
-		button& publish_button   = find_widget<button>(control_grid, "single_publish", false);
+		button& install_button   = control_grid->find_widget<button>("single_install");
+		button& update_button    = control_grid->find_widget<button>("single_update");
+		button& publish_button   = control_grid->find_widget<button>("single_publish");
 
 		// This button is always shown.
-		button& uninstall_button = find_widget<button>(control_grid, "single_uninstall", false);
+		button& uninstall_button = control_grid->find_widget<button>("single_uninstall");
 
 		const bool is_installed = is_installed_addon_status(tracking_info.state);
 		const bool is_local = tracking_info.state == ADDON_INSTALLED_LOCAL_ONLY;
@@ -305,7 +304,7 @@ void addon_list::set_addons(const addons_list& addons)
 		}
 
 		control_grid->set_visible(install_buttons_visibility_);
-		find_widget<label>(row_grid, "installation_status", false).set_visible(install_status_visibility_);
+		row_grid->find_widget<label>("installation_status").set_visible(install_status_visibility_);
 	}
 
 	select_first_addon();
@@ -313,7 +312,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 const addon_info* addon_list::get_selected_addon() const
 {
-	const listbox& list = find_widget<const listbox>(&get_grid(), "addons", false);
+	const listbox& list = get_grid().find_widget<const listbox>("addons");
 
 	try {
 		return addon_vector_.at(list.get_selected_row());
@@ -356,7 +355,7 @@ void addon_list::select_addon(const std::string& id)
 	for(unsigned int i = 0u; i < list.get_item_count(); ++i) {
 		grid* row = list.get_row_grid(i);
 
-		const label& name_label = find_widget<label>(row, "name", false);
+		const label& name_label = row->find_widget<label>("name");
 		if(name_label.get_label().base_str() == display_title_full_shift(info)) {
 			list.select_row(i);
 		}
@@ -365,7 +364,7 @@ void addon_list::select_addon(const std::string& id)
 
 listbox& addon_list::get_listbox()
 {
-	return find_widget<listbox>(&get_grid(), "addons", false);
+	return get_grid().find_widget<listbox>("addons");
 }
 
 void addon_list::add_list_to_keyboard_chain()

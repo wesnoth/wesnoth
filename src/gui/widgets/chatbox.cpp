@@ -16,7 +16,6 @@
 
 #include "gui/widgets/chatbox.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
@@ -72,16 +71,16 @@ chatbox::chatbox(const implementation::builder_chatbox& builder)
 
 void chatbox::finalize_setup()
 {
-	roomlistbox_ = find_widget<listbox>(this, "room_list", false, true);
+	roomlistbox_ = find_widget<listbox>("room_list", false, true);
 
 	// We need to bind a lambda here since switch_to_window is overloaded.
 	// A lambda alone would be more verbose because it'd need to specify all the parameters.
 	connect_signal_notify_modified(*roomlistbox_,
 		std::bind([this]() { switch_to_window(roomlistbox_->get_selected_row()); }));
 
-	chat_log_container_ = find_widget<multi_page>(this, "chat_log_container", false, true);
+	chat_log_container_ = find_widget<multi_page>("chat_log_container", false, true);
 
-	chat_input_ = find_widget<text_box>(this, "chat_input", false, true);
+	chat_input_ = find_widget<text_box>("chat_input", false, true);
 
 	connect_signal_pre_key_press(*chat_input_,
 		std::bind(&chatbox::chat_input_keypress_callback, this, std::placeholders::_5));
@@ -108,7 +107,7 @@ void chatbox::active_window_changed()
 
 	// Clear pending messages notification in room listbox
 	grid* grid = roomlistbox_->get_row_grid(active_window_);
-	find_widget<image>(grid, "pending_messages", false).set_visible(widget::visibility::hidden);
+	grid->find_widget<image>("pending_messages").set_visible(widget::visibility::hidden);
 
 	t.pending_messages = 0;
 
@@ -213,8 +212,8 @@ void chatbox::append_to_chatbox(const std::string& text, const bool force_scroll
 void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const bool force_scroll)
 {
 	grid& grid = chat_log_container_->page_grid(id);
-
-	scroll_text& log = find_widget<scroll_text>(&grid, "log_text", false);
+	scroll_text& log = grid.find_widget<scroll_text>("log_text");
+	
 	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
 	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
 
@@ -252,8 +251,8 @@ void chatbox::clear_messages()
 {
 	const auto id = active_window_;
 	grid& grid = chat_log_container_->page_grid(id);
-	scroll_text& log = find_widget<scroll_text>(&grid, "log_text", false);
-	log.set_value("");
+	scroll_text& log = grid.find_widget<scroll_text>("log_text");
+	log.set_label("");
 }
 
 void chatbox::user_relation_changed(const std::string& /*name*/)
@@ -436,7 +435,7 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	//
 	// Set up the Close Window button.
 	//
-	button& close_button = find_widget<button>(&row_grid, "close_window", false);
+	button& close_button = row_grid.find_widget<button>("close_window");
 
 	if(!allow_close) {
 		close_button.set_visible(widget::visibility::hidden);
@@ -473,7 +472,7 @@ void chatbox::increment_waiting_whispers(const std::string& name)
 			DBG_LB << "do whisper pending mark row " << (t - &open_windows_[0]) << " with " << t->name;
 
 			grid* grid = roomlistbox_->get_row_grid(t - &open_windows_[0]);
-			find_widget<image>(grid, "pending_messages", false).set_visible(widget::visibility::visible);
+			grid->find_widget<image>("pending_messages").set_visible(widget::visibility::visible);
 		}
 	}
 }
@@ -489,7 +488,7 @@ void chatbox::increment_waiting_messages(const std::string& room)
 			DBG_LB << "do room pending mark row " << idx << " with " << t->name;
 
 			grid* grid = roomlistbox_->get_row_grid(idx);
-			find_widget<image>(grid, "pending_messages", false).set_visible(widget::visibility::visible);
+			grid->find_widget<image>("pending_messages").set_visible(widget::visibility::visible);
 		}
 	}
 }

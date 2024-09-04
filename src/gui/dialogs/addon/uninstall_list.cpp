@@ -15,7 +15,6 @@
 
 #include "gui/dialogs/addon/uninstall_list.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -29,7 +28,7 @@ REGISTER_DIALOG(addon_uninstall_list)
 
 void addon_uninstall_list::pre_show(window& window)
 {
-	listbox& list = find_widget<listbox>(&window, "addons_list", false);
+	listbox& list = find_widget<listbox>("addons_list");
 	window.keyboard_capture(&list);
 
 	this->selections_.clear();
@@ -54,7 +53,7 @@ void addon_uninstall_list::pre_show(window& window)
 
 void addon_uninstall_list::post_show(window& window)
 {
-	const listbox& list = find_widget<listbox>(&window, "addons_list", false);
+	const listbox& list = find_widget<listbox>("addons_list");
 	const unsigned rows = list.get_item_count();
 
 	assert(rows == this->ids_.size() && rows == this->titles_map_.size());
@@ -64,9 +63,9 @@ void addon_uninstall_list::post_show(window& window)
 	}
 
 	for(unsigned k = 0; k < rows; ++k) {
-		grid const* g = list.get_row_grid(k);
+		const grid* g = list.get_row_grid(k);
 		const toggle_button& checkbox
-				= find_widget<const toggle_button>(g, "checkbox", false);
+				= g->find_widget<const toggle_button>("checkbox");
 		this->selections_[this->ids_[k]] = checkbox.get_value_bool();
 	}
 }

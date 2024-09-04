@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/editor/edit_scenario.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -49,9 +48,9 @@ editor_edit_scenario::editor_edit_scenario(
 
 void editor_edit_scenario::pre_show(window& win)
 {
-	win.add_to_tab_order(find_widget<text_box>(&win, "id", false, true));
-	win.add_to_tab_order(find_widget<text_box>(&win, "name", false, true));
-	win.add_to_tab_order(find_widget<text_box>(&win, "description", false, true));
+	win.add_to_tab_order(find_widget<text_box>("id", false, true));
+	win.add_to_tab_order(find_widget<text_box>("name", false, true));
+	win.add_to_tab_order(find_widget<text_box>("description", false, true));
 }
 
 } // namespace dialogs

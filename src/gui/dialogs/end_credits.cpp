@@ -18,7 +18,6 @@
 
 #include "about.hpp"
 #include "game_config.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/scrollbar.hpp"
 #include "gui/widgets/scroll_label.hpp"
@@ -87,7 +86,7 @@ void end_credits::pre_show(window& window)
 	// TODO: implement showing all available images as the credits scroll
 	window.get_canvas(0).set_variable("background_image", wfl::variant(backgrounds_[0]));
 
-	text_widget_ = find_widget<scroll_label>(&window, "text", false, true);
+	text_widget_ = find_widget<scroll_label>("text", false, true);
 
 	text_widget_->set_use_markup(true);
 	text_widget_->set_link_aware(false);
@@ -120,11 +119,11 @@ void end_credits::pre_show(window& window)
 	// This should probably be implemented as a scrollbar mode.
 	// Also, for some reason hiding the whole grid doesn't work, and the elements need to be hidden manually
 	if(grid* v_grid = dynamic_cast<grid*>(text_widget_->find("_vertical_scrollbar_grid", false))) {
-		find_widget<scrollbar_base>(v_grid, "_vertical_scrollbar", false).set_visible(widget::visibility::hidden);
+		v_grid->find_widget<scrollbar_base>("_vertical_scrollbar").set_visible(widget::visibility::hidden);
 
 		// TODO: enable again if e24336afeb7 is reverted.
-		//find_widget<repeating_button>(v_grid, "_half_page_up", false).set_visible(widget::visibility::hidden);
-		//find_widget<repeating_button>(v_grid, "_half_page_down", false).set_visible(widget::visibility::hidden);
+		//v_grid.find_widget<repeating_button>("_half_page_up").set_visible(widget::visibility::hidden);
+		//v_grid.find_widget<repeating_button>("_half_page_down").set_visible(widget::visibility::hidden);
 	}
 }
 

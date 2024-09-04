@@ -25,7 +25,6 @@
 #include "formula/variant.hpp"
 #include "game_board.hpp"
 #include "game_config.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/window.hpp"
@@ -82,13 +81,18 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	};
 
 	// Helpers for setting or hiding labels
-	const auto set_label_helper = [&](const std::string& id, const std::string& value) {
-		find_widget<label>(&window, get_prefixed_widget_id(id), false).set_label(value);
+	const auto set_label_helper = [&, this](const std::string& id, const std::string& value) {
+		// MSVC does not compile without this-> (26-09-2024)
+		label& lbl = this->find_widget<label>(get_prefixed_widget_id(id));
+		lbl.set_label(value);
 	};
 
-	const auto hide_label_helper = [&](const std::string& id) {
-		find_widget<label>(&window, get_prefixed_widget_id(id), false).set_visible(widget::visibility::invisible);
-		find_widget<label>(&window, get_prefixed_widget_id(id) + "_label" , false).set_visible(widget::visibility::invisible);
+	const auto hide_label_helper = [&, this](const std::string& id) {
+		// MSVC does not compile without this-> (26-09-2024)
+		label& lbl = this->find_widget<label>(get_prefixed_widget_id(id));
+		lbl.set_visible(widget::visibility::invisible);
+		label& lbl2 = this->find_widget<label>(get_prefixed_widget_id(id)  + "_label");
+		lbl2.set_visible(widget::visibility::invisible);
 	};
 
 	std::stringstream ss;
@@ -104,7 +108,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	set_label_helper("chance_unscathed", ss.str());
 
 	// HP probability graph
-	drawing& graph_widget = find_widget<drawing>(&window, get_prefixed_widget_id("hp_graph"), false);
+	drawing& graph_widget = window.find_widget<drawing>(get_prefixed_widget_id("hp_graph"));
 	draw_hp_graph(graph_widget, attacker, defender);
 
 	//

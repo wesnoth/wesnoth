@@ -18,7 +18,6 @@
 #include "gui/widgets/listbox.hpp"
 
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/core/widget_definition.hpp"
@@ -430,11 +429,11 @@ point listbox::calculate_best_size() const
 	// Get the size from the base class, then add any extra space for the header and footer.
 	point result = scrollbar_container::calculate_best_size();
 
-	if(const grid* header = find_widget<const grid>(&get_grid(), "_header_grid", false, false)) {
+	if(const grid* header = get_grid().find_widget<const grid>("_header_grid", false, false)) {
 		result.y += header->get_best_size().y;
 	}
 
-	if(const grid* footer = find_widget<const grid>(&get_grid(), "_footer_grid", false, false)) {
+	if(const grid* footer = get_grid().find_widget<const grid>("_footer_grid", false, false)) {
 		result.y += footer->get_best_size().y;
 	}
 
@@ -530,7 +529,7 @@ void listbox::finalize(std::unique_ptr<generator_base> generator,
 		swap_grid(&get_grid(), content_grid(), header->build(), "_header_grid");
 	}
 
-	grid& p = find_widget<grid>(this, "_header_grid", false);
+	grid& p = find_widget<grid>("_header_grid");
 
 	for(unsigned i = 0, max = std::max(p.get_cols(), p.get_rows()); i < max; ++i) {
 		//
@@ -540,7 +539,7 @@ void listbox::finalize(std::unique_ptr<generator_base> generator,
 		//
 		// - vultraz, 2017-08-23
 		//
-		if(toggle_button* selectable = find_widget<toggle_button>(&p, "sort_" + std::to_string(i), false, false)) {
+		if(toggle_button* selectable = p.find_widget<toggle_button>("sort_" + std::to_string(i), false, false)) {
 			// Register callback to sort the list.
 			connect_signal_notify_modified(*selectable, std::bind(&listbox::order_by_column, this, i, std::placeholders::_1));
 
@@ -621,9 +620,9 @@ void listbox::register_translatable_sorting_option(const int col, translatable_s
 void listbox::set_active_sorting_option(const order_pair& sort_by, const bool select_first)
 {
 	// TODO: should this be moved to a public header_grid() getter function?
-	grid& header_grid = find_widget<grid>(this, "_header_grid", false);
+	grid& header_grid = find_widget<grid>("_header_grid");
 
-	selectable_item& w = find_widget<selectable_item>(&header_grid, "sort_" + std::to_string(sort_by.first), false);
+	selectable_item& w = header_grid.find_widget<selectable_item>("sort_" + std::to_string(sort_by.first));
 
 	// Set the sorting toggle widgets' value (in this case, its state) to the given sorting
 	// order. This is necessary since the widget's value is used to determine the order in

@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/transient_message.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 
@@ -47,12 +46,12 @@ transient_message::transient_message(const std::string& title,
 void transient_message::pre_show(window& window)
 {
 	if(hide_title_) {
-		widget& title = find_widget<widget>(&window, "title", false);
+		widget& title = find_widget<widget>("title");
 		title.set_visible(widget::visibility::invisible);
 	}
 
 	if(hide_image_) {
-		widget& image = find_widget<widget>(&window, "image", false);
+		widget& image = find_widget<widget>("image");
 		image.set_visible(widget::visibility::invisible);
 	}
 }

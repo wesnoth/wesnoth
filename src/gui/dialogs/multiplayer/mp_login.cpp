@@ -18,7 +18,6 @@
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 
 #include "preferences/preferences.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/widgets/password_box.hpp"
 #include "gui/widgets/window.hpp"
@@ -46,29 +45,29 @@ mp_login::mp_login(const std::string& host, const std::string& label, const bool
 
 void mp_login::load_password()
 {
-	text_box& pwd = find_widget<text_box>(this, "password", false);
+	text_box& pwd = find_widget<text_box>("password");
 	pwd.set_value(prefs::get().password(host_, username_->get_widget_value()));
 }
 
 void mp_login::save_password()
 {
-	password_box& pwd = find_widget<password_box>(this, "password", false);
+	password_box& pwd = find_widget<password_box>("password");
 	prefs::get().set_password(host_, username_->get_widget_value(), pwd.get_real_value());
 }
 
 void mp_login::pre_show(window& win)
 {
-	text_box& login = find_widget<text_box>(&win, "user_name", false);
+	text_box& login = find_widget<text_box>("user_name");
 	login.connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(&mp_login::load_password, this));
 
 	load_password();
 
 	if(focus_password_) {
-		win.keyboard_capture(find_widget<text_box>(&win, "password", false, true));
+		win.keyboard_capture(find_widget<text_box>("password", false, true));
 	}
 
 	win.add_to_tab_order(&login);
-	win.add_to_tab_order(find_widget<text_box>(&win, "password", false, true));
+	win.add_to_tab_order(find_widget<text_box>("password", false, true));
 }
 
 void mp_login::post_show(window& /*win*/) {

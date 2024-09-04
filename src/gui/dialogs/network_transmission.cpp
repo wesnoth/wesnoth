@@ -18,7 +18,6 @@
 #include "gui/dialogs/network_transmission.hpp"
 
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/window.hpp"
@@ -42,14 +41,14 @@ void network_transmission::pump_monitor::process(events::pump_info&)
 			completed = connection_->current();
 			total = connection_->total();
 		if(total) {
-			find_widget<progress_bar>(window_.ptr(), "progress", false)
+			window_.ptr()->find_widget<progress_bar>("progress")
 					.set_percentage((completed * 100.) / total);
 
 			std::stringstream ss;
 			ss << utils::si_string(completed, true, _("unit_byte^B")) << "/"
 			   << utils::si_string(total, true, _("unit_byte^B"));
 
-			find_widget<label>(window_.ptr(), "numeric_progress", false)
+			window_.ptr()->find_widget<label>("numeric_progress")
 					.set_label(ss.str());
 			window_->invalidate_layout();
 		}
@@ -73,7 +72,7 @@ void network_transmission::pre_show(window& window)
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
 	if(!subtitle_.empty()) {
 		label& subtitle_label
-				= find_widget<label>(&window, "subtitle", false);
+				= find_widget<label>("subtitle");
 
 		subtitle_label.set_label(subtitle_);
 		subtitle_label.set_use_markup(true);
@@ -81,7 +80,7 @@ void network_transmission::pre_show(window& window)
 
 	// NOTE: needed to avoid explicit calls to invalidate_layout()
 	// in network_transmission::pump_monitor::process()
-	find_widget<label>(&window, "numeric_progress", false).set_label(" ");
+	find_widget<label>("numeric_progress").set_label(" ");
 	pump_monitor_.window_ = window;
 }
 

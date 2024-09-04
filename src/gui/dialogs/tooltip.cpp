@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/tooltip.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/gui_definition.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/modeless_dialog.hpp"
@@ -45,7 +44,7 @@ public:
 			const point& mouse, const SDL_Rect& source_rect)
 		: modeless_dialog(window_id)
 	{
-		find_widget<styled_widget>(this, "label", false).set_label(message);
+		find_widget<styled_widget>("label").set_label(message);
 
 		set_variable("mouse_x", wfl::variant(mouse.x));
 		set_variable("mouse_y", wfl::variant(mouse.y));

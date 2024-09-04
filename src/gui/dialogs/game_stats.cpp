@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/game_stats.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/stacked_widget.hpp"
@@ -66,8 +65,8 @@ static std::string controller_name(const team& t)
 
 void game_stats::pre_show(window& window)
 {
-	listbox& stats_list    = find_widget<listbox>(&window, "game_stats_list", false);
-	listbox& settings_list = find_widget<listbox>(&window, "scenario_settings_list", false);
+	listbox& stats_list    = find_widget<listbox>("game_stats_list");
+	listbox& settings_list = find_widget<listbox>("scenario_settings_list");
 
 	for(const auto& team : board_.teams()) {
 		if(team.hidden()) {
@@ -227,7 +226,7 @@ void game_stats::pre_show(window& window)
 	//
 	// Set up tab control
 	//
-	listbox& tab_bar = find_widget<listbox>(&window, "tab_bar", false);
+	listbox& tab_bar = find_widget<listbox>("tab_bar");
 
 	window.keyboard_capture(&tab_bar);
 
@@ -238,12 +237,12 @@ void game_stats::pre_show(window& window)
 
 void game_stats::on_tab_select()
 {
-	const int i = find_widget<listbox>(get_window(), "tab_bar", false).get_selected_row();
+	const int i = find_widget<listbox>("tab_bar").get_selected_row();
 
-	find_widget<stacked_widget>(get_window(), "pager", false).select_layer(i);
+	find_widget<stacked_widget>("pager").select_layer(i);
 
 	// There are only two tabs, so this is simple
-	find_widget<label>(get_window(), "title", false).set_label(
+	find_widget<label>("title").set_label(
 		i == 0 ? _("Current Status") : _("Scenario Settings")
 	);
 }
@@ -251,10 +250,10 @@ void game_stats::on_tab_select()
 void game_stats::post_show(window& window)
 {
 	if(get_retval() == retval::OK) {
-		const int selected_tab = find_widget<listbox>(&window, "tab_bar", false).get_selected_row();
+		const int selected_tab = find_widget<listbox>("tab_bar").get_selected_row();
 
 		const std::string list_id = selected_tab == 0 ? "game_stats_list" : "scenario_settings_list";
-		selected_side_number_ = team_data_[find_widget<listbox>(&window, list_id, false).get_selected_row()].side;
+		selected_side_number_ = team_data_[find_widget<listbox>(list_id).get_selected_row()].side;
 	}
 }
 

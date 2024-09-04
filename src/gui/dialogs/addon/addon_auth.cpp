@@ -18,7 +18,6 @@
 
 #include "gui/dialogs/addon/addon_auth.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/password_box.hpp"
 #include "gui/widgets/window.hpp"
@@ -41,7 +40,7 @@ addon_auth::addon_auth(config& cfg)
 
 void addon_auth::pre_show(window& win)
 {
-	text_box* pwd = find_widget<text_box>(&win, "password", false, true);
+	text_box* pwd = find_widget<text_box>("password", false, true);
 	win.add_to_tab_order(pwd);
 	pwd->set_value(cfg_["passphrase"].str(""));
 
@@ -51,15 +50,15 @@ void addon_auth::pre_show(window& win)
 	for(const auto& author : utils::split(cfg_["secondary_authors"].str(""), ',')) {
 		content_list.emplace_back("label", author);
 	}
-	find_widget<menu_button>(&win, "choose_uploader", false).set_values(content_list);
+	find_widget<menu_button>("choose_uploader").set_values(content_list);
 }
 
 void addon_auth::post_show(window& win)
 {
 	if(get_retval() == gui2::retval::OK)
 	{
-		cfg_["passphrase"] = find_widget<password_box>(&win, "password", false).get_real_value();
-		cfg_["uploader"] = find_widget<menu_button>(&win, "choose_uploader", false).get_value_string();
+		cfg_["passphrase"] = find_widget<password_box>("password").get_real_value();
+		cfg_["uploader"] = find_widget<menu_button>("choose_uploader").get_value_string();
 	}
 }
 

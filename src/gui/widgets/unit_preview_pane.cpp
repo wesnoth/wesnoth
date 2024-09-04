@@ -16,7 +16,6 @@
 
 #include "gui/widgets/unit_preview_pane.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
@@ -42,6 +41,7 @@
 #include "units/types.hpp"
 #include "units/helper.hpp"
 #include "units/unit.hpp"
+#include "wml_exception.hpp"
 
 #include <functional>
 
@@ -71,20 +71,20 @@ unit_preview_pane::unit_preview_pane(const implementation::builder_unit_preview_
 void unit_preview_pane::finalize_setup()
 {
 	// Icons
-	icon_type_              = find_widget<drawing>(this, "type_image", false, false);
-	icon_race_              = find_widget<image>(this, "type_race", false, false);
-	icon_alignment_         = find_widget<image>(this, "type_alignment", false, false);
+	icon_type_              = find_widget<drawing>("type_image", false, false);
+	icon_race_              = find_widget<image>("type_race", false, false);
+	icon_alignment_         = find_widget<image>("type_alignment", false, false);
 
 	// Labels
-	label_name_             = find_widget<label>(this, "type_name", false, false);
-	label_level_            = find_widget<label>(this, "type_level", false, false);
-	label_race_             = find_widget<label>(this, "type_race_label", false, false);
-	label_details_          = find_widget<styled_widget>(this, "type_details_minimal", false, false);
+	label_name_             = find_widget<label>("type_name", false, false);
+	label_level_            = find_widget<label>("type_level", false, false);
+	label_race_             = find_widget<label>("type_race_label", false, false);
+	label_details_          = find_widget<styled_widget>("type_details_minimal", false, false);
 
-	tree_details_           = find_widget<tree_view>(this, "type_details", false, false);
+	tree_details_           = find_widget<tree_view>("type_details", false, false);
 
 	// Profile button
-	button_profile_ = find_widget<button>(this, "type_profile", false, false);
+	button_profile_ = find_widget<button>("type_profile", false, false);
 
 	if(button_profile_) {
 		connect_signal_mouse_left_click(*button_profile_,
@@ -100,7 +100,7 @@ static inline tree_view_node& add_name_tree_node(tree_view_node& header_node, co
 	 * Same is true for 'use_markup'
 	 */
 	auto& child_node = header_node.add_child(type, { { "name",{ { "label", label },{ "use_markup", "true" } } } });
-	auto& child_label = find_widget<styled_widget>(&child_node, "name", true);
+	auto& child_label = child_node.find_widget<styled_widget>("name", true);
 
 	child_label.set_tooltip(tooltip);
 	return child_node;
@@ -244,8 +244,8 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 			}
 		);
 
-		find_widget<styled_widget>(&subsection, "image_range", true).set_tooltip(range);
-		find_widget<styled_widget>(&subsection, "image_type", true).set_tooltip(type);
+		subsection.find_widget<styled_widget>("image_range", true).set_tooltip(range);
+		subsection.find_widget<styled_widget>("image_type", true).set_tooltip(type);
 
 		if(!range_png_exists || !type_png_exists) {
 			add_name_tree_node(

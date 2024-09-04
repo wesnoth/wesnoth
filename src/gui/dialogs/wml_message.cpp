@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/wml_message.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -26,9 +25,10 @@
 namespace gui2::dialogs
 {
 
-void wml_message_base::set_input(const std::string& caption,
-							  std::string* text,
-							  const unsigned maximum_length)
+void wml_message_base::set_input(
+	const std::string& caption,
+	std::string* text,
+	const unsigned maximum_length)
 {
 	assert(text);
 
@@ -38,8 +38,9 @@ void wml_message_base::set_input(const std::string& caption,
 	input_maximum_length_ = maximum_length;
 }
 
-void wml_message_base::set_option_list(const std::vector<wml_message_option>& option_list,
-									int* chosen_option)
+void wml_message_base::set_option_list(
+	const std::vector<wml_message_option>& option_list,
+	int* chosen_option)
 {
 	assert(!option_list.empty());
 	assert(chosen_option);
@@ -60,12 +61,12 @@ void wml_message_base::pre_show(window& window)
 	window.get_canvas(1).set_variable("portrait_mirror", wfl::variant(mirror_));
 
 	// Set the markup
-	label& title = find_widget<label>(&window, "title", false);
+	label& title = find_widget<label>("title");
 	title.set_label(title_);
 	title.set_use_markup(true);
 	title.set_can_wrap(true);
 
-	styled_widget& message = find_widget<styled_widget>(&window, "message", false);
+	styled_widget& message = find_widget<styled_widget>("message");
 	message.set_label(message_);
 	message.set_use_markup(true);
 	// The message label might not always be a scroll_label but the capturing
@@ -73,8 +74,8 @@ void wml_message_base::pre_show(window& window)
 	window.keyboard_capture(&message);
 
 	// Find the input box related fields.
-	label& caption = find_widget<label>(&window, "input_caption", false);
-	text_box& input = find_widget<text_box>(&window, "input", true);
+	label& caption = find_widget<label>("input_caption");
+	text_box& input = find_widget<text_box>("input", true);
 
 	if(has_input_) {
 		caption.set_label(input_caption_);
@@ -90,7 +91,7 @@ void wml_message_base::pre_show(window& window)
 	}
 
 	// Find the option list related fields.
-	listbox& options = find_widget<listbox>(&window, "input_list", true);
+	listbox& options = find_widget<listbox>("input_list", true);
 
 	if(!option_list_.empty()) {
 		widget_data data;
@@ -129,11 +130,11 @@ void wml_message_base::post_show(window& window)
 {
 	if(has_input_) {
 		*input_text_
-				= find_widget<text_box>(&window, "input", true).get_value();
+				= find_widget<text_box>("input", true).get_value();
 	}
 
 	if(!option_list_.empty()) {
-		*chosen_option_ = find_widget<listbox>(&window, "input_list", true)
+		*chosen_option_ = find_widget<listbox>("input_list", true)
 								  .get_selected_row();
 	}
 }

@@ -19,7 +19,6 @@
 #include "editor/editor_common.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/editor/edit_pbl_translation.hpp"
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/message.hpp"
@@ -75,20 +74,20 @@ editor_edit_pbl::editor_edit_pbl(const std::string& pbl, const std::string& curr
 	, dirs_()
 {
 	connect_signal_mouse_left_click(
-		find_widget<toggle_button>(get_window(), "forum_auth", false), std::bind(&editor_edit_pbl::toggle_auth, this));
-	connect_signal_mouse_left_click(find_widget<button>(get_window(), "translations_add", false),
+		find_widget<toggle_button>("forum_auth"), std::bind(&editor_edit_pbl::toggle_auth, this));
+	connect_signal_mouse_left_click(find_widget<button>("translations_add"),
 		std::bind(&editor_edit_pbl::add_translation, this));
-	connect_signal_mouse_left_click(find_widget<button>(get_window(), "translations_delete", false),
+	connect_signal_mouse_left_click(find_widget<button>("translations_delete"),
 		std::bind(&editor_edit_pbl::delete_translation, this));
 	connect_signal_mouse_left_click(
-		find_widget<button>(get_window(), "validate", false), std::bind(&editor_edit_pbl::validate, this));
+		find_widget<button>("validate"), std::bind(&editor_edit_pbl::validate, this));
 	connect_signal_mouse_left_click(
-		find_widget<button>(get_window(), "select_icon", false), std::bind(&editor_edit_pbl::select_icon_file, this));
+		find_widget<button>("select_icon"), std::bind(&editor_edit_pbl::select_icon_file, this));
 	connect_signal_notify_modified(
-		find_widget<text_box>(get_window(), "icon", false), std::bind(&editor_edit_pbl::update_icon_preview, this));
-	connect_signal_notify_modified(find_widget<text_box>(get_window(), "forum_thread", false),
+		find_widget<text_box>("icon"), std::bind(&editor_edit_pbl::update_icon_preview, this));
+	connect_signal_notify_modified(find_widget<text_box>("forum_thread"),
 		std::bind(&editor_edit_pbl::update_url_preview, this));
-	label& url = find_widget<label>(get_window(), "forum_url", false);
+	label& url = find_widget<label>("forum_url");
 	url.set_link_aware(true);
 	url.set_use_markup(true);
 	// not setting this to some value causes the modified signal to not update the label text
@@ -106,20 +105,20 @@ void editor_edit_pbl::pre_show(window& win)
 		}
 	}
 
-	text_box* name = find_widget<text_box>(&win, "name", false, true);
+	text_box* name = find_widget<text_box>("name", false, true);
 	name->set_value(pbl["title"]);
 	win.keyboard_capture(name);
 
-	find_widget<scroll_text>(&win, "description", false).set_value(pbl["description"]);
-	find_widget<text_box>(&win, "icon", false).set_value(pbl["icon"]);
+	find_widget<scroll_text>("description").set_value(pbl["description"]);
+	find_widget<text_box>("icon").set_value(pbl["icon"]);
 	if(!pbl["icon"].empty()) {
-		drawing& img = find_widget<drawing>(&win, "preview", false);
+		drawing& img = find_widget<drawing>("preview");
 		img.set_label(pbl["icon"]);
 	}
-	find_widget<text_box>(&win, "author", false).set_value(pbl["author"]);
-	find_widget<text_box>(&win, "version", false).set_value(pbl["version"]);
+	find_widget<text_box>("author").set_value(pbl["author"]);
+	find_widget<text_box>("version").set_value(pbl["version"]);
 
-	multimenu_button& dependencies = find_widget<multimenu_button>(&win, "dependencies", false);
+	multimenu_button& dependencies = find_widget<multimenu_button>("dependencies");
 	std::vector<config> addons_list;
 	filesystem::get_files_in_dir(filesystem::get_addons_dir(), nullptr, &dirs_, filesystem::name_mode::FILE_NAME_ONLY);
 	if(dirs_.size() > 0 && std::find(dirs_.begin(), dirs_.end(), current_addon_) != dirs_.end()) {
@@ -139,22 +138,22 @@ void editor_edit_pbl::pre_show(window& win)
 	}
 
 	if(pbl["forum_auth"].to_bool()) {
-		find_widget<toggle_button>(&win, "forum_auth", false).set_value(true);
-		find_widget<text_box>(&win, "email", false).set_visible(gui2::widget::visibility::invisible);
-		find_widget<label>(&win, "email_label", false).set_visible(gui2::widget::visibility::invisible);
-		find_widget<text_box>(&win, "password", false).set_visible(gui2::widget::visibility::invisible);
-		find_widget<label>(&win, "password_label", false).set_visible(gui2::widget::visibility::invisible);
-		find_widget<text_box>(&win, "secondary_authors", false).set_visible(gui2::widget::visibility::visible);
-		find_widget<label>(&win, "secondary_authors_label", false).set_visible(gui2::widget::visibility::visible);
+		find_widget<toggle_button>("forum_auth").set_value(true);
+		find_widget<text_box>("email").set_visible(gui2::widget::visibility::invisible);
+		find_widget<label>("email_label").set_visible(gui2::widget::visibility::invisible);
+		find_widget<text_box>("password").set_visible(gui2::widget::visibility::invisible);
+		find_widget<label>("password_label").set_visible(gui2::widget::visibility::invisible);
+		find_widget<text_box>("secondary_authors").set_visible(gui2::widget::visibility::visible);
+		find_widget<label>("secondary_authors_label").set_visible(gui2::widget::visibility::visible);
 	} else {
-		find_widget<text_box>(&win, "email", false).set_value(pbl["email"]);
-		find_widget<text_box>(&win, "password", false).set_value(pbl["passphrase"]);
-		find_widget<text_box>(&win, "secondary_authors", false).set_visible(gui2::widget::visibility::invisible);
-		find_widget<label>(&win, "secondary_authors_label", false).set_visible(gui2::widget::visibility::invisible);
+		find_widget<text_box>("email").set_value(pbl["email"]);
+		find_widget<text_box>("password").set_value(pbl["passphrase"]);
+		find_widget<text_box>("secondary_authors").set_visible(gui2::widget::visibility::invisible);
+		find_widget<label>("secondary_authors_label").set_visible(gui2::widget::visibility::invisible);
 	}
 
 	if(pbl.has_child("feedback")) {
-		find_widget<text_box>(&win, "forum_thread", false).set_value(pbl.mandatory_child("feedback")["topic_id"]);
+		find_widget<text_box>("forum_thread").set_value(pbl.mandatory_child("feedback")["topic_id"]);
 	}
 
 	unsigned selected = 0;
@@ -165,7 +164,7 @@ void editor_edit_pbl::pre_show(window& win)
 		}
 	}
 
-	menu_button& types = find_widget<menu_button>(&win, "type", false);
+	menu_button& types = find_widget<menu_button>("type");
 	std::vector<config> type_list;
 	type_list.emplace_back("label", "");
 	type_list.emplace_back("label", _("Core"));
@@ -183,7 +182,7 @@ void editor_edit_pbl::pre_show(window& win)
 	types.set_values(type_list);
 	types.set_selected(selected);
 
-	multimenu_button& tags = find_widget<multimenu_button>(&win, "tags", false);
+	multimenu_button& tags = find_widget<multimenu_button>("tags");
 	std::vector<config> tags_list;
 	tags_list.emplace_back("label", _("Cooperative"), "checkbox", false);
 	tags_list.emplace_back("label", _("Cosmetic"), "checkbox", false);
@@ -200,8 +199,8 @@ void editor_edit_pbl::pre_show(window& win)
 		}
 	}
 
-	listbox& translations = find_widget<listbox>(&win, "translations", false);
-	button& translations_delete = find_widget<button>(&win, "translations_delete", false);
+	listbox& translations = find_widget<listbox>("translations");
+	button& translations_delete = find_widget<button>("translations_delete");
 
 	for(const config& child : pbl.child_range("translation")) {
 		const widget_data& entry{
@@ -233,23 +232,23 @@ config editor_edit_pbl::create_cfg()
 {
 	config cfg;
 
-	if(const std::string& name = find_widget<text_box>(get_window(), "name", false).get_value(); !name.empty()) {
+	if(const std::string& name = find_widget<text_box>("name").get_value(); !name.empty()) {
 		cfg["title"] = name;
 	}
-	if(const std::string& description = find_widget<scroll_text>(get_window(), "description", false).get_value(); !description.empty()) {
+	if(const std::string& description = find_widget<scroll_text>("description").get_value(); !description.empty()) {
 		cfg["description"] = description;
 	}
-	if(const std::string& icon = find_widget<text_box>(get_window(), "icon", false).get_value(); !icon.empty()) {
+	if(const std::string& icon = find_widget<text_box>("icon").get_value(); !icon.empty()) {
 		cfg["icon"] = icon;
 	}
-	if(const std::string& author = find_widget<text_box>(get_window(), "author", false).get_value(); !author.empty()) {
+	if(const std::string& author = find_widget<text_box>("author").get_value(); !author.empty()) {
 		cfg["author"] = author;
 	}
-	if(const std::string& version = find_widget<text_box>(get_window(), "version", false).get_value(); !version.empty()) {
+	if(const std::string& version = find_widget<text_box>("version").get_value(); !version.empty()) {
 		cfg["version"] = version;
 	}
 
-	multimenu_button& dependencies = find_widget<multimenu_button>(get_window(), "dependencies", false);
+	multimenu_button& dependencies = find_widget<multimenu_button>("dependencies");
 	boost::dynamic_bitset<> dep_states = dependencies.get_toggle_states();
 	std::vector<std::string> chosen_deps;
 	for(unsigned i = 0; i < dep_states.size(); i++) {
@@ -261,31 +260,31 @@ config editor_edit_pbl::create_cfg()
 		cfg["dependencies"] = utils::join(chosen_deps, ",");
 	}
 
-	if(find_widget<toggle_button>(get_window(), "forum_auth", false).get_value_bool()) {
+	if(find_widget<toggle_button>("forum_auth").get_value_bool()) {
 		cfg["forum_auth"] = true;
 
-		if(const std::string& secondary_authors = find_widget<text_box>(get_window(), "secondary_authors", false).get_value(); !secondary_authors.empty()) {
+		if(const std::string& secondary_authors = find_widget<text_box>("secondary_authors").get_value(); !secondary_authors.empty()) {
 			cfg["secondary_authors"] = secondary_authors;
 		}
 	} else {
-		if(const std::string& email = find_widget<text_box>(get_window(), "email", false).get_value(); !email.empty()) {
+		if(const std::string& email = find_widget<text_box>("email").get_value(); !email.empty()) {
 			cfg["email"] = email;
 		}
-		if(const std::string& passphrase = find_widget<text_box>(get_window(), "password", false).get_value(); !passphrase.empty()) {
+		if(const std::string& passphrase = find_widget<text_box>("password").get_value(); !passphrase.empty()) {
 			cfg["passphrase"] = passphrase;
 		}
 	}
 
-	if(const std::string& topic_id = find_widget<text_box>(get_window(), "forum_thread", false).get_value(); !topic_id.empty()) {
+	if(const std::string& topic_id = find_widget<text_box>("forum_thread").get_value(); !topic_id.empty()) {
 		config& feedback = cfg.add_child("feedback");
 		feedback["topic_id"] = topic_id;
 	}
 
-	if(unsigned value = find_widget<menu_button>(get_window(), "type", false).get_value(); value != 0) {
+	if(unsigned value = find_widget<menu_button>("type").get_value(); value != 0) {
 		cfg["type"] = type_values[value];
 	}
 
-	multimenu_button& tags = find_widget<multimenu_button>(get_window(), "tags", false);
+	multimenu_button& tags = find_widget<multimenu_button>("tags");
 	boost::dynamic_bitset<> tag_states = tags.get_toggle_states();
 	std::vector<std::string> chosen_tags;
 	for(unsigned i = 0; i < tag_states.size(); i++) {
@@ -297,7 +296,7 @@ config editor_edit_pbl::create_cfg()
 		cfg["tags"] = utils::join(chosen_tags, ",");
 	}
 
-	listbox& translations = find_widget<listbox>(get_window(), "translations", false);
+	listbox& translations = find_widget<listbox>("translations");
 	for(unsigned i = 0; i < translations.get_item_count(); i++) {
 		grid* row = translations.get_row_grid(i);
 		config& translation = cfg.add_child("translation");
@@ -312,21 +311,21 @@ config editor_edit_pbl::create_cfg()
 
 void editor_edit_pbl::toggle_auth()
 {
-	toggle_button& forum_auth = find_widget<toggle_button>(get_window(), "forum_auth", false);
+	toggle_button& forum_auth = find_widget<toggle_button>("forum_auth");
 	if(forum_auth.get_value_bool()) {
-		find_widget<text_box>(get_window(), "email", false).set_visible(gui2::widget::visibility::invisible);
-		find_widget<text_box>(get_window(), "password", false).set_visible(gui2::widget::visibility::invisible);
-		find_widget<label>(get_window(), "email_label", false).set_visible(gui2::widget::visibility::invisible);
-		find_widget<label>(get_window(), "password_label", false).set_visible(gui2::widget::visibility::invisible);
-		find_widget<text_box>(get_window(), "secondary_authors", false).set_visible(gui2::widget::visibility::visible);
-		find_widget<label>(get_window(), "secondary_authors_label", false).set_visible(gui2::widget::visibility::visible);
+		find_widget<text_box>("email").set_visible(gui2::widget::visibility::invisible);
+		find_widget<text_box>("password").set_visible(gui2::widget::visibility::invisible);
+		find_widget<label>("email_label").set_visible(gui2::widget::visibility::invisible);
+		find_widget<label>("password_label").set_visible(gui2::widget::visibility::invisible);
+		find_widget<text_box>("secondary_authors").set_visible(gui2::widget::visibility::visible);
+		find_widget<label>("secondary_authors_label").set_visible(gui2::widget::visibility::visible);
 	} else {
-		find_widget<text_box>(get_window(), "email", false).set_visible(gui2::widget::visibility::visible);
-		find_widget<text_box>(get_window(), "password", false).set_visible(gui2::widget::visibility::visible);
-		find_widget<label>(get_window(), "email_label", false).set_visible(gui2::widget::visibility::visible);
-		find_widget<label>(get_window(), "password_label", false).set_visible(gui2::widget::visibility::visible);
-		find_widget<text_box>(get_window(), "secondary_authors", false).set_visible(gui2::widget::visibility::invisible);
-		find_widget<label>(get_window(), "secondary_authors_label", false).set_visible(gui2::widget::visibility::invisible);
+		find_widget<text_box>("email").set_visible(gui2::widget::visibility::visible);
+		find_widget<text_box>("password").set_visible(gui2::widget::visibility::visible);
+		find_widget<label>("email_label").set_visible(gui2::widget::visibility::visible);
+		find_widget<label>("password_label").set_visible(gui2::widget::visibility::visible);
+		find_widget<text_box>("secondary_authors").set_visible(gui2::widget::visibility::invisible);
+		find_widget<label>("secondary_authors_label").set_visible(gui2::widget::visibility::invisible);
 	}
 }
 
@@ -338,23 +337,23 @@ void editor_edit_pbl::add_translation()
 	editor_edit_pbl_translation::execute(language, title, description);
 
 	if(!language.empty() && !title.empty()) {
-		listbox& translations = find_widget<listbox>(get_window(), "translations", false);
+		listbox& translations = find_widget<listbox>("translations");
 		const widget_data& entry{
 			{"translations_language", widget_item{{"label", language}}},
 			{"translations_title", widget_item{{"label", title}}},
 			{"translations_description", widget_item{{"label", description}}},
 		};
 		translations.add_row(entry);
-		find_widget<button>(get_window(), "translations_delete", false).set_active(true);
+		find_widget<button>("translations_delete").set_active(true);
 	}
 }
 
 void editor_edit_pbl::delete_translation()
 {
-	listbox& translations = find_widget<listbox>(get_window(), "translations", false);
+	listbox& translations = find_widget<listbox>("translations");
 	translations.remove_row(translations.get_selected_row());
 
-	button& translations_delete = find_widget<button>(get_window(), "translations_delete", false);
+	button& translations_delete = find_widget<button>("translations_delete");
 	if(translations.get_item_count() == 0) {
 		translations_delete.set_active(false);
 	}
@@ -379,10 +378,10 @@ void editor_edit_pbl::validate()
 
 void editor_edit_pbl::update_icon_preview()
 {
-	std::string icon = find_widget<text_box>(get_window(), "icon", false).get_value();
+	std::string icon = find_widget<text_box>("icon").get_value();
 	if(icon.find(".png") != std::string::npos || icon.find(".jpg") != std::string::npos || icon.find(".webp") != std::string::npos) {
 		std::string path = filesystem::get_core_images_dir() + icon;
-		drawing& img = find_widget<drawing>(get_window(), "preview", false);
+		drawing& img = find_widget<drawing>("preview");
 
 		if(filesystem::file_exists(path) || icon.find("data:image") != std::string::npos) {
 			img.set_label(icon);
@@ -395,8 +394,8 @@ void editor_edit_pbl::update_icon_preview()
 
 void editor_edit_pbl::update_url_preview()
 {
-	std::string topic = find_widget<text_box>(get_window(), "forum_thread", false).get_value();
-	find_widget<label>(get_window(), "forum_url", false).set_label("https://r.wesnoth.org/t" + topic);
+	std::string topic = find_widget<text_box>("forum_thread").get_value();
+	find_widget<label>("forum_url").set_label("https://r.wesnoth.org/t" + topic);
 }
 
 void editor_edit_pbl::select_icon_file()
@@ -410,14 +409,14 @@ void editor_edit_pbl::select_icon_file()
 		if(path.find(filesystem::get_core_images_dir()) == 0) {
 			std::string icon = path.substr(filesystem::get_core_images_dir().length() + 1);
 			// setting this programmatically doesn't seem to trigger connect_signal_notify_modified()
-			find_widget<text_box>(get_window(), "icon", false).set_value(icon);
-			find_widget<drawing>(get_window(), "preview", false).set_label(icon);
+			find_widget<text_box>("icon").set_value(icon);
+			find_widget<drawing>("preview").set_label(icon);
 		} else {
 			std::string uri = filesystem::read_file_as_data_uri(path);
 
 			if(!uri.empty()) {
-				find_widget<text_box>(get_window(), "icon", false).set_value(uri);
-				find_widget<drawing>(get_window(), "preview", false).set_label(uri);
+				find_widget<text_box>("icon").set_value(uri);
+				find_widget<drawing>("preview").set_label(uri);
 			}
 		}
 	}

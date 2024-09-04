@@ -21,7 +21,6 @@
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -83,7 +82,7 @@ label_settings::label_settings(display_context& dc)
 
 void label_settings::pre_show(window& window)
 {
-	listbox& cats_listbox = find_widget<listbox>(&window, "label_types", false);
+	listbox& cats_listbox = find_widget<listbox>("label_types");
 	widget_data list_data;
 
 	for(const auto& label_entry : all_labels_) {
@@ -106,13 +105,13 @@ void label_settings::pre_show(window& window)
 		list_data["cat_name"]["label"] = name;
 		grid* grid = &cats_listbox.add_row(list_data);
 
-		toggle_button& status = find_widget<toggle_button>(grid, "cat_status", false);
+		toggle_button& status = grid->find_widget<toggle_button>("cat_status");
 		status.set_value(visible);
 
 		connect_signal_notify_modified(status, std::bind(&label_settings::toggle_category, this, std::placeholders::_1, category));
 
 		if(category.substr(0, 5) == "side:") {
-			label& cat_name = find_widget<label>(grid, "cat_name", false);
+			label& cat_name = grid->find_widget<label>("cat_name");
 			cat_name.set_use_markup(true);
 		}
 	}

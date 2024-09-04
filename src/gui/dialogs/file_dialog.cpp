@@ -22,7 +22,6 @@
 #include "desktop/open.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/folder_create.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -167,12 +166,12 @@ void file_dialog::check_filename() {
 		return;
 	}
 
-	text_box& file_textbox = find_widget<text_box>(get_window(), "filename", false);
-	button& save_btn = find_widget<button>(get_window(), "ok", false);
+	text_box& file_textbox = find_widget<text_box>("filename");
+	button& save_btn = find_widget<button>("ok");
 
 	// empty filename
 	const std::string& filename = file_textbox.get_value();
-	styled_widget& validation_msg = find_widget<styled_widget>(get_window(), "validation_msg", false);
+	styled_widget& validation_msg = find_widget<styled_widget>("validation_msg");
 
 	bool stat_invalid = filename.empty() || (filename.substr(0,1) == ".");
 	bool wrong_ext = false;
@@ -214,9 +213,9 @@ void file_dialog::check_filename() {
 
 void file_dialog::pre_show(window& window)
 {
-	styled_widget& title = find_widget<styled_widget>(&window, "title", false);
-	styled_widget& message = find_widget<styled_widget>(&window, "message", false);
-	styled_widget& ok = find_widget<styled_widget>(&window, "ok", false);
+	styled_widget& title = find_widget<styled_widget>("title");
+	styled_widget& message = find_widget<styled_widget>("message");
+	styled_widget& ok = find_widget<styled_widget>("ok");
 
 	title.set_label(title_);
 
@@ -233,9 +232,9 @@ void file_dialog::pre_show(window& window)
 		ok.set_label(ok_label_);
 	}
 
-	listbox& bookmarks_bar = find_widget<listbox>(&window, "bookmarks", false);
+	listbox& bookmarks_bar = find_widget<listbox>("bookmarks");
 
-	find_widget<styled_widget>(&window, "current_dir", false).set_text_ellipse_mode(PANGO_ELLIPSIZE_START);
+	find_widget<styled_widget>("current_dir").set_text_ellipse_mode(PANGO_ELLIPSIZE_START);
 
 	//
 	// Push hard-coded bookmarks.
@@ -276,8 +275,8 @@ void file_dialog::pre_show(window& window)
 
 	sync_bookmarks_bar();
 
-	listbox& filelist = find_widget<listbox>(&window, "filelist", false);
-	text_box& file_textbox = find_widget<text_box>(get_window(), "filename", false);
+	listbox& filelist = find_widget<listbox>("filelist");
+	text_box& file_textbox = find_widget<text_box>("filename");
 
 	connect_signal_notify_modified(filelist,
 			std::bind(&file_dialog::on_row_selected, this));
@@ -288,11 +287,11 @@ void file_dialog::pre_show(window& window)
 
 	check_filename();
 
-	button& mkdir_button = find_widget<button>(&window, "new_dir", false);
-	button& rm_button = find_widget<button>(&window, "delete_file", false);
-	button& bookmark_add_button = find_widget<button>(&window, "add_bookmark", false);
-	button& bookmark_del_button = find_widget<button>(&window, "remove_bookmark", false);
-	button& open_ext_button = find_widget<button>(&window, "open_ext", false);
+	button& mkdir_button = find_widget<button>("new_dir");
+	button& rm_button = find_widget<button>("delete_file");
+	button& bookmark_add_button = find_widget<button>("add_bookmark");
+	button& bookmark_del_button = find_widget<button>("remove_bookmark");
+	button& open_ext_button = find_widget<button>("open_ext");
 
 	connect_signal_mouse_left_click(mkdir_button,
 			std::bind(&file_dialog::on_dir_create_cmd, this));
@@ -321,7 +320,7 @@ void file_dialog::pre_show(window& window)
 
 	refresh_fileview();
 
-	//window.keyboard_capture(find_widget<text_box>(&window, "filename", false, true));
+	//window.keyboard_capture(find_widget<text_box>("filename", false, true));
 	window.keyboard_capture(&file_textbox);
 	window.add_to_keyboard_chain(&filelist);
 	window.set_exit_hook(window::exit_hook::on_all, std::bind(&file_dialog::on_exit, this, std::placeholders::_1));
@@ -408,14 +407,14 @@ bool file_dialog::process_submit_common(const std::string& name)
 
 bool file_dialog::process_fileview_submit()
 {
-	listbox& filelist = find_widget<listbox>(get_window(), "filelist", false);
+	listbox& filelist = find_widget<listbox>("filelist");
 	const std::string& selected_name = get_filelist_selection(filelist);
 	return process_submit_common(selected_name);
 }
 
 bool file_dialog::process_textbox_submit()
 {
-	text_box& file_textbox = find_widget<text_box>(get_window(), "filename", false);
+	text_box& file_textbox = find_widget<text_box>("filename");
 	const std::string& input_name = file_textbox.get_value();
 	return !input_name.empty() && process_submit_common(input_name);
 }
@@ -558,8 +557,8 @@ void file_dialog::refresh_fileview()
 	// Clear and refill the filelist box.
 	//
 
-	listbox& filelist = find_widget<listbox>(get_window(), "filelist", false);
-	button& rm_button = find_widget<button>(get_window(), "delete_file", false);
+	listbox& filelist = find_widget<listbox>("filelist");
+	button& rm_button = find_widget<button>("delete_file");
 
 	filelist.clear();
 
@@ -584,8 +583,8 @@ void file_dialog::refresh_fileview()
 		push_fileview_row(filelist, file, icon_file);
 	}
 
-	find_widget<styled_widget>(get_window(), "current_dir", false).set_label(current_dir_);
-	set_input_text(find_widget<text_box>(get_window(), "filename", false), current_entry_);
+	find_widget<styled_widget>("current_dir").set_label(current_dir_);
+	set_input_text(find_widget<text_box>("filename"), current_entry_);
 
 	on_row_selected();
 }
@@ -608,8 +607,9 @@ void file_dialog::push_fileview_row(listbox& filelist, const std::string& name, 
 	// events for all rows using the GUI2 listbox API. Assign a special retval to
 	// each row that triggers a special check during dialog exit.
 	//
-	find_widget<toggle_panel>(&last_grid, "item_panel", false)
-			.set_retval(FILE_DIALOG_ITEM_RETVAL);
+	last_grid
+		.find_widget<toggle_panel>("item_panel")
+		.set_retval(FILE_DIALOG_ITEM_RETVAL);
 
 	if(check_selection && name == current_entry_) {
 		filelist.select_last_row(true);
@@ -618,7 +618,7 @@ void file_dialog::push_fileview_row(listbox& filelist, const std::string& name, 
 
 void file_dialog::sync_bookmarks_bar()
 {
-	listbox& bookmarks_bar = find_widget<listbox>(get_window(), "bookmarks", false);
+	listbox& bookmarks_bar = find_widget<listbox>("bookmarks");
 
 	// Internal state has normalized path delimiters but dot entries aren't
 	// resolved after callers call set_path(), so compare against a canonical
@@ -648,7 +648,7 @@ void file_dialog::sync_bookmarks_bar()
 	}
 
 	// Update bookmark edit controls.
-	button& del_button = find_widget<button>(get_window(), "remove_bookmark", false);
+	button& del_button = find_widget<button>("remove_bookmark");
 
 	if(user_bookmarks_begin_ == -1) {
 		del_button.set_active(false);
@@ -659,9 +659,9 @@ void file_dialog::sync_bookmarks_bar()
 
 void file_dialog::on_row_selected()
 {
-	listbox& filelist = find_widget<listbox>(get_window(), "filelist", false);
-	text_box& file_textbox = find_widget<text_box>(get_window(), "filename", false);
-	button& rm_button = find_widget<button>(get_window(), "delete_file", false);
+	listbox& filelist = find_widget<listbox>("filelist");
+	text_box& file_textbox = find_widget<text_box>("filename");
+	button& rm_button = find_widget<button>("delete_file");
 
 	// Don't use register_new_selection() here, we don't want any parsing to be
 	// performed at this point.
@@ -684,10 +684,10 @@ void file_dialog::on_row_selected()
 void file_dialog::on_bookmark_selected()
 {
 	// Don't let us steal the focus from the primary widgets.
-	text_box& file_textbox = find_widget<text_box>(get_window(), "filename", false);
+	text_box& file_textbox = find_widget<text_box>("filename");
 	get_window()->keyboard_capture(&file_textbox);
 
-	listbox& bookmarks_bar = find_widget<listbox>(get_window(), "bookmarks", false);
+	listbox& bookmarks_bar = find_widget<listbox>("bookmarks");
 	const int new_selection = bookmarks_bar.get_selected_row();
 
 	if(new_selection < 0) {
@@ -706,7 +706,7 @@ void file_dialog::on_bookmark_selected()
 	refresh_fileview();
 
 	// Update bookmark edit controls.
-	button& del_button = find_widget<button>(get_window(), "remove_bookmark", false);
+	button& del_button = find_widget<button>("remove_bookmark");
 	del_button.set_active(user_bookmarks_begin_ >= 0
 						  && current_bookmark_ >= user_bookmarks_begin_);
 }
@@ -726,7 +726,7 @@ void file_dialog::on_bookmark_add_cmd()
 		label = default_label;
 	}
 
-	listbox& bookmarks_bar = find_widget<listbox>(get_window(), "bookmarks", false);
+	listbox& bookmarks_bar = find_widget<listbox>("bookmarks");
 
 	desktop::add_user_bookmark(label, current_dir_);
 	bookmark_paths_.push_back(current_dir_);
@@ -752,7 +752,7 @@ void file_dialog::on_bookmark_del_cmd()
 		   && current_bookmark_ >= user_bookmarks_begin_
 		   && current_bookmark_ < static_cast<int>(bookmark_paths_.size()));
 
-	listbox& bookmarks_bar = find_widget<listbox>(get_window(), "bookmarks", false);
+	listbox& bookmarks_bar = find_widget<listbox>("bookmarks");
 	desktop::remove_user_bookmark(current_bookmark_ - user_bookmarks_begin_);
 	bookmark_paths_.erase(bookmark_paths_.begin() + current_bookmark_);
 	bookmarks_bar.remove_row(current_bookmark_);
