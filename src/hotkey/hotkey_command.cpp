@@ -205,7 +205,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_EDITOR_TOOL_STARTING_POSITION, "editor-tool-starting-position", N_("Starting Positions Tool"), false, scope_editor, HKCAT_TOOLS,  N_("Left mouse button displays player selection, right clears. Number keys scroll to the starting position, alt+number sets respective starting position under cursor, delete clears.") },
 	{ HOTKEY_EDITOR_TOOL_LABEL, "editor-tool-label", N_("Label Tool"), false, scope_editor, HKCAT_TOOLS, N_("Left mouse button sets or drags a label, right clears.") },
 	{ HOTKEY_EDITOR_TOOL_UNIT, "editor-tool-unit", N_("Unit Tool"), false, scope_editor, HKCAT_TOOLS, N_("Left mouse button sets a new unit or moves a unit via drag and drop, right brings up a context menu. Needs a defined side.") },
-	{ HOTKEY_EDITOR_TOOL_ITEM, "editor-tool-item", N_("Item Tool"), false, scope_editor, HKCAT_TOOLS, N_("Left mouse button sets a new item.") },
+	{ HOTKEY_EDITOR_TOOL_ITEM, "editor-tool-item", N_("Item Tool"), false, scope_editor, HKCAT_TOOLS, N_("Left mouse button sets a new item. Right click removes item.") },
 	{ HOTKEY_EDITOR_TOOL_VILLAGE, "editor-tool-village", N_("Village Tool"), false, scope_editor, HKCAT_TOOLS, N_("Left mouse button sets the village ownership to the current side, right clears. Needs a defined side.") },
 
 	{ HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT, "editor-toggle-canrecruit", N_("Can Recruit"), false, scope_editor, HKCAT_TOOLS, N_("Toggle the recruit attribute of a unit.") },
