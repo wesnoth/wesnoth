@@ -58,7 +58,8 @@ private:
 	int hex_size;
 	int hex_size_by_2;
 
-	bool is_selected_hex(const map_location& loc) const;
+	/** @todo: better name... unclear what the reachable part actually means */
+	bool selected_or_reachable(const map_location& loc) const;
 
 	void draw_ellipses(const unit& u, const frame_parameters& params) const;
 

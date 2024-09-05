@@ -155,7 +155,7 @@ unit_drawer::unit_drawer(display& thedisp)
 	}
 }
 
-bool unit_drawer::is_selected_hex(const map_location& loc) const
+bool unit_drawer::selected_or_reachable(const map_location& loc) const
 {
 	const bool is_highlighted_enemy = units_that_can_reach_goal.count(loc) > 0;
 	return loc == sel_hex || is_highlighted_enemy;
@@ -183,7 +183,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 	color_t hp_color=u.hp_color();
 	color_t xp_color=u.xp_color();
 
-	const bool is_selected_hex = this->is_selected_hex(loc);
+	const bool is_selected_hex = selected_or_reachable(loc);
 
 	// Override the filled area's color's alpha.
 	hp_color.a = (loc == mouse_hex || is_selected_hex) ? 255u : float_to_color(0.8);
@@ -489,7 +489,7 @@ void unit_drawer::draw_ellipses(const unit& u, const frame_parameters& params) c
 		path << "-leader";
 	if(!u.emits_zoc())
 		path << "-nozoc";
-	if(is_selected_hex(u.get_location()))
+	if(selected_or_reachable(u.get_location()))
 		path << "-selected";
 
 	// Load the ellipse parts recolored to match team color
