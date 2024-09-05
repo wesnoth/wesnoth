@@ -30,11 +30,11 @@
 
 class display;
 class display_context;
+struct frame_parameters;
 class gamemap;
 namespace halo { class manager; }
 class team;
 class unit;
-
 
 class unit_drawer
 {
@@ -57,6 +57,11 @@ private:
 
 	int hex_size;
 	int hex_size_by_2;
+
+	/** @todo: better name... unclear what the reachable part actually means */
+	bool selected_or_reachable(const map_location& loc) const;
+
+	void draw_ellipses(const unit& u, const frame_parameters& params) const;
 
 public:
 	/** draw a unit.  */
