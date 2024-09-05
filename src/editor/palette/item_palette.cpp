@@ -29,7 +29,7 @@ namespace editor {
 
 std::string item_palette::get_help_string()
 {
-	return selected_fg_item().name;
+	return _("Left-click: Place item ") + selected_fg_item().name + _(" | Right-click to remove");
 }
 
 void item_palette::setup(const game_config_view& cfg)

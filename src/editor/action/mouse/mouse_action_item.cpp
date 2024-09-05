@@ -58,6 +58,19 @@ std::unique_ptr<editor_action> mouse_action_item::click_left(editor_display& dis
 	return nullptr;
 }
 
+std::unique_ptr<editor_action> mouse_action_item::click_right(editor_display& disp, int x, int y)
+{
+	start_hex_ = disp.hex_clicked_on(x, y);
+	if (!disp.get_map().on_board(start_hex_)) {
+		return nullptr;
+	}
+
+	disp.remove_overlay(start_hex_);
+
+	click_ = true;
+	return nullptr;
+}
+
 std::unique_ptr<editor_action> mouse_action_item::drag_left(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
 {
 	map_location hex = disp.hex_clicked_on(x, y);

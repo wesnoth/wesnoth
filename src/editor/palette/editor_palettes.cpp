@@ -124,7 +124,6 @@ void editor_palette<Item>::set_group(const std::string& id)
 			found = true;
 			std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 			if (palette_menu_button) {
-				//palette_menu_button->set_label(group.name);
 				palette_menu_button->set_tooltip_string(group.name);
 				palette_menu_button->set_overlay(group.icon);
 			}
@@ -300,13 +299,11 @@ void editor_palette<Item>::layout()
 		}
 
 		const std::string item_id = active_group()[item_index];
-		//typedef std::map<std::string, Item> item_map_wurscht;
 		typename item_map::iterator item = item_map_.find(item_id);
 
 		texture item_base, item_overlay;
 		std::stringstream tooltip_text;
 		setup_item((*item).second, item_base, item_overlay, tooltip_text);
-
 		bool is_core = non_core_items_.find(get_id((*item).second)) == non_core_items_.end();
 		if (!is_core) {
 			tooltip_text << " "
@@ -319,17 +316,6 @@ void editor_palette<Item>::layout()
 		tile.set_tooltip_string(tooltip_text.str());
 		tile.set_item_image(item_base, item_overlay);
 		tile.set_item_id(item_id);
-
-//		if (get_id((*item).second) == selected_bg_item_
-//				&& get_id((*item).second) == selected_fg_item_) {
-//			tile.set_pressed(gui::tristate_button::BOTH);
-//		} else if (get_id((*item).second) == selected_bg_item_) {
-//			tile.set_pressed(gui::tristate_button::RIGHT);
-//		} else if (get_id((*item).second) == selected_fg_item_) {
-//			tile.set_pressed(gui::tristate_button::LEFT);
-//		} else {
-//			tile.set_pressed(gui::tristate_button::NONE);
-//		}
 
 		if (is_selected_bg_item(get_id(item->second))
 				&& is_selected_fg_item(get_id(item->second))) {
