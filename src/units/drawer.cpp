@@ -155,6 +155,12 @@ unit_drawer::unit_drawer(display& thedisp)
 	}
 }
 
+bool unit_drawer::is_selected_hex(const map_location& loc) const
+{
+	const bool is_highlighted_enemy = units_that_can_reach_goal.count(loc) > 0;
+	return loc == sel_hex || is_highlighted_enemy;
+}
+
 void unit_drawer::redraw_unit(const unit& u) const
 {
 	unit_animation_component & ac = u.anim_comp();
@@ -174,15 +180,10 @@ void unit_drawer::redraw_unit(const unit& u) const
 	int experience = u.experience();
 	int max_experience = u.max_experience();
 
-	bool emit_zoc = u.emits_zoc();
-
 	color_t hp_color=u.hp_color();
 	color_t xp_color=u.xp_color();
 
-	std::string ellipse=u.image_ellipse();
-
-	const bool is_highlighted_enemy = units_that_can_reach_goal.count(loc) > 0;
-	const bool is_selected_hex = (loc == sel_hex || is_highlighted_enemy);
+	const bool is_selected_hex = this->is_selected_hex(loc);
 
 	// Override the filled area's color's alpha.
 	hp_color.a = (loc == mouse_hex || is_selected_hex) ? 255u : float_to_color(0.8);
@@ -272,50 +273,12 @@ void unit_drawer::redraw_unit(const unit& u) const
 		draw_bars = unit_rect.overlaps(disp.map_outside_area());
 	}
 
-	texture ellipse_front;
-	texture ellipse_back;
-	int ellipse_floating = 0;
 	// Always show the ellipse for selected units
 	if(draw_bars && (prefs::get().show_side_colors() || is_selected_hex)) {
-		if(adjusted_params.submerge > 0.0) {
-			// The division by 2 seems to have no real meaning,
-			// It just works fine with the current center of ellipse
-			// and prevent a too large adjust if submerge = 1.0
-			ellipse_floating = static_cast<int>(adjusted_params.submerge * hex_size_by_2);
-		}
-
-		if(ellipse.empty()){
-			ellipse="misc/ellipse";
-		}
-
-		if(ellipse != "none") {
-			// check if the unit has a ZoC or can recruit
-			const std::string nozoc    = !emit_zoc      ? "nozoc-"    : "";
-			const std::string leader   = can_recruit    ? "leader-"   : "";
-			const std::string selected = is_selected_hex? "selected-" : "";
-			const std::string tc       = team::get_side_color_id(side);
-
-			const std::string ellipse_top = formatter() << ellipse << "-" << leader << nozoc << selected << "top.png~RC(ellipse_red>" << tc << ")";
-			const std::string ellipse_bot = formatter() << ellipse << "-" << leader << nozoc << selected << "bottom.png~RC(ellipse_red>" << tc << ")";
-
-			// Load the ellipse parts recolored to match team color
-			ellipse_back = image::get_texture(image::locator(ellipse_top));
-			ellipse_front = image::get_texture(image::locator(ellipse_bot));
+		if(u.image_ellipse() != "none") {
+			draw_ellipses(u, adjusted_params);
 		}
 	}
-
-	disp.drawing_buffer_add(drawing_layer::unit_first, loc, [=, adj_y = adjusted_params.y](const rect& d) {
-		// Both front and back have the same origin
-		const point origin { d.x, d.y + adj_y - ellipse_floating };
-
-		if(ellipse_back) {
-			draw::blit(ellipse_back, display::scaled_to_zoom({origin.x, origin.y, ellipse_back.w(), ellipse_back.h()}));
-		}
-
-		if(ellipse_front) {
-			draw::blit(ellipse_front, display::scaled_to_zoom({origin.x, origin.y, ellipse_front.w(), ellipse_front.h()}));
-		}
-	});
 
 	if(draw_bars) {
 		const auto& type_cfg = u.type().get_cfg();
@@ -499,4 +462,54 @@ void unit_drawer::redraw_unit(const unit& u) const
 
 	ac.anim_->redraw(params, halo_man);
 	ac.refreshing_ = false;
+}
+
+void unit_drawer::draw_ellipses(const unit& u, const frame_parameters& params) const
+{
+	const auto calculate_y_shift = [&params, this] {
+		if(params.submerge > 0.0) {
+			// The division by 2 seems to have no real meaning,
+			// It just works fine with the current center of ellipse
+			// and prevent a too large adjust if submerge = 1.0
+			return params.y - static_cast<int>(params.submerge * hex_size_by_2);
+		} else {
+			return params.y;
+		}
+	};
+
+	auto path = formatter{};
+	if(std::string ellipse = u.image_ellipse(); !ellipse.empty()) {
+		path << ellipse;
+	} else {
+		path << "misc/ellipse";
+	}
+
+	// Build the path based on whether the unit has a ZoC can recruit
+	if(u.can_recruit())
+		path << "-leader";
+	if(!u.emits_zoc())
+		path << "-nozoc";
+	if(is_selected_hex(u.get_location()))
+		path << "-selected";
+
+	// Load the ellipse parts recolored to match team color
+	const std::string ipf = formatter{} << "~RC(ellipse_red>" << team::get_side_color_id(u.side()) << ")";
+
+	std::vector<texture> images;
+	if(auto tex = image::get_texture(image::locator{path.str() + ".png", ipf})) {
+		images.push_back(std::move(tex));
+	} else {
+		// Handle cases where addons might be using the old split ellipse images
+		images.push_back(image::get_texture(image::locator{path.str() + "-top.png", ipf}));
+		images.push_back(image::get_texture(image::locator{path.str() + "-bottom.png", ipf}));
+	}
+
+	disp.drawing_buffer_add(drawing_layer::unit_first, u.get_location(),
+		[images = std::move(images), y_shift = calculate_y_shift()](const rect& dest) {
+			for(const texture& tex : images) {
+				if(tex) {
+					draw::blit(tex, dest.shifted_by(0, y_shift));
+				}
+			}
+		});
 }
