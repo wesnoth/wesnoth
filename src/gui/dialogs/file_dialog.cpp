@@ -35,6 +35,7 @@
 #include "log.hpp"
 #include "serialization/unicode.hpp"
 
+#include <algorithm>
 #include <functional>
 
 static lg::log_domain log_filedlg{"gui/dialogs/file_dialog"};
@@ -170,14 +171,14 @@ void file_dialog::check_filename() {
 	button& save_btn = find_widget<button>(get_window(), "ok", false);
 
 	// empty filename
-	std::string filename = file_textbox.get_value();
+	const std::string& filename = file_textbox.get_value();
 	styled_widget& validation_msg = find_widget<styled_widget>(get_window(), "validation_msg", false);
 
 	bool stat_invalid = filename.empty() || (filename.substr(0,1) == ".");
 	bool wrong_ext = false;
 
 	if (stat_invalid) {
-		validation_msg.set_label("<span color='#00dcff' size='small'>please enter a filename</span>");
+		validation_msg.set_label(_("<span color='#00dcff' size='small'>please enter a filename</span>"));
 		save_btn.set_active(false);
 	} else {
 		// wrong extension check
@@ -197,7 +198,12 @@ void file_dialog::check_filename() {
 		}
 
 		if (wrong_ext) {
-			validation_msg.set_label("<span color='red' face='DejaVuSans'>✘</span><span color='red' size='small'>wrong extension, use " + utils::join(extensions_, ", ") + "</span>");
+			utils::string_map i18n_strings;
+			i18n_strings["extensions"] = utils::join(extensions_, ", ");
+			validation_msg.set_label(VGETTEXT("<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>wrong extension, use $extensions</span></span>", i18n_strings));
+			save_btn.set_active(false);
+		} else if (std::find_if(filename.begin(), filename.end(), isspace) != filename.end()) {
+			validation_msg.set_label(_("<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>whitespace is not allowed in filename</span></span>"));
 			save_btn.set_active(false);
 		} else {
 			validation_msg.set_label("");
@@ -512,6 +518,7 @@ void file_dialog::set_input_text(text_box& t, const std::string& value)
 	}
 
 	t.set_value(value);
+	check_filename();
 
 	const std::size_t vallen = t.get_length();
 	const std::size_t extlen = utf8::size(extension_);
