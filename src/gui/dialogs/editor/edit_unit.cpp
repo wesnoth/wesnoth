@@ -27,6 +27,7 @@
 #include "gui/dialogs/unit_create.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/combobox.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -54,11 +55,13 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(editor_edit_unit);
 
+// TODO properly support attributes from installed addons
 editor_edit_unit::editor_edit_unit(const game_config_view& game_config, const std::string& addon_id)
 	: modal_dialog(window_id())
 	, game_config_(game_config)
 	, addon_id_(addon_id)
 {
+	//TODO some weapon specials can have args (PLAGUE_TYPE)
 	config specials;
 
 	read(specials, *(preprocess_file(game_config::path+"/data/core/macros/weapon_specials.cfg", &specials_map_)));
@@ -82,6 +85,9 @@ void editor_edit_unit::pre_show(window& win) {
 	tab_container& tabs = find_widget<tab_container>(&win, "tabs", false);
 	connect_signal_notify_modified(tabs, std::bind(&editor_edit_unit::on_page_select, this));
 
+	button& quit = find_widget<button>(&win, "exit", false);
+	connect_signal_mouse_left_click(quit, std::bind(&editor_edit_unit::quit_confirmation, this));
+
 	//
 	// Main Stats tab
 	//
@@ -92,17 +98,18 @@ void editor_edit_unit::pre_show(window& win) {
 	for (auto& align : unit_alignments::values) {
 		// Show the user the translated strings,
 		// but use the untranslated align strings for generated WML
-		align_list_.emplace_back("label", t_string(static_cast<std::string>(align), "wesnoth"));
+		const std::string& icon_path = "icons/alignments/alignment_" + std::string(align) + "_30.png";
+		align_list_.emplace_back("label", t_string(static_cast<std::string>(align), "wesnoth"), "icon", icon_path);
 	}
 	alignments.set_values(align_list_);
 
 	menu_button& races = find_widget<menu_button>(&win, "race_list", false);
-	for(const race_map::value_type &i : unit_types.races()) {
+	for(const race_map::value_type& i : unit_types.races()) {
 		const std::string& race_name = i.second.id();
-		race_list_.emplace_back("label", race_name);
+		race_list_.emplace_back("label", race_name, "icon", i.second.get_icon_path_stem() + "_30.png");
 	}
 
-	if (race_list_.size() > 0) {
+	if (!race_list_.empty()) {
 		races.set_values(race_list_);
 	}
 
@@ -147,7 +154,7 @@ void editor_edit_unit::pre_show(window& win) {
 		movetype_list_.emplace_back("label", mt.first);
 	}
 
-	if (movetype_list_.size() > 0) {
+	if (!movetype_list_.empty()) {
 		movetypes.set_values(movetype_list_);
 	}
 
@@ -160,13 +167,10 @@ void editor_edit_unit::pre_show(window& win) {
 		defense_list_.emplace_back("label", attribute.first);
 	}
 
-	if (defense_list_.size() > 0) {
+	menu_button& movement_costs = find_widget<menu_button>(&win, "movement_costs_list", false);
+	if (!defense_list_.empty()) {
 		defenses.set_values(defense_list_);
 		def_toggles_.resize(defense_list_.size());
-	}
-
-	menu_button& movement_costs = find_widget<menu_button>(&win, "movement_costs_list", false);
-	if (defense_list_.size() > 0) {
 		movement_costs.set_values(defense_list_);
 		move_toggles_.resize(defense_list_.size());
 	}
@@ -178,10 +182,10 @@ void editor_edit_unit::pre_show(window& win) {
 				.mandatory_child("movetype")
 				.mandatory_child("resistance");
 	for (const auto& attribute : resistances_attr.attribute_range()) {
-		resistances_list_.emplace_back("label", attribute.first);
+		resistances_list_.emplace_back("label", attribute.first, "icon", "icons/profiles/" + attribute.first + ".png");
 	}
 
-	if (resistances_list_.size() > 0) {
+	if (!resistances_list_.empty()) {
 		resistances.set_values(resistances_list_);
 		res_toggles_.resize(resistances_list_.size());
 	}
@@ -254,12 +258,8 @@ void editor_edit_unit::pre_show(window& win) {
 	tabs.select_tab(2);
 	multimenu_button& specials = find_widget<multimenu_button>(&win, "weapon_specials_list", false);
 	specials.set_values(specials_list_);
-	group<std::string> range_group;
-	range_group.add_member(find_widget<toggle_button>(&win, "range_melee", false, true), "melee");
-	range_group.add_member(find_widget<toggle_button>(&win, "range_ranged", false, true), "ranged");
-	range_group.set_member_states("melee");
 
-	menu_button& attack_types = find_widget<menu_button>(&win, "attack_type_list", false);
+	combobox& attack_types = find_widget<combobox>(&win, "attack_type_list", false);
 	if (resistances_list_.size() > 0) {
 		attack_types.set_values(resistances_list_);
 	}
@@ -466,14 +466,17 @@ void editor_edit_unit::load_unit_type() {
 			attacks_.push_back(std::make_pair(enabled, attack));
 		}
 
-		selected_attack_ = 1;
-		update_attacks();
+		if (!type->attacks().empty()) {
+			selected_attack_ = 1;
+			update_attacks();
+		}
+
 		update_index();
 
 		tabs.select_tab(0);
 
 		button_state_change();
-		get_window()->invalidate_layout();
+		invalidate_layout();
 	}
 }
 
@@ -666,15 +669,10 @@ void editor_edit_unit::store_attack() {
 	attack["name"] = find_widget<text_box>(get_window(), "atk_id_box", false).get_value();
 	attack["description"] = t_string(find_widget<text_box>(get_window(), "atk_name_box", false).get_value(), current_textdomain);
 	attack["icon"] = find_widget<text_box>(get_window(), "path_attack_image", false).get_value();
-	attack["type"] = find_widget<menu_button>(get_window(), "attack_type_list", false).get_value_string();
+	attack["type"] = find_widget<combobox>(get_window(), "attack_type_list", false).get_value();
 	attack["damage"] = find_widget<slider>(get_window(), "dmg_box", false).get_value();
 	attack["number"] = find_widget<slider>(get_window(), "dmg_num_box", false).get_value();
-	if (find_widget<toggle_button>(get_window(), "range_melee", false).get_value()) {
-		attack["range"] = "melee";
-	}
-	if (find_widget<toggle_button>(get_window(), "range_ranged", false).get_value()) {
-		attack["range"] = "ranged";
-	}
+	attack["range"] = find_widget<combobox>(get_window(), "range_list", false).get_value();
 
 	attacks_.at(selected_attack_-1).first = find_widget<multimenu_button>(get_window(), "weapon_specials_list", false).get_toggle_states();
 
@@ -683,6 +681,10 @@ void editor_edit_unit::store_attack() {
 
 void editor_edit_unit::update_attacks() {
 	//Load data
+	if (selected_attack_ < 1) {
+		return;
+	}
+
 	config& attack = attacks_.at(selected_attack_-1).second;
 
 	tab_container& tabs = find_widget<tab_container>(get_window(), "tabs", false);
@@ -695,20 +697,12 @@ void editor_edit_unit::update_attacks() {
 	update_image("attack_image");
 	find_widget<slider>(get_window(), "dmg_box", false).set_value(attack["damage"]);
 	find_widget<slider>(get_window(), "dmg_num_box", false).set_value(attack["number"]);
-
-	if (attack["range"] == "melee") {
-		find_widget<toggle_button>(get_window(), "range_melee", false).set_value(true);
-		find_widget<toggle_button>(get_window(), "range_ranged", false).set_value(false);
-	}
-	if (attack["range"] == "ranged") {
-		find_widget<toggle_button>(get_window(), "range_melee", false).set_value(false);
-		find_widget<toggle_button>(get_window(), "range_ranged", false).set_value(true);
-	}
+	find_widget<combobox>(get_window(), "range_list", false).set_value(attack["range"]);
 
 	set_selected_from_string(
-			find_widget<menu_button>(get_window(), "attack_type_list", false),
-			resistances_list_,
-			attack["type"]);
+		find_widget<combobox>(get_window(), "attack_type_list", false),
+		resistances_list_,
+		attack["type"]);
 
 	find_widget<multimenu_button>(get_window(), "weapon_specials_list", false)
 		.select_options(attacks_.at(selected_attack_-1).first);
@@ -721,25 +715,11 @@ void editor_edit_unit::update_index() {
 	int prev_tab = tabs.get_active_tab_index();
 	tabs.select_tab(2);
 
-	if (selected_attack_ <= 1) {
-		find_widget<button>(get_window(), "atk_prev", false).set_active(false);
-	} else {
-		find_widget<button>(get_window(), "atk_prev", false).set_active(true);
-	}
+	find_widget<button>(get_window(), "atk_prev", false).set_active(selected_attack_ > 1);
+	find_widget<button>(get_window(), "atk_delete", false).set_active(selected_attack_ > 0);
+	find_widget<button>(get_window(), "atk_next", false).set_active(selected_attack_ != attacks_.size());
 
-	if (selected_attack_ > 0) {
-		find_widget<button>(get_window(), "atk_delete", false).set_active(true);
-	} else {
-		find_widget<button>(get_window(), "atk_delete", false).set_active(false);
-	}
-
-	if (selected_attack_ == attacks_.size()) {
-		find_widget<button>(get_window(), "atk_next", false).set_active(false);
-	} else {
-		find_widget<button>(get_window(), "atk_next", false).set_active(true);
-	}
-
-	if (attacks_.size() > 0) {
+	if (!attacks_.empty()) {
 		std::vector<config> atk_name_list;
 		for(const auto& atk_data : attacks_) {
 			atk_name_list.emplace_back("label", atk_data.second["name"]);
@@ -769,22 +749,16 @@ void editor_edit_unit::add_attack() {
 	attack["name"] = find_widget<text_box>(get_window(), "atk_id_box", false).get_value();
 	attack["description"] = t_string(find_widget<text_box>(get_window(), "atk_name_box", false).get_value(), current_textdomain);
 	attack["icon"] = find_widget<text_box>(get_window(), "path_attack_image", false).get_value();
-	attack["type"] = find_widget<menu_button>(get_window(), "attack_type_list", false).get_value_string();
+	attack["type"] = find_widget<combobox>(get_window(), "attack_type_list", false).get_value();
 	attack["damage"] = find_widget<slider>(get_window(), "dmg_box", false).get_value();
 	attack["number"] = find_widget<slider>(get_window(), "dmg_num_box", false).get_value();
-	if (find_widget<toggle_button>(get_window(), "range_melee", false).get_value()) {
-		attack["range"] = "melee";
-	}
-	if (find_widget<toggle_button>(get_window(), "range_ranged", false).get_value()) {
-		attack["range"] = "ranged";
-	}
+	attack["range"] = find_widget<combobox>(get_window(), "range_list", false).get_value();
 
 	selected_attack_++;
 
-	attacks_.insert(attacks_.begin() + selected_attack_ - 1
-			, std::make_pair(
-					find_widget<multimenu_button>(get_window(), "weapon_specials_list", false).get_toggle_states()
-					, attack));
+	attacks_.insert(
+		attacks_.begin() + selected_attack_ - 1
+		, std::make_pair(find_widget<multimenu_button>(get_window(), "weapon_specials_list", false).get_toggle_states(), attack));
 
 	update_index();
 
@@ -797,23 +771,20 @@ void editor_edit_unit::delete_attack() {
 	tabs.select_tab(2);
 
 	//remove attack
-	if (attacks_.size() > 0) {
+	if (!attacks_.empty()) {
 		attacks_.erase(attacks_.begin() + selected_attack_ - 1);
 	}
 
-	if (attacks_.size() == 0) {
+	if (attacks_.empty()) {
 		// clear fields instead since there are no attacks to show
 		selected_attack_ = 0;
 		find_widget<button>(get_window(), "atk_delete", false).set_active(false);
-		update_index();
+	} else if (selected_attack_ == 1) {
+		// 1st attack removed, show the next one
+		next_attack();
 	} else {
-		if (selected_attack_ == 1) {
-			// 1st attack removed, show the next one
-			next_attack();
-		} else {
-			// show previous attack otherwise
-			prev_attack();
-		}
+		// show previous attack otherwise
+		prev_attack();
 	}
 
 	update_index();
@@ -1035,8 +1006,8 @@ void editor_edit_unit::update_image(const std::string& id_stem) {
 		find_widget<image>(get_window(), id_stem, false).set_label(rel_path);
 	}
 
-	get_window()->invalidate_layout();
-	get_window()->queue_redraw();
+	invalidate_layout();
+	queue_redraw();
 }
 
 bool editor_edit_unit::check_id(std::string id) {
@@ -1055,17 +1026,17 @@ void editor_edit_unit::button_state_change() {
 	std::string id = find_widget<text_box>(tabs.get_tab_grid(0), "id_box", false).get_value();
 	std::string name = find_widget<text_box>(tabs.get_tab_grid(0), "name_box", false).get_value();
 
-	if (
-		id.empty()
-		|| name.empty()
-		|| !check_id(id)
-	) {
-		find_widget<button>(get_window(), "ok", false).set_active(false);
-	} else {
-		find_widget<button>(get_window(), "ok", false).set_active(true);
-	}
+	find_widget<button>(get_window(), "ok", false).set_active(!id.empty() && !name.empty() && check_id(id));
 
-	get_window()->queue_redraw();
+	queue_redraw();
+}
+
+void editor_edit_unit::quit_confirmation() {
+	const std::string& message
+		= _("Unsaved changes will be lost. Do you want to leave?");
+	if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK) {
+		set_retval(gui2::retval::CANCEL);
+	}
 }
 
 void editor_edit_unit::write() {
