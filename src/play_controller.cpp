@@ -1065,11 +1065,6 @@ game_events::wml_event_pump& play_controller::pump()
 	return gamestate().events_manager_->pump();
 }
 
-int play_controller::get_ticks() const
-{
-	return ticks_;
-}
-
 soundsource::manager* play_controller::get_soundsource_man()
 {
 	return soundsources_manager_.get();
