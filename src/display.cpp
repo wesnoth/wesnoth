@@ -2848,7 +2848,7 @@ void display::draw_overlays_at(const map_location& loc)
 
 		drawing_buffer_add(
 			drawing_layer::terrain_bg, loc, [this, tex, ter_sub, ovr_sub = ov.submerge](const rect& dest) mutable {
-				if(ovr_sub > 0.0) {
+				if(ovr_sub > 0.0 && ter_sub > 0.0) {
 					// Adjust submerge appropriately
 					double submerge = ter_sub * ovr_sub;
 
