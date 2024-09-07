@@ -202,22 +202,6 @@ int intf_distance_between(lua_State* L)
 }
 
 /**
- * Expose map_location get_in_basis_N_NE
- */
-int intf_get_in_basis_N_NE(lua_State* L)
-{
-	map_location l1;
-	if(!luaW_tolocation(L, 1, l1)) {
-		return luaL_argerror(L, 1, "expected a location");
-	}
-
-	std::pair<int, int> r = l1.get_in_basis_N_NE();
-	lua_pushinteger(L, r.first);
-	lua_pushinteger(L, r.second);
-	return 2;
-}
-
-/**
  * Expose map_location get_relative_dir
  * - Args 1, 2: Two locations
  * - Ret: The direction of location 2 from location 1
