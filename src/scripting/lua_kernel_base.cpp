@@ -881,7 +881,6 @@ lua_kernel_base::lua_kernel_base()
 		{ "get_adjacent_hexes",		&lua_map_location::intf_get_adjacent_tiles		},
 		{ "get_hexes_in_radius",		&lua_map_location::intf_get_tiles_in_radius		},
 		{ "distance_between",		&lua_map_location::intf_distance_between		},
-		{ "get_in_basis_N_NE",		&lua_map_location::intf_get_in_basis_N_NE		},
 		{ "get_relative_dir",		&lua_map_location::intf_get_relative_dir		},
 		// Shroud bitmaps
 		{"parse_bitmap", intf_parse_shroud_bitmap},
