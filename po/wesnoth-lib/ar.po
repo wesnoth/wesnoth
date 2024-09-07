@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-05-25 21:28-0500\n"
-"PO-Revision-Date: 2024-04-03 11:54+0100\n"
+"PO-Revision-Date: 2024-09-06 01:06+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
@@ -2962,45 +2962,43 @@ msgstr "انسخ هذا السجل إلى الحافظة"
 #. Within the “Community” dialog, this chooses a tab with links to various Wesnoth websites.
 #: data/gui/window/community_dialog.cfg:42 data/gui/window/title_screen.cfg:262
 msgid "Community"
-msgstr ""
+msgstr "مجتمع"
 
 #. [button]: id=forums
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/window/community_dialog.cfg:63
-#, fuzzy
-#| msgid "Forum URL"
 msgid "Forums"
-msgstr "رابط المنتدى"
+msgstr "المنتدى"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/window/community_dialog.cfg:82
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/window/community_dialog.cfg:101
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/window/community_dialog.cfg:120
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/window/community_dialog.cfg:139
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/window/community_dialog.cfg:158
 msgid "Donate"
-msgstr ""
+msgstr "تبرع"
 
 #. [label]
 #: data/gui/window/core_dialog.cfg:44
@@ -4143,10 +4141,8 @@ msgstr ""
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
 #: data/gui/window/game_version.cfg:635
-#, fuzzy
-#| msgid "Crater"
 msgid "Migrate"
-msgstr "حفرة"
+msgstr "ترحيل"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
@@ -4243,6 +4239,8 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
+"تعتمد <i>ملحمة ويسنوث </i>على المتطوعين في التطوير، بما في ذلك الترجمة. وقد "
+"تتأخر الترجمات أو حتى يتم التخلي عنها."
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4253,6 +4251,9 @@ msgid ""
 "interface and in-game help only. More complete stats, including details for "
 "each campaign, are available at the following page:"
 msgstr ""
+"<b>ملاحظة:</b> تنطبق نسب الترجمة المعروضة على واجهة اللعبة الأساسية "
+"والمساعدة داخل اللعبة فقط. تتوفر إحصائيات أكثر اكتمالاً، بما في ذلك تفاصيل كل "
+"حملة، في الصفحة التالية:"
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4262,11 +4263,13 @@ msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
+"إذا كنت مهتمًا بترجمة اللعبة بنفسك، فيرجى اتباع الرابط أدناه للحصول على مزيد "
+"من المعلومات:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/language_selection.cfg:276
 msgid "Show in-progress or abandoned translations"
-msgstr ""
+msgstr "إظهار الترجمات الجارية أو المهجورة"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:183
@@ -6161,10 +6164,8 @@ msgstr "عرض الإنجازات"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:262
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "Places to talk about Wesnoth"
-msgstr "ملحمة ويسنوث"
+msgstr "أماكن للحديث عن ويسنوث"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:263
