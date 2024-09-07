@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-08-18 23:11-0500\n"
-"PO-Revision-Date: 2024-04-03 11:54+0100\n"
+"PO-Revision-Date: 2024-09-06 01:06+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
@@ -4499,10 +4499,8 @@ msgstr ""
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
 #: data/gui/themes/default/window/game_version.cfg:335
-#, fuzzy
-#| msgid "Crater"
 msgid "Migrate"
-msgstr "حفرة"
+msgstr "ترحيل"
 
 #. [grid]
 #: data/gui/themes/default/window/game_version.cfg:372
@@ -4576,40 +4574,38 @@ msgstr "تم اختيار الميزات التالية عند إنشاء هذا
 #. [button]: id=forums
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/themes/default/window/game_version.cfg:633
-#, fuzzy
-#| msgid "Forum URL"
 msgid "Forums"
-msgstr "رابط المنتدى"
+msgstr "المنتدى"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/themes/default/window/game_version.cfg:652
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/themes/default/window/game_version.cfg:671
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/themes/default/window/game_version.cfg:690
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/themes/default/window/game_version.cfg:709
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/themes/default/window/game_version.cfg:728
 msgid "Donate"
-msgstr ""
+msgstr "تبرع"
 
 #. [label]: id=description
 #: data/gui/themes/default/window/game_version.cfg:824
@@ -4650,7 +4646,7 @@ msgstr "الميزات"
 #: data/gui/themes/default/window/title_screen.cfg:262
 #: data/gui/themes/modern/dialogs/title_screen.cfg:262
 msgid "Community"
-msgstr ""
+msgstr "مجتمع"
 
 #. [button]: id=credits
 #: data/gui/themes/default/window/game_version.cfg:937
@@ -4757,6 +4753,8 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
+"تعتمد <i>ملحمة ويسنوث </i>على المتطوعين في التطوير، بما في ذلك الترجمة. وقد "
+"تتأخر الترجمات أو حتى يتم التخلي عنها."
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4767,6 +4765,9 @@ msgid ""
 "interface and in-game help only. More complete stats, including details for "
 "each campaign, are available at the following page:"
 msgstr ""
+"<b>ملاحظة:</b> تنطبق نسب الترجمة المعروضة على واجهة اللعبة الأساسية "
+"والمساعدة داخل اللعبة فقط. تتوفر إحصائيات أكثر اكتمالاً، بما في ذلك تفاصيل كل "
+"حملة، في الصفحة التالية:"
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4776,11 +4777,13 @@ msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
+"إذا كنت مهتمًا بترجمة اللعبة بنفسك، فيرجى اتباع الرابط أدناه للحصول على مزيد "
+"من المعلومات:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/themes/default/window/language_selection.cfg:276
 msgid "Show in-progress or abandoned translations"
-msgstr ""
+msgstr "إظهار الترجمات الجارية أو المهجورة"
 
 #. [label]: id=status
 #: data/gui/themes/default/window/loadscreen.cfg:183
@@ -6719,10 +6722,8 @@ msgstr "بدء تشغيل محرر الخرائط"
 #. [grid]
 #: data/gui/themes/default/window/title_screen.cfg:262
 #: data/gui/themes/modern/dialogs/title_screen.cfg:262
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "Places to talk about Wesnoth"
-msgstr "ملحمة ويسنوث"
+msgstr "أماكن للحديث عن ويسنوث"
 
 #. [grid]
 #: data/gui/themes/default/window/title_screen.cfg:263
@@ -9478,58 +9479,6 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "لم يحدد المفتاح الإجباري '$key|' في الفقرة '[$section|]'."
 
-#~ msgid "<b>Faction:</b>"
-#~ msgstr "<b>الفصيل:</b>"
-
-#~ msgid "<b>Gender:</b>"
-#~ msgstr "<b>الجنس:</b>"
-
-#, fuzzy
-#~| msgid "page^Copy"
-#~ msgid "page^✔ Copied"
-#~ msgstr "نسخ"
-
-#, fuzzy
-#~| msgid "Status"
-#~ msgid "Stats"
-#~ msgstr "الحالة"
-
-#~ msgid "Configuration:"
-#~ msgstr "التكوين:"
-
-#~ msgid "filesystem_path_game^User preferences"
-#~ msgstr "تفضيلات المستخدم"
-
-#~ msgid "--userdata-dir=<relative path that doesn't start with a period>"
-#~ msgstr "--userdata-dir=<المسار النسبي الذي لا يبدأ بمسافة>"
-
-#~ msgid ""
-#~ "Use an absolute path, or a relative path that starts with a period and a "
-#~ "backslash"
-#~ msgstr "استخدم مسارًا مطلقًا، أو مسارًا نسبيًا يبدأ بنقطة وشرطة مائلة عكسية"
-
-#~ msgid "--userdata-dir=<relative path>"
-#~ msgstr "--userdata-dir=<المسار النسبي>"
-
-#~ msgid ""
-#~ "Use absolute paths. Relative paths are deprecated because they are "
-#~ "interpreted relative to $HOME"
-#~ msgstr ""
-#~ "استخدم المسارات المطلقة. تم إهمال المسارات النسبية لأنه يتم تفسيرها نسبة "
-#~ "إلى $HOME"
-
-#~ msgid "Load Map"
-#~ msgstr "تحميل خريطة"
-
-#~ msgid "Copy the full report to clipboard"
-#~ msgstr "انسخ التقرير الكامل إلى الحافظة"
-
-#~ msgid "View the credits"
-#~ msgstr "عرض الاعتمادات"
-
-#~ msgid "Running on $os"
-#~ msgstr "يعمل على $os"
-
 #~ msgid "Rocky Sands"
 #~ msgstr "رمال صخرية"
 
@@ -9553,6 +9502,48 @@ msgstr "لم يحدد المفتاح الإجباري '$key|' في الفقرة 
 
 #~ msgid "Add-on ID"
 #~ msgstr "معرف الإضافة"
+
+#~ msgid "Configuration:"
+#~ msgstr "التكوين:"
+
+#~ msgid "Copy the full report to clipboard"
+#~ msgstr "انسخ التقرير الكامل إلى الحافظة"
+
+#~ msgid "<b>Faction:</b>"
+#~ msgstr "<b>الفصيل:</b>"
+
+#~ msgid "<b>Gender:</b>"
+#~ msgstr "<b>الجنس:</b>"
+
+#~ msgid "View the credits"
+#~ msgstr "عرض الاعتمادات"
+
+#~ msgid "filesystem_path_game^User preferences"
+#~ msgstr "تفضيلات المستخدم"
+
+#~ msgid "--userdata-dir=<relative path that doesn't start with a period>"
+#~ msgstr "--userdata-dir=<المسار النسبي الذي لا يبدأ بمسافة>"
+
+#~ msgid ""
+#~ "Use an absolute path, or a relative path that starts with a period and a "
+#~ "backslash"
+#~ msgstr "استخدم مسارًا مطلقًا، أو مسارًا نسبيًا يبدأ بنقطة وشرطة مائلة عكسية"
+
+#~ msgid "--userdata-dir=<relative path>"
+#~ msgstr "--userdata-dir=<المسار النسبي>"
+
+#~ msgid ""
+#~ "Use absolute paths. Relative paths are deprecated because they are "
+#~ "interpreted relative to $HOME"
+#~ msgstr ""
+#~ "استخدم المسارات المطلقة. تم إهمال المسارات النسبية لأنه يتم تفسيرها نسبة "
+#~ "إلى $HOME"
+
+#~ msgid "Running on $os"
+#~ msgstr "يعمل على $os"
+
+#~ msgid "Load Map"
+#~ msgstr "تحميل خريطة"
 
 #~ msgid "Choose your preferred language:"
 #~ msgstr "اختر لغتك المفضلة:"
