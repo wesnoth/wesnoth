@@ -71,7 +71,7 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 	, w_(0)
 	, h_(0)
 	, x_(0)
-	, padding_(0)
+	, padding_(4)
 	, txt_height_(0)
 	, prev_blk_height_(0)
 {
@@ -131,6 +131,7 @@ void rich_label::add_text_with_attributes(config& curr_item, std::string text, s
 }
 
 void rich_label::add_image(config& curr_item, std::string name, std::string align, bool has_prev_image, bool is_prev_float, bool floating, point& img_size, point& float_size) {
+	// TODO: still doesn't cover the case where consecutive inline images have different heights
 	curr_item["name"] = name;
 
 	if (align.empty()) {
@@ -154,14 +155,13 @@ void rich_label::add_image(config& curr_item, std::string name, std::string alig
 	point curr_img_size = get_image_size(curr_item);
 	if (floating) {
 		float_size.x = curr_img_size.x + padding_;
-		float_size.y += curr_img_size.y + padding_;
+		float_size.y += curr_img_size.y;
 	} else {
 		img_size.x += curr_img_size.x + padding_;
 		img_size.y = std::max(img_size.y, curr_img_size.y);
-		// FIXME: still doesn't cover the case where consecutive inline images have different heights
 		if (!has_prev_image || (has_prev_image && is_prev_float)) {
-			prev_blk_height_ += curr_img_size.y + padding_;
-			float_size.y -= curr_img_size.y + padding_;
+			prev_blk_height_ += curr_img_size.y;
+			float_size.y -= curr_img_size.y;
 		}
 	}
 
@@ -322,7 +322,8 @@ config rich_label::get_parsed_text(const config& parsed_text)
 		config& child = tag.cfg;
 
 		if(tag.key == "img") {
-			prev_blk_height_ += txt_height_ + padding_;
+			// update prev text block heights
+			prev_blk_height_ += txt_height_;
 			txt_height_ = 0;
 
 			std::string name = child["src"];
@@ -333,12 +334,12 @@ config rich_label::get_parsed_text(const config& parsed_text)
 				// do nothing, keep float on
 				wrap_mode = true;
 			} else {
-				// is current img floating
+				// is current img floating?
 				if(is_curr_float) {
 					wrap_mode = true;
 				}
 			}
-			DBG_GUI_RL << "wrap mode: " << wrap_mode << ",floating: " << is_float;
+			DBG_GUI_RL << "wrap mode: " << wrap_mode << ", floating: " << is_float;
 
 			curr_item = &(text_dom.add_child("image"));
 			add_image(*curr_item, name, align, is_image, is_float, is_curr_float, img_size, float_size);
@@ -444,6 +445,7 @@ config rich_label::get_parsed_text(const config& parsed_text)
 			} else {
 				// TODO correct height update
 				if (is_image && !is_float) {
+					prev_blk_height_ += padding_;
 					(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
 				} else {
 					add_text_with_attribute(*curr_item, "\n");
@@ -482,17 +484,18 @@ config rich_label::get_parsed_text(const config& parsed_text)
 			if (is_image && (!is_float)) {
 				if (line.size() > 0 && line.at(0) == '\n') {
 					x_ = 0;
+					prev_blk_height_ += padding_;
 					(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
 					line = line.substr(1);
 				} else {
-					prev_blk_height_ -= img_size.y + padding_;
+					prev_blk_height_ -= img_size.y;
 				}
 			}
 
 			if (curr_item == nullptr || new_text_block) {
-				if (!in_table) {
+				if (!in_table && curr_item != nullptr) {
 					// table will calculate this by itself, no need to calculate here
-					prev_blk_height_ += txt_height_ + padding_;
+					prev_blk_height_ += txt_height_;
 					txt_height_ = 0;
 				}
 
@@ -905,6 +908,7 @@ std::unique_ptr<widget> builder_rich_label::build() const
 	lbl->set_link_aware(link_aware);
 	lbl->set_link_color(conf->link_color);
 	lbl->set_width(w);
+	lbl->set_label(lbl->get_label());
 
 	DBG_GUI_G << "Window builder: placed rich_label '" << id << "' with definition '"
 			  << definition << "'.";
