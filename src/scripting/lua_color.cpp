@@ -152,7 +152,7 @@ namespace lua_colors {
 	{
 		std::ostringstream cmd_out;
 
-		// Create the getunit metatable.
+		// Create the color metatable.
 		cmd_out << "Adding color metatable...\n";
 
 		luaL_newmetatable(L, colorKey);
@@ -172,7 +172,7 @@ namespace lua_colors {
 		lua_setfield(L, -2, "__metatable");
 
 
-		// Create the current variable with its metatable.
+		// Create the colors variable with its metatable.
 		cmd_out << "Adding wesnoth.colors table...\n";
 
 		lua_getglobal(L, "wesnoth");
