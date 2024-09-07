@@ -1085,40 +1085,23 @@ const std::string& unit::flag_rgb() const
 
 static color_t hp_color_impl(int hitpoints, int max_hitpoints)
 {
-	double unit_energy = 0.0;
-	color_t energy_color {0,0,0,255};
-
-	if(max_hitpoints > 0) {
-		unit_energy = static_cast<double>(hitpoints)/static_cast<double>(max_hitpoints);
-	}
+	const double unit_energy = max_hitpoints > 0
+		? static_cast<double>(hitpoints) / max_hitpoints
+		: 0.0;
 
 	if(1.0 == unit_energy) {
-		energy_color.r = 33;
-		energy_color.g = 225;
-		energy_color.b = 0;
+		return {33, 225, 0};
 	} else if(unit_energy > 1.0) {
-		energy_color.r = 100;
-		energy_color.g = 255;
-		energy_color.b = 100;
+		return {100, 255, 100};
 	} else if(unit_energy >= 0.75) {
-		energy_color.r = 170;
-		energy_color.g = 255;
-		energy_color.b = 0;
+		return {170, 255, 0};
 	} else if(unit_energy >= 0.5) {
-		energy_color.r = 255;
-		energy_color.g = 175;
-		energy_color.b = 0;
+		return {255, 175, 0};
 	} else if(unit_energy >= 0.25) {
-		energy_color.r = 255;
-		energy_color.g = 155;
-		energy_color.b = 0;
+		return {255, 155, 0};
 	} else {
-		energy_color.r = 255;
-		energy_color.g = 0;
-		energy_color.b = 0;
+		return {255, 0, 0};
 	}
-
-	return energy_color;
 }
 
 color_t unit::hp_color() const
@@ -1138,41 +1121,31 @@ color_t unit::hp_color_max()
 
 color_t unit::xp_color(int xp_to_advance, bool can_advance, bool has_amla)
 {
-	const color_t near_advance_color {255,255,255,255};
-	const color_t mid_advance_color  {150,255,255,255};
-	const color_t far_advance_color  {0,205,205,255};
-	const color_t normal_color       {0,160,225,255};
-	const color_t near_amla_color    {225,0,255,255};
-	const color_t mid_amla_color     {169,30,255,255};
-	const color_t far_amla_color     {139,0,237,255};
-	const color_t amla_color         {170,0,255,255};
+	const bool near_advance = xp_to_advance <= game_config::kill_experience;
+	const bool mid_advance  = xp_to_advance <= game_config::kill_experience * 2;
+	const bool far_advance  = xp_to_advance <= game_config::kill_experience * 3;
 
-	const bool near_advance = static_cast<int>(xp_to_advance) <= game_config::kill_experience;
-	const bool mid_advance  = static_cast<int>(xp_to_advance) <= game_config::kill_experience*2;
-	const bool far_advance  = static_cast<int>(xp_to_advance) <= game_config::kill_experience*3;
-
-	color_t color = normal_color;
-	if(can_advance){
-		if(near_advance){
-			color=near_advance_color;
-		} else if(mid_advance){
-			color=mid_advance_color;
-		} else if(far_advance){
-			color=far_advance_color;
+	if(can_advance) {
+		if(near_advance) {
+			return {255, 255, 255};
+		} else if(mid_advance) {
+			return {150, 255, 255};
+		} else if(far_advance) {
+			return {0, 205, 205};
 		}
-	} else if(has_amla){
-		if(near_advance){
-			color=near_amla_color;
-		} else if(mid_advance){
-			color=mid_amla_color;
-		} else if(far_advance){
-			color=far_amla_color;
+	} else if(has_amla) {
+		if(near_advance) {
+			return {225, 0, 255};
+		} else if(mid_advance) {
+			return {169, 30, 255};
+		} else if(far_advance) {
+			return {139, 0, 237};
 		} else {
-			color=amla_color;
+			return {170, 0, 255};
 		}
 	}
 
-	return(color);
+	return {0, 160, 225};
 }
 
 color_t unit::xp_color() const
