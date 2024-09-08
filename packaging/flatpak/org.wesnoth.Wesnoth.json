@@ -34,12 +34,12 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.67.0/source/boost_1_67_0.tar.bz2",
-                    "sha256": "2684c972994ee57fc5632e03bf044746f6eb45d4920c343937a465fd67a5adba"
+                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.82.0/source/boost_1_82_0.tar.bz2",
+                    "sha256": "a6e1ab9b0860e6a2881dd7b21fe9f737a095e5f33a3a874afc6a345228597ee6"
                 }
             ],
             "build-commands": [
-                "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread,coroutine,context,graph",
+                "./bootstrap.sh --prefix=/app --with-libraries=system,filesystem,locale,iostreams,program_options,regex,random,thread,coroutine,context,graph",
                 "./b2 -j$FLATPAK_BUILDER_N_JOBS install cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 link=static variant=release address-model=64 --layout=system"
             ]
         },
