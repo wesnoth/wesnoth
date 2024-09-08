@@ -76,7 +76,7 @@ endif()
 
 # set what std version to use
 if(NOT CXX_STD)
-	set(CXX_STD "23")
+	set(CXX_STD "17")
 endif()
 set(CMAKE_CXX_STANDARD ${CXX_STD})
 # make sure to force using it
