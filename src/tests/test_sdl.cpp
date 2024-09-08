@@ -16,7 +16,6 @@
 
 #include "sdl/surface.hpp"
 #include "sdl/utils.hpp"
-#include "utils/span.hpp"
 
 #include <algorithm>
 #include <array>
@@ -62,6 +61,16 @@ surface array_to_surface(const std::array<uint32_t, w * h>& arr)
 	return surf;
 }
 
+static std::vector<uint32_t> surface_to_vec(const surface& surf)
+{
+	const_surface_lock lock{surf};
+	const uint32_t* const pixels = lock.pixels();
+	std::vector<uint32_t> pixel_vec;
+	const int surf_size = surf->w * surf->h;
+	std::copy(pixels, pixels + surf_size, std::back_inserter(pixel_vec));
+	return pixel_vec;
+}
+
 BOOST_AUTO_TEST_SUITE(sdl)
 
 BOOST_AUTO_TEST_CASE(test_scale_sharp_nullptr)
@@ -82,8 +91,7 @@ BOOST_AUTO_TEST_CASE(test_scale_sharp_round)
 {
 	surface src = array_to_surface<4, 4>(img_4x4);
 	surface result = scale_surface_sharp(src, 2, 2);
-	const_surface_lock lock{result};
-	auto result_pixels = utils::span(lock.pixels(), result.area());
+	std::vector<uint32_t> result_pixels = surface_to_vec(result);
 	BOOST_CHECK_EQUAL_COLLECTIONS(
 		result_pixels.begin(), result_pixels.end(), img_4x4_to_2x2_result.begin(), img_4x4_to_2x2_result.end());
 }
@@ -92,8 +100,7 @@ BOOST_AUTO_TEST_CASE(test_scale_sharp_fractional)
 {
 	surface src = array_to_surface<4, 4>(img_4x4);
 	surface result = scale_surface_sharp(src, 3, 2);
-	const_surface_lock lock{result};
-	auto result_pixels = utils::span(lock.pixels(), result.area());
+	std::vector<uint32_t> result_pixels = surface_to_vec(result);
 	BOOST_CHECK_EQUAL_COLLECTIONS(
 		result_pixels.begin(), result_pixels.end(), img_4x4_to_3x2_result.begin(), img_4x4_to_3x2_result.end());
 }
