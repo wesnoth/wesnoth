@@ -720,7 +720,17 @@ void luaW_push_namedtuple(lua_State* L, const std::vector<std::string>& names)
 		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, callbacks, 0);
-	lua_pushliteral(L, "named tuple");
+	static const char baseName[] = "named tuple";
+	std::ostringstream str;
+	str << baseName << '(';
+	if(!names.empty()) {
+		str << names[0];
+	}
+	for(size_t i = 1; i < names.size(); i++) {
+		str << ", " << names[i];
+	}
+	str << ')';
+	lua_push(L, str.str());
 	lua_setfield(L, -2, "__metatable");
 	lua_push(L, names);
 	lua_setfield(L, -2, "__names");
