@@ -8,7 +8,7 @@ later, or a version of Clang with equivalent support.
 You'll need to have these libraries and their development headers installed in
 order to build Wesnoth:
 
- * Boost libraries             >= 1.66.0
+ * Boost libraries             >= 1.82.0
      Most headers plus the following binary libs:
    * Filesystem
    * Locale

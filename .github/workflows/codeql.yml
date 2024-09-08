@@ -51,10 +51,10 @@ jobs:
       if: matrix.language == 'cpp'
       run: |
         sudo apt update
-        sudo apt install scons libboost-system1.74-dev libboost-filesystem1.74-dev libboost-iostreams1.74-dev \
-          libboost-serialization1.74-dev libboost-locale1.74-dev libboost-regex1.74-dev libboost-random1.74-dev \
-          libboost-program-options1.74-dev libboost-thread1.74-dev libboost-context1.74-dev libboost-test-dev \
-          libboost-coroutine1.74-dev libboost-graph1.74-dev libasio-dev libsdl2-dev libsdl2-image-dev \
+        sudo apt install scons libboost-system1.82-dev libboost-filesystem1.82-dev libboost-iostreams1.82-dev \
+          libboost-serialization1.82-dev libboost-locale1.82-dev libboost-regex1.82-dev libboost-random1.82-dev \
+          libboost-program-options1.82-dev libboost-thread1.82-dev libboost-context1.82-dev libboost-test-dev \
+          libboost-coroutine1.82-dev libboost-graph1.82-dev libasio-dev libsdl2-dev libsdl2-image-dev \
           libsdl2-mixer-dev libvorbis-dev libpango1.0-dev libssl-dev libcurl4-openssl-dev liblua5.4-dev
     # Autobuild attempts to build any compiled languages (C/C++, C#, Go, Java, or Swift).
     - name: Autobuild
