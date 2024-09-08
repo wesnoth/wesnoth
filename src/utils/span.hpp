@@ -22,8 +22,8 @@
 namespace utils
 {
 #ifdef __cpp_lib_span
-using span = std::span;
+using std::span;
 #else
-using span = boost::span;
+using boost::span;
 #endif
 } // end namespace utils
