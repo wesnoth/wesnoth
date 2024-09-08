@@ -21,22 +21,15 @@
 
 #include "color_range.hpp"
 
+#include "utils/span.hpp"
+
 #include <array>
 #include <cassert>
 #include <sstream>
 
-#ifdef __cpp_lib_span
-#include <span>
-#endif
-
 namespace
 {
-#ifdef __cpp_lib_span
-std::vector<color_t> recolor_range_impl(const color_range& new_range, std::span<const color_t> old_rgb)
-#else
-template<typename Container>
-std::vector<color_t> recolor_range_impl(const color_range& new_range, const Container& old_rgb)
-#endif
+std::vector<color_t> recolor_range_impl(const color_range& new_range, utils::span<const color_t> old_rgb)
 {
 	std::vector<color_t> clist;
 	clist.reserve(old_rgb.size());
