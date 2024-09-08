@@ -873,14 +873,17 @@ lua_kernel_base::lua_kernel_base()
 
 	static luaL_Reg const map_callbacks[] {
 		{ "get_direction",		&lua_map_location::intf_get_direction         		},
-		{ "vector_sum",			&lua_map_location::intf_vector_sum			},
-		{ "vector_diff",			&lua_map_location::intf_vector_diff			},
-		{ "vector_negation",		&lua_map_location::intf_vector_negation			},
+		{ "hex_vector_sum",			&lua_map_location::intf_vector_sum			},
+		{ "hex_vector_diff",			&lua_map_location::intf_vector_diff			},
+		{ "hex_vector_negation",		&lua_map_location::intf_vector_negation			},
 		{ "rotate_right_around_center",	&lua_map_location::intf_rotate_right_around_center	},
 		{ "are_hexes_adjacent",		&lua_map_location::intf_tiles_adjacent			},
 		{ "get_adjacent_hexes",		&lua_map_location::intf_get_adjacent_tiles		},
 		{ "get_hexes_in_radius",		&lua_map_location::intf_get_tiles_in_radius		},
+		{ "get_hexes_at_radius",		&lua_map_location::intf_get_tile_ring		},
 		{ "distance_between",		&lua_map_location::intf_distance_between		},
+		{ "get_cubic",		&lua_map_location::intf_get_in_cubic		},
+		{ "from_cubic",		&lua_map_location::intf_get_from_cubic		},
 		{ "get_relative_dir",		&lua_map_location::intf_get_relative_dir		},
 		// Shroud bitmaps
 		{"parse_bitmap", intf_parse_shroud_bitmap},
