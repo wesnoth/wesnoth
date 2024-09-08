@@ -1010,4 +1010,27 @@ variant event_callable::get_value(const std::string &key) const
 	return variant();
 }
 
+void color_callable::get_inputs(formula_input_vector& inputs) const
+{
+	add_input(inputs, "red");
+	add_input(inputs, "green");
+	add_input(inputs, "blue");
+	add_input(inputs, "alpha");
+}
+
+variant color_callable::get_value(const std::string& key) const
+{
+	if(key == "red") {
+		return variant(clr_.r);
+	} else if(key == "green") {
+		return variant(clr_.g);
+	} else if(key == "blue") {
+		return variant(clr_.b);
+	} else if(key == "alpha") {
+		return variant(clr_.a);
+	}
+
+	return variant();
+}
+
 } // namespace wfl

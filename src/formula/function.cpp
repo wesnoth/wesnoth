@@ -725,6 +725,40 @@ DEFINE_WFL_FUNCTION(lerp, 3, 3)
 	return variant(static_cast<int>((lo + alpha * (hi - lo)) * 1000.0), variant::DECIMAL_VARIANT);
 }
 
+DEFINE_WFL_FUNCTION(lerp_index, 2, 2)
+{
+	const std::vector<variant> items = args()[0]->evaluate(variables, fdb).as_list();
+	if(items.empty()) return variant();
+	const double alpha = args()[1]->evaluate(variables, fdb).as_decimal() / 1000.0;
+	// Same formula as red_to_green etc
+	const double val_scaled = std::clamp(0.01 * alpha, 0.0, 1.0);
+	const int idx = int(std::nearbyint((items.size() - 1) * val_scaled));
+	return items[idx];
+}
+
+DEFINE_WFL_FUNCTION(get_palette, 1, 1)
+{
+	const std::string name = args()[0]->evaluate(variables, fdb).as_string();
+	std::vector<color_t> colors;
+	if(name == "red_green_scale") {
+		colors = game_config::red_green_scale;
+	} else if(name == "red_green_scale_text") {
+		colors = game_config::red_green_scale_text;
+	} else if(name == "blue_white_scale") {
+		colors = game_config::blue_white_scale;
+	} else if(name == "blue_white_scale_text") {
+		colors = game_config::blue_white_scale_text;
+	} else {
+		colors = game_config::tc_info(name);
+	}
+	std::vector<variant> result;
+	result.reserve(colors.size());
+	for(auto clr : colors) {
+		result.emplace_back(std::make_shared<color_callable>(clr));
+	}
+	return variant(result);
+}
+
 DEFINE_WFL_FUNCTION(clamp, 3, 3)
 {
 	const variant val = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "clamp:value"));
@@ -1623,7 +1657,9 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 		DECLARE_WFL_FUNCTION(hypot);
 		DECLARE_WFL_FUNCTION(type);
 		DECLARE_WFL_FUNCTION(lerp);
+		DECLARE_WFL_FUNCTION(lerp_index);
 		DECLARE_WFL_FUNCTION(clamp);
+		DECLARE_WFL_FUNCTION(get_palette);
 	}
 
 	return std::shared_ptr<function_symbol_table>(&functions_table, [](function_symbol_table*) {});
