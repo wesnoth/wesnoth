@@ -23,6 +23,7 @@
 #include "log.hpp"
 #include "pathutils.hpp"
 
+#include <boost/algorithm/string.hpp>
 #include <boost/math/constants/constants.hpp>
 #include <cctype>
 #include <deque>
@@ -446,6 +447,29 @@ DEFINE_WFL_FUNCTION(replace, 3, 4)
 	}
 
 	return variant(result.replace(offset, std::string::npos, replacement));
+}
+
+DEFINE_WFL_FUNCTION(replace_all, 3, 3)
+{
+	std::string result = args()[0]->evaluate(variables, fdb).as_string();
+	std::string needle = args()[1]->evaluate(variables, fdb).as_string();
+	std::string replacement = args().back()->evaluate(variables, fdb).as_string();
+	boost::replace_all(result, needle, replacement);
+	return variant(result);
+}
+
+DEFINE_WFL_FUNCTION(starts_with, 2, 2)
+{
+	std::string str = args()[0]->evaluate(variables, fdb).as_string();
+	std::string prefix = args()[1]->evaluate(variables, fdb).as_string();
+	return variant(boost::starts_with(str, prefix));
+}
+
+DEFINE_WFL_FUNCTION(ends_with, 2, 2)
+{
+	std::string str = args()[0]->evaluate(variables, fdb).as_string();
+	std::string prefix = args()[1]->evaluate(variables, fdb).as_string();
+	return variant(boost::ends_with(str, prefix));
 }
 
 DEFINE_WFL_FUNCTION(insert, 3, 3)
@@ -1579,6 +1603,9 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 		DECLARE_WFL_FUNCTION(tomap);
 		DECLARE_WFL_FUNCTION(substring);
 		DECLARE_WFL_FUNCTION(replace);
+		DECLARE_WFL_FUNCTION(replace_all);
+		DECLARE_WFL_FUNCTION(starts_with);
+		DECLARE_WFL_FUNCTION(ends_with);
 		DECLARE_WFL_FUNCTION(length);
 		DECLARE_WFL_FUNCTION(concatenate);
 		DECLARE_WFL_FUNCTION(sin);
