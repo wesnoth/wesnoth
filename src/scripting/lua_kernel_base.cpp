@@ -1229,6 +1229,30 @@ int lua_kernel_base::intf_kernel_type(lua_State* L)
 	lua_push(L, my_name());
 	return 1;
 }
+static void push_color_palette(lua_State* L, const std::vector<color_t>& palette) {
+	lua_createtable(L, palette.size(), 1);
+	lua_rotate(L, -2, 1); // swap new table with previous element on stack
+	lua_setfield(L, -2, "name");
+	for(size_t i = 0; i < palette.size(); i++) {
+		luaW_push_namedtuple(L, {"r", "g", "b", "a"});
+		lua_pushinteger(L, palette[i].r);
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, palette[i].g);
+		lua_rawseti(L, -2, 2);
+		lua_pushinteger(L, palette[i].b);
+		lua_rawseti(L, -2, 3);
+		lua_pushinteger(L, palette[i].a);
+		lua_rawseti(L, -2, 4);
+		lua_rawseti(L, -2, i);
+	}
+}
+static int impl_palette_get(lua_State* L)
+{
+	char const *m = luaL_checkstring(L, 2);
+	lua_pushvalue(L, 2);
+	push_color_palette(L, game_config::tc_info(m));
+	return 1;
+}
 int lua_kernel_base::impl_game_config_get(lua_State* L)
 {
 	char const *m = luaL_checkstring(L, 2);
@@ -1245,6 +1269,36 @@ int lua_kernel_base::impl_game_config_get(lua_State* L)
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("strict_lua", game_config::strict_lua);
 	return_bool_attrib("mp_debug", game_config::mp_debug);
+
+	if(strcmp(m, "palettes") == 0) {
+		lua_newtable(L);
+		if(luaL_newmetatable(L, "color palettes")) {
+			lua_pushcfunction(L, impl_palette_get);
+			lua_setfield(L, -2, "__index");
+		}
+		lua_setmetatable(L, -2);
+		return 1;
+	}
+	if(strcmp(m, "red_green_scale") == 0) {
+		lua_pushstring(L, "red_green_scale");
+		push_color_palette(L, game_config::red_green_scale);
+		return 1;
+	}
+	if(strcmp(m, "red_green_scale_text") == 0) {
+		lua_pushstring(L, "red_green_scale_text");
+		push_color_palette(L, game_config::red_green_scale_text);
+		return 1;
+	}
+	if(strcmp(m, "blue_white_scale") == 0) {
+		lua_pushstring(L, "blue_white_scale");
+		push_color_palette(L, game_config::blue_white_scale);
+		return 1;
+	}
+	if(strcmp(m, "blue_white_scale_text") == 0) {
+		lua_pushstring(L, "blue_white_scale_text");
+		push_color_palette(L, game_config::blue_white_scale_text);
+		return 1;
+	}
 	return 0;
 }
 int lua_kernel_base::impl_game_config_set(lua_State* L)
