@@ -73,10 +73,10 @@ tree_view_node::tree_view_node(const std::string& id,
 			toggle_widget->set_visible(widget::visibility::hidden);
 
 			toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
-				std::bind(&tree_view_node::signal_handler_left_button_click, this, std::placeholders::_2));
+				std::bind(&tree_view_node::signal_handler_icon_left_click, this, std::placeholders::_2));
 
 			toggle_widget->connect_signal<event::LEFT_BUTTON_CLICK>(
-				std::bind(&tree_view_node::signal_handler_left_button_click, this, std::placeholders::_2),
+				std::bind(&tree_view_node::signal_handler_icon_left_click, this, std::placeholders::_2),
 				event::dispatcher::back_post_child);
 
 			if(unfolded_) {
@@ -645,7 +645,7 @@ void tree_view_node::impl_draw_children()
 	}
 }
 
-void tree_view_node::signal_handler_left_button_click(const event::ui_event event)
+void tree_view_node::signal_handler_icon_left_click(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
