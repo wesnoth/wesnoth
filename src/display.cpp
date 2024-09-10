@@ -215,6 +215,7 @@ display::display(const display_context* dc,
 
 	fill_images_list(game_config::fog_prefix, fog_images_);
 	fill_images_list(game_config::shroud_prefix, shroud_images_);
+	//fill_images_list(game_config::reach_map_prefix, reach_map_images_);
 
 	unsigned int tile_size = prefs::get().tile_size();
 	if(tile_size < MinZoom || tile_size > MaxZoom)
@@ -3318,18 +3319,10 @@ void display::process_reachmap_changes()
 			}
 		}
 	} else if (!reach_map_.empty()) {
-		// Invalidate only changes
+		// Invalidate new and old reach
 		reach_map::iterator reach, reach_old;
 		for (reach = reach_map_.begin(); reach != reach_map_.end(); ++reach) {
-			reach_old = reach_map_old_.find(reach->first);
-			if (reach_old == reach_map_old_.end()) {
-				invalidate(reach->first);
-			} else {
-				if (reach_old->second != reach->second) {
-					invalidate(reach->first);
-				}
-				reach_map_old_.erase(reach_old);
-			}
+			invalidate(reach->first);
 		}
 		for (reach_old = reach_map_old_.begin(); reach_old != reach_map_old_.end(); ++reach_old) {
 			invalidate(reach_old->first);

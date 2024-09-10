@@ -52,7 +52,7 @@ const int gold_carryover_percentage = 80;
 unsigned int tile_size = 72;
 
 std::string default_terrain;
-std::string shroud_prefix, fog_prefix;
+std::string shroud_prefix, fog_prefix, reach_map_prefix;
 
 std::vector<unsigned int> zoom_levels {36, 72, 144};
 
@@ -194,7 +194,6 @@ std::string
 	mouseover,
 	selected,
 	editor_brush,
-	unreachable,
 	linger,
 	// GUI elements
 	observer,
@@ -350,7 +349,6 @@ void load_config(const config &v)
 		mouseover    = i["mouseover"].str();
 		selected     = i["selected"].str();
 		editor_brush = i["editor_brush"].str();
-		unreachable  = i["unreachable"].str();
 		linger       = i["linger"].str();
 
 		observer   = i["observer"].str();
@@ -371,6 +369,7 @@ void load_config(const config &v)
 
 	shroud_prefix = v["shroud_prefix"].str();
 	fog_prefix    = v["fog_prefix"].str();
+	reach_map_prefix 	= v["reach_map_prefix"].str();
 
 	add_color_info(game_config_view::wrap(v), true);
 
