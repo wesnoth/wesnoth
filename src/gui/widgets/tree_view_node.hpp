@@ -314,8 +314,7 @@ private:
 	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children() override;
 
-	// FIXME rename to icon
-	void signal_handler_left_button_click(const event::ui_event event);
+	void signal_handler_icon_left_click(const event::ui_event event);
 
 	void signal_handler_label_left_button_click(const event::ui_event event,
 												bool& handled,
