@@ -500,10 +500,7 @@ bool game_info::match_string_filter(const std::string& filter) const
 {
 	const std::string& s1 = name;
 	const std::string& s2 = map_info;
-	return std::search(s1.begin(), s1.end(), filter.begin(), filter.end(),
-			utils::chars_equal_insensitive) != s1.end()
-	    || std::search(s2.begin(), s2.end(), filter.begin(), filter.end(),
-			utils::chars_equal_insensitive) != s2.end();
+	return translation::ci_search(s1, filter) || translation::ci_search(s2, filter);
 }
 
 }
