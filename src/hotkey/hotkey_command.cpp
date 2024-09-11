@@ -99,7 +99,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_MAP_SCREENSHOT, "mapscreenshot", N_("Map Screenshot"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_ACCELERATED, "accelerated", N_("Toggle Accelerated Speed"), false, scope_game, HKCAT_GENERAL, "" },
 	{ HOTKEY_TERRAIN_DESCRIPTION, "describeterrain", N_("Terrain Description"), false, scope_game | scope_editor, HKCAT_MAP, "" },
-	{ HOTKEY_UNIT_DESCRIPTION, "describeunit", N_("Unit Description"), false, scope_game | scope_editor, HKCAT_UNITS, "" },
+	{ HOTKEY_UNIT_DESCRIPTION, "describeunit", N_("Unit Type Description"), false, scope_game | scope_editor, HKCAT_UNITS, "" },
 	{ HOTKEY_RENAME_UNIT, "renameunit", N_("Rename Unit"), false, scope_game | scope_editor, HKCAT_UNITS, "" },
 	{ HOTKEY_DELETE_UNIT, "editor-deleteunit", N_("Delete Unit"), false, scope_game | scope_editor, HKCAT_TOOLS, "" },
 

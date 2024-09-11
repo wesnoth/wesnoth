@@ -46,7 +46,6 @@
 
 #ifdef _WIN32
 #include "serialization/unicode_cast.hpp"
-#include <boost/range/iterator_range.hpp>
 #include <windows.h>
 #endif
 
@@ -1871,21 +1870,20 @@ void prefs::clear_mp_alert_prefs()
 
 std::string prefs::get_system_username()
 {
-	std::string res;
 #ifdef _WIN32
 	wchar_t buffer[300];
 	DWORD size = 300;
 	if(GetUserNameW(buffer, &size)) {
 		//size includes a terminating null character.
 		assert(size > 0);
-		res = unicode_cast<std::string>(boost::iterator_range<wchar_t*>(buffer, buffer + size - 1));
+		return unicode_cast<std::string>(std::wstring_view{buffer});
 	}
 #else
 	if(char* const login = getenv("USER")) {
-		res = login;
+		return login;
 	}
 #endif
-	return res;
+	return {};
 }
 
 preferences::secure_buffer prefs::build_key(const std::string& server, const std::string& login)
