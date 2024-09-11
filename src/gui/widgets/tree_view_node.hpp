@@ -237,7 +237,7 @@ public:
 	/**
 	 * Calculates the node indices needed to get from the root node to this node.
 	 */
-	std::vector<int> describe_path();
+	std::vector<int> describe_path() const;
 
 	tree_view_node* get_last_visible_parent_node();
 	tree_view_node* get_node_above();
