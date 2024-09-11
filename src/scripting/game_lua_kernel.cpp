@@ -72,6 +72,7 @@
 #include "replay.hpp"                   // for get_user_choice, etc
 #include "reports.hpp"                  // for register_generator, etc
 #include "resources.hpp"                // for whiteboard
+#include "scripting/lua_attributes.hpp"
 #include "scripting/lua_audio.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/lua_unit_attacks.hpp"
@@ -1694,6 +1695,83 @@ std::string game_lua_kernel::synced_state()
 	}
 }
 
+struct current_tag {
+	game_lua_kernel& ref;
+	current_tag(game_lua_kernel& k) : ref(k) {}
+	auto& pc() const { return ref.play_controller_; }
+	auto ss() const { return ref.synced_state(); }
+	auto& gd() const { return ref.gamedata(); }
+	auto& ev() const { return ref.get_event_info(); }
+	void push_schedule(lua_State* L) const { ref.luaW_push_schedule(L, -1); }
+};
+#define CURRENT_GETTER(name, type) LATTR_GETTER(name, type, current_tag, k)
+luaW_Registry currentReg{"current"};
+
+template<> struct lua_object_traits<current_tag> {
+	inline static auto metatable = "current";
+	inline static game_lua_kernel& get(lua_State* L, int) {
+		return lua_kernel_base::get_lua_kernel<game_lua_kernel>(L);
+	}
+};
+
+CURRENT_GETTER("side", int) {
+	return k.pc().current_side();
+}
+
+CURRENT_GETTER("turn", int) {
+	return k.pc().turn();
+}
+
+CURRENT_GETTER("synced_state", std::string) {
+	return k.ss();
+}
+
+CURRENT_GETTER("user_can_invoke_commands", bool) {
+	return !events::commands_disabled && k.gd().phase() == game_data::TURN_PLAYING;
+}
+
+CURRENT_GETTER("map", lua_index_raw) {
+	(void)k;
+	intf_terrainmap_get(L);
+	return lua_index_raw(L);
+}
+
+CURRENT_GETTER("schedule", lua_index_raw) {
+	k.push_schedule(L);
+	return lua_index_raw(L);
+}
+
+CURRENT_GETTER("event_context", config) {
+	const game_events::queued_event &ev = k.ev();
+	config cfg;
+	cfg["name"] = ev.name;
+	cfg["id"]   = ev.id;
+	cfg.add_child("data", ev.data);
+	if (auto weapon = ev.data.optional_child("first")) {
+		cfg.add_child("weapon", *weapon);
+	}
+	if (auto weapon = ev.data.optional_child("second")) {
+		cfg.add_child("second_weapon", *weapon);
+	}
+
+	const config::attribute_value di = ev.data["damage_inflicted"];
+	if(!di.empty()) {
+		cfg["damage_inflicted"] = di;
+	}
+
+	if (ev.loc1.valid()) {
+		cfg["x1"] = ev.loc1.filter_loc().wml_x();
+		cfg["y1"] = ev.loc1.filter_loc().wml_y();
+		// The position of the unit involved in this event, currently the only case where this is different from x1/y1 are enter/exit_hex events
+		cfg["unit_x"] = ev.loc1.wml_x();
+		cfg["unit_y"] = ev.loc1.wml_y();
+	}
+	if (ev.loc2.valid()) {
+		cfg["x2"] = ev.loc2.filter_loc().wml_x();
+		cfg["y2"] = ev.loc2.filter_loc().wml_y();
+	}
+	return cfg;
+}
 
 /**
  * Gets some data about current point of game (__index metamethod).
@@ -1703,57 +1781,15 @@ std::string game_lua_kernel::synced_state()
  */
 int game_lua_kernel::impl_current_get(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 2);
+	return currentReg.get(L);
+}
 
-	// Find the corresponding attribute.
-	return_int_attrib("side", play_controller_.current_side());
-	return_int_attrib("turn", play_controller_.turn());
-	return_string_attrib("synced_state", synced_state());
-	return_bool_attrib("user_can_invoke_commands", !events::commands_disabled && gamedata().phase() == game_data::TURN_PLAYING);
-
-	if(strcmp(m, "map") == 0) {
-		return intf_terrainmap_get(L);
-	}
-	if(strcmp(m, "schedule") == 0) {
-		luaW_push_schedule(L, -1);
-		return 1;
-	}
-
-	if (strcmp(m, "event_context") == 0)
-	{
-		const game_events::queued_event &ev = get_event_info();
-		config cfg;
-		cfg["name"] = ev.name;
-		cfg["id"]   = ev.id;
-		cfg.add_child("data", ev.data);
-		if (auto weapon = ev.data.optional_child("first")) {
-			cfg.add_child("weapon", *weapon);
-		}
-		if (auto weapon = ev.data.optional_child("second")) {
-			cfg.add_child("second_weapon", *weapon);
-		}
-
-		const config::attribute_value di = ev.data["damage_inflicted"];
-		if(!di.empty()) {
-			cfg["damage_inflicted"] = di;
-		}
-
-		if (ev.loc1.valid()) {
-			cfg["x1"] = ev.loc1.filter_loc().wml_x();
-			cfg["y1"] = ev.loc1.filter_loc().wml_y();
-			// The position of the unit involved in this event, currently the only case where this is different from x1/y1 are enter/exit_hex events
-			cfg["unit_x"] = ev.loc1.wml_x();
-			cfg["unit_y"] = ev.loc1.wml_y();
-		}
-		if (ev.loc2.valid()) {
-			cfg["x2"] = ev.loc2.filter_loc().wml_x();
-			cfg["y2"] = ev.loc2.filter_loc().wml_y();
-		}
-		luaW_pushconfig(L, cfg);
-		return 1;
-	}
-
-	return 0;
+/**
+ * Gets a list of date about current point of game (__dir metamethod).
+ */
+int game_lua_kernel::impl_current_dir(lua_State *L)
+{
+	return currentReg.dir(L);
 }
 
 /**
@@ -5081,6 +5117,8 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_createtable(L, 0, 2);
 	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_current_get>);
 	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_current_dir>);
+	lua_setfield(L, -2, "__dir");
 	lua_pushstring(L, "current config");
 	lua_setfield(L, -2, "__metatable");
 	lua_setmetatable(L, -2);
