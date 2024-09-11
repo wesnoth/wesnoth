@@ -890,6 +890,12 @@ public:
 	static state_t get_known_boolean_state_id(const std::string& state);
 
 	/**
+	 * Convert a built-in status effect ID to a string status effect ID
+	 * @returns the string representing the status, or an empty string for STATE_UNKNOWN
+	 */
+	static std::string get_known_boolean_state_name(state_t state);
+
+	/**
 	 * Check if the unit has been poisoned
 	 * @returns true if it's poisoned
 	 */

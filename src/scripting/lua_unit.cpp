@@ -833,6 +833,32 @@ static int impl_unit_status_set(lua_State *L)
 }
 
 /**
+ * List statuses on a unit (__dir metamethod)
+ * This returns all known statuses (regardless of state) plus any currently set to true.
+ */
+static int impl_unit_status_dir(lua_State *L)
+{
+	if(!lua_istable(L, 1)) {
+		return luaW_type_error(L, 1, "unit status");
+	}
+	lua_rawgeti(L, 1, 1);
+	unit* u = luaW_tounit(L, -1);
+	if(!u) {
+		return luaL_argerror(L, 1, "unknown unit");
+	}
+	std::vector<std::string> states;
+	states.reserve(unit::NUMBER_OF_STATES);
+	for(unit::state_t s = unit::STATE_SLOWED; s < unit::NUMBER_OF_STATES; s = unit::state_t(s + 1)) {
+		states.push_back(unit::get_known_boolean_state_name(s));
+	}
+	for(auto s : u->get_states()) {
+		states.push_back(s);
+	}
+	lua_push(L, states);
+	return 1;
+}
+
+/**
  * Gets the variable of a unit (__index metamethod).
  * - Arg 1: table containing the userdata containing the unit id.
  * - Arg 2: string containing the name of the status.
@@ -886,6 +912,32 @@ static int impl_unit_variables_set(lua_State *L)
 	return 0;
 }
 
+/**
+ * List variables on a unit (__dir metamethod)
+ */
+static int impl_unit_variables_dir(lua_State *L)
+{
+	if(!lua_istable(L, 1)) {
+		return luaW_type_error(L, 1, "unit variables");
+	}
+	lua_rawgeti(L, 1, 1);
+	unit* u = luaW_tounit(L, -1);
+	if(!u) {
+		return luaL_argerror(L, 2, "unknown unit");
+	}
+	config& vars = u->variables();
+	std::vector<std::string> variables;
+	variables.reserve(vars.attribute_count() + vars.all_children_count());
+	for(const auto& attr : vars.attribute_range()) {
+		variables.push_back(attr.first);
+	}
+	for(auto attr : vars.all_children_range()) {
+		variables.push_back(attr.key);
+	}
+	lua_push(L, variables);
+	return 1;
+}
+
 namespace lua_units {
 	std::string register_metatables(lua_State* L)
 	{
@@ -918,6 +970,8 @@ namespace lua_units {
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_unit_status_set);
 		lua_setfield(L, -2, "__newindex");
+		lua_pushcfunction(L, impl_unit_status_dir);
+		lua_setfield(L, -2, "__dir");
 		lua_pushstring(L, "unit status");
 		lua_setfield(L, -2, "__metatable");
 
@@ -929,6 +983,8 @@ namespace lua_units {
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_unit_variables_set);
 		lua_setfield(L, -2, "__newindex");
+		lua_pushcfunction(L, impl_unit_variables_dir);
+		lua_setfield(L, -2, "__dir");
 		lua_pushstring(L, "unit variables");
 		lua_setfield(L, -2, "__metatable");
 
