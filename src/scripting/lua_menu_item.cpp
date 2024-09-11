@@ -63,6 +63,7 @@ static int impl_menuitem_set(lua_State *L)
 	std::string err_msg = "unknown modifiable property of menu item: ";
 	err_msg += m;
 	return luaL_argerror(L, 2, err_msg.c_str());
+}
 
 namespace lua_menuitem {
 	std::string register_metatable(lua_State* L)
