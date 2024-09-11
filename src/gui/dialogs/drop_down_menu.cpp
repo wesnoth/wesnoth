@@ -88,8 +88,10 @@ drop_down_menu::drop_down_menu(styled_widget* parent, const std::vector<config>&
 	, selected_item_(selected_item)
 	, use_markup_(parent->get_use_markup())
 	, keep_open_(keep_open)
+	, start_selected_(true)
 	, mouse_down_happened_(false)
 {
+	init();
 }
 
 drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open)
@@ -100,68 +102,15 @@ drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& i
 	, selected_item_(selected_item)
 	, use_markup_(use_markup)
 	, keep_open_(keep_open)
+	, start_selected_(true)
 	, mouse_down_happened_(false)
 {
+	init();
 }
 
-void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate)
+void drop_down_menu::init()
 {
-	if(!mouse_down_happened_) {
-		return;
-	}
-
-	listbox& list = find_widget<listbox>(get_window(), "list", true);
-
-	/* Disregard clicks on scrollbars and toggle buttons so the dropdown menu can be scrolled or have an embedded
-	 * toggle button selected without the menu closing.
-	 *
-	 * This works since this mouse_up_callback function is called before widgets' left-button-up handlers.
-	 *
-	 * Additionally, this is done before row deselection so selecting/deselecting a toggle button doesn't also leave
-	 * the list with no row visually selected. Oddly, the visual deselection doesn't seem to cause any crashes, and
-	 * the previously selected row is reselected when the menu is opened again. Still, it's odd to see your selection
-	 * vanish.
-	 */
-	if(list.vertical_scrollbar()->get_state() == scrollbar_base::PRESSED) {
-		return;
-	}
-
-	if(dynamic_cast<toggle_button*>(get_window()->find_at(coordinate, true)) != nullptr) {
-		return;
-	}
-
-	/* FIXME: This dialog uses a listbox with 'has_minimum = false'. This allows a listbox to have 0 or 1 selections,
-	 * and selecting the same entry toggles that entry's state (ie, if it was selected, it will be deselected). Because
-	 * of this, selecting the same entry in the dropdown list essentially sets the list's selected row to -1, causing problems.
-	 *
-	 * In order to work around this, we first manually deselect the selected entry here. This handler is called *before*
-	 * the listbox's click handler, and as such the selected item will remain toggled on when the click handler fires.
-	 */
-	const int sel = list.get_selected_row();
-	if(sel >= 0) {
-		list.select_row(sel, false);
-	}
-
-	if(!get_window()->get_rectangle().contains(coordinate)) {
-		set_retval(retval::CANCEL);
-	} else if(!keep_open_) {
-		set_retval(retval::OK);
-	}
-}
-
-void drop_down_menu::mouse_down_callback()
-{
-	mouse_down_happened_ = true;
-}
-
-void drop_down_menu::pre_show(window& window)
-{
-	window.set_variable("button_x", wfl::variant(button_pos_.x));
-	window.set_variable("button_y", wfl::variant(button_pos_.y));
-	window.set_variable("button_w", wfl::variant(button_pos_.w));
-	window.set_variable("button_h", wfl::variant(button_pos_.h));
-
-	listbox& list = find_widget<listbox>(&window, "list", true);
+	listbox& list = find_widget<listbox>(this, "list", true);
 
 	for(const auto& entry : items_) {
 		widget_data data;
@@ -216,8 +165,75 @@ void drop_down_menu::pre_show(window& window)
 	}
 
 	if(selected_item_ >= 0 && static_cast<unsigned>(selected_item_) < list.get_item_count()) {
-		list.select_row(selected_item_);
+		list.select_row(selected_item_,start_selected_);
 	}
+
+}
+
+grid& drop_down_menu::add_row(const widget_data& data, const int index)
+{
+	listbox& list = find_widget<listbox>(this, "list", true);
+	return list.add_row(data, index);
+}
+
+void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate)
+{
+	listbox& list = find_widget<listbox>(this, "list", true);
+
+	if(!mouse_down_happened_) {
+		return;
+	}
+
+	/* Disregard clicks on scrollbars and toggle buttons so the dropdown menu can be scrolled or have an embedded
+	 * toggle button selected without the menu closing.
+	 *
+	 * This works since this mouse_up_callback function is called before widgets' left-button-up handlers.
+	 *
+	 * Additionally, this is done before row deselection so selecting/deselecting a toggle button doesn't also leave
+	 * the list with no row visually selected. Oddly, the visual deselection doesn't seem to cause any crashes, and
+	 * the previously selected row is reselected when the menu is opened again. Still, it's odd to see your selection
+	 * vanish.
+	 */
+	if(list.vertical_scrollbar()->get_state() == scrollbar_base::PRESSED) {
+		return;
+	}
+
+	if(dynamic_cast<toggle_button*>(get_window()->find_at(coordinate, true)) != nullptr) {
+		return;
+	}
+
+	/* FIXME: This dialog uses a listbox with 'has_minimum = false'. This allows a listbox to have 0 or 1 selections,
+	 * and selecting the same entry toggles that entry's state (ie, if it was selected, it will be deselected). Because
+	 * of this, selecting the same entry in the dropdown list essentially sets the list's selected row to -1, causing problems.
+	 *
+	 * In order to work around this, we first manually deselect the selected entry here. This handler is called *before*
+	 * the listbox's click handler, and as such the selected item will remain toggled on when the click handler fires.
+	 */
+	const int sel = list.get_selected_row();
+	if(sel >= 0) {
+		list.select_row(sel, false);
+	}
+
+	if(!get_window()->get_rectangle().contains(coordinate)) {
+		set_retval(retval::CANCEL);
+	} else if(!keep_open_) {
+		set_retval(retval::OK);
+	}
+}
+
+void drop_down_menu::mouse_down_callback()
+{
+	mouse_down_happened_ = true;
+}
+
+void drop_down_menu::pre_show(window& window)
+{
+	window.set_variable("button_x", wfl::variant(button_pos_.x));
+	window.set_variable("button_y", wfl::variant(button_pos_.y));
+	window.set_variable("button_w", wfl::variant(button_pos_.w));
+	window.set_variable("button_h", wfl::variant(button_pos_.h));
+
+	listbox& list = find_widget<listbox>(&window, "list", true);
 
 	window.keyboard_capture(&list);
 

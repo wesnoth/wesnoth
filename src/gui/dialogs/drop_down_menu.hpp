@@ -15,6 +15,8 @@
 
 #pragma once
 
+#include "gui/widgets/listbox.hpp"
+
 #include "gui/dialogs/modal_dialog.hpp"
 #include "utils/optional_fwd.hpp"
 
@@ -46,6 +48,13 @@ public:
 
 	/** If a toggle button widget is present, returns the toggled state of each row's button. */
 	boost::dynamic_bitset<> get_toggle_states() const;
+
+	void set_start_selected(bool start_selected)
+	{
+		start_selected_ = start_selected;
+	}
+
+	grid& add_row(const widget_data& data, const int index = -1);
 
 private:
 	// TODO: evaluate exposing this publically via the [multi]menu_button widgets
@@ -95,11 +104,19 @@ private:
 	 */
 	bool keep_open_;
 
+	/** Whether to start with an item selected.  This is mostly asthetic.  When selecting
+	 * a value from a list, the default would be to keep the previous value (if any), hence true.
+	 * When choosing an action, the last action is probably irrelevant, hence false.
+	 */
+	bool start_selected_;
+
 	/**
 	 * When menu is invoked on a long-touch timer, a following mouse-up event will close it.
 	 * This flag prevents that: the menu will only be closed on a mouse-up that follows a mouse-down.
 	 * */
 	bool mouse_down_happened_;
+
+	void init();
 
 	virtual const std::string& window_id() const override;
 

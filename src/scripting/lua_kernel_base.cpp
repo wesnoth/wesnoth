@@ -35,6 +35,7 @@
 #include "scripting/lua_fileops.hpp"
 #include "scripting/lua_formula_bridge.hpp"
 #include "scripting/lua_gui2.hpp"
+#include "scripting/lua_menu_item.hpp"
 #include "scripting/lua_wml.hpp"
 #include "scripting/lua_stringx.hpp"
 #include "scripting/lua_map_location_ops.hpp"
@@ -829,6 +830,8 @@ lua_kernel_base::lua_kernel_base()
 	cmd_log_ << lua_common::register_tstring_metatable(L);
 
 	lua_widget::register_metatable(L);
+
+	cmd_log_ << lua_menuitem::register_metatable(L);
 
 	// Override the print function
 	cmd_log_ << "Redirecting print function...\n";
