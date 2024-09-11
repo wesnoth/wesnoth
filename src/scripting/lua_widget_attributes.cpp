@@ -227,17 +227,17 @@ WIDGET_SETTER("value_compat,selected_index", int, gui2::listbox)
 	w.select_row(value - 1);
 }
 
-WIDGET_GETTER("value_compat,value", std::string, gui2::menu_button)
+WIDGET_GETTER("value", std::string, gui2::menu_button)
 {
     return w.get_value_string();
 }
 
-WIDGET_SETTER("value_compat,value", std::string, gui2::menu_button)
+WIDGET_SETTER("value", std::string, gui2::menu_button)
 {
 	luaL_error(L, "attempt to modify read-only attribute 'value'");
 }
 
-WIDGET_SETTER("value_compat,selected_index", int, gui2::menu_button)
+WIDGET_SETTER("selected_index", int, gui2::menu_button)
 {
 	w.set_selected(value - 1, false);  // do not fire event, from lua this would only be used for setting default row
 }
@@ -252,7 +252,7 @@ WIDGET_SETTER("value_compat,selected_index", int, gui2::multi_page)
 	w.select_page(value - 1);
 }
 
-WIDGET_GETTER("value_compat,value", std::string, gui2::options_button)
+WIDGET_GETTER("value", std::string, gui2::options_button)
 {
     return w.get_value_string();
 }

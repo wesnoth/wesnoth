@@ -106,19 +106,13 @@ drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& i
 {
 }
 
-grid& drop_down_menu::add_row(const widget_data& data, const int index)
-{
-	listbox& list = find_widget<listbox>(this, "list", true);
-	return list.add_row(data, index);
-}
-
 void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate)
 {
-	listbox& list = find_widget<listbox>(this, "list", true);
-
 	if(!mouse_down_happened_) {
 		return;
 	}
+
+	listbox& list = find_widget<listbox>(get_window(), "list", true);
 
 	/* Disregard clicks on scrollbars and toggle buttons so the dropdown menu can be scrolled or have an embedded
 	 * toggle button selected without the menu closing.

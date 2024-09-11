@@ -15,8 +15,6 @@
 
 #pragma once
 
-//#include "gui/widgets/listbox.hpp"
-
 #include "gui/dialogs/modal_dialog.hpp"
 #include "utils/optional_fwd.hpp"
 
@@ -53,8 +51,6 @@ public:
 	{
 		start_selected_ = start_selected;
 	}
-
-	grid& add_row(const widget_data& data, const int index = -1);
 
 private:
 	// TODO: evaluate exposing this publically via the [multi]menu_button widgets

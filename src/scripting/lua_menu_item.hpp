@@ -29,12 +29,3 @@ do { \
         return 0; \
     } \
 } while(false)
-
-// this is probably unneeded
-#define clear_config_attrib(name,cfg)\
-do { \
-    if (strcmp(m, (name)) == 0) { \
-		cfg[name] = ""; \
-        return 0; \
-    } \
-} while(false)

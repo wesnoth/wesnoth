@@ -29,8 +29,6 @@ static int impl_menuitem_get(lua_State *L)
     config **cfg = static_cast<config **>(lua_touserdata(L, 1));
     char const *m = luaL_checkstring(L, 2);
 
-	// need to check if these return nil when empty
-
 	return_bool_attrib("checkbox", (**cfg)["checkbox"].to_bool());
 	return_tstring_attrib("details", (**cfg)["details"].str());
 	return_string_attrib("icon", (**cfg)["icon"].str());
@@ -66,19 +64,6 @@ static int impl_menuitem_set(lua_State *L)
 	err_msg += m;
 	return luaL_argerror(L, 2, err_msg.c_str());
 
-}
-		/* no, this does not go here.  We do this on a container widget, not one of it's rows!
-
-static int impl_menuitem_len(lua_State *L)
-{
-	gui2::widget* w = &luaW_checkwidget(L, 1);
-	if(gui2::options_button* ob = dynamic_cast<gui2::options_button*>(w)) {
-		return ob->get_item_count();
-	}
-	return luaL_error(L, "unknown widget type");
-}
-*/
-
 namespace lua_menuitem {
 	std::string register_metatable(lua_State* L)
 	{
@@ -92,10 +77,6 @@ namespace lua_menuitem {
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_menuitem_set);
 		lua_setfield(L, -2, "__newindex");
-		/* no, this does not go here.  We do this on a container widget, not one of it's rows!
-		lua_pushcfunction(L, impl_menuitem_len);
-		lua_setfield(L, -2, "__len");
-		*/
 		lua_pushstring(L, "menu_item");
 		lua_setfield(L, -2, "__metatable");
 
