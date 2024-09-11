@@ -4755,6 +4755,15 @@ int game_lua_kernel::impl_theme_items_set(lua_State *L)
 }
 
 /**
+ * Get all available theme_items (__dir metamethod).
+ */
+int game_lua_kernel::impl_theme_items_dir(lua_State *L)
+{
+	lua_push(L, reports_.report_list());
+	return 1;
+}
+
+/**
  * Gets all the WML variables currently set.
  * - Ret 1: WML table
  */
@@ -5381,6 +5390,8 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_setfield(L, -2, "__index");
 	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_theme_items_set>);
 	lua_setfield(L, -2, "__newindex");
+	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_theme_items_dir>);
+	lua_setfield(L, -2, "__dir");
 	lua_setmetatable(L, -2);
 	lua_setfield(L, -2, "game_display");
 	lua_pop(L, 1);

@@ -1797,6 +1797,7 @@ REPORT_GENERATOR(report_countdown, rc)
 void reports::register_generator(const std::string &name, reports::generator *g)
 {
 	dynamic_generators_[name].reset(g);
+	all_reports_.clear();
 }
 
 config reports::generate_report(const std::string &name, const reports::context& rc, bool only_static)
