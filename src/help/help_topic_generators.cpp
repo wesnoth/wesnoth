@@ -623,16 +623,18 @@ std::string unit_topic_generator::operator()() const {
 
 	if (!type_.attacks().empty()) {
 		// Start table
-		ss << "<table col=6/>";
+		ss << "<table col='6'>";
 
 		// Print headers for the table.
 		ss
-		<< " " << "<jump/>"
-		<< _("<b>Name</b>") << "<jump/>"
-		<< _("<b>Strikes</b>") << "<jump/>"
-		<< _("<b>Range</b>") << "<jump/>"
-		<< _("<b>Type</b>") << "<jump/>"
-		<< _("<b>Special</b>") << "<br/>";
+		<< "<row>"
+		<< "<col>" << "Icon" << "</col>"
+		<< "<col>" << _("<b>Name</b>") << "</col>"
+		<< "<col>" << _("<b>Strikes</b>") << "</col>"
+		<< "<col>" << _("<b>Range</b>") << "</col>"
+		<< "<col>" << _("<b>Type</b>") << "</col>"
+		<< "<col>" << _("<b>Special</b>") << "</col>"
+		<< "</row>";
 
 		std::stringstream attack_ss;
 
@@ -641,30 +643,33 @@ std::string unit_topic_generator::operator()() const {
 			std::string lang_weapon = attack.name();
 			std::string lang_type = string_table["type_" + attack.type()];
 
+			attack_ss << "<row>";
+
 			// Attack icon
-			attack_ss << "<img>src='" << attack.icon() << "'</img><jump/>";
+			attack_ss << "<col><img src='" << attack.icon() << "'/></col>";
 
 			// attack name
-			attack_ss << lang_weapon << "<jump/>";
+			attack_ss << "<col>" << lang_weapon << "</col>";
 
 			// damage x strikes
-			attack_ss << attack.damage() << font::weapon_numbers_sep << attack.num_attacks()
-				<< " " << attack.accuracy_parry_description() << "<jump/>";
+			attack_ss << "<col>" << attack.damage() << font::weapon_numbers_sep << attack.num_attacks()
+				<< " " << attack.accuracy_parry_description() << "</col>";
 
 			// range
 			const std::string range_icon = "icons/profiles/" + attack.range() + "_attack.png~SCALE_INTO(16,16)";
-			attack_ss << "<img src='" << range_icon << "'/>";
+			attack_ss << "<col>" << "<img src='" << range_icon << "'/>";
 			if (attack.min_range() > 1 || attack.max_range() > 1) {
 				attack_ss << attack.min_range() << "-" << attack.max_range() << ' ';
 			}
-			attack_ss << string_table["range_" + attack.range()] << "<jump/>";
+			attack_ss << string_table["range_" + attack.range()] << "</col>";
 
 			// type
 			const std::string type_icon = "icons/profiles/" + attack.type() + ".png~SCALE_INTO(16,16)";
-			attack_ss << "<img src='" << type_icon << "'/>";
-			attack_ss << lang_type << "<jump/>";
+			attack_ss << "<col>" << "<img src='" << type_icon << "'/>";
+			attack_ss << lang_type << "</col>";
 
 			// special
+			attack_ss << "<col>";
 			std::vector<std::pair<t_string, t_string>> specials = attack.special_tooltips();
 			if (!specials.empty()) {
 				std::string lang_special = "";
@@ -681,11 +686,12 @@ std::string unit_topic_generator::operator()() const {
 			} else {
 				attack_ss << "none";
 			}
-			attack_ss << "<br/>";
+			attack_ss << "</col>";
+			attack_ss << "</row>";
 		}
 
 		ss << attack_ss.str();
-		ss << "<endtable/>";
+		ss << "</table>";
 	}
 
 	// Generate the movement type of the unit, with resistance, defense, movement, jamming and vision data updated according to any 'musthave' traits which always apply
@@ -708,9 +714,11 @@ std::string unit_topic_generator::operator()() const {
 	ss << "\n<header>" << _("Resistances") << "</header>";
 
 	// Start table
-	ss << "<table col=2/>";
-	ss << _("<b>Attack Type</b>") << "<jump/>";
-	ss << _("<b>Resistance</b>") << "<br/>";
+	ss << "<table col=2>";
+	ss << "<row>";
+	ss << "<col>" << _("<b>Attack Type</b>") << "</col>";
+	ss << "<col>" << _("<b>Resistance</b>") << "</col>";
+	ss << "</row>";
 
 	utils::string_map_res dam_tab = movement_type.damage_table();
 	for(std::pair<std::string, std::string> dam_it : dam_tab) {
@@ -726,22 +734,25 @@ std::string unit_topic_generator::operator()() const {
 		std::string color = unit_helper::resistance_color(resistance);
 		const std::string lang_type = string_table["type_" + dam_it.first];
 		const std::string type_icon = "icons/profiles/" + dam_it.first + ".png~SCALE_INTO(16,16)";
-		ss << "<img src='" << type_icon << "'/>";
-		ss << lang_type << "<jump/>";
+		ss << "<row>";
+		ss << "<col>" << "<img src='" << type_icon << "'/>" << lang_type << "</col>";
 		std::stringstream str;
 		str << "<span color='" << color << "' text='"<< resist << "'/>";
-		ss << str.str() << "<br/>";
+		ss << "<col>" << str.str() << "</col>";
+		ss << "</row>";
 	}
 
-	ss << "<endtable/>";
+	ss << "</table>";
 
 	if (std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data()) {
 		// Print the terrain modifier table of the unit.
 		ss << "\n<header>" << _("Terrain Modifiers") << "</header>";
-		ss << "<table col=3/>";
-		ss << _("<b>Terrain</b>") << "<jump/>";
-		ss << _("<b>Defense</b>") << "<jump/>";
-		ss << _("<b>Movement Cost</b>") << "<br/>";
+		ss << "<table col='3'>";
+		ss << "<row>";
+		ss << "<col>" << _("<b>Terrain</b>") << "</col>";
+		ss << "<col>" << _("<b>Defense</b>") << "</col>";
+		ss << "<col>" << _("<b>Movement Cost</b>") << "</col>";
+		ss << "</row>";
 //		ss << _("<b>Defense Cap</b>") << "<jump/>";
 //		ss << _("<b>Vision Cost</b>") << "<jump/>";
 //		ss << _("<b>Jamming Cost</b>") << "<br/>";
@@ -785,10 +796,8 @@ std::string unit_topic_generator::operator()() const {
 
 			const std::string final_image = tc_base + "~RC(magenta>" + m.id + ")~BLIT(" + terrain_image + ")";
 
-//			row.emplace_back("<img>src='" + final_image + "'</img> " +
-//					make_link(m.name, "..terrain_" + m.id),
-//				font::pango_line_width(m.name, normal_font_size) + (high_res ? 32 : 16) );
-			ss << "<img>src='" + final_image + "'</img>" + make_link(m.name, "..terrain_" + m.id) << "<jump/>";
+			ss << "<row>";
+			ss << "<col>" << "<img src='" + final_image + "'/>" + make_link(m.name, "..terrain_" + m.id) << "</col>";
 
 			//defense  -  range: +10 % .. +70 %
 			// passing false to select the more saturated red-to-green scale
@@ -796,10 +805,9 @@ std::string unit_topic_generator::operator()() const {
 
 			std::stringstream str;
 			std::stringstream str_unformatted;
-			str << "<format>color='" << color << "' text='"<< m.defense << "%'</format>";
+			str << "<span color='" << color << "'>"<< m.defense << "%</span>";
 			str_unformatted << m.defense << "%";
-//			row.emplace_back(str.str(), font::pango_line_width(str_unformatted.str(), normal_font_size));
-			ss << str.str() << "<jump/>";
+			ss << "<col>" << str.str() << "</col>";
 
 			//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 			str.str(clear_stringstream);
@@ -809,7 +817,7 @@ std::string unit_topic_generator::operator()() const {
 
 			// passing true to select the less saturated red-to-green scale
 			std::string movement_color = game_config::red_to_green(movement_red_to_green, true).to_hex_string();
-			str << "<format>color='" << movement_color << "' text='";
+			str << "<span color='" << movement_color << "'>";
 			// A 5 MP margin; if the movement costs go above
 			// the unit's max moves + 5, we replace it with dashes.
 			if(cannot_move && (m.movement_cost > type_.movement() + 5)) {
@@ -827,9 +835,9 @@ std::string unit_topic_generator::operator()() const {
 					str_unformatted << "\u2b23\u200b";
 				}
 			}
-			str << str_unformatted.str() << "'</format>";
-//			row.emplace_back(str.str(), font::pango_line_width(str_unformatted.str(), normal_font_size));
-			ss << str.str() << "<br/>";
+			str << str_unformatted.str() << "</span>";
+			ss << "<col>" << str.str() << "</col>";
+			ss << "</row>";
 
 			//defense cap
 //			if (has_terrain_defense_caps) {
@@ -908,7 +916,7 @@ std::string unit_topic_generator::operator()() const {
 //			}
 		}
 
-		ss << "<endtable/>";
+		ss << "</table>";
 	}
 
 	/*
@@ -1232,7 +1240,7 @@ std::string unit_topic_generator::operator()() const {
 //		WRN_HP << "When building unit help topics, the display object was null and we couldn't get the terrain info we need.";
 //	}
 
-//	PLAIN_LOG << ss.str();
+	PLAIN_LOG << ss.str();
 
 	return ss.str();
 }
