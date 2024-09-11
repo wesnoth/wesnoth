@@ -175,7 +175,6 @@ void chatbox::chat_input_keypress_callback(const SDL_Keycode key)
 			break;
 		}
 
-		// TODO: very inefficient! Very! D:
 		std::vector<std::string> matches;
 		for(const auto& ui : li->users()) {
 			if(ui.name != prefs::get().login()) {

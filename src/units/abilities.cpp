@@ -1480,12 +1480,6 @@ namespace { // Helpers for attack_type::special_active()
 		if (!u) {
 			return false;
 		}
-		//update and check variable_recursion for prevent check ability_id/type_active in case of infinite recursion.
-		unit::recursion_guard special_lock = (*u).update_variables_recursion();
-		if(!special_lock) {
-			show_recursion_warning(*u, filter);
-			return false;
-		}
 
 		unit_filter ufilt{vconfig(*filter_child)};
 
