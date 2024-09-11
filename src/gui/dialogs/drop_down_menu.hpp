@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include "gui/widgets/listbox.hpp"
+//#include "gui/widgets/listbox.hpp"
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "utils/optional_fwd.hpp"
@@ -115,8 +115,6 @@ private:
 	 * This flag prevents that: the menu will only be closed on a mouse-up that follows a mouse-down.
 	 * */
 	bool mouse_down_happened_;
-
-	void init();
 
 	virtual const std::string& window_id() const override;
 

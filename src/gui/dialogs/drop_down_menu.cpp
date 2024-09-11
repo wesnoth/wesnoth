@@ -91,7 +91,6 @@ drop_down_menu::drop_down_menu(styled_widget* parent, const std::vector<config>&
 	, start_selected_(true)
 	, mouse_down_happened_(false)
 {
-	init();
 }
 
 drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open)
@@ -105,69 +104,6 @@ drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& i
 	, start_selected_(true)
 	, mouse_down_happened_(false)
 {
-	init();
-}
-
-void drop_down_menu::init()
-{
-	listbox& list = find_widget<listbox>(this, "list", true);
-
-	for(const auto& entry : items_) {
-		widget_data data;
-		widget_item item;
-
-		//
-		// These widgets can be initialized here since they don't require widget type swapping.
-		//
-		item["use_markup"] = utils::bool_string(use_markup_);
-		if(!entry.checkbox) {
-			item["label"] = entry.icon;
-			data.emplace("icon", item);
-		}
-
-		if(!entry.image) {
-			item["label"] = entry.label;
-			data.emplace("label", item);
-		}
-
-		if(entry.details) {
-			item["label"] = *entry.details;
-			data.emplace("details", item);
-		}
-
-		grid& new_row = list.add_row(data);
-		grid& mi_grid = find_widget<grid>(&new_row, "menu_item", false);
-
-		// Set the tooltip on the whole panel
-		find_widget<toggle_panel>(&new_row, "panel", false).set_tooltip(entry.tooltip);
-
-		if(entry.checkbox) {
-			auto checkbox = build_single_widget_instance<toggle_button>(config{"definition", "no_label"});
-			checkbox->set_id("checkbox");
-			checkbox->set_value_bool(*entry.checkbox);
-
-			// Fire a NOTIFIED_MODIFIED event in the parent widget when the toggle state changes
-			if(parent_) {
-				connect_signal_notify_modified(*checkbox, std::bind([this]() {
-					parent_->fire(event::NOTIFY_MODIFIED, *parent_, nullptr);
-				}));
-			}
-
-			mi_grid.swap_child("icon", std::move(checkbox), false);
-		}
-
-		if(entry.image) {
-			auto img = build_single_widget_instance<image>();
-			img->set_label(*entry.image);
-
-			mi_grid.swap_child("label", std::move(img), false);
-		}
-	}
-
-	if(selected_item_ >= 0 && static_cast<unsigned>(selected_item_) < list.get_item_count()) {
-		list.select_row(selected_item_,start_selected_);
-	}
-
 }
 
 grid& drop_down_menu::add_row(const widget_data& data, const int index)
@@ -234,6 +170,62 @@ void drop_down_menu::pre_show(window& window)
 	window.set_variable("button_h", wfl::variant(button_pos_.h));
 
 	listbox& list = find_widget<listbox>(&window, "list", true);
+
+	for(const auto& entry : items_) {
+		widget_data data;
+		widget_item item;
+
+		//
+		// These widgets can be initialized here since they don't require widget type swapping.
+		//
+		item["use_markup"] = utils::bool_string(use_markup_);
+		if(!entry.checkbox) {
+			item["label"] = entry.icon;
+			data.emplace("icon", item);
+		}
+
+		if(!entry.image) {
+			item["label"] = entry.label;
+			data.emplace("label", item);
+		}
+
+		if(entry.details) {
+			item["label"] = *entry.details;
+			data.emplace("details", item);
+		}
+
+		grid& new_row = list.add_row(data);
+		grid& mi_grid = find_widget<grid>(&new_row, "menu_item", false);
+
+		// Set the tooltip on the whole panel
+		find_widget<toggle_panel>(&new_row, "panel", false).set_tooltip(entry.tooltip);
+
+		if(entry.checkbox) {
+			auto checkbox = build_single_widget_instance<toggle_button>(config{"definition", "no_label"});
+			checkbox->set_id("checkbox");
+			checkbox->set_value_bool(*entry.checkbox);
+
+			// Fire a NOTIFIED_MODIFIED event in the parent widget when the toggle state changes
+			if(parent_) {
+				connect_signal_notify_modified(*checkbox, std::bind([this]() {
+					parent_->fire(event::NOTIFY_MODIFIED, *parent_, nullptr);
+				}));
+			}
+
+			mi_grid.swap_child("icon", std::move(checkbox), false);
+		}
+
+		if(entry.image) {
+			auto img = build_single_widget_instance<image>();
+			img->set_label(*entry.image);
+
+			mi_grid.swap_child("label", std::move(img), false);
+		}
+	}
+
+	if(selected_item_ >= 0 && static_cast<unsigned>(selected_item_) < list.get_item_count()) {
+		list.select_row(selected_item_,start_selected_);
+	}
 
 	window.keyboard_capture(&list);
 
