@@ -1357,6 +1357,16 @@ unit::state_t unit::get_known_boolean_state_id(const std::string& state)
 	return STATE_UNKNOWN;
 }
 
+std::string unit::get_known_boolean_state_name(state_t state)
+{
+	for(const auto& p : known_boolean_state_names_) {
+		if(p.second == state) {
+			return p.first;
+		}
+	}
+	return "";
+}
+
 std::map<std::string, unit::state_t> unit::known_boolean_state_names_ {
 	{"slowed",       STATE_SLOWED},
 	{"poisoned",     STATE_POISONED},
