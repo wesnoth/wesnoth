@@ -312,13 +312,8 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 	point img_size;
 	point float_size;
 
-	bool in_table = false;
-	unsigned col_idx = 0;
-	unsigned col_width = 0;
-	unsigned max_row_height = 0;
-	unsigned row_y = 0;
-
-//	DBG_GUI_RL << parsed_text.debug();
+	DBG_GUI_RL << parsed_text.debug();
+	
 	for(config::any_child tag : parsed_text.all_children_range()) {
 		config& child = tag.cfg;
 
@@ -358,8 +353,6 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 				default_text_config(curr_item);
 				new_text_block = false;
 			}
-
-			in_table = true;
 
 			// table doesn't support floating images alongside
 			img_size = point(0,0);
@@ -434,7 +427,6 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 			config& end_cfg = std::prev(text_dom.ordered_end())->cfg;
 			end_cfg["actions"] = "([set_var('pos_x', 0), set_var('pos_y', " + std::to_string(row_y) + "), set_var('tw', 0)])";
 
-			in_table = false;
 			is_image = false;
 			is_text = false;
 
@@ -444,71 +436,19 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 			row_y = 0;
 			max_row_height = 0;
 
-		} else if(tag.key == "jump") {
-			if (curr_item == nullptr) {
-				curr_item = &(text_dom.add_child("text"));
-				default_text_config(curr_item);
-				new_text_block = false;
-			}
-
-			if (col_width > 0) {
-				max_row_height = std::max(max_row_height, txt_height_);
-				max_row_height = std::max(max_row_height, static_cast<unsigned>(img_size.y));
-				txt_height_ = 0;
-
-				col_idx++;
-				x_ = col_idx * col_width;
-
-				DBG_GUI_RL << "jump to next column";
-
-				(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', %d), set_var('tw', width - %d - %d)])") % x_ % x_ % col_width);
-
-				prev_blk_height_ = row_y;
-
-				if (!is_image) {
-					new_text_block = true;
-				}
-				is_image = false;
-			}
-
-			is_text = false;
-
 		} else if(tag.key == "break" || tag.key == "br") {
 			if (curr_item == nullptr) {
 				curr_item = &(text_dom.add_child("text"));
 				default_text_config(curr_item);
 				new_text_block = false;
 			}
-
-			if (in_table) {
-				DBG_GUI_RL << "break";
-				DBG_GUI_RL << txt_height_;
-				DBG_GUI_RL << img_size;
-
-				max_row_height = std::max(max_row_height, txt_height_);
-				max_row_height = std::max(max_row_height, static_cast<unsigned>(img_size.y));
-
-				DBG_GUI_RL << "row height: " << max_row_height;
-
-				//linebreak
-				col_idx = 0;
-				prev_blk_height_ = row_y;
-				prev_blk_height_ += max_row_height + padding_;
-				row_y = prev_blk_height_;
-
-				(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + %d + %d), set_var('tw', width - pos_x - %d)])") % max_row_height % padding_ % col_width);
-
-				max_row_height = 0;
-				txt_height_ = 0;
-
+			
+			// TODO correct height update
+			if (is_image && !is_float) {
+				prev_blk_height_ += padding_;
+				(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
 			} else {
-				// TODO correct height update
-				if (is_image && !is_float) {
-					prev_blk_height_ += padding_;
-					(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
-				} else {
-					add_text_with_attribute(*curr_item, "\n");
-				}
+				add_text_with_attribute(*curr_item, "\n");
 			}
 
 			x_ = 0;
@@ -521,21 +461,6 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 				new_text_block = true;
 			}
 			is_text = false;
-
-		} else if(tag.key == "endtable") {
-			if (curr_item == nullptr) {
-				curr_item = &(text_dom.add_child("text"));
-				default_text_config(curr_item);
-				new_text_block = false;
-			}
-
-			in_table = false;
-			is_image = false;
-			is_text = false;
-
-			col_width = 0;
-			row_y = 0;
-			max_row_height = 0;
 
 		} else {
 			std::string line = child["text"];
@@ -556,7 +481,7 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 			}
 
 			if (curr_item == nullptr || new_text_block) {
-				if (!in_table && curr_item != nullptr) {
+				if (curr_item != nullptr) {
 					// table will calculate this by itself, no need to calculate here
 					prev_blk_height_ += txt_height_;
 					txt_height_ = 0;
@@ -719,9 +644,7 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 		}
 
 		if (!is_image && !wrap_mode && img_size.y > 0) {
-			if (!in_table) {
-				img_size = point(0,0);
-			}
+			img_size = point(0,0);
 		}
 
 		if (curr_item) {
