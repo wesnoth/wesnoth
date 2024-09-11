@@ -189,14 +189,14 @@ static int impl_widget_collect(lua_State* L)
 // merge in number_of_items stuff from wiget_methods here?
 static int impl_widget_length(lua_State* L)
 {
-	gui2::widget* w = &luaW_checkwidget(L, 1);
-	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w)) {
+	gui2::widget& w = luaW_checkwidget(L, 1);
+	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(&w)) {
 		lua_pushinteger(L, list->get_item_count());
-	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(w)) {
+	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(&w)) {
 		lua_pushinteger(L, multi_page->get_page_count());
-	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(w)) {
+	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(&w)) {
 		lua_pushinteger(L, tree_view->get_root_node().count_children());
-	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(w)) {
+	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(&w)) {
 		lua_pushinteger(L, tree_view_node->count_children());
 	} else {
 		luaW_tableget(L, 1, "type");
