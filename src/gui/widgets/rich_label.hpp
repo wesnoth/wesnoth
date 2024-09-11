@@ -127,7 +127,7 @@ public:
 	void set_topic(const help::topic* topic);
 
 	// Show a help config
-	config get_parsed_text(const config& parsed_text, const bool finalize = false);
+	config get_parsed_text(const config& parsed_text, const point& origin, const bool finalize = false);
 
 	// Attaches a callback function that will be called when a link is clicked
 	void register_link_callback(std::function<void(std::string)> link_handler)
@@ -217,7 +217,7 @@ private:
 	}
 	void add_text_with_attributes(config& curr_item, std::string text, std::vector<std::string> attr_names, std::vector<std::string> extra_data);
 	void add_image(config& curr_item, std::string name, std::string align, bool has_prev_image, bool is_prev_float, bool floating, point& img_size, point& float_size);
-	void add_link(config& curr_item, std::string name, std::string dest, int img_width);
+	void add_link(config& curr_item, std::string name, std::string dest, const point& origin, int img_width);
 
 	void append_if_not_empty(config_attribute_value* key, std::string suffix) {
 		if (!key->str().empty()) {
