@@ -155,7 +155,7 @@ public:
 		/**
 		 * Only expected to be called in update_variables_recursion(), which handles some of the checks.
 		 */
-		explicit recursion_guard(const attack_type& weapon);
+		explicit recursion_guard(const attack_type& weapon, const config& special);
 	public:
 		/**
 		 * Construct an empty instance, only useful for extending the lifetime of a
@@ -185,12 +185,11 @@ public:
 	 * recursion might occur, similar to a reentrant mutex that's limited to a small number of
 	 * reentrances.
 	 *
-	 * This is a cheap function, so no reason to optimise by doing some filters before calling it.
-	 * However, it only expects to be called in a single thread, but the whole of attack_type makes
-	 * that assumption, for example its mutable members are assumed to be set up by the current
+	 * This only expects to be called in a single thread, but the whole of attack_type makes
+	 * that assumption, for example its' mutable members are assumed to be set up by the current
 	 * caller (or caller's caller, probably several layers up).
 	 */
-	recursion_guard update_variables_recursion() const;
+	recursion_guard update_variables_recursion(const config& special) const;
 
 private:
 	// In unit_abilities.cpp:
@@ -398,8 +397,12 @@ private:
 	int parry_;
 	config specials_;
 	bool changed_;
-	/** Number of instances of recursion_guard that are currently allocated permission to recurse */
-	mutable unsigned int num_recursion_ = 0;
+	/**
+	 * While processing a recursive match, all the filters that are currently being checked, oldest first.
+	 * Each will have an instance of recursion_guard that is currently allocated permission to recurse, and
+	 * which will pop the config off this stack when the recursion_guard is finalized.
+	 */
+	mutable std::vector<const config*> open_queries_;
 };
 
 using attack_list = std::vector<attack_ptr>;
