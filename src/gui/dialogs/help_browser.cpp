@@ -24,6 +24,7 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/rich_label.hpp"
 #include "gui/widgets/scroll_label.hpp"
+#include "gui/widgets/scrollbar_panel.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -151,7 +152,9 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 		find_widget<label>(this, "topic_title", false).set_label(topic->title);
 		find_widget<rich_label>(this, "topic_text", false).set_topic(topic);
 
-		get_window()->invalidate_layout();
+		invalidate_layout();
+		scrollbar_panel& scroll = find_widget<scrollbar_panel>(this, "topic_scroll_panel", false);
+		scroll.scroll_vertical_scrollbar(scrollbar_base::BEGIN);
 	}
 
 	if (add_to_history) {

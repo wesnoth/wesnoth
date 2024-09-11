@@ -190,27 +190,25 @@ void rich_label::add_image(config& curr_item, std::string name, std::string alig
 	actions.str("");
 }
 
-void rich_label::add_link(config& curr_item, std::string name, std::string dest, int img_width) {
+void rich_label::add_link(config& curr_item, std::string name, std::string dest, const point& origin, int img_width) {
 	// TODO algorithm needs to be text_alignment independent
 
 	DBG_GUI_RL << "add_link: " << name << "->" << dest;
-	DBG_GUI_RL << "x=" << x_ << " width=" << img_width;
+	DBG_GUI_RL << "origin: " << origin;
+	DBG_GUI_RL << "width=" << img_width;
 
 	point t_start, t_end;
 
-	setup_text_renderer(curr_item, w_ - x_ - img_width);
-	t_start.x = x_ + get_xy_from_offset(utf8::size(curr_item["text"].str())).x;
-	t_start.y = prev_blk_height_ + get_xy_from_offset(utf8::size(curr_item["text"].str())).y;
+	setup_text_renderer(curr_item, w_ - origin.x - img_width);
+	t_start = origin + get_xy_from_offset(utf8::size(curr_item["text"].str()));
 	DBG_GUI_RL << "link text start:" << t_start;
 
 	std::string link_text = name.empty() ? dest : name;
 	add_text_with_attribute(curr_item, link_text, "color", link_color_.to_hex_string());
 
-	setup_text_renderer(curr_item, w_ - x_ - img_width);
-	t_end.x = x_ + get_xy_from_offset(utf8::size(curr_item["text"].str())).x;
+	setup_text_renderer(curr_item, w_ - origin.x - img_width);
+	t_end.x = origin.x + get_xy_from_offset(utf8::size(curr_item["text"].str())).x;
 	DBG_GUI_RL << "link text end:" << t_end;
-
-	DBG_GUI_RL << "prev_blk_height_: " << prev_blk_height_ << ", text_height_: " << txt_height_;
 
 	// TODO link after right aligned images
 
@@ -276,7 +274,7 @@ size_t rich_label::get_split_location(std::string text, const point& pos) {
 void rich_label::set_topic(const help::topic* topic)
 {
 	styled_widget::set_label(topic->text.parsed_text().debug());
-	text_dom_ = get_parsed_text(topic->text.parsed_text(), true);
+	text_dom_ = get_parsed_text(topic->text.parsed_text(), point(0,0), true);
 }
 
 void rich_label::set_label(const t_string& text)
@@ -285,18 +283,24 @@ void rich_label::set_label(const t_string& text)
 	unparsed_text_ = text;
 	help::topic_text marked_up_text(text);
 	const config& parsed_text = marked_up_text.parsed_text();
-	text_dom_ = get_parsed_text(parsed_text, true);
+	text_dom_ = get_parsed_text(parsed_text, point(0,0), true);
 }
 
-config rich_label::get_parsed_text(const config& parsed_text, const bool finalize)
+config rich_label::get_parsed_text(const config& parsed_text, const point& origin, const bool finalize)
 {
 	// Initialization
 	DBG_GUI_RL << "Width: " << w_;
-	x_ = 0;
-	h_ = 0;
-	config text_dom;
-	links_.clear();
 
+	x_ = origin.x;
+	prev_blk_height_ = origin.y;
+	txt_height_ = 0;
+	h_ = 0;
+
+	if (finalize) {
+            links_.clear();
+	}
+
+	config text_dom;
 	config* curr_item = nullptr;
 
 	bool is_text = false;
@@ -304,9 +308,6 @@ config rich_label::get_parsed_text(const config& parsed_text, const bool finaliz
 	bool is_float = false;
 	bool wrap_mode = false;
 	bool new_text_block = false;
-
-	prev_blk_height_ = 0;
-	txt_height_ = 0;
 
 	point img_size;
 	point float_size;
@@ -317,7 +318,7 @@ config rich_label::get_parsed_text(const config& parsed_text, const bool finaliz
 	unsigned max_row_height = 0;
 	unsigned row_y = 0;
 
-	DBG_GUI_RL << parsed_text.debug();
+//	DBG_GUI_RL << parsed_text.debug();
 	for(config::any_child tag : parsed_text.all_children_range()) {
 		config& child = tag.cfg;
 
@@ -359,54 +360,59 @@ config rich_label::get_parsed_text(const config& parsed_text, const bool finaliz
 			}
 
 			in_table = true;
-			col_idx = 0;
 
 			// table doesn't support floating images alongside
 			img_size = point(0,0);
 			float_size = point(0,0);
-
-			// setup column width
-			unsigned columns = child["col"].to_int();
-			unsigned width = child["width"].to_int();
-			width = (width > 0) ? width : w_;
-			col_width = width/columns;
-
-			// start on a new line
-			(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + %s), set_var('tw', width - pos_x - %d)])") % (is_image ? "image_height" : "text_height") % col_width);
 			x_ = 0;
 			prev_blk_height_ += txt_height_;
 			txt_height_ = 0;
-			row_y = prev_blk_height_;
+
+			// init table vars
+			unsigned col_idx;
+			unsigned columns = child["col"].to_int(1);
+			unsigned width = child["width"].to_int(w_);
+			unsigned col_width = width/columns;
+			unsigned col_x = 0;
+			unsigned row_y = prev_blk_height_;
+			unsigned max_row_height = 0;
+
+			// start on a new line
+			(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', %d), set_var('tw', width - pos_x - %d)])") % row_y % col_width);
 
 			is_text = false;
 			new_text_block = true;
 			is_image = false;
 
+			PLAIN_LOG << __LINE__ <<  " " << prev_blk_height_;
+
 			DBG_GUI_RL << "start table : " << "col=" << columns << " width=" << width;
 			DBG_GUI_RL << "col_width : " << col_width;
 
 			for (config& row : tag.cfg.child_range("row")) {
+				col_x = 0;
+				col_idx = 0;
+				max_row_height = 0;
+
 				for (config& col : row.child_range("col")) {
+
 					config col_cfg;
 					config& col_txt_cfg = col_cfg.add_child("text");
 					col_txt_cfg.append_attributes(col);
 					col_cfg.append_children(col);
 
 					// attach data
-					text_dom.append(get_parsed_text(col_cfg));
+					text_dom.append(get_parsed_text(col_cfg, point(col_x, row_y)));
 
-					//column post-processing
-					max_row_height = std::max(max_row_height, txt_height_);
-					max_row_height = std::max(max_row_height, h_);
-					txt_height_ = 0;
-
-					config& end_cfg = std::prev(text_dom.ordered_end())->cfg;
+					// column post-processing
+					max_row_height = std::max(max_row_height, h_ - row_y);
 
 					// move x to next column
 					col_idx++;
-					x_ = col_idx * col_width;
-					prev_blk_height_ = row_y;
-					end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', %d), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % x_ % row_y % x_ % col_width);
+					col_x = col_idx * col_width;
+
+					config& end_cfg = std::prev(text_dom.ordered_end())->cfg;
+					end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', %d), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % col_x % row_y % col_x % col_width);
 
 					DBG_GUI_RL << "jump to next column";
 
@@ -416,20 +422,27 @@ config rich_label::get_parsed_text(const config& parsed_text, const bool finaliz
 					is_image = false;
 				}
 
-				DBG_GUI_RL << "row height: " << max_row_height;
-
-				//linebreak
-				col_idx = 0;
-				prev_blk_height_ = row_y;
-				prev_blk_height_ += max_row_height + padding_;
-				row_y = prev_blk_height_;
-
+				row_y += max_row_height + padding_;
 				config& end_cfg = std::prev(text_dom.ordered_end())->cfg;
-				end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', pos_y + %d + %d), set_var('tw', width - pos_x - %d)])") % max_row_height % padding_ % col_width);
-
-				max_row_height = 0;
-				txt_height_ = 0;
+				end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % row_y % col_x % col_width);
+				DBG_GUI_RL << "row height: " << max_row_height;
 			}
+
+			prev_blk_height_ = row_y;
+			txt_height_ = 0;
+
+			config& end_cfg = std::prev(text_dom.ordered_end())->cfg;
+			end_cfg["actions"] = "([set_var('pos_x', 0), set_var('pos_y', " + std::to_string(row_y) + "), set_var('tw', 0)])";
+
+			in_table = false;
+			is_image = false;
+			is_text = false;
+
+			x_ = 0;
+			col_width = 0;
+			col_x = 0;
+			row_y = 0;
+			max_row_height = 0;
 
 		} else if(tag.key == "jump") {
 			if (curr_item == nullptr) {
@@ -526,7 +539,8 @@ config rich_label::get_parsed_text(const config& parsed_text, const bool finaliz
 
 		} else {
 			std::string line = child["text"];
-			if (line.empty()) {
+
+			if (!finalize && line.empty()) {
 				continue;
 			}
 
@@ -563,7 +577,7 @@ config rich_label::get_parsed_text(const config& parsed_text, const bool finaliz
 
 			if(tag.key == "ref") {
 
-				add_link(*curr_item, line, child["dst"], float_size.x);
+				add_link(*curr_item, line, child["dst"], point(x_, prev_blk_height_), float_size.x);
 				is_image = false;
 
 				DBG_GUI_RL << "ref: dst=" << child["dst"];
@@ -614,7 +628,7 @@ config rich_label::get_parsed_text(const config& parsed_text, const bool finaliz
 
 				is_image = false;
 
-				DBG_GUI_RL << "h: text=" << line;
+				DBG_GUI_RL << "entity: text=" << line;
 
 			} else if(tag.key == "span" || tag.key == "format") {
 
@@ -731,19 +745,23 @@ config rich_label::get_parsed_text(const config& parsed_text, const bool finaliz
 		break_cfg["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0), set_var('img_x', 0), set_var('img_y', 0), set_var('ww', 0), set_var('tw', 0)])";
 	}
 
-	DBG_GUI_RL << text_dom.debug();
+	if (finalize) {
+		DBG_GUI_RL << text_dom.debug();
+	}
 	DBG_GUI_RL << "Height: " << h_;
 
 	// DEBUG: draw boxes around links
 	#if LINK_DEBUG_BORDER
-	for (const auto& entry : links_) {
-		config& link_rect_cfg = text_dom.add_child("rectangle");
-		link_rect_cfg["x"] = entry.first.x;
-		link_rect_cfg["y"] = entry.first.y;
-		link_rect_cfg["w"] = entry.first.w;
-		link_rect_cfg["h"] = entry.first.h;
-		link_rect_cfg["border_thickness"] = 1;
-		link_rect_cfg["border_color"] = "255, 180, 0, 255";
+	if (finalize) {
+		for (const auto& entry : links_) {
+			config& link_rect_cfg = text_dom.add_child("rectangle");
+			link_rect_cfg["x"] = entry.first.x;
+			link_rect_cfg["y"] = entry.first.y;
+			link_rect_cfg["w"] = entry.first.w;
+			link_rect_cfg["h"] = entry.first.h;
+			link_rect_cfg["border_thickness"] = 1;
+			link_rect_cfg["border_color"] = "255, 180, 0, 255";
+		}
 	}
 	#endif
 
