@@ -181,8 +181,7 @@ bool affects_side(const config& cfg, std::size_t side, std::size_t other_side)
 bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
 {
 	for (const config &i : this->abilities_.child_range(tag_name)) {
-		if (ability_active(tag_name, i, loc) &&
-			ability_affects_self(tag_name, i, loc))
+		if (get_self_ability_bool(i, tag_name, loc))
 		{
 			return true;
 		}
@@ -203,9 +202,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		if ( &*it == this )
 			continue;
 		for (const config &j : it->abilities_.child_range(tag_name)) {
-			if (affects_side(j, side(), it->side()) &&
-			    it->ability_active(tag_name, j, adjacent[i]) &&
-			    ability_affects_adjacent(tag_name,  j, i, loc, *it))
+			if (get_adj_ability_bool(j, tag_name, i, loc,*it))
 			{
 				return true;
 			}
@@ -221,8 +218,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 	unit_ability_list res(loc_);
 
 	for(const config& i : this->abilities_.child_range(tag_name)) {
-		if(ability_active(tag_name, i, loc)
-			&& ability_affects_self(tag_name, i, loc))
+		if (get_self_ability_bool(i, tag_name, loc))
 		{
 			res.emplace_back(&i, loc, loc);
 		}
@@ -243,9 +239,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		if ( &*it == this )
 			continue;
 		for(const config& j : it->abilities_.child_range(tag_name)) {
-			if(affects_side(j, side(), it->side())
-				&& it->ability_active(tag_name, j, adjacent[i])
-				&& ability_affects_adjacent(tag_name, j, i, loc, *it))
+			if(get_adj_ability_bool(j, tag_name, i, loc,*it))
 			{
 				res.emplace_back(&j, loc, adjacent[i]);
 			}
@@ -351,18 +345,6 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 }
 
 namespace {
-/**
- * Value of unit::num_recursion_ at which allocations of further recursion_guards fail. This
- * value is used per unit.
- *
- *
- * With the limit set to 2, all tests pass, but as the limit only affects cases that would otherwise
- * lead to a crash, it seems reasonable to leave a little headroom for more complex logic.
- */
-constexpr unsigned int UNIT_RECURSION_LIMIT = 3;
-};
-
-namespace {
 	/**
 	 * Print "Recursion limit reached" log messages, including deduplication if the same problem has
 	 * already been logged.
@@ -394,20 +376,20 @@ namespace {
 	}
 }//anonymous namespace
 
-unit::recursion_guard unit::update_variables_recursion() const
+unit::recursion_guard unit::update_variables_recursion(const config& ability) const
 {
-	if(num_recursion_ < UNIT_RECURSION_LIMIT) {
-		return recursion_guard(*this);
+	if(utils::contains(open_queries_, &ability)) {
+		return recursion_guard();
 	}
-	return recursion_guard();
+	return recursion_guard(*this, ability);
 }
 
 unit::recursion_guard::recursion_guard() = default;
 
-unit::recursion_guard::recursion_guard(const unit & u)
+unit::recursion_guard::recursion_guard(const unit & u, const config& ability)
 	: parent(u.shared_from_this())
 {
-	u.num_recursion_++;
+	u.open_queries_.emplace_back(&ability);
 }
 
 unit::recursion_guard::recursion_guard(unit::recursion_guard&& other)
@@ -430,19 +412,23 @@ unit::recursion_guard& unit::recursion_guard::operator=(unit::recursion_guard&& 
 unit::recursion_guard::~recursion_guard()
 {
 	if(parent) {
-		assert(parent->num_recursion_ > 0);
-		parent->num_recursion_--;
+		assert(!parent->open_queries_.empty());
+		parent->open_queries_.pop_back();
 	}
 }
 
 bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
-	unit::recursion_guard filter_lock;
-	filter_lock = update_variables_recursion();
+	auto filter_lock = update_variables_recursion(cfg);
 	if(!filter_lock) {
 		show_recursion_warning(*this, cfg);
 		return false;
 	}
+	return ability_active_impl(ability, cfg, loc);
+}
+
+bool unit::ability_active_impl(const std::string& ability,const config& cfg,const map_location& loc) const
+{
 	bool illuminates = ability == "illuminates";
 
 	if (auto afilter = cfg.optional_child("filter"))
@@ -515,14 +501,6 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,const map_location& loc,const unit& from) const
 {
-	unit::recursion_guard adj_lock;
-	if(cfg.has_child("affect_adjacent")){
-		adj_lock = update_variables_recursion();
-		if(!adj_lock) {
-			show_recursion_warning(*this, cfg);
-			return false;
-		}
-	}
 	bool illuminates = ability == "illuminates";
 
 	assert(dir >=0 && dir <= 5);
@@ -551,14 +529,6 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 bool unit::ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	auto filter = cfg.optional_child("filter_self");
-	unit::recursion_guard self_lock;
-	if(filter){
-		self_lock = update_variables_recursion();
-		if(!self_lock) {
-			show_recursion_warning(*this, cfg);
-			return false;
-		}
-	}
 	bool affect_self = cfg["affect_self"].to_bool(true);
 	if (!filter || !affect_self) return affect_self;
 	return unit_filter(vconfig(*filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
@@ -1680,15 +1650,25 @@ static void get_ability_children(std::vector<special_match>& tag_result,
 	}
 }
 
-bool unit::get_self_ability_bool(const config& special, const std::string& tag_name, const map_location& loc) const
+bool unit::get_self_ability_bool(const config& cfg, const std::string& ability, const map_location& loc) const
 {
-	return (ability_active(tag_name, special, loc) && ability_affects_self(tag_name, special, loc));
+	auto filter_lock = update_variables_recursion(cfg);
+	if(!filter_lock) {
+		show_recursion_warning(*this, cfg);
+		return false;
+	}
+	return (ability_active_impl(ability, cfg, loc) && ability_affects_self(ability, cfg, loc));
 }
 
-bool unit::get_adj_ability_bool(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from) const
+bool unit::get_adj_ability_bool(const config& cfg, const std::string& ability, int dir, const map_location& loc, const unit& from) const
 {
+	auto filter_lock = from.update_variables_recursion(cfg);
+	if(!filter_lock) {
+		show_recursion_warning(from, cfg);
+		return false;
+	}
 	const auto adjacent = get_adjacent_tiles(loc);
-	return (affects_side(special, side(), from.side()) && from.ability_active(tag_name, special, adjacent[dir]) && ability_affects_adjacent(tag_name,  special, dir, loc, from));
+	return (affects_side(cfg, side(), from.side()) && from.ability_active_impl(ability, cfg, adjacent[dir]) && ability_affects_adjacent(ability, cfg, dir, loc, from));
 }
 
 bool unit::get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
