@@ -175,6 +175,7 @@ class game_lua_kernel : public lua_kernel_base
 	int impl_theme_item(lua_State *L, std::string name);
 	int impl_theme_items_get(lua_State *L);
 	int impl_theme_items_set(lua_State *L);
+	int impl_theme_items_dir(lua_State *L);
 	int cfun_builtin_effect(lua_State *L);
 	int cfun_wml_action(lua_State *L);
 	int intf_fire_event(lua_State *L, const bool by_id);
