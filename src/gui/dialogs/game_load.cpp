@@ -336,13 +336,7 @@ void game_load::apply_filter_text(const std::string& text, bool force)
 			bool found = false;
 			for(const auto & word : words)
 			{
-				found = std::search(games_[i].name().begin(),
-									games_[i].name().end(),
-									word.begin(),
-									word.end(),
-									utils::chars_equal_insensitive)
-						!= games_[i].name().end();
-
+				found = translation::ci_search(games_[i].name(), word);
 				if(!found) {
 					// one word doesn't match, we don't reach words.end()
 					break;
