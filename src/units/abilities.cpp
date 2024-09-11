@@ -351,18 +351,6 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 }
 
 namespace {
-/**
- * Value of unit::num_recursion_ at which allocations of further recursion_guards fail. This
- * value is used per unit.
- *
- *
- * With the limit set to 2, all tests pass, but as the limit only affects cases that would otherwise
- * lead to a crash, it seems reasonable to leave a little headroom for more complex logic.
- */
-constexpr unsigned int UNIT_RECURSION_LIMIT = 3;
-};
-
-namespace {
 	/**
 	 * Print "Recursion limit reached" log messages, including deduplication if the same problem has
 	 * already been logged.
@@ -394,20 +382,20 @@ namespace {
 	}
 }//anonymous namespace
 
-unit::recursion_guard unit::update_variables_recursion() const
+unit::recursion_guard unit::update_variables_recursion(const config& ability) const
 {
-	if(num_recursion_ < UNIT_RECURSION_LIMIT) {
-		return recursion_guard(*this);
+	if(utils::contains(open_queries_, ability)) {
+		return recursion_guard();
 	}
-	return recursion_guard();
+	return recursion_guard(*this, ability);
 }
 
 unit::recursion_guard::recursion_guard() = default;
 
-unit::recursion_guard::recursion_guard(const unit & u)
+unit::recursion_guard::recursion_guard(const unit & u, const config& ability)
 	: parent(u.shared_from_this())
 {
-	u.num_recursion_++;
+	u.open_queries_.emplace_back(ability);
 }
 
 unit::recursion_guard::recursion_guard(unit::recursion_guard&& other)
@@ -430,15 +418,15 @@ unit::recursion_guard& unit::recursion_guard::operator=(unit::recursion_guard&& 
 unit::recursion_guard::~recursion_guard()
 {
 	if(parent) {
-		assert(parent->num_recursion_ > 0);
-		parent->num_recursion_--;
+		assert(!parent->open_queries_.empty());
+		parent->open_queries_.pop_back();
 	}
 }
 
 bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	unit::recursion_guard filter_lock;
-	filter_lock = update_variables_recursion();
+	filter_lock = update_variables_recursion(cfg);
 	if(!filter_lock) {
 		show_recursion_warning(*this, cfg);
 		return false;
@@ -517,7 +505,7 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 {
 	unit::recursion_guard adj_lock;
 	if(cfg.has_child("affect_adjacent")){
-		adj_lock = update_variables_recursion();
+		adj_lock = update_variables_recursion(cfg);
 		if(!adj_lock) {
 			show_recursion_warning(*this, cfg);
 			return false;
@@ -553,7 +541,7 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 	auto filter = cfg.optional_child("filter_self");
 	unit::recursion_guard self_lock;
 	if(filter){
-		self_lock = update_variables_recursion();
+		self_lock = update_variables_recursion(cfg);
 		if(!self_lock) {
 			show_recursion_warning(*this, cfg);
 			return false;
