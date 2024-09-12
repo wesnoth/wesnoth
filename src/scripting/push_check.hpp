@@ -20,6 +20,7 @@
 #include "lua/wrapper_lauxlib.h"
 #include "tstring.hpp"
 #include "map/location.hpp"
+#include "variable.hpp"
 
 #include <cassert>
 #include <string_view>
@@ -146,6 +147,27 @@ namespace lua_check_impl
 	lua_push(lua_State *L, const config& val)
 	{
 		luaW_pushconfig(L, val);
+	}
+
+	//vconfig
+	template<typename T>
+	std::enable_if_t<std::is_same_v<T, vconfig>, vconfig>
+	lua_check(lua_State *L, int n)
+	{
+		return luaW_checkvconfig(L, n);
+	}
+	template<typename T>
+	std::enable_if_t<std::is_same_v<T, vconfig>, vconfig>
+	lua_to_or_default(lua_State *L, int n, const T& def)
+	{
+		vconfig cfg = vconfig::unconstructed_vconfig();
+		return luaW_tovconfig(L, n, cfg) ? cfg : def;
+	}
+	template<typename T>
+	std::enable_if_t<std::is_same_v<T, vconfig>, void>
+	lua_push(lua_State *L, const vconfig& val)
+	{
+		luaW_pushvconfig(L, val);
 	}
 
 	//location

@@ -1547,6 +1547,178 @@ static int impl_mp_settings_len(lua_State* L)
 	return 1;
 }
 
+struct scenario_tag {
+	game_lua_kernel& ref;
+	scenario_tag(game_lua_kernel& k) : ref(k) {}
+	auto& tod_man() const { return ref.tod_man(); }
+	auto& gamedata() const { return ref.gamedata(); }
+	auto& pc() const { return ref.play_controller_; }
+	auto& cls() const { return ref.play_controller_.get_classification(); }
+	auto end_level_set() const { return &dispatch<&game_lua_kernel::impl_end_level_data_set>; }
+};
+#define SCENARIO_GETTER(name, type) LATTR_GETTER(name, type, scenario_tag, k)
+#define SCENARIO_SETTER(name, type) LATTR_SETTER(name, type, scenario_tag, k)
+luaW_Registry scenarioReg{"scenario"};
+
+template<> struct lua_object_traits<scenario_tag> {
+	inline static auto metatable = "scenario";
+	inline static scenario_tag get(lua_State* L, int) {
+		return lua_kernel_base::get_lua_kernel<game_lua_kernel>(L);
+	}
+};
+
+SCENARIO_GETTER("turns", int) {
+	return k.tod_man().number_of_turns();
+}
+
+SCENARIO_SETTER("turns", int) {
+	k.tod_man().set_number_of_turns_by_wml(value);
+}
+
+SCENARIO_GETTER("next", std::string) {
+	return k.gamedata().next_scenario();
+}
+
+SCENARIO_SETTER("next", std::string) {
+	k.gamedata().set_next_scenario(value);
+}
+
+SCENARIO_GETTER("id", std::string) {
+	return k.gamedata().get_id();
+}
+
+SCENARIO_GETTER("name", t_string) {
+	return k.pc().get_scenario_name();
+}
+
+SCENARIO_GETTER("defeat_music", std::vector<std::string>) {
+	return k.gamedata().get_defeat_music();
+}
+
+SCENARIO_SETTER("defeat_music", std::vector<std::string>) {
+	k.gamedata().set_defeat_music(value);
+}
+
+SCENARIO_GETTER("victory_music", std::vector<std::string>) {
+	return k.gamedata().get_victory_music();
+}
+
+SCENARIO_SETTER("victory_music", std::vector<std::string>) {
+	k.gamedata().set_victory_music(value);
+}
+
+SCENARIO_GETTER("resources", std::vector<config>) {
+	std::vector<config> resources;
+	for(const std::string& rsrc : utils::split(k.pc().get_loaded_resources())) {
+		resources.push_back(find_addon("resource", rsrc));
+	}
+	return resources;
+}
+
+SCENARIO_GETTER("type", std::string) {
+	return campaign_type::get_string(k.cls().type);
+}
+
+SCENARIO_GETTER("difficulty", std::string) {
+	return k.cls().difficulty;
+}
+
+SCENARIO_GETTER("show_credits", bool) {
+	return k.cls().end_credits;
+}
+
+SCENARIO_SETTER("show_credits", bool) {
+	k.cls().end_credits = value;
+}
+
+SCENARIO_GETTER("end_text", t_string) {
+	return k.cls().end_text;
+}
+
+SCENARIO_SETTER("end_text", t_string) {
+	k.cls().end_text = value;
+}
+
+SCENARIO_GETTER("end_text_duration", int) {
+	return k.cls().end_text_duration;
+}
+
+SCENARIO_SETTER("end_text_duration", int) {
+	k.cls().end_text_duration = value;
+}
+
+SCENARIO_GETTER("campaign", utils::optional<config>) {
+	if(k.cls().campaign.empty()) return utils::nullopt;
+	return find_addon("campaign", k.cls().campaign);
+}
+
+SCENARIO_GETTER("modifications", std::vector<config>) {
+	std::vector<config> mods;
+	for(const std::string& mod : k.cls().active_mods) {
+		mods.push_back(find_addon("modification", mod));
+	}
+	return mods;
+}
+
+SCENARIO_GETTER("end_level_data", lua_index_raw) {
+	if (!k.pc().is_regular_game_end()) {
+		lua_pushnil(L);
+		return lua_index_raw(L);
+	}
+	auto data = k.pc().get_end_level_data();
+	new(L) end_level_data(data);
+	if(luaL_newmetatable(L, "end level data")) {
+		static luaL_Reg const callbacks[] {
+			{ "__index", 	    &impl_end_level_data_get},
+			{ "__newindex",     k.end_level_set()},
+			{ "__gc",           &impl_end_level_data_collect},
+			{ nullptr, nullptr }
+		};
+		luaL_setfuncs(L, callbacks, 0);
+	}
+	lua_setmetatable(L, -2);
+	return lua_index_raw(L);
+}
+
+SCENARIO_SETTER("end_level_data", vconfig) {
+	end_level_data data;
+
+	data.proceed_to_next_level = value["proceed_to_next_level"].to_bool(true);
+	data.transient.carryover_report = value["carryover_report"].to_bool(true);
+	data.prescenario_save = value["save"].to_bool(true);
+	data.replay_save = value["replay_save"].to_bool(true);
+	data.transient.linger_mode = value["linger_mode"].to_bool(true) && !k.ref.teams().empty();
+	data.transient.reveal_map = value["reveal_map"].to_bool(k.pc().reveal_map_default());
+	data.is_victory = value["result"] == level_result::victory;
+	data.test_result = value["test_result"].str();
+	k.pc().set_end_level_data(data);
+}
+
+SCENARIO_GETTER("mp_settings", lua_index_raw) {
+	if(!k.cls().is_multiplayer()) {
+		lua_pushnil(L);
+		return lua_index_raw(L);
+	}
+	lua_newuserdatauv(L, 0, 0);
+	if(luaL_newmetatable(L, "mp settings")) {
+		lua_pushlightuserdata(L, &k.pc());
+		lua_pushcclosure(L, impl_mp_settings_get, 1);
+		lua_setfield(L, -2, "__index");
+		lua_pushlightuserdata(L, &k.pc());
+		lua_pushcclosure(L, impl_mp_settings_len, 1);
+		lua_setfield(L, -2, "__len");
+		lua_pushstring(L, "mp settings");
+		lua_setfield(L, -2, "__metatable");
+	}
+	lua_setmetatable(L, -2);
+	return lua_index_raw(L);
+}
+
+SCENARIO_GETTER("era", utils::optional<config>) {
+	if(!k.cls().is_multiplayer()) return utils::nullopt;
+	return find_addon("era", k.cls().era_id);
+}
+
 /**
  * Gets some scenario data (__index metamethod).
  * - Arg 1: userdata (ignored).
@@ -1556,80 +1728,7 @@ static int impl_mp_settings_len(lua_State* L)
 int game_lua_kernel::impl_scenario_get(lua_State *L)
 {
 	DBG_LUA << "impl_scenario_get";
-	char const *m = luaL_checkstring(L, 2);
-
-	// Find the corresponding attribute.
-	return_int_attrib("turns", tod_man().number_of_turns());
-	return_string_attrib("next", gamedata().next_scenario());
-	return_string_attrib("id", gamedata().get_id());
-	return_tstring_attrib("name", play_controller_.get_scenario_name());
-	return_vector_string_attrib("defeat_music", gamedata().get_defeat_music());
-	return_vector_string_attrib("victory_music", gamedata().get_victory_music());
-	if(strcmp(m, "resources") == 0) {
-		std::vector<config> resources;
-		for(const std::string& rsrc : utils::split(play_controller_.get_loaded_resources())) {
-			resources.push_back(find_addon("resource", rsrc));
-		}
-		lua_push(L, resources);
-		return 1;
-	}
-
-	const game_classification& classification = play_controller_.get_classification();
-	return_string_attrib("type", campaign_type::get_string(classification.type));
-	return_string_attrib("difficulty", classification.difficulty);
-	return_bool_attrib("show_credits", classification.end_credits);
-	return_tstring_attrib("end_text", classification.end_text);
-	return_int_attrib("end_text_duration", classification.end_text_duration);
-	if(!classification.campaign.empty()) {
-		return_cfgref_attrib("campaign", find_addon("campaign", classification.campaign));
-	}
-	if(strcmp(m, "modifications") == 0) {
-		std::vector<config> mods;
-		for(const std::string& mod : classification.active_mods) {
-			mods.push_back(find_addon("modification", mod));
-		}
-		lua_push(L, mods);
-		return 1;
-	}
-	if(strcmp(m, "end_level_data") == 0) {
-		if (!play_controller_.is_regular_game_end()) {
-			return 0;
-		}
-		auto data = play_controller_.get_end_level_data();
-		new(L) end_level_data(data);
-		if(luaL_newmetatable(L, "end level data")) {
-			static luaL_Reg const callbacks[] {
-				{ "__index", 	    &impl_end_level_data_get},
-				{ "__newindex",     &dispatch<&game_lua_kernel::impl_end_level_data_set>},
-				{ "__gc",           &impl_end_level_data_collect},
-				{ nullptr, nullptr }
-			};
-			luaL_setfuncs(L, callbacks, 0);
-		}
-		lua_setmetatable(L, -2);
-
-		return 1;
-	}
-
-	if(classification.is_multiplayer()) {
-		if(strcmp(m, "mp_settings") == 0) {
-			lua_newuserdatauv(L, 0, 0);
-			if(luaL_newmetatable(L, "mp settings")) {
-				lua_pushlightuserdata(L, &play_controller_);
-				lua_pushcclosure(L, impl_mp_settings_get, 1);
-				lua_setfield(L, -2, "__index");
-				lua_pushlightuserdata(L, &play_controller_);
-				lua_pushcclosure(L, impl_mp_settings_len, 1);
-				lua_setfield(L, -2, "__len");
-				lua_pushstring(L, "mp settings");
-				lua_setfield(L, -2, "__metatable");
-			}
-			lua_setmetatable(L, -2);
-			return 1;
-		}
-		return_cfgref_attrib("era", find_addon("era", classification.era_id));
-	}
-	return 0;
+	return scenarioReg.get(L);
 }
 
 /**
@@ -1641,35 +1740,16 @@ int game_lua_kernel::impl_scenario_get(lua_State *L)
 int game_lua_kernel::impl_scenario_set(lua_State *L)
 {
 	DBG_LUA << "impl_scenario_set";
-	char const *m = luaL_checkstring(L, 2);
+	return scenarioReg.set(L);
+}
 
-	// Find the corresponding attribute.
-	modify_int_attrib("turns", tod_man().set_number_of_turns_by_wml(value));
-	modify_string_attrib("next", gamedata().set_next_scenario(value));
-	modify_vector_string_attrib("defeat_music", gamedata().set_defeat_music(std::move(value)));
-	modify_vector_string_attrib("victory_music", gamedata().set_victory_music(std::move(value)));
-
-	game_classification& classification = play_controller_.get_classification();
-	modify_bool_attrib("show_credits", classification.end_credits = value);
-	modify_tstring_attrib("end_text", classification.end_text = value);
-	modify_int_attrib("end_text_duration", classification.end_text_duration = value);
-	if(strcmp(m, "end_level_data") == 0) {
-		vconfig cfg(luaW_checkvconfig(L, 3));
-		end_level_data data;
-
-		data.proceed_to_next_level = cfg["proceed_to_next_level"].to_bool(true);
-		data.transient.carryover_report = cfg["carryover_report"].to_bool(true);
-		data.prescenario_save = cfg["save"].to_bool(true);
-		data.replay_save = cfg["replay_save"].to_bool(true);
-		data.transient.linger_mode = cfg["linger_mode"].to_bool(true) && !teams().empty();
-		data.transient.reveal_map = cfg["reveal_map"].to_bool(play_controller_.reveal_map_default());
-		data.is_victory = cfg["result"] == level_result::victory;
-		data.test_result = cfg["test_result"].str();
-		play_controller_.set_end_level_data(data);
-
-		return 1;
-	}
-	return 0;
+/**
+ * Get a list of scenario data (__dir metamethod).
+ */
+int game_lua_kernel::impl_scenario_dir(lua_State *L)
+{
+	DBG_LUA << "impl_scenario_dir";
+	return scenarioReg.dir(L);
 }
 
 /**
@@ -5444,6 +5524,8 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_setfield(L, -2, "__index");
 	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_scenario_set>);
 	lua_setfield(L, -2, "__newindex");
+	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_scenario_dir>);
+	lua_setfield(L, -2, "__dir");
 	lua_setmetatable(L, -2);
 	lua_setfield(L, -2, "scenario");
 	lua_pop(L, 1);

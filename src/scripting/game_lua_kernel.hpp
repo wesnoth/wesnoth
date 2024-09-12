@@ -69,6 +69,7 @@ class game_lua_kernel : public lua_kernel_base
 
 	friend class game_config_manager; // to allow it to call extract_preload_scripts
 	friend struct current_tag;
+	friend struct scenario_tag;
 
 	// Private lua callbacks
 	int intf_allow_end_turn(lua_State *);
@@ -107,6 +108,7 @@ class game_lua_kernel : public lua_kernel_base
 	int impl_game_config_set(lua_State *L) override;
 	int impl_scenario_get(lua_State *L);
 	int impl_scenario_set(lua_State *L);
+	int impl_scenario_dir(lua_State *L);
 	int impl_current_get(lua_State *L);
 	int impl_current_dir(lua_State *L);
 	int intf_clear_messages(lua_State*);
