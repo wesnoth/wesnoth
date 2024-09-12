@@ -141,6 +141,10 @@ static int impl_colors_table_dir(lua_State* L)
 {
 	std::vector<std::string> all_colours;
 	for(const auto& [key, value] : game_config::team_rgb_range) {
+		if(std::all_of(key.begin(), key.end(), [](char c) {return isdigit(c);})) {
+			// These colors are deprecated, don't show them
+			continue;
+		}
 		all_colours.push_back(key);
 	}
 	lua_push(L, all_colours);
