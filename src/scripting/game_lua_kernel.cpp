@@ -1334,17 +1334,8 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	char const *m = luaL_checkstring(L, 2);
 
 	// Find the corresponding attribute.
-	return_int_attrib_deprecated("last_turn", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.turns instead", tod_man().number_of_turns());
 	return_bool_attrib("do_healing", play_controller_.gamestate().do_healing_);
-	return_string_attrib_deprecated("next_scenario", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.next instead", gamedata().next_scenario());
 	return_string_attrib("theme", gamedata().get_theme());
-	return_string_attrib_deprecated("scenario_id", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.id instead", gamedata().get_id());
-	return_vector_string_attrib_deprecated("defeat_music", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.defeat_music instead",
-		gamedata().get_defeat_music());
-	return_vector_string_attrib_deprecated("victory_music", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.victory_music instead",
-		gamedata().get_victory_music());
-	return_vector_string_attrib_deprecated("active_resources", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.resources instead",
-		utils::split(play_controller_.get_loaded_resources()));
 
 	if(strcmp(m, "global_traits") == 0) {
 		lua_newtable(L);
@@ -1358,17 +1349,6 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 			lua_rawset(L, -3);
 		}
 		return 1;
-	}
-
-	const mp_game_settings& mp_settings = play_controller_.get_mp_settings();
-	const game_classification & classification = play_controller_.get_classification();
-
-	return_string_attrib_deprecated("campaign_type", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.type instead", campaign_type::get_string(classification.type));
-	if(classification.type==campaign_type::type::multiplayer) {
-		return_cfgref_attrib_deprecated("mp_settings", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.mp_settings instead", mp_settings.to_config());
-		return_cfgref_attrib_deprecated("era", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.era instead",
-			game_config_manager::get()->game_config().find_mandatory_child("era","id",classification.era_id));
-		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.
 	}
 
 	return lua_kernel_base::impl_game_config_get(L);
@@ -1394,15 +1374,11 @@ int game_lua_kernel::impl_game_config_set(lua_State *L)
 	modify_int_attrib("recall_cost", game_config::recall_cost = value);
 	modify_int_attrib("kill_experience", game_config::kill_experience = value);
 	modify_int_attrib("combat_experience", game_config::combat_experience = value);
-	modify_int_attrib_deprecated("last_turn", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.turns instead", tod_man().set_number_of_turns_by_wml(value));
 	modify_bool_attrib("do_healing", play_controller_.gamestate().do_healing_ = value);
-	modify_string_attrib_deprecated("next_scenario", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.next instead", gamedata().set_next_scenario(value));
 	modify_string_attrib("theme",
 		gamedata().set_theme(value);
 		game_display_->set_theme(value);
 	);
-	modify_vector_string_attrib_deprecated("defeat_music", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.defeat_music instead", gamedata().set_defeat_music(std::move(value)));
-	modify_vector_string_attrib_deprecated("victory_music", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.victory_music instead", gamedata().set_victory_music(std::move(value)));
 	return lua_kernel_base::impl_game_config_set(L);
 }
 
