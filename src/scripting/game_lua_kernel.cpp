@@ -906,6 +906,7 @@ void game_lua_kernel::luaW_push_schedule(lua_State* L, int area_index)
 		static luaL_Reg const schedule_meta[] {
 			{"__index", &dispatch<&game_lua_kernel::impl_schedule_get>},
 			{"__newindex", &dispatch<&game_lua_kernel::impl_schedule_set>},
+			{"__dir", &dispatch<&game_lua_kernel::impl_schedule_dir>},
 			{"__len", &dispatch<&game_lua_kernel::impl_schedule_len>},
 			{ nullptr, nullptr }
 		};
@@ -924,6 +925,26 @@ static int luaW_check_schedule(lua_State* L, int idx)
 	return i;
 }
 
+struct schedule_tag {
+	game_lua_kernel& ref;
+	int area_index;
+	schedule_tag(game_lua_kernel& k) : ref(k) {}
+	auto& tod_man() const { return ref.tod_man(); }
+};
+#define SCHEDULE_GETTER(name, type) LATTR_GETTER(name, type, schedule_tag, sched)
+#define SCHEDULE_SETTER(name, type) LATTR_SETTER(name, type, schedule_tag, sched)
+#define SCHEDULE_VALID(name) LATTR_VALID(name, schedule_tag, sched)
+luaW_Registry scheduleReg{"schedule"};
+
+template<> struct lua_object_traits<schedule_tag> {
+	inline static auto metatable = "schedule";
+	inline static schedule_tag get(lua_State* L, int n) {
+		schedule_tag sched{lua_kernel_base::get_lua_kernel<game_lua_kernel>(L)};
+		sched.area_index = luaW_check_schedule(L, n);
+		return sched;
+	}
+};
+
 int game_lua_kernel::impl_schedule_get(lua_State *L)
 {
 	int area_index = luaW_check_schedule(L, 1);
@@ -935,26 +956,8 @@ int game_lua_kernel::impl_schedule_get(lua_State *L)
 		}
 		luaW_push_tod(L, times[i]);
 		return 1;
-	} else {
-		const char* m = luaL_checkstring(L, 2);
-		if(area_index >= 0) {
-			return_string_attrib("time_of_day", tod_man().get_area_time_of_day(area_index).id);
-			return_string_attrib("id", tod_man().get_area_id(area_index));
-			if(strcmp(m, "hexes") == 0) {
-				const auto& hexes = tod_man().get_area_by_index(area_index);
-				luaW_push_locationset(L, hexes);
-				return 1;
-			}
-		} else {
-			return_string_attrib("time_of_day", tod_man().get_time_of_day().id);
-			return_int_attrib("liminal_bonus", tod_man().get_max_liminal_bonus());
-		}
-
-		if(luaW_getglobal(L, "wesnoth", "schedule", m)) {
-			return 1;
-		}
 	}
-	return 0;
+	return scheduleReg.get(L);
 }
 
 int game_lua_kernel::impl_schedule_len(lua_State *L)
@@ -981,59 +984,105 @@ int game_lua_kernel::impl_schedule_set(lua_State *L)
 		} else {
 			tod_man().replace_local_schedule(times, area_index);
 		}
-	} else {
-		const char* m = luaL_checkstring(L, 2);
-		if(strcmp(m, "time_of_day") == 0) {
-			std::string value = luaL_checkstring(L, 3);
-			const auto& times = area_index < 0 ? tod_man().times() : tod_man().times(area_index);
-			auto iter = std::find_if(times.begin(), times.end(), [&value](const time_of_day& tod) {
-				return tod.id == value;
-			});
-			if(iter == times.end()) {
-				std::ostringstream err;
-				err << "invalid time of day ID for ";
-				if(area_index < 0) {
-					err << "global schedule";
-				} else {
-					const std::string& id = tod_man().get_area_id(area_index);
-					if(id.empty()) {
-						const auto& hexes = tod_man().get_area_by_index(area_index);
-						if(hexes.empty()) {
-							err << "anonymous empty time area";
-						} else {
-							err << "anonymous time area at (" << hexes.begin()->wml_x() << ',' << hexes.begin()->wml_y() << ")";
-						}
-					} else {
-						err << "time area with id=" << id;
-					}
-				}
-				lua_push(L, err.str());
-				return lua_error(L);
-			}
-			int n = std::distance(times.begin(), iter);
-			if(area_index < 0) {
-				tod_man().set_current_time(n);
-			} else {
-				tod_man().set_current_time(n, area_index);
-			}
-		}
-		if(area_index >= 0) {
-			modify_string_attrib("id", tod_man().set_area_id(area_index, value));
-			if(strcmp(m, "hexes") == 0) {
-				auto hexes = luaW_check_locationset(L, 3);
-				tod_man().replace_area_locations(area_index, hexes);
-				return 0;
-			}
-		} else {
-			// Assign nil to reset the bonus to the default (best) value
-			if(lua_isnil(L, 3) && strcmp(m, "liminal_bonus") == 0) {
-				tod_man().reset_max_liminal_bonus();
-				return 0;
-			}
-			modify_int_attrib("liminal_bonus", tod_man().set_max_liminal_bonus(value));
-		}
 	}
-	return 0;
+	return scheduleReg.set(L);
+}
+
+int game_lua_kernel::impl_schedule_dir(lua_State *L) {
+	return scheduleReg.dir(L);
+}
+
+SCHEDULE_GETTER("time_of_day", std::string) {
+	if(sched.area_index >= 0) {
+		return sched.tod_man().get_area_time_of_day(sched.area_index).id;
+	}
+	return sched.tod_man().get_time_of_day().id;
+}
+
+SCHEDULE_SETTER("time_of_day", std::string) {
+	const auto& times = sched.area_index < 0 ? sched.tod_man().times() : sched.tod_man().times(sched.area_index);
+	auto iter = std::find_if(times.begin(), times.end(), [&value](const time_of_day& tod) {
+		return tod.id == value;
+	});
+	if(iter == times.end()) {
+		std::ostringstream err;
+		err << "invalid time of day ID for ";
+		if(sched.area_index < 0) {
+			err << "global schedule";
+		} else {
+			const std::string& id = sched.tod_man().get_area_id(sched.area_index);
+			if(id.empty()) {
+				const auto& hexes = sched.tod_man().get_area_by_index(sched.area_index);
+				if(hexes.empty()) {
+					err << "anonymous empty time area";
+				} else {
+					err << "anonymous time area at (" << hexes.begin()->wml_x() << ',' << hexes.begin()->wml_y() << ")";
+				}
+			} else {
+				err << "time area with id=" << id;
+			}
+		}
+		lua_push(L, err.str());
+		throw lua_error(L);
+	}
+	int n = std::distance(times.begin(), iter);
+	if(sched.area_index < 0) {
+		sched.tod_man().set_current_time(n);
+	} else {
+		sched.tod_man().set_current_time(n, sched.area_index);
+	}
+}
+
+SCHEDULE_VALID("liminal_bonus") {
+	return sched.area_index < 0;
+}
+
+SCHEDULE_GETTER("liminal_bonus", utils::optional<int>) {
+	if(sched.area_index >= 0) return utils::nullopt;
+	return sched.tod_man().get_max_liminal_bonus();
+}
+
+SCHEDULE_SETTER("liminal_bonus", utils::optional<int>) {
+	if(sched.area_index >= 0) {
+		throw luaL_error(L, "liminal_bonus can only be set on the global schedule");
+	}
+	if(value) {
+		sched.tod_man().set_max_liminal_bonus(*value);
+	} else {
+		sched.tod_man().reset_max_liminal_bonus();
+	}
+}
+
+SCHEDULE_VALID("id") {
+	return sched.area_index >= 0;
+}
+
+SCHEDULE_GETTER("id", utils::optional<std::string>) {
+	if(sched.area_index < 0) return utils::nullopt;
+	return sched.tod_man().get_area_id(sched.area_index);
+}
+
+SCHEDULE_SETTER("id", std::string) {
+	if(sched.area_index < 0) {
+		throw luaL_error(L, "can't set id of global schedule");
+	}
+	sched.tod_man().set_area_id(sched.area_index, value);
+}
+
+SCHEDULE_VALID("hexes") {
+	return sched.area_index >= 0;
+}
+
+SCHEDULE_GETTER("hexes", utils::optional<std::set<map_location>>) {
+	if(sched.area_index < 0) return utils::nullopt;
+	return sched.tod_man().get_area_by_index(sched.area_index);
+}
+
+SCHEDULE_SETTER("hexes", std::set<map_location>) {
+	if(sched.area_index < 0) {
+		throw luaL_error(L, "can't set hexes of global schedule");
+	}
+	sched.tod_man().replace_area_locations(sched.area_index, value);
 }
 
 /**

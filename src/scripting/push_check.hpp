@@ -326,7 +326,8 @@ namespace lua_check_impl
 			for (int i = 1, i_end = lua_rawlen(L, n); i <= i_end; ++i)
 			{
 				lua_rawgeti(L, n, i);
-				res.push_back(lua_check_impl::lua_check<std::decay_t<typename T::reference>>(L, -1));
+				// By using insert instead of push_back, it magically "just works" for sets too.
+				res.insert(res.end(), lua_check_impl::lua_check<std::decay_t<typename T::reference>>(L, -1));
 				lua_pop(L, 1);
 			}
 			return res;

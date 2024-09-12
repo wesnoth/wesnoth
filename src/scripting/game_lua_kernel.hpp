@@ -70,6 +70,7 @@ class game_lua_kernel : public lua_kernel_base
 	friend class game_config_manager; // to allow it to call extract_preload_scripts
 	friend struct current_tag;
 	friend struct scenario_tag;
+	friend struct schedule_tag;
 
 	// Private lua callbacks
 	int intf_allow_end_turn(lua_State *);
@@ -174,6 +175,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_redraw(lua_State *L);
 	int intf_replace_schedule(lua_State *l);
 	int impl_schedule_set(lua_State *L);
+	int impl_schedule_dir(lua_State *L);
 	int intf_scroll(lua_State *L);
 	int intf_get_all_vars(lua_State *L);
 	int impl_theme_item(lua_State *L, std::string name);

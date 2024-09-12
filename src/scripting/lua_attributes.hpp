@@ -41,6 +41,9 @@ struct luaW_Registry {
 	using setters_list = std::map<std::string, std::function<bool(lua_State* L,int idx,bool nop)>>;
 	/// A map of callbacks that write data to the object.
 	setters_list setters;
+	using validators_list = std::map<std::string, std::function<bool(lua_State* L)>>;
+	/// A map of callbacks that check if a member is available.
+	validators_list validators;
 	/// The internal metatable string for the object (from __metatable)
 	std::string private_metatable;
 	/// Optional external metatable for the object (eg "wesnoth", "units")
@@ -57,6 +60,8 @@ struct luaW_Registry {
 	int dir(lua_State* L);
 };
 
+enum class lua_attrfunc_type { getter, setter, validator };
+
 template<typename object_type, typename value_type>
 struct lua_getter
 {
@@ -71,17 +76,24 @@ struct lua_setter
 	virtual ~lua_setter() = default;
 };
 
+template<typename object_type>
+struct lua_validator
+{
+	virtual bool is_active(lua_State* L, const object_type& obj) const = 0;
+	virtual ~lua_validator() = default;
+};
+
 template<typename T> struct lua_object_traits;
 
-template<typename object_type, typename value_type, typename action_type, bool setter>
+template<typename object_type, typename value_type, typename action_type, lua_attrfunc_type type>
 void register_lua_attribute(const char* name)
 {
 	using obj_traits = lua_object_traits<object_type>;
-	using map_type = std::conditional_t<setter, luaW_Registry::setters_list, luaW_Registry::getters_list>;
+	using map_type = std::conditional_t<type == lua_attrfunc_type::validator, luaW_Registry::validators_list, std::conditional_t<type == lua_attrfunc_type::setter, luaW_Registry::setters_list, luaW_Registry::getters_list>>;
 	using callback_type = typename map_type::mapped_type;
 	map_type* map;
 	callback_type fcn;
-	if constexpr(setter) {
+	if constexpr(type == lua_attrfunc_type::setter) {
 		map = &luaW_Registry::lookup.at(obj_traits::metatable).get().setters;
 		fcn = [action = action_type()](lua_State* L, int idx, bool nop) {
 			if(nop) return true;
@@ -89,12 +101,17 @@ void register_lua_attribute(const char* name)
 			action.set(L, obj, lua_check<value_type>(L, idx));
 			return true;
 		};
-	} else {
+	} else if constexpr(type == lua_attrfunc_type::getter) {
 		map = &luaW_Registry::lookup.at(obj_traits::metatable).get().getters;
 		fcn = [action = action_type()](lua_State* L, bool nop) {
 			if(nop) return true;
 			lua_push(L, action.get(L, obj_traits::get(L, 1)));
 			return true;
+		};
+	} else if constexpr(type == lua_attrfunc_type::validator) {
+		map = &luaW_Registry::lookup.at(obj_traits::metatable).get().validators;
+		fcn = [action = action_type()](lua_State* L) {
+			return action.is_active(L, obj_traits::get(L, 1));
 		};
 	}
 	(*map)[std::string(name)] = fcn;
@@ -110,7 +127,7 @@ struct LATTR_MAKE_UNIQUE_ID(getter_, id, obj_name) : public lua_getter<obj_type,
 struct LATTR_MAKE_UNIQUE_ID(getter_adder_, id, obj_name) { \
 	LATTR_MAKE_UNIQUE_ID(getter_adder_, id, obj_name) () \
 	{ \
-		register_lua_attribute<obj_type, value_type, LATTR_MAKE_UNIQUE_ID(getter_, id, obj_name), false>(name); \
+		register_lua_attribute<obj_type, value_type, LATTR_MAKE_UNIQUE_ID(getter_, id, obj_name), lua_attrfunc_type::getter>(name); \
 	} \
 }; \
 static LATTR_MAKE_UNIQUE_ID(getter_adder_, id, obj_name) LATTR_MAKE_UNIQUE_ID(getter_adder_instance_, id, obj_name) ; \
@@ -125,11 +142,26 @@ struct LATTR_MAKE_UNIQUE_ID(setter_, id, obj_name) : public lua_setter<obj_type,
 struct LATTR_MAKE_UNIQUE_ID(setter_adder_, id, obj_name) { \
 	LATTR_MAKE_UNIQUE_ID(setter_adder_, id, obj_name) ()\
 	{ \
-		register_lua_attribute<obj_type, value_type, LATTR_MAKE_UNIQUE_ID(setter_, id, obj_name), true>(name); \
+		register_lua_attribute<obj_type, value_type, LATTR_MAKE_UNIQUE_ID(setter_, id, obj_name), lua_attrfunc_type::setter>(name); \
 	} \
 }; \
 static LATTR_MAKE_UNIQUE_ID(setter_adder_, id, obj_name) LATTR_MAKE_UNIQUE_ID(setter_adder_instance_, id, obj_name); \
 void LATTR_MAKE_UNIQUE_ID(setter_, id, obj_name)::set([[maybe_unused]] lua_State* L, LATTR_MAKE_UNIQUE_ID(setter_, id, obj_name)::object_type& obj_name, const value_type& value) const
+
+
+#define LATTR_VALID5(name, obj_type, obj_name, id) \
+struct LATTR_MAKE_UNIQUE_ID(check_, id, obj_name) : public lua_validator<obj_type> { \
+	using object_type = obj_type; \
+	bool is_active(lua_State* L, const object_type& obj_name) const override; \
+}; \
+struct LATTR_MAKE_UNIQUE_ID(check_adder_, id, obj_name) { \
+	LATTR_MAKE_UNIQUE_ID(check_adder_, id, obj_name) ()\
+	{ \
+		register_lua_attribute<obj_type, void, LATTR_MAKE_UNIQUE_ID(check_, id, obj_name), lua_attrfunc_type::validator>(name); \
+	} \
+}; \
+static LATTR_MAKE_UNIQUE_ID(check_adder_, id, obj_name) LATTR_MAKE_UNIQUE_ID(check_adder_instance_, id, obj_name); \
+bool LATTR_MAKE_UNIQUE_ID(check_, id, obj_name)::is_active([[maybe_unused]] lua_State* L, const LATTR_MAKE_UNIQUE_ID(check_, id, obj_name)::object_type& obj_name) const
 
 
 /**
@@ -141,3 +173,5 @@ void LATTR_MAKE_UNIQUE_ID(setter_, id, obj_name)::set([[maybe_unused]] lua_State
 #define LATTR_GETTER(name, value_type, obj_type, obj_name) LATTR_GETTER5(name, value_type, obj_type, obj_name, __LINE__)
 
 #define LATTR_SETTER(name, value_type, obj_type, obj_name) LATTR_SETTER5(name, value_type, obj_type, obj_name, __LINE__)
+
+#define LATTR_VALID(name, obj_type, obj_name) LATTR_VALID5(name, obj_type, obj_name, __LINE__)
