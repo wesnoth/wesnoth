@@ -384,7 +384,7 @@ namespace {
 
 unit::recursion_guard unit::update_variables_recursion(const config& ability) const
 {
-	if(utils::contains(open_queries_, ability)) {
+	if(utils::contains(open_queries_, &ability)) {
 		return recursion_guard();
 	}
 	return recursion_guard(*this, ability);
@@ -395,7 +395,7 @@ unit::recursion_guard::recursion_guard() = default;
 unit::recursion_guard::recursion_guard(const unit & u, const config& ability)
 	: parent(u.shared_from_this())
 {
-	u.open_queries_.emplace_back(ability);
+	u.open_queries_.emplace_back(&ability);
 }
 
 unit::recursion_guard::recursion_guard(unit::recursion_guard&& other)

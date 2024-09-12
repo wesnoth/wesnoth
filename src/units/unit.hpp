@@ -2062,7 +2062,7 @@ private:
 	 * Each will have an instance of recursion_guard that is currently allocated permission to recurse, and
 	 * which will pop the config off this stack when the recursion_guard is finalized.
 	 */
-	mutable std::vector<config> open_queries_;
+	mutable std::vector<const config*> open_queries_;
 
 protected:
 	// TODO: I think we actually consider this to be part of the gamestate, so it might be better if it's not mutable,
