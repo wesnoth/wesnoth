@@ -67,14 +67,23 @@ int luaW_Registry::set(lua_State* L) {
 
 int luaW_Registry::dir(lua_State *L) {
 	std::vector<std::string> keys;
+	// Check for inactive keys
+	std::set<std::string> inactive;
+	for(const auto& [key, func] : validators) {
+		if(!func(L)) {
+			inactive.insert(key);
+		}
+	}
 	// Add any readable keys
 	for(const auto& [key, func] : getters) {
+		if(inactive.count(key) > 0) continue;
 		if(func(L, true)){
 			keys.push_back(key);
 		}
 	}
 	// Add any writable keys
 	for(const auto& [key, func] : setters) {
+		if(inactive.count(key) > 0) continue;
 		if(func(L, 0, true)){
 			keys.push_back(key);
 		}
