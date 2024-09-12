@@ -1607,6 +1607,7 @@ struct scenario_tag {
 };
 #define SCENARIO_GETTER(name, type) LATTR_GETTER(name, type, scenario_tag, k)
 #define SCENARIO_SETTER(name, type) LATTR_SETTER(name, type, scenario_tag, k)
+#define SCENARIO_VALID(name) LATTR_VALID(name, scenario_tag, k)
 luaW_Registry scenarioReg{"scenario"};
 
 template<> struct lua_object_traits<scenario_tag> {
@@ -1696,6 +1697,10 @@ SCENARIO_SETTER("end_text_duration", int) {
 	k.cls().end_text_duration = value;
 }
 
+SCENARIO_VALID("campaign") {
+	return !k.cls().campaign.empty();
+}
+
 SCENARIO_GETTER("campaign", utils::optional<config>) {
 	if(k.cls().campaign.empty()) return utils::nullopt;
 	return find_addon("campaign", k.cls().campaign);
@@ -1743,6 +1748,10 @@ SCENARIO_SETTER("end_level_data", vconfig) {
 	k.pc().set_end_level_data(data);
 }
 
+SCENARIO_VALID("mp_settings") {
+	return k.cls().is_multiplayer();
+}
+
 SCENARIO_GETTER("mp_settings", lua_index_raw) {
 	if(!k.cls().is_multiplayer()) {
 		lua_pushnil(L);
@@ -1761,6 +1770,10 @@ SCENARIO_GETTER("mp_settings", lua_index_raw) {
 	}
 	lua_setmetatable(L, -2);
 	return lua_index_raw(L);
+}
+
+SCENARIO_VALID("era") {
+	return k.cls().is_multiplayer();
 }
 
 SCENARIO_GETTER("era", utils::optional<config>) {
