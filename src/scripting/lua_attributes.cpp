@@ -67,6 +67,9 @@ int luaW_Registry::set(lua_State* L) {
 
 int luaW_Registry::dir(lua_State *L) {
 	std::vector<std::string> keys;
+	if(lua_istable(L, 2)) {
+		keys = lua_check<std::vector<std::string>>(L, 2);
+	}
 	// Check for inactive keys
 	std::set<std::string> inactive;
 	for(const auto& [key, func] : validators) {

@@ -583,6 +583,18 @@ static int impl_get_dir_suffix(lua_State*L)
 				suffix = "ƒ";
 			}
 		}
+		lua_pop(L, 1);
+		if(suffix.size() == 1) {
+			// ie, the above block didn't identify it as a function
+			if(auto t = luaL_getmetafield(L, -1, "__dir_tablelike"); t == LUA_TBOOLEAN) {
+				if(luaW_toboolean(L, -1)) {
+					suffix = "†";
+				}
+				lua_pop(L, 1);
+			} else if(t != LUA_TNIL) {
+				lua_pop(L,  1);
+			}
+		}
 	}
 	suffix = " " + suffix;
 	lua_pushlstring(L, suffix.c_str(), suffix.size());
@@ -911,6 +923,8 @@ lua_kernel_base::lua_kernel_base()
 	lua_setfield(L, -2, "__newindex");
 	lua_pushcfunction(L, &dispatch<&lua_kernel_base::impl_game_config_dir>);
 	lua_setfield(L, -2, "__dir");
+	lua_pushboolean(L, true);
+	lua_setfield(L, -2, "__dir_tablelike");
 	lua_pushstring(L, "game config");
 	lua_setfield(L, -2, "__metatable");
 	lua_setmetatable(L, -2);
