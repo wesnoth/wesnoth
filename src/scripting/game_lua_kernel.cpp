@@ -1322,65 +1322,63 @@ static int intf_get_era(lua_State *L)
 	return 1;
 }
 
-/**
- * Gets some game_config data (__index metamethod).
- * - Arg 1: userdata (ignored).
- * - Arg 2: string containing the name of the property.
- * - Ret 1: something containing the attribute.
- */
-int game_lua_kernel::impl_game_config_get(lua_State *L)
-{
-	DBG_LUA << "impl_game_config_get";
-	char const *m = luaL_checkstring(L, 2);
+extern luaW_Registry& gameConfigReg();
+static auto& dummy = gameConfigReg(); // just to ensure it's constructed.
 
-	// Find the corresponding attribute.
-	return_bool_attrib("do_healing", play_controller_.gamestate().do_healing_);
-	return_string_attrib("theme", gamedata().get_theme());
+struct game_config_glk_tag {
+	game_lua_kernel& ref;
+	game_config_glk_tag(lua_kernel_base& k) : ref(dynamic_cast<game_lua_kernel&>(k)) {}
+	auto& pc() const { return ref.play_controller_; }
+	auto& gamedata() const { return ref.gamedata(); }
+	auto& disp() const { return ref.game_display_; }
+};
+#define GAME_CONFIG_SIMPLE_SETTER(name) \
+GAME_CONFIG_SETTER(#name, decltype(game_config::name), game_lua_kernel) { \
+	(void) k; \
+	game_config::name = value; \
+}
 
-	if(strcmp(m, "global_traits") == 0) {
-		lua_newtable(L);
-		for(const config& trait : unit_types.traits()) {
-			const std::string& id = trait["id"];
-			//It seems the engine never checks the id field for emptiness or duplicates
-			//However, the worst that could happen is that the trait read later overwrites the older one,
-			//and this is not the right place for such checks.
-			lua_pushstring(L, id.c_str());
-			luaW_pushconfig(L, trait);
-			lua_rawset(L, -3);
-		}
-		return 1;
+GAME_CONFIG_GETTER("do_healing", bool, game_lua_kernel) {
+	game_config_glk_tag k2{k.ref};
+	return k2.pc().gamestate().do_healing_;
+}
+
+GAME_CONFIG_SETTER("do_healing", bool, game_lua_kernel) {
+	game_config_glk_tag k2{k.ref};
+	k2.pc().gamestate().do_healing_ = value;}
+
+GAME_CONFIG_GETTER("theme", std::string, game_lua_kernel) {
+	game_config_glk_tag k2{k.ref};
+	return k2.gamedata().get_theme();
+}
+
+GAME_CONFIG_SETTER("theme", std::string, game_lua_kernel) {
+	game_config_glk_tag k2{k.ref};
+	k2.gamedata().set_theme(value);
+	k2.disp()->set_theme(value);
+}
+
+using traits_map = std::map<std::string, config>;
+GAME_CONFIG_GETTER("global_traits", traits_map, game_lua_kernel) {
+	(void)k;
+	std::map<std::string, config> result;
+	for(const config& trait : unit_types.traits()) {
+		//It seems the engine never checks the id field for emptiness or duplicates
+		//However, the worst that could happen is that the trait read later overwrites the older one,
+		//and this is not the right place for such checks.
+		result.emplace(trait["id"], trait);
 	}
-
-	return lua_kernel_base::impl_game_config_get(L);
+	return result;
 }
 
-/**
- * Sets some game_config data (__newindex metamethod).
- * - Arg 1: userdata (ignored).
- * - Arg 2: string containing the name of the property.
- * - Arg 3: something containing the attribute.
- */
-int game_lua_kernel::impl_game_config_set(lua_State *L)
-{
-	DBG_LUA << "impl_game_config_set";
-	char const *m = luaL_checkstring(L, 2);
-
-	// Find the corresponding attribute.
-	modify_int_attrib("base_income", game_config::base_income = value);
-	modify_int_attrib("village_income", game_config::village_income = value);
-	modify_int_attrib("village_support", game_config::village_support = value);
-	modify_int_attrib("poison_amount", game_config::poison_amount = value);
-	modify_int_attrib("rest_heal_amount", game_config::rest_heal_amount = value);
-	modify_int_attrib("recall_cost", game_config::recall_cost = value);
-	modify_int_attrib("kill_experience", game_config::kill_experience = value);
-	modify_int_attrib("combat_experience", game_config::combat_experience = value);
-	modify_bool_attrib("do_healing", play_controller_.gamestate().do_healing_ = value);
-	modify_string_attrib("theme",
-		gamedata().set_theme(value);
-		game_display_->set_theme(value);
-	);
-	return lua_kernel_base::impl_game_config_set(L);
-}
+GAME_CONFIG_SIMPLE_SETTER(base_income);
+GAME_CONFIG_SIMPLE_SETTER(village_income);
+GAME_CONFIG_SIMPLE_SETTER(village_support);
+GAME_CONFIG_SIMPLE_SETTER(poison_amount);
+GAME_CONFIG_SIMPLE_SETTER(rest_heal_amount);
+GAME_CONFIG_SIMPLE_SETTER(recall_cost);
+GAME_CONFIG_SIMPLE_SETTER(kill_experience);
+GAME_CONFIG_SIMPLE_SETTER(combat_experience);
 
 namespace {
 	static config find_addon(const std::string& type, const std::string& id)

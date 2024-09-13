@@ -71,6 +71,7 @@ class game_lua_kernel : public lua_kernel_base
 	friend struct current_tag;
 	friend struct scenario_tag;
 	friend struct schedule_tag;
+	friend struct game_config_glk_tag;
 
 	// Private lua callbacks
 	int intf_allow_end_turn(lua_State *);
@@ -105,8 +106,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_set_village_owner(lua_State *L);
 	int intf_get_mouseover_tile(lua_State *L);
 	int intf_get_selected_tile(lua_State *L);
-	int impl_game_config_get(lua_State *L) override;
-	int impl_game_config_set(lua_State *L) override;
 	int impl_scenario_get(lua_State *L);
 	int impl_scenario_set(lua_State *L);
 	int impl_scenario_dir(lua_State *L);
