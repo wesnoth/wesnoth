@@ -80,6 +80,9 @@ validate_campaign() {
 
 RET=0
 
+# remove any_tag to actually see errors in action WML
+patch -p 1 < utils/CI/schema_validation.patch || RET=1
+
 validate_schema "WML Schema"   "schema"       || RET=1
 validate_schema "Game Config"  "game_config"  || RET=1
 validate_schema "GUI2"         "gui"          || RET=1
