@@ -198,16 +198,10 @@ private:
 	std::unique_ptr<image_shape> ishape_;
 
 	/** Width and height of the canvas */
-	unsigned w_, h_, x_;
+	unsigned w_, h_;
 
 	/** Padding */
 	unsigned padding_;
-
-	/** Height of current text block */
-	unsigned txt_height_;
-
-	/** Height of all previous blocks, combined */
-	unsigned prev_blk_height_;
 
 	/** Create template for text config that can be shown in canvas */
 	void default_text_config(config* txt_ptr, t_string text = "");
@@ -216,7 +210,7 @@ private:
 		add_text_with_attributes(curr_item, text, {attr_name}, {extra_data});
 	}
 	void add_text_with_attributes(config& curr_item, std::string text, std::vector<std::string> attr_names, std::vector<std::string> extra_data);
-	void add_image(config& curr_item, std::string name, std::string align, bool has_prev_image, bool is_prev_float, bool floating, point& img_size, point& float_size);
+	void add_image(config& curr_item, std::string name, std::string align, bool has_prev_image, bool floating);
 	void add_link(config& curr_item, std::string name, std::string dest, const point& origin, int img_width);
 
 	void append_if_not_empty(config_attribute_value* key, std::string suffix) {
@@ -226,8 +220,8 @@ private:
 	}
 
 	/** size calculation functions */
-	point get_text_size(config text_cfg, unsigned width = 0);
-	point get_image_size(config img_cfg);
+	const point get_text_size(const config& text_cfg, const unsigned width = 0);
+	const point get_image_size(const config& img_cfg);
 
 	wfl::map_formula_callable setup_text_renderer(config text_cfg, unsigned width = 0);
 
