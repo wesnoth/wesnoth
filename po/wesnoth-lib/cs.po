@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-08-18 23:11-0500\n"
-"PO-Revision-Date: 2024-07-30 22:06+0200\n"
+"PO-Revision-Date: 2024-09-13 20:08+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -3183,7 +3183,7 @@ msgstr "Přehrát zvuk"
 #. [label]
 #: data/gui/themes/default/window/custom_tod.cfg:186
 msgid "Edit Time Schedule"
-msgstr "Nastavení rozvržení dne"
+msgstr "Upravit rozvrh dne"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5786,7 +5786,7 @@ msgstr "Zobrazení verze hry a informace o sestavení"
 #. [button]: id=apply
 #: data/gui/themes/default/window/preferences.cfg:434
 msgid "Apply"
-msgstr ""
+msgstr "Použít"
 
 #. [label]
 #: data/gui/themes/default/window/preferences/01_general.cfg:20
@@ -8897,7 +8897,7 @@ msgstr "Přiřadit místní čas"
 
 #: src/hotkey/hotkey_command.cpp:179
 msgid "Time Schedule Editor"
-msgstr "Editor časového plánu"
+msgstr "Editor rozvrhu dne"
 
 #: src/hotkey/hotkey_command.cpp:180
 msgid "Partial Undo"
@@ -9073,10 +9073,8 @@ msgid "Loyal"
 msgstr "Věrný"
 
 #: src/hotkey/hotkey_command.cpp:218
-#, fuzzy
-#| msgid "Server Information"
 msgid "Show Tool Information"
-msgstr "Informace o serveru"
+msgstr "Ukázat informace k nástroji"
 
 #: src/hotkey/hotkey_command.cpp:220
 msgid "Toggle Minimap Unit Coding"
@@ -9335,10 +9333,8 @@ msgid "Change Language"
 msgstr "Změnit jazyk"
 
 #: src/hotkey/hotkey_command.cpp:299
-#, fuzzy
-#| msgid "Starting game"
 msgid "Start Game (MP)"
-msgstr "Spouštění hry"
+msgstr "Spustit hru (více hráčů)"
 
 #: src/hotkey/hotkey_command.cpp:300
 msgid "Refresh WML"
@@ -9438,12 +9434,3 @@ msgstr ""
 #: src/wml_exception.cpp:92
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "V sekci '[$section|]' není nastaven povinný klíč '$key|'."
-
-#~ msgid "<b>Faction:</b>"
-#~ msgstr "<b>Frakce:</b>"
-
-#~ msgid "<b>Gender:</b>"
-#~ msgstr "<b>Pohlaví:</b>"
-
-#~ msgid "<span color='red'>*restart required</span>"
-#~ msgstr "<span color='red'>*je vyžadován restart</span>"
