@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-08-18 23:11-0500\n"
-"PO-Revision-Date: 2024-06-20 14:39+0300\n"
+"PO-Revision-Date: 2024-09-11 15:26+0300\n"
 "Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
 "discord: amakri>\n"
 "Language-Team: \n"
@@ -2405,10 +2405,8 @@ msgstr "Копіювати"
 #. [draw]
 #. The heavy checkmark character is available in the DejaVu Sans font, but not in the default Lato font
 #: data/gui/themes/default/widget/button_success.cfg:250
-#, fuzzy
-#| msgid "<span font_family='DejaVu Sans'>✦</span> <b>Homepage:</b>"
 msgid "page^<span font_family='DejaVu Sans'>✔</span> Copied"
-msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Домашня сторінка:</b>"
+msgstr "<span font_family='DejaVu Sans'>✔</span> Скопійовано"
 
 #. [image]: id=pending_messages
 #: data/gui/themes/default/widget/chatbox.cfg:40
@@ -3176,10 +3174,8 @@ msgstr "Переглянути зображення"
 
 #. [button]: id=preview_
 #: data/gui/themes/default/window/custom_tod.cfg:108
-#, fuzzy
-#| msgid "Player joins"
 msgid "Play sound"
-msgstr "Гравець приєднався"
+msgstr "Програти звук"
 
 #. [label]
 #: data/gui/themes/default/window/custom_tod.cfg:186
@@ -3271,7 +3267,7 @@ msgstr "Видалити ЧД"
 #. [button]: id=preview_color
 #: data/gui/themes/default/window/custom_tod.cfg:498
 msgid "Preview color changes on map"
-msgstr ""
+msgstr "Переглянути зміни кольору на мапі"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4082,12 +4078,12 @@ msgstr "Видалити поточну закладку"
 #. [button]: id=open_ext
 #: data/gui/themes/default/window/file_dialog.cfg:318
 msgid "Open External"
-msgstr ""
+msgstr "Відкрити зовнішнє"
 
 #. [button]: id=open_ext
 #: data/gui/themes/default/window/file_dialog.cfg:319
 msgid "Open selected using platform's default applications"
-msgstr ""
+msgstr "Відкрити обране, використовуючи застосунок за замовчуванням"
 
 #. [button]: id=new_dir
 #. [label]: id=title
@@ -5659,7 +5655,7 @@ msgstr "Ім'я гри:"
 #: data/gui/themes/modern/dialogs/title_screen.cfg:257
 #: src/gui/dialogs/game_load.cpp:401
 msgid "Multiplayer"
-msgstr "Мультриплеєр"
+msgstr "Мультиплеєр"
 
 #. [label]
 #: data/gui/themes/default/window/mp_method_selection.cfg:121
@@ -6068,10 +6064,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/window/preferences/03_display.cfg:168
-#, fuzzy
-#| msgid "Interface theme:"
 msgid "In-game theme:"
-msgstr "Тема інтерфейсу:"
+msgstr "Тема гри:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/themes/default/window/preferences/03_display.cfg:181
@@ -6084,23 +6078,17 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/window/preferences/03_display.cfg:192
-#, fuzzy
-#| msgid "Interface theme:"
 msgid "UI theme:"
 msgstr "Тема інтерфейсу:"
 
 #. [menu_button]: id=choose_gui2_theme
 #: data/gui/themes/default/window/preferences/03_display.cfg:205
-#, fuzzy
-#| msgid ""
-#| "Change the in-game interface theme. Additional themes may be provided by "
-#| "community-made add-ons"
 msgid ""
 "Change the UI (GUI2) theme. Additional themes may be provided by community-"
 "made add-ons"
 msgstr ""
-"Змінити внутрішньоігрову тему інтерфейсу. Додаткові теми можливо отримати в "
-"аддонах"
+"Змінити тему інтерфейсу. Додаткові теми можливо отримати в аддонах, "
+"зроблених спільнотою"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/themes/default/window/preferences/03_display.cfg:224
@@ -7624,10 +7612,12 @@ msgid ""
 "This file is outside Wesnoth's data dirs. Do you wish to copy it into your "
 "add-on?"
 msgstr ""
+"Цей файл знаходиться поза директоріями Весноту. Чи ви бажаєте скопіювати їх "
+"у ваш аддон?"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1085
 msgid "Unit type saved."
-msgstr ""
+msgstr "Тип бійця збережено."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:70
 msgid "/1000 tiles"
@@ -7654,8 +7644,6 @@ msgid "Open"
 msgstr "Відкрити"
 
 #: src/gui/dialogs/file_dialog.cpp:305
-#, fuzzy
-#| msgid "Opening links is not supported, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr "Відкриття посилань не підтримується, зв'яжіться з менеджером пакету"
 
@@ -7940,16 +7928,16 @@ msgid "lua console"
 msgstr "консоль Lua"
 
 #: src/gui/dialogs/migrate_version_selection.cpp:48
-#, fuzzy
-#| msgid "No era information found."
 msgid "No Other Version Found"
-msgstr "Немає інформації про еру."
+msgstr "Інших версій не знайдено."
 
 #: src/gui/dialogs/migrate_version_selection.cpp:48
 msgid ""
 "This would import settings from a previous version of Wesnoth, but no other "
 "version was found on this device"
 msgstr ""
+"Ця дія імпортує налаштування з попередньої версії Весноту, проте жодної "
+"іншої версії не було знайдено"
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:138
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:493
@@ -8910,10 +8898,8 @@ msgid "New Scenario"
 msgstr "Новий сценарій"
 
 #: src/hotkey/hotkey_command.cpp:183
-#, fuzzy
-#| msgid "Edit Scenario"
 msgid "Load Map/Scenario"
-msgstr "Редагувати сценарій"
+msgstr "Завантажити мапу/сценарій"
 
 #: src/hotkey/hotkey_command.cpp:185
 msgid "Save Map As"
@@ -9269,16 +9255,12 @@ msgid "Change Add-on ID"
 msgstr "Змінити ID аддону"
 
 #: src/hotkey/hotkey_command.cpp:277
-#, fuzzy
-#| msgid "Select the add-on version"
 msgid "Select active Add-on"
-msgstr "Обрати версію аддону"
+msgstr "Обрати активний аддон"
 
 #: src/hotkey/hotkey_command.cpp:278
-#, fuzzy
-#| msgid "Open saves folder"
 msgid "Open Add-on folder"
-msgstr "Відкрити теку зі збереженнями"
+msgstr "Відкрити теку аддону"
 
 #: src/hotkey/hotkey_command.cpp:281
 msgid "Edit Side"
@@ -9450,6 +9432,9 @@ msgstr "У розділі '[$section|]' не заданий обов'язков�
 
 #~ msgid "<b>Gender:</b>"
 #~ msgstr "<b>Стать:</b>"
+
+#~ msgid "<span color='red'>*restart required</span>"
+#~ msgstr "<span color='red'>*необхідний перезапуск</span>"
 
 #~ msgid "page^✔ Copied"
 #~ msgstr "✔ Скопійовано"
