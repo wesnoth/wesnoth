@@ -29,6 +29,7 @@
 #include "scripting/debug_lua.hpp"
 #endif
 
+#include "scripting/lua_attributes.hpp"
 #include "scripting/lua_color.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
@@ -908,6 +909,8 @@ lua_kernel_base::lua_kernel_base()
 	lua_setfield(L, -2, "__index");
 	lua_pushcfunction(L, &dispatch<&lua_kernel_base::impl_game_config_set>);
 	lua_setfield(L, -2, "__newindex");
+	lua_pushcfunction(L, &dispatch<&lua_kernel_base::impl_game_config_dir>);
+	lua_setfield(L, -2, "__dir");
 	lua_pushstring(L, "game config");
 	lua_setfield(L, -2, "__metatable");
 	lua_setmetatable(L, -2);
@@ -1253,58 +1256,99 @@ static int impl_palette_get(lua_State* L)
 	push_color_palette(L, game_config::tc_info(m));
 	return 1;
 }
+
+// suppress missing prototype warning (not static because game_lua_kernel referenes it);
+luaW_Registry& gameConfigReg();
+luaW_Registry& gameConfigReg() {
+	static luaW_Registry gameConfigReg{"game config"};
+	return gameConfigReg;
+}
+static auto& dummy = gameConfigReg(); // just to ensure it's constructed.
+
+#define GAME_CONFIG_SIMPLE_GETTER(name) \
+GAME_CONFIG_GETTER(#name, decltype(game_config::name), lua_kernel_base) { \
+	(void) k; \
+	return game_config::name; \
+}
+
+GAME_CONFIG_SIMPLE_GETTER(base_income);
+GAME_CONFIG_SIMPLE_GETTER(village_income);
+GAME_CONFIG_SIMPLE_GETTER(village_support);
+GAME_CONFIG_SIMPLE_GETTER(poison_amount);
+GAME_CONFIG_SIMPLE_GETTER(rest_heal_amount);
+GAME_CONFIG_SIMPLE_GETTER(recall_cost);
+GAME_CONFIG_SIMPLE_GETTER(kill_experience);
+GAME_CONFIG_SIMPLE_GETTER(combat_experience);
+GAME_CONFIG_SIMPLE_GETTER(debug);
+GAME_CONFIG_SIMPLE_GETTER(debug_lua);
+GAME_CONFIG_SIMPLE_GETTER(strict_lua);
+GAME_CONFIG_SIMPLE_GETTER(mp_debug);
+
+GAME_CONFIG_GETTER("palettes", lua_index_raw, lua_kernel_base) {
+	(void)k;
+	lua_newtable(L);
+	if(luaL_newmetatable(L, "color palettes")) {
+		lua_pushcfunction(L, impl_palette_get);
+		lua_setfield(L, -2, "__index");
+	}
+	lua_setmetatable(L, -2);
+	return lua_index_raw(L);
+}
+
+GAME_CONFIG_GETTER("red_green_scale", lua_index_raw, lua_kernel_base) {
+	(void)k;
+	lua_pushstring(L, "red_green_scale");
+	push_color_palette(L, game_config::red_green_scale);
+	return lua_index_raw(L);
+}
+
+GAME_CONFIG_GETTER("red_green_scale_text", lua_index_raw, lua_kernel_base) {
+	(void)k;
+	lua_pushstring(L, "red_green_scale_text");
+	push_color_palette(L, game_config::red_green_scale_text);
+	return lua_index_raw(L);
+}
+
+GAME_CONFIG_GETTER("blue_white_scale", lua_index_raw, lua_kernel_base) {
+	(void)k;
+	lua_pushstring(L, "blue_white_scale");
+	push_color_palette(L, game_config::blue_white_scale);
+	return lua_index_raw(L);
+}
+
+GAME_CONFIG_GETTER("blue_white_scale_text", lua_index_raw, lua_kernel_base) {
+	(void)k;
+	lua_pushstring(L, "blue_white_scale_text");
+	push_color_palette(L, game_config::blue_white_scale_text);
+	return lua_index_raw(L);
+}
+
+/**
+ * Gets some game_config data (__index metamethod).
+ * - Arg 1: userdata (ignored).
+ * - Arg 2: string containing the name of the property.
+ * - Ret 1: something containing the attribute.
+ */
 int lua_kernel_base::impl_game_config_get(lua_State* L)
 {
-	char const *m = luaL_checkstring(L, 2);
-	return_int_attrib("base_income", game_config::base_income);
-	return_int_attrib("village_income", game_config::village_income);
-	return_int_attrib("village_support", game_config::village_support);
-	return_int_attrib("poison_amount", game_config::poison_amount);
-	return_int_attrib("rest_heal_amount", game_config::rest_heal_amount);
-	return_int_attrib("recall_cost", game_config::recall_cost);
-	return_int_attrib("kill_experience", game_config::kill_experience);
-	return_int_attrib("combat_experience", game_config::combat_experience);
-	return_bool_attrib("debug", game_config::debug);
-	return_bool_attrib("debug_lua", game_config::debug_lua);
-	return_bool_attrib("strict_lua", game_config::strict_lua);
-	return_bool_attrib("mp_debug", game_config::mp_debug);
-
-	if(strcmp(m, "palettes") == 0) {
-		lua_newtable(L);
-		if(luaL_newmetatable(L, "color palettes")) {
-			lua_pushcfunction(L, impl_palette_get);
-			lua_setfield(L, -2, "__index");
-		}
-		lua_setmetatable(L, -2);
-		return 1;
-	}
-	if(strcmp(m, "red_green_scale") == 0) {
-		lua_pushstring(L, "red_green_scale");
-		push_color_palette(L, game_config::red_green_scale);
-		return 1;
-	}
-	if(strcmp(m, "red_green_scale_text") == 0) {
-		lua_pushstring(L, "red_green_scale_text");
-		push_color_palette(L, game_config::red_green_scale_text);
-		return 1;
-	}
-	if(strcmp(m, "blue_white_scale") == 0) {
-		lua_pushstring(L, "blue_white_scale");
-		push_color_palette(L, game_config::blue_white_scale);
-		return 1;
-	}
-	if(strcmp(m, "blue_white_scale_text") == 0) {
-		lua_pushstring(L, "blue_white_scale_text");
-		push_color_palette(L, game_config::blue_white_scale_text);
-		return 1;
-	}
-	return 0;
+	return gameConfigReg().get(L);
 }
+/**
+ * Sets some game_config data (__newindex metamethod).
+ * - Arg 1: userdata (ignored).
+ * - Arg 2: string containing the name of the property.
+ * - Arg 3: something containing the attribute.
+ */
 int lua_kernel_base::impl_game_config_set(lua_State* L)
 {
-	std::string err_msg = "unknown modifiable property of game_config: ";
-	err_msg += luaL_checkstring(L, 2);
-	return luaL_argerror(L, 2, err_msg.c_str());
+	return gameConfigReg().set(L);
+}
+/**
+ * Gets a list of game_config data (__dir metamethod).
+ */
+int lua_kernel_base::impl_game_config_dir(lua_State* L)
+{
+	return gameConfigReg().dir(L);
 }
 /**
  * Loads the "package" package into the Lua environment.
