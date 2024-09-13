@@ -5288,6 +5288,8 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_setfield(L, -2, "__index");
 	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_current_dir>);
 	lua_setfield(L, -2, "__dir");
+	lua_pushboolean(L, true);
+	lua_setfield(L, -2, "__dir_tablelike");
 	lua_pushstring(L, "current config");
 	lua_setfield(L, -2, "__metatable");
 	lua_setmetatable(L, -2);

@@ -188,6 +188,8 @@ namespace lua_colors {
 		lua_setfield(L, -2, "__dir");
 		lua_pushstring(L, "colors table");
 		lua_setfield(L, -2, "__metatable");
+		lua_pushboolean(L, true);
+		lua_setfield(L, -2, "__dir_tablelike");
 		lua_setmetatable(L, -2);
 		lua_setfield(L, -2, "colors");
 		lua_pop(L, 1);
