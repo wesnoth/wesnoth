@@ -5100,6 +5100,59 @@ static int intf_invoke_synced_command(lua_State* L)
 	return 0;
 }
 
+struct callbacks_tag {
+	game_lua_kernel& ref;
+	callbacks_tag(game_lua_kernel& k) : ref(k) {}
+};
+#define CALLBACK_GETTER(name, type) LATTR_GETTER(name, lua_index_raw, callbacks_tag, ) { lua_pushcfunction(L, &impl_null_callback<type>); return lua_index_raw(L); }
+luaW_Registry callbacksReg{"game_events"};
+
+template<typename Ret>
+static int impl_null_callback(lua_State* L) {
+	if constexpr(std::is_same_v<Ret, void>) return 0;
+	else lua_push(L, Ret());
+	return 1;
+};
+
+template<> struct lua_object_traits<callbacks_tag> {
+	inline static auto metatable = "game_events";
+	inline static game_lua_kernel& get(lua_State* L, int) {
+		return lua_kernel_base::get_lua_kernel<game_lua_kernel>(L);
+	}
+};
+
+CALLBACK_GETTER("on_event", void);
+CALLBACK_GETTER("on_load", void);
+CALLBACK_GETTER("on_save", config);
+CALLBACK_GETTER("on_mouse_action", void);
+CALLBACK_GETTER("on_mouse_button", bool);
+CALLBACK_GETTER("on_mouse_move", void);
+
+static int impl_game_events_dir(lua_State* L) {
+	return callbacksReg.dir(L);
+}
+
+static int impl_game_events_get(lua_State* L) {
+	return callbacksReg.get(L);
+}
+
+template<typename Ret = void>
+static bool impl_get_callback(lua_State* L, const std::string& name) {
+	int top = lua_gettop(L);
+	if(!luaW_getglobal(L, "wesnoth", "game_events")) {
+		return false;
+	}
+	lua_getfield(L, -1, name.c_str()); // calls impl_game_events_get
+	lua_pushcfunction(L, &impl_null_callback<Ret>);
+	if(lua_rawequal(L, -1, -2)) {
+		lua_settop(L, top);
+		return false;
+	}
+	lua_pop(L, 1);
+	lua_remove(L, -2);
+	return true;
+}
+
 // END CALLBACK IMPLEMENTATION
 
 game_board & game_lua_kernel::board() {
@@ -5531,6 +5584,14 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
 	luaL_setfuncs(L, event_callbacks, 0);
+	lua_createtable(L, 0, 2);
+	lua_pushcfunction(L, &impl_game_events_dir);
+	lua_setfield(L, -2, "__dir");
+	lua_pushcfunction(L, &impl_game_events_get);
+	lua_setfield(L, -2, "__index");
+	lua_pushstring(L, "game_events");
+	lua_setfield(L, -2, "__metatable");
+	lua_setmetatable(L, -2);
 	lua_setfield(L, -2, "game_events");
 	lua_pop(L, 1);
 
@@ -5663,7 +5724,7 @@ void game_lua_kernel::load_game(const config& level)
 {
 	lua_State *L = mState;
 
-	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_load"))
+	if(!impl_get_callback(L, "on_load"))
 		return;
 
 	lua_newtable(L);
@@ -5690,7 +5751,7 @@ void game_lua_kernel::save_game(config &cfg)
 {
 	lua_State *L = mState;
 
-	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_save"))
+	if(!impl_get_callback<config>(L, "on_save"))
 		return;
 
 	if (!luaW_pcall(L, 0, 1, false))
@@ -5728,7 +5789,7 @@ bool game_lua_kernel::run_event(const game_events::queued_event& ev)
 {
 	lua_State *L = mState;
 
-	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_event"))
+	if(!impl_get_callback(L, "on_event"))
 		return false;
 
 	queued_event_context dummy(&ev, queued_events_);
@@ -6154,7 +6215,7 @@ void game_lua_kernel::mouse_over_hex_callback(const map_location& loc)
 {
 	lua_State *L = mState;
 
-	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_mouse_move")) {
+	if(!impl_get_callback(L, "on_mouse_move")) {
 		return;
 	}
 	lua_push(L, loc.wml_x());
@@ -6167,7 +6228,7 @@ bool game_lua_kernel::mouse_button_callback(const map_location& loc, const std::
 {
 	lua_State *L = mState;
 
-	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_mouse_button")) {
+	if(!impl_get_callback<bool>(L, "on_mouse_button")) {
 		return false;
 	}
 
@@ -6186,7 +6247,7 @@ void game_lua_kernel::select_hex_callback(const map_location& loc)
 {
 	lua_State *L = mState;
 
-	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_mouse_action")) {
+	if(!impl_get_callback(L, "on_mouse_action")) {
 		return;
 	}
 	lua_push(L, loc.wml_x());
