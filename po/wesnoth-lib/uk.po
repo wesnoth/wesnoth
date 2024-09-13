@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-05-25 21:28-0500\n"
-"PO-Revision-Date: 2024-06-20 14:39+0300\n"
+"PO-Revision-Date: 2024-09-11 15:26+0300\n"
 "Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
 "discord: amakri>\n"
 "Language-Team: \n"
@@ -5173,7 +5173,7 @@ msgstr "Ім'я гри:"
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:256
 #: src/gui/dialogs/game_load.cpp:395
 msgid "Multiplayer"
-msgstr "Мультриплеєр"
+msgstr "Мультиплеєр"
 
 #. [label]
 #: data/gui/window/mp_method_selection.cfg:121
@@ -5582,8 +5582,10 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:168
+#, fuzzy
+#| msgid "In-game theme:"
 msgid "Interface theme:"
-msgstr "Тема інтерфейсу:"
+msgstr "Тема гри:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:181
@@ -8691,8 +8693,10 @@ msgid "Change Add-on ID"
 msgstr "Змінити ID аддону"
 
 #: src/hotkey/hotkey_command.cpp:273
+#, fuzzy
+#| msgid "Scenario"
 msgid "Edit Scenario"
-msgstr "Редагувати сценарій"
+msgstr "Сценарій"
 
 #: src/hotkey/hotkey_command.cpp:274
 msgid "Edit Side"
@@ -8856,8 +8860,8 @@ msgstr "У розділі '[$section|]' не заданий обов'язков�
 #~ msgid "Gravel"
 #~ msgstr "Гравій"
 
-#~ msgid "page^✔ Copied"
-#~ msgstr "✔ Скопійовано"
+#~ msgid "page^<span font_family='DejaVu Sans'>✔</span> Copied"
+#~ msgstr "<span font_family='DejaVu Sans'>✔</span> Скопійовано"
 
 #~ msgid "Filter by campaign completion status"
 #~ msgstr "Фільтрувати за статусом проходження"
@@ -8938,8 +8942,11 @@ msgstr "У розділі '[$section|]' не заданий обов'язков�
 #~ msgid "Preview image"
 #~ msgstr "Переглянути зображення"
 
-#~ msgid "Stats"
-#~ msgstr "Статистика"
+#~ msgid "Play sound"
+#~ msgstr "Програти звук"
+
+#~ msgid "Preview color changes on map"
+#~ msgstr "Переглянути зміни кольору на мапі"
 
 #~ msgid "Load Unit Type"
 #~ msgstr "Завантажити тип бійця"
@@ -9025,11 +9032,20 @@ msgstr "У розділі '[$section|]' не заданий обов'язков�
 #~ msgid "AI Usage:"
 #~ msgstr "Використання у ШІ:"
 
+#~ msgid "New Unit Type"
+#~ msgstr "Новий тип бійця"
+
 #~ msgid "Main Stats"
 #~ msgstr "Головні характеристики"
 
 #~ msgid "WML View"
 #~ msgstr "Вигляд через WML"
+
+#~ msgid "Open External"
+#~ msgstr "Відкрити зовнішнє"
+
+#~ msgid "Open selected using platform's default applications"
+#~ msgstr "Відкрити обране, використовуючи застосунок за замовчуванням"
 
 #~ msgid "<span font_family='DejaVu Sans'>✦</span> <b>Version:</b>"
 #~ msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Версія:</b>"
@@ -9080,6 +9096,19 @@ msgstr "У розділі '[$section|]' не заданий обов'язков�
 #~ msgid "Faction:"
 #~ msgstr "Фракція:"
 
+#~ msgid "UI theme:"
+#~ msgstr "Тема інтерфейсу:"
+
+#~ msgid ""
+#~ "Change the UI (GUI2) theme. Additional themes may be provided by "
+#~ "community-made add-ons"
+#~ msgstr ""
+#~ "Змінити тему інтерфейсу. Додаткові теми можливо отримати в аддонах, "
+#~ "зроблених спільнотою"
+
+#~ msgid "<span color='red'>*restart required</span>"
+#~ msgstr "<span color='red'>*необхідний перезапуск</span>"
+
 #~ msgid "About"
 #~ msgstr "About"
 
@@ -9116,14 +9145,49 @@ msgstr "У розділі '[$section|]' не заданий обов'язков�
 #~ msgid "Choose File"
 #~ msgstr "Оберіть файл"
 
+#~ msgid ""
+#~ "This file is outside Wesnoth's data dirs. Do you wish to copy it into "
+#~ "your add-on?"
+#~ msgstr ""
+#~ "Цей файл знаходиться поза директоріями Весноту. Чи ви бажаєте скопіювати "
+#~ "їх у ваш аддон?"
+
+#~ msgid "Unit type saved."
+#~ msgstr "Тип бійця збережено."
+
+#~ msgid "Opening files is not supported, contact your packager"
+#~ msgstr "Відкриття посилань не підтримується, зв'яжіться з менеджером пакету"
+
+#~ msgid "No Other Version Found"
+#~ msgstr "Інших версій не знайдено."
+
+#~ msgid ""
+#~ "This would import settings from a previous version of Wesnoth, but no "
+#~ "other version was found on this device"
+#~ msgstr ""
+#~ "Ця дія імпортує налаштування з попередньої версії Весноту, проте жодної "
+#~ "іншої версії не було знайдено"
+
 #~ msgid "No grid defined for tab container control"
 #~ msgstr "Не визначено сітки для керування контейнером вкладки"
 
 #~ msgid "Teleport Unit (Debug!)"
 #~ msgstr "Телепортувати бійця (Відладка!)"
 
-#~ msgid "New Unit Type"
-#~ msgstr "Новий тип бійця"
+#~ msgid "Load Map/Scenario"
+#~ msgstr "Завантажити мапу/сценарій"
+
+#~ msgid "Select active Add-on"
+#~ msgstr "Обрати активний аддон"
+
+#~ msgid "Open Add-on folder"
+#~ msgstr "Відкрити теку аддону"
+
+#~ msgid "page^✔ Copied"
+#~ msgstr "✔ Скопійовано"
+
+#~ msgid "Stats"
+#~ msgstr "Статистика"
 
 #~ msgid "Choose your preferred language:"
 #~ msgstr "Виберіть свою мову:"
@@ -9512,9 +9576,6 @@ msgstr "У розділі '[$section|]' не заданий обов'язков�
 
 #~ msgid "Registered users only:"
 #~ msgstr "Тільки зареєстровані користувачі:"
-
-#~ msgid "No era information found."
-#~ msgstr "Немає інформації про еру."
 
 #, fuzzy
 #~| msgid "Available at titlescreen"
