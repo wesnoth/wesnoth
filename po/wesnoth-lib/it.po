@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-08-18 23:11-0500\n"
-"PO-Revision-Date: 2023-11-21 19:40+0100\n"
+"PO-Revision-Date: 2024-06-20 09:17+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -3459,7 +3459,7 @@ msgstr "Configurazione Pubblicazione Estensione"
 #. [grid]
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:150
 msgid "The name of the add-on displayed in-game."
-msgstr "Il nome dell’estensione mostrato durante il gioco"
+msgstr "Il nome dell’estensione mostrato durante il gioco."
 
 #. [grid]
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:150
@@ -3558,7 +3558,7 @@ msgid ""
 "your password and email address in the add-on’s _server.pbl."
 msgstr ""
 "Se utilizzare il nome utente e la password del forum durante il caricamento "
-"o memorizzare la password e l’indirizzo email nel file estensione_server.pbl"
+"o memorizzare la password e l’indirizzo email nel file estensione_server.pbl."
 
 #. [grid]
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:214
@@ -4567,10 +4567,8 @@ msgstr ""
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
 #: data/gui/themes/default/window/game_version.cfg:335
-#, fuzzy
-#| msgid "Crater"
 msgid "Migrate"
-msgstr "Cratere"
+msgstr "Migrazione"
 
 #. [grid]
 #: data/gui/themes/default/window/game_version.cfg:372
@@ -4647,40 +4645,38 @@ msgstr ""
 #. [button]: id=forums
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/themes/default/window/game_version.cfg:633
-#, fuzzy
-#| msgid "Forum URL"
 msgid "Forums"
-msgstr "URL del Forum"
+msgstr "Forum"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/themes/default/window/game_version.cfg:652
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/themes/default/window/game_version.cfg:671
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/themes/default/window/game_version.cfg:690
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/themes/default/window/game_version.cfg:709
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/themes/default/window/game_version.cfg:728
 msgid "Donate"
-msgstr ""
+msgstr "Dona"
 
 #. [label]: id=description
 #: data/gui/themes/default/window/game_version.cfg:824
@@ -4721,7 +4717,7 @@ msgstr "Caratteristiche"
 #: data/gui/themes/default/window/title_screen.cfg:262
 #: data/gui/themes/modern/dialogs/title_screen.cfg:262
 msgid "Community"
-msgstr ""
+msgstr "Comunità"
 
 #. [button]: id=credits
 #: data/gui/themes/default/window/game_version.cfg:937
@@ -4828,6 +4824,9 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
+"<i>The Battle for Wesnoth</i> fa affidamento su dei volontari per lo "
+"sviluppo, traduzioni incluse. Le traduzioni posso rimanere indietro o "
+"persino essere abbandonate."
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4838,6 +4837,10 @@ msgid ""
 "interface and in-game help only. More complete stats, including details for "
 "each campaign, are available at the following page:"
 msgstr ""
+"<b>Nota:</b> Le percentuali di traduzione mostrate si applicano solo "
+"all'interfaccia principale del gioco e alla guida in-game. Statistiche più "
+"complete, inclusi i dettagli per ciascuna campagna, sono disponibili alla "
+"seguente pagina:"
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4847,11 +4850,13 @@ msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
+"Se sei interessato a partecipare alla traduzione del gioco, clicca sul link "
+"qui sotto per ottenere ulteriori informazioni:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/themes/default/window/language_selection.cfg:276
 msgid "Show in-progress or abandoned translations"
-msgstr ""
+msgstr "Mostra traduzioni in corso o abbandonate"
 
 #. [label]: id=status
 #: data/gui/themes/default/window/loadscreen.cfg:183
@@ -6818,10 +6823,8 @@ msgstr "Avvia l’editor di mappe"
 #. [grid]
 #: data/gui/themes/default/window/title_screen.cfg:262
 #: data/gui/themes/modern/dialogs/title_screen.cfg:262
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "Places to talk about Wesnoth"
-msgstr "The Battle for Wesnoth"
+msgstr "Posti dove discutere di Wesnoth"
 
 #. [grid]
 #: data/gui/themes/default/window/title_screen.cfg:263
@@ -9590,60 +9593,6 @@ msgstr ""
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
 
-#~ msgid "<b>Faction:</b>"
-#~ msgstr "<b>Fazione:</b>"
-
-#~ msgid "<b>Gender:</b>"
-#~ msgstr "<b>Sesso:</b>"
-
-#, fuzzy
-#~| msgid "page^Copy"
-#~ msgid "page^✔ Copied"
-#~ msgstr "Copia"
-
-#, fuzzy
-#~| msgid "Status"
-#~ msgid "Stats"
-#~ msgstr "Stato"
-
-#~ msgid "Configuration:"
-#~ msgstr "Configurazione:"
-
-#~ msgid "filesystem_path_game^User preferences"
-#~ msgstr "Preferenze utente"
-
-#~ msgid "--userdata-dir=<relative path that doesn't start with a period>"
-#~ msgstr "--userdata-dir=<percorso relativo che non inizia con un punto>"
-
-#~ msgid ""
-#~ "Use an absolute path, or a relative path that starts with a period and a "
-#~ "backslash"
-#~ msgstr ""
-#~ "Utilizza un percorso assoluto, o uno relativo che inizi con un punto e la "
-#~ "barra rovesciata"
-
-#~ msgid "--userdata-dir=<relative path>"
-#~ msgstr "--userdata-dir=<percorso relativo>"
-
-#~ msgid ""
-#~ "Use absolute paths. Relative paths are deprecated because they are "
-#~ "interpreted relative to $HOME"
-#~ msgstr ""
-#~ "Usa percorsi assoluti. I percorsi relativi sono sconsigliati perché "
-#~ "potrebbero essere interpretati relativamente a $HOME"
-
-#~ msgid "Load Map"
-#~ msgstr "Carica mappa"
-
-#~ msgid "Copy the full report to clipboard"
-#~ msgstr "Copia questo report negli appunti"
-
-#~ msgid "View the credits"
-#~ msgstr "Mostra i riconoscimenti"
-
-#~ msgid "Running on $os"
-#~ msgstr "In esecuzione su $os"
-
 #~ msgid "Rocky Sands"
 #~ msgstr "Sabbia rocciosa"
 
@@ -9670,6 +9619,47 @@ msgstr ""
 
 #~ msgid "Add-on ID"
 #~ msgstr "ID estensione"
+
+#~ msgid "Configuration:"
+#~ msgstr "Configurazione:"
+
+#~ msgid "Copy the full report to clipboard"
+#~ msgstr "Copia questo report negli appunti"
+
+#~ msgid "<b>Faction:</b>"
+#~ msgstr "<b>Fazione:</b>"
+
+#~ msgid "View the credits"
+#~ msgstr "Mostra i riconoscimenti"
+
+#~ msgid "filesystem_path_game^User preferences"
+#~ msgstr "Preferenze utente"
+
+#~ msgid "--userdata-dir=<relative path that doesn't start with a period>"
+#~ msgstr "--userdata-dir=<percorso relativo che non inizia con un punto>"
+
+#~ msgid ""
+#~ "Use an absolute path, or a relative path that starts with a period and a "
+#~ "backslash"
+#~ msgstr ""
+#~ "Utilizza un percorso assoluto, o uno relativo che inizi con un punto e la "
+#~ "barra rovesciata"
+
+#~ msgid "--userdata-dir=<relative path>"
+#~ msgstr "--userdata-dir=<percorso relativo>"
+
+#~ msgid ""
+#~ "Use absolute paths. Relative paths are deprecated because they are "
+#~ "interpreted relative to $HOME"
+#~ msgstr ""
+#~ "Usa percorsi assoluti. I percorsi relativi sono sconsigliati perché "
+#~ "potrebbero essere interpretati relativamente a $HOME"
+
+#~ msgid "Running on $os"
+#~ msgstr "In esecuzione su $os"
+
+#~ msgid "Load Map"
+#~ msgstr "Carica mappa"
 
 #~ msgid "Choose your preferred language:"
 #~ msgstr "Scegli la lingua preferita:"

@@ -4,12 +4,12 @@
 #
 # Automatically generated, 2006.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009, 2011.
-# Antonio 'Antro' Rosella <arosella@yahoo.com> 2012-2023
+# Antonio 'Antro' Rosella <arosella@yahoo.com> 2012-2024
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2024-07-21 22:31-0500\n"
-"PO-Revision-Date: 2023-07-29 23:16+0200\n"
+"PO-Revision-Date: 2024-06-20 09:19+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -66,7 +66,7 @@ msgstr ""
 #: doc/man/wesnoth.6:21 doc/man/wesnothd.6:24
 #, no-wrap
 msgid "SYNOPSIS"
-msgstr "SYNOPSIS"
+msgstr "SINOSSI"
 
 # type: Plain text
 #. type: Plain text
@@ -515,16 +515,12 @@ msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:169
-#, fuzzy
-#| msgid ""
-#| "log output is written to a file in addition to standard output/error. "
-#| "Cancels the effect of --no-log-to-file whether implicit or explicit."
 msgid ""
 "log output is written to a file. Cancels the effect of --no-log-to-file "
 "whether implicit or explicit."
 msgstr ""
-"il registro di output è scritto in un file addizionale oltre allo standard "
-"output/errore. Annulla l’effetto di --no-log-to-file implicito o esplicito."
+"il registro di output è scritto in un file. Annulla l’effetto di --no-log-to-"
+"file implicito o esplicito."
 
 # type: TP
 #. type: TP
@@ -1562,12 +1558,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:502 doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -2544,6 +2537,32 @@ msgstr "B<wesnoth>(6)"
 
 # type: TP
 #, no-wrap
+#~ msgid "B<--bunzip2>I<\\ infile.bz2>"
+#~ msgstr "B<--bunzip2>I<\\ infile.bz2>"
+
+# type: Plain text
+#~ msgid ""
+#~ "decompresses a file which should be in bzip2 format and stores it without "
+#~ "the .bz2 suffix. The I<infile.bz2> will be removed."
+#~ msgstr ""
+#~ "decomprime un file che dev’essere in formato bzip2 e lo memorizza senza "
+#~ "suffisso .bz2. Il file I<infile.bz2> sarà rimosso."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--bzip2>I<\\ infile>"
+#~ msgstr "B<--bzip2>I<\\ infile>"
+
+# type: Plain text
+#~ msgid ""
+#~ "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
+#~ "I<infile>."
+#~ msgstr ""
+#~ "comprime un file in formato bzip2, lo memorizza come I<infile>.bz2 e "
+#~ "rimuove I<infile>."
+
+# type: TP
+#, no-wrap
 #~ msgid "B<--config-dir>I<\\ name>"
 #~ msgstr "B<--config-dir>I<\\ name>"
 
@@ -2561,41 +2580,34 @@ msgstr "B<wesnoth>(6)"
 
 # type: TP
 #, no-wrap
-#~ msgid "B<--userconfig-dir>I<\\ name>"
-#~ msgstr "B<--userconfig-dir>I<\\ nome>"
+#~ msgid "B<--gunzip>I<\\ infile.gz>"
+#~ msgstr "B<--gunzip>I<\\ infile.gz>"
 
 # type: Plain text
-#, fuzzy
-#~| msgid ""
-#~| "sets the userdata directory to I<name> under $HOME or \"My "
-#~| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#~| "path for the userdata directory outside the $HOME or \"My Documents\\eMy "
-#~| "Games\". On Windows it is also possible to specify a directory relative "
-#~| "to the process working directory by using path starting with \".\\e\" or "
-#~| "\"..\\e\"."
 #~ msgid ""
-#~ "sets the user configuration directory to I<name> under $HOME or \"My "
-#~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#~ "path for the configuration directory outside the $HOME or \"My "
-#~ "Documents\\eMy Games\". On Windows it is also possible to specify a "
-#~ "directory relative to the process working directory by using path "
-#~ "starting with \".\\e\" or \"..\\e\".  This defaults to the userdata path."
+#~ "decompresses a file which should be in gzip format and stores it without "
+#~ "the .gz suffix. The I<infile.gz> will be removed."
 #~ msgstr ""
-#~ "imposta la directory dei dati dell’utente a I<nome> sotto $HOME o \"My "
-#~ "Documents\\eMy Games\" per Windows. Puoi anche specificare un percorso "
-#~ "assoluto per la directory di configurazione al di fuori di $HOME o \"My "
-#~ "Documents\\eMy Games\". In ambiente Windows è anche possibile specificare "
-#~ "una directory relativa al directory di lavoro del processo, utilizzando "
-#~ "un percorso che inizia con \".\\e\" or \"..\\e\"."
+#~ "decomprime un file che dev’essere in formato gzip e lo memorizza senza "
+#~ "suffisso .gz. Il file I<infile.gz> sarà rimosso."
 
 # type: TP
 #, no-wrap
-#~ msgid "B<--userconfig-path>"
-#~ msgstr "B<--userconfig-path>"
+#~ msgid "B<--gzip>I<\\ infile>"
+#~ msgstr "B<--gzip>I<\\ infile>"
 
 # type: Plain text
-#~ msgid "prints the path of the user configuration directory and exits."
-#~ msgstr "stampa il percorso della cartella di configurazione ed esce."
+#~ msgid ""
+#~ "compresses a file in gzip format, stores it as I<infile>.gz and removes "
+#~ "I<infile>."
+#~ msgstr ""
+#~ "comprime un file in formato gzip, lo memorizza come I<infile>.gz e "
+#~ "rimuove I<infile>."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--userconfig-dir>I<\\ name>"
+#~ msgstr "B<--userconfig-dir>I<\\ nome>"
 
 # type: Plain text
 #~ msgid ""
@@ -2617,6 +2629,15 @@ msgstr "B<wesnoth>(6)"
 #~ "In ambiente X11 la directory standard è $XDG_CONFIG_HOME o $HOME/.config/"
 #~ "wesnoth, in altri ambienti corrisponde alla directory contenente i dati "
 #~ "utente."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--userconfig-path>"
+#~ msgstr "B<--userconfig-path>"
+
+# type: Plain text
+#~ msgid "prints the path of the user configuration directory and exits."
+#~ msgstr "stampa il percorso della cartella di configurazione ed esce."
 
 # type: TP
 #, no-wrap
@@ -2693,58 +2714,6 @@ msgstr "B<wesnoth>(6)"
 #, no-wrap
 #~ msgid "B<db_game_modification_info_table>"
 #~ msgstr "B<db_game_modification_info_table>"
-
-# type: TP
-#, no-wrap
-#~ msgid "B<--bunzip2>I<\\ infile.bz2>"
-#~ msgstr "B<--bunzip2>I<\\ infile.bz2>"
-
-# type: Plain text
-#~ msgid ""
-#~ "decompresses a file which should be in bzip2 format and stores it without "
-#~ "the .bz2 suffix. The I<infile.bz2> will be removed."
-#~ msgstr ""
-#~ "decomprime un file che dev’essere in formato bzip2 e lo memorizza senza "
-#~ "suffisso .bz2. Il file I<infile.bz2> sarà rimosso."
-
-# type: TP
-#, no-wrap
-#~ msgid "B<--bzip2>I<\\ infile>"
-#~ msgstr "B<--bzip2>I<\\ infile>"
-
-# type: Plain text
-#~ msgid ""
-#~ "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
-#~ "I<infile>."
-#~ msgstr ""
-#~ "comprime un file in formato bzip2, lo memorizza come I<infile>.bz2 e "
-#~ "rimuove I<infile>."
-
-# type: TP
-#, no-wrap
-#~ msgid "B<--gunzip>I<\\ infile.gz>"
-#~ msgstr "B<--gunzip>I<\\ infile.gz>"
-
-# type: Plain text
-#~ msgid ""
-#~ "decompresses a file which should be in gzip format and stores it without "
-#~ "the .gz suffix. The I<infile.gz> will be removed."
-#~ msgstr ""
-#~ "decomprime un file che dev’essere in formato gzip e lo memorizza senza "
-#~ "suffisso .gz. Il file I<infile.gz> sarà rimosso."
-
-# type: TP
-#, no-wrap
-#~ msgid "B<--gzip>I<\\ infile>"
-#~ msgstr "B<--gzip>I<\\ infile>"
-
-# type: Plain text
-#~ msgid ""
-#~ "compresses a file in gzip format, stores it as I<infile>.gz and removes "
-#~ "I<infile>."
-#~ msgstr ""
-#~ "comprime un file in formato gzip, lo memorizza come I<infile>.gz e "
-#~ "rimuove I<infile>."
 
 #~ msgid "2018"
 #~ msgstr "2018"
