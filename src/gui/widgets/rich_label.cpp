@@ -99,24 +99,28 @@ const point rich_label::get_image_size(const config& img_cfg) {
 	return point(variables.query_value("image_width").as_int(), variables.query_value("image_height").as_int());
 }
 
-void rich_label::add_text_with_attributes(config& curr_item, std::string text, std::vector<std::string> attr_names, std::vector<std::string> extra_data) {
+std::pair<size_t, size_t> rich_label::add_text(config& curr_item, std::string text) {
 	size_t start = curr_item["text"].str().size();
 	curr_item["text"] = curr_item["text"].str() + text;
 	size_t end = curr_item["text"].str().size();
+	return std::make_pair(start, end);
+}
 
-	if (!attr_names.empty()) {
-		for (size_t i = 0; i < attr_names.size(); i++) {
-			config& attr_cfg = curr_item.add_child("attribute");
-			attr_cfg["name"] = attr_names[i];
-			attr_cfg["start"] = start;
-			attr_cfg["end"] = end;
+void rich_label::add_attribute(config& curr_item, std::string attr_name, size_t start, size_t end, std::string extra_data) {
+	config& attr_cfg = curr_item.add_child("attribute");
+	attr_cfg["name"] = attr_name;
+	attr_cfg["start"] = start;
+	attr_cfg["end"] = end == 0 ? curr_item["text"].str().size() : end;
 
-			if (!extra_data.empty()) {
-				attr_cfg["value"] = extra_data[i];
-			}
-		}
+	if (!extra_data.empty()) {
+		attr_cfg["value"] = extra_data;
 	}
+}
 
+std::pair<size_t, size_t> rich_label::add_text_with_attribute(config& curr_item, std::string text, std::string attr_name, std::string extra_data) {
+	const auto& [start, end] = add_text(curr_item, text);
+	add_attribute(curr_item, attr_name, start, end, extra_data);
+	return std::make_pair(start, end);
 }
 
 void rich_label::add_image(config& curr_item, std::string name, std::string align, bool has_prev_image, bool floating) {
@@ -284,7 +288,7 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 	point img_size;
 	point float_size;
 
-	DBG_GUI_RL << parsed_text.debug();
+	PLAIN_LOG << parsed_text.debug();
 	
 	for(config::any_child tag : parsed_text.all_children_range()) {
 		config& child = tag.cfg;
@@ -488,36 +492,26 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 
 				DBG_GUI_RL << "ref: dst=" << child["dst"];
 
-			} else if(tag.key == "bold" || tag.key == "b") {
-				add_text_with_attribute(*curr_item, line, "bold");
+			} else if(std::find(format_tags_.begin(), format_tags_.end(), tag.key) != format_tags_.end()) {
+
+				const auto& [start, end] = add_text_with_attribute(*curr_item, line, tag.key);
+
+				config parsed_children = get_parsed_text(tag.cfg, point(x, prev_blk_height));
+				for (config& text : parsed_children.child_range("text")) {
+					add_attribute(text, tag.key, start, end);
+				}
+				text_dom.append_children(parsed_children);
 
 				is_image = false;
 
-				DBG_GUI_RL << "bold: text=" << line;
-
-			} else if(tag.key == "italic" || tag.key == "i") {
-
-				add_text_with_attribute(*curr_item, line, "italic");
-				is_image = false;
-
-				DBG_GUI_RL << "italic: text=" << line;
-
-			} else if(tag.key == "underline" || tag.key == "u") {
-
-				add_text_with_attribute(*curr_item, line, "underline");
-				is_image = false;
-
-				DBG_GUI_RL << "u: text=" << line;
+				DBG_GUI_RL << tag.key << ": text=" << gui2::debug_truncate(line);
 
 			} else if(tag.key == "header" || tag.key == "h") {
 
-				std::vector<std::string> attrs = {"face", "color", "size"};
-				std::vector<std::string> attr_data;
-				attr_data.push_back("serif");
-				attr_data.push_back(font::string_to_color("white").to_hex_string());
-				attr_data.push_back(std::to_string(font::SIZE_TITLE - 2));
-
-				add_text_with_attributes((*curr_item), line, attrs, attr_data);
+				const auto& [start, end] = add_text(*curr_item, line);
+				add_attribute(*curr_item, "face", start, end, "serif");
+				add_attribute(*curr_item, "color", start, end, font::string_to_color("white").to_hex_string());
+				add_attribute(*curr_item, "size", start, end, std::to_string(font::SIZE_TITLE - 2));
 
 				is_image = false;
 
@@ -526,12 +520,9 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 			} else if(tag.key == "character_entity") {
 				line = "&" + child["name"].str() + ";";
 
-				std::vector<std::string> attrs = {"face", "color"};
-				std::vector<std::string> attr_data;
-				attr_data.push_back("monospace");
-				attr_data.push_back(font::string_to_color("red").to_hex_string());
-
-				add_text_with_attributes((*curr_item), line, attrs, attr_data);
+				const auto& [start, end] = add_text(*curr_item, line);
+				add_attribute(*curr_item, "face", start, end, "monospace");
+				add_attribute(*curr_item, "color", start, end, font::string_to_color("red").to_hex_string());
 
 				is_image = false;
 
@@ -539,29 +530,24 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 
 			} else if(tag.key == "span" || tag.key == "format") {
 
-				std::vector<std::string> attrs;
-				std::vector<std::string> attr_data;
-
+				const auto& [start, end] = add_text(*curr_item, line);
 				DBG_GUI_RL << "span/format: text=" << line;
 				DBG_GUI_RL << "attributes:";
 
 				for (const auto& attr : child.attribute_range()) {
 					if (attr.first != "text") {
-						attrs.push_back(attr.first);
-						attr_data.push_back(attr.second);
+						add_attribute(*curr_item, attr.first, start, end, attr.second);
 						DBG_GUI_RL << attr.first << "=" << attr.second;
 					}
 				}
 
-				add_text_with_attributes((*curr_item), line, attrs, attr_data);
 				is_image = false;
 
 			} else if (tag.key == "text") {
 
 				DBG_GUI_RL << "text: text=" << gui2::debug_truncate(line) << "...";
 
-				(*curr_item)["font_size"] = font::SIZE_NORMAL;
-				(*curr_item)["text"] = (*curr_item)["text"].str() + line;
+				add_text(*curr_item, line);
 
 				point text_size = get_text_size(*curr_item, w_ - (x == 0 ? float_size.x : x));
 				text_size.x -= x;

@@ -203,13 +203,16 @@ private:
 	/** Padding */
 	unsigned padding_;
 
+	/** Possible formatting tags, must be the same as those in gui2::text_shape::draw */
+	const std::vector<std::string> format_tags_ = {"bold", "b", "italic", "i", "underline", "u"};
+
 	/** Create template for text config that can be shown in canvas */
 	void default_text_config(config* txt_ptr, t_string text = "");
 
-	void add_text_with_attribute(config& curr_item, std::string text, std::string attr_name = "", std::string extra_data = "") {
-		add_text_with_attributes(curr_item, text, {attr_name}, {extra_data});
-	}
-	void add_text_with_attributes(config& curr_item, std::string text, std::vector<std::string> attr_names, std::vector<std::string> extra_data);
+	std::pair<size_t, size_t> add_text(config& curr_item, std::string text);
+	void add_attribute(config& curr_item, std::string attr_name, size_t start = 0, size_t end = 0, std::string extra_data = "");
+	std::pair<size_t, size_t> add_text_with_attribute(config& curr_item, std::string text, std::string attr_name = "", std::string extra_data = "");
+
 	void add_image(config& curr_item, std::string name, std::string align, bool has_prev_image, bool floating);
 	void add_link(config& curr_item, std::string name, std::string dest, const point& origin, int img_width);
 
