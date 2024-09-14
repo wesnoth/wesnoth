@@ -1644,7 +1644,7 @@ int generic_combat_modifier(int lawful_bonus, unit_alignments::type alignment, b
 bool backstab_check(const map_location& attacker_loc,
 		const map_location& defender_loc,
 		const unit_map& units,
-		const std::vector<team>& teams)
+		const utils::team_query& teams)
 {
 	const unit_map::const_iterator defender = units.find(defender_loc);
 	if(defender == units.end()) {
@@ -1675,13 +1675,9 @@ bool backstab_check(const map_location& attacker_loc,
 		return false;
 	}
 
-	// If sides aren't valid teams, then they are enemies.
-	if(std::size_t(defender->side() - 1) >= teams.size() || std::size_t(opp->side() - 1) >= teams.size()) {
-		return true;
-	}
-
-	// Defender and opposite are enemies.
-	if(teams[defender->side() - 1].is_enemy(opp->side())) {
+	// Check whether defender and opposite are enemies.
+	const auto query = utils::team_query{teams};
+	if(query.is_enemy(*defender, *opp)) {
 		return true;
 	}
 

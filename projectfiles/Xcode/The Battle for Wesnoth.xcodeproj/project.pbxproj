@@ -19,11 +19,13 @@
 		0554467DB5FE99D85ABCDCA0 /* edit_pbl_translation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00574699A982AA23F12B39E0 /* edit_pbl_translation.cpp */; };
 		1234567890ABCDEF12345678 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
 		1234567890ABCDEF12345679 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
+		15324F0D9BF379D84E51F2BB /* team_query.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A6414F9AA821DFF9D3FBAEE6 /* team_query.hpp */; };
 		172E48A5BD149999CE64EDF8 /* prompt.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D4594633BF3F8A06D6AE752F /* prompt.hpp */; };
 		179D4E93A08C5A67B071C6C1 /* spinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4214F3DA80B54080C4B548F /* spinner.cpp */; };
 		19B14238AD52EC06ED2094F1 /* tab_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 162C4B1E9F7373592D0F3B89 /* tab_container.cpp */; };
 		1BC74FED857215A162E9E0F2 /* tab_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 162C4B1E9F7373592D0F3B89 /* tab_container.cpp */; };
 		1C3D48879EAC414AE3DB122E /* combobox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 875E45698F8A8D5B750E7317 /* combobox.cpp */; };
+		245541C6BA49166C334FC7AA /* team_query.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E0174C93B33344A6A4C929F1 /* team_query.cpp */; };
 		285C4E7A9E891E1DCB215683 /* back_edge_detector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DA034C90BB2E6C060B0A0B93 /* back_edge_detector.hpp */; };
 		365D4F89BD511BC074E639D7 /* migrate_version_selection.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B3DE4F95AF72C6F6BC37E695 /* migrate_version_selection.hpp */; };
 		36B146FAA79A55E9F43723B1 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
@@ -623,6 +625,7 @@
 		4E4A4DBC9F44444A5867EC2B /* migrate_version_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7B1444E9B79504502208B82 /* migrate_version_selection.cpp */; };
 		508C40A885166B2E3F4245F4 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		529242A8856DE8D00988B9BD /* test_schema_self_validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26A04033A9545CFE8A226FBD /* test_schema_self_validator.cpp */; };
+		573B476BA0F08576D172EB3E /* team_query.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A6414F9AA821DFF9D3FBAEE6 /* team_query.hpp */; };
 		59F24113ACB3713647622A17 /* spritesheet_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 492144E3AE22C0C7A2D5F27C /* spritesheet_generator.cpp */; };
 		620A386E15E9364E00A4F513 /* attack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 620A386215E9364E00A4F513 /* attack.cpp */; };
 		620A386F15E9364E00A4F513 /* create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 620A386415E9364E00A4F513 /* create.cpp */; };
@@ -1153,6 +1156,7 @@
 		95EB8A58287B138700B09F95 /* draw_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95EB8A50287A02B800B09F95 /* draw_manager.cpp */; };
 		95EB8A59287B139800B09F95 /* top_level_drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95EB8A54287A02EC00B09F95 /* top_level_drawable.cpp */; };
 		97714C7A9FF444E29DCEF0BA /* carryover_show_gold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A440B1A671C45BE2924FB4 /* carryover_show_gold.cpp */; };
+		99A84B1095FCA89ACA8A2F02 /* team_query.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E0174C93B33344A6A4C929F1 /* team_query.cpp */; };
 		9B4B41D29C90B05F03DE21B0 /* edit_pbl_translation.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C679447D91FD3623CC852FF8 /* edit_pbl_translation.hpp */; };
 		9C2743DE8100448B66F7E0AF /* combobox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 875E45698F8A8D5B750E7317 /* combobox.cpp */; };
 		9C6342BC8A95B6D23D384486 /* gui_test_dialog.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0110429EAA81AED07D53B749 /* gui_test_dialog.hpp */; };
@@ -2468,6 +2472,7 @@
 		95EB8A53287A02EC00B09F95 /* top_level_drawable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = top_level_drawable.hpp; path = gui/core/top_level_drawable.hpp; sourceTree = "<group>"; };
 		95EB8A54287A02EC00B09F95 /* top_level_drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = top_level_drawable.cpp; path = gui/core/top_level_drawable.cpp; sourceTree = "<group>"; };
 		A05D48F0A2C022FC128C8B3E /* edit_unit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = edit_unit.cpp; sourceTree = "<group>"; };
+		A6414F9AA821DFF9D3FBAEE6 /* team_query.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = team_query.hpp; path = team_query.hpp; sourceTree = "<group>"; };
 		B2CC45FEA71445AE817CAA6B /* edit_pbl.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = edit_pbl.hpp; sourceTree = "<group>"; };
 		B3534BCB9BB2673B5E513D67 /* combobox.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = combobox.hpp; sourceTree = "<group>"; };
 		B3DE4F95AF72C6F6BC37E695 /* migrate_version_selection.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = migrate_version_selection.hpp; sourceTree = "<group>"; };
@@ -2800,6 +2805,7 @@
 		D911474D925FA88D5B856A0E /* test_sdl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_sdl.cpp; sourceTree = "<group>"; };
 		D9A141EAAE90E98B6F6171D6 /* choose_addon.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = choose_addon.hpp; sourceTree = "<group>"; };
 		DA034C90BB2E6C060B0A0B93 /* back_edge_detector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = back_edge_detector.hpp; sourceTree = "<group>"; };
+		E0174C93B33344A6A4C929F1 /* team_query.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = team_query.cpp; path = team_query.cpp; sourceTree = "<group>"; };
 		E4214F3DA80B54080C4B548F /* spinner.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = spinner.cpp; sourceTree = "<group>"; };
 		E5E2430098E9A628933A1DB1 /* rich_label.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rich_label.cpp; sourceTree = "<group>"; };
 		EC0341DF1ECF46FE000F2E2B /* config_attribute_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config_attribute_value.cpp; sourceTree = "<group>"; };
@@ -4577,6 +4583,8 @@
 				9577DD342C1E1E1C0031135F /* wesnoth_epoch.hpp */,
 				492144E3AE22C0C7A2D5F27C /* spritesheet_generator.cpp */,
 				3D284B9A81882806D8B25006 /* spritesheet_generator.hpp */,
+				E0174C93B33344A6A4C929F1 /* team_query.cpp */,
+				A6414F9AA821DFF9D3FBAEE6 /* team_query.hpp */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -5261,6 +5269,7 @@
 				9C6342BC8A95B6D23D384486 /* gui_test_dialog.hpp in Headers */,
 				9577DD402C1E36170031135F /* carryover_show_gold.hpp in Headers */,
 				80724CBB88A3B6C36D1E3199 /* spritesheet_generator.hpp in Headers */,
+				15324F0D9BF379D84E51F2BB /* team_query.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5281,6 +5290,7 @@
 				022640C59A7BD907C810FA99 /* rich_label.hpp in Headers */,
 				6A1F44688986D07EB5DBEF75 /* gui_test_dialog.hpp in Headers */,
 				3C0F4FFA9A0331ED6846D216 /* spritesheet_generator.hpp in Headers */,
+				573B476BA0F08576D172EB3E /* team_query.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6035,6 +6045,7 @@
 				805143B8BABF92CA79BEC8F5 /* gui_test_dialog.cpp in Sources */,
 				9FE64884AE8121CDBABF7D8A /* preferences.cpp in Sources */,
 				59F24113ACB3713647622A17 /* spritesheet_generator.cpp in Sources */,
+				245541C6BA49166C334FC7AA /* team_query.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6718,6 +6729,7 @@
 				DDA14069BCE29DE0FE71B970 /* gui_test_dialog.cpp in Sources */,
 				DDE34117BDAA30C965F6E4DB /* preferences.cpp in Sources */,
 				4A1D4916A16C7C6E07D0BAB2 /* spritesheet_generator.cpp in Sources */,
+				99A84B1095FCA89ACA8A2F02 /* team_query.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
