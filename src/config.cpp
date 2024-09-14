@@ -42,7 +42,7 @@ namespace
 {
 // std::map::operator[] does not support heterogeneous lookup so we need this to work around.
 template<typename Map, typename Key>
-typename Map::mapped_type& map_get(Map& map, Key&& key)
+typename Map::iterator map_get(Map& map, Key&& key)
 {
 	auto res = map.lower_bound(key);
 
@@ -50,7 +50,7 @@ typename Map::mapped_type& map_get(Map& map, Key&& key)
 		res = map.emplace_hint(res, std::piecewise_construct, std::forward_as_tuple(key), std::tuple<>());
 	}
 
-	return res->second;
+	return res;
 }
 
 // std::map::erase does not support heterogeneous lookup so we need this to work around.
@@ -440,33 +440,37 @@ config::const_child_itors config::get_deprecated_child_range(config_key_type old
 
 config& config::add_child(config_key_type key)
 {
-	child_list& v = map_get(children_, key);
+	auto iter = map_get(children_, key);
+	child_list& v = iter->second;
 	v.emplace_back(new config());
-	ordered_children.emplace_back(children_.find(key), v.size() - 1);
+	ordered_children.emplace_back(iter, v.size() - 1);
 	return *v.back();
 }
 
 config& config::add_child(config_key_type key, const config& val)
 {
-	child_list& v = map_get(children_, key);
+	auto iter = map_get(children_, key);
+	child_list& v = iter->second;
 	v.emplace_back(new config(val));
-	ordered_children.emplace_back(children_.find(key), v.size() - 1);
+	ordered_children.emplace_back(iter, v.size() - 1);
 
 	return *v.back();
 }
 
 config& config::add_child(config_key_type key, config&& val)
 {
-	child_list& v = map_get(children_, key);
+	auto iter = map_get(children_, key);
+	child_list& v = iter->second;
 	v.emplace_back(new config(std::move(val)));
-	ordered_children.emplace_back(children_.find(key), v.size() - 1);
+	ordered_children.emplace_back(iter, v.size() - 1);
 
 	return *v.back();
 }
 
 config& config::add_child_at(config_key_type key, const config& val, std::size_t index)
 {
-	child_list& v = map_get(children_, key);
+	auto iter = map_get(children_, key);
+	child_list& v = iter->second;
 	if(index > v.size()) {
 		throw error("illegal index to add child at");
 	}
@@ -475,7 +479,7 @@ config& config::add_child_at(config_key_type key, const config& val, std::size_t
 
 	bool inserted = false;
 
-	const child_pos value(children_.find(key), index);
+	const child_pos value(iter, index);
 
 	std::vector<child_pos>::iterator ord = ordered_children.begin();
 	for(; ord != ordered_children.end(); ++ord) {
@@ -589,8 +593,8 @@ void config::splice_children(config& src, const std::string& key)
 		std::remove_if(src.ordered_children.begin(), src.ordered_children.end(), remove_ordered(i_src)),
 		src.ordered_children.end());
 
-	child_list& dst = map_get(children_, key);
-	child_map::iterator i_dst = children_.find(key);
+	auto i_dst = map_get(children_, key);
+	child_list& dst = i_dst->second;
 
 	const auto before = dst.size();
 	dst.insert(dst.end(), std::make_move_iterator(i_src->second.begin()), std::make_move_iterator(i_src->second.end()));
