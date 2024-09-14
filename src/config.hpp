@@ -881,10 +881,10 @@ public:
 	/**
 	 * Adds children from @a cfg.
 	 */
-	void append_children(const config &cfg, const std::string& key);
+	void append_children(const config &cfg, config_key_type key);
 
 	/** Moves children with the given name from the given config to this one. */
-	void append_children_by_move(config& cfg, const std::string& key);
+	void append_children_by_move(config& cfg, config_key_type key);
 
 	/**
 	 * Adds attributes from @a cfg.
@@ -895,14 +895,14 @@ public:
 	 * All children with the given key will be merged
 	 * into the first element with that key.
 	 */
-	void merge_children(const std::string& key);
+	void merge_children(config_key_type key);
 
 	/**
 	 * All children with the given key and with equal values
 	 * of the specified attribute will be merged into the
 	 * element with that key and that value of the attribute
 	 */
-	void merge_children_by_attribute(const std::string& key, const std::string& attribute);
+	void merge_children_by_attribute(config_key_type key, config_key_type attribute);
 
 	//this is a cheap O(1) operation
 	void swap(config& cfg);

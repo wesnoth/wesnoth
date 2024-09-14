@@ -194,7 +194,7 @@ void config::append_attributes(const config& cfg)
 	}
 }
 
-void config::append_children(const config& cfg, const std::string& key)
+void config::append_children(const config& cfg, config_key_type key)
 {
 	for(const config& value : cfg.child_range(key)) {
 		add_child(key, value);
@@ -226,7 +226,7 @@ void config::append(config&& cfg)
 	cfg.clear_attributes();
 }
 
-void config::append_children_by_move(config& cfg, const std::string& key)
+void config::append_children_by_move(config& cfg, config_key_type key)
 {
 	// DO note this leaves the tags empty in the source config. Not sure if
 	// that should be changed.
@@ -237,7 +237,7 @@ void config::append_children_by_move(config& cfg, const std::string& key)
 	cfg.clear_children_impl(key);
 }
 
-void config::merge_children(const std::string& key)
+void config::merge_children(config_key_type key)
 {
 	if(child_count(key) < 2) {
 		return;
@@ -252,7 +252,7 @@ void config::merge_children(const std::string& key)
 	add_child(key, std::move(merged_children));
 }
 
-void config::merge_children_by_attribute(const std::string& key, const std::string& attribute)
+void config::merge_children_by_attribute(config_key_type key, config_key_type attribute)
 {
 	if(child_count(key) < 2) {
 		return;
