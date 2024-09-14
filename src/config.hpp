@@ -478,42 +478,6 @@ public:
 	const attribute_value& operator[](config_key_type key) const;
 
 	/**
-	* Returns a reference to the attribute with the given @a key.
-	* Creates it if it does not exist.
-	*/
-	attribute_value& operator[](const std::string& key)
-	{
-		return operator[](config_key_type(key));
-	}
-
-	/**
-	* Returns a reference to the attribute with the given @a key
-	* or to a dummy empty attribute if it does not exist.
-	*/
-	const attribute_value& operator[](const std::string& key) const
-	{
-		return operator[](config_key_type(key));
-	}
-
-	/**
-	* Returns a reference to the attribute with the given @a key.
-	* Creates it if it does not exist.
-	*/
-	attribute_value& operator[](const char* key)
-	{
-		return operator[](config_key_type(key));
-	}
-
-	/**
-	* Returns a reference to the attribute with the given @a key
-	* or to a dummy empty attribute if it does not exist.
-	*/
-	const attribute_value& operator[](const char* key) const
-	{
-		return operator[](config_key_type(key));
-	}
-
-	/**
 	 * Returns a pointer to the attribute with the given @a key
 	 * or nullptr if it does not exist.
 	 */
