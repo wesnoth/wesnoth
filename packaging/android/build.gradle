@@ -7,7 +7,8 @@ plugins {
 task buildCppDepends {
 	doLast {
 		exec {
-			commandLine './build-android-dependencies/build-android-deps.sh'
+			workingDir './build-android-dependencies'
+			commandLine './build-android-deps.sh'
 		}
 	}
 }
