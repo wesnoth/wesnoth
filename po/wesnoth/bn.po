@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-06-28 22:34-0500\n"
-"PO-Revision-Date: 2024-08-23 17:11+0530\n"
+"PO-Revision-Date: 2024-09-10 14:53+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
@@ -3255,6 +3255,10 @@ msgid ""
 "\t\tmain=$base {forest_type}|$base{!}’s {forest_type}|{forest_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tforest_type=বন|অরণ্য|জঙ্গল\n"
+"\t\tmain=$base {forest_type}|$base{!}’s {forest_type}|{forest_type} $base\n"
+"\t"
 
 #. [naming]
 #. Generator for lake labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3265,6 +3269,10 @@ msgid ""
 "\t\tmain=$base {lake_type}|{lake_type} $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tlake_type=বিল|দীঘি|হ্রদ|পুকুর|সাগর\n"
+"\t\tmain=$base {lake_type}|{lake_type} $base\n"
+"\t"
 
 #. [naming]
 #. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3274,6 +3282,9 @@ msgid ""
 "\t\tmain=$base{!}’s Peak|$base Peak|Mount $base|Mount $base\n"
 "\t"
 msgstr ""
+"\n"
+"\t\tmain=$base{!}-এর চুড়া|$base চুড়া|মাউন্ট $base|মাউন্ট $base\n"
+"\t"
 
 #. [naming]
 #. Generator for swamp labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3572,6 +3583,9 @@ msgid ""
 "\n"
 "Some eras and scenarios may automatically enable this option."
 msgstr ""
+"সম্ভাব্য উন্নয়ণ পছন্দ করার ওপরে আপনাকে একটি প্রশ্ন করা হবে\n"
+"\n"
+"কিছু যুগ এবং ঘটনাক্রম এই বিকল্পটি স্বয়ংক্রিয়ভাবে চালু করে রাখতে পারে ।"
 
 #. [lua]: preshow
 #: data/modifications/pick_advance/dialog.lua:36
@@ -4715,7 +4729,7 @@ msgstr "এক/বহু খেলোয়াড়ের জন্য অভিয�
 
 #: src/addon/info.cpp:259
 msgid "addon_type^MP era"
-msgstr ""
+msgstr "এমপি যুগ"
 
 #: src/addon/info.cpp:261
 msgid "addon_type^MP faction"
@@ -4723,15 +4737,15 @@ msgstr ""
 
 #: src/addon/info.cpp:263
 msgid "addon_type^MP map-pack"
-msgstr ""
+msgstr "এমপি মানচিত্র প্যাক"
 
 #: src/addon/info.cpp:265
 msgid "addon_type^MP scenario"
-msgstr ""
+msgstr "এমপি ঘটনাক্রম"
 
 #: src/addon/info.cpp:267
 msgid "addon_type^MP campaign"
-msgstr ""
+msgstr "এমপি অভিযান"
 
 #: src/addon/info.cpp:269
 msgid "addon_type^Modification"
@@ -4739,7 +4753,7 @@ msgstr "পরিবর্তন"
 
 #: src/addon/info.cpp:271
 msgid "addon_type^Core"
-msgstr ""
+msgstr "কোর"
 
 #: src/addon/info.cpp:273
 msgid "addon_type^Resources"
@@ -4747,11 +4761,11 @@ msgstr ""
 
 #: src/addon/info.cpp:275
 msgid "addon_type^Other"
-msgstr ""
+msgstr "অন্যান্য"
 
 #: src/addon/info.cpp:277
 msgid "addon_type^(unknown)"
-msgstr ""
+msgstr "(অজানা)"
 
 #: src/addon/info.cpp:314
 msgid "unit_byte^B"
@@ -4858,11 +4872,11 @@ msgstr ""
 
 #: src/addon/validation.cpp:418
 msgid "Invalid upload pack."
-msgstr ""
+msgstr "অবৈধ আপলোড প্যাক ।"
 
 #: src/addon/validation.cpp:422
 msgid "Invalid add-on name."
-msgstr ""
+msgstr "অবৈধ অ্যাড-অন নাম ।"
 
 #: src/addon/validation.cpp:426
 msgid "Formatting character in add-on name."
@@ -4891,7 +4905,7 @@ msgstr ""
 
 #: src/addon/validation.cpp:446
 msgid "The add-on name contains an invalid UTF-8 sequence."
-msgstr ""
+msgstr "অ্যাড-অন নামে অবৈধ ইউটিএফ-8 অক্ষরক্রম রয়েছে ।"
 
 #: src/addon/validation.cpp:455
 msgid "No add-on title specified."
@@ -4915,15 +4929,15 @@ msgstr "অ্যাড-অন লেখক/মেইনটেনার-এর �
 
 #: src/addon/validation.cpp:475
 msgid "Missing passphrase."
-msgstr ""
+msgstr "পাসফ্রেজ নেই ।"
 
 #: src/addon/validation.cpp:479
 msgid "Formatting character in add-on title."
-msgstr ""
+msgstr "অ্যাড-অন শিরোনামে ফরম্যাটিং অক্ষর ।"
 
 #: src/addon/validation.cpp:483
 msgid "Invalid or unspecified add-on type."
-msgstr ""
+msgstr "অ্যাড-অনের অবৈধ বা অজানা প্রকার"
 
 #: src/addon/validation.cpp:487
 msgid "Version number not greater than the latest uploaded version."
@@ -4931,15 +4945,15 @@ msgstr ""
 
 #: src/addon/validation.cpp:491
 msgid "Feedback topic id is not a number."
-msgstr ""
+msgstr "ফিডব্যাক টপিক আইডি সংখ্যা নয় ।"
 
 #: src/addon/validation.cpp:495
 msgid "Feedback topic does not exist."
-msgstr ""
+msgstr "ফিডব্যাক টপিকের অস্তিত্ব নেই ।"
 
 #: src/addon/validation.cpp:499
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
-msgstr ""
+msgstr "অ্যাড-অন প্রকাশনা তথ্যে অবৈধ ইউটিএফ-8 সংখ্যা রয়েছে ।"
 
 #: src/addon/validation.cpp:503
 msgid ""
@@ -4949,19 +4963,19 @@ msgstr ""
 
 #: src/addon/validation.cpp:512
 msgid "Unspecified server error."
-msgstr ""
+msgstr "অজানা সার্ভার ত্রুটি ।"
 
 #: src/addon/validation.cpp:516
 msgid "Server is in read-only mode."
-msgstr ""
+msgstr "সার্ভার রিড-ওনলি অবস্থায় রয়েছে ।"
 
 #: src/addon/validation.cpp:520
 msgid "Corrupted server add-ons list."
-msgstr ""
+msgstr "সার্ভারের অ্যাড-অন তালিকা ভুল ।"
 
 #: src/addon/validation.cpp:524
 msgid "Empty add-on version list on the server."
-msgstr ""
+msgstr "সার্ভারে অ্যাড-অনের তালিকা ফাঁকা ।"
 
 #: src/addon/validation.cpp:528
 msgid ""
@@ -4970,7 +4984,7 @@ msgstr ""
 
 #: src/addon/validation.cpp:538
 msgid "Unspecified validation failure."
-msgstr ""
+msgstr "অজানা ভ্যালিডেশন ত্রুটি ।"
 
 #: src/carryover_show_gold.cpp:55
 msgid "Scenario Report"
@@ -5098,21 +5112,23 @@ msgstr "ডাকনাম নথিভুক্তকরণ"
 
 #: src/chat_command_handler.cpp:139
 msgid "requesting information for user $nick"
-msgstr ""
+msgstr "ব্যবহারকারী $nick-এর সম্পর্কে তথ্য চাওয়া হচ্ছে"
 
 #: src/chat_command_handler.hpp:51
 msgid "(A) — admin command"
-msgstr ""
+msgstr "(A) — অ্যাডমিন কমান্ড"
 
 #: src/chat_command_handler.hpp:58 src/menu_events.cpp:1195
 msgid "(admin only)"
-msgstr ""
+msgstr "(শুধুমাত্র অ্যাডমিন)"
 
 #: src/chat_command_handler.hpp:74
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
+"সার্ভারকে একটি জিজ্ঞাসা পাঠান । কোনো আর্গুমেন্ট না থাকলে সার্ভার আপনাকে ব্যবহারযোগ্য "
+"কমান্ডগুলি জানাবে ।"
 
 #: src/chat_command_handler.hpp:78
 msgid ""
@@ -5138,11 +5154,13 @@ msgstr "একজন খেলোয়াড় বা দর্শককে বে�
 
 #: src/chat_command_handler.hpp:86
 msgid "Mute an observer. Without an argument displays the mute status."
-msgstr ""
+msgstr "একজন দশর্ককে মিউট করুন । আর্গুমেন্ট ছাড়া বর্তমান মিউট অবস্থা দেখাবে ।"
 
 #: src/chat_command_handler.hpp:88
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
+"একজন দর্শককে মিউট থেকে স্বাভাবিকে ফিরিয়ে আনুন । আর্গুমেন্ট ছাড়া সবার থেকে মিউট "
+"সরিয়ে নেবে ।"
 
 #: src/chat_command_handler.hpp:90
 msgid "Mute/Unmute all observers. (toggles)"
@@ -5153,6 +5171,8 @@ msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
 msgstr ""
+"সার্ভারে কিছু তথ্য পাঠান । নেটওয়ার্ক সংযোগের অবস্থা এবং বিছিন্ন হয়েছে কী না খতিয়ে "
+"দেখার জন্য ব্যবহার করা যেতে পারে ।"
 
 #: src/chat_command_handler.hpp:94
 msgid ""
@@ -5162,7 +5182,7 @@ msgstr ""
 
 #: src/chat_command_handler.hpp:98
 msgid "<message>"
-msgstr ""
+msgstr "<message>"
 
 #: src/chat_command_handler.hpp:98
 msgid "Send an emotion or personal action in chat."
@@ -5176,11 +5196,11 @@ msgstr ""
 
 #: src/chat_command_handler.hpp:103
 msgid "<nickname> <message>"
-msgstr ""
+msgstr "<nickname> <message>"
 
 #: src/chat_command_handler.hpp:107
 msgid "<level> <domain>"
-msgstr ""
+msgstr "<level> <domain>"
 
 #: src/chat_command_handler.hpp:107
 msgid "Change the log level of a log domain."
@@ -5200,11 +5220,11 @@ msgstr "আপনার এড়িয়ে যাওয়ার বা বন্ধ�
 
 #: src/chat_command_handler.hpp:115
 msgid "<N>"
-msgstr ""
+msgstr "<N>"
 
 #: src/chat_command_handler.hpp:115
 msgid "Get a random number between 1 and N visible in the game setup lobby."
-msgstr ""
+msgstr "1 থেকে N এর মধ্যে ইতস্ততভাবে যেকোনো একটি সংখ্যা দেখান ।"
 
 #: src/chat_command_handler.hpp:117
 msgid "Display version information."
@@ -5220,7 +5240,7 @@ msgstr "চ্যাটের ইতিহাস মুছুন"
 
 #: src/chat_events.cpp:60
 msgid "Unknown debug level: '$level'."
-msgstr ""
+msgstr "অজানা ডিবাগ পর্যায়: '$level'."
 
 #: src/chat_events.cpp:62 src/chat_events.cpp:71
 msgid "error"
@@ -5228,11 +5248,11 @@ msgstr "ত্রুটি"
 
 #: src/chat_events.cpp:69
 msgid "Unknown debug domain: '$domain'."
-msgstr ""
+msgstr "অজানা ডিবাগ ডোমেইন: '$domain' ।"
 
 #: src/chat_events.cpp:79
 msgid "Switched domain: '$domain' to level: '$level'."
-msgstr ""
+msgstr "ডোমেইন '$domain'-কে পর্যায়: '$level'-এ সরানো হয়েছে ।"
 
 #: src/chat_events.cpp:148
 msgid "whisper to $receiver"
@@ -5277,45 +5297,45 @@ msgstr "অবৈধ রঙ"
 #. TRANSLATORS: 24-hour time, eg '13:59'
 #: src/format_time_summary.cpp:48
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #. TRANSLATORS: 12-hour time, eg '1:59 PM'
 #: src/format_time_summary.cpp:52
 msgid "%I:%M %p"
-msgstr ""
+msgstr "%I:%M %p"
 
 #. TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
 #: src/format_time_summary.cpp:58
 msgid "%A, %H:%M"
-msgstr ""
+msgstr "%A, %H:%M"
 
 #. TRANSLATORS: Day of week + 12-hour time, eg 'Sunday, 1:59 PM'
 #: src/format_time_summary.cpp:62
 msgid "%A, %I:%M %p"
-msgstr ""
+msgstr "%A, %I:%M %p"
 
 #. TRANSLATORS: Month + day of month, eg 'Nov 02'. Format for your locale.
 #: src/format_time_summary.cpp:67
 msgid "%b %d"
-msgstr ""
+msgstr "%d %b"
 
 #. TRANSLATORS: Month + day of month + year, eg 'Nov 02 2021'. Format for your locale.
 #: src/format_time_summary.cpp:72
 msgid "%b %d %Y"
-msgstr ""
+msgstr "%d %b %Y"
 
 #: src/game_config.cpp:516
 msgid "Invalid color in range: "
-msgstr ""
+msgstr "সীমার মধ্যে অবৈধ রঙ:"
 
 #: src/game_config_manager.cpp:246 src/game_config_manager.cpp:256
 #: src/game_config_manager.cpp:268
 msgid "Error validating data core."
-msgstr ""
+msgstr "ডাটা কোরো ভ্যালিডেশনে ত্রুটি ।"
 
 #: src/game_config_manager.cpp:247
 msgid "Found a core without id attribute."
-msgstr ""
+msgstr "আইডি বিহীন কোর পাওয়া গিয়েছে ।"
 
 #: src/game_config_manager.cpp:248 src/game_config_manager.cpp:259
 #: src/game_config_manager.cpp:272
@@ -5325,15 +5345,15 @@ msgstr "কোর এড়িয়ে যাওয়া হচ্ছে ।"
 #: src/game_config_manager.cpp:257 src/game_config_manager.cpp:269
 #: src/game_config_manager.cpp:292
 msgid "Core ID: "
-msgstr ""
+msgstr "কোর আইডি:"
 
 #: src/game_config_manager.cpp:258
 msgid "The ID is already in use."
-msgstr ""
+msgstr "এই আইডি ইতিমধ্যেই ব্যবহার করা হচ্ছে ।"
 
 #: src/game_config_manager.cpp:270
 msgid "Core Path: "
-msgstr ""
+msgstr "কোর পাথ:"
 
 #: src/game_config_manager.cpp:271
 msgid "File not found."
@@ -5341,19 +5361,19 @@ msgstr "ফাইল খুঁজে পাওয়া যাচ্ছে না �
 
 #: src/game_config_manager.cpp:291 src/game_config_manager.cpp:303
 msgid "Error loading core data."
-msgstr ""
+msgstr "কোর তথ্য খোলায় ত্রুটি"
 
 #: src/game_config_manager.cpp:293
 msgid "Error loading the core with named id."
-msgstr ""
+msgstr "প্রদত্ত আইডি বিশিষ্ট কোরে ত্রুটি ।"
 
 #: src/game_config_manager.cpp:294
 msgid "Falling back to the default core."
-msgstr ""
+msgstr "স্বাভাবিক কোরে ফিরে যাওয়া হচ্ছে ।"
 
 #: src/game_config_manager.cpp:304
 msgid "Can't locate the default core."
-msgstr ""
+msgstr "স্বাভাবিক কোরে ফিরে যাওয়া হচ্ছে ।"
 
 #: src/game_config_manager.cpp:305
 msgid "The game will now exit."
@@ -5393,15 +5413,15 @@ msgstr ""
 #: src/game_config_manager.cpp:639
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "পরবর্তী অ্যাড-অনে ত্রুটি রয়েছে এবং খোলা যাচ্ছে না ।"
+msgstr[1] "পরবর্তী অ্যাড-অনগুলিতে ত্রুটি রয়েছে এবং খোলা যাচ্ছে না ।"
 
 #: src/game_config_manager.cpp:643
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "অনুগ্রহ করে এই অ্যাড-অনের লেখক বা মেইনটেনারকে জানান ।"
+msgstr[1] "অনুগ্রহ করে এই অ্যাড-অনের লেখকদের বা মেইনটেনারদের জানান ।"
 
 #: src/game_events/pump.cpp:392 src/game_launcher.cpp:960
 msgid "Error: "
@@ -5475,7 +5495,7 @@ msgstr "নিজস্ব মানচিত্র ।"
 
 #: src/game_initialization/depcheck.cpp:491
 msgid "Failed to resolve dependencies"
-msgstr ""
+msgstr "নির্ভরশীল উপাদানগুলি খুঁজে পাওয়া যায়নি"
 
 #: src/game_initialization/depcheck.cpp:491
 msgid "OK"
@@ -5483,7 +5503,7 @@ msgstr "ঠিক আছে"
 
 #: src/game_initialization/depcheck.cpp:516
 msgid "Scenario can't be activated. Some dependencies are missing: "
-msgstr ""
+msgstr "ঘটনাক্রম সক্রিয় করা যাচ্ছে না । নির্ভরশীল উপাদানগুলি নেই ।"
 
 #: src/game_initialization/depcheck.cpp:570
 #: src/game_initialization/depcheck.cpp:693
@@ -5492,7 +5512,7 @@ msgstr "ব্যবহারযোগ্য যুগ নেই ।"
 
 #: src/game_initialization/depcheck.cpp:585
 msgid "Era can't be activated. Some dependencies are missing: "
-msgstr ""
+msgstr "যুগ সক্রিয় করা যাচ্ছে না । নির্ভরশীল উপাদানগুলি নেই ।"
 
 #: src/game_initialization/depcheck.cpp:638
 #: src/game_initialization/depcheck.cpp:730
@@ -5517,19 +5537,19 @@ msgstr "বর্তমান যুগে শুধু ইতস্তত দ�
 
 #: src/game_initialization/flg_manager.cpp:234
 msgid "Unable to find a leader type for faction $faction"
-msgstr ""
+msgstr "বিভাগ $faction-এর জন্য কোনো দলনেতা পাওয়া যাচ্ছে না"
 
 #: src/game_initialization/flg_manager.cpp:257
 msgid "Cannot obtain genders for invalid leader $leader"
-msgstr ""
+msgstr "অবৈধ দলনেতা $leader-এর জন্য লিঙ্গগুলি খুঁজে পাওয়া যাচ্ছে না"
 
 #: src/game_initialization/lobby_data.cpp:163
 msgid "Missing addon: $name"
-msgstr ""
+msgstr "অ্যাড-অন পাওয়া যাচ্ছে না: $name"
 
 #: src/game_initialization/lobby_data.cpp:165
 msgid "Missing addon: $id"
-msgstr ""
+msgstr "অ্যাড-অন পাওয়া যাচ্ছে না: $id"
 
 #: src/game_initialization/lobby_data.cpp:197
 msgid "Unknown era"
@@ -5547,11 +5567,11 @@ msgstr "দূরস্থ ঘটনাক্রম ।"
 #: src/game_initialization/lobby_data.cpp:305
 #: src/game_initialization/lobby_data.cpp:331
 msgid "campaign_abbreviation^C"
-msgstr ""
+msgstr "অ"
 
 #: src/game_initialization/lobby_data.cpp:337
 msgid "Unknown scenario"
-msgstr ""
+msgstr "অজানা ঘটনাক্রম"
 
 #: src/game_initialization/lobby_data.cpp:351
 msgid "Reloaded game"
@@ -5560,12 +5580,12 @@ msgstr "খেলা পুনরায় চালু করা হয়েছে"
 #: src/game_initialization/lobby_data.cpp:366
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ফাঁকা স্লট"
+msgstr[1] "ফাঁকা স্লটগুলি"
 
 #: src/game_initialization/lobby_data.cpp:368
 msgid "mp_game_available_slots^Full"
-msgstr ""
+msgstr "ভর্তি"
 
 #: src/game_initialization/lobby_data.cpp:379
 #: src/game_initialization/lobby_data.cpp:381 src/savegame.cpp:658
@@ -5574,11 +5594,11 @@ msgstr "দান"
 
 #: src/game_initialization/lobby_data.cpp:394
 msgid "vision^none"
-msgstr ""
+msgstr "নেই"
 
 #: src/game_initialization/lobby_data.cpp:403
 msgid "time limit^none"
-msgstr ""
+msgstr "নেই"
 
 #: src/game_initialization/lobby_data.cpp:447
 msgid ""
@@ -5594,11 +5614,11 @@ msgstr ""
 
 #: src/game_initialization/mp_game_utils.cpp:78
 msgid "Defeat enemy leader(s)"
-msgstr ""
+msgstr "শত্রু দলনেতা(দের) হারান"
 
 #: src/game_initialization/mp_game_utils.cpp:103
 msgid "Cannot find era '$era'"
-msgstr ""
+msgstr "যুগ '$era' খুঁজে পাওয়া যাচ্ছে না"
 
 #: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
@@ -5640,7 +5660,7 @@ msgstr "আপনার লগ-ইন করা আবশ্যিক ।"
 
 #: src/game_initialization/multiplayer.cpp:413
 msgid "The nickname ‘$nick’ is already taken."
-msgstr ""
+msgstr "ডাকনাম ‘$nick’ ইতিমধ্যেই নেওয়া হয়ে গিয়েছে ।"
 
 #: src/game_initialization/multiplayer.cpp:415
 msgid ""
@@ -5651,6 +5671,7 @@ msgstr ""
 #: src/game_initialization/multiplayer.cpp:419
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
+"ডাকনাম ‘$nick’ বেশী লম্বা । ডাকনাম 20টি অক্ষর বা তার কম দৈর্ঘ্যের হতে হবে ।"
 
 #: src/game_initialization/multiplayer.cpp:421
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
@@ -5704,7 +5725,7 @@ msgstr ""
 
 #: src/game_initialization/multiplayer.cpp:450
 msgid "The password you provided was incorrect."
-msgstr ""
+msgstr "আপনার প্রদত্ত পাসওয়ার্ডটি ভুল ।"
 
 #: src/game_initialization/multiplayer.cpp:452
 msgid "You have made too many login attempts."
@@ -5716,24 +5737,24 @@ msgstr "পাসওয়ার্ড হ্যাশিং করা যায়ন
 
 #: src/game_initialization/playcampaign.cpp:157 src/game_launcher.cpp:913
 msgid "The game could not be loaded: "
-msgstr ""
+msgstr "খেলাটি খোলা যাচ্ছে না:"
 
 #: src/game_initialization/playcampaign.cpp:163 src/game_launcher.cpp:915
 msgid "Error while playing the game: "
-msgstr ""
+msgstr "খেলা খেলতে গিয়ে ত্রুটি:"
 
 #: src/game_initialization/playcampaign.cpp:166 src/game_launcher.cpp:952
 msgid "The game map could not be loaded: "
-msgstr ""
+msgstr "খেলার মানচিত্র খোলা যাচ্ছে না:"
 
 #: src/game_initialization/playcampaign.cpp:169 src/game_launcher.cpp:917
 #: src/game_launcher.cpp:1038
 msgid "Map generator error: "
-msgstr ""
+msgstr "মানচিত্র সৃষ্টিকারকে ত্রুটি:"
 
 #: src/game_initialization/playcampaign.cpp:171
 msgid "Error while reading the WML: "
-msgstr ""
+msgstr "ডব্লিউএমএল পাঠে ত্রুটি:"
 
 #: src/game_initialization/playcampaign.cpp:218
 #: src/playsingle_controller.cpp:367
@@ -5772,11 +5793,11 @@ msgstr ""
 
 #: src/game_launcher.cpp:911
 msgid "Error while starting server: "
-msgstr ""
+msgstr "সার্ভার শুর করতে গিয়ে ত্রুটি:"
 
 #: src/game_launcher.cpp:933
 msgid "Connection failed: "
-msgstr ""
+msgstr "সংযোগ করা যাচ্ছে না:"
 
 #: src/generators/default_map_generator_job.cpp:707
 msgid "Random maps with an odd width aren't supported."
@@ -5830,7 +5851,7 @@ msgstr "নির্বাচিত খেলা"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:174
 msgid "Lobby"
-msgstr ""
+msgstr "লবি"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:175
 msgid "Other Games"
@@ -5839,7 +5860,7 @@ msgstr "অন্যান্য খেলা"
 #: src/gui/dialogs/multiplayer/match_history.cpp:51
 #: src/gui/dialogs/multiplayer/match_history.cpp:92
 msgid "Match History — $player"
-msgstr ""
+msgstr "ম্যাচের ইতিহাস — $player"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:70
 msgid "Scenario"
@@ -5851,7 +5872,7 @@ msgstr "যুগ"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:72
 msgid "Modification"
-msgstr ""
+msgstr "পরিবর্তন"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:152
 msgid "Era: "
@@ -5859,7 +5880,7 @@ msgstr "যুগ:"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:153
 msgid " UTC+0"
-msgstr ""
+msgstr "ইউটিসি+0"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:255
 msgid "No game history found."
@@ -5875,7 +5896,7 @@ msgstr ""
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "In game:"
-msgstr ""
+msgstr "খেলাতে:"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:109
 msgid "(observing)"
@@ -5887,7 +5908,7 @@ msgstr "(খেলছে)"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:114
 msgid "In lobby"
-msgstr ""
+msgstr "লবিতে"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:143
 msgid "On friends list"
@@ -5899,7 +5920,7 @@ msgstr "উপেক্ষিত তালিকায়"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:153
 msgid "Neither a friend nor ignored"
-msgstr ""
+msgstr "বন্ধু বা এড়িয়ে যাচ্ছেন এমন কেউ নয়"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:158
 msgid "You"
@@ -5963,7 +5984,7 @@ msgstr "দৈনিক সময়সূচী"
 
 #: src/help/help_impl.cpp:434
 msgid "Lawful Bonus:"
-msgstr ""
+msgstr "নৈতিক অতিরিক্ত:"
 
 #: src/help/help_impl.cpp:435
 msgid "Neutral Bonus:"
@@ -5971,11 +5992,11 @@ msgstr "নিরপেক্ষ অতিরিক্ত:"
 
 #: src/help/help_impl.cpp:436
 msgid "Chaotic Bonus:"
-msgstr ""
+msgstr "অনৈতিক অতিরিক্ত:"
 
 #: src/help/help_impl.cpp:437
 msgid "Liminal Bonus:"
-msgstr ""
+msgstr "মধ্যবর্তী অতিরিক্ত:"
 
 #: src/help/help_impl.cpp:438
 msgid "Schedule"
@@ -5995,7 +6016,7 @@ msgstr "যুগ:"
 
 #: src/help/help_impl.cpp:632
 msgid "Factions"
-msgstr ""
+msgstr "বিভাগগুলি"
 
 #: src/help/help_impl.cpp:680
 msgid "Races: "
@@ -6003,7 +6024,7 @@ msgstr "জাতিসমূহ:"
 
 #: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1130
 msgid "Alignments: "
-msgstr ""
+msgstr "প্রবণতাগুলি:"
 
 #: src/help/help_impl.cpp:696
 msgid "Leaders"
@@ -6051,7 +6072,7 @@ msgstr ""
 
 #: src/help/help_impl.cpp:1488
 msgid "corrupted original file"
-msgstr ""
+msgstr "আসল ফাইল খারাপ"
 
 #: src/hotkey/command_executor.cpp:405
 msgid "Do you really want to surrender the game?"
@@ -6111,11 +6132,11 @@ msgstr "আপনি কী তবুও এটা খুলতে চান?"
 
 #: src/hotkey/hotkey_handler_sp.cpp:338
 msgid "The file you have tried to load has no replay information. "
-msgstr ""
+msgstr "আপনি যে ফাইলটি খোলার চেষ্টা করেছেন তাতে কোনো রিপ্লে তথ্য নেই"
 
 #: src/hotkey/hotkey_handler_sp.cpp:342
 msgid "The file you have tried to load is not from the current session."
-msgstr ""
+msgstr "আপনি যে ফাইলটি খোলার চেষ্টা করছেন সেটি বর্তমান সেশনের নয় ।"
 
 #: src/language.cpp:115
 msgid "System default language"
@@ -6187,7 +6208,7 @@ msgstr ""
 
 #: src/map_command_handler.hpp:302
 msgid "Missing argument $arg_id"
-msgstr ""
+msgstr "$arg_id আর্গুমেন্ট নেই"
 
 #: src/map_command_handler.hpp:355
 msgid ""
@@ -6266,10 +6287,11 @@ msgstr "কোনো ইউনিট নিয়োগ করা হয়নি ।"
 #: src/menu_events.cpp:311
 msgid "Internal error. Please report this as a bug! Details:\n"
 msgstr ""
+"আভ্যন্তরীণ ত্রুটি । অনুগ্রহ করে এটিকে ত্রুটি হিসেবে নথিভুক্ত করুন! বিস্তারিত তথ্য:\n"
 
 #: src/menu_events.cpp:317
 msgid "You cannot recruit a $unit_type_name at this time."
-msgstr ""
+msgstr "আপনি এই পরিস্থিতি একজন $unit_type_name-কে নিয়োগ করতে  পারবেন না ।"
 
 #. TRANSLATORS: "plan" refers to Planning Mode
 #: src/menu_events.cpp:331
@@ -6280,7 +6302,7 @@ msgstr ""
 
 #: src/menu_events.cpp:333
 msgid "You do not have enough gold to recruit this unit."
-msgstr ""
+msgstr "আপনার কাছে এই ইউনিটটিকে নিয়োগ করার মতো স্বর্ণ নেই ।"
 
 #: src/menu_events.cpp:376
 msgid "You are separated from your soldiers and may not recall them."
@@ -6296,7 +6318,7 @@ msgstr ""
 
 #: src/menu_events.cpp:401
 msgid "You currently can't recall at the highlighted location."
-msgstr ""
+msgstr "আপনি এইমুহূর্তে নির্বাচিত স্থানে পুনরায় ডাকতে পারবেন না ।"
 
 #: src/menu_events.cpp:413
 msgid "No unit recalled."
@@ -6310,12 +6332,12 @@ msgstr[1] ""
 
 #: src/menu_events.cpp:576
 msgid "You cannot end your turn yet!"
-msgstr ""
+msgstr "আপনি এখন আপনার দান শেষ করতে পারবেন না!"
 
 #: src/menu_events.cpp:591
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
-msgstr ""
+msgstr "আপনি এখনও আপনার দান শুরু করেননি । এখনই আপনার দান শেষ করতে চান?"
 
 #: src/menu_events.cpp:600
 msgid "Some units have movement left. Do you really want to end your turn?"
@@ -6335,11 +6357,11 @@ msgstr "নাম:"
 
 #: src/menu_events.cpp:843
 msgid "Clear Labels"
-msgstr ""
+msgstr "লেবেলগুলি মুছুন"
 
 #: src/menu_events.cpp:844
 msgid "Are you sure you want to clear map labels?"
-msgstr ""
+msgstr "আপনি কী নিশ্চিতভাবে মানচিত্রের লেবেলগুলি মুছতে চান?"
 
 #: src/menu_events.cpp:1046
 msgid "Search"
@@ -6367,7 +6389,7 @@ msgstr "জিইউআই রিফ্রেশ করুন ।"
 
 #: src/menu_events.cpp:1227
 msgid "Switch a side to/from AI control."
-msgstr ""
+msgstr "একটি পক্ষকে এআই নিয়ন্ত্রণে/নিয়ন্ত্রণ থেকে সরান ।"
 
 #. TRANSLATORS: These are the arguments accepted by the "droid" command,
 #. which must be a side-number and then optionally one of "on", "off" or "full".
@@ -6711,7 +6733,7 @@ msgstr "ডিবাগ মোড নিস্ক্রিয়!"
 
 #: src/menu_events.cpp:1902
 msgid "WARNING! Unsafe Lua Mode"
-msgstr ""
+msgstr "সতর্কতা! অসুরক্ষিত লুয়া মোড"
 
 #: src/menu_events.cpp:1903
 msgid ""
@@ -6724,11 +6746,11 @@ msgstr ""
 
 #: src/menu_events.cpp:1908
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "অসুরক্ষিত মোড সক্রিয়!"
 
 #: src/menu_events.cpp:1957
 msgid "Variable not found"
-msgstr ""
+msgstr "চলরাশি পাওয়া যায়নি"
 
 #: src/menu_events.cpp:1990
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
@@ -6746,11 +6768,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2048
 msgid "Invalid unit type"
-msgstr ""
+msgstr "অবৈধ ইউনিট প্রকার"
 
 #: src/menu_events.cpp:2055
 msgid "Invalid location"
-msgstr ""
+msgstr "অবৈধ অবস্থান"
 
 #: src/menu_events.cpp:2128 src/menu_events.cpp:2154
 msgid "prompt^Command:"
@@ -6772,7 +6794,7 @@ msgstr "এই ইউনিটটির কাছে কোনো ব্যব�
 
 #: src/mp_ui_alerts.cpp:88
 msgid "A game ($name|, $scenario|) has been created"
-msgstr ""
+msgstr "একটি খেলা ($name|, $scenario|) তৈরী করা হয়েছে"
 
 #: src/mp_ui_alerts.cpp:89 src/mp_ui_alerts.cpp:104 src/mp_ui_alerts.cpp:119
 #: src/mp_ui_alerts.cpp:194 src/mp_ui_alerts.cpp:205
@@ -6797,7 +6819,7 @@ msgstr "খেলা শুরু!"
 
 #: src/mp_ui_alerts.cpp:214
 msgid "$name has taken control"
-msgstr ""
+msgstr "$name নিয়ন্ত্রণ নিয়ে নিয়েছে"
 
 #: src/mp_ui_alerts.cpp:214
 msgid "Turn changed"
@@ -6817,7 +6839,7 @@ msgstr "ডাউনলোডে ত্রুটি"
 
 #: src/network_download_file.cpp:72
 msgid "Confirm overwrite"
-msgstr ""
+msgstr "পুনর্লিখন নিশ্চিত করুন"
 
 #: src/network_download_file.cpp:72
 msgid "Overwrite existing file?"
@@ -6844,7 +6866,7 @@ msgstr ""
 
 #: src/play_controller.cpp:266
 msgid "time left for current turn"
-msgstr ""
+msgstr "বর্তমান দানের জন্য সময় বাকি"
 
 #: src/play_controller.cpp:268
 msgid "current local time"
@@ -6899,7 +6921,7 @@ msgstr "কোনো উদ্দেশ্য নেই"
 
 #: src/playmp_controller.cpp:163
 msgid "Undoing moves not yet transmitted to the server."
-msgstr ""
+msgstr "সার্ভারে পাঠানো হয়নি এমন দানগুলি ফিরিয়ে নেওয়া হচ্ছে ।"
 
 #: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:446
 msgid ""
@@ -7909,6 +7931,9 @@ msgstr "হোয়াইটবোর্ড অপশনগুলি"
 
 #~ msgid "Pink"
 #~ msgstr "গোলাপী"
+
+#~ msgid "Urban"
+#~ msgstr "শহর"
 
 #~ msgid "Side '$side' is not a human or AI player."
 #~ msgstr "দল '$side' মানব বা এআই খেলোয়াড় নয় ।"
