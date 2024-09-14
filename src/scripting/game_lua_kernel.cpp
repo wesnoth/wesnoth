@@ -1125,6 +1125,22 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 }
 
 /**
+ * Gets a list of known terrain codes.
+ * - Ret 1: array of terrain codes
+ */
+int game_lua_kernel::impl_get_terrain_list(lua_State *L)
+{
+	auto codes = board().map().tdata()->list();
+	std::vector<std::string> terrains;
+	terrains.reserve(codes.size());
+	for(auto code : codes) {
+		terrains.push_back(t_translation::write_terrain_code(code));
+	}
+	lua_push(L, terrains);
+	return 1;
+}
+
+/**
  * Gets time of day information.
  * - Arg 1: schedule object, location, time area ID, or nil
  * - Arg 2: optional turn number
@@ -5267,6 +5283,8 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_createtable(L, 0, 2);
 	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_get_terrain_info>);
 	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, &dispatch<&game_lua_kernel::impl_get_terrain_list>);
+	lua_setfield(L, -2, "__dir");
 	lua_pushstring(L, "terrain types");
 	lua_setfield(L, -2, "__metatable");
 	lua_setmetatable(L, -2);

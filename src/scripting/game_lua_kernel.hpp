@@ -97,6 +97,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_view_locked(lua_State *L);
 	int intf_lock_view(lua_State *L);
 	int impl_get_terrain_info(lua_State *L);
+	int impl_get_terrain_list(lua_State *L);
 	template<bool consider_illuminates>
 	int intf_get_time_of_day(lua_State *L);
 	int impl_schedule_get(lua_State *L);
