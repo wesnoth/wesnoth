@@ -465,8 +465,12 @@ static void raise_window_event(const SDL_Event& event)
 	}
 }
 
-// TODO: I'm uncertain if this is always safe to call at static init; maybe set in main() instead?
-static const std::thread::id main_thread = std::this_thread::get_id();
+static std::thread::id main_thread;
+
+void set_main_thread()
+{
+	 main_thread = std::this_thread::get_id();
+}
 
 // this should probably be elsewhere, but as the main thread is already
 // being tracked here, this went here.

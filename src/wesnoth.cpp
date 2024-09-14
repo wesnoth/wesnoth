@@ -19,6 +19,7 @@
 #include "commandline_options.hpp" // for commandline_options, etc
 #include "config.hpp"              // for config, config::error, etc
 #include "cursor.hpp"              // for set, CURSOR_TYPE::NORMAL, etc
+#include "events.hpp"
 #include "filesystem.hpp" // for filesystem::file_exists, filesystem::io_exception, etc
 #include "floating_label.hpp"
 #include "font/error.hpp"          // for error
@@ -1042,6 +1043,7 @@ int wesnoth_main(int argc, char** argv)
 int main(int argc, char** argv)
 #endif
 {
+	events::set_main_thread();
 #ifdef __ANDROID__
 	__android_log_write(ANDROID_LOG_INFO, "wesnoth", "Wesnoth started");
 
