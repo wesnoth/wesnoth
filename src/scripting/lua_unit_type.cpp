@@ -15,6 +15,8 @@
 
 #include "scripting/lua_unit_type.hpp"
 
+#include "deprecation.hpp"
+#include "version_info.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_unit_attacks.hpp"
 #include "scripting/push_check.hpp"
@@ -72,9 +74,15 @@ static int impl_unit_type_get(lua_State *L)
 		return 1;
 	}
 	if (strcmp(m, "abilities") == 0) {
+		deprecated_message("unit.abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.19"), "Use unit.ability_ids instead.");
 		lua_push(L, ut.get_ability_list());
 		return 1;
 	}
+	if (strcmp(m, "ability_ids") == 0) {
+		lua_push(L, ut.get_ability_list());
+		return 1;
+	}
+
 	if (strcmp(m, "attacks") == 0) {
 		push_unit_attacks_table(L, 1);
 		return 1;

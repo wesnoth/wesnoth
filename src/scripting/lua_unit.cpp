@@ -371,9 +371,16 @@ static int impl_unit_get(lua_State *L)
 		return 1;
 	}
 	if(strcmp(m, "abilities") == 0) {
+		deprecated_message("unit.abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.19"), "Use unit.ability_ids instead.");
 		lua_push(L, u.get_ability_list());
 		return 1;
 	}
+	if(strcmp(m, "ability_ids") == 0) {
+		lua_push(L, u.get_ability_list());
+		return 1;
+	}
+			
+
 	if(strcmp(m, "status") == 0) {
 		lua_createtable(L, 1, 0);
 		lua_pushvalue(L, 1);
