@@ -279,9 +279,6 @@ variant unit_callable::get_value(const std::string& key) const
 		return formula_callable::convert_vector(u_.advances_to());
 	} else if(key == "states" || key == "status") {
 		return formula_callable::convert_set(u_.get_states());
-	} else if(key == "side") {
-		deprecated_message("unit.side", DEP_LEVEL::FOR_REMOVAL, version_info("1.17"), "This returns 0 for side 1 etc and should not be used. Use side_number instead.");
-		return variant(u_.side()-1);
 	} else if(key == "side_number") {
 		return variant(u_.side());
 	} else if(key == "cost") {
@@ -631,9 +628,6 @@ variant terrain_callable::get_value(const std::string& key) const
 		return variant(t_.is_keep());
 	} else if(key == "healing") {
 		return variant(t_.gives_healing());
-	} else if(key == "owner") {
-		deprecated_message("terrain.owner", DEP_LEVEL::FOR_REMOVAL, version_info("1.17"), "This returns 0 for side 1 etc and should not be used. Use owner_side instead.");
-		return variant(owner_ - 1);
 	} else if(key == "owner_side") {
 		return variant(owner_);
 	}
