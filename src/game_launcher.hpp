@@ -102,6 +102,7 @@ public:
 	void select_mp_server(const std::string& server) { multiplayer_server_ = server; }
 	bool play_multiplayer(mp_mode mode);
 	bool play_multiplayer_commandline();
+	bool play_campaign();
 	bool change_language();
 
 	void launch_game(reload_mode reload = reload_mode::RELOAD_DATA);
