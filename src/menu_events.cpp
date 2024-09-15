@@ -1310,8 +1310,8 @@ protected:
 		register_alias("whiteboard_options", "wbo");
 
 		if(auto alias_list = prefs::get().get_alias()) {
-			for(const config::attribute& a : alias_list->attribute_range()) {
-				register_alias(a.second, a.first);
+			for(const auto& [key, value] : alias_list->attribute_range()) {
+				register_alias(value, key);
 			}
 		}
 	}

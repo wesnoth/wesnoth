@@ -65,12 +65,12 @@ candidate_action_with_filters::candidate_action_with_filters(
 	auto filter_params = cfg.optional_child("filter");
 
 	if( filter_params ) {
-		for(const config::attribute& filter_param : filter_params->attribute_range())
+		for(const auto& [key, value] : filter_params->attribute_range())
 		{
 			const_formula_ptr filter_formula(
-					new formula(filter_param.second, function_table));
+					new formula(value, function_table));
 
-			filter_map_[filter_param.first]=filter_formula;
+			filter_map_[key]=filter_formula;
 		}
 	}
 }

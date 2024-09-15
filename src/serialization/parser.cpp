@@ -712,13 +712,13 @@ static void write_internal(const config& cfg, std::ostream& out, std::string& te
 		throw config::error("Too many recursion levels in config write");
 	}
 
-	for(const config::attribute& i : cfg.attribute_range()) {
-		if(!config::valid_attribute(i.first)) {
-			ERR_CF << "Config contains invalid attribute name '" << i.first << "', skipping...";
+	for(const auto& [key, value] : cfg.attribute_range()) {
+		if(!config::valid_attribute(key)) {
+			ERR_CF << "Config contains invalid attribute name '" << key << "', skipping...";
 			continue;
 		}
 
-		write_key_val(out, i.first, i.second, tab, textdomain);
+		write_key_val(out, key, value, tab, textdomain);
 	}
 
 	for(const config::any_child item : cfg.all_children_range()) {

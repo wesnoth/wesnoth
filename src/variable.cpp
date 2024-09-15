@@ -180,8 +180,8 @@ config vconfig::get_parsed_config() const
 
 	config res;
 
-	for (const config::attribute &i : cfg_->attribute_range()) {
-		res[i.first] = expand(i.first);
+	for(const auto& [key, _] : cfg_->attribute_range()) {
+		res[key] = expand(key);
 	}
 
 	for (const config::any_child child : cfg_->all_children_range())
