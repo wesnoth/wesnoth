@@ -108,7 +108,7 @@ local function plugin()
   end
 
   if info.name == "Dialog" then
-    log("got a leader select dialog...")
+    log("got a leader select dialog... id=" .. info.id().id)
     context.skip_dialog{}
     events, context, info = wesnoth.plugin.wait_until("Multiplayer Join", function(name)
       idle_text("in " .. name .. " waiting for mp join")
