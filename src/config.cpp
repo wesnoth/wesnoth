@@ -583,7 +583,7 @@ void config::clear_children_impl(config_key_type key)
 	children_.erase(i);
 }
 
-void config::splice_children(config& src, const std::string& key)
+void config::splice_children(config& src, config_key_type key)
 {
 	child_map::iterator i_src = src.children_.find(key);
 	if(i_src == src.children_.end()) {

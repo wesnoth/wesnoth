@@ -5708,11 +5708,11 @@ void game_lua_kernel::set_game_display(game_display * gd) {
  * elsewhere (in the C++ code).
  * Any child tags not in this list will be passed to Lua's on_load event.
  */
-static bool is_handled_file_tag(const std::string& s)
+static bool is_handled_file_tag(std::string_view s)
 {
 	// Make sure this is sorted, since we binary_search!
 	using namespace std::literals::string_view_literals;
-	static const std::array handled_file_tags {
+	static constexpr std::array handled_file_tags {
 		"color_palette"sv,
 		"color_range"sv,
 		"display"sv,
@@ -5787,23 +5787,24 @@ void game_lua_kernel::save_game(config &cfg)
 	luaW_toconfig(L, -1, v);
 	lua_pop(L, 1);
 
-	for (;;)
-	{
-		config::all_children_iterator i = v.ordered_begin();
-		if (i == v.ordered_end()) break;
-		if (is_handled_file_tag(i->key))
-		{
+	// Make a copy of the source tag names. Since splice is a destructive operation,
+	// we can't guarantee that the view will remain valid during iteration.
+	const auto temp = v.child_name_view();
+	const std::vector<std::string> src_tags(temp.begin(), temp.end());
+
+	for(const auto& key : src_tags) {
+		if(is_handled_file_tag(key)) {
 			/*
 			 * It seems the only tags appearing in the config v variable here
 			 * are the core-lua-handled (currently [item] and [objectives])
 			 * and the extra UMC ones.
 			 */
-			const std::string m = "Tag is already used: [" + i->key + "]";
+			const std::string m = "Tag is already used: [" + key + "]";
 			log_error(m.c_str());
-			v.erase(i);
 			continue;
+		} else {
+			cfg.splice_children(v, key);
 		}
-		cfg.splice_children(v, i->key);
 	}
 }
 
