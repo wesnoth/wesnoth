@@ -2826,10 +2826,8 @@ void display::draw_overlays_at(const map_location& loc)
 		}
 
 		if(dont_show_all_ && !ov.team_name.empty()) {
-			// dont_show_all_ imples that viewing_team() is a valid index to get_teams()
-			const std::string& current_team_name = viewing_team().team_name();
-			const std::vector<std::string>& current_team_names = utils::split(current_team_name);
-			const std::vector<std::string>& team_names = utils::split(ov.team_name);
+			const auto current_team_names = utils::split_view(viewing_team().team_name());
+			const auto team_names = utils::split_view(ov.team_name);
 
 			bool item_visible_for_team = std::find_first_of(team_names.begin(), team_names.end(),
 				current_team_names.begin(), current_team_names.end()) != team_names.end();
