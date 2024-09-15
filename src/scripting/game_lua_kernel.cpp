@@ -3937,11 +3937,7 @@ static int intf_append_ai(lua_State *L)
 	}
 	ai::configuration::expand_simplified_aspects(side_num, cfg);
 	if(added_dummy_stage) {
-		for(auto iter = cfg.ordered_begin(); iter != cfg.ordered_end(); iter++) {
-			if(iter->key == "stage" && iter->cfg["name"] == "empty") {
-				iter = cfg.erase(iter);
-			}
-		}
+		cfg.remove_children("stage", [](const config& stage_cfg) { return stage_cfg["name"] == "empty"; });
 	}
 	ai::manager::get_singleton().append_active_ai_for_side(side_num, cfg.mandatory_child("ai"));
 	return 0;
