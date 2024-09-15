@@ -414,9 +414,10 @@ void mp_create_game::pre_show()
 
 	plugins_context_->set_accessor("find_level",   [this](const config& cfg) {
 		const std::string id = cfg["id"].str();
+		auto result = create_engine_.find_level_by_id(id);
 		return config {
-			"index", create_engine_.find_level_by_id(id).second,
-			"type", level_type::get_string(create_engine_.find_level_by_id(id).first),
+			"index", result.second,
+			"type", level_type::get_string(result.first),
 		};
 	});
 
