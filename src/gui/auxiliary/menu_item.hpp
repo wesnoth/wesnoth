@@ -25,7 +25,11 @@ namespace gui2 {
 
 class menu_item : public enable_lua_ptr<menu_item>
 {
-	public:
+public:
+
+	menu_item(const config& cfg);
+
+	config get_config() const;
 
 	/** If present, column 1 will have a toggle button. The value indicates its initial state. */
 	utils::optional<bool> checkbox;
@@ -44,30 +48,6 @@ class menu_item : public enable_lua_ptr<menu_item>
 
 	/** Tooltip text for the entire row. */
 	t_string tooltip;
-
-	menu_item(const config& cfg)
-		: enable_lua_ptr<menu_item>(this)
-		  , checkbox()
-		  , icon(cfg["icon"].str())
-		  , image()
-		  , label(cfg["label"].t_str())
-		  , details()
-		  , tooltip(cfg["tooltip"].t_str())
-	{
-		// Checkboxes take precedence in column 1
-		if(cfg.has_attribute("checkbox")) {
-			checkbox = cfg["checkbox"].to_bool(false);
-		}
-
-		// Images take precedence in column 2
-		if(cfg.has_attribute("image")) {
-			image = cfg["image"].str();
-		}
-
-		if(cfg.has_attribute("details")) {
-			details = cfg["details"].t_str();
-		}
-	}
 
 };
 

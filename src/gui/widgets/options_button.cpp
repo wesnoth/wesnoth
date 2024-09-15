@@ -202,7 +202,10 @@ void options_button::set_values(const boost::container::stable_vector<menu_item>
 		}
 	}
 
-	values_ = values;
+	for (auto& item: values) {
+		values_.emplace_back(item.get_config());
+	}
+
 	selected_ = selected;
 
 	if(persistent_) {
@@ -219,7 +222,7 @@ menu_item& options_button::add_row(const config& row, const int index)
 		return values_[values_.size() - 1];
 	}
 	assert(static_cast<size_t>(index) < values_.size());
-	values_.insert(values_.begin() + index - 1, row);
+	values_.emplace(values_.begin() + index, row);
 	return values_[index];
 }
 

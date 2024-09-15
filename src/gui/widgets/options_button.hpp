@@ -69,11 +69,7 @@ public:
 	/** Returns the entire config object for the selected row. */
 	const ::config get_value_config() const
 	{
-		config cfg;
-		if(!values_[selected_].label.empty()) {
-			cfg["label"] = values_[selected_].label;
-		}
-		return cfg;
+		return values_[selected_].get_config();
 	}
 
 	void set_keep_open(const bool keep_open)

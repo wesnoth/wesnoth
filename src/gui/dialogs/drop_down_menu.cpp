@@ -73,7 +73,7 @@ drop_down_menu::drop_down_menu(styled_widget* parent, const std::vector<config>&
 drop_down_menu::drop_down_menu(styled_widget* parent, const boost::container::stable_vector<menu_item>& items, int selected_item, bool keep_open)
 	: modal_dialog(window_id())
     , parent_(parent)
-    , items_(items.begin(), items.end())
+    , items_()
     , button_pos_(parent->get_rectangle())
     , selected_item_(selected_item)
     , use_markup_(parent->get_use_markup())
@@ -81,6 +81,9 @@ drop_down_menu::drop_down_menu(styled_widget* parent, const boost::container::st
     , start_selected_(true)
     , mouse_down_happened_(false)
 {
+	for (auto& item: items) {
+		items_.emplace_back(item.get_config());
+	}
 }
 
 drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open)
@@ -99,7 +102,7 @@ drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& i
 drop_down_menu::drop_down_menu(SDL_Rect button_pos, const boost::container::stable_vector<menu_item>& items, int selected_item, bool use_markup, bool keep_open)
 	: modal_dialog(window_id())
 	, parent_(nullptr)
-	, items_(items.begin(), items.end())
+	, items_()
 	, button_pos_(button_pos)
 	, selected_item_(selected_item)
 	, use_markup_(use_markup)
@@ -107,6 +110,9 @@ drop_down_menu::drop_down_menu(SDL_Rect button_pos, const boost::container::stab
 	, start_selected_(true)
 	, mouse_down_happened_(false)
 {
+	for (auto& item: items) {
+		items_.emplace_back(item.get_config());
+	}
 }
 
 void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate)

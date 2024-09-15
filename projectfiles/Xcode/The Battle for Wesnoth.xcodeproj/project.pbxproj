@@ -26,6 +26,7 @@
 		1BC74FED857215A162E9E0F2 /* tab_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 162C4B1E9F7373592D0F3B89 /* tab_container.cpp */; };
 		1C3D48879EAC414AE3DB122E /* combobox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 875E45698F8A8D5B750E7317 /* combobox.cpp */; };
 		285C4E7A9E891E1DCB215683 /* back_edge_detector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DA034C90BB2E6C060B0A0B93 /* back_edge_detector.hpp */; };
+		2DDE46BDA230A98EFB58BDD3 /* menu_item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50D34D71BCDE1C5C6AFFDBE3 /* menu_item.cpp */; };
 		35FA4C848D8738F5E97C6643 /* options_button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1828466DBA38C34E5D9270AB /* options_button.cpp */; };
 		365D4F89BD511BC074E639D7 /* migrate_version_selection.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B3DE4F95AF72C6F6BC37E695 /* migrate_version_selection.hpp */; };
 		36B146FAA79A55E9F43723B1 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
@@ -670,6 +671,7 @@
 		62D24F351519995200350848 /* palette_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F341519995200350848 /* palette_manager.cpp */; };
 		6A1F44688986D07EB5DBEF75 /* gui_test_dialog.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0110429EAA81AED07D53B749 /* gui_test_dialog.hpp */; };
 		6D574EACA3483ABEE72819F0 /* statistics_record.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27764FB68F02032F1C0B6748 /* statistics_record.cpp */; };
+		710945348BC77D4330543DE9 /* menu_item.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4FC541AF894AB0EFDBE4629A /* menu_item.hpp */; };
 		77D94146A5FA29849D1A9BD8 /* multiline_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F48CE9CF65D9813BE6CDC /* multiline_text.cpp */; };
 		7A0347D48BDB52B1430D9E79 /* migrate_version_selection.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B3DE4F95AF72C6F6BC37E695 /* migrate_version_selection.hpp */; };
 		7A7146D7893AA09891352019 /* test_schema_validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CF14AB694764953E2CB3AF7 /* test_schema_validator.cpp */; };
@@ -1330,6 +1332,7 @@
 		E1DA41878F0C255769B8239D /* scroll_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 755D4555A1DEA29125E7F338 /* scroll_text.cpp */; };
 		E2F24C0CBC863C3DC8A041EF /* edit_pbl.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B2CC45FEA71445AE817CAA6B /* edit_pbl.hpp */; };
 		E33B4FE7B66B9282C69D06E3 /* lua_menu_item.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 8610416C86C075DF3189F6E0 /* lua_menu_item.hpp */; };
+		E5D94798988263B1DD746041 /* menu_item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50D34D71BCDE1C5C6AFFDBE3 /* menu_item.cpp */; };
 		E6CF415F9FD04C35A55FB24D /* scroll_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 755D4555A1DEA29125E7F338 /* scroll_text.cpp */; };
 		E79249078ACE777D1E219DED /* choose_addon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E644DC98F26C756364EC2C /* choose_addon.cpp */; };
 		EBB44A70837B84A928CB6424 /* edit_pbl_translation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00574699A982AA23F12B39E0 /* edit_pbl_translation.cpp */; };
@@ -1496,6 +1499,7 @@
 		F4E4E0B41367244F001C7528 /* image_modifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0B21367244F001C7528 /* image_modifications.cpp */; };
 		F6E34C7CBC418F214B43BC39 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		F96A40219A964A8022910D73 /* back_edge_detector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DA034C90BB2E6C060B0A0B93 /* back_edge_detector.hpp */; };
+		FADF4FAFBC0D1DAEC2378035 /* menu_item.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 4FC541AF894AB0EFDBE4629A /* menu_item.hpp */; };
 		FC66414CB2E3F0E8B0B747B6 /* tod_new_schedule.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5D46466DBCD81B13621C7342 /* tod_new_schedule.hpp */; };
 /* End PBXBuildFile section */
 
@@ -2164,6 +2168,8 @@
 		4944F41A1354FBFF0027E614 /* teleport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = teleport.cpp; sourceTree = "<group>"; };
 		49478712172FF6F8002B7ABA /* tristate_button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tristate_button.cpp; sourceTree = "<group>"; };
 		49478713172FF6F8002B7ABA /* tristate_button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tristate_button.hpp; sourceTree = "<group>"; };
+		4FC541AF894AB0EFDBE4629A /* menu_item.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = menu_item.hpp; path = menu_item.hpp; sourceTree = "<group>"; };
+		50D34D71BCDE1C5C6AFFDBE3 /* menu_item.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = menu_item.cpp; path = menu_item.cpp; sourceTree = "<group>"; };
 		58C649488B3014E6F7254B62 /* mp_report.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mp_report.cpp; sourceTree = "<group>"; };
 		5D46466DBCD81B13621C7342 /* tod_new_schedule.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tod_new_schedule.hpp; sourceTree = "<group>"; };
 		620A386215E9364E00A4F513 /* attack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = attack.cpp; sourceTree = "<group>"; };
@@ -4049,6 +4055,8 @@
 				46F92CFC2174F6A300602C1C /* tips.cpp */,
 				46F92D0E2174F6A300602C1C /* tips.hpp */,
 				46F92CFF2174F6A300602C1C /* typed_formula.hpp */,
+				50D34D71BCDE1C5C6AFFDBE3 /* menu_item.cpp */,
+				4FC541AF894AB0EFDBE4629A /* menu_item.hpp */,
 			);
 			path = auxiliary;
 			sourceTree = "<group>";
@@ -5282,6 +5290,7 @@
 				80724CBB88A3B6C36D1E3199 /* spritesheet_generator.hpp in Headers */,
 				88FD4166833C39A0381932C6 /* options_button.hpp in Headers */,
 				428048319E19B5ECD6D0BA9C /* lua_menu_item.hpp in Headers */,
+				710945348BC77D4330543DE9 /* menu_item.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5304,6 +5313,7 @@
 				3C0F4FFA9A0331ED6846D216 /* spritesheet_generator.hpp in Headers */,
 				87D749D4BF9AB480778EAD2B /* options_button.hpp in Headers */,
 				E33B4FE7B66B9282C69D06E3 /* lua_menu_item.hpp in Headers */,
+				FADF4FAFBC0D1DAEC2378035 /* menu_item.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6060,6 +6070,7 @@
 				59F24113ACB3713647622A17 /* spritesheet_generator.cpp in Sources */,
 				35FA4C848D8738F5E97C6643 /* options_button.cpp in Sources */,
 				89404B01A7715ADF386B376B /* lua_menu_item.cpp in Sources */,
+				2DDE46BDA230A98EFB58BDD3 /* menu_item.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6746,6 +6757,7 @@
 				62B24C5298CC58244CAC748B /* options_button.cpp in Sources */,
 				AD414E20A633E93E3B417F5B /* lua_menu_item.cpp in Sources */,
 				144E49509EAC409649899BD4 /* test_lua_ptr.cpp in Sources */,
+				E5D94798988263B1DD746041 /* menu_item.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

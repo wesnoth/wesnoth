@@ -199,6 +199,10 @@ static int impl_widget_length(lua_State* L)
 		lua_pushinteger(L, tree_view->get_root_node().count_children());
 	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(&w)) {
 		lua_pushinteger(L, tree_view_node->count_children());
+ 	} else if(gui2::menu_button* menu_button = dynamic_cast<gui2::menu_button*>(&w)) {
+ 		lua_pushinteger(L, menu_button->get_item_count());
+ 	} else if(gui2::options_button* options_button = dynamic_cast<gui2::options_button*>(&w)) {
+ 		lua_pushinteger(L, options_button->get_item_count());
 	} else {
 		luaW_tableget(L, 1, "type");
 		return luaL_error(L, "unsupported widget for # operator: %s", luaL_checkstring(L, -1));
