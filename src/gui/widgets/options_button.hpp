@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include "gui/auxiliary/menu_item.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/dialogs/drop_down_menu.hpp"
 #include "gui/widgets/styled_widget.hpp"
@@ -49,13 +50,11 @@ public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_values(const std::vector<::config>& values, unsigned selected = 0);
-	//void set_values(const std::deque<::config>& values, unsigned selected = 0);
-	void set_values(const boost::container::stable_vector<::config>& values, unsigned selected = 0);
+	void set_values(const boost::container::stable_vector<menu_item>& values, unsigned selected = 0);
 
-	//void add_row(const config& row, const int index = -1);
-	config* add_row(const config& row, const int index = -1);
+	menu_item& add_row(const config& row, const int index = -1);
 
-	config* get_row(const int index);
+	menu_item* get_row(const int index);
 
 	void remove_rows(const unsigned pos, const unsigned number = 1);
 
@@ -64,13 +63,18 @@ public:
 	/** Returns the value of the selected row */
 	std::string get_value_string() const
 	{
-		return values_[selected_]["label"];
+		//return values_[selected_]["label"];
+		return values_[selected_].label;
 	}
 
 	/** Returns the entire config object for the selected row. */
-	const ::config& get_value_config() const
+	const ::config get_value_config() const
 	{
-		return values_[selected_];
+		config cfg;
+		if(!values_[selected_].label.empty()) {
+			cfg["label"] = values_[selected_].label;
+		}
+		return cfg;
 	}
 
 	void set_keep_open(const bool keep_open)
@@ -111,9 +115,7 @@ private:
 	 */
 	state_t state_;
 
-	//std::vector<::config> values_;
-	//std::deque<::config> values_;
-	boost::container::stable_vector<::config> values_;
+	boost::container::stable_vector<menu_item> values_;
 
 protected:
 	unsigned selected_;
@@ -123,8 +125,6 @@ private:
 
 	/* Whether or not the item selected should be remembered if menu is re-opened */
 	bool persistent_;
-
-//	std::unique_ptr<gui2::dialogs::drop_down_menu> droplist_;
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */

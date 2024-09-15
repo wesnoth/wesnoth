@@ -33,6 +33,7 @@
 #include "log.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_kernel_base.hpp"
+#include "scripting/lua_menu_item.hpp"
 #include "scripting/lua_ptr.hpp"
 #include "scripting/lua_widget.hpp"
 #include "scripting/lua_widget_methods.hpp"
@@ -460,25 +461,22 @@ static int intf_add_dialog_item(lua_State* L)
 		}
 	} else if(gui2::menu_button* mb = dynamic_cast<gui2::menu_button*>(w)) {
 		int realpos = check_index(L, 2, *mb, true, insert_pos);
-		config* res = nullptr;
+		gui2::menu_item* res = nullptr;
 		const config c;
-		res = mb->add_row(c, realpos);
+		res = &mb->add_row(c, realpos);
 		if(res) {
-			using config_ptr = config*;
-			new(L, 0) config_ptr(res);
-			luaL_setmetatable(L, "menu_item");
+			luaW_pushmenuitem(L, *res);
 			lua_push(L, insert_pos.value());
 			return 2;
 		}
+
 	} else if(gui2::options_button* ob = dynamic_cast<gui2::options_button*>(w)) {
 		int realpos = check_index(L, 2, *ob, true, insert_pos);
-		config* res = nullptr;
+		gui2::menu_item* res = nullptr;
 		const config c;
-		res = ob->add_row(c, realpos);
+		res = &ob->add_row(c, realpos);
 		if(res) {
-			using config_ptr = config*;
-			new(L, 0) config_ptr(res);
-			luaL_setmetatable(L, "menu_item");
+			luaW_pushmenuitem(L, *res);
 			lua_push(L, insert_pos.value());
 			return 2;
 		}

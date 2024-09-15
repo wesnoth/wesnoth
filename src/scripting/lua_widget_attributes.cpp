@@ -33,6 +33,7 @@
 #include "log.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_kernel_base.hpp"
+#include "scripting/lua_menu_item.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/lua_unit_type.hpp"
 #include "scripting/push_check.hpp"
@@ -54,7 +55,7 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 
-static bool push_child_by_index(lua_State *L, gui2::widget& w, int i)
+static void push_child_by_index(lua_State *L, gui2::widget& w, int i)
 {
 	assert(i > 0);
 	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(&w)) {
@@ -65,7 +66,6 @@ static bool push_child_by_index(lua_State *L, gui2::widget& w, int i)
 			}
 		}
 		luaW_pushwidget(L, *list->get_row_grid(i - 1));
-		return true;
 	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(&w)) {
 		int n = multi_page->get_page_count();
 		if(i > n) {
@@ -74,7 +74,6 @@ static bool push_child_by_index(lua_State *L, gui2::widget& w, int i)
 			}
 		}
 		luaW_pushwidget(L, *&multi_page->page_grid(i - 1));
-		return true;
 	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(&w)) {
 		gui2::tree_view_node& tvn = tree_view->get_root_node();
 		int n = tvn.count_children();
@@ -82,41 +81,36 @@ static bool push_child_by_index(lua_State *L, gui2::widget& w, int i)
 			throw std::invalid_argument("out of range");
 		}
 		luaW_pushwidget(L, *&tvn.get_child_at(i - 1));
-		return true;
 	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(&w)) {
 		int n = tree_view_node->count_children();
 		if(i > n) {
 			throw std::invalid_argument("out of range");
 		}
 		luaW_pushwidget(L, *&tree_view_node->get_child_at(i - 1));
-		return true;
 	} else if(gui2::stacked_widget* stacked_widget = dynamic_cast<gui2::stacked_widget*>(&w)) {
 		int n = stacked_widget->get_layer_count();
 		if(i > n) {
 			throw std::invalid_argument("out of range");
 		}
 		luaW_pushwidget(L, *stacked_widget->get_layer_grid(i - 1));
-		return true;
 	} else if(gui2::menu_button* menu_button = dynamic_cast<gui2::menu_button*>(&w)) {
 		int n = menu_button->get_item_count();
 		if(i > n) {
-			throw std::invalid_argument("out of range");
+			std::string s = "index out of range (" + std::to_string(i) + " > " + std::to_string(n) + ")";
+			throw std::invalid_argument(s);
 		}
-        using config_ptr = config*;
-        new(L, 0) config_ptr(menu_button->get_row(i - 1));
-		luaL_setmetatable(L, "menu_item");
-		return true;
+		luaW_pushmenuitem(L, *(menu_button->get_row(i - 1)));
 	} else if(gui2::options_button* options_button = dynamic_cast<gui2::options_button*>(&w)) {
 		int n = options_button->get_item_count();
 		if(i > n) {
-			throw std::invalid_argument("out of range");
+			std::string s = "index out of range (" + std::to_string(i) + " > " + std::to_string(n) + ")";
+			throw std::invalid_argument(s);
 		}
-        using config_ptr = config*;
-        new(L, 0) config_ptr(options_button->get_row(i - 1));
-		luaL_setmetatable(L, "menu_item");
-		return true;
+		luaW_pushmenuitem(L, *(options_button->get_row(i - 1)));
+	} else {
+		luaW_tableget(L, 1, "type");
+		luaL_error(L, "unsupported widget in push_child_by_index(): %s", luaL_checkstring(L, -1));
 	}
-	return false;
 }
 
 static gui2::widget* find_child_by_name(gui2::widget& w, const std::string& m)
@@ -562,14 +556,10 @@ int impl_widget_get(lua_State* L)
 {
 	gui2::widget& w = luaW_checkwidget(L, 1);
 	if(lua_isinteger(L, 2)) {
-		if(push_child_by_index(L, w, luaL_checkinteger(L, 2))) {
-			return 1;
-		} else {
-			// I don't know what to do here
-			DBG_LUA << "push_child_by_index() returned false";
-		}
-
+		push_child_by_index(L, w, luaL_checkinteger(L, 2));
+		return 1;
 	}
+
 	std::string_view str = lua_check<std::string_view>(L, 2);
 
 	tgetters::iterator it = getters.find(std::string(str));

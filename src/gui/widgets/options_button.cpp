@@ -15,11 +15,11 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/widgets/options_button.hpp"
-
+#include "scripting/lua_ptr.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/register_widget.hpp"
+#include "gui/widgets/options_button.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "sound.hpp"
@@ -141,11 +141,14 @@ void options_button::signal_handler_left_button_click(const event::ui_event even
 
 	std::vector<::config> values;
 
-	for(auto value: values_) {
-		values.emplace_back(value);
+	for(auto menu_item: values_) {
+//		FIXME:  convert from values_ (menu_item) to config
+//		 or perhaps allow DDF to take a v<menu_item>
+		config cfg;
+		cfg["label"] = menu_item.label;
+		values.emplace_back(cfg);
 	}
 
-	// If a button has a retval do the default handling.
 	dialogs::drop_down_menu droplist(this, values, selected_, keep_open_);
 
 	// Whether we want the DDM to retain the selected item if previously opened
@@ -193,24 +196,23 @@ void options_button::signal_handler_sdl_wheel_down(const event::ui_event event, 
 // compatibility with existing code which uses vector
 void options_button::set_values(const std::vector<::config>& values, unsigned selected)
 {
-	//std::deque<::config> converted;
-	boost::container::stable_vector<::config> converted;
+	boost::container::stable_vector<menu_item> converted;
 	for(auto value: values) {
-		converted.emplace_back(value);
+		menu_item m(value);
+		converted.emplace_back(m);
 	}
 	set_values(converted, selected);
 
 }
 
-//void options_button::set_values(const std::deque<::config>& values, unsigned selected)
-void options_button::set_values(const boost::container::stable_vector<::config>& values, unsigned selected)
+void options_button::set_values(const boost::container::stable_vector<menu_item>& values, unsigned selected)
 {
 	assert(selected < values.size());
 
 	if(!values_.empty()) {
 		assert(selected_ < values_.size());
 
-		if(values[selected]["label"] != values_[selected_]["label"]) {
+		if(values[selected].label != values_[selected_].label) {
 			queue_redraw();
 		}
 	}
@@ -219,36 +221,29 @@ void options_button::set_values(const boost::container::stable_vector<::config>&
 	selected_ = selected;
 
 	if(persistent_) {
-		set_label(values_[selected_]["label"]);
+		set_label(values_[selected_].label);
 	}
 }
 
-config* options_button::add_row(const config& row, const int index)
+menu_item& options_button::add_row(const config& row, const int index)
 {
-	config* ret;
-
 	if(index < -1) {
-		assert(index >= -1); // for now
+		assert(index >= -1); // this looks odd, but sends right message to user
 	} else if((index == -1) || (static_cast<size_t>(index) == values_.size())) {
 		values_.emplace_back(row);
-		ret = &values_[values_.size() - 1];
-	} else {
-		assert(static_cast<size_t>(index) < values_.size());
-		values_.insert(values_.begin() + index, row);
-		ret = &values_[index];
+		return values_[values_.size() - 1];
 	}
-
-	return ret;
+	assert(static_cast<size_t>(index) < values_.size());
+	values_.insert(values_.begin() + index - 1, row);
+	return values_[index];
 }
 
-config* options_button::get_row(const int index)
+menu_item* options_button::get_row(const int index)
 {
 	if((index < 0) || (static_cast<size_t>(index) >= values_.size()))  {
 		assert((index >= 0) && (static_cast<size_t>(index) < values_.size())); // for now
-	} else {
-		return &values_[index];
 	}
-	return nullptr;  // not sure what to do here, this shouldn't happen
+	return &values_[index];
 }
 
 void options_button::remove_rows(const unsigned pos, const unsigned number)
@@ -288,7 +283,7 @@ void options_button::set_selected(unsigned selected, bool fire_event)
 	selected_ = selected;
 
 	if(persistent_) {
-		set_label(values_[selected_]["label"]);
+		set_label(values_[selected_].label);
 	}
 
 	if (fire_event) {

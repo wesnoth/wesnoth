@@ -14,6 +14,7 @@
 */
 
 #include "config.hpp"
+#include "gui/auxiliary/menu_item.hpp"
 #include "scripting/lua_common.hpp"
 
 #include <string>
@@ -22,6 +23,13 @@ namespace lua_menuitem {
 	    std::string register_metatable(lua_State *L);
 }
 
+void luaW_pushmenuitem(lua_State* L, gui2::menu_item& m);
+
+gui2::menu_item& luaW_checkmenuitem(lua_State* L, int n);
+
+lua_ptr<gui2::menu_item>& luaW_checkmenuitem_ptr(lua_State* L, int n);
+
+//  This should be going away
 #define remove_config_attrib(name,cfg)\
 do { \
     if (strcmp(m, (name)) == 0) { \
