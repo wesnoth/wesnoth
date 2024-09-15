@@ -235,12 +235,12 @@ static int impl_vconfig_get(lua_State *L)
 	if (shallow_literal || strcmp(m, "__shallow_parsed") == 0)
 	{
 		lua_newtable(L);
-		for (const config::attribute &a : v->get_config().attribute_range()) {
+		for(const auto& [key, value] : v->get_config().attribute_range()) {
 			if (shallow_literal)
-				luaW_pushscalar(L, a.second);
+				luaW_pushscalar(L, value);
 			else
-				luaW_pushscalar(L, v->expand(a.first));
-			lua_setfield(L, -2, a.first.c_str());
+				luaW_pushscalar(L, v->expand(key));
+			lua_setfield(L, -2, key.c_str());
 		}
 		vconfig::all_children_iterator i = v->ordered_begin(),
 			i_end = v->ordered_end();
@@ -667,10 +667,10 @@ void luaW_filltable(lua_State *L, const config& cfg)
 		lua_rawseti(L, -2, 2);
 		lua_rawseti(L, -2, k++);
 	}
-	for (const config::attribute &attr : cfg.attribute_range())
+	for(const auto& [key, value] : cfg.attribute_range())
 	{
-		luaW_pushscalar(L, attr.second);
-		lua_setfield(L, -2, attr.first.c_str());
+		luaW_pushscalar(L, value);
+		lua_setfield(L, -2, key.c_str());
 	}
 }
 

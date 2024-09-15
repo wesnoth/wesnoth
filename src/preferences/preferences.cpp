@@ -195,9 +195,9 @@ void prefs::migrate_preferences(const std::string& migrate_prefs_file)
 
 			// when both files have the same attribute, use the one from whichever was most recently modified
 			bool current_prefs_are_older = filesystem::file_modified_time(filesystem::get_synced_prefs_file()) < filesystem::file_modified_time(migrate_prefs_file);
-			for(const config::attribute& val : old_cfg.attribute_range()) {
-				if(current_prefs_are_older || !current_cfg.has_attribute(val.first)) {
-					preferences_[val.first] = val.second;
+			for(const auto& [key, value] : old_cfg.attribute_range()) {
+				if(current_prefs_are_older || !current_cfg.has_attribute(key)) {
+					preferences_[key] = value;
 				}
 			}
 

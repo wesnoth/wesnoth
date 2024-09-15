@@ -641,9 +641,9 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	movement_type_.merge(cfg);
 
 	if(auto status_flags = cfg.optional_child("status")) {
-		for(const config::attribute &st : status_flags->attribute_range()) {
-			if(st.second.to_bool()) {
-				set_state(st.first, true);
+		for(const auto& [key, value] : status_flags->attribute_range()) {
+			if(value.to_bool()) {
+				set_state(key, true);
 			}
 		}
 	}
