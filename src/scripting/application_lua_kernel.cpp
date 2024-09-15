@@ -263,15 +263,11 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	// Either way we push the arguments to the function and call resume.
 
 	// First we have to create the event table, by concatenating the event queue into a table.
-	lua_newtable(T_); //this will be the event table
-	for (std::size_t i = 0; i < queue.size(); ++i) {
-		lua_newtable(T_);
-		lua_pushstring(T_, queue[i].name.c_str());
-		lua_rawseti(T_, -2, 1);
-		luaW_pushconfig(T_, queue[i].data);
-		lua_rawseti(T_, -2, 2);
-		lua_rawseti(T_, -2, i+1);
+	config events;
+	for(const auto& event : queue) {
+		events.add_child(event.name, event.data);
 	}
+	luaW_pushconfig(T_, events); //this will be the event table
 
 	// Now we have to create the context object. It is arranged as a table of boost functions.
 	auto this_context_backend = std::make_shared<lua_context_backend>();
