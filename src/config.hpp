@@ -33,6 +33,12 @@
 #include "utils/const_clone.hpp"
 #include "utils/optional_reference.hpp"
 
+#ifdef __cpp_lib_ranges
+#include <ranges>
+#else
+#include <boost/range/adaptor/map.hpp>
+#endif
+
 #include <functional>
 #include <iosfwd>
 #include <map>
@@ -609,7 +615,7 @@ public:
 	/**
 	 * Moves all the children with tag @a key from @a src to this.
 	 */
-	void splice_children(config &src, const std::string &key);
+	void splice_children(config& src, config_key_type key);
 
 	void remove_child(config_key_type key, std::size_t index);
 	/**
@@ -874,6 +880,16 @@ public:
 	 * i.e. can be saved to disk and again loaded by the WML parser.
 	 */
 	bool validate_wml() const;
+
+	/** A non-owning view over all child tag names. */
+	auto child_name_view() const
+	{
+#ifdef __cpp_lib_ranges
+		return children_ | std::views::keys;
+#else
+		return children_ | boost::adaptors::map_keys;
+#endif
+	}
 
 private:
 	/**
