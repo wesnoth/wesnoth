@@ -40,6 +40,23 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(campaign_selection)
 
+campaign_selection::campaign_selection(ng::create_engine& eng)
+	: modal_dialog(window_id())
+	, engine_(eng)
+	, choice_(-1)
+	, rng_mode_(RNG_DEFAULT)
+	, mod_states_()
+	, page_ids_()
+	, difficulties_()
+	, current_difficulty_()
+	, current_sorting_(RANK)
+	, currently_sorted_asc_(true)
+	, mod_ids_()
+{
+	set_show_even_without_video(true);
+	set_allow_plugin_skip(false);
+}
+
 void campaign_selection::campaign_selected()
 {
 	tree_view& tree = find_widget<tree_view>("campaign_tree");
@@ -447,6 +464,28 @@ void campaign_selection::pre_show()
 	connect_signal_notify_modified(diff_menu, std::bind(&campaign_selection::difficulty_selected, this));
 
 	campaign_selected();
+
+	plugins_context_.reset(new plugins_context("Campaign Selection"));
+	plugins_context_->set_callback("create", [this](const config&) { set_retval(retval::OK); }, false);
+	plugins_context_->set_callback("quit", [this](const config&) { set_retval(retval::CANCEL); }, false);
+
+	plugins_context_->set_accessor("find_level", [this](const config& cfg) {
+		const std::string id = cfg["id"].str();
+		auto result = engine_.find_level_by_id(id);
+		return config {
+			"index", result.second,
+			"type", level_type::get_string(result.first),
+		};
+	});
+
+	plugins_context_->set_accessor_int("find_mod", [this](const config& cfg) {
+		return engine_.find_extra_by_id(ng::create_engine::MOD, cfg["id"]);
+	});
+
+	plugins_context_->set_callback("select_level", [this](const config& cfg) {
+		choice_ = cfg["index"].to_int();
+		engine_.set_current_level(choice_);
+	}, true);
 }
 
 void campaign_selection::add_campaign_to_tree(const config& campaign)

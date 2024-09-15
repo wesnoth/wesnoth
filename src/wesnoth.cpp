@@ -829,6 +829,8 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 	const plugins_context::reg_vec callbacks {
 		{"play_multiplayer", std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::mp_mode::CONNECT)},
+		{"play_local", std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::mp_mode::LOCAL)},
+		{"play_campaign", std::bind(&game_launcher::play_campaign, game.get())},
 	};
 
 	const plugins_context::areg_vec accessors {
