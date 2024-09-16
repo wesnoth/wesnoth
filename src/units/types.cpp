@@ -1394,6 +1394,26 @@ void unit_type::apply_scenario_fix(const config& cfg)
 			boost::remove_erase(advances_to_, str);
 		}
 	}
+	// support advancement AMLA tags here
+	// TODO: I think I badly screwed up the if condition here
+	// disclaimer: I dont how to code cpp, I know Python and SQL.
+	if (auto attr = cfg.child_range("advancement")) {
+		// for loop for every advancement AMLA added
+		for(const config& adv : cfg.child_range("advancement")) {
+			// each advancement AMLA is essentially a collection of effectWML
+			for(const config& effect : adv.child_range("effect")) {
+				auto abil_cfg = effect.optional_child("abilities");
+
+				if(!abil_cfg || effect["apply_to"] != "new_ability") {
+					continue;
+				}
+
+				for(const config::any_child ab : abil_cfg->all_children_range()) {
+					adv_abilities_.emplace_back(ab.cfg);
+				}
+			}
+		}
+	}
 
 	// apply recursively to subtypes.
 	for(int gender = 0; gender <= 1; ++gender) {
