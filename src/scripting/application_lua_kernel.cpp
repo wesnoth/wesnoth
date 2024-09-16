@@ -109,7 +109,7 @@ application_lua_kernel::application_lua_kernel()
 	cmd_log_ << lua_preferences::register_table(mState);
 }
 
-application_lua_kernel::thread::thread(lua_State * T) : T_(T), started_(false) {}
+application_lua_kernel::thread::thread(application_lua_kernel& owner, lua_State * T) : owner_(owner), T_(T), started_(false) {}
 
 std::string application_lua_kernel::thread::status()
 {
@@ -193,7 +193,7 @@ application_lua_kernel::thread * application_lua_kernel::load_script_from_string
 		throw game::lua_error(std::string("Error when executing a script to make a lua thread -- function was not produced, found a ") + lua_typename(T, lua_type(T, -1)) );
 	}
 
-	return new application_lua_kernel::thread(T);
+	return new application_lua_kernel::thread(*this, T);
 }
 
 application_lua_kernel::thread * application_lua_kernel::load_script_from_file(const std::string & file)
@@ -210,7 +210,7 @@ application_lua_kernel::thread * application_lua_kernel::load_script_from_file(c
 		throw game::lua_error(std::string("Error when executing a file to make a lua thread -- function was not produced, found a ") + lua_typename(T, lua_type(T, -1)) );
 	}
 
-	return new application_lua_kernel::thread(T);
+	return new application_lua_kernel::thread(*this, T);
 }
 
 struct lua_context_backend {
@@ -272,6 +272,9 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	// Now we have to create the context object. It is arranged as a table of boost functions.
 	auto this_context_backend = std::make_shared<lua_context_backend>();
 	lua_newtable(T_); // this will be the context table
+	lua_pushstring(T_, "valid");
+	lua_pushboolean(T_, true);
+	lua_settable(T_, -3);
 	for (const std::string & key : ctxt.callbacks_ | utils::views::keys ) {
 		lua_pushstring(T_, key.c_str());
 		lua_cpp::push_function(T_, std::bind(&impl_context_backend, std::placeholders::_1, this_context_backend, key));
@@ -283,6 +286,9 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	lua_pushstring(T_, "name");
 	lua_pushstring(T_, ctxt.name_.c_str());
 	lua_settable(T_, -3);
+	lua_pushstring(T_, "valid");
+	lua_pushboolean(T_, true);
+	lua_settable(T_, -3);
 	for (const plugins_context::accessor_list::value_type & v : ctxt.accessors_) {
 		const std::string & key = v.first;
 		const plugins_context::accessor_function & func = v.second;
@@ -291,7 +297,14 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 		lua_settable(T_, -3);
 	}
 
+	// Push copies of the context and info tables so that we can mark them invalid for the next slice
+	lua_pushvalue(T_, -2);
+	lua_pushvalue(T_, -2);
+	// However, Lua can't handle having extra values on the stack when resuming a coroutine,
+	// so move the extra copy to the main thread instead.
+	lua_xmove(T_, owner_.get_state(), 2);
 	// Now we resume the function, calling the coroutine with the three arguments (events, context, info).
+	// We ignore any values returned via arguments to yield()
 	int numres = 0;
 	lua_resume(T_, nullptr, 3, &numres);
 
@@ -322,6 +335,17 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 			ERR_LUA << ss.str();
 		}
 	}
+
+	// Pop any values that the resume left on the stack
+	lua_pop(T_, numres);
+	// Set "valid" to false on the now-expired context and info tables
+	lua_pushstring(owner_.get_state(), "valid");
+	lua_pushboolean(owner_.get_state(), false);
+	lua_settable(owner_.get_state(), -3);
+	lua_pushstring(owner_.get_state(), "valid");
+	lua_pushboolean(owner_.get_state(), false);
+	lua_settable(owner_.get_state(), -4);
+	lua_pop(owner_.get_state(), 2);
 
 	application_lua_kernel::request_list results;
 
