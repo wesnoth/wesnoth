@@ -521,7 +521,7 @@ static int process_command_args(commandline_options& cmdline_opts)
 	if(cmdline_opts.preprocess_defines || cmdline_opts.preprocess_input_macros || cmdline_opts.preprocess_path) {
 		// It would be good if this was supported for running tests too, possibly for other uses.
 		// For the moment show an error message instead of leaving the user wondering why it doesn't work.
-		std::cerr << "That --preprocess-* option is only supported when using --preprocess or --validate-wml.";
+		PLAIN_LOG << "That --preprocess-* option is only supported when using --preprocess or --validate.";
 		return 2;
 	}
 
