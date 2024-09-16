@@ -299,6 +299,7 @@ static int process_command_args(commandline_options& cmdline_opts)
 			// command line options that imply not redirecting output to a log file
 			&& !cmdline_opts.data_path
 			&& !cmdline_opts.userdata_path
+			&& !cmdline_opts.usercache_path
 			&& !cmdline_opts.version
 			&& !cmdline_opts.simple_version
 			&& !cmdline_opts.logdomains
