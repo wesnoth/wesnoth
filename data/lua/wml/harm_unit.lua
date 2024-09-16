@@ -209,7 +209,7 @@ function wml_actions.harm_unit(cfg)
 				end
 									
 				if fire_event then
-					local harmer_loc={0, 0}
+					local harmer_loc={ x = 0, y = 0 }
 					local unit_to_harm_loc={ x = tonumber(unit_to_harm.x) or 0, y = tonumber(unit_to_harm.y) or 0 }
 					if harmer and harmer.valid then
 						harmer_loc = { x = tonumber(harmer.x) or 0, y = tonumber(harmer.y) or 0 }
