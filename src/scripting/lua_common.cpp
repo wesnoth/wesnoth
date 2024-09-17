@@ -569,7 +569,7 @@ namespace {
 		void operator()(double d) const
 		{ lua_pushnumber(L, d); }
 		void operator()(const std::string& s) const
-		{ lua_pushstring(L, s.c_str()); }
+		{ lua_pushlstring(L, s.c_str(), s.size()); }
 		void operator()(const t_string& s) const
 		{ luaW_pushtstring(L, s); }
 	};
@@ -590,7 +590,7 @@ bool luaW_toscalar(lua_State *L, int index, config::attribute_value& v)
 			v = lua_tonumber(L, -1);
 			break;
 		case LUA_TSTRING:
-			v = lua_tostring(L, -1);
+			v = std::string(luaW_tostring(L, -1));
 			break;
 		case LUA_TUSERDATA:
 		{
@@ -1041,7 +1041,7 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 			v.as_scalar() = lua_tonumber(L, n);
 			return true;
 		case LUA_TSTRING:
-			v.as_scalar() = lua_tostring(L, n);
+			v.as_scalar() = std::string(luaW_tostring(L, n));
 			return true;
 		case LUA_TUSERDATA:
 			if (t_string * t_str = static_cast<t_string*> (luaL_testudata(L, n, tstringKey))) {
