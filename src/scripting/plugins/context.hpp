@@ -47,6 +47,7 @@ public:
 
 	void set_callback(const std::string & name, callback_function);
 	void set_callback(const std::string & name, const std::function<void(config)>& function, bool preserves_context);
+	void set_callback_execute(class lua_kernel_base& kernel);
 	std::size_t erase_callback(const std::string & name);
 	std::size_t clear_callbacks();
 
@@ -67,4 +68,5 @@ private:
 	callback_list callbacks_;
 	accessor_list accessors_;
 	std::string name_;
+	lua_kernel_base* execute_kernel_;
 };

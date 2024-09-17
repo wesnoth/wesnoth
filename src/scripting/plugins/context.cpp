@@ -16,6 +16,7 @@
 #include "scripting/plugins/context.hpp"
 
 #include "scripting/plugins/manager.hpp"
+#include "scripting/lua_kernel_base.hpp"
 
 #include <cassert>
 #include <functional>
@@ -103,4 +104,8 @@ void plugins_context::play_slice()
 void plugins_context::set_callback(const std::string & name, const std::function<void(config)>& func, bool preserves_context)
 {
 	set_callback(name, [func, preserves_context](config cfg) { func(std::move(cfg)); return preserves_context; });
+}
+
+void plugins_context::set_callback_execute(lua_kernel_base& kernel) {
+	execute_kernel_ = &kernel;
 }
