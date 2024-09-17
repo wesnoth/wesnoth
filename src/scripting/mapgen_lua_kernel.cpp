@@ -92,6 +92,8 @@ static int intf_default_generate(lua_State *L)
 	generator_data arg;
 	arg.width = width;
 	arg.height = height;
+	arg.default_width = 0;
+	arg.default_height = 0;
 	arg.nplayers = cfg["nplayers"].to_int(2);
 	arg.nvillages = cfg["nvillages"].to_int(0);
 	arg.iterations = cfg["iterations"].to_int(0);
