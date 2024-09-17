@@ -409,7 +409,7 @@ bool config_cache::delete_cache_files(const std::vector<std::string>& paths,
 }
 
 config_cache_transaction::state config_cache_transaction::state_ = FREE;
-config_cache_transaction* config_cache_transaction::active_ = 0;
+config_cache_transaction* config_cache_transaction::active_ = nullptr;
 
 config_cache_transaction::config_cache_transaction()
 	: define_filenames_()
@@ -423,7 +423,7 @@ config_cache_transaction::config_cache_transaction()
 config_cache_transaction::~config_cache_transaction()
 {
 	state_ = FREE;
-	active_ = 0;
+	active_ = nullptr;
 }
 
 void config_cache_transaction::lock()
