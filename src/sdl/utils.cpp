@@ -960,6 +960,7 @@ void light_surface(surface& nsurf, const surface &lightmap)
 
 void blur_surface(surface& surf, SDL_Rect rect, int depth)
 {
+	assert(depth >= 0 && "Cannot call blur_surface with a negative depth");
 	if(surf == nullptr) {
 		return;
 	}
