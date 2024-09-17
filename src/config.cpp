@@ -172,8 +172,6 @@ void config::append_children(const config& cfg)
 
 void config::append_children(config&& cfg)
 {
-#if 0
-	//For some unknown reason this doesn't compile.
 	if(children_.empty()) {
 		//optimisation
 		children_ = std::move(cfg.children_);
@@ -181,7 +179,6 @@ void config::append_children(config&& cfg)
 		cfg.clear_all_children();
 		return;
 	}
-#endif
 	for(const any_child value : cfg.all_children_range()) {
 		add_child(value.key, std::move(value.cfg));
 	}
