@@ -104,6 +104,8 @@ if(NOT ENABLE_SYSTEM_LUA)
 		# silence a Clang specific warning when compiling the lua code
 		set_property(SOURCE SOURCE ${lua_sources} APPEND_STRING PROPERTY COMPILE_FLAGS " -Wno-string-plus-int")
 	endif()
+
+	set_source_files_properties(${lua_sources} PROPERTIES SKIP_LINTING ON)
 endif()
 
 if(WIN32)
