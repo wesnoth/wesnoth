@@ -241,6 +241,9 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		// Negative average damage (it will advance).
 		avg_damage_inflicted += defend_it->hitpoints() - defend_it->max_hitpoints();
 	} else {
+		// prev_def will only be a nullptr here if movements was empty, but we've asserted it wasn't above,
+		// so avoiding false positive
+		//NOLINTNEXTLINE(clang-analyzer-core.CallAndMessage)
 		chance_to_kill = prev_def->hp_dist[0];
 		avg_damage_inflicted += defend_it->hitpoints() - prev_def->average_hp(map.gives_healing(defend_it->get_location()));
 	}
