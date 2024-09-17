@@ -132,10 +132,11 @@ public:
 	 *
 	 * @param offset              The position to insert the text.
 	 * @param text                The UTF-8 text to insert.
+	 * @param use_markup          If the text is formatted or not.
 	 *
 	 * @returns                   The number of characters inserted.
 	 */
-	unsigned insert_text(const unsigned offset, const std::string& text);
+	unsigned insert_text(const unsigned offset, const std::string& text, const bool use_markup = false);
 
 	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
 

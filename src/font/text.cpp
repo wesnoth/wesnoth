@@ -150,19 +150,19 @@ point pango_text::to_draw_scale(const point& p) const
 point pango_text::get_size()
 {
 	update_pixel_scale(); // TODO: this should be in recalculate()
-	this->recalculate();
+	recalculate();
 
 	return to_draw_scale({rect_.width, rect_.height});
 }
 
 bool pango_text::is_truncated() const
 {
-	this->recalculate();
+	recalculate();
 
 	return (pango_layout_is_ellipsized(layout_.get()) != 0);
 }
 
-unsigned pango_text::insert_text(const unsigned offset, const std::string& text)
+unsigned pango_text::insert_text(const unsigned offset, const std::string& text, const bool use_markup)
 {
 	if (text.empty() || length_ == maximum_length_) {
 		return 0;
@@ -177,14 +177,14 @@ unsigned pango_text::insert_text(const unsigned offset, const std::string& text)
 	}
 	const std::string insert = text.substr(0, utf8::index(text, len));
 	std::string tmp = text_;
-	this->set_text(utf8::insert(tmp, offset, insert), false);
+	set_text(utf8::insert(tmp, offset, insert), use_markup);
 	// report back how many characters were actually inserted (e.g. to move the cursor selection)
 	return len;
 }
 
 point pango_text::get_cursor_position(const unsigned column, const unsigned line) const
 {
-	this->recalculate();
+	recalculate();
 
 	// Determing byte offset
 	std::unique_ptr<PangoLayoutIter, std::function<void(PangoLayoutIter*)>> itor(
@@ -238,7 +238,7 @@ std::size_t pango_text::get_maximum_length() const
 
 std::string pango_text::get_token(const point & position, const char * delim) const
 {
-	this->recalculate();
+	recalculate();
 
 	// Get the index of the character.
 	int index, trailing;
@@ -274,7 +274,7 @@ std::string pango_text::get_link(const point & position) const
 		return "";
 	}
 
-	std::string tok = this->get_token(position, " \n\r\t");
+	std::string tok = get_token(position, " \n\r\t");
 
 	if (looks_like_url(tok)) {
 		return tok;
@@ -285,7 +285,7 @@ std::string pango_text::get_link(const point & position) const
 
 point pango_text::get_column_line(const point& position) const
 {
-	this->recalculate();
+	recalculate();
 
 	// Get the index of the character.
 	int index, trailing;
@@ -309,7 +309,7 @@ point pango_text::get_column_line(const point& position) const
 	 * Until that time leave it as is.
 	 */
 	for(std::size_t i = 0; ; ++i) {
-		const int pos = this->get_cursor_position(i, line).x;
+		const int pos = get_cursor_position(i, line).x;
 
 		if(pos == offset) {
 			return  point(i, line);
@@ -469,31 +469,24 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 		const std::u32string wide = unicode_cast<std::u32string>(text);
 		const std::string narrow = unicode_cast<std::string>(wide);
 		if(text != narrow) {
-			ERR_GUI_L << "pango_text::" << __func__
-					<< " text '" << text
-					<< "' contains invalid utf-8, trimmed the invalid parts.";
+			ERR_GUI_L
+				<< "pango_text::" << __func__
+				<< " text '" << text
+				<< "' contains invalid utf-8, trimmed the invalid parts.";
+		}
+
+		if(markedup) {
+			if (!set_markup(narrow, *layout_)) {
+				pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
+			}
+		} else {
+			pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
 		}
 
 		pango_layout_set_attributes(layout_.get(), global_attribute_list_);
+
 		// Clear list. Using pango_attr_list_unref() causes segfault
 		global_attribute_list_ = pango_attr_list_new();
-
-		if(markedup) {
-			if(!this->set_markup(narrow, *layout_)) {
-				return false;
-			}
-		} else {
-			if (attribute_start_offset_ == attribute_end_offset_) {
-				/*
-				 * pango_layout_set_text after pango_layout_set_markup might
-				 * leave the layout in an undefined state regarding markup so
-				 * clear it unconditionally.
-				 */
-				pango_layout_set_attributes(layout_.get(), nullptr);
-			}
-
-			pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
-		}
 
 		text_ = narrow;
 		length_ = wide.size();
@@ -633,7 +626,7 @@ pango_text& pango_text::set_maximum_length(const std::size_t maximum_length)
 		maximum_length_ = maximum_length;
 		if(length_ > maximum_length_) {
 			std::string tmp = text_;
-			this->set_text(utf8::truncate(tmp, maximum_length_), false);
+			set_text(utf8::truncate(tmp, maximum_length_), false);
 		}
 	}
 
@@ -969,7 +962,7 @@ bool pango_text::set_markup(std::string_view text, PangoLayout& layout)
 	char* raw_text;
 	std::string semi_escaped;
 	bool valid = validate_markup(text, &raw_text, semi_escaped);
-	if(semi_escaped != "") {
+	if(!semi_escaped.empty()) {
 		text = semi_escaped;
 	}
 
@@ -980,11 +973,14 @@ bool pango_text::set_markup(std::string_view text, PangoLayout& layout)
 		} else {
 			pango_layout_set_markup(&layout, text.data(), text.size());
 		}
-	} else {
-		ERR_GUI_L << "pango_text::" << __func__
-			<< " text '" << text
-			<< "' has broken markup, set to normal text.";
-		set_text(_("The text contains invalid Pango markup: ") + std::string(text), false);
+
+		// append any manual attributes to those generated by pango_layout_set_markup
+		PangoAttrList* markup_list = pango_layout_get_attributes(&layout);
+		for (auto* l = pango_attr_list_get_attributes(global_attribute_list_); l != nullptr; l = l->next) {
+			PangoAttribute* attr = static_cast<PangoAttribute*>(l->data);
+			pango_attr_list_change(markup_list, attr);
+		}
+		global_attribute_list_ = markup_list;
 	}
 
 	return valid;
@@ -1079,7 +1075,7 @@ void pango_text::copy_layout_properties(PangoLayout& src, PangoLayout& dst)
 
 std::vector<std::string> pango_text::get_lines() const
 {
-	this->recalculate();
+	recalculate();
 
 	PangoLayout* const layout = layout_.get();
 	std::vector<std::string> res;
