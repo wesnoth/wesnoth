@@ -33,7 +33,7 @@ class multiline_text : public text_box_base
 	friend struct implementation::builder_multiline_text;
 
 public:
-	explicit multiline_text(const implementation::builder_styled_widget& builder);
+	explicit multiline_text(const implementation::builder_multiline_text& builder);
 
 	/** See @ref widget::can_wrap. */
 	bool can_wrap() const override
@@ -143,6 +143,14 @@ public:
 		update_layout();
 	}
 
+	/** See @ref styled_widget::get_link_aware. */
+	virtual bool get_link_aware() const override
+	{
+		return link_aware_;
+	}
+
+	void set_link_aware(bool l);
+
 private:
 	/** Inherited from text_box_base. */
 	void paste_selection(const bool mouse) override
@@ -193,6 +201,12 @@ private:
 
 	/** Is the mouse in dragging mode, this affects selection in mouse move */
 	bool dragging_;
+
+	/**
+	 * Whether the text area is link aware, rendering links with special formatting
+	 * and handling click events.
+	 */
+	bool link_aware_;
 
 	/** Helper text to display (such as "Search") if the text box is empty. */
 	std::string hint_text_;
@@ -351,6 +365,7 @@ public:
 
 	bool editable;
 	bool wrap;
+	bool link_aware;
 };
 
 } // namespace implementation
