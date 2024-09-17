@@ -81,7 +81,7 @@ namespace lua_preferences
 		lua_setfield(L, -2, "__newindex");
 		lua_pushcfunction(L, impl_preferences_dir);
 		lua_setfield(L, -2, "__dir");
-		lua_pushstring(L, "src/scripting/lua_preferences.cpp");
+		lua_pushstring(L, "preferences");
 		lua_setfield(L, -2, "__metatable");
 
 		// Set the table as its own metatable
