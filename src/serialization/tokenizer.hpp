@@ -23,6 +23,19 @@
 #include <istream>
 #include <string>
 
+// use of illegal utf8 character for this purpose was added in a76be7ef1e921dabacd99f16ef440bf9673b8d98
+// has something to do with the result of the preprocessor whose format is essentially undocumented and I don't intend to delve into that as of writing this comment
+#define INLINED_PREPROCESS_DIRECTIVE_CHAR 254
+
+// normal ascii is 0-127
+// extended ascii is from 128-255, none of which need any special handling
+#define START_EXTENDED_ASCII 128
+
+/**
+ * contains the current text being parsed as well as the token_type of what's being parsed.
+ * multi-character token types will have a value that's a string with zero or more characters in it.
+ * single character token types are a single character with special meaning for a config
+ */
 struct token
 {
 	token() :
@@ -32,12 +45,18 @@ struct token
 
 	enum token_type
 	{
+		// multi-character
+		/** unquoted text */
 		STRING,
+		/** quoted string, contained within double quotes or by less than/greater than symbols */
 		QSTRING,
+		/** reached end of file without finding the closing character for a QSTRING */
 		UNTERMINATED_QSTRING,
+		/** any characters that don't have special meaning */
 		MISC,
 
-		LF = '\n',
+		// single characters
+		NEWLINE = '\n',
 		EQUALS = '=',
 		COMMA = ',',
 		PLUS = '+',
@@ -45,14 +64,25 @@ struct token
 		OPEN_BRACKET = '[',
 		CLOSE_BRACKET = ']',
 		UNDERSCORE = '_',
-		END
+		POUND = '#',
+		LESS_THAN = '<',
+		GREATER_THAN = '>',
+		DOUBLE_QUOTE = '"',
+		DOLLAR = '$',
+
+		/** set when EOF is returned by the input stream */
+		END = 256
 	};
 
 	token_type type;
 	std::string value;
 };
 
-/** Abstract baseclass for the tokenizer. */
+/**
+ * class responsible for parsing the provided text into tokens and tracking information about the current token.
+ * can also track the previous token when built with the DEBUG_TOKENIZER compiler define.
+ * does not otherwise keep track of the processing history.
+ */
 class tokenizer
 {
 public:
@@ -96,7 +126,7 @@ private:
 
 	void next_char()
 	{
-		if (current_ == '\n')
+		if (current_ == token::token_type::NEWLINE)
 			++lineno_;
 		next_char_fast();
 	}
@@ -106,23 +136,6 @@ private:
 		do {
 			current_ = in_.get();
 		} while (current_ == '\r');
-#if 0
-			// TODO: disabled until the campaign server is fixed
-			if(in_.good()) {
-				current_ = in_.get();
-				if (current_ == '\r')
-				{
-					// we assume that there is only one '\r'
-					if(in_.good()) {
-						current_ = in_.get();
-					} else {
-						current_ = EOF;
-					}
-				}
-			} else {
-				current_ = EOF;
-			}
-#endif
 	}
 
 	int peek_char()
@@ -130,7 +143,7 @@ private:
 		return in_.peek();
 	}
 
-	enum
+	enum token_category
 	{
 		TOK_NONE = 0,
 		TOK_SPACE = 1,
@@ -140,7 +153,7 @@ private:
 
 	int char_type(unsigned c) const
 	{
-		return c < 128 ? char_types_[c] : 0;
+		return c < START_EXTENDED_ASCII ? char_types_[c] : 0;
 	}
 
 	bool is_space(int c) const
@@ -173,5 +186,5 @@ private:
 	token previous_token_;
 #endif
 	buffered_istream in_;
-	char char_types_[128];
+	token_category char_types_[START_EXTENDED_ASCII];
 };

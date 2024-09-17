@@ -26,9 +26,9 @@ tokenizer::tokenizer(std::istream& in) :
 	token_(),
 	in_(in)
 {
-	for (int c = 0; c < 128; ++c)
+	for (int c = 0; c < START_EXTENDED_ASCII; ++c)
 	{
-		int t = 0;
+		token_category t = TOK_NONE;
 		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_') {
 			t = TOK_ALPHA;
 		} else if (c >= '0' && c <= '9') {
@@ -61,14 +61,14 @@ const token &tokenizer::next_token()
 		while (is_space(current_)) {
 			next_char_fast();
 		}
-		if (current_ != 254)
+		if (current_ != INLINED_PREPROCESS_DIRECTIVE_CHAR)
 			break;
 		skip_comment();
 		// skip the line end
 		next_char_fast();
 	}
 
-	if (current_ == '#')
+	if (current_ == token::POUND)
 		skip_comment();
 
 	startlineno_ = lineno_;
@@ -78,8 +78,8 @@ const token &tokenizer::next_token()
 		token_.type = token::END;
 		break;
 
-	case '<':
-		if (peek_char() != '<') {
+	case token::LESS_THAN:
+		if (peek_char() != token::LESS_THAN) {
 			token_.type = token::MISC;
 			token_.value += current_;
 			break;
@@ -92,7 +92,7 @@ const token &tokenizer::next_token()
 				token_.type = token::UNTERMINATED_QSTRING;
 				break;
 			}
-			if (current_ == '>' && peek_char() == '>') {
+			if (current_ == token::GREATER_THAN && peek_char() == token::GREATER_THAN) {
 				next_char_fast();
 				break;
 			}
@@ -100,7 +100,7 @@ const token &tokenizer::next_token()
 		}
 		break;
 
-	case '"':
+	case token::DOUBLE_QUOTE:
 		token_.type = token::QSTRING;
 		for (;;) {
 			next_char();
@@ -108,11 +108,11 @@ const token &tokenizer::next_token()
 				token_.type = token::UNTERMINATED_QSTRING;
 				break;
 			}
-			if (current_ == '"') {
-				if (peek_char() != '"') break;
+			if (current_ == token::DOUBLE_QUOTE) {
+				if (peek_char() != token::DOUBLE_QUOTE) break;
 				next_char_fast();
 			}
-			if (current_ == 254) {
+			if (current_ == INLINED_PREPROCESS_DIRECTIVE_CHAR) {
 				skip_comment();
 				--lineno_;
 				continue;
@@ -121,12 +121,18 @@ const token &tokenizer::next_token()
 		}
 		break;
 
-	case '[': case ']': case '/': case '\n': case '=': case ',': case '+':
+	case token::OPEN_BRACKET:
+	case token::CLOSE_BRACKET:
+	case token::SLASH:
+	case token::NEWLINE:
+	case token::EQUALS:
+	case token::COMMA:
+	case token::PLUS:
 		token_.type = token::token_type(current_);
 		token_.value = current_;
 		break;
 
-	case '_':
+	case token::UNDERSCORE:
 		if (!is_alnum(peek_char())) {
 			token_.type = token::token_type(current_);
 			token_.value = current_;
@@ -135,16 +141,16 @@ const token &tokenizer::next_token()
 		[[fallthrough]];
 
 	default:
-		if (is_alnum(current_) || current_ == '$') {
+		if (is_alnum(current_) || current_ == token::DOLLAR) {
 			token_.type = token::STRING;
 			do {
 				token_.value += current_;
 				next_char_fast();
-				while (current_ == 254) {
+				while (current_ == INLINED_PREPROCESS_DIRECTIVE_CHAR) {
 					skip_comment();
 					next_char_fast();
 				}
-			} while (is_alnum(current_) || current_ == '$');
+			} while (is_alnum(current_) || current_ == token::DOLLAR);
 		} else {
 			token_.type = token::MISC;
 			token_.value += current_;
@@ -174,7 +180,7 @@ bool tokenizer::skip_command(char const *cmd)
 void tokenizer::skip_comment()
 {
 	next_char_fast();
-	if (current_ == '\n' || current_ == EOF) return;
+	if (current_ == token::NEWLINE || current_ == EOF) return;
 	std::string *dst = nullptr;
 
 	if (current_ == 't')
@@ -197,14 +203,14 @@ void tokenizer::skip_comment()
 	else
 	{
 		fail:
-		while (current_ != '\n' && current_ != EOF) {
+		while (current_ != token::NEWLINE && current_ != EOF) {
 			next_char_fast();
 		}
 		return;
 	}
 
 	dst->clear();
-	while (current_ != '\n' && current_ != EOF) {
+	while (current_ != token::NEWLINE && current_ != EOF) {
 		*dst += current_;
 		next_char_fast();
 	}
