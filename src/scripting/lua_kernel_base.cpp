@@ -1285,6 +1285,7 @@ GAME_CONFIG_GETTER(#name, decltype(game_config::name), lua_kernel_base) { \
 	return game_config::name; \
 }
 
+namespace {
 GAME_CONFIG_SIMPLE_GETTER(base_income);
 GAME_CONFIG_SIMPLE_GETTER(village_income);
 GAME_CONFIG_SIMPLE_GETTER(village_support);
@@ -1335,6 +1336,7 @@ GAME_CONFIG_GETTER("blue_white_scale_text", lua_index_raw, lua_kernel_base) {
 	lua_pushstring(L, "blue_white_scale_text");
 	push_color_palette(L, game_config::blue_white_scale_text);
 	return lua_index_raw(L);
+}
 }
 
 /**

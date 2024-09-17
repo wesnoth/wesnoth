@@ -992,6 +992,7 @@ int game_lua_kernel::impl_schedule_dir(lua_State *L) {
 	return scheduleReg.dir(L);
 }
 
+namespace {
 SCHEDULE_GETTER("time_of_day", std::string) {
 	if(sched.area_index >= 0) {
 		return sched.tod_man().get_area_time_of_day(sched.area_index).id;
@@ -1083,6 +1084,7 @@ SCHEDULE_SETTER("hexes", std::set<map_location>) {
 		throw luaL_error(L, "can't set hexes of global schedule");
 	}
 	sched.tod_man().replace_area_locations(sched.area_index, value);
+}
 }
 
 /**
@@ -1354,6 +1356,7 @@ GAME_CONFIG_SETTER(#name, decltype(game_config::name), game_lua_kernel) { \
 	game_config::name = value; \
 }
 
+namespace {
 GAME_CONFIG_GETTER("do_healing", bool, game_lua_kernel) {
 	game_config_glk_tag k2{k.ref};
 	return k2.pc().gamestate().do_healing_;
@@ -1395,6 +1398,7 @@ GAME_CONFIG_SIMPLE_SETTER(rest_heal_amount);
 GAME_CONFIG_SIMPLE_SETTER(recall_cost);
 GAME_CONFIG_SIMPLE_SETTER(kill_experience);
 GAME_CONFIG_SIMPLE_SETTER(combat_experience);
+}
 
 namespace {
 	static config find_addon(const std::string& type, const std::string& id)
@@ -1607,6 +1611,7 @@ template<> struct lua_object_traits<scenario_tag> {
 	}
 };
 
+namespace {
 SCENARIO_GETTER("turns", int) {
 	return k.tod_man().number_of_turns();
 }
@@ -1770,6 +1775,7 @@ SCENARIO_GETTER("era", utils::optional<config>) {
 	if(!k.cls().is_multiplayer()) return utils::nullopt;
 	return find_addon("era", k.cls().era_id);
 }
+}
 
 /**
  * Gets some scenario data (__index metamethod).
@@ -1846,6 +1852,7 @@ template<> struct lua_object_traits<current_tag> {
 	}
 };
 
+namespace {
 CURRENT_GETTER("side", int) {
 	return k.pc().current_side();
 }
@@ -1903,6 +1910,7 @@ CURRENT_GETTER("event_context", config) {
 		cfg["y2"] = ev.loc2.filter_loc().wml_y();
 	}
 	return cfg;
+}
 }
 
 /**
@@ -5137,12 +5145,14 @@ template<> struct lua_object_traits<callbacks_tag> {
 	}
 };
 
+namespace {
 CALLBACK_GETTER("on_event", void);
 CALLBACK_GETTER("on_load", void);
 CALLBACK_GETTER("on_save", config);
 CALLBACK_GETTER("on_mouse_action", void);
 CALLBACK_GETTER("on_mouse_button", bool);
 CALLBACK_GETTER("on_mouse_move", void);
+}
 
 static int impl_game_events_dir(lua_State* L) {
 	return callbacksReg.dir(L);
