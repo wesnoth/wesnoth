@@ -458,6 +458,7 @@ REPORT_GENERATOR(unit_abilities, rc)
 REPORT_GENERATOR(selected_unit_abilities, rc)
 {
 	const unit *u = get_selected_unit(rc);
+	assert(u != nullptr && "Tried to gather ability information on invalid or invisible unit.");
 
 	const map_location& mouseover_hex = rc.screen().mouseover_hex();
 	const unit *visible_unit = get_visible_unit(rc);
@@ -624,6 +625,7 @@ REPORT_GENERATOR(unit_defense,rc)
 REPORT_GENERATOR(selected_unit_defense, rc)
 {
 	const unit *u = get_selected_unit(rc);
+	assert (u != nullptr && "Tried to gather defense information on invalid or invisible unit.");
 	const map_location& attack_indicator_src = game_display::get_singleton()->get_attack_indicator_src();
 	if(attack_indicator_src.valid())
 		return unit_defense(rc, u, attack_indicator_src);
