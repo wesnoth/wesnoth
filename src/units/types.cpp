@@ -1407,13 +1407,24 @@ void unit_type::apply_scenario_fix(const config& cfg)
 			continue;
 		}
 		gender_types_[gender]->apply_scenario_fix(cfg);
+		std::string gender_str = gender == 0 ? "male" : "female";
+		if(cfg.has_child(gender_str)) {
+			auto gender_cfg = cfg.optional_child(gender_str);
+			if(gender_cfg){
+				gender_types_[gender]->apply_scenario_fix(*gender_cfg);
+			}
+		}
 	}
 
 	if(get_cfg().has_child("variation")) {
 		// Make sure the variations are created.
 		unit_types.build_unit_type(*this, VARIATIONS);
-		for(auto& v : variations_) {
-			v.second.apply_scenario_fix(cfg);
+		for (auto& cv : cfg.child_range("variation")){
+			for(auto& v : variations_) {
+				if(v.first == cv["variation_id"]){
+					v.second.apply_scenario_fix(cv);
+				}
+			}
 		}
 	}
 }
