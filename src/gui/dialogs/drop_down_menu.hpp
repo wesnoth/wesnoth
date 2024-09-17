@@ -15,8 +15,11 @@
 
 #pragma once
 
+#include "gui/auxiliary/menu_item.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "utils/optional_fwd.hpp"
+
+#include "boost/container/stable_vector.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 
@@ -35,9 +38,11 @@ class drop_down_menu : public modal_dialog
 public:
 	/** Menu was invoked from a widget (currently a [multi]menu_button). Its position and markup settings will be derived from there. */
 	drop_down_menu(styled_widget* parent, const std::vector<config>& items, int selected_item, bool keep_open);
+	drop_down_menu(styled_widget* parent, const boost::container::stable_vector<menu_item>& items, int selected_item, bool keep_open);
 
 	/** Menu was invoked manually. Position and markup settings must be provided here. */
 	drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open);
+	drop_down_menu(SDL_Rect button_pos, const boost::container::stable_vector<menu_item>& items, int selected_item, bool use_markup, bool keep_open);
 
 	int selected_item() const
 	{
@@ -53,35 +58,12 @@ public:
 	}
 
 private:
-	// TODO: evaluate exposing this publically via the [multi]menu_button widgets
-	struct entry_data
-	{
-		entry_data(const config& cfg);
-
-		/** If present, column 1 will have a toggle button. The value indicates its initial state. */
-		utils::optional<bool> checkbox;
-
-		/** If no checkbox is present, the icon at this path will be shown in column 1. */
-		std::string icon;
-
-		/** Is present, column 2 will display the image at this path. */
-		utils::optional<std::string> image;
-
-		/** If no image is present, this text will be shown in column 2. */
-		t_string label;
-
-		/** If present, this text will be shown in column 3. */
-		utils::optional<t_string> details;
-
-		/** Tooltip text for the entire row. */
-		t_string tooltip;
-	};
 
 	/** The widget that invoked this dialog, if applicable. */
 	styled_widget* parent_;
 
 	/** Configuration of each row. */
-	std::vector<entry_data> items_;
+	std::vector<menu_item> items_;
 
 	/**
 	 * The screen location of the menu_button button that triggered this droplist.

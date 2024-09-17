@@ -233,8 +233,8 @@ namespace
 
 	// converts a 1-based index given as lua paraemter to a 0-based index to be used in the c++ api.
 	// and checks that it is in range
-	template<typename TWidget>
-	int check_index(lua_State* L, int arg, TWidget& w, bool for_insertion, utils::optional<int>& index)
+	template<typename T>
+	int check_index(lua_State* L, int arg, T& w, bool for_insertion, utils::optional<int>& index)
 	{
 		int nitems = number_of_items(w);
 
@@ -245,7 +245,7 @@ namespace
 		}
 
 		if(*index <= 0 || *index > max) {
-			luaL_argerror(L, arg, "widget child index out of range");
+			luaL_argerror(L, arg, "child index out of range");
 		}
 		return *index - 1;
 	}

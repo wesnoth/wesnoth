@@ -99,14 +99,14 @@ static void push_child_by_index(lua_State *L, gui2::widget& w, int i)
 			std::string s = "index out of range (" + std::to_string(i) + " > " + std::to_string(n) + ")";
 			throw std::invalid_argument(s);
 		}
-		luaW_pushmenuitem(L, *(menu_button->get_row(i - 1)));
+		luaW_pushmenuitem(L, *menu_button->get_row(i - 1));
 	} else if(gui2::options_button* options_button = dynamic_cast<gui2::options_button*>(&w)) {
 		int n = options_button->get_item_count();
 		if(i > n) {
 			std::string s = "index out of range (" + std::to_string(i) + " > " + std::to_string(n) + ")";
 			throw std::invalid_argument(s);
 		}
-		luaW_pushmenuitem(L, *(options_button->get_row(i - 1)));
+		luaW_pushmenuitem(L, *options_button->get_row(i - 1));
 	} else {
 		luaW_tableget(L, 1, "type");
 		luaL_error(L, "unsupported widget in push_child_by_index(): %s", luaL_checkstring(L, -1));

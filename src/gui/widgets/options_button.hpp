@@ -63,7 +63,6 @@ public:
 	/** Returns the value of the selected row */
 	std::string get_value_string() const
 	{
-		//return values_[selected_]["label"];
 		return values_[selected_].label;
 	}
 

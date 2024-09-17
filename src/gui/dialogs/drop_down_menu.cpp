@@ -35,29 +35,6 @@ namespace gui2::dialogs
 {
 REGISTER_DIALOG(drop_down_menu)
 
-drop_down_menu::entry_data::entry_data(const config& cfg)
-	: checkbox()
-	, icon(cfg["icon"].str())
-	, image()
-	, label(cfg["label"].t_str())
-	, details()
-	, tooltip(cfg["tooltip"].t_str())
-{
-	// Checkboxes take precedence in column 1
-	if(cfg.has_attribute("checkbox")) {
-		checkbox = cfg["checkbox"].to_bool(false);
-	}
-
-	// Images take precedence in column 2
-	if(cfg.has_attribute("image")) {
-		image = cfg["image"].str();
-	}
-
-	if(cfg.has_attribute("details")) {
-		details = cfg["details"].t_str();
-	}
-}
-
 namespace
 {
 	void callback_flip_embedded_toggle(window& window)
@@ -93,7 +70,33 @@ drop_down_menu::drop_down_menu(styled_widget* parent, const std::vector<config>&
 {
 }
 
+drop_down_menu::drop_down_menu(styled_widget* parent, const boost::container::stable_vector<menu_item>& items, int selected_item, bool keep_open)
+	: modal_dialog(window_id())
+    , parent_(parent)
+    , items_(items.begin(), items.end())
+    , button_pos_(parent->get_rectangle())
+    , selected_item_(selected_item)
+    , use_markup_(parent->get_use_markup())
+    , keep_open_(keep_open)
+    , start_selected_(true)
+    , mouse_down_happened_(false)
+{
+}
+
 drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open)
+	: modal_dialog(window_id())
+	, parent_(nullptr)
+	, items_(items.begin(), items.end())
+	, button_pos_(button_pos)
+	, selected_item_(selected_item)
+	, use_markup_(use_markup)
+	, keep_open_(keep_open)
+	, start_selected_(true)
+	, mouse_down_happened_(false)
+{
+}
+
+drop_down_menu::drop_down_menu(SDL_Rect button_pos, const boost::container::stable_vector<menu_item>& items, int selected_item, bool use_markup, bool keep_open)
 	: modal_dialog(window_id())
 	, parent_(nullptr)
 	, items_(items.begin(), items.end())
@@ -218,7 +221,7 @@ void drop_down_menu::pre_show(window& window)
 	}
 
 	if(selected_item_ >= 0 && static_cast<unsigned>(selected_item_) < list.get_item_count()) {
-		list.select_row(selected_item_,start_selected_);
+		list.select_row(selected_item_, start_selected_);
 	}
 
 	window.keyboard_capture(&list);

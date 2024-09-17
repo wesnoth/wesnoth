@@ -139,17 +139,7 @@ void options_button::signal_handler_left_button_click(const event::ui_event even
 
 	sound::play_UI_sound(settings::sound_button_click);
 
-	std::vector<::config> values;
-
-	for(auto menu_item: values_) {
-//		FIXME:  convert from values_ (menu_item) to config
-//		 or perhaps allow DDF to take a v<menu_item>
-		config cfg;
-		cfg["label"] = menu_item.label;
-		values.emplace_back(cfg);
-	}
-
-	dialogs::drop_down_menu droplist(this, values, selected_, keep_open_);
+	dialogs::drop_down_menu droplist(this, values_, selected_, keep_open_);
 
 	// Whether we want the DDM to retain the selected item if previously opened
 	droplist.set_start_selected(persistent_);
@@ -196,13 +186,8 @@ void options_button::signal_handler_sdl_wheel_down(const event::ui_event event, 
 // compatibility with existing code which uses vector
 void options_button::set_values(const std::vector<::config>& values, unsigned selected)
 {
-	boost::container::stable_vector<menu_item> converted;
-	for(auto value: values) {
-		menu_item m(value);
-		converted.emplace_back(m);
-	}
+	boost::container::stable_vector<menu_item> converted(values.begin(), values.end());
 	set_values(converted, selected);
-
 }
 
 void options_button::set_values(const boost::container::stable_vector<menu_item>& values, unsigned selected)
