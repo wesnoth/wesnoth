@@ -144,7 +144,6 @@ void event_handlers::finish_adding_event_handler(handler_ptr handler)
 	// construct weak_ptrs from the shared one.
 	DBG_EH << "inserting event handler for name=" << names << " with id=" << id;
 	active_.emplace_back(handler);
-	std::stable_sort(active_.rbegin(), active_.rend(), cmp);
 
 	// File by name.
 	if(utils::might_contain_variables(names)) {
@@ -160,6 +159,7 @@ void event_handlers::finish_adding_event_handler(handler_ptr handler)
 		id_map_[id] = active_.back();
 	}
 
+	std::stable_sort(active_.rbegin(), active_.rend(), cmp);
 	log_handlers();
 }
 
