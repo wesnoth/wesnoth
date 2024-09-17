@@ -28,10 +28,6 @@
 // has something to do with the result of the preprocessor whose format is essentially undocumented and I don't intend to delve into that as of writing this comment
 #define INLINED_PREPROCESS_DIRECTIVE_CHAR 254
 
-// normal ascii is 0-127
-// extended ascii is from 128-255, none of which need any special handling
-#define START_EXTENDED_ASCII 128
-
 /**
  * contains the current text being parsed as well as the token_type of what's being parsed.
  * multi-character token types will have a value that's a string with zero or more characters in it.
