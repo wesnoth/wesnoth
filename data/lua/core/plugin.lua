@@ -4,7 +4,6 @@
 
 if wesnoth.kernel_type() == "Application Lua Kernel" then
 	print("Loading plugin module...")
-	wesnoth.plugin = {}
 
 	---Yields control back to the game until the next slice.
 	---@return WMLTable
