@@ -494,13 +494,21 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 
 			} else if(std::find(format_tags_.begin(), format_tags_.end(), tag.key) != format_tags_.end()) {
 
-				const auto& [start, end] = add_text_with_attribute(*curr_item, line, tag.key);
+				add_text_with_attribute(*curr_item, line, tag.key);
 
 				config parsed_children = get_parsed_text(tag.cfg, point(x, prev_blk_height));
-				for (config& text : parsed_children.child_range("text")) {
-					add_attribute(text, tag.key, start, end);
+
+				for (config::any_child ch : parsed_children.all_children_range()) {
+					if (ch.key == "text") {
+						const auto& [start, end] = add_text(*curr_item, ch.cfg["text"]);
+						for (config attr : ch.cfg.child_range("attribute")) {
+							add_attribute(*curr_item, attr["name"], start + attr["start"].to_int(), start + attr["end"].to_int(), attr["value"]);
+						}
+						add_attribute(*curr_item, tag.key, start, end);
+					} else {
+						text_dom.add_child(ch.key, ch.cfg);
+					}
 				}
-				text_dom.append_children(parsed_children);
 
 				is_image = false;
 
