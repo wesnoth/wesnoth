@@ -272,6 +272,7 @@ void move::execute(bool& success, bool& complete)
 
 				//Update route_->move_cost
 				route_.reset(new pathfind::marked_route(mark_route(route_->route, true)));
+				// NOLINTNEXTLINE(clang-analyzer-core.CallAndMessage)
 				arrow_->set_path(route_->steps);
 			}
 		}
