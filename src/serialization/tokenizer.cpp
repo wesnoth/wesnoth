@@ -26,7 +26,7 @@ tokenizer::tokenizer(std::istream& in) :
 	token_(),
 	in_(in)
 {
-	for (int c = 0; c < START_EXTENDED_ASCII; ++c)
+	for (int c = 0; c < std::numeric_limits<unsigned char>::max(); ++c)
 	{
 		token_category t = TOK_NONE;
 		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_') {
