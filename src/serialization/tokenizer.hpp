@@ -148,27 +148,27 @@ private:
 		TOK_NONE = 0,
 		TOK_SPACE = 1,
 		TOK_NUMERIC = 2,
-		TOK_ALPHA = 4
+		TOK_ALPHA = 3
 	};
 
-	int char_type(unsigned c) const
+	token_category char_type(unsigned c) const
 	{
-		return c < START_EXTENDED_ASCII ? char_types_[c] : 0;
+		return c < START_EXTENDED_ASCII ? char_types_[c] : TOK_NONE;
 	}
 
 	bool is_space(int c) const
 	{
-		return (char_type(c) & TOK_SPACE) == TOK_SPACE;
+		return char_type(c) == TOK_SPACE;
 	}
 
 	bool is_num(int c) const
 	{
-		return (char_type(c) & TOK_NUMERIC) == TOK_NUMERIC;
+		return char_type(c) == TOK_NUMERIC;
 	}
 
 	bool is_alnum(int c) const
 	{
-		return (char_type(c) & (TOK_ALPHA | TOK_NUMERIC)) != TOK_NONE;
+		return char_type(c) > TOK_SPACE;
 	}
 
 	void skip_comment();
