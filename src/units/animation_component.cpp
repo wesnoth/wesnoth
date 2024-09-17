@@ -24,6 +24,9 @@
 #include "units/types.hpp"
 
 #include <set>
+#include "log.hpp"
+static lg::log_domain log_display("display");
+#define LOG_DP LOG_STREAM(info, log_display)
 
 namespace
 {
@@ -159,6 +162,10 @@ void unit_animation_component::clear_haloes ()
 bool unit_animation_component::invalidate (const display & disp)
 {
 	bool result = false;
+	if(display::has_locked_location()) {
+		LOG_DP << "There's locked location detected. invalidation of unit anim is skipped.\n";
+		return false;
+	}
 
 	// Very early calls, anim not initialized yet
 	if(get_animation()) {

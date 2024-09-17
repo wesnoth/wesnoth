@@ -72,6 +72,7 @@ namespace wb {
 #include <map>
 #include <memory>
 #include <vector>
+#include <algorithm>
 
 struct submerge_data
 {
@@ -975,6 +976,49 @@ private:
 
 protected:
 	static display * singleton_;
+
+public:
+	static bool add_locked_location(const map_location* mlptr)
+	{
+		if(mlptr) {
+			locked_locations.emplace_back(mlptr);
+			return true;
+		}
+		return false;
+	}
+
+	static bool remove_locked_location(const map_location* mlptr)
+	{
+		if(mlptr) {
+			locked_locations.erase(std::remove(std::begin(locked_locations), std::end(locked_locations), mlptr),
+				std::end(locked_locations));
+			return true;
+		}
+		return false;
+	}
+
+	static bool is_locked_location(const map_location* mlptr)
+	{
+		if(mlptr)
+			for (const map_location* mlptr_ : locked_locations)
+			{
+				if (*mlptr == *mlptr_)
+					return true;
+			}
+			
+			//return std::end(locked_locations)
+			//	!= std::find(std::begin(locked_locations), std::end(locked_locations), mlptr);
+
+		return false;
+	}
+
+	static bool has_locked_location()
+	{
+		return !locked_locations.empty();
+	}
+
+private:
+	static std::vector<const map_location*> locked_locations;
 };
 
 struct blindfold

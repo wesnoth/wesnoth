@@ -29,6 +29,10 @@
 
 #include <algorithm>
 
+#include "log.hpp"
+static lg::log_domain log_display("display");
+#define LOG_DP LOG_STREAM(info, log_display)
+
 static std::string get_heal_sound(const config& cfg)
 {
 	return cfg["healed_sound"].empty() ? "heal.wav" : cfg["healed_sound"].str();
@@ -1102,6 +1106,10 @@ void unit_animation::clear_haloes()
 bool unit_animation::invalidate(frame_parameters& value)
 {
 	if(invalidated_) return false;
+	if(display::has_locked_location()) {
+		LOG_DP << "There's locked location detected. invalidation of unit anim is skipped.\n";
+		return false;
+	}
 
 	display* disp = display::get_singleton();
 	const bool complete_redraw = disp->tile_nearly_on_screen(src_) || disp->tile_nearly_on_screen(dst_);

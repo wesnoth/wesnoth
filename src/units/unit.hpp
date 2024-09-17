@@ -1400,6 +1400,15 @@ public:
 		return loc_;
 	}
 
+	const map_location* get_temp_location_pt() const
+		return temp_loc_pt;
+	}
+
+	bool get_temp_moved() const
+	{
+		return temp_moved;
+	}
+
 	/**
 	 * Sets this unit's map location.
 	 *
@@ -1408,6 +1417,30 @@ public:
 	void set_location(const map_location& loc)
 	{
 		loc_ = loc;
+	}
+
+	// This should only be called for rendering of temporarily moved unit.
+	void set_temp_location_pt_cast(const map_location* loc_pt) const
+	{
+		unit* ptr = const_cast<unit*>(this);
+		ptr->temp_loc_pt = loc_pt;
+	}
+
+	void set_temp_location_pt(map_location* loc_pt)
+	{
+		temp_loc_pt = loc_pt;
+	}
+
+	void check_for_temp_location_validity()
+	{
+		if(get_location() == *get_temp_location_pt())
+			set_temp_location_pt(nullptr);
+	}
+
+	void set_temp_moved_cast(bool moved) const
+	{
+		unit* ptr = const_cast<unit*>(this);
+		ptr->temp_moved = moved;
 	}
 
 	/** The current direction this unit is facing within its hex. */
@@ -1939,6 +1972,10 @@ protected:
 
 private:
 	map_location loc_;
+
+	const map_location* temp_loc_pt = nullptr;
+
+	bool temp_moved = false;
 
 	std::vector<std::string> advances_to_;
 

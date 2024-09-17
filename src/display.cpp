@@ -89,6 +89,7 @@ namespace {
 
 unsigned int display::zoom_ = DefaultZoom;
 unsigned int display::last_zoom_ = SmallZoom;
+std::vector<const map_location*>  display::locked_locations;
 
 // Returns index of zoom_levels which is closest match to input zoom_level
 // Assumption: zoom_levels is a sorted vector of ascending tile sizes
@@ -2636,6 +2637,9 @@ void display::draw_invalidated()
 	}
 
 	for(const map_location& loc : invalidated_) {
+		if (is_locked_location(&loc))
+			continue;
+
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
 
@@ -3134,6 +3138,9 @@ void display::invalidate_all()
 
 bool display::invalidate(const map_location& loc)
 {
+	if(is_locked_location(&loc))
+		return false;
+
 	if(invalidateAll_ && !map_screenshot_)
 		return false;
 
@@ -3148,6 +3155,8 @@ bool display::invalidate(const std::set<map_location>& locs)
 		return false;
 	bool ret = false;
 	for (const map_location& loc : locs) {
+		if (is_locked_location(&loc))
+			continue;
 		ret = invalidated_.insert(loc).second || ret;
 	}
 	return ret;
