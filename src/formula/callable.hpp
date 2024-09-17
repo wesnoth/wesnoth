@@ -145,6 +145,7 @@ protected:
 
 	virtual int do_compare(const formula_callable* callable) const
 	{
+		assert(callable != nullptr);
 		if(type_ < callable->type_) {
 			return -1;
 		}
