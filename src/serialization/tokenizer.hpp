@@ -20,7 +20,6 @@
 
 #include "buffered_istream.hpp"
 
-#include <limits>
 #include <istream>
 #include <string>
 
@@ -152,19 +151,24 @@ private:
 		TOK_ALPHA = 3
 	};
 
+	token_category char_type(unsigned c) const
+	{
+		return c < START_EXTENDED_ASCII ? char_types_[c] : TOK_NONE;
+	}
+
 	bool is_space(int c) const
 	{
-		return char_types_[c] == TOK_SPACE;
+		return char_type(c) == TOK_SPACE;
 	}
 
 	bool is_num(int c) const
 	{
-		return char_types_[c] == TOK_NUMERIC;
+		return char_type(c) == TOK_NUMERIC;
 	}
 
 	bool is_alnum(int c) const
 	{
-		return char_types_[c] > TOK_SPACE;
+		return char_type(c) > TOK_SPACE;
 	}
 
 	void skip_comment();
@@ -182,5 +186,5 @@ private:
 	token previous_token_;
 #endif
 	buffered_istream in_;
-	token_category char_types_[std::numeric_limits<unsigned char>::max()];
+	token_category char_types_[START_EXTENDED_ASCII];
 };
