@@ -290,7 +290,7 @@ void parser::parse_variable()
 	std::vector<std::string> variables;
 	variables.emplace_back();
 
-	while(tok_.current_token().type != token::token_type::EQUALS) {
+	while(tok_.current_token().type != token::EQUALS) {
 		switch(tok_.current_token().type) {
 		case token::STRING:
 			if(!variables.back().empty()) {

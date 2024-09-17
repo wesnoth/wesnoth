@@ -126,7 +126,7 @@ private:
 
 	void next_char()
 	{
-		if (current_ == token::token_type::NEWLINE)
+		if (current_ == token::NEWLINE)
 			++lineno_;
 		next_char_fast();
 	}
