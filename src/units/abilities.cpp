@@ -1852,26 +1852,8 @@ namespace
 	bool matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter)
 	{
 		using namespace utils::config_filters;
-
-		if(!filter["affect_adjacent"].empty()){
-			bool adjacent = cfg.has_child("affect_adjacent");
-			if(filter["affect_adjacent"].to_bool() != adjacent){
-				return false;
-			}
-		}
-
-		if(!bool_matches_if_present(filter, cfg, "affect_self", true))
-			return false;
-
-		if(!bool_or_empty(filter, cfg, "affect_allies"))
-			return false;
-
-		if(!bool_matches_if_present(filter, cfg, "affect_enemies", false))
-			return false;
-
-		if(!bool_matches_if_present(filter, cfg, "cumulative", false))
-			return false;
-
+		// tag_name and id are equivalent of ability ability_type and ability_id/type_active filters
+		//can be extent to special_id/type_active. If tag_name or id matche if present in list.
 		const std::vector<std::string> filter_type = utils::split(filter["tag_name"]);
 		if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() )
 			return false;
@@ -1879,15 +1861,33 @@ namespace
 		if(!string_matches_if_present(filter, cfg, "id", ""))
 			return false;
 
-		if(tag_name == "resistance"){
-			if(!set_includes_if_present(filter, cfg, "apply_to")){
-				return false;
-			}
-		} else {
-			if(!string_matches_if_present(filter, cfg, "apply_to", "self")){
+		//when affect_adjacent=yes detect presence of [affect_adjacent] in abilities, if no
+		//then matches when tag not present.
+		if(!filter["affect_adjacent"].empty()){
+			bool adjacent = cfg.has_child("affect_adjacent");
+			if(filter["affect_adjacent"].to_bool() != adjacent){
 				return false;
 			}
 		}
+
+		//these attributs below filter attribute used in all engine abilities.
+		//matches if filter attribute have same boolean value what attribute
+		if(!bool_matches_if_present(filter, cfg, "affect_self", true))
+			return false;
+
+		//here if value of affect_allies but also his presence who is checked because
+		//when affect_allies not specified, ability affect unit of same side what owner only.
+		if(!bool_or_empty(filter, cfg, "affect_allies"))
+			return false;
+
+		if(!bool_matches_if_present(filter, cfg, "affect_enemies", false))
+			return false;
+
+
+		//cumulative, overwrite_specials and active_on check attributes used in all abilities
+		//who return a numerical value.
+		if(!bool_matches_if_present(filter, cfg, "cumulative", false))
+			return false;
 
 		if(!string_matches_if_present(filter, cfg, "overwrite_specials", "none"))
 			return false;
@@ -1895,17 +1895,8 @@ namespace
 		if(!string_matches_if_present(filter, cfg, "active_on", "both"))
 			return false;
 
-		//for damage only
-		if(!string_matches_if_present(filter, cfg, "replacement_type", ""))
-			return false;
-
-		if(!string_matches_if_present(filter, cfg, "alternative_type", ""))
-			return false;
-
-		//for plague only
-		if(!string_matches_if_present(filter, cfg, "type", ""))
-			return false;
-
+		//value, add, sub multiply and divide check values of attribute used in engines abilities(default value of 'value' can be checked when not specified)
+		//who return numericals value but can also check in non-engine abilities(in last case if 'value' not specified none value can matches)
 		if(!filter["value"].empty()){
 			if(tag_name == "drains"){
 				if(!int_matches_if_present(filter, cfg, "value", 50)){
@@ -1936,6 +1927,35 @@ namespace
 			return false;
 
 		if(!double_matches_if_present(filter, cfg, "divide"))
+			return false;
+
+
+		//apply_to is a special case, in resistance ability, it check a list of damage type used by [resistance]
+		//but in weapon specials, check identity of unit affected by special(self, opponent tc...)
+		if(tag_name == "resistance"){
+			if(!set_includes_if_present(filter, cfg, "apply_to")){
+				return false;
+			}
+		} else {
+			if(!string_matches_if_present(filter, cfg, "apply_to", "self")){
+				return false;
+			}
+		}
+
+		//the three attribute below are used for check in specifics abilitie:
+		//replacement_type and alternative_type are present in [damage_type] only for engine abilities
+		//and type for [plague], but if someone want use this in non-engine abilities, these attribute can be checked outside type mentioned.
+		//
+
+		//for damage_type only(in engine cases)
+		if(!string_matches_if_present(filter, cfg, "replacement_type", ""))
+			return false;
+
+		if(!string_matches_if_present(filter, cfg, "alternative_type", ""))
+			return false;
+
+		//for plague only(in engine cases)
+		if(!string_matches_if_present(filter, cfg, "type", ""))
 			return false;
 
 		//the wml_filter is used in cases where the attribute we are looking for is not
