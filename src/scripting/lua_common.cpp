@@ -840,8 +840,25 @@ void luaW_pushconfig(lua_State *L, const config& cfg)
 	luaW_filltable(L, cfg);
 }
 
+luaW_PrintStack luaW_debugstack(lua_State* L) {
+	return {L};
+}
 
-
+std::ostream& operator<<(std::ostream& os, const luaW_PrintStack& s) {
+	int top = lua_gettop(s.L);
+	os << "Lua Stack\n";
+	for(int i = 1; i <= top; i++) {
+		luaW_getglobal(s.L, "wesnoth", "as_text");
+		lua_pushvalue(s.L, i);
+		lua_call(s.L, 1, 1);
+		auto value = luaL_checkstring(s.L, -1);
+		lua_pop(s.L, 1);
+		os << '[' << i << ']' << value << '\n';
+	}
+	if(top == 0) os << "(empty)\n";
+	os << std::flush;
+	return os;
+}
 
 #define return_misformed() \
   do { lua_settop(L, initial_top); return false; } while (0)
