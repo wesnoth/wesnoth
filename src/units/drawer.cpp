@@ -168,13 +168,11 @@ void unit_drawer::redraw_unit(const unit& u) const
 	unit_animation_component & ac = u.anim_comp();
 	// Fix teleport issued
 	// To compile : test if this is useful
-	const map_location& loc_ = u.get_location();
-	if(display::is_locked_location(&loc_)) {
-		LOG_DP << "Detected a locked location when trying to redraw a unit.\n";
+	const map_location& loc = u.get_location();
+	if(display::is_locked_location(&loc)) {
+		LOG_DP << "Detected a locked location by redraw unit when trying to redraw a unit.\n";
 		return;
 	}
-	const map_location* loc_temp_pt = u.get_temp_location_pt();
-	const map_location& loc = loc_temp_pt&&*loc_temp_pt != loc_?*loc_temp_pt:loc_;
 
 	int side = u.side();
 

@@ -2638,7 +2638,10 @@ void display::draw_invalidated()
 
 	for(const map_location& loc : invalidated_) {
 		if (is_locked_location(&loc))
+			 {
+			LOG_DP << "Detected a locked location by display draw invalidate when trying to redraw a unit.\n";
 			continue;
+		}
 
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
@@ -3138,8 +3141,13 @@ void display::invalidate_all()
 
 bool display::invalidate(const map_location& loc)
 {
+	
 	if(is_locked_location(&loc))
-		return false;
+	{
+			LOG_DP << "Detected a locked location by display invalidate when trying to redraw a unit.\n";
+			return false;
+		}
+		
 
 	if(invalidateAll_ && !map_screenshot_)
 		return false;
@@ -3156,7 +3164,10 @@ bool display::invalidate(const std::set<map_location>& locs)
 	bool ret = false;
 	for (const map_location& loc : locs) {
 		if (is_locked_location(&loc))
+			 {
+			LOG_DP << "Detected a locked location by display invalidate when trying to redraw a unit.\n";
 			continue;
+		}
 		ret = invalidated_.insert(loc).second || ret;
 	}
 	return ret;

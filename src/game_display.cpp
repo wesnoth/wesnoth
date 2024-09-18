@@ -204,8 +204,10 @@ void game_display::draw_invalidated()
 
 	for (const unit* temp_unit : *fake_unit_man_) {
 		const map_location& loc = temp_unit->get_location();
-		if (display::is_locked_location(&loc))
+		if(display::is_locked_location(&loc)) {
+			LOG_DP << "Detected a locked location by game_display when trying to redraw a unit.\n";
 			continue;
+		}
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (invalidated_.find(loc) != invalidated_.end()
 				&& (request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()))
