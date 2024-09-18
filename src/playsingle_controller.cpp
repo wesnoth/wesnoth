@@ -180,7 +180,7 @@ void playsingle_controller::play_scenario_init(const config& level)
 		gui2::show_transient_message(
 			// TODO: find a better title
 			_("Game Error"),
-			_("This multiplayer game uses an alternative random mode, if you don't know what this message means, then "
+			_("This multiplayer game uses an alternative random mode, if you don’t know what this message means, then "
 			  "most likely someone is cheating or someone reloaded a corrupt game."));
 	}
 }

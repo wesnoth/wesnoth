@@ -298,7 +298,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 				events::call_in_main_thread([&]() {
 					gui2::dialogs::wml_error::display(
 						_("Error loading core data."),
-						_("Can't locate the default core.")
+						_("Can’t locate the default core.")
 						+ '\n' + _("The game will now exit."));
 				});
 				throw;

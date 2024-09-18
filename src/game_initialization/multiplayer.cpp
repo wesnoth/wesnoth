@@ -265,7 +265,7 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 			i18n_symbols["required_version"] = version;
 			i18n_symbols["your_version"] = game_config::wesnoth_version.str();
 
-			const std::string errorstring = VGETTEXT("The server accepts versions '$required_version', but you are using version '$your_version'", i18n_symbols);
+			const std::string errorstring = VGETTEXT("The server accepts versions ‘$required_version’, but you are using version ‘$your_version’", i18n_symbols);
 			throw wesnothd_error(errorstring);
 		}
 

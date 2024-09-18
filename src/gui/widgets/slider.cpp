@@ -353,7 +353,7 @@ std::unique_ptr<widget> builder_slider::build() const
 
 	if(!value_labels_.empty()) {
 		VALIDATE(value_labels_.size() == static_cast<std::size_t>(widget->get_item_count()),
-				 _("The number of value_labels and values don't match."));
+				 _("The number of value_labels and values don’t match."));
 
 		widget->set_value_labels(value_labels_);
 

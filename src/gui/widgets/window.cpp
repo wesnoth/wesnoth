@@ -418,7 +418,7 @@ void window::finish_build(const builder_window::window_resolution& definition)
 {
 	for(const auto& lg : definition.linked_groups) {
 		if(has_linked_size_group(lg.id)) {
-			t_string msg = VGETTEXT("Linked '$id' group has multiple definitions.", {{"id", lg.id}});
+			t_string msg = VGETTEXT("Linked ‘$id’ group has multiple definitions.", {{"id", lg.id}});
 
 			FAIL(msg);
 		}
@@ -902,7 +902,7 @@ void window::layout()
 			click_dismiss_button = btn;
 		}
 		VALIDATE(click_dismiss_button,
-				 _("Click dismiss needs a 'click_dismiss' or 'ok' button."));
+				 _("Click dismiss needs a ‘click_dismiss’ or ‘ok’ button."));
 	}
 
 	/***** Layout. *****/
@@ -928,7 +928,7 @@ void window::layout()
 			 << settings::screen_width << ',' << settings::screen_height << '.';
 
 		throw wml_exception(_("Failed to show a dialog, "
-							   "which doesn't fit on the screen."),
+							   "which doesn’t fit on the screen."),
 							 sstr.str());
 	}
 
@@ -965,7 +965,7 @@ void window::layout()
 				 << '.';
 
 			throw wml_exception(_("Failed to show a dialog, "
-								   "which doesn't fit on the screen."),
+								   "which doesn’t fit on the screen."),
 								 sstr.str());
 		}
 	}
