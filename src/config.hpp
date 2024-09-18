@@ -537,12 +537,9 @@ public:
 
 	void remove_attribute(config_key_type key);
 	void merge_attributes(const config &);
+
 	template<typename... T>
-	void remove_attributes(T... keys) {
-		for(const auto& key : {keys...}) {
-			remove_attribute(key);
-		}
-	}
+	void remove_attributes(T... keys) { (remove_attribute(keys), ...); }
 
 	/**
 	 * Copies attributes that exist in the source config.
@@ -604,13 +601,10 @@ public:
 
 private:
 	void clear_children_impl(config_key_type key);
+
 public:
 	template<typename... T>
-	void clear_children(T... keys) {
-		for(auto key : {keys...}) {
-			clear_children_impl(key);
-		}
-	}
+	void clear_children(T... keys) { (clear_children_impl(keys), ...); }
 
 	/**
 	 * Moves all the children with tag @a key from @a src to this.
