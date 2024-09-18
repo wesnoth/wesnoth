@@ -596,6 +596,8 @@ builder_styled_widget::builder_styled_widget(const config& cfg)
 	, help(cfg["help"].t_str())
 	, use_tooltip_on_label_overflow(true)
 	, use_markup(cfg["use_markup"].to_bool(false))
+	, debug_border_mode(static_cast<widget::debug_border>(cfg["debug_border_mode"].to_int()))
+	, debug_border_color(decode_color(cfg["debug_border_color"]))
 {
 	if(definition.empty()) {
 		definition = "default";

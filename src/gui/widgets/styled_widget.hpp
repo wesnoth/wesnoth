@@ -546,6 +546,8 @@ public:
 	t_string help;
 	bool use_tooltip_on_label_overflow;
 	bool use_markup;
+	widget::debug_border debug_border_mode;
+	color_t debug_border_color;
 };
 
 } // namespace implementation

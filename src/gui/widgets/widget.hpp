@@ -131,6 +131,10 @@ public:
 		outline,
 		/** Flood-filled rectangle. */
 		fill,
+		/** Single pixel dotted outline */
+		dotted,
+		/** Dashed line outline */
+		dashed
 	};
 
 	/***** ***** ***** Constructor and destructor. ***** ***** *****/
