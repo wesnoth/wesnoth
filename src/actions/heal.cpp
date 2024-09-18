@@ -25,12 +25,12 @@
 #include "map/map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
-#include "team.hpp"
 #include "units/unit.hpp"
 #include "units/abilities.hpp"
 #include "units/udisplay.hpp"
 #include "units/map.hpp"
 #include "utils/general.hpp"
+#include "utils/team_query.hpp"
 
 #include <list>
 #include <vector>
@@ -84,7 +84,7 @@ namespace {
 	POISON_STATUS poison_progress(int side, const unit & patient,
 	                              std::vector<unit *> & healers)
 	{
-		const std::vector<team> &teams = resources::gameboard->teams();
+		const auto teams = utils::team_query{resources::gameboard->teams()};
 		unit_map &units = resources::gameboard->units();
 
 		POISON_STATUS curing = POISON_NORMAL;
@@ -120,16 +120,15 @@ namespace {
 
 			unit_map::iterator cure_it = units.find(heal.teacher_loc);
 			assert(cure_it != units.end());
-			const int cure_side = cure_it->side();
 
 			// Healers on the current side can cure poison (for any side).
 			// Allies of the current side can slow poison (for the current side).
 			// Enemies of the current side can do nothing.
-			if ( teams[cure_side-1].is_enemy(side) )
+			if (teams.is_enemy(*cure_it, patient))
 				continue;
 
-			// Allied healers can only slow poison, not cure it.
-			if ( cure_side != side )
+			// Allied healers only slow poison, not cure it, as it's not their own side's turn.
+			if (cure_it->side() != side )
 				this_cure = POISON_SLOW;
 				// This is where the loop assumption comes into play,
 				// as we do not bother comparing POISON_SLOW to curing.
