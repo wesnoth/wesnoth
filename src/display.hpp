@@ -761,12 +761,12 @@ protected:
 	/** Event raised when the map is being scrolled */
 	mutable events::generic_event scroll_event_;
 
-	boost::circular_buffer<unsigned> frametimes_; // in milliseconds
+	boost::circular_buffer<std::chrono::milliseconds> frametimes_;
 	int current_frame_sample_ = 0;
 	unsigned int fps_counter_;
 	std::chrono::seconds fps_start_;
 	unsigned int fps_actual_;
-	uint32_t last_frame_finished_ = 0u;
+	utils::optional<std::chrono::steady_clock::time_point> last_frame_finished_ = {};
 
 	// Not set by the initializer:
 	std::map<std::string, rect> reportLocations_;
