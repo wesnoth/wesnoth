@@ -85,7 +85,7 @@ option for showing the GUI Test Dialog.
 \fB\-\-strict\-lua\fP
 disallow deprecated Lua API calls
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 diffs the two WML files; does not preprocess them first (to do that, run
 them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
 to the file indicated by \fI\-\-output\fP.
@@ -204,7 +204,7 @@ written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 \fB\-\-script\fP, but Lua file should return a function which will be run as a
 coroutine and periodically woken up with updates.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 applies a DiffWML patch to a WML file; does not preprocess either of the
 files.  Outputs the patched WML to standard output or to the file indicated
 by \fI\-\-output\fP.
@@ -284,8 +284,8 @@ makes the \fBpackage\fP package available to lua scripts, so that they can load
 arbitrary packages. Do not do this with untrusted scripts! This action gives
 lua the same permissions as the wesnoth executable.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ path\fP
-поставя WML схемата за употреба с \fB\-V,\-\-validate\fP.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 поставя директорията за настройки към \fIname\fP под $HOME или в "My
@@ -310,7 +310,7 @@ Documents\eMy Games" за windows.  Също можете да посочите 
 \fB\-\-validate\-core\fP
 валидира WML ядрото, докато играете.
 .TP 
-\fB\-\-validate\-schema \ path\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 валидира файл като WML схема.
 .TP 
 \fB\-\-validcache\fP
