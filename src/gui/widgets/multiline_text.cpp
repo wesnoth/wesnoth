@@ -428,7 +428,7 @@ void multiline_text::signal_handler_left_button_down(const event::ui_event event
 					desktop::open_object(link);
 				}
 			} else {
-				desktop::clipboard::copy_to_clipboard(link, true);
+				desktop::clipboard::copy_to_clipboard(link);
 				show_message("", _("Opening links is not supported, contact your packager. Link URL has been copied to the clipboard."), dialogs::message::auto_close);
 			}
 		} else {

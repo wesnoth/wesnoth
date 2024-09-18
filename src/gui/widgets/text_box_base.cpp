@@ -139,10 +139,6 @@ void text_box_base::set_cursor(const std::size_t offset, const bool select)
 
 	if(select) {
 		selection_length_ = (selection_start_ == offset) ? 0 : -static_cast<int>(selection_start_ - offset);
-#ifdef __unix__
-		// selecting copies on UNIX systems.
-		copy_selection(true);
-#endif
 	} else {
 		selection_start_ = (offset <= text_.get_length()) ? offset : 0;
 		selection_length_ = 0;
@@ -197,7 +193,7 @@ void text_box_base::interrupt_composition()
 	SDL_StartTextInput();
 }
 
-void text_box_base::copy_selection(const bool mouse)
+void text_box_base::copy_selection()
 {
 	if(selection_length_ == 0) {
 		return;
@@ -214,17 +210,17 @@ void text_box_base::copy_selection(const bool mouse)
 		end = utf8::index(txt, start);
 		start = utf8::index(txt, start + selection_length_);
 	}
-	desktop::clipboard::copy_to_clipboard(txt.substr(start, end - start), mouse);
+	desktop::clipboard::copy_to_clipboard(txt.substr(start, end - start));
 }
 
-void text_box_base::paste_selection(const bool mouse)
+void text_box_base::paste_selection()
 {
 	if(!editable_)
 	{
 		return;
 	}
 
-	const std::string& text = desktop::clipboard::copy_from_clipboard(mouse);
+	const std::string& text = desktop::clipboard::copy_from_clipboard();
 	if(text.empty()) {
 		return;
 	}
@@ -515,7 +511,7 @@ void text_box_base::signal_handler_middle_button_click(const event::ui_event eve
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	paste_selection(true);
+	paste_selection();
 
 	handled = true;
 }
@@ -620,7 +616,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 			// atm we don't care whether there is something to copy or paste
 			// if nothing is there we still don't want to be chained.
-			copy_selection(false);
+			copy_selection();
 			handled = true;
 			break;
 
@@ -629,7 +625,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 				return;
 			}
 
-			copy_selection(false);
+			copy_selection();
 
 			if ( is_editable() ) {
 				delete_selection();
@@ -642,7 +638,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 				return;
 			}
 
-			paste_selection(false);
+			paste_selection();
 			handled = true;
 			break;
 

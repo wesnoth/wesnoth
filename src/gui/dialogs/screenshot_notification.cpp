@@ -63,12 +63,8 @@ void screenshot_notification::pre_show(window& window)
 
 	button& copy_b = find_widget<button>(&window, "copy", false);
 	connect_signal_mouse_left_click(
-		copy_b, std::bind(&desktop::clipboard::copy_to_clipboard, std::ref(path_), false));
+		copy_b, std::bind(&desktop::clipboard::copy_to_clipboard, std::ref(path_)));
 	copy_b.set_active(false);
-
-	if (!desktop::clipboard::available()) {
-		copy_b.set_tooltip(_("Clipboard support not found, contact your packager"));
-	}
 
 	button& open_b = find_widget<button>(&window, "open", false);
 	connect_signal_mouse_left_click(
@@ -108,10 +104,7 @@ void screenshot_notification::save_screenshot()
 		path_box.set_active(false);
 		find_widget<button>(get_window(), "open", false).set_active(true);
 		find_widget<button>(get_window(), "save", false).set_active(false);
-
-		if(desktop::clipboard::available()) {
-			find_widget<button>(get_window(), "copy", false).set_active(true);
-		}
+		find_widget<button>(get_window(), "copy", false).set_active(true);
 
 		const int filesize = filesystem::file_size(path_);
 		const std::string sizetext = utils::si_string(filesize, true, _("unit_byte^B"));

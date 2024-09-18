@@ -153,9 +153,9 @@ public:
 
 private:
 	/** Inherited from text_box_base. */
-	void paste_selection(const bool mouse) override
+	void paste_selection() override
 	{
-		text_box_base::paste_selection(mouse);
+		text_box_base::paste_selection();
 		update_layout();
 	}
 
