@@ -317,7 +317,7 @@ void editor_edit_unit::select_file(const std::string& default_dir, const std::st
 
 		std::string dn = dlg.path();
 		const std::string& message
-						= _("This file is outside Wesnoth's data dirs. Do you wish to copy it into your add-on?");
+						= _("This file is outside Wesnoth’s data dirs. Do you wish to copy it into your add-on?");
 
 		if(id_stem == "unit_image") {
 

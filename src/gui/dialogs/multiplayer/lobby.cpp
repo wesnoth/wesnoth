@@ -171,7 +171,7 @@ bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_add
 {
 	if(addon_outcome == mp::game_info::addon_req::CANNOT_SATISFY) {
 		std::string e_title = _("Incompatible User-made Content");
-		std::string err_msg = _("This game cannot be joined because the host has out-of-date add-ons that are incompatible with your version. You might wish to suggest that the host's add-ons be updated.");
+		std::string err_msg = _("This game cannot be joined because the host has out-of-date add-ons that are incompatible with your version. You might wish to suggest that the host’s add-ons be updated.");
 
 		err_msg +="\n\n";
 		err_msg += _("Details:");
@@ -831,7 +831,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 
 	// prompt moderators for whether they want to join a game with observers disabled
 	if(!game.observers && mp::logged_in_as_moderator()) {
-		if(gui2::show_message(_("Observe"), _("This game doesn't allow observers. Observe using moderator rights anyway?"), gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK) {
+		if(gui2::show_message(_("Observe"), _("This game doesn’t allow observers. Observe using moderator rights anyway?"), gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK) {
 			return;
 		}
 	}

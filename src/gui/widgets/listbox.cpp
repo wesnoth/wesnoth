@@ -722,7 +722,7 @@ static std::vector<widget_data> parse_list_data(const config& data, const unsign
 		auto cols = row.child_range("column");
 
 		VALIDATE(static_cast<unsigned>(cols.size()) == req_cols,
-			_("'list_data' must have the same number of columns as the 'list_definition'.")
+			_("‘list_data’ must have the same number of columns as the ‘list_definition’.")
 		);
 
 		for(const auto& c : cols) {
@@ -772,7 +772,7 @@ builder_listbox::builder_listbox(const config& cfg)
 	list_builder = std::make_shared<builder_grid>(*l);
 	assert(list_builder);
 
-	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
+	VALIDATE(list_builder->rows == 1, _("A ‘list_definition’ should contain one row."));
 
 	if(cfg.has_child("list_data")) {
 		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
@@ -815,7 +815,7 @@ builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
 	list_builder = std::make_shared<builder_grid>(*l);
 	assert(list_builder);
 
-	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
+	VALIDATE(list_builder->rows == 1, _("A ‘list_definition’ should contain one row."));
 
 	if(cfg.has_child("list_data")) {
 		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
@@ -858,7 +858,7 @@ builder_grid_listbox::builder_grid_listbox(const config& cfg)
 	list_builder = std::make_shared<builder_grid>(*l);
 	assert(list_builder);
 
-	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
+	VALIDATE(list_builder->rows == 1, _("A ‘list_definition’ should contain one row."));
 
 	if(cfg.has_child("list_data")) {
 		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);

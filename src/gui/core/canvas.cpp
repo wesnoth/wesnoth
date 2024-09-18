@@ -273,7 +273,7 @@ void image_shape::dimension_validation(unsigned value, const std::string& name, 
 {
 	const int as_int = static_cast<int>(value);
 
-	VALIDATE_WITH_DEV_MESSAGE(as_int >= 0, _("Image doesn't fit on canvas."),
+	VALIDATE_WITH_DEV_MESSAGE(as_int >= 0, _("Image doesn’t fit on canvas."),
 		formatter() << "Image '" << name << "', " << key << " = " << as_int << "."
 	);
 }

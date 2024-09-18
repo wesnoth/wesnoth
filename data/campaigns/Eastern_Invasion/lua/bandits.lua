@@ -81,7 +81,7 @@ function wml_actions.bandit_village_capture(cfg)
 			vars.villages_visited = visited + 1
 
 			wesnoth.game_events.fire("addogin_advice", x, y, unit);
-			wml.fire("message" , { x = x , y = y , message = _"They're here!"})
+			wml.fire("message" , { x = x , y = y , message = _"They’re here!"})
 
 			bandits_found(x,y)
 			return

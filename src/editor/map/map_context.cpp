@@ -261,7 +261,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 				try {
 					// 5.1 The file can be loaded by the editor as a scenario
 					if(file_string.find("<<") != std::string::npos) {
-						throw editor_map_load_exception(filename, _("Found the characters '<<' indicating inline lua is present - aborting"));
+						throw editor_map_load_exception(filename, _("Found the characters ‘<<’ indicating inline lua is present — aborting"));
 					}
 					load_scenario();
 				} catch(const std::exception&) {

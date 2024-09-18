@@ -222,11 +222,11 @@ public:
 			}
 			// If a proposal for a command is found, print it
 			if(has_command_proposal) {
-				print("help", VGETTEXT("Unknown command '$command', did you mean '$command_proposal'? try $help_command "
+				print("help", VGETTEXT("Unknown command ‘$command’, did you mean ‘$command_proposal’? try $help_command "
 					"for a list of available commands.", symbols));
 			}
 			else {
-				print("help", VGETTEXT("Unknown command '$command', try $help_command "
+				print("help", VGETTEXT("Unknown command ‘$command’, try $help_command "
 					"for a list of available commands.", symbols));
 			}
 		}

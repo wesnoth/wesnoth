@@ -703,7 +703,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		<< " show_labels=" << data.show_labels;
 
 	// Odd widths are nasty
-	VALIDATE(is_even(data.width), _("Random maps with an odd width aren't supported."));
+	VALIDATE(is_even(data.width), _("Random maps with an odd width aren’t supported."));
 
 	// Try to find configuration for castles
 	auto castle_config = cfg.optional_child("castle");
@@ -966,7 +966,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 			if(best_ranking == 0) {
 				ERR_NG << "No castle location found, for " << data.nplayers << " players aborting. ";
-				const std::string error = _("No valid castle location found. Too many or too few mountain hexes? (please check the 'max hill size' parameter)");
+				const std::string error = _("No valid castle location found. Too many or too few mountain hexes? (please check the ‘max hill size’ parameter)");
 				throw mapgen_exception(error);
 			}
 

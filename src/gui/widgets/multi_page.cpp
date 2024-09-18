@@ -216,8 +216,8 @@ builder_multi_page::builder_multi_page(const config& cfg)
 		}
 
 		VALIDATE(col == builder->cols,
-				 _("'list_data' must have "
-				   "the same number of columns as the 'list_definition'."));
+				 _("‘list_data’ must have "
+				   "the same number of columns as the ‘list_definition’."));
 	}
 }
 

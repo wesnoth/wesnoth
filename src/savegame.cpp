@@ -428,7 +428,7 @@ bool savegame::check_overwrite()
 bool savegame::check_filename(const std::string& filename)
 {
 	if(filesystem::is_compressed_file(filename)) {
-		gui2::show_error_message(_("Save names should not end on '.gz' or '.bz2'. Please remove the extension."));
+		gui2::show_error_message(_("Save names should not end on ‘.gz’ or ‘.bz2’. Please remove the extension."));
 		return false;
 	} else if(!filesystem::is_legal_user_file_name(filename)) {
 		// This message is not all-inclusive. This is on purpose. Few people

@@ -739,7 +739,7 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 		message dlg("title", "message", true, false, false);
 		dlg.show(1);
 	} catch(const wml_exception& e) {
-		BOOST_CHECK(e.user_message == _("Failed to show a dialog, which doesn't fit on the screen."));
+		BOOST_CHECK(e.user_message == _("Failed to show a dialog, which doesn’t fit on the screen."));
 		return;
 	} catch(...) {
 		BOOST_ERROR("Didn't catch the wanted exception, instead caught " << utils::get_unknown_exception_type() << ".");

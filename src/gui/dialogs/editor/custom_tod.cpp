@@ -181,7 +181,7 @@ void custom_tod::select_file(const std::string& default_dir)
 	if(dlg.show()) {
 		dn = dlg.path();
 		const std::string& message
-						= _("This file is outside Wesnoth's data dirs. Do you wish to copy it into your add-on?");
+						= _("This file is outside Wesnoth’s data dirs. Do you wish to copy it into your add-on?");
 
 		if(data.first == "image") {
 			if (!filesystem::to_asset_path(dn, addon_id_, "images")) {
