@@ -1,14 +1,7 @@
-## Version 1.19.3+dev
- ### Add-ons client
- ### Add-ons server
- ### Campaigns
- ### Editor
- ### Multiplayer
+## Version 1.19.4
  ### Lua API
    * Added new function gui.switch_theme() to allow switching to another gui2 theme from inside a scenario.
    * Updated to lua 5.4.7
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: Arabic, Bengali, British English, Chinese (Simplified), Czech, Italian, Japanese, Turkish, Ukrainian
  ### Units
@@ -25,7 +18,6 @@
   * Removed properties `unit.side` and `terrain.owner` from WFL. Use `unit.side_number` and `terrain.owner_side` instead.
   * Fixed events with negative priority not being stored in save files.
   * Events can now be added to abilities and weapon specials.
- ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.3
  ### Campaigns
