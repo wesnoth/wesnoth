@@ -20,16 +20,17 @@
 
 #include "buffered_istream.hpp"
 
+#include <array>
 #include <istream>
 #include <string>
 
 // use of illegal utf8 character for this purpose was added in a76be7ef1e921dabacd99f16ef440bf9673b8d98
 // has something to do with the result of the preprocessor whose format is essentially undocumented and I don't intend to delve into that as of writing this comment
-#define INLINED_PREPROCESS_DIRECTIVE_CHAR 254
+constexpr int INLINED_PREPROCESS_DIRECTIVE_CHAR = 254;
 
 // normal ascii is 0-127
 // extended ascii is from 128-255, none of which need any special handling
-#define START_EXTENDED_ASCII 128
+constexpr int START_EXTENDED_ASCII = 128;
 
 /**
  * contains the current text being parsed as well as the token_type of what's being parsed.
@@ -43,6 +44,9 @@ struct token
 		value()
 	{}
 
+	/**
+	 * used for a token's type field
+	 */
 	enum token_type
 	{
 		// multi-character
@@ -64,14 +68,21 @@ struct token
 		OPEN_BRACKET = '[',
 		CLOSE_BRACKET = ']',
 		UNDERSCORE = '_',
-		POUND = '#',
-		LESS_THAN = '<',
-		GREATER_THAN = '>',
-		DOUBLE_QUOTE = '"',
-		DOLLAR = '$',
 
 		/** set when EOF is returned by the input stream */
 		END = 256
+	};
+
+	/**
+	 * not used for a token's type field
+	 */
+	enum source_chars
+	{
+		POUND = '#',
+		LEFT_ANGLE_BRACKET = '<',
+		RIGHT_ANGLE_BRACKET = '>',
+		DOUBLE_QUOTE = '"',
+		DOLLAR = '$',
 	};
 
 	token_type type;
@@ -186,5 +197,5 @@ private:
 	token previous_token_;
 #endif
 	buffered_istream in_;
-	token_category char_types_[START_EXTENDED_ASCII];
+	std::array<token_category, START_EXTENDED_ASCII> char_types_;
 };

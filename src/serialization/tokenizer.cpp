@@ -78,8 +78,8 @@ const token &tokenizer::next_token()
 		token_.type = token::END;
 		break;
 
-	case token::LESS_THAN:
-		if (peek_char() != token::LESS_THAN) {
+	case token::LEFT_ANGLE_BRACKET:
+		if (peek_char() != token::LEFT_ANGLE_BRACKET) {
 			token_.type = token::MISC;
 			token_.value += current_;
 			break;
@@ -92,7 +92,7 @@ const token &tokenizer::next_token()
 				token_.type = token::UNTERMINATED_QSTRING;
 				break;
 			}
-			if (current_ == token::GREATER_THAN && peek_char() == token::GREATER_THAN) {
+			if (current_ == token::RIGHT_ANGLE_BRACKET && peek_char() == token::RIGHT_ANGLE_BRACKET) {
 				next_char_fast();
 				break;
 			}
