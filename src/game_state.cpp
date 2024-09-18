@@ -200,10 +200,10 @@ void game_state::init(const config& level, play_controller & pc)
 			tb.build_team_stage_three();
 		}
 
-		for(std::size_t i = 0; i < board_.teams().size(); i++) {
+		for(const team& t : board_.teams()) {
 			// Labels from players in your ignore list default to hidden
-			if(prefs::get().is_ignored(board_.teams()[i].current_player())) {
-				std::string label_cat = "side:" + std::to_string(i + 1);
+			if(prefs::get().is_ignored(t.current_player())) {
+				std::string label_cat = "side:" + std::to_string(t.side());
 				board_.hidden_label_categories().push_back(label_cat);
 			}
 		}

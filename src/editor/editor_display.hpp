@@ -62,6 +62,16 @@ public:
 	}
 
 	/**
+	 * Set a status text at the bottom left of the map area
+	 *
+	 * @param str                 The text to display.
+	 * @param is_success          Type of message.
+	 * When true, message is shown in green with checkmark.
+	 * When false, message is shown in red with cross mark
+	 */
+	void set_status(const std::string& str, const bool is_success);
+
+	/**
 	 * Sets and shows the tooltip-like text at the top or bottom of the map area.
 	 *
 	 * @param str                 The text to display.

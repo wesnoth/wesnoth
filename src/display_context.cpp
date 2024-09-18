@@ -87,21 +87,47 @@ display_context::can_move_result display_context::unit_can_move(const unit& u) c
 	const team& current_team = get_team(u.side());
 
 	can_move_result result = {false, false};
-	for(const map_location& adj : get_adjacent_tiles(u.get_location())) {
-		if (map().on_board(adj)) {
-			if(!result.attack_here) {
-				const unit_map::const_iterator i = units().find(adj);
-				if (i.valid() && !i->incapacitated() && current_team.is_enemy(i->side())) {
-					result.attack_here = true;
+	if(u.attacks_left() > 0 && !u.attacks().empty()) {
+		const auto& attacks = u.attacks();
+
+		std::set<int> attackable_distances;
+	    for (const auto& attack : attacks) {
+	        for (int i = attack.min_range(); i <= attack.max_range(); ++i) {
+	            attackable_distances.insert(i);
+	        }
+	    }
+
+		if(!attackable_distances.empty()) {
+			int max_distance = *std::prev(attackable_distances.end());
+
+			for (int dx = -max_distance; dx <= max_distance; ++dx) {
+				for (int dy = -max_distance; dy <= max_distance && !result.attack_here; ++dy) {
+					// Adjust for hex grid
+					int adjusted_dy = dy + floor(dx / 2.0);
+
+					map_location locs(u.get_location().x + dx, u.get_location().y + adjusted_dy);
+					int distance = distance_between(u.get_location(), locs);
+
+					if (attackable_distances.find(distance) == attackable_distances.end()) {
+						continue;
+					}
+					if (map().on_board(locs)) {
+						const unit_map::const_iterator i = units().find(locs);
+						if (i.valid() && !i->incapacitated() && current_team.is_enemy(i->side()) && i->is_visible_to_team(get_team(u.side()), false)) {
+							result.attack_here = true;
+						}
+					}
 				}
 			}
-
+		}
+	}
+	for(const map_location& adj : get_adjacent_tiles(u.get_location())) {
+		if (map().on_board(adj)) {
 			if (!result.move && u.movement_cost(map()[adj]) <= u.movement_left()) {
 				result.move = true;
 			}
 		}
 	}
-
 	// This should probably check if the unit can teleport too
 
 	return result;
@@ -123,10 +149,10 @@ orb_status display_context::unit_orb_status(const unit& u) const
 
 int display_context::village_owner(const map_location& loc) const
 {
-	const std::vector<team> & t = teams();
-	for(std::size_t i = 0; i != t.size(); ++i) {
-		if(t[i].owns_village(loc))
-			return i + 1;
+	for(const team& t : teams()) {
+		if(t.owns_village(loc)) {
+			return t.side();
+		}
 	}
 	return 0;
 }

@@ -589,18 +589,15 @@ void shroud_clearer::invalidate_after_clear()
  */
 std::vector<int> get_sides_not_seeing(const unit & target)
 {
-	const std::vector<team> & teams = resources::gameboard->teams();
 	std::vector<int> not_seeing;
-
-	std::size_t team_size = teams.size();
-	for ( std::size_t i = 0; i != team_size; ++i)
-		if ( !target.is_visible_to_team(teams[i], false) )
-			// not_see contains side numbers; i is a team index, so add 1.
-			not_seeing.push_back(i+1);
+	for(const team& t : resources::gameboard->teams()) {
+		if(!target.is_visible_to_team(t, false)) {
+			not_seeing.push_back(t.side());
+		}
+	}
 
 	return not_seeing;
 }
-
 
 /**
  * Fires sighted events for the sides that can see @a target.

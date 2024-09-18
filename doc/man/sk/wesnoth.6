@@ -85,7 +85,7 @@ umožní využívať niektoré debuggovacie mechanizmy jazyka Lua
 \fB\-\-strict\-lua\fP
 znemožní používať zastarané Lua API volania
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 porovnáva dva súbory WML; najprv ich nespracuje (aby ste to urobili, najprv
 ich spustite cez \fB\-p\fP). Vypíše rozdiel ako DiffWML na štandardný výstup
 alebo do súboru označeného \fI\-\-output\fP.
@@ -205,7 +205,7 @@ bezpečné.
 Wesnoth. Podobne ako \fB\-\-script\fP, ale súbor Lua by mal vrátiť funkciu, ktorá
 sa spustí ako co\-rutina a bude sa pravidelne prebúdzať s aktualizáciami.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ základný súbor\fP\fB\ \fP\fIpatch\-súbor\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 aplikuje patch DiffWML na súbor WML; nespracúva ani jeden zo
 súborov. Extrahuje opravený WML na štandardný výstup alebo do súboru
 označeného \fI\-\-output\fP.
@@ -285,8 +285,8 @@ sprístupní balík \fBpackage\fP skriptom lua, aby mohli načítať ľubovoľn�
 balíky. Nerobte to s nedôveryhodnými skriptami! Táto akcia dáva jazyku lua
 rovnaké oprávnenia ako spustiteľnému súboru wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ cesta\fP
-nastaví schému WML na použitie s \fB\-V,\-\-validate\fP.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ názov\fP
 nastaví adresár userdata na \fIname\fP pod $HOME alebo "My Documents\eMy Games"
@@ -311,7 +311,7 @@ validuje WML daného doplnku počas hrania.
 \fB\-\-validate\-core\fP
 validuje WML základu hry počas hrania.
 .TP 
-\fB—validate\-schema \ cesta\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 overí súbor ako schému WML.
 .TP 
 \fB\-\-validcache\fP

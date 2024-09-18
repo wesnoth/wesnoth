@@ -138,8 +138,8 @@ std::string flag_rgb, unit_rgb;
 std::vector<color_t> red_green_scale;
 std::vector<color_t> red_green_scale_text;
 
-static std::vector<color_t> blue_white_scale;
-static std::vector<color_t> blue_white_scale_text;
+std::vector<color_t> blue_white_scale;
+std::vector<color_t> blue_white_scale_text;
 
 std::map<std::string, color_range, std::less<>> team_rgb_range;
 // Map [color_range]id to [color_range]name, or "" if no name
@@ -486,9 +486,9 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 	}
 
 	for(const config &cp : v.child_range("color_palette")) {
-		for(const config::attribute& rgb : cp.attribute_range()) {
+		for(const auto& [key, value] : cp.attribute_range()) {
 			std::vector<color_t> temp;
-			for(const auto& s : utils::split(rgb.second)) {
+			for(const auto& s : utils::split(value)) {
 				try {
 					temp.push_back(color_t::from_hex_string(s));
 				} catch(const std::invalid_argument& e) {
@@ -496,8 +496,8 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 				}
 			}
 
-			team_rgb_colors.emplace(rgb.first, temp);
-			LOG_NG << "registered color palette: " << rgb.first;
+			team_rgb_colors.emplace(key, temp);
+			LOG_NG << "registered color palette: " << key;
 		}
 	}
 }

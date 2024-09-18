@@ -90,7 +90,7 @@ Aktiviert einen Debugmechanismus für Lua.
 \fB\-\-strict\-lua\fP
 Unterstützung für veraltete Lua\-Aufrufe deaktivieren.
 .TP 
-\fB\-D,\-\-diff\fP\fI\ Linke\-Datei\fP\fB\ \fP\fIRechte\-Datei\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 Zeigt die Unterschiede zwischen zwei WML\-Dateien an. Der Präprozessor wird
 nicht verwendet (falls das gewünscht ist, verwende erst \fB\-p\fP). Gibt die
 Unterschiede als DiffWML im Terminal aus, oder speichert sie in der mit
@@ -218,7 +218,7 @@ definiert. Ähnlich zur Option \fB\-\-script\fP, aber die Lua\-Datei soll hierbe
 eine Funktion zurückliefern. Diese wird als Koroutine ausgeführt und
 regelmäßig aufgerufen.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ WML\-Datei\fP\fB\ \fP\fIPatch\-Datei\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 Wendet einen DiffWML\-Patch auf eine WML\-Datei an. Der Präprozessor wird
 dabei nicht verwendet. Das Ergebnis wird im Terminal ausgegeben, oder in die
 mit \fI\-\-output\fP angegebene Datei.
@@ -307,9 +307,8 @@ wiederum beliebige Pakete geladen werden können. Nicht mit fremden Skripten
 verwenden! Dadurch wird die Sandbox aufgebrochen, Lua hat dann dieselben
 Zugriffsrechte wie Wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ Pfad\fP
-Gibt den Pfad zu einem WML\-Schema an, welches für \fB\-V,\-\-validate\fP verwendet
-wird.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ Name\fP
 Setzt das Verzeichnis für Nutzerdaten (Spielstände, Erweiterungen, ...) auf
@@ -336,7 +335,7 @@ Validiert das WML der angegebenen Erweiterung während des Spielens.
 \fB\-\-validate\-core\fP
 Validiert das WML des Hauptspiels des Spielens.
 .TP 
-\fB\-\-validate\-schema \ Pfad\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 Validiert, ob eine Datei ein korrektes WML\-Schema ist.
 .TP 
 \fB\-\-validcache\fP

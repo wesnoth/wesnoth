@@ -73,8 +73,7 @@ void teleport_unit_between(const map_location& a, const map_location& b, unit& t
 	if ( disp.fogged(a) && disp.fogged(b) ) {
 		return;
 	}
-	const display_context& dc = disp.get_disp_context();
-	const team& viewing_team = dc.get_team(disp.viewing_side());
+	const team& viewing_team = disp.viewing_team();
 
 	const bool a_visible = temp_unit.is_visible_to_team(a, viewing_team, false);
 	const bool b_visible = temp_unit.is_visible_to_team(b, viewing_team, false);
@@ -231,7 +230,7 @@ void unit_mover::replace_temporary(unit_ptr u)
 	u->set_hidden(true);
 
 	// Update cached data.
-	is_enemy_ =	resources::gameboard->get_team(u->side()).is_enemy(disp_->viewing_side());
+	is_enemy_ =	resources::gameboard->get_team(u->side()).is_enemy(disp_->viewing_team().side());
 }
 
 
@@ -804,8 +803,7 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 		return;
 	}
 
-	const display_context& dc = disp->get_disp_context();
-	const team& viewing_team = dc.get_team(disp->viewing_side());
+	const team& viewing_team = disp->viewing_team();
 
 	unit_map::const_iterator u = disp->get_units().find(loc);
 	if(u == disp->get_units().end()) return;

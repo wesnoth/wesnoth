@@ -223,14 +223,6 @@ public:
 	 */
 	struct rule_image
 	{
-		rule_image(int layer,
-				int x,
-				int y,
-				bool global_image = false,
-				int center_x = -1,
-				int center_y = -1,
-				bool is_water = false);
-
 		bool is_background() const
 		{
 			return layer < 0 || (layer == 0 && basey < UNITPOS);
@@ -243,19 +235,19 @@ public:
 		 */
 		int basex, basey;
 
-		/** A list of variants for this image */
-		std::vector<rule_image_variant> variants;
-
 		/** Set to true if the image was defined as a child of the
 		 * [terrain_graphics] tag, set to false if it was defined as a
 		 * child of a [tile] tag */
-		bool global_image;
+		bool global_image = false;
 
 		/** The position where the center of the image base should be
 		 */
-		int center_x, center_y;
+		int center_x = -1, center_y = -1;
 
-		bool is_water;
+		bool is_water = false;
+
+		/** A list of variants for this image */
+		std::vector<rule_image_variant> variants{};
 	};
 
 	/**
@@ -289,9 +281,6 @@ public:
 	 */
 	struct tile
 	{
-		/** Constructor for the tile() structure */
-		tile();
-
 		struct rule_image_rand;
 		typedef std::pair<const rule_image_rand*, const rule_image_variant*> log_details;
 		typedef std::vector<log_details> logs;
@@ -313,12 +302,6 @@ public:
 		/** Represent a rule_image applied with a random seed.*/
 		struct rule_image_rand
 		{
-			rule_image_rand(const rule_image* r_i, unsigned int rnd)
-				: ri(r_i)
-				, rand(rnd)
-			{
-			}
-
 			const rule_image* operator->() const
 			{
 				return ri;
@@ -350,10 +333,10 @@ public:
 		/**
 		 * The time-of-day to which the image caches correspond.
 		 */
-		std::string last_tod;
+		std::string last_tod = "invalid_tod";
 
 		/** Indicates if 'images' is sorted */
-		bool sorted_images;
+		bool sorted_images = false;
 	};
 
 	tile* get_tile(const map_location& loc);

@@ -389,8 +389,8 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "teams")
 	{
 		std::vector<variant> vars;
-		for(std::vector<team>::const_iterator i = resources::gameboard->teams().begin(); i != resources::gameboard->teams().end(); ++i) {
-			vars.emplace_back(std::make_shared<team_callable>(*i));
+		for(const team& t : resources::gameboard->teams()) {
+			vars.emplace_back(std::make_shared<team_callable>(t));
 		}
 		return variant(vars);
 
@@ -418,15 +418,8 @@ variant formula_ai::get_value(const std::string& key) const
 
 		unit_types.build_all(unit_type::FULL);
 
-		const std::set<std::string>& recruits = current_team().recruits();
-		if(recruits.empty()) {
-			return variant(vars);
-		}
-		for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i)
-		{
-			const unit_type *ut = unit_types.find(*i);
-			if (ut)
-			{
+		for(const std::string& recruit : current_team().recruits()) {
+			if(const unit_type* ut = unit_types.find(recruit)) {
 				vars.emplace_back(std::make_shared<unit_type_callable>(*ut));
 			}
 		}
@@ -435,24 +428,13 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "recruits_of_side")
 	{
 		std::vector<variant> vars;
-		std::vector< std::vector< variant>> tmp;
+		std::vector<std::vector<variant>> tmp(resources::gameboard->teams().size());
 
 		unit_types.build_all(unit_type::FULL);
 
-		for( std::size_t i = 0; i<resources::gameboard->teams().size(); ++i)
-		{
-			std::vector<variant> v;
-			tmp.push_back( v );
-
-			const std::set<std::string>& recruits = resources::gameboard->teams()[i].recruits();
-			if(recruits.empty()) {
-				continue;
-			}
-			for(std::set<std::string>::const_iterator str_it = recruits.begin(); str_it != recruits.end(); ++str_it)
-			{
-				const unit_type *ut = unit_types.find(*str_it);
-				if (ut)
-				{
+		for(std::size_t i = 0; i < tmp.size(); ++i) {
+			for(const std::string& recruit : resources::gameboard->teams()[i].recruits()) {
+				if(const unit_type* ut = unit_types.find(recruit)) {
 					tmp[i].emplace_back(std::make_shared<unit_type_callable>(*ut));
 				}
 			}
@@ -465,20 +447,15 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "units")
 	{
 		std::vector<variant> vars;
-		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-			vars.emplace_back(std::make_shared<unit_callable>(*i));
+		for(const unit& u : units) {
+			vars.emplace_back(std::make_shared<unit_callable>(u));
 		}
 		return variant(vars);
 
 	} else if(key == "units_of_side")
 	{
 		std::vector<variant> vars;
-		std::vector< std::vector< variant>> tmp;
-		for( std::size_t i = 0; i<resources::gameboard->teams().size(); ++i)
-		{
-			std::vector<variant> v;
-			tmp.push_back( v );
-		}
+		std::vector<std::vector<variant>> tmp(resources::gameboard->teams().size());
 		for(const unit &u : units) {
 			tmp[u.side() - 1].emplace_back(std::make_shared<unit_callable>(u));
 		}
@@ -489,9 +466,9 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "my_units")
 	{
 		std::vector<variant> vars;
-		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-			if (i->side() == get_side()) {
-				vars.emplace_back(std::make_shared<unit_callable>(*i));
+		for(const unit& u : units) {
+			if(u.side() == get_side()) {
+				vars.emplace_back(std::make_shared<unit_callable>(u));
 			}
 		}
 		return variant(vars);
@@ -499,11 +476,9 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "enemy_units")
 	{
 		std::vector<variant> vars;
-		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-			if (current_team().is_enemy(i->side())) {
-				if (!i->incapacitated()) {
-					vars.emplace_back(std::make_shared<unit_callable>(*i));
-				}
+		for(const unit& u : units) {
+			if(current_team().is_enemy(u.side()) && !u.incapacitated()) {
+				vars.emplace_back(std::make_shared<unit_callable>(u));
 			}
 		}
 		return variant(vars);
@@ -530,9 +505,8 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "recall_list")
 	{
 		std::vector<variant> tmp;
-
-		for(std::vector<unit_ptr >::const_iterator i = current_team().recall_list().begin(); i != current_team().recall_list().end(); ++i) {
-			tmp.emplace_back(std::make_shared<unit_callable>(**i));
+		for(const unit_ptr& ptr : current_team().recall_list()) {
+			tmp.emplace_back(std::make_shared<unit_callable>(*ptr));
 		}
 
 		return variant(tmp);
@@ -552,13 +526,8 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "villages_of_side")
 	{
 		std::vector<variant> vars;
-		for(std::size_t i = 0; i<resources::gameboard->teams().size(); ++i)
-		{
-			vars.emplace_back();
-		}
-		for(std::size_t i = 0; i<vars.size(); ++i)
-		{
-			vars[i] = villages_from_set(resources::gameboard->teams()[i].villages());
+		for(const team& t : resources::gameboard->teams()) {
+			vars.push_back(villages_from_set(t.villages()));
 		}
 		return variant(vars);
 
@@ -678,9 +647,9 @@ void formula_ai::on_create(){
 	if (const auto ai_vars = cfg_.optional_child("vars"))
 	{
 		variant var;
-		for(const config::attribute &i : ai_vars->attribute_range()) {
-			var.serialize_from_string(i.second);
-			vars_.add(i.first, var);
+		for(const auto& [key, value] : ai_vars->attribute_range()) {
+			var.serialize_from_string(value);
+			vars_.add(key, var);
 		}
 	}
 

@@ -29,7 +29,7 @@ case $version in
 1.14)   options+=(--port 1.14.x --datadir "$HOME/source/$version");;
 trunk)  options=(--port trunk --verbose)
         manager=$HOME/source/master/data/tools/wesnoth_addon_manager;;
-*)      options+=(--port "$version".x --datadir "$HOME/source/$version")
+*)      [[ -d "$HOME/source/$version" ]] && options+=(--port "$version".x --datadir "$HOME/source/$version")
         manager=$HOME/source/master/data/tools/wesnoth_addon_manager;;
 esac
 

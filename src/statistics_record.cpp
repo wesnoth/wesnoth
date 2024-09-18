@@ -64,10 +64,10 @@ static void write_str_int_map(config_writer& out, const stats_t::str_int_map& m)
 static stats_t::str_int_map read_str_int_map(const config& cfg)
 {
 	stats_t::str_int_map m;
-	for(const config::attribute& i : cfg.attribute_range()) {
+	for(const auto& [key, value] : cfg.attribute_range()) {
 		try {
-			for(const std::string& val : utils::split(i.second)) {
-				m[val] = std::stoi(i.first);
+			for(const std::string& val : utils::split(value)) {
+				m[val] = std::stoi(key);
 			}
 		} catch(const std::invalid_argument&) {
 			ERR_NG << "Invalid statistics entry; skipping";

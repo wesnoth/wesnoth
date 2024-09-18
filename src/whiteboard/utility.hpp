@@ -31,9 +31,6 @@ class team;
 
 namespace wb {
 
-/** @return The current viewing team's index */
-std::size_t viewer_team();
-
 /** @return The current viewing side's number (i.e. team index + 1) */
 int viewer_side();
 

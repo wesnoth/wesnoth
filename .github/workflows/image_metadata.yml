@@ -6,7 +6,7 @@ on:
     paths: [ '**.webp', '**.png', '**.jpg', '**.jpeg' ]
   pull_request:
     paths: [ '**.webp', '**.png', '**.jpg', '**.jpeg' ]
-  
+
 permissions:
   contents: read
 
@@ -29,7 +29,7 @@ jobs:
 
       - name: check image metadata
         run: |
-          mapfile -t image_files < <(git diff --name-only "$BASE_SHA" "$HEAD_SHA" | grep -E '\.(webp|png|je?pg)$')
+          mapfile -t image_files < <(git diff --name-only --diff-filter=d "$BASE_SHA" "$HEAD_SHA" | grep -E '\.(webp|png|je?pg)$')
           # cycle through the changed image files, make sure they have the right fields
           for file in "${image_files[@]}"; do
             # check Artist tag, fail if missing

@@ -83,7 +83,7 @@ void server_base::start_server()
 
 #ifndef _WIN32
 	sighup_.async_wait(
-		[=](const boost::system::error_code& error, int sig)
+		[this](const boost::system::error_code& error, int sig)
 			{ this->handle_sighup(error, sig); });
 #endif
 }
@@ -214,7 +214,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 void server_base::read_from_fifo() {
 	async_read_until(input_,
 					 admin_cmd_, '\n',
-					 [=](const boost::system::error_code& error, std::size_t bytes_transferred)
+					 [this](const boost::system::error_code& error, std::size_t bytes_transferred)
 						{ this->handle_read_from_fifo(error, bytes_transferred); }
 	);
 }

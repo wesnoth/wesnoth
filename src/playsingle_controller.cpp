@@ -603,7 +603,7 @@ void playsingle_controller::update_gui_linger()
 		if(get_end_level_data().transient.reveal_map) {
 			// Change the view of all players and observers
 			// to see the whole map regardless of shroud and fog.
-			update_gui_to_player(gui_->viewing_team(), true);
+			update_gui_to_player(gui_->viewing_team_index(), true);
 		}
 	} else {
 		gui_->set_game_mode(game_display::RUNNING);
@@ -747,7 +747,7 @@ void playsingle_controller::require_end_turn()
 void playsingle_controller::check_objectives()
 {
 	if(!get_teams().empty()) {
-		const team& t = get_teams()[gui_->viewing_team()];
+		const team& t = gui_->viewing_team();
 
 		if(!is_regular_game_end() && !is_browsing() && t.objectives_changed()) {
 			show_objectives();
@@ -817,7 +817,7 @@ void playsingle_controller::update_viewing_player()
 	if(replay_controller_ && replay_controller_->is_controlling_view()) {
 		replay_controller_->update_viewing_player();
 	} else if(int side_num = find_viewing_side()) {
-		if(side_num != gui_->viewing_side() || gui_->show_everything()) {
+		if(side_num != gui_->viewing_team().side() || gui_->show_everything()) {
 			update_gui_to_player(side_num - 1);
 		}
 	}
@@ -879,4 +879,3 @@ void playsingle_controller::on_replay_end(bool is_unit_test)
 		replay_controller_->stop_replay();
 	}
 }
-

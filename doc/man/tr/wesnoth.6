@@ -86,7 +86,7 @@ bazı Lua hata ayıklama mekanizmalarını etkinleştirir.
 \fB\-\-strict\-lua\fP
 kullanımı önerilmeyen Lua API çağrılarına izin verilmez
 .TP 
-\fB\-D,\-\-diff\fP\fI\ sol\-dosya\fP\fB\ \fP\fIsağ\-dosya\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 iki WML dosyasının farkını gösterir; onları işleme sokmadan önce \fB\-p\fP ile
 çalıştırır. Farkları DiffWML olarak ya standart çıktıya ya da \fI\-\-output\fP
 ile belirtilen dosyaya çıktılar.
@@ -208,7 +208,7 @@ yükler. \fB\-\-script\fP gibidir, ancak Lua dosyası, bir alt yordam olarak
 çalıştırılacak ve periyodik olarak güncellemelerle uyanacak bir işlev
 döndürmelidir.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ ana_dosya\fP\fB\ \fP\fIyama\-dosyası\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 DiffWML yamasını WML dosyasına uygular; dosyaları önişleme sokmaz.  Yamanmış
 WML dosyasını ya standart çıktıya ya da \fI\-\-output\fP ile belirtilen dosyaya
 çıktılar.
@@ -293,8 +293,8 @@ birim sınaması olarak belirtilen deneme senaryosunu çalıştırır. Örtük o
 yüklenebilir. Güvenilmez betiklerle kullanmayın! Bu işlem Lua betiğine
 wesnoth çalıştırılabiliri ile aynı yetkileri sağlar.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ dosya\-yolu\fP
-\fB\-V,\-\-validate\fP ile kullanmak için WML şemasını tanımlar.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ dizin\fP
 kullanıcı verisi dizini olarak *n*x türevlerinde $HOME, windows'ta
@@ -320,7 +320,7 @@ oynarken verilen eklentinin WML'sini doğrular.
 \fB\-\-validate\-core\fP
 oynarken verilen çekirdek WML'yi doğrular.
 .TP 
-\fB\-\-validate\-schema \ dosya\-yolu\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 dosyayı WML şeması olarak doğrular.
 .TP 
 \fB\-\-validcache\fP

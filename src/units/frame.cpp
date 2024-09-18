@@ -271,8 +271,36 @@ bool frame_parsed_parameters::need_update() const
 	return !this->does_not_change();
 }
 
-const frame_parameters frame_parsed_parameters::parameters(int current_time) const
+frame_parameters frame_parsed_parameters::parameters(int current_time) const
 {
+#ifdef __cpp_designated_initializers
+	return {
+		.duration = duration_,
+		.image = image_.get_current_element(current_time),
+		.image_diagonal = image_diagonal_.get_current_element(current_time),
+		.image_mod = image_mod_,
+		.halo = halo_.get_current_element(current_time),
+		.halo_x = halo_x_.get_current_element(current_time),
+		.halo_y = halo_y_.get_current_element(current_time),
+		.halo_mod = halo_mod_,
+		.sound = sound_,
+		.text = text_,
+		.text_color = text_color_,
+		.blend_with = blend_with_,
+		.blend_ratio = blend_ratio_.get_current_element(current_time),
+		.highlight_ratio = highlight_ratio_.get_current_element(current_time,1.0),
+		.offset = offset_.get_current_element(current_time,-1000),
+		.submerge = submerge_.get_current_element(current_time),
+		.x = x_.get_current_element(current_time),
+		.y = y_.get_current_element(current_time),
+		.directional_x = directional_x_.get_current_element(current_time),
+		.directional_y = directional_y_.get_current_element(current_time),
+		.auto_vflip = auto_vflip_,
+		.auto_hflip = auto_hflip_,
+		.primary_frame = primary_frame_,
+		.drawing_layer = drawing_layer_.get_current_element(current_time, get_abs_frame_layer(drawing_layer::unit_default)),
+	};
+#else
 	frame_parameters result;
 	result.duration = duration_;
 	result.image = image_.get_current_element(current_time);
@@ -299,6 +327,7 @@ const frame_parameters frame_parsed_parameters::parameters(int current_time) con
 	result.primary_frame = primary_frame_;
 	result.drawing_layer = drawing_layer_.get_current_element(current_time, get_abs_frame_layer(drawing_layer::unit_default));
 	return result;
+#endif
 }
 
 void frame_parsed_parameters::override(int duration,
@@ -465,7 +494,6 @@ void render_unit_image(
 	const map_location& loc,
 	const image::locator& i_locator,
 	bool hreverse,
-	bool greyscale,
 	uint8_t alpha,
 	double highlight,
 	color_t blendto,
@@ -485,19 +513,7 @@ void render_unit_image(
 		return;
 	}
 
-	// For now, we add to the existing IPF modifications for the image.
-	std::string new_modifications;
-
-	if(greyscale) {
-		new_modifications += "~GS()";
-	}
-
-	texture tex;
-	if(!new_modifications.empty()) {
-		tex = image::get_texture({i_locator.get_filename(), i_locator.get_modifications() + new_modifications});
-	} else {
-		tex = image::get_texture(i_locator);
-	}
+	texture tex = image::get_texture(i_locator);
 
 	// Clamp blend ratio so nothing weird happens
 	blend_ratio = std::clamp(blend_ratio, 0.0, 1.0);
@@ -506,6 +522,7 @@ void render_unit_image(
 
 	disp->drawing_buffer_add(drawing_layer, loc, [=](const rect&) mutable {
 		tex.set_alpha_mod(alpha);
+
 		if(submerge > 0.0) {
 			// set clip for dry part
 			// smooth_shaded doesn't use the clip information so it's fine to set it up front
@@ -513,19 +530,28 @@ void render_unit_image(
 
 			// draw underwater part
 			draw::smooth_shaded(tex, data.alpha_verts);
+
+			// draw dry part
+			draw::flipped(tex, data.unsub_dest, hreverse, vreverse);
+		} else {
+			// draw whole texture
+			draw::flipped(tex, dest, hreverse, vreverse);
 		}
-		// draw dry part
-		draw::flipped(tex, submerge > 0.0 ? data.unsub_dest : dest, hreverse, vreverse);
 
 		if(uint8_t hl = float_to_color(highlight); hl > 0) {
 			tex.set_blend_mode(SDL_BLENDMODE_ADD);
 			tex.set_alpha_mod(hl);
+
 			if(submerge > 0.0) {
 				// draw underwater part
 				draw::smooth_shaded(tex, data.alpha_verts);
+
+				// draw dry part
+				draw::flipped(tex, data.unsub_dest, hreverse, vreverse);
+			} else {
+				// draw whole texture
+				draw::flipped(tex, dest, hreverse, vreverse);
 			}
-			// draw dry part
-			draw::flipped(tex, submerge > 0.0 ? data.unsub_dest : dest, hreverse, vreverse);
 		}
 
 		tex.set_blend_mode(SDL_BLENDMODE_BLEND);
@@ -533,58 +559,68 @@ void render_unit_image(
 	});
 
 	// SDL hax to apply an active washout tint at the correct ratio
-	if(blend_ratio > 0.0) {
-		// Get a pure-white version of the texture
-		const image::locator whiteout_locator(
-			i_locator.get_filename(),
-			i_locator.get_modifications()
-				+ new_modifications
-				+ "~CHAN(255, 255, 255, alpha)"
-		);
+	if(blend_ratio == 0.0) {
+		return;
+	}
 
-		disp->drawing_buffer_add(drawing_layer, loc, [=, tex = image::get_texture(whiteout_locator)](const rect&) mutable {
-			if (submerge > 0.0) {
-				// also draw submerged portion
-				// alpha_mod and color_mod are ignored,
-				// so we have to put them in the smooth shaded vertex data.
-				// This also has to incorporate the existing submerge alpha.
-				blendto.a = uint8_t(data.alpha_verts[0].color.a * blend_ratio);
-				data.alpha_verts[0].color = blendto;
-				data.alpha_verts[1].color = blendto;
-				blendto.a = uint8_t(data.alpha_verts[2].color.a * blend_ratio);
-				data.alpha_verts[2].color = blendto;
-				data.alpha_verts[3].color = blendto;
+	// Get a pure-white version of the texture
+	const image::locator whiteout_locator(
+		i_locator.get_filename(),
+		i_locator.get_modifications()
+			+ "~CHAN(255, 255, 255, alpha)"
+	);
 
-				// set clip for dry part
-				// smooth_shaded doesn't use the clip information so it's fine to set it up front
-				tex.set_src(data.unsub_src);
+	disp->drawing_buffer_add(drawing_layer, loc, [=, tex = image::get_texture(whiteout_locator)](const rect&) mutable {
+		tex.set_alpha_mod(alpha * blend_ratio);
+		tex.set_color_mod(blendto);
 
-				// draw underwater part
-				draw::smooth_shaded(tex, data.alpha_verts);
-			}
+		if(submerge > 0.0) {
+			// also draw submerged portion
+			// alpha_mod and color_mod are ignored,
+			// so we have to put them in the smooth shaded vertex data.
+			// This also has to incorporate the existing submerge alpha.
+			blendto.a = uint8_t(data.alpha_verts[0].color.a * blend_ratio);
+			data.alpha_verts[0].color = blendto;
+			data.alpha_verts[1].color = blendto;
 
-			tex.set_alpha_mod(alpha * blend_ratio);
-			tex.set_color_mod(blendto);
+			blendto.a = uint8_t(data.alpha_verts[2].color.a * blend_ratio);
+			data.alpha_verts[2].color = blendto;
+			data.alpha_verts[3].color = blendto;
+
+			// set clip for dry part
+			// smooth_shaded doesn't use the clip information so it's fine to set it up front
+			tex.set_src(data.unsub_src);
+
+			// draw underwater part
+			draw::smooth_shaded(tex, data.alpha_verts);
 
 			// draw dry part
-			draw::flipped(tex, submerge > 0.0 ? data.unsub_dest : dest, hreverse, vreverse);
+			draw::flipped(tex, data.unsub_dest, hreverse, vreverse);
+		} else {
+			// draw whole texture
+			draw::flipped(tex, dest, hreverse, vreverse);
+		}
 
-			if(uint8_t hl = float_to_color(highlight); hl > 0) {
-				tex.set_blend_mode(SDL_BLENDMODE_ADD);
-				tex.set_alpha_mod(hl);
-				if (submerge > 0.0) {
-					// draw underwater part
-					draw::smooth_shaded(tex, data.alpha_verts);
-				}
+		if(uint8_t hl = float_to_color(highlight); hl > 0) {
+			tex.set_blend_mode(SDL_BLENDMODE_ADD);
+			tex.set_alpha_mod(hl);
+
+			if(submerge > 0.0) {
+				// draw underwater part
+				draw::smooth_shaded(tex, data.alpha_verts);
+
 				// draw dry part
-				draw::flipped(tex, submerge > 0.0 ? data.unsub_dest : dest, hreverse, vreverse);
+				draw::flipped(tex, data.unsub_dest, hreverse, vreverse);
+			} else {
+				// draw whole texture
+				draw::flipped(tex, dest, hreverse, vreverse);
 			}
+		}
 
-			tex.set_color_mod(255, 255, 255);
-			tex.set_blend_mode(SDL_BLENDMODE_BLEND);
-			tex.set_alpha_mod(SDL_ALPHA_OPAQUE);
-		});
-	}
+		tex.set_color_mod(255, 255, 255);
+		tex.set_blend_mode(SDL_BLENDMODE_BLEND);
+		tex.set_alpha_mod(SDL_ALPHA_OPAQUE);
+	});
 }
 } // namespace
 
@@ -595,10 +631,8 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 {
 	game_display* game_disp = game_display::get_singleton();
 
-	const int xsrc = game_disp->get_location_x(src);
-	const int ysrc = game_disp->get_location_y(src);
-	const int xdst = game_disp->get_location_x(dst);
-	const int ydst = game_disp->get_location_y(dst);
+	const auto [xsrc, ysrc] = game_disp->get_location(src);
+	const auto [xdst, ydst] = game_disp->get_location(dst);
 	const map_location::DIRECTION direction = src.get_relative_dir(dst);
 
 	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val);
@@ -685,7 +719,6 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 				src,
 				image_loc,
 				facing_west,
-				false,
 				alpha,
 				brighten,
 				current_data.blend_with ? *current_data.blend_with : color_t(),
@@ -762,10 +795,8 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 {
 	display* disp = display::get_singleton();
 
-	const int xsrc = disp->get_location_x(src);
-	const int ysrc = disp->get_location_y(src);
-	const int xdst = disp->get_location_x(dst);
-	const int ydst = disp->get_location_y(dst);
+	const auto [xsrc, ysrc] = disp->get_location(src);
+	const auto [xdst, ydst] = disp->get_location(dst);
 	const map_location::DIRECTION direction = src.get_relative_dir(dst);
 
 	const frame_parameters current_data = merge_parameters(frame_time, animation_val, engine_val);

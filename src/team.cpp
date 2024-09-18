@@ -677,9 +677,9 @@ bool team::fogged(const map_location& loc) const
 const std::vector<const shroud_map*>& team::ally_shroud(const std::vector<team>& teams) const
 {
 	if(ally_shroud_.empty()) {
-		for(std::size_t i = 0; i < teams.size(); ++i) {
-			if(!is_enemy(i + 1) && (&(teams[i]) == this || teams[i].share_view() || teams[i].share_maps())) {
-				ally_shroud_.push_back(&(teams[i].shroud_));
+		for(const team& t : teams) {
+			if(!is_enemy(t.side()) && (&t == this || t.share_view() || t.share_maps())) {
+				ally_shroud_.push_back(&t.shroud_);
 			}
 		}
 	}
@@ -690,9 +690,9 @@ const std::vector<const shroud_map*>& team::ally_shroud(const std::vector<team>&
 const std::vector<const shroud_map*>& team::ally_fog(const std::vector<team>& teams) const
 {
 	if(ally_fog_.empty()) {
-		for(std::size_t i = 0; i < teams.size(); ++i) {
-			if(!is_enemy(i + 1) && (&(teams[i]) == this || teams[i].share_view())) {
-				ally_fog_.push_back(&(teams[i].fog_));
+		for(const team& t : teams) {
+			if(!is_enemy(t.side()) && (&t == this || t.share_view())) {
+				ally_fog_.push_back(&t.fog_);
 			}
 		}
 	}

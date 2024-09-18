@@ -410,7 +410,7 @@ class Parser:
         if self.data_dir:
             commandline += ["--data-dir", self.data_dir]
         if self.config_dir:
-            commandline += ["--config-dir", self.config_dir]
+            commandline += ["--userdata-dir", self.config_dir]
         commandline += ["--preprocess", self.path, output]
         if defines:
             commandline += ["--preprocess-defines", defines]

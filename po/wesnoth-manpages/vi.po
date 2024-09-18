@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.7+dev\n"
-"POT-Creation-Date: 2024-07-21 22:31-0500\n"
+"POT-Creation-Date: 2024-09-17 21:19-0500\n"
 "PO-Revision-Date: 2014-06-04 23:24+0700\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -298,9 +298,10 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:89
-#, no-wrap
-msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
+msgid "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
+msgstr "B<-p, --preprocess E<lt>tập_tin_nguồn/thư_mụcE<gt> E<lt>thư_mục_đíchE<gt>>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:95
@@ -805,7 +806,7 @@ msgstr ""
 #: doc/man/wesnoth.6:240
 #, fuzzy, no-wrap
 #| msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
-msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+msgid "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
 msgstr "B<-p, --preprocess E<lt>tập_tin_nguồn/thư_mụcE<gt> E<lt>thư_mục_đíchE<gt>>"
 
 #. type: Plain text
@@ -1115,12 +1116,12 @@ msgstr ""
 #: doc/man/wesnoth.6:347
 #, fuzzy, no-wrap
 #| msgid "B<--scenario=>I<value>"
-msgid "B<-S,--use-schema>I<\\ path>"
+msgid "B<-S,\\ --use-schema>I<\\ path>"
 msgstr "B<--scenario=>I<giá_trị>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:351
-msgid "sets the WML schema for use with B<-V,--validate>."
+msgid "sets the WML schema for use with B<-V,\\ --validate>."
 msgstr ""
 
 # type: TP
@@ -1224,7 +1225,7 @@ msgstr ""
 #: doc/man/wesnoth.6:377
 #, fuzzy, no-wrap
 #| msgid "B<--validcache>"
-msgid "B<--validate-schema \\ path>"
+msgid "B<--validate-schema>I<\\ path>"
 msgstr "B<--validcache>"
 
 #. type: Plain text

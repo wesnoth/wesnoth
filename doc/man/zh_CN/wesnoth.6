@@ -73,7 +73,7 @@ option for showing the GUI Test Dialog.
 \fB\-\-strict\-lua\fP
 禁用已废弃的Lua API调用
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 产生这两个WML文件的diff，不会对这两个文件先进行预处理（若要进行预处理，请对它们执行\fB\-p\fP命令）。将diff以DiffWML格式输出到标准输出或由\fI\-\-output\fP指定的文件中。
 .TP 
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
@@ -172,7 +172,7 @@ written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 （实验性）读取定义了韦诺插件的
 \fIscript\fP。与\fB\-\-script\fP类似，但Lua文件应返回一个函数，该函数将作为协程运行，并周期性地使用更新地参数唤起。
 .TP 
-\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 将DiffWML补丁应用到WML文件上，不会预处理这两个文件中的任何一个。将打过补丁的WML输出到标准输出或由\fI\-\-output\fP指定的文件中。
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
@@ -233,8 +233,8 @@ with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
 \fB\-\-unsafe\-scripts\fP
 使得\fBpackage\fP包在Lua脚本中可用，这样一来Lua脚本就可以载入任意包了。请不要对不可信的脚本使用此选项！此操作将赋予Lua与韦诺可执行文件相同的权限。
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ path\fP
-设置\fB\-V,\-\-validate\fP所使用的WML schema。
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 设置用户数据目录为$HOME或者Windows下“我的文档\我的游戏（My Documents\eMy
@@ -256,7 +256,7 @@ Games”之外。在Windows下，也可以使用以“.\e”或“..\e”开头�
 \fB\-\-validate\-core\fP
 在游戏过程中，验证核心WML。
 .TP 
-\fB\-\-validate\-schema \ path\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 验证文件是否为合法的WML schema。
 .TP 
 \fB\-\-validcache\fP

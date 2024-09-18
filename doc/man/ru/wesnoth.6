@@ -86,7 +86,7 @@ https://wiki.wesnoth.org/CommandMode/ru дальнейших сведений о
 \fB\-\-strict\-lua\fP
 запретить устаревшие вызовы Lua API
 .TP 
-\fB\-D,\-\-diff\fP\fI\ левый файл\fP\fB\ \fP\fIправый файл\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 сравнивает два WML\-файла (см. команду diff) без предварительной обработки
 (если нужна, используйте сначала команду \fB\-p\fP). Помещает разницу в виде
 DiffWML в стандартный вывод или в файл, указанный \fI\-\-output\fP.
@@ -211,7 +211,7 @@ replacing usernames with USER.
 вернуть функцию, которую можно запустить в качестве сопрограммы и время от
 времени пробуждать обновлениями.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ исходный файл\fP\fB\ \fP\fIфайл патча\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 применяет патч DiffWML к WML\-файлу; ни один из этих файлов предварительно не
 проверяется.  Выводит WML с применёнными к нему правками через стандартный
 вывод или в файл, указанный \fI\-\-output\fP.
@@ -298,8 +298,8 @@ https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 Действие предоставляет lua такие же привилегии, как у исполняемого файла
 wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ путь\fP
-устанавливает шаблон WML, используемый \fB\-V,\-\-validate\fP.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ имя\fP
 установить папку пользовательских данных в подпапку \fIимя\fP в каталоге $HOME
@@ -325,7 +325,7 @@ Games"), задайте абсолютный путь. Помимо этого, 
 \fB\-\-validate\-core\fP
 проверяет WML ядра во время вашей игры.
 .TP 
-\fB\-\-validate\-schema \ путь\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 проверяет, является ли файл шаблоном WML.
 .TP 
 \fB\-\-validcache\fP

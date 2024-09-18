@@ -20,6 +20,7 @@
 #include "editor/editor_display.hpp"
 #include "floating_label.hpp"
 #include "font/sdl_ttf_compat.hpp" // for pango_line_width
+#include "formula/string_utils.hpp"
 #include "lexical_cast.hpp"
 #include "overlay.hpp"
 #include "team.hpp"
@@ -111,7 +112,7 @@ void editor_display::layout()
 	display::layout();
 
 	config element;
-	config::attribute_value &text = element.add_child("element")["text"];
+	config::attribute_value& text = element.add_child("element")["text"];
 	// Fill in the terrain report
 	if (get_map().on_board_with_border(mouseoverHex_)) {
 		text = get_map().get_terrain_editor_string(mouseoverHex_);
@@ -155,6 +156,33 @@ const time_of_day& editor_display::get_time_of_day(const map_location& /*loc*/) 
 display::overlay_map& editor_display::get_overlays()
 {
 	return controller_.get_current_map_context().get_overlays();
+}
+
+void editor_display::set_status(const std::string& str, const bool is_success)
+{
+	const color_t color{0, 0, 0, 0xbb};
+	int size = font::SIZE_SMALL;
+	point canvas_size = video::game_canvas_size();
+	const int border = 3;
+
+	std::string formatted_str;
+	if (is_success) {
+		formatted_str = VGETTEXT("<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>", {{"msg", str}});
+	} else {
+		formatted_str = VGETTEXT("<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>", {{"msg", str}});
+	}
+
+	font::floating_label flabel(formatted_str);
+	flabel.set_font_size(size);
+	flabel.set_position(0, canvas_size.y);
+	flabel.set_bg_color(color);
+	flabel.set_border_size(border);
+	flabel.set_lifetime(1000, 10);
+	flabel.use_markup(true);
+
+	const int f_handle = font::add_floating_label(flabel);
+	const auto& r = font::get_floating_label_rect(f_handle);
+	font::move_floating_label(f_handle, r.w, -r.h);
 }
 
 void editor_display::set_help_string_enabled(bool value)

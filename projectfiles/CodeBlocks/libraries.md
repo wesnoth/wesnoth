@@ -49,7 +49,7 @@ Run this command for generate `bcp.exe`
 ```
 Create `include` in same path what `boost_...` and run this command:
 ```
-dist\bin\bcp.exe algorithm asio assign bimap coroutine container date_time dynamic_bitset exception filesystem graph iostreams iterator locale math mpl multi_array multi_index program_options process ptr_container random range regex serialization system spirit test boost\nondet_random.hpp boost\fusion\include\define_struct.hpp boost\scope_exit.hpp boost/typeof/incr_registration_group.hpp ..\include
+dist\bin\bcp.exe algorithm asio assign bimap core coroutine container date_time dynamic_bitset exception filesystem graph iostreams iterator locale math mpl multi_array multi_index program_options process ptr_container random range regex serialization system spirit test boost\nondet_random.hpp boost\fusion\include\define_struct.hpp boost\scope_exit.hpp boost/typeof/incr_registration_group.hpp ..\include
 ```
 
 Replace the outdated files in 'cb/lib' with those from 'boost_.../stage/lib' and those in 'cb/include/boost' with  the ones in 'boost_.../boost'.

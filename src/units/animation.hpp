@@ -108,7 +108,7 @@ public:
 
 protected:
 	// reserved to class unit, for the special case of redrawing the unit base frame
-	const frame_parameters get_current_params(const frame_parameters& default_val = frame_parameters()) const
+	frame_parameters get_current_params(const frame_parameters& default_val = frame_parameters()) const
 	{
 		return unit_anim_.parameters(default_val);
 	}
@@ -149,7 +149,7 @@ private:
 		void redraw(const frame_parameters& value, const map_location& src, const map_location& dst, halo::manager& halo_man);
 		std::set<map_location> get_overlaped_hex(const frame_parameters& value,const map_location& src, const map_location& dst);
 		void start_animation(int start_time);
-		const frame_parameters parameters(const frame_parameters& default_val) const
+		frame_parameters parameters(const frame_parameters& default_val) const
 		{
 			return get_current_frame().merge_parameters(get_current_frame_time(), parameters_.parameters(get_animation_time() - get_begin_time()), default_val);
 		}

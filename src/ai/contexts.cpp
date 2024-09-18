@@ -397,10 +397,10 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 
 			// Don't take friendly villages
 			if(!enemy && resources::gameboard->map().is_village(dst)) {
-				for(std::size_t n = 0; n != resources::gameboard->teams().size(); ++n) {
-					if(resources::gameboard->teams()[n].owns_village(dst)) {
-						int side = n + 1;
-						if (get_side() != side && !current_team().is_enemy(side)) {
+				for(const team& t : resources::gameboard->teams()) {
+					if(t.owns_village(dst)) {
+						int side = t.side();
+						if(get_side() != side && !current_team().is_enemy(side)) {
 							friend_owns = true;
 						}
 

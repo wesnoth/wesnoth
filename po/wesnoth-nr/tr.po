@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-nr\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
+"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
 "PO-Revision-Date: 2022-08-21 15:40+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
 "Language-Team: Turkish\n"
@@ -1302,11 +1302,11 @@ msgstr ""
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:917
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1321
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2338
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2456
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2510
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2555
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1349
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2482
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2600
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2654
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2699
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:612
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:903
 msgid "Very well."
@@ -2768,101 +2768,115 @@ msgstr "Şu yaşlı iskelet mi? Seni fındık kurdu."
 msgid "You’re telling me."
 msgstr "Siz söyleyin, o zaman."
 
+#. [message]: speaker=Abhai
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1038
+msgid "Be careful companions! There was a drake in this cage!"
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1032
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1044
 #, fuzzy
 #| msgid "Holy cow! What did I just let out of that cage! Look out everyone."
 msgid "Holy cow! What did I just let out of that cage? Look out everyone!"
 msgstr "Olamaz! Bulduğum bu şey de ne? Herkes buraya baksın."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1037
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1051
 msgid "Oooooh, cool, it’s a drake!"
 msgstr "Ooooo, harika, bir ejder!"
 
 #. [message]: speaker=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1042
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1056
 msgid "(<i>Whimper</i>)"
 msgstr "(<i>Sızlanır</i>)"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1047
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1061
+#, fuzzy
+#| msgid ""
+#| "Bright Gods, such a fierce creature whimpering! What the heck have they "
+#| "done to it?"
 msgid ""
-"Bright Gods, such a fierce creature whimpering! What the heck have they done "
-"to it?"
+"Bright Gods, such a fierce creature whimpering! What in the world have they "
+"done to it?"
 msgstr "Tanrım, böylesine vahşi bir yaratak inliyor! Buna ne yapmışlar böyle?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1052
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1066
 msgid "The bastards!"
 msgstr "Alçaklar!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1063
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1077
 msgid "Probably another one of Malifor’s experiments."
 msgstr "Muhtemelen Malifor’un deneylerinden biridir."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1068
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1082
 msgid "I don’t know, see if it talks."
 msgstr "Bilmiyorum, konuşursa kendi söyler."
 
+#. [message]: speaker=Abhai
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1095
+msgid "Have no fear, drake. We have no intentions to hurt you."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1075
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1101
 msgid "Hey, big guy. We aren’t gonna hurt you. We wanna be your friends."
 msgstr "Hey, dev dostum. Sana zarar vermeyeceğiz. Dostun olmak istiyoruz."
 
 #. [message]: speaker=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1080
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1108
 msgid "... Not... going... to... hurt... me?"
 msgstr "... bana... zarar... vermeyecek... misin?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1085
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1113
 msgid "Hey, it talks!"
 msgstr "Hey, konuşuyor!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1090
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1118
 msgid "It’s a ‘he’, and yes, they’re actually very intelligent creatures."
 msgstr "O bir erkek ve evet onlar aslında zeki yaratıklardır."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1095
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1123
 #, fuzzy
 #| msgid ""
 #| "Hush! I am trying to talk to him. Nope, we’ll never hurt you. But if you "
 #| "want to you can hurt some skeletons."
 msgid ""
 "Hush, I am trying to talk to him. Nope, we’ll never hurt you. But if you "
-"want to you can hurt some skeletons."
+"want to, you can hurt some skeletons."
 msgstr ""
 "Amanın! Onunla konuşmaya çalışıyorum. Sorun yok, sana zarar vermeyeceğiz. "
 "Ama iskeletlere zarar vermek istersen seni tutmayız."
 
 #. [message]: speaker=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1100
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1128
 msgid "Skeletons! GRRRR!!"
 msgstr "İskeletler! GIRRRRRRRR!!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1105
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1133
 msgid "Look out! He is ready to go! Hey, is that smoke coming out of his ears?"
 msgstr "Bakın! Gitmeye hazır! Hey, kulaklarından duman mı çıkıyor?"
 
 #. [message]: speaker=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1119
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1147
 msgid "ROOOAARR!"
 msgstr "ROOOAAARRR!"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1124
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1152
 msgid ""
 "Whoa! Maybe he isn’t so friendly after all... or at least to some things."
 msgstr "Oha! Pek dost gibi görünmüyor... en azından bazıları için."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1140
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1168
 #, fuzzy
 #| msgid ""
 #| "(<i>Sigh</i>) There doesn’t seem to be anything down this tunnel, either "
@@ -2873,64 +2887,64 @@ msgstr ""
 "düşman."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1164
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1192
 msgid "The Treasury"
 msgstr "Hazine Bölümü"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1169
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1197
 msgid "The Treasury! Excellent, let’s clean out the gold!"
 msgstr "Hazine! Harika, hadi altını yağmalıyalım!"
 
 #. [message]: role=Treasury Guard
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1202
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1230
 msgid "Intruders! Get them!"
 msgstr "Davetsiz msafirler! Gebertin hepsini!"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1207
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1235
 msgid "Bring it on!"
 msgstr "Ortaya çıkın!"
 
 #. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1252
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1280
 msgid "There are at least several hundred gold coins in here!"
 msgstr "Vay canına! En azından birkaç yüz altın var burada!"
 
 #. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1254
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1282
 msgid "I don’t think the undead will be be needing this anyway."
 msgstr "Zaten yarı öülerin buna ihtiyacı olacağını sanmıyorum."
 
 #. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1256
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1284
 msgid ""
 "Our people could rebuild their lives ten-fold with the gold in this treasury."
 msgstr "Halkımız bu hazinedeki altınlarla, şimdikinin on katı refaha ulaşırdı."
 
 #. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1258
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1286
 msgid "We’re rich!"
 msgstr "Zengin olduk!"
 
 #. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1260
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1288
 msgid "Why do these skeletons have so much gold just sitting around?"
 msgstr "Bu iskeletler burada oturup dururken bu kadar altını ne yapıyor?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1286
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1314
 msgid ""
 "The Rod of Justice! What in the world is it doing all the way down here?"
 msgstr "Adalet Asası! Bu, burada ne arıyor?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1291
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1319
 msgid "What do you have there, Abhai?"
 msgstr "Orada ne yapıyorsun, Abhay?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1296
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1324
 #, fuzzy
 #| msgid ""
 #| "This is the Great Rod of Justice, my boy. It was an ancient artifact even "
@@ -2956,7 +2970,7 @@ msgstr ""
 "ne de savaşlar ülkeyi sıkıntıya soktu."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1301
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1329
 msgid ""
 "Well, if you don’t mind me saying — that certainly isn’t the state of "
 "affairs now. Knalga lies in ruins, orcs ravage the surface, and these dark "
@@ -2972,7 +2986,7 @@ msgstr ""
 "dökülürken, Vesnot kötü kraliçe Aşivye’nin istibdadı altında inliyor."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1306
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1334
 msgid ""
 "Ahh, with the Rod of Justice down here it is to be expected. Come Tallin, "
 "either you or one of your trusted men must wield this staff and bring peace "
@@ -2982,12 +2996,12 @@ msgstr ""
 "ya sen almalısın ya da senin tayin edeceğin biri almalı."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1311
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1339
 msgid "Why can’t you wield it, Abhai?"
 msgstr "Onu neden alamıyorum, Abhay?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1316
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1344
 msgid ""
 "I am a creature of the past, and thus my time to wield it is long gone. This "
 "is your era, Tallin, and thus it is your responsibility to see to it that "
@@ -2999,7 +3013,7 @@ msgstr ""
 "yoksa adamlarından birini gönder."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1345
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1373
 msgid ""
 "An elegantly carved sceptre rests at the bottom of the chest. Precious "
 "jewels glitter across its surface, and it exudes a great aura of power."
@@ -3009,12 +3023,12 @@ msgstr ""
 "saçmaktadır."
 
 #. [option]
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1347
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1375
 msgid "rod of justice^Take it"
 msgstr "Onu al"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1351
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1379
 msgid ""
 "This thing is... incredible! What is such a powerful artifact doing hidden "
 "all the way back here?"
@@ -3023,17 +3037,17 @@ msgstr ""
 "acaba?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1361
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1389
 msgid "That’s... that’s the Rod of Justice!"
 msgstr "Bu... Adalet Asası, bu!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1366
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1394
 msgid "Do you know anything about it, Camerin?"
 msgstr "Onun hakkında bir şey biliyor musunuz, Kamerin?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1371
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1399
 msgid ""
 "I don’t think there is a person alive who knows anything more solid than "
 "rumors and legends. There are very few people who even knows it exists!"
@@ -3042,19 +3056,19 @@ msgstr ""
 "birinin olduğunu sanmıyorum. Onun mevcudiyetini bilen çok az kişi vardır!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1376
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1404
 msgid "How did you come to know of it?"
 msgstr "Buraya nasıl geldiğini biliyor musun?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1381
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1409
 msgid ""
 "Some of the most ancient elvish legends make some vague mention of this "
 "artifact. But beyond that..."
 msgstr "Bazı elf destanlarında bu nesneden bahsedilir..."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1386
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1414
 msgid ""
 "Interesting. I wonder who — or what — could have created such a powerful "
 "artifact. There must be one heck of a story behind this thing."
@@ -3063,12 +3077,12 @@ msgstr ""
 "Bu şeyin bir hikayesi vardır herhalde."
 
 #. [object]: id=justice_rod
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1399
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1427
 msgid "Rod of Justice"
 msgstr "Adalet Asası"
 
 #. [object]: id=justice_rod
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1402
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1430
 msgid ""
 "A magical staff of tremendous power and unknown origin. Although the full "
 "extent of its power has not been fathomed, there are a few features about it "
@@ -3086,64 +3100,64 @@ msgstr ""
 "biri kullanabilir."
 
 #. [effect]: type=fire
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1411
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1439
 msgid "rod of justice"
 msgstr "adalet asası"
 
 #. [option]
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1491
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1519
 msgid "rod of justice^Leave it"
 msgstr "Bırak"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1518
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1546
 msgid "The Great Chamber"
 msgstr "Büyük Salon"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1523
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1551
 msgid "‘The Great Chamber’? Hmmm, wonder what that could be."
 msgstr "‘Büyük Salon’ mu? Hımm, ilginç olabilir."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1540
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1568
 msgid "Halt! You’re not allowed to be here! Authorized undead only!"
 msgstr "Durun! Buraya girmeniz yasak!! Sadece yarı ölüler girebilir!"
 
 #. [unit]: type=Dwarvish Steelclad, id=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1563
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1591
 msgid "Dulcatas"
 msgstr "Dulkatas"
 
 #. [unit]: type=Dwarvish Thunderguard, id=Antolos
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1575
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1603
 msgid "Antolos"
 msgstr "Antolos"
 
 #. [unit]: type=Dwarvish Fighter, id=Varem
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1587
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1615
 msgid "Varem"
 msgstr "Varem"
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1598
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1626
 msgid "Halt! Who goes there? Friend or foe?"
 msgstr "Dur! Kimdir o? Dost musun, düşman mı?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1603
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1631
 msgid "Depends. Are you loyal to Malifor?"
 msgstr "Değişir. Malifor’a sadık mısın?"
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1608
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1636
 msgid ""
 "Never! If you ha’ been sent by Malifor, then know that we will never yield! "
 "Come and meet your death!"
 msgstr "Asla! Seni Malifor gönderdiyse, vay haline! Ölümlerden ölüm beğen!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1613
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1641
 msgid ""
 "Hold! We aren’t friends of Malifor in the least. Rather, we have come to "
 "destroy him."
@@ -3151,17 +3165,17 @@ msgstr ""
 "Bekle! Biz Malifor’un dostu değiliz en azından. Aksine onu yok etmeye geldik."
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1618
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1646
 msgid "Finally! You don’t know how long we have been waiting for this day."
 msgstr "Nihayet! Bugünü ne kadar uzun zamandır beklediğimi bir bilseniz."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1623
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1651
 msgid "How did you get here and how long have you been here?"
 msgstr "Buraya nasıl geldiniz ve ne kadardır buradasınız?"
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1628
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1656
 msgid ""
 "We were originally prisoners of Malifor, but we tunneled out and escaped. "
 "Since then, we have eked out a precarious survival on what we have been able "
@@ -3171,12 +3185,12 @@ msgstr ""
 "beri burada gözden uzakta, Malifor’dan bir şeyler aşırarak yaşıyorduk."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1633
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1661
 msgid "By now you have tunnels all through this place."
 msgstr "Yani buradan her yöne açılan tünelleriniz var."
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1638
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1666
 msgid ""
 "Aye. That seemingly blank wall to the south there is actually a hidden "
 "entrance to the treasury."
@@ -3185,50 +3199,50 @@ msgstr ""
 "gizli bir giriş."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1643
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1671
 msgid "Awesome, let’s go!"
 msgstr "Vay canına, gidelim!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1659
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1687
 msgid "Here we go."
 msgstr "Buradan."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1701
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1729
 msgid ""
 "So this is the Great Chamber, eh? Doesn’t look like there is much to see "
 "here."
 msgstr "Yani Büyük Salon bu mu? Burada görülecek pek bir şey yok."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1709
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1737
 msgid "The ground shakes."
 msgstr "Zemin sarsılır."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1714
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1742
 msgid "Perhaps I spoke too soon..."
 msgstr "Belki de konuşmak için erken davrandın..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1765
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1793
 msgid "What is this? Our retreat is cut off!"
 msgstr "Bu nedir? Geri çekilmemiz kesildi!"
 
 #. [message]: type=Giant Spider
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1806
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1834
 msgid "Hsssss"
 msgstr "Hısssss"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1811
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1839
 msgid "‘Great Chamber’, my foot! This is a death chamber!"
 msgstr "Papucumun Büyük Salonu! Bu bir ölüm salonu!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1830
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2400
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1858
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2544
 msgid ""
 "Hmmm. The wall appears weak here. I think there might be something on the "
 "other side."
@@ -3237,24 +3251,24 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1844
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2441
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1872
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2585
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:573
 msgid "There we go."
 msgstr "Gidelim."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1869
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1897
 msgid "Malifor the Great’s Study"
 msgstr "Ulu Malifor’un İni"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1874
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1902
 msgid "There we go! This way!"
 msgstr "Oraya gidiyoruz! Bu taraftan arkadaşlar!"
 
 #. [message]: role=Study Guard
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1892
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1920
 msgid ""
 "They are attacking the master’s study! We must stop them! Call the reserves!"
 msgstr ""
@@ -3262,7 +3276,7 @@ msgstr ""
 "çağırın!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1920
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1948
 msgid ""
 "Caution! Tunnel flooded and infested with aquatic monsters. Enter at the "
 "risk of your unlife."
@@ -3271,24 +3285,24 @@ msgstr ""
 "olabilir, dikkatli olun."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1925
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1953
 msgid ""
 "Interesting. It seems like someone really doesn’t want us going down this "
 "tunnel."
 msgstr "İlginç. Sanki birileri bu tünele girmemizi istemiyor."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1943
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1971
 msgid "Intruders? Capture them and throw them in with the toxic waste!"
 msgstr "Saldırganlar? Onları yakalayın ve zehirli atıklarların içine atın!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1975
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2003
 msgid "A section of wall slides away."
 msgstr "Duvarın bir kısmı kayar."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1984
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2012
 msgid ""
 "Holy water! For a certainty, those skeletons won’t like us getting our hands "
 "on this stuff. But that’s probably why they kept them back here in the first "
@@ -3298,28 +3312,43 @@ msgstr ""
 "Bizi neden buradan uzak tutmaya çalıştıkları anlaşılıyor."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1998
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2026
 msgid ""
 "Warning! These bottles contain toxic waste. Causes disintegration on contact."
 msgstr "Uyarı! Bu şişeler zehirli atık içerir. İçerseniz zarar görebilirsiniz."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2003
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2031
 msgid "(<i>rolls eyes</i>) Oh, the hazardous life of a skeleton."
 msgstr "(<i>Gözlerini devirir</i>) Ah, bir iskelet için hayati tehlike."
 
-#. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2018
-msgid "Hey, an underground lake."
-msgstr "Hey, bir yeraltı gölü."
+#. [message]: speaker=Krash
+#. Krash has landed in one of the hexes of a small underground lake
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2053
+msgid "Wet."
+msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2035
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2059
+#, fuzzy
+#| msgid "Hey, an underground lake."
+msgid "An underground lake."
+msgstr "Hey, bir yeraltı gölü."
+
+#. [message]: speaker=Krash
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2084
+#, fuzzy
+#| msgid "Monsters"
+msgid "Monster! Kill!"
+msgstr "Yaratıklar"
+
+#. [message]: speaker=unit
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2090
 msgid "Ack! What are those things!"
 msgstr "Ahh! Bu şey de ne?!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2045
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2102
 msgid ""
 "Oh yeah, those things. Watch out, they are the arms of some sort of "
 "underwater creature. They’ll try to pummel you to death, then drag you under "
@@ -3327,7 +3356,7 @@ msgid ""
 msgstr "Off, bu şeylere dikkat edin. Sizi öldürüp yemek isteyebilirler."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2050
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2107
 #, fuzzy
 #| msgid ""
 #| "Then how do we get past? I can see that the passage continues to both the "
@@ -3340,7 +3369,7 @@ msgstr ""
 "hala bulamadık."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2055
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2112
 msgid ""
 "Creatures of that type regenerate over time; it’s doubtful we can destroy it "
 "completely. But if we destroy its arms we’ll be relatively safe until they "
@@ -3350,52 +3379,59 @@ msgstr ""
 "öldürmeden bırakmayın."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2060
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2117
 msgid "Let’s get to it, then."
 msgstr "O halde hepsini öldürelim."
 
 #. [unit]: type=Wraith, id=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2084
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2141
 msgid "Abhai"
 msgstr "Abhay"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2093
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2150
 msgid "AH! A ghost!"
 msgstr "AH! Bir hayalet!"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2098
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2155
 msgid "Who are you that dares to venture down these tunnels?"
 msgstr "Bu tünellerde dolaşmaya cesaret eden de kim?"
 
+#. [message]: speaker=Tallin
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2166
+#, fuzzy
+#| msgid "Tallin"
+msgid "I am Tallin."
+msgstr "Talin"
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2103
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2172
 msgid "I... I am one of Tallin’s men..."
 msgstr "B... Ben Talin’in adamlarından biriyim..."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2108
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2177
 msgid "Who is this ‘Tallin’?"
 msgstr "Kim bu Talin?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2113
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2182
 msgid "That would be me."
 msgstr "Bu ben olurdum."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2118
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2189
 msgid "What is your purpose in coming here?"
 msgstr "Buraya gelme amacınız ne?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2123
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2194
 msgid "We seek the destruction of the lich Malifor."
 msgstr "Yok etmek için Umacı Malifor’u arıyoruz."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2128
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2199
 #, fuzzy
 #| msgid ""
 #| "(<i>pales if possible</i>) Malifor...! Finally someone here in force to "
@@ -3407,7 +3443,7 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #. "this spirit" is referring to the Ghost named Abhai.
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2134
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2205
 #, fuzzy
 #| msgid ""
 #| "Can you tell us where he is? And, if I may ask, who are — or rather, were "
@@ -3420,7 +3456,7 @@ msgstr ""
 "— daha doğrusu —  kimdiniz?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2139
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2210
 msgid ""
 "I am Lord Abhai, the ruler... once... of a great kingdom far to the west. In "
 "time, as all men do, I grew old and passed to the Land of the Dead. I know "
@@ -3433,12 +3469,12 @@ msgstr ""
 "ve beni yaşayanlar diyarına çekti. "
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2144
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2215
 msgid "Let me guess. Malifor?"
 msgstr "Dur, tahmin edeyim. Malifor?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2149
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2220
 msgid ""
 "Indeed. He was once a great sorcerer, but he coveted wealth and power. To "
 "gain his ends, he allied himself with the Lich-Lords, and from them he "
@@ -3464,7 +3500,7 @@ msgstr ""
 "canavarlar bu sularda yaşar; Bu yüzden beni burada rahatsız etmiyorlar."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2154
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2225
 msgid ""
 "I am afraid times have changed much. Our first king, Haldric I, fled the "
 "Green Isle with the Wesfolk, the orcs in pursuit. He came ashore on this "
@@ -3477,17 +3513,17 @@ msgstr ""
 "Umacı Lord Jevyan'ı yok ettik. Bu yüzyıllar önceydi."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2159
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2230
 msgid "So... much time has passed indeed."
 msgstr "Yani... gerçekten çok zaman geçti."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2164
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2235
 msgid "Would you join us to defeat this evil creature?"
 msgstr "Bu iblisi yenmek için bize katılır mısın?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2170
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2241
 msgid ""
 "Wouldn’t miss it. Maybe after he is destroyed my kind and I can live... "
 "er... be dead peacefully."
@@ -3496,7 +3532,7 @@ msgstr ""
 "içinde ölebilirim."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2175
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2246
 msgid ""
 "Keep following these flooded tunnels. I think they might lead you directly "
 "to Malifor."
@@ -3505,25 +3541,57 @@ msgstr ""
 "sanıyorum."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2180
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2251
 msgid "Great. Forward, men!"
 msgstr "Harika! İleri arkadaşlar!"
 
+#. [message]: speaker=Krash
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2279
+msgid "Corpse here... It stinks."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2199
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2285
 msgid "Ugh, a corpse. And it — (<i>gags</i>) — reeks!"
 msgstr "Ahh, bir ceset — (<i>kusacak gibi olur</i>) — kötü kokuyor!"
 
+#. [message]: speaker=Abhai
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2306
+msgid ""
+"Yet more bodies... I’ve noticed them drifting down the river as of late."
+msgstr ""
+
+#. [message]: speaker=Krash
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2318
+msgid "More bodies. Float down river?"
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2212
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2324
 msgid ""
 "Gee, what’s with these bodies floating around? Is this river some sort of "
 "body disposal?"
 msgstr ""
 "Aaa, çevremizde yüzen bu cesetler de nesi? Emre amade ceset deposu sanki."
 
+#. [message]: speaker=Abhai
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2348
+#, fuzzy
+#| msgid ""
+#| "(<i>Sigh</i>) There doesn’t seem to be anything down this tunnel, either "
+#| "friend or foe."
+msgid "There doesn’t seem to be anything this way other than another body."
+msgstr ""
+"(<i>İç çeker</i>) Bu tünelin aşağısında hiçbir şey gözükmüyor, ne dost ne "
+"düşman."
+
+#. [message]: speaker=Krash
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2360
+msgid "Grrr... Cold. Wet. Mad."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2226
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2366
 msgid ""
 "Just great, I am cold, wet, and tired and what have we here? Another dead "
 "body. This place is starting to get on my nerves!"
@@ -3532,27 +3600,27 @@ msgstr ""
 "Bir ceset daha. Burası sinirlerimi bozmaya başladı!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2242
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2386
 msgid "Hold it, people, there’s something just ahead!"
 msgstr "Birbirinizden ayrılmayın, ilerde bir şeyler var!"
 
 #. [message]: type=Naga Warrior
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2263
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2407
 msgid "(<i>sniff</i>) I smell humans."
 msgstr " (<i>Koklar</i>) İnsan kokusu alıyorum."
 
 #. [message]: type=Naga Fighter
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2268
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2412
 msgid "You are just plain deaf. I heard them coming a mile off."
 msgstr "Siz sağırsınız herhalde. Geldiklerini bir mil öteden duydum."
 
 #. [message]: type=Naga Warrior
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2273
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2417
 msgid "Ahh, shut up. Let’s go kill them."
 msgstr "Ahh, kapa çeneni. Haydi gebertelim şunları."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2306
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2450
 msgid ""
 "It looks like this is it. Here is the door to Malifor’s study. Are we all "
 "ready for this?"
@@ -3560,77 +3628,77 @@ msgstr "Burası orası, Malifor’un ininin girişi. Girmeye hazır mıyız?"
 
 #. [option]
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2308
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2362
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2452
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2506
 msgid "Get those doors open!"
 msgstr "Aç şu kapıları!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2323
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2467
 msgid "Let’s go!"
 msgstr "Gidelim!"
 
 #. [option]
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2334
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2452
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2551
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2478
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2596
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2695
 msgid "Just wait a sec."
 msgstr "Dur bekle bir saniye."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2405
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2549
 msgid "Anything you can’t handle?"
 msgstr "Hiçbir şey yok mu?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2410
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2554
 msgid "Nope. Should I open it?"
 msgstr "Sorun yok. Açayım mı?"
 
 #. [option]
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2412
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2492
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2556
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2636
 msgid "Go for it!"
 msgstr "Devam et!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2480
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2580
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2624
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2724
 msgid "Hey, check this out, it looks like some sort of lever."
 msgstr "Hey şuna bak, kapı kolunu andıran bir şey var."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2485
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2629
 msgid "Throw it and see what it does."
 msgstr "Fırlat ve ne yaptığını gör."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2490
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2634
 msgid "Should I throw it?"
 msgstr "Atayım mı?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2500
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2644
 msgid "Nothing. That door is not moving."
 msgstr "Olmuyor. Kapı açılmıyor."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2505
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2649
 msgid "Why don’t you try ‘knocking’?"
 msgstr "Neden kapıyı çalmayı denemiyoruz?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2536
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2680
 msgid "Anybody home?"
 msgstr "Kimse var mı?"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2631
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2775
 msgid "You wretched vermin, I have had it with you! Guards!"
 msgstr "Seni zavallı mikrop, seni ne yapmalı! Muhafızlar!"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2655
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2799
 msgid ""
 "You invaded my kingdom, drove me from my mines, raided my dungeon, and "
 "plundered my treasury. Your audacity ends here!"
@@ -3639,7 +3707,7 @@ msgstr ""
 "boşalttınız ve hazinemi yağmaladınız. Küstahlığınız yetti artık!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2668
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2812
 msgid ""
 "You are wrong, Malifor, for you shall be the one who is destroyed. You are "
 "cruel, merciless and a terror to all that lives. The world will be a better "
@@ -3650,7 +3718,7 @@ msgstr ""
 "olacak!"
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2673
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2817
 msgid ""
 "To feed your greed and hunger you have terrorized all that is good. You have "
 "disturbed the rest of the brave defenders of Knalga. Now, your evil reign "
@@ -3661,7 +3729,7 @@ msgstr ""
 "geldi."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2678
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2822
 msgid ""
 "Fools! Don’t think it’s so easy to kill me. Your corpses shall all soon be "
 "serving me. Fall on them, my hordes!"
@@ -3670,59 +3738,59 @@ msgstr ""
 "veya geç bana hizmet edecek. Herkes ölecek ve orduma katılacak!"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2716
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2860
 msgid "HAHAHAHA, DEATH HAS NO EFFECT ON ME YOU FOOLS!"
 msgstr "HAHAHAHA, ÖLÜMÜN BANA BİR ETKİSİ YOKTUR, ŞAPŞALLAR!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2721
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2865
 msgid "Well, blades don’t work."
 msgstr "Şeyy, bıçaklar işe yaramiyor."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2731
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2875
 msgid "HAHAHAHA, YOUR IDIOCY AMUSES ME GREATLY!"
 msgstr "HAHAHAHA, SENİ GERZEK BENİ ÇOK EĞLENDİRİYORSUN!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2736
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2880
 msgid "Geez, how are we going to kill him? This weapon is ineffective!"
 msgstr "Ama, onu nasıl öldüreceğiz? Bu silah etkisiz!"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2746
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2890
 msgid "YOU PUNY MORTALS SHALL SOON BE SERVING ME!"
 msgstr "SİZ MİNİK ÖLÜMLÜLER ER GEÇ BANA HİZMET EDECEKSİNİZ!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2751
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2895
 #, fuzzy
 #| msgid "That blasted skeleton! Even fire has no effect on him!"
 msgid "Blast it! Even fire has no effect on him!"
 msgstr "Şu lanet iskeletler! Ateş bile etki etmiyor, bunlara!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2756
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2900
 msgid "Let’s try using something different on him."
 msgstr "Üzerinde farklı bir şey kullanmayı deneyelim."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2771
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2915
 msgid "AAAAAAHHHHHH!"
 msgstr "AAAAAAHHHHHH!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2776
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2920
 msgid "I see now. It is impossible to destroy him by ordinary means."
 msgstr "İşte göründü. Sıradan yöntemlerle öldürmek mümkün değil."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2781
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2925
 msgid "Then how are we going to destroy him? Surely there must be a way."
 msgstr "O halde onu nasıl öldüreceğiz? Mutlaka bir yolu olmalı."
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2786
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2930
 msgid ""
 "Yes, I think there is, but only myself or Thera have the means to do it. "
 "Come on Thera, let’s destroy that old skeleton."
@@ -3731,33 +3799,33 @@ msgstr ""
 "gel, şu eski iskeleti yok edelim."
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2791
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2935
 msgid "Yeah, I can’t wait to get my hands on that bastard!"
 msgstr "Bu alçağı ellerimle gebertmek için bekleyemeyeceğim!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2796
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2940
 msgid "That was very unladylike of you."
 msgstr "Bu senin söylem senin gibi bir hanımefendiye uymadı."
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2801
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2945
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:451
 msgid "(<i>Giggle</i>) Sorry."
 msgstr "(<i>Kıkırdar</i>)  Üzgünüm."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2818
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2962
 msgid "AHHHH! YOU BLASTED MAGE!"
 msgstr "AHHHHHH! LANET OLASI BÜYÜCÜ!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2823
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2967
 msgid "Good. We finally got him. He is dissolving."
 msgstr "Güzel. Sonunda işini bitirdik. Artık geri gelemez."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2828
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2972
 msgid ""
 "Curses on you you blasted mages, curses on you you blasted dwarves, curses "
 "on you you blasted humans, and CURSES ON YOU YOU BLASTED TALLIN! MAY YOUR "
@@ -3770,12 +3838,12 @@ msgstr ""
 "SEVDİKLERİN SENİ TERK ETSİN! KAFANA YILDIRIMLAR DÜŞSÜN!..."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2833
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2977
 msgid "May you shut your ugly mouth and hurry up and die."
 msgstr "Kapat şu lanet gaganı ve çabuk öl."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2838
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2982
 msgid ""
 "MAY THE EARTH OPEN UP AND SWALLOW YOU! MAY ALL YOUR TEETH FALL OUT! MAY YOU "
 "BECOME A WEAK SKINNY OLD MAN! MAY—"
@@ -3784,22 +3852,22 @@ msgstr ""
 "OLASIN!..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2853
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2997
 msgid "Finally! He has been reduced to dust."
 msgstr "Nihayet! Küle dönüştü."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2858
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:3002
 msgid "At last! Victory is ours! Good work, men!"
 msgstr "Sonunda! Zafer bizim! İyi işti arkadaşlar!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2863
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:3007
 msgid "So, where to now, Tallin?"
 msgstr "O halde, şimdi nereye Talin?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2868
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:3012
 msgid ""
 "Now, let’s get back to the dwarves and see what progress they have made in "
 "forging us weapons."

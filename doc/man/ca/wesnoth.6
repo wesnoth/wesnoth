@@ -89,7 +89,7 @@ habilita alguns mecanismes de depuració Lua
 \fB\-\-strict\-lua\fP
 disallow deprecated Lua API calls
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 diffs the two WML files; does not preprocess them first (to do that, run
 them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
 to the file indicated by \fI\-\-output\fP.
@@ -213,7 +213,7 @@ Wesnoth. Similar a \fB\-\-script\fP, però el fitxer Lua hauria de retornar una
 funció que s'executarà com a corutina i es despertarà periòdicament amb
 actualitzacions.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 applies a DiffWML patch to a WML file; does not preprocess either of the
 files.  Outputs the patched WML to standard output or to the file indicated
 by \fI\-\-output\fP.
@@ -298,8 +298,8 @@ posa el paquet \fBpackage\fP a disposició dels scripts lua, perquè puguin
 carregar paquets arbitraris. No feu això amb scripts no fiables! Aquesta
 acció dona a lua els mateixos permisos que l'executable wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ path\fP
-sets the WML schema for use with \fB\-V,\-\-validate\fP.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 estableix el directori de dades de l'usuari a \fIname\fP a $HOME o «My
@@ -325,7 +325,7 @@ validates the WML of the given addon as you play.
 \fB\-\-validate\-core\fP
 validates the core WML as you play.
 .TP 
-\fB\-\-validate\-schema \ path\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 validates a file as a WML schema.
 .TP 
 \fB\-\-validcache\fP

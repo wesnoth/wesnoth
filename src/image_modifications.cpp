@@ -26,7 +26,7 @@
 #include "utils/from_chars.hpp"
 
 #include "formula/formula.hpp"
-#include "formula/callable.hpp"
+#include "formula/callable_objects.hpp"
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
@@ -238,23 +238,20 @@ void wipe_alpha_modification::operator()(surface& src) const
 }
 
 // TODO: Is this useful enough to move into formula/callable_objects?
-class pixel_callable : public wfl::formula_callable
+class pixel_callable : public wfl::color_callable
 {
 public:
 	pixel_callable(SDL_Point p, color_t clr, uint32_t w, uint32_t h)
-		: p(p), clr(clr), w(w), h(h)
+		: color_callable(clr), p(p), w(w), h(h)
 	{}
 
 	void get_inputs(wfl::formula_input_vector& inputs) const override
 	{
+		color_callable::get_inputs(inputs);
 		add_input(inputs, "x");
 		add_input(inputs, "y");
 		add_input(inputs, "u");
 		add_input(inputs, "v");
-		add_input(inputs, "red");
-		add_input(inputs, "green");
-		add_input(inputs, "blue");
-		add_input(inputs, "alpha");
 		add_input(inputs, "height");
 		add_input(inputs, "width");
 	}
@@ -266,14 +263,6 @@ public:
 			return variant(p.x);
 		} else if(key == "y") {
 			return variant(p.y);
-		} else if(key == "red") {
-			return variant(clr.r);
-		} else if(key == "green") {
-			return variant(clr.g);
-		} else if(key == "blue") {
-			return variant(clr.b);
-		} else if(key == "alpha") {
-			return variant(clr.a);
 		} else if(key == "width") {
 			return variant(w);
 		} else if(key == "height") {
@@ -284,12 +273,11 @@ public:
 			return variant(p.y / static_cast<float>(h));
 		}
 
-		return variant();
+		return color_callable::get_value(key);
 	}
 
 private:
 	SDL_Point p;
-	color_t clr;
 	uint32_t w, h;
 };
 
@@ -300,7 +288,7 @@ void adjust_alpha_modification::operator()(surface& src) const
 
 		surface_lock lock(src);
 		uint32_t* cur = lock.pixels();
-		uint32_t* const end = cur + src->w * src->h;
+		uint32_t* const end = cur + src.area();
 		uint32_t* const beg = cur;
 
 		while(cur != end) {
@@ -334,7 +322,7 @@ void adjust_channels_modification::operator()(surface& src) const
 
 		surface_lock lock(src);
 		uint32_t* cur = lock.pixels();
-		uint32_t* const end = cur + src->w * src->h;
+		uint32_t* const end = cur + src.area();
 		uint32_t* const beg = cur;
 
 		while(cur != end) {
@@ -493,7 +481,7 @@ void o_modification::operator()(surface& src) const
 
 		surface_lock lock(src);
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + src->w * src->h;
+		uint32_t* end = beg + src.area();
 
 		while(beg != end) {
 			uint8_t alpha = (*beg) >> 24;
@@ -1097,12 +1085,8 @@ REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 // xBRZ
 REGISTER_MOD_PARSER(XBRZ, args)
 {
-	int z = utils::from_chars<int>(args).value_or(0);
-	if(z < 1 || z > 5) {
-		z = 5; //only values 2 - 5 are permitted for xbrz scaling factors.
-	}
-
-	return std::make_unique<xbrz_modification>(z);
+	const int factor = std::clamp(utils::from_chars<int>(args).value_or(1), 1, 6);
+	return std::make_unique<xbrz_modification>(factor);
 }
 
 // Gaussian-like blur

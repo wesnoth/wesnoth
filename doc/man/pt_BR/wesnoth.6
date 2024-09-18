@@ -85,7 +85,7 @@ habilita alguns mecanismos de deb da Lua
 \fB\-\-strict\-lua\fP
 proibi chamadas de depreciação de Lua API
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 diffs os dois arquivos WML; não pre\-processa eles primeiro (para fazer isso,
 primeiro use \fB\-p\fP). Diff sai como DiffWML na saída padrão ou para o arquivo
 indicado por \fI\-\-output\fP.
@@ -205,7 +205,7 @@ preferências. Perigoso.
 wesnoth. Identico ao \fB\-\-script\fP, mas arquivos Lua devem retornar uma função
 que irá agir como uma co\-rotina e periodicamente despertar com atualizações.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 aplica um patch DiffWML para um arquivo WML; não pré\-processa nenhum dos
 dois arquivos.  Aloca o WML patched para a saída padrão ou para o arquivo
 indicado por \fI\-\-output\fP.
@@ -289,8 +289,8 @@ possam carregar pacotes arbitrários. Não use isso com scripts não
 confiáveis! Esta ação faz dá ao lua o mesmo nível de permissão que o
 executável do wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ path\fP
-configura o WML schema para ser usado com \fB\-V,\-\-validate\fP.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 define o diretório dos dados do usuário para \fIname\fP em $HOME ou "My
@@ -314,7 +314,7 @@ valida o WML do addon enquanto você joga.
 \fB\-\-validate\-core\fP
 valida o core WML enquanto você joga.
 .TP 
-\fB\-\-validate\-schema \ path\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 valida um arquivo como WML schema.
 .TP 
 \fB\-\-validcache\fP

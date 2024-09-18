@@ -59,6 +59,8 @@ public:
 	void set_type(const std::string& value) { type_ = value; set_changed(true); }
 	void set_icon(const std::string& value) { icon_ = value; set_changed(true); }
 	void set_range(const std::string& value) { range_ = value; set_changed(true); }
+	void set_min_range(int value) { min_range_ = value; set_changed(true); }
+	void set_max_range(int value) { max_range_ = value; set_changed(true); }
 	void set_accuracy(int value) { accuracy_ = value; set_changed(true); }
 	void set_parry(int value) { parry_ = value; set_changed(true); }
 	void set_damage(int value) { damage_ = value; set_changed(true); }
@@ -137,7 +139,7 @@ public:
 
 	// In unit_types.cpp:
 
-	bool matches_filter(const config& filter, const std::string& tag_name = "") const;
+	bool matches_filter(const config& filter, const std::string& check_if_recursion = "") const;
 	bool apply_modification(const config& cfg);
 	bool describe_modification(const config& cfg,std::string* description);
 
@@ -195,7 +197,7 @@ public:
 	 *
 	 * This is a cheap function, so no reason to optimise by doing some filters before calling it.
 	 * However, it only expects to be called in a single thread, but the whole of attack_type makes
-	 * that assumption, for example its' mutable members are assumed to be set up by the current
+	 * that assumption, for example its mutable members are assumed to be set up by the current
 	 * caller (or caller's caller, probably several layers up).
 	 */
 	recursion_guard update_variables_recursion() const;

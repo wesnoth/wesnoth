@@ -492,7 +492,7 @@ void playmp_controller::process_network_side_drop_impl(const config& side_drop_c
 	const int  side_drop = side_drop_c["side_num"].to_int(0);
 	std::size_t index = side_drop -1;
 
-	player_type_changed_ |= side_drop == game_display::get_singleton()->playing_side();
+	player_type_changed_ |= side_drop == game_display::get_singleton()->playing_team().side();
 
 	if (index >= gamestate().board_.teams().size()) {
 		ERR_NW << "unknown side " << side_drop << " is dropping game";
@@ -654,7 +654,7 @@ void playmp_controller::process_network_change_controller_impl(const config& cha
 
 	get_whiteboard()->on_change_controller(side,tm);
 
-	player_type_changed_ |= game_display::get_singleton()->playing_side() == side && (was_local || tm.is_local());
+	player_type_changed_ |= game_display::get_singleton()->playing_team().side() == side && (was_local || tm.is_local());
 }
 
 void playmp_controller::send_actions()

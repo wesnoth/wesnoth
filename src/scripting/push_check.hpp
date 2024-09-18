@@ -20,12 +20,17 @@
 #include "lua/wrapper_lauxlib.h"
 #include "tstring.hpp"
 #include "map/location.hpp"
+#include "variable.hpp"
 
 #include <cassert>
 #include <string_view>
 #include <type_traits>
 
-struct lua_index_raw { int index; };
+struct lua_index_raw {
+	int index;
+	lua_index_raw(int i) : index(i) {}
+	lua_index_raw(lua_State* L) : index(lua_gettop(L)) {}
+};
 
 namespace lua_check_impl
 {
@@ -66,15 +71,21 @@ namespace lua_check_impl
 
 	template<typename T>
 	std::enable_if_t<std::is_same_v<T, lua_index_raw>, lua_index_raw>
-	lua_check(lua_State * /*L*/, int n)
+	lua_check(lua_State * L, int n)
 	{
-		return lua_index_raw{ n };
+		return lua_index_raw{ lua_absindex(L, n) };
 	}
 	template<typename T>
 	std::enable_if_t<std::is_same_v<T, lua_index_raw>, lua_index_raw>
-	lua_to_or_default(lua_State * /*L*/, int n, const T& /*def*/)
+	lua_to_or_default(lua_State * L, int n, const T& /*def*/)
 	{
-		return lua_index_raw{ n };
+		return lua_index_raw{ lua_absindex(L, n) };
+	}
+	template<typename T>
+	std::enable_if_t<std::is_same_v<T, lua_index_raw>, void>
+	lua_push(lua_State * L, lua_index_raw n)
+	{
+		lua_pushvalue(L, n.index);
 	}
 
 	//std::string
@@ -136,6 +147,27 @@ namespace lua_check_impl
 	lua_push(lua_State *L, const config& val)
 	{
 		luaW_pushconfig(L, val);
+	}
+
+	//vconfig
+	template<typename T>
+	std::enable_if_t<std::is_same_v<T, vconfig>, vconfig>
+	lua_check(lua_State *L, int n)
+	{
+		return luaW_checkvconfig(L, n);
+	}
+	template<typename T>
+	std::enable_if_t<std::is_same_v<T, vconfig>, vconfig>
+	lua_to_or_default(lua_State *L, int n, const T& def)
+	{
+		vconfig cfg = vconfig::unconstructed_vconfig();
+		return luaW_tovconfig(L, n, cfg) ? cfg : def;
+	}
+	template<typename T>
+	std::enable_if_t<std::is_same_v<T, vconfig>, void>
+	lua_push(lua_State *L, const vconfig& val)
+	{
+		luaW_pushvconfig(L, val);
 	}
 
 	//location
@@ -294,7 +326,8 @@ namespace lua_check_impl
 			for (int i = 1, i_end = lua_rawlen(L, n); i <= i_end; ++i)
 			{
 				lua_rawgeti(L, n, i);
-				res.push_back(lua_check_impl::lua_check<std::decay_t<typename T::reference>>(L, -1));
+				// By using insert instead of push_back, it magically "just works" for sets too.
+				res.insert(res.end(), lua_check_impl::lua_check<std::decay_t<typename T::reference>>(L, -1));
 				lua_pop(L, 1);
 			}
 			return res;
@@ -372,12 +405,6 @@ namespace lua_check_impl
 			lua_pushnil(L);
 		}
 	}
-}
-
-template<typename T>
-typename T::type lua_enum_check(lua_State *L, int n)
-{
-	return lua_check_impl::lua_check<T>(L, n);
 }
 
 template<typename T>

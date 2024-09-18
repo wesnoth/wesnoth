@@ -135,10 +135,10 @@ void build_sheet_from_images(const std::vector<fs::path>& file_paths)
 	// Sort the surfaces by area, largest last.
 	// TODO: should we use plain sort? Output sheet seems ever so slightly smaller when sort is not stable.
 	std::stable_sort(elements.begin(), elements.end(),
-		[](const auto& lhs, const auto& rhs) { return lhs.surf->w * lhs.surf->h < rhs.surf->w * rhs.surf->h; });
+		[](const auto& lhs, const auto& rhs) { return lhs.surf.area() < rhs.surf.area(); });
 
 	const unsigned total_area = std::accumulate(elements.begin(), elements.end(), 0,
-		[](const int val, const auto& s) { return val + (s.surf->w * s.surf->h); });
+		[](const int val, const auto& s) { return val + s.surf.area(); });
 
 	const unsigned side_length = static_cast<unsigned>(std::sqrt(total_area) * 1.3);
 

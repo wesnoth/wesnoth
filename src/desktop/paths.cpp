@@ -150,8 +150,10 @@ inline std::string pretty_path(const std::string& path)
 
 inline config get_bookmarks_config()
 {
-	auto cfg = prefs::get().dir_bookmarks();
-	return cfg ? *cfg : config{};
+	const auto& cfg = prefs::get().dir_bookmarks();
+	return cfg.has_value() ? cfg.value() : config();
+
+//	return cfg ? *cfg : config{};
 }
 
 inline void commit_bookmarks_config(config& cfg)

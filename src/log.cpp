@@ -425,11 +425,12 @@ std::string get_timespan(const std::time_t& t) {
 static void print_precise_timestamp(std::ostream& out) noexcept
 {
 	try {
-		int64_t micros = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
-		std::time_t seconds = micros/1'000'000;
-		int fractional = micros-(seconds*1'000'000);
+		auto now = std::chrono::system_clock::now();
+		auto seconds = std::chrono::time_point_cast<std::chrono::seconds>(now);
+		auto fractional = std::chrono::duration_cast<std::chrono::microseconds>(now - seconds);
+		std::time_t tm = std::chrono::system_clock::to_time_t(seconds);
 		char c = out.fill('0');
-		out << std::put_time(std::localtime(&seconds), "%Y%m%d %H:%M:%S") << "." << std::setw(6) << fractional << ' ';
+		out << std::put_time(std::localtime(&tm), "%Y%m%d %H:%M:%S") << "." << std::setw(6) << fractional.count() << ' ';
 		out.fill(c);
 	} catch(...) {}
 }
@@ -531,24 +532,20 @@ void log_in_progress::set_auto_newline(bool auto_newline) {
 void scope_logger::do_log_entry(const std::string& str) noexcept
 {
 	str_ = str;
-	try {
-		ticks_ = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
-	} catch(...) {}
+	start_ = std::chrono::steady_clock::now();
 	debug()(domain_, false, true) | formatter() << "{ BEGIN: " << str_;
 	++indent;
 }
 
 void scope_logger::do_log_exit() noexcept
 {
-	long ticks = 0;
-	try {
-		ticks = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count() - ticks_;
-	} catch(...) {}
 	--indent;
 	auto output = debug()(domain_, false, true);
 	output.set_indent(indent);
 	if(timestamp) output.enable_timestamp();
-	output | formatter() << "} END: " << str_ << " (took " << ticks << "us)";
+	auto now = std::chrono::steady_clock::now();
+	auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(now - start_);
+	output | formatter() << "} END: " << str_ << " (took " << elapsed.count() << "us)"; // FIXME c++20 stream: operator
 }
 
 std::stringstream& log_to_chat()

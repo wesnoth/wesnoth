@@ -152,7 +152,7 @@ void show_recursion_warning(const attack_type& attack, const config& filter) {
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
  */
-bool matches_simple_filter(const attack_type& attack, const config& filter, const std::string& tag_name)
+bool matches_simple_filter(const attack_type& attack, const config& filter, const std::string& check_if_recursion)
 {
 	//update and check variable_recursion for prevent check special_id/type_active in case of infinite recursion.
 	attack_type::recursion_guard filter_lock= attack.update_variables_recursion();
@@ -162,6 +162,8 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 	}
 
 	const std::set<std::string> filter_range = utils::split_set(filter["range"].str());
+	const std::string& filter_min_range = filter["min_range"];
+	const std::string& filter_max_range = filter["max_range"];
 	const std::string& filter_damage = filter["damage"];
 	const std::string& filter_attacks = filter["number"];
 	const std::string& filter_accuracy = filter["accuracy"];
@@ -177,6 +179,12 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 	const std::vector<std::string> filter_special_id_active = utils::split(filter["special_id_active"]);
 	const std::vector<std::string> filter_special_type_active = utils::split(filter["special_type_active"]);
 	const std::string filter_formula = filter["formula"];
+
+	if (!filter_min_range.empty() && !in_ranges(attack.min_range(), utils::parse_ranges_int(filter_min_range)))
+		return false;
+
+	if (!filter_max_range.empty() && !in_ranges(attack.max_range(), utils::parse_ranges_int(filter_max_range)))
+		return false;
 
 	if ( !filter_range.empty() && filter_range.count(attack.range()) == 0 )
 		return false;
@@ -207,7 +215,7 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 		// should always use the base type of the weapon. Otherwise it will flip-flop between the
 		// special being active or inactive based on whether ATTACK_RECURSION_LIMIT is even or odd;
 		// without this it will also behave differently when calculating resistance_against.
-		if(tag_name == "damage_type"){
+		if(check_if_recursion == "damage_type"){
 			if (filter_type.count(attack.type()) == 0){
 				return false;
 			}
@@ -319,25 +327,25 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 /**
  * Returns whether or not *this matches the given @a filter.
  */
-bool attack_type::matches_filter(const config& filter, const std::string& tag_name) const
+bool attack_type::matches_filter(const config& filter, const std::string& check_if_recursion) const
 {
 	// Handle the basic filter.
-	bool matches = matches_simple_filter(*this, filter, tag_name);
+	bool matches = matches_simple_filter(*this, filter, check_if_recursion);
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for (const config::any_child condition : filter.all_children_range() )
 	{
 		// Handle [and]
 		if ( condition.key == "and" )
-			matches = matches && matches_filter(condition.cfg, tag_name);
+			matches = matches && matches_filter(condition.cfg, check_if_recursion);
 
 		// Handle [or]
 		else if ( condition.key == "or" )
-			matches = matches || matches_filter(condition.cfg, tag_name);
+			matches = matches || matches_filter(condition.cfg, check_if_recursion);
 
 		// Handle [not]
 		else if ( condition.key == "not" )
-			matches = matches && !matches_filter(condition.cfg, tag_name);
+			matches = matches && !matches_filter(condition.cfg, check_if_recursion);
 	}
 
 	return matches;
@@ -362,6 +370,10 @@ bool attack_type::apply_modification(const config& cfg)
 	const std::string& set_icon = cfg["set_icon"];
 	const std::string& del_specials = cfg["remove_specials"];
 	auto set_specials = cfg.optional_child("set_specials");
+	const std::string& increase_min_range = cfg["increase_min_range"];
+	const std::string& set_min_range = cfg["set_min_range"];
+	const std::string& increase_max_range = cfg["increase_max_range"];
+	const std::string& set_max_range = cfg["set_max_range"];
 	const std::string& increase_damage = cfg["increase_damage"];
 	const std::string& set_damage = cfg["set_damage"];
 	const std::string& increase_attacks = cfg["increase_attacks"];
@@ -425,6 +437,22 @@ bool attack_type::apply_modification(const config& cfg)
 		for(const config::any_child value : set_specials->all_children_range()) {
 			specials_.add_child(value.key, value.cfg);
 		}
+	}
+
+	if(set_min_range.empty() == false) {
+		min_range_ = std::stoi(set_min_range);
+	}
+
+	if(increase_min_range.empty() == false) {
+		min_range_ = utils::apply_modifier(min_range_, increase_min_range);
+	}
+
+	if(set_max_range.empty() == false) {
+		max_range_ = std::stoi(set_max_range);
+	}
+
+	if(increase_max_range.empty() == false) {
+		max_range_ = utils::apply_modifier(max_range_, increase_max_range);
 	}
 
 	if(set_damage.empty() == false) {
@@ -514,6 +542,10 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 	// Did the caller want the description?
 	if(description != nullptr) {
+		const std::string& increase_min_range = cfg["increase_min_range"];
+		const std::string& set_min_range = cfg["set_min_range"];
+		const std::string& increase_max_range = cfg["increase_max_range"];
+		const std::string& set_max_range = cfg["set_max_range"];
 		const std::string& increase_damage = cfg["increase_damage"];
 		const std::string& set_damage = cfg["set_damage"];
 		const std::string& increase_attacks = cfg["increase_attacks"];
@@ -528,6 +560,34 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		const std::string& set_attacks_used = cfg["set_attacks_used"];
 
 		std::vector<t_string> desc;
+
+		if(!set_min_range.empty()) {
+			desc.emplace_back(VGETTEXT(
+				// TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
+				"$number min range",
+				{{"number", set_min_range}}));
+		}
+
+		if(!increase_min_range.empty()) {
+			desc.emplace_back(VGETTEXT(
+				// TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
+				"<span color=\"$color\">$number_or_percent</span> min range",
+				{{"number_or_percent", utils::print_modifier(increase_min_range)}, {"color", increase_min_range[0] == '-' ? "#f00" : "#0f0"}}));
+		}
+
+		if(!set_max_range.empty()) {
+			desc.emplace_back(VGETTEXT(
+				// TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
+				"$number max range",
+				{{"number", set_max_range}}));
+		}
+
+		if(!increase_max_range.empty()) {
+			desc.emplace_back(VGETTEXT(
+				// TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
+				"<span color=\"$color\">$number_or_percent</span> max range",
+				{{"number_or_percent", utils::print_modifier(increase_max_range)}, {"color", increase_max_range[0] == '-' ? "#f00" : "#0f0"}}));
+		}
 
 		if(!increase_damage.empty()) {
 			desc.emplace_back(VNGETTEXT(

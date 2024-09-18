@@ -72,15 +72,12 @@ const game_state & play_controller::hotkey_handler::gamestate() const {
 bool play_controller::hotkey_handler::browse() const { return play_controller_.is_browsing(); }
 bool play_controller::hotkey_handler::linger() const { return play_controller_.is_linger_mode(); }
 
-const team & play_controller::hotkey_handler::viewing_team() const { return play_controller_.get_teams()[gui()->viewing_team()]; }
-bool play_controller::hotkey_handler::viewing_team_is_playing() const { return gui()->viewing_team() == gui()->playing_team(); }
-
 void play_controller::hotkey_handler::objectives(){
 	menu_handler_.objectives();
 }
 
 void play_controller::hotkey_handler::show_statistics(){
-	menu_handler_.show_statistics(gui()->viewing_team()+1);
+	menu_handler_.show_statistics(gui()->viewing_team().side());
 }
 
 void play_controller::hotkey_handler::unit_list(){
@@ -112,9 +109,7 @@ void play_controller::hotkey_handler::preferences(){
 }
 
 void play_controller::hotkey_handler::left_mouse_click(){
-	int x = gui()->get_location_x(gui()->mouseover_hex());
-	int y = gui()->get_location_y(gui()->mouseover_hex());
-
+	const auto [x, y] = gui()->get_location(gui()->mouseover_hex());
 	SDL_MouseButtonEvent event;
 
 	event.button = 1;
@@ -147,9 +142,7 @@ void play_controller::hotkey_handler::select_hex(){
 }
 
 void play_controller::hotkey_handler::right_mouse_click(){
-	int x = gui()->get_location_x(gui()->mouseover_hex());
-	int y = gui()->get_location_y(gui()->mouseover_hex());
-
+	const auto [x, y] = gui()->get_location(gui()->mouseover_hex());
 	SDL_MouseButtonEvent event;
 
 	event.button = 3;
@@ -380,7 +373,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::ui_comma
 		return !events::commands_disabled &&
 			menu_handler_.current_unit().valid() &&
 			!(menu_handler_.current_unit()->unrenamable()) &&
-			menu_handler_.current_unit()->side() == gui()->viewing_side() &&
+			menu_handler_.current_unit()->side() == gui()->viewing_team().side() &&
 			play_controller_.get_teams()[menu_handler_.current_unit()->side() - 1].is_local_human();
 
 	default:
@@ -517,7 +510,7 @@ bool play_controller::hotkey_handler::in_context_menu(const hotkey::ui_command& 
 	case hotkey::HOTKEY_RECALL: {
 		// last_hex_ is set by mouse_events::mouse_motion
 		const map_location & last_hex = mouse_handler_.get_last_hex();
-		const int viewing_side = gui()->viewing_side();
+		const int viewing_side = gui()->viewing_team().side();
 
 		// A quick check to save us having to create the future map and
 		// possibly loop through all units.
@@ -556,7 +549,7 @@ hotkey::ACTION_STATE play_controller::hotkey_handler::get_action_state(const hot
 	case hotkey::HOTKEY_ZOOM_DEFAULT:
 		return (gui()->get_zoom_factor() == 1.0) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_DELAY_SHROUD:
-		return viewing_team().auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
+		return gui()->viewing_team().auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
 	default:
 		return hotkey::ACTION_STATELESS;
 	}

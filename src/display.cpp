@@ -152,7 +152,7 @@ display::display(const display_context* dc,
 	, halo_man_()
 	, wb_(wb)
 	, exclusive_unit_draw_requests_()
-	, currentTeam_(0)
+	, viewing_team_index_(0)
 	, dont_show_all_(false)
 	, xpos_(0)
 	, ypos_(0)
@@ -190,7 +190,7 @@ display::display(const display_context* dc,
 	, animate_map_(true)
 	, animate_water_(true)
 	, flags_()
-	, activeTeam_(0)
+	, playing_team_index_(0)
 	, drawing_buffer_()
 	, map_screenshot_(false)
 	, reach_map_()
@@ -258,42 +258,28 @@ void display::set_theme(const std::string& new_theme)
 	queue_rerender();
 }
 
-void display::init_flags() {
-
+void display::init_flags()
+{
 	flags_.clear();
 	if (!dc_) return;
 	flags_.resize(dc_->teams().size());
 
-	std::vector<std::string> side_colors;
-	side_colors.reserve(dc_->teams().size());
-
 	for(const team& t : dc_->teams()) {
-		std::string side_color = t.color();
-		side_colors.push_back(side_color);
-		init_flags_for_side_internal(t.side() - 1, side_color);
+		reinit_flags_for_team(t);
 	}
 }
 
 void display::reinit_flags_for_team(const team& t)
 {
-	init_flags_for_side_internal(t.side() - 1, t.color());
-}
-
-void display::init_flags_for_side_internal(std::size_t n, const std::string& side_color)
-{
-	assert(dc_ != nullptr);
-	assert(n < dc_->teams().size());
-	assert(n < flags_.size());
-
-	std::string flag = dc_->teams()[n].flag();
+	std::string flag = t.flag();
 	std::string old_rgb = game_config::flag_rgb;
-	std::string new_rgb = side_color;
+	std::string new_rgb = t.color();
 
 	if(flag.empty()) {
 		flag = game_config::images::flag;
 	}
 
-	LOG_DP << "Adding flag for team " << n << " from animation " << flag;
+	LOG_DP << "Adding flag for side " << t.side() << " from animation " << flag;
 
 	// Must recolor flag image
 	animated<image::locator> temp_anim;
@@ -310,7 +296,7 @@ void display::init_flags_for_side_internal(std::size_t n, const std::string& sid
 			try {
 				time = std::max<int>(1, std::stoi(sub_items.back()));
 			} catch(const std::invalid_argument&) {
-				ERR_DP << "Invalid time value found when constructing flag for side " << n << ": " << sub_items.back();
+				ERR_DP << "Invalid time value found when constructing flag for side " << t.side() << ": " << sub_items.back();
 			}
 		}
 
@@ -320,31 +306,28 @@ void display::init_flags_for_side_internal(std::size_t n, const std::string& sid
 		temp_anim.add_frame(time, flag_image);
 	}
 
-	animated<image::locator>& f = flags_[n];
+	animated<image::locator>& f = flags_[t.side() - 1];
 	f = temp_anim;
 	auto time = f.get_end_time();
 	if (time > 0) {
 		f.start_animation(randomness::rng::default_instance().get_random_int(0, time-1), true);
-	}
-	else {
+	} else {
 		// this can happen if both flag and game_config::images::flag are empty.
-		ERR_DP << "missing flag for team" << n;
+		ERR_DP << "missing flag for side " << t.side();
 	}
 }
 
 texture display::get_flag(const map_location& loc)
 {
-	if(!get_map().is_village(loc)) {
-		return texture();
-	}
-
-	for (const team& t : dc_->teams()) {
-		if (t.owns_village(loc) && (!fogged(loc) || !dc_->get_team(viewing_side()).is_enemy(t.side())))
-		{
+	for(const team& t : dc_->teams()) {
+		if(t.owns_village(loc) && (!fogged(loc) || !viewing_team().is_enemy(t.side()))) {
 			auto& flag = flags_[t.side() - 1];
 			flag.update_last_draw_time();
-			const image::locator &image_flag = animate_map_ ?
-				flag.get_current_frame() : flag.get_first_frame();
+
+			const image::locator& image_flag = animate_map_
+				? flag.get_current_frame()
+				: flag.get_first_frame();
+
 			return image::get_texture(image_flag, image::TOD_COLORED);
 		}
 	}
@@ -352,10 +335,20 @@ texture display::get_flag(const map_location& loc)
 	return texture();
 }
 
-void display::set_team(std::size_t teamindex, bool show_everything)
+const team& display::playing_team() const
+{
+	return dc_->teams()[playing_team_index()];
+}
+
+const team& display::viewing_team() const
+{
+	return dc_->teams()[viewing_team_index()];
+}
+
+void display::set_viewing_team_index(std::size_t teamindex, bool show_everything)
 {
 	assert(teamindex < dc_->teams().size());
-	currentTeam_ = teamindex;
+	viewing_team_index_ = teamindex;
 	if(!show_everything) {
 		labels().set_team(&dc_->teams()[teamindex]);
 		dont_show_all_ = true;
@@ -369,10 +362,10 @@ void display::set_team(std::size_t teamindex, bool show_everything)
 	}
 }
 
-void display::set_playing_team(std::size_t teamindex)
+void display::set_playing_team_index(std::size_t teamindex)
 {
 	assert(teamindex < dc_->teams().size());
-	activeTeam_ = teamindex;
+	playing_team_index_ = teamindex;
 	invalidate_game_status();
 }
 
@@ -396,12 +389,6 @@ std::string display::remove_exclusive_draw(const map_location& loc)
 		exclusive_unit_draw_requests_.erase(loc);
 	}
 	return id;
-}
-
-const time_of_day & display::get_time_of_day(const map_location& /*loc*/) const
-{
-	static time_of_day tod;
-	return tod;
 }
 
 void display::update_tod(const time_of_day* tod_override)
@@ -443,12 +430,6 @@ void display::fill_images_list(const std::string& prefix, std::vector<std::strin
 	}
 	if (images.empty())
 		images.emplace_back();
-}
-
-const std::string& display::get_variant(const std::vector<std::string>& variants, const map_location &loc)
-{
-	//TODO use better noise function
-	return variants[std::abs(loc.x + loc.y) % variants.size()];
 }
 
 void display::rebuild_all()
@@ -691,19 +672,14 @@ const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 	return res;
 }
 
-bool display::team_valid() const
-{
-	return currentTeam_ < dc_->teams().size();
-}
-
 bool display::shrouded(const map_location& loc) const
 {
-	return is_blindfolded() || (dont_show_all_ && dc_->teams()[currentTeam_].shrouded(loc));
+	return is_blindfolded() || (dont_show_all_ && viewing_team().shrouded(loc));
 }
 
 bool display::fogged(const map_location& loc) const
 {
-	return is_blindfolded() || (dont_show_all_ && dc_->teams()[currentTeam_].fogged(loc));
+	return is_blindfolded() || (dont_show_all_ && viewing_team().fogged(loc));
 }
 
 int display::get_location_x(const map_location& loc) const
@@ -927,13 +903,13 @@ void display::create_buttons()
 		action_work.push_back(std::move(b));
 	}
 
+	menu_buttons_ = std::move(menu_work);
+	action_buttons_ = std::move(action_work);
+
 	if (prevent_draw_) {
 		// buttons start hidden in this case
 		hide_buttons();
 	}
-
-	menu_buttons_ = std::move(menu_work);
-	action_buttons_ = std::move(action_work);
 
 	layout_buttons();
 	DBG_DP << "buttons created";
@@ -1616,7 +1592,7 @@ void display::recalculate_minimap()
 
 	minimap_renderer_ = image::prep_minimap_for_rendering(
 		get_map(),
-		dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
+		dc_->teams().empty() ? nullptr : &viewing_team(),
 		nullptr,
 		(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr
 	);
@@ -1689,7 +1665,7 @@ void display::draw_minimap_units()
 
 	for(const auto& u : dc_->units()) {
 		if (fogged(u.get_location()) ||
-		    (dc_->teams()[currentTeam_].is_enemy(u.side()) &&
+		    (viewing_team().is_enemy(u.side()) &&
 		     u.invisible(u.get_location())) ||
 			 u.get_hidden()) {
 			continue;
@@ -1700,9 +1676,9 @@ void display::draw_minimap_units()
 
 		if(!prefs::get().minimap_movement_coding()) {
 			auto status = orb_status::allied;
-			if(dc_->teams()[currentTeam_].is_enemy(side)) {
+			if(viewing_team().is_enemy(side)) {
 				status = orb_status::enemy;
-			} else if(currentTeam_ + 1 == static_cast<unsigned>(side)) {
+			} else if(viewing_team().side() == side) {
 				status = dc_->unit_orb_status(u);
 			} else {
 				// no-op, status is already set to orb_status::allied;
@@ -1920,15 +1896,13 @@ void display::toggle_default_zoom()
 
 bool display::tile_fully_on_screen(const map_location& loc) const
 {
-	int x = get_location_x(loc);
-	int y = get_location_y(loc);
+	const auto [x, y] = get_location(loc);
 	return !outside_area(map_area(), x, y);
 }
 
 bool display::tile_nearly_on_screen(const map_location& loc) const
 {
-	int x = get_location_x(loc);
-	int y = get_location_y(loc);
+	const auto [x, y] = get_location(loc);
 	const SDL_Rect &area = map_area();
 	int hw = hex_width(), hs = hex_size();
 	return x + hs >= area.x - hw && x < area.x + area.w + hw &&
@@ -2055,8 +2029,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 		if(get_map().on_board(*itor) == false) continue;
 		if(check_fogged && fogged(*itor)) continue;
 
-		int x = get_location_x(*itor);
-		int y = get_location_y(*itor);
+		const auto [x, y] = get_location(*itor);
 
 		if (!valid) {
 			minx = x;
@@ -2642,9 +2615,7 @@ void display::draw_invalidated()
 			LOG_DP << "Skipped a locked location when trying to redraw a unit.\n";
 			continue;
 		}
-
-		int xpos = get_location_x(loc);
-		int ypos = get_location_y(loc);
+		const auto [xpos, ypos] = get_location(loc);
 
 		rect hex_rect(xpos, ypos, zoom_, zoom_);
 		if(!hex_rect.overlaps(clip_rect)) {
@@ -2710,70 +2681,22 @@ void display::draw_hex(const map_location& loc)
 			drawing_buffer_add(drawing_layer::grid_bottom, loc,
 				[tex = image::get_texture(grid_bottom, image::TOD_COLORED)](const rect& dest) { draw::blit(tex, dest); });
 		}
-	}
 
-	if(!is_shrouded) {
-		auto it = get_overlays().find(loc);
-		if(it != get_overlays().end()) {
-			std::vector<overlay>& overlays = it->second;
-			if(overlays.size() != 0) {
-				tod_color tod_col = tod.color + color_adjust_;
-				image::light_string lt = image::get_light_string(-1, tod_col.r, tod_col.g, tod_col.b);
+		// overlays (TODO: can we just draw all the overlays in one pass instead of per-hex?)
+		draw_overlays_at(loc);
 
-				for(const overlay& ov : overlays) {
-					bool item_visible_for_team = true;
-					if(dont_show_all_ && !ov.team_name.empty()) {
-						// dont_show_all_ imples that viewing_team() is a valid index to get_teams()
-						const std::string& current_team_name = get_teams()[viewing_team()].team_name();
-						const std::vector<std::string>& current_team_names = utils::split(current_team_name);
-						const std::vector<std::string>& team_names = utils::split(ov.team_name);
-
-						item_visible_for_team = std::find_first_of(team_names.begin(), team_names.end(),
-							current_team_names.begin(), current_team_names.end()) != team_names.end();
-					}
-
-					if(item_visible_for_team && !(fogged(loc) && !ov.visible_in_fog)) {
-						point isize = image::get_size(ov.image, image::HEXED);
-						std::string ipf = ov.image;
-
-						texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
-							? image::get_lighted_texture(ipf, lt)
-							: image::get_texture(ipf, image::HEXED);
-
-						drawing_buffer_add(drawing_layer::terrain_bg, loc, [=](const rect& dest) mutable {
-							// Adjust submerge appropriately
-							const t_translation::terrain_code terrain = get_map().get_terrain(loc);
-							const terrain_type& terrain_info = get_map().get_terrain_info(terrain);
-							const double submerge = terrain_info.unit_submerge();
-
-							submerge_data data = get_submerge_data(dest, submerge, isize, ALPHA_OPAQUE, false, false);
-							if(submerge > 0.0) {
-								// set clip for dry part
-								// smooth_shaded doesn't use the clip information so it's fine to set it up front
-								tex.set_src(data.unsub_src);
-
-								// draw underwater part
-								draw::smooth_shaded(tex, data.alpha_verts);
-							}
-							// draw dry part
-							draw::blit(tex, submerge > 0.0 ? data.unsub_dest : dest);
-						});
-					}
-				}
-			}
+		// village-control flags.
+		if(get_map().is_village(loc)) {
+			drawing_buffer_add(drawing_layer::terrain_bg, loc,
+				[tex = get_flag(loc)](const rect& dest) { draw::blit(tex, dest); });
 		}
-	}
-
-	// village-control flags.
-	if(!is_shrouded) {
-		drawing_buffer_add(drawing_layer::terrain_bg, loc, [tex = get_flag(loc)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
 	// Draw the time-of-day mask on top of the terrain in the hex.
 	// tod may differ from tod if hex is illuminated.
 	const std::string& tod_hex_mask = tod.image_mask;
 	if(tod_hex_mask1 || tod_hex_mask2) {
-		drawing_buffer_add(drawing_layer::terrain_fg, loc, [=](const rect& dest) mutable {
+		drawing_buffer_add(drawing_layer::terrain_fg, loc, [this](const rect& dest) mutable {
 			tod_hex_mask1.set_alpha_mod(tod_hex_alpha1);
 			draw::blit(tod_hex_mask1, dest);
 
@@ -2786,26 +2709,30 @@ void display::draw_hex(const map_location& loc)
 	}
 
 	// Paint arrows
-	arrows_map_t::const_iterator arrows_in_hex = arrows_map_.find(loc);
-	if(arrows_in_hex != arrows_map_.end()) {
-		for (arrow* const a : arrows_in_hex->second) {
-			a->draw_hex(loc);
+	if(auto arrows_in_hex = arrows_map_.find(loc); arrows_in_hex != arrows_map_.end()) {
+		std::vector<texture> to_draw;
+		for(const arrow* a : arrows_in_hex->second) {
+			to_draw.push_back(image::get_texture(a->get_image_for_loc(loc)));
 		}
+
+		drawing_buffer_add(drawing_layer::arrows, loc, [to_draw = std::move(to_draw)](const rect& dest) {
+			for(const texture& t : to_draw) {
+				draw::blit(t, dest);
+			}
+		});
 	}
 
 	// Apply shroud, fog and linger overlay
 
-	if(is_shrouded) {
-		// We apply void also on off-map tiles to shroud the half-hexes too
+	if(is_shrouded || fogged(loc)) {
+		// TODO: better noise function
+		const auto get_variant = [&loc](const std::vector<std::string>& variants) -> const auto& {
+			return variants[std::abs(loc.x + loc.y) % variants.size()];
+		};
+
+		const std::string& img = get_variant(is_shrouded ? shroud_images_ : fog_images_);
 		drawing_buffer_add(drawing_layer::fog_shroud, loc,
-			[tex = image::get_texture(get_variant(shroud_images_, loc), image::TOD_COLORED)](const rect& dest) {
-				draw::blit(tex, dest);
-			});
-	} else if(fogged(loc)) {
-		drawing_buffer_add(drawing_layer::fog_shroud, loc,
-			[tex = image::get_texture(get_variant(fog_images_, loc), image::TOD_COLORED)](const rect& dest) {
-				draw::blit(tex, dest);
-			});
+			[tex = image::get_texture(img, image::TOD_COLORED)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
 	if(!is_shrouded) {
@@ -2817,10 +2744,9 @@ void display::draw_hex(const map_location& loc)
 	}
 
 	if(debug_flag_set(DEBUG_FOREGROUND)) {
+		using namespace std::string_literals;
 		drawing_buffer_add(drawing_layer::unit_default, loc,
-			[tex = image::get_texture(image::locator{"terrain/foreground.png"}, image::TOD_COLORED)](const rect& dest) {
-				draw::blit(tex, dest);
-			});
+			[tex = image::get_texture("terrain/foreground.png"s)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
 	if(on_map) {
@@ -2880,6 +2806,74 @@ void display::draw_hex(const map_location& loc)
 			draw::fill(bg_dest, {0, 0, 0, 0xaa});
 			draw::blit(tex, text_dest);
 		});
+	}
+}
+
+void display::draw_overlays_at(const map_location& loc)
+{
+	auto it = get_overlays().find(loc);
+	if(it == get_overlays().end()) {
+		return;
+	}
+
+	std::vector<overlay>& overlays = it->second;
+	if(overlays.empty()) {
+		return;
+	}
+
+	const time_of_day& tod = get_time_of_day(loc);
+	tod_color tod_col = tod.color + color_adjust_;
+
+	image::light_string lt = image::get_light_string(-1, tod_col.r, tod_col.g, tod_col.b);
+
+	for(const overlay& ov : overlays) {
+		if(fogged(loc) && !ov.visible_in_fog) {
+			continue;
+		}
+
+		if(dont_show_all_ && !ov.team_name.empty()) {
+			const auto current_team_names = utils::split_view(viewing_team().team_name());
+			const auto team_names = utils::split_view(ov.team_name);
+
+			bool item_visible_for_team = std::find_first_of(team_names.begin(), team_names.end(),
+				current_team_names.begin(), current_team_names.end()) != team_names.end();
+
+			if(!item_visible_for_team) {
+				continue;
+			}
+		}
+
+		texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
+			? image::get_lighted_texture(ov.image, lt)
+			: image::get_texture(ov.image, image::HEXED);
+
+		// Base submerge value for the terrain at this location
+		const double ter_sub = get_map().get_terrain_info(loc).unit_submerge();
+
+		drawing_buffer_add(
+			drawing_layer::terrain_bg, loc, [this, tex, ter_sub, ovr_sub = ov.submerge](const rect& dest) mutable {
+				if(ovr_sub > 0.0 && ter_sub > 0.0) {
+					// Adjust submerge appropriately
+					double submerge = ter_sub * ovr_sub;
+
+					submerge_data data
+						= this->get_submerge_data(dest, submerge, tex.draw_size(), ALPHA_OPAQUE, false, false);
+
+					// set clip for dry part
+					// smooth_shaded doesn't use the clip information so it's fine to set it up front
+					// TODO: do we need to unset this?
+					tex.set_src(data.unsub_src);
+
+					// draw underwater part
+					draw::smooth_shaded(tex, data.alpha_verts);
+
+					// draw dry part
+					draw::blit(tex, data.unsub_dest);
+				} else {
+					// draw whole texture
+					draw::blit(tex, dest);
+				}
+			});
 	}
 }
 
@@ -3212,7 +3206,7 @@ void display::invalidate_animations_location(const map_location& loc)
 	if(get_map().is_village(loc)) {
 		const int owner = dc_->village_owner(loc) - 1;
 		if(owner >= 0 && flags_[owner].need_update()
-			&& (!fogged(loc) || !dc_->teams()[currentTeam_].is_enemy(owner + 1))) {
+			&& (!fogged(loc) || !viewing_team().is_enemy(owner + 1))) {
 			invalidate(loc);
 		}
 	}

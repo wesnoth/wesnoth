@@ -299,8 +299,8 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			}
 		}
 		std::deque<std::pair<std::string, config>> facet_configs;
-		for (const config::attribute &attr : aiparam.attribute_range()) {
-			if (non_aspect_attributes.count(attr.first)) {
+		for(const auto& [key, value] : aiparam.attribute_range()) {
+			if (non_aspect_attributes.count(key)) {
 				continue;
 			}
 			config facet_config;
@@ -308,8 +308,8 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			facet_config["name"] = "standard_aspect";
 			facet_config["turns"] = turns;
 			facet_config["time_of_day"] = time_of_day;
-			facet_config["value"] = attr.second;
-			facet_configs.emplace_back(attr.first, facet_config);
+			facet_config["value"] = value;
+			facet_configs.emplace_back(key, facet_config);
 		}
 		for (const config::any_child child : aiparam.all_children_range()) {
 			if (just_copy_tags.count(child.key)) {

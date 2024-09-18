@@ -317,9 +317,9 @@ bool load_strings(bool complain)
 	}
 	for (const config &lang : languages_) {
 		DBG_G << "[language]";
-		for (const config::attribute &j : lang.attribute_range()) {
-			DBG_G << j.first << "=\"" << j.second << "\"";
-			strings_[j.first] = j.second;
+		for(const auto& [key, value] : lang.attribute_range()) {
+			DBG_G << key << "=\"" << value << "\"";
+			strings_[key] = value;
 		}
 		DBG_G << "[/language]";
 	}

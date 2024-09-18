@@ -75,7 +75,7 @@ option for showing the GUI Test Dialog.
 \fB\-\-strict\-validation\fP
 非推奨のLua APIコールを許可しない。
 .TP 
-\fB\-D,\-\-diff\fP\fI\ 左ファイル\fP\fB\ \fP\fI右ファイル\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 2つのWMLファイルを比較する。比較前に前処理は行われないため、前処理が必要であれば、 \fB\-p\fP
 を前につけて実行すること。差分はDiffWMLファイルとして標準出力または \fI\-\-output\fP で指定したファイルに出力される。
 .TP 
@@ -178,7 +178,7 @@ BGMなしでゲームを実行する。
 （試験的）Wesnoth のプラグインを定義した \fIscript\fP を読み込む。\fB\-\-script\fP と類似しているが、Lua
 ファイルはコルーチンとして動作する関数を返し、定期的に呼び出されなければならない。
 .TP 
-\fB\-P,\-\-patch\fP\fI\ ベースファイル\fP\fB\ \fP\fIパッチファイル\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 DiffWMLパッチをWMLファイルに適用する。どちらのファイルに対しても前処理は行われない。標準出力または \fI\-\-output\fP
 で指定したファイルにパッチを適用したWMLを出力する。
 .TP 
@@ -244,8 +244,8 @@ GUI 付きでゲームを実行する、暗黙的に \fB\-\-nogui\fP を置き�
 \fBpackage\fP パッケージを lua スクリプトから利用可能とする。 lua スクリプトに wesnoth
 実行時と同様の権限を付与することになるため、この機能を信頼できないスクリプトと併用してはならない！
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ パス\fP
-\fB\-V,\-\-validate\fP と合わせてWMLスキーマを設定する。
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 ユーザーデータディレクトリを $HOME 下または Windows の「My Documents\eMy Games」下の \fIname\fP
@@ -268,7 +268,7 @@ Games」の外に絶対パスで指定することもできる。Windows では
 \fB\-\-validate\-core\fP
 コアWMLがプレイ可能か検証する。
 .TP 
-\fB\-\-validate\-schema \ パス\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 ファイルをWMLスキーマとして検証する。
 .TP 
 \fB\-\-validcache\fP

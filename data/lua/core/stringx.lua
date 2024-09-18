@@ -61,6 +61,22 @@ function stringx.iter_ranges(str)
 	end)
 end
 
+---Test if a string begins with a specified prefix
+---@param s string The string to test
+---@param p string The prefix to check
+---@return boolean
+function stringx.starts_with(s, p)
+	return s:sub(0, #p) == p
+end
+
+---Test if a string end with a specified suffix
+---@param s string The string to test
+---@param p string The suffix to check
+---@return boolean
+function stringx.ends_with(s, p)
+	return s:sub(-#p) == p
+end
+
 wesnoth.format = wesnoth.deprecate_api('wesnoth.format', 'stringx.vformat', 1, nil, stringx.vformat)
 wesnoth.format_conjunct_list = wesnoth.deprecate_api('wesnoth.format_conjunct_list', 'stringx.format_conjunct_list', 1, nil, stringx.format_conjunct_list)
 wesnoth.format_disjunct_list = wesnoth.deprecate_api('wesnoth.format_disjunct_list', 'stringx.format_disjunct_list', 1, nil, stringx.format_disjunct_list)

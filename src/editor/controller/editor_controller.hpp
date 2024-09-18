@@ -162,8 +162,10 @@ class editor_controller : public controller_base,
 			return context_manager_->get_map_context();
 		}
 
-		/** Initialize an addon if the addon id is empty */
-		void initialize_addon_if_empty();
+		/** Initialize an addon if the addon id is empty
+		 * @return    If the initialization succeeded.
+		 * */
+		bool initialize_addon();
 
 	protected:
 		/* controller_base overrides */

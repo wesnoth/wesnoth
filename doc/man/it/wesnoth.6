@@ -24,7 +24,7 @@
 wesnoth \- Battle for Wesnoth, un gioco strategico a turni con ambientazione
 fantasy
 .
-.SH SYNOPSIS
+.SH SINOSSI
 .
 \fBwesnoth\fP [\fIOPTIONS\fP] [\fIPATH_TO_DATA\fP]
 .
@@ -91,7 +91,7 @@ abilita alcuni meccanismi di debug Lua
 \fB\-\-strict\-lua\fP
 non permette di utilizzare chiamate Lua API deprecate
 .TP 
-\fB\-D,\-\-diff\fP\fI\ file\-sinistro\fP\fB\ \fP\fIfile\-destro\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 esegue una differenza tra due file WML, senza prima pre\-processarli (per
 farlo, eseguili prima con \fB\-p\fP). La differenza verrà stampata come u file
 di tipo DiffWML nell’uscita standard o nel file indicato dall’opzione
@@ -149,8 +149,8 @@ WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
 in the logs directory under the userdata folder.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
-whether implicit or explicit.
+il registro di output è scritto in un file. Annulla l’effetto di
+\-\-no\-log\-to\-file implicito o esplicito.
 .TP 
 \fB\-\-no\-log\-sanitize\fP
 disables the anonymization that's normally applied when logging, for example
@@ -220,7 +220,7 @@ a \fB\-\-script\fP, ma il file Lua dovrebbe restituire un funzione che verrà
 eseguita come una coroutine e periodicamente risvegliata con gli
 aggiornamenti.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ file\-base\fP\fB\ \fP\fIfile\-correzione\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 applica un file correzione DiffWML ad un file WML, senza pre\-processare
 nessuno dei due. Restituisce il file WML modificato nell’uscita standard o
 nel file indicato da \fI\-\-output\fP.
@@ -308,8 +308,8 @@ caricare qualsiasi package. Non abilitarlo per degli script non verificati!
 Questa azione consegna alla lua gli stessi permessi dell’eseguibile di
 wesnoth.
 .TP 
-\fB\-\-scenario\fP\fI\ percorso\fP
-imposta lo schema WML da utilizzare con \fB\-V,\-\-validate\fP.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ nome\fP
 imposta la directory dei dati dell’utente a \fInome\fP sotto $HOME o "My
@@ -335,7 +335,7 @@ valida il WML di una specifica estensione durante il gioco.
 \fB\-\-validate\-core\fP
 valida in nucleo WML durante il gioco.
 .TP 
-\fB\-\-validate\-schema \ percorso\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 valida un file come schema WML.
 .TP 
 \fB\-\-validcache\fP

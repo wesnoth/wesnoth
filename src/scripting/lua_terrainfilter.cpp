@@ -480,7 +480,7 @@ public:
 			if(lua_geti(L, idx, 3) == LUA_TSTRING) {
 				init_from_ranges(luaL_checkstring(L, -2), luaL_checkstring(L, -1));
 			} else {
-				init_from_named_set(L, luaL_checkstring(L, -1), res_index, ks);
+				init_from_named_set(L, luaL_checkstring(L, -2), res_index, ks);
 			}
 			break;
 		}

@@ -33,10 +33,8 @@
 #include "utils/const_clone.hpp"
 #include "utils/optional_reference.hpp"
 
-#include <ctime>
 #include <functional>
 #include <iosfwd>
-#include <iterator>
 #include <map>
 #include <memory>
 #include <string>
@@ -478,42 +476,6 @@ public:
 	const attribute_value& operator[](config_key_type key) const;
 
 	/**
-	* Returns a reference to the attribute with the given @a key.
-	* Creates it if it does not exist.
-	*/
-	attribute_value& operator[](const std::string& key)
-	{
-		return operator[](config_key_type(key));
-	}
-
-	/**
-	* Returns a reference to the attribute with the given @a key
-	* or to a dummy empty attribute if it does not exist.
-	*/
-	const attribute_value& operator[](const std::string& key) const
-	{
-		return operator[](config_key_type(key));
-	}
-
-	/**
-	* Returns a reference to the attribute with the given @a key.
-	* Creates it if it does not exist.
-	*/
-	attribute_value& operator[](const char* key)
-	{
-		return operator[](config_key_type(key));
-	}
-
-	/**
-	* Returns a reference to the attribute with the given @a key
-	* or to a dummy empty attribute if it does not exist.
-	*/
-	const attribute_value& operator[](const char* key) const
-	{
-		return operator[](config_key_type(key));
-	}
-
-	/**
 	 * Returns a pointer to the attribute with the given @a key
 	 * or nullptr if it does not exist.
 	 */
@@ -881,10 +843,10 @@ public:
 	/**
 	 * Adds children from @a cfg.
 	 */
-	void append_children(const config &cfg, const std::string& key);
+	void append_children(const config &cfg, config_key_type key);
 
 	/** Moves children with the given name from the given config to this one. */
-	void append_children_by_move(config& cfg, const std::string& key);
+	void append_children_by_move(config& cfg, config_key_type key);
 
 	/**
 	 * Adds attributes from @a cfg.
@@ -895,14 +857,14 @@ public:
 	 * All children with the given key will be merged
 	 * into the first element with that key.
 	 */
-	void merge_children(const std::string& key);
+	void merge_children(config_key_type key);
 
 	/**
 	 * All children with the given key and with equal values
 	 * of the specified attribute will be merged into the
 	 * element with that key and that value of the attribute
 	 */
-	void merge_children_by_attribute(const std::string& key, const std::string& attribute);
+	void merge_children_by_attribute(config_key_type key, config_key_type attribute);
 
 	//this is a cheap O(1) operation
 	void swap(config& cfg);

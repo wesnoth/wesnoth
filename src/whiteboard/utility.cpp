@@ -34,21 +34,14 @@
 #include "utils/iterable_pair.hpp"
 
 namespace wb {
-
-std::size_t viewer_team()
-{
-	return display::get_singleton()->viewing_team();
-}
-
 int viewer_side()
 {
-	return display::get_singleton()->viewing_side();
+	return display::get_singleton()->viewing_team().side();
 }
 
 side_actions_ptr viewer_actions()
 {
-	side_actions_ptr side_actions =
-			resources::gameboard->teams()[display::get_singleton()->viewing_team()].get_side_actions();
+	side_actions_ptr side_actions = display::get_singleton()->viewing_team().get_side_actions();
 	return side_actions;
 }
 

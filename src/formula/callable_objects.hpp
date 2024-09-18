@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include "color.hpp"
 #include "formula/callable.hpp"
 #include "formula/formula.hpp"
 #include "map/location.hpp"
@@ -192,6 +193,25 @@ public:
 private:
 	const team& team_;
 };
+
+
+class color_callable : public formula_callable
+{
+public:
+	color_callable(color_t clr)
+		: clr_(clr)
+	{}
+
+	void get_inputs(formula_input_vector& inputs) const override;
+	variant get_value(const std::string& key) const override;
+
+	const color_t get_color() const { return clr_; }
+
+private:
+	color_t clr_;
+};
+
+
 
 class set_var_callable : public action_callable
 {

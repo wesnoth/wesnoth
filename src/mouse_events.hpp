@@ -62,7 +62,7 @@ public:
 
 	unit_map::iterator selected_unit();
 
-	pathfind::marked_route get_route(const unit* un, map_location go_to, team &team) const;
+	pathfind::marked_route get_route(const unit* un, map_location go_to, const team &team) const;
 
 	const pathfind::marked_route& get_current_route() const { return current_route_; }
 
@@ -158,8 +158,6 @@ protected:
 	const unit* find_unit_nonowning(const map_location& hex) const;
 	bool unit_in_cycle(unit_map::const_iterator it);
 private:
-	team& viewing_team();
-	const team& viewing_team() const;
 	team &current_team();
 
 	// Some common code from mouse_motion and touch_motion.

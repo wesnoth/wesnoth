@@ -57,14 +57,12 @@ label_settings::label_settings(display_context& dc)
 		all_labels_[hidden_cat] = false;
 	}
 
-	for(std::size_t i = 0; i < viewer_.teams().size(); i++) {
-		const team& team = viewer_.teams()[i];
-		const std::string label_cat_key = "side:" + std::to_string(i + 1);
+	for(const team& team : viewer_.teams()) {
+		const std::string label_cat_key = "side:" + std::to_string(team.side());
 
 		if(team.hidden()) {
 			labels_display_[label_cat_key] = "";
 			continue;
-
 		}
 
 		std::string team_name = team.side_name();
@@ -77,7 +75,7 @@ label_settings::label_settings(display_context& dc)
 		}
 
 		utils::string_map subst;
-		subst["side_number"] = std::to_string(i + 1);
+		subst["side_number"] = std::to_string(team.side());
 		subst["name"] = team_name;
 		labels_display_[label_cat_key] = VGETTEXT("Side $side_number ($name)", subst);
 	}

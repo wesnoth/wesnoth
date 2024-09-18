@@ -284,34 +284,25 @@ map_location::DIRECTION map_location::get_relative_dir(const map_location & loc,
 	}
 }
 
-std::pair<int,int> map_location::get_in_basis_N_NE() const {
-	map_location temp(*this);
-	std::pair<int, int> ret;
-
-	ret.second = temp.x;
-	temp = temp.get_direction(SOUTH_WEST,temp.x);
-	assert(temp.x == 0);
-
-	ret.first = -temp.y;
-	temp = temp.get_direction(NORTH,temp.y);
-	assert(temp.y == 0);
-
-	temp = temp.get_direction(NORTH, ret.first);
-	temp = temp.get_direction(NORTH_EAST, ret.second);
-	assert(temp == *this);
-
-	return ret;
-}
-
 map_location map_location::rotate_right_around_center(const map_location & center, int k) const {
-	map_location temp(*this);
-	temp.vector_difference_assign(center);
-
-	std::pair<int,int> coords = temp.get_in_basis_N_NE();
-	map_location::DIRECTION d1 = map_location::rotate_right(NORTH, k);
-	map_location::DIRECTION d2 = map_location::rotate_right(NORTH_EAST, k);
-
-	return center.get_direction(d1, coords.first).get_direction(d2, coords.second);
+	auto me_as_cube = to_cubic(), c_as_cube = center.to_cubic();
+	auto vec = cubic_location{me_as_cube.q - c_as_cube.q, me_as_cube.r - c_as_cube.r, me_as_cube.s - c_as_cube.s};
+	// These represent the 6 possible rotation matrices on the hex grid.
+	// These are orthogonal 3x3 matrices containing only 0, 1, and -1.
+	// Each element represents one row of the matrix.
+	// The absolute value indicates which (1-based) column is non-zero.
+	// The sign indicates whether that cell contains -1 or 1.
+	static const int rotations[6][3] = {{1,2,3}, {-2,-3,-1}, {3,1,2}, {-1,-2,-3}, {2,3,1}, {-3,-1,-2}};
+	int vec_temp[3] = {vec.q, vec.r, vec.s}, vec_temp2[3];
+	int i = ((k % 6) + 6) % 6; // modulo-clamp rotation count to the range [0,6)
+	assert(i >= 0 && i < 6);
+	#define sgn(x) ((x) < 0 ? -1 : 1) // Not quite right, but we know we won't be passing in a 0
+	for(int j = 0; j < 3; j++) vec_temp2[j] = sgn(rotations[i][j]) * vec_temp[abs(rotations[i][j])-1];
+	#undef sgn
+	vec.q = vec_temp2[0] + c_as_cube.q;
+	vec.r = vec_temp2[1] + c_as_cube.r;
+	vec.s = vec_temp2[2] + c_as_cube.s;
+	return from_cubic(vec);
 }
 
 bool map_location::matches_range(const std::string& xloc, const std::string &yloc) const
