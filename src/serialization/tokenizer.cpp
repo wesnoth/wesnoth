@@ -68,31 +68,42 @@ const token &tokenizer::next_token()
 		next_char_fast();
 	}
 
+	// skip comments on their own line
 	if (current_ == token::POUND)
 		skip_comment();
 
+	// set the line number the next token will start on
 	startlineno_ = lineno_;
 
 	switch(current_) {
+	// we reached the end of the file being read
 	case EOF:
 		token_.type = token::END;
 		break;
 
+	// handle open/closed angle brackets
+	// most commonly used for enclosing lua code
+	// more generally is used to indicate the preprocessor should skip over a particular block of text
 	case token::LEFT_ANGLE_BRACKET:
+		// if there aren't double left angle brackets, there is no extra handling needed - this is just a regular left angle bracket
 		if (peek_char() != token::LEFT_ANGLE_BRACKET) {
 			token_.type = token::MISC;
 			token_.value += current_;
 			break;
 		}
+
+		// else, treat this like a quoted string
 		token_.type = token::QSTRING;
 		next_char_fast();
+
+		// keep getting characters and appending them to the current token's value until either the file ends or double right angle brackets are found
+		// finding the end of the file first is an error since double left angle brackets must always be closed by double right angle brackets
 		for (;;) {
 			next_char();
 			if (current_ == EOF) {
 				token_.type = token::UNTERMINATED_QSTRING;
 				break;
-			}
-			if (current_ == token::RIGHT_ANGLE_BRACKET && peek_char() == token::RIGHT_ANGLE_BRACKET) {
+			} else if (current_ == token::RIGHT_ANGLE_BRACKET && peek_char() == token::RIGHT_ANGLE_BRACKET) {
 				next_char_fast();
 				break;
 			}
@@ -100,52 +111,73 @@ const token &tokenizer::next_token()
 		}
 		break;
 
+	// very similar to the double left+right angle bracket handling
+	// the main difference is the need to handle INLINED_PREPROCESS_DIRECTIVE_CHAR since double quotes don't affect the preprocessor
 	case token::DOUBLE_QUOTE:
 		token_.type = token::QSTRING;
+
 		for (;;) {
 			next_char();
 			if (current_ == EOF) {
 				token_.type = token::UNTERMINATED_QSTRING;
 				break;
+			} else if (current_ == token::DOUBLE_QUOTE) {
+				if (peek_char() != token::DOUBLE_QUOTE) {
+					break;
+				} else {
+					next_char_fast();
+				}
 			}
-			if (current_ == token::DOUBLE_QUOTE) {
-				if (peek_char() != token::DOUBLE_QUOTE) break;
-				next_char_fast();
-			}
+
+			// ignore this line and decrement the current line number
 			if (current_ == INLINED_PREPROCESS_DIRECTIVE_CHAR) {
 				skip_comment();
 				--lineno_;
 				continue;
 			}
+
 			token_.value += current_;
 		}
 		break;
 
+	// tag name delimiters
 	case token::OPEN_BRACKET:
 	case token::CLOSE_BRACKET:
+	// closing tag
 	case token::SLASH:
 	case token::NEWLINE:
 	case token::EQUALS:
+	// handles multiple attributes on the same line
+	// ie: x,y = 5,5
 	case token::COMMA:
+	// tag merge aka node append
 	case token::PLUS:
-		token_.type = token::token_type(current_);
+		token_.type = static_cast<token::token_type>(current_);
 		token_.value = current_;
 		break;
 
+	// when in front of a QSTRING, indicates that the string is translatable
 	case token::UNDERSCORE:
+		// this check seems off - there are certainly other non-alphanumeric characters that shouldn't mean anything - but it looks like the parser handles those cases
 		if (!is_alnum(peek_char())) {
-			token_.type = token::token_type(current_);
+			token_.type = token::UNDERSCORE;
 			token_.value = current_;
 			break;
 		}
 		[[fallthrough]];
 
+	// everything else
 	default:
+		// if alphanumeric (regular text) or the dollar sign (variable)
+		// not quite sure how this works with non-ascii text particularly since the parser doesn't reference token_type::MISC
+		// but maybe the default handling does what's needed
 		if (is_alnum(current_) || current_ == token::DOLLAR) {
 			token_.type = token::STRING;
+
 			do {
 				token_.value += current_;
 				next_char_fast();
+
 				while (current_ == INLINED_PREPROCESS_DIRECTIVE_CHAR) {
 					skip_comment();
 					next_char_fast();
@@ -159,8 +191,10 @@ const token &tokenizer::next_token()
 		return token_;
 	}
 
-	if (current_ != EOF)
+	// if this isn't the end of the file, get the next character in preparation for the next call to this method
+	if (current_ != EOF) {
 		next_char();
+	}
 
 	return token_;
 }

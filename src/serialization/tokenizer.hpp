@@ -85,7 +85,9 @@ struct token
 		DOLLAR = '$',
 	};
 
+	/** the token_type of the current value */
 	token_type type;
+	/** the token's value, can be either a single character or multiple characters */
 	std::string value;
 };
 
@@ -100,6 +102,9 @@ public:
 	tokenizer(std::istream& in);
 	~tokenizer();
 
+	/**
+	 * Reads characters off of @a in_ to return the next token type and its value.
+	 */
 	const token &next_token();
 
 	const token &current_token() const
