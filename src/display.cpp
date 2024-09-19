@@ -702,6 +702,12 @@ point display::get_location(const map_location& loc) const
 	};
 }
 
+rect display::get_location_rect(const map_location& loc) const
+{
+	// TODO: evaluate how these functions should be defined in terms of each other
+	return { get_location(loc), point{hex_size(), hex_size()} };
+}
+
 map_location display::minimap_location_on(int x, int y)
 {
 	// TODO: don't return location for this,
@@ -1266,14 +1272,7 @@ uint32_t generate_hex_key(const drawing_layer layer, const map_location& loc)
 
 void display::drawing_buffer_add(const drawing_layer layer, const map_location& loc, decltype(draw_helper::do_draw) draw_func)
 {
-	const rect dest {
-		get_location_x(loc),
-		get_location_y(loc),
-		int(zoom_),
-		int(zoom_)
-	};
-
-	drawing_buffer_.AGGREGATE_EMPLACE(generate_hex_key(layer, loc), draw_func, dest);
+	drawing_buffer_.AGGREGATE_EMPLACE(generate_hex_key(layer, loc), draw_func, get_location_rect(loc));
 }
 
 void display::drawing_buffer_commit()

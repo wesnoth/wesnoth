@@ -315,6 +315,9 @@ public:
 	int get_location_y(const map_location& loc) const;
 	point get_location(const map_location& loc) const;
 
+	/** Returns the on-screen rect corresponding to a @a loc */
+	rect get_location_rect(const map_location& loc) const;
+
 	/**
 	 * Rectangular area of hexes, allowing to decide how the top and bottom
 	 * edges handles the vertical shift for each parity of the x coordinate
