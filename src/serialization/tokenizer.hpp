@@ -85,7 +85,6 @@ struct token
 		DOLLAR = '$',
 	};
 
-	/** the token_type of the current value */
 	token_type type;
 	/** the token's value, can be either a single character or multiple characters */
 	std::string value;

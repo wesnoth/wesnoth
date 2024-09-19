@@ -150,7 +150,7 @@ const token &tokenizer::next_token()
 	// handles multiple attributes on the same line
 	// ie: x,y = 5,5
 	case token::COMMA:
-	// tag merge aka node append
+	// tag merge aka node append, or string concatenation
 	case token::PLUS:
 		token_.type = static_cast<token::token_type>(current_);
 		token_.value = current_;
