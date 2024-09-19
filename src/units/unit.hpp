@@ -1984,10 +1984,6 @@ protected:
 private:
 	map_location loc_;
 
-	const map_location* temp_loc_pt = nullptr;
-
-	bool temp_moved = false;
-
 	std::vector<std::string> advances_to_;
 
 	/** Never nullptr. Adjusted for gender and variation. */

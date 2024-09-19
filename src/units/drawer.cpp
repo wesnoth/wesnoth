@@ -164,13 +164,7 @@ bool unit_drawer::selected_or_reachable(const map_location& loc) const
 void unit_drawer::redraw_unit(const unit& u) const
 {
 	unit_animation_component & ac = u.anim_comp();
-	// Fix teleport issued
-	// To compile : test if this is useful
-	const map_location& loc = u.get_location();
-	if(display::is_locked_location(&loc)) {
-		LOG_DP << "Detected a locked location by redraw unit when trying to redraw a unit.\n";
-		return;
-	}
+	map_location loc = u.get_location();
 
 	int side = u.side();
 

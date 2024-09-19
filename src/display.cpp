@@ -89,7 +89,6 @@ namespace {
 
 unsigned int display::zoom_ = DefaultZoom;
 unsigned int display::last_zoom_ = SmallZoom;
-std::vector<const map_location*>  display::locked_locations;
 
 // Returns index of zoom_levels which is closest match to input zoom_level
 // Assumption: zoom_levels is a sorted vector of ascending tile sizes
@@ -2610,8 +2609,8 @@ void display::draw_invalidated()
 	}
 
 	for(const map_location& loc : invalidated_) {
-		if (is_locked_location(&loc))
-			 {
+		if (locked_locations::is_locked_location(&loc))
+		{
 			LOG_DP << "Skipped a locked location when trying to redraw a unit.\n";
 			continue;
 		}

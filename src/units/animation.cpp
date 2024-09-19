@@ -29,7 +29,6 @@
 
 #include <algorithm>
 
-
 static std::string get_heal_sound(const config& cfg)
 {
 	return cfg["healed_sound"].empty() ? "heal.wav" : cfg["healed_sound"].str();

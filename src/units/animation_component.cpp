@@ -24,7 +24,6 @@
 #include "units/types.hpp"
 
 #include <set>
-#include "log.hpp"
 
 namespace
 {

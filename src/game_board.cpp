@@ -22,7 +22,6 @@
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "utils/general.hpp"
-#include "display.hpp"
 
 #include <set>
 #include <vector>
@@ -478,8 +477,8 @@ temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
 	, temp_(src == dst ? unit_ptr() : m_.extract(dst))
 	, stand_(stand)
 {
-	display::add_locked_location(&src_);
-	display::add_locked_location(&dst_);
+	locked_locations::add_locked_location(&src_);
+	locked_locations::add_locked_location(&dst_);
 	auto [iter, success] = m_.move(src_, dst_);
 
 	// Set the movement.
@@ -495,8 +494,8 @@ temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
 temporary_unit_mover::~temporary_unit_mover()
 {
 	try {
-		display::remove_locked_location(&src_);
-		display::remove_locked_location(&dst_);
+		locked_locations::remove_locked_location(&src_);
+		locked_locations::remove_locked_location(&dst_);
 		auto [iter, success] = m_.move(dst_, src_);
 
 		// Restore the movement?
