@@ -32,6 +32,7 @@
 #include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "units/abilities.hpp"
+#include "units/ability_tags.hpp"
 #include "units/filter.hpp"
 #include "units/map.hpp"
 #include "utils/config_filters.hpp"
@@ -1849,9 +1850,49 @@ bool attack_type::has_special_or_ability(const std::string& special, bool specia
 
 namespace
 {
+	bool exclude_ability_attributes(const std::string& tag_name, const config & filter)
+	{
+		///check what filter attributes used can be used in type of ability checked.
+		bool abilities_check = abilities_list::ability_value_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
+		if(filter.has_attribute("active_on") && tag_name != "resistance" && abilities_check)
+			return false;
+		if(filter.has_attribute("apply_to")  && tag_name != "resistance" && abilities_check)
+			return false;
+
+		if(filter.has_attribute("overwrite_specials") && abilities_list::weapon_number_tags().count(tag_name) == 0)
+			return false;
+
+		bool no_value_weapon_abilities_check =  abilities_list::no_weapon_number_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
+		if(filter.has_attribute("value") && no_value_weapon_abilities_check)
+			return false;
+		if(filter.has_attribute("add") && no_value_weapon_abilities_check)
+			return false;
+		if(filter.has_attribute("sub") && no_value_weapon_abilities_check)
+			return false;
+		if(filter.has_attribute("multiply") && no_value_weapon_abilities_check)
+			return false;
+		if(filter.has_attribute("divide") && no_value_weapon_abilities_check)
+			return false;
+
+		bool all_engine =  abilities_list::no_weapon_number_tags().count(tag_name) != 0 || abilities_list::weapon_number_tags().count(tag_name) != 0 || abilities_list::ability_value_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
+		if(filter.has_attribute("replacement_type") && tag_name != "damage_type" && all_engine)
+			return false;
+		if(filter.has_attribute("alternative_type") && tag_name != "damage_type" && all_engine)
+			return false;
+		if(filter.has_attribute("type") && tag_name != "plague" && all_engine)
+			return false;
+
+		return true;
+	}
+
 	bool matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter)
 	{
 		using namespace utils::config_filters;
+
+		//check if attributes have right to be in type of ability checked
+		if(!exclude_ability_attributes(tag_name, filter))
+			return false;
+
 		// tag_name and id are equivalent of ability ability_type and ability_id/type_active filters
 		//can be extent to special_id/type_active. If tag_name or id matche if present in list.
 		const std::vector<std::string> filter_type = utils::split(filter["tag_name"]);
