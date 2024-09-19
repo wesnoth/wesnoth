@@ -191,6 +191,7 @@ private:
 
 	/**
 	 * Returns true if the next characters are the one from @a cmd followed by a space. Skips all the matching characters.
+	 * Currently handles only #textdomain (specified by the WML) and #line (added by the preprocessor)
 	 */
 	bool skip_command(char const *cmd);
 

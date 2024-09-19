@@ -201,48 +201,78 @@ const token &tokenizer::next_token()
 
 bool tokenizer::skip_command(char const *cmd)
 {
+	// check that the character match the provided text, else return false
 	for (; *cmd; ++cmd) {
 		next_char_fast();
-		if (current_ != *cmd) return false;
+		if (current_ != *cmd) {
+			return false;
+		}
 	}
+
+	// check that it's followed by a space, else return false
 	next_char_fast();
-	if (!is_space(current_)) return false;
+	if (!is_space(current_)) {
+		return false;
+	}
+
 	next_char_fast();
 	return true;
 }
 
 void tokenizer::skip_comment()
 {
+	// nothing to do if the line ends or the file ends
 	next_char_fast();
-	if (current_ == token::NEWLINE || current_ == EOF) return;
+	if (current_ == token::NEWLINE || current_ == EOF) {
+		return;
+	}
+
+	// used to point to either textdomain_ or file_, and populate that field with the value following the respective command
 	std::string *dst = nullptr;
 
+	// if this is a #textdomain, point to textdomain_
 	if (current_ == 't')
 	{
-		if (!skip_command("extdomain")) goto fail;
+		if (!skip_command("extdomain")) {
+			goto not_a_command;
+		}
 		dst = &textdomain_;
 	}
+	// else if this is a #line, determine the line number and then point to file_
 	else if (current_ == 'l')
 	{
-		if (!skip_command("ine")) goto fail;
+		if (!skip_command("ine")) {
+			goto not_a_command;
+		}
+
 		lineno_ = 0;
 		while (is_num(current_)) {
+			// ie if the line number is 587
+			// (0 * 10) + 5 = 5
+			// (5 * 10) + 8 = 58
+			// (58 * 10) + 7 = 587
 			lineno_ = lineno_ * 10 + (current_ - '0');
 			next_char_fast();
 		}
-		if (!is_space(current_)) goto fail;
+
+		if (!is_space(current_)) {
+			goto not_a_command;
+		}
+
 		next_char_fast();
 		dst = &file_;
 	}
+	// else this turned out to not be a #textdomain or a #line, then this is a normal comment so just read off characters until finding the next line or the end of the file
 	else
 	{
-		fail:
+		not_a_command:
 		while (current_ != token::NEWLINE && current_ != EOF) {
 			next_char_fast();
 		}
 		return;
 	}
 
+	// clear the current value of either textdomain_ or file_ and populate it with the new value
 	dst->clear();
 	while (current_ != token::NEWLINE && current_ != EOF) {
 		*dst += current_;
