@@ -25,7 +25,8 @@
 #include <string>
 
 // use of illegal utf8 character for this purpose was added in a76be7ef1e921dabacd99f16ef440bf9673b8d98
-// has something to do with the result of the preprocessor whose format is essentially undocumented and I don't intend to delve into that as of writing this comment
+// added by the preprocessor to allow special handling for 'line' and 'textdomain' commands
+// see OUTPUT_SEPARATOR in preprocessor.cpp
 constexpr int INLINED_PREPROCESS_DIRECTIVE_CHAR = 254;
 
 // normal ascii is 0-127
@@ -189,8 +190,7 @@ private:
 	void skip_comment();
 
 	/**
-	 * Returns true if the next characters are the one from @a cmd
-	 * followed by a space. Skips all the matching characters.
+	 * Returns true if the next characters are the one from @a cmd followed by a space. Skips all the matching characters.
 	 */
 	bool skip_command(char const *cmd);
 
