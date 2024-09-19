@@ -304,9 +304,11 @@ const topic *find_topic(const section &sec, const std::string &id);
 const section *find_section(const section &sec, const std::string &id);
 section *find_section(section &sec, const std::string &id);
 
-/// Parse a xml style marked up text string. Return a config with the different parts of the
-/// text. Each markup item is a separate part while the text between
-/// markups are separate parts.
+/**
+ * Parse a xml style marked up text string. Return a config with the different parts of the
+ * text. Each markup item is a separate part while the text between
+ * markups are separate parts.
+ */
 config parse_text(const std::string &text);
 
 /** Make a best effort to word wrap s. All parts are less than width. */
@@ -366,49 +368,22 @@ bool is_visible_id(const std::string &id);
  */
 bool is_valid_id(const std::string &id);
 
-	// Helpers for making generation of topics easier.
+// Helpers for making generation of topics easier.
 
 inline std::string make_link(const std::string& text, const std::string& dst)
-	{
-		// some sorting done on list of links may rely on the fact that text is first
-		return "<ref>text='" + help::escape(text) + "' dst='" + help::escape(dst) + "'</ref>";
-	}
-
-inline std::string jump_to(const unsigned pos)
-	{
-		std::stringstream ss;
-		ss << "<jump>to=" << pos << "</jump>";
-		return ss.str();
-	}
-
-inline std::string jump(const unsigned amount)
-	{
-		std::stringstream ss;
-		ss << "<jump>amount=" << amount << "</jump>";
-		return ss.str();
-	}
+{
+	// some sorting done on list of links may rely on the fact that text is first
+	return "<ref dst='" + help::escape(dst) + "'>" + help::escape(text) + "</ref>";
+}
 
 inline std::string bold(const std::string &s)
-	{
-		std::stringstream ss;
-		ss << "<bold>text='" << help::escape(s) << "'</bold>";
-		return ss.str();
-	}
+{
+	std::stringstream ss;
+	ss << "<b>" << help::escape(s) << "</b>";
+	return ss.str();
+}
 
 // A string to be displayed and its width.
 typedef std::pair< std::string, unsigned > item;
-
-typedef std::vector<std::vector<help::item>> table_spec;
-// Create a table using the table specs. Return markup with jumps
-// that create a table. The table spec contains a vector with
-// vectors with pairs. The pairs are the markup string that should
-// be in a cell, and the width of that cell.
-std::string generate_table(const table_spec &tab, const unsigned int spacing=font::relative_size(20));
-
-// Return the width for the image with filename.
-unsigned image_width(const std::string &filename);
-
-// Add to the vector v an help::item for the string s, preceded by the given image if any.
-void push_tab_pair(std::vector<help::item> &v, const std::string &s, const utils::optional<std::string> &image = {}, unsigned padding = 0);
 
 } // end namespace help

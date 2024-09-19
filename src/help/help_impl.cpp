@@ -415,11 +415,11 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 	for (const time_of_day& time : times)
 	{
 		const std::string id = "time_of_day_" + time.id;
-		const std::string image = "<img>src='" + time.image + "'</img>";
-		const std::string image_lawful = "<img>src='icons/alignments/alignment_lawful_30.png'</img>";
-		const std::string image_neutral = "<img>src='icons/alignments/alignment_neutral_30.png'</img>";
-		const std::string image_chaotic = "<img>src='icons/alignments/alignment_chaotic_30.png'</img>";
-		const std::string image_liminal = "<img>src='icons/alignments/alignment_liminal_30.png'</img>";
+		const std::string image = "<img src='" + time.image + "'/>";
+		const std::string image_lawful = "<img src='icons/alignments/alignment_lawful_30.png'/>";
+		const std::string image_neutral = "<img src='icons/alignments/alignment_neutral_30.png'/>";
+		const std::string image_chaotic = "<img src='icons/alignments/alignment_chaotic_30.png'/>";
+		const std::string image_liminal = "<img src='icons/alignments/alignment_liminal_30.png'/>";
 		std::stringstream text;
 
 		const int lawful_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::lawful, false, resources::tod_manager->get_max_liminal_bonus());
@@ -427,10 +427,10 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 		const int chaotic_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::chaotic, false, resources::tod_manager->get_max_liminal_bonus());
 		const int liminal_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::liminal, false, resources::tod_manager->get_max_liminal_bonus());
 
-		toplevel << make_link(time.name.str(), id) << jump_to(160) << image << jump(30) <<
-			image_lawful << time_of_day_bonus_colored(lawful_bonus) << jump_to(390) <<
-			image_neutral << time_of_day_bonus_colored(neutral_bonus) << jump_to(450) <<
-			image_chaotic << time_of_day_bonus_colored(chaotic_bonus) << jump_to(520) <<
+		toplevel << make_link(time.name.str(), id) << " " << image << " " <<
+			image_lawful << time_of_day_bonus_colored(lawful_bonus) << " " <<
+			image_neutral << time_of_day_bonus_colored(neutral_bonus) << " " <<
+			image_chaotic << time_of_day_bonus_colored(chaotic_bonus) << " " <<
 			image_liminal << time_of_day_bonus_colored(liminal_bonus) << '\n';
 
 		text << image << '\n' << time.description.str() << '\n' <<
@@ -1855,74 +1855,6 @@ bool is_valid_id(const std::string &id) {
 		return false;
 	}
 	return true;
-}
-
-
-// Return the width for the image with filename.
-unsigned image_width(const std::string &filename)
-{
-	image::locator loc(filename);
-	surface surf(image::get_surface(loc));
-	if (surf != nullptr) {
-		return surf->w;
-	}
-	return 0;
-}
-
-void push_tab_pair(std::vector<help::item> &v, const std::string &s, const utils::optional<std::string> &image, unsigned padding)
-{
-	help::item item(s, font::pango_line_width(s, normal_font_size));
-	if (image) {
-		// If the image doesn't exist, don't add padding.
-		auto width = image_width(*image);
-		padding = (width ? padding : 0);
-
-		item.first = "<img>src='" + *image + "'</img>" + (padding ? jump(padding) : "") + s;
-		item.second += width + padding;
-	}
-	v.emplace_back(item);
-}
-
-std::string generate_table(const table_spec &tab, const unsigned int spacing)
-{
-	table_spec::const_iterator row_it;
-	std::vector<std::pair<std::string, unsigned>>::const_iterator col_it;
-	unsigned int num_cols = 0;
-	for (row_it = tab.begin(); row_it != tab.end(); ++row_it) {
-		if (row_it->size() > num_cols) {
-			num_cols = row_it->size();
-		}
-	}
-	std::vector<unsigned int> col_widths(num_cols, 0);
-	// Calculate the width of all columns, including spacing.
-	for (row_it = tab.begin(); row_it != tab.end(); ++row_it) {
-		unsigned int col = 0;
-		for (col_it = row_it->begin(); col_it != row_it->end(); ++col_it) {
-			if (col_widths[col] < col_it->second + spacing) {
-				col_widths[col] = col_it->second + spacing;
-			}
-			++col;
-		}
-	}
-	std::vector<unsigned int> col_starts(num_cols);
-	// Calculate the starting positions of all columns
-	for (unsigned int i = 0; i < num_cols; ++i) {
-		unsigned int this_col_start = 0;
-		for (unsigned int j = 0; j < i; ++j) {
-			this_col_start += col_widths[j];
-		}
-		col_starts[i] = this_col_start;
-	}
-	std::stringstream ss;
-	for (row_it = tab.begin(); row_it != tab.end(); ++row_it) {
-		unsigned int col = 0;
-		for (col_it = row_it->begin(); col_it != row_it->end(); ++col_it) {
-			ss << jump_to(col_starts[col]) << col_it->first;
-			++col;
-		}
-		ss << "\n";
-	}
-	return ss.str();
 }
 
 /** Prepend all chars with meaning inside attributes with a backslash. */
