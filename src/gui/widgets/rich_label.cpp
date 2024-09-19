@@ -278,6 +278,7 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 
 	config text_dom;
 	config* curr_item = nullptr;
+	config* remaining_item = nullptr;
 
 	bool is_text = false;
 	bool is_image = false;
@@ -311,8 +312,8 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 				float_size.x = curr_img_size.x + padding_;
 				float_size.y += curr_img_size.y;
 			} else {
-				x += img_size.x;
 				img_size.x += curr_img_size.x + padding_;
+				x = img_size.x;
 				img_size.y = std::max(img_size.y, curr_img_size.y);
 				if (!is_image || (is_image && is_float)) {
 					prev_blk_height += curr_img_size.y;
@@ -450,18 +451,38 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 		} else {
 			std::string line = child["text"];
 
+			config part2_cfg;
+
 			if (!finalize && line.empty()) {
 				continue;
 			}
 
 			if (is_image && (!is_float)) {
-				if (line.size() > 0 && line.at(0) == '\n') {
+				if (!line.empty() && line.at(0) == '\n') {
 					x = 0;
 					prev_blk_height += padding_;
 					(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
 					line = line.substr(1);
 				} else {
-					prev_blk_height -= img_size.y;
+					if (!line.empty() && line.at(0) != '\n') {
+						std::vector<std::string> parts = help::split_in_width(line, font::SIZE_NORMAL, w_ - x);
+						// First line
+						if (!parts.front().empty()) {
+							line = parts.front();
+						}
+
+						if (!parts.back().empty() && parts.size() > 1) {
+							part2_cfg.add_child("text")["text"] = parts.back();
+							part2_cfg = get_parsed_text(part2_cfg, point(x, prev_blk_height), false);
+							remaining_item = &part2_cfg;
+							prev_blk_height += (h_ - prev_blk_height); // this h_ is being set by get_parsed_text call above
+							prev_blk_height -= font::get_max_height(font::SIZE_NORMAL);
+						}
+
+					} else {
+						prev_blk_height -= img_size.y;
+					}
+
 				}
 			}
 
@@ -475,6 +496,12 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 				curr_item = &(text_dom.add_child("text"));
 				default_text_config(curr_item);
 				new_text_block = false;
+			}
+
+			if (remaining_item) {
+				(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + " + std::to_string(img_size.y) + ")])";
+				text_dom.append(*remaining_item);
+				remaining_item = nullptr;
 			}
 
 			// }---------- TEXT TAGS -----------{
