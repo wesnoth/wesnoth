@@ -55,12 +55,12 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 	: styled_widget(builder, type())
 	, state_(ENABLED)
 	, can_wrap_(true)
-	, link_aware_(true)
+	, link_aware_(builder.link_aware)
 	, link_color_(font::YELLOW_COLOR)
 	, can_shrink_(true)
 	, text_alpha_(ALPHA_OPAQUE)
 	, unparsed_text_()
-	, w_(0)
+	, w_(builder.width(get_screen_size_variables()))
 	, h_(0)
 	, padding_(4)
 {
@@ -869,13 +869,8 @@ std::unique_ptr<widget> builder_rich_label::build() const
 	const auto conf = lbl->cast_config_to<rich_label_definition>();
 	assert(conf);
 
-	const wfl::map_formula_callable& size = get_screen_size_variables();
-	const unsigned w = width(size);
-
 	lbl->set_text_alignment(text_alignment);
-	lbl->set_link_aware(link_aware);
 	lbl->set_link_color(conf->link_color);
-	lbl->set_width(w);
 	lbl->set_label(lbl->get_label());
 
 	DBG_GUI_G << "Window builder: placed rich_label '" << id << "' with definition '"
