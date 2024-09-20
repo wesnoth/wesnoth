@@ -26,7 +26,7 @@
 
 // use of illegal utf8 character for this purpose was added in a76be7ef1e921dabacd99f16ef440bf9673b8d98
 // added by the preprocessor to allow special handling for #line and #textdomain commands
-constexpr int INLINED_PREPROCESS_DIRECTIVE_CHAR = 254;
+constexpr unsigned char INLINED_PREPROCESS_DIRECTIVE_CHAR = 254;
 
 // normal ascii is 0-127
 // extended ascii is from 128-255, none of which need any special handling
