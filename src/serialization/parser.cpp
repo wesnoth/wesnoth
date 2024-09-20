@@ -27,7 +27,6 @@
 #include "log.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
-#include "serialization/tokenizer.hpp"
 #include "serialization/validator.hpp"
 #include "wesconfig.h"
 
