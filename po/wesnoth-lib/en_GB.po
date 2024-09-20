@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-09-17 21:19-0500\n"
-"PO-Revision-Date: 2024-08-20 17:04+1000\n"
+"PO-Revision-Date: 2024-09-18 21:25+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -3945,10 +3945,8 @@ msgstr "AI Usage:"
 
 #. [label]
 #: data/gui/themes/default/window/editor_edit_unit.cfg:1170
-#, fuzzy
-#| msgid "Quit Editor"
 msgid "Unit Type Editor"
-msgstr "Quit Editor"
+msgstr "Unit Type Editor"
 
 #. [tab]
 #: data/gui/themes/default/window/editor_edit_unit.cfg:1192
@@ -7047,10 +7045,8 @@ msgid "No draw section defined for state."
 msgstr "No draw section defined for state."
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:132
-#, fuzzy
-#| msgid "No resolution defined."
 msgid "No resolution defined for "
-msgstr "No resolution defined."
+msgstr "No resolution defined for "
 
 #: src/gui/core/window_builder.cpp:166 src/gui/widgets/addon_list.cpp:430
 #: src/gui/widgets/multi_page.cpp:176 src/gui/widgets/panel.cpp:131
@@ -7596,10 +7592,8 @@ msgstr ""
 "your add-on?"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1036
-#, fuzzy
-#| msgid "Save already exists. Do you want to overwrite it?"
 msgid "Unsaved changes will be lost. Do you want to leave?"
-msgstr "Save already exists. Do you want to overwrite it?"
+msgstr "Unsaved changes will be lost. Do you want to leave?"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1055
 msgid "Unit type saved."
@@ -7627,19 +7621,23 @@ msgstr "Find File"
 
 #: src/gui/dialogs/file_dialog.cpp:181
 msgid "<span color='#00dcff' size='small'>please enter a filename</span>"
-msgstr ""
+msgstr "<span color='#00dcff' size='small'>please enter a file name</span>"
 
 #: src/gui/dialogs/file_dialog.cpp:203
 msgid ""
 "<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>wrong "
 "extension, use $extensions</span></span>"
 msgstr ""
+"<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>wrong "
+"extension, use $extensions</span></span>"
 
 #: src/gui/dialogs/file_dialog.cpp:206
 msgid ""
 "<span color='red'><span face='DejaVuSans'>✘</span> <span "
 "size='small'>whitespace is not allowed in filename</span></span>"
 msgstr ""
+"<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>white-"
+"space is not allowed in file name</span></span>"
 
 #: src/gui/dialogs/file_dialog.cpp:231
 msgid "Open"
@@ -8681,10 +8679,8 @@ msgid "Terrain Description"
 msgstr "Terrain Description"
 
 #: src/hotkey/hotkey_command.cpp:102
-#, fuzzy
-#| msgid "Unit Description"
 msgid "Unit Type Description"
-msgstr "Unit Description"
+msgstr "Unit Type Description"
 
 #: src/hotkey/hotkey_command.cpp:104
 msgid "Delete Unit"
@@ -9024,10 +9020,8 @@ msgid "Item Tool"
 msgstr "Item Tool"
 
 #: src/hotkey/hotkey_command.cpp:208
-#, fuzzy
-#| msgid "Left mouse button sets a new item."
 msgid "Left mouse button sets a new item. Right click removes item."
-msgstr "Left mouse button sets a new item."
+msgstr "Left mouse button sets a new item. Right-click removes item."
 
 #: src/hotkey/hotkey_command.cpp:209
 msgid ""
@@ -9414,28 +9408,20 @@ msgid "When reporting the bug please include the following error message :"
 msgstr "When reporting the bug please include the following error message :"
 
 #: src/wml_exception.cpp:89
-#, fuzzy
-#| msgid ""
-#| "In section '[$section|]' where '$primary_key| = $primary_value' the "
-#| "mandatory key '$key|' isn't set."
 msgid ""
 "In section ‘[$section|]’ where ‘$primary_key|’ = $primary_value’ the "
 "mandatory key ‘$key|’ isn't set."
 msgstr ""
-"In section '[$section|]' where '$primary_key| = $primary_value' the "
-"mandatory key '$key|' isn't set."
+"In section ‘[$section|]’ where ‘$primary_key|’ = $primary_value’ the "
+"mandatory key ‘$key|’ isn’t set."
 
 #: src/wml_exception.cpp:92
-#, fuzzy
-#| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section ‘[$section|]’ the mandatory key ‘$key|’ isn't set."
-msgstr "In section '[$section|]' the mandatory key '$key|' isn't set."
+msgstr "In section ‘[$section|]’ the mandatory key ‘$key|’ isn’t set."
 
 #: src/wml_exception.cpp:104
-#, fuzzy
-#| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
-msgstr "In section '[$section|]' the mandatory key '$key|' isn't set."
+msgstr "In section ‘[$section|]’ the mandatory sub-tag ‘[$tag|]’ is missing."
 
 #~ msgid "lawful"
 #~ msgstr "lawful"

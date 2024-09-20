@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-09-17 21:18-0500\n"
-"PO-Revision-Date: 2024-07-26 01:01+1000\n"
+"PO-Revision-Date: 2024-09-18 19:48+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -324,11 +324,11 @@ msgstr "Name:"
 
 #: src/editor/editor_display.cpp:170
 msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
-msgstr ""
+msgstr "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
 
 #: src/editor/editor_display.cpp:172
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
-msgstr ""
+msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 
 #: src/editor/map/context_manager.cpp:220
 msgid "Load Map"
@@ -430,10 +430,8 @@ msgid "Scenario saved."
 msgstr "Scenario saved."
 
 #: src/editor/map/context_manager.cpp:905
-#, fuzzy
-#| msgid "Map saved."
 msgid "Map saved"
-msgstr "Map saved."
+msgstr "Map saved"
 
 #: src/editor/map/context_manager.cpp:980
 msgid "Loaded embedded map data"
@@ -530,16 +528,12 @@ msgid "Will not work in game without extra care."
 msgstr "Will not work in game without extra care."
 
 #: src/editor/palette/item_palette.cpp:32
-#, fuzzy
-#| msgid "Right-click: "
 msgid " | Right-click to remove"
-msgstr "Right-click: "
+msgstr " | Right-click to remove"
 
 #: src/editor/palette/item_palette.cpp:32
-#, fuzzy
-#| msgid "Left-click: "
 msgid "Left-click: Place item "
-msgstr "Left-click: "
+msgstr "Left-click: Place item "
 
 #: src/editor/palette/location_palette.cpp:248
 msgid "Go To"
