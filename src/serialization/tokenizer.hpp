@@ -25,7 +25,7 @@
 #include <string>
 
 // use of illegal utf8 character for this purpose was added in a76be7ef1e921dabacd99f16ef440bf9673b8d98
-// added by the preprocessor to allow special handling for 'line' and 'textdomain' commands
+// added by the preprocessor to allow special handling for #line and #textdomain commands
 // see OUTPUT_SEPARATOR in preprocessor.cpp
 constexpr int INLINED_PREPROCESS_DIRECTIVE_CHAR = 254;
 
@@ -191,7 +191,7 @@ private:
 
 	/**
 	 * Returns true if the next characters are the one from @a cmd followed by a space. Skips all the matching characters.
-	 * Currently handles only #textdomain (specified by the WML) and #line (added by the preprocessor)
+	 * Currently handles only \#textdomain (specified by the WML) and \#line (added by the preprocessor)
 	 */
 	bool skip_command(char const *cmd);
 
