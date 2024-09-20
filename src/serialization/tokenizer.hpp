@@ -141,7 +141,7 @@ private:
 
 	/**
 	 * increments the line number if the current character is a newline
-	 * set current_ to the next character that's not \\r
+	 * set current_ to the next character that's not `\r`
 	 */
 	void next_char()
 	{
@@ -152,8 +152,8 @@ private:
 
 	/**
 	 * set current_ to the next character
-	 * skip the \\r in the \\r\\n Windows-style line endings
-	 * the test_cvs_2018_1999023_2.cfg file also uses \\r\\n line endings for some reason - otherwise that check isn't needed since \\r characters are removed from cfg files on upload
+	 * skip the `\r` in the `\r\n` Windows-style line endings
+	 * the test_cvs_2018_1999023_2.cfg file also uses `\r\n` line endings for some reason - otherwise that check isn't needed since `\r` characters are removed from cfg files on upload
 	 */
 	void next_char_skip_cr()
 	{
