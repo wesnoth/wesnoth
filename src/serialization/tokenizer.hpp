@@ -151,14 +151,17 @@ private:
 	}
 
 	/**
-	 * set current_ to the next character that's not \r
-	 * presumably to ignore the \r in Window's line break (\r\n)
+	 * set current_ to the next character
+	 * skip carriage return on Windows for the \r\n
 	 */
 	void next_char_skip_cr()
 	{
-		do {
+		current_ = in_.get();
+#ifdef _WIN32
+		if(current_ == '\r') {
 			current_ = in_.get();
-		} while (current_ == '\r');
+		}
+#endif
 	}
 
 	/**
