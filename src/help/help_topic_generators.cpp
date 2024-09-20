@@ -623,7 +623,7 @@ std::string unit_topic_generator::operator()() const {
 
 	if (!type_.attacks().empty()) {
 		// Start table
-		ss << "<table col='6'>";
+		ss << "<table>";
 
 		// Print headers for the table.
 		ss
@@ -714,7 +714,7 @@ std::string unit_topic_generator::operator()() const {
 	ss << "\n<header>" << _("Resistances") << "</header>";
 
 	// Start table
-	ss << "<table col=2>";
+	ss << "<table>";
 	ss << "<row>";
 	ss << "<col>" << _("<b>Attack Type</b>") << "</col>";
 	ss << "<col>" << _("<b>Resistance</b>") << "</col>";
@@ -747,7 +747,7 @@ std::string unit_topic_generator::operator()() const {
 	if (std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data()) {
 		// Print the terrain modifier table of the unit.
 		ss << "\n<header>" << _("Terrain Modifiers") << "</header>";
-		ss << "<table col='3'>";
+		ss << "<table>";
 		ss << "<row>";
 		ss << "<col>" << _("<b>Terrain</b>") << "</col>";
 		ss << "<col>" << _("<b>Defense</b>") << "</col>";
