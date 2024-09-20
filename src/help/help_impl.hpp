@@ -105,7 +105,7 @@ public:
 	topic_text& operator=(const topic_text& t) = default;
 	topic_text& operator=(std::shared_ptr<topic_generator> g);
 
-    const config& parsed_text() const;
+	const config& parsed_text() const;
 };
 
 /** A topic contains a title, an id and some text. */

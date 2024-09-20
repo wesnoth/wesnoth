@@ -77,7 +77,7 @@ void help_browser::pre_show(window& window)
 	connect_signal_mouse_left_click(back_button, std::bind(&help_browser::on_history_navigate, this, true));
 	connect_signal_mouse_left_click(next_button, std::bind(&help_browser::on_history_navigate, this, false));
 
-	topic_text.register_link_callback(std::bind(&help_browser::on_link_click, this, std::placeholders::_1));
+	topic_text.register_link_callback(std::bind(&help_browser::show_topic, this, std::placeholders::_1, true));
 
 	connect_signal_notify_modified(topic_tree, std::bind(&help_browser::on_topic_select, this));
 
@@ -168,11 +168,6 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 		find_widget<button>(this, "back", false).set_active(history_pos_ != 0);
 
 	}
-}
-
-void help_browser::on_link_click(std::string link)
-{
-	show_topic(link);
 }
 
 void help_browser::on_topic_select()
