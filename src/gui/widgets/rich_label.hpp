@@ -204,7 +204,9 @@ private:
 	unsigned padding_;
 
 	/** Possible formatting tags, must be the same as those in gui2::text_shape::draw */
-	const std::vector<std::string> format_tags_ = {"bold", "b", "italic", "i", "underline", "u"};
+//	const std::vector<std::string> format_tags_ = {"bold", "b", "italic", "i", "underline", "u"};
+
+	static const inline std::vector<std::string> format_tags_ = {"bold", "b", "italic", "i", "underline", "u"};
 
 	/** Create template for text config that can be shown in canvas */
 	void default_text_config(config* txt_ptr, t_string text = "");
@@ -216,15 +218,9 @@ private:
 	void add_image(config& curr_item, std::string name, std::string align, bool has_prev_image, bool floating);
 	void add_link(config& curr_item, std::string name, std::string dest, const point& origin, int img_width);
 
-	void append_if_not_empty(config_attribute_value* key, std::string suffix) {
-		if (!key->str().empty()) {
-			*key = key->str() + suffix;
-		}
-	}
-
 	/** size calculation functions */
-	const point get_text_size(const config& text_cfg, const unsigned width = 0);
-	const point get_image_size(const config& img_cfg);
+	point get_text_size(config& text_cfg, unsigned width = 0);
+	point get_image_size(config& img_cfg);
 
 	wfl::map_formula_callable setup_text_renderer(config text_cfg, unsigned width = 0);
 
