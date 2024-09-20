@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2024
 	by Charles Dang <exodia339@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -62,8 +62,6 @@ private:
 	tree_view_node& add_topic(const std::string& topic_id, const std::string& topic_title,
 			bool expands, tree_view_node& parent);
 	void show_topic(std::string topic_id, bool add_to_history = true);
-
-	void on_link_click(std::string link);
 };
 
 } // namespace dialogs
