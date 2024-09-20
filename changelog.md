@@ -8,7 +8,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Turkish
+   * Updated translations: Finnish, Turkish
  ### Units
  ### User interface
  ### WML Engine
