@@ -139,26 +139,41 @@ private:
 	int lineno_;
 	int startlineno_;
 
+	/**
+	 * increments the line number if the current character is a newline
+	 * set current_ to the next character that's not \r
+	 */
 	void next_char()
 	{
 		if (current_ == token::NEWLINE)
 			++lineno_;
-		next_char_fast();
+		next_char_skip_cr();
 	}
 
-	void next_char_fast()
+	/**
+	 * set current_ to the next character that's not \r
+	 * presumably to ignore the \r in Window's line break (\r\n)
+	 */
+	void next_char_skip_cr()
 	{
 		do {
 			current_ = in_.get();
 		} while (current_ == '\r');
 	}
 
+	/**
+	 * return the next character without incrementing the current position in the istream
+	 */
 	int peek_char()
 	{
 		return in_.peek();
 	}
 
-	enum token_category
+	/**
+	 * the different types of characters while parsing
+	 * TOK_NONE is also the default for anything beyond standard ascii
+	 */
+	enum character_type
 	{
 		TOK_NONE = 0,
 		TOK_SPACE = 1,
@@ -166,7 +181,7 @@ private:
 		TOK_ALPHA = 3
 	};
 
-	token_category char_type(unsigned c) const
+	character_type char_type(unsigned c) const
 	{
 		return c < START_EXTENDED_ASCII ? char_types_[c] : TOK_NONE;
 	}
@@ -186,11 +201,14 @@ private:
 		return char_type(c) > TOK_SPACE;
 	}
 
+	/**
+	 * handles skipping over comments (inline and on a separate line) as well as the special processing needed for \#textdomain and \#line
+	 */
 	void skip_comment();
 
 	/**
 	 * Returns true if the next characters are the one from @a cmd followed by a space. Skips all the matching characters.
-	 * Currently handles only \#textdomain (specified by the WML) and \#line (added by the preprocessor)
+	 * Currently only used by \#textdomain (specified by the WML) and \#line (added by the preprocessor)
 	 */
 	bool skip_command(char const *cmd);
 
@@ -201,5 +219,5 @@ private:
 	token previous_token_;
 #endif
 	buffered_istream in_;
-	std::array<token_category, START_EXTENDED_ASCII> char_types_;
+	std::array<character_type, START_EXTENDED_ASCII> char_types_;
 };

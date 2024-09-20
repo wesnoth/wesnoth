@@ -28,7 +28,7 @@ tokenizer::tokenizer(std::istream& in) :
 {
 	for (int c = 0; c < START_EXTENDED_ASCII; ++c)
 	{
-		token_category t = TOK_NONE;
+		character_type t = TOK_NONE;
 		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_') {
 			t = TOK_ALPHA;
 		} else if (c >= '0' && c <= '9') {
@@ -39,7 +39,7 @@ tokenizer::tokenizer(std::istream& in) :
 		char_types_[c] = t;
 	}
 	in_.stream().exceptions(std::ios_base::badbit);
-	next_char_fast();
+	next_char_skip_cr();
 }
 
 tokenizer::~tokenizer()
@@ -59,13 +59,13 @@ const token &tokenizer::next_token()
 	while(true)
 	{
 		while (is_space(current_)) {
-			next_char_fast();
+			next_char_skip_cr();
 		}
 		if (current_ != INLINED_PREPROCESS_DIRECTIVE_CHAR)
 			break;
 		skip_comment();
 		// skip the line end
-		next_char_fast();
+		next_char_skip_cr();
 	}
 
 	// skip comments on their own line
@@ -94,7 +94,7 @@ const token &tokenizer::next_token()
 
 		// else, treat this like a quoted string
 		token_.type = token::QSTRING;
-		next_char_fast();
+		next_char_skip_cr();
 
 		// keep getting characters and appending them to the current token's value until either the file ends or double right angle brackets are found
 		// finding the end of the file first is an error since double left angle brackets must always be closed by double right angle brackets
@@ -104,7 +104,7 @@ const token &tokenizer::next_token()
 				token_.type = token::UNTERMINATED_QSTRING;
 				break;
 			} else if (current_ == token::RIGHT_ANGLE_BRACKET && peek_char() == token::RIGHT_ANGLE_BRACKET) {
-				next_char_fast();
+				next_char_skip_cr();
 				break;
 			}
 			token_.value += current_;
@@ -125,7 +125,7 @@ const token &tokenizer::next_token()
 				if (peek_char() != token::DOUBLE_QUOTE) {
 					break;
 				} else {
-					next_char_fast();
+					next_char_skip_cr();
 				}
 			}
 
@@ -176,11 +176,11 @@ const token &tokenizer::next_token()
 
 			do {
 				token_.value += current_;
-				next_char_fast();
+				next_char_skip_cr();
 
 				while (current_ == INLINED_PREPROCESS_DIRECTIVE_CHAR) {
 					skip_comment();
-					next_char_fast();
+					next_char_skip_cr();
 				}
 			} while (is_alnum(current_) || current_ == token::DOLLAR);
 		} else {
@@ -203,26 +203,26 @@ bool tokenizer::skip_command(char const *cmd)
 {
 	// check that the character match the provided text, else return false
 	for (; *cmd; ++cmd) {
-		next_char_fast();
+		next_char_skip_cr();
 		if (current_ != *cmd) {
 			return false;
 		}
 	}
 
 	// check that it's followed by a space, else return false
-	next_char_fast();
+	next_char_skip_cr();
 	if (!is_space(current_)) {
 		return false;
 	}
 
-	next_char_fast();
+	next_char_skip_cr();
 	return true;
 }
 
 void tokenizer::skip_comment()
 {
 	// nothing to do if the line ends or the file ends
-	next_char_fast();
+	next_char_skip_cr();
 	if (current_ == token::NEWLINE || current_ == EOF) {
 		return;
 	}
@@ -252,14 +252,14 @@ void tokenizer::skip_comment()
 			// (5 * 10) + 8 = 58
 			// (58 * 10) + 7 = 587
 			lineno_ = lineno_ * 10 + (current_ - '0');
-			next_char_fast();
+			next_char_skip_cr();
 		}
 
 		if (!is_space(current_)) {
 			goto not_a_command;
 		}
 
-		next_char_fast();
+		next_char_skip_cr();
 		dst = &file_;
 	}
 	// else this turned out to not be a #textdomain or a #line, then this is a normal comment so just read off characters until finding the next line or the end of the file
@@ -267,7 +267,7 @@ void tokenizer::skip_comment()
 	{
 		not_a_command:
 		while (current_ != token::NEWLINE && current_ != EOF) {
-			next_char_fast();
+			next_char_skip_cr();
 		}
 		return;
 	}
@@ -276,6 +276,6 @@ void tokenizer::skip_comment()
 	dst->clear();
 	while (current_ != token::NEWLINE && current_ != EOF) {
 		*dst += current_;
-		next_char_fast();
+		next_char_skip_cr();
 	}
 }
