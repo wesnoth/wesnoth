@@ -664,7 +664,7 @@ void config::remove_children(config_key_type key, std::function<bool(const confi
 
 	const auto predicate = [p](const std::unique_ptr<config>& child)
 	{
-		return p(*child);
+		return !p || p(*child);
 	};
 
 	auto child_it = std::find_if(pos->second.begin(), pos->second.end(), predicate);

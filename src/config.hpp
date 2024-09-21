@@ -612,10 +612,13 @@ public:
 	void splice_children(config& src, config_key_type key);
 
 	void remove_child(config_key_type key, std::size_t index);
+
 	/**
 	 * Removes all children with tag @a key for which @a p returns true.
+	 * If no predicate is provided, all @a key tags will be removed.
 	 */
-	void remove_children(config_key_type key, std::function<bool(const config&)> p = [](config){return true;});
+	void remove_children(config_key_type key, std::function<bool(const config&)> p = {});
+
 	void recursive_clear_value(config_key_type key);
 
 	void clear();
