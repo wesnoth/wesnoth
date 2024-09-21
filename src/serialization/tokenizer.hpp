@@ -153,7 +153,7 @@ private:
 	/**
 	 * set current_ to the next character
 	 * skip the `\r` in the `\r\n` Windows-style line endings
-	 * the test_cvs_2018_1999023_2.cfg file also uses `\r\n` line endings for some reason - otherwise that check isn't needed since `\r` characters are removed from cfg files on upload
+	 * the test_cvs_2018_1999023_2.cfg file also uses `\r\n` line endings for some reason - otherwise that check isn't needed on non-Windows platforms since `\r` characters are removed from cfg files on upload
 	 */
 	void next_char_skip_cr()
 	{
