@@ -189,6 +189,10 @@ if env['distcc']:
 
 if env['ccache']: env.Tool('ccache')
 
+env.Tool('compilation_db')
+cdb = env.CompilationDatabase()
+Alias('cdb', cdb) 
+
 boost_version = "1.67"
 
 def SortHelpText(a, b):
