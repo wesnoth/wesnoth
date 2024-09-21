@@ -31,9 +31,9 @@
    * The in-game chat now properly redraws over water and other animated terrain.
    * Fixed items not appearing properly when submerged.
  ### WML Engine
-  * Removed properties `unit.side` and `terrain.owner` from WFL. Use `unit.side_number` and `terrain.owner_side` instead.
-  * Fixed events with negative priority not being stored in save files.
-  * Events can now be added to abilities and weapon specials.
+   * Removed properties `unit.side` and `terrain.owner` from WFL. Use `unit.side_number` and `terrain.owner_side` instead.
+   * Fixed events with negative priority not being stored in save files.
+   * Events can now be added to abilities and weapon specials.
 
 ## Version 1.19.3
  ### Campaigns
