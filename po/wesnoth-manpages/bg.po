@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
-"POT-Creation-Date: 2024-07-21 22:31-0500\n"
+"POT-Creation-Date: 2024-09-17 21:19-0500\n"
 "PO-Revision-Date: 2023-12-08 18:02+0200\n"
 "Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: Български\n"
@@ -281,8 +281,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:89
-#, no-wrap
-msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
+#, fuzzy, no-wrap
+#| msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
+msgid "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
 msgstr "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
 
 #. type: Plain text
@@ -734,8 +735,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:240
-#, no-wrap
-msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+#, fuzzy, no-wrap
+#| msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+msgid "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
 msgstr "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
 
 #. type: Plain text
@@ -1004,13 +1006,16 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:347
-#, no-wrap
-msgid "B<-S,--use-schema>I<\\ path>"
+#, fuzzy, no-wrap
+#| msgid "B<-S,--use-schema>I<\\ path>"
+msgid "B<-S,\\ --use-schema>I<\\ path>"
 msgstr "B<-S,--use-schema>I<\\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:351
-msgid "sets the WML schema for use with B<-V,--validate>."
+#, fuzzy
+#| msgid "sets the WML schema for use with B<-V,--validate>."
+msgid "sets the WML schema for use with B<-V,\\ --validate>."
 msgstr "поставя WML схемата за употреба с B<-V,--validate>."
 
 # type: TP
@@ -1101,8 +1106,9 @@ msgstr "валидира WML ядрото, докато играете."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:377
-#, no-wrap
-msgid "B<--validate-schema \\ path>"
+#, fuzzy, no-wrap
+#| msgid "B<--validate-schema \\ path>"
+msgid "B<--validate-schema>I<\\ path>"
 msgstr "B<--validate-schema \\ path>"
 
 #. type: Plain text

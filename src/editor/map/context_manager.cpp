@@ -887,10 +887,10 @@ bool context_manager::write_scenario(bool display_confirmation)
 	try {
 		get_map_context().save_scenario();
 		if(display_confirmation) {
-			gui2::show_transient_message("", _("Scenario saved."));
+			gui_.set_status(_("Scenario saved."), true);
 		}
 	} catch (const editor_map_save_exception& e) {
-		gui2::show_transient_message("", e.what());
+		gui_.set_status(e.what(), false);
 		return false;
 	}
 
@@ -902,10 +902,10 @@ bool context_manager::write_map(bool display_confirmation)
 	try {
 		get_map_context().save_map();
 		if(display_confirmation) {
-			gui2::show_transient_message("", _("Map saved."));
+			gui_.set_status(_("Map saved"), true);
 		}
 	} catch (const editor_map_save_exception& e) {
-		gui2::show_transient_message("", e.what());
+		gui_.set_status(e.what(), false);
 		return false;
 	}
 

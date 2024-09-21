@@ -226,8 +226,6 @@ public:
 
 	game_events::wml_event_pump& pump();
 
-	int get_ticks() const;
-
 	virtual soundsource::manager* get_soundsource_man() override;
 	virtual plugins_context* get_plugins_context() override;
 	hotkey::command_executor* get_hotkey_command_executor() override;

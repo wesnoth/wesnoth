@@ -22,7 +22,7 @@
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/multi_page.hpp"
-#include "gui/widgets/scroll_label.hpp"
+#include "gui/widgets/scroll_text.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -175,7 +175,6 @@ void chatbox::chat_input_keypress_callback(const SDL_Keycode key)
 			break;
 		}
 
-		// TODO: very inefficient! Very! D:
 		std::vector<std::string> matches;
 		for(const auto& ui : li->users()) {
 			if(ui.name != prefs::get().login()) {
@@ -215,16 +214,16 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 {
 	grid& grid = chat_log_container_->page_grid(id);
 
-	scroll_label& log = find_widget<scroll_label>(&grid, "log_text", false);
+	scroll_text& log = find_widget<scroll_text>(&grid, "log_text", false);
 	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
 	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
 
-	const std::string before_message = log.get_label().empty() ? "" : "\n";
+	const std::string before_message = log.get_value().empty() ? "" : "\n";
 	const std::string new_text = formatter()
-		<< log.get_label() << before_message << "<span color='#bcb088'>" << prefs::get().get_chat_timestamp(std::time(0)) << text << "</span>";
+		<< log.get_value() << before_message << "<span color='#bcb088'>" << prefs::get().get_chat_timestamp(std::time(0)) << text << "</span>";
 
 	log.set_use_markup(true);
-	log.set_label(new_text);
+	log.set_value(new_text);
 
 	if(log_ != nullptr) {
 		try {
@@ -253,8 +252,8 @@ void chatbox::clear_messages()
 {
 	const auto id = active_window_;
 	grid& grid = chat_log_container_->page_grid(id);
-	scroll_label& log = find_widget<scroll_label>(&grid, "log_text", false);
-	log.set_label("");
+	scroll_text& log = find_widget<scroll_text>(&grid, "log_text", false);
+	log.set_value("");
 }
 
 void chatbox::user_relation_changed(const std::string& /*name*/)

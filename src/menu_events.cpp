@@ -1310,8 +1310,8 @@ protected:
 		register_alias("whiteboard_options", "wbo");
 
 		if(auto alias_list = prefs::get().get_alias()) {
-			for(const config::attribute& a : alias_list->attribute_range()) {
-				register_alias(a.second, a.first);
+			for(const auto& [key, value] : alias_list->attribute_range()) {
+				register_alias(value, key);
 			}
 		}
 	}
@@ -1389,22 +1389,17 @@ void menu_handler::do_search(const std::string& new_search)
 		if(!gui_->shrouded(loc)) {
 			const terrain_label* label = gui_->labels().get_label(loc);
 			if(label) {
-				std::string label_text = label->text().str();
-				if(std::search(label_text.begin(), label_text.end(), last_search_.begin(), last_search_.end(),
-						   utils::chars_equal_insensitive)
-						!= label_text.end()) {
-					found = true;
-				}
+				const std::string& label_text = label->text().str();
+				found = translation::ci_search(label_text, last_search_);
 			}
 		}
+
 		// Search unit name
 		if(!gui_->fogged(loc)) {
 			unit_map::const_iterator ui = pc_.get_units().find(loc);
 			if(ui != pc_.get_units().end()) {
-				const std::string name = ui->name();
-				if(std::search(
-						   name.begin(), name.end(), last_search_.begin(), last_search_.end(), utils::chars_equal_insensitive)
-						!= name.end()) {
+				const std::string& unit_name = ui->name();
+				if(translation::ci_search(unit_name, last_search_)) {
 					if(!gui_->viewing_team().is_enemy(ui->side())
 							|| !ui->invisible(ui->get_location())) {
 						found = true;

@@ -718,6 +718,8 @@
 		91254C462C4FE519007695D3 /* optional_fwd.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 91254C452C4FE519007695D3 /* optional_fwd.hpp */; };
 		913D26771D3C9697002FF3AB /* name_generator_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 913D26751D3C9697002FF3AB /* name_generator_factory.cpp */; };
 		914F2F861D35253900A42440 /* location_palette.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 914F2F841D35253900A42440 /* location_palette.cpp */; };
+		9154743D2C8FBAC800EB1C94 /* lua_attributes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9154743C2C8FBAC700EB1C94 /* lua_attributes.cpp */; };
+		915474422C8FBACE00EB1C94 /* lua_attributes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9154743C2C8FBAC700EB1C94 /* lua_attributes.cpp */; };
 		915C68EA1DF1DCB000594B07 /* color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 915C68E81DF1DCB000594B07 /* color.cpp */; };
 		915C68EB1DF1DCB000594B07 /* color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 915C68E81DF1DCB000594B07 /* color.cpp */; };
 		915C68EC1DF1DCB000594B07 /* color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 915C68E81DF1DCB000594B07 /* color.cpp */; };
@@ -1615,7 +1617,7 @@
 		26A04033A9545CFE8A226FBD /* test_schema_self_validator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_schema_self_validator.cpp; sourceTree = "<group>"; };
 		27764FB68F02032F1C0B6748 /* statistics_record.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = statistics_record.cpp; sourceTree = "<group>"; };
 		2CFD4922B64EA6C9F71F71A2 /* preferences.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = preferences.hpp; path = preferences/preferences.hpp; sourceTree = "<group>"; };
-		3D284B9A81882806D8B25006 /* spritesheet_generator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = spritesheet_generator.hpp; path = spritesheet_generator.hpp; sourceTree = "<group>"; };
+		3D284B9A81882806D8B25006 /* spritesheet_generator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spritesheet_generator.hpp; sourceTree = "<group>"; };
 		46081FED2B2F0F6A006ACAD7 /* libpcre2-8.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpcre2-8.0.dylib"; path = "lib/libpcre2-8.0.dylib"; sourceTree = "<group>"; };
 		46081FF02B2F103E006ACAD7 /* libwebpdemux.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libwebpdemux.2.dylib; path = lib/libwebpdemux.2.dylib; sourceTree = "<group>"; };
 		46081FF32B2F11F3006ACAD7 /* libsharpyuv.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsharpyuv.0.dylib; path = lib/libsharpyuv.0.dylib; sourceTree = "<group>"; };
@@ -2148,7 +2150,7 @@
 		46F92F0C2174FEC000602C1C /* text.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = text.cpp; path = font/text.cpp; sourceTree = "<group>"; };
 		46F92F0D2174FEC000602C1C /* text.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = text.hpp; path = font/text.hpp; sourceTree = "<group>"; };
 		46F92F0E2174FEC000602C1C /* constants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = constants.cpp; path = font/constants.cpp; sourceTree = "<group>"; };
-		492144E3AE22C0C7A2D5F27C /* spritesheet_generator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = spritesheet_generator.cpp; path = spritesheet_generator.cpp; sourceTree = "<group>"; };
+		492144E3AE22C0C7A2D5F27C /* spritesheet_generator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = spritesheet_generator.cpp; sourceTree = "<group>"; };
 		4944F41A1354FBFF0027E614 /* teleport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = teleport.cpp; sourceTree = "<group>"; };
 		49478712172FF6F8002B7ABA /* tristate_button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tristate_button.cpp; sourceTree = "<group>"; };
 		49478713172FF6F8002B7ABA /* tristate_button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tristate_button.hpp; sourceTree = "<group>"; };
@@ -2264,6 +2266,8 @@
 		913D26761D3C9697002FF3AB /* name_generator_factory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = name_generator_factory.hpp; sourceTree = "<group>"; };
 		914F2F841D35253900A42440 /* location_palette.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = location_palette.cpp; sourceTree = "<group>"; };
 		914F2F851D35253900A42440 /* location_palette.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = location_palette.hpp; sourceTree = "<group>"; };
+		9154743B2C8FBA5D00EB1C94 /* lua_attributes.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lua_attributes.hpp; sourceTree = "<group>"; };
+		9154743C2C8FBAC700EB1C94 /* lua_attributes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_attributes.cpp; sourceTree = "<group>"; };
 		915C68E81DF1DCB000594B07 /* color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = color.cpp; sourceTree = "<group>"; };
 		915C68E91DF1DCB000594B07 /* color.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = color.hpp; sourceTree = "<group>"; };
 		915C68F31DF1F78600594B07 /* libintl.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.8.dylib; path = lib/libintl.8.dylib; sourceTree = "<group>"; };
@@ -5005,6 +5009,8 @@
 				91B621E21B76BAF300B00E0F /* context.hpp */,
 				EC218EA21A106673007C910C /* game_lua_kernel.cpp */,
 				91B621E41B76BB0100B00E0F /* game_lua_kernel.hpp */,
+				9154743C2C8FBAC700EB1C94 /* lua_attributes.cpp */,
+				9154743B2C8FBA5D00EB1C94 /* lua_attributes.hpp */,
 				EC3863621EB6286E0048B0C8 /* lua_audio.cpp */,
 				EC3863631EB6286E0048B0C8 /* lua_audio.hpp */,
 				461DC52B241F836200B9DD10 /* lua_color.cpp */,
@@ -5557,6 +5563,7 @@
 				EC669C261DFC95AF00172EED /* surface.cpp in Sources */,
 				46F92DAB2174F6A300602C1C /* unit_recall.cpp in Sources */,
 				B5599B7B0EC62181008DD061 /* config_cache.cpp in Sources */,
+				9154743D2C8FBAC800EB1C94 /* lua_attributes.cpp in Sources */,
 				46F92EF22174FE5600602C1C /* show_dialog.cpp in Sources */,
 				B5599B7D0EC62181008DD061 /* config.cpp in Sources */,
 				EC0680291EA920A300EEE03B /* random_deterministic.cpp in Sources */,
@@ -6312,6 +6319,7 @@
 				91E356B21CACC82D00774252 /* aspect.cpp in Sources */,
 				91E356B31CACC82D00774252 /* component.cpp in Sources */,
 				46F92D862174F6A300602C1C /* vertical_list.cpp in Sources */,
+				915474422C8FBACE00EB1C94 /* lua_attributes.cpp in Sources */,
 				91E356B41CACC82D00774252 /* contexts.cpp in Sources */,
 				46F92DF02174F6A400602C1C /* install_dependencies.cpp in Sources */,
 				46D60150255AFA6000E072F0 /* options.cpp in Sources */,

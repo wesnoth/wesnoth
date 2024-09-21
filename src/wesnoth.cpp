@@ -277,39 +277,6 @@ static int process_command_args(commandline_options& cmdline_opts)
 		lg::set_log_sanitize(false);
 	}
 
-	// If true, output will be redirected to file, else output be written to console.
-	// On Windows, if Wesnoth was not started from a console, one will be allocated.
-	const auto should_redirect_to_file = [&cmdline_opts] {
-		if(cmdline_opts.log_to_file) {
-			return true;
-		} else if(cmdline_opts.no_log_to_file) {
-			return false;
-		} else {
-			return !getenv("WESNOTH_NO_LOG_FILE")
-				// command line options that imply not redirecting output to a log file
-				// Some switches force a Windows console to be attached to the process even
-				// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
-				// turn it into a CLI application. Also, --no-log-to-file in particular attaches
-				// a console to a regular GUI game session.
-				&& !cmdline_opts.data_path
-				&& !cmdline_opts.help
-				&& !cmdline_opts.logdomains
-				&& !cmdline_opts.nogui
-				&& !cmdline_opts.report
-				&& !cmdline_opts.simple_version
-				&& !cmdline_opts.userdata_path
-				&& !cmdline_opts.version
-				&& !cmdline_opts.do_diff
-				&& !cmdline_opts.do_patch
-				&& !cmdline_opts.preprocess
-				&& !cmdline_opts.render_image
-				&& !cmdline_opts.screenshot
-				&& !cmdline_opts.headless_unit_test
-				&& !cmdline_opts.validate_schema
-				&& !cmdline_opts.validate_wml;
-		}
-	};
-
 	if(cmdline_opts.usercache_dir) {
 		filesystem::set_cache_dir(*cmdline_opts.usercache_dir);
 	}
@@ -324,10 +291,38 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	// userdata is initialized, so initialize logging to file if enabled
-	if(should_redirect_to_file()) {
+	// If true, output will be redirected to file, else output be written to console.
+	// On Windows, if Wesnoth was not started from a console, one will be allocated.
+	if(cmdline_opts.log_to_file
+		|| (!cmdline_opts.no_log_to_file
+			&& !getenv("WESNOTH_NO_LOG_FILE")
+			// command line options that imply not redirecting output to a log file
+			&& !cmdline_opts.data_path
+			&& !cmdline_opts.userdata_path
+			&& !cmdline_opts.usercache_path
+			&& !cmdline_opts.version
+			&& !cmdline_opts.simple_version
+			&& !cmdline_opts.logdomains
+			&& !cmdline_opts.help
+			&& !cmdline_opts.report
+			&& !cmdline_opts.do_diff
+			&& !cmdline_opts.do_patch
+			&& !cmdline_opts.preprocess
+			&& !cmdline_opts.render_image
+			&& !cmdline_opts.screenshot
+			&& !cmdline_opts.nogui
+			&& !cmdline_opts.headless_unit_test
+			&& !cmdline_opts.validate_schema
+			&& !cmdline_opts.validate_wml
+			)
+		)
+	{
 		lg::set_log_to_file();
 	}
 #ifdef _WIN32
+	// This forces a Windows console to be attached to the process even
+	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because it
+	// turns Wesnoth into a CLI application. (unless --wnoconsole is given)
 	else if(!cmdline_opts.no_console) {
 		lg::do_console_redirect();
 	}
@@ -527,7 +522,7 @@ static int process_command_args(commandline_options& cmdline_opts)
 	if(cmdline_opts.preprocess_defines || cmdline_opts.preprocess_input_macros || cmdline_opts.preprocess_path) {
 		// It would be good if this was supported for running tests too, possibly for other uses.
 		// For the moment show an error message instead of leaving the user wondering why it doesn't work.
-		std::cerr << "That --preprocess-* option is only supported when using --preprocess or --validate-wml.";
+		PLAIN_LOG << "That --preprocess-* option is only supported when using --preprocess or --validate.";
 		return 2;
 	}
 

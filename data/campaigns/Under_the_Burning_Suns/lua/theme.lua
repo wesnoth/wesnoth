@@ -16,12 +16,6 @@ function wesnoth.interface.game_display.unit_status()
 		} })
 	end
 
-	if u.status.stunned then
-		table.insert(s, { "element", { image = "misc/stunned-status-icon.png",
-			tooltip = _ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-		} } )
-	end
-
 	if u.status.dazed then
 		table.insert(s, { "element", { image = "misc/dazed-status-icon.png",
 			tooltip = _ "dazed: This unit is dazed. It suffers a -10% penalty to both its defense and chance to hit (except for magical attacks)."

@@ -735,7 +735,7 @@ tree_view_node& tree_view_node::get_child_at(int index)
 	return *children_[index];
 }
 
-std::vector<int> tree_view_node::describe_path()
+std::vector<int> tree_view_node::describe_path() const
 {
 	if(is_root_node()) {
 		return std::vector<int>();

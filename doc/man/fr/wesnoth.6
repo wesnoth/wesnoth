@@ -89,7 +89,7 @@ active certains mécanismes de débogage pour Lua.
 \fB\-\-strict\-lua\fP
 Désactive les appels obsolètes à l'interface lua.
 .TP 
-\fB\-D,\-\-diff\fP\fI\ fichier\-original\fP\fB\ \fP\fIfichier\-nouveau\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 Fait la différence entre deux fichiers WML sans résolution préalable des
 macros (pour appliquer cela, utiliser d'abord \fB\-p\fP). La sortie de la
 différence sous format DiffWML se fait vers la sortie par défaut ou vers le
@@ -218,7 +218,7 @@ d'autres préférences. Dangereux.
 exécutée comme une coroutine et réveillée périodiquement avec des mises à
 jour.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ fichier\-cible\fP\fB\ \fP\fIfichier\-patch\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 Applique une différence au format DiffWML à un fichier WML sans résolution
 préalable des macros dans les fichiers. La sortie du fichier WML modifié se
 fait vers la sortie par défaut ou vers le fichier spécifié par \fI\-\-output\fP.
@@ -306,8 +306,8 @@ charger n'importe quel package. Ne faites cela qu'avec des scripts de
 confiance ! Cette action donne aux scripts Lua les mêmes permissions que
 l'exécutable de Wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ chemin\fP
-Donne le schéma WML à utiliser dans \fB\-V,\-\-validate\fP.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ nom\fP
 Définit le répertoire de données à \fInom\fP dans $HOME ou dans "Mes
@@ -333,7 +333,7 @@ Valide le code WML d'une extension durant le jeu.
 \fB\-\-validate\-core\fP
 Valide le code WML d'un noyau durant le jeu.
 .TP 
-\fB\-\-validate\-schema \ chemin\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 Valide un fichier en tant que schéma WML.
 .TP 
 \fB\-\-validcache\fP

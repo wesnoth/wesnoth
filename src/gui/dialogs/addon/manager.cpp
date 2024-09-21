@@ -65,12 +65,7 @@ namespace {
 				for(const auto& attribute : cfg.attribute_range())
 				{
 					std::string val = attribute.second.str();
-					if(std::search(val.begin(),
-						val.end(),
-						filter.begin(),
-						filter.end(),
-						utils::chars_equal_insensitive)
-						!= val.end())
+					if(translation::ci_search(val, filter))
 					{
 						found = true;
 						break;

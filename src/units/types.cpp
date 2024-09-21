@@ -1058,7 +1058,7 @@ void unit_type::fill_variations()
 
 		std::unique_ptr<unit_type> var = create_sub_type(var_cfg, false);
 
-		var->built_cfg_->remove_children("variation", [](const config&){return true;});
+		var->built_cfg_->remove_children("variation");
 		var->variation_id_ = var_cfg["variation_id"].str();
 		var->debug_id_ = debug_id_ + " [" + var->variation_id_ + "]";
 
@@ -1123,15 +1123,13 @@ void unit_type_data::set_config(const game_config_view& cfg)
 	for(const config& r : cfg.child_range("resistance_defaults")) {
 		const std::string& dmg_type = r["id"];
 
-		for(const config::attribute& attr : r.attribute_range()) {
-			const std::string& mt = attr.first;
-
+		for(const auto& [mt, value] : r.attribute_range()) {
 			if(mt == "id" || mt == "default" || movement_types_.find(mt) == movement_types_.end()) {
 				continue;
 			}
 
 			DBG_CF << "Patching specific movetype " << mt;
-			patch_movetype(movement_types_[mt], "resistance", dmg_type, attr.second, 100, true);
+			patch_movetype(movement_types_[mt], "resistance", dmg_type, value, 100, true);
 		}
 
 		if(r.has_attribute("default")) {
@@ -1185,15 +1183,13 @@ void unit_type_data::set_config(const game_config_view& cfg)
 
 			const config& info = terrain.mandatory_child(*src_tag);
 
-			for(const config::attribute& attr : info.attribute_range()) {
-				const std::string& mt = attr.first;
-
+			for(const auto& [mt, value] : info.attribute_range()) {
 				if(mt == "default" || movement_types_.find(mt) == movement_types_.end()) {
 					continue;
 				}
 
 				patch_movetype(
-					movement_types_[mt], cost_type.subtag, ter_type, attr.second, cost_type.default_val, true);
+					movement_types_[mt], cost_type.subtag, ter_type, value, cost_type.default_val, true);
 			}
 
 			if(info.has_attribute("default")) {

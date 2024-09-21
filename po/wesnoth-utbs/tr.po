@@ -3,21 +3,22 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # İhsan Haluk AKIN <ihsan_akin@yahoo.com>, 2006.
-# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008, ..., 2022.
+# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008-2024.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-utbs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-08-19 04:10 UTC\n"
-"PO-Revision-Date: 2022-08-21 16:13+0300\n"
+"PO-Revision-Date: 2024-09-16 19:09+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
-"Language-Team: Turkish\n"
+"Language-Team: Turkish <->\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 42.0\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -53,6 +54,10 @@ msgid ""
 "Quenoth elves include units that can attack several times per turn, and "
 "others that can move after attacking."
 msgstr ""
+"Bilgi: Bu seferberlik, gündüz/gece döngüsü, geri çağırma maliyetleri ve "
+"zorluk seviyelerine genel yaklaşım gibi bazı standart düzenlemeleri "
+"değiştirir. Kuyenot elfleri, el başına birkaç kez saldırabilen ve "
+"saldırdıktan sonra hareket edebilen birimler içerir."
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:24
@@ -116,13 +121,6 @@ msgstr "Ve burada bahsetmeyi unuttuğum herkese özellikle teşekkür ederim."
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:15
-#, fuzzy
-#| msgid ""
-#| "dehydrated: This unit is dehydrated. It will lose 4 HP and have its "
-#| "damage reduced by 1 each turn during the day unless prevented by healers "
-#| "or cured by water at an oasis.\n"
-#| "\n"
-#| "Units cannot be killed or deal no damage as a result of dehydration."
 msgid ""
 "dehydrated: This unit is dehydrated. It will lose $dehydration HP and have "
 "its damage reduced by 1 each turn during the day unless prevented by healers "
@@ -131,7 +129,7 @@ msgid ""
 "Units cannot be killed or deal no damage as a result of dehydration."
 msgstr ""
 "susamış: Bu birim susuz kalmış. Bir şifacı tarafından engellenmedikçe veya "
-"bir vahadan su içmedikçe gündüzleri her el 4 YP kaybeder ve hasarı 1 puan "
+"bir vahadan su içmedikçe gündüzleri her el 1 YP kaybeder ve hasarı 1 puan "
 "azalır.\n"
 "\n"
 "Susuzluk sonuçta ölüme sebep olmaz fakat böyle bir birim çarpışmada hasar da "
@@ -499,7 +497,7 @@ msgid ""
 "guard. He and his fighters have survived the night!"
 msgstr ""
 "Bu bizim alıştırma alanımız. Bak, orada Garak var, koruyucuların yüzbaşısı. "
-"O ve savaşçıları geceyi sağ sağlim atlatmışlar."
+"O ve savaşçıları geceyi sağ sağlim atlatmışlar!"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:621
@@ -759,7 +757,7 @@ msgstr ""
 "Burada her yere ceset kokusu yayılmış, millerce uzaktan aldım kokuyu. Bu "
 "kokuyu öyle seviyorum ki, benim için gücün kokusu o. Yaşamdan sonra ölümün "
 "kaçınılmaz zaferi. Cılız elfler, ailelerinizin cesetlerinden kendime bir "
-"yarı ölü ordusu yapacağım. Hepsi Kara Sihirbaz Santos’a boyun eğecek."
+"yarı ölü ordusu yapacağım. Hepsi Kara Sihirbaz Santos’a boyun eğecek!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1182
@@ -969,7 +967,7 @@ msgstr "Küstah kız, büyükler veya daha bilgeler varken sana söz düşmez."
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1416
 msgid "I have a right to speak my mind!"
-msgstr "Bence konuşmak benim de hakkım."
+msgstr "Bence konuşmak benim de hakkım!"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1422
@@ -1071,9 +1069,12 @@ msgid ""
 "journey. They were the first of our people to die in this great endeavor, "
 "but they were to be far from the last."
 msgstr ""
-"Ve gereken her şey yapıldı. Ölüleri bulabildiğimiz odun parçalarının "
-"tepesine yığıp odunları tutuşturduk. Ateş tüm cesetleri küle çevirecek ve "
-"ruhların hızla uzaklaşmasını sağlayacak kadar büyüktü. "
+"Ve böylece yapıldı. Ölüler bulabildiğimiz az miktardaki odunun üzerine "
+"saygıyla yatırıldı. Ancak ateş, bedenleri küle çevirmeye ve ruhlarını hızla "
+"uzaklaştırmaya yetecek kadar büyüktü. O zamanlar, halkımızın çoğunun "
+"ölümünün böylesine büyük bir yolculuğun başlangıcı için en iyi işaret "
+"olmadığını hatırlıyorum. Bu büyük çabada ölen ilk halkımız onlardı, ancak "
+"son olmayacaklardı."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1514
@@ -1104,7 +1105,7 @@ msgstr "Yarı Ölüler"
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:199
 msgid "Kaleh must reach the northern edge of the desert"
-msgstr "Kaleh çölün kuzey sınırına ulaşmalı."
+msgstr "Kaleh çölün kuzey sınırına ulaşmalı"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:203
@@ -1118,24 +1119,24 @@ msgid ""
 "when they are not on a water hex"
 msgstr ""
 "Biriminiz bir su altıgeni üzerinde değilken gündüz vakti susuzluk çektiği "
-"için yaşam puanı ve silah hasarı azalır."
+"için yaşam puanı ve silah hasarı azalır"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:235
 msgid ""
 "Units are refreshed at the start of your turn when they are on a water or "
 "oasis hex"
-msgstr "Birimler su veya vaha altıgeni üzerindeyken el başında iyileşir."
+msgstr "Birimler su veya vaha altıgeni üzerindeyken el başında iyileşir"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:238
 msgid "Healers can prevent dehydration from getting worse, but cannot heal it"
-msgstr "Şifacılar susuzluğun etkilerini engelleyebilir fakat iyileştiremez."
+msgstr "Şifacılar susuzluğun etkilerini engelleyebilir fakat iyileştiremez"
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:241
 msgid "Healers are unable to heal adjacent units during the day"
-msgstr "Şifacılar gündüz vakti yanlarındaki birimleri iyileştiremez."
+msgstr "Şifacılar gündüz vakti yanlarındaki birimleri iyileştiremez"
 
 #. [label]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:265
@@ -1450,7 +1451,7 @@ msgstr ""
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:753
 msgid "Nym! No! Don’t open—"
-msgstr "Nim! Dur! Açma..."
+msgstr "Nim! Dur! Açma—"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:763
@@ -1944,7 +1945,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1686
 msgid ""
 "Perhaps. But it has been so long, and so much has been lost. Who can say?"
-msgstr "Muhtemelen. Kimbilir ne uzun sürmüş ve ne çok zaman kaybetmişsindir."
+msgstr "Muhtemelen. Kimbilir ne uzun sürmüş ve ne çok zaman kaybetmişsindir?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1706
@@ -2068,7 +2069,7 @@ msgstr "Yastara’yı öldür"
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:266
 msgid "You lose control (even temporarily) of more than 6 villages"
-msgstr "6 köyden fazlasının denetimini (geçici de olsa) kaybederseniz."
+msgstr "6 köyden fazlasının denetimini (geçici de olsa) kaybedersiniz"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:341
@@ -2257,10 +2258,6 @@ msgstr ""
 #. probably just because of the nearby undead, not some prophetic vision. Neither Garak nor a first-time
 #. player know that the scenario will extend the night indefinitely until the enemies are defeated.
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:666
-#, fuzzy
-#| msgid ""
-#| "I had dreams of this night Kaleh, full of gloom and darkness, my journey "
-#| "will end here one way or another."
 msgid ""
 "I had a dream this night Kaleh, full of gloom and darkness. My journey will "
 "end here one way or another."
@@ -2301,7 +2298,7 @@ msgstr ""
 #. Custom steadfast ability. Has same name as the as the one in core, but works a bit different.
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
 msgid "Garak’s resistances are increased by 20% when defending."
-msgstr ""
+msgstr "Garak'ın savunma sırasındaki dirençleri %20 artar."
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
@@ -2369,8 +2366,7 @@ msgstr "Sıska elf... Ölme zamanı..."
 msgid ""
 "Grak was weak... But still you deserve respect... Meet my axe and take his "
 "place..."
-msgstr ""
-"Grak zayıf... Fakat seninle hala başa çıkabilirim... Baltamla tanış... "
+msgstr "Grak zayıf... Fakat seninle hala başa çıkabilirim... Baltamla tanış..."
 
 #. [message]: speaker=$second_unit.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:882
@@ -2593,10 +2589,8 @@ msgstr ""
 
 #. ['A unit’s name, should be short.']
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1540
-#, fuzzy
-#| msgid "Wounded Elven Scout"
 msgid "Wounded Scout"
-msgstr "Yaralı Elf Gözcü"
+msgstr "Yaralı Gözcü"
 
 #. [message]: speaker=Elven Scout
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1543
@@ -2625,7 +2619,7 @@ msgstr "Ölü bir sülük tarafından öldürülmek... (<i>Öksürür</i>)"
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1591
 msgid "Look, he dropped something! I wonder what it is..."
-msgstr "Bakın, o bir şey düşürdü! Merak ettim, neymiş?"
+msgstr "Bakın, o bir şey düşürdü! Neymiş merak ettim..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1610
@@ -2729,7 +2723,7 @@ msgstr "Garak’a ne oldu?"
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1760
 msgid "I’ve asked and looked around, there is no sign of him or his body"
-msgstr "Sorup soruşturdum, etrafa bakındım ondan veya cesedinden iz yok."
+msgstr "Sorup soruşturdum, etrafa bakındım ondan veya cesedinden iz yok"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1764
@@ -3040,6 +3034,10 @@ msgid ""
 "night! It shows an orcish camp just up ahead! I wonder if we could sneak "
 "around without alerting them."
 msgstr ""
+"Bu topraklardan bahsetmişken, rehberimiz artık Garak olmayabilir, ancak bu "
+"bölgedeki tüm arazi dün gece orklardan aldığımız haritayla mükemmel bir "
+"şekilde uyuşuyor! Hemen ileride bir ork kampı gösteriyor! Acaba onları "
+"uyarmadan etrafta gizlice dolaşabilir miyiz diye merak ediyorum."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:380
@@ -3167,6 +3165,8 @@ msgid ""
 "Merely a few steps in and all these goblins already know we’re here! I guess "
 "it’s not that easy to sneak around in someone else’s home territory."
 msgstr ""
+"Sadece birkaç adım atarak tüm bu goblinler bizim burada olduğumuzu biliyor! "
+"Sanırım başka birinin bölgesinde gizlice dolaşmak o kadar kolay değil."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:544
@@ -3187,7 +3187,7 @@ msgstr "Skilla"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:568
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:569
 msgid "Lake Naga"
-msgstr "Naga Gölü"
+msgstr "Göl Nagası"
 
 #. [event]
 #. name of an enemy unit in water, not a geographic feature
@@ -3195,10 +3195,8 @@ msgstr "Naga Gölü"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:566
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:568
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:569
-#, fuzzy
-#| msgid "Lake Naga"
 msgid "female^Lake Naga"
-msgstr "Naga Gölü"
+msgstr "Göl Nagası"
 
 #. [message]: speaker=Orac
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:605
@@ -3478,7 +3476,7 @@ msgid ""
 msgstr ""
 "Bu doğal bir tünel değil ve duvarlar orklar tarafından yapılmış olmayacak "
 "kadar düzgün kazılmış. Bu tüneli cücelerin kazmış olması benim için hiç "
-"şaşırtıcı olmazdı. Merak ediyorum, bu dağlarda onlardan hiç kaldı mı?"
+"şaşırtıcı olmazdı. Merak ediyorum, bu dağlarda onlardan hiç kaldı mı?..."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1119
@@ -3922,10 +3920,8 @@ msgstr "Vay canına."
 #. [message]: speaker=$explorer.id
 #. "this" refers to the trolls and dwarves fighting
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:946
-#, fuzzy
-#| msgid "Kaleh, I think you should come up and see this."
 msgid "Whoa. Kaleh, you have to come see this."
-msgstr "Kaleh, gelip bunu görmelisin."
+msgstr "Vaay, Kaleh, gelip bunu görmelisin."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1052
@@ -4251,7 +4247,7 @@ msgid ""
 "Kaleh. Be strong like rock. Griknagh will be with you."
 msgstr ""
 "Geri dönüp dövüşecek daha fazla trol getirmeliyim. Onları geride tutun, "
-"Kaleh. Kaya gibi sert olun. Griknaf yakında dönecek. "
+"Kaleh. Kaya gibi sert olun. Griknaf yakında dönecek."
 
 #. [unit]: type=Troll Shaman, id=Thu'lok, role=ally
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1866
@@ -4390,7 +4386,7 @@ msgid ""
 "will cleave all in two with my axe!"
 msgstr ""
 "Hain elfler, troller gibi iğrenç yaratıkların yanında nasıl "
-"dövüşebiliyorsunuz? Sizi de trolleri de baltamla parçalayacağım."
+"dövüşebiliyorsunuz? Sizi de trolleri de baltamla parçalayacağım!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2259
@@ -4944,7 +4940,7 @@ msgid ""
 "They have broken through the outer guard-line. Destroy the bridge, they must "
 "not pass!"
 msgstr ""
-"Dış hattımızı aşmışlar. Köprüyü hemen yok edin, bu tarafa geçmemeliler."
+"Dış hattımızı aşmışlar. Köprüyü hemen yok edin, bu tarafa geçmemeliler!"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:926
@@ -5619,7 +5615,7 @@ msgstr ""
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:724
 msgid "No, it’s a... human?"
-msgstr "Hayır, o bir... insan mı!"
+msgstr "Hayır, o bir... insan mı?"
 
 #. [message]: speaker=Dwarf Sergeant
 #. the human is female (Elyssa), but even if gender matters then the speaker is probably already speaking while turning to see her
@@ -5711,7 +5707,7 @@ msgid ""
 "face. A true dwarf always looks his opponent in the eye when he kills him!"
 msgstr ""
 "Hileye başvurmakla yanlış yaptınız. Gerçek cüce rakibini arkadan vurmaz. Biz "
-"sizi teke tek dövüşte yeneriz."
+"sizi teke tek dövüşte yeneriz!"
 
 #. [message]: speaker=Jorgi
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1189
@@ -6438,7 +6434,7 @@ msgstr "Yanan Kılıç"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:598
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:590
 msgid "This sword will make all your melee attacks do fire damage."
-msgstr "Bu kılıç tüm yakın saldırıların ateş saldırısı olmasını sağlar,"
+msgstr "Bu kılıç tüm yakın saldırıların ateş saldırısı olmasını sağlar."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:613
@@ -6515,7 +6511,7 @@ msgstr ""
 #. [message]: speaker=Great Leader Darmog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:331
 msgid "I, Great Leader Darmog, greet you, Kaleh."
-msgstr "Ben Büyük Lider Darmog, sana saygılarımı sunarım, Kaleh"
+msgstr "Ben Büyük Lider Darmog, sana saygılarımı sunarım, Kaleh."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:336
@@ -6833,7 +6829,7 @@ msgstr "Bir insan haberci vadiyi terkederse"
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:476
 msgid "The messenger is the leader of the special white colored units"
-msgstr "Haberci, özel beyaz giysili birimlerin lideridir."
+msgstr "Haberci, özel beyaz giysili birimlerin lideridir"
 
 #. [message]: speaker=$ally_id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:496
@@ -6911,7 +6907,7 @@ msgid ""
 "river and you all drown with us!"
 msgstr ""
 "Aptal elfler hala kaçmadınız. Büyük Liderin intikamı alınacak! Nehri tıkadık "
-"ve hepiniz bizimle boğulacaksınız! "
+"ve hepiniz bizimle boğulacaksınız!"
 
 #. [unit]: type=Dwarvish Fighter
 #. [unit]: type=Dwarvish Thunderguard
@@ -6939,7 +6935,7 @@ msgid ""
 "and fast!"
 msgstr ""
 "Bu, mağaralara hücum eden suyun sesi olmalı. Halkı acilen buradan "
-"götürmeliyiz."
+"götürmeliyiz!"
 
 #. [message]: speaker=$ally_id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:713
@@ -7063,12 +7059,12 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:944
 msgid ""
 "Fish bait? Barnacles? Who are these humans and what were they talking about?"
-msgstr "Balık yemi, midye... Bu insanlar kim ve neden bahsediyorlar? "
+msgstr "Balık yemi, midye... Bu insanlar kim ve neden bahsediyor?"
 
 #. [message]: speaker=Othgar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:951
 msgid "Hey look! It’s a dwarf!"
-msgstr "Hey bak! Bir cüce."
+msgstr "Hey bak! Bir cüce!"
 
 #. [message]: speaker=Durth
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:955
@@ -7093,8 +7089,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:963
 msgid ""
 "Fish bait? Cuttlefish? Who are these humans and what were they talking about?"
-msgstr ""
-"Balık yemi, mürekkep balığı... Bu insanlar kim ve neden bahsediyorlar? "
+msgstr "Balık yemi, mürekkep balığı... Bu insanlar kim ve neden bahsediyor?"
 
 #. [message]: speaker=Othgar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:969
@@ -7400,8 +7395,8 @@ msgid ""
 msgstr ""
 "Bekle, bu motifler soğuk mavi bir ışık saçıyor ve önceki kırmızı ışık "
 "saçanlar gibi bir tehdit hissi uyandırmıyorlar. Arkada bıraktığımız bazı "
-"sihirli şeyler yardımcı olmuştu, onların üzerine adım atacak cesur biri var "
-"mı?"
+"sihirli şeyler yardımcı olmuştu, onların üzerine adım atacak cesur biri "
+"olmalı."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1523
@@ -7742,8 +7737,8 @@ msgid ""
 "It wouldn’t have been my first choice. But it could prove useful. I wonder "
 "what it likes to eat?"
 msgstr ""
-"Benim tercihim bu değildi ama işe yarayacak gibi görünüyor. Ne yemeyi "
-"sevdiğini merak ediyorum."
+"Benim tercihim bu değildi ama işe yarayacak gibi görünüyor. Merak ediyorum, "
+"ne yemeyi seviyor?"
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2108
@@ -7885,8 +7880,8 @@ msgid ""
 "I can’t even begin to fathom what these cultists were up to. But more "
 "importantly, which way do we go?"
 msgstr ""
-"Bu yaratıklarlar uğraşırken bir yandan da duruma anlamaya çalışamam. Asıl "
-"önemli olan hangi yoldan gideceğimiz."
+"Bu yaratıklarlar uğraşırken bir yandan da duruma anlamaya çalışamam. Daha "
+"önemlisi, hangi yoldan gidiyoruz?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2291
@@ -8061,7 +8056,7 @@ msgstr "Öyle olsun."
 #. Name of the dark assassin who uses "speaker=Cloaked Figure" when talking
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2511
 msgid "Keratur"
-msgstr ""
+msgstr "Keratur"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2546
@@ -8072,7 +8067,7 @@ msgstr "Bakın, gün ışığı! Sonunda mağaralardan çıkabildik!"
 #. Nym is blocked by deep water, and drowning is inevitable
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2576
 msgid "Kaleh? Zhul? I’m still stuck back here..."
-msgstr "Kaleh? Zul? Ben hala burada takılıyorum... "
+msgstr "Kaleh? Zul? Ben hala burada takılıyorum..."
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2591
@@ -8080,7 +8075,7 @@ msgid ""
 "What’s this? Someone has built an outpost at the end of the cave. Where are "
 "its occupants?"
 msgstr ""
-"Bu da ne? Birisi mağara ağzına bir karakol inşa etmiş. Ama kimse görünmüyor."
+"Bu da ne? Birisi mağara ağzına bir karakol inşa etmiş. Peki sakinleri nerede?"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2603
@@ -8668,7 +8663,7 @@ msgid ""
 msgstr ""
 "Halkımı ölüm ve tehlikeden uzak tutarak sonsuz hayata doğru onlara liderlik "
 "edesin diye seni seçtim. Dağların altındaki yolculuğunuz en önemli adımdı. "
-"İnanmayanlarınızın yok edilmesi ..."
+"İnanmayanlarınızın yok edilmesi—"
 
 #. [message]: speaker=$ally_id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3350
@@ -8885,7 +8880,7 @@ msgid ""
 "foreigners spotted on the borders?"
 msgstr ""
 "Konsül Noblis tarafından verilen emri hatırlayın efendim. Sınırlarımıza "
-"yaklaşan yabancılar hakkında..."
+"yaklaşan yabancı görüldü mü?"
 
 #. [message]: speaker=Sergeant Durstrag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3516
@@ -9124,7 +9119,7 @@ msgid ""
 msgstr ""
 "Yarıölülerin nefes alması gerekmediğinden o kadarcık suyun onları "
 "durduracağını sanmıyorum. Ayrıca hayaletin kayadan nasıl çıktığını da "
-"gördünüz. Su dolu tünelleri bırakın, taş duvarlardan geçiyorlar."
+"gördünüz. Su dolu tünelleri bırakın, taş duvarlardan nasıl geçiyorlar?"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3831
@@ -9493,7 +9488,7 @@ msgstr ""
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4504
 msgid "And that has me worried. What if-"
-msgstr "Ve bu beni endişelendiriyor. Farzedelim- "
+msgstr "Ve bu beni endişelendiriyor. Varsayalım-"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4529
@@ -9610,10 +9605,8 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4650
-#, fuzzy
-#| msgid "You don’t know where to find your master?"
 msgid "You don’t know where to find your leader?"
-msgstr "Efendini nerede bulacağını bilmiyor musun?"
+msgstr "Liderini nerede bulacağını bilmiyor musun?"
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4655
@@ -9916,7 +9909,7 @@ msgstr "Biz önce barsaklarınızı dışarı dökmezsek. Saldırın!"
 #. [message]: id=scout1
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:498
 msgid "The Dark Lady protect us, they’re elves!"
-msgstr "Kara Kraliçe bizi korusun, bunlar elf."
+msgstr "Kara Kraliçe bizi korusun, bunlar elf!"
 
 #. [message]: id=scout2
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:502
@@ -9995,7 +9988,7 @@ msgstr "Gerçekten, size müteşekkiriz. Esano umduğumdan da iyisini yaptın."
 msgid ""
 "Esanoo said there were five merfolk left in his band. I think we have "
 "rescued them all!"
-msgstr "Esono, ekibinden beş kişi kaldığını söyledi. Hepsini kurtarmalıyız."
+msgstr "Esono, ekibinden beş kişi kaldığını söyledi. Hepsini kurtarmalıyız!"
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:655
@@ -10125,7 +10118,7 @@ msgid ""
 "merfolk!"
 msgstr ""
 "Beni kurtardığınız için teşekkür ederim. Bu insanlara susalların gerçek "
-"öfkesini göstereceğiz."
+"öfkesini göstereceğiz!"
 
 #. [unit]: type=Merman Warrior, id=Nuvassa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:846
@@ -10159,7 +10152,7 @@ msgid ""
 msgstr ""
 "Beni kurtardığınız için teşekkür ederim. Siz elfleri bulabileceğimizi bir "
 "türlü hayal edemiyordum. Sonuçta liderimiz haklıydı. Ama daha fazlası daha "
-"sonra... "
+"sonra..."
 
 #. [unit]: type=Mermaid Priestess, id=Il-tian
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:949
@@ -10174,7 +10167,7 @@ msgid ""
 "humans are terrible indeed."
 msgstr ""
 "Beni kurtardığınız için teşekkür ederim. Deniz Tanrıları sizi korusun. "
-"Yaralılarınız varsa onları tedavisine yardım edebilirim. "
+"Yaralılarınız varsa onları tedavisine yardım edebilirim."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:996
@@ -10243,33 +10236,23 @@ msgstr "Evet, haklısın. Benim kusuruma bakma."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1103
-#, fuzzy
-#| msgid ""
-#| "No, too many merfolk have died! There are not enough of them left to "
-#| "divine the location of their master. We should have protected the merfolk "
-#| "more carefully. Now our search is hopeless."
 msgid ""
 "No, too many merfolk have died! There are not enough of them left to divine "
 "the location of their leader. We should have protected the merfolk more "
 "carefully. Now our search is hopeless."
 msgstr ""
-"Hayır, çok fazla susal kaybettik. Efendilerinin yerini bulma imkanımız "
-"kalmadı. Susalları daha dikkatli korumalıydık. Artık umut kalmadı."
+"Hayır, çok fazla susal kaybettik! Efendilerinin yerini bulma imkanımız "
+"kalmadı. Susalları daha dikkatli korumalıydık. Aramak faydasız."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1110
-#, fuzzy
-#| msgid ""
-#| "Too many merfolk have died! Even if we save the rest, there will not be "
-#| "enough for them to divine the location of their master. We should have "
-#| "protected the merfolk more carefully. Now our search is hopeless."
 msgid ""
 "Too many merfolk have died! Even if we save the rest, there will not be "
 "enough for them to divine the location of their leader. We should have "
 "protected the merfolk more carefully. Now our search is hopeless."
 msgstr ""
 "Çok fazla susal kaybettik. Kalanı kurtarsak bile efendilerinin yerini bulma "
-"imkanımız kalmadı. Susalları daha dikkatli korumalıydık. Artık umut kalmadı."
+"imkanımız kalmadı. Susalları daha dikkatli korumalıydık. Aramak faydasız."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1136
@@ -10392,8 +10375,8 @@ msgid ""
 "Esanoo said there were five merfolk captured. We only found four. Where did "
 "they hide the last one? What horrible acts have these humans committed?"
 msgstr ""
-"Esano ize beş susal yakalandı demişti. Biz dördünü bulduk. Sonuncusunu "
-"nereye gizlemişler? İnsanlar ne korkunç davranmışlar..."
+"Esano bize beş susal yakalandı demişti. Biz dördünü bulduk. Sonuncusunu "
+"nereye gizlemişler? İnsanlar ne korkunç davranmışlar?"
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1388
@@ -10409,7 +10392,7 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1396
 msgid "The bars of the cages are smoking and glowing red hot!"
-msgstr "Kafes çubukları kıpkırmızı olmuş ve duman tütüyor."
+msgstr "Kafes çubukları kıpkırmızı olmuş ve duman tütüyor!"
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1405
@@ -10655,7 +10638,7 @@ msgstr ""
 "Bu yüzden benim sadık inananlarımdan biri olan Tanstafal’a çağrı yaptım. "
 "Herşey kaybedilmiş değil. Onu izlerseniz sizi tehlikeden kurtarma şansım "
 "olacak. Fakat önce bana dönmeli, bu insanlarla savaşa bir son vermeli ve asi "
-"Kaleh’le kafadarlarını öldürmelisiniz. "
+"Kaleh’le kafadarlarını öldürmelisiniz."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1785
@@ -10709,7 +10692,7 @@ msgstr ""
 "cüceler gibi dostlarımız olduğuna inanıyorum. Acımasız sözlere ve tehditlere "
 "boyun eğmeyi reddediyorum; biz daima özgür olduk ve kendi seçimlerimizi "
 "kendimiz yaptık; bizler köle değiliz ve biz elfler hiçbir insanı ve sahte "
-"tanrıyı körü körüne izlemeyiz. "
+"tanrıyı körü körüne izlemeyiz."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1799
@@ -10763,7 +10746,7 @@ msgstr ""
 "troller gibi dostlarımız olduğuna inanıyorum. Acımasız sözlere ve tehditlere "
 "boyun eğmeyi reddediyorum; biz daima özgür olduk ve kendi seçimlerimizi "
 "kendimiz yaptık; bizler köle değiliz ve biz elfler hiçbir insanı ve sahte "
-"tanrıyı körü körüne izlemeyiz"
+"tanrıyı körü körüne izlemeyiz."
 
 #. [message]: speaker=Tanstafaal
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1813
@@ -10775,7 +10758,7 @@ msgstr ""
 "Sözlerin anlamsız, Kaleh. Kardeşlerim, Eloh size göründü. Size konuştu. Ona "
 "karşı gelirseniz bedeline katlanırsınız. Eloh’a inanmayan herkesi günahkar "
 "ilan ediyorum. İnananlar! Bana katılın ve inanmadıkları halde hak iddia "
-"edenleri öldürelim."
+"edenleri öldürelim!"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1817
@@ -10786,7 +10769,7 @@ msgid ""
 msgstr ""
 "Eloh asla bir elfin başka bir elfi öldürmesini istemez. Fakat o küçük "
 "hesaplar peşinde. Halkım şimdiye kadar size liderlik ettim. Bana katılın ve "
-"bu asileri ezelim."
+"bu asileri ezelim!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1821
@@ -10910,7 +10893,7 @@ msgid ""
 "a way to stop this."
 msgstr ""
 "Özür dilerim, Kaleh, halkımızın birbirlerini öldürmesine izin veremem. Bunu "
-"durdurmanın bir yolu olmalı,"
+"durdurmanın bir yolu olmalı."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1960
@@ -11137,7 +11120,7 @@ msgid ""
 "faith, what do we have left?"
 msgstr ""
 "Şu açık ki, Bu şey bizim tanrımız değil. Ne olduğunu bilmiyorum ama bir "
-"yerlerde Eloh’un var olduğuna inanmak istiyorum. İnancımız olmadan biz hiçiz."
+"yerlerde Eloh’un var olduğuna inanmak istiyorum. İnancımız olmadan ne kalır?"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2218
@@ -11256,18 +11239,13 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2345
-#, fuzzy
-#| msgid ""
-#| "Thank you. And I have also not forgotten the pledge I made to our merfolk "
-#| "friends. If it is possible, I would like to meet with your master. Your "
-#| "conduct is a testament to your people, and I, at least, trust you."
 msgid ""
 "Thank you. And I have also not forgotten the pledge I made to our merfolk "
 "friends. If it is possible, I would like to meet with your leader. Your "
 "conduct is a testament to your people, and I, at least, trust you."
 msgstr ""
 "Teşekkürler. Bu arada susallara verdiğim sözü unutmadım. Eğer mümkünse "
-"efendinizle tanışmak isterim. Davranışınızla halkınızın güvenine layık "
+"liderinizle tanışmak isterim. Davranışınızla halkınızın güvenine layık "
 "olduğunuzu kanıtladınız ve ben de size güveniyorum."
 
 #. [message]: race=merman
@@ -11336,16 +11314,12 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2462
-#, fuzzy
-#| msgid ""
-#| "Before I decide, I have just one question: How did you merfolk plan on "
-#| "bringing us to meet your master, if she dwells far beneath the sea?"
 msgid ""
 "Before I decide, I have just one question: How did you merfolk plan on "
 "bringing us to meet your leader, if she dwells far beneath the sea?"
 msgstr ""
-"Karar vermeden önce bir sorum olacak: Susallar, eğer efendiniz denizde çok "
-"uzak bir mesafede ise bizi efendinizle tanışmaya nasıl götürmeyi "
+"Karar vermeden önce bir sorum olacak: Susallar, eğer lideriniz denizde çok "
+"uzak bir mesafede ise bizi liderinizle tanışmaya nasıl götürmeyi "
 "planlıyorsunuz?"
 
 #. [message]: race=merman
@@ -11430,7 +11404,7 @@ msgid ""
 "Leader. Great Leader say follow Kaleh, and Grog will do so."
 msgstr ""
 "Grog için su ve güneş büyük sorun. Büyük lider, Kaleh’i izle dedi. Grog sen "
-"nereye gidersen oraya gidecek. "
+"nereye gidersen oraya gidecek."
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2522
@@ -11439,7 +11413,7 @@ msgid ""
 "Leader. Great Leader say follow Kaleh, and Nog will do so."
 msgstr ""
 "Nog için su ve güneş büyük sorun. Büyük lider, Kaleh’i izle dedi. Nog sen "
-"nereye gidersen oraya gidecek. "
+"nereye gidersen oraya gidecek."
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
@@ -11537,7 +11511,7 @@ msgid ""
 msgstr ""
 "Sonra bizi rüzgarlarla açığa götürmesi için Deniz Tanrılarını çağıracağım. "
 "Düşmanlarımızı şaşırtsınlar ve bu gemileri güvenle rüzgarların önüne "
-"katsınlar."
+"katsınlar!"
 
 #. [scenario]: id=10_Speaking_with_the_Fishes
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:5
@@ -12104,8 +12078,8 @@ msgid ""
 "Grog not sure if he trust fish lady. What if she just want you elves to "
 "fight her war for her?"
 msgstr ""
-"Grog balık kadına nasıl güveneceğini bilmiyor. Belki o sadece sizi kendi "
-"savaşında kullanmak istiyordur."
+"Grog balık kadına nasıl güveneceğini bilmiyor. Ya o sadece sizi kendi "
+"savaşında kullanmak istiyorsa?"
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:428
@@ -12113,8 +12087,8 @@ msgid ""
 "Nog not sure if he trust fish lady. What if she just want you elves to fight "
 "her war for her?"
 msgstr ""
-"Nog balık kadına nasıl güveneceğini bilmiyor. Belki o sadece sizi kendi "
-"savaşında kullanmak istiyordur."
+"Nog balık kadına nasıl güveneceğini bilmiyor. Ya o sadece sizi kendi "
+"savaşında kullanmak istiyorsa?"
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
@@ -12160,7 +12134,7 @@ msgid ""
 msgstr ""
 "Hayır, hayır! Çok fazla kan döküldü. Bu artık durmalı. Ruhyiyenin Keratur ve "
 "Tanstafal’a neler yaptığını gördünüz. Onların kanları elime bulaştı ve ben "
-"bunun intikamını alacağım."
+"bunun intikamını alacağım!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:460
@@ -12206,7 +12180,7 @@ msgstr ""
 "sesleniyordu. Ve ben inandım, halkımızı korku ve ölümden uzak tutabilmek "
 "için ona körü körüne inanmak istedim. Her uyuduğumda onları görüyorum, bu "
 "lanetli yolculukta ölen kardeşlerimizin yüzlerini görüyorum. Ben böyle olsun "
-"istememiştim."
+"istememiştim!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:482
@@ -12677,7 +12651,7 @@ msgstr ""
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:693
 msgid "I wonder what other forbidden lore you’ve been taught."
-msgstr "Acaba bu yasaklanmış bilgiyi senden başka kim biliyor?"
+msgstr "Başka hangi yasaklı bilgileri öğrendiğinizi merak ediyorum."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:698
@@ -12940,8 +12914,8 @@ msgid ""
 "I have captured the keep. This castle is somewhat ruined, but it will serve "
 "our purposes. Now, I wonder where the merfolk are?"
 msgstr ""
-"Kaleyi aldım. Bu kale neredeyse harabeye dönmüş ama hala işe yarıyor. Artık "
-"bu susalların nerede kaldığını merak etmeye başladım."
+"Kaleyi aldım. Bu kale neredeyse harabeye dönmüş ama hala işe yarıyor. Şimdi "
+"merak ediyorum susallar nerede?"
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:717
@@ -12977,7 +12951,7 @@ msgid ""
 msgstr ""
 "Güzel, artık asker almaya ve çağırmaya başlayabiliriz. Şüphesiz kalan bir "
 "kaç kişiyle yeni savaşçıları eğitmek çok zor ve pahalı olacak. Fakat bu "
-"savaşı kaybedersek altın hiçbir işimize yaramayacak."
+"savaşı kaybedersek altın ne işimize yarayacak?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:782
@@ -13156,7 +13130,9 @@ msgstr "Roarrrr!!!"
 msgid ""
 "A sea serpent! That thing must be 20 cubits long! It must have been living "
 "among the wreckage of that ship. I shudder to think what it was feasting on."
-msgstr "Bir deniz yılanı!"
+msgstr ""
+"Bir deniz yılanı! O şey 10 metre uzunluğunda olmalı! O geminin enkazında "
+"yaşıyor olmalı. Ne yediğini düşünmek bile ürpertiyor beni."
 
 #. [unit]: type=Merman Triton, id=Grateful Merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1169
@@ -13500,7 +13476,7 @@ msgstr ""
 msgid "You are not Eloh. You are but a pitiful mockery of her power and glory!"
 msgstr ""
 "Sen Eloh değilsin. Sen onun gücünün ve ihtişamının kötü bir taklidinden "
-"başka bir şey değilsin."
+"başka bir şey değilsin!"
 
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:466
@@ -13698,7 +13674,7 @@ msgstr ""
 #. [message]: speaker=$victim_id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1190
 msgid "Ow, I’m stuck!"
-msgstr "Of, yapıştım."
+msgstr "Of, yapıştım!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1302
@@ -14784,22 +14760,22 @@ msgstr "toz tedavisi"
 #. [regenerate]
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:75
 msgid "The unit will heal itself 6 HP per turn on sand or dirt terrain."
-msgstr "Bu birim kumlu ve kirli zeminlerde her el 6 YP’ye kadar iyileşir"
+msgstr "Bu birim kumlu ve kirli zeminlerde her el 6 YP’ye kadar iyileşir."
 
 #. [advancement]: id=Dust1
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:81
 msgid "a stronger Dust Devil"
-msgstr "Daha güçlü bir Toz Şeytanı"
+msgstr "daha güçlü bir Toz Şeytanı"
 
 #. [advancement]: id=Dust2
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:104
 msgid "a taller Dust Devil"
-msgstr "Daha uzun bir Toz Şeytanı"
+msgstr "daha uzun bir Toz Şeytanı"
 
 #. [advancement]: id=Dust3
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:119
 msgid "a fully-healed Dust Devil"
-msgstr "Tamamen iyileşmiş bir Toz Şeytanı"
+msgstr "tamamen iyileşmiş bir Toz Şeytanı"
 
 #. [unit_type]: id=Flesh Golem, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Flesh_Golem.cfg:4
@@ -14988,7 +14964,7 @@ msgstr "sihirli"
 #. Only displayed in debug mode
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:78
 msgid "defeated"
-msgstr ""
+msgstr "yenildi"
 
 #. [unit_type]: id=Divine Avatar, gender=female, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:4
@@ -15046,8 +15022,6 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:40
-#, fuzzy
-#| msgid "sand storm"
 msgid "sandstorm"
 msgstr "kum fırtınası"
 
@@ -15083,16 +15057,6 @@ msgstr "Kuyenot Savaşçısı"
 
 #. [unit_type]: id=Quenoth Fighter, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Long ago, during more prosperous times, elven warriors favored the use of "
-#| "swords as more elegant, versatile weapons compared to other melee "
-#| "armaments. However, in recent times, the dearth of supplies for smithing "
-#| "has reduced the availability of blade-crafting, necessitating the "
-#| "fashioning of cheaper, more easily repaired weaponry. Quenoth Fighters "
-#| "are remarkably skilled in coordinated groups, where they can counteract "
-#| "the lack of more sophisticated weaponry by forming robust spear ranks "
-#| "capable of repelling nearly any frontal assault."
 msgid ""
 "Long ago, during more prosperous times, elven warriors favored the use of "
 "swords as more elegant, versatile weapons compared to other melee armaments. "
@@ -15111,7 +15075,9 @@ msgstr ""
 "kolay tamir edilen silahların kullanılmasını gerektirdi. Kuyenot "
 "Savaşçıları, neredeyse her türlü ön saldırıyı engelleyebilecek sağlam mızrak "
 "hatları oluşturarak daha gelişmiş silah eksikliğini önleyebilecekleri uyumlu "
-"gruplar kurmakta oldukça yeteneklidir."
+"gruplar kurmakta oldukça yeteneklidir. Açık kumlarda, ister haydut, ister "
+"vahşi yaratık, isterse yarı ölü olsun, bir dövüşçü dikkatini birden fazla "
+"düşmana bölme becerisini geliştirmek üzere eğitilir."
 
 #. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
@@ -15367,16 +15333,6 @@ msgstr "Kuyenot Amazon"
 
 #. [unit_type]: id=Quenoth Sun Singer, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Faerie and elven magic have oft been aptly associated with life, from "
-#| "which they draw the majority of their power. However, with the death of "
-#| "much of Irdya’s flora, the Quenoth Elves were forced to seek another "
-#| "source for their sorcery. In time, they learned to harness the power of "
-#| "the suns Sela and Naia - the twin stars that had razed the forests of "
-#| "Irdya to ashes, yet still spring forth the energy required for sparking "
-#| "life. Those who master this new magic sing of the dual nature of these "
-#| "embodiments of fire: flames that are both life and life’s demise."
 msgid ""
 "Faerie and elven magic have oft been aptly associated with life, from which "
 "they draw the majority of their power. However, with the death of much of "
@@ -15388,25 +15344,25 @@ msgid ""
 "that are both life and life’s demise."
 msgstr ""
 "Peri ve elf büyüsü, güçlerinin çoğunluğunu aldıkları yaşamla doğrudan "
-"ilişkiliydi. Ancak, Iridya’nın vahşi hayatının çoğunun ölümü ile birlikte "
-"Kuyenot Elfleri, büyücülük için başka bir kaynak aramak zorunda kaldı. "
-"Zamanla, bir zamanlar yaygın olan Iridya ormanlarını küllere dönüştüren ikiz "
-"güneşlerin, Sela ve Naya'nın gücünden nasıl faydalanacaklarını öğrendiler, "
-"ancak yine de tüm yaşamı başlatan enerjiyi yaydılar. Bu yeni sihir biçiminde "
-"ustalaşanlar, bu enerji düzenlemelerinin ikili doğasını kullanır: hem yaşamı "
-"sürdürme hem de yok etme enerjisini."
+"ilişkiliydi. Ancak, Iridya’nın vahşi hayatının büyük ölçüde ölümü ile "
+"birlikte Kuyenot Elfleri, büyücülük için başka bir kaynak aramak zorunda "
+"kaldı. Zamanla, bir zamanlar yaygın olan Iridya ormanlarını küllere "
+"dönüştüren ikiz güneşlerin, Sela ve Naya'nın gücünden nasıl "
+"faydalanacaklarını öğrendiler, ancak yine de tüm yaşamı başlatan enerjiyi "
+"yaydılar. Bu yeni sihir biçiminde ustalaşanlar, bu enerji düzenlemelerinin "
+"ikili doğasını kullanır: hem yaşamı sürdürme hem de yok etme enerjisini."
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:37
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:40
 msgid "sun invocation"
-msgstr ""
+msgstr "güneş duası"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:51
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:54
 msgid "sun ray"
-msgstr ""
+msgstr "güneş ışını"
 
 #. [unit_type]: id=Quenoth Sun Sylph, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:5
@@ -15438,7 +15394,7 @@ msgstr ""
 #. [attack]: type=fire
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:70
 msgid "sun incarnate"
-msgstr ""
+msgstr "güneşleme"
 
 #. [unit_type]: id=Tauroch, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:5
@@ -15680,155 +15636,141 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:85
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:453
 msgid "Swordsmanship Training"
-msgstr ""
+msgstr "Kılıç Ustalığı Eğitimi"
 
 #. [advancement]: id=strong_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:106
-#, fuzzy
-#| msgid "true strike"
 msgid "Strong Strikes"
-msgstr "doğru vuruş"
+msgstr "Güçlü Vuruşlar"
 
 #. [advancement]: id=swordsman
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:123
 msgid "Swordsman"
-msgstr ""
+msgstr "Kılıç Ustası"
 
 #. [advancement]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:145
-#, fuzzy
-#| msgid "Haunt"
 msgid "Taunt"
-msgstr "Lanetli Ruh"
+msgstr "Kışkırtma"
 
 #. [advancement]: id=stronger_grip
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:286
 msgid "Stronger Grip"
-msgstr ""
+msgstr "Daha Güçlü Kavrama"
 
 #. [advancement]: id=overwhelming_power
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:299
 msgid "Overwhelming Power"
-msgstr ""
+msgstr "Ezici Güç"
 
 #. [advancement]: id=stamina_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:324
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:635
 msgid "Stamina Training"
-msgstr ""
+msgstr "Dayanıklılık Eğitimi"
 
 #. [advancement]: id=endurance_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:339
 msgid "Endurance Training"
-msgstr ""
+msgstr "Sabır Eğitimi"
 
 #. [advancement]: id=skirmisher
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:359
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:676
-#, fuzzy
-#| msgid "Troll Skirmisher"
 msgid "Skirmisher"
-msgstr "Avcı Trol"
+msgstr "Avcı"
 
 #. [advancement]: id=training_with_bolas
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:378
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:695
-#, fuzzy
-#| msgid "Talking with Trolls"
 msgid "Training with Bolas"
-msgstr "Trollerle Konuşmak"
+msgstr "Bola Eğitimi"
 
 #. [advancement]: id=slow
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:398
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:727
 msgid "Slow"
-msgstr ""
+msgstr "Yavaş"
 
 #. [advancement]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:418
 msgid "Opportunist"
-msgstr ""
+msgstr "Fırsatçı"
 
 #. [advancement]: id=inspiring
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:437
 msgid "Inspiring"
-msgstr ""
+msgstr "İlham verici"
 
 #. [advancement]: id=accurate_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:474
 msgid "Accurate Strikes"
-msgstr ""
+msgstr "İsabetli Vuruşlar"
 
 #. [advancement]: id=faster_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:491
-#, fuzzy
-#| msgid "true strike"
 msgid "Faster Strikes"
-msgstr "doğru vuruş"
+msgstr "Hızlı Vuruşlar"
 
 #. [advancement]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:503
 msgid "Sword Dance"
-msgstr ""
+msgstr "Kılıç Dansı"
 
 #. [advancement]: id=bowmanship_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:527
 msgid "Bowmanship Training"
-msgstr ""
+msgstr "Okçuluk Eğitimi"
 
 #. [advancement]: id=quickdraw
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:544
 msgid "Quickdraw"
-msgstr ""
+msgstr "Hızlı çekim"
 
 #. [advancement]: id=ranger
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:556
-#, fuzzy
-#| msgid "Quenoth Ranger"
 msgid "Ranger"
-msgstr "Kuyenot Kolcusu"
+msgstr "Kolcu"
 
 #. [advancement]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:574
 msgid "Rain of Arrows"
-msgstr ""
+msgstr "Ok Yağmuru"
 
 #. [advancement]: id=toxic_rain
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:603
 msgid "Toxic Rain"
-msgstr ""
+msgstr "Zehirli Yağmur"
 
 #. [advancement]: id=twin_arrows
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:621
 msgid "Twin Arrows"
-msgstr ""
+msgstr "Çifte Ok"
 
 #. [advancement]: id=footwork
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:650
 msgid "Footwork"
-msgstr ""
+msgstr "Ayak hareketleri"
 
 #. [advancement]: id=run_by_bolas
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:715
 msgid "Run By (Bolas)"
-msgstr ""
+msgstr "Bola yönetimi"
 
 #. [advancement]: id=bolaship
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:747
-#, fuzzy
-#| msgid "bolas"
 msgid "Bolaship"
-msgstr "bola"
+msgstr "Bolacılık"
 
 #. [advancement]: id=herbalism
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:760
 msgid "Herbalism"
-msgstr ""
+msgstr "Bitkisel tedavi"
 
 #. [advancement]: id=run_by_sword_and_bow
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:778
 msgid "Run By (Sword and Bow)"
-msgstr ""
+msgstr "Kılıç ve Ok yönetimi"
 
 #. [unit_type]: id=Quenoth Youth, race=quenoth, gender=male,female, description={QUENOTH_YOUTH_DESCRIPTION}
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:911
@@ -15992,7 +15934,7 @@ msgid ""
 msgstr ""
 "Örümcek umacıların nasıl oluştuğunu kimse bilmez ama korkulası şeyler "
 "olduklarını bilirler. Dev iskelet bacakları ve dev sihirli dikenleriyle bu "
-"yarı ölü yaratıklar oldukça ürkütücüdür."
+"yarı ölü yaratıklar oldukça ürkütücüdür. "
 
 #. [race]: id=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/units.cfg:5
@@ -16040,51 +15982,51 @@ msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:4
 msgid "uses 1 attack"
-msgstr ""
+msgstr "1 saldırı kullanır"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:7
 msgid "uses 2 attacks"
-msgstr ""
+msgstr "2 saldırı kullanır"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:10
 msgid "uses 3 attacks"
-msgstr ""
+msgstr "3 saldırı kullanır"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
 msgid "uses 4 attacks"
-msgstr ""
+msgstr "4 saldırı kullanır"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 msgid "uses 5 attacks"
-msgstr ""
+msgstr "5 saldırı kullanır"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
 msgid "uses 6 attacks"
-msgstr ""
+msgstr "6 saldırı kullanır"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 msgid "This attack uses 1 attack"
-msgstr ""
+msgstr "Bu saldırı 1 vuruş kullanır"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:25
 msgid "This attack uses 2 attacks"
-msgstr ""
+msgstr "Bu saldırı 2 vuruş kullanır"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:28
 msgid "This attack uses 3 attacks"
-msgstr ""
+msgstr "Bu saldırı 3 vuruş kullanır"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:31
 msgid "This attack uses 4 attacks"
-msgstr ""
+msgstr "Bu saldırı 4 vuruş kullanır"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:34
 msgid "This attack uses 5 attacks"
-msgstr ""
+msgstr "Bu saldırı 5 vuruş kullanır"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:37
 msgid "This attack uses 6 attacks"
-msgstr ""
+msgstr "Bu saldırı 6 vuruş kullanır"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
 msgid ""
@@ -16094,6 +16036,11 @@ msgid ""
 "When the last verse is sung or the song sequence is broken due to not "
 "attacking for a turn, the song starts again from the first verse."
 msgstr ""
+"Bu saldırı, her el bir kıta ilerleyen Güneş Yükselişi Şarkısı'nın ilk "
+"kıtasıdır. Bu birim bir şarkı kıtası saldırısı kullanır.\n"
+"\n"
+"Son kıta söylendiğinde veya bir el boyunca saldırmamak nedeniyle şarkı "
+"dizisi bozulduğunda, şarkı ilk kıtadan tekrar başlar."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:82
 msgid ""
@@ -16103,6 +16050,11 @@ msgid ""
 "If this was the last verse or when the song sequence is broken due to not "
 "attacking for a turn, the song starts again from the first verse."
 msgstr ""
+"Bu saldırı, her el bir kıta ilerleyen Güneş Yükselişi Şarkısı'nın ikinci "
+"kıtasıdır. Bu birim bir şarkı kıtası saldırısı kullanır.\n"
+"\n"
+"Son kıta söylendiğinde veya bir el boyunca saldırmamak nedeniyle şarkı "
+"dizisi bozulduğunda, şarkı ilk kıtadan tekrar başlar."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:87
 msgid ""
@@ -16113,31 +16065,36 @@ msgid ""
 "\n"
 "Using this song will also grant illuminates for three turns."
 msgstr ""
+"Bu saldırı, her el bir kıta ilerleyen Güneş Yükselişi Şarkısı'nın üçüncü "
+"kıtasıdır. Bu birim bir şarkı kıtası saldırısı kullanır.\n"
+"\n"
+"Son kıta söylendiğinde veya bir el boyunca saldırmamak nedeniyle şarkı "
+"dizisi bozulduğunda, şarkı ilk kıtadan tekrar başlar.\n"
+"\n"
+"Bu şarkıyı kullanmak ayrıca üç el boyunca aydınlatma kazandıracaktır."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:94
 msgid "first verse"
-msgstr ""
+msgstr "ilk kıta"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
 msgid "second verse"
-msgstr ""
+msgstr "ikinci kıta"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:100
 msgid "third verse"
-msgstr ""
+msgstr "üçüncü kıta"
 
 #. [illuminates]: id=illumination_song_verse
 #. Displayed in the help
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:340
 msgid "third verse illuminates"
-msgstr ""
+msgstr "üçüncü kıta aydınlatır"
 
 #. [illuminates]: id=illumination_song_verse
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:346
-#, fuzzy
-#| msgid "female^thirst"
 msgid "female^third verse illuminates"
-msgstr "susuzluk"
+msgstr "üçüncü kıta aydınlatır"
 
 #. [illuminates]: id=illumination_song_verse
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:347
@@ -16148,6 +16105,11 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
+"Bu yetenek, güneşleme saldırısı kullanıldıktan sonra etkin olduğunda, bu "
+"birim üç el boyunca çevredeki alanı aydınlatır.\n"
+"\n"
+"Bu birime bitişik herhangi bir birim, gece olduğunda alacakaranlıktaymış "
+"gibi ve alacakaranlıkta ise gündüzmüş gibi savaşacaktır."
 
 #. [illuminates]: id=illumination_song_verse
 #. A similar string exists in the textdomain wesnoth-help
@@ -16156,22 +16118,24 @@ msgid ""
 "Illumination increases the lighting level in adjacent areas. This effect "
 "lasts for three turns after activation."
 msgstr ""
+"Aydınlatma, bitişik alanlardaki aydınlık seviyesini artırır. Bu etki, "
+"etkinleştirildikten sonra üç el boyunca devam eder."
 
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:365
 msgid "once per turn"
-msgstr ""
+msgstr "her el bir kez"
 
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:366
 msgid "This attack can be used offensively only once per turn"
-msgstr ""
+msgstr "Bu saldırı, el başına yalnızca bir kez saldırganca kullanılabilir"
 
 #. [dummy]: id=nova
 #. weapon special
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:445
 msgid "nova"
-msgstr ""
+msgstr "parlama"
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:446
@@ -16179,6 +16143,8 @@ msgid ""
 "This weapon, when used offensively, deals damage to all units adjacent to "
 "the caster when it hits."
 msgstr ""
+"Bu silah saldırganca kullanıldığında, isabet ederse büyücünün yanındaki tüm "
+"birimlere hasar verir."
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:448
@@ -16187,17 +16153,20 @@ msgid ""
 "the first verse is available in the next turn. Furthermore, invoking this "
 "attack will grant illumination for three turns."
 msgstr ""
+"Bu saldırı Güneşin Yükselişi Şarkısının üçüncü kıtasıdır. Kullandıktan "
+"sonra, ilk kıta bir sonraki el kullanılabilir hale gelir. Ayrıca, bu "
+"saldırıyı kullanmak üç el boyunca aydınlatma sağlayacaktır."
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:449
 msgid "This unit has wide-area attacks centered on the caster."
-msgstr ""
+msgstr "Bu birim büyücü odaklı geniş alan saldırılarına sahiptir."
 
 #. [dummy]: id=ray
 #. weapon special
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:488
 msgid "ray"
-msgstr ""
+msgstr "ışık ışını"
 
 #. [dummy]: id=ray
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:489
@@ -16205,6 +16174,8 @@ msgid ""
 "This weapon, when used offensively, also deals damage to a unit behind the "
 "target."
 msgstr ""
+"Bu silah saldırganca kullanıldığında hedefin arkasındaki birime de hasar "
+"verir."
 
 #. [dummy]: id=ray
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:491
@@ -16213,23 +16184,30 @@ msgid ""
 "when the first verse was sung in the previous turn. If this was the last "
 "verse, then the first verse will be available in the next turn."
 msgstr ""
+"Bu saldırı Güneşin Yükselişi Şarkısının ikinci kıtasıdır. Yalnızca ilk kıta "
+"bir önceki el söylenmişse kullanılabilir. Eğer bu son kıtaysa, o zaman ilk "
+"kıta bir sonraki el kullanılabilir olacaktır."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:648
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +1"
 msgstr ""
+"Turun başlangıcında bu birim, çevredeki birimlerin hareket puanlarını +1 "
+"artırır"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:651
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +2"
 msgstr ""
+"Turun başlangıcında bu birim, çevredeki birimlerin hareket puanlarını +2 "
+"artırır"
 
 #. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:655
 msgid "tailwind +"
-msgstr ""
+msgstr "kuyruk rüzgarı +"
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:775
@@ -16296,7 +16274,10 @@ msgid ""
 "This unit gains a +10% bonus to defense when another unit with the same "
 "ability is adjacent to it. However, this cannot raise the unit’s defense "
 "above 70%."
-msgstr "kenetlenme"
+msgstr ""
+"Bu birim, aynı yeteneğe sahip başka bir birim ona bitişik olduğunda "
+"savunmaya +%10 direnç kazandırır. Ancak bu, birimin savunmasını %70'in "
+"üzerine çıkaramaz."
 
 #. [chance_to_hit]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:831
@@ -16355,7 +16336,7 @@ msgid ""
 "This unit can daze its enemies, reducing their accuracy and defense until "
 "they end a turn."
 msgstr ""
-" Bu birim düşmanlarını afallatıp, el sonuna kadar isabet oranlarını ve "
+"Bu birim düşmanlarını afallatıp, el sonuna kadar isabet oranlarını ve "
 "savunmalarını azaltabilir."
 
 #. [skirmisher]: id=distract
@@ -16383,7 +16364,7 @@ msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
-" Bu birim rakiplerini şaşırtma yeteneğine sahip olup müttefik birimlerin, "
+"Bu birim rakiplerini şaşırtma yeteneğine sahip olup müttefik birimlerin, "
 "şaşıran rakibinin etki alanını aşabilmelerini ve etrafında engellenmeden "
 "hareket edebilmelerini sağlar."
 
@@ -16415,7 +16396,7 @@ msgstr "sersemlemiş"
 #. [dummy]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1411
 msgid "opportunist"
-msgstr ""
+msgstr "firsatçı"
 
 #. [dummy]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1412
@@ -16423,44 +16404,41 @@ msgid ""
 "This ability makes Kaleh attack enemies with single strike of bolas when "
 "they leave his zone of control."
 msgstr ""
+"Bu yetenek Kaleh'in etki alanından çıkan düşmanlara tek bir bola vuruşuyla "
+"saldırmasını sağlar."
 
 #. [dummy]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1485
-#, fuzzy
-#| msgid "Haunt"
 msgid "taunt"
-msgstr "Lanetli Ruh"
+msgstr "kışkırtma"
 
 #. [dummy]: id=taunt
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1486
 msgid "Taunts the enemy making them try to attack Kaleh for one turn."
 msgstr ""
+"Düşmanı kışkırtarak bir el boyunca Kaleh'e saldırmaya çalışmasını sağlar."
 
 #. [dummy]: id=taunted
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1521
-#, fuzzy
-#| msgid "Haunt"
 msgid "taunted"
-msgstr "Lanetli Ruh"
+msgstr "kışkırtılmış"
 
 #. [dummy]: id=taunted
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1522
 msgid "This unit is taunted by Kaleh, it will try to attack him for one turn."
 msgstr ""
+"Bu birim Kaleh tarafından kışkırtılır ve bir el boyunca ona saldırmaya "
+"çalışır."
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1531
-#, fuzzy
-#| msgid "Pulsing Spire"
 msgid "inspire"
-msgstr "Yürüyen Fener"
+msgstr "esinleme"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1532
-#, fuzzy
-#| msgid "female^support"
 msgid "female^inspire"
-msgstr "destek"
+msgstr "esinleme"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1533
@@ -16469,6 +16447,10 @@ msgid ""
 "better. Adjacent own units of lower or equal level will deal 25% more damage "
 "plus 25% for each level they are below the inspiring unit."
 msgstr ""
+"Bu birim, yanındaki kendi birimlerine ilham vererek daha iyi savaşmalarını "
+"sağlayabilir. Daha düşük veya eşit seviyedeki bitişik kendi birimleri, ilham "
+"veren birimin altındaki her seviye için %25 artışla  %25 daha fazla hasar "
+"verir."
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1534
@@ -16476,27 +16458,30 @@ msgid ""
 "The presence of this unit inspires own units next to it to deal more damage "
 "in combat, though this only applies to units of lower or equal level."
 msgstr ""
+"Bu birimin varlığı, yanındaki birimlerin savaşta daha fazla hasar vermesini "
+"sağlar, ancak bu yalnızca daha düşük veya aynı seviyedeki birimler için "
+"geçerlidir."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1545
 msgid "cooldown 1"
-msgstr ""
+msgstr "sakinlik 1"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1548
 msgid "cooldown 2"
-msgstr ""
+msgstr "sakinlik 2"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1551
 msgid "After using this attack, you can't use it during your next turn."
-msgstr ""
+msgstr "Bu saldırıyı kullandıktan sonra bir sonraki el kullanamazsınız."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1554
 msgid "After using this attack, you can't use it during your next two turns."
-msgstr ""
+msgstr "Bu saldırıyı kullandıktan sonra bir sonraki iki el kullanamazsınız."
 
 #. [dummy]: id=pierce
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1614
 msgid "pierce"
-msgstr ""
+msgstr "delme"
 
 #. [dummy]: id=pierce
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1615
@@ -16504,11 +16489,13 @@ msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target."
 msgstr ""
+"Bu silah saldırganca kullanıldığında hedefin arkasındaki birime de hasar "
+"verebilir."
 
 #. [dummy]: id=puncture
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1684
 msgid "puncture"
-msgstr ""
+msgstr "delinme"
 
 #. [dummy]: id=puncture
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1685
@@ -16516,11 +16503,13 @@ msgid ""
 "This weapon, when used offensively, can also deal damage to two units behind "
 "the target."
 msgstr ""
+"Bu silah saldırganca kullanıldığında hedefin arkasındaki iki birime de hasar "
+"verebilir."
 
 #. [dummy]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1767
 msgid "rain of arrows"
-msgstr ""
+msgstr "ok yağmuru"
 
 #. [dummy]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1768
@@ -16528,13 +16517,13 @@ msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target and all units adjacent to the unit behind the target."
 msgstr ""
+"Bu silah, saldırganca kullanıldığında hedefin arkasındaki birime ve  hedefin "
+"arkasındaki birimin bitişiğindeki tüm birimlere hasar verebilir."
 
 #. [dummy]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1888
-#, fuzzy
-#| msgid "Good riddance."
 msgid "sword dance"
-msgstr "İyi kurtuluş."
+msgstr "kılıç dansı"
 
 #. [dummy]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1889
@@ -16542,6 +16531,8 @@ msgid ""
 "Every time Nym hits an enemy she gains +10% accuracy and 10% parry until the "
 "end of the combat."
 msgstr ""
+"Nim her düşmana vurduğunda dövüşün sonuna kadar +%10 isabet ve %10 "
+"savuşturma kazanır."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:5
 msgid "Kaleh"
@@ -16664,15 +16655,6 @@ msgstr "+$amount TP"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:7
-#, fuzzy
-#| msgid ""
-#| "Note: This campaign is probably not appropriate for beginners. It changes "
-#| "certain Wesnoth standards, such as the elves’ stats and the day/night "
-#| "cycle. This campaign emphasizes role-playing elements and tends to have "
-#| "longer scenarios with objectives that change in the middle. For these "
-#| "reasons, we strongly suggest that you occasionally save your game mid-"
-#| "scenario, so you won’t lose all your progress if you get stuck and have "
-#| "to start over."
 msgid ""
 "Note: This campaign is probably not appropriate for beginners. It changes "
 "certain Wesnoth standards, such as the elves’ stats, the day/night cycle, "
@@ -16683,7 +16665,8 @@ msgid ""
 "your progress if you get stuck and have to start over."
 msgstr ""
 "Bilginize: Bu seferberlik acemiler için uygun olmayabilir. Elflerin "
-"durumları, gündüz/gece süreleri gibi belli başlı standartları değiştirir. Bu "
+"durumları, gündüz/gece süreleri döngüsü, geri çağırma maliyetleri ve zorluk "
+"seviyelerine genel yaklaşım gibi belli başlı standartları değiştirir. Bu "
 "seferberlik uzun senaryolarda etkileşimli öğelerin kullanımıyla değişen "
 "senaryo içi amaçlara sahiptir. Bu sebeple oyunu senaryo ortasında ara sıra "
 "kaydetmeniz önerilir, aksi takdirde bir yerde takıldığınızda bütün süreci "
@@ -17259,7 +17242,7 @@ msgstr ""
 "tamir etmeye uğraşıyordu. Zurg, son zamanlarda bir depo olarak kullanıldığı "
 "belli olan bir çok mağaradan oluşan bir alana gelene kadar bize eşlik etti. "
 "Burada yatmaya da yetecek kadar bol yer ve yolun kenarlarında cücelerden "
-"kalma bir sürü malzeme vardı"
+"kalma bir sürü malzeme vardı."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:148
@@ -17333,20 +17316,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:166
-#, fuzzy
-#| msgid ""
-#| "Which brings me to the other alien concept I was trying to comprehend: "
-#| "our goddess Eloh. What was her plan? Why did she want me to surrender to "
-#| "the humans? Do the humans worship her as well? The humans seem so brutish "
-#| "and vile, that I can’t imagine them worshiping the same god as us. I "
-#| "thought Eloh was just our god, I don’t remember Zhul mentioning any other "
-#| "races worshiping her after the Great Fall, though perhaps things had "
-#| "changed in the intervening years. Her commands don’t make any sense; she "
-#| "doesn’t seem at all like the goddess Zhul told me about. And what was "
-#| "Esanoo talking about? How did his master know about ‘Yechnagoth’ and "
-#| "‘Zhangor’? If Eloh won’t help me, then I desperately need some answers. I "
-#| "pray to whatever gods may be left that I’m not leading my people into a "
-#| "trap..."
 msgid ""
 "Which brings me to the other alien concept I was trying to comprehend: our "
 "goddess Eloh. What was her plan? Why did she want me to surrender to the "
@@ -17360,16 +17329,16 @@ msgid ""
 "won’t help me, then I desperately need some answers. I pray to whatever gods "
 "may be left that I’m not leading my people into a trap..."
 msgstr ""
-"Sonra aklıma Eloh geldi. Planı neydi? Niçin insanlara teslim olmamızı "
-"istemişti? Ona insanlar da mı inanıyordu? İnsanlar öyle kaba ve alçaktı ki, "
-"aynı tanrıya inanmalarını hayal bile edemiyorum. Eloh’un sadece bizim "
-"tanrımız olduğunu düşünürdüm. Zûl, büyük felaketten sonra insanların da "
-"Eloh’a inandıklarından bahsetmemişti. Belki de bir şeyler değişmişti. "
-"Emirleri uyulacak gibi değildi; Zûl’ün bana anlattığı tanrıya hiç "
-"benzemiyor. Peki, Esano’nun bahsettiklerine ne demeli? Onun efendisi "
-"Yeknagot’u ve Zangor'u nereden biliyordu? Eloh bana yardım etmeyeceğine göre "
-"bazı yanıtlara ihtiyacım olacaktı. Halkımı tuzağa çekmeyecek her tanrıya "
-"inanabilirdim."
+"Bu beni anlamaya çalıştığım diğer yaratık kavramına getiriyor: tanrıçamız "
+"Eloh. Planı neydi? Niçin insanlara teslim olmamızı istemişti? Ona insanlar "
+"da mı inanıyordu? İnsanlar öyle kaba ve alçaktı ki, aynı tanrıya "
+"inandıklarını hayal bile edemiyorum. Eloh’un sadece bizim tanrımız olduğunu "
+"düşünürdüm. Zûl, büyük felaketten sonra insanların da Eloh’a inandıklarından "
+"bahsetmemişti. Belki de bir şeyler değişmişti. Emirleri uyulacak gibi "
+"değildi; Zûl’ün bana anlattığı tanrıya hiç benzemiyor. Peki, Esano’nun "
+"bahsettiklerine ne demeli? Onun efendisi Yeknagot’u ve Zangor'u nereden "
+"biliyordu? Eloh bana yardım etmeyeceğine göre bazı yanıtlara ihtiyacım "
+"olacaktı. Halkımı tuzağa çekmeyecek her tanrıya inanabilirdim..."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:174
@@ -17476,18 +17445,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:202
-#, fuzzy
-#| msgid ""
-#| "That afternoon three of the merfolk sat in a circle and performed their "
-#| "ritual to determine the location of their master. Apparently it was a "
-#| "success, for they steered us straight towards the setting sun."
 msgid ""
 "That afternoon three of the merfolk sat in a circle and performed their "
 "ritual to determine the location of their leader. Apparently it was a "
 "success, for they steered us straight towards the setting sun."
 msgstr ""
 "Bu öğleden sonra 3 susal halka olup efendilerinin yerini saptamak için bir "
-"tören yaptılar. Ardından güneşin doğduğu yere doğru bizi yönlendirdiler."
+"tören yaptı. Ardından güneşin doğduğu yere doğru bizi yönlendirdiler."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:206

@@ -1,4 +1,4 @@
-## Version 1.19.3+dev
+## Version 1.19.4+dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
@@ -8,11 +8,32 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Bengali, British English, Chinese (Simplified), Japanese, Turkish
+   * Updated translations: British English, Finnish, Turkish
  ### Units
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+
+## Version 1.19.4
+ ### Lua API
+   * Added new function gui.switch_theme() to allow switching to another gui2 theme from inside a scenario.
+   * Updated to lua 5.4.7
+ ### Translations
+   * Updated translations: Arabic, Bengali, British English, Chinese (Simplified), Czech, Italian, Japanese, Turkish, Ukrainian
+ ### Units
+   * Walking Corpse: arcane vulnerability reduced from 40% to 20%.
+   * Soulless: arcane vulnerability reduced from 40% to 20%.
+ ### User interface
+   * GUI2 themes can be loaded from add-ons. Requires a `gui-theme.cfg` file in add-on root with a `[gui]` tag that acts as the entry point for the theme.
+   * Option key is now identified as such instead of Alt in the Hotkeys preferences section on macOS builds
+   * Search filter should now be case-insensitive for more than just ASCII characters (#9328)
+   * Whirlpools no longer get submerged in water.
+   * The in-game chat now properly redraws over water and other animated terrain.
+   * Fixed items not appearing properly when submerged.
+ ### WML Engine
+   * Removed properties `unit.side` and `terrain.owner` from WFL. Use `unit.side_number` and `terrain.owner_side` instead.
+   * Fixed events with negative priority not being stored in save files.
+   * Events can now be added to abilities and weapon specials.
 
 ## Version 1.19.3
  ### Campaigns

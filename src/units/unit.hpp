@@ -890,6 +890,12 @@ public:
 	static state_t get_known_boolean_state_id(const std::string& state);
 
 	/**
+	 * Convert a built-in status effect ID to a string status effect ID
+	 * @returns the string representing the status, or an empty string for STATE_UNKNOWN
+	 */
+	static std::string get_known_boolean_state_name(state_t state);
+
+	/**
 	 * Check if the unit has been poisoned
 	 * @returns true if it's poisoned
 	 */
@@ -1862,6 +1868,44 @@ public:
 	 */
 	bool ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
 
+	/**
+	 * Helper similar to std::unique_lock for detecting when calculations such as abilities
+	 * have entered infinite recursion.
+	 *
+	 * This assumes that there's only a single thread accessing the unit, it's a lightweight
+	 * increment/decrement counter rather than a mutex.
+	 */
+	class recursion_guard {
+		friend class unit;
+		/**
+		 * Only expected to be called in update_variables_recursion(), which handles some of the checks.
+		 */
+		explicit recursion_guard(const unit& u);
+	public:
+		/**
+		 * Construct an empty instance, only useful for extending the lifetime of a
+		 * recursion_guard returned from unit.update_variables_recursion() by
+		 * std::moving it to an instance declared in a larger scope.
+		 */
+		explicit recursion_guard();
+
+		/**
+		 * Returns true if a level of recursion was available at the time when update_variables_recursion()
+		 * created this object.
+		 */
+		operator bool() const;
+
+		recursion_guard(recursion_guard&& other);
+		recursion_guard(const recursion_guard& other) = delete;
+		recursion_guard& operator=(recursion_guard&&);
+		recursion_guard& operator=(const recursion_guard&) = delete;
+		~recursion_guard();
+	private:
+		std::shared_ptr<const unit> parent;
+	};
+
+	recursion_guard update_variables_recursion() const;
+
 
 private:
 
@@ -2012,6 +2056,8 @@ private:
 
 	std::string role_;
 	attack_list attacks_;
+	/** Number of instances of recursion_guard that are currently allocated permission to recurse */
+	mutable unsigned int num_recursion_ = 0;
 
 protected:
 	// TODO: I think we actually consider this to be part of the gamestate, so it might be better if it's not mutable,

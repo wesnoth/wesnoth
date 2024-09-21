@@ -279,9 +279,6 @@ variant unit_callable::get_value(const std::string& key) const
 		return formula_callable::convert_vector(u_.advances_to());
 	} else if(key == "states" || key == "status") {
 		return formula_callable::convert_set(u_.get_states());
-	} else if(key == "side") {
-		deprecated_message("unit.side", DEP_LEVEL::FOR_REMOVAL, version_info("1.17"), "This returns 0 for side 1 etc and should not be used. Use side_number instead.");
-		return variant(u_.side()-1);
 	} else if(key == "side_number") {
 		return variant(u_.side());
 	} else if(key == "cost") {
@@ -340,6 +337,10 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(res);
 	} else if(key == "flying") {
 		return variant(u_.is_flying());
+	} else if(key == "fearless") {
+		return variant(u_.is_fearless());
+	} else if(key == "healthy") {
+		return variant(u_.is_healthy());
 	} else if(key == "vars") {
 		if(u_.formula_manager().formula_vars()) {
 			return variant(u_.formula_manager().formula_vars());
@@ -409,6 +410,8 @@ void unit_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "jamming_cost");
 	add_input(inputs, "defense");
 	add_input(inputs, "flying");
+	add_input(inputs, "fearless");
+	add_input(inputs, "healthy");
 	add_input(inputs, "vars");
 	add_input(inputs, "wml_vars");
 }
@@ -631,9 +634,6 @@ variant terrain_callable::get_value(const std::string& key) const
 		return variant(t_.is_keep());
 	} else if(key == "healing") {
 		return variant(t_.gives_healing());
-	} else if(key == "owner") {
-		deprecated_message("terrain.owner", DEP_LEVEL::FOR_REMOVAL, version_info("1.17"), "This returns 0 for side 1 etc and should not be used. Use owner_side instead.");
-		return variant(owner_ - 1);
 	} else if(key == "owner_side") {
 		return variant(owner_);
 	}
@@ -1005,6 +1005,29 @@ variant event_callable::get_value(const std::string &key) const
 			second_weapon = std::make_shared<attack_type>(event_info.data.mandatory_child("second"));
 			return variant(std::make_shared<attack_type_callable>(*second_weapon));
 		}
+	}
+
+	return variant();
+}
+
+void color_callable::get_inputs(formula_input_vector& inputs) const
+{
+	add_input(inputs, "red");
+	add_input(inputs, "green");
+	add_input(inputs, "blue");
+	add_input(inputs, "alpha");
+}
+
+variant color_callable::get_value(const std::string& key) const
+{
+	if(key == "red") {
+		return variant(clr_.r);
+	} else if(key == "green") {
+		return variant(clr_.g);
+	} else if(key == "blue") {
+		return variant(clr_.b);
+	} else if(key == "alpha") {
+		return variant(clr_.a);
 	}
 
 	return variant();

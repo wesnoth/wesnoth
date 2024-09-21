@@ -122,7 +122,7 @@ bool floating_label::create_texture()
 		return false;
 	}
 
-	DBG_FT << "creating floating label texture";
+	DBG_FT << "creating floating label texture, text: " << text_.substr(0,15);
 	font::pango_text& text = font::get_text_renderer();
 
 	text.set_link_aware(false)

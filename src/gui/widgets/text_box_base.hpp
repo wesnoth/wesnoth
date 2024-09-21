@@ -147,6 +147,13 @@ public:
 		return text_.text();
 	}
 
+	std::string plain_text()
+	{
+		char* plain_text = nullptr;
+		pango_parse_markup(text().c_str(), text().size(), 0, nullptr, &plain_text, nullptr, nullptr);
+		return plain_text ? std::string(plain_text) : std::string();
+	}
+
 	/** Set the text_changed callback. */
 	void set_text_changed_callback(
 			std::function<void(text_box_base* textbox, const std::string text)> cb)
@@ -277,10 +284,10 @@ protected:
 	virtual void delete_selection() = 0;
 
 	/** Copies the current selection. */
-	virtual void copy_selection(const bool mouse);
+	virtual void copy_selection();
 
 	/** Pastes the current selection. */
-	virtual void paste_selection(const bool mouse);
+	virtual void paste_selection();
 
 	/***** ***** ***** ***** expose some functions ***** ***** ***** *****/
 

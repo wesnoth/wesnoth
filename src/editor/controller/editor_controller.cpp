@@ -402,8 +402,11 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 			return true;
 
-		// Only enable when editing a scenario
+		// Can be enabled as long as a valid addon_id is set
 		case HOTKEY_EDITOR_EDIT_UNIT:
+			return !current_addon_id_.empty();
+
+		// Only enable when editing a scenario
 		case HOTKEY_EDITOR_CUSTOM_TODS:
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
 			return !get_current_map_context().is_pure_map();
@@ -850,29 +853,27 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			return true;
 
 		case HOTKEY_EDITOR_PBL:
-			initialize_addon_if_empty();
-
-			if(!current_addon_id_.empty()) {
+			if(initialize_addon()) {
 				context_manager_->edit_pbl();
 			}
 			return true;
 
 		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
-			initialize_addon_if_empty();
-
-			if(!current_addon_id_.empty()) {
+			if(initialize_addon()) {
 				context_manager_->change_addon_id();
 			}
 			return true;
 
 		case HOTKEY_EDITOR_SELECT_ADDON:
-			current_addon_id_ = editor::initialize_addon();
-			context_manager_->set_addon_id(current_addon_id_);
+			initialize_addon();
 			return true;
 
 		case HOTKEY_EDITOR_OPEN_ADDON:
 		{
-			initialize_addon_if_empty();
+			if (!initialize_addon()) {
+				gui2::show_error_message("Could not initialize add-on!");
+				return true;
+			}
 
 			gui2::dialogs::file_dialog dlg;
 
@@ -1041,9 +1042,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			context_manager_->new_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_SCENARIO_NEW:
-			initialize_addon_if_empty();
-
-			if(!current_addon_id_.empty()) {
+			if(initialize_addon()) {
 				context_manager_->new_scenario_dialog();
 			}
 			return true;
@@ -1057,9 +1056,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			context_manager_->save_map_as_dialog();
 			return true;
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
-			initialize_addon_if_empty();
-
-			if(!current_addon_id_.empty()) {
+			if(initialize_addon()) {
 				context_manager_->save_scenario_as_dialog();
 			}
 			return true;
@@ -1154,11 +1151,13 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 	}
 }
 
-void editor_controller::initialize_addon_if_empty() {
+bool editor_controller::initialize_addon() {
 	if(current_addon_id_.empty()) {
+		// editor::initialize_addon can return empty id in case of failure
 		current_addon_id_ = editor::initialize_addon();
 	}
 	context_manager_->set_addon_id(current_addon_id_);
+	return !current_addon_id_.empty();
 }
 
 void editor_controller::show_help()
@@ -1377,7 +1376,7 @@ void editor_controller::export_selection_coords()
 			++i;
 		}
 		ssx << "\n" << ssy.str() << "\n";
-		desktop::clipboard::copy_to_clipboard(ssx.str(), false);
+		desktop::clipboard::copy_to_clipboard(ssx.str());
 	}
 }
 
