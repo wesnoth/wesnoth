@@ -104,7 +104,7 @@ jobs:
                 cmake "$@" -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
                   -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_MYSQL=true \
                   -DENABLE_NLS=false -DENABLE_LTO="$LTO" -DFORCE_COLOR_OUTPUT=true -DLTO_JOBS=2 \
-                  -DENABLE_SYSTEM_LUA="$SYS_LUA" .
+                  -DENABLE_SYSTEM_LUA="$SYS_LUA -DCLANG_TIDY=true" .
               }
               rm -R /usr/local/lib/cmake
               rm /usr/local/lib/libboost*
