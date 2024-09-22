@@ -341,12 +341,6 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	// Execute the provided actions for this context.
 	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
 
-	// Useful for relative, grid like positioning
-	variables.add("item_x", wfl::variant(x));
-	variables.add("item_y", wfl::variant(y));
-	variables.add("item_width", wfl::variant(w ? w : tex.w()));
-	variables.add("item_height", wfl::variant(h ? h : tex.h()));
-
 	// If w or h is 0, assume it means the whole image.
 	if (!w) { w = tex.w(); }
 	if (!h) { h = tex.h(); }
@@ -477,30 +471,32 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	// Attribute subtags
 	//
 	for (const auto& attr : cfg_.child_range("attribute")) {
-		if (attr["name"].empty()) {
+		const std::string& name = attr["name"];
+
+		if (name.empty()) {
 			continue;
 		}
 
 		const unsigned start = attr["start"].to_int(0);
 		const unsigned end = attr["end"].to_int(text.size());
 
-		if (attr["name"] == "color" || attr["name"] == "fgcolor" || attr["name"] == "foreground") {
+		if (name == "color" || name == "fgcolor" || name == "foreground") {
 			text_renderer.add_attribute_fg_color(start, end, attr["value"].empty() ? font::NORMAL_COLOR : font::string_to_color(attr["value"]));
-		} else if (attr["name"] == "bgcolor"||attr["name"] == "background") {
+		} else if (name == "bgcolor"||name == "background") {
 			text_renderer.add_attribute_bg_color(start, end, attr["value"].empty() ? font::GOOD_COLOR : font::string_to_color(attr["value"]));
-		} else if (attr["name"] == "font_size"||attr["name"] == "size") {
+		} else if (name == "font_size"||name == "size") {
 			text_renderer.add_attribute_size(start, end, attr["value"].to_int(font::SIZE_NORMAL));
-		} else if (attr["name"] == "font_family"||attr["name"] == "face") {
+		} else if (name == "font_family"||name == "face") {
 			text_renderer.add_attribute_font_family(start, end, attr["value"].str(font::get_font_families(font::FONT_SANS_SERIF)));
-		} else if (attr["name"] == "weight") {
+		} else if (name == "weight") {
 			text_renderer.add_attribute_weight(start, end, decode_text_weight(attr["value"]));
-		} else if (attr["name"] == "style") {
+		} else if (name == "style") {
 			text_renderer.add_attribute_style(start, end, decode_text_style(attr["value"]));
-		} else if (attr["name"] == "bold" || attr["name"] == "b") {
+		} else if (name == "bold" || name == "b") {
 			text_renderer.add_attribute_weight(start, end, PANGO_WEIGHT_BOLD);
-		} else if (attr["name"] == "italic" || attr["name"] == "i") {
+		} else if (name == "italic" || name == "i") {
 			text_renderer.add_attribute_style(start, end, PANGO_STYLE_ITALIC);
-		} else if (attr["name"] == "underline" || attr["name"] == "u") {
+		} else if (name == "underline" || name == "u") {
 			text_renderer.add_attribute_underline(start, end, PANGO_UNDERLINE_SINGLE);
 		} else {
 			// Unsupported formatting or normal text
@@ -548,12 +544,6 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 
 	// Execute the provided actions for this context.
 	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
-
-	// Useful for relative, grid like positioning
-	variables.add("item_x", wfl::variant(x));
-	variables.add("item_y", wfl::variant(y));
-	variables.add("item_width", wfl::variant(tw));
-	variables.add("item_height", wfl::variant(th));
 
 	texture tex = text_renderer.render_and_get_texture();
 	if(!tex) {
