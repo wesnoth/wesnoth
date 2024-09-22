@@ -461,7 +461,7 @@ log_in_progress::log_in_progress(std::ostream& stream)
 	: stream_(stream)
 {}
 
-void log_in_progress::operator|(formatter&& message)
+void log_in_progress::operator|(const formatter& message)
 {
 	std::scoped_lock lock(log_mutex);
 	for(int i = 0; i < indent; ++i)
