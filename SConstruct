@@ -191,6 +191,7 @@ if env['ccache']: env.Tool('ccache')
 
 env.Tool('compilation_db')
 cdb = env.CompilationDatabase()
+env['COMPILATIONDB_PATH_FILTER'] = "build/" + env["build"] + "/[!m][!o][!d]*"
 Alias('cdb', cdb) 
 
 boost_version = "1.67"

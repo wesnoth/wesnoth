@@ -92,6 +92,7 @@ jobs:
                   nls=false enable_lto="$LTO" system_lua="$SYS_LUA" force_color=true \
                   jobs=2 --debug=time glibcxx_debug=true glibcxx_assertions=true
               }
+              run-clang-tidy -j 2
               build strict=true wesnoth boost_unit_tests
 
               apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
