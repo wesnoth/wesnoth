@@ -918,7 +918,7 @@ void generate_races_sections(const config* help_cfg, section& sec, int level)
 	bool process_queue_again = true;
 	while(process_queue_again && !taxonomy_queue.empty()) {
 		process_queue_again = false;
-		std::vector<taxonomy_queue_type> to_process = std::move(taxonomy_queue);
+		auto to_process = std::exchange(taxonomy_queue, {});
 
 		for(auto& x : to_process) {
 			auto parent = find_section(sec, x.parent_id);
