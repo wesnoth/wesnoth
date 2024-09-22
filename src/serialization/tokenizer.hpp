@@ -30,7 +30,7 @@ constexpr unsigned char INLINED_PREPROCESS_DIRECTIVE_CHAR = 254;
 
 // normal ascii is 0-127
 // extended ascii is from 128-255, none of which need any special handling
-constexpr int START_EXTENDED_ASCII = 128;
+constexpr int END_STANDARD_ASCII = 128;
 
 /**
  * contains the current text being parsed as well as the token_type of what's being parsed.
@@ -185,7 +185,7 @@ private:
 
 	character_type char_type(unsigned c) const
 	{
-		return c < START_EXTENDED_ASCII ? char_types_[c] : TOK_NONE;
+		return c < END_STANDARD_ASCII ? char_types_[c] : TOK_NONE;
 	}
 
 	bool is_space(int c) const
@@ -221,5 +221,5 @@ private:
 	token previous_token_;
 #endif
 	buffered_istream in_;
-	std::array<character_type, START_EXTENDED_ASCII> char_types_;
+	std::array<character_type, END_STANDARD_ASCII> char_types_;
 };
