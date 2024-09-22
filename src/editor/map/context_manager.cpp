@@ -1059,7 +1059,7 @@ void context_manager::replace_map_context(const T&... args)
 
 void context_manager::replace_map_context_with(std::unique_ptr<map_context>&& mc)
 {
-	map_contexts_[current_context_index_].swap(mc);
+	map_contexts_[current_context_index_] = std::move(mc);
 	refresh_on_context_change();
 }
 
