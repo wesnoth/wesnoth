@@ -448,10 +448,11 @@ movetype::terrain_info::terrain_info(const terrain_info & that,
 
 movetype::terrain_info::terrain_info(terrain_info && that,
 	const terrain_info * fallback) :
-	fallback_(fallback)
+	fallback_(fallback),
+	unique_data_(std::move(that.unique_data_)),
+	shared_data_(std::move(that.shared_data_))
 {
 	assert(fallback ? !! that.fallback_ : ! that.fallback_);
-	swap_data(that);
 }
 
 /**
