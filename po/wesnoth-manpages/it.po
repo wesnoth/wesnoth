@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2024-09-17 21:19-0500\n"
-"PO-Revision-Date: 2024-06-20 09:19+0200\n"
+"PO-Revision-Date: 2024-09-16 21:13+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -201,13 +201,13 @@ msgstr "B<--clock>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:69
-#, fuzzy
-#| msgid "Adds the option to show a clock for testing the drawing timer."
 msgid ""
 "Adds the option to show a clock for testing the drawing timer. Also adds the "
 "option for showing the GUI Test Dialog."
 msgstr ""
-"Aggiunge l’opzione per mostrare un orologio per testare il drawing timer."
+"Aggiunge l’opzione per mostrare un orologio per testare il drawing timer. "
+"Aggiunge anche l’opzione per mostrare un orologio per mostrare i dialoghi "
+"test dell'interfaccia grafica."
 
 # type: TP
 #. type: TP
@@ -448,27 +448,21 @@ msgstr "registra i tempi nel logfile in maniera più accurata."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:149
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--log-strict>I<\\ level>"
-msgstr "B<--log-strict>"
+msgstr "B<--log-strict>I<\\ livello>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:158
-#, fuzzy
-#| msgid ""
-#| "sets the strict level of the logger. Any messages sent to log domains of "
-#| "this level or more severe will cause the unit test to fail regardless of "
-#| "the victory result. Only relevant when used with B<-u>."
 msgid ""
 "sets the strict I<level> of the logger. Any messages sent to log domains of "
 "this I<level> or more severe will cause the unit test to fail regardless of "
 "the victory result. Only relevant when used with B<-u>."
 msgstr ""
-"imposta il il livello di ristrettezza del logger. Ogni messaggio inviato di "
-"questo livello o più severo causerà il fallimento del test unità, qualunque "
-"sia l’esito della vittoria. Ha rilevanza soltanto se utilizzato con "
-"l’opzione B<-u>."
+"imposta il I<livello> di ristrettezza del logger. Ogni messaggio inviato di "
+"questo I<livello> o più severo causerà il fallimento del test unità, "
+"qualunque sia l’esito della vittoria. Ha rilevanza soltanto se utilizzato "
+"con l’opzione B<-u>."
 
 # type: TP
 #. type: TP
@@ -495,17 +489,14 @@ msgstr "B<--no-log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:166
-#, fuzzy
-#| msgid ""
-#| "prevents redirecting logged output to a file. Log files are created in "
-#| "the logs directory under the userdata folder."
 msgid ""
 "prevents redirecting logged output to a file. The environment variable "
 "WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created "
 "in the logs directory under the userdata folder."
 msgstr ""
-"impedisce il reindirizzamento dell’output registrato in un file. I log file "
-"vengono creati nella directory dei log nella cartella dati utente."
+"impedisce il reindirizzamento dell’output registrato in un file. In "
+"alternativa si può valorizzare la variabile di ambiente WESNOTH_NO_LOG_FILE. "
+"I log file vengono creati nella directory dei log nella cartella dati utente."
 
 # type: TP
 #. type: TP
@@ -526,10 +517,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:169
-#, fuzzy, no-wrap
-#| msgid "B<--no-log-to-file>"
+#, no-wrap
 msgid "B<--no-log-sanitize>"
-msgstr "B<--no-log-to-file>"
+msgstr "B<--no-log-sanitize>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:172
@@ -537,6 +527,9 @@ msgid ""
 "disables the anonymization that's normally applied when logging, for example "
 "replacing usernames with USER."
 msgstr ""
+"disabilita l'anonimizzazione che viene normalmente applicata nella "
+"memorizzazione dei log, ad esempio sostituendo i nomi utente con un generico "
+"USER."
 
 # type: TP
 #. type: TP
@@ -1635,14 +1628,9 @@ msgstr "wesnothd - Demone multigiocatore di rete per Battle for B<Wesnoth>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:32
-#, fuzzy
-#| msgid ""
-#| "B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] "
-#| "[\\|B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgid "B<wesnothd> [\\|B<-dvw>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|]"
 msgstr ""
-"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<percorso>\\|] [\\|B<-p> I<porta>\\|] "
-"[\\|B<-t> I<numero>\\|] [\\|B<-T> I<numero>\\|]"
+"B<wesnothd> [\\|B<-dvw>\\|] [\\|B<-c> I<percorso>\\|] [\\|B<-p> I<porta>\\|]"
 
 # type: Plain text
 #. type: Plain text
@@ -1882,12 +1870,6 @@ msgstr "B<disallow_names>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:118
-#, fuzzy
-#| msgid ""
-#| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
-#| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
-#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
-#| "*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
@@ -1897,7 +1879,7 @@ msgstr ""
 "I nomi o nick che non sono accettati dal server. Si possono usare i "
 "caratteri jolly B<*> e B<?>. Vedi B<glob>(7) per maggiori dettagli. I valori "
 "predefiniti (usati in mancanza di specifiche diverse) sono: B<*admin*,"
-"*admln*,*server*,ai,ai?,computer,human,network,player>."
+"*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 
 # type: TP
 #. type: TP
@@ -2387,24 +2369,19 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:242
-#, fuzzy, no-wrap
-#| msgid "B<db_game_info_table>"
+#, no-wrap
 msgid "B<db_game_content_info_table>"
-msgstr "B<db_game_info_table>"
+msgstr "B<db_game_content_info_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:245
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which wesnothd will save its own data about the "
-#| "modifications used in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about game "
 "content (scenario/era/modifications) used in a game."
 msgstr ""
 "Il nome della tabella nella quale il processo wesnothd salverà i suoi dati "
-"delle modifiche utilizzate in una partita."
+"dei contenuti (scenario(era/modifiche) utilizzate in una partita."
 
 # type: TP
 #. type: TP
@@ -2428,10 +2405,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:248
-#, fuzzy, no-wrap
-#| msgid "B<db_name>"
+#, no-wrap
 msgid "B<db_tournament_query>"
-msgstr "B<db_name>"
+msgstr "B<db_tournament_query>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:251
@@ -2439,6 +2415,8 @@ msgid ""
 "The SQL query to find tournaments to announce on login. Should return "
 "tournament B<title>, B<status> and B<url>."
 msgstr ""
+"La query SQL per trovare tornei da annunciare al momento dell'accesso. "
+"Dovrebbe restituire B<title>, B<status> and B<url> di un torneo."
 
 # type: TP
 #. type: TP
