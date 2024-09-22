@@ -60,7 +60,8 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 	, can_shrink_(true)
 	, text_alpha_(ALPHA_OPAQUE)
 	, unparsed_text_()
-	, w_(builder.width(get_screen_size_variables()))
+	, init_w_(builder.width(get_screen_size_variables()))
+	, w_(0)
 	, h_(0)
 	, padding_(4)
 {
@@ -77,7 +78,7 @@ wfl::map_formula_callable rich_label::setup_text_renderer(config text_cfg, unsig
 	wfl::action_function_symbol_table functions;
 	wfl::map_formula_callable variables;
 	variables.add("text", wfl::variant(text_cfg["text"].str()));
-	variables.add("width", wfl::variant(width > 0 ? width : w_));
+	variables.add("width", wfl::variant(width));
 	variables.add("text_wrap_mode", wfl::variant(PANGO_ELLIPSIZE_NONE));
 	variables.add("fake_draw", wfl::variant(true));
 	tshape_ = std::make_unique<gui2::text_shape>(text_cfg, functions);
@@ -175,14 +176,14 @@ void rich_label::add_link(config& curr_item, std::string name, std::string dest,
 
 	point t_start, t_end;
 
-	setup_text_renderer(curr_item, w_ - origin.x - img_width);
+	setup_text_renderer(curr_item, init_w_ - origin.x - img_width);
 	t_start = origin + get_xy_from_offset(utf8::size(curr_item["text"].str()));
 	DBG_GUI_RL << "link text start:" << t_start;
 
 	std::string link_text = name.empty() ? dest : name;
 	add_text_with_attribute(curr_item, link_text, "color", link_color_.to_hex_string());
 
-	setup_text_renderer(curr_item, w_ - origin.x - img_width);
+	setup_text_renderer(curr_item, init_w_ - origin.x - img_width);
 	t_end.x = origin.x + get_xy_from_offset(utf8::size(curr_item["text"].str())).x;
 	DBG_GUI_RL << "link text end:" << t_end;
 
@@ -247,25 +248,37 @@ size_t rich_label::get_split_location(std::string text, const point& pos) {
 
 void rich_label::set_topic(const help::topic* topic) {
 	styled_widget::set_label(topic->text.parsed_text().debug());
-	text_dom_ = get_parsed_text(topic->text.parsed_text(), point(0,0), true);
+	const auto& [text_dom, size] = get_parsed_text(topic->text.parsed_text(), point(0,0), init_w_, true);
+	text_dom_ = text_dom;
+	w_ = size.x;
+	h_ = size.y;
 }
 
 void rich_label::set_label(const t_string& text) {
 	styled_widget::set_label(text);
 	unparsed_text_ = text;
 	help::topic_text marked_up_text(text);
-	const config& parsed_text = marked_up_text.parsed_text();
-	text_dom_ = get_parsed_text(parsed_text, point(0,0), true);
+	const auto& [text_dom, size] = get_parsed_text(marked_up_text.parsed_text(), point(0,0), init_w_, true);
+	text_dom_ = text_dom;
+	w_ = size.x;
+	h_ = size.y;
 }
 
-config rich_label::get_parsed_text(const config& parsed_text, const point& origin, const bool finalize) {
-	// Initialization
-	DBG_GUI_RL << "Width: " << w_;
+std::pair<config, point> rich_label::get_parsed_text(
+	const config& parsed_text,
+	const point& origin,
+	const unsigned init_width,
+	const bool finalize)
+{
+	// Initial width
+	DBG_GUI_RL << "Initial width: " << init_width;
 
-	unsigned x = origin.x;
+	// Initialization
+	unsigned x = 0;
 	unsigned prev_blk_height = origin.y;
 	unsigned text_height = 0;
-	h_ = 0;
+	unsigned h = 0;
+	unsigned w = 0;
 
 	if (finalize) {
 		links_.clear();
@@ -285,7 +298,7 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 	point float_size;
 
 	DBG_GUI_RL << parsed_text.debug();
-	
+
 	for(config::any_child tag : parsed_text.all_children_range()) {
 		config& child = tag.cfg;
 
@@ -299,7 +312,7 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 			const point& curr_img_size = get_image_size(*curr_item);
 
 			if (is_curr_float) {
-				x = align == "left" ? float_size.x : 0;
+				x = (align == "left") ? float_size.x : 0;
 				float_size.x = curr_img_size.x + padding_;
 				float_size.y += curr_img_size.y;
 			} else {
@@ -311,6 +324,8 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 					float_size.y -= curr_img_size.y;
 				}
 			}
+
+			w = std::max(w, x);
 
 			if(is_curr_float) {
 				wrap_mode = true;
@@ -334,60 +349,82 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 			// table doesn't support floating images alongside
 			img_size = point(0,0);
 			float_size = point(0,0);
-			x = 0;
+			x = origin.x;
 			prev_blk_height += text_height;
 			text_height = 0;
 
 			// init table vars
-			unsigned col_idx;
-			unsigned columns = 1;
-			if (tag.cfg.has_child("row")) {
+			unsigned col_idx = 0, row_idx = 0;
+			unsigned rows = tag.cfg.child_count("row");
+			unsigned columns;
+			if (rows > 0) {
 				columns = tag.cfg.mandatory_child("row").child_count("col");
-				if (columns == 0) {
-					columns = 1;
-				}
 			}
-			unsigned width = child["width"].to_int(w_);
-			unsigned col_width = width/columns;
+			columns = (columns == 0) ? 1 : columns;
+			unsigned width = child["width"].to_int(init_width);
 			unsigned col_x = 0;
 			unsigned row_y = prev_blk_height;
 			unsigned max_row_height = 0;
-
+			std::vector<unsigned> col_widths(columns, 0);
 
 			// start on a new line
-			(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', %d), set_var('tw', width - pos_x - %d)])") % row_y % col_width);
+			(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', %d), set_var('tw', width - pos_x - %d)])") % row_y % col_widths[col_idx]);
 
 			is_text = false;
 			new_text_block = true;
 			is_image = false;
 
-			DBG_GUI_RL << "start table : " << "col=" << columns << " width=" << width;
-			DBG_GUI_RL << "col_width : " << col_width;
+			DBG_GUI_RL << __LINE__ << "start table : " << "row= " << rows << " col=" << columns << " width=" << width;
 
+			// optimal col width calculation
+			row_idx = 0;
 			for (config& row : tag.cfg.child_range("row")) {
 				col_x = 0;
 				col_idx = 0;
-				max_row_height = 0;
 
 				for (config& col : row.child_range("col")) {
-
 					config col_cfg;
 					config& col_txt_cfg = col_cfg.add_child("text");
 					col_txt_cfg.append_attributes(col);
 					col_cfg.append_children(col);
 
 					// attach data
-					text_dom.append(get_parsed_text(col_cfg, point(col_x, row_y)));
+					const auto& [table_elem, size] = get_parsed_text(col_cfg, point(col_x, row_y), width/columns);
+					col_widths[col_idx] = std::max(col_widths[col_idx], static_cast<unsigned>(size.x));
+					col_widths[col_idx] = std::min(col_widths[col_idx], width/columns);
+
+					col_x += width/columns;
+					col_idx++;
+				}
+
+				row_idx++;
+				row_y += max_row_height + padding_;
+			}
+
+			// table layouting
+			row_y = prev_blk_height;
+			row_idx = 0;
+			for (config& row : tag.cfg.child_range("row")) {
+				col_x = 0;
+				col_idx = 0;
+				max_row_height = 0;
+
+				for (config& col : row.child_range("col")) {
+					config col_cfg;
+					config& col_txt_cfg = col_cfg.add_child("text");
+					col_txt_cfg.append_attributes(col);
+					col_cfg.append_children(col);
+
+					// attach data
+					const auto& [table_elem, size] = get_parsed_text(col_cfg, point(col_x, row_y), col_widths[col_idx]);
+					text_dom.append(table_elem);
 
 					// column post-processing
-					max_row_height = std::max(max_row_height, h_ - row_y);
+					max_row_height = std::max(max_row_height, static_cast<unsigned>(size.y));
 
-					// move x to next column
-					col_idx++;
-					col_x = col_idx * col_width;
-
+					col_x += col_widths[col_idx] + padding_;
 					config& end_cfg = std::prev(text_dom.ordered_end())->cfg;
-					end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', %d), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % col_x % row_y % col_x % col_width);
+					end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', %d), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % col_x % row_y % col_x % (width/columns));
 
 					DBG_GUI_RL << "jump to next column";
 
@@ -395,11 +432,12 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 						new_text_block = true;
 					}
 					is_image = false;
+					col_idx++;
 				}
 
 				row_y += max_row_height + padding_;
 				config& end_cfg = std::prev(text_dom.ordered_end())->cfg;
-				end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % row_y % col_x % col_width);
+				end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % row_y % col_x % col_widths[col_idx]);
 				DBG_GUI_RL << "row height: " << max_row_height;
 			}
 
@@ -412,8 +450,7 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 			is_image = false;
 			is_text = false;
 
-			x = 0;
-			col_width = 0;
+			x = origin.x;
 			col_x = 0;
 			row_y = 0;
 			max_row_height = 0;
@@ -424,7 +461,7 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 				default_text_config(curr_item);
 				new_text_block = false;
 			}
-			
+
 			// TODO correct height update
 			if (is_image && !is_float) {
 				prev_blk_height += padding_;
@@ -433,7 +470,7 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 				add_text_with_attribute(*curr_item, "\n");
 			}
 
-			x = 0;
+			x = origin.x;
 			is_image = false;
 			img_size = point(0,0);
 
@@ -446,44 +483,41 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 
 		} else {
 			std::string line = child["text"];
-			config part2_cfg;
 
 			if (!finalize && line.empty()) {
 				continue;
 			}
 
+			config part2_cfg;
 			if (is_image && (!is_float)) {
 				if (!line.empty() && line.at(0) == '\n') {
-					x = 0;
+					x = origin.x;
 					prev_blk_height += padding_;
 					(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
 					line = line.substr(1);
-				} else {
-					if (!line.empty() && line.at(0) != '\n') {
-						std::vector<std::string> parts = help::split_in_width(line, font::SIZE_NORMAL, w_ - x);
-						// First line
-						if (!parts.front().empty()) {
-							line = parts.front();
-						}
-
-						std::string& part2 = parts.back();
-						if (!part2.empty() && parts.size() > 1) {
-							if (part2[0] == '\n') {
-								part2 = part2.substr(1);
-							}
-
-							part2_cfg.add_child("text")["text"] = parts.back();
-							part2_cfg = get_parsed_text(part2_cfg, point(0, prev_blk_height), false);
-							remaining_item = &part2_cfg;
-						}
-
-						if (parts.size() == 1) {
-							prev_blk_height -= img_size.y;
-						}
-					} else {
-						prev_blk_height -= img_size.y;
+				} else if (!line.empty() && line.at(0) != '\n') {
+					std::vector<std::string> parts = help::split_in_width(line, font::SIZE_NORMAL, init_width - x);
+					// First line
+					if (!parts.front().empty()) {
+						line = parts.front();
 					}
 
+					std::string& part2 = parts.back();
+					if (!part2.empty() && parts.size() > 1) {
+						if (part2[0] == '\n') {
+							part2 = part2.substr(1);
+						}
+
+						part2_cfg.add_child("text")["text"] = parts.back();
+						part2_cfg = get_parsed_text(part2_cfg, point(0, prev_blk_height), init_width, false).first;
+						remaining_item = &part2_cfg;
+					}
+
+					if (parts.size() == 1) {
+						prev_blk_height -= img_size.y;
+					}
+				} else {
+					prev_blk_height -= img_size.y;
 				}
 			}
 
@@ -500,7 +534,7 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 			}
 
 			// }---------- TEXT TAGS -----------{
-			int tmp_h = get_text_size(*curr_item, w_ - (x == 0 ? float_size.x : x)).y;
+			int tmp_h = get_text_size(*curr_item, init_width - (x == 0 ? float_size.x : x)).y;
 
 			if (is_text && tag.key == "text") {
 				add_text_with_attribute(*curr_item, "\n\n");
@@ -509,7 +543,7 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 
 			if(tag.key == "ref") {
 
-				add_link(*curr_item, line, child["dst"], point(x, prev_blk_height), float_size.x);
+				add_link(*curr_item, line, child["dst"], point(x + origin.x, prev_blk_height), float_size.x);
 				is_image = false;
 
 				DBG_GUI_RL << "ref: dst=" << child["dst"];
@@ -518,7 +552,7 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 
 				add_text_with_attribute(*curr_item, line, tag.key);
 
-				config parsed_children = get_parsed_text(tag.cfg, point(x, prev_blk_height));
+				config parsed_children = get_parsed_text(tag.cfg, point(x, prev_blk_height), init_width).first;
 
 				for (config::any_child ch : parsed_children.all_children_range()) {
 					if (ch.key == "text") {
@@ -579,7 +613,7 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 
 				add_text(*curr_item, line);
 
-				point text_size = get_text_size(*curr_item, w_ - (x == 0 ? float_size.x : x));
+				point text_size = get_text_size(*curr_item, init_width - (x == 0 ? float_size.x : x));
 				text_size.x -= x;
 
 				is_text = true;
@@ -593,11 +627,11 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 					// first part of the text
 					t_string* removed_part = new t_string((*curr_item)["text"].str().substr(len+1));
 					(*curr_item)["text"] = (*curr_item)["text"].str().substr(0, len);
-					(*curr_item)["maximum_width"] = w_ - float_size.x;
+					(*curr_item)["maximum_width"] = init_width - float_size.x;
 					(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('ww', 0), set_var('pos_y', pos_y + text_height + " + std::to_string(0.3*font::get_max_height(font::SIZE_NORMAL)) + ")])";
 
 					// Height update
-					int ah = get_text_size(*curr_item, w_ - float_size.x).y;
+					int ah = get_text_size(*curr_item, init_width - float_size.x).y;
 					if (tmp_h > ah) {
 						tmp_h = 0;
 					}
@@ -609,13 +643,13 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 					text_height = 0;
 
 					// New text block
-					x = 0;
+					x = origin.x;
 					wrap_mode = false;
 
 					// rest of the text
 					curr_item = &(text_dom.add_child("text"));
 					default_text_config(curr_item);
-					tmp_h = get_text_size(*curr_item, w_).y;
+					tmp_h = get_text_size(*curr_item, init_width).y;
 					add_text_with_attribute(*curr_item, *removed_part);
 
 				} else if ((float_size.y > 0) && (text_size.y < float_size.y)) {
@@ -632,21 +666,22 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 				is_image = false;
 			}
 
-			int ah = get_text_size(*curr_item, w_ - (x == 0 ? float_size.x : x)).y;
+			point size = get_text_size(*curr_item, init_width - (x == 0 ? float_size.x : x));
+			int ah = size.y;
 			// update text size and widget height
 			if (tmp_h > ah) {
 				tmp_h = 0;
 			}
+			w = std::max(w, x + static_cast<unsigned>(size.x));
 
 			text_height += ah - tmp_h;
 
 			if (remaining_item) {
-				x = 0;
+				x = origin.x;
 				(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + " + std::to_string(img_size.y) + ")])";
 				text_dom.append(*remaining_item);
 				remaining_item = nullptr;
 				curr_item = &std::prev(text_dom.ordered_end())->cfg;
-//				new_text_block = true;
 			}
 		}
 
@@ -659,13 +694,13 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 		}
 		DBG_GUI_RL << "X: " << x;
 		DBG_GUI_RL << "Prev block height: " << prev_blk_height << " Current text block height: " << text_height;
-		DBG_GUI_RL << "Height: " << h_;
-		h_ = text_height + prev_blk_height;
+		DBG_GUI_RL << "Height: " << h;
+		h = text_height + prev_blk_height;
 		DBG_GUI_RL << "-----------";
 	} // for loop ends
 
-	if (static_cast<unsigned>(img_size.y) > h_) {
-		h_ = float_size.y;
+	if (w == 0) {
+		w = init_width;
 	}
 
 	if (finalize) {
@@ -675,7 +710,6 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 		break_cfg["actions"] = "([set_var('pos_x', 0), set_var('pos_y', 0), set_var('img_x', 0), set_var('img_y', 0), set_var('ww', 0), set_var('tw', 0)])";
 		DBG_GUI_RL << text_dom.debug();
 	}
-	DBG_GUI_RL << "Height: " << h_;
 
 	// DEBUG: draw boxes around links
 	#if LINK_DEBUG_BORDER
@@ -692,7 +726,11 @@ config rich_label::get_parsed_text(const config& parsed_text, const point& origi
 	}
 	#endif
 
-	return text_dom;
+	// TODO float and a mix of floats and images
+	h = std::max(static_cast<unsigned>(img_size.y), h);
+
+	DBG_GUI_RL << "Width: " << w << " Height: " << h << " Origin: " << origin;
+	return std::pair(text_dom, point(w, h - origin.y));
 } // function ends
 
 void rich_label::default_text_config(config* txt_ptr, t_string text) {
@@ -780,17 +818,13 @@ void rich_label::signal_handler_left_button_click(bool& handled)
 		return; // without marking event as "handled"
 	}
 
-	point mouse = get_mouse_position();
+	point mouse = get_mouse_position() - get_origin();
 
-	mouse.x -= get_x();
-	mouse.y -= get_y();
-
-	DBG_GUI_RL << "(mouse)" << mouse.x << "," << mouse.y;
+	DBG_GUI_RL << "(mouse) " << mouse;
 	DBG_GUI_RL << "link count :" << links_.size();
 
 	for (const auto& entry : links_) {
-		DBG_GUI_RL << "link [" << entry.first.x << "," << entry.first.y << ","
-		<< entry.first.x + entry.first.w << "," << entry.first.y + entry.first.h  << "]";
+		DBG_GUI_RL << "link " << entry.first;
 
 		if (entry.first.contains(mouse)) {
 			DBG_GUI_RL << "Clicked link! dst = " << entry.second;
@@ -815,10 +849,7 @@ void rich_label::signal_handler_mouse_motion(bool& handled, const point& coordin
 		return; // without marking event as "handled"
 	}
 
-	point mouse = coordinate;
-
-	mouse.x -= get_x();
-	mouse.y -= get_y();
+	point mouse = coordinate - get_origin();
 
 	for (const auto& entry : links_) {
 		if (entry.first.contains(mouse)) {

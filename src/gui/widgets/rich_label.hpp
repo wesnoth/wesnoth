@@ -108,11 +108,6 @@ public:
 		can_shrink_ = can_shrink;
 	}
 
-	void set_width(unsigned width)
-	{
-		w_ = width;
-	}
-
 	void set_text_alpha(unsigned short alpha);
 
 	const t_string& get_label() const
@@ -126,8 +121,13 @@ public:
 	// Show a help topic
 	void set_topic(const help::topic* topic);
 
-	// Show a help config
-	config get_parsed_text(const config& parsed_text, const point& origin, const bool finalize = false);
+	// Given a parsed config from help markup,
+	// layout it into a config that can be understood by canvas
+	std::pair<config, point> get_parsed_text(
+		const config& parsed_text,
+		const point& origin,
+		const unsigned init_width,
+		const bool finalize = false);
 
 	// Attaches a callback function that will be called when a link is clicked
 	void register_link_callback(std::function<void(std::string)> link_handler)
@@ -198,14 +198,13 @@ private:
 	std::unique_ptr<image_shape> ishape_;
 
 	/** Width and height of the canvas */
+	const unsigned init_w_;
 	unsigned w_, h_;
 
 	/** Padding */
 	unsigned padding_;
 
 	/** Possible formatting tags, must be the same as those in gui2::text_shape::draw */
-//	const std::vector<std::string> format_tags_ = {"bold", "b", "italic", "i", "underline", "u"};
-
 	static const inline std::vector<std::string> format_tags_ = {"bold", "b", "italic", "i", "underline", "u"};
 
 	/** Create template for text config that can be shown in canvas */
