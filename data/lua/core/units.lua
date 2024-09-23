@@ -20,6 +20,12 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		end
 	end
 
+	---Force a unit to be rebuilt, reverting its stats to the base unit_type plus any modifications.
+	---@param unit unit The unit to rebuild
+	function wesnoth.units.rebuild(unit)
+		unit:transform(unit.type)
+	end
+
 	---Find an attack on the unit that matches a filter
 	---@param unit unit The unit to search
 	---@param filter WML The filter to match

@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
+#include "config.hpp"
 #include "storyscreen/controller.hpp"
 #include "storyscreen/part.hpp"
 

@@ -188,7 +188,7 @@ public:
 	: prefix_()
 	, end_of_history_(true)
 #ifdef HAVE_HISTORY
-	, filename_(filesystem::get_user_config_dir() + "/lua_command_history")
+	, filename_(filesystem::get_lua_history_file())
 	{
 		using_history();
 		read_history (filename_.c_str());
@@ -441,11 +441,6 @@ void lua_interpreter::controller::bind(window& window)
 						this,
 						std::ref(window)));
 
-	if (!desktop::clipboard::available()) {
-		copy_button->set_active(false);
-		copy_button->set_tooltip(_("Clipboard support not found, contact your packager"));
-	}
-
 	LOG_LUA << "Exiting lua_interpreter::controller::bind";
 }
 
@@ -453,7 +448,7 @@ void lua_interpreter::controller::bind(window& window)
 void lua_interpreter::controller::handle_copy_button_clicked(window & /*window*/)
 {
 	assert(lua_model_);
-	desktop::clipboard::copy_to_clipboard(lua_model_->get_raw_log(), false);
+	desktop::clipboard::copy_to_clipboard(lua_model_->get_raw_log());
 }
 
 /** Clear the text */

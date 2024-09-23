@@ -53,13 +53,8 @@ Battle for \fBWesnoth\fPはターン制のファンタジー戦略ゲームで�
 \fBstart\fP イベントの終わりまで、 [story] 画面とダイアログをスキップする。
 .TP 
 \fB\-\-clock\fP
-タイマー描画のテストのための時計を表示するオプションを追加する。
-.TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-非推奨、\fB\-\-userdata\-dir\fPを使用するべき。
-.TP 
-\fB\-\-config\-path\fP
-非推奨。\fB\-\-userdata\-path\fPを使用するべき。
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 読み込んだコアを指定の ID のものに置き換える。
@@ -80,7 +75,7 @@ Battle for \fBWesnoth\fPはターン制のファンタジー戦略ゲームで�
 \fB\-\-strict\-validation\fP
 非推奨のLua APIコールを許可しない。
 .TP 
-\fB\-D,\-\-diff\fP\fI\ 左ファイル\fP\fB\ \fP\fI右ファイル\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 2つのWMLファイルを比較する。比較前に前処理は行われないため、前処理が必要であれば、 \fB\-p\fP
 を前につけて実行すること。差分はDiffWMLファイルとして標準出力または \fI\-\-output\fP で指定したファイルに出力される。
 .TP 
@@ -112,9 +107,10 @@ FPSを画面の隅に表示し、ユーザーデータディレクトリ内の�
 \fB\-\-log\-precise\fP
 より正確にログ出力の時刻を表示する。
 .TP 
-\fB\-\-log\-strict\fP
-ログ出力の厳密なレベルを設定する。このレベル以上に深刻なメッセージがログ領域に送られると、ユニットテストは勝利の結果にかかわらず失敗する。 \fB\-u\fP
-と併せて利用しなければ不適切である。
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 定義済のログ領域のリストを表示して終了する。(\fIfilter\fPが指定されたら反映される)
@@ -125,8 +121,11 @@ WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
 in the logs directory under the userdata folder.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
-whether implicit or explicit.
+ログ出力がファイルに書き込まれる。暗黙的か明示的かに関わらず、\-\-no\-log\-to\-file の効果をキャンセルする。
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 Windowsの場合に \-\-no\-log\-to\-file と共に使用すると、出力は CONOUT ではなく cerr/cout
@@ -179,14 +178,13 @@ BGMなしでゲームを実行する。
 （試験的）Wesnoth のプラグインを定義した \fIscript\fP を読み込む。\fB\-\-script\fP と類似しているが、Lua
 ファイルはコルーチンとして動作する関数を返し、定期的に呼び出されなければならない。
 .TP 
-\fB\-P,\-\-patch\fP\fI\ ベースファイル\fP\fB\ \fP\fIパッチファイル\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 DiffWMLパッチをWMLファイルに適用する。どちらのファイルに対しても前処理は行われない。標準出力または \fI\-\-output\fP
 で指定したファイルにパッチを適用したWMLを出力する。
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
 指定されたファイル／フォルダをプリプロセスする。プレーン .cfg ファイルごとに、プリプロセスされた .cfg
-ファイルを指定したフォルダに生成する。フォルダを指定した場合、プリプロセッサーのルールに従ってフォルダ内は再帰的にプリプロセスされる。「data/core/macros」内の共通マクロは、指定したリソースよりも前にプリプロセスされる。例：\fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result\fP
+ファイルを指定したフォルダに生成する。フォルダを指定した場合、プリプロセッサーのルールに従ってフォルダ内は再帰的にプリプロセスされる。「data/core/macros」内の共通マクロは、指定したリソースよりも前にプリプロセスされる。例：\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result\fP
 。詳細は以下のプリプロセッサーについてを参照：https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
@@ -246,18 +244,8 @@ GUI 付きでゲームを実行する、暗黙的に \fB\-\-nogui\fP を置き�
 \fBpackage\fP パッケージを lua スクリプトから利用可能とする。 lua スクリプトに wesnoth
 実行時と同様の権限を付与することになるため、この機能を信頼できないスクリプトと併用してはならない！
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ パス\fP
-\fB\-V,\-\-validate\fP と合わせてWMLスキーマを設定する。
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ name\fP
-ユーザー設定ディレクトリを $HOME 下または Windows の「My Documents\eMy Games」下の \fIname\fP
-に設定する。設定ディレクトリのパスを$HOME や 「My Documents\eMy Games」の外に絶対パスで指定することもできる。Windows
-では 「.\e」あるいは「..\e」を用いることで、ワーキングディレクトリーからの相対パスで指定することもできる。X11 下では、このパスはデフォルトで
-$XDG_CONFIG_HOME または $HOME/.config/wesnoth
-であり、他のシステムでユーザーデータパスがデフォルトであるのとは異なる。
-.TP 
-\fB\-\-userconfig\-path\fP
-ユーザー設定ディレクトリの名前を表示して、終了する。
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 ユーザーデータディレクトリを $HOME 下または Windows の「My Documents\eMy Games」下の \fIname\fP
@@ -280,7 +268,7 @@ Games」の外に絶対パスで指定することもできる。Windows では
 \fB\-\-validate\-core\fP
 コアWMLがプレイ可能か検証する。
 .TP 
-\fB\-\-validate\-schema \ パス\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 ファイルをWMLスキーマとして検証する。
 .TP 
 \fB\-\-validcache\fP

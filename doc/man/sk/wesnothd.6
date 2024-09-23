@@ -26,8 +26,7 @@ wesnothd \- Démon na sieťovú hru Bitky o \fBWesnoth\fP
 .
 .SH ZHRNUTIE
 .
-\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fIčíslo\fP\|] [\|\fB\-T\fP \fIčíslo\fP\|]
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
@@ -59,14 +58,6 @@ zapisovacie domény. Možné úrovne: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
 zavesí server na daný port. Ak nie je daný port, použije sa port \fB15000\fP.
-.TP 
-\fB\-t\ \fP\fIčíslo\fP\fB,\ \-\-threads\fP\fI\ číslo\fP
-nastaví maximálny počet čakajúcich pracovných vlákien pre sieťové I/O
-(štandardne: \fB5\fP,\ maximum:\ \fB30\fP).
-.TP 
-\fB\-T\ \fP\fIčíslo\fP\fB,\ \-\-max\-threads\fP\fI\ číslo\fP
-nastaví maximálny počet vytvorených pracovných vlákien. Hodnota \fB0\fP znamená
-bez obmedzenia (štandardne: \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
 vypíše číslo verzie a skončí.
@@ -101,10 +92,6 @@ Plná alebo relatívna cesta k súboru (komprimovanému gzipom), ktorý môže
 server čítať a zapisovať. Zákazy budú ukladané do tohto súboru a načítané
 pri štarte.
 .TP 
-\fBcompress_stored_rooms\fP
-Určuje či sa má súbor s miestnosťami ukladať v komprimovanej
-forme. Predvolené je \fByes\fP.
-.TP 
 \fBconnections_allowed\fP
 Počet povolených spojení z rovnakej IP adresy. \fB0\fP znamená
 nekonečno. (štandardne: \fB5\fP)
@@ -114,14 +101,20 @@ nekonečno. (štandardne: \fB5\fP)
 používanom \fBuser_handler\fP. (predvolené: false)
 .TP 
 \fBdisallow_names\fP
-Mená/prezývky, ktoré server neprijíma. Podporujú sa zástupné znaky \fB*\fP and
-\fB?\fP. Pre ďalšie podrobnosti pozri \fBglob\fP(7). Štandardné hodnoty (ak sa nič
-nezadá) sú:\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+\fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
 Cesta k soketu (fifo), do ktorého môžete posielať príkazy pre server
 (rovnaké ako /query ... from wesnoth). Ak nie je uvedená, použije sa cesta
 zadaná pri kompilácii (predvolená: \fB/var/run/wesnothd/socket\fP).
+.TP 
+\fBid\fP
+ID servera pri použití funkcie databázy na ukladanie informácií o
+hre. Všeobecne je to major.minor verzia akceptovaných klientov, napríklad
+1.16 alebo 1.17.
 .TP 
 \fBmax_messages\fP
 Počet povolených správ počas \fBmessages_time_period\fP. (štandardne: \fB4\fP)
@@ -133,15 +126,8 @@ správami. (štandardne: \fB10\fP sekúnd)
 \fBmotd\fP
 Správa dňa.
 .TP 
-\fBnew_room_policy\fP
-Určuje kto môže zakladať nové miestnosti na serveri. Povolené hodnoty sú
-\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP a \fBnobody\fP, ktoré dávajú oprávnenia
-každému, registrovaným používateľom, administrátorom, a nikomu. Predvolená
-hodnota je \fBeveryone\fP.
-.TP 
 \fBpasswd\fP
-Heslo používané na získanie administrátorských práv (pomocou \fB/query admin
-\fP\fIheslo\fP) .
+Heslo používané na získanie administrátorských práv (pomocou \fB/query admin \fP\fIheslo\fP) .
 .TP 
 \fBreplay_save_path\fP
 Adresár kam server ukladá záznamy hier. (Nezabudnite na posledné /!)
@@ -151,11 +137,6 @@ Predvolené je `', čo znamená adresár, v ktorom bol wesnothd spustený.
 Príkaz, ktorý server použije na spustenie nového serverovského procesu po
 príkaze \fBrestart\fP. (Môže byť použité iba cez soket (fifo). Pozri tiež
 nastavenie \fBallow_remote_shutdown\fP.)
-.TP 
-\fBroom_save_file\fP
-Cesta k súboru kam majú byť uložené informácie o miestnostiach. Tento súbor
-sa načíta pri spustení serveru a neskôr zapisuje. Ak nie je zadaný,
-miestnosti sa neukladajú ani nenačítavajú.
 .TP 
 \fBsave_replays\fP
 Určuje či bude server automaticky ukladať záznamy hier. (predvolené:
@@ -172,8 +153,7 @@ Umožní používať TLS. Ak bude nastavený na hodnotu true, je treba nastaviť
 privátny kľúč pre TLS v .pem formáte
 .TP 
 \fBtls_dh\fP
-Parametre TLS DH ako súbor .pem. Generujte pomocou \fBopenssl dhparam \-out
-filename.pem 4096\fP
+Parametre TLS DH ako súbor .pem. Generujte pomocou \fBopenssl dhparam \-out filename.pem 4096\fP
 .TP 
 \fBversions_accepted\fP
 Čiarkami oddelený zoznam verzií, ktoré má server prijímať. Podporujú sa
@@ -181,11 +161,6 @@ zástupné znaky \fB*\fP and \fB?\fP. (štandardne je to zodpovedajúca verzia
 wesnothu)
 .br
 Napríklad: \fBversions_accepted="*"\fP prijme hocijakú verziu.
-.TP 
-\fBid\fP
-ID servera pri použití funkcie databázy na ukladanie informácií o
-hre. Všeobecne je to major.minor verzia akceptovaných klientov, napríklad
-1.16 alebo 1.17.
 .
 .SS "Globálne značky:"
 .
@@ -262,14 +237,18 @@ o hrách.
 Názov databázovej tabuľky v ktorej bude wesnothd ukladať svoje vlastné dáta
 o hráčoch v hre.
 .TP 
-\fBdb_game_modification_info_table\fP
-Názov databázovej tabuľky v ktorej bude wesnothd ukladať svoje vlastné dáta
-o modifikáciách využitých v hre.
+\fBdb_game_content_info_table\fP
+The name of the table in which wesnothd will save its own data about game
+content (scenario/era/modifications) used in a game.
 .TP 
 \fBdb_user_group_table\fP
 Názov tabuľky, do ktorej vaše phpbb fórum ukladá údaje o skupinách
 používateľov. S najväčšou pravdepodobnosťou to bude
 <table\-prefix>_user_group (napr. phpbb3_user_group).
+.TP 
+\fBdb_tournament_query\fP
+The SQL query to find tournaments to announce on login. Should return
+tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
 .TP 
 \fBdb_connection_history_table\fP
 Názov databázovej tabuľky na ukladanie časov prihlásení/odhlásení. Tiež sa

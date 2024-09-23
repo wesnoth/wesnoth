@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
+"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
 "PO-Revision-Date: 2024-03-12 22:08+0100\n"
 "Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -131,8 +131,12 @@ msgstr "Standaard"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
+#, fuzzy
+#| msgid ""
+#| "The standard era for Wesnoth multiplayer. Consists of six factions and is "
+#| "generally balanced."
 msgid ""
-"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"The standard era for Wesnoth multiplayer. Consists of seven factions and is "
 "generally balanced."
 msgstr ""
 "Het standaard tijdperk voor Wesnoth multiplayer. Bestaat uit zes facties en "
@@ -145,58 +149,19 @@ msgstr "Tijd der Helden"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:15
+#, fuzzy
+#| msgid ""
+#| "An era with higher level units: level three leaders, with level one and "
+#| "two units available for recruit. Consists of six factions. Not considered "
+#| "balanced."
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
-"units available for recruit. Consists of six factions. Not considered "
+"units available for recruit. Consists of seven factions. Not considered "
 "balanced."
 msgstr ""
 "Een tijdperk met eenheden van een hogere rang: rang 3 leiders, met rang 1 en "
 "rang 2 eenheden beschikbaar om te rekruteren. Bestaat uit zes facties. Wordt "
 "niet gezien als gebalanceerd."
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:22
-msgid "Default + Dunefolk"
-msgstr "Standaard + Duinvolk"
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:23
-msgid ""
-"An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Een tijdperk met een extra factie naast de zes facties van het Standaard "
-"Tijdperk. Eenheden van het Duinvolk vertrouwen op het gebruik van het "
-"terrein en vallen het liefst aan tijdens zonsopkomst of zonsondergang.\n"
-"\n"
-"Dit tijdperk is nog in ontwikkeling, dus zorg ervoor dat er melding wordt "
-"gemaakt van elk probleem dat zich voordoet."
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:33
-msgid "Age of Heroes + Dunefolk"
-msgstr "Tijd der Helden + Duinvolk"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:34
-msgid ""
-"An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Een tijdperk met een extra factie naast de zes facties van het de Tijd der "
-"Helden. Eenheden van het Duinvolk vertrouwen op het gebruik van het terrein "
-"en vallen het liefst aan tijdens zonsopkomst of zonsondergang.\n"
-"\n"
-"Dit tijdperk is nog in ontwikkeling, dus zorg ervoor dat er melding wordt "
-"gemaakt van elk probleem dat zich voordoet."
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
@@ -3131,6 +3096,42 @@ msgstr ""
 "Deze kaart is een voorbeeld van hoe de nieuwe (SoW v1.17) zwevende "
 "terreinweergaven zich gedragen. Houd er rekening mee dat deze kaart niet is "
 "bedoeld om op te spelen."
+
+#~ msgid "Default + Dunefolk"
+#~ msgstr "Standaard + Duinvolk"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from "
+#~ "Default Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Een tijdperk met een extra factie naast de zes facties van het Standaard "
+#~ "Tijdperk. Eenheden van het Duinvolk vertrouwen op het gebruik van het "
+#~ "terrein en vallen het liefst aan tijdens zonsopkomst of zonsondergang.\n"
+#~ "\n"
+#~ "Dit tijdperk is nog in ontwikkeling, dus zorg ervoor dat er melding wordt "
+#~ "gemaakt van elk probleem dat zich voordoet."
+
+#~ msgid "Age of Heroes + Dunefolk"
+#~ msgstr "Tijd der Helden + Duinvolk"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from Age "
+#~ "of Heroes Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Een tijdperk met een extra factie naast de zes facties van het de Tijd "
+#~ "der Helden. Eenheden van het Duinvolk vertrouwen op het gebruik van het "
+#~ "terrein en vallen het liefst aan tijdens zonsopkomst of zonsondergang.\n"
+#~ "\n"
+#~ "Dit tijdperk is nog in ontwikkeling, dus zorg ervoor dat er melding wordt "
+#~ "gemaakt van elk probleem dat zich voordoet."
 
 #~ msgid ""
 #~ "Controlling the area around the central keep is very lucrative in this 4 "

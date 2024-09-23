@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 12:06-0500\n"
-"PO-Revision-Date: 2024-04-11 09:41+1000\n"
+"POT-Creation-Date: 2024-09-17 21:18-0500\n"
+"PO-Revision-Date: 2024-09-18 19:48+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -236,17 +236,17 @@ msgid "units"
 msgstr "units"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:463
+#: data/themes/editor.cfg:479
 msgid "Time Schedule Menu"
 msgstr "Time Schedule Menu"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:474
+#: data/themes/editor.cfg:490
 msgid "Playlist"
 msgstr "Playlist"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:480
+#: data/themes/editor.cfg:496
 msgid "Assign Time Schedule"
 msgstr "Assign Time Schedule"
 
@@ -270,15 +270,15 @@ msgstr "Level: "
 msgid "Cost: "
 msgstr "Cost: "
 
-#: src/editor/controller/editor_controller.cpp:183
+#: src/editor/controller/editor_controller.cpp:186
 msgid "Fatal error"
 msgstr "Fatal error"
 
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:216
 msgid "Do you really want to quit?"
 msgstr "Do you really want to quit?"
 
-#: src/editor/controller/editor_controller.cpp:215
+#: src/editor/controller/editor_controller.cpp:218
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -286,7 +286,7 @@ msgstr ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:220
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -294,128 +294,155 @@ msgstr ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 
-#: src/editor/controller/editor_controller.cpp:234
+#: src/editor/controller/editor_controller.cpp:237
 msgid "No editor time-of-day found."
 msgstr "No editor time-of-day found."
 
-#: src/editor/controller/editor_controller.cpp:1262
+#: src/editor/controller/editor_controller.cpp:880
+msgid "Add-on Files"
+msgstr "Add-on Files"
+
+#: src/editor/controller/editor_controller.cpp:893
+msgid "Opening files is not supported, contact your packager"
+msgstr "Opening files is not supported, contact your packager"
+
+#: src/editor/controller/editor_controller.cpp:1313
 msgid "Change Unit ID"
 msgstr "Change Unit ID"
 
-#: src/editor/controller/editor_controller.cpp:1263
+#: src/editor/controller/editor_controller.cpp:1314
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1279
+#: src/editor/controller/editor_controller.cpp:1330
 msgid "Rename Unit"
 msgstr "Rename Unit"
 
-#: src/editor/controller/editor_controller.cpp:1280
+#: src/editor/controller/editor_controller.cpp:1331
 msgid "Name:"
 msgstr "Name:"
 
-#: src/editor/map/context_manager.cpp:215
+#: src/editor/editor_display.cpp:170
+msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
+msgstr "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
+
+#: src/editor/editor_display.cpp:172
+msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
+msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
+
+#: src/editor/map/context_manager.cpp:220
 msgid "Load Map"
 msgstr "Load Map"
 
-#: src/editor/map/context_manager.cpp:311 src/editor/map/map_context.cpp:1110
+#: src/editor/map/context_manager.cpp:316 src/editor/map/map_context.cpp:1127
 msgid "New Map"
 msgstr "New Map"
 
-#: src/editor/map/context_manager.cpp:324 src/editor/map/map_context.cpp:1110
+#: src/editor/map/context_manager.cpp:329 src/editor/map/map_context.cpp:1127
 msgid "New Scenario"
 msgstr "New Scenario"
 
-#: src/editor/map/context_manager.cpp:380
+#: src/editor/map/context_manager.cpp:385
 msgid "No Recent Files"
 msgstr "No Recent Files"
 
-#: src/editor/map/context_manager.cpp:418
+#: src/editor/map/context_manager.cpp:423
 msgid "Unnamed Area"
 msgstr "Unnamed Area"
 
-#: src/editor/map/context_manager.cpp:449
+#: src/editor/map/context_manager.cpp:454
 msgid "New Side"
 msgstr "New Side"
 
-#: src/editor/map/context_manager.cpp:505
+#: src/editor/map/context_manager.cpp:510
 msgid "Apply Mask"
 msgstr "Apply Mask"
 
-#: src/editor/map/context_manager.cpp:514
+#: src/editor/map/context_manager.cpp:519
 msgid "Error loading mask"
 msgstr "Error loading mask"
 
-#: src/editor/map/context_manager.cpp:534
+#: src/editor/map/context_manager.cpp:539
 msgid "Identifier:"
 msgstr "Identifier:"
 
-#: src/editor/map/context_manager.cpp:534
+#: src/editor/map/context_manager.cpp:539
 msgid "Rename Area"
 msgstr "Rename Area"
 
-#: src/editor/map/context_manager.cpp:548
+#: src/editor/map/context_manager.cpp:553
 msgid "Choose Target Map"
 msgstr "Choose Target Map"
 
-#: src/editor/map/context_manager.cpp:557
-#: src/editor/map/context_manager.cpp:953
+#: src/editor/map/context_manager.cpp:562
+#: src/editor/map/context_manager.cpp:988
 msgid "Error loading map"
 msgstr "Error loading map"
 
-#: src/editor/map/context_manager.cpp:683
+#: src/editor/map/context_manager.cpp:694
 msgid "Save Map As"
 msgstr "Save Map As"
 
-#: src/editor/map/context_manager.cpp:694
-#: src/editor/map/context_manager.cpp:896
+#: src/editor/map/context_manager.cpp:711
+#: src/editor/map/context_manager.cpp:760 src/editor/map/map_context.cpp:269
+#: src/editor/palette/location_palette.cpp:264
+msgid "Error"
+msgstr "Error"
+
+#: src/editor/map/context_manager.cpp:712
+#: src/editor/map/context_manager.cpp:761
+msgid "Do you really want to save $type1 in $type2 folder?"
+msgstr "Do you really want to save $type1 in $type2 folder?"
+
+#: src/editor/map/context_manager.cpp:720
+#: src/editor/map/context_manager.cpp:929
 msgid "This map is already open."
 msgstr "This map is already open."
 
-#: src/editor/map/context_manager.cpp:715
+#: src/editor/map/context_manager.cpp:743
 msgid "Save Scenario As"
 msgstr "Save Scenario As"
 
-#: src/editor/map/context_manager.cpp:727
+#: src/editor/map/context_manager.cpp:769
 msgid "This scenario is already open."
 msgstr "This scenario is already open."
 
-#: src/editor/map/context_manager.cpp:761
+#: src/editor/map/context_manager.cpp:803
 msgid "No random map generators found."
 msgstr "No random map generators found."
 
-#: src/editor/map/context_manager.cpp:774
-#: src/editor/map/context_manager.cpp:779
+#: src/editor/map/context_manager.cpp:816
+#: src/editor/map/context_manager.cpp:821
 msgid "Map creation failed."
 msgstr "Map creation failed."
 
-#: src/editor/map/context_manager.cpp:794
+#: src/editor/map/context_manager.cpp:836
 msgid "Unsaved Changes"
 msgstr "Unsaved Changes"
 
-#: src/editor/map/context_manager.cpp:795
+#: src/editor/map/context_manager.cpp:837
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Do you want to discard all changes made to the map since the last save?"
 
-#: src/editor/map/context_manager.cpp:857
+#: src/editor/map/context_manager.cpp:890
 msgid "Scenario saved."
 msgstr "Scenario saved."
 
-#: src/editor/map/context_manager.cpp:872
-msgid "Map saved."
-msgstr "Map saved."
+#: src/editor/map/context_manager.cpp:905
+msgid "Map saved"
+msgstr "Map saved"
 
-#: src/editor/map/context_manager.cpp:945
+#: src/editor/map/context_manager.cpp:980
 msgid "Loaded embedded map data"
 msgstr "Loaded embedded map data"
 
-#: src/editor/map/context_manager.cpp:946
-#: src/editor/map/context_manager.cpp:949
+#: src/editor/map/context_manager.cpp:981
+#: src/editor/map/context_manager.cpp:984
 msgid "Map loaded from scenario"
 msgstr "Map loaded from scenario"
 
-#: src/editor/map/context_manager.cpp:949
+#: src/editor/map/context_manager.cpp:984
 msgid "Loaded referenced map file:"
 msgstr "Loaded referenced map file:"
 
@@ -428,19 +455,19 @@ msgstr "Player $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "The size of the target map is different from the current map"
 
-#: src/editor/map/map_context.cpp:181
+#: src/editor/map/map_context.cpp:182
 msgid "File not found"
 msgstr "File not found"
 
-#: src/editor/map/map_context.cpp:188
+#: src/editor/map/map_context.cpp:189
 msgid "Empty file"
 msgstr "Empty file"
 
-#: src/editor/map/map_context.cpp:194
-msgid "File does not have .map or .cfg extension"
-msgstr "File does not have .map or .cfg extension"
+#: src/editor/map/map_context.cpp:198
+msgid "File does not have .map, .cfg, or .mask extension"
+msgstr "File does not have .map, .cfg, or .mask extension"
 
-#: src/editor/map/map_context.cpp:240
+#: src/editor/map/map_context.cpp:245
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -448,20 +475,15 @@ msgstr ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 
-#: src/editor/map/map_context.cpp:259
+#: src/editor/map/map_context.cpp:264
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
 msgstr "Found the characters '<<' indicating inline lua is present - aborting"
 
-#: src/editor/map/map_context.cpp:264
-#: src/editor/palette/location_palette.cpp:264
-msgid "Error"
-msgstr "Error"
-
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:269
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr "Failed to load the scenario, attempting to load only the map."
 
-#: src/editor/map/map_context.cpp:271
+#: src/editor/map/map_context.cpp:276
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
@@ -469,20 +491,27 @@ msgstr ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
 
-#: src/editor/map/map_context.cpp:286
+#: src/editor/map/map_context.cpp:291
 msgid "Unable to parse file to find map data"
 msgstr "Unable to parse file to find map data"
 
-#: src/editor/map/map_context.cpp:804 src/editor/map/map_context.cpp:843
-#: src/editor/map/map_context.cpp:884
+#: src/editor/map/map_context.cpp:821 src/editor/map/map_context.cpp:861
+msgid "Could not save time schedule: $msg"
+msgstr "Could not save time schedule: $msg"
+
+#: src/editor/map/map_context.cpp:855
+msgid "Time schedule saved."
+msgstr "Time schedule saved."
+
+#: src/editor/map/map_context.cpp:901
 msgid "Could not save the scenario: $msg"
 msgstr "Could not save the scenario: $msg"
 
-#: src/editor/map/map_context.cpp:915
+#: src/editor/map/map_context.cpp:932
 msgid "Could not save into scenario"
 msgstr "Could not save into scenario"
 
-#: src/editor/map/map_context.cpp:925
+#: src/editor/map/map_context.cpp:942
 msgid "Could not save the map: $msg"
 msgstr "Could not save the map: $msg"
 
@@ -490,13 +519,21 @@ msgstr "Could not save the map: $msg"
 msgid "(Unknown Group)"
 msgstr "(Unknown Group)"
 
-#: src/editor/palette/editor_palettes.cpp:312
+#: src/editor/palette/editor_palettes.cpp:309
 msgid "(non-core)"
 msgstr "(non-core)"
 
-#: src/editor/palette/editor_palettes.cpp:313
+#: src/editor/palette/editor_palettes.cpp:310
 msgid "Will not work in game without extra care."
 msgstr "Will not work in game without extra care."
+
+#: src/editor/palette/item_palette.cpp:32
+msgid " | Right-click to remove"
+msgstr " | Right-click to remove"
+
+#: src/editor/palette/item_palette.cpp:32
+msgid "Left-click: Place item "
+msgstr "Left-click: Place item "
 
 #: src/editor/palette/location_palette.cpp:248
 msgid "Go To"
@@ -545,17 +582,31 @@ msgstr "Cmd + click: copy terrain"
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + click: copy terrain"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:94
+#: src/gui/dialogs/editor/custom_tod.cpp:96
 msgid "Clipboard support not found, contact your packager"
 msgstr "Clipboard support not found, contact your packager"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:162
+#: src/gui/dialogs/editor/custom_tod.cpp:176
 msgid "Choose File"
 msgstr "Choose File"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:163
+#: src/gui/dialogs/editor/custom_tod.cpp:177
 msgid "Select"
 msgstr "Select"
+
+#: src/gui/dialogs/editor/custom_tod.cpp:184
+msgid ""
+"This file is outside Wesnoth's data dirs. Do you wish to copy it into your "
+"add-on?"
+msgstr ""
+"This file is outside Wesnoth's data directories. Do you wish to copy it into "
+"your add-on?"
+
+#: src/gui/dialogs/editor/custom_tod.cpp:188
+#: src/gui/dialogs/editor/custom_tod.cpp:195
+#: src/gui/dialogs/editor/custom_tod.cpp:202
+msgid "Confirm"
+msgstr "Confirm"
 
 #~ msgid "player^None"
 #~ msgstr "None"

@@ -33,10 +33,14 @@
 #include "utils/const_clone.hpp"
 #include "utils/optional_reference.hpp"
 
-#include <ctime>
+#ifdef __cpp_lib_ranges
+#include <ranges>
+#else
+#include <boost/range/adaptor/map.hpp>
+#endif
+
 #include <functional>
 #include <iosfwd>
-#include <iterator>
 #include <map>
 #include <memory>
 #include <string>
@@ -62,7 +66,7 @@ public:
 	{
 	}
 
-	optional_config_impl(std::nullopt_t)
+	optional_config_impl(utils::nullopt_t)
 		: opt_()
 	{
 	}
@@ -73,7 +77,7 @@ public:
 			return *opt_;
 		} else {
 			// We're going to drop this codepath once we can use optional::value anyway, but just
-			// noting we want this function to ultimately throw std::bad_optional_access.
+			// noting we want this function to ultimately throw utils::bad_optional_access.
 			throw std::runtime_error("Optional reference has no value");
 		}
 	}
@@ -396,10 +400,10 @@ public:
 	 */
 	const config& mandatory_child(config_key_type key, int n = 0) const;
 
-	/** Euivalent to @ref mandatory_child, but returns an empty optional if the nth child was not found. */
+	/** Equivalent to @ref mandatory_child, but returns an empty optional if the nth child was not found. */
 	optional_config_impl<config> optional_child(config_key_type key, int n = 0);
 
-	/** Euivalent to @ref mandatory_child, but returns an empty optional if the nth child was not found. */
+	/** Equivalent to @ref mandatory_child, but returns an empty optional if the nth child was not found. */
 	optional_config_impl<const config> optional_child(config_key_type key, int n = 0) const;
 
 	/**
@@ -445,7 +449,7 @@ public:
 	optional_config_impl<const config> get_deprecated_child(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const;
 
 	/**
-	 * Get a deprecated child rangw and log a deprecation message
+	 * Get a deprecated child range and log a deprecation message
 	 * @param old_key The deprecated child to return if present
 	 * @param in_tag The name of the tag this child appears in
 	 * @param level The deprecation level
@@ -476,42 +480,6 @@ public:
 	 * or to a dummy empty attribute if it does not exist.
 	 */
 	const attribute_value& operator[](config_key_type key) const;
-
-	/**
-	* Returns a reference to the attribute with the given @a key.
-	* Creates it if it does not exist.
-	*/
-	attribute_value& operator[](const std::string& key)
-	{
-		return operator[](config_key_type(key));
-	}
-
-	/**
-	* Returns a reference to the attribute with the given @a key
-	* or to a dummy empty attribute if it does not exist.
-	*/
-	const attribute_value& operator[](const std::string& key) const
-	{
-		return operator[](config_key_type(key));
-	}
-
-	/**
-	* Returns a reference to the attribute with the given @a key.
-	* Creates it if it does not exist.
-	*/
-	attribute_value& operator[](const char* key)
-	{
-		return operator[](config_key_type(key));
-	}
-
-	/**
-	* Returns a reference to the attribute with the given @a key
-	* or to a dummy empty attribute if it does not exist.
-	*/
-	const attribute_value& operator[](const char* key) const
-	{
-		return operator[](config_key_type(key));
-	}
 
 	/**
 	 * Returns a pointer to the attribute with the given @a key
@@ -569,12 +537,9 @@ public:
 
 	void remove_attribute(config_key_type key);
 	void merge_attributes(const config &);
+
 	template<typename... T>
-	void remove_attributes(T... keys) {
-		for(const auto& key : {keys...}) {
-			remove_attribute(key);
-		}
-	}
+	void remove_attributes(T... keys) { (remove_attribute(keys), ...); }
 
 	/**
 	 * Copies attributes that exist in the source config.
@@ -634,27 +599,26 @@ public:
 	const config& find_mandatory_child(config_key_type key, const std::string &name,
 		const std::string &value) const;
 
-
 private:
 	void clear_children_impl(config_key_type key);
+
 public:
 	template<typename... T>
-	void clear_children(T... keys) {
-		for(auto key : {keys...}) {
-			clear_children_impl(key);
-		}
-	}
+	void clear_children(T... keys) { (clear_children_impl(keys), ...); }
 
 	/**
 	 * Moves all the children with tag @a key from @a src to this.
 	 */
-	void splice_children(config &src, const std::string &key);
+	void splice_children(config& src, config_key_type key);
 
 	void remove_child(config_key_type key, std::size_t index);
+
 	/**
 	 * Removes all children with tag @a key for which @a p returns true.
+	 * If no predicate is provided, all @a key tags will be removed.
 	 */
-	void remove_children(config_key_type key, std::function<bool(const config&)> p = [](config){return true;});
+	void remove_children(config_key_type key, std::function<bool(const config&)> p = {});
+
 	void recursive_clear_value(config_key_type key);
 
 	void clear();
@@ -882,10 +846,10 @@ public:
 	/**
 	 * Adds children from @a cfg.
 	 */
-	void append_children(const config &cfg, const std::string& key);
+	void append_children(const config &cfg, config_key_type key);
 
 	/** Moves children with the given name from the given config to this one. */
-	void append_children_by_move(config& cfg, const std::string& key);
+	void append_children_by_move(config& cfg, config_key_type key);
 
 	/**
 	 * Adds attributes from @a cfg.
@@ -896,14 +860,14 @@ public:
 	 * All children with the given key will be merged
 	 * into the first element with that key.
 	 */
-	void merge_children(const std::string& key);
+	void merge_children(config_key_type key);
 
 	/**
 	 * All children with the given key and with equal values
 	 * of the specified attribute will be merged into the
 	 * element with that key and that value of the attribute
 	 */
-	void merge_children_by_attribute(const std::string& key, const std::string& attribute);
+	void merge_children_by_attribute(config_key_type key, config_key_type attribute);
 
 	//this is a cheap O(1) operation
 	void swap(config& cfg);
@@ -913,6 +877,16 @@ public:
 	 * i.e. can be saved to disk and again loaded by the WML parser.
 	 */
 	bool validate_wml() const;
+
+	/** A non-owning view over all child tag names. */
+	auto child_name_view() const
+	{
+#ifdef __cpp_lib_ranges
+		return children_ | std::views::keys;
+#else
+		return children_ | boost::adaptors::map_keys;
+#endif
+	}
 
 private:
 	/**

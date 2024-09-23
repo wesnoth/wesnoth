@@ -24,7 +24,7 @@
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 
 namespace gui2::dialogs
 {
@@ -128,7 +128,7 @@ void language_selection::post_show(window& window)
 		assert(res != -1);
 
 		::set_language(langs_[res]);
-		preferences::set_language(langs_[res].localename);
+		prefs::get().set_locale(langs_[res].localename);
 	}
 }
 

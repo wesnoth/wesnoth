@@ -39,7 +39,7 @@
 #include "gui/widgets/tree_view_node.hpp"
 #include "log.hpp"
 #include "mp_ui_alerts.hpp"
-#include "preferences/credentials.hpp"
+#include "preferences/preferences.hpp"
 #include "saved_game.hpp"
 #include "side_controller.hpp"
 #include "units/types.hpp"
@@ -164,7 +164,7 @@ bool mp_join_game::fetch_game_config()
 	for(const config& side : get_scenario().child_range("side")) {
 		// TODO: it can happen that the scenario specifies that the controller
 		//       of a side should also gain control of another side.
-		if(side["controller"] == side_controller::reserved && side["current_player"] == preferences::login()) {
+		if(side["controller"] == side_controller::reserved && side["current_player"] == prefs::get().login()) {
 			side_choice = &side;
 			side_num_choice = side_num_counter;
 			break;
@@ -176,14 +176,14 @@ bool mp_join_game::fetch_game_config()
 				side_num_choice = side_num_counter;
 			}
 
-			if(side["current_player"] == preferences::login()) {
+			if(side["current_player"] == prefs::get().login()) {
 				side_choice = &side;
 				side_num_choice = side_num_counter;
 				break;  // Found the preferred one
 			}
 		}
 
-		if(side["player_id"] == preferences::login()) {
+		if(side["player_id"] == prefs::get().login()) {
 			// We already own a side in this game
 			return true;
 		}
@@ -326,7 +326,7 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 		config faction;
 		config& change = faction.add_child("change_faction");
 		change["change_faction"] = true;
-		change["name"] = preferences::login();
+		change["name"] = prefs::get().login();
 		change["faction"] = flg.current_faction()["id"];
 		change["leader"] = flg.current_leader();
 		change["gender"] = flg.current_gender();
@@ -413,7 +413,7 @@ void mp_join_game::generate_side_list()
 		item["label"] = description;
 		data.emplace("leader_type", item);
 
-		item["label"] = (formatter() << "<span color='#a69275'>" << side["faction_name"] << "</span>").str();
+		item["label"] = side["faction_name"];
 		data.emplace("leader_faction", item);
 
 		std::string gender_icon = "icons/icon-random.png";
@@ -448,7 +448,7 @@ void mp_join_game::generate_side_list()
 
 		auto* select_leader_button = find_widget<button>(&row_grid, "select_leader", false, false);
 		if(select_leader_button) {
-			if(side["player_id"] == preferences::login() && side["allow_changes"].to_bool(true)) {
+			if(side["player_id"] == prefs::get().login() && side["allow_changes"].to_bool(true)) {
 				//
 				// Small wrapper function in order to set the handled and halt parameters and prevent
 				// crashes in case the dialog closes and the original button to which the callback was
@@ -578,7 +578,7 @@ void mp_join_game::post_show(window& window)
 
 		mp::ui_alerts::game_has_begun();
 	} else if(observe_game_) {
-		mp::send_to_server(config("observer_quit", config { "name", preferences::login() }));
+		mp::send_to_server(config("observer_quit", config { "name", prefs::get().login() }));
 	} else {
 		mp::send_to_server(config("leave_game"));
 	}

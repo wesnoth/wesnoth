@@ -28,9 +28,13 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/stacked_widget.hpp"
+#include "gui/widgets/tab_container.hpp"
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/dialogs/message.hpp"
+#include "gui/dialogs/end_credits.hpp"
+#include "gettext.hpp"
+#include "help/help.hpp"
 
 #include <functional>
 
@@ -47,7 +51,7 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(game_version)
 
-game_version::game_version()
+game_version::game_version(unsigned start_page)
 	: modal_dialog(window_id())
 	, path_wid_stem_("path_")
 	, copy_wid_stem_("copy_")
@@ -57,11 +61,11 @@ game_version::game_version()
 	, deps_()
 	, opts_(game_config::optional_features_table())
 	, report_()
+	, start_page_(start_page)
 {
 	// NOTE: these path_map_ entries are referenced by the GUI2 WML
 	// definition of this dialog using preprocessor macros.
 	path_map_["datadir"] = game_config::path;
-	path_map_["config"] = filesystem::get_user_config_dir();
 	path_map_["userdata"] = filesystem::get_user_data_dir();
 	path_map_["saves"] = filesystem::get_saves_dir();
 	path_map_["addons"] = filesystem::get_addons_dir();
@@ -90,24 +94,40 @@ void game_version::pre_show(window& window)
 {
 	utils::string_map i18n_syms;
 
+	tab_container& tabs = find_widget<tab_container>(&window, "tabs", false);
+
 	//
 	// General information.
 	//
+	tabs.select_tab(0);
 
 	styled_widget& version_label = find_widget<styled_widget>(&window, "version", false);
-	i18n_syms["version"] = game_config::revision + " " + game_config::build_arch();
-	version_label.set_label(VGETTEXT("Version $version", i18n_syms));
-
 	styled_widget& os_label = find_widget<styled_widget>(&window, "os", false);
-	i18n_syms["os"] = desktop::os_version();
-	os_label.set_label(VGETTEXT("Running on $os", i18n_syms));
+	styled_widget& arch_label = find_widget<styled_widget>(&window, "arch", false);
+
+	version_label.set_label(game_config::revision);
+	os_label.set_label("<i>"+desktop::os_version()+"</i>");
+	arch_label.set_label(game_config::build_arch());
 
 	button& copy_all = find_widget<button>(&window, "copy_all", false);
 	connect_signal_mouse_left_click(copy_all, std::bind(&game_version::report_copy_callback, this));
 
+	// Bottom row buttons
+	button& credits_button = find_widget<button>(&window, "credits", false);
+	connect_signal_mouse_left_click(credits_button, std::bind(&game_version::show_credits_dialog, this));
+
+	button& license_button = find_widget<button>(&window, "license", false);
+	connect_signal_mouse_left_click(license_button, std::bind(&game_version::show_license, this));
+
+	button& issue_button = find_widget<button>(&window, "issue", false);
+	connect_signal_mouse_left_click(issue_button, std::bind(&game_version::report_issue, this));
+
+	connect_signal_mouse_left_click(find_widget<button>(&window, "run_migrator", false), std::bind(&game_version::run_migrator, this));
+
 	//
 	// Game paths tab.
 	//
+	tabs.select_tab(1);
 
 	for(const auto & path_ent : path_map_)
 	{
@@ -119,11 +139,10 @@ void game_version::pre_show(window& window)
 		button& browse_w = find_widget<button>(&window, browse_wid_stem_ + path_id, false);
 
 		path_w.set_value(path_path);
-		path_w.set_active(false);
 
 		connect_signal_mouse_left_click(
 				copy_w,
-				std::bind(&game_version::copy_to_clipboard_callback, this, path_path));
+				std::bind(&game_version::copy_to_clipboard_callback, this, path_path, copy_wid_stem_ + path_id));
 		connect_signal_mouse_left_click(
 				browse_w,
 				std::bind(&game_version::browse_directory_callback, this, path_path));
@@ -133,22 +152,16 @@ void game_version::pre_show(window& window)
 			// open_object().
 			browse_w.set_visible(widget::visibility::invisible);
 		}
-
-		if(!desktop::clipboard::available()) {
-			copy_w.set_active(false);
-			copy_w.set_tooltip(_("Clipboard support not found, contact your packager"));
-		}
 	}
 
 	button& stderr_button = find_widget<button>(&window, "open_stderr", false);
 	connect_signal_mouse_left_click(stderr_button, std::bind(&game_version::browse_directory_callback, this, log_path_));
 	stderr_button.set_active(!log_path_.empty() && filesystem::file_exists(log_path_));
 
-	connect_signal_mouse_left_click(find_widget<button>(&window, "run_migrator", false), std::bind(&game_version::run_migrator, this));
-
 	//
 	// Build info tab.
 	//
+	tabs.select_tab(2);
 
 	widget_data list_data;
 
@@ -179,6 +192,7 @@ void game_version::pre_show(window& window)
 	//
 	// Features tab.
 	//
+	tabs.select_tab(3);
 
 	listbox& opts_listbox
 			= find_widget<listbox>(&window, "opts_listbox", false);
@@ -201,33 +215,22 @@ void game_version::pre_show(window& window)
 	list_data.clear();
 
 	//
+	// Community tab
+	//
+	tabs.select_tab(4);
+
+	connect_signal_mouse_left_click(find_widget<button>(&window, "forums", false), std::bind(&desktop::open_object, "https://forums.wesnoth.org/"));
+	connect_signal_mouse_left_click(find_widget<button>(&window, "discord", false), std::bind(&desktop::open_object, "https://discord.gg/battleforwesnoth"));
+	connect_signal_mouse_left_click(find_widget<button>(&window, "irc", false), std::bind(&desktop::open_object, "https://web.libera.chat/#wesnoth"));
+	connect_signal_mouse_left_click(find_widget<button>(&window, "steam", false), std::bind(&desktop::open_object, "https://steamcommunity.com/app/599390/discussions/"));
+	connect_signal_mouse_left_click(find_widget<button>(&window, "reddit", false), std::bind(&desktop::open_object, "https://www.reddit.com/r/wesnoth/"));
+	connect_signal_mouse_left_click(find_widget<button>(&window, "donate", false), std::bind(&desktop::open_object, "https://www.spi-inc.org/projects/wesnoth/"));
+
+	//
 	// Set-up page stack and auxiliary controls last.
 	//
 
-	stacked_widget& pager
-			= find_widget<stacked_widget>(&window, "tabs_container", false);
-	pager.select_layer(0);
-
-	listbox& tab_bar
-			= find_widget<listbox>(&window, "tab_bar", false);
-
-	window.keyboard_capture(&tab_bar);
-
-	const unsigned tab_count = tab_bar.get_item_count();
-	VALIDATE(tab_count == pager.get_layer_count(), "Tab bar and container size mismatch");
-
-	connect_signal_notify_modified(tab_bar,
-		std::bind(&game_version::tab_switch_callback, this));
-}
-
-void game_version::tab_switch_callback()
-{
-	stacked_widget& pager
-			= find_widget<stacked_widget>(get_window(), "tabs_container", false);
-	listbox& tab_bar
-			= find_widget<listbox>(get_window(), "tab_bar", false);
-
-	pager.select_layer(std::max<int>(0, tab_bar.get_selected_row()));
+	tabs.select_tab(start_page_);
 }
 
 void game_version::browse_directory_callback(const std::string& path)
@@ -240,19 +243,42 @@ void game_version::run_migrator()
 	migrate_version_selection::execute();
 }
 
-void game_version::copy_to_clipboard_callback(const std::string& path)
+void game_version::copy_to_clipboard_callback(const std::string& path, const std::string btn_id)
 {
-	desktop::clipboard::copy_to_clipboard(path, false);
+	desktop::clipboard::copy_to_clipboard(path);
+
+	button& copy_w = find_widget<button>(get_window(), btn_id, false);
+	copy_w.set_success(true);
 }
 
 void game_version::report_copy_callback()
 {
-	desktop::clipboard::copy_to_clipboard(report_, false);
+	desktop::clipboard::copy_to_clipboard(report_);
+
+	button& copy_all = find_widget<button>(get_window(), "copy_all", false);
+	copy_all.set_success(true);
 }
 
 void game_version::generate_plain_text_report()
 {
 	report_ = game_config::full_build_report();
+}
+
+void game_version::show_credits_dialog() {
+	gui2::dialogs::end_credits::display();
+}
+
+void game_version::show_license() {
+	help::show_help("license");
+}
+
+void game_version::report_issue() {
+	if (!desktop::open_object_is_supported()) {
+		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
+		return;
+	} else {
+		desktop::open_object("https://bugs.wesnoth.org");
+	}
 }
 
 } // namespace dialogs

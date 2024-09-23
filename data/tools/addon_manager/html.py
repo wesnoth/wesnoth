@@ -18,8 +18,7 @@ from unit_tree.team_colorizer import colorize
 
 # HTML assets that need to be copied to the destination dir.
 HTML_RESOURCES = (
-    "style.css", "jquery.js", "tablesorter.js",
-    "asc.gif", "bg.gif", "desc.gif" # Used by style.css:
+    "style.css", "asc.gif", "bg.gif", "desc.gif" # Used by style.css:
 )
 
 WESMERE_CSS_VERSION = "1.2.0"
@@ -41,14 +40,32 @@ WESMERE_HEADER = '''\
     <title>Wesnoth %(server_name)s Add-ons List - The Battle for Wesnoth</title>
 
     <script src="%(css_prefix)s/wesmere/js/modernizr.js"></script>
-    <script src="jquery.js"></script>
-    <script src="tablesorter.js"></script>
     <script>
-    $(document).ready(function() {
-        $("#campaigns").tablesorter({
-            headers: { 1: { sorter: false }, 2: { sortInitialOrder: "asc" } },
-        });
-    });
+        const getCellValue = (tr, idx) => tr.children[idx].textContent;
+        const getCells = (a, b, asc, idx) => [ getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx) ];
+
+        function clickSort(idx, type, e) {
+            // perhaps reset header classes of the not clicked headers
+            if (e.classList.contains('headerSortDown')) {
+                asc = false;
+                e.classList.replace('headerSortDown', 'headerSortUp')
+            } else if (e.classList.contains('headerSortUp')) {
+                asc = true;
+                e.classList.replace('headerSortUp', 'headerSortDown')
+            } else {
+                asc = true;
+                e.classList.add('headerSortDown')
+            }
+            const tbody = document.getElementById('campaigns').querySelector('tbody');
+            Array.from(tbody.querySelectorAll('tr')).sort(comparer(idx, type, asc)).forEach(tr => tbody.appendChild(tr));
+        }
+        function comparer(idx, type, asc) {
+            if (type == 'string') {
+                return function(a, b) { const [ c1, c2 ] = getCells(a, b, asc, idx); return c1.toString().localeCompare(c2) }
+            } else { // if (type == 'number') {
+                return function(a, b) { const [ c1, c2 ] = getCells(a, b, asc, idx); return parseFloat(c1) - parseFloat(c2) }
+            }
+        }
     </script>
 </head>
 
@@ -238,16 +255,19 @@ def output(path, url, datadir, data):
 
     w('<table class="tablesorter" id="campaigns">\n<thead>\n<tr>')
     table_headers = [
-        ("type", "Type"),
-        ("icon", "Icon"),
-        ("name", "Addon"),
-        ("size", "Size"),
-        ("stats", "Traffic"),
-        ("date", "Date"),
-        ("locales", "Translations")
+        ("type", "Type", "'string'"),
+        ("icon", "Icon", ""),
+        ("name", "Addon", "'string'"),
+        ("size", "Size", "'number'"),
+        ("stats", "Traffic", "'number'"),
+        ("date", "Date", "'number'"),
+        ("locales", "Translations", "'string'")
     ]
-    for header_class, header_label in table_headers:
-        w('<th class="addon-%s">%s&nbsp;&nbsp;&nbsp;</th>' % (header_class, header_label))
+    for count, (header_class, header_label, sort_type) in enumerate(table_headers):
+        if sort_type:
+            w('<th onclick="clickSort(%d, %s, this)" class="addon-%s header">%s&nbsp;&nbsp;&nbsp;</th>' % (count, sort_type, header_class, header_label))
+        else:
+            w('<th class="addon-%s header">%s&nbsp;&nbsp;&nbsp;</th>' % (header_class, header_label))
     w('</tr>\n</thead>\n<tbody>')
 
     addons = data.get_all(tag="campaigns")[0]

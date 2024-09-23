@@ -20,7 +20,7 @@
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
 
@@ -150,13 +150,15 @@ inline std::string pretty_path(const std::string& path)
 
 inline config get_bookmarks_config()
 {
-	auto cfg = preferences::get_child("dir_bookmarks");
-	return cfg ? *cfg : config{};
+	const auto& cfg = prefs::get().dir_bookmarks();
+	return cfg.has_value() ? cfg.value() : config();
+
+//	return cfg ? *cfg : config{};
 }
 
 inline void commit_bookmarks_config(config& cfg)
 {
-	preferences::set_child("dir_bookmarks", cfg);
+	prefs::get().set_dir_bookmarks(cfg);
 }
 
 } // unnamed namespace
@@ -200,7 +202,6 @@ std::vector<path_info> game_paths(std::set<GAME_PATH_TYPES> paths)
 	static const std::string& game_bin_dir = pretty_path(filesystem::get_exe_dir());
 	static const std::string& game_data_dir = pretty_path(game_config::path);
 	static const std::string& game_user_data_dir = pretty_path(filesystem::get_user_data_dir());
-	static const std::string& game_user_pref_dir = pretty_path(filesystem::get_user_config_dir());
 	static const std::string& game_editor_map_dir = pretty_path(filesystem::get_legacy_editor_dir() + "/maps");
 
 	std::vector<path_info> res;
@@ -215,10 +216,6 @@ std::vector<path_info> game_paths(std::set<GAME_PATH_TYPES> paths)
 
 	if(paths.count(GAME_USER_DATA_DIR) > 0 && !have_path(res, game_user_data_dir)) {
 		res.push_back({{ N_("filesystem_path_game^User data"), GETTEXT_DOMAIN }, "", game_user_data_dir});
-	}
-
-	if(paths.count(GAME_USER_PREFS_DIR) > 0 && !have_path(res, game_user_pref_dir)) {
-		res.push_back({{ N_("filesystem_path_game^User preferences"), GETTEXT_DOMAIN }, "", game_user_pref_dir});
 	}
 
 	if(paths.count(GAME_EDITOR_MAP_DIR) > 0 && !have_path(res, game_editor_map_dir)) {

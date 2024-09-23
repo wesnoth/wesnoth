@@ -62,13 +62,8 @@ Id на мисията от избраната кампания. По подра
 Прескача екрани с [story] и диалог в края на събитие \fBstart\fP.
 .TP 
 \fB\-\-clock\fP
-Adds the option to show a clock for testing the drawing timer.
-.TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-Старо, използвайте \fB\-\-userdata\-dir\fP.
-.TP 
-\fB\-\-config\-path\fP
-Старо, използвайте \fB\-\-userdata\-path\fP.
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 презаписва върху зареденото ядро с посоченото.
@@ -90,7 +85,7 @@ Adds the option to show a clock for testing the drawing timer.
 \fB\-\-strict\-lua\fP
 disallow deprecated Lua API calls
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 diffs the two WML files; does not preprocess them first (to do that, run
 them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
 to the file indicated by \fI\-\-output\fP.
@@ -117,8 +112,7 @@ to the file indicated by \fI\-\-output\fP.
 прозорец там за зареждане на карта.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ lang\fP
-използва езикът \fIlang\fP (символ) през тази сесия.  Например: \fB\-\-language
-ang_GB@latin\fP
+използва езикът \fIlang\fP (символ) през тази сесия.  Например: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 sets the severity level of the log domains.  \fBall\fP can be used to match any
@@ -128,10 +122,10 @@ log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebu
 \fB\-\-log\-precise\fP
 shows the timestamps in log output with more precision.
 .TP 
-\fB\-\-log\-strict\fP
-sets the strict level of the logger. Any messages sent to log domains of
-this level or more severe will cause the unit test to fail regardless of the
-victory result. Only relevant when used with \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 lists defined log domains (only the ones containing \fIfilter\fP if used) and
@@ -145,6 +139,10 @@ in the logs directory under the userdata folder.
 \fB\-\-log\-to\-file\fP
 log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 For Windows, when used with \-\-no\-log\-to\-file, results in output being
@@ -206,7 +204,7 @@ written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 \fB\-\-script\fP, but Lua file should return a function which will be run as a
 coroutine and periodically woken up with updates.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 applies a DiffWML patch to a WML file; does not preprocess either of the
 files.  Outputs the patched WML to standard output or to the file indicated
 by \fI\-\-output\fP.
@@ -216,8 +214,7 @@ preprocesses a specified file/folder. For each file(s) a plain .cfg file and
 a processed .cfg file will be written in specified target directory. If a
 folder is specified, it will be preprocessed recursively based on the known
 preprocessor rules. The common macros from the "data/core/macros" directory
-will be preprocessed before the specified resources.  Example: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
+will be preprocessed before the specified resources.  Example: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
 preprocessor visit:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
@@ -287,20 +284,8 @@ makes the \fBpackage\fP package available to lua scripts, so that they can load
 arbitrary packages. Do not do this with untrusted scripts! This action gives
 lua the same permissions as the wesnoth executable.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ path\fP
-поставя WML схемата за употреба с \fB\-V,\-\-validate\fP.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ name\fP
-поставя директорията за настройки към \fIname\fP под $HOME или в "My
-Documents\eMy Games" за windows.  Също можете да посочите абсолютен път за
-директорията извън посочените. На Windows е възможно да посочите директория
-относителна към процеса, като използвате пътища стартиращи с ".\e" or
-"..\e".  Под X11 стандартът за това е $XDG_CONFIG_HOME или
-$HOME/.config/wesnoth, а на други системи е пътят към данните на
-потребителя.
-.TP 
-\fB\-\-userconfig\-path\fP
-извежда името на директорията с информацията на играта и излиза.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 поставя директорията за настройки към \fIname\fP под $HOME или в "My
@@ -325,7 +310,7 @@ Documents\eMy Games" за windows.  Също можете да посочите 
 \fB\-\-validate\-core\fP
 валидира WML ядрото, докато играете.
 .TP 
-\fB\-\-validate\-schema \ path\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 валидира файл като WML схема.
 .TP 
 \fB\-\-validcache\fP

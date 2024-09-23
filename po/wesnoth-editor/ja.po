@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 12:06-0500\n"
+"POT-Creation-Date: 2024-09-17 21:18-0500\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
 "Last-Translator: RatArmy, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -240,17 +240,17 @@ msgid "units"
 msgstr "ユニット"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:463
+#: data/themes/editor.cfg:479
 msgid "Time Schedule Menu"
 msgstr "タイムスケジュールメニュー"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:474
+#: data/themes/editor.cfg:490
 msgid "Playlist"
 msgstr "プレイリスト"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:480
+#: data/themes/editor.cfg:496
 msgid "Assign Time Schedule"
 msgstr "タイムスケジュールを指定する"
 
@@ -274,21 +274,21 @@ msgstr "レベル: "
 msgid "Cost: "
 msgstr "コスト: "
 
-#: src/editor/controller/editor_controller.cpp:183
+#: src/editor/controller/editor_controller.cpp:186
 msgid "Fatal error"
 msgstr "致命的なエラー"
 
-#: src/editor/controller/editor_controller.cpp:213
+#: src/editor/controller/editor_controller.cpp:216
 msgid "Do you really want to quit?"
 msgstr "本当に終了してもよろしいですか？"
 
-#: src/editor/controller/editor_controller.cpp:215
+#: src/editor/controller/editor_controller.cpp:218
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr "本当に終了しますか？このマップに加えた変更を失われます。"
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:220
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -296,127 +296,164 @@ msgstr ""
 "本当に終了してもよろしいですか？ マップは変更されていますが、最後に保存したと"
 "ころからの変更は全て失われます。"
 
-#: src/editor/controller/editor_controller.cpp:234
+#: src/editor/controller/editor_controller.cpp:237
 msgid "No editor time-of-day found."
 msgstr "エディタの時刻設定が見つかりません。"
 
-#: src/editor/controller/editor_controller.cpp:1262
+#: src/editor/controller/editor_controller.cpp:880
+#, fuzzy
+#| msgid "Add-on"
+msgid "Add-on Files"
+msgstr "アドオン"
+
+#: src/editor/controller/editor_controller.cpp:893
+#, fuzzy
+#| msgid "Clipboard support not found, contact your packager"
+msgid "Opening files is not supported, contact your packager"
+msgstr ""
+"クリップボードサポートが無効となっています。パッケージャーに連絡してくださ"
+"い。"
+
+#: src/editor/controller/editor_controller.cpp:1313
 msgid "Change Unit ID"
 msgstr "ユニットIDを変更"
 
-#: src/editor/controller/editor_controller.cpp:1263
+#: src/editor/controller/editor_controller.cpp:1314
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1279
+#: src/editor/controller/editor_controller.cpp:1330
 msgid "Rename Unit"
 msgstr "ユニット名を変更"
 
-#: src/editor/controller/editor_controller.cpp:1280
+#: src/editor/controller/editor_controller.cpp:1331
 msgid "Name:"
 msgstr "名前:"
 
-#: src/editor/map/context_manager.cpp:215
+#: src/editor/editor_display.cpp:170
+msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
+msgstr ""
+
+#: src/editor/editor_display.cpp:172
+msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:220
 msgid "Load Map"
 msgstr "マップ読み込み"
 
-#: src/editor/map/context_manager.cpp:311 src/editor/map/map_context.cpp:1110
+#: src/editor/map/context_manager.cpp:316 src/editor/map/map_context.cpp:1127
 msgid "New Map"
 msgstr "新規マップ"
 
-#: src/editor/map/context_manager.cpp:324 src/editor/map/map_context.cpp:1110
+#: src/editor/map/context_manager.cpp:329 src/editor/map/map_context.cpp:1127
 msgid "New Scenario"
 msgstr "新しいシナリオ"
 
-#: src/editor/map/context_manager.cpp:380
+#: src/editor/map/context_manager.cpp:385
 msgid "No Recent Files"
 msgstr "最近開いたファイルはありません"
 
-#: src/editor/map/context_manager.cpp:418
+#: src/editor/map/context_manager.cpp:423
 msgid "Unnamed Area"
 msgstr "無名の領域"
 
-#: src/editor/map/context_manager.cpp:449
+#: src/editor/map/context_manager.cpp:454
 msgid "New Side"
 msgstr "新しい陣営"
 
-#: src/editor/map/context_manager.cpp:505
+#: src/editor/map/context_manager.cpp:510
 msgid "Apply Mask"
 msgstr "マスクを適用"
 
-#: src/editor/map/context_manager.cpp:514
+#: src/editor/map/context_manager.cpp:519
 msgid "Error loading mask"
 msgstr "マスクの読み込みに失敗"
 
-#: src/editor/map/context_manager.cpp:534
+#: src/editor/map/context_manager.cpp:539
 msgid "Identifier:"
 msgstr "ID:"
 
-#: src/editor/map/context_manager.cpp:534
+#: src/editor/map/context_manager.cpp:539
 msgid "Rename Area"
 msgstr "領域名を変更"
 
-#: src/editor/map/context_manager.cpp:548
+#: src/editor/map/context_manager.cpp:553
 msgid "Choose Target Map"
 msgstr "ターゲットマップを選択"
 
-#: src/editor/map/context_manager.cpp:557
-#: src/editor/map/context_manager.cpp:953
+#: src/editor/map/context_manager.cpp:562
+#: src/editor/map/context_manager.cpp:988
 msgid "Error loading map"
 msgstr "マップの読み込みに失敗"
 
-#: src/editor/map/context_manager.cpp:683
+#: src/editor/map/context_manager.cpp:694
 msgid "Save Map As"
 msgstr "名前を付けてマップを保存"
 
-#: src/editor/map/context_manager.cpp:694
-#: src/editor/map/context_manager.cpp:896
+#: src/editor/map/context_manager.cpp:711
+#: src/editor/map/context_manager.cpp:760 src/editor/map/map_context.cpp:269
+#: src/editor/palette/location_palette.cpp:264
+msgid "Error"
+msgstr "エラー"
+
+#: src/editor/map/context_manager.cpp:712
+#: src/editor/map/context_manager.cpp:761
+#, fuzzy
+#| msgid "Do you really want to quit?"
+msgid "Do you really want to save $type1 in $type2 folder?"
+msgstr "本当に終了してもよろしいですか？"
+
+#: src/editor/map/context_manager.cpp:720
+#: src/editor/map/context_manager.cpp:929
 msgid "This map is already open."
 msgstr "このマップは既に開かれています。"
 
-#: src/editor/map/context_manager.cpp:715
+#: src/editor/map/context_manager.cpp:743
 msgid "Save Scenario As"
 msgstr "名前を付けてシナリオを保存"
 
-#: src/editor/map/context_manager.cpp:727
+#: src/editor/map/context_manager.cpp:769
 msgid "This scenario is already open."
 msgstr "このシナリオは既に開かれています。"
 
-#: src/editor/map/context_manager.cpp:761
+#: src/editor/map/context_manager.cpp:803
 msgid "No random map generators found."
 msgstr "ランダムマップジェネレータがありません。"
 
-#: src/editor/map/context_manager.cpp:774
-#: src/editor/map/context_manager.cpp:779
+#: src/editor/map/context_manager.cpp:816
+#: src/editor/map/context_manager.cpp:821
 msgid "Map creation failed."
 msgstr "マップの作成に失敗しました。"
 
-#: src/editor/map/context_manager.cpp:794
+#: src/editor/map/context_manager.cpp:836
 msgid "Unsaved Changes"
 msgstr "保存されていない変更点"
 
-#: src/editor/map/context_manager.cpp:795
+#: src/editor/map/context_manager.cpp:837
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "本当にこれまでにマップに加えた変更を破棄しますか？"
 
-#: src/editor/map/context_manager.cpp:857
+#: src/editor/map/context_manager.cpp:890
 msgid "Scenario saved."
 msgstr "シナリオを保存しました。"
 
-#: src/editor/map/context_manager.cpp:872
-msgid "Map saved."
+#: src/editor/map/context_manager.cpp:905
+#, fuzzy
+#| msgid "Map saved."
+msgid "Map saved"
 msgstr "マップを保存しました。"
 
-#: src/editor/map/context_manager.cpp:945
+#: src/editor/map/context_manager.cpp:980
 msgid "Loaded embedded map data"
 msgstr "読み込まれた埋め込みマップデータ"
 
-#: src/editor/map/context_manager.cpp:946
-#: src/editor/map/context_manager.cpp:949
+#: src/editor/map/context_manager.cpp:981
+#: src/editor/map/context_manager.cpp:984
 msgid "Map loaded from scenario"
 msgstr "シナリオから読み込まれたマップ"
 
-#: src/editor/map/context_manager.cpp:949
+#: src/editor/map/context_manager.cpp:984
 msgid "Loaded referenced map file:"
 msgstr "読み込まれた参照マップファイル："
 
@@ -429,19 +466,21 @@ msgstr "プレイヤー $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "ターゲットマップのサイズが現在のマップのサイズと異なります"
 
-#: src/editor/map/map_context.cpp:181
+#: src/editor/map/map_context.cpp:182
 msgid "File not found"
 msgstr "ファイルが見つかりません"
 
-#: src/editor/map/map_context.cpp:188
+#: src/editor/map/map_context.cpp:189
 msgid "Empty file"
 msgstr "ファイルが空です"
 
-#: src/editor/map/map_context.cpp:194
-msgid "File does not have .map or .cfg extension"
+#: src/editor/map/map_context.cpp:198
+#, fuzzy
+#| msgid "File does not have .map or .cfg extension"
+msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "ファイルの拡張子が .map か .cfg でありません"
 
-#: src/editor/map/map_context.cpp:240
+#: src/editor/map/map_context.cpp:245
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -449,21 +488,16 @@ msgstr ""
 "マップファイルはシナリオのようですが、map_data 値が存在するファイルを指し示し"
 "ていません"
 
-#: src/editor/map/map_context.cpp:259
+#: src/editor/map/map_context.cpp:264
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
 msgstr ""
 "インライン Lua が存在することを示す文字列「<<」が見つかりました -  中止します"
 
-#: src/editor/map/map_context.cpp:264
-#: src/editor/palette/location_palette.cpp:264
-msgid "Error"
-msgstr "エラー"
-
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:269
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr "シナリオの読み込みに失敗したため、マップのみの読み込みを試みます。"
 
-#: src/editor/map/map_context.cpp:271
+#: src/editor/map/map_context.cpp:276
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
@@ -471,20 +505,31 @@ msgstr ""
 "このマップファイルはシナリオのようですが、map_file の値が存在するファイルを指"
 "示していません"
 
-#: src/editor/map/map_context.cpp:286
+#: src/editor/map/map_context.cpp:291
 msgid "Unable to parse file to find map data"
 msgstr "マップデータを探すためのファイルのパースができません"
 
-#: src/editor/map/map_context.cpp:804 src/editor/map/map_context.cpp:843
-#: src/editor/map/map_context.cpp:884
+#: src/editor/map/map_context.cpp:821 src/editor/map/map_context.cpp:861
+#, fuzzy
+#| msgid "Could not save the scenario: $msg"
+msgid "Could not save time schedule: $msg"
+msgstr "シナリオを保存できませんでした: $msg"
+
+#: src/editor/map/map_context.cpp:855
+#, fuzzy
+#| msgid "Time Schedule Menu"
+msgid "Time schedule saved."
+msgstr "タイムスケジュールメニュー"
+
+#: src/editor/map/map_context.cpp:901
 msgid "Could not save the scenario: $msg"
 msgstr "シナリオを保存できませんでした: $msg"
 
-#: src/editor/map/map_context.cpp:915
+#: src/editor/map/map_context.cpp:932
 msgid "Could not save into scenario"
 msgstr "シナリオに保存できませんでした。"
 
-#: src/editor/map/map_context.cpp:925
+#: src/editor/map/map_context.cpp:942
 msgid "Could not save the map: $msg"
 msgstr "マップを保存できませんでした: $msg"
 
@@ -492,13 +537,25 @@ msgstr "マップを保存できませんでした: $msg"
 msgid "(Unknown Group)"
 msgstr "（未知のグループ）"
 
-#: src/editor/palette/editor_palettes.cpp:312
+#: src/editor/palette/editor_palettes.cpp:309
 msgid "(non-core)"
 msgstr "（コア以外）"
 
-#: src/editor/palette/editor_palettes.cpp:313
+#: src/editor/palette/editor_palettes.cpp:310
 msgid "Will not work in game without extra care."
 msgstr "更に手を入れなければゲームで動作しません。"
+
+#: src/editor/palette/item_palette.cpp:32
+#, fuzzy
+#| msgid "Right-click: "
+msgid " | Right-click to remove"
+msgstr "右クリック："
+
+#: src/editor/palette/item_palette.cpp:32
+#, fuzzy
+#| msgid "Left-click: "
+msgid "Left-click: Place item "
+msgstr "左クリック："
 
 #: src/editor/palette/location_palette.cpp:248
 msgid "Go To"
@@ -547,16 +604,28 @@ msgstr "Cmd＋クリック：地形をコピー"
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl＋クリック：地形をコピー"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:94
+#: src/gui/dialogs/editor/custom_tod.cpp:96
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 "クリップボードサポートが無効となっています。パッケージャーに連絡してくださ"
 "い。"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:162
+#: src/gui/dialogs/editor/custom_tod.cpp:176
 msgid "Choose File"
 msgstr "ファイルを選択"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:163
+#: src/gui/dialogs/editor/custom_tod.cpp:177
 msgid "Select"
 msgstr "選択"
+
+#: src/gui/dialogs/editor/custom_tod.cpp:184
+msgid ""
+"This file is outside Wesnoth's data dirs. Do you wish to copy it into your "
+"add-on?"
+msgstr ""
+
+#: src/gui/dialogs/editor/custom_tod.cpp:188
+#: src/gui/dialogs/editor/custom_tod.cpp:195
+#: src/gui/dialogs/editor/custom_tod.cpp:202
+msgid "Confirm"
+msgstr ""

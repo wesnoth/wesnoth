@@ -31,7 +31,7 @@
 #include "sdl/rect.hpp"
 #include "wml_exception.hpp"
 #include <functional>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -343,7 +343,7 @@ bool listbox::update_content_size()
 
 void listbox::place(const point& origin, const point& size)
 {
-	std::optional<unsigned> vertical_scrollbar_position, horizontal_scrollbar_position;
+	utils::optional<unsigned> vertical_scrollbar_position, horizontal_scrollbar_position;
 
 	// Check if this is the first time placing the list box
 	if(get_origin() != point {-1, -1}) {
@@ -755,6 +755,7 @@ builder_listbox::builder_listbox(const config& cfg)
 	, list_data()
 	, has_minimum_(cfg["has_minimum"].to_bool(true))
 	, has_maximum_(cfg["has_maximum"].to_bool(true))
+	, allow_selection_(cfg["allow_selection"].to_bool(true))
 {
 	if(auto h = cfg.optional_child("header")) {
 		header = std::make_shared<builder_grid>(*h);
@@ -792,7 +793,7 @@ std::unique_ptr<widget> builder_listbox::build() const
 
 	widget->init_grid(*conf->grid);
 
-	auto generator = generator_base::build(has_minimum_, has_maximum_, generator_base::vertical_list, true);
+	auto generator = generator_base::build(has_minimum_, has_maximum_, generator_base::vertical_list, allow_selection_);
 	widget->finalize(std::move(generator), header, footer, list_data);
 
 	return widget;

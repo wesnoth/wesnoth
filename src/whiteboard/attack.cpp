@@ -201,9 +201,9 @@ void attack::draw_hex(const map_location& hex)
 		return;
 	}
 
-	//@todo: replace this by either the use of transparency + LAYER_ATTACK_INDICATOR,
+	//@todo: replace this by either the use of transparency + drawing_layer::attack_indicator,
 	//or a dedicated layer
-	const display::drawing_layer layer = display::LAYER_FOOTSTEPS;
+	const drawing_layer layer = drawing_layer::footsteps;
 
 	//calculate direction (valid for both hexes)
 	const std::string direction_text = map_location::write_direction(get_dest_hex().get_relative_dir(target_hex_));

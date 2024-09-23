@@ -32,7 +32,7 @@
 #include "map/map.hpp"
 #include "mouse_handler_base.hpp"
 #include "play_controller.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "random.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
@@ -46,10 +46,11 @@
 #include "units/udisplay.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
+#include "utils/optional_fwd.hpp"
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -131,7 +132,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	// Get the weapon characteristics as appropriate.
 	auto ctx = weapon->specials_context(up, oppp, u_loc, opp_loc, attacking, opp_weapon);
-	std::optional<decltype(ctx)> opp_ctx;
+	utils::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
@@ -148,7 +149,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	{
 		const int distance = distance_between(u_loc, opp_loc);
 		const bool out_of_range = distance > weapon->max_range() || distance < weapon->min_range();
-		disable = weapon->has_special("disable") || out_of_range;
+		disable = weapon->has_special_or_ability("disable") || out_of_range;
 	}
 
 	// Handle plague.
@@ -187,7 +188,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	// Time of day bonus.
 	damage_multiplier += combat_modifier(
-			resources::gameboard->units(), resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
+			resources::gameboard->units(), resources::gameboard->map(), u_loc, weapon->alignment(), u.is_fearless());
 
 	// Leadership bonus.
 	int leader_bonus = under_leadership(u, u_loc, weapon, opp_weapon);
@@ -281,7 +282,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 
 	// Get the weapon characteristics as appropriate.
 	auto ctx = weapon->specials_context(*u_type, map_location::null_location(), attacking);
-	std::optional<decltype(ctx)> opp_ctx;
+	utils::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
 		opp_ctx.emplace(opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking));
@@ -316,7 +317,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	int base_damage = weapon->modified_damage();
 	int damage_multiplier = 100;
 	damage_multiplier
-			+= generic_combat_modifier(lawful_bonus, u_type->alignment(), u_type->musthave_status("fearless"), 0);
+			+= generic_combat_modifier(lawful_bonus, weapon->alignment(), u_type->musthave_status("fearless"), 0);
 	damage_multiplier *= opp_type->resistance_against(weapon->type(), !attacking);
 
 	damage = round_damage(base_damage, damage_multiplier, 10000);
@@ -498,9 +499,14 @@ bool battle_context::better_combat(const combatant& us_a,
 	double poison_b_us = us_b.poisoned > 0 ? (us_b.poisoned - us_b.hp_dist[0]) * game_config::poison_amount : 0;
 	double poison_b_them = them_b.poisoned > 0 ? (them_b.poisoned - them_b.hp_dist[0]) * game_config::poison_amount : 0;
 
+	double attack_weight_a = us_a.u_.weapon->attack_weight();
+	double attack_weight_b = us_b.u_.weapon->attack_weight();
+	double damage_a = (them_a.u_.hp - them_a.average_hp()) * attack_weight_a;
+	double damage_b = (them_b.u_.hp - them_b.average_hp()) * attack_weight_b;
+
 	// Compare: damage to them - damage to us (average_hp replaces -damage)
-	a = (us_a.average_hp() - poison_a_us) * harm_weight - (them_a.average_hp() - poison_a_them);
-	b = (us_b.average_hp() - poison_b_us) * harm_weight - (them_b.average_hp() - poison_b_them);
+	a = (us_a.average_hp() - poison_a_us) * harm_weight + damage_a + poison_a_them;
+	b = (us_b.average_hp() - poison_b_us) * harm_weight + damage_b + poison_b_them;
 
 	if(a - b < -0.01) {
 		return false;
@@ -511,7 +517,7 @@ bool battle_context::better_combat(const combatant& us_a,
 	}
 
 	// All else equal: go for most damage.
-	return them_a.average_hp() < them_b.average_hp();
+	return damage_a >= damage_b;
 }
 
 battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr attacker,
@@ -709,6 +715,7 @@ private:
 
 	bool perform_hit(bool, statistics_attack_context&);
 	void fire_event(const std::string& n);
+	void fire_event_impl(const std::string& n, bool reversed);
 	void refresh_bc();
 
 	/** Structure holding unit info used in the attack action. */
@@ -845,15 +852,20 @@ attack::attack(const map_location& attacker,
 
 void attack::fire_event(const std::string& n)
 {
+	fire_event_impl(n, false);
+}
+
+void attack::fire_event_impl(const std::string& n, bool reverse)
+{
 	LOG_NG << "attack: firing '" << n << "' event";
 
 	// prepare the event data for weapon filtering
 	config ev_data;
-	config& a_weapon_cfg = ev_data.add_child("first");
-	config& d_weapon_cfg = ev_data.add_child("second");
+	config& a_weapon_cfg = ev_data.add_child(reverse ? "second" : "first");
+	config& d_weapon_cfg = ev_data.add_child(reverse ? "first" : "second");
 
 	// Need these to ensure weapon filters work correctly
-	std::optional<attack_type::specials_context_t> a_ctx, d_ctx;
+	utils::optional<attack_type::specials_context_t> a_ctx, d_ctx;
 
 	if(a_stats_->weapon != nullptr && a_.valid()) {
 		if(d_stats_->weapon != nullptr && d_.valid()) {
@@ -887,9 +899,9 @@ void attack::fire_event(const std::string& n)
 		return;
 	}
 
-	// damage_inflicted is set in these two events.
+	// damage_inflicted is set in these events.
 	// TODO: should we set this value from unit_info::damage, or continue using the WML variable?
-	if(n == "attacker_hits" || n == "defender_hits") {
+	if(n == "attacker_hits" || n == "defender_hits" || n == "unit_hits") {
 		ev_data["damage_inflicted"] = resources::gamedata->get_variable("damage_inflicted");
 	}
 
@@ -897,8 +909,8 @@ void attack::fire_event(const std::string& n)
 
 	bool wml_aborted;
 	std::tie(std::ignore, wml_aborted) = resources::game_events->pump().fire(n,
-		game_events::entity_location(a_.loc_, a_.id_),
-		game_events::entity_location(d_.loc_, d_.id_), ev_data);
+		game_events::entity_location(reverse ? d_.loc_ : a_.loc_, reverse ? d_.id_ : a_.id_),
+		game_events::entity_location(reverse ? a_.loc_ : d_.loc_, reverse ? a_.id_ : d_.id_), ev_data);
 
 	// The event could have killed either the attacker or
 	// defender, so we have to make sure they still exist.
@@ -1125,6 +1137,7 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	if(hits) {
 		try {
 			fire_event(attacker_turn ? "attacker_hits" : "defender_hits");
+			fire_event_impl("unit_hits", !attacker_turn);
 		} catch(const attack_end_exception&) {
 			refresh_bc();
 			return false;
@@ -1132,6 +1145,7 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	} else {
 		try {
 			fire_event(attacker_turn ? "attacker_misses" : "defender_misses");
+			fire_event_impl("unit_misses", !attacker_turn);
 		} catch(const attack_end_exception&) {
 			refresh_bc();
 			return false;
@@ -1311,7 +1325,7 @@ void attack::unit_killed(unit_info& attacker,
 			game_events::entity_location reanim_loc(defender.loc_, newunit->underlying_id());
 			resources::game_events->pump().fire("unit_placed", reanim_loc);
 
-			preferences::encountered_units().insert(newunit->type_id());
+			prefs::get().encountered_units().insert(newunit->type_id());
 
 			if(update_display_) {
 				display::get_singleton()->invalidate(death_loc);
@@ -1450,7 +1464,7 @@ void attack::perform()
 		}
 	}
 
-	// Set by attacker_hits and defender_hits events.
+	// Set by attacker_hits and defender_hits and unit_hits events.
 	resources::gamedata->clear_variable("damage_inflicted");
 
 	if(update_def_fog_) {

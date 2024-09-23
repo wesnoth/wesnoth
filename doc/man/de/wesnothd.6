@@ -26,8 +26,7 @@ wesnothd \- »Battle for \fBWesnoth\fP«\-Mehrspielernetzwerkdienst
 .
 .SH ZUSAMMENFASSUNG
 .
-\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIPfad\fP\|] [\|\fB\-p\fP \fIPort\fP\|] [\|\fB\-t\fP
-\fINummer\fP\|] [\|\fB\-T\fP \fINummer\fP\|]
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
@@ -60,14 +59,6 @@ zu verwenden. Verfügbare \fIStufen\fP: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP
 \fB\-p\ \fP\fIPort\-Nummer\fP\fB,\ \-\-port\fP\fI\ Port\-Nummer\fP
 Bindet den Server an den angegebenen Port. Wenn kein Port angegeben ist,
 wird Port \fB15000\fP genommen.
-.TP 
-\fB\-t\ \fP\fINummer\fP\fB,\ \-\-threads\fP\fI\ Nummer\fP
-Legt die maximale Anzahl an "für Netzwerk\-E/A\-reservierte Arbeiterthreads"
-fest. (Standard: \fB5\fP,\ Maximum:\ \fB30\fP)
-.TP 
-\fB\-T,\ \-\-max\-threads\fP\fI\ Nummer\fP
-Legt die maximal zu erzeugende Anzahl an Arbeiterthreads fest. Bei einem
-Wert von \fB0\fP gibt es keine Beschränkung. (Standard: \fB0\fP)
 .TP 
 \fB\-V, \-\-version\fP
 Zeigt die Versionsnummer an und beendet das Programm.
@@ -102,10 +93,6 @@ Kompletter oder relativer Pfad zu einer (gzip\-komprimierten) Datei, die der
 Server lesen und schreiben kann. Banne werden in diese Datei gespeichert und
 beim Start vom Server eingelesen.
 .TP 
-\fBcompress_stored_rooms\fP
-Legt fest, ob die Datei für die Räume in komprimierter Form gelesen und
-geschrieben werden soll. Die Voreinstellung ist \fByes\fP.
-.TP 
 \fBconnections_allowed\fP
 Die Anzahl zulässiger Verbindungen von der gleichen IP\-Adresse. \fB0\fP heißt
 unendlich. (Standard: \fB5\fP)
@@ -115,16 +102,21 @@ Legt fest, ob sich nur Spieler einloggen dürfen, welche beim \fBuser_handler\fP
 registriert sind. (Standard: false)
 .TP 
 \fBdisallow_names\fP
-Namen/Spitznamen die der Server nicht akzeptiert. \fB*\fP und \fB?\fP sind als
-Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte
-(wenn sonst nichts angegeben wurde) sind:
-\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+\fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
 Der Pfad zur FIFO\-Datei, in die Befehle für den Server geschrieben werden
 können (das gleiche wie mit /query ... in Wesnoth selbst). Falls nicht
 angegeben, wird die einkompilierte Voreinstellung verwendet (Standard:
 \fB/var/run/wesnothd/socket\fP).
+.TP 
+\fBid\fP
+Die ID des Servers wenn die Datenbank\-Funktionalität
+Spielinformationsspeicherung genutzt wird. Ist allgemein die
+"major.minor"\-Versionsnummer akzeptierter Clients, z. B. "1.16" oder "1.17".
 .TP 
 \fBmax_messages\fP
 Die Anzahl der erlaubten Nachrichten in \fBmessages_time_period\fP. (Standard:
@@ -136,13 +128,6 @@ wird. (Standard: \fB10\fP)
 .TP 
 \fBmotd\fP
 Die "Nachricht des Tages".
-.TP 
-\fBnew_room_policy\fP
-Legt fest, wer neue Räume auf dem Server erstellen kann. Verwendbare Werte
-sind \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP und \fBnobody\fP und erteilen die
-Berechtigung entsprechend an jeden, registrierte Benutzer, Administratoren
-beziehungsweise deaktiviert die Erstellung neuer Räume. Der voreingestellte
-Wert ist \fBeveryone\fP (jeder).
 .TP 
 \fBpasswd\fP
 Das Passwort, um auf dem Server Administratorrechte zu erhalten (über
@@ -157,12 +142,6 @@ verwendet, was für den Ordner steht, in dem wesnothd gestartet wurde.
 Der Befehl, den der Server verwendet, um einen neuen Server\-Prozess über den
 \fBrestart\fP\-Befehl zu starten. (Kann nur über die FIFO angefordert
 werden. Siehe die \fBallow_remote_shutdown\fP\-Einstellung.)
-.TP 
-\fBroom_save_file\fP
-Pfad zu einer Datei, in die die Rauminformationen gespeichert werden
-sollen. Die Datei wird beim Starten des Servers gelesen und später
-beschrieben. Falls der Wert leer oder nicht gesetzt ist, werden Räume weder
-geladen noch gespeichert.
 .TP 
 \fBsave_replays\fP
 Legt fest, ob vom Server automatisch Wiederholungen gespeichert werden
@@ -179,8 +158,7 @@ vollständige TLS\-Zertifikatskette im .pem\-Format
 privater Schlüssel für TLS im .pem\-Format
 .TP 
 \fBtls_dh\fP
-TLS\-DH\-Parameter als .pem\-Datei. Erstelle mit \fBopenssl dhparam \-out
-Dateiname.pem 4096\fP
+TLS\-DH\-Parameter als .pem\-Datei. Erstelle mit \fBopenssl dhparam \-out Dateiname.pem 4096\fP
 .TP 
 \fBversions_accepted\fP
 Eine durch Komma getrennte Liste der Programmversionen, die der Server
@@ -188,11 +166,6 @@ zulässt. Platzhalter \fB*\fP und \fB?\fP sind erlaubt. (Standard: die aktuell
 installierte Wesnoth\-Version)
 .br
 Beispiel: \fBversions_accepted="*"\fP akzeptiert alle Versionen.
-.TP 
-\fBid\fP
-Die ID des Servers wenn die Datenbank\-Funktionalität
-Spielinformationsspeicherung genutzt wird. Ist allgemein die
-"major.minor"\-Versionsnummer akzeptierter Clients, z. B. "1.16" oder "1.17".
 .
 .SS "Globale Tags:"
 .
@@ -271,14 +244,18 @@ Der Name der Tabelle, in der wesnothd Informationen über Spiele speichert.
 Der Name der Tabelle, in der wesnothd Informationen über die Spieler eines
 Spiels speichert.
 .TP 
-\fBdb_game_modification_info_table\fP
-Der Name der Tabelle, in der wesnothd Informationen über die in einem Spiel
-verwendeten Modifikationen speichert.
+\fBdb_game_content_info_table\fP
+The name of the table in which wesnothd will save its own data about game
+content (scenario/era/modifications) used in a game.
 .TP 
 \fBdb_user_group_table\fP
 Der Name der Tabelle, in der das phpbb\-Forum die Gruppendaten ablegt. Dies
 ist höchstwahrscheinlich <table\-prefix>_user_group
 (z. B. phpbb3_user_group).
+.TP 
+\fBdb_tournament_query\fP
+The SQL query to find tournaments to announce on login. Should return
+tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
 .TP 
 \fBdb_connection_history_table\fP
 Der Name der Tabelle die die Login\-/Logout\-Zeiten speichert und Zuordnungen

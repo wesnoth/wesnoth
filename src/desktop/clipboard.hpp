@@ -27,27 +27,15 @@ namespace clipboard {
  * Copies text to the clipboard.
  *
  * @param text         The text to copy.
- * @param mouse        Is the selection done by the mouse? On UNIX systems there
- *                     are multiple clipboards and the mouse selection uses a
- *                     different clipboard. Ignored on other systems.
  */
-void copy_to_clipboard(const std::string& text, const bool mouse);
+void copy_to_clipboard(const std::string& text);
 
 /**
  * Copies text from the clipboard.
  *
- * @param mouse        Is the pasting done by the mouse?
- *
  * @returns            String on clipbaord.
  */
-std::string copy_from_clipboard(const bool mouse);
-
-void handle_system_event(const SDL_Event& ev);
-
-/**
- * Whether wesnoth was compiled with support for a clipboard.
- */
-bool available();
+std::string copy_from_clipboard();
 
 } // end namespace clipboard
 

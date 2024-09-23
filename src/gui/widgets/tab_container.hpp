@@ -50,8 +50,24 @@ public:
 
 	void select_tab(unsigned index);
 
-	unsigned get_tab_count() {
+	unsigned get_active_tab_index() {
+		return get_internal_list().get_selected_row();
+	}
+
+	unsigned get_tab_count() const {
 		return builders_.size();
+	}
+
+	grid* get_tab_grid(unsigned i)
+	{
+		assert(generator_);
+		return &generator_->item(i);
+	}
+
+	const grid* get_tab_grid(unsigned i) const
+	{
+		assert(generator_);
+		return &generator_->item(i);
 	}
 private:
 	/**
@@ -72,8 +88,20 @@ private:
 	 */
 	state_t state_;
 
-	builder_grid_map builders_;
+	std::vector<std::shared_ptr<builder_grid>> builders_;
 	std::vector<widget_data> list_items_;
+
+	/**
+	 * Finishes the building initialization of the widget.
+	 *
+	 * @param generator           Generator for the list
+	 */
+	void finalize(std::unique_ptr<generator_base> generator);
+
+	/**
+	 * Contains a pointer to the generator.
+	 */
+	generator_base* generator_;
 
 	/** Get the listbox inside which the tabs are shown */
 	listbox& get_internal_list();
@@ -82,16 +110,7 @@ private:
 
 	void change_selection();
 
-	void finalize_setup();
-
-	void set_items(std::vector<widget_data> list_items)
-	{
-		list_items_ = list_items;
-	}
-
-	void set_builders(builder_grid_map builders) {
-		builders_ = builders;
-	}
+	void finalize_listbox();
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
@@ -132,7 +151,7 @@ struct builder_tab_container : public builder_styled_widget
 
 	virtual std::unique_ptr<widget> build() const override;
 
-	builder_grid_map builders;
+	std::vector<std::shared_ptr<builder_grid>> builders;
 
 	std::vector<widget_data> list_items;
 };

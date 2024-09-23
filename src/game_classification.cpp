@@ -17,7 +17,7 @@
 
 #include "config.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/string_utils.hpp"
 #include "game_version.hpp"
 #include "game_config_manager.hpp"
@@ -78,7 +78,7 @@ config game_classification::to_config() const
 	cfg["difficulty"] = difficulty;
 	cfg["random_mode"] = random_mode;
 	cfg["oos_debug"] = oos_debug;
-	cfg["core"] = preferences::core_id();
+	cfg["core"] = prefs::get().core();
 
 	return cfg;
 }

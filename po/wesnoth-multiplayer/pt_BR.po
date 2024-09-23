@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
+"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
 "PO-Revision-Date: 2023-01-13 17:10-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil <gnome-l10n-br@listas.cipsga.org.br>\n"
@@ -131,8 +131,12 @@ msgstr "Padrão"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
+#, fuzzy
+#| msgid ""
+#| "The standard era for Wesnoth multiplayer. Consists of six factions and is "
+#| "generally balanced."
 msgid ""
-"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"The standard era for Wesnoth multiplayer. Consists of seven factions and is "
 "generally balanced."
 msgstr ""
 "A era padrão do modo multiplayer. Consiste em seis facções e é geralmente "
@@ -145,58 +149,19 @@ msgstr "Era dos Heróis"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:15
+#, fuzzy
+#| msgid ""
+#| "An era with higher level units: level three leaders, with level one and "
+#| "two units available for recruit. Consists of six factions. Not considered "
+#| "balanced."
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
-"units available for recruit. Consists of six factions. Not considered "
+"units available for recruit. Consists of seven factions. Not considered "
 "balanced."
 msgstr ""
 "Uma era com unidades de nível mais alto: Líderes começam no nível três e "
 "pode-se recrutar unidades de nível um e dois. Consiste de seis facções. Não "
 "é considerado balanceado."
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:22
-msgid "Default + Dunefolk"
-msgstr "Padrão + Dunefolk"
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:23
-msgid ""
-"An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Uma era que possui uma facção adicional além das seis da Era Padrão. Os "
-"Nômades se especializam em utilizar o terreno a seu favor e ataques "
-"coordenados ao amanhecer e anoitecer.\n"
-"\n"
-"Essa era ainda se encontra em desenvolvimento. Se encontrar algum problema "
-"com ela, por favor entre em contato conosco pelo fórum."
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:33
-msgid "Age of Heroes + Dunefolk"
-msgstr "Era dos Heróis + Dunefolk"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:34
-msgid ""
-"An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Uma era que possui uma facção adicional além das seis da Era dos Heróis. Os "
-"Nômades se especializam em utilizar o terreno a seu favor e ataques "
-"coordenados ao amanhecer e anoitecer.\n"
-"\n"
-"Essa era ainda se encontra em desenvolvimento. Se encontrar algum problema "
-"com ela, por favor entre em contato conosco pelo fórum."
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
@@ -3152,6 +3117,42 @@ msgid ""
 "This map is an example of how to use the new (BfW v1.17) elevated terrain "
 "graphics. Please be advised that it is not intended for playing."
 msgstr ""
+
+#~ msgid "Default + Dunefolk"
+#~ msgstr "Padrão + Dunefolk"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from "
+#~ "Default Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Uma era que possui uma facção adicional além das seis da Era Padrão. Os "
+#~ "Nômades se especializam em utilizar o terreno a seu favor e ataques "
+#~ "coordenados ao amanhecer e anoitecer.\n"
+#~ "\n"
+#~ "Essa era ainda se encontra em desenvolvimento. Se encontrar algum "
+#~ "problema com ela, por favor entre em contato conosco pelo fórum."
+
+#~ msgid "Age of Heroes + Dunefolk"
+#~ msgstr "Era dos Heróis + Dunefolk"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from Age "
+#~ "of Heroes Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Uma era que possui uma facção adicional além das seis da Era dos Heróis. "
+#~ "Os Nômades se especializam em utilizar o terreno a seu favor e ataques "
+#~ "coordenados ao amanhecer e anoitecer.\n"
+#~ "\n"
+#~ "Essa era ainda se encontra em desenvolvimento. Se encontrar algum "
+#~ "problema com ela, por favor entre em contato conosco pelo fórum."
 
 #~ msgid ""
 #~ "Controlling the area around the central keep is very lucrative in this 4 "

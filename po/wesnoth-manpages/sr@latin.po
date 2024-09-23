@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 12:05-0500\n"
+"POT-Creation-Date: 2024-09-17 21:19-0500\n"
 "PO-Revision-Date: 2012-01-14 14:50+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -68,7 +68,7 @@ msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
 msgstr "B<wesnoth> [I<OPCIJE>] [I<PUTANJA_DO_PODATAKA>]"
 
 #. type: SH
-#: doc/man/wesnoth.6:27 doc/man/wesnothd.6:40
+#: doc/man/wesnoth.6:27 doc/man/wesnothd.6:36
 #, no-wrap
 msgid "DESCRIPTION"
 msgstr "OPIS"
@@ -100,7 +100,7 @@ msgstr ""
 "posebne jedinice, scenarije, pohode, i podelite ih sa drugim igračima."
 
 #. type: SH
-#: doc/man/wesnoth.6:43 doc/man/wesnothd.6:45
+#: doc/man/wesnoth.6:43 doc/man/wesnothd.6:41
 #, no-wrap
 msgid "OPTIONS"
 msgstr "OPCIJE"
@@ -184,83 +184,59 @@ msgstr "B<--nomusic>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:69
-msgid "Adds the option to show a clock for testing the drawing timer."
+msgid ""
+"Adds the option to show a clock for testing the drawing timer. Also adds the "
+"option for showing the GUI Test Dialog."
 msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:69
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
-msgid "B<--config-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ ime>"
-
-#. type: Plain text
-#: doc/man/wesnoth.6:73
-msgid "Deprecated, use B<--userdata-dir>."
-msgstr ""
-
-#. type: TP
-#: doc/man/wesnoth.6:73
-#, fuzzy, no-wrap
-#| msgid "B<--config-path>"
-msgid "B<--config-path>"
-msgstr "B<--config-path>"
-
-#. type: Plain text
-#: doc/man/wesnoth.6:77
-#, fuzzy
-#| msgid "B<--path>"
-msgid "Deprecated, use B<--userdata-path>."
-msgstr "B<--path>"
-
-#. type: TP
-#: doc/man/wesnoth.6:77
 #, fuzzy, no-wrap
 #| msgid "B<-e,\\ --editor>I<\\ file>"
 msgid "B<--core>I<\\ id_core>"
 msgstr "B<-e, --editor \\ datoteka>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:80
+#: doc/man/wesnoth.6:72
 #, fuzzy
 #| msgid "overrides the data directory with the one specified"
 msgid "overrides the loaded core with the one whose id is specified."
 msgstr "potiskuje direktorijum podataka ovde zadatim."
 
 #. type: TP
-#: doc/man/wesnoth.6:80
+#: doc/man/wesnoth.6:72
 #, fuzzy, no-wrap
 #| msgid "B<--data-dir E<lt>directoryE<gt>>"
 msgid "B<--data-dir>I<\\ directory>"
 msgstr "B<--data-dir E<lt>direktorijumE<gt>>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:83
+#: doc/man/wesnoth.6:75
 msgid "overrides the data directory with the one specified"
 msgstr "potiskuje direktorijum podataka ovde zadatim."
 
 #. type: TP
-#: doc/man/wesnoth.6:83
+#: doc/man/wesnoth.6:75
 #, fuzzy, no-wrap
 #| msgid "B<--path>"
 msgid "B<--data-path>"
 msgstr "B<--path>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:86
+#: doc/man/wesnoth.6:78
 #, fuzzy
 #| msgid "prints the path of the user configuration directory and exits."
 msgid "prints the path of the data directory and exits."
 msgstr "ispisuje putanju korisničkog postavnog direktorijuma i izlazi."
 
 #. type: TP
-#: doc/man/wesnoth.6:86
+#: doc/man/wesnoth.6:78
 #, no-wrap
 msgid "B<-d, --debug>"
 msgstr "B<-d, --debug>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:91
+#: doc/man/wesnoth.6:83
 #, fuzzy
 #| msgid ""
 #| "enables additional command mode options in-game (see the wiki page at "
@@ -275,37 +251,38 @@ msgstr ""
 "potražite na viki stranici http://www.wesnoth.org/wiki/CommandMode)."
 
 #. type: TP
-#: doc/man/wesnoth.6:91
+#: doc/man/wesnoth.6:83
 #, fuzzy, no-wrap
 #| msgid "B<-d, --debug>"
 msgid "B<--debug-lua>"
 msgstr "B<-d, --debug>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:94
+#: doc/man/wesnoth.6:86
 msgid "enables some Lua debugging mechanisms"
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:94
+#: doc/man/wesnoth.6:86
 #, fuzzy, no-wrap
 #| msgid "B<--strict-validation>"
 msgid "B<--strict-lua>"
 msgstr "B<--strict-validation>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:97
+#: doc/man/wesnoth.6:89
 msgid "disallow deprecated Lua API calls"
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:97
-#, no-wrap
-msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
-msgstr ""
+#: doc/man/wesnoth.6:89
+#, fuzzy, no-wrap
+#| msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
+msgid "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
+msgstr "B<--preprocess, -p[=E<lt>definicija-1E<gt>,E<lt>definicija-2E<gt>,...] E<lt>datoteka/direktorijumE<gt> E<lt>ciljni direktorijumE<gt>>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:103
+#: doc/man/wesnoth.6:95
 msgid ""
 "diffs the two WML files; does not preprocess them first (to do that, run "
 "them through B<-p> first). Outputs the diff as DiffWML on standard output or "
@@ -313,14 +290,14 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:103
+#: doc/man/wesnoth.6:95
 #, fuzzy, no-wrap
 #| msgid "B<-e,\\ --editor>I<\\ file>"
 msgid "B<-e[>I<file>B<],\\ --editor[>I<=file>B<]>"
 msgstr "B<-e, --editor \\ datoteka>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:110
+#: doc/man/wesnoth.6:102
 #, fuzzy
 #| msgid ""
 #| "start the in-game map editor directly. If I<file> is specified, "
@@ -333,13 +310,13 @@ msgstr ""
 "sa B<-l --load>."
 
 #. type: TP
-#: doc/man/wesnoth.6:110
+#: doc/man/wesnoth.6:102
 #, no-wrap
 msgid "B<--fps>"
 msgstr "B<--fps>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:115
+#: doc/man/wesnoth.6:107
 #, fuzzy
 #| msgid ""
 #| "displays the number of frames per second the game is currently running "
@@ -351,36 +328,36 @@ msgid ""
 msgstr "prikazuje broj kadrova po sekundi dok teče igra, u uglu ekrana."
 
 #. type: TP
-#: doc/man/wesnoth.6:115
+#: doc/man/wesnoth.6:107
 #, no-wrap
 msgid "B<-f, --fullscreen>"
 msgstr "B<-f, --fullscreen>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:118
+#: doc/man/wesnoth.6:110
 msgid "runs the game in full screen mode."
 msgstr "pokreće igru preko celog ekrana."
 
 #. type: TP
-#: doc/man/wesnoth.6:118 doc/man/wesnothd.6:55
+#: doc/man/wesnoth.6:110 doc/man/wesnothd.6:51
 #, no-wrap
 msgid "B<-h, --help>"
 msgstr "B<-h, --help>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:121
+#: doc/man/wesnoth.6:113
 msgid ""
 "displays a summary of command line options to standard output, and exits."
 msgstr "prikazuje sažetak opcija komandne linije na standarnom izlazu."
 
 #. type: TP
-#: doc/man/wesnoth.6:121
+#: doc/man/wesnoth.6:113
 #, no-wrap
 msgid "B<-l,\\ --load>I<\\ file>"
 msgstr "B<-l,\\ --load>I<\\ datoteka>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:132
+#: doc/man/wesnoth.6:124
 #, fuzzy
 #| msgid ""
 #| "loads the savegame I<file> from the standard save game directory.  If the "
@@ -399,27 +376,27 @@ msgstr ""
 "uređivač će na njemu otvoriti dijalog za učitavanje mape."
 
 #. type: TP
-#: doc/man/wesnoth.6:132
+#: doc/man/wesnoth.6:124
 #, fuzzy, no-wrap
 #| msgid "B<-l,\\ --load>I<\\ file>"
 msgid "B<-L,\\ --language>I<\\ lang>"
 msgstr "B<-l,\\ --load>I<\\ datoteka>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:139
+#: doc/man/wesnoth.6:131
 msgid ""
 "uses language I<lang> (symbol) this session.  Example: B<--language "
 "ang_GB@latin>"
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:139 doc/man/wesnothd.6:58
+#: doc/man/wesnoth.6:131 doc/man/wesnothd.6:54
 #, no-wrap
 msgid "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 msgstr "B<--log->I<nivo>B<=>I<domen1>B<,>I<domen2>B<,>I<...>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:154
+#: doc/man/wesnoth.6:146
 #, fuzzy
 #| msgid ""
 #| "sets the severity level of the log domains.  B<all> can be used to match "
@@ -436,41 +413,41 @@ msgstr ""
 "B<debug>. Podrazumevano se koristi B<error>."
 
 #. type: TP
-#: doc/man/wesnoth.6:154
+#: doc/man/wesnoth.6:146
 #, fuzzy, no-wrap
 #| msgid "B<--nogui>"
 msgid "B<--log-precise>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:157
+#: doc/man/wesnoth.6:149
 msgid "shows the timestamps in log output with more precision."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:157
+#: doc/man/wesnoth.6:149
 #, fuzzy, no-wrap
 #| msgid "B<--nomusic>"
-msgid "B<--log-strict>"
+msgid "B<--log-strict>I<\\ level>"
 msgstr "B<--nomusic>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:163
+#: doc/man/wesnoth.6:158
 msgid ""
-"sets the strict level of the logger. Any messages sent to log domains of "
-"this level or more severe will cause the unit test to fail regardless of the "
-"victory result. Only relevant when used with B<-u>."
+"sets the strict I<level> of the logger. Any messages sent to log domains of "
+"this I<level> or more severe will cause the unit test to fail regardless of "
+"the victory result. Only relevant when used with B<-u>."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:163
+#: doc/man/wesnoth.6:158
 #, fuzzy, no-wrap
 #| msgid "B<--logdomains\\ [filter]>"
 msgid "B<--logdomains[>I<=filter>B<]>"
 msgstr "B<--logdomains\\ [filter]>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:168
+#: doc/man/wesnoth.6:163
 #, fuzzy
 #| msgid ""
 #| "lists defined log domains (only the ones containing B<filter> if used) "
@@ -483,14 +460,14 @@ msgstr ""
 "zadat) i izlazi."
 
 #. type: TP
-#: doc/man/wesnoth.6:168
+#: doc/man/wesnoth.6:163
 #, fuzzy, no-wrap
 #| msgid "B<--nomusic>"
 msgid "B<--no-log-to-file>"
 msgstr "B<--nomusic>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:171
+#: doc/man/wesnoth.6:166
 msgid ""
 "prevents redirecting logged output to a file. The environment variable "
 "WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created "
@@ -498,42 +475,56 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:171
+#: doc/man/wesnoth.6:166
 #, fuzzy, no-wrap
 #| msgid "B<--nomusic>"
 msgid "B<--log-to-file>"
 msgstr "B<--nomusic>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:174
+#: doc/man/wesnoth.6:169
 msgid ""
 "log output is written to a file. Cancels the effect of --no-log-to-file "
 "whether implicit or explicit."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:174
+#: doc/man/wesnoth.6:169
+#, fuzzy, no-wrap
+#| msgid "B<--nomusic>"
+msgid "B<--no-log-sanitize>"
+msgstr "B<--nomusic>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:172
+msgid ""
+"disables the anonymization that's normally applied when logging, for example "
+"replacing usernames with USER."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnoth.6:172
 #, fuzzy, no-wrap
 #| msgid "B<--nosound>"
 msgid "B<--wnoconsole>"
 msgstr "B<--nosound>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:177
+#: doc/man/wesnoth.6:175
 msgid ""
 "For Windows, when used with --no-log-to-file, results in output being "
 "written to cerr/cout instead of CONOUT. Otherwise, does nothing."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:177
+#: doc/man/wesnoth.6:175
 #, fuzzy, no-wrap
 #| msgid "B<--max-fps>"
 msgid "B<--max-fps>I<\\ fps>"
 msgstr "B<--max-fps>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:184
+#: doc/man/wesnoth.6:182
 #, fuzzy
 #| msgid ""
 #| "the number of frames per second the game can show, the value should be "
@@ -546,13 +537,13 @@ msgstr ""
 "1 i 1000, a podrazumevano je B<50>."
 
 #. type: TP
-#: doc/man/wesnoth.6:184
+#: doc/man/wesnoth.6:182
 #, no-wrap
 msgid "B<-m, --multiplayer>"
 msgstr "B<-m, --multiplayer>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:190
+#: doc/man/wesnoth.6:188
 #, fuzzy
 #| msgid ""
 #| "runs a multiplayer game. There are additional options that can be used "
@@ -566,26 +557,26 @@ msgstr ""
 "navedene ispod (samo one mogu pratiti B<--multiplayer>)."
 
 #. type: TP
-#: doc/man/wesnoth.6:190
+#: doc/man/wesnoth.6:188
 #, fuzzy, no-wrap
 #| msgid "B<-t, --test>"
 msgid "B<--mp-test>"
 msgstr "B<-t, --test>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:193
+#: doc/man/wesnoth.6:191
 msgid "load the test mp scenarios."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:193
+#: doc/man/wesnoth.6:191
 #, fuzzy, no-wrap
 #| msgid "B<--no-delay>"
 msgid "B<--new-widgets>"
 msgstr "B<--no-delay>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:196
+#: doc/man/wesnoth.6:194
 msgid ""
 "there is a new WIP widget toolkit, this option enables it. This is very "
 "experimental, don't fill bug reports since most are known. Parts of the "
@@ -593,14 +584,14 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:196
+#: doc/man/wesnoth.6:194
 #, fuzzy, no-wrap
 #| msgid "B<--no-delay>"
 msgid "B<--nodelay>"
 msgstr "B<--no-delay>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:200
+#: doc/man/wesnoth.6:198
 #, fuzzy
 #| msgid ""
 #| "runs the game without any delays for graphic benchmarking. This is "
@@ -613,126 +604,126 @@ msgstr ""
 "automatski uključeno ako se zada B<--nogui>."
 
 #. type: TP
-#: doc/man/wesnoth.6:200
+#: doc/man/wesnoth.6:198
 #, fuzzy, no-wrap
 #| msgid "B<--nosound>"
 msgid "B<--noaddons>"
 msgstr "B<--nosound>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:203
+#: doc/man/wesnoth.6:201
 #, fuzzy
 #| msgid "disables caching of game data."
 msgid "disables loading of user addons."
 msgstr "isključuje ostavu za podatke igre."
 
 #. type: TP
-#: doc/man/wesnoth.6:203
+#: doc/man/wesnoth.6:201
 #, no-wrap
 msgid "B<--nocache>"
 msgstr "B<--nocache>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:206
+#: doc/man/wesnoth.6:204
 msgid "disables caching of game data."
 msgstr "isključuje ostavu za podatke igre."
 
 #. type: TP
-#: doc/man/wesnoth.6:206
+#: doc/man/wesnoth.6:204
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:214
+#: doc/man/wesnoth.6:212
 msgid ""
 "runs the game without the GUI. Only available in combination with B<--"
 "multiplayer> or B<--screenshot> or B<--plugin>."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:214
+#: doc/man/wesnoth.6:212
 #, fuzzy, no-wrap
 #| msgid "B<--nocache>"
 msgid "B<--nobanner>"
 msgstr "B<--nocache>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:217
+#: doc/man/wesnoth.6:215
 msgid "suppress the startup banner."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:217
+#: doc/man/wesnoth.6:215
 #, no-wrap
 msgid "B<--nomusic>"
 msgstr "B<--nomusic>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:220
+#: doc/man/wesnoth.6:218
 msgid "runs the game without music."
 msgstr "pokreće igru bez muzike."
 
 #. type: TP
-#: doc/man/wesnoth.6:220
+#: doc/man/wesnoth.6:218
 #, fuzzy, no-wrap
 #| msgid "B<--nocache>"
 msgid "B<--noreplaycheck>"
 msgstr "B<--nocache>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:224
+#: doc/man/wesnoth.6:222
 msgid ""
 "don't try to validate replay of unit test. Only relevant when used with B<-"
 "u>."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:224
+#: doc/man/wesnoth.6:222
 #, no-wrap
 msgid "B<--nosound>"
 msgstr "B<--nosound>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:227
+#: doc/man/wesnoth.6:225
 msgid "runs the game without sounds and music."
 msgstr "pokreće igru bez zvuka i muzike."
 
 #. type: TP
-#: doc/man/wesnoth.6:227
+#: doc/man/wesnoth.6:225
 #, fuzzy, no-wrap
 #| msgid "B<--gzip>I<\\ infile>"
 msgid "B<--output>I<\\ file>"
 msgstr "B<--gzip>I<\\ uldat>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:230
+#: doc/man/wesnoth.6:228
 msgid "output to the specified file. Applicable to diffing operations."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:230
+#: doc/man/wesnoth.6:228
 #, fuzzy, no-wrap
 #| msgid "B<db_password>"
 msgid "B<--password>I<\\ password>"
 msgstr "B<db_password>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:235
+#: doc/man/wesnoth.6:233
 msgid ""
 "uses I<password> when connecting to a server, ignoring other preferences. "
 "Unsafe."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:235
+#: doc/man/wesnoth.6:233
 #, fuzzy, no-wrap
 #| msgid "B<--gzip>I<\\ infile>"
 msgid "B<--plugin>I<\\ script>"
 msgstr "B<--gzip>I<\\ uldat>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:242
+#: doc/man/wesnoth.6:240
 msgid ""
 "(experimental) load a I<script> which defines a Wesnoth plugin. Similar to "
 "B<--script>, but Lua file should return a function which will be run as a "
@@ -740,14 +731,14 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:242
+#: doc/man/wesnoth.6:240
 #, fuzzy, no-wrap
 #| msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
-msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+msgid "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
 msgstr "B<--preprocess, -p[=E<lt>definicija-1E<gt>,E<lt>definicija-2E<gt>,...] E<lt>datoteka/direktorijumE<gt> E<lt>ciljni direktorijumE<gt>>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:247
+#: doc/man/wesnoth.6:245
 msgid ""
 "applies a DiffWML patch to a WML file; does not preprocess either of the "
 "files.  Outputs the patched WML to standard output or to the file indicated "
@@ -755,14 +746,14 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:247
+#: doc/man/wesnoth.6:245
 #, fuzzy, no-wrap
 #| msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
 msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 msgstr "B<--preprocess, -p[=E<lt>definicija-1E<gt>,E<lt>definicija-2E<gt>,...] E<lt>datoteka/direktorijumE<gt> E<lt>ciljni direktorijumE<gt>>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:257
+#: doc/man/wesnoth.6:255
 #, fuzzy
 #| msgid ""
 #| "preprocesses a specified file/folder. The file(s) will be written in "
@@ -797,13 +788,13 @@ msgstr ""
 "result>."
 
 #. type: TP
-#: doc/man/wesnoth.6:257
+#: doc/man/wesnoth.6:255
 #, no-wrap
 msgid "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<...>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:264
+#: doc/man/wesnoth.6:262
 msgid ""
 "comma separated list of defines to be used by the B<--preprocess> command. "
 "If B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
@@ -811,14 +802,14 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:264
+#: doc/man/wesnoth.6:262
 #, fuzzy, no-wrap
 #| msgid "B<--preprocess-input-macros E<lt>source fileE<gt>>"
 msgid "B<--preprocess-input-macros>I<\\ source-file>"
 msgstr "B<--preprocess-input-macros E<lt>izvorna-datotekaE<gt>>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:271
+#: doc/man/wesnoth.6:269
 #, fuzzy
 #| msgid ""
 #| "used only by the '--preprocess' command.  Specifies a file that contains "
@@ -831,14 +822,14 @@ msgstr ""
 "[preproc_define] za uključivanje pri predobradi."
 
 #. type: TP
-#: doc/man/wesnoth.6:271
+#: doc/man/wesnoth.6:269
 #, fuzzy, no-wrap
 #| msgid "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
 msgid "B<--preprocess-output-macros[>I<=target-file>B<]>"
 msgstr "B<--preprocess-output-macros [E<lt>ciljna datotekaE<gt>]>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:282
+#: doc/man/wesnoth.6:280
 #, fuzzy
 #| msgid ""
 #| "used only by the '--preprocess' command.  Will output all preprocessed "
@@ -858,26 +849,26 @@ msgstr ""
 "'--preprocess'."
 
 #. type: TP
-#: doc/man/wesnoth.6:282
+#: doc/man/wesnoth.6:280
 #, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:287
+#: doc/man/wesnoth.6:285
 #, fuzzy
 #| msgid "sets the screen resolution. Example: B<-r 800x600>"
 msgid "sets the screen resolution. Example: B<-r> B<800x600>."
 msgstr "postavlja rezoluciju ekrana. Primer: B<-r 800x600>"
 
 #. type: TP
-#: doc/man/wesnoth.6:287
+#: doc/man/wesnoth.6:285
 #, no-wrap
 msgid "B<--render-image>I<\\ image>B<\\ >I<output>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:290
+#: doc/man/wesnoth.6:288
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
 "outputs to a .png file. Image path functions are documented at https://wiki."
@@ -885,66 +876,66 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:290
+#: doc/man/wesnoth.6:288
 #, fuzzy, no-wrap
 #| msgid "B<port>"
 msgid "B<-R,\\ --report>"
 msgstr "B<port>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:293
+#: doc/man/wesnoth.6:291
 msgid ""
 "initializes game directories, prints build information suitable for use in "
 "bug reports, and exits."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:293
+#: doc/man/wesnoth.6:291
 #, fuzzy, no-wrap
 #| msgid "B<--config-dir>I<\\ name>"
 msgid "B<--rng-seed>I<\\ number>"
 msgstr "B<--config-dir>I<\\ ime>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:300
+#: doc/man/wesnoth.6:298
 msgid ""
 "seeds the random number generator with I<number>.  Example: B<--rng-seed> "
 "B<0>."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:300
+#: doc/man/wesnoth.6:298
 #, no-wrap
 msgid "B<--screenshot>I<\\ map>B<\\ >I<output>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:307
+#: doc/man/wesnoth.6:305
 msgid ""
 "saves a screenshot of I<map> to I<output> without initializing a screen."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:307
+#: doc/man/wesnoth.6:305
 #, fuzzy, no-wrap
 #| msgid "B<--gzip>I<\\ infile>"
 msgid "B<--script>I<\\ file>"
 msgstr "B<--gzip>I<\\ uldat>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:312
+#: doc/man/wesnoth.6:310
 msgid "(experimental)  I<file> containing a Lua script to control the client."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:312
+#: doc/man/wesnoth.6:310
 #, fuzzy, no-wrap
 #| msgid "B<-s,\\ --server\\ [host]>"
 msgid "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
 msgstr "B<-s,\\ --server\\ [domaćin]>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:317
+#: doc/man/wesnoth.6:315
 #, fuzzy
 #| msgid ""
 #| "connects to the specified host if any, otherwise connect to the first "
@@ -957,36 +948,36 @@ msgstr ""
 "Na primer: B<--server server.wesnoth.org>"
 
 #. type: TP
-#: doc/man/wesnoth.6:317
+#: doc/man/wesnoth.6:315
 #, fuzzy, no-wrap
 #| msgid "B<--nogui>"
 msgid "B<--showgui>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:321
+#: doc/man/wesnoth.6:319
 msgid "runs the game with the GUI, overriding any implicit B<--nogui>."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:321
+#: doc/man/wesnoth.6:319
 #, no-wrap
 msgid "B<--strict-validation>"
 msgstr "B<--strict-validation>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:324
+#: doc/man/wesnoth.6:322
 msgid "validation errors are treated as fatal errors."
 msgstr "greške overavanja smatraju se kobnim greškama."
 
 #. type: TP
-#: doc/man/wesnoth.6:324
+#: doc/man/wesnoth.6:322
 #, no-wrap
 msgid "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:334
+#: doc/man/wesnoth.6:332
 msgid ""
 "runs the game in a small test scenario. The scenario should be one defined "
 "with a B<[test]> WML tag. The default is B<test>.  A demonstration of the "
@@ -994,39 +985,39 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:334
+#: doc/man/wesnoth.6:332
 #, no-wrap
 msgid "B<--translations-over>I<\\ percent>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:340
+#: doc/man/wesnoth.6:338
 msgid ""
 "Set the standard for deeming a translation is complete enough to show in the "
 "in-game language list to I<percent>.  Valid values are 0 to 100."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:340
+#: doc/man/wesnoth.6:338
 #, fuzzy, no-wrap
 #| msgid "B<-e,\\ --editor>I<\\ file>"
 msgid "B<-u,\\ --unit>I<\\ scenario-id>"
 msgstr "B<-e, --editor \\ datoteka>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:344
+#: doc/man/wesnoth.6:342
 msgid "runs the specified test scenario as a unit test. Implies B<--nogui>."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:344
+#: doc/man/wesnoth.6:342
 #, fuzzy, no-wrap
 #| msgid "B<--config-path>"
 msgid "B<--unsafe-scripts>"
 msgstr "B<--config-path>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:349
+#: doc/man/wesnoth.6:347
 msgid ""
 "makes the B<package> package available to lua scripts, so that they can load "
 "arbitrary packages. Do not do this with untrusted scripts! This action gives "
@@ -1034,66 +1025,26 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:349
+#: doc/man/wesnoth.6:347
 #, fuzzy, no-wrap
 #| msgid "B<--scenario=>I<value>"
-msgid "B<-S,--use-schema>I<\\ path>"
+msgid "B<-S,\\ --use-schema>I<\\ path>"
 msgstr "B<--scenario=>I<vrednost>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:353
-msgid "sets the WML schema for use with B<-V,--validate>."
+#: doc/man/wesnoth.6:351
+msgid "sets the WML schema for use with B<-V,\\ --validate>."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:353
-#, fuzzy, no-wrap
-#| msgid "B<--config-dir>I<\\ name>"
-msgid "B<--userconfig-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ ime>"
-
-#. type: Plain text
-#: doc/man/wesnoth.6:364
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#| "path for the configuration directory outside the $HOME or \"My "
-#| "Documents\\eMy Games\""
-msgid ""
-"sets the user configuration directory to I<name> under $HOME or \"My "
-"Documents\\eMy Games\" for windows.  You can also specify an absolute path "
-"for the configuration directory outside the $HOME or \"My Documents\\eMy "
-"Games\". On Windows it is also possible to specify a directory relative to "
-"the process working directory by using path starting with \".\\e\" or \".."
-"\\e\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/"
-"wesnoth, on other systems to the userdata path."
-msgstr ""
-"zadaje postavni direktorijum I<ime>, pod $HOME ili \"Moji dokumenti\\eMoje "
-"igre\" na Windowsu. Takođe možete zadati apsolutnu putanju postavnog "
-"direktorijuma izvan $HOME ili \"My Documents\\eMy Games\"."
-
-#. type: TP
-#: doc/man/wesnoth.6:364
-#, fuzzy, no-wrap
-#| msgid "B<--config-path>"
-msgid "B<--userconfig-path>"
-msgstr "B<--config-path>"
-
-#. type: Plain text
-#: doc/man/wesnoth.6:367
-msgid "prints the path of the user configuration directory and exits."
-msgstr "ispisuje putanju korisničkog postavnog direktorijuma i izlazi."
-
-#. type: TP
-#: doc/man/wesnoth.6:367
+#: doc/man/wesnoth.6:351
 #, fuzzy, no-wrap
 #| msgid "B<--config-dir>I<\\ name>"
 msgid "B<--userdata-dir>I<\\ name>"
 msgstr "B<--config-dir>I<\\ ime>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:376
+#: doc/man/wesnoth.6:360
 #, fuzzy
 #| msgid ""
 #| "sets the user configuration directory to I<name> under $HOME or \"My "
@@ -1112,145 +1063,145 @@ msgstr ""
 "direktorijuma izvan $HOME ili \"My Documents\\eMy Games\"."
 
 #. type: TP
-#: doc/man/wesnoth.6:376
+#: doc/man/wesnoth.6:360
 #, fuzzy, no-wrap
 #| msgid "B<--path>"
 msgid "B<--userdata-path>"
 msgstr "B<--path>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:379
+#: doc/man/wesnoth.6:363
 #, fuzzy
 #| msgid "prints the path of the user configuration directory and exits."
 msgid "prints the path of the userdata directory and exits."
 msgstr "ispisuje putanju korisničkog postavnog direktorijuma i izlazi."
 
 #. type: TP
-#: doc/man/wesnoth.6:379
+#: doc/man/wesnoth.6:363
 #, fuzzy, no-wrap
 #| msgid "B<--config-dir>I<\\ name>"
 msgid "B<--username>I<\\ username>"
 msgstr "B<--config-dir>I<\\ ime>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:384
+#: doc/man/wesnoth.6:368
 msgid ""
 "uses I<username> when connecting to a server, ignoring other preferences."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:384
+#: doc/man/wesnoth.6:368
 #, fuzzy, no-wrap
 #| msgid "B<--path>"
 msgid "B<--validate>I<\\ path>"
 msgstr "B<--path>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:387
+#: doc/man/wesnoth.6:371
 msgid "validates a file against the WML schema."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:387
+#: doc/man/wesnoth.6:371
 #, no-wrap
 msgid "B<--validate-addon>I<\\ addon_id>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:390
+#: doc/man/wesnoth.6:374
 msgid "validates the WML of the given addon as you play."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:390
+#: doc/man/wesnoth.6:374
 #, fuzzy, no-wrap
 #| msgid "B<--validcache>"
 msgid "B<--validate-core>"
 msgstr "B<--validcache>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:393
+#: doc/man/wesnoth.6:377
 msgid "validates the core WML as you play."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:393
+#: doc/man/wesnoth.6:377
 #, fuzzy, no-wrap
 #| msgid "B<--validcache>"
-msgid "B<--validate-schema \\ path>"
+msgid "B<--validate-schema>I<\\ path>"
 msgstr "B<--validcache>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:396
+#: doc/man/wesnoth.6:380
 msgid "validates a file as a WML schema."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:396
+#: doc/man/wesnoth.6:380
 #, no-wrap
 msgid "B<--validcache>"
 msgstr "B<--validcache>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:399
+#: doc/man/wesnoth.6:383
 msgid "assumes that the cache is valid. (dangerous)"
 msgstr "pretpostavlja da je keš ažuran (opasno)."
 
 #. type: TP
-#: doc/man/wesnoth.6:399
+#: doc/man/wesnoth.6:383
 #, no-wrap
 msgid "B<-v, --version>"
 msgstr "B<-v, --version>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:402
+#: doc/man/wesnoth.6:386
 msgid "shows the version number and exits."
 msgstr "prikazuje broj verzije i izlazi."
 
 #. type: TP
-#: doc/man/wesnoth.6:402
+#: doc/man/wesnoth.6:386
 #, fuzzy, no-wrap
 #| msgid "B<-v, --version>"
 msgid "B<--simple-version>"
 msgstr "B<-v, --version>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:405
+#: doc/man/wesnoth.6:389
 #, fuzzy
 #| msgid "shows the version number and exits."
 msgid "shows the version number and nothing else, then exits."
 msgstr "prikazuje broj verzije i izlazi."
 
 #. type: TP
-#: doc/man/wesnoth.6:405
+#: doc/man/wesnoth.6:389
 #, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w, --windowed>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:408
+#: doc/man/wesnoth.6:392
 msgid "runs the game in windowed mode."
 msgstr "pokreće igru unutar prozora."
 
 #. type: TP
-#: doc/man/wesnoth.6:408
+#: doc/man/wesnoth.6:392
 #, no-wrap
 msgid "B<--with-replay>"
 msgstr "B<--with-replay>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:413
+#: doc/man/wesnoth.6:397
 msgid "replays the game loaded with the B<--load> option."
 msgstr "pušta snimak partije učitane opcijom B<--load>."
 
 #. type: SH
-#: doc/man/wesnoth.6:414
+#: doc/man/wesnoth.6:398
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "Opcije uz --multiplayer"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:421
+#: doc/man/wesnoth.6:405
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
@@ -1261,27 +1212,27 @@ msgstr ""
 "broja igrača dozvoljenih za izabrani scenario."
 
 #. type: TP
-#: doc/man/wesnoth.6:421
+#: doc/man/wesnoth.6:405
 #, fuzzy, no-wrap
 #| msgid "B<--ai_config>I<number>B<=>I<value>"
 msgid "B<--ai-config>I<\\ number>B<:>I<value>"
 msgstr "B<--ai_config>I<broj>B<=>I<vrednost>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:424
+#: doc/man/wesnoth.6:408
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr "bira postavnu datoteku koja se učitava za VI upravljača ove strane."
 
 #. type: TP
-#: doc/man/wesnoth.6:424
+#: doc/man/wesnoth.6:408
 #, fuzzy, no-wrap
 #| msgid "B<--algorithm>I<number>B<=>I<value>"
 msgid "B<--algorithm>I<\\ number>B<:>I<value>"
 msgstr "B<--algorithm>I<broj>B<=>I<vrednost>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:434
+#: doc/man/wesnoth.6:418
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. The algorithm is defined by an B<[ai]> tag, which can be a core one "
@@ -1290,14 +1241,14 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:434
+#: doc/man/wesnoth.6:418
 #, fuzzy, no-wrap
 #| msgid "B<--controller>I<number>B<=>I<value>"
 msgid "B<--controller>I<\\ number>B<:>I<value>"
 msgstr "B<--controller>I<broj>B<=>I<vrednost>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:441
+#: doc/man/wesnoth.6:425
 #, fuzzy
 #| msgid ""
 #| "selects the controller for this side. Available values: B<human> and "
@@ -1310,14 +1261,14 @@ msgstr ""
 "B<ai> (VI)."
 
 #. type: TP
-#: doc/man/wesnoth.6:441
+#: doc/man/wesnoth.6:425
 #, fuzzy, no-wrap
 #| msgid "B<--era=>I<value>"
 msgid "B<--era>I<\\ value>"
 msgstr "B<--era=>I<vrednost>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:448
+#: doc/man/wesnoth.6:432
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
@@ -1328,13 +1279,13 @@ msgstr ""
 "B<data/multiplayer/eras.cfg>"
 
 #. type: TP
-#: doc/man/wesnoth.6:448
+#: doc/man/wesnoth.6:432
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:452
+#: doc/man/wesnoth.6:436
 #, fuzzy
 #| msgid ""
 #| "exits once the scenario is over, without displaying victory/defeat dialog "
@@ -1350,51 +1301,51 @@ msgstr ""
 "proba performansi."
 
 #. type: TP
-#: doc/man/wesnoth.6:452
+#: doc/man/wesnoth.6:436
 #, no-wrap
 msgid "B<--ignore-map-settings>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:455
+#: doc/man/wesnoth.6:439
 msgid "do not use map settings, use default values instead."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:455
+#: doc/man/wesnoth.6:439
 #, fuzzy, no-wrap
 #| msgid "B<--era=>I<value>"
 msgid "B<--label>I<\\ label>"
 msgstr "B<--era=>I<vrednost>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:460
+#: doc/man/wesnoth.6:444
 msgid "sets the I<label> for AIs."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:460
+#: doc/man/wesnoth.6:444
 #, fuzzy, no-wrap
 #| msgid "B<--era=>I<value>"
 msgid "B<--multiplayer-repeat>I<\\ value>"
 msgstr "B<--era=>I<vrednost>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:467
+#: doc/man/wesnoth.6:451
 msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:467
+#: doc/man/wesnoth.6:451
 #, fuzzy, no-wrap
 #| msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgid "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
 msgstr "B<--parm>I<broj>B<=>I<ime>B<:>I<vrednost>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:476
+#: doc/man/wesnoth.6:460
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -1405,14 +1356,14 @@ msgstr ""
 "projektuju nove VI (još uvek nije sasvim dokumentovano)"
 
 #. type: TP
-#: doc/man/wesnoth.6:476
+#: doc/man/wesnoth.6:460
 #, fuzzy, no-wrap
 #| msgid "B<--scenario=>I<value>"
 msgid "B<--scenario>I<\\ value>"
 msgstr "B<--scenario=>I<vrednost>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:480
+#: doc/man/wesnoth.6:464
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
@@ -1421,14 +1372,14 @@ msgstr ""
 "B<multiplayer_The_Freelands>."
 
 #. type: TP
-#: doc/man/wesnoth.6:480
+#: doc/man/wesnoth.6:464
 #, fuzzy, no-wrap
 #| msgid "B<--side>I<number>B<=>I<value>"
 msgid "B<--side>I<\\ number>B<:>I<value>"
 msgstr "B<--side>I<broj>B<=>I<vrednost>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:485
+#: doc/man/wesnoth.6:469
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -1437,14 +1388,14 @@ msgstr ""
 "moguće vrednosti opisane su u datoteci data/multiplayer.cfg"
 
 #. type: TP
-#: doc/man/wesnoth.6:485
+#: doc/man/wesnoth.6:469
 #, fuzzy, no-wrap
 #| msgid "B<--turns=>I<value>"
 msgid "B<--turns>I<\\ value>"
 msgstr "B<--turns=>I<vrednost>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:488
+#: doc/man/wesnoth.6:472
 #, fuzzy
 #| msgid ""
 #| "sets the number of turns for the chosen scenario. The default is B<50>."
@@ -1454,13 +1405,13 @@ msgid ""
 msgstr "postavlja broj poteza za izabrani scenario. Podrazumevano je B<50>."
 
 #. type: SH
-#: doc/man/wesnoth.6:489 doc/man/wesnothd.6:286
+#: doc/man/wesnoth.6:473 doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "IZLAZNO STANJE"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:494
+#: doc/man/wesnoth.6:478
 #, fuzzy
 #| msgid ""
 #| "Normal exit status is 0. An exit status of 1 indicates an (SDL, video, "
@@ -1475,7 +1426,7 @@ msgstr ""
 "fontova, itd). Stanje 2 ukazuje na grešku u opcijama komandne linije."
 
 #. type: Plain text
-#: doc/man/wesnoth.6:504
+#: doc/man/wesnoth.6:488
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -1486,18 +1437,18 @@ msgid ""
 msgstr ""
 
 #. type: SH
-#: doc/man/wesnoth.6:505 doc/man/wesnothd.6:290
+#: doc/man/wesnoth.6:489 doc/man/wesnothd.6:269
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTOR"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:508
+#: doc/man/wesnoth.6:492
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Napisao Dejvid Vajt (David White) E<lt>davidnwhite@verizon.netE<gt>."
 
 #. type: Plain text
-#: doc/man/wesnoth.6:510
+#: doc/man/wesnoth.6:494
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -1506,7 +1457,7 @@ msgstr ""
 "E<lt>ott@gaon.netE<gt> i Soliton E<lt>soliton.de@gmail.comE<gt>."
 
 #. type: Plain text
-#: doc/man/wesnoth.6:512
+#: doc/man/wesnoth.6:496
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -1515,20 +1466,20 @@ msgstr ""
 "E<lt>cyril@bouthors.orgE<gt>."
 
 #. type: Plain text
-#: doc/man/wesnoth.6:514 doc/man/wesnothd.6:297
+#: doc/man/wesnoth.6:498 doc/man/wesnothd.6:276
 #, fuzzy
 #| msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgid "Visit the official homepage: https://www.wesnoth.org/"
 msgstr "Posetite zvaničnu domaću stranicu: http://www.wesnoth.org/"
 
 #. type: SH
-#: doc/man/wesnoth.6:515 doc/man/wesnothd.6:298
+#: doc/man/wesnoth.6:499 doc/man/wesnothd.6:277
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "AUTORSKA PRAVA"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:518 doc/man/wesnothd.6:301
+#: doc/man/wesnoth.6:502 doc/man/wesnothd.6:280
 #, fuzzy
 #| msgid ""
 #| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
@@ -1538,7 +1489,7 @@ msgstr ""
 "E<lt>davidnwhite@verizon.netE<gt>."
 
 #. type: Plain text
-#: doc/man/wesnoth.6:521 doc/man/wesnothd.6:304
+#: doc/man/wesnoth.6:505 doc/man/wesnothd.6:283
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -1549,7 +1500,7 @@ msgstr ""
 "za KOMERCIJALNU VREDNOST ili ISPUNJAVANJE ODREĐENE POTREBE."
 
 #. type: SH
-#: doc/man/wesnoth.6:522 doc/man/wesnothd.6:305
+#: doc/man/wesnoth.6:506 doc/man/wesnothd.6:284
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "POGLEDATI JOŠ"
@@ -1596,21 +1547,23 @@ msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
 msgstr "wesnothd -- višeigrački mrežni domar \"Boja za B<Vesnot>\""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:36
-msgid ""
-"B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
-"B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
+#: doc/man/wesnothd.6:32
+#, fuzzy
+#| msgid ""
+#| "B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] "
+#| "[\\|B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
+msgid "B<wesnothd> [\\|B<-dvw>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|]"
 msgstr ""
 "B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<putanja>\\|] [\\|B<-p> I<port>\\|] "
 "[\\|B<-t> I<broj>\\|] [\\|B<-T> I<broj>\\|]"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:39
+#: doc/man/wesnothd.6:35
 msgid "B<wesnothd> B<-V>"
 msgstr "B<wesnothd> B<-V>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:44
+#: doc/man/wesnothd.6:40
 #, fuzzy
 #| msgid ""
 #| "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
@@ -1626,13 +1579,13 @@ msgstr ""
 "klijenta (/query ...) ili fifoa."
 
 #. type: TP
-#: doc/man/wesnothd.6:47
+#: doc/man/wesnothd.6:43
 #, no-wrap
 msgid "B<-c\\ >I<path>B<,\\ --config>I<\\ path>"
 msgstr "B<-c\\ >I<putanja>B<,\\ --config>I<\\ putanja>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:52
+#: doc/man/wesnothd.6:48
 msgid ""
 "tells wesnothd where to find the config file to use. See the section "
 "B<SERVER CONFIG> below for the syntax. You can reload the config with "
@@ -1643,23 +1596,23 @@ msgstr ""
 "SIGHUP serverskom procesu."
 
 #. type: TP
-#: doc/man/wesnothd.6:52
+#: doc/man/wesnothd.6:48
 #, no-wrap
 msgid "B<-d, --daemon>"
 msgstr "B<-d, --daemon>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:55
+#: doc/man/wesnothd.6:51
 msgid "runs wesnothd as a daemon."
 msgstr "pokreće wesnothd kao domar."
 
 #. type: Plain text
-#: doc/man/wesnothd.6:58
+#: doc/man/wesnothd.6:54
 msgid "tells you what the command line options do."
 msgstr "govori vam šta čine opcije komandne linije."
 
 #. type: Plain text
-#: doc/man/wesnothd.6:72
+#: doc/man/wesnothd.6:68
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
@@ -1672,13 +1625,13 @@ msgstr ""
 "B<info>."
 
 #. type: TP
-#: doc/man/wesnothd.6:72
+#: doc/man/wesnothd.6:68
 #, no-wrap
 msgid "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
 msgstr "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:77
+#: doc/man/wesnothd.6:73
 msgid ""
 "binds the server to the specified port. If no port is specified, port "
 "B<15000> will be used."
@@ -1687,103 +1640,73 @@ msgstr ""
 "koristi B<15000>."
 
 #. type: TP
-#: doc/man/wesnothd.6:77
-#, no-wrap
-msgid "B<-t\\ >I<number>B<,\\ --threads>I<\\ number>"
-msgstr "B<-t\\ >I<broj>B<,\\ --threads>I<\\ broj>"
-
-#. type: Plain text
-#: doc/man/wesnothd.6:81
-msgid ""
-"sets the maximum number of waiting worker threads for network I/O to n "
-"(default: B<5>,\\ max:\\ B<30>)."
-msgstr ""
-"postavlja najveći broj radnih niti na čekanju za mrežni U/I (podrazumevano: "
-"B<5>,\\ najviše:\\ B<30>)."
-
-#. type: TP
-#: doc/man/wesnothd.6:81
-#, no-wrap
-msgid "B<-T\\ >I<number>B<,\\ --max-threads>I<\\ number>"
-msgstr "B<-T\\ >I<broj>B<,\\ --max-threads>I<\\ broj>"
-
-#. type: Plain text
-#: doc/man/wesnothd.6:88
-msgid ""
-"sets the maximum number of worker threads that will be created.  If set to "
-"B<0> there will be no limit (default: B<0>)."
-msgstr ""
-"postavlja najveći broj radnih niti koje mogu biti stvorene; ako se zada "
-"B<0>, nema ograničenja (podrazumevano: B<0>)."
-
-#. type: TP
-#: doc/man/wesnothd.6:88
+#: doc/man/wesnothd.6:73
 #, no-wrap
 msgid "B<-V, --version>"
 msgstr "B<-V, --version>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:91
+#: doc/man/wesnothd.6:76
 msgid "shows version number and exits."
 msgstr "prikazuje broj verzije i izlazi."
 
 #. type: TP
-#: doc/man/wesnothd.6:91
+#: doc/man/wesnothd.6:76
 #, no-wrap
 msgid "B<-v, --verbose>"
 msgstr "B<-v, --verbose>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:94
+#: doc/man/wesnothd.6:79
 msgid "turns debug logging on."
 msgstr "uključuje ispravljačko beleženje."
 
 #. type: SH
-#: doc/man/wesnothd.6:95
+#: doc/man/wesnothd.6:80
 #, no-wrap
 msgid "SERVER CONFIG"
 msgstr "POSTAVA SERVERA"
 
 #. type: SS
-#: doc/man/wesnothd.6:97
+#: doc/man/wesnothd.6:82
 #, no-wrap
 msgid "The general syntax is:"
 msgstr "Opšta sintaksa je:"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:101
+#: doc/man/wesnothd.6:86
 msgid "[I<tag>]"
 msgstr "[I<oznaka>]"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:103
+#: doc/man/wesnothd.6:88
 msgid "I<key>=\"I<value>\""
 msgstr "I<ključ>=\"I<vrednost>\""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:105
+#: doc/man/wesnothd.6:90
 msgid "I<key>=\"I<value>,I<value>,...\""
 msgstr "I<ključ>=\"I<vrednost>,I<vrednost>,...\""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:107
+#: doc/man/wesnothd.6:92
 msgid "[/I<tag>]"
 msgstr "[/I<oznaka>]"
 
 #. type: SS
-#: doc/man/wesnothd.6:108
+#: doc/man/wesnothd.6:93
 #, no-wrap
 msgid "Global keys:"
 msgstr "Globalni ključevi:"
 
 #. type: TP
-#: doc/man/wesnothd.6:110
+#: doc/man/wesnothd.6:95
 #, no-wrap
 msgid "B<allow_remote_shutdown>"
 msgstr "B<allow_remote_shutdown>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:114
+#: doc/man/wesnothd.6:99
 msgid ""
 "If set to B<no> (default), shut_down and restart requests are ignored unless "
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
@@ -1794,13 +1717,13 @@ msgstr ""
 "gašenje na /query administratora."
 
 #. type: TP
-#: doc/man/wesnothd.6:114
+#: doc/man/wesnothd.6:99
 #, no-wrap
 msgid "B<ban_save_file>"
 msgstr "B<ban_save_file>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:118
+#: doc/man/wesnothd.6:103
 msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
@@ -1810,28 +1733,13 @@ msgstr ""
 "servera."
 
 #. type: TP
-#: doc/man/wesnothd.6:118
-#, no-wrap
-msgid "B<compress_stored_rooms>"
-msgstr "B<compress_stored_rooms>"
-
-#. type: Plain text
-#: doc/man/wesnothd.6:121
-msgid ""
-"Determines whether the rooms file should be read and written to in "
-"compressed form. Defaults to B<yes>."
-msgstr ""
-"određuje da li datoteku soba treba čitati i pisati u kompresovanom obliku. "
-"Podrazumevano B<yes>."
-
-#. type: TP
-#: doc/man/wesnothd.6:121
+#: doc/man/wesnothd.6:103
 #, no-wrap
 msgid "B<connections_allowed>"
 msgstr "B<connections_allowed>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:124
+#: doc/man/wesnothd.6:106
 msgid ""
 "The number of allowed connections from the same IP. B<0> means infinite. "
 "(default: B<5>)"
@@ -1840,31 +1748,37 @@ msgstr ""
 "B<5>)"
 
 #. type: TP
-#: doc/man/wesnothd.6:124
+#: doc/man/wesnothd.6:106
 #, no-wrap
 msgid "B<deny_unregistered_login>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:129
+#: doc/man/wesnothd.6:111
 msgid ""
 "Whether to prevent users who are not registered with the B<user_handler> "
 "being used from logging in. (default: false)"
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnothd.6:129
+#: doc/man/wesnothd.6:111
 #, no-wrap
 msgid "B<disallow_names>"
 msgstr "B<disallow_names>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:136
+#: doc/man/wesnothd.6:118
+#, fuzzy
+#| msgid ""
+#| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
+#| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
+#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
+#| "*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
-"computer,human,network,player>."
+"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
+"ai,ai?,computer,human,network,player>."
 msgstr ""
 "imena/nadimci koje server ne prihvata. Prihvataju se B<*> i B<?> kao džokeri "
 "(pogledajte B<glob>(7) za više detalja). Podrazumevane vrednosti, koje se "
@@ -1872,13 +1786,13 @@ msgstr ""
 "human,network,player>."
 
 #. type: TP
-#: doc/man/wesnothd.6:136
+#: doc/man/wesnothd.6:118
 #, no-wrap
 msgid "B<fifo_path>"
 msgstr "B<fifo_path>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:140
+#: doc/man/wesnothd.6:122
 #, fuzzy
 #| msgid ""
 #| "The path to the fifo you can echo server commands into (same as /"
@@ -1894,13 +1808,27 @@ msgstr ""
 "socket/wesnothd/socket>)."
 
 #. type: TP
-#: doc/man/wesnothd.6:140
+#: doc/man/wesnothd.6:122
+#, no-wrap
+msgid "B<id>"
+msgstr ""
+
+#. type: Plain text
+#: doc/man/wesnothd.6:125
+msgid ""
+"The ID of the server when using the database functionality to store game "
+"information. Generally is the major.minor version of accepted clients, such "
+"as 1.16 or 1.17."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnothd.6:125
 #, no-wrap
 msgid "B<max_messages>"
 msgstr "B<max_messages>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:143
+#: doc/man/wesnothd.6:128
 msgid ""
 "The number of allowed messages in B<messages_time_period>. (default: B<4>)"
 msgstr ""
@@ -1908,13 +1836,13 @@ msgstr ""
 "B<4>)"
 
 #. type: TP
-#: doc/man/wesnothd.6:143
+#: doc/man/wesnothd.6:128
 #, no-wrap
 msgid "B<messages_time_period>"
 msgstr "B<messages_time_period>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:146
+#: doc/man/wesnothd.6:131
 msgid ""
 "The time period (in seconds) message flooding is detected in. (default: "
 "B<10> seconds)"
@@ -1923,43 +1851,24 @@ msgstr ""
 "(podrazumevano: B<10> sekundi)"
 
 #. type: TP
-#: doc/man/wesnothd.6:146
+#: doc/man/wesnothd.6:131
 #, no-wrap
 msgid "B<motd>"
 msgstr "B<motd>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:149
+#: doc/man/wesnothd.6:134
 msgid "The message of the day."
 msgstr "poruka dana"
 
 #. type: TP
-#: doc/man/wesnothd.6:149
-#, no-wrap
-msgid "B<new_room_policy>"
-msgstr "B<new_room_policy>"
-
-#. type: Plain text
-#: doc/man/wesnothd.6:152
-msgid ""
-"Determines who can create new rooms on the server. Available values are "
-"B<everyone>, B<registered>, B<admin> and B<nobody>, and give the permission "
-"respectively to everyone, registered users, admin users or disables new room "
-"creation. Default value is B<everyone>."
-msgstr ""
-"određuje ko može da stvara nove sobe na serveru. Moguće vrednosti su "
-"B<everyone>, B<registered>, B<admin> i B<nobody>, dajući dozvolu, redom, "
-"svima, registrovanim korisnicima, administratorima i nikome. Podrazumevana "
-"vrednost je B<everyone>."
-
-#. type: TP
-#: doc/man/wesnothd.6:152
+#: doc/man/wesnothd.6:134
 #, no-wrap
 msgid "B<passwd>"
 msgstr "B<passwd>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:155
+#: doc/man/wesnothd.6:137
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
 msgstr ""
@@ -1967,13 +1876,13 @@ msgstr ""
 ">I<lozinka>)."
 
 #. type: TP
-#: doc/man/wesnothd.6:155
+#: doc/man/wesnothd.6:137
 #, no-wrap
 msgid "B<replay_save_path>"
 msgstr "B<replay_save_path>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:158
+#: doc/man/wesnothd.6:140
 msgid ""
 "The directory where the server stores game replays. (Don't forget the "
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
@@ -1984,13 +1893,13 @@ msgstr ""
 "pokrenut."
 
 #. type: TP
-#: doc/man/wesnothd.6:158
+#: doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<restart_command>"
 msgstr "B<restart_command>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:161
+#: doc/man/wesnothd.6:143
 msgid ""
 "The command that the server uses to start a new server process via the "
 "B<restart> command. (Can only be issued via the fifo. See the "
@@ -2000,30 +1909,13 @@ msgstr ""
 "(Može se izdati samo preko fifoa. Vidi postavku B<allow_remote_shutdown>.)"
 
 #. type: TP
-#: doc/man/wesnothd.6:161
-#, no-wrap
-msgid "B<room_save_file>"
-msgstr "B<room_save_file>"
-
-#. type: Plain text
-#: doc/man/wesnothd.6:164
-msgid ""
-"Path to a file where the room info should be stored. This file is read on "
-"server startup and written to later. If empty or not set, rooms are not "
-"loaded and not saved."
-msgstr ""
-"putanja do datoteke gde se skladište podaci sobe. Ovu datoteku čita server "
-"pri pokretanju, i kasnije upisuje. Ako je prazno ili nije zadato, sobe se ne "
-"učitavaju niti upisuju."
-
-#. type: TP
-#: doc/man/wesnothd.6:164
+#: doc/man/wesnothd.6:143
 #, no-wrap
 msgid "B<save_replays>"
 msgstr "B<save_replays>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:167
+#: doc/man/wesnothd.6:146
 msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
@@ -2032,59 +1924,59 @@ msgstr ""
 "B<false>)."
 
 #. type: TP
-#: doc/man/wesnothd.6:167
+#: doc/man/wesnothd.6:146
 #, no-wrap
 msgid "B<tls_enabled>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:170
+#: doc/man/wesnothd.6:149
 msgid "Enable use of TLS. If true, requires 3 following options to be set too."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnothd.6:170
+#: doc/man/wesnothd.6:149
 #, no-wrap
 msgid "B<tls_fullchain>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:173
+#: doc/man/wesnothd.6:152
 msgid "TLS full certificate chain in .pem format"
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnothd.6:173
+#: doc/man/wesnothd.6:152
 #, no-wrap
 msgid "B<tls_private_key>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:176
+#: doc/man/wesnothd.6:155
 msgid "private key for TLS in .pem format"
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnothd.6:176
+#: doc/man/wesnothd.6:155
 #, no-wrap
 msgid "B<tls_dh>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:179
+#: doc/man/wesnothd.6:158
 msgid ""
 "TLS DH parameters, as .pem file. Generate with B<openssl dhparam -out "
 "filename.pem 4096>"
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnothd.6:179
+#: doc/man/wesnothd.6:158
 #, no-wrap
 msgid "B<versions_accepted>"
 msgstr "B<versions_accepted>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:183
+#: doc/man/wesnothd.6:162
 msgid ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
 "and B<?> from wildcard patterns are supported.  (defaults to the "
@@ -2095,32 +1987,18 @@ msgstr ""
 "verziji servera)"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:185
+#: doc/man/wesnothd.6:164
 msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
 msgstr "Primer: B<versions_accepted=\"*\"> prihvata bilo koju nisku verzije."
 
-#. type: TP
-#: doc/man/wesnothd.6:185
-#, no-wrap
-msgid "B<id>"
-msgstr ""
-
-#. type: Plain text
-#: doc/man/wesnothd.6:188
-msgid ""
-"The ID of the server when using the database functionality to store game "
-"information. Generally is the major.minor version of accepted clients, such "
-"as 1.16 or 1.17."
-msgstr ""
-
 #. type: SS
-#: doc/man/wesnothd.6:189
+#: doc/man/wesnothd.6:165
 #, no-wrap
 msgid "Global tags:"
 msgstr "Globalne oznake:"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:196
+#: doc/man/wesnothd.6:172
 #, fuzzy
 #| msgid ""
 #| "B<[redirect]> A tag to specify a server to redirect certain client "
@@ -2133,35 +2011,35 @@ msgstr ""
 "verzije klijenta"
 
 #. type: TP
-#: doc/man/wesnothd.6:197
+#: doc/man/wesnothd.6:173
 #, no-wrap
 msgid "B<host>"
 msgstr "B<host>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:200
+#: doc/man/wesnothd.6:176
 msgid "The address of the server to redirect to."
 msgstr "adresa servera na koji se preusmerava"
 
 #. type: TP
-#: doc/man/wesnothd.6:200
+#: doc/man/wesnothd.6:176
 #, no-wrap
 msgid "B<port>"
 msgstr "B<port>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:203
+#: doc/man/wesnothd.6:179
 msgid "The port to connect to."
 msgstr "port na koji se povezuje"
 
 #. type: TP
-#: doc/man/wesnothd.6:203
+#: doc/man/wesnothd.6:179
 #, no-wrap
 msgid "B<version>"
 msgstr "B<version>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:208
+#: doc/man/wesnothd.6:184
 msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
@@ -2170,7 +2048,7 @@ msgstr ""
 "i B<versions_accepted> u pogledu džokera"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:212
+#: doc/man/wesnothd.6:188
 msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
@@ -2179,24 +2057,24 @@ msgstr ""
 "zabrane."
 
 #. type: TP
-#: doc/man/wesnothd.6:213
+#: doc/man/wesnothd.6:189
 #, no-wrap
 msgid "B<name>"
 msgstr "B<name>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:216
+#: doc/man/wesnothd.6:192
 msgid "The name used to reference the ban time."
 msgstr "Ime koje upućuje na trajanje zabrane."
 
 #. type: TP
-#: doc/man/wesnothd.6:216
+#: doc/man/wesnothd.6:192
 #, no-wrap
 msgid "B<time>"
 msgstr "B<time>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:224
+#: doc/man/wesnothd.6:200
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -2210,7 +2088,7 @@ msgstr ""
 "znači zabranu u trajanju od jednog dana, 12 sati i 30 minuta."
 
 #. type: Plain text
-#: doc/man/wesnothd.6:230
+#: doc/man/wesnothd.6:206
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "
@@ -2221,7 +2099,7 @@ msgstr ""
 "ključeve kao i B<[redirect]>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:241
+#: doc/man/wesnothd.6:217
 #, fuzzy
 #| msgid ""
 #| "B<[user_handler]> Configures the user handler. Available keys vary "
@@ -2242,39 +2120,39 @@ msgstr ""
 "nadimaka."
 
 #. type: TP
-#: doc/man/wesnothd.6:242
+#: doc/man/wesnothd.6:218
 #, no-wrap
 msgid "B<db_host>"
 msgstr "B<db_host>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:245
+#: doc/man/wesnothd.6:221
 #, fuzzy
 #| msgid "The hostname of the mail server"
 msgid "The hostname of the database server"
 msgstr "Ime domaćina udaljenog servera"
 
 #. type: TP
-#: doc/man/wesnothd.6:245
+#: doc/man/wesnothd.6:221
 #, no-wrap
 msgid "B<db_name>"
 msgstr "B<db_name>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:248
+#: doc/man/wesnothd.6:224
 #, fuzzy
 #| msgid "The hostname of the mail server"
 msgid "The name of the database"
 msgstr "Ime domaćina udaljenog servera"
 
 #. type: TP
-#: doc/man/wesnothd.6:248
+#: doc/man/wesnothd.6:224
 #, no-wrap
 msgid "B<db_user>"
 msgstr "B<db_user>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:251
+#: doc/man/wesnothd.6:227
 #, fuzzy
 #| msgid ""
 #| "(for user_handler=forum) The name of the user under which to log into the "
@@ -2285,26 +2163,26 @@ msgstr ""
 "podataka"
 
 #. type: TP
-#: doc/man/wesnothd.6:251
+#: doc/man/wesnothd.6:227
 #, no-wrap
 msgid "B<db_password>"
 msgstr "B<db_password>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:254
+#: doc/man/wesnothd.6:230
 #, fuzzy
 #| msgid "This user's password."
 msgid "This user's password"
 msgstr "Korisnikova lozinka."
 
 #. type: TP
-#: doc/man/wesnothd.6:254
+#: doc/man/wesnothd.6:230
 #, no-wrap
 msgid "B<db_users_table>"
 msgstr "B<db_users_table>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:257
+#: doc/man/wesnothd.6:233
 #, fuzzy
 #| msgid ""
 #| "(for user_handler=forum) The name of the table in which your phpbb forums "
@@ -2319,66 +2197,67 @@ msgstr ""
 "phpbb3_users)."
 
 #. type: TP
-#: doc/man/wesnothd.6:257
+#: doc/man/wesnothd.6:233
 #, no-wrap
 msgid "B<db_extra_table>"
 msgstr "B<db_extra_table>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:260
+#: doc/man/wesnothd.6:236
 msgid ""
 "The name of the table in which wesnothd will save its own data about users."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnothd.6:260
+#: doc/man/wesnothd.6:236
 #, fuzzy, no-wrap
 #| msgid "B<db_users_table>"
 msgid "B<db_game_info_table>"
 msgstr "B<db_users_table>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:263
+#: doc/man/wesnothd.6:239
 msgid ""
 "The name of the table in which wesnothd will save its own data about games."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnothd.6:263
+#: doc/man/wesnothd.6:239
 #, fuzzy, no-wrap
 #| msgid "B<db_users_table>"
 msgid "B<db_game_player_info_table>"
 msgstr "B<db_users_table>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:266
+#: doc/man/wesnothd.6:242
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "players in a game."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnothd.6:266
-#, no-wrap
-msgid "B<db_game_modification_info_table>"
-msgstr ""
+#: doc/man/wesnothd.6:242
+#, fuzzy, no-wrap
+#| msgid "B<db_users_table>"
+msgid "B<db_game_content_info_table>"
+msgstr "B<db_users_table>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:269
+#: doc/man/wesnothd.6:245
 msgid ""
-"The name of the table in which wesnothd will save its own data about the "
-"modifications used in a game."
+"The name of the table in which wesnothd will save its own data about game "
+"content (scenario/era/modifications) used in a game."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnothd.6:269
+#: doc/man/wesnothd.6:245
 #, fuzzy, no-wrap
 #| msgid "B<db_users_table>"
 msgid "B<db_user_group_table>"
 msgstr "B<db_users_table>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:272
+#: doc/man/wesnothd.6:248
 #, fuzzy
 #| msgid ""
 #| "(for user_handler=forum) The name of the table in which your phpbb forums "
@@ -2394,28 +2273,42 @@ msgstr ""
 "phpbb3_users)."
 
 #. type: TP
-#: doc/man/wesnothd.6:272
+#: doc/man/wesnothd.6:248
+#, fuzzy, no-wrap
+#| msgid "B<db_name>"
+msgid "B<db_tournament_query>"
+msgstr "B<db_name>"
+
+#. type: Plain text
+#: doc/man/wesnothd.6:251
+msgid ""
+"The SQL query to find tournaments to announce on login. Should return "
+"tournament B<title>, B<status> and B<url>."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnothd.6:251
 #, fuzzy, no-wrap
 #| msgid "B<connections_allowed>"
 msgid "B<db_connection_history_table>"
 msgstr "B<connections_allowed>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:275
+#: doc/man/wesnothd.6:254
 msgid ""
 "The name of the table in which to store login/logout times. Also used for "
 "matching IPs to users and vice versa."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnothd.6:275
+#: doc/man/wesnothd.6:254
 #, fuzzy, no-wrap
 #| msgid "B<db_users_table>"
 msgid "B<db_topics_table>"
 msgstr "B<db_users_table>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:278
+#: doc/man/wesnothd.6:257
 #, fuzzy
 #| msgid ""
 #| "(for user_handler=forum) The name of the table in which your phpbb forums "
@@ -2431,14 +2324,14 @@ msgstr ""
 "phpbb3_users)."
 
 #. type: TP
-#: doc/man/wesnothd.6:278
+#: doc/man/wesnothd.6:257
 #, fuzzy, no-wrap
 #| msgid "B<db_users_table>"
 msgid "B<db_banlist_table>"
 msgstr "B<db_users_table>"
 
 #. type: Plain text
-#: doc/man/wesnothd.6:281
+#: doc/man/wesnothd.6:260
 #, fuzzy
 #| msgid ""
 #| "(for user_handler=forum) The name of the table in which your phpbb forums "
@@ -2454,19 +2347,19 @@ msgstr ""
 "phpbb3_users)."
 
 #. type: TP
-#: doc/man/wesnothd.6:281
+#: doc/man/wesnothd.6:260
 #, no-wrap
 msgid "B<mp_mod_group>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:284
+#: doc/man/wesnothd.6:263
 msgid ""
 "The ID of the forum group to be considered as having moderation authority."
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnothd.6:289
+#: doc/man/wesnothd.6:268
 msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
@@ -2475,7 +2368,7 @@ msgstr ""
 "ukazuje na grešku u opcijama komandne linije."
 
 #. type: Plain text
-#: doc/man/wesnothd.6:295
+#: doc/man/wesnothd.6:274
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -2491,11 +2384,140 @@ msgstr ""
 "E<lt>cyril@bouthors.orgE<gt>."
 
 #. type: Plain text
-#: doc/man/wesnothd.6:308
+#: doc/man/wesnothd.6:287
 #, fuzzy
 #| msgid "B<wesnoth>(6)."
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)."
+
+#, fuzzy, no-wrap
+#~| msgid "B<--config-dir>I<\\ name>"
+#~ msgid "B<--config-dir>I<\\ name>"
+#~ msgstr "B<--config-dir>I<\\ ime>"
+
+#, fuzzy, no-wrap
+#~| msgid "B<--config-path>"
+#~ msgid "B<--config-path>"
+#~ msgstr "B<--config-path>"
+
+#, fuzzy
+#~| msgid "B<--path>"
+#~ msgid "Deprecated, use B<--userdata-path>."
+#~ msgstr "B<--path>"
+
+#, fuzzy, no-wrap
+#~| msgid "B<--config-dir>I<\\ name>"
+#~ msgid "B<--userconfig-dir>I<\\ name>"
+#~ msgstr "B<--config-dir>I<\\ ime>"
+
+#, fuzzy
+#~| msgid ""
+#~| "sets the user configuration directory to I<name> under $HOME or \"My "
+#~| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
+#~| "path for the configuration directory outside the $HOME or \"My "
+#~| "Documents\\eMy Games\""
+#~ msgid ""
+#~ "sets the user configuration directory to I<name> under $HOME or \"My "
+#~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
+#~ "path for the configuration directory outside the $HOME or \"My "
+#~ "Documents\\eMy Games\". On Windows it is also possible to specify a "
+#~ "directory relative to the process working directory by using path "
+#~ "starting with \".\\e\" or \"..\\e\".  This defaults to the userdata path."
+#~ msgstr ""
+#~ "zadaje postavni direktorijum I<ime>, pod $HOME ili \"Moji "
+#~ "dokumenti\\eMoje igre\" na Windowsu. Takođe možete zadati apsolutnu "
+#~ "putanju postavnog direktorijuma izvan $HOME ili \"My Documents\\eMy "
+#~ "Games\"."
+
+#, fuzzy, no-wrap
+#~| msgid "B<--config-path>"
+#~ msgid "B<--userconfig-path>"
+#~ msgstr "B<--config-path>"
+
+#~ msgid "prints the path of the user configuration directory and exits."
+#~ msgstr "ispisuje putanju korisničkog postavnog direktorijuma i izlazi."
+
+#, fuzzy
+#~| msgid ""
+#~| "sets the user configuration directory to I<name> under $HOME or \"My "
+#~| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
+#~| "path for the configuration directory outside the $HOME or \"My "
+#~| "Documents\\eMy Games\""
+#~ msgid ""
+#~ "sets the user configuration directory to I<name> under $HOME or \"My "
+#~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
+#~ "path for the configuration directory outside the $HOME or \"My "
+#~ "Documents\\eMy Games\". On Windows it is also possible to specify a "
+#~ "directory relative to the process working directory by using path "
+#~ "starting with \".\\e\" or \"..\\e\".  Under X11 this defaults to "
+#~ "$XDG_CONFIG_HOME or $HOME/.config/wesnoth, on other systems to the "
+#~ "userdata path."
+#~ msgstr ""
+#~ "zadaje postavni direktorijum I<ime>, pod $HOME ili \"Moji "
+#~ "dokumenti\\eMoje igre\" na Windowsu. Takođe možete zadati apsolutnu "
+#~ "putanju postavnog direktorijuma izvan $HOME ili \"My Documents\\eMy "
+#~ "Games\"."
+
+#, no-wrap
+#~ msgid "B<-t\\ >I<number>B<,\\ --threads>I<\\ number>"
+#~ msgstr "B<-t\\ >I<broj>B<,\\ --threads>I<\\ broj>"
+
+#~ msgid ""
+#~ "sets the maximum number of waiting worker threads for network I/O to n "
+#~ "(default: B<5>,\\ max:\\ B<30>)."
+#~ msgstr ""
+#~ "postavlja najveći broj radnih niti na čekanju za mrežni U/I "
+#~ "(podrazumevano: B<5>,\\ najviše:\\ B<30>)."
+
+#, no-wrap
+#~ msgid "B<-T\\ >I<number>B<,\\ --max-threads>I<\\ number>"
+#~ msgstr "B<-T\\ >I<broj>B<,\\ --max-threads>I<\\ broj>"
+
+#~ msgid ""
+#~ "sets the maximum number of worker threads that will be created.  If set "
+#~ "to B<0> there will be no limit (default: B<0>)."
+#~ msgstr ""
+#~ "postavlja najveći broj radnih niti koje mogu biti stvorene; ako se zada "
+#~ "B<0>, nema ograničenja (podrazumevano: B<0>)."
+
+#, no-wrap
+#~ msgid "B<compress_stored_rooms>"
+#~ msgstr "B<compress_stored_rooms>"
+
+#~ msgid ""
+#~ "Determines whether the rooms file should be read and written to in "
+#~ "compressed form. Defaults to B<yes>."
+#~ msgstr ""
+#~ "određuje da li datoteku soba treba čitati i pisati u kompresovanom "
+#~ "obliku. Podrazumevano B<yes>."
+
+#, no-wrap
+#~ msgid "B<new_room_policy>"
+#~ msgstr "B<new_room_policy>"
+
+#~ msgid ""
+#~ "Determines who can create new rooms on the server. Available values are "
+#~ "B<everyone>, B<registered>, B<admin> and B<nobody>, and give the "
+#~ "permission respectively to everyone, registered users, admin users or "
+#~ "disables new room creation. Default value is B<everyone>."
+#~ msgstr ""
+#~ "određuje ko može da stvara nove sobe na serveru. Moguće vrednosti su "
+#~ "B<everyone>, B<registered>, B<admin> i B<nobody>, dajući dozvolu, redom, "
+#~ "svima, registrovanim korisnicima, administratorima i nikome. "
+#~ "Podrazumevana vrednost je B<everyone>."
+
+#, no-wrap
+#~ msgid "B<room_save_file>"
+#~ msgstr "B<room_save_file>"
+
+#~ msgid ""
+#~ "Path to a file where the room info should be stored. This file is read on "
+#~ "server startup and written to later. If empty or not set, rooms are not "
+#~ "loaded and not saved."
+#~ msgstr ""
+#~ "putanja do datoteke gde se skladište podaci sobe. Ovu datoteku čita "
+#~ "server pri pokretanju, i kasnije upisuje. Ako je prazno ili nije zadato, "
+#~ "sobe se ne učitavaju niti upisuju."
 
 #, fuzzy, no-wrap
 #~| msgid "B<--gunzip>I<\\ infile.gz>"

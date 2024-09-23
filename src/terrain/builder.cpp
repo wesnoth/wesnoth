@@ -20,13 +20,14 @@
 
 #include "terrain/builder.hpp"
 
+#include "game_config_view.hpp"
+#include "global.hpp"
 #include "gui/dialogs/loading_screen.hpp"
-#include "picture.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
-#include "preferences/game.hpp"
+#include "picture.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/string_utils.hpp"
-#include "game_config_view.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -86,28 +87,6 @@ static map_location legacy_difference(const map_location& me, const map_location
  *
  */
 
-terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image, int cx, int cy, bool is_water)
-	: layer(layer)
-	, basex(x)
-	, basey(y)
-	, variants()
-	, global_image(global_image)
-	, center_x(cx)
-	, center_y(cy)
-	, is_water(is_water)
-{
-}
-
-terrain_builder::tile::tile()
-	: flags()
-	, images()
-	, images_foreground()
-	, images_background()
-	, last_tod("invalid_tod")
-	, sorted_images(false)
-{
-}
-
 void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 {
 	images_background.clear();
@@ -122,7 +101,7 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 
 	for(const rule_image_rand& ri : images) {
 		bool is_background = ri->is_background();
-		bool animate = (!ri.ri->is_water || preferences::animate_water());
+		bool animate = (!ri.ri->is_water || prefs::get().animate_water());
 
 		imagelist& img_list = is_background ? images_background : images_foreground;
 
@@ -202,6 +181,14 @@ static unsigned int get_noise(const map_location& loc, unsigned int index)
 	return abc * abc;
 }
 
+terrain_builder::tilemap::tilemap(int x, int y)
+	: tiles_((x + 4) * (y + 4))
+	, x_(x)
+	, y_(y)
+{
+	reset();
+}
+
 void terrain_builder::tilemap::reset()
 {
 	for(std::vector<tile>::iterator it = tiles_.begin(); it != tiles_.end(); ++it)
@@ -212,7 +199,7 @@ void terrain_builder::tilemap::reload(int x, int y)
 {
 	x_ = x;
 	y_ = y;
-	std::vector<terrain_builder::tile> new_tiles((x + 4) * (y + 4));
+	std::vector<terrain_builder::tile> new_tiles(static_cast<size_t>(x + 4) * (y + 4));
 	tiles_.swap(new_tiles);
 	reset();
 }
@@ -469,13 +456,11 @@ bool terrain_builder::load_images(building_rule& rule)
 								ERR_NG << "Invalid 'time' value in terrain image builder: " << items.back();
 							}
 						}
-						image::locator locator;
 						if(ri.global_image) {
-							locator = image::locator(filename, constraint.loc, ri.center_x, ri.center_y, modif);
+							res.add_frame(time, image::locator(filename, constraint.loc, ri.center_x, ri.center_y, modif));
 						} else {
-							locator = image::locator(filename, modif);
+							res.add_frame(time, image::locator(filename, modif));
 						}
-						res.add_frame(time, locator);
 					}
 					if(res.get_frames_count() == 0)
 						break; // no valid images, don't register it
@@ -637,8 +622,8 @@ void terrain_builder::rotate_rule(building_rule& ret, int angle, const std::vect
 	}
 
 	// Normalize the rotation, so that it starts on a positive location
-	int minx = INT_MAX;
-	int miny = INT_MAX;
+	int minx = std::numeric_limits<int>::max();
+	int miny = std::numeric_limits<int>::max();
 
 	for(const terrain_constraint& cons : ret.constraints) {
 		minx = std::min<int>(cons.loc.x, minx);
@@ -655,6 +640,18 @@ void terrain_builder::rotate_rule(building_rule& ret, int angle, const std::vect
 	}
 
 	replace_rotate_tokens(ret, angle, rot);
+}
+
+terrain_builder::rule_image_variant::rule_image_variant(const std::string& image_string,
+		const std::string& variations,
+		int random_start)
+	: image_string(image_string)
+	, variations(variations)
+	, images()
+	, tods()
+	, has_flag()
+	, random_start(random_start)
+{
 }
 
 terrain_builder::rule_image_variant::rule_image_variant(const std::string& image_string,
@@ -711,7 +708,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 
 		bool is_water = img["is_water"].to_bool();
 
-		images.push_back(rule_image(layer, basex - dx, basey - dy, global, center_x, center_y, is_water));
+		images.AGGREGATE_EMPLACE(layer, basex - dx, basey - dy, global, center_x, center_y, is_water);
 
 		// Adds the other variants of the image
 		for(const config& variant : img.child_range("variant")) {
@@ -752,7 +749,7 @@ terrain_builder::terrain_constraint& terrain_builder::add_constraints(terrain_bu
 
 	if(!cons) {
 		// The terrain at the current location did not exist, so create it
-		constraints.emplace_back(loc);
+		constraints.AGGREGATE_EMPLACE(loc);
 		cons = &constraints.back();
 	}
 
@@ -1085,7 +1082,7 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule& rule, con
 
 		if(!constraint.no_draw) {
 			for(const rule_image& img : constraint.images) {
-				btile.images.emplace_back(&img, rand_seed);
+				btile.images.AGGREGATE_EMPLACE(&img, rand_seed);
 			}
 		}
 
@@ -1154,7 +1151,7 @@ void terrain_builder::build_terrains()
 		// Find the constraint that contains the less terrain of all terrain rules.
 		// We will keep a track of the matching terrains of this constraint
 		// and later try to apply the rule only on them
-		std::size_t min_size = INT_MAX;
+		std::size_t min_size = std::numeric_limits<int>::max();
 		t_translation::ter_list min_types = t_translation::ter_list(); // <-- This must be explicitly initialized, just
 																	   // as min_constraint is, at start of loop, or we
 																	   // get a null pointer dereference when we go

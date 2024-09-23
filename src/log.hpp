@@ -52,9 +52,10 @@
 #endif
 
 #include <iosfwd> // needed else all files including log.hpp need to do it.
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <string>
 #include <utility>
+#include <chrono>
 #include <ctime>
 #include <cstdint>
 
@@ -137,6 +138,9 @@ void set_strict_severity(severity severity);
 void set_strict_severity(const logger &lg);
 bool broke_strict();
 
+/** toggle log sanitization */
+void set_log_sanitize(bool sanitize);
+
 /**
  * Do the initial redirection to a log file if the logs directory is writable.
  * Also performs log rotation to delete old logs.
@@ -159,7 +163,7 @@ void check_log_dir_writable();
  *
  * @return true if the log directory is writable, false otherwise.
  */
-std::optional<bool> log_dir_writable();
+utils::optional<bool> log_dir_writable();
 
 /**
  * Use the defined prefix and suffix to determine if a filename is a log file.
@@ -236,19 +240,19 @@ log_domain& general();
 
 class scope_logger
 {
-	int64_t ticks_;
+	std::chrono::steady_clock::time_point start_;
 	const log_domain& domain_;
 	std::string str_;
 public:
 	scope_logger(const log_domain& domain, const char* str)
-		: ticks_(0)
+		: start_()
 		, domain_(domain)
 		, str_()
 	{
 		if (!debug().dont_log(domain)) do_log_entry(str);
 	}
 	scope_logger(const log_domain& domain, const std::string& str)
-		: ticks_(0)
+		: start_()
 		, domain_(domain)
 		, str_()
 	{

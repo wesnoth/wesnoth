@@ -18,7 +18,7 @@
 #include "gui/dialogs/multiplayer/mp_connect.hpp"
 
 #include "gettext.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
@@ -65,11 +65,11 @@ mp_connect::mp_connect()
 	: modal_dialog(window_id())
 	, host_name_(register_text("host_name",
 							   true,
-							   preferences::network_host,
-							   preferences::set_network_host,
+							   []() {return prefs::get().network_host();},
+							   [](std::string v) {prefs::get().set_network_host(v);},
 							   true))
-	, builtin_servers_(preferences::builtin_servers_list())
-	, user_servers_(preferences::user_servers_list())
+	, builtin_servers_(prefs::get().builtin_servers_list())
+	, user_servers_(prefs::get().user_servers_list())
 {
 }
 
@@ -191,7 +191,7 @@ void mp_connect::on_server_add()
 	info.address = address;
 
 	user_servers_.insert(user_servers_.begin() + mem_pos, info);
-	preferences::set_user_servers_list(user_servers_);
+	prefs::get().set_user_servers_list(user_servers_);
 
 	insert_into_server_listbox(server_list, info, ui_pos);
 	select_first_match();
@@ -211,7 +211,7 @@ void mp_connect::on_server_delete()
 	}
 
 	user_servers_.erase(user_servers_.begin() + selection.relative_index());
-	preferences::set_user_servers_list(user_servers_);
+	prefs::get().set_user_servers_list(user_servers_);
 
 	server_list.remove_row(selection.row());
 	on_server_select();
@@ -253,6 +253,13 @@ mp_connect::server_info& mp_connect::selection::get()
 {
 	must_be_valid();
 	return parent_list().at(relative_index());
+}
+
+bool mp_connect::selection::user_defined() const
+{
+	// An invalid selection is the same as one from the read-only list of
+	// built-in servers for interaction purposes since it can't be written to.
+	return valid() && std::size_t(row_) >= owner_->builtin_servers_.size();
 }
 
 unsigned mp_connect::selection::row() const

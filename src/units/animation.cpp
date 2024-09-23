@@ -15,16 +15,17 @@
 
 #include "units/animation.hpp"
 
+#include "color.hpp"
 #include "display.hpp"
+#include "global.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
+#include "random.hpp"
 #include "resources.hpp"
-#include "color.hpp"
-#include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/filter.hpp"
+#include "units/unit.hpp"
 #include "variable.hpp"
-#include "random.hpp"
 
 #include <algorithm>
 
@@ -35,11 +36,6 @@ static std::string get_heal_sound(const config& cfg)
 
 struct animation_branch
 {
-	animation_branch()
-		: attributes()
-		, children()
-	{}
-
 	config merge() const
 	{
 		config result = attributes;
@@ -545,7 +541,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 		animations.push_back(base);
 		animations.back().event_ = { "movement" };
 		animations.back().unit_anim_.override(0, 200,
-			particle::NO_CYCLE, "", "", {0,0,0}, "0~1:200", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT - display::LAYER_UNIT_FIRST));
+			particle::NO_CYCLE, "", "", {0,0,0}, "0~1:200", std::to_string(get_abs_frame_layer(drawing_layer::unit_move_default)));
 
 		animations.push_back(base);
 		animations.back().event_ = { "defend" };
@@ -559,7 +555,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 		animations.push_back(base);
 		animations.back().event_ = { "attack" };
-		animations.back().unit_anim_.override(-150, 300, particle::NO_CYCLE, "", "", {0,0,0}, "0~0.6:150,0.6~0:150", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
+		animations.back().unit_anim_.override(-150, 300, particle::NO_CYCLE, "", "", {0,0,0}, "0~0.6:150,0.6~0:150", std::to_string(get_abs_frame_layer(drawing_layer::unit_move_default)));
 		animations.back().primary_attack_filter_.emplace_back("range", "melee");
 
 		animations.push_back(base);
@@ -606,7 +602,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 static void add_simple_anim(std::vector<unit_animation>& animations,
 	const config& cfg, char const* tag_name, char const* apply_to,
-	display::drawing_layer layer = display::LAYER_UNIT_DEFAULT,
+	drawing_layer layer = drawing_layer::unit_default,
 	bool offscreen = true)
 {
 	for(const animation_branch& ab : prepare_animation(cfg, tag_name)) {
@@ -619,7 +615,7 @@ static void add_simple_anim(std::vector<unit_animation>& animations,
 		}
 
 		config::attribute_value& v = anim["layer"];
-		if(v.empty()) v = layer - display::LAYER_UNIT_FIRST;
+		if(v.empty()) v = get_abs_frame_layer(layer);
 
 		animations.emplace_back(anim);
 	}
@@ -631,16 +627,16 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.emplace_back(ab.merge());
 	}
 
-	const int default_layer = display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST;
-	const int move_layer    = display::LAYER_UNIT_MOVE_DEFAULT - display::LAYER_UNIT_FIRST;
-	const int missile_layer = display::LAYER_UNIT_MISSILE_DEFAULT - display::LAYER_UNIT_FIRST;
+	constexpr int default_layer = get_abs_frame_layer(drawing_layer::unit_default);
+	constexpr int move_layer    = get_abs_frame_layer(drawing_layer::unit_move_default);
+	constexpr int missile_layer = get_abs_frame_layer(drawing_layer::unit_missile_default);
 
 	add_simple_anim(animations, cfg, "resistance_anim", "resistance");
 	add_simple_anim(animations, cfg, "leading_anim", "leading");
 	add_simple_anim(animations, cfg, "teaching_anim", "teaching");
 	add_simple_anim(animations, cfg, "recruit_anim", "recruited");
 	add_simple_anim(animations, cfg, "recruiting_anim", "recruiting");
-	add_simple_anim(animations, cfg, "idle_anim", "idling", display::LAYER_UNIT_DEFAULT, false);
+	add_simple_anim(animations, cfg, "idle_anim", "idling", drawing_layer::unit_default, false);
 	add_simple_anim(animations, cfg, "levelin_anim", "levelin");
 	add_simple_anim(animations, cfg, "levelout_anim", "levelout");
 
@@ -736,7 +732,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound(game_config::sounds::status::poisoned),true);
 	}
 
-	add_simple_anim(animations, cfg, "pre_movement_anim", "pre_movement", display::LAYER_UNIT_MOVE_DEFAULT);
+	add_simple_anim(animations, cfg, "pre_movement_anim", "pre_movement", drawing_layer::unit_move_default);
 
 	for(const animation_branch& ab : prepare_animation(cfg, "movement_anim")) {
 		config anim = ab.merge();
@@ -753,7 +749,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.emplace_back(anim);
 	}
 
-	add_simple_anim(animations, cfg, "post_movement_anim", "post_movement", display::LAYER_UNIT_MOVE_DEFAULT);
+	add_simple_anim(animations, cfg, "post_movement_anim", "post_movement", drawing_layer::unit_move_default);
 
 	for(const animation_branch& ab : prepare_animation(cfg, "defend")) {
 		config anim = ab.merge();
@@ -799,8 +795,8 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		}
 	}
 
-	add_simple_anim(animations, cfg, "draw_weapon_anim", "draw_weapon", display::LAYER_UNIT_MOVE_DEFAULT);
-	add_simple_anim(animations, cfg, "sheath_weapon_anim", "sheath_weapon", display::LAYER_UNIT_MOVE_DEFAULT);
+	add_simple_anim(animations, cfg, "draw_weapon_anim", "draw_weapon", drawing_layer::unit_move_default);
+	add_simple_anim(animations, cfg, "sheath_weapon_anim", "sheath_weapon", drawing_layer::unit_move_default);
 
 	for(const animation_branch& ab : prepare_animation(cfg, "attack_anim")) {
 		config anim = ab.merge();
@@ -932,7 +928,7 @@ unit_animation::particle::particle(const config& cfg, const std::string& frame_s
 	, last_frame_begin_time_(0)
 	, cycles_(false)
 {
-	starting_frame_time_ = INT_MAX;
+	starting_frame_time_ = std::numeric_limits<int>::max();
 
 	config::const_child_itors range = cfg.child_range(frame_string + "frame");
 	if(!range.empty() && cfg[frame_string + "start_time"].empty()) {
@@ -1308,18 +1304,12 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 {
 	if(!animated_unit) return;
 
-	anim_elem tmp;
-	tmp.my_unit = std::move(animated_unit);
-	tmp.text = text;
-	tmp.text_color = text_color;
-	tmp.src = src;
-	tmp.with_bars= with_bars;
-	tmp.animation = tmp.my_unit->anim_comp().choose_animation(src, event, dst, value, hit_type, attack, second_attack, value2);
+	const unit_animation* anim =
+		animated_unit->anim_comp().choose_animation(src, event, dst, value, hit_type, attack, second_attack, value2);
+	if(!anim) return;
 
-	if(!tmp.animation) return;
-
-	start_time_ = std::max<int>(start_time_, tmp.animation->get_begin_time());
-	animated_units_.push_back(std::move(tmp));
+	start_time_ = std::max<int>(start_time_, anim->get_begin_time());
+	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, with_bars);
 }
 
 void unit_animator::add_animation(unit_const_ptr animated_unit
@@ -1329,20 +1319,10 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 	, const std::string& text
 	, const color_t text_color)
 {
-	if(!animated_unit) return;
+	if(!animated_unit || !anim) return;
 
-	anim_elem tmp;
-	tmp.my_unit = std::move(animated_unit);
-	tmp.text = text;
-	tmp.text_color = text_color;
-	tmp.src = src;
-	tmp.with_bars = with_bars;
-	tmp.animation = anim;
-
-	if(!tmp.animation) return;
-
-	start_time_ = std::max<int>(start_time_, tmp.animation->get_begin_time());
-	animated_units_.push_back(std::move(tmp));
+	start_time_ = std::max<int>(start_time_, anim->get_begin_time());
+	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, with_bars);
 }
 
 bool unit_animator::has_animation(unit_const_ptr animated_unit
@@ -1378,15 +1358,7 @@ void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit
 		 animated_unit->anim_comp().get_animation()->matches(
 			src, dst, animated_unit, event, value, hit_type, attack, second_attack, value2) > unit_animation::MATCH_FAIL)
 	{
-		anim_elem tmp;
-		tmp.my_unit = animated_unit;
-		tmp.text = text;
-		tmp.text_color = text_color;
-		tmp.src = src;
-		tmp.with_bars= with_bars;
-		tmp.animation = nullptr;
-
-		animated_units_.push_back(std::move(tmp));
+		animated_units_.AGGREGATE_EMPLACE(animated_unit, nullptr, text, text_color, src, with_bars);
 	} else {
 		add_animation(animated_unit,event,src,dst,value,with_bars,text,text_color,hit_type,attack,second_attack,value2);
 	}
@@ -1394,7 +1366,7 @@ void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit
 
 void unit_animator::start_animations()
 {
-	int begin_time = INT_MAX;
+	int begin_time = std::numeric_limits<int>::max();
 
 	for(const auto& anim : animated_units_) {
 		if(anim.my_unit->anim_comp().get_animation()) {
@@ -1492,7 +1464,7 @@ int unit_animator::get_animation_time_potential() const
 
 int unit_animator::get_end_time() const
 {
-	int end_time = INT_MIN;
+	int end_time = std::numeric_limits<int>::min();
 	for(const auto& anim : animated_units_) {
 		if(anim.my_unit->anim_comp().get_animation()) {
 			end_time = std::max<int>(end_time, anim.my_unit->anim_comp().get_animation()->get_end_time());

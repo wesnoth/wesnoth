@@ -24,13 +24,16 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/file_dialog.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "sound.hpp"
 
 #include <functional>
+#include <boost/filesystem.hpp>
 
 namespace gui2::dialogs
 {
@@ -55,8 +58,9 @@ static custom_tod::string_pair tod_getter_sound(const time_of_day& tod)
 
 REGISTER_DIALOG(custom_tod)
 
-custom_tod::custom_tod(const std::vector<time_of_day>& times, int current_time)
+custom_tod::custom_tod(const std::vector<time_of_day>& times, int current_time, const std::string addon_id)
 	: modal_dialog(window_id())
+	, addon_id_(addon_id)
 	, times_(times)
 	, current_tod_(current_time)
 	, color_field_r_(register_integer("tod_red",   true))
@@ -82,17 +86,10 @@ void custom_tod::pre_show(window& window)
 	window.add_to_tab_order(find_widget<text_box>(&window, "tod_id", false, true));
 
 	for(const auto& data : metadata_stuff) {
-		find_widget<text_box>(&window, "path_" + data.first, false).set_active(false);
-
 		button& copy_w = find_widget<button>(&window, "copy_" + data.first, false);
 
 		connect_signal_mouse_left_click(copy_w,
-			std::bind(&custom_tod::copy_to_clipboard_callback, this, data.second));
-
-		if(!desktop::clipboard::available()) {
-			copy_w.set_active(false);
-			copy_w.set_tooltip(_("Clipboard support not found, contact your packager"));
-		}
+			std::bind(&custom_tod::copy_to_clipboard_callback, this, data));
 	}
 
 	connect_signal_mouse_left_click(
@@ -106,6 +103,18 @@ void custom_tod::pre_show(window& window)
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "browse_sound", false),
 			std::bind(&custom_tod::select_file<tod_getter_sound>, this, "data/core/sounds/ambient"));
+
+	connect_signal_mouse_left_click(
+		find_widget<button>(&window, "preview_image", false),
+		std::bind(&custom_tod::update_image, this, "image"));
+
+	connect_signal_mouse_left_click(
+		find_widget<button>(&window, "preview_mask", false),
+		std::bind(&custom_tod::update_image, this, "mask"));
+
+	connect_signal_mouse_left_click(
+		find_widget<button>(&window, "preview_sound", false),
+		std::bind(&custom_tod::play_sound, this));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "next_tod", false),
@@ -124,7 +133,7 @@ void custom_tod::pre_show(window& window)
 			std::bind(&custom_tod::do_delete_tod, this));
 
 	connect_signal_mouse_left_click(
-			find_widget<button>(&window, "preview", false),
+			find_widget<button>(&window, "preview_color", false),
 			std::bind(&custom_tod::preview_schedule, this));
 
 	connect_signal_notify_modified(
@@ -166,12 +175,29 @@ void custom_tod::select_file(const std::string& default_dir)
 
 	if(dlg.show()) {
 		dn = dlg.path();
+		const std::string& message
+						= _("This file is outside Wesnoth's data dirs. Do you wish to copy it into your add-on?");
 
 		if(data.first == "image") {
+			if (!filesystem::to_asset_path(dn, addon_id_, "images")) {
+				if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK) {
+					filesystem::copy_file(dlg.path(), dn);
+				}
+			}
 			times_[current_tod_].image = dn;
 		} else if(data.first == "mask") {
+			if (!filesystem::to_asset_path(dn, addon_id_, "images")) {
+				if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK) {
+					filesystem::copy_file(dlg.path(), dn);
+				}
+			}
 			times_[current_tod_].image_mask = dn;
 		} else if(data.first == "sound") {
+			if (!filesystem::to_asset_path(dn, addon_id_, "sounds")) {
+				if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::OK) {
+					filesystem::copy_file(dlg.path(), dn);
+				}
+			}
 			times_[current_tod_].sounds = dn;
 		}
 	}
@@ -243,6 +269,18 @@ void custom_tod::color_slider_callback(COLOR_TYPE type)
 	update_tod_display();
 }
 
+void custom_tod::play_sound() {
+	std::string sound_path = find_widget<text_box>(get_window(), "path_sound", false).get_value();
+	sound::play_sound(sound_path, sound::SOUND_SOURCES);
+}
+
+void custom_tod::update_image(const std::string& id_stem) {
+	std::string img_path = find_widget<text_box>(get_window(), "path_"+id_stem, false).get_value();
+	find_widget<image>(get_window(), "current_tod_" + id_stem, false).set_label(img_path);
+
+	get_window()->invalidate_layout();
+}
+
 void custom_tod::update_tod_display()
 {
 	display* disp = display::get_singleton();
@@ -251,8 +289,7 @@ void custom_tod::update_tod_display()
 	// The display handles invaliding whatever tiles need invalidating.
 	disp->update_tod(&get_selected_tod());
 
-	// NOTE: revert to invalidate_layout if necessary to display the ToD mask image.
-	get_window()->queue_redraw();
+	get_window()->invalidate_layout();
 }
 
 void custom_tod::update_lawful_bonus()
@@ -287,9 +324,12 @@ void custom_tod::update_selected_tod_info()
 	update_tod_display();
 }
 
-void custom_tod::copy_to_clipboard_callback(tod_attribute_getter getter)
+void custom_tod::copy_to_clipboard_callback(std::pair<std::string, tod_attribute_getter> data)
 {
-	desktop::clipboard::copy_to_clipboard(getter(get_selected_tod()).second, false);
+	auto& [type, getter] = data;
+	button& copy_w = find_widget<button>(get_window(), "copy_" + type, false);
+	desktop::clipboard::copy_to_clipboard(getter(get_selected_tod()).second);
+	copy_w.set_success(true);
 }
 
 /** Quickly preview the schedule changes and color */

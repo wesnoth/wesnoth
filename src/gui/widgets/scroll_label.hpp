@@ -16,6 +16,7 @@
 #pragma once
 
 #include "gui/widgets/scrollbar_container.hpp"
+#include "gui/widgets/label.hpp"
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
@@ -26,6 +27,7 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 class label;
+class spacer;
 
 namespace implementation
 {
@@ -65,6 +67,13 @@ public:
 	void set_text_alpha(unsigned short alpha);
 
 	void set_link_aware(bool l);
+
+	void set_text_max_width(int max_width) {
+		label* text_label = get_internal_label();
+		if (text_label) {
+			text_label->set_text_maximum_width(max_width);
+		}
+	}
 
 private:
 	/**

@@ -20,7 +20,8 @@
 #include "server/common/simple_wml.hpp"
 #include "side_controller.hpp"
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
+
 #include <vector>
 
 // class player;
@@ -28,7 +29,7 @@
 namespace wesnothd
 {
 typedef std::vector<player_iterator> user_vector;
-typedef std::vector<std::optional<player_iterator>> side_vector;
+typedef std::vector<utils::optional<player_iterator>> side_vector;
 class server;
 
 class game
@@ -243,7 +244,7 @@ public:
 	 * @param kicker The player doing the kicking.
 	 * @return The iterator to the removed member if successful, empty optional otherwise.
 	 */
-	std::optional<player_iterator> kick_member(const simple_wml::node& kick, player_iterator kicker);
+	utils::optional<player_iterator> kick_member(const simple_wml::node& kick, player_iterator kicker);
 
 	/**
 	 * Ban a user by name.
@@ -254,7 +255,7 @@ public:
 	 * @param banner The player doing the banning.
 	 * @return The iterator to the banned player if he was in this game, empty optional otherwise.
 	 */
-	std::optional<player_iterator> ban_user(const simple_wml::node& ban, player_iterator banner);
+	utils::optional<player_iterator> ban_user(const simple_wml::node& ban, player_iterator banner);
 
 	/**
 	 * Unban a user by name.
@@ -373,11 +374,11 @@ public:
 	 * @param message The message to send.
 	 * @param exclude The players to not send the message to.
 	 */
-	void send_server_message_to_all(const char* message, std::optional<player_iterator> exclude = {});
+	void send_server_message_to_all(const char* message, utils::optional<player_iterator> exclude = {});
 	/**
 	 * @ref send_server_message_to_all
 	 */
-	void send_server_message_to_all(const std::string& message, std::optional<player_iterator> exclude = {})
+	void send_server_message_to_all(const std::string& message, utils::optional<player_iterator> exclude = {})
 	{
 		send_server_message_to_all(message.c_str(), exclude);
 	}
@@ -390,12 +391,12 @@ public:
 	 * @param doc The document to create the message in. If nullptr then a new document is created.
 	 */
 	void send_server_message(
-			const char* message, std::optional<player_iterator> player = {}, simple_wml::document* doc = nullptr) const;
+			const char* message, utils::optional<player_iterator> player = {}, simple_wml::document* doc = nullptr) const;
 	/**
 	 * @ref send_server_message
 	 */
 	void send_server_message(
-			const std::string& message, std::optional<player_iterator> player = {}, simple_wml::document* doc = nullptr) const
+			const std::string& message, utils::optional<player_iterator> player = {}, simple_wml::document* doc = nullptr) const
 	{
 		send_server_message(message.c_str(), player, doc);
 	}
@@ -407,11 +408,11 @@ public:
 	 * @param message The message to send.
 	 * @param exclude The players to not send the message to.
 	 */
-	void send_and_record_server_message(const char* message, std::optional<player_iterator> exclude = {});
+	void send_and_record_server_message(const char* message, utils::optional<player_iterator> exclude = {});
 	/**
 	 * @ref send_and_record_server_message
 	 */
-	void send_and_record_server_message(const std::string& message, std::optional<player_iterator> exclude = {})
+	void send_and_record_server_message(const std::string& message, utils::optional<player_iterator> exclude = {})
 	{
 		send_and_record_server_message(message.c_str(), exclude);
 	}
@@ -425,7 +426,7 @@ public:
 	 * @param exclude The player from @a players to not send the data to.
 	 */
 	template<typename Container>
-	void send_to_players(simple_wml::document& data, const Container& players, std::optional<player_iterator> exclude = {});
+	void send_to_players(simple_wml::document& data, const Container& players, utils::optional<player_iterator> exclude = {});
 
 	/**
 	 * Send data to all players and observers except those excluded.
@@ -433,7 +434,7 @@ public:
 	 * @param data The data to send.
 	 * @param exclude The players/observers to not send the data to.
 	 */
-	void send_data(simple_wml::document& data, std::optional<player_iterator> exclude = {});
+	void send_data(simple_wml::document& data, utils::optional<player_iterator> exclude = {});
 
 	/**
 	 * Clears the history of recorded WML documents.
@@ -607,7 +608,7 @@ private:
 	/**
 	 * @return The player who owns the current side.
 	 */
-	std::optional<player_iterator> current_player() const
+	utils::optional<player_iterator> current_player() const
 	{
 		return sides_[current_side()];
 	}
@@ -707,7 +708,7 @@ private:
 	 */
 	void send_data_sides(simple_wml::document& data,
 			const simple_wml::string_span& sides,
-			std::optional<player_iterator> exclude = {});
+			utils::optional<player_iterator> exclude = {});
 
 	/**
 	 * Send a document per observer in the game.
@@ -715,7 +716,7 @@ private:
 	 *
 	 * @param player The observer who joined.
 	 */
-	void send_observerjoins(std::optional<player_iterator> player = {});
+	void send_observerjoins(utils::optional<player_iterator> player = {});
 	void send_observerquit(player_iterator observer);
 	void send_history(player_iterator sock) const;
 	void send_chat_history(player_iterator sock) const;
@@ -729,7 +730,7 @@ private:
 	 * @param name The name of the user to find.
 	 * @return The player if found, else empty.
 	 */
-	std::optional<player_iterator> find_user(const simple_wml::string_span& name);
+	utils::optional<player_iterator> find_user(const simple_wml::string_span& name);
 
 	bool is_legal_command(const simple_wml::node& command, player_iterator user);
 
@@ -760,7 +761,7 @@ private:
 	 *
 	 * @param exclude The players to not send the list of users to.
 	 */
-	void send_user_list(std::optional<player_iterator> exclude = {});
+	void send_user_list(utils::optional<player_iterator> exclude = {});
 
 	/**
 	 * @param pl The player.

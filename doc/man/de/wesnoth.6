@@ -67,14 +67,8 @@ angegeben ist, wird das erste Szenario gestartet.
 \fBstart\fP\-Ereignis.
 .TP 
 \fB\-\-clock\fP
-(Entwickleroption) Fügt dem Hauptmenü einen neuen Knopf hinzu, mit welchem
-man eine Uhr mit GUI2\-Elementen zum Testen aufrufen kann.
-.TP 
-\fB\-\-config\-dir\fP\fI\ Name\fP
-Veraltete Option, bitte \fB\-\-userdata\-dir\fP benutzen.
-.TP 
-\fB\-\-config\-path\fP
-Veraltete Option, bitte \fB\-\-userdata\-path\fP benutzen.
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ Kern\-ID\fP
 Ersetzt den geladenen Kern mit dem angegebenen.
@@ -96,7 +90,7 @@ Aktiviert einen Debugmechanismus für Lua.
 \fB\-\-strict\-lua\fP
 Unterstützung für veraltete Lua\-Aufrufe deaktivieren.
 .TP 
-\fB\-D,\-\-diff\fP\fI\ Linke\-Datei\fP\fB\ \fP\fIRechte\-Datei\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 Zeigt die Unterschiede zwischen zwei WML\-Dateien an. Der Präprozessor wird
 nicht verwendet (falls das gewünscht ist, verwende erst \fB\-p\fP). Gibt die
 Unterschiede als DiffWML im Terminal aus, oder speichert sie in der mit
@@ -124,8 +118,7 @@ der Editor mit einem Dialog zum Laden einer Karte aus eben diesem
 Verzeichnis gestartet.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ Sprache\fP
-Benutzt für diese Sitzung die \fISprache\fP (Symbol). Beispiel: \fB\-\-language
-ang_GB@latin\fP.
+Benutzt für diese Sitzung die \fISprache\fP (Symbol). Beispiel: \fB\-\-language ang_GB@latin\fP.
 .TP 
 \fB\-\-log\-\fP\fIStufe\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
 Setzt die \fIStufe\fP der Logausgabe. Verwenden Sie \fBall\fP, um sämtliche
@@ -137,10 +130,10 @@ gesetzt ist.
 \fB\-\-log\-precise\fP
 Zeigt die Zeitstempel in der Log\-Ausgabe mit höherer Genauigkeit.
 .TP 
-\fB\-\-log\-strict\fP\fI\ Stufe\fP
-Sorgt dafür dass die Unit\-Tests scheitern, falls irgendeine Log\-Domäne eine
-Meldung auf der angegebenen oder einer schlimmeren \fIStufe\fP erhält. Wird nur
-zusammen mit \fB\-u\fP benutzt.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=Filter\fP\fB]\fP
 Gibt die definierten Log\-Domänen aus (nur jene, die \fIFilter\fP enthalten,
@@ -152,8 +145,12 @@ WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
 in the logs directory under the userdata folder.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
-whether implicit or explicit.
+Log\-Ausgabe wird in eine Datei geschrieben. Annulliert den Effekt von
+\-\-no\-log\-to\-file egal ob implizit und explizit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 Für Windows, wenn mit \-\-no\-log\-to\-file genutzt, resultiert in Schreiben der
@@ -221,7 +218,7 @@ definiert. Ähnlich zur Option \fB\-\-script\fP, aber die Lua\-Datei soll hierbe
 eine Funktion zurückliefern. Diese wird als Koroutine ausgeführt und
 regelmäßig aufgerufen.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ WML\-Datei\fP\fB\ \fP\fIPatch\-Datei\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 Wendet einen DiffWML\-Patch auf eine WML\-Datei an. Der Präprozessor wird
 dabei nicht verwendet. Das Ergebnis wird im Terminal ausgegeben, oder in die
 mit \fI\-\-output\fP angegebene Datei.
@@ -232,8 +229,7 @@ angegeben wird, wird dieses basierend auf den bekannten
 Vorverarbeitungsregeln rekursiv verarbeitet. Für jede Eingabedatei wird im
 Zielverzeichnis eine normale .cfg\-Datei und eine vorverarbeitete .cfg\-Datei
 erzeugt. Die Kern\-Makros im »data/core/macros«\-Verzeichnis werden vor den
-angegebenen Ressourcen vorverarbeitet. Beispiel: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/ergebnis\fP. Siehe
+angegebenen Ressourcen vorverarbeitet. Beispiel: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/ergebnis\fP. Siehe
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor für
 weitere Dokumentation.
 .TP 
@@ -311,22 +307,8 @@ wiederum beliebige Pakete geladen werden können. Nicht mit fremden Skripten
 verwenden! Dadurch wird die Sandbox aufgebrochen, Lua hat dann dieselben
 Zugriffsrechte wie Wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ Pfad\fP
-Gibt den Pfad zu einem WML\-Schema an, welches für \fB\-V,\-\-validate\fP verwendet
-wird.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ Name\fP
-Setzt das Konfigurationsverzeichnis des Benutzers auf \fIName\fP in $HOME oder
-»Eigene Dateien\eMy Games« auf Windows. Es kann auch ein absoluter Pfad zum
-Konfigurationsverzeichnis außerhalb von $HOME oder »Eigene Dateien\eMy
-Games« angegeben werden. Unter Windows ist es auch möglich ein Verzeichnis
-relativ zum Installationsverzeichnis mit ".\e" oder "..\e"
-anzugeben. Standard ist unter GNU/Linux und BSD $XDG_CONFIG_HOME
-bzw. $HOME/.config/wesnoth, auf anderen Betriebssystemen ist es das
-Nutzerdatenverzeichnis.
-.TP 
-\fB\-\-userconfig\-path\fP
-Zeigt an, wo sich das Verzeichnis für die Nutzereinstellungen befindet.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ Name\fP
 Setzt das Verzeichnis für Nutzerdaten (Spielstände, Erweiterungen, ...) auf
@@ -353,7 +335,7 @@ Validiert das WML der angegebenen Erweiterung während des Spielens.
 \fB\-\-validate\-core\fP
 Validiert das WML des Hauptspiels des Spielens.
 .TP 
-\fB\-\-validate\-schema \ Pfad\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 Validiert, ob eine Datei ein korrektes WML\-Schema ist.
 .TP 
 \fB\-\-validcache\fP

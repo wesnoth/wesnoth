@@ -24,7 +24,7 @@
 #include "ai/manager.hpp"  // for manager, holder
 #include "ai/lua/aspect_advancements.hpp"
 #include "game_events/pump.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "game_data.hpp" //resources::gamedata->phase()
 #include "gettext.hpp"
 #include "gui/dialogs/unit_advance.hpp"
@@ -44,7 +44,7 @@
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
-#define WRN_NG LOG_STREAM(err, log_engine)
+#define WRN_NG LOG_STREAM(warn, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
 static lg::log_domain log_config("config");
@@ -67,7 +67,7 @@ namespace
 		std::vector<unit_const_ptr> previews;
 
 		for (const std::string& advance : u.advances_to()) {
-			preferences::encountered_units().insert(advance);
+			prefs::get().encountered_units().insert(advance);
 			previews.push_back(get_advanced_unit(u, advance));
 		}
 
@@ -386,7 +386,7 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	if ( !use_amla )
 	{
 		resources::controller->statistics().advance_unit(*new_unit);
-		preferences::encountered_units().insert(new_unit->type_id());
+		prefs::get().encountered_units().insert(new_unit->type_id());
 		LOG_CF << "Added '" << new_unit->type_id() << "' to the encountered units.";
 	}
 	u->anim_comp().clear_haloes();

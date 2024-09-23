@@ -347,6 +347,17 @@ protected:
 	 */
 	int get_text_maximum_height() const;
 
+public:
+	/**
+	 * Set how wide the text can become. If the text is bigger
+	 * than this limit, it gets wrapped
+	 */
+	void set_text_maximum_width(int max_width) {
+		if (max_width > 0) {
+			text_maximum_width_ = max_width;
+		}
+	}
+
 private:
 	/**
 	 * The definition is the id of that widget class.
@@ -514,6 +525,7 @@ private:
 
 // }---------- BUILDER -----------{
 
+class styled_widget;
 
 namespace implementation
 {

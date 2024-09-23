@@ -18,12 +18,11 @@
 #include "game_config_view.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
+#include "gui/widgets/combobox.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "serialization/preprocessor.hpp"
 
 #include <boost/dynamic_bitset.hpp>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 
 namespace gui2
 {
@@ -52,7 +51,11 @@ private:
 	config type_cfg_;
 	config resistances_, defenses_, movement_;
 	preproc_map specials_map_, abilities_map_;
-	/** Used to control checkboxes, so that only specific values are overridden */
+
+	/**
+	 * Used to control checkboxes for various resistances, defences, etc.
+	 * so that only specific values are overridden.
+	 */
 	boost::dynamic_bitset<> res_toggles_, def_toggles_, move_toggles_;
 
 	std::vector<config> align_list_, race_list_, movetype_list_, defense_list_, resistances_list_, usage_type_list_;
@@ -78,14 +81,6 @@ private:
 
 	/** Save Unit Type data to cfg */
 	void save_unit_type();
-
-	/** Check if width/height bigger
-	 *  than a specified size */
-	bool check_big(std::string img_abs_path, const int scale_size)
-	{
-		SDL_Surface * img_surf = IMG_Load(img_abs_path.c_str());
-		return (img_surf->w > scale_size) || (img_surf->h > scale_size);
-	}
 
 	/** Write macro to a stream at specified tab level */
 	void write_macro(std::ostream& out, unsigned level, const std::string macro_name);
@@ -132,12 +127,13 @@ private:
 
 	/** Callback to enable/disable OK button if ID/Name is invalid */
 	void button_state_change();
-	void button_state_change_id();
+
+	/** Quit confirmation */
+	void quit_confirmation();
 
 	/** Utility method to check if ID contains any invalid characters */
 	bool check_id(std::string id);
 
-	/** Utility method to set state of menu_button from a string */
 	void set_selected_from_string(menu_button& list, std::vector<config> values, std::string item) {
 		for (unsigned i = 0; i < values.size(); ++i) {
 			if(values.at(i)["label"] == item) {
@@ -147,11 +143,22 @@ private:
 		}
 	}
 
+	void set_selected_from_string(combobox& list, std::vector<config> values, std::string item) {
+		for (unsigned i = 0; i < values.size(); ++i) {
+			if(values.at(i)["label"] == item) {
+				list.set_selected(i);
+				break;
+			}
+		}
+		list.set_value(item);
+	}
+
 	/* signal handler for Ctrl+O shorcut */
-	void signal_handler_sdl_key_down(const event::ui_event /*event*/,
-									 bool& handled,
-									 const SDL_Keycode key,
-									 SDL_Keymod modifier);
+	void signal_handler_sdl_key_down(
+		const event::ui_event /*event*/,
+		bool& handled,
+		const SDL_Keycode key,
+		SDL_Keymod modifier);
 };
 
 

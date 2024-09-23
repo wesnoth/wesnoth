@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
 "PO-Revision-Date: 2019-02-09 00:07+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -1269,11 +1269,11 @@ msgstr ""
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/02_01_Infested_Caves.cfg:917
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1321
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2338
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2456
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2510
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2555
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1349
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2482
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2600
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2654
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2699
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:612
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:903
 msgid "Very well."
@@ -2720,96 +2720,110 @@ msgstr "Tas senas skeletas? Na ir kvėša."
 msgid "You’re telling me."
 msgstr "Tu man sakai."
 
+#. [message]: speaker=Abhai
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1038
+msgid "Be careful companions! There was a drake in this cage!"
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1032
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1044
 #, fuzzy
 msgid "Holy cow! What did I just let out of that cage? Look out everyone!"
 msgstr "Jadryštvaj rogės! Ką aš čia išleidau iš narvo! Saugokitės visi."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1037
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1051
 msgid "Oooooh, cool, it’s a drake!"
 msgstr "O, geras — tai slibinas!"
 
 #. [message]: speaker=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1042
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1056
 msgid "(<i>Whimper</i>)"
 msgstr "(<i>Inkščia</i>)"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1047
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1061
+#, fuzzy
+#| msgid ""
+#| "Bright Gods, such a fierce creature whimpering! What the heck have they "
+#| "done to it?"
 msgid ""
-"Bright Gods, such a fierce creature whimpering! What the heck have they done "
-"to it?"
+"Bright Gods, such a fierce creature whimpering! What in the world have they "
+"done to it?"
 msgstr ""
 "Šviesieji dievai, toks nuožmus padaras inkščia! Ką po galais jie su juo "
 "padarė?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1052
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1066
 msgid "The bastards!"
 msgstr "Išgamos!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1063
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1077
 msgid "Probably another one of Malifor’s experiments."
 msgstr "Matyt dar vienas iš Maliforo eksperimentų."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1068
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1082
 msgid "I don’t know, see if it talks."
 msgstr "Nežinau, pažiūrėkime ar jis kalba."
 
+#. [message]: speaker=Abhai
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1095
+msgid "Have no fear, drake. We have no intentions to hurt you."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1075
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1101
 msgid "Hey, big guy. We aren’t gonna hurt you. We wanna be your friends."
 msgstr "Ei, didžki! Mes tavęs neskriausim. Norim draugauti."
 
 #. [message]: speaker=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1080
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1108
 msgid "... Not... going... to... hurt... me?"
 msgstr "... Nesiruošiate... Manęs... Skriausti?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1085
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1113
 msgid "Hey, it talks!"
 msgstr "Ei, šitas padaras kalba!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1090
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1118
 msgid "It’s a ‘he’, and yes, they’re actually very intelligent creatures."
 msgstr "Šitas „padaras“ yra labai protinga būtybė."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1095
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1123
 #, fuzzy
 #| msgid ""
 #| "Hush! I am trying to talk to him. Nope, we’ll never hurt you. But if you "
 #| "want to you can hurt some skeletons."
 msgid ""
 "Hush, I am trying to talk to him. Nope, we’ll never hurt you. But if you "
-"want to you can hurt some skeletons."
+"want to, you can hurt some skeletons."
 msgstr ""
 "Ša! Aš mėginu su juo susikalbėti. Ne, mes tavęs neskriausim. Bet tu, jei "
 "nori, gali nuskriaust kelis skeletus."
 
 #. [message]: speaker=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1100
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1128
 msgid "Skeletons! GRRRR!!"
 msgstr "Skeletai! GRRRR!!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1105
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1133
 msgid "Look out! He is ready to go! Hey, is that smoke coming out of his ears?"
 msgstr "Atsargiai! Jis pasiruošęs! Ei, ar jam iš ausų sklinda dūmai?"
 
 #. [message]: speaker=Krash
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1119
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1147
 msgid "ROOOAARR!"
 msgstr "GRRR!"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1124
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1152
 msgid ""
 "Whoa! Maybe he isn’t so friendly after all... or at least to some things."
 msgstr ""
@@ -2817,7 +2831,7 @@ msgstr ""
 "padarams."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1140
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1168
 #, fuzzy
 msgid "(<i>Sigh</i>) There doesn’t seem to be anything down this tunnel."
 msgstr ""
@@ -2825,67 +2839,67 @@ msgstr ""
 "tunelyje nieko daugiau nėra, nei priešo, nei draugo."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1164
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1192
 msgid "The Treasury"
 msgstr "Lobis"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1169
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1197
 #, fuzzy
 #| msgid "The Treasury! Cool, let’s go loot some booty!"
 msgid "The Treasury! Excellent, let’s clean out the gold!"
 msgstr "Lobynas! Jėga, eiva išplėšti grobio!"
 
 #. [message]: role=Treasury Guard
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1202
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1230
 msgid "Intruders! Get them!"
 msgstr "Įsibrovėliai! Sučiupkite juos!"
 
 #. [message]: role=Supporter
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1207
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1235
 msgid "Bring it on!"
 msgstr ""
 
 #. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1252
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1280
 #, fuzzy
 msgid "There are at least several hundred gold coins in here!"
 msgstr "Oho! Čia mažiausiai 1000 aukso!"
 
 #. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1254
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1282
 msgid "I don’t think the undead will be be needing this anyway."
 msgstr ""
 
 #. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1256
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1284
 msgid ""
 "Our people could rebuild their lives ten-fold with the gold in this treasury."
 msgstr ""
 
 #. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1258
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1286
 msgid "We’re rich!"
 msgstr "Mes turtingi!"
 
 #. [scenario]: id=05a_01_The_Pursuit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1260
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1288
 msgid "Why do these skeletons have so much gold just sitting around?"
 msgstr ""
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1286
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1314
 msgid ""
 "The Rod of Justice! What in the world is it doing all the way down here?"
 msgstr "Teisingumo Lazda! Kad tave kur, kodėl ji čia, požemiuose?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1291
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1319
 msgid "What do you have there, Abhai?"
 msgstr "Ką ten turi, Abhajau?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1296
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1324
 #, fuzzy
 #| msgid ""
 #| "This is the Great Rod of Justice, my boy. It was an ancient artifact even "
@@ -2911,7 +2925,7 @@ msgstr ""
 "žmonėms niekad netrūko teisingumo, o krašto niekad nevargino blogis ar karai."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1301
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1329
 #, fuzzy
 #| msgid ""
 #| "Well, if you don’t mind me saying — that certainly isn’t the state of "
@@ -2935,7 +2949,7 @@ msgstr ""
 "ieškodamas Ugnies Skeptro."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1306
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1334
 msgid ""
 "Ahh, with the Rod of Justice down here it is to be expected. Come Tallin, "
 "either you or one of your trusted men must wield this staff and bring peace "
@@ -2946,12 +2960,12 @@ msgstr ""
 "pasaulį."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1311
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1339
 msgid "Why can’t you wield it, Abhai?"
 msgstr "O kodėl tu negali jos imti, Abhajau?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1316
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1344
 msgid ""
 "I am a creature of the past, and thus my time to wield it is long gone. This "
 "is your era, Tallin, and thus it is your responsibility to see to it that "
@@ -2964,19 +2978,19 @@ msgstr ""
 "iš savo žmonių, nes laikas senka."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1345
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1373
 msgid ""
 "An elegantly carved sceptre rests at the bottom of the chest. Precious "
 "jewels glitter across its surface, and it exudes a great aura of power."
 msgstr ""
 
 #. [option]
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1347
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1375
 msgid "rod of justice^Take it"
 msgstr "Paimti"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1351
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1379
 #, fuzzy
 msgid ""
 "This thing is... incredible! What is such a powerful artifact doing hidden "
@@ -2984,17 +2998,17 @@ msgid ""
 msgstr "Įdomu, kodėl toks galingas artefaktas paslėptas čionais..."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1361
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1389
 msgid "That’s... that’s the Rod of Justice!"
 msgstr "Tai... Tai Teisingumo lazda!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1366
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1394
 msgid "Do you know anything about it, Camerin?"
 msgstr "Kamerinai, ar žinai ką nors apie ją?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1371
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1399
 msgid ""
 "I don’t think there is a person alive who knows anything more solid than "
 "rumors and legends. There are very few people who even knows it exists!"
@@ -3004,12 +3018,12 @@ msgstr ""
 "egzistuoja."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1376
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1404
 msgid "How did you come to know of it?"
 msgstr "O tai iš kur tu apie ją žinai?"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1381
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1409
 msgid ""
 "Some of the most ancient elvish legends make some vague mention of this "
 "artifact. But beyond that..."
@@ -3018,7 +3032,7 @@ msgstr ""
 "egzistavimą. Bet daugiau..."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1386
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1414
 msgid ""
 "Interesting. I wonder who — or what — could have created such a powerful "
 "artifact. There must be one heck of a story behind this thing."
@@ -3027,12 +3041,12 @@ msgstr ""
 "istorija turėtų būti apie tai."
 
 #. [object]: id=justice_rod
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1399
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1427
 msgid "Rod of Justice"
 msgstr "Teisingumo lazda"
 
 #. [object]: id=justice_rod
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1402
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1430
 #, fuzzy
 msgid ""
 "A magical staff of tremendous power and unknown origin. Although the full "
@@ -3051,57 +3065,57 @@ msgstr ""
 "teisybės kely, gali nešioti šią lazdą."
 
 #. [effect]: type=fire
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1411
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1439
 msgid "rod of justice"
 msgstr "teisingumo lazda"
 
 #. [option]
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1491
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1519
 msgid "rod of justice^Leave it"
 msgstr "Palikti"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1518
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1546
 msgid "The Great Chamber"
 msgstr "Didžioji salė"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1523
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1551
 msgid "‘The Great Chamber’? Hmmm, wonder what that could be."
 msgstr "„Didžioji salė“? Hmm, įdomu, kas tai galėtų būti."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1540
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1568
 msgid "Halt! You’re not allowed to be here! Authorized undead only!"
 msgstr ""
 
 #. [unit]: type=Dwarvish Steelclad, id=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1563
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1591
 msgid "Dulcatas"
 msgstr "Dulkatas"
 
 #. [unit]: type=Dwarvish Thunderguard, id=Antolos
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1575
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1603
 msgid "Antolos"
 msgstr "Antolosas"
 
 #. [unit]: type=Dwarvish Fighter, id=Varem
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1587
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1615
 msgid "Varem"
 msgstr "Varemas"
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1598
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1626
 msgid "Halt! Who goes there? Friend or foe?"
 msgstr "Stot! Kas čia eina? Draugas ar priešas?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1603
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1631
 msgid "Depends. Are you loyal to Malifor?"
 msgstr "Priklauso. Ar tu ištikimas Maliforui?"
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1608
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1636
 msgid ""
 "Never! If you ha’ been sent by Malifor, then know that we will never yield! "
 "Come and meet your death!"
@@ -3110,7 +3124,7 @@ msgstr ""
 "Eikš sutikti savo mirties!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1613
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1641
 msgid ""
 "Hold! We aren’t friends of Malifor in the least. Rather, we have come to "
 "destroy him."
@@ -3119,17 +3133,17 @@ msgstr ""
 "atvykome jo sunaikinti."
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1618
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1646
 msgid "Finally! You don’t know how long we have been waiting for this day."
 msgstr "Pagaliau! Neįsivaizduojate kiek mes laukėme šios dienos."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1623
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1651
 msgid "How did you get here and how long have you been here?"
 msgstr "Kaip jūs čia patekote ir kiek laiko čia praleidote?"
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1628
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1656
 msgid ""
 "We were originally prisoners of Malifor, but we tunneled out and escaped. "
 "Since then, we have eked out a precarious survival on what we have been able "
@@ -3140,12 +3154,12 @@ msgstr ""
 "iš Maliforo."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1633
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1661
 msgid "By now you have tunnels all through this place."
 msgstr "Šiuo metu jūs jau turėtumėt turėti urvus po visą šią vietovę."
 
 #. [message]: speaker=Dulcatas
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1638
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1666
 msgid ""
 "Aye. That seemingly blank wall to the south there is actually a hidden "
 "entrance to the treasury."
@@ -3154,17 +3168,17 @@ msgstr ""
 "įėjimas į lobyną."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1643
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1671
 msgid "Awesome, let’s go!"
 msgstr "Puiku, eime!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1659
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1687
 msgid "Here we go."
 msgstr "Na štai."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1701
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1729
 #, fuzzy
 msgid ""
 "So this is the Great Chamber, eh? Doesn’t look like there is much to see "
@@ -3172,33 +3186,33 @@ msgid ""
 msgstr "Tai čia ir yra ta Didžioji salė? Nepanašu, kad čia yra į ką žiūrėti."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1709
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1737
 msgid "The ground shakes."
 msgstr "Žemė dreba."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1714
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1742
 msgid "Perhaps I spoke too soon..."
 msgstr "Gal per greitai išsižiojau..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1765
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1793
 msgid "What is this? Our retreat is cut off!"
 msgstr ""
 
 #. [message]: type=Giant Spider
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1806
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1834
 msgid "Hsssss"
 msgstr "Hsssss"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1811
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1839
 msgid "‘Great Chamber’, my foot! This is a death chamber!"
 msgstr "„Didžioji Salė“, kad tave kur! Čia mirties menė!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1830
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2400
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1858
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2544
 msgid ""
 "Hmmm. The wall appears weak here. I think there might be something on the "
 "other side."
@@ -3206,33 +3220,33 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1844
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2441
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1872
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2585
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:573
 msgid "There we go."
 msgstr "Na, štai."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1869
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1897
 msgid "Malifor the Great’s Study"
 msgstr "Maliforo Didžiojo studija"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1874
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1902
 #, fuzzy
 #| msgid "There we go! This way, guys!"
 msgid "There we go! This way!"
 msgstr "Na va. Čionais, vyručiai!"
 
 #. [message]: role=Study Guard
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1892
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1920
 msgid ""
 "They are attacking the master’s study! We must stop them! Call the reserves!"
 msgstr ""
 "Jie atakuoja šeimininko studiją! Reikia juos sulaikyti! Kvieskit rezervą!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1920
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1948
 msgid ""
 "Caution! Tunnel flooded and infested with aquatic monsters. Enter at the "
 "risk of your unlife."
@@ -3241,24 +3255,24 @@ msgstr ""
 "negyvybe."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1925
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1953
 msgid ""
 "Interesting. It seems like someone really doesn’t want us going down this "
 "tunnel."
 msgstr "Įdomu. Atrodo, jog kažkas labai nenori, kad mes eitume šiuo tuneliu."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1943
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1971
 msgid "Intruders? Capture them and throw them in with the toxic waste!"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1975
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2003
 msgid "A section of wall slides away."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1984
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2012
 msgid ""
 "Holy water! For a certainty, those skeletons won’t like us getting our hands "
 "on this stuff. But that’s probably why they kept them back here in the first "
@@ -3268,7 +3282,7 @@ msgstr ""
 "į rankas. Matyt dėl to jie jį čia ir laikė."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1998
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2026
 msgid ""
 "Warning! These bottles contain toxic waste. Causes disintegration on contact."
 msgstr ""
@@ -3276,23 +3290,38 @@ msgstr ""
 "sukelia irimą."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2003
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2031
 #, fuzzy
 msgid "(<i>rolls eyes</i>) Oh, the hazardous life of a skeleton."
 msgstr "(<i>Varto akis</i>) O kenksmingas skeleto gyvenimas."
 
-#. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2018
-msgid "Hey, an underground lake."
-msgstr "Ei, požeminis ežeras."
+#. [message]: speaker=Krash
+#. Krash has landed in one of the hexes of a small underground lake
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2053
+msgid "Wet."
+msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2035
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2059
+#, fuzzy
+#| msgid "Hey, an underground lake."
+msgid "An underground lake."
+msgstr "Ei, požeminis ežeras."
+
+#. [message]: speaker=Krash
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2084
+#, fuzzy
+#| msgid "Monsters"
+msgid "Monster! Kill!"
+msgstr "Monstrai"
+
+#. [message]: speaker=unit
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2090
 msgid "Ack! What are those things!"
 msgstr "Fui! Kas čia per dalykai?!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2045
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2102
 msgid ""
 "Oh yeah, those things. Watch out, they are the arms of some sort of "
 "underwater creature. They’ll try to pummel you to death, then drag you under "
@@ -3303,7 +3332,7 @@ msgstr ""
 "suėsti."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2050
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2107
 #, fuzzy
 #| msgid ""
 #| "Then how do we get past? I can see that the passage continues to both the "
@@ -3316,7 +3345,7 @@ msgstr ""
 "į pietus, o Maliforo mes dar neradome..."
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2055
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2112
 msgid ""
 "Creatures of that type regenerate over time; it’s doubtful we can destroy it "
 "completely. But if we destroy its arms we’ll be relatively safe until they "
@@ -3327,66 +3356,73 @@ msgstr ""
 "galėsime praeiti, kol jis atsigaus."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2060
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2117
 msgid "Let’s get to it, then."
 msgstr "Tai apkapokime jas."
 
 #. [unit]: type=Wraith, id=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2084
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2141
 msgid "Abhai"
 msgstr "Abhajus"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2093
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2150
 msgid "AH! A ghost!"
 msgstr ""
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2098
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2155
 #, fuzzy
 msgid "Who are you that dares to venture down these tunnels?"
 msgstr "Kas jūs? Kaip atsidūrėte čia, apačioje?"
 
+#. [message]: speaker=Tallin
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2166
+#, fuzzy
+#| msgid "Tallin"
+msgid "I am Tallin."
+msgstr "Talinas"
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2103
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2172
 msgid "I... I am one of Tallin’s men..."
 msgstr "Aš... Aš vienas iš Talino vyrų..."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2108
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2177
 msgid "Who is this ‘Tallin’?"
 msgstr "Kas yra tas „Talinas“?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2113
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2182
 msgid "That would be me."
 msgstr ""
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2118
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2189
 msgid "What is your purpose in coming here?"
 msgstr "Koks jūsų atėjimo čia tikslas?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2123
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2194
 msgid "We seek the destruction of the lich Malifor."
 msgstr "Norime sunaikinti ličą Maliforą."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2128
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2199
 msgid "Malifor...! Finally someone here in force to deal with that menace!"
 msgstr ""
 
 #. [message]: speaker=Tallin
 #. "this spirit" is referring to the Ghost named Abhai.
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2134
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2205
 msgid ""
 "<i>Did this spirit get even paler?</i> Can you tell us where he is? And, if "
 "I may ask, who are — or rather, were — you?"
 msgstr ""
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2139
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2210
 #, fuzzy
 msgid ""
 "I am Lord Abhai, the ruler... once... of a great kingdom far to the west. In "
@@ -3399,12 +3435,12 @@ msgstr ""
 "mane į šį ektoplazminį kūną."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2144
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2215
 msgid "Let me guess. Malifor?"
 msgstr "Leisk man atspėti. Maliforas?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2149
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2220
 msgid ""
 "Indeed. He was once a great sorcerer, but he coveted wealth and power. To "
 "gain his ends, he allied himself with the Lich-Lords, and from them he "
@@ -3420,7 +3456,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2154
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2225
 msgid ""
 "I am afraid times have changed much. Our first king, Haldric I, fled the "
 "Green Isle with the Wesfolk, the orcs in pursuit. He came ashore on this "
@@ -3429,17 +3465,17 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2159
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2230
 msgid "So... much time has passed indeed."
 msgstr ""
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2164
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2235
 msgid "Would you join us to defeat this evil creature?"
 msgstr "Ar prisijungtum prie mūsų, kad nugalėtume šią piktą būtybę?"
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2170
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2241
 msgid ""
 "Wouldn’t miss it. Maybe after he is destroyed my kind and I can live... "
 "er... be dead peacefully."
@@ -3448,7 +3484,7 @@ msgstr ""
 "galėsime gyventi... ėė... mirti ramiai."
 
 #. [message]: speaker=Abhai
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2175
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2246
 msgid ""
 "Keep following these flooded tunnels. I think they might lead you directly "
 "to Malifor."
@@ -3457,25 +3493,54 @@ msgstr ""
 "Maliforą."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2180
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2251
 msgid "Great. Forward, men!"
 msgstr "Puiku. Vyrai, pirmyn!"
 
-#. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2199
-msgid "Ugh, a corpse. And it — (<i>gags</i>) — reeks!"
+#. [message]: speaker=Krash
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2279
+msgid "Corpse here... It stinks."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2212
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2285
+msgid "Ugh, a corpse. And it — (<i>gags</i>) — reeks!"
+msgstr ""
+
+#. [message]: speaker=Abhai
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2306
+msgid ""
+"Yet more bodies... I’ve noticed them drifting down the river as of late."
+msgstr ""
+
+#. [message]: speaker=Krash
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2318
+msgid "More bodies. Float down river?"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2324
 msgid ""
 "Gee, what’s with these bodies floating around? Is this river some sort of "
 "body disposal?"
 msgstr ""
 "Fui, kodėl čia plūduriuoja tiek kūnų? Gal ši upė naudojama kūnų atsikratymui?"
 
+#. [message]: speaker=Abhai
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2348
+#, fuzzy
+msgid "There doesn’t seem to be anything this way other than another body."
+msgstr ""
+"(<i>Atsidūsta</i>) Puikumėlis. Dar daugiau vandens. Ir panašu, kad šiame "
+"tunelyje nieko daugiau nėra, nei priešo, nei draugo."
+
+#. [message]: speaker=Krash
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2360
+msgid "Grrr... Cold. Wet. Mad."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2226
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2366
 #, fuzzy
 msgid ""
 "Just great, I am cold, wet, and tired and what have we here? Another dead "
@@ -3485,29 +3550,29 @@ msgstr ""
 "akligatvis. Ši vieta pradeda mane erzinti. "
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2242
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2386
 #, fuzzy
 msgid "Hold it, people, there’s something just ahead!"
 msgstr "Laikykitės, žmonės, kažkas yra tiesiai priešaky!"
 
 #. [message]: type=Naga Warrior
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2263
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2407
 msgid "(<i>sniff</i>) I smell humans."
 msgstr "(<i>uosto</i>) Užuodžiu žmones."
 
 #. [message]: type=Naga Fighter
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2268
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2412
 #, fuzzy
 msgid "You are just plain deaf. I heard them coming a mile off."
 msgstr "Tu esi visiškai kurčias. Aš girdėjau juos einant už mylios."
 
 #. [message]: type=Naga Warrior
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2273
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2417
 msgid "Ahh, shut up. Let’s go kill them."
 msgstr "Ai, užsikišk. Eiva juos nudobsim."
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2306
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2450
 msgid ""
 "It looks like this is it. Here is the door to Malifor’s study. Are we all "
 "ready for this?"
@@ -3516,78 +3581,78 @@ msgstr ""
 
 #. [option]
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2308
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2362
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2452
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2506
 #, fuzzy
 msgid "Get those doors open!"
 msgstr "Taip, atidarykime šias duris!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2323
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2467
 msgid "Let’s go!"
 msgstr "Eime!"
 
 #. [option]
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2334
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2452
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2551
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2478
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2596
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2695
 msgid "Just wait a sec."
 msgstr "Palauk sekundėlę."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2405
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2549
 msgid "Anything you can’t handle?"
 msgstr "Kas nors, su kuo nesusidorosi?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2410
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2554
 msgid "Nope. Should I open it?"
 msgstr "Ne. Ar turėčiau atidaryti?"
 
 #. [option]
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2412
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2492
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2556
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2636
 msgid "Go for it!"
 msgstr "Pabandyk!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2480
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2580
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2624
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2724
 msgid "Hey, check this out, it looks like some sort of lever."
 msgstr "Ei, žiū, panašu į kažkokį svertą."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2485
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2629
 msgid "Throw it and see what it does."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2490
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2634
 msgid "Should I throw it?"
 msgstr "Man jį truktelti?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2500
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2644
 msgid "Nothing. That door is not moving."
 msgstr "Nieko. Šios durys nejuda."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2505
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2649
 msgid "Why don’t you try ‘knocking’?"
 msgstr "Kodėl nepabandai „pastuksenti“?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2536
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2680
 msgid "Anybody home?"
 msgstr "Kas nors namie?"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2631
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2775
 msgid "You wretched vermin, I have had it with you! Guards!"
 msgstr "Tu bjaurus kenkėjau, man jau pakaks! Sargyba!"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2655
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2799
 msgid ""
 "You invaded my kingdom, drove me from my mines, raided my dungeon, and "
 "plundered my treasury. Your audacity ends here!"
@@ -3596,7 +3661,7 @@ msgstr ""
 "mano požemius, išplėšėt mano lobyną. Jūsų įžūlus elgesys baigsis čia."
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2668
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2812
 msgid ""
 "You are wrong, Malifor, for you shall be the one who is destroyed. You are "
 "cruel, merciless and a terror to all that lives. The world will be a better "
@@ -3607,7 +3672,7 @@ msgstr ""
 "gražesnis!"
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2673
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2817
 msgid ""
 "To feed your greed and hunger you have terrorized all that is good. You have "
 "disturbed the rest of the brave defenders of Knalga. Now, your evil reign "
@@ -3617,7 +3682,7 @@ msgstr ""
 "Tu sutrikdei narsių Knalgos gynėjų poilsį. Dabar tavo valdžiai ateis galas."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2678
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2822
 msgid ""
 "Fools! Don’t think it’s so easy to kill me. Your corpses shall all soon be "
 "serving me. Fall on them, my hordes!"
@@ -3626,60 +3691,60 @@ msgstr ""
 "man tarnaus. Užgriūkite juos, mano ordos!"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2716
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2860
 msgid "HAHAHAHA, DEATH HAS NO EFFECT ON ME YOU FOOLS!"
 msgstr "CHACHACHA, MIRTIS MANĘS NEVEIKIA, KVAILIAI!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2721
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2865
 #, fuzzy
 msgid "Well, blades don’t work."
 msgstr "Na, kuokos ir strėlės akivaizdžiai neveikia."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2731
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2875
 msgid "HAHAHAHA, YOUR IDIOCY AMUSES ME GREATLY!"
 msgstr "HAHAHAHA, JŪSŲ IDIOTIZMAS MANE BE GALO ŽAVI! "
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2736
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2880
 #, fuzzy
 msgid "Geez, how are we going to kill him? This weapon is ineffective!"
 msgstr "Nagi, kaip mes jį nužudysime?"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2746
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2890
 msgid "YOU PUNY MORTALS SHALL SOON BE SERVING ME!"
 msgstr "NIEKINGI MIRTINGIEJI, GREITAI JŪS TARNAUSITE MAN!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2751
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2895
 #, fuzzy
 msgid "Blast it! Even fire has no effect on him!"
 msgstr "Tai prakeiktas skeletas! Net ugnis jo neima!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2756
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2900
 msgid "Let’s try using something different on him."
 msgstr ""
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2771
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2915
 msgid "AAAAAAHHHHHH!"
 msgstr "AAAAAAHHHHHH!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2776
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2920
 msgid "I see now. It is impossible to destroy him by ordinary means."
 msgstr "Ką gi, aišku. Jo neįmanoma sunaikinti įprastomis priemonėmis."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2781
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2925
 msgid "Then how are we going to destroy him? Surely there must be a way."
 msgstr "Tai kaip gi mes jį sunaikinsim? Juk turi būti koks nors būdas."
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2786
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2930
 msgid ""
 "Yes, I think there is, but only myself or Thera have the means to do it. "
 "Come on Thera, let’s destroy that old skeleton."
@@ -3688,33 +3753,33 @@ msgstr ""
 "Tera, sunaikinkime tą seną skeletą."
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2791
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2935
 msgid "Yeah, I can’t wait to get my hands on that bastard!"
 msgstr "Oi negaliu sulaukt kol tas benkartas paklius man į nagus!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2796
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2940
 msgid "That was very unladylike of you."
 msgstr "Gerai išauklėtos damos taip nesielgia."
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2801
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2945
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:451
 msgid "(<i>Giggle</i>) Sorry."
 msgstr "(<i>Kikena</i>) Atleisk."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2818
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2962
 msgid "AHHHH! YOU BLASTED MAGE!"
 msgstr "AHHHH! TU SUTRAUKA MAGE!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2823
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2967
 msgid "Good. We finally got him. He is dissolving."
 msgstr "Gerai. Pagaliau mes jį pričiupom. Jis tirpsta."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2828
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2972
 msgid ""
 "Curses on you you blasted mages, curses on you you blasted dwarves, curses "
 "on you you blasted humans, and CURSES ON YOU YOU BLASTED TALLIN! MAY YOUR "
@@ -3728,12 +3793,12 @@ msgstr ""
 "TRINKTELTŲ Į TAVO MAKAULĘ! KAD..."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2833
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2977
 msgid "May you shut your ugly mouth and hurry up and die."
 msgstr "Kad tu užčiauptum kakarynę ir greičiau numirtum."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2838
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2982
 msgid ""
 "MAY THE EARTH OPEN UP AND SWALLOW YOU! MAY ALL YOUR TEETH FALL OUT! MAY YOU "
 "BECOME A WEAK SKINNY OLD MAN! MAY—"
@@ -3742,22 +3807,22 @@ msgstr ""
 "SUDŽIŪVUSIU SENIU! KAD TU -"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2853
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2997
 msgid "Finally! He has been reduced to dust."
 msgstr "Galų gale! Pagaliau jis virto dulkėmis."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2858
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:3002
 msgid "At last! Victory is ours! Good work, men!"
 msgstr "Pagaliau! Mes pasiekėme pergalę! Šauniai padirbėta, vyrai!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2863
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:3007
 msgid "So, where to now, Tallin?"
 msgstr "Taigi, kur dabar, Talinai?"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2868
+#: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:3012
 msgid ""
 "Now, let’s get back to the dwarves and see what progress they have made in "
 "forging us weapons."
@@ -8798,17 +8863,6 @@ msgid ""
 "Thus, from a small, enslaved community, the people of Dwarven Doors — by "
 "their fortitude, valor, and wisdom — brought the Northlands out of the "
 "darkness and restored them to their former glory."
-msgstr ""
-
-#. [unit_type]: id=Cave Serpent
-#: data/campaigns/Northern_Rebirth/units/Cave_Serpent.cfg:7
-msgid ""
-"The Water Serpent is a foe dire enough when encountered in the rivers and "
-"seas of the sunlit world, but his rare cave-dwelling kin are yet more "
-"terrible. Though their eyes are of little use in the stygian darkness of the "
-"deep caves where they dwell, they have become sensitive to even the tiniest "
-"sound that might indicate unwary prey in their domain, and will home in on "
-"it with remorseless efficiency."
 msgstr ""
 
 #: data/campaigns/Northern_Rebirth/utils/characters.cfg:26

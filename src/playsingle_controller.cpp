@@ -36,7 +36,7 @@
 #include "log.hpp"
 #include "map/label.hpp"
 #include "map/map.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "replay_controller.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
@@ -457,7 +457,7 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 		throw;
 	} catch(const wesnothd_error& e) {
 		scoped_savegame_snapshot snapshot(*this);
-		savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
+		savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
 		if(e.message == "") {
 			save.save_game_interactive(
 				_("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"),
@@ -538,21 +538,21 @@ void playsingle_controller::before_human_turn()
 		return;
 	}
 
-	if(!did_autosave_this_turn_ && !game_config::disable_autosave && preferences::autosavemax() > 0) {
+	if(!did_autosave_this_turn_ && !game_config::disable_autosave && prefs::get().auto_save_max() > 0) {
 		did_autosave_this_turn_ = true;
 		scoped_savegame_snapshot snapshot(*this);
-		savegame::autosave_savegame save(saved_game_, preferences::save_compression_format());
-		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
+		savegame::autosave_savegame save(saved_game_, prefs::get().save_compression_format());
+		save.autosave(game_config::disable_autosave, prefs::get().auto_save_max(), pref_constants::INFINITE_AUTO_SAVES);
 	}
 
-	if(preferences::turn_bell()) {
+	if(prefs::get().turn_bell()) {
 		sound::play_bell(game_config::sounds::turn_bell);
 	}
 }
 
 void playsingle_controller::show_turn_dialog()
 {
-	if(preferences::turn_dialog() && !is_regular_game_end()) {
+	if(prefs::get().turn_dialog() && !is_regular_game_end()) {
 		blindfold b(*gui_, true); // apply a blindfold for the duration of this dialog
 		gui_->queue_rerender();
 		std::string message = _("It is now $name|’s turn");
@@ -579,7 +579,7 @@ void playsingle_controller::play_human_turn()
 {
 	show_turn_dialog();
 
-	if(!preferences::disable_auto_moves()) {
+	if(!prefs::get().disable_auto_moves()) {
 		execute_gotos();
 	}
 
@@ -603,7 +603,7 @@ void playsingle_controller::update_gui_linger()
 		if(get_end_level_data().transient.reveal_map) {
 			// Change the view of all players and observers
 			// to see the whole map regardless of shroud and fog.
-			update_gui_to_player(gui_->viewing_team(), true);
+			update_gui_to_player(gui_->viewing_team_index(), true);
 		}
 	} else {
 		gui_->set_game_mode(game_display::RUNNING);
@@ -747,7 +747,7 @@ void playsingle_controller::require_end_turn()
 void playsingle_controller::check_objectives()
 {
 	if(!get_teams().empty()) {
-		const team& t = get_teams()[gui_->viewing_team()];
+		const team& t = gui_->viewing_team();
 
 		if(!is_regular_game_end() && !is_browsing() && t.objectives_changed()) {
 			show_objectives();
@@ -817,7 +817,7 @@ void playsingle_controller::update_viewing_player()
 	if(replay_controller_ && replay_controller_->is_controlling_view()) {
 		replay_controller_->update_viewing_player();
 	} else if(int side_num = find_viewing_side()) {
-		if(side_num != gui_->viewing_side() || gui_->show_everything()) {
+		if(side_num != gui_->viewing_team().side() || gui_->show_everything()) {
 			update_gui_to_player(side_num - 1);
 		}
 	}
@@ -879,4 +879,3 @@ void playsingle_controller::on_replay_end(bool is_unit_test)
 		replay_controller_->stop_replay();
 	}
 }
-

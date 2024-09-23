@@ -65,13 +65,9 @@ Přeskočí obrazovky s\ příběhem ([story]) a\ rozhovor až do konce událost
 (event) \fBstart\fP.
 .TP 
 \fB\-\-clock\fP
-Přidá volbu pro ukázání hodin na testování časovače kreslení.
-.TP 
-\fB\-\-config\-dir\fP\fI\ název\fP
-Zastaralé, použij \fB\-\-userdata\-dir\fP.
-.TP 
-\fB\-\-config\-path\fP
-Zastaralé, použij \fB\-\-userdata\-path\fP.
+Přidá volbu pro ukázání hodin na testování časovače kreslení. Také přidá
+možnost zobrazení dialogového okna pro testování grafického uživatelského
+rozhraní.
 .TP 
 \fB\-\-core\fP\fI\ id_jádra\fP
 nahradí načtené jádro tím, jehož identifikátor je zadán.
@@ -93,7 +89,7 @@ zapíná některé mechanismy ladění Lua.
 \fB\-\-strict\-lua\fP
 nedovolit zastaralá volání Lua API.
 .TP 
-\fB\-D, \-\-diff\fP\fI\ levý\-soubor\fP\fB\ \fP\fIpravý\-soubor\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 porovná dva WML soubory. Nedojde k\ jejich předzpracování (k\ tomu je třeba
 projet je nejdřív volbou \fB\-p\fP). Rozdíl je jako DiffWML směrován na
 standardní výstup nebo do souboru označeného volbou \fI\-\-output\fP.
@@ -119,8 +115,7 @@ je použit i\ přepínač \fB\-e\fP nebo \fB\-\-editor\fP, spustí editor a\ ote
 načtení mapy v\ tomto umístění.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ jazyk\fP
-pro toto sezení použije daný \fIjazyk\fP (symbol). Příklad: \fB\-\-language
-pl_PL\fP.
+pro toto sezení použije daný \fIjazyk\fP (symbol). Příklad: \fB\-\-language pl_PL\fP.
 .TP 
 \fB\-\-log\-\fP\fIúroveň\fP\fB=\fP\fIoblast1\fP\fB,\fP\fIoblast2\fP\fB,\fP\fI...\fP
 nastavuje úroveň závažnosti pro oblasti zaznamenávání. Pro zahrnutí všech
@@ -131,23 +126,28 @@ společně s\ volbou \fB\-d\fP, je výchozí úrovní \fBnone\fP.
 \fB\-\-log\-precise\fP
 použije v\ záznamech časové značky s\ větší přesností.
 .TP 
-\fB\-\-log\-strict\fP
-nastaví úroveň přísnosti pro zaznamenávání. Jakékoli zprávy poslané oblastem
-zaznamenávání s touto nebo závažnější úrovní způsobí, že test součástí selže
-bez ohledu na vítězný výsledek. Má smysl pouze při použití s \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ úroveň\fP
+nastaví \fIúroveň\fP přísnosti pro zaznamenávání. Jakékoli zprávy poslané
+oblastem zaznamenávání s\ touto nebo závažnější \fIúrovní\fP způsobí, že test
+součástí selže bez ohledu na vítězný výsledek. Má smysl pouze při použití
+s\ \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filtr\fP\fB]\fP
 vypíše definované oblasti zaznamenávání (pokud je použit \fIfiltr\fP, pak pouze
 ty, které jej obsahují) a\ skončí.
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. The environment variable
-WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
-in the logs directory under the userdata folder.
+zabrání přesměrování výstupu záznamů do souboru. Jako alternativu lze také
+nastavit proměnnou prostředí WESNOTH_NO_LOG_FILE. Soubory se záznamy jsou
+vytvářeny v\ adresáři logs pod složkou s\ uživatelskými daty.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
-whether implicit or explicit.
+výstup záznamů je zapsán do souboru. Ruší účinek volby \-\-no\-log\-to\-file ať
+už je vyjádřena přímo, nebo nepřímo.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+vypne anonymizaci, která se běžně používá při zaznamenávání, například
+nahrazení uživatelských jmen jménem USER.
 .TP 
 \fB\-\-wnoconsole\fP
 Ve Windows, pokud je použita spolu s\ \-\-no\-log\-to\-file, způsobí, že je výstup
@@ -208,7 +208,7 @@ nastavení. Riskantní.
 Wesnothu. Podobné volbě \fB\-\-script\fP, ale Lua soubor by měl vrátit funkci,
 která poběží jako koprogram a\ bude pravidelně probouzena aktualizacemi.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ výchozí\-soubor\fP\fB\ \fP\fIsoubor\-se\-záplatou\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 použije na WML soubor DiffWML záplatu. Žádný ze souborů
 nepředzpracovává. Záplatovaný WML směruje na standardní výstup nebo do
 souboru označeného volbou \fI\-\-output\fP.
@@ -218,8 +218,7 @@ předzpracuje zadaný soubor či složku. Do určeného cílového adresáře bu
 každý soubor zapsán .cfg soubor se značkami (plain) a zpracovaný .cfg
 soubor. Pokud je zadána složka, bude zpracována rekurzivně podle známých
 pravidel preprocesoru. Společná makra z adresáře „data/core/macros“ budou
-předzpracována před zadanými zdroji. Příklad: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/výsledek\fP. Pro podrobné údaje týkající
+předzpracována před zadanými zdroji. Příklad: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/výsledek\fP. Pro podrobné údaje týkající
 se preprocesoru navštiv:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
@@ -291,20 +290,8 @@ zpřístupní lua skriptům balíček \fBpackage\fP, takže mohou načítat libo
 balíčky. Nedělej to s\ nedůvěryhodnými skripty! Tento krok dá lua skriptům
 stejná oprávnění, jaká má spustitelný soubor wesnoth.
 .TP 
-\fB\-S, \-\-use\-schema\fP\fI\ cesta\fP
-nastaví WML schéma pro použití s\ volbou \fB\-V, \-\-validate\fP.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ název\fP
-nastaví \fInázev\fP adresáře s\ uživatelským nastavením v\ $HOME, nebo pro
-Windows v\ „My Documents\eMy Games“. Pro adresář s\ nastavením můžeš také
-určit absolutní cestu mimo $HOME nebo „My Documents\eMy Games“. Na Windows
-je kromě toho možné zadat adresář relativně k\ pracovnímu adresáři procesu
-užitím cesty, která začíná na „.\e“ nebo „..\e“. Pod X11 je výchozím
-adresářem $XDG_CONFIG_HOME nebo $HOME/.config/wesnoth, na jiných systémech
-je to cesta k\ uživatelským datům.
-.TP 
-\fB\-\-userconfig\-path\fP
-vytiskne cestu k\ adresáři s\ uživatelským nastavením a\ skončí.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ název\fP
 nastaví \fInázev\fP adresáře s\ uživatelskými daty v\ $HOME, nebo pro Windows
@@ -329,7 +316,7 @@ ověřuje WML daného rozšíření, zatímco hraješ.
 \fB\-\-validate\-core\fP
 ověřuje WML jádra, zatímco hraješ.
 .TP 
-\fB\-\-validate\-schema\fP\fI\ cesta\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 ověří soubor jako WML schéma.
 .TP 
 \fB\-\-validcache\fP
@@ -430,7 +417,7 @@ Navštiv oficiální domovskou stránku: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003–2024 David White <davidnwhite@verizon.net>
 .br
 Toto je svobodný software; je licencován pod licencí GPL verze 2, tak jak je
 publikována nadací Free Software Foundation. Tento program je bez záruky, a

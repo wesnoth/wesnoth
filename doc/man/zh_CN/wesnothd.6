@@ -26,8 +26,7 @@ wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP）多人网络守护进程
 .
 .SH 摘要
 .
-\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
@@ -53,12 +52,6 @@ wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP）多人网络守护进程
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
 绑定服务器到指定的端口。如果不指定，则将使用\fB15000\fP端口。
-.TP 
-\fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
-设置网络I/O中等待状态的工作线程的最大数量为n（默认值：\fB5\fP，\ 最大值：\ \fB30\fP）。
-.TP 
-\fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
-设置允许创建的最大工作线程数。如果设置为\fB0\fP则不限制线程数（默认值：\fB0\fP）
 .TP 
 \fB\-V, \-\-version\fP
 显示版本号并退出。
@@ -89,9 +82,6 @@ wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP）多人网络守护进程
 \fBban_save_file\fP
 一个服务器可读可写的（经gzip压缩的）文件的完整路径或相对路径。封禁信息会自动保存在这个文件里，并在服务器启动时读取。
 .TP 
-\fBcompress_stored_rooms\fP
-指定房间文件是否应该以压缩形式读写。默认值为\fByes\fP。
-.TP 
 \fBconnections_allowed\fP
 同一IP允许的连接数。\fB0\fP 表示无限制。（默认值：\fB5\fP）
 .TP 
@@ -99,12 +89,20 @@ wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP）多人网络守护进程
 是否阻止没有通过\fBuser_handler\fP进行注册的用户登录。（默认：否）
 .TP 
 \fBdisallow_names\fP
-服务器不允许使用的用户名/昵称。可以使用\fB*\fP和\fB?\fP通配符。更多详细信息请查看\fBglob\fP(7)。默认值（如果用户没有指定则自动使用）是：\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP。
+Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+\fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
 服务器所使用的fifo文件的路径（与在wesnoth中使用 /query
 \&...
 的功能相同），您可以向该文件内echo服务器命令。如果不指定，则默认为编译时指定的路径（默认值：\fB/var/run/socket/wesnothd/socket\fP）。
+.TP 
+\fBid\fP
+The ID of the server when using the database functionality to store game
+information. Generally is the major.minor version of accepted clients, such
+as 1.16 or 1.17.
 .TP 
 \fBmax_messages\fP
 \fBmessages_time_period\fP内允许的消息数。（默认值：\fB4\fP）
@@ -115,11 +113,6 @@ wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP）多人网络守护进程
 \fBmotd\fP
 每日一言。
 .TP 
-\fBnew_room_policy\fP
-指定谁能在服务器上创建新房间。可选值为
-\fBeveryone\fP，\fBregistered\fP，\fBadmin\fP和\fBnobody\fP，分别代表所有人，注册用户，管理员或者禁止创建新房间。默认值为
-\fBeveryone\fP。
-.TP 
 \fBpasswd\fP
 用来获取管理员权限的密码（通过 \fB/query admin \fP\fIpassword\fP来取得权限）。
 .TP 
@@ -128,9 +121,6 @@ wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP）多人网络守护进程
 .TP 
 \fBrestart_command\fP
 这是服务器通过\fBrestart\fP命令开启新服务器进程时使用的命令。（只能通过fifo来调用。参见\fBallow_remote_shutdown\fP设置。）
-.TP 
-\fBroom_save_file\fP
-指定存放房间信息的文件的路径。这个文件在服务器启动时读取，之后会写入。如果设为空或者不设置，则房间不会被读取或保存。
 .TP 
 \fBsave_replays\fP
 设置服务器是否自动保存游戏录像。（默认值：\fBfalse\fP）
@@ -145,18 +135,12 @@ TLS full certificate chain in .pem format
 private key for TLS in .pem format
 .TP 
 \fBtls_dh\fP
-TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
-filename.pem 4096\fP
+TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out filename.pem 4096\fP
 .TP 
 \fBversions_accepted\fP
 服务器接受的客户端版本号列表，是以逗号分隔的字符串。支持\fB*\fP和\fB?\fP通配符。（默认为与服务器版本一致的wesnoth版本）
 .br
 例如: \fBversions_accepted="*"\fP 允许所有版本连接。
-.TP 
-\fBid\fP
-The ID of the server when using the database functionality to store game
-information. Generally is the major.minor version of accepted clients, such
-as 1.16 or 1.17.
 .
 .SS 全局标签：
 .
@@ -220,13 +204,18 @@ likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 \fBdb_game_player_info_table\fP
 用于保存wesnothd自有数据的表名，其中是与单场游戏中玩家相关的数据。
 .TP 
-\fBdb_game_modification_info_table\fP
-用于保存wesnothd自有数据的表名，其中是与单场游戏中使用的模组相关的数据。
+\fBdb_game_content_info_table\fP
+The name of the table in which wesnothd will save its own data about game
+content (scenario/era/modifications) used in a game.
 .TP 
 \fBdb_user_group_table\fP
 The name of the table in which your phpbb forum saves its user group
 data. Most likely this will be <table\-prefix>_user_group
 (e.g. phpbb3_user_group).
+.TP 
+\fBdb_tournament_query\fP
+The SQL query to find tournaments to announce on login. Should return
+tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
 .TP 
 \fBdb_connection_history_table\fP
 The name of the table in which to store login/logout times. Also used for

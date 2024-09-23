@@ -173,16 +173,16 @@ public:
 
 	/** Alpha modifier. Multiplies alpha when drawing. */
 	void set_alpha_mod(uint8_t alpha);
-	uint8_t get_alpha_mod();
+	uint8_t get_alpha_mod() const;
 
 	/** Blend mode. Modifies how draw operations are applied. */
 	void set_blend_mode(SDL_BlendMode);
-	SDL_BlendMode get_blend_mode();
+	SDL_BlendMode get_blend_mode() const;
 
 	/** Colour modifier. Multiplies each colour component when drawing. */
 	void set_color_mod(uint8_t r, uint8_t g, uint8_t b);
 	void set_color_mod(color_t);
-	color_t get_color_mod();
+	color_t get_color_mod() const;
 
 	/** Releases ownership of the managed texture and resets the ptr to null. */
 	void reset();

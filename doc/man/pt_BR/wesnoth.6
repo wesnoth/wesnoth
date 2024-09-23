@@ -62,13 +62,8 @@ O id do cenário da campanha especificada. O padrão é o primeiro cena´rio.
 Pula as [história] janelas e diálogos ate o fim pelo \fBstart\fP evento.
 .TP 
 \fB\-\-clock\fP
-Adiciona a opção para mostrar um relógio para testar o cronômetro.
-.TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-Depreciação, usa \fB\-\-userdata\-dir\fP.
-.TP 
-\fB\-\-config\-path\fP
-Depreciação, usa \fB\-\-userdata\-path\fP.
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 sobrescreve o core carregado com o id do core especificado.
@@ -90,7 +85,7 @@ habilita alguns mecanismos de deb da Lua
 \fB\-\-strict\-lua\fP
 proibi chamadas de depreciação de Lua API
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 diffs os dois arquivos WML; não pre\-processa eles primeiro (para fazer isso,
 primeiro use \fB\-p\fP). Diff sai como DiffWML na saída padrão ou para o arquivo
 indicado por \fI\-\-output\fP.
@@ -116,8 +111,7 @@ aberto. se for um diretório, o editor iniciará com uma janela para escolher
 qual mapa carregar.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ lang\fP
-usa língua \fIlang\fP (símbolo) essa sessão.  Exemplo: \fB\-\-language
-ang_GB@latin\fP
+usa língua \fIlang\fP (símbolo) essa sessão.  Exemplo: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 ajusta o nível de gravidade dos log domains.  \fBall\fP pode ser usado para
@@ -128,11 +122,10 @@ ser que seja combinado com a opção \fB\-d\fP.
 \fB\-\-log\-precise\fP
 mostra as timestamps no log de saída com mais precisão.
 .TP 
-\fB\-\-log\-strict\fP
-define o nível strict para o logger. Qualquer mensagem enviada para os log
-domains deste nível, ou de níveis mais severos, fará com que o teste de
-unidade falhe independentemente do resultado da vitória. Apenas relevante
-quando usado juto de \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 lista dos log domains definidos (apenas os que contêm \fIfilter\fP se usad0) e
@@ -146,6 +139,10 @@ in the logs directory under the userdata folder.
 \fB\-\-log\-to\-file\fP
 log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 For Windows, when used with \-\-no\-log\-to\-file, results in output being
@@ -208,7 +205,7 @@ preferências. Perigoso.
 wesnoth. Identico ao \fB\-\-script\fP, mas arquivos Lua devem retornar uma função
 que irá agir como uma co\-rotina e periodicamente despertar com atualizações.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 aplica um patch DiffWML para um arquivo WML; não pré\-processa nenhum dos
 dois arquivos.  Aloca o WML patched para a saída padrão ou para o arquivo
 indicado por \fI\-\-output\fP.
@@ -219,8 +216,7 @@ texto simples .cfg e um arquivo processado .cfg serão escritos no diretório
 alvo especificado. Se uma pasta for especificada, ele será pré\-processado
 recursivmente com base nas regras conhecidas d pré\-processador. Os macros
 comuns do diretório "data/core/macros" serão pré\-processados antes dos
-recursos especificados.  Exemplo: \fB\-p ~/wesnoth/data/campaigns/tutorial
-~/result.\fP Para mais detalhes sobre o Pré\-processador, visite:
+recursos especificados.  Exemplo: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP Para mais detalhes sobre o Pré\-processador, visite:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
@@ -293,20 +289,8 @@ possam carregar pacotes arbitrários. Não use isso com scripts não
 confiáveis! Esta ação faz dá ao lua o mesmo nível de permissão que o
 executável do wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ path\fP
-configura o WML schema para ser usado com \fB\-V,\-\-validate\fP.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ name\fP
-define o diretório das configurações do usuário para \fIname\fP em $HOME ou "My
-Documents\eMy Games" para windows.  Você também pode especificar um caminho
-absoluto para este diretório fora da $HOME ou "My Documents\eMy Games". No
-Windows também é possível especificar um diretório relativo ao processode
-trabalho ao usar um caminho que comece com ".\e" ou "..\e".  Sob X11 o
-padrão é $XDG_CONFIG_HOME ou $HOME/.config/wesnoth, em outros sistemas para
-o caminho dos dados do usuário.
-.TP 
-\fB\-\-userconfig\-path\fP
-imprime o caminho da pasta de configurações de usuário e sai.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 define o diretório dos dados do usuário para \fIname\fP em $HOME ou "My
@@ -330,7 +314,7 @@ valida o WML do addon enquanto você joga.
 \fB\-\-validate\-core\fP
 valida o core WML enquanto você joga.
 .TP 
-\fB\-\-validate\-schema \ path\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 valida um arquivo como WML schema.
 .TP 
 \fB\-\-validcache\fP

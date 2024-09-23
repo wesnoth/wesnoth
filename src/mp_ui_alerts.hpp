@@ -37,12 +37,4 @@ namespace mp::ui_alerts {
 	void game_has_begun();
 
 	void turn_changed(const std::string & player);
-
-	// Functions to calculate what the default preference should be
-	bool get_def_pref_sound(const std::string &);
-	bool get_def_pref_notif(const std::string &);
-	bool get_def_pref_lobby(const std::string &);
-
-	// Note, this list of items must match those ids defined in data/gui/dialogs/mp_alerts_options.cfg
-	extern const std::vector<std::string> items;
 }

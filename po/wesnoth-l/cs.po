@@ -2,15 +2,15 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Honza <Honza-mistic@seznam.cz>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2023
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2024
 # Petr Šlejhar (Septim), 2021, 2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2023-12-08 09:43+0100\n"
+"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
+"PO-Revision-Date: 2024-06-11 22:16+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -515,8 +515,13 @@ msgstr "Hloupej goblin."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:416
+#, fuzzy
+#| msgid ""
+#| "Hey, someone left their pack here. I could use it to carry some more "
+#| "rocks."
 msgid ""
-"Hey, someone left their pack here. I could use it to carry some more rocks."
+"Hey, someone left their pack here. I could use it to carry some heavier "
+"rocks."
 msgstr ""
 "Hej, někdo tu nechal svůj ranec. Mohla bych ho použít k nošení další zásoby "
 "kamenů."
@@ -628,7 +633,7 @@ msgstr ""
 #. [side]
 #. [side]: type=Bandit, id=Baldras
 #. [side]: type=Highwayman_Peasant, gender=female, id=Relana
-#. [side]: type=General, id=Lord Maddock
+#. [side]: type=Lord of Elensefar, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman, id=Baldras
 #. [side]: type=Shadow Lord, id=Helicrom
@@ -1275,7 +1280,7 @@ msgstr "Elensefar"
 msgid "Port of Elensefar"
 msgstr "Elensefarský přístav"
 
-#. [side]: type=General, id=Lord Maddock
+#. [side]: type=Lord of Elensefar, id=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:45
 msgid "Lord Maddock"
 msgstr "Lord Maddok"
@@ -3152,6 +3157,29 @@ msgid ""
 msgstr ""
 "Takže přežili! Ty ostrovy jsou trochu daleko, ale myslím, že v mým starým "
 "těle zbejvá ještě dost energie na další dobrodružství..."
+
+#. [unit_type]: id=Lord of Elensefar, race=human
+#: data/campaigns/Liberty/units/Maddock.cfg:4
+msgid "Lord of Elensefar"
+msgstr "Pán Elensefaru"
+
+#. [unit_type]: id=Lord of Elensefar, race=human
+#: data/campaigns/Liberty/units/Maddock.cfg:7
+msgid ""
+"The grand city-state of Elensefar is the wealthiest human settlement on the "
+"Great Continent, commanding a reputation and power that belies its "
+"relatively small population. Unlike the more war-minded inland nobles, "
+"Elensefar’s governors master the art of commerce and the skill of sailing, "
+"and are known to be particularly agreeable. Yet behind that merchant charm "
+"lies a fierce independence, a trait that sometimes puts them at odds with "
+"the aristocrats of other regions."
+msgstr ""
+"Velkolepý městský stát Elensefar je nejbohatší lidskou osadou na Velkém "
+"kontinentu a má pověst a moc, která neodpovídá jeho relativně malému počtu "
+"obyvatel. Na rozdíl od válečnických šlechticů ve vnitrozemí ovládají správci "
+"Elensefaru umění obchodu a plavby a je známo, že jsou mimořádně příjemní. Za "
+"obchodnickým šarmem se však skrývá divoká nezávislost, která je někdy vede "
+"ke sporu s aristokraty z jiných krajů."
 
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5

@@ -40,8 +40,8 @@ bool bool_matches_if_present(const config& filter, const config& cfg, const std:
  *
  * Always returns true if the filter puts no restriction on the value of @a cfg[@a attribute].
  */
-bool double_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, std::optional<double> def = std::nullopt);
-bool int_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, std::optional<int> def = std::nullopt);
+bool double_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, utils::optional<double> def = utils::nullopt);
+bool int_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, utils::optional<int> def = utils::nullopt);
 
 /**
  * Restricts filters to only looking for values that are zero or more.
@@ -62,10 +62,17 @@ bool unsigned_matches_if_present(const config& filter, const config& cfg, const 
  * The function is named "negative" in case we later want to add a "reciprocal" for the "multiply"/"divide" pair.
  */
 bool int_matches_if_present_or_negative(
-	const config& filter, const config& cfg, const std::string& attribute, const std::string& opposite, std::optional<int> def = std::nullopt);
+	const config& filter, const config& cfg, const std::string& attribute, const std::string& opposite, utils::optional<int> def = utils::nullopt);
 
 bool string_matches_if_present(
 	const config& filter, const config& cfg, const std::string& attribute, const std::string& def);
+
+/**
+ * filter[attribute] and cfg[attribute] are assumed to be comma-separated lists.
+ * If the filter is present, each item in filter[attribute] must match an item in cfg[attribute]
+ * for the function to return true.
+ */
+bool set_includes_if_present(const config& filter, const config& cfg, const std::string& attribute);
 
 bool bool_or_empty(const config& filter, const config& cfg, const std::string& attribute);
 

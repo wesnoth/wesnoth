@@ -20,7 +20,7 @@
 #include "font/sdl_ttf_compat.hpp"
 #include "formula/string_utils.hpp"     // for VNGETTEXT
 #include "game_config.hpp"              // for debug, menu_contract, etc
-#include "preferences/game.hpp"         // for encountered_terrains, etc
+#include "preferences/preferences.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
 #include "language.hpp"                 // for string_table, symbol_table
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
@@ -32,9 +32,9 @@
 #include "tstring.hpp"                  // for t_string, operator<<
 #include "units/helper.hpp"             // for resistance_color
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
-#include "video.hpp"                    // for game_canvas_size
+#include "utils/optional_fwd.hpp"
+#include "video.hpp"                    // fore current_resolution
 
-#include <optional>
 #include <set>
 
 static lg::log_domain log_help("help");
@@ -74,7 +74,7 @@ static std::string print_behavior_description(ter_iter start, ter_iter end, cons
 	if (start == end) return "";
 	if (*start == t_translation::MINUS || *start == t_translation::PLUS) return print_behavior_description(start+1, end, tdata, first_level, *start == t_translation::PLUS); //absorb any leading mode changes by calling again, with a new default value begin_best.
 
-	std::optional<ter_iter> last_change_pos;
+	utils::optional<ter_iter> last_change_pos;
 
 	bool best = begin_best;
 	for (ter_iter i = start; i != end; ++i) {
@@ -756,7 +756,7 @@ std::string unit_topic_generator::operator()() const {
 		push_header(first_row, _("Defense"));
 		push_header(first_row, _("Movement Cost"));
 
-		const bool has_terrain_defense_caps = movement_type.has_terrain_defense_caps(preferences::encountered_terrains());
+		const bool has_terrain_defense_caps = movement_type.has_terrain_defense_caps(prefs::get().encountered_terrains());
 		if (has_terrain_defense_caps) {
 			push_header(first_row, _("Defense Cap"));
 		}
@@ -774,7 +774,7 @@ std::string unit_topic_generator::operator()() const {
 
 		std::set<terrain_movement_info> terrain_moves;
 
-		for (t_translation::terrain_code terrain : preferences::encountered_terrains()) {
+		for (t_translation::terrain_code terrain : prefs::get().encountered_terrains()) {
 			if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
 				continue;
 			}

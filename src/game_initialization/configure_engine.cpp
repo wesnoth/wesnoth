@@ -16,8 +16,7 @@
 
 #include "formula/string_utils.hpp"
 #include "mp_game_settings.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "map_settings.hpp"
 #include "tod_manager.hpp"
 
@@ -58,109 +57,109 @@ bool configure_engine::force_lock_settings() const
 std::string configure_engine::game_name_default()
 {
 	utils::string_map i18n_symbols;
-	i18n_symbols["login"] = preferences::login();
+	i18n_symbols["login"] = prefs::get().login();
 	return VGETTEXT("$login|’s game", i18n_symbols);
 }
 
 int configure_engine::num_turns_default() const
 {
-	return use_map_settings() ? settings::get_turns(initial_cfg()["turns"]) : preferences::turns();
+	return use_map_settings() ? settings::get_turns(initial_cfg()["turns"]) : prefs::get().mp_turns();
 }
 
 int configure_engine::village_gold_default() const
 {
 	return use_map_settings()
 		? settings::get_village_gold(initial_cfg()["mp_village_gold"], &state_.classification())
-		: preferences::village_gold();
+		: prefs::get().village_gold();
 }
 
 int configure_engine::village_support_default() const
 {
 	return use_map_settings()
 		? settings::get_village_support(initial_cfg()["mp_village_support"])
-		: preferences::village_support();
+		: prefs::get().village_support();
 }
 
 int configure_engine::xp_modifier_default() const
 {
 	return use_map_settings()
 		? settings::get_xp_modifier(initial_cfg()["experience_modifier"])
-		: preferences::xp_modifier();
+		: prefs::get().xp_modifier();
 }
 
 int configure_engine::mp_countdown_init_time_default() const
 {
-	return preferences::countdown_init_time();
+	return prefs::get().countdown_init_time();
 }
 
 int configure_engine::mp_countdown_reservoir_time_default() const
 {
-	return preferences::countdown_reservoir_time();
+	return prefs::get().countdown_reservoir_time();
 }
 
 int configure_engine::mp_countdown_turn_bonus_default() const
 {
-	return preferences::countdown_turn_bonus();
+	return prefs::get().countdown_turn_bonus();
 }
 
 int configure_engine::mp_countdown_action_bonus_default() const
 {
-	return preferences::countdown_action_bonus();
+	return prefs::get().countdown_action_bonus();
 }
 
 bool configure_engine::mp_countdown_default() const
 {
-	return preferences::countdown();
+	return prefs::get().mp_countdown();
 }
 
 bool configure_engine::use_map_settings_default() const
 {
-	return force_lock_settings() || preferences::use_map_settings();
+	return force_lock_settings() || prefs::get().mp_use_map_settings();
 }
 
 bool configure_engine::random_start_time_default() const
 {
 	return use_map_settings()
 		? initial_cfg()["random_start_time"].to_bool(false)
-		: preferences::random_start_time();
+		: prefs::get().mp_random_start_time();
 }
 
 bool configure_engine::fog_game_default() const
 {
 	return use_map_settings()
 		? initial_cfg()["mp_fog"].to_bool(state_.classification().is_normal_mp_game())
-		: preferences::fog();
+		: prefs::get().mp_fog();
 }
 
 bool configure_engine::shroud_game_default() const
 {
-	return use_map_settings() ? initial_cfg()["mp_shroud"].to_bool(false) : preferences::shroud();
+	return use_map_settings() ? initial_cfg()["mp_shroud"].to_bool(false) : prefs::get().mp_shroud();
 }
 
 bool configure_engine::allow_observers_default() const
 {
-	return preferences::allow_observers();
+	return prefs::get().allow_observers();
 }
 
 bool configure_engine::shuffle_sides_default() const
 {
-	return preferences::shuffle_sides();
+	return prefs::get().shuffle_sides();
 }
 
 random_faction_mode::type configure_engine::random_faction_mode_default() const
 {
-	return random_faction_mode::get_enum(preferences::random_faction_mode()).value_or(random_faction_mode::type::independent);
+	return random_faction_mode::get_enum(prefs::get().random_faction_mode()).value_or(random_faction_mode::type::independent);
 }
 
 void configure_engine::set_options(const config& cfg)
 {
 	parameters_.options = cfg;
-	preferences::set_options(cfg);
+	prefs::get().set_options(cfg);
 }
 
 const config& configure_engine::options_default() const
 {
-	return preferences::options();
+	return prefs::get().options();
 }
 
 void configure_engine::write_parameters()

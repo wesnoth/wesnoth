@@ -27,6 +27,7 @@
 #include "sdl/texture.hpp"
 #include "sdl/rect.hpp"
 
+namespace wfl { class variant; }
 struct point;
 
 namespace gui2
@@ -153,6 +154,11 @@ public:
 	void set_variable(const std::string& key, wfl::variant&& value)
 	{
 		variables_.add(key, std::move(value));
+	}
+
+	wfl::variant get_variable(const std::string& key)
+	{
+		return variables_.query_value(key);
 	}
 
 private:

@@ -63,13 +63,8 @@ Identifikátor scény vo zvolenej výprave. Predvolená je prvá scéna.
 Preskoč [príbehové] obrazovky a dialógy až do konca \fBstart\fP udalosti.
 .TP 
 \fB\-\-clock\fP
-Pridáva možnosť zobraziť hodiny na testovanie časovača kreslenia.
-.TP 
-\fB\-\-config\-dir\fP\fI\ názov\fP
-Zastarané, použi \fB\-\-userdata\-dir\fP.
-.TP 
-\fB\-\-config\-path\fP
-Zastarané, použite \fB\-\-userdata\-path\fP.
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id\fP
 prepíše načítané jadro jadrom, ktorého id je zadané.
@@ -90,7 +85,7 @@ umožní využívať niektoré debuggovacie mechanizmy jazyka Lua
 \fB\-\-strict\-lua\fP
 znemožní používať zastarané Lua API volania
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 porovnáva dva súbory WML; najprv ich nespracuje (aby ste to urobili, najprv
 ich spustite cez \fB\-p\fP). Vypíše rozdiel ako DiffWML na štandardný výstup
 alebo do súboru označeného \fI\-\-output\fP.
@@ -116,8 +111,7 @@ použitá aj voľba \fB\-e\fP alebo \fB\-\-editor\fP, potom spustí editor s map
 tohto adresára.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ jazyk\fP
-používa jazyk \fIlang\fP (symbol) v tejto relácii. Príklad: \fB\-\-language
-ang_GB@latin\fP
+používa jazyk \fIlang\fP (symbol) v tejto relácii. Príklad: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdoména1\fP\fB,\fP\fIdoména2\fP\fB,\fP\fI...\fP
 nastaví úroveň závažnosti zapisovacích domén. \fBall\fP znamená všetky
@@ -128,10 +122,10 @@ zapisovacie domény. Možné úrovne: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\
 \fB\-\-log\-precise\fP
 zobrazuje časové pečiatky vo výstupe protokolu s väčšou presnosťou.
 .TP 
-\fB\-\-log\-strict\fP
-nastavuje prísnu úroveň zapisovača. Všetky správy odoslané do domén tejto
-úrovne alebo závažnejších spôsobia zlyhanie testu jednotky bez ohľadu na
-výsledok víťazstva. Relevantné len pri použití s \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 vypíše definované protokolovacie domény domény protokolovania (iba tie ktoré
@@ -145,6 +139,10 @@ in the logs directory under the userdata folder.
 \fB\-\-log\-to\-file\fP
 log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 Pre Windows, keď sa použije s \-\-no\-log\-to\-file, výstup sa zapíše do
@@ -207,7 +205,7 @@ bezpečné.
 Wesnoth. Podobne ako \fB\-\-script\fP, ale súbor Lua by mal vrátiť funkciu, ktorá
 sa spustí ako co\-rutina a bude sa pravidelne prebúdzať s aktualizáciami.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ základný súbor\fP\fB\ \fP\fIpatch\-súbor\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 aplikuje patch DiffWML na súbor WML; nespracúva ani jeden zo
 súborov. Extrahuje opravený WML na štandardný výstup alebo do súboru
 označeného \fI\-\-output\fP.
@@ -217,8 +215,7 @@ spracuje preprocesorom zadaný súbor/adresár. Pre každý súbor bude do
 cieľového adresára zapísaný základný .cfg súbor a spracovaný .cfg súbor. Ak
 je zadaný adresár, bude spracovaný rekurzívne podľa pravidiel
 preprocesora. Spoločné makrá z adresára "data/core/macros" budú spracované
-pred zadanými zdrojmi (resources). Príklad: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result\fP. Pre detailné informácie o
+pred zadanými zdrojmi (resources). Príklad: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result\fP. Pre detailné informácie o
 preprocesore navštívte
 http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
@@ -288,20 +285,8 @@ sprístupní balík \fBpackage\fP skriptom lua, aby mohli načítať ľubovoľn�
 balíky. Nerobte to s nedôveryhodnými skriptami! Táto akcia dáva jazyku lua
 rovnaké oprávnenia ako spustiteľnému súboru wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ cesta\fP
-nastaví schému WML na použitie s \fB\-V,\-\-validate\fP.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ názov\fP
-nastaví konfiguračný adresár používateľa na \fInázov\fP pod $HOME alebo "My
-Documents\eMy Games" pre Windows.  Môžete tiež zadať absolútnu cestu pre
-konfiguračný adresár mimo $HOME alebo "My Documents\eMy Games". V systéme
-Windows je možné zadať aj adresár relatívny k pracovnému adresáru procesu
-pomocou cesty začínajúcej na ".\e" alebo "..\e".  V systéme X11 je to
-predvolená cesta $XDG_CONFIG_HOME alebo $HOME/.config/wesnoth, v ostatných
-systémoch cesta userdata.
-.TP 
-\fB\-\-userconfig\-path\fP
-vypíše názov adresára s používateľskými nastaveniami a skončí.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ názov\fP
 nastaví adresár userdata na \fIname\fP pod $HOME alebo "My Documents\eMy Games"
@@ -326,7 +311,7 @@ validuje WML daného doplnku počas hrania.
 \fB\-\-validate\-core\fP
 validuje WML základu hry počas hrania.
 .TP 
-\fB—validate\-schema \ cesta\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 overí súbor ako schému WML.
 .TP 
 \fB\-\-validcache\fP
@@ -398,8 +383,7 @@ nastaví frakciu danej éry pre túto stranu. Frakcia sa vyberá pomocou
 id. Frakcie sú popísané v súbore data/multiplayer.cfg.
 .TP 
 \fB\-\-turns\fP\fI\ hodnota\fP
-nastaví limit na počet ťahov pre danú scénu. Základná hodnota je \fBbez
-limitu\fP.
+nastaví limit na počet ťahov pre danú scénu. Základná hodnota je \fBbez limitu\fP.
 .
 .SH "NÁVRATOVÝ KÓD"
 .

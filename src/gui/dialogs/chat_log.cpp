@@ -27,7 +27,7 @@
 #include "font/pango/escape.hpp"
 #include "desktop/clipboard.hpp"
 #include "serialization/unicode.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "log.hpp"
 #include "replay.hpp"
 #include "gettext.hpp"
@@ -109,7 +109,7 @@ public:
 										  chat_log_history.begin() + last))
 		{
 			const std::string& timestamp
-					= preferences::get_chat_timestamp(t.time());
+					= prefs::get().get_chat_timestamp(t.time());
 
 			if(!lcfilter.empty()) {
 				const std::string& lcsample = utf8::lowercase(timestamp)
@@ -193,7 +193,7 @@ public:
 	{
 		std::ostringstream s;
 		stream_log(s, first, last, true);
-		desktop::clipboard::copy_to_clipboard(s.str(), false);
+		desktop::clipboard::copy_to_clipboard(s.str());
 	}
 };
 
@@ -391,10 +391,6 @@ public:
 				std::bind(&view::handle_copy_button_clicked,
 							this,
 							std::ref(window)));
-		if (!desktop::clipboard::available()) {
-			model_.copy_button->set_active(false);
-			model_.copy_button->set_tooltip(_("Clipboard support not found, contact your packager"));
-		}
 
 		model_.page_label = find_widget<styled_widget>(&window, "page_label", false, true);
 

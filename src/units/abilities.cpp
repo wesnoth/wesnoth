@@ -24,7 +24,6 @@
 #include "game_board.hpp"
 #include "game_version.hpp" // for version_info
 #include "gettext.hpp"
-#include "global.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -35,6 +34,7 @@
 #include "units/abilities.hpp"
 #include "units/filter.hpp"
 #include "units/map.hpp"
+#include "utils/config_filters.hpp"
 #include "filter_context.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
@@ -349,8 +349,99 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 	return res;
 }
 
+namespace {
+/**
+ * Value of unit::num_recursion_ at which allocations of further recursion_guards fail. This
+ * value is used per unit.
+ *
+ *
+ * With the limit set to 2, all tests pass, but as the limit only affects cases that would otherwise
+ * lead to a crash, it seems reasonable to leave a little headroom for more complex logic.
+ */
+constexpr unsigned int UNIT_RECURSION_LIMIT = 3;
+};
+
+namespace {
+	/**
+	 * Print "Recursion limit reached" log messages, including deduplication if the same problem has
+	 * already been logged.
+	 */
+	void show_recursion_warning(const unit& unit, const config& filter) {
+		// This function is only called when an ability is checked for the second time
+		// filter has already been parsed multiple times, so I'm not trying to optimize the performance
+		// of this; it's merely to prevent the logs getting spammed. For example, each of
+		// four_cycle_recursion_branching and event_test_filter_attack_student_weapon_condition only log
+		// 3 unique messages, but without deduplication they'd log 1280 and 392 respectively.
+		static std::vector<std::tuple<std::string, std::string>> already_shown;
+
+		auto identifier = std::tuple<std::string, std::string>{unit.id(), filter.debug()};
+		if(utils::contains(already_shown, identifier)) {
+			return;
+		}
+
+		std::string_view filter_text_view = std::get<1>(identifier);
+		utils::trim(filter_text_view);
+		ERR_NG << "Looped recursion error for unit '" << unit.id()
+		<< "' while checking ability '" << filter_text_view << "'";
+
+		// Arbitrary limit, just ensuring that having a huge number of specials causing recursion
+		// warnings can't lead to unbounded memory consumption here.
+		if(already_shown.size() > 100) {
+			already_shown.clear();
+		}
+		already_shown.push_back(std::move(identifier));
+	}
+}//anonymous namespace
+
+unit::recursion_guard unit::update_variables_recursion() const
+{
+	if(num_recursion_ < UNIT_RECURSION_LIMIT) {
+		return recursion_guard(*this);
+	}
+	return recursion_guard();
+}
+
+unit::recursion_guard::recursion_guard() = default;
+
+unit::recursion_guard::recursion_guard(const unit & u)
+	: parent(u.shared_from_this())
+{
+	u.num_recursion_++;
+}
+
+unit::recursion_guard::recursion_guard(unit::recursion_guard&& other)
+{
+	std::swap(parent, other.parent);
+}
+
+unit::recursion_guard::operator bool() const {
+	return bool(parent);
+}
+
+unit::recursion_guard& unit::recursion_guard::operator=(unit::recursion_guard&& other)
+{
+	assert(this != &other);
+	assert(!parent);
+	std::swap(parent, other.parent);
+	return *this;
+}
+
+unit::recursion_guard::~recursion_guard()
+{
+	if(parent) {
+		assert(parent->num_recursion_ > 0);
+		parent->num_recursion_--;
+	}
+}
+
 bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
+	unit::recursion_guard filter_lock;
+	filter_lock = update_variables_recursion();
+	if(!filter_lock) {
+		show_recursion_warning(*this, cfg);
+		return false;
+	}
 	bool illuminates = ability == "illuminates";
 
 	if (auto afilter = cfg.optional_child("filter"))
@@ -423,6 +514,14 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,const map_location& loc,const unit& from) const
 {
+	unit::recursion_guard adj_lock;
+	if(cfg.has_child("affect_adjacent")){
+		adj_lock = update_variables_recursion();
+		if(!adj_lock) {
+			show_recursion_warning(*this, cfg);
+			return false;
+		}
+	}
 	bool illuminates = ability == "illuminates";
 
 	assert(dir >=0 && dir <= 5);
@@ -451,6 +550,14 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 bool unit::ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	auto filter = cfg.optional_child("filter_self");
+	unit::recursion_guard self_lock;
+	if(filter){
+		self_lock = update_variables_recursion();
+		if(!self_lock) {
+			show_recursion_warning(*this, cfg);
+			return false;
+		}
+	}
 	bool affect_self = cfg["affect_self"].to_bool(true);
 	if (!filter || !affect_self) return affect_self;
 	return unit_filter(vconfig(*filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
@@ -1102,10 +1209,9 @@ attack_type::specials_context_t::specials_context_t(const attack_type& weapon, u
  * @param[in]  loc           The location of the unit with this weapon.
  * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
  */
-attack_type::specials_context_t::specials_context_t(const attack_type& weapon, const unit_type& self_type, const map_location& loc, bool attacking)
+attack_type::specials_context_t::specials_context_t(const attack_type& weapon, const unit_type& /*self_type*/, const map_location& loc, bool attacking)
 	: parent(weapon.shared_from_this())
 {
-	UNUSED(self_type);
 	weapon.self_ = unit_ptr();
 	weapon.other_ = unit_ptr();
 	weapon.self_loc_ = loc;
@@ -1200,7 +1306,7 @@ static std::string select_replacement_type(const unit_ability_list& damage_type_
 static std::string select_alternative_type(const unit_ability_list& damage_type_list, unit_ability_list resistance_list, const unit& u)
 {
 	std::map<std::string, int> type_res;
-	int max_res = INT_MIN;
+	int max_res = std::numeric_limits<int>::min();
 	for(auto& i : damage_type_list) {
 		const config& c = *i.ability_cfg;
 		if(c.has_attribute("alternative_type")) {
@@ -1241,6 +1347,9 @@ std::string attack_type::select_damage_type(const unit_ability_list& damage_type
  */
 std::pair<std::string, std::string> attack_type::damage_type() const
 {
+	if(attack_empty()){
+		return {"", ""};
+	}
 	unit_ability_list damage_type_list = get_specials_and_abilities("damage_type");
 	if(damage_type_list.empty()){
 		return {type(), ""};
@@ -1261,14 +1370,16 @@ std::pair<std::string, std::string> attack_type::damage_type() const
 
 std::set<std::string> attack_type::alternative_damage_types() const
 {
-	unit_ability_list damage_alternative_type_list = get_specials_and_abilities("damage_type");
-	if(damage_alternative_type_list.empty()){
+	unit_ability_list damage_type_list = get_specials_and_abilities("damage_type");
+	if(damage_type_list.empty()){
 		return {};
 	}
 	std::set<std::string> damage_types;
-	for(auto& i : damage_alternative_type_list) {
+	for(auto& i : damage_type_list) {
 		const config& c = *i.ability_cfg;
-		damage_types.insert(c["alternative_type"].str());
+		if(c.has_attribute("alternative_type")){
+			damage_types.insert(c["alternative_type"].str());
+		}
 	}
 
 	return damage_types;
@@ -1342,7 +1453,7 @@ namespace { // Helpers for attack_type::special_active()
 	 * @param[in]  filter      The filter containing the child filter to use.
 	 * @param[in]  for_listing
 	 * @param[in]  child_tag   The tag of the child filter to use.
-	 * @param[in]  tag_name    Parameter used for don't have infinite recusion for some filter attribute.
+	 * @param[in]  check_if_recursion    Parameter used for don't have infinite recusion for some filter attribute.
 	 */
 	static bool special_unit_matches(unit_const_ptr & u,
 		                             unit_const_ptr & u2,
@@ -1350,7 +1461,7 @@ namespace { // Helpers for attack_type::special_active()
 		                             const_attack_ptr weapon,
 		                             const config & filter,
 									 const bool for_listing,
-		                             const std::string & child_tag, const std::string& tag_name)
+		                             const std::string & child_tag, const std::string& check_if_recursion)
 	{
 		if (for_listing && !loc.valid())
 			// The special's context was set to ignore this unit, so assume we pass.
@@ -1377,7 +1488,7 @@ namespace { // Helpers for attack_type::special_active()
 
 		// Check for a weapon match.
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
-			if ( !weapon || !weapon->matches_filter(*filter_weapon, tag_name) )
+			if ( !weapon || !weapon->matches_filter(*filter_weapon, check_if_recursion) )
 				return false;
 		}
 
@@ -1519,9 +1630,7 @@ bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, con
 		if(overwrite_specials){
 			auto overwrite_filter = (*overwrite_specials).optional_child("experimental_filter_specials");
 			if(overwrite_filter && is_overwritable && one_side_overwritable){
-				if(self_){
-					special_matches = (*self_).ability_matches_filter(cfg, tag_name, *overwrite_filter);
-				}
+				special_matches = special_matches_filter(cfg, tag_name, *overwrite_filter);
 			}
 		}
 
@@ -1738,6 +1847,146 @@ bool attack_type::has_special_or_ability(const std::string& special, bool specia
 }
 //end of emulate weapon special functions.
 
+namespace
+{
+	bool matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter)
+	{
+		using namespace utils::config_filters;
+
+		if(!filter["affect_adjacent"].empty()){
+			bool adjacent = cfg.has_child("affect_adjacent");
+			if(filter["affect_adjacent"].to_bool() != adjacent){
+				return false;
+			}
+		}
+
+		if(!bool_matches_if_present(filter, cfg, "affect_self", true))
+			return false;
+
+		if(!bool_or_empty(filter, cfg, "affect_allies"))
+			return false;
+
+		if(!bool_matches_if_present(filter, cfg, "affect_enemies", false))
+			return false;
+
+		if(!bool_matches_if_present(filter, cfg, "cumulative", false))
+			return false;
+
+		const std::vector<std::string> filter_type = utils::split(filter["tag_name"]);
+		if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() )
+			return false;
+
+		if(!string_matches_if_present(filter, cfg, "id", ""))
+			return false;
+
+		if(tag_name == "resistance"){
+			if(!set_includes_if_present(filter, cfg, "apply_to")){
+				return false;
+			}
+		} else {
+			if(!string_matches_if_present(filter, cfg, "apply_to", "self")){
+				return false;
+			}
+		}
+
+		if(!string_matches_if_present(filter, cfg, "overwrite_specials", "none"))
+			return false;
+
+		if(!string_matches_if_present(filter, cfg, "active_on", "both"))
+			return false;
+
+		//for damage only
+		if(!string_matches_if_present(filter, cfg, "replacement_type", ""))
+			return false;
+
+		if(!string_matches_if_present(filter, cfg, "alternative_type", ""))
+			return false;
+
+		//for plague only
+		if(!string_matches_if_present(filter, cfg, "type", ""))
+			return false;
+
+		if(!filter["value"].empty()){
+			if(tag_name == "drains"){
+				if(!int_matches_if_present(filter, cfg, "value", 50)){
+					return false;
+				}
+			} else if(tag_name == "berserk"){
+				if(!int_matches_if_present(filter, cfg, "value", 1)){
+					return false;
+				}
+			} else if(tag_name == "heal_on_hit" || tag_name == "heals" || tag_name == "regenerate" || tag_name == "leadership"){
+				if(!int_matches_if_present(filter, cfg, "value" , 0)){
+					return false;
+				}
+			} else {
+				if(!int_matches_if_present(filter, cfg, "value")){
+					return false;
+				}
+			}
+		}
+
+		if(!int_matches_if_present_or_negative(filter, cfg, "add", "sub"))
+			return false;
+
+		if(!int_matches_if_present_or_negative(filter, cfg, "sub", "add"))
+			return false;
+
+		if(!double_matches_if_present(filter, cfg, "multiply"))
+			return false;
+
+		if(!double_matches_if_present(filter, cfg, "divide"))
+			return false;
+
+		//the wml_filter is used in cases where the attribute we are looking for is not
+		//previously listed or to check the contents of the sub_tags ([filter_adjacent],[filter_self],[filter_opponent] etc.
+		//If the checked set does not exactly match the content of the capability, the function returns a false response.
+		auto fwml = filter.optional_child("filter_wml");
+		if (fwml){
+			if(!cfg.matches(*fwml)){
+				return false;
+			}
+		}
+
+		// Passed all tests.
+		return true;
+	}
+
+	static bool common_matches_filter(const config & cfg, const std::string& tag_name, const config & filter)
+	{
+		// Handle the basic filter.
+		bool matches = matches_ability_filter(cfg, tag_name, filter);
+
+		// Handle [and], [or], and [not] with in-order precedence
+		for (const config::any_child condition : filter.all_children_range() )
+		{
+			// Handle [and]
+			if ( condition.key == "and" )
+				matches = matches && common_matches_filter(cfg, tag_name, condition.cfg);
+
+			// Handle [or]
+			else if ( condition.key == "or" )
+				matches = matches || common_matches_filter(cfg, tag_name, condition.cfg);
+
+			// Handle [not]
+			else if ( condition.key == "not" )
+				matches = matches && !common_matches_filter(cfg, tag_name, condition.cfg);
+		}
+
+		return matches;
+	}
+}
+
+bool unit::ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const
+{
+	return common_matches_filter(cfg, tag_name, filter);
+}
+
+bool attack_type::special_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const
+{
+	return common_matches_filter(cfg, tag_name, filter);
+}
+
 bool attack_type::special_active(const config& special, AFFECTS whom, const std::string& tag_name,
                                  const std::string& filter_self) const
 {
@@ -1878,17 +2127,23 @@ bool attack_type::special_active_impl(
 	//If filter concerns the unit on which special is applied,
 	//then the type of special must be entered to avoid calling
 	//the function of this special in matches_filter()
-	std::string self_tag_name = whom_is_self ? tag_name : "";
-	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self, self_tag_name))
+	//In apply_to=both case, tag_name must be checked in all filter because special applied to both self and opponent.
+	bool applied_both = special["apply_to"] == "both";
+	std::string self_check_if_recursion = (applied_both || whom_is_self) ? tag_name : "";
+	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self, self_check_if_recursion))
 		return false;
-	std::string opp_tag_name = !whom_is_self ? tag_name : "";
-	if (!special_unit_matches(other, self, other_loc, other_attack, special_backstab, is_for_listing, "filter_opponent", opp_tag_name))
+	std::string opp_check_if_recursion = (applied_both || !whom_is_self) ? tag_name : "";
+	if (!special_unit_matches(other, self, other_loc, other_attack, special_backstab, is_for_listing, "filter_opponent", opp_check_if_recursion))
 		return false;
-	std::string att_tag_name = is_attacker ? tag_name : "";
-	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker", att_tag_name))
+	//in case of apply_to=attacker|defender, if both [filter_attacker] and [filter_defender] are used,
+	//check what is_attacker is true(or false for (filter_defender]) in affect self case only is necessary for what unit affected by special has a tag_name check.
+	bool applied_to_attacker = applied_both || (whom_is_self && is_attacker) || (!whom_is_self && !is_attacker);
+	std::string att_check_if_recursion = applied_to_attacker ? tag_name : "";
+	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker", att_check_if_recursion))
 		return false;
-	std::string def_tag_name = !is_attacker ? tag_name : "";
-	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender", def_tag_name))
+	bool applied_to_defender = applied_both || (whom_is_self && !is_attacker) || (!whom_is_self && is_attacker);
+	std::string def_check_if_recursion= applied_to_defender ? tag_name : "";
+	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender", def_check_if_recursion))
 		return false;
 
 	const auto adjacent = get_adjacent_tiles(self_loc);
@@ -1987,13 +2242,14 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFF
 
 	int value_set = (wham == EFFECT_CUMULABLE) ? std::max(list.highest("value").first, 0) + std::min(list.lowest("value").first, 0) : def;
 	std::map<std::string,individual_effect> values_add;
+	std::map<std::string,individual_effect> values_sub;
 	std::map<std::string,individual_effect> values_mul;
 	std::map<std::string,individual_effect> values_div;
 
 	individual_effect set_effect_max;
 	individual_effect set_effect_min;
-	std::optional<int> max_value = std::nullopt;
-	std::optional<int> min_value = std::nullopt;
+	utils::optional<int> max_value = utils::nullopt;
+	utils::optional<int> min_value = utils::nullopt;
 
 	for (const unit_ability & ability : list) {
 		const config& cfg = *ability.ability_cfg;
@@ -2026,7 +2282,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFF
 			}
 		}
 
-		if(wham == EFFECT_CLAMP_MIN_MAX){
+		if(wham == EFFECT_DEFAULT || wham == EFFECT_CUMULABLE){
 			if(cfg.has_attribute("max_value")){
 				max_value = max_value ? std::min(*max_value, cfg["max_value"].to_int()) : cfg["max_value"].to_int();
 			}
@@ -2050,9 +2306,9 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFF
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_int();
 			});
-			std::map<std::string,individual_effect>::iterator sub_effect = values_add.find(effect_id);
-			if(sub_effect == values_add.end() || sub < sub_effect->second.value) {
-				values_add[effect_id].set(ADD, sub, ability.ability_cfg, ability.teacher_loc);
+			std::map<std::string,individual_effect>::iterator sub_effect = values_sub.find(effect_id);
+			if(sub_effect == values_sub.end() || sub < sub_effect->second.value) {
+				values_sub[effect_id].set(ADD, sub, ability.ability_cfg, ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("multiply")) {
@@ -2120,7 +2376,15 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFF
 		effect_list_.push_back(val.second);
 	}
 
-	composite_value_ = static_cast<int>((value_set + addition) * multiplier / divisor);
+	/* Additional and subtraction are independent since Wesnoth 1.19.4. Prior to that, they affected each other.
+	 */
+	int substraction = 0;
+	for(const auto& val : values_sub) {
+		substraction += val.second.value;
+		effect_list_.push_back(val.second);
+	}
+
+	composite_value_ = static_cast<int>((value_set + addition + substraction) * multiplier / divisor);
 	//clamp what if min_value < max_value or one attribute only used.
 	if(max_value && min_value && *min_value < *max_value) {
 		composite_value_ = std::clamp(*min_value, *max_value, composite_value_);

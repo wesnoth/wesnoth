@@ -179,7 +179,6 @@ gui/dialogs/attack_predictions.cpp
 gui/dialogs/campaign_difficulty.cpp
 gui/dialogs/campaign_selection.cpp
 gui/dialogs/chat_log.cpp
-gui/dialogs/community_dialog.cpp
 gui/dialogs/core_selection.cpp
 gui/dialogs/debug_clock.cpp
 gui/dialogs/depcheck_confirm_change.cpp
@@ -212,6 +211,7 @@ gui/dialogs/game_save.cpp
 gui/dialogs/game_stats.cpp
 gui/dialogs/game_version_dialog.cpp
 gui/dialogs/gamestate_inspector.cpp
+gui/dialogs/gui_test_dialog.cpp
 gui/dialogs/help_browser.cpp
 gui/dialogs/hotkey_bind.cpp
 gui/dialogs/label_settings.cpp
@@ -274,7 +274,6 @@ gui/widgets/generator.cpp
 gui/widgets/grid.cpp
 gui/widgets/helper.cpp
 gui/widgets/pane.cpp
-gui/widgets/scroll_text.cpp
 gui/widgets/scrollbar.cpp
 gui/widgets/scrollbar_container.cpp
 gui/widgets/settings.cpp
@@ -313,11 +312,7 @@ play_controller.cpp
 playmp_controller.cpp
 playsingle_controller.cpp
 playturn_network_adapter.cpp
-preferences/advanced.cpp
-preferences/display.cpp
-preferences/editor.cpp
-preferences/game.cpp
-preferences/lobby.cpp
+preferences/preferences.cpp
 random_deterministic.cpp
 random_synced.cpp
 recall_list_manager.cpp
@@ -333,6 +328,7 @@ savegame.cpp
 scripting/application_lua_kernel.cpp
 scripting/debug_lua.cpp
 scripting/game_lua_kernel.cpp
+scripting/lua_attributes.cpp
 scripting/lua_audio.cpp
 scripting/lua_color.cpp
 scripting/lua_common.cpp
@@ -402,6 +398,7 @@ utils/irdya_datetime.cpp
 utils/markov_generator.cpp
 utils/name_generator_factory.cpp
 utils/parse_network_address.cpp
+utils/spritesheet_generator.cpp
 variable.cpp
 variable_info.cpp
 wesnothd_connection.cpp

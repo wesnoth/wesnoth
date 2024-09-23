@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
-"PO-Revision-Date: 2024-05-10 18:46+0530\n"
+"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
+"PO-Revision-Date: 2024-05-31 21:17+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
@@ -170,6 +170,7 @@ msgstr "গুলতি"
 #: data/core/units/monsters/Bear.cfg:42 data/core/units/monsters/Caribe.cfg:114
 #: data/core/units/monsters/Caribe_Hunter.cfg:115
 #: data/core/units/monsters/Caribe_Nibbler.cfg:129
+#: data/core/units/monsters/Cat_Forest.cfg:92
 #: data/core/units/monsters/Giant_Spider.cfg:28
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Shadow_Jumping_Spider.cfg:87
@@ -280,7 +281,7 @@ msgstr "ফ্লেইল"
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:25
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:34
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:91
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:36
+#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:38
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:26
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:23
@@ -296,7 +297,7 @@ msgstr "ফ্লেইল"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:33
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:62
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:933
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:929
 #: data/campaigns/tutorial/units/Fighter.cfg:24
 #: data/campaigns/tutorial/units/Fighteress.cfg:25
 #: data/campaigns/tutorial/units/Warrior.cfg:25
@@ -312,7 +313,7 @@ msgstr "ফ্লেইল"
 #: data/core/units/humans/Horse_Knight.cfg:23
 #: data/core/units/humans/Horse_Paladin.cfg:39
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:58
-#: data/core/units/humans/Loyalist_Dragoon.cfg:35
+#: data/core/units/humans/Loyalist_Dragoon.cfg:54
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:27
 #: data/core/units/humans/Loyalist_Longbowman.cfg:25
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:25
@@ -332,7 +333,7 @@ msgstr "তলোয়ার"
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Commander.cfg:55
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Lieutenant.cfg:53
 #: data/core/units/humans/Loyalist_Cavalier.cfg:45
-#: data/core/units/humans/Loyalist_Dragoon.cfg:44
+#: data/core/units/humans/Loyalist_Dragoon.cfg:63
 #: data/core/units/humans/Loyalist_Duelist.cfg:45
 #: data/core/units/humans/Loyalist_General.cfg:53
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:47
@@ -350,6 +351,7 @@ msgstr "ক্রসবো"
 #. [attack]: type=blade
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Commander.cfg:46
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Lieutenant.cfg:44
+#: data/campaigns/Liberty/units/Maddock.cfg:51
 #: data/core/units/humans/Horse_Grand_Knight.cfg:24
 #: data/core/units/humans/Loyalist_Cavalier.cfg:36
 #: data/core/units/humans/Loyalist_General.cfg:44
@@ -359,7 +361,7 @@ msgid "longsword"
 msgstr "দীর্ঘ তলোয়ার"
 
 #. [attack]: type=impact
-#: data/campaigns/Eastern_Invasion/units/Human_Konrad_King_of_Wesnoth.cfg:28
+#: data/campaigns/Eastern_Invasion/units/Human_Konrad_King_of_Wesnoth.cfg:29
 #: data/core/units/humans/Outlaw.cfg:23
 #: data/core/units/humans/Outlaw_Bandit.cfg:29
 #: data/core/units/humans/Outlaw_Fugitive.cfg:28
@@ -430,7 +432,7 @@ msgstr "শীতল ঝঞ্ঝা"
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:946
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:942
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -456,6 +458,7 @@ msgstr "ধনুক"
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Soulless_Gryphon
 #. [attack]: type=pierce
+#. [variation]
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
@@ -466,6 +469,8 @@ msgstr "ধনুক"
 #: data/core/units/gryphons/Gryphon_Master.cfg:28
 #: data/core/units/gryphons/Gryphon_Rider.cfg:27
 #: data/core/units/monsters/Bear.cfg:51
+#: data/core/units/monsters/Cat_Forest.cfg:82
+#: data/core/units/monsters/Cat_Jump.cfg:80
 #: data/core/units/monsters/Elder_Falcon.cfg:75
 #: data/core/units/monsters/Falcon.cfg:86
 #: data/core/units/monsters/Icemonax.cfg:53
@@ -473,9 +478,11 @@ msgstr "ধনুক"
 #: data/core/units/monsters/Jinn.cfg:91
 #: data/core/units/monsters/Raven_Harbinger.cfg:83
 #: data/core/units/monsters/Roc.cfg:55
-#: data/core/units/monsters/Skeletal_Dragon.cfg:43
+#: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
+#: data/core/units/undead/Corpse_Soulless.cfg:186
+#: data/core/units/undead/Corpse_Walking.cfg:187
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:94
 #: data/core/units/undead/Spirit_Shadow.cfg:62
 msgid "claws"
@@ -565,7 +572,7 @@ msgstr "প্লেগের দন্ড"
 #. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:36
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:35
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:36
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:37
 #: data/core/units/saurians/Augur.cfg:33 data/core/units/saurians/Oracle.cfg:44
 #: data/core/units/saurians/Prophet.cfg:46 data/core/units/saurians/Seer.cfg:34
 #: data/core/units/saurians/Soothsayer.cfg:33
@@ -599,12 +606,12 @@ msgstr "শাপ"
 #: data/core/units/undead/Corpse_Ghast.cfg:27
 #: data/core/units/undead/Corpse_Soulless.cfg:154
 #: data/core/units/undead/Corpse_Soulless.cfg:170
-#: data/core/units/undead/Corpse_Soulless.cfg:254
-#: data/core/units/undead/Corpse_Soulless.cfg:331
+#: data/core/units/undead/Corpse_Soulless.cfg:270
+#: data/core/units/undead/Corpse_Soulless.cfg:347
 #: data/core/units/undead/Corpse_Walking.cfg:155
 #: data/core/units/undead/Corpse_Walking.cfg:171
-#: data/core/units/undead/Corpse_Walking.cfg:255
-#: data/core/units/undead/Corpse_Walking.cfg:332
+#: data/core/units/undead/Corpse_Walking.cfg:271
+#: data/core/units/undead/Corpse_Walking.cfg:348
 msgid "bite"
 msgstr "কামড়"
 
@@ -667,7 +674,7 @@ msgstr ""
 #: data/core/units/dwarves/Berserker.cfg:43
 #: data/core/units/dwarves/Ulfserker.cfg:30
 msgid "berserker frenzy"
-msgstr ""
+msgstr "ক্ষিপ্ত আক্রমণ"
 
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:17
@@ -955,7 +962,7 @@ msgstr "ঢালের আঘাত"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:28
 #: data/core/units/merfolk/Brawler.cfg:22
 #: data/core/units/merfolk/Citizen.cfg:22
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:32
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:40
 #: data/core/units/monsters/Yeti.cfg:37
 #: data/core/units/trolls/Rocklobber.cfg:25
 #: data/core/units/trolls/Troll_Shaman.cfg:31
@@ -998,49 +1005,49 @@ msgid "bolas"
 msgstr "বোলাস"
 
 #. [effect]: type=blade
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:156
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:157
 msgid "taunting strike"
 msgstr ""
 
 #. [advancement]: id=run_by_taunt
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:183
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:184
 msgid "Run By (Taunting strike)"
 msgstr ""
 
 #. [advancement]: id=strength_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:201
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:202
 msgid "Strength Training"
 msgstr "শক্তির প্রশিক্ষণ"
 
 #. [advancement]: id=bowmanship_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:213
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:214
 msgid "Bowmanship Training"
 msgstr "তিরন্দাজি প্রশিক্ষণ"
 
 #. [advancement]: id=strong_shots
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:230
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:231
 msgid "Strong Shots"
 msgstr "শক্তিশালী আঘাত"
 
 #. [advancement]: id=Bowman
 #. [unit_type]: id=Bowman, race=human, gender=male
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:242
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:243
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
 msgstr "ধনুর্ধর"
 
 #. [advancement]: id=piercing_shot
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:259
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:260
 msgid "Piercing Shot"
 msgstr "ভেদ্য আঘাত"
 
 #. [effect]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:267
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:268
 msgid "piercing shot"
 msgstr "ভেদ্য আঘাত"
 
 #. [effect]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:581
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:582
 msgid "Rain of arrows"
 msgstr "তীরের বৃষ্টি"
 
@@ -1123,7 +1130,7 @@ msgstr ""
 #: data/core/units/boats/Pirate_Galleon.cfg:20
 #: data/core/units/boats/Transport_Galleon.cfg:20
 msgid "ballista"
-msgstr ""
+msgstr "প্রস্তর নিক্ষেপক যন্ত্র"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:4
@@ -1205,6 +1212,7 @@ msgstr "যুদ্ধের নখর"
 #: data/core/units/drakes/Warrior.cfg:35
 #: data/core/units/monsters/Fire_Dragon.cfg:51
 #: data/core/units/monsters/Fire_Guardian.cfg:37
+#: data/core/units/monsters/Fire_Wisp.cfg:38
 #: data/core/units/monsters/Fire_Wraith.cfg:59
 msgid "fire breath"
 msgstr "অগ্নিশ্বাস"
@@ -1867,7 +1875,7 @@ msgstr ""
 #. [unit_type]: id=Dune Luminary, race=dunefolk
 #: data/core/units/dunefolk/Luminary.cfg:8
 msgid "Dune Luminary"
-msgstr ""
+msgstr "মরু পণ্ডিত"
 
 #. [unit_type]: id=Dune Luminary, race=dunefolk
 #: data/core/units/dunefolk/Luminary.cfg:25
@@ -1890,7 +1898,7 @@ msgstr ""
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:11
 msgid "Dune Marauder"
-msgstr ""
+msgstr "মরু লুণ্ঠনকারী"
 
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:31
@@ -1913,7 +1921,7 @@ msgstr ""
 #: data/core/units/dunefolk/Raider.cfg:59
 #: data/core/units/goblins/Pillager.cfg:41
 msgid "torch"
-msgstr ""
+msgstr "মশাল"
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:8
@@ -1991,7 +1999,7 @@ msgstr ""
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:8
 msgid "Dune Rover"
-msgstr ""
+msgstr "মরু যাযাবর যোদ্ধা"
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:21
@@ -2162,7 +2170,7 @@ msgstr ""
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:8
 msgid "Dune Sunderer"
-msgstr ""
+msgstr "মরু ভঙ্গক"
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:21
@@ -2207,7 +2215,7 @@ msgstr "তরবারির শক্তিশালী আঘাত"
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Swordsman.cfg:35
 msgid "balanced scimitar slash"
-msgstr ""
+msgstr "তরবারির সুস্থিত আঘাত"
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:8
@@ -2287,15 +2295,30 @@ msgid ""
 "undisputed masters of ranged combat among the Dunefolk."
 msgstr ""
 
-#. [unit_type]: id=Wyvern Rider, race=monster, description=
+#. [unit_type]: id=Wyvern Rider, race=monster
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:4
 msgid "Wyvern Rider"
 msgstr "ওয়াইভার্ন আরোহী"
 
+#. [unit_type]: id=Wyvern Rider, race=monster
+#: data/core/units/dunefolk/Wyvern_Rider.cfg:17
+msgid ""
+"Although generally peaceful, wyverns can easily become fierce and angry "
+"beasts when provoked. When truly enraged they can even tear apart "
+"experienced warriors with relative ease. Most travelers would run or fight "
+"in their mighty presence, yet a few are able to tame these wild creatures. "
+"These Dunefolk riders spend years, even decades of their lives bonding with "
+"them, slowly building up their trust until they have gained true mastery "
+"over the skies. The most experienced of these Wyvern riders have ascended to "
+"be the greatest and most revered travelers of the land. While they do not "
+"usually use their knowledge for warfare, they can be threatening warriors "
+"when defending their homes."
+msgstr ""
+
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:4
 msgid "Dwarvish Arcanister"
-msgstr ""
+msgstr "বামন জাদুচিহ্ন-বিশেষজ্ঞ"
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:24
@@ -2309,7 +2332,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
-msgstr ""
+msgstr "বামন ক্ষিপ্তযোদ্ধা"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:4
@@ -2375,16 +2398,16 @@ msgid "Dwarvish Miner"
 msgstr "বামন খননকারী"
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
-#: data/core/units/dwarves/Miner.cfg:17
+#: data/core/units/dwarves/Miner.cfg:21
 msgid ""
-"Dwarvish miners are the grunt workers of dwarvish society. They take the "
+"Dwarvish Miners are the grunt workers of dwarvish society. They take the "
 "precious ores out of the ground, but do not ever take part in the crafting "
-"of weapons or artifacts. They have no military training, but they can still "
-"do some damage with their picks."
+"of weapons or artifacts. Despite their lack of military training, their "
+"weighty pickaxes can deal substantial damage."
 msgstr ""
 
 #. [attack]: type=pierce
-#: data/core/units/dwarves/Miner.cfg:22
+#: data/core/units/dwarves/Miner.cfg:26
 msgid "pick"
 msgstr "কুঠার"
 
@@ -2459,7 +2482,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
 msgid "Dwarvish Steelclad"
-msgstr ""
+msgstr "বামন লৌহবর্ম"
 
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:18
@@ -2473,7 +2496,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
 msgid "Dwarvish Thunderer"
-msgstr ""
+msgstr "বামন বজ্রযোদ্ধা"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
@@ -2638,15 +2661,13 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/elves/Enchantress.cfg:36 data/core/units/elves/Shaman.cfg:42
-#: data/core/units/elves/Sorceress.cfg:36
-#: data/core/units/monsters/Caribe_Hunter.cfg:124
-#: data/core/units/wose/Wose_Shaman.cfg:43
-msgid "entangle"
-msgstr "জালে জড়ানো"
+#. in game mechanics an upgrade of the Shaman’s slowing “entangle”, but in lore has the different magic style of the Enchantress’s unit description
+#: data/core/units/elves/Enchantress.cfg:37 data/core/units/elves/Sylph.cfg:41
+msgid "ethereal web"
+msgstr ""
 
 #. [attack]: type=arcane
-#: data/core/units/elves/Enchantress.cfg:47
+#: data/core/units/elves/Enchantress.cfg:49
 #: data/core/units/elves/High_Lord.cfg:56 data/core/units/elves/Lord.cfg:35
 #: data/core/units/elves/Sorceress.cfg:47 data/core/units/elves/Sylph.cfg:53
 msgid "faerie fire"
@@ -2949,6 +2970,13 @@ msgid ""
 "their magic to command the earth itself to hinder or pacify their enemies."
 msgstr ""
 
+#. [attack]: type=impact
+#: data/core/units/elves/Shaman.cfg:42 data/core/units/elves/Sorceress.cfg:36
+#: data/core/units/monsters/Caribe_Hunter.cfg:124
+#: data/core/units/wose/Wose_Shaman.cfg:43
+msgid "entangle"
+msgstr "জালে জড়ানো"
+
 #. [unit_type]: id=Elvish Sharpshooter, race=elf, gender=male,female
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
@@ -3037,11 +3065,6 @@ msgid ""
 "abilities."
 msgstr ""
 
-#. [attack]: type=impact
-#: data/core/units/elves/Sylph.cfg:41
-msgid "gossamer"
-msgstr ""
-
 #. [unit_type]: id=Fog Clearer, race=monster
 #: data/core/units/fake/Fog_Clearer.cfg:13
 msgid "dummy_unit^Fog Clearer"
@@ -3123,7 +3146,7 @@ msgstr ""
 #: data/core/units/merfolk/Entangler.cfg:34
 #: data/core/units/merfolk/Netcaster.cfg:33
 msgid "net"
-msgstr ""
+msgstr "জাল"
 
 #. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:4
@@ -3458,7 +3481,7 @@ msgstr ""
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
 msgid "Iron Mauler"
-msgstr ""
+msgstr "লৌহবর্ম যোদ্ধা"
 
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:18
@@ -3473,7 +3496,7 @@ msgid ""
 "outfitted in this way; Iron Maulers tire easily, and know all too well that "
 "they cannot run on the battlefield. Too often have they seen a distant "
 "comrade fall, yet were powerless to reach the scene in time to help."
-msgstr "লৌহবর্ম যোদ্ধা"
+msgstr ""
 
 #. [unit_type]: id=Javelineer, race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:4
@@ -3572,7 +3595,7 @@ msgstr ""
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:4
 msgid "Pikeman"
-msgstr ""
+msgstr "দীর্ঘ বর্শাবিদ"
 
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:17
@@ -3595,7 +3618,7 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:34
 msgid "pike"
-msgstr ""
+msgstr "দীর্ঘ বর্শা"
 
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:4
@@ -4030,7 +4053,7 @@ msgstr ""
 #. [unit_type]: id=Footpad, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
 msgid "Footpad"
-msgstr ""
+msgstr "পদাতিক দস্যু"
 
 #. [unit_type]: id=Footpad, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Footpad.cfg:19
@@ -4046,7 +4069,7 @@ msgstr ""
 #. [female]: gender=female
 #: data/core/units/humans/Outlaw_Footpad.cfg:89
 msgid "female^Footpad"
-msgstr ""
+msgstr "পদাতিক দস্যু"
 
 #. [unit_type]: id=Fugitive, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
@@ -4172,7 +4195,7 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/humans/Peasant.cfg:23 data/core/units/humans/Peasant.cfg:32
 msgid "pitchfork"
-msgstr ""
+msgstr "পিচফর্ক"
 
 #. [unit_type]: id=Royal Warrior, race=human, gender=male
 #: data/core/units/humans/Royal_Warrior.cfg:8
@@ -4296,6 +4319,7 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Brawler.cfg:30
+#: data/core/units/monsters/Cat_Jump.cfg:90
 #: data/core/units/monsters/Fire_Dragon.cfg:42
 #: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
@@ -4390,7 +4414,7 @@ msgstr ""
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
 msgid "Merman Hoplite"
-msgstr ""
+msgstr "জলমানব শেষ্ঠ রক্ষী"
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:20
@@ -4647,7 +4671,7 @@ msgstr ""
 #. [unit_type]: id=Firebomb Ant, race=monster
 #: data/core/units/monsters/Ant_Firebomb.cfg:11
 msgid "Firebomb Ant"
-msgstr ""
+msgstr "আগুনবোমা পিঁপড়ে"
 
 #. [unit_type]: id=Firebomb Ant, race=monster
 #: data/core/units/monsters/Ant_Firebomb.cfg:53
@@ -4721,10 +4745,10 @@ msgstr ""
 #. [attack]: type=pierce
 #. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-#: data/core/units/undead/Corpse_Soulless.cfg:436
-#: data/core/units/undead/Corpse_Walking.cfg:437
+#: data/core/units/undead/Corpse_Soulless.cfg:452
+#: data/core/units/undead/Corpse_Walking.cfg:453
 msgid "tusk"
-msgstr ""
+msgstr "দাঁত"
 
 #. [unit_type]: id=Piglet, race=monster
 #. the child of a wild boar, rather than the child of a domesticated pig
@@ -4743,7 +4767,7 @@ msgstr ""
 #. [unit_type]: id=Caribe, race=monster
 #: data/core/units/monsters/Caribe.cfg:8
 msgid "Caribe"
-msgstr ""
+msgstr "ক্যারিব"
 
 #. [unit_type]: id=Caribe, race=monster
 #: data/core/units/monsters/Caribe.cfg:28
@@ -4759,7 +4783,7 @@ msgstr ""
 #. [unit_type]: id=Hunter Caribe, race=monster
 #: data/core/units/monsters/Caribe_Hunter.cfg:8
 msgid "Hunter Caribe"
-msgstr ""
+msgstr "শিকারী ক্যারিব"
 
 #. [unit_type]: id=Hunter Caribe, race=monster
 #: data/core/units/monsters/Caribe_Hunter.cfg:29
@@ -4771,7 +4795,7 @@ msgstr ""
 #. [unit_type]: id=Nibbler, race=monster
 #: data/core/units/monsters/Caribe_Nibbler.cfg:8
 msgid "Nibbler"
-msgstr ""
+msgstr "চর্বক মাছ"
 
 #. [unit_type]: id=Nibbler, race=monster
 #: data/core/units/monsters/Caribe_Nibbler.cfg:43
@@ -4780,10 +4804,41 @@ msgid ""
 "single individual may not be a threat, but these fish seldom travel alone."
 msgstr ""
 
+#. [unit_type]: id=Forest Lion, race=cats
+#: data/core/units/monsters/Cat_Forest.cfg:4
+msgid "Forest Lion"
+msgstr ""
+
+#. [unit_type]: id=Forest Lion, race=cats
+#: data/core/units/monsters/Cat_Forest.cfg:31
+msgid ""
+"Forest Lions are light-brown cats, roughly the same size as a wolf, that "
+"hunt the woods and hills at dusk and dawn. Their most distinctive feature is "
+"their odd, triply branched tail, which they seem to use for camouflage and "
+"disruptive patterning."
+msgstr ""
+
+#. [unit_type]: id=Jumpcat, race=cats
+#: data/core/units/monsters/Cat_Jump.cfg:4
+msgid "Jumpcat"
+msgstr ""
+
+#. [unit_type]: id=Jumpcat, race=cats
+#: data/core/units/monsters/Cat_Jump.cfg:30
+msgid ""
+"Jumpcats are opportunistic predators with keen senses and fast reflexes, but "
+"very little bulk, so they are easily dispatched if they can be hit, and "
+"easily scared off if they can’t. One of the most distinctive features of "
+"these odd creatures is the hard clump of twigs, clay, and rocks they carry "
+"on their tail, which is their primary offensive weapon. Their actions are "
+"mostly driven by instinct, but they are sometimes used as assassins by more "
+"sophisticated handlers."
+msgstr ""
+
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:13
 msgid "Swamp Lizard"
-msgstr "জলাভূমির সরীসৃপ"
+msgstr "জলাভূমি সরীসৃপ"
 
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:122
@@ -4826,7 +4881,7 @@ msgstr ""
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
 msgid "Cuttlefish"
-msgstr ""
+msgstr "কাটলফিশ"
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:19
@@ -4841,7 +4896,7 @@ msgstr ""
 #: data/core/units/monsters/Kraken.cfg:26
 #: data/core/units/monsters/Tentacle.cfg:33
 msgid "tentacle"
-msgstr ""
+msgstr "শুঁড়"
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Cuttle_Fish.cfg:40
@@ -4879,12 +4934,12 @@ msgstr ""
 #: data/core/units/monsters/Giant_Scorpion.cfg:47
 #: data/core/units/monsters/Giant_Scorpling.cfg:32
 msgid "sting"
-msgstr ""
+msgstr "হুল"
 
 #. [unit_type]: id=Dragonfly Naiad, race=monster
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:5
 msgid "Dragonfly Naiad"
-msgstr ""
+msgstr "জলজ ফড়িং"
 
 #. [unit_type]: id=Dragonfly Naiad, race=monster
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:58
@@ -4973,10 +5028,28 @@ msgstr ""
 msgid "fire claws"
 msgstr "অগ্নি নখর"
 
+#. [unit_type]: id=Fire Wisp, race=monster
+#: data/core/units/monsters/Fire_Wisp.cfg:4
+msgid "Fire Wisp"
+msgstr "ছোটো অগ্নি জীব"
+
+#. [unit_type]: id=Fire Wisp, race=monster
+#: data/core/units/monsters/Fire_Wisp.cfg:24
+msgid ""
+"Fire Wisps are spirits of smoke and flame. When not being ordered around "
+"they like to frolic in pools of lava and take great delight in burning "
+"anything they can reach."
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/monsters/Fire_Wisp.cfg:29
+msgid "fire bash"
+msgstr "অগ্নি আঘাত"
+
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:8
 msgid "Fire Wraith"
-msgstr ""
+msgstr "অগ্নি জীব"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:47
@@ -4990,7 +5063,7 @@ msgstr ""
 #. [unit_type]: id=Frost Stoat, race=monster
 #: data/core/units/monsters/Frost_Stoat.cfg:20
 msgid "Frost Stoat"
-msgstr ""
+msgstr "বরফের বেজি"
 
 #. [unit_type]: id=Frost Stoat, race=monster
 #: data/core/units/monsters/Frost_Stoat.cfg:35
@@ -5011,10 +5084,10 @@ msgstr "বরফ নখর"
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
 msgid "Giant Mudcrawler"
-msgstr ""
+msgstr "বিরাট কর্দমজীব"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:19
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:27
 msgid ""
 "More resilient than their smaller counterparts, these golems of mud are much "
 "more capable of putting up a fight with a proper soldier even with their "
@@ -5025,8 +5098,8 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:41
-#: data/core/units/monsters/Mudcrawler.cfg:42
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:49
+#: data/core/units/monsters/Mudcrawler.cfg:50
 msgid "mud glob"
 msgstr "কাদার গোলা"
 
@@ -5062,7 +5135,7 @@ msgstr ""
 #: data/core/units/monsters/Giant_Scorpling.cfg:44
 #: data/core/units/monsters/Rock_Scorpion.cfg:53
 msgid "pincers"
-msgstr ""
+msgstr "দাঁড়া"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:111
@@ -5089,7 +5162,7 @@ msgstr ""
 #. [unit_type]: id=Giant Scorpling, race=monster
 #: data/core/units/monsters/Giant_Scorpling.cfg:4
 msgid "Giant Scorpling"
-msgstr ""
+msgstr "অপরিণত বিরাট বৃশ্চিক"
 
 #. [unit_type]: id=Giant Scorpling, race=monster
 #: data/core/units/monsters/Giant_Scorpling.cfg:27
@@ -5128,7 +5201,7 @@ msgstr "জাল"
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:5
 msgid "Bay Horse"
-msgstr ""
+msgstr "বাদামী ঘোড়া"
 
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:19
@@ -5144,7 +5217,7 @@ msgstr ""
 #: data/core/units/monsters/Horse_Black.cfg:50
 #: data/core/units/monsters/Horse_Dark.cfg:44
 #: data/core/units/monsters/Horse_Great.cfg:34
-#: data/core/units/monsters/Horse_White.cfg:38
+#: data/core/units/monsters/Horse_White.cfg:39
 msgid "hooves"
 msgstr "ক্ষুর"
 
@@ -5170,13 +5243,13 @@ msgstr "ঘোড়ার ডাক"
 #. [male]
 #: data/core/units/monsters/Horse_Black.cfg:94
 msgid "Black Stallion"
-msgstr ""
+msgstr "কালো স্ট্যালিয়ন"
 
 #. [female]
 #. Female variant of the Black Horse or Black Stallion; in English this is a pun on the word "Mare"
 #: data/core/units/monsters/Horse_Black.cfg:100
 msgid "female^Black Nightmare"
-msgstr ""
+msgstr "কালো নাইটমেয়ার"
 
 #. [unit_type]: id=Dark Horse, gender=male,female
 #: data/core/units/monsters/Horse_Dark.cfg:14
@@ -5221,7 +5294,7 @@ msgid "White Horse"
 msgstr "সাদা ঘোড়া"
 
 #. [unit_type]: id=White Horse
-#: data/core/units/monsters/Horse_White.cfg:25
+#: data/core/units/monsters/Horse_White.cfg:26
 msgid ""
 "Some horses have a white color, and they are merely white horses. But there "
 "exist a special breed, found only in the wild woods, that are White Horses. "
@@ -5232,7 +5305,7 @@ msgstr ""
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:4
 msgid "Icemonax"
-msgstr ""
+msgstr "আইসমোনাক্স"
 
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:34
@@ -5247,7 +5320,7 @@ msgstr ""
 #. [unit_type]: id=Great Icemonax, race=monster
 #: data/core/units/monsters/Icemonax_Greater.cfg:4
 msgid "Great Icemonax"
-msgstr ""
+msgstr "বিরাট আইসমোনাক্স"
 
 #. [unit_type]: id=Great Icemonax, race=monster
 #: data/core/units/monsters/Icemonax_Greater.cfg:35
@@ -5303,7 +5376,7 @@ msgid "Mudcrawler"
 msgstr ""
 
 #. [unit_type]: id=Mudcrawler, race=monster
-#: data/core/units/monsters/Mudcrawler.cfg:21
+#: data/core/units/monsters/Mudcrawler.cfg:29
 msgid ""
 "Simple beings conjured up from soil and water, Mudcrawlers fend for "
 "themselves by spitting globs of mud with surprising force. Even though they "
@@ -5402,7 +5475,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/monsters/Rock_Scorpion.cfg:61
 msgid "spray"
-msgstr ""
+msgstr "ছেটানো"
 
 #. [unit_type]: id=Sand Scamperer
 #: data/core/units/monsters/Sand_Scamperer.cfg:11
@@ -5422,7 +5495,7 @@ msgstr ""
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:4
 msgid "Horned Scarab"
-msgstr ""
+msgstr "শিঙযুক্ত গুবরেপোকা"
 
 #. [special_note]
 #: data/core/units/monsters/Scarab.cfg:21
@@ -5505,7 +5578,7 @@ msgid "Skeletal Dragon"
 msgstr "কঙ্কাল ড্রাগন"
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
-#: data/core/units/monsters/Skeletal_Dragon.cfg:27
+#: data/core/units/monsters/Skeletal_Dragon.cfg:26
 msgid ""
 "Long ago one of the mightiest living creatures, the feared Dragon has become "
 "only bones and dark sinew. Long after its death, it was raised through the "
@@ -5515,7 +5588,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/monsters/Skeletal_Dragon.cfg:31
+#: data/core/units/monsters/Skeletal_Dragon.cfg:30
 msgid "jaw"
 msgstr "চোয়াল"
 
@@ -6508,126 +6581,134 @@ msgstr "কীট"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:175
 #: data/core/units/undead/Corpse_Walking.cfg:176
+#, fuzzy
+#| msgid "wc_variation^Rat"
+msgid "wc_variation^Cat"
+msgstr "ছুঁচো"
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:191
+#: data/core/units/undead/Corpse_Walking.cfg:192
 msgid "wc_variation^Drake"
 msgstr "ড্রেক"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:190
-#: data/core/units/undead/Corpse_Walking.cfg:191
+#: data/core/units/undead/Corpse_Soulless.cfg:206
+#: data/core/units/undead/Corpse_Walking.cfg:207
 msgid "wc_variation^Dwarf"
 msgstr "বামন"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:203
-#: data/core/units/undead/Corpse_Walking.cfg:204
+#: data/core/units/undead/Corpse_Soulless.cfg:219
+#: data/core/units/undead/Corpse_Walking.cfg:220
 msgid "wc_variation^Falcon"
 msgstr "বাজপাখি"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:238
-#: data/core/units/undead/Corpse_Walking.cfg:239
+#: data/core/units/undead/Corpse_Soulless.cfg:254
+#: data/core/units/undead/Corpse_Walking.cfg:255
 msgid "wc_variation^Fish"
 msgstr "মাছ"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:259
-#: data/core/units/undead/Corpse_Walking.cfg:260
+#: data/core/units/undead/Corpse_Soulless.cfg:275
+#: data/core/units/undead/Corpse_Walking.cfg:276
 msgid "wc_variation^Goblin"
 msgstr "গবলিন"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:269
-#: data/core/units/undead/Corpse_Walking.cfg:293
+#: data/core/units/undead/Corpse_Soulless.cfg:285
+#: data/core/units/undead/Corpse_Walking.cfg:309
 msgid "wc_variation^Horse"
 msgstr "ঘোড়া"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:278
-#: data/core/units/undead/Corpse_Walking.cfg:302
+#: data/core/units/undead/Corpse_Soulless.cfg:294
+#: data/core/units/undead/Corpse_Walking.cfg:318
 msgid "wc_variation^Mounted"
 msgstr "আরোহী"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:287
-#: data/core/units/undead/Corpse_Walking.cfg:311
+#: data/core/units/undead/Corpse_Soulless.cfg:303
+#: data/core/units/undead/Corpse_Walking.cfg:327
 msgid "wc_variation^Beast-Rider"
 msgstr "জন্তু-আরোহী"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:296
-#: data/core/units/undead/Corpse_Walking.cfg:270
+#: data/core/units/undead/Corpse_Soulless.cfg:312
+#: data/core/units/undead/Corpse_Walking.cfg:286
 msgid "wc_variation^Gryphon"
 msgstr "গ্রিফন"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:319
-#: data/core/units/undead/Corpse_Walking.cfg:320
+#: data/core/units/undead/Corpse_Soulless.cfg:335
+#: data/core/units/undead/Corpse_Walking.cfg:336
 msgid "wc_variation^Rat"
 msgstr "ছুঁচো"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:336
-#: data/core/units/undead/Corpse_Walking.cfg:337
+#: data/core/units/undead/Corpse_Soulless.cfg:352
+#: data/core/units/undead/Corpse_Walking.cfg:353
 msgid "wc_variation^Saurian"
 msgstr "সরিয়ান"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:346
-#: data/core/units/undead/Corpse_Walking.cfg:347
+#: data/core/units/undead/Corpse_Soulless.cfg:362
+#: data/core/units/undead/Corpse_Walking.cfg:363
 msgid "wc_variation^Scorpion"
-msgstr ""
+msgstr "বৃশ্চিক"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:364
-#: data/core/units/undead/Corpse_Walking.cfg:365
+#: data/core/units/undead/Corpse_Soulless.cfg:380
+#: data/core/units/undead/Corpse_Walking.cfg:381
 msgid "wc_variation^Scuttler"
-msgstr ""
+msgstr "স্কাটলার"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:373
-#: data/core/units/undead/Corpse_Walking.cfg:374
+#: data/core/units/undead/Corpse_Soulless.cfg:389
+#: data/core/units/undead/Corpse_Walking.cfg:390
 msgid "wc_variation^Spider"
 msgstr "মাকড়সা"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:382
-#: data/core/units/undead/Corpse_Walking.cfg:383
+#: data/core/units/undead/Corpse_Soulless.cfg:398
+#: data/core/units/undead/Corpse_Walking.cfg:399
 msgid "wc_variation^Serpent"
 msgstr "সর্প"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:401
-#: data/core/units/undead/Corpse_Walking.cfg:402
+#: data/core/units/undead/Corpse_Soulless.cfg:417
+#: data/core/units/undead/Corpse_Walking.cfg:418
 msgid "wc_variation^Swimmer"
 msgstr "সন্তরক"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:419
-#: data/core/units/undead/Corpse_Walking.cfg:420
+#: data/core/units/undead/Corpse_Soulless.cfg:435
+#: data/core/units/undead/Corpse_Walking.cfg:436
 msgid "wc_variation^Troll"
 msgstr "ট্রোল"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:428
-#: data/core/units/undead/Corpse_Walking.cfg:429
+#: data/core/units/undead/Corpse_Soulless.cfg:444
+#: data/core/units/undead/Corpse_Walking.cfg:445
 msgid "wc_variation^Boar"
 msgstr "বন্য শূকর"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:441
-#: data/core/units/undead/Corpse_Walking.cfg:442
+#: data/core/units/undead/Corpse_Soulless.cfg:457
+#: data/core/units/undead/Corpse_Walking.cfg:458
 msgid "wc_variation^Wose"
 msgstr "বৃক্ষাত্মা"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:453
-#: data/core/units/undead/Corpse_Walking.cfg:454
+#: data/core/units/undead/Corpse_Soulless.cfg:469
+#: data/core/units/undead/Corpse_Walking.cfg:470
 msgid "wc_variation^Wolf"
 msgstr "নেকড়ে"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:466
-#: data/core/units/undead/Corpse_Walking.cfg:467
+#: data/core/units/undead/Corpse_Soulless.cfg:482
+#: data/core/units/undead/Corpse_Walking.cfg:483
 msgid "wc_variation^Bat"
 msgstr "বাদুড়"
 
@@ -6804,7 +6885,7 @@ msgstr ""
 #. [unit_type]: id=Chocobone, race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
 msgid "Chocobone"
-msgstr ""
+msgstr "কঙ্কাল পক্ষীআরোহী"
 
 #. [unit_type]: id=Chocobone, race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:30
@@ -6861,7 +6942,7 @@ msgstr ""
 #. [unit_type]: id=Draug, race=undead
 #: data/core/units/undead/Skele_Draug.cfg:4
 msgid "Draug"
-msgstr ""
+msgstr "ড্রগ"
 
 #. [unit_type]: id=Draug, race=undead
 #: data/core/units/undead/Skele_Draug.cfg:18
@@ -6876,7 +6957,7 @@ msgstr ""
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:4
 msgid "Revenant"
-msgstr ""
+msgstr "রেভেন্যান্ট"
 
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:18
@@ -6954,7 +7035,7 @@ msgstr "বিলাপ"
 #. [unit_type]: id=Nightgaunt, race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:4
 msgid "Nightgaunt"
-msgstr ""
+msgstr "রাত্রি-বিভীষিকা"
 
 #. [unit_type]: id=Nightgaunt, race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:18

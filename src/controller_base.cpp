@@ -22,7 +22,7 @@
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"
 #include "mouse_handler_base.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "scripting/plugins/context.hpp"
 #include "show_dialog.hpp" //gui::in_dialog
 #include "gui/core/event/handler.hpp" // gui2::is_in_dialog
@@ -299,13 +299,13 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 {
 	const bool mouse_in_window =
 		video::window_has_mouse_focus()
-		|| preferences::get("scroll_when_mouse_outside", true);
+		|| prefs::get().get_scroll_when_mouse_outside(true);
 
-	int scroll_speed = preferences::scroll_speed();
+	int scroll_speed = prefs::get().scroll_speed();
 	double dx = 0.0, dy = 0.0;
 
-	int scroll_threshold = preferences::mouse_scroll_enabled()
-		? preferences::mouse_scroll_threshold()
+	int scroll_threshold = prefs::get().mouse_scrolling()
+		? prefs::get().mouse_scroll_threshold()
 		: 0;
 
 	for(const theme::menu& m : get_display().get_theme().menus()) {
@@ -355,7 +355,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 	events::mouse_handler_base& mh_base = get_mouse_handler_base();
 
 	// Scroll with middle-mouse if enabled
-	if((mouse_flags & SDL_BUTTON_MMASK) != 0 && preferences::middle_click_scrolls()) {
+	if((mouse_flags & SDL_BUTTON_MMASK) != 0 && prefs::get().middle_click_scrolls()) {
 		const SDL_Point original_loc = mh_base.get_scroll_start();
 
 		if(mh_base.scroll_started()) {

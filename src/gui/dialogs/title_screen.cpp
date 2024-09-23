@@ -19,6 +19,7 @@
 
 #include "addon/manager_ui.hpp"
 #include "filesystem.hpp"
+#include "font/font_config.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
@@ -26,7 +27,6 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/tips.hpp"
 #include "gui/dialogs/achievements_dialog.hpp"
-#include "gui/dialogs/community_dialog.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/game_version_dialog.hpp"
@@ -38,9 +38,10 @@
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
+#include "gui/dialogs/gui_test_dialog.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 //#define DEBUG_TOOLTIP
 #ifdef DEBUG_TOOLTIP
 #include "gui/dialogs/tooltip.hpp"
@@ -53,6 +54,7 @@
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
 #include "sdl/surface.hpp"
+#include "serialization/unicode.hpp"
 #include "video.hpp"
 
 #include <algorithm>
@@ -84,18 +86,19 @@ title_screen::~title_screen()
 {
 }
 
-using btn_callback = std::function<void()>;
-
-static void register_button(window& win, const std::string& id, hotkey::HOTKEY_COMMAND hk, btn_callback callback)
+void title_screen::register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, std::function<void()> callback)
 {
 	if(hk != hotkey::HOTKEY_NULL) {
-		win.register_hotkey(hk, std::bind(callback));
+		register_hotkey(hk, std::bind(callback));
 	}
 
-	auto b = find_widget<button>(&win, id, false, false);
-	if(b != nullptr)
-	{
-		connect_signal_mouse_left_click(*b, std::bind(callback));
+	try {
+		button& btn = find_widget<button>(this, id, false);
+		connect_signal_mouse_left_click(btn, std::bind(callback));
+	} catch(const wml_exception& e) {
+		ERR_GUI_P << e.user_message;
+		prefs::get().set_gui2_theme("default");
+		set_retval(RELOAD_UI);
 	}
 }
 
@@ -177,16 +180,12 @@ void title_screen::init_callbacks()
 	//
 	// Background and logo images
 	//
-	if(game_config::images::game_title.empty()) {
-		ERR_CF << "No title image defined";
+	if(game_config::images::game_title.empty() && game_config::images::game_title_background.empty()) {
+		// game works just fine if just one of the background images are missing
+		ERR_CF << "No titlescreen background defined in game config";
 	}
 
 	get_canvas(0).set_variable("title_image", wfl::variant(game_config::images::game_title));
-
-	if(game_config::images::game_title_background.empty()) {
-		ERR_CF << "No title background image defined";
-	}
-
 	get_canvas(0).set_variable("background_image", wfl::variant(game_config::images::game_title_background));
 
 	find_widget<image>(this, "logo-bg", false).set_image(game_config::images::game_logo_background);
@@ -208,7 +207,24 @@ void title_screen::init_callbacks()
 
 			widget["use_markup"] = "true";
 
-			widget["label"] = tip.text();
+			// Use pango markup to insert drop cap
+			// Example: Lawful units -> <span ...>L</span>awful units
+			// If tip starts with a tag, we need to insert the <span> after it
+			// then insert the </span> tag after the first character of the text
+			// after markup. Assumes that the tags themselves don't
+			// contain non-ASCII characters.
+			// Example: <i>Lawful</i> units -> <i><span ...>L</span>awful</i> units
+			const std::string& script_font = font::get_font_families(font::FONT_SCRIPT);
+			std::string tip_text = tip.text().str();
+			std::size_t pos = 0;
+			while (pos < tip_text.size() && tip_text.at(pos) == '<') {
+				pos = tip_text.find_first_of(">", pos) + 1;
+			}
+			utf8::insert(tip_text, pos+1, "</span>");
+			utf8::insert(tip_text, pos, "<span font_family='" + script_font + "' font_size='xx-large'>");
+
+			widget["label"] = tip_text;
+
 			page.emplace("tip", widget);
 
 			widget["label"] = tip.source();
@@ -220,16 +236,16 @@ void title_screen::init_callbacks()
 		update_tip(true);
 	}
 
-	register_button(*this, "next_tip", hotkey::TITLE_SCREEN__NEXT_TIP,
+	register_button("next_tip", hotkey::TITLE_SCREEN__NEXT_TIP,
 		std::bind(&title_screen::update_tip, this, true));
 
-	register_button(*this, "previous_tip", hotkey::TITLE_SCREEN__PREVIOUS_TIP,
+	register_button("previous_tip", hotkey::TITLE_SCREEN__PREVIOUS_TIP,
 		std::bind(&title_screen::update_tip, this, false));
 
 	//
 	// Help
 	//
-	register_button(*this, "help", hotkey::HOTKEY_HELP, []() {
+	register_button("help", hotkey::HOTKEY_HELP, []() {
 		if(gui2::new_widgets) {
 			gui2::dialogs::help_browser::display();
 		}
@@ -240,12 +256,12 @@ void title_screen::init_callbacks()
 	//
 	// About
 	//
-	register_button(*this, "about", hotkey::HOTKEY_NULL, std::bind(&game_version::display<>));
+	register_button("about", hotkey::HOTKEY_NULL, std::bind(&game_version::display<>));
 
 	//
 	// Campaign
 	//
-	register_button(*this, "campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this]() {
+	register_button("campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this]() {
 		try{
 			if(game_.new_campaign()) {
 				// Suspend drawing of the title screen,
@@ -261,13 +277,13 @@ void title_screen::init_callbacks()
 	//
 	// Multiplayer
 	//
-	register_button(*this, "multiplayer", hotkey::TITLE_SCREEN__MULTIPLAYER,
+	register_button("multiplayer", hotkey::TITLE_SCREEN__MULTIPLAYER,
 		std::bind(&title_screen::button_callback_multiplayer, this));
 
 	//
 	// Load game
 	//
-	register_button(*this, "load", hotkey::HOTKEY_LOAD_GAME, [this]() {
+	register_button("load", hotkey::HOTKEY_LOAD_GAME, [this]() {
 		if(game_.load_game()) {
 			// Suspend drawing of the title screen,
 			// so it doesn't flicker in between loading screens.
@@ -279,7 +295,7 @@ void title_screen::init_callbacks()
 	//
 	// Addons
 	//
-	register_button(*this, "addons", hotkey::TITLE_SCREEN__ADDONS, [this]() {
+	register_button("addons", hotkey::TITLE_SCREEN__ADDONS, [this]() {
 		if(manage_addons()) {
 			set_retval(RELOAD_GAME_DATA);
 		}
@@ -288,7 +304,7 @@ void title_screen::init_callbacks()
 	//
 	// Editor
 	//
-	register_button(*this, "editor", hotkey::TITLE_SCREEN__EDITOR, [this]() { set_retval(MAP_EDITOR); });
+	register_button("editor", hotkey::TITLE_SCREEN__EDITOR, [this]() { set_retval(MAP_EDITOR); });
 
 	//
 	// Cores
@@ -299,7 +315,7 @@ void title_screen::init_callbacks()
 	//
 	// Language
 	//
-	register_button(*this, "language", hotkey::HOTKEY_LANGUAGE, [this]() {
+	register_button("language", hotkey::HOTKEY_LANGUAGE, [this]() {
 		try {
 			if(game_.change_language()) {
 				on_resize();
@@ -313,59 +329,48 @@ void title_screen::init_callbacks()
 	//
 	// Preferences
 	//
-	register_button(*this, "preferences", hotkey::HOTKEY_PREFERENCES, [this]() {
-		gui2::dialogs::preferences_dialog::display();
-
-		// Currently blurred windows don't capture well if there is something
-		// on top of them at the time of blur. Resizing the game window in
-		// preferences will cause the title screen tip and menu panels to
-		// capture the prefs dialog in their blur. This workaround simply
-		// forces them to re-capture the blur after the dialog closes.
-		panel* tip_panel = find_widget<panel>(this, "tip_panel", false, false);
-		if(tip_panel != nullptr) {
-			tip_panel->get_canvas(tip_panel->get_state()).queue_reblur();
-			tip_panel->queue_redraw();
-		}
-		panel* menu_panel = find_widget<panel>(this, "menu_panel", false, false);
-		if(menu_panel != nullptr) {
-			menu_panel->get_canvas(menu_panel->get_state()).queue_reblur();
-			menu_panel->queue_redraw();
-		}
-	});
+	register_button("preferences", hotkey::HOTKEY_PREFERENCES,
+		std::bind(&title_screen::show_preferences, this));
 
 	//
 	// Achievements
 	//
-	register_button(*this, "achievements", hotkey::HOTKEY_ACHIEVEMENTS,
+	register_button("achievements", hotkey::HOTKEY_ACHIEVEMENTS,
 		std::bind(&title_screen::show_achievements, this));
 
 	//
 	// Community
 	//
-	register_button(*this, "community", hotkey::HOTKEY_NULL,
+	register_button("community", hotkey::HOTKEY_NULL,
 		std::bind(&title_screen::show_community, this));
-
-	//
-	// Credits
-	//
-	register_button(*this, "credits", hotkey::TITLE_SCREEN__CREDITS, [this]() { set_retval(SHOW_ABOUT); });
 
 	//
 	// Quit
 	//
-	register_button(*this, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [this]() { set_retval(QUIT_GAME); });
+	register_button("quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [this]() { set_retval(QUIT_GAME); });
 	// A sanity check, exit immediately if the .cfg file didn't have a "quit" button.
 	find_widget<button>(this, "quit", false, true);
 
 	//
 	// Debug clock
 	//
-	register_button(*this, "clock", hotkey::HOTKEY_NULL,
+	register_button("clock", hotkey::HOTKEY_NULL,
 		std::bind(&title_screen::show_debug_clock_window, this));
 
 	auto clock = find_widget<button>(this, "clock", false, false);
 	if(clock) {
 		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+	}
+
+	//
+	// GUI Test and Debug Window
+	//
+	register_button("test_dialog", hotkey::HOTKEY_NULL,
+		std::bind(&title_screen::show_gui_test_dialog, this));
+
+	auto test_dialog = find_widget<button>(this, "test_dialog", false, false);
+	if(test_dialog) {
+		test_dialog->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
 	}
 
 	//
@@ -490,8 +495,39 @@ void title_screen::show_achievements()
 
 void title_screen::show_community()
 {
-	community_dialog dlg;
-	dlg.show();
+	game_version dlg;
+	// shows the 5th tab, community, when the dialog is shown
+	dlg.display(4);
+}
+
+void title_screen::show_gui_test_dialog()
+{
+	gui2::dialogs::gui_test_dialog::execute();
+}
+
+void title_screen::show_preferences()
+{
+	gui2::dialogs::preferences_dialog pref_dlg;
+	pref_dlg.show();
+	if (pref_dlg.get_retval() == RELOAD_UI) {
+		set_retval(RELOAD_UI);
+	}
+
+	// Currently blurred windows don't capture well if there is something
+	// on top of them at the time of blur. Resizing the game window in
+	// preferences will cause the title screen tip and menu panels to
+	// capture the prefs dialog in their blur. This workaround simply
+	// forces them to re-capture the blur after the dialog closes.
+	panel* tip_panel = find_widget<panel>(this, "tip_panel", false, false);
+	if(tip_panel != nullptr) {
+		tip_panel->get_canvas(tip_panel->get_state()).queue_reblur();
+		tip_panel->queue_redraw();
+	}
+	panel* menu_panel = find_widget<panel>(this, "menu_panel", false, false);
+	if(menu_panel != nullptr) {
+		menu_panel->get_canvas(menu_panel->get_state()).queue_reblur();
+		menu_panel->queue_redraw();
+	}
 }
 
 void title_screen::button_callback_multiplayer()
@@ -506,7 +542,7 @@ void title_screen::button_callback_multiplayer()
 
 		const auto res = dlg.get_choice();
 
-		if(res == decltype(dlg)::choice::HOST && preferences::mp_server_warning_disabled() < 2) {
+		if(res == decltype(dlg)::choice::HOST && prefs::get().mp_server_warning_disabled() < 2) {
 			if(!gui2::dialogs::mp_host_game_prompt::execute()) {
 				continue;
 			}
@@ -514,7 +550,7 @@ void title_screen::button_callback_multiplayer()
 
 		switch(res) {
 		case decltype(dlg)::choice::JOIN:
-			game_.select_mp_server(preferences::builtin_servers_list().front().address);
+			game_.select_mp_server(prefs::get().builtin_servers_list().front().address);
 			get_window()->set_retval(MP_CONNECT);
 			break;
 		case decltype(dlg)::choice::CONNECT:
@@ -542,7 +578,7 @@ void title_screen::button_callback_cores()
 	for(const config& core : game_config_manager::get()->game_config().child_range("core")) {
 		cores.push_back(core);
 
-		if(core["id"] == preferences::core_id()) {
+		if(core["id"] == prefs::get().core()) {
 			current = cores.size() - 1;
 		}
 	}
@@ -551,7 +587,7 @@ void title_screen::button_callback_cores()
 	if(core_dlg.show()) {
 		const std::string& core_id = cores[core_dlg.get_choice()]["id"];
 
-		preferences::set_core_id(core_id);
+		prefs::get().set_core(core_id);
 		get_window()->set_retval(RELOAD_GAME_DATA);
 	}
 }

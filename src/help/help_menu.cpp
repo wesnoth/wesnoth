@@ -165,7 +165,7 @@ const topic *help_menu::chosen_topic()
 void help_menu::display_visible_items()
 {
 	std::vector<gui::indented_menu_item> menu_items;
-	std::optional<std::size_t> selected;
+	utils::optional<std::size_t> selected;
 	for(std::vector<visible_item>::const_iterator items_it = visible_items_.begin(),
 		 end = visible_items_.end(); items_it != end; ++items_it) {
 		if (selected_item_ == *items_it)

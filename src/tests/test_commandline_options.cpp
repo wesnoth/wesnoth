@@ -77,8 +77,6 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.screenshot_map_file);
 	BOOST_CHECK(!co.screenshot_output_file);
 	BOOST_CHECK(!co.test);
-	BOOST_CHECK(!co.userconfig_dir);
-	BOOST_CHECK(!co.userconfig_path);
 	BOOST_CHECK(!co.userdata_dir);
 	BOOST_CHECK(!co.userdata_path);
 	BOOST_CHECK(!co.validcache);
@@ -150,8 +148,6 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	BOOST_CHECK(!co.screenshot_map_file);
 	BOOST_CHECK(!co.screenshot_output_file);
 	BOOST_CHECK(co.test && co.test->empty());
-	BOOST_CHECK(!co.userconfig_dir);
-	BOOST_CHECK(!co.userconfig_path);
 	BOOST_CHECK(!co.userdata_dir);
 	BOOST_CHECK(!co.userdata_path);
 	BOOST_CHECK(!co.validcache);
@@ -219,8 +215,6 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--server=servfoo",
 		"--test=testfoo",
 		"--turns=42",
-		"--userconfig-dir=userconfigdirfoo",
-		"--userconfig-path",
 		"--userdata-dir=userdatadirfoo",
 		"--userdata-path",
 		"--validcache",
@@ -303,8 +297,6 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.screenshot && co.screenshot_map_file && co.screenshot_output_file);
 	BOOST_CHECK(*co.screenshot_map_file == "mapfoo" && *co.screenshot_output_file == "outssfoo");
 	BOOST_CHECK(co.test && *co.test == "testfoo");
-	BOOST_CHECK(co.userconfig_dir && *co.userconfig_dir == "userconfigdirfoo");
-	BOOST_CHECK(co.userconfig_path);
 	BOOST_CHECK(co.userdata_dir && *co.userdata_dir == "userdatadirfoo");
 	BOOST_CHECK(co.userdata_path);
 	BOOST_CHECK(co.validcache);
@@ -372,8 +364,6 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 	BOOST_CHECK(!co.screenshot_map_file);
 	BOOST_CHECK(!co.screenshot_output_file);
 	BOOST_CHECK(!co.test);
-	BOOST_CHECK(!co.userconfig_dir);
-	BOOST_CHECK(!co.userconfig_path);
 	BOOST_CHECK(!co.userdata_dir);
 	BOOST_CHECK(!co.userdata_path);
 	BOOST_CHECK(!co.validcache);

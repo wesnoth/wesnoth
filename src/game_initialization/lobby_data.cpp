@@ -30,8 +30,7 @@
 #include "map/exception.hpp"
 #include "map/map.hpp"
 #include "mp_game_settings.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "wml_exception.hpp"
 
 
@@ -72,11 +71,11 @@ user_info::user_state user_info::get_state(int selected_game_id) const
 
 user_info::user_relation user_info::get_relation() const
 {
-	if(name == preferences::login()) {
+	if(name == prefs::get().login()) {
 		return user_relation::ME;
-	} else if(preferences::is_ignored(name)) {
+	} else if(prefs::get().is_ignored(name)) {
 		return user_relation::IGNORED;
-	} else if(preferences::is_friend(name)) {
+	} else if(prefs::get().is_friend(name)) {
 		return user_relation::FRIEND;
 	} else {
 		return user_relation::NEUTRAL;
@@ -501,10 +500,7 @@ bool game_info::match_string_filter(const std::string& filter) const
 {
 	const std::string& s1 = name;
 	const std::string& s2 = map_info;
-	return std::search(s1.begin(), s1.end(), filter.begin(), filter.end(),
-			utils::chars_equal_insensitive) != s1.end()
-	    || std::search(s2.begin(), s2.end(), filter.begin(), filter.end(),
-			utils::chars_equal_insensitive) != s2.end();
+	return translation::ci_search(s1, filter) || translation::ci_search(s2, filter);
 }
 
 }

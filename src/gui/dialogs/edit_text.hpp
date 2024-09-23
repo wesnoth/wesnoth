@@ -44,12 +44,6 @@ public:
 	/**
 	 * Executes the dialog.
 	 * See @ref modal_dialog for more information.
-	 *
-	 * @param [in, out] text      The parameter's usage is:
-	 *                            - Input:  The initial value of the unit name.
-	 *                            - Output: The new unit name the user entered
-	 *                              if this method returns @a true, undefined
-	 *                              otherwise.
 	 */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(edit_text)
 

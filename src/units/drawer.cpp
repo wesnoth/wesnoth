@@ -26,7 +26,7 @@
 #include "map/location.hpp"
 #include "map/map.hpp"
 #include "picture.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "team.hpp"
 #include "units/animation.hpp"
 #include "units/animation_component.hpp"
@@ -68,7 +68,7 @@ std::unique_ptr<image::locator> get_orb_image(orb_status os)
  */
 std::unique_ptr<image::locator> get_playing_ally_orb_image(orb_status os)
 {
-	if(!preferences::show_status_on_ally_orb())
+	if(!prefs::get().show_status_on_ally_orb())
 		return get_orb_image(orb_status::allied);
 
 	// This is conditional on prefs_show_orb, because a user might want to disable the standard
@@ -139,12 +139,9 @@ unit_drawer::unit_drawer(display& thedisp)
 	: disp(thedisp)
 	, dc(disp.get_disp_context())
 	, map(dc.map())
-	, teams(dc.teams())
 	, halo_man(thedisp.get_halo_manager())
-	, viewing_team(disp.viewing_team())
-	, playing_team(disp.playing_team())
-	, viewing_team_ref(teams[viewing_team])
-	, playing_team_ref(teams[playing_team])
+	, viewing_team_ref(disp.viewing_team())
+	, playing_team_ref(disp.playing_team())
 	, is_blindfolded(disp.is_blindfolded())
 	, show_everything(disp.show_everything())
 	, sel_hex(disp.selected_hex())
@@ -156,11 +153,12 @@ unit_drawer::unit_drawer(display& thedisp)
 	if(const game_display* game_display = dynamic_cast<class game_display*>(&disp)) {
 		units_that_can_reach_goal = game_display->units_that_can_reach_goal();
 	}
+}
 
-	// This used to be checked in the drawing code, where it simply triggered skipping some logic.
-	// However, I think it's obsolete, and that the initialization of viewing_team_ref would already
-	// be undefined behavior in the situation where this assert fails.
-	assert(disp.team_valid());
+bool unit_drawer::selected_or_reachable(const map_location& loc) const
+{
+	const bool is_highlighted_enemy = units_that_can_reach_goal.count(loc) > 0;
+	return loc == sel_hex || is_highlighted_enemy;
 }
 
 void unit_drawer::redraw_unit(const unit& u) const
@@ -182,15 +180,10 @@ void unit_drawer::redraw_unit(const unit& u) const
 	int experience = u.experience();
 	int max_experience = u.max_experience();
 
-	bool emit_zoc = u.emits_zoc();
-
 	color_t hp_color=u.hp_color();
 	color_t xp_color=u.xp_color();
 
-	std::string ellipse=u.image_ellipse();
-
-	const bool is_highlighted_enemy = units_that_can_reach_goal.count(loc) > 0;
-	const bool is_selected_hex = (loc == sel_hex || is_highlighted_enemy);
+	const bool is_selected_hex = selected_or_reachable(loc);
 
 	// Override the filled area's color's alpha.
 	hp_color.a = (loc == mouse_hex || is_selected_hex) ? 255u : float_to_color(0.8);
@@ -270,10 +263,8 @@ void unit_drawer::redraw_unit(const unit& u) const
 	const frame_parameters adjusted_params = ac.anim_->get_current_params(params);
 
 	const map_location dst = loc.get_direction(facing);
-	const int xsrc = disp.get_location_x(loc);
-	const int ysrc = disp.get_location_y(loc);
-	const int xdst = disp.get_location_x(dst);
-	const int ydst = disp.get_location_y(dst);
+	const auto [xsrc, ysrc] = disp.get_location(loc);
+	const auto [xdst, ydst] = disp.get_location(dst);
 
 	// We draw bars only if wanted, visible on the map view
 	bool draw_bars = ac.draw_bars_ ;
@@ -282,50 +273,10 @@ void unit_drawer::redraw_unit(const unit& u) const
 		draw_bars = unit_rect.overlaps(disp.map_outside_area());
 	}
 
-	texture ellipse_front;
-	texture ellipse_back;
-	int ellipse_floating = 0;
 	// Always show the ellipse for selected units
-	if(draw_bars && (preferences::show_side_colors() || is_selected_hex)) {
-		if(adjusted_params.submerge > 0.0) {
-			// The division by 2 seems to have no real meaning,
-			// It just works fine with the current center of ellipse
-			// and prevent a too large adjust if submerge = 1.0
-			ellipse_floating = static_cast<int>(adjusted_params.submerge * hex_size_by_2);
-		}
-
-		if(ellipse.empty()){
-			ellipse="misc/ellipse";
-		}
-
-		if(ellipse != "none") {
-			// check if the unit has a ZoC or can recruit
-			const std::string nozoc    = !emit_zoc      ? "nozoc-"    : "";
-			const std::string leader   = can_recruit    ? "leader-"   : "";
-			const std::string selected = is_selected_hex? "selected-" : "";
-			const std::string tc       = team::get_side_color_id(side);
-
-			const std::string ellipse_top = formatter() << ellipse << "-" << leader << nozoc << selected << "top.png~RC(ellipse_red>" << tc << ")";
-			const std::string ellipse_bot = formatter() << ellipse << "-" << leader << nozoc << selected << "bottom.png~RC(ellipse_red>" << tc << ")";
-
-			// Load the ellipse parts recolored to match team color
-			ellipse_back = image::get_texture(image::locator(ellipse_top));
-			ellipse_front = image::get_texture(image::locator(ellipse_bot));
-		}
+	if(draw_bars && (prefs::get().show_side_colors() || is_selected_hex)) {
+		draw_ellipses(u, adjusted_params);
 	}
-
-	disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc, [=, adj_y = adjusted_params.y](const rect& d) {
-		// Both front and back have the same origin
-		const point origin { d.x, d.y + adj_y - ellipse_floating };
-
-		if(ellipse_back) {
-			draw::blit(ellipse_back, display::scaled_to_zoom({origin.x, origin.y, ellipse_back.w(), ellipse_back.h()}));
-		}
-
-		if(ellipse_front) {
-			draw::blit(ellipse_front, display::scaled_to_zoom({origin.x, origin.y, ellipse_front.w(), ellipse_front.h()}));
-		}
-	});
 
 	if(draw_bars) {
 		const auto& type_cfg = u.type().get_cfg();
@@ -351,15 +302,15 @@ void unit_drawer::redraw_unit(const unit& u) const
 		if(viewing_team_ref.is_enemy(side)) {
 			if(!u.incapacitated())
 				orb_img = get_orb_image(orb_status::enemy);
-		} else if(static_cast<std::size_t>(side) != playing_team + 1) {
+		} else if(side != playing_team_ref.side()) {
 			// We're looking at either the player's own unit or an ally's unit, but either way it
 			// doesn't belong to the playing_team and isn't expected to move until after its next
 			// turn refresh.
 			auto os = orb_status::moved;
-			if(static_cast<std::size_t>(side) != viewing_team + 1)
+			if(side != viewing_team_ref.side())
 				os = orb_status::allied;
 			orb_img = get_orb_image(os);
-		} else if(static_cast<std::size_t>(side) != viewing_team + 1) {
+		} else if(side != viewing_team_ref.side()) {
 			// We're looking at an ally's unit, during that ally's turn.
 			auto os = dc.unit_orb_status(u);
 			orb_img = get_playing_ally_orb_image(os);
@@ -395,7 +346,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 			}
 		};
 
-		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, [=,
+		disp.drawing_buffer_add(drawing_layer::unit_bar, loc, [=,
 			textures      = std::move(textures),
 			adj_y         = adjusted_params.y,
 			//origin        = point{xsrc + xoff, ysrc + yoff + adjusted_params.y},
@@ -509,4 +460,53 @@ void unit_drawer::redraw_unit(const unit& u) const
 
 	ac.anim_->redraw(params, halo_man);
 	ac.refreshing_ = false;
+}
+
+void unit_drawer::draw_ellipses(const unit& u, const frame_parameters& params) const
+{
+	std::string ellipse = u.image_ellipse();
+	if(ellipse == "none") {
+		return;
+	}
+
+	auto path = formatter{};
+	if(!ellipse.empty()) {
+		path << ellipse;
+	} else {
+		path << "misc/ellipse";
+	}
+
+	// Build the path based on whether the unit has a ZoC can recruit
+	if(u.can_recruit())
+		path << "-leader";
+
+	if(!u.emits_zoc())
+		path << "-nozoc";
+
+	if(selected_or_reachable(u.get_location()))
+		path << "-selected";
+
+	// Load the ellipse parts recolored to match team color
+	const std::string ipf = formatter{} << "~RC(ellipse_red>" << team::get_side_color_id(u.side()) << ")";
+
+	std::array images {
+		image::get_texture(image::locator{path.str() + "-top.png", ipf}),
+		image::get_texture(image::locator{path.str() + "-bottom.png", ipf})
+	};
+
+	// The division by 2 seems to have no real meaning,
+	// It just works fine with the current center of ellipse
+	// and prevent a too large adjust if submerge = 1.0
+	const int y_shift = params.submerge > 0.0
+		? params.y - static_cast<int>(params.submerge * hex_size_by_2)
+		: params.y;
+
+	disp.drawing_buffer_add(drawing_layer::unit_first, u.get_location(),
+		[images = std::move(images), y_shift](const rect& dest) {
+			for(const texture& tex : images) {
+				if(tex) {
+					draw::blit(tex, dest.shifted_by(0, y_shift));
+				}
+			}
+		});
 }

@@ -52,13 +52,8 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一款回合制奇幻策略游
 在\fBstart\fP事件最后跳过[故事]画面和对话框。
 .TP 
 \fB\-\-clock\fP
-增加一个选项，显示一个时钟，用于测试画面绘制计时器。
-.TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-已废弃，请使用\fB\-\-userdata\-dir\fP。
-.TP 
-\fB\-\-config\-path\fP
-已废弃，请使用\fB\-\-userdata\-path\fP。
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 使用指定ID对应的核心作为应读取的核心。
@@ -78,7 +73,7 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一款回合制奇幻策略游
 \fB\-\-strict\-lua\fP
 禁用已废弃的Lua API调用
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 产生这两个WML文件的diff，不会对这两个文件先进行预处理（若要进行预处理，请对它们执行\fB\-p\fP命令）。将diff以DiffWML格式输出到标准输出或由\fI\-\-output\fP指定的文件中。
 .TP 
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
@@ -106,8 +101,10 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一款回合制奇幻策略游
 \fB\-\-log\-precise\fP
 在日志输出中显示更高精度的时间戳。
 .TP 
-\fB\-\-log\-strict\fP
-设置日志记录器的严格度等级。若有任何信息记入此等级或更高等级日志域，则不论测试结果如何，单元测试都将失败。只有在和 \fB\-u\fP 共同使用时才有意义。
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 列出游戏中定义的日志域（如果使用了 \fIfilter\fP 则只列出饱含该字符串的日志域）而后退出
@@ -120,6 +117,10 @@ in the logs directory under the userdata folder.
 \fB\-\-log\-to\-file\fP
 log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 For Windows, when used with \-\-no\-log\-to\-file, results in output being
@@ -171,7 +172,7 @@ written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 （实验性）读取定义了韦诺插件的
 \fIscript\fP。与\fB\-\-script\fP类似，但Lua文件应返回一个函数，该函数将作为协程运行，并周期性地使用更新地参数唤起。
 .TP 
-\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 将DiffWML补丁应用到WML文件上，不会预处理这两个文件中的任何一个。将打过补丁的WML输出到标准输出或由\fI\-\-output\fP指定的文件中。
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
@@ -232,16 +233,8 @@ with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
 \fB\-\-unsafe\-scripts\fP
 使得\fBpackage\fP包在Lua脚本中可用，这样一来Lua脚本就可以载入任意包了。请不要对不可信的脚本使用此选项！此操作将赋予Lua与韦诺可执行文件相同的权限。
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ path\fP
-设置\fB\-V,\-\-validate\fP所使用的WML schema。
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ name\fP
-设置用户配置目录为$HOME或者Windows下“我的文档\我的游戏（My Documents\eMy
-Games）”下的\fIname\fP目录。也可以为配置目录指定一条绝对路径，此路径可以在$HOME或者“My Documents\eMy
-Games”之外。在Windows下，也可以使用以“.\e”或“..\e”开头的路径来指定相对于游戏进程工作目录的目录。在X11下，配置目录默认为$XDG_CONFIG_HOME或者$HOME/.config/wesnoth。在其他系统上，配置目录默认为用户数据目录。
-.TP 
-\fB\-\-userconfig\-path\fP
-输出用户配置目录的路径并退出。
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 设置用户数据目录为$HOME或者Windows下“我的文档\我的游戏（My Documents\eMy
@@ -263,7 +256,7 @@ Games”之外。在Windows下，也可以使用以“.\e”或“..\e”开头�
 \fB\-\-validate\-core\fP
 在游戏过程中，验证核心WML。
 .TP 
-\fB\-\-validate\-schema \ path\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 验证文件是否为合法的WML schema。
 .TP 
 \fB\-\-validcache\fP

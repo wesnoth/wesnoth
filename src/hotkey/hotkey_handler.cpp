@@ -19,7 +19,7 @@
 #include "formula/string_utils.hpp"
 #include "game_display.hpp"
 #include "game_events/wmi_manager.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "game_state.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
@@ -72,15 +72,12 @@ const game_state & play_controller::hotkey_handler::gamestate() const {
 bool play_controller::hotkey_handler::browse() const { return play_controller_.is_browsing(); }
 bool play_controller::hotkey_handler::linger() const { return play_controller_.is_linger_mode(); }
 
-const team & play_controller::hotkey_handler::viewing_team() const { return play_controller_.get_teams()[gui()->viewing_team()]; }
-bool play_controller::hotkey_handler::viewing_team_is_playing() const { return gui()->viewing_team() == gui()->playing_team(); }
-
 void play_controller::hotkey_handler::objectives(){
 	menu_handler_.objectives();
 }
 
 void play_controller::hotkey_handler::show_statistics(){
-	menu_handler_.show_statistics(gui()->viewing_team()+1);
+	menu_handler_.show_statistics(gui()->viewing_team().side());
 }
 
 void play_controller::hotkey_handler::unit_list(){
@@ -112,9 +109,7 @@ void play_controller::hotkey_handler::preferences(){
 }
 
 void play_controller::hotkey_handler::left_mouse_click(){
-	int x = gui()->get_location_x(gui()->mouseover_hex());
-	int y = gui()->get_location_y(gui()->mouseover_hex());
-
+	const auto [x, y] = gui()->get_location(gui()->mouseover_hex());
 	SDL_MouseButtonEvent event;
 
 	event.button = 1;
@@ -147,9 +142,7 @@ void play_controller::hotkey_handler::select_hex(){
 }
 
 void play_controller::hotkey_handler::right_mouse_click(){
-	int x = gui()->get_location_x(gui()->mouseover_hex());
-	int y = gui()->get_location_y(gui()->mouseover_hex());
-
+	const auto [x, y] = gui()->get_location(gui()->mouseover_hex());
 	SDL_MouseButtonEvent event;
 
 	event.button = 3;
@@ -220,12 +213,12 @@ void play_controller::hotkey_handler::search(){
 
 void play_controller::hotkey_handler::toggle_accelerated_speed()
 {
-	preferences::set_turbo(!preferences::turbo());
+	prefs::get().set_turbo(!prefs::get().turbo());
 
 	display::announce_options ao;
 	ao.discard_previous = true;
 
-	if (preferences::turbo())
+	if (prefs::get().turbo())
 	{
 		utils::string_map symbols;
 		symbols["hk"] = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_ACCELERATED).id);
@@ -380,7 +373,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::ui_comma
 		return !events::commands_disabled &&
 			menu_handler_.current_unit().valid() &&
 			!(menu_handler_.current_unit()->unrenamable()) &&
-			menu_handler_.current_unit()->side() == gui()->viewing_side() &&
+			menu_handler_.current_unit()->side() == gui()->viewing_team().side() &&
 			play_controller_.get_teams()[menu_handler_.current_unit()->side() - 1].is_local_human();
 
 	default:
@@ -405,9 +398,9 @@ static void trim_items(std::vector<T>& newitems)
 template<typename F>
 static void foreach_autosave(int turn, saved_game& sg, F func) {
 
-	const compression::format comp_format = preferences::save_compression_format();
+	const compression::format comp_format = prefs::get().save_compression_format();
 
-	compression::format compression_format = preferences::save_compression_format();
+	compression::format compression_format = prefs::get().save_compression_format();
 	savegame::autosave_savegame autosave(sg, compression_format);
 	savegame::scenariostart_savegame scenariostart_save(sg, compression_format);
 
@@ -517,7 +510,7 @@ bool play_controller::hotkey_handler::in_context_menu(const hotkey::ui_command& 
 	case hotkey::HOTKEY_RECALL: {
 		// last_hex_ is set by mouse_events::mouse_motion
 		const map_location & last_hex = mouse_handler_.get_last_hex();
-		const int viewing_side = gui()->viewing_side();
+		const int viewing_side = gui()->viewing_team().side();
 
 		// A quick check to save us having to create the future map and
 		// possibly loop through all units.
@@ -544,19 +537,19 @@ hotkey::ACTION_STATE play_controller::hotkey_handler::get_action_state(const hot
 	switch(cmd.hotkey_command) {
 
 	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
-		return (preferences::minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (prefs::get().minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_MINIMAP_CODING_UNIT:
-		return (preferences::minimap_movement_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (prefs::get().minimap_movement_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_MINIMAP_CODING_TERRAIN:
-		return (preferences::minimap_terrain_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (prefs::get().minimap_terrain_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_MINIMAP_DRAW_UNITS:
-		return (preferences::minimap_draw_units()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (prefs::get().minimap_draw_units()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_MINIMAP_DRAW_TERRAIN:
-		return (preferences::minimap_draw_terrain()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return (prefs::get().minimap_draw_terrain()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_ZOOM_DEFAULT:
 		return (gui()->get_zoom_factor() == 1.0) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_DELAY_SHROUD:
-		return viewing_team().auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
+		return gui()->viewing_team().auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
 	default:
 		return hotkey::ACTION_STATELESS;
 	}

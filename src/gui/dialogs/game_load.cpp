@@ -35,7 +35,7 @@
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "picture.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/general.hpp"
 #include <functional>
@@ -191,6 +191,7 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 
 	const std::string sprite_scale_mod = (formatter() << "~SCALE_INTO(" << game_config::tile_size << ',' << game_config::tile_size << ')').str();
 
+	unsigned li = 0;
 	for(const auto& leader : summary_.child_range("leader")) {
 		widget_data data;
 		widget_item item;
@@ -200,12 +201,12 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 		// work, we fallback on unknown-unit.png.
 		std::string leader_image = leader["leader_image"].str();
 		if(!::image::exists(leader_image)) {
-			leader_image = filesystem::get_independent_binary_file_path("images", leader_image);
+			auto indep_path = filesystem::get_independent_binary_file_path("images", leader_image);
 
 			// The leader TC modifier isn't appending if the independent image path can't
 			// be resolved during save_index entry creation, so we need to add it here.
-			if(!leader_image.empty()) {
-				leader_image += leader["leader_image_tc_modifier"].str();
+			if(indep_path) {
+				leader_image = indep_path.value() + leader["leader_image_tc_modifier"].str();
 			}
 		}
 
@@ -213,7 +214,7 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 			leader_image = "units/unknown-unit.png" + leader["leader_image_tc_modifier"].str();
 		} else {
 			// Scale down any sprites larger than 72x72
-			leader_image += sprite_scale_mod;
+			leader_image += sprite_scale_mod + "~FL(horiz)";
 		}
 
 		item["label"] = leader_image;
@@ -230,6 +231,12 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 		data.emplace("leader_troops", item);
 
 		leader_list.add_row(data);
+
+		// FIXME: hack. In order to use the listbox in view-only mode, you also need to
+		// disable the max number of "selected items", since in this mode, "selected" is
+		// synonymous with "visible". This basically just flags all rows as visible. Need
+		// a better solution at some point
+		leader_list.select_row(li++, true);
 	}
 
 	std::stringstream str;
@@ -237,8 +244,8 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 	evaluate_summary_string(str, summary_);
 
 	// The new label value may have more or less lines than the previous value, so invalidate the layout.
-	find_widget<scroll_label>(get_window(), "slblSummary", false).set_label(str.str());
-	get_window()->invalidate_layout();
+	find_widget<styled_widget>(get_window(), "slblSummary", false).set_label(str.str());
+	//get_window()->invalidate_layout();
 
 	toggle_button& replay_toggle            = dynamic_cast<toggle_button&>(*show_replay_->get_widget());
 	toggle_button& cancel_orders_toggle     = dynamic_cast<toggle_button&>(*cancel_orders_->get_widget());
@@ -284,7 +291,7 @@ void game_load::display_savegame()
 		find_widget<minimap>(get_window(), "minimap", false).set_map_data("");
 		find_widget<label>(get_window(), "lblScenario", false)
 			.set_label("");
-		find_widget<scroll_label>(get_window(), "slblSummary", false)
+		find_widget<styled_widget>(get_window(), "slblSummary", false)
 			.set_label("");
 
 		listbox& leader_list = find_widget<listbox>(get_window(), "leader_list", false);
@@ -308,11 +315,16 @@ void game_load::display_savegame()
 
 void game_load::filter_text_changed(const std::string& text)
 {
+	apply_filter_text(text, false);
+}
+
+void game_load::apply_filter_text(const std::string& text, bool force)
+{
 	listbox& list = find_widget<listbox>(get_window(), "savegame_list", false);
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
-	if(words == last_words_)
+	if(words == last_words_ && !force)
 		return;
 	last_words_ = words;
 
@@ -324,13 +336,7 @@ void game_load::filter_text_changed(const std::string& text)
 			bool found = false;
 			for(const auto & word : words)
 			{
-				found = std::search(games_[i].name().begin(),
-									games_[i].name().end(),
-									word.begin(),
-									word.end(),
-									utils::chars_equal_insensitive)
-						!= games_[i].name().end();
-
+				found = translation::ci_search(games_[i].name(), word);
 				if(!found) {
 					// one word doesn't match, we don't reach words.end()
 					break;
@@ -480,7 +486,7 @@ void game_load::delete_button_callback()
 	if(index < games_.size()) {
 
 		// See if we should ask the user for deletion confirmation
-		if(preferences::ask_delete_saves()) {
+		if(prefs::get().ask_delete()) {
 			if(!gui2::dialogs::game_delete::execute()) {
 				return;
 			}
@@ -530,6 +536,9 @@ void game_load::handle_dir_select()
 	}
 
 	populate_game_list();
+	if(auto* filter = find_widget<text_box>(get_window(), "txtFilter", false, true)) {
+		apply_filter_text(filter->get_value(), true);
+	}
 	display_savegame();
 }
 

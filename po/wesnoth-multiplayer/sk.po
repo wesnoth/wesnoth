@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
+"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
 "PO-Revision-Date: 2023-11-17 15:07+0100\n"
 "Last-Translator: Michal Fusatý <michal.fusaty@gmail.com>\n"
 "Language-Team: none\n"
@@ -130,8 +130,12 @@ msgstr "Štandardná"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
+#, fuzzy
+#| msgid ""
+#| "The standard era for Wesnoth multiplayer. Consists of six factions and is "
+#| "generally balanced."
 msgid ""
-"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"The standard era for Wesnoth multiplayer. Consists of seven factions and is "
 "generally balanced."
 msgstr ""
 "Štandardná éra pre hru viacerých hráčov. Skladá sa zo šiestich frakcií a je "
@@ -144,56 +148,19 @@ msgstr "Vek hrdinov"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:15
+#, fuzzy
+#| msgid ""
+#| "An era with higher level units: level three leaders, with level one and "
+#| "two units available for recruit. Consists of six factions. Not considered "
+#| "balanced."
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
-"units available for recruit. Consists of six factions. Not considered "
+"units available for recruit. Consists of seven factions. Not considered "
 "balanced."
 msgstr ""
 "Éra s jednotkami vyšších úrovní: velitelia na tretej úrovni a jednotky na "
 "verbovanie prvej a druhej úrovne. Skladá sa zo šiestich frakcí. Nie je "
 "vyvážená."
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:22
-msgid "Default + Dunefolk"
-msgstr "Štandard + Púštni ľudia"
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:23
-msgid ""
-"An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Éra obsahujúca jednu frakciu navyše oproti štandardnej ére. Jednotky "
-"Púštnych ľudí sa spoliehajú na dôkladné využitie terénu a koordinované útoky "
-"pri súmraku a brieždení.\n"
-"\n"
-"Táto éra je ešte vo vývoji, preto prosíme nahláste vzniknuté problémy."
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:33
-msgid "Age of Heroes + Dunefolk"
-msgstr "Vek hrdinov + Púštni ľudia"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:34
-msgid ""
-"An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Éra obsahujúca jednu frakciu navyše oproti ére Vek hrdinov. Jednotky "
-"Púštnych ľudí sa spoliehajú na dôkladné využitie terénu a koordinované útoky "
-"pri súmraku a brieždení.\n"
-"\n"
-"Táto éra je ešte vo vývoji, preto prosíme nahláste vzniknuté problémy."
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
@@ -3054,6 +3021,40 @@ msgid ""
 msgstr ""
 "Táto mapa je príkladom použitia novej (BfW v1.17) grafiky vyvýšeného terénu. "
 "Upozorňujeme, že nie je určená na hranie."
+
+#~ msgid "Default + Dunefolk"
+#~ msgstr "Štandard + Púštni ľudia"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from "
+#~ "Default Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Éra obsahujúca jednu frakciu navyše oproti štandardnej ére. Jednotky "
+#~ "Púštnych ľudí sa spoliehajú na dôkladné využitie terénu a koordinované "
+#~ "útoky pri súmraku a brieždení.\n"
+#~ "\n"
+#~ "Táto éra je ešte vo vývoji, preto prosíme nahláste vzniknuté problémy."
+
+#~ msgid "Age of Heroes + Dunefolk"
+#~ msgstr "Vek hrdinov + Púštni ľudia"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from Age "
+#~ "of Heroes Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Éra obsahujúca jednu frakciu navyše oproti ére Vek hrdinov. Jednotky "
+#~ "Púštnych ľudí sa spoliehajú na dôkladné využitie terénu a koordinované "
+#~ "útoky pri súmraku a brieždení.\n"
+#~ "\n"
+#~ "Táto éra je ešte vo vývoji, preto prosíme nahláste vzniknuté problémy."
 
 #~ msgid ""
 #~ "Controlling the area around the central keep is very lucrative in this 4 "

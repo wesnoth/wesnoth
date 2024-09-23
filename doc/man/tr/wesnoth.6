@@ -64,13 +64,8 @@ belirtilen seferberlikteki senaryonun kimliği. Belirtilmezse ilk senaryo
 olayların \fBbaşlangıcındaki\fP [hikaye} ekranlarını atlar.
 .TP 
 \fB\-\-clock\fP
-çizim zamanlayıcısını denerken saati göstermek için bu seçeneği ekler.
-.TP 
-\fB\-\-config\-dir\fP\fI\ isim\fP
-Kullanım dışı, yerine \fB\-\-userdata\-dir\fP kullanın.
-.TP 
-\fB\-\-config\-path\fP
-Kullanım dışı, yerine \fB\-\-userdata\-path\fP kullanın.
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ çekirdek\fP
 kimliği belirtilen çekirdek yüklü olanın yerine geçer.
@@ -91,7 +86,7 @@ bazı Lua hata ayıklama mekanizmalarını etkinleştirir.
 \fB\-\-strict\-lua\fP
 kullanımı önerilmeyen Lua API çağrılarına izin verilmez
 .TP 
-\fB\-D,\-\-diff\fP\fI\ sol\-dosya\fP\fB\ \fP\fIsağ\-dosya\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 iki WML dosyasının farkını gösterir; onları işleme sokmadan önce \fB\-p\fP ile
 çalıştırır. Farkları DiffWML olarak ya standart çıktıya ya da \fI\-\-output\fP
 ile belirtilen dosyaya çıktılar.
@@ -129,11 +124,10 @@ değerini kullanır, fakat \fB\-d\fP  seçeneği ile birlikte kullanılmadıkça
 \fB\-\-log\-precise\fP
 günlük çıktısında zaman damgaları daha ayrıntılı gösterilir.
 .TP 
-\fB\-\-log\-strict\fP
-günlük iletilerinin önem seviyesi. Günlük alanlarına gönderilen bu ve daha
-önemli seviyelerdeki iletiler, zafer sonucuna bakılmaksızın birim
-sınamalarının başarısız olmasında sebep olur. Sadece \fB\-u\fP ile
-kullanıldığında etkin olur.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=süzgeç\fP\fB]\fP
 tanımlı günlük alanlarını listeler ve çıkar (bir \fIsüzgeç\fP belirtilmişse
@@ -147,6 +141,10 @@ in the logs directory under the userdata folder.
 \fB\-\-log\-to\-file\fP
 log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 For Windows, when used with \-\-no\-log\-to\-file, results in output being
@@ -210,7 +208,7 @@ yükler. \fB\-\-script\fP gibidir, ancak Lua dosyası, bir alt yordam olarak
 çalıştırılacak ve periyodik olarak güncellemelerle uyanacak bir işlev
 döndürmelidir.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ ana_dosya\fP\fB\ \fP\fIyama\-dosyası\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 DiffWML yamasını WML dosyasına uygular; dosyaları önişleme sokmaz.  Yamanmış
 WML dosyasını ya standart çıktıya ya da \fI\-\-output\fP ile belirtilen dosyaya
 çıktılar.
@@ -295,21 +293,8 @@ birim sınaması olarak belirtilen deneme senaryosunu çalıştırır. Örtük o
 yüklenebilir. Güvenilmez betiklerle kullanmayın! Bu işlem Lua betiğine
 wesnoth çalıştırılabiliri ile aynı yetkileri sağlar.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ dosya\-yolu\fP
-\fB\-V,\-\-validate\fP ile kullanmak için WML şemasını tanımlar.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ isim\fP
-kullanıcı yapılandırma dizini olarak *n*x türevlerinde $HOME, windows'ta
-"Belgelerim\eOyunlarım" dizini altında \fIisim\fP dizini kullanılır. Ayrıca,
-$HOME veya "Belgelerim\eOyunlarım" dışında bir yapılandırma dizinini de
-mutlak yolunu belirtmek suretiyle kullanabilirsiniz. Windows'ta ayrıca, yolu
-".\e" veya "..\e" ile başlatarak sürecin çalışma dizinine göreli bir dosya
-yolu da belirtebilirsiniz. X11 altında bu, öntanımlı olarak $XDG_CONFIG_HOME
-veya $HOME/.config/wesnoth olup diğer sistemlerde kullanıcı verisi
-dizinidir.
-.TP 
-\fB\-\-userconfig\-path\fP
-Kullanıcı yapılandırma dizininin yolunu basar ve çıkar.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ dizin\fP
 kullanıcı verisi dizini olarak *n*x türevlerinde $HOME, windows'ta
@@ -335,7 +320,7 @@ oynarken verilen eklentinin WML'sini doğrular.
 \fB\-\-validate\-core\fP
 oynarken verilen çekirdek WML'yi doğrular.
 .TP 
-\fB\-\-validate\-schema \ dosya\-yolu\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 dosyayı WML şeması olarak doğrular.
 .TP 
 \fB\-\-validcache\fP

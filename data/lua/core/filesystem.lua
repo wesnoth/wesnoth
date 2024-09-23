@@ -2,6 +2,7 @@
 --[========[File Handling]========]
 print("Loading filesystem module...")
 
+---@enum asset_type
 ---Valid asset types, used as the type argument for have_asset and resolve_asset
 filesystem.asset_type = {
     IMAGE = 'images',

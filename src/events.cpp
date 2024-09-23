@@ -19,6 +19,7 @@
 #include "desktop/clipboard.hpp"
 #include "log.hpp"
 #include "draw_manager.hpp"
+#include "preferences/preferences.hpp"
 #include "quit_confirmation.hpp"
 #include "sdl/userevent.hpp"
 #include "utils/ranges.hpp"
@@ -619,6 +620,7 @@ void pump()
 					<< event.window.data1 << 'x' << event.window.data2;
 				info.resize_dimensions.first = event.window.data1;
 				info.resize_dimensions.second = event.window.data2;
+				prefs::get().set_resolution(video::window_size());
 				break;
 
 			// Once everything has had a chance to respond to the resize,
@@ -629,7 +631,13 @@ void pump()
 				break;
 
 			case SDL_WINDOWEVENT_MAXIMIZED:
+				LOG_DP << "events/MAXIMIZED";
+				prefs::get().set_maximized(true);
+				break;
 			case SDL_WINDOWEVENT_RESTORED:
+				LOG_DP << "events/RESTORED";
+				prefs::get().set_maximized(prefs::get().fullscreen());
+				break;
 			case SDL_WINDOWEVENT_SHOWN:
 			case SDL_WINDOWEVENT_MOVED:
 				// Not used.
@@ -682,14 +690,6 @@ void pump()
 				quit_confirmation::quit_to_desktop();
 				continue; // this event is already handled
 			}
-			break;
-		}
-#endif
-
-#if defined(_X11) && !defined(__APPLE__)
-		case SDL_SYSWMEVENT: {
-			// clipboard support for X11
-			desktop::clipboard::handle_system_event(event);
 			break;
 		}
 #endif

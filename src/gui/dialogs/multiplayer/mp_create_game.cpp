@@ -38,7 +38,7 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "log.hpp"
 #include "map_settings.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "save_index.hpp"
 #include "savegame.hpp"
 
@@ -56,9 +56,6 @@ namespace gui2::dialogs
 // Special retval value for loading a game
 static const int LOAD_GAME = 100;
 
-// Shorthand
-namespace prefs = preferences;
-
 REGISTER_DIALOG(mp_create_game)
 
 mp_create_game::mp_create_game(saved_game& state, bool local_mode)
@@ -68,25 +65,55 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	, options_manager_()
 	, selected_game_index_(-1)
 	, selected_rfm_index_(-1)
-	, use_map_settings_(register_bool( "use_map_settings", true, prefs::use_map_settings, prefs::set_use_map_settings,
+	, use_map_settings_(register_bool( "use_map_settings", true,
+		[]() {return prefs::get().mp_use_map_settings();},
+		[](bool v) {prefs::get().set_mp_use_map_settings(v);},
 		std::bind(&mp_create_game::update_map_settings, this)))
-	, fog_(register_bool("fog", true, prefs::fog, prefs::set_fog))
-	, shroud_(register_bool("shroud", true, prefs::shroud, prefs::set_shroud))
-	, start_time_(register_bool("random_start_time", true, prefs::random_start_time, prefs::set_random_start_time))
-	, time_limit_(register_bool("time_limit", true, prefs::countdown, prefs::set_countdown,
+	, fog_(register_bool("fog", true,
+		[]() {return prefs::get().mp_fog();},
+		[](bool v) {prefs::get().set_mp_fog(v);}))
+	, shroud_(register_bool("shroud", true,
+		[]() {return prefs::get().mp_shroud();},
+		[](bool v) {prefs::get().set_mp_shroud(v);}))
+	, start_time_(register_bool("random_start_time", true,
+		[]() {return prefs::get().mp_random_start_time();},
+		[](bool v) {prefs::get().set_mp_random_start_time(v);}))
+	, time_limit_(register_bool("time_limit", true,
+		[]() {return prefs::get().mp_countdown();},
+		[](bool v) {prefs::get().set_mp_countdown(v);},
 		std::bind(&mp_create_game::update_map_settings, this)))
-	, shuffle_sides_(register_bool("shuffle_sides", true, prefs::shuffle_sides, prefs::set_shuffle_sides))
-	, observers_(register_bool("observers", true, prefs::allow_observers, prefs::set_allow_observers))
+	, shuffle_sides_(register_bool("shuffle_sides", true,
+		[]() {return prefs::get().shuffle_sides();},
+		[](bool v) {prefs::get().set_shuffle_sides(v);}))
+	, observers_(register_bool("observers", true,
+		[]() {return prefs::get().allow_observers();},
+		[](bool v) {prefs::get().set_allow_observers(v);}))
 	, strict_sync_(register_bool("strict_sync", true))
 	, private_replay_(register_bool("private_replay", true))
-	, turns_(register_integer("turn_count", true, prefs::turns, prefs::set_turns))
-	, gold_(register_integer("village_gold", true, prefs::village_gold, prefs::set_village_gold))
-	, support_(register_integer("village_support", true, prefs::village_support, prefs::set_village_support))
-	, experience_(register_integer("experience_modifier", true, prefs::xp_modifier, prefs::set_xp_modifier))
-	, init_turn_limit_(register_integer("init_turn_limit", true, prefs::countdown_init_time, prefs::set_countdown_init_time))
-	, turn_bonus_(register_integer("turn_bonus", true, prefs::countdown_turn_bonus, prefs::set_countdown_turn_bonus))
-	, reservoir_(register_integer("reservoir", true, prefs::countdown_reservoir_time, prefs::set_countdown_reservoir_time))
-	, action_bonus_(register_integer("action_bonus", true, prefs::countdown_action_bonus, prefs::set_countdown_action_bonus))
+	, turns_(register_integer("turn_count", true,
+		[]() {return prefs::get().mp_turns();},
+		[](int v) {prefs::get().set_mp_turns(v);}))
+	, gold_(register_integer("village_gold", true,
+		[]() {return prefs::get().village_gold();},
+		[](int v) {prefs::get().set_village_gold(v);}))
+	, support_(register_integer("village_support", true,
+		[]() {return prefs::get().village_support();},
+		[](int v) {prefs::get().set_village_support(v);}))
+	, experience_(register_integer("experience_modifier", true,
+		[]() {return prefs::get().xp_modifier();},
+		[](int v) {prefs::get().set_xp_modifier(v);}))
+	, init_turn_limit_(register_integer("init_turn_limit", true,
+		[]() {return prefs::get().countdown_init_time();},
+		[](int v) {prefs::get().set_countdown_init_time(v);}))
+	, turn_bonus_(register_integer("turn_bonus", true,
+		[]() {return prefs::get().countdown_turn_bonus();},
+		[](int v) {prefs::get().set_countdown_turn_bonus(v);}))
+	, reservoir_(register_integer("reservoir", true,
+		[]() {return prefs::get().countdown_reservoir_time();},
+		[](int v) {prefs::get().set_countdown_reservoir_time(v);}))
+	, action_bonus_(register_integer("action_bonus", true,
+		[]() {return prefs::get().countdown_action_bonus();},
+		[](int v) {prefs::get().set_countdown_action_bonus(v);}))
 	, mod_list_()
 	, eras_menu_button_()
 	, local_mode_(local_mode)
@@ -172,7 +199,7 @@ void mp_create_game::pre_show(window& win)
 	// Helper to make sure the initially selected level type is valid
 	auto get_initial_type_index = [this]()->int {
 		const auto index = std::find_if(level_types_.begin(), level_types_.end(), [](level_type_info& info) {
-			return info.first == *level_type::get_enum(preferences::level_type());
+			return info.first == *level_type::get_enum(prefs::get().mp_level_type());
 		});
 
 		if(index != level_types_.end()) {
@@ -192,7 +219,7 @@ void mp_create_game::pre_show(window& win)
 	//
 	mod_list_ = &find_widget<listbox>(&win, "mod_list", false);
 
-	const auto& activemods = preferences::modifications();
+	const auto& activemods = prefs::get().modifications();
 	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
 		widget_data data;
 		widget_item item;
@@ -239,7 +266,7 @@ void mp_create_game::pre_show(window& win)
 	connect_signal_notify_modified(*eras_menu_button_,
 		std::bind(&mp_create_game::on_era_select, this));
 
-	const int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, preferences::era());
+	const int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, prefs::get().mp_era());
 	if(era_selection >= 0) {
 		eras_menu_button_->set_selected(era_selection);
 	}
@@ -249,7 +276,7 @@ void mp_create_game::pre_show(window& win)
 	//
 	// Set up random faction mode menu_button
 	//
-	const int initial_index = static_cast<int>(random_faction_mode::get_enum(prefs::random_faction_mode()).value_or(random_faction_mode::type::independent));
+	const int initial_index = static_cast<int>(random_faction_mode::get_enum(prefs::get().random_faction_mode()).value_or(random_faction_mode::type::independent));
 
 	menu_button& rfm_menu_button = find_widget<menu_button>(&win, "random_faction_mode", false);
 	rfm_menu_button.set_selected(initial_index);
@@ -317,7 +344,7 @@ void mp_create_game::pre_show(window& win)
 	win.add_to_keyboard_chain(&list);
 
 	// This handles the initial game selection as well
-	display_games_of_type(level_types_[get_initial_type_index()].first, preferences::level());
+	display_games_of_type(level_types_[get_initial_type_index()].first, prefs::get().mp_level());
 
 	// Initial tab selection must be done after game selection so the field widgets are set to their correct active state.
 	on_tab_select();
@@ -804,15 +831,15 @@ void mp_create_game::set_active_mods(const std::vector<std::string>& val)
 void mp_create_game::reset_timer_settings()
 {
 	// This allows the defaults to be returned by the pref getters below
-	preferences::erase("mp_countdown_init_time");
-	preferences::erase("mp_countdown_reservoir_time");
-	preferences::erase("mp_countdown_turn_bonus");
-	preferences::erase("mp_countdown_action_bonus");
+	prefs::get().clear_countdown_init_time();
+	prefs::get().clear_countdown_reservoir_time();
+	prefs::get().clear_countdown_turn_bonus();
+	prefs::get().clear_countdown_action_bonus();
 
-	init_turn_limit_->set_widget_value(preferences::countdown_init_time());
-	turn_bonus_->set_widget_value(preferences::countdown_turn_bonus());
-	reservoir_->set_widget_value(preferences::countdown_reservoir_time());
-	action_bonus_->set_widget_value(preferences::countdown_action_bonus());
+	init_turn_limit_->set_widget_value(prefs::get().countdown_init_time());
+	turn_bonus_->set_widget_value(prefs::get().countdown_turn_bonus());
+	reservoir_->set_widget_value(prefs::get().countdown_reservoir_time());
+	action_bonus_->set_widget_value(prefs::get().countdown_action_bonus());
 }
 
 bool mp_create_game::dialog_exit_hook(window& /*window*/)
@@ -855,10 +882,10 @@ void mp_create_game::post_show(window& window)
 	}
 
 	if(get_retval() == retval::OK) {
-		prefs::set_modifications(create_engine_.active_mods());
-		prefs::set_level_type(static_cast<int>(create_engine_.current_level_type()));
-		prefs::set_level(create_engine_.current_level().id());
-		prefs::set_era(create_engine_.current_era().id);
+		prefs::get().set_modifications(create_engine_.active_mods());
+		prefs::get().set_mp_level_type(static_cast<int>(create_engine_.current_level_type()));
+		prefs::get().set_mp_level(create_engine_.current_level().id());
+		prefs::get().set_mp_era(create_engine_.current_era().id);
 
 		create_engine_.prepare_for_era_and_mods();
 
@@ -939,7 +966,7 @@ void mp_create_game::post_show(window& window)
 		config_engine_->set_random_faction_mode(type);
 
 		// Since we don't have a field handling this option, we need to save the value manually
-		prefs::set_random_faction_mode(random_faction_mode::get_string(type));
+		prefs::get().set_random_faction_mode(random_faction_mode::get_string(type));
 
 		// Save custom option settings
 		config_engine_->set_options(options_manager_->get_options_config());

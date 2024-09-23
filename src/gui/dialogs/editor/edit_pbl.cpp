@@ -363,7 +363,7 @@ void editor_edit_pbl::delete_translation()
 void editor_edit_pbl::validate()
 {
 	std::unique_ptr<schema_validation::schema_validator> validator;
-	validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/pbl.cfg")));
+	validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/pbl.cfg").value()));
 	validator->set_create_exceptions(false);
 
 	config temp;

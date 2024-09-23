@@ -68,7 +68,7 @@ void mapbuilder::pre_build()
 		//Remove any unit the current side cannot see to avoid their detection by planning
 		//Units will be restored to the unit map by destruction of removers_
 
-		if(!on_current_side && !u.is_visible_to_team(resources::gameboard->teams()[viewer_team()], false)) {
+		if(!on_current_side && !u.is_visible_to_team(display::get_singleton()->viewing_team(), false)) {
 			removers_.emplace_back(new temporary_unit_remover(resources::gameboard->units(), u.get_location()));
 
 			//Don't do anything else to the removed unit!

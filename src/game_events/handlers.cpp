@@ -57,6 +57,11 @@ event_handler::event_handler(const std::string& types, const std::string& id)
 	, is_menu_item_(false)
 	, disabled_(false)
 	, is_lua_(false)
+	, has_preloaded_(false)
+	, event_ref_(0)
+	, priority_(0.0)
+	, args_()
+	, filters_()
 	, id_(id)
 	, types_(types)
 {}
@@ -256,7 +261,7 @@ struct filter_attack : public event_filter {
 					auto temp_other_weapon = event_info.data.optional_child(!first_ ? "first" : "second");
 					const_attack_ptr second_attack = temp_other_weapon ? std::make_shared<const attack_type>(*temp_other_weapon) : nullptr;
 					auto ctx = attack->specials_context(u, opp, loc, loc_d, first_, second_attack);
-					std::optional<decltype(ctx)> opp_ctx;
+					utils::optional<decltype(ctx)> opp_ctx;
 					if(second_attack){
 						opp_ctx.emplace(second_attack->specials_context(opp, u, loc_d, loc, !first_, attack));
 					}

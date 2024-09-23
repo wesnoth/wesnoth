@@ -48,6 +48,8 @@ public:
 	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
+	void set_success(bool success);
+
 	/** Inherited from clickable_item. */
 	virtual void connect_click_handler(const event::signal& signal) override
 	{
@@ -78,6 +80,7 @@ private:
 		DISABLED,
 		PRESSED,
 		FOCUSED,
+		SUCCESS
 	};
 
 	void set_state(const state_t state);
@@ -96,6 +99,11 @@ private:
 	 * the window and the window closes itself.
 	 */
 	int retval_;
+
+	/**
+	 * Action performed by this button succeeded.
+	 */
+	bool success_;
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */

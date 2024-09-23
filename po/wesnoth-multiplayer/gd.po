@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
+"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
 "PO-Revision-Date: 2022-01-13 19:27+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -130,8 +130,12 @@ msgstr "Bunaiteach"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
+#, fuzzy
+#| msgid ""
+#| "The standard era for Wesnoth multiplayer. Consists of six factions and is "
+#| "generally balanced."
 msgid ""
-"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"The standard era for Wesnoth multiplayer. Consists of seven factions and is "
 "generally balanced."
 msgstr ""
 "An linn bunaiteach airson Wesnoth sa mhodh ioma-chluicheadair. Tha sia "
@@ -144,58 +148,19 @@ msgstr "Linn nan laoch"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:15
+#, fuzzy
+#| msgid ""
+#| "An era with higher level units: level three leaders, with level one and "
+#| "two units available for recruit. Consists of six factions. Not considered "
+#| "balanced."
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
-"units available for recruit. Consists of six factions. Not considered "
+"units available for recruit. Consists of seven factions. Not considered "
 "balanced."
 msgstr ""
 "Linn le aonadan aig a bheil leibheil as àirde: ceannardan leibheil a trì le "
 "aonadan leibheil a h-aon ’s a dhà airson trusadh. Tha sia buidhnean ’na "
 "lùib. Chan eil meidh air gach rud."
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:22
-msgid "Default + Dunefolk"
-msgstr "Bunaiteach + Muinntir na Gainmhich"
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:23
-msgid ""
-"An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Seo na buidhnean on linn bhunaiteach agus buidheann a bharrachd. Cleachdaidh "
-"muinntir na Gainmhich an cruth-tìre gu cùramach agus bheir iad ionnsaigh co-"
-"òrdanaichte air a’ chiaradh no a’ chamhanach.\n"
-"\n"
-"Tha an linn seo ’ga leasachadh fhathast, mar sin innis duinn mu dhuilgheadas "
-"sam bith."
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:33
-msgid "Age of Heroes + Dunefolk"
-msgstr "Linn nan laoch + Muinntir na Gainmhich"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:34
-msgid ""
-"An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Seo na buidhnean o Linn nan laoch agus buidheann a bharrachd. Cleachdaidh "
-"muinntir na Gainmhich an cruth-tìre gu cùramach agus bheir iad ionnsaigh co-"
-"òrdanaichte air a’ chiaradh no a’ chamhanach.\n"
-"\n"
-"Tha an linn seo ’ga leasachadh fhathast, mar sin innis duinn mu dhuilgheadas "
-"sam bith."
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
@@ -3080,6 +3045,42 @@ msgid ""
 "This map is an example of how to use the new (BfW v1.17) elevated terrain "
 "graphics. Please be advised that it is not intended for playing."
 msgstr ""
+
+#~ msgid "Default + Dunefolk"
+#~ msgstr "Bunaiteach + Muinntir na Gainmhich"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from "
+#~ "Default Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Seo na buidhnean on linn bhunaiteach agus buidheann a bharrachd. "
+#~ "Cleachdaidh muinntir na Gainmhich an cruth-tìre gu cùramach agus bheir "
+#~ "iad ionnsaigh co-òrdanaichte air a’ chiaradh no a’ chamhanach.\n"
+#~ "\n"
+#~ "Tha an linn seo ’ga leasachadh fhathast, mar sin innis duinn mu "
+#~ "dhuilgheadas sam bith."
+
+#~ msgid "Age of Heroes + Dunefolk"
+#~ msgstr "Linn nan laoch + Muinntir na Gainmhich"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from Age "
+#~ "of Heroes Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Seo na buidhnean o Linn nan laoch agus buidheann a bharrachd. Cleachdaidh "
+#~ "muinntir na Gainmhich an cruth-tìre gu cùramach agus bheir iad ionnsaigh "
+#~ "co-òrdanaichte air a’ chiaradh no a’ chamhanach.\n"
+#~ "\n"
+#~ "Tha an linn seo ’ga leasachadh fhathast, mar sin innis duinn mu "
+#~ "dhuilgheadas sam bith."
 
 #~ msgid ""
 #~ "Controlling the area around the central keep is very lucrative in this 4 "

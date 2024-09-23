@@ -30,8 +30,7 @@
 #include "log.hpp"
 #include "map/label.hpp"
 #include "mp_ui_alerts.hpp"
-#include "preferences/game.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
@@ -122,7 +121,7 @@ void playmp_controller::play_human_turn()
 		undo_stack().clear();
 	}
 
-	if(!preferences::disable_auto_moves()) {
+	if(!prefs::get().disable_auto_moves()) {
 		execute_gotos();
 	}
 
@@ -406,13 +405,13 @@ playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_i
 	{
 		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), message.value()["sender"], message.value()["side"],
 				message.value()["message"], events::chat_handler::MESSAGE_PUBLIC,
-				preferences::message_bell());
+				prefs::get().message_bell());
 	}
 	else if (auto whisper = cfg.optional_child("whisper") /*&& is_observer()*/)
 	{
 		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), "whisper: " + whisper["sender"].str(), 0,
 				whisper["message"], events::chat_handler::MESSAGE_PRIVATE,
-				preferences::message_bell());
+				prefs::get().message_bell());
 	}
 	else if (auto observer = cfg.optional_child("observer") )
 	{
@@ -493,7 +492,7 @@ void playmp_controller::process_network_side_drop_impl(const config& side_drop_c
 	const int  side_drop = side_drop_c["side_num"].to_int(0);
 	std::size_t index = side_drop -1;
 
-	player_type_changed_ |= side_drop == game_display::get_singleton()->playing_side();
+	player_type_changed_ |= side_drop == game_display::get_singleton()->playing_team().side();
 
 	if (index >= gamestate().board_.teams().size()) {
 		ERR_NW << "unknown side " << side_drop << " is dropping game";
@@ -655,7 +654,7 @@ void playmp_controller::process_network_change_controller_impl(const config& cha
 
 	get_whiteboard()->on_change_controller(side,tm);
 
-	player_type_changed_ |= game_display::get_singleton()->playing_side() == side && (was_local || tm.is_local());
+	player_type_changed_ |= game_display::get_singleton()->playing_team().side() == side && (was_local || tm.is_local());
 }
 
 void playmp_controller::send_actions()

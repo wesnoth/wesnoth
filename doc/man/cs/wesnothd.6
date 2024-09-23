@@ -26,8 +26,7 @@ wesnothd\ – Bitva o \fBWesnoth\fP\ – síťový server pro hru více hráčů
 .
 .SH POUŽITÍ
 .
-\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fIpočet_vláken\fP\|] [\|\fB\-T\fP \fIpočet_vláken\fP\|]
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
@@ -58,14 +57,6 @@ oblast \fBserver\fP je to \fBinfo\fP.
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
 server použije daný port. Pokud není určen, bude použit port \fB15000\fP.
-.TP 
-\fB\-t,\ \fP\fIpočet\fP\fB,\ \-\-threads\fP\fI\ počet\fP
-nastavuje nejvyšší počet pracovních vláken čekajících na vstupně\-výstupní
-síťové operace. (výchozí hodnota: \fB5\fP,\ maximum:\ \fB30\fP)
-.TP 
-\fB\-T,\ \fP\fIpočet\fP\fB,\ \-\-max\-threads\fP\fI\ počet\fP
-nastavuje nejvyšší počet pracovních vláken, který bude vytvořen. Při
-nastavení na \fB0\fP nebude žádné omezení. (výchozí hodnota: \fB0\fP)
 .TP 
 \fB\-V, \-\-version\fP
 zobrazí verzi wesnothd a skončí.
@@ -99,10 +90,6 @@ Plná či relativní cesta k souboru (komprese gzip), jenž může server číst
 přepisovat. Do tohoto souboru jsou ukládány zákazy přístupu (ban) a načítány
 při spuštění.
 .TP 
-\fBcompress_stored_rooms\fP
-Určuje, zda je soubor s místnostmi čten a zapisován jako
-komprimovaný. Výchozí hodnotou je \fByes\fP.
-.TP 
 \fBconnections_allowed\fP
 Počet povolených spojení z\ jedné IP adresy. \fB0\fP znamená nekonečno. (výchozí
 hodnota: \fB5\fP)
@@ -115,12 +102,17 @@ aby se přihlásili. (výchozí hodnota: false)
 Jména/přezdívky, jež server nepřijímá. Podporovány jsou zástupné znaky \fB*\fP
 a\ \fB?\fP. Pro více podrobností viz \fBglob\fP(7). Výchozí hodnoty (použité, když
 není nic určeno) jsou:
-\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+\fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
 Cesta k\ fifo, do níž můžeš posílat příkazy serveru (stejně jako pomocí
 /query z\ klienta). Pokud není zadána, použije se cesta určená při
 kompilaci. (výchozí hodnota: \fB/var/run/wesnothd/socket\fP)
+.TP 
+\fBid\fP
+Identifikátor serveru při použití databázových funkcí pro uložení informací
+o\ hře. Obvykle je to major.minor verze přípustných klientů, jako třeba 1.16
+nebo 1.17.
 .TP 
 \fBmax_messages\fP
 Přípustný počet zpráv během \fBmessages_time_period\fP. (výchozí hodnota: \fB4\fP)
@@ -132,15 +124,8 @@ hodnota: \fB10\fP vteřin)
 \fBmotd\fP
 Zpráva dne.
 .TP 
-\fBnew_room_policy\fP
-Určuje, kdo může vytvářet na serveru nové místnosti. Dostupné hodnoty
-zahrnují \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP a\ \fBnobody\fP\ – místnosti pak
-může vytvářet každý, registrovaní uživatelé, pouze správci nebo
-nikdo. Výchozí hodnota je \fBeveryone\fP.
-.TP 
 \fBpasswd\fP
-Heslo pro získání administrátorských práv. (Přes \fB/query admin
-\fP\fIpassword\fP.)
+Heslo pro získání administrátorských práv. (Přes \fB/query admin \fP\fIpassword\fP.)
 .TP 
 \fBreplay_save_path\fP
 Adresář, do nějž server ukládá záznamy her. (Nezapomeň na / na konci!)
@@ -150,11 +135,6 @@ Výchozí hodnotou je `', což znamená adresář, v\ němž byl wesnothd spušt
 Příkaz, který server použije pro spuštění nového procesu sebe sama při
 příkazu \fBrestart\fP. (Lze nastavit pouze přes fifo. Více viz
 \fBallow_remote_shutdown\fP.)
-.TP 
-\fBroom_save_file\fP
-Cesta k souboru, v němž jsou ukládány informace o místnostech. Tento soubor
-je načten při spuštění serveru a poté přepisován. Pokud je prázdný nebo není
-nastaven, ukládání a načítání místností nebude aktivní.
 .TP 
 \fBsave_replays\fP
 Určuje, zda bude server automaticky ukládat záznamy her. (výchozí hodnota:
@@ -180,11 +160,6 @@ jsou zástupné znaky \fB*\fP a\ \fB?\fP. (výchozí hodnotou je příslušná v
 wesnoth)
 .br
 Příklad: \fBversions_accepted="*"\fP přijímá jakýkoli řetězec verze.
-.TP 
-\fBid\fP
-Identifikátor serveru při použití databázových funkcí pro uložení informací
-o\ hře. Obvykle je to major.minor verze přípustných klientů, jako třeba 1.16
-nebo 1.17.
 .
 .SS "Globální značky:"
 .
@@ -260,14 +235,18 @@ Název tabulky, do které bude wesnothd ukládat svá vlastní data o\ hrách.
 Název tabulky, do které bude wesnothd ukládat svá vlastní data o\ hráčích ve
 hře.
 .TP 
-\fBdb_game_modification_info_table\fP
-Název tabulky, do které bude wesnothd ukládat svá vlastní data
-o\ modifikacích použitých ve hře.
+\fBdb_game_content_info_table\fP
+Název tabulky, do které bude wesnothd ukládat svá vlastní data o\ herním
+obsahu (scénáři/éře/modifikacích) použitém ve hře.
 .TP 
 \fBdb_user_group_table\fP
 Název tabulky, do které tvé phpBB fórum ukládá svá data o\ skupinách
 uživatelů. S\ největší pravděpodobností to bude
 <table\-prefix>_user_group (např. phpbb3_user_group).
+.TP 
+\fBdb_tournament_query\fP
+SQL dotaz na vyhledání turnajů, které se mají vypsat při přihlášení. Měl by
+vrátit \fBnázev\fP, \fBstav\fP a \fBurl\fP turnaje.
 .TP 
 \fBdb_connection_history_table\fP
 Název tabulky pro ukládání časů přihlášení a\ odhlášení. Je také použita pro
@@ -305,7 +284,7 @@ Navštiv oficiální domovskou stránku: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+Copyright \(co 2003–2024 David White <davidnwhite@verizon.net>
 .br
 Toto je svobodný software; je licencován pod licencí GPL verze 2, tak jak je
 publikována nadací Free Software Foundation. Tento program je bez záruky, a

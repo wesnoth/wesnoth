@@ -21,7 +21,7 @@
 #include "game_errors.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/parser.hpp"
 #include "team.hpp"
 
@@ -128,7 +128,7 @@ void save_index_class::write_save_index()
 	try {
 		filesystem::scoped_ostream stream = filesystem::ostream_file(filesystem::get_save_index_file());
 
-		if(preferences::save_compression_format() != compression::format::none) {
+		if(prefs::get().save_compression_format() != compression::format::none) {
 			// TODO: maybe allow writing this using bz2 too?
 			write_gz(*stream, data());
 		} else {
@@ -250,7 +250,7 @@ const config& save_info::summary() const
 std::string save_info::format_time_local() const
 {
 	if(std::tm* tm_l = std::localtime(&modified())) {
-		const std::string format = preferences::use_twelve_hour_clock_format()
+		const std::string format = prefs::get().use_twelve_hour_clock_format()
 			// TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 			? _("%a %b %d %Y, %I:%M %p")
 			// TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
@@ -487,16 +487,14 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 			// We need a binary path-independent path to the leader image here so it can be displayed
 			// for campaign-specific units even when the campaign isn't loaded yet.
-			std::string leader_image_path = filesystem::get_independent_binary_file_path("images", leader_image);
+			auto leader_image_path = filesystem::get_independent_binary_file_path("images", leader_image);
 
 			// If the image path was found, we append the leader TC modifier. If it's not (such as in
 			// the case where the binary path hasn't been loaded yet, perhaps due to save_index being
 			// deleted), the unaltered image path is used and will be parsed by get_independent_binary_file_path
 			// at runtime.
-			if(!leader_image_path.empty()) {
-				leader_image_path += leader_image_tc_modifier;
-
-				leader_image = leader_image_path;
+			if(leader_image_path) {
+				leader_image = leader_image_path.value() + leader_image_tc_modifier;
 			}
 
 			leader_config["leader"] = leader;

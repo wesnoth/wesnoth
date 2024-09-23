@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-multiplayer\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
+"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
 "PO-Revision-Date: 2011-12-26 13:33+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -134,7 +134,7 @@ msgstr "подразумевана"
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
 msgid ""
-"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"The standard era for Wesnoth multiplayer. Consists of seven factions and is "
 "generally balanced."
 msgstr ""
 
@@ -147,42 +147,8 @@ msgstr "Доба јунака"
 #: data/multiplayer/eras.cfg:15
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
-"units available for recruit. Consists of six factions. Not considered "
+"units available for recruit. Consists of seven factions. Not considered "
 "balanced."
-msgstr ""
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:22
-msgid "Default + Dunefolk"
-msgstr ""
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:23
-msgid ""
-"An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:33
-#, fuzzy
-#| msgid "Age of Heroes"
-msgid "Age of Heroes + Dunefolk"
-msgstr "Доба јунака"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:34
-msgid ""
-"An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
 msgstr ""
 
 #. [lua]: res.show_turns_over_advantage
@@ -3110,6 +3076,11 @@ msgid ""
 "This map is an example of how to use the new (BfW v1.17) elevated terrain "
 "graphics. Please be advised that it is not intended for playing."
 msgstr ""
+
+#, fuzzy
+#~| msgid "Age of Heroes"
+#~ msgid "Age of Heroes + Dunefolk"
+#~ msgstr "Доба јунака"
 
 #, fuzzy
 #~| msgid ""

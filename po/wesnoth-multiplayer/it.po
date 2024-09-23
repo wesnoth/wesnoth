@@ -8,14 +8,14 @@
 # Automatically generated, 2004.
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2009, 2011.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2023.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
-"PO-Revision-Date: 2023-11-25 12:45+0100\n"
+"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
+"PO-Revision-Date: 2024-09-21 15:13+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -145,11 +145,11 @@ msgstr "Era predefinita"
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
 msgid ""
-"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"The standard era for Wesnoth multiplayer. Consists of seven factions and is "
 "generally balanced."
 msgstr ""
-"L’era predefinita di Wesnoth per il gioco multi-giocatore. Consta di sei "
-"fazioni, piuttosto bilanciate."
+"L’era predefinita di Wesnoth per il gioco multi-giocatore. Consta di sette "
+"fazioni, piuttosto ben bilanciate."
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:14
@@ -160,58 +160,12 @@ msgstr "Era degli eroi"
 #: data/multiplayer/eras.cfg:15
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
-"units available for recruit. Consists of six factions. Not considered "
+"units available for recruit. Consists of seven factions. Not considered "
 "balanced."
 msgstr ""
 "Un’era con unità di alto livello: comandanti di livello tre, che possono "
-"reclutare unità di livello uno e due. Conta di sei fazioni, non considerate "
-"bilanciate."
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:22
-msgid "Default + Dunefolk"
-msgstr "Default + Popolo delle Dune"
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:23
-msgid ""
-"An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Un’era che propone una fazione aggiuntiva rispetto alle sei dell’era "
-"predefinita. Le unità del Popolo delle Dune preferiscono fare affidamento ad "
-"un uso accorto del terreno e di attacchi coordinati, sferrati "
-"preferibilmente all’alba o al tramonto.\n"
-"\n"
-"Quest’era è ancora in fase di sviluppo, siete quindi pregati di riportare "
-"qualsiasi problema possiate incontrare."
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:33
-msgid "Age of Heroes + Dunefolk"
-msgstr "Era degli eroi + Popolo delle Dune"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:34
-msgid ""
-"An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"Un’era che propone una fazione aggiuntiva rispetto alle sei dell’Era degli "
-"Eroi. Le unità del Popolo delle Dune preferiscono fare affidamento ad un uso "
-"accorto del terreno e di attacchi coordinati, sferrati preferibilmente "
-"all’alba o al tramonto.\n"
-"\n"
-"Quest’era è ancora in fase di sviluppo, siete quindi pregati di riportare "
-"qualsiasi problema possiate incontrare."
+"reclutare unità di livello uno e due. Consta di sette fazioni, non "
+"considerate bilanciate."
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
@@ -468,21 +422,6 @@ msgstr "2g – Aethermaw"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
-#, fuzzy
-#| msgid ""
-#| "Long ago, the Great Mage Sulla was imprisoned in the Aethermaw, a nexus "
-#| "of mystical energy whose chaotic nature was able to prevent her escape. "
-#| "Over the centuries, however, Sulla gradually attuned her powers to the "
-#| "maelstrom of disorder that is the Aethermaw, and has now begun to project "
-#| "its influence onto the material plane, drawing in entire regions of land "
-#| "from hundreds of different worlds, realities and time-periods. She "
-#| "experiments with these disparate pieces of the cosmos, manipulating them, "
-#| "merging them and sending them back and forth between the Aethermaw and "
-#| "their place of origin. Perhaps, as her mastery over the Aethermaw grows, "
-#| "Sulla will one day break free of its bonds. Until that time comes, she "
-#| "will continue to amuse herself by arranging battles between the mortal "
-#| "beings unlucky enough to be drawn into its depths. Designed by Doc "
-#| "Paterson."
 msgid ""
 "Long ago, the Legendary Aether Mage, Sulla, was imprisoned in the Aethermaw, "
 "a nexus of mystical energy whose chaotic nature was able to prevent her "
@@ -497,20 +436,20 @@ msgid ""
 "continue to amuse herself by arranging battles between the mortal beings "
 "unlucky enough to be drawn into its depths. Designed by Doc Paterson."
 msgstr ""
-"Tanto tempo fa, la grande maga Sulla fu imprigionata nell’Aethermaw, una "
-"stringa di energia mistica la cui natura caotica era capace di impedire la "
-"sua fuga. Tuttavia dopo molti secoli, Sulla a poco a poco sincronizzò i suoi "
-"poteri col vortice del disordine che era nientemeno che l’Aethermaw stesso, "
-"e da ciò ha cominciato a creare terreni materiali e a disegnare intere "
-"regioni, realtà e periodi di tempo appartenenti a centinaia di mondi "
-"differenti. La maga fa esperimenti con questi disparati pezzi di cosmo, li "
-"manipola, li mescola e poi li spedisce avanti e indietro tra l’Aethermaw e "
-"il loro punto di origine. Se riuscirà a dominare i brontolii dell’Aethermaw, "
-"forse un giorno Sulla riuscirà a rompere le catene e potrà essere di nuovo "
-"libera. In attesa che ciò accada, continuerà ad organizzare battaglie "
-"coinvolgendo creature mortali abbastanza sfortunate da farsi richiamare "
-"nelle profondità del suo mondo, per il solo puro divertimento. Progettata da "
-"Doc Paterson."
+"Tanto tempo fa, la Leggendaria Maga Eterica, Sulla fu imprigionata "
+"nell’Aethermaw, una stringa di energia mistica la cui natura caotica era "
+"capace di impedire la sua fuga. Tuttavia dopo molti secoli, Sulla a poco a "
+"poco sincronizzò i suoi poteri col vortice del disordine che era nientemeno "
+"che l’Aethermaw stesso, iniziando a proiettare la sua influenza sui piani "
+"materiali, disegnando intere regioni di terra provenienti da realtà e "
+"periodi di tempo appartenenti a centinaia di mondi differenti. La maga fa "
+"esperimenti con questi vari pezzi di cosmo: li manipola, li mescola e poi li "
+"spedisce avanti e indietro tra l’Aethermaw e il loro punto di origine. Se "
+"riuscirà a dominare i brontolii dell’Aethermaw, forse un giorno Sulla "
+"riuscirà a rompere le catene e potrà essere di nuovo libera. In attesa che "
+"ciò accada, continuerà ad organizzare battaglie coinvolgendo creature "
+"mortali abbastanza sfortunate da farsi richiamare nelle profondità del suo "
+"mondo, per il solo puro divertimento. Progettata da Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
@@ -594,16 +533,12 @@ msgstr "Sconfiggi il condottiero nemico"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
-#, fuzzy
-#| msgid ""
-#| "The Great Mage Sulla has transported your armies to this bizarre nexus, "
-#| "and demands that you amuse her by doing battle."
 msgid ""
 "The Aether Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
 msgstr ""
-"La grande maga Sulla ha trasportato le tue armate in questa bizzarra "
-"dimensione, e chiede che tu la faccia divertire con una battaglia."
+"Sulla, la Maga Eterica, ha trasportato le tue armate in questa bizzarra "
+"dimensione, e chiede che tu intrattenga con una battaglia per il suo diletto."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:315
@@ -616,16 +551,11 @@ msgstr ""
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:318
-#, fuzzy
-#| msgid ""
-#| "Beginning on turn 4, the Great Mage Sulla will begin to unite the two "
-#| "halves of the battlefield. The process will be complete by the end of "
-#| "turn 6."
 msgid ""
 "Beginning on turn 4, the Aether Mage Sulla will begin to unite the two "
 "halves of the battlefield. The process will be complete by the end of turn 6."
 msgstr ""
-"All’inizio del quarto turno, la grande maga Sulla inizierà a congiungere le "
+"All’inizio del quarto turno, la Maga Eterica Sulla inizierà a congiungere le "
 "due metà del campo di battaglia. Il processo sarà completato alla fine del "
 "sesto turno."
 
@@ -1992,7 +1922,7 @@ msgid ""
 msgstr ""
 "Una statua di pietra di Sulla la grande, noto anche come Sulla la giusta, la "
 "tiranna Sulla, imperatrice della torre che affonda, signora del ghiacciaio "
-"che cammina, Sulla l’inceneratrice, Sulla l’orgogliosa e Sulla la retta."
+"che cammina, Sulla l’inceneritrice, Sulla l’orgogliosa e Sulla la retta."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:103
@@ -2238,7 +2168,7 @@ msgid ""
 "The tile in the centre, which contains the casket of the titular "
 "necromancer, is always covered in pitch black fog."
 msgstr ""
-"L’esagono centrale, contenente la bara del necromante del titolo, è "
+"L’esagono centrale, contenente la bara del negromante del titolo, è "
 "perennemente coperto da una fitta nebbia nera come la pece."
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
@@ -3178,6 +3108,44 @@ msgid ""
 msgstr ""
 "Questa mappa è un esempio di utilizzo della nuova (BfW v1.17) grafica per i "
 "terreni sopraelevati. Non è una mappa adatta ad un reale utilizzo in gioco."
+
+#~ msgid "Default + Dunefolk"
+#~ msgstr "Default + Popolo delle Dune"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from "
+#~ "Default Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Un’era che propone una fazione aggiuntiva rispetto alle sei dell’era "
+#~ "predefinita. Le unità del Popolo delle Dune preferiscono fare affidamento "
+#~ "ad un uso accorto del terreno e di attacchi coordinati, sferrati "
+#~ "preferibilmente all’alba o al tramonto.\n"
+#~ "\n"
+#~ "Quest’era è ancora in fase di sviluppo, siete quindi pregati di riportare "
+#~ "qualsiasi problema possiate incontrare."
+
+#~ msgid "Age of Heroes + Dunefolk"
+#~ msgstr "Era degli eroi + Popolo delle Dune"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from Age "
+#~ "of Heroes Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "Un’era che propone una fazione aggiuntiva rispetto alle sei dell’Era "
+#~ "degli Eroi. Le unità del Popolo delle Dune preferiscono fare affidamento "
+#~ "ad un uso accorto del terreno e di attacchi coordinati, sferrati "
+#~ "preferibilmente all’alba o al tramonto.\n"
+#~ "\n"
+#~ "Quest’era è ancora in fase di sviluppo, siete quindi pregati di riportare "
+#~ "qualsiasi problema possiate incontrare."
 
 #~ msgid ""
 #~ "Controlling the area around the central keep is very lucrative in this 4 "

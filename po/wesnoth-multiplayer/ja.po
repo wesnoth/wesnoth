@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
+"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
 "Last-Translator: k konami, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -130,8 +130,12 @@ msgstr "標準"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
+#, fuzzy
+#| msgid ""
+#| "The standard era for Wesnoth multiplayer. Consists of six factions and is "
+#| "generally balanced."
 msgid ""
-"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"The standard era for Wesnoth multiplayer. Consists of seven factions and is "
 "generally balanced."
 msgstr ""
 "マルチプレイヤー用の標準の時代。6つの党派があり、バランスがとれています。"
@@ -143,55 +147,18 @@ msgstr "英雄の時代"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:15
+#, fuzzy
+#| msgid ""
+#| "An era with higher level units: level three leaders, with level one and "
+#| "two units available for recruit. Consists of six factions. Not considered "
+#| "balanced."
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
-"units available for recruit. Consists of six factions. Not considered "
+"units available for recruit. Consists of seven factions. Not considered "
 "balanced."
 msgstr ""
 "高レベルユニットが使用できる時代です。リーダーはレベル3で、レベル1と2のユニッ"
 "トを雇用できます。バランスは考慮されていません。"
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:22
-msgid "Default + Dunefolk"
-msgstr "標準＋デューンフォーク"
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:23
-msgid ""
-"An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"標準の時代（Default Era）の6つの党派に、さらにもう1つの党派を付け加えたもので"
-"す。デューンフォークは魔法を持ちませんが、地形や、夕暮れと夜明けを生かして戦"
-"います。\n"
-"\n"
-"この時代はまだ開発中であり、何か問題があれば報告してください。"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:33
-msgid "Age of Heroes + Dunefolk"
-msgstr "英雄の時代＋デューンフォーク"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:34
-msgid ""
-"An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-"英雄の時代（Age of Heroes Era）の6つの党派に、さらにもう1つの党派を付け加えた"
-"ものです。デューンフォークは魔法を持ちませんが、地形や、夕暮れと夜明けを生か"
-"して戦います。\n"
-"\n"
-"この時代はまだ開発中であり、何か問題があれば報告してください。"
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
@@ -3017,3 +2984,37 @@ msgid ""
 msgstr ""
 "このマップは BfW v1.17 の新しい高低差地形（elevated terrain）グラフィックスの"
 "使い方の例です。プレイ用ではありません、あしからず。"
+
+#~ msgid "Default + Dunefolk"
+#~ msgstr "標準＋デューンフォーク"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from "
+#~ "Default Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "標準の時代（Default Era）の6つの党派に、さらにもう1つの党派を付け加えたも"
+#~ "のです。デューンフォークは魔法を持ちませんが、地形や、夕暮れと夜明けを生か"
+#~ "して戦います。\n"
+#~ "\n"
+#~ "この時代はまだ開発中であり、何か問題があれば報告してください。"
+
+#~ msgid "Age of Heroes + Dunefolk"
+#~ msgstr "英雄の時代＋デューンフォーク"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from Age "
+#~ "of Heroes Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "英雄の時代（Age of Heroes Era）の6つの党派に、さらにもう1つの党派を付け加"
+#~ "えたものです。デューンフォークは魔法を持ちませんが、地形や、夕暮れと夜明け"
+#~ "を生かして戦います。\n"
+#~ "\n"
+#~ "この時代はまだ開発中であり、何か問題があれば報告してください。"

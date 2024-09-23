@@ -118,7 +118,7 @@ EXIT_STATUS start(bool clear_id, const std::string& filename, bool take_screensh
 
 		editor_controller editor(clear_id);
 
-		if (!filename.empty() && filesystem::file_exists (filename)) {
+		if (!filename.empty() && filesystem::file_exists(filename)) {
 			if (filesystem::is_directory(filename)) {
 				editor.context_manager_->set_default_dir(filename);
 				editor.context_manager_->load_map_dialog(true);
@@ -126,8 +126,7 @@ EXIT_STATUS start(bool clear_id, const std::string& filename, bool take_screensh
 				editor.context_manager_->load_map(filename, false);
 
 				// HACK: this fixes an issue where the button overlays would be missing when
-				// the loaded map appears. Since we're gonna drop this ridiculous GUI1 drawing
-				// stuff in 1.15 I'm not going to waste time coming up with a better fix.
+				// the loaded map appears.
 				//
 				// Do note adding a redraw_everything call to context_manager::refresh_all also
 				// fixes the issue, but I'm pretty sure thats just because editor_controller::

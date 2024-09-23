@@ -625,10 +625,10 @@ SDL_Rect draw::get_viewport()
 	return viewport;
 }
 
-
 draw::render_target_setter::render_target_setter(const texture& t)
 	: target_()
 	, viewport_()
+	, clip_()
 {
 	// Validate we can render to this texture.
 	assert(!t || t.get_access() == SDL_TEXTUREACCESS_TARGET);
@@ -640,6 +640,7 @@ draw::render_target_setter::render_target_setter(const texture& t)
 
 	target_ = video::get_render_target();
 	SDL_RenderGetViewport(renderer(), &viewport_);
+	SDL_RenderGetClipRect(renderer(), &clip_);
 
 	if (t) {
 		video::force_render_target(t);
@@ -656,6 +657,8 @@ draw::render_target_setter::~render_target_setter()
 	}
 	video::force_render_target(target_);
 	SDL_RenderSetViewport(renderer(), &viewport_);
+	if(clip_ == sdl::empty_rect) return;
+	SDL_RenderSetClipRect(renderer(), &clip_);
 }
 
 draw::render_target_setter draw::set_render_target(const texture& t)

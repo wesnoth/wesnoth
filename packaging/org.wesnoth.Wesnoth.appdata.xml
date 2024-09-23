@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2017 The Battle for Wesnoth Project -->
 <component type="desktop">
-  <id>org.wesnoth.Wesnoth.desktop</id>
+  <id>org.wesnoth.Wesnoth</id>
+  <replaces>
+    <id>org.wesnoth.Wesnoth.desktop</id>
+  </replaces>
   <launchable type="desktop-id">org.wesnoth.Wesnoth.desktop</launchable>
   <metadata_license>GFDL-1.3</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
@@ -105,6 +108,7 @@
   <provides>
     <binary>wesnoth</binary>
     <binary>wesnothd</binary>
+    <id>org.wesnoth.Wesnoth.desktop</id>
   </provides>
   <translation type="gettext">wesnoth</translation>
   <translation type="gettext">wesnoth-lib</translation>

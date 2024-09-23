@@ -53,7 +53,4 @@ bool load_font_config();
 /** Returns the currently defined fonts. */
 const t_string& get_font_families(family_class fclass = FONT_SANS_SERIF);
 
-/** Test if a font file exists */
-bool check_font_file(std::string name);
-
 } // end namespace font

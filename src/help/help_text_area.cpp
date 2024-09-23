@@ -18,12 +18,13 @@
 #include "config.hpp"                   // for config, etc
 #include "draw.hpp"                     // for blit, fill
 #include "font/sdl_ttf_compat.hpp"
+#include "font/standard_colors.hpp"     // for string_to_color
 #include "game_config.hpp"              // for debug
 #include "help/help_impl.hpp"           // for parse_error, box_width, etc
 #include "lexical_cast.hpp"
 #include "log.hpp"                      // for LOG_STREAM, log_domain, etc
 #include "picture.hpp"                  // for get_image
-#include "preferences/general.hpp"      // for font_scaled
+#include "preferences/preferences.hpp"      // for font_scaled
 #include "sdl/rect.hpp"                 // for draw_rectangle, etc
 #include "sdl/texture.hpp"              // for texture
 #include "serialization/parser.hpp"     // for read, write
@@ -294,7 +295,7 @@ void help_text_area::handle_format_cfg(const config &cfg)
 	bool bold = cfg["bold"].to_bool();
 	bool italic = cfg["italic"].to_bool();
 	int font_size = cfg["font_size"].to_int(normal_font_size);
-	color_t color = help::string_to_color(cfg["color"]);
+	color_t color = font::string_to_color(cfg["color"]);
 	add_text_item(text, "", false, font_size, bold, italic, color);
 }
 
@@ -305,7 +306,7 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 {
 	const int font_size = _font_size < 0 ? normal_font_size : _font_size;
 	// font::line_width(), font::get_rendered_text() are not use scaled font inside
-	const int scaled_font_size = preferences::font_scaled(font_size);
+	const int scaled_font_size = prefs::get().font_scaled(font_size);
 	if (text.empty())
 		return;
 	const int remaining_width = get_remaining_width();

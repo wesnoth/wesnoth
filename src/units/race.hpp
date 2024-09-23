@@ -16,6 +16,7 @@
 #pragma once
 
 #include "config.hpp"
+#include "global.hpp"
 #include "utils/name_generator.hpp"
 
 #include <array>
@@ -94,9 +95,10 @@ const std::string& gender_string(unit_race::GENDER gender);
 
 /**
  * Chooses a value from the given config based on gender. If the value for
- * the specified gender is blank, then @a default_key is chosen instead.
+ * the specified gender is blank, then @a default_key is used to look up a
+ * value instead.
  */
-const config::attribute_value & gender_value(
+NOT_DANGLING const config::attribute_value & gender_value(
     const config & cfg, unit_race::GENDER gender, const std::string & male_key,
     const std::string & female_key, const std::string & default_key);
 

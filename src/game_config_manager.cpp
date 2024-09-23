@@ -31,8 +31,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "picture.hpp"
-#include "preferences/advanced.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "serialization/schema_validator.hpp"
 #include "sound.hpp"
@@ -76,15 +75,15 @@ game_config_manager::game_config_manager(const commandline_options& cmdline_opts
 	}
 
 	// Clean the cache of any old Wesnoth version's cache data
-	if(const std::string last_cleaned = preferences::get("_last_cache_cleaned_ver"); !last_cleaned.empty()) {
+	if(const std::string last_cleaned = prefs::get()._last_cache_cleaned_ver(); !last_cleaned.empty()) {
 		if(version_info{last_cleaned} < game_config::wesnoth_version) {
 			if(cache_.clean_cache()) {
-				preferences::set("_last_cache_cleaned_ver", game_config::wesnoth_version.str());
+				prefs::get().set__last_cache_cleaned_ver(game_config::wesnoth_version.str());
 			}
 		}
 	} else {
 		// If the preference wasn't set, set it, else the cleaning will never happen :P
-		preferences::set("_last_cache_cleaned_ver", game_config::wesnoth_version.str());
+		prefs::get().set__last_cache_cleaned_ver(game_config::wesnoth_version.str());
 	}
 }
 
@@ -122,11 +121,10 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 
 		// Load the standard hotkeys, then apply any player customizations.
 		hotkey::load_default_hotkeys(game_config());
-		preferences::load_hotkeys();
+		prefs::get().load_hotkeys();
 	});
 
-	// TODO: consider making this part of preferences::manager in some fashion
-	preferences::init_advanced_manager(game_config());
+	prefs::get().load_advanced_prefs(game_config());
 
 	::init_textdomains(game_config());
 	about::set_about(game_config());
@@ -261,7 +259,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 				}
 
 				const std::string& path = core["path"];
-				if(!filesystem::file_exists(filesystem::get_wml_location(path))) {
+				if(!filesystem::get_wml_location(path)) {
 					events::call_in_main_thread([&]() {
 						gui2::dialogs::wml_error::display(
 							_("Error validating data core."),
@@ -276,7 +274,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 				if(id == "default" && !current_core_valid) {
 					wml_tree_root = path;
 				}
-				if(id == preferences::core_id()) {
+				if(id == prefs::get().core()) {
 					current_core_valid = true;
 					wml_tree_root = path;
 				}
@@ -288,11 +286,11 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 				events::call_in_main_thread([&]() {
 					gui2::dialogs::wml_error::display(
 						_("Error loading core data."),
-						_("Core ID: ") + preferences::core_id()
+						_("Core ID: ") + prefs::get().core()
 						+ '\n' + _("Error loading the core with named id.")
 						+ '\n' + _("Falling back to the default core."));
 				});
-				preferences::set_core_id("default");
+				prefs::get().set_core("default");
 			}
 
 			// check if we have a valid default core which should always be the case.
@@ -309,11 +307,11 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 			// Load the selected core
 			std::unique_ptr<schema_validation::schema_validator> validator;
 			if(cmdline_opts_.validate_core) {
-				validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/game_config.cfg")));
+				validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/game_config.cfg").value()));
 				validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 			}
 
-			cache_.get_config(filesystem::get_wml_location(wml_tree_root), game_config_, validator.get());
+			cache_.get_config(filesystem::get_wml_location(wml_tree_root).value(), game_config_, validator.get());
 			game_config_.append(valid_cores);
 
 			main_transaction.lock();
@@ -366,13 +364,13 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 					e.message);
 			});
 			load_game_config(reload_everything, classification, scenario_id);
-		} else if(preferences::core_id() != "default") {
+		} else if(prefs::get().core() != "default") {
 			events::call_in_main_thread([&]() {
 				gui2::dialogs::wml_error::display(
 					_("Error loading custom game configuration files. The game will fallback to the default core files."),
 					e.message);
 			});
-			preferences::set_core_id("default");
+			prefs::get().set_core("default");
 			game_config::no_addons = false;
 			load_game_config(reload_everything, classification, scenario_id);
 		} else {
@@ -407,7 +405,7 @@ static void show_deprecated_warnings(config& umc_cfg)
 					symbols);
 				deprecated_message("[advancefrom]", DEP_LEVEL::REMOVED, {1, 15, 4}, message);
 			}
-			unit_type.remove_children("advancefrom", [](const config&){return true;});
+			unit_type.remove_children("advancefrom");
 		}
 	}
 
@@ -460,19 +458,18 @@ void game_config_manager::load_addons_cfg()
 
 	// Warn player about addons using the no-longer-supported single-file format.
 	for(const std::string& file : user_files) {
-		const int size_minus_extension = file.size() - 4;
 
-		if(file.substr(size_minus_extension, file.size()) == ".cfg") {
+		if(filesystem::is_cfg(file)) {
 			ERR_CONFIG << "error reading usermade add-on '" << file << "'";
 
 			error_addons.push_back(file);
 
-			const int userdata_loc = file.find("data/add-ons") + 5;
+			const std::string short_wml_path = filesystem::get_short_wml_path(file);
 			const std::string log_msg = formatter()
-				<< "The format '~"
-				<< file.substr(userdata_loc)
-				<< "' (for single-file add-ons) is not supported anymore, use '~"
-				<< file.substr(userdata_loc, size_minus_extension - userdata_loc)
+				<< "The format '"
+				<< short_wml_path
+				<< "' (for single-file add-ons) is not supported anymore, use '"
+				<< short_wml_path.substr(0, short_wml_path.size() - filesystem::wml_extension.size())
 				<< "/_main.cfg' instead.";
 
 			error_log.push_back(log_msg);
@@ -537,7 +534,7 @@ void game_config_manager::load_addons_cfg()
 
 		// Skip add-ons not matching our current core. Cores themselves should be selectable
 		// at all times, so they aren't considered here.
-		if(!metadata.empty() && metadata["type"] != "core" && using_core != preferences::core_id()) {
+		if(!metadata.empty() && metadata["type"] != "core" && using_core != prefs::get().core()) {
 			continue;
 		}
 
@@ -551,7 +548,7 @@ void game_config_manager::load_addons_cfg()
 		try {
 			std::unique_ptr<schema_validation::schema_validator> validator;
 			if(cmdline_opts_.validate_addon && *cmdline_opts_.validate_addon == addon_id) {
-				validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/game_config.cfg")));
+				validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/game_config.cfg").value()));
 				validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 			}
 

@@ -398,7 +398,7 @@ void move::draw_hex(const map_location& hex)
 	{
 		std::stringstream turn_text;
 		turn_text << turn_number_;
-		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_MOVE_INFO, turn_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
+		display::get_singleton()->draw_text_in_hex(hex, drawing_layer::move_info, turn_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
 	}
 }
 
@@ -478,7 +478,7 @@ action::error move::check_validity() const
 	}
 
 	//If the path has at least two hexes (it can have less with the attack subclass), ensure destination hex is free
-	if(get_route().steps.size() >= 2 && resources::gameboard->get_visible_unit(get_dest_hex(),resources::gameboard->teams().at(viewer_team())) != nullptr) {
+	if(get_route().steps.size() >= 2 && resources::gameboard->get_visible_unit(get_dest_hex(), display::get_singleton()->viewing_team()) != nullptr) {
 		return LOCATION_OCCUPIED;
 	}
 
@@ -545,7 +545,7 @@ int move::calculate_moves_left(unit& u)
 
 		// @todo: find a better treatment of movement points when defining moves out-of-turn
 		if(u.movement_left() - route_->move_cost < 0
-				&& resources::controller->current_side() == display::get_singleton()->viewing_side()) {
+				&& resources::controller->current_side() == display::get_singleton()->viewing_team().side()) {
 			WRN_WB << shared_from_this() << " defined with insufficient movement left.";
 		}
 

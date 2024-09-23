@@ -99,7 +99,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_MAP_SCREENSHOT, "mapscreenshot", N_("Map Screenshot"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_ACCELERATED, "accelerated", N_("Toggle Accelerated Speed"), false, scope_game, HKCAT_GENERAL, "" },
 	{ HOTKEY_TERRAIN_DESCRIPTION, "describeterrain", N_("Terrain Description"), false, scope_game | scope_editor, HKCAT_MAP, "" },
-	{ HOTKEY_UNIT_DESCRIPTION, "describeunit", N_("Unit Description"), false, scope_game | scope_editor, HKCAT_UNITS, "" },
+	{ HOTKEY_UNIT_DESCRIPTION, "describeunit", N_("Unit Type Description"), false, scope_game | scope_editor, HKCAT_UNITS, "" },
 	{ HOTKEY_RENAME_UNIT, "renameunit", N_("Rename Unit"), false, scope_game | scope_editor, HKCAT_UNITS, "" },
 	{ HOTKEY_DELETE_UNIT, "editor-deleteunit", N_("Delete Unit"), false, scope_game | scope_editor, HKCAT_TOOLS, "" },
 
@@ -180,8 +180,8 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_EDITOR_PARTIAL_UNDO, "editor-partial-undo", N_("Partial Undo"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_MAP_NEW, "editor-map-new", N_("New Map"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_SCENARIO_NEW, "editor-scenario-new", N_("New Scenario"), false, scope_editor, HKCAT_SCENARIO, "" },
-	{ HOTKEY_EDITOR_MAP_LOAD, "editor-map-load", N_("Load Map"), false, scope_editor, HKCAT_MAP, "" },
-	{ HOTKEY_EDITOR_MAP_SAVE, "editor-map-save", N_("Save Map"), false, scope_editor, HKCAT_MAP, "" },
+	{ HOTKEY_EDITOR_MAP_LOAD, "editor-map-load", N_("Load Map/Scenario"), false, scope_editor, HKCAT_MAP, "" },
+	{ HOTKEY_EDITOR_MAP_SAVE, "editor-map-save", N_("Save"), false, scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_EDITOR_MAP_SAVE_AS, "editor-map-save-as", N_("Save Map As"), false, scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_EDITOR_SCENARIO_SAVE_AS, "editor-scenario-save-as", N_("Save Scenario As"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_MAP_SAVE_ALL, "editor-map-save-all", N_("Save All Maps"), false, scope_editor, HKCAT_MAP, "" },
@@ -205,7 +205,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_EDITOR_TOOL_STARTING_POSITION, "editor-tool-starting-position", N_("Starting Positions Tool"), false, scope_editor, HKCAT_TOOLS,  N_("Left mouse button displays player selection, right clears. Number keys scroll to the starting position, alt+number sets respective starting position under cursor, delete clears.") },
 	{ HOTKEY_EDITOR_TOOL_LABEL, "editor-tool-label", N_("Label Tool"), false, scope_editor, HKCAT_TOOLS, N_("Left mouse button sets or drags a label, right clears.") },
 	{ HOTKEY_EDITOR_TOOL_UNIT, "editor-tool-unit", N_("Unit Tool"), false, scope_editor, HKCAT_TOOLS, N_("Left mouse button sets a new unit or moves a unit via drag and drop, right brings up a context menu. Needs a defined side.") },
-	{ HOTKEY_EDITOR_TOOL_ITEM, "editor-tool-item", N_("Item Tool"), false, scope_editor, HKCAT_TOOLS, N_("Left mouse button sets a new item.") },
+	{ HOTKEY_EDITOR_TOOL_ITEM, "editor-tool-item", N_("Item Tool"), false, scope_editor, HKCAT_TOOLS, N_("Left mouse button sets a new item. Right click removes item.") },
 	{ HOTKEY_EDITOR_TOOL_VILLAGE, "editor-tool-village", N_("Village Tool"), false, scope_editor, HKCAT_TOOLS, N_("Left mouse button sets the village ownership to the current side, right clears. Needs a defined side.") },
 
 	{ HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT, "editor-toggle-canrecruit", N_("Can Recruit"), false, scope_editor, HKCAT_TOOLS, N_("Toggle the recruit attribute of a unit.") },
@@ -214,6 +214,8 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_EDITOR_UNIT_CHANGE_ID, "editor-change-unitid", N_("Change Unit ID"), false, scope_editor, HKCAT_TOOLS, "" },
 	{ HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL, "editor-unit-toggle-loyal", N_("Loyal"), false, scope_editor, HKCAT_TOOLS, "" },
 	{ HOTKEY_EDITOR_UNIT_FACING, "menu-unit-facing", "", true, scope_editor, HKCAT_PLACEHOLDER, "" },
+
+	{ HOTKEY_EDITOR_HELP_TEXT_SHOWN, "editor-help-text-shown", N_("Show Tool Information"), false, scope_editor, HKCAT_TOOLS, "" },
 
 	{ HOTKEY_MINIMAP_CODING_UNIT, "minimap-unit-coding", N_("Toggle Minimap Unit Coding"), false, scope_game | scope_editor, HKCAT_MAP, "" },
 	{ HOTKEY_MINIMAP_CODING_TERRAIN, "minimap-terrain-coding", N_("Toggle Minimap Terrain Coding"), false, scope_game | scope_editor, HKCAT_MAP, "" },
@@ -272,8 +274,10 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 
 	{ HOTKEY_EDITOR_PBL,             "editor-pbl",      N_("Add-on Publishing Editor"),   false, scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_EDITOR_CHANGE_ADDON_ID, "editor-addon-id", N_("Change Add-on ID"),           false, scope_editor, HKCAT_GENERAL, "" },
+	{ HOTKEY_EDITOR_SELECT_ADDON, "editor-addon-select", N_("Select active Add-on"),           false, scope_editor, HKCAT_GENERAL, "" },
+	{ HOTKEY_EDITOR_OPEN_ADDON, "editor-addon-open", N_("Open Add-on folder"),           false, scope_editor, HKCAT_GENERAL, "" },
 
-	{ HOTKEY_EDITOR_SCENARIO_EDIT, "editor-scenario-edit", N_("Edit Scenario"), false, scope_editor, HKCAT_SCENARIO, "" },
+	{ HOTKEY_EDITOR_SCENARIO_EDIT, "editor-scenario-edit", N_("Edit Scenario Settings"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_SIDE_EDIT, "editor-side-edit", N_("Edit Side"), false, scope_editor, HKCAT_SCENARIO, "" },
 	{ HOTKEY_EDITOR_SIDE_REMOVE, "editor-side-remove", N_("Remove Side"), false, scope_editor, HKCAT_SCENARIO, "" },
 
@@ -292,6 +296,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_CLEAR_MSG, "clearmessages", N_("Clear Chat"), false, scope_game, HKCAT_CHAT, "" },
 
 	{ HOTKEY_LANGUAGE, "changelanguage", N_("Change Language"), false, scope_main, HKCAT_GENERAL, "" },
+	{ HOTKEY_MP_START_GAME, "mp_startgame", N_("Start Game (MP)"), false, scope_main, HKCAT_GENERAL, "" },
 	{ TITLE_SCREEN__RELOAD_WML, "title_screen__reload_wml", N_("Refresh WML"), true , scope_editor | scope_main, HKCAT_PLACEHOLDER, "" },
 	{ TITLE_SCREEN__NEXT_TIP, "title_screen__next_tip", N_("Next Tip of the Day"), false, scope_main, HKCAT_GENERAL, "" },
 	{ TITLE_SCREEN__PREVIOUS_TIP, "title_screen__previous_tip", N_("Previous Tip of the Day"), false, scope_main, HKCAT_GENERAL, "" },

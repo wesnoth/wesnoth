@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2023 - 2024
-	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
+	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -17,6 +17,7 @@
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
+#include "serialization/unicode.hpp"
 
 namespace gui2
 {
@@ -32,7 +33,7 @@ class multiline_text : public text_box_base
 	friend struct implementation::builder_multiline_text;
 
 public:
-	explicit multiline_text(const implementation::builder_styled_widget& builder);
+	explicit multiline_text(const implementation::builder_multiline_text& builder);
 
 	/** See @ref widget::can_wrap. */
 	bool can_wrap() const override
@@ -71,12 +72,6 @@ public:
 		set_value("");
 	}
 
-	unsigned get_line_no()
-	{
-		set_line_num_from_offset();
-		return line_num_;
-	}
-
 	point get_cursor_pos()
 	{
 		return get_cursor_position(get_selection_start());
@@ -84,7 +79,8 @@ public:
 
 	int get_line_end_pos()
 	{
-		return get_cursor_position(get_line_end_offset(line_num_)).x;
+		unsigned line_num = get_line_number(get_selection_start());
+		return get_cursor_position(get_line_end_offset(line_num)).x;
 	}
 
 	point get_text_end_pos()
@@ -114,23 +110,23 @@ protected:
 	void set_cursor(const std::size_t offset, const bool select) override
 	{
 		text_box_base::set_cursor(offset, select);
-		set_line_num_from_offset();
 		// Whenever cursor moves, this tells scroll_text to update the scrollbars
 		update_layout();
 	}
 
+public:
 	/** Inherited from text_box_base. */
 	void goto_end_of_line(const bool select = false) override
 	{
-		set_line_num_from_offset();
-		set_cursor(get_line_end_offset(line_num_), select);
+		unsigned line_num = get_line_number(get_selection_start());
+		set_cursor(get_line_end_offset(line_num), select);
 	}
 
 	/** Inherited from text_box_base. */
 	void goto_start_of_line(const bool select = false) override
 	{
-		set_line_num_from_offset();
-		set_cursor(get_line_start_offset(line_num_), select);
+		unsigned line_num = get_line_number(get_selection_start());
+		set_cursor(get_line_start_offset(line_num), select);
 	}
 
 	/** Inherited from text_box_base. */
@@ -147,10 +143,19 @@ protected:
 		update_layout();
 	}
 
-	/** Inherited from text_box_base. */
-	void paste_selection(const bool mouse) override
+	/** See @ref styled_widget::get_link_aware. */
+	virtual bool get_link_aware() const override
 	{
-		text_box_base::paste_selection(mouse);
+		return link_aware_;
+	}
+
+	void set_link_aware(bool l);
+
+private:
+	/** Inherited from text_box_base. */
+	void paste_selection() override
+	{
+		text_box_base::paste_selection();
 		update_layout();
 	}
 
@@ -197,23 +202,25 @@ private:
 	/** Is the mouse in dragging mode, this affects selection in mouse move */
 	bool dragging_;
 
+	/**
+	 * Whether the text area is link aware, rendering links with special formatting
+	 * and handling click events.
+	 */
+	bool link_aware_;
+
 	/** Helper text to display (such as "Search") if the text box is empty. */
 	std::string hint_text_;
 
 	/** Image (such as a magnifying glass) that accompanies the help text. */
 	std::string hint_image_;
 
-	/** Line number of text */
-	unsigned line_num_;
-
-	/** utility function to calculate and set line_num_ from offset */
-	void set_line_num_from_offset();
-	unsigned get_line_num_from_offset(unsigned offset);
-
-	/** Utility function to calculate the offset of the end of the line
+	/**
+	 *  Utility function to calculate the offset of the end of the line
 	 */
 	unsigned get_line_end_offset(unsigned line_no);
-	/** Utility function to calculate the offset of the end of the line
+
+	/**
+	 *  Utility function to calculate the offset of the end of the line
 	 */
 	unsigned get_line_start_offset(unsigned line_no);
 
@@ -358,6 +365,7 @@ public:
 
 	bool editable;
 	bool wrap;
+	bool link_aware;
 };
 
 } // namespace implementation

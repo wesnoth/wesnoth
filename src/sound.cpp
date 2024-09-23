@@ -16,7 +16,7 @@
 #include "sound.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "random.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound_music_track.hpp"
@@ -196,7 +196,7 @@ void flush_cache()
 	music_cache.clear();
 }
 
-std::optional<unsigned int> get_current_track_index()
+utils::optional<unsigned int> get_current_track_index()
 {
 	if(current_track_index >= current_track_list.size()){
 		return {};
@@ -432,7 +432,7 @@ driver_status driver_status::query()
 
 	if(mix_ok) {
 		Mix_QuerySpec(&res.frequency, &res.format, &res.channels);
-		res.chunk_size = preferences::sound_buffer_size();
+		res.chunk_size = prefs::get().sound_buffer_size();
 	}
 
 	return res;
@@ -448,7 +448,7 @@ bool init_sound()
 	}
 
 	if(!mix_ok) {
-		if(Mix_OpenAudio(preferences::sample_rate(), MIX_DEFAULT_FORMAT, 2, preferences::sound_buffer_size()) == -1) {
+		if(Mix_OpenAudio(prefs::get().sample_rate(), MIX_DEFAULT_FORMAT, 2, prefs::get().sound_buffer_size()) == -1) {
 			mix_ok = false;
 			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError();
 			return false;
@@ -468,10 +468,10 @@ bool init_sound()
 		Mix_GroupChannels(UI_sound_channel_start, UI_sound_channel_last, SOUND_UI);
 		Mix_GroupChannels(n_reserved_channels, n_of_channels - 1, SOUND_FX);
 
-		set_sound_volume(preferences::sound_volume());
-		set_UI_volume(preferences::UI_volume());
-		set_music_volume(preferences::music_volume());
-		set_bell_volume(preferences::bell_volume());
+		set_sound_volume(prefs::get().sound_volume());
+		set_UI_volume(prefs::get().ui_volume());
+		set_music_volume(prefs::get().music_volume());
+		set_bell_volume(prefs::get().bell_volume());
 
 		Mix_ChannelFinished(channel_finished_hook);
 
@@ -523,10 +523,10 @@ void close_sound()
 
 void reset_sound()
 {
-	bool music = preferences::music_on();
-	bool sound = preferences::sound_on();
-	bool UI_sound = preferences::UI_sound_on();
-	bool bell = preferences::turn_bell();
+	bool music = prefs::get().music_on();
+	bool sound = prefs::get().sound();
+	bool UI_sound = prefs::get().ui_sound_on();
+	bool bell = prefs::get().turn_bell();
 
 	if(music || sound || bell || UI_sound) {
 		sound::close_sound();
@@ -641,12 +641,14 @@ static void play_new_music()
 	music_start_time = 0; // reset status: no start time
 	want_new_music = true;
 
-	if(!preferences::music_on() || !mix_ok || !current_track || !current_track->valid()) {
+	if(!prefs::get().music_on() || !mix_ok || !current_track || !current_track->valid()) {
 		return;
 	}
 
-	const std::string localized = filesystem::get_localized_path(current_track->file_path());
-	const std::string& filename = localized.empty() ? current_track->file_path() : localized;
+	std::string filename = current_track->file_path();
+	if(auto localized = filesystem::get_localized_path(filename)) {
+		filename = localized.value();
+	}
 
 	auto itor = music_cache.find(filename);
 	if(itor == music_cache.end()) {
@@ -778,7 +780,7 @@ void music_thinker::process(events::pump_info& info)
 		return;
 	}
 
-	if(preferences::music_on()) {
+	if(prefs::get().music_on()) {
 		if(!music_start_time && !current_track_list.empty() && !Mix_PlayingMusic()) {
 			// Pick next track, add ending time to its start time.
 			set_previous_track(current_track);
@@ -821,7 +823,7 @@ music_muter::music_muter()
 
 void music_muter::handle_window_event(const SDL_Event& event)
 {
-	if(preferences::stop_music_in_background() && preferences::music_on()) {
+	if(prefs::get().stop_music_in_background() && prefs::get().music_on()) {
 		if(event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED) {
 			Mix_ResumeMusic();
 		} else if(event.window.event == SDL_WINDOWEVENT_FOCUS_LOST) {
@@ -938,11 +940,11 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		}
 
 		temp_chunk.group = group;
-		const std::string& filename = filesystem::get_binary_file_location("sounds", file);
-		const std::string localized = filesystem::get_localized_path(filename);
+		const auto filename = filesystem::get_binary_file_location("sounds", file);
+		const auto localized = filesystem::get_localized_path(filename.value_or(""));
 
-		if(!filename.empty()) {
-			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(localized.empty() ? filename : localized);
+		if(filename) {
+			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(localized.value_or(filename.value()));
 			temp_chunk.set_data(Mix_LoadWAV_RW(rwops.release(), true)); // SDL takes ownership of rwops
 		} else {
 			ERR_AUDIO << "Could not load sound file '" << file << "'.";
@@ -950,7 +952,7 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		}
 
 		if(temp_chunk.get_data() == nullptr) {
-			ERR_AUDIO << "Could not load sound file '" << filename << "': " << Mix_GetError();
+			ERR_AUDIO << "Could not load sound file '" << filename.value() << "': " << Mix_GetError();
 			throw chunk_load_exception();
 		}
 
@@ -1032,14 +1034,14 @@ static void play_sound_internal(const std::string& files,
 
 void play_sound(const std::string& files, channel_group group, unsigned int repeats)
 {
-	if(preferences::sound_on()) {
+	if(prefs::get().sound()) {
 		play_sound_internal(files, group, repeats);
 	}
 }
 
 void play_sound_positioned(const std::string& files, int id, int repeats, unsigned int distance)
 {
-	if(preferences::sound_on()) {
+	if(prefs::get().sound()) {
 		play_sound_internal(files, SOUND_SOURCES, repeats, distance, id);
 	}
 }
@@ -1047,7 +1049,7 @@ void play_sound_positioned(const std::string& files, int id, int repeats, unsign
 // Play bell with separate volume setting
 void play_bell(const std::string& files)
 {
-	if(preferences::turn_bell()) {
+	if(prefs::get().turn_bell()) {
 		play_sound_internal(files, SOUND_BELL);
 	}
 }
@@ -1055,7 +1057,7 @@ void play_bell(const std::string& files)
 // Play timer with separate volume setting
 void play_timer(const std::string& files, int loop_ticks, int fadein_ticks)
 {
-	if(preferences::sound_on()) {
+	if(prefs::get().sound()) {
 		play_sound_internal(files, SOUND_TIMER, 0, 0, -1, loop_ticks, fadein_ticks);
 	}
 }
@@ -1063,7 +1065,7 @@ void play_timer(const std::string& files, int loop_ticks, int fadein_ticks)
 // Play UI sounds on separate volume than soundfx
 void play_UI_sound(const std::string& files)
 {
-	if(preferences::UI_sound_on()) {
+	if(prefs::get().ui_sound_on()) {
 		play_sound_internal(files, SOUND_UI);
 	}
 }

@@ -47,7 +47,7 @@ std::stack<std::set<int>> label_contexts;
 
 namespace font
 {
-floating_label::floating_label(const std::string& text, const surface& surf)
+floating_label::floating_label(const std::string& text)
 	: tex_()
 	, screen_loc_()
 	, alpha_(0)
@@ -71,9 +71,6 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 	, scroll_(ANCHOR_LABEL_SCREEN)
 	, use_markup_(true)
 {
-	if (surf.get()) {
-		tex_ = texture(surf);
-	}
 }
 
 void floating_label::move(double xmove, double ymove)
@@ -104,6 +101,11 @@ rect floating_label::get_bg_rect(const rect& text_rect) const
 	};
 }
 
+void floating_label::clear_texture()
+{
+	tex_.reset();
+}
+
 bool floating_label::create_texture()
 {
 	if(video::headless()) {
@@ -120,7 +122,7 @@ bool floating_label::create_texture()
 		return false;
 	}
 
-	DBG_FT << "creating floating label texture";
+	DBG_FT << "creating floating label texture, text: " << text_.substr(0,15);
 	font::pango_text& text = font::get_text_renderer();
 
 	text.set_link_aware(false)
@@ -327,6 +329,13 @@ SDL_Rect get_floating_label_rect(int handle)
 
 floating_label_context::floating_label_context()
 {
+	// hacky but the whole floating label system needs to be redesigned...
+	for(auto& [id, label] : labels) {
+		if(label_contexts.top().count(id) > 0) {
+			label.undraw();
+		}
+	}
+
 	//TODO: 'pause' floating labels in other contexrs
 	label_contexts.emplace();
 }

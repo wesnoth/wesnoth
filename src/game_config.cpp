@@ -23,6 +23,7 @@
 #include "serialization/string_utils.hpp"
 
 #include <cmath>
+#include <random>
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -137,8 +138,8 @@ std::string flag_rgb, unit_rgb;
 std::vector<color_t> red_green_scale;
 std::vector<color_t> red_green_scale_text;
 
-static std::vector<color_t> blue_white_scale;
-static std::vector<color_t> blue_white_scale_text;
+std::vector<color_t> blue_white_scale;
+std::vector<color_t> blue_white_scale_text;
 
 std::map<std::string, color_range, std::less<>> team_rgb_range;
 // Map [color_range]id to [color_range]name, or "" if no name
@@ -313,8 +314,19 @@ void load_config(const config &v)
 	if(auto i = v.optional_child("images")){
 		using namespace game_config::images;
 
+		if (!i["game_title_background"].blank()) {
+			// Select a background at random
+			const auto backgrounds = utils::split(i["game_title_background"].str());
+			if (backgrounds.size() > 1) {
+				int r = rand() % (backgrounds.size());
+				game_title_background = backgrounds.at(r);
+			} else if (backgrounds.size() == 1) {
+				game_title_background = backgrounds.at(0);
+			}
+		}
+
+		// Allow game_title to be empty
 		game_title            = i["game_title"].str();
-		game_title_background = i["game_title_background"].str();
 		game_logo             = i["game_logo"].str();
 		game_logo_background  = i["game_logo_background"].str();
 
@@ -465,11 +477,8 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 
 		LOG_NG << "registered color range '" << id << "': " << team_rgb_range[id].debug();
 
-		// Ggenerate palette of same name;
-		std::vector<color_t> tp = palette(team_rgb_range[id]);
-		if(!tp.empty()) {
-			team_rgb_colors.emplace(id, tp);
-		}
+		// Generate palette of same name;
+		team_rgb_colors.emplace(id, palette(team_rgb_range[id]));
 
 		if(build_defaults && teamC["default"].to_bool()) {
 			default_colors.push_back(*a1);
@@ -477,18 +486,18 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 	}
 
 	for(const config &cp : v.child_range("color_palette")) {
-		for(const config::attribute& rgb : cp.attribute_range()) {
+		for(const auto& [key, value] : cp.attribute_range()) {
 			std::vector<color_t> temp;
-			for(const auto& s : utils::split(rgb.second)) {
+			for(const auto& s : utils::split(value)) {
 				try {
 					temp.push_back(color_t::from_hex_string(s));
-				} catch(const std::invalid_argument&) {
-					ERR_NG << "Invalid color in palette: " << s;
+				} catch(const std::invalid_argument& e) {
+					ERR_NG << "Invalid color in palette: " << s << " (" << e.what() << ")";
 				}
 			}
 
-			team_rgb_colors.emplace(rgb.first, temp);
-			LOG_NG << "registered color palette: " << rgb.first;
+			team_rgb_colors.emplace(key, temp);
+			LOG_NG << "registered color palette: " << key;
 		}
 	}
 }
@@ -532,9 +541,9 @@ const std::vector<color_t>& tc_info(std::string_view name)
 	for(const auto& s : utils::split(name)) {
 		try {
 			temp.push_back(color_t::from_hex_string(s));
-		} catch(const std::invalid_argument&) {
+		} catch(const std::invalid_argument& e) {
 			static std::vector<color_t> stv;
-			ERR_NG << "Invalid color in palette: " << s;
+			ERR_NG << "Invalid color in palette: " << s << " (" << e.what() << ")";
 			return stv;
 		}
 	}

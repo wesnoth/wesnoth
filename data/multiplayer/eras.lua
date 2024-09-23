@@ -5,7 +5,7 @@ local res = {}
 res.quick_4mp_leaders = function(args)
 	local make_4mp_leaders_quick = wml.variables["make_4mp_leaders_quick"]
 	if make_4mp_leaders_quick == nil then
-		make_4mp_leaders_quick = wesnoth.scenario.mp_settings and (wesnoth.scenario.mp_settings.mp_campaign == "")
+		make_4mp_leaders_quick = wesnoth.scenario.mp_settings and (wesnoth.scenario.campaign == "")
 	end
 	if not make_4mp_leaders_quick then
 		return
@@ -24,7 +24,7 @@ end
 function res.turns_over_advantage()
 	local show_turns_over_advantage = wml.variables["show_turns_over_advantage"]
 	if show_turns_over_advantage == nil then
-		show_turns_over_advantage = wesnoth.scenario.mp_settings and (wesnoth.scenario.mp_settings.mp_campaign == "")
+		show_turns_over_advantage = wesnoth.scenario.campaign == ""
 	end
 	if not show_turns_over_advantage then
 		return

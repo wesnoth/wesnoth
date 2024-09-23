@@ -21,11 +21,11 @@
 #include "units/ptr.hpp"
 #include "units/attack_type.hpp"
 #include "units/race.hpp"
+#include "utils/optional_fwd.hpp"
 #include "utils/variant.hpp"
 
-
 #include <bitset>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 class team;
 class unit_animation_component;
@@ -890,6 +890,12 @@ public:
 	static state_t get_known_boolean_state_id(const std::string& state);
 
 	/**
+	 * Convert a built-in status effect ID to a string status effect ID
+	 * @returns the string representing the status, or an empty string for STATE_UNKNOWN
+	 */
+	static std::string get_known_boolean_state_name(state_t state);
+
+	/**
 	 * Check if the unit has been poisoned
 	 * @returns true if it's poisoned
 	 */
@@ -1281,6 +1287,8 @@ public:
 
 	/** Gets whether this unit is loyal - ie, it costs no upkeep. */
 	bool loyal() const;
+
+	void set_loyal(bool loyal);
 
 	/** Gets whether this unit is fearless - ie, unaffected by time of day. */
 	bool is_fearless() const
@@ -1860,10 +1868,48 @@ public:
 	 */
 	bool ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
 
+	/**
+	 * Helper similar to std::unique_lock for detecting when calculations such as abilities
+	 * have entered infinite recursion.
+	 *
+	 * This assumes that there's only a single thread accessing the unit, it's a lightweight
+	 * increment/decrement counter rather than a mutex.
+	 */
+	class recursion_guard {
+		friend class unit;
+		/**
+		 * Only expected to be called in update_variables_recursion(), which handles some of the checks.
+		 */
+		explicit recursion_guard(const unit& u);
+	public:
+		/**
+		 * Construct an empty instance, only useful for extending the lifetime of a
+		 * recursion_guard returned from unit.update_variables_recursion() by
+		 * std::moving it to an instance declared in a larger scope.
+		 */
+		explicit recursion_guard();
+
+		/**
+		 * Returns true if a level of recursion was available at the time when update_variables_recursion()
+		 * created this object.
+		 */
+		operator bool() const;
+
+		recursion_guard(recursion_guard&& other);
+		recursion_guard(const recursion_guard& other) = delete;
+		recursion_guard& operator=(recursion_guard&&);
+		recursion_guard& operator=(const recursion_guard&) = delete;
+		~recursion_guard();
+	private:
+		std::shared_ptr<const unit> parent;
+	};
+
+	recursion_guard update_variables_recursion() const;
+
 
 private:
 
-	const std::set<std::string> checking_tags_{"attacks", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison", "damage_type"};
+	const std::set<std::string> checking_tags_{"disable", "attacks", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison", "damage_type"};
 	/**
 	 * Check if an ability is active.
 	 * @param ability The type (tag name) of the ability
@@ -2010,6 +2056,8 @@ private:
 
 	std::string role_;
 	attack_list attacks_;
+	/** Number of instances of recursion_guard that are currently allocated permission to recurse */
+	mutable unsigned int num_recursion_ = 0;
 
 protected:
 	// TODO: I think we actually consider this to be part of the gamestate, so it might be better if it's not mutable,
@@ -2044,9 +2092,9 @@ private:
 	t_string description_;
 	std::vector<t_string> special_notes_;
 
-	std::optional<std::string> usage_;
-	std::optional<std::string> halo_;
-	std::optional<std::string> ellipse_;
+	utils::optional<std::string> usage_;
+	utils::optional<std::string> halo_;
+	utils::optional<std::string> ellipse_;
 
 	bool random_traits_;
 	bool generate_name_;

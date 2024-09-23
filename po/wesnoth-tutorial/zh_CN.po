@@ -10,18 +10,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.16\n"
+"Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
-"PO-Revision-Date: 2023-09-10 09:11+0800\n"
-"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
+"POT-Creation-Date: 2024-07-22 03:32 UTC\n"
+"PO-Revision-Date: 2024-05-21 18:27+0800\n"
+"Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
@@ -51,14 +51,12 @@ msgstr "初学者"
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:7
 msgid "Completed the Tutorial"
-msgstr ""
+msgstr "完成教程"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:8
-#, fuzzy
-#| msgid "Battle Training"
 msgid "Complete the Battle Training."
-msgstr "战斗训练"
+msgstr "完成战斗训练。"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:19
@@ -228,8 +226,8 @@ msgid ""
 msgstr ""
 "当你的鼠标在单位上方悬停或选中单位（此处为莉莎）时，她可以移动到的位置会高亮"
 "显示。所有单位都拥有一定的<b>移动力</b>，移动力决定了该单位每个回合可以移动的"
-"格数。通常来说，在平坦地形上移动一格消耗一点移动力。只需先点击科纳德再点击目"
-"的地即可移动。（如果你移动到了错误的位置，可以按<b>u</b>撤销移动。）"
+"格数。通常来说，在平坦地形上移动一格消耗一点移动力。只需先点击莉莎再点击目的"
+"地即可移动。（如果你移动到了错误的位置，可以按<b>u</b>撤销移动。）"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:375
@@ -354,7 +352,7 @@ msgstr "我应该撤退吗？"
 #. [message]: speaker=Delfador
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:538
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1072
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1078
 msgid "Good idea!"
 msgstr "好主意！"
 
@@ -1494,13 +1492,13 @@ msgstr ""
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:610
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:992
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:998
 msgid "Long-distance Movement"
 msgstr "长距离移动"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:611
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:993
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:999
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
@@ -1627,7 +1625,7 @@ msgstr ""
 "置，哪怕你人手不足也是如此。"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:763
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:769
 msgid ""
 "I hope I will survive the counter-attack if my units can’t take this grunt "
 "out this turn. I should order them to grab more villages if they can and "
@@ -1637,14 +1635,14 @@ msgstr ""
 "应该命令他们占领更多村庄，并让大伙儿靠得近一些。"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:768
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:774
 msgid ""
 "If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
 "at the beginning of the next turn."
 msgstr "如果你的一名萨满紧贴在你身后，她就会在下回合开始时为你回复4点生命值。"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:774
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:780
 msgid ""
 "I hope my units will survive the counter-attack if I can’t take this grunt "
 "out this turn. I’d better grab more villages if I can and move everyone "
@@ -1654,7 +1652,7 @@ msgstr ""
 "最好去占领更多村庄，并让大伙儿靠得近一些。"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:779
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:785
 msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
 "each of them 4 hitpoints at the beginning of the next turn."
@@ -1663,7 +1661,7 @@ msgstr ""
 "复4点生命值。"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:815
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:821
 msgid ""
 "One fewer orc to deal with, and our way across the bridge is clear! I also "
 "gained experience from striking the killing blow!"
@@ -1672,7 +1670,7 @@ msgstr ""
 "了经验！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:816
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:822
 msgid ""
 "female^One fewer orc to deal with, and our way across the bridge is clear! I "
 "also gained experience from striking the killing blow!"
@@ -1681,7 +1679,7 @@ msgstr ""
 "了经验！"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:837
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:843
 msgid ""
 "Be careful! If you stand on the bridge you are exposed to attack from "
 "multiple directions! Even though the orcs have low defense in water, they "
@@ -1691,7 +1689,7 @@ msgstr ""
 "不佳，但他们会靠数量淹没你。"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:853
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:859
 msgid ""
 "Well done! The island village is ours. You can use the trees to set up a "
 "blockade against the orcs; they can only come across the bridge one by one "
@@ -1702,7 +1700,7 @@ msgstr ""
 "那只能挨个过桥，而你则会处于能够良好防御的地形之上，十分安全。"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:865
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:871
 msgid ""
 "Don’t forget about that last village near the channel. The orcs will capture "
 "it if they try to sneak around via the ford! It will be hard to dislodge "
@@ -1712,7 +1710,7 @@ msgstr ""
 "庄。如果他们成功了，要驱逐他们就很困难了。"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:882
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:888
 msgid ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
 "unit will have an 80% chance of being hit. Get back, and wait for them to "
@@ -1722,7 +1720,7 @@ msgstr ""
 "你！"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:908
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:914
 msgid ""
 "You’re venturing away from your keep. You might need to recruit more units, "
 "and I doubt the orc leader will let you use his! Careful!"
@@ -1731,14 +1729,16 @@ msgstr ""
 "用他的主楼的！小心！"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:917
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:923
 msgid ""
 "When moving a unit, the percentages shown are the unit’s defense on that "
 "hex. The higher the number, the less likely they are to get hit."
 msgstr ""
+"当移动一个单位的时候，显示的百分数是这个单位在那个六角格的防御率。这个数值越"
+"大，他们被击中的概率越小。"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:932
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:938
 msgid ""
 "We need to occupy that village, otherwise they will take it soon! Move a "
 "unit into the village to stop the orcs capturing it. Whichever unit you "
@@ -1748,7 +1748,7 @@ msgstr ""
 "止兽人对它的占领。不论你选择哪个单位，他也都会得到村庄的治疗。"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:938
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:944
 msgid ""
 "Careful! It is now nighttime. Orcs are <i>chaotic</i>, which means their "
 "attacks are now 25% stronger. By day, their attacks are 25% weaker, which is "
@@ -1761,12 +1761,12 @@ msgstr ""
 "间变得强大，而在夜间变得弱小。精灵则是<b>中立</b>的：不受时段的影响。"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:941
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:947
 msgid "Time of Day"
 msgstr "时段"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:942
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:948
 msgid ""
 "During a scenario, the time of day will shift as turns pass. There are four "
 "<i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or Liminal. Each "
@@ -1781,8 +1781,8 @@ msgstr ""
 
 #. [then]
 #. [else]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:964
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:971
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:970
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:977
 msgid ""
 "Remember to retreat your wounded units to villages. Shamans can only heal 4 "
 "hitpoints per turn, while villages can heal them faster at 8 per turn.\n"
@@ -1807,12 +1807,12 @@ msgstr ""
 "命值回复。"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1001
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1007
 msgid "Tracking Unused Units"
 msgstr "跟踪未用单位"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1002
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1008
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1825,12 +1825,12 @@ msgstr ""
 "它。当<b>n</b>无法选中新单位时，就可以放心地结束你的回合了。"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1010
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1016
 msgid "Status Table"
 msgstr "状态表"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1011
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1017
 msgid ""
 "The Status Table details the sides’ current status and starting conditions. "
 "Fog and shroud will affect what you can see in this table, and occasionally "
@@ -1842,12 +1842,12 @@ msgstr ""
 "的。你可以在<b>菜单</b>菜单中访问它。"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1019
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1025
 msgid "Speeding Up Animations"
 msgstr "加速动画"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1020
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1026
 msgid ""
 "Holding down <b>shift</b> will make the animations for moving and fighting "
 "quicker. The <b>acceleration factor</b> can be set, and turned on by "
@@ -1857,12 +1857,12 @@ msgstr ""
 "面中，可以设置<b>加速因子</b>，且加速功能是默认启用的。"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1028
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1034
 msgid "Victory Conditions"
 msgstr "胜利条件"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1029
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1035
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
 "conditions for a scenario are given under <b>Objectives</b> in the <b>Menu</"
@@ -1872,27 +1872,27 @@ msgstr ""
 "<b>目标</b>里给出。"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1038
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1044
 msgid "Hurry up and defeat the orcs before they become entrenched!"
 msgstr "赶快，在兽人稳住脚跟之前击败他们！"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1066
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1072
 msgid "I have enough gold to recruit more units!"
 msgstr "我有足够的金币来征募更多单位！"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1067
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1073
 msgid "female^I have enough gold to recruit more units!"
 msgstr "我有足够的金币来征募更多单位！"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1076
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1082
 msgid "Recruit the Right Units"
 msgstr "征募正确单位"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1077
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1083
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
@@ -1901,21 +1901,21 @@ msgstr ""
 "别有效。"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1116
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1122
 msgid ""
 "Beware of those orcs crossing the river! If they get into the forest they’ll "
 "be hard to dislodge!"
 msgstr "注意那些正在渡河的兽人！如果让他们进入森林，那就很难驱逐他们了！"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1156
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1162
 msgid ""
 "That unit is about one kill (8 experience points) away from gaining a level! "
 "Do not let it die!"
 msgstr "那个单位再击杀一个敌人（8点经验值）就可以升级了！别让它死掉！"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1178
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1184
 msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
@@ -1924,7 +1924,7 @@ msgstr ""
 "疗，而且会提供很好的防御。"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1189
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1195
 msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
 "each turn and provides good defense."
@@ -1934,7 +1934,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1202
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1208
 msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
@@ -1943,7 +1943,7 @@ msgstr ""
 "个后备计划！"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1218
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1224
 msgid ""
 "You are close to killing their leader! Because he is second level, the unit "
 "who finishes him will gain 16 experience points. In a campaign, it’s "
@@ -1955,12 +1955,12 @@ msgstr ""
 "的。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1222
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1228
 msgid "You have almost finished the tutorial"
 msgstr "你几乎完成了教程"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1224
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1230
 msgid ""
 "In a campaign you may have ten or even twenty scenarios to build your army, "
 "but this tutorial will conclude after you defeat Thrag."
@@ -1969,7 +1969,7 @@ msgstr ""
 "击败斯拉戈后就会结束。"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1250
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1256
 msgid ""
 "We will miss $unit.name| because he had $unit.experience experience points. "
 "He would have advanced a level soon."
@@ -1978,7 +1978,7 @@ msgstr ""
 "级了。"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1256
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1262
 msgid ""
 "We will miss $unit.name| because she had $unit.experience experience points. "
 "She would have advanced a level soon."
@@ -1987,34 +1987,34 @@ msgstr ""
 "级了。"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1285
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1291
 msgid ""
 "We will miss $unit.name|, but at least he was not one of our experienced "
 "troops!"
 msgstr "我们会怀念$unit.name|的，不过至少他不是我们的老兵里的一员！"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1291
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1297
 msgid ""
 "We will miss $unit.name|, but at least she was not one of our experienced "
 "troops!"
 msgstr "我们会怀念$unit.name|的，不过至少她不是我们的老兵里的一员！"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1308
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1314
 msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
 msgstr "高级单位是很强大，但并不是无敌的。我们会想念你的，$unit.name|。"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1322
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1328
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
 msgstr "失去一位医者是对整支军队的打击！保证她们处在敌人的攻击范围之外！"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1336
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1342
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
@@ -2024,7 +2024,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1350
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1356
 msgid ""
 "Advancing a level has fully healed me! I am able to heal units 8 hitpoints "
 "per turn, instead of just 4, and may also cure them of poison if they cannot "
@@ -2038,7 +2038,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1364
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1370
 msgid ""
 "Advancing a level has fully healed me! I cannot heal adjacent units anymore, "
 "but to compensate, I have a new, powerful faerie fire attack that deals 7 "
@@ -2050,7 +2050,7 @@ msgstr ""
 "它总是具有70%的命中率。"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1378
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1384
 msgid ""
 "Advancing a level has fully healed me! When attacking, I always have at "
 "least a 60% chance of hitting with my longbow thanks to my <i>Marksman</i> "
@@ -2061,7 +2061,7 @@ msgstr ""
 "对手，并且我可以攻击4次，每次造成9点伤害。让我来驱逐那些难以命中的家伙。"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1379
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1385
 msgid ""
 "female^Advancing a level has fully healed me! When attacking, I always have "
 "at least a 60% chance of hitting with my longbow thanks to my <i>Marksman</"
@@ -2072,7 +2072,7 @@ msgstr ""
 "对手，并且我可以攻击4次，每次造成9点伤害。让我来驱逐那些难以命中的家伙。"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1392
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1398
 msgid ""
 "Advancing a level has fully healed me! I am good with both bow and sword, "
 "and I have a special ability: <i>Ambush</i>. I can hide in forests where "
@@ -2082,7 +2082,7 @@ msgstr ""
 "我可以隐藏在森林中，敌人无法看见我，除非他们就在我旁边。"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1393
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1399
 msgid ""
 "female^Advancing a level has fully healed me! I am good with both bow and "
 "sword, and I have a special ability: <i>Ambush</i>. I can hide in forests "
@@ -2092,7 +2092,7 @@ msgstr ""
 "我可以隐藏在森林中，敌人无法看见我，除非他们就在我旁边。"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1407
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1413
 msgid ""
 "Advancing a level has fully healed me! I am good with both bow and sword, "
 "and I have a special ability: <i>Leadership</i>. I do less damage myself "
@@ -2104,7 +2104,7 @@ msgstr ""
 "级单位会多输出25%伤害，所以请谨慎地移动我的位置！"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1420
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1426
 msgid ""
 "Advancing a level has fully healed me! I am particularly good with the "
 "sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
@@ -2115,7 +2115,7 @@ msgstr ""
 "精灵队长的领导能力，但我更强大的作战能力让我的攻击能够造成更多伤害！"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1433
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1439
 msgid ""
 "Advancing a level has fully healed me! I have become better at using the "
 "sword, dealing 9 damage in 4 attacks. Although I do not have any special "
@@ -2126,7 +2126,7 @@ msgstr ""
 "没有任何特殊能力，但更强的作战能力能让我对兽人造成更多伤害以击败他们！"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1434
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1440
 msgid ""
 "female^Advancing a level has fully healed me! I have become better at using "
 "the sword, dealing 9 damage in 4 attacks. Although I do not have any special "
@@ -2137,37 +2137,42 @@ msgstr ""
 "没有任何特殊能力，但更强的作战能力能让我对兽人造成更多伤害以击败他们！"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1443
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1449
 msgid "You took too long! Now we’ll never be rid of these orcs!"
 msgstr "你浪费太多时间了！这样下去我们永远无法击败这些兽人！"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1459
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1465
 msgid "That... was foolish. Next time I should be more careful."
 msgstr "那……太傻了。下次我应该更小心一点。"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1460
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1466
 msgid "female^That... was foolish. Next time I should be more careful."
 msgstr "那……太傻了。下次我应该更小心一点。"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1478
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1484
 msgid "Agh! Who will guide you to victory now?"
 msgstr "啊！现在谁会来指引你们夺取胜利？"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1493
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1499
+#, fuzzy
+#| msgid ""
+#| "You have beaten the orcs! You may want to try one of the rookie-level "
+#| "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
+#| "i> is the easiest and is the recommended first campaign."
 msgid ""
-"You have beaten the orcs! You may want to try one of the rookie-level "
-"campaigns next, which include strategy hints. <i>A Tale of Two Brothers</i> "
-"is the easiest and is the recommended first campaign."
+"You have beaten the orcs! You may want to try one of the novice-level "
+"campaigns next. <i>A Tale of Two Brothers</i> is the easiest and is the "
+"recommended first campaign."
 msgstr ""
 "你击败了兽人！接下去你或许可以试试看几个菜鸟级别的战役之一，这些战役里有策略"
 "提示。<b>兄弟传说</b>是最简单的战役，也是推荐给新手的第一个战役。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1498
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1504
 msgid ""
 "You can also refer to the in-game help browser if you ever need to refresh "
 "your memory on gameplay mechanics."

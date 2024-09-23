@@ -30,8 +30,7 @@ static lg::log_domain log_arrows("arrows");
 #define DBG_ARR LOG_STREAM(debug, log_arrows)
 
 arrow::arrow(bool hidden)
-	: layer_(display::LAYER_ARROWS)
-	, color_("red")
+	: color_("red")
 	, style_(STYLE_STANDARD)
 	, path_()
 	, previous_path_()
@@ -136,12 +135,12 @@ bool arrow::path_contains(const map_location& hex) const
 	return contains;
 }
 
-void arrow::draw_hex(const map_location& hex)
+image::locator arrow::get_image_for_loc(const map_location& hex) const
 {
-	if(path_contains(hex)) {
-		display::get_singleton()->drawing_buffer_add(layer_, hex, [tex = image::get_texture(symbols_map_[hex])](const rect& dest) {
-			draw::blit(tex, dest);
-		});
+	if(auto iter = symbols_map_.find(hex); iter != symbols_map_.end()) {
+		return iter->second;
+	} else {
+		return {}; // TODO: optional<locator>? Practically I don't think this path gets hit
 	}
 }
 
@@ -271,7 +270,7 @@ void arrow::update_symbols()
 		assert(!image_filename.empty());
 
 		image::locator image = image::locator(image_filename, mods);
-		if (!image.file_exists())
+		if (!image::exists(image))
 		{
 			ERR_ARR << "Image " << image_filename << " not found.";
 			image = image::locator(game_config::images::missing);

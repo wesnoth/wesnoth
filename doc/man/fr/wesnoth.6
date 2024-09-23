@@ -66,14 +66,8 @@ Passe l'écran d'[histoire] et de dialogues jusqu'à la fin de l'événement
 \fBstart\fP
 .TP 
 \fB\-\-clock\fP
-Ajoute une option affichant une horloge pour tester les affichages dépendant
-du temps.
-.TP 
-\fB\-\-config\-dir\fP\fI\ nom\fP
-Obsolète, utilisez \fB\-\-userdata\-dir\fP.
-.TP 
-\fB\-\-config\-path\fP
-Obsolète, utilisez \fB\-\-userdata\-path\fP
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 Remplace le noyau chargé par celui spécifié par l'identifiant.
@@ -95,7 +89,7 @@ active certains mécanismes de débogage pour Lua.
 \fB\-\-strict\-lua\fP
 Désactive les appels obsolètes à l'interface lua.
 .TP 
-\fB\-D,\-\-diff\fP\fI\ fichier\-original\fP\fB\ \fP\fIfichier\-nouveau\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 Fait la différence entre deux fichiers WML sans résolution préalable des
 macros (pour appliquer cela, utiliser d'abord \fB\-p\fP). La sortie de la
 différence sous format DiffWML se fait vers la sortie par défaut ou vers le
@@ -137,10 +131,10 @@ sauf si combiné à l'option \fB\-d\fP.
 Affiche les horodatages avec plus de précision dans le fichier de
 journalisation.
 .TP 
-\fB\-\-log\-strict\fP
-Positionne le niveau strict pour ce journal. Tout message journalisé avec ce
-niveau ou plus sévère causera l'échec du test unitaire, quelque soit le
-résultat du jeu. Uniquement utile avec l'option \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filtre\fP\fB]\fP
 Liste les types de journaux définis (uniquement ceux contenant \fIfiltre\fP si
@@ -154,6 +148,10 @@ in the logs directory under the userdata folder.
 \fB\-\-log\-to\-file\fP
 log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
 whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 Quand \-\-no\-log\-to\-file est spécifiée sous Windows, les écritures de
@@ -220,7 +218,7 @@ d'autres préférences. Dangereux.
 exécutée comme une coroutine et réveillée périodiquement avec des mises à
 jour.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ fichier\-cible\fP\fB\ \fP\fIfichier\-patch\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 Applique une différence au format DiffWML à un fichier WML sans résolution
 préalable des macros dans les fichiers. La sortie du fichier WML modifié se
 fait vers la sortie par défaut ou vers le fichier spécifié par \fI\-\-output\fP.
@@ -308,22 +306,8 @@ charger n'importe quel package. Ne faites cela qu'avec des scripts de
 confiance ! Cette action donne aux scripts Lua les mêmes permissions que
 l'exécutable de Wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ chemin\fP
-Donne le schéma WML à utiliser dans \fB\-V,\-\-validate\fP.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ nom\fP
-Définit le répertoire de configuration de l'utilisateur à \fInom\fP dans $HOME
-ou dans "Mes Documents\eMes Jeux" pour Windows.  Vous pouvez aussi indiquer
-un chemin absolu pour un dossier de configuration situé en dehors de $HOME
-ou de "Mes Documents\eMes Jeux". Sous Windows, il est possible d'indiquer un
-répertoire relatif au répertoire de travail du processus, en utilisant un
-chemin commençant par ".\e" ou "..\e". Sous X11 le répertoire par défaut est
-$XDG_CONFIG_HOME ou $HOME/.config/wesnoth. Sur les autres systèmes le
-répertoire par défaut est le répertoire de données.
-.TP 
-\fB\-\-userconfig\-path\fP
-Affiche le nom du répertoire de configuration utilisateur et quitte le
-programme.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ nom\fP
 Définit le répertoire de données à \fInom\fP dans $HOME ou dans "Mes
@@ -349,7 +333,7 @@ Valide le code WML d'une extension durant le jeu.
 \fB\-\-validate\-core\fP
 Valide le code WML d'un noyau durant le jeu.
 .TP 
-\fB\-\-validate\-schema \ chemin\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 Valide un fichier en tant que schéma WML.
 .TP 
 \fB\-\-validcache\fP
@@ -389,8 +373,7 @@ Sélectionne le type de joueur de ce camp. Valeurs possibles\ : \fBhuman\fP,
 \fBai\fP et \fBnull\fP.
 .TP 
 \fB\-\-era\fP\fI\ valeur\fP
-Utilisez cette option pour jouer à l'ère sélectionnée au lieu de l'ère \fBPar
-défaut\fP. Cette ère est sélectionnée par un identifiant. Les ères standard
+Utilisez cette option pour jouer à l'ère sélectionnée au lieu de l'ère \fBPar défaut\fP. Cette ère est sélectionnée par un identifiant. Les ères standard
 sont décrites dans le fichier \fBdata/multiplayer.cfg\fP.
 .TP 
 \fB\-\-exit\-at\-end\fP

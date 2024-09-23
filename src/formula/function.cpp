@@ -20,10 +20,10 @@
 #include "formula/debugger.hpp"
 #include "game_config.hpp"
 #include "game_display.hpp"
-#include "global.hpp"
 #include "log.hpp"
 #include "pathutils.hpp"
 
+#include <boost/algorithm/string.hpp>
 #include <boost/math/constants/constants.hpp>
 #include <cctype>
 #include <deque>
@@ -449,6 +449,29 @@ DEFINE_WFL_FUNCTION(replace, 3, 4)
 	return variant(result.replace(offset, std::string::npos, replacement));
 }
 
+DEFINE_WFL_FUNCTION(replace_all, 3, 3)
+{
+	std::string result = args()[0]->evaluate(variables, fdb).as_string();
+	std::string needle = args()[1]->evaluate(variables, fdb).as_string();
+	std::string replacement = args().back()->evaluate(variables, fdb).as_string();
+	boost::replace_all(result, needle, replacement);
+	return variant(result);
+}
+
+DEFINE_WFL_FUNCTION(starts_with, 2, 2)
+{
+	std::string str = args()[0]->evaluate(variables, fdb).as_string();
+	std::string prefix = args()[1]->evaluate(variables, fdb).as_string();
+	return variant(boost::starts_with(str, prefix));
+}
+
+DEFINE_WFL_FUNCTION(ends_with, 2, 2)
+{
+	std::string str = args()[0]->evaluate(variables, fdb).as_string();
+	std::string prefix = args()[1]->evaluate(variables, fdb).as_string();
+	return variant(boost::ends_with(str, prefix));
+}
+
 DEFINE_WFL_FUNCTION(insert, 3, 3)
 {
 	std::string result = args()[0]->evaluate(variables, fdb).as_string();
@@ -515,7 +538,7 @@ DEFINE_WFL_FUNCTION(tan, 1, 1)
 {
 	const double angle = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
 	const double result = std::tan(angle * pi<double>() / 180.0);
-	if(std::isnan(result) || result <= INT_MIN || result >= INT_MAX) {
+	if(std::isnan(result) || result <= std::numeric_limits<int>::min() || result >= std::numeric_limits<int>::max()) {
 		return variant();
 	}
 
@@ -613,7 +636,7 @@ DEFINE_WFL_FUNCTION(exp, 1, 1)
 {
 	const double num = args()[0]->evaluate(variables, fdb).as_decimal() / 1000.0;
 	const double result = std::exp(num);
-	if(result == 0 || result >= INT_MAX) {
+	if(result == 0 || result >= std::numeric_limits<int>::max()) {
 		// These are range errors rather than NaNs,
 		// but I figure it's better than returning INT_MIN.
 		return variant();
@@ -624,8 +647,6 @@ DEFINE_WFL_FUNCTION(exp, 1, 1)
 
 DEFINE_WFL_FUNCTION(pi, 0, 0)
 {
-	UNUSED(variables);
-	UNUSED(fdb);
 	return variant(pi<double>(), variant::DECIMAL_VARIANT);
 }
 
@@ -702,6 +723,40 @@ DEFINE_WFL_FUNCTION(lerp, 3, 3)
 	const double hi = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "lerp:hi")).as_decimal() / 1000.0;;
 	const double alpha = args()[2]->evaluate(variables, add_debug_info(fdb, 2, "lerp:alpha")).as_decimal() / 1000.0;;
 	return variant(static_cast<int>((lo + alpha * (hi - lo)) * 1000.0), variant::DECIMAL_VARIANT);
+}
+
+DEFINE_WFL_FUNCTION(lerp_index, 2, 2)
+{
+	const std::vector<variant> items = args()[0]->evaluate(variables, fdb).as_list();
+	if(items.empty()) return variant();
+	const double alpha = args()[1]->evaluate(variables, fdb).as_decimal() / 1000.0;
+	// Same formula as red_to_green etc
+	const double val_scaled = std::clamp(0.01 * alpha, 0.0, 1.0);
+	const int idx = int(std::nearbyint((items.size() - 1) * val_scaled));
+	return items[idx];
+}
+
+DEFINE_WFL_FUNCTION(get_palette, 1, 1)
+{
+	const std::string name = args()[0]->evaluate(variables, fdb).as_string();
+	std::vector<color_t> colors;
+	if(name == "red_green_scale") {
+		colors = game_config::red_green_scale;
+	} else if(name == "red_green_scale_text") {
+		colors = game_config::red_green_scale_text;
+	} else if(name == "blue_white_scale") {
+		colors = game_config::blue_white_scale;
+	} else if(name == "blue_white_scale_text") {
+		colors = game_config::blue_white_scale_text;
+	} else {
+		colors = game_config::tc_info(name);
+	}
+	std::vector<variant> result;
+	result.reserve(colors.size());
+	for(auto clr : colors) {
+		result.emplace_back(std::make_shared<color_callable>(clr));
+	}
+	return variant(result);
 }
 
 DEFINE_WFL_FUNCTION(clamp, 3, 3)
@@ -1352,7 +1407,7 @@ DEFINE_WFL_FUNCTION(rotate_loc_around, 2, 3)
 		.convert_to<location_callable>()
 		->loc();
 
-	const map_location loc = args()[0]
+	const map_location loc = args()[1]
 		->evaluate(variables, add_debug_info(fdb, 1, "direction_from:location"))
 		.convert_to<location_callable>()
 		->loc();
@@ -1582,6 +1637,9 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 		DECLARE_WFL_FUNCTION(tomap);
 		DECLARE_WFL_FUNCTION(substring);
 		DECLARE_WFL_FUNCTION(replace);
+		DECLARE_WFL_FUNCTION(replace_all);
+		DECLARE_WFL_FUNCTION(starts_with);
+		DECLARE_WFL_FUNCTION(ends_with);
 		DECLARE_WFL_FUNCTION(length);
 		DECLARE_WFL_FUNCTION(concatenate);
 		DECLARE_WFL_FUNCTION(sin);
@@ -1599,7 +1657,9 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 		DECLARE_WFL_FUNCTION(hypot);
 		DECLARE_WFL_FUNCTION(type);
 		DECLARE_WFL_FUNCTION(lerp);
+		DECLARE_WFL_FUNCTION(lerp_index);
 		DECLARE_WFL_FUNCTION(clamp);
+		DECLARE_WFL_FUNCTION(get_palette);
 	}
 
 	return std::shared_ptr<function_symbol_table>(&functions_table, [](function_symbol_table*) {});

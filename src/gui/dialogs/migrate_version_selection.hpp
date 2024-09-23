@@ -33,7 +33,6 @@ private:
 	virtual const std::string& window_id() const override;
 
 	std::string old_config_dir();
-	void migrate_preferences(const std::string& prefs_dir);
 	void migrate_credentials(const std::string& credentials_dir);
 
 	std::vector<std::string> versions_;

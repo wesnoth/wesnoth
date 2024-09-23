@@ -84,11 +84,10 @@ private:
 		state_changed_ = true;
 	}
 
-	/** for Ctrl+G handling */
-	void signal_handler_sdl_key_down(const event::ui_event /*event*/,
-										 bool& handled,
-										 const SDL_Keycode key,
-										 SDL_Keymod modifier);
+	void start_game()
+	{
+		get_window()->set_retval(retval::OK);
+	}
 
 	ng::connect_engine& connect_engine_;
 

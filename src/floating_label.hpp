@@ -41,7 +41,7 @@ enum LABEL_SCROLL_MODE { ANCHOR_LABEL_SCREEN, ANCHOR_LABEL_MAP };
 class floating_label
 {
 public:
-	floating_label(const std::string& text, const surface& surface = nullptr);
+	floating_label(const std::string& text);
 
 	void set_font_size(int font_size) {font_size_ = font_size;}
 
@@ -85,6 +85,8 @@ public:
 	 * @returns true if the texture exists, false in the case of failure.
 	 */
 	bool create_texture();
+
+	void clear_texture();
 
 	/** Return the size of the label in drawing coordinates */
 	SDL_Point get_draw_size() const

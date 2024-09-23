@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:06 UTC\n"
+"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
 "PO-Revision-Date: 2024-04-03 22:04+0200\n"
 "Last-Translator: Michal Fusatý <michal.fusaty@gmail.com>\n"
 "Language-Team: none\n"
@@ -169,6 +169,7 @@ msgstr "prak"
 #: data/core/units/monsters/Bear.cfg:42 data/core/units/monsters/Caribe.cfg:114
 #: data/core/units/monsters/Caribe_Hunter.cfg:115
 #: data/core/units/monsters/Caribe_Nibbler.cfg:129
+#: data/core/units/monsters/Cat_Forest.cfg:92
 #: data/core/units/monsters/Giant_Spider.cfg:28
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Shadow_Jumping_Spider.cfg:87
@@ -279,7 +280,7 @@ msgstr "bojový cep"
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:25
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:34
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:91
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:36
+#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:38
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:26
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:23
@@ -295,7 +296,7 @@ msgstr "bojový cep"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:33
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:62
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:933
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:929
 #: data/campaigns/tutorial/units/Fighter.cfg:24
 #: data/campaigns/tutorial/units/Fighteress.cfg:25
 #: data/campaigns/tutorial/units/Warrior.cfg:25
@@ -311,7 +312,7 @@ msgstr "bojový cep"
 #: data/core/units/humans/Horse_Knight.cfg:23
 #: data/core/units/humans/Horse_Paladin.cfg:39
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:58
-#: data/core/units/humans/Loyalist_Dragoon.cfg:35
+#: data/core/units/humans/Loyalist_Dragoon.cfg:54
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:27
 #: data/core/units/humans/Loyalist_Longbowman.cfg:25
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:25
@@ -331,7 +332,7 @@ msgstr "meč"
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Commander.cfg:55
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Lieutenant.cfg:53
 #: data/core/units/humans/Loyalist_Cavalier.cfg:45
-#: data/core/units/humans/Loyalist_Dragoon.cfg:44
+#: data/core/units/humans/Loyalist_Dragoon.cfg:63
 #: data/core/units/humans/Loyalist_Duelist.cfg:45
 #: data/core/units/humans/Loyalist_General.cfg:53
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:47
@@ -349,6 +350,7 @@ msgstr "kuša"
 #. [attack]: type=blade
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Commander.cfg:46
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Lieutenant.cfg:44
+#: data/campaigns/Liberty/units/Maddock.cfg:51
 #: data/core/units/humans/Horse_Grand_Knight.cfg:24
 #: data/core/units/humans/Loyalist_Cavalier.cfg:36
 #: data/core/units/humans/Loyalist_General.cfg:44
@@ -358,7 +360,7 @@ msgid "longsword"
 msgstr "dlhý meč"
 
 #. [attack]: type=impact
-#: data/campaigns/Eastern_Invasion/units/Human_Konrad_King_of_Wesnoth.cfg:28
+#: data/campaigns/Eastern_Invasion/units/Human_Konrad_King_of_Wesnoth.cfg:29
 #: data/core/units/humans/Outlaw.cfg:23
 #: data/core/units/humans/Outlaw_Bandit.cfg:29
 #: data/core/units/humans/Outlaw_Fugitive.cfg:28
@@ -446,7 +448,7 @@ msgstr "mrazivý víchor"
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:946
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:942
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -472,6 +474,7 @@ msgstr "luk"
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Soulless_Gryphon
 #. [attack]: type=pierce
+#. [variation]
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
@@ -482,6 +485,8 @@ msgstr "luk"
 #: data/core/units/gryphons/Gryphon_Master.cfg:28
 #: data/core/units/gryphons/Gryphon_Rider.cfg:27
 #: data/core/units/monsters/Bear.cfg:51
+#: data/core/units/monsters/Cat_Forest.cfg:82
+#: data/core/units/monsters/Cat_Jump.cfg:80
 #: data/core/units/monsters/Elder_Falcon.cfg:75
 #: data/core/units/monsters/Falcon.cfg:86
 #: data/core/units/monsters/Icemonax.cfg:53
@@ -489,9 +494,11 @@ msgstr "luk"
 #: data/core/units/monsters/Jinn.cfg:91
 #: data/core/units/monsters/Raven_Harbinger.cfg:83
 #: data/core/units/monsters/Roc.cfg:55
-#: data/core/units/monsters/Skeletal_Dragon.cfg:43
+#: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
+#: data/core/units/undead/Corpse_Soulless.cfg:186
+#: data/core/units/undead/Corpse_Walking.cfg:187
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:94
 #: data/core/units/undead/Spirit_Shadow.cfg:62
 msgid "claws"
@@ -585,7 +592,7 @@ msgstr "morová palica"
 #. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:36
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:35
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:36
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:37
 #: data/core/units/saurians/Augur.cfg:33 data/core/units/saurians/Oracle.cfg:44
 #: data/core/units/saurians/Prophet.cfg:46 data/core/units/saurians/Seer.cfg:34
 #: data/core/units/saurians/Soothsayer.cfg:33
@@ -619,12 +626,12 @@ msgstr "kliatba"
 #: data/core/units/undead/Corpse_Ghast.cfg:27
 #: data/core/units/undead/Corpse_Soulless.cfg:154
 #: data/core/units/undead/Corpse_Soulless.cfg:170
-#: data/core/units/undead/Corpse_Soulless.cfg:254
-#: data/core/units/undead/Corpse_Soulless.cfg:331
+#: data/core/units/undead/Corpse_Soulless.cfg:270
+#: data/core/units/undead/Corpse_Soulless.cfg:347
 #: data/core/units/undead/Corpse_Walking.cfg:155
 #: data/core/units/undead/Corpse_Walking.cfg:171
-#: data/core/units/undead/Corpse_Walking.cfg:255
-#: data/core/units/undead/Corpse_Walking.cfg:332
+#: data/core/units/undead/Corpse_Walking.cfg:271
+#: data/core/units/undead/Corpse_Walking.cfg:348
 msgid "bite"
 msgstr "uhryznutie"
 
@@ -1035,7 +1042,7 @@ msgstr "omráčenie štítom"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:28
 #: data/core/units/merfolk/Brawler.cfg:22
 #: data/core/units/merfolk/Citizen.cfg:22
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:32
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:40
 #: data/core/units/monsters/Yeti.cfg:37
 #: data/core/units/trolls/Rocklobber.cfg:25
 #: data/core/units/trolls/Troll_Shaman.cfg:31
@@ -1078,49 +1085,49 @@ msgid "bolas"
 msgstr "bola"
 
 #. [effect]: type=blade
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:156
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:157
 msgid "taunting strike"
 msgstr "zosmiešňujúci úder"
 
 #. [advancement]: id=run_by_taunt
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:183
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:184
 msgid "Run By (Taunting strike)"
 msgstr "Beh (Zosmiešňujúci úder)"
 
 #. [advancement]: id=strength_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:201
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:202
 msgid "Strength Training"
 msgstr "Silový tréning"
 
 #. [advancement]: id=bowmanship_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:213
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:214
 msgid "Bowmanship Training"
 msgstr "Tréning v lukostreľbe"
 
 #. [advancement]: id=strong_shots
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:230
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:231
 msgid "Strong Shots"
 msgstr "Silné strely"
 
 #. [advancement]: id=Bowman
 #. [unit_type]: id=Bowman, race=human, gender=male
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:242
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:243
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
 msgstr "Lukostrelec"
 
 #. [advancement]: id=piercing_shot
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:259
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:260
 msgid "Piercing Shot"
 msgstr "Prierazná Strela"
 
 #. [effect]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:267
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:268
 msgid "piercing shot"
 msgstr "prierazná strela"
 
 #. [effect]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:581
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:582
 msgid "Rain of arrows"
 msgstr "Dážď šípov"
 
@@ -1316,6 +1323,7 @@ msgstr "oceľové drápy"
 #: data/core/units/drakes/Warrior.cfg:35
 #: data/core/units/monsters/Fire_Dragon.cfg:51
 #: data/core/units/monsters/Fire_Guardian.cfg:37
+#: data/core/units/monsters/Fire_Wisp.cfg:38
 #: data/core/units/monsters/Fire_Wraith.cfg:59
 msgid "fire breath"
 msgstr "ohnivý dych"
@@ -2827,10 +2835,25 @@ msgstr ""
 "vylepšili svoje remeslo na vrchol, sú nespornými majstrami v boji na diaľku "
 "medzi ľudom púšte."
 
-#. [unit_type]: id=Wyvern Rider, race=monster, description=
+#. [unit_type]: id=Wyvern Rider, race=monster
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:4
 msgid "Wyvern Rider"
 msgstr "Jazdec na vyverne"
+
+#. [unit_type]: id=Wyvern Rider, race=monster
+#: data/core/units/dunefolk/Wyvern_Rider.cfg:17
+msgid ""
+"Although generally peaceful, wyverns can easily become fierce and angry "
+"beasts when provoked. When truly enraged they can even tear apart "
+"experienced warriors with relative ease. Most travelers would run or fight "
+"in their mighty presence, yet a few are able to tame these wild creatures. "
+"These Dunefolk riders spend years, even decades of their lives bonding with "
+"them, slowly building up their trust until they have gained true mastery "
+"over the skies. The most experienced of these Wyvern riders have ascended to "
+"be the greatest and most revered travelers of the land. While they do not "
+"usually use their knowledge for warfare, they can be threatening warriors "
+"when defending their homes."
+msgstr ""
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:4
@@ -2935,12 +2958,18 @@ msgid "Dwarvish Miner"
 msgstr "Trpaslík baník"
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
-#: data/core/units/dwarves/Miner.cfg:17
+#: data/core/units/dwarves/Miner.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Dwarvish miners are the grunt workers of dwarvish society. They take the "
+#| "precious ores out of the ground, but do not ever take part in the "
+#| "crafting of weapons or artifacts. They have no military training, but "
+#| "they can still do some damage with their picks."
 msgid ""
-"Dwarvish miners are the grunt workers of dwarvish society. They take the "
+"Dwarvish Miners are the grunt workers of dwarvish society. They take the "
 "precious ores out of the ground, but do not ever take part in the crafting "
-"of weapons or artifacts. They have no military training, but they can still "
-"do some damage with their picks."
+"of weapons or artifacts. Despite their lack of military training, their "
+"weighty pickaxes can deal substantial damage."
 msgstr ""
 "Trpasličí baníci sú robotníci trpasličej spoločnosti. Vyberajú vzácne rudy "
 "zo zeme, ale nikdy sa nezúčastňujú na výrobe zbraní alebo artefaktov. Nemajú "
@@ -2948,7 +2977,7 @@ msgstr ""
 "narobiť nejaké škody."
 
 #. [attack]: type=pierce
-#: data/core/units/dwarves/Miner.cfg:22
+#: data/core/units/dwarves/Miner.cfg:26
 msgid "pick"
 msgstr "krompáč"
 
@@ -3292,15 +3321,13 @@ msgstr ""
 "najmä v nezvyčajných alebo zvláštnych záležitostiach."
 
 #. [attack]: type=impact
-#: data/core/units/elves/Enchantress.cfg:36 data/core/units/elves/Shaman.cfg:42
-#: data/core/units/elves/Sorceress.cfg:36
-#: data/core/units/monsters/Caribe_Hunter.cfg:124
-#: data/core/units/wose/Wose_Shaman.cfg:43
-msgid "entangle"
-msgstr "zamotanie"
+#. in game mechanics an upgrade of the Shaman’s slowing “entangle”, but in lore has the different magic style of the Enchantress’s unit description
+#: data/core/units/elves/Enchantress.cfg:37 data/core/units/elves/Sylph.cfg:41
+msgid "ethereal web"
+msgstr ""
 
 #. [attack]: type=arcane
-#: data/core/units/elves/Enchantress.cfg:47
+#: data/core/units/elves/Enchantress.cfg:49
 #: data/core/units/elves/High_Lord.cfg:56 data/core/units/elves/Lord.cfg:35
 #: data/core/units/elves/Sorceress.cfg:47 data/core/units/elves/Sylph.cfg:53
 msgid "faerie fire"
@@ -3746,6 +3773,13 @@ msgstr ""
 "namiesto toho využívajú svoju mágiu na velenie samotnej Zemi, aby prekážali "
 "alebo upokojili svojich nepriateľov."
 
+#. [attack]: type=impact
+#: data/core/units/elves/Shaman.cfg:42 data/core/units/elves/Sorceress.cfg:36
+#: data/core/units/monsters/Caribe_Hunter.cfg:124
+#: data/core/units/wose/Wose_Shaman.cfg:43
+msgid "entangle"
+msgstr "zamotanie"
+
 #. [unit_type]: id=Elvish Sharpshooter, race=elf, gender=male,female
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
@@ -3874,11 +3908,6 @@ msgstr ""
 "rovine, kde je odraz tajomnej roviny najsilnejší. Schopnosť Sylfy "
 "lokalizovať tieto „reflexné bazény“ a riadiť ich je jednou z jej najväčších "
 "– a najobávanejších – schopností."
-
-#. [attack]: type=impact
-#: data/core/units/elves/Sylph.cfg:41
-msgid "gossamer"
-msgstr "pavučina"
 
 #. [unit_type]: id=Fog Clearer, race=monster
 #: data/core/units/fake/Fog_Clearer.cfg:13
@@ -5566,6 +5595,7 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Brawler.cfg:30
+#: data/core/units/monsters/Cat_Jump.cfg:90
 #: data/core/units/monsters/Fire_Dragon.cfg:42
 #: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
@@ -6127,8 +6157,8 @@ msgstr ""
 #. [attack]: type=pierce
 #. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-#: data/core/units/undead/Corpse_Soulless.cfg:436
-#: data/core/units/undead/Corpse_Walking.cfg:437
+#: data/core/units/undead/Corpse_Soulless.cfg:452
+#: data/core/units/undead/Corpse_Walking.cfg:453
 msgid "tusk"
 msgstr "tesák"
 
@@ -6199,6 +6229,37 @@ msgid ""
 msgstr ""
 "Dravé ryby sú často viac zvedavé ako nebezpečné. Jednotlivec nepredstavuje "
 "veľkú hrozbu, ale len málokedy narazíte na jednu takúto rybu."
+
+#. [unit_type]: id=Forest Lion, race=cats
+#: data/core/units/monsters/Cat_Forest.cfg:4
+msgid "Forest Lion"
+msgstr ""
+
+#. [unit_type]: id=Forest Lion, race=cats
+#: data/core/units/monsters/Cat_Forest.cfg:31
+msgid ""
+"Forest Lions are light-brown cats, roughly the same size as a wolf, that "
+"hunt the woods and hills at dusk and dawn. Their most distinctive feature is "
+"their odd, triply branched tail, which they seem to use for camouflage and "
+"disruptive patterning."
+msgstr ""
+
+#. [unit_type]: id=Jumpcat, race=cats
+#: data/core/units/monsters/Cat_Jump.cfg:4
+msgid "Jumpcat"
+msgstr ""
+
+#. [unit_type]: id=Jumpcat, race=cats
+#: data/core/units/monsters/Cat_Jump.cfg:30
+msgid ""
+"Jumpcats are opportunistic predators with keen senses and fast reflexes, but "
+"very little bulk, so they are easily dispatched if they can be hit, and "
+"easily scared off if they can’t. One of the most distinctive features of "
+"these odd creatures is the hard clump of twigs, clay, and rocks they carry "
+"on their tail, which is their primary offensive weapon. Their actions are "
+"mostly driven by instinct, but they are sometimes used as assassins by more "
+"sophisticated handlers."
+msgstr ""
 
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:13
@@ -6438,6 +6499,39 @@ msgstr ""
 msgid "fire claws"
 msgstr "ohnivé pazúry"
 
+#. [unit_type]: id=Fire Wisp, race=monster
+#: data/core/units/monsters/Fire_Wisp.cfg:4
+#, fuzzy
+#| msgid "Fire Wraith"
+msgid "Fire Wisp"
+msgstr "Ohnivý duch"
+
+#. [unit_type]: id=Fire Wisp, race=monster
+#: data/core/units/monsters/Fire_Wisp.cfg:24
+#, fuzzy
+#| msgid ""
+#| "Fire Guardians are spirits of smoke and flame. No one is exactly sure "
+#| "where they come from, but they are occasionally summoned by powerful "
+#| "mages to do their bidding. When not being controlled they like to frolic "
+#| "in pools of lava and take great delight in burning anything they can "
+#| "reach."
+msgid ""
+"Fire Wisps are spirits of smoke and flame. When not being ordered around "
+"they like to frolic in pools of lava and take great delight in burning "
+"anything they can reach."
+msgstr ""
+"Ohnivý strážcovia sú duše dymu a plameňa. Nikto si nie je celkom istý, "
+"odkiaľ sa zjavili, ale niekedy ich vyčarovávajú mágovia, aby plnili ich "
+"vôľu. Keď nemajú rozkazy, preferujú ostať v blízkosti lávy, prípadne im robí "
+"potešenie spaľovať všetko na čo narazia."
+
+#. [attack]: type=fire
+#: data/core/units/monsters/Fire_Wisp.cfg:29
+#, fuzzy
+#| msgid "fire breath"
+msgid "fire bash"
+msgstr "ohnivý dych"
+
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:8
 msgid "Fire Wraith"
@@ -6489,7 +6583,7 @@ msgid "Giant Mudcrawler"
 msgstr "Veľký blatovec"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:19
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:27
 msgid ""
 "More resilient than their smaller counterparts, these golems of mud are much "
 "more capable of putting up a fight with a proper soldier even with their "
@@ -6503,8 +6597,8 @@ msgstr ""
 "sú tiež odolní voči jedu a nevadia im akékoľvek výkyvy počasia."
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:41
-#: data/core/units/monsters/Mudcrawler.cfg:42
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:49
+#: data/core/units/monsters/Mudcrawler.cfg:50
 msgid "mud glob"
 msgstr "hruda bahna"
 
@@ -6647,7 +6741,7 @@ msgstr ""
 #: data/core/units/monsters/Horse_Black.cfg:50
 #: data/core/units/monsters/Horse_Dark.cfg:44
 #: data/core/units/monsters/Horse_Great.cfg:34
-#: data/core/units/monsters/Horse_White.cfg:38
+#: data/core/units/monsters/Horse_White.cfg:39
 msgid "hooves"
 msgstr "kopytá"
 
@@ -6733,7 +6827,7 @@ msgid "White Horse"
 msgstr "Biely kôň"
 
 #. [unit_type]: id=White Horse
-#: data/core/units/monsters/Horse_White.cfg:25
+#: data/core/units/monsters/Horse_White.cfg:26
 msgid ""
 "Some horses have a white color, and they are merely white horses. But there "
 "exist a special breed, found only in the wild woods, that are White Horses. "
@@ -6836,7 +6930,7 @@ msgid "Mudcrawler"
 msgstr "Blatovec"
 
 #. [unit_type]: id=Mudcrawler, race=monster
-#: data/core/units/monsters/Mudcrawler.cfg:21
+#: data/core/units/monsters/Mudcrawler.cfg:29
 msgid ""
 "Simple beings conjured up from soil and water, Mudcrawlers fend for "
 "themselves by spitting globs of mud with surprising force. Even though they "
@@ -7105,7 +7199,7 @@ msgid "Skeletal Dragon"
 msgstr "Drak kostlivec"
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
-#: data/core/units/monsters/Skeletal_Dragon.cfg:27
+#: data/core/units/monsters/Skeletal_Dragon.cfg:26
 msgid ""
 "Long ago one of the mightiest living creatures, the feared Dragon has become "
 "only bones and dark sinew. Long after its death, it was raised through the "
@@ -7120,7 +7214,7 @@ msgstr ""
 "pozornejšie."
 
 #. [attack]: type=blade
-#: data/core/units/monsters/Skeletal_Dragon.cfg:31
+#: data/core/units/monsters/Skeletal_Dragon.cfg:30
 msgid "jaw"
 msgstr "čeľusť"
 
@@ -8453,126 +8547,134 @@ msgstr "Chrobák"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:175
 #: data/core/units/undead/Corpse_Walking.cfg:176
+#, fuzzy
+#| msgid "wc_variation^Rat"
+msgid "wc_variation^Cat"
+msgstr "Potkan"
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:191
+#: data/core/units/undead/Corpse_Walking.cfg:192
 msgid "wc_variation^Drake"
 msgstr "Jašter"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:190
-#: data/core/units/undead/Corpse_Walking.cfg:191
+#: data/core/units/undead/Corpse_Soulless.cfg:206
+#: data/core/units/undead/Corpse_Walking.cfg:207
 msgid "wc_variation^Dwarf"
 msgstr "Trpaslík"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:203
-#: data/core/units/undead/Corpse_Walking.cfg:204
+#: data/core/units/undead/Corpse_Soulless.cfg:219
+#: data/core/units/undead/Corpse_Walking.cfg:220
 msgid "wc_variation^Falcon"
 msgstr "Sokol"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:238
-#: data/core/units/undead/Corpse_Walking.cfg:239
+#: data/core/units/undead/Corpse_Soulless.cfg:254
+#: data/core/units/undead/Corpse_Walking.cfg:255
 msgid "wc_variation^Fish"
 msgstr "Ryba"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:259
-#: data/core/units/undead/Corpse_Walking.cfg:260
+#: data/core/units/undead/Corpse_Soulless.cfg:275
+#: data/core/units/undead/Corpse_Walking.cfg:276
 msgid "wc_variation^Goblin"
 msgstr "Goblin"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:269
-#: data/core/units/undead/Corpse_Walking.cfg:293
+#: data/core/units/undead/Corpse_Soulless.cfg:285
+#: data/core/units/undead/Corpse_Walking.cfg:309
 msgid "wc_variation^Horse"
 msgstr "Kôň"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:278
-#: data/core/units/undead/Corpse_Walking.cfg:302
+#: data/core/units/undead/Corpse_Soulless.cfg:294
+#: data/core/units/undead/Corpse_Walking.cfg:318
 msgid "wc_variation^Mounted"
 msgstr "Jazdec"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:287
-#: data/core/units/undead/Corpse_Walking.cfg:311
+#: data/core/units/undead/Corpse_Soulless.cfg:303
+#: data/core/units/undead/Corpse_Walking.cfg:327
 msgid "wc_variation^Beast-Rider"
 msgstr "Jazdec na príšere"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:296
-#: data/core/units/undead/Corpse_Walking.cfg:270
+#: data/core/units/undead/Corpse_Soulless.cfg:312
+#: data/core/units/undead/Corpse_Walking.cfg:286
 msgid "wc_variation^Gryphon"
 msgstr "Gryf"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:319
-#: data/core/units/undead/Corpse_Walking.cfg:320
+#: data/core/units/undead/Corpse_Soulless.cfg:335
+#: data/core/units/undead/Corpse_Walking.cfg:336
 msgid "wc_variation^Rat"
 msgstr "Potkan"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:336
-#: data/core/units/undead/Corpse_Walking.cfg:337
+#: data/core/units/undead/Corpse_Soulless.cfg:352
+#: data/core/units/undead/Corpse_Walking.cfg:353
 msgid "wc_variation^Saurian"
 msgstr "Saur"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:346
-#: data/core/units/undead/Corpse_Walking.cfg:347
+#: data/core/units/undead/Corpse_Soulless.cfg:362
+#: data/core/units/undead/Corpse_Walking.cfg:363
 msgid "wc_variation^Scorpion"
 msgstr "Škorpión"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:364
-#: data/core/units/undead/Corpse_Walking.cfg:365
+#: data/core/units/undead/Corpse_Soulless.cfg:380
+#: data/core/units/undead/Corpse_Walking.cfg:381
 msgid "wc_variation^Scuttler"
 msgstr "Škorpión"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:373
-#: data/core/units/undead/Corpse_Walking.cfg:374
+#: data/core/units/undead/Corpse_Soulless.cfg:389
+#: data/core/units/undead/Corpse_Walking.cfg:390
 msgid "wc_variation^Spider"
 msgstr "Pavúk"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:382
-#: data/core/units/undead/Corpse_Walking.cfg:383
+#: data/core/units/undead/Corpse_Soulless.cfg:398
+#: data/core/units/undead/Corpse_Walking.cfg:399
 msgid "wc_variation^Serpent"
 msgstr "Plaz"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:401
-#: data/core/units/undead/Corpse_Walking.cfg:402
+#: data/core/units/undead/Corpse_Soulless.cfg:417
+#: data/core/units/undead/Corpse_Walking.cfg:418
 msgid "wc_variation^Swimmer"
 msgstr "Plavec"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:419
-#: data/core/units/undead/Corpse_Walking.cfg:420
+#: data/core/units/undead/Corpse_Soulless.cfg:435
+#: data/core/units/undead/Corpse_Walking.cfg:436
 msgid "wc_variation^Troll"
 msgstr "Trol"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:428
-#: data/core/units/undead/Corpse_Walking.cfg:429
+#: data/core/units/undead/Corpse_Soulless.cfg:444
+#: data/core/units/undead/Corpse_Walking.cfg:445
 msgid "wc_variation^Boar"
 msgstr "Medveď"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:441
-#: data/core/units/undead/Corpse_Walking.cfg:442
+#: data/core/units/undead/Corpse_Soulless.cfg:457
+#: data/core/units/undead/Corpse_Walking.cfg:458
 msgid "wc_variation^Wose"
 msgstr "Lesný muž"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:453
-#: data/core/units/undead/Corpse_Walking.cfg:454
+#: data/core/units/undead/Corpse_Soulless.cfg:469
+#: data/core/units/undead/Corpse_Walking.cfg:470
 msgid "wc_variation^Wolf"
 msgstr "Vlk"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:466
-#: data/core/units/undead/Corpse_Walking.cfg:467
+#: data/core/units/undead/Corpse_Soulless.cfg:482
+#: data/core/units/undead/Corpse_Walking.cfg:483
 msgid "wc_variation^Bat"
 msgstr "Netopier"
 
@@ -9205,6 +9307,9 @@ msgid ""
 msgstr ""
 "Títo lesní muži dokážu ovládať popínavé rastliny na zastrašenie či zviazanie "
 "ich nepriateľov."
+
+#~ msgid "gossamer"
+#~ msgstr "pavučina"
 
 #~ msgid ""
 #~ "Far from human cities in the great desert mountains, the large birds of "

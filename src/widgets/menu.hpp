@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <map>
 #include <set>
 
@@ -134,7 +134,7 @@ public:
 	 * to keep the selection at the same position as it were before the items
 	 * were set.
 	 */
-	virtual void set_items(const std::vector<indented_menu_item>& items, std::optional<std::size_t> selected);
+	virtual void set_items(const std::vector<indented_menu_item>& items, utils::optional<std::size_t> selected);
 
 	/**
 	 * Set a new max height for this menu. Note that this does not take
@@ -201,7 +201,7 @@ private:
 	/**
 	 * Cached return value of widest_row_width(), calculated on demand when calling that function.
 	 */
-	mutable std::optional<int> widest_row_width_;
+	mutable utils::optional<int> widest_row_width_;
 
 	std::size_t selected_;
 	bool click_selects_;

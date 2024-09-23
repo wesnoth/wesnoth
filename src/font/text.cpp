@@ -29,7 +29,7 @@
 #include "gui/core/log.hpp"
 #include "sdl/point.hpp"
 #include "serialization/unicode.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "video.hpp"
 
 
@@ -84,9 +84,15 @@ pango_text::pango_text()
 	, maximum_length_(std::string::npos)
 	, calculation_dirty_(true)
 	, length_(0)
+	, attribute_start_offset_(0)
+	, attribute_end_offset_(0)
+	, highlight_color_()
 	, pixel_scale_(1)
 	, surface_buffer_()
 {
+	// Initialize global list
+	global_attribute_list_ = pango_attr_list_new();
+
 	// With 72 dpi the sizes are the same as with SDL_TTF so hardcoded.
 	pango_cairo_context_set_resolution(context_.get(), 72.0);
 
@@ -111,22 +117,9 @@ texture pango_text::render_texture(const SDL_Rect& viewport)
 
 texture pango_text::render_and_get_texture()
 {
-	// Update our settings then hash them.
 	update_pixel_scale(); // TODO: this should be in recalculate()
 	recalculate();
-	const std::size_t hash = std::hash<pango_text>{}(*this);
-	// If we already have the appropriate texture in-cache, use it.
-	if(const auto iter = rendered_cache.find(hash); iter != rendered_cache.end()) {
-		return with_draw_scale(iter->second);
-	}
-
-	if(surface text_surf = create_surface(); text_surf) {
-		const auto& [new_iter, added] = rendered_cache.try_emplace(hash, std::move(text_surf));
-		return with_draw_scale(new_iter->second);
-	}
-
-	// Render output was null for some reason. Don't cache.
-	return {};
+	return with_draw_scale(texture(create_surface()));
 }
 
 surface pango_text::render_surface(const SDL_Rect& viewport)
@@ -157,19 +150,19 @@ point pango_text::to_draw_scale(const point& p) const
 point pango_text::get_size()
 {
 	update_pixel_scale(); // TODO: this should be in recalculate()
-	this->recalculate();
+	recalculate();
 
 	return to_draw_scale({rect_.width, rect_.height});
 }
 
 bool pango_text::is_truncated() const
 {
-	this->recalculate();
+	recalculate();
 
 	return (pango_layout_is_ellipsized(layout_.get()) != 0);
 }
 
-unsigned pango_text::insert_text(const unsigned offset, const std::string& text)
+unsigned pango_text::insert_text(const unsigned offset, const std::string& text, const bool use_markup)
 {
 	if (text.empty() || length_ == maximum_length_) {
 		return 0;
@@ -184,37 +177,14 @@ unsigned pango_text::insert_text(const unsigned offset, const std::string& text)
 	}
 	const std::string insert = text.substr(0, utf8::index(text, len));
 	std::string tmp = text_;
-	this->set_text(utf8::insert(tmp, offset, insert), false);
+	set_text(utf8::insert(tmp, offset, insert), use_markup);
 	// report back how many characters were actually inserted (e.g. to move the cursor selection)
 	return len;
 }
 
-int pango_text::get_byte_offset(const unsigned column) const
-{
-	// First we need to determine the byte offset
-	std::unique_ptr<PangoLayoutIter, std::function<void(PangoLayoutIter*)>> itor(
-		pango_layout_get_iter(layout_.get()), pango_layout_iter_free);
-
-	// Go the wanted column.
-	for(std::size_t i = 0; i < column; ++i) {
-		if(!pango_layout_iter_next_char(itor.get())) {
-			// It seems that the documentation is wrong and causes and off by
-			// one error... the result should be false if already at the end of
-			// the data when started.
-			if(i + 1 == column) {
-				break;
-			}
-		}
-	}
-
-	// Get the byte offset
-	const int offset = pango_layout_iter_get_index(itor.get());
-	return offset;
-}
-
 point pango_text::get_cursor_position(const unsigned column, const unsigned line) const
 {
-	this->recalculate();
+	recalculate();
 
 	// Determing byte offset
 	std::unique_ptr<PangoLayoutIter, std::function<void(PangoLayoutIter*)>> itor(
@@ -249,6 +219,11 @@ point pango_text::get_cursor_position(const unsigned column, const unsigned line
 	// Get the byte offset
 	const int offset = pango_layout_iter_get_index(itor.get());
 
+	return get_cursor_pos_from_index(offset);
+}
+
+point pango_text::get_cursor_pos_from_index(const unsigned offset) const
+{
 	// Convert the byte offset in a position.
 	PangoRectangle rect;
 	pango_layout_get_cursor_pos(layout_.get(), offset, &rect, nullptr);
@@ -263,7 +238,7 @@ std::size_t pango_text::get_maximum_length() const
 
 std::string pango_text::get_token(const point & position, const char * delim) const
 {
-	this->recalculate();
+	recalculate();
 
 	// Get the index of the character.
 	int index, trailing;
@@ -299,7 +274,7 @@ std::string pango_text::get_link(const point & position) const
 		return "";
 	}
 
-	std::string tok = this->get_token(position, " \n\r\t");
+	std::string tok = get_token(position, " \n\r\t");
 
 	if (looks_like_url(tok)) {
 		return tok;
@@ -310,7 +285,7 @@ std::string pango_text::get_link(const point & position) const
 
 point pango_text::get_column_line(const point& position) const
 {
-	this->recalculate();
+	recalculate();
 
 	// Get the index of the character.
 	int index, trailing;
@@ -334,12 +309,154 @@ point pango_text::get_column_line(const point& position) const
 	 * Until that time leave it as is.
 	 */
 	for(std::size_t i = 0; ; ++i) {
-		const int pos = this->get_cursor_position(i, line).x;
+		const int pos = get_cursor_position(i, line).x;
 
 		if(pos == offset) {
 			return  point(i, line);
 		}
 	}
+}
+
+void pango_text::add_attribute_size(const unsigned start_offset, const unsigned end_offset, int size)
+{
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
+
+	if (attribute_start_offset_ != attribute_end_offset_) {
+		PangoAttribute *attr = pango_attr_size_new_absolute(PANGO_SCALE * size);
+		attr->start_index = attribute_start_offset_;
+		attr->end_index = attribute_end_offset_;
+
+		DBG_GUI_D << "attribute: size";
+		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
+
+		// Insert all attributes
+		pango_attr_list_insert(global_attribute_list_, attr);
+	}
+}
+
+void pango_text::add_attribute_weight(const unsigned start_offset, const unsigned end_offset, PangoWeight weight)
+{
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
+
+	if (attribute_start_offset_ != attribute_end_offset_) {
+		PangoAttribute *attr = pango_attr_weight_new(weight);
+		attr->start_index = attribute_start_offset_;
+		attr->end_index = attribute_end_offset_;
+
+		DBG_GUI_D << "attribute: weight";
+		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
+
+		// Insert all attributes
+		pango_attr_list_insert(global_attribute_list_, attr);
+	}
+}
+
+void pango_text::add_attribute_style(const unsigned start_offset, const unsigned end_offset, PangoStyle style)
+{
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
+
+	if (attribute_start_offset_ != attribute_end_offset_) {
+
+		PangoAttribute *attr = pango_attr_style_new(style);
+		attr->start_index = attribute_start_offset_;
+		attr->end_index = attribute_end_offset_;
+
+		DBG_GUI_D << "attribute: style";
+		DBG_GUI_D << "attribute start: " << attribute_start_offset_ << " end : " << attribute_end_offset_;
+
+		// Insert all attributes
+		pango_attr_list_insert(global_attribute_list_, attr);
+	}
+}
+
+void pango_text::add_attribute_underline(const unsigned start_offset, const unsigned end_offset, PangoUnderline underline)
+{
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
+
+	if (attribute_start_offset_ != attribute_end_offset_) {
+		PangoAttribute *attr = pango_attr_underline_new(underline);
+		attr->start_index = attribute_start_offset_;
+		attr->end_index = attribute_end_offset_;
+
+		DBG_GUI_D << "attribute: underline";
+		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
+
+		// Insert all attributes
+		pango_attr_list_insert(global_attribute_list_, attr);
+	}
+}
+
+
+void pango_text::add_attribute_fg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color)
+{
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
+
+	if (attribute_start_offset_ != attribute_end_offset_) {
+		int col_r = color.r / 255.0 * 65535.0;
+		int col_g = color.g / 255.0 * 65535.0;
+		int col_b = color.b / 255.0 * 65535.0;
+
+		PangoAttribute *attr = pango_attr_foreground_new(col_r, col_g, col_b);
+		attr->start_index = start_offset;
+		attr->end_index = end_offset;
+
+		DBG_GUI_D << "attribute: fg color";
+		DBG_GUI_D << "attribute start: " << attribute_start_offset_ << " end : " << attribute_end_offset_;
+		DBG_GUI_D << "color: " << col_r << "," << col_g << "," << col_b;
+
+		// Insert all attributes
+		pango_attr_list_insert(global_attribute_list_, attr);
+	}
+}
+
+void pango_text::add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, std::string family)
+{
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
+
+	if (attribute_start_offset_ != attribute_end_offset_) {
+		PangoAttribute *attr = pango_attr_family_new(family.c_str());
+		attr->start_index = attribute_start_offset_;
+		attr->end_index = attribute_end_offset_;
+
+		DBG_GUI_D << "attribute: font family";
+		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
+		DBG_GUI_D << "font family: " << family;
+
+		// Insert all attributes
+		pango_attr_list_insert(global_attribute_list_, attr);
+	}
+}
+
+void pango_text::set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color) {
+	attribute_start_offset_ = start_offset;
+	attribute_end_offset_ = end_offset;
+	highlight_color_ = color;
+
+	// Highlight
+	int col_r = highlight_color_.r / 255.0 * 65535.0;
+	int col_g = highlight_color_.g / 255.0 * 65535.0;
+	int col_b = highlight_color_.b / 255.0 * 65535.0;
+
+	DBG_GUI_D << "highlight start: " << attribute_start_offset_ << "end : " << attribute_end_offset_;
+	DBG_GUI_D << "highlight color: " << col_r << "," << col_g << "," << col_b;
+
+	PangoAttribute *attr = pango_attr_background_new(col_r, col_g, col_b);
+	attr->start_index = attribute_start_offset_;
+	attr->end_index = attribute_end_offset_;
+
+	// Insert all attributes
+	pango_attr_list_change(global_attribute_list_, attr);
+}
+
+void pango_text::clear_attribute_list() {
+	global_attribute_list_ = pango_attr_list_new();
+	pango_layout_set_attributes(layout_.get(), global_attribute_list_);
 }
 
 bool pango_text::set_text(const std::string& text, const bool markedup)
@@ -352,43 +469,24 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 		const std::u32string wide = unicode_cast<std::u32string>(text);
 		const std::string narrow = unicode_cast<std::string>(wide);
 		if(text != narrow) {
-			ERR_GUI_L << "pango_text::" << __func__
-					<< " text '" << text
-					<< "' contains invalid utf-8, trimmed the invalid parts.";
-		}
-
-		if (highlight_start_offset_ != highlight_end_offset_) {
-			/** Highlight */
-			PangoAttrList *attribute_list = pango_attr_list_new();
-			int col_r = highlight_color_.r / 255.0 * 65535.0;
-			int col_g = highlight_color_.g / 255.0 * 65535.0;
-			int col_b = highlight_color_.b / 255.0 * 65535.0;
-			DBG_GUI_D << "highlight start : " << highlight_start_offset_ << "end : " << highlight_end_offset_;
-			DBG_GUI_D << "highlight rgb : " << col_r << "," << col_g << "," << col_b;
-			PangoAttribute *attr = pango_attr_background_new(col_r, col_g, col_b);
-			attr->start_index = highlight_start_offset_;
-			attr->end_index = highlight_end_offset_;
-			pango_attr_list_insert(attribute_list, attr);
-
-			pango_layout_set_attributes(layout_.get(), attribute_list);
+			ERR_GUI_L
+				<< "pango_text::" << __func__
+				<< " text '" << text
+				<< "' contains invalid utf-8, trimmed the invalid parts.";
 		}
 
 		if(markedup) {
-			if(!this->set_markup(narrow, *layout_)) {
-				return false;
+			if (!set_markup(narrow, *layout_)) {
+				pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
 			}
 		} else {
-			if (highlight_start_offset_ == highlight_end_offset_) {
-				/*
-				 * pango_layout_set_text after pango_layout_set_markup might
-				 * leave the layout in an undefined state regarding markup so
-				 * clear it unconditionally.
-				 */
-				pango_layout_set_attributes(layout_.get(), nullptr);
-			}
-
 			pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
 		}
+
+		pango_layout_set_attributes(layout_.get(), global_attribute_list_);
+
+		// Clear list. Using pango_attr_list_unref() causes segfault
+		global_attribute_list_ = pango_attr_list_new();
 
 		text_ = narrow;
 		length_ = wide.size();
@@ -411,7 +509,7 @@ pango_text& pango_text::set_family_class(font::family_class fclass)
 
 pango_text& pango_text::set_font_size(unsigned font_size)
 {
-	font_size = preferences::font_scaled(font_size) * pixel_scale_;
+	font_size = prefs::get().font_scaled(font_size) * pixel_scale_;
 
 	if(font_size != font_size_) {
 		font_size_ = font_size;
@@ -528,7 +626,7 @@ pango_text& pango_text::set_maximum_length(const std::size_t maximum_length)
 		maximum_length_ = maximum_length;
 		if(length_ > maximum_length_) {
 			std::string tmp = text_;
-			this->set_text(utf8::truncate(tmp, maximum_length_), false);
+			set_text(utf8::truncate(tmp, maximum_length_), false);
 		}
 	}
 
@@ -864,7 +962,7 @@ bool pango_text::set_markup(std::string_view text, PangoLayout& layout)
 	char* raw_text;
 	std::string semi_escaped;
 	bool valid = validate_markup(text, &raw_text, semi_escaped);
-	if(semi_escaped != "") {
+	if(!semi_escaped.empty()) {
 		text = semi_escaped;
 	}
 
@@ -875,11 +973,14 @@ bool pango_text::set_markup(std::string_view text, PangoLayout& layout)
 		} else {
 			pango_layout_set_markup(&layout, text.data(), text.size());
 		}
-	} else {
-		ERR_GUI_L << "pango_text::" << __func__
-			<< " text '" << text
-			<< "' has broken markup, set to normal text.";
-		set_text(_("The text contains invalid Pango markup: ") + std::string(text), false);
+
+		// append any manual attributes to those generated by pango_layout_set_markup
+		PangoAttrList* markup_list = pango_layout_get_attributes(&layout);
+		for (auto* l = pango_attr_list_get_attributes(global_attribute_list_); l != nullptr; l = l->next) {
+			PangoAttribute* attr = static_cast<PangoAttribute*>(l->data);
+			pango_attr_list_change(markup_list, attr);
+		}
+		global_attribute_list_ = markup_list;
 	}
 
 	return valid;
@@ -974,7 +1075,7 @@ void pango_text::copy_layout_properties(PangoLayout& src, PangoLayout& dst)
 
 std::vector<std::string> pango_text::get_lines() const
 {
-	this->recalculate();
+	recalculate();
 
 	PangoLayout* const layout = layout_.get();
 	std::vector<std::string> res;
@@ -998,6 +1099,18 @@ std::vector<std::string> pango_text::get_lines() const
 	return res;
 }
 
+PangoLayoutLine* pango_text::get_line(int index)
+{
+	return pango_layout_get_line_readonly(layout_.get(), index);
+}
+
+int pango_text::get_line_num_from_offset(const unsigned offset)
+{
+	int line_num = 0;
+	pango_layout_index_to_line_x(layout_.get(), offset, 0, &line_num, nullptr);
+	return line_num;
+}
+
 pango_text& get_text_renderer()
 {
 	static pango_text text_renderer;
@@ -1015,30 +1128,3 @@ int get_max_height(unsigned size, font::family_class fclass, pango_text::FONT_ST
 }
 
 } // namespace font
-
-namespace std
-{
-std::size_t hash<font::pango_text>::operator()(const font::pango_text& t) const
-{
-	std::size_t hash = 0;
-
-	boost::hash_combine(hash, t.text_);
-	boost::hash_combine(hash, t.font_class_);
-	boost::hash_combine(hash, t.font_size_);
-	boost::hash_combine(hash, t.font_style_);
-	boost::hash_combine(hash, t.foreground_color_.to_rgba_bytes());
-	boost::hash_combine(hash, t.rect_.width);
-	boost::hash_combine(hash, t.rect_.height);
-	boost::hash_combine(hash, t.maximum_width_);
-	boost::hash_combine(hash, t.maximum_height_);
-	boost::hash_combine(hash, t.alignment_);
-	boost::hash_combine(hash, t.ellipse_mode_);
-	boost::hash_combine(hash, t.add_outline_);
-	boost::hash_combine(hash, t.highlight_start_offset_);
-	boost::hash_combine(hash, t.highlight_end_offset_);
-	boost::hash_combine(hash, t.highlight_color_.to_rgba_bytes());
-
-	return hash;
-}
-
-} // namespace std

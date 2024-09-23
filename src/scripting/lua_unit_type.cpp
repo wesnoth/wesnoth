@@ -15,6 +15,7 @@
 
 #include "scripting/lua_unit_type.hpp"
 
+#include "scripting/lua_attributes.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_unit_attacks.hpp"
 #include "scripting/push_check.hpp"
@@ -32,6 +33,115 @@
 static const char UnitType[] = "unit type";
 static const char UnitTypeTable[] = "unit types";
 
+#define UNIT_TYPE_GETTER(name, type) LATTR_GETTER(name, type, unit_type, ut)
+#define UNIT_TYPE_VALID(name) LATTR_VALID(name, unit_type, ut)
+luaW_Registry unitTypeReg{UnitType};
+
+template<> struct lua_object_traits<unit_type> {
+	inline static auto metatable = UnitType;
+	inline static const unit_type& get(lua_State* L, int n) {
+		return luaW_checkunittype(L, n);
+	}
+};
+
+UNIT_TYPE_GETTER("name", t_string) {
+	return ut.type_name();
+}
+
+UNIT_TYPE_GETTER("id", std::string) {
+	return ut.id();
+}
+
+UNIT_TYPE_GETTER("alignment", std::string) {
+	return unit_alignments::get_string(ut.alignment());
+}
+
+UNIT_TYPE_GETTER("race", std::string) {
+	return ut.race_id();
+}
+
+UNIT_TYPE_GETTER("image", std::string) {
+	return ut.image();
+}
+
+UNIT_TYPE_GETTER("icon", std::string) {
+	return ut.icon();
+}
+
+UNIT_TYPE_GETTER("profile", std::string) {
+	return ut.big_profile();
+}
+
+UNIT_TYPE_GETTER("small_profile", std::string) {
+	return ut.small_profile();
+}
+
+UNIT_TYPE_GETTER("max_hitpoints", int) {
+	return ut.hitpoints();
+}
+
+UNIT_TYPE_GETTER("max_moves", int) {
+	return ut.movement();
+}
+
+UNIT_TYPE_GETTER("max_experience", int) {
+	return ut.experience_needed();
+}
+
+UNIT_TYPE_GETTER("cost", int) {
+	return ut.cost();
+}
+
+UNIT_TYPE_GETTER("level", int) {
+	return ut.level();
+}
+
+UNIT_TYPE_GETTER("recall_cost", int) {
+	return ut.recall_cost();
+}
+
+UNIT_TYPE_GETTER("advances_to", std::vector<std::string>) {
+	return ut.advances_to();
+}
+
+UNIT_TYPE_GETTER("advances_from", std::vector<std::string>) {
+	return ut.advances_from();
+}
+
+UNIT_TYPE_GETTER("__cfg", config) {
+	return ut.get_cfg();
+}
+
+using traits_map = std::map<std::string,config>;
+UNIT_TYPE_GETTER("traits", traits_map) {
+	traits_map traits;
+	for (const config& trait : ut.possible_traits()) {
+		traits.emplace(trait["id"], trait);
+	}
+	return traits;
+}
+
+UNIT_TYPE_GETTER("abilities", std::vector<std::string>) {
+	return ut.get_ability_list();
+}
+
+UNIT_TYPE_GETTER("attacks", lua_index_raw) {
+	(void)ut;
+	push_unit_attacks_table(L, 1);
+	return lua_index_raw(L);
+}
+
+UNIT_TYPE_VALID("variations") {
+	return ut.variation_id().empty();
+}
+
+UNIT_TYPE_GETTER("variations", lua_index_raw) {
+	// TODO: Should this only exist for base units?
+	*new(L) const unit_type* = &ut;
+	luaL_setmetatable(L, UnitTypeTable);
+	return lua_index_raw(L);
+}
+
 /**
  * Gets some data on a unit type (__index metamethod).
  * - Arg 1: table containing an "id" field.
@@ -40,52 +150,16 @@ static const char UnitTypeTable[] = "unit types";
  */
 static int impl_unit_type_get(lua_State *L)
 {
-	const unit_type& ut = luaW_checkunittype(L, 1);
-	char const *m = luaL_checkstring(L, 2);
+	return unitTypeReg.get(L);
+}
 
-	// Find the corresponding attribute.
-	return_tstring_attrib("name", ut.type_name());
-	return_string_attrib("id", ut.id());
-	return_string_attrib("alignment", unit_alignments::get_string(ut.alignment()));
-	return_string_attrib("race", ut.race_id());
-	return_string_attrib("image", ut.image());
-	return_string_attrib("icon", ut.icon());
-	return_string_attrib("profile", ut.big_profile());
-	return_string_attrib("small_profile", ut.small_profile());
-	return_int_attrib("max_hitpoints", ut.hitpoints());
-	return_int_attrib("max_moves", ut.movement());
-	return_int_attrib("max_experience", ut.experience_needed());
-	return_int_attrib("cost", ut.cost());
-	return_int_attrib("level", ut.level());
-	return_int_attrib("recall_cost", ut.recall_cost());
-	return_vector_string_attrib("advances_to", ut.advances_to());
-	return_vector_string_attrib("advances_from", ut.advances_from());
-	return_cfgref_attrib("__cfg", ut.get_cfg());
-	if (strcmp(m, "traits") == 0) {
-		lua_newtable(L);
-		for (const config& trait : ut.possible_traits()) {
-			const std::string& id = trait["id"];
-			lua_pushlstring(L, id.c_str(), id.length());
-			luaW_pushconfig(L, trait);
-			lua_rawset(L, -3);
-		}
-		return 1;
-	}
-	if (strcmp(m, "abilities") == 0) {
-		lua_push(L, ut.get_ability_list());
-		return 1;
-	}
-	if (strcmp(m, "attacks") == 0) {
-		push_unit_attacks_table(L, 1);
-		return 1;
-	}
-	// TODO: Should this only exist for base units?
-	if(strcmp(m, "variations") == 0) {
-		*new(L) const unit_type* = &ut;
-		luaL_setmetatable(L, UnitTypeTable);
-		return 1;
-	}
-	return 0;
+/**
+ * Gets a list of data on a unit type (__dir metamethod).
+ * - Ret 1: a list of attributes.
+ */
+static int impl_unit_type_dir(lua_State *L)
+{
+	return unitTypeReg.dir(L);
 }
 
 static int impl_unit_type_equal(lua_State* L)
@@ -96,6 +170,26 @@ static int impl_unit_type_equal(lua_State* L)
 	} else {
 		lua_pushboolean(L, false);
 	}
+	return 1;
+}
+
+static int impl_unit_type_list(lua_State* L) {
+	std::vector<std::string> keys;
+	if(const unit_type* base = *static_cast<const unit_type**>(luaL_testudata(L, 1, UnitTypeTable))) {
+		keys = base->variations();
+		if(base->has_gender_variation(unit_race::MALE)) {
+			keys.push_back("male");
+		}
+		if(base->has_gender_variation(unit_race::FEMALE)) {
+			keys.push_back("female");
+		}
+	} else {
+		keys.reserve(unit_types.types().size());
+		for(const auto& p : unit_types.types()) {
+			keys.push_back(p.first);
+		}
+	}
+	lua_push(L, keys);
 	return 1;
 }
 
@@ -210,6 +304,8 @@ namespace lua_unit_type {
 
 		lua_pushcfunction(L, impl_unit_type_get);
 		lua_setfield(L, -2, "__index");
+		lua_pushcfunction(L, impl_unit_type_dir);
+		lua_setfield(L, -2, "__dir");
 		lua_pushcfunction(L, impl_unit_type_tostring);
 		lua_setfield(L, -2, "__tostring");
 		lua_pushcfunction(L, impl_unit_type_equal);
@@ -227,6 +323,8 @@ namespace lua_unit_type {
 		luaL_newmetatable(L, UnitTypeTable);
 		lua_pushcfunction(L, impl_unit_type_lookup);
 		lua_setfield(L, -2, "__index");
+		lua_pushcfunction(L, impl_unit_type_list);
+		lua_setfield(L, -2, "__dir");
 		lua_pushcfunction(L, impl_unit_type_new);
 		lua_setfield(L, -2, "__newindex");
 		lua_pushcfunction(L, impl_unit_type_count);

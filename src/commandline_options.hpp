@@ -17,7 +17,7 @@
 
 #include "log.hpp"                      // for logger, set_strict_severity, etc
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #include <boost/program_options/options_description.hpp>
 #include <iosfwd>                       // for ostream
@@ -54,21 +54,21 @@ public:
 	bool any_validation_option() const;
 
 	/** Non-empty if --campaign was given on the command line. ID of the campaign we want to start. */
-	std::optional<std::string> campaign;
+	utils::optional<std::string> campaign;
 	/** Non-empty if --campaign-difficulty was given on the command line. Numerical difficulty of the campaign to be played. Dependent on --campaign. */
-	std::optional<int> campaign_difficulty;
+	utils::optional<int> campaign_difficulty;
 	/** Non-empty if --campaign-scenario was given on the command line. Chooses starting scenario in the campaign to be played. Dependent on --campaign. */
-	std::optional<std::string> campaign_scenario;
+	utils::optional<std::string> campaign_scenario;
 	/** True if --skip-story was given on the command line. Skips [story] and [message]s through the end of the "start" event. Dependent on --campaign. */
 	bool campaign_skip_story;
 	/** True if --clock was given on the command line. Enables */
 	bool clock;
 	/** Non-empty if --core was given on the command line. Chooses the core to be loaded. */
-	std::optional<std::string> core_id;
+	utils::optional<std::string> core_id;
 	/** True if --data-path was given on the command line. Prints path to data directory and exits. */
 	bool data_path;
 	/** Non-empty if --data-dir was given on the command line. Sets the config dir to the specified one. */
-	std::optional<std::string> data_dir;
+	utils::optional<std::string> data_dir;
 	/** True if --debug was given on the command line. Enables debug mode. */
 	bool debug;
 	/** True if --debug-lua was given in the commandline. Enables some Lua debugging mechanisms. */
@@ -83,12 +83,12 @@ public:
 	bool allow_insecure;
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	/** Non-empty if --debug-dot-domain was given on the command line. */
-	std::optional<std::string> debug_dot_domain;
+	utils::optional<std::string> debug_dot_domain;
 	/** Non-empty if --debug-dot-level was given on the command line. */
-	std::optional<std::string> debug_dot_level;
+	utils::optional<std::string> debug_dot_level;
 #endif
 	/** Non-empty if --editor was given on the command line. Goes directly into editor. If string is longer than 0, it contains path to the file to edit. */
-	std::optional<std::string> editor;
+	utils::optional<std::string> editor;
 	/** True if --fps was given on the command line. Shows number of fps. */
 	bool fps;
 	/** True if --fullscreen was given on the command line. Starts Wesnoth in fullscreen mode. */
@@ -96,48 +96,48 @@ public:
 	/** True if --help was given on the command line. Prints help and exits. */
 	bool help;
 	/** Non-empty if --language was given on the command line. Sets the language for this session. */
-	std::optional<std::string> language;
+	utils::optional<std::string> language;
 	/**
 	 * Contains parsed arguments of --log-* (e.g. --log-debug).
 	 * Vector of pairs (severity, log domain).
 	 */
-	std::optional<std::vector<std::pair<lg::severity, std::string>>> log;
+	utils::optional<std::vector<std::pair<lg::severity, std::string>>> log;
 	/** Non-empty if --log-strict was given */
-	std::optional<int> log_strict_level;
+	utils::optional<int> log_strict_level;
 	/** Non-empty if --load was given on the command line. Savegame specified to load after start. */
-	std::optional<std::string> load;
+	utils::optional<std::string> load;
 	/** Non-empty if --logdomains was given on the command line. Prints possible logdomains filtered by given string and exits. */
-	std::optional<std::string> logdomains;
+	utils::optional<std::string> logdomains;
 	/** True if --log-precise was given on the command line. Shows timestamps in log with more precision. */
 	bool log_precise_timestamps;
 	/** True if --multiplayer was given on the command line. Goes directly into multiplayer mode. */
 	bool multiplayer;
 	/** Non-empty if --ai-config was given on the command line. Vector of pairs (side number, value). Dependent on --multiplayer. */
-	std::optional<std::vector<std::pair<unsigned int, std::string>>> multiplayer_ai_config;
+	utils::optional<std::vector<std::pair<unsigned int, std::string>>> multiplayer_ai_config;
 	/** Non-empty if --algorithm was given on the command line. Vector of pairs (side number, value). Dependent on --multiplayer. */
-	std::optional<std::vector<std::pair<unsigned int, std::string>>> multiplayer_algorithm;
+	utils::optional<std::vector<std::pair<unsigned int, std::string>>> multiplayer_algorithm;
 	/** Non-empty if --controller was given on the command line. Vector of pairs (side number, controller). Dependent on --multiplayer. */
-	std::optional<std::vector<std::pair<unsigned int, std::string>>> multiplayer_controller;
+	utils::optional<std::vector<std::pair<unsigned int, std::string>>> multiplayer_controller;
 	/** Non-empty if --era was given on the command line. Dependent on --multiplayer. */
-	std::optional<std::string> multiplayer_era;
+	utils::optional<std::string> multiplayer_era;
 	/** True if --exit-at-and was given on the command line. Dependent on --multiplayer. */
 	bool multiplayer_exit_at_end;
 	/** True if --ignore-map-settings was given at the command line.  Do not use map settings. */
 	bool multiplayer_ignore_map_settings;
 	/** Non-empty if --label was given on the command line. Dependent on --multiplayer. */
-	std::optional<std::string> multiplayer_label;
+	utils::optional<std::string> multiplayer_label;
 	/** Non-empty if --parm was given on the command line. Vector of pairs (side number, parm name, parm value). Dependent on --multiplayer. */
-	std::optional<std::vector<std::tuple<unsigned int, std::string, std::string>>> multiplayer_parm;
+	utils::optional<std::vector<std::tuple<unsigned int, std::string, std::string>>> multiplayer_parm;
 	/** Repeats specified by --multiplayer-repeat option. Repeats a multiplayer game after it is finished. Dependent on --multiplayer. */
-	std::optional<unsigned int> multiplayer_repeat;
+	utils::optional<unsigned int> multiplayer_repeat;
 	/** Non-empty if --scenario was given on the command line. Dependent on --multiplayer. */
-	std::optional<std::string> multiplayer_scenario;
+	utils::optional<std::string> multiplayer_scenario;
 	/** Non-empty if --side was given on the command line. Vector of pairs (side number, faction id). Dependent on --multiplayer. */
-	std::optional<std::vector<std::pair<unsigned int, std::string>>> multiplayer_side;
+	utils::optional<std::vector<std::pair<unsigned int, std::string>>> multiplayer_side;
 	/** Non-empty if --turns was given on the command line. Dependent on --multiplayer. */
-	std::optional<std::string> multiplayer_turns;
+	utils::optional<std::string> multiplayer_turns;
 	/** Max FPS specified by --max-fps option. */
-	std::optional<int> max_fps;
+	utils::optional<int> max_fps;
 	/** True if --noaddons was given on the command line. Disables the loading of all add-ons. */
 	bool noaddons;
 	/** True if --nocache was given on the command line. Disables cache usage. */
@@ -157,45 +157,47 @@ public:
 	/** True if --preprocess was given on the command line. Starts Wesnoth in preprocessor-only mode. */
 	bool preprocess;
 	/** Defines that were given to the --preprocess option. */
-	std::optional<std::vector<std::string>> preprocess_defines;
+	utils::optional<std::vector<std::string>> preprocess_defines;
 	/** Non-empty if --preprocess-input-macros was given on the command line. Specifies a file that contains [preproc_define]s to be included before preprocessing. Dependent on --preprocess. */
-	std::optional<std::string> preprocess_input_macros;
+	utils::optional<std::string> preprocess_input_macros;
 	/** Non-empty if --preprocess-output-macros was given on the command line. Outputs all preprocessed macros to the specified file. Dependent on --preprocess. */
-	std::optional<std::string> preprocess_output_macros;
+	utils::optional<std::string> preprocess_output_macros;
 	/** Path to parse that was given to the --preprocess option. */
-	std::optional<std::string> preprocess_path;
+	utils::optional<std::string> preprocess_path;
 	/** Target (output) path that was given to the --preprocess option. */
-	std::optional<std::string> preprocess_target;
+	utils::optional<std::string> preprocess_target;
 	/** Pair of AxB values specified after --resolution. Changes Wesnoth resolution. */
-	std::optional<std::pair<int,int>> resolution;
+	utils::optional<std::pair<int,int>> resolution;
 	/** RNG seed specified by --rng-seed option. Initializes RNG with given seed. */
-	std::optional<unsigned int> rng_seed;
+	utils::optional<unsigned int> rng_seed;
 	/** Non-empty if --server was given on the command line.  Connects Wesnoth to specified server. If no server was specified afterwards, contains an empty string. */
-	std::optional<std::string> server;
+	utils::optional<std::string> server;
 	/** Non-empty if --username was given on the command line. Forces Wesnoth to use this network username. */
-	std::optional<std::string> username;
+	utils::optional<std::string> username;
 	/** Non-empty if --password was given on the command line. Forces Wesnoth to use this network password. */
-	std::optional<std::string> password;
+	utils::optional<std::string> password;
 	/** Image path to render. First parameter after --render-image */
-	std::optional<std::string> render_image;
+	utils::optional<std::string> render_image;
 	/** Output file to put rendered image path in. Optional second parameter after --render-image */
-	std::optional<std::string> render_image_dst;
+	utils::optional<std::string> render_image_dst;
+  /** Path of which to generate a spritesheet */
+	utils::optional<std::string> generate_spritesheet;
 	/** True if --screenshot was given on the command line. Starts Wesnoth in screenshot mode. */
 	bool screenshot;
 	/** Map file to make a screenshot of. First parameter given after --screenshot. */
-	std::optional<std::string> screenshot_map_file;
+	utils::optional<std::string> screenshot_map_file;
 	/** Output file to put screenshot in. Second parameter given after --screenshot. */
-	std::optional<std::string> screenshot_output_file;
+	utils::optional<std::string> screenshot_output_file;
 	/** File to load lua script from. */
-	std::optional<std::string> script_file;
+	utils::optional<std::string> script_file;
 	/** File to load a lua plugin (similar to a script) from. Experimental / may replace script. */
-	std::optional<std::string> plugin_file;
+	utils::optional<std::string> plugin_file;
 	/** Whether to load the "package" package for the scripting environment. (This allows to load arbitrary lua packages, and gives untrusted lua the same permissions as wesnoth executable) */
 	bool script_unsafe_mode;
 	/** True if --strict-validation was given on the command line. Makes Wesnoth trust validation errors as fatal WML errors and create WML exception, if so. */
 	bool strict_validation;
 	/** Non-empty if --test was given on the command line. Goes directly into test mode, into a scenario, if specified. */
-	std::optional<std::string> test;
+	utils::optional<std::string> test;
 	/** Non-empty if --unit was given on the command line. Goes directly into unit test mode, into a scenario, if specified. */
 	std::vector<std::string> unit_test;
 	/** True if --unit is used and --showgui is not present. */
@@ -207,29 +209,25 @@ public:
 	/** True if --usercache-path was given on the command line. Prints path to cache directory and exits. */
 	bool usercache_path;
 	/** Non-empty if --usercache-dir was given on the command line. Sets the cache dir to the specified one. */
-	std::optional<std::string> usercache_dir;
-	/** True if --userconfig-path was given on the command line. Prints path to user config directory and exits. */
-	bool userconfig_path;
-	/** Non-empty if --userconfig-dir was given on the command line. Sets the user config dir to the specified one. */
-	std::optional<std::string> userconfig_dir;
+	utils::optional<std::string> usercache_dir;
 	/** True if --userdata-path was given on the command line. Prints path to user data directory and exits. */
 	bool userdata_path;
 	/** Non-empty if --userdata-dir was given on the command line. Sets the user data dir to the specified one. */
-	std::optional<std::string> userdata_dir;
+	utils::optional<std::string> userdata_dir;
 	/** True if --validcache was given on the command line. Makes Wesnoth assume the cache is valid. */
 	bool validcache;
 	/** True if --validate-core was given on the command line. Makes Wesnoth validate the core WML. */
 	bool validate_core;
 	/** Non-empty if --validate-addon was given on the command line. Makes Wesnoth validate an addon's WML. */
-	std::optional<std::string> validate_addon;
+	utils::optional<std::string> validate_addon;
 	/** Non-empty if --validate-schema was given on the command line. Makes Wesnoth validate a WML schema. */
-	std::optional<std::string> validate_schema;
+	utils::optional<std::string> validate_schema;
 	/** Non-empty if --validate was given on the command line. Makes Wesnoth validate a WML file against a schema. */
-	std::optional<std::string> validate_wml;
+	utils::optional<std::string> validate_wml;
 	/** Non-empty if --use-schema was given on the command line. Specifies the schema for use with --validate. */
-	std::optional<std::string> validate_with;
+	utils::optional<std::string> validate_with;
 	/** Output filename for WML diff or preprocessing */
-	std::optional<std::string> output_file;
+	utils::optional<std::string> output_file;
 	bool do_diff, do_patch;
 	/** Files for diffing or patching */
 	std::string diff_left, diff_right;
@@ -243,8 +241,21 @@ public:
 	bool windowed;
 	/** True if --with-replay was given on the command line. Shows replay of the loaded file. */
 	bool with_replay;
+#ifdef _WIN32
+	/** True if --wnoconsole was given on the command line. Prevents logs from being written to the console window if Wesnoth is launched from the command prompt on Windows. */
+	bool no_console;
+#endif
+	/** True if --no-log-sanitize was given on the command line. Prevents removal of OS user from file paths in log files. */
+	bool no_log_sanitize;
+	/**
+	 * True if --log-to-file was given on the command line.
+	 * Forces output to be written to a log file. Takes priority over any arguments that implicitly prevent logging to file.
+	 */
+	bool log_to_file;
+	/** True if --no-log-to-file was given on the command line. Results in logs not being redirected to a log file. */
+	bool no_log_to_file;
 	/** Non-empty if --all-translations or --translations-over is given on the command line. */
-	std::optional<unsigned int> translation_percent;
+	utils::optional<unsigned int> translation_percent;
 private:
 	void parse_log_domains_(const std::string &domains_string, const lg::severity severity);
 	void parse_log_strictness (const std::string &severity);

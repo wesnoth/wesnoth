@@ -81,11 +81,6 @@ void surface::free_surface()
 	}
 }
 
-bool operator<(const surface& a, const surface& b)
-{
-	return a.get() < b.get();
-}
-
 std::ostream& operator<<(std::ostream& stream, const surface& surf)
 {
 	if(!surf.get()) {

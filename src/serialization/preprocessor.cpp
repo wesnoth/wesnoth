@@ -52,8 +52,6 @@ static bool encode_filename = true;
 
 static std::string preprocessor_error_detail_prefix = "\n    ";
 
-static const char OUTPUT_SEPARATOR = '\xFE';
-
 // get filename associated to this code
 static std::string get_filename(const std::string& file_code)
 {
@@ -482,11 +480,11 @@ void preprocessor_streambuf::restore_old_preprocessor()
 	preprocessor* current = this->current();
 
 	if(!current->old_location_.empty()) {
-		buffer_ << OUTPUT_SEPARATOR << "line " << current->old_linenum_ << ' ' << current->old_location_ << '\n';
+		buffer_ << INLINED_PREPROCESS_DIRECTIVE_CHAR << "line " << current->old_linenum_ << ' ' << current->old_location_ << '\n';
 	}
 
 	if(!current->old_textdomain_.empty() && textdomain_ != current->old_textdomain_) {
-		buffer_ << OUTPUT_SEPARATOR << "textdomain " << current->old_textdomain_ << '\n';
+		buffer_ << INLINED_PREPROCESS_DIRECTIVE_CHAR << "textdomain " << current->old_textdomain_ << '\n';
 	}
 
 	location_ = current->old_location_;
@@ -866,10 +864,10 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf& t,
 	t.location_ = s.str();
 	t.linenum_ = linenum;
 
-	t.buffer_ << OUTPUT_SEPARATOR << "line " << linenum << ' ' << t.location_ << '\n';
+	t.buffer_ << INLINED_PREPROCESS_DIRECTIVE_CHAR << "line " << linenum << ' ' << t.location_ << '\n';
 
 	if(t.textdomain_ != domain) {
-		t.buffer_ << OUTPUT_SEPARATOR << "textdomain " << domain << '\n';
+		t.buffer_ << INLINED_PREPROCESS_DIRECTIVE_CHAR << "textdomain " << domain << '\n';
 		t.textdomain_ = domain;
 	}
 
@@ -899,8 +897,8 @@ void preprocessor_data::push_token(token_desc::token_type t)
 
 	std::ostringstream s;
 	if(!skipping_ && slowpath_) {
-		s << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << parent_.location_ << "\n"
-		  << OUTPUT_SEPARATOR << "textdomain " << parent_.textdomain_ << '\n';
+		s << INLINED_PREPROCESS_DIRECTIVE_CHAR << "line " << linenum_ << ' ' << parent_.location_ << "\n"
+		  << INLINED_PREPROCESS_DIRECTIVE_CHAR << "textdomain " << parent_.textdomain_ << '\n';
 	}
 
 	strings_.push_back(s.str());
@@ -1050,7 +1048,7 @@ void preprocessor_data::put(char c)
 		if(diff <= parent_.location_.size() + 11) {
 			parent_.buffer_ << std::string(diff, '\n');
 		} else {
-			parent_.buffer_ << OUTPUT_SEPARATOR << "line " << parent_.linenum_ << ' ' << parent_.location_ << '\n';
+			parent_.buffer_ << INLINED_PREPROCESS_DIRECTIVE_CHAR << "line " << parent_.linenum_ << ' ' << parent_.location_ << '\n';
 		}
 	}
 
@@ -1128,7 +1126,7 @@ bool preprocessor_data::get_chunk()
 		++linenum_;
 	}
 
-	if(c == OUTPUT_SEPARATOR) {
+	if(c == INLINED_PREPROCESS_DIRECTIVE_CHAR) {
 		std::string buffer(1, c);
 
 		while(true) {
@@ -1190,7 +1188,7 @@ bool preprocessor_data::get_chunk()
 			std::string symbol = items.front();
 			items.erase(items.begin());
 			int found_arg = 0, found_enddef = 0, found_deprecate = 0;
-			std::optional<DEP_LEVEL> deprecation_level;
+			utils::optional<DEP_LEVEL> deprecation_level;
 			std::string buffer, deprecation_detail;
 			version_info deprecation_version = game_config::wesnoth_version;
 			while(true) {
@@ -1336,7 +1334,7 @@ bool preprocessor_data::get_chunk()
 			if(symbol.empty()) {
 				parent_.error("No path argument found after #ifhave/#ifnhave directive", linenum_);
 			}
-			bool found = !filesystem::get_wml_location(symbol, directory_).empty();
+			bool found = filesystem::get_wml_location(symbol, directory_).has_value();
 			DBG_PREPROC << "testing for file or directory " << symbol << ": " << (found ? "found" : "not found");
 			conditional_skip(negate ? found : !found);
 		} else if(command == "ifver" || command == "ifnver") {
@@ -1491,7 +1489,7 @@ bool preprocessor_data::get_chunk()
 
 			std::string symbol = strings_[token.stack_pos];
 			std::string::size_type pos;
-			while((pos = symbol.find(OUTPUT_SEPARATOR)) != std::string::npos) {
+			while((pos = symbol.find(INLINED_PREPROCESS_DIRECTIVE_CHAR)) != std::string::npos) {
 				std::string::iterator b = symbol.begin(); // invalidated at each iteration
 				symbol.erase(b + pos, b + symbol.find('\n', pos + 1) + 1);
 			}
@@ -1521,8 +1519,8 @@ bool preprocessor_data::get_chunk()
 				}
 
 				std::ostringstream v;
-				v << arg->second << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << parent_.location_ << "\n"
-				  << OUTPUT_SEPARATOR << "textdomain " << parent_.textdomain_ << '\n';
+				v << arg->second << INLINED_PREPROCESS_DIRECTIVE_CHAR << "line " << linenum_ << ' ' << parent_.location_ << "\n"
+				  << INLINED_PREPROCESS_DIRECTIVE_CHAR << "textdomain " << parent_.textdomain_ << '\n';
 
 				pop_token();
 				put(v.str());
@@ -1643,19 +1641,18 @@ bool preprocessor_data::get_chunk()
 				LOG_PREPROC << "Macro definition not found for " << symbol << ", attempting to open as file.";
 				pop_token();
 
-				std::string nfname = filesystem::get_wml_location(symbol, directory_);
-				if(!nfname.empty()) {
+				if(auto nfname = filesystem::get_wml_location(symbol, directory_)) {
 					if(!slowpath_)
 						// nfname.size() - symbol.size() gives you an index into nfname
 						// This does not necessarily match the symbol though, as it can start with ~ or ./
-						parent_.add_preprocessor<preprocessor_file>(nfname, nfname.size() - symbol.size());
+						parent_.add_preprocessor<preprocessor_file>(nfname.value(), nfname->size() - symbol.size());
 					else {
 						std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(parent_));
 
 						std::ostringstream res;
 						{
 							std::istream in(buf.get());
-							buf->add_preprocessor<preprocessor_file>(nfname, nfname.size() - symbol.size());
+							buf->add_preprocessor<preprocessor_file>(nfname.value(), nfname->size() - symbol.size());
 
 							res << in.rdbuf();
 						}
@@ -1673,8 +1670,8 @@ bool preprocessor_data::get_chunk()
 		} else if(!skipping_) {
 			if(token.type == token_desc::token_type::macro_space) {
 				std::ostringstream s;
-				s << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << parent_.location_ << "\n"
-				  << OUTPUT_SEPARATOR << "textdomain " << parent_.textdomain_ << '\n';
+				s << INLINED_PREPROCESS_DIRECTIVE_CHAR << "line " << linenum_ << ' ' << parent_.location_ << "\n"
+				  << INLINED_PREPROCESS_DIRECTIVE_CHAR << "textdomain " << parent_.textdomain_ << '\n';
 
 				strings_.push_back(s.str());
 				token.type = token_desc::token_type::macro_chunk;
@@ -1770,7 +1767,7 @@ void preprocess_resource(const std::string& res_name,
 
 		// Files in current directory
 		for(const std::string& file : files) {
-			if(filesystem::ends_with(file, ".cfg")) {
+			if(filesystem::is_cfg(file)) {
 				preprocess_resource(file, defines_map, write_cfg, write_plain_cfg, parent_directory);
 			}
 		}

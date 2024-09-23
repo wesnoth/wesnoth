@@ -25,7 +25,7 @@
 #include "persist_manager.hpp"
 #include "tod_manager.hpp"
 #include "game_state.hpp"
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #include <set>
 
@@ -126,8 +126,6 @@ public:
 		return gamestate().end_level_data_.has_value();
 	}
 
-	bool check_regular_game_end();
-
 	const end_level_data& get_end_level_data() const
 	{
 		return *gamestate().end_level_data_;
@@ -227,8 +225,6 @@ public:
 	void increase_server_request_number() { ++gamestate().server_request_number_; }
 
 	game_events::wml_event_pump& pump();
-
-	int get_ticks() const;
 
 	virtual soundsource::manager* get_soundsource_man() override;
 	virtual plugins_context* get_plugins_context() override;

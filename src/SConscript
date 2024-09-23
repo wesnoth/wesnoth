@@ -43,7 +43,7 @@ for environ in [test_env, client_env, env]:
             if not os.path.isabs(env['localedirname']):
                 environ.Append(CPPDEFINES = "HAS_RELATIVE_LOCALEDIR")
         if env['version_suffix'] and not env['prefsdir']:
-            environ['prefsdir'] = ".wesnoth$version_suffix"
+            environ['prefsdir'] = "~/.wesnoth$version_suffix"
         if environ['prefsdir']:
             environ.Append(CPPDEFINES = "PREFERENCES_DIR=\\\"$prefsdir\\\"")
     else:
@@ -155,8 +155,7 @@ def WesnothProgram(env, target, source, can_build, **kw):
     else:
         bin = env.Alias(target, [], error_action)
         AlwaysBuild(bin)
-    locals()[target] = bin
-    Export(target)
+    Export({target: bin})
     return bin
 
 for env in [test_env, client_env, env]:

@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/multiplayer/mp_options_helper.hpp"
 
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"
@@ -38,9 +38,9 @@ mp_options_helper::mp_options_helper(window& window, ng::create_engine& create_e
 	, visible_options_()
 	, options_data_()
 {
-	for(const auto c : preferences::options().all_children_range()) {
+	for(const auto c : prefs::get().options().all_children_range()) {
 		for(const auto& saved_option : c.cfg.child_range("option")) {
-			options_data_[c.cfg["id"]][saved_option["id"]] = saved_option["value"];
+			options_data_[c.cfg["id"]][saved_option["id"].str()] = saved_option["value"];
 		}
 	}
 

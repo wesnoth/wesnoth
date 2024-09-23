@@ -885,7 +885,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	 * more interesting types than the default.
 	 */
 	const height_map temperature_map = generate_height_map(data.width,data.height,
-		cfg["temperature_iterations"].to_int() * data.width * data.height / default_dimensions,
+		static_cast<size_t>(cfg["temperature_iterations"].to_int()) * data.width * data.height / default_dimensions,
 		cfg["temperature_size"], 0, 0);
 
 	LOG_NG << "Generated temperature map. " << (SDL_GetTicks() - ticks) << " ticks elapsed";

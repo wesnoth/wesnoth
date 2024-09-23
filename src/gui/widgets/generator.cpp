@@ -1070,10 +1070,8 @@ void selection::init(grid* g,
 
 void show::init(grid* grid,
 		const widget_data& data,
-		const std::function<void(widget&)>& callback)
+		const std::function<void(widget&)>& /*callback*/)
 {
-	assert(!callback);
-
 	for(const auto& item : data) {
 		if(item.first.empty()) {
 			for(unsigned row = 0; row < grid->get_rows(); ++row) {

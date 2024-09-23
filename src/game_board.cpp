@@ -17,7 +17,7 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "recall_list_manager.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
@@ -289,9 +289,9 @@ bool game_board::try_add_unit_to_recall_list(const map_location&, const unit_ptr
 	return true;
 }
 
-std::optional<std::string> game_board::replace_map(const gamemap& newmap)
+utils::optional<std::string> game_board::replace_map(const gamemap& newmap)
 {
-	std::optional<std::string> ret;
+	utils::optional<std::string> ret;
 
 	/* Remember the locations where a village is owned by a side. */
 	std::map<map_location, int> villages;
@@ -361,7 +361,7 @@ bool game_board::change_terrain(const map_location &loc, const t_translation::te
 		return false;
 	}
 
-	preferences::encountered_terrains().insert(new_t);
+	prefs::get().encountered_terrains().insert(new_t);
 
 	if(map_->tdata()->is_village(old_t) && !map_->tdata()->is_village(new_t)) {
 		int owner = village_owner(loc);
@@ -372,7 +372,7 @@ bool game_board::change_terrain(const map_location &loc, const t_translation::te
 	map_->set_terrain(loc, new_t);
 
 	for(const t_translation::terrain_code& ut : map_->underlying_union_terrain(loc)) {
-		preferences::encountered_terrains().insert(ut);
+		prefs::get().encountered_terrains().insert(ut);
 	}
 
 	return true;
@@ -382,17 +382,15 @@ void game_board::write_config(config& cfg) const
 {
 	cfg["next_underlying_unit_id"] = unit_id_manager_.get_save_id();
 
-	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		int side_num = std::distance(teams_.begin(), t) + 1;
-
+	for(const team& t : teams_) {
 		config& side = cfg.add_child("side");
-		t->write(side);
+		t.write(side);
 		side["no_leader"] = true;
-		side["side"] = std::to_string(side_num);
+		side["side"] = std::to_string(t.side());
 
 		// current units
 		for(const unit& i : units_) {
-			if(i.side() == side_num) {
+			if(i.side() == t.side()) {
 				config& u = side.add_child("unit");
 				i.get_location().write(u);
 				i.write(u, false);
@@ -400,7 +398,7 @@ void game_board::write_config(config& cfg) const
 		}
 
 		// recall list
-		for(const unit_const_ptr j : t->recall_list()) {
+		for(const unit_const_ptr j : t.recall_list()) {
 			config& u = side.add_child("unit");
 			j->write(u);
 		}

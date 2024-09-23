@@ -1,14 +1,173 @@
-## Version 1.19.0-dev
+## Version 1.19.4+dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
-   * Descent into Darkness
-     * S3: player now no longer gains any exp upon killing rats and crawlers, buffed puzzle exp to compensate
  ### Editor
  ### Multiplayer
  ### Lua API
  ### Packaging
  ### Terrain
+ ### Translations
+   * Updated translations: British English, Finnish, Italian, Turkish
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.19.4
+ ### Lua API
+   * Added new function gui.switch_theme() to allow switching to another gui2 theme from inside a scenario.
+   * Updated to lua 5.4.7
+ ### Translations
+   * Updated translations: Arabic, Bengali, British English, Chinese (Simplified), Czech, Italian, Japanese, Turkish, Ukrainian
+ ### Units
+   * Walking Corpse: arcane vulnerability reduced from 40% to 20%.
+   * Soulless: arcane vulnerability reduced from 40% to 20%.
+ ### User interface
+   * GUI2 themes can be loaded from add-ons. Requires a `gui-theme.cfg` file in add-on root with a `[gui]` tag that acts as the entry point for the theme.
+   * Option key is now identified as such instead of Alt in the Hotkeys preferences section on macOS builds
+   * Search filter should now be case-insensitive for more than just ASCII characters (#9328)
+   * Whirlpools no longer get submerged in water.
+   * The in-game chat now properly redraws over water and other animated terrain.
+   * Fixed items not appearing properly when submerged.
+ ### WML Engine
+   * Removed properties `unit.side` and `terrain.owner` from WFL. Use `unit.side_number` and `terrain.owner_side` instead.
+   * Fixed events with negative priority not being stored in save files.
+   * Events can now be added to abilities and weapon specials.
+
+## Version 1.19.3
+ ### Campaigns
+   * Under the Burnings Suns
+     * S04: added sprite for the Cold Dagger item (PR #9189)
+ ### Editor
+   * Added Show Tool Information toggle option in the menus and toolbar to allow hiding the informational tooltip on the edge of the screen that shows the current editor tool's usage and palette information
+ ### Translations
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, French
+ ### Units
+   * New cat units: Jumpcat, Forest Lion, and zombie/soulless cat
+ ### User interface
+   * Added a few more images that can be shown on the new titlescreen
+ ### WML Engine
+   * Fix crash when weapon specials' filters lead to infinite recursion (issue #8940)
+   * Updated xBRZ implementation to v1.8
+
+## Version 1.19.2
+ ### Campaigns
+   * Eastern Invasion
+     * fixed Gweddry having the wrong HP values
+     * fixed the king being neutral instead of lawful
+     * fixed "Dark Shape" from being neutral instead of chaotic
+     * the king can no longer wield the plague staff
+     * the king and generals can no longer recall undead veterans
+     * S04c: achievement now only triggers when escaping with all knights alive
+     * S11/S99: flying units can no longer enter prison cells via the river
+     * S12: fixed Dra-Nak (if present) having incorrect traits and portraits
+     * S17b: AI is now more forced to recruit only higher-level units when gold reserves get too high
+     * S99: prisoners now escape if their jailers are killed
+ ### Editor
+   * Rename Load Map to Load Map/Scenario (since it can load both), Edit Scenario to Edit Scenario Settings, Save Map to just Save.
+   * Rearrange menu order
+   * Add icon for the preferences menu item (used the preexisting settings.png icon)
+   * Open folder correctly at Add-on's scenario directory instead of editor/scenarios. (#8910)
+   * Show Save Scenario As only for Scenarios
+   * Use the settings.png icon for Preferences menu item
+   * Add functionality to "Loyal" checkbox (Unit tool -> Place unit -> Right click menu) (#8445)
+   * Show warning when maps are saved in scenarios folder or vice versa (#8911)
+   * Unit List moved to Units menu from File menu to reduce some pressure from the latter.
+   * Status Table menu item disabled since it does nothing. (Should be reenabled once the functionality has been added.)
+   * Improve reload functionality in Editor (F5). Reload happens directly from memory and no temp files are needed. Also, the undo/redo stacks will be preserved. (#9024)
+   * Time Schedule Editor
+     * Browse buttons now set wesnoth style paths instead of just pasting the absolute path returned by the file dialog
+     * Change text boxes from inactive to uneditable.
+     * Code generation improvements
+     * Add copyright notice to tod_new_schedule
+     * Confirmation messages
+     * Preview buttons for image and sound files and new icons for the preview button (2 sets : preview image and preview sound)
+   * Unit Type Editor
+     * Confirmation messages
+     * New icons for the preview button (2 sets : preview image and preview sound)
+   * Add-on menu
+     * Two new menu entries for (1) opening the Add-on selection dialog, (2) opening the folder corresponding to the Add-on. The open add-on folder option shows a GUI2 file dialog at the add-on's folder which can be used to open any file. If it is a loadable map/scenario it will be opened in the editor, otherwise the OS's default application for that file will be opened.
+   * File Dialog
+     * Redesigned with new icons
+     * New Open External button that opens selected file/folder in the platform's default application (independently of what pressing Open would do). This could be used to quickly open a folder or preview the file before actually selecting it.
+     * Extension checking and filename validation. (See #8911)
+ ### Translations
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, French, German, Ukrainian
+ ### User interface
+   * When a player types something into the Load Game filter box and then changes to a different version, apply the filter immediately instead of showing the full list of files.
+   * An updated design for the titlescreen has been added. This can be toggled in the Display preferences. (#8953)
+ ### WML Engine
+   * max_value and min_value can now be used with most abilities
+   * Added unit hits and unit misses events
+ ### Miscellaneous and Bug Fixes
+   * Server-side fix for the "Something is wrong with the addon version check database supporting the multiplayer lobby." error (issue #8805)
+   * Fixed the Load Game dialog forgetting the filename filter when changing directory
+   * Removed the config-dir, userconfig-dir, config-path, and userconfig-path commandline options
+   * Moved the editor, WML persist, saves, lua command history, and most of the preferences to a separate subfolder for all data that should be synced between multiple computers
+   * Fixed Plan Unit Advance modification causing incorrect XP colour in the Advance Unit dialogue (#9047)
+   * Fixed Plan Unit Advance modification preventing undo of the first action of each turn (#9047)
+
+## Version 1.19.1
+ ### Translations
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, French, Japanese, Ukrainian
+ ### Units
+   * Added a melee animation for the Dragoon and Cavalier.
+   * Added a wounded bob animation for the Cavalier.
+ ### WML Engine
+   * Modified 'apply_to' in [experimental_filter_ability(_active)] or [overwrite][experimental_filter_specials] to do an inclusion check for a comma-separated list of damage types in [resistance] abilities.
+   * Removed the deprecated 'controller=number' from [side]
+ ### Miscellaneous and Bug Fixes
+   * Fixed erroneous sidebar text caused by [damage_type] assuming that an alternate_type is always present.
+
+## Version 1.19.0
+ ### Add-ons client
+   * Show the server ID in the Add-ons Manager
+   * The add-ons server identifier (e.g. 1.18) is now displayed on the bottom left after the server address. If debug mode is enabled the server software version is also shown.
+ ### Campaigns
+   * Descent into Darkness
+     * S3: player now no longer gains any exp upon killing rats and crawlers, buffed puzzle exp to compensate
+   * Eastern Invasion
+     * Prevent Dacyn from picking up a different staff (issue #8885)
+     * Reduce Barrow/Pyre Wight vulnerability to arcane
+     * S14: indicate uncleared swamp hexes with "swamp reed" images
+     * Many minor bugfixes
+   * Liberty
+     * Custom unit and portrait for Lord Maddock
+   * Sceptre of Fire
+     * S7: fewer and slower enemies, to balance the buff to the Elvish Outrider unit type
+   * Tutorial
+     * Better timing for some of the hints
+   * Under the Burnings Suns
+     * S01: the luck involved in getting units from villages is now fairer
+   * Secrets of the Ancients
+     * S16: Keep Crelanu within his ring of protective holy waters (issue #8361)
+   * Winds of Fate
+     * Avoid a Lua error that only triggered on Windows in locales that use commas as the decimal separator
+     * Rebalanced enemies and enemy gold from S6 onwards
+     * S08: clarify the objectives
+   * World Conquest
+      Fix World Conquest's Help dialog showing double scrollbars due to the left tree having it's vertical scrollbar disabled. Changed both vertical and horizontal scrollbar modes to automatic. (issue #8576)
+ ### Editor
+   * Allow loading .mask files
+   * New UI in the Scenario Editor that allows to create custom unit types, accessible by Unit menu > New Unit Type.
+ ### Multiplayer
+   * The default settings for the timer are now 240 seconds turn bonus, with no action bonus
+   * The full map is no longer revealed in linger mode by default, so it behaves similarly to SP mode for campaigns
+   * Refactor the code which determines when actions can be undone, and when actions are sent to the server
+   * In the Aethermaw map, Sulla's title has been changed to Aether Mage and prose slightly rewritten to include this change.
+   * Fixed some old paths to unit images being used in Aethermaw (issue #8432)
+   * Moved the Dunefolk into Default era. The "+Dunefolk" eras have been removed.
+ ### Lua API
+   * Overhaul of the API to use named tuples instead of `data[1]`, `data[2]`, etc
+   * Locations returned by the API are now named tuples, so their data can be accessed as `location.x` and `location.y`
+   * Objects with `x` and `y` data members can generally be passed to APIs that expect a location
+ ### Packaging
+   * Fixed build with Boost 1.85
+   * Increased the minimum required SDL version from 2.0.10 to 2.0.18 for non-macOS platforms (macOS already requires 2.0.22)
+ ### Terrain
+   * Oasis is now a mixed terrain, adding shallow water to the base terrain, and defaulting to Sand as the base terrain
+   * The help browser now considers the default base of mixed terrains when adding them to the help tree
  ### Translations
    * Updated translations: Arabic, Bengali, British English, Bulgarian, Chinese (Traditional), Czech, Dutch, Finnish, French, German, Italian, Japanese, Norwegian, Polish, Russian, Slovak, Spanish, Ukrainian
    * Added new font "Lohit-Bengali.ttf" to support Bengali translation
@@ -19,9 +178,51 @@
    * Elvish Enchantress - decreased ranged slow attack from 7×4 to 6×4, decreased ranged magical attack from 13×4 to 11×4, decreased cost from 70 to 62, decreased XP requirement from 198 to 180
    * Elvish Sylph - decreased ranged magical attack from 16×5 to 13×5, decreased cost from 161 to 135
    * Added new Fire Wisp unit
+   * Added portraits for Skeletal Rider, Wyvern, TSG’s Eyestalk, TRoW’s vampire lady, and an alternative portrait for bears
+   * Elvish Enchantress - description for 'entangle' changed to 'ethereal web', icon changed.
+   * Elvish Sylph - description for 'gossamer' changed to 'ethereal web'.
+   * Mudcrawler and Giant Mudcrawler - increased swamp defense from 40% to 60%, swamp movement penalty reduced from 2 to 1, castle and village defense reduced from 60% to 50%
  ### User interface
+   * Added a button to the build info dialog to rerun the 1.16 to 1.18 migration tool (issue #7936)
+   * Use a gold completion laurel for campaigns with only one difficulty setting
+   * Refined the layout of the Load Game dialog
+   * New texture-based minimap rendering
+   * Added a "Teleport Unit" option to the debug menu
+   * The campaign list in New Campaign dialog now supports filtering campaigns by whether they have been completed and at which difficulty.
+   * Redesigned story screen layout with new graphics
+   * Game version dialog redesigned to act as an general purpose About dialog.
+   * Community dialog moved to About dialog as a new tab. Community button removed from title screen.
+   * Credits button moved from Title Screen into About dialog.
+   * Success indication mechanism on buttons. Currently used only for copy buttons.
+   * Slight reorganization of title screen buttons.
+   * Add a Community button to the title screen to link to the forums, discord, etc.
+   * Overhauled the Language selection dialog to make it more informative, including displaying translation progress and making it easier to select highly-incomplete translations.
+   * Made the Changelog option in the macOS app menu link to the changelog for the particular Wesnoth app version rather than the Git master branch changelog.
+   * Added unit type level as a filter criterion in the Recruit Unit dialog.
+   * Added unit race and alignment as additional filter criteria in the Recall Unit dialog.
+   * Fixed timing issue with the outro screen's text fading effect that made it so fast as to be unnoticeable on many hardware configurations.
  ### WML Engine
+   * Fixed the Ambush ability not working in Bluff/Glutch Forest terrain
+   * Multiple fixes to replay handling
+   * Image Path Functions now accept percentages for scaling sizes
+   * The AMLAs that a unit has are now accessible via WFL
+   * new combobox and tab_container widgets
+   * editability in text box via the editable key
+   * add [filter_wml] to [experimental_filter_ability(_active)] or [overwrite][experimental_filter_specials]
+   * Added support for `value="default"` to ability filters to match abilities using their default `value` (by explicit setting or absence)
  ### Miscellaneous and Bug Fixes
+   * Remove special handling of config directory on Linux, use the userdata folder as on Windows and MacOS (#8848)
+   * Added new `color_range` palettes `yellow` and `pink`
+   * Added environment variable `WESNOTH_NO_LOG_FILE`, equivalent to the `--no-log-to-file` command line flag
+   * Fixed attack calculations when resistances counter `[damage_type]alternative_type=`
+   * Fixed replays marking achievements as complete (issue #8858)
+   * Fixed a crash in the recall dialog when turning off all sorting options (issue #8878)
+   * Fixed clicking on a trait in the sidebar sometimes opening the wrong trait’s help page
+   * Removed wesnothd’s unused threads command line options
+   * Fixed a bug causing excessive pixellation of scaled images
+   * General cleanup of unnecessary C++ header file includes
+   * Trying to load an image filename ending ".jpg" will now automatically try ".webp" if the ".jpg" isn’t found.
+   * Fix: releasing a mouse button at the same time as a dialog pops up sometimes dismissed the dialog immediately (issue #8644)
 
 ## Version 1.17.26
  ### Campaigns

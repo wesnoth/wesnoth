@@ -291,8 +291,8 @@ const std::vector<std::string>& map_labels::all_categories() const
 		categories.clear();
 		categories.push_back("team");
 
-		for(std::size_t i = 1; i <= resources::gameboard->teams().size(); i++) {
-			categories.push_back("side:" + std::to_string(i));
+		for(const team& t : resources::gameboard->teams()) {
+			categories.push_back("side:" + std::to_string(t.side()));
 		}
 
 		std::set<std::string> unique_cats;

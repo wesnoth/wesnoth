@@ -37,6 +37,10 @@ public:
 			const config& level);
 
 	~game_display();
+
+	game_display(const game_display&) = delete;
+	game_display& operator=(const game_display&) = delete;
+
 	static game_display* get_singleton()
 	{
 		return static_cast<game_display*>(singleton_);
@@ -194,9 +198,6 @@ public:
 	static int& debug_highlight(const map_location& loc);
 	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
-	/** The playing team is the team whose turn it is. */
-	virtual int playing_side() const override { return static_cast<int>(activeTeam_) + 1; }
-
 	std::string current_team_name() const;
 
 	display_chat_manager & get_chat_manager() { return *chat_man_; }
@@ -227,9 +228,6 @@ public:
 	bool maybe_rebuild();
 
 private:
-	game_display(const game_display&);
-	void operator=(const game_display&);
-
 	overlay_map overlay_map_;
 
 	// Locations of the attack direction indicator's parts

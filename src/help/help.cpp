@@ -25,7 +25,7 @@
 #include "config.hpp"                   // for config, etc
 #include "events.hpp"                   // for draw, pump, etc
 #include "font/constants.hpp"           // for relative_size
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "game_config_manager.hpp"
 #include "gettext.hpp"                  // for _
 #include "help/help_browser.hpp"        // for help_browser
@@ -216,14 +216,14 @@ void show_with_toplevel(const section &toplevel_sec,
 	// needed to create the help topics
 	unit_types.build_all(unit_type::HELP_INDEXED);
 
-	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
-		preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
+	if (prefs::get().encountered_units().size() != size_t(last_num_encountered_units) ||
+		prefs::get().encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
 		last_debug_state != game_config::debug ||
 		last_num_encountered_units < 0)
 	{
 		// More units or terrains encountered, update the contents.
-		last_num_encountered_units = preferences::encountered_units().size();
-		last_num_encountered_terrains = preferences::encountered_terrains().size();
+		last_num_encountered_units = prefs::get().encountered_units().size();
+		last_num_encountered_terrains = prefs::get().encountered_terrains().size();
 		last_debug_state = game_config::debug;
 		generate_contents();
 	}

@@ -30,13 +30,13 @@
 #include "game_launcher.hpp" // for game_launcher, etc
 #include "gettext.hpp"
 #include "gui/core/event/handler.hpp" // for tmanager
-#include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp"      // for show_error_message
 #include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/dialogs/title_screen.hpp" // for title_screen, etc
 #include "gui/gui.hpp"                  // for init
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
+#include "preferences/preferences.hpp"
 #include "scripting/application_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
@@ -54,6 +54,7 @@
 #include "widgets/button.hpp" // for button
 #include "wml_exception.hpp"  // for wml_exception
 
+#include "utils/spritesheet_generator.hpp"
 #ifdef _WIN32
 #include "log_windows.hpp"
 
@@ -68,7 +69,7 @@
 
 #include <boost/program_options/errors.hpp>     // for error
 #include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #include <algorithm> // for transform
 #include <cerrno>    // for ENOMEM
@@ -268,9 +269,64 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 }
 
 /** Process commandline-arguments */
-static int process_command_args(const commandline_options& cmdline_opts)
+static int process_command_args(commandline_options& cmdline_opts)
 {
 	// Options that don't change behavior based on any others should be checked alphabetically below.
+
+	if(cmdline_opts.no_log_sanitize) {
+		lg::set_log_sanitize(false);
+	}
+
+	if(cmdline_opts.usercache_dir) {
+		filesystem::set_cache_dir(*cmdline_opts.usercache_dir);
+	}
+
+	if(cmdline_opts.userdata_dir) {
+		filesystem::set_user_data_dir(*cmdline_opts.userdata_dir);
+	}
+
+	// earliest possible point to ensure the userdata directory is known
+	if(!filesystem::is_userdata_initialized()) {
+		filesystem::set_user_data_dir(std::string());
+	}
+
+	// userdata is initialized, so initialize logging to file if enabled
+	// If true, output will be redirected to file, else output be written to console.
+	// On Windows, if Wesnoth was not started from a console, one will be allocated.
+	if(cmdline_opts.log_to_file
+		|| (!cmdline_opts.no_log_to_file
+			&& !getenv("WESNOTH_NO_LOG_FILE")
+			// command line options that imply not redirecting output to a log file
+			&& !cmdline_opts.data_path
+			&& !cmdline_opts.userdata_path
+			&& !cmdline_opts.usercache_path
+			&& !cmdline_opts.version
+			&& !cmdline_opts.simple_version
+			&& !cmdline_opts.logdomains
+			&& !cmdline_opts.help
+			&& !cmdline_opts.report
+			&& !cmdline_opts.do_diff
+			&& !cmdline_opts.do_patch
+			&& !cmdline_opts.preprocess
+			&& !cmdline_opts.render_image
+			&& !cmdline_opts.screenshot
+			&& !cmdline_opts.nogui
+			&& !cmdline_opts.headless_unit_test
+			&& !cmdline_opts.validate_schema
+			&& !cmdline_opts.validate_wml
+			)
+		)
+	{
+		lg::set_log_to_file();
+	}
+#ifdef _WIN32
+	// This forces a Windows console to be attached to the process even
+	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because it
+	// turns Wesnoth into a CLI application. (unless --wnoconsole is given)
+	else if(!cmdline_opts.no_console) {
+		lg::do_console_redirect();
+	}
+#endif
 
 	if(cmdline_opts.log) {
 		for(const auto& log_pair : *cmdline_opts.log) {
@@ -283,26 +339,15 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		}
 	}
 
-	if(cmdline_opts.usercache_dir) {
-		filesystem::set_cache_dir(*cmdline_opts.usercache_dir);
+	if(!cmdline_opts.nobanner) {
+		PLAIN_LOG << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch();
+		const std::time_t t = std::time(nullptr);
+		PLAIN_LOG << "Started on " << ctime(&t);
 	}
 
 	if(cmdline_opts.usercache_path) {
 		std::cout << filesystem::get_cache_dir();
 		return 0;
-	}
-
-	if(cmdline_opts.userconfig_dir) {
-		filesystem::set_user_config_dir(*cmdline_opts.userconfig_dir);
-	}
-
-	if(cmdline_opts.userconfig_path) {
-		std::cout << filesystem::get_user_config_dir();
-		return 0;
-	}
-
-	if(cmdline_opts.userdata_dir) {
-		filesystem::set_user_data_dir(*cmdline_opts.userdata_dir);
 	}
 
 	if(cmdline_opts.userdata_path) {
@@ -311,32 +356,31 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.data_dir) {
-		const std::string datadir = *cmdline_opts.data_dir;
-		PLAIN_LOG << "Starting with directory: '" << datadir << "'";
-#ifdef _WIN32
-		// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
-		if(datadir.c_str()[1] == ':') {
-#else
-		if(datadir[0] == '/') {
-#endif
-			game_config::path = datadir;
-		} else {
-			game_config::path = filesystem::get_cwd() + '/' + datadir;
-		}
-
-		PLAIN_LOG << "Now have with directory: '" << game_config::path << "'";
-		game_config::path = filesystem::normalize_path(game_config::path, true, true);
+		game_config::path = filesystem::normalize_path(*cmdline_opts.data_dir, true, true);
 		if(!cmdline_opts.nobanner) {
 			PLAIN_LOG << "Overriding data directory with '" << game_config::path << "'";
 		}
-
-		if(!filesystem::is_directory(game_config::path)) {
-			PLAIN_LOG << "Could not find directory '" << game_config::path << "'";
-			throw config::error("directory not found");
+	} else {
+		// if a pre-defined path does not exist this will empty it
+		game_config::path = filesystem::normalize_path(game_config::path, true, true);
+		if(game_config::path.empty()) {
+			if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
+				if(std::string auto_dir = filesystem::autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()) {
+					if(!cmdline_opts.nobanner) {
+						PLAIN_LOG << "Automatically found a possible data directory at: " << auto_dir;
+					}
+					game_config::path = filesystem::normalize_path(auto_dir, true, true);
+				}
+			} else {
+				PLAIN_LOG << "Cannot find game data directory. Specify one with --data-dir";
+				return 1;
+			}
 		}
+	}
 
-		// don't update font as we already updating it in game ctor
-		// font_manager_.update_font_path();
+	if(!filesystem::is_directory(game_config::path)) {
+		PLAIN_LOG << "Could not find game data directory '" << game_config::path << "'";
+		return 1;
 	}
 
 	if(cmdline_opts.data_path) {
@@ -440,6 +484,12 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		return 0;
 	}
 
+	if(cmdline_opts.generate_spritesheet) {
+		PLAIN_LOG << "sheet path " << *cmdline_opts.generate_spritesheet;
+		image::build_spritesheet_from(*cmdline_opts.generate_spritesheet);
+		return 0;
+	}
+
 	// Options changing their behavior dependent on some others should be checked below.
 
 	if(cmdline_opts.preprocess) {
@@ -452,17 +502,16 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		if(cmdline_opts.validate_with) {
 			schema_path = *cmdline_opts.validate_with;
 			if(!filesystem::file_exists(schema_path)) {
-				auto check = filesystem::get_wml_location(schema_path);
-				if(!filesystem::file_exists(check)) {
-					PLAIN_LOG << "Could not find schema file: " << schema_path;
+				if(auto check = filesystem::get_wml_location(schema_path)) {
+					schema_path = check.value();
 				} else {
-					schema_path = check;
+					PLAIN_LOG << "Could not find schema file: " << schema_path;
 				}
 			} else {
 				schema_path = filesystem::normalize_path(schema_path);
 			}
 		} else {
-			schema_path = filesystem::get_wml_location("schema/game_config.cfg");
+			schema_path = filesystem::get_wml_location("schema/game_config.cfg").value();
 		}
 		schema_validation::schema_validator validator(schema_path);
 		validator.set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
@@ -473,9 +522,8 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	if(cmdline_opts.preprocess_defines || cmdline_opts.preprocess_input_macros || cmdline_opts.preprocess_path) {
 		// It would be good if this was supported for running tests too, possibly for other uses.
 		// For the moment show an error message instead of leaving the user wondering why it doesn't work.
-		PLAIN_LOG << "That --preprocess-* option is only supported when using --preprocess or --validate-wml.";
-		// Return an error status other than -1, because in our caller -1 means no error
-		return -2;
+		PLAIN_LOG << "That --preprocess-* option is only supported when using --preprocess or --validate.";
+		return 2;
 	}
 
 	// Not the most intuitive solution, but I wanted to leave current semantics for now
@@ -617,23 +665,9 @@ static void check_fpu()
  * Setups the game environment and enters
  * the titlescreen or game loops.
  */
-static int do_gameloop(const std::vector<std::string>& args)
+static int do_gameloop(commandline_options& cmdline_opts)
 {
 	srand(std::time(nullptr));
-
-	commandline_options cmdline_opts = commandline_options(args);
-
-	int finished = process_command_args(cmdline_opts);
-	if(finished != -1) {
-#ifdef _WIN32
-		if(lg::using_own_console()) {
-			std::cerr << "Press enter to continue..." << std::endl;
-			std::cin.get();
-		}
-#endif
-
-		return finished;
-	}
 
 	const auto game = std::make_unique<game_launcher>(cmdline_opts);
 	const int start_ticks = SDL_GetTicks();
@@ -674,6 +708,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 #endif
 
 	gui2::init();
+	gui2::switch_theme(prefs::get().gui2_theme());
 	const gui2::event::manager gui_event_manager;
 
 	// if the log directory is not writable, then this is the error condition so show the error message.
@@ -814,7 +849,9 @@ static int do_gameloop(const std::vector<std::string>& args)
 		{ // scope to not keep the title screen alive all game
 			gui2::dialogs::title_screen dlg(*game);
 
-			// Allows re-layout on resize
+			// Allows re-layout on resize.
+			// Since RELOAD_UI is not checked here, it causes
+			// the dialog to be closed and reshown with changes.
 			while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
 				dlg.show();
 			}
@@ -840,56 +877,23 @@ static int do_gameloop(const std::vector<std::string>& args)
 		case gui2::dialogs::title_screen::RELOAD_GAME_DATA:
 			gui2::dialogs::loading_screen::display([&config_manager]() {
 				config_manager.reload_changed_game_config();
+				gui2::init();
+				gui2::switch_theme(prefs::get().gui2_theme());
 			});
 			break;
 		case gui2::dialogs::title_screen::MAP_EDITOR:
 			game->start_editor();
-			break;
-		case gui2::dialogs::title_screen::SHOW_ABOUT:
-			gui2::dialogs::end_credits::display();
 			break;
 		case gui2::dialogs::title_screen::LAUNCH_GAME:
 			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
 			break;
 		case gui2::dialogs::title_screen::REDRAW_BACKGROUND:
 			break;
+		case gui2::dialogs::title_screen::RELOAD_UI:
+			gui2::switch_theme(prefs::get().gui2_theme());
+			break;
 		}
 	}
-}
-
-/**
- * Try to autodetect the location of the game data dir. Note that
- * the root of the source tree currently doubles as the data dir.
- */
-static std::string autodetect_game_data_dir(std::string exe_dir)
-{
-	std::string auto_dir;
-
-	// scons leaves the resulting binaries at the root of the source
-	// tree by default.
-	if(filesystem::file_exists(exe_dir + "/data/_main.cfg")) {
-		auto_dir = std::move(exe_dir);
-	}
-	// cmake encourages creating a subdir at the root of the source
-	// tree for the build, and the resulting binaries are found in it.
-	else if(filesystem::file_exists(exe_dir + "/../data/_main.cfg")) {
-		auto_dir = filesystem::normalize_path(exe_dir + "/..");
-	}
-	// Allow using the current working directory as the game data dir
-	else if(filesystem::file_exists(filesystem::get_cwd() + "/data/_main.cfg")) {
-		auto_dir = filesystem::get_cwd();
-	}
-#ifdef _WIN32
-	// In Windows builds made using Visual Studio and its CMake
-	// integration, the EXE is placed a few levels below the game data
-	// dir (e.g. .\out\build\x64-Debug).
-	else if(filesystem::file_exists(exe_dir + "/../../build") && filesystem::file_exists(exe_dir + "/../../../out")
-		&& filesystem::file_exists(exe_dir + "/../../../data/_main.cfg")) {
-		auto_dir = filesystem::normalize_path(exe_dir + "/../../..");
-	}
-#endif
-
-	return auto_dir;
 }
 
 #ifdef _WIN32
@@ -920,134 +924,50 @@ int main(int argc, char** argv)
 	_putenv("FONTCONFIG_PATH=fonts");
 #endif
 
-	// write_to_log_file means that writing to the log file will be done, if true.
-	// if false, output will be written to the terminal
-	// on windows, if wesnoth was not started from a console, then it will allocate one
-	bool write_to_log_file = !getenv("WESNOTH_NO_LOG_FILE");
-	[[maybe_unused]]
-	bool no_con = false;
-
-	// --nobanner needs to be detected before the main command-line parsing happens
-	// --log-to needs to be detected so the logging output location is set before any actual logging happens
-	bool nobanner = false;
-	for(const auto& arg : args) {
-		if(arg == "--nobanner") {
-			nobanner = true;
-			break;
-		}
-	}
-
-	// Some switches force a Windows console to be attached to the process even
-	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
-	// turn it into a CLI application. Also, --no-log-to-file in particular attaches
-	// a console to a regular GUI game session.
-	//
-	// It's up to commandline_options later to handle these switches (except
-	// --no-log-to-file) later and emit any applicable console output, but right here
-	// we need a rudimentary check for the switches in question to set up the
-	// console before proceeding any further.
-	for(const auto& arg : args) {
-		// Switches that don't take arguments
-		static const std::set<std::string> terminal_switches = {
-			"--config-path", "--data-path", "-h", "--help", "--logdomains", "--nogui", "-R", "--report",
-			"--simple-version", "--userconfig-path", "--userdata-path", "-v", "--version"
-		};
-
-		// Switches that take arguments, the switch may have the argument past
-		// the first = character, or in a subsequent argv entry which we don't
-		// care about -- we just want to see if the switch is there.
-		static const std::set<std::string> terminal_arg_switches = {
-			"-D", "--diff", "-p", "--preprocess", "-P", "--patch", "--render-image", "--screenshot",
-			"-u", "--unit", "-V", "--validate", "--validate-schema"
-		};
-
-		auto switch_matches_arg = [&arg](const std::string& sw) {
-			const auto pos = arg.find('=');
-			return pos == std::string::npos ? arg == sw : arg.substr(0, pos) == sw;
-		};
-
-		if(terminal_switches.find(arg) != terminal_switches.end() ||
-			std::find_if(terminal_arg_switches.begin(), terminal_arg_switches.end(), switch_matches_arg) != terminal_arg_switches.end()) {
-			write_to_log_file = false;
-		}
-
-		if(arg == "--no-log-to-file") {
-			write_to_log_file = false;
-		} else if(arg == "--log-to-file") {
-			write_to_log_file = true;
-		}
-
-		if(arg == "--wnoconsole") {
-			no_con = true;
-		}
-	}
-
-	// setup logging to file
-	// else handle redirecting the output and potentially attaching a console on windows
-	if(write_to_log_file) {
-		lg::set_log_to_file();
-	} else {
-#ifdef _WIN32
-		if(!no_con) {
-			lg::do_console_redirect();
-		}
-#endif
-	}
-
-	SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
-	// Is there a reason not to just use SDL_INIT_EVERYTHING?
-	if(SDL_Init(SDL_INIT_TIMER) < 0) {
-		PLAIN_LOG << "Couldn't initialize SDL: " << SDL_GetError();
-		return (1);
-	}
-	atexit(SDL_Quit);
-
-	// Mac's touchpad generates touch events too.
-	// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
-#if defined(__APPLE__) && !defined(__IPHONEOS__)
-	SDL_EventState(SDL_FINGERMOTION, SDL_DISABLE);
-	SDL_EventState(SDL_FINGERDOWN, SDL_DISABLE);
-	SDL_EventState(SDL_FINGERUP, SDL_DISABLE);
-#endif
-
-	// declare this here so that it will always be at the front of the event queue.
-	events::event_context global_context;
-
-	SDL_StartTextInput();
-
 	try {
-		if(!nobanner) {
-			PLAIN_LOG << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch();
-			const std::time_t t = std::time(nullptr);
-			PLAIN_LOG << "Started on " << ctime(&t);
-		}
+		commandline_options cmdline_opts = commandline_options(args);
+		int finished = process_command_args(cmdline_opts);
 
-		if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
-			if(std::string auto_dir = autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()) {
-				if(!nobanner) {
-					PLAIN_LOG << "Automatically found a possible data directory at: " << auto_dir;
-				}
-				game_config::path = std::move(auto_dir);
-			} else if(game_config::path.empty()) {
-				bool data_dir_specified = false;
-				for(int i=0;i<argc;i++) {
-					if(std::string(argv[i]) == "--data-dir" || boost::algorithm::starts_with(argv[i], "--data-dir=")) {
-						data_dir_specified = true;
-						break;
-					}
-				}
-				if (!data_dir_specified) {
-					PLAIN_LOG << "Cannot find a data directory. Specify one with --data-dir";
-					return 1;
-				}
+		if(finished != -1) {
+#ifdef _WIN32
+			if(lg::using_own_console()) {
+				std::cerr << "Press enter to continue..." << std::endl;
+				std::cin.get();
 			}
+#endif
+			safe_exit(finished);
 		}
 
-		const int res = do_gameloop(args);
+		SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
+		// Is there a reason not to just use SDL_INIT_EVERYTHING?
+		if(SDL_Init(SDL_INIT_TIMER) < 0) {
+			PLAIN_LOG << "Couldn't initialize SDL: " << SDL_GetError();
+			return (1);
+		}
+		atexit(SDL_Quit);
+
+		// Mac's touchpad generates touch events too.
+		// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
+#if defined(__APPLE__) && !defined(__IPHONEOS__)
+		SDL_EventState(SDL_FINGERMOTION, SDL_DISABLE);
+		SDL_EventState(SDL_FINGERDOWN, SDL_DISABLE);
+		SDL_EventState(SDL_FINGERUP, SDL_DISABLE);
+#endif
+
+		// declare this here so that it will always be at the front of the event queue.
+		events::event_context global_context;
+
+		SDL_StartTextInput();
+
+		const int res = do_gameloop(cmdline_opts);
 		safe_exit(res);
 	} catch(const boost::program_options::error& e) {
-		PLAIN_LOG << "Error in command line: " << e.what();
-		error_exit(1);
+		// logging hasn't been initialized by this point
+		std::cerr << "Error in command line: " << e.what() << std::endl;
+		std::string error = "Error parsing command line arguments: ";
+		error += e.what();
+		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", error.c_str(), nullptr);
+		error_exit(2);
 	} catch(const video::error& e) {
 		PLAIN_LOG << "Video system error: " << e.what();
 		error_exit(1);
@@ -1056,9 +976,6 @@ int main(int argc, char** argv)
 		error_exit(1);
 	} catch(const config::error& e) {
 		PLAIN_LOG << e.message;
-		error_exit(1);
-	} catch(const gui::button::error&) {
-		PLAIN_LOG << "Could not create button: Image could not be found";
 		error_exit(1);
 	} catch(const video::quit&) {
 		// just means the game should quit

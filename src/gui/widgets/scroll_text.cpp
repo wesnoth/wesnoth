@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2023 - 2024
-	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
+	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -41,8 +41,9 @@ scroll_text::scroll_text(const implementation::builder_scroll_text& builder)
 	, state_(ENABLED)
 	, wrap_on_(false)
 	, text_alignment_(builder.text_alignment)
-	, editable_(true)
+	, editable_(builder.editable)
 	, max_size_(point(0,0))
+	, link_aware_(builder.link_aware)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 		std::bind(&scroll_text::signal_handler_left_button_down, this, std::placeholders::_2),
@@ -68,6 +69,7 @@ void scroll_text::set_label(const t_string& label)
 		if(resize_needed && get_size() != point()) {
 			place(get_origin(), get_size());
 		}
+		widget->goto_start_of_data();
 	}
 }
 
@@ -80,6 +82,15 @@ std::string scroll_text::get_value()
 	}
 }
 
+void scroll_text::set_link_aware(bool l)
+{
+	link_aware_ = l;
+
+	if(multiline_text* widget = get_internal_text_box()) {
+		widget->set_link_aware(l);
+	}
+}
+
 void scroll_text::set_text_alignment(const PangoAlignment text_alignment)
 {
 	// Inherit.
@@ -89,16 +100,6 @@ void scroll_text::set_text_alignment(const PangoAlignment text_alignment)
 
 	if(multiline_text* widget = get_internal_text_box()) {
 		widget->set_text_alignment(text_alignment_);
-	}
-}
-
-void scroll_text::set_use_markup(bool use_markup)
-{
-	// Inherit.
-	styled_widget::set_use_markup(use_markup);
-
-	if(multiline_text* widget = get_internal_text_box()) {
-		widget->set_use_markup(use_markup);
 	}
 }
 
@@ -125,6 +126,7 @@ void scroll_text::finalize_subclass()
 	text->set_editable(is_editable());
 	text->set_label(get_label());
 	text->set_text_alignment(text_alignment_);
+	text->set_link_aware(link_aware_);
 	text->set_use_markup(get_use_markup());
 }
 
@@ -243,6 +245,7 @@ builder_scroll_text::builder_scroll_text(const config& cfg)
 	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 	, editable(cfg["editable"].to_bool(true))
+	, link_aware(cfg["link_aware"].to_bool(false))
 {
 	// Scrollbar default to auto. AUTO_VISIBLE_FIRST_RUN doesn't work.
 	if (horizontal_scrollbar_mode == scrollbar_container::AUTO_VISIBLE_FIRST_RUN) {
@@ -260,8 +263,6 @@ std::unique_ptr<widget> builder_scroll_text::build() const
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
-	widget->set_editable(editable);
-	widget->set_text_alignment(text_alignment);
 
 	const auto conf = widget->cast_config_to<scroll_text_definition>();
 	assert(conf);

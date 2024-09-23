@@ -30,11 +30,6 @@ public:
 	/**
 	 * Displays a simple fading screen with any user-provided text.
 	 * Used after the end of single-player campaigns.
-	 *
-	 * @param text     Text to display, centered on the screen.
-	 *
-	 * @param duration In milliseconds, for how much time the text will
-	 *                 be displayed on screen.
 	 */
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(outro)
 

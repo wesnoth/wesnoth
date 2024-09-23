@@ -48,4 +48,11 @@ extern const color_t
 	inactive_ability_color,
 	unit_type_color,
 	race_color;
+
+/**
+ * Return the color the string represents. Return font::NORMAL_COLOR if
+ * the string is empty or can't be matched against any other color.
+ */
+color_t string_to_color(const std::string &s);
+
 }

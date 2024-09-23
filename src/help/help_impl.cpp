@@ -21,7 +21,7 @@
 #include "formula/string_utils.hpp"     // for VGETTEXT
 #include "game_config.hpp"              // for debug, menu_contract, etc
 #include "game_config_manager.hpp"      // for game_config_manager
-#include "preferences/game.hpp"         // for encountered_terrains, etc
+#include "preferences/preferences.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
 #include "help/help_topic_generators.hpp"
 #include "hotkey/hotkey_command.hpp"    // for is_scope_active, etc
@@ -47,6 +47,7 @@
 #include "serialization/unicode.hpp"    // for iterator
 #include "color.hpp"
 
+#include <boost/algorithm/string.hpp>
 #include <cassert>                     // for assert
 #include <algorithm>                    // for sort, find, transform, etc
 #include <iterator>                     // for back_insert_iterator, etc
@@ -981,8 +982,8 @@ void generate_terrain_sections(section& sec, int /*level*/)
 
 		bool hidden = info.hide_help();
 
-		if (preferences::encountered_terrains().find(t)
-				== preferences::encountered_terrains().end() && !info.is_overlay())
+		if (prefs::get().encountered_terrains().find(t)
+				== prefs::get().encountered_terrains().end() && !info.is_overlay())
 			hidden = true;
 
 		topic terrain_topic;
@@ -1187,12 +1188,12 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 
 UNIT_DESCRIPTION_TYPE description_type(const unit_type &type)
 {
-	if (game_config::debug || preferences::show_all_units_in_help()	||
+	if (game_config::debug || prefs::get().show_all_units_in_help()	||
 			hotkey::is_scope_active(hotkey::SCOPE_EDITOR) ) {
 		return FULL_DESCRIPTION;
 	}
 
-	const std::set<std::string> &encountered_units = preferences::encountered_units();
+	const std::set<std::string> &encountered_units = prefs::get().encountered_units();
 	if (encountered_units.find(type.id()) != encountered_units.end()) {
 		return FULL_DESCRIPTION;
 	}
@@ -1312,7 +1313,7 @@ const topic *find_topic(const section &sec, const std::string &id)
 
 const section *find_section(const section &sec, const std::string &id)
 {
-	const auto &sit =
+	const auto sit =
 		std::find_if(sec.sections.begin(), sec.sections.end(), has_id(id));
 	if (sit != sec.sections.end()) {
 		return &*sit;
@@ -1335,6 +1336,8 @@ std::vector<std::string> parse_text(const std::string &text)
 {
 	std::vector<std::string> res;
 	bool last_char_escape = false;
+	bool found_slash = false;
+	bool in_quotes = false;
 	const char escape_char = '\\';
 	std::stringstream ss;
 	std::size_t pos;
@@ -1343,50 +1346,71 @@ std::vector<std::string> parse_text(const std::string &text)
 		const char c = text[pos];
 		if (c == escape_char && !last_char_escape) {
 			last_char_escape = true;
-		}
-		else {
+		} else {
 			if (state == OTHER) {
 				if (c == '<') {
 					if (last_char_escape) {
 						ss << c;
-					}
-					else {
+					} else {
 						res.push_back(ss.str());
 						ss.str("");
 						state = ELEMENT_NAME;
 					}
-				}
-				else {
+				} else {
 					ss << c;
 				}
-			}
-			else if (state == ELEMENT_NAME) {
-				if (c == '/') {
-					std::string msg = "Erroneous / in element name.";
-					throw parse_error(msg);
-				}
-				else if (c == '>') {
-					// End of this name.
+			} else if (state == ELEMENT_NAME) {
+				if ((c == '/') && (!in_quotes)) {
+					found_slash = true;
+				} else if (c == '\'') {
+					// toggle quoting
+					in_quotes = !in_quotes;
+				} else if (c == '>') {
+					in_quotes = false;
+
+					// end of this tag.
 					std::stringstream s;
-					const std::string element_name = ss.str();
+					std::string element_name = ss.str();
 					ss.str("");
-					s << "</" << element_name << ">";
-					const std::string end_element_name = s.str();
-					std::size_t end_pos = text.find(end_element_name, pos);
-					if (end_pos == std::string::npos) {
-						std::stringstream msg;
-						msg << "Unterminated element: " << element_name;
-						throw parse_error(msg.str());
+
+					// process any attributes in the start tag
+					std::size_t attr_pos = element_name.find(" ");
+					std::string attrs = "";
+					if (attr_pos != std::string::npos) {
+						attrs = element_name.substr(attr_pos+1);
+						element_name = element_name.substr(0, attr_pos);
 					}
-					s.str("");
-					const std::string contents = text.substr(pos + 1, end_pos - pos - 1);
-					const std::string element = convert_to_wml(element_name, contents);
-					res.push_back(element);
-					pos = end_pos + end_element_name.size() - 1;
+
+					if (found_slash) {
+						// empty tag
+						res.push_back(convert_to_wml(element_name, attrs));
+						found_slash = false;
+						pos = text.find(">", pos);
+					} else {
+						// non-empty tag
+						s << "</" << element_name << ">";
+						const std::string end_element_name = s.str();
+						std::size_t end_pos = text.find(end_element_name, pos);
+						if (end_pos == std::string::npos) {
+							std::stringstream msg;
+							msg << "Unterminated element: " << element_name;
+							throw parse_error(msg.str());
+						}
+						s.str("");
+						const std::string contents = attrs + " " + text.substr(pos + 1, end_pos - pos - 1);
+						const std::string element = convert_to_wml(element_name, contents);
+						res.push_back(element);
+						pos = end_pos + end_element_name.size() - 1;
+					}
 					state = OTHER;
-				}
-				else {
-					ss << c;
+				} else {
+					if (found_slash) {
+						found_slash = false;
+						std::string msg = "Erroneous / in element name.";
+						throw parse_error(msg);
+					} else {
+						ss << c;
+					}
 				}
 			}
 			last_char_escape = false;
@@ -1404,17 +1428,23 @@ std::vector<std::string> parse_text(const std::string &text)
 	return res;
 }
 
-std::string convert_to_wml(const std::string &element_name, const std::string &contents)
+std::string convert_to_wml(std::string& element_name, const std::string& contents)
 {
 	std::stringstream ss;
 	bool in_quotes = false;
 	bool last_char_escape = false;
 	const char escape_char = '\\';
 	std::vector<std::string> attributes;
+	std::stringstream buff;
+
+	// Remove any leading and trailing space from element name
+	boost::algorithm::trim(element_name);
+
 	// Find the different attributes.
-	// No checks are made for the equal sign or something like that.
 	// Attributes are just separated by spaces or newlines.
 	// Attributes that contain spaces must be in single quotes.
+	// No equal key forces that token to be considered as plain text
+	// and it gets attached to the default 'text' key.
 	for (std::size_t pos = 0; pos < contents.size(); ++pos) {
 		const char c = contents[pos];
 		if (c == escape_char && !last_char_escape) {
@@ -1427,7 +1457,13 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 			}
 			else if ((c == ' ' || c == '\n') && !last_char_escape && !in_quotes) {
 				// Space or newline, end of attribute.
-				attributes.push_back(ss.str());
+				std::size_t eq_pos = ss.str().find("=");
+				if (eq_pos == std::string::npos) {
+					// no = sign found, assuming plain text
+					buff << " " << ss.str();
+				} else {
+					attributes.push_back(ss.str());
+				}
 				ss.str("");
 			}
 			else {
@@ -1436,47 +1472,41 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 			last_char_escape = false;
 		}
 	}
+
 	if (in_quotes) {
 		std::stringstream msg;
 		msg << "Unterminated single quote after: '" << ss.str() << "'";
 		throw parse_error(msg.str());
 	}
+
 	if (!ss.str().empty()) {
-		attributes.push_back(ss.str());
+		std::size_t eq_pos = ss.str().find("=");
+		if (eq_pos == std::string::npos) {
+			// no = sign found, assuming plain text
+			buff << " " << ss.str();
+		} else {
+			attributes.push_back(ss.str());
+		}
 	}
 	ss.str("");
 	// Create the WML.
 	ss << "[" << element_name << "]\n";
-	for (std::vector<std::string>::const_iterator it = attributes.begin();
-		 it != attributes.end(); ++it) {
-		ss << *it << "\n";
+	//for (std::vector<std::string>::const_iterator it = attributes.begin();
+	//	 it != attributes.end(); ++it) {
+	for (auto& elem : attributes) {
+		boost::algorithm::trim(elem);
+		ss << elem << "\n";
 	}
-	ss << "[/" << element_name << "]\n";
-	return ss.str();
-}
 
-color_t string_to_color(const std::string &cmp_str)
-{
-	if (cmp_str == "green") {
-		return font::GOOD_COLOR;
+	std::string text = buff.str();
+	boost::algorithm::trim(text);
+	if (!text.empty()) {
+		ss << "text=\"" << text << "\"\n";
 	}
-	if (cmp_str == "red") {
-		return font::BAD_COLOR;
-	}
-	if (cmp_str == "black") {
-		return font::BLACK_COLOR;
-	}
-	if (cmp_str == "yellow") {
-		return font::YELLOW_COLOR;
-	}
-	if (cmp_str == "white") {
-		return font::BIGMAP_COLOR;
-	}
-	// a #rrggbb color in pango format.
-	if (*cmp_str.c_str() == '#' && cmp_str.size() == 7) {
-		return color_t::from_hex_string(cmp_str.substr(1));
-	}
-	return font::NORMAL_COLOR;
+	ss << "[/" << element_name << "]";
+
+	buff.str("");
+	return ss.str();
 }
 
 std::vector<std::string> split_in_width(const std::string &s, const int font_size,
@@ -1637,7 +1667,7 @@ unsigned image_width(const std::string &filename)
 	return 0;
 }
 
-void push_tab_pair(std::vector<help::item> &v, const std::string &s, const std::optional<std::string> &image, unsigned padding)
+void push_tab_pair(std::vector<help::item> &v, const std::string &s, const utils::optional<std::string> &image, unsigned padding)
 {
 	help::item item(s, font::pango_line_width(s, normal_font_size));
 	if (image) {

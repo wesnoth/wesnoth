@@ -35,8 +35,10 @@
 #include "color.hpp"
 #include "exceptions.hpp"               // for error
 #include "font/constants.hpp"
+#include "font/standard_colors.hpp"
 #include "gettext.hpp"
-#include <optional>
+#include "utils/optional_fwd.hpp"
+#include <cstring>
 #include <list>                         // for list
 #include <memory>
 #include <sstream>
@@ -304,23 +306,20 @@ const section *find_section(const section &sec, const std::string &id);
 section *find_section(section &sec, const std::string &id);
 
 /**
- * Parse a text string. Return a vector with the different parts of the
- * text. Each markup item is a separate part while the text between
- * markups are separate parts.
+ * Parse a xml style marked up text string. Return a vector with
+ * the different parts of the text. Each markup item and the text
+ * between markups are separate parts. Each line of returned vector
+ * is valid WML.
  */
 std::vector<std::string> parse_text(const std::string &text);
 
 /**
- * Convert the contents to wml attributes, surrounded within
- * [element_name]...[/element_name]. Return the resulting WML.
+ * Convert the the text between start and end xml tags for element_name to
+ * valid wml attributes, surrounded between [element_name]...[/element_name].
+ * The attributes in the start tag are also used.
+ * @return the resulting WML.
  */
-std::string convert_to_wml(const std::string &element_name, const std::string &contents);
-
-/**
- * Return the color the string represents. Return font::NORMAL_COLOR if
- * the string is empty or can't be matched against any other color.
- */
-color_t string_to_color(const std::string &s);
+std::string convert_to_wml(std::string &element_name, const std::string &contents);
 
 /** Make a best effort to word wrap s. All parts are less than width. */
 std::vector<std::string> split_in_width(const std::string &s, const int font_size, const unsigned width);
@@ -422,6 +421,6 @@ std::string generate_table(const table_spec &tab, const unsigned int spacing=fon
 unsigned image_width(const std::string &filename);
 
 // Add to the vector v an help::item for the string s, preceded by the given image if any.
-void push_tab_pair(std::vector<help::item> &v, const std::string &s, const std::optional<std::string> &image = {}, unsigned padding = 0);
+void push_tab_pair(std::vector<help::item> &v, const std::string &s, const utils::optional<std::string> &image = {}, unsigned padding = 0);
 
 } // end namespace help

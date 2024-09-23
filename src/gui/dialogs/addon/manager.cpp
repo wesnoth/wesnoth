@@ -37,13 +37,11 @@
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/string_utils.hpp"
 #include "formula/string_utils.hpp"
 #include "picture.hpp"
 #include "language.hpp"
-#include "preferences/general.hpp"
 #include "utils/general.hpp"
 
 #include "config.hpp"
@@ -67,12 +65,7 @@ namespace {
 				for(const auto& attribute : cfg.attribute_range())
 				{
 					std::string val = attribute.second.str();
-					if(std::search(val.begin(),
-						val.end(),
-						filter.begin(),
-						filter.end(),
-						utils::chars_equal_insensitive)
-						!= val.end())
+					if(translation::ci_search(val, filter))
 					{
 						found = true;
 						break;
@@ -447,8 +440,8 @@ void addon_manager::pre_show(window& window)
 
 	order_dropdown.set_values(order_dropdown_entries);
 	{
-		const std::string saved_order_name = preferences::addon_manager_saved_order_name();
-		const sort_order::type saved_order_direction = preferences::addon_manager_saved_order_direction();
+		const std::string saved_order_name = prefs::get().addon_manager_saved_order_name();
+		const sort_order::type saved_order_direction = prefs::get().addon_manager_saved_order_direction();
 
 		if(!saved_order_name.empty()) {
 			auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
@@ -790,8 +783,8 @@ void addon_manager::order_addons()
 	}
 
 	find_widget<addon_list>(get_window(), "addons", false).set_addon_order(func);
-	preferences::set_addon_manager_saved_order_name(order_struct.as_preference);
-	preferences::set_addon_manager_saved_order_direction(order);
+	prefs::get().set_addon_manager_saved_order_name(order_struct.as_preference);
+	prefs::get().set_addon_manager_saved_order_direction(order);
 }
 
 void addon_manager::on_order_changed(unsigned int sort_column, sort_order::type order)
@@ -804,8 +797,8 @@ void addon_manager::on_order_changed(unsigned int sort_column, sort_order::type 
 		++index;
 	}
 	order_menu.set_value(index);
-	preferences::set_addon_manager_saved_order_name(order_it->as_preference);
-	preferences::set_addon_manager_saved_order_direction(order);
+	prefs::get().set_addon_manager_saved_order_name(order_it->as_preference);
+	prefs::get().set_addon_manager_saved_order_direction(order);
 }
 
 template<void(addon_manager::*fptr)(const addon_info& addon)>
@@ -929,11 +922,11 @@ void addon_manager::publish_addon(const addon_info& addon)
 
 	// if the passphrase isn't provided from the _server.pbl, try to pre-populate it from the preferences before prompting for it
 	if(cfg["passphrase"].empty()) {
-		cfg["passphrase"] = preferences::password(preferences::campaign_server(), cfg["author"]);
+		cfg["passphrase"] = prefs::get().password(prefs::get().campaign_server(), cfg["author"]);
 		if(!gui2::dialogs::addon_auth::execute(cfg)) {
 			return;
 		} else {
-			preferences::set_password(preferences::campaign_server(), cfg["author"], cfg["passphrase"]);
+			prefs::get().set_password(prefs::get().campaign_server(), cfg["author"], cfg["passphrase"]);
 		}
 	} else if(cfg["forum_auth"].to_bool()) {
 		// if the uploader's forum password is present in the _server.pbl
@@ -1036,7 +1029,7 @@ static std::string format_addon_time(std::time_t time)
 	if(time) {
 		std::ostringstream ss;
 
-		const std::string format = preferences::use_twelve_hour_clock_format()
+		const std::string format = prefs::get().use_twelve_hour_clock_format()
 			// TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 			// Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 			? _("%B %d %Y, %I:%M %p")
