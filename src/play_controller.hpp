@@ -99,6 +99,7 @@ public:
 	void init_side_end();
 
 	virtual void force_end_turn() = 0;
+	virtual void require_end_turn() = 0;
 	virtual void check_objectives() = 0;
 
 	virtual void on_not_observer() = 0;
