@@ -19,6 +19,7 @@
  */
 
 #include "units/attack_type.hpp"
+#include "units/unit.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/string_utils.hpp"
@@ -79,7 +80,7 @@ attack_type::attack_type(const config& cfg) :
 	range_(cfg["range"]),
 	min_range_(cfg["min_range"].to_int(1)),
 	max_range_(cfg["max_range"].to_int(1)),
-	alignment_str_(cfg["alignment"]),
+	alignment_str_(),
 	damage_(cfg["damage"]),
 	num_attacks_(cfg["number"]),
 	attack_weight_(cfg["attack_weight"].to_double(1.0)),
@@ -100,6 +101,17 @@ attack_type::attack_type(const config& cfg) :
 		else
 			icon_ = "attacks/blank-attack.png";
 	}
+	if(cfg.has_attribute("alignment") && (cfg["alignment"] == "neutral" || cfg["alignment"] == "lawful" || cfg["alignment"] == "chaotic" || cfg["alignment"] == "liminal")){
+		alignment_str_ = cfg["alignment"].str();
+	} else if(self_){
+		alignment_str_ =unit_alignments::get_string(self_->alignment());
+	}
+}
+
+unit_alignments::type attack_type::alignment() const
+{
+	// pick attack alignment or fall back to unit alignment
+	return (unit_alignments::get_enum(alignment_str_).value_or(self_ ? self_->alignment() : unit_alignments::type::neutral));
 }
 
 std::string attack_type::accuracy_parry_description() const
