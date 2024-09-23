@@ -191,10 +191,8 @@ void halo_impl::effect::update()
 	if(map_loc_.x != -1 && map_loc_.y != -1) {
 		// If the halo is attached to a particular map location,
 		// make sure it stays attached.
-		set_location(
-			disp->get_location_x(map_loc_) + disp->hex_size() / 2,
-			disp->get_location_y(map_loc_) + disp->hex_size() / 2
-		);
+		auto [x, y] = disp->get_location_rect(map_loc_).center();
+		set_location(x, y);
 	} else {
 		// It would be good to attach to a position within a hex,
 		// or persistently to an item or unit. That's not the case,
