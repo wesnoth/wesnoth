@@ -64,6 +64,7 @@
 #include "map/location.hpp"             // for map_location
 #include "mouse_events.hpp"             // for mouse_handler
 #include "mp_game_settings.hpp"         // for mp_game_settings
+#include "overlay.hpp"
 #include "pathfind/pathfind.hpp"        // for full_cost_map, plain_route, etc
 #include "pathfind/teleport.hpp"        // for get_teleport_locations, etc
 #include "play_controller.hpp"          // for play_controller
@@ -4112,9 +4113,15 @@ int game_lua_kernel::intf_add_tile_overlay(lua_State *L)
 	}
 
 	if (game_display_) {
-		game_display_->add_overlay(loc, cfg["image"], cfg["halo"],
-			team_name, cfg["name"], cfg["visible_in_fog"].to_bool(true),
-			cfg["submerge"].to_double(0), cfg["z_order"].to_double(0));
+		game_display_->add_overlay(loc, overlay{
+			cfg["image"],
+			cfg["halo"],
+			team_name,
+			cfg["name"], // Name is treated as the ID
+			cfg["visible_in_fog"].to_bool(true),
+			cfg["submerge"].to_double(0),
+			cfg["z_order"].to_double(0)
+		});
 	}
 	return 0;
 }
