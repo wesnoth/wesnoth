@@ -370,7 +370,7 @@ void story_viewer::draw_floating_image(floating_image_list::const_iterator image
 		image["name"] = floating_image.file();
 		config cfg{"image", std::move(image)};
 
-		window_canvas.append_cfg(std::move(cfg));
+		window_canvas.append_cfg(cfg);
 
 		// Needed to make the background redraw correctly.
 		window_canvas.update_size_variables();
