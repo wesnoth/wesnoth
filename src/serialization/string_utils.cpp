@@ -763,7 +763,7 @@ std::string indent(const std::string& string, std::size_t indent_size)
 		return string;
 	}
 
-	const std::string indent(indent_size, ' ');
+	std::string indent(indent_size, ' ');
 
 	if(string.empty()) {
 		return indent;
