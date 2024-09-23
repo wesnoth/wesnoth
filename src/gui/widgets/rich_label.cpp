@@ -63,7 +63,7 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 	, init_w_(builder.width(get_screen_size_variables()))
 	, w_(0)
 	, h_(0)
-	, padding_(4)
+	, padding_(5)
 {
 	connect_signal<event::LEFT_BUTTON_CLICK>(
 		std::bind(&rich_label::signal_handler_left_button_click, this, std::placeholders::_3));
@@ -422,7 +422,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 					// column post-processing
 					max_row_height = std::max(max_row_height, static_cast<unsigned>(size.y));
 
-					col_x += col_widths[col_idx] + padding_;
+					col_x += col_widths[col_idx] + 2 * padding_;
 					config& end_cfg = std::prev(text_dom.ordered_end())->cfg;
 					end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', %d), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % col_x % row_y % col_x % (width/columns));
 
