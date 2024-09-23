@@ -231,11 +231,9 @@ uses
 when connecting to a server, ignoring other preferences. Unsafe.
 .TP
 .BI --plugin \ script
-(experimental) load a
+load a
 .I script
-which defines a Wesnoth plugin. Similar to
-.BR --script ,
-but Lua file should return a function which will be run as a coroutine and periodically woken up with updates.
+which defines a Wesnoth plugin. Lua file should return a function which will be run as a coroutine and periodically woken up with updates.
 .TP
 .BI -P,\ --patch \ base-file \  patch-file
 applies a DiffWML patch to a WML file; does not preprocess either of the files.
@@ -310,11 +308,6 @@ saves a screenshot of
 to
 .I output
 without initializing a screen.
-.TP
-.BI --script \ file
-(experimental)
-.I file
-containing a Lua script to control the client.
 .TP
 .BI -s[ host ],\ --server[ =host ]
 connects to the specified host if any, otherwise connect to the first server in preferences. Example:
