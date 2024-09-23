@@ -840,7 +840,7 @@ movetype::movetype(movetype && that) :
 	jamming_(std::move(that.jamming_), &vision_),
 	defense_(std::move(that.defense_)),
 	resist_(std::move(that.resist_)),
-	flying_(std::move(that.flying_)),
+	flying_(that.flying_),
 	special_notes_(std::move(that.special_notes_))
 {
 }
