@@ -189,9 +189,7 @@ public:
 	utils::optional<std::string> screenshot_map_file;
 	/** Output file to put screenshot in. Second parameter given after --screenshot. */
 	utils::optional<std::string> screenshot_output_file;
-	/** File to load lua script from. */
-	utils::optional<std::string> script_file;
-	/** File to load a lua plugin (similar to a script) from. Experimental / may replace script. */
+	/** File to load a lua plugin script from. */
 	utils::optional<std::string> plugin_file;
 	/** Whether to load the "package" package for the scripting environment. (This allows to load arbitrary lua packages, and gives untrusted lua the same permissions as wesnoth executable) */
 	bool script_unsafe_mode;

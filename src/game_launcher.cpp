@@ -328,27 +328,6 @@ bool game_launcher::init_lua_script()
 		plugins_manager::get()->get_kernel_base()->load_package();
 	}
 
-	// get the application lua kernel, load and execute script file, if script file is present
-	if(cmdline_opts_.script_file) {
-		filesystem::scoped_istream sf = filesystem::istream_file(*cmdline_opts_.script_file);
-
-		if(!sf->fail()) {
-			/* Cancel all "jumps" to editor / campaign / multiplayer */
-			jump_to_multiplayer_ = false;
-			jump_to_editor_ = false;
-			jump_to_campaign_.jump = false;
-
-			std::string full_script((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
-
-			PLAIN_LOG << "\nRunning lua script: " << *cmdline_opts_.script_file;
-
-			plugins_manager::get()->get_kernel_base()->run(full_script.c_str(), *cmdline_opts_.script_file);
-		} else {
-			PLAIN_LOG << "Encountered failure when opening script '" << *cmdline_opts_.script_file << '\'';
-			error = true;
-		}
-	}
-
 	if(cmdline_opts_.plugin_file) {
 		std::string filename = *cmdline_opts_.plugin_file;
 
