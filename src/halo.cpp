@@ -168,12 +168,10 @@ halo_impl::effect::effect(int xpos, int ypos,
 
 void halo_impl::effect::set_location(int x, int y)
 {
-	int new_x = x - disp->get_location_x(map_location::ZERO());
-	int new_y = y - disp->get_location_y(map_location::ZERO());
-	if (new_x != abs_mid_.x || new_y != abs_mid_.y) {
-		DBG_HL << "setting halo location " << point{new_x,new_y};
-		abs_mid_.x = new_x;
-		abs_mid_.y = new_y;
+	point new_center = point{x, y} - disp->get_location(map_location::ZERO());
+	if(new_center != abs_mid_) {
+		DBG_HL << "setting halo location " << new_center;
+		abs_mid_ = new_center;
 	}
 }
 
