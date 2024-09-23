@@ -167,9 +167,7 @@ public:
 	 * An overlay is an image that is displayed on top of the tile.
 	 * One tile may have multiple overlays.
 	 */
-	void add_overlay(const map_location& loc, const std::string& image,
-		const std::string& halo="", const std::string& team_name="",const std::string& item_id="",
-		bool visible_under_fog = true, float submerge = 0.0f, float z_order = 0);
+	void add_overlay(const map_location& loc, overlay&& ov);
 
 	/** remove_overlay will remove all overlays on a tile. */
 	void remove_overlay(const map_location& loc);
