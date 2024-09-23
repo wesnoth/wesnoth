@@ -27,8 +27,10 @@
 #include "scripting/application_lua_kernel.hpp"
 
 #include "config.hpp"
+#include "game_config.hpp"
 #include "game_errors.hpp"
 #include "log.hpp"
+#include "scripting/lua_attributes.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
 #include "scripting/lua_fileops.hpp"
@@ -265,6 +267,14 @@ static int impl_context_accessor(lua_State * L, const std::shared_ptr<lua_contex
 		luaW_pushconfig(L, func(config()));
 		return 1;
 	}
+}
+
+extern luaW_Registry& gameConfigReg();
+static auto& dummy = gameConfigReg(); // just to ensure it's constructed.
+
+GAME_CONFIG_SETTER("debug", bool, application_lua_kernel) {
+	(void)k;
+	game_config::set_debug(value);
 }
 
 static int intf_execute(lua_State* L)
