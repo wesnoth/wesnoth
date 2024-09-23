@@ -92,6 +92,7 @@ jobs:
                   nls=false enable_lto="$LTO" system_lua="$SYS_LUA" force_color=true \
                   jobs=2 --debug=time glibcxx_debug=true glibcxx_assertions=true compile_db=true
               }
+              run-clang-tidy -use-color -j 2
               build strict=true wesnoth boost_unit_tests
 
               build cdb
@@ -109,7 +110,7 @@ jobs:
                 cmake "$@" -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
                   -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_MYSQL=true \
                   -DENABLE_NLS=false -DENABLE_LTO="$LTO" -DFORCE_COLOR_OUTPUT=true -DLTO_JOBS=2 \
-                  -DENABLE_SYSTEM_LUA="$SYS_LUA -DCLANG_TIDY=true" .
+                  -DENABLE_SYSTEM_LUA="$SYS_LUA" -DCLANG_TIDY="true" .
               }
               rm -R /usr/local/lib/cmake
               rm /usr/local/lib/libboost*
