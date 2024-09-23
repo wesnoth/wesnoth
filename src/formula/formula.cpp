@@ -634,7 +634,7 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger*fdb) const
 	{
-		const variant left = left_->evaluate(variables, add_debug_info(fdb,0,"left ."));
+		variant left = left_->evaluate(variables, add_debug_info(fdb,0,"left ."));
 		if(!left.is_callable()) {
 			if(left.is_list()) {
 				list_callable list_call(left);
