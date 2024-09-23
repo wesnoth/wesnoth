@@ -102,6 +102,12 @@ void luaW_filltable(lua_State *L, const config& cfg);
 void luaW_push_namedtuple(lua_State* L, const std::vector<std::string>& names);
 
 /**
+ * Get the keys of a "named tuple" from the stack.
+ * Returns an empty array if the stack element is not a named tuple.
+ */
+std::vector<std::string> luaW_to_namedtuple(lua_State* L, int idx);
+
+/**
  * Converts a map location object to a Lua table pushed at the top of the stack.
  */
 void luaW_pushlocation(lua_State *L, const map_location& loc);

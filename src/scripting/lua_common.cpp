@@ -792,6 +792,19 @@ void luaW_push_namedtuple(lua_State* L, const std::vector<std::string>& names)
 	lua_setmetatable(L, -2);
 }
 
+std::vector<std::string> luaW_to_namedtuple(lua_State* L, int idx) {
+	std::vector<std::string> names;
+	if(luaL_getmetafield(L, idx, "__name")) {
+		if(lua_check<std::string>(L, -1) == "named tuple") {
+			luaL_getmetafield(L, idx, "__names");
+			names = lua_check<std::vector<std::string>>(L, -1);
+			lua_pop(L, 1);
+		}
+		lua_pop(L, 1);
+	}
+	return names;
+}
+
 void luaW_pushlocation(lua_State *L, const map_location& ml)
 {
 	luaW_push_namedtuple(L, {"x", "y"});

@@ -421,14 +421,15 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 			results.push_back([this, lk = ctxt.execute_kernel_, data = req.data]() {
 				auto result = lk->run_binary_lua_tag(data);
 				int ref = result["ref"].to_int();
-				auto func = result.mandatory_child("executed");
+				if(auto func = result.optional_child("executed")) {
+					lua_rawgeti(T_, LUA_REGISTRYINDEX, ref);
+					luaW_copy_upvalues(T_, *func);
+					luaL_unref(T_, LUA_REGISTRYINDEX, ref);
+					lua_pop(T_, 1);
+				}
 				result.remove_children("executed");
 				result.remove_attribute("ref");
 				plugins_manager::get()->notify_event(result["name"], result);
-				lua_rawgeti(T_, LUA_REGISTRYINDEX, ref);
-				luaW_copy_upvalues(T_, func);
-				luaL_unref(T_, LUA_REGISTRYINDEX, ref);
-				lua_pop(T_, 1);
 				return true;
 			});
 			continue;
@@ -457,6 +458,17 @@ bool luaW_copy_upvalues(lua_State* L, const config& cfg)
 				if(child["upvalue_type"] == "array") {
 					auto children = upvalues->child_range(name);
 					lua_createtable(L, children.size(), 0);
+					for(const auto& cfg : children) {
+						luaW_pushscalar(L, cfg["value"]);
+						lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
+					}
+				} else if(child["upvalue_type"] == "named tuple") {
+					auto children = upvalues->child_range(name);
+					std::vector<std::string> names;
+					for(const auto& cfg : children) {
+						names.push_back(cfg["name"]);
+					}
+					luaW_push_namedtuple(L, names);
 					for(const auto& cfg : children) {
 						luaW_pushscalar(L, cfg["value"]);
 						lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
