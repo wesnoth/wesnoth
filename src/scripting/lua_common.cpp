@@ -676,7 +676,7 @@ void luaW_filltable(lua_State *L, const config& cfg)
 
 static int impl_namedtuple_get(lua_State* L)
 {
-	if(lua_isstring(L, 2)) {
+	if(lua_type(L, 2) == LUA_TSTRING) {
 		std::string k = lua_tostring(L, 2);
 		luaL_getmetafield(L, 1, "__names");
 		auto names = lua_check<std::vector<std::string>>(L, -1);
@@ -687,6 +687,26 @@ static int impl_namedtuple_get(lua_State* L)
 			return 1;
 		}
 	}
+	return 0;
+}
+
+static int impl_namedtuple_set(lua_State* L)
+{
+	if(lua_type(L, 2) == LUA_TSTRING) {
+		std::string k = lua_tostring(L, 2);
+		luaL_getmetafield(L, 1, "__names");
+		auto names = lua_check<std::vector<std::string>>(L, -1);
+		auto iter = std::find(names.begin(), names.end(), k);
+		if(iter != names.end()) {
+			int i = std::distance(names.begin(), iter) + 1;
+			lua_pushvalue(L, 3);
+			lua_rawseti(L, 1, i);
+			return 0;
+		}
+	}
+	// If it's not one of the special names, just assign normally
+	lua_settop(L, 3);
+	lua_rawset(L, 1);
 	return 0;
 }
 
@@ -709,13 +729,46 @@ static int impl_namedtuple_tostring(lua_State* L)
 	return 1;
 }
 
+static int impl_namedtuple_compare(lua_State* L) {
+	// Comparing a named tuple with any other table is always false.
+	if(lua_type(L, 1) != LUA_TTABLE || lua_type(L, 2) != LUA_TTABLE) {
+		NOT_EQUAL:
+		lua_pushboolean(L, false);
+		return 1;
+	}
+	luaL_getmetafield(L, 1, "__name");
+	luaL_getmetafield(L, 2, "__name");
+	if(!lua_rawequal(L, 3, 4)) goto NOT_EQUAL;
+	lua_pop(L, 2);
+	// Named tuples can be equal only if they both have the exact same set of names.
+	luaL_getmetafield(L, 1, "__names");
+	luaL_getmetafield(L, 2, "__names");
+	auto lnames = lua_check<std::vector<std::string>>(L, 3);
+	auto rnames = lua_check<std::vector<std::string>>(L, 4);
+	if(lnames != rnames) goto NOT_EQUAL;
+	lua_pop(L, 2);
+	// They are equal if all of the corresponding members in each tuple are equal.
+	for(size_t i = 1; i <= lnames.size(); i++) {
+		lua_rawgeti(L, 1, i);
+		lua_rawgeti(L, 2, i);
+		if(!lua_compare(L, 3, 4, LUA_OPEQ)) goto NOT_EQUAL;
+		lua_pop(L, 2);
+	}
+	// Theoretically, they could have other members besides the special named ones.
+	// But we ignore those for the purposes of equality.
+	lua_pushboolean(L, true);
+	return 1;
+}
+
 void luaW_push_namedtuple(lua_State* L, const std::vector<std::string>& names)
 {
 	lua_createtable(L, names.size(), 0);
-	lua_createtable(L, 0, 4);
+	lua_createtable(L, 0, 8);
 	static luaL_Reg callbacks[] = {
 		{ "__index", &impl_namedtuple_get },
+		{ "__newindex", &impl_namedtuple_set },
 		{ "__dir", &impl_namedtuple_dir },
+		{ "__eq", &impl_namedtuple_compare },
 		{ "__tostring", &impl_namedtuple_tostring },
 		{ nullptr, nullptr }
 	};
@@ -734,6 +787,8 @@ void luaW_push_namedtuple(lua_State* L, const std::vector<std::string>& names)
 	lua_setfield(L, -2, "__metatable");
 	lua_push(L, names);
 	lua_setfield(L, -2, "__names");
+	lua_pushstring(L, "named tuple");
+	lua_setfield(L, -2, "__name");
 	lua_setmetatable(L, -2);
 }
 
