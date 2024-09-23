@@ -405,7 +405,7 @@ void addon_manager::pre_show(window& window)
 		}
 	}
 	for (auto& i: language_strings_available) {
-		language_filter_types_.emplace_back(language_filter_types_.size(), std::move(i));
+		language_filter_types_.emplace_back(language_filter_types_.size(), i);
 	}
 	// The language filter
 	multimenu_button& language_filter = find_widget<multimenu_button>(&window, "language_filter", false);
