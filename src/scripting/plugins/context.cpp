@@ -82,6 +82,11 @@ void plugins_context::set_accessor_int(const std::string & name, const std::func
 	set_accessor(name, [func, name](const config& cfg) { return config {name, func(cfg)}; });
 }
 
+void plugins_context::set_accessor_bool(const std::string & name, const std::function<bool(config)>& func)
+{
+	set_accessor(name, [func, name](const config& cfg) { return config {name, func(cfg)}; });
+}
+
 
 std::size_t plugins_context::erase_accessor(const std::string & name)
 {
