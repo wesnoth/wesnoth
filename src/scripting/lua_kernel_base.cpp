@@ -1135,9 +1135,29 @@ config luaW_serialize_function(lua_State* L, int func)
 		case LUA_TFUNCTION:
 			upvalues.add_child(name, luaW_serialize_function(L, idx))["upvalue_type"] = "function";
 			break;
+		case LUA_TNIL:
+			upvalues.add_child(name, config{"upvalue_type", "nil"});
+			break;
 		case LUA_TTABLE:
-			if(config cfg; luaW_toconfig(L, idx, cfg)) {
-				upvalues.add_child(name, cfg)["upvalue_type"] = "config";
+			if(std::vector<std::string> names = luaW_to_namedtuple(L, idx); !names.empty()) {
+				for(size_t i = 1; i <= lua_rawlen(L, -1); i++, lua_pop(L, 1)) {
+					lua_rawgeti(L, idx, i);
+					config& cfg = upvalues.add_child(name);
+					luaW_toscalar(L, -1, cfg["value"]);
+					cfg["name"] = names[0];
+					cfg["upvalue_type"] = "named tuple";
+					names.erase(names.begin());
+				}
+				break;
+			} else if(config cfg; luaW_toconfig(L, idx, cfg)) {
+				std::vector<std::string> names;
+				int save_top = lua_gettop(L);
+				if(luaL_getmetafield(L, idx, "__name") && lua_check<std::string>(L, -1) == "named tuple") {
+					luaL_getmetafield(L, -2, "__names");
+					names = lua_check<std::vector<std::string>>(L, -1);
+				}
+				lua_settop(L, save_top);
+				upvalues.add_child(name, cfg)["upvalue_type"] = names.empty() ? "config" : "named tuple";
 				break;
 			} else {
 				for(size_t i = 1; i <= lua_rawlen(L, -1); i++, lua_pop(L, 1)) {
@@ -1199,6 +1219,8 @@ bool lua_kernel_base::load_binary(const config& cfg, const error_handler& eh)
 					luaW_pushconfig(mState, child);
 				} else if(child["upvalue_type"] == "function") {
 					if(!load_binary(child, eh)) return false;
+				} else if(child["upvalue_type"] == "nil") {
+					lua_pushnil(mState);
 				}
 			} else continue;
 			lua_setupvalue(mState, funcindex, i);
