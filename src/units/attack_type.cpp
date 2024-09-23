@@ -19,6 +19,7 @@
  */
 
 #include "units/attack_type.hpp"
+#include "units/unit.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/string_utils.hpp"
@@ -79,6 +80,7 @@ attack_type::attack_type(const config& cfg) :
 	range_(cfg["range"]),
 	min_range_(cfg["min_range"].to_int(1)),
 	max_range_(cfg["max_range"].to_int(1)),
+	alignment_str_(),
 	damage_(cfg["damage"]),
 	num_attacks_(cfg["number"]),
 	attack_weight_(cfg["attack_weight"].to_double(1.0)),
@@ -99,6 +101,17 @@ attack_type::attack_type(const config& cfg) :
 		else
 			icon_ = "attacks/blank-attack.png";
 	}
+	if(cfg.has_attribute("alignment") && (cfg["alignment"] == "neutral" || cfg["alignment"] == "lawful" || cfg["alignment"] == "chaotic" || cfg["alignment"] == "liminal")){
+		alignment_str_ = cfg["alignment"].str();
+	} else if(self_){
+		alignment_str_ =unit_alignments::get_string(self_->alignment());
+	}
+}
+
+unit_alignments::type attack_type::alignment() const
+{
+	// pick attack alignment or fall back to unit alignment
+	return (unit_alignments::get_enum(alignment_str_).value_or(self_ ? self_->alignment() : unit_alignments::type::neutral));
 }
 
 std::string attack_type::accuracy_parry_description() const
@@ -170,6 +183,7 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 	const std::string& filter_parry = filter["parry"];
 	const std::string& filter_movement = filter["movement_used"];
 	const std::string& filter_attacks_used = filter["attacks_used"];
+	const std::set<std::string> filter_alignment = utils::split_set(filter["alignment"].str());
 	const std::set<std::string> filter_name = utils::split_set(filter["name"].str());
 	const std::set<std::string> filter_type = utils::split_set(filter["type"].str());
 	const std::vector<std::string> filter_special = utils::split(filter["special"]);
@@ -205,6 +219,9 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 		return false;
 
 	if (!filter_attacks_used.empty() && !in_ranges(attack.attacks_used(), utils::parse_ranges_unsigned(filter_attacks_used)))
+		return false;
+
+	if(!filter_alignment.empty() && filter_alignment.count(attack.alignment_str()) == 0)
 		return false;
 
 	if ( !filter_name.empty() && filter_name.count(attack.id()) == 0)
@@ -367,6 +384,7 @@ bool attack_type::apply_modification(const config& cfg)
 	const t_string& set_desc = cfg["set_description"];
 	const std::string& set_type = cfg["set_type"];
 	const std::string& set_range = cfg["set_range"];
+	const std::string& set_attack_alignment = cfg["set_alignment"];
 	const std::string& set_icon = cfg["set_icon"];
 	const std::string& del_specials = cfg["remove_specials"];
 	auto set_specials = cfg.optional_child("set_specials");
@@ -405,6 +423,10 @@ bool attack_type::apply_modification(const config& cfg)
 
 	if(set_range.empty() == false) {
 		range_ = set_range;
+	}
+
+	if(set_attack_alignment.empty() == false) {
+		alignment_str_ = set_attack_alignment;
 	}
 
 	if(set_icon.empty() == false) {
@@ -748,6 +770,7 @@ void attack_type::write(config& cfg) const
 	cfg["range"] = range_;
 	cfg["min_range"] = min_range_;
 	cfg["max_range"] = max_range_;
+	cfg["alignment"] = alignment_str_;
 	cfg["damage"] = damage_;
 	cfg["number"] = num_attacks_;
 	cfg["attack_weight"] = attack_weight_;

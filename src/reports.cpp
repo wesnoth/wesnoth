@@ -786,7 +786,8 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		int specials_damage = at.modified_damage();
 		int damage_multiplier = 100;
 		const_attack_ptr weapon  = at.shared_from_this();
-		int tod_bonus = combat_modifier(get_visible_time_of_day_at(rc, hex), u.alignment(), u.is_fearless());
+		unit_alignments::type attack_alignment = weapon->alignment();
+		int tod_bonus = combat_modifier(get_visible_time_of_day_at(rc, hex), attack_alignment, u.is_fearless());
 		damage_multiplier += tod_bonus;
 		int leader_bonus = under_leadership(u, hex, weapon);
 		if (leader_bonus != 0)
@@ -957,6 +958,24 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		}
 		add_text(res, damage_and_num_attacks.str, damage_and_num_attacks.tooltip);
 		add_text(res, damage_versus.str, damage_versus.tooltip); // This string is usually empty
+
+		if(attack_alignment != u.alignment()){
+			const std::string align = unit_type::alignment_description(attack_alignment, u.gender());
+			const std::string align_id = unit_alignments::get_string(attack_alignment);
+
+			color_t color = font::weapon_color;
+			if(tod_bonus != 0) {
+				color = (tod_bonus > 0) ? font::good_dmg_color : font::bad_dmg_color;
+			}
+
+			str << "  " << align << " (" << span_color(color) << utils::signed_percent(tod_bonus)
+				<< naps << ")" << "\n";
+
+			tooltip << _("Alignment: ") << "<b>" << align << "</b>\n"
+				<< string_table[align_id + "_description" ] + "\n";
+
+			add_text(res, flush(str), flush(tooltip));
+		}
 
 		const std::string &accuracy_parry = at.accuracy_parry_description();
 		if (!accuracy_parry.empty())
