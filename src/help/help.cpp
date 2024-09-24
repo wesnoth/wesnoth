@@ -33,7 +33,6 @@
 #include "help/help_impl.hpp"           // for hidden_symbol, toplevel, etc
 #include "key.hpp"                      // for CKey
 #include "log.hpp"                      // for LOG_STREAM, log_domain
-#include "show_dialog.hpp"              // for dialog_frame, etc
 #include "terrain/terrain.hpp"          // for terrain_type
 #include "units/unit.hpp"               // for unit
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc

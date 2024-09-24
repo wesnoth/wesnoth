@@ -24,7 +24,6 @@
 #include "mouse_handler_base.hpp"
 #include "preferences/preferences.hpp"
 #include "scripting/plugins/context.hpp"
-#include "show_dialog.hpp" //gui::in_dialog
 #include "gui/core/event/handler.hpp" // gui2::is_in_dialog
 #include "soundsource.hpp"
 #include "gui/core/timer.hpp"
@@ -97,7 +96,7 @@ void controller_base::long_touch_callback(int x, int y)
 
 void controller_base::handle_event(const SDL_Event& event)
 {
-	if(gui::in_dialog()) {
+	if(gui2::is_in_dialog()) {
 		return;
 	}
 
