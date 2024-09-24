@@ -92,6 +92,7 @@ jobs:
                   nls=false enable_lto="$LTO" system_lua="$SYS_LUA" force_color=true \
                   jobs=2 --debug=time glibcxx_debug=true glibcxx_assertions=true compile_db=true
               }
+              build cdb
               run-clang-tidy -use-color -j 2
               build strict=true wesnoth boost_unit_tests
 
