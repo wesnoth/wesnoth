@@ -66,6 +66,7 @@ game_display::game_display(game_board& board,
 		const std::string& theme_id,
 		const config& level)
 	: display(&board, wb, reports_object, theme_id, level)
+	, reach_map_images_()
 	, overlay_map_()
 	, attack_indicator_src_()
 	, attack_indicator_dst_()
@@ -76,7 +77,6 @@ game_display::game_display(game_board& board,
 	, chat_man_(new display_chat_manager(*this))
 	, mode_(RUNNING)
 	, needs_rebuild_(false)
-	, reach_map_images_()
 {
 	display::fill_images_list(game_config::reach_map_prefix, reach_map_images_);
 }
@@ -281,7 +281,7 @@ void game_display::draw_hex(const map_location& loc)
 	// Draw reach_map information.
 	// We remove the reachability mask of the unit that we want to attack.
 	if(!is_shrouded && !reach_map_.empty() && reach_map_.find(loc) != reach_map_.end() && loc != attack_indicator_dst_) {
-		drawing_buffer_add(drawing_layer::fog_shroud, loc, [images = get_reachmap_images(loc, image::HEXED)](const rect& dest) {
+		drawing_buffer_add(drawing_layer::fog_shroud, loc, [images = get_reachmap_images(loc)](const rect& dest) {
 			for(const texture& t : images) {
 				draw::blit(t, dest);
 			}
@@ -677,7 +677,7 @@ display::overlay_map& game_display::get_overlays()
 	return overlay_map_;
 }
 
-std::vector<texture> game_display::get_reachmap_images(const map_location& loc, image::TYPE image_type)
+std::vector<texture> game_display::get_reachmap_images(const map_location& loc)
 {
 	std::vector<std::string> names;
 	const auto adjacent = get_adjacent_tiles(loc);
@@ -685,7 +685,7 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc, 
 	enum visibility { REACH = 0, CLEAR = 1 };
 	std::array<visibility, 6> tiles;
 
-	const std::array image_prefix{&game_config::reach_map_prefix};
+	const std::string* image_prefix_ = &game_config::reach_map_prefix;
 	DBG_DP << "Loaded image prefix: " << game_config::reach_map_prefix;
 
 	for(int i = 0; i < 6; ++i) {
@@ -710,9 +710,9 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc, 
 		if(start == 6) {
 			// Completely surrounded by reach. This may have a special graphic.
 			DBG_DP << "Tried completely surrounding";
-			const std::string name = *image_prefix[v] + "-all.png";
+			std::string name = *image_prefix_ + "-all.png";
 			if(image::exists(name)) {
-				names.push_back(name);
+				names.push_back(std::move(name));
 				continue;
 			}
 			// No special graphic found. We'll just combine some other images
@@ -721,8 +721,7 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc, 
 		}
 
 		// always push the background image, as the graphics are meant to have it
-		const std::string name = *image_prefix[v] + ".png";
-		names.push_back(name);
+		names.push_back(*image_prefix_ + ".png");
 
 		// Find all the directions overlap occurs from
 		for(int i = start % 6, cap1 = 0; cap1 != 6; ++cap1) {
@@ -731,12 +730,10 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc, 
 				DBG_DP << "Direction " << get_direction(i) << " points to an unreachable hex";
 				std::ostringstream stream;
 				std::string name;
-				stream << *image_prefix[v];
+				stream << *image_prefix_;
 
 				for(int cap2 = 0; v != tiles[i] && cap2 != 6; i = (i + 1) % 6, ++cap2) {
-					DBG_DP << "Getting direction " << get_direction(i);
 					stream << get_direction(i);
-					DBG_DP << "Added " << get_direction(i) << " to directions";
 					if(!image::exists(stream.str() + ".png")) {
 						DBG_DP << "Image does not exist: " << stream.str() + ".png on " << loc;
 						// If we don't have any surface at all,
@@ -764,7 +761,7 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc, 
 	std::vector<texture> res;
 
 	for(const std::string& name : names) {
-		if(texture tex = image::get_texture(name, image_type)) {
+		if(texture tex = image::get_texture(name, image::HEXED)) {
 			res.push_back(std::move(tex));
 		}
 	}

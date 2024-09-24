@@ -173,7 +173,7 @@ protected:
 	std::set<map_location> units_that_can_reach_goal_;
 
 	std::vector<std::string> reach_map_images_;
-	std::vector<texture> get_reachmap_images(const map_location& loc, image::TYPE image_type);
+	std::vector<texture> get_reachmap_images(const map_location& loc);
 
 public:
 	/** Set the attack direction indicator. */
