@@ -33,8 +33,6 @@
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
-std::vector<const map_location*> locked_locations::locked_locations_;
-
 std::ostream &operator<<(std::ostream &s, const map_location& l) {
 	s << (l.wml_x()) << ',' << (l.wml_y());
 	return s;

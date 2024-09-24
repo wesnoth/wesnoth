@@ -24,7 +24,6 @@ class variable_set;
 #include <tuple>
 #include <vector>
 #include <utility>
-#include <algorithm>
 
 struct wml_loc {};
 
@@ -230,60 +229,3 @@ struct hash<map_location> {
 	}
 };
 }
-
-class locked_locations
-{
-public:
-	locked_locations();
-
-	static bool add_locked_location(const map_location* mlptr)
-	{
-		if(mlptr) {
-			locked_locations_.emplace_back(mlptr);
-			return true;
-		}
-		return false;
-	}
-
-	static bool add_locked_locations(std::vector<const map_location*> map_loc_v)
-	{
-		if(has_locked_location())
-			for(const map_location* mlptr_ : map_loc_v) {
-				add_locked_location(mlptr_);
-			}
-		else
-			std::swap(map_loc_v, locked_locations_);
-	}
-
-	static bool remove_locked_location(const map_location* mlptr)
-	{
-		if(mlptr) {
-			locked_locations_.erase(std::remove(std::begin(locked_locations_), std::end(locked_locations_), mlptr),
-				std::end(locked_locations_));
-			return true;
-		}
-		return false;
-	}
-
-	static bool is_locked_location(const map_location* mlptr)
-	{
-		if(mlptr)
-			for(const map_location* mlptr_ : locked_locations_) {
-				if(*mlptr == *mlptr_)
-					return true;
-			}
-
-		// return std::end(locked_locations)
-		//	!= std::find(std::begin(locked_locations), std::end(locked_locations), mlptr);
-
-		return false;
-	}
-
-	static bool has_locked_location()
-	{
-		return !locked_locations_.empty();
-	}
-
-private:
-	static std::vector<const map_location*> locked_locations_;
-};

@@ -477,8 +477,6 @@ temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
 	, temp_(src == dst ? unit_ptr() : m_.extract(dst))
 	, stand_(stand)
 {
-	locked_locations::add_locked_location(&src_);
-	locked_locations::add_locked_location(&dst_);
 	auto [iter, success] = m_.move(src_, dst_);
 
 	// Set the movement.
@@ -494,8 +492,6 @@ temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
 temporary_unit_mover::~temporary_unit_mover()
 {
 	try {
-		locked_locations::remove_locked_location(&src_);
-		locked_locations::remove_locked_location(&dst_);
 		auto [iter, success] = m_.move(dst_, src_);
 
 		// Restore the movement?
