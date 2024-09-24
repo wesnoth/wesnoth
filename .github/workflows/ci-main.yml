@@ -94,7 +94,7 @@ jobs:
               }
               build strict=true wesnoth boost_unit_tests
 
-              build cdb
+              build ctool=clang cxxtool=clang++ cdb # clang-tidy gets confused by non-clang output
               run-clang-tidy -use-color -j 2
 
               apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
