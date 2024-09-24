@@ -26,9 +26,11 @@
 #include "draw_manager.hpp"
 #include "fake_unit_manager.hpp"
 #include "filesystem.hpp"
+#include "floating_label.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "global.hpp"
+#include "gui/core/event/handler.hpp" // is_in_dialog
 #include "preferences/preferences.hpp"
 #include "halo.hpp"
 #include "hotkey/command_executor.hpp"
@@ -40,7 +42,6 @@
 #include "play_controller.hpp" //note: this can probably be refactored out
 #include "reports.hpp"
 #include "resources.hpp"
-#include "show_dialog.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
 #include "terrain/builder.hpp"
@@ -2345,7 +2346,7 @@ void display::queue_rerender()
 		}
 	}
 
-	if (!gui::in_dialog()) {
+	if(!gui2::is_in_dialog()) {
 		labels().recalculate_labels();
 	}
 
