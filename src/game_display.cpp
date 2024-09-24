@@ -286,7 +286,6 @@ void game_display::draw_hex(const map_location& loc)
 				draw::blit(t, dest);
 			}
 		});
-		DBG_DP << "Tried to draw reachmap in loc " << loc;
 	}
 
 	if(std::shared_ptr<wb::manager> w = wb_.lock()) {
