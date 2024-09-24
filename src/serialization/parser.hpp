@@ -19,6 +19,7 @@
 
 #include "config.hpp"
 #include "configr_assign.hpp"
+#include "serialization/tokenizer.hpp"
 
 class abstract_validator;
 

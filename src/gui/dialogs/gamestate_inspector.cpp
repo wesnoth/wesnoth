@@ -328,7 +328,7 @@ public:
 
 	void handle_copy_button_clicked()
 	{
-		desktop::clipboard::copy_to_clipboard(model_.get_data_full(), false);
+		desktop::clipboard::copy_to_clipboard(model_.get_data_full());
 	}
 
 	void handle_lua_button_clicked(window& window)
@@ -409,12 +409,6 @@ public:
 
 		left_button->set_visible(widget::visibility::invisible);
 		right_button->set_visible(widget::visibility::invisible);
-
-		if (!desktop::clipboard::available()) {
-			copy_button->set_active(false);
-			copy_button->set_tooltip(_("Clipboard support not found, contact your packager"));
-		}
-
 		build_stuff_list(window);
 	}
 

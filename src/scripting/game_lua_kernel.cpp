@@ -64,6 +64,7 @@
 #include "map/location.hpp"             // for map_location
 #include "mouse_events.hpp"             // for mouse_handler
 #include "mp_game_settings.hpp"         // for mp_game_settings
+#include "overlay.hpp"
 #include "pathfind/pathfind.hpp"        // for full_cost_map, plain_route, etc
 #include "pathfind/teleport.hpp"        // for get_teleport_locations, etc
 #include "play_controller.hpp"          // for play_controller
@@ -3937,11 +3938,7 @@ static int intf_append_ai(lua_State *L)
 	}
 	ai::configuration::expand_simplified_aspects(side_num, cfg);
 	if(added_dummy_stage) {
-		for(auto iter = cfg.ordered_begin(); iter != cfg.ordered_end(); iter++) {
-			if(iter->key == "stage" && iter->cfg["name"] == "empty") {
-				iter = cfg.erase(iter);
-			}
-		}
+		cfg.remove_children("stage", [](const config& stage_cfg) { return stage_cfg["name"] == "empty"; });
 	}
 	ai::manager::get_singleton().append_active_ai_for_side(side_num, cfg.mandatory_child("ai"));
 	return 0;
@@ -4116,9 +4113,15 @@ int game_lua_kernel::intf_add_tile_overlay(lua_State *L)
 	}
 
 	if (game_display_) {
-		game_display_->add_overlay(loc, cfg["image"], cfg["halo"],
-			team_name, cfg["name"], cfg["visible_in_fog"].to_bool(true),
-			cfg["submerge"].to_double(0), cfg["z_order"].to_double(0));
+		game_display_->add_overlay(loc, overlay(
+			cfg["image"],
+			cfg["halo"],
+			team_name,
+			cfg["name"], // Name is treated as the ID
+			cfg["visible_in_fog"].to_bool(true),
+			cfg["submerge"].to_double(0),
+			cfg["z_order"].to_double(0)
+		));
 	}
 	return 0;
 }
@@ -5712,11 +5715,11 @@ void game_lua_kernel::set_game_display(game_display * gd) {
  * elsewhere (in the C++ code).
  * Any child tags not in this list will be passed to Lua's on_load event.
  */
-static bool is_handled_file_tag(const std::string& s)
+static bool is_handled_file_tag(std::string_view s)
 {
 	// Make sure this is sorted, since we binary_search!
 	using namespace std::literals::string_view_literals;
-	static const std::array handled_file_tags {
+	static constexpr std::array handled_file_tags {
 		"color_palette"sv,
 		"color_range"sv,
 		"display"sv,
@@ -5791,23 +5794,24 @@ void game_lua_kernel::save_game(config &cfg)
 	luaW_toconfig(L, -1, v);
 	lua_pop(L, 1);
 
-	for (;;)
-	{
-		config::all_children_iterator i = v.ordered_begin();
-		if (i == v.ordered_end()) break;
-		if (is_handled_file_tag(i->key))
-		{
+	// Make a copy of the source tag names. Since splice is a destructive operation,
+	// we can't guarantee that the view will remain valid during iteration.
+	const auto temp = v.child_name_view();
+	const std::vector<std::string> src_tags(temp.begin(), temp.end());
+
+	for(const auto& key : src_tags) {
+		if(is_handled_file_tag(key)) {
 			/*
 			 * It seems the only tags appearing in the config v variable here
 			 * are the core-lua-handled (currently [item] and [objectives])
 			 * and the extra UMC ones.
 			 */
-			const std::string m = "Tag is already used: [" + i->key + "]";
+			const std::string m = "Tag is already used: [" + key + "]";
 			log_error(m.c_str());
-			v.erase(i);
 			continue;
+		} else {
+			cfg.splice_children(v, key);
 		}
-		cfg.splice_children(v, i->key);
 	}
 }
 

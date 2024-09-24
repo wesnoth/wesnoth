@@ -694,14 +694,6 @@ void pump()
 		}
 #endif
 
-#if defined(_X11) && !defined(__APPLE__)
-		case SDL_SYSWMEVENT: {
-			// clipboard support for X11
-			desktop::clipboard::handle_system_event(event);
-			break;
-		}
-#endif
-
 #if defined _WIN32
 		case SDL_SYSWMEVENT: {
 			windows_tray_notification::handle_system_event(event);

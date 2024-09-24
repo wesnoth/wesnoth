@@ -152,11 +152,6 @@ void game_version::pre_show(window& window)
 			// open_object().
 			browse_w.set_visible(widget::visibility::invisible);
 		}
-
-		if(!desktop::clipboard::available()) {
-			copy_w.set_active(false);
-			copy_w.set_tooltip(_("Clipboard support not found, contact your packager"));
-		}
 	}
 
 	button& stderr_button = find_widget<button>(&window, "open_stderr", false);
@@ -250,7 +245,7 @@ void game_version::run_migrator()
 
 void game_version::copy_to_clipboard_callback(const std::string& path, const std::string btn_id)
 {
-	desktop::clipboard::copy_to_clipboard(path, false);
+	desktop::clipboard::copy_to_clipboard(path);
 
 	button& copy_w = find_widget<button>(get_window(), btn_id, false);
 	copy_w.set_success(true);
@@ -258,7 +253,7 @@ void game_version::copy_to_clipboard_callback(const std::string& path, const std
 
 void game_version::report_copy_callback()
 {
-	desktop::clipboard::copy_to_clipboard(report_, false);
+	desktop::clipboard::copy_to_clipboard(report_);
 
 	button& copy_all = find_widget<button>(get_window(), "copy_all", false);
 	copy_all.set_success(true);

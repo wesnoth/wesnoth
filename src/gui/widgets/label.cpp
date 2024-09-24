@@ -167,7 +167,7 @@ void label::signal_handler_right_button_click(bool& handled)
 
 	DBG_GUI_E << "Right Clicked Link:\"" << link << "\"";
 
-	desktop::clipboard::copy_to_clipboard(link, false);
+	desktop::clipboard::copy_to_clipboard(link);
 
 	(void) show_message("", _("Copied link!"), dialogs::message::auto_close);
 

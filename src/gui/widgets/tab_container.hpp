@@ -112,15 +112,6 @@ private:
 
 	void finalize_listbox();
 
-	void set_items(std::vector<widget_data> list_items)
-	{
-		list_items_ = list_items;
-	}
-
-	void set_builders(std::vector<std::shared_ptr<builder_grid>> builders) {
-		builders_ = builders;
-	}
-
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();

@@ -405,7 +405,7 @@ static void show_deprecated_warnings(config& umc_cfg)
 					symbols);
 				deprecated_message("[advancefrom]", DEP_LEVEL::REMOVED, {1, 15, 4}, message);
 			}
-			unit_type.remove_children("advancefrom", [](const config&){return true;});
+			unit_type.remove_children("advancefrom");
 		}
 	}
 

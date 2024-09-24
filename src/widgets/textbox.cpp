@@ -553,7 +553,7 @@ bool textbox::handle_key_down(const SDL_Event &event)
 				if(is_selection())
 					erase_selection();
 
-				std::string str = desktop::clipboard::copy_from_clipboard(false);
+				std::string str = desktop::clipboard::copy_from_clipboard();
 
 				//cut off anything after the first newline
 				str.erase(std::find_if(str.begin(),str.end(),utils::isnewline),str.end());
@@ -581,7 +581,7 @@ bool textbox::handle_key_down(const SDL_Event &event)
 
 					std::u32string ws(text_.begin() + beg, text_.begin() + end);
 					std::string s = unicode_cast<std::string>(ws);
-					desktop::clipboard::copy_to_clipboard(s, false);
+					desktop::clipboard::copy_to_clipboard(s);
 				}
 			}
 			break;
@@ -595,7 +595,7 @@ bool textbox::handle_key_down(const SDL_Event &event)
 
 					std::u32string ws(text_.begin() + beg, text_.begin() + end);
 					std::string s = unicode_cast<std::string>(ws);
-					desktop::clipboard::copy_to_clipboard(s, false);
+					desktop::clipboard::copy_to_clipboard(s);
 					erase_selection();
 				}
 				break;

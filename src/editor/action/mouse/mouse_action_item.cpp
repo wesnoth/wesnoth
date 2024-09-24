@@ -50,8 +50,8 @@ std::unique_ptr<editor_action> mouse_action_item::click_left(editor_display& dis
 		return nullptr;
 	}
 
-	const overlay& item = item_palette_.selected_fg_item();
-	disp.add_overlay(start_hex_, item.image, item.halo, "", "", item.visible_in_fog, item.submerge);
+	overlay item = item_palette_.selected_fg_item();
+	disp.add_overlay(start_hex_, std::move(item));
 
 	click_ = true;
 	return nullptr;

@@ -225,7 +225,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	const unit& u = *attacker.unit_;
 
 	const int tod_modifier = combat_modifier(resources::gameboard->units(), resources::gameboard->map(),
-		u.get_location(), u.alignment(), u.is_fearless());
+		u.get_location(), weapon->alignment(), u.is_fearless());
 
 	if(tod_modifier != 0) {
 		set_label_helper("tod_modifier", utils::signed_percent(tod_modifier));

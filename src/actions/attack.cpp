@@ -188,7 +188,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	// Time of day bonus.
 	damage_multiplier += combat_modifier(
-			resources::gameboard->units(), resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
+			resources::gameboard->units(), resources::gameboard->map(), u_loc, weapon->alignment(), u.is_fearless());
 
 	// Leadership bonus.
 	int leader_bonus = under_leadership(u, u_loc, weapon, opp_weapon);
@@ -317,7 +317,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	int base_damage = weapon->modified_damage();
 	int damage_multiplier = 100;
 	damage_multiplier
-			+= generic_combat_modifier(lawful_bonus, u_type->alignment(), u_type->musthave_status("fearless"), 0);
+			+= generic_combat_modifier(lawful_bonus, weapon->alignment(), u_type->musthave_status("fearless"), 0);
 	damage_multiplier *= opp_type->resistance_against(weapon->type(), !attacking);
 
 	damage = round_damage(base_damage, damage_multiplier, 10000);

@@ -33,6 +33,12 @@
 #include "utils/const_clone.hpp"
 #include "utils/optional_reference.hpp"
 
+#ifdef __cpp_lib_ranges
+#include <ranges>
+#else
+#include <boost/range/adaptor/map.hpp>
+#endif
+
 #include <functional>
 #include <iosfwd>
 #include <map>
@@ -531,12 +537,9 @@ public:
 
 	void remove_attribute(config_key_type key);
 	void merge_attributes(const config &);
+
 	template<typename... T>
-	void remove_attributes(T... keys) {
-		for(const auto& key : {keys...}) {
-			remove_attribute(key);
-		}
-	}
+	void remove_attributes(T... keys) { (remove_attribute(keys), ...); }
 
 	/**
 	 * Copies attributes that exist in the source config.
@@ -598,24 +601,24 @@ public:
 
 private:
 	void clear_children_impl(config_key_type key);
+
 public:
 	template<typename... T>
-	void clear_children(T... keys) {
-		for(auto key : {keys...}) {
-			clear_children_impl(key);
-		}
-	}
+	void clear_children(T... keys) { (clear_children_impl(keys), ...); }
 
 	/**
 	 * Moves all the children with tag @a key from @a src to this.
 	 */
-	void splice_children(config &src, const std::string &key);
+	void splice_children(config& src, config_key_type key);
 
 	void remove_child(config_key_type key, std::size_t index);
+
 	/**
 	 * Removes all children with tag @a key for which @a p returns true.
+	 * If no predicate is provided, all @a key tags will be removed.
 	 */
-	void remove_children(config_key_type key, std::function<bool(const config&)> p = [](config){return true;});
+	void remove_children(config_key_type key, std::function<bool(const config&)> p = {});
+
 	void recursive_clear_value(config_key_type key);
 
 	void clear();
@@ -874,6 +877,16 @@ public:
 	 * i.e. can be saved to disk and again loaded by the WML parser.
 	 */
 	bool validate_wml() const;
+
+	/** A non-owning view over all child tag names. */
+	auto child_name_view() const
+	{
+#ifdef __cpp_lib_ranges
+		return children_ | std::views::keys;
+#else
+		return children_ | boost::adaptors::map_keys;
+#endif
+	}
 
 private:
 	/**

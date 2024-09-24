@@ -46,9 +46,9 @@
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, etc
 #include <boost/logic/tribool.hpp>
+#include "config.hpp"
 
 class game_config_view;
-class config;
 class unit_type;
 class terrain_type_data;
 
@@ -81,7 +81,7 @@ public:
  */
 class topic_text
 {
-	mutable std::vector< std::string > parsed_text_;
+	mutable config parsed_text_;
 	mutable std::shared_ptr<topic_generator> generator_;
 public:
 	topic_text() = default;
@@ -105,7 +105,7 @@ public:
 	topic_text& operator=(const topic_text& t) = default;
 	topic_text& operator=(std::shared_ptr<topic_generator> g);
 
-	const std::vector<std::string>& parsed_text() const;
+	const config& parsed_text() const;
 };
 
 /** A topic contains a title, an id and some text. */
@@ -222,10 +222,9 @@ struct parse_error : public game::error
 /** Dispatch generators to their appropriate functions. */
 void generate_sections(const config *help_cfg, const std::string &generator, section &sec, int level);
 std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
-std::string generate_topic_text(const std::string &generator, const config *help_cfg,
-const section &sec, const std::vector<topic>& generated_topics);
-std::string generate_contents_links(const std::string& section_name, const config *help_cfg);
-std::string generate_contents_links(const section &sec, const std::vector<topic>& topics);
+std::string generate_topic_text(const std::string &generator, const config *help_cfg, const section &sec);
+std::string generate_contents_links(const std::string& section_name, config const *help_cfg);
+std::string generate_contents_links(const section &sec);
 
 /**
  * return a hyperlink with the unit's name and pointing to the unit page
@@ -306,20 +305,11 @@ const section *find_section(const section &sec, const std::string &id);
 section *find_section(section &sec, const std::string &id);
 
 /**
- * Parse a xml style marked up text string. Return a vector with
- * the different parts of the text. Each markup item and the text
- * between markups are separate parts. Each line of returned vector
- * is valid WML.
+ * Parse a xml style marked up text string. Return a config with the different parts of the
+ * text. Each markup item is a separate part while the text between
+ * markups are separate parts.
  */
-std::vector<std::string> parse_text(const std::string &text);
-
-/**
- * Convert the the text between start and end xml tags for element_name to
- * valid wml attributes, surrounded between [element_name]...[/element_name].
- * The attributes in the start tag are also used.
- * @return the resulting WML.
- */
-std::string convert_to_wml(std::string &element_name, const std::string &contents);
+config parse_text(const std::string &text);
 
 /** Make a best effort to word wrap s. All parts are less than width. */
 std::vector<std::string> split_in_width(const std::string &s, const int font_size, const unsigned width);
@@ -378,49 +368,22 @@ bool is_visible_id(const std::string &id);
  */
 bool is_valid_id(const std::string &id);
 
-	// Helpers for making generation of topics easier.
+// Helpers for making generation of topics easier.
 
 inline std::string make_link(const std::string& text, const std::string& dst)
-	{
-		// some sorting done on list of links may rely on the fact that text is first
-		return "<ref>text='" + help::escape(text) + "' dst='" + help::escape(dst) + "'</ref>";
-	}
-
-inline std::string jump_to(const unsigned pos)
-	{
-		std::stringstream ss;
-		ss << "<jump>to=" << pos << "</jump>";
-		return ss.str();
-	}
-
-inline std::string jump(const unsigned amount)
-	{
-		std::stringstream ss;
-		ss << "<jump>amount=" << amount << "</jump>";
-		return ss.str();
-	}
+{
+	// some sorting done on list of links may rely on the fact that text is first
+	return "<ref dst='" + help::escape(dst) + "'>" + help::escape(text) + "</ref>";
+}
 
 inline std::string bold(const std::string &s)
-	{
-		std::stringstream ss;
-		ss << "<bold>text='" << help::escape(s) << "'</bold>";
-		return ss.str();
-	}
+{
+	std::stringstream ss;
+	ss << "<b>" << help::escape(s) << "</b>";
+	return ss.str();
+}
 
 // A string to be displayed and its width.
 typedef std::pair< std::string, unsigned > item;
-
-typedef std::vector<std::vector<help::item>> table_spec;
-// Create a table using the table specs. Return markup with jumps
-// that create a table. The table spec contains a vector with
-// vectors with pairs. The pairs are the markup string that should
-// be in a cell, and the width of that cell.
-std::string generate_table(const table_spec &tab, const unsigned int spacing=font::relative_size(20));
-
-// Return the width for the image with filename.
-unsigned image_width(const std::string &filename);
-
-// Add to the vector v an help::item for the string s, preceded by the given image if any.
-void push_tab_pair(std::vector<help::item> &v, const std::string &s, const utils::optional<std::string> &image = {}, unsigned padding = 0);
 
 } // end namespace help

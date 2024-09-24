@@ -90,11 +90,6 @@ void custom_tod::pre_show(window& window)
 
 		connect_signal_mouse_left_click(copy_w,
 			std::bind(&custom_tod::copy_to_clipboard_callback, this, data));
-
-		if(!desktop::clipboard::available()) {
-			copy_w.set_active(false);
-			copy_w.set_tooltip(_("Clipboard support not found, contact your packager"));
-		}
 	}
 
 	connect_signal_mouse_left_click(
@@ -333,7 +328,7 @@ void custom_tod::copy_to_clipboard_callback(std::pair<std::string, tod_attribute
 {
 	auto& [type, getter] = data;
 	button& copy_w = find_widget<button>(get_window(), "copy_" + type, false);
-	desktop::clipboard::copy_to_clipboard(getter(get_selected_tod()).second, false);
+	desktop::clipboard::copy_to_clipboard(getter(get_selected_tod()).second);
 	copy_w.set_success(true);
 }
 

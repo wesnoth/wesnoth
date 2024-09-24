@@ -1376,7 +1376,7 @@ void editor_controller::export_selection_coords()
 			++i;
 		}
 		ssx << "\n" << ssy.str() << "\n";
-		desktop::clipboard::copy_to_clipboard(ssx.str(), false);
+		desktop::clipboard::copy_to_clipboard(ssx.str());
 	}
 }
 

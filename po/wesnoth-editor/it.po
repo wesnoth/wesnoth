@@ -5,13 +5,13 @@
 #
 # Automatically generated, 2004.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2023
+# Antonio Rosella <arosella@yahoo.com>, 2012-2024
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-09-17 21:18-0500\n"
-"PO-Revision-Date: 2023-08-20 09:37+0200\n"
+"PO-Revision-Date: 2024-09-16 19:23+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -220,7 +220,7 @@ msgstr "Assegna uno schema temporale in locale"
 #. [menu]: id=menu-editor-unit
 #: data/themes/editor.cfg:141
 msgid "Unit"
-msgstr ""
+msgstr "Unità"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:151
@@ -303,16 +303,12 @@ msgstr ""
 "all’editor."
 
 #: src/editor/controller/editor_controller.cpp:880
-#, fuzzy
-#| msgid "Add-on"
 msgid "Add-on Files"
-msgstr "Estensione"
+msgstr "File dell’estensione"
 
 #: src/editor/controller/editor_controller.cpp:893
-#, fuzzy
-#| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
-msgstr "Supporto per la clipboard non disponibile, contatta il tuo packager"
+msgstr "L’apertura dei file non è supportata, contatta il tuo packager"
 
 #: src/editor/controller/editor_controller.cpp:1313
 msgid "Change Unit ID"
@@ -399,10 +395,8 @@ msgstr "Errore"
 
 #: src/editor/map/context_manager.cpp:712
 #: src/editor/map/context_manager.cpp:761
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
-msgstr "Vuoi davvero uscire?"
+msgstr "Vuoi veramente salvare $type1 nella cartella $type2?"
 
 #: src/editor/map/context_manager.cpp:720
 #: src/editor/map/context_manager.cpp:929
@@ -479,10 +473,8 @@ msgid "Empty file"
 msgstr "File vuoto"
 
 #: src/editor/map/map_context.cpp:198
-#, fuzzy
-#| msgid "File does not have .map or .cfg extension"
 msgid "File does not have .map, .cfg, or .mask extension"
-msgstr "Il file non ha una estensione .map o .cfg"
+msgstr "Il file non ha una estensione .map o .cfg o .mask"
 
 #: src/editor/map/map_context.cpp:245
 msgid ""
@@ -516,16 +508,12 @@ msgid "Unable to parse file to find map data"
 msgstr "Impossibile analizzare il file per trovare i dati della mappa"
 
 #: src/editor/map/map_context.cpp:821 src/editor/map/map_context.cpp:861
-#, fuzzy
-#| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
-msgstr "Impossibile salvare lo scenario: $msg"
+msgstr "Impossibile salvare lo schema temporale: $msg"
 
 #: src/editor/map/map_context.cpp:855
-#, fuzzy
-#| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
-msgstr "Menù dello schema temporale"
+msgstr "Schema temporale salvato."
 
 #: src/editor/map/map_context.cpp:901
 msgid "Could not save the scenario: $msg"
@@ -627,12 +615,14 @@ msgid ""
 "This file is outside Wesnoth's data dirs. Do you wish to copy it into your "
 "add-on?"
 msgstr ""
+"Questo file si trova all’esterno della directory data di Wesnoth. Desideri "
+"copiarlo nelle tue estensioni?"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:188
 #: src/gui/dialogs/editor/custom_tod.cpp:195
 #: src/gui/dialogs/editor/custom_tod.cpp:202
 msgid "Confirm"
-msgstr ""
+msgstr "Conferma"
 
 #~ msgid "player^None"
 #~ msgstr "Nessuno"

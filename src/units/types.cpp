@@ -1058,7 +1058,7 @@ void unit_type::fill_variations()
 
 		std::unique_ptr<unit_type> var = create_sub_type(var_cfg, false);
 
-		var->built_cfg_->remove_children("variation", [](const config&){return true;});
+		var->built_cfg_->remove_children("variation");
 		var->variation_id_ = var_cfg["variation_id"].str();
 		var->debug_id_ = debug_id_ + " [" + var->variation_id_ + "]";
 

@@ -188,6 +188,7 @@ static int impl_unit_attacks_set(lua_State* L)
 		if(iter == end) {
 			atk = u.add_attack(end, cfg);
 		} else {
+		    auto ctx = atk->specials_context(u.shared_from_this(), map_location::null_location(), true);
 			iter.base()->reset(new attack_type(cfg));
 			atk = *iter.base();
 		}
@@ -257,6 +258,7 @@ static int impl_unit_attack_get(lua_State *L)
 	return_string_attrib("type", attack.type());
 	return_string_attrib("icon", attack.icon());
 	return_string_attrib("range", attack.range());
+	return_string_attrib("alignment", attack.alignment_str());
 	return_int_attrib("damage", attack.damage());
 	return_int_attrib("number", attack.num_attacks());
 	return_float_attrib("attack_weight", attack.attack_weight());
@@ -292,6 +294,7 @@ static int impl_unit_attack_set(lua_State *L)
 	modify_string_attrib("type", attack.set_type(value));
 	modify_string_attrib("icon", attack.set_icon(value));
 	modify_string_attrib("range", attack.set_range(value));
+	modify_string_attrib("alignment", attack.set_range(value));
 	modify_int_attrib("damage", attack.set_damage(value));
 	modify_int_attrib("number", attack.set_num_attacks(value));
 	modify_int_attrib("attack_weight", attack.set_attack_weight(value));

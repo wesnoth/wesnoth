@@ -172,8 +172,6 @@ void config::append_children(const config& cfg)
 
 void config::append_children(config&& cfg)
 {
-#if 0
-	//For some unknown reason this doesn't compile.
 	if(children_.empty()) {
 		//optimisation
 		children_ = std::move(cfg.children_);
@@ -181,7 +179,6 @@ void config::append_children(config&& cfg)
 		cfg.clear_all_children();
 		return;
 	}
-#endif
 	for(const any_child value : cfg.all_children_range()) {
 		add_child(value.key, std::move(value.cfg));
 	}
@@ -583,7 +580,7 @@ void config::clear_children_impl(config_key_type key)
 	children_.erase(i);
 }
 
-void config::splice_children(config& src, const std::string& key)
+void config::splice_children(config& src, config_key_type key)
 {
 	child_map::iterator i_src = src.children_.find(key);
 	if(i_src == src.children_.end()) {
@@ -667,7 +664,7 @@ void config::remove_children(config_key_type key, std::function<bool(const confi
 
 	const auto predicate = [p](const std::unique_ptr<config>& child)
 	{
-		return p(*child);
+		return !p || p(*child);
 	};
 
 	auto child_it = std::find_if(pos->second.begin(), pos->second.end(), predicate);

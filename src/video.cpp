@@ -24,7 +24,6 @@
 #include "sdl/texture.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/window.hpp"
-#include "widgets/menu.hpp" // for bluebg_style.unload_images
 
 #ifdef TARGET_OS_OSX
 #include "desktop/apple_video.hpp"
@@ -122,7 +121,6 @@ void deinit()
 	font::flush_texture_cache();
 	render_texture_.reset();
 	current_render_target_.reset();
-	gui::menu::bluebg_style.unload_images();
 
 	// Destroy the window, and thus also the renderer.
 	window.reset();
