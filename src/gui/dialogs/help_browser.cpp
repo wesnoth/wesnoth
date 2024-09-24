@@ -194,12 +194,8 @@ void help_browser::on_history_navigate(bool backwards)
 	find_widget<button>(this, "back", false).set_active(!history_.empty() && history_pos_ != 0);
 	find_widget<button>(this, "next", false).set_active(!history_.empty() && history_pos_ != (history_.size()-1));
 
-	PLAIN_LOG << "history pos: " << history_pos_;
 	const std::string topic_id = history_.at(history_pos_);
-	PLAIN_LOG << " history: " << topic_id;
 	show_topic(topic_id, false);
-//	const unsigned topic_i = parsed_pages_.at(*history_pos_);
-//	find_widget<multi_page>(this, "topic_text_pages", false).select_page(topic_i);
 }
 
 } // namespace dialogs
