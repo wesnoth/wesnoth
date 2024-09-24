@@ -38,18 +38,13 @@ bool utils::config_filters::string_matches_if_present(
 	}
 
 	const std::vector<std::string> filter_attribute = utils::split(filter[attribute]);
-	return (
-		std::find(filter_attribute.begin(), filter_attribute.end(), cfg[attribute].str(def)) != filter_attribute.end());
+	return std::find(filter_attribute.begin(), filter_attribute.end(), cfg[attribute].str(def)) != filter_attribute.end();
 }
 
 bool utils::config_filters::set_includes_if_present(const config& filter, const config& cfg, const std::string& attribute)
 {
 	if(!filter.has_attribute(attribute)) {
 		return true;
-	}
-
-	if(!cfg.has_attribute(attribute)) {
-		return false;
 	}
 
 	const std::set<std::string> filter_attribute = utils::split_set(filter[attribute].str());
@@ -67,9 +62,6 @@ bool utils::config_filters::unsigned_matches_if_present(const config& filter, co
 	if(!filter.has_attribute(attribute)) {
 		return true;
 	}
-	if(!cfg.has_attribute(attribute)) {
-		return false;
-	}
 
 	return in_ranges<int>(cfg[attribute].to_int(0), utils::parse_ranges_unsigned(filter[attribute].str()));
 }
@@ -79,7 +71,7 @@ bool utils::config_filters::int_matches_if_present(const config& filter, const c
 	if(!filter.has_attribute(attribute)) {
 		return true;
 	}
-	if(!cfg.has_attribute(attribute) && !def) {
+	if(!def) {
 		return false;
 	}
 
@@ -120,7 +112,7 @@ bool utils::config_filters::double_matches_if_present(const config& filter, cons
 	if(!filter.has_attribute(attribute)) {
 		return true;
 	}
-	if(!cfg.has_attribute(attribute) && !def) {
+	if(!def) {
 		return false;
 	}
 
