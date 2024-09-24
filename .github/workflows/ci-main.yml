@@ -94,12 +94,12 @@ jobs:
               }
               build strict=true wesnoth boost_unit_tests
 
+              build cdb
+              run-clang-tidy -use-color -j 2
+
               apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
 
               build strict=false wesnothd campaignd
-              
-              build cdb
-              run-clang-tidy -use-color -j 2
               ;;
             cmake)
               build() {
