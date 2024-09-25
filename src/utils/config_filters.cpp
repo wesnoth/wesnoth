@@ -47,7 +47,10 @@ bool utils::config_filters::set_includes_if_present(const config& filter, const 
 	if(!filter.has_attribute(attribute)) {
 		return true;
 	}
-
+	//This function compares two sets in such a way that if
+	//no member of the ability set matches the filter element,
+	//it returns a false value but if the attribute is not present in ability
+	//then there is no point in wasting resources on building the set from the filter and the value is returned immediately.
 	if(!cfg.has_attribute(attribute)) {
 		return false;
 	}
@@ -67,6 +70,9 @@ bool utils::config_filters::unsigned_matches_if_present(const config& filter, co
 	if(!filter.has_attribute(attribute)) {
 		return true;
 	}
+	//Here, since no default variable is implemented,
+	//if the attribute is absent no checked value can match
+	//and false is automatically returned.
 	if(!cfg.has_attribute(attribute)) {
 		return false;
 	}
@@ -79,6 +85,8 @@ bool utils::config_filters::int_matches_if_present(const config& filter, const c
 	if(!filter.has_attribute(attribute)) {
 		return true;
 	}
+	//This function can be called in cases where no default value is supposed to exist,
+	//if this is the case and the checked attribute does not exist then no value can match.
 	if(!cfg.has_attribute(attribute) && !def) {
 		return false;
 	}
@@ -120,6 +128,8 @@ bool utils::config_filters::double_matches_if_present(const config& filter, cons
 	if(!filter.has_attribute(attribute)) {
 		return true;
 	}
+	//there is no attribute returning a decimal value using which has a default value but the variable exists in case this changes,
+	//otherwise in case the attribute is missing from the ability no value can match.
 	if(!cfg.has_attribute(attribute) && !def) {
 		return false;
 	}
@@ -134,6 +144,10 @@ bool utils::config_filters::double_matches_if_present(const config& filter, cons
 
 bool utils::config_filters::bool_or_empty(const config& filter, const config& cfg, const std::string& attribute)
 {
+	//Here, no numeric value by default since it returns a Boolean value,
+	//except that this function is called in cases where a third value exists in addition to true/false.
+	//If the attribute is not present in the ability this induces a different behavior than if it takes a true or false value
+	//and this presence must be verified before checking its value.
 	if(!filter.has_attribute(attribute)) {
 		return true;
 	}
