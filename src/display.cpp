@@ -149,7 +149,7 @@ display::display(const display_context* dc,
 		const config& level)
 	: dc_(dc)
 	, halo_man_()
-	, wb_(wb)
+	, wb_(std::move(wb))
 	, exclusive_unit_draw_requests_()
 	, viewing_team_index_(0)
 	, dont_show_all_(false)
@@ -1257,7 +1257,7 @@ uint32_t generate_hex_key(const drawing_layer layer, const map_location& loc)
 
 void display::drawing_buffer_add(const drawing_layer layer, const map_location& loc, decltype(draw_helper::do_draw) draw_func)
 {
-	drawing_buffer_.AGGREGATE_EMPLACE(generate_hex_key(layer, loc), draw_func, get_location_rect(loc));
+	drawing_buffer_.AGGREGATE_EMPLACE(generate_hex_key(layer, loc), std::move(draw_func), get_location_rect(loc));
 }
 
 void display::drawing_buffer_commit()

@@ -21,6 +21,7 @@
 #include <set>
 #include <string>
 #include <tuple>
+#include <utility>
 
 namespace gui2
 {
@@ -48,7 +49,7 @@ std::map<std::string, registered_widget_parser>& registered_widget_types()
 
 void register_widget(const std::string& type, widget_parser_t f, const char* key)
 {
-	registered_widget_types()[type] = {f, key};
+	registered_widget_types()[type] = {std::move(f), key};
 }
 
 std::map<std::string, widget_builder_func_t>& widget_builder_lookup()

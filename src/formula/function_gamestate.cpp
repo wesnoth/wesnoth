@@ -14,7 +14,9 @@
 */
 
 #include "formula/function_gamestate.hpp"
+
 #include "formula/callable_objects.hpp"
+#include <utility>
 
 #include "resources.hpp"
 #include "game_board.hpp"

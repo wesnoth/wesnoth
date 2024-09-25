@@ -230,7 +230,7 @@ static int impl_context_backend(lua_State * L, const std::shared_ptr<lua_context
 	}
 
 	plugins_manager::event evt;
-	evt.name = req_name;
+	evt.name = std::move(req_name);
 	evt.data = luaW_checkconfig(L, -1);
 
 	backend->requests.push_back(evt);

@@ -40,9 +40,10 @@
 #include <boost/asio/read_until.hpp>
 #endif
 
+#include <iostream>
 #include <queue>
 #include <string>
-#include <iostream>
+#include <utility>
 
 
 static lg::log_domain log_server("server");
@@ -378,7 +379,7 @@ void server_base::coro_send_file(tls_socket_ptr socket, const std::string& filen
 {
 	// We fallback to userspace if using TLS socket because sendfile is not aware of TLS state
 	// TODO: keep in mind possibility of using KTLS instead. This seem to be available only in openssl3 branch for now
-	coro_send_file_userspace(socket, filename, yield);
+	coro_send_file_userspace(std::move(socket), filename, std::move(yield));
 }
 
 void server_base::coro_send_file(const socket_ptr& socket, const std::string& filename, const boost::asio::yield_context& yield)

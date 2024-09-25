@@ -14,7 +14,9 @@
 */
 
 #include "random_synced.hpp"
+
 #include "log.hpp"
+#include <utility>
 
 static lg::log_domain log_random("random");
 #define DBG_RND LOG_STREAM(debug, log_random)
@@ -25,7 +27,7 @@ static lg::log_domain log_random("random");
 namespace randomness
 {
 	synced_rng::synced_rng(std::function<std::string()> seed_generator)
-		: has_valid_seed_(false), seed_generator_(seed_generator), gen_()
+		: has_valid_seed_(false), seed_generator_(std::move(seed_generator)), gen_()
 	{
 	}
 	uint32_t synced_rng::next_random_impl()
