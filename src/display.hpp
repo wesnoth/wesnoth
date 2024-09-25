@@ -382,7 +382,7 @@ public:
 
 	/** Adds a redraw observer, a function object to be called when a
 	  * full rerender is queued. */
-	void add_redraw_observer(std::function<void(display&)> f);
+	void add_redraw_observer(const std::function<void(display&)>& f);
 
 	/** Clear the redraw observers */
 	void clear_redraw_observers();

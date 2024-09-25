@@ -75,7 +75,7 @@ candidate_action_with_filters::candidate_action_with_filters(
 	}
 }
 
-variant candidate_action_with_filters::do_filtering(ai::formula_ai* ai, variant& input, const_formula_ptr formula)
+variant candidate_action_with_filters::do_filtering(ai::formula_ai* ai, variant& input, const const_formula_ptr& formula)
 {
 	map_formula_callable callable(ai->fake_ptr());
 	callable.add("input", input);

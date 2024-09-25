@@ -32,7 +32,7 @@ static lg::log_domain log_engine("engine");
 
 namespace actions::undo
 {
-recall_action::recall_action(const unit_const_ptr recalled, const map_location& loc,
+recall_action::recall_action(const unit_const_ptr& recalled, const map_location& loc,
 			  const map_location& from)
 	: undo_action()
 	, shroud_clearing_action(recalled, loc)

@@ -77,7 +77,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		bool attacking,
 		nonempty_unit_const_ptr oppp,
 		const map_location& opp_loc,
-		const_attack_ptr opp_weapon)
+		const const_attack_ptr& opp_weapon)
 	: weapon(nullptr)
 	, attack_num(u_attack_num)
 	, is_attacker(attacking)
@@ -229,7 +229,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 		const_attack_ptr att_weapon,
 		bool attacking,
 		const unit_type* opp_type,
-		const_attack_ptr opp_weapon,
+		const const_attack_ptr& opp_weapon,
 		unsigned int opp_terrain_defense,
 		int lawful_bonus)
 	: weapon(att_weapon)
@@ -523,7 +523,7 @@ bool battle_context::better_combat(const combatant& us_a,
 }
 
 battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr attacker,
-		nonempty_unit_const_ptr defender,
+		const nonempty_unit_const_ptr& defender,
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
 		double harm_weight,

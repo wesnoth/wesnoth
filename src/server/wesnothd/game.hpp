@@ -773,7 +773,7 @@ private:
 	 * @param users The users to create a comma separated list from.
 	 * @return A comma separated list of user names.
 	 */
-	std::string list_users(user_vector users) const;
+	std::string list_users(const user_vector& users) const;
 
 	/** calculates the initial value for sides_, side_controllerds_, nsides_*/
 	void reset_sides();

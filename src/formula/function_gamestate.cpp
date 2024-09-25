@@ -443,7 +443,7 @@ DEFINE_WFL_FUNCTION(base_tod_bonus, 0, 2)
 
 } // namespace gamestate
 
-gamestate_function_symbol_table::gamestate_function_symbol_table(std::shared_ptr<function_symbol_table> parent) : function_symbol_table(parent) {
+gamestate_function_symbol_table::gamestate_function_symbol_table(const std::shared_ptr<function_symbol_table>& parent) : function_symbol_table(parent) {
 	using namespace gamestate;
 	function_symbol_table& functions_table = *this;
 	DECLARE_WFL_FUNCTION(get_unit_type);

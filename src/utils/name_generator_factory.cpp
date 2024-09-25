@@ -35,7 +35,7 @@ name_generator_factory::name_generator_factory(const config& config, std::vector
 	}
 }
 
-void name_generator_factory::add_name_generator_from_config(const config& config, const std::string id, const std::string prefix) {
+void name_generator_factory::add_name_generator_from_config(const config& config, const std::string& id, const std::string& prefix) {
 	std::string cfg_name 	= prefix + "name_generator";
 	std::string markov_name = prefix + "names";
 
@@ -69,7 +69,7 @@ std::shared_ptr<name_generator> name_generator_factory::get_name_generator() {
 	return it->second;
 }
 
-std::shared_ptr<name_generator> name_generator_factory::get_name_generator(const std::string id) {
+std::shared_ptr<name_generator> name_generator_factory::get_name_generator(const std::string& id) {
 	std::map<std::string, std::shared_ptr<name_generator>>::const_iterator it = name_generators_.find(id);
 	if(it == name_generators_.end()) {
 		return get_name_generator();

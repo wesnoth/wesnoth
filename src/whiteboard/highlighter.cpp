@@ -179,7 +179,7 @@ void highlighter::unhighlight()
 	exclusive_display_hexes_.clear();
 }
 
-void highlighter::last_action_redraw(move_ptr move)
+void highlighter::last_action_redraw(const move_ptr& move)
 {
 	//Last action with a fake unit always gets normal appearance
 	if(move->get_fake_unit()) {

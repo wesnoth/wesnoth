@@ -42,7 +42,7 @@ public:
 	 * Log in case of victory
 	 * teams vector of winner teams
 	 */
-	static void log_victory( std::set<unsigned int> teams );
+	static void log_victory( const std::set<unsigned int>& teams );
 
 	/*
 	 * Log at game start

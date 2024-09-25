@@ -2317,7 +2317,7 @@ void display::queue_repaint()
 	draw_manager::invalidate_all();
 }
 
-void display::add_redraw_observer(std::function<void(display&)> f)
+void display::add_redraw_observer(const std::function<void(display&)>& f)
 {
 	redraw_observers_.push_back(f);
 }

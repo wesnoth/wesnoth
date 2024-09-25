@@ -436,7 +436,7 @@ void pango_text::add_attribute_fg_color(const unsigned start_offset, const unsig
 	}
 }
 
-void pango_text::add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, std::string family)
+void pango_text::add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, const std::string& family)
 {
 	attribute_start_offset_ = start_offset;
 	attribute_end_offset_ = end_offset;

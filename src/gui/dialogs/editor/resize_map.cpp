@@ -84,7 +84,7 @@ static int resize_grid_xy_to_idx(const int x, const int y)
 	}
 }
 
-void editor_resize_map::set_direction_icon(int index, std::string icon)
+void editor_resize_map::set_direction_icon(int index, const std::string& icon)
 {
 	if(index < 9) {
 		direction_buttons_[index]->set_icon_name("icons/arrows/arrows_blank_"

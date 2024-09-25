@@ -212,7 +212,7 @@ loading_screen::~loading_screen()
 	singleton_ = nullptr;
 }
 
-void loading_screen::display(std::function<void()> f)
+void loading_screen::display(const std::function<void()>& f)
 {
 	if(singleton_ || video::headless()) {
 		LOG_LS << "Directly executing loading function.";

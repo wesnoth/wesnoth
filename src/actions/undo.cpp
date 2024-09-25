@@ -85,7 +85,7 @@ void undo_list::add_auto_shroud(bool turned_on)
 /**
  * Adds a dismissal to the undo stack.
  */
-void undo_list::add_dismissal(const unit_const_ptr u)
+void undo_list::add_dismissal(const unit_const_ptr& u)
 {
 	add(std::make_unique<undo::dismiss_action>(u));
 }
@@ -93,7 +93,7 @@ void undo_list::add_dismissal(const unit_const_ptr u)
 /**
  * Adds a move to the undo stack.
  */
-void undo_list::add_move(const unit_const_ptr u,
+void undo_list::add_move(const unit_const_ptr& u,
                          const std::vector<map_location>::const_iterator & begin,
                          const std::vector<map_location>::const_iterator & end,
                          int start_moves,
@@ -105,7 +105,7 @@ void undo_list::add_move(const unit_const_ptr u,
 /**
  * Adds a recall to the undo stack.
  */
-void undo_list::add_recall(const unit_const_ptr u, const map_location& loc,
+void undo_list::add_recall(const unit_const_ptr& u, const map_location& loc,
                            const map_location& from)
 {
 	add(std::make_unique<undo::recall_action>(u, loc, from));
@@ -114,7 +114,7 @@ void undo_list::add_recall(const unit_const_ptr u, const map_location& loc,
 /**
  * Adds a recruit to the undo stack.
  */
-void undo_list::add_recruit(const unit_const_ptr u, const map_location& loc,
+void undo_list::add_recruit(const unit_const_ptr& u, const map_location& loc,
                             const map_location& from)
 {
 	add(std::make_unique<undo::recruit_action>(u, loc, from));

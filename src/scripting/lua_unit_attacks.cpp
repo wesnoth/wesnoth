@@ -33,7 +33,7 @@ static const char uattackKey[] = "unit attack";
 struct attack_ref {
 	attack_ptr attack;
 	const_attack_ptr cattack;
-	attack_ref(attack_ptr atk) : attack(atk), cattack(atk) {}
+	attack_ref(const attack_ptr& atk) : attack(atk), cattack(atk) {}
 	attack_ref(const_attack_ptr atk) : cattack(atk) {}
 };
 
@@ -47,7 +47,7 @@ void push_unit_attacks_table(lua_State* L, int idx)
 	luaL_setmetatable(L, uattacksKey);
 }
 
-void luaW_pushweapon(lua_State* L, attack_ptr weapon)
+void luaW_pushweapon(lua_State* L, const attack_ptr& weapon)
 {
 	if(weapon != nullptr) {
 		new(L) attack_ref(weapon);
@@ -57,7 +57,7 @@ void luaW_pushweapon(lua_State* L, attack_ptr weapon)
 	}
 }
 
-void luaW_pushweapon(lua_State* L, const_attack_ptr weapon)
+void luaW_pushweapon(lua_State* L, const const_attack_ptr& weapon)
 {
 	if(weapon != nullptr) {
 		new(L) attack_ref(weapon);

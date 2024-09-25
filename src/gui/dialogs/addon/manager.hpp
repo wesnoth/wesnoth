@@ -72,7 +72,7 @@ private:
 	void fetch_addons_list();
 	void load_addon_list();
 
-	void reload_list_and_reselect_item(const std::string id);
+	void reload_list_and_reselect_item(const std::string& id);
 
 	/** Config which contains the list with the campaigns. */
 	config cfg_;
