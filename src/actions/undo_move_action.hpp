@@ -30,7 +30,7 @@ struct move_action : undo_action, shroud_clearing_action
 	map_location goto_hex;
 
 
-	move_action(const unit_const_ptr moved,
+	move_action(const unit_const_ptr& moved,
 	            const std::vector<map_location>::const_iterator & begin,
 	            const std::vector<map_location>::const_iterator & end,
 	            int sm, int timebonus, int orig, const map_location::DIRECTION dir);

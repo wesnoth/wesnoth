@@ -100,14 +100,14 @@ point rich_label::get_image_size(config& img_cfg) {
 	return point(variables.query_value("image_width").as_int(), variables.query_value("image_height").as_int());
 }
 
-std::pair<size_t, size_t> rich_label::add_text(config& curr_item, std::string text) {
+std::pair<size_t, size_t> rich_label::add_text(config& curr_item, const std::string& text) {
 	size_t start = curr_item["text"].str().size();
 	curr_item["text"] = curr_item["text"].str() + text;
 	size_t end = curr_item["text"].str().size();
 	return std::pair(start, end);
 }
 
-void rich_label::add_attribute(config& curr_item, std::string attr_name, size_t start, size_t end, std::string extra_data) {
+void rich_label::add_attribute(config& curr_item, const std::string& attr_name, size_t start, size_t end, const std::string& extra_data) {
 	config& attr_cfg = curr_item.add_child("attribute");
 	attr_cfg["name"] = attr_name;
 	attr_cfg["start"] = start;
@@ -118,13 +118,13 @@ void rich_label::add_attribute(config& curr_item, std::string attr_name, size_t 
 	}
 }
 
-std::pair<size_t, size_t> rich_label::add_text_with_attribute(config& curr_item, std::string text, std::string attr_name, std::string extra_data) {
+std::pair<size_t, size_t> rich_label::add_text_with_attribute(config& curr_item, const std::string& text, const std::string& attr_name, const std::string& extra_data) {
 	const auto& [start, end] = add_text(curr_item, text);
 	add_attribute(curr_item, attr_name, start, end, extra_data);
 	return std::pair(start, end);
 }
 
-void rich_label::add_image(config& curr_item, std::string name, std::string align, bool has_prev_image, bool floating) {
+void rich_label::add_image(config& curr_item, const std::string& name, std::string align, bool has_prev_image, bool floating) {
 	// TODO: still doesn't cover the case where consecutive inline images have different heights
 	curr_item["name"] = name;
 
@@ -167,7 +167,7 @@ void rich_label::add_image(config& curr_item, std::string name, std::string alig
 	actions.str("");
 }
 
-void rich_label::add_link(config& curr_item, std::string name, std::string dest, const point& origin, int img_width) {
+void rich_label::add_link(config& curr_item, const std::string& name, const std::string& dest, const point& origin, int img_width) {
 	// TODO algorithm needs to be text_alignment independent
 
 	DBG_GUI_RL << "add_link: " << name << "->" << dest;
@@ -733,7 +733,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 	return std::pair(text_dom, point(w, h - origin.y));
 } // function ends
 
-void rich_label::default_text_config(config* txt_ptr, t_string text) {
+void rich_label::default_text_config(config* txt_ptr, const t_string& text) {
 	if (txt_ptr != nullptr) {
 		(*txt_ptr)["text"] = text;
 		(*txt_ptr)["font_size"] = font::SIZE_NORMAL;

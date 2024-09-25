@@ -88,7 +88,7 @@ private:
 	 * @param path Filesystem path associated with the widget.
 	 * @param btn_id Id of the button that calls this method
 	 */
-	void copy_to_clipboard_callback(const std::string& path, const std::string btn_id);
+	void copy_to_clipboard_callback(const std::string& path, const std::string& btn_id);
 
 	/**
 	 * Callback function for browse-directory action buttons.

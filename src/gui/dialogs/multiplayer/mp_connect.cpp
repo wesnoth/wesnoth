@@ -66,7 +66,7 @@ mp_connect::mp_connect()
 	, host_name_(register_text("host_name",
 							   true,
 							   []() {return prefs::get().network_host();},
-							   [](std::string v) {prefs::get().set_network_host(v);},
+							   [](const std::string& v) {prefs::get().set_network_host(v);},
 							   true))
 	, builtin_servers_(prefs::get().builtin_servers_list())
 	, user_servers_(prefs::get().user_servers_list())

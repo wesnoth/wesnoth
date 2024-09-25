@@ -243,7 +243,7 @@ void game_version::run_migrator()
 	migrate_version_selection::execute();
 }
 
-void game_version::copy_to_clipboard_callback(const std::string& path, const std::string btn_id)
+void game_version::copy_to_clipboard_callback(const std::string& path, const std::string& btn_id)
 {
 	desktop::clipboard::copy_to_clipboard(path);
 

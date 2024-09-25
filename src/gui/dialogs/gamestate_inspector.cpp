@@ -53,7 +53,7 @@ inline std::string config_to_string(const config& cfg)
 	return s.str();
 }
 
-inline std::string config_to_string(const config& cfg, std::string only_children)
+inline std::string config_to_string(const config& cfg, const std::string& only_children)
 {
 	config filtered;
 	for(const config& child : cfg.child_range(only_children)) {

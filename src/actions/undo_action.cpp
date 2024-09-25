@@ -116,7 +116,7 @@ namespace {
 		}
 		return iter.get_shared_ptr();
 	}
-	void execute_event(const undo_event& e, std::string tag) {
+	void execute_event(const undo_event& e, const std::string& tag) {
 		assert(resources::lua_kernel);
 		assert(resources::gamedata);
 

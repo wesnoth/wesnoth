@@ -70,12 +70,12 @@ void plugins_context::set_accessor(const std::string & name, accessor_function f
 	accessors_[name] = func;
 }
 
-void plugins_context::set_accessor_string(const std::string & name, std::function<std::string(config)> func)
+void plugins_context::set_accessor_string(const std::string & name, const std::function<std::string(config)>& func)
 {
 	set_accessor(name, [func, name](const config& cfg) { return config {name, func(cfg)}; });
 }
 
-void plugins_context::set_accessor_int(const std::string & name, std::function<int(config)> func)
+void plugins_context::set_accessor_int(const std::string & name, const std::function<int(config)>& func)
 {
 	set_accessor(name, [func, name](const config& cfg) { return config {name, func(cfg)}; });
 }
@@ -99,7 +99,7 @@ void plugins_context::play_slice()
 	plugins_manager::get()->play_slice(*this);
 }
 
-void plugins_context::set_callback(const std::string & name, std::function<void(config)> func, bool preserves_context)
+void plugins_context::set_callback(const std::string & name, const std::function<void(config)>& func, bool preserves_context)
 {
 	set_callback(name, [func, preserves_context](config cfg) { func(cfg); return preserves_context; });
 }

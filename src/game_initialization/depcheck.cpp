@@ -430,7 +430,7 @@ bool manager::is_modification_active(int index) const
 	return std::find(mods_.begin(), mods_.end(), id) != mods_.end();
 }
 
-bool manager::is_modification_active(const std::string id) const
+bool manager::is_modification_active(const std::string& id) const
 {
 	return std::find(mods_.begin(), mods_.end(), id) != mods_.end();
 }

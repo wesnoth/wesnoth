@@ -77,7 +77,7 @@ struct time_of_day
 			&& sounds == o.sounds;
 	}
 
-	void write(config& cfg, std::string textdomain = "") const;
+	void write(config& cfg, const std::string& textdomain = "") const;
 
 	/** The % bonus lawful units receive. Chaotics receive -lawful_bonus. */
 	int lawful_bonus;

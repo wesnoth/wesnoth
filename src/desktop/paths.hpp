@@ -74,7 +74,7 @@ enum SYSTEM_PATH_TYPES
  * These paths are guaranteed to be their canonical forms (with links and dot
  * entries resolved) and using the platform's preferred path delimiter.
  */
-std::vector<path_info> game_paths(std::set<GAME_PATH_TYPES> paths);
+std::vector<path_info> game_paths(const std::set<GAME_PATH_TYPES>& paths);
 
 /**
  * Returns a list of system-defined paths.
@@ -87,7 +87,7 @@ std::vector<path_info> game_paths(std::set<GAME_PATH_TYPES> paths);
  * These paths are guaranteed to be their canonical forms (with links and dot
  * entries resolved) and using the platform's preferred path delimiter.
  */
-std::vector<path_info> system_paths(std::set<SYSTEM_PATH_TYPES> paths);
+std::vector<path_info> system_paths(const std::set<SYSTEM_PATH_TYPES>& paths);
 
 struct bookmark_info
 {

@@ -85,14 +85,14 @@ struct battle_context_unit_stats
 			bool attacking,
 			nonempty_unit_const_ptr opp,
 			const map_location& opp_loc,
-			const_attack_ptr opp_weapon);
+			const const_attack_ptr& opp_weapon);
 
 	/** Used by AI for combat analysis, and by statistics_dialog */
 	battle_context_unit_stats(const unit_type* u_type,
 			const_attack_ptr att_weapon,
 			bool attacking,
 			const unit_type* opp_type,
-			const_attack_ptr opp_weapon,
+			const const_attack_ptr& opp_weapon,
 			unsigned int opp_terrain_defense,
 			int lawful_bonus = 0);
 
@@ -227,7 +227,7 @@ private:
 			int defender_weapon);
 
 	static battle_context choose_attacker_weapon(nonempty_unit_const_ptr attacker,
-			nonempty_unit_const_ptr defender,
+			const nonempty_unit_const_ptr& defender,
 			const map_location& attacker_loc,
 			const map_location& defender_loc,
 			double harm_weight,

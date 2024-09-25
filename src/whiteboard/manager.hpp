@@ -95,9 +95,9 @@ public:
 	void on_change_controller(int side, const team& t);
 	void on_kill_unit();
 	/** Handles various cleanup right before removing an action from the queue */
-	void pre_delete_action(action_ptr action);
+	void pre_delete_action(const action_ptr& action);
 	/** Handles various cleanup right after removing an action from the queue */
-	void post_delete_action(action_ptr action);
+	void post_delete_action(const action_ptr& action);
 
 	/** Called by replay_network_sender to add whiteboard data to the outgoing network packets */
 	void send_network_data();

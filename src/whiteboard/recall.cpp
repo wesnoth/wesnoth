@@ -38,12 +38,12 @@
 namespace wb
 {
 
-std::ostream& operator<<(std::ostream& s, recall_ptr recall)
+std::ostream& operator<<(std::ostream& s, const recall_ptr& recall)
 {
 	assert(recall);
 	return recall->print(s);
 }
-std::ostream& operator<<(std::ostream& s, recall_const_ptr recall)
+std::ostream& operator<<(std::ostream& s, const recall_const_ptr& recall)
 {
 	assert(recall);
 	return recall->print(s);

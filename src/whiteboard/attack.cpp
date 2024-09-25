@@ -33,13 +33,13 @@
 namespace wb
 {
 
-std::ostream &operator<<(std::ostream &s, attack_ptr attack)
+std::ostream &operator<<(std::ostream &s, const attack_ptr& attack)
 {
 	assert(attack);
 	return attack->print(s);
 }
 
-std::ostream &operator<<(std::ostream &s, attack_const_ptr attack)
+std::ostream &operator<<(std::ostream &s, const attack_const_ptr& attack)
 {
 	assert(attack);
 	return attack->print(s);

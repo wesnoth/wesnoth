@@ -81,14 +81,14 @@ namespace unit_filter_impl
 
 	struct unit_filter_compound : public unit_filter_base
 	{
-		unit_filter_compound(vconfig cfg);
+		unit_filter_compound(const vconfig& cfg);
 
 		template<typename C, typename F>
 		void create_attribute(const config::attribute_value c, C conv, F func);
 		template<typename F>
 		void create_child(const vconfig& c, F func);
 
-		void fill(vconfig cfg);
+		void fill(const vconfig& cfg);
 
 		virtual bool matches(const unit_filter_args& u) const override;
 		bool filter_impl(const unit_filter_args& u) const;
@@ -102,7 +102,7 @@ namespace unit_filter_impl
 class unit_filter
 {
 public:
-	explicit unit_filter(vconfig cfg);
+	explicit unit_filter(const vconfig& cfg);
 
 	unit_filter(const unit_filter&) = default;
 	unit_filter& operator=(const unit_filter&) = default;

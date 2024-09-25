@@ -109,7 +109,7 @@ public:
 		get_listbox().set_row_shown(shown);
 	}
 
-	void set_addon_order(addon_sort_func func);
+	void set_addon_order(const addon_sort_func& func);
 
 	/**
 	 * Changes the color of an add-on state string (installed, outdated, etc.) according to the state itself.
