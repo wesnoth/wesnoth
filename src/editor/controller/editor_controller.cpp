@@ -297,7 +297,7 @@ void editor_controller::custom_tods_dialog()
 	}
 }
 
-void editor_controller::update_map_schedule(std::vector<time_of_day> schedule)
+void editor_controller::update_map_schedule(const std::vector<time_of_day>& schedule)
 {
 	get_current_map_context().replace_schedule(schedule);
 	gui_->update_tod();

@@ -58,12 +58,12 @@ static std::string format_level_string(const int level)
 
 }
 
-static std::string format_if_leader(unit_const_ptr u, const std::string& str)
+static std::string format_if_leader(const unit_const_ptr& u, const std::string& str)
 {
 	return u->can_recruit() ? markup::span_color("#cdad00", str) : str;
 }
 
-static std::string format_movement_string(unit_const_ptr u)
+static std::string format_movement_string(const unit_const_ptr& u)
 {
 	const int moves_left = u->movement_left();
 	const int moves_max  = u->total_movement();

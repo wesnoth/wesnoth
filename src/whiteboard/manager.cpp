@@ -333,11 +333,11 @@ void manager::on_finish_side_turn(int side)
 	LOG_WB << "on_finish_side_turn()";
 }
 
-void manager::pre_delete_action(action_ptr)
+void manager::pre_delete_action(const action_ptr&)
 {
 }
 
-void manager::post_delete_action(action_ptr action)
+void manager::post_delete_action(const action_ptr& action)
 {
 	// The fake unit representing the destination of a chain of planned moves should have the regular animation.
 	// If the last remaining action of the unit that owned this move is a move as well,

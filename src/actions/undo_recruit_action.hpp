@@ -30,7 +30,7 @@ struct recruit_action : undo_action, shroud_clearing_action
 	map_location recruit_from;
 
 
-	recruit_action(const unit_const_ptr recruited, const map_location& loc,
+	recruit_action(const unit_const_ptr& recruited, const map_location& loc,
 	               const map_location& from);
 	recruit_action(const config & cfg);
 

@@ -159,7 +159,7 @@ private:
 	void update_selected_layer_index(const int i);
 
 	/** Internal implementation detail for selecting layers. */
-	void select_layer_impl(std::function<bool(unsigned int i)> display_condition);
+	void select_layer_impl(const std::function<bool(unsigned int i)>& display_condition);
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */

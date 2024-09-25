@@ -1198,7 +1198,7 @@ static void parse_set_args(const tk::token* i1, const tk::token* i2,
 	}
 }
 
-static void parse_where_clauses(const tk::token* i1, const tk::token* i2, expr_table_ptr res, function_symbol_table* symbols)
+static void parse_where_clauses(const tk::token* i1, const tk::token* i2, const expr_table_ptr& res, function_symbol_table* symbols)
 {
 	int parens = 0;
 	const tk::token* original_i1_cached = i1;

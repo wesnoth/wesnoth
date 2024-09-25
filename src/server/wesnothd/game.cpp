@@ -176,7 +176,7 @@ std::string game::username(player_iterator iter) const
 	return iter->info().name();
 }
 
-std::string game::list_users(user_vector users) const
+std::string game::list_users(const user_vector& users) const
 {
 	std::string list;
 

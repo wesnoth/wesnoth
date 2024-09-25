@@ -145,7 +145,7 @@ static inline std::string get_hp_tooltip(
 	return tooltip.str();
 }
 
-static inline std::string get_mp_tooltip(int total_movement, std::function<int (t_translation::terrain_code)> get)
+static inline std::string get_mp_tooltip(int total_movement, const std::function<int (t_translation::terrain_code)>& get)
 {
 	std::set<terrain_movement> terrain_moves;
 	std::ostringstream tooltip;

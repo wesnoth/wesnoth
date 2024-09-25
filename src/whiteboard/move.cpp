@@ -41,13 +41,13 @@
 
 namespace wb {
 
-std::ostream& operator<<(std::ostream &s, move_ptr move)
+std::ostream& operator<<(std::ostream &s, const move_ptr& move)
 {
 	assert(move);
 	return move->print(s);
 }
 
-std::ostream& operator<<(std::ostream &s, move_const_ptr move)
+std::ostream& operator<<(std::ostream &s, const move_const_ptr& move)
 {
 	assert(move);
 	return move->print(s);

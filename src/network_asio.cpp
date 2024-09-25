@@ -103,7 +103,7 @@ connection::~connection()
 	}
 }
 
-void connection::handle_resolve(const boost::system::error_code& ec, results_type results)
+void connection::handle_resolve(const boost::system::error_code& ec, const results_type& results)
 {
 	if(ec) {
 		throw system_error(ec);

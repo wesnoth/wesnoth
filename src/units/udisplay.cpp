@@ -128,7 +128,7 @@ void teleport_unit_between(const map_location& a, const map_location& b, unit& t
  */
 std::chrono::milliseconds move_unit_between(const map_location& a,
 		const map_location& b,
-		unit_ptr temp_unit,
+		const unit_ptr& temp_unit,
 		unsigned int step_num,
 		unsigned int step_left,
 		unit_animator& animator,
@@ -213,7 +213,7 @@ unit_mover::~unit_mover()
 /* Note: Hide the unit in its current location; do not actually remove it.
  * Otherwise the status displays will be wrong during the movement.
  */
-void unit_mover::replace_temporary(unit_ptr u)
+void unit_mover::replace_temporary(const unit_ptr& u)
 {
 	if ( disp_ == nullptr )
 		// No point in creating a temp unit with no way to display it.
@@ -254,7 +254,7 @@ void unit_mover::update_shown_unit()
  * Initiates the display of movement for the supplied unit.
  * This should be called before attempting to display moving to a new hex.
  */
-void unit_mover::start(unit_ptr u)
+void unit_mover::start(const unit_ptr& u)
 {
 	// Nothing to do here if there is nothing to animate.
 	if ( !can_draw_ )
@@ -311,7 +311,7 @@ void unit_mover::start(unit_ptr u)
  * wait (another call to proceed_to() or finish() will implicitly wait). The
  * unit must remain valid until the wait is finished.
  */
-void unit_mover::proceed_to(unit_ptr u, std::size_t path_index, bool update, bool wait)
+void unit_mover::proceed_to(const unit_ptr& u, std::size_t path_index, bool update, bool wait)
 {
 	// Nothing to do here if animations cannot be shown.
 	if ( !can_draw_ || !animate_ )
@@ -430,7 +430,7 @@ void unit_mover::wait_for_anims()
  * If @a dir is not supplied, the final direction will be determined by (the
  * last two traversed hexes of) the path.
  */
-void unit_mover::finish(unit_ptr u, map_location::direction dir)
+void unit_mover::finish(const unit_ptr& u, map_location::direction dir)
 {
 	// Nothing to do here if the display is not valid.
 	if ( !can_draw_ ) {
@@ -502,7 +502,7 @@ void unit_mover::finish(unit_ptr u, map_location::direction dir)
  * so that while the unit is moving status etc.
  * will still display the correct number of units.
  */
-void move_unit(const std::vector<map_location>& path, unit_ptr u,
+void move_unit(const std::vector<map_location>& path, const unit_ptr& u,
                bool animate, map_location::direction dir,
                bool force_scroll)
 {
@@ -517,7 +517,7 @@ void move_unit(const std::vector<map_location>& path, unit_ptr u,
 void reset_helpers(const unit *attacker,const unit *defender);
 
 void unit_draw_weapon(const map_location& loc, unit& attacker,
-		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& defender_loc, unit_ptr defender)
+		const const_attack_ptr& attack,const const_attack_ptr& secondary_attack, const map_location& defender_loc, const unit_ptr& defender)
 {
 	display* disp = display::get_singleton();
 	if(do_not_show_anims(disp) || disp->fogged(loc) || !prefs::get().show_combat()) {
@@ -536,8 +536,8 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 }
 
 
-void unit_sheath_weapon(const map_location& primary_loc, unit_ptr primary_unit,
-		const_attack_ptr primary_attack,const_attack_ptr secondary_attack, const map_location& secondary_loc,unit_ptr secondary_unit)
+void unit_sheath_weapon(const map_location& primary_loc, const unit_ptr& primary_unit,
+		const const_attack_ptr& primary_attack,const const_attack_ptr& secondary_attack, const map_location& secondary_loc,const unit_ptr& secondary_unit)
 {
 	display* disp = display::get_singleton();
 	if(do_not_show_anims(disp) || disp->fogged(primary_loc) || !prefs::get().show_combat()) {
@@ -567,7 +567,7 @@ void unit_sheath_weapon(const map_location& primary_loc, unit_ptr primary_unit,
 
 
 void unit_die(const map_location& loc, unit& loser,
-		const_attack_ptr attack,const_attack_ptr secondary_attack, const map_location& winner_loc, unit_ptr winner)
+		const const_attack_ptr& attack,const const_attack_ptr& secondary_attack, const map_location& winner_loc, const unit_ptr& winner)
 {
 	display* disp = display::get_singleton();
 	if(do_not_show_anims(disp) || disp->fogged(loc) || !prefs::get().show_combat()) {
@@ -594,7 +594,7 @@ void unit_die(const map_location& loc, unit& loser,
 
 void unit_attack(display * disp, game_board & board,
                  const map_location& a, const map_location& b, int damage,
-                 const attack_type& attack, const_attack_ptr secondary_attack,
+                 const attack_type& attack, const const_attack_ptr& secondary_attack,
                  int swing, const std::string& hit_text, int drain_amount,
                  const std::string& att_text,
                  const std::vector<std::string>* extra_hit_sounds,

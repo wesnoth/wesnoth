@@ -49,18 +49,18 @@ public:
 	/** Adds an auto-shroud toggle to the undo stack. */
 	void add_auto_shroud(bool turned_on);
 	/** Adds a dismissal to the undo stack. */
-	void add_dismissal(const unit_const_ptr u);
+	void add_dismissal(const unit_const_ptr& u);
 	/** Adds a move to the undo stack. */
-	void add_move(const unit_const_ptr u,
+	void add_move(const unit_const_ptr& u,
 	              const std::vector<map_location>::const_iterator & begin,
 	              const std::vector<map_location>::const_iterator & end,
 	              int start_moves,
 	              const map_location::direction dir=map_location::direction::indeterminate);
 	/** Adds a recall to the undo stack. */
-	void add_recall(const unit_const_ptr u, const map_location& loc,
+	void add_recall(const unit_const_ptr& u, const map_location& loc,
 	                const map_location& from);
 	/** Adds a recruit to the undo stack. */
-	void add_recruit(const unit_const_ptr u, const map_location& loc,
+	void add_recruit(const unit_const_ptr& u, const map_location& loc,
 	                 const map_location& from);
 
 	template<class T, class... Args>

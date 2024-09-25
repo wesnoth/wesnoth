@@ -20,7 +20,7 @@
 
 namespace actions::undo
 {
-dismiss_action::dismiss_action(const unit_const_ptr dismissed)
+dismiss_action::dismiss_action(const unit_const_ptr& dismissed)
 	: undo_action()
 	, dismissed_unit(dismissed->clone())
 {

@@ -296,7 +296,7 @@ variant_list::variant_list(const variant_vector& vec)
 {
 }
 
-variant variant_list::list_op(value_base_ptr second, std::function<variant(variant&, variant&)> op_func)
+variant variant_list::list_op(value_base_ptr second, const std::function<variant(variant&, variant&)>& op_func)
 {
 	const auto& other_list = value_cast<variant_list>(second);
 

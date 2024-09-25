@@ -1395,7 +1395,7 @@ std::string normalize_path(const std::string& fpath, bool normalize_separators, 
 	}
 }
 
-bool to_asset_path(std::string& path, std::string addon_id, std::string asset_type)
+bool to_asset_path(std::string& path, const std::string& addon_id, const std::string& asset_type)
 {
 	std::string rel_path = "";
 	std::string core_asset_dir = get_dir(game_config::path + "/data/core/" + asset_type);

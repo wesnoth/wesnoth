@@ -1542,7 +1542,7 @@ function_expression_ptr user_formula_function::generate_function_expression(
 	return std::make_shared<formula_function_expression>(name_, args, formula_, precondition_, args_);
 }
 
-function_symbol_table::function_symbol_table(std::shared_ptr<function_symbol_table> parent)
+function_symbol_table::function_symbol_table(const std::shared_ptr<function_symbol_table>& parent)
 	: parent(parent ? parent : get_builtins())
 {
 }
@@ -1670,7 +1670,7 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 	return std::shared_ptr<function_symbol_table>(&functions_table, [](function_symbol_table*) {});
 }
 
-action_function_symbol_table::action_function_symbol_table(std::shared_ptr<function_symbol_table> parent)
+action_function_symbol_table::action_function_symbol_table(const std::shared_ptr<function_symbol_table>& parent)
 	: function_symbol_table(parent)
 {
 	using namespace actions;

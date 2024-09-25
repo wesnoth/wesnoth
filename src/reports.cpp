@@ -1050,7 +1050,7 @@ static std::string format_hp(unsigned hp)
 	return res.str();
 }
 
-static config unit_weapons(const reports::context& rc, unit_const_ptr attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
+static config unit_weapons(const reports::context& rc, const unit_const_ptr& attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
 {
 	if (!attacker || !defender) return config();
 

@@ -50,7 +50,7 @@ time_of_day::time_of_day()
 {
 }
 
-void time_of_day::write(config& cfg, std::string textdomain) const
+void time_of_day::write(config& cfg, const std::string& textdomain) const
 {
 	cfg["lawful_bonus"] = lawful_bonus;
 	cfg["red"] = color.r;

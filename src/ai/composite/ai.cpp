@@ -102,7 +102,7 @@ void ai_composite::create_engine(std::vector<engine_ptr> &engines, const config 
 	engine::parse_engine_from_config(*this,cfg,std::back_inserter(engines));
 }
 
-void ai_composite::replace_aspect(std::map<std::string,aspect_ptr> &aspects, const config &cfg, std::string id)
+void ai_composite::replace_aspect(std::map<std::string,aspect_ptr> &aspects, const config &cfg, const std::string& id)
 {
 	std::vector<aspect_ptr> temp_aspects;
 	engine::parse_aspect_from_config(*this,cfg,id,std::back_inserter(temp_aspects));

@@ -92,22 +92,22 @@ public:
 	 * @param doc
 	 * @param yield The function will suspend on write operation using this yield context
 	 */
-	template<class SocketPtr> void coro_send_doc(SocketPtr socket, simple_wml::document& doc, boost::asio::yield_context yield);
+	template<class SocketPtr> void coro_send_doc(SocketPtr socket, simple_wml::document& doc, const boost::asio::yield_context& yield);
 	/**
 	 * Send contents of entire file directly to socket from within a coroutine
 	 * @param socket
 	 * @param filename
 	 * @param yield The function will suspend on write operations using this yield context
 	 */
-	void coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield);
-	void coro_send_file(tls_socket_ptr socket, const std::string& filename, boost::asio::yield_context yield);
+	void coro_send_file(const socket_ptr& socket, const std::string& filename, const boost::asio::yield_context& yield);
+	void coro_send_file(tls_socket_ptr socket, const std::string& filename, const boost::asio::yield_context& yield);
 	/**
 	 * Receive WML document from a coroutine
 	 * @param socket
 	 * @param yield The function will suspend on read operation using this yield context
 	 * @return unique_ptr with doc deceived. In case of error empty unique_ptr
 	 */
-	template<class SocketPtr> std::unique_ptr<simple_wml::document> coro_receive_doc(SocketPtr socket, boost::asio::yield_context yield);
+	template<class SocketPtr> std::unique_ptr<simple_wml::document> coro_receive_doc(SocketPtr socket, const boost::asio::yield_context& yield);
 
 	/**
 	 * High level wrapper for sending a WML document
@@ -145,7 +145,7 @@ protected:
 	void load_tls_config(const config& cfg);
 
 	void start_server();
-	void serve(boost::asio::yield_context yield, boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint);
+	void serve(const boost::asio::yield_context& yield, boost::asio::ip::tcp::acceptor& acceptor, const boost::asio::ip::tcp::endpoint& endpoint);
 
 	uint32_t handshake_response_;
 
