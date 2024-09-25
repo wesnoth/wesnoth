@@ -115,7 +115,7 @@ void unit_recruit::filter_text_changed(const std::string& text)
 	list.set_row_shown(show_items);
 }
 
-void unit_recruit::pre_show(window& window)
+void unit_recruit::pre_show()
 {
 	text_box* filter = find_widget<text_box>("filter_box", false, true);
 	filter->set_text_changed_callback(
@@ -125,8 +125,8 @@ void unit_recruit::pre_show(window& window)
 
 	connect_signal_notify_modified(list, std::bind(&unit_recruit::list_item_clicked, this));
 
-	window.keyboard_capture(filter);
-	window.add_to_keyboard_chain(&list);
+	keyboard_capture(filter);
+	add_to_keyboard_chain(&list);
 
 	connect_signal_mouse_left_click(
 		find_widget<button>("show_help"),
@@ -189,7 +189,7 @@ void unit_recruit::show_help()
 	help::show_help("recruit_and_recall");
 }
 
-void unit_recruit::post_show(window& window)
+void unit_recruit::post_show()
 {
 	if(get_retval() == retval::OK) {
 		selected_index_ = find_widget<listbox>("recruit_list")

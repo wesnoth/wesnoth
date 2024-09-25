@@ -51,7 +51,7 @@ generator_settings::generator_settings(generator_data& data)
 	register_bool("show_labels",     true, data.show_labels);
 }
 
-void generator_settings::pre_show(window& window)
+void generator_settings::pre_show()
 {
 	// We adjust the minimum values of the width and height sliders when the number of players changes.
 	// This is done because the map generator needs more space to generate more castles for more players.

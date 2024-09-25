@@ -66,7 +66,7 @@ migrate_version_selection::migrate_version_selection()
 	}
 }
 
-void migrate_version_selection::pre_show(window& window)
+void migrate_version_selection::pre_show()
 {
 	listbox& version_list = find_widget<listbox>("versions_listbox");
 
@@ -81,7 +81,7 @@ void migrate_version_selection::pre_show(window& window)
 	}
 }
 
-void migrate_version_selection::post_show(window& window)
+void migrate_version_selection::post_show()
 {
 	if(get_retval() == gui2::OK) {
 		std::string current_version_str = filesystem::get_version_path_suffix();

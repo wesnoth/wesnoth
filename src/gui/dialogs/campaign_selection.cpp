@@ -306,7 +306,7 @@ void campaign_selection::filter_text_changed(const std::string& text)
 	sort_campaigns(current_sorting_, currently_sorted_asc_);
 }
 
-void campaign_selection::pre_show(window& window)
+void campaign_selection::pre_show()
 {
 	text_box* filter = find_widget<text_box>("filter_box", false, true);
 	filter->set_text_changed_callback(
@@ -327,8 +327,8 @@ void campaign_selection::pre_show(window& window)
 	connect_signal_notify_modified(sort_time,
 		std::bind(&campaign_selection::toggle_sorting_selection, this, DATE));
 
-	window.keyboard_capture(filter);
-	window.add_to_keyboard_chain(&tree);
+	keyboard_capture(filter);
+	add_to_keyboard_chain(&tree);
 
 	/***** Setup campaign details. *****/
 	multi_page& pages = find_widget<multi_page>("campaign_details");
@@ -474,7 +474,7 @@ void campaign_selection::add_campaign_to_tree(const config& campaign)
 	tree.add_node("campaign", data).set_id(campaign["id"]);
 }
 
-void campaign_selection::post_show(window& window)
+void campaign_selection::post_show()
 {
 	tree_view& tree = find_widget<tree_view>("campaign_tree");
 

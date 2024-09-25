@@ -63,14 +63,13 @@ struct message_implementation
 	}
 };
 
-void message::pre_show(window& window)
+void message::pre_show()
 {
 	// ***** Validate the required buttons ***** ***** ***** *****
-	message_implementation::init_button(window, buttons_[left_1], "left_side");
-	message_implementation::init_button(window, buttons_[cancel], "cancel");
-	message_implementation::init_button(window, buttons_[ok], "ok");
-	message_implementation::init_button(
-			window, buttons_[right_1], "right_side");
+	message_implementation::init_button(*this, buttons_[left_1], "left_side");
+	message_implementation::init_button(*this, buttons_[cancel], "cancel");
+	message_implementation::init_button(*this, buttons_[ok], "ok");
+	message_implementation::init_button(*this, buttons_[right_1], "right_side");
 
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
 	styled_widget& title_widget = find_widget<label>("title");
@@ -94,13 +93,13 @@ void message::pre_show(window& window)
 
 	// The label might not always be a scroll_label but the capturing
 	// shouldn't hurt.
-	window.keyboard_capture(&label);
+	keyboard_capture(&label);
 
 	// Override the user value, to make sure it's set properly.
-	window.set_click_dismiss(auto_close_);
+	set_click_dismiss(auto_close_);
 }
 
-void message::post_show(window& /*window*/)
+void message::post_show()
 {
 	for(auto & button_status : buttons_)
 	{

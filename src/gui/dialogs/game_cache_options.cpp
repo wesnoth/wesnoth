@@ -46,7 +46,7 @@ game_cache_options::game_cache_options()
 {
 }
 
-void game_cache_options::pre_show(window& window)
+void game_cache_options::pre_show()
 {
 	clean_button_ = find_widget<button>("clean", false, true);
 	purge_button_ = find_widget<button>("purge", false, true);
@@ -77,7 +77,7 @@ void game_cache_options::pre_show(window& window)
 												this));
 }
 
-void game_cache_options::post_show(window& /*window*/)
+void game_cache_options::post_show()
 {
 	size_label_ = nullptr;
 }

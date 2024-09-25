@@ -56,7 +56,7 @@ depcheck_select_new::depcheck_select_new(
 	register_label("message", false, message);
 }
 
-void depcheck_select_new::pre_show(window& window)
+void depcheck_select_new::pre_show()
 {
 	listbox& items = find_widget<listbox>("itemlist");
 
@@ -71,7 +71,7 @@ void depcheck_select_new::pre_show(window& window)
 	items.select_row(0);
 }
 
-void depcheck_select_new::post_show(window& window)
+void depcheck_select_new::post_show()
 {
 	if(get_retval() == retval::OK) {
 		listbox& items = find_widget<listbox>("itemlist");

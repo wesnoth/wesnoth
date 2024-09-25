@@ -743,7 +743,7 @@ public:
 
 		return result;
 	}
-		
+
 	template <class T>
 	const NOT_DANGLING T* find_widget(
 		const std::string& id,
@@ -776,7 +776,7 @@ public:
 	{
 		return *(this->find_widget<T>(id, must_be_active, true));
 	}
-		
+
 	template <class T>
 	const NOT_DANGLING T& find_widget(
 		const std::string& id,

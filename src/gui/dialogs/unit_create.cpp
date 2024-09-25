@@ -49,7 +49,7 @@ unit_create::unit_create()
 {
 }
 
-void unit_create::pre_show(window& window)
+void unit_create::pre_show()
 {
 	toggle_button& male_toggle
 			= find_widget<toggle_button>("male_toggle");
@@ -76,8 +76,8 @@ void unit_create::pre_show(window& window)
 	filter->set_text_changed_callback(
 			std::bind(&unit_create::filter_text_changed, this, std::placeholders::_2));
 
-	window.keyboard_capture(filter);
-	window.add_to_keyboard_chain(&list);
+	keyboard_capture(filter);
+	add_to_keyboard_chain(&list);
 
 	connect_signal_notify_modified(list, std::bind(&unit_create::list_item_clicked, this));
 
@@ -124,7 +124,7 @@ void unit_create::pre_show(window& window)
 	list_item_clicked();
 }
 
-void unit_create::post_show(window& window)
+void unit_create::post_show()
 {
 	listbox& list = find_widget<listbox>("unit_type_list");
 

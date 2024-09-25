@@ -33,7 +33,7 @@ folder_create::folder_create(std::string& folder_name)
 	register_text("name", true, folder_name, true);
 }
 
-void folder_create::pre_show(window& window)
+void folder_create::pre_show()
 {
 	if(bookmark_mode_) {
 		find_widget<styled_widget>("title").set_label(_("New Bookmark"));

@@ -42,9 +42,9 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	/** @returns false if an error ocurred. */
 	bool show_flg_select(int side_num, bool first_time = false);

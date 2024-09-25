@@ -46,7 +46,7 @@ editor_resize_map::editor_resize_map(int& width,
 	register_label("old_height", false, std::to_string(height));
 }
 
-void editor_resize_map::pre_show(window& window)
+void editor_resize_map::pre_show()
 {
 	slider& height = find_widget<slider>("height");
 	connect_signal_notify_modified(

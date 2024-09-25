@@ -94,7 +94,7 @@ editor_edit_pbl::editor_edit_pbl(const std::string& pbl, const std::string& curr
 	url.set_label("https://r.wesnoth.org/t");
 }
 
-void editor_edit_pbl::pre_show(window& win)
+void editor_edit_pbl::pre_show()
 {
 	config pbl;
 	if(filesystem::file_exists(pbl_)) {
@@ -107,7 +107,7 @@ void editor_edit_pbl::pre_show(window& win)
 
 	text_box* name = find_widget<text_box>("name", false, true);
 	name->set_value(pbl["title"]);
-	win.keyboard_capture(name);
+	keyboard_capture(name);
 
 	find_widget<scroll_text>("description").set_value(pbl["description"]);
 	find_widget<text_box>("icon").set_value(pbl["icon"]);
@@ -216,7 +216,7 @@ void editor_edit_pbl::pre_show(window& win)
 	}
 }
 
-void editor_edit_pbl::post_show(window&)
+void editor_edit_pbl::post_show()
 {
 	if(get_retval() != retval::OK) {
 		return;

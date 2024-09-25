@@ -31,9 +31,9 @@ hotkey_bind::hotkey_bind(const std::string& hotkey_id)
 {
 }
 
-void hotkey_bind::pre_show(window& window)
+void hotkey_bind::pre_show()
 {
-	window.connect_signal<event::SDL_RAW_EVENT>(
+	connect_signal<event::SDL_RAW_EVENT>(
 			std::bind(&hotkey_bind::sdl_event_callback, this, std::placeholders::_5),
 			event::dispatcher::front_child);
 }

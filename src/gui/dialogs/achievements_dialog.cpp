@@ -45,7 +45,7 @@ achievements_dialog::achievements_dialog()
 {
 }
 
-void achievements_dialog::pre_show(window& win)
+void achievements_dialog::pre_show()
 {
 	std::vector<config> content_list;
 	content_names_ = &find_widget<menu_button>("selected_achievements_list");
@@ -73,7 +73,7 @@ void achievements_dialog::pre_show(window& win)
 	}
 }
 
-void achievements_dialog::post_show(window&)
+void achievements_dialog::post_show()
 {
 	prefs::get().set_selected_achievement_group(last_selected_);
 }

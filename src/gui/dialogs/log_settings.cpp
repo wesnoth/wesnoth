@@ -54,7 +54,7 @@ log_settings::log_settings()
 	}
 }
 
-void log_settings::pre_show(window& window)
+void log_settings::pre_show()
 {
 	listbox& logger_box = find_widget<listbox>("logger_listbox");
 
@@ -89,8 +89,8 @@ void log_settings::pre_show(window& window)
 	text_box* filter = find_widget<text_box>("filter_box", false, true);
 	filter->set_text_changed_callback(std::bind(&log_settings::filter_text_changed, this, std::placeholders::_2));
 
-	window.keyboard_capture(filter);
-	window.add_to_keyboard_chain(&logger_box);
+	keyboard_capture(filter);
+	add_to_keyboard_chain(&logger_box);
 }
 
 void log_settings::filter_text_changed(const std::string& text)
@@ -129,7 +129,7 @@ void log_settings::filter_text_changed(const std::string& text)
 	list.set_row_shown(show_items);
 }
 
-void log_settings::post_show(window& /*window*/)
+void log_settings::post_show()
 {
 	for(std::string this_domain : domain_list_){
 		set_logger(this_domain);

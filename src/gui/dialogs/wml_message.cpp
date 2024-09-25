@@ -55,10 +55,10 @@ void wml_message_base::set_option_list(
  * ugly. There needs to be a clean interface to set whether a widget has a
  * markup and what kind of markup. These fixes will be post 1.6.
  */
-void wml_message_base::pre_show(window& window)
+void wml_message_base::pre_show()
 {
-	window.get_canvas(1).set_variable("portrait_image", wfl::variant(portrait_));
-	window.get_canvas(1).set_variable("portrait_mirror", wfl::variant(mirror_));
+	get_canvas(1).set_variable("portrait_image", wfl::variant(portrait_));
+	get_canvas(1).set_variable("portrait_mirror", wfl::variant(mirror_));
 
 	// Set the markup
 	label& title = find_widget<label>("title");
@@ -71,7 +71,7 @@ void wml_message_base::pre_show(window& window)
 	message.set_use_markup(true);
 	// The message label might not always be a scroll_label but the capturing
 	// shouldn't hurt.
-	window.keyboard_capture(&message);
+	keyboard_capture(&message);
 
 	// Find the input box related fields.
 	label& caption = find_widget<label>("input_caption");
@@ -82,9 +82,9 @@ void wml_message_base::pre_show(window& window)
 		caption.set_use_markup(true);
 		input.set_value(*input_text_);
 		input.set_maximum_length(input_maximum_length_);
-		window.keyboard_capture(&input);
-		window.set_click_dismiss(false);
-		window.set_escape_disabled(true);
+		keyboard_capture(&input);
+		set_click_dismiss(false);
+		set_escape_disabled(true);
 	} else {
 		caption.set_visible(widget::visibility::invisible);
 		input.set_visible(widget::visibility::invisible);
@@ -113,20 +113,20 @@ void wml_message_base::pre_show(window& window)
 		}
 
 		if(!has_input_) {
-			window.keyboard_capture(&options);
-			window.set_click_dismiss(false);
-			window.set_escape_disabled(true);
+			keyboard_capture(&options);
+			set_click_dismiss(false);
+			set_escape_disabled(true);
 		} else {
-			window.add_to_keyboard_chain(&options);
+			add_to_keyboard_chain(&options);
 			// click_dismiss has been disabled due to the input.
 		}
 	} else {
 		options.set_visible(widget::visibility::invisible);
 	}
-	window.set_click_dismiss(!has_input_ && option_list_.empty());
+	set_click_dismiss(!has_input_ && option_list_.empty());
 }
 
-void wml_message_base::post_show(window& window)
+void wml_message_base::post_show()
 {
 	if(has_input_) {
 		*input_text_
@@ -139,11 +139,11 @@ void wml_message_base::post_show(window& window)
 	}
 }
 
-void wml_message_double::pre_show(window& window)
+void wml_message_double::pre_show()
 {
-	wml_message_left::pre_show(window);
-	window.get_canvas(1).set_variable("second_portrait_image", wfl::variant(second_portrait_));
-	window.get_canvas(1).set_variable("second_portrait_mirror", wfl::variant(second_mirror_));
+	wml_message_left::pre_show();
+	get_canvas(1).set_variable("second_portrait_image", wfl::variant(second_portrait_));
+	get_canvas(1).set_variable("second_portrait_mirror", wfl::variant(second_mirror_));
 }
 
 REGISTER_DIALOG(wml_message_left)

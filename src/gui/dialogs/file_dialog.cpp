@@ -211,7 +211,7 @@ void file_dialog::check_filename() {
 	}
 }
 
-void file_dialog::pre_show(window& window)
+void file_dialog::pre_show()
 {
 	styled_widget& title = find_widget<styled_widget>("title");
 	styled_widget& message = find_widget<styled_widget>("message");
@@ -321,9 +321,9 @@ void file_dialog::pre_show(window& window)
 	refresh_fileview();
 
 	//window.keyboard_capture(find_widget<text_box>("filename", false, true));
-	window.keyboard_capture(&file_textbox);
-	window.add_to_keyboard_chain(&filelist);
-	window.set_exit_hook(window::exit_hook::on_all, std::bind(&file_dialog::on_exit, this, std::placeholders::_1));
+	keyboard_capture(&file_textbox);
+	add_to_keyboard_chain(&filelist);
+	set_exit_hook(window::exit_hook::on_all, std::bind(&file_dialog::on_exit, this, std::placeholders::_1));
 }
 
 bool file_dialog::on_exit(window& window)

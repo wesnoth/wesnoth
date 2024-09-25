@@ -63,7 +63,7 @@ help_browser::help_browser(const help::section& toplevel, const std::string& ini
 	help::init_help();
 }
 
-void help_browser::pre_show(window& window)
+void help_browser::pre_show()
 {
 	tree_view& topic_tree = find_widget<tree_view>("topic_tree");
 
@@ -81,7 +81,7 @@ void help_browser::pre_show(window& window)
 
 	connect_signal_notify_modified(topic_tree, std::bind(&help_browser::on_topic_select, this));
 
-	window.keyboard_capture(&topic_tree);
+	keyboard_capture(&topic_tree);
 
 	add_topics_for_section(toplevel_, topic_tree.get_root_node());
 

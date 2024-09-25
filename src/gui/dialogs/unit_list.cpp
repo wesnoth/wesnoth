@@ -81,7 +81,7 @@ static std::string format_movement_string(unit_const_ptr u)
 	return formatter() << "<span color='" << color << "'>" << moves_left << "/" << moves_max << "</span>";
 }
 
-void unit_list::pre_show(window& window)
+void unit_list::pre_show()
 {
 	listbox& list = find_widget<listbox>("units_list");
 
@@ -89,7 +89,7 @@ void unit_list::pre_show(window& window)
 
 	list.clear();
 
-	window.keyboard_capture(&list);
+	keyboard_capture(&list);
 
 	for(const unit_const_ptr& unit : unit_list_) {
 		widget_data row_data;
@@ -180,7 +180,7 @@ void unit_list::list_item_clicked()
 		.set_displayed_unit(*unit_list_[selected_row].get());
 }
 
-void unit_list::post_show(window& window)
+void unit_list::post_show()
 {
 	if(get_retval() == retval::OK) {
 		const int selected_row = find_widget<listbox>("units_list").get_selected_row();

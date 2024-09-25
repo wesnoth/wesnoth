@@ -55,7 +55,7 @@ void mp_login::save_password()
 	prefs::get().set_password(host_, username_->get_widget_value(), pwd.get_real_value());
 }
 
-void mp_login::pre_show(window& win)
+void mp_login::pre_show()
 {
 	text_box& login = find_widget<text_box>("user_name");
 	login.connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(&mp_login::load_password, this));
@@ -63,14 +63,14 @@ void mp_login::pre_show(window& win)
 	load_password();
 
 	if(focus_password_) {
-		win.keyboard_capture(find_widget<text_box>("password", false, true));
+		keyboard_capture(find_widget<text_box>("password", false, true));
 	}
 
-	win.add_to_tab_order(&login);
-	win.add_to_tab_order(find_widget<text_box>("password", false, true));
+	add_to_tab_order(&login);
+	add_to_tab_order(find_widget<text_box>("password", false, true));
 }
 
-void mp_login::post_show(window& /*win*/) {
+void mp_login::post_show() {
 	if(get_retval() == retval::OK) {
 		save_password();
 	}

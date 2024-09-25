@@ -74,14 +74,14 @@ void editor_generate_map::select_map_generator(map_generator* mg)
 	last_map_generator_ = mg;
 }
 
-void editor_generate_map::pre_show(window& window)
+void editor_generate_map::pre_show()
 {
 	assert(!map_generators_.empty());
 
 	register_text("seed_textbox", false, random_seed_, false);
 
 	listbox& list = find_widget<listbox>("generators_list");
-	window.keyboard_capture(&list);
+	keyboard_capture(&list);
 
 	widget_data lrow;
 	for(const auto & gen : map_generators_)

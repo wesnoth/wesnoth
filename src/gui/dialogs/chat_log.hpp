@@ -33,7 +33,7 @@ public:
 
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(chat_log)
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	std::shared_ptr<view> get_view() const;
 

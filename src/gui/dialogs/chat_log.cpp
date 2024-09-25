@@ -416,10 +416,10 @@ std::shared_ptr<chat_log::view> chat_log::get_view() const
 	return view_;
 }
 
-void chat_log::pre_show(window& window)
+void chat_log::pre_show()
 {
 	LOG_CHAT_LOG << "Entering chat_log::pre_show";
-	view_->bind(window);
+	view_->bind(*this);
 	view_->pre_show();
 	LOG_CHAT_LOG << "Exiting chat_log::pre_show";
 }

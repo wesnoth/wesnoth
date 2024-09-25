@@ -69,13 +69,13 @@ mp_staging::~mp_staging()
 	}
 }
 
-void mp_staging::pre_show(window& window)
+void mp_staging::pre_show()
 {
-	window.set_enter_disabled(true);
-	window.set_escape_disabled(true);
+	set_enter_disabled(true);
+	set_escape_disabled(true);
 
 	// Ctrl+G triggers 'I'm Ready' (ok) button's functionality
-	window.register_hotkey(hotkey::HOTKEY_MP_START_GAME, std::bind(&mp_staging::start_game, this));
+	register_hotkey(hotkey::HOTKEY_MP_START_GAME, std::bind(&mp_staging::start_game, this));
 	std::stringstream tooltip;
 	tooltip
 		<< vgettext_impl("wesnoth", "Hotkey(s): ",  {{}})
@@ -111,7 +111,7 @@ void mp_staging::pre_show(window& window)
 	//
 	// Set up player list
 	//
-	player_list_.reset(new player_list_helper(&window));
+	player_list_.reset(new player_list_helper(this));
 
 	//
 	// Set up the network handling
@@ -123,8 +123,8 @@ void mp_staging::pre_show(window& window)
 	//
 	plugins_context_.reset(new plugins_context("Multiplayer Staging"));
 
-	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(retval::OK); }, false);
-	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(retval::CANCEL); }, false);
+	plugins_context_->set_callback("launch", [this](const config&) { set_retval(retval::OK); }, false);
+	plugins_context_->set_callback("quit",   [this](const config&) { set_retval(retval::CANCEL); }, false);
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
@@ -573,14 +573,14 @@ void mp_staging::network_handler()
 	state_changed_ = false;
 }
 
-void mp_staging::post_show(window& window)
+void mp_staging::post_show()
 {
 	if(update_timer_ != 0) {
 		remove_timer(update_timer_);
 		update_timer_ = 0;
 	}
 
-	if(window.get_retval() == retval::OK) {
+	if(get_retval() == retval::OK) {
 		connect_engine_.start_game();
 	} else {
 		connect_engine_.leave_game();

@@ -50,7 +50,7 @@ editor_edit_side::editor_edit_side(editor::editor_team_info& info)
 	register_bool("hidden", true, info.hidden);
 }
 
-void editor_edit_side::pre_show(window& window)
+void editor_edit_side::pre_show()
 {
 	controller_group.add_member(find_widget<toggle_button>("controller_human", false, true), side_controller::type::human);
 	controller_group.add_member(find_widget<toggle_button>("controller_ai", false, true),    side_controller::type::ai);
@@ -64,12 +64,12 @@ void editor_edit_side::pre_show(window& window)
 
 	vision_group.set_member_states(share_vision_);
 
-	window.add_to_tab_order(find_widget<text_box>("team_name", false, true));
-	window.add_to_tab_order(find_widget<text_box>("user_team_name", false, true));
-	window.add_to_tab_order(find_widget<text_box>("recruit_list", false, true));
+	add_to_tab_order(find_widget<text_box>("team_name", false, true));
+	add_to_tab_order(find_widget<text_box>("user_team_name", false, true));
+	add_to_tab_order(find_widget<text_box>("recruit_list", false, true));
 }
 
-void editor_edit_side::post_show(window&)
+void editor_edit_side::post_show()
 {
 	controller_ = controller_group.get_active_member_value();
 	share_vision_ = vision_group.get_active_member_value();

@@ -38,10 +38,10 @@ addon_auth::addon_auth(config& cfg)
 		[](bool v) {prefs::get().set_remember_password(v);});
 }
 
-void addon_auth::pre_show(window& win)
+void addon_auth::pre_show()
 {
 	text_box* pwd = find_widget<text_box>("password", false, true);
-	win.add_to_tab_order(pwd);
+	add_to_tab_order(pwd);
 	pwd->set_value(cfg_["passphrase"].str(""));
 
 	std::vector<config> content_list;
@@ -53,7 +53,7 @@ void addon_auth::pre_show(window& win)
 	find_widget<menu_button>("choose_uploader").set_values(content_list);
 }
 
-void addon_auth::post_show(window& win)
+void addon_auth::post_show()
 {
 	if(get_retval() == gui2::retval::OK)
 	{

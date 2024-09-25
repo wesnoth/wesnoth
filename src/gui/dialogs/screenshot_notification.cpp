@@ -47,14 +47,14 @@ screenshot_notification::screenshot_notification(const std::string& path, surfac
 {
 }
 
-void screenshot_notification::pre_show(window& window)
+void screenshot_notification::pre_show()
 {
-	window.set_enter_disabled(true);
+	set_enter_disabled(true);
 
 	text_box& path_box = find_widget<text_box>("path");
 	path_box.set_value(filesystem::base_name(path_));
 	path_box.set_selection(0, path_box.text().find_last_of('.')); // TODO: do this cleaner!
-	window.keyboard_capture(&path_box);
+	keyboard_capture(&path_box);
 	connect_signal_pre_key_press(path_box, std::bind(&screenshot_notification::keypress_callback, this,
 		std::placeholders::_3, std::placeholders::_5));
 

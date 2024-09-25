@@ -48,9 +48,9 @@ mp_match_history::mp_match_history(const std::string& player_name, wesnothd_conn
 	register_label("title", true, VGETTEXT("Match History — $player", {{"player", player_name_}}));
 }
 
-void mp_match_history::pre_show(window& win)
+void mp_match_history::pre_show()
 {
-	win.set_enter_disabled(true);
+	set_enter_disabled(true);
 
 	button& newer_history = find_widget<button>("newer_history");
 	button& older_history = find_widget<button>("older_history");

@@ -67,7 +67,7 @@ network_transmission::network_transmission(
 	register_label("title", true, title, false);
 }
 
-void network_transmission::pre_show(window& window)
+void network_transmission::pre_show()
 {
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
 	if(!subtitle_.empty()) {
@@ -81,10 +81,10 @@ void network_transmission::pre_show(window& window)
 	// NOTE: needed to avoid explicit calls to invalidate_layout()
 	// in network_transmission::pump_monitor::process()
 	find_widget<label>("numeric_progress").set_label(" ");
-	pump_monitor_.window_ = window;
+	pump_monitor_.window_ = *this;
 }
 
-void network_transmission::post_show(window& /*window*/)
+void network_transmission::post_show()
 {
 	pump_monitor_.window_ = utils::nullopt;
 

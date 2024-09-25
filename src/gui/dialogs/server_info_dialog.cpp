@@ -35,7 +35,7 @@ server_info::server_info(const std::string& info, const std::string& announcemen
 {
 }
 
-void server_info::pre_show(window& window)
+void server_info::pre_show()
 {
    find_widget<label>("server_information").set_label(server_information_);
    find_widget<label>("announcements").set_label(announcements_);

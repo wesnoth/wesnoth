@@ -31,10 +31,10 @@ theme_list::theme_list(const std::vector<theme_info>& themes, int selection)
 {
 }
 
-void theme_list::pre_show(window& window)
+void theme_list::pre_show()
 {
 	listbox& list = find_widget<listbox>("themes");
-	window.keyboard_capture(&list);
+	keyboard_capture(&list);
 
 	for(const auto & t : themes_)
 	{
@@ -61,7 +61,7 @@ void theme_list::pre_show(window& window)
 	index_ = -1;
 }
 
-void theme_list::post_show(window& window)
+void theme_list::post_show()
 {
 	if(get_retval() != retval::OK) {
 		return;

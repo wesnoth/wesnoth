@@ -42,10 +42,10 @@ simple_item_selector::simple_item_selector(const std::string& title,
 	register_label("message", true, message, message_uses_markup);
 }
 
-void simple_item_selector::pre_show(window& window)
+void simple_item_selector::pre_show()
 {
 	listbox& list = find_widget<listbox>("listbox");
-	window.keyboard_capture(&list);
+	keyboard_capture(&list);
 
 	for(const auto & it : items_)
 	{
@@ -80,7 +80,7 @@ void simple_item_selector::pre_show(window& window)
 	}
 }
 
-void simple_item_selector::post_show(window& window)
+void simple_item_selector::post_show()
 {
 	if(get_retval() == retval::OK || single_button_) {
 		index_ = find_widget<listbox>("listbox").get_selected_row();

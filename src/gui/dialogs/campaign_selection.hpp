@@ -82,9 +82,9 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	void sort_campaigns(CAMPAIGN_ORDER order, bool ascending);
 
