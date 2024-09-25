@@ -40,14 +40,14 @@ void core_selection::core_selected()
 	pages.select_page(selected_row);
 }
 
-void core_selection::pre_show(window& window)
+void core_selection::pre_show()
 {
 	/***** Setup core list. *****/
 	listbox& list = find_widget<listbox>("core_list");
 
 	connect_signal_notify_modified(list, std::bind(&core_selection::core_selected, this));
 
-	window.keyboard_capture(&list);
+	keyboard_capture(&list);
 
 	/***** Setup core details. *****/
 	multi_page& pages
@@ -83,7 +83,7 @@ void core_selection::pre_show(window& window)
 	core_selected();
 }
 
-void core_selection::post_show(window& window)
+void core_selection::post_show()
 {
 	choice_ = find_widget<listbox>("core_list")
 					  .get_selected_row();

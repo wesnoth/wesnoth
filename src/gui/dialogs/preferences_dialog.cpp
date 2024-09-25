@@ -1111,7 +1111,7 @@ void preferences_dialog::initialize_tabs(listbox& selector)
 		std::bind(&preferences_dialog::on_tab_select, this));
 }
 
-void preferences_dialog::pre_show(window& window)
+void preferences_dialog::pre_show()
 {
 	set_always_save_fields(true);
 
@@ -1139,7 +1139,7 @@ void preferences_dialog::pre_show(window& window)
 	connect_signal_notify_modified(selector,
 		std::bind(&preferences_dialog::on_page_select, this));
 
-	window.keyboard_capture(&selector);
+	keyboard_capture(&selector);
 
 	VALIDATE(selector.get_item_count() == pager.get_layer_count(),
 		"The preferences pager and its selector listbox do not have the same number of items.");
@@ -1238,7 +1238,7 @@ void preferences_dialog::on_tab_select()
 	set_visible_page(static_cast<unsigned int>(selected_row), "tab_pager");
 }
 
-void preferences_dialog::post_show(window& /*window*/)
+void preferences_dialog::post_show()
 {
 	prefs::get().save_hotkeys();
 

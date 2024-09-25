@@ -95,10 +95,10 @@ loading_screen::loading_screen(std::function<void()> f)
 	singleton_ = this;
 }
 
-void loading_screen::pre_show(window& window)
+void loading_screen::pre_show()
 {
-	window.set_enter_disabled(true);
-	window.set_escape_disabled(true);
+	set_enter_disabled(true);
+	set_escape_disabled(true);
 
 	cursor_setter_.reset(new cursor::setter(cursor::WAIT));
 
@@ -106,7 +106,7 @@ void loading_screen::pre_show(window& window)
 	animation_ = find_widget<drawing>("animation", false, true);
 }
 
-void loading_screen::post_show(window& /*window*/)
+void loading_screen::post_show()
 {
 	cursor_setter_.reset();
 }

@@ -557,7 +557,7 @@ bool mp_lobby::exit_hook(window& window)
 	return window.get_retval() == retval::CANCEL ? quit() : true;
 }
 
-void mp_lobby::pre_show(window& window)
+void mp_lobby::pre_show()
 {
 	SCOPE_LB;
 
@@ -566,16 +566,16 @@ void mp_lobby::pre_show(window& window)
 	connect_signal_notify_modified(*gamelistbox_,
 			std::bind(&mp_lobby::update_selected_game, this));
 
-	player_list_.init(window);
+	player_list_.init(*this);
 
-	window.set_enter_disabled(true);
+	set_enter_disabled(true);
 
 	// Exit hook to add a confirmation when quitting the Lobby.
-	window.set_exit_hook(window::exit_hook::on_all, std::bind(&mp_lobby::exit_hook, this, std::placeholders::_1));
+	set_exit_hook(window::exit_hook::on_all, std::bind(&mp_lobby::exit_hook, this, std::placeholders::_1));
 
 	chatbox_ = find_widget<chatbox>("chat", false, true);
 
-	window.keyboard_capture(chatbox_);
+	keyboard_capture(chatbox_);
 
 	chatbox_->set_active_window_changed_callback([this]() { player_list_dirty_ = true; });
 	chatbox_->load_log(default_chat_log, true);
@@ -630,7 +630,7 @@ void mp_lobby::pre_show(window& window)
 	update_gamelist();
 	update_playerlist();
 
-	// TODO: currently getting a crash in the chatbox if we use 
+	// TODO: currently getting a crash in the chatbox if we use
 	// -- vultraz, 2017-11-10
 	//mp_lobby::network_handler();
 
@@ -669,8 +669,8 @@ void mp_lobby::pre_show(window& window)
 		enter_game_by_id(selected_game_id_, DO_OBSERVE);
 	}, true);
 
-	plugins_context_->set_callback("create", [&window](const config&) { window.set_retval(CREATE); }, true);
-	plugins_context_->set_callback("quit", [&window](const config&) { window.set_retval(retval::CANCEL); }, false);
+	plugins_context_->set_callback("create", [this](const config&) { set_retval(CREATE); }, true);
+	plugins_context_->set_callback("quit", [this](const config&) { set_retval(retval::CANCEL); }, false);
 
 	plugins_context_->set_callback("chat", [this](const config& cfg) { chatbox_->send_chat_message(cfg["message"], false); }, true);
 	plugins_context_->set_callback("select_game", [this](const config& cfg) {
@@ -694,7 +694,7 @@ void mp_lobby::open_profile_url()
 	}
 }
 
-void mp_lobby::post_show(window& /*window*/)
+void mp_lobby::post_show()
 {
 	remove_timer(lobby_update_timer_);
 	lobby_update_timer_ = 0;
@@ -838,8 +838,6 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 	const bool try_join = mode == DO_JOIN;
 	const bool try_obsv = mode == DO_OBSERVE;
 
-	window& window = *get_window();
-
 	// Prompt user to download this game's required addons if its requirements have not been met
 	if(game.addons_outcome != mp::game_info::addon_req::SATISFIED) {
 		if(game.required_addons.empty()) {
@@ -853,7 +851,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 
 		// Addons have been downloaded, so the game_config and installed addons list need to be reloaded.
 		// The lobby is closed and reopened.
-		window.set_retval(RELOAD_CONFIG);
+		set_retval(RELOAD_CONFIG);
 		return;
 	}
 
@@ -881,7 +879,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 	joined_game_id_ = game.id;
 
 	// We're all good. Close lobby and proceed to game!
-	window.set_retval(try_join ? JOIN : OBSERVE);
+	set_retval(try_join ? JOIN : OBSERVE);
 }
 
 void mp_lobby::enter_game_by_index(const int index, JOIN_MODE mode)

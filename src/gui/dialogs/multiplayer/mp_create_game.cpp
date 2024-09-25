@@ -143,7 +143,7 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	set_allow_plugin_skip(false);
 }
 
-void mp_create_game::pre_show(window& win)
+void mp_create_game::pre_show()
 {
 	find_widget<text_box>("game_name").set_value(local_mode_ ? "" : ng::configure_engine::game_name_default());
 
@@ -160,12 +160,12 @@ void mp_create_game::pre_show(window& win)
 		std::bind(&mp_create_game::load_game_callback, this));
 
 	// Custom dialog close hook
-	win.set_exit_hook(window::exit_hook::on_ok, [this](window& w) { return dialog_exit_hook(w); });
+	set_exit_hook(window::exit_hook::on_ok, [this](window& w) { return dialog_exit_hook(w); });
 
 	//
 	// Set up the options manager. Needs to be done before selecting an initial tab
 	//
-	options_manager_.reset(new mp_options_helper(win, create_engine_));
+	options_manager_.reset(new mp_options_helper(*this, create_engine_));
 
 	//
 	// Set up filtering
@@ -179,7 +179,7 @@ void mp_create_game::pre_show(window& win)
 		std::bind(&mp_create_game::on_filter_change<text_box>, this, "game_filter", true));
 
 	// Note this cannot be in the keyboard chain or it will capture focus from other text boxes
-	win.keyboard_capture(&filter);
+	keyboard_capture(&filter);
 
 	//
 	// Set up game types menu_button
@@ -289,15 +289,14 @@ void mp_create_game::pre_show(window& win)
 	//
 	// Set up the setting status labels
 	//
-	bind_status_label<slider>(&win, turns_->id());
-	bind_status_label<slider>(&win, gold_->id());
-	bind_status_label<slider>(&win, support_->id());
-	bind_status_label<slider>(&win, experience_->id());
-
-	bind_status_label<slider>(&win, init_turn_limit_->id());
-	bind_status_label<slider>(&win, turn_bonus_->id());
-	bind_status_label<slider>(&win, reservoir_->id());
-	bind_status_label<slider>(&win, action_bonus_->id());
+	bind_status_label<slider>(this, turns_->id());
+	bind_status_label<slider>(this, gold_->id());
+	bind_status_label<slider>(this, support_->id());
+	bind_status_label<slider>(this, experience_->id());
+	bind_status_label<slider>(this, init_turn_limit_->id());
+	bind_status_label<slider>(this, turn_bonus_->id());
+	bind_status_label<slider>(this, reservoir_->id());
+	bind_status_label<slider>(this, action_bonus_->id());
 
 	//
 	// Timer reset button
@@ -341,7 +340,7 @@ void mp_create_game::pre_show(window& win)
 	connect_signal_notify_modified(list,
 		std::bind(&mp_create_game::on_game_select, this));
 
-	win.add_to_keyboard_chain(&list);
+	add_to_keyboard_chain(&list);
 
 	// This handles the initial game selection as well
 	display_games_of_type(level_types_[get_initial_type_index()].first, prefs::get().mp_level());
@@ -354,8 +353,8 @@ void mp_create_game::pre_show(window& win)
 	//
 	plugins_context_.reset(new plugins_context("Multiplayer Create"));
 
-	plugins_context_->set_callback("create", [&win](const config&) { win.set_retval(retval::OK); }, false);
-	plugins_context_->set_callback("quit",   [&win](const config&) { win.set_retval(retval::CANCEL); }, false);
+	plugins_context_->set_callback("create", [this](const config&) { set_retval(retval::OK); }, false);
+	plugins_context_->set_callback("quit",   [this](const config&) { set_retval(retval::CANCEL); }, false);
 	plugins_context_->set_callback("load",   [this](const config&) { load_game_callback(); }, false);
 
 #define UPDATE_ATTRIBUTE(field, convert) \
@@ -866,7 +865,7 @@ bool mp_create_game::dialog_exit_hook(window& /*window*/)
 	return create_engine_.select_campaign_difficulty() != "CANCEL";
 }
 
-void mp_create_game::post_show(window& window)
+void mp_create_game::post_show()
 {
 	plugins_context_.reset();
 

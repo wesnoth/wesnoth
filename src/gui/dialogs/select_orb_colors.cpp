@@ -52,7 +52,7 @@ select_orb_colors::select_orb_colors()
 {
 }
 
-void select_orb_colors::pre_show(window& window)
+void select_orb_colors::pre_show()
 {
 	setup_orb_group("unmoved", show_unmoved_, prefs::get().unmoved_color());
 	setup_orb_group_two_color("partial", show_partial_, show_disengaged_, prefs::get().partial_color());
@@ -64,7 +64,7 @@ void select_orb_colors::pre_show(window& window)
 		find_widget<button>("orb_defaults"), std::bind(&select_orb_colors::reset_orb_callback, this));
 }
 
-void select_orb_colors::post_show(window&)
+void select_orb_colors::post_show()
 {
 	if(get_retval() != retval::OK) {
 		return;

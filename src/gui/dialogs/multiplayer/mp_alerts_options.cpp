@@ -101,7 +101,7 @@ mp_alerts_options::mp_alerts_options()
 {
 }
 
-void mp_alerts_options::pre_show(window& window)
+void mp_alerts_options::pre_show()
 {
 	SETUP_ITEMS(player_joins_sound, player_joins_notif, player_joins_lobby)
 	SETUP_ITEMS(player_leaves_sound, player_leaves_notif, player_leaves_lobby)
@@ -133,10 +133,10 @@ void mp_alerts_options::pre_show(window& window)
 	in_lobby->set_visible(widget::visibility::invisible);
 
 	button& defaults = find_widget<button>("revert_to_defaults");
-	connect_signal_mouse_left_click(defaults, std::bind(&revert_to_default_pref_values, std::ref(window)));
+	connect_signal_mouse_left_click(defaults, std::bind([this](){ revert_to_default_pref_values(*this); }));
 }
 
-void mp_alerts_options::post_show(window& /*window*/)
+void mp_alerts_options::post_show()
 {
 }
 

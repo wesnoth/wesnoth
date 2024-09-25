@@ -915,15 +915,15 @@ gamestate_inspector::gamestate_inspector(const config& vars, const game_events::
 	model_.reset(new model);
 }
 
-void gamestate_inspector::pre_show(window& window)
+void gamestate_inspector::pre_show()
 {
-	view_.reset(new view(window));
+	view_.reset(new view(*this));
 	controller_.reset(new controller(*model_, *view_, vars_, events_, dc_));
 
 	if(!title_.empty()) {
 		find_widget<styled_widget>("inspector_name").set_label(title_);
 	}
-	controller_->bind(window);
+	controller_->bind(*this);
 	view_->update(*model_);
 }
 

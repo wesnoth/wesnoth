@@ -46,10 +46,10 @@ editor_edit_label::editor_edit_label(std::string& text,
 	register_color_component("slider_blue", &color_t::b);
 }
 
-void editor_edit_label::pre_show(window& win)
+void editor_edit_label::pre_show()
 {
-	win.add_to_tab_order(find_widget<text_box>("label", false, true));
-	win.add_to_tab_order(find_widget<text_box>("category", false, true));
+	add_to_tab_order(find_widget<text_box>("label", false, true));
+	add_to_tab_order(find_widget<text_box>("category", false, true));
 }
 
 void editor_edit_label::register_color_component(std::string widget_id, uint8_t color_t::* component) {

@@ -40,7 +40,7 @@ edit_text::edit_text(const std::string& title,
 	register_text("text", true, text, true);
 }
 
-void edit_text::pre_show(window& window)
+void edit_text::pre_show()
 {
 	if(disallow_empty_) {
 		text_box& text = find_widget<text_box>("text");

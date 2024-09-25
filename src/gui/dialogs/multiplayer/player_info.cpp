@@ -52,7 +52,7 @@ lobby_player_info::~lobby_player_info()
 {
 }
 
-void lobby_player_info::pre_show(window& window)
+void lobby_player_info::pre_show()
 {
 	relation_ = find_widget<label>("relation_info", false, true);
 
@@ -113,20 +113,20 @@ void lobby_player_info::pre_show(window& window)
 
 	time_ = find_widget<text_box>("time", false, true);
 	reason_ = find_widget<text_box>("reason", false, true);
-	window.add_to_tab_order(reason_);
-	window.add_to_tab_order(time_);
+	add_to_tab_order(reason_);
+	add_to_tab_order(time_);
 
 	find_widget<label>("location_info").set_label(loc.str());
 
 	update_relation();
 
 	if(!mp::logged_in_as_moderator()) {
-		widget* aw = window.find("admin", false);
+		widget* aw = find("admin", false);
 		aw->set_visible(widget::visibility::invisible);
 	}
 }
 
-void lobby_player_info::post_show(window& /*window*/)
+void lobby_player_info::post_show()
 {
 }
 

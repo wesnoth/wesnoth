@@ -78,7 +78,7 @@ std::array<mp_connect::server_list*, 2> mp_connect::server_lists()
 	return {{ &builtin_servers_, &user_servers_ }};
 }
 
-void mp_connect::pre_show(window& win)
+void mp_connect::pre_show()
 {
 	text_box& hostname_box = find_widget<text_box>("host_name");
 	listbox& server_list = find_widget<listbox>("server_list");

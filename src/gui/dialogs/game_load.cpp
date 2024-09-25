@@ -88,10 +88,10 @@ game_load::game_load(const game_config_view& cache_config, savegame::load_game_m
 {
 }
 
-void game_load::pre_show(window& window)
+void game_load::pre_show()
 {
 	// Allow deleting saves with the Delete key.
-	connect_signal_pre_key_press(window, std::bind(&game_load::key_press_callback, this, std::placeholders::_5));
+	connect_signal_pre_key_press(*this, std::bind(&game_load::key_press_callback, this, std::placeholders::_5));
 
 	text_box* filter = find_widget<text_box>("txtFilter", false, true);
 
@@ -101,8 +101,8 @@ void game_load::pre_show(window& window)
 
 	connect_signal_notify_modified(list, std::bind(&game_load::display_savegame, this));
 
-	window.keyboard_capture(filter);
-	window.add_to_keyboard_chain(&list);
+	keyboard_capture(filter);
+	add_to_keyboard_chain(&list);
 
 	list.register_sorting_option(0, [this](const int i) { return games_[i].name(); });
 	list.register_sorting_option(1, [this](const int i) { return games_[i].modified(); });
@@ -511,7 +511,7 @@ void game_load::key_press_callback(const SDL_Keycode key)
 	//
 	// I'm not sure if this check was necessary when I first added this feature
 	// (I didn't check at the time), but regardless, it's needed now. If it turns
-	// out I screwed something up in my refactoring, I'll remove 
+	// out I screwed something up in my refactoring, I'll remove
 	//
 	// - vultraz, 2017-08-28
 	//

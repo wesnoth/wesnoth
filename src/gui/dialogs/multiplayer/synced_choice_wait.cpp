@@ -42,7 +42,7 @@ synched_choice_wait::~synched_choice_wait()
 	mgr_.changed_event_.detach_handler(this);
 }
 
-void synched_choice_wait::pre_show(window& window)
+void synched_choice_wait::pre_show()
 {
 	message_ = find_widget<label>("lblMessage", false, true);
 
@@ -53,7 +53,7 @@ void synched_choice_wait::pre_show(window& window)
 
 	message_->set_label(mgr_.wait_message());
 	if(mgr_.finished() || !mgr_.waiting()) {
-		window.close();
+		close();
 	}
 }
 
@@ -63,7 +63,7 @@ void synched_choice_wait::handle_generic_event(const std::string& event_name)
 	assert(message_);
 	message_->set_label(mgr_.wait_message());
 	if(mgr_.finished() || !mgr_.waiting()) {
-		get_window()->close();
+		close();
 	}
 }
 

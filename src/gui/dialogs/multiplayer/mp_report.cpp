@@ -40,7 +40,7 @@ mp_report::mp_report(std::string& report_text)
 {
 }
 
-void mp_report::pre_show(window& win)
+void mp_report::pre_show()
 {
 	std::vector<config> occurrence_location_entries;
 	occurrence_location_entries.emplace_back("label", _("Lobby"));
@@ -58,10 +58,10 @@ void mp_report::pre_show(window& win)
 	text_box& report_reason = find_widget<text_box>("report_reason");
 	report_reason.set_text_changed_callback(std::bind(&mp_report::report_reason_changed, this, std::placeholders::_2));
 
-	win.set_exit_hook(window::exit_hook::on_ok, [this](window&) { return !reportee_empty_ && !report_reason_empty_; });
+	set_exit_hook(window::exit_hook::on_ok, [this](window&) { return !reportee_empty_ && !report_reason_empty_; });
 }
 
-void mp_report::post_show(window& window)
+void mp_report::post_show()
 {
 	if(get_retval() == gui2::retval::OK)
 	{

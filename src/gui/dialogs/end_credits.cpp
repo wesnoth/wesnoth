@@ -45,11 +45,11 @@ end_credits::end_credits(const std::string& campaign)
 {
 }
 
-void end_credits::pre_show(window& window)
+void end_credits::pre_show()
 {
 	last_scroll_ = SDL_GetTicks();
 
-	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, std::placeholders::_5));
+	connect_signal_pre_key_press(*this, std::bind(&end_credits::key_press_callback, this, std::placeholders::_5));
 
 	std::stringstream ss;
 	std::stringstream focus_ss;
@@ -84,7 +84,7 @@ void end_credits::pre_show(window& window)
 	}
 
 	// TODO: implement showing all available images as the credits scroll
-	window.get_canvas(0).set_variable("background_image", wfl::variant(backgrounds_[0]));
+	get_canvas(0).set_variable("background_image", wfl::variant(backgrounds_[0]));
 
 	text_widget_ = find_widget<scroll_label>("text", false, true);
 

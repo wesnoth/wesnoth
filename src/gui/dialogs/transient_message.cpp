@@ -43,7 +43,7 @@ transient_message::transient_message(const std::string& title,
 	register_image("image", true, image);
 }
 
-void transient_message::pre_show(window& window)
+void transient_message::pre_show()
 {
 	if(hide_title_) {
 		widget& title = find_widget<widget>("title");

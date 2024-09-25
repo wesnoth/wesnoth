@@ -165,7 +165,7 @@ wml_error::wml_error(const std::string& summary,
 	register_label("details", true, details);
 }
 
-void wml_error::pre_show(window& window)
+void wml_error::pre_show()
 {
 	if(!have_files_) {
 		styled_widget& filelist = find_widget<styled_widget>("files");

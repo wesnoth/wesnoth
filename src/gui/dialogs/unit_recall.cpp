@@ -153,7 +153,7 @@ static std::string get_title_suffix(int side_num)
 	return msg.str();
 }
 
-void unit_recall::pre_show(window& window)
+void unit_recall::pre_show()
 {
 	label& title = find_widget<label>("title", true);
 	title.set_label(title.get_label() + get_title_suffix(team_.side()));
@@ -170,8 +170,8 @@ void unit_recall::pre_show(window& window)
 
 	list.clear();
 
-	window.keyboard_capture(filter);
-	window.add_to_keyboard_chain(&list);
+	keyboard_capture(filter);
+	add_to_keyboard_chain(&list);
 
 	connect_signal_mouse_left_click(
 		find_widget<button>("rename"),
@@ -427,7 +427,7 @@ void unit_recall::list_item_clicked()
 	find_widget<button>("rename").set_active(!selected_unit.unrenamable());
 }
 
-void unit_recall::post_show(window& window)
+void unit_recall::post_show()
 {
 	listbox& list = find_widget<listbox>("recall_list");
 	sort_last = list.get_active_sorting_option();

@@ -26,7 +26,7 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(install_dependencies)
 
-void install_dependencies::pre_show(window& window)
+void install_dependencies::pre_show()
 {
 	find_widget<label>("label").set_label(t_string(
 		_n(

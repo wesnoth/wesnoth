@@ -39,13 +39,13 @@ unit_advance::unit_advance(const std::vector<unit_const_ptr>& samples, std::size
 {
 }
 
-void unit_advance::pre_show(window& window)
+void unit_advance::pre_show()
 {
 	listbox& list = find_widget<listbox>("advance_choice");
 
 	connect_signal_notify_modified(list, std::bind(&unit_advance::list_item_clicked, this));
 
-	window.keyboard_capture(&list);
+	keyboard_capture(&list);
 
 	connect_signal_mouse_left_click(
 		find_widget<button>("show_help"),
@@ -88,7 +88,7 @@ void unit_advance::pre_show(window& window)
 	list_item_clicked();
 
 	// Disable ESC existing
-	window.set_escape_disabled(true);
+	set_escape_disabled(true);
 }
 
 void unit_advance::list_item_clicked()
@@ -109,7 +109,7 @@ void unit_advance::show_help()
 	help::show_help("advancement");
 }
 
-void unit_advance::post_show(window& window)
+void unit_advance::post_show()
 {
 	if(get_retval() == retval::OK) {
 		selected_index_ = find_widget<listbox>("advance_choice")

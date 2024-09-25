@@ -153,12 +153,12 @@ void drop_down_menu::mouse_down_callback()
 	mouse_down_happened_ = true;
 }
 
-void drop_down_menu::pre_show(window& window)
+void drop_down_menu::pre_show()
 {
-	window.set_variable("button_x", wfl::variant(button_pos_.x));
-	window.set_variable("button_y", wfl::variant(button_pos_.y));
-	window.set_variable("button_w", wfl::variant(button_pos_.w));
-	window.set_variable("button_h", wfl::variant(button_pos_.h));
+	set_variable("button_x", wfl::variant(button_pos_.x));
+	set_variable("button_y", wfl::variant(button_pos_.y));
+	set_variable("button_w", wfl::variant(button_pos_.w));
+	set_variable("button_h", wfl::variant(button_pos_.h));
 
 	listbox& list = find_widget<listbox>("list", true);
 
@@ -218,28 +218,28 @@ void drop_down_menu::pre_show(window& window)
 		list.select_row(selected_item_);
 	}
 
-	window.keyboard_capture(&list);
+	keyboard_capture(&list);
 
 	// Dismiss on clicking outside the window.
-	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(
+	connect_signal<event::SDL_LEFT_BUTTON_UP>(
 		std::bind(&drop_down_menu::mouse_up_callback, this, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5), event::dispatcher::front_child);
 
-	window.connect_signal<event::SDL_RIGHT_BUTTON_UP>(
+	connect_signal<event::SDL_RIGHT_BUTTON_UP>(
 		std::bind(&drop_down_menu::mouse_up_callback, this, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5), event::dispatcher::front_child);
 
-	window.connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
+	connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
 		std::bind(&drop_down_menu::mouse_down_callback, this), event::dispatcher::front_child);
 
 	// Dismiss on resize.
-	window.connect_signal<event::SDL_VIDEO_RESIZE>(
-		std::bind(&resize_callback, std::ref(window)), event::dispatcher::front_child);
+	connect_signal<event::SDL_VIDEO_RESIZE>(
+		std::bind([this](){ resize_callback(*this); }), event::dispatcher::front_child);
 
 	// Handle embedded button toggling.
 	connect_signal_notify_modified(list,
-		std::bind(&callback_flip_embedded_toggle, std::ref(window)));
+		std::bind([this](){ callback_flip_embedded_toggle(*this); }));
 }
 
-void drop_down_menu::post_show(window& window)
+void drop_down_menu::post_show()
 {
 	selected_item_ = find_widget<listbox>("list", true).get_selected_row();
 }

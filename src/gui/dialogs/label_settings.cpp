@@ -80,7 +80,7 @@ label_settings::label_settings(display_context& dc)
 	}
 }
 
-void label_settings::pre_show(window& window)
+void label_settings::pre_show()
 {
 	listbox& cats_listbox = find_widget<listbox>("label_types");
 	widget_data list_data;
@@ -117,7 +117,7 @@ void label_settings::pre_show(window& window)
 	}
 }
 
-void label_settings::post_show(window& /*window*/)
+void label_settings::post_show()
 {
 	if(get_retval() == retval::OK) {
 		std::vector<std::string> hidden_categories;

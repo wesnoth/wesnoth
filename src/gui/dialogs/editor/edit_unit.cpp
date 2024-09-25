@@ -81,7 +81,7 @@ editor_edit_unit::editor_edit_unit(const game_config_view& game_config, const st
 		&editor_edit_unit::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
 }
 
-void editor_edit_unit::pre_show(window& win) {
+void editor_edit_unit::pre_show() {
 	tab_container& tabs = find_widget<tab_container>("tabs");
 	connect_signal_notify_modified(tabs, std::bind(&editor_edit_unit::on_page_select, this));
 
@@ -260,7 +260,7 @@ void editor_edit_unit::pre_show(window& win) {
 	specials.set_values(specials_list_);
 
 	combobox& attack_types = find_widget<combobox>("attack_type_list");
-	if (resistances_list_.size() > 0) {
+	if (!resistances_list_.empty()) {
 		attack_types.set_values(resistances_list_);
 	}
 
@@ -667,7 +667,7 @@ void editor_edit_unit::store_attack() {
 	attack["name"] = find_widget<text_box>("atk_id_box").get_value();
 	attack["description"] = t_string(find_widget<text_box>("atk_name_box").get_value(), current_textdomain);
 	attack["icon"] = find_widget<text_box>("path_attack_image").get_value();
-	attack["type"] = find_widget<menu_button>("attack_type_list").get_value_string();
+	attack["type"] = find_widget<combobox>("attack_type_list").get_value();
 	attack["damage"] = find_widget<slider>("dmg_box").get_value();
 	attack["number"] = find_widget<slider>("dmg_num_box").get_value();
 	attack["range"] = find_widget<combobox>("range_list").get_value();
@@ -698,9 +698,7 @@ void editor_edit_unit::update_attacks() {
 	find_widget<combobox>("range_list").set_value(attack["range"]);
 
 	set_selected_from_string(
-			find_widget<menu_button>("attack_type_list"),
-			resistances_list_,
-			attack["type"]);
+		find_widget<combobox>("attack_type_list"), resistances_list_, attack["type"]);
 
 	find_widget<multimenu_button>("weapon_specials_list")
 		.select_options(attacks_.at(selected_attack_-1).first);
@@ -1020,7 +1018,7 @@ bool editor_edit_unit::check_id(std::string id) {
 
 void editor_edit_unit::button_state_change() {
 	grid* grid = find_widget<tab_container>("tabs").get_tab_grid(0);
-	
+
 	std::string id = grid->find_widget<text_box>("id_box").get_value();
 	std::string name = grid->find_widget<text_box>("name_box").get_value();
 

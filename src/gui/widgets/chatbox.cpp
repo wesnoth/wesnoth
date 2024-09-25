@@ -213,7 +213,7 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 {
 	grid& grid = chat_log_container_->page_grid(id);
 	scroll_text& log = grid.find_widget<scroll_text>("log_text");
-	
+
 	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
 	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
 

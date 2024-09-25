@@ -231,10 +231,10 @@ static std::string generate_user_description(const config& side)
 	}
 }
 
-void mp_join_game::pre_show(window& window)
+void mp_join_game::pre_show()
 {
-	window.set_enter_disabled(true);
-	window.set_escape_disabled(true);
+	set_enter_disabled(true);
+	set_escape_disabled(true);
 
 	//
 	// Set title
@@ -260,7 +260,7 @@ void mp_join_game::pre_show(window& window)
 	//
 	// Set up player list
 	//
-	player_list_.reset(new player_list_helper(&window));
+	player_list_.reset(new player_list_helper(this));
 
 	//
 	// Set up the network handling
@@ -272,8 +272,8 @@ void mp_join_game::pre_show(window& window)
 	//
 	plugins_context_.reset(new plugins_context("Multiplayer Join"));
 
-	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(retval::OK); }, false);
-	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(retval::CANCEL); }, false);
+	plugins_context_->set_callback("launch", [this](const config&) { set_retval(retval::OK); }, false);
+	plugins_context_->set_callback("quit",   [this](const config&) { set_retval(retval::CANCEL); }, false);
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
@@ -564,14 +564,14 @@ config& mp_join_game::get_scenario()
 	return level_;
 }
 
-void mp_join_game::post_show(window& window)
+void mp_join_game::post_show()
 {
 	if(update_timer_ != 0) {
 		remove_timer(update_timer_);
 		update_timer_ = 0;
 	}
 
-	if(window.get_retval() == retval::OK) {
+	if(get_retval() == retval::OK) {
 
 		mp::level_to_gamestate(level_, state_);
 

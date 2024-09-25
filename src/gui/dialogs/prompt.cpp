@@ -30,13 +30,13 @@ prompt::prompt(std::string& value)
 	find_widget<text_box>("prompt_box").set_value(value);
 }
 
-void prompt::pre_show(window& win)
+void prompt::pre_show()
 {
 	text_box* prompt_box = find_widget<text_box>("prompt_box", false, true);
-	win.keyboard_capture(prompt_box);
+	keyboard_capture(prompt_box);
 }
 
-void prompt::post_show(window& win)
+void prompt::post_show()
 {
 	value_ = find_widget<text_box>("prompt_box").get_value();
 }

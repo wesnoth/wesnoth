@@ -54,7 +54,7 @@ void unit_attack::damage_calc_callback()
 	attack_predictions::display(weapons_[index], attacker_itor_.get_shared_ptr(), defender_itor_.get_shared_ptr());
 }
 
-void unit_attack::pre_show(window& window)
+void unit_attack::pre_show()
 {
 	connect_signal_mouse_left_click(
 			find_widget<button>("damage_calculation"),
@@ -69,7 +69,7 @@ void unit_attack::pre_show(window& window)
 	selected_weapon_ = -1;
 
 	listbox& weapon_list = find_widget<listbox>("weapon_list");
-	window.keyboard_capture(&weapon_list);
+	keyboard_capture(&weapon_list);
 
 	// Possible TODO: If a "blank weapon" is generally useful, add it as a static member in attack_type.
 	static const config empty;
@@ -235,7 +235,7 @@ void unit_attack::pre_show(window& window)
 	weapon_list.select_row(best_weapon_);
 }
 
-void unit_attack::post_show(window& window)
+void unit_attack::post_show()
 {
 	if(get_retval() == retval::OK) {
 		selected_weapon_ = find_widget<listbox>("weapon_list").get_selected_row();

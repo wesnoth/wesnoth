@@ -651,11 +651,11 @@ void lua_interpreter::display(lua_interpreter::WHICH_KERNEL which) {
 }
 
 /** Bind the controller, initialize one of the static labels with info about this kernel, and update the view. */
-void lua_interpreter::pre_show(window& window)
+void lua_interpreter::pre_show()
 {
 	LOG_LUA << "Entering lua_interpreter::view::pre_show";
 	register_text("text_entry", false, controller_->text_entry_, true);
-	controller_->bind(window);
+	controller_->bind(*this);
 
 	label *kernel_type_label = find_widget<label>("kernel_type", false, true);
 	kernel_type_label->set_label(controller_->lua_model_->get_name());

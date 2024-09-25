@@ -30,7 +30,7 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(formula_debugger)
 
-void formula_debugger::pre_show(window& window)
+void formula_debugger::pre_show()
 {
 	// stack label
 	scroll_label* stack_label
@@ -53,11 +53,10 @@ void formula_debugger::pre_show(window& window)
 	stack_label->set_use_markup(true);
 	stack_label->set_label(stack_text.str());
 	stack_label->scroll_vertical_scrollbar(scrollbar_base::END);
-	window.keyboard_capture(stack_label);
+	keyboard_capture(stack_label);
 
 	// execution trace label
-	scroll_label* execution_label
-			= find_widget<scroll_label>("execution", false, true);
+	scroll_label* execution_label = find_widget<scroll_label>("execution", false, true);
 
 	std::stringstream execution_text;
 	for(const auto & i : fdb_.get_execution_trace())

@@ -53,7 +53,7 @@ mp_change_control::mp_change_control(events::menu_handler& mh)
 {
 }
 
-void mp_change_control::pre_show(window& window)
+void mp_change_control::pre_show()
 {
 	listbox& sides_list = find_widget<listbox>("sides_list");
 	listbox& nicks_list = find_widget<listbox>("nicks_list");
@@ -161,9 +161,9 @@ void mp_change_control::highlight_side_nick()
 	}
 }
 
-void mp_change_control::post_show(window& window)
+void mp_change_control::post_show()
 {
-	if(window.get_retval() == retval::OK) {
+	if(get_retval() == retval::OK) {
 		DBG_GUI << "Main: changing control of side "
 		        << sides_[selected_side_] << " to nick "
 		        << nicks_[selected_nick_];

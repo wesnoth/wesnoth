@@ -81,12 +81,12 @@ story_viewer::~story_viewer()
 	clear_image_timer();
 }
 
-void story_viewer::pre_show(window& window)
+void story_viewer::pre_show()
 {
-	window.set_enter_disabled(true);
+	set_enter_disabled(true);
 
 	// Special callback handle key presses
-	connect_signal_pre_key_press(window, std::bind(&story_viewer::key_press_callback, this, std::placeholders::_5));
+	connect_signal_pre_key_press(*this, std::bind(&story_viewer::key_press_callback, this, std::placeholders::_5));
 
 	connect_signal_mouse_left_click(find_widget<button>("next"),
 		std::bind(&story_viewer::nav_button_callback, this, DIR_FORWARD));
@@ -104,7 +104,7 @@ void story_viewer::pre_show(window& window)
 	display_part();
 }
 
-void story_viewer::post_show(window& /*window*/)
+void story_viewer::post_show()
 {
 	// Bring the game display back again, if appropriate
 	display::get_singleton()->set_prevent_draw(game_was_already_hidden_);

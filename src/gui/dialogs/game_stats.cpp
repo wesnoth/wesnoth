@@ -63,7 +63,7 @@ static std::string controller_name(const team& t)
 	return "<span color='#808080'><small>" + names[static_cast<int>(t.controller())] + "</small></span>";
 }
 
-void game_stats::pre_show(window& window)
+void game_stats::pre_show()
 {
 	listbox& stats_list    = find_widget<listbox>("game_stats_list");
 	listbox& settings_list = find_widget<listbox>("scenario_settings_list");
@@ -228,7 +228,7 @@ void game_stats::pre_show(window& window)
 	//
 	listbox& tab_bar = find_widget<listbox>("tab_bar");
 
-	window.keyboard_capture(&tab_bar);
+	keyboard_capture(&tab_bar);
 
 	connect_signal_notify_modified(tab_bar, std::bind(&game_stats::on_tab_select, this));
 
@@ -247,7 +247,7 @@ void game_stats::on_tab_select()
 	);
 }
 
-void game_stats::post_show(window& window)
+void game_stats::post_show()
 {
 	if(get_retval() == retval::OK) {
 		const int selected_tab = find_widget<listbox>("tab_bar").get_selected_row();

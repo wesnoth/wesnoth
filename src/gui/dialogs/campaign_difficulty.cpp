@@ -60,10 +60,10 @@ campaign_difficulty::campaign_difficulty(const config& campaign)
 {
 }
 
-void campaign_difficulty::pre_show(window& window)
+void campaign_difficulty::pre_show()
 {
 	listbox& list = find_widget<listbox>("listbox");
-	window.keyboard_capture(&list);
+	keyboard_capture(&list);
 
 	unsigned difficulty_count = 0;
 	const unsigned difficulty_max = difficulties_.child_count("difficulty");
@@ -119,7 +119,7 @@ void campaign_difficulty::pre_show(window& window)
 	}
 }
 
-void campaign_difficulty::post_show(window& window)
+void campaign_difficulty::post_show()
 {
 	if(get_retval() == retval::OK) {
 		listbox& list = find_widget<listbox>("listbox");

@@ -42,7 +42,7 @@ terrain_layers::terrain_layers(display_t& disp, const map_location& loc)
 	tile_->rebuild_cache(tod_id, &tile_logs_);
 }
 
-void terrain_layers::pre_show(window& window)
+void terrain_layers::pre_show()
 {
 	//
 	// List terrain flags

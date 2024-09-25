@@ -41,7 +41,7 @@ void addon_connect::help_button_callback()
 	help::show_help("installing_addons");
 }
 
-void addon_connect::pre_show(window& window)
+void addon_connect::pre_show()
 {
 	find_widget<button>("remove_addons")
 			.set_active(allow_remove_);
@@ -51,7 +51,7 @@ void addon_connect::pre_show(window& window)
 			std::bind(&addon_connect::help_button_callback, this));
 }
 
-void addon_connect::post_show(window& window)
+void addon_connect::post_show()
 {
 	if(get_retval() == retval::OK) {
 		text_box& host_widget

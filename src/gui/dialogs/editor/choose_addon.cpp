@@ -37,11 +37,7 @@ editor_choose_addon::editor_choose_addon(std::string& addon_id)
 	populate_list(false);
 }
 
-void editor_choose_addon::pre_show(window&)
-{
-}
-
-void editor_choose_addon::post_show(window& win)
+void editor_choose_addon::post_show()
 {
 	listbox& existing_addons = find_widget<listbox>("existing_addons");
 	int selected_row = existing_addons.get_selected_row();

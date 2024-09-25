@@ -28,11 +28,11 @@ gui_test_dialog::gui_test_dialog()
 {
 }
 
-void gui_test_dialog::pre_show(window& /*win*/)
+void gui_test_dialog::pre_show()
 {
 }
 
-void gui_test_dialog::post_show(window& /*win*/)
+void gui_test_dialog::post_show()
 {
 }
 

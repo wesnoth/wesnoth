@@ -32,7 +32,7 @@ REGISTER_DIALOG(mp_method_selection)
 
 static const std::string forum_registration_url = "https://forums.wesnoth.org/ucp.php?mode=register";
 
-void mp_method_selection::pre_show(window& window)
+void mp_method_selection::pre_show()
 {
 	user_name_ = prefs::get().login();
 
@@ -40,16 +40,16 @@ void mp_method_selection::pre_show(window& window)
 	user_widget->set_value(user_name_);
 	user_widget->set_maximum_length(mp::max_login_size);
 
-	window.keyboard_capture(user_widget);
+	keyboard_capture(user_widget);
 
 	listbox* list = find_widget<listbox>("method_list", false, true);
-	window.add_to_keyboard_chain(list);
+	add_to_keyboard_chain(list);
 
 	connect_signal_mouse_left_click(find_widget<button>("register"),
 		std::bind(&desktop::open_object, forum_registration_url));
 }
 
-void mp_method_selection::post_show(window& window)
+void mp_method_selection::post_show()
 {
 	if(get_retval() == retval::OK) {
 		listbox& list = find_widget<listbox>("method_list");

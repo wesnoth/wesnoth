@@ -47,7 +47,7 @@ faction_select::faction_select(ng::flg_manager& flg_manager, const std::string& 
 {
 }
 
-void faction_select::pre_show(window& window)
+void faction_select::pre_show()
 {
 	find_widget<label>("starting_pos").set_label(std::to_string(side_));
 
@@ -82,7 +82,7 @@ void faction_select::pre_show(window& window)
 	//
 	listbox& list = find_widget<listbox>("faction_list");
 
-	window.keyboard_capture(&list);
+	keyboard_capture(&list);
 
 	connect_signal_notify_modified(list,
 		std::bind(&faction_select::on_faction_select, this));
@@ -211,7 +211,7 @@ void faction_select::update_leader_image()
 	find_widget<drawing>("leader_image").set_label(leader_image);
 }
 
-void faction_select::post_show(window& /*window*/)
+void faction_select::post_show()
 {
 	//
 	// If we're canceling, restore the previous selections. It might be worth looking

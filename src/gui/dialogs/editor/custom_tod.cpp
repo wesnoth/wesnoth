@@ -73,7 +73,7 @@ custom_tod::custom_tod(const std::vector<time_of_day>& times, int current_time, 
 	}
 }
 
-void custom_tod::pre_show(window& window)
+void custom_tod::pre_show()
 {
 	static std::map<std::string, tod_attribute_getter> metadata_stuff {
 		{"image", tod_getter_image},
@@ -81,15 +81,14 @@ void custom_tod::pre_show(window& window)
 		{"sound", tod_getter_sound}
 	};
 
-	window.add_to_tab_order(find_widget<text_box>("tod_name", false, true));
-	window.add_to_tab_order(find_widget<text_box>("tod_desc", false, true));
-	window.add_to_tab_order(find_widget<text_box>("tod_id", false, true));
+	add_to_tab_order(find_widget<text_box>("tod_name", false, true));
+	add_to_tab_order(find_widget<text_box>("tod_desc", false, true));
+	add_to_tab_order(find_widget<text_box>("tod_id", false, true));
 
 	for(const auto& data : metadata_stuff) {
 		button& copy_w = find_widget<button>("copy_" + data.first);
 
-		connect_signal_mouse_left_click(copy_w,
-			std::bind(&custom_tod::copy_to_clipboard_callback, this, data));
+		connect_signal_mouse_left_click(copy_w, std::bind(&custom_tod::copy_to_clipboard_callback, this, data));
 	}
 
 	connect_signal_mouse_left_click(
@@ -105,16 +104,16 @@ void custom_tod::pre_show(window& window)
 			std::bind(&custom_tod::select_file<tod_getter_sound>, this, "data/core/sounds/ambient"));
 
 	connect_signal_mouse_left_click(
-		find_widget<button>("preview_image"),
-		std::bind(&custom_tod::update_image, this, "image"));
+			find_widget<button>("preview_image"),
+			std::bind(&custom_tod::update_image, this, "image"));
 
 	connect_signal_mouse_left_click(
-		find_widget<button>("preview_mask"),
-		std::bind(&custom_tod::update_image, this, "mask"));
+			find_widget<button>("preview_mask"),
+			std::bind(&custom_tod::update_image, this, "mask"));
 
 	connect_signal_mouse_left_click(
-		find_widget<button>("preview_sound"),
-		std::bind(&custom_tod::play_sound, this));
+			find_widget<button>("preview_sound"),
+			std::bind(&custom_tod::play_sound, this));
 
 	connect_signal_mouse_left_click(
 			find_widget<button>("next_tod"),
@@ -367,7 +366,7 @@ void custom_tod::register_callback(std::function<void(std::vector<time_of_day>)>
 	update_map_and_schedule_ = update_func;
 }
 
-void custom_tod::post_show(window& /*window*/)
+void custom_tod::post_show()
 {
 	update_tod_display();
 }

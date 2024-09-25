@@ -71,8 +71,6 @@ language_selection::language_selection()
 
 void language_selection::shown_filter_callback()
 {
-	window& window = *get_window();
-
 	toggle_button& show_all_toggle = find_widget<toggle_button>("show_all");
 	listbox& list = find_widget<listbox>("language_list");
 
@@ -83,10 +81,10 @@ void language_selection::shown_filter_callback()
 	}
 }
 
-void language_selection::pre_show(window& window)
+void language_selection::pre_show()
 {
 	listbox& list = find_widget<listbox>("language_list");
-	window.keyboard_capture(&list);
+	keyboard_capture(&list);
 
 	toggle_button& show_all_toggle = find_widget<toggle_button>("show_all");
 	connect_signal_mouse_left_click(show_all_toggle, std::bind(
@@ -118,7 +116,7 @@ void language_selection::pre_show(window& window)
 	shown_filter_callback();
 }
 
-void language_selection::post_show(window& window)
+void language_selection::post_show()
 {
 	if(get_retval() == retval::OK) {
 		const int res = find_widget<listbox>("language_list")

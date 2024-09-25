@@ -61,7 +61,7 @@ statistics_dialog::statistics_dialog(statistics_t& statistics, const team& curre
 {
 }
 
-void statistics_dialog::pre_show(window& window)
+void statistics_dialog::pre_show()
 {
 	//
 	// Set title

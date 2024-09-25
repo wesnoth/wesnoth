@@ -89,7 +89,7 @@ game_version::game_version(unsigned start_page)
 	generate_plain_text_report();
 }
 
-void game_version::pre_show(window& window)
+void game_version::pre_show()
 {
 	utils::string_map i18n_syms;
 

@@ -291,9 +291,9 @@ static std::string describe_status_verbose(const addon_tracking_info& state)
 	return addon_list::colorize_addon_state_string(s, state.state);
 }
 
-void addon_manager::pre_show(window& window)
+void addon_manager::pre_show()
 {
-	window.set_escape_disabled(true);
+	set_escape_disabled(true);
 
 	stacked_widget& addr_info = find_widget<stacked_widget>("server_conn_info");
 	grid* addr_visible;
@@ -498,14 +498,14 @@ void addon_manager::pre_show(window& window)
 		find_widget<button>("show_help"),
 		std::bind(&addon_manager::show_help, this));
 
-	if(stacked_widget* stk = &find_widget<stacked_widget>("main_stack", false)) {
+	if(stacked_widget* stk = &find_widget<stacked_widget>("main_stack")) {
 		button& btn = find_widget<button>("details_toggle");
 		connect_signal_mouse_left_click(btn, std::bind(&addon_manager::toggle_details, this, std::ref(btn), std::ref(*stk)));
 		stk->select_layer(0);
 	}
 
-	widget* version_filter_parent = &window;
-	if(stacked_widget* stk = &find_widget<stacked_widget>("main_stack", false)) {
+	widget* version_filter_parent = this;
+	if(stacked_widget* stk = &find_widget<stacked_widget>("main_stack")) {
 		version_filter_parent = stk->get_layer_grid(1);
 	}
 
@@ -515,15 +515,15 @@ void addon_manager::pre_show(window& window)
 
 	on_addon_select();
 
-	window.set_enter_disabled(true);
+	set_enter_disabled(true);
 
-	window.keyboard_capture(&filter);
+	keyboard_capture(&filter);
 	list.add_list_to_keyboard_chain();
 
 	list.set_callback_order_change(std::bind(&addon_manager::on_order_changed, this, std::placeholders::_1, std::placeholders::_2));
 
 	// Use handle the special addon_list retval to allow installing addons on double click
-	window.set_exit_hook(window::exit_hook::on_all, std::bind(&addon_manager::exit_hook, this, std::placeholders::_1));
+	set_exit_hook(window::exit_hook::on_all, std::bind(&addon_manager::exit_hook, this, std::placeholders::_1));
 }
 
 void addon_manager::toggle_details(button& btn, stacked_widget& stk)
