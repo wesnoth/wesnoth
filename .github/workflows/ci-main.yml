@@ -95,9 +95,9 @@ jobs:
               build strict=true wesnoth boost_unit_tests
 
               build cdb
-              # clang-tidy gets confused by gcc warnings included in the compilation database, and also has
-              # a false positive warning about deprecated function usage in the standard lib
-              run-clang-tidy -use-color -j 2 -extra-arg="-Wno-unknown-warning-option -Wno-deprecated-declarations"
+              # disable all warnings since we have coverage on them in a standard build, and clang-tidy
+              # triggers false positive compiler warnings that clang itself won't
+              run-clang-tidy -use-color -j 2 -extra-arg="-w"
 
               apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
 
