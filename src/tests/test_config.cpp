@@ -12,7 +12,6 @@
 
 	See the COPYING file for more details.
 */
-
 #define GETTEXT_DOMAIN "wesnoth-test"
 
 #include <boost/test/unit_test.hpp>
@@ -115,7 +114,7 @@ BOOST_AUTO_TEST_CASE(test_config_attribute_value)
 	x_dbl = c["x"].to_double();
 	BOOST_CHECK_EQUAL(x_dbl, 1e7);
 
-// check type conversion when assigned aan empty string
+// check type conversion when assigned as an empty string
 	c["x"] = "";
 	x_sll = c["x"].to_long_long();
 	BOOST_CHECK_EQUAL(x_sll, 0ll);
