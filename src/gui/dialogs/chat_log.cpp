@@ -355,7 +355,7 @@ public:
 		controller_.filter();
 	}
 
-	void handle_copy_button_clicked(window& /*window*/)
+	void handle_copy_button_clicked()
 	{
 		controller_.handle_copy_button_clicked();
 	}
@@ -387,9 +387,7 @@ public:
 		model_.copy_button = window.find_widget<button>("copy", false, true);
 		connect_signal_mouse_left_click(
 				*model_.copy_button,
-				std::bind(&view::handle_copy_button_clicked,
-							this,
-							std::ref(window)));
+				std::bind(&view::handle_copy_button_clicked, this));
 
 		model_.page_label = window.find_widget<styled_widget>("page_label", false, true);
 
