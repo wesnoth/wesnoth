@@ -351,8 +351,8 @@ public:
 	/** Bind my pointers to the widgets found in the window */
 	void bind(window& window);
 
-	void handle_copy_button_clicked(window & window);
-	void handle_clear_button_clicked(window & window);
+	void handle_copy_button_clicked();
+	void handle_clear_button_clicked();
 
 	void input_keypress_callback(bool& handled,
 						   bool& halt,
@@ -427,29 +427,25 @@ void lua_interpreter::controller::bind(window& window)
 	copy_button = window.find_widget<button>("copy", false, true);
 	connect_signal_mouse_left_click(
 			*copy_button,
-			std::bind(&lua_interpreter::controller::handle_copy_button_clicked,
-						this,
-						std::ref(window)));
+			std::bind(&lua_interpreter::controller::handle_copy_button_clicked, this));
 
 	clear_button = window.find_widget<button>("clear", false, true);
 	connect_signal_mouse_left_click(
 			*clear_button,
-			std::bind(&lua_interpreter::controller::handle_clear_button_clicked,
-						this,
-						std::ref(window)));
+			std::bind(&lua_interpreter::controller::handle_clear_button_clicked, this));
 
 	LOG_LUA << "Exiting lua_interpreter::controller::bind";
 }
 
 /** Copy text to the clipboard */
-void lua_interpreter::controller::handle_copy_button_clicked(window & /*window*/)
+void lua_interpreter::controller::handle_copy_button_clicked()
 {
 	assert(lua_model_);
 	desktop::clipboard::copy_to_clipboard(lua_model_->get_raw_log());
 }
 
 /** Clear the text */
-void lua_interpreter::controller::handle_clear_button_clicked(window & /*window*/)
+void lua_interpreter::controller::handle_clear_button_clicked()
 {
 	assert(lua_model_);
 	lua_model_->clear_log();
