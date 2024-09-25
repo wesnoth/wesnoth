@@ -32,6 +32,7 @@
 
 #include <chrono>
 #include <functional>
+#include <utility>
 
 static lg::log_domain log_loadscreen("loadscreen");
 #define LOG_LS LOG_STREAM(info, log_loadscreen)
@@ -77,7 +78,7 @@ loading_screen* loading_screen::singleton_ = nullptr;
 
 loading_screen::loading_screen(std::function<void()> f)
 	: modal_dialog(window_id())
-	, load_funcs_{f}
+	, load_funcs_{std::move(f)}
 	, worker_result_()
 	, cursor_setter_()
 	, progress_stage_label_(nullptr)

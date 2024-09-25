@@ -19,6 +19,7 @@
 
 #include <algorithm>
 #include <iterator>
+#include <utility>
 
 #include "whiteboard/highlighter.hpp"
 
@@ -52,7 +53,7 @@ highlighter::highlighter(side_actions_ptr side_actions)
 	, selected_action_()
 	, main_highlight_()
 	, secondary_highlights_()
-	, side_actions_(side_actions)
+	, side_actions_(std::move(side_actions))
 {
 }
 

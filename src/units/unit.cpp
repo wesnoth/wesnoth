@@ -55,6 +55,7 @@
 #include <exception>                    // for exception
 #include <iterator>                     // for back_insert_iterator, etc
 #include <string_view>
+#include <utility>
 
 namespace t_translation { struct terrain_code; }
 
@@ -1779,7 +1780,7 @@ static bool resistance_filter_matches_base(const config& cfg, bool attacker)
 
 int unit::resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon, const const_attack_ptr& opp_weapon) const
 {
-	unit_ability_list resistance_list = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
+	unit_ability_list resistance_list = get_abilities_weapons("resistance",loc, std::move(weapon), opp_weapon);
 	utils::erase_if(resistance_list, [&](const unit_ability& i) {
 		return !resistance_filter_matches_base(*i.ability_cfg, attacker);
 	});
@@ -1926,7 +1927,7 @@ std::vector<config> unit::get_modification_advances() const
 void unit::set_advancements(std::vector<config> advancements)
 {
 	set_attr_changed(UA_ADVANCEMENTS);
-	advancements_ = advancements;
+	advancements_ = std::move(advancements);
 }
 
 const std::string& unit::type_id() const

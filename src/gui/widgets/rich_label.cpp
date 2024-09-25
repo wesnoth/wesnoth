@@ -38,9 +38,10 @@
 #include "video.hpp"
 #include "wml_exception.hpp"
 
+#include <boost/format.hpp>
 #include <functional>
 #include <string>
-#include <boost/format.hpp>
+#include <utility>
 
 static lg::log_domain log_rich_label("gui/widget/rich_label");
 #define DBG_GUI_RL LOG_STREAM(debug, log_rich_label)
@@ -823,7 +824,7 @@ void rich_label::register_link_callback(std::function<void(std::string)> link_ha
 		std::bind(&rich_label::signal_handler_mouse_motion, this, std::placeholders::_3, std::placeholders::_5));
 	connect_signal<event::MOUSE_LEAVE>(
 		std::bind(&rich_label::signal_handler_mouse_leave, this, std::placeholders::_3));
-	link_handler_ = link_handler;
+	link_handler_ = std::move(link_handler);
 }
 
 

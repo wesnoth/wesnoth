@@ -26,6 +26,7 @@
 
 
 #include <type_traits>
+#include <utility>
 
 static const char uattacksKey[] = "unit attacks table";
 static const char uattackKey[] = "unit attack";
@@ -34,7 +35,7 @@ struct attack_ref {
 	attack_ptr attack;
 	const_attack_ptr cattack;
 	attack_ref(const attack_ptr& atk) : attack(atk), cattack(atk) {}
-	attack_ref(const_attack_ptr atk) : cattack(atk) {}
+	attack_ref(const_attack_ptr atk) : cattack(std::move(atk)) {}
 };
 
 void push_unit_attacks_table(lua_State* L, int idx)

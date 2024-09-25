@@ -32,8 +32,9 @@
 #include "gui/widgets/text_box.hpp"
 #include "sound.hpp"
 
-#include <functional>
 #include <boost/filesystem.hpp>
+#include <functional>
+#include <utility>
 
 namespace gui2::dialogs
 {
@@ -363,7 +364,7 @@ const std::vector<time_of_day> custom_tod::get_schedule()
 
 void custom_tod::register_callback(std::function<void(std::vector<time_of_day>)> update_func)
 {
-	update_map_and_schedule_ = update_func;
+	update_map_and_schedule_ = std::move(update_func);
 }
 
 void custom_tod::post_show()

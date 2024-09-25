@@ -28,6 +28,7 @@
 #include <cctype>
 #include <chrono>
 #include <deque>
+#include <utility>
 
 using namespace boost::math::constants;
 
@@ -1483,8 +1484,8 @@ formula_function_expression::formula_function_expression(const std::string& name
 		const_formula_ptr precondition,
 		const std::vector<std::string>& arg_names)
 	: function_expression(name, args, arg_names.size(), arg_names.size())
-	, formula_(formula)
-	, precondition_(precondition)
+	, formula_(std::move(formula))
+	, precondition_(std::move(precondition))
 	, arg_names_(arg_names)
 	, star_arg_(-1)
 {
