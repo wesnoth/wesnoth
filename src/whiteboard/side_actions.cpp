@@ -19,6 +19,7 @@
 
 #include <set>
 #include <sstream>
+#include <utility>
 
 #include "whiteboard/side_actions.hpp"
 
@@ -439,7 +440,7 @@ namespace
 	struct swapable_with_move: public visitor
 	{
 	public:
-		swapable_with_move(side_actions &sa, side_actions::iterator position, move_ptr second): sa_(sa), valid_(false), position_(position), second_(second) {}
+		swapable_with_move(side_actions &sa, side_actions::iterator position, move_ptr second): sa_(sa), valid_(false), position_(position), second_(std::move(second)) {}
 		bool valid() const { return valid_; }
 
 		void visit(move_ptr first) {

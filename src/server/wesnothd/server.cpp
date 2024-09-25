@@ -55,6 +55,7 @@
 #include <map>
 #include <set>
 #include <sstream>
+#include <utility>
 #include <vector>
 
 static lg::log_domain log_server("server");
@@ -666,12 +667,12 @@ void server::refresh_tournaments(const boost::system::error_code& ec)
 
 void server::handle_new_client(socket_ptr socket)
 {
-	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(yield, socket); });
+	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(std::move(yield), socket); });
 }
 
 void server::handle_new_client(tls_socket_ptr socket)
 {
-	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(yield, socket); });
+	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(std::move(yield), socket); });
 }
 
 template<class SocketPtr>

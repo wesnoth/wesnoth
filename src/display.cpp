@@ -152,7 +152,7 @@ display::display(const display_context* dc,
 		const config& level)
 	: dc_(dc)
 	, halo_man_()
-	, wb_(wb)
+	, wb_(std::move(wb))
 	, exclusive_unit_draw_requests_()
 	, viewing_team_index_(0)
 	, dont_show_all_(false)

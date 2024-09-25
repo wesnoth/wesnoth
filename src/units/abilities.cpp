@@ -32,14 +32,16 @@
 #include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "units/abilities.hpp"
-#include "units/filter.hpp"
-#include "units/map.hpp"
-#include "utils/config_filters.hpp"
+
+#include "deprecation.hpp"
 #include "filter_context.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/function_gamestate.hpp"
-#include "deprecation.hpp"
+#include "units/filter.hpp"
+#include "units/map.hpp"
+#include "utils/config_filters.hpp"
+#include <utility>
 
 
 
@@ -1172,12 +1174,12 @@ attack_type::specials_context_t::specials_context_t(
 	bool attacking)
 	: parent(weapon.shared_from_this())
 {
-	weapon.self_ = self;
-	weapon.other_ = other;
+	weapon.self_ = std::move(self);
+	weapon.other_ = std::move(other);
 	weapon.self_loc_ = unit_loc;
 	weapon.other_loc_ = other_loc;
 	weapon.is_attacker_ = attacking;
-	weapon.other_attack_ = other_attack;
+	weapon.other_attack_ = std::move(other_attack);
 	weapon.is_for_listing_ = false;
 }
 
@@ -1192,7 +1194,7 @@ attack_type::specials_context_t::specials_context_t(
 attack_type::specials_context_t::specials_context_t(const attack_type& weapon, unit_const_ptr self, const map_location& loc, bool attacking)
 	: parent(weapon.shared_from_this())
 {
-	weapon.self_ = self;
+	weapon.self_ = std::move(self);
 	weapon.other_ = unit_ptr();
 	weapon.self_loc_ = loc;
 	weapon.other_loc_ = map_location::null_location();
