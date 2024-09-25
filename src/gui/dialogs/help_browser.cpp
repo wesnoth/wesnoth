@@ -18,7 +18,6 @@
 #include "gui/dialogs/help_browser.hpp"
 
 #include "game_config_manager.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
