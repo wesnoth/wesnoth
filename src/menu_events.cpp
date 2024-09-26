@@ -149,8 +149,7 @@ void menu_handler::status_table()
 
 void menu_handler::save_map()
 {
-	const std::string& input_name
-			= filesystem::get_dir(filesystem::get_dir(filesystem::get_user_data_dir() + "/editor") + "/maps/");
+	const std::string input_name = filesystem::get_legacy_editor_dir() + "/maps/";
 
 	gui2::dialogs::file_dialog dlg;
 
