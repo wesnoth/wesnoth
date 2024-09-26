@@ -21,6 +21,7 @@
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/menu_button.hpp"
+#include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/options_button.hpp"
 #include "gui/widgets/selectable_item.hpp"
@@ -293,6 +294,9 @@ static int intf_remove_dialog_item(lua_State* L)
 	} else if(gui2::menu_button* menu_button = dynamic_cast<gui2::menu_button*>(w)) {
 		int realpos = check_index(L, 2, *menu_button, false, pos);
 		menu_button->remove_rows(realpos, number);
+	} else if(gui2::multimenu_button* multimenu_button = dynamic_cast<gui2::multimenu_button*>(w)) {
+		int realpos = check_index(L, 2, *multimenu_button, false, pos);
+		multimenu_button->remove_rows(realpos, number);
 	} else if(gui2::options_button* options_button = dynamic_cast<gui2::options_button*>(w)) {
 		int realpos = check_index(L, 2, *options_button, false, pos);
 		options_button->remove_rows(realpos, number);
@@ -345,8 +349,8 @@ static int intf_set_dialog_callback(lua_State* L)
 	}
 
 	// TODO: i am not sure whether it is 100% safe to bind the lua_state here,
-	//       (meaning whether it can happen that the lus state is destroyed)
-	//       when a widgets callback is called.
+	//       (meaning whether it can happen that the lua state is destroyed)
+	//       when a widget's callback is called.
 	if(gui2::clickable_item* c = dynamic_cast<gui2::clickable_item*>(w)) {
 		c->connect_click_handler(std::bind(&dialog_callback, L, wp, "callback"));
 	} else if( dynamic_cast<gui2::selectable_item*>(w)) {
@@ -469,7 +473,16 @@ static int intf_add_dialog_item(lua_State* L)
 			lua_push(L, insert_pos.value());
 			return 2;
 		}
-
+	} else if(gui2::multimenu_button* mb = dynamic_cast<gui2::multimenu_button*>(w)) {
+		int realpos = check_index(L, 2, *mb, true, insert_pos);
+		gui2::menu_item* res = nullptr;
+		const config c;
+		res = &mb->add_row(c, realpos);
+		if(res) {
+			luaW_pushmenuitem(L, *res);
+			lua_push(L, insert_pos.value());
+			return 2;
+		}
 	} else if(gui2::options_button* ob = dynamic_cast<gui2::options_button*>(w)) {
 		int realpos = check_index(L, 2, *ob, true, insert_pos);
 		gui2::menu_item* res = nullptr;

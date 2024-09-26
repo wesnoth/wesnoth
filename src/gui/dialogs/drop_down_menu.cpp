@@ -19,6 +19,7 @@
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/event/dispatcher.hpp"
+#include "gui/core/log.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -30,6 +31,7 @@
 
 #include "sdl/rect.hpp"
 #include <functional>
+
 
 namespace gui2::dialogs
 {

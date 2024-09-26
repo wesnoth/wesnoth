@@ -17,8 +17,9 @@
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/menu_button.hpp"
+#include "gui/widgets/multimenu_button.hpp"
+#include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/options_button.hpp"
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/selectable_item.hpp"
@@ -96,15 +97,28 @@ static void push_child_by_index(lua_State *L, gui2::widget& w, int i)
 	} else if(gui2::menu_button* menu_button = dynamic_cast<gui2::menu_button*>(&w)) {
 		int n = menu_button->get_item_count();
 		if(i > n) {
-			std::string s = "index out of range (" + std::to_string(i) + " > " + std::to_string(n) + ")";
-			throw std::invalid_argument(s);
+			config c;
+			for(; n < i; ++n) {
+				menu_button->add_row(c);
+			}
 		}
 		luaW_pushmenuitem(L, *menu_button->get_row(i - 1));
+	} else if(gui2::multimenu_button* multimenu_button = dynamic_cast<gui2::multimenu_button*>(&w)) {
+		int n = multimenu_button->get_item_count();
+		if(i > n) {
+			config c;
+			for(; n < i; ++n) {
+				multimenu_button->add_row(c);
+			}
+		}
+		luaW_pushmenuitem(L, *multimenu_button->get_row(i - 1));
 	} else if(gui2::options_button* options_button = dynamic_cast<gui2::options_button*>(&w)) {
 		int n = options_button->get_item_count();
 		if(i > n) {
-			std::string s = "index out of range (" + std::to_string(i) + " > " + std::to_string(n) + ")";
-			throw std::invalid_argument(s);
+			config c;
+			for(; n < i; ++n) {
+				options_button->add_row(c);
+			}
 		}
 		luaW_pushmenuitem(L, *options_button->get_row(i - 1));
 	} else {
@@ -221,6 +235,26 @@ WIDGET_SETTER("value_compat,selected_index", int, gui2::listbox)
 	w.select_row(value - 1);
 }
 
+WIDGET_GETTER("item_count", int, gui2::menu_button)
+{
+	return w.get_item_count();
+}
+
+WIDGET_SETTER("item_count", int, gui2::menu_button)
+{
+	luaL_error(L, "attempt to modify read-only attribute 'item_count'");
+}
+
+WIDGET_SETTER("label", std::string, gui2::menu_button)
+{
+	luaL_error(L, "attempt to modify read-only attribute 'label'");
+}
+
+WIDGET_SETTER("selected_index", int, gui2::menu_button)
+{
+	w.set_selected(value - 1, false);  // do not fire event, from lua this would only be used for setting default row
+}
+
 WIDGET_GETTER("value", std::string, gui2::menu_button)
 {
     return w.get_value_string();
@@ -231,9 +265,32 @@ WIDGET_SETTER("value", std::string, gui2::menu_button)
 	luaL_error(L, "attempt to modify read-only attribute 'value'");
 }
 
-WIDGET_SETTER("selected_index", int, gui2::menu_button)
+WIDGET_GETTER("item_count", int, gui2::multimenu_button)
 {
-	w.set_selected(value - 1, false);  // do not fire event, from lua this would only be used for setting default row
+	return w.get_item_count();
+}
+
+WIDGET_SETTER("item_count", int, gui2::multimenu_button)
+{
+	luaL_error(L, "attempt to modify read-only attribute 'item_count'");
+}
+
+WIDGET_SETTER("label", std::string, gui2::multimenu_button)
+{
+	luaL_error(L, "attempt to modify read-only attribute 'label'");
+}
+
+WIDGET_SETTER("max_shown", int, gui2::multimenu_button)
+{
+	if(value < 1) {
+		luaL_error(L, "max_shown must be >= 1");
+	}
+	w.set_max_shown(value);
+}
+
+WIDGET_GETTER("max_shown", int, gui2::multimenu_button)
+{
+	return w.get_max_shown();
 }
 
 WIDGET_GETTER("value_compat,selected_index", int, gui2::multi_page)
@@ -245,6 +302,17 @@ WIDGET_SETTER("value_compat,selected_index", int, gui2::multi_page)
 {
 	w.select_page(value - 1);
 }
+
+WIDGET_GETTER("item_count", int, gui2::options_button)
+{
+	return w.get_item_count();
+}
+
+WIDGET_SETTER("item_count", int, gui2::options_button)
+{
+	luaL_error(L, "attempt to modify read-only attribute 'item_count'");
+}
+
 
 WIDGET_GETTER("value", std::string, gui2::options_button)
 {
@@ -469,6 +537,11 @@ WIDGET_SETTER("value_compat,label", t_string, gui2::styled_widget)
 		window->invalidate_layout();
 	}
 	w.set_label(value);
+}
+
+WIDGET_GETTER("label", t_string, gui2::styled_widget)
+{
+	return w.get_label();
 }
 
 WIDGET_GETTER("type", std::string, gui2::widget)

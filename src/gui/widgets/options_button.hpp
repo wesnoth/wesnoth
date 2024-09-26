@@ -49,10 +49,10 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_values(const std::vector<::config>& values, unsigned selected = 0);
-	void set_values(const boost::container::stable_vector<menu_item>& values, unsigned selected = 0);
+	virtual void set_values(const std::vector<::config>& values, unsigned selected = 0);
+	virtual void set_values(const boost::container::stable_vector<menu_item>& values, unsigned selected = 0);
 
-	menu_item& add_row(const config& row, const int index = -1);
+	menu_item& add_row(config row, const int index = -1);
 
 	menu_item* get_row(const int index);
 
@@ -87,7 +87,19 @@ public:
 		return values_.size();
 	}
 
-private:
+    /**
+     * Get the current state of the menu options.
+     *
+     * @returns        A mask specifying which options are selected
+     */
+	boost::dynamic_bitset<> get_toggle_states() const;
+
+    /**
+     * Deselect all the menu options.
+     */
+	void reset_toggle_states();
+
+protected:
 	/**
 	 * Possible states of the widget.
 	 *
@@ -110,15 +122,27 @@ private:
 	 */
 	state_t state_;
 
+//protected:
 	boost::container::stable_vector<menu_item> values_;
 
-protected:
+	/* toggle_states_ is used only to transfer checkbox values to and from the widget, and may
+	 * not be up to date at any other time.  Use values_ for all other operations */
+    boost::dynamic_bitset<> toggle_states_;
+
+	dialogs::drop_down_menu* droplist_;
+
+    void update_config_from_toggle_states();
+
 	unsigned selected_;
+
+	/* For widgets that update label depending on their value(s) */
+	virtual void update_label() {}
 
 private:
 	bool keep_open_;
 
 	/* Whether or not the item selected should be remembered if menu is re-opened */
+	/* Does not apply to multimenu_button */
 	bool persistent_;
 
 public:
@@ -144,6 +168,8 @@ private:
 	void signal_handler_sdl_wheel_up(const event::ui_event event, bool& handled);
 
 	void signal_handler_sdl_wheel_down(const event::ui_event event, bool& handled);
+
+	virtual void signal_handler_notify_changed();
 
 };
 

@@ -16,6 +16,7 @@
 
 #include "config.hpp"
 
+#include "gui/widgets/widget.hpp"
 #include "scripting/lua_ptr.hpp"
 #include "utils/optional_fwd.hpp"
 
@@ -27,7 +28,7 @@ class menu_item : public enable_lua_ptr<menu_item>
 {
 public:
 
-	menu_item(const config& cfg);
+	menu_item(const config& cfg, widget* parent = nullptr);
 
 	config get_config() const;
 
@@ -37,7 +38,7 @@ public:
 	/** If no checkbox is present, the icon at this path will be shown in column 1. */
 	std::string icon;
 
-	/** Is present, column 2 will display the image at this path. */
+	/** If present, column 2 will display the image at this path. */
 	utils::optional<std::string> image;
 
 	/** If no image is present, this text will be shown in column 2. */
@@ -49,6 +50,16 @@ public:
 	/** Tooltip text for the entire row. */
 	t_string tooltip;
 
+	/** Canonical value for the selected item */
+	std::string value;
+
+	widget* get_parent()
+	{
+		return parent_;
+	}
+
+private:
+	widget* parent_;
 };
 
 }; // namespace gui2

@@ -41,6 +41,8 @@ options_button::options_button(const implementation::builder_styled_widget& buil
 	: styled_widget(builder, control_type)
 	, state_(ENABLED)
 	, values_()
+	, toggle_states_()
+	, droplist_(nullptr)
 	, selected_(0)
 	, keep_open_(false)
 	, persistent_(false)
@@ -68,6 +70,10 @@ options_button::options_button(const implementation::builder_styled_widget& buil
 	connect_signal<event::SDL_WHEEL_DOWN>(
 		std::bind(&options_button::signal_handler_sdl_wheel_down, this, std::placeholders::_2, std::placeholders::_3),
 		event::dispatcher::back_post_child);
+
+	connect_signal<event::NOTIFY_MODIFIED>(
+		std::bind(&options_button::signal_handler_notify_changed, this));
+
 }
 
 void options_button::set_active(const bool active)
@@ -93,6 +99,21 @@ void options_button::set_state(const state_t state)
 		state_ = state;
 		queue_redraw();
 	}
+}
+
+boost::dynamic_bitset<> options_button::get_toggle_states() const
+{
+	boost::dynamic_bitset<> ts;
+	ts.resize(values_.size(), false);
+	ts.reset();
+
+	for (size_t i = 0; i < values_.size(); i++) {
+		if((values_[i].checkbox) && (values_[i].checkbox.value())) {
+			ts.set(i);
+		}
+	}
+
+	return ts;
 }
 
 void options_button::signal_handler_mouse_enter(const event::ui_event event, bool& handled)
@@ -144,6 +165,7 @@ void options_button::signal_handler_left_button_click(const event::ui_event even
 	// Whether we want the DDM to retain the selected item if previously opened
 	droplist.set_start_selected(persistent_);
 
+	droplist_ = &droplist;
 	if(droplist.show()) {
 		const int selected = droplist.selected_item();
 
@@ -155,6 +177,7 @@ void options_button::signal_handler_left_button_click(const event::ui_event even
 
 		set_selected(selected, true);
 	}
+	droplist_ = nullptr;
 
 	handled = true;
 }
@@ -183,6 +206,36 @@ void options_button::signal_handler_sdl_wheel_down(const event::ui_event event, 
 	handled = true;
 }
 
+void options_button::signal_handler_notify_changed()
+{
+	if(droplist_) {
+		toggle_states_ = droplist_->get_toggle_states();
+		update_config_from_toggle_states();
+	}
+	update_label();
+}
+
+void options_button::update_config_from_toggle_states()
+{
+	if(toggle_states_.size() < values_.size()) {
+		toggle_states_.resize(values_.size(), false);
+	}
+
+	for(unsigned i = 0; i < values_.size(); i++) {
+		menu_item& item = values_[i];
+
+		if(item.checkbox) {
+			item.checkbox = toggle_states_[i];
+		}
+	}
+}
+
+void options_button::reset_toggle_states()
+{
+    toggle_states_.reset();
+    update_config_from_toggle_states();
+}
+
 // compatibility with existing code which uses vector
 void options_button::set_values(const std::vector<::config>& values, unsigned selected)
 {
@@ -192,7 +245,6 @@ void options_button::set_values(const std::vector<::config>& values, unsigned se
 
 void options_button::set_values(const boost::container::stable_vector<menu_item>& values, unsigned selected)
 {
-	assert(selected < values.size());
 
 	if(!values_.empty()) {
 		assert(selected_ < values_.size());
@@ -202,8 +254,14 @@ void options_button::set_values(const boost::container::stable_vector<menu_item>
 		}
 	}
 
-	for (auto& item: values) {
-		values_.emplace_back(item.get_config());
+    toggle_states_.resize(values.size(), false);
+    toggle_states_.reset();
+
+	for (std::size_t i = 0; i < values.size(); i++) {
+		values_.emplace_back(values[i].get_config());
+		if((values[i].checkbox) && (values[i].checkbox.value())) {
+			toggle_states_.set(i);
+		}
 	}
 
 	selected_ = selected;
@@ -211,18 +269,48 @@ void options_button::set_values(const boost::container::stable_vector<menu_item>
 	if(persistent_) {
 		set_label(values_[selected_].label);
 	}
+
 }
 
-menu_item& options_button::add_row(const config& row, const int index)
+menu_item& options_button::add_row(config row, const int index)
 {
+	bool appended = false;
+
 	if(index < -1) {
 		assert(index >= -1); // this looks odd, but sends right message to user
-	} else if((index == -1) || (static_cast<size_t>(index) == values_.size())) {
-		values_.emplace_back(row);
+	}
+
+	if((get_control_type() == "multimenu_button") &&
+			(!row.has_attribute("checkbox"))) {
+		row["checkbox"] = "false";
+	}
+
+	queue_redraw();
+	toggle_states_.resize(toggle_states_.size() + 1, false);
+
+	if((index == -1) || (static_cast<size_t>(index) == values_.size())) {
+		values_.emplace_back(row, this);
+		if((row.has_attribute("checkbox")) && (row["checkbox"].to_bool())) {
+			toggle_states_.set(toggle_states_.size() - 1);
+		}
+		appended = true;
+	} else {
+		assert(static_cast<size_t>(index) < values_.size());
+		values_.emplace(values_.begin() + index, row, this);
+		toggle_states_.resize(values_.size());
+		toggle_states_.reset();
+		for(size_t i = 0; i < values_.size(); i++) {
+			if((values_[i].checkbox) && (values_[i].checkbox.value())) {
+				toggle_states_.set(i);
+			}
+		}
+	}
+
+	update_label();
+
+	if(appended) {
 		return values_[values_.size() - 1];
 	}
-	assert(static_cast<size_t>(index) < values_.size());
-	values_.emplace(values_.begin() + index, row);
 	return values_[index];
 }
 
@@ -257,6 +345,7 @@ void options_button::remove_rows(const unsigned pos, const unsigned number)
 
 	values_.erase(values_.begin() + pos, values_.begin() + pos + count);
 
+	update_label();
 }
 
 void options_button::set_selected(unsigned selected, bool fire_event)

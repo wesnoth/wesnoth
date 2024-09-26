@@ -16,47 +16,49 @@
 #include "gui/auxiliary/menu_item.hpp"
 
 namespace gui2 {
-
-menu_item::menu_item(const config& cfg)
+menu_item::menu_item(const config& cfg, widget* parent)
 	: enable_lua_ptr<menu_item>(this)
-	  , checkbox()
-	  , icon(cfg["icon"].str())
-	  , image()
-	  , label(cfg["label"].t_str())
-	  , details()
-	  , tooltip(cfg["tooltip"].t_str())
-	{
-		// Checkboxes take precedence in column 1
-		if(cfg.has_attribute("checkbox")) {
-			checkbox = cfg["checkbox"].to_bool(false);
-		}
-
-		// Images take precedence in column 2
-		if(cfg.has_attribute("image")) {
-			image = cfg["image"].str();
-		}
-
-		if(cfg.has_attribute("details")) {
-			details = cfg["details"].t_str();
-		}
+	, checkbox()
+	, icon(cfg["icon"].str())
+	, image()
+	, label(cfg["label"].t_str())
+	, details()
+	, tooltip(cfg["tooltip"].t_str())
+	, value(cfg["value"].str())
+	, parent_(parent)
+{
+	// Checkboxes take precedence in column 1
+	if(cfg.has_attribute("checkbox")) {
+		checkbox = cfg["checkbox"].to_bool(false);
 	}
 
+	// Images take precedence in column 2
+	if(cfg.has_attribute("image")) {
+		image = cfg["image"].str();
+	}
+
+	if(cfg.has_attribute("details")) {
+		details = cfg["details"].t_str();
+	}
+}
+
 config menu_item::get_config() const
-    {
-        config cfg;
-        if(checkbox) {
-            cfg["checkbox"] = checkbox.value();
-        }
-        if(details) {
-            cfg["details"] = details.value();
-        }
-        cfg["icon"] = icon;
-        if(image) {
-            cfg["image"] = image.value();
-        }
-        cfg["label"] = label;
-        cfg["tooltip"] = tooltip;
-        return cfg;
-    }
+{
+	config cfg;
+	if(checkbox) {
+		cfg["checkbox"] = checkbox.value();
+	}
+	if(details) {
+		cfg["details"] = details.value();
+	}
+	cfg["icon"] = icon;
+	if(image) {
+		cfg["image"] = image.value();
+	}
+	cfg["label"] = label;
+	cfg["tooltip"] = tooltip;
+	cfg["value"] = value;
+	return cfg;
+}
 
 }; // namespace gui2

@@ -38,13 +38,9 @@ namespace gui2
 REGISTER_WIDGET(menu_button)
 
 menu_button::menu_button(const implementation::builder_menu_button& builder)
-	: options_button(builder,type())
+	: options_button(builder, type())
 	, selectable_item()
-	, state_(ENABLED)
-	, values_()
 {
-
-	values_.emplace_back("label", this->get_label());
 }
 
 // }---------- DEFINITION ---------{
@@ -60,7 +56,7 @@ menu_button_definition::menu_button_definition(const config& cfg)
 menu_button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
-	// Note the order should be the same as the enum state_t in menu_button.hpp.
+	// Note the order should be the same as the enum state_t in options_button.hpp.
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("menu_button_definition][resolution", "state_enabled")));
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("menu_button_definition][resolution", "state_disabled")));
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", missing_mandatory_wml_tag("menu_button_definition][resolution", "state_pressed")));
@@ -76,7 +72,11 @@ builder_menu_button::builder_menu_button(const config& cfg)
 	: builder_styled_widget(cfg)
 	, options_()
 {
-	for(const auto& option : cfg.child_range("option")) {
+	for(auto option : cfg.child_range("option")) {
+		if(option.has_attribute("checkbox")) {
+			WRN_GUI_P << "Checkbox is not a valid attribute for menu_button, ignoring";
+			option.remove_attribute("checkbox");
+		}
 		options_.push_back(option);
 	}
 }

@@ -337,7 +337,7 @@ void campaign_selection::pre_show(window& window)
 	multimenu_button& filter_comp = find_widget<multimenu_button>(&window, "filter_completion", false);
 	connect_signal_notify_modified(filter_comp,
 		std::bind(&campaign_selection::sort_campaigns, this, RANK, 1));
-	for (unsigned j = 0; j < filter_comp.num_options(); j++) {
+	for (int j = 0; j < filter_comp.get_item_count(); j++) {
 		filter_comp.select_option(j);
 	}
 

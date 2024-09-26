@@ -18,9 +18,8 @@
 #include "gui/core/widget_definition.hpp"
 
 #include "gui/dialogs/drop_down_menu.hpp"
-
+#include "gui/widgets/options_button.hpp"
 #include "gui/widgets/styled_widget.hpp"
-
 
 
 namespace gui2
@@ -32,21 +31,10 @@ struct builder_multimenu_button;
 
 // ------------ WIDGET -----------{
 
-class multimenu_button : public styled_widget
+class multimenu_button : public options_button
 {
 public:
 	explicit multimenu_button(const implementation::builder_multimenu_button& builder);
-
-	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
-
-	/** See @ref styled_widget::set_active. */
-	virtual void set_active(const bool active) override;
-
-	/** See @ref styled_widget::get_active. */
-	virtual bool get_active() const override;
-
-	/** See @ref styled_widget::get_state. */
-	virtual unsigned get_state() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -72,16 +60,6 @@ public:
 	}
 
 	/**
-	 * Get the number of options available in the menu
-	 *
-	 * @returns        The number of options in the menu
-	 */
-	unsigned num_options()
-	{
-		return values_.size();
-	}
-
-	/**
 	 * Select an option in the menu
 	 *
 	 * @param option   The option to select
@@ -96,64 +74,10 @@ public:
 	 */
 	void select_options(boost::dynamic_bitset<> states);
 
-	/**
-	 * Set the available menu options.
-	 *
-	 * @param values   A list of options to show in the menu
-	 */
-	void set_values(const std::vector<::config>& values);
-
-	/**
-	 * Get the current state of the menu options.
-	 *
-	 * @returns        A mask specifying which options are selected
-	 */
-	boost::dynamic_bitset<> get_toggle_states() const
-	{
-		return toggle_states_;
-	}
-
-	/**
-	 * Deselect all the menu options.
-	 */
-	void reset_toggle_states();
+	void update_label() override;
 
 private:
-	/**
-	 * Possible states of the widget.
-	 *
-	 * Note the order of the states must be the same as defined in settings.hpp.
-	 */
-	enum state_t {
-		ENABLED,
-		DISABLED,
-		PRESSED,
-		FOCUSED,
-	};
-
-	void set_state(const state_t state);
-
-	/**
-	 * Current state of the widget.
-	 *
-	 * The state of the widget determines what to render and how the widget
-	 * reacts to certain 'events'.
-	 */
-	state_t state_;
-
-	/**
-	 * The maximum number of selected states to list in the label
-	 */
 	unsigned max_shown_;
-
-	std::vector<::config> values_;
-
-	boost::dynamic_bitset<> toggle_states_;
-
-	dialogs::drop_down_menu* droplist_;
-
-	void update_config_from_toggle_states();
-	void update_label();
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
@@ -163,19 +87,6 @@ private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
-	/***** ***** ***** signal handlers ***** ****** *****/
-
-	void signal_handler_mouse_enter(const event::ui_event event, bool& handled);
-
-	void signal_handler_mouse_leave(const event::ui_event event, bool& handled);
-
-	void signal_handler_left_button_down(const event::ui_event event, bool& handled);
-
-	void signal_handler_left_button_up(const event::ui_event event, bool& handled);
-
-	void signal_handler_left_button_click(const event::ui_event event, bool& handled);
-
-	void signal_handler_notify_changed();
 };
 
 // }---------- DEFINITION ---------{
@@ -207,6 +118,7 @@ public:
 
 private:
 	unsigned max_shown_;
+
 	std::vector<::config> options_;
 };
 
