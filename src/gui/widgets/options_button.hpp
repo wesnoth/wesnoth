@@ -82,7 +82,7 @@ public:
        		persistent_ = persistent;
 	}
 
-	int get_item_count()
+	int get_item_count() const
 	{
 		return values_.size();
 	}

@@ -54,7 +54,7 @@ public:
 	 *
 	 * @returns        The maximum number of elements to show
 	 */
-	unsigned get_max_shown()
+	unsigned get_max_shown() const
 	{
 		return max_shown_;
 	}
