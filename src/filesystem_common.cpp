@@ -304,7 +304,7 @@ std::string read_map(const std::string& name)
 	}
 
 	if(res.empty()) {
-		res = read_file(get_user_data_dir() + "/editor/maps/" + name);
+		res = read_file(get_legacy_editor_dir() + "/maps/" + name);
 	}
 
 	return res;
@@ -323,7 +323,7 @@ std::string read_scenario(const std::string& name)
 	}
 
 	if(res.empty()) {
-		res = read_file(get_user_data_dir() + "/editor/scenarios/" + name);
+		res = read_file(get_legacy_editor_dir() + "/scenarios/" + name);
 	}
 
 	return res;
