@@ -35,9 +35,9 @@ void unit_formula_manager::read(const config & ai)
 		formula_vars_ = std::make_shared<wfl::map_formula_callable>();
 
 		wfl::variant var;
-		for (const config::attribute &i : ai_vars->attribute_range()) {
-			var.serialize_from_string(i.second);
-			formula_vars_->add(i.first, var);
+		for(const auto& [key, value] : ai_vars->attribute_range()) {
+			var.serialize_from_string(value);
+			formula_vars_->add(key, var);
 		}
 	} else {
 		formula_vars_ = wfl::map_formula_callable_ptr();

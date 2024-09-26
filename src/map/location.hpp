@@ -27,6 +27,12 @@ class variable_set;
 
 struct wml_loc {};
 
+/// Represents a map location in cubic hexagonal coordinates.
+/// See <https://www.redblobgames.com/grids/hexagons/#coordinates-cube> for a more detailed explanation.
+struct cubic_location {
+	int q, r, s;
+};
+
 /**
  * Encapsulates the map of the game.
  *
@@ -142,8 +148,17 @@ struct map_location {
 	DIRECTION get_relative_dir(const map_location & loc, map_location::RELATIVE_DIR_MODE mode /*= map_location::RADIAL_SYMMETRY*/ ) const;
 	DIRECTION get_relative_dir(const map_location & loc) const; //moved the default setting to .cpp file for ease of testing
 
-	// Express as a vector in the basis N, NE. N, and NE may be obtained by zero.get_direction(NORTH), ...(NORTH_EAST), respectively.
-	std::pair<int,int> get_in_basis_N_NE() const;
+	cubic_location to_cubic() const {
+		int q = x;
+		int r = y - int((x - abs(x) % 2) / 2);
+		int s = -q - r;
+		return cubic_location{q, r, s};
+	}
+	static map_location from_cubic(cubic_location h) {
+		int x = h.q;
+		int y = h.r + int((h.q - abs(h.q) % 2) / 2);
+		return map_location(x, y);
+	}
 
 	// Rotates the map_location clockwise in 60 degree increments around a center point. Negative numbers of steps are permitted.
 	map_location rotate_right_around_center(const map_location & center, int k) const;

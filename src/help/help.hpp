@@ -56,6 +56,8 @@ struct help_manager {
  */
 std::unique_ptr<help_manager> ensure_cache_lifecycle();
 
+void init_help();
+
 /**
  * Open the help browser. The help browser will have the topic with id
  * show_topic open if it is not the empty string. The default topic
@@ -64,19 +66,18 @@ std::unique_ptr<help_manager> ensure_cache_lifecycle();
  *@pre game_config_manager has been initialised, or the instance of help_manager
  * has been created with an alternative config.
  */
-void show_help(const std::string& show_topic="", int xloc=-1, int yloc=-1);
+void show_help(const std::string& show_topic="");
 
 /** wrapper to add unit prefix and hiding symbol */
 void show_unit_help(const std::string& unit_id, bool has_variations=false,
-				bool hidden = false, int xloc=-1, int yloc=-1);
+				bool hidden = false);
 
 /** wrapper to add variation prefix and hiding symbol */
 void show_variation_help(const std::string &unit_id, const std::string &variation,
-				bool hidden = false, int xloc=-1, int yloc=-1);
+				bool hidden = false);
 
 /** wrapper to add terrain prefix and hiding symbol */
-void show_terrain_help(const std::string& unit_id, bool hidden = false,
-				int xloc = -1, int yloc = -1);
+void show_terrain_help(const std::string& unit_id, bool hidden = false);
 
 void show_unit_description(const unit_type &t);
 void show_unit_description(const unit &u);

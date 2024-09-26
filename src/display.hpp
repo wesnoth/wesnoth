@@ -167,9 +167,7 @@ public:
 	 * An overlay is an image that is displayed on top of the tile.
 	 * One tile may have multiple overlays.
 	 */
-	void add_overlay(const map_location& loc, const std::string& image,
-		const std::string& halo="", const std::string& team_name="",const std::string& item_id="",
-		bool visible_under_fog = true, float submerge = 0.0f, float z_order = 0);
+	void add_overlay(const map_location& loc, overlay&& ov);
 
 	/** remove_overlay will remove all overlays on a tile. */
 	void remove_overlay(const map_location& loc);
@@ -314,6 +312,9 @@ public:
 	int get_location_x(const map_location& loc) const;
 	int get_location_y(const map_location& loc) const;
 	point get_location(const map_location& loc) const;
+
+	/** Returns the on-screen rect corresponding to a @a loc */
+	rect get_location_rect(const map_location& loc) const;
 
 	/**
 	 * Rectangular area of hexes, allowing to decide how the top and bottom
@@ -761,12 +762,12 @@ protected:
 	/** Event raised when the map is being scrolled */
 	mutable events::generic_event scroll_event_;
 
-	boost::circular_buffer<unsigned> frametimes_; // in milliseconds
+	boost::circular_buffer<std::chrono::milliseconds> frametimes_;
 	int current_frame_sample_ = 0;
 	unsigned int fps_counter_;
 	std::chrono::seconds fps_start_;
 	unsigned int fps_actual_;
-	uint32_t last_frame_finished_ = 0u;
+	utils::optional<std::chrono::steady_clock::time_point> last_frame_finished_ = {};
 
 	// Not set by the initializer:
 	std::map<std::string, rect> reportLocations_;

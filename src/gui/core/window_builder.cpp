@@ -76,23 +76,23 @@ builder_widget::builder_widget(const config& cfg)
 
 builder_widget_ptr create_widget_builder(const config& cfg)
 {
-	config::const_all_children_itors children = cfg.all_children_range();
-	VALIDATE(children.size() == 1, "Grid cell does not have exactly 1 child.");
+	VALIDATE(cfg.all_children_count() == 1, "Grid cell does not have exactly 1 child.");
+	auto [widget_key, widget_cfg] = *cfg.ordered_begin();
 
-	if(const auto grid = cfg.optional_child("grid")) {
-		return std::make_shared<builder_grid>(grid.value());
+	if(widget_key == "grid") {
+		return std::make_shared<builder_grid>(widget_cfg);
 	}
 
-	if(const auto instance = cfg.optional_child("instance")) {
-		return std::make_shared<implementation::builder_instance>(instance.value());
+	if(widget_key == "instance") {
+		return std::make_shared<implementation::builder_instance>(widget_cfg);
 	}
 
-	if(const auto pane = cfg.optional_child("pane")) {
-		return std::make_shared<implementation::builder_pane>(pane.value());
+	if(widget_key == "pane") {
+		return std::make_shared<implementation::builder_pane>(widget_cfg);
 	}
 
-	if(const auto viewport = cfg.optional_child("viewport")) {
-		return std::make_shared<implementation::builder_viewport>(viewport.value());
+	if(widget_key == "viewport") {
+		return std::make_shared<implementation::builder_viewport>(widget_cfg);
 	}
 
 	for(const auto& [type, builder] : widget_builder_lookup()) {
@@ -100,8 +100,8 @@ builder_widget_ptr create_widget_builder(const config& cfg)
 			continue;
 		}
 
-		if(const auto c = cfg.optional_child(type)) {
-			return builder(c.value());
+		if(widget_key == type) {
+			return builder(widget_cfg);
 		}
 	}
 
@@ -109,7 +109,7 @@ builder_widget_ptr create_widget_builder(const config& cfg)
 	//
 	// To fix this: add your new widget to source-lists/libwesnoth_widgets and rebuild.
 
-	FAIL("Unknown widget type " + cfg.ordered_begin()->key);
+	FAIL("Unknown widget type " + widget_key);
 }
 
 std::unique_ptr<widget> build_single_widget_instance_helper(const std::string& type, const config& cfg)

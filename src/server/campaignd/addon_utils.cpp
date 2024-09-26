@@ -71,8 +71,8 @@ std::string format_addon_feedback_url(const std::string& format, const config& p
 		// Percent-encode parameter values for URL interpolation. This is
 		// VERY important since otherwise people could e.g. alter query
 		// strings from the format string.
-		for(const config::attribute& a : attrs) {
-			escaped[a.first] = utils::urlencode(a.second.str());
+		for(const auto& [key, value] : attrs) {
+			escaped[key] = utils::urlencode(value.str());
 		}
 
 		// FIXME: We cannot use utils::interpolate_variables_into_string

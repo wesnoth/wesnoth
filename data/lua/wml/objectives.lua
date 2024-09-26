@@ -44,7 +44,7 @@ local function generate_objectives(cfg)
 		local show_if = wml.get_child(obj, "show_if")
 		if not show_if or wml.eval_conditional(show_if) then
 			local objective_bullet = obj.bullet or bullet
-			local condition = obj.condition
+			local condition = obj.condition or wml.error("[objective] Missing required 'condition' attribute.")
 			local description = obj.description or ""
 			local turn_counter = ""
 
@@ -87,7 +87,7 @@ local function generate_objectives(cfg)
 					.. color_prefix(r, g, b) .. objective_bullet.. description
 					.. turn_counter .. "</span>" .. "\n"
 			else
-				wml.error("[objective] Either condition= is missing or condition= has invalid value (ignoring).")
+				wml.error(stringx.vformat("[objective] Unknown condition '$condition', ignoring.", { condition = condition }))
 			end
 		end
 	end

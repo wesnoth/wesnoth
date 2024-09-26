@@ -123,7 +123,7 @@ jobs:
         if: success() || steps.build.outcome == 'success'
         run: |
           ./wesnoth --version
-          for opt in data userdata
+          for opt in data userdata usercache
           do
             output=$(./wesnoth --nobanner --"$opt"-path)
             if [ "$output" = "" ]; then printf 'option --%s-path prints nothing to stdout!\n' "$opt" >&2; exit 1; fi

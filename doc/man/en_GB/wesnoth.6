@@ -86,7 +86,7 @@ enables some Lua debugging mechanisms
 \fB\-\-strict\-lua\fP
 disallow deprecated Lua API calls
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 compares the two WML files; does not pre\-process them first (to do that, run
 them through \fB\-p\fP first). Outputs the difference as DiffWML on standard
 output or to the file indicated by \fI\-\-output\fP.
@@ -205,7 +205,7 @@ preferences. Unsafe.
 \fB\-\-script\fP, but Lua file should return a function which will be run as a
 co\-routine and periodically woken up with updates.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 applies a DiffWML patch to a WML file; does not pre\-process either of the
 files. Outputs the patched WML to standard output or to the file indicated
 by \fI\-\-output\fP.
@@ -284,8 +284,8 @@ makes the \fBpackage\fP package available to lua scripts, so that they can load
 arbitrary packages. Do not do this with untrusted scripts! This action gives
 lua the same permissions as the wesnoth executable.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ path\fP
-sets the WML schema for use with \fB\-V,\-\-validate\fP.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 sets the user data directory to \fIname\fP under $HOME or "My Documents\eMy
@@ -309,7 +309,7 @@ validates the WML of the given add\-on as you play.
 \fB\-\-validate\-core\fP
 validates the core WML as you play.
 .TP 
-\fB\-\-validate\-schema \ path\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 validates a file as a WML schema.
 .TP 
 \fB\-\-validcache\fP

@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Manpages-1.16\n"
-"POT-Creation-Date: 2024-07-21 22:31-0500\n"
+"POT-Creation-Date: 2024-09-17 21:19-0500\n"
 "PO-Revision-Date: 2024-03-06 16:10+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -291,8 +291,9 @@ msgstr "Désactive les appels obsolètes à l'interface lua."
 
 #. type: TP
 #: doc/man/wesnoth.6:89
-#, no-wrap
-msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
+#, fuzzy, no-wrap
+#| msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
+msgid "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
 msgstr "B<-D,--diff>I<\\ fichier-original>B<\\ >I<fichier-nouveau>"
 
 #. type: Plain text
@@ -786,8 +787,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:240
-#, no-wrap
-msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+#, fuzzy, no-wrap
+#| msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+msgid "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
 msgstr "B<-P,--patch>I<\\ fichier-cible>B<\\ >I<fichier-patch>"
 
 #. type: Plain text
@@ -1084,13 +1086,16 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:347
-#, no-wrap
-msgid "B<-S,--use-schema>I<\\ path>"
+#, fuzzy, no-wrap
+#| msgid "B<-S,--use-schema>I<\\ path>"
+msgid "B<-S,\\ --use-schema>I<\\ path>"
 msgstr "B<-S,--use-schema>I<\\ chemin>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:351
-msgid "sets the WML schema for use with B<-V,--validate>."
+#, fuzzy
+#| msgid "sets the WML schema for use with B<-V,--validate>."
+msgid "sets the WML schema for use with B<-V,\\ --validate>."
 msgstr "Donne le schéma WML à utiliser dans B<-V,--validate>."
 
 # type: TP
@@ -1182,8 +1187,9 @@ msgstr "Valide le code WML d'un noyau durant le jeu."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:377
-#, no-wrap
-msgid "B<--validate-schema \\ path>"
+#, fuzzy, no-wrap
+#| msgid "B<--validate-schema \\ path>"
+msgid "B<--validate-schema>I<\\ path>"
 msgstr "B<--validate-schema \\ chemin>"
 
 #. type: Plain text

@@ -3048,7 +3048,7 @@ int main(int argc, char** argv)
 			keep_alive = true;
 		} else if(val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
-					  << " [-dvV] [-c path] [-m n] [-p port]\n"
+					  << " [-dvwV] [-c path] [-p port]\n"
 					  << "  -c, --config <path>        Tells wesnothd where to find the config file to use.\n"
 					  << "  -d, --daemon               Runs wesnothd as a daemon.\n"
 					  << "  -h, --help                 Shows this usage message.\n"

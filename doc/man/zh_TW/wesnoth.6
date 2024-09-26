@@ -74,7 +74,7 @@ http://www.wesnoth.org/wiki/CommandMode）。
 \fB\-\-strict\-lua\fP
 不允許廢棄的Lua API的呼叫
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 比較兩個 WML 檔案的差異，但不會預處理它們（要處理的話，先透過 \fB\-p\fP 執行它們）。以 DiffWML 的格式輸出差異至標準輸出或者至
 \fI\-\-output\fP 所指定的檔案。
 .TP 
@@ -175,7 +175,7 @@ Bug。部分函式庫被認為是穩定的，即使不開啟這個選項也會�
 （實驗性）載入一個定義韋諾插件的 \fIscript\fP。與 \fB\-\-script\fP 相似，但 Lua
 檔案應該傳回一個函數，該函數將運行且週期性地喚醒並更新。
 .TP 
-\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 將一個 DiffWML 的補丁用於一個 WML 檔案。不會預處理任何輸入的檔案。輸出被補過的 WML 至標準輸出或者至 \fI\-\-output\fP
 所指定的檔案。
 .TP 
@@ -238,8 +238,8 @@ https://wiki.wesnoth.org/ImagePathFunctionWML。
 讓 \fBpackage\fP 套件在 Lua
 腳本中可以使用，為的是讓它們可以載入任意套件。請不要對不信任的腳本使用這個！此動作會將韋諾的可執行檔的相同權限賦予 Lua。
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ path\fP
-設定要與 \fB\-V,\-\-validate\fP 一同使用的 WML 格式。
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 在 $HOME 或「我的文件\我的遊戲」(Windows)底下設定使用者資料目錄為 \fIname\fP 。你也可以為使用者資料目錄設定一個在 $HOME
@@ -260,7 +260,7 @@ https://wiki.wesnoth.org/ImagePathFunctionWML。
 \fB\-\-validate\-core\fP
 驗證核心 WML，當你遊玩的時候。
 .TP 
-\fB\-\-validate\-schema \ path\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 將一個檔案作為 WML 格式來驗證。
 .TP 
 \fB\-\-validcache\fP

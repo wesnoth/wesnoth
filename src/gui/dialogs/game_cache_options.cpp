@@ -63,10 +63,6 @@ void game_cache_options::pre_show(window& window)
 	connect_signal_mouse_left_click(copy,
 									std::bind(&game_cache_options::copy_to_clipboard_callback,
 												this));
-	if (!desktop::clipboard::available()) {
-		copy.set_active(false);
-		copy.set_tooltip(_("Clipboard support not found, contact your packager"));
-	}
 
 	button& browse = find_widget<button>(&window, "browse", false);
 	connect_signal_mouse_left_click(browse,
@@ -110,7 +106,7 @@ void game_cache_options::update_cache_size_display()
 
 void game_cache_options::copy_to_clipboard_callback()
 {
-	desktop::clipboard::copy_to_clipboard(cache_path_, false);
+	desktop::clipboard::copy_to_clipboard(cache_path_);
 }
 
 void game_cache_options::browse_cache_callback()

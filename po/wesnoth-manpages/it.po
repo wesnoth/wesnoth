@@ -4,12 +4,12 @@
 #
 # Automatically generated, 2006.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009, 2011.
-# Antonio 'Antro' Rosella <arosella@yahoo.com> 2012-2023
+# Antonio 'Antro' Rosella <arosella@yahoo.com> 2012-2024
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
-"POT-Creation-Date: 2024-07-21 22:31-0500\n"
-"PO-Revision-Date: 2023-07-29 23:16+0200\n"
+"POT-Creation-Date: 2024-09-17 21:19-0500\n"
+"PO-Revision-Date: 2024-09-16 21:13+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -66,7 +66,7 @@ msgstr ""
 #: doc/man/wesnoth.6:21 doc/man/wesnothd.6:24
 #, no-wrap
 msgid "SYNOPSIS"
-msgstr "SYNOPSIS"
+msgstr "SINOSSI"
 
 # type: Plain text
 #. type: Plain text
@@ -201,13 +201,13 @@ msgstr "B<--clock>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:69
-#, fuzzy
-#| msgid "Adds the option to show a clock for testing the drawing timer."
 msgid ""
 "Adds the option to show a clock for testing the drawing timer. Also adds the "
 "option for showing the GUI Test Dialog."
 msgstr ""
-"Aggiunge l’opzione per mostrare un orologio per testare il drawing timer."
+"Aggiunge l’opzione per mostrare un orologio per testare il drawing timer. "
+"Aggiunge anche l’opzione per mostrare un orologio per mostrare i dialoghi "
+"test dell'interfaccia grafica."
 
 # type: TP
 #. type: TP
@@ -291,8 +291,9 @@ msgstr "non permette di utilizzare chiamate Lua API deprecate"
 
 #. type: TP
 #: doc/man/wesnoth.6:89
-#, no-wrap
-msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
+#, fuzzy, no-wrap
+#| msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
+msgid "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
 msgstr "B<-D,--diff>I<\\ file-sinistro>B<\\ >I<file-destro>"
 
 #. type: Plain text
@@ -447,27 +448,21 @@ msgstr "registra i tempi nel logfile in maniera più accurata."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:149
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--log-strict>I<\\ level>"
-msgstr "B<--log-strict>"
+msgstr "B<--log-strict>I<\\ livello>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:158
-#, fuzzy
-#| msgid ""
-#| "sets the strict level of the logger. Any messages sent to log domains of "
-#| "this level or more severe will cause the unit test to fail regardless of "
-#| "the victory result. Only relevant when used with B<-u>."
 msgid ""
 "sets the strict I<level> of the logger. Any messages sent to log domains of "
 "this I<level> or more severe will cause the unit test to fail regardless of "
 "the victory result. Only relevant when used with B<-u>."
 msgstr ""
-"imposta il il livello di ristrettezza del logger. Ogni messaggio inviato di "
-"questo livello o più severo causerà il fallimento del test unità, qualunque "
-"sia l’esito della vittoria. Ha rilevanza soltanto se utilizzato con "
-"l’opzione B<-u>."
+"imposta il I<livello> di ristrettezza del logger. Ogni messaggio inviato di "
+"questo I<livello> o più severo causerà il fallimento del test unità, "
+"qualunque sia l’esito della vittoria. Ha rilevanza soltanto se utilizzato "
+"con l’opzione B<-u>."
 
 # type: TP
 #. type: TP
@@ -494,17 +489,14 @@ msgstr "B<--no-log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:166
-#, fuzzy
-#| msgid ""
-#| "prevents redirecting logged output to a file. Log files are created in "
-#| "the logs directory under the userdata folder."
 msgid ""
 "prevents redirecting logged output to a file. The environment variable "
 "WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created "
 "in the logs directory under the userdata folder."
 msgstr ""
-"impedisce il reindirizzamento dell’output registrato in un file. I log file "
-"vengono creati nella directory dei log nella cartella dati utente."
+"impedisce il reindirizzamento dell’output registrato in un file. In "
+"alternativa si può valorizzare la variabile di ambiente WESNOTH_NO_LOG_FILE. "
+"I log file vengono creati nella directory dei log nella cartella dati utente."
 
 # type: TP
 #. type: TP
@@ -515,24 +507,19 @@ msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:169
-#, fuzzy
-#| msgid ""
-#| "log output is written to a file in addition to standard output/error. "
-#| "Cancels the effect of --no-log-to-file whether implicit or explicit."
 msgid ""
 "log output is written to a file. Cancels the effect of --no-log-to-file "
 "whether implicit or explicit."
 msgstr ""
-"il registro di output è scritto in un file addizionale oltre allo standard "
-"output/errore. Annulla l’effetto di --no-log-to-file implicito o esplicito."
+"il registro di output è scritto in un file. Annulla l’effetto di --no-log-to-"
+"file implicito o esplicito."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:169
-#, fuzzy, no-wrap
-#| msgid "B<--no-log-to-file>"
+#, no-wrap
 msgid "B<--no-log-sanitize>"
-msgstr "B<--no-log-to-file>"
+msgstr "B<--no-log-sanitize>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:172
@@ -540,6 +527,9 @@ msgid ""
 "disables the anonymization that's normally applied when logging, for example "
 "replacing usernames with USER."
 msgstr ""
+"disabilita l'anonimizzazione che viene normalmente applicata nella "
+"memorizzazione dei log, ad esempio sostituendo i nomi utente con un generico "
+"USER."
 
 # type: TP
 #. type: TP
@@ -787,8 +777,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:240
-#, no-wrap
-msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+#, fuzzy, no-wrap
+#| msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+msgid "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
 msgstr "B<-P,--patch>I<\\ file-base>B<\\ >I<file-correzione>"
 
 #. type: Plain text
@@ -1083,13 +1074,16 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:347
-#, no-wrap
-msgid "B<-S,--use-schema>I<\\ path>"
+#, fuzzy, no-wrap
+#| msgid "B<-S,--use-schema>I<\\ path>"
+msgid "B<-S,\\ --use-schema>I<\\ path>"
 msgstr "B<--scenario>I<\\ percorso>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:351
-msgid "sets the WML schema for use with B<-V,--validate>."
+#, fuzzy
+#| msgid "sets the WML schema for use with B<-V,--validate>."
+msgid "sets the WML schema for use with B<-V,\\ --validate>."
 msgstr "imposta lo schema WML da utilizzare con B<-V,--validate>."
 
 # type: TP
@@ -1181,8 +1175,9 @@ msgstr "valida in nucleo WML durante il gioco."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:377
-#, no-wrap
-msgid "B<--validate-schema \\ path>"
+#, fuzzy, no-wrap
+#| msgid "B<--validate-schema \\ path>"
+msgid "B<--validate-schema>I<\\ path>"
 msgstr "B<--validate-schema \\ percorso>"
 
 #. type: Plain text
@@ -1562,12 +1557,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:502 doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -1636,14 +1628,9 @@ msgstr "wesnothd - Demone multigiocatore di rete per Battle for B<Wesnoth>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:32
-#, fuzzy
-#| msgid ""
-#| "B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] "
-#| "[\\|B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgid "B<wesnothd> [\\|B<-dvw>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|]"
 msgstr ""
-"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<percorso>\\|] [\\|B<-p> I<porta>\\|] "
-"[\\|B<-t> I<numero>\\|] [\\|B<-T> I<numero>\\|]"
+"B<wesnothd> [\\|B<-dvw>\\|] [\\|B<-c> I<percorso>\\|] [\\|B<-p> I<porta>\\|]"
 
 # type: Plain text
 #. type: Plain text
@@ -1883,12 +1870,6 @@ msgstr "B<disallow_names>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:118
-#, fuzzy
-#| msgid ""
-#| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
-#| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
-#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
-#| "*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
@@ -1898,7 +1879,7 @@ msgstr ""
 "I nomi o nick che non sono accettati dal server. Si possono usare i "
 "caratteri jolly B<*> e B<?>. Vedi B<glob>(7) per maggiori dettagli. I valori "
 "predefiniti (usati in mancanza di specifiche diverse) sono: B<*admin*,"
-"*admln*,*server*,ai,ai?,computer,human,network,player>."
+"*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 
 # type: TP
 #. type: TP
@@ -2388,24 +2369,19 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:242
-#, fuzzy, no-wrap
-#| msgid "B<db_game_info_table>"
+#, no-wrap
 msgid "B<db_game_content_info_table>"
-msgstr "B<db_game_info_table>"
+msgstr "B<db_game_content_info_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:245
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which wesnothd will save its own data about the "
-#| "modifications used in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about game "
 "content (scenario/era/modifications) used in a game."
 msgstr ""
 "Il nome della tabella nella quale il processo wesnothd salverà i suoi dati "
-"delle modifiche utilizzate in una partita."
+"dei contenuti (scenario(era/modifiche) utilizzate in una partita."
 
 # type: TP
 #. type: TP
@@ -2429,10 +2405,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:248
-#, fuzzy, no-wrap
-#| msgid "B<db_name>"
+#, no-wrap
 msgid "B<db_tournament_query>"
-msgstr "B<db_name>"
+msgstr "B<db_tournament_query>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:251
@@ -2440,6 +2415,8 @@ msgid ""
 "The SQL query to find tournaments to announce on login. Should return "
 "tournament B<title>, B<status> and B<url>."
 msgstr ""
+"La query SQL per trovare tornei da annunciare al momento dell'accesso. "
+"Dovrebbe restituire B<title>, B<status> and B<url> di un torneo."
 
 # type: TP
 #. type: TP
@@ -2544,6 +2521,32 @@ msgstr "B<wesnoth>(6)"
 
 # type: TP
 #, no-wrap
+#~ msgid "B<--bunzip2>I<\\ infile.bz2>"
+#~ msgstr "B<--bunzip2>I<\\ infile.bz2>"
+
+# type: Plain text
+#~ msgid ""
+#~ "decompresses a file which should be in bzip2 format and stores it without "
+#~ "the .bz2 suffix. The I<infile.bz2> will be removed."
+#~ msgstr ""
+#~ "decomprime un file che dev’essere in formato bzip2 e lo memorizza senza "
+#~ "suffisso .bz2. Il file I<infile.bz2> sarà rimosso."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--bzip2>I<\\ infile>"
+#~ msgstr "B<--bzip2>I<\\ infile>"
+
+# type: Plain text
+#~ msgid ""
+#~ "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
+#~ "I<infile>."
+#~ msgstr ""
+#~ "comprime un file in formato bzip2, lo memorizza come I<infile>.bz2 e "
+#~ "rimuove I<infile>."
+
+# type: TP
+#, no-wrap
 #~ msgid "B<--config-dir>I<\\ name>"
 #~ msgstr "B<--config-dir>I<\\ name>"
 
@@ -2561,41 +2564,34 @@ msgstr "B<wesnoth>(6)"
 
 # type: TP
 #, no-wrap
-#~ msgid "B<--userconfig-dir>I<\\ name>"
-#~ msgstr "B<--userconfig-dir>I<\\ nome>"
+#~ msgid "B<--gunzip>I<\\ infile.gz>"
+#~ msgstr "B<--gunzip>I<\\ infile.gz>"
 
 # type: Plain text
-#, fuzzy
-#~| msgid ""
-#~| "sets the userdata directory to I<name> under $HOME or \"My "
-#~| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#~| "path for the userdata directory outside the $HOME or \"My Documents\\eMy "
-#~| "Games\". On Windows it is also possible to specify a directory relative "
-#~| "to the process working directory by using path starting with \".\\e\" or "
-#~| "\"..\\e\"."
 #~ msgid ""
-#~ "sets the user configuration directory to I<name> under $HOME or \"My "
-#~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#~ "path for the configuration directory outside the $HOME or \"My "
-#~ "Documents\\eMy Games\". On Windows it is also possible to specify a "
-#~ "directory relative to the process working directory by using path "
-#~ "starting with \".\\e\" or \"..\\e\".  This defaults to the userdata path."
+#~ "decompresses a file which should be in gzip format and stores it without "
+#~ "the .gz suffix. The I<infile.gz> will be removed."
 #~ msgstr ""
-#~ "imposta la directory dei dati dell’utente a I<nome> sotto $HOME o \"My "
-#~ "Documents\\eMy Games\" per Windows. Puoi anche specificare un percorso "
-#~ "assoluto per la directory di configurazione al di fuori di $HOME o \"My "
-#~ "Documents\\eMy Games\". In ambiente Windows è anche possibile specificare "
-#~ "una directory relativa al directory di lavoro del processo, utilizzando "
-#~ "un percorso che inizia con \".\\e\" or \"..\\e\"."
+#~ "decomprime un file che dev’essere in formato gzip e lo memorizza senza "
+#~ "suffisso .gz. Il file I<infile.gz> sarà rimosso."
 
 # type: TP
 #, no-wrap
-#~ msgid "B<--userconfig-path>"
-#~ msgstr "B<--userconfig-path>"
+#~ msgid "B<--gzip>I<\\ infile>"
+#~ msgstr "B<--gzip>I<\\ infile>"
 
 # type: Plain text
-#~ msgid "prints the path of the user configuration directory and exits."
-#~ msgstr "stampa il percorso della cartella di configurazione ed esce."
+#~ msgid ""
+#~ "compresses a file in gzip format, stores it as I<infile>.gz and removes "
+#~ "I<infile>."
+#~ msgstr ""
+#~ "comprime un file in formato gzip, lo memorizza come I<infile>.gz e "
+#~ "rimuove I<infile>."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--userconfig-dir>I<\\ name>"
+#~ msgstr "B<--userconfig-dir>I<\\ nome>"
 
 # type: Plain text
 #~ msgid ""
@@ -2617,6 +2613,15 @@ msgstr "B<wesnoth>(6)"
 #~ "In ambiente X11 la directory standard è $XDG_CONFIG_HOME o $HOME/.config/"
 #~ "wesnoth, in altri ambienti corrisponde alla directory contenente i dati "
 #~ "utente."
+
+# type: TP
+#, no-wrap
+#~ msgid "B<--userconfig-path>"
+#~ msgstr "B<--userconfig-path>"
+
+# type: Plain text
+#~ msgid "prints the path of the user configuration directory and exits."
+#~ msgstr "stampa il percorso della cartella di configurazione ed esce."
 
 # type: TP
 #, no-wrap
@@ -2693,58 +2698,6 @@ msgstr "B<wesnoth>(6)"
 #, no-wrap
 #~ msgid "B<db_game_modification_info_table>"
 #~ msgstr "B<db_game_modification_info_table>"
-
-# type: TP
-#, no-wrap
-#~ msgid "B<--bunzip2>I<\\ infile.bz2>"
-#~ msgstr "B<--bunzip2>I<\\ infile.bz2>"
-
-# type: Plain text
-#~ msgid ""
-#~ "decompresses a file which should be in bzip2 format and stores it without "
-#~ "the .bz2 suffix. The I<infile.bz2> will be removed."
-#~ msgstr ""
-#~ "decomprime un file che dev’essere in formato bzip2 e lo memorizza senza "
-#~ "suffisso .bz2. Il file I<infile.bz2> sarà rimosso."
-
-# type: TP
-#, no-wrap
-#~ msgid "B<--bzip2>I<\\ infile>"
-#~ msgstr "B<--bzip2>I<\\ infile>"
-
-# type: Plain text
-#~ msgid ""
-#~ "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
-#~ "I<infile>."
-#~ msgstr ""
-#~ "comprime un file in formato bzip2, lo memorizza come I<infile>.bz2 e "
-#~ "rimuove I<infile>."
-
-# type: TP
-#, no-wrap
-#~ msgid "B<--gunzip>I<\\ infile.gz>"
-#~ msgstr "B<--gunzip>I<\\ infile.gz>"
-
-# type: Plain text
-#~ msgid ""
-#~ "decompresses a file which should be in gzip format and stores it without "
-#~ "the .gz suffix. The I<infile.gz> will be removed."
-#~ msgstr ""
-#~ "decomprime un file che dev’essere in formato gzip e lo memorizza senza "
-#~ "suffisso .gz. Il file I<infile.gz> sarà rimosso."
-
-# type: TP
-#, no-wrap
-#~ msgid "B<--gzip>I<\\ infile>"
-#~ msgstr "B<--gzip>I<\\ infile>"
-
-# type: Plain text
-#~ msgid ""
-#~ "compresses a file in gzip format, stores it as I<infile>.gz and removes "
-#~ "I<infile>."
-#~ msgstr ""
-#~ "comprime un file in formato gzip, lo memorizza come I<infile>.gz e "
-#~ "rimuove I<infile>."
 
 #~ msgid "2018"
 #~ msgstr "2018"

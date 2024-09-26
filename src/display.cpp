@@ -26,9 +26,11 @@
 #include "draw_manager.hpp"
 #include "fake_unit_manager.hpp"
 #include "filesystem.hpp"
+#include "floating_label.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "global.hpp"
+#include "gui/core/event/handler.hpp" // is_in_dialog
 #include "preferences/preferences.hpp"
 #include "halo.hpp"
 #include "hotkey/command_executor.hpp"
@@ -40,7 +42,6 @@
 #include "play_controller.hpp" //note: this can probably be refactored out
 #include "reports.hpp"
 #include "resources.hpp"
-#include "show_dialog.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
 #include "terrain/builder.hpp"
@@ -55,13 +56,16 @@
 
 #include <boost/algorithm/string/trim.hpp>
 
-
 #include <algorithm>
 #include <array>
 #include <cmath>
 #include <iomanip>
 #include <numeric>
 #include <utility>
+
+#ifdef __cpp_lib_format
+#include <format>
+#endif
 
 #ifdef _WIN32
 #include <windows.h>
@@ -112,17 +116,17 @@ static int get_zoom_levels_index(unsigned int zoom_level)
 	return std::distance(zoom_levels.begin(), iter);
 }
 
-void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo, const std::string& team_name, const std::string& item_id, bool visible_under_fog, float submerge, float z_order)
+void display::add_overlay(const map_location& loc, overlay&& ov)
 {
-	halo::handle halo_handle;
-	if(halo != "") {
-		halo_handle = halo_man_.add(get_location_x(loc) + hex_size() / 2,
-			get_location_y(loc) + hex_size() / 2, halo, loc);
-	}
-
 	std::vector<overlay>& overlays = get_overlays()[loc];
-	auto it = std::find_if(overlays.begin(), overlays.end(), [z_order](const overlay& ov) { return ov.z_order > z_order; });
-	overlays.emplace(it, img, halo, halo_handle, team_name, item_id, visible_under_fog, submerge, z_order);
+	auto pos = std::find_if(overlays.begin(), overlays.end(),
+		[new_order = ov.z_order](const overlay& existing) { return existing.z_order > new_order; });
+
+	auto inserted = overlays.emplace(pos, std::move(ov));
+	if(const std::string& halo = inserted->halo; !halo.empty()) {
+		auto [x, y] = get_location_rect(loc).center();
+		inserted->halo_handle = halo_man_.add(x, y, halo, loc);
+	}
 }
 
 void display::remove_overlay(const map_location& loc)
@@ -699,6 +703,12 @@ point display::get_location(const map_location& loc) const
 	};
 }
 
+rect display::get_location_rect(const map_location& loc) const
+{
+	// TODO: evaluate how these functions should be defined in terms of each other
+	return { get_location(loc), point{hex_size(), hex_size()} };
+}
+
 map_location display::minimap_location_on(int x, int y)
 {
 	// TODO: don't return location for this,
@@ -1263,14 +1273,7 @@ uint32_t generate_hex_key(const drawing_layer layer, const map_location& loc)
 
 void display::drawing_buffer_add(const drawing_layer layer, const map_location& loc, decltype(draw_helper::do_draw) draw_func)
 {
-	const rect dest {
-		get_location_x(loc),
-		get_location_y(loc),
-		int(zoom_),
-		int(zoom_)
-	};
-
-	drawing_buffer_.AGGREGATE_EMPLACE(generate_hex_key(layer, loc), draw_func, dest);
+	drawing_buffer_.AGGREGATE_EMPLACE(generate_hex_key(layer, loc), draw_func, get_location_rect(loc));
 }
 
 void display::drawing_buffer_commit()
@@ -1302,36 +1305,44 @@ void display::drawing_buffer_commit()
 	drawing_buffer_.clear();
 }
 
-// frametime is in milliseconds
-static unsigned calculate_fps(unsigned frametime)
+static unsigned calculate_fps(std::chrono::milliseconds frametime)
 {
-	return frametime != 0u ? 1000u / frametime : 999u;
+	using namespace std::chrono_literals;
+	return frametime > 0ms ? 1s / frametime : 999u;
 }
 
 void display::update_fps_label()
 {
 	++current_frame_sample_;
-	const int sample_freq = 10;
+	constexpr int sample_freq = 10;
 
 	if(current_frame_sample_ != sample_freq) {
 		return;
+	} else {
+		current_frame_sample_ = 0;
 	}
 
-	const auto minmax_it = std::minmax_element(frametimes_.begin(), frametimes_.end());
-	const unsigned render_avg = std::accumulate(frametimes_.begin(), frametimes_.end(), 0) / frametimes_.size();
+	const auto [min_iter, max_iter] = std::minmax_element(frametimes_.begin(), frametimes_.end());
+
+	using namespace std::chrono_literals;
+	const std::chrono::milliseconds render_avg = std::accumulate(frametimes_.begin(), frametimes_.end(), 0ms) / frametimes_.size();
+
+	// NOTE: max FPS corresponds to the *shortest* time between frames (that is, min_iter)
 	const int avg_fps = calculate_fps(render_avg);
-	const int max_fps = calculate_fps(*minmax_it.first);
-	const int min_fps = calculate_fps(*minmax_it.second);
+	const int max_fps = calculate_fps(*min_iter);
+	const int min_fps = calculate_fps(*max_iter);
+
 	fps_history_.emplace_back(min_fps, avg_fps, max_fps);
-	current_frame_sample_ = 0;
 
 	// flush out the stored fps values every so often
 	if(fps_history_.size() == 1000) {
-		std::string filename = filesystem::get_user_data_dir()+"/fps_log.csv";
-		filesystem::scoped_ostream fps_log = filesystem::ostream_file(filename, std::ios_base::binary | std::ios_base::app);
-		for(const auto& fps : fps_history_) {
-			*fps_log << std::get<0>(fps) << "," << std::get<1>(fps) << "," << std::get<2>(fps) << "\n";
+		std::string filename = filesystem::get_user_data_dir() + "/fps_log.csv";
+		auto fps_log = filesystem::ostream_file(filename, std::ios_base::binary | std::ios_base::app);
+
+		for(const auto& [min, avg, max] : fps_history_) {
+			*fps_log << min << "," << avg << "," << max << "\n";
 		}
+
 		fps_history_.clear();
 	}
 
@@ -1339,23 +1350,35 @@ void display::update_fps_label()
 		font::remove_floating_label(fps_handle_);
 		fps_handle_ = 0;
 	}
+
 	std::ostringstream stream;
-	stream << "<tt>      min/avg/max/act</tt>\n";
-	stream << "<tt>FPS:  " << std::setfill(' ') << std::setw(3) << min_fps << '/'<< std::setw(3) << avg_fps << '/' << std::setw(3) << max_fps << '/' << std::setw(3) << fps_actual_ << "</tt>\n";
-	stream << "<tt>Time: " << std::setfill(' ') << std::setw(3) << *minmax_it.first << '/' << std::setw(3) << render_avg << '/' << std::setw(3) << *minmax_it.second << " ms</tt>\n";
-	if (game_config::debug) {
-		stream << "\nhex: " << drawn_hexes_*1.0/sample_freq;
-		if (drawn_hexes_ != invalidated_hexes_)
-			stream << " (" << (invalidated_hexes_-drawn_hexes_)*1.0/sample_freq << ")";
+#ifdef __cpp_lib_format
+	stream << "<tt>      " << std::format("{:<5}|{:<5}|{:<5}|{:<5}", "min", "avg", "max", "act") << "</tt>\n";
+	stream << "<tt>FPS:  " << std::format("{:<5}|{:<5}|{:<5}|{:<5}", min_fps, avg_fps, max_fps, fps_actual_) << "</tt>\n";
+	stream << "<tt>Time: " << std::format("{:5}|{:5}|{:5}", *max_iter, render_avg, *min_iter) << "</tt>\n";
+#else
+	stream << "<tt>      min  |avg  |max  |act  </tt>\n";
+	stream << "<tt>FPS:  " << std::left << std::setfill(' ') << std::setw(5) << min_fps << '|' << std::setw(5) << avg_fps << '|' << std::setw(5) << max_fps << '|' << std::setw(5) << fps_actual_ << "</tt>\n";
+	stream << "<tt>Time: " << std::left << std::setfill(' ') << std::setw(5) << max_iter->count() << '|' << std::setw(5) << render_avg.count() << '|' << std::setw(5) << min_iter->count() << "</tt>\n";
+#endif
+
+	if(game_config::debug) {
+		stream << "\nhex: " << drawn_hexes_ * 1.0 / sample_freq;
+		if(drawn_hexes_ != invalidated_hexes_) {
+			stream << " (" << (invalidated_hexes_ - drawn_hexes_) * 1.0 / sample_freq << ")";
+		}
 	}
+
 	drawn_hexes_ = 0;
 	invalidated_hexes_ = 0;
 
 	font::floating_label flabel(stream.str());
-	flabel.set_font_size(12);
+	flabel.set_font_size(14);
 	flabel.set_color(debug_flag_set(DEBUG_BENCHMARK) ? font::BAD_COLOR : font::NORMAL_COLOR);
 	flabel.set_position(10, 100);
 	flabel.set_alignment(font::LEFT_ALIGN);
+	flabel.set_bg_color({0, 0, 0, float_to_color(0.6)});
+	flabel.set_border_size(5);
 
 	fps_handle_ = font::add_floating_label(flabel);
 }
@@ -1367,6 +1390,7 @@ void display::clear_fps_label()
 		fps_handle_ = 0;
 		drawn_hexes_ = 0;
 		invalidated_hexes_ = 0;
+		last_frame_finished_.reset();
 	}
 }
 
@@ -1510,24 +1534,23 @@ void display::set_diagnostic(const std::string& msg)
 
 void display::update_fps_count()
 {
-	static int time_between_draws = prefs::get().draw_delay();
-	if(time_between_draws < 0) {
-		time_between_draws = 1000 / video::current_refresh_rate();
+	using std::chrono::duration_cast;
+	using std::chrono::steady_clock;
+
+	auto now = steady_clock::now();
+	if(last_frame_finished_) {
+		frametimes_.push_back(duration_cast<std::chrono::milliseconds>(now - *last_frame_finished_));
 	}
 
-	frametimes_.push_back(SDL_GetTicks() - last_frame_finished_);
-	fps_counter_++;
-	using std::chrono::duration_cast;
-	using std::chrono::seconds;
-	using std::chrono::steady_clock;
-	const seconds current_second = duration_cast<seconds>(steady_clock::now().time_since_epoch());
+	last_frame_finished_ = now;
+	++fps_counter_;
+
+	const auto current_second = duration_cast<std::chrono::seconds>(now.time_since_epoch());
 	if(current_second != fps_start_) {
 		fps_start_ = current_second;
 		fps_actual_ = fps_counter_;
 		fps_counter_ = 0;
 	}
-
-	last_frame_finished_ = SDL_GetTicks();
 }
 
 const theme::action* display::action_pressed()
@@ -2323,7 +2346,7 @@ void display::queue_rerender()
 		}
 	}
 
-	if (!gui::in_dialog()) {
+	if(!gui2::is_in_dialog()) {
 		labels().recalculate_labels();
 	}
 
@@ -2386,8 +2409,8 @@ void display::draw()
 	}
 
 	if(prefs::get().show_fps() || debug_flag_set(DEBUG_BENCHMARK)) {
-		update_fps_label();
 		update_fps_count();
+		update_fps_label();
 	} else if(fps_handle_ != 0) {
 		clear_fps_label();
 	}
@@ -2826,10 +2849,8 @@ void display::draw_overlays_at(const map_location& loc)
 		}
 
 		if(dont_show_all_ && !ov.team_name.empty()) {
-			// dont_show_all_ imples that viewing_team() is a valid index to get_teams()
-			const std::string& current_team_name = viewing_team().team_name();
-			const std::vector<std::string>& current_team_names = utils::split(current_team_name);
-			const std::vector<std::string>& team_names = utils::split(ov.team_name);
+			const auto current_team_names = utils::split_view(viewing_team().team_name());
+			const auto team_names = utils::split_view(ov.team_name);
 
 			bool item_visible_for_team = std::find_first_of(team_names.begin(), team_names.end(),
 				current_team_names.begin(), current_team_names.end()) != team_names.end();

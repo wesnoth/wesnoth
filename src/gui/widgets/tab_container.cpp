@@ -42,6 +42,8 @@ REGISTER_WIDGET(tab_container)
 tab_container::tab_container(const implementation::builder_tab_container& builder)
 	: container_base(builder, type())
 	, state_(ENABLED)
+	, builders_(builder.builders)
+	, list_items_(builder.list_items)
 {
 }
 
@@ -177,9 +179,6 @@ std::unique_ptr<widget> builder_tab_container::build() const
 	assert(conf);
 
 	widget->init_grid(*conf->grid);
-
-	widget->set_items(list_items);
-	widget->set_builders(builders);
 
 	auto generator = generator_base::build(true, true, generator_base::independent, false);
 	widget->finalize(std::move(generator));

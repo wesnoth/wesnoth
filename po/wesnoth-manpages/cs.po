@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-07-21 22:31-0500\n"
+"POT-Creation-Date: 2024-09-17 21:19-0500\n"
 "PO-Revision-Date: 2024-07-27 09:44+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -280,8 +280,9 @@ msgstr "nedovolit zastaralá volání Lua API."
 
 #. type: TP
 #: doc/man/wesnoth.6:89
-#, no-wrap
-msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
+#, fuzzy, no-wrap
+#| msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
+msgid "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
 msgstr "B<-D, --diff>I<\\ levý-soubor>B<\\ >I<pravý-soubor>"
 
 #. type: Plain text
@@ -752,8 +753,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:240
-#, no-wrap
-msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+#, fuzzy, no-wrap
+#| msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+msgid "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
 msgstr "B<-P,--patch>I<\\ výchozí-soubor>B<\\ >I<soubor-se-záplatou>"
 
 #. type: Plain text
@@ -1043,13 +1045,16 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:347
-#, no-wrap
-msgid "B<-S,--use-schema>I<\\ path>"
+#, fuzzy, no-wrap
+#| msgid "B<-S,--use-schema>I<\\ path>"
+msgid "B<-S,\\ --use-schema>I<\\ path>"
 msgstr "B<-S, --use-schema>I<\\ cesta>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:351
-msgid "sets the WML schema for use with B<-V,--validate>."
+#, fuzzy
+#| msgid "sets the WML schema for use with B<-V,--validate>."
+msgid "sets the WML schema for use with B<-V,\\ --validate>."
 msgstr "nastaví WML schéma pro použití s volbou B<-V, --validate>."
 
 # type: TP
@@ -1139,8 +1144,9 @@ msgstr "ověřuje WML jádra, zatímco hraješ."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:377
-#, no-wrap
-msgid "B<--validate-schema \\ path>"
+#, fuzzy, no-wrap
+#| msgid "B<--validate-schema \\ path>"
+msgid "B<--validate-schema>I<\\ path>"
 msgstr "B<--validate-schema>I<\\ cesta>"
 
 #. type: Plain text
@@ -2158,10 +2164,10 @@ msgid ""
 "30 minutes."
 msgstr ""
 "Definice doby trvání. Formát je %d[%s[%d%s[...]]] kde %s je \"s\" (sekundy), "
-"\"m\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo \"Y\" "
-"(roky) a %d je číslo. Pokud není zadán druh délky, jsou předpokládány minuty "
-"(m). Například B<time=\"1D12H30m\"> představuje zákaz pro jeden den, 12 "
-"hodin a 30 minut."
+"\"m\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo "
+"\"Y\" (roky) a %d je číslo. Pokud není zadán druh délky, jsou předpokládány "
+"minuty (m). Například B<time=\"1D12H30m\"> představuje zákaz pro jeden den, "
+"12 hodin a 30 minut."
 
 # type: Plain text
 #. type: Plain text

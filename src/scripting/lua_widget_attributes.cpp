@@ -39,6 +39,7 @@
 #include "scripting/lua_unit_type.hpp"
 #include "scripting/push_check.hpp"
 #include "scripting/lua_widget.hpp"
+#include "scripting/lua_attributes.hpp"
 #include "scripting/lua_widget_attributes.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -138,20 +139,6 @@ static tgetters getters;
 using tsetters = std::map<std::string, std::vector<std::function<bool(lua_State*, int, gui2::widget&, bool)>>>;
 static tsetters setters;
 
-template<typename widget_type, typename value_type>
-struct widget_getter
-{
-	virtual value_type get(lua_State* L, widget_type& w) const = 0;
-	virtual ~widget_getter() = default;
-};
-
-template<typename widget_type, typename value_type>
-struct widget_setter
-{
-	virtual void set(lua_State* L, widget_type& w, const value_type& value) const = 0;
-	virtual ~widget_setter() = default;
-};
-
 template<typename widget_type, typename value_type, typename action_type, bool setter>
 void register_widget_attribute(const char* name)
 {
@@ -186,8 +173,8 @@ void register_widget_attribute(const char* name)
 }
 
 #define WIDGET_GETTER4(name, value_type, widgt_type, id) \
-struct BOOST_PP_CAT(getter_, id) : public widget_getter<widgt_type, value_type> { \
-	value_type get(lua_State* L, widgt_type& w) const override; \
+struct BOOST_PP_CAT(getter_, id) : public lua_getter<widgt_type, value_type> { \
+	value_type get(lua_State* L, const widgt_type& w) const override; \
 }; \
 struct BOOST_PP_CAT(getter_adder_, id) { \
 	BOOST_PP_CAT(getter_adder_, id) () \
@@ -196,11 +183,11 @@ struct BOOST_PP_CAT(getter_adder_, id) { \
 	} \
 }; \
 static BOOST_PP_CAT(getter_adder_, id) BOOST_PP_CAT(getter_adder_instance_, id) ; \
-value_type BOOST_PP_CAT(getter_, id)::get([[maybe_unused]] lua_State* L, widgt_type& w) const
+value_type BOOST_PP_CAT(getter_, id)::get([[maybe_unused]] lua_State* L, const widgt_type& w) const
 
 
 #define WIDGET_SETTER4(name, value_type, widgt_type, id) \
-struct BOOST_PP_CAT(setter_, id) : public widget_setter<widgt_type, value_type> { \
+struct BOOST_PP_CAT(setter_, id) : public lua_setter<widgt_type, value_type> { \
 	void set(lua_State* L, widgt_type& w, const value_type& value) const override; \
 }; \
 struct BOOST_PP_CAT(setter_adder_, id) { \
@@ -546,13 +533,13 @@ WIDGET_GETTER("label", t_string, gui2::styled_widget)
 
 WIDGET_GETTER("type", std::string, gui2::widget)
 {
-	if(gui2::styled_widget* sw = dynamic_cast<gui2::styled_widget*>(&w)) {
+	if(const gui2::styled_widget* sw = dynamic_cast<const gui2::styled_widget*>(&w)) {
 		return sw->get_control_type();
 	}
-	else if(dynamic_cast<gui2::tree_view_node*>(&w)) {
+	else if(dynamic_cast<const gui2::tree_view_node*>(&w)) {
 		return "tree_view_node";
 	}
-	else if(dynamic_cast<gui2::grid*>(&w)) {
+	else if(dynamic_cast<const gui2::grid*>(&w)) {
 		return "grid";
 	}
 	else {
@@ -651,7 +638,9 @@ int impl_widget_get(lua_State* L)
 		return 1;
 	}
 	ERR_LUA << "invalid property of '" <<  typeid(w).name()<< "' widget :" << str;
-	return luaL_argerror(L, 2, "invalid property of widget");
+	std::string err = "invalid property of widget: ";
+	err += str;
+	return luaL_argerror(L, 2, err.c_str());
 }
 
 int impl_widget_set(lua_State* L)
@@ -674,7 +663,9 @@ int impl_widget_set(lua_State* L)
 
 	}
 	ERR_LUA << "invalid modifiable property of '" <<  typeid(w).name()<< "' widget:" << str;
-	return luaL_argerror(L, 2, "invalid modifiable property of widget");
+	std::string err = "invalid modifiable property of widget: ";
+	err += str;
+	return luaL_argerror(L, 2, err.c_str());
 }
 
 int impl_widget_dir(lua_State* L)

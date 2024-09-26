@@ -91,7 +91,7 @@ habilita algunos mecanismos de depuración de Lua
 \fB\-\-strict\-lua\fP
 deshabilita llamadas obsoletas de Lua API
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 compara los dos archivos WML; no los preprocesa primero (para hacerlo,
 ejecutelos antes mediante \fB\-p\fP). Genera la comparación como DiffWML por la
 salida estándar o en el archivo indicado por \fI\-\-output\fP.
@@ -217,7 +217,7 @@ Wesnoth. Similar a \fB\-\-script\fP, pero el fichero Lua debería devolver una
 función que se ejecutará como una corutina que se activará periódicamente
 con actualizaciones.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 aplica un arreglo DiffWML a un archivo WML; no preprocesa ninguno de los
 archivos. Extrae el WML arreglado por la salida estándar o al archivo
 indicado por \fI\-\-output\fP.
@@ -305,8 +305,8 @@ modo podrán cargar paquetes arbitrarios. ¡No lo haga con scripts no
 confiables! Esta acción da a los lua los mismos permisos que el ejecutable
 de wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ path\fP
-configura el patrón WML para su uso con \fB\-V,\-\-validate\fP.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ nombre\fP
 establece el directorio de datos del usuario como \fInombre\fP en $HOME o "Mis
@@ -332,7 +332,7 @@ valida el WML del complemento dado mientras se está jugando.
 \fB\-\-validate\-core\fP
 valida el núcleo WML mientras se está jugando.
 .TP 
-\fB\-\-validate\-schema \ path\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 valida un archivo como un patrón WML.
 .TP 
 \fB\-\-validcache\fP
