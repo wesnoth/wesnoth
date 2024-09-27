@@ -118,9 +118,9 @@ variant attack_type_callable::get_value(const std::string& key) const
 	} else if(key == "specials" || key == "special") {
 		std::vector<variant> res;
 
-		for(const auto special : att_->specials().all_children_range()) {
-			if(!special.cfg["id"].empty()) {
-				res.emplace_back(special.cfg["id"].str());
+		for(const auto [_, special_cfg] : att_->specials().all_children_range()) {
+			if(!special_cfg["id"].empty()) {
+				res.emplace_back(special_cfg["id"].str());
 			}
 		}
 		return variant(res);
@@ -549,18 +549,18 @@ variant config_callable::get_value(const std::string& key) const
 		return variant(result);
 	} else if(key == "__all_children") {
 		std::vector<variant> result;
-		for(const auto child : cfg_.all_children_range()) {
-			const variant cfg_child(std::make_shared<config_callable>(child.cfg));
-			const variant kv(std::make_shared<key_value_pair>(variant(child.key), cfg_child));
+		for(const auto [child_key, child_cfg] : cfg_.all_children_range()) {
+			const variant cfg_child(std::make_shared<config_callable>(child_cfg));
+			const variant kv(std::make_shared<key_value_pair>(variant(child_key), cfg_child));
 			result.push_back(kv);
 		}
 
 		return variant(result);
 	} else if(key == "__children") {
 		std::map<std::string, std::vector<variant>> build;
-		for(const auto child : cfg_.all_children_range()) {
-			const variant cfg_child(std::make_shared<config_callable>(child.cfg));
-			build[child.key].push_back(cfg_child);
+		for(const auto [child_key, child_cfg] : cfg_.all_children_range()) {
+			const variant cfg_child(std::make_shared<config_callable>(child_cfg));
+			build[child_key].push_back(cfg_child);
 		}
 
 		std::map<variant,variant> result;

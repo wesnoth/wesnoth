@@ -302,10 +302,10 @@ namespace {
 
 	void get_ability_children_id(std::vector<ability_match>& id_result,
 	                           const config& parent, const std::string& id) {
-		for (const config::any_child sp : parent.all_children_range())
+		for (const auto [key, cfg] : parent.all_children_range())
 		{
-			if(sp.cfg["id"] == id) {
-				ability_match special = { sp.key, &sp.cfg };
+			if(cfg["id"] == id) {
+				ability_match special = { key, &cfg };
 				id_result.push_back(special);
 			}
 		}
@@ -732,9 +732,9 @@ void unit_filter_compound::fill(vconfig cfg)
 
 					/* Check if the filter only cares about variables.
 					   If so, no need to serialize the whole unit. */
-					config::all_children_itors ci = fwml.all_children_range();
-					if (fwml.all_children_count() == 1 && fwml.attribute_count() == 1 && ci.front().key == "variables") {
-						return args.u.variables().matches(ci.front().cfg);
+					auto [child_key, child_cfg] = fwml.all_children_range().front();
+					if(fwml.all_children_count() == 1 && fwml.attribute_count() == 1 && child_key == "variables") {
+						return args.u.variables().matches(child_cfg);
 					} else {
 						config ucfg;
 						args.u.write(ucfg);
@@ -776,8 +776,8 @@ void unit_filter_compound::fill(vconfig cfg)
 			}
 			else if (child.first == "experimental_filter_ability") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
-					for(const config::any_child ab : args.u.abilities().all_children_range()) {
-						if(args.u.ability_matches_filter(ab.cfg, ab.key, c.get_parsed_config())) {
+					for(const auto [key, cfg] : args.u.abilities().all_children_range()) {
+						if(args.u.ability_matches_filter(cfg, key, c.get_parsed_config())) {
 							return true;
 						}
 					}
@@ -790,9 +790,9 @@ void unit_filter_compound::fill(vconfig cfg)
 						return false;
 					}
 					const unit_map& units = display::get_singleton()->get_units();
-					for(const config::any_child ab : args.u.abilities().all_children_range()) {
-						if(args.u.ability_matches_filter(ab.cfg, ab.key, c.get_parsed_config())) {
-							if (args.u.get_self_ability_bool(ab.cfg, ab.key, args.loc)) {
+					for(const auto [key, cfg] : args.u.abilities().all_children_range()) {
+						if(args.u.ability_matches_filter(cfg, key, c.get_parsed_config())) {
+							if (args.u.get_self_ability_bool(cfg, key, args.loc)) {
 								return true;
 							}
 						}
@@ -806,9 +806,9 @@ void unit_filter_compound::fill(vconfig cfg)
 						if (&*it == (args.u.shared_from_this()).get())
 							continue;
 
-						for(const config::any_child ab : it->abilities().all_children_range()) {
-							if(it->ability_matches_filter(ab.cfg, ab.key, c.get_parsed_config())) {
-								if (args.u.get_adj_ability_bool(ab.cfg, ab.key, i, args.loc, *it)) {
+						for(const auto [key, cfg] : it->abilities().all_children_range()) {
+							if(it->ability_matches_filter(cfg, key, c.get_parsed_config())) {
+								if (args.u.get_adj_ability_bool(cfg, key, i, args.loc, *it)) {
 									return true;
 								}
 							}

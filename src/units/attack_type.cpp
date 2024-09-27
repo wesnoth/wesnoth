@@ -350,19 +350,19 @@ bool attack_type::matches_filter(const config& filter, const std::string& check_
 	bool matches = matches_simple_filter(*this, filter, check_if_recursion);
 
 	// Handle [and], [or], and [not] with in-order precedence
-	for (const config::any_child condition : filter.all_children_range() )
+	for(const auto [key, condition_cfg] : filter.all_children_range() )
 	{
 		// Handle [and]
-		if ( condition.key == "and" )
-			matches = matches && matches_filter(condition.cfg, check_if_recursion);
+		if ( key == "and" )
+			matches = matches && matches_filter(condition_cfg, check_if_recursion);
 
 		// Handle [or]
-		else if ( condition.key == "or" )
-			matches = matches || matches_filter(condition.cfg, check_if_recursion);
+		else if ( key == "or" )
+			matches = matches || matches_filter(condition_cfg, check_if_recursion);
 
 		// Handle [not]
-		else if ( condition.key == "not" )
-			matches = matches && !matches_filter(condition.cfg, check_if_recursion);
+		else if ( key == "not" )
+			matches = matches && !matches_filter(condition_cfg, check_if_recursion);
 	}
 
 	return matches;
@@ -436,11 +436,11 @@ bool attack_type::apply_modification(const config& cfg)
 	if(del_specials.empty() == false) {
 		const std::vector<std::string>& dsl = utils::split(del_specials);
 		config new_specials;
-		for (const config::any_child vp : specials_.all_children_range()) {
+		for(const auto [key, cfg] : specials_.all_children_range()) {
 			std::vector<std::string>::const_iterator found_id =
-				std::find(dsl.begin(), dsl.end(), vp.cfg["id"].str());
+				std::find(dsl.begin(), dsl.end(), cfg["id"].str());
 			if (found_id == dsl.end()) {
-				new_specials.add_child(vp.key, vp.cfg);
+				new_specials.add_child(key, cfg);
 			}
 		}
 		specials_ = new_specials;
@@ -456,8 +456,8 @@ bool attack_type::apply_modification(const config& cfg)
 		if(mode != "append") {
 			specials_.clear();
 		}
-		for(const config::any_child value : set_specials->all_children_range()) {
-			specials_.add_child(value.key, value.cfg);
+		for(const auto [key, cfg] : set_specials->all_children_range()) {
+			specials_.add_child(key, cfg);
 		}
 	}
 

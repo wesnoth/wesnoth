@@ -83,9 +83,9 @@ void manager::add_event_handler_from_wml(const config& handler, game_lua_kernel&
 			}
 			args[attr] = val;
 		}
-		for(auto child : handler.all_children_range()) {
-			if(child.key.compare(0, 6, "filter") != 0) {
-				args.add_child(child.key, child.cfg);
+		for(auto [key, cfg] : handler.all_children_range()) {
+			if(key.compare(0, 6, "filter") != 0) {
+				args.add_child(key, cfg);
 			}
 		}
 		new_handler->set_arguments(args);

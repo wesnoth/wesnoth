@@ -271,14 +271,14 @@ void prefs::load_preferences()
 			}
 		}
 
-		for(const auto child : synced_prefs.all_children_range()) {
-			if(std::find(synced_children_.begin(), synced_children_.end(), child.key) == synced_children_.end()) {
-				unknown_synced_children_.insert(child.key);
+		for(const auto [key, _] : synced_prefs.all_children_range()) {
+			if(std::find(synced_children_.begin(), synced_children_.end(), key) == synced_children_.end()) {
+				unknown_synced_children_.insert(key);
 			}
 		}
-		for(const auto child : unsynced_prefs.all_children_range()) {
-			if(std::find(unsynced_children_.begin(), unsynced_children_.end(), child.key) == unsynced_children_.end()) {
-				unknown_unsynced_children_.insert(child.key);
+		for(const auto [key, _] : unsynced_prefs.all_children_range()) {
+			if(std::find(unsynced_children_.begin(), unsynced_children_.end(), key) == unsynced_children_.end()) {
+				unknown_unsynced_children_.insert(key);
 			}
 		}
 	} catch(const config::error& e) {
@@ -324,9 +324,9 @@ void prefs::load_preferences()
 						message = foobar
 					[/line]
 		*/
-		for(const config::any_child h : history->all_children_range()) {
-			for(const config& l : h.cfg.child_range("line")) {
-				history_map_[h.key].push_back(l["message"]);
+		for(const auto [key, cfg] : history->all_children_range()) {
+			for(const config& l : cfg.child_range("line")) {
+				history_map_[key].push_back(l["message"]);
 			}
 		}
 	}

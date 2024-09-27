@@ -300,8 +300,8 @@ void unit_type::build_help_index(
 	}
 
 	if(auto abil_cfg = cfg.optional_child("abilities")) {
-		for(const config::any_child ab : abil_cfg->all_children_range()) {
-			abilities_.emplace_back(ab.cfg);
+		for(const auto [key, cfg] : abil_cfg->all_children_range()) {
+			abilities_.emplace_back(cfg);
 		}
 	}
 
@@ -313,8 +313,8 @@ void unit_type::build_help_index(
 				continue;
 			}
 
-			for(const config::any_child ab : abil_cfg->all_children_range()) {
-				adv_abilities_.emplace_back(ab.cfg);
+			for(const auto [key, cfg] : abil_cfg->all_children_range()) {
+				adv_abilities_.emplace_back(cfg);
 			}
 		}
 	}
@@ -510,15 +510,15 @@ std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, 
 	for(const auto& note : direct) {
 		append_special_note(notes, note);
 	}
-	for(const config::any_child ability : abilities.all_children_range()) {
-		if(ability.cfg.has_attribute("special_note")) {
-			append_special_note(notes, ability.cfg["special_note"].t_str());
+	for(const auto [key, cfg] : abilities.all_children_range()) {
+		if(cfg.has_attribute("special_note")) {
+			append_special_note(notes, cfg["special_note"].t_str());
 		}
 	}
 	for(const auto& attack : attacks) {
-		for(const config::any_child ability : attack.specials().all_children_range()) {
-			if(ability.cfg.has_attribute("special_note")) {
-				append_special_note(notes, ability.cfg["special_note"].t_str());
+		for(const auto [key, cfg] : attack.specials().all_children_range()) {
+			if(cfg.has_attribute("special_note")) {
+				append_special_note(notes, cfg["special_note"].t_str());
 			}
 		}
 		if(auto attack_type_note = string_table.find("special_note_damage_type_" + attack.type()); attack_type_note != string_table.end()) {
@@ -591,8 +591,8 @@ int unit_type::experience_needed(bool with_acceleration) const
 bool unit_type::has_ability_by_id(const std::string& ability) const
 {
 	if(auto abil = get_cfg().optional_child("abilities")) {
-		for(const config::any_child ab : abil->all_children_range()) {
-			if(ab.cfg["id"] == ability) {
+		for(const auto [key, cfg] : abil->all_children_range()) {
+			if(cfg["id"] == ability) {
 				return true;
 			}
 		}
@@ -610,8 +610,8 @@ std::vector<std::string> unit_type::get_ability_list() const
 		return res;
 	}
 
-	for(const config::any_child ab : abilities->all_children_range()) {
-		std::string id = ab.cfg["id"];
+	for(const auto [key, cfg] : abilities->all_children_range()) {
+		std::string id = cfg["id"];
 
 		if(!id.empty()) {
 			res.push_back(std::move(id));

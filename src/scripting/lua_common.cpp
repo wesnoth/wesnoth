@@ -657,13 +657,13 @@ void luaW_filltable(lua_State *L, const config& cfg)
 		return;
 
 	int k = 1;
-	for (const config::any_child ch : cfg.all_children_range())
+	for(const auto [child_key, child_cfg] : cfg.all_children_range())
 	{
 		luaW_push_namedtuple(L, {"tag", "contents"});
-		lua_pushstring(L, ch.key.c_str());
+		lua_pushstring(L, child_key.c_str());
 		lua_rawseti(L, -2, 1);
 		lua_newtable(L);
-		luaW_filltable(L, ch.cfg);
+		luaW_filltable(L, child_cfg);
 		lua_rawseti(L, -2, 2);
 		lua_rawseti(L, -2, k++);
 	}
