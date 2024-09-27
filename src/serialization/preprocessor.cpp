@@ -1126,7 +1126,7 @@ bool preprocessor_data::get_chunk()
 		++linenum_;
 	}
 
-	if(c == INLINED_PREPROCESS_DIRECTIVE_CHAR) {
+	if(c == static_cast<char>(INLINED_PREPROCESS_DIRECTIVE_CHAR)) {
 		std::string buffer(1, c);
 
 		while(true) {
