@@ -173,7 +173,7 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 	}
 }
 
-wfl::variant formula_ai::make_action(wfl::const_formula_ptr formula_, const wfl::formula_callable& variables)
+wfl::variant formula_ai::make_action(const wfl::const_formula_ptr& formula_, const wfl::formula_callable& variables)
 {
 	if (!formula_) {
 		throw formula_error("null formula passed to make_action","","formula",0);
@@ -655,13 +655,13 @@ void formula_ai::on_create(){
 
 }
 
-void formula_ai::evaluate_candidate_action(ca_ptr fai_ca)
+void formula_ai::evaluate_candidate_action(const ca_ptr& fai_ca)
 {
 	fai_ca->evaluate(this,resources::gameboard->units());
 
 }
 
-bool formula_ai::execute_candidate_action(ca_ptr fai_ca)
+bool formula_ai::execute_candidate_action(const ca_ptr& fai_ca)
 {
 	map_formula_callable callable(fake_ptr());
 	fai_ca->update_callable_map( callable );

@@ -756,7 +756,7 @@ void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)
 	}
 }
 
-void game_config_manager::set_enabled_addon(std::set<std::string> addon_ids)
+void game_config_manager::set_enabled_addon(const std::set<std::string>& addon_ids)
 {
 	auto& vec = game_config_view_.data();
 	vec.clear();

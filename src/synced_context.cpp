@@ -47,7 +47,7 @@ bool synced_context::run(const std::string& commandname,
 	const config& data,
 	bool use_undo,
 	bool show,
-	synced_command::error_handler_function error_handler)
+	const synced_command::error_handler_function& error_handler)
 {
 	DBG_REPLAY << "run_in_synced_context:" << commandname;
 
@@ -88,7 +88,7 @@ bool synced_context::run_and_store(const std::string& commandname,
 	const config& data,
 	bool use_undo,
 	bool show,
-	synced_command::error_handler_function error_handler)
+	const synced_command::error_handler_function& error_handler)
 {
 	if(resources::controller->is_replay()) {
 		ERR_REPLAY << "ignored attempt to invoke a synced command during replay";
@@ -109,7 +109,7 @@ bool synced_context::run_and_throw(const std::string& commandname,
 	const config& data,
 	bool use_undo,
 	bool show,
-	synced_command::error_handler_function error_handler)
+	const synced_command::error_handler_function& error_handler)
 {
 	bool success = run_and_store(commandname, data, use_undo, show, error_handler);
 	if(success) {
@@ -123,7 +123,7 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 	const config& data,
 	bool use_undo,
 	bool show,
-	synced_command::error_handler_function error_handler)
+	const synced_command::error_handler_function& error_handler)
 {
 	switch(synced_context::get_synced_state()) {
 	case(synced_context::UNSYNCED): {

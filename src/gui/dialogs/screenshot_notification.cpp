@@ -33,6 +33,7 @@
 
 #include <functional>
 #include <stdexcept>
+#include <utility>
 
 namespace gui2::dialogs
 {
@@ -43,7 +44,7 @@ screenshot_notification::screenshot_notification(const std::string& path, surfac
 	: modal_dialog(window_id())
 	, path_(path)
 	, screenshots_dir_path_(filesystem::get_screenshot_dir())
-	, screenshot_(screenshot)
+	, screenshot_(std::move(screenshot))
 {
 }
 

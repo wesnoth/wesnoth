@@ -16,8 +16,9 @@
 #include "log.hpp"
 #include "utils/general.hpp"
 
-#include <functional>
 #include <cassert>
+#include <functional>
+#include <utility>
 
 
 static lg::log_domain log_network("network");
@@ -128,7 +129,7 @@ bool playturn_network_adapter::read(config& dst)
 }
 
 playturn_network_adapter::playturn_network_adapter(source_type source)
-	: network_reader_(source)
+	: network_reader_(std::move(source))
 	, data_({config()})
 	, data_front_()
 	, next_(data_.front().ordered_end())
@@ -151,7 +152,7 @@ playturn_network_adapter::~playturn_network_adapter()
 
 void playturn_network_adapter::set_source(source_type source)
 {
-	network_reader_ = source;
+	network_reader_ = std::move(source);
 }
 
 

@@ -34,6 +34,7 @@
 #include "units/unit.hpp"
 
 #include <iomanip>
+#include <utility>
 
 namespace gui2::dialogs
 {
@@ -46,8 +47,8 @@ const unsigned int attack_predictions::graph_max_rows = 10;
 
 attack_predictions::attack_predictions(battle_context& bc, unit_const_ptr attacker, unit_const_ptr defender)
 	: modal_dialog(window_id())
-	, attacker_data_(attacker, bc.get_attacker_combatant(), bc.get_attacker_stats())
-	, defender_data_(defender, bc.get_defender_combatant(), bc.get_defender_stats())
+	, attacker_data_(std::move(attacker), bc.get_attacker_combatant(), bc.get_attacker_stats())
+	, defender_data_(std::move(defender), bc.get_defender_combatant(), bc.get_defender_stats())
 {
 }
 

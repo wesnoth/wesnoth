@@ -74,7 +74,7 @@ public:
 	/** Cycle to the next brush. */
 	void cycle_brush();
 
-	void set_brush(std::string id);
+	void set_brush(const std::string& id);
 
 	bool is_active_brush(std::string id) const { return brush_->id() == id; }
 

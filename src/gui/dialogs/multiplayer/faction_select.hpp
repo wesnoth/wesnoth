@@ -55,7 +55,7 @@ private:
 
 	void profile_button_callback();
 
-	void on_gender_select(const std::string val);
+	void on_gender_select(const std::string& val);
 
 	void update_leader_image();
 };

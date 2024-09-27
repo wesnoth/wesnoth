@@ -45,7 +45,7 @@ REGISTER_WIDGET3(listbox_definition, grid_listbox, nullptr)
 
 listbox::listbox(const implementation::builder_styled_widget& builder,
 		const generator_base::placement placement,
-		builder_grid_ptr list_builder)
+		const builder_grid_ptr& list_builder)
 	: scrollbar_container(builder, type())
 	, generator_(nullptr)
 	, is_horizontal_(placement == generator_base::horizontal_list)
@@ -518,8 +518,8 @@ void listbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 }
 
 void listbox::finalize(std::unique_ptr<generator_base> generator,
-		builder_grid_const_ptr header,
-		builder_grid_const_ptr footer,
+		const builder_grid_const_ptr& header,
+		const builder_grid_const_ptr& footer,
 		const std::vector<widget_data>& list_data)
 {
 	// "Inherited."
@@ -609,7 +609,7 @@ void listbox::set_column_order(unsigned col, const generator_sort_array& func)
 	orders_[col].second = func;
 }
 
-void listbox::register_translatable_sorting_option(const int col, translatable_sorter_func_t f)
+void listbox::register_translatable_sorting_option(const int col, const translatable_sorter_func_t& f)
 {
 	set_column_order(col, {{
 		[f](int lhs, int rhs) { return translation::icompare(f(lhs), f(rhs)) < 0; },

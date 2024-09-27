@@ -161,7 +161,7 @@ private:
 	using results_type = resolver::results_type;
 	using endpoint = const boost::asio::ip::tcp::endpoint&;
 
-	void handle_resolve(const boost::system::error_code& ec, results_type results);
+	void handle_resolve(const boost::system::error_code& ec, const results_type& results);
 	void handle_connect(const boost::system::error_code& ec, endpoint endpoint);
 
 	void handshake();

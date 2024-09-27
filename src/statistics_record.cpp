@@ -50,7 +50,7 @@ static void write_str_int_map(config_writer& out, const stats_t::str_int_map& m)
 	using reverse_map = std::multimap<int, std::string>;
 	reverse_map rev;
 	std::transform(m.begin(), m.end(), std::inserter(rev, rev.begin()),
-		[](const stats_t::str_int_map::value_type p) { return std::pair(p.second, p.first); });
+		[](const stats_t::str_int_map::value_type& p) { return std::pair(p.second, p.first); });
 	reverse_map::const_iterator i = rev.begin(), j;
 	while(i != rev.end()) {
 		j = rev.upper_bound(i->first);

@@ -844,7 +844,7 @@ void editor_edit_unit::load_movetype() {
 	tabs.select_tab(prev_tab);
 }
 
-void editor_edit_unit::write_macro(std::ostream& out, unsigned level, const std::string macro_name)
+void editor_edit_unit::write_macro(std::ostream& out, unsigned level, const std::string& macro_name)
 {
 	for(unsigned i = 0; i < level; i++)
 	{
@@ -1006,7 +1006,7 @@ void editor_edit_unit::update_image(const std::string& id_stem) {
 	queue_redraw();
 }
 
-bool editor_edit_unit::check_id(std::string id) {
+bool editor_edit_unit::check_id(const std::string& id) {
 	for(char c : id) {
 		if (!(std::isalnum(c) || c == '_' || c == ' ')) {
 			// One bad char means entire id string is invalid

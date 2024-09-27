@@ -59,6 +59,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <set>
+#include <utility>
 
 // Copied from boost::predef, as it's there only since 1.55.
 #if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
@@ -807,7 +808,7 @@ bool rename_dir(const std::string& old_dir, const std::string& new_dir)
 
 static void set_cache_path(bfs::path newcache)
 {
-	cache_dir = newcache;
+	cache_dir = std::move(newcache);
 	if(!create_directory_if_missing_recursive(cache_dir)) {
 		ERR_FS << "could not open or create cache directory at " << cache_dir.string() << '\n';
 	}
@@ -1395,7 +1396,7 @@ std::string normalize_path(const std::string& fpath, bool normalize_separators, 
 	}
 }
 
-bool to_asset_path(std::string& path, std::string addon_id, std::string asset_type)
+bool to_asset_path(std::string& path, const std::string& addon_id, const std::string& asset_type)
 {
 	std::string rel_path = "";
 	std::string core_asset_dir = get_dir(game_config::path + "/data/core/" + asset_type);

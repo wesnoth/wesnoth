@@ -98,7 +98,7 @@ public:
 	 * @param filename
 	 * @param yield The function will suspend on write operations using this yield context
 	 */
-	void coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield);
+	void coro_send_file(const socket_ptr& socket, const std::string& filename, const boost::asio::yield_context& yield);
 	void coro_send_file(tls_socket_ptr socket, const std::string& filename, boost::asio::yield_context yield);
 	/**
 	 * Receive WML document from a coroutine
@@ -159,7 +159,7 @@ protected:
 	void load_tls_config(const config& cfg);
 
 	void start_server();
-	void serve(boost::asio::yield_context yield, boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint);
+	void serve(const boost::asio::yield_context& yield, boost::asio::ip::tcp::acceptor& acceptor, const boost::asio::ip::tcp::endpoint& endpoint);
 
 	uint32_t handshake_response_;
 

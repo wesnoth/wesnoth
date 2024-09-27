@@ -369,7 +369,7 @@ std::multimap<std::string, config> side_engine::get_side_children()
 	return children;
 }
 
-void side_engine::set_side_children(std::multimap<std::string, config> children)
+void side_engine::set_side_children(const std::multimap<std::string, config>& children)
 {
 	for(const std::string& children_to_remove : children_to_swap) {
 		cfg_.clear_children(children_to_remove);

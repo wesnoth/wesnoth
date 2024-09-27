@@ -136,7 +136,7 @@ void log_settings::post_show()
 	}
 }
 
-void log_settings::set_logger(const std::string log_domain)
+void log_settings::set_logger(const std::string& log_domain)
 {
 	std::string active_value = groups_[log_domain].get_active_member_value();
 

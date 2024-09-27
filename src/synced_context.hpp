@@ -57,19 +57,19 @@ public:
 		const config& data,
 		bool use_undo = true,
 		bool show = true,
-		synced_command::error_handler_function error_handler = default_error_function);
+		const synced_command::error_handler_function& error_handler = default_error_function);
 
 	static bool run_and_store(const std::string& commandname,
 		const config& data,
 		bool use_undo = true,
 		bool show = true,
-		synced_command::error_handler_function error_handler = default_error_function);
+		const synced_command::error_handler_function& error_handler = default_error_function);
 
 	static bool run_and_throw(const std::string& commandname,
 		const config& data,
 		bool use_undo = true,
 		bool show = true,
-		synced_command::error_handler_function error_handler = default_error_function);
+		const synced_command::error_handler_function& error_handler = default_error_function);
 
 	/**
 	 * Checks whether we are currently running in a synced context, and if not we enters it.
@@ -79,7 +79,7 @@ public:
 		const config& data,
 		bool use_undo = true,
 		bool show = true,
-		synced_command::error_handler_function error_handler = default_error_function);
+		const synced_command::error_handler_function& error_handler = default_error_function);
 
 	/**
 	 * @return Whether we are currently executing a synced action like recruit, start, recall, disband, movement,

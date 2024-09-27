@@ -34,7 +34,7 @@ static lg::log_domain log_formula_ai("ai/engine/fai");
 
 namespace ai {
 
-ai_context& get_ai_context(wfl::const_formula_callable_ptr for_fai) {
+ai_context& get_ai_context(const wfl::const_formula_callable_ptr& for_fai) {
 	auto fai = std::dynamic_pointer_cast<const formula_ai>(for_fai);
 	assert(fai != nullptr);
 	return *std::const_pointer_cast<formula_ai>(fai)->ai_ptr_;

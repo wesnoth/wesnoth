@@ -283,7 +283,7 @@ bool game_board::team_is_defeated(const team& t) const
 	}
 }
 
-bool game_board::try_add_unit_to_recall_list(const map_location&, const unit_ptr u)
+bool game_board::try_add_unit_to_recall_list(const map_location&, const unit_ptr& u)
 {
 	get_team(u->side()).recall_list().add(u);
 	return true;

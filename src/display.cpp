@@ -153,7 +153,7 @@ display::display(const display_context* dc,
 		const config& level)
 	: dc_(dc)
 	, halo_man_()
-	, wb_(wb)
+	, wb_(std::move(wb))
 	, exclusive_unit_draw_requests_()
 	, viewing_team_index_(0)
 	, dont_show_all_(false)
@@ -2370,7 +2370,7 @@ void display::queue_repaint()
 	draw_manager::invalidate_all();
 }
 
-void display::add_redraw_observer(std::function<void(display&)> f)
+void display::add_redraw_observer(const std::function<void(display&)>& f)
 {
 	redraw_observers_.push_back(f);
 }

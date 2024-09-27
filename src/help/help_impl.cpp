@@ -48,12 +48,13 @@
 #include "serialization/unicode.hpp"    // for iterator
 #include "color.hpp"
 
+#include <algorithm>                    // for sort, find, transform, etc
 #include <boost/algorithm/string.hpp>
 #include <cassert>                     // for assert
-#include <algorithm>                    // for sort, find, transform, etc
 #include <iterator>                     // for back_insert_iterator, etc
 #include <map>                          // for map, etc
 #include <set>
+#include <utility>
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
@@ -379,7 +380,7 @@ std::string generate_topic_text(const std::string &generator, const config *help
 
 topic_text& topic_text::operator=(std::shared_ptr<topic_generator> g)
 {
-	generator_ = g;
+	generator_ = std::move(g);
 	return *this;
 }
 

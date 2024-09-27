@@ -94,7 +94,7 @@ public:
 	 *
 	 * @param states   A mask specifying which options to select and deselect
 	 */
-	void select_options(boost::dynamic_bitset<> states);
+	void select_options(const boost::dynamic_bitset<>& states);
 
 	/**
 	 * Set the available menu options.

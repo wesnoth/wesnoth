@@ -98,7 +98,7 @@ void tab_container::finalize_listbox() {
 	get_internal_list().connect_signal<event::NOTIFY_MODIFIED>(std::bind(&tab_container::change_selection, this));
 };
 
-void tab_container::add_tab_entry(const widget_data row)
+void tab_container::add_tab_entry(const widget_data& row)
 {
 	listbox& list = get_internal_list();
 	list.add_row(row);

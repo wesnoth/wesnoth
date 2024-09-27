@@ -145,7 +145,7 @@ void undo_list::add_dummy()
 /**
  * Adds a dismissal to the undo stack.
  */
-void undo_list::add_dismissal(const unit_const_ptr u)
+void undo_list::add_dismissal(const unit_const_ptr& u)
 {
 	add(new undo::dismiss_action(u));
 }
@@ -153,7 +153,7 @@ void undo_list::add_dismissal(const unit_const_ptr u)
 /**
  * Adds a move to the undo stack.
  */
-void undo_list::add_move(const unit_const_ptr u,
+void undo_list::add_move(const unit_const_ptr& u,
                          const std::vector<map_location>::const_iterator & begin,
                          const std::vector<map_location>::const_iterator & end,
                          int start_moves, int timebonus, int village_owner,
@@ -165,7 +165,7 @@ void undo_list::add_move(const unit_const_ptr u,
 /**
  * Adds a recall to the undo stack.
  */
-void undo_list::add_recall(const unit_const_ptr u, const map_location& loc,
+void undo_list::add_recall(const unit_const_ptr& u, const map_location& loc,
                            const map_location& from, int orig_village_owner, bool time_bonus)
 {
 	add(new undo::recall_action(u, loc, from, orig_village_owner, time_bonus));
@@ -174,7 +174,7 @@ void undo_list::add_recall(const unit_const_ptr u, const map_location& loc,
 /**
  * Adds a recruit to the undo stack.
  */
-void undo_list::add_recruit(const unit_const_ptr u, const map_location& loc,
+void undo_list::add_recruit(const unit_const_ptr& u, const map_location& loc,
                             const map_location& from, int orig_village_owner, bool time_bonus)
 {
 	add(new undo::recruit_action(u, loc, from, orig_village_owner, time_bonus));

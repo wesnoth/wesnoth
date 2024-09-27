@@ -171,6 +171,7 @@ option(GLIBCXX_ASSERTIONS "Whether to define _GLIBCXX_ASSERTIONS" OFF)
 option(GLIBCXX_DEBUG "Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC. Requires a version of Boost's program_options that's compiled with __GLIBCXX_DEBUG too." OFF)
 option(ENABLE_POT_UPDATE_TARGET "Enables the tools to update the pot files and manuals. This target has extra dependencies." OFF)
 option(FORCE_COLOR_OUTPUT "Always produce ANSI-colored output (GNU/Clang only)." FALSE)
+option(CLANG_TIDY "Enable clang-tidy linter checks." OFF)
 
 if(UNIX AND NOT APPLE AND NOT CYGWIN)
 	option(ENABLE_NOTIFICATIONS "Enable Window manager notification messages" ON)
@@ -253,6 +254,11 @@ if(NOT MSVC)
 		elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 			set(COMPILER_FLAGS "${COMPILER_FLAGS} -fcolor-diagnostics")
 		endif()
+	endif()
+
+### Enable clang-tidy linting
+	if (CLANG_TIDY)
+		set(CMAKE_CXX_CLANG_TIDY clang-tidy)
 	endif()
 
 ### Set the final compiler flags.

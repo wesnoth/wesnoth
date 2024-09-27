@@ -78,7 +78,7 @@ public:
 
 	~loading_screen();
 
-	static void display(std::function<void()> f);
+	static void display(const std::function<void()>& f);
 	static bool displaying() { return singleton_ != nullptr; }
 
 	/**

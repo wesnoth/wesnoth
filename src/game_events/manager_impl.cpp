@@ -75,7 +75,7 @@ std::string event_handlers::standardize_name(const std::string& name)
 	return retval;
 }
 
-bool event_handlers::cmp(const handler_ptr lhs, const handler_ptr rhs)
+bool event_handlers::cmp(const handler_ptr& lhs, const handler_ptr& rhs)
 {
 	return lhs->priority() < rhs->priority();
 }
@@ -129,7 +129,7 @@ pending_event_handler event_handlers::add_event_handler(const std::string& name,
 	return {*this, handler};
 }
 
-void event_handlers::finish_adding_event_handler(handler_ptr handler)
+void event_handlers::finish_adding_event_handler(const handler_ptr& handler)
 {
 	// Someone decided to register an empty event... bail.
 	if(handler->empty()) {
@@ -205,7 +205,7 @@ void event_handlers::clean_up_expired_handlers(const std::string& event_name)
 {
 	// First, remove all disabled handlers from the main list.
 	auto to_remove = std::remove_if(active_.begin(), active_.end(),
-		[](handler_ptr p) { return p->disabled(); }
+		[](const handler_ptr& p) { return p->disabled(); }
 	);
 
 	active_.erase(to_remove, active_.end());
@@ -214,13 +214,13 @@ void event_handlers::clean_up_expired_handlers(const std::string& event_name)
 	// Might be more than one so we split.
 	for(const std::string& name : utils::split(event_name)) {
 		get(name).remove_if(
-			[](weak_handler_ptr ptr) { return ptr.expired(); }
+			[](const weak_handler_ptr& ptr) { return ptr.expired(); }
 		);
 	}
 
 	// And finally remove any now-unlockable weak_ptrs from the with-variables name list.
 	dynamic_.remove_if(
-		[](weak_handler_ptr ptr) { return ptr.expired(); }
+		[](const weak_handler_ptr& ptr) { return ptr.expired(); }
 	);
 }
 

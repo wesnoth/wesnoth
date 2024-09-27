@@ -40,9 +40,10 @@
 #include <boost/asio/read_until.hpp>
 #endif
 
+#include <iostream>
 #include <queue>
 #include <string>
-#include <iostream>
+#include <utility>
 
 
 static lg::log_domain log_server("server");
@@ -74,10 +75,10 @@ server_base::server_base(unsigned short port, bool keep_alive)
 void server_base::start_server()
 {
 	boost::asio::ip::tcp::endpoint endpoint_v6(boost::asio::ip::tcp::v6(), port_);
-	boost::asio::spawn(io_service_, [this, endpoint_v6](boost::asio::yield_context yield) { serve(yield, acceptor_v6_, endpoint_v6); });
+	boost::asio::spawn(io_service_, [this, endpoint_v6](const boost::asio::yield_context& yield) { serve(yield, acceptor_v6_, endpoint_v6); });
 
 	boost::asio::ip::tcp::endpoint endpoint_v4(boost::asio::ip::tcp::v4(), port_);
-	boost::asio::spawn(io_service_, [this, endpoint_v4](boost::asio::yield_context yield) { serve(yield, acceptor_v4_, endpoint_v4); });
+	boost::asio::spawn(io_service_, [this, endpoint_v4](const boost::asio::yield_context& yield) { serve(yield, acceptor_v4_, endpoint_v4); });
 
 	handshake_response_ = htonl(42);
 
@@ -88,7 +89,7 @@ void server_base::start_server()
 #endif
 }
 
-void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint)
+void server_base::serve(const boost::asio::yield_context& yield, boost::asio::ip::tcp::acceptor& acceptor, const boost::asio::ip::tcp::endpoint& endpoint)
 {
 	try {
 		if(!acceptor.is_open()) {
@@ -115,7 +116,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 	}
 
 	if(accepting_connections()) {
-		boost::asio::spawn(io_service_, [this, &acceptor, endpoint](boost::asio::yield_context yield) { serve(yield, acceptor, endpoint); });
+		boost::asio::spawn(io_service_, [this, &acceptor, endpoint](const boost::asio::yield_context& yield) { serve(yield, acceptor, endpoint); });
 	} else {
 		return;
 	}
@@ -353,10 +354,10 @@ void server_base::coro_send_file(tls_socket_ptr socket, const std::string& filen
 {
 	// We fallback to userspace if using TLS socket because sendfile is not aware of TLS state
 	// TODO: keep in mind possibility of using KTLS instead. This seem to be available only in openssl3 branch for now
-	coro_send_file_userspace(socket, filename, yield);
+	coro_send_file_userspace(std::move(socket), filename, std::move(yield));
 }
 
-void server_base::coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
+void server_base::coro_send_file(const socket_ptr& socket, const std::string& filename, const boost::asio::yield_context& yield)
 {
 	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
 	int in_file { open(filename.c_str(), O_RDONLY) };

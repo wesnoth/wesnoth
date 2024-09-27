@@ -134,7 +134,7 @@ private:
 };
 
 /** Dumps an move on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &s, move_ptr move);
-std::ostream &operator<<(std::ostream &s, move_const_ptr move);
+std::ostream &operator<<(std::ostream &s, const move_ptr& move);
+std::ostream &operator<<(std::ostream &s, const move_const_ptr& move);
 
 } // end namespace wb

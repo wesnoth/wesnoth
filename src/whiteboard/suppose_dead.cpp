@@ -32,13 +32,13 @@
 namespace wb
 {
 
-std::ostream& operator<<(std::ostream &s, suppose_dead_ptr sup_d)
+std::ostream& operator<<(std::ostream &s, const suppose_dead_ptr& sup_d)
 {
 	assert(sup_d);
 	return sup_d->print(s);
 }
 
-std::ostream& operator<<(std::ostream &s, suppose_dead_const_ptr sup_d)
+std::ostream& operator<<(std::ostream &s, const suppose_dead_const_ptr& sup_d)
 {
 	assert(sup_d);
 	return sup_d->print(s);

@@ -280,7 +280,7 @@ void play_controller::init(const config& level)
 		plugins_context_->set_callback("save_game", [this](const config& cfg) { save_game_auto(cfg["filename"]); }, true);
 		plugins_context_->set_callback("save_replay", [this](const config& cfg) { save_replay_auto(cfg["filename"]); }, true);
 		plugins_context_->set_callback("quit", [](const config&) { throw_quit_game_exception(); }, false);
-		plugins_context_->set_accessor_string("scenario_name", [this](config) { return get_scenario_name(); });
+		plugins_context_->set_accessor_string("scenario_name", [this](const config&) { return get_scenario_name(); });
 	});
 }
 

@@ -106,7 +106,7 @@ private:
 	/** Get the listbox inside which the tabs are shown */
 	listbox& get_internal_list();
 
-	void add_tab_entry(const widget_data row);
+	void add_tab_entry(const widget_data& row);
 
 	void change_selection();
 

@@ -50,6 +50,7 @@
 #include <ctime>
 #include <iomanip>
 #include <iostream>
+#include <utility>
 
 // the fork execute is unix specific only tested on Linux quite sure it won't
 // work on Windows not sure which other platforms have a problem with it.
@@ -489,14 +490,14 @@ std::ostream& operator<<(std::ostream& o, const server::request& r)
 void server::handle_new_client(tls_socket_ptr socket)
 {
 	boost::asio::spawn(io_service_, [this, socket](boost::asio::yield_context yield) {
-		serve_requests(socket, yield);
+		serve_requests(socket, std::move(yield));
 	});
 }
 
 void server::handle_new_client(socket_ptr socket)
 {
 	boost::asio::spawn(io_service_, [this, socket](boost::asio::yield_context yield) {
-		serve_requests(socket, yield);
+		serve_requests(socket, std::move(yield));
 	});
 }
 
