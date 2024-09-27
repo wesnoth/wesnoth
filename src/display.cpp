@@ -2632,9 +2632,7 @@ void display::draw_invalidated()
 	}
 
 	for(const map_location& loc : invalidated_) {
-		const auto [xpos, ypos] = get_location(loc);
-
-		rect hex_rect(xpos, ypos, zoom_, zoom_);
+		rect hex_rect = get_location_rect(loc);
 		if(!hex_rect.overlaps(clip_rect)) {
 			continue;
 		}

@@ -266,19 +266,17 @@ void unit_drawer::redraw_unit(const unit& u) const
 	const auto [xsrc, ysrc] = disp.get_location(loc);
 	const auto [xdst, ydst] = disp.get_location(dst);
 
+	// FIXME: double check whether the shift amount accounts for zoom level
+	rect unit_rect = disp.get_location_rect(loc).shifted_by(0, adjusted_params.y);
+
 	// We draw bars only if wanted, visible on the map view
-	bool draw_bars = ac.draw_bars_ ;
-	if (draw_bars) {
-		rect unit_rect {xsrc, ysrc +adjusted_params.y, hex_size, hex_size};
-		draw_bars = unit_rect.overlaps(disp.map_outside_area());
-	}
+	if(ac.draw_bars_ && unit_rect.overlaps(disp.map_outside_area())) {
 
-	// Always show the ellipse for selected units
-	if(draw_bars && (prefs::get().show_side_colors() || is_selected_hex)) {
-		draw_ellipses(u, adjusted_params);
-	}
+		// Always show the ellipse for selected units
+		if(prefs::get().show_side_colors() || is_selected_hex) {
+			draw_ellipses(u, adjusted_params);
+		}
 
-	if(draw_bars) {
 		const auto& type_cfg = u.type().get_cfg();
 		const auto& cfg_offset_x = type_cfg["bar_offset_x"];
 		const auto& cfg_offset_y = type_cfg["bar_offset_y"];
