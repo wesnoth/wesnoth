@@ -76,6 +76,8 @@ public:
 
 	void update_label() override;
 
+	menu_item& add_row(config row, const int index) override;
+
 private:
 	unsigned max_shown_;
 

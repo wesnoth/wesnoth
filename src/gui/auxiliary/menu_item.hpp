@@ -53,7 +53,7 @@ public:
 	/** Canonical value for the selected item */
 	std::string value;
 
-	widget* get_parent()
+	widget* get_parent() const
 	{
 		return parent_;
 	}

@@ -280,11 +280,6 @@ menu_item& options_button::add_row(config row, const int index)
 		assert(index >= -1); // this looks odd, but sends right message to user
 	}
 
-	if((get_control_type() == "multimenu_button") &&
-			(!row.has_attribute("checkbox"))) {
-		row["checkbox"] = "false";
-	}
-
 	queue_redraw();
 	toggle_states_.resize(toggle_states_.size() + 1, false);
 

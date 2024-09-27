@@ -207,11 +207,6 @@ namespace
 		return lb.get_item_count();
 	}
 
-	int number_of_items(gui2::menu_button & mb)
-	{
-		return mb.get_item_count();
-	}
-
 	int number_of_items(gui2::multi_page& mp)
 	{
 		return mp.get_page_count();
@@ -291,12 +286,6 @@ static int intf_remove_dialog_item(lua_State* L)
 	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(w)) {
 		int realpos = check_index(L, 2, *tree_view_node, false, pos);
 		remove_treeview_node(*tree_view_node, realpos, number);
-	} else if(gui2::menu_button* menu_button = dynamic_cast<gui2::menu_button*>(w)) {
-		int realpos = check_index(L, 2, *menu_button, false, pos);
-		menu_button->remove_rows(realpos, number);
-	} else if(gui2::multimenu_button* multimenu_button = dynamic_cast<gui2::multimenu_button*>(w)) {
-		int realpos = check_index(L, 2, *multimenu_button, false, pos);
-		multimenu_button->remove_rows(realpos, number);
 	} else if(gui2::options_button* options_button = dynamic_cast<gui2::options_button*>(w)) {
 		int realpos = check_index(L, 2, *options_button, false, pos);
 		options_button->remove_rows(realpos, number);
@@ -460,26 +449,6 @@ static int intf_add_dialog_item(lua_State* L)
 		res = &lb->add_row(data, realpos);
 		if(res) {
 			luaW_pushwidget(L, *res);
-			lua_push(L, insert_pos.value());
-			return 2;
-		}
-	} else if(gui2::menu_button* mb = dynamic_cast<gui2::menu_button*>(w)) {
-		int realpos = check_index(L, 2, *mb, true, insert_pos);
-		gui2::menu_item* res = nullptr;
-		const config c;
-		res = &mb->add_row(c, realpos);
-		if(res) {
-			luaW_pushmenuitem(L, *res);
-			lua_push(L, insert_pos.value());
-			return 2;
-		}
-	} else if(gui2::multimenu_button* mb = dynamic_cast<gui2::multimenu_button*>(w)) {
-		int realpos = check_index(L, 2, *mb, true, insert_pos);
-		gui2::menu_item* res = nullptr;
-		const config c;
-		res = &mb->add_row(c, realpos);
-		if(res) {
-			luaW_pushmenuitem(L, *res);
 			lua_push(L, insert_pos.value());
 			return 2;
 		}

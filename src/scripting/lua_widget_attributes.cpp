@@ -95,24 +95,6 @@ static void push_child_by_index(lua_State *L, gui2::widget& w, int i)
 			throw std::invalid_argument("out of range");
 		}
 		luaW_pushwidget(L, *stacked_widget->get_layer_grid(i - 1));
-	} else if(gui2::menu_button* menu_button = dynamic_cast<gui2::menu_button*>(&w)) {
-		int n = menu_button->get_item_count();
-		if(i > n) {
-			config c;
-			for(; n < i; ++n) {
-				menu_button->add_row(c);
-			}
-		}
-		luaW_pushmenuitem(L, *menu_button->get_row(i - 1));
-	} else if(gui2::multimenu_button* multimenu_button = dynamic_cast<gui2::multimenu_button*>(&w)) {
-		int n = multimenu_button->get_item_count();
-		if(i > n) {
-			config c;
-			for(; n < i; ++n) {
-				multimenu_button->add_row(c);
-			}
-		}
-		luaW_pushmenuitem(L, *multimenu_button->get_row(i - 1));
 	} else if(gui2::options_button* options_button = dynamic_cast<gui2::options_button*>(&w)) {
 		int n = options_button->get_item_count();
 		if(i > n) {
@@ -222,16 +204,6 @@ WIDGET_SETTER("value_compat,selected_index", int, gui2::listbox)
 	w.select_row(value - 1);
 }
 
-WIDGET_GETTER("item_count", int, gui2::menu_button)
-{
-	return w.get_item_count();
-}
-
-WIDGET_SETTER("item_count", int, gui2::menu_button)
-{
-	luaL_error(L, "attempt to modify read-only attribute 'item_count'");
-}
-
 WIDGET_SETTER("label", std::string, gui2::menu_button)
 {
 	luaL_error(L, "attempt to modify read-only attribute 'label'");
@@ -250,16 +222,6 @@ WIDGET_GETTER("value", std::string, gui2::menu_button)
 WIDGET_SETTER("value", std::string, gui2::menu_button)
 {
 	luaL_error(L, "attempt to modify read-only attribute 'value'");
-}
-
-WIDGET_GETTER("item_count", int, gui2::multimenu_button)
-{
-	return w.get_item_count();
-}
-
-WIDGET_SETTER("item_count", int, gui2::multimenu_button)
-{
-	luaL_error(L, "attempt to modify read-only attribute 'item_count'");
 }
 
 WIDGET_SETTER("label", std::string, gui2::multimenu_button)

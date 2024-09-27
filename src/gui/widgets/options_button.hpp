@@ -52,7 +52,7 @@ public:
 	virtual void set_values(const std::vector<::config>& values, unsigned selected = 0);
 	virtual void set_values(const boost::container::stable_vector<menu_item>& values, unsigned selected = 0);
 
-	menu_item& add_row(config row, const int index = -1);
+	virtual menu_item& add_row(config row, const int index = -1);
 
 	menu_item* get_row(const int index);
 

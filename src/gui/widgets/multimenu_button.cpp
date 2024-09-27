@@ -91,6 +91,16 @@ void multimenu_button::select_options(boost::dynamic_bitset<> states)
 	update_label();
 }
 
+menu_item& multimenu_button::add_row(config row, const int index)
+{
+	if(!row.has_attribute("checkbox")){
+		row["checkbox"] = "false";
+	}
+
+	return options_button::add_row(row, index);
+}
+
+
 // }---------- DEFINITION ---------{
 
 multimenu_button_definition::multimenu_button_definition(const config& cfg)
@@ -123,7 +133,7 @@ builder_multimenu_button::builder_multimenu_button(const config& cfg)
 {
 	for(auto option : cfg.child_range("option")) {
 		if(!option.has_attribute("checkbox")) {
-			WRN_GUI_G << "Missing checkbox attribute for multimenu_button menu_item, adding with value=false.";
+			LOG_GUI_G << "Missing checkbox attribute for multimenu_button menu_item, adding with value=false.";
 			option["checkbox"] = "false";
 		}
 		options_.push_back(option);
