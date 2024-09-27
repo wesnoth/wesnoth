@@ -333,12 +333,12 @@ variant unit_callable::get_value(const std::string& key) const
 			needs_flip = true;
 		}
 		std::map<variant, variant> res;
-		for(const auto& p : cfg.attribute_range()) {
-			int val = p.second;
+		for(const auto& [key, value] : cfg.attribute_range()) {
+			int val = value.to_int();
 			if(needs_flip) {
 				val = 100 - val;
 			}
-			res.emplace(variant(p.first), variant(val));
+			res.emplace(variant(key), variant(val));
 		}
 
 		return variant(res);
@@ -571,8 +571,8 @@ variant config_callable::get_value(const std::string& key) const
 		return variant(result);
 	} else if(key == "__attributes") {
 		std::map<variant,variant> result;
-		for(const auto& val : cfg_.attribute_range()) {
-			result[variant(val.first)] = val.second.apply_visitor(fai_variant_visitor());
+		for(const auto& [key, value] : cfg_.attribute_range()) {
+			result[variant(key)] = value.apply_visitor(fai_variant_visitor());
 		}
 
 		return variant(result);
@@ -587,9 +587,9 @@ void config_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "__children");
 	add_input(inputs, "__attributes");
 
-	for(const auto& val : cfg_.attribute_range()) {
-		if(val.first.find_first_not_of(formula::id_chars) != std::string::npos) {
-			add_input(inputs, val.first);
+	for(const auto& [key, _] : cfg_.attribute_range()) {
+		if(key.find_first_not_of(formula::id_chars) != std::string::npos) {
+			add_input(inputs, key);
 		}
 	}
 }

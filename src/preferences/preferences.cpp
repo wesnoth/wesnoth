@@ -260,14 +260,14 @@ void prefs::load_preferences()
 		preferences_.merge_with(synced_prefs);
 
 		// check for any unknown preferences
-		for(const auto& attr : synced_prefs.attribute_range()) {
-			if(std::find(synced_attributes_.begin(), synced_attributes_.end(), attr.first) == synced_attributes_.end()) {
-				unknown_synced_attributes_.insert(attr.first);
+		for(const auto& [key, _] : synced_prefs.attribute_range()) {
+			if(std::find(synced_attributes_.begin(), synced_attributes_.end(), key) == synced_attributes_.end()) {
+				unknown_synced_attributes_.insert(key);
 			}
 		}
-		for(const auto& attr : unsynced_prefs.attribute_range()) {
-			if(std::find(unsynced_attributes_.begin(), unsynced_attributes_.end(), attr.first) == unsynced_attributes_.end()) {
-				unknown_unsynced_attributes_.insert(attr.first);
+		for(const auto& [key, _] : unsynced_prefs.attribute_range()) {
+			if(std::find(unsynced_attributes_.begin(), unsynced_attributes_.end(), key) == unsynced_attributes_.end()) {
+				unknown_unsynced_attributes_.insert(key);
 			}
 		}
 

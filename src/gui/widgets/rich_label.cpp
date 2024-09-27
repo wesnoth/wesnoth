@@ -598,10 +598,10 @@ std::pair<config, point> rich_label::get_parsed_text(
 				DBG_GUI_RL << "span/format: text=" << line;
 				DBG_GUI_RL << "attributes:";
 
-				for (const auto& attr : child.attribute_range()) {
-					if (attr.first != "text") {
-						add_attribute(*curr_item, attr.first, start, end, attr.second);
-						DBG_GUI_RL << attr.first << "=" << attr.second;
+				for (const auto& [key, value] : child.attribute_range()) {
+					if (key != "text") {
+						add_attribute(*curr_item, key, start, end, value);
+						DBG_GUI_RL << key << "=" << value;
 					}
 				}
 

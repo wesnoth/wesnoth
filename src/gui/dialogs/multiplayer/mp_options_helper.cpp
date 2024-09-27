@@ -325,8 +325,8 @@ config mp_options_helper::get_options_config()
 		// TODO: enable this as soon as we drop the old mp configure screen.
 		mod.add_child("options", options_data_[source.id]);
 #else
-		for(const auto& option : options_data_[source.id].attribute_range()) {
-			mod.add_child("option", config {"id", option.first, "value", option.second});
+		for(const auto& [key, value] : options_data_[source.id].attribute_range()) {
+			mod.add_child("option", config {"id", key, "value", value});
 		}
 #endif
 	}

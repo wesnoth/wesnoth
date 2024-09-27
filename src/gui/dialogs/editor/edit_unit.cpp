@@ -163,8 +163,8 @@ void editor_edit_unit::pre_show() {
 				.mandatory_child("units")
 				.mandatory_child("movetype")
 				.mandatory_child("defense");
-	for (const auto& attribute : defense_attr.attribute_range()) {
-		defense_list_.emplace_back("label", attribute.first);
+	for (const auto& [key, _] : defense_attr.attribute_range()) {
+		defense_list_.emplace_back("label", key);
 	}
 
 	menu_button& movement_costs = find_widget<menu_button>("movement_costs_list");
@@ -181,8 +181,8 @@ void editor_edit_unit::pre_show() {
 				.mandatory_child("units")
 				.mandatory_child("movetype")
 				.mandatory_child("resistance");
-	for (const auto& attribute : resistances_attr.attribute_range()) {
-		resistances_list_.emplace_back("label", attribute.first, "icon", "icons/profiles/" + attribute.first + ".png");
+	for (const auto& [key, _] : resistances_attr.attribute_range()) {
+		resistances_list_.emplace_back("label", key, "icon", "icons/profiles/" + key + ".png");
 	}
 
 	if (!resistances_list_.empty()) {
@@ -413,8 +413,8 @@ void editor_edit_unit::load_unit_type() {
 				break;
 			}
 
-			for (const auto& attr : type->get_cfg().mandatory_child("resistance").attribute_range()) {
-				if (resistances_list_.at(i)["label"] == attr.first) {
+			for (const auto& [key, _] : type->get_cfg().mandatory_child("resistance").attribute_range()) {
+				if (resistances_list_.at(i)["label"] == key) {
 					res_toggles_[i] = 1;
 				}
 			}
@@ -422,16 +422,16 @@ void editor_edit_unit::load_unit_type() {
 
 		for (unsigned i = 0; i < defense_list_.size(); i++) {
 			if (type->get_cfg().has_child("defense")) {
-				for (const auto& attr : type->get_cfg().mandatory_child("defense").attribute_range()) {
-					if (defense_list_.at(i)["label"] == attr.first) {
+				for (const auto& [key, _] : type->get_cfg().mandatory_child("defense").attribute_range()) {
+					if (defense_list_.at(i)["label"] == key) {
 						def_toggles_[i] = 1;
 					}
 				}
 			}
 
 			if (type->get_cfg().has_child("movement_costs")) {
-				for (const auto& attr : type->get_cfg().mandatory_child("movement_costs").attribute_range()) {
-					if (defense_list_.at(i)["label"] == attr.first) {
+				for (const auto& [key, _] : type->get_cfg().mandatory_child("movement_costs").attribute_range()) {
+					if (defense_list_.at(i)["label"] == key) {
 						move_toggles_[i] = 1;
 					}
 				}
@@ -530,9 +530,9 @@ void editor_edit_unit::save_unit_type() {
 	if (res_toggles_.any()) {
 		config& resistances = utype.add_child("resistance");
 		int i = 0;
-		for (const auto& attr : resistances_.attribute_range()) {
+		for (const auto& [key, _] : resistances_.attribute_range()) {
 			if (res_toggles_[i]) {
-				resistances[attr.first] = resistances_[attr.first];
+				resistances[key] = resistances_[key];
 			}
 			i++;
 		}
@@ -541,9 +541,9 @@ void editor_edit_unit::save_unit_type() {
 	if (def_toggles_.any()) {
 		config& defenses = utype.add_child("defense");
 		int i = 0;
-		for (const auto& attr : defenses_.attribute_range()) {
+		for (const auto& [key, _] : defenses_.attribute_range()) {
 			if (def_toggles_[i]) {
-				defenses[attr.first] = defenses_[attr.first];
+				defenses[key] = defenses_[key];
 			}
 			i++;
 		}
@@ -552,9 +552,9 @@ void editor_edit_unit::save_unit_type() {
 	if (move_toggles_.any()) {
 		config& movement_costs = utype.add_child("movement_costs");
 		int i = 0;
-		for (const auto& attr : movement_.attribute_range()) {
+		for (const auto& [key, _] : movement_.attribute_range()) {
 			if (move_toggles_[i]) {
-				movement_costs[attr.first] = movement_[attr.first];
+				movement_costs[key] = movement_[key];
 			}
 			i++;
 		}
@@ -878,8 +878,8 @@ void editor_edit_unit::update_wml_view() {
 		out.open_child("unit_type");
 
 		level++;
-		for (const auto& attr : type_cfg_.mandatory_child("unit_type").attribute_range()) {
-			::write_key_val(wml_stream, attr.first, attr.second, level, current_textdomain);
+		for (const auto& [key, value] : type_cfg_.mandatory_child("unit_type").attribute_range()) {
+			::write_key_val(wml_stream, key, value, level, current_textdomain);
 		}
 
 		// Abilities
@@ -898,9 +898,9 @@ void editor_edit_unit::update_wml_view() {
 			for (const auto& atk : attacks_) {
 				out.open_child("attack");
 				level++;
-				for (const auto& attr : atk.second.attribute_range()) {
-					if (!attr.second.empty()) {
-						::write_key_val(wml_stream, attr.first, attr.second, level, current_textdomain);
+				for (const auto& [key, value] : atk.second.attribute_range()) {
+					if (!value.empty()) {
+						::write_key_val(wml_stream, key, value, level, current_textdomain);
 					}
 				}
 
@@ -928,9 +928,9 @@ void editor_edit_unit::update_wml_view() {
 			out.open_child("movement_costs");
 			level++;
 			int i = 0;
-			for (const auto& attr : movement_.attribute_range()) {
+			for (const auto& [key, value] : movement_.attribute_range()) {
 				if (move_toggles_[i] == 1) {
-					::write_key_val(wml_stream, attr.first, attr.second, level, current_textdomain);
+					::write_key_val(wml_stream, key, value, level, current_textdomain);
 				}
 				i++;
 			}
@@ -943,9 +943,9 @@ void editor_edit_unit::update_wml_view() {
 			out.open_child("defense");
 			level++;
 			int i = 0;
-			for (const auto& attr : defenses_.attribute_range()) {
+			for (const auto& [key, value] : defenses_.attribute_range()) {
 				if (def_toggles_[i] == 1) {
-					::write_key_val(wml_stream, attr.first, attr.second, level, current_textdomain);
+					::write_key_val(wml_stream, key, value, level, current_textdomain);
 				}
 				i++;
 			}
@@ -958,9 +958,9 @@ void editor_edit_unit::update_wml_view() {
 			out.open_child("resistance");
 			level++;
 			int i = 0;
-			for (const auto& attr : resistances_.attribute_range()) {
+			for (const auto& [key, value] : resistances_.attribute_range()) {
 				if (res_toggles_[i] == 1) {
-					::write_key_val(wml_stream, attr.first, attr.second, level, current_textdomain);
+					::write_key_val(wml_stream, key, value, level, current_textdomain);
 				}
 				i++;
 			}

@@ -61,19 +61,17 @@ namespace {
 			for(const auto& filter : filtertext_)
 			{
 				bool found = false;
-				for(const auto& attribute : cfg.attribute_range())
+				for(const auto& [_, value] : cfg.attribute_range())
 				{
-					std::string val = attribute.second.str();
-					if(translation::ci_search(val, filter))
+					if(translation::ci_search(value.str(), filter))
 					{
 						found = true;
 						break;
 					}
 				}
 				for(const config& child : cfg.child_range("translation")) {
-					for(const auto& attribute : child.attribute_range()) {
-						std::string val = attribute.second.str();
-						if(translation::ci_search(val, filter)) {
+					for(const auto& [_, value] : child.attribute_range()) {
+						if(translation::ci_search(value.str(), filter)) {
 							found = true;
 							break;
 						}

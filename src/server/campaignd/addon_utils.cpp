@@ -66,12 +66,10 @@ std::string format_addon_feedback_url(const std::string& format, const config& p
 	if(!format.empty() && !params.empty()) {
 		plain_string_map escaped;
 
-		config::const_attr_itors attrs = params.attribute_range();
-
 		// Percent-encode parameter values for URL interpolation. This is
 		// VERY important since otherwise people could e.g. alter query
 		// strings from the format string.
-		for(const auto& [key, value] : attrs) {
+		for(const auto& [key, value] : params.attribute_range()) {
 			escaped[key] = utils::urlencode(value.str());
 		}
 

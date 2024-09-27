@@ -208,9 +208,9 @@ builder_multi_page::builder_multi_page(const config& cfg)
 		for(const auto & column : row.child_range("column"))
 		{
 			data.emplace_back();
-			for(const auto & i : column.attribute_range())
+			for(const auto& [key, value] : column.attribute_range())
 			{
-				data.back()[i.first] = i.second;
+				data.back()[key] = value;
 			}
 			++col;
 		}

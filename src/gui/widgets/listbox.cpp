@@ -727,15 +727,15 @@ static std::vector<widget_data> parse_list_data(const config& data, const unsign
 		for(const auto& c : cols) {
 			list_data.emplace_back();
 
-			for(const auto& i : c.attribute_range()) {
-				list_data.back()[""][i.first] = i.second;
+			for(const auto& [key, value] : c.attribute_range()) {
+				list_data.back()[""][key] = value;
 			}
 
 			for(const auto& w : c.child_range("widget")) {
 				VALIDATE(w.has_attribute("id"), missing_mandatory_wml_key("[list_data][row][column][widget]", "id"));
 
-				for(const auto& i : w.attribute_range()) {
-					list_data.back()[w["id"]][i.first] = i.second;
+				for(const auto& [key, value] : w.attribute_range()) {
+					list_data.back()[w["id"]][key] = value;
 				}
 			}
 		}
