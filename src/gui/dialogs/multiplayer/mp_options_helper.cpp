@@ -228,15 +228,11 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 			data.clear();
 			item.clear();
 
-			const auto add_name = [&](const std::string& id) {
-				item["label"] = option_cfg["name"];
-				data.emplace(id, item);
-			};
-
 			config::attribute_value val;
 
 			if(option_key == "checkbox") {
-				add_name("option_checkbox");
+				item["label"] = option_cfg["name"];
+				data.emplace("option_checkbox", item);
 
 				toggle_button* checkbox;
 				std::tie(checkbox, val) = add_node_and_get_widget<toggle_button>(option_node, "option_checkbox", data, option_cfg);
@@ -254,7 +250,8 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 					continue;
 				}
 
-				add_name("menu_button_label");
+				item["label"] = option_cfg["name"];
+				data.emplace("menu_button_label", item);
 
 				std::vector<config> combo_items;
 				std::vector<std::string> combo_values;
@@ -283,7 +280,8 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 					std::bind(&mp_options_helper::update_options_data_map_menu_button, this, menu, visible_options_.back(), option_cfg));
 
 			} else if(option_key == "slider") {
-				add_name("slider_label");
+				item["label"] = option_cfg["name"];
+				data.emplace("slider_label", item);
 
 				slider* slide;
 				std::tie(slide, val) = add_node_and_get_widget<slider>(option_node, "option_slider", data, option_cfg);
@@ -296,7 +294,8 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 					std::bind(&mp_options_helper::update_options_data_map<slider>, this, slide, visible_options_.back()));
 
 			} else if(option_key == "entry") {
-				add_name("text_entry_label");
+				item["label"] = option_cfg["name"];
+				data.emplace("text_entry_label", item);
 
 				text_box* textbox;
 				std::tie(textbox, val) = add_node_and_get_widget<text_box>(option_node, "option_text_entry", data, option_cfg);
