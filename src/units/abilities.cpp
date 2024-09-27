@@ -591,7 +591,7 @@ static void add_string_to_vector(std::vector<std::string>& image_list, const con
 	}
 }
 
-const std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_type) const
+std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_type) const
 {
 	std::vector<std::string> image_list;
 	for(const auto [key, cfg] : abilities_.all_children_range()){
