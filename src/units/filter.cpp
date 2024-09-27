@@ -732,9 +732,9 @@ void unit_filter_compound::fill(vconfig cfg)
 
 					/* Check if the filter only cares about variables.
 					   If so, no need to serialize the whole unit. */
-					auto [child_key, child_cfg] = fwml.all_children_range().front();
-					if(fwml.all_children_count() == 1 && fwml.attribute_count() == 1 && child_key == "variables") {
-						return args.u.variables().matches(child_cfg);
+					config::all_children_itors ci = fwml.all_children_range();
+					if (fwml.all_children_count() == 1 && fwml.attribute_count() == 1 && ci.front().key == "variables") {
+						return args.u.variables().matches(ci.front().cfg);
 					} else {
 						config ucfg;
 						args.u.write(ucfg);
