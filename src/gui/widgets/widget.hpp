@@ -745,7 +745,7 @@ public:
 	}
 
 	template <class T>
-	const NOT_DANGLING T* find_widget(
+	NOT_DANGLING const T* find_widget(
 		const std::string& id,
 		const bool must_be_active,
 		const bool must_exist) const
@@ -778,7 +778,7 @@ public:
 	}
 
 	template <class T>
-	const NOT_DANGLING T& find_widget(
+	NOT_DANGLING const T& find_widget(
 		const std::string& id,
 		const bool must_be_active = false) const
 	{
