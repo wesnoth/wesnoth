@@ -511,18 +511,17 @@ void variable_mode_controller::show_list(tree_view_node& node)
 
 	std::map<std::string, std::size_t> wml_array_sizes;
 
-	for(const auto ch : vars().all_children_range())
+	for(const auto [key, cfg] : vars().all_children_range())
 	{
-
 		std::ostringstream cur_str;
-		cur_str << "[" << ch.key << "][" << wml_array_sizes[ch.key] << "]";
+		cur_str << "[" << key << "][" << wml_array_sizes[key] << "]";
 
 		this->c.set_node_callback(
 			view().stuff_list_entry(&node, "basic")
 				.widget("name", cur_str.str())
 				.add(),
 			&variable_mode_controller::show_array);
-		wml_array_sizes[ch.key]++;
+		wml_array_sizes[key]++;
 	}
 }
 
@@ -660,18 +659,17 @@ void unit_mode_controller::show_unit(tree_view_node& node)
 
 	std::map<std::string, std::size_t> wml_array_sizes;
 
-	for(const auto ch : u->variables().all_children_range())
+	for(const auto [key, cfg] : u->variables().all_children_range())
 	{
-
 		std::ostringstream cur_str;
-		cur_str << "[" << ch.key << "][" << wml_array_sizes[ch.key] << "]";
+		cur_str << "[" << key << "][" << wml_array_sizes[key] << "]";
 
 		this->c.set_node_callback(
 			view().stuff_list_entry(&node, "basic")
 				.widget("name", cur_str.str())
 				.add(),
 			&unit_mode_controller::show_array);
-		wml_array_sizes[ch.key]++;
+		wml_array_sizes[key]++;
 	}
 }
 
@@ -865,11 +863,10 @@ void team_mode_controller::show_vars(tree_view_node& node, int side)
 
 	std::map<std::string, std::size_t> wml_array_sizes;
 
-	for(const auto ch : t.variables().all_children_range())
+	for(const auto [key, cfg] : t.variables().all_children_range())
 	{
-
 		std::ostringstream cur_str;
-		cur_str << "[" << ch.key << "][" << wml_array_sizes[ch.key] << "]";
+		cur_str << "[" << key << "][" << wml_array_sizes[key] << "]";
 
 		this->c.set_node_callback(
 			view().stuff_list_entry(&node, "basic")
@@ -877,7 +874,7 @@ void team_mode_controller::show_vars(tree_view_node& node, int side)
 				.add(),
 			&team_mode_controller::show_array,
 			side);
-		wml_array_sizes[ch.key]++;
+		wml_array_sizes[key]++;
 	}
 }
 

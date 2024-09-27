@@ -677,11 +677,8 @@ void canvas::parse_cfg(const config& cfg)
 {
 	log_scope2(log_gui_parse, "Canvas: parsing config.");
 
-	for(const auto shape : cfg.all_children_range())
+	for(const auto [type, data] : cfg.all_children_range())
 	{
-		const std::string& type = shape.key;
-		const config& data = shape.cfg;
-
 		DBG_GUI_P << "Canvas: found shape of the type " << type << ".";
 
 		if(type == "line") {
@@ -699,11 +696,10 @@ void canvas::parse_cfg(const config& cfg)
 		} else if(type == "pre_commit") {
 
 			/* note this should get split if more preprocessing is used. */
-			for(const auto function : data.all_children_range())
+			for(const auto [func_key, func_cfg] : data.all_children_range())
 			{
-
-				if(function.key == "blur") {
-					blur_depth_ = function.cfg["depth"];
+				if(func_key == "blur") {
+					blur_depth_ = func_cfg["depth"];
 				} else {
 					ERR_GUI_P << "Canvas: found a pre commit function"
 							  << " of an invalid type " << type << ".";

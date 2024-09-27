@@ -462,8 +462,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 			events_.add_child("event", unit_event);
 		}
 		for(const config& abilities : cfg.child_range("abilities")) {
-			for(const config::any_child child : abilities.all_children_range()) {
-				const config& ability = child.cfg;
+			for(const auto [key, ability] : abilities.all_children_range()) {
 				for(const config& ability_event : ability.child_range("event")) {
 					events_.add_child("event", ability_event);
 				}
@@ -471,8 +470,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		}
 		for(const config& attack : cfg.child_range("attack")) {
 			for(const config& specials : attack.child_range("specials")) {
-				for(const config::any_child child : specials.all_children_range()) {
-					const config& special = child.cfg;
+				for(const auto [key, special] : specials.all_children_range()) {
 					for(const config& special_event : special.child_range("event")) {
 						events_.add_child("event", special_event);
 					}
@@ -1082,8 +1080,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 			events.add_child("event", unit_event);
 		}
 		for(const config& abilities : cfg.child_range("abilities")) {
-			for(const config::any_child child : abilities.all_children_range()) {
-				const config& ability = child.cfg;
+			for(const auto [key, ability] : abilities.all_children_range()) {
 				for(const config& ability_event : ability.child_range("event")) {
 					events.add_child("event", ability_event);
 				}
@@ -1091,8 +1088,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 		}
 		for(const config& attack : cfg.child_range("attack")) {
 			for(const config& specials : attack.child_range("specials")) {
-				for(const config::any_child child : specials.all_children_range()) {
-					const config& special = child.cfg;
+				for(const auto [key, special] : specials.all_children_range()) {
 					for(const config& special_event : special.child_range("event")) {
 						events.add_child("event", special_event);
 					}
@@ -1465,8 +1461,8 @@ void unit::set_state(const std::string& state, bool value)
 
 bool unit::has_ability_by_id(const std::string& ability) const
 {
-	for(const config::any_child ab : abilities_.all_children_range()) {
-		if(ab.cfg["id"] == ability) {
+	for(const auto [key, cfg] : abilities_.all_children_range()) {
+		if(cfg["id"] == ability) {
 			return true;
 		}
 	}
@@ -2069,8 +2065,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		set_attr_changed(UA_ATTACKS);
 		attacks_.emplace_back(new attack_type(effect));
 		for(const config& specials : effect.child_range("specials")) {
-			for(const config::any_child child : specials.all_children_range()) {
-				const config& special = child.cfg;
+			for(const auto [key, special] : specials.all_children_range()) {
 				for(const config& special_event : special.child_range("event")) {
 					events.add_child("event", special_event);
 				}
@@ -2088,8 +2083,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		for(attack_ptr a : attacks_) {
 			a->apply_modification(effect);
 			for(const config& specials : effect.child_range("set_specials")) {
-				for(const config::any_child child : specials.all_children_range()) {
-					const config& special = child.cfg;
+				for(const auto [key, special] : specials.all_children_range()) {
 					for(const config& special_event : special.child_range("event")) {
 						events.add_child("event", special_event);
 					}
@@ -2251,10 +2245,10 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		if(auto ab_effect = effect.optional_child("abilities")) {
 			set_attr_changed(UA_ABILITIES);
 			config to_append;
-			for(const config::any_child ab : ab_effect->all_children_range()) {
-				if(!has_ability_by_id(ab.cfg["id"])) {
-					to_append.add_child(ab.key, ab.cfg);
-					for(const config& event : ab.cfg.child_range("event")) {
+			for(const auto [key, cfg] : ab_effect->all_children_range()) {
+				if(!has_ability_by_id(cfg["id"])) {
+					to_append.add_child(key, cfg);
+					for(const config& event : cfg.child_range("event")) {
 						events.add_child("event", event);
 					}
 				}
@@ -2263,8 +2257,8 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 	} else if(apply_to == "remove_ability") {
 		if(auto ab_effect = effect.optional_child("abilities")) {
-			for(const config::any_child ab : ab_effect->all_children_range()) {
-				remove_ability_by_id(ab.cfg["id"]);
+			for(const auto [key, cfg] : ab_effect->all_children_range()) {
+				remove_ability_by_id(cfg["id"]);
 			}
 		}
 		if(auto fab_effect = effect.optional_child("experimental_filter_ability")) {
@@ -2571,8 +2565,8 @@ void unit::apply_modifications()
 	if(modifications_.has_child("advance")) {
 		deprecated_message("[advance]", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use [advancement] instead.");
 	}
-	for (const config::any_child mod : modifications_.all_children_range()) {
-		add_modification(mod.key, mod.cfg, true);
+	for(const auto [key, cfg] : modifications_.all_children_range()) {
+		add_modification(key, cfg, true);
 	}
 }
 

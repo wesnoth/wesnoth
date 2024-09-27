@@ -5762,13 +5762,13 @@ void game_lua_kernel::load_game(const config& level)
 
 	lua_newtable(L);
 	int k = 1;
-	for (const config::any_child v : level.all_children_range())
+	for(const auto [child_key, child_cfg] : level.all_children_range())
 	{
-		if (is_handled_file_tag(v.key)) continue;
+		if (is_handled_file_tag(child_key)) continue;
 		lua_createtable(L, 2, 0);
-		lua_pushstring(L, v.key.c_str());
+		lua_pushstring(L, child_key.c_str());
 		lua_rawseti(L, -2, 1);
-		luaW_pushconfig(L, v.cfg);
+		luaW_pushconfig(L, child_cfg);
 		lua_rawseti(L, -2, 2);
 		lua_rawseti(L, -2, k++);
 	}

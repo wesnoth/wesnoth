@@ -226,8 +226,8 @@ static config expand_partialresolution(const config& theme)
 
 		// cannot add [status] sub-elements, but who cares
 		for(const auto& add : part.child_range("add")) {
-			for(const auto child : add.all_children_range()) {
-				resolution.add_child(child.key, child.cfg);
+			for(const auto [key, cfg] : add.all_children_range()) {
+				resolution.add_child(key, cfg);
 			}
 		}
 
@@ -240,9 +240,9 @@ static config expand_partialresolution(const config& theme)
 static void do_resolve_rects(const config& cfg, config& resolved_config, config* resol_cfg = nullptr)
 {
 	// recursively resolve children
-	for(const config::any_child value : cfg.all_children_range()) {
-		config& childcfg = resolved_config.add_child(value.key);
-		do_resolve_rects(value.cfg, childcfg, value.key == "resolution" ? &childcfg : resol_cfg);
+	for(const auto [child_key, child_cfg] : cfg.all_children_range()) {
+		config& dest = resolved_config.add_child(child_key);
+		do_resolve_rects(child_cfg, dest, child_key == "resolution" ? &dest : resol_cfg);
 	}
 
 	// copy all key/values
@@ -689,8 +689,8 @@ void theme::add_object(std::size_t sw, std::size_t sh, const config& cfg)
 	}
 
 	if(const auto status_cfg = cfg.optional_child("status")) {
-		for(const config::any_child i : status_cfg->all_children_range()) {
-			status_[i.key].reset(new status_item(sw, sh, i.cfg));
+		for(const auto [child_key, child_cfg] : status_cfg->all_children_range()) {
+			status_[child_key].reset(new status_item(sw, sh, child_cfg));
 		}
 		if(const auto unit_image_cfg = status_cfg->optional_child("unit_image")) {
 			unit_image_ = object(sw, sh, unit_image_cfg.value());

@@ -808,10 +808,10 @@ void schema_self_validator::validate(const config& cfg, const std::string& name,
 	} else if(name == "tag") {
 		bool first_tag = true, first_key = true;
 		std::vector<std::string> tag_names, key_names;
-		for(auto current : cfg.all_children_range()) {
-			if(current.key == "tag" || current.key == "link") {
-				std::string tag_name = current.cfg["name"];
-				if(current.key == "link") {
+		for(const auto [current_key, current_cfg] : cfg.all_children_range()) {
+			if(current_key == "tag" || current_key == "link") {
+				std::string tag_name = current_cfg["name"];
+				if(current_key == "link") {
 					tag_name.erase(0, tag_name.find_last_of('/') + 1);
 				}
 				if(first_tag) {
@@ -819,15 +819,15 @@ void schema_self_validator::validate(const config& cfg, const std::string& name,
 					first_tag = false;
 					continue;
 				}
-				check_for_duplicates(tag_name, tag_names, current.cfg, DUPLICATE_TAG, file, start_line, current.key);
-			} else if(current.key == "key") {
-				std::string key_name = current.cfg["name"];
+				check_for_duplicates(tag_name, tag_names, current_cfg, DUPLICATE_TAG, file, start_line, current_key);
+			} else if(current_key == "key") {
+				std::string key_name = current_cfg["name"];
 				if(first_key) {
 					key_names.push_back(key_name);
 					first_key = false;
 					continue;
 				}
-				check_for_duplicates(key_name, key_names, current.cfg, DUPLICATE_KEY, file, start_line, current.key);
+				check_for_duplicates(key_name, key_names, current_cfg, DUPLICATE_KEY, file, start_line, current_key);
 			}
 		}
 	} else if(name == "wml_schema") {

@@ -39,9 +39,9 @@ mp_options_helper::mp_options_helper(window& window, ng::create_engine& create_e
 	, visible_options_()
 	, options_data_()
 {
-	for(const auto c : prefs::get().options().all_children_range()) {
-		for(const auto& saved_option : c.cfg.child_range("option")) {
-			options_data_[c.cfg["id"]][saved_option["id"].str()] = saved_option["value"];
+	for(const auto [_, cfg] : prefs::get().options().all_children_range()) {
+		for(const auto& saved_option : cfg.child_range("option")) {
+			options_data_[cfg["id"]][saved_option["id"].str()] = saved_option["value"];
 		}
 	}
 
@@ -224,21 +224,15 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 		tree_view_node& option_node = options_tree_.add_node("option_node", data, node_position);
 		type_node_vector.push_back(&option_node);
 
-		for(const config::any_child opt : options.all_children_range()) {
+		for(const auto [option_key, option_cfg] : options.all_children_range()) {
 			data.clear();
 			item.clear();
 
-			const config& option_cfg = opt.cfg;
-
-			const auto add_name = [&](const std::string& id) {
-				item["label"] = option_cfg["name"];
-				data.emplace(id, item);
-			};
-
 			config::attribute_value val;
 
-			if(opt.key == "checkbox") {
-				add_name("option_checkbox");
+			if(option_key == "checkbox") {
+				item["label"] = option_cfg["name"];
+				data.emplace("option_checkbox", item);
 
 				toggle_button* checkbox;
 				std::tie(checkbox, val) = add_node_and_get_widget<toggle_button>(option_node, "option_checkbox", data, option_cfg);
@@ -248,15 +242,16 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 				connect_signal_notify_modified(*checkbox,
 					std::bind(&mp_options_helper::update_options_data_map<toggle_button>, this, checkbox, visible_options_.back()));
 
-			} else if(opt.key == "spacer") {
+			} else if(option_key == "spacer") {
 				option_node.add_child("options_spacer_node", empty_map);
 
-			} else if(opt.key == "choice") {
+			} else if(option_key == "choice") {
 				if(!option_cfg.has_child("item")) {
 					continue;
 				}
 
-				add_name("menu_button_label");
+				item["label"] = option_cfg["name"];
+				data.emplace("menu_button_label", item);
 
 				std::vector<config> combo_items;
 				std::vector<std::string> combo_values;
@@ -284,8 +279,9 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 				connect_signal_notify_modified(*menu,
 					std::bind(&mp_options_helper::update_options_data_map_menu_button, this, menu, visible_options_.back(), option_cfg));
 
-			} else if(opt.key == "slider") {
-				add_name("slider_label");
+			} else if(option_key == "slider") {
+				item["label"] = option_cfg["name"];
+				data.emplace("slider_label", item);
 
 				slider* slide;
 				std::tie(slide, val) = add_node_and_get_widget<slider>(option_node, "option_slider", data, option_cfg);
@@ -297,8 +293,9 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 				connect_signal_notify_modified(*slide,
 					std::bind(&mp_options_helper::update_options_data_map<slider>, this, slide, visible_options_.back()));
 
-			} else if(opt.key == "entry") {
-				add_name("text_entry_label");
+			} else if(option_key == "entry") {
+				item["label"] = option_cfg["name"];
+				data.emplace("text_entry_label", item);
 
 				text_box* textbox;
 				std::tie(textbox, val) = add_node_and_get_widget<text_box>(option_node, "option_text_entry", data, option_cfg);

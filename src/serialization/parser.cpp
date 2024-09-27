@@ -720,15 +720,15 @@ static void write_internal(const config& cfg, std::ostream& out, std::string& te
 		write_key_val(out, key, value, tab, textdomain);
 	}
 
-	for(const config::any_child item : cfg.all_children_range()) {
-		if(!config::valid_tag(item.key)) {
-			ERR_CF << "Config contains invalid tag name '" << item.key << "', skipping...";
+	for(const auto [key, item_cfg] : cfg.all_children_range()) {
+		if(!config::valid_tag(key)) {
+			ERR_CF << "Config contains invalid tag name '" << key << "', skipping...";
 			continue;
 		}
 
-		write_open_child(out, item.key, tab);
-		write_internal(item.cfg, out, textdomain, tab + 1);
-		write_close_child(out, item.key, tab);
+		write_open_child(out, key, tab);
+		write_internal(item_cfg, out, textdomain, tab + 1);
+		write_close_child(out, key, tab);
 	}
 }
 
