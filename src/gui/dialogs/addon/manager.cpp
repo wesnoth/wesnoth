@@ -496,20 +496,21 @@ void addon_manager::pre_show()
 		find_widget<button>("show_help"),
 		std::bind(&addon_manager::show_help, this));
 
-	if(stacked_widget* stk = &find_widget<stacked_widget>("main_stack")) {
+	if(stacked_widget* stk = find_widget<stacked_widget>("main_stack", false, false)) {
 		button& btn = find_widget<button>("details_toggle");
-		connect_signal_mouse_left_click(btn, std::bind(&addon_manager::toggle_details, this, std::ref(btn), std::ref(*stk)));
+		connect_signal_mouse_left_click(btn,
+			std::bind(&addon_manager::toggle_details, this, std::ref(btn), std::ref(*stk)));
+
 		stk->select_layer(0);
-	}
 
-	widget* version_filter_parent = this;
-	if(stacked_widget* stk = &find_widget<stacked_widget>("main_stack")) {
-		version_filter_parent = stk->get_layer_grid(1);
+		connect_signal_notify_modified(
+			stk->get_layer_grid(1)->find_widget<menu_button>("version_filter"),
+			std::bind(&addon_manager::on_selected_version_change, this));
+	} else {
+		connect_signal_notify_modified(
+			find_widget<menu_button>("version_filter"),
+			std::bind(&addon_manager::on_selected_version_change, this));
 	}
-
-	menu_button& version_filter = version_filter_parent->find_widget<menu_button>("version_filter");
-	connect_signal_notify_modified(version_filter,
-		std::bind(&addon_manager::on_selected_version_change, this));
 
 	on_addon_select();
 
@@ -845,8 +846,8 @@ void addon_manager::uninstall_addon(const addon_info& addon)
 {
 	if(have_addon_pbl_info(addon.id) || have_addon_in_vcs_tree(addon.id)) {
 		show_error_message(
-			_("The following add-on appears to have publishing or version control information stored locally, and will not be removed:") + " " +
-				addon.display_title_full());
+			_("The following add-on appears to have publishing or version control information stored locally, and will not be removed:")
+			+ " " +	addon.display_title_full());
 		return;
 	}
 
@@ -1043,36 +1044,36 @@ static std::string format_addon_time(std::time_t time)
 
 void addon_manager::on_addon_select()
 {
-	widget* parent_of_addons_list = parent();
+	widget* parent = this;
+	const addon_info* info = nullptr;
 	if(stacked_widget* stk = find_widget<stacked_widget>("main_stack", false, false)) {
-		set_parent(stk->get_layer_grid(1));
-		parent_of_addons_list = stk->get_layer_grid(0);
+		parent = stk->get_layer_grid(1);
+		info = stk->get_layer_grid(0)->find_widget<addon_list>("addons").get_selected_addon();
+	} else {
+		info = find_widget<addon_list>("addons").get_selected_addon();
 	}
-
-	const addon_info* info = parent_of_addons_list->find_widget<addon_list>("addons").get_selected_addon();
 
 	if(info == nullptr) {
 		return;
 	}
 
-	find_widget<drawing>("image").set_label(info->display_icon());
+	parent->find_widget<drawing>("image").set_label(info->display_icon());
+	parent->find_widget<styled_widget>("title").set_label(info->display_title_translated_or_original());
+	parent->find_widget<styled_widget>("description").set_label(info->description_translated());
+	menu_button& version_filter = parent->find_widget<menu_button>("version_filter");
+	parent->find_widget<styled_widget>("author").set_label(info->author);
+	parent->find_widget<styled_widget>("type").set_label(info->display_type());
 
-	find_widget<styled_widget>("title").set_label(info->display_title_translated_or_original());
-	find_widget<styled_widget>("description").set_label(info->description_translated());
-	menu_button& version_filter = find_widget<menu_button>("version_filter");
-	find_widget<styled_widget>("author").set_label(info->author);
-	find_widget<styled_widget>("type").set_label(info->display_type());
-
-	styled_widget& status = find_widget<styled_widget>("status");
+	styled_widget& status = parent->find_widget<styled_widget>("status");
 	status.set_label(describe_status_verbose(tracking_info_[info->id]));
 	status.set_use_markup(true);
 
-	find_widget<styled_widget>("size").set_label(size_display_string(info->size));
-	find_widget<styled_widget>("downloads").set_label(std::to_string(info->downloads));
-	find_widget<styled_widget>("created").set_label(format_addon_time(info->created));
-	find_widget<styled_widget>("updated").set_label(format_addon_time(info->updated));
+	parent->find_widget<styled_widget>("size").set_label(size_display_string(info->size));
+	parent->find_widget<styled_widget>("downloads").set_label(std::to_string(info->downloads));
+	parent->find_widget<styled_widget>("created").set_label(format_addon_time(info->created));
+	parent->find_widget<styled_widget>("updated").set_label(format_addon_time(info->updated));
 
-	find_widget<styled_widget>("dependencies").set_label(!info->depends.empty()
+	parent->find_widget<styled_widget>("dependencies").set_label(!info->depends.empty()
 		? make_display_dependencies(info->id, addons_, tracking_info_)
 		: _("addon_dependencies^None"));
 
@@ -1088,32 +1089,32 @@ void addon_manager::on_addon_select()
 		}
 	}
 
-	find_widget<styled_widget>("translations").set_label(!languages.empty() ? languages : _("translations^None"));
+	parent->find_widget<styled_widget>("translations").set_label(!languages.empty() ? languages : _("translations^None"));
 
 	const std::string& feedback_url = info->feedback_url;
-	find_widget<label>("url").set_label(!feedback_url.empty() ? feedback_url : _("url^None"));
-	find_widget<label>("id").set_label(info->id);
+	parent->find_widget<label>("url").set_label(!feedback_url.empty() ? feedback_url : _("url^None"));
+	parent->find_widget<label>("id").set_label(info->id);
 
 	bool installed = is_installed_addon_status(tracking_info_[info->id].state);
 	bool updatable = tracking_info_[info->id].state == ADDON_INSTALLED_UPGRADABLE;
 
-	stacked_widget& action_stack = find_widget<stacked_widget>("action_stack");
+	stacked_widget& action_stack = parent->find_widget<stacked_widget>("action_stack");
 	// #TODO: Add tooltips with upload time and pack size
 	std::vector<config> version_filter_entries;
 
 	if(!tracking_info_[info->id].can_publish) {
 		action_stack.select_layer(0);
 
-		stacked_widget& install_update_stack = find_widget<stacked_widget>("install_update_stack");
+		stacked_widget& install_update_stack = parent->find_widget<stacked_widget>("install_update_stack");
 		install_update_stack.select_layer(updatable ? 1 : 0);
 
 		if(!updatable) {
-			find_widget<button>("install").set_active(!installed);
+			parent->find_widget<button>("install").set_active(!installed);
 		} else {
-			find_widget<button>("update").set_active(true);
+			parent->find_widget<button>("update").set_active(true);
 		}
 
-		find_widget<button>("uninstall").set_active(installed);
+		parent->find_widget<button>("uninstall").set_active(installed);
 
 		for(const auto& f : info->versions) {
 			version_filter_entries.emplace_back("label", f.str());
@@ -1122,8 +1123,8 @@ void addon_manager::on_addon_select()
 		action_stack.select_layer(1);
 
 		// Always enable the publish button, but disable the delete button if not yet published.
-		find_widget<button>("publish").set_active(true);
-		find_widget<button>("delete").set_active(!info->local_only);
+		parent->find_widget<button>("publish").set_active(true);
+		parent->find_widget<button>("delete").set_active(!info->local_only);
 
 		// Show only the version to be published
 		version_filter_entries.emplace_back("label", info->current_version.str());
