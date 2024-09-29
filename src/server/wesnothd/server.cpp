@@ -668,12 +668,12 @@ void server::refresh_tournaments(const boost::system::error_code& ec)
 
 void server::handle_new_client(socket_ptr socket)
 {
-	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(yield, socket); });
+	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(yield, socket); }, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); });
 }
 
 void server::handle_new_client(tls_socket_ptr socket)
 {
-	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(yield, socket); });
+	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(yield, socket); }, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); });
 }
 
 template<class SocketPtr>
@@ -778,7 +778,8 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	coro_send_doc(socket, join_lobby_response, yield);
 
 	boost::asio::spawn(io_service_,
-		[this, socket, new_player](boost::asio::yield_context yield) { handle_player(yield, socket, new_player); }
+		[this, socket, new_player](boost::asio::yield_context yield) { handle_player(yield, socket, new_player); },
+		[](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
 	);
 
 	LOG_SERVER << log_address(socket) << "\t" << username << "\thas logged on"
