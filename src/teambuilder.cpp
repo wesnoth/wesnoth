@@ -24,6 +24,7 @@
 #include "team.hpp"
 #include "units/type_error.hpp"
 #include "units/unit.hpp"
+#include "gui/dialogs/message.hpp"
 
 #include <vector>
 
@@ -260,6 +261,7 @@ void team_builder::place_units()
 			uc.add_unit(*u);
 		} catch(const unit_type_error& e) {
 			ERR_NG_TC << e.what();
+			gui2::show_error_message(e.what());
 		}
 	}
 }
