@@ -616,6 +616,9 @@ static int impl_fcntb_set(lua_State* L)
 			lua_setfield(L, -2, w);
 		}
 		lua_setfield(L, -2, "wml");
+		// Also add the function table itself as a global
+		lua_pushvalue(L, 1);
+		lua_setfield(L, -2, "wfl_functions");
 		lua_setupvalue(L, -2, 1);
 	}
 	lua_rawsetp(L, LUA_REGISTRYINDEX, fcn.get());
