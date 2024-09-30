@@ -215,7 +215,6 @@ display::display(const display_context* dc,
 
 	fill_images_list(game_config::fog_prefix, fog_images_);
 	fill_images_list(game_config::shroud_prefix, shroud_images_);
-	//fill_images_list(game_config::reach_map_prefix, reach_map_images_);
 
 	unsigned int tile_size = prefs::get().tile_size();
 	if(tile_size < MinZoom || tile_size > MaxZoom)
@@ -836,6 +835,11 @@ gui::button::TYPE string_to_button_type(const std::string& type)
 		return gui::button::TYPE_PRESS;
 	}
 }
+} // namespace
+namespace display_direction
+{
+
+	// named namespace called in game_display.cpp
 
 const std::string& get_direction(std::size_t n)
 {
@@ -843,7 +847,7 @@ const std::string& get_direction(std::size_t n)
 	static const std::array dirs{"-n"s, "-ne"s, "-se"s, "-s"s, "-sw"s, "-nw"s};
 	return dirs[n >= dirs.size() ? 0 : n];
 }
-} // namespace
+} // namespace display_direction
 
 void display::create_buttons()
 {
@@ -954,6 +958,7 @@ void display::unhide_buttons()
 
 std::vector<texture> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
 {
+	using namespace display_direction;
 	std::vector<std::string> names;
 	const auto adjacent = get_adjacent_tiles(loc);
 

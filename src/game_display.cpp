@@ -226,13 +226,6 @@ const std::string mouseover_self_bot = "misc/hover-hex-bottom.png~RC(magenta>gre
 
 const std::string mouseover_ally_top = "misc/hover-hex-top.png~RC(magenta>lightblue)";
 const std::string mouseover_ally_bot = "misc/hover-hex-bottom.png~RC(magenta>lightblue)";
-
-const std::string& get_direction(std::size_t n)
-{
-	using namespace std::literals::string_literals;
-	static const std::array dirs{"-n"s, "-ne"s, "-se"s, "-s"s, "-sw"s, "-nw"s};
-	return dirs[n >= dirs.size() ? 0 : n];
-}
 }
 
 void game_display::draw_hex(const map_location& loc)
@@ -678,6 +671,8 @@ display::overlay_map& game_display::get_overlays()
 
 std::vector<texture> game_display::get_reachmap_images(const map_location& loc)
 {
+	// Use get_direction() from display.cpp namespace display_direction
+	using namespace display_direction;
 	std::vector<std::string> names;
 	const auto adjacent = get_adjacent_tiles(loc);
 
