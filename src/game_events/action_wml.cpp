@@ -884,18 +884,24 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 	}
 	team &tm = resources::gameboard->get_team(side);
 
-	unit_creator uc(tm,resources::gameboard->map().starting_position(side));
+	try
+	{
+		unit_creator uc(tm,resources::gameboard->map().starting_position(side));
 
-	uc
-		.allow_add_to_recall(true)
-		.allow_discover(true)
-		.allow_get_village(true)
-		.allow_invalidate(true)
-		.allow_rename_side(true)
-		.allow_show(true);
+		uc
+			.allow_add_to_recall(true)
+			.allow_discover(true)
+			.allow_get_village(true)
+			.allow_invalidate(true)
+			.allow_rename_side(true)
+			.allow_show(true);
 
-	uc.add_unit(parsed_cfg, &cfg);
-
+		uc.add_unit(parsed_cfg, &cfg);
+	}
+	catch(const unit_type::error& e)
+	{
+		ERR_NG << "Error occured in [unit]: " << e.what();
+	}
 }
 
 } // end namespace game_events
