@@ -16,6 +16,7 @@ https://www.cairographics.org/releases/cairo-1.16.0.tar.xz
 https://github.com/harfbuzz/harfbuzz/releases/download/7.1.0/harfbuzz-7.1.0.tar.xz
 https://download.gnome.org/sources/pango/1.50/pango-1.50.14.tar.xz
 https://github.com/libsdl-org/SDL/releases/download/release-2.26.4/SDL2-2.26.4.tar.gz
+https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.4.0.tar.gz
 https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.6.3.tar.gz
 https://downloads.xiph.org/releases/ogg/libogg-1.3.5.tar.xz
 https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-1.3.7.tar.xz
@@ -166,8 +167,12 @@ do
 	done
 done
 
+
 cd $BUILDDIR/src/SDL2-ndk-build
-$NDK/ndk-build
+webpPath=($BUILDDIR/src/libwebp-*)
+sdl_imagePath=($BUILDDIR/src/SDL2_image-*)
+ln -sf $webpPath $sdl_imagePath/external/libwebp
+$NDK/ndk-build SUPPORT_WEBP=true
 for lib in libs/*/*.so
 do
 	instdir=$(basename $(dirname $lib))
