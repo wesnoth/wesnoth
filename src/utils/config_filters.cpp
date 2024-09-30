@@ -65,21 +65,6 @@ bool utils::config_filters::set_includes_if_present(const config& filter, const 
 	return true;
 }
 
-bool utils::config_filters::unsigned_matches_if_present(const config& filter, const config& cfg, const std::string& attribute)
-{
-	if(!filter.has_attribute(attribute)) {
-		return true;
-	}
-	//Here, since no default variable is implemented,
-	//if the attribute is absent no checked value can match
-	//and false is automatically returned.
-	if(!cfg.has_attribute(attribute)) {
-		return false;
-	}
-
-	return in_ranges<int>(cfg[attribute].to_int(0), utils::parse_ranges_unsigned(filter[attribute].str()));
-}
-
 bool utils::config_filters::int_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, utils::optional<int> def)
 {
 	if(!filter.has_attribute(attribute)) {
