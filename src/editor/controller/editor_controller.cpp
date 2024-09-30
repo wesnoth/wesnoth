@@ -720,9 +720,8 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 					get_current_map_context().set_active_area(index);
 					const std::set<map_location>& area =
 							get_current_map_context().get_time_manager()->get_area_by_index(index);
-					std::vector<map_location> locs(area.begin(), area.end());
 					get_current_map_context().select_area(index);
-					gui_->scroll_to_tiles(locs.begin(), locs.end());
+					gui_->scroll_to_tiles({ area.begin(), area.end() });
 					return true;
 				}
 			case ADDON:

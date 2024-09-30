@@ -523,20 +523,10 @@ public:
 	                     double add_spacing=0.0, bool force=true);
 
 	/** Scroll to fit as many locations on-screen as possible, starting with the first. */
-	void scroll_to_tiles(const std::vector<map_location>::const_iterator & begin,
-	                     const std::vector<map_location>::const_iterator & end,
-	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
-	                     bool only_if_possible=false, double add_spacing=0.0,
-	                     bool force=true);
-	/** Scroll to fit as many locations on-screen as possible, starting with the first. */
 	void scroll_to_tiles(const std::vector<map_location>& locs,
 	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
 	                     bool only_if_possible=false,
-	                     double add_spacing=0.0, bool force=true)
-	{
-		scroll_to_tiles(locs.begin(), locs.end(), scroll_type, check_fogged,
-		                only_if_possible, add_spacing, force);
-	}
+	                     double add_spacing=0.0, bool force=true);
 
 	/** Expose the event, so observers can be notified about map scrolling. */
 	events::generic_event &scroll_event() const { return scroll_event_; }
