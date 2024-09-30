@@ -643,7 +643,7 @@ const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 		return res;
 	}
 
-	SDL_Rect map_rect = map_area();
+	rect map_rect = map_area();
 	// translate rect coordinates from screen-based to map_area-based
 	int x = xpos_ - map_rect.x + r.x;
 	int y = ypos_ - map_rect.y + r.y;
@@ -1657,8 +1657,8 @@ void display::draw_minimap()
 	// we need to shift with the border size
 	// and the 0.25 from the minimap balanced drawing
 	// and the possible difference between real map and outside off-map
-	SDL_Rect map_rect = map_area();
-	SDL_Rect map_out_rect = map_outside_area();
+	rect map_rect = map_area();
+	rect map_out_rect = map_outside_area();
 	double border = theme_.border().size;
 	double shift_x = -border * hex_width() - (map_out_rect.w - map_rect.w) / 2;
 	double shift_y = -(border + 0.25) * hex_size() - (map_out_rect.h - map_rect.h) / 2;
@@ -1668,7 +1668,7 @@ void display::draw_minimap()
 	int view_w = static_cast<int>(map_out_rect.w * xscaling);
 	int view_h = static_cast<int>(map_out_rect.h * yscaling);
 
-	SDL_Rect outline_rect {
+	rect outline_rect {
 		minimap_location_.x + view_x - 1,
 		minimap_location_.y + view_y - 1,
 		view_w + 2,
@@ -1714,7 +1714,7 @@ void display::draw_minimap_units()
 		double u_w = 4.0 / 3.0 * xscaling;
 		double u_h = yscaling;
 
-		SDL_Rect r {
+		rect r {
 				  minimap_location_.x + int(std::round(u_x))
 				, minimap_location_.y + int(std::round(u_y))
 				, int(std::round(u_w))
@@ -1797,7 +1797,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 	}
 
 	if(diff_y != 0) {
-		SDL_Rect r = map_area();
+		rect r = map_area();
 
 		if(diff_y < 0) {
 			r.y = r.y + r.h + diff_y;
@@ -1808,7 +1808,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 	}
 
 	if(diff_x != 0) {
-		SDL_Rect r = map_area();
+		rect r = map_area();
 
 		if(diff_x < 0) {
 			r.x = r.x + r.w + diff_x;
@@ -1866,8 +1866,8 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 			<< " This will likely cause graphical glitches.";
 	}
 
-	const SDL_Rect& outside_area = map_outside_area();
-	const SDL_Rect& area = map_area();
+	const rect outside_area = map_outside_area();
+	const rect area = map_area();
 
 	// Turn the zoom factor to a double in order to avoid rounding errors.
 	double zoom_factor = static_cast<double>(new_zoom) / static_cast<double>(zoom_);
@@ -1924,7 +1924,7 @@ bool display::tile_fully_on_screen(const map_location& loc) const
 bool display::tile_nearly_on_screen(const map_location& loc) const
 {
 	const auto [x, y] = get_location(loc);
-	const SDL_Rect &area = map_area();
+	const rect area = map_area();
 	int hw = hex_width(), hs = hex_size();
 	return x + hs >= area.x - hw && x < area.x + area.w + hw &&
 	       y + hs >= area.y - hs && y < area.y + area.h + hs;
@@ -1936,7 +1936,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 	if(video::headless()) {
 		return;
 	}
-	const SDL_Rect area = map_area();
+	const rect area = map_area();
 	const int xmove_expected = screenxpos - (area.x + area.w/2);
 	const int ymove_expected = screenypos - (area.y + area.h/2);
 
@@ -2063,7 +2063,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 			int miny_new = std::min<int>(miny,y);
 			int maxx_new = std::max<int>(maxx,x);
 			int maxy_new = std::max<int>(maxy,y);
-			SDL_Rect r = map_area();
+			rect r = map_area();
 			r.x = minx_new;
 			r.y = miny_new;
 			if(outside_area(r, maxx_new, maxy_new)) {
@@ -2081,7 +2081,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 	if(!valid) return;
 
 	if (scroll_type == ONSCREEN || scroll_type == ONSCREEN_WARP) {
-		SDL_Rect r = map_area();
+		rect r = map_area();
 		int spacing = std::round(add_spacing * hex_size());
 		r.x += spacing;
 		r.y += spacing;
@@ -2093,7 +2093,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 	}
 
 	// let's do "normal" rectangle math from now on
-	SDL_Rect locs_bbox;
+	rect locs_bbox;
 	locs_bbox.x = minx;
 	locs_bbox.y = miny;
 	locs_bbox.w = maxx - minx + hex_size();
@@ -2105,7 +2105,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 
 	if (scroll_type == ONSCREEN || scroll_type == ONSCREEN_WARP) {
 		// when doing an ONSCREEN scroll we do not center the target unless needed
-		SDL_Rect r = map_area();
+		rect r = map_area();
 		int map_center_x = r.x + r.w/2;
 		int map_center_y = r.y + r.h/2;
 
@@ -2589,7 +2589,7 @@ void display::render_map_outside_area()
 {
 	// This could be optimized to avoid the map area,
 	// but it's only called on game creation or zoom anyway.
-	const SDL_Rect clip_rect = map_outside_area();
+	const rect clip_rect = map_outside_area();
 	texture bgtex = image::get_texture(theme_.border().background_image);
 	for(int i = 0; i < 2; ++i) {
 		auto setter = draw::set_render_target(i ? back_ : front_);
@@ -2619,7 +2619,7 @@ rect display::get_clip_rect() const
 void display::draw_invalidated()
 {
 	//	log_scope("display::draw_invalidated");
-	SDL_Rect clip_rect = get_clip_rect();
+	rect clip_rect = get_clip_rect();
 	const auto clipper = draw::reduce_clip(clip_rect);
 
 	DBG_DP << "drawing " << invalidated_.size() << " invalidated hexes with clip " << clip_rect;
@@ -2986,12 +2986,12 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 	int image_count = 0;
 	bool used_ellipsis = false;
 	std::ostringstream ellipsis_tooltip;
-	SDL_Rect ellipsis_area = loc;
+	rect ellipsis_area = loc;
 
 	for (config::const_child_itors elements = report.child_range("element");
 		 elements.begin() != elements.end(); elements.pop_front())
 	{
-		SDL_Rect area {x, y, loc.w + loc.x - x, loc.h + loc.y - y};
+		rect area {x, y, loc.w + loc.x - x, loc.h + loc.y - y};
 		if (area.h <= 0) break;
 
 		std::string t = elements.front()["text"];
