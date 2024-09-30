@@ -2019,23 +2019,17 @@ void display::scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type, b
 		return;
 	}
 
-	std::vector<map_location> locs;
-	locs.push_back(loc);
-	scroll_to_tiles(locs, scroll_type, check_fogged,false,0.0,force);
+	scroll_to_tiles({loc}, scroll_type, check_fogged, false, 0.0, force);
 }
 
 void display::scroll_to_tiles(map_location loc1, map_location loc2,
                               SCROLL_TYPE scroll_type, bool check_fogged,
                               double add_spacing, bool force)
 {
-	std::vector<map_location> locs;
-	locs.push_back(loc1);
-	locs.push_back(loc2);
-	scroll_to_tiles(locs, scroll_type, check_fogged, false, add_spacing,force);
+	scroll_to_tiles({loc1, loc2}, scroll_type, check_fogged, false, add_spacing, force);
 }
 
-void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & begin,
-                              const std::vector<map_location>::const_iterator & end,
+void display::scroll_to_tiles(const std::vector<map_location>& locs,
                               SCROLL_TYPE scroll_type, bool check_fogged,
                               bool only_if_possible, double add_spacing, bool force)
 {
@@ -2046,11 +2040,11 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 	int maxy = 0;
 	bool valid = false;
 
-	for(std::vector<map_location>::const_iterator itor = begin; itor != end ; ++itor) {
-		if(get_map().on_board(*itor) == false) continue;
-		if(check_fogged && fogged(*itor)) continue;
+	for(const map_location& loc : locs) {
+		if(get_map().on_board(loc) == false) continue;
+		if(check_fogged && fogged(loc)) continue;
 
-		const auto [x, y] = get_location(*itor);
+		const auto [x, y] = get_location(loc);
 
 		if (!valid) {
 			minx = x;
