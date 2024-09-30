@@ -1918,8 +1918,7 @@ void display::toggle_default_zoom()
 
 bool display::tile_fully_on_screen(const map_location& loc) const
 {
-	const auto [x, y] = get_location(loc);
-	return !outside_area(map_area(), x, y);
+	return map_area().contains(get_location_rect(loc));
 }
 
 bool display::tile_nearly_on_screen(const map_location& loc) const
