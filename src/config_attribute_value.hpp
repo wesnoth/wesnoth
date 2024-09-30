@@ -148,11 +148,15 @@ public:
 	std::string to(const std::string& def) const { return str(def); }
 
 	// Implicit conversions:
+	// to compile and test
+	operator int() const
+	{
+		if(utils::get_if<yes_no>(&value_) || utils::get_if<true_false>(&value_))
+			return to_bool();
+		return to_int();
+	}
 	operator std::string() const { return str(); }
 	operator t_string() const { return t_str(); }
-	// Numeric and bool conversion should be explicit if possible
-	explicit operator bool() const {return to_bool(); }
-	explicit operator int() const { return to_int(); }
 
 	/** Tests for an attribute that was never set. */
 	bool blank() const;
