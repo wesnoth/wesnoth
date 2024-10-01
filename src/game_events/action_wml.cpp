@@ -884,9 +884,9 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 	}
 	team &tm = resources::gameboard->get_team(side);
 
-		unit_creator uc(tm,resources::gameboard->map().starting_position(side));
+	unit_creator uc(tm,resources::gameboard->map().starting_position(side));
 
-		uc
+	uc
 		.allow_add_to_recall(true)
 		.allow_discover(true)
 		.allow_get_village(true)
