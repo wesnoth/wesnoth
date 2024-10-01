@@ -91,7 +91,7 @@ function training.list_available(side_num, amount)
 	for i,v in ipairs(av) do
 		local j = tonumber(v)
 		local trainer = training.get_trainer(j)
-		if trainer and (trainer.manual_invest == nil or trainer.manual_invest == false) then
+		if trainer and (trainer.manual_invest == nil or trainer.manual_invest == true) then
 			if training.available(side_num, j, amount) then
 				table.insert(res, j)
 			end
