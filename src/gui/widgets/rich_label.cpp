@@ -133,7 +133,7 @@ void rich_label::add_image(config& curr_item, std::string name, std::string alig
 	}
 
 	if (align == "right") {
-		curr_item["x"] = floating ? "(width - image_width - img_x)" : "(width - image_width - pos_x)";
+		curr_item["x"] = floating ? "(debug_print('fimg, w', width) - image_width - img_x)" : "(width - image_width - pos_x)";
 	} else if (align == "middle" || align == "center") {
 		// works for single image only
 		curr_item["x"] = floating ? "(img_x + (width - image_width)/2.0)" : "(pos_x + (width - image_width)/2.0)";
@@ -356,7 +356,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 			// init table vars
 			unsigned col_idx = 0, row_idx = 0;
 			unsigned rows = tag.cfg.child_count("row");
-			unsigned columns;
+			unsigned columns = 1;
 			if (rows > 0) {
 				columns = tag.cfg.mandatory_child("row").child_count("col");
 			}
@@ -377,7 +377,6 @@ std::pair<config, point> rich_label::get_parsed_text(
 			DBG_GUI_RL << __LINE__ << "start table : " << "row= " << rows << " col=" << columns << " width=" << width;
 
 			// optimal col width calculation
-			row_idx = 0;
 			for (config& row : tag.cfg.child_range("row")) {
 				col_x = 0;
 				col_idx = 0;
@@ -437,7 +436,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 				row_y += max_row_height + padding_;
 				config& end_cfg = std::prev(text_dom.ordered_end())->cfg;
-				end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % row_y % col_x % col_widths[col_idx]);
+				end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % row_y % col_x % col_widths[col_idx-1]);
 				DBG_GUI_RL << "row height: " << max_row_height;
 			}
 
@@ -445,7 +444,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 			text_height = 0;
 
 			config& end_cfg = std::prev(text_dom.ordered_end())->cfg;
-			end_cfg["actions"] = "([set_var('pos_x', 0), set_var('pos_y', " + std::to_string(row_y) + "), set_var('tw', 0)])";
+			end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', %d), set_var('tw', 0)])") % row_y);
 
 			is_image = false;
 			is_text = false;
@@ -621,14 +620,14 @@ std::pair<config, point> rich_label::get_parsed_text(
 				if (wrap_mode && (float_size.y > 0) && (text_size.y > float_size.y)) {
 					DBG_GUI_RL << "wrap start";
 
-					size_t len = get_split_location((*curr_item)["text"].str(), point(w_ - float_size.x, float_size.y));
+					size_t len = get_split_location((*curr_item)["text"].str(), point(init_width - float_size.x, float_size.y));
 					DBG_GUI_RL << "wrap around area: " << float_size;
 
 					// first part of the text
-					t_string* removed_part = new t_string((*curr_item)["text"].str().substr(len+1));
+					std::string removed_part = (*curr_item)["text"].str().substr(len+1);
 					(*curr_item)["text"] = (*curr_item)["text"].str().substr(0, len);
 					(*curr_item)["maximum_width"] = init_width - float_size.x;
-					(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('ww', 0), set_var('pos_y', pos_y + text_height + " + std::to_string(0.3*font::get_max_height(font::SIZE_NORMAL)) + ")])";
+					(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('ww', 0), set_var('pos_y', pos_y + text_height + %d)])") % (0.3*font::get_max_height(font::SIZE_NORMAL)));
 
 					// Height update
 					int ah = get_text_size(*curr_item, init_width - float_size.x).y;
@@ -650,7 +649,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 					curr_item = &(text_dom.add_child("text"));
 					default_text_config(curr_item);
 					tmp_h = get_text_size(*curr_item, init_width).y;
-					add_text_with_attribute(*curr_item, *removed_part);
+					add_text_with_attribute(*curr_item, removed_part);
 
 				} else if ((float_size.y > 0) && (text_size.y < float_size.y)) {
 					//TODO padding?
@@ -757,7 +756,7 @@ void rich_label::update_canvas()
 		tmp.set_variable("pos_y", wfl::variant(0));
 		tmp.set_variable("img_x", wfl::variant(0));
 		tmp.set_variable("img_y", wfl::variant(0));
-		tmp.set_variable("width", wfl::variant(w_));
+		tmp.set_variable("width", wfl::variant(init_w_));
 		tmp.set_variable("tw", wfl::variant(0));
 		tmp.set_variable("ww", wfl::variant(0));
 		tmp.set_variable("padding", wfl::variant(padding_));
