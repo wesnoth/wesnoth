@@ -884,23 +884,34 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 	}
 	team &tm = resources::gameboard->get_team(side);
 
-	try
-	{
 		unit_creator uc(tm,resources::gameboard->map().starting_position(side));
 
 		uc
-			.allow_add_to_recall(true)
-			.allow_discover(true)
-			.allow_get_village(true)
-			.allow_invalidate(true)
-			.allow_rename_side(true)
-			.allow_show(true);
+		.allow_add_to_recall(true)
+		.allow_discover(true)
+		.allow_get_village(true)
+		.allow_invalidate(true)
+		.allow_rename_side(true)
+		.allow_show(true);
 
+	try
+	{
 		uc.add_unit(parsed_cfg, &cfg);
 	}
 	catch(const unit_type::error& e)
 	{
-		ERR_NG << "Error occured in [unit]: " << e.what();
+		std::string unit_type_s = parsed_cfg["parent_type"].blank() ? parsed_cfg["type"].str() : parsed_cfg["parent_type"].str();
+
+		if(unit_type_s.empty()) {
+			ERR_WML << "Empty unit type inside [unit] WML";
+		} else {
+			const unit_type* i = unit_types.find(unit_type_s);
+			if(!i) {
+				ERR_WML << "Unkown unit type inside [unit] WML: " << unit_type_s;
+			} else {
+				ERR_WML << "Unkown error occured inside [unit] WML: " << e.what();
+			}
+		}
 	}
 }
 
