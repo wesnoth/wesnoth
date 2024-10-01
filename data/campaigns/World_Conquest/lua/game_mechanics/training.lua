@@ -86,18 +86,18 @@ function training.has_max_training(side_num, trainer, amount)
 end
 
 function training.list_available(side_num, amount)
-    local av = wc2_utils.range(#training.get_list())
-    local res = {}
-    for i,v in ipairs(av) do
-        local j = tonumber(v)
-        local trainer = training.get_trainer(j)
-        if trainer and (trainer.manual_invest == nil or trainer.manual_invest == true) then
-            if training.available(side_num, j, amount) then
-                table.insert(res, j)
-            end
-        end
-    end
-    return res
+	local av = wc2_utils.range(#training.get_list())
+	local res = {}
+	for i,v in ipairs(av) do
+		local j = tonumber(v)
+		local trainer = training.get_trainer(j)
+		if trainer and (trainer.manual_invest == nil or trainer.manual_invest == true) then
+			if training.available(side_num, j, amount) then
+				table.insert(res, j)
+			end
+		end
+	end
+	return res
 end
 
 function training.find_available(side_num, amount)
