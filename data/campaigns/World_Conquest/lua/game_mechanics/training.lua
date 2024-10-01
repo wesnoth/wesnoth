@@ -91,7 +91,7 @@ function training.list_available(side_num, amount)
 	for i,v in ipairs(av) do
 		local j = tonumber(v)
 		local trainer = training.get_trainer(j)
-		if trainer and (trainer.manual_invest == nil or trainer.manual_invest == yes) then
+		if trainer and (trainer.manual_invest == nil or trainer.manual_invest == false) then
 			if training.available(side_num, j, amount) then
 				table.insert(res, j)
 			end
@@ -195,15 +195,9 @@ end
 
 function training.pick_bonus(side_num)
 	local amount = training.bonus_calculate_amount(side_num)
-	-- dark training reduced chances
-	local traintype_index = training.find_available(side_num, {1,2,3,4,5,6,2,3,4,5,6,2,3,4,5,6}, amount)
+	local traintype_index = training.find_available(side_num, amount)
 	if traintype_index == nil then
 		return nil
-	end
-
-	--dark training increased level.
-	if traintype_index == 1 then
-		amount = math.min(training.trainings_left(side_num, traintype_index), math.max(amount, wc2_scenario.scenario_num() - 1))
 	end
 	return traintype_index, amount
 end
