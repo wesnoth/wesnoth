@@ -246,8 +246,7 @@ World Conquest looks for `[world_conquest_data]` tags in the era and every loade
             image=attacks/wail.png
             name= _ "Blood Magic"
             dialogue= "You have found me, mortals? Well...let us show your recruits some blood magic!"
-            manual_invest = False #Leaving this blank will allow the training to appear on the invest screen.
-            [grade]
+            manual_invest = false #Setting manual_invest to false will hide a trainer from the invest screen. Not specifying this variable at all includes a new trainer by default.
             [/grade]
             [grade]
                 {WCT_CHANCE_FEEDING 3}
