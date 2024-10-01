@@ -133,7 +133,7 @@ void rich_label::add_image(config& curr_item, std::string name, std::string alig
 	}
 
 	if (align == "right") {
-		curr_item["x"] = floating ? "(debug_print('fimg, w', width) - image_width - img_x)" : "(width - image_width - pos_x)";
+		curr_item["x"] = floating ? "(width - image_width - img_x)" : "(width - image_width - pos_x)";
 	} else if (align == "middle" || align == "center") {
 		// works for single image only
 		curr_item["x"] = floating ? "(img_x + (width - image_width)/2.0)" : "(pos_x + (width - image_width)/2.0)";
