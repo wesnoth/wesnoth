@@ -90,9 +90,7 @@ function training.list_available(side_num, amount)
     local res = {}
     for i,v in ipairs(av) do
         local j = tonumber(v)
-        -- Get the trainer's data (assuming get_trainer returns the trainer table or object)
         local trainer = training.get_trainer(j)
-        -- Check if manual_invest is true, or if manual_invest is nil (assuming default is true)
         if trainer and (trainer.manual_invest == nil or trainer.manual_invest == true) then
             if training.available(side_num, j, amount) then
                 table.insert(res, j)
