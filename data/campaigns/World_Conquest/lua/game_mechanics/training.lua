@@ -85,20 +85,25 @@ function training.has_max_training(side_num, trainer, amount)
 	return training.available(side_num, trainer) == 0
 end
 
-function training.list_available(side_num, among, amount)
-	local av = among or wc2_utils.range(#training.get_list())
-	local res = {}
-	for i,v in ipairs(av) do
-		local j = tonumber(v)
-		if training.available(side_num, j, amount) then
-			table.insert(res, j)
-		end
-	end
-	return res
+function training.list_available(side_num, amount)
+    local av = wc2_utils.range(#training.get_list())
+    local res = {}
+    for i,v in ipairs(av) do
+        local j = tonumber(v)
+        -- Get the trainer's data (assuming get_trainer returns the trainer table or object)
+        local trainer = training.get_trainer(j)
+        -- Check if manual_invest is true, or if manual_invest is nil (assuming default is true)
+        if trainer and (trainer.manual_invest == nil or trainer.manual_invest == true) then
+            if training.available(side_num, j, amount) then
+                table.insert(res, j)
+            end
+        end
+    end
+    return res
 end
 
-function training.find_available(side_num, among, amount)
-	local possible_traintypes = training.list_available(side_num, among, amount)
+function training.find_available(side_num, amount)
+	local possible_traintypes = training.list_available(side_num, amount)
 	if #possible_traintypes == 0 then
 		return
 	else

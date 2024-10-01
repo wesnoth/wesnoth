@@ -246,6 +246,7 @@ World Conquest looks for `[world_conquest_data]` tags in the era and every loade
             image=attacks/wail.png
             name= _ "Blood Magic"
             dialogue= "You have found me, mortals? Well...let us show your recruits some blood magic!"
+            manual_invest = False #Leaving this blank will allow the training to appear on the invest screen.
             [grade]
             [/grade]
             [grade]
