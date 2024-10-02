@@ -900,18 +900,9 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 	}
 	catch(const unit_type::error& e)
 	{
-		std::string unit_type_s = parsed_cfg["parent_type"].blank() ? parsed_cfg["type"].str() : parsed_cfg["parent_type"].str();
+		ERR_WML << "Error occured inside [unit] WML.";
 
-		if(unit_type_s.empty()) {
-			ERR_WML << "Empty unit type inside [unit] WML";
-		} else {
-			const unit_type* i = unit_types.find(unit_type_s);
-			if(!i) {
-				ERR_WML << "Unkown unit type inside [unit] WML: " << unit_type_s;
-			} else {
-				ERR_WML << "Unkown error occured inside [unit] WML: " << e.what();
-			}
-		}
+		throw e;
 	}
 }
 
