@@ -900,7 +900,7 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 	}
 	catch(const unit_type::error& e)
 	{
-		ERR_WML << "Error occured inside [unit] WML.";
+		ERR_WML << "Error occured inside [unit]: " << e.what();
 
 		throw;
 	}
