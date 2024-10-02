@@ -692,62 +692,57 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc)
 		}
 	}
 
-	for(int v = REACH; v != CLEAR; ++v) {
-		// Find somewhere that doesn't have overlap to use as a starting point
-		int start;
-		for(start = 0; start != 6; ++start) {
-			if(tiles[start] != v) {
-				break;
-			}
+	// Find out if location is in the inner part of reachmap (surrounded by reach)
+	int s;
+	for(s = 0; s != 6; ++s) {
+		if(tiles[s] != REACH) {
+			break;
 		}
+	}
 
-		if(start == 6) {
-			// Completely surrounded by reach. This may have a special graphic.
-			DBG_DP << "Tried completely surrounding";
-			std::string name = *image_prefix_ + "-all.png";
-			if(image::exists(name)) {
-				names.push_back(std::move(name));
-				continue;
-			}
-			// No special graphic found. We'll just combine some other images
-			// and hope it works out.
-			start = 0;
+	if(s == 6) {
+		// Completely surrounded by reach. This may have a special graphic.
+		DBG_DP << "Tried completely surrounding";
+		std::string name = *image_prefix_ + "-all.png";
+		if(image::exists(name)) {
+			names.push_back(std::move(name));
 		}
-
-		// always push the background image, as the graphics are meant to have it
+	}
+	else {
+		// else push the background image, as the rest of the graphics are meant to have it
 		names.push_back(*image_prefix_ + ".png");
+	}
 
-		// Find all the directions overlap occurs from
-		for(int i = start % 6, cap1 = 0; cap1 != 6; ++cap1) {
-			DBG_DP << "Testing " << get_direction(i);
-			if(tiles[i] != v) {
-				DBG_DP << "Direction " << get_direction(i) << " points to an unreachable hex";
-				std::ostringstream stream;
-				std::string name;
-				stream << *image_prefix_;
+	// Find all the directions overlap occurs from
+	for(int i = 0, cap1 = 0; cap1 != 6; ++cap1) {
+		DBG_DP << "Testing " << get_direction(i);
+		if(tiles[i] != REACH) {
+			DBG_DP << "Direction " << get_direction(i) << " points to an unreachable hex";
+			std::ostringstream stream;
+			std::string name;
+			stream << *image_prefix_;
 
-				for(int cap2 = 0; v != tiles[i] && cap2 != 6; i = (i + 1) % 6, ++cap2) {
-					stream << get_direction(i);
-					if(!image::exists(stream.str() + ".png")) {
-						DBG_DP << "Image does not exist: " << stream.str() + ".png on " << loc;
-						// If we don't have any surface at all,
-						// then move onto the next overlapped area
-						if(name.empty()) {
-							i = (i + 1) % 6;
-						}
-						break;
-					} else {
-						name = stream.str();
+			for(int cap2 = 0; tiles[i] != REACH && cap2 != 6; i = (i + 1) % 6, ++cap2) {
+				stream << get_direction(i);
+				if(!image::exists(stream.str() + ".png")) {
+					DBG_DP << "Image does not exist: " << stream.str() + ".png on " << loc;
+					// If we don't have any surface at all,
+					// then move onto the next overlapped area
+					if(name.empty()) {
+						i = (i + 1) % 6;
 					}
+					break;
+				} else {
+					name = stream.str();
 				}
-				DBG_DP << "Tried loading image: " << stream.str() + ".png on " << loc;
-
-				if(!name.empty()) {
-					names.push_back(name + ".png");
-				}
-			} else {
-				i = (i + 1) % 6;
 			}
+			DBG_DP << "Tried loading image: " << stream.str() + ".png on " << loc;
+
+			if(!name.empty()) {
+				names.push_back(name + ".png");
+			}
+		} else {
+			i = (i + 1) % 6;
 		}
 	}
 
