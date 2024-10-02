@@ -436,7 +436,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 				row_y += max_row_height + padding_;
 				config& end_cfg = std::prev(text_dom.ordered_end())->cfg;
-				end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % row_y % col_x % col_widths[col_idx-1]);
+				end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % row_y % col_x % col_widths[columns-1]);
 				DBG_GUI_RL << "row height: " << max_row_height;
 			}
 
