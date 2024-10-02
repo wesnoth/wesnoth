@@ -825,6 +825,13 @@ wml_actions.unstore_unit = function(cfg)
 	if cfg.location_id then
 		x,y = table.unpack(wesnoth.current.map.special_locations[cfg.location_id])
 	end
+
+	-- Check if the unit type exists before trying to create the unit
+	if not wesnoth.unit_types[unit.type] then
+		wml.error("[unstore_unit]: unit type '" .. unit.type .. "' doesn't exist")
+	end
+
+
 	wesnoth.add_known_unit(unit.type)
 	if x ~= 'recall' and y ~= 'recall' and wesnoth.current.map:on_board(x, y) then
 		if cfg.find_vacant then
