@@ -280,7 +280,46 @@ static int intf_remove_dialog_item(lua_State* L)
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 	}
 
-	return 1;
+	return 0;
+}
+
+/**
+ * Removes all entries from a list.
+ * - Arg 1: widget
+*/
+static int intf_clear_items(lua_State* L)
+{
+	gui2::widget* w = &luaW_checkwidget(L, 1);
+
+	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w)) {
+		if(number_of_items(*list)) {
+			list->remove_row(0, 0);
+		} else {
+			return 0;
+		}
+	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(w)) {
+		if(number_of_items(*multi_page)) {
+			multi_page->remove_page(0, 0);
+		} else {
+			return 0;
+		}
+	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(w)) {
+		if(number_of_items(*tree_view)) {
+			remove_treeview_node(tree_view->get_root_node(), 0, 0);
+		} else {
+			return 0;
+		}
+	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(w)) {
+		if(number_of_items(*tree_view_node)) {
+			remove_treeview_node(*tree_view_node, 0, 0);
+		} else {
+			return 0;
+		}
+	} else {
+		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
+	}
+
+	return 0;
 }
 
 namespace { // helpers of intf_set_dialog_callback()
@@ -463,14 +502,15 @@ int luaW_open(lua_State* L)
 	lk.add_log("Adding widgets module...\n");
 	static luaL_Reg const gui_callbacks[] = {
 		//TODO: the naming is a bit arbitrary: widgets with different
-		//      types of elements use add_node, eidgets with only
+		//      types of elements use add_node, widgets with only
 		//      one type of element use add_element
 		{ "add_item_of_type",   &intf_add_item_of_type },
 		{ "add_item",           &intf_add_dialog_item },
 		{ "focus",              &intf_set_dialog_focus },
 		{ "set_canvas",         &intf_set_dialog_canvas },
 		{ "set_callback",       &intf_set_dialog_callback },
-		{ "remove_items_at",     &intf_remove_dialog_item },
+		{ "remove_items_at",    &intf_remove_dialog_item },
+		{ "clear_items",     	&intf_clear_items },
 		{ "find",               &intf_find_widget },
 		{ "close",              &intf_dialog_close },
 		{ nullptr, nullptr },

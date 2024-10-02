@@ -224,6 +224,10 @@ function gui.widget.add_item_of_type(widget, category, position, count) end
 ---@param position? integer
 function gui.widget.remove_items_at(widget, position) end
 
+---Remove all items from a container widget
+---@param widget widget
+function gui.widget.clear_items(widget) end
+
 ---Find a widget based on a path
 ---@param widget widget
 ---@vararg integer|string
