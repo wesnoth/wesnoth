@@ -158,11 +158,11 @@ function wml_actions.allow_recruit(cfg)
 		local v = team.recruit
 		for _,type in ipairs(unit_types:split()) do
 			local success, err = pcall(function()
-				wesnoth.add_known_unit(type)
 				table.insert(v, type)
+				wesnoth.add_known_unit(type)
 			end)
 			if not success then
-				wml.error(string.format("Error occured inside [allow_recruit]: %s", err))
+				wml.error(string.format("Error occured inside [allow_recruit] WML: %s", err))
 			end
 		end
 		team.recruit = v
