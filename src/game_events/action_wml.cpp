@@ -902,7 +902,7 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 	{
 		ERR_WML << "Error occured inside [unit] WML.";
 
-		throw e;
+		throw;
 	}
 }
 
