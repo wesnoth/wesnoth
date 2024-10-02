@@ -291,30 +291,14 @@ static int intf_clear_items(lua_State* L)
 {
 	gui2::widget* w = &luaW_checkwidget(L, 1);
 
-	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w)) {
-		if(number_of_items(*list)) {
-			list->remove_row(0, 0);
-		} else {
-			return 0;
-		}
-	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(w)) {
-		if(number_of_items(*multi_page)) {
-			multi_page->remove_page(0, 0);
-		} else {
-			return 0;
-		}
-	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(w)) {
-		if(number_of_items(*tree_view)) {
-			remove_treeview_node(tree_view->get_root_node(), 0, 0);
-		} else {
-			return 0;
-		}
-	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(w)) {
-		if(number_of_items(*tree_view_node)) {
-			remove_treeview_node(*tree_view_node, 0, 0);
-		} else {
-			return 0;
-		}
+	if(auto* lb = dynamic_cast<gui2::listbox*>(w)) {
+		lb->clear();
+	} else if(auto* mp = dynamic_cast<gui2::multi_page*>(w)) {
+		mp->clear();
+	} else if(auto* tv = dynamic_cast<gui2::tree_view*>(w)) {
+		tv->clear();
+	} else if(auto* tvn = dynamic_cast<gui2::tree_view_node*>(w)) {
+		tvn->clear();
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 	}
