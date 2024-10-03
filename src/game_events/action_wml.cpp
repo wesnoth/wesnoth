@@ -894,8 +894,16 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 		.allow_rename_side(true)
 		.allow_show(true);
 
-	uc.add_unit(parsed_cfg, &cfg);
+	try
+	{
+		uc.add_unit(parsed_cfg, &cfg);
+	}
+	catch(const unit_type::error& e)
+	{
+		ERR_WML << "Error occured inside [unit]: " << e.what();
 
+		throw;
+	}
 }
 
 } // end namespace game_events
