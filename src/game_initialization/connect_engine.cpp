@@ -828,6 +828,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	, controller_lock_(cfg["controller_lock"].to_bool(parent_.force_lock_settings_) && parent_.params_.use_map_settings)
 	, index_(index)
 	, team_(0)
+	, team_changed_(false)
 	, color_(std::min(index, gamemap::MAX_PLAYERS - 1))
 	, gold_(cfg["gold"].to_int(100))
 	, income_(cfg["income"])
@@ -899,6 +900,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	if(team_name_index >= parent_.team_data_.size()) {
 		assert(!parent_.team_data_.empty());
 		team_ = 0;
+		team_changed_ = true;
 		WRN_MP << "In side_engine constructor: Could not find my team_name " << cfg["team_name"] << " among the mp connect engine's list of team names. I am being assigned to the first team. This may indicate a bug!";
 	} else {
 		team_ = team_name_index;
@@ -1102,7 +1104,7 @@ config side_engine::new_config() const
 		// out for an honest design and a thoughtful implementation, you're correct! But
 		// I'm tired, and I'm cranky from wasting a over day on this, and so I'm exercising
 		// my prerogative as a grey-beard and leaving this for someone else to clean up.
-		if(res["user_team_name"].empty() || !parent_.params_.use_map_settings) {
+		if(res["user_team_name"].empty() || !parent_.params_.use_map_settings || team_changed_) {
 			res["user_team_name"] = parent_.team_data_[team_].user_team_name;
 		}
 
