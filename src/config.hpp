@@ -33,10 +33,19 @@
 #include "utils/const_clone.hpp"
 #include "utils/optional_reference.hpp"
 
-#ifdef __cpp_lib_ranges
+#ifdef CONFIG_USE_STL_RANGES
+#undef CONFIG_USE_STL_RANGES
+#endif
+
+#ifdef __cpp_lib_ranges // C++20
+#define CONFIG_USE_STL_RANGES
+#endif
+
+#ifdef CONFIG_USE_STL_RANGES
 #include <ranges>
 #else
 #include <boost/range/adaptor/map.hpp>
+#include <boost/range/adaptor/transformed.hpp>
 #endif
 
 #include <functional>
@@ -778,6 +787,42 @@ public:
 	all_children_iterator ordered_begin();
 	all_children_iterator ordered_end();
 	all_children_iterator erase(const all_children_iterator& i);
+
+private:
+	template<typename Res>
+	static auto any_tag_view(const child_pos& elem) -> std::pair<const child_map::key_type&, Res>
+	{
+		const auto& [key, list] = *elem.pos;
+		return { key, *list[elem.index] };
+	}
+
+public:
+#ifdef __cpp_explicit_this_parameter // C++23
+
+	/** In-order iteration over all children. */
+	template<typename Self>
+	auto all_children_view(this Self&& self)
+	{ return self.ordered_children | std::views::transform(&config::any_tag_view<Self>); }
+
+#else
+
+	/** In-order iteration over all children. */
+	auto all_children_view() const
+#ifdef CONFIG_USE_STL_RANGES
+	{ return ordered_children | std::views::transform(&config::any_tag_view<const config&>); }
+#else
+	{ return ordered_children | boost::adaptors::transformed(&config::any_tag_view<const config&>); }
+#endif
+
+	/** In-order iteration over all children. */
+	auto all_children_view()
+#ifdef CONFIG_USE_STL_RANGES
+	{ return ordered_children | std::views::transform(&config::any_tag_view<config&>); }
+#else
+	{ return ordered_children | boost::adaptors::transformed(&config::any_tag_view<config&>); }
+#endif
+
+#endif // __cpp_explicit_this_parameter
 
 	/**
 	 * A function to get the differences between this object,
