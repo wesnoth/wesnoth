@@ -122,6 +122,7 @@ public:
 
 	// String assignments:
 	config_attribute_value& operator=(const char *v) { return operator=(std::string(v)); }
+	config_attribute_value& operator=(std::string&& v);
 	config_attribute_value& operator=(const std::string &v);
 	config_attribute_value& operator=(const std::string_view &v);
 	config_attribute_value& operator=(const t_string &v);

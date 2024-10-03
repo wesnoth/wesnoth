@@ -129,11 +129,11 @@ bool from_string_verify(const std::string& source, To& res)
 }
 } // end anon namespace
 
-config_attribute_value& config_attribute_value::operator=(const std::string& v)
+config_attribute_value& config_attribute_value::operator=(std::string&& v)
 {
 	// Handle some special strings.
 	if(v.empty()) {
-		value_ = v;
+		value_ = std::move(v);
 		return *this;
 	}
 
@@ -190,8 +190,13 @@ config_attribute_value& config_attribute_value::operator=(const std::string& v)
 	}
 
 	// No conversion possible. Store the string.
-	value_ = v;
+	value_ = std::move(v);
 	return *this;
+}
+
+config_attribute_value& config_attribute_value::operator=(const std::string& v)
+{
+	return operator=(std::string(v));
 }
 
 config_attribute_value& config_attribute_value::operator=(const std::string_view& v)
@@ -199,8 +204,8 @@ config_attribute_value& config_attribute_value::operator=(const std::string_view
 	// TODO: Currently this acts just like std::string assignment.
 	// Perhaps the underlying variant should take a string_view directly?
 	return operator=(std::string(v));
-
 }
+
 config_attribute_value& config_attribute_value::operator=(const t_string& v)
 {
 	if(!v.translatable()) {
