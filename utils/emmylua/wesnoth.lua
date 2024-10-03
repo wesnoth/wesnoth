@@ -82,12 +82,21 @@ function wesnoth.name_generator(type, definition) end
 ---@return fun():string
 function wesnoth.name_generator(type, definition, chain_size, max_length) end
 
----@alias formula fun(variables:WML):any
+---@class formula
+---@field functions formula_function_table
+---@overload fun(variables:WML):any
+
+---@class formula_function
+---@overload fun(variables:WML, ...):any,string?
+
+---@class formula_function_table
+---@field [string] formula_function
 
 ---Compile a WFL formula into a Lua function
 ---@param formula string A WFL formula
+---@param functions? formula_function_table Additional functions to be defined for the formula
 ---@return formula
-function wesnoth.compile_formula(formula) end
+function wesnoth.compile_formula(formula, functions) end
 
 ---Evaluate a WFL formula
 ---@param formula string|formula A WFL formula
