@@ -194,7 +194,7 @@ public:
 	int index() const { return index_; }
 	void set_index(int index) { index_ = index; }
 	unsigned team() const { return team_; }
-	void set_team(unsigned team) { team_ = team; team_changed_ = true; }
+	void set_team(unsigned team) { team_ = team; }
 	std::multimap<std::string, config> get_side_children();
 	void set_side_children(std::multimap<std::string, config> children);
 	int color() const { return color_; }
@@ -251,7 +251,6 @@ private:
 
 	int index_;
 	unsigned team_;
-	bool team_changed_;
 	int color_;
 	int gold_;
 	int income_;
