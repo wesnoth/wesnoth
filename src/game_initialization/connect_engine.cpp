@@ -1070,42 +1070,6 @@ config side_engine::new_config() const
 
 		res["team_name"] = parent_.team_data_[team_].team_name;
 
-		// TODO: Fix this mess!
-		//
-		// There is a fundamental disconnect, here. One the one hand we have the idea of
-		// 'teams' (which don't actually exist). A 'team' has a name (internal key:
-		// team_name) and a translatable display name (internal key: user_team_name). But
-		// what we actually have are sides. Sides relate to each other by 'team' (internal
-		// key: team_name) and each side has it's own name for the team (internal key:
-		// user_team_name).
-		//
-		// The confusion is that the keys from the side have names which one might expect
-		// always refer to the 'team' concept. THEY DO NOT! They are simply named in such
-		// a way to confuse the unwary.
-		//
-		// There is no simple, clean way to clear up the confusion. So, I'm applying the
-		// Principle of Least Surprise. The user can see the user_team_name, and it should
-		// not change. So if the side already has a user_team_name, use it.
-		//
-		// In the rare and unlikely (like, probably never happens) case that the side does
-		// not have a user_team_name, but an (nebulous and non-deterministic term here)
-		// EARLIER side has the same team_name and that side gives a user_team_name, we'll
-		// use it.
-		//
-		// The effect of this mess, and my lame fix for it, is probably only visible when
-		// randomizing the sides on a team for multi-player games. But the effect when it's
-		// not fixed is an obvious mistake on the player's screen when playing a campaign
-		// in single-player mode.
-		//
-		// At some level, all this is probably wrong, but it is the least breakage from the
-		// mess I found; so deal with it, or fix it.
-		//
-		// If, by now, you get the impression this is a kludged-together mess which cries
-		// out for an honest design and a thoughtful implementation, you're correct! But
-		// I'm tired, and I'm cranky from wasting a over day on this, and so I'm exercising
-		// my prerogative as a grey-beard and leaving this for someone else to clean up.
-		//
-		// Now should be fixed for single player
 		if(res["user_team_name"].empty() || !parent_.params_.use_map_settings || team_changed_) {
 			res["user_team_name"] = parent_.team_data_[team_].user_team_name;
 		}
