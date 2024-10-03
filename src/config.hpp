@@ -182,8 +182,8 @@ public:
 	 * Pass the keys/tags and values/children alternately.
 	 * For example: config("key", 42, "value", config())
 	 */
-	template<typename... T>
-	explicit config(config_key_type first, T&&... args);
+	template<typename... Args>
+	explicit config(config_key_type first, Args&&... args);
 
 	~config();
 
@@ -909,56 +909,25 @@ using optional_const_config = optional_config_impl<const config>;
 /** Implement non-member swap function for std::swap (calls @ref config::swap). */
 void swap(config& lhs, config& rhs);
 
-namespace detail {
-	template<typename... T>
-	struct config_construct_unpacker;
-
-	template<>
-	struct config_construct_unpacker<>
+namespace detail
+{
+	template<typename Key, typename Value, typename... Rest>
+	inline void config_construct_unpack(config& cfg, Key&& key, Value&& val, Rest... fwd)
 	{
-		void visit(config&) {}
-	};
-
-	template<typename K, typename V, typename... Rest>
-	struct config_construct_unpacker<K, V, Rest...>
-	{
-		template<typename K2 = K, typename V2 = V>
-		void visit(config& cfg, K2&& key, V2&& val, Rest... fwd)
-		{
-			cfg.insert(std::forward<K>(key), std::forward<V>(val));
-			config_construct_unpacker<Rest...> unpack;
-			unpack.visit(cfg, std::forward<Rest>(fwd)...);
+		if constexpr(std::is_same_v<std::decay_t<Value>, config>) {
+			cfg.add_child(std::forward<Key>(key), std::forward<Value>(val));
+		} else {
+			cfg.insert(std::forward<Key>(key), std::forward<Value>(val));
 		}
-	};
 
-	template<typename T, typename... Rest>
-	struct config_construct_unpacker<T, config, Rest...>
-	{
-		template<typename T2 = T, typename C = config>
-		void visit(config& cfg, T2&& tag, C&& child, Rest... fwd)
-		{
-			cfg.add_child(std::forward<T>(tag), std::forward<config>(child));
-			config_construct_unpacker<Rest...> unpack;
-			unpack.visit(cfg, std::forward<Rest>(fwd)...);
+		if constexpr(sizeof...(Rest) > 0) {
+			config_construct_unpack(cfg, std::forward<Rest>(fwd)...);
 		}
-	};
-
-	template<typename T, typename... Rest>
-	struct config_construct_unpacker<T, config&, Rest...>
-	{
-		template<typename T2 = T>
-		void visit(config& cfg, T2&& tag, config& child, Rest... fwd)
-		{
-			cfg.add_child(std::forward<T>(tag), std::forward<config>(child));
-			config_construct_unpacker<Rest...> unpack;
-			unpack.visit(cfg, std::forward<Rest>(fwd)...);
-		}
-	};
+	}
 }
 
-template<typename... T>
-inline config::config(config_key_type first, T&&... args)
+template<typename... Args>
+inline config::config(config_key_type first, Args&&... args)
 {
-	detail::config_construct_unpacker<config_key_type, T...> unpack;
-	unpack.visit(*this, first, std::forward<T>(args)...);
+	detail::config_construct_unpack(*this, first, std::forward<Args>(args)...);
 }
