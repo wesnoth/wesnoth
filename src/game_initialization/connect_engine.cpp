@@ -1104,6 +1104,8 @@ config side_engine::new_config() const
 		// out for an honest design and a thoughtful implementation, you're correct! But
 		// I'm tired, and I'm cranky from wasting a over day on this, and so I'm exercising
 		// my prerogative as a grey-beard and leaving this for someone else to clean up.
+		//
+		// Now should be fixed for single player
 		if(res["user_team_name"].empty() || !parent_.params_.use_map_settings || team_changed_) {
 			res["user_team_name"] = parent_.team_data_[team_].user_team_name;
 		}
