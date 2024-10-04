@@ -193,19 +193,12 @@ private:
 	/** The unparsed/raw text */
 	t_string unparsed_text_;
 
-	/** shapes used for size calculation */
-	std::unique_ptr<text_shape> tshape_;
-	std::unique_ptr<image_shape> ishape_;
-
 	/** Width and height of the canvas */
 	const unsigned init_w_;
-	unsigned w_, h_;
+	point size_;
 
 	/** Padding */
 	unsigned padding_;
-
-	/** Possible formatting tags, must be the same as those in gui2::text_shape::draw */
-	static const inline std::vector<std::string> format_tags_ = {"bold", "b", "italic", "i", "underline", "u"};
 
 	/** Create template for text config that can be shown in canvas */
 	void default_text_config(config* txt_ptr, t_string text = "");
@@ -218,12 +211,12 @@ private:
 	void add_link(config& curr_item, std::string name, std::string dest, const point& origin, int img_width);
 
 	/** size calculation functions */
-	point get_text_size(config& text_cfg, unsigned width = 0);
-	point get_image_size(config& img_cfg);
+	point get_text_size(config& text_cfg, unsigned width = 0) const;
+	point get_image_size(config& img_cfg) const;
 
-	wfl::map_formula_callable setup_text_renderer(config text_cfg, unsigned width = 0);
+	wfl::map_formula_callable setup_text_renderer(config text_cfg, unsigned width = 0) const;
 
-	size_t get_split_location(std::string text, const point& pos);
+	size_t get_split_location(std::string_view text, const point& pos);
 
 	/** link variables and functions */
 	std::vector<std::pair<rect, std::string>> links_;
@@ -242,9 +235,11 @@ private:
 
 	point calculate_best_size() const override
 	{
-		point size = styled_widget::calculate_best_size();
-		point new_size(w_ == 0 ? size.x : w_, h_ == 0 ? size.y : h_);
-		return new_size;
+		if(size_ == point{}) {
+			return styled_widget::calculate_best_size();
+		} else {
+			return size_;
+		}
 	}
 
 public:
