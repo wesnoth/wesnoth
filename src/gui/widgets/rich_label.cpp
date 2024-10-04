@@ -46,6 +46,13 @@ static lg::log_domain log_rich_label("gui/widget/rich_label");
 
 namespace gui2
 {
+namespace
+{
+using namespace std::string_literals;
+
+/** Possible formatting tags, must be the same as those in gui2::text_shape::draw */
+const std::array format_tags{ "bold"s, "b"s, "italic"s, "i"s, "underline"s, "u"s };
+}
 
 // ------------ WIDGET -----------{
 
@@ -72,49 +79,52 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 		std::bind(&rich_label::signal_handler_mouse_leave, this, std::placeholders::_3));
 }
 
-wfl::map_formula_callable rich_label::setup_text_renderer(config text_cfg, unsigned width) {
+wfl::map_formula_callable rich_label::setup_text_renderer(config text_cfg, unsigned width) const {
 	// Set up fake render to calculate text position
-	wfl::action_function_symbol_table functions;
+	static wfl::action_function_symbol_table functions;
 	wfl::map_formula_callable variables;
 	variables.add("text", wfl::variant(text_cfg["text"].str()));
 	variables.add("width", wfl::variant(width));
 	variables.add("text_wrap_mode", wfl::variant(PANGO_ELLIPSIZE_NONE));
 	variables.add("fake_draw", wfl::variant(true));
-	auto tshape = gui2::text_shape(text_cfg, functions);
-	tshape.draw(variables);
+	gui2::text_shape{text_cfg, functions}.draw(variables);
 	return variables;
 }
 
-point rich_label::get_text_size(config& text_cfg, unsigned width) {
+point rich_label::get_text_size(config& text_cfg, unsigned width) const {
 	wfl::map_formula_callable variables = setup_text_renderer(text_cfg, width);
-	return point(variables.query_value("text_width").as_int(), variables.query_value("text_height").as_int());
+	return {
+		variables.query_value("text_width").as_int(),
+		variables.query_value("text_height").as_int()
+	};
 }
 
-point rich_label::get_image_size(config& img_cfg) {
-	wfl::action_function_symbol_table functions;
+point rich_label::get_image_size(config& img_cfg) const {
+	static wfl::action_function_symbol_table functions;
 	wfl::map_formula_callable variables;
 	variables.add("fake_draw", wfl::variant(true));
-	auto ishape = gui2::image_shape(img_cfg, functions);
-	ishape.draw(variables);
-	return point(variables.query_value("image_width").as_int(), variables.query_value("image_height").as_int());
+	gui2::image_shape{img_cfg, functions}.draw(variables);
+	return {
+		variables.query_value("image_width").as_int(),
+		variables.query_value("image_height").as_int()
+	};
 }
 
 std::pair<size_t, size_t> rich_label::add_text(config& curr_item, std::string text) {
-	size_t start = curr_item["text"].str().size();
-	curr_item["text"] = curr_item["text"].str() + std::move(text);
-	size_t end = curr_item["text"].str().size();
+	auto& attr = curr_item["text"];
+	size_t start = attr.str().size();
+	attr = attr.str() + std::move(text);
+	size_t end = attr.str().size();
 	return { start, end };
 }
 
 void rich_label::add_attribute(config& curr_item, std::string attr_name, size_t start, size_t end, std::string extra_data) {
-	config& attr_cfg = curr_item.add_child("attribute");
-	attr_cfg["name"] = attr_name;
-	attr_cfg["start"] = start;
-	attr_cfg["end"] = end == 0 ? curr_item["text"].str().size() : end;
-
-	if (!extra_data.empty()) {
-		attr_cfg["value"] = std::move(extra_data);
-	}
+	curr_item.add_child("attribute", config{
+		"name"  , attr_name,
+		"start" , start,
+		"end"   , end == 0 ? curr_item["text"].str().size() : end,
+		"value" , std::move(extra_data)
+	});
 }
 
 std::pair<size_t, size_t> rich_label::add_text_with_attribute(config& curr_item, std::string text, std::string attr_name, std::string extra_data) {
@@ -357,7 +367,11 @@ std::pair<config, point> rich_label::get_parsed_text(
 				col_idx = 0;
 
 				for(const config& col : row.child_range("col")) {
-					config col_cfg{"text", col};
+					config col_cfg;
+					col_cfg.append_children(col);
+
+					config& col_txt_cfg = col_cfg.add_child("text");
+					col_txt_cfg.append_attributes(col);
 
 					// attach data
 					const auto& [table_elem, size] = get_parsed_text(col_cfg, point(col_x, row_y), width/columns);
@@ -381,7 +395,11 @@ std::pair<config, point> rich_label::get_parsed_text(
 				max_row_height = 0;
 
 				for(const config& col : row.child_range("col")) {
-					config col_cfg{"text", col};
+					config col_cfg;
+					col_cfg.append_children(col);
+
+					config& col_txt_cfg = col_cfg.add_child("text");
+					col_txt_cfg.append_attributes(col);
 
 					// attach data
 					auto [table_elem, size] = get_parsed_text(col_cfg, point(col_x, row_y), col_widths[col_idx]);
@@ -516,7 +534,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 				DBG_GUI_RL << "ref: dst=" << child["dst"];
 
-			} else if(std::find(format_tags_.begin(), format_tags_.end(), key) != format_tags_.end()) {
+			} else if(std::find(format_tags.begin(), format_tags.end(), key) != format_tags.end()) {
 
 				add_text_with_attribute(*curr_item, line, key);
 				config parsed_children = get_parsed_text(child, point(x, prev_blk_height), init_width).first;
