@@ -40,7 +40,7 @@
 #include "addon/manager_ui.hpp"
 #include "chat_log.hpp"
 #include "desktop/open.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "preferences/preferences.hpp"
@@ -390,13 +390,13 @@ widget_data mp_lobby::make_game_row_data(const mp::game_info& game)
 		{"era_name", game.era}
 	});
 
-	item["label"] = game.vacant_slots > 0 ? font::span_color(color_string, game.name) : game.name;
+	item["label"] = game.vacant_slots > 0 ? markup::span_color(color_string, game.name) : game.name;
 	data.emplace("name", item);
 
-	item["label"] = font::span_color(font::GRAY_COLOR, game.type_marker + "<i>" + scenario_text + "</i>");
+	item["label"] = markup::span_color(font::GRAY_COLOR, game.type_marker, markup::italic(scenario_text));
 	data.emplace("scenario", item);
 
-	item["label"] = font::span_color(color_string, game.status);
+	item["label"] = markup::span_color(color_string, game.status);
 	data.emplace("status", item);
 
 	return data;
@@ -415,17 +415,17 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	std::ostringstream ss;
 
 	const auto mark_missing = [&ss]() {
-		ss << ' ' << font::span_color(font::BAD_COLOR) << "(" << _("era_or_mod^not installed") << ")</span>";
+		ss << ' ' << markup::span_color(font::BAD_COLOR, "(", _("era_or_mod^not installed"), ")");
 	};
 
-	ss << "<big>" << font::span_color(font::TITLE_COLOR, _("Era")) << "</big>\n" << game.era;
+	ss << markup::tag("big", markup::span_color(font::TITLE_COLOR, _("Era"))) << "\n" << game.era;
 
 	if(!game.have_era) {
 		// NOTE: not using colorize() here deliberately to avoid awkward string concatenation.
 		mark_missing();
 	}
 
-	ss << "\n\n<big>" << font::span_color(font::TITLE_COLOR, _("Modifications")) << "</big>\n";
+	ss << "\n\n" << markup::tag("big", markup::span_color(font::TITLE_COLOR, _("Modifications"))) << "\n";
 
 	auto mods = game.mod_info;
 
@@ -446,7 +446,7 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	// TODO: move to some general area of the code.
 	const auto yes_or_no = [](bool val) { return val ? _("yes") : _("no"); };
 
-	ss << "\n<big>" << font::span_color(font::TITLE_COLOR, _("Settings")) << "</big>\n";
+	ss << "\n<big>" << markup::span_color(font::TITLE_COLOR, _("Settings")) << "</big>\n";
 	ss << _("Experience modifier:")   << " " << game.xp << "\n";
 	ss << _("Gold per village:")      << " " << game.gold << "\n";
 	ss << _("Map size:")              << " " << game.map_size_info << "\n";
@@ -461,7 +461,7 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	if(!game.have_era || !game.have_all_mods || !game.required_addons.empty()) {
 		info_icon.set_label("icons/icon-info-error.png");
 
-		ss << "\n\n<span color='#f00' size='x-large'>! </span>";
+		ss << "\n\n" << markup::span_color("#f00", markup::span_size("x-large", "! "));
 		ss << _("One or more add-ons need to be installed\nin order to join this game.");
 	} else {
 		info_icon.set_label("icons/icon-info.png");

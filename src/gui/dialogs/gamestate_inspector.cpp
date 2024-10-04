@@ -25,9 +25,10 @@
 #include "gui/widgets/window.hpp"
 
 #include "desktop/clipboard.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "game_events/manager.hpp"
 #include "serialization/parser.hpp" // for write()
+#include "serialization/markup.hpp"
 
 #include "gettext.hpp"
 #include "recall_list_manager.hpp"
@@ -589,12 +590,11 @@ static stuff_list_adder add_unit_entry(stuff_list_adder& progress, const unit& u
 	progress.widget("loc", s.str());
 
 	s.str("");
-	s << font::span_color(team_color);
-	s << "side=" << u.side() << "</span>";
+	s << markup::span_color(team_color, "side=", u.side());
 	progress.widget("side", s.str(), true);
 
 	if(u.can_recruit()) {
-		progress.widget("leader", "<span color='yellow'>LEADER</span> ", true);
+		progress.widget("leader", markup::span_color("yellow", "LEADER "), true);
 	}
 
 	s.str("");

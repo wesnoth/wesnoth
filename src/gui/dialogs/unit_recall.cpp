@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/unit_recall.hpp"
 
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -83,28 +83,23 @@ static const inline std::string maybe_inactive(const std::string& str, bool acti
 	if(active)
 		return str;
 	else
-		return font::span_color(inactive_row_color, str);
+		return markup::span_color(inactive_row_color, str);
 }
 
 static std::string format_level_string(const int level, bool recallable)
 {
-	std::string lvl = std::to_string(level);
-
 	if(!recallable) {
 		// Same logic as when recallable, but always in inactive_row_color.
-		if(level < 2) {
-			return font::span_color(inactive_row_color, lvl);
-		} else {
-			return font::span_color(inactive_row_color, "<b>" + lvl + "</b>");
-		}
+		return markup::span_color(inactive_row_color,
+			(level < 2 ? std::to_string(level) : markup::bold(level)));
 	} else if(level < 1) {
-		return font::span_color(inactive_row_color, lvl);
+		return markup::span_color(inactive_row_color, level);
 	} else if(level == 1) {
-		return lvl;
+		return std::to_string(level);
 	} else if(level == 2) {
-		return "<b>" + lvl + "</b>";
+		return markup::bold(level);
 	} else {
-		return"<b><span color='#ffffff'>" + lvl + "</span></b>";
+		return markup::bold(markup::span_color("#ffffff", level));
 	}
 }
 
@@ -117,11 +112,11 @@ static std::string format_cost_string(int unit_recall_cost, const int team_recal
 	}
 
 	if(unit_recall_cost > team_recall_cost) {
-		str << "<span color='#ff0000'>" << unit_recall_cost << "</span>";
+		str << markup::span_color("#ff0000", unit_recall_cost);
 	} else if(unit_recall_cost == team_recall_cost) {
 		str << unit_recall_cost;
 	} else if(unit_recall_cost < team_recall_cost) {
-		str << "<span color='#00ff00'>" << unit_recall_cost << "</span>";
+		str << markup::span_color("#00ff00", unit_recall_cost);
 	}
 
 	return str.str();
@@ -252,7 +247,7 @@ void unit_recall::pre_show()
 			exp_str << font::unicode_en_dash;
 		}
 
-		column["label"] = font::span_color(recallable ? unit->xp_color() : inactive_row_color, exp_str.str());
+		column["label"] = markup::span_color(recallable ? unit->xp_color() : inactive_row_color, exp_str.str());
 		row_data.emplace("unit_experience", column);
 
 		// Since the table widgets use heavy formatting, we save a bare copy

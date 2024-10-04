@@ -22,6 +22,7 @@
 #include "gui/widgets/window.hpp"
 #include "formula/debugger.hpp"
 #include "font/pango/escape.hpp"
+#include "serialization/markup.hpp"
 
 #include <functional>
 
@@ -44,9 +45,9 @@ void formula_debugger::pre_show()
 		for(int d = 0; d < c; ++d) {
 			stack_text << indent;
 		}
-		stack_text << "#<span color=\"#00ff00\">" << i.counter()
-				   << "</span>: \"<span color=\"#00ff00\">" << font::escape_text(i.name())
-				   << "</span>\": (" << font::escape_text(i.str()) << ") " << std::endl;
+		stack_text << "#" << markup::span_color("#00ff00", i.counter())
+				   << ": \"" << markup::span_color("#00ff00", font::escape_text(i.name()))
+				   << "\": (" << font::escape_text(i.str()) << ") " << std::endl;
 		++c;
 	}
 
@@ -65,16 +66,15 @@ void formula_debugger::pre_show()
 			execution_text << indent;
 		}
 		if(!i.evaluated()) {
-			execution_text << "#<span color=\"#00ff00\">" << i.counter()
-						   << "</span>: \"<span color=\"#00ff00\">" << font::escape_text(i.name())
-						   << "</span>\": (" << font::escape_text(i.str()) << ") " << std::endl;
+			execution_text << "#" << markup::span_color("#00ff00", i.counter())
+				   		   << ": \"" << markup::span_color("#00ff00", font::escape_text(i.name()))
+				   		   << "\": (" << font::escape_text(i.str()) << ") " << std::endl;
 		} else {
-			execution_text << "#<span color=\"#ffff00\">" << i.counter()
-						   << "</span>: \"<span color=\"#ffff00\">" << font::escape_text(i.name())
-						   << "</span>\": (" << font::escape_text(i.str()) << ") = "
-						   << "<span color=\"#ffa500\">"
-						   << font::escape_text(i.value().to_debug_string())
-						   << "</span>" << std::endl;
+			execution_text << "#" << markup::span_color("#ffff00", i.counter())
+				   		   << ": \"" << markup::span_color("#ffff00", font::escape_text(i.name()))
+				   		   << "\": (" << font::escape_text(i.str()) << ") ="
+						   << markup::span_color("#ffa500", font::escape_text(i.value().to_debug_string()))
+						   << std::endl;
 		}
 	}
 

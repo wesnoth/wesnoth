@@ -37,9 +37,11 @@
 #include "picture.hpp"
 #include "preferences/preferences.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/markup.hpp"
 #include "utils/general.hpp"
-#include <functional>
 #include "game_config_view.hpp"
+
+#include <functional>
 
 
 static lg::log_domain log_gameloaddlg{"gui/dialogs/game_load_dialog"};
@@ -353,7 +355,7 @@ void game_load::apply_filter_text(const std::string& text, bool force)
 void game_load::evaluate_summary_string(std::stringstream& str, const config& cfg_summary)
 {
 	if(cfg_summary["corrupt"].to_bool()) {
-		str << "\n<span color='#f00'>" << _("(Invalid)") << "</span>";
+		str << "\n" << markup::span_color("#f00", _("(Invalid)"));
 		// \todo: this skips the catch() statement in display_savegame. Low priority, as the
 		// dialog's state is reasonable; the "load" button is inactive, the "delete" button is
 		// active, and (cosmetic bug) it leaves the "change difficulty" toggle active. Can be

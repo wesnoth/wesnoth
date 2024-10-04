@@ -22,6 +22,7 @@
 #include "units/helper.hpp"
 #include "units/types.hpp"
 #include "play_controller.hpp"
+#include "serialization/markup.hpp"
 
 namespace unit_helper {
 
@@ -54,21 +55,20 @@ std::string resistance_color(const int resistance)
 static std::string unit_level_tooltip(const int level, const std::vector<std::string> &adv_to_types, const std::vector<config> &adv_to_mods)
 {
 	std::ostringstream tooltip;
-	tooltip << _("Level: ") << "<b>" << level << "</b>\n";
+	tooltip << _("Level: ") << markup::bold(level) << "\n";
 	const bool has_advancements = !adv_to_types.empty() || !adv_to_mods.empty();
 	if(has_advancements) {
-		tooltip << _("Advancements:") << "\n<b>\t";
+		tooltip << _("Advancements:") << "\n\t";
 		if(!adv_to_types.empty())
-			tooltip << utils::join(adv_to_types, "\n\t");
+			tooltip << markup::bold(utils::join(adv_to_types, "\n\t"));
 		if(!adv_to_mods.empty()) {
 			if(!adv_to_types.empty())
 				tooltip << "\n\t";
 			std::vector<std::string> descriptions;
 			for(const config& adv : adv_to_mods)
 				descriptions.push_back(adv["description"].str());
-			tooltip << utils::join(descriptions, "\n\t");
+			tooltip << markup::bold(utils::join(descriptions, "\n\t"));
 		}
-		tooltip << "</b>";
 	} else {
 		tooltip << _("No advancement");
 	}

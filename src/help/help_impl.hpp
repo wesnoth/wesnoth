@@ -37,7 +37,9 @@
 #include "font/constants.hpp"
 #include "font/standard_colors.hpp"
 #include "gettext.hpp"
+#include "serialization/string_utils.hpp"
 #include "utils/optional_fwd.hpp"
+
 #include <cstring>
 #include <list>                         // for list
 #include <memory>
@@ -311,13 +313,7 @@ section *find_section(section &sec, const std::string &id);
  */
 config parse_text(const std::string &text);
 
-/** Make a best effort to word wrap s. All parts are less than width. */
-std::vector<std::string> split_in_width(const std::string &s, const int font_size, const unsigned width);
-
 std::string remove_first_space(const std::string& text);
-
-/** Prepend all chars with meaning inside attributes with a backslash. */
-std::string escape(const std::string &s);
 
 /** Return the first word in s, not removing any spaces in the start of it. */
 std::string get_first_word(const std::string &s);
@@ -367,23 +363,5 @@ bool is_visible_id(const std::string &id);
  * be defined in the config.
  */
 bool is_valid_id(const std::string &id);
-
-// Helpers for making generation of topics easier.
-
-inline std::string make_link(const std::string& text, const std::string& dst)
-{
-	// some sorting done on list of links may rely on the fact that text is first
-	return "<ref dst='" + help::escape(dst) + "'>" + help::escape(text) + "</ref>";
-}
-
-inline std::string bold(const std::string &s)
-{
-	std::stringstream ss;
-	ss << "<b>" << help::escape(s) << "</b>";
-	return ss.str();
-}
-
-// A string to be displayed and its width.
-typedef std::pair< std::string, unsigned > item;
 
 } // end namespace help

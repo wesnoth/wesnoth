@@ -18,7 +18,7 @@
 
 #include "actions/attack.hpp" // for battle_context_unit_stats
 #include "font/constants.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
@@ -286,8 +286,9 @@ static hitrate_table_element tally(const statistics_t::stats::hitrate_map& by_ct
 			str2 << font::unicode_em_dash;
 		} else {
 			const auto add_probability = [&str2](double probability, bool more_is_better) {
-				str2 << font::span_color(game_config::red_to_green((more_is_better ? probability : 1.0 - probability) * 100.0, true))
-					<< get_probability_string(probability) << "</span>";
+				str2 << markup::span_color(
+					game_config::red_to_green((more_is_better ? probability : 1.0 - probability) * 100.0, true),
+					get_probability_string(probability));
 			};
 
 			// Take the average. At the end of a scenario or a campaign the sum of

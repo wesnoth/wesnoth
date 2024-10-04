@@ -18,7 +18,7 @@
 #include "editor/palette/editor_palettes.hpp"
 
 #include "gettext.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "overlay.hpp"
 #include "filesystem.hpp"
 
@@ -305,13 +305,13 @@ void editor_palette<Item>::layout()
 		bool is_core = non_core_items_.find(get_id((*item).second)) == non_core_items_.end();
 		if (!is_core) {
 			tooltip_text << " "
-					<< font::span_color(font::BAD_COLOR)
 			<< _("(non-core)") << "\n"
-			<< _("Will not work in game without extra care.")
-			<< "</span>";
+			<< _("Will not work in game without extra care.");
+			tile.set_tooltip_string(markup::span_color(font::BAD_COLOR, tooltip_text.str()));
+		} else {
+			tile.set_tooltip_string(tooltip_text.str());
 		}
 
-		tile.set_tooltip_string(tooltip_text.str());
 		tile.set_item_image(item_base, item_overlay);
 		tile.set_item_id(item_id);
 

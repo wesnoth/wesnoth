@@ -30,9 +30,10 @@
 #include "play_controller.hpp"
 #include "resources.hpp" //for help fetching lua kernel pointers
 #include "scripting/plugins/manager.hpp" //needed for the WHICH_KERNEL version of display
-#include "scripting/game_lua_kernel.hpp"	//needed for the WHICH_KERNEL version of display
+#include "scripting/game_lua_kernel.hpp" //needed for the WHICH_KERNEL version of display
 #include "scripting/lua_kernel_base.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/markup.hpp"
 #include "log.hpp"
 #include "font/pango/escape.hpp"
 
@@ -383,7 +384,7 @@ bool lua_interpreter::lua_model::execute (const std::string & cmd)
 
 /** Add a dialog message, which will appear in blue. */
 void lua_interpreter::lua_model::add_dialog_message(const std::string & msg) {
-	log_ << "<span color='#8888FF'>" << font::escape_text(msg) << "</span>\n";
+	log_ << markup::span_color("#8888FF", font::escape_text(msg)) << "\n";
 	raw_log_ << msg << '\n';
 }
 

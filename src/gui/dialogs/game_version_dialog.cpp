@@ -34,14 +34,15 @@
 #include "gui/dialogs/end_credits.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
+#include "serialization/markup.hpp"
 
 #include <functional>
 
 namespace
 {
 
-const std::string text_feature_on =  "<span color='#0f0'>&#9679;</span>";
-const std::string text_feature_off = "<span color='#f00'>&#9679;</span>";
+const std::string text_feature_on =  markup::span_color("#0f0", "&#9679");
+const std::string text_feature_off = markup::span_color("#f00", "&#9679");
 
 } // end anonymous namespace
 
@@ -105,7 +106,7 @@ void game_version::pre_show()
 	styled_widget& arch_label = find_widget<styled_widget>("arch");
 
 	version_label.set_label(game_config::revision);
-	os_label.set_label("<i>"+desktop::os_version()+"</i>");
+	os_label.set_label(markup::italic(desktop::os_version()));
 	arch_label.set_label(game_config::build_arch());
 
 	button& copy_all = find_widget<button>("copy_all");

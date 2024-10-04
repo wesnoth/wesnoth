@@ -18,7 +18,7 @@
 #include "gui/dialogs/campaign_selection.hpp"
 
 #include "filesystem.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"
@@ -51,11 +51,7 @@ void campaign_selection::campaign_selected()
 	if(!tree.selected_item()->id().empty()) {
 		auto iter = std::find(page_ids_.begin(), page_ids_.end(), tree.selected_item()->id());
 
-		if(tree.selected_item()->id() == missing_campaign_) {
-			find_widget<button>("ok").set_active(false);
-		} else {
-			find_widget<button>("ok").set_active(true);
-		}
+		find_widget<button>("ok").set_active(tree.selected_item()->id() != missing_campaign_);
 
 		const int choice = std::distance(page_ids_.begin(), iter);
 		if(iter == page_ids_.end()) {
@@ -108,13 +104,11 @@ void campaign_selection::campaign_selected()
 					if(cfg["auto_markup"].to_bool(true) == false) {
 						desc = cfg["description"].str();
 					} else {
-						//desc = "<small>";
 						if(!cfg["old_markup"].to_bool()) {
-							desc += font::span_color(font::GRAY_COLOR) + "(" + cfg["description"].str() + ")</span>";
+							desc += markup::span_color(font::GRAY_COLOR, "(", cfg["description"].str(), ")");
 						} else {
-							desc += font::span_color(font::GRAY_COLOR) + cfg["description"].str() + "</span>";
+							desc += markup::span_color(font::GRAY_COLOR, cfg["description"].str());
 						}
-						//desc += "</small>";
 					}
 
 					// Icons get displayed instead of the labels on the dropdown menu itself,

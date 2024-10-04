@@ -33,6 +33,7 @@
 #include "log.hpp"
 #include "preferences/preferences.hpp"
 #include "scripting/plugins/manager.hpp"
+#include "serialization/markup.hpp"
 #include "wml_exception.hpp"
 
 static lg::log_domain log_lobby("lobby");
@@ -219,7 +220,7 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 
 	const std::string before_message = log.get_value().empty() ? "" : "\n";
 	const std::string new_text = formatter()
-		<< log.get_value() << before_message << "<span color='#bcb088'>" << prefs::get().get_chat_timestamp(std::time(0)) << text << "</span>";
+		<< log.get_value() << before_message << markup::span_color("#bcb088", prefs::get().get_chat_timestamp(std::time(0)), text);
 
 	log.set_use_markup(true);
 	log.set_value(new_text);
@@ -274,9 +275,9 @@ void chatbox::add_chat_message(const std::time_t& /*time*/,
 	// message consisting of '/me insert text here' in the case the '/me' or '/emote'
 	// commands are used, so we need to do some manual preprocessing here.
 	if(message.compare(0, 4, "/me ") == 0) {
-		text = formatter() << "<i>" << speaker << " " << font::escape_text(message.substr(4)) << "</i>";
+		text = formatter() << markup::italic(speaker, " ", font::escape_text(message.substr(4)));
 	} else {
-		text = formatter() << "<b>" << speaker << ":</b> " << font::escape_text(message);
+		text = formatter() << markup::bold(speaker, ":") << font::escape_text(message);
 	}
 
 	append_to_chatbox(text);
@@ -501,7 +502,7 @@ void chatbox::add_whisper_window_whisper(const std::string& sender, const std::s
 		return;
 	}
 
-	const std::string text = formatter() << "<b>" << sender << ":</b> " << font::escape_text(message);
+	const std::string text = formatter() << markup::bold(sender, ": ") << font::escape_text(message);
 	append_to_chatbox(text, t - &open_windows_[0], false);
 }
 
@@ -509,7 +510,7 @@ void chatbox::add_active_window_whisper(const std::string& sender,
 	const std::string& message,
 	const bool force_scroll)
 {
-	const std::string text = formatter() << "<b>" << "whisper: " << sender << ":</b> " << font::escape_text(message);
+	const std::string text = formatter() << markup::bold("whisper: ", sender, ": ") << font::escape_text(message);
 	append_to_chatbox(text, force_scroll);
 }
 
@@ -558,7 +559,7 @@ void chatbox::add_room_window_message(const std::string& room,
 		return;
 	}
 
-	const std::string text = formatter() << "<b>" << sender << ":</b> " << font::escape_text(message);
+	const std::string text = formatter() << markup::bold(sender, ": ") << font::escape_text(message);
 	append_to_chatbox(text, t - &open_windows_[0], false);
 }
 
@@ -566,7 +567,7 @@ void chatbox::add_active_window_message(const std::string& sender,
 	const std::string& message,
 	const bool force_scroll)
 {
-	const std::string text = formatter() << "<b>" << sender << ":</b> " << font::escape_text(message);
+	const std::string text = formatter() << markup::bold(sender, ": ") << font::escape_text(message);
 	append_to_chatbox(text, force_scroll);
 }
 

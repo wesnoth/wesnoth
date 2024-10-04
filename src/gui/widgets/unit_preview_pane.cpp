@@ -25,7 +25,6 @@
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 
-#include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "language.hpp"
@@ -35,6 +34,7 @@
 #include "help/help_impl.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
+#include "serialization/markup.hpp"
 #include "team.hpp"
 #include "terrain/movement.hpp"
 #include "terrain/type_data.hpp"
@@ -123,17 +123,17 @@ static inline std::string get_hp_tooltip(
 		const int res_def = 100 - get(resist.first, false);
 
 		if(res_att == res_def) {
-			line << "<span color='" << unit_helper::resistance_color(res_def) << "'>\t" << utils::signed_percent(res_def) << "</span>";
+			line << markup::span_color(unit_helper::resistance_color(res_def), "\t", utils::signed_percent(res_def));
 		} else {
-			line << "<span color='" << unit_helper::resistance_color(res_att) << "'>\t" << utils::signed_percent(res_att) << "</span>" << "/"
-			     << "<span color='" << unit_helper::resistance_color(res_def) << "'>"   << utils::signed_percent(res_def) << "</span>";
+			line << markup::span_color(unit_helper::resistance_color(res_att), "\t", utils::signed_percent(res_att))
+				 << markup::span_color(unit_helper::resistance_color(res_def), "\t", utils::signed_percent(res_def));
 			att_def_diff = true;
 		}
 
 		resistances_table.push_back(line.str());
 	}
 
-	tooltip << "<big>" << _("Resistances: ") << "</big>";
+	tooltip << markup::tag("big", _("Resistances: "));
 	if(att_def_diff) {
 		tooltip << _("(Att / Def)");
 	}
@@ -149,7 +149,7 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 {
 	std::set<terrain_movement> terrain_moves;
 	std::ostringstream tooltip;
-	tooltip << "<big>" << _("Movement Costs:") << "</big>";
+	tooltip << markup::tag("big", _("Movement Costs:"));
 
 	std::shared_ptr<terrain_type_data> tdata = help::load_terrain_types_data();
 
@@ -176,29 +176,26 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 		const bool cannot_move = tm.moves > total_movement;     // cannot move in this terrain
 		double movement_red_to_green = 100.0 - 25.0 * tm.moves;
 
-		// passing true to select the less saturated red-to-green scale
-		std::string color = game_config::red_to_green(movement_red_to_green, true).to_hex_string();
-
-		tooltip << "<span color='" << color << "'>";
-
+		std::stringstream move_ss;
 		// A 5 MP margin; if the movement costs go above the unit's max moves + 5, we replace it with dashes.
 		if(cannot_move && (tm.moves > total_movement + 5)) {
-			tooltip << font::unicode_figure_dash;
+			move_ss << font::unicode_figure_dash;
 		} else if (cannot_move) {
-			tooltip << "(" << tm.moves << ")";
+			move_ss << "(" << tm.moves << ")";
 		} else {
-			tooltip << tm.moves;
+			move_ss << tm.moves;
 		}
 		if(tm.moves != 0) {
 			const int movement_hexes_per_turn = total_movement / tm.moves;
 			tooltip << " ";
 			for(int i = 0; i < movement_hexes_per_turn; ++i) {
 				// Unicode horizontal black hexagon and Unicode zero width space (to allow a line break)
-				tooltip << "\u2b23\u200b";
+				move_ss << "\u2b23\u200b";
 			}
 		}
 
-		tooltip << "</span>";
+		// passing true to select the less saturated red-to-green scale
+		tooltip << markup::span_color(game_config::red_to_green(movement_red_to_green, true), move_ss.str());
 	}
 
 	return tooltip.str();
@@ -215,11 +212,8 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 		return;
 	}
 
-	auto& header_node = add_name_tree_node(
-		parent_node,
-		"header",
-		"<b>" + _("Attacks") + "</b>"
-	);
+
+	auto& header_node = add_name_tree_node(parent_node, "header", markup::bold(_("Attacks")));
 
 	for(const auto& a : attacks) {
 		const std::string range_png = std::string("icons/profiles/") + a.range() + "_attack.png~SCALE_INTO(16,16)";
@@ -230,10 +224,8 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 		const t_string& range = string_table["range_" + a.range()];
 		const t_string& type = string_table["type_" + a.type()];
 
-		const std::string label = (formatter()
-			 << font::span_color(font::unit_type_color)
-			 << a.damage() << font::weapon_numbers_sep << a.num_attacks()
-			 << " " << a.name() << "</span>").str();
+		const std::string label = markup::span_color(
+			font::unit_type_color, a.damage(), font::weapon_numbers_sep, a.num_attacks(), " ", a.name());
 
 		auto& subsection = header_node.add_child(
 			"item_image",
@@ -251,11 +243,7 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 			add_name_tree_node(
 				subsection,
 				"item",
-				(formatter()
-				 << font::span_color(font::weapon_details_color)
-				 << range << font::weapon_details_sep
-				 << type << "</span>"
-				 ).str()
+				markup::span_color(font::weapon_details_color, range, font::weapon_details_sep, type)
 			);
 		}
 
@@ -263,8 +251,8 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 			add_name_tree_node(
 				subsection,
 				"item",
-				(formatter() << font::span_color(font::weapon_details_color) << pair.first << "</span>").str(),
-				(formatter() << "<span size='x-large'>" << pair.first << "</span>" << "\n" << pair.second).str()
+				markup::span_color(font::weapon_details_color, pair.first),
+				markup::span_size("x-large", pair.first) + "\n" + pair.second
 			);
 		}
 	}
@@ -290,14 +278,14 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 	}
 
 	if(label_name_) {
-		label_name_->set_label("<big>" + type.type_name() + "</big>");
+		label_name_->set_label(markup::bold(type.type_name()));
 		label_name_->set_use_markup(true);
 	}
 
 	if(label_level_) {
 		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(type.level())}});
 
-		label_level_->set_label("<b>" + l_str + "</b>");
+		label_level_->set_label(markup::bold(l_str));
 		label_level_->set_tooltip(unit_helper::unit_level_tooltip(type));
 		label_level_->set_use_markup(true);
 	}
@@ -322,9 +310,9 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 	if(label_details_) {
 		std::stringstream str;
 
-		str << "<span size='large'> </span>" << "\n";
+		str << " \n";
 
-		str << font::span_color(font::unit_type_color) << type.type_name() << "</span>" << "\n";
+		str << markup::span_color(font::unit_type_color, type.type_name()) << "\n";
 
 		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(type.level())}});
 		str << l_str << "\n";
@@ -346,17 +334,17 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 		tree_details_->clear();
 		tree_details_->add_node("hp_xp_mp", {
 			{ "hp",{
-				{ "label", (formatter() << "<small>" << font::span_color(unit::hp_color_max()) << "<b>" << _("HP: ") << "</b>" << type.hitpoints() << "</span>" << " | </small>").str() },
+				{ "label", markup::tag("small", markup::span_color(unit::hp_color_max(), markup::bold(_("HP: ")), type.hitpoints()), " | ") },
 				{ "use_markup", "true" },
 				{ "tooltip", get_hp_tooltip(type.movement_type().get_resistances().damage_table(), [&type](const std::string& dt, bool is_attacker) { return type.resistance_against(dt, is_attacker); }) }
 			} },
 			{ "xp",{
-				{ "label", (formatter() << "<small>" << font::span_color(unit::xp_color(100, type.can_advance(), true)) << "<b>" << _("XP: ") << "</b>" << type.experience_needed() << "</span>" << " | </small>").str() },
+				{ "label",  markup::tag("small", markup::span_color(unit::xp_color(100, type.can_advance(), true), markup::bold(_("XP: ")), type.experience_needed()), " | ") },
 				{ "use_markup", "true" },
 				{ "tooltip", (formatter() << _("Experience Modifier: ") << unit_experience_accelerator::get_acceleration() << '%').str() }
 			} },
 			{ "mp",{
-				{ "label", (formatter() << "<small>" << "<b>" << _("MP: ") << "</b>" << type.movement() << "</small>").str() },
+				{ "label", markup::tag("small", markup::bold(_("MP: ")) + std::to_string(type.movement())) },
 				{ "use_markup", "true" },
 				{ "tooltip", get_mp_tooltip(type.movement(), [&type](t_translation::terrain_code terrain) { return type.movement_type().movement_cost(terrain); }) }
 			} },
@@ -373,29 +361,17 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 				}
 
 				if(header_node == nullptr) {
-					header_node = &add_name_tree_node(
-						tree_details_->get_root_node(),
-						"header",
-						"<b>" + _("Traits") + "</b>"
-					);
+					header_node = &add_name_tree_node(tree_details_->get_root_node(), "header", markup::bold(_("Traits")));
 				}
 
-				add_name_tree_node(
-					*header_node,
-					"item",
-					name
-				);
+				add_name_tree_node(*header_node, "item", name);
 			}
 		}
 
 		// Print ability details
 		if(!type.abilities_metadata().empty()) {
 
-			auto& header_node = add_name_tree_node(
-				tree_details_->get_root_node(),
-				"header",
-				"<b>" + _("Abilities") + "</b>"
-			);
+			auto& header_node = add_name_tree_node(tree_details_->get_root_node(), "header", markup::bold(_("Abilities")));
 
 			for(const auto& ab : type.abilities_metadata()) {
 				if(!ab.name.empty()) {
@@ -403,7 +379,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 						header_node,
 						"item",
 						ab.name,
-						(formatter() << "<span size='x-large'>" << ab.name << "</span>\n" << ab.description).str()
+						markup::span_size("x-large", ab.name) + "\n" + ab.description
 					);
 				}
 			}
@@ -437,9 +413,9 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 	if(label_name_) {
 		std::string name;
 		if(!u.name().empty()) {
-			name = "<span size='large'>" + u.name() + "</span>" + "\n" + "<small>" + font::span_color(font::unit_type_color) + u.type_name() + "</span></small>";
+			name = markup::span_size("large", u.name() + "\n") + markup::tag("small", markup::span_color(font::unit_type_color, u.type_name()));
 		} else {
-			name = "<span size='large'>" + u.type_name() + "</span>\n";
+			name = markup::span_size("large", u.type_name()) + "\n";
 		}
 
 		label_name_->set_label(name);
@@ -449,7 +425,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 	if(label_level_) {
 		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(u.level())}});
 
-		label_level_->set_label("<b>" + l_str + "</b>");
+		label_level_->set_label(markup::bold(l_str));
 		label_level_->set_tooltip(unit_helper::unit_level_tooltip(u));
 		label_level_->set_use_markup(true);
 	}
@@ -474,10 +450,10 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 	if(label_details_) {
 		std::stringstream str;
 
-		const std::string name = "<span size='large'>" + (!u.name().empty() ? u.name() : " ") + "</span>";
+		const std::string name = markup::span_size("large", (!u.name().empty() ? u.name() : " "));
 		str << name << "\n";
 
-		str << font::span_color(font::unit_type_color) << u.type_name() << "</span>" << "\n";
+		str << markup::span_color(font::unit_type_color, u.type_name()) << "\n";
 
 		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(u.level())}});
 		str << l_str << "\n";
@@ -486,16 +462,13 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 
 		str << utils::join(u.trait_names(), ", ") << "\n";
 
-		str << font::span_color(u.hp_color())
-			<< _("HP: ") << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << "\n";
+		str << markup::span_color(u.hp_color(), _("HP: "), u.hitpoints(), "/", u.max_hitpoints(), "\n");
 
-		str << font::span_color(u.xp_color()) << _("XP: ");
 		if(u.can_advance()) {
-			str << u.experience() << "/" << u.max_experience();
+			str << markup::span_color(u.xp_color(), _("XP: "), u.experience(), "/", u.max_experience());
 		} else {
-			str << font::unicode_en_dash;
+			str << markup::span_color(u.xp_color(), _("XP: "), font::unicode_en_dash);
 		}
-		str << "</span>";
 
 		label_details_->set_label(str.str());
 		label_details_->set_use_markup(true);
@@ -506,28 +479,24 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 		const std::string unit_xp = u.can_advance() ? (formatter() << u.experience() << "/" << u.max_experience()).str() : font::unicode_en_dash;
 		tree_details_->add_node("hp_xp_mp", {
 			{ "hp",{
-				{ "label", (formatter() << "<small>" << font::span_color(u.hp_color()) << "<b>" << _("HP: ") << "</b>" << u.hitpoints() << "/" << u.max_hitpoints() << "</span>" << " | </small>").str() },
+				{ "label", markup::tag("small", markup::span_color(u.hp_color(), markup::bold(_("HP: ")), u.hitpoints(), "/", u.max_hitpoints(), " | ")) },
 				{ "use_markup", "true" },
 				{ "tooltip", get_hp_tooltip(u.get_base_resistances(), [&u](const std::string& dt, bool is_attacker) { return u.resistance_against(dt, is_attacker, u.get_location()); }) }
 			} },
 			{ "xp",{
-				{ "label", (formatter() << "<small>" << font::span_color(u.xp_color()) << "<b>" << _("XP: ") << "</b>" << unit_xp << "</span>" << " | </small>").str() },
+				{ "label",  markup::tag("small", markup::span_color(u.xp_color(), markup::bold(_("XP: ")), unit_xp, " | ")) },
 				{ "use_markup", "true" },
 				{ "tooltip", (formatter() << _("Experience Modifier: ") << unit_experience_accelerator::get_acceleration() << '%').str() }
 			} },
 			{ "mp",{
-				{ "label", (formatter() << "<small>" << "<b>" << _("MP: ") << "</b>" << u.movement_left() << "/" << u.total_movement() << "</small>").str() },
+				{ "label", markup::tag("small", markup::bold(_("MP: ")), u.movement_left(), "/", u.total_movement()) },
 				{ "use_markup", "true" },
 				{ "tooltip", get_mp_tooltip(u.total_movement(), [&u](t_translation::terrain_code terrain) { return u.movement_cost(terrain); }) }
 			} },
 		});
 
 		if(!u.trait_names().empty()) {
-			auto& header_node = add_name_tree_node(
-				tree_details_->get_root_node(),
-				"header",
-				"<b>" + _("Traits") + "</b>"
-			);
+			auto& header_node = add_name_tree_node(tree_details_->get_root_node(), "header", markup::bold(_("Traits")));
 
 			assert(u.trait_names().size() == u.trait_descriptions().size());
 			for (std::size_t i = 0; i < u.trait_names().size(); ++i) {
@@ -541,11 +510,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 		}
 
 		if(!u.get_ability_list().empty()) {
-			auto& header_node = add_name_tree_node(
-				tree_details_->get_root_node(),
-				"header",
-				"<b>" + _("Abilities") + "</b>"
-			);
+			auto& header_node = add_name_tree_node(tree_details_->get_root_node(), "header", markup::bold(_("Abilities")));
 
 			for(const auto& ab : u.ability_tooltips()) {
 				add_name_tree_node(

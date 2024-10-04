@@ -18,7 +18,6 @@
 #include "gui/widgets/rich_label.hpp"
 
 #include "gui/core/log.hpp"
-
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/dialogs/message.hpp"
@@ -27,6 +26,7 @@
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
+#include "font/sdl_ttf_compat.hpp"
 #include "help/help_impl.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -238,6 +238,21 @@ size_t rich_label::get_split_location(std::string_view text, const point& pos) {
 	}
 
 	return len;
+}
+
+std::vector<std::string> rich_label::split_in_width(const std::string &s, const int font_size, const unsigned width) {
+	std::vector<std::string> res;
+	try {
+		const std::string& first_line = font::pango_word_wrap(s, font_size, width, -1, 1, true);
+		res.push_back(first_line);
+		if(s.size() > first_line.size()) {
+			res.push_back(s.substr(first_line.size()));
+		}
+	} catch (utf8::invalid_utf8_exception&) {
+		throw help::parse_error (_("corrupted original file"));
+	}
+
+	return res;
 }
 
 void rich_label::set_topic(const help::topic* topic) {
@@ -483,7 +498,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 					(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
 					line = line.substr(1);
 				} else if (!line.empty() && line.at(0) != '\n') {
-					std::vector<std::string> parts = help::split_in_width(line, font::SIZE_NORMAL, init_width - x);
+					std::vector<std::string> parts = split_in_width(line, font::SIZE_NORMAL, (init_width-x));
 					// First line
 					if (!parts.front().empty()) {
 						line = parts.front();

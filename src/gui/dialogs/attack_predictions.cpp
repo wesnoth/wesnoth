@@ -20,7 +20,7 @@
 #include "attack_prediction.hpp"
 #include "color.hpp"
 #include "config.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "formatter.hpp"
 #include "formula/variant.hpp"
 #include "game_board.hpp"
@@ -103,7 +103,7 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 	// Unscathed probability
 	const color_t ndc_color = game_config::red_to_green(attacker.combatant_.untouched * 100);
 
-	ss << font::span_color(ndc_color) << get_probability_string(attacker.combatant_.untouched) << "</span>";
+	ss << markup::span_color(ndc_color, get_probability_string(attacker.combatant_.untouched));
 	set_label_helper("chance_unscathed", ss.str());
 
 	// HP probability graph
@@ -147,10 +147,10 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 
 	// Either user the SET modifier or the base weapon damage.
 	if(set_dmg_effect == dmg_effect.end()) {
-		ss << weapon->damage() << " (<i>" << weapon->name() << "</i>)";
+		ss << weapon->damage() << " (" << markup::italic(weapon->name()) << ")";
 	} else {
 		assert(set_dmg_effect->ability);
-		ss << set_dmg_effect->value << " (<i>" << (*set_dmg_effect->ability)["name"] << "</i>)";
+		ss << set_dmg_effect->value << " (" << markup::italic((*set_dmg_effect->ability)["name"]) << ")";
 	}
 
 	// Process the ADD damage modifiers.
@@ -163,7 +163,7 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 			}
 
 			ss << e.value;
-			ss << " (<i>" << (*e.ability)["name"] << "</i>)";
+			ss << " (" << markup::italic((*e.ability)["name"]) << ")";
 		}
 	}
 
@@ -180,7 +180,7 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 				}
 			}
 
-			ss << " (<i>" << (*e.ability)["name"] << "</i>)";
+			ss << " (" << markup::italic((*e.ability)["name"]) << ")";
 		}
 	}
 
@@ -262,7 +262,7 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 		dmg_color = font::bad_dmg_color;
 	}
 
-	ss << font::span_color(dmg_color) << attacker.stats_.damage << "</span>"
+	ss << markup::span_color(dmg_color, attacker.stats_.damage)
 	   << font::weapon_numbers_sep    << attacker.stats_.num_blows;
 
 	set_label_helper("total_damage", ss.str());
@@ -271,7 +271,7 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 	const color_t cth_color = game_config::red_to_green(attacker.stats_.chance_to_hit);
 
 	ss.str("");
-	ss << font::span_color(cth_color) << attacker.stats_.chance_to_hit << "%</span>";
+	ss << markup::span_color(cth_color, attacker.stats_.chance_to_hit, "%");
 
 	set_label_helper("chance_to_hit", ss.str());
 }

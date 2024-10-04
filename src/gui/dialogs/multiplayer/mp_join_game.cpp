@@ -17,7 +17,7 @@
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 
 #include "chat_log.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
@@ -374,9 +374,14 @@ void mp_join_game::generate_side_list()
 		widget_data data;
 		widget_item item;
 
-		const std::string color = !side["color"].empty() ? side["color"] : side["side"].str();
+		const std::string color_str = !side["color"].empty() ? side["color"] : side["side"].str();
+		const auto team_color_it = game_config::team_rgb_colors.find(color_str);
 
-		item["label"] = (formatter() << "<span color='" << font::get_pango_color_from_id(color) << "'>" << side["side"] << "</span>").str();
+		if (team_color_it != game_config::team_rgb_colors.end()) {
+			item["label"] = markup::span_color(team_color_it->second[0], side["side"]);
+		} else {
+			item["label"] = side["side"];
+		}
 		data.emplace("side_number", item);
 
 		std::string leader_image = ng::random_enemy_picture;
@@ -397,7 +402,7 @@ void mp_join_game::generate_side_list()
 		if(const unit_type* ut = unit_types.find(leader_type)) {
 			const unit_type& type = ut->get_gender_unit_type(leader_gender);
 
-			leader_image = formatter() << type.image() << "~RC(" << type.flag_rgb() << ">" << color << ")";
+			leader_image = formatter() << type.image() << "~RC(" << type.flag_rgb() << ">" << color_str << ")";
 			leader_name = type.type_name();
 		}
 
