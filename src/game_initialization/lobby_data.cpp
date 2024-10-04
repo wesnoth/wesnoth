@@ -31,6 +31,7 @@
 #include "map/map.hpp"
 #include "mp_game_settings.hpp"
 #include "preferences/preferences.hpp"
+#include "serialization/markup.hpp"
 #include "wml_exception.hpp"
 
 
@@ -100,9 +101,9 @@ const std::string& spaced_em_dash()
 std::string make_game_type_marker(const std::string& text, bool color_for_missing)
 {
 	if(color_for_missing) {
-		return formatter() << "<b><span color='#f00'>[" << text << "]</span></b> ";
+		return markup::bold(markup::span_color("#f00", "[", text, "] "));
 	} else {
-		return formatter() << "<b>[" << text << "]</b> ";
+		return markup::bold("[", text, "] ");
 	}
 }
 

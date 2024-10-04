@@ -18,7 +18,6 @@
 
 #include "addon/client.hpp"
 #include "color.hpp"
-#include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
 #include "gui/core/event/dispatcher.hpp"
@@ -30,6 +29,7 @@
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/window.hpp"
+#include "serialization/markup.hpp"
 #include "wml_exception.hpp"
 
 #include <algorithm>
@@ -90,7 +90,7 @@ std::string addon_list::colorize_addon_state_string(const std::string& str, ADDO
 		break;
 	}
 
-	return font::span_color(colorname) + str + "</span>";
+	return markup::span_color(colorname, str);
 }
 
 std::string addon_list::describe_status(const addon_tracking_info& info)
@@ -147,10 +147,10 @@ const std::string addon_list::display_title_full_shift(const addon_info& addon) 
 {
 	const std::string& local_title = addon.display_title_translated();
 	const std::string& display_title = addon.display_title();
-	if(local_title.empty())
+	if(local_title.empty()) {
 		return display_title;
-	return local_title + "\n"
-		+ "<small>(" + display_title + ")</small>";
+	}
+	return local_title + "\n" + markup::tag("small", "(", display_title, ")");
 }
 
 void addon_list::set_addons(const addons_list& addons)
@@ -179,10 +179,7 @@ void addon_list::set_addons(const addons_list& addons)
 			item["label"] = addon.display_icon() + "~SCALE(72,72)~BLIT(icons/icon-addon-publish.png,8,8)";
 			data.emplace("icon", item);
 
-			const std::string publish_name = formatter()
-				<< font::span_color(font::GOOD_COLOR)
-				<< display_title_full_shift(addon)
-				<< "</span>";
+			const std::string publish_name = markup::span_color(font::GOOD_COLOR, display_title_full_shift(addon));
 
 			item["label"] = publish_name;
 			data.emplace("name", item);

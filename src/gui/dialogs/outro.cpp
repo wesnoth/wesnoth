@@ -23,6 +23,7 @@
 #include "gettext.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/widgets/window.hpp"
+#include "serialization/markup.hpp"
 
 #include <cmath>
 
@@ -56,7 +57,7 @@ outro::outro(const game_classification& info)
 	}
 
 	if(info.end_credits) {
-		text_.push_back("<span size='large'>" + info.campaign_name + "</span>");
+		text_.push_back(markup::span_size("large", info.campaign_name));
 
 		if(const auto campaign_credits = about::get_campaign_credits(info.campaign)) {
 			for(const auto& about : (*campaign_credits)->sections) {
@@ -79,7 +80,7 @@ outro::outro(const game_classification& info)
 					}
 
 					for(std::size_t k = i * chunk_size; k < std::min<unsigned>((i + 1) * chunk_size, num_names); ++k) {
-						ss << "<span size='xx-small'>" << about.names[k].first << "</span>\n";
+						ss << markup::span_size("xx-small", about.names[k].first) << "\n";
 					}
 
 					// Clean up the trailing newline

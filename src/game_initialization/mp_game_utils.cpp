@@ -21,6 +21,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "saved_game.hpp"
+#include "serialization/markup.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -72,11 +73,9 @@ config initial_level_config(saved_game& state)
 	if(scenario["objectives"].empty()) {
 		// Generic victory objectives.
 		std::ostringstream ss;
-		ss << "<big>";
-		ss << t_string(N_("Victory:"), "wesnoth") << "</big>\n";
-		ss << "<span color='#00ff00'>" << font::unicode_bullet << " ";
-		ss << t_string(N_("Defeat enemy leader(s)"), "wesnoth") << "</span>";
-
+		ss << markup::tag("big", t_string(N_("Victory:"), "wesnoth")) << "\n";
+		ss << markup::span_color("#00ff00",
+			font::unicode_bullet, " ", t_string(N_("Defeat enemy leader(s)"), "wesnoth"));
 		scenario["objectives"] = ss.str();
 	}
 

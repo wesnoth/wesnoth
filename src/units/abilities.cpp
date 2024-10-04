@@ -20,7 +20,7 @@
 
 #include "display.hpp"
 #include "display_context.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "game_board.hpp"
 #include "game_version.hpp" // for version_info
 #include "gettext.hpp"
@@ -1004,7 +1004,7 @@ static void add_name(std::string& temp_string, bool active, const std::string na
 		if (!name.empty() && checking_name.count(name) == 0) {
 			checking_name.insert(name);
 			if (!temp_string.empty()) temp_string += ", ";
-			temp_string += font::span_color(font::BUTTON_COLOR, name);
+			temp_string += markup::span_color(font::BUTTON_COLOR, name);
 		}
 	}
 }
@@ -1029,10 +1029,15 @@ std::string attack_type::weapon_specials() const
 			? cfg["name"].str()
 			: cfg.get_or("name_inactive", "name").str();
 		if (!name.empty()) {
-			if (!res.empty()) res += ", ";
-			if (!active) res += font::span_color(font::inactive_details_color);
-			res += name;
-			if (!active) res += "</span>";
+			if (!res.empty()) {
+				res += ", ";
+			}
+
+			if (!active) {
+				res += markup::span_color(font::inactive_details_color, name);
+			} else {
+				res += name;
+			}
 		}
 	}
 	std::string temp_string;

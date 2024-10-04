@@ -17,7 +17,7 @@
 #include "gui/dialogs/label_settings.hpp"
 
 #include "display.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
@@ -99,7 +99,7 @@ void label_settings::pre_show()
 			const int team = std::stoi(category.substr(5)) - 1;
 			const color_t tc = game_config::tc_info(viewer_.teams()[team].color())[0];
 
-			name = (formatter() << font::span_color(tc) << name << "</span>").str();
+			name = markup::span_color(tc, name);
 		}
 
 		list_data["cat_name"]["label"] = name;

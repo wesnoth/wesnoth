@@ -22,6 +22,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "formula/string_utils.hpp"
 #include "map/map.hpp"
+#include "serialization/markup.hpp"
 #include <cassert>
 
 static lg::log_domain log_engine("engine");
@@ -51,7 +52,7 @@ void carryover_show_gold(game_state& state, bool hidden, bool is_observer, bool 
 		title = _("Scenario Report");
 	} else if(is_victory) {
 		title = _("Victory");
-		report << "<b>" << _("You have emerged victorious!") << "</b>";
+		report << markup::bold(_("You have emerged victorious!"));
 	} else {
 		title = _("Defeat");
 		report << _("You have been defeated!");
@@ -87,29 +88,31 @@ void carryover_show_gold(game_state& state, bool hidden, bool is_observer, bool 
 			}
 
 			if(persistent_teams > 1) {
-				report << "\n\n<b>" << t.side_name() << "</b>";
+				report << "\n\n" << markup::bold(t.side_name());
 			}
 
-			report << "<small>\n" << _("Remaining gold: ") << utils::half_signed_value(t.gold()) << "</small>";
+			report << "\n" << markup::tag("small", _("Remaining gold: "), utils::half_signed_value(t.gold()));
 
 			if(t.carryover_bonus() != 0) {
 				if(turns_left > -1) {
-					report << "\n\n<b>" << _("Turns finished early: ") << turns_left << "</b>\n"
-						<< "<small>" << _("Early finish bonus: ") << finishing_bonus_per_turn << _(" per turn") << "</small>\n"
-						<< "<small>" << _("Total bonus: ") << finishing_bonus << "</small>\n";
+					report << "\n\n"
+						<< markup::bold(_("Turns finished early: "), turns_left) << "\n"
+						<< markup::tag("small",
+							_("Early finish bonus: "), finishing_bonus_per_turn, _(" per turn"), "\n",
+							_("Total bonus: "), finishing_bonus, "\n");
 				}
 
-				report << "<small>" << _("Total gold: ") << utils::half_signed_value(t.gold() + finishing_bonus) << "</small>";
+				report << markup::tag("small", _("Total gold: "), utils::half_signed_value(t.gold() + finishing_bonus));
 			}
 
 			if(t.gold() > 0) {
-				report << "\n<small>" << _("Carryover percentage: ") << t.carryover_percentage() << "</small>";
+				report << "\n" << markup::tag("small", _("Carryover percentage: "), t.carryover_percentage());
 			}
 
 			if(t.carryover_add()) {
-				report << "\n\n<big><b>" << _("Bonus gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
+				report << "\n\n" << markup::tag("big", markup::bold(_("Bonus gold: "), utils::half_signed_value(t.carryover_gold())));
 			} else {
-				report << "\n\n<big><b>" << _("Retained gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
+				report << "\n\n" << markup::tag("big", markup::bold(_("Retained gold: "), utils::half_signed_value(t.carryover_gold())));
 			}
 
 			std::string goldmsg;

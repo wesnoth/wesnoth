@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "gui/dialogs/unit_recruit.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
@@ -55,7 +55,7 @@ static const color_t inactive_row_color(0x96, 0x96, 0x96);
 
 static inline std::string gray_if_unrecruitable(const std::string& text, const bool is_recruitable)
 {
-	return is_recruitable ? text : font::span_color(inactive_row_color, text);
+	return is_recruitable ? text : markup::span_color(inactive_row_color, text);
 }
 
 // Compare unit_create::filter_text_change

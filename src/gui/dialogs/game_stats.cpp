@@ -24,6 +24,7 @@
 #include "game_classification.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
+#include "serialization/markup.hpp"
 #include "resources.hpp"
 #include "units/map.hpp"
 #include "units/unit.hpp"
@@ -60,7 +61,7 @@ unit_const_ptr game_stats::get_leader(const int side)
 static std::string controller_name(const team& t)
 {
 	static const side_controller::sized_array<t_string> names {_("controller^Idle"), _("controller^Human"), _("controller^AI"), _("controller^Reserved")};
-	return "<span color='#808080'><small>" + names[static_cast<int>(t.controller())] + "</small></span>";
+	return markup::span_color("#808080", markup::tag("small", names[static_cast<int>(t.controller())]));
 }
 
 void game_stats::pre_show()
@@ -107,7 +108,7 @@ void game_stats::pre_show()
 				}
 			}
 
-			leader_name = "<span color='" + team::get_side_highlight_pango(team.side()) + "'>" + leader_name + "</span>";
+			leader_name = markup::span_color(team::get_side_highlight_pango(team.side()), leader_name);
 		}
 
 		//
@@ -133,7 +134,7 @@ void game_stats::pre_show()
 				gold_str = utils::half_signed_value(team.gold());
 			}
 
-			column_stats["label"] = team.gold() < 0 ? "<span color='#ff0000'>" + gold_str + "</span>" : gold_str;
+			column_stats["label"] = team.gold() < 0 ? markup::span_color("#ff0000", gold_str) : gold_str;
 			row_data_stats.emplace("team_gold", column_stats);
 
 			std::string village_count = std::to_string(team.villages().size());
@@ -151,7 +152,7 @@ void game_stats::pre_show()
 			row_data_stats.emplace("team_upkeep", column_stats);
 
 			const std::string income = utils::signed_value(data.net_income);
-			column_stats["label"] = data.net_income < 0 ? "<span color='#ff0000'>" + income + "</span>" : income;
+			column_stats["label"] = data.net_income < 0 ? markup::span_color("#ff0000", income) : income;
 			row_data_stats.emplace("team_income", column_stats);
 		}
 

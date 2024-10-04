@@ -26,6 +26,7 @@
 #include "gui/widgets/window.hpp"
 #include "network_download_file.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/markup.hpp"
 #include "wesnothd_connection.hpp"
 
 using namespace std::chrono_literals;
@@ -146,7 +147,7 @@ bool mp_match_history::update_display()
 
 		dynamic_cast<label*>(history_grid.find("game_name", false))->set_label(key_with_fallback(game["game_name"]));
 		dynamic_cast<label*>(history_grid.find("scenario_name", false))->set_label(key_with_fallback(game["scenario_name"]));
-		dynamic_cast<label*>(history_grid.find("era_name", false))->set_label("<span color='#baac7d'>" + _("Era: ") + "</span>" + key_with_fallback(game["era_name"]));
+		dynamic_cast<label*>(history_grid.find("era_name", false))->set_label(markup::span_color("#baac7d", _("Era: ")) + key_with_fallback(game["era_name"]));
 		dynamic_cast<label*>(history_grid.find("game_start", false))->set_label(key_with_fallback(game["game_start"]) + _(" UTC+0"));
 		dynamic_cast<label*>(history_grid.find("version", false))->set_label(key_with_fallback(game["version"]));
 

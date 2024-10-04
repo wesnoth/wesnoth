@@ -19,7 +19,7 @@
 
 #include "config.hpp"
 #include "deprecation.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "game_version.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
@@ -83,9 +83,9 @@ void campaign_difficulty::pre_show()
 			if (d["auto_markup"].to_bool(true) == false) {
 				ss << "\n" << d["description"].str();
 			} else if (!d["old_markup"].to_bool()) {
-				ss << "\n<small>" << font::span_color(font::GRAY_COLOR) << "(" << d["description"].str() << ")</span></small>";
+				ss << "\n" << markup::tag("small", markup::span_color(font::GRAY_COLOR, "(", d["description"], ")"));
 			} else {
-				ss << "\n<small>" << font::span_color(font::GRAY_COLOR) << d["description"] << "</span></small>";
+				ss << "\n" << markup::tag("small", markup::span_color(font::GRAY_COLOR, d["description"]));
 			}
 		}
 
