@@ -17,7 +17,6 @@
 
 #include "gui/widgets/container_base.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/repeating_button.hpp"
