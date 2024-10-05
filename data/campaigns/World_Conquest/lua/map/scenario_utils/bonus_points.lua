@@ -384,7 +384,7 @@ end
 function world_conquest_tek_bonus_points(theme)
 	local res = {}
 	local scenario_num = wml.variables.wc2_scenario or 1
-	local player_num =  _G.scenario_data.nhumanplayers * wml.variables["map_bonus_per_player"]
+	local player_num =  _G.scenario_data.nhumanplayers * wml.variables["custom_map_bonus_per_player"]
 	oceanic = get_oceanic()
 	f_wct_bonus_location_filter = wesnoth.map.filter(get_f_wct_bonus_location_filter(map), { oceanic = oceanic })
 	local possible_locs = map:find(f_wct_bonus_location_filter)
