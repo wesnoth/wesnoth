@@ -403,6 +403,18 @@ void pango_text::add_attribute_underline(const unsigned start_offset, const unsi
 	}
 }
 
+namespace
+{
+std::tuple<uint16_t, uint16_t, uint16_t> color_to_uint16(const color_t& color)
+{
+	return {
+		color.r / 255.0 * std::numeric_limits<uint16_t>::max(),
+		color.g / 255.0 * std::numeric_limits<uint16_t>::max(),
+		color.b / 255.0 * std::numeric_limits<uint16_t>::max()
+	};
+}
+
+} // end anon namespace
 
 void pango_text::add_attribute_fg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color)
 {
@@ -410,10 +422,7 @@ void pango_text::add_attribute_fg_color(const unsigned start_offset, const unsig
 	attribute_end_offset_ = end_offset;
 
 	if (attribute_start_offset_ != attribute_end_offset_) {
-		int col_r = color.r / 255.0 * 65535.0;
-		int col_g = color.g / 255.0 * 65535.0;
-		int col_b = color.b / 255.0 * 65535.0;
-
+		auto [col_r, col_g, col_b] = color_to_uint16(color);
 		PangoAttribute *attr = pango_attr_foreground_new(col_r, col_g, col_b);
 		attr->start_index = start_offset;
 		attr->end_index = end_offset;
