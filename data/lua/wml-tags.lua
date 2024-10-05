@@ -191,7 +191,7 @@ function wml_actions.disallow_recruit(cfg)
 			end
 			team.recruit = v
 		else
-			team.recruit = nil
+			team.recruit = {}
 		end
 	end
 end

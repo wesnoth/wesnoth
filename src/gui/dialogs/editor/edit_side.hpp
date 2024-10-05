@@ -35,8 +35,8 @@ public:
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(editor_edit_side)
 
 private:
-	virtual void pre_show(window& window) override;
-	virtual void post_show(window& window) override;
+	virtual void pre_show() override;
+	virtual void post_show() override;
 
 	side_controller::type& controller_;
 	group<side_controller::type> controller_group;

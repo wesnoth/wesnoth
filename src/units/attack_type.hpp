@@ -25,6 +25,7 @@
 #include <boost/dynamic_bitset_fwd.hpp>
 
 #include "units/ptr.hpp" // for attack_ptr
+#include "units/unit_alignments.hpp"
 
 class unit_ability_list;
 class unit_type;
@@ -59,6 +60,9 @@ public:
 	void set_type(const std::string& value) { type_ = value; set_changed(true); }
 	void set_icon(const std::string& value) { icon_ = value; set_changed(true); }
 	void set_range(const std::string& value) { range_ = value; set_changed(true); }
+	void set_min_range(int value) { min_range_ = value; set_changed(true); }
+	void set_max_range(int value) { max_range_ = value; set_changed(true); }
+	void set_attack_alignment(const std::string& value) { alignment_str_ = value; set_changed(true); }
 	void set_accuracy(int value) { accuracy_ = value; set_changed(true); }
 	void set_parry(int value) { parry_ = value; set_changed(true); }
 	void set_damage(int value) { damage_ = value; set_changed(true); }
@@ -82,6 +86,13 @@ public:
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials() const;
 	std::string weapon_specials_value(const std::set<std::string> checking_tags) const;
+
+	/** Returns alignment specified by alignment_str_ variable If empty or not valid returns the unit's alignment or neutral if self_ variable empty.
+	 */
+	unit_alignments::type alignment() const;
+	/** Returns alignment specified by alignment() for filtering.
+	 */
+	std::string alignment_str() const {return unit_alignments::get_string(alignment());}
 
 	/** Calculates the number of attacks this weapon has, considering specials. */
 	void modified_attacks(unsigned & min_attacks,
@@ -137,7 +148,7 @@ public:
 
 	// In unit_types.cpp:
 
-	bool matches_filter(const config& filter, const std::string& tag_name = "") const;
+	bool matches_filter(const config& filter, const std::string& check_if_recursion = "") const;
 	bool apply_modification(const config& cfg);
 	bool describe_modification(const config& cfg,std::string* description);
 
@@ -195,7 +206,7 @@ public:
 	 *
 	 * This is a cheap function, so no reason to optimise by doing some filters before calling it.
 	 * However, it only expects to be called in a single thread, but the whole of attack_type makes
-	 * that assumption, for example its' mutable members are assumed to be set up by the current
+	 * that assumption, for example its mutable members are assumed to be set up by the current
 	 * caller (or caller's caller, probably several layers up).
 	 */
 	recursion_guard update_variables_recursion() const;
@@ -404,6 +415,7 @@ private:
 	std::string icon_;
 	std::string range_;
 	int min_range_, max_range_;
+	std::string alignment_str_;
 	int damage_;
 	int num_attacks_;
 	double attack_weight_;

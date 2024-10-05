@@ -74,16 +74,24 @@ server_base::server_base(unsigned short port, bool keep_alive)
 void server_base::start_server()
 {
 	boost::asio::ip::tcp::endpoint endpoint_v6(boost::asio::ip::tcp::v6(), port_);
-	boost::asio::spawn(io_service_, [this, endpoint_v6](boost::asio::yield_context yield) { serve(yield, acceptor_v6_, endpoint_v6); });
+	boost::asio::spawn(io_service_, [this, endpoint_v6](boost::asio::yield_context yield) { serve(yield, acceptor_v6_, endpoint_v6); }
+#if BOOST_VERSION >= 108000
+		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+#endif
+	);
 
 	boost::asio::ip::tcp::endpoint endpoint_v4(boost::asio::ip::tcp::v4(), port_);
-	boost::asio::spawn(io_service_, [this, endpoint_v4](boost::asio::yield_context yield) { serve(yield, acceptor_v4_, endpoint_v4); });
+	boost::asio::spawn(io_service_, [this, endpoint_v4](boost::asio::yield_context yield) { serve(yield, acceptor_v4_, endpoint_v4); }
+#if BOOST_VERSION >= 108000
+		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+#endif
+	);
 
 	handshake_response_ = htonl(42);
 
 #ifndef _WIN32
 	sighup_.async_wait(
-		[=](const boost::system::error_code& error, int sig)
+		[this](const boost::system::error_code& error, int sig)
 			{ this->handle_sighup(error, sig); });
 #endif
 }
@@ -115,7 +123,11 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 	}
 
 	if(accepting_connections()) {
-		boost::asio::spawn(io_service_, [this, &acceptor, endpoint](boost::asio::yield_context yield) { serve(yield, acceptor, endpoint); });
+		boost::asio::spawn(io_service_, [this, &acceptor, endpoint](boost::asio::yield_context yield) { serve(yield, acceptor, endpoint); }
+#if BOOST_VERSION >= 108000
+			, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+#endif
+		);
 	} else {
 		return;
 	}
@@ -214,7 +226,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 void server_base::read_from_fifo() {
 	async_read_until(input_,
 					 admin_cmd_, '\n',
-					 [=](const boost::system::error_code& error, std::size_t bytes_transferred)
+					 [this](const boost::system::error_code& error, std::size_t bytes_transferred)
 						{ this->handle_read_from_fifo(error, bytes_transferred); }
 	);
 }
@@ -560,6 +572,9 @@ template<class SocketPtr> void server_base::async_send_doc_queued(SocketPtr sock
 		io_service_, [this, doc_ptr = doc.clone(), socket](boost::asio::yield_context yield) mutable {
 			send_doc_queued(socket, doc_ptr, yield);
 		}
+#if BOOST_VERSION >= 108000
+		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+#endif
 	);
 }
 

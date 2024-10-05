@@ -28,6 +28,7 @@
 #include "game_initialization/multiplayer.hpp"
 #include "generators/map_generator.hpp"
 #include "gettext.hpp"
+#include "gui/gui.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/outro.hpp"
 #include "gui/widgets/retval.hpp"
@@ -58,7 +59,7 @@ level_result::type campaign_controller::playsingle_scenario(end_level_data &end_
 
 	playsingle_controller playcontroller(starting_point, state_);
 
-	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks());
+	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.ticks());
 	if(is_replay_) {
 		playcontroller.enable_replay(is_unit_test_);
 	}
@@ -204,7 +205,6 @@ level_result::type campaign_controller::play_game()
 					gui2::dialogs::outro::display(state_.classification());
 				}
 			}
-
 			return res;
 		} else if(res == level_result::type::observer_end && mp_info_ && !mp_info_->is_host) {
 			const int dlg_res = gui2::show_message(_("Game Over"),
@@ -290,4 +290,11 @@ level_result::type campaign_controller::play_game()
 	}
 
 	return level_result::type::victory;
+}
+
+campaign_controller::~campaign_controller()
+{
+	// If the scenario changed the current gui2 theme,
+	// change it back to the value stored in preferences
+	gui2::switch_theme(prefs::get().gui2_theme());
 }

@@ -95,7 +95,7 @@ static std::string flush(std::ostringstream &s)
 
 static const time_of_day get_visible_time_of_day_at(const reports::context& rc, const map_location & hex)
 {
-	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+	const team &viewing_team = rc.screen().viewing_team();
 	if (viewing_team.shrouded(hex)) {
 		// Don't show time on shrouded tiles.
 		return rc.tod().get_time_of_day();
@@ -128,27 +128,27 @@ static char const *naps = "</span>";
 static const unit *get_visible_unit(const reports::context& rc)
 {
 	return rc.dc().get_visible_unit(rc.screen().displayed_unit_hex(),
-		rc.teams()[rc.screen().viewing_team()],
+		rc.screen().viewing_team(),
 		rc.screen().show_everything());
 }
 
 static const unit *get_selected_unit(const reports::context& rc)
 {
 	return rc.dc().get_visible_unit(rc.screen().selected_hex(),
-		rc.teams()[rc.screen().viewing_team()],
+		rc.screen().viewing_team(),
 		rc.screen().show_everything());
 }
 
 static unit_const_ptr get_selected_unit_ptr(const reports::context& rc)
 {
 	return rc.dc().get_visible_unit_shared_ptr(rc.screen().selected_hex(),
-		rc.teams()[rc.screen().viewing_team()],
+		rc.screen().viewing_team(),
 		rc.screen().show_everything());
 }
 
 static config gray_inactive(const reports::context& rc, const std::string &str, const std::string& tooltip = "")
 {
-	if ( rc.screen().viewing_side() == rc.screen().playing_side() )
+	if ( rc.screen().viewing_team_is_playing() )
 			return text_report(str, tooltip);
 
 	return text_report(span_color(font::GRAY_COLOR) + str + naps, tooltip);
@@ -448,7 +448,7 @@ static config unit_abilities(const unit* u, const map_location& loc)
 REPORT_GENERATOR(unit_abilities, rc)
 {
 	const unit *u = get_visible_unit(rc);
-	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+	const team &viewing_team = rc.screen().viewing_team();
 	const map_location& mouseover_hex = rc.screen().mouseover_hex();
 	const map_location& displayed_unit_hex = rc.screen().displayed_unit_hex();
 	const map_location& hex = (mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex)) ? mouseover_hex : displayed_unit_hex;
@@ -461,7 +461,7 @@ REPORT_GENERATOR(selected_unit_abilities, rc)
 
 	const map_location& mouseover_hex = rc.screen().mouseover_hex();
 	const unit *visible_unit = get_visible_unit(rc);
-	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+	const team &viewing_team = rc.screen().viewing_team();
 
 	if (visible_unit && u && visible_unit->id() != u->id() && mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex))
 		return unit_abilities(u, mouseover_hex);
@@ -615,7 +615,7 @@ static config unit_defense(const reports::context& rc, const unit* u, const map_
 REPORT_GENERATOR(unit_defense,rc)
 {
 	const unit *u = get_visible_unit(rc);
-	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+	const team &viewing_team = rc.screen().viewing_team();
 	const map_location& mouseover_hex = rc.screen().mouseover_hex();
 	const map_location& displayed_unit_hex = rc.screen().displayed_unit_hex();
 	const map_location& hex = (mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex)) ? mouseover_hex : displayed_unit_hex;
@@ -672,7 +672,7 @@ static config unit_moves(const reports::context& rc, const unit* u, bool is_visi
 
 	std::set<terrain_movement> terrain_moves;
 
-	if (u->side() == rc.screen().playing_side()) {
+	if (u->side() == rc.screen().playing_team().side()) {
 		movement_frac = static_cast<double>(u->movement_left()) / std::max<int>(1, u->total_movement());
 		if (movement_frac > 1.0)
 			movement_frac = 1.0;
@@ -781,12 +781,13 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 	};
 
 	{
-		auto ctx = at.specials_context(u.shared_from_this(), hex, u.side() == rc.screen().playing_side());
+		auto ctx = at.specials_context(u.shared_from_this(), hex, u.side() == rc.screen().playing_team().side());
 		int base_damage = at.damage();
 		int specials_damage = at.modified_damage();
 		int damage_multiplier = 100;
 		const_attack_ptr weapon  = at.shared_from_this();
-		int tod_bonus = combat_modifier(get_visible_time_of_day_at(rc, hex), u.alignment(), u.is_fearless());
+		unit_alignments::type attack_alignment = weapon->alignment();
+		int tod_bonus = combat_modifier(get_visible_time_of_day_at(rc, hex), attack_alignment, u.is_fearless());
 		damage_multiplier += tod_bonus;
 		int leader_bonus = under_leadership(u, hex, weapon);
 		if (leader_bonus != 0)
@@ -908,7 +909,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		std::map<int, std::set<std::string>, std::greater<int>> resistances;
 		std::set<std::string> seen_types;
 		const team &unit_team = rc.dc().get_team(u.side());
-		const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+		const team &viewing_team = rc.screen().viewing_team();
 		for (const unit &enemy : rc.units())
 		{
 			if (enemy.incapacitated()) //we can't attack statues so don't display them in this tooltip
@@ -958,6 +959,24 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		add_text(res, damage_and_num_attacks.str, damage_and_num_attacks.tooltip);
 		add_text(res, damage_versus.str, damage_versus.tooltip); // This string is usually empty
 
+		if(attack_alignment != u.alignment()){
+			const std::string align = unit_type::alignment_description(attack_alignment, u.gender());
+			const std::string align_id = unit_alignments::get_string(attack_alignment);
+
+			color_t color = font::weapon_color;
+			if(tod_bonus != 0) {
+				color = (tod_bonus > 0) ? font::good_dmg_color : font::bad_dmg_color;
+			}
+
+			str << "  " << align << " (" << span_color(color) << utils::signed_percent(tod_bonus)
+				<< naps << ")" << "\n";
+
+			tooltip << _("Alignment: ") << "<b>" << align << "</b>\n"
+				<< string_table[align_id + "_description" ] + "\n";
+
+			add_text(res, flush(str), flush(tooltip));
+		}
+
 		const std::string &accuracy_parry = at.accuracy_parry_description();
 		if (!accuracy_parry.empty())
 		{
@@ -979,7 +998,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 
 	{
 		//If we have a second unit, do the 2-unit specials_context
-		bool attacking = (u.side() == rc.screen().playing_side());
+		bool attacking = (u.side() == rc.screen().playing_team().side());
 		auto ctx = (sec_u == nullptr) ? at.specials_context_for_listing(attacking) :
 						at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, sec_u_weapon);
 
@@ -1446,14 +1465,14 @@ REPORT_GENERATOR(turn, rc)
 REPORT_GENERATOR(gold, rc)
 {
 	std::ostringstream str;
-	int viewing_side = rc.screen().viewing_side();
+	const team& viewing_team = rc.screen().viewing_team();
 	// Suppose the full unit map is applied.
-	int fake_gold = rc.dc().get_team(viewing_side).gold();
+	int fake_gold = viewing_team.gold();
 
 	if (rc.wb())
-		fake_gold -= rc.wb()->get_spent_gold_for(viewing_side);
+		fake_gold -= rc.wb()->get_spent_gold_for(viewing_team.side());
 	char const *end = naps;
-	if (viewing_side != rc.screen().playing_side()) {
+	if (!rc.screen().viewing_team_is_playing()) {
 		str << span_color(font::GRAY_COLOR);
 	}
 	else if (fake_gold < 0) {
@@ -1469,8 +1488,7 @@ REPORT_GENERATOR(gold, rc)
 REPORT_GENERATOR(villages, rc)
 {
 	std::ostringstream str;
-	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.dc().get_team(viewing_side);
+	const team &viewing_team = rc.screen().viewing_team();
 	str << viewing_team.villages().size() << '/';
 	if (viewing_team.uses_shroud()) {
 		int unshrouded_villages = 0;
@@ -1487,14 +1505,13 @@ REPORT_GENERATOR(villages, rc)
 
 REPORT_GENERATOR(num_units, rc)
 {
-	return gray_inactive(rc, std::to_string(rc.dc().side_units(rc.screen().viewing_side())), _("Units") + "\n\n" + _("The total number of units on your side."));
+	return gray_inactive(rc, std::to_string(rc.dc().side_units(rc.screen().viewing_team().side())), _("Units") + "\n\n" + _("The total number of units on your side."));
 }
 
 REPORT_GENERATOR(upkeep, rc)
 {
 	std::ostringstream str;
-	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.dc().get_team(viewing_side);
+	const team& viewing_team = rc.screen().viewing_team();
 	team_data td(rc.dc(), viewing_team);
 	str << td.expenses << " (" << td.upkeep << ")";
 	return gray_inactive(rc,str.str(), _("Upkeep") + "\n\n" + _("The expenses incurred at the end of every turn to maintain your army. The first number is the amount of gold that will be deducted. It is equal to the number of unit levels not supported by villages. The second is the total cost of upkeep, including that covered by villages — in other words, the amount of gold that would be deducted if you lost all villages."));
@@ -1502,8 +1519,7 @@ REPORT_GENERATOR(upkeep, rc)
 
 REPORT_GENERATOR(expenses, rc)
 {
-	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.dc().get_team(viewing_side);
+	const team& viewing_team = rc.screen().viewing_team();
 	team_data td(rc.dc(), viewing_team);
 	return gray_inactive(rc,std::to_string(td.expenses));
 }
@@ -1511,11 +1527,10 @@ REPORT_GENERATOR(expenses, rc)
 REPORT_GENERATOR(income, rc)
 {
 	std::ostringstream str;
-	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.dc().get_team(viewing_side);
+	const team& viewing_team = rc.screen().viewing_team();
 	team_data td(rc.dc(), viewing_team);
 	char const *end = naps;
-	if (viewing_side != rc.screen().playing_side()) {
+	if (!rc.screen().viewing_team_is_playing()) {
 		if (td.net_income < 0) {
 			td.net_income = - td.net_income;
 			str << span_color(font::GRAY_COLOR);
@@ -1599,8 +1614,7 @@ REPORT_GENERATOR(terrain_info, rc)
 		// This report is used in both game and editor. get_team(viewing_side) would throw in the editor's
 		// terrain-only mode, but if the village already has an owner then we're not in that mode.
 		if(owner != 0) {
-			int viewing_side = rc.screen().viewing_side();
-			const team& viewing_team = rc.dc().get_team(viewing_side);
+			const team& viewing_team = rc.screen().viewing_team();
 
 			if(!viewing_team.fogged(mouseover_hex)) {
 				const team& owner_team = rc.dc().get_team(owner);
@@ -1627,8 +1641,7 @@ REPORT_GENERATOR(terrain_info, rc)
 REPORT_GENERATOR(terrain, rc)
 {
 	const gamemap &map = rc.map();
-	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.dc().get_team(viewing_side);
+	const team& viewing_team = rc.screen().viewing_team();
 	map_location mouseover_hex = rc.screen().mouseover_hex();
 	if (!map.on_board(mouseover_hex) || viewing_team.shrouded(mouseover_hex))
 		return config();
@@ -1643,7 +1656,7 @@ REPORT_GENERATOR(terrain, rc)
 		int owner = rc.dc().village_owner(mouseover_hex);
 		if (owner == 0 || viewing_team.fogged(mouseover_hex)) {
 			str << map.get_terrain_info(terrain).income_description();
-		} else if (owner == viewing_side) {
+		} else if (owner == viewing_team.side()) {
 			str << map.get_terrain_info(terrain).income_description_own();
 		} else if (viewing_team.is_enemy(owner)) {
 			str << map.get_terrain_info(terrain).income_description_enemy();
@@ -1696,7 +1709,7 @@ REPORT_GENERATOR(position, rc)
 	str << mouseover_hex;
 
 	const unit *u = get_visible_unit(rc);
-	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+	const team &viewing_team = rc.screen().viewing_team();
 	if (!u ||
 	    (displayed_unit_hex != mouseover_hex &&
 	     displayed_unit_hex != rc.screen().selected_hex()) ||
@@ -1717,10 +1730,10 @@ REPORT_GENERATOR(position, rc)
 
 REPORT_GENERATOR(side_playing, rc)
 {
-	const team &active_team = rc.teams()[rc.screen().playing_team()];
+	const team &active_team = rc.screen().playing_team();
 	std::string flag_icon = active_team.flag_icon();
 	std::string old_rgb = game_config::flag_rgb;
-	std::string new_rgb = team::get_side_color_id(rc.screen().playing_side());
+	std::string new_rgb = team::get_side_color_id(rc.screen().playing_team().side());
 	std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 	if (flag_icon.empty())
 		flag_icon = game_config::images::flag_icon;
@@ -1772,15 +1785,14 @@ REPORT_GENERATOR(battery, /*rc*/)
 
 REPORT_GENERATOR(report_countdown, rc)
 {
-	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.dc().get_team(viewing_side);
+	const team& viewing_team = rc.screen().viewing_team();
 	int min, sec;
 	if (viewing_team.countdown_time() == 0)
 		return report_report_clock(rc);
 	std::ostringstream str;
 	sec = viewing_team.countdown_time() / 1000;
 	char const *end = naps;
-	if (viewing_side != rc.screen().playing_side())
+	if (!rc.screen().viewing_team_is_playing())
 		str << span_color(font::GRAY_COLOR);
 	else if (sec < 60)
 		str << "<span foreground=\"#c80000\">";
@@ -1804,6 +1816,7 @@ REPORT_GENERATOR(report_countdown, rc)
 void reports::register_generator(const std::string &name, reports::generator *g)
 {
 	dynamic_generators_[name].reset(g);
+	all_reports_.clear();
 }
 
 config reports::generate_report(const std::string &name, const reports::context& rc, bool only_static)

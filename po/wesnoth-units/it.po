@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-08-19 04:11 UTC\n"
-"PO-Revision-Date: 2024-03-23 22:28+0100\n"
+"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
+"PO-Revision-Date: 2024-09-16 19:13+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <>\n"
 "Language: it\n"
@@ -1827,7 +1827,7 @@ msgstr ""
 #. [female]: gender=female
 #: data/core/units/drakes/Warrior.cfg:58
 msgid "female^Drake Warrior"
-msgstr "Drago Guerriera"
+msgstr "Dragonessa Guerriera"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:8
@@ -2954,6 +2954,17 @@ msgid ""
 "usually use their knowledge for warfare, they can be threatening warriors "
 "when defending their homes."
 msgstr ""
+"Sebbene genericamente pacifiche, le viverne posso facilmente trasformarsi in "
+"bestie feroci e arrabbiate quando vengono provocate. Quando sono veramente "
+"infuriate possono fare a pezzi anche dei guerrieri esperti con relativa "
+"facilità. La maggior parte dei viaggiatori fuggirebbe o le combatterebbe, ma "
+"alcuni di loro sono in grado di domare queste creature selvagge. Questi "
+"cavalieri del Popolo delle Dune passano anni, persino decenni della loro "
+"vita a fraternizzare con loro, costruendo lentamente un rapporto di fiducia "
+"fino a raggiungere una vera padronanza dei cieli. I più esperti tra questi "
+"cavalcatori di viverne sono diventati i più grandi e venerati viaggiatori "
+"della terra. Sebbene di solito non usino la loro conoscenza per la guerra, "
+"possono essere guerrieri minacciosi quando difendono le loro case."
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:4
@@ -3065,12 +3076,18 @@ msgid "Dwarvish Miner"
 msgstr "Nano Minatore"
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
-#: data/core/units/dwarves/Miner.cfg:17
+#: data/core/units/dwarves/Miner.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Dwarvish miners are the grunt workers of dwarvish society. They take the "
+#| "precious ores out of the ground, but do not ever take part in the "
+#| "crafting of weapons or artifacts. They have no military training, but "
+#| "they can still do some damage with their picks."
 msgid ""
-"Dwarvish miners are the grunt workers of dwarvish society. They take the "
+"Dwarvish Miners are the grunt workers of dwarvish society. They take the "
 "precious ores out of the ground, but do not ever take part in the crafting "
-"of weapons or artifacts. They have no military training, but they can still "
-"do some damage with their picks."
+"of weapons or artifacts. Despite their lack of military training, their "
+"weighty pickaxes can deal substantial damage."
 msgstr ""
 "I nani minatori sono la bassa manovalanza della società nanica. Estraggono i "
 "preziosi minerali dal suolo, ma non prendono parte nella manifattura delle "
@@ -3078,7 +3095,7 @@ msgstr ""
 "comunque causare dei danni attaccando con i loro picconi."
 
 #. [attack]: type=pierce
-#: data/core/units/dwarves/Miner.cfg:22
+#: data/core/units/dwarves/Miner.cfg:26
 msgid "pick"
 msgstr "piccone"
 
@@ -3449,7 +3466,7 @@ msgstr ""
 #. in game mechanics an upgrade of the Shaman’s slowing “entangle”, but in lore has the different magic style of the Enchantress’s unit description
 #: data/core/units/elves/Enchantress.cfg:37 data/core/units/elves/Sylph.cfg:41
 msgid "ethereal web"
-msgstr ""
+msgstr "ragnatela eterea"
 
 #. [attack]: type=arcane
 #: data/core/units/elves/Enchantress.cfg:49
@@ -4189,7 +4206,7 @@ msgstr "rete"
 #. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:4
 msgid "Goblin Rouser"
-msgstr "Goblin Incitatore"
+msgstr "Goblin Alfiere"
 
 #. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:19
@@ -4203,9 +4220,9 @@ msgstr ""
 "Gli alfieri sono considerati una stranezza tra i goblin. È piuttosto raro "
 "che un goblin sopravviva a tante battaglie da essere considerato un "
 "veterano, ed è ancor più raro che gli altri goblin riconoscano e rispettino "
-"tale titolo. Ciò nonostante, i frenetici incitamenti lanciati da un goblin "
-"incitatore spronano efficacemente i combattenti non veterani a lottare più "
-"duramente e più a lungo prima di morire."
+"tale titolo. Ciò nonostante, i frenetici incitamenti lanciati da un alfiere "
+"spronano efficacemente i combattenti non veterani a lottare più duramente e "
+"più a lungo prima di morire."
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:4
@@ -6519,33 +6536,60 @@ msgstr ""
 #. [unit_type]: id=Forest Lion, race=cats
 #: data/core/units/monsters/Cat_Forest.cfg:4
 msgid "Forest Lion"
-msgstr ""
+msgstr "Leone delle foreste"
 
 #. [unit_type]: id=Forest Lion, race=cats
 #: data/core/units/monsters/Cat_Forest.cfg:31
+#, fuzzy
+#| msgid ""
+#| "Forest Lions are light-brown cats, roughly the same size as a wolf, that "
+#| "hunt the woods and hills at dusk and dawn.  Their most distinctive "
+#| "feature is their odd, triply branched tail, which they seem to use for "
+#| "camouflage and disruptive patterning."
 msgid ""
 "Forest Lions are light-brown cats, roughly the same size as a wolf, that "
-"hunt the woods and hills at dusk and dawn.  Their most distinctive feature "
-"is their odd, triply branched tail, which they seem to use for camouflage "
-"and disruptive patterning."
+"hunt the woods and hills at dusk and dawn. Their most distinctive feature is "
+"their odd, triply branched tail, which they seem to use for camouflage and "
+"disruptive patterning."
 msgstr ""
+"I leoni delle foreste sono dei felini dal manto marrone chiaro, più o meno "
+"della taglia di un lupo, che cacciano nei boschi e nelle colline all’alba e "
+"al tramonto. Caratteristica e distintiva è la loro strana coda a tre rami, "
+"che sembrano usare per mimetizzarsi o come azione di disturbo."
 
 #. [unit_type]: id=Jumpcat, race=cats
 #: data/core/units/monsters/Cat_Jump.cfg:4
 msgid "Jumpcat"
-msgstr ""
+msgstr "Gatto salterino"
 
 #. [unit_type]: id=Jumpcat, race=cats
 #: data/core/units/monsters/Cat_Jump.cfg:30
+#, fuzzy
+#| msgid ""
+#| "Jumpcats are opportunistic predators with keen senses and fast reflexes, "
+#| "but very little bulk, so they are easily dispatched if they can be hit, "
+#| "and easily scared off if they can't.  One of the most distinctive "
+#| "features of these odd creatures is the hard clump of twigs, clay, and "
+#| "rocks they carry on their tail, which is their primary offensive weapon.  "
+#| "Their actions are mostly driven by instinct, but they are sometimes used "
+#| "as assassins by more sophisticated handlers."
 msgid ""
 "Jumpcats are opportunistic predators with keen senses and fast reflexes, but "
 "very little bulk, so they are easily dispatched if they can be hit, and "
-"easily scared off if they can't.  One of the most distinctive features of "
+"easily scared off if they can’t. One of the most distinctive features of "
 "these odd creatures is the hard clump of twigs, clay, and rocks they carry "
-"on their tail, which is their primary offensive weapon.  Their actions are "
+"on their tail, which is their primary offensive weapon. Their actions are "
 "mostly driven by instinct, but they are sometimes used as assassins by more "
 "sophisticated handlers."
 msgstr ""
+"I gatti salterini sono dei predatori opportunisti dai sensi acuti e i "
+"riflessi rapidi, ma piuttosto piccoli e quindi vengono facilmente eliminati "
+"se possono essere colpiti e facilmente spaventati se non si riesce farlo. "
+"Una delle caratteristiche più distintive di queste strane creature è il duro "
+"ammasso di ramoscelli, argilla e rocce che trasportano sulla coda, che è la "
+"loro principale arma offensiva. Le loro azioni sono per lo più guidate "
+"dall’istinto, ma a volte vengono usati come assassini dagli addestratori più "
+"sofisticati."
 
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:13
@@ -6800,37 +6844,25 @@ msgstr "artigli di fuoco"
 
 #. [unit_type]: id=Fire Wisp, race=monster
 #: data/core/units/monsters/Fire_Wisp.cfg:4
-#, fuzzy
-#| msgid "Fire Wraith"
 msgid "Fire Wisp"
-msgstr "Spettro di Fuoco"
+msgstr "Spiritello di Fuoco"
 
 #. [unit_type]: id=Fire Wisp, race=monster
 #: data/core/units/monsters/Fire_Wisp.cfg:24
-#, fuzzy
-#| msgid ""
-#| "Fire Guardians are spirits of smoke and flame. No one is exactly sure "
-#| "where they come from, but they are occasionally summoned by powerful "
-#| "mages to do their bidding. When not being controlled they like to frolic "
-#| "in pools of lava and take great delight in burning anything they can "
-#| "reach."
 msgid ""
 "Fire Wisps are spirits of smoke and flame. When not being ordered around "
 "they like to frolic in pools of lava and take great delight in burning "
 "anything they can reach."
 msgstr ""
-"I guardiani di fuoco sono degli spiriti di fumo e fiamme. Nessuno sa "
-"esattamente da dove trovino origine, ma occasionalmente vengono evocati dai "
-"maghi più potenti per eseguire il loro volere. Quando non sottostanno a un "
-"controllo superiore, amano sguazzare nelle pozze di lava e traggono gran "
-"diletto nel bruciare qualsiasi cosa trovino nelle vicinanze."
+"Gli spiritelli di fuoco sono degli esseri composti di fumo e fiamme. Quando "
+"non sottoposti ad un controllo superiore, amano sguazzare nelle pozze di "
+"lava e traggono gran diletto nel bruciare qualsiasi cosa trovino nelle "
+"vicinanze."
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Wisp.cfg:29
-#, fuzzy
-#| msgid "fire breath"
 msgid "fire bash"
-msgstr "respiro infuocato"
+msgstr "colpo infuocato"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:8
@@ -8969,10 +9001,8 @@ msgstr "Insetto"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:175
 #: data/core/units/undead/Corpse_Walking.cfg:176
-#, fuzzy
-#| msgid "wc_variation^Rat"
 msgid "wc_variation^Cat"
-msgstr "Ratto"
+msgstr "Gatto"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:191

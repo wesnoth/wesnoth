@@ -87,7 +87,7 @@ enables some Lua debugging mechanisms
 .B --strict-lua
 disallow deprecated Lua API calls
 .TP
-.BI -D,--diff \ left-file \  right-file
+.BI -D,\ --diff \ left-file \  right-file
 diffs the two WML files; does not preprocess them first (to do that, run them through
 .B -p
 first). Outputs the diff as DiffWML on standard output or to the file indicated by
@@ -238,7 +238,7 @@ which defines a Wesnoth plugin. Similar to
 .BR --script ,
 but Lua file should return a function which will be run as a coroutine and periodically woken up with updates.
 .TP
-.BI -P,--patch \ base-file \  patch-file
+.BI -P,\ --patch \ base-file \  patch-file
 applies a DiffWML patch to a WML file; does not preprocess either of the files.
 Outputs the patched WML to standard output or to the file indicated by
 .IR --output .
@@ -345,9 +345,9 @@ makes the
 .B package
 package available to lua scripts, so that they can load arbitrary packages. Do not do this with untrusted scripts! This action gives lua the same permissions as the wesnoth executable.
 .TP
-.BI -S,--use-schema  \ path
+.BI -S,\ --use-schema  \ path
 sets the WML schema for use with
-.BR -V,--validate .
+.BR -V,\ --validate .
 .TP
 .BI --userdata-dir \ name
 sets the userdata directory to
@@ -375,7 +375,7 @@ validates the WML of the given addon as you play.
 .B --validate-core
 validates the core WML as you play.
 .TP
-.B --validate-schema \ path
+.BI --validate-schema \ path
 validates a file as a WML schema.
 .TP
 .B --validcache

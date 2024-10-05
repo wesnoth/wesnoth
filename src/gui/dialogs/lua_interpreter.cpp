@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/lua_interpreter.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/scroll_label.hpp"
@@ -71,7 +70,7 @@ public:
 	/** Bind the scroll label widget to my pointer, and configure */
 	void bind(window& window) {
 		window_ = &window;
-		msg_label = find_widget<scroll_label>(&window, "msg", false, true);
+		msg_label = window_->find_widget<scroll_label>("msg", false, true);
 		msg_label->set_use_markup(true);
 		msg_label->set_vertical_scrollbar_mode(scrollbar_container::ALWAYS_VISIBLE);
 		msg_label->set_label("");
@@ -352,8 +351,8 @@ public:
 	/** Bind my pointers to the widgets found in the window */
 	void bind(window& window);
 
-	void handle_copy_button_clicked(window & window);
-	void handle_clear_button_clicked(window & window);
+	void handle_copy_button_clicked();
+	void handle_clear_button_clicked();
 
 	void input_keypress_callback(bool& handled,
 						   bool& halt,
@@ -411,9 +410,7 @@ void lua_interpreter::controller::bind(window& window)
 	assert(view_);
 	view_->bind(window);
 
-	text_entry = find_widget<text_box>(&window, "text_entry", false, true);
-	//text_entry->set_text_changed_callback(
-	//		std::bind(&view::filter, this, std::ref(window)));
+	text_entry = window.find_widget<text_box>("text_entry", false, true);
 	window.keyboard_capture(text_entry);
 	window.set_click_dismiss(false);
 	window.set_enter_disabled(true);
@@ -427,37 +424,28 @@ void lua_interpreter::controller::bind(window& window)
 						std::placeholders::_5,
 						std::ref(window)));
 
-	copy_button = find_widget<button>(&window, "copy", false, true);
+	copy_button = window.find_widget<button>("copy", false, true);
 	connect_signal_mouse_left_click(
 			*copy_button,
-			std::bind(&lua_interpreter::controller::handle_copy_button_clicked,
-						this,
-						std::ref(window)));
+			std::bind(&lua_interpreter::controller::handle_copy_button_clicked, this));
 
-	clear_button = find_widget<button>(&window, "clear", false, true);
+	clear_button = window.find_widget<button>("clear", false, true);
 	connect_signal_mouse_left_click(
 			*clear_button,
-			std::bind(&lua_interpreter::controller::handle_clear_button_clicked,
-						this,
-						std::ref(window)));
-
-	if (!desktop::clipboard::available()) {
-		copy_button->set_active(false);
-		copy_button->set_tooltip(_("Clipboard support not found, contact your packager"));
-	}
+			std::bind(&lua_interpreter::controller::handle_clear_button_clicked, this));
 
 	LOG_LUA << "Exiting lua_interpreter::controller::bind";
 }
 
 /** Copy text to the clipboard */
-void lua_interpreter::controller::handle_copy_button_clicked(window & /*window*/)
+void lua_interpreter::controller::handle_copy_button_clicked()
 {
 	assert(lua_model_);
-	desktop::clipboard::copy_to_clipboard(lua_model_->get_raw_log(), false);
+	desktop::clipboard::copy_to_clipboard(lua_model_->get_raw_log());
 }
 
 /** Clear the text */
-void lua_interpreter::controller::handle_clear_button_clicked(window & /*window*/)
+void lua_interpreter::controller::handle_clear_button_clicked()
 {
 	assert(lua_model_);
 	lua_model_->clear_log();
@@ -659,13 +647,13 @@ void lua_interpreter::display(lua_interpreter::WHICH_KERNEL which) {
 }
 
 /** Bind the controller, initialize one of the static labels with info about this kernel, and update the view. */
-void lua_interpreter::pre_show(window& window)
+void lua_interpreter::pre_show()
 {
 	LOG_LUA << "Entering lua_interpreter::view::pre_show";
 	register_text("text_entry", false, controller_->text_entry_, true);
-	controller_->bind(window);
+	controller_->bind(*this);
 
-	label *kernel_type_label = find_widget<label>(&window, "kernel_type", false, true);
+	label *kernel_type_label = find_widget<label>("kernel_type", false, true);
 	kernel_type_label->set_label(controller_->lua_model_->get_name());
 
 	controller_->update_view();

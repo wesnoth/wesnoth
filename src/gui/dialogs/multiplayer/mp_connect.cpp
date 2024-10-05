@@ -78,12 +78,12 @@ std::array<mp_connect::server_list*, 2> mp_connect::server_lists()
 	return {{ &builtin_servers_, &user_servers_ }};
 }
 
-void mp_connect::pre_show(window& win)
+void mp_connect::pre_show()
 {
-	text_box& hostname_box = find_widget<text_box>(&win, "host_name", false);
-	listbox& server_list = find_widget<listbox>(&win, "server_list", false);
-	button& button_add = find_widget<button>(&win, "server_add", false);
-	button& button_del = find_widget<button>(&win, "server_delete", false);
+	text_box& hostname_box = find_widget<text_box>("host_name");
+	listbox& server_list = find_widget<listbox>("server_list");
+	button& button_add = find_widget<button>("server_add");
+	button& button_del = find_widget<button>("server_delete");
 
 	for(const auto* servers : server_lists()) {
 		for(const auto& server : *servers) {
@@ -111,12 +111,10 @@ void mp_connect::insert_into_server_listbox(listbox& listbox, const server_info&
 
 void mp_connect::select_first_match()
 {
-	window* window = get_window();
-
-	text_box& hostname_box = find_widget<text_box>(window, "host_name", false);
-	listbox& server_list = find_widget<listbox>(window, "server_list", false);
-	button& button_add = find_widget<button>(window, "server_add", false);
-	button& button_del = find_widget<button>(window, "server_delete", false);
+	text_box& hostname_box = find_widget<text_box>("host_name");
+	listbox& server_list = find_widget<listbox>("server_list");
+	button& button_add = find_widget<button>("server_add");
+	button& button_del = find_widget<button>("server_delete");
 
 	const auto& address = boost::trim_copy(hostname_box.get_value());
 
@@ -159,10 +157,8 @@ void mp_connect::on_address_change()
 
 void mp_connect::on_server_add()
 {
-	window* window = get_window();
-
-	text_box& hostname_box = find_widget<text_box>(window, "host_name", false);
-	listbox& server_list = find_widget<listbox>(window, "server_list", false);
+	text_box& hostname_box = find_widget<text_box>("host_name");
+	listbox& server_list = find_widget<listbox>("server_list");
 
 	const auto& address = boost::trim_copy(hostname_box.get_value());
 	const auto& selection = current_selection();
@@ -199,9 +195,7 @@ void mp_connect::on_server_add()
 
 void mp_connect::on_server_delete()
 {
-	window* window = get_window();
-
-	listbox& server_list = find_widget<listbox>(window, "server_list", false);
+	listbox& server_list = find_widget<listbox>("server_list");
 
 	auto selection = current_selection();
 
@@ -219,11 +213,9 @@ void mp_connect::on_server_delete()
 
 void mp_connect::on_server_select()
 {
-	window* window = get_window();
-
-	text_box& hostname_box = find_widget<text_box>(window, "host_name", false);
-	button& button_add = find_widget<button>(window, "server_add", false);
-	button& button_del = find_widget<button>(window, "server_delete", false);
+	text_box& hostname_box = find_widget<text_box>("host_name");
+	button& button_add = find_widget<button>("server_add");
+	button& button_del = find_widget<button>("server_delete");
 
 	auto selection = current_selection();
 
@@ -245,7 +237,7 @@ void mp_connect::on_server_select()
 
 mp_connect::selection mp_connect::current_selection()
 {
-	listbox& server_list = find_widget<listbox>(get_window(), "server_list", false);
+	listbox& server_list = find_widget<listbox>("server_list");
 	return { this, server_list.get_selected_row() };
 }
 

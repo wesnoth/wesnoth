@@ -56,6 +56,8 @@ public:
 	{
 	}
 
+	~campaign_controller();
+
 	level_result::type play_game();
 	level_result::type play_replay()
 	{

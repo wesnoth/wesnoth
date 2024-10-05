@@ -87,28 +87,6 @@ static map_location legacy_difference(const map_location& me, const map_location
  *
  */
 
-terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image, int cx, int cy, bool is_water)
-	: layer(layer)
-	, basex(x)
-	, basey(y)
-	, variants()
-	, global_image(global_image)
-	, center_x(cx)
-	, center_y(cy)
-	, is_water(is_water)
-{
-}
-
-terrain_builder::tile::tile()
-	: flags()
-	, images()
-	, images_foreground()
-	, images_background()
-	, last_tod("invalid_tod")
-	, sorted_images(false)
-{
-}
-
 void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 {
 	images_background.clear();
@@ -730,7 +708,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 
 		bool is_water = img["is_water"].to_bool();
 
-		images.push_back(rule_image(layer, basex - dx, basey - dy, global, center_x, center_y, is_water));
+		images.AGGREGATE_EMPLACE(layer, basex - dx, basey - dy, global, center_x, center_y, is_water);
 
 		// Adds the other variants of the image
 		for(const config& variant : img.child_range("variant")) {
@@ -1104,7 +1082,7 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule& rule, con
 
 		if(!constraint.no_draw) {
 			for(const rule_image& img : constraint.images) {
-				btile.images.emplace_back(&img, rand_seed);
+				btile.images.AGGREGATE_EMPLACE(&img, rand_seed);
 			}
 		}
 

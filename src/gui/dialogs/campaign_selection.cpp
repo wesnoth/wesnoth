@@ -19,7 +19,6 @@
 
 #include "filesystem.hpp"
 #include "font/text_formatting.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"
@@ -42,7 +41,7 @@ REGISTER_DIALOG(campaign_selection)
 
 void campaign_selection::campaign_selected()
 {
-	tree_view& tree = find_widget<tree_view>(this, "campaign_tree", false);
+	tree_view& tree = find_widget<tree_view>("campaign_tree");
 	if(tree.empty()) {
 		return;
 	}
@@ -53,9 +52,9 @@ void campaign_selection::campaign_selected()
 		auto iter = std::find(page_ids_.begin(), page_ids_.end(), tree.selected_item()->id());
 
 		if(tree.selected_item()->id() == missing_campaign_) {
-			find_widget<button>(this, "ok", false).set_active(false);
+			find_widget<button>("ok").set_active(false);
 		} else {
-			find_widget<button>(this, "ok", false).set_active(true);
+			find_widget<button>("ok").set_active(true);
 		}
 
 		const int choice = std::distance(page_ids_.begin(), iter);
@@ -63,18 +62,18 @@ void campaign_selection::campaign_selected()
 			return;
 		}
 
-		multi_page& pages = find_widget<multi_page>(this, "campaign_details", false);
+		multi_page& pages = find_widget<multi_page>("campaign_details");
 		pages.select_page(choice);
 
 		engine_.set_current_level(choice);
 
-		styled_widget& background = find_widget<styled_widget>(this, "campaign_background", false);
+		styled_widget& background = find_widget<styled_widget>("campaign_background");
 		background.set_label(engine_.current_level().data()["background"].str());
 
 		// Rebuild difficulty menu
 		difficulties_.clear();
 
-		auto& diff_menu = find_widget<menu_button>(this, "difficulty_menu", false);
+		auto& diff_menu = find_widget<menu_button>("difficulty_menu");
 
 		const auto& diff_config = generate_difficulty_config(engine_.current_level().data());
 		diff_menu.set_active(diff_config.child_count("difficulty") > 1);
@@ -143,7 +142,7 @@ void campaign_selection::campaign_selected()
 
 void campaign_selection::difficulty_selected()
 {
-	const std::size_t selection = find_widget<menu_button>(this, "difficulty_menu", false).get_value();
+	const std::size_t selection = find_widget<menu_button>("difficulty_menu").get_value();
 	current_difficulty_ = difficulties_.at(std::min(difficulties_.size() - 1, selection));
 }
 
@@ -191,7 +190,7 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 		break;
 	}
 
-	tree_view& tree = find_widget<tree_view>(this, "campaign_tree", false);
+	tree_view& tree = find_widget<tree_view>("campaign_tree");
 
 	// Remember which campaign was selected...
 	std::string was_selected;
@@ -224,7 +223,7 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 	}
 
 	// List of which options has been selected in the completion filter multimenu_button
-	boost::dynamic_bitset<> filter_comp_options = find_widget<multimenu_button>(this, "filter_completion", false).get_toggle_states();
+	boost::dynamic_bitset<> filter_comp_options = find_widget<multimenu_button>("filter_completion").get_toggle_states();
 
 	bool exists_in_filtered_result = false;
 	for(unsigned i = 0; i < levels.size(); ++i) {
@@ -254,7 +253,7 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 	}
 
 	if(!was_selected.empty() && exists_in_filtered_result) {
-		find_widget<tree_view_node>(this, was_selected, false).select_node();
+		find_widget<tree_view_node>(was_selected).select_node();
 	} else {
 		campaign_selected();
 	}
@@ -284,9 +283,9 @@ void campaign_selection::toggle_sorting_selection(CAMPAIGN_ORDER order)
 		force = true;
 
 		if(order == NAME) {
-			find_widget<toggle_button>(this, "sort_time", false).set_value(0);
+			find_widget<toggle_button>("sort_time").set_value(0);
 		} else if(order == DATE) {
-			find_widget<toggle_button>(this, "sort_name", false).set_value(0);
+			find_widget<toggle_button>("sort_name").set_value(0);
 		}
 
 		force = false;
@@ -307,20 +306,20 @@ void campaign_selection::filter_text_changed(const std::string& text)
 	sort_campaigns(current_sorting_, currently_sorted_asc_);
 }
 
-void campaign_selection::pre_show(window& window)
+void campaign_selection::pre_show()
 {
-	text_box* filter = find_widget<text_box>(&window, "filter_box", false, true);
+	text_box* filter = find_widget<text_box>("filter_box", false, true);
 	filter->set_text_changed_callback(
 			std::bind(&campaign_selection::filter_text_changed, this, std::placeholders::_2));
 
 	/***** Setup campaign tree. *****/
-	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
+	tree_view& tree = find_widget<tree_view>("campaign_tree");
 
 	connect_signal_notify_modified(tree,
 		std::bind(&campaign_selection::campaign_selected, this));
 
-	toggle_button& sort_name = find_widget<toggle_button>(&window, "sort_name", false);
-	toggle_button& sort_time = find_widget<toggle_button>(&window, "sort_time", false);
+	toggle_button& sort_name = find_widget<toggle_button>("sort_name");
+	toggle_button& sort_time = find_widget<toggle_button>("sort_time");
 
 	connect_signal_notify_modified(sort_name,
 		std::bind(&campaign_selection::toggle_sorting_selection, this, NAME));
@@ -328,13 +327,13 @@ void campaign_selection::pre_show(window& window)
 	connect_signal_notify_modified(sort_time,
 		std::bind(&campaign_selection::toggle_sorting_selection, this, DATE));
 
-	window.keyboard_capture(filter);
-	window.add_to_keyboard_chain(&tree);
+	keyboard_capture(filter);
+	add_to_keyboard_chain(&tree);
 
 	/***** Setup campaign details. *****/
-	multi_page& pages = find_widget<multi_page>(&window, "campaign_details", false);
+	multi_page& pages = find_widget<multi_page>("campaign_details");
 
-	multimenu_button& filter_comp = find_widget<multimenu_button>(&window, "filter_completion", false);
+	multimenu_button& filter_comp = find_widget<multimenu_button>("filter_completion");
 	connect_signal_notify_modified(filter_comp,
 		std::bind(&campaign_selection::sort_campaigns, this, RANK, 1));
 	for (unsigned j = 0; j < filter_comp.num_options(); j++) {
@@ -393,7 +392,7 @@ void campaign_selection::pre_show(window& window)
 	//
 	// Set up Mods selection dropdown
 	//
-	multimenu_button& mods_menu = find_widget<multimenu_button>(&window, "mods_menu", false);
+	multimenu_button& mods_menu = find_widget<multimenu_button>("mods_menu");
 
 	if(!engine_.get_const_extras_by_type(ng::create_engine::MOD).empty()) {
 		std::vector<config> mod_menu_values;
@@ -420,7 +419,7 @@ void campaign_selection::pre_show(window& window)
 	//
 	// Set up Difficulty dropdown
 	//
-	menu_button& diff_menu = find_widget<menu_button>(this, "difficulty_menu", false);
+	menu_button& diff_menu = find_widget<menu_button>("difficulty_menu");
 
 	diff_menu.set_use_markup(true);
 	connect_signal_notify_modified(diff_menu, std::bind(&campaign_selection::difficulty_selected, this));
@@ -430,7 +429,7 @@ void campaign_selection::pre_show(window& window)
 
 void campaign_selection::add_campaign_to_tree(const config& campaign)
 {
-	tree_view& tree = find_widget<tree_view>(this, "campaign_tree", false);
+	tree_view& tree = find_widget<tree_view>("campaign_tree");
 	widget_data data;
 	widget_item item;
 
@@ -475,9 +474,9 @@ void campaign_selection::add_campaign_to_tree(const config& campaign)
 	tree.add_node("campaign", data).set_id(campaign["id"]);
 }
 
-void campaign_selection::post_show(window& window)
+void campaign_selection::post_show()
 {
-	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
+	tree_view& tree = find_widget<tree_view>("campaign_tree");
 
 	if(tree.empty()) {
 		return;
@@ -492,7 +491,7 @@ void campaign_selection::post_show(window& window)
 	}
 
 
-	rng_mode_ = RNG_MODE(std::clamp<unsigned>(find_widget<menu_button>(&window, "rng_menu", false).get_value(), RNG_DEFAULT, RNG_BIASED));
+	rng_mode_ = RNG_MODE(std::clamp<unsigned>(find_widget<menu_button>("rng_menu").get_value(), RNG_DEFAULT, RNG_BIASED));
 
 	prefs::get().set_modifications(engine_.active_mods(), false);
 }
@@ -500,7 +499,7 @@ void campaign_selection::post_show(window& window)
 void campaign_selection::mod_toggled()
 {
 	boost::dynamic_bitset<> new_mod_states =
-		find_widget<multimenu_button>(this, "mods_menu", false).get_toggle_states();
+		find_widget<multimenu_button>("mods_menu").get_toggle_states();
 
 	// Get a mask of any mods that were toggled, regardless of new state
 	mod_states_ = mod_states_ ^ new_mod_states;

@@ -19,7 +19,6 @@
 
 #include "gui/core/log.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -42,6 +41,8 @@ REGISTER_WIDGET(tab_container)
 tab_container::tab_container(const implementation::builder_tab_container& builder)
 	: container_base(builder, type())
 	, state_(ENABLED)
+	, builders_(builder.builders)
+	, list_items_(builder.list_items)
 {
 }
 
@@ -67,7 +68,7 @@ bool tab_container::can_wrap() const
 
 listbox& tab_container::get_internal_list()
 {
-	return find_widget<listbox>(&get_grid(), "_tab_list", false);
+	return get_grid().find_widget<listbox>("_tab_list", false);
 }
 
 void tab_container::finalize(std::unique_ptr<generator_base> generator)
@@ -80,7 +81,7 @@ void tab_container::finalize(std::unique_ptr<generator_base> generator)
 		generator->create_item(-1, *builder_entry, empty_data, nullptr);
 	}
 
-	grid* parent_grid = find_widget<grid>(this, "_content_grid", false, true);
+	grid* parent_grid = find_widget<grid>("_content_grid", false, true);
 	if (parent_grid) {
 		parent_grid->swap_child("_page", std::move(generator), false);
 	}
@@ -177,9 +178,6 @@ std::unique_ptr<widget> builder_tab_container::build() const
 	assert(conf);
 
 	widget->init_grid(*conf->grid);
-
-	widget->set_items(list_items);
-	widget->set_builders(builders);
 
 	auto generator = generator_base::build(true, true, generator_base::independent, false);
 	widget->finalize(std::move(generator));

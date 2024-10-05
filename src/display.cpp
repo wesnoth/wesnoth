@@ -26,9 +26,11 @@
 #include "draw_manager.hpp"
 #include "fake_unit_manager.hpp"
 #include "filesystem.hpp"
+#include "floating_label.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "global.hpp"
+#include "gui/core/event/handler.hpp" // is_in_dialog
 #include "preferences/preferences.hpp"
 #include "halo.hpp"
 #include "hotkey/command_executor.hpp"
@@ -40,7 +42,6 @@
 #include "play_controller.hpp" //note: this can probably be refactored out
 #include "reports.hpp"
 #include "resources.hpp"
-#include "show_dialog.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
 #include "terrain/builder.hpp"
@@ -55,13 +56,16 @@
 
 #include <boost/algorithm/string/trim.hpp>
 
-
 #include <algorithm>
 #include <array>
 #include <cmath>
 #include <iomanip>
 #include <numeric>
 #include <utility>
+
+#ifdef __cpp_lib_format
+#include <format>
+#endif
 
 #ifdef _WIN32
 #include <windows.h>
@@ -112,17 +116,17 @@ static int get_zoom_levels_index(unsigned int zoom_level)
 	return std::distance(zoom_levels.begin(), iter);
 }
 
-void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo, const std::string& team_name, const std::string& item_id, bool visible_under_fog, float submerge, float z_order)
+void display::add_overlay(const map_location& loc, overlay&& ov)
 {
-	halo::handle halo_handle;
-	if(halo != "") {
-		halo_handle = halo_man_.add(get_location_x(loc) + hex_size() / 2,
-			get_location_y(loc) + hex_size() / 2, halo, loc);
-	}
-
 	std::vector<overlay>& overlays = get_overlays()[loc];
-	auto it = std::find_if(overlays.begin(), overlays.end(), [z_order](const overlay& ov) { return ov.z_order > z_order; });
-	overlays.emplace(it, img, halo, halo_handle, team_name, item_id, visible_under_fog, submerge, z_order);
+	auto pos = std::find_if(overlays.begin(), overlays.end(),
+		[new_order = ov.z_order](const overlay& existing) { return existing.z_order > new_order; });
+
+	auto inserted = overlays.emplace(pos, std::move(ov));
+	if(const std::string& halo = inserted->halo; !halo.empty()) {
+		auto [x, y] = get_location_rect(loc).center();
+		inserted->halo_handle = halo_man_.add(x, y, halo, loc);
+	}
 }
 
 void display::remove_overlay(const map_location& loc)
@@ -151,7 +155,7 @@ display::display(const display_context* dc,
 	, halo_man_()
 	, wb_(wb)
 	, exclusive_unit_draw_requests_()
-	, currentTeam_(0)
+	, viewing_team_index_(0)
 	, dont_show_all_(false)
 	, xpos_(0)
 	, ypos_(0)
@@ -189,7 +193,7 @@ display::display(const display_context* dc,
 	, animate_map_(true)
 	, animate_water_(true)
 	, flags_()
-	, activeTeam_(0)
+	, playing_team_index_(0)
 	, drawing_buffer_()
 	, map_screenshot_(false)
 	, reach_map_()
@@ -257,42 +261,28 @@ void display::set_theme(const std::string& new_theme)
 	queue_rerender();
 }
 
-void display::init_flags() {
-
+void display::init_flags()
+{
 	flags_.clear();
 	if (!dc_) return;
 	flags_.resize(dc_->teams().size());
 
-	std::vector<std::string> side_colors;
-	side_colors.reserve(dc_->teams().size());
-
 	for(const team& t : dc_->teams()) {
-		std::string side_color = t.color();
-		side_colors.push_back(side_color);
-		init_flags_for_side_internal(t.side() - 1, side_color);
+		reinit_flags_for_team(t);
 	}
 }
 
 void display::reinit_flags_for_team(const team& t)
 {
-	init_flags_for_side_internal(t.side() - 1, t.color());
-}
-
-void display::init_flags_for_side_internal(std::size_t n, const std::string& side_color)
-{
-	assert(dc_ != nullptr);
-	assert(n < dc_->teams().size());
-	assert(n < flags_.size());
-
-	std::string flag = dc_->teams()[n].flag();
+	std::string flag = t.flag();
 	std::string old_rgb = game_config::flag_rgb;
-	std::string new_rgb = side_color;
+	std::string new_rgb = t.color();
 
 	if(flag.empty()) {
 		flag = game_config::images::flag;
 	}
 
-	LOG_DP << "Adding flag for team " << n << " from animation " << flag;
+	LOG_DP << "Adding flag for side " << t.side() << " from animation " << flag;
 
 	// Must recolor flag image
 	animated<image::locator> temp_anim;
@@ -309,7 +299,7 @@ void display::init_flags_for_side_internal(std::size_t n, const std::string& sid
 			try {
 				time = std::max<int>(1, std::stoi(sub_items.back()));
 			} catch(const std::invalid_argument&) {
-				ERR_DP << "Invalid time value found when constructing flag for side " << n << ": " << sub_items.back();
+				ERR_DP << "Invalid time value found when constructing flag for side " << t.side() << ": " << sub_items.back();
 			}
 		}
 
@@ -319,31 +309,28 @@ void display::init_flags_for_side_internal(std::size_t n, const std::string& sid
 		temp_anim.add_frame(time, flag_image);
 	}
 
-	animated<image::locator>& f = flags_[n];
+	animated<image::locator>& f = flags_[t.side() - 1];
 	f = temp_anim;
 	auto time = f.get_end_time();
 	if (time > 0) {
 		f.start_animation(randomness::rng::default_instance().get_random_int(0, time-1), true);
-	}
-	else {
+	} else {
 		// this can happen if both flag and game_config::images::flag are empty.
-		ERR_DP << "missing flag for team" << n;
+		ERR_DP << "missing flag for side " << t.side();
 	}
 }
 
 texture display::get_flag(const map_location& loc)
 {
-	if(!get_map().is_village(loc)) {
-		return texture();
-	}
-
-	for (const team& t : dc_->teams()) {
-		if (t.owns_village(loc) && (!fogged(loc) || !dc_->get_team(viewing_side()).is_enemy(t.side())))
-		{
+	for(const team& t : dc_->teams()) {
+		if(t.owns_village(loc) && (!fogged(loc) || !viewing_team().is_enemy(t.side()))) {
 			auto& flag = flags_[t.side() - 1];
 			flag.update_last_draw_time();
-			const image::locator &image_flag = animate_map_ ?
-				flag.get_current_frame() : flag.get_first_frame();
+
+			const image::locator& image_flag = animate_map_
+				? flag.get_current_frame()
+				: flag.get_first_frame();
+
 			return image::get_texture(image_flag, image::TOD_COLORED);
 		}
 	}
@@ -351,10 +338,20 @@ texture display::get_flag(const map_location& loc)
 	return texture();
 }
 
-void display::set_team(std::size_t teamindex, bool show_everything)
+const team& display::playing_team() const
+{
+	return dc_->teams()[playing_team_index()];
+}
+
+const team& display::viewing_team() const
+{
+	return dc_->teams()[viewing_team_index()];
+}
+
+void display::set_viewing_team_index(std::size_t teamindex, bool show_everything)
 {
 	assert(teamindex < dc_->teams().size());
-	currentTeam_ = teamindex;
+	viewing_team_index_ = teamindex;
 	if(!show_everything) {
 		labels().set_team(&dc_->teams()[teamindex]);
 		dont_show_all_ = true;
@@ -368,10 +365,10 @@ void display::set_team(std::size_t teamindex, bool show_everything)
 	}
 }
 
-void display::set_playing_team(std::size_t teamindex)
+void display::set_playing_team_index(std::size_t teamindex)
 {
 	assert(teamindex < dc_->teams().size());
-	activeTeam_ = teamindex;
+	playing_team_index_ = teamindex;
 	invalidate_game_status();
 }
 
@@ -395,12 +392,6 @@ std::string display::remove_exclusive_draw(const map_location& loc)
 		exclusive_unit_draw_requests_.erase(loc);
 	}
 	return id;
-}
-
-const time_of_day & display::get_time_of_day(const map_location& /*loc*/) const
-{
-	static time_of_day tod;
-	return tod;
 }
 
 void display::update_tod(const time_of_day* tod_override)
@@ -442,12 +433,6 @@ void display::fill_images_list(const std::string& prefix, std::vector<std::strin
 	}
 	if (images.empty())
 		images.emplace_back();
-}
-
-const std::string& display::get_variant(const std::vector<std::string>& variants, const map_location &loc)
-{
-	//TODO use better noise function
-	return variants[std::abs(loc.x + loc.y) % variants.size()];
 }
 
 void display::rebuild_all()
@@ -658,7 +643,7 @@ const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 		return res;
 	}
 
-	SDL_Rect map_rect = map_area();
+	rect map_rect = map_area();
 	// translate rect coordinates from screen-based to map_area-based
 	int x = xpos_ - map_rect.x + r.x;
 	int y = ypos_ - map_rect.y + r.y;
@@ -690,19 +675,14 @@ const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 	return res;
 }
 
-bool display::team_valid() const
-{
-	return currentTeam_ < dc_->teams().size();
-}
-
 bool display::shrouded(const map_location& loc) const
 {
-	return is_blindfolded() || (dont_show_all_ && dc_->teams()[currentTeam_].shrouded(loc));
+	return is_blindfolded() || (dont_show_all_ && viewing_team().shrouded(loc));
 }
 
 bool display::fogged(const map_location& loc) const
 {
-	return is_blindfolded() || (dont_show_all_ && dc_->teams()[currentTeam_].fogged(loc));
+	return is_blindfolded() || (dont_show_all_ && viewing_team().fogged(loc));
 }
 
 int display::get_location_x(const map_location& loc) const
@@ -721,6 +701,12 @@ point display::get_location(const map_location& loc) const
 		get_location_x(loc),
 		get_location_y(loc)
 	};
+}
+
+rect display::get_location_rect(const map_location& loc) const
+{
+	// TODO: evaluate how these functions should be defined in terms of each other
+	return { get_location(loc), point{hex_size(), hex_size()} };
 }
 
 map_location display::minimap_location_on(int x, int y)
@@ -926,13 +912,13 @@ void display::create_buttons()
 		action_work.push_back(std::move(b));
 	}
 
+	menu_buttons_ = std::move(menu_work);
+	action_buttons_ = std::move(action_work);
+
 	if (prevent_draw_) {
 		// buttons start hidden in this case
 		hide_buttons();
 	}
-
-	menu_buttons_ = std::move(menu_work);
-	action_buttons_ = std::move(action_work);
 
 	layout_buttons();
 	DBG_DP << "buttons created";
@@ -1287,14 +1273,7 @@ uint32_t generate_hex_key(const drawing_layer layer, const map_location& loc)
 
 void display::drawing_buffer_add(const drawing_layer layer, const map_location& loc, decltype(draw_helper::do_draw) draw_func)
 {
-	const rect dest {
-		get_location_x(loc),
-		get_location_y(loc),
-		int(zoom_),
-		int(zoom_)
-	};
-
-	drawing_buffer_.AGGREGATE_EMPLACE(generate_hex_key(layer, loc), draw_func, dest);
+	drawing_buffer_.AGGREGATE_EMPLACE(generate_hex_key(layer, loc), draw_func, get_location_rect(loc));
 }
 
 void display::drawing_buffer_commit()
@@ -1326,36 +1305,44 @@ void display::drawing_buffer_commit()
 	drawing_buffer_.clear();
 }
 
-// frametime is in milliseconds
-static unsigned calculate_fps(unsigned frametime)
+static unsigned calculate_fps(std::chrono::milliseconds frametime)
 {
-	return frametime != 0u ? 1000u / frametime : 999u;
+	using namespace std::chrono_literals;
+	return frametime > 0ms ? 1s / frametime : 999u;
 }
 
 void display::update_fps_label()
 {
 	++current_frame_sample_;
-	const int sample_freq = 10;
+	constexpr int sample_freq = 10;
 
 	if(current_frame_sample_ != sample_freq) {
 		return;
+	} else {
+		current_frame_sample_ = 0;
 	}
 
-	const auto minmax_it = std::minmax_element(frametimes_.begin(), frametimes_.end());
-	const unsigned render_avg = std::accumulate(frametimes_.begin(), frametimes_.end(), 0) / frametimes_.size();
+	const auto [min_iter, max_iter] = std::minmax_element(frametimes_.begin(), frametimes_.end());
+
+	using namespace std::chrono_literals;
+	const std::chrono::milliseconds render_avg = std::accumulate(frametimes_.begin(), frametimes_.end(), 0ms) / frametimes_.size();
+
+	// NOTE: max FPS corresponds to the *shortest* time between frames (that is, min_iter)
 	const int avg_fps = calculate_fps(render_avg);
-	const int max_fps = calculate_fps(*minmax_it.first);
-	const int min_fps = calculate_fps(*minmax_it.second);
+	const int max_fps = calculate_fps(*min_iter);
+	const int min_fps = calculate_fps(*max_iter);
+
 	fps_history_.emplace_back(min_fps, avg_fps, max_fps);
-	current_frame_sample_ = 0;
 
 	// flush out the stored fps values every so often
 	if(fps_history_.size() == 1000) {
-		std::string filename = filesystem::get_user_data_dir()+"/fps_log.csv";
-		filesystem::scoped_ostream fps_log = filesystem::ostream_file(filename, std::ios_base::binary | std::ios_base::app);
-		for(const auto& fps : fps_history_) {
-			*fps_log << std::get<0>(fps) << "," << std::get<1>(fps) << "," << std::get<2>(fps) << "\n";
+		std::string filename = filesystem::get_user_data_dir() + "/fps_log.csv";
+		auto fps_log = filesystem::ostream_file(filename, std::ios_base::binary | std::ios_base::app);
+
+		for(const auto& [min, avg, max] : fps_history_) {
+			*fps_log << min << "," << avg << "," << max << "\n";
 		}
+
 		fps_history_.clear();
 	}
 
@@ -1363,23 +1350,35 @@ void display::update_fps_label()
 		font::remove_floating_label(fps_handle_);
 		fps_handle_ = 0;
 	}
+
 	std::ostringstream stream;
-	stream << "<tt>      min/avg/max/act</tt>\n";
-	stream << "<tt>FPS:  " << std::setfill(' ') << std::setw(3) << min_fps << '/'<< std::setw(3) << avg_fps << '/' << std::setw(3) << max_fps << '/' << std::setw(3) << fps_actual_ << "</tt>\n";
-	stream << "<tt>Time: " << std::setfill(' ') << std::setw(3) << *minmax_it.first << '/' << std::setw(3) << render_avg << '/' << std::setw(3) << *minmax_it.second << " ms</tt>\n";
-	if (game_config::debug) {
-		stream << "\nhex: " << drawn_hexes_*1.0/sample_freq;
-		if (drawn_hexes_ != invalidated_hexes_)
-			stream << " (" << (invalidated_hexes_-drawn_hexes_)*1.0/sample_freq << ")";
+#ifdef __cpp_lib_format
+	stream << "<tt>      " << std::format("{:<5}|{:<5}|{:<5}|{:<5}", "min", "avg", "max", "act") << "</tt>\n";
+	stream << "<tt>FPS:  " << std::format("{:<5}|{:<5}|{:<5}|{:<5}", min_fps, avg_fps, max_fps, fps_actual_) << "</tt>\n";
+	stream << "<tt>Time: " << std::format("{:5}|{:5}|{:5}", *max_iter, render_avg, *min_iter) << "</tt>\n";
+#else
+	stream << "<tt>      min  |avg  |max  |act  </tt>\n";
+	stream << "<tt>FPS:  " << std::left << std::setfill(' ') << std::setw(5) << min_fps << '|' << std::setw(5) << avg_fps << '|' << std::setw(5) << max_fps << '|' << std::setw(5) << fps_actual_ << "</tt>\n";
+	stream << "<tt>Time: " << std::left << std::setfill(' ') << std::setw(5) << max_iter->count() << '|' << std::setw(5) << render_avg.count() << '|' << std::setw(5) << min_iter->count() << "</tt>\n";
+#endif
+
+	if(game_config::debug) {
+		stream << "\nhex: " << drawn_hexes_ * 1.0 / sample_freq;
+		if(drawn_hexes_ != invalidated_hexes_) {
+			stream << " (" << (invalidated_hexes_ - drawn_hexes_) * 1.0 / sample_freq << ")";
+		}
 	}
+
 	drawn_hexes_ = 0;
 	invalidated_hexes_ = 0;
 
 	font::floating_label flabel(stream.str());
-	flabel.set_font_size(12);
+	flabel.set_font_size(14);
 	flabel.set_color(debug_flag_set(DEBUG_BENCHMARK) ? font::BAD_COLOR : font::NORMAL_COLOR);
 	flabel.set_position(10, 100);
 	flabel.set_alignment(font::LEFT_ALIGN);
+	flabel.set_bg_color({0, 0, 0, float_to_color(0.6)});
+	flabel.set_border_size(5);
 
 	fps_handle_ = font::add_floating_label(flabel);
 }
@@ -1391,6 +1390,7 @@ void display::clear_fps_label()
 		fps_handle_ = 0;
 		drawn_hexes_ = 0;
 		invalidated_hexes_ = 0;
+		last_frame_finished_.reset();
 	}
 }
 
@@ -1534,24 +1534,23 @@ void display::set_diagnostic(const std::string& msg)
 
 void display::update_fps_count()
 {
-	static int time_between_draws = prefs::get().draw_delay();
-	if(time_between_draws < 0) {
-		time_between_draws = 1000 / video::current_refresh_rate();
+	using std::chrono::duration_cast;
+	using std::chrono::steady_clock;
+
+	auto now = steady_clock::now();
+	if(last_frame_finished_) {
+		frametimes_.push_back(duration_cast<std::chrono::milliseconds>(now - *last_frame_finished_));
 	}
 
-	frametimes_.push_back(SDL_GetTicks() - last_frame_finished_);
-	fps_counter_++;
-	using std::chrono::duration_cast;
-	using std::chrono::seconds;
-	using std::chrono::steady_clock;
-	const seconds current_second = duration_cast<seconds>(steady_clock::now().time_since_epoch());
+	last_frame_finished_ = now;
+	++fps_counter_;
+
+	const auto current_second = duration_cast<std::chrono::seconds>(now.time_since_epoch());
 	if(current_second != fps_start_) {
 		fps_start_ = current_second;
 		fps_actual_ = fps_counter_;
 		fps_counter_ = 0;
 	}
-
-	last_frame_finished_ = SDL_GetTicks();
 }
 
 const theme::action* display::action_pressed()
@@ -1615,7 +1614,7 @@ void display::recalculate_minimap()
 
 	minimap_renderer_ = image::prep_minimap_for_rendering(
 		get_map(),
-		dc_->teams().empty() ? nullptr : &dc_->teams()[currentTeam_],
+		dc_->teams().empty() ? nullptr : &viewing_team(),
 		nullptr,
 		(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr
 	);
@@ -1658,8 +1657,8 @@ void display::draw_minimap()
 	// we need to shift with the border size
 	// and the 0.25 from the minimap balanced drawing
 	// and the possible difference between real map and outside off-map
-	SDL_Rect map_rect = map_area();
-	SDL_Rect map_out_rect = map_outside_area();
+	rect map_rect = map_area();
+	rect map_out_rect = map_outside_area();
 	double border = theme_.border().size;
 	double shift_x = -border * hex_width() - (map_out_rect.w - map_rect.w) / 2;
 	double shift_y = -(border + 0.25) * hex_size() - (map_out_rect.h - map_rect.h) / 2;
@@ -1669,7 +1668,7 @@ void display::draw_minimap()
 	int view_w = static_cast<int>(map_out_rect.w * xscaling);
 	int view_h = static_cast<int>(map_out_rect.h * yscaling);
 
-	SDL_Rect outline_rect {
+	rect outline_rect {
 		minimap_location_.x + view_x - 1,
 		minimap_location_.y + view_y - 1,
 		view_w + 2,
@@ -1688,7 +1687,7 @@ void display::draw_minimap_units()
 
 	for(const auto& u : dc_->units()) {
 		if (fogged(u.get_location()) ||
-		    (dc_->teams()[currentTeam_].is_enemy(u.side()) &&
+		    (viewing_team().is_enemy(u.side()) &&
 		     u.invisible(u.get_location())) ||
 			 u.get_hidden()) {
 			continue;
@@ -1699,9 +1698,9 @@ void display::draw_minimap_units()
 
 		if(!prefs::get().minimap_movement_coding()) {
 			auto status = orb_status::allied;
-			if(dc_->teams()[currentTeam_].is_enemy(side)) {
+			if(viewing_team().is_enemy(side)) {
 				status = orb_status::enemy;
-			} else if(currentTeam_ + 1 == static_cast<unsigned>(side)) {
+			} else if(viewing_team().side() == side) {
 				status = dc_->unit_orb_status(u);
 			} else {
 				// no-op, status is already set to orb_status::allied;
@@ -1715,7 +1714,7 @@ void display::draw_minimap_units()
 		double u_w = 4.0 / 3.0 * xscaling;
 		double u_h = yscaling;
 
-		SDL_Rect r {
+		rect r {
 				  minimap_location_.x + int(std::round(u_x))
 				, minimap_location_.y + int(std::round(u_y))
 				, int(std::round(u_w))
@@ -1798,7 +1797,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 	}
 
 	if(diff_y != 0) {
-		SDL_Rect r = map_area();
+		rect r = map_area();
 
 		if(diff_y < 0) {
 			r.y = r.y + r.h + diff_y;
@@ -1809,7 +1808,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 	}
 
 	if(diff_x != 0) {
-		SDL_Rect r = map_area();
+		rect r = map_area();
 
 		if(diff_x < 0) {
 			r.x = r.x + r.w + diff_x;
@@ -1867,8 +1866,8 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 			<< " This will likely cause graphical glitches.";
 	}
 
-	const SDL_Rect& outside_area = map_outside_area();
-	const SDL_Rect& area = map_area();
+	const rect outside_area = map_outside_area();
+	const rect area = map_area();
 
 	// Turn the zoom factor to a double in order to avoid rounding errors.
 	double zoom_factor = static_cast<double>(new_zoom) / static_cast<double>(zoom_);
@@ -1919,16 +1918,13 @@ void display::toggle_default_zoom()
 
 bool display::tile_fully_on_screen(const map_location& loc) const
 {
-	int x = get_location_x(loc);
-	int y = get_location_y(loc);
-	return !outside_area(map_area(), x, y);
+	return map_area().contains(get_location_rect(loc));
 }
 
 bool display::tile_nearly_on_screen(const map_location& loc) const
 {
-	int x = get_location_x(loc);
-	int y = get_location_y(loc);
-	const SDL_Rect &area = map_area();
+	const auto [x, y] = get_location(loc);
+	const rect area = map_area();
 	int hw = hex_width(), hs = hex_size();
 	return x + hs >= area.x - hw && x < area.x + area.w + hw &&
 	       y + hs >= area.y - hs && y < area.y + area.h + hs;
@@ -1940,7 +1936,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 	if(video::headless()) {
 		return;
 	}
-	const SDL_Rect area = map_area();
+	const rect area = map_area();
 	const int xmove_expected = screenxpos - (area.x + area.w/2);
 	const int ymove_expected = screenypos - (area.y + area.h/2);
 
@@ -2023,23 +2019,17 @@ void display::scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type, b
 		return;
 	}
 
-	std::vector<map_location> locs;
-	locs.push_back(loc);
-	scroll_to_tiles(locs, scroll_type, check_fogged,false,0.0,force);
+	scroll_to_tiles({loc}, scroll_type, check_fogged, false, 0.0, force);
 }
 
 void display::scroll_to_tiles(map_location loc1, map_location loc2,
                               SCROLL_TYPE scroll_type, bool check_fogged,
                               double add_spacing, bool force)
 {
-	std::vector<map_location> locs;
-	locs.push_back(loc1);
-	locs.push_back(loc2);
-	scroll_to_tiles(locs, scroll_type, check_fogged, false, add_spacing,force);
+	scroll_to_tiles({loc1, loc2}, scroll_type, check_fogged, false, add_spacing, force);
 }
 
-void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & begin,
-                              const std::vector<map_location>::const_iterator & end,
+void display::scroll_to_tiles(const std::vector<map_location>& locs,
                               SCROLL_TYPE scroll_type, bool check_fogged,
                               bool only_if_possible, double add_spacing, bool force)
 {
@@ -2050,12 +2040,11 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 	int maxy = 0;
 	bool valid = false;
 
-	for(std::vector<map_location>::const_iterator itor = begin; itor != end ; ++itor) {
-		if(get_map().on_board(*itor) == false) continue;
-		if(check_fogged && fogged(*itor)) continue;
+	for(const map_location& loc : locs) {
+		if(get_map().on_board(loc) == false) continue;
+		if(check_fogged && fogged(loc)) continue;
 
-		int x = get_location_x(*itor);
-		int y = get_location_y(*itor);
+		const auto [x, y] = get_location(loc);
 
 		if (!valid) {
 			minx = x;
@@ -2068,7 +2057,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 			int miny_new = std::min<int>(miny,y);
 			int maxx_new = std::max<int>(maxx,x);
 			int maxy_new = std::max<int>(maxy,y);
-			SDL_Rect r = map_area();
+			rect r = map_area();
 			r.x = minx_new;
 			r.y = miny_new;
 			if(outside_area(r, maxx_new, maxy_new)) {
@@ -2086,7 +2075,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 	if(!valid) return;
 
 	if (scroll_type == ONSCREEN || scroll_type == ONSCREEN_WARP) {
-		SDL_Rect r = map_area();
+		rect r = map_area();
 		int spacing = std::round(add_spacing * hex_size());
 		r.x += spacing;
 		r.y += spacing;
@@ -2098,7 +2087,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 	}
 
 	// let's do "normal" rectangle math from now on
-	SDL_Rect locs_bbox;
+	rect locs_bbox;
 	locs_bbox.x = minx;
 	locs_bbox.y = miny;
 	locs_bbox.w = maxx - minx + hex_size();
@@ -2110,7 +2099,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 
 	if (scroll_type == ONSCREEN || scroll_type == ONSCREEN_WARP) {
 		// when doing an ONSCREEN scroll we do not center the target unless needed
-		SDL_Rect r = map_area();
+		rect r = map_area();
 		int map_center_x = r.x + r.w/2;
 		int map_center_y = r.y + r.h/2;
 
@@ -2350,7 +2339,7 @@ void display::queue_rerender()
 		}
 	}
 
-	if (!gui::in_dialog()) {
+	if(!gui2::is_in_dialog()) {
 		labels().recalculate_labels();
 	}
 
@@ -2413,8 +2402,8 @@ void display::draw()
 	}
 
 	if(prefs::get().show_fps() || debug_flag_set(DEBUG_BENCHMARK)) {
-		update_fps_label();
 		update_fps_count();
+		update_fps_label();
 	} else if(fps_handle_ != 0) {
 		clear_fps_label();
 	}
@@ -2594,7 +2583,7 @@ void display::render_map_outside_area()
 {
 	// This could be optimized to avoid the map area,
 	// but it's only called on game creation or zoom anyway.
-	const SDL_Rect clip_rect = map_outside_area();
+	const rect clip_rect = map_outside_area();
 	texture bgtex = image::get_texture(theme_.border().background_image);
 	for(int i = 0; i < 2; ++i) {
 		auto setter = draw::set_render_target(i ? back_ : front_);
@@ -2624,7 +2613,7 @@ rect display::get_clip_rect() const
 void display::draw_invalidated()
 {
 	//	log_scope("display::draw_invalidated");
-	SDL_Rect clip_rect = get_clip_rect();
+	rect clip_rect = get_clip_rect();
 	const auto clipper = draw::reduce_clip(clip_rect);
 
 	DBG_DP << "drawing " << invalidated_.size() << " invalidated hexes with clip " << clip_rect;
@@ -2636,10 +2625,7 @@ void display::draw_invalidated()
 	}
 
 	for(const map_location& loc : invalidated_) {
-		int xpos = get_location_x(loc);
-		int ypos = get_location_y(loc);
-
-		rect hex_rect(xpos, ypos, zoom_, zoom_);
+		rect hex_rect = get_location_rect(loc);
 		if(!hex_rect.overlaps(clip_rect)) {
 			continue;
 		}
@@ -2703,70 +2689,22 @@ void display::draw_hex(const map_location& loc)
 			drawing_buffer_add(drawing_layer::grid_bottom, loc,
 				[tex = image::get_texture(grid_bottom, image::TOD_COLORED)](const rect& dest) { draw::blit(tex, dest); });
 		}
-	}
 
-	if(!is_shrouded) {
-		auto it = get_overlays().find(loc);
-		if(it != get_overlays().end()) {
-			std::vector<overlay>& overlays = it->second;
-			if(overlays.size() != 0) {
-				tod_color tod_col = tod.color + color_adjust_;
-				image::light_string lt = image::get_light_string(-1, tod_col.r, tod_col.g, tod_col.b);
+		// overlays (TODO: can we just draw all the overlays in one pass instead of per-hex?)
+		draw_overlays_at(loc);
 
-				for(const overlay& ov : overlays) {
-					bool item_visible_for_team = true;
-					if(dont_show_all_ && !ov.team_name.empty()) {
-						// dont_show_all_ imples that viewing_team() is a valid index to get_teams()
-						const std::string& current_team_name = get_teams()[viewing_team()].team_name();
-						const std::vector<std::string>& current_team_names = utils::split(current_team_name);
-						const std::vector<std::string>& team_names = utils::split(ov.team_name);
-
-						item_visible_for_team = std::find_first_of(team_names.begin(), team_names.end(),
-							current_team_names.begin(), current_team_names.end()) != team_names.end();
-					}
-
-					if(item_visible_for_team && !(fogged(loc) && !ov.visible_in_fog)) {
-						point isize = image::get_size(ov.image, image::HEXED);
-						std::string ipf = ov.image;
-
-						texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
-							? image::get_lighted_texture(ipf, lt)
-							: image::get_texture(ipf, image::HEXED);
-
-						drawing_buffer_add(drawing_layer::terrain_bg, loc, [=](const rect& dest) mutable {
-							// Adjust submerge appropriately
-							const t_translation::terrain_code terrain = get_map().get_terrain(loc);
-							const terrain_type& terrain_info = get_map().get_terrain_info(terrain);
-							const double submerge = terrain_info.unit_submerge();
-
-							submerge_data data = get_submerge_data(dest, submerge, isize, ALPHA_OPAQUE, false, false);
-							if(submerge > 0.0) {
-								// set clip for dry part
-								// smooth_shaded doesn't use the clip information so it's fine to set it up front
-								tex.set_src(data.unsub_src);
-
-								// draw underwater part
-								draw::smooth_shaded(tex, data.alpha_verts);
-							}
-							// draw dry part
-							draw::blit(tex, submerge > 0.0 ? data.unsub_dest : dest);
-						});
-					}
-				}
-			}
+		// village-control flags.
+		if(get_map().is_village(loc)) {
+			drawing_buffer_add(drawing_layer::terrain_bg, loc,
+				[tex = get_flag(loc)](const rect& dest) { draw::blit(tex, dest); });
 		}
-	}
-
-	// village-control flags.
-	if(!is_shrouded) {
-		drawing_buffer_add(drawing_layer::terrain_bg, loc, [tex = get_flag(loc)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
 	// Draw the time-of-day mask on top of the terrain in the hex.
 	// tod may differ from tod if hex is illuminated.
 	const std::string& tod_hex_mask = tod.image_mask;
 	if(tod_hex_mask1 || tod_hex_mask2) {
-		drawing_buffer_add(drawing_layer::terrain_fg, loc, [=](const rect& dest) mutable {
+		drawing_buffer_add(drawing_layer::terrain_fg, loc, [this](const rect& dest) mutable {
 			tod_hex_mask1.set_alpha_mod(tod_hex_alpha1);
 			draw::blit(tod_hex_mask1, dest);
 
@@ -2779,26 +2717,30 @@ void display::draw_hex(const map_location& loc)
 	}
 
 	// Paint arrows
-	arrows_map_t::const_iterator arrows_in_hex = arrows_map_.find(loc);
-	if(arrows_in_hex != arrows_map_.end()) {
-		for (arrow* const a : arrows_in_hex->second) {
-			a->draw_hex(loc);
+	if(auto arrows_in_hex = arrows_map_.find(loc); arrows_in_hex != arrows_map_.end()) {
+		std::vector<texture> to_draw;
+		for(const arrow* a : arrows_in_hex->second) {
+			to_draw.push_back(image::get_texture(a->get_image_for_loc(loc)));
 		}
+
+		drawing_buffer_add(drawing_layer::arrows, loc, [to_draw = std::move(to_draw)](const rect& dest) {
+			for(const texture& t : to_draw) {
+				draw::blit(t, dest);
+			}
+		});
 	}
 
 	// Apply shroud, fog and linger overlay
 
-	if(is_shrouded) {
-		// We apply void also on off-map tiles to shroud the half-hexes too
+	if(is_shrouded || fogged(loc)) {
+		// TODO: better noise function
+		const auto get_variant = [&loc](const std::vector<std::string>& variants) -> const auto& {
+			return variants[std::abs(loc.x + loc.y) % variants.size()];
+		};
+
+		const std::string& img = get_variant(is_shrouded ? shroud_images_ : fog_images_);
 		drawing_buffer_add(drawing_layer::fog_shroud, loc,
-			[tex = image::get_texture(get_variant(shroud_images_, loc), image::TOD_COLORED)](const rect& dest) {
-				draw::blit(tex, dest);
-			});
-	} else if(fogged(loc)) {
-		drawing_buffer_add(drawing_layer::fog_shroud, loc,
-			[tex = image::get_texture(get_variant(fog_images_, loc), image::TOD_COLORED)](const rect& dest) {
-				draw::blit(tex, dest);
-			});
+			[tex = image::get_texture(img, image::TOD_COLORED)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
 	if(!is_shrouded) {
@@ -2810,10 +2752,9 @@ void display::draw_hex(const map_location& loc)
 	}
 
 	if(debug_flag_set(DEBUG_FOREGROUND)) {
+		using namespace std::string_literals;
 		drawing_buffer_add(drawing_layer::unit_default, loc,
-			[tex = image::get_texture(image::locator{"terrain/foreground.png"}, image::TOD_COLORED)](const rect& dest) {
-				draw::blit(tex, dest);
-			});
+			[tex = image::get_texture("terrain/foreground.png"s)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
 	if(on_map) {
@@ -2873,6 +2814,74 @@ void display::draw_hex(const map_location& loc)
 			draw::fill(bg_dest, {0, 0, 0, 0xaa});
 			draw::blit(tex, text_dest);
 		});
+	}
+}
+
+void display::draw_overlays_at(const map_location& loc)
+{
+	auto it = get_overlays().find(loc);
+	if(it == get_overlays().end()) {
+		return;
+	}
+
+	std::vector<overlay>& overlays = it->second;
+	if(overlays.empty()) {
+		return;
+	}
+
+	const time_of_day& tod = get_time_of_day(loc);
+	tod_color tod_col = tod.color + color_adjust_;
+
+	image::light_string lt = image::get_light_string(-1, tod_col.r, tod_col.g, tod_col.b);
+
+	for(const overlay& ov : overlays) {
+		if(fogged(loc) && !ov.visible_in_fog) {
+			continue;
+		}
+
+		if(dont_show_all_ && !ov.team_name.empty()) {
+			const auto current_team_names = utils::split_view(viewing_team().team_name());
+			const auto team_names = utils::split_view(ov.team_name);
+
+			bool item_visible_for_team = std::find_first_of(team_names.begin(), team_names.end(),
+				current_team_names.begin(), current_team_names.end()) != team_names.end();
+
+			if(!item_visible_for_team) {
+				continue;
+			}
+		}
+
+		texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
+			? image::get_lighted_texture(ov.image, lt)
+			: image::get_texture(ov.image, image::HEXED);
+
+		// Base submerge value for the terrain at this location
+		const double ter_sub = get_map().get_terrain_info(loc).unit_submerge();
+
+		drawing_buffer_add(
+			drawing_layer::terrain_bg, loc, [this, tex, ter_sub, ovr_sub = ov.submerge](const rect& dest) mutable {
+				if(ovr_sub > 0.0 && ter_sub > 0.0) {
+					// Adjust submerge appropriately
+					double submerge = ter_sub * ovr_sub;
+
+					submerge_data data
+						= this->get_submerge_data(dest, submerge, tex.draw_size(), ALPHA_OPAQUE, false, false);
+
+					// set clip for dry part
+					// smooth_shaded doesn't use the clip information so it's fine to set it up front
+					// TODO: do we need to unset this?
+					tex.set_src(data.unsub_src);
+
+					// draw underwater part
+					draw::smooth_shaded(tex, data.alpha_verts);
+
+					// draw dry part
+					draw::blit(tex, data.unsub_dest);
+				} else {
+					// draw whole texture
+					draw::blit(tex, dest);
+				}
+			});
 	}
 }
 
@@ -2971,12 +2980,12 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 	int image_count = 0;
 	bool used_ellipsis = false;
 	std::ostringstream ellipsis_tooltip;
-	SDL_Rect ellipsis_area = loc;
+	rect ellipsis_area = loc;
 
 	for (config::const_child_itors elements = report.child_range("element");
 		 elements.begin() != elements.end(); elements.pop_front())
 	{
-		SDL_Rect area {x, y, loc.w + loc.x - x, loc.h + loc.y - y};
+		rect area {x, y, loc.w + loc.x - x, loc.h + loc.y - y};
 		if (area.h <= 0) break;
 
 		std::string t = elements.front()["text"];
@@ -3205,7 +3214,7 @@ void display::invalidate_animations_location(const map_location& loc)
 	if(get_map().is_village(loc)) {
 		const int owner = dc_->village_owner(loc) - 1;
 		if(owner >= 0 && flags_[owner].need_update()
-			&& (!fogged(loc) || !dc_->teams()[currentTeam_].is_enemy(owner + 1))) {
+			&& (!fogged(loc) || !viewing_team().is_enemy(owner + 1))) {
 			invalidate(loc);
 		}
 	}
@@ -3283,8 +3292,8 @@ void display::update_arrow(arrow & arrow)
 
 map_location display::get_middle_location() const
 {
-	const SDL_Rect& rect = map_area();
-	return pixel_position_to_hex(xpos_ + rect.x + rect.w / 2 , ypos_ + rect.y + rect.h / 2 );
+	auto [center_x, center_y] = map_area().center();
+	return pixel_position_to_hex(xpos_ + center_x , ypos_ + center_y);
 }
 
 void display::write(config& cfg) const

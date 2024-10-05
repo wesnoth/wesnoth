@@ -28,11 +28,6 @@
 #error "Compilation with NDEBUG defined isn't supported, Wesnoth depends on asserts."
 #endif
 
-// To allow using some optional C++20 features
-#if __cplusplus >= 202002L
-#define HAVE_CXX20
-#endif
-
 #if defined(__clang__)
 #endif
 

@@ -88,34 +88,34 @@ game_load::game_load(const game_config_view& cache_config, savegame::load_game_m
 {
 }
 
-void game_load::pre_show(window& window)
+void game_load::pre_show()
 {
 	// Allow deleting saves with the Delete key.
-	connect_signal_pre_key_press(window, std::bind(&game_load::key_press_callback, this, std::placeholders::_5));
+	connect_signal_pre_key_press(*this, std::bind(&game_load::key_press_callback, this, std::placeholders::_5));
 
-	text_box* filter = find_widget<text_box>(&window, "txtFilter", false, true);
+	text_box* filter = find_widget<text_box>("txtFilter", false, true);
 
 	filter->set_text_changed_callback(std::bind(&game_load::filter_text_changed, this, std::placeholders::_2));
 
-	listbox& list = find_widget<listbox>(&window, "savegame_list", false);
+	listbox& list = find_widget<listbox>("savegame_list");
 
 	connect_signal_notify_modified(list, std::bind(&game_load::display_savegame, this));
 
-	window.keyboard_capture(filter);
-	window.add_to_keyboard_chain(&list);
+	keyboard_capture(filter);
+	add_to_keyboard_chain(&list);
 
 	list.register_sorting_option(0, [this](const int i) { return games_[i].name(); });
 	list.register_sorting_option(1, [this](const int i) { return games_[i].modified(); });
 
 	populate_game_list();
 
-	connect_signal_mouse_left_click(find_widget<button>(&window, "delete", false),
+	connect_signal_mouse_left_click(find_widget<button>("delete"),
 			std::bind(&game_load::delete_button_callback, this));
 
-	connect_signal_mouse_left_click(find_widget<button>(&window, "browse_saves_folder", false),
+	connect_signal_mouse_left_click(find_widget<button>("browse_saves_folder"),
 			std::bind(&game_load::browse_button_callback, this));
 
-	menu_button& dir_list = find_widget<menu_button>(&window, "dirList", false);
+	menu_button& dir_list = find_widget<menu_button>("dirList");
 
 	dir_list.set_use_markup(true);
 	set_save_dir_list(dir_list);
@@ -150,7 +150,7 @@ void game_load::set_save_dir_list(menu_button& dir_list)
 
 void game_load::populate_game_list()
 {
-	listbox& list = find_widget<listbox>(get_window(), "savegame_list", false);
+	listbox& list = find_widget<listbox>("savegame_list");
 
 	list.clear();
 
@@ -171,7 +171,7 @@ void game_load::populate_game_list()
 		list.add_row(data);
 	}
 
-	find_widget<button>(get_window(), "delete", false).set_active(!save_index_manager_->read_only());
+	find_widget<button>("delete").set_active(!save_index_manager_->read_only());
 }
 
 void game_load::display_savegame_internal(const savegame::save_info& game)
@@ -179,13 +179,13 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 	filename_ = game.name();
 	summary_  = game.summary();
 
-	find_widget<minimap>(get_window(), "minimap", false)
+	find_widget<minimap>("minimap")
 			.set_map_data(summary_["map_data"]);
 
-	find_widget<label>(get_window(), "lblScenario", false)
+	find_widget<label>("lblScenario")
 			.set_label(summary_["label"]);
 
-	listbox& leader_list = find_widget<listbox>(get_window(), "leader_list", false);
+	listbox& leader_list = find_widget<listbox>("leader_list");
 
 	leader_list.clear();
 
@@ -244,7 +244,7 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 	evaluate_summary_string(str, summary_);
 
 	// The new label value may have more or less lines than the previous value, so invalidate the layout.
-	find_widget<styled_widget>(get_window(), "slblSummary", false).set_label(str.str());
+	find_widget<styled_widget>("slblSummary").set_label(str.str());
 	//get_window()->invalidate_layout();
 
 	toggle_button& replay_toggle            = dynamic_cast<toggle_button&>(*show_replay_->get_widget());
@@ -272,11 +272,11 @@ void game_load::display_savegame()
 	bool successfully_displayed_a_game = false;
 
 	try {
-		const int selected_row = find_widget<listbox>(get_window(), "savegame_list", false).get_selected_row();
+		const int selected_row = find_widget<listbox>("savegame_list").get_selected_row();
 		if(selected_row < 0) {
-			find_widget<button>(get_window(), "delete", false).set_active(false);
+			find_widget<button>("delete").set_active(false);
 		} else {
-			find_widget<button>(get_window(), "delete", false).set_active(!save_index_manager_->read_only());
+			find_widget<button>("delete").set_active(!save_index_manager_->read_only());
 			game_load::display_savegame_internal(games_[selected_row]);
 			successfully_displayed_a_game = true;
 		}
@@ -288,13 +288,13 @@ void game_load::display_savegame()
 	}
 
 	if(!successfully_displayed_a_game) {
-		find_widget<minimap>(get_window(), "minimap", false).set_map_data("");
-		find_widget<label>(get_window(), "lblScenario", false)
+		find_widget<minimap>("minimap").set_map_data("");
+		find_widget<label>("lblScenario")
 			.set_label("");
-		find_widget<styled_widget>(get_window(), "slblSummary", false)
+		find_widget<styled_widget>("slblSummary")
 			.set_label("");
 
-		listbox& leader_list = find_widget<listbox>(get_window(), "leader_list", false);
+		listbox& leader_list = find_widget<listbox>("leader_list");
 		leader_list.clear();
 
 		toggle_button& replay_toggle            = dynamic_cast<toggle_button&>(*show_replay_->get_widget());
@@ -307,7 +307,7 @@ void game_load::display_savegame()
 	}
 
 	// Disable Load button if nothing is selected or if the currently selected file can't be loaded
-	find_widget<button>(get_window(), "ok", false).set_active(successfully_displayed_a_game);
+	find_widget<button>("ok").set_active(successfully_displayed_a_game);
 
 	// Disable 'Enter' loading in the same circumstance
 	get_window()->set_enter_disabled(!successfully_displayed_a_game);
@@ -320,7 +320,7 @@ void game_load::filter_text_changed(const std::string& text)
 
 void game_load::apply_filter_text(const std::string& text, bool force)
 {
-	listbox& list = find_widget<listbox>(get_window(), "savegame_list", false);
+	listbox& list = find_widget<listbox>("savegame_list");
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
@@ -336,13 +336,7 @@ void game_load::apply_filter_text(const std::string& text, bool force)
 			bool found = false;
 			for(const auto & word : words)
 			{
-				found = std::search(games_[i].name().begin(),
-									games_[i].name().end(),
-									word.begin(),
-									word.end(),
-									utils::chars_equal_insensitive)
-						!= games_[i].name().end();
-
+				found = translation::ci_search(games_[i].name(), word);
 				if(!found) {
 					// one word doesn't match, we don't reach words.end()
 					break;
@@ -486,7 +480,7 @@ void game_load::browse_button_callback()
 
 void game_load::delete_button_callback()
 {
-	listbox& list = find_widget<listbox>(get_window(), "savegame_list", false);
+	listbox& list = find_widget<listbox>("savegame_list");
 
 	const std::size_t index = std::size_t(list.get_selected_row());
 	if(index < games_.size()) {
@@ -517,11 +511,11 @@ void game_load::key_press_callback(const SDL_Keycode key)
 	//
 	// I'm not sure if this check was necessary when I first added this feature
 	// (I didn't check at the time), but regardless, it's needed now. If it turns
-	// out I screwed something up in my refactoring, I'll remove this.
+	// out I screwed something up in my refactoring, I'll remove
 	//
 	// - vultraz, 2017-08-28
 	//
-	if(find_widget<text_box>(get_window(), "txtFilter", false).get_state() == text_box_base::FOCUSED) {
+	if(find_widget<text_box>("txtFilter").get_state() == text_box_base::FOCUSED) {
 		return;
 	}
 
@@ -532,7 +526,7 @@ void game_load::key_press_callback(const SDL_Keycode key)
 
 void game_load::handle_dir_select()
 {
-	menu_button& dir_list = find_widget<menu_button>(get_window(), "dirList", false);
+	menu_button& dir_list = find_widget<menu_button>("dirList");
 
 	const auto& path = dir_list.get_value_config()["path"].str();
 	if(path.empty()) {
@@ -542,7 +536,7 @@ void game_load::handle_dir_select()
 	}
 
 	populate_game_list();
-	if(auto* filter = find_widget<text_box>(get_window(), "txtFilter", false, true)) {
+	if(auto* filter = find_widget<text_box>("txtFilter", false, true)) {
 		apply_filter_text(filter->get_value(), true);
 	}
 	display_savegame();

@@ -32,6 +32,10 @@
 #include <iostream>
 #include <numeric>
 
+#ifdef __cpp_lib_ranges
+#include <ranges>
+#endif
+
 #ifdef __APPLE__
 #include <boost/filesystem.hpp>
 namespace fs = boost::filesystem;
@@ -92,20 +96,32 @@ void build_sheet_from_images(const std::vector<fs::path>& file_paths)
 	const unsigned num_loaders = std::ceil(file_paths.size() / max_items_per_loader);
 	const unsigned num_to_load = std::ceil(file_paths.size() / double(num_loaders));
 
-	std::vector<std::future<std::vector<sheet_element>>> loaders{};
+	std::vector<std::future<std::vector<sheet_element>>> loaders;
 	loaders.reserve(num_loaders);
 
+#ifdef __cpp_lib_ranges_chunk // C++23 feature
+	for(auto span : file_paths | std::views::chunk(num_to_load)) {
+		loaders.push_back(std::async(std::launch::async,
+			[span]() { return std::vector<sheet_element>(span.begin(), span.end()); }
+		));
+	}
+#else
 	for(unsigned i = 0; i < num_loaders; ++i) {
 		loaders.push_back(std::async(std::launch::async, [&file_paths, &num_to_load, i]() {
 			std::vector<sheet_element> res;
-
+#ifdef __cpp_lib_ranges
+			for(const fs::path& p : file_paths | std::views::drop(num_to_load * i) | std::views::take(num_to_load)) {
+				res.emplace_back(p);
+			}
+#else
 			for(unsigned k = num_to_load * i; k < std::min<unsigned>(num_to_load * (i + 1u), file_paths.size()); ++k) {
 				res.emplace_back(file_paths[k]);
 			}
-
+#endif
 			return res;
 		}));
 	}
+#endif
 
 	std::vector<sheet_element> elements;
 	elements.reserve(file_paths.size());
@@ -119,10 +135,10 @@ void build_sheet_from_images(const std::vector<fs::path>& file_paths)
 	// Sort the surfaces by area, largest last.
 	// TODO: should we use plain sort? Output sheet seems ever so slightly smaller when sort is not stable.
 	std::stable_sort(elements.begin(), elements.end(),
-		[](const auto& lhs, const auto& rhs) { return lhs.surf->w * lhs.surf->h < rhs.surf->w * rhs.surf->h; });
+		[](const auto& lhs, const auto& rhs) { return lhs.surf.area() < rhs.surf.area(); });
 
 	const unsigned total_area = std::accumulate(elements.begin(), elements.end(), 0,
-		[](const int val, const auto& s) { return val + (s.surf->w * s.surf->h); });
+		[](const int val, const auto& s) { return val + s.surf.area(); });
 
 	const unsigned side_length = static_cast<unsigned>(std::sqrt(total_area) * 1.3);
 

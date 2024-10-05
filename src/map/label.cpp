@@ -291,8 +291,8 @@ const std::vector<std::string>& map_labels::all_categories() const
 		categories.clear();
 		categories.push_back("team");
 
-		for(std::size_t i = 1; i <= resources::gameboard->teams().size(); i++) {
-			categories.push_back("side:" + std::to_string(i));
+		for(const team& t : resources::gameboard->teams()) {
+			categories.push_back("side:" + std::to_string(t.side()));
 		}
 
 		std::set<std::string> unique_cats;
@@ -500,21 +500,16 @@ void terrain_label::calculate_shroud()
 
 SDL_Rect terrain_label::get_rect() const
 {
-	SDL_Rect rect {0, 0, 0, 0};
-
 	display* disp = display::get_singleton();
 	if(!disp) {
-		return rect;
+		return sdl::empty_rect;
 	}
 
-	int hex_size = disp->hex_size();
+	SDL_Rect res = disp->get_location_rect(loc_);
+	res.x += disp->hex_size() / 4;
+	res.w -= disp->hex_size() / 2;
 
-	rect.x = disp->get_location_x(loc_) + hex_size / 4;
-	rect.y = disp->get_location_y(loc_);
-	rect.h = disp->hex_size();
-	rect.w = disp->hex_size() - hex_size / 2;
-
-	return rect;
+	return res;
 }
 
 static int scale_to_map_zoom(int val)

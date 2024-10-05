@@ -319,7 +319,8 @@ function methods:of_pairs(t)
 	end
 
 	for i,v in ipairs(t) do
-		local value_table = {}
+		---@type any
+		local value = v
 		local x_index
 		local y_index
 		if has_key(v, 'x') and has_key(v, 'y') then
@@ -329,16 +330,18 @@ function methods:of_pairs(t)
 			x_index = 1
 			y_index = 2
 		end
-		for k,val in pairs(v) do
-			if k ~= x_index and k ~= y_index then
-				value_table[k] = val
+		-- Gather the keys other than x and y as the value
+		-- Use pcall in case the value isn't iterable
+		pcall(function()
+			for k,val in pairs(v) do
+				if k ~= x_index and k ~= y_index then
+					if value == v then value = {} end
+					value[k] = val
+				end
 			end
-		end
-		if next(value_table) then
-			values[index(v[x_index], v[y_index])] = value_table
-		else
-			values[index(v[x_index], v[y_index])] = true
-		end
+		end)
+		if value == v then value = true end
+		values[index(v[x_index], v[y_index])] = value
 	end
 end
 

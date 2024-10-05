@@ -18,7 +18,6 @@
 
 #include "formatter.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/label.hpp"
@@ -48,16 +47,16 @@ faction_select::faction_select(ng::flg_manager& flg_manager, const std::string& 
 {
 }
 
-void faction_select::pre_show(window& window)
+void faction_select::pre_show()
 {
-	find_widget<label>(&window, "starting_pos", false).set_label(std::to_string(side_));
+	find_widget<label>("starting_pos").set_label(std::to_string(side_));
 
 	//
 	// Set up gender radio buttons
 	//
-	toggle_button& gender_rand = find_widget<toggle_button>(&window, "gender_random", false);
-	toggle_button& gender_male = find_widget<toggle_button>(&window, "gender_male", false);
-	toggle_button& gender_female = find_widget<toggle_button>(&window, "gender_female", false);
+	toggle_button& gender_rand = find_widget<toggle_button>("gender_random");
+	toggle_button& gender_male = find_widget<toggle_button>("gender_male");
+	toggle_button& gender_female = find_widget<toggle_button>("gender_female");
 
 	gender_toggle_.add_member(&gender_rand,   "random");
 	gender_toggle_.add_member(&gender_male,   unit_race::s_male);
@@ -71,19 +70,19 @@ void faction_select::pre_show(window& window)
 	//
 	// Set up leader menu button
 	//
-	connect_signal_notify_modified(find_widget<menu_button>(&window, "leader_menu", false),
+	connect_signal_notify_modified(find_widget<menu_button>("leader_menu"),
 		std::bind(&faction_select::on_leader_select, this));
 
 	// Leader's profile button
-	find_widget<button>(&window, "type_profile", false).connect_click_handler(
+	find_widget<button>("type_profile").connect_click_handler(
 		std::bind(&faction_select::profile_button_callback, this));
 
 	//
 	// Set up faction list
 	//
-	listbox& list = find_widget<listbox>(&window, "faction_list", false);
+	listbox& list = find_widget<listbox>("faction_list");
 
-	window.keyboard_capture(&list);
+	keyboard_capture(&list);
 
 	connect_signal_notify_modified(list,
 		std::bind(&faction_select::on_faction_select, this));
@@ -114,7 +113,7 @@ void faction_select::pre_show(window& window)
 
 void faction_select::on_faction_select()
 {
-	const int selected_row = find_widget<listbox>(get_window(), "faction_list", false).get_selected_row();
+	const int selected_row = find_widget<listbox>("faction_list").get_selected_row();
 
 	if(selected_row == -1) {
 		return;
@@ -143,7 +142,7 @@ void faction_select::on_faction_select()
 		}
 	}
 
-	menu_button& leader_dropdown = find_widget<menu_button>(get_window(), "leader_menu", false);
+	menu_button& leader_dropdown = find_widget<menu_button>("leader_menu");
 
 	leader_dropdown.set_values(leaders, std::min<int>(leaders.size() - 1, previous_leader_selection));
 	leader_dropdown.set_active(leaders.size() > 1 && !flg_manager_.is_saved_game());
@@ -164,12 +163,12 @@ void faction_select::on_faction_select()
 		return translation::compare(s1, s2) < 0;
 	});
 
-	find_widget<styled_widget>(get_window(), "recruits", false).set_label(utils::join(recruit_names, "\n"));
+	find_widget<styled_widget>("recruits").set_label(utils::join(recruit_names, "\n"));
 }
 
 void faction_select::on_leader_select()
 {
-	flg_manager_.set_current_leader(find_widget<menu_button>(get_window(), "leader_menu", false).get_value());
+	flg_manager_.set_current_leader(find_widget<menu_button>("leader_menu").get_value());
 
 	// TODO: should we decouple this from the flg manager and instead just check the unit type directly?
 	// If that's done so, we'd need to come up with a different check for Random availability.
@@ -181,7 +180,7 @@ void faction_select::on_leader_select()
 	update_leader_image();
 
 	// Disable the profile button if leader_type is dash or "Random"
-	button& profile_button = find_widget<button>(get_window(), "type_profile", false);
+	button& profile_button = find_widget<button>("type_profile");
 	profile_button.set_active(unit_types.find(flg_manager_.current_leader()) != nullptr);
 }
 
@@ -209,10 +208,10 @@ void faction_select::update_leader_image()
 		leader_image = formatter() << utg.image() << "~RC(" << utg.flag_rgb() << ">" << tc_color_ << ")";
 	}
 
-	find_widget<drawing>(get_window(), "leader_image", false).set_label(leader_image);
+	find_widget<drawing>("leader_image").set_label(leader_image);
 }
 
-void faction_select::post_show(window& /*window*/)
+void faction_select::post_show()
 {
 	//
 	// If we're canceling, restore the previous selections. It might be worth looking

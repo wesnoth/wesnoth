@@ -353,25 +353,25 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 		LOG_ADDONS << "Received an updatepack for the addon '" << info.id << "'";
 
 		// A consistency check
-		for(const config::any_child entry : archive_cfg.all_children_range()) {
-			if(entry.key == "removelist" || entry.key == "addlist") {
-				if(!check_names_legal(entry.cfg)) {
+		for(const auto [key, cfg] : archive_cfg.all_children_range()) {
+			if(key == "removelist" || key == "addlist") {
+				if(!check_names_legal(cfg)) {
 					gui2::show_error_message(VGETTEXT("The add-on <i>$addon_title</i> has an invalid file or directory "
 									"name and cannot be installed.", i18n_symbols));
 					return false;
 				}
-				if(!check_case_insensitive_duplicates(entry.cfg)) {
+				if(!check_case_insensitive_duplicates(cfg)) {
 					gui2::show_error_message(VGETTEXT("The add-on <i>$addon_title</i> has file or directory names "
 									"with case conflicts. This may cause problems.", i18n_symbols));
 				}
 			}
 		}
 
-		for(const config::any_child entry : archive_cfg.all_children_range()) {
-			if(entry.key == "removelist") {
-				purge_addon(entry.cfg);
-			} else if(entry.key == "addlist") {
-				unarchive_addon(entry.cfg, progress_cb);
+		for(const auto [key, cfg] : archive_cfg.all_children_range()) {
+			if(key == "removelist") {
+				purge_addon(cfg);
+			} else if(key == "addlist") {
+				unarchive_addon(cfg, progress_cb);
 			}
 		}
 

@@ -70,9 +70,6 @@ protected:
 	bool browse() const;
 	bool linger() const;
 
-	const team & viewing_team() const;
-	bool viewing_team_is_playing() const;
-
 public:
 	hotkey_handler(play_controller &, saved_game &);
 	~hotkey_handler();

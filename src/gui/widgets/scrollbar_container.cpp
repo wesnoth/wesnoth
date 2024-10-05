@@ -17,7 +17,6 @@
 
 #include "gui/widgets/scrollbar_container_private.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/iterator/walker_scrollbar_container.hpp"
 #include "gui/core/event/message.hpp"
 #include "gui/core/layout_exception.hpp"
@@ -29,6 +28,7 @@
 
 #include <algorithm>
 #include <functional>
+#include <string_view>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -39,11 +39,9 @@ namespace gui2
 namespace
 {
 
-static const std::string button_up_names[]
-		{ "_begin", "_line_up", "_half_page_up", "_page_up" };
-
-static const std::string button_down_names[]
-		{ "_end", "_line_down", "_half_page_down", "_page_down" };
+using namespace std::literals;
+constexpr std::array button_up_names { "_begin"sv, "_line_up"sv, "_half_page_up"sv, "_page_up"sv };
+constexpr std::array button_down_names { "_end"sv, "_line_down"sv, "_half_page_down"sv, "_page_down"sv };
 
 /**
  * Returns a map with the names of all buttons and the scrollbar jump they're
@@ -331,7 +329,6 @@ static void set_scrollbar_mode(grid* scrollbar_grid,
 	}
 
 	scrollbar->set_item_count(items);
-	scrollbar->set_item_position(0);
 	scrollbar->set_visible_items(visible_items);
 
 	if(scrollbar_mode == scrollbar_container::AUTO_VISIBLE) {
@@ -739,19 +736,19 @@ bool scrollbar_container::content_resize_height(const int height_modification, c
 void scrollbar_container::finalize_setup()
 {
 	/***** Setup vertical scrollbar *****/
-	vertical_scrollbar_grid_ = find_widget<grid>(this, "_vertical_scrollbar_grid", false, true);
+	vertical_scrollbar_grid_ = find_widget<grid>("_vertical_scrollbar_grid", false, true);
 
 	vertical_scrollbar_ =
-		find_widget<scrollbar_base>(vertical_scrollbar_grid_, "_vertical_scrollbar", false, true);
+		vertical_scrollbar_grid_->find_widget<scrollbar_base>("_vertical_scrollbar", false, true);
 
 	connect_signal_notify_modified(*vertical_scrollbar_,
 		std::bind(&scrollbar_container::vertical_scrollbar_moved, this));
 
 	/***** Setup horizontal scrollbar *****/
-	horizontal_scrollbar_grid_ = find_widget<grid>(this, "_horizontal_scrollbar_grid", false, true);
+	horizontal_scrollbar_grid_ = find_widget<grid>("_horizontal_scrollbar_grid", false, true);
 
 	horizontal_scrollbar_ =
-		find_widget<scrollbar_base>(horizontal_scrollbar_grid_, "_horizontal_scrollbar", false, true);
+		horizontal_scrollbar_grid_->find_widget<scrollbar_base>("_horizontal_scrollbar", false, true);
 
 	connect_signal_notify_modified(*horizontal_scrollbar_,
 		std::bind(&scrollbar_container::horizontal_scrollbar_moved, this));
@@ -759,7 +756,7 @@ void scrollbar_container::finalize_setup()
 	/***** Setup the scrollbar buttons *****/
 	for(const auto& item : scroll_lookup()) {
 		// Vertical.
-		clickable_item* button = find_widget<clickable_item>(vertical_scrollbar_grid_, item.first, false, false);
+		clickable_item* button = vertical_scrollbar_grid_->find_widget<clickable_item>(item.first, false, false);
 
 		if(button) {
 			button->connect_click_handler(
@@ -767,7 +764,7 @@ void scrollbar_container::finalize_setup()
 		}
 
 		// Horizontal.
-		button = find_widget<clickable_item>(horizontal_scrollbar_grid_, item.first, false, false);
+		button = horizontal_scrollbar_grid_->find_widget<clickable_item>(item.first, false, false);
 
 		if(button) {
 			button->connect_click_handler(
@@ -876,7 +873,7 @@ void scrollbar_container::set_scrollbar_button_status()
 	if(true) { /** @todo scrollbar visibility. */
 		/***** set scroll up button status *****/
 		for(const auto& name : button_up_names) {
-			styled_widget* button = find_widget<styled_widget>(vertical_scrollbar_grid_, name, false, false);
+			styled_widget* button = vertical_scrollbar_grid_->find_widget<styled_widget>(std::string{name}, false, false);
 
 			if(button) {
 				button->set_active(!vertical_scrollbar_->at_begin());
@@ -885,7 +882,7 @@ void scrollbar_container::set_scrollbar_button_status()
 
 		/***** set scroll down status *****/
 		for(const auto& name : button_down_names) {
-			styled_widget* button = find_widget<styled_widget>(vertical_scrollbar_grid_, name, false, false);
+			styled_widget* button = vertical_scrollbar_grid_->find_widget<styled_widget>(std::string{name}, false, false);
 
 			if(button) {
 				button->set_active(!vertical_scrollbar_->at_end());
@@ -899,7 +896,7 @@ void scrollbar_container::set_scrollbar_button_status()
 	if(true) { /** @todo scrollbar visibility. */
 		/***** Set scroll left button status *****/
 		for(const auto& name : button_up_names) {
-			styled_widget* button = find_widget<styled_widget>(horizontal_scrollbar_grid_, name, false, false);
+			styled_widget* button = horizontal_scrollbar_grid_->find_widget<styled_widget>(std::string{name}, false, false);
 
 			if(button) {
 				button->set_active(!horizontal_scrollbar_->at_begin());
@@ -908,7 +905,7 @@ void scrollbar_container::set_scrollbar_button_status()
 
 		/***** Set scroll right button status *****/
 		for(const auto& name : button_down_names) {
-			styled_widget* button = find_widget<styled_widget>(horizontal_scrollbar_grid_, name, false, false);
+			styled_widget* button = horizontal_scrollbar_grid_->find_widget<styled_widget>(std::string{name}, false, false);
 
 			if(button) {
 				button->set_active(!horizontal_scrollbar_->at_end());
@@ -1090,7 +1087,7 @@ void scrollbar_container::scrollbar_moved()
 
 void scrollbar_container::move_viewport(const int pixels_x, const int pixels_y)
 {
-	// Init.
+	// Initialize
 	assert(content_ && content_grid_);
 
 	const point content_origin {content_->get_x() - pixels_x, content_->get_y() - pixels_y};
@@ -1099,7 +1096,7 @@ void scrollbar_container::move_viewport(const int pixels_x, const int pixels_y)
 	content_grid_->set_visible_rectangle(content_visible_area_);
 	queue_redraw(content_visible_area_);
 
-	// Update scrollbar.
+	// Update scrollbar
 	set_scrollbar_button_status();
 }
 

@@ -16,7 +16,6 @@
 #include "install_dependencies.hpp"
 
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/addon_list.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/window.hpp"
@@ -27,16 +26,16 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(install_dependencies)
 
-void install_dependencies::pre_show(window& window)
+void install_dependencies::pre_show()
 {
-	find_widget<label>(&window, "label", false).set_label(t_string(
+	find_widget<label>("label").set_label(t_string(
 		_n(
 			"The selected add-on has the following dependency, which is outdated or not currently installed. Do you wish to install it before continuing?",
 			"The selected add-on has the following dependencies, which are outdated or not currently installed. Do you wish to install them before continuing?",
 			addons_.size())
 	));
 
-	find_widget<addon_list>(&window, "dependencies", false).set_addons(addons_);
+	find_widget<addon_list>("dependencies").set_addons(addons_);
 }
 
 }

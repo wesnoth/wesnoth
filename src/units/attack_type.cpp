@@ -19,6 +19,7 @@
  */
 
 #include "units/attack_type.hpp"
+#include "units/unit.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/string_utils.hpp"
@@ -79,6 +80,7 @@ attack_type::attack_type(const config& cfg) :
 	range_(cfg["range"]),
 	min_range_(cfg["min_range"].to_int(1)),
 	max_range_(cfg["max_range"].to_int(1)),
+	alignment_str_(),
 	damage_(cfg["damage"]),
 	num_attacks_(cfg["number"]),
 	attack_weight_(cfg["attack_weight"].to_double(1.0)),
@@ -99,6 +101,17 @@ attack_type::attack_type(const config& cfg) :
 		else
 			icon_ = "attacks/blank-attack.png";
 	}
+	if(cfg.has_attribute("alignment") && (cfg["alignment"] == "neutral" || cfg["alignment"] == "lawful" || cfg["alignment"] == "chaotic" || cfg["alignment"] == "liminal")){
+		alignment_str_ = cfg["alignment"].str();
+	} else if(self_){
+		alignment_str_ =unit_alignments::get_string(self_->alignment());
+	}
+}
+
+unit_alignments::type attack_type::alignment() const
+{
+	// pick attack alignment or fall back to unit alignment
+	return (unit_alignments::get_enum(alignment_str_).value_or(self_ ? self_->alignment() : unit_alignments::type::neutral));
 }
 
 std::string attack_type::accuracy_parry_description() const
@@ -152,7 +165,7 @@ void show_recursion_warning(const attack_type& attack, const config& filter) {
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
  */
-bool matches_simple_filter(const attack_type& attack, const config& filter, const std::string& tag_name)
+bool matches_simple_filter(const attack_type& attack, const config& filter, const std::string& check_if_recursion)
 {
 	//update and check variable_recursion for prevent check special_id/type_active in case of infinite recursion.
 	attack_type::recursion_guard filter_lock= attack.update_variables_recursion();
@@ -162,12 +175,15 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 	}
 
 	const std::set<std::string> filter_range = utils::split_set(filter["range"].str());
+	const std::string& filter_min_range = filter["min_range"];
+	const std::string& filter_max_range = filter["max_range"];
 	const std::string& filter_damage = filter["damage"];
 	const std::string& filter_attacks = filter["number"];
 	const std::string& filter_accuracy = filter["accuracy"];
 	const std::string& filter_parry = filter["parry"];
 	const std::string& filter_movement = filter["movement_used"];
 	const std::string& filter_attacks_used = filter["attacks_used"];
+	const std::set<std::string> filter_alignment = utils::split_set(filter["alignment"].str());
 	const std::set<std::string> filter_name = utils::split_set(filter["name"].str());
 	const std::set<std::string> filter_type = utils::split_set(filter["type"].str());
 	const std::vector<std::string> filter_special = utils::split(filter["special"]);
@@ -177,6 +193,12 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 	const std::vector<std::string> filter_special_id_active = utils::split(filter["special_id_active"]);
 	const std::vector<std::string> filter_special_type_active = utils::split(filter["special_type_active"]);
 	const std::string filter_formula = filter["formula"];
+
+	if (!filter_min_range.empty() && !in_ranges(attack.min_range(), utils::parse_ranges_int(filter_min_range)))
+		return false;
+
+	if (!filter_max_range.empty() && !in_ranges(attack.max_range(), utils::parse_ranges_int(filter_max_range)))
+		return false;
 
 	if ( !filter_range.empty() && filter_range.count(attack.range()) == 0 )
 		return false;
@@ -199,6 +221,9 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 	if (!filter_attacks_used.empty() && !in_ranges(attack.attacks_used(), utils::parse_ranges_unsigned(filter_attacks_used)))
 		return false;
 
+	if(!filter_alignment.empty() && filter_alignment.count(attack.alignment_str()) == 0)
+		return false;
+
 	if ( !filter_name.empty() && filter_name.count(attack.id()) == 0)
 		return false;
 
@@ -207,7 +232,7 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 		// should always use the base type of the weapon. Otherwise it will flip-flop between the
 		// special being active or inactive based on whether ATTACK_RECURSION_LIMIT is even or odd;
 		// without this it will also behave differently when calculating resistance_against.
-		if(tag_name == "damage_type"){
+		if(check_if_recursion == "damage_type"){
 			if (filter_type.count(attack.type()) == 0){
 				return false;
 			}
@@ -319,25 +344,25 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 /**
  * Returns whether or not *this matches the given @a filter.
  */
-bool attack_type::matches_filter(const config& filter, const std::string& tag_name) const
+bool attack_type::matches_filter(const config& filter, const std::string& check_if_recursion) const
 {
 	// Handle the basic filter.
-	bool matches = matches_simple_filter(*this, filter, tag_name);
+	bool matches = matches_simple_filter(*this, filter, check_if_recursion);
 
 	// Handle [and], [or], and [not] with in-order precedence
-	for (const config::any_child condition : filter.all_children_range() )
+	for(const auto [key, condition_cfg] : filter.all_children_range() )
 	{
 		// Handle [and]
-		if ( condition.key == "and" )
-			matches = matches && matches_filter(condition.cfg, tag_name);
+		if ( key == "and" )
+			matches = matches && matches_filter(condition_cfg, check_if_recursion);
 
 		// Handle [or]
-		else if ( condition.key == "or" )
-			matches = matches || matches_filter(condition.cfg, tag_name);
+		else if ( key == "or" )
+			matches = matches || matches_filter(condition_cfg, check_if_recursion);
 
 		// Handle [not]
-		else if ( condition.key == "not" )
-			matches = matches && !matches_filter(condition.cfg, tag_name);
+		else if ( key == "not" )
+			matches = matches && !matches_filter(condition_cfg, check_if_recursion);
 	}
 
 	return matches;
@@ -359,9 +384,14 @@ bool attack_type::apply_modification(const config& cfg)
 	const t_string& set_desc = cfg["set_description"];
 	const std::string& set_type = cfg["set_type"];
 	const std::string& set_range = cfg["set_range"];
+	const std::string& set_attack_alignment = cfg["set_alignment"];
 	const std::string& set_icon = cfg["set_icon"];
 	const std::string& del_specials = cfg["remove_specials"];
 	auto set_specials = cfg.optional_child("set_specials");
+	const std::string& increase_min_range = cfg["increase_min_range"];
+	const std::string& set_min_range = cfg["set_min_range"];
+	const std::string& increase_max_range = cfg["increase_max_range"];
+	const std::string& set_max_range = cfg["set_max_range"];
 	const std::string& increase_damage = cfg["increase_damage"];
 	const std::string& set_damage = cfg["set_damage"];
 	const std::string& increase_attacks = cfg["increase_attacks"];
@@ -395,6 +425,10 @@ bool attack_type::apply_modification(const config& cfg)
 		range_ = set_range;
 	}
 
+	if(set_attack_alignment.empty() == false) {
+		alignment_str_ = set_attack_alignment;
+	}
+
 	if(set_icon.empty() == false) {
 		icon_ = set_icon;
 	}
@@ -402,11 +436,11 @@ bool attack_type::apply_modification(const config& cfg)
 	if(del_specials.empty() == false) {
 		const std::vector<std::string>& dsl = utils::split(del_specials);
 		config new_specials;
-		for (const config::any_child vp : specials_.all_children_range()) {
+		for(const auto [key, cfg] : specials_.all_children_range()) {
 			std::vector<std::string>::const_iterator found_id =
-				std::find(dsl.begin(), dsl.end(), vp.cfg["id"].str());
+				std::find(dsl.begin(), dsl.end(), cfg["id"].str());
 			if (found_id == dsl.end()) {
-				new_specials.add_child(vp.key, vp.cfg);
+				new_specials.add_child(key, cfg);
 			}
 		}
 		specials_ = new_specials;
@@ -422,9 +456,25 @@ bool attack_type::apply_modification(const config& cfg)
 		if(mode != "append") {
 			specials_.clear();
 		}
-		for(const config::any_child value : set_specials->all_children_range()) {
-			specials_.add_child(value.key, value.cfg);
+		for(const auto [key, cfg] : set_specials->all_children_range()) {
+			specials_.add_child(key, cfg);
 		}
+	}
+
+	if(set_min_range.empty() == false) {
+		min_range_ = std::stoi(set_min_range);
+	}
+
+	if(increase_min_range.empty() == false) {
+		min_range_ = utils::apply_modifier(min_range_, increase_min_range);
+	}
+
+	if(set_max_range.empty() == false) {
+		max_range_ = std::stoi(set_max_range);
+	}
+
+	if(increase_max_range.empty() == false) {
+		max_range_ = utils::apply_modifier(max_range_, increase_max_range);
 	}
 
 	if(set_damage.empty() == false) {
@@ -514,6 +564,10 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 	// Did the caller want the description?
 	if(description != nullptr) {
+		const std::string& increase_min_range = cfg["increase_min_range"];
+		const std::string& set_min_range = cfg["set_min_range"];
+		const std::string& increase_max_range = cfg["increase_max_range"];
+		const std::string& set_max_range = cfg["set_max_range"];
 		const std::string& increase_damage = cfg["increase_damage"];
 		const std::string& set_damage = cfg["set_damage"];
 		const std::string& increase_attacks = cfg["increase_attacks"];
@@ -528,6 +582,34 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		const std::string& set_attacks_used = cfg["set_attacks_used"];
 
 		std::vector<t_string> desc;
+
+		if(!set_min_range.empty()) {
+			desc.emplace_back(VGETTEXT(
+				// TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
+				"$number min range",
+				{{"number", set_min_range}}));
+		}
+
+		if(!increase_min_range.empty()) {
+			desc.emplace_back(VGETTEXT(
+				// TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
+				"<span color=\"$color\">$number_or_percent</span> min range",
+				{{"number_or_percent", utils::print_modifier(increase_min_range)}, {"color", increase_min_range[0] == '-' ? "#f00" : "#0f0"}}));
+		}
+
+		if(!set_max_range.empty()) {
+			desc.emplace_back(VGETTEXT(
+				// TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
+				"$number max range",
+				{{"number", set_max_range}}));
+		}
+
+		if(!increase_max_range.empty()) {
+			desc.emplace_back(VGETTEXT(
+				// TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
+				"<span color=\"$color\">$number_or_percent</span> max range",
+				{{"number_or_percent", utils::print_modifier(increase_max_range)}, {"color", increase_max_range[0] == '-' ? "#f00" : "#0f0"}}));
+		}
 
 		if(!increase_damage.empty()) {
 			desc.emplace_back(VNGETTEXT(
@@ -688,6 +770,7 @@ void attack_type::write(config& cfg) const
 	cfg["range"] = range_;
 	cfg["min_range"] = min_range_;
 	cfg["max_range"] = max_range_;
+	cfg["alignment"] = alignment_str_;
 	cfg["damage"] = damage_;
 	cfg["number"] = num_attacks_;
 	cfg["attack_weight"] = attack_weight_;

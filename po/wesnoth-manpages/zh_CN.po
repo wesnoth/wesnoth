@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
-"POT-Creation-Date: 2024-07-21 22:31-0500\n"
+"POT-Creation-Date: 2024-09-17 21:19-0500\n"
 "PO-Revision-Date: 2023-09-10 09:01+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -256,8 +256,9 @@ msgstr "禁用已废弃的Lua API调用"
 
 #. type: TP
 #: doc/man/wesnoth.6:89
-#, no-wrap
-msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
+#, fuzzy, no-wrap
+#| msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
+msgid "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
 msgstr "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
 
 #. type: Plain text
@@ -675,8 +676,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:240
-#, no-wrap
-msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+#, fuzzy, no-wrap
+#| msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+msgid "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
 msgstr "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
 
 #. type: Plain text
@@ -942,13 +944,16 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:347
-#, no-wrap
-msgid "B<-S,--use-schema>I<\\ path>"
+#, fuzzy, no-wrap
+#| msgid "B<-S,--use-schema>I<\\ path>"
+msgid "B<-S,\\ --use-schema>I<\\ path>"
 msgstr "B<-S,--use-schema>I<\\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:351
-msgid "sets the WML schema for use with B<-V,--validate>."
+#, fuzzy
+#| msgid "sets the WML schema for use with B<-V,--validate>."
+msgid "sets the WML schema for use with B<-V,\\ --validate>."
 msgstr "设置B<-V,--validate>所使用的WML schema。"
 
 #. type: TP
@@ -1029,8 +1034,9 @@ msgstr "在游戏过程中，验证核心WML。"
 
 #. type: TP
 #: doc/man/wesnoth.6:377
-#, no-wrap
-msgid "B<--validate-schema \\ path>"
+#, fuzzy, no-wrap
+#| msgid "B<--validate-schema \\ path>"
+msgid "B<--validate-schema>I<\\ path>"
 msgstr "B<--validate-schema \\ path>"
 
 #. type: Plain text

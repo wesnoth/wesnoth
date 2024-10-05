@@ -59,8 +59,8 @@ public:
 	}
 
 	void set_values(const std::vector<::config>& values, unsigned selected = 0);
-
 	void set_selected(unsigned selected, bool fire_event = true);
+	unsigned get_selected() const { return selected_; }
 
 protected:
 	/* **** ***** ***** ***** layout functions ***** ***** ***** **** */

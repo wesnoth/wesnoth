@@ -487,7 +487,7 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 		<< "Status:\n"
 		<< "minimum_size: " << minimum_size << "\n"
 		<< "maximum_size: " << maximum_size << "\n"
-		<< "text_maximum_width_: " << text_maximum_width_ << "\n"
+		<< "maximum width of text: " << text_maximum_width_ << "\n"
 		<< "can_wrap: " << can_wrap() << "\n"
 		<< "characters_per_line: " << get_characters_per_line() << "\n"
 		<< "truncated: " << renderer_.is_truncated() << "\n"

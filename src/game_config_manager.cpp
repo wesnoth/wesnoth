@@ -405,7 +405,7 @@ static void show_deprecated_warnings(config& umc_cfg)
 					symbols);
 				deprecated_message("[advancefrom]", DEP_LEVEL::REMOVED, {1, 15, 4}, message);
 			}
-			unit_type.remove_children("advancefrom", [](const config&){return true;});
+			unit_type.remove_children("advancefrom");
 		}
 	}
 
@@ -569,9 +569,8 @@ void game_config_manager::load_addons_cfg()
 			};
 
 			// Annotate appropriate addon types with addon_id info.
-			for(auto child : umc_cfg.all_children_range()) {
-				if(tags_with_addon_id.count(child.key) > 0) {
-					auto& cfg = child.cfg;
+			for(auto [key, cfg] : umc_cfg.all_children_range()) {
+				if(tags_with_addon_id.count(key) > 0) {
 					cfg["addon_id"] = addon_id;
 					cfg["addon_title"] = addon_title;
 					// Note that this may reformat the string in a canonical form.

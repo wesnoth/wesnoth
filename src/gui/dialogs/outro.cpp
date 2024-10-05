@@ -99,10 +99,10 @@ outro::outro(const game_classification& info)
 	}
 }
 
-void outro::pre_show(window& window)
+void outro::pre_show()
 {
-	window.set_enter_disabled(true);
-	window.get_canvas(0).set_variable("outro_text", wfl::variant(current_text_));
+	set_enter_disabled(true);
+	get_canvas(0).set_variable("outro_text", wfl::variant(current_text_));
 }
 
 void outro::update()
@@ -173,7 +173,7 @@ void outro::update()
 	}
 }
 
-void outro::post_show(window& /*window*/)
+void outro::post_show()
 {
 	remove_timer(timer_id_);
 	timer_id_ = 0;

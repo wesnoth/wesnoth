@@ -29,8 +29,9 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "wml_exception.hpp"
+
 #include "gui/auxiliary/typed_formula.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/event/distributor.hpp"
 #include "gui/core/event/handler.hpp"
 #include "gui/core/event/message.hpp"
@@ -56,7 +57,6 @@
 #include "sdl/texture.hpp"
 #include "formula/variant.hpp"
 #include "video.hpp" // only for toggle_fullscreen
-#include "wml_exception.hpp"
 #include "sdl/userevent.hpp"
 #include "sdl/input.hpp" // get_mouse_button_mask
 
@@ -891,14 +891,12 @@ void window::layout()
 	}
 
 	/***** Handle click dismiss status. *****/
-	button* click_dismiss_button = nullptr;
-	if((click_dismiss_button
-		= find_widget<button>(this, "click_dismiss", false, false))) {
-
+	button* click_dismiss_button = find_widget<button>("click_dismiss", false, false);
+	if(click_dismiss_button) {
 		click_dismiss_button->set_visible(widget::visibility::invisible);
 	}
 	if(click_dismiss_) {
-		button* btn = find_widget<button>(this, "ok", false, false);
+		button* btn = find_widget<button>("ok", false, false);
 		if(btn) {
 			btn->set_visible(widget::visibility::invisible);
 			click_dismiss_button = btn;
@@ -1118,7 +1116,7 @@ void window::finalize(const builder_grid& content_grid)
 	// Make sure the new child has same id.
 	widget->set_id(id);
 
-	auto* parent_grid = find_widget<grid>(&get_grid(), id, true, false);
+	auto* parent_grid = get_grid().find_widget<grid>(id, true, false);
 	assert(parent_grid);
 
 	if(grid* grandparent_grid = dynamic_cast<grid*>(parent_grid->parent())) {

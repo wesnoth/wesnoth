@@ -18,9 +18,11 @@
 #include "color.hpp"
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/widgets/event_executor.hpp"
+#include "gui/widgets/helper.hpp"
 #include "scripting/lua_ptr.hpp"
 #include "sdl/point.hpp"
 #include "sdl/rect.hpp"
+#include "wml_exception.hpp"
 
 #include <string>
 
@@ -712,6 +714,76 @@ public:
 	 * @returns                   Whether or not the @p widget was found.
 	 */
 	virtual bool has_widget(const widget& widget) const;
+
+	/**
+	 * Gets a widget with the wanted id.
+	 *
+	 * This template function doesn't return a pointer to a generic widget but
+	 * returns the wanted type and tests for its existence if required.
+	 *
+	 * @param id                  The id of the widget to find.
+	 * @param must_be_active      The widget should be active, not all widgets
+	 *                            have an active flag, those who don't ignore
+	 *                            flag.
+	 * @param must_exist          The widget should be exist, the function will
+	 *                            fail if the widget doesn't exist or is
+	 *                            inactive and must be active. Upon failure a
+	 *                            wml_error is thrown.
+	 *
+	 * @returns                   The widget with the id.
+	 */
+	template <class T>
+	NOT_DANGLING T* find_widget(
+		const std::string& id,
+		const bool must_be_active,
+		const bool must_exist)
+	{
+		T* result = dynamic_cast<T*>(this->find(id, must_be_active));
+		VALIDATE(!must_exist || result, missing_widget(id));
+
+		return result;
+	}
+
+	template <class T>
+	NOT_DANGLING const T* find_widget(
+		const std::string& id,
+		const bool must_be_active,
+		const bool must_exist) const
+	{
+		T* result = dynamic_cast<T*>(this->find(id, must_be_active));
+		VALIDATE(!must_exist || result, missing_widget(id));
+
+		return result;
+	}
+
+	/**
+	 * Gets a widget with the wanted id.
+	 *
+	 * This template function doesn't return a reference to a generic widget but
+	 * returns a reference to the wanted type
+	 *
+	 * @param id                  The id of the widget to find.
+	 * @param must_be_active      The widget should be active, not all widgets
+	 *                            have an active flag, those who don't ignore
+	 *                            flag.
+	 *
+	 * @returns                   The widget with the id.
+	 */
+	template <class T>
+	NOT_DANGLING T& find_widget(
+		const std::string& id,
+		const bool must_be_active = false)
+	{
+		return *(this->find_widget<T>(id, must_be_active, true));
+	}
+
+	template <class T>
+	NOT_DANGLING const T& find_widget(
+		const std::string& id,
+		const bool must_be_active = false) const
+	{
+		return *(this->find_widget<T>(id, must_be_active, true));
+	}
 
 private:
 	/** See @ref event::dispatcher::is_at. */

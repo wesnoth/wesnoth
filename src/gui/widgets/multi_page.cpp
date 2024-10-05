@@ -17,12 +17,12 @@
 
 #include "gui/widgets/multi_page.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/generator.hpp"
 
 #include "gettext.hpp"
+#include "wml_exception.hpp"
 
 #include <functional>
 
@@ -208,9 +208,9 @@ builder_multi_page::builder_multi_page(const config& cfg)
 		for(const auto & column : row.child_range("column"))
 		{
 			data.emplace_back();
-			for(const auto & i : column.attribute_range())
+			for(const auto& [key, value] : column.attribute_range())
 			{
-				data.back()[i.first] = i.second;
+				data.back()[key] = value;
 			}
 			++col;
 		}

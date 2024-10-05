@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-08-18 23:11-0500\n"
+"POT-Creation-Date: 2024-09-17 21:19-0500\n"
 "PO-Revision-Date: 2024-07-24 17:22+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
@@ -2200,7 +2200,7 @@ msgstr "অ্যাড-অন প্রকাশিত করুন"
 #. [button]: id=uninstall
 #: data/gui/themes/default/widget/addon_list.cfg:435
 #: data/gui/themes/default/window/addon_manager.cfg:622
-#: src/gui/dialogs/addon/manager.cpp:1007
+#: src/gui/dialogs/addon/manager.cpp:1002
 msgid "Uninstall add-on"
 msgstr "অ্যাড-অন আনইনস্টল করুন"
 
@@ -2245,7 +2245,7 @@ msgstr "অপেক্ষমান বার্তা"
 #: data/gui/themes/default/window/message.cfg:135
 #: data/gui/themes/default/window/mp_alerts_options.cfg:242
 #: data/gui/themes/default/window/mp_match_history.cfg:601
-#: data/gui/themes/default/window/preferences.cfg:444
+#: data/gui/themes/default/window/preferences.cfg:434
 #: data/gui/themes/default/window/screenshot_notification.cfg:214
 #: data/gui/themes/default/window/server_info.cfg:253
 #: data/gui/themes/default/window/statistics_dialog.cfg:623
@@ -2313,8 +2313,8 @@ msgstr "স্থানীয়ভাবে পাসওয়ার্ড সঞ্�
 #: data/gui/themes/default/window/editor_edit_pbl_translation.cfg:125
 #: data/gui/themes/default/window/editor_edit_scenario.cfg:287
 #: data/gui/themes/default/window/editor_edit_side.cfg:469
-#: data/gui/themes/default/window/editor_edit_unit.cfg:1238
-#: data/gui/themes/default/window/file_dialog.cfg:509
+#: data/gui/themes/default/window/editor_edit_unit.cfg:1243
+#: data/gui/themes/default/window/file_dialog.cfg:506
 #: data/gui/themes/default/window/folder_create.cfg:119
 #: data/gui/themes/default/window/label_settings.cfg:137
 #: data/gui/themes/default/window/logging.cfg:259
@@ -2341,6 +2341,7 @@ msgstr "ঠিক"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
+#. [button]: id=exit
 #. [button]: id=placeholder
 #: data/gui/themes/default/window/addon_auth.cfg:181
 #: data/gui/themes/default/window/addon_connect.cfg:211
@@ -2359,11 +2360,11 @@ msgstr "ঠিক"
 #: data/gui/themes/default/window/editor_edit_pbl_translation.cfg:137
 #: data/gui/themes/default/window/editor_edit_scenario.cfg:301
 #: data/gui/themes/default/window/editor_edit_side.cfg:481
-#: data/gui/themes/default/window/editor_edit_unit.cfg:1251
+#: data/gui/themes/default/window/editor_edit_unit.cfg:1256
 #: data/gui/themes/default/window/editor_generate_map.cfg:214
 #: data/gui/themes/default/window/editor_new_map.cfg:126
 #: data/gui/themes/default/window/editor_resize_map.cfg:282
-#: data/gui/themes/default/window/file_dialog.cfg:522
+#: data/gui/themes/default/window/file_dialog.cfg:519
 #: data/gui/themes/default/window/file_progress.cfg:94
 #: data/gui/themes/default/window/folder_create.cfg:133
 #: data/gui/themes/default/window/game_load.cfg:654
@@ -2459,7 +2460,7 @@ msgstr "খেলাটি এবং সার্ভারের মধ্যে
 #: data/gui/themes/default/window/addon_manager.cfg:162
 #: data/gui/themes/default/window/addon_manager.cfg:817
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:210
-#: data/gui/themes/default/window/editor_edit_unit.cfg:701
+#: data/gui/themes/default/window/editor_edit_unit.cfg:706
 msgid "Type:"
 msgstr "প্রকৃতি:"
 
@@ -2534,7 +2535,7 @@ msgstr "নির্ভরশীলতা:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/themes/default/window/addon_manager.cfg:713
-#: src/gui/dialogs/addon/manager.cpp:1087
+#: src/gui/dialogs/addon/manager.cpp:1082
 msgid "addon_dependencies^None"
 msgstr "নেই"
 
@@ -2548,7 +2549,7 @@ msgstr "অনুবাদসমূহ:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/themes/default/window/addon_manager.cfg:748
-#: src/gui/dialogs/addon/manager.cpp:1101
+#: src/gui/dialogs/addon/manager.cpp:1096
 msgid "translations^None"
 msgstr "নেই"
 
@@ -2594,7 +2595,7 @@ msgstr "অ্যাড-অন ব্যবস্থাপনা"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
 #: data/gui/themes/default/window/addon_manager.cfg:1099
-#: src/gui/dialogs/addon/manager.cpp:541 src/gui/dialogs/addon/manager.cpp:815
+#: src/gui/dialogs/addon/manager.cpp:536 src/gui/dialogs/addon/manager.cpp:810
 msgid "Add-on Details"
 msgstr "অ্যাড-অনের বিস্তারিত বিবরণ"
 
@@ -2917,8 +2918,8 @@ msgstr "কোর চালু করুন"
 #. [button]: id=ok
 #: data/gui/themes/default/window/core_dialog.cfg:228
 #: data/gui/themes/default/window/language_selection.cfg:293
-#: src/gui/dialogs/editor/edit_unit.cpp:313
-#: src/preferences/preferences.cpp:1304
+#: src/gui/dialogs/editor/edit_unit.cpp:312
+#: src/preferences/preferences.cpp:1303
 msgid "Select"
 msgstr "পছন্দ"
 
@@ -3064,11 +3065,12 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:980
-#: src/gui/dialogs/editor/edit_unit.cpp:326
-#: src/gui/dialogs/editor/edit_unit.cpp:334
-#: src/gui/dialogs/editor/edit_unit.cpp:342 src/gui/dialogs/file_dialog.cpp:363
-#: src/gui/dialogs/file_dialog.cpp:789
+#: src/gui/dialogs/addon/manager.cpp:975
+#: src/gui/dialogs/editor/edit_unit.cpp:325
+#: src/gui/dialogs/editor/edit_unit.cpp:333
+#: src/gui/dialogs/editor/edit_unit.cpp:341
+#: src/gui/dialogs/editor/edit_unit.cpp:1037
+#: src/gui/dialogs/file_dialog.cpp:369 src/gui/dialogs/file_dialog.cpp:796
 msgid "Confirm"
 msgstr "নিশ্চিত করুন"
 
@@ -3331,7 +3333,7 @@ msgstr "যোগ"
 #. [button]: id=delete
 #. [button]: id=server_delete
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:420
-#: data/gui/themes/default/window/file_dialog.cfg:347
+#: data/gui/themes/default/window/file_dialog.cfg:349
 #: data/gui/themes/default/window/game_load.cfg:606
 #: data/gui/themes/default/window/mp_connect.cfg:284
 msgid "Delete"
@@ -3348,7 +3350,7 @@ msgstr ""
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:463
 #: data/gui/themes/default/window/game_save.cfg:120
 #: data/gui/themes/default/window/screenshot_notification.cfg:201
-#: src/gui/dialogs/file_dialog.cpp:225 src/hotkey/hotkey_command.cpp:184
+#: src/gui/dialogs/file_dialog.cpp:231 src/hotkey/hotkey_command.cpp:184
 msgid "Save"
 msgstr "সঞ্চয় করুন"
 
@@ -3605,7 +3607,7 @@ msgstr "স্থানান্তরের মূল্য:"
 #. [label]: id=title
 #. [tab]
 #: data/gui/themes/default/window/editor_edit_unit.cfg:524
-#: data/gui/themes/default/window/editor_edit_unit.cfg:1201
+#: data/gui/themes/default/window/editor_edit_unit.cfg:1206
 #: src/gui/widgets/unit_preview_pane.cpp:221
 msgid "Attacks"
 msgstr "আক্রমণ"
@@ -3625,50 +3627,50 @@ msgstr "আক্রমণ বাদ দিন"
 msgid "Range:"
 msgstr "সীমা:"
 
-#. [row]
-#: data/gui/themes/default/window/editor_edit_unit.cfg:684
+#. [option]
+#: data/gui/themes/default/window/editor_edit_unit.cfg:686
 msgid "range^Melee"
 msgstr "নিকট"
 
-#. [row]
-#: data/gui/themes/default/window/editor_edit_unit.cfg:685
+#. [option]
+#: data/gui/themes/default/window/editor_edit_unit.cfg:690
 msgid "range^Ranged"
 msgstr "দূর"
 
 #. [label]
-#: data/gui/themes/default/window/editor_edit_unit.cfg:726
+#: data/gui/themes/default/window/editor_edit_unit.cfg:731
 msgid "Damage:"
 msgstr "ক্ষতি:"
 
 #. [label]
-#: data/gui/themes/default/window/editor_edit_unit.cfg:753
+#: data/gui/themes/default/window/editor_edit_unit.cfg:758
 msgid "Hits:"
 msgstr "আঘাত সংখ্যা:"
 
 #. [label]
-#: data/gui/themes/default/window/editor_edit_unit.cfg:781
+#: data/gui/themes/default/window/editor_edit_unit.cfg:786
 msgid "Specials:"
 msgstr "বিশেষত্ব:"
 
 #. [grid]: id=grid_adv
-#: data/gui/themes/default/window/editor_edit_unit.cfg:823
+#: data/gui/themes/default/window/editor_edit_unit.cfg:828
 msgid "Small Profile"
 msgstr "ছোটো ছবি:"
 
 #. [label]
-#: data/gui/themes/default/window/editor_edit_unit.cfg:834
+#: data/gui/themes/default/window/editor_edit_unit.cfg:839
 msgid "Abilities:"
 msgstr "দক্ষতা:"
 
 #. [label]: id=movetype_label
-#: data/gui/themes/default/window/editor_edit_unit.cfg:860
+#: data/gui/themes/default/window/editor_edit_unit.cfg:865
 msgid "Movetype:"
 msgstr "স্থানান্তরের প্রকৃতি:"
 
 #. [button]: id=load_movetype
 #. [button]: id=ok
 #. [grid]
-#: data/gui/themes/default/window/editor_edit_unit.cfg:887
+#: data/gui/themes/default/window/editor_edit_unit.cfg:892
 #: data/gui/themes/default/window/game_load.cfg:639
 #: data/gui/themes/default/window/title_screen.cfg:258
 #: data/gui/themes/modern/dialogs/title_screen.cfg:258
@@ -3677,47 +3679,47 @@ msgstr "খুলুন"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=movement_costs_label
-#: data/gui/themes/default/window/editor_edit_unit.cfg:903
+#: data/gui/themes/default/window/editor_edit_unit.cfg:908
 #: src/gui/widgets/unit_preview_pane.cpp:152
 msgid "Movement Costs:"
 msgstr "স্থানান্তরের মূল্য:"
 
 #. [label]: id=defense_label
-#: data/gui/themes/default/window/editor_edit_unit.cfg:956
+#: data/gui/themes/default/window/editor_edit_unit.cfg:961
 msgid "Defense:"
 msgstr "সুরক্ষা:"
 
 #. [label]: id=resistance_label
-#: data/gui/themes/default/window/editor_edit_unit.cfg:1009
+#: data/gui/themes/default/window/editor_edit_unit.cfg:1014
 msgid "Resistances:"
 msgstr "প্রতিরোধ:"
 
 #. [label]: id=usage_label
-#: data/gui/themes/default/window/editor_edit_unit.cfg:1062
+#: data/gui/themes/default/window/editor_edit_unit.cfg:1067
 msgid "AI Usage:"
 msgstr "এআই যেভাবে ব্যবহার করবে:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/themes/default/window/editor_edit_unit.cfg:1165
-#: src/hotkey/hotkey_command.cpp:177
-msgid "New Unit Type"
+#: data/gui/themes/default/window/editor_edit_unit.cfg:1170
+#, fuzzy
+#| msgid "New Unit Type"
+msgid "Unit Type Editor"
 msgstr "নতুন ইউনিট প্রকার"
 
 #. [tab]
-#: data/gui/themes/default/window/editor_edit_unit.cfg:1187
+#: data/gui/themes/default/window/editor_edit_unit.cfg:1192
 msgid "Main Stats"
 msgstr "মূল পরিসংখ্যান"
 
 #. [tab]
 #. [widget]: id=label
-#: data/gui/themes/default/window/editor_edit_unit.cfg:1194
+#: data/gui/themes/default/window/editor_edit_unit.cfg:1199
 #: data/gui/themes/default/window/preferences.cfg:383
 msgid "Advanced"
 msgstr "উন্নত"
 
 #. [tab]
-#: data/gui/themes/default/window/editor_edit_unit.cfg:1208
+#: data/gui/themes/default/window/editor_edit_unit.cfg:1213
 msgid "WML View"
 msgstr ""
 
@@ -3831,33 +3833,33 @@ msgid "File:"
 msgstr "ফাইল:"
 
 #. [label]
-#: data/gui/themes/default/window/file_dialog.cfg:188
+#: data/gui/themes/default/window/file_dialog.cfg:190
 msgid "Places"
 msgstr "স্থানসমূহ"
 
 #. [button]: id=add_bookmark
-#: data/gui/themes/default/window/file_dialog.cfg:279
+#: data/gui/themes/default/window/file_dialog.cfg:281
 msgid "Bookmarks the current folder"
 msgstr "বর্তমান ফোল্ডার বুকমার্ক করুন"
 
 #. [button]: id=remove_bookmark
-#: data/gui/themes/default/window/file_dialog.cfg:291
+#: data/gui/themes/default/window/file_dialog.cfg:293
 msgid "Removes the current bookmark"
 msgstr "বর্তমান ফোল্ডার থেকে বুকমার্ক মুছুন"
 
 #. [button]: id=open_ext
-#: data/gui/themes/default/window/file_dialog.cfg:318
+#: data/gui/themes/default/window/file_dialog.cfg:320
 msgid "Open External"
 msgstr ""
 
 #. [button]: id=open_ext
-#: data/gui/themes/default/window/file_dialog.cfg:319
+#: data/gui/themes/default/window/file_dialog.cfg:321
 msgid "Open selected using platform's default applications"
 msgstr ""
 
 #. [button]: id=new_dir
 #. [label]: id=title
-#: data/gui/themes/default/window/file_dialog.cfg:333
+#: data/gui/themes/default/window/file_dialog.cfg:335
 #: data/gui/themes/default/window/folder_create.cfg:43
 msgid "New Folder"
 msgstr "নতুন ফোল্ডার"
@@ -5397,7 +5399,7 @@ msgstr "খেলার নাম:"
 #: data/gui/themes/default/window/preferences.cfg:365
 #: data/gui/themes/default/window/title_screen.cfg:257
 #: data/gui/themes/modern/dialogs/title_screen.cfg:257
-#: src/gui/dialogs/game_load.cpp:401
+#: src/gui/dialogs/game_load.cpp:395
 msgid "Multiplayer"
 msgstr "বহুখেলোয়াড়"
 
@@ -5514,11 +5516,6 @@ msgstr "ডিসপ্লে"
 #: data/gui/themes/default/window/preferences.cfg:419
 msgid "Display the game version and build information"
 msgstr "গেমের সংস্করণ এবং বিল্ডের তথ্য দেখান"
-
-#. [button]: id=apply
-#: data/gui/themes/default/window/preferences.cfg:434
-msgid "Apply"
-msgstr ""
 
 #. [label]
 #: data/gui/themes/default/window/preferences/01_general.cfg:20
@@ -5682,7 +5679,7 @@ msgstr "হটকি"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:895
+#: src/gui/dialogs/preferences_dialog.cpp:899
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -5695,7 +5692,7 @@ msgstr "খেলায় উপলব্ধ"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:896
+#: src/gui/dialogs/preferences_dialog.cpp:900
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -5708,7 +5705,7 @@ msgstr "মানচিত্র পরিমার্জকে উপলব্�
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:897
+#: src/gui/dialogs/preferences_dialog.cpp:901
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -5816,7 +5813,7 @@ msgid "UI theme:"
 msgstr "ইউআই থিম:"
 
 #. [menu_button]: id=choose_gui2_theme
-#: data/gui/themes/default/window/preferences/03_display.cfg:205
+#: data/gui/themes/default/window/preferences/03_display.cfg:208
 msgid ""
 "Change the UI (GUI2) theme. Additional themes may be provided by community-"
 "made add-ons"
@@ -5824,85 +5821,90 @@ msgstr ""
 "ইউআই (জিইউআই 2) থিম পাল্টান । কমিউনিটি-নির্মিত অ্যাড-অন থেকে আরও থিম পাওয়া যেতে "
 "পারে ।"
 
+#. [button]: id=apply
+#: data/gui/themes/default/window/preferences/03_display.cfg:217
+msgid "Apply"
+msgstr ""
+
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/window/preferences/03_display.cfg:224
+#: data/gui/themes/default/window/preferences/03_display.cfg:239
 msgid "Combat damage indicators"
 msgstr "লড়াইয়ের ক্ষতির সূচক"
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/window/preferences/03_display.cfg:225
+#: data/gui/themes/default/window/preferences/03_display.cfg:240
 msgid "Show amount of damage inflicted or healed as fading labels above units"
 msgstr ""
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/window/preferences/03_display.cfg:238
+#: data/gui/themes/default/window/preferences/03_display.cfg:253
 msgid "Team color indicators"
 msgstr "দলের রঙের সূচক"
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/window/preferences/03_display.cfg:239
+#: data/gui/themes/default/window/preferences/03_display.cfg:254
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
 
 #. [toggle_button]: id=show_grid
-#: data/gui/themes/default/window/preferences/03_display.cfg:252
+#: data/gui/themes/default/window/preferences/03_display.cfg:267
 msgid "Grid overlay"
 msgstr "গ্রিড অভিলেপন"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/themes/default/window/preferences/03_display.cfg:253
+#: data/gui/themes/default/window/preferences/03_display.cfg:268
 msgid "Overlay a grid over the map"
 msgstr "মানচিত্রের ওপর একটি গ্রিড দেখান"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/window/preferences/03_display.cfg:288
+#: data/gui/themes/default/window/preferences/03_display.cfg:303
 msgid "Animate map"
 msgstr "মানচিত্র অ্যানিমেট করুন"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/window/preferences/03_display.cfg:289
+#: data/gui/themes/default/window/preferences/03_display.cfg:304
 msgid "Display animated terrain graphics"
 msgstr "ভূমির অ্যানিমেটেড গ্রাফিক্স দেখান"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/themes/default/window/preferences/03_display.cfg:302
+#: data/gui/themes/default/window/preferences/03_display.cfg:317
 msgid "Animate water"
 msgstr "জল অ্যানিমেট করুন"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/themes/default/window/preferences/03_display.cfg:303
+#: data/gui/themes/default/window/preferences/03_display.cfg:318
 msgid "Display animated water graphics (can be slow)"
 msgstr "জলের অ্যানিমেটেড গ্রাফিক্স দেখান (ধীরগতি)"
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/window/preferences/03_display.cfg:318
+#: data/gui/themes/default/window/preferences/03_display.cfg:333
 msgid "Unit standing animations"
 msgstr "ইউনিট দাঁড়িয়ে থাকার অ্যানিমেশন"
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/window/preferences/03_display.cfg:319
+#: data/gui/themes/default/window/preferences/03_display.cfg:334
 msgid "Continuously animate standing units on the battlefield"
 msgstr "যুদ্ধক্ষেত্রে দাঁড়িয়ে থাকা ইউনিটদের ক্রমাগত অ্যানিমেট করতে থাকুন"
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/window/preferences/03_display.cfg:337
+#: data/gui/themes/default/window/preferences/03_display.cfg:352
 msgid "Unit idle animations"
 msgstr "ইউনিট কিছু না করার অ্যানিমেশন"
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/window/preferences/03_display.cfg:338
+#: data/gui/themes/default/window/preferences/03_display.cfg:353
 msgid "Play short random animations for idle units"
 msgstr "অলস ইউনিটদের জন্য ছোটো ইতস্তত অ্যানিমেশন দেখান"
 
 #. [label]
-#: data/gui/themes/default/window/preferences/03_display.cfg:361
+#: data/gui/themes/default/window/preferences/03_display.cfg:376
 msgid "Frequency:"
 msgstr "কম্পাঙ্ক:"
 
 #. [slider]: id=idle_anim_frequency
-#: data/gui/themes/default/window/preferences/03_display.cfg:377
+#: data/gui/themes/default/window/preferences/03_display.cfg:392
 msgid "Set the frequency of unit idle animations"
 msgstr "ইউনিটদের অলস অবস্থার অ্যানিমেশনের কম্পাঙ্ক"
 
@@ -6590,27 +6592,27 @@ msgstr "<অজানা>"
 msgid "filesystem_path_system^Volumes"
 msgstr ""
 
-#: src/desktop/paths.cpp:208
+#: src/desktop/paths.cpp:210
 msgid "filesystem_path_game^Game executables"
 msgstr ""
 
-#: src/desktop/paths.cpp:212
+#: src/desktop/paths.cpp:214
 msgid "filesystem_path_game^Game data"
 msgstr ""
 
-#: src/desktop/paths.cpp:216
+#: src/desktop/paths.cpp:218
 msgid "filesystem_path_game^User data"
 msgstr ""
 
-#: src/desktop/paths.cpp:220
+#: src/desktop/paths.cpp:222
 msgid "filesystem_path_game^Editor maps"
 msgstr ""
 
-#: src/desktop/paths.cpp:233
+#: src/desktop/paths.cpp:235
 msgid "filesystem_path_system^Home"
 msgstr ""
 
-#: src/desktop/paths.cpp:242
+#: src/desktop/paths.cpp:244
 msgid "filesystem_path_system^Root"
 msgstr ""
 
@@ -6628,7 +6630,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1767
+#: src/filesystem.cpp:1786
 msgid "language code for localized resources^en_US"
 msgstr "bn"
 
@@ -6743,7 +6745,7 @@ msgid "No draw section defined for state."
 msgstr ""
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:132
-msgid "No resolution defined."
+msgid "No resolution defined for "
 msgstr ""
 
 #: src/gui/core/window_builder.cpp:166 src/gui/widgets/addon_list.cpp:430
@@ -6767,320 +6769,320 @@ msgstr ""
 msgid "Completed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:152
+#: src/gui/dialogs/addon/manager.cpp:147
 msgid "addons_view^All Add-ons"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:153
+#: src/gui/dialogs/addon/manager.cpp:148
 msgid "addons_view^Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:154
+#: src/gui/dialogs/addon/manager.cpp:149
 msgid "addons_view^Upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:155
+#: src/gui/dialogs/addon/manager.cpp:150
 msgid "addons_view^Publishable"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:156
+#: src/gui/dialogs/addon/manager.cpp:151
 msgid "addons_view^Not Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:160
+#: src/gui/dialogs/addon/manager.cpp:155
 msgid "addons_of_type^Campaigns"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:161
+#: src/gui/dialogs/addon/manager.cpp:156
 msgid "addons_of_type^Scenarios"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:162
+#: src/gui/dialogs/addon/manager.cpp:157
 msgid "addons_of_type^SP/MP campaigns"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:163
+#: src/gui/dialogs/addon/manager.cpp:158
 msgid "addons_of_type^MP campaigns"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:164
+#: src/gui/dialogs/addon/manager.cpp:159
 msgid "addons_of_type^MP scenarios"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:165
+#: src/gui/dialogs/addon/manager.cpp:160
 msgid "addons_of_type^MP map-packs"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:166
+#: src/gui/dialogs/addon/manager.cpp:161
 msgid "addons_of_type^MP eras"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:167
+#: src/gui/dialogs/addon/manager.cpp:162
 msgid "addons_of_type^MP factions"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:168
+#: src/gui/dialogs/addon/manager.cpp:163
 msgid "addons_of_type^Modifications"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:169
+#: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_of_type^Cores"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:170
+#: src/gui/dialogs/addon/manager.cpp:165
 msgid "addons_of_type^Resources"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:172
+#: src/gui/dialogs/addon/manager.cpp:167
 msgid "addons_of_type^Other"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:173
+#: src/gui/dialogs/addon/manager.cpp:168
 msgid "addons_of_type^Unknown"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:177
+#: src/gui/dialogs/addon/manager.cpp:172
 msgid "addons_order^Name ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:180
+#: src/gui/dialogs/addon/manager.cpp:175
 msgid "addons_order^Author ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:183
+#: src/gui/dialogs/addon/manager.cpp:178
 msgid "addons_order^Size ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:186
+#: src/gui/dialogs/addon/manager.cpp:181
 msgid "addons_order^Downloads ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:189
+#: src/gui/dialogs/addon/manager.cpp:184
 msgid "addons_order^Type ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:192
+#: src/gui/dialogs/addon/manager.cpp:187
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:195
+#: src/gui/dialogs/addon/manager.cpp:190
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:213
+#: src/gui/dialogs/addon/manager.cpp:208
 msgid "addon_tag^Cooperative"
 msgstr ""
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:215
+#: src/gui/dialogs/addon/manager.cpp:210
 msgid "addon_tag^All human players are on the same team, versus the AI"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:216
+#: src/gui/dialogs/addon/manager.cpp:211
 msgid "addon_tag^Cosmetic"
 msgstr ""
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:218
+#: src/gui/dialogs/addon/manager.cpp:213
 msgid "addon_tag^These make the game look different, without changing gameplay"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:219
+#: src/gui/dialogs/addon/manager.cpp:214
 msgid "addon_tag^Difficulty"
 msgstr ""
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:221
+#: src/gui/dialogs/addon/manager.cpp:216
 msgid "addon_tag^Can make campaigns easier or harder"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:222
+#: src/gui/dialogs/addon/manager.cpp:217
 msgid "addon_tag^RNG"
 msgstr ""
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:224
+#: src/gui/dialogs/addon/manager.cpp:219
 msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:225
+#: src/gui/dialogs/addon/manager.cpp:220
 msgid "addon_tag^Survival"
 msgstr ""
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:227
+#: src/gui/dialogs/addon/manager.cpp:222
 msgid "addon_tag^Fight against waves of enemies"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:228
+#: src/gui/dialogs/addon/manager.cpp:223
 msgid "addon_tag^Terraforming"
 msgstr ""
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:230
+#: src/gui/dialogs/addon/manager.cpp:225
 msgid "addon_tag^Players can change the terrain"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:254 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:249 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:255 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:250 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:259 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:254 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:255 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:264
+#: src/gui/dialogs/addon/manager.cpp:259
 msgid "addon_state^Installed, not tracking local version"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:267
+#: src/gui/dialogs/addon/manager.cpp:262
 msgid "addon_state^Published, not tracking local version"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:271
+#: src/gui/dialogs/addon/manager.cpp:266
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:272
+#: src/gui/dialogs/addon/manager.cpp:267
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:278
+#: src/gui/dialogs/addon/manager.cpp:273
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:279
+#: src/gui/dialogs/addon/manager.cpp:274
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:285 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:280 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:286 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:281 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:290 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:285 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:291 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:286 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:294 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:289 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:434
+#: src/gui/dialogs/addon/manager.cpp:429
 msgid "ascending"
 msgstr ""
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:436
+#: src/gui/dialogs/addon/manager.cpp:431
 msgid "oldest to newest"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:439
+#: src/gui/dialogs/addon/manager.cpp:434
 msgid "descending"
 msgstr ""
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:441
+#: src/gui/dialogs/addon/manager.cpp:436
 msgid "newest to oldest"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:538
+#: src/gui/dialogs/addon/manager.cpp:533
 msgid "addons^Back to List"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:550
+#: src/gui/dialogs/addon/manager.cpp:545
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:588
+#: src/gui/dialogs/addon/manager.cpp:583
 msgid "No Add-ons Available"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:588
+#: src/gui/dialogs/addon/manager.cpp:583
 msgid "There are no add-ons available for download from this server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:857
+#: src/gui/dialogs/addon/manager.cpp:852
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:865
+#: src/gui/dialogs/addon/manager.cpp:860
 msgid "The following add-on could not be deleted properly:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:919
+#: src/gui/dialogs/addon/manager.cpp:914
 msgid "Warning"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:920
+#: src/gui/dialogs/addon/manager.cpp:915
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:938
+#: src/gui/dialogs/addon/manager.cpp:933
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:943
+#: src/gui/dialogs/addon/manager.cpp:938
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:946 src/gui/dialogs/addon/manager.cpp:988
+#: src/gui/dialogs/addon/manager.cpp:941 src/gui/dialogs/addon/manager.cpp:983
 msgid "The server responded with an error:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:949
+#: src/gui/dialogs/addon/manager.cpp:944
 msgid "The add-on was rejected by the server:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:964 src/gui/dialogs/addon/manager.cpp:991
+#: src/gui/dialogs/addon/manager.cpp:959 src/gui/dialogs/addon/manager.cpp:986
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:508
 msgid "Response"
 msgstr "জবাব"
 
-#: src/gui/dialogs/addon/manager.cpp:976
+#: src/gui/dialogs/addon/manager.cpp:971
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:1008
+#: src/gui/dialogs/addon/manager.cpp:1003
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "আপনি কী '$addon|' আনইনস্টল করতে চান"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1040
+#: src/gui/dialogs/addon/manager.cpp:1035
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%B %d %Y, %H:%M"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1043
+#: src/gui/dialogs/addon/manager.cpp:1038
 msgid "%B %d %Y, %H:%M"
 msgstr "%B %d %Y, %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1104
+#: src/gui/dialogs/addon/manager.cpp:1099
 msgid "url^None"
 msgstr "নেই"
 
@@ -7239,53 +7241,41 @@ msgstr "সফল"
 msgid "Choose an icon"
 msgstr "আইকন বাছুন"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:94
-msgid "lawful"
-msgstr ""
-
-#: src/gui/dialogs/editor/edit_unit.cpp:95
-msgid "chaotic"
-msgstr ""
-
-#: src/gui/dialogs/editor/edit_unit.cpp:96
-msgid "neutral"
-msgstr ""
-
-#: src/gui/dialogs/editor/edit_unit.cpp:97
-msgid "liminal"
-msgstr ""
-
-#: src/gui/dialogs/editor/edit_unit.cpp:191
+#: src/gui/dialogs/editor/edit_unit.cpp:194
 msgid "scout"
 msgstr "চর"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:192
+#: src/gui/dialogs/editor/edit_unit.cpp:195
 msgid "fighter"
 msgstr "যোদ্ধা"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:193
+#: src/gui/dialogs/editor/edit_unit.cpp:196
 msgid "archer"
 msgstr "ধনুর্ধর"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:194
+#: src/gui/dialogs/editor/edit_unit.cpp:197
 msgid "mixed fighter"
 msgstr "মিশ্র যোদ্ধা"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:195
+#: src/gui/dialogs/editor/edit_unit.cpp:198
 msgid "healer"
 msgstr "চিকিৎসক"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:312
+#: src/gui/dialogs/editor/edit_unit.cpp:311
 msgid "Choose File"
 msgstr "ফাইল পছন্দ করুন"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:321
+#: src/gui/dialogs/editor/edit_unit.cpp:320
 msgid ""
 "This file is outside Wesnoth's data dirs. Do you wish to copy it into your "
 "add-on?"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1085
+#: src/gui/dialogs/editor/edit_unit.cpp:1036
+msgid "Unsaved changes will be lost. Do you want to leave?"
+msgstr ""
+
+#: src/gui/dialogs/editor/edit_unit.cpp:1055
 msgid "Unit type saved."
 msgstr ""
 
@@ -7305,31 +7295,47 @@ msgstr "অন্তর্দেশীয়"
 msgid "Island"
 msgstr "দ্বীপ"
 
-#: src/gui/dialogs/file_dialog.cpp:105
+#: src/gui/dialogs/file_dialog.cpp:106
 msgid "Find File"
 msgstr "ফাইল খুঁজুন"
 
-#: src/gui/dialogs/file_dialog.cpp:225
+#: src/gui/dialogs/file_dialog.cpp:181
+msgid "<span color='#00dcff' size='small'>please enter a filename</span>"
+msgstr ""
+
+#: src/gui/dialogs/file_dialog.cpp:203
+msgid ""
+"<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>wrong "
+"extension, use $extensions</span></span>"
+msgstr ""
+
+#: src/gui/dialogs/file_dialog.cpp:206
+msgid ""
+"<span color='red'><span face='DejaVuSans'>✘</span> <span "
+"size='small'>whitespace is not allowed in filename</span></span>"
+msgstr ""
+
+#: src/gui/dialogs/file_dialog.cpp:231
 msgid "Open"
 msgstr "খুলুন"
 
-#: src/gui/dialogs/file_dialog.cpp:305
+#: src/gui/dialogs/file_dialog.cpp:311
 msgid "Opening files is not supported, contact your packager"
 msgstr "ফাইল খোলার সাপোর্ট নেই, আপনার প্যাকেজারকে জানান"
 
-#: src/gui/dialogs/file_dialog.cpp:362
+#: src/gui/dialogs/file_dialog.cpp:368
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "ফাইলটি ইতিমধ্যেই রয়েছে । আপনি কী এটির ওপরে লিখতে চান?"
 
-#: src/gui/dialogs/file_dialog.cpp:386
+#: src/gui/dialogs/file_dialog.cpp:392
 msgid "The file or folder $path cannot be created."
 msgstr "ফাইল বা ফোল্ডার $path তৈরী করা যাচ্ছে না"
 
-#: src/gui/dialogs/file_dialog.cpp:392
+#: src/gui/dialogs/file_dialog.cpp:398
 msgid "The file or folder $path does not exist."
 msgstr "ফাইল বা ফোল্ডার $path-এর অস্তিত্ব নেই ।"
 
-#: src/gui/dialogs/file_dialog.cpp:767
+#: src/gui/dialogs/file_dialog.cpp:774
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
@@ -7337,19 +7343,19 @@ msgstr ""
 "$path|-এ নতুন ফোল্ডার তৈরী করা যাচ্ছে না । আপনার কাছে প্রয়োজনীয় অনুমতি আছে কী না "
 "নিশ্চিত করুন ।"
 
-#: src/gui/dialogs/file_dialog.cpp:785
+#: src/gui/dialogs/file_dialog.cpp:792
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr "পরবর্তী ফোল্ডার এবং সেটির মধ্যে যা কিছু আছে স্থায়ীভাবে মুছে ফেলা হবে:"
 
-#: src/gui/dialogs/file_dialog.cpp:786
+#: src/gui/dialogs/file_dialog.cpp:793
 msgid "The following file will be permanently deleted:"
 msgstr "পরবর্তী ফাইলটি স্থায়ীভাবে মুছে ফেলা হবে:"
 
-#: src/gui/dialogs/file_dialog.cpp:787
+#: src/gui/dialogs/file_dialog.cpp:794
 msgid "Do you wish to continue?"
 msgstr "আপনি কী এগিয়ে যেতে চান?"
 
-#: src/gui/dialogs/file_dialog.cpp:799
+#: src/gui/dialogs/file_dialog.cpp:806
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -7421,43 +7427,43 @@ msgstr ""
 msgid "The selected file is corrupt: "
 msgstr "নির্বাচিত ফাইলটি খারাপ: "
 
-#: src/gui/dialogs/game_load.cpp:362
+#: src/gui/dialogs/game_load.cpp:356
 msgid "(Invalid)"
 msgstr "(অবৈধ)"
 
-#: src/gui/dialogs/game_load.cpp:392
+#: src/gui/dialogs/game_load.cpp:386
 msgid "Campaign: $campaign_name"
 msgstr "অভিযান: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:404
+#: src/gui/dialogs/game_load.cpp:398
 msgid "Tutorial"
 msgstr "প্রশিক্ষণ"
 
-#: src/gui/dialogs/game_load.cpp:407
+#: src/gui/dialogs/game_load.cpp:401
 msgid "Test scenario"
 msgstr "পরীক্ষামূলক ঘটনাক্রম"
 
-#: src/gui/dialogs/game_load.cpp:417
+#: src/gui/dialogs/game_load.cpp:411
 msgid "Replay"
 msgstr "রিপ্লে"
 
-#: src/gui/dialogs/game_load.cpp:419
+#: src/gui/dialogs/game_load.cpp:413
 msgid "Turn"
 msgstr "দান"
 
-#: src/gui/dialogs/game_load.cpp:421
+#: src/gui/dialogs/game_load.cpp:415
 msgid "Scenario start"
 msgstr "ঘটনাক্রম শুরু"
 
-#: src/gui/dialogs/game_load.cpp:440
+#: src/gui/dialogs/game_load.cpp:434
 msgid "Difficulty: "
 msgstr "জটিলতা: "
 
-#: src/gui/dialogs/game_load.cpp:463
+#: src/gui/dialogs/game_load.cpp:457
 msgid "Version: "
 msgstr "সংস্করণ: "
 
-#: src/gui/dialogs/game_load.cpp:468
+#: src/gui/dialogs/game_load.cpp:462
 msgid "Modifications: "
 msgstr "পরিবর্তন: "
 
@@ -7473,7 +7479,7 @@ msgstr "অলস"
 msgid "controller^Reserved"
 msgstr ""
 
-#: src/gui/dialogs/game_stats.cpp:102 src/gui/dialogs/label_settings.cpp:76
+#: src/gui/dialogs/game_stats.cpp:102 src/gui/dialogs/label_settings.cpp:74
 msgid "Unknown"
 msgstr "অজানা"
 
@@ -7495,7 +7501,7 @@ msgstr "লিঙ্ক খোলার সাপোর্ট নেই, আপ�
 msgid "Team Labels"
 msgstr "দলের লেবেলগুলি"
 
-#: src/gui/dialogs/label_settings.cpp:82
+#: src/gui/dialogs/label_settings.cpp:80
 msgid "Side $side_number ($name)"
 msgstr "দল $side_number ($name)"
 
@@ -7709,7 +7715,7 @@ msgid ""
 "contact your package manager"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_change_control.cpp:83
+#: src/gui/dialogs/multiplayer/mp_change_control.cpp:81
 msgid "Side $side"
 msgstr "দল $side"
 
@@ -7841,26 +7847,26 @@ msgstr "ভুল ব্যবহারকারীর নাম"
 msgid "Not on friends or ignore lists"
 msgstr "বন্ধুদের বা উপেক্ষিতের তালিকায় নেই"
 
-#: src/gui/dialogs/preferences_dialog.cpp:941
-#: src/gui/dialogs/preferences_dialog.cpp:1005
+#: src/gui/dialogs/preferences_dialog.cpp:945
+#: src/gui/dialogs/preferences_dialog.cpp:1009
 msgid "No hotkey selected"
 msgstr "কোনো হটকি নির্বাচন করা হয়নি"
 
-#: src/gui/dialogs/preferences_dialog.cpp:969
+#: src/gui/dialogs/preferences_dialog.cpp:973
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:975
+#: src/gui/dialogs/preferences_dialog.cpp:979
 msgid "Reassign Hotkey"
 msgstr "হটকি পাল্টান"
 
-#: src/gui/dialogs/preferences_dialog.cpp:992
+#: src/gui/dialogs/preferences_dialog.cpp:996
 msgid "All hotkeys have been reset to their default values."
 msgstr "সমস্ত হটকি তাদের স্বাভাবিক মানে পাল্টে দেওয়া হয়েছে"
 
-#: src/gui/dialogs/preferences_dialog.cpp:992
+#: src/gui/dialogs/preferences_dialog.cpp:996
 msgid "Hotkeys Reset"
 msgstr ""
 
@@ -7932,15 +7938,15 @@ msgstr "ক্ষতি হয়েছে"
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
-#: src/gui/dialogs/title_screen.cpp:113 src/hotkey/hotkey_command.cpp:98
+#: src/gui/dialogs/title_screen.cpp:114 src/hotkey/hotkey_command.cpp:98
 msgid "Screenshot"
 msgstr "স্ক্রিনশট"
 
-#: src/gui/dialogs/title_screen.cpp:407
+#: src/gui/dialogs/title_screen.cpp:387
 msgid "Version $version"
 msgstr "সংস্করণ $version"
 
-#: src/gui/dialogs/title_screen.cpp:505 src/hotkey/hotkey_command.cpp:309
+#: src/gui/dialogs/title_screen.cpp:480 src/hotkey/hotkey_command.cpp:309
 msgid "Choose Test Scenario"
 msgstr ""
 
@@ -7988,7 +7994,7 @@ msgstr ""
 msgid "Dismiss Unit"
 msgstr ""
 
-#: src/gui/gui.cpp:72
+#: src/gui/gui.cpp:132
 msgid "No default gui defined."
 msgstr ""
 
@@ -8012,15 +8018,15 @@ msgstr ""
 msgid "Delete add-on from server"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:295
+#: src/gui/widgets/chatbox.cpp:294
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:379
+#: src/gui/widgets/chatbox.cpp:378
 msgid "Joined <i>$name</i>"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:385
+#: src/gui/widgets/chatbox.cpp:384
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
@@ -8321,7 +8327,9 @@ msgid "Terrain Description"
 msgstr "ভূমিরূপের বর্ণনা"
 
 #: src/hotkey/hotkey_command.cpp:102
-msgid "Unit Description"
+#, fuzzy
+#| msgid "Unit Description"
+msgid "Unit Type Description"
 msgstr "ইউনিটের বর্ণনা"
 
 #: src/hotkey/hotkey_command.cpp:104
@@ -8523,6 +8531,10 @@ msgstr "মানচিত্র পাল্টান"
 msgid "Assign Local Time"
 msgstr ""
 
+#: src/hotkey/hotkey_command.cpp:177
+msgid "New Unit Type"
+msgstr "নতুন ইউনিট প্রকার"
+
 #: src/hotkey/hotkey_command.cpp:179
 msgid "Time Schedule Editor"
 msgstr "সময়সূচী পরিমার্জক"
@@ -8649,7 +8661,7 @@ msgid "Item Tool"
 msgstr "বস্তু টুল"
 
 #: src/hotkey/hotkey_command.cpp:208
-msgid "Left mouse button sets a new item."
+msgid "Left mouse button sets a new item. Right click removes item."
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:209
@@ -8999,26 +9011,26 @@ msgstr "লুয়া কনসোল দেখান"
 msgid "Unrecognized Command"
 msgstr "অপরিচিত কমান্ড"
 
-#: src/preferences/preferences.cpp:1261
+#: src/preferences/preferences.cpp:1260
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 
-#: src/preferences/preferences.cpp:1298
+#: src/preferences/preferences.cpp:1297
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
 "normally be found in the same folder as the game executable."
 msgstr ""
 
-#: src/preferences/preferences.cpp:1302
+#: src/preferences/preferences.cpp:1301
 msgid "Find Server Application"
 msgstr "সার্ভার অ্যাপ্লিকেশন খুঁজুন"
 
-#: src/preferences/preferences.cpp:1747
+#: src/preferences/preferences.cpp:1746
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1749
+#: src/preferences/preferences.cpp:1748
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -9036,12 +9048,16 @@ msgstr ""
 
 #: src/wml_exception.cpp:89
 msgid ""
-"In section '[$section|]' where '$primary_key| = $primary_value' the "
-"mandatory key '$key|' isn't set."
+"In section ‘[$section|]’ where ‘$primary_key|’ = $primary_value’ the "
+"mandatory key ‘$key|’ isn't set."
 msgstr ""
 
 #: src/wml_exception.cpp:92
-msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
+msgid "In section ‘[$section|]’ the mandatory key ‘$key|’ isn't set."
+msgstr ""
+
+#: src/wml_exception.cpp:104
+msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr ""
 
 #~ msgid "<b>Faction:</b>"

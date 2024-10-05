@@ -666,12 +666,20 @@ void server::refresh_tournaments(const boost::system::error_code& ec)
 
 void server::handle_new_client(socket_ptr socket)
 {
-	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(yield, socket); });
+	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(yield, socket); }
+#if BOOST_VERSION >= 108000
+		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+#endif
+	);
 }
 
 void server::handle_new_client(tls_socket_ptr socket)
 {
-	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(yield, socket); });
+	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(yield, socket); }
+#if BOOST_VERSION >= 108000
+		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+#endif
+	);
 }
 
 template<class SocketPtr>
@@ -777,6 +785,9 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 
 	boost::asio::spawn(io_service_,
 		[this, socket, new_player](boost::asio::yield_context yield) { handle_player(yield, socket, new_player); }
+#if BOOST_VERSION >= 108000
+		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+#endif
 	);
 
 	LOG_SERVER << log_address(socket) << "\t" << username << "\thas logged on"
@@ -3048,7 +3059,7 @@ int main(int argc, char** argv)
 			keep_alive = true;
 		} else if(val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
-					  << " [-dvV] [-c path] [-m n] [-p port]\n"
+					  << " [-dvwV] [-c path] [-p port]\n"
 					  << "  -c, --config <path>        Tells wesnothd where to find the config file to use.\n"
 					  << "  -d, --daemon               Runs wesnothd as a daemon.\n"
 					  << "  -h, --help                 Shows this usage message.\n"

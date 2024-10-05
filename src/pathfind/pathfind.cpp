@@ -681,7 +681,7 @@ marked_route mark_route(const plain_route &rt, bool update_move_cost)
 		assert(last_step || resources::gameboard->map().on_board(*(i+1)));
 		const int move_cost = last_step ? 0 : u.movement_cost(static_cast<const game_board*>(resources::gameboard)->map()[*(i+1)]);
 
-		const team& viewing_team = resources::gameboard->teams()[display::get_singleton()->viewing_team()];
+		const team& viewing_team = display::get_singleton()->viewing_team();
 
 		if (last_step || zoc || move_cost > movement) {
 			// check if we stop an a village and so maybe capture it

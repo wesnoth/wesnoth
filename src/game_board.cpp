@@ -382,17 +382,15 @@ void game_board::write_config(config& cfg) const
 {
 	cfg["next_underlying_unit_id"] = unit_id_manager_.get_save_id();
 
-	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		int side_num = std::distance(teams_.begin(), t) + 1;
-
+	for(const team& t : teams_) {
 		config& side = cfg.add_child("side");
-		t->write(side);
+		t.write(side);
 		side["no_leader"] = true;
-		side["side"] = std::to_string(side_num);
+		side["side"] = std::to_string(t.side());
 
 		// current units
 		for(const unit& i : units_) {
-			if(i.side() == side_num) {
+			if(i.side() == t.side()) {
 				config& u = side.add_child("unit");
 				i.get_location().write(u);
 				i.write(u, false);
@@ -400,7 +398,7 @@ void game_board::write_config(config& cfg) const
 		}
 
 		// recall list
-		for(const unit_const_ptr j : t->recall_list()) {
+		for(const unit_const_ptr j : t.recall_list()) {
 			config& u = side.add_child("unit");
 			j->write(u);
 		}

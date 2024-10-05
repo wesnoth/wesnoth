@@ -17,7 +17,6 @@
 #include "gui/dialogs/unit_recall.hpp"
 
 #include "font/text_formatting.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -154,36 +153,36 @@ static std::string get_title_suffix(int side_num)
 	return msg.str();
 }
 
-void unit_recall::pre_show(window& window)
+void unit_recall::pre_show()
 {
-	label& title = find_widget<label>(&window, "title", true);
+	label& title = find_widget<label>("title", true);
 	title.set_label(title.get_label() + get_title_suffix(team_.side()));
 
 	text_box* filter
-			= find_widget<text_box>(&window, "filter_box", false, true);
+			= find_widget<text_box>("filter_box", false, true);
 
 	filter->set_text_changed_callback(
 			std::bind(&unit_recall::filter_text_changed, this, std::placeholders::_2));
 
-	listbox& list = find_widget<listbox>(&window, "recall_list", false);
+	listbox& list = find_widget<listbox>("recall_list");
 
 	connect_signal_notify_modified(list, std::bind(&unit_recall::list_item_clicked, this));
 
 	list.clear();
 
-	window.keyboard_capture(filter);
-	window.add_to_keyboard_chain(&list);
+	keyboard_capture(filter);
+	add_to_keyboard_chain(&list);
 
 	connect_signal_mouse_left_click(
-		find_widget<button>(&window, "rename", false),
+		find_widget<button>("rename"),
 		std::bind(&unit_recall::rename_unit, this));
 
 	connect_signal_mouse_left_click(
-		find_widget<button>(&window, "dismiss", false),
+		find_widget<button>("dismiss"),
 		std::bind(&unit_recall::dismiss_unit, this));
 
 	connect_signal_mouse_left_click(
-		find_widget<button>(&window, "show_help", false),
+		find_widget<button>("show_help"),
 		std::bind(&unit_recall::show_help, this));
 
 	for(const unit_const_ptr& unit : recall_list_) {
@@ -310,7 +309,7 @@ void unit_recall::pre_show(window& window)
 
 void unit_recall::rename_unit()
 {
-	listbox& list = find_widget<listbox>(get_window(), "recall_list", false);
+	listbox& list = find_widget<listbox>("recall_list");
 
 	const int index = list.get_selected_row();
 	if (index == -1) {
@@ -326,7 +325,7 @@ void unit_recall::rename_unit()
 	if(gui2::dialogs::edit_text::execute(dialog_title, dialog_label, name)) {
 		selected_unit.rename(name);
 
-		find_widget<label>(list.get_row_grid(index), "unit_name", false).set_label(name);
+		list.get_row_grid(index)->find_widget<label>("unit_name").set_label(name);
 
 		filter_options_.erase(filter_options_.begin() + index);
 		std::ostringstream filter_text;
@@ -345,7 +344,7 @@ void unit_recall::dismiss_unit()
 {
 	LOG_DP << "Recall list units:"; dump_recall_list_to_console(recall_list_);
 
-	listbox& list = find_widget<listbox>(get_window(), "recall_list", false);
+	listbox& list = find_widget<listbox>("recall_list");
 	const int index = list.get_selected_row();
 	if (index == -1) {
 		return;
@@ -414,7 +413,7 @@ void unit_recall::show_help()
 void unit_recall::list_item_clicked()
 {
 	const int selected_row
-		= find_widget<listbox>(get_window(), "recall_list", false).get_selected_row();
+		= find_widget<listbox>("recall_list").get_selected_row();
 
 	if(selected_row == -1) {
 		return;
@@ -422,15 +421,15 @@ void unit_recall::list_item_clicked()
 
 	const unit& selected_unit = *recall_list_[selected_row].get();
 
-	find_widget<unit_preview_pane>(get_window(), "unit_details", false)
+	find_widget<unit_preview_pane>("unit_details")
 		.set_displayed_unit(selected_unit);
 
-	find_widget<button>(get_window(), "rename", false).set_active(!selected_unit.unrenamable());
+	find_widget<button>("rename").set_active(!selected_unit.unrenamable());
 }
 
-void unit_recall::post_show(window& window)
+void unit_recall::post_show()
 {
-	listbox& list = find_widget<listbox>(&window, "recall_list", false);
+	listbox& list = find_widget<listbox>("recall_list");
 	sort_last = list.get_active_sorting_option();
 
 	if(get_retval() == retval::OK) {
@@ -440,7 +439,7 @@ void unit_recall::post_show(window& window)
 
 void unit_recall::filter_text_changed(const std::string& text)
 {
-	listbox& list = find_widget<listbox>(get_window(), "recall_list", false);
+	listbox& list = find_widget<listbox>("recall_list");
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
@@ -472,8 +471,8 @@ void unit_recall::filter_text_changed(const std::string& text)
 
 	// Disable rename and dismiss buttons if no units are shown
 	const bool any_shown = list.any_rows_shown();
-	find_widget<button>(get_window(), "rename", false).set_active(any_shown);
-	find_widget<button>(get_window(), "dismiss", false).set_active(any_shown);
+	find_widget<button>("rename").set_active(any_shown);
+	find_widget<button>("dismiss").set_active(any_shown);
 }
 
 } // namespace dialogs

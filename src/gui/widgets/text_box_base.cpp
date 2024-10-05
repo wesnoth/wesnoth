@@ -123,7 +123,7 @@ void text_box_base::set_maximum_length(const std::size_t maximum_length)
 void text_box_base::set_value(const std::string& text)
 {
 	if(text != text_.text()) {
-		text_.set_text(text, false);
+		text_.set_text(text, get_use_markup());
 
 		// default to put the cursor at the end of the buffer.
 		selection_start_ = text_.get_length();
@@ -138,31 +138,14 @@ void text_box_base::set_cursor(const std::size_t offset, const bool select)
 	reset_cursor_state();
 
 	if(select) {
-
-		if(selection_start_ == offset) {
-			selection_length_ = 0;
-		} else {
-			selection_length_ = -static_cast<int>(selection_start_ - offset);
-		}
-
-#ifdef __unix__
-		// selecting copies on UNIX systems.
-		copy_selection(true);
-#endif
-		update_canvas();
-		queue_redraw();
-
+		selection_length_ = (selection_start_ == offset) ? 0 : -static_cast<int>(selection_start_ - offset);
 	} else {
-		if (offset <= text_.get_length()) {
-			selection_start_ = offset;
-		} else {
-			selection_start_ = 0;
-		}
+		selection_start_ = (offset <= text_.get_length()) ? offset : 0;
 		selection_length_ = 0;
-
-		update_canvas();
-		queue_redraw();
 	}
+
+	update_canvas();
+	queue_redraw();
 }
 
 void text_box_base::insert_char(const std::string& unicode)
@@ -174,10 +157,14 @@ void text_box_base::insert_char(const std::string& unicode)
 
 	delete_selection();
 
-	if(text_.insert_text(selection_start_, unicode)) {
-
+	if(text_.insert_text(selection_start_, unicode, get_use_markup())) {
 		// Update status
-		set_cursor(selection_start_ + utf8::size(unicode), false);
+		size_t plain_text_len = utf8::size(plain_text());
+		size_t cursor_pos = selection_start_ + utf8::size(unicode);
+		if (get_use_markup() && (selection_start_ + utf8::size(unicode) > plain_text_len + 1)) {
+			cursor_pos = plain_text_len;
+		}
+		set_cursor(cursor_pos, false);
 		update_canvas();
 		queue_redraw();
 	}
@@ -206,14 +193,14 @@ void text_box_base::interrupt_composition()
 	SDL_StartTextInput();
 }
 
-void text_box_base::copy_selection(const bool mouse)
+void text_box_base::copy_selection()
 {
 	if(selection_length_ == 0) {
 		return;
 	}
 
 	unsigned end, start = selection_start_;
-	const std::string txt = text_.text();
+	const std::string txt = get_use_markup() ? plain_text() : text_.text();
 
 	if(selection_length_ > 0) {
 		end = utf8::index(txt, start + selection_length_);
@@ -223,24 +210,24 @@ void text_box_base::copy_selection(const bool mouse)
 		end = utf8::index(txt, start);
 		start = utf8::index(txt, start + selection_length_);
 	}
-	desktop::clipboard::copy_to_clipboard(txt.substr(start, end - start), mouse);
+	desktop::clipboard::copy_to_clipboard(txt.substr(start, end - start));
 }
 
-void text_box_base::paste_selection(const bool mouse)
+void text_box_base::paste_selection()
 {
 	if(!editable_)
 	{
 		return;
 	}
 
-	const std::string& text = desktop::clipboard::copy_from_clipboard(mouse);
+	const std::string& text = desktop::clipboard::copy_from_clipboard();
 	if(text.empty()) {
 		return;
 	}
 
 	delete_selection();
 
-	selection_start_ += text_.insert_text(selection_start_, text);
+	selection_start_ += text_.insert_text(selection_start_, text, get_use_markup());
 
 	update_canvas();
 	queue_redraw();
@@ -383,7 +370,7 @@ void text_box_base::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 
 	handled = true;
 	const std::size_t offset = selection_start_ + 1 + selection_length_;
-	if(offset <= text_.get_length()) {
+	if(offset <= (get_use_markup() ? utf8::size(plain_text()) : text_.get_length())) {
 		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
 }
@@ -498,13 +485,13 @@ void text_box_base::handle_editing(bool& handled, const std::string& unicode, in
 		// SDL_TextEditingEvent.
 		// start is start position of the separated event in entire composition text
 		if(start == 0) {
-			text_.set_text(text_cached_, false);
+			text_.set_text(text_cached_, get_use_markup());
 		}
-		text_.insert_text(ime_start_point_ + start, unicode);
+		text_.insert_text(ime_start_point_ + start, unicode, get_use_markup());
 #else
 		std::string new_text(text_cached_);
 		utf8::insert(new_text, ime_start_point_, unicode);
-		text_.set_text(new_text, false);
+		text_.set_text(new_text, get_use_markup());
 
 #endif
 		int maximum_length = text_.get_length();
@@ -524,7 +511,7 @@ void text_box_base::signal_handler_middle_button_click(const event::ui_event eve
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	paste_selection(true);
+	paste_selection();
 
 	handled = true;
 }
@@ -629,7 +616,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 			// atm we don't care whether there is something to copy or paste
 			// if nothing is there we still don't want to be chained.
-			copy_selection(false);
+			copy_selection();
 			handled = true;
 			break;
 
@@ -638,7 +625,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 				return;
 			}
 
-			copy_selection(false);
+			copy_selection();
 
 			if ( is_editable() ) {
 				delete_selection();
@@ -651,7 +638,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 				return;
 			}
 
-			paste_selection(false);
+			paste_selection();
 			handled = true;
 			break;
 

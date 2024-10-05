@@ -156,7 +156,7 @@ public:
 		const std::string& modifiers = "");
 
 	/** Getters for the different parameters */
-	const frame_parameters parameters(int current_time) const;
+	frame_parameters parameters(int current_time) const;
 
 	int duration() const{ return duration_;}
 	bool does_not_change() const;

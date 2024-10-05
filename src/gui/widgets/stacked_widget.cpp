@@ -17,12 +17,12 @@
 
 #include "gui/widgets/stacked_widget.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/generator.hpp"
 #include "gettext.hpp"
 #include "utils/const_clone.hpp"
+#include "wml_exception.hpp"
 
 #include <functional>
 
