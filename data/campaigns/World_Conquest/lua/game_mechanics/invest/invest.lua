@@ -2,6 +2,7 @@ local on_event = wesnoth.require("on_event")
 local _ = wesnoth.textdomain 'wesnoth-wc'
 
 local wc2_invest = {}
+local artifact_invest_options = wesnoth.get_variable "custom_artifact_invest_options"
 
 function wc2_invest.add_items(side_num, num_items)
 	local side = wesnoth.sides[side_num]
@@ -38,7 +39,7 @@ function wc2_invest.initialize()
 		if wc2_scenario.is_human_side(side_num) then
 			if not wc2_invest.has_items(side_num) then
 				side.variables["wc2.items_left"] = table.concat(all_items, ",")
-				wc2_invest.add_items(side_num, 9)
+				wc2_invest.add_items(side_num, artifact_invest_options)
 			else
 				wc2_invest.add_items(side_num, 1)
 			end

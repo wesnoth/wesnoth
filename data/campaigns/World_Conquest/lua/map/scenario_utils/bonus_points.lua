@@ -3,6 +3,7 @@
 ---- the correct sceneries and creates events to      ----
 ---- place them                                       ----
 ----------------------------------------------------------
+local map_bonus_per_player = wesnoth.get_variable "custom_map_bonus_per_player"
 
 function random_placement(locs, orig_num_items, min_distance, command)
 	local distance = min_distance or 0
@@ -384,7 +385,7 @@ end
 function world_conquest_tek_bonus_points(theme)
 	local res = {}
 	local scenario_num = wml.variables.wc2_scenario or 1
-	local player_num =  _G.scenario_data.nhumanplayers
+	local player_num =  _G.scenario_data.nhumanplayers * map_bonus_per_player
 	oceanic = get_oceanic()
 	f_wct_bonus_location_filter = wesnoth.map.filter(get_f_wct_bonus_location_filter(map), { oceanic = oceanic })
 	local possible_locs = map:find(f_wct_bonus_location_filter)
@@ -397,6 +398,6 @@ function world_conquest_tek_bonus_points(theme)
 		})
 		table.insert(res, loc)
 	end
-	random_placement(possible_locs, player_num, 9 + scenario_num, place_item)
+	random_placement(possible_locs, player_num, 3 + scenario_num, place_item)
 	return res
 end
