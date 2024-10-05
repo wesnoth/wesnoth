@@ -402,8 +402,11 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 			return true;
 
-		// Only enable when editing a scenario
+		// Can be enabled as long as a valid addon_id is set
 		case HOTKEY_EDITOR_EDIT_UNIT:
+			return !current_addon_id_.empty();
+
+		// Only enable when editing a scenario
 		case HOTKEY_EDITOR_CUSTOM_TODS:
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
 			return !get_current_map_context().is_pure_map();
@@ -632,7 +635,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_comman
 		case editor::ADDON:
 			return ACTION_STATELESS;
 		case editor::SIDE:
-			return static_cast<std::size_t>(index) == gui_->playing_team()
+			return static_cast<std::size_t>(index) == gui_->playing_team_index()
 					? ACTION_SELECTED : ACTION_DESELECTED;
 		case editor::TIME:
 			return index ==	get_current_map_context().get_time_manager()->get_current_time()
@@ -708,8 +711,8 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 				toolkit_->get_palette_manager()->set_group(index);
 				return true;
 			case SIDE:
-				gui_->set_team(index, true);
-				gui_->set_playing_team(index);
+				gui_->set_viewing_team_index(index, true);
+				gui_->set_playing_team_index(index);
 				toolkit_->get_palette_manager()->draw_contents();
 				return true;
 			case AREA:
@@ -717,9 +720,8 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 					get_current_map_context().set_active_area(index);
 					const std::set<map_location>& area =
 							get_current_map_context().get_time_manager()->get_area_by_index(index);
-					std::vector<map_location> locs(area.begin(), area.end());
 					get_current_map_context().select_area(index);
-					gui_->scroll_to_tiles(locs.begin(), locs.end());
+					gui_->scroll_to_tiles({ area.begin(), area.end() });
 					return true;
 				}
 			case ADDON:
@@ -850,29 +852,27 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			return true;
 
 		case HOTKEY_EDITOR_PBL:
-			initialize_addon_if_empty();
-
-			if(!current_addon_id_.empty()) {
+			if(initialize_addon()) {
 				context_manager_->edit_pbl();
 			}
 			return true;
 
 		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
-			initialize_addon_if_empty();
-
-			if(!current_addon_id_.empty()) {
+			if(initialize_addon()) {
 				context_manager_->change_addon_id();
 			}
 			return true;
 
 		case HOTKEY_EDITOR_SELECT_ADDON:
-			current_addon_id_ = editor::initialize_addon();
-			context_manager_->set_addon_id(current_addon_id_);
+			initialize_addon();
 			return true;
 
 		case HOTKEY_EDITOR_OPEN_ADDON:
 		{
-			initialize_addon_if_empty();
+			if (!initialize_addon()) {
+				gui2::show_error_message("Could not initialize add-on!");
+				return true;
+			}
 
 			gui2::dialogs::file_dialog dlg;
 
@@ -1041,9 +1041,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			context_manager_->new_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_SCENARIO_NEW:
-			initialize_addon_if_empty();
-
-			if(!current_addon_id_.empty()) {
+			if(initialize_addon()) {
 				context_manager_->new_scenario_dialog();
 			}
 			return true;
@@ -1057,9 +1055,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			context_manager_->save_map_as_dialog();
 			return true;
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
-			initialize_addon_if_empty();
-
-			if(!current_addon_id_.empty()) {
+			if(initialize_addon()) {
 				context_manager_->save_scenario_as_dialog();
 			}
 			return true;
@@ -1086,8 +1082,8 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			gui_->init_flags();
 			return true;
 		case HOTKEY_EDITOR_SIDE_REMOVE:
-			gui_->set_team(0, true);
-			gui_->set_playing_team(0);
+			gui_->set_viewing_team_index(0, true);
+			gui_->set_playing_team_index(0);
 			get_current_map_context().remove_side();
 			return true;
 		case HOTKEY_EDITOR_SIDE_EDIT:
@@ -1154,11 +1150,13 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 	}
 }
 
-void editor_controller::initialize_addon_if_empty() {
+bool editor_controller::initialize_addon() {
 	if(current_addon_id_.empty()) {
+		// editor::initialize_addon can return empty id in case of failure
 		current_addon_id_ = editor::initialize_addon();
 	}
 	context_manager_->set_addon_id(current_addon_id_);
+	return !current_addon_id_.empty();
 }
 
 void editor_controller::show_help()
@@ -1377,7 +1375,7 @@ void editor_controller::export_selection_coords()
 			++i;
 		}
 		ssx << "\n" << ssy.str() << "\n";
-		desktop::clipboard::copy_to_clipboard(ssx.str(), false);
+		desktop::clipboard::copy_to_clipboard(ssx.str());
 	}
 }
 

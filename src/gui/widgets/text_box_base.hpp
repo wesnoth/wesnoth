@@ -121,11 +121,11 @@ public:
 	/**
 	 * Wrapper function, sets the area between column start and end
 	 * offset to be highlighted in a specific color.
-	 * See @ref font::pango_text::set_highlight_area.
+	 * See @ref font::pango_text::add_attribute_bg_color.
 	 */
 	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color)
 	{
-		text_.set_highlight_area(start_offset, end_offset, color);
+		text_.add_attribute_bg_color(start_offset, end_offset, color);
 	}
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -145,6 +145,13 @@ public:
 	const std::string& text() const
 	{
 		return text_.text();
+	}
+
+	std::string plain_text()
+	{
+		char* plain_text = nullptr;
+		pango_parse_markup(text().c_str(), text().size(), 0, nullptr, &plain_text, nullptr, nullptr);
+		return plain_text ? std::string(plain_text) : std::string();
 	}
 
 	/** Set the text_changed callback. */
@@ -277,10 +284,10 @@ protected:
 	virtual void delete_selection() = 0;
 
 	/** Copies the current selection. */
-	virtual void copy_selection(const bool mouse);
+	virtual void copy_selection();
 
 	/** Pastes the current selection. */
-	virtual void paste_selection(const bool mouse);
+	virtual void paste_selection();
 
 	/***** ***** ***** ***** expose some functions ***** ***** ***** *****/
 

@@ -112,9 +112,9 @@ public:
 	}
 
 protected:
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 private:
 	/** The title for the dialog. */

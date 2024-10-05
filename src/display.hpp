@@ -109,9 +109,7 @@ public:
 	const std::vector<team>& get_teams() const {return dc_->teams();}
 
 	/** The playing team is the team whose turn it is. */
-	std::size_t playing_team() const { return activeTeam_; }
-
-	bool team_valid() const;
+	std::size_t playing_team_index() const { return playing_team_index_; }
 
 	/**
 	 * The viewing team is the team currently viewing the game. It's the team whose gold and income
@@ -121,27 +119,26 @@ public:
 	 *
 	 * The value returned is a 0-based index into the vector returned by get_teams().
 	 */
-	std::size_t viewing_team() const { return currentTeam_; }
-	/**
-	 * The 1-based equivalent of the 0-based viewing_team() function. This is the side-number that
-	 * WML uses.
-	 *
-	 * TODO: provide a better interface in a better place (consistent base numbers, and not in a GUI
-	 * class).
-	 */
-	int viewing_side() const { return static_cast<int>(currentTeam_ + 1); }
+	std::size_t viewing_team_index() const { return viewing_team_index_; }
+
+	const team& playing_team() const;
+	const team& viewing_team() const;
+
+	bool viewing_team_is_playing() const
+	{
+		return viewing_team_index() == playing_team_index();
+	}
 
 	/**
 	 * Sets the team controlled by the player using the computer.
 	 * Data from this team will be displayed in the game status.
 	 */
-	void set_team(std::size_t team, bool observe=false);
+	void set_viewing_team_index(std::size_t team, bool observe=false);
 
 	/**
-	 * set_playing_team sets the team whose turn it currently is
+	 * sets the team whose turn it currently is
 	 */
-	void set_playing_team(std::size_t team);
-
+	void set_playing_team_index(std::size_t team);
 
 	/**
 	 * Cancels all the exclusive draw requests.
@@ -170,9 +167,7 @@ public:
 	 * An overlay is an image that is displayed on top of the tile.
 	 * One tile may have multiple overlays.
 	 */
-	void add_overlay(const map_location& loc, const std::string& image,
-		const std::string& halo="", const std::string& team_name="",const std::string& item_id="",
-		bool visible_under_fog = true, float submerge = 0.0f, float z_order = 0);
+	void add_overlay(const map_location& loc, overlay&& ov);
 
 	/** remove_overlay will remove all overlays on a tile. */
 	void remove_overlay(const map_location& loc);
@@ -218,7 +213,6 @@ public:
 
 	/** Virtual functions shadowed in game_display. These are needed to generate reports easily, without dynamic casting. Hope to factor out eventually. */
 	virtual const map_location & displayed_unit_hex() const { return map_location::null_location(); }
-	virtual int playing_side() const { return -100; } //In this case give an obviously wrong answer to fail fast, since this could actually cause a big bug. */
 	virtual const std::set<std::string>& observers() const { static const std::set<std::string> fake_obs = std::set<std::string> (); return fake_obs; }
 
 	/**
@@ -318,6 +312,9 @@ public:
 	int get_location_x(const map_location& loc) const;
 	int get_location_y(const map_location& loc) const;
 	point get_location(const map_location& loc) const;
+
+	/** Returns the on-screen rect corresponding to a @a loc */
+	rect get_location_rect(const map_location& loc) const;
 
 	/**
 	 * Rectangular area of hexes, allowing to decide how the top and bottom
@@ -526,20 +523,10 @@ public:
 	                     double add_spacing=0.0, bool force=true);
 
 	/** Scroll to fit as many locations on-screen as possible, starting with the first. */
-	void scroll_to_tiles(const std::vector<map_location>::const_iterator & begin,
-	                     const std::vector<map_location>::const_iterator & end,
-	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
-	                     bool only_if_possible=false, double add_spacing=0.0,
-	                     bool force=true);
-	/** Scroll to fit as many locations on-screen as possible, starting with the first. */
 	void scroll_to_tiles(const std::vector<map_location>& locs,
 	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
 	                     bool only_if_possible=false,
-	                     double add_spacing=0.0, bool force=true)
-	{
-		scroll_to_tiles(locs.begin(), locs.end(), scroll_type, check_fogged,
-		                only_if_possible, add_spacing, force);
-	}
+	                     double add_spacing=0.0, bool force=true);
 
 	/** Expose the event, so observers can be notified about map scrolling. */
 	events::generic_event &scroll_event() const { return scroll_event_; }
@@ -661,8 +648,7 @@ private:
 	void draw_minimap();
 
 public:
-
-	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location()) const;
+	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location()) const = 0;
 
 	virtual bool has_time_area() const {return false;}
 
@@ -686,8 +672,6 @@ public:
 	}
 
 private:
-	void init_flags_for_side_internal(std::size_t side, const std::string& side_color);
-
 	int blindfold_ctr_;
 
 protected:
@@ -721,6 +705,8 @@ protected:
 	 */
 	virtual void draw_hex(const map_location& loc);
 
+	void draw_overlays_at(const map_location& loc);
+
 	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND};
 
 	void get_terrain_images(const map_location &loc,
@@ -733,9 +719,7 @@ protected:
 
 	static void fill_images_list(const std::string& prefix, std::vector<std::string>& images);
 
-	static const std::string& get_variant(const std::vector<std::string>& variants, const map_location &loc);
-
-	std::size_t currentTeam_;
+	std::size_t viewing_team_index_;
 	bool dont_show_all_; //const team *viewpoint_;
 	/**
 	 * Position of the top-left corner of the viewport, in pixels.
@@ -768,12 +752,12 @@ protected:
 	/** Event raised when the map is being scrolled */
 	mutable events::generic_event scroll_event_;
 
-	boost::circular_buffer<unsigned> frametimes_; // in milliseconds
+	boost::circular_buffer<std::chrono::milliseconds> frametimes_;
 	int current_frame_sample_ = 0;
 	unsigned int fps_counter_;
 	std::chrono::seconds fps_start_;
 	unsigned int fps_actual_;
-	uint32_t last_frame_finished_ = 0u;
+	utils::optional<std::chrono::steady_clock::time_point> last_frame_finished_ = {};
 
 	// Not set by the initializer:
 	std::map<std::string, rect> reportLocations_;
@@ -823,7 +807,7 @@ public:
 protected:
 
 	//TODO sort
-	std::size_t activeTeam_;
+	std::size_t playing_team_index_;
 
 	/**
 	 * Helper for rendering the map by ordering draw operations.
@@ -964,10 +948,8 @@ private:
 	/** Currently set debug flags. */
 	std::bitset<__NUM_DEBUG_FLAGS> debug_flags_;
 
-	typedef std::list<arrow*> arrows_list_t;
-	typedef std::map<map_location, arrows_list_t > arrows_map_t;
 	/** Maps the list of arrows for each location */
-	arrows_map_t arrows_map_;
+	std::map<map_location, std::list<arrow*>> arrows_map_;
 
 	tod_color color_adjust_;
 

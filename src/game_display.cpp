@@ -118,12 +118,12 @@ void game_display::highlight_hex(map_location hex)
 {
 	wb::future_map_if future(!synced_context::is_synced()); /**< Lasts for whole method. */
 
-	const unit *u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !dont_show_all_);
+	const unit *u = dc_->get_visible_unit(hex, viewing_team(), !dont_show_all_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
 	} else {
-		u = resources::gameboard->get_visible_unit(mouseoverHex_, dc_->teams()[viewing_team()], !dont_show_all_);
+		u = dc_->get_visible_unit(mouseoverHex_, viewing_team(), !dont_show_all_);
 		if (u) {
 			// mouse moved from unit hex to non-unit hex
 			if (dc_->units().count(selectedHex_)) {
@@ -145,7 +145,7 @@ void game_display::display_unit_hex(map_location hex)
 
 	wb::future_map_if future(!synced_context::is_synced()); /**< Lasts for whole method. */
 
-	const unit *u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !dont_show_all_);
+	const unit *u = dc_->get_visible_unit(hex, viewing_team(), !dont_show_all_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
@@ -164,7 +164,7 @@ void game_display::scroll_to_leader(int side, SCROLL_TYPE scroll_type,bool force
 {
 	unit_map::const_iterator leader = dc_->units().find_leader(side);
 
-	if(leader.valid() && leader->is_visible_to_team(dc_->get_team(viewing_side()), false)) {
+	if(leader.valid() && leader->is_visible_to_team(viewing_team(), false)) {
 		scroll_to_tile(leader->get_location(), scroll_type, true, force);
 	}
 }
@@ -240,7 +240,7 @@ void game_display::draw_hex(const map_location& loc)
 
 	if(on_map && loc == mouseoverHex_ && !map_screenshot_) {
 		drawing_layer hex_top_layer = drawing_layer::mouseover_bottom;
-		const unit* u = resources::gameboard->get_visible_unit(loc, dc_->teams()[viewing_team()]);
+		const unit* u = dc_->get_visible_unit(loc, viewing_team());
 		if(u != nullptr) {
 			hex_top_layer = drawing_layer::mouseover_top;
 		}
@@ -251,10 +251,10 @@ void game_display::draw_hex(const map_location& loc)
 		if(u == nullptr) {
 			mo_top_path = &mouseover_normal_top;
 			mo_bot_path = &mouseover_normal_bot;
-		} else if(dc_->teams()[currentTeam_].is_enemy(u->side())) {
+		} else if(viewing_team().is_enemy(u->side())) {
 			mo_top_path = &mouseover_enemy_top;
 			mo_bot_path = &mouseover_enemy_bot;
-		} else if(dc_->teams()[currentTeam_].side() == u->side()) {
+		} else if(viewing_team().side() == u->side()) {
 			mo_top_path = &mouseover_self_top;
 			mo_bot_path = &mouseover_self_bot;
 		} else {
@@ -347,9 +347,6 @@ void game_display::layout()
 {
 	display::layout();
 
-	if ( !team_valid() )
-		return;
-
 	refresh_report("report_clock");
 	refresh_report("report_battery");
 	refresh_report("report_countdown");
@@ -432,8 +429,8 @@ void game_display::draw_movement_info(const map_location& loc)
 	// When out-of-turn, it's still interesting to check out the terrain defs of the selected unit
 	else if (selectedHex_.valid() && loc == mouseoverHex_)
 	{
-		const unit_map::const_iterator selectedUnit = resources::gameboard->find_visible_unit(selectedHex_,dc_->teams()[currentTeam_]);
-		const unit_map::const_iterator mouseoveredUnit = resources::gameboard->find_visible_unit(mouseoverHex_,dc_->teams()[currentTeam_]);
+		const unit_map::const_iterator selectedUnit = resources::gameboard->find_visible_unit(selectedHex_,viewing_team());
+		const unit_map::const_iterator mouseoveredUnit = resources::gameboard->find_visible_unit(mouseoverHex_,viewing_team());
 		if(selectedUnit != dc_->units().end() && mouseoveredUnit == dc_->units().end()) {
 			// Display the def% of this terrain
 			int move_cost = selectedUnit->movement_cost(get_map().get_terrain(loc));
@@ -629,11 +626,7 @@ void game_display::clear_attack_indicator()
 
 std::string game_display::current_team_name() const
 {
-	if (team_valid())
-	{
-		return dc_->teams()[currentTeam_].team_name();
-	}
-	return std::string();
+	return viewing_team().team_name();
 }
 
 void game_display::begin_game()

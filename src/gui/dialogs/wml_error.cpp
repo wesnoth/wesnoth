@@ -22,7 +22,6 @@
 #include "../../addon/manager.hpp"
 #include "desktop/clipboard.hpp"
 #include "filesystem.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/window.hpp"
@@ -166,33 +165,28 @@ wml_error::wml_error(const std::string& summary,
 	register_label("details", true, details);
 }
 
-void wml_error::pre_show(window& window)
+void wml_error::pre_show()
 {
 	if(!have_files_) {
-		styled_widget& filelist = find_widget<styled_widget>(&window, "files", false);
+		styled_widget& filelist = find_widget<styled_widget>("files");
 		filelist.set_visible(widget::visibility::invisible);
 	}
 
 	if(!have_post_summary_) {
 		styled_widget& post_summary
-				= find_widget<styled_widget>(&window, "post_summary", false);
+				= find_widget<styled_widget>("post_summary");
 		post_summary.set_visible(widget::visibility::invisible);
 	}
 
-	button& copy_button = find_widget<button>(&window, "copy", false);
+	button& copy_button = find_widget<button>("copy");
 
 	connect_signal_mouse_left_click(
 			copy_button, std::bind(&wml_error::copy_report_callback, this));
-
-	if (!desktop::clipboard::available()) {
-		copy_button.set_active(false);
-		copy_button.set_tooltip(_("Clipboard support not found, contact your packager"));
-	}
 }
 
 void wml_error::copy_report_callback()
 {
-	desktop::clipboard::copy_to_clipboard(report_, false);
+	desktop::clipboard::copy_to_clipboard(report_);
 }
 
 } // end namespace dialogs

@@ -37,15 +37,20 @@ public:
 	}
 
 	bool has_context_menu() const override {
-		return true;
+		return false;
 	}
 
 	void move(editor_display& disp, const map_location& hex) override;
 
 	/**
-	 * TODO
+	 * Left clicking places the currently selected item on the x,y map hex
 	 */
 	std::unique_ptr<editor_action> click_left(editor_display& disp, int x, int y) override;
+
+	/**
+	 * Right clicking removes the item on the x,y map hex
+	 */
+	std::unique_ptr<editor_action> click_right(editor_display& disp, int x, int y) override;
 
 	/**
 	 * TODO
@@ -59,10 +64,6 @@ public:
 	 * the facing when clicked right.
 	 */
 	std::unique_ptr<editor_action> drag_end_left(editor_display& disp, int x, int y) override;
-
-	std::unique_ptr<editor_action> click_right(editor_display& /*disp*/, int /*x*/, int /*y*/) override {
-		return nullptr;
-	}
 
 	virtual void set_mouse_overlay(editor_display& disp) override;
 	void set_item_mouse_overlay(editor_display& disp, const overlay& u);

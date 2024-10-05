@@ -37,7 +37,7 @@ public:
 	static bool execute(const game_config_view& cache_config, savegame::load_game_metadata& data);
 
 private:
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	virtual const std::string& window_id() const override;
 

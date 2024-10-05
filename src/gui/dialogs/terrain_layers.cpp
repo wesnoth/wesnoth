@@ -18,7 +18,6 @@
 
 #include "display.hpp"
 #include "formatter.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
@@ -43,7 +42,7 @@ terrain_layers::terrain_layers(display_t& disp, const map_location& loc)
 	tile_->rebuild_cache(tod_id, &tile_logs_);
 }
 
-void terrain_layers::pre_show(window& window)
+void terrain_layers::pre_show()
 {
 	//
 	// List terrain flags
@@ -54,12 +53,12 @@ void terrain_layers::pre_show(window& window)
 		flag = (formatter() << font::unicode_bullet << " " << flag).str();
 	}
 
-	find_widget<label>(&window, "flags", false).set_label(utils::join(flags, "\n"));
+	find_widget<label>("flags").set_label(utils::join(flags, "\n"));
 
 	//
 	// Generate terrain list
 	//
-	listbox& list = find_widget<listbox>(&window, "layer_list", false);
+	listbox& list = find_widget<listbox>("layer_list");
 
 	int order = 1;
 	for(const terrain_builder::tile::log_details& det : tile_logs_) {

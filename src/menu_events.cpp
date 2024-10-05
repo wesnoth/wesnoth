@@ -142,15 +142,14 @@ void menu_handler::status_table()
 {
 	int selected_side;
 
-	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team(), selected_side)) {
+	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team_index(), selected_side)) {
 		gui_->scroll_to_leader(selected_side);
 	}
 }
 
 void menu_handler::save_map()
 {
-	const std::string& input_name
-			= filesystem::get_dir(filesystem::get_dir(filesystem::get_user_data_dir() + "/editor") + "/maps/");
+	const std::string input_name = filesystem::get_legacy_editor_dir() + "/maps/";
 
 	gui2::dialogs::file_dialog dlg;
 
@@ -222,9 +221,12 @@ bool menu_handler::has_friends() const
 		return !gui_->observers().empty();
 	}
 
-	for(std::size_t n = 0; n != pc_.get_teams().size(); ++n) {
-		if(n != gui_->viewing_team() && pc_.get_teams()[gui_->viewing_team()].team_name() == pc_.get_teams()[n].team_name()
-				&& pc_.get_teams()[n].is_network()) {
+	for(const team& t : pc_.get_teams()) {
+		if(gui_->viewing_team().side() == t.side()) {
+			continue; // Can't be friends with yourself
+		}
+
+		if(gui_->viewing_team().team_name() == t.team_name() && t.is_network()) {
 			return true;
 		}
 	}
@@ -471,7 +473,7 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 				&& !invisible) {
 			const unit_movement_resetter move_reset(u);
 			const pathfind::paths& path
-					= pathfind::paths(u, false, true, pc_.get_teams()[gui_->viewing_team()], 0, false, ignore_units);
+					= pathfind::paths(u, false, true, gui_->viewing_team(), 0, false, ignore_units);
 
 			gui_->highlight_another_reach(path, hex_under_mouse);
 		}
@@ -616,8 +618,7 @@ bool menu_handler::end_turn(int side_num)
 void menu_handler::goto_leader(int side_num)
 {
 	unit_map::const_iterator i = pc_.get_units().find_leader(side_num);
-	const display_context& dc = gui_->get_disp_context();
-	if(i != pc_.get_units().end() && i->is_visible_to_team(dc.get_team(gui_->viewing_side()), false)) {
+	if(i != pc_.get_units().end() && i->is_visible_to_team(gui_->viewing_team(), false)) {
 		gui_->scroll_to_tile(i->get_location(), game_display::WARP);
 	}
 }
@@ -645,7 +646,7 @@ void menu_handler::terrain_description(mouse_handler& mousehandler)
 void menu_handler::rename_unit()
 {
 	const unit_map::iterator un = current_unit();
-	if(un == pc_.get_units().end() || gui_->viewing_side() != un->side()) {
+	if(un == pc_.get_units().end() || gui_->viewing_team().side() != un->side()) {
 		return;
 	}
 
@@ -669,12 +670,12 @@ unit_map::iterator menu_handler::current_unit()
 	const mouse_handler& mousehandler = pc_.get_mouse_handler_base();
 	const bool see_all = gui_->show_everything() || (pc_.is_replay() && pc_.get_replay_controller()->see_all());
 
-	unit_map::iterator res = board().find_visible_unit(mousehandler.get_last_hex(), pc_.get_teams()[gui_->viewing_team()], see_all);
+	unit_map::iterator res = board().find_visible_unit(mousehandler.get_last_hex(), gui_->viewing_team(), see_all);
 	if(res != pc_.get_units().end()) {
 		return res;
 	}
 
-	return board().find_visible_unit(mousehandler.get_selected_hex(), pc_.get_teams()[gui_->viewing_team()], see_all);
+	return board().find_visible_unit(mousehandler.get_selected_hex(), gui_->viewing_team(), see_all);
 }
 
 // Helpers for create_unit()
@@ -818,9 +819,9 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 		if(team_only) {
 			team_name = gui_->labels().team_name();
 		} else {
-			color = team::get_side_color(gui_->viewing_side());
+			color = team::get_side_color(gui_->viewing_team().side());
 		}
-		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team(), team_name, color);
+		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team_index(), team_name, color);
 		if(res) {
 			resources::recorder->add_label(res);
 		}
@@ -829,7 +830,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 
 void menu_handler::clear_labels()
 {
-	if(gui_->team_valid() && !board().is_observer()) {
+	if(!board().is_observer()) {
 		const int res = gui2::show_message(
 			_("Clear Labels"),
 			_("Are you sure you want to clear map labels?"),
@@ -1308,8 +1309,8 @@ protected:
 		register_alias("whiteboard_options", "wbo");
 
 		if(auto alias_list = prefs::get().get_alias()) {
-			for(const config::attribute& a : alias_list->attribute_range()) {
-				register_alias(a.second, a.first);
+			for(const auto& [key, value] : alias_list->attribute_range()) {
+				register_alias(value, key);
 			}
 		}
 	}
@@ -1329,7 +1330,7 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 	ss << time;
 	cfg["time"] = ss.str();
 
-	const int side = board().is_observer() ? 0 : gui_->viewing_side();
+	const int side = board().is_observer() ? 0 : gui_->viewing_team().side();
 	if(!board().is_observer()) {
 		cfg["side"] = side;
 	}
@@ -1340,7 +1341,7 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 		if(board().is_observer()) {
 			cfg["to_sides"] = game_config::observer_team_name;
 		} else {
-			cfg["to_sides"] = pc_.get_teams()[gui_->viewing_team()].allied_human_teams();
+			cfg["to_sides"] = gui_->viewing_team().allied_human_teams();
 		}
 	}
 
@@ -1387,23 +1388,18 @@ void menu_handler::do_search(const std::string& new_search)
 		if(!gui_->shrouded(loc)) {
 			const terrain_label* label = gui_->labels().get_label(loc);
 			if(label) {
-				std::string label_text = label->text().str();
-				if(std::search(label_text.begin(), label_text.end(), last_search_.begin(), last_search_.end(),
-						   utils::chars_equal_insensitive)
-						!= label_text.end()) {
-					found = true;
-				}
+				const std::string& label_text = label->text().str();
+				found = translation::ci_search(label_text, last_search_);
 			}
 		}
+
 		// Search unit name
 		if(!gui_->fogged(loc)) {
 			unit_map::const_iterator ui = pc_.get_units().find(loc);
 			if(ui != pc_.get_units().end()) {
-				const std::string name = ui->name();
-				if(std::search(
-						   name.begin(), name.end(), last_search_.begin(), last_search_.end(), utils::chars_equal_insensitive)
-						!= name.end()) {
-					if(!pc_.get_teams()[gui_->viewing_team()].is_enemy(ui->side())
+				const std::string& unit_name = ui->name();
+				if(translation::ci_search(unit_name, last_search_)) {
+					if(!gui_->viewing_team().is_enemy(ui->side())
 							|| !ui->invisible(ui->get_location())) {
 						found = true;
 					}
@@ -1465,7 +1461,7 @@ void console_handler::do_droid()
 	std::transform(action.begin(), action.end(), action.begin(), tolower);
 	// default to the current side if empty
 	const unsigned int side = side_s.empty() ? team_num_ : lexical_cast_default<unsigned int>(side_s);
-	const bool is_your_turn = menu_handler_.pc_.current_side() == static_cast<int>(menu_handler_.gui_->viewing_side());
+	const bool is_your_turn = menu_handler_.pc_.current_side() == static_cast<int>(menu_handler_.gui_->viewing_team().side());
 
 	utils::string_map symbols;
 	symbols["side"] = std::to_string(side);
@@ -2145,7 +2141,7 @@ void menu_handler::custom_command()
 void menu_handler::ai_formula()
 {
 	if(!pc_.is_networked_mp()) {
-		textbox_info_.show(gui::TEXTBOX_AI, translation::sgettext("prompt^Command:"), "", false, *gui_);
+		textbox_info_.show(gui::TEXTBOX_AI, translation::sgettext("prompt^Formula:"), "", false, *gui_);
 	}
 }
 

@@ -46,7 +46,6 @@
 
 #ifdef _WIN32
 #include "serialization/unicode_cast.hpp"
-#include <boost/range/iterator_range.hpp>
 #include <windows.h>
 #endif
 
@@ -196,9 +195,9 @@ void prefs::migrate_preferences(const std::string& migrate_prefs_file)
 
 			// when both files have the same attribute, use the one from whichever was most recently modified
 			bool current_prefs_are_older = filesystem::file_modified_time(filesystem::get_synced_prefs_file()) < filesystem::file_modified_time(migrate_prefs_file);
-			for(const config::attribute& val : old_cfg.attribute_range()) {
-				if(current_prefs_are_older || !current_cfg.has_attribute(val.first)) {
-					preferences_[val.first] = val.second;
+			for(const auto& [key, value] : old_cfg.attribute_range()) {
+				if(current_prefs_are_older || !current_cfg.has_attribute(key)) {
+					preferences_[key] = value;
 				}
 			}
 
@@ -261,25 +260,25 @@ void prefs::load_preferences()
 		preferences_.merge_with(synced_prefs);
 
 		// check for any unknown preferences
-		for(const auto& attr : synced_prefs.attribute_range()) {
-			if(std::find(synced_attributes_.begin(), synced_attributes_.end(), attr.first) == synced_attributes_.end()) {
-				unknown_synced_attributes_.insert(attr.first);
+		for(const auto& [key, _] : synced_prefs.attribute_range()) {
+			if(std::find(synced_attributes_.begin(), synced_attributes_.end(), key) == synced_attributes_.end()) {
+				unknown_synced_attributes_.insert(key);
 			}
 		}
-		for(const auto& attr : unsynced_prefs.attribute_range()) {
-			if(std::find(unsynced_attributes_.begin(), unsynced_attributes_.end(), attr.first) == unsynced_attributes_.end()) {
-				unknown_unsynced_attributes_.insert(attr.first);
+		for(const auto& [key, _] : unsynced_prefs.attribute_range()) {
+			if(std::find(unsynced_attributes_.begin(), unsynced_attributes_.end(), key) == unsynced_attributes_.end()) {
+				unknown_unsynced_attributes_.insert(key);
 			}
 		}
 
-		for(const auto child : synced_prefs.all_children_range()) {
-			if(std::find(synced_children_.begin(), synced_children_.end(), child.key) == synced_children_.end()) {
-				unknown_synced_children_.insert(child.key);
+		for(const auto [key, _] : synced_prefs.all_children_range()) {
+			if(std::find(synced_children_.begin(), synced_children_.end(), key) == synced_children_.end()) {
+				unknown_synced_children_.insert(key);
 			}
 		}
-		for(const auto child : unsynced_prefs.all_children_range()) {
-			if(std::find(unsynced_children_.begin(), unsynced_children_.end(), child.key) == unsynced_children_.end()) {
-				unknown_unsynced_children_.insert(child.key);
+		for(const auto [key, _] : unsynced_prefs.all_children_range()) {
+			if(std::find(unsynced_children_.begin(), unsynced_children_.end(), key) == unsynced_children_.end()) {
+				unknown_unsynced_children_.insert(key);
 			}
 		}
 	} catch(const config::error& e) {
@@ -325,9 +324,9 @@ void prefs::load_preferences()
 						message = foobar
 					[/line]
 		*/
-		for(const config::any_child h : history->all_children_range()) {
-			for(const config& l : h.cfg.child_range("line")) {
-				history_map_[h.key].push_back(l["message"]);
+		for(const auto [key, cfg] : history->all_children_range()) {
+			for(const config& l : cfg.child_range("line")) {
+				history_map_[key].push_back(l["message"]);
 			}
 		}
 	}
@@ -1871,21 +1870,20 @@ void prefs::clear_mp_alert_prefs()
 
 std::string prefs::get_system_username()
 {
-	std::string res;
 #ifdef _WIN32
 	wchar_t buffer[300];
 	DWORD size = 300;
 	if(GetUserNameW(buffer, &size)) {
 		//size includes a terminating null character.
 		assert(size > 0);
-		res = unicode_cast<std::string>(boost::iterator_range<wchar_t*>(buffer, buffer + size - 1));
+		return unicode_cast<std::string>(std::wstring_view{buffer});
 	}
 #else
 	if(char* const login = getenv("USER")) {
-		res = login;
+		return login;
 	}
 #endif
-	return res;
+	return {};
 }
 
 preferences::secure_buffer prefs::build_key(const std::string& server, const std::string& login)

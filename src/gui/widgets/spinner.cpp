@@ -17,7 +17,6 @@
 
 #include "gui/widgets/spinner.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/repeating_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/core/log.hpp"
@@ -53,7 +52,7 @@ spinner::spinner(const implementation::builder_spinner& builder)
 
 text_box* spinner::get_internal_text_box()
 {
-	return find_widget<text_box>(this, "_text", false, true);
+	return find_widget<text_box>("_text", false, true);
 }
 
 void spinner::set_value(int val)
@@ -74,13 +73,13 @@ void spinner::set_value(int val)
 		edit_area->set_value(std::to_string(val));
 	}
 
-	find_widget<repeating_button>(this, "_prev", false, true)->set_active(val > minimum_value_);
-	find_widget<repeating_button>(this, "_next", false, true)->set_active(val < maximum_value_);
+	find_widget<repeating_button>("_prev", false, true)->set_active(val > minimum_value_);
+	find_widget<repeating_button>("_next", false, true)->set_active(val < maximum_value_);
 
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
-int spinner::get_value()
+int spinner::get_value() const
 {
 	/* Return 0 if invalid.
 	 * TODO: give visual indication of wrong value
@@ -127,7 +126,8 @@ void spinner::set_step_size(unsigned step)
 	}
 }
 
-unsigned spinner::get_step_size() {
+unsigned spinner::get_step_size() const
+{
 	return step_size_;
 }
 
@@ -141,11 +141,13 @@ void spinner::set_value_range(int min, int max)
 	set_value(get_value());  // ensure value is in new range and next/prev buttons are updated as necessary
 }
 
-int spinner::get_minimum_value() {
+int spinner::get_minimum_value() const
+{
 	return minimum_value_;
 }
 
-int spinner::get_maximum_value() {
+int spinner::get_maximum_value() const
+{
 	return maximum_value_;
 }
 
@@ -173,8 +175,8 @@ void spinner::next()
 
 void spinner::finalize_setup()
 {
-	repeating_button* btn_prev = find_widget<repeating_button>(this, "_prev", false, true);
-	repeating_button* btn_next = find_widget<repeating_button>(this, "_next", false, true);
+	repeating_button* btn_prev = find_widget<repeating_button>("_prev", false, true);
+	repeating_button* btn_next = find_widget<repeating_button>("_next", false, true);
 	btn_prev->connect_signal_mouse_left_down(std::bind(&spinner::prev, this));
 	btn_next->connect_signal_mouse_left_down(std::bind(&spinner::next, this));
 }

@@ -107,6 +107,19 @@ void rect::shift(const point& other)
 	this->y += other.y;
 }
 
+rect rect::shifted_by(int x, int y) const
+{
+	rect res = *this;
+	res.x += x;
+	res.y += y;
+	return res;
+}
+
+rect rect::shifted_by(const point& other) const
+{
+	return shifted_by(other.x, other.y);
+}
+
 std::ostream& operator<<(std::ostream& s, const rect& r)
 {
 	s << '[' << r.x << ',' << r.y << '|' << r.w << ',' << r.h << ']';

@@ -25,10 +25,8 @@
 #include "formula/variant.hpp"
 #include "game_board.hpp"
 #include "game_config.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "resources.hpp"
@@ -53,10 +51,10 @@ attack_predictions::attack_predictions(battle_context& bc, unit_const_ptr attack
 {
 }
 
-void attack_predictions::pre_show(window& window)
+void attack_predictions::pre_show()
 {
-	set_data(window, attacker_data_, defender_data_);
-	set_data(window, defender_data_, attacker_data_);
+	set_data(attacker_data_, defender_data_);
+	set_data(defender_data_, attacker_data_);
 }
 
 static std::string get_probability_string(const double prob)
@@ -72,7 +70,7 @@ static std::string get_probability_string(const double prob)
 	return ss.str();
 }
 
-void attack_predictions::set_data(window& window, const combatant_data& attacker, const combatant_data& defender) const
+void attack_predictions::set_data(const combatant_data& attacker, const combatant_data& defender)
 {
 	// Each data widget in this dialog has its id prefixed by either of these identifiers.
 	const std::string widget_id_prefix = attacker.stats_.is_attacker ? "attacker" : "defender";
@@ -82,13 +80,18 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	};
 
 	// Helpers for setting or hiding labels
-	const auto set_label_helper = [&](const std::string& id, const std::string& value) {
-		find_widget<label>(&window, get_prefixed_widget_id(id), false).set_label(value);
+	const auto set_label_helper = [&, this](const std::string& id, const std::string& value) {
+		// MSVC does not compile without this-> (26-09-2024)
+		label& lbl = this->find_widget<label>(get_prefixed_widget_id(id));
+		lbl.set_label(value);
 	};
 
-	const auto hide_label_helper = [&](const std::string& id) {
-		find_widget<label>(&window, get_prefixed_widget_id(id), false).set_visible(widget::visibility::invisible);
-		find_widget<label>(&window, get_prefixed_widget_id(id) + "_label" , false).set_visible(widget::visibility::invisible);
+	const auto hide_label_helper = [&, this](const std::string& id) {
+		// MSVC does not compile without this-> (26-09-2024)
+		label& lbl = this->find_widget<label>(get_prefixed_widget_id(id));
+		lbl.set_visible(widget::visibility::invisible);
+		label& lbl2 = this->find_widget<label>(get_prefixed_widget_id(id)  + "_label");
+		lbl2.set_visible(widget::visibility::invisible);
 	};
 
 	std::stringstream ss;
@@ -104,7 +107,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	set_label_helper("chance_unscathed", ss.str());
 
 	// HP probability graph
-	drawing& graph_widget = find_widget<drawing>(&window, get_prefixed_widget_id("hp_graph"), false);
+	drawing& graph_widget = find_widget<drawing>(get_prefixed_widget_id("hp_graph"));
 	draw_hp_graph(graph_widget, attacker, defender);
 
 	//
@@ -225,7 +228,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	const unit& u = *attacker.unit_;
 
 	const int tod_modifier = combat_modifier(resources::gameboard->units(), resources::gameboard->map(),
-		u.get_location(), u.alignment(), u.is_fearless());
+		u.get_location(), weapon->alignment(), u.is_fearless());
 
 	if(tod_modifier != 0) {
 		set_label_helper("tod_modifier", utils::signed_percent(tod_modifier));
@@ -273,7 +276,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	set_label_helper("chance_to_hit", ss.str());
 }
 
-void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& attacker, const combatant_data& defender) const
+void attack_predictions::draw_hp_graph(drawing& hp_graph, const combatant_data& attacker, const combatant_data& defender)
 {
 	// Font size. If you change this, you must update the separator space.
 	// TODO: probably should remove this.

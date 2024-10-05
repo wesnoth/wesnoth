@@ -16,6 +16,7 @@
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_item.hpp"
 
+#include "gui/gui.hpp"
 #include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
@@ -361,6 +362,7 @@ bool command_executor::do_execute_command(const hotkey::ui_command& cmd, bool pr
 			quit_confirmation::quit_to_desktop();
 			break;
 		case HOTKEY_QUIT_GAME:
+			gui2::switch_theme(prefs::get().gui2_theme());
 			quit_confirmation::quit_to_title();
 			break;
 		case HOTKEY_SURRENDER:
@@ -402,7 +404,7 @@ void command_executor::surrender_game() {
 	if(gui2::show_message(_("Surrender"), _("Do you really want to surrender the game?"), gui2::dialogs::message::yes_no_buttons) != gui2::retval::CANCEL) {
 		playmp_controller* pmc = dynamic_cast<playmp_controller*>(resources::controller);
 		if(pmc && !pmc->is_linger_mode() && !pmc->is_observer()) {
-			pmc->surrender(display::get_singleton()->viewing_team());
+			pmc->surrender(display::get_singleton()->viewing_team_index());
 		}
 	}
 }

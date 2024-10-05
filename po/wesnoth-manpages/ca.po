@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
-"POT-Creation-Date: 2024-07-21 22:31-0500\n"
+"POT-Creation-Date: 2024-09-17 21:19-0500\n"
 "PO-Revision-Date: 2021-01-20 17:10+0100\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -280,9 +280,10 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:89
-#, no-wrap
-msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
-msgstr ""
+#, fuzzy, no-wrap
+#| msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
+msgid "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
+msgstr "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:95
@@ -741,7 +742,7 @@ msgstr ""
 #: doc/man/wesnoth.6:240
 #, fuzzy, no-wrap
 #| msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
-msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+msgid "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
 msgstr "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 
 #. type: Plain text
@@ -1032,12 +1033,12 @@ msgstr ""
 #: doc/man/wesnoth.6:347
 #, fuzzy, no-wrap
 #| msgid "B<--scenario>I<\\ value>"
-msgid "B<-S,--use-schema>I<\\ path>"
+msgid "B<-S,\\ --use-schema>I<\\ path>"
 msgstr "B<--scenario>I<\\ value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:351
-msgid "sets the WML schema for use with B<-V,--validate>."
+msgid "sets the WML schema for use with B<-V,\\ --validate>."
 msgstr ""
 
 #. type: TP
@@ -1128,7 +1129,7 @@ msgstr ""
 #: doc/man/wesnoth.6:377
 #, fuzzy, no-wrap
 #| msgid "B<--validcache>"
-msgid "B<--validate-schema \\ path>"
+msgid "B<--validate-schema>I<\\ path>"
 msgstr "B<--validcache>"
 
 #. type: Plain text

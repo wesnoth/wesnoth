@@ -197,6 +197,9 @@ wesnoth.colors = {}
 ---@field event_context event_context
 wesnoth.current = {}
 
+---@class color_palette : color[]
+---@field name string
+
 ---Holds global game configuration options
 ---@class game_config
 ---@field base_income integer
@@ -214,6 +217,11 @@ wesnoth.current = {}
 ---@field debug_lua boolean
 ---@field mp_debug boolean
 ---@field strict_lua boolean
+---@field red_green_scale color_palette
+---@field red_green_scale_text color_palette
+---@field blue_white_scale color_palette
+---@field blue_white_scale_text color_palette
+---@field palettes table<string, color_palette>
 wesnoth.game_config = {}
 
 ---@type table<string, unit_race>

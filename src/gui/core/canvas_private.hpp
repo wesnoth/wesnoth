@@ -246,6 +246,9 @@ public:
 	void draw(wfl::map_formula_callable& variables) override;
 
 private:
+	/** the source config */
+	config cfg_;
+
 	/** The text font family. */
 	font::family_class font_family_;
 

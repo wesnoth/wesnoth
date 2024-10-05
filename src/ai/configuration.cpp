@@ -299,8 +299,8 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			}
 		}
 		std::deque<std::pair<std::string, config>> facet_configs;
-		for (const config::attribute &attr : aiparam.attribute_range()) {
-			if (non_aspect_attributes.count(attr.first)) {
+		for(const auto& [key, value] : aiparam.attribute_range()) {
+			if (non_aspect_attributes.count(key)) {
 				continue;
 			}
 			config facet_config;
@@ -308,27 +308,27 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			facet_config["name"] = "standard_aspect";
 			facet_config["turns"] = turns;
 			facet_config["time_of_day"] = time_of_day;
-			facet_config["value"] = attr.second;
-			facet_configs.emplace_back(attr.first, facet_config);
+			facet_config["value"] = value;
+			facet_configs.emplace_back(key, facet_config);
 		}
-		for (const config::any_child child : aiparam.all_children_range()) {
-			if (just_copy_tags.count(child.key)) {
+		for(const auto [child_key, child_cfg] : aiparam.all_children_range()) {
+			if (just_copy_tags.count(child_key)) {
 				// These aren't simplified, so just copy over unchanged.
-				parsed_config.add_child(child.key, child.cfg);
+				parsed_config.add_child(child_key, child_cfg);
 				if(
-				   (child.key != "modify_ai" && child.cfg["engine"] == "fai") ||
-				   (child.key == "modify_ai" && child.cfg.all_children_count() > 0 && child.cfg.all_children_range().front().cfg["engine"] == "fai")
+				   (child_key != "modify_ai" && child_cfg["engine"] == "fai") ||
+				   (child_key == "modify_ai" && child_cfg.all_children_count() > 0 && child_cfg.all_children_range().front().cfg["engine"] == "fai")
 				) {
 					deprecated_message("FormulaAI", DEP_LEVEL::FOR_REMOVAL, "1.17", "FormulaAI is slated to be removed. Use equivalent Lua AIs instead");
 				}
 				continue;
-			} else if(old_goal_tags.count(child.key)) {
+			} else if(old_goal_tags.count(child_key)) {
 				// A simplified goal, mainly kept around just for backwards compatibility.
-				config goal_config, criteria_config = child.cfg;
-				goal_config["name"] = child.key;
+				config goal_config, criteria_config = child_cfg;
+				goal_config["name"] = child_key;
 				goal_config["turns"] = turns;
 				goal_config["time_of_day"] = time_of_day;
-				if(child.key.substr(0,7) == "protect" && criteria_config.has_attribute("protect_radius")) {
+				if(child_key.substr(0,7) == "protect" && criteria_config.has_attribute("protect_radius")) {
 					goal_config["protect_radius"] = criteria_config["protect_radius"];
 					criteria_config.remove_attribute("protect_radius");
 				}
@@ -343,23 +343,23 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			// Now there's two possibilities. If the tag is [attacks] or contains either value= or [value],
 			// then it can be copied verbatim as a [facet] tag.
 			// Otherwise, it needs to be placed as a [value] within a [facet] tag.
-			if (child.key == "attacks" || child.cfg.has_attribute("value") || child.cfg.has_child("value")) {
-				facet_configs.emplace_back(child.key, child.cfg);
+			if (child_key == "attacks" || child_cfg.has_attribute("value") || child_cfg.has_child("value")) {
+				facet_configs.emplace_back(child_key, child_cfg);
 			} else {
 				config facet_config;
 				facet_config["engine"] = engine;
 				facet_config["name"] = "standard_aspect";
 				facet_config["turns"] = turns;
 				facet_config["time_of_day"] = time_of_day;
-				facet_config.add_child("value", child.cfg);
-				if (child.key == "leader_goal" && !child.cfg["id"].empty()) {
+				facet_config.add_child("value", child_cfg);
+				if (child_key == "leader_goal" && !child_cfg["id"].empty()) {
 					// Use id= attribute (if present) as the facet ID
-					const std::string& id = child.cfg["id"];
+					const std::string& id = child_cfg["id"];
 					if(id != "*" && id.find_first_not_of("0123456789") != std::string::npos) {
-						facet_config["id"] = child.cfg["id"];
+						facet_config["id"] = child_cfg["id"];
 					}
 				}
-				facet_configs.emplace_back(child.key, facet_config);
+				facet_configs.emplace_back(child_key, facet_config);
 			}
 		}
 		std::map<std::string, config> aspect_configs;
@@ -386,8 +386,8 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 	if (algorithm.empty() && !parsed_config.has_child("stage")) {
 		base_config = get_ai_config_for(default_ai_algorithm_);
 	}
-	for (const config::any_child child : parsed_config.all_children_range()) {
-		base_config.add_child(child.key, child.cfg);
+	for(const auto [child_key, child_cfg] : parsed_config.all_children_range()) {
+		base_config.add_child(child_key, child_cfg);
 	}
 	cfg.clear_children("ai");
 	cfg.add_child("ai", std::move(base_config));

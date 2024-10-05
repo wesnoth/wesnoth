@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/editor/edit_pbl_translation.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/text_box.hpp"
 
 namespace gui2::dialogs
@@ -33,17 +32,17 @@ editor_edit_pbl_translation::editor_edit_pbl_translation(
 {
 }
 
-void editor_edit_pbl_translation::pre_show(window& win)
+void editor_edit_pbl_translation::pre_show()
 {
-	text_box* language = find_widget<text_box>(&win, "language", false, true);
-	win.keyboard_capture(language);
+	text_box* language = find_widget<text_box>("language", false, true);
+	keyboard_capture(language);
 }
 
-void editor_edit_pbl_translation::post_show(window& win)
+void editor_edit_pbl_translation::post_show()
 {
-	language_ = find_widget<text_box>(&win, "language", false).get_value();
-	title_ = find_widget<text_box>(&win, "lang_title", false).get_value();
-	description_ = find_widget<text_box>(&win, "description", false).get_value();
+	language_ = find_widget<text_box>("language").get_value();
+	title_ = find_widget<text_box>("lang_title").get_value();
+	description_ = find_widget<text_box>("description").get_value();
 }
 
 } // namespace gui2::dialogs

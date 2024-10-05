@@ -112,8 +112,8 @@ void context_manager::refresh_on_context_change()
 
 	// Reset side when switching to an existing scenario
 	if (gui().get_teams().size() > 0) {
-		gui().set_team(0, true);
-		gui().set_playing_team(0);
+		gui().set_viewing_team_index(0, true);
+		gui().set_playing_team_index(0);
 	}
 	gui().init_flags();
 
@@ -235,10 +235,8 @@ void context_manager::load_mru_item(unsigned index, bool force_same_context /* =
 	load_map(mru[index], !force_same_context);
 }
 
-void context_manager::edit_side_dialog(int side_index)
+void context_manager::edit_side_dialog(const team& t)
 {
-	team& t = get_map_context().teams()[side_index];
-
 	editor_team_info team_info(t);
 
 	if(gui2::dialogs::editor_edit_side::execute(team_info)) {
@@ -889,10 +887,10 @@ bool context_manager::write_scenario(bool display_confirmation)
 	try {
 		get_map_context().save_scenario();
 		if(display_confirmation) {
-			gui2::show_transient_message("", _("Scenario saved."));
+			gui_.set_status(_("Scenario saved."), true);
 		}
 	} catch (const editor_map_save_exception& e) {
-		gui2::show_transient_message("", e.what());
+		gui_.set_status(e.what(), false);
 		return false;
 	}
 
@@ -904,10 +902,10 @@ bool context_manager::write_map(bool display_confirmation)
 	try {
 		get_map_context().save_map();
 		if(display_confirmation) {
-			gui2::show_transient_message("", _("Map saved."));
+			gui_.set_status(_("Map saved"), true);
 		}
 	} catch (const editor_map_save_exception& e) {
-		gui2::show_transient_message("", e.what());
+		gui_.set_status(e.what(), false);
 		return false;
 	}
 
@@ -1034,8 +1032,8 @@ void context_manager::new_scenario(int width, int height, const t_translation::t
 
 	// Give the new scenario an initial side.
 	get_map_context().new_side();
-	gui().set_team(0, true);
-	gui().set_playing_team(0);
+	gui().set_viewing_team_index(0, true);
+	gui().set_playing_team_index(0);
 	gui_.init_flags();
 }
 

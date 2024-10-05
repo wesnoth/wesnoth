@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/language_selection.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
@@ -72,10 +71,8 @@ language_selection::language_selection()
 
 void language_selection::shown_filter_callback()
 {
-	window& window = *get_window();
-
-	toggle_button& show_all_toggle = find_widget<toggle_button>(&window, "show_all", false);
-	listbox& list = find_widget<listbox>(&window, "language_list", false);
+	toggle_button& show_all_toggle = find_widget<toggle_button>("show_all");
+	listbox& list = find_widget<listbox>("language_list");
 
 	if(show_all_toggle.get_value_bool()) {
 		list.set_row_shown(boost::dynamic_bitset<>{langs_.size(), ~0UL});
@@ -84,12 +81,12 @@ void language_selection::shown_filter_callback()
 	}
 }
 
-void language_selection::pre_show(window& window)
+void language_selection::pre_show()
 {
-	listbox& list = find_widget<listbox>(&window, "language_list", false);
-	window.keyboard_capture(&list);
+	listbox& list = find_widget<listbox>("language_list");
+	keyboard_capture(&list);
 
-	toggle_button& show_all_toggle = find_widget<toggle_button>(&window, "show_all", false);
+	toggle_button& show_all_toggle = find_widget<toggle_button>("show_all");
 	connect_signal_mouse_left_click(show_all_toggle, std::bind(
 			&language_selection::shown_filter_callback, this));
 
@@ -119,10 +116,10 @@ void language_selection::pre_show(window& window)
 	shown_filter_callback();
 }
 
-void language_selection::post_show(window& window)
+void language_selection::post_show()
 {
 	if(get_retval() == retval::OK) {
-		const int res = find_widget<listbox>(&window, "language_list", false)
+		const int res = find_widget<listbox>("language_list")
 								.get_selected_row();
 
 		assert(res != -1);

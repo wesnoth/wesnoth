@@ -19,7 +19,6 @@
 
 #include "desktop/open.hpp"
 #include "game_initialization/multiplayer.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -33,30 +32,30 @@ REGISTER_DIALOG(mp_method_selection)
 
 static const std::string forum_registration_url = "https://forums.wesnoth.org/ucp.php?mode=register";
 
-void mp_method_selection::pre_show(window& window)
+void mp_method_selection::pre_show()
 {
 	user_name_ = prefs::get().login();
 
-	text_box* user_widget = find_widget<text_box>(&window, "user_name", false, true);
+	text_box* user_widget = find_widget<text_box>("user_name", false, true);
 	user_widget->set_value(user_name_);
 	user_widget->set_maximum_length(mp::max_login_size);
 
-	window.keyboard_capture(user_widget);
+	keyboard_capture(user_widget);
 
-	listbox* list = find_widget<listbox>(&window, "method_list", false, true);
-	window.add_to_keyboard_chain(list);
+	listbox* list = find_widget<listbox>("method_list", false, true);
+	add_to_keyboard_chain(list);
 
-	connect_signal_mouse_left_click(find_widget<button>(&window, "register", false),
+	connect_signal_mouse_left_click(find_widget<button>("register"),
 		std::bind(&desktop::open_object, forum_registration_url));
 }
 
-void mp_method_selection::post_show(window& window)
+void mp_method_selection::post_show()
 {
 	if(get_retval() == retval::OK) {
-		listbox& list = find_widget<listbox>(&window, "method_list", false);
+		listbox& list = find_widget<listbox>("method_list");
 		choice_ = static_cast<choice>(list.get_selected_row());
 
-		text_box& user_widget = find_widget<text_box>(&window, "user_name", false);
+		text_box& user_widget = find_widget<text_box>("user_name");
 		user_widget.save_to_history();
 
 		user_name_ = user_widget.get_value();

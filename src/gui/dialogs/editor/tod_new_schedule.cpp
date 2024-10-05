@@ -19,7 +19,6 @@
 
 #include "gui/dialogs/editor/tod_new_schedule.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/text_box.hpp"
 
@@ -35,37 +34,37 @@ tod_new_schedule::tod_new_schedule(std::string& schedule_id, t_string& schedule_
 {
 }
 
-void tod_new_schedule::pre_show(window& win) {
-	find_widget<text_box>(&win, "id_box", false).set_value(schedule_id_);
-	find_widget<text_box>(&win, "name_box", false).set_value(schedule_name_);
+void tod_new_schedule::pre_show() {
+	find_widget<text_box>("id_box").set_value(schedule_id_);
+	find_widget<text_box>("name_box").set_value(schedule_name_);
 
-	find_widget<button>(get_window(), "ok", false).set_active(false);
+	find_widget<button>("ok").set_active(false);
 
 	connect_signal_notify_modified(
-		find_widget<text_box>(&win, "name_box", false),
+		find_widget<text_box>("name_box"),
 		std::bind(&tod_new_schedule::button_state_change, this));
 	connect_signal_notify_modified(
-		find_widget<text_box>(&win, "id_box", false),
+		find_widget<text_box>("id_box"),
 		std::bind(&tod_new_schedule::button_state_change, this));
 }
 
 void tod_new_schedule::button_state_change() {
 	if (
-		find_widget<text_box>(get_window(), "id_box", false).get_value().empty()
-		|| find_widget<text_box>(get_window(), "name_box", false).get_value().empty())
+		find_widget<text_box>("id_box").get_value().empty()
+		|| find_widget<text_box>("name_box").get_value().empty())
 	{
-		find_widget<button>(get_window(), "ok", false).set_active(false);
+		find_widget<button>("ok").set_active(false);
 	} else {
-		find_widget<button>(get_window(), "ok", false).set_active(true);
+		find_widget<button>("ok").set_active(true);
 	}
 
 	get_window()->queue_redraw();
 }
 
-void tod_new_schedule::post_show(window& win)
+void tod_new_schedule::post_show()
 {
-	schedule_id_ = find_widget<text_box>(&win, "id_box", false).get_value();
-	schedule_name_ = find_widget<text_box>(&win, "name_box", false).get_value();
+	schedule_id_ = find_widget<text_box>("id_box").get_value();
+	schedule_name_ = find_widget<text_box>("name_box").get_value();
 }
 
 }

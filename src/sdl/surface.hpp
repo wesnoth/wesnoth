@@ -86,6 +86,12 @@ public:
 	 */
 	surface clone() const;
 
+	/** Total area of the surface in square pixels. */
+	int area() const
+	{
+		return surface_ ? surface_->w * surface_->h : 0;
+	}
+
 	operator SDL_Surface*() const { return surface_; }
 
 	SDL_Surface* get() const { return surface_; }

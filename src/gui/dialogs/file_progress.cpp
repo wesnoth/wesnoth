@@ -19,7 +19,6 @@
 
 #include "draw_manager.hpp"
 #include "events.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/label.hpp"
@@ -43,25 +42,19 @@ file_progress::file_progress(const std::string& title, const std::string& messag
 	, message_(message)
 	, update_time_()
 {
-	find_widget<label>(this, "title", false).set_label(title_);
-	auto& label_widget = find_widget<label>(this, "message", false);
+	find_widget<label>("title").set_label(title_);
+	auto& label_widget = find_widget<label>("message");
 
 	label_widget.set_use_markup(true);
 	label_widget.set_label(message_);
 
-	find_widget<button>(this, "placeholder", false).set_active(false);
+	find_widget<button>("placeholder").set_active(false);
 
 	update_time_ = clock::now();
 }
 
 void file_progress::update_progress(unsigned value)
 {
-	auto* window = get_window();
-
-	if(!window) {
-		return;
-	}
-
 	using std::chrono::duration_cast;
 	using std::chrono::milliseconds;
 	using namespace std::chrono_literals;
@@ -76,9 +69,9 @@ void file_progress::update_progress(unsigned value)
 
 	update_time_ = now;
 
-	find_widget<progress_bar>(window, "progress", false).set_percentage(value);
+	find_widget<progress_bar>("progress").set_percentage(value);
 
-	get_window()->queue_redraw();
+	queue_redraw();
 	events::draw();
 }
 

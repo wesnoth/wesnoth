@@ -363,9 +363,11 @@ void play_controller::fire_prestart()
 
 void play_controller::refresh_objectives() const
 {
-	const config cfg("side", gui_->viewing_side());
-	gamestate().lua_kernel_->run_wml_action("show_objectives", vconfig(cfg),
-		game_events::queued_event("_from_interface", "", map_location(), map_location(), config()));
+	if(!get_teams().empty()) {
+		const config cfg("side", gui_->viewing_team().side());
+		gamestate().lua_kernel_->run_wml_action("show_objectives", vconfig(cfg),
+			game_events::queued_event("_from_interface", "", map_location(), map_location(), config()));
+	}
 }
 
 void play_controller::fire_start()
@@ -399,7 +401,7 @@ void play_controller::init_gui()
 void play_controller::init_side_begin()
 {
 	mouse_handler_.set_side(current_side());
-	gui_->set_playing_team(std::size_t(current_side() - 1));
+	gui_->set_playing_team_index(std::size_t(current_side() - 1));
 
 	update_viewing_player();
 
@@ -699,7 +701,7 @@ void play_controller::tab()
 	case gui::TEXTBOX_SEARCH: {
 		for(const unit& u : get_units()) {
 			const map_location& loc = u.get_location();
-			if(!gui_->fogged(loc) && !(get_teams()[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc)))
+			if(!gui_->fogged(loc) && !(gui_->viewing_team().is_enemy(u.side()) && u.invisible(loc)))
 				dictionary.insert(u.name());
 		}
 		// TODO List map labels
@@ -836,7 +838,7 @@ void play_controller::process_keyup_event(const SDL_Event& event)
 				unit_movement_resetter move_reset(*u, u->side() != current_side());
 
 				mouse_handler_.set_current_paths(pathfind::paths(
-					*u, false, true, get_teams()[gui_->viewing_team()], mouse_handler_.get_path_turns()));
+					*u, false, true, gui_->viewing_team(), mouse_handler_.get_path_turns()));
 
 				gui_->highlight_reach(mouse_handler_.current_paths());
 			} else {
@@ -1033,7 +1035,7 @@ bool play_controller::reveal_map_default() const
 
 void play_controller::update_gui_to_player(const int team_index, const bool observe)
 {
-	gui_->set_team(team_index, observe);
+	gui_->set_viewing_team_index(team_index, observe);
 	gui_->recalculate_minimap();
 	gui_->invalidate_all();
 }
@@ -1061,11 +1063,6 @@ void play_controller::update_savegame_snapshot() const
 game_events::wml_event_pump& play_controller::pump()
 {
 	return gamestate().events_manager_->pump();
-}
-
-int play_controller::get_ticks() const
-{
-	return ticks_;
 }
 
 soundsource::manager* play_controller::get_soundsource_man()
@@ -1161,8 +1158,8 @@ static void find_next_scenarios(const config& parent, std::set<std::string>& res
 			result.insert(endlevel["next_scenario"]);
 		}
 	}
-	for(const auto cfg : parent.all_children_range()) {
-		find_next_scenarios(cfg.cfg, result);
+	for(const auto [key, cfg] : parent.all_children_range()) {
+		find_next_scenarios(cfg, result);
 	}
 };
 
@@ -1237,8 +1234,8 @@ void play_controller::check_next_scenario_is_known() {
 
 bool play_controller::can_use_synced_wml_menu() const
 {
-	const team& viewing_team = get_teams()[gui_->viewing_team()];
-	return gui_->viewing_team() == gui_->playing_team() && !events::commands_disabled && viewing_team.is_local_human()
+	const team& viewing_team = gui_->viewing_team();
+	return gui_->viewing_team_is_playing() && !events::commands_disabled && viewing_team.is_local_human()
 		&& !is_browsing();
 }
 
@@ -1300,7 +1297,7 @@ play_controller::scoped_savegame_snapshot::~scoped_savegame_snapshot()
 
 void play_controller::show_objectives() const
 {
-	const team& t = get_teams()[gui_->viewing_team()];
+	const team& t = gui_->viewing_team();
 	static const std::string no_objectives(_("No objectives available"));
 	std::string objectives = utils::interpolate_variables_into_string(t.objectives(), *gamestate_->get_game_data());
 	gui2::show_transient_message(get_scenario_name(), (objectives.empty() ? no_objectives : objectives), "", true);

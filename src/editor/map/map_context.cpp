@@ -419,29 +419,29 @@ config map_context::convert_scenario(const config& old_scenario)
 	//   if [unit], set the unit's side
 	// for [time]:
 	//   keep under [multiplayer]
-	for(const config::any_child child : old_scenario.all_children_range()) {
-		if(child.key != "side" && child.key != "time") {
-			config& c = event.add_child(child.key);
-			c.append_attributes(child.cfg);
-			c.append_children(child.cfg);
-		} else if(child.key == "side") {
+	for(const auto [child_key, child_cfg]: old_scenario.all_children_range()) {
+		if(child_key != "side" && child_key != "time") {
+			config& c = event.add_child(child_key);
+			c.append_attributes(child_cfg);
+			c.append_children(child_cfg);
+		} else if(child_key == "side") {
 			config& c = multiplayer.add_child("side");
-			c.append_attributes(child.cfg);
-			for(const config::any_child side_child : child.cfg.all_children_range()) {
-				if(side_child.key == "village") {
+			c.append_attributes(child_cfg);
+			for(const auto [side_key, side_cfg] : child_cfg.all_children_range()) {
+				if(side_key == "village") {
 					config& c1 = c.add_child("village");
-					c1.append_attributes(side_child.cfg);
+					c1.append_attributes(side_cfg);
 				} else {
-					config& c1 = event.add_child(side_child.key);
-					c1.append_attributes(side_child.cfg);
-					if(side_child.key == "unit") {
-						c1["side"] = child.cfg["side"];
+					config& c1 = event.add_child(side_key);
+					c1.append_attributes(side_cfg);
+					if(side_key == "unit") {
+						c1["side"] = child_cfg["side"];
 					}
 				}
 			}
-		} else if(child.key == "time") {
+		} else if(child_key == "time") {
 			config& c = multiplayer.add_child("time");
-			c.append_attributes(child.cfg);
+			c.append_attributes(child_cfg);
 		}
 	}
 
@@ -650,7 +650,9 @@ config map_context::to_config()
 				: scen.add_child("multiplayer");
 
 	scenario.remove_children("side");
-	scenario.remove_children("event", [](config cfg){return cfg["id"].str() == "editor_event-start" || cfg["id"].str() == "editor_event-prestart";});
+	scenario.remove_children("event", [](const config& cfg) {
+		return cfg["id"].str() == "editor_event-start" || cfg["id"].str() == "editor_event-prestart";
+	});
 
 	scenario["id"] = scenario_id_;
 	scenario["name"] = t_string(scenario_name_, current_textdomain);

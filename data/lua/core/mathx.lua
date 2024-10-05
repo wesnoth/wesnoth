@@ -112,6 +112,16 @@ function mathx.lerp(lo, hi, alpha)
 	return lo + alpha * (hi - lo)
 end
 
+---Choose an element from a list based on a ratio.
+---@generic T
+---@param list T[]
+---@param alpha number
+---@return T
+function mathx.lerp_index(list, alpha)
+	if #list == 0 then return nil end
+	return list[mathx.round(mathx.lerp(1, #list, alpha))]
+end
+
 ---Clamp a number into a specified range
 ---@param val number
 ---@param lo number

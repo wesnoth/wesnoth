@@ -36,7 +36,7 @@ public:
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(formula_debugger)
 
 private:
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	virtual const std::string& window_id() const override;
 

@@ -8,6 +8,7 @@
 ---@field type string
 ---@field icon string
 ---@field range integer
+---@field alignment string
 ---@field number integer
 ---@field movement_used integer
 ---@field attacks_used integer
@@ -15,6 +16,8 @@
 ---@field defense_weight number
 ---@field accuracy integer
 ---@field parry integer
+---@field max_range integer
+---@field min_range integer
 ---@field specials WMLTable
 ---@field __cfg WMLTable
 

@@ -54,17 +54,17 @@ public:
 
 	void set_value(const int val);
 
-	int get_value();
+	int get_value() const;
 
 	void set_step_size(unsigned step);
 
-	unsigned get_step_size();
+	unsigned get_step_size() const;
 
 	void set_value_range(int min, int max);
 
-	int get_minimum_value();
+	int get_minimum_value() const;
 
-	int get_maximum_value();
+	int get_maximum_value() const;
 
 	void prev();
 

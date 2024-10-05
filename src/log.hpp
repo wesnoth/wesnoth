@@ -55,6 +55,7 @@
 #include "utils/optional_fwd.hpp"
 #include <string>
 #include <utility>
+#include <chrono>
 #include <ctime>
 #include <cstdint>
 
@@ -239,19 +240,19 @@ log_domain& general();
 
 class scope_logger
 {
-	int64_t ticks_;
+	std::chrono::steady_clock::time_point start_;
 	const log_domain& domain_;
 	std::string str_;
 public:
 	scope_logger(const log_domain& domain, const char* str)
-		: ticks_(0)
+		: start_()
 		, domain_(domain)
 		, str_()
 	{
 		if (!debug().dont_log(domain)) do_log_entry(str);
 	}
 	scope_logger(const log_domain& domain, const std::string& str)
-		: ticks_(0)
+		: start_()
 		, domain_(domain)
 		, str_()
 	{

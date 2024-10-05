@@ -17,7 +17,6 @@
 #include "gui/dialogs/log_settings.hpp"
 
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -55,9 +54,9 @@ log_settings::log_settings()
 	}
 }
 
-void log_settings::pre_show(window& window)
+void log_settings::pre_show()
 {
-	listbox& logger_box = find_widget<listbox>(&window, "logger_listbox", false);
+	listbox& logger_box = find_widget<listbox>("logger_listbox");
 
 	for(unsigned int i = 0; i < domain_list_.size(); i++){
 		std::string this_domain = domain_list_[i];
@@ -87,16 +86,16 @@ void log_settings::pre_show(window& window)
 		}
 	}
 
-	text_box* filter = find_widget<text_box>(&window, "filter_box", false, true);
+	text_box* filter = find_widget<text_box>("filter_box", false, true);
 	filter->set_text_changed_callback(std::bind(&log_settings::filter_text_changed, this, std::placeholders::_2));
 
-	window.keyboard_capture(filter);
-	window.add_to_keyboard_chain(&logger_box);
+	keyboard_capture(filter);
+	add_to_keyboard_chain(&logger_box);
 }
 
 void log_settings::filter_text_changed(const std::string& text)
 {
-	listbox& list = find_widget<listbox>(get_window(), "logger_listbox", false);
+	listbox& list = find_widget<listbox>("logger_listbox");
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
@@ -130,7 +129,7 @@ void log_settings::filter_text_changed(const std::string& text)
 	list.set_row_shown(show_items);
 }
 
-void log_settings::post_show(window& /*window*/)
+void log_settings::post_show()
 {
 	for(std::string this_domain : domain_list_){
 		set_logger(this_domain);

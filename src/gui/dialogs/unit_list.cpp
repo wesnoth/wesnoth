@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/unit_list.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
@@ -82,15 +81,15 @@ static std::string format_movement_string(unit_const_ptr u)
 	return formatter() << "<span color='" << color << "'>" << moves_left << "/" << moves_max << "</span>";
 }
 
-void unit_list::pre_show(window& window)
+void unit_list::pre_show()
 {
-	listbox& list = find_widget<listbox>(&window, "units_list", false);
+	listbox& list = find_widget<listbox>("units_list");
 
 	connect_signal_notify_modified(list, std::bind(&unit_list::list_item_clicked, this));
 
 	list.clear();
 
-	window.keyboard_capture(&list);
+	keyboard_capture(&list);
 
 	for(const unit_const_ptr& unit : unit_list_) {
 		widget_data row_data;
@@ -132,24 +131,24 @@ void unit_list::pre_show(window& window)
 		column["label"] = utils::join(unit->trait_names(), ", ");
 		row_data.emplace("unit_traits", column);
 
-		grid* row_grid = &list.add_row(row_data);
+		grid& row_grid = list.add_row(row_data);
 
 		// NOTE: this needs to be done *after* the row is added
 		// TODO: show custom statuses
 		if(!unit->get_state(unit::STATE_PETRIFIED)) {
-			find_widget<image>(row_grid, "unit_status_petrified", false).set_visible(widget::visibility::invisible);
+			row_grid.find_widget<image>("unit_status_petrified").set_visible(widget::visibility::invisible);
 		}
 
 		if(!unit->get_state(unit::STATE_POISONED)) {
-			find_widget<image>(row_grid, "unit_status_poisoned", false).set_visible(widget::visibility::invisible);
+			row_grid.find_widget<image>("unit_status_poisoned").set_visible(widget::visibility::invisible);
 		}
 
 		if(!unit->get_state(unit::STATE_SLOWED)) {
-			find_widget<image>(row_grid, "unit_status_slowed", false).set_visible(widget::visibility::invisible);
+			row_grid.find_widget<image>("unit_status_slowed").set_visible(widget::visibility::invisible);
 		}
 
 		if(!unit->invisible(unit->get_location(), false)) {
-			find_widget<image>(row_grid, "unit_status_invisible", false).set_visible(widget::visibility::invisible);
+			row_grid.find_widget<image>("unit_status_invisible").set_visible(widget::visibility::invisible);
 		}
 	}
 
@@ -171,20 +170,20 @@ void unit_list::pre_show(window& window)
 void unit_list::list_item_clicked()
 {
 	const int selected_row
-		= find_widget<listbox>(get_window(), "units_list", false).get_selected_row();
+		= find_widget<listbox>("units_list").get_selected_row();
 
 	if(selected_row == -1) {
 		return;
 	}
 
-	find_widget<unit_preview_pane>(get_window(), "unit_details", false)
+	find_widget<unit_preview_pane>("unit_details")
 		.set_displayed_unit(*unit_list_[selected_row].get());
 }
 
-void unit_list::post_show(window& window)
+void unit_list::post_show()
 {
 	if(get_retval() == retval::OK) {
-		const int selected_row = find_widget<listbox>(&window, "units_list", false).get_selected_row();
+		const int selected_row = find_widget<listbox>("units_list").get_selected_row();
 
 		scroll_to_ = unit_list_[selected_row]->get_location();
 	}
@@ -197,7 +196,7 @@ void show_unit_list(display& gui)
 
 	const unit_map& units = gui.get_units();
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-		if(i->side() != gui.viewing_side()) {
+		if(i->side() != gui.viewing_team().side()) {
 			continue;
 		}
 

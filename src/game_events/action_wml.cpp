@@ -456,18 +456,18 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 	vconfig unit_filter_cfg(temp_config);
 	const vconfig & leader_filter = cfg.child("secondary_unit");
 
-	for(int index = 0; index < static_cast<int>(resources::gameboard->teams().size()); ++index) {
-		LOG_NG << "for side " << index + 1 << "...";
-		const std::string player_id = resources::gameboard->teams()[index].save_id_or_number();
+	for(team& t : resources::gameboard->teams()) {
+		LOG_NG << "for side " << t.side() << "...";
+		const std::string player_id = t.save_id_or_number();
 
-		if(resources::gameboard->teams()[index].recall_list().size() < 1) {
+		if(t.recall_list().size() < 1) {
 			DBG_NG << "recall list is empty when trying to recall!";
-			DBG_NG << "player_id: " << player_id << " side: " << index+1;
+			DBG_NG << "player_id: " << player_id << " side: " << t.side();
 			continue;
 		}
 
-		recall_list_manager & avail = resources::gameboard->teams()[index].recall_list();
-		std::vector<unit_map::unit_iterator> leaders = resources::gameboard->units().find_leaders(index + 1);
+		recall_list_manager & avail = t.recall_list();
+		std::vector<unit_map::unit_iterator> leaders = resources::gameboard->units().find_leaders(t.side());
 
 		const unit_filter ufilt(unit_filter_cfg);
 		const unit_filter lfilt(leader_filter); // Note that if leader_filter is null, this correctly gives a null filter that matches all units.
@@ -894,8 +894,16 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 		.allow_rename_side(true)
 		.allow_show(true);
 
-	uc.add_unit(parsed_cfg, &cfg);
+	try
+	{
+		uc.add_unit(parsed_cfg, &cfg);
+	}
+	catch(const unit_type::error& e)
+	{
+		ERR_WML << "Error occured inside [unit]: " << e.what();
 
+		throw;
+	}
 }
 
 } // end namespace game_events

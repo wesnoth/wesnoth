@@ -819,7 +819,6 @@ class prefs
 		static constexpr std::array unsynced_attributes_{
 			prefs_list::auto_pixel_scale,
 			prefs_list::core,
-			prefs_list::dir_bookmarks,
 			prefs_list::draw_delay,
 			prefs_list::editor_chosen_addon,
 			prefs_list::gui2_theme,
@@ -841,6 +840,7 @@ class prefs
 		};
 		static constexpr std::array unsynced_children_{
 			prefs_list::editor_recent_files,
+			prefs_list::dir_bookmarks,
 		};
 		static_assert(synced_attributes_.size() + synced_children_.size() + unsynced_attributes_.size() + unsynced_children_.size() == prefs_list::values.size(), "attribute missing from lists of synced or unsynced preferences!");
 };

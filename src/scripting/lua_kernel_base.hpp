@@ -138,11 +138,31 @@ protected:
 
 	int intf_kernel_type(lua_State* L);
 
-	virtual int impl_game_config_get(lua_State* L);
-	virtual int impl_game_config_set(lua_State* L);
+	int impl_game_config_get(lua_State* L);
+	int impl_game_config_set(lua_State* L);
+	int impl_game_config_dir(lua_State* L);
 private:
 	static lua_kernel_base*& get_lua_kernel_base_ptr(lua_State *L);
 	std::vector<std::tuple<std::string, std::string>> registered_widget_definitions_;
 };
 
 std::vector<std::string> luaW_get_attributes(lua_State* L, int idx);
+
+struct game_config_tag {
+	lua_kernel_base& ref;
+	game_config_tag(lua_kernel_base& k) : ref(k) {}
+};
+#define GAME_CONFIG_GETTER(name, type, kernel_type) \
+	LATTR_VALID(name, game_config_tag, k) { return dynamic_cast<kernel_type*>(&k.ref) != nullptr; } \
+	LATTR_GETTER(name, type, game_config_tag, k)
+#define GAME_CONFIG_SETTER(name, type, kernel_type) \
+	LATTR_VALID(name, game_config_tag, k) { return dynamic_cast<kernel_type*>(&k.ref) != nullptr; } \
+	LATTR_SETTER(name, type, game_config_tag, k)
+
+template<typename T> struct lua_object_traits;
+template<> struct lua_object_traits<game_config_tag> {
+	inline static auto metatable = "game config";
+	inline static game_config_tag get(lua_State* L, int) {
+		return lua_kernel_base::get_lua_kernel<lua_kernel_base>(L);
+	}
+};

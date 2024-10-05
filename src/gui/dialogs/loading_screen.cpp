@@ -24,7 +24,6 @@
 #include "cursor.hpp"
 #include "draw_manager.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/window.hpp"
@@ -96,18 +95,18 @@ loading_screen::loading_screen(std::function<void()> f)
 	singleton_ = this;
 }
 
-void loading_screen::pre_show(window& window)
+void loading_screen::pre_show()
 {
-	window.set_enter_disabled(true);
-	window.set_escape_disabled(true);
+	set_enter_disabled(true);
+	set_escape_disabled(true);
 
 	cursor_setter_.reset(new cursor::setter(cursor::WAIT));
 
-	progress_stage_label_ = find_widget<label>(&window, "status", false, true);
-	animation_ = find_widget<drawing>(&window, "animation", false, true);
+	progress_stage_label_ = find_widget<label>("status", false, true);
+	animation_ = find_widget<drawing>("animation", false, true);
 }
 
-void loading_screen::post_show(window& /*window*/)
+void loading_screen::post_show()
 {
 	cursor_setter_.reset();
 }

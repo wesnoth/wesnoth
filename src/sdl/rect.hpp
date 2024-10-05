@@ -100,6 +100,12 @@ public:
 	/** The area of this rectangle, in square pixels. */
 	constexpr int area() const { return w * h; }
 
+	/** The center point of the rectangle, accounting for origin. */
+	constexpr point center() const
+	{
+		return {x + w / 2, y + h / 2};
+	}
+
 	/** False if both w and h are > 0, true otherwise. */
 	bool empty() const;
 
@@ -141,6 +147,10 @@ public:
 	 * The point's X and Y coordinates will be added to the rectangle's.
 	 */
 	void shift(const point& p);
+
+	/** Returns a new rectangle shifted by the given relative position. */
+	rect shifted_by(int x, int y) const;
+	rect shifted_by(const point& p) const;
 };
 
 std::ostream& operator<<(std::ostream&, const rect&);

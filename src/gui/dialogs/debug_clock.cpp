@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/debug_clock.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/window.hpp"
@@ -37,29 +36,26 @@ debug_clock::debug_clock()
 	, signal_()
 	, time_()
 {
-	hour_percentage_ = find_widget<progress_bar>(
-			this, "hour_percentage", false, false);
-	minute_percentage_ = find_widget<progress_bar>(
-			this, "minute_percentage", false, false);
-	second_percentage_ = find_widget<progress_bar>(
-			this, "second_percentage", false, false);
+	hour_percentage_ = find_widget<progress_bar>("hour_percentage", false, false);
+	minute_percentage_ = find_widget<progress_bar>("minute_percentage", false, false);
+	second_percentage_ = find_widget<progress_bar>("second_percentage", false, false);
 
-	hour_ = find_widget<integer_selector>(this, "hour", false, false);
+	hour_ = find_widget<integer_selector>("hour", false, false);
 	if(styled_widget *hour = dynamic_cast<styled_widget*>(hour_)) { //Note that the standard specifies that a dynamic cast of a null pointer is null
 		hour->set_active(false);
 	}
-	minute_ = find_widget<integer_selector>(this, "minute", false, false);
+	minute_ = find_widget<integer_selector>("minute", false, false);
 	if(styled_widget *minute = dynamic_cast<styled_widget*>(minute_)) {
 		minute->set_active(false);
 	}
-	second_ = find_widget<integer_selector>(this, "second", false, false);
+	second_ = find_widget<integer_selector>("second", false, false);
 	if(styled_widget *second = dynamic_cast<styled_widget*>(second_)) {
 		second->set_active(false);
 	}
 
-	pane_ = find_widget<pane>(this, "pane", false, false);
+	pane_ = find_widget<pane>("pane", false, false);
 
-	clock_ = find_widget<styled_widget>(this, "clock", false, false);
+	clock_ = find_widget<styled_widget>("clock", false, false);
 
 	time_.set_current_time();
 	update_time(true);
