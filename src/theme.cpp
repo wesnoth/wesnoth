@@ -24,6 +24,8 @@
 #include "serialization/string_utils.hpp"
 #include "wml_exception.hpp"
 #include "game_config_view.hpp"
+#include "resources.hpp"
+#include "play_controller.hpp"
 #include <sstream>
 #include <utility>
 
@@ -515,8 +517,16 @@ theme::menu::menu(std::size_t sw, std::size_t sh, const config& cfg)
 	, overlay_(cfg["overlay"])
 	, items_()
 {
-	for(const auto& item : utils::split(cfg["items"])) {
-		items_.emplace_back("id", item);
+	if(resources::controller == nullptr || !resources::controller->is_networked_mp()) {
+		for(const auto& item : utils::split(cfg["items"])) {
+			items_.emplace_back("id", item);
+		}
+	} else {
+		for(const auto& item : utils::split(cfg["items"])) {
+			if(item != "menu-autosaves") {
+				items_.emplace_back("id", item);
+			}
+		}
 	}
 
 	const auto& cmd = hotkey::get_hotkey_command(items_[0]["id"]);
