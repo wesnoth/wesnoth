@@ -126,7 +126,7 @@ void spinner::set_step_size(unsigned step)
 	}
 }
 
-unsigned spinner::get_step_size() const 
+unsigned spinner::get_step_size() const
 {
 	return step_size_;
 }
