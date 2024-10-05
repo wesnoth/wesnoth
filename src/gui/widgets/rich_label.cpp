@@ -33,6 +33,7 @@
 #include "serialization/unicode.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"
+#include "video.hpp"
 #include "wml_exception.hpp"
 
 #include <functional>
@@ -606,7 +607,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 				if (wrap_mode && (float_size.y > 0) && (text_size.y > float_size.y)) {
 					DBG_GUI_RL << "wrap start";
 
-					size_t len = get_split_location((*curr_item)["text"].str(), point(init_width - float_size.x, float_size.y));
+					size_t len = get_split_location((*curr_item)["text"].str(), point(init_width - float_size.x, float_size.y * video::get_pixel_scale()));
 					DBG_GUI_RL << "wrap around area: " << float_size;
 
 					// first part of the text
