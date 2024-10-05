@@ -319,24 +319,13 @@ std::string unit_topic_generator::operator()() const {
 	const bool has_male_portrait = !male_portrait.empty() && male_portrait != male_type.image() && male_portrait != "unit_image";
 	const bool has_female_portrait = !female_portrait.empty() && female_portrait != male_portrait && female_portrait != female_type.image() && female_portrait != "unit_image";
 
-	int sz = (has_male_portrait && has_female_portrait ? 300 : 400);
-	if (screen_width <= 1366) {
-		sz = (has_male_portrait && has_female_portrait ? 200 : 300);
-	} else if (screen_width >= 1920) {
-		sz = 400;
-	}
-
-	// without this, scaling down (SCALE_INTO below) and then scaling back up due to the pixel multiplier leads to ugly results
-	// can't use the preferences value since it may be different than the actual value
-	sz *= video::get_pixel_scale();
-
 	// TODO: figure out why the second checks don't match but the last does
 	if (has_male_portrait) {
-		ss << "<img src='" << male_portrait << "~FL(horiz)~SCALE_INTO(" << sz << ',' << sz << ")' box='no' align='right' float='yes' />";
+		ss << "<img src='" << male_portrait << "~FL(horiz)' box='no' align='right' float='yes' />";
 	}
 
 	if (has_female_portrait) {
-		ss << "<img src='" << female_portrait << "~FL(horiz)~SCALE_INTO(" << sz << ',' << sz << ")' box='no' align='right' float='yes' />";
+		ss << "<img src='" << female_portrait << "~FL(horiz)' box='no' align='right' float='yes' />";
 	}
 
 	// Unit Images
