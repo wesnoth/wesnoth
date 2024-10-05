@@ -198,6 +198,7 @@ public:
 	 * @retval nullptr          No parent grid found.
 	 */
 	grid* get_parent_grid();
+	const grid* get_parent_grid() const;
 
 	/*** *** *** *** *** *** Setters and getters. *** *** *** *** *** ***/
 
