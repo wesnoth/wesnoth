@@ -349,6 +349,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::ui_comma
 	case hotkey::HOTKEY_BEST_ENEMY_MOVES:
 		return !linger() && play_controller_.enemies_visible();
 
+	case hotkey::HOTKEY_LOAD_AUTOSAVES:
 	case hotkey::HOTKEY_LOAD_GAME:
 		return !play_controller_.is_networked_mp(); // Can only load games if not in a network game
 
