@@ -121,7 +121,7 @@ void campaign_selection::campaign_selected()
 					// so we want to prepend each label to its description here
 					desc = cfg["label"].str() + "\n" + desc;
 
-					entry["details"] = std::move(desc);
+					entry["details"] = desc;
 				}
 
 				entry_list.emplace_back(std::move(entry));

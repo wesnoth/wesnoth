@@ -37,7 +37,7 @@ int main(int, char** argv)
     }
 
     Mix_Music* music = Mix_LoadMUS(argv[1]);
-    if (music == NULL) {
+    if (music == nullptr) {
         fprintf(stdout, "Cannot load music file: %s\\n", Mix_GetError());
         Mix_CloseAudio();
         return (EXIT_FAILURE);

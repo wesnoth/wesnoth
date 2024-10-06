@@ -446,12 +446,16 @@ movetype::terrain_info::terrain_info(const terrain_info & that,
 	copy_data(that);
 }
 
+// This is effectively the move constructor for terrain_info, so it's impossible to
+// use 'that' to move construct a terrain_info here.
+// NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
 movetype::terrain_info::terrain_info(terrain_info && that,
 	const terrain_info * fallback) :
-	fallback_(fallback)
+	fallback_(fallback),
+	unique_data_(std::move(that.unique_data_)),
+	shared_data_(std::move(that.shared_data_))
 {
 	assert(fallback ? !! that.fallback_ : ! that.fallback_);
-	swap_data(that);
 }
 
 /**
@@ -839,7 +843,7 @@ movetype::movetype(movetype && that) :
 	jamming_(std::move(that.jamming_), &vision_),
 	defense_(std::move(that.defense_)),
 	resist_(std::move(that.resist_)),
-	flying_(std::move(that.flying_)),
+	flying_(that.flying_),
 	special_notes_(std::move(that.special_notes_))
 {
 }

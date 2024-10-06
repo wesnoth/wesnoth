@@ -922,11 +922,12 @@ void generate_races_sections(const config* help_cfg, section& sec, int level)
 	while(process_queue_again && !taxonomy_queue.empty()) {
 		process_queue_again = false;
 		std::vector<taxonomy_queue_type> to_process = std::move(taxonomy_queue);
+		taxonomy_queue.clear();
 
 		for(auto& x : to_process) {
 			auto parent = find_section(sec, x.parent_id);
 			if(parent) {
-				parent->add_section(std::move(x.content));
+				parent->add_section(x.content);
 				process_queue_again = true;
 			} else {
 				taxonomy_queue.push_back(std::move(x));
@@ -936,7 +937,7 @@ void generate_races_sections(const config* help_cfg, section& sec, int level)
 
 	// Fallback to adding the new race at the top level, as if it had help_taxonomy.empty().
 	for(auto& x : taxonomy_queue) {
-		sec.add_section(std::move(x.content));
+		sec.add_section(x.content);
 	}
 }
 
