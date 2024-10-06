@@ -221,7 +221,7 @@ teleport_map::teleport_map(
 			auto map_it = teleport_map_.find(*source_it);
 
 			if(map_it == teleport_map_.end()) {
-				std::set<map_location> map_locations;
+				std::unordered_set<map_location, map_location_hasher> map_locations;
 				map_locations.insert(locations.second.begin(), locations.second.end());
 				teleport_map_.emplace(*source_it, map_locations);
 			} else {
