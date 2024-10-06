@@ -18,6 +18,8 @@
 #include "config.hpp"
 #include "map/location.hpp"
 
+#include <unordered_set>
+
 class team;
 class unit;
 class vconfig;
@@ -120,13 +122,13 @@ public:
 	 * @param loc			the map location for which we want to know the adjacent hexes
 	 * @todo what does this function actually have to do with adjacent hexes?
 	 */
-	std::set<map_location> get_adjacents(map_location loc) const;
+	const std::unordered_set<map_location, map_location_hasher>& get_adjacents(map_location loc) const;
 
 	/** Returns the locations that are an entrance of the tunnel. */
-	std::set<map_location> get_sources() const;
+	const std::unordered_set<map_location, map_location_hasher>& get_sources() const;
 
 	/** Returns the locations that are an exit of the tunnel. */
-	std::set<map_location> get_targets() const;
+	const std::unordered_set<map_location, map_location_hasher>& get_targets() const;
 
 	/*
 	 * @returns whether the teleport_map does contain any defined tunnel
@@ -136,9 +138,10 @@ public:
 	}
 
 private:
-	std::map<map_location, std::set<std::string>> teleport_map_;
-	std::map<std::string, std::set<map_location>> sources_;
-	std::map<std::string, std::set<map_location>> targets_;
+	std::unordered_map<map_location, std::unordered_set<map_location, map_location_hasher>, map_location_hasher> teleport_map_;
+	std::unordered_set<map_location, map_location_hasher> sources_;
+	std::unordered_set<map_location, map_location_hasher> targets_;
+	std::unordered_set<map_location, map_location_hasher> empty_set_;
 };
 
 /*

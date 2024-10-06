@@ -84,7 +84,7 @@ struct node {
 		if (teleports && !teleports->empty()) {
 
 			double new_srch = 1.0;
-			auto sources = teleports->get_sources();
+			const auto& sources = teleports->get_sources();
 
 			std::set<map_location>::const_iterator it = sources.begin();
 			for(; it != sources.end(); ++it) {
@@ -92,18 +92,20 @@ struct node {
 				if (tmp_srch < new_srch) { new_srch = tmp_srch; }
 			}
 
-			double new_dsth = 1.0;
-			auto targets = teleports->get_targets();
+			if(new_srch + 1.0 < h) {
+				double new_dsth = 1.0;
+				const auto& targets = teleports->get_targets();
 
-			for(it = targets.begin(); it != targets.end(); ++it) {
-				const double tmp_dsth = heuristic(*it, dst);
-				if (tmp_dsth < new_dsth) { new_dsth = tmp_dsth; }
-			}
+				for(it = targets.begin(); it != targets.end(); ++it) {
+					const double tmp_dsth = heuristic(*it, dst);
+					if (tmp_dsth < new_dsth) { new_dsth = tmp_dsth; }
+				}
 
-			double new_h = new_srch + new_dsth + 1.0;
-			if (new_h < h) {
-				h = new_h;
-				t = g + h;
+				double new_h = new_srch + new_dsth + 1.0;
+				if (new_h < h) {
+					h = new_h;
+					t = g + h;
+				}
 			}
 		}
 	}
@@ -165,7 +167,9 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	indexer index(width);
 	comp node_comp(nodes);
 
-	nodes[index(dst)].g = stop_at + 1;
+	node& dst_node = nodes[index(dst)];
+
+	dst_node.g = stop_at + 1;
 	nodes[index(src)] = node(0, src, map_location::null_location(), dst, true, teleports);
 
 	std::vector<int> pq;
@@ -179,13 +183,13 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 		std::pop_heap(pq.begin(), pq.end(), node_comp);
 		pq.pop_back();
 
-		if (n.t >= nodes[index(dst)].g) break;
+		if (n.t >= dst_node.g) break;
 
 		std::vector<map_location> locs(6);
 		get_adjacent_tiles(n.curr, locs.data());
 
 		if (teleports && !teleports->empty()) {
-			auto allowed_teleports = teleports->get_adjacents(n.curr);
+			const auto& allowed_teleports = teleports->get_adjacents(n.curr);
 			locs.insert(locs.end(), allowed_teleports.begin(), allowed_teleports.end());
 		}
 
@@ -196,7 +200,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 			if (loc == n.curr) continue;
 			node& next = nodes[index(loc)];
 
-			double thresh = (next.in - search_counter <= 1u) ? next.g : stop_at + 1;
+			double thresh = (next.in - search_counter <= 1u) ? next.g : dst_node.g;
 			// cost() is always >= 1  (assumed and needed by the heuristic)
 			if (n.g + 1 >= thresh) continue;
 			double cost = n.g + calc.cost(loc, n.g);
