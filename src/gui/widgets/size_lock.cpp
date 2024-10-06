@@ -68,13 +68,10 @@ void size_lock::layout_children()
 	widget_->layout_children();
 }
 
-void size_lock::finalize(const builder_widget& widget_builder)
+void size_lock::finalize(std::unique_ptr<widget>&& widget)
 {
 	set_rows_cols(1u, 1u);
-
-	auto widget = widget_builder.build();
 	widget_ = widget.get();
-
 	set_child(std::move(widget), 0u, 0u, grid::VERTICAL_GROW_SEND_TO_CLIENT | grid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0u);
 }
 
@@ -109,7 +106,7 @@ size_lock_definition::resolution::resolution(const config& cfg)
 	auto child = cfg.optional_child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(*child);
+	grid = std::make_unique<builder_grid>(*child);
 }
 
 namespace implementation
@@ -124,7 +121,7 @@ builder_size_lock::builder_size_lock(const config& cfg)
 	content_ = create_widget_builder(cfg.mandatory_child("widget"));
 }
 
-std::unique_ptr<widget> builder_size_lock::build() const
+std::unique_ptr<widget> builder_size_lock::build()
 {
 	auto widget = std::make_unique<size_lock>(*this);
 
@@ -134,7 +131,7 @@ std::unique_ptr<widget> builder_size_lock::build() const
 	assert(conf != nullptr);
 
 	widget->init_grid(*conf->grid);
-	widget->finalize(*content_);
+	widget->finalize(content_->build());
 
 	return widget;
 }

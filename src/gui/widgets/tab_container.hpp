@@ -36,7 +36,7 @@ class tab_container : public container_base
 	friend struct implementation::builder_tab_container;
 
 public:
-	explicit tab_container(const implementation::builder_tab_container& builder);
+	explicit tab_container(implementation::builder_tab_container& builder);
 
 	virtual void set_self_active(const bool active) override;
 
@@ -88,7 +88,7 @@ private:
 	 */
 	state_t state_;
 
-	std::vector<std::shared_ptr<builder_grid>> builders_;
+	std::vector<builder_grid_ptr> builders_;
 	std::vector<widget_data> list_items_;
 
 	/**
@@ -149,9 +149,9 @@ struct builder_tab_container : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual std::unique_ptr<widget> build() const override;
+	virtual std::unique_ptr<widget> build() override;
 
-	std::vector<std::shared_ptr<builder_grid>> builders;
+	std::vector<builder_grid_ptr> builders;
 
 	std::vector<widget_data> list_items;
 };

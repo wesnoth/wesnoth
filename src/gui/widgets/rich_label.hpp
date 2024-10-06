@@ -299,7 +299,7 @@ struct builder_rich_label : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual std::unique_ptr<widget> build() const override;
+	virtual std::unique_ptr<widget> build() override;
 
 	PangoAlignment text_alignment;
 	bool link_aware;

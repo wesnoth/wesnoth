@@ -427,7 +427,7 @@ builder_text_box::builder_text_box(const config& cfg)
 {
 }
 
-std::unique_ptr<widget> builder_text_box::build() const
+std::unique_ptr<widget> builder_text_box::build()
 {
 	auto widget = std::make_unique<text_box>(*this);
 

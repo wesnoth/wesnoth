@@ -120,7 +120,7 @@ builder_minimap::builder_minimap(const config& cfg) : builder_styled_widget(cfg)
 {
 }
 
-std::unique_ptr<widget> builder_minimap::build() const
+std::unique_ptr<widget> builder_minimap::build()
 {
 	auto widget = std::make_unique<minimap>(*this);
 

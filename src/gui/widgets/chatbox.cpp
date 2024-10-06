@@ -652,7 +652,7 @@ chatbox_definition::resolution::resolution(const config& cfg)
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "foreground", missing_mandatory_wml_tag("chatbox_definition][resolution", "foreground")));
 
 	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("chatbox_definition][resolution", "grid"));
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_unique<builder_grid>(child);
 }
 // }---------- BUILDER -----------{
 
@@ -664,7 +664,7 @@ builder_chatbox::builder_chatbox(const config& cfg)
 {
 }
 
-std::unique_ptr<widget> builder_chatbox::build() const
+std::unique_ptr<widget> builder_chatbox::build()
 {
 	auto widget = std::make_unique<chatbox>(*this);
 

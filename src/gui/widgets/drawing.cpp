@@ -114,7 +114,7 @@ builder_drawing::builder_drawing(const config& cfg)
 {
 }
 
-std::unique_ptr<widget> builder_drawing::build() const
+std::unique_ptr<widget> builder_drawing::build()
 {
 	auto widget = std::make_unique<drawing>(*this);
 

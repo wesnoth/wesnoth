@@ -69,10 +69,9 @@ private:
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
-	 * @param widget_builder      The builder to build the contents of the
-	 *                            widget.
+	 * @param widget      The widget to place in this widget.
 	 */
-	void finalize(const builder_widget& widget_builder);
+	void finalize(std::unique_ptr<widget>&& widget);
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
@@ -110,13 +109,13 @@ struct builder_size_lock : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual std::unique_ptr<widget> build() const override;
+	virtual std::unique_ptr<widget> build() override;
 
 	typed_formula<unsigned> width_;
 	typed_formula<unsigned> height_;
 
 private:
-	builder_widget_const_ptr content_;
+	builder_widget_ptr content_;
 };
 }
 }

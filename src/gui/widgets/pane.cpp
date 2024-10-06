@@ -101,10 +101,10 @@ struct pane_implementation
 	}
 };
 
-pane::pane(const implementation::builder_pane& builder)
+pane::pane(implementation::builder_pane& builder)
 	: widget(builder)
 	, items_()
-	, item_builder_(builder.item_definition)
+	, item_builder_(std::move(builder.item_definition))
 	, item_id_generator_(0)
 	, placer_(placer_base::build(builder.grow_dir, builder.parallel_items))
 {
@@ -361,12 +361,12 @@ builder_pane::builder_pane(const config& cfg)
 	VALIDATE(parallel_items > 0, _("Need at least 1 parallel item."));
 }
 
-std::unique_ptr<widget> builder_pane::build() const
+std::unique_ptr<widget> builder_pane::build()
 {
 	return build(replacements_map());
 }
 
-std::unique_ptr<widget> builder_pane::build(const replacements_map& /*replacements*/) const
+std::unique_ptr<widget> builder_pane::build(const replacements_map& /*replacements*/)
 {
 	return std::make_unique<pane>(*this);
 }

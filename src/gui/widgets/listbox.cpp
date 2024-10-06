@@ -49,7 +49,7 @@ listbox::listbox(const implementation::builder_styled_widget& builder,
 	: scrollbar_container(builder, type())
 	, generator_(nullptr)
 	, is_horizontal_(placement == generator_base::horizontal_list)
-	, list_builder_(list_builder)
+	, list_builder_(std::move(list_builder))
 	, orders_()
 	, callback_order_change_()
 {
@@ -518,15 +518,15 @@ void listbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 }
 
 void listbox::finalize(std::unique_ptr<generator_base> generator,
-		builder_grid_const_ptr header,
-		builder_grid_const_ptr footer,
+		std::unique_ptr<widget>&& header,
+		std::unique_ptr<widget>&& footer,
 		const std::vector<widget_data>& list_data)
 {
 	// "Inherited."
 	scrollbar_container::finalize_setup();
 
 	if(header) {
-		swap_grid(&get_grid(), content_grid(), header->build(), "_header_grid");
+		swap_grid(&get_grid(), content_grid(), std::move(header), "_header_grid");
 	}
 
 	grid& p = find_widget<grid>("_header_grid");
@@ -552,7 +552,7 @@ void listbox::finalize(std::unique_ptr<generator_base> generator,
 	}
 
 	if(footer) {
-		swap_grid(&get_grid(), content_grid(), footer->build(), "_footer_grid");
+		swap_grid(&get_grid(), content_grid(), std::move(footer), "_footer_grid");
 	}
 
 	// Save our *non-owning* pointer before this gets moved into the grid.
@@ -708,7 +708,7 @@ listbox_definition::resolution::resolution(const config& cfg)
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("listbox_definition][resolution", "state_disabled")));
 
 	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("listbox_definition][resolution", "grid"));
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_unique<builder_grid>(child);
 }
 
 namespace implementation
@@ -757,18 +757,18 @@ builder_listbox::builder_listbox(const config& cfg)
 	, allow_selection_(cfg["allow_selection"].to_bool(true))
 {
 	if(auto h = cfg.optional_child("header")) {
-		header = std::make_shared<builder_grid>(*h);
+		header = std::make_unique<builder_grid>(*h);
 	}
 
 	if(auto f = cfg.optional_child("footer")) {
-		footer = std::make_shared<builder_grid>(*f);
+		footer = std::make_unique<builder_grid>(*f);
 	}
 
 	auto l = cfg.optional_child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
 
-	list_builder = std::make_shared<builder_grid>(*l);
+	list_builder = std::make_unique<builder_grid>(*l);
 	assert(list_builder);
 
 	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
@@ -778,9 +778,9 @@ builder_listbox::builder_listbox(const config& cfg)
 	}
 }
 
-std::unique_ptr<widget> builder_listbox::build() const
+std::unique_ptr<widget> builder_listbox::build()
 {
-	auto widget = std::make_unique<listbox>(*this, generator_base::vertical_list, list_builder);
+	auto widget = std::make_unique<listbox>(*this, generator_base::vertical_list, std::move(list_builder));
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
@@ -793,7 +793,7 @@ std::unique_ptr<widget> builder_listbox::build() const
 	widget->init_grid(*conf->grid);
 
 	auto generator = generator_base::build(has_minimum_, has_maximum_, generator_base::vertical_list, allow_selection_);
-	widget->finalize(std::move(generator), header, footer, list_data);
+	widget->finalize(std::move(generator), header->build(), footer->build(), list_data);
 
 	return widget;
 }
@@ -811,7 +811,7 @@ builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
 
 	VALIDATE(l, _("No list defined."));
 
-	list_builder = std::make_shared<builder_grid>(*l);
+	list_builder = std::make_unique<builder_grid>(*l);
 	assert(list_builder);
 
 	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
@@ -821,9 +821,9 @@ builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
 	}
 }
 
-std::unique_ptr<widget> builder_horizontal_listbox::build() const
+std::unique_ptr<widget> builder_horizontal_listbox::build()
 {
-	auto widget = std::make_unique<listbox>(*this, generator_base::horizontal_list, list_builder);
+	auto widget = std::make_unique<listbox>(*this, generator_base::horizontal_list, std::move(list_builder));
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
@@ -854,7 +854,7 @@ builder_grid_listbox::builder_grid_listbox(const config& cfg)
 
 	VALIDATE(l, _("No list defined."));
 
-	list_builder = std::make_shared<builder_grid>(*l);
+	list_builder = std::make_unique<builder_grid>(*l);
 	assert(list_builder);
 
 	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
@@ -864,9 +864,9 @@ builder_grid_listbox::builder_grid_listbox(const config& cfg)
 	}
 }
 
-std::unique_ptr<widget> builder_grid_listbox::build() const
+std::unique_ptr<widget> builder_grid_listbox::build()
 {
-	auto widget = std::make_unique<listbox>(*this, generator_base::table, list_builder);
+	auto widget = std::make_unique<listbox>(*this, generator_base::table, std::move(list_builder));
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);

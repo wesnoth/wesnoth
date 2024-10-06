@@ -177,7 +177,7 @@ scroll_label_definition::resolution::resolution(const config& cfg)
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("scroll_label_definition][resolution", "state_disabled")));
 
 	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("scroll_label_definition][resolution", "grid"));
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_unique<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -195,7 +195,7 @@ builder_scroll_label::builder_scroll_label(const config& cfg)
 {
 }
 
-std::unique_ptr<widget> builder_scroll_label::build() const
+std::unique_ptr<widget> builder_scroll_label::build()
 {
 	auto widget = std::make_unique<scroll_label>(*this);
 

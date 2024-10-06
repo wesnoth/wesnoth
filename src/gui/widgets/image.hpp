@@ -125,7 +125,7 @@ struct builder_image : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual std::unique_ptr<widget> build() const override;
+	virtual std::unique_ptr<widget> build() override;
 };
 
 } // namespace implementation

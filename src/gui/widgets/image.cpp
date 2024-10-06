@@ -120,7 +120,7 @@ builder_image::builder_image(const config& cfg) : builder_styled_widget(cfg)
 {
 }
 
-std::unique_ptr<widget> builder_image::build() const
+std::unique_ptr<widget> builder_image::build()
 {
 	auto widget = std::make_unique<image>(*this);
 

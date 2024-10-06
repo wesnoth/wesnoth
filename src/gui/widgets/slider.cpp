@@ -340,7 +340,7 @@ builder_slider::builder_slider(const config& cfg)
 	}
 }
 
-std::unique_ptr<widget> builder_slider::build() const
+std::unique_ptr<widget> builder_slider::build()
 {
 	auto widget = std::make_unique<slider>(*this);
 

@@ -338,13 +338,13 @@ private:
 	 * Finishes the building initialization of the widget.
 	 *
 	 * @param generator           Generator for the list
-	 * @param header              Builder for the header.
-	 * @param footer              Builder for the footer.
+	 * @param header              Builder output for the header.
+	 * @param footer              Builder output for the footer.
 	 * @param list_data           The initial data to fill the listbox with.
 	 */
 	void finalize(std::unique_ptr<generator_base> generator,
-			builder_grid_const_ptr header,
-			builder_grid_const_ptr footer,
+			std::unique_ptr<widget>&& header,
+			std::unique_ptr<widget>&& footer,
 			const std::vector<widget_data>& list_data);
 
 	/**
@@ -438,7 +438,7 @@ struct builder_listbox : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual std::unique_ptr<widget> build() const override;
+	virtual std::unique_ptr<widget> build() override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
@@ -465,7 +465,7 @@ struct builder_horizontal_listbox : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual std::unique_ptr<widget> build() const override;
+	virtual std::unique_ptr<widget> build() override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
@@ -489,7 +489,7 @@ struct builder_grid_listbox : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual std::unique_ptr<widget> build() const override;
+	virtual std::unique_ptr<widget> build() override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;

@@ -430,7 +430,7 @@ builder_combobox::builder_combobox(const config& cfg)
 	}
 }
 
-std::unique_ptr<widget> builder_combobox::build() const
+std::unique_ptr<widget> builder_combobox::build()
 {
 	auto widget = std::make_unique<combobox>(*this);
 

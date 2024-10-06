@@ -103,7 +103,7 @@ builder_progress_bar::builder_progress_bar(const config& cfg)
 {
 }
 
-std::unique_ptr<widget> builder_progress_bar::build() const
+std::unique_ptr<widget> builder_progress_bar::build()
 {
 	auto widget = std::make_unique<progress_bar>(*this);
 

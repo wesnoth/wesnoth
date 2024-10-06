@@ -499,7 +499,7 @@ builder_multiline_text::builder_multiline_text(const config& cfg)
 {
 }
 
-std::unique_ptr<widget> builder_multiline_text::build() const
+std::unique_ptr<widget> builder_multiline_text::build()
 {
 	auto widget = std::make_unique<multiline_text>(*this);
 

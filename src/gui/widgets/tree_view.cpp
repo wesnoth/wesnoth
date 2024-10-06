@@ -34,10 +34,10 @@ namespace gui2
 
 REGISTER_WIDGET(tree_view)
 
-tree_view::tree_view(const implementation::builder_tree_view& builder)
+tree_view::tree_view(implementation::builder_tree_view& builder)
 	: scrollbar_container(builder, type())
-	, node_definitions_(builder.nodes)
-	, indentation_step_size_(0)
+	, node_definitions_(std::move(builder.nodes))
+	, indentation_step_size_(builder.indentation_step_size)
 	, need_layout_(false)
 	, root_node_(nullptr)
 	, selected_item_(nullptr)
@@ -269,7 +269,7 @@ tree_view_definition::resolution::resolution(const config& cfg)
 
 	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("tree_view_definition][resolution", "grid"));
 
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_unique<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -290,7 +290,7 @@ builder_tree_view::builder_tree_view(const config& cfg)
 	VALIDATE(!nodes.empty(), _("No nodes defined for a tree view."));
 }
 
-std::unique_ptr<widget> builder_tree_view::build() const
+std::unique_ptr<widget> builder_tree_view::build()
 {
 	/*
 	 *  TODO see how much we can move in the constructor instead of
@@ -300,8 +300,6 @@ std::unique_ptr<widget> builder_tree_view::build() const
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
-
-	widget->set_indentation_step_size(indentation_step_size);
 
 	DBG_GUI_G << "Window builder: placed tree_view '" << id << "' with definition '" << definition << "'.";
 
@@ -325,7 +323,7 @@ tree_node::tree_node(const config& cfg)
 	VALIDATE(id != tree_view::root_node_id, _("[node]id 'root' is reserved for the implementation."));
 
 	auto node_definition = VALIDATE_WML_CHILD(cfg, "node_definition", missing_mandatory_wml_tag("node", "node_definition"));
-	builder = std::make_shared<builder_grid>(node_definition);
+	builder = std::make_unique<builder_grid>(node_definition);
 }
 
 } // namespace implementation

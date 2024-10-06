@@ -194,7 +194,7 @@ builder_button::builder_button(const config& cfg)
 {
 }
 
-std::unique_ptr<widget> builder_button::build() const
+std::unique_ptr<widget> builder_button::build()
 {
 	auto widget = std::make_unique<button>(*this);
 

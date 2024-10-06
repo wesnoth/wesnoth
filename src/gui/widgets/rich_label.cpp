@@ -907,7 +907,7 @@ builder_rich_label::builder_rich_label(const config& cfg)
 {
 }
 
-std::unique_ptr<widget> builder_rich_label::build() const
+std::unique_ptr<widget> builder_rich_label::build()
 {
 	auto lbl = std::make_unique<rich_label>(*this);
 

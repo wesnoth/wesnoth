@@ -33,10 +33,10 @@ namespace gui2
 
 REGISTER_WIDGET(multi_page)
 
-multi_page::multi_page(const implementation::builder_multi_page& builder)
+multi_page::multi_page(implementation::builder_multi_page& builder)
 	: container_base(builder, type())
 	, generator_(nullptr)
-	, page_builders_()
+	, page_builders_(std::move(builder.builders))
 {
 }
 
@@ -175,7 +175,7 @@ multi_page_definition::resolution::resolution(const config& cfg)
 	auto child = cfg.optional_child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(*child);
+	grid = std::make_unique<builder_grid>(*child);
 }
 
 // }---------- BUILDER -----------{
@@ -188,9 +188,7 @@ builder_multi_page::builder_multi_page(const config& cfg)
 {
 	for (const config& page : cfg.child_range("page_definition"))
 	{
-		auto builder = std::make_shared<builder_grid>(page);
-		assert(builder);
-		builders[page["id"]] = builder;
+		builders[page["id"]] = std::make_unique<builder_grid>(page);
 	}
 	VALIDATE(!builders.empty(), _("No page defined."));
 
@@ -200,7 +198,7 @@ builder_multi_page::builder_multi_page(const config& cfg)
 		return;
 	}
 
-	auto builder = builders.begin()->second;
+	auto& builder = builders.begin()->second;
 	for(const auto & row : d->child_range("row"))
 	{
 		unsigned col = 0;
@@ -221,11 +219,9 @@ builder_multi_page::builder_multi_page(const config& cfg)
 	}
 }
 
-std::unique_ptr<widget> builder_multi_page::build() const
+std::unique_ptr<widget> builder_multi_page::build()
 {
 	auto widget = std::make_unique<multi_page>(*this);
-
-	widget->set_page_builders(builders);
 
 	DBG_GUI_G << "Window builder: placed multi_page '" << id
 			  << "' with definition '" << definition << "'.";

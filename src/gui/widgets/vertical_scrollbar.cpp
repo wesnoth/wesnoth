@@ -133,7 +133,7 @@ builder_vertical_scrollbar::builder_vertical_scrollbar(const config& cfg)
 {
 }
 
-std::unique_ptr<widget> builder_vertical_scrollbar::build() const
+std::unique_ptr<widget> builder_vertical_scrollbar::build()
 {
 	auto widget = std::make_unique<vertical_scrollbar>(*this);
 

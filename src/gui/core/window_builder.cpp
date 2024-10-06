@@ -80,7 +80,7 @@ builder_widget_ptr create_widget_builder(const config& cfg)
 	auto [widget_key, widget_cfg] = *cfg.ordered_begin();
 
 	if(widget_key == "grid") {
-		return std::make_shared<builder_grid>(widget_cfg);
+		return std::make_unique<builder_grid>(widget_cfg);
 	}
 
 	if(widget_key == "instance") {
@@ -165,7 +165,7 @@ builder_window::window_resolution::window_resolution(const config& cfg)
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(*c);
+	grid = std::make_unique<builder_grid>(*c);
 
 	if(!automatic_placement) {
 		VALIDATE(width.has_formula() || width(), missing_mandatory_wml_key("resolution", "width"));
@@ -240,14 +240,14 @@ builder_grid::builder_grid(const config& cfg)
 	DBG_GUI_P << "Window builder: grid has " << rows << " rows and " << cols << " columns.";
 }
 
-std::unique_ptr<widget> builder_grid::build() const
+std::unique_ptr<widget> builder_grid::build()
 {
 	auto result = std::make_unique<grid>();
 	build(*result);
 	return result;
 }
 
-std::unique_ptr<widget> builder_grid::build(const replacements_map& replacements) const
+std::unique_ptr<widget> builder_grid::build(const replacements_map& replacements)
 {
 	auto result = std::make_unique<grid>();
 	build(*result, replacements);

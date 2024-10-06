@@ -609,7 +609,7 @@ unit_preview_pane_definition::resolution::resolution(const config& cfg)
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "foreground", missing_mandatory_wml_tag("unit_preview_pane_definition][resolution", "foreground")));
 
 	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("unit_preview_pane_definition][resolution", "grid"));
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_unique<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -623,7 +623,7 @@ builder_unit_preview_pane::builder_unit_preview_pane(const config& cfg)
 {
 }
 
-std::unique_ptr<widget> builder_unit_preview_pane::build() const
+std::unique_ptr<widget> builder_unit_preview_pane::build()
 {
 	auto widget = std::make_unique<unit_preview_pane>(*this);
 

@@ -38,10 +38,10 @@ namespace gui2
 
 REGISTER_WIDGET(tab_container)
 
-tab_container::tab_container(const implementation::builder_tab_container& builder)
+tab_container::tab_container(implementation::builder_tab_container& builder)
 	: container_base(builder, type())
 	, state_(ENABLED)
-	, builders_(builder.builders)
+	, builders_(std::move(builder.builders))
 	, list_items_(builder.list_items)
 {
 }
@@ -138,7 +138,7 @@ tab_container_definition::resolution::resolution(const config& cfg)
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("tab_container_definition][resolution", "state_disabled")));
 
 	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("No grid defined for tab container control"));
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_unique<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -163,14 +163,13 @@ builder_tab_container::builder_tab_container(const config& cfg)
 			list_items.emplace_back(list_row);
 
 			if (tab.has_child("data")) {
-				auto builder = std::make_shared<builder_grid>(tab.mandatory_child("data"));
-				builders.push_back(builder);
+				builders.emplace_back(std::make_unique<builder_grid>(tab.mandatory_child("data")));
 			}
 		}
 	}
 }
 
-std::unique_ptr<widget> builder_tab_container::build() const
+std::unique_ptr<widget> builder_tab_container::build()
 {
 	auto widget = std::make_unique<tab_container>(*this);
 
