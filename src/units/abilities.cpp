@@ -1261,7 +1261,7 @@ void attack_type::modified_attacks(unsigned & min_attacks,
 	int attacks_value = composite_value(get_specials_and_abilities("attacks"), num_attacks());
 
 	if ( attacks_value < 0 ) {
-		attacks_value = num_attacks();
+		attacks_value = 0;
 		ERR_NG << "negative number of strikes after applying weapon specials";
 	}
 
