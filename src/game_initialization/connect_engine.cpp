@@ -1066,7 +1066,7 @@ config side_engine::new_config() const
 			(*leader)["gender"] = "null";
 		}
 
-		std::string& new_team_name = parent_.team_data_[team_].team_name;
+		const std::string& new_team_name = parent_.team_data_[team_].team_name;
 
 		if(res["user_team_name"].empty() || !parent_.params_.use_map_settings || res["team_name"] != new_team_name) {
 			res["team_name"] = new_team_name;
