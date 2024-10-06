@@ -25,6 +25,7 @@
 #include "gettext.hpp"
 #include "wml_exception.hpp"
 
+
 #include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
@@ -43,11 +44,16 @@ spinner::spinner(const implementation::builder_spinner& builder)
 	, step_size_(1)
 	, minimum_value_(std::numeric_limits<int>::min())
 	, maximum_value_(std::numeric_limits<int>::max())
-	, invalid_(false)
+	, value_(minimum_value_)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 		std::bind(&spinner::signal_handler_left_button_down, this, std::placeholders::_2),
 		event::dispatcher::back_pre_child);
+}
+
+const text_box* spinner::get_internal_text_box() const
+{
+	return find_widget<const text_box>("_text", false, true);
 }
 
 text_box* spinner::get_internal_text_box()
@@ -63,10 +69,12 @@ void spinner::set_value(int val)
 		val = minimum_value_;
 	}
 	if(val > maximum_value_) {
-		WRN_GUI_G << "Value (" << val << ") > min (" << maximum_value_ <<
+		WRN_GUI_G << "Value (" << val << ") > max (" << maximum_value_ <<
 			"), setting value to " << maximum_value_ << ".";
 		val = maximum_value_;
 	}
+
+	value_ = val;
 
 	text_box* edit_area = get_internal_text_box();
 	if (edit_area != nullptr) {
@@ -81,28 +89,26 @@ void spinner::set_value(int val)
 
 int spinner::get_value() const
 {
-	/* Return 0 if invalid.
-	 * TODO: give visual indication of wrong value
-	 */
-	int val;
+	return value_;
+}
+
+void spinner::textbox_modified()
+{
+	int val = value_;
+	text_box* edit_area = get_internal_text_box();
 	try {
-		text_box* edit_area = get_internal_text_box();
 		if (edit_area != nullptr) {
 			val = std::clamp(stoi(edit_area->get_value()), minimum_value_, maximum_value_);
-			invalid_ = false;
-		} else {
-			val = 0;
-			invalid_ = true;
 		}
 	} catch(std::invalid_argument const& /*ex*/) {
-		val = 0;
-		invalid_ = true;
+		edit_area->set_value(std::to_string(value_));
+		return;
 	} catch(std::out_of_range const& /*ex*/) {
-		val = 0;
-		invalid_ = true;
+		edit_area->set_value(std::to_string(value_));
+		return;
 	}
 
-	return val;
+	value_ = val;
 }
 
 void spinner::set_step_size(unsigned step)
@@ -179,6 +185,8 @@ void spinner::finalize_setup()
 	repeating_button* btn_next = find_widget<repeating_button>("_next", false, true);
 	btn_prev->connect_signal_mouse_left_down(std::bind(&spinner::prev, this));
 	btn_next->connect_signal_mouse_left_down(std::bind(&spinner::next, this));
+//	get_internal_text_box()->connect_signal<event::MOUSE_LEAVE>(std::bind(&spinner::textbox_modified, this)); //  I really like this, CM says windows/mac users WON'T
+	get_internal_text_box()->connect_signal<event::LOSE_KEYBOARD_FOCUS>(std::bind(&spinner::textbox_modified, this));
 }
 
 void spinner::set_self_active(const bool active)

@@ -101,9 +101,9 @@ private:
 
 	int maximum_value_;
 
-	/** If the entered data is invalid. */
-	bool invalid_;
+	int value_;
 
+	const text_box* get_internal_text_box() const;
 	text_box* get_internal_text_box();
 
 	void finalize_setup();
@@ -111,6 +111,8 @@ private:
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();
+
+	void textbox_modified();
 
 private:
 	/***** ***** ***** inherited ****** *****/
