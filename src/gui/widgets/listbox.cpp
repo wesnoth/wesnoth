@@ -518,15 +518,15 @@ void listbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 }
 
 void listbox::finalize(std::unique_ptr<generator_base> generator,
-		std::unique_ptr<widget>&& header,
-		std::unique_ptr<widget>&& footer,
+		builder_grid_ptr header,
+		builder_grid_ptr footer,
 		const std::vector<widget_data>& list_data)
 {
 	// "Inherited."
 	scrollbar_container::finalize_setup();
 
 	if(header) {
-		swap_grid(&get_grid(), content_grid(), std::move(header), "_header_grid");
+		swap_grid(&get_grid(), content_grid(), header->build(), "_header_grid");
 	}
 
 	grid& p = find_widget<grid>("_header_grid");
@@ -552,7 +552,7 @@ void listbox::finalize(std::unique_ptr<generator_base> generator,
 	}
 
 	if(footer) {
-		swap_grid(&get_grid(), content_grid(), std::move(footer), "_footer_grid");
+		swap_grid(&get_grid(), content_grid(), footer->build(), "_footer_grid");
 	}
 
 	// Save our *non-owning* pointer before this gets moved into the grid.
@@ -793,7 +793,7 @@ std::unique_ptr<widget> builder_listbox::build()
 	widget->init_grid(*conf->grid);
 
 	auto generator = generator_base::build(has_minimum_, has_maximum_, generator_base::vertical_list, allow_selection_);
-	widget->finalize(std::move(generator), header->build(), footer->build(), list_data);
+	widget->finalize(std::move(generator), std::move(header), std::move(footer), list_data);
 
 	return widget;
 }

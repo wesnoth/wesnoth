@@ -343,8 +343,8 @@ private:
 	 * @param list_data           The initial data to fill the listbox with.
 	 */
 	void finalize(std::unique_ptr<generator_base> generator,
-			std::unique_ptr<widget>&& header,
-			std::unique_ptr<widget>&& footer,
+			builder_grid_ptr header,
+			builder_grid_ptr footer,
 			const std::vector<widget_data>& list_data);
 
 	/**
