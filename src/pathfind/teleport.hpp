@@ -18,6 +18,7 @@
 #include "config.hpp"
 #include "map/location.hpp"
 
+#include <unordered_map>
 #include <unordered_set>
 
 class team;
