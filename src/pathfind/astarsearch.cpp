@@ -152,11 +152,13 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 		search_counter += 2;
 
 	double dsth = 1.0;
-	const auto& targets = teleports->get_targets();
+	if (teleports && !teleports->empty()) {
+		const auto& targets = teleports->get_targets();
 
-	for(const auto &it : targets) {
-		const double tmp_dsth = heuristic(it, dst);
-		if (tmp_dsth < dsth) { dsth = tmp_dsth; }
+		for(const auto &it : targets) {
+			const double tmp_dsth = heuristic(it, dst);
+			if (tmp_dsth < dsth) { dsth = tmp_dsth; }
+		}
 	}
 
 	static std::vector<node> nodes;
