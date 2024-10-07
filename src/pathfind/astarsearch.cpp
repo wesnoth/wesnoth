@@ -79,7 +79,7 @@ struct node {
 	{
 	}
 	node(double s, const map_location &c, const map_location &p, const map_location &dst, bool i, const teleport_map* teleports, double srch, double dsth):
-		g(s), h(heuristic(c, dst)), t(g + h), curr(c), prev(p), in(search_counter + i)
+		g(s), h(heuristic(c, dst)), t(g + h), srch(srch), curr(c), prev(p), in(search_counter + i)
 	{
 		if (teleports && !teleports->empty()) {
 			if(srch < 0) {
