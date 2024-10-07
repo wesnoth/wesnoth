@@ -194,8 +194,7 @@ std::vector<std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_child
 	int width_modification = 0;
 
 	for(const auto& d : data) {
-		std::shared_ptr<gui2::tree_view_node> new_node = std::make_shared<tree_view_node>(id, this, get_tree_view(), d);
-		std::shared_ptr<gui2::tree_view_node> node = *children_.insert(children_.end(), std::move(new_node));
+		auto& node = children_.emplace_back(std::make_shared<tree_view_node>(id, this, get_tree_view(), d));
 
 		// NOTE: we currently don't support moving nodes between different trees, so this
 		// just ensures that wasn't tried. Remove this if we implement support for that.

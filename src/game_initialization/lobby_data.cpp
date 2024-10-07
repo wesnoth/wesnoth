@@ -441,7 +441,7 @@ game_info::addon_req game_info::check_addon_version_compatibility(const config& 
 				<< "'";
 			r.outcome = addon_req::CANNOT_SATISFY;
 
-			r.message = VGETTEXT("The host's version of <i>$addon</i> is incompatible. They have version <b>$host_ver</b> while you have version <b>$local_ver</b>.", {
+			r.message = VGETTEXT("The host’s version of <i>$addon</i> is incompatible. They have version <b>$host_ver</b> while you have version <b>$local_ver</b>.", {
 				{"addon",     local_item["addon_title"].str()},
 				{"host_ver",  remote_ver.str()},
 				{"local_ver", local_ver.str()}

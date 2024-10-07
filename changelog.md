@@ -7,8 +7,10 @@
  ### Lua API
  ### Packaging
  ### Terrain
+   * Improved handling of bluffs/gulch transitions with mountains and frozen terrain
+   * Bluffs/Gulches less intrusive in mini-map
  ### Translations
-   * Updated translations: British English, Chinese (Simplified), Finnish, Italian, Turkish
+   * Updated translations: Bengali, British English, Chinese (Simplified), Finnish, Italian, Japanese, Turkish
  ### Units
  ### User interface
  ### WML Engine

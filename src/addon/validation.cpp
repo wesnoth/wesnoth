@@ -500,7 +500,7 @@ std::string addon_check_status_desc(unsigned int code)
 		},
 		{
 			ADDON_CHECK_STATUS::AUTH_TYPE_MISMATCH,
-			N_("The add-on's forum_auth attribute does not match what was previously uploaded.")
+			N_("The add-on’s forum_auth attribute does not match what was previously uploaded.")
 		},
 
 		//

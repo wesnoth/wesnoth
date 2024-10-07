@@ -513,7 +513,7 @@ bool manager::change_scenario(const std::string& id)
 {
 	// Checking for missing dependencies
 	if(!get_required_not_installed(elem(id, "scenario")).empty()) {
-		std::string msg = _("Scenario can't be activated. Some dependencies are missing: ");
+		std::string msg = _("Scenario can’t be activated. Some dependencies are missing: ");
 
 		msg += utils::join(get_required_not_installed(elem(id, "scenario")), ", ");
 
@@ -582,7 +582,7 @@ bool manager::change_era(const std::string& id)
 {
 	// Checking for missing dependencies
 	if(!get_required_not_installed(elem(id, "era")).empty()) {
-		std::string msg = _("Era can't be activated. Some dependencies are missing: ");
+		std::string msg = _("Era can’t be activated. Some dependencies are missing: ");
 
 		msg += utils::join(get_required_not_installed(elem(id, "era")), ", ");
 		failure_dialog(msg);

@@ -476,7 +476,7 @@ void parser::error(const std::string& error_type, const std::string& pos_format)
 	i18n_symbols["value"] = tok_.current_token().value;
 	i18n_symbols["previous_value"] = tok_.previous_token().value;
 
-	const std::string& tok_state = _("Value: '$value' Previous: '$previous_value'");
+	const std::string& tok_state = _("Value: ‘$value’ Previous: ‘$previous_value’");
 #else
 	const std::string& tok_state = "";
 #endif
