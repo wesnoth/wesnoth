@@ -1329,9 +1329,14 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 	}
 
 	if(op == nullptr) {
-		if(i1->type == tk::token_type::lparens && (i2-1)->type == tk::token_type::rparens) {
+		// There's a situation when i1+1 equals i2-1 (meanwhile iter length is 2, like `()`)
+		// Resulting in empty expression.
+		if(i1->type == tk::token_type::lparens && (i2 - 1)->type == tk::token_type::rparens) {
+			if(i1 + 1 == i2 - 1) {
+				throw formula_error("Syntax error: no expression between brackets", "()", *i1->filename, i1->line_number);
+			}
 			return parse_expression(i1+1,i2-1,symbols);
-		} else if((i2-1)->type == tk::token_type::rsquare) { //check if there is [ ] : either a list/map definition, or a operator
+		} else if((i2 - 1)->type == tk::token_type::rsquare) { // check if there is [ ] : either a list/map definition, or a operator
 			// First, a special case for an empty map
 			if(i2 - i1 == 3 && i1->type == tk::token_type::lsquare && (i1+1)->type == tk::token_type::pointer) {
 				return std::make_shared<map_expression>(std::vector<expression_ptr>());
