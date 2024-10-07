@@ -178,13 +178,6 @@ struct map_location {
 	int x, y;
 };
 
-class map_location_hasher {
-public:
-	size_t operator()(const map_location& m) const {
-		return m.y * 1000 + m.x;
-	}
-};
-
 /** Function which tells if two locations are adjacent. */
 bool tiles_adjacent(const map_location& a, const map_location& b);
 

@@ -215,13 +215,12 @@ teleport_map::teleport_map(
 			}
 		}
 
-		std::string teleport_id = group.get_teleport_id();
 		std::set<map_location>::iterator source_it = locations.first.begin();
 		for (; source_it != locations.first.end(); ++source_it ) {
 			auto map_it = teleport_map_.find(*source_it);
 
 			if(map_it == teleport_map_.end()) {
-				std::unordered_set<map_location, map_location_hasher> map_locations;
+				std::unordered_set<map_location> map_locations;
 				map_locations.insert(locations.second.begin(), locations.second.end());
 				teleport_map_.emplace(*source_it, map_locations);
 			} else {
@@ -233,7 +232,7 @@ teleport_map::teleport_map(
 	}
 }
 
-const std::unordered_set<map_location, map_location_hasher>& teleport_map::get_adjacents(map_location loc) const
+const std::unordered_set<map_location>& teleport_map::get_adjacents(map_location loc) const
 {
 	const auto iter = teleport_map_.find(loc);
 	if(iter == teleport_map_.end()) {
@@ -243,12 +242,12 @@ const std::unordered_set<map_location, map_location_hasher>& teleport_map::get_a
 	return iter->second;
 }
 
-const std::unordered_set<map_location, map_location_hasher>& teleport_map::get_sources() const
+const std::unordered_set<map_location>& teleport_map::get_sources() const
 {
 	return sources_;
 }
 
-const std::unordered_set<map_location, map_location_hasher>& teleport_map::get_targets() const
+const std::unordered_set<map_location>& teleport_map::get_targets() const
 {
 	return targets_;
 }
