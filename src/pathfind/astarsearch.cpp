@@ -84,9 +84,8 @@ struct node {
 		if (teleports && !teleports->empty()) {
 			if(srch < 0) {
 				srch = 1.0;
-				const auto& sources = teleports->get_sources();
 
-				for(const auto& it : sources) {
+				for(const auto& it : teleports->get_sources()) {
 					const double tmp_srch = heuristic(c, it);
 					if (tmp_srch < srch) { srch = tmp_srch; }
 				}
@@ -153,9 +152,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 
 	double dsth = 1.0;
 	if (teleports && !teleports->empty()) {
-		const auto& targets = teleports->get_targets();
-
-		for(const auto &it : targets) {
+		for(const auto &it : teleports->get_targets()) {
 			const double tmp_dsth = heuristic(it, dst);
 			if (tmp_dsth < dsth) { dsth = tmp_dsth; }
 		}
