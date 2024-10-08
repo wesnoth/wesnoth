@@ -406,33 +406,33 @@ BOOST_DATA_TEST_CASE(add_child_NonEmptyThis_newOrExistingKey_lOrRValue_AppendAnd
 BOOST_AUTO_TEST_CASE(auto_conversion_bool_and_int)
 {
 	config cfg;
-	cfg["boolAttributeTrue"] = true;
-	cfg["boolAttributeFalse"] = false;
-	cfg["intAttributeTrue"] = 1;
-	cfg["intAttributeCommon"] = 100;
-	cfg["intAttributeFalse"] = 0;
+	cfg["bool_attribute_true"] = true;
+	cfg["bool_attribute_false"] = false;
+	cfg["int_attribute_true"] = 1;
+	cfg["int_attribute_common"] = 100;
+	cfg["int_attribute_false"] = 0;
 
-	bool b = cfg["boolAttributeTrue"];
-	int i = cfg["boolAttributeTrue"];
+	bool b = cfg["bool_attribute_true"];
+	int i = cfg["bool_attribute_true"];
 
 	// Test for int -> bool and bool -> bool, the former should act like fundamental types
 	BOOST_CHECK_EQUAL(b, true);
 	BOOST_CHECK_EQUAL(i, 1);
-	i = cfg["boolAttributeFalse"];
-	b = cfg["boolAttributeFalse"];
+	b = cfg["bool_attribute_false"];
+	i = cfg["bool_attribute_false"];
 	BOOST_CHECK_EQUAL(b, false);
 	BOOST_CHECK_EQUAL(i, 0);
 	// int -> bool and int -> int
-	b = cfg["intAttributeTrue"];
-	i = cfg["intAttributeTrue"];
+	b = cfg["int_attribute_true"];
+	i = cfg["int_attribute_true"];
 	BOOST_CHECK_EQUAL(b, true);
 	BOOST_CHECK_EQUAL(i, 1);
-	b = cfg["intAttributeCommon"];
-	i = cfg["intAttributeCommon"];
+	b = cfg["int_attribute_common"];
+	i = cfg["int_attribute_common"];
 	BOOST_CHECK_EQUAL(b, true);
 	BOOST_CHECK_EQUAL(i, 100);
-	b = cfg["intAttributeFalse"];
-	i = cfg["intAttributeFalse"];
+	b = cfg["int_attribute_false"];
+	i = cfg["int_attribute_false"];
 	BOOST_CHECK_EQUAL(b, false);
 	BOOST_CHECK_EQUAL(i, 0);
 }
