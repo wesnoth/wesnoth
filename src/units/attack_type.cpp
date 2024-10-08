@@ -321,9 +321,9 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 		}
 	}
 
-	//children filter_special_active are checked later,
+	//children filter_special are checked later,
 	//but only when the function doesn't return earlier
-	if(auto sub_filter_special = filter.optional_child("filter_special_active")) {
+	if(auto sub_filter_special = filter.optional_child("filter_special")) {
 		if(!attack.has_special_or_ability_with_filter(*sub_filter_special)) {
 			return false;
 		}

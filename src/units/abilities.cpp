@@ -2057,15 +2057,19 @@ bool attack_type::special_matches_filter(const config & cfg, const std::string& 
 bool attack_type::has_special_with_filter(const config & filter) const
 {
 	using namespace utils::config_filters;
+	bool simple_check = !filter["active"].to_bool();
 	for(const auto [key, cfg] : specials().all_children_range()) {
 		if(special_matches_filter(cfg, key, filter)){
+			if(simple_check){
+				return true;
+			}
 			if ( special_active(cfg, AFFECT_SELF, key) ) {
 				return true;
 			}
 		}
 	}
 	// Skip checking the opponent's attack?
-	if(!other_attack_){
+	if(simple_check || !other_attack_){
 		return false;
 	}
 
@@ -2082,12 +2086,22 @@ bool attack_type::has_special_with_filter(const config & filter) const
 
 bool attack_type::has_ability_with_filter(const config & filter) const
 {
+	bool simple_check = !filter["active"].to_bool();
 	const unit_map& units = get_unit_map();
 	if(self_){
 		for(const auto [key, cfg] : (*self_).abilities().all_children_range()) {
-			if(self_->ability_matches_filter(cfg, key, filter) && check_self_abilities(cfg, key)){
-				return true;
+			if(self_->ability_matches_filter(cfg, key, filter)){
+				if(simple_check){
+					return true;
+				}
+				if(check_self_abilities(cfg, key)){
+					return true;
+				}
 			}
+		}
+
+		if(simple_check){
+			return false;
 		}
 
 		const auto adjacent = get_adjacent_tiles(self_loc_);
