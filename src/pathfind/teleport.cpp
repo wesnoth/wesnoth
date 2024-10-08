@@ -220,7 +220,7 @@ teleport_map::teleport_map(
 			auto map_it = teleport_map_.find(*source_it);
 
 			if(map_it == teleport_map_.end()) {
-				teleport_map_.emplace(*source_it, std::unordered_set<map_location>(locations.second.begin(), locations.second.end()));
+				teleport_map_.emplace(*source_it, std::unordered_set(locations.second.begin(), locations.second.end()));
 			} else {
 				map_it->second.insert(locations.second.begin(), locations.second.end());
 			}
