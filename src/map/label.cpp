@@ -31,7 +31,7 @@
  */
 inline bool is_shrouded(const display* disp, const map_location& loc)
 {
-	return disp->shrouded(loc) || disp->shrouded(loc.get_direction(map_location::SOUTH));
+	return disp->shrouded(loc) || disp->shrouded(loc.get_direction(map_location::direction::south));
 }
 
 /**
@@ -535,8 +535,8 @@ void terrain_label::recalculate()
 	}
 
 	// Note: the y part of loc_nextx is not used at all.
-	const map_location loc_nextx = loc_.get_direction(map_location::NORTH_EAST);
-	const map_location loc_nexty = loc_.get_direction(map_location::SOUTH);
+	const map_location loc_nextx = loc_.get_direction(map_location::direction::north_east);
+	const map_location loc_nexty = loc_.get_direction(map_location::direction::south);
 	const int xloc = (disp->get_location_x(loc_) + disp->get_location_x(loc_nextx) * 2) / 3;
 	const int yloc = disp->get_location_y(loc_nexty) - scale_to_map_zoom(font::SIZE_NORMAL);
 

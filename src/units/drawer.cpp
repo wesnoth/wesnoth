@@ -170,7 +170,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 
 	bool hidden = u.get_hidden();
 	bool is_flying = u.is_flying();
-	map_location::DIRECTION facing = u.facing();
+	map_location::direction facing = u.facing();
 	int hitpoints = u.hitpoints();
 	int max_hitpoints = u.max_hitpoints();
 

@@ -53,11 +53,11 @@ static lg::log_domain log_wml("wml");
 namespace {
 	class temporary_facing
 	{
-		map_location::DIRECTION save_dir_;
+		map_location::direction save_dir_;
 		unit_const_ptr u_;
 	public:
-		temporary_facing(unit_const_ptr u, map_location::DIRECTION new_dir)
-			: save_dir_(u ? u->facing() : map_location::NDIRECTIONS)
+		temporary_facing(unit_const_ptr u, map_location::direction new_dir)
+			: save_dir_(u ? u->facing() : map_location::direction::indeterminate)
 			, u_(u)
 		{
 			if (u_) {
@@ -458,12 +458,12 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 		std::size_t count = 0;
 		unit_filter ufilt{ vconfig(i) };
 		ufilt.set_use_flat_tod(illuminates);
-		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
-		for (const map_location::DIRECTION index : dirs)
+		std::vector<map_location::direction> dirs = map_location::parse_directions(i["adjacent"]);
+		for (const map_location::direction index : dirs)
 		{
-			if (index == map_location::NDIRECTIONS)
+			if (index == map_location::direction::indeterminate)
 				continue;
-			unit_map::const_iterator unit = units.find(adjacent[index]);
+			unit_map::const_iterator unit = units.find(adjacent[static_cast<int>(index)]);
 			if (unit == units.end())
 				return false;
 			if (!ufilt(*unit, *this))
@@ -492,13 +492,13 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 		terrain_filter adj_filter(vconfig(i), resources::filter_con, false);
 		adj_filter.flatten(illuminates);
 
-		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
-		for (const map_location::DIRECTION index : dirs)
+		std::vector<map_location::direction> dirs = map_location::parse_directions(i["adjacent"]);
+		for (const map_location::direction index : dirs)
 		{
-			if (index == map_location::NDIRECTIONS) {
+			if (index == map_location::direction::indeterminate) {
 				continue;
 			}
-			if(!adj_filter.match(adjacent[index])) {
+			if(!adj_filter.match(adjacent[static_cast<int>(index)])) {
 				return false;
 			}
 			count++;
@@ -526,12 +526,12 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 	bool illuminates = ability == "illuminates";
 
 	assert(dir >=0 && dir <= 5);
-	map_location::DIRECTION direction = static_cast<map_location::DIRECTION>(dir);
+	map_location::direction direction{ dir };
 
 	for (const config &i : cfg.child_range("affect_adjacent"))
 	{
 		if (i.has_attribute("adjacent")) { //key adjacent defined
-			std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
+			std::vector<map_location::direction> dirs = map_location::parse_directions(i["adjacent"]);
 			if (std::find(dirs.begin(), dirs.end(), direction) == dirs.end()) {
 				continue;
 			}
@@ -2218,14 +2218,14 @@ bool attack_type::special_active_impl(
 	for (const config &i : special.child_range("filter_adjacent"))
 	{
 		std::size_t count = 0;
-		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
+		std::vector<map_location::direction> dirs = map_location::parse_directions(i["adjacent"]);
 		unit_filter filter{ vconfig(i) };
-		for (const map_location::DIRECTION index : dirs)
+		for (const map_location::direction index : dirs)
 		{
-			if (index == map_location::NDIRECTIONS)
+			if (index == map_location::direction::indeterminate)
 				continue;
-			unit_map::const_iterator unit = units.find(adjacent[index]);
-			if (unit == units.end() || !filter.matches(*unit, adjacent[index], *self))
+			unit_map::const_iterator unit = units.find(adjacent[static_cast<int>(index)]);
+			if (unit == units.end() || !filter.matches(*unit, adjacent[static_cast<int>(index)], *self))
 				return false;
 			if (i.has_attribute("is_enemy")) {
 				const display_context& dc = resources::filter_con->get_disp_context();
@@ -2247,13 +2247,13 @@ bool attack_type::special_active_impl(
 	for (const config &i : special.child_range("filter_adjacent_location"))
 	{
 		std::size_t count = 0;
-		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
+		std::vector<map_location::direction> dirs = map_location::parse_directions(i["adjacent"]);
 		terrain_filter adj_filter(vconfig(i), resources::filter_con, false);
-		for (const map_location::DIRECTION index : dirs)
+		for (const map_location::direction index : dirs)
 		{
-			if (index == map_location::NDIRECTIONS)
+			if (index == map_location::direction::indeterminate)
 				continue;
-			if(!adj_filter.match(adjacent[index])) {
+			if(!adj_filter.match(adjacent[static_cast<int>(index)])) {
 				return false;
 			}
 			count++;

@@ -157,7 +157,7 @@ void undo_list::add_move(const unit_const_ptr u,
                          const std::vector<map_location>::const_iterator & begin,
                          const std::vector<map_location>::const_iterator & end,
                          int start_moves, int timebonus, int village_owner,
-                         const map_location::DIRECTION dir)
+                         const map_location::direction dir)
 {
 	add(new undo::move_action(u, begin, end, start_moves, timebonus, village_owner, dir));
 }
