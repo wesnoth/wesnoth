@@ -15,7 +15,7 @@
 #pragma once
 
 #include "color.hpp"
-
+#include "config.hpp"
 // This file isn't needed by any of these functions, but this allows any
 // standard color to be passed to span_color without an extra include.
 #include "font/standard_colors.hpp"
@@ -125,5 +125,22 @@ std::string italic(Args&&... s)
 std::string img(const std::string& src, const std::string& align = "left", const bool floating = false);
 
 std::string make_link(const std::string& text, const std::string& dst);
+
+//
+// Markup Parser
+//
+
+/** Thrown when the help system fails to parse something. */
+struct parse_error : public game::error
+{
+	parse_error(const std::string& msg) : game::error(msg) {}
+};
+
+/**
+ * Parse a xml style marked up text string. Return a config with the different parts of the
+ * text. Each markup item is a separate part while the text between
+ * markups are separate parts.
+ */
+config parse_text(const std::string &text);
 
 } //end namespace markup

@@ -12,10 +12,11 @@
 	See the COPYING file for more details.
 */
 
-#include "serialization/markup.hpp"
 
 #include "game_config.hpp"
 #include "gettext.hpp"
+#include "serialization/markup.hpp"
+#include "serialization/unicode_cast.hpp"  // for unicode_cast
 
 namespace markup {
 
