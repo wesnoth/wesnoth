@@ -239,7 +239,7 @@ sourcespec::sourcespec(const config& cfg) :
 	files_(cfg["sounds"]),
 	min_delay_(cfg["delay"].to_int(DEFAULT_DELAY)),
 	chance_(cfg["chance"].to_int(DEFAULT_CHANCE)),
-	loops_(cfg["loop"]),
+	loops_(cfg["loop"].to_int()),
 	range_(cfg["full_range"].to_int(3)),
 	faderange_(cfg["fade_range"].to_int(14)),
 	check_fogged_(cfg["check_fogged"].to_bool(true)),

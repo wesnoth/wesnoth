@@ -164,7 +164,7 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 	for(config& c : gamelist_.mandatory_child("gamelist").child_range("game")) {
 		DBG_LB << "data process: " << c["id"] << " (" << c[config::diff_track_attribute] << ")";
 
-		const int game_id = c["id"];
+		const int game_id = c["id"].to_int();
 		if(game_id == 0) {
 			ERR_LB << "game with id 0 in gamelist config";
 			return false;

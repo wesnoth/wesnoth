@@ -81,14 +81,14 @@ attack_type::attack_type(const config& cfg) :
 	min_range_(cfg["min_range"].to_int(1)),
 	max_range_(cfg["max_range"].to_int(1)),
 	alignment_str_(),
-	damage_(cfg["damage"]),
-	num_attacks_(cfg["number"]),
+	damage_(cfg["damage"].to_int()),
+	num_attacks_(cfg["number"].to_int()),
 	attack_weight_(cfg["attack_weight"].to_double(1.0)),
 	defense_weight_(cfg["defense_weight"].to_double(1.0)),
-	accuracy_(cfg["accuracy"]),
+	accuracy_(cfg["accuracy"].to_int()),
 	movement_used_(cfg["movement_used"].to_int(100000)),
 	attacks_used_(cfg["attacks_used"].to_int(1)),
-	parry_(cfg["parry"]),
+	parry_(cfg["parry"].to_int()),
 	specials_(cfg.child_or_empty("specials")),
 	changed_(true)
 {

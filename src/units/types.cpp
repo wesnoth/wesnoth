@@ -247,7 +247,7 @@ void unit_type::build_help_index(
 	type_name_ = cfg["name"];
 	description_ = cfg["description"];
 	hitpoints_ = cfg["hitpoints"].to_int(1);
-	level_ = cfg["level"];
+	level_ = cfg["level"].to_int();
 	recall_cost_ = cfg["recall_cost"].to_int(-1);
 	movement_ = cfg["movement"].to_int(1);
 	vision_ = cfg["vision"].to_int(-1);

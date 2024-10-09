@@ -38,7 +38,7 @@ static lg::log_domain log_engine_enemies("engine/enemies");
 game_board::game_board(const config& level)
 	: teams_()
 	, map_(std::make_unique<gamemap>(level["map_data"]))
-	, unit_id_manager_(level["next_underlying_unit_id"])
+	, unit_id_manager_(level["next_underlying_unit_id"].to_size_t())
 	, units_()
 {
 }

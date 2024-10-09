@@ -302,9 +302,9 @@ slider_definition::slider_definition(const config& cfg)
 
 slider_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
-	, positioner_length(cfg["minimum_positioner_length"])
-	, left_offset(cfg["left_offset"])
-	, right_offset(cfg["right_offset"])
+	, positioner_length(cfg["minimum_positioner_length"].to_unsigned())
+	, left_offset(cfg["left_offset"].to_unsigned())
+	, right_offset(cfg["right_offset"].to_unsigned())
 {
 	VALIDATE(positioner_length, missing_mandatory_wml_key("resolution", "minimum_positioner_length"));
 
@@ -321,11 +321,11 @@ namespace implementation
 {
 builder_slider::builder_slider(const config& cfg)
 	: implementation::builder_styled_widget(cfg)
-	, best_slider_length_(cfg["best_slider_length"])
-	, minimum_value_(cfg["minimum_value"])
-	, maximum_value_(cfg["maximum_value"])
+	, best_slider_length_(cfg["best_slider_length"].to_unsigned())
+	, minimum_value_(cfg["minimum_value"].to_int())
+	, maximum_value_(cfg["maximum_value"].to_int())
 	, step_size_(cfg["step_size"].to_int(1))
-	, value_(cfg["value"])
+	, value_(cfg["value"].to_int())
 	, minimum_value_label_(cfg["minimum_value_label"].t_str())
 	, maximum_value_label_(cfg["maximum_value_label"].t_str())
 	, value_labels_()

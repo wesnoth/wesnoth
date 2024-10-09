@@ -678,7 +678,7 @@ terrain_builder::rule_image_variant::rule_image_variant(const std::string& image
 void terrain_builder::add_images_from_config(rule_imagelist& images, const config& cfg, bool global, int dx, int dy)
 {
 	for(const config& img : cfg.child_range("image")) {
-		int layer = img["layer"];
+		int layer = img["layer"].to_int();
 
 		int basex = tilewidth_ / 2 + dx, basey = tilewidth_ / 2 + dy;
 		if(const config::attribute_value* base_ = img.get("base")) {
@@ -906,16 +906,16 @@ void terrain_builder::parse_config(const game_config_view& cfg, bool local)
 			// of terrain constraints, if it does not exist.
 			map_location loc;
 			if(const config::attribute_value* v = tc.get("x")) {
-				loc.x = *v;
+				loc.x = v->to_int();
 			}
 			if(const config::attribute_value* v = tc.get("y")) {
-				loc.y = *v;
+				loc.y = v->to_int();
 			}
 			if(loc.valid()) {
 				add_constraints(pbr.constraints, loc, tc, br);
 			}
 			if(const config::attribute_value* v = tc.get("pos")) {
-				int pos = *v;
+				int pos = v->to_int();
 				if(anchors.find(pos) == anchors.end()) {
 					WRN_NG << "Invalid anchor!";
 					continue;
@@ -946,7 +946,7 @@ void terrain_builder::parse_config(const game_config_view& cfg, bool local)
 		// Handles rotations
 		const std::string& rotations = br["rotations"];
 
-		pbr.precedence = br["precedence"];
+		pbr.precedence = br["precedence"].to_int();
 
 		add_rotated_rules(building_rules_, pbr, rotations);
 

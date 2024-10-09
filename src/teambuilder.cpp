@@ -112,7 +112,7 @@ void team_builder::gold()
 {
 	log_step("gold");
 
-	gold_info_ngold_ = side_cfg_["gold"];
+	gold_info_ngold_ = side_cfg_["gold"].to_int();
 
 	DBG_NG_TC << "set gold to '" << gold_info_ngold_ << "'";
 }

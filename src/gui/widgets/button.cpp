@@ -190,7 +190,7 @@ namespace implementation
 builder_button::builder_button(const config& cfg)
 	: builder_styled_widget(cfg)
 	, retval_id_(cfg["return_value_id"])
-	, retval_(cfg["return_value"])
+	, retval_(cfg["return_value"].to_int())
 {
 }
 

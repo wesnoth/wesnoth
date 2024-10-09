@@ -80,7 +80,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 	}
 
 	if(const config::attribute_value* v = cfg.get(frame_string + "duration")) {
-		duration(*v);
+		duration(v->to_int());
 	} else if(!cfg.get(frame_string + "end")) {
 		int halo_duration = (progressive_string(halo_, 1)).duration();
 		int image_duration = (progressive_image(image_, 1)).duration();

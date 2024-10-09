@@ -280,7 +280,7 @@ builder_tree_view::builder_tree_view(const config& cfg)
 	: builder_styled_widget(cfg)
 	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
-	, indentation_step_size(cfg["indentation_step_size"])
+	, indentation_step_size(cfg["indentation_step_size"].to_unsigned())
 	, nodes()
 {
 	for(const auto& node : cfg.child_range("node")) {

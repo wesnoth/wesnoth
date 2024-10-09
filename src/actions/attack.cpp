@@ -1505,9 +1505,9 @@ void attack::perform()
 void attack::check_replay_attack_result(
 		bool& hits, int ran_num, int& damage, config replay_results, unit_info& attacker)
 {
-	int results_chance = replay_results["chance"];
+	int results_chance = replay_results["chance"].to_int();
 	bool results_hits = replay_results["hits"].to_bool();
-	int results_damage = replay_results["damage"];
+	int results_damage = replay_results["damage"].to_int();
 
 #if 0
 	errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()

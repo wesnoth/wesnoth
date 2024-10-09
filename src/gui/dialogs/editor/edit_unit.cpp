@@ -583,7 +583,7 @@ void editor_edit_unit::save_unit_type() {
 void editor_edit_unit::update_resistances() {
 	find_widget<slider>("resistances_slider")
 		.set_value(
-			100 - resistances_[find_widget<menu_button>("resistances_list").get_value_string()]);
+			100 - resistances_[find_widget<menu_button>("resistances_list").get_value_string()].to_int());
 
 	find_widget<slider>("resistances_slider")
 		.set_active(res_toggles_[find_widget<menu_button>("resistances_list").get_value()]);
@@ -606,7 +606,7 @@ void editor_edit_unit::enable_resistances_slider() {
 void editor_edit_unit::update_defenses() {
 	find_widget<slider>("defense_slider")
 		.set_value(
-			100 - defenses_[find_widget<menu_button>("defense_list").get_value_string()]);
+			100 - defenses_[find_widget<menu_button>("defense_list").get_value_string()].to_int());
 
 	find_widget<slider>("defense_slider")
 		.set_active(def_toggles_[find_widget<menu_button>("defense_list").get_value()]);
@@ -629,7 +629,7 @@ void editor_edit_unit::enable_defense_slider() {
 void editor_edit_unit::update_movement_costs() {
 	find_widget<slider>("movement_costs_slider")
 		.set_value(
-			movement_[find_widget<menu_button>("movement_costs_list").get_value_string()]);
+			movement_[find_widget<menu_button>("movement_costs_list").get_value_string()].to_int());
 
 	find_widget<slider>("movement_costs_slider")
 		.set_active(move_toggles_[find_widget<menu_button>("movement_costs_list").get_value()]);
@@ -693,8 +693,8 @@ void editor_edit_unit::update_attacks() {
 	find_widget<text_box>("atk_name_box").set_value(attack["description"]);
 	find_widget<text_box>("path_attack_image").set_value(attack["icon"]);
 	update_image("attack_image");
-	find_widget<slider>("dmg_box").set_value(attack["damage"]);
-	find_widget<slider>("dmg_num_box").set_value(attack["number"]);
+	find_widget<slider>("dmg_box").set_value(attack["damage"].to_int());
+	find_widget<slider>("dmg_num_box").set_value(attack["number"].to_int());
 	find_widget<combobox>("range_list").set_value(attack["range"]);
 
 	set_selected_from_string(

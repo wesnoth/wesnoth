@@ -769,7 +769,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			if(resources::recorder->add_chat_message_location()) {
 				DBG_REPLAY << "tried to add a chat message twice.";
 				if (!resources::controller->is_skipping_replay() || is_whisper) {
-					int side = speak["side"];
+					int side = speak["side"].to_int();
 					game_display::get_singleton()->get_chat_manager().add_chat_message(get_time(*speak), speaker_name, side, message,
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
@@ -856,8 +856,8 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 		else if (auto countdown_update = cfg->optional_child("countdown_update"))
 		{
-			int val = countdown_update["value"];
-			int tval = countdown_update["team"];
+			int val = countdown_update["value"].to_int();
+			int tval = countdown_update["team"].to_int();
 			if (tval <= 0  || tval > static_cast<int>(resources::gameboard->teams().size())) {
 				std::stringstream errbuf;
 				errbuf << "Illegal countdown update \n"

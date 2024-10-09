@@ -77,8 +77,8 @@ undo_event::undo_event(const config& first, const config& second, const config& 
 	, loc2(second["x"], second["y"], wml_loc())
 	, filter_loc1(first["filter_x"], first["filter_y"], wml_loc())
 	, filter_loc2(second["filter_x"], second["filter_y"], wml_loc())
-	, uid1(first["underlying_id"])
-	, uid2(second["underlying_id"])
+	, uid1(first["underlying_id"].to_size_t())
+	, uid2(second["underlying_id"].to_size_t())
 	, id1(first["id"])
 	, id2(second["id"])
 {
@@ -102,7 +102,7 @@ undo_action::undo_action()
 
 undo_action::undo_action(const config& cfg)
 	: undo_action_base()
-	, unit_id_diff(cfg["unit_id_diff"])
+	, unit_id_diff(cfg["unit_id_diff"].to_int())
 {
 	read_event_vector(umc_commands_undo, cfg, "undo_actions");
 }
@@ -124,7 +124,7 @@ namespace {
 		config::attribute_value& y1 = resources::gamedata->get_variable("y1");
 		config::attribute_value& x2 = resources::gamedata->get_variable("x2");
 		config::attribute_value& y2 = resources::gamedata->get_variable("y2");
-		int oldx1 = x1, oldy1 = y1, oldx2 = x2, oldy2 = y2;
+		int oldx1 = x1.to_int(), oldy1 = y1.to_int(), oldx2 = x2.to_int(), oldy2 = y2.to_int();
 		x1 = e.filter_loc1.wml_x(); y1 = e.filter_loc1.wml_y();
 		x2 = e.filter_loc2.wml_x(); y2 = e.filter_loc2.wml_y();
 

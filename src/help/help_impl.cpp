@@ -1475,7 +1475,7 @@ static config parse_text_until(std::string::const_iterator& beg, std::string::co
 				throw parse_error("unexpected eos after entity");
 			}
 			if(entity.has_attribute("code_point")) {
-				s << unicode_cast<std::string>(entity["code_point"]);
+				s << unicode_cast<std::string>(entity["code_point"].to_int());
 			} else {
 				// TODO: Adding the text here seems wrong in the case that the stream BEGINS with an entity...
 				res.add_child("text", config("text", s.str()));
@@ -1555,7 +1555,7 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 					throw parse_error("unexpected eos after entity");
 				}
 				if(entity.has_attribute("code_point")) {
-					s << unicode_cast<std::string>(entity["code_point"]);
+					s << unicode_cast<std::string>(entity["code_point"].to_int());
 				} else {
 					throw parse_error("unsupported entity in attribute value");
 				}

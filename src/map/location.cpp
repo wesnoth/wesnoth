@@ -45,6 +45,11 @@ std::ostream &operator<<(std::ostream &s, const std::vector<map_location>& v) {
 	return s;
 }
 
+map_location::map_location(const config_attribute_value& x, const config_attribute_value& y, wml_loc)
+	: map_location(x.to_int(), y.to_int(), wml_loc{})
+{
+}
+
 /**
  * Default list of directions
  *

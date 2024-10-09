@@ -931,7 +931,7 @@ bool prefs::use_twelve_hour_clock_format()
 
 sort_order::type prefs::addon_manager_saved_order_direction()
 {
-	return sort_order::get_enum(preferences_[prefs_list::addon_manager_saved_order_direction]).value_or(sort_order::type::none);
+	return sort_order::get_enum(preferences_[prefs_list::addon_manager_saved_order_direction].to_int()).value_or(sort_order::type::none);
 }
 
 void prefs::set_addon_manager_saved_order_direction(sort_order::type value)
@@ -1640,7 +1640,7 @@ void prefs::clear_countdown_turn_bonus()
 
 int prefs::countdown_action_bonus()
 {
-	return std::clamp<int>(preferences_[prefs_list::mp_countdown_action_bonus], 0, 30);
+	return std::clamp<int>(preferences_[prefs_list::mp_countdown_action_bonus].to_int(), 0, 30);
 }
 
 void prefs::set_countdown_action_bonus(int value)

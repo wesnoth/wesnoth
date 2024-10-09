@@ -80,9 +80,9 @@ void addon_info::read(const config& cfg)
 	current_version = cfg["version"].str();
 	versions.emplace(cfg["version"].str());
 	author = cfg["author"].str();
-	size = cfg["size"];
-	downloads = cfg["downloads"];
-	uploads = cfg["uploads"];
+	size = cfg["size"].to_int();
+	downloads = cfg["downloads"].to_int();
+	uploads = cfg["uploads"].to_int();
 	type = get_addon_type(cfg["type"].str());
 
 	for(const config& version : cfg.child_range("version")) {
