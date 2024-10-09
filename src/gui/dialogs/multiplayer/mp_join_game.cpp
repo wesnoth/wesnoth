@@ -433,7 +433,7 @@ void mp_join_game::generate_side_list()
 			data.emplace("side_gold", item);
 		}
 
-		const int income_amt = side["income"];
+		const int income_amt = side["income"].to_int();
 		if(income_amt != 0) {
 			const std::string income_string = formatter() << (income_amt > 0 ? "+" : "") << income_amt << " " << _("Income");
 
