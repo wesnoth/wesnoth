@@ -93,13 +93,13 @@ namespace lua_check_impl
 	std::enable_if_t<std::is_same_v<T, std::string>, std::string>
 	lua_check(lua_State *L, int n)
 	{
-		return luaL_checkstring(L, n);
+		return std::string(luaW_tostring(L, n));
 	}
 	template<typename T>
 	std::enable_if_t<std::is_same_v<T, std::string>, std::string>
 	lua_to_or_default(lua_State *L, int n, const T& def)
 	{
-		return luaL_optstring(L, n, def.c_str());
+		return std::string(luaW_tostring_or_default(L, n, def));
 	}
 	template<typename T>
 	std::enable_if_t<std::is_same_v<T, std::string>, void>

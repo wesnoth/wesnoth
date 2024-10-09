@@ -33,13 +33,14 @@ public:
 	typedef std::vector<std::function<bool(void)>> request_list;
 
 	class thread {
+		application_lua_kernel& owner_;
 		lua_State * T_;
 		bool started_;
 
 		thread(const thread&) = delete;
 		thread& operator=(const thread&) = delete;
 
-		thread(lua_State *);
+		thread(application_lua_kernel&, lua_State *);
 	public :
 		bool is_running();
 		std::string status();

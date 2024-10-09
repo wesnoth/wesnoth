@@ -158,8 +158,8 @@ static int cfun_ai_get_suitable_keep(lua_State *L)
 		return 0;
 	}
 	else {
-		lua_pushnumber(L, res.wml_x());
-		lua_pushnumber(L, res.wml_y());
+		lua_pushinteger(L, res.wml_x());
+		lua_pushinteger(L, res.wml_y());
 		return 2;
 	}
 }

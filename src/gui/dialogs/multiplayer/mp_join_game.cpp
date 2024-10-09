@@ -69,6 +69,7 @@ mp_join_game::mp_join_game(saved_game& state, wesnothd_connection& connection, c
 	, flg_dialog_(nullptr)
 {
 	set_show_even_without_video(true);
+	set_allow_plugin_skip(false);
 }
 
 mp_join_game::~mp_join_game()

@@ -66,20 +66,25 @@ bool modal_dialog::show(const unsigned auto_close_time)
 {
 	if(video::headless() && !show_even_without_video_) {
 		DBG_DP << "modal_dialog::show denied";
-		if(!allow_plugin_skip_) {
-			return false;
-		}
+		return false;
+	}
+	if(allow_plugin_skip_) {
+		bool skipped = false;
 
 		plugins_manager* pm = plugins_manager::get();
 		if (pm && pm->any_running())
 		{
 			plugins_context pc("Dialog");
-			pc.set_callback("skip_dialog", [this](config) { retval_ = retval::OK; }, false);
-			pc.set_callback("quit", [](config) {}, false);
+			pc.set_callback("skip_dialog", [this, &skipped](config) { retval_ = retval::OK; skipped = true; }, false);
+			pc.set_callback("quit", [this, &skipped](config) { retval_ = retval::CANCEL; skipped = true; }, false);
+			pc.set_callback("select", [this, &skipped](config c) { retval_ = c["retval"].to_int(); skipped = true; }, false);
+			pc.set_accessor_string("id", [this](config) { return window_id(); });
 			pc.play_slice();
 		}
 
-		return false;
+		if(skipped) {
+			return false;
+		}
 	}
 
 	init_fields();

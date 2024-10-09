@@ -74,7 +74,7 @@ public:
 
 	void end_turn();
 	void force_end_turn() override;
-	void require_end_turn();
+	void require_end_turn() override;
 
 	class hotkey_handler;
 	std::string describe_result() const;
