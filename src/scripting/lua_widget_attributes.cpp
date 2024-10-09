@@ -17,7 +17,10 @@
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/menu_button.hpp"
+#include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/multi_page.hpp"
+#include "gui/widgets/options_button.hpp"
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/slider.hpp"
@@ -31,6 +34,7 @@
 #include "log.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_kernel_base.hpp"
+#include "scripting/lua_menu_item.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/lua_unit_type.hpp"
 #include "scripting/push_check.hpp"
@@ -50,8 +54,10 @@
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
+#define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
+#define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 
-static gui2::widget* find_child_by_index(gui2::widget& w, int i)
+static void push_child_by_index(lua_State *L, gui2::widget& w, int i)
 {
 	assert(i > 0);
 	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(&w)) {
@@ -61,7 +67,7 @@ static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 				list->add_row(gui2::widget_item{});
 			}
 		}
-		return list->get_row_grid(i - 1);
+		luaW_pushwidget(L, *list->get_row_grid(i - 1));
 	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(&w)) {
 		int n = multi_page->get_page_count();
 		if(i > n) {
@@ -69,28 +75,39 @@ static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 				multi_page->add_page(gui2::widget_item{});
 			}
 		}
-		return &multi_page->page_grid(i - 1);
+		luaW_pushwidget(L, *&multi_page->page_grid(i - 1));
 	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(&w)) {
 		gui2::tree_view_node& tvn = tree_view->get_root_node();
 		int n = tvn.count_children();
 		if(i > n) {
 			throw std::invalid_argument("out of range");
 		}
-		return &tvn.get_child_at(i - 1);
+		luaW_pushwidget(L, *&tvn.get_child_at(i - 1));
 	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(&w)) {
 		int n = tree_view_node->count_children();
 		if(i > n) {
 			throw std::invalid_argument("out of range");
 		}
-		return &tree_view_node->get_child_at(i - 1);
+		luaW_pushwidget(L, *&tree_view_node->get_child_at(i - 1));
 	} else if(gui2::stacked_widget* stacked_widget = dynamic_cast<gui2::stacked_widget*>(&w)) {
 		int n = stacked_widget->get_layer_count();
 		if(i > n) {
 			throw std::invalid_argument("out of range");
 		}
-		return stacked_widget->get_layer_grid(i - 1);
+		luaW_pushwidget(L, *stacked_widget->get_layer_grid(i - 1));
+	} else if(gui2::options_button* options_button = dynamic_cast<gui2::options_button*>(&w)) {
+		int n = options_button->get_item_count();
+		if(i > n) {
+			config c;
+			for(; n < i; ++n) {
+				options_button->add_row(c);
+			}
+		}
+		luaW_pushmenuitem(L, *options_button->get_row(i - 1));
+	} else {
+		luaW_tableget(L, 1, "type");
+		luaL_error(L, "unsupported widget in push_child_by_index(): %s", luaL_checkstring(L, -1));
 	}
-	return nullptr;
 }
 
 static gui2::widget* find_child_by_name(gui2::widget& w, const std::string& m)
@@ -162,7 +179,7 @@ struct BOOST_PP_CAT(setter_adder_, id) { \
 	} \
 }; \
 static BOOST_PP_CAT(setter_adder_, id) BOOST_PP_CAT(setter_adder_instance_, id); \
-void BOOST_PP_CAT(setter_, id)::set([[maybe_unused]] lua_State* L, widgt_type& w, const value_type& value) const
+void BOOST_PP_CAT(setter_, id)::set([[maybe_unused]] lua_State* L, [[maybe_unused]] widgt_type& w, [[maybe_unused]] const value_type& value) const
 
 
 /**
@@ -187,6 +204,44 @@ WIDGET_SETTER("value_compat,selected_index", int, gui2::listbox)
 	w.select_row(value - 1);
 }
 
+WIDGET_SETTER("label", std::string, gui2::menu_button)
+{
+	luaL_error(L, "attempt to modify read-only attribute 'label'");
+}
+
+WIDGET_SETTER("selected_index", int, gui2::menu_button)
+{
+	w.set_selected(value - 1, false);  // do not fire event, from lua this would only be used for setting default row
+}
+
+WIDGET_GETTER("value", std::string, gui2::menu_button)
+{
+    return w.get_value_string();
+}
+
+WIDGET_SETTER("value", std::string, gui2::menu_button)
+{
+	luaL_error(L, "attempt to modify read-only attribute 'value'");
+}
+
+WIDGET_SETTER("label", std::string, gui2::multimenu_button)
+{
+	luaL_error(L, "attempt to modify read-only attribute 'label'");
+}
+
+WIDGET_SETTER("max_shown", int, gui2::multimenu_button)
+{
+	if(value < 1) {
+		luaL_error(L, "max_shown must be >= 1");
+	}
+	w.set_max_shown(value);
+}
+
+WIDGET_GETTER("max_shown", int, gui2::multimenu_button)
+{
+	return w.get_max_shown();
+}
+
 WIDGET_GETTER("value_compat,selected_index", int, gui2::multi_page)
 {
 	return w.get_selected_page() + 1;
@@ -194,8 +249,25 @@ WIDGET_GETTER("value_compat,selected_index", int, gui2::multi_page)
 
 WIDGET_SETTER("value_compat,selected_index", int, gui2::multi_page)
 {
-	w.select_page(value -1);
+	w.select_page(value - 1);
 }
+
+WIDGET_GETTER("item_count", int, gui2::options_button)
+{
+	return w.get_item_count();
+}
+
+WIDGET_SETTER("item_count", int, gui2::options_button)
+{
+	luaL_error(L, "attempt to modify read-only attribute 'item_count'");
+}
+
+
+WIDGET_GETTER("value", std::string, gui2::options_button)
+{
+    return w.get_value_string();
+}
+
 
 WIDGET_GETTER("value_compat,selected_index", int, gui2::stacked_widget)
 {
@@ -416,6 +488,11 @@ WIDGET_SETTER("value_compat,label", t_string, gui2::styled_widget)
 	w.set_label(value);
 }
 
+WIDGET_GETTER("label", t_string, gui2::styled_widget)
+{
+	return w.get_label();
+}
+
 WIDGET_GETTER("type", std::string, gui2::widget)
 {
 	if(const gui2::styled_widget* sw = dynamic_cast<const gui2::styled_widget*>(&w)) {
@@ -501,13 +578,10 @@ int impl_widget_get(lua_State* L)
 {
 	gui2::widget& w = luaW_checkwidget(L, 1);
 	if(lua_isinteger(L, 2)) {
-
-		if(auto pwidget = find_child_by_index(w, luaL_checkinteger(L, 2))) {
-			luaW_pushwidget(L, *pwidget);
-			return 1;
-		}
-
+		push_child_by_index(L, w, luaL_checkinteger(L, 2));
+		return 1;
 	}
+
 	std::string_view str = lua_check<std::string_view>(L, 2);
 
 	tgetters::iterator it = getters.find(std::string(str));

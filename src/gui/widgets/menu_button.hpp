@@ -17,6 +17,7 @@
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/dialogs/drop_down_menu.hpp"
+#include "gui/widgets/options_button.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/selectable_item.hpp"
 
@@ -29,28 +30,12 @@ namespace implementation
 
 // ------------ WIDGET -----------{
 
-class menu_button : public styled_widget, public selectable_item
+class menu_button : public options_button, public selectable_item
 {
 public:
 	explicit menu_button(const implementation::builder_menu_button& builder);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
-
-	/** See @ref styled_widget::set_active. */
-	virtual void set_active(const bool active) override;
-
-	/** See @ref styled_widget::get_active. */
-	virtual bool get_active() const override;
-
-	/** See @ref styled_widget::get_state. */
-	virtual unsigned get_state() const override;
-
-	/***** ***** ***** setters / getters for members ***** ****** *****/
-
-	void set_values(const std::vector<::config>& values, unsigned selected = 0);
-
-	void set_selected(unsigned selected, bool fire_event = true);
-
 	/** Inherited from selectable_item */
 	virtual unsigned get_value() const override { return selected_; }
 
@@ -58,53 +43,8 @@ public:
 	virtual void set_value(unsigned value, bool fire_event = false) override { set_selected(value, fire_event); }
 
 	/** Inherited from selectable_item */
+	// does the same thing as get_item_count()
 	virtual unsigned num_states() const override { return values_.size(); }
-
-	/** Returns the value of the selected row */
-	std::string get_value_string() const
-	{
-		return values_[selected_]["label"];
-	}
-
-	/** Returns the entire config object for the selected row. */
-	const ::config& get_value_config() const
-	{
-		return values_[selected_];
-	}
-
-	void set_keep_open(const bool keep_open)
-	{
-		keep_open_ = keep_open;
-	}
-
-private:
-	/**
-	 * Possible states of the widget.
-	 *
-	 * Note the order of the states must be the same as defined in settings.hpp.
-	 */
-	enum state_t {
-		ENABLED,
-		DISABLED,
-		PRESSED,
-		FOCUSED,
-	};
-
-	void set_state(const state_t state);
-
-	/**
-	 * Current state of the widget.
-	 *
-	 * The state of the widget determines what to render and how the widget
-	 * reacts to certain 'events'.
-	 */
-	state_t state_;
-
-	std::vector<::config> values_;
-
-	unsigned selected_;
-
-	bool keep_open_;
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
@@ -114,21 +54,6 @@ private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
-	/***** ***** ***** signal handlers ***** ****** *****/
-
-	void signal_handler_mouse_enter(const event::ui_event event, bool& handled);
-
-	void signal_handler_mouse_leave(const event::ui_event event, bool& handled);
-
-	void signal_handler_left_button_down(const event::ui_event event, bool& handled);
-
-	void signal_handler_left_button_up(const event::ui_event event, bool& handled);
-
-	void signal_handler_left_button_click(const event::ui_event event, bool& handled);
-
-	void signal_handler_sdl_wheel_up(const event::ui_event event, bool& handled);
-
-	void signal_handler_sdl_wheel_down(const event::ui_event event, bool& handled);
 };
 
 // }---------- DEFINITION ---------{
@@ -159,6 +84,7 @@ public:
 
 private:
 	std::vector<::config> options_;
+
 };
 
 } // namespace implementation

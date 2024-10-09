@@ -20,7 +20,10 @@
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/menu_button.hpp"
+#include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/multi_page.hpp"
+#include "gui/widgets/options_button.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/stacked_widget.hpp"
@@ -31,6 +34,7 @@
 #include "log.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_kernel_base.hpp"
+#include "scripting/lua_menu_item.hpp"
 #include "scripting/lua_ptr.hpp"
 #include "scripting/lua_widget.hpp"
 #include "scripting/lua_widget_methods.hpp"
@@ -198,29 +202,35 @@ static int intf_find_widget(lua_State* L)
 
 namespace
 {
-	int number_of_items(gui2::listbox& mp)
+	int number_of_items(gui2::listbox& lb)
 	{
-		return mp.get_item_count();
+		return lb.get_item_count();
 	}
+
 	int number_of_items(gui2::multi_page& mp)
 	{
 		return mp.get_page_count();
 	}
 
-	int number_of_items(gui2::tree_view_node& mp)
+	int number_of_items(gui2::options_button & ob)
 	{
-		return mp.count_children();
+		return ob.get_item_count();
 	}
 
-	int number_of_items(gui2::tree_view& mp)
+	int number_of_items(gui2::tree_view_node& tvn)
 	{
-		return number_of_items(mp.get_root_node());
+		return tvn.count_children();
+	}
+
+	int number_of_items(gui2::tree_view& tv)
+	{
+		return number_of_items(tv.get_root_node());
 	}
 
 	// converts a 1-based index given as lua paraemter to a 0-based index to be used in the c++ api.
 	// and checks that it is in range
-	template<typename TWidget>
-	int check_index(lua_State* L, int arg, TWidget& w, bool for_insertion, utils::optional<int>& index)
+	template<typename T>
+	int check_index(lua_State* L, int arg, T& w, bool for_insertion, utils::optional<int>& index)
 	{
 		int nitems = number_of_items(w);
 
@@ -231,7 +241,7 @@ namespace
 		}
 
 		if(*index <= 0 || *index > max) {
-			luaL_argerror(L, arg, "widget child index out of range");
+			luaL_argerror(L, arg, "child index out of range");
 		}
 		return *index - 1;
 	}
@@ -276,11 +286,14 @@ static int intf_remove_dialog_item(lua_State* L)
 	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(w)) {
 		int realpos = check_index(L, 2, *tree_view_node, false, pos);
 		remove_treeview_node(*tree_view_node, realpos, number);
+	} else if(gui2::options_button* options_button = dynamic_cast<gui2::options_button*>(w)) {
+		int realpos = check_index(L, 2, *options_button, false, pos);
+		options_button->remove_rows(realpos, number);
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 	}
 
-	return 1;
+	return 0;
 }
 
 namespace { // helpers of intf_set_dialog_callback()
@@ -325,8 +338,8 @@ static int intf_set_dialog_callback(lua_State* L)
 	}
 
 	// TODO: i am not sure whether it is 100% safe to bind the lua_state here,
-	//       (meaning whether it can happen that the lus state is destroyed)
-	//       when a widgets callback is called.
+	//       (meaning whether it can happen that the lua state is destroyed)
+	//       when a widget's callback is called.
 	if(gui2::clickable_item* c = dynamic_cast<gui2::clickable_item*>(w)) {
 		c->connect_click_handler(std::bind(&dialog_callback, L, wp, "callback"));
 	} else if( dynamic_cast<gui2::selectable_item*>(w)) {
@@ -434,14 +447,25 @@ static int intf_add_dialog_item(lua_State* L)
 	if(gui2::listbox* lb = dynamic_cast<gui2::listbox*>(w)) {
 		int realpos = check_index(L, 2, *lb, true, insert_pos);
 		res = &lb->add_row(data, realpos);
+		if(res) {
+			luaW_pushwidget(L, *res);
+			lua_push(L, insert_pos.value());
+			return 2;
+		}
+	} else if(gui2::options_button* ob = dynamic_cast<gui2::options_button*>(w)) {
+		int realpos = check_index(L, 2, *ob, true, insert_pos);
+		gui2::menu_item* res = nullptr;
+		const config c;
+		res = &ob->add_row(c, realpos);
+		if(res) {
+			luaW_pushmenuitem(L, *res);
+			lua_push(L, insert_pos.value());
+			return 2;
+		}
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 	}
-	if(res) {
-		luaW_pushwidget(L, *res);
-		lua_push(L, insert_pos.value());
-		return 2;
-	}
+
 	return 0;
 }
 
