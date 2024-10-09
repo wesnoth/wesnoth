@@ -59,10 +59,10 @@ void core_selection::pre_show()
 		widget_item list_item;
 		widget_data list_item_item;
 
-		list_item["label"] = core["image"].str();
+		list_item["label"] = core["image"];
 		list_item_item.emplace("image", list_item);
 
-		list_item["label"] = core["name"].t_str();
+		list_item["label"] = core["name"];
 		list_item_item.emplace("name", list_item);
 
 		grid* grid = &list.add_row(list_item_item);
@@ -72,7 +72,7 @@ void core_selection::pre_show()
 		widget_item detail_item;
 		widget_data detail_page;
 
-		detail_item["label"] = core["description"].t_str();
+		detail_item["label"] = core["description"];
 		detail_item["use_markup"] = "true";
 		detail_page.emplace("description", detail_item);
 
