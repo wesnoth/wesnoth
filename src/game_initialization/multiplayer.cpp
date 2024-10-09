@@ -764,7 +764,7 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 	// Should number of turns be determined from scenario data?
 	if(parameters.use_map_settings && state.get_starting_point().has_attribute("turns")) {
 		DBG_MP << "setting turns from scenario data: " << state.get_starting_point()["turns"];
-		parameters.num_turns = state.get_starting_point()["turns"];
+		parameters.num_turns = state.get_starting_point()["turns"].to_int();
 	}
 
 	DBG_MP << "entering connect mode";
