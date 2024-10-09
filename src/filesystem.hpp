@@ -87,8 +87,12 @@ public:
 	blacklist_pattern_list()
 		: file_patterns_(), directory_patterns_()
 	{}
-	blacklist_pattern_list(const std::vector<std::string>& file_patterns, const std::vector<std::string>& directory_patterns)
-		: file_patterns_(file_patterns), directory_patterns_(directory_patterns)
+	blacklist_pattern_list(const std::vector<std::string>& file_exact_names, const std::vector<std::string>& file_extensions,
+			const std::vector<std::string>& file_patterns, const std::vector<std::string>& directory_patterns)
+		: file_exact_names_(file_exact_names)
+		, file_extensions_(file_extensions)
+		, file_patterns_(file_patterns)
+		, directory_patterns_(directory_patterns)
 	{}
 
 	bool match_file(const std::string& name) const;
@@ -105,9 +109,17 @@ public:
 		directory_patterns_.push_back(pattern);
 	}
 
+	/**
+	 * Filters the provided lists, which are used as both input and output.
+	 */
 	void remove_blacklisted_files_and_dirs(std::vector<std::string>& files, std::vector<std::string>& directories) const;
 
 private:
+	/** Specific names of files, which only match if the strings are exactly equal. */
+	std::vector<std::string> file_exact_names_;
+	/** The extensions are matched with a simple ends_with, without looking for wildcards. */
+	std::vector<std::string> file_extensions_;
+	/** The patterns recognise wildcards. */
 	std::vector<std::string> file_patterns_;
 	std::vector<std::string> directory_patterns_;
 };
