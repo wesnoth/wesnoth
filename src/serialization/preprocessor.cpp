@@ -212,7 +212,7 @@ void preproc_define::read(const config& cfg)
 {
 	value = cfg["value"].str();
 	textdomain = cfg["textdomain"].str();
-	linenum = cfg["linenum"];
+	linenum = cfg["linenum"].to_int();
 	location = cfg["location"].str();
 
 	if(auto deprecated = cfg.optional_child("deprecated")) {

@@ -69,7 +69,7 @@ undo_action_base * undo_list::create_action(const config & cfg)
 
 	if ( str == "move" ) {
 		res = new undo::move_action(cfg, cfg.child_or_empty("unit"),
-		                       cfg["starting_moves"],
+		                       cfg["starting_moves"].to_int(),
 		                       map_location::parse_direction(cfg["starting_direction"]));
 	}
 

@@ -165,7 +165,7 @@ namespace {
 	};
 
 	terrain_height_mapper::terrain_height_mapper(const config& cfg) :
-		terrain_height(cfg["height"]),
+		terrain_height(cfg["height"].to_int()),
 		to(t_translation::GRASS_LAND)
 	{
 		const std::string& terrain = cfg["terrain"];
@@ -637,7 +637,7 @@ static map_location place_village(const t_translation::ter_map& map,
 				adjacent_liked = &(adj_liked_cache[t]);
 			}
 
-			int rating = child["rating"];
+			int rating = child["rating"].to_int();
 			for(const map_location& adj : get_adjacent_tiles({i.x, i.y})) {
 				if(adj.x < 0 || adj.y < 0 || adj.x >= map.w || adj.y >= map.h) {
 					continue;
@@ -810,7 +810,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				continue;
 			}
 
-			std::vector<map_location> river = generate_river(heights, terrain, x, y, cfg["river_frequency"]);
+			std::vector<map_location> river = generate_river(heights, terrain, x, y, cfg["river_frequency"].to_int());
 
 			if(!river.empty() && misc_labels != nullptr) {
 				const std::string base_name = base_name_generator->generate();
@@ -832,7 +832,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			LOG_NG << "Generating lake...";
 
 			std::set<map_location> locs;
-			if(generate_lake(terrain, x, y, cfg["lake_size"], locs) && misc_labels != nullptr) {
+			if(generate_lake(terrain, x, y, cfg["lake_size"].to_int(), locs) && misc_labels != nullptr) {
 				bool touches_other_lake = false;
 
 				std::string base_name = base_name_generator->generate();
@@ -885,8 +885,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	 * more interesting types than the default.
 	 */
 	const height_map temperature_map = generate_height_map(data.width,data.height,
-		static_cast<size_t>(cfg["temperature_iterations"].to_int()) * data.width * data.height / default_dimensions,
-		cfg["temperature_size"], 0, 0);
+		cfg["temperature_iterations"].to_size_t() * data.width * data.height / default_dimensions,
+		cfg["temperature_size"].to_size_t(), 0, 0);
 
 	LOG_NG << "Generated temperature map. " << (SDL_GetTicks() - ticks) << " ticks elapsed";
 	ticks = SDL_GetTicks();
@@ -941,7 +941,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 			const int min_y = data.height/3 + 3;
 			const int max_x = (data.width/3)*2 - 4;
 			const int max_y = (data.height/3)*2 - 4;
-			int min_distance = castle_config["min_distance"];
+			int min_distance = castle_config["min_distance"].to_int();
 
 			map_location best_loc;
 			int best_ranking = 0;
@@ -985,7 +985,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	// Place roads.
 	// We select two tiles at random locations on the borders of the map
 	// and try to build roads between them.
-	int nroads = cfg["roads"];
+	int nroads = cfg["roads"].to_int();
 	if(data.link_castles) {
 		nroads += castles.size()*castles.size();
 	}

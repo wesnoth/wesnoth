@@ -291,10 +291,10 @@ toggle_panel_definition::toggle_panel_definition(const config& cfg)
 
 toggle_panel_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
-	, top_border(cfg["top_border"])
-	, bottom_border(cfg["bottom_border"])
-	, left_border(cfg["left_border"])
-	, right_border(cfg["right_border"])
+	, top_border(cfg["top_border"].to_unsigned())
+	, bottom_border(cfg["bottom_border"].to_unsigned())
+	, left_border(cfg["left_border"].to_unsigned())
+	, right_border(cfg["right_border"].to_unsigned())
 {
 	// Note the order should be the same as the enum state_t in toggle_panel.hpp.
 	for(const auto& c : cfg.child_range("state"))
@@ -314,7 +314,7 @@ builder_toggle_panel::builder_toggle_panel(const config& cfg)
 	: builder_styled_widget(cfg)
 	, grid(nullptr)
 	, retval_id_(cfg["return_value_id"])
-	, retval_(cfg["return_value"])
+	, retval_(cfg["return_value"].to_int())
 {
 	auto c = cfg.optional_child("grid");
 

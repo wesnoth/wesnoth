@@ -403,7 +403,7 @@ playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_i
 
 	if (const auto message = cfg.optional_child("message"))
 	{
-		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), message.value()["sender"], message.value()["side"],
+		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), message.value()["sender"], message.value()["side"].to_int(),
 				message.value()["message"], events::chat_handler::MESSAGE_PUBLIC,
 				prefs::get().message_bell());
 	}

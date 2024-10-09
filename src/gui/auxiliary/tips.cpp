@@ -38,7 +38,7 @@ std::vector<game_tip> load(const config& cfg)
 	std::vector<game_tip> result;
 
 	for(const auto& tip : cfg.child_range("tip")) {
-		result.emplace_back(tip["text"], tip["source"], tip["encountered_units"]);
+		result.emplace_back(tip["text"].t_str(), tip["source"].t_str(), tip["encountered_units"].str());
 	}
 
 	return result;

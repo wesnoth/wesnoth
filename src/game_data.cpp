@@ -179,7 +179,7 @@ game_data::PHASE game_data::read_phase(const config& cfg)
 	if(cfg["playing_team"].empty()) {
 		return game_data::PRELOAD;
 	}
-	if(!cfg["init_side_done"]) {
+	if(!cfg["init_side_done"].to_bool()) {
 		return game_data::TURN_STARTING_WAITING;
 	}
 	if(cfg.has_child("end_level_data")) {

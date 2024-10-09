@@ -104,7 +104,7 @@ static stats_t::battle_result_map read_battle_result_map(const config& cfg)
 	stats_t::battle_result_map m;
 	for(const config& i : cfg.child_range("sequence")) {
 		config item = i;
-		int key = item["_num"];
+		int key = item["_num"].to_int();
 		item.remove_attribute("_num");
 		m[key] = read_str_int_map(item);
 	}
@@ -156,7 +156,7 @@ static stats_t::hitrate_map read_by_cth_map(const config& cfg)
 {
 	stats_t::hitrate_map m;
 	for(const config& i : cfg.child_range("hitrate_map_entry")) {
-		m.emplace(i["cth"], stats_t::hitrate_t(i.mandatory_child("stats")));
+		m.emplace(i["cth"].to_int(), stats_t::hitrate_t(i.mandatory_child("stats")));
 	}
 	return m;
 }
@@ -458,8 +458,8 @@ config stats_t::hitrate_t::write() const
 }
 
 stats_t::hitrate_t::hitrate_t(const config& cfg)
-	: strikes(cfg["strikes"])
-	, hits(cfg["hits"])
+	: strikes(cfg["strikes"].to_int())
+	, hits(cfg["hits"].to_int())
 {
 }
 

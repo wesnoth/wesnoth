@@ -124,12 +124,12 @@ gui_definition::gui_definition(const config& cfg)
 	 */
 	const config& settings = cfg.mandatory_child("settings");
 
-	popup_show_delay_ = settings["popup_show_delay"];
-	popup_show_time_ = settings["popup_show_time"];
-	help_show_time_ = settings["help_show_time"];
-	double_click_time_ = settings["double_click_time"];
+	popup_show_delay_ = settings["popup_show_delay"].to_unsigned();
+	popup_show_time_ = settings["popup_show_time"].to_unsigned();
+	help_show_time_ = settings["help_show_time"].to_unsigned();
+	double_click_time_ = settings["double_click_time"].to_unsigned();
 
-	repeat_button_repeat_time_ = settings["repeat_button_repeat_time"];
+	repeat_button_repeat_time_ = settings["repeat_button_repeat_time"].to_unsigned();
 
 	VALIDATE(double_click_time_, missing_mandatory_wml_key("settings", "double_click_time"));
 
@@ -138,7 +138,7 @@ gui_definition::gui_definition(const config& cfg)
 	sound_toggle_panel_click_ = settings["sound_toggle_panel_click"].str();
 	sound_slider_adjust_ = settings["sound_slider_adjust"].str();
 
-	has_helptip_message_ = settings["has_helptip_message"];
+	has_helptip_message_ = settings["has_helptip_message"].t_str();
 
 	VALIDATE(!has_helptip_message_.empty(), missing_mandatory_wml_key("settings", "has_helptip_message"));
 }

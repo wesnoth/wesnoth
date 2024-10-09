@@ -66,9 +66,9 @@ using ca_ptr = wfl::candidate_action_ptr;
 ca_ptr formula_ai::load_candidate_action_from_config(const config& rc_action)
 {
 	ca_ptr new_ca;
-	const t_string &name = rc_action["name"];
+	const std::string name = rc_action["name"];
 	try {
-		const t_string &type = rc_action["type"];
+		const std::string& type = rc_action["type"];
 
 		if( type == "movement") {
 			new_ca = std::make_shared<move_candidate_action>(name, type, rc_action, &function_table_);
@@ -627,11 +627,11 @@ void formula_ai::on_create(){
 
 	for(const config &func : cfg_.child_range("function"))
 	{
-		const t_string &name = func["name"];
-		const t_string &inputs = func["inputs"];
-		const t_string &formula_str = func["formula"];
+		const std::string name = func["name"];
+		const std::string inputs = func["inputs"];
+		const std::string formula_str = func["formula"];
 
-		std::vector<std::string> args = utils::split(inputs.str());
+		std::vector<std::string> args = utils::split(inputs);
 		try {
 			add_formula_function(name,
 					     create_optional_formula(formula_str),

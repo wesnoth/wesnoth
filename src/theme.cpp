@@ -433,7 +433,7 @@ theme::label::label(std::size_t sw, std::size_t sh, const config& cfg)
 	: object(sw, sh, cfg)
 	, text_(cfg["prefix"].str() + cfg["prefix_literal"].str() + cfg["text"].str() + cfg["postfix_literal"].str() + cfg["postfix"].str())
 	, icon_(cfg["icon"])
-	, font_(cfg["font_size"])
+	, font_(cfg["font_size"].to_size_t())
 	, font_rgb_set_(false)
 	, font_rgb_(DefaultFontRGB)
 {
@@ -451,7 +451,7 @@ theme::status_item::status_item(std::size_t sw, std::size_t sh, const config& cf
 	, prefix_(cfg["prefix"].str() + cfg["prefix_literal"].str())
 	, postfix_(cfg["postfix_literal"].str() + cfg["postfix"].str())
 	, label_()
-	, font_(cfg["font_size"])
+	, font_(cfg["font_size"].to_size_t())
 	, font_rgb_set_(false)
 	, font_rgb_(DefaultFontRGB)
 {
@@ -610,8 +610,8 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	int current_rating = 1000000;
 	const config* current = nullptr;
 	for(const config& i : cfg_.child_range("resolution")) {
-		int width = i["width"];
-		int height = i["height"];
+		int width = i["width"].to_int();
+		int height = i["height"].to_int();
 		LOG_DP << "comparing resolution " << screen.w << "," << screen.h << " to " << width << "," << height;
 		if(screen.w >= width && screen.h >= height) {
 			LOG_DP << "loading theme: " << width << "," << height;
@@ -633,8 +633,8 @@ bool theme::set_resolution(const SDL_Rect& screen)
 		}
 		return false;
 	}
-	cur_spec_width_ = (*current)["width"];
-	cur_spec_height_ = (*current)["height"];
+	cur_spec_width_ = (*current)["width"].to_size_t();
+	cur_spec_height_ = (*current)["height"].to_size_t();
 
 	std::map<std::string, std::string> title_stash_menus;
 	std::vector<theme::menu>::iterator m;

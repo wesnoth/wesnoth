@@ -830,7 +830,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	, team_(0)
 	, color_(std::min(index, gamemap::MAX_PLAYERS - 1))
 	, gold_(cfg["gold"].to_int(100))
-	, income_(cfg["income"])
+	, income_(cfg["income"].to_int())
 	, reserved_for_(cfg["current_player"])
 	, player_id_()
 	, ai_algorithm_()

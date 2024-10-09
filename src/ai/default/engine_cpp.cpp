@@ -44,7 +44,7 @@ engine_cpp::~engine_cpp()
 
 void engine_cpp::do_parse_aspect_from_config( const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr >> b )
 {
-	const std::string aspect_factory_key = id+"*"+cfg["name"];//@note: hack which combines aspect id and name to get the std::string key of the aspect factory
+	const std::string aspect_factory_key = id + "*" + cfg["name"].str(); //@note: hack which combines aspect id and name to get the std::string key of the aspect factory
 	aspect_factory::factory_map::iterator f = aspect_factory::get_list().find(aspect_factory_key);
 	if (f == aspect_factory::get_list().end()){
 		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNKNOWN aspect["<<aspect_factory_key<<"]";

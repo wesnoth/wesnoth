@@ -55,7 +55,7 @@ line_shape::line_shape(const config& cfg)
 	, x2_(cfg["x2"])
 	, y2_(cfg["y2"])
 	, color_(cfg["color"])
-	, thickness_(cfg["thickness"])
+	, thickness_(cfg["thickness"].to_unsigned())
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
@@ -87,7 +87,7 @@ void line_shape::draw(wfl::map_formula_callable& variables)
 
 rectangle_shape::rectangle_shape(const config& cfg)
 	: rect_bounded_shape(cfg)
-	, border_thickness_(cfg["border_thickness"])
+	, border_thickness_(cfg["border_thickness"].to_int())
 	, border_color_(cfg["border_color"], color_t::null_color())
 	, fill_color_(cfg["fill_color"], color_t::null_color())
 {
@@ -149,7 +149,7 @@ void rectangle_shape::draw(wfl::map_formula_callable& variables)
 round_rectangle_shape::round_rectangle_shape(const config& cfg)
 	: rect_bounded_shape(cfg)
 	, r_(cfg["corner_radius"])
-	, border_thickness_(cfg["border_thickness"])
+	, border_thickness_(cfg["border_thickness"].to_int())
 	, border_color_(cfg["border_color"], color_t::null_color())
 	, fill_color_(cfg["fill_color"], color_t::null_color())
 {
@@ -420,7 +420,7 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	, link_aware_(cfg["text_link_aware"], false)
 	, link_color_(cfg["text_link_color"], color_t::from_hex_string("ffff00"))
 	, maximum_width_(cfg["maximum_width"], -1)
-	, characters_per_line_(cfg["text_characters_per_line"])
+	, characters_per_line_(cfg["text_characters_per_line"].to_unsigned())
 	, maximum_height_(cfg["maximum_height"], -1)
 	, highlight_start_(cfg["highlight_start"])
 	, highlight_end_(cfg["highlight_end"])
@@ -699,7 +699,7 @@ void canvas::parse_cfg(const config& cfg)
 			for(const auto [func_key, func_cfg] : data.all_children_range())
 			{
 				if(func_key == "blur") {
-					blur_depth_ = func_cfg["depth"];
+					blur_depth_ = func_cfg["depth"].to_unsigned();
 				} else {
 					ERR_GUI_P << "Canvas: found a pre commit function"
 							  << " of an invalid type " << type << ".";

@@ -168,7 +168,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	const map_location src(source.value(), resources::gamedata);
 	const map_location dst(destination.value(), resources::gamedata);
 
-	int weapon_num = child["weapon"];
+	int weapon_num = child["weapon"].to_int();
 	// having defender_weapon in the replay fixes a bug (OOS) where one player (or observer) chooses a different defensive weapon.
 	// Xan pointed out this was a possibility: we calculate defense weapon
 	// now based on attack_prediction code, but this uses floating point

@@ -276,8 +276,8 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	, unit_filter_()
 	, secondary_unit_filter_()
 	, directions_()
-	, frequency_(cfg["frequency"])
-	, base_score_(cfg["base_score"])
+	, frequency_(cfg["frequency"].to_int())
+	, base_score_(cfg["base_score"].to_int())
 	, event_()
 	, value_()
 	, primary_attack_filter_()
@@ -936,7 +936,7 @@ unit_animation::particle::particle(const config& cfg, const std::string& frame_s
 			starting_frame_time_ = std::min(starting_frame_time_, frame["begin"].to_int());
 		}
 	} else {
-		starting_frame_time_ = cfg[frame_string + "start_time"];
+		starting_frame_time_ = cfg[frame_string + "start_time"].to_int();
 	}
 
 	for(const config& frame : range) {

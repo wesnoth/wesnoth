@@ -154,7 +154,7 @@ bool check_case_insensitive_duplicates_internal(const config& dir, const std::st
 				return false;
 			}
 		}
-		if (!check_case_insensitive_duplicates_internal(path, prefix + filename + "/", badlist) && !badlist){
+		if(!check_case_insensitive_duplicates_internal(path, with_prefix + "/", badlist) && !badlist) {
 			return false;
 		}
 	}

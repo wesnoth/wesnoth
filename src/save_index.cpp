@@ -452,7 +452,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			std::string leader_image;
 			std::string leader_image_tc_modifier;
 			std::string leader_name;
-			int gold = side["gold"];
+			int gold = side["gold"].to_int();
 			int units = 0, recall_units = 0;
 
 			if(side["controller"] != side_controller::human) {

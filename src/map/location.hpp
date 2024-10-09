@@ -16,6 +16,7 @@
 #pragma once
 
 class config;
+class config_attribute_value;
 class variable_set;
 
 #include <array>
@@ -76,6 +77,7 @@ struct map_location {
 	map_location() : x(-1000), y(-1000) {}
 	map_location(int x, int y) : x(x), y(y) {}
 	map_location(int x, int y, wml_loc) : x(x - 1), y(y - 1) {}
+	map_location(const config_attribute_value& x, const config_attribute_value& y, wml_loc);
 	map_location(const config& cfg, const variable_set *variables = nullptr);
 
 	static const map_location & ZERO()

@@ -161,7 +161,7 @@ static int impl_music_set(lua_State* L) {
 			// Don't clear the playlist
 			cfg["append"] = true;
 			// Don't allow play_once=yes
-			if(cfg["play_once"]) {
+			if(cfg["play_once"].to_bool()) {
 				return luaL_argerror(L, 3, "For play_once, use wesnoth.music_list.play instead");
 			}
 			if(i >= sound::get_num_tracks()) {

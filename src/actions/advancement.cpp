@@ -75,7 +75,7 @@ namespace
 		bool always_display = false;
 
 		for (const config& advance : u.get_modification_advances()) {
-			if (advance["always_display"]) {
+			if (advance["always_display"].to_bool()) {
 				always_display = true;
 			}
 			previews.push_back(get_amla_unit(u, advance));
@@ -296,7 +296,7 @@ void advance_unit_at(const advance_unit_params& params)
 		config selected = mp_sync::get_user_choice("choose",
 			unit_advancement_choice(params.loc_, unit_helper::number_of_possible_advances(*u), u->side(), params.force_dialog_), side_for);
 		//calls actions::advance_unit.
-		bool result = animate_unit_advancement(params.loc_, selected["value"], params.fire_events_, params.animate_);
+		bool result = animate_unit_advancement(params.loc_, selected["value"].to_size_t(), params.fire_events_, params.animate_);
 
 		DBG_NG << "animate_unit_advancement result = " << result;
 		u = resources::gameboard->units().find(params.loc_);

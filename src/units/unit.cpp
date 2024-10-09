@@ -411,8 +411,8 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	//, facing_(map_location::NDIRECTIONS)
 	//, anim_comp_(new unit_animation_component(*this))
 	hidden_ = cfg["hidden"].to_bool(false);
-	hp_bar_scaling_ = cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"];
-	xp_bar_scaling_ = cfg["xp_bar_scaling"].blank() ? type_->xp_bar_scaling() : cfg["xp_bar_scaling"];
+	hp_bar_scaling_ = cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"].to_double();
+	xp_bar_scaling_ = cfg["xp_bar_scaling"].blank() ? type_->xp_bar_scaling() : cfg["xp_bar_scaling"].to_double();
 	random_traits_ = true;
 	generate_name_ = true;
 	side_ = cfg["side"].to_int();
@@ -542,7 +542,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	}
 
 	if(const config::attribute_value* v = cfg.get("cost")) {
-		unit_value_ = *v;
+		unit_value_ = v->to_int();
 	}
 
 	if(const config::attribute_value* v = cfg.get("ellipse")) {
@@ -705,7 +705,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	// change the unit hp when it was not intended.
 	hit_points_ = cfg["hitpoints"].to_int(max_hit_points_);
 
-	experience_ = cfg["experience"];
+	experience_ = cfg["experience"].to_int();
 	resting_ = cfg["resting"].to_bool();
 	unrenamable_ = cfg["unrenamable"].to_bool();
 

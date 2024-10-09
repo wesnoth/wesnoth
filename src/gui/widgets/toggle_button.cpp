@@ -225,7 +225,7 @@ builder_toggle_button::builder_toggle_button(const config& cfg)
 	: builder_styled_widget(cfg)
 	, icon_name_(cfg["icon"])
 	, retval_id_(cfg["return_value_id"])
-	, retval_(cfg["return_value"])
+	, retval_(cfg["return_value"].to_int())
 {
 }
 

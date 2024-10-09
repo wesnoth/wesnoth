@@ -350,7 +350,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 			}
 
 			config res = action->mandatory_child(sch.name());
-			if(res["request_id"] != sch.request_id()) {
+			if(res["request_id"].to_int() != sch.request_id()) {
 				WRN_REPLAY << "Unexpected request_id: " << res["request_id"] << " expected: " <<  sch.request_id();
 			}
 			return res;

@@ -77,7 +77,7 @@ recall::recall(const config& cfg, bool hidden)
 	, original_recall_pos_(0)
 {
 	// Construct and validate temp_unit_
-	std::size_t underlying_id = cfg["temp_unit_"];
+	std::size_t underlying_id = cfg["temp_unit_"].to_size_t();
 	for(const unit_ptr & recall_unit : resources::gameboard->teams().at(team_index()).recall_list())
 	{
 		if(recall_unit->underlying_id()==underlying_id)

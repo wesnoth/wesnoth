@@ -653,7 +653,7 @@ void manager::process_network_data(const config& cfg)
 		std::size_t count = wb_cfg->child_count("net_cmd");
 		LOG_WB << "Received wb data (" << count << ").";
 
-		team& team_from = resources::gameboard->get_team(wb_cfg["side"]);
+		team& team_from = resources::gameboard->get_team(wb_cfg["side"].to_int());
 		for(const side_actions::net_cmd& cmd : wb_cfg->child_range("net_cmd"))
 			team_from.get_side_actions()->execute_net_cmd(cmd);
 	}

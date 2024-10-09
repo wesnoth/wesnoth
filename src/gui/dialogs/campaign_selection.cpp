@@ -100,7 +100,7 @@ void campaign_selection::campaign_selected()
 						laurel = game_config::images::victory_laurel;
 					}
 
-					entry["image"] = laurel + "~BLIT(" + entry["image"] + ")";
+					entry["image"] = laurel + "~BLIT(" + entry["image"].str() + ")";
 				}
 
 				if(!cfg["description"].empty()) {

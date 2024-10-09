@@ -2772,8 +2772,8 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		const vconfig* vcfg = nullptr;
 		config cfg = luaW_checkconfig(L, 1, vcfg);
 		if (!map().on_board(loc)) {
-			loc.set_wml_x(cfg["x"]);
-			loc.set_wml_y(cfg["y"]);
+			loc.set_wml_x(cfg["x"].to_int());
+			loc.set_wml_y(cfg["y"].to_int());
 			if (!map().on_board(loc))
 				return luaL_argerror(L, 2, "invalid location");
 		}
@@ -4554,7 +4554,7 @@ static int intf_modify_ai_old(lua_State *L)
 {
 	config cfg;
 	luaW_toconfig(L, 1, cfg);
-	int side = cfg["side"];
+	int side = cfg["side"].to_int();
 	ai::manager::get_singleton().modify_active_ai_for_side(side, cfg);
 	return 0;
 }
