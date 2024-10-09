@@ -229,6 +229,10 @@ BOOST_AUTO_TEST_CASE(test_config_attribute_value)
 	BOOST_CHECK_EQUAL(c["x"], true);
 	c["x"] = false;
 	BOOST_CHECK_EQUAL(c["x"], "no");
+	c["x"] = 1.23456789;
+	BOOST_CHECK_EQUAL(c["x"], 1.23456789);
+	c["c"] = "9.87654321";
+	BOOST_CHECK_EQUAL(c["x"], 9.87654321);
 	c["x"] = "sfvsdgdsfg";
 	BOOST_CHECK_NE(c["x"], 0);
 	BOOST_CHECK_NE(c["x"], true);

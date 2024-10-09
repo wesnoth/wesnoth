@@ -180,7 +180,7 @@ public:
 			v = comp;
 			return *this == v;
 		} else {
-			return utils::holds_alternative<T>(value_) && T(*this) == comp;
+			return utils::holds_alternative<T>(value_) && this->to(T{}) == comp;
 		}
 	}
 
