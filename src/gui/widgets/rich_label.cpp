@@ -30,6 +30,7 @@
 #include "help/help_impl.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "serialization/markup.hpp"
 #include "serialization/unicode.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"
@@ -249,7 +250,7 @@ std::vector<std::string> rich_label::split_in_width(const std::string &s, const 
 			res.push_back(s.substr(first_line.size()));
 		}
 	} catch (utf8::invalid_utf8_exception&) {
-		throw help::parse_error (_("corrupted original file"));
+		throw markup::parse_error (_("corrupted original file"));
 	}
 
 	return res;

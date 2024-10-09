@@ -211,12 +211,6 @@ public:
 	}
 };
 
-/** Thrown when the help system fails to parse something. */
-struct parse_error : public game::error
-{
-	parse_error(const std::string& msg) : game::error(msg) {}
-};
-
 // Generator stuff below. Maybe move to a separate file? This one is
 // getting crowded. Dunno if much more is needed though so I'll wait and
 // see.
@@ -227,6 +221,12 @@ std::vector<topic> generate_topics(const bool sort_topics,const std::string &gen
 std::string generate_topic_text(const std::string &generator, const config *help_cfg, const section &sec);
 std::string generate_contents_links(const std::string& section_name, config const *help_cfg);
 std::string generate_contents_links(const section &sec);
+
+/** Thrown when the help system fails to parse something. */
+struct parse_error : public game::error
+{
+	parse_error(const std::string& msg) : game::error(msg) {}
+};
 
 /**
  * return a hyperlink with the unit's name and pointing to the unit page
@@ -305,13 +305,6 @@ const topic *find_topic(const section &sec, const std::string &id);
  */
 const section *find_section(const section &sec, const std::string &id);
 section *find_section(section &sec, const std::string &id);
-
-/**
- * Parse a xml style marked up text string. Return a config with the different parts of the
- * text. Each markup item is a separate part while the text between
- * markups are separate parts.
- */
-config parse_text(const std::string &text);
 
 std::string remove_first_space(const std::string& text);
 
