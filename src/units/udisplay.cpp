@@ -430,7 +430,7 @@ void unit_mover::wait_for_anims()
  * If @a dir is not supplied, the final direction will be determined by (the
  * last two traversed hexes of) the path.
  */
-void unit_mover::finish(unit_ptr u, map_location::DIRECTION dir)
+void unit_mover::finish(unit_ptr u, map_location::direction dir)
 {
 	// Nothing to do here if the display is not valid.
 	if ( !can_draw_ ) {
@@ -442,7 +442,7 @@ void unit_mover::finish(unit_ptr u, map_location::DIRECTION dir)
 	}
 
 	const map_location & end_loc = path_[current_];
-	const map_location::DIRECTION final_dir = current_ == 0 ?
+	const map_location::direction final_dir = current_ == 0 ?
 		path_[0].get_relative_dir(path_[1]) :
 		path_[current_-1].get_relative_dir(end_loc);
 
@@ -476,7 +476,7 @@ void unit_mover::finish(unit_ptr u, map_location::DIRECTION dir)
 	}
 
 	// Facing gets set even when not animating.
-	u->set_facing(dir == map_location::NDIRECTIONS ? final_dir : dir);
+	u->set_facing(dir == map_location::direction::indeterminate ? final_dir : dir);
 	u->anim_comp().set_standing(true);	// Need to reset u's animation so the new facing takes effect.
 
 	// Redraw path ends (even if not animating).
@@ -503,7 +503,7 @@ void unit_mover::finish(unit_ptr u, map_location::DIRECTION dir)
  * will still display the correct number of units.
  */
 void move_unit(const std::vector<map_location>& path, unit_ptr u,
-               bool animate, map_location::DIRECTION dir,
+               bool animate, map_location::direction dir,
                bool force_scroll)
 {
 	unit_mover mover(path, animate, force_scroll);

@@ -131,14 +131,14 @@ struct unit_filter_adjacent : public unit_filter_base
 		int match_count=0;
 
 		config::attribute_value i_adjacent = cfg_["adjacent"];
-		std::vector<map_location::DIRECTION> dirs;
+		std::vector<map_location::direction> dirs;
 		if (i_adjacent.empty()) {
 			dirs = map_location::default_dirs();
 		} else {
 			dirs = map_location::parse_directions(i_adjacent);
 		}
-		for (map_location::DIRECTION dir : dirs) {
-			unit_map::const_iterator unit_itor = units.find(adjacent[dir]);
+		for (map_location::direction dir : dirs) {
+			unit_map::const_iterator unit_itor = units.find(adjacent[static_cast<int>(dir)]);
 			if (unit_itor == units.end() || !child_.matches(unit_filter_args{*unit_itor, unit_itor->get_location(), &args.u, args.fc, args.use_flat_tod} )) {
 				continue;
 			}

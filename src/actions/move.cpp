@@ -313,7 +313,7 @@ namespace { // Private helpers for move_unit()
 		// This data stores the state from before the move started.
 		const int orig_side_;
 		const int orig_moves_;
-		const map_location::DIRECTION orig_dir_;
+		const map_location::direction orig_dir_;
 		const map_location goto_;
 
 		// This data tracks the current state as the move is in progress.

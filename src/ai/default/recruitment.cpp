@@ -757,7 +757,7 @@ void recruitment::show_important_hexes() const {
 	display::get_singleton()->labels().clear_all();
 	for (const map_location& loc : important_hexes_) {
 		// Little hack: use map_location north from loc and make 2 linebreaks to center the "X".
-		display::get_singleton()->labels().set_label(loc.get_direction(map_location::NORTH), "\n\nX");
+		display::get_singleton()->labels().set_label(loc.get_direction(map_location::direction::north), "\n\nX");
 	}
 }
 

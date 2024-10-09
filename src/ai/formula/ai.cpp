@@ -206,7 +206,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
 
 	if( dst_un != units_.end() ) {
 		//there is unit standing at dst, let's try to find free hex to move to
-		const map_location::DIRECTION preferred = destination.get_relative_dir(src);
+		const map_location::direction preferred = destination.get_relative_dir(src);
 
 		int best_rating = 100;//smaller is better
 		const auto adj = get_adjacent_tiles(destination);
@@ -220,10 +220,10 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
 				continue;
 			}
 
-			static const std::size_t NDIRECTIONS = map_location::NDIRECTIONS;
-			unsigned int difference = std::abs(static_cast<int>(preferred - n));
-			if(difference > NDIRECTIONS/2) {
-				difference = NDIRECTIONS - difference;
+			static constexpr std::size_t ndirections = static_cast<int>(map_location::direction::indeterminate);
+			unsigned int difference = std::abs(static_cast<int>(static_cast<int>(preferred) - n));
+			if(difference > ndirections/2) {
+				difference = ndirections - difference;
 			}
 
 			const int rating = difference * 2;

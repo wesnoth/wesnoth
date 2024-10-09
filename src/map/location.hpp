@@ -44,35 +44,42 @@ struct cubic_location {
 /** Represents a location on the map. */
 struct map_location {
 	/** Valid directions which can be moved in our hexagonal world. */
-	enum DIRECTION { NORTH=0, NORTH_EAST=1, SOUTH_EAST=2, SOUTH=3,
-					 SOUTH_WEST=4, NORTH_WEST=5, NDIRECTIONS=6 };
+	enum class direction {
+		north,
+		north_east,
+		south_east,
+		south,
+		south_west,
+		north_west,
+		indeterminate
+	};
 
-	static const std::vector<DIRECTION> & default_dirs();
+	static const std::vector<direction> & default_dirs();
 
-	static DIRECTION rotate_right(DIRECTION d, unsigned int k = 1u)
+	static direction rotate_right(direction d, unsigned int k = 1u)
 	{
-		return (d == map_location::NDIRECTIONS) ? map_location::NDIRECTIONS : static_cast<map_location::DIRECTION>((d + (k%6u)) % 6u);
+		return d == direction::indeterminate ? direction::indeterminate : direction{(static_cast<int>(d) + (k % 6u)) % 6u};
 	}
 
-	static DIRECTION rotate_right(DIRECTION d, signed int k)
+	static direction rotate_right(direction d, signed int k)
 	{
 		return (k>=0) ? rotate_right(d, static_cast<unsigned int> (k)) : rotate_right(d, (static_cast<unsigned int>(-k) % 6u) * 5u);
 	}
 
-	static DIRECTION get_opposite_dir(DIRECTION d)
+	static direction get_opposite_dir(direction d)
 	{
 		return rotate_right(d,3u);
 	}
 
-	static DIRECTION parse_direction(const std::string& str);
+	static direction parse_direction(const std::string& str);
 
 	/**
 	 * Parse_directions takes a comma-separated list, and filters out any
 	 * invalid directions
 	 */
-	static std::vector<DIRECTION> parse_directions(const std::string& str);
-	static std::string write_direction(DIRECTION dir);
-	static std::string write_translated_direction(DIRECTION dir);
+	static std::vector<direction> parse_directions(const std::string& str);
+	static std::string write_direction(direction dir);
+	static std::string write_translated_direction(direction dir);
 
 	map_location() : x(-1000), y(-1000) {}
 	map_location(int x, int y) : x(x), y(y) {}
@@ -140,15 +147,15 @@ struct map_location {
 	}
 
 	// Do n step in the direction d
-	map_location get_direction(DIRECTION dir, unsigned int n = 1u) const;
-	map_location get_direction(DIRECTION dir, signed int n) const
+	map_location get_direction(direction dir, unsigned int n = 1u) const;
+	map_location get_direction(direction dir, signed int n) const
 	{
 		return (n >= 0) ? get_direction(dir, static_cast<unsigned int> (n)) : get_direction(get_opposite_dir(dir), static_cast<unsigned int> (-n));
 	}
 
 	enum RELATIVE_DIR_MODE { DEFAULT , RADIAL_SYMMETRY };
-	DIRECTION get_relative_dir(const map_location & loc, map_location::RELATIVE_DIR_MODE mode /*= map_location::RADIAL_SYMMETRY*/ ) const;
-	DIRECTION get_relative_dir(const map_location & loc) const; //moved the default setting to .cpp file for ease of testing
+	direction get_relative_dir(const map_location & loc, map_location::RELATIVE_DIR_MODE mode /*= map_location::RADIAL_SYMMETRY*/ ) const;
+	direction get_relative_dir(const map_location & loc) const; //moved the default setting to .cpp file for ease of testing
 
 	cubic_location to_cubic() const {
 		int q = x;

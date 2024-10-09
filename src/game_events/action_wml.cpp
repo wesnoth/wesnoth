@@ -374,7 +374,7 @@ WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 	const std::vector<map_location>& path = fake_unit_path(*dummy_unit, xvals, yvals);
 	if (!path.empty()) {
 		// Always scroll.
-		unit_display::move_unit(path, dummy_unit.get_unit_ptr(), true, map_location::NDIRECTIONS, force_scroll);
+		unit_display::move_unit(path, dummy_unit.get_unit_ptr(), true, map_location::direction::indeterminate, force_scroll);
 	}
 }
 
@@ -424,7 +424,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 			DBG_NG << "Moving unit " << un << ", doing step " << step;
 			path_step[0] = paths[un][step - 1];
 			path_step[1] = paths[un][step];
-			unit_display::move_unit(path_step, units[un].get_unit_ptr(), true, map_location::NDIRECTIONS, force_scroll);
+			unit_display::move_unit(path_step, units[un].get_unit_ptr(), true, map_location::direction::indeterminate, force_scroll);
 			units[un]->set_location(path_step[1]);
 			units[un]->anim_comp().set_standing(false);
 		}
