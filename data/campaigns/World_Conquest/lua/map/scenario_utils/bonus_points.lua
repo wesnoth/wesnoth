@@ -397,6 +397,6 @@ function world_conquest_tek_bonus_points(theme)
 		})
 		table.insert(res, loc)
 	end
-	random_placement(possible_locs, player_num, 9 + scenario_num, place_item)
+	random_placement(possible_locs, player_num, 3 + scenario_num, place_item)
 	return res
 end
