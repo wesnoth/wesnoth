@@ -608,7 +608,7 @@ namespace { // Helpers for place_recruit()
 			new_unit_itor->set_facing(recruit_loc.get_relative_dir(min_loc));
 		} else if (leader_loc != map_location::null_location()) {
 			// Face away from leader
-			new_unit_itor->set_facing(map_location::get_opposite_dir(recruit_loc.get_relative_dir(leader_loc)));
+			new_unit_itor->set_facing(map_location::get_opposite_direction(recruit_loc.get_relative_dir(leader_loc)));
 		} else {
 			// Face towards center of map
 			const map_location center(map->w()/2, map->h()/2);

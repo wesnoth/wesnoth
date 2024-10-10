@@ -213,7 +213,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 			int match_count = 0;
 			vconfig::child_list::difference_type index = i - i_begin;
 			std::vector<map_location::direction> dirs = (*i).has_attribute("adjacent")
-				? map_location::parse_directions((*i)["adjacent"]) : map_location::default_dirs();
+				? map_location::parse_directions((*i)["adjacent"]) : map_location::all_directions();
 			std::vector<map_location::direction>::const_iterator j, j_end = dirs.end();
 			for (j = dirs.begin(); j != j_end; ++j) {
 				const map_location &adj = adjacent[static_cast<int>(*j)];

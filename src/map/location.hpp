@@ -54,7 +54,7 @@ struct map_location {
 		indeterminate
 	};
 
-	static const std::vector<direction> & default_dirs();
+	static std::vector<direction> all_directions();
 
 	static direction rotate_right(direction d, unsigned int k = 1u)
 	{
@@ -66,7 +66,7 @@ struct map_location {
 		return (k>=0) ? rotate_right(d, static_cast<unsigned int> (k)) : rotate_right(d, (static_cast<unsigned int>(-k) % 6u) * 5u);
 	}
 
-	static direction get_opposite_dir(direction d)
+	static direction get_opposite_direction(direction d)
 	{
 		return rotate_right(d,3u);
 	}
@@ -150,7 +150,7 @@ struct map_location {
 	map_location get_direction(direction dir, unsigned int n = 1u) const;
 	map_location get_direction(direction dir, signed int n) const
 	{
-		return (n >= 0) ? get_direction(dir, static_cast<unsigned int> (n)) : get_direction(get_opposite_dir(dir), static_cast<unsigned int> (-n));
+		return (n >= 0) ? get_direction(dir, static_cast<unsigned int> (n)) : get_direction(get_opposite_direction(dir), static_cast<unsigned int> (-n));
 	}
 
 	enum RELATIVE_DIR_MODE { DEFAULT , RADIAL_SYMMETRY };
