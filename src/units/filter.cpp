@@ -776,40 +776,38 @@ void unit_filter_compound::fill(vconfig cfg)
 			}
 			else if (child.first == "experimental_filter_ability") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
-					for(const auto [key, cfg] : args.u.abilities().all_children_range()) {
-						if(args.u.ability_matches_filter(cfg, key, c.get_parsed_config())) {
-							return true;
-						}
-					}
-					return false;
-				});
-			}
-			else if (child.first == "experimental_filter_ability_active") {
-				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
-					if(!display::get_singleton()){
-						return false;
-					}
-					const unit_map& units = display::get_singleton()->get_units();
-					for(const auto [key, cfg] : args.u.abilities().all_children_range()) {
-						if(args.u.ability_matches_filter(cfg, key, c.get_parsed_config())) {
-							if (args.u.get_self_ability_bool(cfg, key, args.loc)) {
+					if(!(c.get_parsed_config())["active"].to_bool()){
+						for(const auto [key, cfg] : args.u.abilities().all_children_range()) {
+							if(args.u.ability_matches_filter(cfg, key, c.get_parsed_config())) {
 								return true;
 							}
 						}
-					}
-
-					const auto adjacent = get_adjacent_tiles(args.loc);
-					for(unsigned i = 0; i < adjacent.size(); ++i) {
-						const unit_map::const_iterator it = units.find(adjacent[i]);
-						if (it == units.end() || it->incapacitated())
-							continue;
-						if (&*it == (args.u.shared_from_this()).get())
-							continue;
-
-						for(const auto [key, cfg] : it->abilities().all_children_range()) {
-							if(it->ability_matches_filter(cfg, key, c.get_parsed_config())) {
-								if (args.u.get_adj_ability_bool(cfg, key, i, args.loc, *it)) {
+					} else {
+						if(!display::get_singleton()){
+							return false;
+						}
+						const unit_map& units = display::get_singleton()->get_units();
+						for(const auto [key, cfg] : args.u.abilities().all_children_range()) {
+							if(args.u.ability_matches_filter(cfg, key, c.get_parsed_config())) {
+								if (args.u.get_self_ability_bool(cfg, key, args.loc)) {
 									return true;
+								}
+							}
+						}
+
+						const auto adjacent = get_adjacent_tiles(args.loc);
+						for(unsigned i = 0; i < adjacent.size(); ++i) {
+							const unit_map::const_iterator it = units.find(adjacent[i]);
+							if (it == units.end() || it->incapacitated())
+								continue;
+							if (&*it == (args.u.shared_from_this()).get())
+								continue;
+
+							for(const auto [key, cfg] : it->abilities().all_children_range()) {
+								if(it->ability_matches_filter(cfg, key, c.get_parsed_config())) {
+									if (args.u.get_adj_ability_bool(cfg, key, i, args.loc, *it)) {
+										return true;
+									}
 								}
 							}
 						}
