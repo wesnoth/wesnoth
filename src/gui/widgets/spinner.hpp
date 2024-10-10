@@ -19,7 +19,7 @@
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
-
+#include "gui/widgets/repeating_button.hpp"
 #include "gui/widgets/text_box.hpp"
 
 
@@ -52,34 +52,23 @@ public:
 	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
-	bool can_wrap() const override;
-
 	void set_value(const int val);
 
-	int get_value();
+	int get_value() const;
 
-	void prev()
-	{
-		// Allow negatives?
-		if (get_value() > 0) {
-			set_value(get_value() - step_size_);
-		} else {
-			if (invalid_) {
-				set_value(0);
-			}
-		}
-	}
+	void set_step_size(unsigned step);
 
-	void next()
-	{
-		int val = get_value();
-		if (!invalid_) {
-			// No max value
-			set_value(val + step_size_);
-		} else {
-			set_value(0);
-		}
-	}
+	unsigned get_step_size() const;
+
+	void set_value_range(int min, int max);
+
+	int get_minimum_value() const;
+
+	int get_maximum_value() const;
+
+	void prev();
+
+	void next();
 
 private:
 	/**
@@ -106,11 +95,15 @@ private:
 	/** The grid that holds the content. */
 	std::unique_ptr<grid> content_grid_;
 
-	int step_size_;
+	unsigned step_size_;
 
-	/** If the entered data is invalid. */
-	bool invalid_;
+	int minimum_value_;
 
+	int maximum_value_;
+
+	int value_;
+
+	const text_box* get_internal_text_box() const;
 	text_box* get_internal_text_box();
 
 	void finalize_setup();
@@ -118,6 +111,8 @@ private:
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();
+
+	void textbox_modified();
 
 private:
 	/***** ***** ***** inherited ****** *****/
@@ -156,6 +151,14 @@ struct builder_spinner : public builder_styled_widget
 	using builder_styled_widget::build;
 
 	virtual std::unique_ptr<widget> build() const override;
+
+	unsigned step_size_;
+
+	int minimum_value_;
+
+	int maximum_value_;
+
+	int value_;
 };
 
 } // namespace implementation

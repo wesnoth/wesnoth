@@ -25,6 +25,7 @@
 #include "gettext.hpp"
 #include "wml_exception.hpp"
 
+
 #include <functional>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
@@ -41,11 +42,18 @@ spinner::spinner(const implementation::builder_spinner& builder)
 	: container_base(builder, type())
 	, state_(ENABLED)
 	, step_size_(1)
-	, invalid_(false)
+	, minimum_value_(std::numeric_limits<int>::min())
+	, maximum_value_(std::numeric_limits<int>::max())
+	, value_(minimum_value_)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 		std::bind(&spinner::signal_handler_left_button_down, this, std::placeholders::_2),
 		event::dispatcher::back_pre_child);
+}
+
+const text_box* spinner::get_internal_text_box() const
+{
+	return find_widget<const text_box>("_text", false, true);
 }
 
 text_box* spinner::get_internal_text_box()
@@ -53,38 +61,122 @@ text_box* spinner::get_internal_text_box()
 	return find_widget<text_box>("_text", false, true);
 }
 
-void spinner::set_value(const int val)
+void spinner::set_value(int val)
 {
+	if(val < minimum_value_) {
+		WRN_GUI_G << "Value (" << val << ") < min (" << minimum_value_ <<
+			"), setting value to " << minimum_value_ << ".";
+		val = minimum_value_;
+	}
+	if(val > maximum_value_) {
+		WRN_GUI_G << "Value (" << val << ") > max (" << maximum_value_ <<
+			"), setting value to " << maximum_value_ << ".";
+		val = maximum_value_;
+	}
+
+	value_ = val;
+
 	text_box* edit_area = get_internal_text_box();
 	if (edit_area != nullptr) {
 		edit_area->set_value(std::to_string(val));
 	}
+
+	find_widget<repeating_button>("_prev", false, true)->set_active(val > minimum_value_);
+	find_widget<repeating_button>("_next", false, true)->set_active(val < maximum_value_);
+
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
-int spinner::get_value()
+int spinner::get_value() const
 {
-	/* Return 0 if invalid.
-	 * TODO: give visual indication of wrong value
-	 */
-	int val;
+	return value_;
+}
+
+void spinner::textbox_modified()
+{
+	int val = value_;
+	text_box* edit_area = get_internal_text_box();
 	try {
-		text_box* edit_area = get_internal_text_box();
 		if (edit_area != nullptr) {
-			val = stoi(edit_area->get_value());
-			invalid_ = false;
-		} else {
-			val = 0;
-			invalid_ = true;
+			val = std::clamp(stoi(edit_area->get_value()), minimum_value_, maximum_value_);
 		}
 	} catch(std::invalid_argument const& /*ex*/) {
-		val = 0;
-		invalid_ = true;
+		edit_area->set_value(std::to_string(value_));
+		return;
 	} catch(std::out_of_range const& /*ex*/) {
-		val = 0;
-		invalid_ = true;
+		edit_area->set_value(std::to_string(value_));
+		return;
 	}
 
-	return val;
+	value_ = val;
+}
+
+void spinner::set_step_size(unsigned step)
+{
+	// Limit step_size to max int so we can safely cast to int elsewhere.
+	const int limit = 655360; // ought to be enough for anybody
+	if(step > limit) {
+		WRN_GUI_G << "Requested step_size (" << step << ") must be <= " << limit <<
+			", setting requested step_size to " << limit << ".";
+		step = limit;
+	}
+
+	unsigned range = maximum_value_ - minimum_value_;
+	if(step > range) {
+		WRN_GUI_G << "Requested step_size (" << step << ") must be <= the range (" << range <<
+			") allowed by min (" << minimum_value_ << ") and max (" << maximum_value_ <<
+		   	").  Setting step_size to " << range << ".";
+		step_size_ =  range;
+	} else {
+		step_size_ = step;
+	}
+}
+
+unsigned spinner::get_step_size() const
+{
+	return step_size_;
+}
+
+void spinner::set_value_range(int min, int max)
+{
+	VALIDATE((min <= max), "minimum_value (" + std::to_string(min) + ") must be <= maximum_value (" +
+			std::to_string(max) + ").");
+	minimum_value_ = min;
+	maximum_value_ = max;
+	set_step_size(step_size_);  // will adjust step as necessary based on new min/max
+	set_value(get_value());  // ensure value is in new range and next/prev buttons are updated as necessary
+}
+
+int spinner::get_minimum_value() const
+{
+	return minimum_value_;
+}
+
+int spinner::get_maximum_value() const
+{
+	return maximum_value_;
+}
+
+void spinner::prev()
+{
+	const int value = get_value();
+	const int step = static_cast<int>(step_size_);  // set_step_size() limits step_size_ to max int
+	if(std::numeric_limits<int>::min() + step < value) {
+		set_value(value - step);
+	} else {
+		set_value(std::numeric_limits<int>::min());
+	}
+}
+
+void spinner::next()
+{
+	const int value = get_value();
+	const int step = static_cast<int>(step_size_);  // set_step_size() limits step_size_ to max int
+	if(std::numeric_limits<int>::max() - step > value) {
+		set_value(value + step);
+	} else {
+		set_value(std::numeric_limits<int>::max());
+	}
 }
 
 void spinner::finalize_setup()
@@ -93,7 +185,8 @@ void spinner::finalize_setup()
 	repeating_button* btn_next = find_widget<repeating_button>("_next", false, true);
 	btn_prev->connect_signal_mouse_left_down(std::bind(&spinner::prev, this));
 	btn_next->connect_signal_mouse_left_down(std::bind(&spinner::next, this));
-
+//	get_internal_text_box()->connect_signal<event::MOUSE_LEAVE>(std::bind(&spinner::textbox_modified, this)); //  I really like this, CM says windows/mac users WON'T
+	get_internal_text_box()->connect_signal<event::LOSE_KEYBOARD_FOCUS>(std::bind(&spinner::textbox_modified, this));
 }
 
 void spinner::set_self_active(const bool active)
@@ -109,11 +202,6 @@ bool spinner::get_active() const
 unsigned spinner::get_state() const
 {
 	return state_;
-}
-
-bool spinner::can_wrap() const
-{
-	return true;
 }
 
 void spinner::signal_handler_left_button_down(const event::ui_event event)
@@ -149,26 +237,36 @@ spinner_definition::resolution::resolution(const config& cfg)
 namespace implementation
 {
 
-builder_spinner::builder_spinner(const config& cfg)
-	: implementation::builder_styled_widget(cfg)
-{
-}
+	builder_spinner::builder_spinner(const config& cfg)
+		: implementation::builder_styled_widget(cfg)
+		, step_size_(cfg["step_size"].to_unsigned(1))
+		, minimum_value_(cfg["minimum_value"].to_int(std::numeric_limits<int>::min()))
+		, maximum_value_(cfg["maximum_value"].to_int(std::numeric_limits<int>::max()))
+		, value_(cfg["value"].to_int(0))
+	{
+		VALIDATE((minimum_value_ <= maximum_value_),
+				"minimum_value (" + std::to_string(minimum_value_) + ") must be <= maximum_value (" +
+				std::to_string(maximum_value_) + ").");
+	}
 
-std::unique_ptr<widget> builder_spinner::build() const
-{
-	auto widget = std::make_unique<spinner>(*this);
+	std::unique_ptr<widget> builder_spinner::build() const
+	{
+		auto widget = std::make_unique<spinner>(*this);
 
-	const auto conf = widget->cast_config_to<spinner_definition>();
-	assert(conf);
+		const auto conf = widget->cast_config_to<spinner_definition>();
+		assert(conf);
 
-	widget->init_grid(*conf->grid);
-	widget->finalize_setup();
+		widget->init_grid(*conf->grid);
+		widget->finalize_setup();
+		widget->set_value_range(minimum_value_, maximum_value_);
+		widget->set_step_size(step_size_);
+		widget->set_value(value_);
 
-	DBG_GUI_G << "Window builder: placed spinner '" << id
-			  << "' with definition '" << definition << "'.";
+		DBG_GUI_G << "Window builder: placed spinner '" << id
+			<< "' with definition '" << definition << "'.";
 
-	return widget;
-}
+		return widget;
+	}
 
 } // namespace implementation
 
