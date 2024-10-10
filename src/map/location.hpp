@@ -58,7 +58,7 @@ struct map_location {
 
 	static direction rotate_right(direction d, unsigned int k = 1u)
 	{
-		return d == direction::indeterminate ? direction::indeterminate : direction{(static_cast<int>(d) + (k % 6u)) % 6u};
+		return d == direction::indeterminate ? direction::indeterminate : direction{(static_cast<unsigned>(d) + (k % 6u)) % 6u};
 	}
 
 	static direction rotate_right(direction d, signed int k)
