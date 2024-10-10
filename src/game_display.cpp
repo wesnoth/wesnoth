@@ -507,7 +507,7 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 		std::string rotate;
 		if (dir > map_location::direction::south_east) {
 			// No image, take the opposite direction and do a 180 rotation
-			dir = i->get_opposite_dir(dir);
+			dir = i->get_opposite_direction(dir);
 			rotate = "~FL(horiz)~FL(vert)";
 		}
 

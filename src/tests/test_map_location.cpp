@@ -98,7 +98,7 @@ static void characterization_distance_direction (const std::vector<map_location>
 			BOOST_CHECK_EQUAL( expected_dir, a.get_relative_dir(b, mode) );
 			//Note: This is not a valid assertion. get_relative_dir has much symmetry but not radial.
 			if (mode == map_location::RADIAL_SYMMETRY) {
-				BOOST_CHECK_EQUAL( map_location::get_opposite_dir(expected_dir), b.get_relative_dir(a,mode) );
+				BOOST_CHECK_EQUAL( map_location::get_opposite_direction(expected_dir), b.get_relative_dir(a,mode) );
 			}
 			BOOST_CHECK_EQUAL( a.vector_sum(b), b.vector_sum(a));
 			map_location temp1 = a;
@@ -267,7 +267,7 @@ std::make_pair(1,	"nw")};
 static std::pair<map_location , map_location> mirror_walk( std::pair<map_location,map_location> p, map_location::direction d)
 {
 	p.first = p.first.get_direction(d);
-	p.second = p.second.get_direction(map_location::get_opposite_dir(d));
+	p.second = p.second.get_direction(map_location::get_opposite_direction(d));
 	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
 	return p;
 }
@@ -347,7 +347,7 @@ BOOST_AUTO_TEST_CASE ( check_get_opposite_dir_refactor )
 {
 	for (unsigned int i = 0; i < 7; i++ ) {
 		map_location::direction d = static_cast<map_location::direction> (i);
-		BOOST_CHECK_EQUAL ( map_location::get_opposite_dir(d), legacy_get_opposite_dir(d) );
+		BOOST_CHECK_EQUAL ( map_location::get_opposite_direction(d), legacy_get_opposite_dir(d) );
 	}
 }
 
@@ -374,7 +374,7 @@ BOOST_AUTO_TEST_CASE ( check_rotate )
 
 	for (unsigned int i = 0; i < 7; i++ ) {
 		map_location::direction d = static_cast<map_location::direction> (i);
-		BOOST_CHECK_EQUAL ( map_location::get_opposite_dir(d), map_location::rotate_right(d,3) );
+		BOOST_CHECK_EQUAL ( map_location::get_opposite_direction(d), map_location::rotate_right(d,3) );
 		BOOST_CHECK_EQUAL ( map_location::rotate_right(d,-2), map_location::rotate_right(d,4) );
 	}
 }

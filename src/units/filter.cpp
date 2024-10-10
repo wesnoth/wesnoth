@@ -133,7 +133,7 @@ struct unit_filter_adjacent : public unit_filter_base
 		config::attribute_value i_adjacent = cfg_["adjacent"];
 		std::vector<map_location::direction> dirs;
 		if (i_adjacent.empty()) {
-			dirs = map_location::default_dirs();
+			dirs = map_location::all_directions();
 		} else {
 			dirs = map_location::parse_directions(i_adjacent);
 		}
