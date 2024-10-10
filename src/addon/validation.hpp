@@ -114,6 +114,7 @@ enum ADDON_TYPE {
 	//ADDON_GUI,			// GUI add-ons/themes.
 	ADDON_MEDIA,		/**< Miscellaneous content/media (unit packs, terrain packs, music packs, etc.). */
 	ADDON_OTHER,		/**< an add-on that fits in no other category */
+	ADDON_THEME,		/** GUI2 Themes */
 	ADDON_TYPES_COUNT
 };
 
