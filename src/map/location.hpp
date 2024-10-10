@@ -54,7 +54,7 @@ struct map_location {
 		indeterminate
 	};
 
-	static const std::vector<direction> & default_dirs();
+	static std::vector<direction> all_directions();
 
 	static direction rotate_right(direction d, unsigned int k = 1u)
 	{

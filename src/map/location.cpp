@@ -50,15 +50,16 @@ map_location::map_location(const config_attribute_value& x, const config_attribu
 {
 }
 
-/**
- * Default list of directions
- *
- **/
-const std::vector<map_location::direction> & map_location::default_dirs() {
-	static const std::vector<map_location::direction> dirs {map_location::direction::north,
-				map_location::direction::north_east, map_location::direction::south_east, map_location::direction::south,
-				map_location::direction::south_west, map_location::direction::north_west};
-	return dirs;
+auto map_location::all_directions() -> std::vector<direction>
+{
+	return {
+		map_location::direction::north,
+		map_location::direction::north_east,
+		map_location::direction::south_east,
+		map_location::direction::south,
+		map_location::direction::south_west,
+		map_location::direction::north_west
+	};
 }
 
 std::size_t hash_value(const map_location& a){
