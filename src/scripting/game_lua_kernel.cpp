@@ -3564,7 +3564,7 @@ int game_lua_kernel::intf_select_unit(lua_State *L)
 {
 	events::command_disabler command_disabler;
 	if(lua_isnoneornil(L, 1)) {
-		play_controller_.get_mouse_handler_base().select_hex(map_location::null_location(), false, false, false);
+		play_controller_.get_mouse_handler_base().select_hex(map_location::null_location(), false, false, false, true);
 		return 0;
 	}
 	const map_location loc = luaW_checklocation(L, 1);
