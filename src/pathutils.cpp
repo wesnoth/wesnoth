@@ -36,10 +36,10 @@ void get_tile_ring(const map_location& center, const int radius,
 		return;
 	}
 
-	map_location loc = center.get_direction(map_location::SOUTH_WEST, radius);
+	map_location loc = center.get_direction(map_location::direction::south_west, radius);
 
 	for(int n = 0; n != 6; ++n) {
-		const map_location::DIRECTION dir = static_cast<map_location::DIRECTION>(n);
+		const map_location::direction dir{ n };
 		for(int i = 0; i != radius; ++i) {
 			result.push_back(loc);
 			loc = loc.get_direction(dir, 1);
@@ -99,10 +99,14 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 	                       const std::size_t radius,
 	                       const int col_begin, const int col_end)
 	{
+#ifdef __cpp_using_enum // c++20
+		using enum map_location::direction;
+#else
 		// Shorter names for the directions we'll use.
-		const map_location::DIRECTION NORTH_WEST = map_location::NORTH_WEST;
-		const map_location::DIRECTION NORTH_EAST = map_location::NORTH_EAST;
-		const map_location::DIRECTION SOUTH_EAST = map_location::SOUTH_EAST;
+		const map_location::direction north_west = map_location::direction::north_west;
+		const map_location::direction north_east = map_location::direction::north_east;
+		const map_location::direction south_east = map_location::direction::south_east;
+#endif
 
 		// Perform this conversion once.
 		const int radius_i = static_cast<int>(radius);
@@ -112,28 +116,28 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 			{
 				// Calculate the circle of hexes around this one.
 				std::size_t height = radius;
-				map_location top = loc.get_direction(NORTH_WEST, radius_i);
+				map_location top = loc.get_direction(north_west, radius_i);
 				// Don't start off the map edge.
 				if ( top.x < col_begin ) {
 					const int col_shift = std::min(col_begin, loc.x) - top.x;
-					top = top.get_direction(NORTH_EAST, col_shift);
+					top = top.get_direction(north_east, col_shift);
 					height += col_shift;
 				}
 				// The left side.
 				const int end_l = std::min(loc.x, col_end);
-				for ( ; top.x < end_l; top = top.get_direction(NORTH_EAST, 1) )
+				for ( ; top.x < end_l; top = top.get_direction(north_east, 1) )
 					collected_tiles[top.x].insert(row_range(top.y, ++height));
 				// Extra increment so the middle column is tall enough.
 				height += 2;
 				// Don't start off the map edge (we allow loc to be off-board).
 				if ( top.x < col_begin ) {
 					const int col_shift = col_begin - top.x;
-					top = top.get_direction(SOUTH_EAST, col_shift);
+					top = top.get_direction(south_east, col_shift);
 					height -= col_shift;
 				}
 				// The middle column and right side.
 				const int end_r = std::min(loc.x + radius_i + 1, col_end);
-				for ( ; top.x < end_r; top = top.get_direction(SOUTH_EAST, 1) )
+				for ( ; top.x < end_r; top = top.get_direction(south_east, 1) )
 					collected_tiles[top.x].insert(row_range(top.y, --height));
 			}
 	}

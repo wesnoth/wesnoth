@@ -633,7 +633,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 
 	const auto [xsrc, ysrc] = game_disp->get_location(src);
 	const auto [xdst, ydst] = game_disp->get_location(dst);
-	const map_location::DIRECTION direction = src.get_relative_dir(dst);
+	const map_location::direction direction = src.get_relative_dir(dst);
 
 	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val);
 	double tmp_offset = current_data.offset;
@@ -655,7 +655,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 	}
 
 	image::locator image_loc;
-	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
+	if(direction != map_location::direction::north && direction != map_location::direction::south) {
 		image_loc = current_data.image_diagonal.clone(current_data.image_mod);
 	}
 
@@ -676,13 +676,13 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 
 	if(image_size.x && image_size.y) {
 		bool facing_west = (
-			direction == map_location::NORTH_WEST ||
-			direction == map_location::SOUTH_WEST);
+			direction == map_location::direction::north_west ||
+			direction == map_location::direction::south_west);
 
 		bool facing_north = (
-			direction == map_location::NORTH_WEST ||
-			direction == map_location::NORTH ||
-			direction == map_location::NORTH_EAST);
+			direction == map_location::direction::north_west ||
+			direction == map_location::direction::north ||
+			direction == map_location::direction::north_east);
 
 		if(!current_data.auto_hflip) { facing_west = false; }
 		if(!current_data.auto_vflip) { facing_north = true; }
@@ -743,35 +743,35 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 	halo::ORIENTATION orientation;
 	switch(direction)
 	{
-		case map_location::NORTH:
-		case map_location::NORTH_EAST:
+		case map_location::direction::north:
+		case map_location::direction::north_east:
 			orientation = halo::NORMAL;
 			break;
-		case map_location::SOUTH_EAST:
-		case map_location::SOUTH:
+		case map_location::direction::south_east:
+		case map_location::direction::south:
 			if(!current_data.auto_vflip) {
 				orientation = halo::NORMAL;
 			} else {
 				orientation = halo::VREVERSE;
 			}
 			break;
-		case map_location::SOUTH_WEST:
+		case map_location::direction::south_west:
 			if(!current_data.auto_vflip) {
 				orientation = halo::HREVERSE;
 			} else {
 				orientation = halo::HVREVERSE;
 			}
 			break;
-		case map_location::NORTH_WEST:
+		case map_location::direction::north_west:
 			orientation = halo::HREVERSE;
 			break;
-		case map_location::NDIRECTIONS:
+		case map_location::direction::indeterminate:
 		default:
 			orientation = halo::NORMAL;
 			break;
 	}
 
-	if(direction != map_location::SOUTH_WEST && direction != map_location::NORTH_WEST) {
+	if(direction != map_location::direction::south_west && direction != map_location::direction::north_west) {
 		halo_id = halo_man.add(
 			static_cast<int>(x + current_data.halo_x * disp_zoom),
 			static_cast<int>(y + current_data.halo_y * disp_zoom),
@@ -797,7 +797,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 
 	const auto [xsrc, ysrc] = disp->get_location(src);
 	const auto [xdst, ydst] = disp->get_location(dst);
-	const map_location::DIRECTION direction = src.get_relative_dir(dst);
+	const map_location::direction direction = src.get_relative_dir(dst);
 
 	const frame_parameters current_data = merge_parameters(frame_time, animation_val, engine_val);
 
@@ -805,7 +805,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 	const int d2 = display::get_singleton()->hex_size() / 2;
 
 	image::locator image_loc;
-	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
+	if(direction != map_location::direction::north && direction != map_location::direction::south) {
 		image_loc = current_data.image_diagonal.clone(current_data.image_mod);
 	}
 
@@ -820,9 +820,9 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 		result.insert(src);
 
 		bool facing_north = (
-			direction == map_location::NORTH_WEST ||
-			direction == map_location::NORTH ||
-			direction == map_location::NORTH_EAST);
+			direction == map_location::direction::north_west ||
+			direction == map_location::direction::north ||
+			direction == map_location::direction::north_east);
 
 		if(!current_data.auto_vflip) { facing_north = true; }
 
@@ -834,13 +834,13 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 		}
 
 		if(my_y < 0) {
-			result.insert(src.get_direction(map_location::NORTH));
-			result.insert(src.get_direction(map_location::NORTH_EAST));
-			result.insert(src.get_direction(map_location::NORTH_WEST));
+			result.insert(src.get_direction(map_location::direction::north));
+			result.insert(src.get_direction(map_location::direction::north_east));
+			result.insert(src.get_direction(map_location::direction::north_west));
 		} else if(my_y > 0) {
-			result.insert(src.get_direction(map_location::SOUTH));
-			result.insert(src.get_direction(map_location::SOUTH_EAST));
-			result.insert(src.get_direction(map_location::SOUTH_WEST));
+			result.insert(src.get_direction(map_location::direction::south));
+			result.insert(src.get_direction(map_location::direction::south_east));
+			result.insert(src.get_direction(map_location::direction::south_west));
 		}
 	} else {
 		int w = 0, h = 0;
@@ -858,13 +858,13 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 			const double disp_zoom = display::get_singleton()->get_zoom_factor();
 
 			bool facing_west = (
-				direction == map_location::NORTH_WEST ||
-				direction == map_location::SOUTH_WEST);
+				direction == map_location::direction::north_west ||
+				direction == map_location::direction::south_west);
 
 			bool facing_north = (
-				direction == map_location::NORTH_WEST ||
-				direction == map_location::NORTH ||
-				direction == map_location::NORTH_EAST);
+				direction == map_location::direction::north_west ||
+				direction == map_location::direction::north ||
+				direction == map_location::direction::north_east);
 
 			if(!current_data.auto_hflip) { facing_west = false; }
 			if(!current_data.auto_vflip) { facing_north = true; }

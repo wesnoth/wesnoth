@@ -35,11 +35,11 @@ namespace undo
 move_action::move_action(const unit_const_ptr moved,
 			const std::vector<map_location>::const_iterator & begin,
 			const std::vector<map_location>::const_iterator & end,
-			int sm, int timebonus, int orig, const map_location::DIRECTION dir)
+			int sm, int timebonus, int orig, const map_location::direction dir)
 	: undo_action()
 	, shroud_clearing_action(moved, begin, end, orig, timebonus != 0)
 	, starting_moves(sm)
-	, starting_dir(dir == map_location::NDIRECTIONS ? moved->facing() : dir)
+	, starting_dir(dir == map_location::direction::indeterminate ? moved->facing() : dir)
 	, goto_hex(moved->get_goto())
 {
 }

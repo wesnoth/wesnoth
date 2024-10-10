@@ -198,6 +198,12 @@ namespace
 			u.set_state(unit::STATE_POISONED, poisoned && !u.get_state("unpoisonable"));
 		};
 	}
+
+	map_location::direction get_random_direction()
+	{
+		constexpr int last_facing = static_cast<int>(map_location::direction::indeterminate) - 1;
+		return map_location::direction{randomness::rng::default_instance().get_random_int(0, last_facing)};
+	}
 } // end anon namespace
 
 /**
@@ -367,7 +373,7 @@ unit::unit(unit_ctor_t)
 	, overlays_()
 	, role_()
 	, attacks_()
-	, facing_(map_location::NDIRECTIONS)
+	, facing_(map_location::direction::indeterminate)
 	, trait_names_()
 	, trait_descriptions_()
 	, trait_nonhidden_ids_()
@@ -408,7 +414,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	gender_ = generate_gender(*type_, cfg);
     name_ = gender_value(cfg, gender_, "male_name", "female_name", "name").t_str();
 	role_ = cfg["role"].str();
-	//, facing_(map_location::NDIRECTIONS)
+	//, facing_(map_location::direction::indeterminate)
 	//, anim_comp_(new unit_animation_component(*this))
 	hidden_ = cfg["hidden"].to_bool(false);
 	hp_bar_scaling_ = cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"].to_double();
@@ -485,7 +491,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 
 	random_traits_ = cfg["random_traits"].to_bool(true);
 	facing_ = map_location::parse_direction(cfg["facing"]);
-	if(facing_ == map_location::NDIRECTIONS) facing_ = static_cast<map_location::DIRECTION>(randomness::rng::default_instance().get_random_int(0, map_location::NDIRECTIONS-1));
+	if(facing_ == map_location::direction::indeterminate) facing_ = get_random_direction();
 
 	for(const config& mods : cfg.child_range("modifications")) {
 		modifications_.append_children(mods);
@@ -747,7 +753,7 @@ void unit::init(const unit_type& u_type, int side, bool real_unit, unit_race::GE
 	variation_ = variation.empty() ? type_->default_variation() : variation;
 	side_ = side;
 	gender_ = gender != unit_race::NUM_GENDERS ? gender : generate_gender(u_type, real_unit);
-	facing_ = static_cast<map_location::DIRECTION>(randomness::rng::default_instance().get_random_int(0, map_location::NDIRECTIONS-1));
+	facing_ = get_random_direction();
 	upkeep_ = upkeep_full{};
 
 	// Apply the unit type's data to this unit.
@@ -1672,9 +1678,9 @@ void unit::write(config& cfg, bool write_all) const
 	cfg.append(back);
 }
 
-void unit::set_facing(map_location::DIRECTION dir) const
+void unit::set_facing(map_location::direction dir) const
 {
-	if(dir != map_location::NDIRECTIONS && dir != facing_) {
+	if(dir != map_location::direction::indeterminate && dir != facing_) {
 		appearance_changed_ = true;
 		facing_ = dir;
 	}

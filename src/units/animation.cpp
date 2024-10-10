@@ -314,7 +314,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 
 	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
 	for(const auto& direction :  my_directions) {
-		const map_location::DIRECTION d = map_location::parse_direction(direction);
+		const map_location::direction d = map_location::parse_direction(direction);
 		directions_.push_back(d);
 	}
 

@@ -53,7 +53,7 @@ public:
 	void start(unit_ptr u);
 	void proceed_to(unit_ptr u, std::size_t path_index, bool update=false, bool wait=true);
 	void wait_for_anims();
-	void finish(unit_ptr u, map_location::DIRECTION dir = map_location::NDIRECTIONS);
+	void finish(unit_ptr u, map_location::direction dir = map_location::direction::indeterminate);
 
 private: // functions
 	void replace_temporary(unit_ptr u);
@@ -82,7 +82,7 @@ private: // data
  */
 void move_unit(const std::vector<map_location>& path, unit_ptr u,
 	bool animate=true,
-	map_location::DIRECTION dir=map_location::NDIRECTIONS,
+	map_location::direction dir=map_location::direction::indeterminate,
 	bool force_scroll=false);
 
 /**

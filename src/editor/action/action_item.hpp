@@ -98,7 +98,7 @@ class editor_action_item_facing : public editor_action_location
 {
 public:
 	editor_action_item_facing(
-			map_location loc, map_location::DIRECTION new_direction, map_location::DIRECTION old_direction)
+			map_location loc, map_location::direction new_direction, map_location::direction old_direction)
 		: editor_action_location(loc)
 		, new_direction_(new_direction)
 		, old_direction_(old_direction)
@@ -111,8 +111,8 @@ public:
 	const std::string& get_name() const override;
 
 protected:
-	map_location::DIRECTION new_direction_;
-	map_location::DIRECTION old_direction_;
+	map_location::direction new_direction_;
+	map_location::direction old_direction_;
 };
 
 } // end namespace editor

@@ -1417,13 +1417,13 @@ public:
 	}
 
 	/** The current direction this unit is facing within its hex. */
-	map_location::DIRECTION facing() const
+	map_location::direction facing() const
 	{
 		return facing_;
 	}
 
 	/** The this unit's facing. */
-	void set_facing(map_location::DIRECTION dir) const;
+	void set_facing(map_location::direction dir) const;
 
 	/** Gets whether this unit has a multi-turn destination set. */
 	bool has_goto() const
@@ -2063,7 +2063,7 @@ private:
 protected:
 	// TODO: I think we actually consider this to be part of the gamestate, so it might be better if it's not mutable,
 	// but it's not easy to separate this guy from the animation code right now.
-	mutable map_location::DIRECTION facing_;
+	mutable map_location::direction facing_;
 
 private:
 	std::vector<t_string> trait_names_;
