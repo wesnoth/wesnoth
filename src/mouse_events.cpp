@@ -62,7 +62,7 @@ mouse_handler::mouse_handler(game_display* gui, play_controller& pc)
 	, pc_(pc)
 	, previous_hex_()
 	, previous_free_hex_()
-	, selected_hex_()
+	, selected_hex_(map_location::null_location())
 	, next_unit_()
 	, current_route_()
 	, current_paths_()
@@ -1096,8 +1096,10 @@ void mouse_handler::touch_action(const map_location touched_hex, bool browse)
 	}
 }
 
-void mouse_handler::select_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event)
+void mouse_handler::select_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event, const bool force_unhighlight)
 {
+	bool unhighlight = selected_hex_.valid() && force_unhighlight;
+
 	selected_hex_ = hex;
 
 	gui().select_hex(selected_hex_);
@@ -1173,7 +1175,8 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 
 		gui_->highlight_another_reach(reaching_unit_locations);
 	} else {
-		if(!pc_.get_units().find(last_hex_)) {
+		// unhighlight is needed because the highlight_reach here won't be reset with highlight assigned false.
+		if(!pc_.get_units().find(last_hex_) || unhighlight) {
 			unselected_reach_ = gui_->unhighlight_reach();
 		}
 
