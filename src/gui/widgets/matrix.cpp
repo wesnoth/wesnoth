@@ -57,28 +57,28 @@ unsigned state_default::get_state() const
 	return state_;
 }
 
-matrix::matrix(const implementation::builder_matrix& builder)
+matrix::matrix(implementation::builder_matrix& builder)
 	: tbase(builder, "matrix"), content_(), pane_(nullptr)
 {
 	const auto cfg = cast_config_to<matrix_definition>();
 
 	builder_widget::replacements_map replacements;
-	replacements.emplace("_main", builder.builder_main);
+	replacements.emplace("_main", std::move(builder.builder_main));
 
 	if(builder.builder_top) {
-		replacements.emplace("_top", builder.builder_top);
+		replacements.emplace("_top", std::move(builder.builder_top));
 	}
 
 	if(builder.builder_left) {
-		replacements.emplace("_left", builder.builder_left);
+		replacements.emplace("_left", std::move(builder.builder_left));
 	}
 
 	if(builder.builder_right) {
-		replacements.emplace("_right", builder.builder_right);
+		replacements.emplace("_right", std::move(builder.builder_right));
 	}
 
 	if(builder.builder_bottom) {
-		replacements.emplace("_bottom", builder.builder_bottom);
+		replacements.emplace("_bottom", std::move(builder.builder_bottom));
 	}
 
 	cfg->content->build(content_, replacements);
@@ -207,23 +207,23 @@ builder_matrix::builder_matrix(const config& cfg)
 	, builder_main(create_widget_builder(VALIDATE_WML_CHILD(cfg, "main", missing_mandatory_wml_tag("matrix", "main"))))
 {
 	if(auto top = cfg.optional_child("top")) {
-		builder_top = std::make_shared<builder_grid>(*top);
+		builder_top = std::make_unique<builder_grid>(*top);
 	}
 
 	if(auto bottom = cfg.optional_child("bottom")) {
-		builder_bottom = std::make_shared<builder_grid>(*bottom);
+		builder_bottom = std::make_unique<builder_grid>(*bottom);
 	}
 
 	if(auto left = cfg.optional_child("left")) {
-		builder_left = std::make_shared<builder_grid>(*left);
+		builder_left = std::make_unique<builder_grid>(*left);
 	}
 
 	if(auto right = cfg.optional_child("right")) {
-		builder_right = std::make_shared<builder_grid>(*right);
+		builder_right = std::make_unique<builder_grid>(*right);
 	}
 }
 
-std::unique_ptr<widget> builder_matrix::build() const
+std::unique_ptr<widget> builder_matrix::build()
 {
 	return std::make_unique<matrix>(*this);
 }

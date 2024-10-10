@@ -223,7 +223,7 @@ stacked_widget_definition::resolution::resolution(const config& cfg)
 	auto child = cfg.optional_child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(*child);
+	grid = std::make_unique<builder_grid>(*child);
 }
 
 // }---------- BUILDER -----------{
@@ -246,7 +246,7 @@ builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
 	}
 }
 
-std::unique_ptr<widget> builder_stacked_widget::build() const
+std::unique_ptr<widget> builder_stacked_widget::build()
 {
 	auto widget = std::make_unique<stacked_widget>(*this);
 

@@ -69,7 +69,7 @@ scrollbar_panel_definition::resolution::resolution(const config& cfg)
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "foreground", missing_mandatory_wml_tag("scrollbar_panel_definition][resolution", "foreground")));
 
 	auto child = VALIDATE_WML_CHILD(cfg, "grid", missing_mandatory_wml_tag("scrollbar_panel][definition", "grid"));
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_unique<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{
@@ -88,11 +88,11 @@ builder_scrollbar_panel::builder_scrollbar_panel(const config& cfg)
 	auto grid_definition = cfg.optional_child("definition");
 
 	VALIDATE(grid_definition, _("No list defined."));
-	grid_ = std::make_shared<builder_grid>(*grid_definition);
+	grid_ = std::make_unique<builder_grid>(*grid_definition);
 	assert(grid_);
 }
 
-std::unique_ptr<widget> builder_scrollbar_panel::build() const
+std::unique_ptr<widget> builder_scrollbar_panel::build()
 {
 	auto panel = std::make_unique<scrollbar_panel>(*this);
 

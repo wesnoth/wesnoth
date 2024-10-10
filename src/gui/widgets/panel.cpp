@@ -130,10 +130,10 @@ builder_panel::builder_panel(const config& cfg)
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(*c);
+	grid = std::make_unique<builder_grid>(*c);
 }
 
-std::unique_ptr<widget> builder_panel::build() const
+std::unique_ptr<widget> builder_panel::build()
 {
 	auto widget = std::make_unique<panel>(*this);
 

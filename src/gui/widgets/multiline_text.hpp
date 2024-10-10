@@ -354,7 +354,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	virtual std::unique_ptr<widget> build() const override;
+	virtual std::unique_ptr<widget> build() override;
 
 	std::string history;
 

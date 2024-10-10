@@ -55,7 +55,7 @@ public:
 	typedef std::function<bool(const item&)> filter_functor_t;
 
 public:
-	explicit pane(const implementation::builder_pane& builder);
+	explicit pane(implementation::builder_pane& builder);
 
 	/**
 	 * Creates a new item.
@@ -191,9 +191,9 @@ struct builder_pane : public builder_widget
 {
 	explicit builder_pane(const config& cfg);
 
-	virtual std::unique_ptr<widget> build() const override;
+	virtual std::unique_ptr<widget> build() override;
 
-	virtual std::unique_ptr<widget> build(const replacements_map& replacements) const override;
+	virtual std::unique_ptr<widget> build(const replacements_map& replacements) override;
 
 	grow_direction::type grow_dir;
 

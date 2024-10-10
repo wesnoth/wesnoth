@@ -665,9 +665,9 @@ private:
 	/**
 	 * Finishes the initialization of the grid.
 	 *
-	 * @param content_grid        The new contents for the content grid.
+	 * @param widget        The new contents for the content grid.
 	 */
-	void finalize(const builder_grid& content_grid);
+	void finalize(std::unique_ptr<widget>&& widget);
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	debug_layout_graph* debug_layout_;

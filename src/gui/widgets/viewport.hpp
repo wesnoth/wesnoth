@@ -89,9 +89,9 @@ struct builder_viewport : public builder_widget
 {
 	explicit builder_viewport(const config& cfg);
 
-	virtual std::unique_ptr<widget> build() const override;
+	virtual std::unique_ptr<widget> build() override;
 
-	virtual std::unique_ptr<widget> build(const replacements_map& replacements) const override;
+	virtual std::unique_ptr<widget> build(const replacements_map& replacements) override;
 
 	builder_widget_ptr widget_;
 };

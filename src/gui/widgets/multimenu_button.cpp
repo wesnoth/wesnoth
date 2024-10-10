@@ -268,7 +268,7 @@ builder_multimenu_button::builder_multimenu_button(const config& cfg)
 	}
 }
 
-std::unique_ptr<widget> builder_multimenu_button::build() const
+std::unique_ptr<widget> builder_multimenu_button::build()
 {
 	auto widget = std::make_unique<multimenu_button>(*this);
 

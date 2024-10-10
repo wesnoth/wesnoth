@@ -44,7 +44,7 @@ class tree_view : public scrollbar_container
 public:
 	typedef implementation::tree_node node_definition;
 
-	explicit tree_view(const implementation::builder_tree_view& builder);
+	explicit tree_view(implementation::builder_tree_view& builder);
 
 	~tree_view();
 
@@ -215,7 +215,7 @@ struct builder_tree_view : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual std::unique_ptr<widget> build() const override;
+	virtual std::unique_ptr<widget> build() override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
