@@ -116,9 +116,9 @@ map_location::direction map_location::parse_direction(const std::string& str)
 	if (end != std::string::npos) {
 		const std::string rel_dir = str.substr(end + 1);
 		if (rel_dir == "cw") {
-			dir = rotate_right(dir, 1);
+			dir = rotate_direction(dir, 1);
 		} else if (rel_dir == "ccw") {
-			dir = rotate_right(dir, -1);
+			dir = rotate_direction(dir, -1);
 		} else {
 			return direction::indeterminate;
 		}

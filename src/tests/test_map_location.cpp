@@ -353,29 +353,29 @@ BOOST_AUTO_TEST_CASE ( check_get_opposite_dir_refactor )
 
 BOOST_AUTO_TEST_CASE ( check_rotate )
 {
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::direction::north) , map_location::direction::north_east );
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::direction::north_east,-1) , map_location::direction::north);
+	static_assert(map_location::rotate_direction(map_location::direction::north) == map_location::direction::north_east);
+	static_assert(map_location::rotate_direction(map_location::direction::north_east, -1) == map_location::direction::north);
 
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::direction::north_east) , map_location::direction::south_east );
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::direction::south_east,-1) , map_location::direction::north_east );
+	static_assert(map_location::rotate_direction(map_location::direction::north_east) == map_location::direction::south_east);
+	static_assert(map_location::rotate_direction(map_location::direction::south_east, -1) == map_location::direction::north_east);
 
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::direction::south_east) , map_location::direction::south );
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::direction::south, -1) , map_location::direction::south_east );
+	static_assert(map_location::rotate_direction(map_location::direction::south_east) == map_location::direction::south);
+	static_assert(map_location::rotate_direction(map_location::direction::south, -1) == map_location::direction::south_east);
 
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::direction::south), map_location::direction::south_west);
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::direction::south_west,-1) , map_location::direction::south );
+	static_assert(map_location::rotate_direction(map_location::direction::south) == map_location::direction::south_west);
+	static_assert(map_location::rotate_direction(map_location::direction::south_west, -1) == map_location::direction::south);
 
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::direction::south_west), map_location::direction::north_west);
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::direction::north_west,-1) , map_location::direction::south_west );
+	static_assert(map_location::rotate_direction(map_location::direction::south_west) == map_location::direction::north_west);
+	static_assert(map_location::rotate_direction(map_location::direction::north_west, -1) == map_location::direction::south_west);
 
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::direction::north_west), map_location::direction::north);
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::direction::north,-1) , map_location::direction::north_west );
+	static_assert(map_location::rotate_direction(map_location::direction::north_west) == map_location::direction::north);
+	static_assert(map_location::rotate_direction(map_location::direction::north, -1) == map_location::direction::north_west);
 
 
 	for (unsigned int i = 0; i < 7; i++ ) {
 		map_location::direction d = static_cast<map_location::direction> (i);
-		BOOST_CHECK_EQUAL ( map_location::get_opposite_direction(d), map_location::rotate_right(d,3) );
-		BOOST_CHECK_EQUAL ( map_location::rotate_right(d,-2), map_location::rotate_right(d,4) );
+		BOOST_CHECK_EQUAL ( map_location::get_opposite_direction(d), map_location::rotate_direction(d,3) );
+		BOOST_CHECK_EQUAL ( map_location::rotate_direction(d,-2), map_location::rotate_direction(d,4) );
 	}
 }
 

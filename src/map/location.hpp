@@ -56,19 +56,25 @@ struct map_location {
 
 	static std::vector<direction> all_directions();
 
-	static direction rotate_right(direction d, unsigned int k = 1u)
+	/** Returns the direction one would face having taken @a steps clockwise around an undefined center. */
+	static constexpr direction rotate_direction(direction d, int steps = 1)
 	{
-		return d == direction::indeterminate ? direction::indeterminate : direction{(static_cast<int>(d) + (k % 6u)) % 6u};
+		if(d == direction::indeterminate) {
+			return direction::indeterminate;
+		}
+
+		// Compensate for weirdness with the C++ % operator.
+		// The plain formula (d + (steps % 6)) % 6 works for almost every case, but it returns incorrect
+		// results for a counterclockwise rotation on direction::north. Instead, for any negative steps,
+		// cancel out the sign and scale by the highest possible direction value (viz., 5). This has the
+		// effect of a clockwise rotation ending at the same value as the specified counter-clockwise op.
+		int adjusted_steps = steps >= 0 ? steps : steps * -5;
+		return direction{(static_cast<int>(d) + (adjusted_steps % 6)) % 6};
 	}
 
-	static direction rotate_right(direction d, signed int k)
+	static constexpr direction get_opposite_direction(direction d)
 	{
-		return (k>=0) ? rotate_right(d, static_cast<unsigned int> (k)) : rotate_right(d, (static_cast<unsigned int>(-k) % 6u) * 5u);
-	}
-
-	static direction get_opposite_direction(direction d)
-	{
-		return rotate_right(d,3u);
+		return rotate_direction(d, 3);
 	}
 
 	static direction parse_direction(const std::string& str);
