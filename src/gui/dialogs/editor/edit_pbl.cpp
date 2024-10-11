@@ -179,7 +179,7 @@ void editor_edit_pbl::pre_show()
 	type_list.emplace_back("label", _("Map Pack"));
 	type_list.emplace_back("label", _("Modification"));
 	type_list.emplace_back("label", _("Media"));
-	type_list.emplace_back("label", _("UI Theme"));
+	type_list.emplace_back("label", _("Theme"));
 	type_list.emplace_back("label", _("Other"));
 	types.set_values(type_list);
 	types.set_selected(selected);
