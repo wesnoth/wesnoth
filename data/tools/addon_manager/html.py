@@ -135,15 +135,25 @@ WESMERE_FOOTER = '''\
 '''
 
 ADDON_TYPES_INFO = {
-    "scenario": {
-        "short": "Scenario",
-        "long": "Singleplayer scenario",
-        "help": "After install the scenario will show up in the list you get when choosing “Campaign” in the main menu. (Basically it is just a campaign with only one scenario.)",
+    "unknown": {
+        "short": "Unknown",
+        "long": "Unknown Add-on Type",
+        "help": "Add-ons with an invalid add-on type field.",
+    },
+    "core": {
+        "short": "Core",
+        "long": "Core/Total Conversion",
+        "help": "Cores enable total conversion of The Battle for Wesnoth. A core can replace all the content in Wesnoth: when a different core is loaded, the regular units, terrains and the like do not exist. This can be used to provide a completely different game experience.",
     },
     "campaign": {
         "short": "Campaign",
         "long": "Singleplayer campaign",
         "help": "After install the campaign will show up in the list you get when choosing “Campaign” in the main menu.",
+    },
+    "scenario": {
+        "short": "Scenario",
+        "long": "Singleplayer scenario",
+        "help": "After install the scenario will show up in the list you get when choosing “Campaign” in the main menu. (Basically it is just a campaign with only one scenario.)",
     },
     "campaign_sp_mp": {
         "short": "SP/MP Campaign",
@@ -185,20 +195,15 @@ ADDON_TYPES_INFO = {
         "long": "Miscellaneous content/media",
         "help": "Unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) dependency of another add-on.",
     },
-    "core": {
-        "short": "Core",
-        "long": "Core/Total Conversion",
-        "help": "Cores enable total conversion of The Battle for Wesnoth. A core can replace all the content in Wesnoth: when a different core is loaded, the regular units, terrains and the like do not exist. This can be used to provide a completely different game experience.",
+    "theme": {
+        "short": "Theme",
+        "long": "UI or in-game theme",
+        "help": "UI or in-game themes that can be enabled in preferences.",
     },
     "other": {
         "short": "Other",
         "long": "Other",
         "help": "Add-ons which do not fit any other category.",
-    },
-    "unknown": {
-        "short": "Unknown",
-        "long": "Unknown Add-on Type",
-        "help": "Add-ons with an invalid add-on type field.",
     },
 }
 
