@@ -37,11 +37,19 @@ std::ostream &operator<<(std::ostream &s, const map_location& l) {
 	s << (l.wml_x()) << ',' << (l.wml_y());
 	return s;
 }
+
 std::ostream &operator<<(std::ostream &s, const std::vector<map_location>& v) {
 	std::vector<map_location>::const_iterator i = v.begin();
 	for(; i!= v.end(); ++i) {
 		s << "(" << *i << ") ";
 	}
+	return s;
+}
+
+/** Print a direction to stream. */
+std::ostream& operator<<(std::ostream& s, map_location::direction dir)
+{
+	s << map_location::write_direction(dir);
 	return s;
 }
 
