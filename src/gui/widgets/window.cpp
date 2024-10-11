@@ -319,12 +319,13 @@ window::window(const builder_window::window_resolution& definition)
 						SDL_BUTTON_RMASK),
 			event::dispatcher::front_child);
 
+	// FIXME investigate why this handler is being called twice and if this is actually needed
 	connect_signal<event::SDL_KEY_DOWN>(
 			std::bind(
-					&window::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6, true),
+					&window::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6, false),
 			event::dispatcher::back_post_child);
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
-			&window::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6, false));
+			&window::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6, true));
 
 	connect_signal<event::MESSAGE_SHOW_TOOLTIP>(
 			std::bind(&window::signal_handler_message_show_tooltip,
