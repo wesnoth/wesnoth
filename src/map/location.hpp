@@ -234,6 +234,9 @@ std::ostream &operator<<(std::ostream &s, const map_location& l);
 /** Dumps a vector of positions on a stream, for debug purposes. */
 std::ostream &operator<<(std::ostream &s, const std::vector<map_location>& v);
 
+/** Print a direction's string representation to stream. */
+std::ostream& operator<<(std::ostream& s, map_location::direction dir);
+
 namespace std {
 template<>
 struct hash<map_location> {
