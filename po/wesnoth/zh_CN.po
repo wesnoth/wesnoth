@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-09-17 21:19-0500\n"
-"PO-Revision-Date: 2024-06-02 17:10+0800\n"
+"PO-Revision-Date: 2024-10-07 09:53+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -4705,20 +4705,14 @@ msgstr "计划单位升级"
 
 #. [modification]: id=plan_unit_advance, type=mp
 #: data/modifications.cfg:7
-#, fuzzy
-#| msgid ""
-#| "When playing a multiplayer game, you do not control what a unit advances "
-#| "to if it advances on another player's turn. With this modification you "
-#| "can set what your units advance to beforehand, either for a specific unit "
-#| "or for all units of the same type."
 msgid ""
 "When playing a multiplayer game, you do not control what a unit advances to "
 "if it advances on another player’s turn. With this modification you can set "
 "what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
-"当进行多人游戏时，如果单位在另一个玩家的回合升级，则你不能控制其升级方向。选"
-"择这一选项，你就可以提前设定单位的升级方向，可以为单一特定的单位进行设定，也"
+"当进行多人游戏时，如果单位在另一个玩家的回合升级，则你不能控制其升级方向。有"
+"了这个修改，你就可以提前设定单位的升级方向，可以为单一特定的单位进行设定，也"
 "可以为同一类型的所有单位进行设定。"
 
 #. [checkbox]: id=pickadvance_force_choice
@@ -7515,14 +7509,12 @@ msgid "This command is currently unavailable."
 msgstr "此命令当前不可用。"
 
 #: src/map_command_handler.hpp:225
-#, fuzzy
-#| msgid ""
-#| "Unknown command '$command', try $help_command for a list of available "
-#| "commands."
 msgid ""
 "Unknown command '$command', did you mean '$command_proposal'? try "
 "$help_command for a list of available commands."
-msgstr "未知命令‘$command’，请尝试用‘$help_command’命令获取可用命令的列表。"
+msgstr ""
+"未知命令‘$command’，你是指` $command_proposal `吗？请尝试用‘$help_command’命"
+"令获取可用命令的列表。"
 
 #: src/map_command_handler.hpp:229
 msgid ""
@@ -8198,13 +8190,10 @@ msgstr "回合改变了"
 
 #: src/network_download_file.cpp:68 src/network_download_file.cpp:83
 #: src/network_download_file.cpp:91
-#, fuzzy
-#| msgid ""
-#| "An error occurred while downloading the add-ons list from the server."
 msgid ""
 "An error occurred when downloading the file. Check the game logs for more "
 "information."
-msgstr "从服务器上下载附加组件列表时发生错误。"
+msgstr "下载文件时发生错误。查看游戏日志了解更多信息。"
 
 #: src/network_download_file.cpp:68 src/network_download_file.cpp:83
 #: src/network_download_file.cpp:91
@@ -9077,10 +9066,8 @@ msgid "This Time of Day is only a Stub!"
 msgstr "这一时段只是一个占位时段！"
 
 #: src/units/abilities.cpp:1075
-#, fuzzy
-#| msgid "slowed: "
 msgid "Owned: "
-msgstr "减速： "
+msgstr "拥有： "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 #: src/units/abilities.cpp:1079
