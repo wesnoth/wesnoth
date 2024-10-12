@@ -46,7 +46,7 @@ namespace help {
 struct terrain_movement_info
 {
 	const t_string name;
-	const t_string id;
+	const std::string id;
 	const int defense;
 	const int movement_cost;
 	const int vision_cost;

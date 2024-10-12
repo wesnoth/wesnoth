@@ -717,7 +717,7 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 	// All traits that could be assigned to at least one discovered or HIDDEN_BUT_SHOW_MACROS unit.
 	// This is collected from the [units][trait], [race][traits], and [unit_type][traits] tags. If
 	// there are duplicates with the same id, it takes the first one encountered.
-	std::map<t_string, const config> trait_list;
+	std::map<std::string, const config> trait_list;
 
 	// The global traits that are direct children of a [units] tag
 	for (const config & trait : unit_types.traits()) {
