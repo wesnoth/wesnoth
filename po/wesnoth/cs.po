@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-06-28 22:34-0500\n"
-"PO-Revision-Date: 2024-03-03 10:07+0100\n"
+"PO-Revision-Date: 2024-10-08 22:46+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -100,8 +100,7 @@ msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
 msgstr ""
-"Vyberte, zda se má mapa posunout k jednotce, když se pohybuje nebo něco "
-"provede"
+"Vyber, zda se má mapa posunout k jednotce, když se pohybuje nebo něco provede"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:76
@@ -1450,8 +1449,8 @@ msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on a unit that belongs to it."
 msgstr ""
-"V tomto scénáři můžete vydat vašim počítačovým spojencům příkazy v menu po "
-"kliknutí pravým tlačítkem na jejich jednotku."
+"V tomto scénáři můžeš vydat příkazy spojenecké straně kliknutím pravým "
+"tlačítkem myši na jednotku, která k ní patří."
 
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
@@ -1467,7 +1466,7 @@ msgstr "Vydat příkazy spojenci"
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr "$ally_leader.name (strana $ally_side|) plní náseldující příkazy:"
+msgstr "$ally_leader.name (strana $ally_side|) plní následující příkazy:"
 
 #. [overview_message_no_instructions]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:142
@@ -5648,13 +5647,13 @@ msgid_plural ""
 "installed or available from the server. Do you wish to continue?"
 msgstr[0] ""
 "Vybrané rozšíření závisí na dalším rozšíření, které není momentálně "
-"nainstalováno nebo není dostupné na serveru. Přejete si pokračovat?"
+"nainstalováno nebo není dostupné na serveru. Přeješ si pokračovat?"
 msgstr[1] ""
 "Vybraná rozšíření závisí na dalším rozšíření, které není momentálně "
-"nainstalováno nebo není dostupné na serveru. Přejete si pokračovat?"
+"nainstalováno nebo není dostupné na serveru. Přeješ si pokračovat?"
 msgstr[2] ""
 "Vybraná rozšíření závisí na dalším rozšíření, které není momentálně "
-"nainstalováno nebo není dostupné na serveru. Přejete si pokračovat?"
+"nainstalováno nebo není dostupné na serveru. Přeješ si pokračovat?"
 
 #: src/addon/client.cpp:490
 msgid "Broken Dependencies"
@@ -5667,11 +5666,9 @@ msgid ""
 msgid_plural ""
 "The following dependencies could not be installed. Do you still wish to "
 "continue?"
-msgstr[0] "Následující závislost nebylo možné nainstalovat. Chcete pokračovat?"
-msgstr[1] ""
-"Následující závislosti nebylo možné nainstalovat. Chcete pokračovat?"
-msgstr[2] ""
-"Následující závislosti nebylo možné nainstalovat. Chcete pokračovat?"
+msgstr[0] "Následující závislost nebylo možné nainstalovat. Chceš pokračovat?"
+msgstr[1] "Následující závislosti nebylo možné nainstalovat. Chceš pokračovat?"
+msgstr[2] "Následující závislosti nebylo možné nainstalovat. Chceš pokračovat?"
 
 #: src/addon/client.cpp:534
 msgid "Dependencies Installation Failed"
@@ -5683,7 +5680,7 @@ msgid ""
 "information that will be permanently lost if you continue:"
 msgstr ""
 "Rozšíření '$addon|' už je nainstalované a obsahuje dodatečné informace, "
-"které budou navždy ztraceny, jestli budete pokračovat:"
+"které budou navždy ztraceny, jestli budeš pokračovat:"
 
 #: src/addon/client.cpp:561
 msgid "Publishing information file (.pbl)"
@@ -5796,9 +5793,9 @@ msgstr "Nejsou nainstalována žádná rozšíření."
 #: src/addon/manager_ui.cpp:166
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
-msgstr[0] "Opravdu si přejete odstranit následující rozšíření?"
-msgstr[1] "Opravdu si přejete odstranit následující rozšíření?"
-msgstr[2] "Opravdu si přejete odstranit následující rozšíření?"
+msgstr[0] "Opravdu si přeješ odstranit následující rozšíření?"
+msgstr[1] "Opravdu si přeješ odstranit následující rozšíření?"
+msgstr[2] "Opravdu si přeješ odstranit následující rozšíření?"
 
 #: src/addon/manager_ui.cpp:192
 msgid ""
@@ -6467,12 +6464,9 @@ msgstr[2] "Následující rozšíření obsahovala chyby a nemohla být nahrána
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
-msgstr[0] ""
-"Prosíme ohlaste tento problém autorům nebo správcům těchto rozšíření."
-msgstr[1] ""
-"Prosíme ohlaste tyto problémy autorům nebo správcům těchto rozšíření."
-msgstr[2] ""
-"Prosíme ohlaste tyto problémy autorům nebo správcům těchto rozšíření."
+msgstr[0] "Nahlas to prosím autorovi nebo správci tohoto rozšíření."
+msgstr[1] "Nahlas to prosím příslušným autorům nebo správcům těchto rozšíření."
+msgstr[2] "Nahlas to prosím příslušným autorům nebo správcům těchto rozšíření."
 
 #: src/game_events/pump.cpp:392 src/game_launcher.cpp:960
 msgid "Error: "
@@ -6666,8 +6660,8 @@ msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version "
 "<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
-"Vaše verze <i>$addon</i> je nekompatibilní. Máte verzi <b>$local_ver</b> a "
-"hostitel má verzi <b>$host_ver</b>."
+"Tvá verze <i>$addon</i> je nekompatibilní. Máš verzi <b>$local_ver</b> "
+"a hostitel má verzi <b>$host_ver</b>."
 
 #: src/game_initialization/mp_game_utils.cpp:78
 msgid "Defeat enemy leader(s)"
@@ -6831,7 +6825,7 @@ msgstr "Konec hry"
 
 #: src/game_initialization/playcampaign.cpp:219
 msgid "This scenario has ended. Do you want to continue the campaign?"
-msgstr "Tento scénář skončil. Přejete si pokračovat v tažení?"
+msgstr "Tento scénář skončil. Přeješ si pokračovat v tažení?"
 
 #: src/game_initialization/playcampaign.cpp:287
 msgid "Unknown scenario: '$scenario|'"
@@ -6878,7 +6872,7 @@ msgid ""
 "check the 'max hill size' parameter)"
 msgstr ""
 "Nenalezeno žádné vhodné místo pro hrad. Možná je na mapě příliš mnoho nebo "
-"málo hor (zkontrolujte nastavení max. velikosti hor)."
+"málo hor (zkontroluj nastavení max. velikosti hor)."
 
 #: src/gui/core/linked_group_definition.cpp:40
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
@@ -6894,15 +6888,13 @@ msgid_plural ""
 "not currently installed. Do you wish to install them before continuing?"
 msgstr[0] ""
 "Vybrané rozšíření závisí na dalším rozšíření, které je zastaralé, nebo není "
-"momentálně nainstalováno. Přejete si ho před pokračováním nainstalovat?"
+"momentálně nainstalováno. Přeješ si ho před pokračováním nainstalovat?"
 msgstr[1] ""
 "Vybrané rozšíření závisí na dalších rozšířeních, která jsou zastaralá, nebo "
-"nejsou momentálně nainstalována. Přejete si je před pokračováním "
-"nainstalovat?"
+"nejsou momentálně nainstalována. Přeješ si je před pokračováním nainstalovat?"
 msgstr[2] ""
 "Vybrané rozšíření závisí na dalších rozšířeních, která jsou zastaralá, nebo "
-"nejsou momentálně nainstalována. Přejete si je před pokračováním "
-"nainstalovat?"
+"nejsou momentálně nainstalována. Přeješ si je před pokračováním nainstalovat?"
 
 #: src/gui/dialogs/editor/choose_addon.cpp:77
 msgid "Create a new add-on"
@@ -7160,7 +7152,7 @@ msgstr "původní soubor je poškozený"
 
 #: src/hotkey/command_executor.cpp:405
 msgid "Do you really want to surrender the game?"
-msgstr "Opravdu se chcete v této hře vzdát?"
+msgstr "Opravdu se chceš v této hře vzdát?"
 
 #: src/hotkey/command_executor.cpp:405
 msgid "Surrender"
@@ -7464,7 +7456,7 @@ msgstr "Vymazat popisky"
 
 #: src/menu_events.cpp:844
 msgid "Are you sure you want to clear map labels?"
-msgstr "Opravdu chcete odstranit popisky z mapy?"
+msgstr "Opravdu chceš odstranit popisky z mapy?"
 
 #: src/menu_events.cpp:1046
 msgid "Search"
@@ -7895,7 +7887,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2034
 msgid "Do you wish to clear all of your discovered units from help?"
-msgstr "Přejete si smazat z nápovědy všechny spatřené druhy jednotek?"
+msgstr "Přeješ si smazat z nápovědy všechny spatřené druhy jednotek?"
 
 #: src/menu_events.cpp:2048
 msgid "Invalid unit type"
@@ -8016,7 +8008,7 @@ msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
-"Je porušen souběh her a pokračování ve hře nemá smysl. Chcete hru uložit?"
+"Je porušen souběh her a pokračování ve hře nemá smysl. Chceš hru uložit?"
 
 #: src/play_controller.cpp:1051
 msgid "Error details:"
@@ -8077,7 +8069,7 @@ msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
-"Síťové spojení bylo přerušeno a hra nemůže pokračovat. Chcete ji uložit?"
+"Síťové spojení bylo přerušeno a hra nemůže pokračovat. Chceš ji uložit?"
 
 #: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
 msgid ""
@@ -8085,7 +8077,7 @@ msgid ""
 "Do you want to save the game?"
 msgstr ""
 "\n"
-"Chcete uložit hru?"
+"Chceš uložit hru?"
 
 #: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
 msgid ""
@@ -8116,8 +8108,8 @@ msgid ""
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
-"Tato strana neodpovídá. Pro pokračování ve hře jí musíte přiřadit jinému "
-"hráči. Můžete například použít :droid, :control nebo :give_control."
+"Tato strana neodpovídá. Pro pokračování ve hře ji musíš přiřadit jinému "
+"hráči. Můžeš například použít :droid, :control nebo :give_control."
 
 #: src/playsingle_controller.cpp:192
 msgid "Game Error"
@@ -8129,8 +8121,8 @@ msgid ""
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
 msgstr ""
-"Tato hra více hráčů používá nějaký alternativní náhodný mód. Pokud nevíte, "
-"co tato zpráva znamená, tak pravděpodobně někdo podvádí nebo znovunahrál "
+"Tato hra více hráčů používá nějaký alternativní náhodný mód. Pokud nevíš, co "
+"tato zpráva znamená, tak pravděpodobně někdo podvádí nebo znovunahrál "
 "poškozenou hru."
 
 #: src/playsingle_controller.cpp:367
@@ -8612,8 +8604,7 @@ msgstr "Přepsat?"
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
-"Jména uložených her by neměla končit „.gz“ nebo „.bz2“. Vymažte prosím "
-"příponu."
+"Jména uložených her by neměla končit „.gz“ nebo „.bz2“. Vymaž prosím příponu."
 
 #: src/savegame.cpp:442
 msgid ""
@@ -8643,7 +8634,7 @@ msgstr "Uložení záznamu"
 
 #: src/savegame.cpp:602
 msgid "Could not auto save the game. Please save the game manually."
-msgstr "Hru se nepodařilo automaticky uložit. Uložte ji prosím ručně."
+msgstr "Hru se nepodařilo automaticky uložit. Ulož ji prosím ručně."
 
 #: src/savegame.cpp:652
 msgid "Save Game"
@@ -8820,7 +8811,7 @@ msgstr "Detaily:"
 
 #: src/synced_commands.cpp:433
 msgid "Do you wish to save the game before continuing?"
-msgstr "Chcete před pokračováním hru uložit?"
+msgstr "Chceš před pokračováním hru uložit?"
 
 #: src/synced_commands.cpp:435
 msgid "Debug Command Used"
