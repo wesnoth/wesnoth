@@ -18,7 +18,6 @@
 #include "gui/dialogs/campaign_selection.hpp"
 
 #include "filesystem.hpp"
-#include "serialization/markup.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"
@@ -30,14 +29,118 @@
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
 #include "preferences/preferences.hpp"
+#include "serialization/markup.hpp"
+#include "utils/irdya_datetime.hpp"
 
 #include <functional>
-#include "utils/irdya_datetime.hpp"
 
 namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(campaign_selection)
+
+void campaign_selection::update_campaign_list()
+{
+	multi_page& pages = find_widget<multi_page>("campaign_details");
+
+	for(const auto& level : engine_.get_levels_by_type_unfiltered(level_type::type::sp_campaign)) {
+		const config& campaign = level->data();
+
+		/*** Add tree item ***/
+		add_campaign_to_tree(campaign);
+
+		/*** Add detail item ***/
+		widget_data data;
+		widget_item item;
+
+		item["label"] = campaign["description"];
+		item["use_markup"] = "true";
+
+		if(!campaign["description_alignment"].empty()) {
+			item["text_alignment"] = campaign["description_alignment"];
+		}
+
+		data.emplace("description", item);
+
+		item["label"] = campaign["image"];
+		data.emplace("image", item);
+
+		pages.add_page(data);
+		page_ids_.push_back(campaign["id"]);
+	}
+
+	// Entry for missing campaigns
+	std::vector<std::string> dirs;
+	filesystem::get_files_in_dir(game_config::path + "/data/campaigns", nullptr, &dirs);
+	if(dirs.size() <= 15) {
+		config missing;
+		missing["icon"] = "units/unknown-unit.png";
+		missing["name"] = _("Missing Campaigns");
+		missing["completed"] = false;
+		missing["id"] = missing_campaign_;
+
+		add_campaign_to_tree(missing);
+
+		widget_data data;
+		widget_item item;
+
+		// TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
+		// It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
+		item["label"] = _("Wesnoth normally includes more than 15 mainline campaigns, even before installing any from the add-ons server. If you’ve installed the game via a package manager, there’s probably a separate package to install the complete game data.");
+		data.emplace("description", item);
+
+		pages.add_page(data);
+		page_ids_.push_back(missing_campaign_);
+	}
+
+	//
+	// Addons link
+	//
+	config addons;
+	addons["icon"] = "icons/icon-game.png~BLIT(icons/icon-addon-publish.png)";
+	addons["name"] = _("More campaigns...");
+	addons["completed"] = false;
+	addons["id"] = addons_;
+
+	add_campaign_to_tree(addons);
+
+	widget_data data;
+	widget_item item;
+
+	item["label"] = _("In addition to the mainline campaigns, Wesnoth also has an ever-growing list of add-on content created by other players available via the Add-ons server, included but not limited to more single and multiplayer campaigns, multiplayer maps, additional media and various other content! Be sure to give it a try!");
+	data.emplace("description", item);
+	pages.add_page(data);
+	page_ids_.push_back(addons_);
+
+	//
+	// Set up Mods selection dropdown
+	//
+	multimenu_button& mods_menu = find_widget<multimenu_button>("mods_menu");
+
+	if(!engine_.get_const_extras_by_type(ng::create_engine::MOD).empty()) {
+		std::vector<config> mod_menu_values;
+		std::vector<std::string> enabled = engine_.active_mods();
+
+		for(const auto& mod : engine_.get_const_extras_by_type(ng::create_engine::MOD)) {
+			const bool active = std::find(enabled.begin(), enabled.end(), mod->id) != enabled.end();
+
+			mod_menu_values.emplace_back("label", mod->name, "checkbox", active);
+
+			mod_states_.push_back(active);
+			mod_ids_.emplace_back(mod->id);
+		}
+
+		mods_menu.set_values(mod_menu_values);
+		mods_menu.select_options(mod_states_);
+
+		connect_signal_notify_modified(mods_menu, std::bind(&campaign_selection::mod_toggled, this));
+	} else {
+		mods_menu.set_active(false);
+		mods_menu.set_label(_("active_modifications^None"));
+	}
+
+	campaign_selected();
+}
 
 void campaign_selection::campaign_selected()
 {
@@ -48,10 +151,14 @@ void campaign_selection::campaign_selected()
 
 	assert(tree.selected_item());
 
-	if(!tree.selected_item()->id().empty()) {
-		auto iter = std::find(page_ids_.begin(), page_ids_.end(), tree.selected_item()->id());
+	const std::string& campaign_id = tree.selected_item()->id();
 
-		find_widget<button>("ok").set_active(tree.selected_item()->id() != missing_campaign_);
+	if(!campaign_id.empty()) {
+		auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
+
+		button& ok_button = find_widget<button>("proceed");
+		ok_button.set_active(campaign_id != missing_campaign_);
+		ok_button.set_label((campaign_id == addons_) ? _("game^Get Add-ons") : _("game^Play"));
 
 		const int choice = std::distance(page_ids_.begin(), iter);
 		if(iter == page_ids_.end()) {
@@ -85,7 +192,7 @@ void campaign_selection::campaign_selected()
 				entry["label"] = cfg["label"].str() + " (" + cfg["description"].str() + ")";
 				entry["image"] = cfg["image"].str("misc/blank-hex.png");
 
-				if(prefs::get().is_campaign_completed(tree.selected_item()->id(), cfg["define"])) {
+				if(prefs::get().is_campaign_completed(campaign_id, cfg["define"])) {
 					std::string laurel;
 
 					if(n + 1 >= max_n) {
@@ -202,9 +309,9 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 			for(const auto& word : last_search_words_) {
 				found = translation::ci_search(levels[i]->name(), word) ||
 						translation::ci_search(levels[i]->data()["name"].t_str().base_str(), word) ||
-				        translation::ci_search(levels[i]->description(), word) ||
+						translation::ci_search(levels[i]->description(), word) ||
 						translation::ci_search(levels[i]->data()["description"].t_str().base_str(), word) ||
-				        translation::ci_search(levels[i]->data()["abbrev"], word) ||
+						translation::ci_search(levels[i]->data()["abbrev"], word) ||
 						translation::ci_search(levels[i]->data()["abbrev"].t_str().base_str(), word);
 
 				if(!found) {
@@ -321,12 +428,13 @@ void campaign_selection::pre_show()
 	connect_signal_notify_modified(sort_time,
 		std::bind(&campaign_selection::toggle_sorting_selection, this, DATE));
 
+	connect_signal_mouse_left_click(find_widget<button>("proceed"),
+		std::bind(&campaign_selection::proceed, this));
+
 	keyboard_capture(filter);
 	add_to_keyboard_chain(&tree);
 
-	/***** Setup campaign details. *****/
-	multi_page& pages = find_widget<multi_page>("campaign_details");
-
+	// Setup completion filter
 	multimenu_button& filter_comp = find_widget<multimenu_button>("filter_completion");
 	connect_signal_notify_modified(filter_comp,
 		std::bind(&campaign_selection::sort_campaigns, this, RANK, 1));
@@ -334,91 +442,17 @@ void campaign_selection::pre_show()
 		filter_comp.select_option(j);
 	}
 
-	for(const auto& level : engine_.get_levels_by_type_unfiltered(level_type::type::sp_campaign)) {
-		const config& campaign = level->data();
-
-		/*** Add tree item ***/
-		add_campaign_to_tree(campaign);
-
-		/*** Add detail item ***/
-		widget_data data;
-		widget_item item;
-
-		item["label"] = campaign["description"];
-		item["use_markup"] = "true";
-
-		if(!campaign["description_alignment"].empty()) {
-			item["text_alignment"] = campaign["description_alignment"];
-		}
-
-		data.emplace("description", item);
-
-		item["label"] = campaign["image"];
-		data.emplace("image", item);
-
-		pages.add_page(data);
-		page_ids_.push_back(campaign["id"]);
-	}
-
-	std::vector<std::string> dirs;
-	filesystem::get_files_in_dir(game_config::path + "/data/campaigns", nullptr, &dirs);
-	if(dirs.size() <= 15) {
-		config missing;
-		missing["icon"] = "units/unknown-unit.png";
-		missing["name"] = _("Missing Campaigns");
-		missing["completed"] = false;
-		missing["id"] = missing_campaign_;
-
-		add_campaign_to_tree(missing);
-
-		widget_data data;
-		widget_item item;
-
-		// TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
-		// It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
-		item["label"] = _("Wesnoth normally includes more than 15 mainline campaigns, even before installing any from the add-ons server. If you’ve installed the game via a package manager, there’s probably a separate package to install the complete game data.");
-		data.emplace("description", item);
-
-		pages.add_page(data);
-		page_ids_.push_back(missing_campaign_);
-	}
-
-	//
-	// Set up Mods selection dropdown
-	//
-	multimenu_button& mods_menu = find_widget<multimenu_button>("mods_menu");
-
-	if(!engine_.get_const_extras_by_type(ng::create_engine::MOD).empty()) {
-		std::vector<config> mod_menu_values;
-		std::vector<std::string> enabled = engine_.active_mods();
-
-		for(const auto& mod : engine_.get_const_extras_by_type(ng::create_engine::MOD)) {
-			const bool active = std::find(enabled.begin(), enabled.end(), mod->id) != enabled.end();
-
-			mod_menu_values.emplace_back("label", mod->name, "checkbox", active);
-
-			mod_states_.push_back(active);
-			mod_ids_.emplace_back(mod->id);
-		}
-
-		mods_menu.set_values(mod_menu_values);
-		mods_menu.select_options(mod_states_);
-
-		connect_signal_notify_modified(mods_menu, std::bind(&campaign_selection::mod_toggled, this));
-	} else {
-		mods_menu.set_active(false);
-		mods_menu.set_label(_("active_modifications^None"));
-	}
-
 	//
 	// Set up Difficulty dropdown
 	//
 	menu_button& diff_menu = find_widget<menu_button>("difficulty_menu");
-
 	diff_menu.set_use_markup(true);
 	connect_signal_notify_modified(diff_menu, std::bind(&campaign_selection::difficulty_selected, this));
 
-	campaign_selected();
+	//
+	// Populate campaign list
+	//
+	update_campaign_list();
 }
 
 void campaign_selection::add_campaign_to_tree(const config& campaign)
@@ -468,7 +502,7 @@ void campaign_selection::add_campaign_to_tree(const config& campaign)
 	tree.add_node("campaign", data).set_id(campaign["id"]);
 }
 
-void campaign_selection::post_show()
+void campaign_selection::proceed()
 {
 	tree_view& tree = find_widget<tree_view>("campaign_tree");
 
@@ -477,10 +511,16 @@ void campaign_selection::post_show()
 	}
 
 	assert(tree.selected_item());
-	if(!tree.selected_item()->id().empty()) {
-		auto iter = std::find(page_ids_.begin(), page_ids_.end(), tree.selected_item()->id());
-		if(iter != page_ids_.end()) {
-			choice_ = std::distance(page_ids_.begin(), iter);
+	const std::string& campaign_id = tree.selected_item()->id();
+	if(!campaign_id.empty()) {
+		if (campaign_id == addons_) {
+			set_retval(OPEN_ADDON_MANAGER);
+		} else {
+			auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
+			if(iter != page_ids_.end()) {
+				choice_ = std::distance(page_ids_.begin(), iter);
+			}
+			set_retval(retval::OK);
 		}
 	}
 
