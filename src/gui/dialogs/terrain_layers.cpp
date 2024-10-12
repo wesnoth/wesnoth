@@ -47,13 +47,7 @@ void terrain_layers::pre_show()
 	//
 	// List terrain flags
 	//
-	std::vector<std::string> flags(tile_->flags.begin(), tile_->flags.end());
-
-	for(auto& flag : flags) {
-		flag = (formatter() << font::unicode_bullet << " " << flag).str();
-	}
-
-	find_widget<label>("flags").set_label(utils::join(flags, "\n"));
+	find_widget<label>("flags").set_label(utils::bullet_list(tile_->flags, 0));
 
 	//
 	// Generate terrain list
