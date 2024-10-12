@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-09-17 21:19-0500\n"
-"PO-Revision-Date: 2024-09-13 20:08+0200\n"
+"PO-Revision-Date: 2024-09-28 17:17+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -298,9 +298,9 @@ msgid ""
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
-"<italic>text='Pouště'</italic> mají poněkud odlišné složení než malé jámy s "
-"pískem nebo pláže, hru ale ovlivňují obdobně. Podívejte se na <ref>dst='.."
-"terrain_sand' text='Písek'</ref>"
+"<italic>text='Pouště'</italic> mají poněkud odlišné složení než malé jámy "
+"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na <ref>dst='.."
+"terrain_sand' text='písek'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -1778,15 +1778,15 @@ msgid ""
 msgstr ""
 "Těm, kteří je jsou schopni postavit, nabízí schopnost vztyčit "
 "<italic>text='most'</italic> osvobození od vrtkavé povahy vodních toků, "
-"jejichž brody vznikají a zase mizí s kolísáním hladiny. To však není ničím "
-"oproti luxusu suchých nohou, který zvláště v chladných obdobích není "
+"jejichž brody vznikají a zase mizí s kolísáním hladiny. To však není ničím "
+"oproti luxusu suchých nohou, který zvláště v chladných obdobích není "
 "zanedbatelný.\n"
 "\n"
-"Pro ty, kteří se pohybují po zemi nebo vodou, znamená most to lepší z obou "
+"Pro ty, kteří se pohybují po zemi nebo vodou, znamená most to lepší z obou "
 "prostředí – pro účely hry se chová buď jako louka nebo voda pod ním, podle "
-"toho, co jednotce nabízí lepší obraný bonus a dovoluje rychlejší pohyb. "
-"Pamatujte, že jednotky schopné plavat a ty pozemní nejsou schopné zabrat "
-"most v témže okamžiku."
+"toho, co jednotce nabízí lepší obraný bonus a dovoluje rychlejší pohyb. "
+"Pamatuj, že jednotky schopné plavat a ty pozemní nejsou schopné zabrat most "
+"v témže okamžiku."
 
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
@@ -3934,10 +3934,8 @@ msgstr "Použití UI:"
 
 #. [label]
 #: data/gui/themes/default/window/editor_edit_unit.cfg:1170
-#, fuzzy
-#| msgid "Unit type saved."
 msgid "Unit Type Editor"
-msgstr "Typ jednotky uložen."
+msgstr "Editor typu jednotky"
 
 #. [tab]
 #: data/gui/themes/default/window/editor_edit_unit.cfg:1192
@@ -7062,10 +7060,8 @@ msgid "No draw section defined for state."
 msgstr "Pro stav není definován žádný vykreslovací oddíl."
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:132
-#, fuzzy
-#| msgid "No resolution defined."
 msgid "No resolution defined for "
-msgstr "Není definováno žádné rozlišení."
+msgstr "Není definováno žádné rozlišení pro "
 
 #: src/gui/core/window_builder.cpp:166 src/gui/widgets/addon_list.cpp:430
 #: src/gui/widgets/multi_page.cpp:176 src/gui/widgets/panel.cpp:131
@@ -7463,8 +7459,7 @@ msgstr "Žádné"
 #: src/gui/dialogs/screenshot_notification.cpp:70
 #: src/gui/dialogs/wml_error.cpp:189
 msgid "Clipboard support not found, contact your packager"
-msgstr ""
-"Podpora pro schránku nebyla nalezena, kontaktujte správce vašeho balíčku"
+msgstr "Podpora pro schránku nebyla nalezena, kontaktuj správce svého balíčku"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:38
 msgid "$requester requires the following modifications to be enabled:"
@@ -7612,10 +7607,8 @@ msgstr ""
 "do svého rozšíření?"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1036
-#, fuzzy
-#| msgid "Save already exists. Do you want to overwrite it?"
 msgid "Unsaved changes will be lost. Do you want to leave?"
-msgstr "Tato uložená pozice již existuje. Chceš ji přepsat?"
+msgstr "Neuložené změny budou ztraceny. Chceš odejít?"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1055
 msgid "Unit type saved."
@@ -7643,19 +7636,23 @@ msgstr "Najít soubor"
 
 #: src/gui/dialogs/file_dialog.cpp:181
 msgid "<span color='#00dcff' size='small'>please enter a filename</span>"
-msgstr ""
+msgstr "<span color='#00dcff' size='small'>zadej prosím název souboru</span>"
 
 #: src/gui/dialogs/file_dialog.cpp:203
 msgid ""
 "<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>wrong "
 "extension, use $extensions</span></span>"
 msgstr ""
+"<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>špatná "
+"přípona, použij $extensions</span></span>"
 
 #: src/gui/dialogs/file_dialog.cpp:206
 msgid ""
 "<span color='red'><span face='DejaVuSans'>✘</span> <span "
 "size='small'>whitespace is not allowed in filename</span></span>"
 msgstr ""
+"<span color='red'><span face='DejaVuSans'>✘</span> <span "
+"size='small'>v názvu souboru není povolen bílý znak</span></span>"
 
 #: src/gui/dialogs/file_dialog.cpp:231
 msgid "Open"
@@ -7837,7 +7834,7 @@ msgstr "ano"
 
 #: src/gui/dialogs/game_version_dialog.cpp:282 src/gui/widgets/label.cpp:123
 msgid "Opening links is not supported, contact your packager"
-msgstr "Otevírání odkazů není podporováno, kontaktujte správce vašeho balíčku"
+msgstr "Otevírání odkazů není podporováno, kontaktuj správce svého balíčku"
 
 #: src/gui/dialogs/label_settings.cpp:52
 msgid "Team Labels"
@@ -8068,8 +8065,8 @@ msgid ""
 "This build of wesnoth does not include support for desktop notifications, "
 "contact your package manager"
 msgstr ""
-"Toto sestavení Bitvy o Wesnoth nezahrnuje podporu pro notifikace, "
-"kontaktujte správce vašeho balíčku"
+"Toto sestavení Bitvy o Wesnoth nezahrnuje podporu pro notifikace, kontaktuj "
+"správce svého balíčku"
 
 #: src/gui/dialogs/multiplayer/mp_change_control.cpp:81
 msgid "Side $side"
@@ -8703,10 +8700,8 @@ msgid "Terrain Description"
 msgstr "Popis terénu"
 
 #: src/hotkey/hotkey_command.cpp:102
-#, fuzzy
-#| msgid "Unit Description"
 msgid "Unit Type Description"
-msgstr "Popis jednotky"
+msgstr "Popis typu jednotky"
 
 #: src/hotkey/hotkey_command.cpp:104
 msgid "Delete Unit"
@@ -8989,9 +8984,9 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
-"Použijte levé/pravé tlačítko myši k vykreslení popředí/pozadí povrchu. "
-"Podržte Shift pro kreslení pouze základních vrstev. Ctrl+kliknutí pro výběr "
-"terénu pod kurzorem."
+"Použij levé/pravé tlačítko myši k vykreslení popředí/pozadí povrchu. Podrž "
+"Shift pro kreslení pouze základních vrstev. Ctrl+kliknutí pro výběr terénu "
+"pod kurzorem."
 
 #: src/hotkey/hotkey_command.cpp:203
 msgid "Fill Tool"
@@ -9049,10 +9044,8 @@ msgid "Item Tool"
 msgstr "Nástroj pro předměty"
 
 #: src/hotkey/hotkey_command.cpp:208
-#, fuzzy
-#| msgid "Left mouse button sets a new item."
 msgid "Left mouse button sets a new item. Right click removes item."
-msgstr "Levé tlačítko myši umístí nový předmět."
+msgstr "Levé tlačítko myši umístí nový předmět. Pravé předmět odstraní."
 
 #: src/hotkey/hotkey_command.cpp:209
 msgid ""
@@ -9442,37 +9435,17 @@ msgid "When reporting the bug please include the following error message :"
 msgstr "Při oznamování chyby prosím uveďte následující chybovou zprávu :"
 
 #: src/wml_exception.cpp:89
-#, fuzzy
-#| msgid ""
-#| "In section '[$section|]' where '$primary_key| = $primary_value' the "
-#| "mandatory key '$key|' isn't set."
 msgid ""
 "In section ‘[$section|]’ where ‘$primary_key|’ = $primary_value’ the "
 "mandatory key ‘$key|’ isn't set."
 msgstr ""
-"V sekci '[$section|]', kde '$primary_key| = $primary_value', není nastaven "
-"povinný klíč '$key|'."
+"V sekci „[$section|]“, kde „$primary_key| = $primary_value“, není nastaven "
+"povinný klíč „$key|“."
 
 #: src/wml_exception.cpp:92
-#, fuzzy
-#| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section ‘[$section|]’ the mandatory key ‘$key|’ isn't set."
-msgstr "V sekci '[$section|]' není nastaven povinný klíč '$key|'."
+msgstr "V sekci „[$section|]“ není nastaven povinný klíč „$key|“."
 
 #: src/wml_exception.cpp:104
-#, fuzzy
-#| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
-msgstr "V sekci '[$section|]' není nastaven povinný klíč '$key|'."
-
-#~ msgid "lawful"
-#~ msgstr "zákonná"
-
-#~ msgid "chaotic"
-#~ msgstr "chaotická"
-
-#~ msgid "neutral"
-#~ msgstr "neutrální"
-
-#~ msgid "liminal"
-#~ msgstr "šerá"
+msgstr "V sekci „[$section|]“ chybí povinná podřízená značka „[$tag|]”."

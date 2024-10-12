@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-09-17 21:18-0500\n"
-"PO-Revision-Date: 2024-09-13 20:07+0200\n"
+"PO-Revision-Date: 2024-09-26 22:58+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -323,11 +323,11 @@ msgstr "Jméno:"
 
 #: src/editor/editor_display.cpp:170
 msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
-msgstr ""
+msgstr "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
 
 #: src/editor/editor_display.cpp:172
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
-msgstr ""
+msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 
 #: src/editor/map/context_manager.cpp:220
 msgid "Load Map"
@@ -428,10 +428,8 @@ msgid "Scenario saved."
 msgstr "Scénář uložen."
 
 #: src/editor/map/context_manager.cpp:905
-#, fuzzy
-#| msgid "Map saved."
 msgid "Map saved"
-msgstr "Mapa byla uložena."
+msgstr "Mapa byla uložena"
 
 #: src/editor/map/context_manager.cpp:980
 msgid "Loaded embedded map data"
@@ -528,16 +526,12 @@ msgid "Will not work in game without extra care."
 msgstr "Nefunguje ve hře bez dodatečných úprav."
 
 #: src/editor/palette/item_palette.cpp:32
-#, fuzzy
-#| msgid "Right-click: "
 msgid " | Right-click to remove"
-msgstr "Kliknutí pravým: "
+msgstr " | Kliknutí pravým pro odstranění"
 
 #: src/editor/palette/item_palette.cpp:32
-#, fuzzy
-#| msgid "Left-click: "
 msgid "Left-click: Place item "
-msgstr "Kliknutí levým: "
+msgstr "Kliknutí levým: umístit předmět "
 
 #: src/editor/palette/location_palette.cpp:248
 msgid "Go To"
