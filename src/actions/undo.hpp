@@ -48,7 +48,7 @@ public:
 	 * Creates an undo_action based on a config.
 	 * Throws bad_lexical_cast or config::error if it cannot parse the config properly.
 	 */
-	static undo_action_base * create_action(const config & cfg);
+	static std::unique_ptr<undo_action_base> create_action(const config & cfg);
 
 	// Functions related to managing the undo stack:
 
@@ -106,8 +106,8 @@ public:
 
 private: // functions
 	/** Adds an action to the undo stack. */
-	void add(undo_action_base * action)
-	{ undos_.emplace_back(action);  redos_.clear(); }
+	void add(std::unique_ptr<undo_action_base>&& action)
+	{ undos_.push_back(std::move(action));  redos_.clear(); }
 	/** Applies the pending fog/shroud changes from the undo stack. */
 	bool apply_shroud_changes() const;
 
