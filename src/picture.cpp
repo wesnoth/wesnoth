@@ -355,7 +355,7 @@ static surface load_image_file(const image::locator& loc)
 				location = loc_location.value();
 			}
 
-			res = IMG_Load_IO(SDL_IOFromFile(location.c_str(), "rb"), true);
+			res = IMG_Load_IO(SDL_IOFromFile(location.value().c_str(), "rb"), true);
 
 			// If there was no standalone localized image, check if there is an overlay.
 			if(res && !loc_location) {
@@ -598,7 +598,7 @@ static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 		// if the image is too large in either dimension, crop it.
 		if(image->w > mask->w || image->h >= mask->h) {
 			// fill the crop surface with transparency
-			SDL_FillRect(fit, nullptr, SDL_MapRGBA(fit->format, 0, 0, 0, 0));
+			SDL_FillSurfaceRect(fit, nullptr, SDL_MapSurfaceRGBA(fit, 0, 0, 0, 0));
 			// crop the input image to hexmask dimensions
 			int cutx = std::max(0, image->w - mask->w) / 2;
 			int cuty = std::max(0, image->h - mask->h) / 2;

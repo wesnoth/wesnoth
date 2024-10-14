@@ -624,12 +624,12 @@ bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_
 
 	if (gui().view_locked() || button < SDL_BUTTON_LEFT || button > buttons.size()) {
 		return false;
-	} else if (event.state > SDL_PRESSED || !gui().get_map().on_board(loc)) {
+	} else if (event.down || !gui().get_map().on_board(loc)) {
 		return false;
 	}
 
 	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
-		lk->mouse_button_callback(loc, buttons[button], (event.state == SDL_RELEASED ? "up" : "down"));
+		lk->mouse_button_callback(loc, buttons[button], (event.down ? "up" : "down"));
 
 		// Are we being asked to send a click event?
 		if (click) {

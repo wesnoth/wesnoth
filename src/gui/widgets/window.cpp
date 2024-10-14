@@ -125,7 +125,7 @@ const unsigned LAYOUT = 0;
  *
  * @return                        The new timer interval (always 0).
  */
-static uint32_t delay_event_callback(const uint32_t, void* event)
+static uint32_t delay_event_callback(void* event, SDL_TimerID, uint32_t)
 {
 	SDL_PushEvent(static_cast<SDL_Event*>(event));
 	delete static_cast<SDL_Event*>(event);

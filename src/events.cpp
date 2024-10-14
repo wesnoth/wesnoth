@@ -686,8 +686,8 @@ void pump()
 
 #ifndef __APPLE__
 		case SDL_EVENT_KEY_DOWN: {
-			if(event.key.keysym.sym == SDLK_F4 &&
-				(event.key.keysym.mod == SDL_KMOD_RALT || event.key.keysym.mod == SDL_KMOD_LALT)
+			if(event.key.key == SDLK_F4 &&
+				(event.key.mod == SDL_KMOD_RALT || event.key.mod == SDL_KMOD_LALT)
 			) {
 				quit_confirmation::quit_to_desktop();
 				continue; // this event is already handled
@@ -697,7 +697,7 @@ void pump()
 #endif
 
 #ifdef _WIN32
-// TODO: needs to be replaced with https://wiki.libsdl.org/SDL3/SDL_SetWindowsMessageHook
+// TODO SDL3: needs to be replaced with https://wiki.libsdl.org/SDL3/SDL_SetWindowsMessageHook
 // syswm stuff has been removed overall, so windows_tray_notification::handle_system_event is also generally invalid
 		case SDL_SYSWMEVENT: {
 			windows_tray_notification::handle_system_event(event);
@@ -718,10 +718,10 @@ void pump()
 		if(event_contexts.empty() == false) {
 			// As pump() can recurse, pretty much anything can happen here
 			// including destroying handlers or the event context.
-			size_t ec_index = event_contexts.size();
+			std::size_t ec_index = event_contexts.size();
 			context& c = event_contexts.back();
 			handler_list& h = c.handlers;
-			size_t h_size = h.size();
+			std::size_t h_size = h.size();
 			for(auto it = h.begin(); it != h.end(); ++it) {
 				// Pass the event on to the handler.
 				(*it)->handle_event(event);

@@ -132,9 +132,9 @@ hotkey_ptr create_hotkey(const std::string& id, const SDL_Event& event)
 			auto keyboard = std::make_shared<hotkey_keyboard>();
 			base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 			SDL_Keycode code;
-			code = event.key.keysym.sym;
+			code = event.key.key;
 			keyboard->set_keycode(code);
-			keyboard->set_text(SDL_GetKeyName(event.key.keysym.sym));
+			keyboard->set_text(SDL_GetKeyName(event.key.key));
 		}
 	} break;
 
@@ -272,7 +272,7 @@ bool hotkey_keyboard::matches_helper(const SDL_Event& event) const
 	if((event.type == SDL_EVENT_KEY_DOWN || event.type == SDL_EVENT_KEY_UP)
 		&& (mods & SDL_KMOD_CTRL || mods & SDL_KMOD_ALT || mods & SDL_KMOD_GUI || command.toggle || CKey::is_uncomposable(event.key))
 	) {
-		return event.key.keysym.sym == keycode_ && mods == mod_;
+		return event.key.key == keycode_ && mods == mod_;
 	}
 
 	if(event.type == SDL_EVENT_TEXT_INPUT && !command.toggle) {

@@ -1070,7 +1070,7 @@ void editor_edit_unit::signal_handler_sdl_key_down(const event::ui_event /*event
 
 	// Ctrl+O shortcut for Load Unit Type
 	switch(key) {
-		case SDLK_o:
+		case SDLK_0:
 			if (modifier & modifier_key) {
 				handled = true;
 				load_unit_type();

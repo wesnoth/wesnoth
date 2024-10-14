@@ -15,6 +15,7 @@
 
 #include "sdl/window.hpp"
 
+#include "preferences/preferences.hpp"
 #include "sdl/exception.hpp"
 #include "sdl/surface.hpp"
 
@@ -28,10 +29,10 @@ window::window(const std::string& title,
 				 const int,
 				 const int w,
 				 const int h,
-				 const uint32_t window_flags,
-				 const uint32_t render_flags)
+				 const uint32_t window_flags)
 	: window_(SDL_CreateWindow(title.c_str(), w, h, window_flags | SDL_WINDOW_HIDDEN))
-	, pixel_format_(SDL_PIXELFORMAT_UNKNOWN)
+	// TODO SDL3: SDL doesn't allow querying the renderer's pixel format anymore, is this fine?
+	, pixel_format_(SDL_PIXELFORMAT_ARGB8888)
 {
 	if(!window_) {
 		throw exception("Failed to create a SDL_Window object.", true);
@@ -49,19 +50,20 @@ window::window(const std::string& title,
 	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "direct3d11");
 #endif
 
-	if(!SDL_CreateRenderer(window_, nullptr, render_flags)) {
+	SDL_PropertiesID props = SDL_CreateProperties();
+
+	if(prefs::get().vsync()) {
+		if(!SDL_SetNumberProperty(props, SDL_PROP_RENDERER_CREATE_PRESENT_VSYNC_NUMBER, 1)) {
+			throw exception("Failed to set vsync", true);
+		};
+	}
+
+	if(!SDL_SetPointerProperty(props, SDL_PROP_RENDERER_CREATE_WINDOW_POINTER, window_)) {
+		throw exception("Failed to set window pointer property", true);
+	}
+
+	if(!SDL_CreateRendererWithProperties(props)) {
 		throw exception("Failed to create a SDL_Renderer object.", true);
-	}
-
-	SDL_RendererInfo info;
-	if(SDL_GetRendererInfo(*this, &info) != 0) {
-		throw exception("Failed to retrieve the information of the renderer.",
-						 true);
-	}
-
-	if(info.num_texture_formats == 0) {
-		throw exception("The renderer has no texture information available.\n",
-						 false);
 	}
 
 	// Set default blend mode to blend.
@@ -70,8 +72,6 @@ window::window(const std::string& title,
 	// In fullscreen mode, do not minimize on focus loss.
 	// Minimizing was reported as bug #1606 with blocker priority.
 	SDL_SetHint(SDL_HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS, "0");
-
-	pixel_format_ = info.texture_formats[0];
 
 	fill(0,0,0);
 
@@ -139,9 +139,8 @@ void window::full_screen()
 void window::fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
 	SDL_SetRenderDrawColor(*this, r, g, b, a);
-	if(SDL_RenderClear(*this) != 0) {
-		throw exception("Failed to clear the SDL_Renderer object.",
-						 true);
+	if(!SDL_RenderClear(*this)) {
+		throw exception("Failed to clear the SDL_Renderer object.", true);
 	}
 }
 
@@ -181,7 +180,7 @@ void window::set_logical_size(int w, int h)
 	// Non-integer scales are not currently supported.
 	// This option makes things neater when window size is not a perfect
 	// multiple of logical size, which can happen when manually resizing.
-	SDL_SetRenderLogicalPresentation(r, w, h, SDL_LOGICAL_PRESENTATION_INTEGER_SCALE, SDL_SCALEMODE_LINEAR);
+	SDL_SetRenderLogicalPresentation(r, w, h, SDL_LOGICAL_PRESENTATION_INTEGER_SCALE);
 }
 
 void window::set_logical_size(const point& p)
@@ -194,8 +193,7 @@ point window::get_logical_size() const
 	SDL_Renderer* r = SDL_GetRenderer(window_);
 	int w, h;
 	SDL_RendererLogicalPresentation mode = SDL_LOGICAL_PRESENTATION_INTEGER_SCALE;
-	SDL_ScaleMode scale_mode = SDL_SCALEMODE_LINEAR;
-	SDL_GetRenderLogicalPresentation(r, &w, &h, &mode, &scale_mode);
+	SDL_GetRenderLogicalPresentation(r, &w, &h, &mode);
 	return {w, h};
 }
 
@@ -203,11 +201,10 @@ void window::get_logical_size(int& w, int& h) const
 {
 	SDL_Renderer* r = SDL_GetRenderer(window_);
 	SDL_RendererLogicalPresentation mode = SDL_LOGICAL_PRESENTATION_INTEGER_SCALE;
-	SDL_ScaleMode scale_mode = SDL_SCALEMODE_LINEAR;
-	SDL_GetRenderLogicalPresentation(r, &w, &h, &mode, &scale_mode);
+	SDL_GetRenderLogicalPresentation(r, &w, &h, &mode);
 }
 
-uint32_t window::pixel_format()
+SDL_PixelFormat window::pixel_format()
 {
 	return pixel_format_;
 }

@@ -25,7 +25,7 @@
 #include "sdl/utils.hpp"
 #include "serialization/binary_or_text.hpp"
 
-#include <SDL2/SDL_image.h>
+#include <SDL3_image/SDL_image.h>
 
 #include <algorithm>
 #include <future>
@@ -52,7 +52,7 @@ namespace
 struct sheet_element
 {
 	explicit sheet_element(const fs::path& p)
-		: surf(IMG_Load_RW(filesystem::make_read_RWops(p.string()).release(), true))
+		: surf(IMG_Load_IO(SDL_IOFromFile(p.string().c_str(), "rb"), true))
 		, filename(p.filename().string())
 		, src(get_non_transparent_portion(surf))
 		, dst()

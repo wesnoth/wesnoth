@@ -975,8 +975,7 @@ surface pango_text::create_surface(const SDL_Rect& viewport)
 		}
 	}
 
-	return SDL_CreateSurfaceFrom(
-		&surface_buffer_[0], viewport.w, viewport.h, stride, SDL_PIXELFORMAT_ARGB8888);
+	return SDL_CreateSurfaceFrom(viewport.w, viewport.h, SDL_PIXELFORMAT_ARGB8888, &surface_buffer_[0], stride);
 }
 
 bool pango_text::set_markup(std::string_view text, PangoLayout& layout)

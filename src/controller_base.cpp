@@ -81,7 +81,7 @@ void controller_base::long_touch_callback(int x, int y)
 		bool yes_actually_dragging = dx * dx + dy * dy >= threshold * threshold;
 
 		if(!yes_actually_dragging
-		   && (mouse_state & SDL_BUTTON(SDL_BUTTON_LEFT)) != 0
+		   && (mouse_state & SDL_BUTTON_MASK(SDL_BUTTON_LEFT)) != 0
 		   && get_display().map_area().contains(x_now, y_now))
 		{
 			const theme::menu* const m = get_mouse_handler_base().gui().get_theme().context_menu();
@@ -116,8 +116,8 @@ void controller_base::handle_event(const SDL_Event& event)
 			SDL_Event evt = event;
 			evt.type = SDL_EVENT_TEXT_INPUT;
 			hotkey::key_event(evt, get_hotkey_command_executor());
-			SDL_StopTextInput();
-			SDL_StartTextInput();
+			SDL_StopTextInput(video::get_window());
+			SDL_StartTextInput(video::get_window());
 		}
 		break;
 
@@ -125,7 +125,7 @@ void controller_base::handle_event(const SDL_Event& event)
 		// Detect key press events, unless there something that has keyboard focus
 		// in which case the key press events should go only to it.
 		if(have_keyboard_focus()) {
-			if(event.key.keysym.sym == SDLK_ESCAPE) {
+			if(event.key.key == SDLK_ESCAPE) {
 				get_hotkey_command_executor()->execute_quit_command();
 				break;
 			}
@@ -236,34 +236,14 @@ void controller_base::handle_event(const SDL_Event& event)
 #if defined(_WIN32) || defined(__APPLE__)
 		mh_base.mouse_wheel(event.wheel.x, -event.wheel.y, is_browsing());
 #else
-		// Except right is wrongly negative on X11 in SDL < 2.0.18:
-		//     https://github.com/libsdl-org/SDL/pull/4700
-		//     https://github.com/libsdl-org/SDL/commit/515b7e9
-		// and on Wayland in SDL < 2.0.20:
-		//     https://github.com/libsdl-org/SDL/commit/3e1b3bc
-		// Fixes issues #3362 and #7404, which are a regression caused by pull #2481 that fixed issue #2218.
 		{
-			static int xmul = 0;
-			if(xmul == 0) {
-				xmul = 1;
-				const char* video_driver = SDL_GetCurrentVideoDriver();
-				SDL_Version ver;
-				SDL_GetVersion(&ver);
-				if(video_driver != nullptr && ver.major <= 2 && ver.minor <= 0) {
-					if(std::strcmp(video_driver, "x11") == 0 && ver.patch < 18) {
-						xmul = -1;
-					} else if(std::strcmp(video_driver, "wayland") == 0 && ver.patch < 20) {
-						xmul = -1;
-					}
-				}
-			}
-			mh_base.mouse_wheel(xmul * event.wheel.x, -event.wheel.y, is_browsing());
+			mh_base.mouse_wheel(event.wheel.x, -event.wheel.y, is_browsing());
 		}
 #endif
 		break;
 
 	case TIMER_EVENT:
-		gui2::execute_timer(reinterpret_cast<size_t>(event.user.data1));
+		gui2::execute_timer(reinterpret_cast<std::size_t>(event.user.data1));
 		break;
 
 	default:

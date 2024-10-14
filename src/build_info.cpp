@@ -77,13 +77,6 @@ std::string format_version(unsigned a, unsigned b, unsigned c)
 	return formatter() << a << '.' << b << '.' << c;
 }
 
-std::string format_version(const SDL_Version& v)
-{
-	return formatter() << static_cast<unsigned>(v.major) << '.'
-						<< static_cast<unsigned>(v.minor) << '.'
-						<< static_cast<unsigned>(v.patch);
-}
-
 #ifndef __APPLE__
 
 std::string format_openssl_patch_level(uint8_t p)
@@ -179,17 +172,13 @@ version_table_manager::version_table_manager()
 	, names(LIB_COUNT, "")
 	, features()
 {
-	SDL_Version sdl_version;
-
 	//
 	// SDL
 	//
 
-	SDL_VERSION(&sdl_version);
-	compiled[LIB_SDL] = format_version(sdl_version);
-
-	SDL_GetVersion(&sdl_version);
-	linked[LIB_SDL] = format_version(sdl_version);
+	compiled[LIB_SDL] = format_version(SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_MICRO_VERSION);
+	int linked_sdl_version = SDL_GetVersion();
+	linked[LIB_SDL] = format_version(SDL_VERSIONNUM_MAJOR(linked_sdl_version), SDL_VERSIONNUM_MINOR(linked_sdl_version), SDL_VERSIONNUM_MICRO(linked_sdl_version));
 
 	names[LIB_SDL] = "SDL";
 
@@ -197,13 +186,10 @@ version_table_manager::version_table_manager()
 	// SDL_image
 	//
 
-	SDL_IMAGE_VERSION(&sdl_version);
-	compiled[LIB_SDL_IMAGE] = format_version(sdl_version);
+	compiled[LIB_SDL_IMAGE] = format_version(SDL_IMAGE_MAJOR_VERSION, SDL_IMAGE_MINOR_VERSION, SDL_IMAGE_MICRO_VERSION);
 
-	const SDL_Version* sdl_rt_version = IMG_Linked_Version();
-	if(sdl_rt_version) {
-		linked[LIB_SDL_IMAGE] = format_version(*sdl_rt_version);
-	}
+	int linked_img_version = IMG_Version();
+	linked[LIB_SDL_IMAGE] = format_version(SDL_VERSIONNUM_MAJOR(linked_img_version), SDL_VERSIONNUM_MINOR(linked_img_version), SDL_VERSIONNUM_MICRO(linked_img_version));
 
 	names[LIB_SDL_IMAGE] = "SDL_image";
 
@@ -211,13 +197,10 @@ version_table_manager::version_table_manager()
 	// SDL_mixer
 	//
 
-	SDL_MIXER_VERSION(&sdl_version);
-	compiled[LIB_SDL_MIXER] = format_version(sdl_version);
+	compiled[LIB_SDL_MIXER] = format_version(SDL_MIXER_MAJOR_VERSION, SDL_MIXER_MINOR_VERSION, SDL_MIXER_MICRO_VERSION);
 
-	sdl_rt_version = Mix_Linked_Version();
-	if(sdl_rt_version) {
-		linked[LIB_SDL_MIXER] = format_version(*sdl_rt_version);
-	}
+	int linked_mix_version = Mix_Version();
+	linked[LIB_SDL_MIXER] = format_version(SDL_VERSIONNUM_MAJOR(linked_mix_version), SDL_VERSIONNUM_MINOR(linked_mix_version), SDL_VERSIONNUM_MICRO(linked_mix_version));
 
 	names[LIB_SDL_MIXER] = "SDL_mixer";
 

@@ -419,7 +419,7 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.render_image) {
-		SDL_setenv("SDL_VIDEODRIVER", "dummy", 1);
+		SDL_setenv_unsafe("SDL_VIDEODRIVER", "dummy", 1);
 	}
 
 	if(cmdline_opts.strict_validation) {
@@ -503,7 +503,7 @@ static int process_command_args(commandline_options& cmdline_opts)
 			schema_path = *cmdline_opts.validate_with;
 			if(!filesystem::file_exists(schema_path)) {
 				auto check = filesystem::get_wml_location(schema_path);
-				if(!filesystem::file_exists(check)) {
+				if(!check || !filesystem::file_exists(*check)) {
 					PLAIN_LOG << "Could not find schema file: " << schema_path;
 				}
 			} else {
@@ -934,11 +934,6 @@ int main(int argc, char** argv)
 		}
 
 		SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
-		// Is there a reason not to just use SDL_INIT_EVERYTHING?
-		if(SDL_Init(SDL_INIT_TIMER) < 0) {
-			PLAIN_LOG << "Couldn't initialize SDL: " << SDL_GetError();
-			return (1);
-		}
 		atexit(SDL_Quit);
 
 	// Mac's touchpad generates touch events too.
@@ -952,7 +947,10 @@ int main(int argc, char** argv)
 		// declare this here so that it will always be at the front of the event queue.
 		events::event_context global_context;
 
-		SDL_StartTextInput();
+		// TODO SDL3: is this needed?
+		// if so, where to get the SDL_Window?
+		// see https://github.com/libsdl-org/SDL/blob/main/docs/README-migration.md#sdl_keyboardh for changes
+		//SDL_StartTextInput();
 
 		const int res = do_gameloop(cmdline_opts);
 		safe_exit(res);

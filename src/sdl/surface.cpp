@@ -17,9 +17,7 @@
 #include "color.hpp"
 #include "sdl/rect.hpp"
 
-const SDL_PixelFormat surface::neutral_pixel_format = []() {
-	return *SDL_CreateSurface(1, 1, SDL_PIXELFORMAT_ARGB8888)->format;
-}();
+const SDL_PixelFormat neutral_format = SDL_PIXELFORMAT_ARGB8888;
 
 surface::surface(SDL_Surface* surf)
 	: surface_(surf)
@@ -34,22 +32,26 @@ surface::surface(int w, int h)
 		throw std::invalid_argument("Creating surface with negative dimensions");
 	}
 
-	surface_ = SDL_CreateSurface(w, h, neutral_pixel_format.format);
+	surface_ = SDL_CreateSurface(w, h, neutral_format);
 }
 
 bool surface::is_neutral() const
 {
-	return surface_
-		&& SDL_ISPIXELFORMAT_INDEXED(surface_->format->format) == SDL_FALSE
-		&&  surface_->format->bytes_per_pixel == 4
-		&&  surface_->format->Rmask == SDL_RED_MASK
-		&& (surface_->format->Amask | SDL_ALPHA_MASK) == SDL_ALPHA_MASK;
+	if(surface_) {
+		const SDL_PixelFormatDetails* details = SDL_GetPixelFormatDetails(surface_->format);
+
+		return SDL_ISPIXELFORMAT_INDEXED(surface_->format) == false
+			&&  details->bytes_per_pixel == 4
+			&&  details->Rmask == SDL_RED_MASK
+			&& (details->Amask | SDL_ALPHA_MASK) == SDL_ALPHA_MASK;
+	}
+	return false;
 }
 
 surface& surface::make_neutral()
 {
 	if(surface_ && !is_neutral()) {
-		SDL_Surface* res = SDL_ConvertSurface(surface_, &neutral_pixel_format);
+		SDL_Surface* res = SDL_ConvertSurface(surface_, neutral_format);
 
 		// Ensure we don't leak memory with the old surface.
 		free_surface();
@@ -63,7 +65,7 @@ surface& surface::make_neutral()
 surface surface::clone() const
 {
 	// Use SDL_ConvertSurface to make a copy
-	return surface(SDL_ConvertSurface(surface_, &neutral_pixel_format));
+	return surface(SDL_ConvertSurface(surface_, neutral_format));
 }
 
 void surface::assign_surface_internal(SDL_Surface* surf)
@@ -88,11 +90,11 @@ std::ostream& operator<<(std::ostream& stream, const surface& surf)
 	} else if(!surf->format) {
 		stream << "<invalid surface>";
 	} else {
+		const SDL_PixelFormatDetails* details = SDL_GetPixelFormatDetails(surf->format);
+
 		stream << "{ " << surf->w << 'x' << surf->h << '@'
-			   << unsigned(surf->format->bits_per_pixel) << "bpp"
-			   << (surf->format->palette ? " indexed" : "")
-			   << " clip_rect=[" << surf->clip_rect
-			   << "] refcount=" << surf->refcount
+			   << unsigned(details->bits_per_pixel) << "bpp"
+			   << " refcount=" << surf->refcount
 			   << " }";
 	}
 

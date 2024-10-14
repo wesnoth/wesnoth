@@ -663,7 +663,7 @@ draw::render_target_setter::render_target_setter(const texture& t)
 
 	target_ = video::get_render_target();
 	SDL_GetRenderViewport(renderer(), &viewport_);
-	SDL_RenderGetClipRect(renderer(), &clip_);
+	SDL_GetRenderClipRect(renderer(), &clip_);
 
 	if (t) {
 		video::force_render_target(t);
@@ -681,7 +681,7 @@ draw::render_target_setter::~render_target_setter()
 	video::force_render_target(target_);
 	SDL_SetRenderViewport(renderer(), &viewport_);
 	if(clip_ == sdl::empty_rect) return;
-	SDL_RenderSetClipRect(renderer(), &clip_);
+	SDL_SetRenderClipRect(renderer(), &clip_);
 }
 
 draw::render_target_setter draw::set_render_target(const texture& t)

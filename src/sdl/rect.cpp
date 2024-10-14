@@ -20,7 +20,7 @@
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b)
 {
-	return SDL_RectsEqual(&a, &b) != SDL_FALSE;
+	return SDL_RectsEqual(&a, &b) != false;
 }
 
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b)
@@ -36,12 +36,12 @@ std::ostream& operator<<(std::ostream& s, const SDL_Rect& r)
 
 bool rect::operator==(const rect& r) const
 {
-	return SDL_RectsEqual(this, &r) != SDL_FALSE;
+	return SDL_RectsEqual(this, &r) != false;
 }
 
 bool rect::operator==(const SDL_Rect& r) const
 {
-	return SDL_RectsEqual(this, &r) != SDL_FALSE;
+	return SDL_RectsEqual(this, &r) != false;
 }
 
 bool rect::empty() const
@@ -52,12 +52,12 @@ bool rect::empty() const
 bool rect::contains(int x, int y) const
 {
 	SDL_Point p{x, y};
-	return SDL_PointInRect(&p, this) != SDL_FALSE;
+	return SDL_PointInRect(&p, this) != false;
 }
 
 bool rect::contains(const point& point) const
 {
-	return SDL_PointInRect(&point, this) != SDL_FALSE;
+	return SDL_PointInRect(&point, this) != false;
 }
 
 bool rect::contains(const SDL_Rect& r) const

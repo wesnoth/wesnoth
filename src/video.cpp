@@ -84,7 +84,7 @@ void init(fake type)
 	if(SDL_WasInit(SDL_INIT_VIDEO)) {
 		throw error("video subsystem already initialized");
 	}
-	if(SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
+	if(!SDL_InitSubSystem(SDL_INIT_VIDEO)) {
 		ERR_DP << "Could not initialize SDL_video: " << SDL_GetError();
 		throw error("Video initialization failed");
 	}
@@ -110,10 +110,6 @@ void init(fake type)
 void deinit()
 {
 	LOG_DP << "deinitializing video";
-
-	// SDL_INIT_TIMER is always initialized at program start.
-	// If it is not initialized here, there is a problem.
-	assert(SDL_WasInit(SDL_INIT_TIMER));
 
 	// Clear any static texture caches,
 	// lest they try to delete textures after SDL_Quit.
@@ -173,8 +169,9 @@ bool update_test_framebuffer()
 	// TODO: code unduplication
 	// Build or update the current render texture.
 	if (render_texture_) {
-		int w, h;
-		SDL_QueryTexture(render_texture_, nullptr, nullptr, &w, &h);
+		SDL_PropertiesID props = SDL_GetTextureProperties(render_texture_.get());
+		int w = SDL_GetNumberProperty(props, SDL_PROP_TEXTURE_WIDTH_NUMBER, 0);
+		int h = SDL_GetNumberProperty(props, SDL_PROP_TEXTURE_HEIGHT_NUMBER, 0);
 		if (w != test_resolution_.x || h != test_resolution_.y) {
 			// Delete it and let it be recreated.
 			LOG_DP << "destroying old render texture";
@@ -278,8 +275,9 @@ bool update_framebuffer()
 
 	// Build or update the current render texture.
 	if (render_texture_) {
-		int w, h;
-		SDL_QueryTexture(render_texture_, nullptr, nullptr, &w, &h);
+		SDL_PropertiesID props = SDL_GetTextureProperties(render_texture_.get());
+		int w = SDL_GetNumberProperty(props, SDL_PROP_TEXTURE_WIDTH_NUMBER, 0);
+		int h = SDL_GetNumberProperty(props, SDL_PROP_TEXTURE_HEIGHT_NUMBER, 0);
 		if (w != osize.x || h != osize.y) {
 			// Delete it and let it be recreated.
 			LOG_DP << "destroying old render texture";
@@ -334,7 +332,7 @@ void init_test_window()
 
 	window.reset(new sdl::window(
 		"", 0, 0, test_resolution_.x, test_resolution_.y,
-		window_flags, 0
+		window_flags
 	));
 
 	update_test_framebuffer();
@@ -366,22 +364,15 @@ void init_window(bool hidden)
 		window_flags |= SDL_WINDOW_HIDDEN;
 	}
 
-	uint32_t renderer_flags = SDL_RENDERER_ACCELERATED;
-
-	if(prefs::get().vsync()) {
-		LOG_DP << "VSYNC on";
-		renderer_flags |= SDL_RENDERER_PRESENTVSYNC;
-	}
-
 	// Initialize window
-	window.reset(new sdl::window("", x, y, w, h, window_flags, renderer_flags));
+	window.reset(new sdl::window("", x, y, w, h, window_flags));
 	if(prefs::get().fullscreen()) {
 		SDL_DisplayMode mode;
 		mode.format = SDL_PIXELFORMAT_UNKNOWN;
 		mode.w = w;
 		mode.h = h;
 		mode.refresh_rate = 0;
-		mode.driverdata = 0;
+		mode.internal = 0;
 
 		SDL_SetWindowFullscreenMode(*window, &mode);
 	}
@@ -489,7 +480,7 @@ int current_refresh_rate()
 
 void force_render_target(const texture& t)
 {
-	if (SDL_SetRenderTarget(get_renderer(), t)) {
+	if (!SDL_SetRenderTarget(get_renderer(), t)) {
 		ERR_DP << "failed to set render target to "
 			<< static_cast<void*>(t.get()) << ' '
 			<< t.draw_size() << " / " << t.get_raw_size();
@@ -813,27 +804,14 @@ void update_buffers(bool autoupdate)
 std::vector<std::pair<std::string, std::string>> renderer_report()
 {
 	std::vector<std::pair<std::string, std::string>> res;
-	SDL_Renderer* rnd;
-	SDL_RendererInfo ri;
+	SDL_Renderer* rnd = get_renderer();
 
-	if(window && (rnd = *window) && SDL_GetRendererInfo(rnd, &ri) == 0) {
-		std::string renderer_name = ri.name ? ri.name : "<unknown>";
-
-		if(ri.flags & SDL_RENDERER_SOFTWARE) {
-			renderer_name += " (sw)";
-		}
-
-		if(ri.flags & SDL_RENDERER_ACCELERATED) {
-			renderer_name += " (hw)";
-		}
-
-		std::string renderer_max = std::to_string(ri.max_texture_width) +
-								   'x' +
-								   std::to_string(ri.max_texture_height);
+	if(window && (rnd = *window)) {
+		std::string renderer_name = SDL_GetRendererName(get_renderer()) ? SDL_GetRendererName(get_renderer()) : "<unknown>";
+		SDL_PropertiesID props = SDL_GetRendererProperties(rnd);
 
 		res.emplace_back("Renderer", renderer_name);
-		res.emplace_back("Maximum texture size", renderer_max);
-		res.emplace_back("VSync", ri.flags & SDL_RENDERER_PRESENTVSYNC ? "on" : "off");
+		res.emplace_back("VSync", SDL_GetNumberProperty(props, SDL_PROP_RENDERER_CREATE_PRESENT_VSYNC_NUMBER, 0) != 0 ? "on" : "off");
 	}
 
 	return res;

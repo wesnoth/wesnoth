@@ -116,7 +116,7 @@ SDL_Cursor* create_cursor(surface surf)
 		for(int x = 0; x != surf->w; ++x) {
 			if(static_cast<std::size_t>(x) < cursor_width) {
 				uint8_t r, g, b, a;
-				SDL_GetRGBA(pixels[y * surf->w + x], surf->format, &r, &g, &b, &a);
+				SDL_GetRGBA(pixels[y * surf->w + x], SDL_GetPixelFormatDetails(surf->format), SDL_GetSurfacePalette(surf), &r, &g, &b, &a);
 
 				const std::size_t index = y * cursor_width + x;
 				const std::size_t shift = 7 - (index % 8);

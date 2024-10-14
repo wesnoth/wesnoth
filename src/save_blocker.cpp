@@ -63,5 +63,5 @@ bool save_blocker::try_block() {
 
 void save_blocker::unblock() {
 	assert(SDL_GetSemaphoreValue(sem_) == 0);
-	SDL_PostSemaphore(sem_);
+	SDL_SignalSemaphore(sem_);
 }

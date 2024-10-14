@@ -70,8 +70,7 @@ public:
 			const int y,
 			const int w,
 			const int h,
-			const uint32_t window_flags,
-			const uint32_t render_flags);
+			const uint32_t window_flags);
 
 	~window();
 
@@ -188,7 +187,7 @@ public:
 	void get_logical_size(int& w, int& h) const;
 
 	/** The current pixel format of the renderer. */
-	uint32_t pixel_format();
+	SDL_PixelFormat pixel_format();
 
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 
@@ -209,7 +208,7 @@ private:
 	SDL_Window* window_;
 
 	/** The preferred pixel format for the renderer. */
-	uint32_t pixel_format_;
+	SDL_PixelFormat pixel_format_;
 };
 
 } // namespace sdl

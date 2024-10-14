@@ -74,7 +74,7 @@ static unsigned event_poll_interval = 0;
  *
  * @returns                       The new timer interval, 0 to stop.
  */
-static uint32_t timer_sdl_draw_event(uint32_t, void*)
+static uint32_t timer_sdl_draw_event(void*, SDL_TimerID, uint32_t)
 {
 	// DBG_GUI_E << "Pushing draw event in queue.";
 
@@ -347,12 +347,6 @@ sdl_event_handler::sdl_event_handler()
 	, dispatchers_()
 	, keyboard_focus_(nullptr)
 {
-	if(SDL_WasInit(SDL_INIT_TIMER) == 0) {
-		if(SDL_InitSubSystem(SDL_INIT_TIMER) == -1) {
-			assert(false);
-		}
-	}
-
 // The event context is created now we join it.
 #ifdef ENABLE
 	join();
@@ -740,7 +734,7 @@ void sdl_event_handler::key_down(const SDL_Event& event)
 		if(event.type == SDL_EVENT_TEXT_INPUT) {
 			text_input(event.text.text);
 		} else {
-			key_down(event.key.keysym.sym, static_cast<SDL_Keymod>(event.key.keysym.mod), "");
+			key_down(event.key.key, static_cast<SDL_Keymod>(event.key.mod), "");
 		}
 	}
 }
