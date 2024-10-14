@@ -218,17 +218,4 @@ private:
 	std::string description_;
 };
 
-/**
- * Builds a window.
- *
- * @param type                    The type id string of the window, this window
- *                                must be registered at startup.
- */
-std::unique_ptr<window> build(const std::string& type);
-
-/**
- * Builds a window.
- */
-std::unique_ptr<window> build(const builder_window::window_resolution& res);
-
 } // namespace gui2

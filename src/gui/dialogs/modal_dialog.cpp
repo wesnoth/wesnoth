@@ -42,7 +42,6 @@ modal_dialog::modal_dialog(const std::string& window_id)
 	, allow_plugin_skip_(true)
 	, show_even_without_video_(false)
 {
-	window::finish_build(get_window_builder(window_id));
 	widget::set_id(window_id);
 }
 

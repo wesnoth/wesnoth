@@ -82,8 +82,6 @@ public:
 	/** Gets the retval for the default buttons. */
 	static retval get_retval_by_id(const std::string& id);
 
-	void finish_build(const builder_window::window_resolution&);
-
 	/**
 	 * Shows the window, running an event loop until it should close.
 	 *
