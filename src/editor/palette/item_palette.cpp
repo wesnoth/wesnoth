@@ -20,6 +20,7 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor/palette/item_palette.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "game_config_view.hpp"
 
@@ -29,7 +30,7 @@ namespace editor {
 
 std::string item_palette::get_help_string()
 {
-	return _("Left-click: Place item ") + selected_fg_item().name + _(" | Right-click to remove");
+	return VGETTEXT("Left-click: Place item $item | Right-click to remove", {{ "item", selected_fg_item().name }});
 }
 
 void item_palette::setup(const game_config_view& cfg)
