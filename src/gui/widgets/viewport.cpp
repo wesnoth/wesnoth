@@ -171,12 +171,12 @@ builder_viewport::builder_viewport(const config& cfg)
 {
 }
 
-std::unique_ptr<widget> builder_viewport::build() const
+std::unique_ptr<widget> builder_viewport::build()
 {
 	return build(replacements_map());
 }
 
-std::unique_ptr<widget> builder_viewport::build(const replacements_map& replacements) const
+std::unique_ptr<widget> builder_viewport::build(const replacements_map& replacements)
 {
 	return std::make_unique<viewport>(*this, replacements);
 }

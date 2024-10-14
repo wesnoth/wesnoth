@@ -196,7 +196,7 @@ builder_repeating_button::builder_repeating_button(const config& cfg)
 {
 }
 
-std::unique_ptr<widget> builder_repeating_button::build() const
+std::unique_ptr<widget> builder_repeating_button::build()
 {
 	auto widget = std::make_unique<repeating_button>(*this);
 

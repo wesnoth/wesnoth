@@ -248,7 +248,7 @@ builder_menu_button::builder_menu_button(const config& cfg)
 	}
 }
 
-std::unique_ptr<widget> builder_menu_button::build() const
+std::unique_ptr<widget> builder_menu_button::build()
 {
 	auto widget = std::make_unique<menu_button>(*this);
 

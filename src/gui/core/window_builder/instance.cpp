@@ -30,12 +30,12 @@ builder_instance::builder_instance(const config& cfg)
 {
 }
 
-std::unique_ptr<widget> builder_instance::build() const
+std::unique_ptr<widget> builder_instance::build()
 {
 	return build(replacements_map());
 }
 
-std::unique_ptr<widget> builder_instance::build(const replacements_map& replacements) const
+std::unique_ptr<widget> builder_instance::build(const replacements_map& replacements)
 {
 	const replacements_map::const_iterator itor = replacements.find(id);
 	if(itor != replacements.end()) {

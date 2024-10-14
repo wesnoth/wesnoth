@@ -100,7 +100,7 @@ class matrix : public tbase
 	friend class debug_layout_graph;
 
 public:
-	explicit matrix(const implementation::builder_matrix& builder);
+	explicit matrix(implementation::builder_matrix& builder);
 
 	/***** ***** ***** ***** Item handling. ***** ***** ****** *****/
 
@@ -248,7 +248,7 @@ struct builder_matrix : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual std::unique_ptr<widget> build() const override;
+	virtual std::unique_ptr<widget> build() override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;

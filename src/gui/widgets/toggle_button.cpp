@@ -229,7 +229,7 @@ builder_toggle_button::builder_toggle_button(const config& cfg)
 {
 }
 
-std::unique_ptr<widget> builder_toggle_button::build() const
+std::unique_ptr<widget> builder_toggle_button::build()
 {
 	auto widget = std::make_unique<toggle_button>(*this);
 

@@ -140,7 +140,7 @@ builder_horizontal_scrollbar::builder_horizontal_scrollbar(const config& cfg)
 {
 }
 
-std::unique_ptr<widget> builder_horizontal_scrollbar::build() const
+std::unique_ptr<widget> builder_horizontal_scrollbar::build()
 {
 	auto widget = std::make_unique<horizontal_scrollbar>(*this);
 

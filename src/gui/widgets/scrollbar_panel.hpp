@@ -83,7 +83,7 @@ struct builder_scrollbar_panel : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual std::unique_ptr<widget> build() const override;
+	virtual std::unique_ptr<widget> build() override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;

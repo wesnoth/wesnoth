@@ -53,9 +53,9 @@ struct builder_widget
 	{
 	}
 
-	virtual std::unique_ptr<widget> build() const = 0;
+	virtual std::unique_ptr<widget> build() = 0;
 
-	virtual std::unique_ptr<widget> build(const replacements_map& replacements) const = 0;
+	virtual std::unique_ptr<widget> build(const replacements_map& replacements) = 0;
 
 	/** Parameters for the widget. */
 	std::string id;
@@ -135,16 +135,16 @@ struct builder_grid : public builder_widget
 	std::vector<builder_widget_ptr> widgets;
 
 	/** Inherited from @ref builder_widget. */
-	virtual std::unique_ptr<widget> build() const override;
+	virtual std::unique_ptr<widget> build() override;
 
 	/** Inherited from @ref builder_widget. */
-	virtual std::unique_ptr<widget> build(const replacements_map& replacements) const override;
+	virtual std::unique_ptr<widget> build(const replacements_map& replacements) override;
 
 	void build(grid& grid, optional_replacements replacements = utils::nullopt) const;
 };
 
-using builder_grid_ptr = std::shared_ptr<builder_grid>;
-using builder_grid_const_ptr = std::shared_ptr<const builder_grid>;
+using builder_grid_ptr = std::unique_ptr<builder_grid>;
+using builder_grid_const_ptr = std::unique_ptr<const builder_grid>;
 using builder_grid_map = std::map<std::string, builder_grid_const_ptr>;
 
 class builder_window

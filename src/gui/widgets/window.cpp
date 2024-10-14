@@ -98,7 +98,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	virtual std::unique_ptr<widget> build() const override
+	virtual std::unique_ptr<widget> build() override
 	{
 		return nullptr;
 	}
@@ -434,7 +434,7 @@ void window::finish_build(const builder_window::window_resolution& definition)
 
 	if(conf->grid) {
 		init_grid(*conf->grid);
-		finalize(*definition.grid);
+		finalize(definition.grid->build());
 	} else {
 		init_grid(*definition.grid);
 	}
@@ -1107,11 +1107,8 @@ bool window::click_dismiss(const int mouse_button_mask)
 	return false;
 }
 
-void window::finalize(const builder_grid& content_grid)
+void window::finalize(std::unique_ptr<widget>&& widget)
 {
-	auto widget = content_grid.build();
-	assert(widget);
-
 	static const std::string id = "_window_content_grid";
 
 	// Make sure the new child has same id.
@@ -1412,7 +1409,7 @@ window_definition::resolution::resolution(const config& cfg)
 
 	/** @todo Evaluate whether the grid should become mandatory. */
 	if(child) {
-		grid = std::make_shared<builder_grid>(*child);
+		grid = std::make_unique<builder_grid>(*child);
 	}
 }
 

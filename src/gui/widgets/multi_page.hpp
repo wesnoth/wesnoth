@@ -38,7 +38,7 @@ class multi_page : public container_base
 	friend class debug_layout_graph;
 
 public:
-	explicit multi_page(const implementation::builder_multi_page& builder);
+	explicit multi_page(implementation::builder_multi_page& builder);
 
 	/***** ***** ***** ***** Page handling. ***** ***** ****** *****/
 
@@ -177,12 +177,6 @@ public:
 private:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_page_builders(const builder_grid_map& page_builders)
-	{
-		assert(!page_builders.empty());
-		page_builders_ = page_builders;
-	}
-
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
@@ -242,7 +236,7 @@ struct builder_multi_page : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual std::unique_ptr<widget> build() const override;
+	virtual std::unique_ptr<widget> build() override;
 
 	builder_grid_map builders;
 

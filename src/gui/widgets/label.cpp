@@ -253,7 +253,7 @@ builder_label::builder_label(const config& cfg)
 {
 }
 
-std::unique_ptr<widget> builder_label::build() const
+std::unique_ptr<widget> builder_label::build()
 {
 	auto lbl = std::make_unique<label>(*this);
 
