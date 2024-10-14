@@ -770,6 +770,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 					assert(un != get_current_map_context().units().end());
 					un->set_facing(map_location::direction(index));
 					un->anim_comp().set_standing();
+					active_menu_ = MAP;
 					return true;
 				}
 			}
