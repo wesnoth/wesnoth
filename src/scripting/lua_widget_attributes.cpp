@@ -21,6 +21,7 @@
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/slider.hpp"
+#include "gui/widgets/spinner.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/tree_view.hpp"
@@ -271,6 +272,64 @@ WIDGET_GETTER("min_value", int, gui2::slider)
 WIDGET_SETTER("min_value", int, gui2::slider)
 {
 	w.set_value_range(value, w.get_maximum_value());
+}
+
+WIDGET_GETTER("value_compat,value", int, gui2::spinner)
+{
+	return w.get_value();
+}
+
+WIDGET_SETTER("value_compat,value", int, gui2::spinner)
+{
+	w.set_value(value);
+}
+
+WIDGET_SETTER("max_value", utils::optional<int>, gui2::spinner)
+{
+	if(value) {
+		w.set_value_range(w.get_minimum_value(), *value);
+	} else {
+		w.set_value_range(w.get_minimum_value(), std::numeric_limits<int>::max());
+	}
+}
+
+WIDGET_GETTER("max_value", utils::optional<int>, gui2::spinner)
+{
+	const utils::optional<int> o;
+	if(w.get_maximum_value() == std::numeric_limits<int>::max()) {
+		return o;
+	} else {
+		return w.get_maximum_value();
+	}
+}
+
+WIDGET_SETTER("min_value", utils::optional<int>, gui2::spinner)
+{
+	if(value) {
+		w.set_value_range(*value, w.get_maximum_value());
+	} else {
+		w.set_value_range(std::numeric_limits<int>::min(), w.get_maximum_value());
+	}
+}
+
+WIDGET_GETTER("min_value", utils::optional<int>, gui2::spinner)
+{
+	const utils::optional<int> o;
+	if(w.get_minimum_value() == std::numeric_limits<int>::min()) {
+		return o;
+	} else {
+		return w.get_minimum_value();
+	}
+}
+
+WIDGET_GETTER("step_size", unsigned, gui2::spinner)
+{
+	return w.get_step_size();
+}
+
+WIDGET_SETTER("step_size", unsigned, gui2::spinner)
+{
+	w.set_step_size(value);
 }
 
 WIDGET_GETTER("value_compat,percentage", int, gui2::progress_bar)
