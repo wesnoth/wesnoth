@@ -151,6 +151,24 @@ public:
 	/** Returns a new rectangle shifted by the given relative position. */
 	rect shifted_by(int x, int y) const;
 	rect shifted_by(const point& p) const;
+
+	/** Returns a new rectangle with @a dx horizontal padding and @a dy vertical padding. */
+	constexpr rect grow_by(int dx, int dy) const
+	{
+		return { x - dx, y - dy, w + dx * 2, h + dy * 2 };
+	}
+
+	/** Returns a new rectangle with equal @a amount horizontal and vertical padding. */
+	constexpr rect grow_by(int amount) const
+	{
+		return grow_by(amount, amount);
+	}
+
+	/** Returns the proper point that corresponds to the given [0.0, 1.0] coordinates. */
+	point point_at(double x, double y) const;
+
+	/** Returns the sub-rect bounded to the top left and bottom right by the given [0.0, 1.0] coordinates. */
+	rect subrect(const SDL_FPoint& top_left, const SDL_FPoint& bottom_right) const;
 };
 
 std::ostream& operator<<(std::ostream&, const rect&);

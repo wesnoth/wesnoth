@@ -93,12 +93,7 @@ int floating_label::xpos(std::size_t width) const
 
 rect floating_label::get_bg_rect(const rect& text_rect) const
 {
-	return {
-		text_rect.x -  border_,
-		text_rect.y -  border_,
-		text_rect.w + (border_ * 2),
-		text_rect.h + (border_ * 2)
-	};
+	return text_rect.grow_by(border_);
 }
 
 void floating_label::clear_texture()
