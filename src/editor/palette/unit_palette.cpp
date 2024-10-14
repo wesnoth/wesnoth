@@ -28,7 +28,7 @@
 
 namespace editor {
 
-std::string unit_palette::get_help_string() {
+std::string unit_palette::get_help_string() const {
 	return selected_fg_item().type_name();
 }
 

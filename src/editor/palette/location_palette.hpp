@@ -74,7 +74,7 @@ public:
 	void swap() override {}
 	bool can_swap() { return false; }
 
-	virtual std::string get_help_string() { return ""; }
+	std::string get_help_string() const { return ""; }
 
 	/** Return the currently selected item. */
 	const std::string& selected_item() const { return selected_item_; }

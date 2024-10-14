@@ -39,7 +39,7 @@ public:
 
 	virtual void setup(const game_config_view& cfg);
 
-	virtual std::string get_help_string();
+	virtual std::string get_help_string() const override;
 
 	bool supports_swap() { return false; }
 

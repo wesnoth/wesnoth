@@ -90,7 +90,7 @@ public:
 
 	void swap() override;
 
-	virtual std::string get_help_string() = 0;
+	virtual std::string get_help_string() const = 0;
 
 	/** Return the currently selected foreground/background item. */
 	const Item& selected_fg_item() const { return item_map_.find(selected_fg_item_)->second; }

@@ -28,7 +28,7 @@
 
 namespace editor {
 
-std::string item_palette::get_help_string()
+std::string item_palette::get_help_string() const
 {
 	return VGETTEXT("Left-click: Place item $item | Right-click to remove", {{ "item", selected_fg_item().name }});
 }

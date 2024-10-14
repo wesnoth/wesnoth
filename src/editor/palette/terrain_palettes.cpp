@@ -218,7 +218,7 @@ const std::string& terrain_palette::get_id(const t_translation::terrain_code& te
 	return t_info.id();
 }
 
-std::string terrain_palette::get_help_string()
+std::string terrain_palette::get_help_string() const
 {
 	std::ostringstream msg;
 	msg << _("Left-click: ") << map().get_terrain_editor_string(selected_fg_item())	<< " | "

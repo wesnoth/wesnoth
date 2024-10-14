@@ -47,7 +47,7 @@ public:
 	const t_translation::terrain_code& selected_fg_item() const;
 	const t_translation::terrain_code& selected_bg_item() const;
 
-	virtual std::string get_help_string();
+	virtual std::string get_help_string() const override;
 
 private:
 
