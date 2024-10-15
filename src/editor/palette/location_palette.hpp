@@ -70,8 +70,8 @@ public:
 	virtual bool scroll_down() override;
 	virtual bool can_scroll_down() override;
 
-	void swap() override {}
-	bool can_swap() { return false; }
+	virtual void swap() override {}
+	virtual bool supports_swap() override { return false; }
 
 	std::string get_help_string() const { return ""; }
 

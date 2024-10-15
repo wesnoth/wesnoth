@@ -39,7 +39,7 @@ public:
 
 	virtual std::string get_help_string() const override;
 
-	bool supports_swap() { return false; }
+	virtual bool supports_swap() override { return false; }
 
 	const std::set<std::string>& get_selected_bg_items() { return selected_bg_items_; }
 
@@ -56,7 +56,6 @@ private:
 	virtual bool is_selected_bg_item(const std::string& id) override;
 
 	virtual void select_bg_item(const std::string& item_id) override;
-//	virtual void update_report();
 
 	std::set<std::string> selected_bg_items_;
 
