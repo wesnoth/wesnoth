@@ -331,7 +331,7 @@ void init_test_window()
 	// The actual window won't be used, as we'll be rendering to texture.
 
 	window.reset(new sdl::window(
-		"", 0, 0, test_resolution_.x, test_resolution_.y,
+		"", test_resolution_.x, test_resolution_.y,
 		window_flags
 	));
 
@@ -340,10 +340,6 @@ void init_test_window()
 
 void init_window(bool hidden)
 {
-	// Position
-	const int x = prefs::get().fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
-	const int y = prefs::get().fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
-
 	// Dimensions
 	const point res = prefs::get().resolution();
 	const int w = res.x;
@@ -365,7 +361,7 @@ void init_window(bool hidden)
 	}
 
 	// Initialize window
-	window.reset(new sdl::window("", x, y, w, h, window_flags));
+	window.reset(new sdl::window("", w, h, window_flags));
 	if(prefs::get().fullscreen()) {
 		SDL_DisplayMode mode;
 		mode.format = SDL_PIXELFORMAT_UNKNOWN;

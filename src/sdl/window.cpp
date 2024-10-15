@@ -25,8 +25,6 @@ namespace sdl
 {
 
 window::window(const std::string& title,
-				 const int,
-				 const int,
 				 const int w,
 				 const int h,
 				 const uint32_t window_flags)

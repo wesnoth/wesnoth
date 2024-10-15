@@ -58,16 +58,12 @@ public:
 	 * The function calls SDL_CreateWindow and SDL_CreateRenderer.
 	 *
 	 * @param title               Used as title for SDL_CreateWindow.
-	 * @param x                   Used as x for SDL_CreateWindow.
-	 * @param y                   Used as y for SDL_CreateWindow.
 	 * @param w                   Used as w for SDL_CreateWindow.
 	 * @param h                   Used as x for SDL_CreateWindow.
 	 * @param window_flags        Used as flags for SDL_CreateWindow.
 	 * @param render_flags        Used as flags for SDL_CreateRenderer.
 	 */
 	window(const std::string& title,
-			const int x,
-			const int y,
 			const int w,
 			const int h,
 			const uint32_t window_flags);
