@@ -391,7 +391,9 @@ std::pair<config, point> rich_label::get_parsed_text(
 					col_txt_cfg.append_attributes(col);
 
 					// attach data
+					auto links = links_;
 					const auto& [table_elem, size] = get_parsed_text(col_cfg, point(col_x, row_y), width/columns);
+					links_ = links;
 					col_widths[col_idx] = std::max(col_widths[col_idx], static_cast<unsigned>(size.x));
 					col_widths[col_idx] = std::min(col_widths[col_idx], width/columns);
 
@@ -748,7 +750,7 @@ void rich_label::default_text_config(config* txt_ptr, t_string text) {
 		// ww -> wrap width, used for wrapping around floating image
 		// max text width shouldn't go beyond the rich_label's specified width
 		(*txt_ptr)["maximum_width"] = "(width - pos_x - ww - tw)";
-		(*txt_ptr)["actions"] = "([set_var('pos_y', pos_y + text_height)])";
+		(*txt_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + text_height)])";
 	}
 }
 
