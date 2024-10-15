@@ -2071,7 +2071,7 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 
 	if (scroll_type == ONSCREEN || scroll_type == ONSCREEN_WARP) {
 		int spacing = std::round(add_spacing * hex_size());
-		rect r = map_area().grow_by(-spacing); // Shrink
+		rect r = map_area().padded_by(-spacing); // Shrink
 		if (!outside_area(r, minx,miny) && !outside_area(r, maxx,maxy)) {
 			return;
 		}
