@@ -66,7 +66,6 @@ game_display::game_display(game_board& board,
 		const std::string& theme_id,
 		const config& level)
 	: display(&board, wb, reports_object, theme_id, level)
-	, reach_map_images_()
 	, overlay_map_()
 	, attack_indicator_src_()
 	, attack_indicator_dst_()
@@ -78,7 +77,6 @@ game_display::game_display(game_board& board,
 	, mode_(RUNNING)
 	, needs_rebuild_(false)
 {
-	display::fill_images_list(game_config::reach_map_prefix, reach_map_images_);
 }
 
 game_display::~game_display()
@@ -669,7 +667,7 @@ display::overlay_map& game_display::get_overlays()
 	return overlay_map_;
 }
 
-std::vector<texture> game_display::get_reachmap_images(const map_location& loc)
+const std::vector<texture> game_display::get_reachmap_images(const map_location& loc)
 {
 	// Use get_direction() from display.cpp namespace display_direction
 	using namespace display_direction;
