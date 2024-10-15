@@ -117,7 +117,7 @@ void rectangle_shape::draw(wfl::map_formula_callable& variables)
 	if(!fill_color.null()) {
 		DBG_GUI_D << "fill " << fill_color;
 		draw::set_color(fill_color);
-		draw::fill(area.grow_by(-border_thickness_));
+		draw::fill(area.padded_by(-border_thickness_));
 	}
 
 	const color_t border_color = border_color_(variables);
@@ -126,7 +126,7 @@ void rectangle_shape::draw(wfl::map_formula_callable& variables)
 	draw::set_color(border_color);
 	DBG_GUI_D << "border thickness " << border_thickness_ << ", colour " << border_color;
 	for(int i = 0; i < border_thickness_; ++i) {
-		draw::rect(area.grow_by(-i));
+		draw::rect(area.padded_by(-i));
 	}
 }
 

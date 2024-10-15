@@ -2789,7 +2789,7 @@ void display::draw_hex(const map_location& loc)
 			const rect text_dest { dest.center() - tex.draw_size() / 2, tex.draw_size() };
 
 			// Add a little padding to the bg
-			const rect bg_dest = text_dest.grow_by(3);
+			const rect bg_dest = text_dest.padded_by(3);
 
 			draw::fill(bg_dest, 0, 0, 0, 170);
 			draw::blit(tex, text_dest);
