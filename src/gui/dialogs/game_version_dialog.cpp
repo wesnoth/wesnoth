@@ -41,8 +41,8 @@
 namespace
 {
 
-const std::string text_feature_on =  markup::span_color("#0f0", "&#9679");
-const std::string text_feature_off = markup::span_color("#f00", "&#9679");
+const std::string text_feature_on =  markup::span_color("#0f0", "&#9679;");
+const std::string text_feature_off = markup::span_color("#f00", "&#9679;");
 
 } // end anonymous namespace
 
