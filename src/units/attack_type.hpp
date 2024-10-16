@@ -92,7 +92,7 @@ public:
 	utils::optional<unit_alignments::type> alignment() const {return unit_alignments::get_enum(alignment_str_);}
 	/** Returns alignment specified by alignment() for filtering when exist.
 	 */
-	std::string alignment_str() const {return (alignment() ? unit_alignments::get_string(*alignment()) : "");}
+	std::string alignment_str() const;
 
 	/** Calculates the number of attacks this weapon has, considering specials. */
 	void modified_attacks(unsigned & min_attacks,
