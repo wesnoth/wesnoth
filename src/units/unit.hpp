@@ -1686,13 +1686,13 @@ public:
 		return get_ability_bool(tag_name, loc_);
 	}
 
-	/** Checks whether this unit currently possesses a given ability used like weapon
+	/** Checks whether this unit currently possesses a given ability, and that that ability is active.
 	 * @return True if the ability @a tag_name is active.
-	 * @param special the const config to one of abilities @a tag_name checked.
-	 * @param tag_name name of ability type checked.
+	 * @param cfg the const config to one of abilities @a tag_name checked.
+	 * @param ability name of ability type checked.
 	 * @param loc location of the unit checked.
 	 */
-	bool get_self_ability_bool(const config& special, const std::string& tag_name, const map_location& loc) const;
+	bool get_self_ability_bool(const config& cfg, const std::string& ability, const map_location& loc) const;
 	/** Checks whether this unit currently possesses a given ability of leadership type
 	 * @return True if the ability @a tag_name is active.
 	 * @param special the const config to one of abilities @a tag_name checked.
@@ -1702,15 +1702,15 @@ public:
 	 * @param opp_weapon the attack used by opponent to unit checked.
 	 */
 	bool get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
-	/** Checks whether this unit is affected by a given ability  used like weapon
+	/** Checks whether this unit is affected by a given ability, and that that ability is active.
 	 * @return True if the ability @a tag_name is active.
-	 * @param special the const config to one of abilities @a tag_name checked.
-	 * @param tag_name name of ability type checked.
+	 * @param cfg the const config to one of abilities @a ability checked.
+	 * @param ability name of ability type checked.
 	 * @param loc location of the unit checked.
 	 * @param from unit adjacent to @a this is checked in case of [affect_adjacent] abilities.
 	 * @param dir direction to research a unit adjacent to @a this.
 	 */
-	bool get_adj_ability_bool(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from) const;
+	bool get_adj_ability_bool(const config& cfg, const std::string& ability, int dir, const map_location& loc, const unit& from) const;
 	/** Checks whether this unit is affected by a given ability of leadership type
 	 * @return True if the ability @a tag_name is active.
 	 * @param special the const config to one of abilities @a tag_name checked.
@@ -1813,6 +1813,9 @@ public:
 	 */
 	bool ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
 
+
+private:
+
 	/**
 	 * Helper similar to std::unique_lock for detecting when calculations such as abilities
 	 * have entered infinite recursion.
@@ -1825,7 +1828,7 @@ public:
 		/**
 		 * Only expected to be called in update_variables_recursion(), which handles some of the checks.
 		 */
-		explicit recursion_guard(const unit& u);
+		explicit recursion_guard(const unit& u, const config& ability);
 	public:
 		/**
 		 * Construct an empty instance, only useful for extending the lifetime of a
@@ -1849,20 +1852,25 @@ public:
 		std::shared_ptr<const unit> parent;
 	};
 
-	recursion_guard update_variables_recursion() const;
-
-
-private:
+	recursion_guard update_variables_recursion(const config& ability) const;
 
 	const std::set<std::string> checking_tags_{"attacks", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison", "damage_type"};
 	/**
-	 * Check if an ability is active.
+	 * Check if an ability is active. Includes checks to prevent excessive recursion.
 	 * @param ability The type (tag name) of the ability
 	 * @param cfg an ability WML structure
 	 * @param loc The location on which to resolve the ability
 	 * @returns true if it is active
 	 */
 	bool ability_active(const std::string& ability, const config& cfg, const map_location& loc) const;
+	/**
+	 * Check if an ability is active. The caller is responsible for preventing excessive recursion, so must hold a recursion_guard.
+	 * @param ability The type (tag name) of the ability
+	 * @param cfg an ability WML structure
+	 * @param loc The location on which to resolve the ability
+	 * @returns true if it is active
+	 */
+	bool ability_active_impl(const std::string& ability, const config& cfg, const map_location& loc) const;
 
 	/**
 	 * Check if an ability affects adjacent units.
@@ -2001,8 +2009,12 @@ private:
 
 	std::string role_;
 	attack_list attacks_;
-	/** Number of instances of recursion_guard that are currently allocated permission to recurse */
-	mutable unsigned int num_recursion_ = 0;
+	/**
+	 * While processing a recursive match, all the filters that are currently being checked, oldest first.
+	 * Each will have an instance of recursion_guard that is currently allocated permission to recurse, and
+	 * which will pop the config off this stack when the recursion_guard is finalized.
+	 */
+	mutable std::vector<const config*> open_queries_;
 
 protected:
 	// TODO: I think we actually consider this to be part of the gamestate, so it might be better if it's not mutable,
