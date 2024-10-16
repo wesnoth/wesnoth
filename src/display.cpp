@@ -1486,13 +1486,8 @@ void display::draw_text_in_hex(const map_location& loc,
 	renderer.set_foreground_color(color);
 	renderer.set_add_outline(true);
 
-	drawing_buffer_add(layer, loc, [x_in_hex, y_in_hex, res = renderer.render_and_get_texture()](const rect& dest) {
-		draw::blit(res, {
-			dest.x - (res.w() / 2) + static_cast<int>(x_in_hex * dest.w),
-			dest.y - (res.h() / 2) + static_cast<int>(y_in_hex * dest.h),
-			res.w(),
-			res.h()
-		});
+	drawing_buffer_add(layer, loc, [x_in_hex, y_in_hex, tex = renderer.render_and_get_texture()](const rect& dest) {
+		draw::blit(tex, rect{ dest.point_at(x_in_hex, y_in_hex) - tex.draw_size() / 2, tex.draw_size() });
 	});
 }
 
@@ -2075,12 +2070,8 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 	if(!valid) return;
 
 	if (scroll_type == ONSCREEN || scroll_type == ONSCREEN_WARP) {
-		rect r = map_area();
 		int spacing = std::round(add_spacing * hex_size());
-		r.x += spacing;
-		r.y += spacing;
-		r.w -= 2*spacing;
-		r.h -= 2*spacing;
+		rect r = map_area().padded_by(-spacing); // Shrink
 		if (!outside_area(r, minx,miny) && !outside_area(r, maxx,maxy)) {
 			return;
 		}
@@ -2094,14 +2085,12 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 	locs_bbox.h = maxy - miny + hex_size();
 
 	// target the center
-	int target_x = locs_bbox.x + locs_bbox.w/2;
-	int target_y = locs_bbox.y + locs_bbox.h/2;
+	auto [target_x, target_y] = locs_bbox.center();
 
 	if (scroll_type == ONSCREEN || scroll_type == ONSCREEN_WARP) {
 		// when doing an ONSCREEN scroll we do not center the target unless needed
 		rect r = map_area();
-		int map_center_x = r.x + r.w/2;
-		int map_center_y = r.y + r.h/2;
+		auto [map_center_x, map_center_y] = r.center();
 
 		int h = r.h;
 		int w = r.w;
@@ -2796,22 +2785,13 @@ void display::draw_hex(const map_location& loc)
 		renderer.set_maximum_width(-1);
 
 		drawing_buffer_add(drawing_layer::fog_shroud, loc, [tex = renderer.render_and_get_texture()](const rect& dest) {
-			const rect text_dest {
-				(dest.x + dest.w / 2) - (tex.w() / 2),
-				(dest.y + dest.h / 2) - (tex.h() / 2),
-				tex.w(),
-				tex.h()
-			};
+			// Center text in dest rect
+			const rect text_dest { dest.center() - tex.draw_size() / 2, tex.draw_size() };
 
-			// Add a little horizontal padding to the bg
-			const rect bg_dest {
-				text_dest.x - 3,
-				text_dest.y - 3,
-				text_dest.w + 6,
-				text_dest.h + 6
-			};
+			// Add a little padding to the bg
+			const rect bg_dest = text_dest.padded_by(3);
 
-			draw::fill(bg_dest, {0, 0, 0, 0xaa});
+			draw::fill(bg_dest, 0, 0, 0, 170);
 			draw::blit(tex, text_dest);
 		});
 	}
