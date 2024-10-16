@@ -931,8 +931,8 @@ static int impl_unit_variables_dir(lua_State *L)
 	for(const auto& attr : vars.attribute_range()) {
 		variables.push_back(attr.first);
 	}
-	for(auto attr : vars.all_children_range()) {
-		variables.push_back(attr.key);
+	for(auto [key, cfg] : vars.all_children_view()) {
+		variables.push_back(key);
 	}
 	lua_push(L, variables);
 	return 1;

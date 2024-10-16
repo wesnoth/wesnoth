@@ -294,20 +294,20 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 {
 	//if(!cfg["debug"].empty()) printf("DEBUG WML: FINAL\n%s\n\n",cfg.debug().c_str());
 
-	for(const config::any_child fr : cfg.all_children_range()) {
-		if(fr.key == frame_string) {
+	for(const auto [key, frame] : cfg.all_children_view()) {
+		if(key == frame_string) {
 			continue;
 		}
 
-		if(fr.key.find("_frame", fr.key.size() - 6) == std::string::npos) {
+		if(key.find("_frame", key.size() - 6) == std::string::npos) {
 			continue;
 		}
 
-		if(sub_anims_.find(fr.key) != sub_anims_.end()) {
+		if(sub_anims_.find(key) != sub_anims_.end()) {
 			continue;
 		}
 
-		sub_anims_[fr.key] = particle(cfg, fr.key.substr(0, fr.key.size() - 5));
+		sub_anims_[key] = particle(cfg, key.substr(0, key.size() - 5));
 	}
 
 	event_ = utils::split(cfg["apply_to"]);

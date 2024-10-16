@@ -271,12 +271,12 @@ void prefs::load_preferences()
 			}
 		}
 
-		for(const auto [key, _] : synced_prefs.all_children_range()) {
+		for(const auto [key, _] : synced_prefs.all_children_view()) {
 			if(std::find(synced_children_.begin(), synced_children_.end(), key) == synced_children_.end()) {
 				unknown_synced_children_.insert(key);
 			}
 		}
-		for(const auto [key, _] : unsynced_prefs.all_children_range()) {
+		for(const auto [key, _] : unsynced_prefs.all_children_view()) {
 			if(std::find(unsynced_children_.begin(), unsynced_children_.end(), key) == unsynced_children_.end()) {
 				unknown_unsynced_children_.insert(key);
 			}
@@ -324,7 +324,7 @@ void prefs::load_preferences()
 						message = foobar
 					[/line]
 		*/
-		for(const auto [key, cfg] : history->all_children_range()) {
+		for(const auto [key, cfg] : history->all_children_view()) {
 			for(const config& l : cfg.child_range("line")) {
 				history_map_[key].push_back(l["message"]);
 			}

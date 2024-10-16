@@ -165,7 +165,7 @@ void config::remove_attribute(config_key_type key)
 
 void config::append_children(const config& cfg)
 {
-	for(const auto [key, cfg] : cfg.all_children_range()) {
+	for(const auto [key, cfg] : cfg.all_children_view()) {
 		add_child(key, cfg);
 	}
 }
@@ -179,7 +179,7 @@ void config::append_children(config&& cfg)
 		cfg.clear_all_children();
 		return;
 	}
-	for(const auto [child_key, child_value] : cfg.all_children_range()) {
+	for(const auto [child_key, child_value] : cfg.all_children_view()) {
 		add_child(child_key, std::move(child_value));
 	}
 	cfg.clear_all_children();
@@ -1047,7 +1047,7 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 
 	for(const config& i : diff.child_range("change_child")) {
 		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
-		for(const auto [key, cfg] : i.all_children_range()) {
+		for(const auto [key, cfg] : i.all_children_view()) {
 			if(key.empty()) {
 				continue;
 			}
@@ -1063,7 +1063,7 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 
 	for(const config& i : diff.child_range("insert_child")) {
 		const auto index = lexical_cast<std::size_t>(i["index"].str());
-		for(const auto [key, cfg] : i.all_children_range()) {
+		for(const auto [key, cfg] : i.all_children_view()) {
 			config& inserted = add_child_at(key, cfg, index);
 			if(track) {
 				inserted[diff_track_attribute] = "new";
@@ -1073,7 +1073,7 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 
 	for(const config& i : diff.child_range("delete_child")) {
 		const auto index = lexical_cast<std::size_t>(i["index"].str());
-		for(const auto [key, cfg] : i.all_children_range()) {
+		for(const auto [key, cfg] : i.all_children_view()) {
 			if(!track) {
 				remove_child(key, index);
 			} else {
@@ -1093,14 +1093,14 @@ void config::clear_diff_track(const config& diff)
 	remove_attribute(diff_track_attribute);
 	for(const config& i : diff.child_range("delete_child")) {
 		const auto index = lexical_cast<std::size_t>(i["index"].str());
-		for(const auto [key, cfg] : i.all_children_range()) {
+		for(const auto [key, cfg] : i.all_children_view()) {
 			remove_child(key, index);
 		}
 	}
 
 	for(const config& i : diff.child_range("change_child")) {
 		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
-		for(const auto [key, cfg] : i.all_children_range()) {
+		for(const auto [key, cfg] : i.all_children_view()) {
 			if(key.empty()) {
 				continue;
 			}
@@ -1215,7 +1215,7 @@ bool config::matches(const config& filter) const
 		}
 	}
 
-	for(const auto [key, cfg] : filter.all_children_range()) {
+	for(const auto [key, cfg] : filter.all_children_view()) {
 		if(key == "not") {
 			result = result && !matches(cfg);
 			continue;
@@ -1265,7 +1265,7 @@ std::ostream& operator<<(std::ostream& outstream, const config& cfg)
 		outstream << key << " = " << value << '\n';
 	}
 
-	for(const auto [key, cfg] : cfg.all_children_range()) {
+	for(const auto [key, cfg] : cfg.all_children_view()) {
 		for(int j = 0; j < i - 1; ++j) {
 			outstream << '\t';
 		}
@@ -1319,7 +1319,7 @@ std::string config::hash() const
 		}
 	}
 
-	for(const auto [key, cfg] : all_children_range()) {
+	for(const auto [key, cfg] : all_children_view()) {
 		std::string child_hash = cfg.hash();
 		for(char c : child_hash) {
 			hash_str[i] ^= c;

@@ -174,7 +174,7 @@ static int intf_wml_merge(lua_State* L)
 		base.append_children(merge);
 	} else {
 		if(mode == "replace") {
-			for(const auto [key, _] : merge.all_children_range()) {
+			for(const auto [key, _] : merge.all_children_view()) {
 				base.clear_children(key);
 			}
 		} else if(mode != "merge") {

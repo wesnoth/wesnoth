@@ -304,7 +304,7 @@ namespace {
 
 	void get_ability_children_id(std::vector<ability_match>& id_result,
 	                           const config& parent, const std::string& id) {
-		for (const auto [key, cfg] : parent.all_children_range())
+		for (const auto [key, cfg] : parent.all_children_view())
 		{
 			if(cfg["id"] == id) {
 				ability_match special = { key, &cfg };
@@ -782,7 +782,7 @@ void unit_filter_compound::fill(vconfig cfg)
 				}
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
 					if(!(c.get_parsed_config())["active"].to_bool()){
-						for(const auto [key, cfg] : args.u.abilities().all_children_range()) {
+						for(const auto [key, cfg] : args.u.abilities().all_children_view()) {
 							if(args.u.ability_matches_filter(cfg, key, c.get_parsed_config())) {
 								return true;
 							}
@@ -792,7 +792,7 @@ void unit_filter_compound::fill(vconfig cfg)
 							return false;
 						}
 						const unit_map& units = display::get_singleton()->get_units();
-						for(const auto [key, cfg] : args.u.abilities().all_children_range()) {
+						for(const auto [key, cfg] : args.u.abilities().all_children_view()) {
 							if(args.u.ability_matches_filter(cfg, key, c.get_parsed_config())) {
 								if (args.u.get_self_ability_bool(cfg, key, args.loc)) {
 									return true;
@@ -808,7 +808,7 @@ void unit_filter_compound::fill(vconfig cfg)
 							if (&*it == (args.u.shared_from_this()).get())
 								continue;
 
-							for(const auto [key, cfg] : it->abilities().all_children_range()) {
+							for(const auto [key, cfg] : it->abilities().all_children_view()) {
 								if(it->ability_matches_filter(cfg, key, c.get_parsed_config())) {
 									if (args.u.get_adj_ability_bool(cfg, key, i, args.loc, *it)) {
 										return true;

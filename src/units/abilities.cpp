@@ -263,7 +263,7 @@ std::vector<std::string> unit::get_ability_list() const
 {
 	std::vector<std::string> res;
 
-	for(const auto [key, cfg] : this->abilities_.all_children_range()) {
+	for(const auto [key, cfg] : this->abilities_.all_children_view()) {
 		std::string id = cfg["id"];
 		if (!id.empty())
 			res.push_back(std::move(id));
@@ -320,7 +320,7 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 {
 	std::vector<std::tuple<std::string, t_string,t_string,t_string>> res;
 
-	for(const auto [_, cfg] : this->abilities_.all_children_range())
+	for(const auto [_, cfg] : this->abilities_.all_children_view())
 	{
 		add_ability_tooltip(cfg, gender_, res, true);
 	}
@@ -333,7 +333,7 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 	std::vector<std::tuple<std::string, t_string,t_string,t_string>> res;
 	active_list.clear();
 
-	for(const auto [key, cfg] : this->abilities_.all_children_range())
+	for(const auto [key, cfg] : this->abilities_.all_children_view())
 	{
 		bool active = ability_active(key, cfg, loc);
 		if (add_ability_tooltip(cfg, gender_, res, active))
@@ -565,7 +565,7 @@ static void add_string_to_vector(std::vector<std::string>& image_list, const con
 std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_type) const
 {
 	std::vector<std::string> image_list;
-	for(const auto [key, cfg] : abilities_.all_children_range()){
+	for(const auto [key, cfg] : abilities_.all_children_view()){
 		bool is_active = ability_active(key, cfg, loc_);
 		//Add halo/overlay to owner of ability if active and affect_self is true.
 		if( !cfg[image_type + "_image"].str().empty() && is_active && ability_affects_self(key, cfg, loc_)){
@@ -588,7 +588,7 @@ std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_t
 			continue;
 		if ( &*it == this )
 			continue;
-		for(const auto [key, cfg] : it->abilities_.all_children_range()) {
+		for(const auto [key, cfg] : it->abilities_.all_children_view()) {
 			if(!cfg[image_type + "_image"].str().empty() && affects_side(cfg, side(), it->side()) && it->ability_active(key, cfg, adjacent[i]) && ability_affects_adjacent(key, cfg, i, loc_, *it))
 			{
 				add_string_to_vector(image_list, cfg, image_type + "_image");
@@ -767,7 +767,7 @@ namespace {
 	                           std::vector<special_match>& id_result,
 	                           const config& parent, const std::string& id,
 	                           bool just_peeking=false) {
-		for(const auto [key, cfg] : parent.all_children_range())
+		for(const auto [key, cfg] : parent.all_children_view())
 		{
 			if (just_peeking && (key == id || cfg["id"] == id)) {
 				return true; // peek succeeded; done
@@ -788,7 +788,7 @@ namespace {
 	bool get_special_children_id(std::vector<special_match>& id_result,
 	                           const config& parent, const std::string& id,
 	                           bool just_peeking=false) {
-		for(const auto [key, cfg] : parent.all_children_range())
+		for(const auto [key, cfg] : parent.all_children_view())
 		{
 			if (just_peeking && (cfg["id"] == id)) {
 				return true; // peek succeeded; done
@@ -805,7 +805,7 @@ namespace {
 	bool get_special_children_tags(std::vector<special_match>& tag_result,
 	                           const config& parent, const std::string& id,
 	                           bool just_peeking=false) {
-		for(const auto [key, cfg] : parent.all_children_range())
+		for(const auto [key, cfg] : parent.all_children_view())
 		{
 			if (just_peeking && (key == id)) {
 				return true; // peek succeeded; done
@@ -940,7 +940,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 	if ( active_list )
 		active_list->clear();
 
-	for(const auto [key, cfg] : specials_.all_children_range())
+	for(const auto [key, cfg] : specials_.all_children_view())
 	{
 		if ( !active_list || special_active(cfg, AFFECT_EITHER, key) ) {
 			const t_string &name = cfg["name"];
@@ -990,7 +990,7 @@ std::string attack_type::weapon_specials() const
 {
 	//log_scope("weapon_specials");
 	std::string res;
-	for(const auto [key, cfg] : specials_.all_children_range())
+	for(const auto [key, cfg] : specials_.all_children_view())
 	{
 		const bool active = special_active(cfg, AFFECT_EITHER, key);
 
@@ -1039,7 +1039,7 @@ std::string attack_type::weapon_specials_value(const std::set<std::string> check
 	//log_scope("weapon_specials_value");
 	std::string temp_string, weapon_abilities;
 	std::set<std::string> checking_name;
-	for(const auto [key, cfg] : specials_.all_children_range()) {
+	for(const auto [key, cfg] : specials_.all_children_view()) {
 		if((checking_tags.count(key) != 0)){
 			const bool active = special_active(cfg, AFFECT_SELF, key);
 			add_name(temp_string, active, cfg["name"].str(), checking_name);
@@ -1060,7 +1060,7 @@ std::string attack_type::weapon_specials_value(const std::set<std::string> check
 
 
 	if(other_attack_) {
-		for(const auto [key, cfg] : other_attack_->specials_.all_children_range()) {
+		for(const auto [key, cfg] : other_attack_->specials_.all_children_view()) {
 			if((checking_tags.count(key) != 0)){
 				const bool active = other_attack_->special_active(cfg, AFFECT_OTHER, key);
 				add_name(temp_string, active, cfg["name"].str(), checking_name);
@@ -1086,7 +1086,7 @@ void attack_type::weapon_specials_impl_self(
 	bool leader_bool)
 {
 	if(self){
-		for(const auto [key, cfg] : self->abilities().all_children_range()){
+		for(const auto [key, cfg] : self->abilities().all_children_view()){
 			bool tag_checked = (!checking_tags.empty()) ? (checking_tags.count(key) != 0) : true;
 			const bool active = tag_checked && check_self_abilities_impl(self_attack, other_attack, cfg, self, self_loc, whom, key, leader_bool);
 			add_name(temp_string, active, cfg["name"].str(), checking_name);
@@ -1115,7 +1115,7 @@ void attack_type::weapon_specials_impl_adj(
 				continue;
 			if(&*it == self.get())
 				continue;
-			for(const auto [key, cfg] : it->abilities().all_children_range()) {
+			for(const auto [key, cfg] : it->abilities().all_children_view()) {
 				bool tag_checked = (!checking_tags.empty()) ? (checking_tags.count(key) != 0) : true;
 				bool default_bool = (affect_adjacents == "affect_allies") ? true : false;
 				bool affect_allies = (!affect_adjacents.empty()) ? cfg[affect_adjacents].to_bool(default_bool) : true;
@@ -2066,7 +2066,7 @@ namespace
 		bool matches = matches_ability_filter(cfg, tag_name, filter);
 
 		// Handle [and], [or], and [not] with in-order precedence
-		for(const auto [key, condition_cfg] : filter.all_children_range() )
+		for(const auto [key, condition_cfg] : filter.all_children_view() )
 		{
 			// Handle [and]
 			if ( key == "and" )

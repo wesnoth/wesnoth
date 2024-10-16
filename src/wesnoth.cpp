@@ -147,7 +147,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 		int read = 0;
 
 		// use static preproc_define::read_pair(config) to make a object
-		for(const auto [_, cfg] : cfg.all_children_range()) {
+		for(const auto [_, cfg] : cfg.all_children_view()) {
 			const preproc_map::value_type def = preproc_define::read_pair(cfg);
 			input_macros[def.first] = def.second;
 			++read;

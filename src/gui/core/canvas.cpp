@@ -663,7 +663,7 @@ void canvas::parse_cfg(const config& cfg)
 {
 	log_scope2(log_gui_parse, "Canvas: parsing config.");
 
-	for(const auto [type, data] : cfg.all_children_range())
+	for(const auto [type, data] : cfg.all_children_view())
 	{
 		DBG_GUI_P << "Canvas: found shape of the type " << type << ".";
 
@@ -682,7 +682,7 @@ void canvas::parse_cfg(const config& cfg)
 		} else if(type == "pre_commit") {
 
 			/* note this should get split if more preprocessing is used. */
-			for(const auto [func_key, func_cfg] : data.all_children_range())
+			for(const auto [func_key, func_cfg] : data.all_children_view())
 			{
 				if(func_key == "blur") {
 					blur_depth_ = func_cfg["depth"].to_unsigned();

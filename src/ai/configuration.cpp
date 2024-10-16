@@ -311,7 +311,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			facet_config["value"] = value;
 			facet_configs.emplace_back(key, facet_config);
 		}
-		for(const auto [child_key, child_cfg] : aiparam.all_children_range()) {
+		for(const auto [child_key, child_cfg] : aiparam.all_children_view()) {
 			if (just_copy_tags.count(child_key)) {
 				// These aren't simplified, so just copy over unchanged.
 				parsed_config.add_child(child_key, child_cfg);
@@ -386,7 +386,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 	if (algorithm.empty() && !parsed_config.has_child("stage")) {
 		base_config = get_ai_config_for(default_ai_algorithm_);
 	}
-	for(const auto [child_key, child_cfg] : parsed_config.all_children_range()) {
+	for(const auto [child_key, child_cfg] : parsed_config.all_children_view()) {
 		base_config.add_child(child_key, child_cfg);
 	}
 	cfg.clear_children("ai");

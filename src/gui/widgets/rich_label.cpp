@@ -303,7 +303,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 	DBG_GUI_RL << parsed_text.debug();
 
-	for(const auto [key, child] : parsed_text.all_children_range()) {
+	for(const auto [key, child] : parsed_text.all_children_view()) {
 		if(key == "img") {
 			std::string name = child["src"];
 			std::string align = child["align"];
@@ -428,7 +428,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 					max_row_height = std::max(max_row_height, static_cast<unsigned>(size.y));
 
 					col_x += col_widths[col_idx] + 2 * padding_;
-					config& end_cfg = text_dom.all_children_range().back().cfg;
+					auto [_, end_cfg] = text_dom.all_children_view().back();
 					end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', %d), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % col_x % row_y % col_x % (width/columns));
 
 					DBG_GUI_RL << "jump to next column";
@@ -441,7 +441,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 				}
 
 				row_y += max_row_height + padding_;
-				config& end_cfg = text_dom.all_children_range().back().cfg;
+				auto [_, end_cfg] = text_dom.all_children_view().back();
 				end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % row_y % col_x % col_widths[columns-1]);
 				DBG_GUI_RL << "row height: " << max_row_height;
 			}
@@ -449,7 +449,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 			prev_blk_height = row_y;
 			text_height = 0;
 
-			config& end_cfg = text_dom.all_children_range().back().cfg;
+			auto [_, end_cfg] = text_dom.all_children_view().back();
 			end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', %d), set_var('tw', 0)])") % row_y);
 
 			is_image = false;
@@ -558,7 +558,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 				add_text_with_attribute(*curr_item, line, key);
 				config parsed_children = get_parsed_text(child, point(x, prev_blk_height), init_width).first;
 
-				for (const auto [parsed_key, parsed_cfg] : parsed_children.all_children_range()) {
+				for (const auto [parsed_key, parsed_cfg] : parsed_children.all_children_view()) {
 					if (parsed_key == "text") {
 						const auto [start, end] = add_text(*curr_item, parsed_cfg["text"]);
 						for (const config& attr : parsed_cfg.child_range("attribute")) {
@@ -685,7 +685,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 				(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + " + std::to_string(img_size.y) + ")])";
 				text_dom.append(*remaining_item);
 				remaining_item = nullptr;
-				curr_item = &text_dom.all_children_range().back().cfg;
+				curr_item = &text_dom.all_children_view().back().second;
 			}
 		}
 
