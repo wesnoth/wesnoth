@@ -37,20 +37,20 @@ public:
 	             const game_config_view& cfg,
 	             editor_toolkit &toolkit);
 
-	virtual void setup(const game_config_view& cfg);
+	virtual void setup(const game_config_view& cfg) override;
 
 	virtual std::string get_help_string() const override;
 
 private:
 
-	virtual const std::string& get_id(const overlay& item);
+	virtual const std::string& get_id(const overlay& item) override;
 
 	virtual void setup_item(
 		const overlay& item,
 		texture& item_base_image,
 		texture& item_overlay_image,
 		std::stringstream& tooltip
-	);
+	) override;
 };
 
 }
