@@ -698,7 +698,7 @@ REPLAY_ACTION_TYPE get_replay_action_type(const config& command)
 	if(command.all_children_count() != 1) {
 		return REPLAY_ACTION_TYPE::INVALID;
 	}
-	auto [key, _] = command.all_children_range().front();
+	auto [key, _] = command.all_children_view().front();
 	if(key == "speak" || key == "label" || key == "surrender" || key == "clear_labels" || key == "rename" || key == "countdown_update") {
 		return REPLAY_ACTION_TYPE::UNSYNCED;
 	}
@@ -750,7 +750,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 
 
-		const auto ch_itors = cfg->all_children_range();
+		const auto ch_itors = cfg->all_children_view();
 		//if there is an empty command tag or a start tag
 		if (ch_itors.empty() || cfg->has_child("start"))
 		{
@@ -882,7 +882,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			// but we are called from
 			// the only other option for "dependent" command is checksum which is already checked.
 			assert(cfg->all_children_count() == 1);
-			auto [child_name, _] = cfg->all_children_range().front();
+			auto [child_name, _] = cfg->all_children_view().front();
 			DBG_REPLAY << "got an dependent action name = " << child_name;
 			resources::recorder->revert_action();
 			return REPLAY_FOUND_DEPENDENT;
@@ -890,7 +890,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		else
 		{
 			//we checked for empty commands at the beginning.
-			const auto [commandname, data] = cfg->all_children_range().front();
+			const auto [commandname, data] = cfg->all_children_view().front();
 
 			if(!is_unsynced)
 			{

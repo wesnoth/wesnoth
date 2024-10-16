@@ -290,7 +290,7 @@ bool attack_type::matches_filter(const config& filter, const std::string& check_
 	bool matches = matches_simple_filter(*this, filter, check_if_recursion);
 
 	// Handle [and], [or], and [not] with in-order precedence
-	for(const auto [key, condition_cfg] : filter.all_children_range() )
+	for(const auto [key, condition_cfg] : filter.all_children_view() )
 	{
 		// Handle [and]
 		if ( key == "and" )
@@ -376,7 +376,7 @@ bool attack_type::apply_modification(const config& cfg)
 	if(del_specials.empty() == false) {
 		const std::vector<std::string>& dsl = utils::split(del_specials);
 		config new_specials;
-		for(const auto [key, cfg] : specials_.all_children_range()) {
+		for(const auto [key, cfg] : specials_.all_children_view()) {
 			std::vector<std::string>::const_iterator found_id =
 				std::find(dsl.begin(), dsl.end(), cfg["id"].str());
 			if (found_id == dsl.end()) {
@@ -396,7 +396,7 @@ bool attack_type::apply_modification(const config& cfg)
 		if(mode != "append") {
 			specials_.clear();
 		}
-		for(const auto [key, cfg] : set_specials->all_children_range()) {
+		for(const auto [key, cfg] : set_specials->all_children_view()) {
 			specials_.add_child(key, cfg);
 		}
 	}

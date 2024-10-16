@@ -362,7 +362,7 @@ private:
 
 void event_handler::read_filters(const config &cfg)
 {
-	for(const auto [filter_key, filter_cfg] : cfg.all_children_range()) {
+	for(const auto [filter_key, filter_cfg] : cfg.all_children_view()) {
 		vconfig vcfg(filter_cfg);
 		if(auto filter_ptr = make_filter(filter_key, vcfg)) {
 			add_filter(std::move(filter_ptr));

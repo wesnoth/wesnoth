@@ -477,9 +477,9 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		for(config adv : type.modification_advancements()) {
 			for(config effect : adv.child_range("effect")) {
 				if(effect["apply_to"] == "new_attack" && effect.has_child("specials")) {
-					for(config::any_child spec : effect.mandatory_child("specials").all_children_range()) {
-						if(!spec.cfg["name"].empty()) {
-							special_description.emplace(spec.cfg["name"].t_str(), spec.cfg["description"].t_str());
+					for(const auto [key, special] : effect.mandatory_child("specials").all_children_view()) {
+						if(!special["name"].empty()) {
+							special_description.emplace(special["name"].t_str(), special["description"].t_str());
 							if(!type.hide_help()) {
 								//add a link in the list of units having this special
 								std::string type_name = type.type_name();
@@ -489,14 +489,14 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 								//we put the translated name at the beginning of the hyperlink,
 								//so the automatic alphabetic sorting of std::set can use it
 								std::string link = markup::make_link(type_name, ref_id);
-								special_units[spec.cfg["name"]].insert(link);
+								special_units[special["name"]].insert(link);
 							}
 						}
 					}
 				} else if(effect["apply_to"] == "attack" && effect.has_child("set_specials")) {
-					for(config::any_child spec : effect.mandatory_child("set_specials").all_children_range()) {
-						if(!spec.cfg["name"].empty()) {
-							special_description.emplace(spec.cfg["name"].t_str(), spec.cfg["description"].t_str());
+					for(const auto [key, special] : effect.mandatory_child("set_specials").all_children_view()) {
+						if(!special["name"].empty()) {
+							special_description.emplace(special["name"].t_str(), special["description"].t_str());
 							if(!type.hide_help()) {
 								//add a link in the list of units having this special
 								std::string type_name = type.type_name();
@@ -506,7 +506,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 								//we put the translated name at the beginning of the hyperlink,
 								//so the automatic alphabetic sorting of std::set can use it
 								std::string link = markup::make_link(type_name, ref_id);
-								special_units[spec.cfg["name"]].insert(link);
+								special_units[special["name"]].insert(link);
 							}
 						}
 					}

@@ -388,7 +388,7 @@ void undo_list::redo()
 	auto action = std::move(redos_.back());
 	redos_.pop_back();
 
-	auto [commandname, data] = action->mandatory_child("command").all_children_range().front();
+	auto [commandname, data] = action->mandatory_child("command").all_children_view().front();
 
 	// Note that this might add more than one [command]
 	resources::recorder->redo(*action);

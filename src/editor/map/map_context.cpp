@@ -419,7 +419,7 @@ config map_context::convert_scenario(const config& old_scenario)
 	//   if [unit], set the unit's side
 	// for [time]:
 	//   keep under [multiplayer]
-	for(const auto [child_key, child_cfg]: old_scenario.all_children_range()) {
+	for(const auto [child_key, child_cfg]: old_scenario.all_children_view()) {
 		if(child_key != "side" && child_key != "time") {
 			config& c = event.add_child(child_key);
 			c.append_attributes(child_cfg);
@@ -427,7 +427,7 @@ config map_context::convert_scenario(const config& old_scenario)
 		} else if(child_key == "side") {
 			config& c = multiplayer.add_child("side");
 			c.append_attributes(child_cfg);
-			for(const auto [side_key, side_cfg] : child_cfg.all_children_range()) {
+			for(const auto [side_key, side_cfg] : child_cfg.all_children_view()) {
 				if(side_key == "village") {
 					config& c1 = c.add_child("village");
 					c1.append_attributes(side_cfg);

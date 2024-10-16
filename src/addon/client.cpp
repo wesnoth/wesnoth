@@ -353,7 +353,7 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 		LOG_ADDONS << "Received an updatepack for the addon '" << info.id << "'";
 
 		// A consistency check
-		for(const auto [key, cfg] : archive_cfg.all_children_range()) {
+		for(const auto [key, cfg] : archive_cfg.all_children_view()) {
 			if(key == "removelist" || key == "addlist") {
 				if(!check_names_legal(cfg)) {
 					gui2::show_error_message(VGETTEXT("The add-on <i>$addon_title</i> has an invalid file or directory "
@@ -367,7 +367,7 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 			}
 		}
 
-		for(const auto [key, cfg] : archive_cfg.all_children_range()) {
+		for(const auto [key, cfg] : archive_cfg.all_children_view()) {
 			if(key == "removelist") {
 				purge_addon(cfg);
 			} else if(key == "addlist") {

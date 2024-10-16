@@ -108,7 +108,7 @@ bool move_action::undo(int)
 	// Move the unit.
 	unit_display::move_unit(rev_route, u.get_shared_ptr(), true, starting_dir);
 	bool halo_adjacent = false;
-	for(const auto [_, cfg] : u->abilities().all_children_range()){
+	for(const auto [_, cfg] : u->abilities().all_children_view()){
 		if(!cfg["halo_image"].empty() && cfg.has_child("affect_adjacent")){
 			halo_adjacent = true;
 			break;
