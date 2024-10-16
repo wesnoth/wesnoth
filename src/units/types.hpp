@@ -118,7 +118,7 @@ public:
 
 	/** Returns two iterators pointing to a range of AMLA configs. */
 	config::const_child_itors modification_advancements() const
-	{ return get_cfg().child_range("advancement"); }
+	{ return advancements_; }
 
 	/**
 	 * Returns a gendered variant of this unit_type.
@@ -235,7 +235,7 @@ public:
 	{ return get_cfg().child_or_empty("abilities"); }
 
 	config::const_child_itors advancements() const
-	{ return get_cfg().child_range("advancement"); }
+	{ return advancements_; }
 
 	config::const_child_itors events() const
 	{ return get_cfg().child_range("event"); }
@@ -364,6 +364,7 @@ private:
 	bool zoc_, hide_help_, do_not_list_;
 
 	std::vector<std::string> advances_to_;
+	config::const_child_itors advancements_;
 	int experience_needed_;
 
 
