@@ -34,8 +34,7 @@ class terrain_palette : public editor_palette<t_translation::terrain_code> {
 
 public:
 
-	terrain_palette(editor_display &gui, const game_config_view& cfg,
-	                editor_toolkit &toolkit);
+	terrain_palette(editor_display &gui, editor_toolkit &toolkit);
 
 	const gamemap& map() const { return gui_.get_map(); }
 

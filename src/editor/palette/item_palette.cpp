@@ -83,10 +83,9 @@ void item_palette::setup_item(
 	tooltip_text << item.name;
 }
 
-item_palette::item_palette(editor_display &gui, const game_config_view& cfg,
-                           editor_toolkit &toolkit)
+item_palette::item_palette(editor_display &gui, editor_toolkit &toolkit)
 //TODO avoid magic numbers
-	:	editor_palette<overlay>(gui, cfg, 36, 4, toolkit)
+	:	editor_palette<overlay>(gui, 36, 4, toolkit)
 {
 }
 

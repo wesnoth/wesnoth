@@ -93,10 +93,9 @@ void unit_palette::setup_item(
 	tooltip_text << u.type_name();
 }
 
-unit_palette::unit_palette(editor_display &gui, const game_config_view& cfg,
-                           editor_toolkit &toolkit)
+unit_palette::unit_palette(editor_display &gui, editor_toolkit &toolkit)
 //TODO avoid magic numbers
-	: editor_palette<const unit_type&>(gui, cfg, 36, 4, toolkit)
+	: editor_palette<const unit_type&>(gui, 36, 4, toolkit)
 	, selected_bg_items_()
 {
 }

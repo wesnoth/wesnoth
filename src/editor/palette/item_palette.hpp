@@ -33,9 +33,7 @@ class editor_toolkit;
 class item_palette : public editor_palette<overlay> {
 public:
 
-	item_palette(editor_display &gui,
-	             const game_config_view& cfg,
-	             editor_toolkit &toolkit);
+	item_palette(editor_display &gui, editor_toolkit &toolkit);
 
 	virtual void setup(const game_config_view& cfg) override;
 

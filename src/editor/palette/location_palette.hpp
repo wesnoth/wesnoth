@@ -33,8 +33,7 @@ class location_palette : public common_palette {
 
 public:
 
-	location_palette(editor_display &gui, const game_config_view& /*cfg*/,
-	                 editor_toolkit &toolkit);
+	location_palette(editor_display &gui, editor_toolkit &toolkit);
 
 
 	virtual sdl_handler_vector handler_members() override;

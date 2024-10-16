@@ -206,9 +206,9 @@ void terrain_palette::setup_item(
 	}
 }
 
-terrain_palette::terrain_palette(editor_display &gui, const game_config_view& cfg, editor_toolkit &toolkit)
+terrain_palette::terrain_palette(editor_display &gui, editor_toolkit &toolkit)
 //TODO avoid magic numbers
-	:	editor_palette<t_translation::terrain_code>(gui, cfg, 36, 4, toolkit)
+	:	editor_palette<t_translation::terrain_code>(gui, 36, 4, toolkit)
 {
 }
 

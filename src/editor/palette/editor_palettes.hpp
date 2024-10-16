@@ -28,8 +28,7 @@ class editor_palette : public tristate_palette {
 
 public:
 
-	editor_palette(editor_display &gui, const game_config_view& /*cfg*/
-	             , int item_size, std::size_t columns, editor_toolkit &toolkit)
+	editor_palette(editor_display &gui, int item_size, std::size_t columns, editor_toolkit &toolkit)
 		: tristate_palette()
 		, groups_()
 		, gui_(gui)
@@ -48,8 +47,6 @@ public:
 		, buttons_()
 	{
 	}
-
-
 
 	virtual sdl_handler_vector handler_members() override;
 
