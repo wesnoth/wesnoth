@@ -73,6 +73,14 @@ namespace wb {
 #include <memory>
 #include <vector>
 
+namespace display_direction {
+	/**
+	 * @note needs to be defined after includes
+	 *       as it uses std::string
+	 */
+	const std::string& get_direction(std::size_t n);
+}
+
 struct submerge_data
 {
 	rect unsub_src;
