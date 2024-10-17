@@ -667,7 +667,7 @@ display::overlay_map& game_display::get_overlays()
 	return overlay_map_;
 }
 
-std::vector<texture> const game_display::get_reachmap_images(const map_location& loc)
+std::vector<texture> game_display::get_reachmap_images(const map_location& loc) const
 {
 	// Use get_direction() from display.cpp namespace display_direction
 	using namespace display_direction;
