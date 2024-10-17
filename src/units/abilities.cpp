@@ -2474,7 +2474,8 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFF
 		effect_list_.push_back(val.second);
 	}
 
-	composite_value_ = static_cast<int>((value_set + addition + substraction) * multiplier / divisor);
+	double temp_value = (value_set + addition + substraction) * multiplier / divisor;
+	composite_value_ = static_cast<int>(std::round(temp_value));
 	//clamp what if min_value < max_value or one attribute only used.
 	if(max_value && min_value && *min_value < *max_value) {
 		composite_value_ = std::clamp(*min_value, *max_value, composite_value_);
