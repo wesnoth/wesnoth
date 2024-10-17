@@ -1365,9 +1365,9 @@ std::set<std::string> attack_type::alternative_damage_types() const
 /**
  * Returns the damage per attack of this weapon, considering specials.
  */
-int attack_type::modified_damage() const
+double attack_type::modified_damage() const
 {
-	int damage_value = composite_value(get_specials_and_abilities("damage"), damage());
+	double damage_value = unit_abilities::effect(get_specials_and_abilities("damage"), damage(), shared_from_this()).get_composite_double_value();
 	return damage_value;
 }
 
@@ -2338,8 +2338,8 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFF
 
 	individual_effect set_effect_max;
 	individual_effect set_effect_min;
-	utils::optional<int> max_value = utils::nullopt;
-	utils::optional<int> min_value = utils::nullopt;
+	utils::optional<double> max_value = utils::nullopt;
+	utils::optional<double> min_value = utils::nullopt;
 
 	for (const unit_ability & ability : list) {
 		const config& cfg = *ability.ability_cfg;
@@ -2374,10 +2374,10 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFF
 
 		if(wham == EFFECT_DEFAULT || wham == EFFECT_CUMULABLE){
 			if(cfg.has_attribute("max_value")){
-				max_value = max_value ? std::min(*max_value, cfg["max_value"].to_int()) : cfg["max_value"].to_int();
+				max_value = max_value ? std::min(*max_value, cfg["max_value"].to_double()) : cfg["max_value"].to_double();
 			}
 			if(cfg.has_attribute("min_value")){
-				min_value = min_value ? std::max(*min_value, cfg["min_value"].to_int()) : cfg["min_value"].to_int();
+				min_value = min_value ? std::max(*min_value, cfg["min_value"].to_double()) : cfg["min_value"].to_double();
 			}
 		}
 
@@ -2474,15 +2474,16 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFF
 		effect_list_.push_back(val.second);
 	}
 
-	composite_value_ = static_cast<int>((value_set + addition + substraction) * multiplier / divisor);
+	composite_double_value_ = (value_set + addition + substraction) * multiplier / divisor;
 	//clamp what if min_value < max_value or one attribute only used.
 	if(max_value && min_value && *min_value < *max_value) {
-		composite_value_ = std::clamp(*min_value, *max_value, composite_value_);
+		composite_double_value_ = std::clamp(*min_value, *max_value, composite_double_value_);
 	} else if(max_value && !min_value) {
-		composite_value_ = std::min(*max_value, composite_value_);
+		composite_double_value_ = std::min(*max_value, composite_double_value_);
 	} else if(min_value && !max_value) {
-		composite_value_ = std::max(*min_value, composite_value_);
+		composite_double_value_ = std::max(*min_value, composite_double_value_);
 	}
+	composite_value_ = std::round(composite_double_value_);
 }
 
 } // end namespace unit_abilities
