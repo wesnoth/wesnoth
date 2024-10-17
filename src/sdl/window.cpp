@@ -29,8 +29,6 @@ window::window(const std::string& title,
 				 const int h,
 				 const uint32_t window_flags)
 	: window_(SDL_CreateWindow(title.c_str(), w, h, window_flags | SDL_WINDOW_HIDDEN))
-	// TODO SDL3: SDL doesn't allow querying the renderer's pixel format anymore, is this fine?
-	, pixel_format_(SDL_PIXELFORMAT_ARGB8888)
 {
 	if(!window_) {
 		throw exception("Failed to create a SDL_Window object.", true);
@@ -200,11 +198,6 @@ void window::get_logical_size(int& w, int& h) const
 	SDL_Renderer* r = SDL_GetRenderer(window_);
 	SDL_RendererLogicalPresentation mode = SDL_LOGICAL_PRESENTATION_INTEGER_SCALE;
 	SDL_GetRenderLogicalPresentation(r, &w, &h, &mode);
-}
-
-SDL_PixelFormat window::pixel_format()
-{
-	return pixel_format_;
 }
 
 window::operator SDL_Window*()

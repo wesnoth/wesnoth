@@ -263,7 +263,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 				// Deselect the current tile as we're scrolling
 				gui().highlight_hex({-1,-1});
 			}
-		} else if(event.down == true) {
+		} else if(!event.down) {
 			minimap_scrolling_ = false;
 			simple_warp_ = false;
 			scroll_started_ = false;
@@ -271,7 +271,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			clear_drag_from_hex();
 		}
 	} else if(event.button == SDL_BUTTON_X1 || event.button == SDL_BUTTON_X2) {
-		if(event.down == false) {
+		if(event.down) {
 			cancel_dragging();
 			// record mouse-down hex in drag_from_hex_
 			drag_from_hex_ = loc;

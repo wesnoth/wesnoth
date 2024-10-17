@@ -182,7 +182,7 @@ bool update_test_framebuffer()
 		LOG_DP << "creating offscreen render texture";
 		render_texture_.assign(SDL_CreateTexture(
 			*window,
-			window->pixel_format(),
+			SDL_PIXELFORMAT_ARGB8888,
 			SDL_TEXTUREACCESS_TARGET,
 			test_resolution_.x, test_resolution_.y
 		));
@@ -291,7 +291,7 @@ bool update_framebuffer()
 		LOG_DP << "creating offscreen render texture";
 		render_texture_.assign(SDL_CreateTexture(
 			*window,
-			window->pixel_format(),
+			SDL_PIXELFORMAT_ARGB8888,
 			SDL_TEXTUREACCESS_TARGET,
 			osize.x, osize.y
 		));

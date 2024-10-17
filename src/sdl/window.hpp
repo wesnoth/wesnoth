@@ -183,7 +183,6 @@ public:
 	void get_logical_size(int& w, int& h) const;
 
 	/** The current pixel format of the renderer. */
-	SDL_PixelFormat pixel_format();
 
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 
@@ -202,9 +201,6 @@ private:
 
 	/** The SDL_Window we own. */
 	SDL_Window* window_;
-
-	/** The preferred pixel format for the renderer. */
-	SDL_PixelFormat pixel_format_;
 };
 
 } // namespace sdl
