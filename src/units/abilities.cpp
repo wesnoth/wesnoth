@@ -700,9 +700,9 @@ std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& k
 	int stack = 0;
 	for (const unit_ability& p : cfgs_)
 	{
-		int value = get_single_ability_value((*p.ability_cfg)[key], def, p, loc(), const_attack_ptr(), [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-			return formula.evaluate(callable).as_int();
-		});
+		int value = std::round(get_single_ability_value((*p.ability_cfg)[key], static_cast<double>(def), p, loc(), const_attack_ptr(), [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+			return std::round(formula.evaluate(callable).as_int());
+		}));
 
 		if ((*p.ability_cfg)["cumulative"].to_bool()) {
 			stack += value;
@@ -1373,9 +1373,9 @@ std::set<std::string> attack_type::alternative_damage_types() const
 /**
  * Returns the damage per attack of this weapon, considering specials.
  */
-int attack_type::modified_damage() const
+double attack_type::modified_damage() const
 {
-	int damage_value = composite_value(get_specials_and_abilities("damage"), damage());
+	double damage_value = unit_abilities::effect(get_specials_and_abilities("damage"), damage(), shared_from_this()).get_composite_double_value();
 	return damage_value;
 }
 
@@ -2452,10 +2452,10 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 
 		if(wham != EFFECT_CUMULABLE){
 			if (const config::attribute_value *v = cfg.get("value")) {
-				int value = get_single_ability_value(*v, def, ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+				int value = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 					callable.add("base_value", wfl::variant(def));
-					return formula.evaluate(callable).as_int();
-				});
+					return std::round(formula.evaluate(callable).as_int());
+				}));
 
 				int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
 				assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
@@ -2484,27 +2484,27 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 		}
 
 		if (const config::attribute_value *v = cfg.get("add")) {
-			int add = get_single_ability_value(*v, def, ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+			int add = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 				callable.add("base_value", wfl::variant(def));
-				return formula.evaluate(callable).as_int();
-			});
+				return std::round(formula.evaluate(callable).as_int());
+			}));
 			std::map<std::string,individual_effect>::iterator add_effect = values_add.find(effect_id);
 			if(add_effect == values_add.end() || add > add_effect->second.value) {
 				values_add[effect_id].set(ADD, add, ability.ability_cfg, ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("sub")) {
-			int sub = - get_single_ability_value(*v, def, ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+			int sub = - std::round(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 				callable.add("base_value", wfl::variant(def));
-				return formula.evaluate(callable).as_int();
-			});
+				return std::round(formula.evaluate(callable).as_int());
+			}));
 			std::map<std::string,individual_effect>::iterator sub_effect = values_sub.find(effect_id);
 			if(sub_effect == values_sub.end() || sub < sub_effect->second.value) {
 				values_sub[effect_id].set(ADD, sub, ability.ability_cfg, ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("multiply")) {
-			int multiply = static_cast<int>(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+			int multiply = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_decimal() / 1000.0 ;
 			}) * 100);
@@ -2514,7 +2514,7 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("divide")) {
-			int divide = static_cast<int>(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+			int divide = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_decimal() / 1000.0 ;
 			}) * 100);
@@ -2576,15 +2576,16 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 		effect_list_.push_back(val.second);
 	}
 
-	composite_value_ = static_cast<int>((value_set + addition + substraction) * multiplier / divisor);
+	composite_double_value_ = (value_set + addition + substraction) * multiplier / divisor;
 	//clamp what if min_value < max_value or one attribute only used.
 	if(max_value && min_value && *min_value < *max_value) {
-		composite_value_ = std::clamp(*min_value, *max_value, composite_value_);
+		composite_double_value_ = std::clamp(static_cast<double>(*min_value), static_cast<double>(*max_value), composite_double_value_);
 	} else if(max_value && !min_value) {
-		composite_value_ = std::min(*max_value, composite_value_);
+		composite_double_value_ = std::min(static_cast<double>(*max_value), composite_double_value_);
 	} else if(min_value && !max_value) {
-		composite_value_ = std::max(*min_value, composite_value_);
+		composite_double_value_ = std::max(static_cast<double>(*min_value), composite_double_value_);
 	}
+	composite_value_ = std::round(composite_double_value_);
 }
 
 } // end namespace unit_abilities
