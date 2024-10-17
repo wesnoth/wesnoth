@@ -1,5 +1,6 @@
 --[========[Game Interface Control]========]
 
+wesnoth.interface.queued_movements = {}
 if wesnoth.kernel_type() == "Game Lua Kernel" then
 	print("Loading interface module...")
 
@@ -36,6 +37,51 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		moving_unit:to_map(to_x, to_y)
 		wesnoth.wml_actions.redraw{}
 	end
+	---Fakes the move of a unit satisfying the given filter to position x, y.
+    ---Usable only during WML actions.
+	---Todo : maybe implement with C++.
+	---@param to_x integer
+    ---@param to_y integer
+    ---@param u unit
+	---@param queued boolean
+    function wesnoth.interface.move_unit_fake_queue(u, to_x, to_y, queued)
+        ---skip finding unit when given one
+        ---//mark the wml call in this func causes only animate now, but queue expected.
+		if to_x and to_y and u then
+			table.insert(wesnoth.interface.queued_movements, { to_x = to_x, to_y = to_y, u = u })
+		end
+		if queued then
+			return
+		end
+
+        for _index, move in ipairs(wesnoth.interface.queued_movements) do
+            local moving_unit = move.u
+            local from_x, from_y = moving_unit.x, moving_unit.y
+
+            wesnoth.interface.scroll_to_hex(from_x, from_y)
+            to_x, to_y = wesnoth.paths.find_vacant_hex(move.to_x, move.to_y, moving_unit)
+
+            if to_x < from_x then
+                moving_unit.facing = "sw"
+            elseif to_x > from_x then
+                moving_unit.facing = "se"
+            end
+            moving_unit:extract()
+
+            wesnoth.wml_actions.move_unit_fake {
+                type      = moving_unit.type,
+                gender    = moving_unit.gender,
+                variation = moving_unit.variation,
+                side      = moving_unit.side,
+                x         = from_x .. ',' .. to_x,
+                y         = from_y .. ',' .. to_y
+            }
+
+            moving_unit:to_map(to_x, to_y)
+        end
+		wesnoth.interface.queued_movements = {}
+        wesnoth.wml_actions.redraw {}
+    end
 
 	wesnoth.delay = wesnoth.deprecate_api('wesnoth.delay', 'wesnoth.interface.delay', 1, nil, wesnoth.interface.delay)
 	wesnoth.float_label = wesnoth.deprecate_api('wesnoth.float_label', 'wesnoth.interface.float_label', 1, nil, wesnoth.interface.float_label)

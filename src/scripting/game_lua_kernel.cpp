@@ -369,6 +369,26 @@ static int impl_add_animation(lua_State* L)
 	return 0;
 }
 
+//mark
+//the key to implement expectedly is about queueing the animation, and then run() execed, it will animate.
+//pretty likely that a working implementation would require digging down into the internal implementation of [move_unit_fake].
+//todo: make calls of wesnoth.wml_actions.move_unit_fake. maybe create another function to impl this.
+int game_lua_kernel::impl_add_movement(lua_State* L)
+{
+	lua_getglobal(L, "wesnoth");
+	lua_getfield(L, -1, "interface");
+	lua_getfield(L, -1, "move_unit_fake_queue");
+	luaW_pushunit(L, luaW_checkunit_ptr(L, 2, false));
+	{
+		map_location temp = luaW_checklocation(L, 3);
+		lua_pushinteger(L, temp.wml_x());
+		lua_pushinteger(L, temp.wml_y());
+	}
+	lua_pushboolean(L, true);
+	lua_call(L, 4, 0);
+	return 0;
+}
+
 int game_lua_kernel::impl_run_animation(lua_State* L)
 {
 	if(video::headless() || resources::controller->is_skipping_replay()) {
@@ -377,6 +397,14 @@ int game_lua_kernel::impl_run_animation(lua_State* L)
 	events::command_disabler command_disabler;
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
 	play_controller_.play_slice(false);
+	lua_getglobal(L, "wesnoth");
+	lua_getfield(L, -1, "interface");
+	lua_getfield(L, -1, "move_unit_fake_queue");
+	lua_pushnil(L);
+	lua_pushnil(L);
+	lua_pushnil(L);
+	lua_pushboolean(L, false);
+	lua_call(L, 4, 0);
 	anim.start_animations();
 	anim.wait_for_end();
 	anim.set_all_standing();
@@ -396,7 +424,7 @@ static int impl_animator_get(lua_State* L)
 	const char* m = lua_tostring(L, 2);
 	return luaW_getmetafield(L, 1, m);
 }
-
+//mark to add a impl_add_movement using move_unit_fake.
 int game_lua_kernel::intf_create_animator(lua_State* L)
 {
 	new(L) unit_animator;
@@ -405,6 +433,7 @@ int game_lua_kernel::intf_create_animator(lua_State* L)
 			{"__gc", impl_animator_collect},
 			{"__index", impl_animator_get},
 			{"add", impl_add_animation},
+			{"add_move", &dispatch<&game_lua_kernel::impl_add_movement>},
 			{"run", &dispatch<&game_lua_kernel::impl_run_animation>},
 			{"clear", impl_clear_animation},
 			{nullptr, nullptr},
@@ -2746,7 +2775,6 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 	if(map_locked_) {
 		return luaL_error(L, "Attempted to move a unit while the map is locked");
 	}
-
 	map_location loc;
 	if (luaW_tolocation(L, 2, loc)) {
 		if (!map().on_board(loc)) {
