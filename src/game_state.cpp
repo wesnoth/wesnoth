@@ -34,7 +34,7 @@
 #include "gui/dialogs/loading_screen.hpp"
 #include "side_controller.hpp"
 
-#include <SDL2/SDL_timer.h>
+#include <SDL3/SDL_timer.h>
 
 #include <algorithm>
 #include <set>

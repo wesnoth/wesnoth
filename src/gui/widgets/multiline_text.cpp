@@ -301,8 +301,8 @@ void multiline_text::handle_key_tab(SDL_Keymod modifier, bool& handled)
 		return;
 	}
 
-	if(modifier & KMOD_CTRL) {
-		if(!(modifier & KMOD_SHIFT)) {
+	if(modifier & SDL_KMOD_CTRL) {
+		if(!(modifier & SDL_KMOD_SHIFT)) {
 			handled = history_up();
 		} else {
 			handled = history_down();
@@ -315,7 +315,7 @@ void multiline_text::handle_key_tab(SDL_Keymod modifier, bool& handled)
 
 void multiline_text::handle_key_enter(SDL_Keymod modifier, bool& handled)
 {
-	if (is_editable() && !(modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI))) {
+	if (is_editable() && !(modifier & (SDL_KMOD_CTRL | SDL_KMOD_ALT | SDL_KMOD_GUI))) {
 		insert_char("\n");
 		handled = true;
 	}
@@ -349,7 +349,7 @@ void multiline_text::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 	offset = std::min(offset - line_start + next_line_start, next_line_end) + get_selection_length();
 
 	if (offset <= get_length()) {
-		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
+		set_cursor(offset, (modifier & SDL_KMOD_SHIFT) != 0);
 	}
 
 	update_canvas();
@@ -377,7 +377,7 @@ void multiline_text::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 
 	/* offset is unsigned int */
 	if (offset <= get_length()) {
-		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
+		set_cursor(offset, (modifier & SDL_KMOD_SHIFT) != 0);
 	}
 
 	update_canvas();

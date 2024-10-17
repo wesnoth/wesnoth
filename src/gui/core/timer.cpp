@@ -18,7 +18,7 @@
 #include "events.hpp"
 #include "gui/core/log.hpp"
 
-#include <SDL2/SDL_timer.h>
+#include <SDL3/SDL_timer.h>
 
 #include <map>
 #include <mutex>
@@ -94,7 +94,7 @@ public:
 
 extern "C" {
 
-static uint32_t timer_callback(uint32_t, void* id)
+static uint32_t timer_callback(void* id, SDL_TimerID, uint32_t)
 {
 	DBG_GUI_E << "Pushing timer event in queue.";
 	// iTunes still reports a couple of crashes here. Cannot see a problem yet.
@@ -140,8 +140,7 @@ std::size_t add_timer(const uint32_t interval,
 			++next_timer_id;
 		} while(next_timer_id == 0 || get_timers().count(next_timer_id) > 0);
 
-		timer.sdl_id = SDL_AddTimer(
-				interval, timer_callback, reinterpret_cast<void*>(next_timer_id));
+		timer.sdl_id = SDL_AddTimer(interval, timer_callback, reinterpret_cast<void*>(next_timer_id));
 	}
 
 	if(timer.sdl_id == 0) {
@@ -202,7 +201,7 @@ bool execute_timer(const std::size_t id)
 {
 	DBG_GUI_E << "Executing timer " << id << ".";
 
-	std::function<void(size_t)> callback = nullptr;
+	std::function<void(std::size_t)> callback = nullptr;
 	{
 		std::scoped_lock lock(timers_mutex);
 

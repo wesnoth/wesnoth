@@ -26,7 +26,7 @@ static lg::log_domain log_sdl("SDL");
 namespace
 {
 // The default pixel format to create textures with.
-const int default_texture_format = SDL_PIXELFORMAT_ARGB8888;
+const SDL_PixelFormat default_texture_format = SDL_PIXELFORMAT_ARGB8888;
 
 void cleanup_texture(SDL_Texture* t)
 {
@@ -41,7 +41,9 @@ texture::texture(SDL_Texture* txt)
 	: texture_(txt, &cleanup_texture)
 {
 	if (txt) {
-		SDL_QueryTexture(txt, nullptr, nullptr, &w_, &h_);
+		SDL_PropertiesID props = SDL_GetTextureProperties(txt);
+		w_ = SDL_GetNumberProperty(props, SDL_PROP_TEXTURE_WIDTH_NUMBER, 0);
+		h_ = SDL_GetNumberProperty(props, SDL_PROP_TEXTURE_HEIGHT_NUMBER, 0);
 		finalize();
 	}
 }
@@ -62,14 +64,11 @@ texture::texture(const surface& surf, bool linear_interpolation)
 		return;
 	}
 
-	// Filtering mode must be set before texture creation.
-	const char* scale_quality = linear_interpolation ? "linear" : "nearest";
-	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, scale_quality);
-
 	texture_.reset(SDL_CreateTextureFromSurface(renderer, surf), &cleanup_texture);
 	if(!texture_) {
 		ERR_SDL << "When creating texture from surface: " << SDL_GetError();
 	}
+	SDL_SetTextureScaleMode(texture_.get(), linear_interpolation ? SDL_SCALEMODE_LINEAR : SDL_SCALEMODE_NEAREST);
 
 	w_ = surf->w; h_ = surf->h;
 
@@ -89,35 +88,35 @@ void texture::finalize()
 
 uint32_t texture::get_format() const
 {
-	uint32_t ret;
 	if(texture_) {
-		SDL_QueryTexture(texture_.get(), &ret, nullptr, nullptr, nullptr);
+		SDL_PropertiesID props = SDL_GetTextureProperties(texture_.get());
+		return SDL_GetNumberProperty(props, SDL_PROP_TEXTURE_FORMAT_NUMBER, 0);
 	} else {
-		ret = SDL_PIXELFORMAT_UNKNOWN;
+		return SDL_PIXELFORMAT_UNKNOWN;
 	}
-	return ret;
 }
 
 int texture::get_access() const
 {
-	int ret;
 	if(texture_) {
-		SDL_QueryTexture(texture_.get(), nullptr, &ret, nullptr, nullptr);
+		SDL_PropertiesID props = SDL_GetTextureProperties(texture_.get());
+		return SDL_GetNumberProperty(props, SDL_PROP_TEXTURE_ACCESS_NUMBER, 0);
 	} else {
-		ret = -1;
+		return -1;
 	}
-	return ret;
 }
 
 point texture::get_raw_size() const
 {
-	point ret;
 	if(texture_) {
-		SDL_QueryTexture(texture_.get(), nullptr, nullptr, &ret.x, &ret.y);
+		SDL_PropertiesID props = SDL_GetTextureProperties(texture_.get());
+		return {
+			static_cast<int>(SDL_GetNumberProperty(props, SDL_PROP_TEXTURE_WIDTH_NUMBER, 0)),
+			static_cast<int>(SDL_GetNumberProperty(props, SDL_PROP_TEXTURE_HEIGHT_NUMBER, 0))
+		};
 	} else {
-		ret = {0, 0};
+		return {0, 0};
 	}
-	return ret;
 }
 
 void texture::set_draw_size(const point& p)
@@ -240,7 +239,9 @@ void texture::assign(SDL_Texture* t)
 {
 	texture_.reset(t, &cleanup_texture);
 	if (t) {
-		SDL_QueryTexture(t, nullptr, nullptr, &w_, &h_);
+		SDL_PropertiesID props = SDL_GetTextureProperties(texture_.get());
+		w_ = SDL_GetNumberProperty(props, SDL_PROP_TEXTURE_WIDTH_NUMBER, 0);
+		h_ = SDL_GetNumberProperty(props, SDL_PROP_TEXTURE_HEIGHT_NUMBER, 0);
 	} else {
 		w_ = 0;
 		h_ = 0;
@@ -255,6 +256,10 @@ texture::info::info(SDL_Texture* t)
 	, h(0)
 {
 	if (t) {
-		SDL_QueryTexture(t, &format, &access, &w, &h);
+		SDL_PropertiesID props = SDL_GetTextureProperties(t);
+		format =  SDL_GetNumberProperty(props, SDL_PROP_TEXTURE_FORMAT_NUMBER, 0);
+		access = SDL_GetNumberProperty(props, SDL_PROP_TEXTURE_ACCESS_NUMBER, 0);
+		w = SDL_GetNumberProperty(props, SDL_PROP_TEXTURE_WIDTH_NUMBER, 0);
+		h = SDL_GetNumberProperty(props, SDL_PROP_TEXTURE_HEIGHT_NUMBER, 0);
 	}
 }

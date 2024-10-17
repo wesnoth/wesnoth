@@ -41,7 +41,7 @@ struct driver_status
 {
 	bool initialized;
 	int frequency;
-	uint16_t format;
+	SDL_AudioFormat format;
 	int channels;
 	int chunk_size;
 

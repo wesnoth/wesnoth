@@ -12,7 +12,8 @@
 	See the COPYING file for more details.
 */
 
-#include <SDL2/SDL.h>
+#include <SDL3/SDL.h>
+#include <SDL3_mixer/SDL_mixer.h>
 
 int main(int, char**)
 {

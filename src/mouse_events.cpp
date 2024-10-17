@@ -103,7 +103,11 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 {
 	// Frankensteining from mouse_motion(), as it has a lot in common, but a lot of differences too.
 	// Copy-pasted from everywhere. TODO: generalize the two.
-	sdl::get_mouse_state(&x,&y);
+	float fx;
+	float fy;
+	sdl::get_mouse_state(&fx,&fy);
+	x = fx;
+	y = fy;
 
 	// This is from mouse_handler_base::mouse_motion_default()
 	tooltips::process(x, y);
@@ -128,8 +132,8 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 
 	// Fire the drag & drop only after minimal drag distance
 	// While we check the mouse buttons state, we also grab fresh position data.
-	int mx = drag_from_x_; // some default value to prevent unlikely SDL bug
-	int my = drag_from_y_;
+	float mx = drag_from_x_; // some default value to prevent unlikely SDL bug
+	float my = drag_from_y_;
 	if(is_dragging() && !dragging_started_) {
 		if(dragging_touch_) {
 			sdl::get_mouse_state(&mx, &my);
@@ -394,7 +398,11 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 	// to highlight all the hexes where the mouse passed.
 	// Also, sometimes it seems to have one *very* obsolete
 	// and isolated mouse motion event when using drag&drop
-	sdl::get_mouse_state(&x, &y); // <-- modify x and y
+	float fx;
+	float fy;
+	sdl::get_mouse_state(&fx, &fy); // <-- modify x and y
+	fx = x;
+	fy = y;
 
 	if(mouse_handler_base::mouse_motion_default(x, y, update)) {
 		return;
@@ -616,12 +624,12 @@ bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_
 
 	if (gui().view_locked() || button < SDL_BUTTON_LEFT || button > buttons.size()) {
 		return false;
-	} else if (event.state > SDL_PRESSED || !gui().get_map().on_board(loc)) {
+	} else if (!gui().get_map().on_board(loc)) {
 		return false;
 	}
 
 	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
-		lk->mouse_button_callback(loc, buttons[button], (event.state == SDL_RELEASED ? "up" : "down"));
+		lk->mouse_button_callback(loc, buttons[button], (event.down ? "down" : "up"));
 
 		// Are we being asked to send a click event?
 		if (click) {
@@ -675,8 +683,8 @@ const unit* mouse_handler::find_unit_nonowning(const map_location& hex) const
 
 const map_location mouse_handler::hovered_hex() const
 {
-	int x = -1;
-	int y = -1;
+	float x = -1;
+	float y = -1;
 	sdl::get_mouse_state(&x, &y);
 	return gui_->hex_clicked_on(x, y);
 }
