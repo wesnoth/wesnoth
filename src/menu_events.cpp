@@ -142,7 +142,7 @@ void menu_handler::status_table()
 {
 	int selected_side;
 
-	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team_index(), selected_side)) {
+	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team(), selected_side)) {
 		gui_->scroll_to_leader(selected_side);
 	}
 }
