@@ -356,7 +356,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 			text_height = 0;
 
 			// init table vars
-			unsigned col_idx = 0, row_idx = 0;
+			unsigned col_idx = 0;
 			unsigned rows = child.child_count("row");
 			unsigned columns = 1;
 			if (rows > 0) {
@@ -401,13 +401,11 @@ std::pair<config, point> rich_label::get_parsed_text(
 					col_idx++;
 				}
 
-				row_idx++;
 				row_y += max_row_height + padding_;
 			}
 
 			// table layouting
 			row_y = prev_blk_height;
-			row_idx = 0;
 			for(const config& row : child.child_range("row")) {
 				col_x = 0;
 				col_idx = 0;
