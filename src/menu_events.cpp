@@ -838,8 +838,9 @@ void menu_handler::clear_labels()
 		);
 
 		if(res == gui2::retval::OK) {
-			gui_->labels().clear(gui_->current_team_name(), false);
-			resources::recorder->clear_labels(gui_->current_team_name(), false);
+			std::string viewing_team = gui_->viewing_team().team_name();
+			gui_->labels().clear(viewing_team, false);
+			resources::recorder->clear_labels(viewing_team, false);
 		}
 	}
 }

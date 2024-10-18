@@ -50,8 +50,6 @@ static lg::log_domain log_display("display");
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-std::map<map_location, int> game_display::debugHighlights_;
-
 /**
  * Function to return 2 half-hex footsteps images for the given location.
  * Only loc is on the current route set by set_route.
@@ -325,14 +323,6 @@ void game_display::draw_hex(const map_location& loc)
 	if(!is_shrouded && on_map) {
 		draw_movement_info(loc);
 	}
-
-	if(game_config::debug) {
-		int debugH = debugHighlights_[loc];
-		if (debugH) {
-			std::string txt = std::to_string(debugH);
-			draw_text_in_hex(loc, drawing_layer::move_info, txt, 18, font::BAD_COLOR);
-		}
-	}
 }
 
 const time_of_day& game_display::get_time_of_day(const map_location& loc) const
@@ -601,12 +591,6 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 	font::add_floating_label(flabel);
 }
 
-int& game_display::debug_highlight(const map_location& loc)
-{
-	assert(game_config::debug);
-	return debugHighlights_[loc];
-}
-
 void game_display::set_attack_indicator(const map_location& src, const map_location& dst)
 {
 	if (attack_indicator_src_ != src || attack_indicator_dst_ != dst) {
@@ -624,11 +608,6 @@ void game_display::set_attack_indicator(const map_location& src, const map_locat
 void game_display::clear_attack_indicator()
 {
 	set_attack_indicator(map_location::null_location(), map_location::null_location());
-}
-
-std::string game_display::current_team_name() const
-{
-	return viewing_team().team_name();
 }
 
 void game_display::begin_game()

@@ -187,20 +187,7 @@ public:
 			attack_indicator_src_.get_relative_dir(attack_indicator_dst_));
 	}
 
-	// Functions used in the editor:
-
-	//void draw_terrain_palette(int x, int y, terrain_type::TERRAIN selected);
-	t_translation::terrain_code get_terrain_on(int palx, int paly, int x, int y);
-
 	virtual const map_location &displayed_unit_hex() const override { return displayedUnitHex_; }
-
-	/**
-	 * annotate hex with number, useful for debugging or UI prototype
-	 */
-	static int& debug_highlight(const map_location& loc);
-	static void clear_debug_highlights() { debugHighlights_.clear(); }
-
-	std::string current_team_name() const;
 
 	display_chat_manager & get_chat_manager() { return *chat_man_; }
 
@@ -247,9 +234,6 @@ private:
 	const std::unique_ptr<display_chat_manager> chat_man_;
 
 	game_mode mode_;
-
-	// For debug mode
-	static std::map<map_location, int> debugHighlights_;
 
 	bool needs_rebuild_;
 
