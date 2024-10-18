@@ -27,11 +27,8 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 
-namespace actions
+namespace actions::undo
 {
-namespace undo
-{
-
 move_action::move_action(const unit_const_ptr moved,
 			const std::vector<map_location>::const_iterator & begin,
 			const std::vector<map_location>::const_iterator & end,
@@ -130,6 +127,4 @@ bool move_action::undo(int)
 	return true;
 }
 
-
-}
 }

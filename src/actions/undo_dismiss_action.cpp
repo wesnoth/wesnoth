@@ -18,9 +18,7 @@
 #include "team.hpp"
 #include "units/unit.hpp"
 
-namespace actions
-{
-namespace undo
+namespace actions::undo
 {
 dismiss_action::dismiss_action(const unit_const_ptr dismissed)
 	: undo_action()
@@ -56,5 +54,4 @@ bool dismiss_action::undo(int side)
 	return true;
 }
 
-}
 }

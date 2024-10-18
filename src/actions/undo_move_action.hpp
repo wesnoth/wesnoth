@@ -18,11 +18,8 @@
 #include "shroud_clearing_action.hpp"
 #include "units/ptr.hpp"
 
-namespace actions
+namespace actions::undo
 {
-namespace undo
-{
-
 struct move_action : undo_action, shroud_clearing_action
 {
 	int starting_moves;
@@ -54,5 +51,4 @@ struct move_action : undo_action, shroud_clearing_action
 	virtual bool undo(int side);
 };
 
-}
 }

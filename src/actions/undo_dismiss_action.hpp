@@ -16,11 +16,8 @@
 
 #include "undo_action.hpp"
 
-namespace actions
+namespace actions::undo
 {
-namespace undo
-{
-
 struct dismiss_action : undo_action
 {
 	unit_ptr dismissed_unit;
@@ -38,5 +35,4 @@ struct dismiss_action : undo_action
 	virtual bool undo(int side);
 };
 
-}
 }
