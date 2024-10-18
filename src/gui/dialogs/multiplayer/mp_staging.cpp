@@ -470,6 +470,8 @@ void mp_staging::on_side_slider_change(ng::side_engine_ptr side, slider& slider)
 
 void mp_staging::update_leader_display(ng::side_engine_ptr side, grid& row_grid)
 {
+	const std::string current_faction = side->flg().current_faction()["name"];
+
 	// BIG FAT TODO: get rid of this shitty "null" string value in the FLG manager
 	std::string current_leader = side->flg().current_leader() != "null" ? side->flg().current_leader() : font::unicode_em_dash;
 	const std::string current_gender = side->flg().current_gender() != "null" ? side->flg().current_gender() : font::unicode_em_dash;

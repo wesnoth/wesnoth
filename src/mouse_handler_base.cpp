@@ -44,7 +44,7 @@ int commands_disabled = 0;
 static bool command_active()
 {
 #ifdef __APPLE__
-	return (SDL_GetModState() & KMOD_CTRL) != 0;
+	return (SDL_GetModState() & SDL_KMOD_CTRL) != 0;
 #else
 	return false;
 #endif
@@ -92,9 +92,9 @@ void mouse_handler_base::touch_motion_event(const SDL_TouchFingerEvent& event, c
 
 void mouse_handler_base::mouse_update(const bool browse, map_location loc)
 {
-	int x, y;
+	float x, y;
 	sdl::get_mouse_state(&x, &y);
-	mouse_motion(x, y, browse, true, loc);
+	mouse_motion(static_cast<int>(x), static_cast<int>(y), browse, true, loc);
 }
 
 bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
@@ -109,7 +109,7 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 		// if the game is run in a window, we could miss a LMB/MMB up event
 		// if it occurs outside our window.
 		// thus, we need to check if the LMB/MMB is still down
-		minimap_scrolling_ = ((sdl::get_mouse_button_mask() & (SDL_BUTTON(SDL_BUTTON_LEFT) | SDL_BUTTON(SDL_BUTTON_MIDDLE))) != 0);
+		minimap_scrolling_ = ((sdl::get_mouse_button_mask() & (SDL_BUTTON_MASK(SDL_BUTTON_LEFT) | SDL_BUTTON_MASK(SDL_BUTTON_MIDDLE))) != 0);
 		if(minimap_scrolling_) {
 			const map_location& loc = gui().minimap_location_on(x, y);
 			if(loc.valid()) {
@@ -130,8 +130,8 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 
 	// Fire the drag & drop only after minimal drag distance
 	// While we check the mouse buttons state, we also grab fresh position data.
-	int mx = drag_from_x_; // some default value to prevent unlikely SDL bug
-	int my = drag_from_y_;
+	float mx = static_cast<float>(drag_from_x_); // some default value to prevent unlikely SDL bug
+	float my = static_cast<float>(drag_from_y_);
 
 	if(is_dragging() && !dragging_started_) {
 		Uint32 mouse_state = dragging_left_ || dragging_right_ ? sdl::get_mouse_state(&mx, &my) : 0;
@@ -141,8 +141,8 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 			mouse_state = SDL_BUTTON(SDL_BUTTON_LEFT);
 		}
 #endif
-		if((dragging_left_  && (mouse_state & SDL_BUTTON(SDL_BUTTON_LEFT))  != 0) ||
-		   (dragging_right_ && (mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT)) != 0))
+		if((dragging_left_  && (mouse_state & SDL_BUTTON_MASK(SDL_BUTTON_LEFT))  != 0) ||
+		   (dragging_right_ && (mouse_state & SDL_BUTTON_MASK(SDL_BUTTON_RIGHT)) != 0))
 		{
 			const double drag_distance =
 					std::pow(static_cast<double>(drag_from_x_- mx), 2) +
@@ -182,14 +182,14 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	static clock_t touch_timestamp = 0;
 
 	if(is_touch_click(event)) {
-		if (event.state == SDL_PRESSED) {
+		if (event.down == true) {
 			cancel_dragging();
 			touch_timestamp = clock();
 			init_dragging(dragging_touch_);
 			if (!mouse_button_event(event, SDL_BUTTON_LEFT, loc, true)) {
 				left_click(event.x, event.y, browse);
 			}
-		} else if (event.state == SDL_RELEASED) {
+		} else if (event.down == false) {
 			minimap_scrolling_ = false;
 
 			if (!dragging_started_ && touch_timestamp > 0) {
@@ -210,13 +210,13 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			clear_drag_from_hex();
 		}
 	} else if(is_left_click(event)) {
-		if(event.state == SDL_PRESSED) {
+		if(event.down == true) {
 			cancel_dragging();
 			init_dragging(dragging_left_);
 			if (!mouse_button_event(event, SDL_BUTTON_LEFT, loc, true)) {
 				left_click(event.x, event.y, browse);
 			}
-		} else if(event.state == SDL_RELEASED) {
+		} else if(event.down == false) {
 			minimap_scrolling_ = false;
 			clear_dragging(event, browse);
 			mouse_button_event(event, SDL_BUTTON_LEFT, loc);
@@ -224,12 +224,12 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			clear_drag_from_hex();
 		}
 	} else if(is_right_click(event)) {
-		if(event.state == SDL_PRESSED) {
+		if(event.down == true) {
 			mouse_button_event(event, SDL_BUTTON_RIGHT, loc);
 			cancel_dragging();
 			init_dragging(dragging_right_);
 			right_click(event.x, event.y, browse);
-		} else if(event.state == SDL_RELEASED) {
+		} else if(event.down == false) {
 			minimap_scrolling_ = false;
 			clear_dragging(event, browse);
 			if (!mouse_button_event(event, SDL_BUTTON_RIGHT, loc, true)) {
@@ -238,7 +238,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			clear_drag_from_hex();
 		}
 	} else if(is_middle_click(event)) {
-		if(event.state == SDL_PRESSED) {
+		if(event.down == true) {
 			drag_from_hex_ = loc;
 			set_scroll_start(event.x, event.y);
 			scroll_started_ = true;
@@ -263,7 +263,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 				// Deselect the current tile as we're scrolling
 				gui().highlight_hex({-1,-1});
 			}
-		} else if(event.state == SDL_RELEASED) {
+		} else if(!event.down) {
 			minimap_scrolling_ = false;
 			simple_warp_ = false;
 			scroll_started_ = false;
@@ -271,7 +271,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			clear_drag_from_hex();
 		}
 	} else if(event.button == SDL_BUTTON_X1 || event.button == SDL_BUTTON_X2) {
-		if(event.state == SDL_PRESSED) {
+		if(event.down) {
 			cancel_dragging();
 			// record mouse-down hex in drag_from_hex_
 			drag_from_hex_ = loc;
@@ -356,7 +356,7 @@ void mouse_handler_base::left_drag_end(int /*x*/, int /*y*/, const bool browse)
 
 void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 {
-	int x, y;
+	float x, y;
 	sdl::get_mouse_state(&x, &y);
 
 	int movex = scrollx * prefs::get().scroll_speed();

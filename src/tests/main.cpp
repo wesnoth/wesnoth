@@ -30,7 +30,7 @@
 
 #include <fstream>
 
-#include <SDL2/SDL.h>
+#include <SDL3/SDL.h>
 
 #include "filesystem.hpp"
 #include "game_config.hpp"
@@ -83,7 +83,6 @@ struct wesnoth_global_fixture {
 		events::event_context global_context;
 
 		// Initialize unit tests
-		SDL_Init(SDL_INIT_TIMER);
 		test_utils::get_fake_display(1024, 768);
 
 		gui2::init();

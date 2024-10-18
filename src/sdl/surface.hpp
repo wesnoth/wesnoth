@@ -17,7 +17,7 @@
 #include "sdl/rect.hpp"
 #include "utils/const_clone.hpp"
 
-#include <SDL2/SDL.h>
+#include <SDL3/SDL.h>
 
 #include <ostream>
 
@@ -159,24 +159,24 @@ struct clip_rect_setter
 	clip_rect_setter(const surface &surf, const SDL_Rect* r, bool operate = true) : surface_(surf), rect_(), operate_(operate)
 	{
 		if(operate_ && surface_.get()){
-			SDL_GetClipRect(surface_, &rect_);
+			SDL_GetSurfaceClipRect(surface_, &rect_);
 			SDL_Rect final_rect = { 0, 0, 0, 0 };
 
 			if(r) {
-				SDL_IntersectRect(&rect_, r, &final_rect);
+				SDL_GetRectIntersection(&rect_, r, &final_rect);
 			} else {
 				final_rect.w = surface_->w;
 				final_rect.h = surface_->h;
 			}
 
-			SDL_SetClipRect(surface_, &final_rect);
+			SDL_SetSurfaceClipRect(surface_, &final_rect);
 		}
 	}
 
 	~clip_rect_setter()
 	{
 		if(operate_ && surface_.get()) {
-			SDL_SetClipRect(surface_, &rect_);
+			SDL_SetSurfaceClipRect(surface_, &rect_);
 		}
 	}
 

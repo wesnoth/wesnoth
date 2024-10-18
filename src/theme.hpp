@@ -27,7 +27,7 @@
 #include "sdl/rect.hpp"
 
 #include <memory>
-#include <SDL2/SDL_rect.h>
+#include <SDL3/SDL_rect.h>
 
 class game_config_view;
 

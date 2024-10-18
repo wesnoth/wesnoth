@@ -18,7 +18,7 @@
 
 #include "map/location.hpp"
 
-#include <SDL2/SDL_events.h>
+#include <SDL3/SDL_events.h>
 
 class display;
 
@@ -239,10 +239,10 @@ protected:
 	bool dragging_right_;
 
 	/** Drag start position x */
-	int drag_from_x_;
+	float drag_from_x_;
 
 	/** Drag start position y */
-	int drag_from_y_;
+	float drag_from_y_;
 
 	/** Drag start or mouse-down map location */
 	map_location drag_from_hex_;
