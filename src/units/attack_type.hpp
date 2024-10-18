@@ -112,7 +112,7 @@ public:
 	std::set<std::string> alternative_damage_types() const;
 
 	/** Returns the damage per attack of this weapon, considering specials. */
-	int modified_damage() const;
+	double modified_damage() const;
 
 	/** Return the special weapon value, considering specials.
 	 * @param abil_list The list of special checked.
