@@ -121,7 +121,6 @@ namespace game_config
 			mouseover,
 			selected,
 			editor_brush,
-			unreachable,
 			linger,
 			// GUI elements
 			observer,
@@ -141,7 +140,7 @@ namespace game_config
 	} //images
 
 
-	extern std::string shroud_prefix, fog_prefix;
+	extern std::string shroud_prefix, fog_prefix, reach_map_prefix;
 
 	extern double hp_bar_scaling, xp_bar_scaling;
 

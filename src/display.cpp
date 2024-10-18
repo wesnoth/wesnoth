@@ -850,6 +850,11 @@ gui::button::TYPE string_to_button_type(const std::string& type)
 		return gui::button::TYPE_PRESS;
 	}
 }
+} // namespace
+namespace display_direction
+{
+
+	// named namespace called in game_display.cpp
 
 const std::string& get_direction(std::size_t n)
 {
@@ -857,7 +862,7 @@ const std::string& get_direction(std::size_t n)
 	static const std::array dirs{"-n"s, "-ne"s, "-se"s, "-s"s, "-sw"s, "-nw"s};
 	return dirs[n >= dirs.size() ? 0 : n];
 }
-} // namespace
+} // namespace display_direction
 
 void display::create_buttons()
 {
@@ -968,6 +973,7 @@ void display::unhide_buttons()
 
 std::vector<texture> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
 {
+	using namespace display_direction;
 	std::vector<std::string> names;
 	const auto adjacent = get_adjacent_tiles(loc);
 
@@ -3302,7 +3308,7 @@ void display::process_reachmap_changes()
 
 		for (const auto& hex : get_visible_hexes()) {
 			reach_map::iterator reach = full.find(hex);
-			if (reach == full.end()) {
+			if (reach != full.end()) {
 				// Location needs to be darkened or brightened
 				invalidate(hex);
 			} else if (reach->second != 1) {
@@ -3311,18 +3317,10 @@ void display::process_reachmap_changes()
 			}
 		}
 	} else if (!reach_map_.empty()) {
-		// Invalidate only changes
+		// Invalidate new and old reach
 		reach_map::iterator reach, reach_old;
 		for (reach = reach_map_.begin(); reach != reach_map_.end(); ++reach) {
-			reach_old = reach_map_old_.find(reach->first);
-			if (reach_old == reach_map_old_.end()) {
-				invalidate(reach->first);
-			} else {
-				if (reach_old->second != reach->second) {
-					invalidate(reach->first);
-				}
-				reach_map_old_.erase(reach_old);
-			}
+			invalidate(reach->first);
 		}
 		for (reach_old = reach_map_old_.begin(); reach_old != reach_map_old_.end(); ++reach_old) {
 			invalidate(reach_old->first);
