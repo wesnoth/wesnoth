@@ -488,16 +488,22 @@ std::ostream& operator<<(std::ostream& o, const server::request& r)
 
 void server::handle_new_client(tls_socket_ptr socket)
 {
-	boost::asio::spawn(io_service_, [this, socket](boost::asio::yield_context yield) {
-		serve_requests(socket, yield);
-	});
+	boost::asio::spawn(
+		io_service_, [this, socket](boost::asio::yield_context yield) { serve_requests(socket, yield); }
+#if BOOST_VERSION >= 108000
+		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+#endif
+	);
 }
 
 void server::handle_new_client(socket_ptr socket)
 {
-	boost::asio::spawn(io_service_, [this, socket](boost::asio::yield_context yield) {
-		serve_requests(socket, yield);
-	});
+	boost::asio::spawn(
+		io_service_, [this, socket](boost::asio::yield_context yield) { serve_requests(socket, yield); }
+#if BOOST_VERSION >= 108000
+		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+#endif
+	);
 }
 
 template<class Socket>
