@@ -47,32 +47,31 @@ terrain_filter::~terrain_filter()
 {
 }
 
-terrain_filter::terrain_filter(const vconfig& cfg, const filter_context * fc, const bool flat_tod) :
-	cfg_(cfg),
-	fc_(fc),
-	cache_(),
-	max_loop_(game_config::max_loop),
-	flat_(flat_tod)
+terrain_filter::terrain_filter(const vconfig& cfg, const filter_context* fc, const bool flat_tod)
+	: cfg_(cfg)
+	, fc_(fc)
+	, cache_()
+	, max_loop_(game_config::max_loop)
+	, flat_(flat_tod)
 {
 }
 
-terrain_filter::terrain_filter(const vconfig& cfg, const terrain_filter& original) :
-	cfg_(cfg),
-	fc_(original.fc_),
-	cache_(),
-	max_loop_(original.max_loop_),
-	flat_(original.flat_)
+terrain_filter::terrain_filter(const vconfig& cfg, const terrain_filter& original)
+	: cfg_(cfg)
+	, fc_(original.fc_)
+	, cache_()
+	, max_loop_(original.max_loop_)
+	, flat_(original.flat_)
 {
 }
 
-terrain_filter::terrain_filter(const terrain_filter& other) :
-	xy_pred(), // We should construct this too, since it has no datamembers
-	           // use the default constructor.
-	cfg_(other.cfg_),
-	fc_(other.fc_),
-	cache_(),
-	max_loop_(other.max_loop_),
-	flat_(other.flat_)
+terrain_filter::terrain_filter(const terrain_filter& other)
+	: xy_pred() // We should construct this too, since it has no datamembers use the default constructor.
+	, cfg_(other.cfg_)
+	, fc_(other.fc_)
+	, cache_()
+	, max_loop_(other.max_loop_)
+	, flat_(other.flat_)
 {
 }
 
@@ -86,12 +85,13 @@ terrain_filter& terrain_filter::operator=(const terrain_filter& other)
 	return *this ;
 }
 
-terrain_filter::terrain_filter_cache::terrain_filter_cache() :
-	parsed_terrain(nullptr),
-	adjacent_matches(nullptr),
-	adjacent_match_cache(),
-	ufilter_()
-{}
+terrain_filter::terrain_filter_cache::terrain_filter_cache()
+	: parsed_terrain(nullptr)
+	, adjacent_matches(nullptr)
+	, adjacent_match_cache()
+	, ufilter_()
+{
+}
 
 bool terrain_filter::match_internal(const map_location& loc, const unit* ref_unit, const bool ignore_xy) const
 {

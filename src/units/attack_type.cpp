@@ -47,29 +47,29 @@ static lg::log_domain log_unit("unit");
 static lg::log_domain log_wml("wml");
 #define ERR_WML LOG_STREAM(err, log_wml)
 
-attack_type::attack_type(const config& cfg) :
-	self_loc_(),
-	other_loc_(),
-	is_attacker_(false),
-	other_attack_(nullptr),
-	description_(cfg["description"].t_str()),
-	id_(cfg["name"]),
-	type_(cfg["type"]),
-	icon_(cfg["icon"]),
-	range_(cfg["range"]),
-	min_range_(cfg["min_range"].to_int(1)),
-	max_range_(cfg["max_range"].to_int(1)),
-	alignment_str_(cfg["alignment"].str()),
-	damage_(cfg["damage"].to_int()),
-	num_attacks_(cfg["number"].to_int()),
-	attack_weight_(cfg["attack_weight"].to_double(1.0)),
-	defense_weight_(cfg["defense_weight"].to_double(1.0)),
-	accuracy_(cfg["accuracy"].to_int()),
-	movement_used_(cfg["movement_used"].to_int(100000)),
-	attacks_used_(cfg["attacks_used"].to_int(1)),
-	parry_(cfg["parry"].to_int()),
-	specials_(cfg.child_or_empty("specials")),
-	changed_(true)
+attack_type::attack_type(const config& cfg)
+	: self_loc_()
+	, other_loc_()
+	, is_attacker_(false)
+	, other_attack_(nullptr)
+	, description_(cfg["description"].t_str())
+	, id_(cfg["name"])
+	, type_(cfg["type"])
+	, icon_(cfg["icon"])
+	, range_(cfg["range"])
+	, min_range_(cfg["min_range"].to_int(1))
+	, max_range_(cfg["max_range"].to_int(1))
+	, alignment_str_(cfg["alignment"].str())
+	, damage_(cfg["damage"].to_int())
+	, num_attacks_(cfg["number"].to_int())
+	, attack_weight_(cfg["attack_weight"].to_double(1.0))
+	, defense_weight_(cfg["defense_weight"].to_double(1.0))
+	, accuracy_(cfg["accuracy"].to_int())
+	, movement_used_(cfg["movement_used"].to_int(100000))
+	, attacks_used_(cfg["attacks_used"].to_int(1))
+	, parry_(cfg["parry"].to_int())
+	, specials_(cfg.child_or_empty("specials"))
+	, changed_(true)
 {
 	if (description_.empty())
 		description_ = translation::egettext(id_.c_str());
