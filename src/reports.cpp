@@ -777,7 +777,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 	{
 		auto ctx = at.specials_context(u.shared_from_this(), hex, u.side() == rc.screen().playing_team().side());
 		int base_damage = at.damage();
-		int specials_damage = at.modified_damage();
+		double specials_damage = at.modified_damage();
 		int damage_multiplier = 100;
 		const_attack_ptr weapon  = at.shared_from_this();
 		unit_alignments::type attack_alignment = weapon->alignment();
@@ -790,7 +790,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		bool slowed = u.get_state(unit::STATE_SLOWED);
 		int damage_divisor = slowed ? 20000 : 10000;
 		// Assume no specific resistance (i.e. multiply by 100).
-		damage = round_damage(specials_damage, damage_multiplier * 100, damage_divisor);
+		damage = static_cast<int>(std::round(round_damage(specials_damage, damage_multiplier * 100, damage_divisor)));
 
 		// Hit points are used to calculate swarm, so they need to be bounded.
 		unsigned max_hp = u.max_hitpoints();

@@ -181,7 +181,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	chance_to_hit = std::clamp(cth, 0, 100);
 
 	// Compute base damage done with the weapon.
-	int base_damage = weapon->modified_damage();
+	double base_damage = weapon->modified_damage();
 
 	// Get the damage multiplier applied to the base damage of the weapon.
 	int damage_multiplier = 100;
@@ -200,8 +200,8 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc, opp_weapon);
 
 	// Compute both the normal and slowed damage.
-	damage = round_damage(base_damage, damage_multiplier, 10000);
-	slow_damage = round_damage(base_damage, damage_multiplier, 20000);
+	damage = static_cast<int>(std::round(round_damage(base_damage, damage_multiplier, 10000)));
+	slow_damage = static_cast<int>(std::round(round_damage(base_damage, damage_multiplier, 20000)));
 
 	if(is_slowed) {
 		damage = slow_damage;
@@ -314,14 +314,14 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 
 	chance_to_hit = std::clamp(cth, 0, 100);
 
-	int base_damage = weapon->modified_damage();
+	double base_damage = weapon->modified_damage();
 	int damage_multiplier = 100;
 	damage_multiplier
 			+= generic_combat_modifier(lawful_bonus, weapon->alignment(), u_type->musthave_status("fearless"), 0);
 	damage_multiplier *= opp_type->resistance_against(weapon->type(), !attacking);
 
-	damage = round_damage(base_damage, damage_multiplier, 10000);
-	slow_damage = round_damage(base_damage, damage_multiplier, 20000);
+	damage = static_cast<int>(std::round(round_damage(base_damage, damage_multiplier, 10000)));
+	slow_damage = static_cast<int>(std::round(round_damage(base_damage, damage_multiplier, 20000)));
 
 	if(drains) {
 		// Compute the drain percent (with 50% as the base for backward compatibility)
