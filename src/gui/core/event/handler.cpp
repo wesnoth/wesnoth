@@ -59,7 +59,7 @@ namespace event
 
 /***** Static data. *****/
 static std::unique_ptr<class sdl_event_handler> handler_ = nullptr;
-static events::event_context* event_context = nullptr;
+static std::unique_ptr<events::event_context> event_context = nullptr;
 
 #ifdef MAIN_EVENT_HANDLER
 static unsigned draw_interval = 0;
@@ -532,7 +532,7 @@ void sdl_event_handler::connect(dispatcher* dispatcher)
 
 	if(dispatchers_.empty()) {
 		LOG_GUI_E << "creating new dispatcher event context";
-		event_context = new events::event_context();
+		event_context = std::make_unique<events::event_context>();
 		join();
 	}
 
@@ -567,7 +567,6 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 	if(dispatchers_.empty()) {
 		LOG_GUI_E << "deleting unused dispatcher event context";
 		leave();
-		delete event_context;
 		event_context = nullptr;
 	}
 }

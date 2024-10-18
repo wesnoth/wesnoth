@@ -409,12 +409,6 @@ window::~window()
 	if(!hidden_) {
 		queue_redraw();
 	}
-
-#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-
-	delete debug_layout_;
-
-#endif
 }
 
 window* window::window_instance(const unsigned handle)
