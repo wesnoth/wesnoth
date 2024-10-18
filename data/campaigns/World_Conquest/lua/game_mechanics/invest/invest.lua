@@ -137,7 +137,7 @@ function wc2_invest.invest()
 	local heroes_available = stringx.split(side.variables["wc2.heroes"] or "")
 	local commanders_available = stringx.split(side.variables["wc2.commanders"] or "")
 	local deserters_available = stringx.split(side.variables["wc2.deserters"] or "")
-	local trainings_available = wc2_training.list_available(side_num, {2,3,4,5,6})
+	local trainings_available = wc2_training.list_available(side_num)
 	local gold_available = true
 	for i = 1,2 do
 		local is_local = false
