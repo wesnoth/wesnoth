@@ -82,7 +82,6 @@
 		46406DF1230DA73E0069492E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C58BBDF21822A930078D25A /* Security.framework */; };
 		4649B87A202886F000827CFB /* test_irdya_date.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4649B879202886F000827CFB /* test_irdya_date.cpp */; };
 		4649B87B20288CBB00827CFB /* manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA556251E7B5DA5006E907D /* manager.cpp */; };
-		4649B87C20288D2F00827CFB /* make.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF44F681FC8A82A00B404D6 /* make.cpp */; };
 		4649B87D20288D8300827CFB /* irdya_datetime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */; };
 		4649B87E20288DC000827CFB /* random_deterministic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0680231EA920A300EEE03B /* random_deterministic.cpp */; };
 		4649B87F20288DC300827CFB /* random_synced.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0680251EA920A300EEE03B /* random_synced.cpp */; };
@@ -1447,7 +1446,6 @@
 		ECF0F80123A09929004A2011 /* lua_stringx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF0F80023A09929004A2011 /* lua_stringx.cpp */; };
 		ECF0F80323A09933004A2011 /* lua_wml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF0F80223A09932004A2011 /* lua_wml.cpp */; };
 		ECF2393426B5935F00F2884F /* lobby_player_list_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF2393126B592C800F2884F /* lobby_player_list_helper.cpp */; };
-		ECF44F6A1FC8A82B00B404D6 /* make.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF44F681FC8A82A00B404D6 /* make.cpp */; };
 		ECF9D43D19F3FF9400E6C9D9 /* filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem.cpp */; };
 		ECF9D43E19F3FF9400E6C9D9 /* filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem.cpp */; };
 		ECFA82E3184E59F3006782FB /* command_executor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82DA184E59F3006782FB /* command_executor.cpp */; };
@@ -2979,8 +2977,6 @@
 		ECF0F80223A09932004A2011 /* lua_wml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_wml.cpp; sourceTree = "<group>"; };
 		ECF2393126B592C800F2884F /* lobby_player_list_helper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = lobby_player_list_helper.cpp; sourceTree = "<group>"; };
 		ECF2393226B5933800F2884F /* lobby_player_list_helper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = lobby_player_list_helper.hpp; sourceTree = "<group>"; };
-		ECF44F681FC8A82A00B404D6 /* make.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = make.cpp; sourceTree = "<group>"; };
-		ECF44F691FC8A82A00B404D6 /* make.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = make.hpp; sourceTree = "<group>"; };
 		ECF9D43C19F3FF9400E6C9D9 /* filesystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filesystem.cpp; sourceTree = "<group>"; };
 		ECFA82DA184E59F3006782FB /* command_executor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = command_executor.cpp; sourceTree = "<group>"; };
 		ECFA82DB184E59F3006782FB /* command_executor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = command_executor.hpp; sourceTree = "<group>"; };
@@ -3083,13 +3079,6 @@
 				EC5C245318EF07B4001FA499 /* libz.1.dylib in Frameworks */,
 				4674EEA024CD207F007C18CE /* libgio-2.0.0.dylib in Frameworks */,
 				915C68F41DF1F78600594B07 /* libintl.8.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9107AE111DB32862001927B0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4624,8 +4613,6 @@
 				B52EE8C8121359A600CFBDAB /* helper.hpp */,
 				B55999750EC62181008DD061 /* id.cpp */,
 				B55999740EC62181008DD061 /* id.hpp */,
-				ECF44F681FC8A82A00B404D6 /* make.cpp */,
-				ECF44F691FC8A82A00B404D6 /* make.hpp */,
 				B55999730EC62181008DD061 /* map.cpp */,
 				B55999720EC62181008DD061 /* map.hpp */,
 				469CA21C253C522C0045A0B3 /* orb_status.cpp */,
@@ -5255,13 +5242,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9107AE121DB32862001927B0 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -5295,8 +5275,6 @@
 			buildConfigurationList = 9107AE151DB32862001927B0 /* Build configuration list for PBXNativeTarget "liblua" */;
 			buildPhases = (
 				9107AE101DB32862001927B0 /* Sources */,
-				9107AE111DB32862001927B0 /* Frameworks */,
-				9107AE121DB32862001927B0 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -5580,7 +5558,6 @@
 				ECC84C1D1B973C5900A5F451 /* quit_confirmation.cpp in Sources */,
 				B559A0160EC8FE2E008DD061 /* editor_main.cpp in Sources */,
 				6295C3C2150FC9750077D8C5 /* editor_map.cpp in Sources */,
-				ECF44F6A1FC8A82B00B404D6 /* make.cpp in Sources */,
 				6295C3D6150FC9EB0077D8C5 /* editor_palettes.cpp in Sources */,
 				46F92E7D2174F6A400602C1C /* label.cpp in Sources */,
 				46685C97219D518B0009CFFE /* key.cpp in Sources */,
@@ -6625,7 +6602,6 @@
 				916718FF1CADAA1D00B055A9 /* fire_event.cpp in Sources */,
 				916719001CADAA1D00B055A9 /* iterator.cpp in Sources */,
 				916719021CADAA1D00B055A9 /* test_gui2.cpp in Sources */,
-				4649B87C20288D2F00827CFB /* make.cpp in Sources */,
 				46F92DD82174F6A300602C1C /* attack_predictions.cpp in Sources */,
 				916719041CADAA1D00B055A9 /* visitor.cpp in Sources */,
 				916719061CADABEA00B055A9 /* game_data.cpp in Sources */,

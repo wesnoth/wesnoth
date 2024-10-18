@@ -15,7 +15,6 @@
 #pragma once
 
 #include "undo_action.hpp"
-#include "units/make.hpp"
 
 namespace actions
 {
@@ -26,17 +25,9 @@ struct dismiss_action : undo_action
 {
 	unit_ptr dismissed_unit;
 
+	explicit dismiss_action(const unit_const_ptr dismissed);
+	explicit dismiss_action(const config& cfg, const config& unit_cfg);
 
-	explicit dismiss_action(const unit_const_ptr dismissed)
-		: undo_action()
-		, dismissed_unit(make_unit_ptr(*dismissed))
-	{
-	}
-	explicit dismiss_action(const config & cfg, const config & unit_cfg)
-		: undo_action(cfg)
-		, dismissed_unit(make_unit_ptr(unit_cfg))
-	{
-	}
 	virtual const char* get_type() const { return "dismiss"; }
 	virtual ~dismiss_action() {}
 
