@@ -46,7 +46,7 @@ void mouse_action_item::move(editor_display& disp, const map_location& hex)
 std::unique_ptr<editor_action> mouse_action_item::click_left(editor_display& disp, int x, int y)
 {
 	start_hex_ = disp.hex_clicked_on(x, y);
-	if (!disp.get_map().on_board(start_hex_)) {
+	if (!disp.map().on_board(start_hex_)) {
 		return nullptr;
 	}
 
@@ -60,7 +60,7 @@ std::unique_ptr<editor_action> mouse_action_item::click_left(editor_display& dis
 std::unique_ptr<editor_action> mouse_action_item::click_right(editor_display& disp, int x, int y)
 {
 	start_hex_ = disp.hex_clicked_on(x, y);
-	if (!disp.get_map().on_board(start_hex_)) {
+	if (!disp.map().on_board(start_hex_)) {
 		return nullptr;
 	}
 
@@ -82,7 +82,7 @@ std::unique_ptr<editor_action> mouse_action_item::up_left(editor_display& disp, 
 	if (!click_) return nullptr;
 	click_ = false;
 	map_location hex = disp.hex_clicked_on(x, y);
-	if (!disp.get_map().on_board(hex)) {
+	if (!disp.map().on_board(hex)) {
 		return nullptr;
 	}
 
@@ -120,7 +120,7 @@ std::unique_ptr<editor_action> mouse_action_item::drag_end_left(editor_display& 
 	if (click_) return nullptr;
 
 	map_location hex = disp.hex_clicked_on(x, y);
-	if (!disp.get_map().on_board(hex))
+	if (!disp.map().on_board(hex))
 		return nullptr;
 
 //	const item_map& items = disp.get_items();

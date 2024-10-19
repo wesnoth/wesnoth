@@ -95,7 +95,7 @@ std::unique_ptr<editor_action> mouse_action::key_event(
 	if (!has_alt_modifier() && (event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9')) {
 		int side = event.key.keysym.sym - '0';
 		if (side >= 1 && side <= gamemap::MAX_PLAYERS) {
-			map_location pos = disp.get_map().starting_position(side);
+			map_location pos = disp.map().starting_position(side);
 			if (pos.valid()) {
 				disp.scroll_to_tile(pos, display::WARP);
 			}
@@ -149,8 +149,8 @@ void mouse_action::set_terrain_mouse_overlay(
 	const t_translation::terrain_code & fg,
 	const t_translation::terrain_code & bg)
 {
-	const std::string fg_path = disp.get_map().get_terrain_info(fg).editor_image();
-	const std::string bg_path = disp.get_map().get_terrain_info(bg).editor_image();
+	const std::string fg_path = disp.map().get_terrain_info(fg).editor_image();
+	const std::string bg_path = disp.map().get_terrain_info(bg).editor_image();
 	const std::string blank_hex = "misc/blank-hex.png";
 
 	if (!image::exists(fg_path) || !image::exists(bg_path)) {

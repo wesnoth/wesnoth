@@ -114,8 +114,8 @@ void editor_display::layout()
 	config element;
 	config::attribute_value& text = element.add_child("element")["text"];
 	// Fill in the terrain report
-	if (get_map().on_board_with_border(mouseoverHex_)) {
-		text = get_map().get_terrain_editor_string(mouseoverHex_);
+	if (map().on_board_with_border(mouseoverHex_)) {
+		text = map().get_terrain_editor_string(mouseoverHex_);
 		refresh_report("terrain", &element);
 		refresh_report("terrain_info");
 		text = lexical_cast<std::string>(mouseoverHex_);
@@ -123,7 +123,7 @@ void editor_display::layout()
 	}
 
 	if (dc_->teams().empty()) {
-		text = int(get_map().villages().size());
+		text = int(map().villages().size());
 		refresh_report("villages", &element);
 	} else {
 		refresh_report("villages");

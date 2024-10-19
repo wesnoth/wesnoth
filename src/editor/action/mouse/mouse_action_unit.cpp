@@ -47,7 +47,7 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 	disp.invalidate(adjacent_set);
 	previous_move_hex_ = hex;
 
-	const unit_map& units = disp.get_units();
+	const unit_map& units = disp.get_disp_context().units();
 	const unit_map::const_unit_iterator unit_it = units.find(hex);
 	if (unit_it != units.end()) {
 
@@ -73,11 +73,11 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 std::unique_ptr<editor_action> mouse_action_unit::click_left(editor_display& disp, int x, int y)
 {
 	start_hex_ = disp.hex_clicked_on(x, y);
-	if (!disp.get_map().on_board(start_hex_)) {
+	if (!disp.map().on_board(start_hex_)) {
 		return nullptr;
 	}
 
-	const unit_map& units = disp.get_units();
+	const unit_map& units = disp.get_disp_context().units();
 	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
 	if (unit_it != units.end())
 		set_unit_mouse_overlay(disp, unit_it->type());
@@ -98,7 +98,7 @@ std::unique_ptr<editor_action> mouse_action_unit::up_left(editor_display& disp, 
 	if (!click_) return nullptr;
 	click_ = false;
 	map_location hex = disp.hex_clicked_on(x, y);
-	if (!disp.get_map().on_board(hex)) {
+	if (!disp.map().on_board(hex)) {
 		return nullptr;
 	}
 
@@ -128,10 +128,10 @@ std::unique_ptr<editor_action> mouse_action_unit::drag_end_left(editor_display& 
 	if (click_) return nullptr;
 
 	map_location hex = disp.hex_clicked_on(x, y);
-	if (!disp.get_map().on_board(hex))
+	if (!disp.map().on_board(hex))
 		return nullptr;
 
-	const unit_map& units = disp.get_units();
+	const unit_map& units = disp.get_disp_context().units();
 	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
 	if (unit_it == units.end())
 		return nullptr;

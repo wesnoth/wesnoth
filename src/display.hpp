@@ -112,10 +112,6 @@ public:
 
 	bool show_everything() const { return !dont_show_all_ && !is_blindfolded(); }
 
-	const gamemap& get_map() const { return dc_->map(); }
-
-	const std::vector<team>& get_teams() const {return dc_->teams();}
-
 	/** The playing team is the team whose turn it is. */
 	std::size_t playing_team_index() const { return playing_team_index_; }
 
@@ -125,7 +121,7 @@ public:
 	 *
 	 * For players, it will be their side (or one of them, if they control multiple sides).
 	 *
-	 * The value returned is a 0-based index into the vector returned by get_teams().
+	 * The value returned is a 0-based index into the vector returned by dc_->teams().
 	 */
 	std::size_t viewing_team_index() const { return viewing_team_index_; }
 
@@ -152,7 +148,6 @@ public:
 	 * Cancels all the exclusive draw requests.
 	 */
 	void clear_exclusive_draws() { exclusive_unit_draw_requests_.clear(); }
-	const unit_map& get_units() const {return dc_->units();}
 
 	/**
 	 * Allows a unit to request to be the only one drawn in its hex. Useful for situations where

@@ -226,7 +226,7 @@ const std::string mouseover_ally_bot = "misc/hover-hex-bottom.png~RC(magenta>lig
 
 void game_display::draw_hex(const map_location& loc)
 {
-	const bool on_map = get_map().on_board(loc);
+	const bool on_map = dc_->map().on_board(loc);
 	const bool is_shrouded = shrouded(loc);
 
 	display::draw_hex(loc);
@@ -380,9 +380,9 @@ void game_display::draw_movement_info(const map_location& loc)
 						wb->get_temp_move_unit() : dc_->units().find(route_.steps.front());
 		if(un != dc_->units().end()) {
 			// Display the def% of this terrain
-			int move_cost = un->movement_cost(get_map().get_terrain(loc));
+			int move_cost = un->movement_cost(dc_->map().get_terrain(loc));
 			int def = (move_cost == movetype::UNREACHABLE ?
-						0 : 100 - un->defense_modifier(get_map().get_terrain(loc)));
+						0 : 100 - un->defense_modifier(dc_->map().get_terrain(loc)));
 			std::stringstream def_text;
 			def_text << def << "%";
 
@@ -425,9 +425,9 @@ void game_display::draw_movement_info(const map_location& loc)
 		const unit_map::const_iterator mouseoveredUnit = resources::gameboard->find_visible_unit(mouseoverHex_,viewing_team());
 		if(selectedUnit != dc_->units().end() && mouseoveredUnit == dc_->units().end()) {
 			// Display the def% of this terrain
-			int move_cost = selectedUnit->movement_cost(get_map().get_terrain(loc));
+			int move_cost = selectedUnit->movement_cost(dc_->map().get_terrain(loc));
 			int def = (move_cost == movetype::UNREACHABLE ?
-						0 : 100 - selectedUnit->defense_modifier(get_map().get_terrain(loc)));
+						0 : 100 - selectedUnit->defense_modifier(dc_->map().get_terrain(loc)));
 			std::stringstream def_text;
 			def_text << def << "%";
 

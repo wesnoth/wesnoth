@@ -616,7 +616,7 @@ bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_
 
 	if (gui().view_locked() || button < SDL_BUTTON_LEFT || button > buttons.size()) {
 		return false;
-	} else if (event.state > SDL_PRESSED || !gui().get_map().on_board(loc)) {
+	} else if (event.state > SDL_PRESSED || !gui().get_disp_context().map().on_board(loc)) {
 		return false;
 	}
 

@@ -491,8 +491,8 @@ rect display::max_map_area() const
 	// To display a hex fully on screen,
 	// a little bit extra space is needed.
 	// Also added the border two times.
-	max_area.w = static_cast<int>((get_map().w() + 2 * theme_.border().size + 1.0 / 3.0) * hex_width());
-	max_area.h = static_cast<int>((get_map().h() + 2 * theme_.border().size + 0.5) * hex_size());
+	max_area.w = static_cast<int>((dc_->map().w() + 2 * theme_.border().size + 1.0 / 3.0) * hex_width());
+	max_area.h = static_cast<int>((dc_->map().h() + 2 * theme_.border().size + 0.5) * hex_size());
 
 	return max_area;
 }
@@ -722,20 +722,20 @@ map_location display::minimap_location_on(int x, int y)
 	// probably more adjustments to do (border, minimap shift...)
 	// but the mouse and human capacity to evaluate the rectangle center
 	// is not pixel precise.
-	int px = (x - minimap_location_.x) * get_map().w() * hex_width() / std::max(minimap_location_.w, 1);
-	int py = (y - minimap_location_.y) * get_map().h() * hex_size() / std::max(minimap_location_.h, 1);
+	int px = (x - minimap_location_.x) * dc_->map().w() * hex_width() / std::max(minimap_location_.w, 1);
+	int py = (y - minimap_location_.y) * dc_->map().h() * hex_size() / std::max(minimap_location_.h, 1);
 
 	map_location loc = pixel_position_to_hex(px, py);
 	if(loc.x < 0) {
 		loc.x = 0;
-	} else if(loc.x >= get_map().w()) {
-		loc.x = get_map().w() - 1;
+	} else if(loc.x >= dc_->map().w()) {
+		loc.x = dc_->map().w() - 1;
 	}
 
 	if(loc.y < 0) {
 		loc.y = 0;
-	} else if(loc.y >= get_map().h()) {
-		loc.y = get_map().h() - 1;
+	} else if(loc.y >= dc_->map().h()) {
+		loc.y = dc_->map().h() - 1;
 	}
 
 	return loc;
@@ -748,7 +748,7 @@ surface display::screenshot(bool map_screenshot)
 		return video::read_pixels();
 	}
 
-	if (get_map().empty()) {
+	if (dc_->map().empty()) {
 		ERR_DP << "No map loaded, cannot create a map screenshot.";
 		return nullptr;
 	}
@@ -1614,7 +1614,7 @@ void display::recalculate_minimap()
 	}
 
 	minimap_renderer_ = image::prep_minimap_for_rendering(
-		get_map(),
+		dc_->map(),
 		dc_->teams().empty() ? nullptr : &viewing_team(),
 		nullptr,
 		(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr
@@ -1652,8 +1652,8 @@ void display::draw_minimap()
 
 	// calculate the visible portion of the map:
 	// scaling between minimap and full map images
-	double xscaling = 1.0 * minimap_location_.w / (get_map().w() * hex_width());
-	double yscaling = 1.0 * minimap_location_.h / (get_map().h() * hex_size());
+	double xscaling = 1.0 * minimap_location_.w / (dc_->map().w() * hex_width());
+	double yscaling = 1.0 * minimap_location_.h / (dc_->map().h() * hex_size());
 
 	// we need to shift with the border size
 	// and the 0.25 from the minimap balanced drawing
@@ -1683,8 +1683,8 @@ void display::draw_minimap_units()
 {
 	if (!prefs::get().minimap_draw_units() || is_blindfolded()) return;
 
-	double xscaling = 1.0 * minimap_location_.w / get_map().w();
-	double yscaling = 1.0 * minimap_location_.h / get_map().h();
+	double xscaling = 1.0 * minimap_location_.w / dc_->map().w();
+	double yscaling = 1.0 * minimap_location_.h / dc_->map().h();
 
 	for(const auto& u : dc_->units()) {
 		if (fogged(u.get_location()) ||
@@ -2015,7 +2015,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 
 void display::scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type, bool check_fogged, bool force)
 {
-	if(get_map().on_board(loc) == false) {
+	if(dc_->map().on_board(loc) == false) {
 		ERR_DP << "Tile at " << loc << " isn't on the map, can't scroll to the tile.";
 		return;
 	}
@@ -2042,7 +2042,7 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 	bool valid = false;
 
 	for(const map_location& loc : locs) {
-		if(get_map().on_board(loc) == false) continue;
+		if(dc_->map().on_board(loc) == false) continue;
 		if(check_fogged && fogged(loc)) continue;
 
 		const auto [x, y] = get_location(loc);
@@ -2156,8 +2156,8 @@ void display::bounds_check_position(int& xpos, int& ypos) const
 	const int tile_width = hex_width();
 
 	// Adjust for the border 2 times
-	const int xend = static_cast<int>(tile_width * (get_map().w() + 2 * theme_.border().size) + tile_width / 3);
-	const int yend = static_cast<int>(zoom_ * (get_map().h() + 2 * theme_.border().size) + zoom_ / 2);
+	const int xend = static_cast<int>(tile_width * (dc_->map().w() + 2 * theme_.border().size) + tile_width / 3);
+	const int yend = static_cast<int>(zoom_ * (dc_->map().h() + 2 * theme_.border().size) + zoom_ / 2);
 
 	xpos = std::clamp(xpos, 0, xend - map_area().w);
 	ypos = std::clamp(ypos, 0, yend - map_area().h);
@@ -2388,7 +2388,7 @@ void display::draw()
 		redraw_background_ = false;
 	}
 
-	if(!get_map().empty()) {
+	if(!dc_->map().empty()) {
 		if(!invalidated_.empty()) {
 			draw_invalidated();
 			invalidated_.clear();
@@ -2430,7 +2430,7 @@ void display::layout()
 
 	// Post-layout / Pre-render
 
-	if (!get_map().empty()) {
+	if (!dc_->map().empty()) {
 		if(redraw_background_) {
 			invalidateAll_ = true;
 		}
@@ -2645,7 +2645,7 @@ void display::draw_invalidated()
 
 void display::draw_hex(const map_location& loc)
 {
-	const bool on_map = get_map().on_board(loc);
+	const bool on_map = dc_->map().on_board(loc);
 	const time_of_day& tod = get_time_of_day(loc);
 
 	int num_images_fg = 0;
@@ -2689,7 +2689,7 @@ void display::draw_hex(const map_location& loc)
 		draw_overlays_at(loc);
 
 		// village-control flags.
-		if(get_map().is_village(loc)) {
+		if(dc_->map().is_village(loc)) {
 			drawing_buffer_add(drawing_layer::terrain_bg, loc,
 				[tex = get_flag(loc)](const rect& dest) { draw::blit(tex, dest); });
 		}
@@ -2768,7 +2768,7 @@ void display::draw_hex(const map_location& loc)
 		}
 
 		if(debug_flag_set(DEBUG_TERRAIN_CODES) && (game_config::debug || !is_shrouded)) {
-			ss << get_map().get_terrain(loc) << '\n';
+			ss << dc_->map().get_terrain(loc) << '\n';
 		}
 
 		if(debug_flag_set(DEBUG_NUM_BITMAPS)) {
@@ -2842,7 +2842,7 @@ void display::draw_overlays_at(const map_location& loc)
 			: image::get_texture(ov.image, image::HEXED);
 
 		// Base submerge value for the terrain at this location
-		const double ter_sub = get_map().get_terrain_info(loc).unit_submerge();
+		const double ter_sub = dc_->map().get_terrain_info(loc).unit_submerge();
 
 		drawing_buffer_add(
 			drawing_layer::terrain_bg, loc, [this, tex, ter_sub, ovr_sub = ov.submerge](const rect& dest) mutable {
@@ -3197,7 +3197,7 @@ bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 
 void display::invalidate_animations_location(const map_location& loc)
 {
-	if(get_map().is_village(loc)) {
+	if(dc_->map().is_village(loc)) {
 		const int owner = dc_->village_owner(loc) - 1;
 		if(owner >= 0 && flags_[owner].need_update()
 			&& (!fogged(loc) || !viewing_team().is_enemy(owner + 1))) {

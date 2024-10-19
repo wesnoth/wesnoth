@@ -141,7 +141,7 @@ const unit_map& get_unit_map()
 
 	// If we get here, we're in the scenario editor
 	assert(display::get_singleton());
-	return display::get_singleton()->get_units();
+	return display::get_singleton()->get_disp_context().units();
 }
 
 const team& get_team(std::size_t side)
