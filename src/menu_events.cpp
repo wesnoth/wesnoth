@@ -1745,7 +1745,7 @@ void console_handler::do_layers()
 	//
 	// -- vultraz, 2017-09-21
 	//
-	if(disp.get_disp_context().map().on_board_with_border(loc)) {
+	if(menu_handler_.pc_.get_map().on_board_with_border(loc)) {
 		gui2::dialogs::terrain_layers::display(disp, loc);
 	}
 }
