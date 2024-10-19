@@ -108,7 +108,7 @@ void context_manager::refresh_on_context_change()
 	resources::classification = &get_map_context().get_classification();
 
 	// Reset side when switching to an existing scenario
-	if(!gui().get_disp_context().teams().empty()) {
+	if(!get_map_context().teams().empty()) {
 		gui().set_viewing_team_index(0, true);
 		gui().set_playing_team_index(0);
 	}

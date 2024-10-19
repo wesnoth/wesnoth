@@ -50,7 +50,7 @@ std::unique_ptr<editor_action> mouse_action_map_label::up_left(editor_display& d
 	click_ = false;
 
 	const map_location hex = disp.hex_clicked_on(x, y);
-	if (!disp.map().on_board(hex)) {
+	if (!disp.get_map().on_board(hex)) {
 		return nullptr;
 	}
 
@@ -84,7 +84,7 @@ std::unique_ptr<editor_action> mouse_action_map_label::up_right(editor_display& 
 	map_location hex = disp.hex_clicked_on(x, y);
 
 	//TODO
-//	const terrain_label* clicked_label = disp.map().get_map_labels().get_label(hex);
+//	const terrain_label* clicked_label = disp.get_map().get_map_labels().get_label(hex);
 	//if (!clicked_label)
 	//	return nullptr;
 
@@ -96,7 +96,7 @@ std::unique_ptr<editor_action> mouse_action_map_label::drag_end_left(editor_disp
 	if (click_) return nullptr;
 
 	map_location hex = disp.hex_clicked_on(x, y);
-	if (!disp.map().on_board(hex))
+	if (!disp.get_map().on_board(hex))
 		return nullptr;
 
 	const terrain_label* dragged_label = disp

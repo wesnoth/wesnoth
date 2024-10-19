@@ -74,11 +74,11 @@ void editor_display::draw_hex(const map_location& loc)
 {
 	display::draw_hex(loc);
 
-	if(!map().on_board_with_border(loc) || map_screenshot_) {
+	if(!get_map().on_board_with_border(loc) || map_screenshot_) {
 		return;
 	}
 
-	if(map().in_selection(loc)) {
+	if(get_map().in_selection(loc)) {
 		drawing_buffer_add(drawing_layer::fog_shroud, loc,
 			[tex = image::get_texture(image::locator{"editor/selection-overlay.png"}, image::TOD_COLORED)](const rect& d) {
 				draw::blit(tex, d);
@@ -114,8 +114,8 @@ void editor_display::layout()
 	config element;
 	config::attribute_value& text = element.add_child("element")["text"];
 	// Fill in the terrain report
-	if (map().on_board_with_border(mouseoverHex_)) {
-		text = map().get_terrain_editor_string(mouseoverHex_);
+	if (get_map().on_board_with_border(mouseoverHex_)) {
+		text = get_map().get_terrain_editor_string(mouseoverHex_);
 		refresh_report("terrain", &element);
 		refresh_report("terrain_info");
 		text = lexical_cast<std::string>(mouseoverHex_);
@@ -123,7 +123,7 @@ void editor_display::layout()
 	}
 
 	if (dc_->teams().empty()) {
-		text = int(map().villages().size());
+		text = int(get_map().villages().size());
 		refresh_report("villages", &element);
 	} else {
 		refresh_report("villages");

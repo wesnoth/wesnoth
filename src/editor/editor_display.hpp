@@ -31,7 +31,7 @@ public:
 	void set_brush_locs(const std::set<map_location>& hexes);
 	void clear_brush_locs();
 	void remove_brush_loc(const map_location& hex);
-	const editor_map& map() const { return static_cast<const editor_map&>(dc_->map()); }
+	const editor_map& get_map() const { return static_cast<const editor_map&>(dc_->map()); }
 	void rebuild_terrain(const map_location &loc);
 
 	/** Inherited from display. */
