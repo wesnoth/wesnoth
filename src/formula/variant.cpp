@@ -292,6 +292,11 @@ int variant::as_int() const
 {
 	if(is_null())    { return 0; }
 	if(is_decimal()) { return as_decimal() / 1000; }
+	if(is_string()) {
+		try {
+			return std::stoi(value_cast<variant_string>()->get_string());
+		} catch (std::invalid_argument&) {}
+	}
 
 	must_be(formula_variant::type::integer);
 	return value_cast<variant_int>()->get_numeric_value();
