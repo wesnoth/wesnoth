@@ -307,7 +307,7 @@ int variant::as_decimal() const
 		return 0;
 	} else if(is_string()) {
 		try {
-			return std::stof(value_cast<variant_string>()->get_string()) * 1000;
+			return std::stod(value_cast<variant_string>()->get_string()) * 1000;
 		} catch (std::invalid_argument&) { }
 	}
 
