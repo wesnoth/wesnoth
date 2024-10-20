@@ -372,26 +372,25 @@ void display::set_playing_team_index(std::size_t teamindex)
 	invalidate_game_status();
 }
 
-bool display::add_exclusive_draw(const map_location& loc, unit& unit)
+bool display::add_exclusive_draw(const map_location& loc, const unit& unit)
 {
-	if(loc.valid() && exclusive_unit_draw_requests_.find(loc) == exclusive_unit_draw_requests_.end()) {
-		exclusive_unit_draw_requests_[loc] = unit.id();
-		return true;
-	} else {
-		return false;
-	}
+	if(!loc.valid()) return false;
+	auto [iter, success] = exclusive_unit_draw_requests_.emplace(loc, unit.id());
+	return success;
 }
 
 std::string display::remove_exclusive_draw(const map_location& loc)
 {
-	std::string id = "";
-	if(loc.valid())
-	{
-		id = exclusive_unit_draw_requests_[loc];
-		//id will be set to the default "" string by the [] operator if the map doesn't have anything for that loc.
-		exclusive_unit_draw_requests_.erase(loc);
-	}
+	if(!loc.valid()) return {};
+	std::string id = exclusive_unit_draw_requests_[loc];
+	exclusive_unit_draw_requests_.erase(loc);
 	return id;
+}
+
+bool display::unit_can_draw_here(const map_location& loc, const unit& unit) const
+{
+	auto request = exclusive_unit_draw_requests_.find(loc);
+	return request == exclusive_unit_draw_requests_.end() || request->second == unit.id();
 }
 
 void display::update_tod(const time_of_day* tod_override)
@@ -2630,9 +2629,7 @@ void display::draw_invalidated()
 
 		if(drawer) {
 			const auto u_it = context().units().find(loc);
-			const auto request = exclusive_unit_draw_requests_.find(loc);
-
-			if(u_it != context().units().end() && (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id())) {
+			if(u_it != context().units().end() && unit_can_draw_here(loc, *u_it)) {
 				drawer->redraw_unit(*u_it);
 			}
 		}

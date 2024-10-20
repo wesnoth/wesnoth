@@ -200,12 +200,11 @@ void game_display::draw_invalidated()
 	}
 	unit_drawer drawer = unit_drawer(*this);
 
-	for (const unit* temp_unit : *fake_unit_man_) {
+	for(const unit* temp_unit : *fake_unit_man_) {
 		const map_location& loc = temp_unit->get_location();
-		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
-		if (invalidated_.find(loc) != invalidated_.end()
-				&& (request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()))
+		if(utils::contains(invalidated_, loc) && unit_can_draw_here(loc, *temp_unit)) {
 			drawer.redraw_unit(*temp_unit);
+		}
 	}
 }
 

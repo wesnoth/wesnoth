@@ -156,13 +156,17 @@ public:
 	 * @param unit The unit requesting exclusivity.
 	 * @return false if there's already an exclusive draw request for this location.
 	 */
-	bool add_exclusive_draw(const map_location& loc, unit& unit);
+	bool add_exclusive_draw(const map_location& loc, const unit& unit);
+
 	/**
 	 * Cancels an exclusive draw request.
 	 * @return The id of the unit whose exclusive draw request was canceled, or else
 	 *         the empty string if there was no exclusive draw request for this location.
 	 */
 	std::string remove_exclusive_draw(const map_location& loc);
+
+	/** Returns true if there is no exclusive draw request for @a loc, or if there is, that it's for @a unit */
+	bool unit_can_draw_here(const map_location& loc, const unit& unit) const;
 
 	/**
 	 * Functions to add and remove overlays from locations.
