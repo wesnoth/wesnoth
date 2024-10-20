@@ -59,7 +59,7 @@ attack_type::attack_type(const config& cfg)
 	, range_(cfg["range"])
 	, min_range_(cfg["min_range"].to_int(1))
 	, max_range_(cfg["max_range"].to_int(1))
-	, alignment_str_(cfg["alignment"].str())
+	, alignment_(unit_alignments::get_enum(cfg["alignment"].str()))
 	, damage_(cfg["damage"].to_int())
 	, num_attacks_(cfg["number"].to_int())
 	, attack_weight_(cfg["attack_weight"].to_double(1.0))
@@ -84,11 +84,7 @@ attack_type::attack_type(const config& cfg)
 
 std::string attack_type::alignment_str() const
 {
-	if (alignment()){
-		return unit_alignments::get_string(*alignment());
-	}
-	//if not alignment() fallback to unit alignment or return empty string if not available.
-	return (self_ ? unit_alignments::get_string(self_->alignment()) : "");
+	return alignment_ ? unit_alignments::get_string(*alignment()) : "";
 }
 
 std::string attack_type::accuracy_parry_description() const
@@ -364,7 +360,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_attack_alignment.empty() == false) {
-		alignment_str_ = set_attack_alignment;
+		alignment_ = unit_alignments::get_enum(set_attack_alignment);
 	}
 
 	if(set_icon.empty() == false) {
@@ -710,7 +706,7 @@ void attack_type::write(config& cfg) const
 	cfg["range"] = range_;
 	cfg["min_range"] = min_range_;
 	cfg["max_range"] = max_range_;
-	cfg["alignment"] = alignment_str_;
+	cfg["alignment"] = alignment_str();
 	cfg["damage"] = damage_;
 	cfg["number"] = num_attacks_;
 	cfg["attack_weight"] = attack_weight_;

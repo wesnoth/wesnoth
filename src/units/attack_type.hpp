@@ -62,7 +62,7 @@ public:
 	void set_range(const std::string& value) { range_ = value; set_changed(true); }
 	void set_min_range(int value) { min_range_ = value; set_changed(true); }
 	void set_max_range(int value) { max_range_ = value; set_changed(true); }
-	void set_attack_alignment(const std::string& value) { alignment_str_ = value; set_changed(true); }
+	void set_attack_alignment(const std::string& value) { alignment_ = unit_alignments::get_enum(value); set_changed(true); }
 	void set_accuracy(int value) { accuracy_ = value; set_changed(true); }
 	void set_parry(int value) { parry_ = value; set_changed(true); }
 	void set_damage(int value) { damage_ = value; set_changed(true); }
@@ -89,7 +89,7 @@ public:
 
 	/** Returns alignment specified by alignment_str_ variable If empty or not valid returns the unit's alignment or neutral if self_ variable empty.
 	 */
-	utils::optional<unit_alignments::type> alignment() const {return unit_alignments::get_enum(alignment_str_);}
+	utils::optional<unit_alignments::type> alignment() const { return alignment_; }
 	/** Returns alignment specified by alignment() for filtering when exist.
 	 */
 	std::string alignment_str() const;
@@ -414,7 +414,7 @@ private:
 	std::string icon_;
 	std::string range_;
 	int min_range_, max_range_;
-	std::string alignment_str_;
+	utils::optional<unit_alignments::type> alignment_;
 	int damage_;
 	int num_attacks_;
 	double attack_weight_;
