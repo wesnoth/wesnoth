@@ -74,11 +74,11 @@ void editor_display::draw_hex(const map_location& loc)
 {
 	display::draw_hex(loc);
 
-	if(!map().on_board_with_border(loc) || map_screenshot_) {
+	if(!get_map().on_board_with_border(loc) || map_screenshot_) {
 		return;
 	}
 
-	if(map().in_selection(loc)) {
+	if(get_map().in_selection(loc)) {
 		drawing_buffer_add(drawing_layer::fog_shroud, loc,
 			[tex = image::get_texture(image::locator{"editor/selection-overlay.png"}, image::TOD_COLORED)](const rect& d) {
 				draw::blit(tex, d);
@@ -122,7 +122,7 @@ void editor_display::layout()
 		refresh_report("position", &element);
 	}
 
-	if (dc_->teams().empty()) {
+	if (context().teams().empty()) {
 		text = int(get_map().villages().size());
 		refresh_report("villages", &element);
 	} else {

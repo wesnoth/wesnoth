@@ -36,8 +36,6 @@ public:
 
 	terrain_palette(editor_display &gui, editor_toolkit &toolkit);
 
-	const gamemap& map() const { return gui_.get_map(); }
-
 	virtual void setup(const game_config_view& cfg) override;
 
 	void select_bg_item(const t_translation::terrain_code& terrain);

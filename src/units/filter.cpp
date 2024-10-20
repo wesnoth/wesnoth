@@ -17,7 +17,6 @@
 
 #include "log.hpp"
 
-#include "display.hpp"
 #include "display_context.hpp"
 #include "config.hpp"
 #include "game_data.hpp"
@@ -416,8 +415,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			[](const config::attribute_value& c) { return utils::split(c.str()); },
 			[](const std::vector<std::string>& abilities, const unit_filter_args& args)
 			{
-				assert(display::get_singleton());
-				const unit_map& units = display::get_singleton()->get_units();
+				const unit_map& units = args.context().get_disp_context().units();
 				for(const std::string& ability : abilities) {
 					std::vector<ability_match> ability_id_matches_self;
 					get_ability_children_id(ability_id_matches_self, args.u.abilities(), ability);
@@ -788,10 +786,7 @@ void unit_filter_compound::fill(vconfig cfg)
 							}
 						}
 					} else {
-						if(!display::get_singleton()){
-							return false;
-						}
-						const unit_map& units = display::get_singleton()->get_units();
+						const unit_map& units = args.context().get_disp_context().units();
 						for(const auto [key, cfg] : args.u.abilities().all_children_view()) {
 							if(args.u.ability_matches_filter(cfg, key, c.get_parsed_config())) {
 								if (args.u.get_self_ability_bool(cfg, key, args.loc)) {

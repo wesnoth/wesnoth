@@ -47,7 +47,7 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 	disp.invalidate(adjacent_set);
 	previous_move_hex_ = hex;
 
-	const unit_map& units = disp.get_units();
+	const unit_map& units = disp.context().units();
 	const unit_map::const_unit_iterator unit_it = units.find(hex);
 	if (unit_it != units.end()) {
 
@@ -77,7 +77,7 @@ std::unique_ptr<editor_action> mouse_action_unit::click_left(editor_display& dis
 		return nullptr;
 	}
 
-	const unit_map& units = disp.get_units();
+	const unit_map& units = disp.context().units();
 	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
 	if (unit_it != units.end())
 		set_unit_mouse_overlay(disp, unit_it->type());
@@ -131,7 +131,7 @@ std::unique_ptr<editor_action> mouse_action_unit::drag_end_left(editor_display& 
 	if (!disp.get_map().on_board(hex))
 		return nullptr;
 
-	const unit_map& units = disp.get_units();
+	const unit_map& units = disp.context().units();
 	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
 	if (unit_it == units.end())
 		return nullptr;

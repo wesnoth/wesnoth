@@ -116,15 +116,15 @@ void game_display::highlight_hex(map_location hex)
 {
 	wb::future_map_if future(!synced_context::is_synced()); /**< Lasts for whole method. */
 
-	const unit *u = dc_->get_visible_unit(hex, viewing_team(), !dont_show_all_);
+	const unit *u = context().get_visible_unit(hex, viewing_team(), !dont_show_all_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
 	} else {
-		u = dc_->get_visible_unit(mouseoverHex_, viewing_team(), !dont_show_all_);
+		u = context().get_visible_unit(mouseoverHex_, viewing_team(), !dont_show_all_);
 		if (u) {
 			// mouse moved from unit hex to non-unit hex
-			if (dc_->units().count(selectedHex_)) {
+			if (context().units().count(selectedHex_)) {
 				displayedUnitHex_ = selectedHex_;
 				invalidate_unit();
 			}
@@ -143,7 +143,7 @@ void game_display::display_unit_hex(map_location hex)
 
 	wb::future_map_if future(!synced_context::is_synced()); /**< Lasts for whole method. */
 
-	const unit *u = dc_->get_visible_unit(hex, viewing_team(), !dont_show_all_);
+	const unit *u = context().get_visible_unit(hex, viewing_team(), !dont_show_all_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
@@ -160,7 +160,7 @@ void game_display::invalidate_unit_after_move(const map_location& src, const map
 
 void game_display::scroll_to_leader(int side, SCROLL_TYPE scroll_type,bool force)
 {
-	unit_map::const_iterator leader = dc_->units().find_leader(side);
+	unit_map::const_iterator leader = context().units().find_leader(side);
 
 	if(leader.valid() && leader->is_visible_to_team(viewing_team(), false)) {
 		scroll_to_tile(leader->get_location(), scroll_type, true, force);
@@ -226,7 +226,7 @@ const std::string mouseover_ally_bot = "misc/hover-hex-bottom.png~RC(magenta>lig
 
 void game_display::draw_hex(const map_location& loc)
 {
-	const bool on_map = get_map().on_board(loc);
+	const bool on_map = context().map().on_board(loc);
 	const bool is_shrouded = shrouded(loc);
 
 	display::draw_hex(loc);
@@ -238,7 +238,7 @@ void game_display::draw_hex(const map_location& loc)
 
 	if(on_map && loc == mouseoverHex_ && !map_screenshot_) {
 		drawing_layer hex_top_layer = drawing_layer::mouseover_bottom;
-		const unit* u = dc_->get_visible_unit(loc, viewing_team());
+		const unit* u = context().get_visible_unit(loc, viewing_team());
 		if(u != nullptr) {
 			hex_top_layer = drawing_layer::mouseover_top;
 		}
@@ -377,12 +377,12 @@ void game_display::draw_movement_info(const map_location& loc)
 				&& !route_.steps.empty() && route_.steps.front() != loc) {
 		const unit_map::const_iterator un =
 				(wb && wb->get_temp_move_unit().valid()) ?
-						wb->get_temp_move_unit() : dc_->units().find(route_.steps.front());
-		if(un != dc_->units().end()) {
+						wb->get_temp_move_unit() : context().units().find(route_.steps.front());
+		if(un != context().units().end()) {
 			// Display the def% of this terrain
-			int move_cost = un->movement_cost(get_map().get_terrain(loc));
+			int move_cost = un->movement_cost(context().map().get_terrain(loc));
 			int def = (move_cost == movetype::UNREACHABLE ?
-						0 : 100 - un->defense_modifier(get_map().get_terrain(loc)));
+						0 : 100 - un->defense_modifier(context().map().get_terrain(loc)));
 			std::stringstream def_text;
 			def_text << def << "%";
 
@@ -423,11 +423,11 @@ void game_display::draw_movement_info(const map_location& loc)
 	{
 		const unit_map::const_iterator selectedUnit = resources::gameboard->find_visible_unit(selectedHex_,viewing_team());
 		const unit_map::const_iterator mouseoveredUnit = resources::gameboard->find_visible_unit(mouseoverHex_,viewing_team());
-		if(selectedUnit != dc_->units().end() && mouseoveredUnit == dc_->units().end()) {
+		if(selectedUnit != context().units().end() && mouseoveredUnit == context().units().end()) {
 			// Display the def% of this terrain
-			int move_cost = selectedUnit->movement_cost(get_map().get_terrain(loc));
+			int move_cost = selectedUnit->movement_cost(context().map().get_terrain(loc));
 			int def = (move_cost == movetype::UNREACHABLE ?
-						0 : 100 - selectedUnit->defense_modifier(get_map().get_terrain(loc)));
+						0 : 100 - selectedUnit->defense_modifier(context().map().get_terrain(loc)));
 			std::stringstream def_text;
 			def_text << def << "%";
 
