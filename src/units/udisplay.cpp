@@ -770,7 +770,7 @@ void unit_attack(display * disp, game_board & board,
 void reset_helpers(const unit *attacker,const unit *defender)
 {
 	display* disp = display::get_singleton();
-	const unit_map& units = disp->get_disp_context().units();
+	const unit_map& units = disp->context().units();
 	if(attacker) {
 		unit_ability_list attacker_abilities = attacker->get_abilities("leadership");
 		for(auto& special : attacker->checking_tags()) {
@@ -804,7 +804,7 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 	}
 
 	const team& viewing_team = disp->viewing_team();
-	const unit_map& units = disp->get_disp_context().units();
+	const unit_map& units = disp->context().units();
 
 	unit_map::const_iterator u = units.find(loc);
 	if(u == units.end()) return;

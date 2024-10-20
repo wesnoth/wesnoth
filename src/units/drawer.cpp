@@ -137,7 +137,7 @@ void draw_bar(int xpos, int ypos, int bar_height, double filled, const color_t& 
 
 unit_drawer::unit_drawer(display& thedisp)
 	: disp(thedisp)
-	, dc(disp.get_disp_context())
+	, dc(disp.context())
 	, map(dc.map())
 	, halo_man(thedisp.get_halo_manager())
 	, viewing_team_ref(disp.viewing_team())

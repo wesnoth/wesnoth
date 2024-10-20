@@ -386,7 +386,7 @@ int unit_animation::matches(const map_location& loc, const map_location& second_
 	}
 
 	if(!terrain_types_.empty()) {
-		if(!t_translation::terrain_matches(disp.get_disp_context().map().get_terrain(loc), terrain_types_)) {
+		if(!t_translation::terrain_matches(disp.context().map().get_terrain(loc), terrain_types_)) {
 			return MATCH_FAIL;
 		}
 
@@ -417,7 +417,7 @@ int unit_animation::matches(const map_location& loc, const map_location& second_
 		}
 
 		if(!secondary_unit_filter_.empty()) {
-			unit_map::const_iterator unit = disp.get_disp_context().units().find(second_loc);
+			unit_map::const_iterator unit = disp.context().units().find(second_loc);
 			if(!unit.valid()) {
 				return MATCH_FAIL;
 			}

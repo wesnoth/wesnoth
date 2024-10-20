@@ -186,7 +186,7 @@ public:
 
 	void change_display_context(const display_context* dc);
 
-	const display_context& get_disp_context() const
+	const display_context& context() const
 	{
 		return *dc_;
 	}

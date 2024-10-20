@@ -122,7 +122,7 @@ void editor_display::layout()
 		refresh_report("position", &element);
 	}
 
-	if (dc_->teams().empty()) {
+	if (context().teams().empty()) {
 		text = int(get_map().villages().size());
 		refresh_report("villages", &element);
 	} else {
