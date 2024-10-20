@@ -306,16 +306,8 @@ int variant::as_decimal() const
 	} else if(is_null()) {
 		return 0;
 	} else if(is_string()) {
-		const std::string& s = value_cast<variant_string>()->get_string();
-
 		try {
-			float f = std::stof(s);
-
-			if(f == floor(f)) {
-				return f;
-			}
-
-			return f * 1000;
+			return std::stof(value_cast<variant_string>()->get_string()) * 1000;
 		} catch (std::invalid_argument&) { }
 	}
 
