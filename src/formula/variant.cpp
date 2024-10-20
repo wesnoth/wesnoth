@@ -305,6 +305,18 @@ int variant::as_decimal() const
 		return value_cast<variant_int>()->get_numeric_value() * 1000;
 	} else if(is_null()) {
 		return 0;
+	} else if(is_string()) {
+		const std::string& s = value_cast<variant_string>()->get_string();
+
+		try {
+			float f = std::stof(s);
+
+			if(f == floor(f)) {
+				return f;
+			}
+
+			return f * 1000;
+		} catch (std::invalid_argument&) { }
 	}
 
 	throw type_error(was_expecting("an integer or a decimal", *this));
