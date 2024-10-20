@@ -539,7 +539,7 @@ bool display::outside_area(const SDL_Rect& area, const int x, const int y)
 }
 
 // This function uses the screen as reference
-const map_location display::hex_clicked_on(int xclick, int yclick) const
+map_location display::hex_clicked_on(int xclick, int yclick) const
 {
 	rect r = map_area();
 	if(!r.contains(xclick, yclick)) {
@@ -553,7 +553,7 @@ const map_location display::hex_clicked_on(int xclick, int yclick) const
 }
 
 // This function uses the rect of map_area as reference
-const map_location display::pixel_position_to_hex(int x, int y) const
+map_location display::pixel_position_to_hex(int x, int y) const
 {
 	// adjust for the border
 	x -= static_cast<int>(theme_.border().size * hex_width());
