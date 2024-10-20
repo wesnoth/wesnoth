@@ -186,7 +186,7 @@ void show_unit_list(display& gui)
 	std::vector<unit_const_ptr> unit_list;
 	map_location scroll_to;
 
-	const unit_map& units = gui.get_disp_context().units();
+	const unit_map& units = gui.context().units();
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 		if(i->side() != gui.viewing_team().side()) {
 			continue;
