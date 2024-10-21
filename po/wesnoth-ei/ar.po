@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-07-22 03:31 UTC\n"
+"POT-Creation-Date: 2024-10-21 16:11 UTC\n"
 "PO-Revision-Date: 2024-09-07 02:44+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -342,7 +342,9 @@ msgstr "السيناريو 99: هاو، هاو، هاو"
 
 #. [lua]: wml_actions.bandit_village_capture
 #: data/campaigns/Eastern_Invasion/lua/bandits.lua:84
-msgid "They're here!"
+#, fuzzy
+#| msgid "They're here!"
+msgid "They’re here!"
 msgstr "إنهم هنا!"
 
 #. [lua]: wml_actions.bandit_village_capture
@@ -477,7 +479,7 @@ msgstr "سار كل شيء على ما يرام بمجرد وصول قوات ا�
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:27
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:57
 #: data/campaigns/Eastern_Invasion/scenarios/13_Spoils_of_War.cfg:241
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:95
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:90
 #: data/campaigns/Eastern_Invasion/scenarios/15_Return_to_Wesnoth.cfg:29
 #: data/campaigns/Eastern_Invasion/scenarios/15_Return_to_Wesnoth.cfg:57
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:39
@@ -535,13 +537,13 @@ msgstr "الوسنوثيون"
 #: data/campaigns/Eastern_Invasion/scenarios/13_Spoils_of_War.cfg:260
 #: data/campaigns/Eastern_Invasion/scenarios/13_Spoils_of_War.cfg:289
 #: data/campaigns/Eastern_Invasion/scenarios/13_Spoils_of_War.cfg:346
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:120
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:139
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:160
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:252
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:287
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:303
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:316
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:115
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:134
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:155
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:247
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:282
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:298
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:311
 #: data/campaigns/Eastern_Invasion/scenarios/15_Return_to_Wesnoth.cfg:188
 #: data/campaigns/Eastern_Invasion/scenarios/15_Return_to_Wesnoth.cfg:234
 #: data/campaigns/Eastern_Invasion/scenarios/15_Return_to_Wesnoth.cfg:277
@@ -618,7 +620,7 @@ msgstr "انقل أي وحدة إلى الباب المسحور خارج قلع�
 #: data/campaigns/Eastern_Invasion/scenarios/04b_Ill_Humors.cfg:314
 #: data/campaigns/Eastern_Invasion/scenarios/04b_Ill_Humors.cfg:564
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:429
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:846
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:867
 msgid "Death of Gweddry or Dacyn"
 msgstr "موت جويدري أو داسين"
 
@@ -709,7 +711,7 @@ msgstr "تفجيرها، لقد تم تعزيزها! "
 #. a huge number of undead are spawning
 #: data/campaigns/Eastern_Invasion/scenarios/01_Eastern_Invasion.cfg:676
 #, fuzzy
-msgid "Wha- How did so many of them flank us? We’re cut off from Wesnoth!"
+msgid "Wha— How did so many of them flank us? We’re cut off from Wesnoth!"
 msgstr "Wha- كيف يحيط بنا الكثير منهم؟ "
 
 #. [message]: speaker=Dacyn
@@ -783,9 +785,9 @@ msgstr "إذا كنت ترغب في الموت، سيكون هناك متسع م
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:428
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:1018
 #: data/campaigns/Eastern_Invasion/scenarios/13_Spoils_of_War.cfg:1131
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:900
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:904
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1196
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:921
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:925
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1217
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:412
 #: data/campaigns/Eastern_Invasion/utils/final_battle/final_battle.cfg:578
 #: data/campaigns/Eastern_Invasion/utils/final_battle/final_battle.cfg:599
@@ -1703,9 +1705,9 @@ msgstr "هدوء، شخص ما يقترب..."
 #. Speaker (not the spoken text), but used both for humans in S04b and later for the voices from the amulet
 #: data/campaigns/Eastern_Invasion/scenarios/04b_Ill_Humors.cfg:422
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:2869
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1041
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2072
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2084
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1062
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2107
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2119
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:1554
 msgid "Unknown"
 msgstr "غير معروف"
@@ -1725,7 +1727,7 @@ msgstr "يجب أن يكون هنا في مكان ما! "
 #. [message]: speaker=Dacyn
 #. Speaker (not the spoken text), but used both for humans in S04b and later for the voices from the amulet
 #: data/campaigns/Eastern_Invasion/scenarios/04b_Ill_Humors.cfg:431
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2078
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2113
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:1561
 msgid "Unknown 2"
 msgstr "غير معروف 2"
@@ -2540,7 +2542,7 @@ msgstr "هزيمة ريلاكا"
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:721
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1465
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:278
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1278
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1301
 msgid "Death of Gweddry, Dacyn, or Owaec"
 msgstr "موت جويدري أو داسين أو أويك"
 
@@ -5989,8 +5991,22 @@ msgstr "هناك بضع صفحات فضفاضة على الأرض هنا..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:1734
+#, fuzzy
+#| msgid ""
+#| "<i>Journal of Ravan - 13 Blackfire, 588 YW.\n"
+#| "\n"
+#| "This expedition is proving a greater success than I had anticipated. "
+#| "While Dacyn disarms the traps littered around this place, I have been "
+#| "able to conduct extensive research into the other plane beyond the Maw. "
+#| "There is a realm of souls that can be reached from our very own world, "
+#| "one that Iliah-Malal doubtlessly made contact with using the Amulet of "
+#| "the Veil. From time to time, I hear spirits whispering from the other "
+#| "side, but their voices are faint as of yet. I suspect that if I can "
+#| "somehow reach them, they will be able to answer some of the questions I "
+#| "have been pondering. However, there seems to be a piece of the puzzle "
+#| "still missing.</i>"
 msgid ""
-"<i>Journal of Ravan - 13 Blackfire, 588 YW.\n"
+"<i>Journal of Ravan — 13 Blackfire, 588 YW.\n"
 "\n"
 "This expedition is proving a greater success than I had anticipated. While "
 "Dacyn disarms the traps littered around this place, I have been able to "
@@ -6014,8 +6030,20 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:1740
+#, fuzzy
+#| msgid ""
+#| "<i>Journal of Ravan - 21 Whitefire, 589 YW.\n"
+#| "\n"
+#| "I had a dream tonight. Was it a dream? It seemed much more like a vision. "
+#| "I saw a scorching light from twin orbs in the sky, radiating searing "
+#| "brightness over a land teeming with aberrations of constantly shifting "
+#| "flesh. I saw a jewel, no, a key, alight with fire bridging the vast "
+#| "nothingness of the Maw. I saw darkness, merged with light and "
+#| "transfigured, rending the indestructible core of those without form. I "
+#| "hear voices recounting these muddled dreams, yet their words are "
+#| "disjointed, incomprehensible. What are they trying to tell me?</i>"
 msgid ""
-"<i>Journal of Ravan - 21 Whitefire, 589 YW.\n"
+"<i>Journal of Ravan — 21 Whitefire, 589 YW.\n"
 "\n"
 "I had a dream tonight. Was it a dream? It seemed much more like a vision. I "
 "saw a scorching light from twin orbs in the sky, radiating searing "
@@ -6045,8 +6073,19 @@ msgstr "هذا المجلد له علاقة بقزم اسمه ثارجا... ثو
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:1764
+#, fuzzy
+#| msgid ""
+#| "<i>Journal of Ravan - 5 Bleeding Moon, 597 YW.\n"
+#| "\n"
+#| "Nothing is going well. My research has come to a dead end and even the "
+#| "spirits from the other plane no longer speak to me. I can no longer rely "
+#| "on Dacyn either. That stupid man! He decided that playing politics would "
+#| "be a better use of his abilities than helping me decipher this crucial "
+#| "puzzle. As if he could do any good, being the advisor to that half-"
+#| "decrepit old King Haldric. Then again, maybe that is the game Dacyn wants "
+#| "to play. What a shame. I had held him in higher regard than that.</i>"
 msgid ""
-"<i>Journal of Ravan - 5 Bleeding Moon, 597 YW.\n"
+"<i>Journal of Ravan — 5 Bleeding Moon, 597 YW.\n"
 "\n"
 "Nothing is going well. My research has come to a dead end and even the "
 "spirits from the other plane no longer speak to me. I can no longer rely on "
@@ -7256,9 +7295,7 @@ msgid "Move Owaec to the end of the bridge"
 msgstr "نقل أويك إلى نهاية الجسر"
 
 #. [objectives]
-#. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:276
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1266
 msgid "Defeat all enemy leaders"
 msgstr "هزيمة جميع قادة العدو"
 
@@ -7641,7 +7678,9 @@ msgstr ""
 #. [message]: speaker=$found_unit.id
 #. Speaker is an orc, and Mortic is flying towards them. "What? Hey!" *gets killed by Mortic*
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:805
-msgid "Wha- hey!"
+#, fuzzy
+#| msgid "Wha- hey!"
+msgid "Wha— hey!"
 msgstr "واها!"
 
 #. [message]: speaker=Mortic
@@ -8298,13 +8337,13 @@ msgstr ""
 "نتمكن من لم شملنا مع ويسنوث..."
 
 #. [scenario]: id=14_The_Drowned_Plains
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:23
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:18
 msgid "The Drowned Plains"
 msgstr "السهول الغارقة"
 
 #. [part]
 #. In this scenario, there's circa 18 ghosts, each with a single line of speech, you'll recognise them because most start and end with ellipsis. The WML would need to be restructured to put po hints on those lines themselves.
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:41
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:36
 #, fuzzy
 msgid ""
 "Anxious to rendezvous with the Wesnothian army, Gweddry, Owaec, and Dacyn "
@@ -8315,40 +8354,40 @@ msgstr ""
 "حرصًا على الالتقاء بجيش ويسنوثيان، اندفع جويدري وأواك وداسين بسرعة نحو الغرب. "
 
 #. [leader]: type=Barrow Wight, id=Sir Seoraery
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:113
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:108
 msgid "Sir Seoraery"
 msgstr "سيدي سيورايري"
 
 #. [leader]: type=Pyre Wight, id=Sir Efran
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:132
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:127
 msgid "Sir Efran"
 msgstr "السيد افران"
 
 #. [leader]: type=Skeletal Dragon, id=Khrakrahs
 #. Date of death unknown, seen alive in 40 YW during the Sceptre of Fire campaign.
 #. Male; he's been canon in many versions of Wesnoth that only had male drakes, thus will surely have been male in any translation that needed to know his gender.
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:153
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:148
 msgid "Khrakrahs"
 msgstr "خراكراهس"
 
 #. [side]
 #. neutral side, is only horses (although the user_team_name is vaguer than that)
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:329
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:324
 msgid "Animals"
 msgstr "حيوانات"
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:483
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:478
 msgid "... I failed you all..."
 msgstr ".. لقد خذلتكم جميعا..."
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:484
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:479
 msgid "... my daughter... what has happened to my daughter?"
 msgstr "..بنتي...ماذا حدث لابنتي؟"
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:485
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:480
 msgid ""
 "... they don’t know pain... they don’t know fatigue... there was nothing we "
 "could have done..."
@@ -8357,89 +8396,89 @@ msgstr ""
 "به..."
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:486
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:481
 msgid "Lords of Light... what affront did I commit to deserve this fate..."
 msgstr "يا سادة النور... ما هي الإهانة التي ارتكبتها حتى أستحق هذا المصير..."
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:487
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:482
 msgid "I fought the undead with everything... I gave everything..."
 msgstr "لقد حاربت الموتى الأحياء بكل شيء...لقد بذلت كل شيء..."
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:488
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:483
 msgid ""
 "... it came from the shadows. A gust of wind, then a claw through my chest..."
 msgstr "... لقد جاء من الظلال. عاصفة من الرياح، ثم مخلب في صدري..."
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:489
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:484
 msgid "... please, find my wife... tell her my story."
 msgstr "..من فضلك ابحث عن زوجتي...أخبرها قصتي."
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:490
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:485
 msgid "... honor, glory, wealth... none of it saved us in the end."
 msgstr ".. الشرف، المجد، الثروة... لم ينقذنا أي منها في النهاية."
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:491
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:486
 msgid "... they won’t let me die... why won’t they let me die?"
 msgstr ".. لن يسمحوا لي بالموت... لماذا لن يسمحوا لي بالموت؟"
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:492
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:487
 msgid ""
 "... they tore the ribs out from my friends... then fashioned them into "
 "arrows."
 msgstr ".. مزقوا أضلاع أصدقائي... ثم شكلوها سهامًا."
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:493
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:488
 msgid ""
 "... I could not hurt him... my own father... his corpse risen to fight me."
 msgstr ".. لم أستطع أن أؤذيه... والدي... قامت جثته لمحاربتي."
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:494
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:489
 msgid "... Lord Gaelyc, I have failed you."
 msgstr ".. لورد جيليك، لقد خذلتك."
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:495
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:490
 msgid "... the Clans were not prepared... I was not prepared."
 msgstr ".. العشائر لم تكن مستعدة... لم أكن مستعدا."
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:496
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:491
 msgid "... how could we have known? What could we have done?"
 msgstr "... كيف كان بوسعنا أن نعرف ذلك؟ ماذا كان بوسعنا أن نفعل؟"
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:497
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:492
 msgid "... my family, where is my family?"
 msgstr ".. عائلتي أين عائلتي؟"
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:498
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:493
 msgid "... what good was my lance... against a creature... without flesh?"
 msgstr ".. ما فائدة رمحي... ضد مخلوق... بلا لحم؟"
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:499
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:494
 msgid ""
 "At first I thought he was one of ours... then he waved his hand and my blood "
 "ran cold..."
 msgstr "في البداية اعتقدت أنه واحد منا... ثم لوح بيده فتجمد دمي..."
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:500
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:495
 msgid "... so cold... so dark..."
 msgstr ".. بارد جداً... مظلم جداً..."
 
 #. [message]: speaker=unit
 #. Player's unit has just been ambushed. Some other nearby corpses have awoken too, but the player will find that out during the enemy turn.
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:582
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:577
 #, fuzzy
 msgid ""
 "Gah, undead! This one was mired face-first in the swamp, dormant until I "
@@ -8447,7 +8486,7 @@ msgid ""
 msgstr "جاه، أوندد! "
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:586
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:581
 #, fuzzy
 msgid ""
 "Perhaps their leaders are dormant as well. I suspect we will not have to "
@@ -8457,7 +8496,7 @@ msgstr "ربما يكون قادتهم في سبات أيضًا. "
 
 #. [message]: speaker=Gweddry
 #. Player's unit trigger an ambush last turn. During the enemy turn, some other nearby corpses started moving too.
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:593
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:588
 #, fuzzy
 msgid ""
 "Whenever we stumble upon a corpse, it awakens its nearby allies! What will "
@@ -8466,7 +8505,7 @@ msgstr "كلما عثرنا على جثة، فإنها توقظ حلفائها �
 
 #. [message]: speaker=Dacyn
 #. The keeps are visible, so the player can guess where the leaders themselves are.
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:598
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:593
 msgid ""
 "It may be prudent to clear the swamp near the undead leaders before we sight "
 "them."
@@ -8474,48 +8513,84 @@ msgstr ""
 "قد يكون من الحكمة تطهير المستنقع بالقرب من قادة الموتى الأحياء قبل أن نراهم."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:727
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:722
 msgid "Their leader is waking nearby allies out from the swamp!"
 msgstr "قائدهم يوقظ الحلفاء القريبين من المستنقع!"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:731
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:726
 msgid "Just more abominations for us to slay!!"
 msgstr "فقط المزيد من الرجاسات علينا أن نذبحها!!"
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:785
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:799
+#, fuzzy
+#| msgid "10 gold"
+msgid "105 gold"
+msgstr "10 قطع ذهب"
+
+#. [event]
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:800
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:804
+#, fuzzy
+#| msgid "10 gold"
+msgid "80 gold"
+msgstr "10 قطع ذهب"
+
+#. [event]
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:801
+#, fuzzy
+#| msgid "115 gold"
+msgid "175 gold"
+msgstr "115 قطعة ذهب"
+
+#. [event]
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:802
+#, fuzzy
+#| msgid "25 gold"
+msgid "55 gold"
+msgstr "25 قطعة ذهب"
+
+#. [event]
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:803
+#, fuzzy
+#| msgid "10 gold"
+msgid "150 gold"
+msgstr "10 قطع ذهب"
+
+#. [event]
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:806
 msgid "Lord Alric’s Palace"
 msgstr "قصر اللورد ألريك"
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:786
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:807
 msgid "Sir Efran’s Castle"
 msgstr "قلعة السير إفران"
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:787
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:808
 msgid "Lord Gaelyc’s Citadel"
 msgstr "قلعة اللورد جايليك"
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:788
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:809
 msgid "Sir Seoraery’s Keep"
 msgstr "قلعة السير سيورايري"
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:789
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:810
 msgid "Clearwater Lake"
 msgstr "بحيرة المياه الصافيى"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:842
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:863
 msgid "Defeat the spirits"
 msgstr "هزيمة الأرواح"
 
 #. [message]: speaker=Owaec
 #. The player hasn't recruited yet, so listening are Gweddry, Dacyn, and the auto-recalled optional loyals (at most 8 people in total).
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:874
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:895
 msgid ""
 "At last we have reached the Horse Plains, the fair homeland of my people! "
 "Here we can finally reunite with our comrades-in-arms and vanquish the "
@@ -8526,25 +8601,25 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #. Shouted to the landscape, expecting to find living comrades. What will answer is walking corpses and ghosts.
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:884
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:905
 #, fuzzy
 msgid "Hail, Clansmen! Come and greet one of your own!"
 msgstr "مرحبًا يا رجال العشيرة! "
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:888
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:909
 msgid "Fallen Clansman"
 msgstr "رجل العشيرة الساقط"
 
 #. [message]: speaker=Owaec
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:908
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:929
 #: data/campaigns/Eastern_Invasion/utils/final_battle/final_battle.cfg:824
 msgid "No."
 msgstr "لا."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:912
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:933
 #, fuzzy
 msgid ""
 "No, NO! Why are there swamps here? Why are there undead here? How can this "
@@ -8553,7 +8628,7 @@ msgid ""
 msgstr "لا، لا! "
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:916
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:937
 msgid ""
 "I’m sorry Owaec. The undead armies must have defeated the Clansmen and "
 "dammed the river to drown the plains. They must like the swamp, filled with "
@@ -8563,12 +8638,12 @@ msgstr ""
 "ليغرقوا السهول لا بد أنهم يحبون المستنقع المليء بالموت والانحلال..."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:920
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:941
 msgid "My home... my people... how could this happen..."
 msgstr "بيتي... شعبي... كيف يمكن أن يحدث هذا..."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:930
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:951
 msgid ""
 "YOU! MAGE!!! Had you not insisted we travel north, we might have arrived in "
 "time to save these people! My friends, my family, dead from your neglect. "
@@ -8581,7 +8656,7 @@ msgstr ""
 "تنقذنا؟"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:934
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:955
 #, fuzzy
 msgid ""
 "We trusted you. I trusted you! Instead, you sent us away from the war like "
@@ -8592,85 +8667,85 @@ msgstr "لقد وثقنا بك. "
 
 #. [message]: speaker=Owaec
 #. Dacyn is bleeding and about to take damage from an unknown source
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:944
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:965
 msgid "Are you even listening?!?"
 msgstr "هل أنت تستمع حتى؟!؟؟"
 
 #. [message]: speaker=Gweddry
 #. Dacyn is bleeding and taking damage, from an unknown source
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:961
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:982
 #, fuzzy
 msgid "Dacyn, what’s wrong? Are you all right?"
 msgstr "داسين، ما المشكلة؟ "
 
 #. [message]: speaker=Dacyn
 #. Dacyn steps away from the initial encampment, and is about take a lot of damage
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:973
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:994
 msgid "...I can’t-"
 msgstr "...لا أستطبع-"
 
 #. [message]: speaker=Dacyn
 #. Dacyn stepped away from the castle, the six hexes around him have changed to chasms and he's down to 15 hp.
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1020
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1041
 #, fuzzy
 msgid "I’ve lost control of the Amulet! I must-"
 msgstr "لقد فقدت السيطرة على التميمة! "
 
 #. [message]
 #. up to 6 ghosts or wraiths come out of the chasms, depending on difficulty and how many auto-recalled loyals the player has
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1044
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1065
 msgid "<span size='small' font-style='italic'>And most importantly...</span>"
 msgstr "<span size='small'font-style='italic'>والأهم من ذلك...</span>"
 
 #. [event]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1051
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1072
 msgid "Lord Alric"
 msgstr "اللورد ألريك"
 
 #. [message]: speaker=Lord Alric
 #. speaker is a wraith, he's emerged from the chasms around Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1057
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1078
 msgid "Owaec, my son..."
 msgstr "أويك يا ابني..."
 
 #. [message]: speaker=Lord Alric
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1061
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1082
 #, fuzzy
 msgid "Why did you abandon us? I am dead... thanks to you..."
 msgstr "لماذا تركتنا؟ "
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1065
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1086
 #, fuzzy
 msgid "No, it’s not true! You’re not dead! I don’t believe you!"
 msgstr "لا، هذا ليس صحيحا! "
 
 #. [message]: speaker=Gweddry
 #. Owaec rides off to the south, into the shroud, and disappears
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1070
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1091
 msgid "Owaec, wait!"
 msgstr "أويك، انتظر!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1089
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1110
 msgid "What do I do now?"
 msgstr "ماذا أفعل الآن؟"
 
 #. [message]: speaker=Dacyn
 #. The chasms are filled with sand, so all terrain near the keep is walkable again.
 #. Dacyn has healed back to full HP, although that's for gameplay reasons because he needs to fight the ghosts, there isn't a story reason for it.
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1112
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1133
 msgid "(gasping) I have regained control!"
 msgstr "(يلهث) لقد استعدت السيطرة!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1116
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1137
 #, fuzzy
 msgid "What happened? I did not know this Amulet could act of its own accord."
 msgstr "ماذا حدث؟ "
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1120
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1141
 #, fuzzy
 msgid ""
 "Neither did I. I should have sensed it, but the darkness is nearly "
@@ -8680,7 +8755,7 @@ msgstr "ولا أنا كذلك. كان يجب أن أشعر بذلك، لكن ا
 
 #. [message]: speaker=Dacyn
 #. loses his halo and advances to an L4 Twilight Mage (liminal, heals +4, does not illuminate, melee attack gains "drain")
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1125
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1146
 msgid ""
 "... but it is a necessary price to pay. I will not let up until Mal-Ravanal "
 "is defeated, whatever the cost may be."
@@ -8690,20 +8765,20 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #. Owaec is near his father's castle, and there's a dead (not undead) skeleton on the keep
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1206
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1227
 msgid "...so it is true. My lord and father is dead."
 msgstr "... إذن هذا صحيح. سيدي وأبي مات."
 
 #. [message]: speaker=Owaec
 #. today is when he learns the news of that, not when it happened
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1215
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1236
 msgid ""
 "Today truly is a day of ill fortune. My family is slain, my kinsmen "
 "scattered, my homeland defiled."
 msgstr "اليوم هو حقا يوم تعيس. عائلتي اغتيلت، شعبي تفرق، موطني تدنس."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1219
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1240
 #, fuzzy
 msgid ""
 "But I will not despair! This damning destruction will not be the lasting "
@@ -8712,7 +8787,7 @@ msgid ""
 msgstr "لكنني لن يأس! "
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1256
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1277
 #, fuzzy
 msgid ""
 "Owaec, do not be so hasty. Much of the horde that conquered this place now "
@@ -8721,23 +8796,29 @@ msgid ""
 msgstr "أويك، لا تتعجل. "
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1260
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1281
 msgid ""
 "I agree, yet all is strangely quiet. Perhaps the remaining undead lie "
-"dormant? If we take time to capture villages and rebuild our forces, we may "
-"yet be able to reclaim this place."
+"dormant?\n"
+"\n"
+"Even if we lack the strength to truly reclaim this place, we should still "
+"take the opportunity to gather what supplies remain. When finally we meet "
+"the shambling hordes responsible for all this destruction, we must not find "
+"our armories wanting."
 msgstr ""
-"أوافق على ذلك، ولكن كل شيء هادئ بشكل غريب. ربما يكون الموتى الأحياء الباقون "
-"نائمين؟ إذا خصصنا بعض الوقت للاستيلاء على القرى وإعادة بناء قواتنا، فقد "
-"نتمكن من استعادة هذا المكان."
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1271
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1289
+msgid "Gather as much gold as you can before turns run out."
+msgstr ""
+
+#. [objective]: condition=win
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1294
 msgid "Loot Addogin’s smugglers’ caches."
 msgstr "نهب مخابئ المهربين الخاصة بأدوجين."
 
 #. [note]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1287
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1309
 msgid ""
 "Enemy leaders are idle until first sighted, but will then abandon their keep "
 "and attack you."
@@ -8745,16 +8826,8 @@ msgstr ""
 "قادة العدو خاملون حتى رؤيتهم لأول مرة، لكنهم بعد ذلك سيتخلون عن قلاعهم "
 "ويهاجمونك."
 
-#. [note]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1290
-#, fuzzy
-#| msgid "Capture villages and build up an army before attacking."
-msgid ""
-"It may be wise to capture villages and build up an army before attacking."
-msgstr "الاستيلاء على القرى وبناء جيش قبل الهجوم."
-
 #. [message]: speaker=Hahid al-Ali
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1298
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1317
 #, fuzzy
 msgid ""
 "On a quest of searing vengeance? Owaec my friend, what you need is my elixir "
@@ -8765,19 +8838,19 @@ msgstr "في السعي للانتقام الشديد؟ "
 
 #. [message]: speaker=Hahid al-Ali
 #. player bought the elixir of ulfserker fury
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1312
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1331
 msgid "Try not to die too quickly!"
 msgstr "حاول ألا تموت بسرعة كبيرة!"
 
 #. [message]: speaker=Hahid al-Ali
 #. player declined the elixir of ulfserker fury
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1321
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1340
 #, fuzzy
 msgid "Suit yourself! Don’t expect me to drink that though, I’m not suicidal!"
 msgstr "تناسب نفسك! "
 
 #. [message]: speaker=Hahid al-Ali
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1326
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1345
 #, fuzzy
 msgid ""
 "This offer expires as soon as your anger does! <i>(elixirs only last for 1 "
@@ -8785,18 +8858,18 @@ msgid ""
 msgstr "ينتهي هذا العرض بمجرد انتهاء غضبك! "
 
 #. [option]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1328
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1347
 msgid "Buy the elixir for Owaec (30 gold)."
 msgstr "اشتري الإكسير لأويك (30 ذهبا)."
 
 #. [option]
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1338
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1357
 msgid "Leave the elixir."
 msgstr "اترك الإكسير."
 
 #. [message]: speaker=Addogin
 #. Wait a moment... this landscape looks familiar.
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1366
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1385
 msgid ""
 "Hol’ up... some of this place is lookin’ mighty familiar. Yeah, few years "
 "back I used to work for a smuggler ’round these parts."
@@ -8806,7 +8879,7 @@ msgstr ""
 
 #. [message]: speaker=Addogin
 #. hint about the smuggler's hidden gold, will be followed by adding three "go here" markers to the map
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1371
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1390
 msgid ""
 "I’m sure the undead have burned down his storehouse, but there might still "
 "be a cache or three hidden ’round here."
@@ -8815,14 +8888,14 @@ msgstr ""
 "أو ثلاثة مخبأة هنا."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1395
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1414
 #, fuzzy
 msgid ""
 "We should retrieve as many as we can; I’m sure the extra gold will be useful."
 msgstr "يجب علينا استرداد أكبر عدد ممكن؛ "
 
 #. [message]: speaker=Addogin
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1399
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1418
 #, fuzzy
 msgid ""
 "Just remember, I ain’t been here in years. Some of them caches might be "
@@ -8831,7 +8904,7 @@ msgstr "فقط تذكر، لم أكن هنا منذ سنوات. "
 
 #. [message]: speaker=Addogin
 #. although there are three map markers to explore, the first one that the player explores always has this gold, and the second is always empty
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1446
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1465
 #, fuzzy
 msgid ""
 "That’s the first cache. Lookee here, my smuggler friend left us 45 gold "
@@ -8839,34 +8912,34 @@ msgid ""
 msgstr "هذه هي ذاكرة التخزين المؤقت الأولى. "
 
 #. [message]: speaker=Addogin
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1460
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1479
 #, fuzzy
 msgid ""
 "This be the second cache, but looks like some’un found it before us. Empty."
 msgstr "هذا هو المخبأ الثاني، ولكن يبدو أن البعض لم يعثر عليه قبلنا. "
 
 #. [message]: speaker=Addogin
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1466
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1485
 #, fuzzy
 msgid "Third ’n last cache, and it’s loaded! A clean 100 gold pieces."
 msgstr "ذاكرة التخزين المؤقت الثالثة والأخيرة، وتم تحميلها! "
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1478
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1497
 #, fuzzy
 msgid "Excellent! The gold from these caches will be very helpful."
 msgstr "ممتاز! "
 
 #. [message]: speaker=Grug
 #. this is probably grug's first time fighting squishy undead (though there were a few in S10)
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1529
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1548
 #, fuzzy
 msgid "Squishy fun to squash! Squash squish squash!"
 msgstr "متعة اسفنجي للاسكواش! "
 
 #. [message]: speaker=unit
 #. "odd that his body didn't become undead"
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1551
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1570
 #, fuzzy
 msgid ""
 "This man looks to have been dead for about a month. Odd that his body yet "
@@ -8874,13 +8947,13 @@ msgid ""
 msgstr "يبدو أن هذا الرجل قد مات منذ حوالي شهر. "
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1564
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1583
 msgid "There is a journal here, still intact despite the swamp."
 msgstr "توجد يومية هنا، لا تزال سليمة على الرغم من المستنقع."
 
 #. [message]: speaker=unit
 #. Reading from a dead horseman's journal. This is a warning to the player that there's a Skeletal Dragon in the scenario.
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1569
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1588
 msgid ""
 "<i>... we thought the enemy had erred, that the battle could yet be won. "
 "Taking advantage of the gap, our swiftest riders drove toward the exposed "
@@ -8902,7 +8975,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. Reading more from the dead horseman's journal, whose corpse prompted the "odd that his body didn't become undead" comment.
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1576
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1595
 msgid ""
 "<i>I fled, coward that I am, riding breakneck through the night before my "
 "injuries overcame my strength. And so it comes that I have earned no "
@@ -8921,29 +8994,29 @@ msgstr ""
 
 #. [message]: speaker=Sir Seoraery
 #. no-one sends a messenger, he's talking about memories from before he died
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1625
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1644
 msgid "... we need... reinforcements... send a messenger..."
 msgstr "..نحتاج...تعزيزات...ارسل رسول..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1629
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1648
 msgid "I’m not your enemy!"
 msgstr "أنا لست عدوك!"
 
 #. [message]: speaker=Sir Seoraery
 #. he's talking of a memory, not the current situation
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1634
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1653
 msgid "...must... hold... the line."
 msgstr "..يجب...الحفاظ على...الخط."
 
 #. [message]: speaker=Sir Efran
 #. he's talking of a memory, not the current situation
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1686
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1705
 msgid "... there’s... too many."
 msgstr ".. هناك... الكثير."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1690
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1709
 #, fuzzy
 msgid ""
 "You and your men have been turned to undeath! Let us put you out of your "
@@ -8952,18 +9025,23 @@ msgstr "لقد تحولت أنت ورجالك إلى الموت! "
 
 #. [message]: speaker=Sir Efran
 #. he's talking to a memory, not the unit that triggered the event
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1695
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1714
 msgid "... I would sooner... die... than yield to you... necromancer."
 msgstr "..أفضّل أن...أموت...على أن أستسلم لك...مستحضر الأرواح."
 
+#. [effect]: type=impact
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1784
+msgid "tail"
+msgstr ""
+
 #. [message]: speaker=unit
 #. undead dragon, talking to a memory rather than the unit that triggered him
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1771
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1815
 msgid "... Lich, you do not belong here... leave, or I shall... rend you..."
 msgstr ".. ليش، أنت لا تنتمي إلى هنا... ارحل، وإلا سأمزقك..."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1775
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1819
 #, fuzzy
 msgid ""
 "Is that... an undead dragon? Dear Light! Raising such a powerful thrall must "
@@ -8971,7 +9049,7 @@ msgid ""
 msgstr "هل هذا... تنين أوندد؟ "
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1779
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1823
 #, fuzzy
 msgid ""
 "Even a living dragon is nothing but flesh. This feeble imitation lacks even "
@@ -8980,13 +9058,13 @@ msgstr "حتى التنين الحي ليس سوى لحم. "
 
 #. [message]: speaker=unit
 #. undead dragon, again talking to a memory rather than anyone currently on the map
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1784
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1828
 msgid "... I warned you... Ravanal... now <b>burn</b>."
 msgstr ".. لقد حذرتك... رافانال... الآن <b>احترق</b>."
 
 #. [message]: speaker=second_unit
 #. speaker is one of the undead leaders, in an [event]name=attack
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1875
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1919
 msgid ""
 "... Owaec... why do you fight me? Join us... ride alongside your father... "
 "defend the plains..."
@@ -8996,7 +9074,7 @@ msgstr ""
 
 #. [message]: speaker=Owaec
 #. speaking to one of the undead leaders, in an [event]name=attack
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1880
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1924
 #, fuzzy
 msgid ""
 "Abomination!! Clansmen though you once were, I have no choice but to grind "
@@ -9005,14 +9083,14 @@ msgstr "رجس!! "
 
 #. [message]: speaker=Owaec
 #. speaking to Khrakrahs in an [event]name=attack, although the anger seems misdirected
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1897
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1941
 msgid ""
 "You! You are the cause of this destruction!! Vengeance for my fallen people!"
 msgstr "أنت! أنت سبب هذا الدمار!! الانتقام لشعبي الساقط!"
 
 #. [message]: speaker=Terraent
 #. speaking to one of the undead leaders (horseman, not dragon) in an [event]name=attack
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1914
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1958
 #, fuzzy
 msgid ""
 "All things deserve redemption, but I fear the undead will never find it. May "
@@ -9021,7 +9099,7 @@ msgstr "كل الأشياء تستحق الفداء، لكني أخشى أن ا�
 
 #. [message]: speaker=Terraent
 #. speaking to Khrakrahs in an [event]name=attack
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1931
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1975
 #, fuzzy
 msgid ""
 "I have faced worse terrors than you, lizard! Through piety and the holy "
@@ -9030,13 +9108,13 @@ msgstr "لقد واجهت أهوال أسوأ منك أيتها السحلية! 
 
 #. [message]: speaker=second_unit
 #. speaker is an undead horseman, who's fighting Gaennell. Unclear whether this is to a memory, or because Gaennell is a Shadow Mage
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1948
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1992
 msgid "... Necromancer... you are a blight..."
 msgstr "..مستحضر الأرواح...أنت آفة..."
 
 #. [message]: speaker=Gaennell
 #. to an undead horseman in an [event]name=attack
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1953
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1997
 msgid ""
 "Not sure what you’d call me anymore, but definitely not more of a blight "
 "than you."
@@ -9048,42 +9126,42 @@ msgstr ""
 #. Attacked with a fireball from an L2 or higher mage.
 #. Shek’kahan was Khrakrahs' brother, but died during TRoW, 6 centuries ago.
 #. The date of Khrakrahs' own death isn't canon, he was still alive in 40 YW (he appears in SoF).
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1972
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2016
 msgid "... Shek’kahan, your fire grows weak... you are hardly... a rival."
 msgstr ".. شككاهان، نارك تضعف... أنت بالكاد... منافس."
 
 #. [message]: speaker=second_unit
 #. speaker is Khrakrahs when attacked by a dwarf, but remembering one he met in 40 YW.
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:1989
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2033
 msgid "... Thursagan... I warned you not... to enter my lair."
 msgstr ".. ثورسجان... لقد حذرتك من... أن تدخل مخبأي."
 
 #. [message]: speaker=Lord Alric
 #. last breath request from the ghost of Lord Alric
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2006
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2050
 msgid "... please, watch over my son for me."
 msgstr "..من فضلك، اعتني بابني من اجلي."
 
 #. [message]: speaker=Sir Seoraery
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2018
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2062
 msgid "... I may die... but the Clans... will never fall."
 msgstr ".. قد أموت... لكن العشائر... لن تسقط أبدًا."
 
 #. [message]: speaker=Sir Efran
 #. last breath, but still talking to a memory rather than the unit currently fighting him
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2031
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2075
 msgid "... Necromancer... Wesnoth will defeat you... in the end."
 msgstr ".. مستحضر الأرواح... ويسنوث سوف تهزمك... في النهاية."
 
 #. [message]: speaker=Khrakrahs
 #. last breath
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2044
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2088
 msgid "I am... ...<i>cold</i>."
 msgstr "أنا... ...<i>بارد</i>."
 
 #. [message]: speaker=Gweddry
 #. spoken at the start of a new turn after killing the first undead leader
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2065
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2100
 #, fuzzy
 msgid ""
 "Dacyn, I’ve been thinking. This artifact has had such a draining effect on "
@@ -9092,14 +9170,14 @@ msgid ""
 msgstr "داسين، لقد كنت أفكر. "
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2069
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2104
 msgid ""
 "Hmm... I suppose there would be no harm in locking it up somewhere safe."
 msgstr "حسنًا... أعتقد أنه لن يكون هناك أي ضرر في حبسه في مكان آمن."
 
 #. [message]
 #. voices from the amulet talking to Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2075
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2110
 msgid ""
 "<span size='small' font-style='italic'>You have a great weapon... and you "
 "would simply lock it away?</span>"
@@ -9109,7 +9187,7 @@ msgstr ""
 
 #. [message]
 #. voices from the amulet talking to Dacyn, speaking of Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2081
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2116
 msgid ""
 "<span size='small' font-style='italic'>His intent is good, but his spirit is "
 "weak... he would be corrupted...</span>"
@@ -9119,7 +9197,7 @@ msgstr ""
 
 #. [message]
 #. voices from the amulet talking to Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2087
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2122
 msgid ""
 "<span size='small' font-style='italic'>Only you can be trusted with this "
 "responsibility.</span>"
@@ -9128,7 +9206,7 @@ msgstr ""
 "المسؤولية.</span>"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2091
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2126
 #, fuzzy
 msgid ""
 "But on the other hand... this is a dangerous artifact. I fear that only I "
@@ -9136,67 +9214,38 @@ msgid ""
 msgstr "ولكن من ناحية أخرى... هذه قطعة أثرية خطيرة. "
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2095
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2130
 msgid "Well, you’re the magic expert."
 msgstr "حسنًا، أنت خبير السحر."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2109
-#, fuzzy
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2142
 msgid ""
-"We must finish here and hurry on from this dead place! If the Horse Clans "
-"have fallen so completely, I fear for Weldyn and the rest of Wesnoth."
-msgstr "يجب أن ننتهي هنا ونسرع للخروج من هذا المكان الميت! "
-
-#. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2113
-#, fuzzy
-msgid ""
-"Why are we here at all? We should be advancing towards Weldyn, not humoring "
-"Owaec’s lust for vengeance. The Plains are already drowned."
-msgstr "لماذا نحن هنا أصلا؟ "
-
-#. [message]: speaker=Dacyn
-#. time over, talking to Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2122
-#, fuzzy
-msgid ""
-"Enough of this. We have wasted too much time here already; give up your "
-"foolish quest of vengeance and travel on."
-msgstr "كفى من هذا. "
+"If the Horse Clans have fallen so completely, I fear for Weldyn and the rest "
+"of Wesnoth. We must make the most of our time here; we cannot afford to "
+"tarry too long."
+msgstr ""
 
 #. [message]: speaker=Owaec
-#. time over, talking to Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2127
-#, fuzzy
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2150
 msgid ""
-"Your search for foul magic has caused enough harm already, and now you would "
-"leave my countrymen’s bodies defiled by undeath? I will slay everything that "
-"moves in this swamp, and once I am done, perhaps my hammer will find you "
-"next!"
+"So much death. So many of my kinsmen left unavenged. If only we had more "
+"time..."
 msgstr ""
-"لقد تسبب بحثك عن السحر الكريه في ضرر كافٍ بالفعل، والآن ستترك أجساد مواطني "
-"بلدي مدنسة بالموت؟ "
 
-#. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2131
-#, fuzzy
-msgid ""
-"You fools are welcome to linger here clearing this swamp, but I intend to "
-"travel on alone and defeat Mal-Ravanal. Go as you wish on your own. I have a "
-"task to complete."
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2154
+msgid "We have done all we could here."
 msgstr ""
-"مرحبًا بكم أيها الحمقى في البقاء هنا لتطهير هذا المستنقع، لكنني أنوي السفر "
-"بمفردي وهزيمة مال رافانال. "
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2169
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2179
 #, fuzzy
 msgid "It is done. My kinsmen have been avenged."
 msgstr "تم ذلك. "
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2178
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2198
 #, fuzzy
 msgid ""
 "Mage... I owe you an apology. This destruction... even had we journeyed here "
@@ -9208,12 +9257,12 @@ msgid ""
 msgstr "ماجى... أنا مدين لك باعتذار. "
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2184
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2204
 msgid "Apology accepted."
 msgstr "تم قبول الاعتذار."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2193
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2211
 #, fuzzy
 msgid ""
 "And I too must admit, I underestimated the power in this Amulet. Even now, "
@@ -9222,7 +9271,7 @@ msgstr "وأنا أيضًا يجب أن أعترف بأنني قللت من قو
 
 #. [message]: speaker=Owaec
 #. to Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2198
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2216
 #, fuzzy
 msgid ""
 "Make no mistake, I still do not approve of your plan! It will lead you only "
@@ -9231,7 +9280,7 @@ msgid ""
 msgstr "لا تخطئ، مازلت لا أوافق على خطتك! "
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2202
+#: data/campaigns/Eastern_Invasion/scenarios/14_The_Drowned_Plains.cfg:2220
 msgid ""
 "I’m glad we have prevailed here, but I fear greatly for Wesnoth if the Clans "
 "have been defeated so thoroughly so quickly. It has scant been a year since "
@@ -10030,7 +10079,9 @@ msgstr "سلفي «العظيم». "
 #. [message]: speaker=Mel Guthrak
 #. last breath of Mel Guthrak
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:1885
-msgid "Wha- but how?"
+#, fuzzy
+#| msgid "Wha- but how?"
+msgid "Wha— but how?"
 msgstr "ماذا- ولكن كيف؟"
 
 #. [message]: speaker=Gaennell
@@ -12499,7 +12550,7 @@ msgstr ""
 #. [damage_type]: id=arcane_damage_blessing
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:536
 msgid ""
-"This unit's weapons are treated as arcane instead of the declared damage "
+"This unit’s weapons are treated as arcane instead of the declared damage "
 "type if that would increase the damage."
 msgstr ""
 
@@ -12513,7 +12564,7 @@ msgstr ""
 #. [damage_type]: id=arcane_damage_ranged_blessing
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:548
 msgid ""
-"This unit's bow or crossbow attacks are treated as arcane instead of the "
+"This unit’s bow or crossbow attacks are treated as arcane instead of the "
 "declared damage type if that would increase the damage."
 msgstr ""
 
@@ -12636,7 +12687,9 @@ msgstr "الضوء يتلاشى... ويسنوث، لقد خذلتك..."
 
 #. [message]: speaker=Dolburras
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:121
-msgid "Watch out behind ye- ach!"
+#, fuzzy
+#| msgid "Watch out behind ye- ach!"
+msgid "Watch out behind ye— ach!"
 msgstr "احترس من خلفك!"
 
 #. [message]: speaker=Gweddry
@@ -13023,7 +13076,9 @@ msgstr "لكن لن يتكرر هذا أبدا!!!"
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/utils/final_battle/final_battle.cfg:561
-msgid "Wha- what is this?!"
+#, fuzzy
+#| msgid "Wha- what is this?!"
+msgid "Wha— what is this?!"
 msgstr "ما- ما هذا؟!"
 
 #. [message]: speaker=Mal-Ravanal
@@ -13082,7 +13137,7 @@ msgstr "الآن، شاهد قوتنا! سوف تعيش كبطل لإرديا!"
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/utils/final_battle/final_battle.cfg:771
 #, fuzzy
-msgid "Wha- where am I? What’s happening to me?"
+msgid "Wha— where am I? What’s happening to me?"
 msgstr "وا- أين أنا؟ "
 
 #. [message]: speaker=spirit
@@ -13775,6 +13830,58 @@ msgstr ""
 "وعلى الرغم من كل الصعاب، تحملت هذه الوحدة أهوال وتعذيب سجون مال-رافانال "
 "وعاشت لتروي القصة. يتحمل الناجون عبئًا ثقيلًا من وقتهم في الأسر، لكنهم تعلموا "
 "أيضًا الكثير من نقاط القوة والضعف لدى آسريهم السابقين."
+
+#~ msgid ""
+#~ "I agree, yet all is strangely quiet. Perhaps the remaining undead lie "
+#~ "dormant? If we take time to capture villages and rebuild our forces, we "
+#~ "may yet be able to reclaim this place."
+#~ msgstr ""
+#~ "أوافق على ذلك، ولكن كل شيء هادئ بشكل غريب. ربما يكون الموتى الأحياء "
+#~ "الباقون نائمين؟ إذا خصصنا بعض الوقت للاستيلاء على القرى وإعادة بناء "
+#~ "قواتنا، فقد نتمكن من استعادة هذا المكان."
+
+#, fuzzy
+#~| msgid "Capture villages and build up an army before attacking."
+#~ msgid ""
+#~ "It may be wise to capture villages and build up an army before attacking."
+#~ msgstr "الاستيلاء على القرى وبناء جيش قبل الهجوم."
+
+#, fuzzy
+#~ msgid ""
+#~ "We must finish here and hurry on from this dead place! If the Horse Clans "
+#~ "have fallen so completely, I fear for Weldyn and the rest of Wesnoth."
+#~ msgstr "يجب أن ننتهي هنا ونسرع للخروج من هذا المكان الميت! "
+
+#, fuzzy
+#~ msgid ""
+#~ "Why are we here at all? We should be advancing towards Weldyn, not "
+#~ "humoring Owaec’s lust for vengeance. The Plains are already drowned."
+#~ msgstr "لماذا نحن هنا أصلا؟ "
+
+#, fuzzy
+#~ msgid ""
+#~ "Enough of this. We have wasted too much time here already; give up your "
+#~ "foolish quest of vengeance and travel on."
+#~ msgstr "كفى من هذا. "
+
+#, fuzzy
+#~ msgid ""
+#~ "Your search for foul magic has caused enough harm already, and now you "
+#~ "would leave my countrymen’s bodies defiled by undeath? I will slay "
+#~ "everything that moves in this swamp, and once I am done, perhaps my "
+#~ "hammer will find you next!"
+#~ msgstr ""
+#~ "لقد تسبب بحثك عن السحر الكريه في ضرر كافٍ بالفعل، والآن ستترك أجساد مواطني "
+#~ "بلدي مدنسة بالموت؟ "
+
+#, fuzzy
+#~ msgid ""
+#~ "You fools are welcome to linger here clearing this swamp, but I intend to "
+#~ "travel on alone and defeat Mal-Ravanal. Go as you wish on your own. I "
+#~ "have a task to complete."
+#~ msgstr ""
+#~ "مرحبًا بكم أيها الحمقى في البقاء هنا لتطهير هذا المستنقع، لكنني أنوي السفر "
+#~ "بمفردي وهزيمة مال رافانال. "
 
 #~ msgid "Move Owaec next to Yannic."
 #~ msgstr "حرك أوواك بجوار يانيك."

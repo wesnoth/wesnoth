@@ -67,8 +67,9 @@ Salta le schermate [storia] e i dialoghi fino alla fine dell’evento
 \fBinizio\fP.
 .TP 
 \fB\-\-clock\fP
-Adds the option to show a clock for testing the drawing timer. Also adds the
-option for showing the GUI Test Dialog.
+Aggiunge l’opzione per mostrare un orologio per testare il drawing
+timer. Aggiunge anche l’opzione per mostrare un orologio per mostrare i
+dialoghi test dell'interfaccia grafica.
 .TP 
 \fB\-\-core\fP\fI\ identificatore\fP
 sostituisce la directory base caricata con quella specificata
@@ -134,27 +135,30 @@ combinazione con l’opzione \fB\-d\fP.
 \fB\-\-log\-precise\fP
 registra i tempi nel logfile in maniera più accurata.
 .TP 
-\fB\-\-log\-strict\fP\fI\ level\fP
-sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
-this \fIlevel\fP or more severe will cause the unit test to fail regardless of
-the victory result. Only relevant when used with \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ livello\fP
+imposta il \fIlivello\fP di ristrettezza del logger. Ogni messaggio inviato di
+questo \fIlivello\fP o più severo causerà il fallimento del test unità,
+qualunque sia l’esito della vittoria. Ha rilevanza soltanto se utilizzato
+con l’opzione \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filtro\fP\fB]\fP
 fornisce un elenco dei log domains definiti ( soltanto quelli contenenti
 \fIfiltro\fP, se usata) e termina
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. The environment variable
-WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
-in the logs directory under the userdata folder.
+impedisce il reindirizzamento dell’output registrato in un file. In
+alternativa si può valorizzare la variabile di ambiente
+WESNOTH_NO_LOG_FILE. I log file vengono creati nella directory dei log nella
+cartella dati utente.
 .TP 
 \fB\-\-log\-to\-file\fP
 il registro di output è scritto in un file. Annulla l’effetto di
 \-\-no\-log\-to\-file implicito o esplicito.
 .TP 
 \fB\-\-no\-log\-sanitize\fP
-disables the anonymization that's normally applied when logging, for example
-replacing usernames with USER.
+disabilita l'anonimizzazione che viene normalmente applicata nella
+memorizzazione dei log, ad esempio sostituendo i nomi utente con un generico
+USER.
 .TP 
 \fB\-\-wnoconsole\fP
 In ambiente Windows, quando usato in combinazione con \-\-no\-log\-to\-file,
