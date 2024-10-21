@@ -87,12 +87,12 @@ public:
 	std::string weapon_specials() const;
 	std::string weapon_specials_value(const std::set<std::string> checking_tags) const;
 
-	/** Returns alignment specified by alignment_str_ variable If empty or not valid returns the unit's alignment or neutral if self_ variable empty.
+	/** Returns alignment specified by alignment_ variable.
 	 */
 	utils::optional<unit_alignments::type> alignment() const { return alignment_; }
 	/** Returns alignment specified by alignment() for filtering when exist.
 	 */
-	std::string alignment_str() const;
+	std::string alignment_str() const { return alignment_ ? unit_alignments::get_string(*alignment_) : ""; }
 
 	/** Calculates the number of attacks this weapon has, considering specials. */
 	void modified_attacks(unsigned & min_attacks,
