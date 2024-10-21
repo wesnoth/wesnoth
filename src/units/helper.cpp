@@ -103,7 +103,7 @@ std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
 	}
 
 	if(unit_recall_cost > team_recall_cost) {
-		str << markup::img("~BLIT(themes/gold.png, 0, 30)") << markup::span_color("#ff0000", unit_recall_cost);
+		str << markup::img("themes/gold.png") << markup::span_color("#ff0000", unit_recall_cost);
 	} else if(unit_recall_cost == team_recall_cost) {
 		str << markup::img("themes/gold.png") << unit_recall_cost;
 	} else if(unit_recall_cost < team_recall_cost) {
@@ -111,6 +111,11 @@ std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
 	}
 
 	return str.str();
+}
+
+std::string format_cost_string(int unit_cost)
+{
+	return formatter() << markup::img("themes/gold.png") << unit_cost;
 }
 
 std::string format_name_string(const std::string& str, const bool can_recruit)

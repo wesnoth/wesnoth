@@ -15,8 +15,10 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
+#include "gui/widgets/listbox.hpp"
 #include "team.hpp"
 #include "units/ptr.hpp"
+#include "units/types.hpp"
 
 #include <string>
 #include <vector>
@@ -33,6 +35,7 @@ namespace dialogs
 class unit_recall : public modal_dialog
 {
 public:
+	unit_recall(std::vector<const unit_type*>& recruit_list, team* team = nullptr);
 	unit_recall(std::vector<unit_const_ptr>& recall_list, team* team = nullptr);
 
 	int get_selected_index() const
@@ -53,7 +56,8 @@ public:
 	}
 
 private:
-	std::vector<unit_const_ptr>& recall_list_;
+	std::vector<const unit_type*> recruit_list_;
+	std::vector<unit_const_ptr> recall_list_;
 
 	team* team_;
 
@@ -72,6 +76,9 @@ private:
 	void rename_unit();
 	void dismiss_unit();
 	void show_help();
+
+	void show_recruits(listbox& list);
+	void show_recalls(listbox& list);
 
 	virtual const std::string& window_id() const override;
 

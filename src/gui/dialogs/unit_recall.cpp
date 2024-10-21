@@ -56,8 +56,22 @@ static listbox::order_pair sort_default { 2, sort_order::type::descending};
 
 REGISTER_DIALOG(unit_recall)
 
+unit_recall::unit_recall(std::vector<const unit_type*>& recruit_list, team* team)
+	: modal_dialog(window_id())
+	, recruit_list_(recruit_list)
+	, recall_list_(std::vector<unit_const_ptr>())
+	, selected_index_()
+	, filter_options_()
+	, last_words_()
+	, mode_(dialog_type::RECRUIT)
+{
+	team_ = team;
+	set_mode(mode_);
+}
+
 unit_recall::unit_recall(std::vector<unit_const_ptr>& recall_list, team* team)
 	: modal_dialog(window_id())
+	, recruit_list_(std::vector<const unit_type*>())
 	, recall_list_(recall_list)
 	, selected_index_()
 	, filter_options_()
@@ -65,6 +79,7 @@ unit_recall::unit_recall(std::vector<unit_const_ptr>& recall_list, team* team)
 	, mode_(dialog_type::RECALL)
 {
 	team_ = team;
+	set_mode(mode_);
 }
 
 namespace {
@@ -127,6 +142,43 @@ void unit_recall::pre_show()
 	keyboard_capture(&filter);
 	add_to_keyboard_chain(&list);
 
+	if (mode_ == dialog_type::RECALL) {
+		show_recalls(list);
+	} else if (mode_ == dialog_type::RECRUIT) {
+		show_recruits(list);
+	}
+}
+
+void unit_recall::show_recruits(listbox& list)
+{
+	for(const auto& recruit : recruit_list_)
+	{
+		widget_data row_data;
+		widget_item column;
+
+		std::string	image_string = recruit->image() + "~RC(" + recruit->flag_rgb() + ">"
+			+ team_->color() + ")";
+
+		// TODO check conditions
+		const bool is_recruitable = true;
+
+		column["use_markup"] = "true";
+
+		column["label"] = image_string + (is_recruitable ? "" : "~GS()");
+		row_data.emplace("unit_image", column);
+
+		column["label"] = recruit->type_name() + unit_helper::format_cost_string(recruit->cost());
+		row_data.emplace("unit_details", column);
+
+		filter_options_.push_back(recruit->type_name());
+		list.add_row(row_data);
+	}
+
+	list_item_clicked();
+}
+
+void unit_recall::show_recalls(listbox& list)
+{
 	connect_signal_mouse_left_click(
 		find_widget<button>("rename"),
 		std::bind(&unit_recall::rename_unit, this));
@@ -136,7 +188,7 @@ void unit_recall::pre_show()
 			find_widget<button>("dismiss"),
 			std::bind(&unit_recall::dismiss_unit, this));
 	} else {
-		find_widget<button>("dismiss").set_visible(widget::visibility::hidden);
+		find_widget<button>("dismiss").set_visible(widget::visibility::invisible);
 	}
 
 	connect_signal_mouse_left_click(
@@ -182,10 +234,11 @@ void unit_recall::pre_show()
 			mods += "~GS()";
 
 			// Just set the tooltip on every single element in this row.
-			if(wb_gold > 0)
+			if(wb_gold > 0) {
 				column["tooltip"] = _("This unit cannot be recalled because you will not have enough gold at this point in your plan.");
-			else
+			} else {
 				column["tooltip"] = _("This unit cannot be recalled because you do not have enough gold.");
+			}
 		}
 
 		column["use_markup"] = "true";
@@ -210,14 +263,12 @@ void unit_recall::pre_show()
 		const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
 		column["label"] = unit_helper::maybe_inactive(
 			unit_helper::format_name_string(name, unit->can_recruit()), recallable);
-		column["use_markup"] = "true";
 		row_data.emplace("unit_name", column);
 
 		column["label"] = unit_helper::format_movement_string(unit->movement_left(), unit->total_movement());
 		row_data.emplace("unit_moves", column);
 
 		column["label"] = unit_helper::format_level_string(unit->level(), recallable);
-		column["use_markup"] = "true";
 		row_data.emplace("unit_level", column);
 
 		column["label"] = markup::span_color(unit->hp_color(),
@@ -284,6 +335,7 @@ void unit_recall::pre_show()
 			column["label"] = unit_helper::maybe_inactive(
 				(!traits.empty() ? traits : font::unicode_en_dash), recallable);
 		}
+
 		row_data.emplace("unit_traits", column);
 
 		filter_options_.push_back(filter_text);
@@ -380,7 +432,6 @@ void unit_recall::dismiss_unit()
 
 	if(!message.str().empty()) {
 		const int res = gui2::show_message(_("Dismiss Unit"), message.str(), message::yes_no_buttons);
-
 		if(res != gui2::retval::OK) {
 			return;
 		}
@@ -422,6 +473,12 @@ void unit_recall::update_dialog()
 		find_widget<button>("ok").set_label(_("Recall"));
 		break;
 	case dialog_type::RECRUIT:
+		for (int i = 0; i <= 7; i++) {
+			find_widget<toggle_button>("sort_" + std::to_string(i)).set_visible(widget::visibility::invisible);
+		}
+
+		find_widget<button>("dismiss").set_visible(widget::visibility::invisible);
+		find_widget<button>("rename").set_visible(widget::visibility::invisible);
 		find_widget<label>("title").set_label(_("Recruit Unit"));
 		find_widget<button>("ok").set_label(_("Recruit"));
 		break;
@@ -452,12 +509,17 @@ void unit_recall::list_item_clicked()
 		return;
 	}
 
-	const unit& selected_unit = *recall_list_[selected_row].get();
+	if (mode_ == dialog_type::RECRUIT || mode_ == dialog_type::UNIT_CREATE) {
+		find_widget<unit_preview_pane>("unit_details")
+			.set_displayed_type(*recruit_list_[selected_row]);
+	} else {
+		const unit& selected_unit = *recall_list_[selected_row].get();
 
-	find_widget<unit_preview_pane>("unit_details")
-		.set_displayed_unit(selected_unit);
+		find_widget<unit_preview_pane>("unit_details")
+			.set_displayed_unit(selected_unit);
 
-	find_widget<button>("rename").set_active(!selected_unit.unrenamable());
+		find_widget<button>("rename").set_active(!selected_unit.unrenamable());
+	}
 }
 
 void unit_recall::post_show()
@@ -477,8 +539,9 @@ void unit_recall::filter_text_changed()
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
-	if(words == last_words_)
+	if(words == last_words_) {
 		return;
+	}
 	last_words_ = words;
 
 	boost::dynamic_bitset<> show_items;

@@ -251,11 +251,11 @@ bool menu_handler::has_friends() const
 
 void menu_handler::recruit(int side_num, const map_location& last_hex)
 {
-	std::map<const unit_type*, t_string> sample_units;
-
+//	std::map<const unit_type*, t_string> sample_units;
+	std::vector<const unit_type*> sample_units;
 	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
-
 	std::vector<t_string> unknown_units;
+
 	for(const auto& recruit : recruits) {
 		const unit_type* type = unit_types.find(recruit);
 		if(!type) {
@@ -266,8 +266,11 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 
 		map_location ignored;
 		map_location recruit_hex = last_hex;
-		sample_units[type] = (can_recruit(type->id(), side_num, recruit_hex, ignored));
+		if (can_recruit(type->id(), side_num, recruit_hex, ignored).empty()) {
+			sample_units.push_back(type);
+		}
 	}
+
 	if(!unknown_units.empty()) {
 		auto unknown_ids = utils::format_conjunct_list("", unknown_units);
 		// TRANSLATORS: An error that should never happen, might happen when loading an old savegame. If there are
@@ -285,11 +288,11 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 		return;
 	}
 
-	gui2::dialogs::unit_recruit dlg(sample_units, board().get_team(side_num));
+	gui2::dialogs::unit_recall dlg(sample_units, &board().get_team(side_num));
 
 	if(dlg.show()) {
 		map_location recruit_hex = last_hex;
-		const unit_type *type = dlg.get_selected_unit_type();
+		const unit_type *type = sample_units[dlg.get_selected_index()];
 		if (!type) {
 			gui2::show_transient_message("", _("No unit recruited."));
 			return;
@@ -307,6 +310,7 @@ void menu_handler::repeat_recruit(int side_num, const map_location& last_hex)
 	}
 }
 
+// TODO: This should be integrated into the unit_dialog itself?
 // TODO: Return multiple strings here, in case more than one error applies? For
 // example, if you start AOI S5 with 0GP and recruit a Mage, two reasons apply,
 // leader not on keep (extrarecruit=Mage) and not enough gold.
@@ -411,7 +415,6 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	}
 
 	gui2::dialogs::unit_recall dlg(recall_list_team, &current_team);
-	dlg.set_mode(gui2::dialogs::unit_recall::dialog_type::RECALL);
 
 	if(!dlg.show()) {
 		return;
