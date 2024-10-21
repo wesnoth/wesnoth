@@ -45,8 +45,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
     ---@param u unit
 	---@param queued boolean
     function wesnoth.interface.move_unit_fake_queue(u, to_x, to_y, queued)
-        ---skip finding unit when given one
-        ---//mark the wml call in this func causes only animate now, but queue expected.
+        ---Fakes the move of a given unit, can be queued.
 		if to_x and to_y and u then
 			table.insert(wesnoth.interface.queued_movements, { to_x = to_x, to_y = to_y, u = u })
 		end

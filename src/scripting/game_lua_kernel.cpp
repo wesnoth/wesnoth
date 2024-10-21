@@ -369,10 +369,7 @@ static int impl_add_animation(lua_State* L)
 	return 0;
 }
 
-//mark
-//the key to implement expectedly is about queueing the animation, and then run() execed, it will animate.
-//pretty likely that a working implementation would require digging down into the internal implementation of [move_unit_fake].
-//todo: make calls of wesnoth.wml_actions.move_unit_fake. maybe create another function to impl this.
+// Todo: make a C++ impl to replace this method.
 int game_lua_kernel::impl_add_movement(lua_State* L)
 {
 	lua_getglobal(L, "wesnoth");
@@ -424,7 +421,6 @@ static int impl_animator_get(lua_State* L)
 	const char* m = lua_tostring(L, 2);
 	return luaW_getmetafield(L, 1, m);
 }
-//mark to add a impl_add_movement using move_unit_fake.
 int game_lua_kernel::intf_create_animator(lua_State* L)
 {
 	new(L) unit_animator;
