@@ -1,14 +1,10 @@
-## Version 1.19.4+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.19.5
  ### Campaigns
    * Eastern Invasion: "Drowned Plains" drastically shortened in length. Objective now involves gathering gold, not killing enemy leaders.
  ### Editor
    * Fixed a crash in some cases after setting which direction a unit is facing.
- ### Multiplayer
  ### Lua API
    * Added new function gui.switch_theme() to allow switching to another gui2 theme from inside a scenario.
- ### Packaging
  ### Terrain
    * Improved handling of bluffs/gulch transitions with mountains and frozen terrain
    * Bluffs/Gulches less intrusive in mini-map
