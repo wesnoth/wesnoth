@@ -36,6 +36,7 @@
 #include "serialization/markup.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
+#include "units/helper.hpp"
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
 #include "units/types.hpp"
@@ -57,8 +58,6 @@ REGISTER_DIALOG(unit_recall)
 
 namespace {
 
-const color_t inactive_row_color(0x96, 0x96, 0x96);
-
 template<typename T>
 void dump_recall_list_to_console(const T& units)
 {
@@ -72,69 +71,6 @@ void dump_recall_list_to_console(const T& units)
 //	}
 }
 
-//
-// Formatting methods
-//
-const inline std::string maybe_inactive(const std::string& str, bool active)
-{
-	return (active ? str : markup::span_color(inactive_row_color, str));
-}
-
-std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
-{
-	std::stringstream str;
-
-	if(unit_recall_cost < 0) {
-		unit_recall_cost = team_recall_cost;
-	}
-
-	if(unit_recall_cost > team_recall_cost) {
-		str << markup::img("~BLIT(themes/gold.png, 0, 30)") << markup::span_color("#ff0000", unit_recall_cost);
-	} else if(unit_recall_cost == team_recall_cost) {
-		str << markup::img("themes/gold.png") << unit_recall_cost;
-	} else if(unit_recall_cost < team_recall_cost) {
-		str << markup::img("themes/gold.png~GS()") << markup::span_color("#00ff00", unit_recall_cost);
-	}
-
-	return str.str();
-}
-
-std::string format_name_string(const std::string& str, const bool can_recruit)
-{
-	return can_recruit ? markup::span_color("#cdad00", str) : str;
-}
-
-std::string format_level_string(const int level, bool recallable)
-{
-	if(!recallable) {
-		// Same logic as when recallable, but always in inactive_row_color.
-		return markup::span_color(inactive_row_color,
-			(level < 2 ? std::to_string(level) : markup::bold(level)));
-	} else if(level < 1) {
-		return markup::span_color(inactive_row_color, level);
-	} else if(level == 1) {
-		return std::to_string(level);
-	} else if(level == 2) {
-		return markup::bold(level);
-	} else if(level == 3) {
-		return markup::span_color("#e2b776", markup::bold(level));
-	} else {
-		return markup::span_color("#dd6600", markup::bold(level));
-	}
-}
-
-std::string format_movement_string(const int moves_left, const int moves_max)
-{
-	std::string color = "#00ff00";
-
-	if(moves_left == 0) {
-		color = "#ff0000";
-	} else if(moves_left < moves_max) {
-		color = "#ffff00";
-	}
-
-	return markup::span_color(color, moves_left, "/", moves_max);
-}
 
 std::string get_title_suffix(int side_num)
 {
@@ -178,7 +114,7 @@ unit_recall::unit_recall(std::vector<unit_const_ptr>& recall_list, team* team)
 		entry["level"] = unit->level();
 		entry["gender"] = unit->gender();
 		entry["type"] = unit->type_name();
-		entry["align"] = unit->alignment();
+		entry["align"] = unit_alignments::get_string(unit->alignment());
 		entry["loyal"] = unit->loyal();
 		entry["hp"] = unit->hitpoints();
 		entry["max_hp"] = unit->max_hitpoints();
@@ -305,27 +241,28 @@ void unit_recall::pre_show()
 			column["label"] = entry["image"] + mods;
 			row_data.emplace("unit_image", column);
 		}
-		details << maybe_inactive(entry["type"], recallable);
+		details << unit_helper::maybe_inactive(entry["type"], recallable);
 
 		if (team_) {
 			if (recallable) {
-				details << format_cost_string(entry["recall_cost"].to_int(), team_->recall_cost());
+				details << unit_helper::format_cost_string(entry["recall_cost"].to_int(), team_->recall_cost());
 			} else {
-				details << maybe_inactive(std::to_string(recall_cost), recallable);
+				details << unit_helper::maybe_inactive(std::to_string(recall_cost), recallable);
 			}
 		}
 		column["label"] = details.str();
 		row_data.emplace("unit_details", column);
 
 		const std::string& name = !entry["name"].empty() ? entry["name"].str() : font::unicode_en_dash;
-		column["label"] = maybe_inactive(format_name_string(name, entry["can_recruit"].to_bool()), recallable);
+		column["label"] = unit_helper::maybe_inactive(
+				unit_helper::format_name_string(name, entry["can_recruit"].to_bool()), recallable);
 		column["use_markup"] = "true";
 		row_data.emplace("unit_name", column);
 
-		column["label"] = format_movement_string(entry["mp"].to_int(), entry["max_mp"].to_int());
+		column["label"] = unit_helper::format_movement_string(entry["mp"].to_int(), entry["max_mp"].to_int());
 		row_data.emplace("unit_moves", column);
 
-		column["label"] = format_level_string(entry["level"].to_int(), recallable);
+		column["label"] = unit_helper::format_level_string(entry["level"].to_int(), recallable);
 		column["use_markup"] = "true";
 		row_data.emplace("unit_level", column);
 
@@ -347,7 +284,7 @@ void unit_recall::pre_show()
 
 		column["label"] = markup::span_color(recallable
 				? entry["xp_color"].str()
-				: inactive_row_color.to_hex_string(),
+				: font::INACTIVE_COLOR.to_hex_string(),
 				exp_str.str());
 		row_data.emplace("unit_experience", column);
 
@@ -376,7 +313,7 @@ void unit_recall::pre_show()
 				traits += (traits.empty() ? "" : "\n") + trait;
 				filter_text += " " + trait;
 			}
-			column["label"] = maybe_inactive(!traits.empty() ? traits : font::unicode_en_dash, recallable);
+			column["label"] = unit_helper::maybe_inactive(!traits.empty() ? traits : font::unicode_en_dash, recallable);
 		}
 		row_data.emplace("unit_traits", column);
 
