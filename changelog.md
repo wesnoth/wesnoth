@@ -1,3 +1,18 @@
+## Version 1.19.5+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Editor
+ ### Multiplayer
+ ### Lua API
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.19.5
  ### Campaigns
    * Eastern Invasion: "Drowned Plains" drastically shortened in length. Objective now involves gathering gold, not killing enemy leaders.
