@@ -82,11 +82,6 @@ attack_type::attack_type(const config& cfg)
 	}
 }
 
-std::string attack_type::alignment_str() const
-{
-	return alignment_ ? unit_alignments::get_string(*alignment()) : "";
-}
-
 std::string attack_type::accuracy_parry_description() const
 {
 	if(accuracy_ == 0 && parry_ == 0) {
