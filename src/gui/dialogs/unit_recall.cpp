@@ -107,6 +107,7 @@ std::string get_title_suffix(int side_num)
 
 	return msg.str();
 }
+}
 
 void unit_recall::pre_show()
 {
@@ -152,12 +153,10 @@ void unit_recall::pre_show()
 		std::string mods = unit->image_mods();
 
 		int wb_gold = 0;
-		if (team_) {
-			if(resources::controller) {
-				if(const std::shared_ptr<wb::manager>& whiteb = resources::controller->get_whiteboard()) {
-					wb::future_map future; // So gold takes into account planned spending
-					wb_gold = whiteb->get_spent_gold_for(team_->side());
-				}
+		if (team_ && resources::controller) {
+			if(const std::shared_ptr<wb::manager>& whiteb = resources::controller->get_whiteboard()) {
+				wb::future_map future; // So gold takes into account planned spending
+				wb_gold = whiteb->get_spent_gold_for(team_->side());
 			}
 		}
 
@@ -221,8 +220,8 @@ void unit_recall::pre_show()
 		column["use_markup"] = "true";
 		row_data.emplace("unit_level", column);
 
-		column["label"] = markup::span_color(entry["hp_color"].str(),
-				entry["hp"].to_int(), "/", entry["max_hp"].to_int());
+		column["label"] = markup::span_color(unit->hp_color(),
+				unit->hitpoints(), "/", unit->max_hitpoints());
 		row_data.emplace("unit_hp", column);
 
 		if (mode_ == dialog_type::UNIT_LIST) {
@@ -253,9 +252,8 @@ void unit_recall::pre_show()
 			exp_str << font::unicode_en_dash;
 		}
 
-		column["label"] = markup::span_color(recallable
-				? entry["xp_color"].str()
-				: font::INACTIVE_COLOR.to_hex_string(),
+		column["label"] = markup::span_color(
+				recallable ? unit->xp_color() : font::INACTIVE_COLOR,
 				exp_str.str());
 		row_data.emplace("unit_experience", column);
 
