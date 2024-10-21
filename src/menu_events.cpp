@@ -136,9 +136,9 @@ void menu_handler::unit_list()
 {
 	std::vector<unit_const_ptr> unit_list;
 
-	const unit_map& units = gui_->get_units();
+	const unit_map& units = gui_->context().units();
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-		if(i->side() != gui_->viewing_side()) {
+		if(i->side() != gui_->viewing_team().side()) {
 			continue;
 		}
 		unit_list.push_back(i.get_shared_ptr());

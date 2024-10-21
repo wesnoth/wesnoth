@@ -16,7 +16,8 @@
 
 #include "gui/dialogs/unit_recall.hpp"
 
-#include "serialization/markup.hpp"
+#include "game_board.hpp"
+#include "gettext.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -29,19 +30,18 @@
 #include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
-#include "game_board.hpp"
-#include "gettext.hpp"
 #include "replay_helper.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
+#include "serialization/markup.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
 #include "units/types.hpp"
-#include <functional>
 #include "whiteboard/manager.hpp"
 
+#include <functional>
 
 static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
@@ -66,7 +66,7 @@ void dump_recall_list_to_console(const T& units)
 
 	LOG_DP << "size: " << units.size();
 
-	std::size_t idx = 0;
+//	std::size_t idx = 0;
 //	for(const auto& u_ptr : units) {
 //		LOG_DP << "\tunit[" << (idx++) << "]: " << u_ptr->id() << " name = '" << u_ptr->name() << "'";
 //	}
@@ -77,10 +77,7 @@ void dump_recall_list_to_console(const T& units)
 //
 const inline std::string maybe_inactive(const std::string& str, bool active)
 {
-	if(active)
-		return str;
-	else
-		return markup::span_color(inactive_row_color, str);
+	return (active ? str : markup::span_color(inactive_row_color, str));
 }
 
 std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
@@ -92,11 +89,11 @@ std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
 	}
 
 	if(unit_recall_cost > team_recall_cost) {
-		str << "<img src='~BLIT(themes/gold.png, 0, 30)'/><span color='#ff0000'>" << unit_recall_cost << "</span>";
+		str << markup::img("~BLIT(themes/gold.png, 0, 30)") << markup::span_color("#ff0000", unit_recall_cost);
 	} else if(unit_recall_cost == team_recall_cost) {
-		str << "<img src='themes/gold.png'/>" << unit_recall_cost;
+		str << markup::img("themes/gold.png") << unit_recall_cost;
 	} else if(unit_recall_cost < team_recall_cost) {
-		str << "<img src='themes/gold.png~GS()'/><span color='#00ff00'>" << unit_recall_cost << "</span>";
+		str << markup::img("themes/gold.png~GS()") << markup::span_color("#00ff00", unit_recall_cost);
 	}
 
 	return str.str();
@@ -104,7 +101,7 @@ std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
 
 std::string format_name_string(const std::string& str, const bool can_recruit)
 {
-	return can_recruit ? "<span color='#cdad00'>" + str + "</span>" : str;
+	return can_recruit ? markup::span_color("#cdad00", str) : str;
 }
 
 std::string format_level_string(const int level, bool recallable)
@@ -120,9 +117,9 @@ std::string format_level_string(const int level, bool recallable)
 	} else if(level == 2) {
 		return markup::bold(level);
 	} else if(level == 3) {
-		return markup::bold(markup::span_color("#e2b776", level));
+		return markup::span_color("#e2b776", markup::bold(level));
 	} else {
-		return markup::bold(markup::span_color("#dd6600", level));
+		return markup::span_color("#dd6600", markup::bold(level));
 	}
 }
 
@@ -136,16 +133,7 @@ std::string format_movement_string(const int moves_left, const int moves_max)
 		color = "#ffff00";
 	}
 
-	// if(unit_recall_cost > team_recall_cost) {
-	// 	str << markup::span_color("#ff0000", unit_recall_cost);
-	// } else if(unit_recall_cost == team_recall_cost) {
-	// 	str << unit_recall_cost;
-	// } else if(unit_recall_cost < team_recall_cost) {
-	// 	str << markup::span_color("#00ff00", unit_recall_cost);
-	// }
-
-	// return str.str();
-	return formatter() << "<span color='" << color << "'>" << moves_left << "/" << moves_max << "</span>";
+	return markup::span_color(color, moves_left, "/", moves_max);
 }
 
 std::string get_title_suffix(int side_num)
@@ -167,16 +155,13 @@ std::string get_title_suffix(int side_num)
 	if(controlled_recruiters >= 2) {
 		unit_map::const_iterator leader = resources::gameboard->units().find_leader(side_num);
 		if(leader != resources::gameboard->units().end() && !leader->name().empty()) {
-			msg << " (" << leader->name(); msg << ")";
+			msg << " (" << leader->name() << ")";
 		}
 	}
 
 	return msg.str();
 }
 
-<<<<<<< HEAD
-void unit_recall::pre_show()
-=======
 }  // anonymous namespace
 
 unit_recall::unit_recall(std::vector<unit_const_ptr>& recall_list, team* team)
@@ -193,7 +178,7 @@ unit_recall::unit_recall(std::vector<unit_const_ptr>& recall_list, team* team)
 		entry["level"] = unit->level();
 		entry["gender"] = unit->gender();
 		entry["type"] = unit->type_name();
-		entry["align"] = unit_alignments::get_string(unit->alignment());
+		entry["align"] = unit->alignment();
 		entry["loyal"] = unit->loyal();
 		entry["hp"] = unit->hitpoints();
 		entry["max_hp"] = unit->max_hitpoints();
@@ -209,7 +194,7 @@ unit_recall::unit_recall(std::vector<unit_const_ptr>& recall_list, team* team)
 		entry["can_recruit"] = unit->can_recruit();
 		entry["overlays"] = utils::join(unit->overlays());
 		entry["recall_cost"] = unit->recall_cost();
-		entry["traits"] = utils::join(unit->trait_names());
+		entry["traits"] = utils::join(unit->trait_names(), ", ");
 		// Status
 		if(unit->get_state(unit::STATE_PETRIFIED)) {
 			entry["status"] = "misc/petrified.png";
@@ -232,8 +217,7 @@ unit_recall::unit_recall(std::vector<unit_const_ptr>& recall_list, team* team)
 	team_ = team;
 }
 
-void unit_recall::pre_show(window& window)
->>>>>>> 0970489fad7 (move to config vector)
+void unit_recall::pre_show()
 {
 	label& title = find_widget<label>("title", true);
 	if (team_) {
@@ -248,7 +232,7 @@ void unit_recall::pre_show(window& window)
 
 	list.clear();
 
-	keyboard_capture(filter);
+	keyboard_capture(&filter);
 	add_to_keyboard_chain(&list);
 
 	connect_signal_mouse_left_click(
@@ -289,14 +273,14 @@ void unit_recall::pre_show(window& window)
 		// Note: Our callers apply [filter_recall], but leave it to us
 		// to apply cost-based filtering.
 
-		int recall_cost = entry["recall_cost"];
+		int recall_cost = entry["recall_cost"].to_int();
 		bool recallable = true;
-		if (team_) {
-			recall_cost = (entry["recall_cost"] > -1) ? entry["recall_cost"] : team_->recall_cost();
+		if(team_) {
+			recall_cost = (recall_cost > -1) ? recall_cost : team_->recall_cost();
 			recallable = (recall_cost <= team_->gold() - wb_gold);
 		}
 
-		if(entry["can_recruit"]) {
+		if(entry["can_recruit"].to_bool()) {
 			mods += "~BLIT(" + unit::leader_crown() + ")";
 		}
 
@@ -325,7 +309,7 @@ void unit_recall::pre_show(window& window)
 
 		if (team_) {
 			if (recallable) {
-				details << format_cost_string(entry["recall_cost"], team_->recall_cost());
+				details << format_cost_string(entry["recall_cost"].to_int(), team_->recall_cost());
 			} else {
 				details << maybe_inactive(std::to_string(recall_cost), recallable);
 			}
@@ -334,24 +318,19 @@ void unit_recall::pre_show(window& window)
 		row_data.emplace("unit_details", column);
 
 		const std::string& name = !entry["name"].empty() ? entry["name"].str() : font::unicode_en_dash;
-		column["label"] = maybe_inactive(format_name_string(name, entry["can_recruit"]), recallable);
+		column["label"] = maybe_inactive(format_name_string(name, entry["can_recruit"].to_bool()), recallable);
 		column["use_markup"] = "true";
 		row_data.emplace("unit_name", column);
 
-		column["label"] = format_movement_string(entry["mp"], entry["max_mp"]);
+		column["label"] = format_movement_string(entry["mp"].to_int(), entry["max_mp"].to_int());
 		row_data.emplace("unit_moves", column);
 
-		column["label"] = format_level_string(entry["level"], recallable);
+		column["label"] = format_level_string(entry["level"].to_int(), recallable);
 		column["use_markup"] = "true";
 		row_data.emplace("unit_level", column);
 
-		std::stringstream hp_str;
-		hp_str
-			<< "<span color='" << entry["hp_color"] << "'>"
-			<< entry["hp"] << "/" << entry["max_hp"]
-			<< "</span>";
-		PLAIN_LOG << hp_str.str();
-		column["label"] = hp_str.str();
+		column["label"] = markup::span_color(entry["hp_color"].str(),
+				entry["hp"].to_int(), "/", entry["max_hp"].to_int());
 		row_data.emplace("unit_hp", column);
 
 		if (mode_ == dialog_type::UNIT_LIST) {
@@ -366,14 +345,17 @@ void unit_recall::pre_show(window& window)
 			exp_str << font::unicode_en_dash;
 		}
 
-		column["label"] = markup::span_color(recallable ? unit->xp_color() : inactive_row_color, exp_str.str());
+		column["label"] = markup::span_color(recallable
+				? entry["xp_color"].str()
+				: inactive_row_color.to_hex_string(),
+				exp_str.str());
 		row_data.emplace("unit_experience", column);
 
 		// Since the table widgets use heavy formatting, we save a bare copy
 		// of certain options to filter on.
-		unit_alignments::type a = unit_alignments::get_enum(entry["align"]).value();
+		unit_alignments::type a = unit_alignments::get_enum(entry["align"].to_int()).value();
 		unit_race::GENDER g = (entry["gender"].to_int(0) == 0 ? unit_race::GENDER::MALE : unit_race::GENDER::FEMALE);
-		std::string filter_text = entry["type"] + " " + name + " " + entry["level"] + " " + unit_type::alignment_description(a, g);
+		std::string filter_text = entry["type"].str() + " " + name + " " + entry["level"].str() + " " + unit_type::alignment_description(a, g);
 //		if(const auto* race = entry["race"]) {
 //			filter_text += " " + race->name(entry["gender"])) + " " + race->plural_name();
 //		}
@@ -405,17 +387,17 @@ void unit_recall::pre_show(window& window)
 	//
 	// List sorting
 	//
-	list.register_translatable_sorting_option(0, [this](const int i) { return recall_list_[i]["type"]; });
-	list.register_translatable_sorting_option(1, [this](const int i) { return recall_list_[i]["name"]; });
+	list.register_translatable_sorting_option(0, [this](const int i) { return recall_list_[i]["type"].str(); });
+	list.register_translatable_sorting_option(1, [this](const int i) { return recall_list_[i]["name"].str(); });
 //	list.register_sorting_option(2, [this](const int i) {
 //		const unit& u = *recall_list_[i];
 //		return std::tuple(recall_list_[i]["level"], -static_cast<int>(u.experience_to_advance()));
 //	});
-	list.register_sorting_option(3, [this](const int i) { return recall_list_[i]["mp"]; });
-	list.register_sorting_option(6, [this](const int i) { return recall_list_[i]["xp"]; });
+	list.register_sorting_option(3, [this](const int i) { return recall_list_[i]["mp"].to_int(); });
+	list.register_sorting_option(6, [this](const int i) { return recall_list_[i]["xp"].to_int(); });
 	list.register_translatable_sorting_option(7, [this](const int i) {
 //		return !recall_list_[i]->trait_names().empty() ? recall_list_[i]->trait_names().front().str() : "";
-		return recall_list_[i]["traits"];
+		return recall_list_[i]["traits"].str();
 	});
 
 	list.set_active_sorting_option(sort_last.first >= 0 ? sort_last	: sort_default, true);
@@ -535,16 +517,16 @@ void unit_recall::update_dialog()
 {
 	switch(mode_) {
 	case dialog_type::RECALL:
-		find_widget<label>(get_window(), "title", false).set_label(_("Recall Unit"));
-		find_widget<button>(get_window(), "ok", false).set_label(_("Recall"));
+		find_widget<label>("title").set_label(_("Recall Unit"));
+		find_widget<button>("ok").set_label(_("Recall"));
 		break;
 	case dialog_type::RECRUIT:
-		find_widget<label>(get_window(), "title", false).set_label(_("Recruit Unit"));
-		find_widget<button>(get_window(), "ok", false).set_label(_("Recruit"));
+		find_widget<label>("title").set_label(_("Recruit Unit"));
+		find_widget<button>("ok").set_label(_("Recruit"));
 		break;
 	case dialog_type::UNIT_LIST:
-		find_widget<label>(get_window(), "title", false).set_label(_("Unit List"));
-		find_widget<button>(get_window(), "ok", false).set_label(_("Scroll To"));
+		find_widget<label>("title").set_label(_("Unit List"));
+		find_widget<button>("ok").set_label(_("Scroll To"));
 		break;
 	case dialog_type::UNIT_CREATE:
 		break;
