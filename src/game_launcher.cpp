@@ -754,12 +754,11 @@ std::string game_launcher::jump_to_campaign_id() const
 bool game_launcher::goto_campaign()
 {
 	if(jump_to_campaign_.jump) {
+		jump_to_campaign_.jump = false;
 		if(new_campaign()) {
 			state_.set_skip_story(jump_to_campaign_.skip_story);
-			jump_to_campaign_.jump = false;
 			launch_game(reload_mode::NO_RELOAD_DATA);
 		} else {
-			jump_to_campaign_.jump = false;
 			return false;
 		}
 	}
@@ -769,16 +768,12 @@ bool game_launcher::goto_campaign()
 
 bool game_launcher::goto_multiplayer()
 {
-	if(jump_to_multiplayer_) {
-		jump_to_multiplayer_ = false;
-		if(play_multiplayer(mp_mode::CONNECT)) {
-			;
-		} else {
-			return false;
-		}
+	if(!jump_to_multiplayer_) {
+		return true;
 	}
 
-	return true;
+	jump_to_multiplayer_ = false;
+	return play_multiplayer(mp_mode::CONNECT);
 }
 
 bool game_launcher::goto_editor()
