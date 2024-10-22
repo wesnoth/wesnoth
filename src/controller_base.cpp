@@ -391,13 +391,12 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 		dx += scroll_carry_x_;
 		dy += scroll_carry_y_;
 	}
-	int dx_int = int(dx);
-	int dy_int = int(dy);
-	scroll_carry_x_ = dx - double(dx_int);
-	scroll_carry_y_ = dy - double(dy_int);
+	point dist{int(dx), int(dy)};
+	scroll_carry_x_ = dx - double(dist.x);
+	scroll_carry_y_ = dy - double(dist.y);
 
 	// Scroll the display
-	get_display().scroll(dx_int, dy_int);
+	get_display().scroll(dist);
 
 	// Even if the integer parts are both zero, we are still scrolling.
 	// The subpixel amounts will add up.

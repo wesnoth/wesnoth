@@ -57,8 +57,7 @@ mouse_handler_base::mouse_handler_base()
 	, dragging_touch_(false)
 	, dragging_started_(false)
 	, dragging_right_(false)
-	, drag_from_x_(0)
-	, drag_from_y_(0)
+	, drag_from_(0, 0)
 	, drag_from_hex_()
 	, last_hex_()
 	, show_menu_(false)
@@ -130,11 +129,10 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 
 	// Fire the drag & drop only after minimal drag distance
 	// While we check the mouse buttons state, we also grab fresh position data.
-	int mx = drag_from_x_; // some default value to prevent unlikely SDL bug
-	int my = drag_from_y_;
+	point pos = drag_from_; // some default value to prevent unlikely SDL bug
 
 	if(is_dragging() && !dragging_started_) {
-		Uint32 mouse_state = dragging_left_ || dragging_right_ ? sdl::get_mouse_state(&mx, &my) : 0;
+		Uint32 mouse_state = dragging_left_ || dragging_right_ ? sdl::get_mouse_state(&pos.x, &pos.y) : 0;
 #ifdef MOUSE_TOUCH_EMULATION
 		if(dragging_left_ && (mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT))) {
 			// Monkey-patch touch controls again to make them look like left button.
@@ -145,8 +143,8 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 		   (dragging_right_ && (mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT)) != 0))
 		{
 			const double drag_distance =
-					std::pow(static_cast<double>(drag_from_x_- mx), 2) +
-					std::pow(static_cast<double>(drag_from_y_- my), 2);
+					std::pow(static_cast<double>(drag_from_.x - pos.x), 2) +
+					std::pow(static_cast<double>(drag_from_.y - pos.y), 2);
 
 			if(drag_distance > drag_threshold() * drag_threshold()) {
 				dragging_started_ = true;
@@ -371,9 +369,9 @@ void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 		CKey pressed;
 		// Alt + mousewheel do an 90° rotation on the scroll direction
 		if(pressed[SDLK_LALT] || pressed[SDLK_RALT]) {
-			gui().scroll(movey, movex);
+			gui().scroll(point{movey, movex});
 		} else {
-			gui().scroll(movex, movey);
+			gui().scroll(point{movex, movey});
 		}
 	}
 
@@ -407,8 +405,8 @@ void mouse_handler_base::right_mouse_up(int x, int y, const bool browse)
 void mouse_handler_base::init_dragging(bool& dragging_flag)
 {
 	dragging_flag = true;
-	sdl::get_mouse_state(&drag_from_x_, &drag_from_y_);
-	drag_from_hex_ = gui().hex_clicked_on(drag_from_x_, drag_from_y_);
+	sdl::get_mouse_state(&drag_from_.x, &drag_from_.y);
+	drag_from_hex_ = gui().hex_clicked_on(drag_from_.x, drag_from_.y);
 }
 
 void mouse_handler_base::cancel_dragging()
