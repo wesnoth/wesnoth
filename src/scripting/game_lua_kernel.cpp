@@ -4858,11 +4858,9 @@ int game_lua_kernel::intf_replace_schedule(lua_State * L)
 
 int game_lua_kernel::intf_scroll(lua_State * L)
 {
-	int x = luaL_checkinteger(L, 1);
-	int y = luaL_checkinteger(L, 2);
-
 	if (game_display_) {
-		game_display_->scroll(x, y, true);
+		point scroll_to(luaL_checkinteger(L, 1), luaL_checkinteger(L, 2));
+		game_display_->scroll(scroll_to, true);
 
 		lua_remove(L, 1);
 		lua_remove(L, 1);
