@@ -151,7 +151,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 			int dx = drag_from_x_ - mx;
 			int dy = drag_from_y_ - my;
 
-			gui().scroll(dx, dy);
+			gui().scroll(point{dx, dy});
 			drag_from_x_ = mx;
 			drag_from_y_ = my;
 		}
@@ -979,8 +979,10 @@ void mouse_handler::move_action(bool browse)
 
 					// block where we temporary move the unit
 					{
+						gui().add_exclusive_draw(attack_from, *clicked_u);
 						temporary_unit_mover temp_mover(pc_.get_units(), src, attack_from, itor->move_left, true);
 						choice = show_attack_dialog(attack_from, clicked_u->get_location());
+						gui().remove_exclusive_draw(attack_from);
 					}
 
 					if(choice < 0) {

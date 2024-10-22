@@ -4862,7 +4862,7 @@ int game_lua_kernel::intf_scroll(lua_State * L)
 	int y = luaL_checkinteger(L, 2);
 
 	if (game_display_) {
-		game_display_->scroll(x, y, true);
+		game_display_->scroll(point{x, y}, true);
 
 		lua_remove(L, 1);
 		lua_remove(L, 1);
