@@ -361,7 +361,7 @@ public:
 	};
 
 	/** Return the rectangular area of hexes overlapped by r (r is in screen coordinates) */
-	const rect_of_hexes hexes_under_rect(const SDL_Rect& r) const;
+	const rect_of_hexes hexes_under_rect(const rect& r) const;
 
 	/** Returns the rectangular area of visible hexes */
 	const rect_of_hexes get_visible_hexes() const {return hexes_under_rect(map_area());}

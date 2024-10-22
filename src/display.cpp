@@ -626,7 +626,7 @@ display::rect_of_hexes::iterator display::rect_of_hexes::end() const
 	return iterator(map_location(right+1, top[(right+1) & 1]), *this);
 }
 
-const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
+const display::rect_of_hexes display::hexes_under_rect(const rect& r) const
 {
 	rect_of_hexes res;
 
@@ -641,10 +641,8 @@ const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 		return res;
 	}
 
-	rect map_rect = map_area();
 	// translate rect coordinates from screen-based to map_area-based
-	int x = viewport_origin_.x - map_rect.x + r.x;
-	int y = viewport_origin_.y - map_rect.y + r.y;
+	auto [x, y] = viewport_origin_ - map_area().pos() + r.pos();
 	// we use the "double" type to avoid important rounding error (size of an hex!)
 	// we will also need to use std::floor to avoid bad rounding at border (negative values)
 	double tile_width = hex_width();
@@ -1981,12 +1979,12 @@ void display::scroll_to_xy(const point& screen_coordinates, SCROLL_TYPE scroll_t
 		dist_moved += velocity * dt;
 		if (dist_moved > dist_total) dist_moved = dist_total;
 
-		point nex_pos(
+		point next_pos(
 			std::round(move.x * dist_moved / dist_total),
 			std::round(move.y * dist_moved / dist_total)
 		);
 
-		point diff = nex_pos - prev_pos;
+		point diff = next_pos - prev_pos;
 		scroll(diff, true);
 		prev_pos += diff;
 
