@@ -485,11 +485,11 @@ public:
 	void bounds_check_position(int& xpos, int& ypos) const;
 
 	/**
-	 * Scrolls the display by xmov,ymov pixels.
+	 * Scrolls the display by @a amount pixels.
 	 * Invalidation and redrawing will be scheduled.
 	 * @return true if the map actually moved.
 	 */
-	bool scroll(int xmov, int ymov, bool force = false);
+	bool scroll(const point& amount, bool force = false);
 
 	/** Zooms the display in (true) or out (false). */
 	bool set_zoom(bool increase);
@@ -722,7 +722,7 @@ protected:
 
 	std::vector<texture> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
 
-	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type,bool force = true);
+	void scroll_to_xy(const point& screen_coordinates, SCROLL_TYPE scroll_type, bool force = true);
 
 	static void fill_images_list(const std::string& prefix, std::vector<std::string>& images);
 
@@ -734,7 +734,7 @@ protected:
 	 * Dependent on zoom_.. For example, ypos_==72 only means we're one
 	 * hex below the top of the map when zoom_ == 72 (the default value).
 	 */
-	int xpos_, ypos_;
+	point viewport_origin_;
 	bool view_locked_;
 	theme theme_;
 	/**
