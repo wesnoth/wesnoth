@@ -251,7 +251,6 @@ bool menu_handler::has_friends() const
 
 void menu_handler::recruit(int side_num, const map_location& last_hex)
 {
-//	std::map<const unit_type*, t_string> sample_units;
 	std::vector<const unit_type*> sample_units;
 	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
 	std::vector<t_string> unknown_units;
@@ -266,8 +265,11 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 
 		map_location ignored;
 		map_location recruit_hex = last_hex;
-		if (can_recruit(type->id(), side_num, recruit_hex, ignored).empty()) {
+		std::string err_msg = can_recruit(type->id(), side_num, recruit_hex, ignored);
+		if (err_msg.empty()) {
 			sample_units.push_back(type);
+		} else {
+			gui2::show_error_message(err_msg);
 		}
 	}
 
@@ -712,21 +714,24 @@ typedef std::tuple<const unit_type*, unit_race::GENDER, std::string> type_gender
  */
 type_gender_variation choose_unit()
 {
-	//
-	// The unit creation dialog makes sure unit types
-	// are properly cached.
-	//
-	gui2::dialogs::unit_create create_dlg;
+	std::vector<const unit_type*> units;
+	for(const auto& i : unit_types.types())
+	{
+		// Make sure this unit type is built with the data we need.
+		unit_types.build_unit_type(i.second, unit_type::FULL);
+		units.push_back(&i.second);
+	}
+	gui2::dialogs::unit_recall create_dlg(units);
+	create_dlg.set_mode(gui2::dialogs::unit_recall::dialog_type::UNIT_CREATE);
 	create_dlg.show();
 
-	if(create_dlg.no_choice()) {
+	if(create_dlg.get_selected_index() == -1) {
 		return type_gender_variation(nullptr, unit_race::NUM_GENDERS, "");
 	}
 
-	const std::string& ut_id = create_dlg.choice();
-	const unit_type* utp = unit_types.find(ut_id);
+	const unit_type* utp = units[create_dlg.get_selected_index()];
 	if(!utp) {
-		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id '" << ut_id << "'.";
+		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id '" << utp->type_name() << "'.";
 		return type_gender_variation(static_cast<const unit_type*>(nullptr), unit_race::NUM_GENDERS, "");
 	}
 	const unit_type& ut = *utp;

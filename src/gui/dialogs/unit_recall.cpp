@@ -12,6 +12,9 @@
 	See the COPYING file for more details.
 */
 
+#include "gui/widgets/menu_button.hpp"
+#include "log.hpp"
+#include <string>
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/unit_recall.hpp"
@@ -137,47 +140,72 @@ void unit_recall::pre_show()
 	listbox& list = find_widget<listbox>("recall_list");
 	connect_signal_notify_modified(list, std::bind(&unit_recall::list_item_clicked, this));
 
+	connect_signal_mouse_left_click(
+		find_widget<button>("show_help"),
+		std::bind(&unit_recall::show_help, this));
+
 	list.clear();
 
 	keyboard_capture(&filter);
 	add_to_keyboard_chain(&list);
 
-	if (mode_ == dialog_type::RECALL) {
-		show_recalls(list);
-	} else if (mode_ == dialog_type::RECRUIT) {
-		show_recruits(list);
-	}
-}
-
-void unit_recall::show_recruits(listbox& list)
-{
-	for(const auto& recruit : recruit_list_)
-	{
-		widget_data row_data;
-		widget_item column;
-
-		std::string	image_string = recruit->image() + "~RC(" + recruit->flag_rgb() + ">"
-			+ team_->color() + ")";
-
-		// TODO check conditions
-		const bool is_recruitable = true;
-
-		column["use_markup"] = "true";
-
-		column["label"] = image_string + (is_recruitable ? "" : "~GS()");
-		row_data.emplace("unit_image", column);
-
-		column["label"] = recruit->type_name() + unit_helper::format_cost_string(recruit->cost());
-		row_data.emplace("unit_details", column);
-
-		filter_options_.push_back(recruit->type_name());
-		list.add_row(row_data);
+	switch(mode_) {
+		case dialog_type::RECRUIT:
+		case dialog_type::UNIT_CREATE:
+			show_unit_types(list);
+			break;
+		default:
+			show_units(list);
 	}
 
 	list_item_clicked();
 }
 
-void unit_recall::show_recalls(listbox& list)
+void unit_recall::show_unit_types(listbox& list)
+{
+	PLAIN_LOG << __LINE__;
+	if (mode_ == dialog_type::UNIT_CREATE) {
+		toggle_button& male_toggle = find_widget<toggle_button>("male_toggle");
+		toggle_button& female_toggle = find_widget<toggle_button>("female_toggle");
+
+		gender_toggle_.add_member(&male_toggle, unit_race::MALE);
+		gender_toggle_.add_member(&female_toggle, unit_race::FEMALE);
+		gender_toggle_.set_member_states(unit_race::MALE);
+		gender_toggle_.set_callback_on_value_change(
+			std::bind(&unit_recall::gender_toggle_callback, this, std::placeholders::_2));
+
+		menu_button& var_box = find_widget<menu_button>("variation_box");
+		connect_signal_notify_modified(var_box, std::bind(&unit_recall::variation_menu_callback, this));
+	}
+
+	for(const auto& recruit : recruit_list_)
+	{
+		widget_data row_data;
+		widget_item column;
+
+		// TODO check conditions
+		const bool is_recruitable = true;
+
+		column["use_markup"] = "true";
+		
+		if (mode_ == dialog_type::RECRUIT) {
+			std::string	image_string = recruit->image() + "~RC(" + recruit->flag_rgb() + ">"
+			+ team_->color() + ")";
+			column["label"] = image_string + (is_recruitable ? "" : "~GS()");
+			row_data.emplace("unit_image", column);
+			column["label"] = recruit->type_name() + unit_helper::format_cost_string(recruit->cost());
+			row_data.emplace("unit_details", column);
+		} else {
+			column["label"] = recruit->type_name();
+			row_data.emplace("unit_details", column);
+		}
+
+		filter_options_.push_back(recruit->type_name() + std::to_string(recruit->cost()));
+		list.add_row(row_data);
+	}
+}
+
+void unit_recall::show_units(listbox& list)
 {
 	connect_signal_mouse_left_click(
 		find_widget<button>("rename"),
@@ -190,10 +218,6 @@ void unit_recall::show_recalls(listbox& list)
 	} else {
 		find_widget<button>("dismiss").set_visible(widget::visibility::invisible);
 	}
-
-	connect_signal_mouse_left_click(
-		find_widget<button>("show_help"),
-		std::bind(&unit_recall::show_help, this));
 
 	//
 	// Formatting
@@ -357,9 +381,7 @@ void unit_recall::show_recalls(listbox& list)
 		return !recall_list_[i]->trait_names().empty() ? recall_list_[i]->trait_names().front().str() : "";
 	});
 
-	list.set_active_sorting_option(sort_last.first >= 0 ? sort_last	: sort_default, true);
-
-	list_item_clicked();
+	list.set_active_sorting_option(sort_last.first >= 0 ? sort_last : sort_default, true);
 }
 
 void unit_recall::rename_unit()
@@ -471,22 +493,29 @@ void unit_recall::update_dialog()
 	case dialog_type::RECALL:
 		find_widget<label>("title").set_label(_("Recall Unit"));
 		find_widget<button>("ok").set_label(_("Recall"));
+		find_widget<grid>("variation_gender_grid").set_visible(widget::visibility::invisible);
 		break;
 	case dialog_type::RECRUIT:
 		for (int i = 0; i <= 7; i++) {
 			find_widget<toggle_button>("sort_" + std::to_string(i)).set_visible(widget::visibility::invisible);
 		}
-
 		find_widget<button>("dismiss").set_visible(widget::visibility::invisible);
 		find_widget<button>("rename").set_visible(widget::visibility::invisible);
 		find_widget<label>("title").set_label(_("Recruit Unit"));
 		find_widget<button>("ok").set_label(_("Recruit"));
+		find_widget<grid>("variation_gender_grid").set_visible(widget::visibility::invisible);
 		break;
 	case dialog_type::UNIT_LIST:
 		find_widget<label>("title").set_label(_("Unit List"));
 		find_widget<button>("ok").set_label(_("Scroll To"));
+		find_widget<grid>("variation_gender_grid").set_visible(widget::visibility::invisible);
 		break;
 	case dialog_type::UNIT_CREATE:
+		find_widget<button>("dismiss").set_visible(widget::visibility::invisible);
+		find_widget<button>("rename").set_visible(widget::visibility::invisible);
+		find_widget<label>("title").set_label(_("Create Unit"));
+		find_widget<button>("ok").set_label(_("Create Unit"));
+		find_widget<grid>("variation_gender_grid").set_visible(widget::visibility::visible);
 		break;
 	}
 }
@@ -570,6 +599,21 @@ void unit_recall::filter_text_changed()
 	const bool any_shown = list.any_rows_shown();
 	find_widget<button>("rename").set_active(any_shown);
 	find_widget<button>("dismiss").set_active(any_shown);
+}
+
+void unit_recall::gender_toggle_callback(const unit_race::GENDER val)
+{
+	gender_ = val;
+
+	// update_displayed_type();
+}
+
+void unit_recall::variation_menu_callback()
+{
+	menu_button& var_box = find_widget<menu_button>("variation_box");
+	variation_ = var_box.get_value_config()["variation_id"].str();
+
+	// update_displayed_type();
 }
 
 } // namespace dialogs

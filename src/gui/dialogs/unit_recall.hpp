@@ -15,6 +15,7 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
+#include "gui/widgets/group.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "team.hpp"
 #include "units/ptr.hpp"
@@ -43,6 +44,18 @@ public:
 		return selected_index_;
 	}
 
+	/** Gender choice from the user. */
+	unit_race::GENDER gender()
+	{
+		return gender_;
+	}
+
+	/** Variation choice from the user. */
+	std::string variation() const
+	{
+		return variation_;
+	}
+
 	enum class dialog_type {
 		RECRUIT,
 		RECALL,
@@ -63,8 +76,12 @@ private:
 
 	int selected_index_;
 
+	unit_race::GENDER gender_;
+	std::string variation_;
+
 	std::vector<std::string> filter_options_;
 	std::vector<std::string> last_words_;
+	group<unit_race::GENDER> gender_toggle_;
 
 	dialog_type mode_;
 
@@ -77,13 +94,17 @@ private:
 	void dismiss_unit();
 	void show_help();
 
-	void show_recruits(listbox& list);
-	void show_recalls(listbox& list);
+	t_string can_recruit(const std::string& name, int side_num, team& team, map_location& loc, map_location& recruited_from);
+
+	void show_unit_types(listbox& list);
+	void show_units(listbox& list);
+
+	void gender_toggle_callback(const unit_race::GENDER val);
+	void variation_menu_callback();
 
 	virtual const std::string& window_id() const override;
 
 	virtual void pre_show() override;
-
 	virtual void post_show() override;
 };
 
