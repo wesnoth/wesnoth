@@ -382,7 +382,11 @@ int game_lua_kernel::impl_add_movement(lua_State* L)
 		lua_pushinteger(L, temp.wml_y());
 	}
 	lua_pushboolean(L, true);
-	lua_call(L, 4, 0);
+	if(lua_isnoneornil(L, 4))
+		lua_pushnil(L);
+	else
+		lua_pushboolean(L, luaW_toboolean(L, 4));
+	lua_call(L, 5, 0);
 	return 0;
 }
 
@@ -401,7 +405,8 @@ int game_lua_kernel::impl_run_animation(lua_State* L)
 	lua_pushnil(L);
 	lua_pushnil(L);
 	lua_pushboolean(L, false);
-	lua_call(L, 4, 0);
+	lua_pushnil(L);
+	lua_call(L, 5, 0);
 	anim.start_animations();
 	anim.wait_for_end();
 	anim.set_all_standing();
@@ -421,6 +426,7 @@ static int impl_animator_get(lua_State* L)
 	const char* m = lua_tostring(L, 2);
 	return luaW_getmetafield(L, 1, m);
 }
+
 int game_lua_kernel::intf_create_animator(lua_State* L)
 {
 	new(L) unit_animator;
@@ -429,7 +435,7 @@ int game_lua_kernel::intf_create_animator(lua_State* L)
 			{"__gc", impl_animator_collect},
 			{"__index", impl_animator_get},
 			{"add", impl_add_animation},
-			{"add_move", &dispatch<&game_lua_kernel::impl_add_movement>},
+			{"add_movement", &dispatch<&game_lua_kernel::impl_add_movement>},
 			{"run", &dispatch<&game_lua_kernel::impl_run_animation>},
 			{"clear", impl_clear_animation},
 			{nullptr, nullptr},
@@ -2771,6 +2777,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 	if(map_locked_) {
 		return luaL_error(L, "Attempted to move a unit while the map is locked");
 	}
+
 	map_location loc;
 	if (luaW_tolocation(L, 2, loc)) {
 		if (!map().on_board(loc)) {

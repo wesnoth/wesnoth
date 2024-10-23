@@ -121,6 +121,7 @@ namespace { // Support functions
 
 		return fake;
 	}
+
 	std::vector<map_location> fake_unit_path(const unit& fake_unit, const std::vector<std::string>& xvals, const std::vector<std::string>& yvals)
 	{
 		const gamemap *game_map = & resources::gameboard->map();
