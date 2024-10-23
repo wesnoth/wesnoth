@@ -13,7 +13,7 @@
 	See the COPYING file for more details.
 */
 
-#define GETTEXT_DOMAIN "wesnoth-editor"
+#define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/editor/custom_tod.hpp"
 
@@ -244,7 +244,7 @@ const time_of_day& custom_tod::get_selected_tod() const
 	try {
 		return times_.at(current_tod_);
 	} catch(const std::out_of_range&) {
-		throw std::string("Attempted to fetch a non-existant ToD!");
+		throw std::string("Attempted to fetch a non-existent ToD!");
 	}
 }
 
