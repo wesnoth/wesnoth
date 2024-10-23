@@ -16,6 +16,7 @@
 #include "gui/auxiliary/iterator/iterator.hpp"
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
+#include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/progress_bar.hpp"
@@ -327,6 +328,11 @@ WIDGET_GETTER("item_count", int, gui2::listbox)
 	return w.get_item_count();
 }
 
+WIDGET_GETTER("use_markup", bool, gui2::styled_widget)
+{
+	return w.get_use_markup();
+}
+
 WIDGET_SETTER("use_markup", bool, gui2::styled_widget)
 {
 	w.set_use_markup(value);
@@ -342,9 +348,29 @@ WIDGET_SETTER("marked_up_text", t_string, gui2::styled_widget)
 	w.set_label(value);
 }
 
+WIDGET_GETTER("enabled", bool, gui2::styled_widget)
+{
+	return w.get_active();
+}
+
 WIDGET_SETTER("enabled", bool, gui2::styled_widget)
 {
 	w.set_active(value);
+}
+
+WIDGET_GETTER("help", t_string, gui2::styled_widget)
+{
+	return w.help_message();
+}
+
+WIDGET_SETTER("help", t_string, gui2::styled_widget)
+{
+	w.set_help_message(value);
+}
+
+WIDGET_GETTER("tooltip", t_string, gui2::styled_widget)
+{
+	return w.tooltip();
 }
 
 WIDGET_SETTER("tooltip", t_string, gui2::styled_widget)
@@ -352,6 +378,15 @@ WIDGET_SETTER("tooltip", t_string, gui2::styled_widget)
 	w.set_tooltip(value);
 }
 
+WIDGET_GETTER("wrap", bool, gui2::label)
+{
+	return w.can_wrap();
+}
+
+WIDGET_SETTER("wrap", bool, gui2::label)
+{
+	w.set_can_wrap(value);
+}
 
 WIDGET_SETTER("callback", lua_index_raw, gui2::widget)
 {
@@ -404,6 +439,11 @@ WIDGET_SETTER("visible", lua_index_raw, gui2::styled_widget)
 			window->invalidate_layout();
 		}
 	}
+}
+
+WIDGET_GETTER("value_compat,label", t_string, gui2::styled_widget)
+{
+	return w.get_label();
 }
 
 //must be last
