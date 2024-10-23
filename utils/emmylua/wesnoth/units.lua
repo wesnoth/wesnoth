@@ -289,4 +289,15 @@ function wesnoth.units.create_weapon(cfg) end
 ---@overload fun(unit:unit, x:integer, y:integer, ignore_passability:boolean, clear_shroud:boolean, animate:boolean)
 function wesnoth.units.teleport(unit, target, ignore_passability, clear_shroud, animate) end
 
+---Fakes the move of a given unit, can be queued.
+---Todo: move it to C++ side implementation.
+---@param u_a unit_animator
+---@param u unit
+---@param to_x integer
+---@param to_y integer
+---@param queued boolean
+---@param scroll boolean
+---@overload fun(u_a:unit_animator, u:unit, target:location, queued:boolean, scroll:boolean)
+function wesnoth.units.add_movement(u_a, u, to_x, to_y, queued, scroll) end
+
 wesnoth.units.get_hovered = wesnoth.interface.get_displayed_unit
