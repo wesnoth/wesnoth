@@ -145,6 +145,17 @@ public:
 	 * uses when a defender has no weapon for a given range.
 	 */
 	bool attack_empty() const {return (id().empty() && name().empty() && type().empty() && range().empty());}
+	/** remove special if matche condition
+	 * @param filter if special check with filter, it will be removed.
+	 */
+	void remove_special_by_filter(const config& filter);
+	/** check if special matche
+	 * @return True if special matche with filter(if 'active' filter is true, check if special active).
+	 * @param filter if special check with filter, return true.
+	 */
+	bool has_special_with_filter(const config & filter) const;
+	bool has_ability_with_filter(const config & filter) const;
+	bool has_special_or_ability_with_filter(const config & filter) const;
 
 	// In unit_types.cpp:
 
