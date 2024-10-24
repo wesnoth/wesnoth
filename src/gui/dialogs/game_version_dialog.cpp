@@ -34,14 +34,16 @@
 #include "gui/dialogs/end_credits.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
+#include "language.hpp"
+#include "serialization/markup.hpp"
 
 #include <functional>
 
 namespace
 {
 
-const std::string text_feature_on =  "<span color='#0f0'>&#9679;</span>";
-const std::string text_feature_off = "<span color='#f00'>&#9679;</span>";
+const std::string text_feature_on =  markup::span_color("#0f0", "&#9679;");
+const std::string text_feature_off = markup::span_color("#f00", "&#9679;");
 
 } // end anonymous namespace
 
@@ -100,28 +102,28 @@ void game_version::pre_show()
 	//
 	tabs.select_tab(0);
 
-	styled_widget& version_label = find_widget<styled_widget>("version");
-	styled_widget& os_label = find_widget<styled_widget>("os");
-	styled_widget& arch_label = find_widget<styled_widget>("arch");
+	find_widget<styled_widget>("version").set_label(game_config::revision);
+	find_widget<styled_widget>("os").set_label(markup::italic(desktop::os_version()));
+	find_widget<styled_widget>("arch").set_label(game_config::build_arch());
 
-	version_label.set_label(game_config::revision);
-	os_label.set_label("<i>"+desktop::os_version()+"</i>");
-	arch_label.set_label(game_config::build_arch());
-
-	button& copy_all = find_widget<button>("copy_all");
-	connect_signal_mouse_left_click(copy_all, std::bind(&game_version::report_copy_callback, this));
+	connect_signal_mouse_left_click(find_widget<button>("copy_all"),
+			std::bind(&game_version::report_copy_callback, this));
 
 	// Bottom row buttons
-	button& credits_button = find_widget<button>("credits");
-	connect_signal_mouse_left_click(credits_button, std::bind(&game_version::show_credits_dialog, this));
+	connect_signal_mouse_left_click(find_widget<button>("credits"),
+			std::bind(&game_version::show_credits_dialog, this));
 
-	button& license_button = find_widget<button>("license");
-	connect_signal_mouse_left_click(license_button, std::bind(&game_version::show_license, this));
+	connect_signal_mouse_left_click(find_widget<button>("license"),
+			std::bind(&game_version::show_license, this));
 
-	button& issue_button = find_widget<button>("issue");
-	connect_signal_mouse_left_click(issue_button, std::bind(&game_version::report_issue, this));
+	connect_signal_mouse_left_click(find_widget<button>("issue"),
+			std::bind(&game_version::report_issue, this));
 
-	connect_signal_mouse_left_click(find_widget<button>("run_migrator"), std::bind(&game_version::run_migrator, this));
+	connect_signal_mouse_left_click(find_widget<button>("run_migrator"),
+			std::bind(&game_version::run_migrator, this));
+
+	connect_signal_mouse_left_click(find_widget<button>("view_manual"),
+			std::bind(&game_version::show_manual, this));
 
 	//
 	// Game paths tab.
@@ -154,7 +156,8 @@ void game_version::pre_show()
 	}
 
 	button& stderr_button = find_widget<button>("open_stderr");
-	connect_signal_mouse_left_click(stderr_button, std::bind(&game_version::browse_directory_callback, this, log_path_));
+	connect_signal_mouse_left_click(stderr_button,
+			std::bind(&game_version::browse_directory_callback, this, log_path_));
 	stderr_button.set_active(!log_path_.empty() && filesystem::file_exists(log_path_));
 
 	//
@@ -164,23 +167,16 @@ void game_version::pre_show()
 
 	widget_data list_data;
 
-	listbox& deps_listbox
-			= find_widget<listbox>("deps_listbox");
+	listbox& deps_listbox = find_widget<listbox>("deps_listbox");
 
-	for(const auto & dep : deps_)
+	for(const auto& dep : deps_)
 	{
 		list_data["dep_name"]["label"] = dep[0];
-
 		list_data["dep_build_version"]["label"] = dep[1];
-
 		// The build version is always known, but runtime version isn't, esp.
 		// for header-only libraries like Boost for which the concept does not
 		// apply.
-		if(!dep[2].empty()) {
-			list_data["dep_rt_version"]["label"] = dep[2];
-		} else {
-			list_data["dep_rt_version"]["label"] = font::unicode_em_dash;
-		}
+		list_data["dep_rt_version"]["label"] = dep[2].empty() ? font::unicode_em_dash : dep[2];
 
 		deps_listbox.add_row(list_data);
 	}
@@ -193,18 +189,12 @@ void game_version::pre_show()
 	//
 	tabs.select_tab(3);
 
-	listbox& opts_listbox
-			= find_widget<listbox>("opts_listbox");
+	listbox& opts_listbox = find_widget<listbox>("opts_listbox");
 
-	for(const auto & opt : opts_)
+	for(const auto& opt : opts_)
 	{
 		list_data["opt_name"]["label"] = opt.name;
-
-		if(opt.enabled) {
-			list_data["opt_status"]["label"] = text_feature_on;
-		} else {
-			list_data["opt_status"]["label"] = text_feature_off;
-		}
+		list_data["opt_status"]["label"] = opt.enabled ? text_feature_on : text_feature_off;
 		list_data["opt_status"]["use_markup"] = "true";
 
 		opts_listbox.add_row(list_data);
@@ -248,20 +238,16 @@ void game_version::run_migrator()
 	migrate_version_selection::execute();
 }
 
-void game_version::copy_to_clipboard_callback(const std::string& path, const std::string btn_id)
+void game_version::copy_to_clipboard_callback(const std::string& path, const std::string& btn_id)
 {
 	desktop::clipboard::copy_to_clipboard(path);
-
-	button& copy_w = find_widget<button>(btn_id);
-	copy_w.set_success(true);
+	find_widget<button>(btn_id).set_success(true);
 }
 
 void game_version::report_copy_callback()
 {
 	desktop::clipboard::copy_to_clipboard(report_);
-
-	button& copy_all = find_widget<button>("copy_all");
-	copy_all.set_success(true);
+	find_widget<button>("copy_all").set_success(true);
 }
 
 void game_version::generate_plain_text_report()
@@ -283,6 +269,27 @@ void game_version::report_issue() {
 		return;
 	} else {
 		desktop::open_object("https://bugs.wesnoth.org");
+	}
+}
+
+void game_version::show_manual() {
+	if (desktop::open_object_is_supported()) {
+		std::string manual_filename = "manual." + get_language().localename + ".html";
+		std::string local_path = game_config::path + "/doc/manual/" + manual_filename;
+		if (filesystem::file_exists(local_path)) {
+			desktop::open_object("file://" + local_path);
+		} else {
+			// If a filename like manual.en_GB.html is not found, try manual.en.html
+			manual_filename = "manual." + utils::split(get_language().localename, '_')[0] + ".html";
+			std::string local_path = game_config::path + "/doc/manual/" + manual_filename;
+			if (filesystem::file_exists(local_path)) {
+				desktop::open_object("file://" + local_path);
+			} else {
+				desktop::open_object("https://www.wesnoth.org/manual/dev/" + manual_filename);
+			}
+		}
+	} else {
+		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
 	}
 }
 

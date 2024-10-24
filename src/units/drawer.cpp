@@ -137,7 +137,7 @@ void draw_bar(int xpos, int ypos, int bar_height, double filled, const color_t& 
 
 unit_drawer::unit_drawer(display& thedisp)
 	: disp(thedisp)
-	, dc(disp.get_disp_context())
+	, dc(disp.context())
 	, map(dc.map())
 	, halo_man(thedisp.get_halo_manager())
 	, viewing_team_ref(disp.viewing_team())
@@ -170,7 +170,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 
 	bool hidden = u.get_hidden();
 	bool is_flying = u.is_flying();
-	map_location::DIRECTION facing = u.facing();
+	map_location::direction facing = u.facing();
 	int hitpoints = u.hitpoints();
 	int max_hitpoints = u.max_hitpoints();
 

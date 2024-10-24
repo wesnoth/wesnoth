@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
+"POT-Creation-Date: 2024-10-21 16:11 UTC\n"
 "PO-Revision-Date: 2023-03-22 10:57+0200\n"
 "Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -163,7 +163,7 @@ msgstr "прашка"
 #: data/core/units/bats/Bat_Vampire.cfg:116
 #: data/core/units/goblins/Direwolf_Rider.cfg:32
 #: data/core/units/goblins/Knight.cfg:34
-#: data/core/units/goblins/Pillager.cfg:32
+#: data/core/units/goblins/Pillager.cfg:59
 #: data/core/units/goblins/Wolf_Rider.cfg:46
 #: data/core/units/monsters/Ant.cfg:32 data/core/units/monsters/Ant_Fire.cfg:71
 #: data/core/units/monsters/Ant_Fire_Queen.cfg:75
@@ -466,7 +466,7 @@ msgstr "смразяваща вихрушка"
 #: data/core/units/humans/Woodsman_Ranger.cfg:53
 #: data/core/units/humans/Woodsman_Trapper.cfg:42
 #: data/core/units/orcs/Archer.cfg:33 data/core/units/orcs/Archer.cfg:42
-#: data/core/units/orcs/Warlord.cfg:33
+#: data/core/units/orcs/Warlord.cfg:39
 #: data/core/units/undead/Skele_Banebow.cfg:40
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
 #: data/core/units/undead/Skeleton_Archer.cfg:46
@@ -1407,6 +1407,19 @@ msgstr "Змей разбивач"
 
 #. [unit_type]: id=Drake Clasher, race=drake, gender=male,female
 #: data/core/units/drakes/Clasher.cfg:19
+#, fuzzy
+#| msgid ""
+#| "The Clashers are members of a unique caste among the drakes. Their thick "
+#| "armor, while compensating for the drakes’ natural weakness against spears "
+#| "and arrows, is so heavy and restricting that they are not able to fly or "
+#| "muster enough breath to use their inner fire. They have embraced this "
+#| "handicap, completely encasing their wings to emphasize that they do not "
+#| "need flight to triumph in battle.\n"
+#| "\n"
+#| "This is also the only caste that is allowed to break taboo and fight with "
+#| "spears in addition to the drake’s traditional metal claws, which makes "
+#| "them particularly good at \"resolving\" territorial disputes with other "
+#| "drakes and enforcing the laws of their tribe."
 msgid ""
 "The Clashers are members of a unique caste among the drakes. Their thick "
 "armor, while compensating for the drakes’ natural weakness against spears "
@@ -1417,8 +1430,8 @@ msgid ""
 "\n"
 "This is also the only caste that is allowed to break taboo and fight with "
 "spears in addition to the drake’s traditional metal claws, which makes them "
-"particularly good at \"resolving\" territorial disputes with other drakes "
-"and enforcing the laws of their tribe."
+"particularly good at “resolving” territorial disputes with other drakes and "
+"enforcing the laws of their tribe."
 msgstr ""
 "Разбивачите са част от изключителна каста сред змейовете. Плътната им броня "
 "компенсира за естествената уязвимост на змейовете срещу копия и стрели, но е "
@@ -2279,7 +2292,7 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Marauder.cfg:61
 #: data/core/units/dunefolk/Raider.cfg:59
-#: data/core/units/goblins/Pillager.cfg:41
+#: data/core/units/goblins/Pillager.cfg:68
 msgid "torch"
 msgstr "факла"
 
@@ -4003,7 +4016,7 @@ msgstr ""
 "опитите на противника да се защити или да нанесе ответен удар."
 
 #. [attack]: type=impact
-#: data/core/units/goblins/Pillager.cfg:50
+#: data/core/units/goblins/Pillager.cfg:77
 #: data/core/units/merfolk/Entangler.cfg:34
 #: data/core/units/merfolk/Netcaster.cfg:33
 msgid "net"
@@ -5610,7 +5623,7 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Brawler.cfg:30
-#: data/core/units/monsters/Cat_Jump.cfg:90
+#: data/core/units/monsters/Cat_Jump.cfg:92
 #: data/core/units/monsters/Fire_Dragon.cfg:42
 #: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
@@ -6369,6 +6382,8 @@ msgstr ""
 #: data/core/units/monsters/Dragonfly_Grand.cfg:44
 #: data/core/units/monsters/Giant_Scorpion.cfg:47
 #: data/core/units/monsters/Giant_Scorpling.cfg:32
+#: data/core/units/monsters/Sand_Scamperer.cfg:37
+#: data/core/units/monsters/Sand_Scuttler.cfg:49
 msgid "sting"
 msgstr "жило"
 
@@ -6628,6 +6643,8 @@ msgstr ""
 #: data/core/units/monsters/Giant_Scorpion.cfg:59
 #: data/core/units/monsters/Giant_Scorpling.cfg:44
 #: data/core/units/monsters/Rock_Scorpion.cfg:53
+#: data/core/units/monsters/Sand_Scamperer.cfg:49
+#: data/core/units/monsters/Sand_Scuttler.cfg:61
 msgid "pincers"
 msgstr "щипци"
 
@@ -6637,16 +6654,16 @@ msgid "scuttler"
 msgstr "фреза"
 
 #. [variation]
-#. [unit_type]: id=Sand Scuttler
+#. [unit_type]: id=Sand Scuttler, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:112
-#: data/core/units/monsters/Sand_Scuttler.cfg:8
+#: data/core/units/monsters/Sand_Scuttler.cfg:5
 msgid "Sand Scuttler"
 msgstr "Пясъчен рак"
 
 #. [variation]
-#. [unit_type]: id=Sand Scuttler
+#. [unit_type]: id=Sand Scuttler, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:119
-#: data/core/units/monsters/Sand_Scuttler.cfg:13
+#: data/core/units/monsters/Sand_Scuttler.cfg:43
 msgid ""
 "Making their homes in sandy dunes, these critters are an odd mix of mundane "
 "creature and elemental beast. Though usually timid, Sand Scuttlers sometimes "
@@ -6730,9 +6747,9 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/monsters/Horse.cfg:32
 #: data/core/units/monsters/Horse_Black.cfg:50
-#: data/core/units/monsters/Horse_Dark.cfg:44
+#: data/core/units/monsters/Horse_Dark.cfg:49
 #: data/core/units/monsters/Horse_Great.cfg:34
-#: data/core/units/monsters/Horse_White.cfg:39
+#: data/core/units/monsters/Horse_White.cfg:43
 msgid "hooves"
 msgstr ""
 
@@ -6754,7 +6771,7 @@ msgstr ""
 
 #. [attack]: type=cold
 #: data/core/units/monsters/Horse_Black.cfg:59
-#: data/core/units/monsters/Horse_Dark.cfg:53
+#: data/core/units/monsters/Horse_Dark.cfg:58
 msgid "whinny"
 msgstr "цвилене"
 
@@ -6769,13 +6786,13 @@ msgstr "Черен жребец"
 msgid "female^Black Nightmare"
 msgstr "Черен кошмар"
 
-#. [unit_type]: id=Dark Horse, gender=male,female
+#. [unit_type]: id=Dark Horse, race=horse, gender=male,female
 #: data/core/units/monsters/Horse_Dark.cfg:14
 msgid "Dark Horse"
 msgstr "Тъмен кон"
 
-#. [unit_type]: id=Dark Horse, gender=male,female
-#: data/core/units/monsters/Horse_Dark.cfg:40
+#. [unit_type]: id=Dark Horse, race=horse, gender=male,female
+#: data/core/units/monsters/Horse_Dark.cfg:33
 msgid ""
 "Dark Horses are wild animals, but they seem to take an odd interest in the "
 "civilized races. They leave no signs of their passage, but they have been "
@@ -6786,12 +6803,12 @@ msgstr ""
 "лагери и аванпостове през нощта."
 
 #. [male]
-#: data/core/units/monsters/Horse_Dark.cfg:88
+#: data/core/units/monsters/Horse_Dark.cfg:93
 msgid "male^Dark Horse"
 msgstr "Тъмен кон"
 
 #. [female]
-#: data/core/units/monsters/Horse_Dark.cfg:92
+#: data/core/units/monsters/Horse_Dark.cfg:97
 msgid "female^Dark Horse"
 msgstr "Тъмна кобилка"
 
@@ -6813,13 +6830,13 @@ msgstr ""
 "мъчни за опитомяване, макар че не един арогантен принц или военачалник, се е "
 "опитвал и издънвал."
 
-#. [unit_type]: id=White Horse
+#. [unit_type]: id=White Horse, race=horse
 #: data/core/units/monsters/Horse_White.cfg:14
 msgid "White Horse"
 msgstr "Бял кон"
 
-#. [unit_type]: id=White Horse
-#: data/core/units/monsters/Horse_White.cfg:26
+#. [unit_type]: id=White Horse, race=horse
+#: data/core/units/monsters/Horse_White.cfg:29
 msgid ""
 "Some horses have a white color, and they are merely white horses. But there "
 "exist a special breed, found only in the wild woods, that are White Horses. "
@@ -7024,9 +7041,17 @@ msgstr "Скаловиден скорпион"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:47
+#, fuzzy
+#| msgid ""
+#| "Rock scorpions have featured in tales of highwaymen and drunks, but there "
+#| "has been scant evidence that they truly exist. They've been described as "
+#| "stealthy monsters with a hide of solid rock, and sharp, crystalline "
+#| "claws. Unlike most scorpions, they do not deliver their poison with a "
+#| "piercing stinger, but instead spray their enemies with a noxious, "
+#| "volatile stream."
 msgid ""
 "Rock scorpions have featured in tales of highwaymen and drunks, but there "
-"has been scant evidence that they truly exist. They've been described as "
+"has been scant evidence that they truly exist. They’ve been described as "
 "stealthy monsters with a hide of solid rock, and sharp, crystalline claws. "
 "Unlike most scorpions, they do not deliver their poison with a piercing "
 "stinger, but instead spray their enemies with a noxious, volatile stream."
@@ -7042,15 +7067,15 @@ msgstr ""
 msgid "spray"
 msgstr "пръскане"
 
-#. [unit_type]: id=Sand Scamperer
-#: data/core/units/monsters/Sand_Scamperer.cfg:11
+#. [unit_type]: id=Sand Scamperer, race=monster
+#: data/core/units/monsters/Sand_Scamperer.cfg:8
 #, fuzzy
 #| msgid "Sand Scuttler"
 msgid "Sand Scamperer"
 msgstr "Пясъчен рак"
 
-#. [unit_type]: id=Sand Scamperer
-#: data/core/units/monsters/Sand_Scamperer.cfg:16
+#. [unit_type]: id=Sand Scamperer, race=monster
+#: data/core/units/monsters/Sand_Scamperer.cfg:31
 msgid ""
 "This impressive creature swiftly moves through the scorching desert sand. "
 "Its body is covered in a thick, sand-colored exoskeleton absorbing any "
@@ -7651,6 +7676,45 @@ msgstr "Нага-зефир"
 
 #. [unit_type]: id=Naga Zephyr, race=naga, gender=male,female
 #: data/core/units/nagas/Zephyr.cfg:19
+#, fuzzy
+#| msgid ""
+#| "The Southern Naga commonly recount a curious story about the Wind Spirit, "
+#| "Zefra and the aetherial chakram:\n"
+#| "\n"
+#| "In the distant past, there was a chakram wielder who was possessed of "
+#| "legendary skill. It is said that he could cleave the very seas with a "
+#| "flurry of blades, fell a hundred foes before a single could reach him, "
+#| "and deflect a thousand arrows without being struck. Called by the name of "
+#| "Xylrix, tempest, he was a warrior whose arrogance was as great as his "
+#| "talent. He was always more than willing to boast his prowess to any and "
+#| "all who would watch him. Then one day, while flaunting himself to a band "
+#| "of young Nagini, he chose a sacred Allnai tree as his target.\n"
+#| "\n"
+#| "‘Watch,’ he bellowed, and split the tree straight in two.\n"
+#| "\n"
+#| "In that moment, a great wind surrounded him and the Wind Spirit’s voice "
+#| "echoed in his ears, ‘You think yourself mighty for slaying my hapless "
+#| "offspring? Though talent you possess, no mortal should trifle with the "
+#| "divinity that guides them.’\n"
+#| "\n"
+#| "He retorted, ‘Come, spirit. I am not afraid. No weapon, steel, water, or "
+#| "wind, shall stand up to my rings.’\n"
+#| "\n"
+#| "The wind whirled ever faster, a torrent of gale force spiraling and "
+#| "spiraling in a gyrating dance of fury. He felt himself lifted from the "
+#| "ground, spinning at a tremendous rate, rendered utterly hapless at the "
+#| "mercy of Zefra’s wrath. Face upturned in terror, he let go of his blades "
+#| "and suddenly saw it in the whirling tempest—the twirling motion of the "
+#| "ringed chakrams, patterned in the very wind itself.\n"
+#| "\n"
+#| "As quickly as the storm came, it vanished, leaving Xylrix to contemplate "
+#| "his broken weapons. When he finally returned to his home many days later, "
+#| "he announced his new name: Zephyr, a warrior who serves the Wind on which "
+#| "his blades fly.\n"
+#| "\n"
+#| "While the old tales drive the elite warriors of this legacy to focus on "
+#| "the thrown blade, this doesn't mean they are weak in melee combat, as the "
+#| "unbalanced chakram can be enhanced with spikes and smaller blades.\n"
 msgid ""
 "The Southern Naga commonly recount a curious story about the Wind Spirit, "
 "Zefra and the aetherial chakram:\n"
@@ -7687,7 +7751,7 @@ msgid ""
 "blades fly.\n"
 "\n"
 "While the old tales drive the elite warriors of this legacy to focus on the "
-"thrown blade, this doesn't mean they are weak in melee combat, as the "
+"thrown blade, this doesn’t mean they are weak in melee combat, as the "
 "unbalanced chakram can be enhanced with spikes and smaller blades.\n"
 msgstr ""
 "Южните наги обичат да разказват любопитна история за Духа на вятъра, Зефра и "
@@ -7755,8 +7819,13 @@ msgstr "Оугърче"
 
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:23
+#, fuzzy
+#| msgid ""
+#| "When still young, Ogres are sometimes captured and taken into armies to "
+#| "be trained. They cannot manage weapons skillfully, but they compensate "
+#| "for that lack with great strength."
 msgid ""
-"When still young, Ogres are sometimes captured and taken into armies to be "
+"When still young, ogres are sometimes captured and taken into armies to be "
 "trained. They cannot manage weapons skillfully, but they compensate for that "
 "lack with great strength."
 msgstr ""
@@ -7937,7 +8006,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
-#: data/core/units/orcs/Warlord.cfg:24 data/core/units/orcs/Warrior.cfg:38
+#: data/core/units/orcs/Warlord.cfg:30 data/core/units/orcs/Warrior.cfg:38
 msgid "greatsword"
 msgstr "двуръчен меч"
 

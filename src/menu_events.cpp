@@ -142,7 +142,7 @@ void menu_handler::status_table()
 {
 	int selected_side;
 
-	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team_index(), selected_side)) {
+	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team(), selected_side)) {
 		gui_->scroll_to_leader(selected_side);
 	}
 }
@@ -838,8 +838,9 @@ void menu_handler::clear_labels()
 		);
 
 		if(res == gui2::retval::OK) {
-			gui_->labels().clear(gui_->current_team_name(), false);
-			resources::recorder->clear_labels(gui_->current_team_name(), false);
+			std::string viewing_team = gui_->viewing_team().team_name();
+			gui_->labels().clear(viewing_team, false);
+			resources::recorder->clear_labels(viewing_team, false);
 		}
 	}
 }
@@ -1744,7 +1745,7 @@ void console_handler::do_layers()
 	//
 	// -- vultraz, 2017-09-21
 	//
-	if(disp.get_map().on_board_with_border(loc)) {
+	if(menu_handler_.pc_.get_map().on_board_with_border(loc)) {
 		gui2::dialogs::terrain_layers::display(disp, loc);
 	}
 }

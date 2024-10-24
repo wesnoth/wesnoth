@@ -270,7 +270,7 @@ void config_cache::read_defines_file(const std::string& file_path)
 
 	// use static preproc_define::read_pair(config) to make a object
 	// and pass that object config_cache_transaction::insert_to_active method
-	for(const auto [key, cfg] : cfg.all_children_range()) {
+	for(const auto [key, cfg] : cfg.all_children_view()) {
 		config_cache_transaction::instance().insert_to_active(preproc_define::read_pair(cfg));
 	}
 }

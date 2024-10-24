@@ -16,7 +16,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "help/help_impl.hpp"
+#include "serialization/markup.hpp"
 
 BOOST_AUTO_TEST_SUITE( help_markup )
 
@@ -26,77 +26,77 @@ BOOST_AUTO_TEST_CASE( test_simple_help_markup )
 	config output;
 
 	// Text parses as text
-	output = help::parse_text("Hello World");
+	output = markup::parse_text("Hello World");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("text"));
 	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "Hello World");
 
 	// Backslashes protect the following character even if it's special
-	output = help::parse_text(R"==(\<not_a_tag\>)==");
+	output = markup::parse_text(R"==(\<not_a_tag\>)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("text"));
 	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "<not_a_tag>");
 
 	// Simple named character entities are substituted
-	output = help::parse_text("Me &amp; You");
+	output = markup::parse_text("Me &amp; You");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("text"));
 	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "Me & You");
 
 	// Decimal character entities work for single-byte characters
-	output = help::parse_text("&#198;");
+	output = markup::parse_text("&#198;");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("text"));
 	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "\u00c6");
 
 	// Hex character entities work for single-byte characters
-	output = help::parse_text("&#xc6;");
+	output = markup::parse_text("&#xc6;");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("text"));
 	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "\u00c6");
 
 	// Decimal character entities work for two-byte characters
-	output = help::parse_text("&#5792;");
+	output = markup::parse_text("&#5792;");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("text"));
 	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "\u16a0");
 
 	// Hex character entities work for two-byte characters
-	output = help::parse_text("&#x16a0;");
+	output = markup::parse_text("&#x16a0;");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("text"));
 	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "\u16a0");
 
 	// Decimal character entities work for non-BMP characters
-	output = help::parse_text("&#128519;");
+	output = markup::parse_text("&#128519;");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("text"));
 	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "\U0001f607");
 
 	// Hex character entities work for non-BMP characters
-	output = help::parse_text("&#x1f607;");
+	output = markup::parse_text("&#x1f607;");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("text"));
 	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "\U0001f607");
 
 	// Single newlines are taken literally
-	output = help::parse_text("Line One\nLine Two");
+	output = markup::parse_text("Line One\nLine Two");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("text"));
 	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "Line One\nLine Two");
 
 	// Double newlines split into paragraphs
-	output = help::parse_text("Paragraph One\n\nParagraph Two");
+	output = markup::parse_text("Paragraph One\n\nParagraph Two");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 2);
 	BOOST_CHECK_EQUAL(output.child_count("text"), 2);
 	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
@@ -106,7 +106,7 @@ BOOST_AUTO_TEST_CASE( test_simple_help_markup )
 	// TODO: What about triple, quadruple newlines?
 
 	// Unknown named character entities are processed but not substituted
-	output = help::parse_text("This &entity; is unknown!");
+	output = markup::parse_text("This &entity; is unknown!");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 3);
 	BOOST_CHECK_EQUAL(output.child_count("text"), 2);
 	BOOST_CHECK(output.has_child("character_entity"));
@@ -119,28 +119,28 @@ BOOST_AUTO_TEST_CASE( test_simple_help_markup )
 	BOOST_CHECK_EQUAL(output.mandatory_child("character_entity")["name"], "entity");
 
 	// A backslash at end-of-stream is literal
-	output = help::parse_text(R"==(Ending with backslash\)==");
+	output = markup::parse_text(R"==(Ending with backslash\)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("text"));
 	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], R"==(Ending with backslash\)==");
 
 	// A backslash can escape itself
-	output = help::parse_text(R"==(Backslash\\in middle)==");
+	output = markup::parse_text(R"==(Backslash\\in middle)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("text"));
 	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], R"==(Backslash\in middle)==");
 
 	// A backslash is removed even if the escaped character is not special
-	output = help::parse_text(R"==(\T\h\i\s is \p\o\i\n\t\l\e\s\s)==");
+	output = markup::parse_text(R"==(\T\h\i\s is \p\o\i\n\t\l\e\s\s)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("text"));
 	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "This is pointless");
 
 	// The other four simple named character entities are substituted
-	output = help::parse_text("&quot;&lt;tag attr=&apos;val&apos;&gt;&quot;");
+	output = markup::parse_text("&quot;&lt;tag attr=&apos;val&apos;&gt;&quot;");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("text"));
 	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
@@ -154,21 +154,21 @@ BOOST_AUTO_TEST_CASE( test_help_markup_old )
 
 	// A simple tag with text content
 	// This format is both old-style and new-style.
-	output = help::parse_text("<tt>some text</tt>");
+	output = markup::parse_text("<tt>some text</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["text"], "some text");
 
 	// With explicit text attribute
-	output = help::parse_text("<tt>text='some text'</tt>");
+	output = markup::parse_text("<tt>text='some text'</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["text"], "some text");
 
 	// With implicit text attribute and another attribute
-	output = help::parse_text("<tt>attr='value' some text</tt>");
+	output = markup::parse_text("<tt>attr='value' some text</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("text"));
@@ -177,7 +177,7 @@ BOOST_AUTO_TEST_CASE( test_help_markup_old )
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value");
 
 	// With explict text attribute and another attribute
-	output = help::parse_text("<tt>attr='value' text='some text'</tt>");
+	output = markup::parse_text("<tt>attr='value' text='some text'</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("text"));
@@ -186,7 +186,7 @@ BOOST_AUTO_TEST_CASE( test_help_markup_old )
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value");
 
 	// A tag in a larger span of text
-	output = help::parse_text("Here we have <tt>attr='value' text='some text'</tt> with an unknown style applied!");
+	output = markup::parse_text("Here we have <tt>attr='value' text='some text'</tt> with an unknown style applied!");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 3);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK_EQUAL(output.child_count("text"), 2);
@@ -201,63 +201,63 @@ BOOST_AUTO_TEST_CASE( test_help_markup_old )
 	BOOST_CHECK_EQUAL(output.mandatory_child("text", 1)["text"], " with an unknown style applied!");
 
 	// The attribute value can be unquoted
-	output = help::parse_text("<tt>attr=value</tt>");
+	output = markup::parse_text("<tt>attr=value</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value");
 
 	// Nonalphanumeric characters don't need to be quoted as long as they're not special
-	output = help::parse_text("<tt>attr=!@#$%^</tt>");
+	output = markup::parse_text("<tt>attr=!@#$%^</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "!@#$%^");
 
 	// Quoting with single quotes
-	output = help::parse_text("<tt>attr='value with spaces'</tt>");
+	output = markup::parse_text("<tt>attr='value with spaces'</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value with spaces");
 
 	// Quoting with double quotes
-	output = help::parse_text(R"==(<tt>attr="value with spaces"</tt>)==");
+	output = markup::parse_text(R"==(<tt>attr="value with spaces"</tt>)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value with spaces");
 
 	// Quotes only count as quotes if they're the first non-whitespace character after the =
-	output = help::parse_text("<tt>attr=O'Brien</tt>");
+	output = markup::parse_text("<tt>attr=O'Brien</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "O'Brien");
 
 	// Single quotes in double-quoted value
-	output = help::parse_text(R"==(<tt>attr="'tis futile"</tt>)==");
+	output = markup::parse_text(R"==(<tt>attr="'tis futile"</tt>)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "'tis futile");
 
 	// Double quotes in single-quoted value
-	output = help::parse_text(R"==(<tt>attr='the "mega" test'</tt>)==");
+	output = markup::parse_text(R"==(<tt>attr='the "mega" test'</tt>)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], R"==(the "mega" test)==");
 
 	// Spaces around the equals are allowed
-	output = help::parse_text("<tt>attr = value</tt>");
+	output = markup::parse_text("<tt>attr = value</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value");
 
 	// Newlines are also allowed
-	output = help::parse_text("<tt>attr=\nvalue\nthat=\nthis</tt>");
+	output = markup::parse_text("<tt>attr=\nvalue\nthat=\nthis</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
@@ -266,28 +266,28 @@ BOOST_AUTO_TEST_CASE( test_help_markup_old )
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["that"], "this");
 
 	// Escaping a single quote in a single-quoted value
-	output = help::parse_text(R"==(<tt>attr='Let\'s go?'</tt>)==");
+	output = markup::parse_text(R"==(<tt>attr='Let\'s go?'</tt>)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "Let's go?");
 
 	// Using a simple character entity in a single-quoted value
-	output = help::parse_text("<tt>attr='&apos;tis good'</tt>");
+	output = markup::parse_text("<tt>attr='&apos;tis good'</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "'tis good");
 
 	// A newline in a single-quoted value
-	output = help::parse_text("<tt>attr='Line 1\nLine 2'</tt>");
+	output = markup::parse_text("<tt>attr='Line 1\nLine 2'</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "Line 1\nLine 2");
 
 	// Using a simple character entity in a double-quoted value
-	output = help::parse_text(R"==(<tt>attr="&quot;Yes!&quot;"</tt>)==");
+	output = markup::parse_text(R"==(<tt>attr="&quot;Yes!&quot;"</tt>)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
@@ -301,26 +301,26 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 
 	// A simple tag with text content
 	// This format is both old-style and new-style.
-	output = help::parse_text("<tt>some text</tt>");
+	output = markup::parse_text("<tt>some text</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["text"], "some text");
 
 	// A simple auto-closed tag
-	output = help::parse_text("<tt/>");
+	output = markup::parse_text("<tt/>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(!output.mandatory_child("tt").has_attribute("text"));
 
 	// Auto-closed tag can have a space before the slash
-	output = help::parse_text("<tt />");
+	output = markup::parse_text("<tt />");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(!output.mandatory_child("tt").has_attribute("text"));
 
 	// With an attribute
-	output = help::parse_text("<tt attr='value'>some text</tt>");
+	output = markup::parse_text("<tt attr='value'>some text</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("text"));
@@ -329,7 +329,7 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value");
 
 	// With an attribute that has no value specified
-	output = help::parse_text("<tt attr>some text</tt>");
+	output = markup::parse_text("<tt attr>some text</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("text"));
@@ -338,7 +338,7 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "");
 
 	// A tag in a larger span of text
-	output = help::parse_text("Here we have <tt attr='value'>some text</tt> with an unknown style applied!");
+	output = markup::parse_text("Here we have <tt attr='value'>some text</tt> with an unknown style applied!");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 3);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK_EQUAL(output.child_count("text"), 2);
@@ -353,63 +353,63 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK_EQUAL(output.mandatory_child("text", 1)["text"], " with an unknown style applied!");
 
 	// The attribute value can be unquoted
-	output = help::parse_text("<tt attr=value/>");
+	output = markup::parse_text("<tt attr=value/>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value");
 
 	// Nonalphanumeric characters don't need to be quoted as long as they're not special
-	output = help::parse_text("<tt attr=!@#$%^/>");
+	output = markup::parse_text("<tt attr=!@#$%^/>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "!@#$%^");
 
 	// Quoting with single quotes
-	output = help::parse_text("<tt attr='value with spaces'/>");
+	output = markup::parse_text("<tt attr='value with spaces'/>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value with spaces");
 
 	// Quoting with double quotes
-	output = help::parse_text(R"==(<tt attr="value with spaces"/>)==");
+	output = markup::parse_text(R"==(<tt attr="value with spaces"/>)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value with spaces");
 
 	// Quotes only count as quotes if they're the first non-whitespace character after the =
-	output = help::parse_text("<tt attr=O'Brien/>");
+	output = markup::parse_text("<tt attr=O'Brien/>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "O'Brien");
 
 	// Single quotes in double-quoted value
-	output = help::parse_text(R"==(<tt attr="'tis futile"/>)==");
+	output = markup::parse_text(R"==(<tt attr="'tis futile"/>)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "'tis futile");
 
 	// Double quotes in single-quoted value
-	output = help::parse_text(R"==(<tt attr='the "mega" test'/>)==");
+	output = markup::parse_text(R"==(<tt attr='the "mega" test'/>)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], R"==(the "mega" test)==");
 
 	// Spaces around the equals are allowed
-	output = help::parse_text("<tt attr = value/>");
+	output = markup::parse_text("<tt attr = value/>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value");
 
 	// Newlines are also allowed
-	output = help::parse_text("<tt attr=\nvalue\nthat=\nthis/>");
+	output = markup::parse_text("<tt attr=\nvalue\nthat=\nthis/>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
@@ -418,35 +418,35 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["that"], "this");
 
 	// Escaping a single quote in a single-quoted value
-	output = help::parse_text(R"==(<tt  attr='Let\'s go?'/>)==");
+	output = markup::parse_text(R"==(<tt  attr='Let\'s go?'/>)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "Let's go?");
 
 	// Using a simple character entity in a single-quoted value
-	output = help::parse_text("<tt attr='&apos;tis good'/>");
+	output = markup::parse_text("<tt attr='&apos;tis good'/>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "'tis good");
 
 	// A newline in a single-quoted value
-	output = help::parse_text("<tt attr='Line 1\nLine 2'/>");
+	output = markup::parse_text("<tt attr='Line 1\nLine 2'/>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "Line 1\nLine 2");
 
 	// Using a simple character entity in a double-quoted value
-	output = help::parse_text(R"==(<tt attr="&quot;Yes!&quot;"/>)==");
+	output = markup::parse_text(R"==(<tt attr="&quot;Yes!&quot;"/>)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], R"==("Yes!")==");
 
 	// Using an unknown character entity in a tag
-	output = help::parse_text("<tt>what &ndash; no</tt>");
+	output = markup::parse_text("<tt>what &ndash; no</tt>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
 	BOOST_CHECK(output.has_child("tt"));
 	// Simplify the remaining tests for this one by eliminating the outer layer
@@ -462,7 +462,7 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK_EQUAL(output.mandatory_child("character_entity")["name"], "ndash");
 
 	// Tags can be nested
-	output = help::parse_text("We like to <tt>nest <abc>various</abc> <def>tags</def> within</tt> each other!");
+	output = markup::parse_text("We like to <tt>nest <abc>various</abc> <def>tags</def> within</tt> each other!");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 3);
 	BOOST_CHECK(output.has_child("tt"));
 	BOOST_CHECK_EQUAL(output.child_count("text"), 2);
@@ -491,7 +491,7 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK_EQUAL(output.mandatory_child("text", 2)["text"], " within");
 
 	// Two tags with nothing between them shouldn't have an intervening text span.
-	output = help::parse_text("<img src=help/orb-green.png align=here/><img src=help/orb-green.png align=there/>");
+	output = markup::parse_text("<img src=help/orb-green.png align=here/><img src=help/orb-green.png align=there/>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 2);
 	BOOST_CHECK_EQUAL(output.child_count("img"), 2);
 	BOOST_CHECK(output.mandatory_child("img").has_attribute("src"));
@@ -504,7 +504,7 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK_EQUAL(output.mandatory_child("img", 1)["align"], "there");
 
 	// Two tags with a newline between them should have an intervening text span containing exactly that.
-	output = help::parse_text("<link dst=foo>First</link>\n<link dst=bar>Second</link>");
+	output = markup::parse_text("<link dst=foo>First</link>\n<link dst=bar>Second</link>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 3);
 	BOOST_CHECK(output.has_child("text"));
 	BOOST_CHECK_EQUAL(output.child_count("link"), 2);
@@ -521,7 +521,7 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK_EQUAL(output.mandatory_child("link", 1)["text"], "Second");
 
 	// Tag at the end of a paragraph produces an empty text span.
-	output = help::parse_text("See also: <link dst=details>Details</link>\n\nAnd here's an extra paragraph!");
+	output = markup::parse_text("See also: <link dst=details>Details</link>\n\nAnd here's an extra paragraph!");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 4);
 	BOOST_CHECK(output.has_child("link"));
 	BOOST_CHECK_EQUAL(output.child_count("text"), 3);
@@ -538,7 +538,7 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK_EQUAL(output.mandatory_child("text", 2)["text"], "And here's an extra paragraph!");
 
 	// Tag at the beginning of a paragraph produces an empty text span.
-	output = help::parse_text("This is some information.\n\n<img src='help/orb-red.png'/>And some more info!");
+	output = markup::parse_text("This is some information.\n\n<img src='help/orb-red.png'/>And some more info!");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 4);
 	BOOST_CHECK(output.has_child("img"));
 	BOOST_CHECK_EQUAL(output.child_count("text"), 3);
@@ -553,7 +553,7 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK_EQUAL(output.mandatory_child("text", 2)["text"], "And some more info!");
 
 	// Paragraph break between two tags produces two empty text spans.
-	output = help::parse_text("<link dst=toc>Table of Contents</link>\n\n<img src='fancy-bullet.png'/>First...");
+	output = markup::parse_text("<link dst=toc>Table of Contents</link>\n\n<img src='fancy-bullet.png'/>First...");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 5);
 	BOOST_CHECK(output.has_child("link"));
 	BOOST_CHECK(output.has_child("img"));
@@ -574,7 +574,7 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK_EQUAL(output.mandatory_child("text", 2)["text"], "First...");
 
 	// Three consecutive newlines produces a paragraph beginning with a newline.
-	output = help::parse_text("Let's have...\n\n\n...three consecutive newlines!");
+	output = markup::parse_text("Let's have...\n\n\n...three consecutive newlines!");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 2);
 	BOOST_CHECK_EQUAL(output.child_count("text"), 2);
 	BOOST_CHECK((output.mandatory_child("text").has_attribute("text")));
@@ -583,7 +583,7 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK_EQUAL(output.mandatory_child("text", 1)["text"], "\n...three consecutive newlines!");
 
 	// Four consecutive newlines produces an empty paragraph.
-	output = help::parse_text("Let's have...\n\n\n\n...four consecutive newlines!");
+	output = markup::parse_text("Let's have...\n\n\n\n...four consecutive newlines!");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 3);
 	BOOST_CHECK_EQUAL(output.child_count("text"), 3);
 	BOOST_CHECK((output.mandatory_child("text").has_attribute("text")));

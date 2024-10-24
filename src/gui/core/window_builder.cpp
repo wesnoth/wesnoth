@@ -33,25 +33,6 @@
 
 namespace gui2
 {
-
-std::unique_ptr<window> build(const builder_window::window_resolution& definition)
-{
-	// We set the values from the definition since we can only determine the
-	// best size (if needed) after all widgets have been placed.
-	auto win = std::make_unique<window>(definition);
-	assert(win);
-	win->finish_build(definition);
-	return win;
-}
-
-std::unique_ptr<window> build(const std::string& type)
-{
-	const builder_window::window_resolution& definition = get_window_builder(type);
-	auto window = build(definition);
-	window->set_id(type);
-	return window;
-}
-
 builder_widget::builder_widget(const config& cfg)
 	: id(cfg["id"])
 	, linked_group(cfg["linked_group"])

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-09-17 21:18-0500\n"
+"POT-Creation-Date: 2024-10-21 11:10-0500\n"
 "PO-Revision-Date: 2024-04-06 12:06+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -343,13 +343,13 @@ msgstr "تعديل خرائط وسيناريو"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:377
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:372
 msgid "Terrain Editor"
 msgstr "تعديل الأرضية"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:389
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:384
 msgid "Scenario Editor"
 msgstr "تعديل سيناريو"
 
@@ -360,21 +360,36 @@ msgstr "أدوات التلوين"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:29
+#, fuzzy
+#| msgid ""
+#| "Paint terrain tiles on the map.\n"
+#| "\n"
+#| "The paint tool utilizes the brush sizes and the terrain palette.\n"
+#| "\n"
+#| "<bold>text='Keyboard Modifiers'</bold>\n"
+#| "\n"
+#| "• Shift+mouse click: If a base terrain is selected, change the base "
+#| "without changing the overlay. If an overlay is selected, change the "
+#| "overlay without changing the base.\n"
+#| "• Control+mouse click: Select the terrain under the mouse cursor, as if "
+#| "it had been selected on the terrain palette (picks up both base and "
+#| "overlay).\n"
+#| "\n"
+#| "<bold>text='Brush Sizes'</bold>\n"
+#| "\n"
+#| "The selected brush changes the size of the tool:"
 msgid ""
 "Paint terrain tiles on the map.\n"
-"\n"
 "The paint tool utilizes the brush sizes and the terrain palette.\n"
 "\n"
-"<bold>text='Keyboard Modifiers'</bold>\n"
-"\n"
+"<header>Keyboard Modifiers</header>\n"
 "• Shift+mouse click: If a base terrain is selected, change the base without "
 "changing the overlay. If an overlay is selected, change the overlay without "
 "changing the base.\n"
 "• Control+mouse click: Select the terrain under the mouse cursor, as if it "
 "had been selected on the terrain palette (picks up both base and overlay).\n"
 "\n"
-"<bold>text='Brush Sizes'</bold>\n"
-"\n"
+"<header>Brush Sizes</header>\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
 "رسم بلاطات التضاريس على الخريطة.\n"
@@ -394,40 +409,38 @@ msgstr ""
 "الفرشاة المحددة تغير حجم الأداة:"
 
 #. [topic]: id=editor_tool_paint
-#: data/core/editor/help.cfg:41
+#: data/core/editor/help.cfg:39
 msgid "Paint single hexes."
 msgstr "رسم سداسيات مفردة."
 
 #. [topic]: id=editor_tool_paint
-#: data/core/editor/help.cfg:42
+#: data/core/editor/help.cfg:40
 msgid "Paint seven hexes at a time."
 msgstr "رسم سبعة سداسيات في المرة الواحدة."
 
 #. [topic]: id=editor_tool_paint
-#: data/core/editor/help.cfg:43
+#: data/core/editor/help.cfg:41
 msgid "Paint nineteen hexes at a time."
 msgstr "رسم تسعة عشر سداسيًا في المرة الواحدة."
 
 #. [topic]: id=editor_tool_paint
-#: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
+#: data/core/editor/help.cfg:42 data/core/editor/help.cfg:43
 msgid "Paint three hexes in a line."
 msgstr "رسم ثلاثة سداسيات في خط."
 
 #. [topic]: id=editor_tool_fill
-#: data/core/editor/help.cfg:52
+#: data/core/editor/help.cfg:51
 msgid "Fill Tool"
 msgstr "أدوات الطلاء"
 
 #. [topic]: id=editor_tool_fill
-#: data/core/editor/help.cfg:53
+#: data/core/editor/help.cfg:52
 #, fuzzy
 msgid ""
 "Fill continuous regions of terrain with a different one.\n"
-"\n"
 "The fill tool utilizes the terrain palette.\n"
 "\n"
-"<bold>text='Keyboard Modifiers'</bold>\n"
-"\n"
+"<header>Keyboard Modifiers</header>\n"
 "• Shift+mouse click: If a base terrain is selected, change the base without "
 "changing the overlay. If an overlay is selected, change the overlay without "
 "changing the base.\n"
@@ -443,25 +456,23 @@ msgstr ""
 "• النقر بالماوس Shift: إذا "
 
 #. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:67
+#: data/core/editor/help.cfg:64
 msgid "Select Tool"
 msgstr "أدوات التّحديد"
 
 #. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:68
+#: data/core/editor/help.cfg:65
 #, fuzzy
 msgid ""
 "Selects a set of hex fields, for use with with the cut, copy and fill-"
 "selection buttons below the menu bar.\n"
 "\n"
-"<bold>text='Keyboard Modifiers'</bold>\n"
-"\n"
+"<header>Keyboard Modifiers</header>\n"
 "• Shift+mouse click: ‘Magic Wand’ mode, select the hex under the mouse "
 "cursor, and adjoining hexes of the same terrain type.\n"
 "• Control+mouse click: Unselect hexes.\n"
 "\n"
-"<bold>text='Brush Sizes'</bold>\n"
-"\n"
+"<bold>Brush Sizes</bold>\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
 "تحديد مجموعة من الحقول السداسية، للاستخدام مع أزرار القص والنسخ والتعبئة "
@@ -472,39 +483,38 @@ msgstr ""
 "• Shift "
 
 #. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:78
+#: data/core/editor/help.cfg:74
 #, fuzzy
 msgid "Select single hexes."
 msgstr "تحديد سداسي واحد"
 
 #. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:79
+#: data/core/editor/help.cfg:75
 msgid "Select seven hexes at a time."
 msgstr "حدد سبعة سداسيات في المرة الواحدة."
 
 #. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:80
+#: data/core/editor/help.cfg:76
 msgid "Select nineteen hexes at a time."
 msgstr "حدد تسعة عشر سداسيًا في المرة الواحدة."
 
 #. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
+#: data/core/editor/help.cfg:77 data/core/editor/help.cfg:78
 msgid "Select three hexes in a line."
 msgstr "حدد ثلاثة سداسيات في سطر."
 
 #. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:89
+#: data/core/editor/help.cfg:86
 msgid "Clipboard and Paste Tool"
 msgstr "أداة الحافظة واللصق"
 
 #. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:90
+#: data/core/editor/help.cfg:87
 #, fuzzy
 msgid ""
 "Rotate, flip and paste the terrain in the clipboard\n"
-"\n"
-"Hexes can be cut or copied to the clipboard using the "
-"<ref>dst='editor_tool_select' text='Select Tool'</ref>.\n"
+"Hexes can be cut or copied to the clipboard using the <ref "
+"dst='editor_tool_select'>Select Tool</ref>.\n"
 "\n"
 "The paste tool shows an outline of the clipboard, which can be pasted with a "
 "mouse-click. Only the outline is shown, but mistakes can be corrected with "
@@ -521,44 +531,43 @@ msgstr ""
 "اللصق "
 
 #. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:97
+#: data/core/editor/help.cfg:94
 msgid "Rotate clockwise by 60°."
 msgstr "قم بالتدوير في اتجاه عقارب الساعة بمقدار 60 درجة."
 
 #. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:98
+#: data/core/editor/help.cfg:95
 msgid "Rotate counter-clockwise by 60°."
 msgstr "قم بالتدوير عكس اتجاه عقارب الساعة بمقدار 60 درجة."
 
 #. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:99
+#: data/core/editor/help.cfg:96
 msgid "Flip horizontally"
 msgstr "قلب أفقيًا"
 
 #. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:100
+#: data/core/editor/help.cfg:97
 msgid "Flip vertically"
 msgstr "الوجه عموديا"
 
 #. [topic]: id=editor_tool_starting
-#: data/core/editor/help.cfg:107
+#: data/core/editor/help.cfg:105
 msgid "Starting Locations Tool"
 msgstr "أداة مواقع البداية"
 
 #. [topic]: id=editor_tool_starting
 #. the parts about "10" being shown as "Player 10" use the translatable string "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:110
+#: data/core/editor/help.cfg:108
 #, fuzzy
 msgid ""
 "Defines the side leader starting position.\n"
-"\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both <ref>dst='.."
-"editor_mode_terrain' text='Terrain Editor'</ref> and <ref>dst='.."
-"editor_mode_scenario' text='Scenario Editor'</ref> modes. The location names "
-"are shown as a list in the editor palette, clicking on the map will place "
-"that name on a hex, each location can only be placed on a single hex, and "
-"the editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref dst='.."
+"editor_mode_terrain'>Terrain Editor</ref> and <ref dst='.."
+"editor_mode_scenario'>Scenario Editor</ref> modes. The location names are "
+"shown as a list in the editor palette, clicking on the map will place that "
+"name on a hex, each location can only be placed on a single hex, and the "
+"editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -569,12 +578,12 @@ msgid ""
 "10”.\n"
 "\n"
 "Named locations can be accessed from WML using the Standard Location "
-"Filter’s <italic>text='location_id='</italic>. Player starts can also be "
-"accessed from WML using <italic>text='location_id=1'</italic>, "
-"<italic>text='location_id=2'</italic>, etc — use only the number, without "
-"adding “Player ” in front of the number.\n"
+"Filter’s <italic>location_id=</italic>. Player starts can also be accessed "
+"from WML using <italic>location_id=1</italic>, <italic>location_id=2</"
+"italic>, etc — use only the number, without adding “Player ” in front of the "
+"number.\n"
 "\n"
-"<bold>text='Keyboard Modifiers'</bold>\n"
+"<bold>Keyboard Modifiers</bold>\n"
 "\n"
 "• Control+mouse click on a hex that already has a location: select that "
 "location for placing with a subsequent mouse click, as if it was selected in "
@@ -586,12 +595,12 @@ msgstr ""
 "خاصة. "
 
 #. [topic]: id=editor_terrain_overlays
-#: data/core/editor/help.cfg:128
+#: data/core/editor/help.cfg:125
 msgid "Editor Terrain-Overlay Graphics"
 msgstr "محرر رسومات تراكب التضاريس"
 
 #. [topic]: id=editor_terrain_overlays
-#: data/core/editor/help.cfg:129
+#: data/core/editor/help.cfg:126
 #, fuzzy
 msgid ""
 "editor^Maps generally look similar in the editor to their appearance in the "
@@ -603,15 +612,14 @@ msgstr "editor^Maps تبدو عمومًا في المحرر مشابهة لمظ�
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
 #. In English the text is “IO” for impassable and “UO” for unwalkable.
-#: data/core/editor/help.cfg:134
+#: data/core/editor/help.cfg:131
 #, fuzzy
 msgid ""
-"editor^<bold>text='Movement Overlays'</bold>\n"
-"\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
-"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
-"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
-"Impassable and Unwalkable\n"
+"editor^<header>Movement Overlays</header>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' /><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
+"editor.png~O(0.5))' align=here /><br/><bold>Impassable and Unwalkable</"
+"bold>\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
 "the mixed terrains created by them look like the base terrain. They create a "
@@ -625,16 +633,13 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
 #. In English these images are the literal text “Castle overlay” and “Keep overlay”.
-#: data/core/editor/help.cfg:143
+#: data/core/editor/help.cfg:139
 #, fuzzy
 msgid ""
-"editor^<bold>text='Castle Overlays'</bold>\n"
-"\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
-"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
-"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
-"img>\n"
-"\n"
+"editor^<header>Castle Overlays</header>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here /><img src='terrain/grass/green.png~BLIT(terrain/"
+"castle/keep-overlay-editor.png~O(0.5))' align=here />\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
 "\n"
@@ -652,14 +657,12 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #. The image here has text, while it could be translated I assume editor-only images won’t be.
 #. In English this image is the literal text “Village overlay”.
-#: data/core/editor/help.cfg:154
+#: data/core/editor/help.cfg:148
 #, fuzzy
 msgid ""
-"editor^<bold>text='Village Overlay'</bold>\n"
-"\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
-"editor.png~O(0.5))' align=here box=yes</img>\n"
-"\n"
+"editor^<header>Village Overlay</header>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here />\n"
 "This turns any base terrain into a village, providing income and healing."
 msgstr ""
 "editor^<bold>text='تراكب القرية'</bold>\n"
@@ -669,13 +672,11 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_overlays
 #. The image is an “S” on a solid black background.
-#: data/core/editor/help.cfg:162
+#: data/core/editor/help.cfg:154
 #, fuzzy
 msgid ""
-"editor^<bold>text='Fake Shroud'</bold>\n"
-"\n"
-"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
-"\n"
+"editor^<header>Fake Shroud</header>\n"
+"<img src=terrain/void/shroud-editor.png align=left />\n"
 "Fake Shroud looks like an unexplored area, even in scenarios that have "
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
@@ -686,36 +687,42 @@ msgstr ""
 "كفن مزيف "
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:172
+#: data/core/editor/help.cfg:162
 msgid "Terrain Elevation Graphics"
 msgstr "رسومات ارتفاع التضاريس"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:173
+#: data/core/editor/help.cfg:164
 #, fuzzy
 msgid ""
+"\n"
 "A cosmetic elevation effect that looks a little different in the editor than "
 "in the game due to visual aids in the editor; all the overlays described "
-"here are found in the terrain palette’s “elevation” group."
+"here are found in the terrain palette’s “elevation” group.\n"
 msgstr ""
 "تأثير ارتفاع تجميلي يبدو مختلفًا قليلاً في المحرر عنه في اللعبة بسبب المساعدات "
 "البصرية في المحرر؛ "
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:176
-msgid "editor^<bold>text='Direct Overlays'</bold>"
+#: data/core/editor/help.cfg:167
+#, fuzzy
+#| msgid "editor^<bold>text='Direct Overlays'</bold>"
+msgid "editor^<header>Direct Overlays</header>"
 msgstr "editor^<bold>text='التراكبات المباشرة'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:178
+#: data/core/editor/help.cfg:169
 #, fuzzy
 msgid ""
-"Bluffs and Gulch\n"
+"\n"
+"<b>Bluffs and Gulch</b>\n"
 "\n"
 "The bluffs, gulches, and similar variations are much like a standard terrain "
 "overlay, and can simply be used that way. However, for larger areas of the "
 "map, where you will want to allow the use of other overlay terrains, you "
-"will want to combine these with the “markers” described in the next section."
+"will want to combine these with the “markers” described in the next "
+"section.\n"
+"\n"
 msgstr ""
 "Bluffs and Gulch\n"
 "\n"
@@ -723,43 +730,30 @@ msgstr ""
 "القياسي، ويمكن استخدامها ببساطة بهذه الطريقة. "
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:183
-msgid "editor^<bold>text='Elevation Floodfill'</bold>"
+#: data/core/editor/help.cfg:175
+#, fuzzy
+#| msgid "editor^<bold>text='Elevation Floodfill'</bold>"
+msgid "editor^<header>Elevation Floodfill</header>"
 msgstr "editor^<bold>text='ارتفاع الفيضان'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:185
+#: data/core/editor/help.cfg:179
 msgid "Raised elevation on-map marker"
 msgstr "علامة الارتفاع المرتفعة على الخريطة"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:186
+#: data/core/editor/help.cfg:180
 #, fuzzy
-msgid ""
-"Raised elevation editor palette icon\n"
-"\n"
-"To make a patch of terrain higher or lower, and still be able to use other "
-"overlay terrains such as trees, you will need to use these markers. Placing "
-"one of these arrows on the map will flood-fill the map with a color-coded "
-"haze; neither the haze nor the arrow will be visible in game. The hazed area "
-"will have a border ledge, making it look higher or lower than the adjacent "
-"tiles.\n"
-"\n"
-"There are two high markers and two low markers, so it is possible to make "
-"terraces of up to five levels (lowest, lower, normal, higher, highest). "
-"Placing a high region next to a low region does not result in larger "
-"cliffs.\n"
-msgstr ""
-"رمز لوحة محرر الارتفاع المرتفع\n"
-"\n"
-"لجعل رقعة من التضاريس أعلى أو أقل، مع الاستمرار في استخدام تضاريس أخرى "
-"متراكبة مثل الأشجار، ستحتاج إلى استخدام هذه العلامات. "
+#| msgid "Raised elevation on-map marker"
+msgid "Raised elevation editor palette icon"
+msgstr "علامة الارتفاع المرتفعة على الخريطة"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:193
+#: data/core/editor/help.cfg:187
 #, fuzzy
 msgid ""
-"editor^<bold>text='How to Use'</bold>\n"
+"\n"
+"editor^<header>How to Use</header>\n"
 "\n"
 "The marker arrows are not very useful by themselves, but the bluffs/gulch-"
 "type terrains can be used to contain the floodfilled area.\n"
@@ -769,7 +763,7 @@ msgid ""
 "paint tool to outline a big blob over an empty, all-grass map.\n"
 "2.  Place a Marker High (^_mh) arrow on a tile inside the blob (not on the "
 "Bluffs border).\n"
-"3.  The blob should all be raised now, and as long as you don't overwrite "
+"3.  The blob should all be raised now, and as long as you don’t overwrite "
 "the Marker or Bluffs overlays, you can add other terrain overlays as "
 "needed.\n"
 "\n"
@@ -783,34 +777,48 @@ msgstr ""
 " "
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:204
+#: data/core/editor/help.cfg:199
 #, fuzzy
 msgid ""
-"editor^<format>text='Note for UMC authors: The flood-filled tiles do not "
-"have their terrain codes changed, or any other properties affected, so "
-"filtering a location by elevation is not simple.' italic='yes' font_size=10 "
-"</format>"
+"editor^<span style='italic' font_size='15'>Note for UMC authors: The flood-"
+"filled tiles do not have their terrain codes changed, or any other "
+"properties affected, so filtering a location by elevation is not simple.</"
+"span>"
 msgstr ""
 "editor^<format>text='ملاحظة لمؤلفي UMC: لم يتم تغيير رموز التضاريس الخاصة "
 "بالبلاطات المليئة بالفيضانات، أو تأثرت أي خصائص أخرى، لذا فإن تصفية الموقع "
 "حسب الارتفاع ليس بالأمر السهل.' "
 
 #. [topic]: id=editor_deprecated_overlay
-#: data/core/editor/help.cfg:210
+#: data/core/editor/help.cfg:205
 msgid "Deprecated Terrain"
 msgstr "التضاريس المهملة"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
-#: data/core/editor/help.cfg:213
+#: data/core/editor/help.cfg:208
+#, fuzzy
+#| msgid ""
+#| "editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+#| "png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
+#| "\n"
+#| "This is shown in the editor over deprecated terrain codes. Examples are:\n"
+#| "• the <ref>dst='terrain_fungus_grove_old' text='“^Uf” mushroom terrain'</"
+#| "ref>,\n"
+#| "• the “Xol” Lit Stone Wall, which is deprecated because several wall "
+#| "terrains now support the “^Efs” Sconce embellishment.\n"
+#| "\n"
+#| "The help pages for these terrains may have additional text that’s only "
+#| "shown in the editor, describing the deprecation and the recommended "
+#| "replacements."
 msgid ""
-"editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
-"png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
+"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)' />\n"
+"The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
-"• the <ref>dst='terrain_fungus_grove_old' text='“^Uf” mushroom terrain'</"
-"ref>,\n"
+"• the <ref dst='terrain_fungus_grove_old'>“^Uf” mushroom terrain</ref>,\n"
 "• the “Xol” Lit Stone Wall, which is deprecated because several wall "
 "terrains now support the “^Efs” Sconce embellishment.\n"
 "\n"
@@ -828,23 +836,22 @@ msgstr ""
 "المحرر، ويصف الإيقاف والبدائل الموصى بها."
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:226
+#: data/core/editor/help.cfg:222
 msgid "Label Tool"
 msgstr "أداة اللصيقة"
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:227
+#: data/core/editor/help.cfg:223
 #, fuzzy
 msgid ""
 "Put text labels on the map.\n"
-"\n"
 "• Left-click will open a dialog box to create a new label or edit an "
 "existing one.\n"
 "• Right-click deletes.\n"
 "• Drag-and-drop with the left mouse button moves labels.\n"
 "\n"
 "This tool is only available in Scenario Mode; the decorations are "
-"implemented in the scenario using WML’s <italic>text='[label]'</italic> tag."
+"implemented in the scenario using WML’s <italic>[label]</italic> tag."
 msgstr ""
 "ضع تسميات نصية على الخريطة.\n"
 "\n"
@@ -854,68 +861,67 @@ msgstr ""
 "• السحب والإفلات باستخدام "
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:242
+#: data/core/editor/help.cfg:237
 msgid "Item Tool (Scenery Tool)"
 msgstr "أداة العنصر (أداة المشهد)"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:243
+#: data/core/editor/help.cfg:238
 #, fuzzy
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
-"monoliths. Multiple items can be placed on the same hex.\n"
+"monoliths.\n"
+"Multiple items can be placed on the same hex.\n"
 "\n"
 "• Left-click will place a decoration on the clicked hex.\n"
 "• Right-click will remove the decoration.\n"
 "\n"
-"<bold>text='Note:'</bold> the tool doesn’t support undo.\n"
+"<bold>Note:</bold> the tool doesn’t support undo.\n"
 "\n"
 "This tool is only available in Scenario Mode; the decorations are not part "
 "of the terrain and are implemented in the scenario using WML’s "
-"<italic>text='[item]'</italic> tag."
+"<italic>[item]</italic> tag."
 msgstr ""
 "أداة العنصر تسمح بوضع الزخارف مثل طواحين الهواء وخزائن الكتب والمتراصات. "
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:259
+#: data/core/editor/help.cfg:255
 msgid "Village Ownership Tool"
 msgstr "أداة ملكية القرية"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:260
+#: data/core/editor/help.cfg:256
 #, fuzzy
 msgid ""
-"This tool assigns ownership of villages at the start of a scenario. The "
-"villages must first be placed on the terrain with the "
-"<ref>dst='editor_tool_paint' text='Paint Tool'</ref>.\n"
+"This tool assigns ownership of villages at the start of a scenario.\n"
+"The villages must first be placed on the terrain with the <ref "
+"dst='editor_tool_paint'>Paint Tool</ref>.\n"
 "\n"
 "• Left-click will assign the village to the currently-selected side.\n"
 "• Right-click will set the village back to unowned.\n"
 "\n"
 "This tool is only available in Scenario Mode; ownership information is "
-"stored by adding WML <italic>text='[village]'</italic> tags to the "
-"appropriate <italic>text='[side]'</italic>."
+"stored by adding WML <italic>[village]</italic> tags to the appropriate "
+"<italic>[side]</italic>."
 msgstr "تقوم هذه الأداة بتعيين ملكية القرى في بداية السيناريو. "
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:274
+#: data/core/editor/help.cfg:271
 msgid "Unit Tool"
 msgstr "أداة الوحدة"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:275
+#: data/core/editor/help.cfg:272
 #, fuzzy
 msgid ""
 "Place units belonging to the currently-selected side.\n"
-"\n"
 "• Left-click will place a unit.\n"
 "• Left drag-and-drop will move an already-placed unit.\n"
 "• Various operations are added to the right-click menu when the hex contains "
 "a unit.\n"
 "\n"
-"This tool is only available in Scenario Mode; it adds WML "
-"<italic>text='[unit]'</italic> tags to the appropriate "
-"<italic>text='[side]'</italic>."
+"This tool is only available in Scenario Mode; it adds WML <italic>[unit]</"
+"italic> tags to the appropriate <italic>[side]</italic>."
 msgstr ""
 "ضع الوحدات التابعة للجانب المحدد حاليًا.\n"
 "\n"
@@ -924,18 +930,17 @@ msgstr ""
 "• تتم إضافة عمليات مختلفة إلى "
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:290
+#: data/core/editor/help.cfg:286
 msgid "Named Areas"
 msgstr "المناطق المسماة"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:291
+#: data/core/editor/help.cfg:287
 #, fuzzy
 msgid ""
 "This tool creates sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
-"area’s id in the filter’s <italic>text='area='</italic> attribute. For "
-"example:\n"
+"area’s id in the filter’s <italic>area=</italic> attribute. For example:\n"
 "\n"
 "• assigning a local time zone to this set of hexes\n"
 "• filtering the set of hexes which trigger an event when a unit moves on to "
@@ -943,16 +948,15 @@ msgid ""
 "\n"
 "To use the tool:\n"
 "\n"
-"• select hexes using the <ref>dst='editor_tool_select' text='select tool'</"
-"ref>\n"
+"• select hexes using the <ref dst='editor_tool_select'>select tool</ref>\n"
 "• in the Areas menu, select Add New Area\n"
 "• then in the Areas menu, select Save Selection to Area\n"
 "• then in the Areas menu, select Rename Selected Area and choose a name for "
 "the area\n"
 "\n"
 "This tool is only available in Scenario Mode; it adds WML "
-"<italic>text='[time_area]'</italic> tags to the scenario. Although the tag’s "
-"name implies time, it is now more generic and can be used for other purposes "
+"<italic>[time_area]</italic> tags to the scenario. Although the tag’s name "
+"implies time, it is now more generic and can be used for other purposes "
 "without needing to change the time-of-day schedule in the area."
 msgstr ""
 "تنشئ هذه الأداة مجموعات من المربعات التي يمكن استخدامها في مرشحات الموقع "
@@ -960,19 +964,18 @@ msgstr ""
 "المنطقة في <italic>text='area='</italic الخاص بالمرشح "
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:312
+#: data/core/editor/help.cfg:308
 msgid "Playlist Manager"
 msgstr "إدارة قائمة التشغيل"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:313
+#: data/core/editor/help.cfg:309
 #, fuzzy
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
-"\n"
-"This tool is only available in Scenario Mode; it adds WML "
-"<italic>text='[music]'</italic> tags to the scenario."
+"This tool is only available in Scenario Mode; it adds WML <italic>[music]</"
+"italic> tags to the scenario."
 msgstr ""
 "إظهار قائمة بالمقطوعات الموسيقية المعروفة للمحرر، مع وجود صناديق تبديل "
 "لتمكينها.\n"
@@ -980,12 +983,12 @@ msgstr ""
 "هذه الأداة متاحة فقط في وضع السيناريو؛ "
 
 #. [topic]: id=editor_addon_id
-#: data/core/editor/help.cfg:324
+#: data/core/editor/help.cfg:319
 msgid "Change Add-on ID"
 msgstr "تغيير معرف الإضافة"
 
 #. [topic]: id=editor_addon_id
-#: data/core/editor/help.cfg:325
+#: data/core/editor/help.cfg:320
 #, fuzzy
 msgid ""
 "Allows changing the ID of an add-on, which is the name of the folder it’s "
@@ -996,12 +999,12 @@ msgstr ""
 "فقط إلى إعادة تسمية هذا المجلد وتحديث أي مراجع إليه في ملف _main.cfg. "
 
 #. [topic]: id=editor_pbl_editor
-#: data/core/editor/help.cfg:334
+#: data/core/editor/help.cfg:329
 msgid "Add-on Publishing Editor"
 msgstr "محرر نشر الإضافة"
 
 #. [topic]: id=editor_pbl_editor
-#: data/core/editor/help.cfg:335
+#: data/core/editor/help.cfg:330
 #, fuzzy
 msgid ""
 "Allows setting up an add-on’s _server.pbl file, which is required for "
@@ -1012,12 +1015,12 @@ msgstr ""
 "إضافية إلى خادم الوظائف الإضافية ليتمكن اللاعبون الآخرون من تنزيلها. "
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:343
+#: data/core/editor/help.cfg:338
 msgid "Map/Scenario Editor"
 msgstr "محرر الخريطة/السيناريو"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:344
+#: data/core/editor/help.cfg:339
 #, fuzzy
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
@@ -1025,35 +1028,33 @@ msgid ""
 "of features for setting up a basic scenario as well as initializing an add-"
 "on which can be used to distribute the scenarios you create.\n"
 "\n"
-"The editor can be launched from the <italic>text='Map Editor'</italic> "
-"option at the title screen.\n"
+"The editor can be launched from the <italic>Map Editor</italic> option at "
+"the title screen.\n"
 "\n"
-"<header>text='Editing Modes'</header>\n"
+"<header>Editing Modes</header>\n"
 "\n"
 "The editor features two modes of operation: terrain mode and scenario mode.\n"
 "\n"
-"The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar to "
-"a simple paint application, with tools to <ref>dst='editor_tool_paint' "
-"text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
-"<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
-"<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
-"setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
-"locations'</ref>.\n"
+"The <ref dst='..editor_mode_terrain'>Terrain Mode</ref> is similar to a "
+"simple paint application, with tools to <ref dst='editor_tool_paint'>paint</"
+"ref>, <ref dst='editor_tool_fill'>fill</ref>, <ref "
+"dst='editor_tool_select'>select (and copy)</ref>, and <ref "
+"dst='editor_tool_paste'>paste</ref>. It also has the tool for setting the "
+"leaders’ <ref dst='editor_tool_starting'>starting locations</ref>.\n"
 "\n"
-"The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
-"addition to the tools available in terrain mode, adds support for adding "
-"<ref>dst='editor_tool_label' text='labels'</ref>, "
-"<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
-"<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
-"and assigning <ref>dst='editor_tool_village' text='village ownership'</ref> "
-"at the start of the scenario. There’s also a <ref>dst='editor_playlist' "
-"text='playlist manager'</ref> for the music."
+"The <ref dst='..editor_mode_scenario'>Scenario Mode</ref>, in addition to "
+"the tools available in terrain mode, adds support for adding <ref "
+"dst='editor_tool_label'>labels</ref>, <ref dst='editor_tool_scenery'>scenery "
+"items</ref>, <ref dst='editor_tool_unit'>units</ref> in addition to the "
+"leader, and assigning <ref dst='editor_tool_village'>village ownership</ref> "
+"at the start of the scenario. There’s also a <ref "
+"dst='editor_playlist'>playlist manager</ref> for the music."
 msgstr ""
 "يتيح محرر الخرائط والسيناريوهات في Wesnoth للمستخدمين إنشاء وتحرير الخرائط "
 "التي يحدث عليها كل سيناريو Wesnoth. "
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:356
+#: data/core/editor/help.cfg:351
 #, fuzzy
 msgid ""
 "In either mode, you will be prompted to choose an add-on to use for the "
@@ -1068,10 +1069,10 @@ msgstr ""
 "التي تقوم بإنشائها. "
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:358
+#: data/core/editor/help.cfg:353
 #, fuzzy
 msgid ""
-"<header>text='What you do *not* get'</header>\n"
+"<header>What you do *not* get</header>\n"
 "\n"
 "• Exactly the same map rendering as in-game\n"
 "\n"
@@ -1100,15 +1101,15 @@ msgstr ""
 "الخريطة لن تبدو تمامًا كما هي في اللعبة "
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:378
+#: data/core/editor/help.cfg:373
 #, fuzzy
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
 "\n"
 "The right-hand sidebar contains, from top to bottom, the mini-map, the "
-"toolkit (see the pages for each tool), tool options, and "
-"<ref>dst='editor_palette' text='Palette'</ref>.\n"
+"toolkit (see the pages for each tool), tool options, and <ref "
+"dst='editor_palette'>Palette</ref>.\n"
 "\n"
 "When saved using “Save Map As” and saving to the default directory, the "
 "resulting map can be found in the “Custom Maps” game type of the multiplayer "
@@ -1120,7 +1121,7 @@ msgstr ""
 "ومجموعة الأدوات (راجع الصفحات الخاصة بكل أداة)، وخيارات الأداة، و< "
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:390
+#: data/core/editor/help.cfg:385
 #, fuzzy
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
@@ -1132,9 +1133,17 @@ msgstr ""
 "وعناصر المشهد. "
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:392
+#: data/core/editor/help.cfg:387
+#, fuzzy
+#| msgid ""
+#| "<header>text='Checking whether the editor is in scenario mode'</header>\n"
+#| "\n"
+#| "You can check which mode the editor is in by looking at the menu bar.\n"
+#| "\n"
+#| "• In scenario mode the “Areas” and “Side” menus are enabled.\n"
+#| "• In terrain-only mode the “Areas” and “Side” menus are grayed-out."
 msgid ""
-"<header>text='Checking whether the editor is in scenario mode'</header>\n"
+"<header>Checking whether the editor is in scenario mode</header>\n"
 "\n"
 "You can check which mode the editor is in by looking at the menu bar.\n"
 "\n"
@@ -1150,9 +1159,21 @@ msgstr ""
 "• في وضع التضاريس فقط، تظهر قوائم \"المناطق\" و\"الجانبية\" باللون الرمادي."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:399
+#: data/core/editor/help.cfg:394
+#, fuzzy
+#| msgid ""
+#| "<header>text='Entering scenario mode'</header>\n"
+#| "\n"
+#| "To start a new map in scenario mode, choose “New Scenario” from the "
+#| "“File” menu.\n"
+#| "\n"
+#| "If you’re already editing a map in terrain mode, use “Save Scenario As” "
+#| "from the “File” menu; this will switch to scenario mode.\n"
+#| "\n"
+#| "To load a map that was created in the scenario editor, use “Load Map” "
+#| "from the “File” menu, and select the .cfg file (not a .map file)."
 msgid ""
-"<header>text='Entering scenario mode'</header>\n"
+"<header>Entering scenario mode</header>\n"
 "\n"
 "To start a new map in scenario mode, choose “New Scenario” from the “File” "
 "menu.\n"
@@ -1175,10 +1196,10 @@ msgstr ""
 "القائمة \"ملف\"، وحدد ملف .cfg (وليس ملف .map)."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:407
+#: data/core/editor/help.cfg:402
 #, fuzzy
 msgid ""
-"<header>text='The files: .map and .cfg'</header>\n"
+"<header>The files: .map and .cfg</header>\n"
 "\n"
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
@@ -1187,7 +1208,7 @@ msgid ""
 "cfg file. For .cfg files that were created by the scenario editor, it will "
 "open the .cfg in the scenario editor. However, for .cfg files that cannot be "
 "opened by the scenario editor, the editor will attempt to find the "
-"scenario's map data and open the corresponding .map file in terrain-only "
+"scenario’s map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
 msgstr ""
@@ -1197,12 +1218,12 @@ msgstr ""
 "عندما يكون في وضع السيناريو (كلاهما . "
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:419
-msgid "Using a separate file for WML events"
-msgstr "استخدام ملف منفصل لأحداث WML"
+#: data/core/editor/help.cfg:414
+msgid "Separate Event Files"
+msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:420
+#: data/core/editor/help.cfg:415
 #, fuzzy
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
@@ -1211,29 +1232,31 @@ msgid ""
 "\n"
 "One option is to create a separate WML file, also with the .cfg extension, "
 "which uses the WML preprocessor to include the editor-created file. This "
-"separate file contains both the [scenario] tag and any hand-edited WML such "
-"as events. With this workflow, the add-on’s file structure could look like "
-"this:\n"
+"separate file contains both the <span face='monospace'>[scenario]</span> tag "
+"and any hand-edited WML such as events. With this workflow, the add-on’s "
+"file structure could look like this:\n"
 "\n"
-"<header>text='Example'</header>\n"
+"<header>Example</header>\n"
 "If your add-on will only be used on 1.18 and later, it is instead "
 "recommended to use the new include_file attribute to load a .cfg file "
 "containing additional WML into the scenario.\n"
 "\n"
-"• _main.cfg:\n"
-"  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
-"which makes “map_file” search the “maps” directory\n"
-"• maps/first.map\n"
+"• <span face='monospace'>_main.cfg</span>\n"
+"  ◦ use <span face='monospace'>[binary_path]</span> to add add-on’s "
+"directories to the binary path, which makes “map_file” search the “maps” "
+"directory\n"
+"• <span face='monospace'>maps/first.map</span>\n"
 "  ◦ this is the .map file created by the scenario editor when saving in "
 "scenario mode\n"
-"• scenarios/other.cfg\n"
+"• <span face='monospace'>scenarios/other.cfg</span>\n"
 "  ◦ this is the .cfg file containing everything that the scenario editor "
 "doesn't understand\n"
-"• scenarios/first.cfg\n"
-"  ◦ inside the [scenario] element, use “map_file=\"first.map\"” to load the "
-"map file\n"
-"  ◦ inside the [scenario] element, use “include_file=\"other.cfg\"” to load "
-"the additional cfg file"
+"• <span face='monospace'>scenarios/first.cfg</span>\n"
+"  ◦ inside the <span face='monospace'>[scenario]</span> element, use <span "
+"face='monospace'>map_file=&quot;first.map&quot;</span> to load the map file\n"
+"  ◦ inside the <span face='monospace'>[scenario]</span> element, use <span "
+"face='monospace'>include_file=&quot;other.cfg&quot;</span> to load the "
+"additional cfg file"
 msgstr ""
 "عند تحميل ملف .cfg، يفهم محرر السيناريو الملفات التي تم إنشاؤها بواسطة محرر "
 "السيناريو، ولكن من المحتمل أن يواجه صعوبة في الملفات التي تم تحريرها يدويًا.\n"
@@ -1241,12 +1264,12 @@ msgstr ""
 "أحد الخيارات هو إنشاء ملف WML منفصل، أيضًا باستخدام "
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:443
+#: data/core/editor/help.cfg:438
 msgid "Editor Mask Usage"
 msgstr "استخدام قناع المحرر"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:444
+#: data/core/editor/help.cfg:439
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -1256,21 +1279,30 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:452
+#: data/core/editor/help.cfg:447
 msgid "ToD and Schedule Editor"
 msgstr "ToD ومحرر الجدول الزمني"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:453
+#: data/core/editor/help.cfg:448
+#, fuzzy
+#| msgid ""
+#| "This button at the top-right of the screen accesses the time-of-day "
+#| "preview and the schedule editor.\n"
+#| "\n"
+#| "In terrain mode, this displays the map as it will be recolored at "
+#| "different times of day.\n"
+#| "\n"
+#| "In scenario mode, the button accesses an editor for individual schedules "
+#| "for <ref>dst='editor_named_area' text='time areas'</ref>."
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
-"\n"
 "In terrain mode, this displays the map as it will be recolored at different "
 "times of day.\n"
 "\n"
 "In scenario mode, the button accesses an editor for individual schedules for "
-"<ref>dst='editor_named_area' text='time areas'</ref>."
+"<ref dst='editor_named_area'>time areas</ref>."
 msgstr ""
 "يصل هذا الزر الموجود أعلى يمين الشاشة إلى معاينة الوقت من اليوم ومحرر الجدول "
 "الزمني. \n"
@@ -1282,13 +1314,13 @@ msgstr ""
 "dst='editor_named_area' text='المناطق الزمنية'</ref> ."
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:464
+#: data/core/editor/help.cfg:458
 msgid "Editor Palette"
 msgstr "لوحة المحرر"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:466
+#: data/core/editor/help.cfg:460
 #, fuzzy
 msgid ""
 "The editor palette contains the applicable items you may use with the "
@@ -1297,7 +1329,7 @@ msgid ""
 "available units. When using the Starting Locations Tool, the palette changes "
 "to a list of “Player 1”, “Player 2”, etc.\n"
 "\n"
-"<bold>text='Filter'</bold>\n"
+"<bold>Filter</bold>\n"
 "\n"
 "There is a filter function to show only a subset of the available items — "
 "this is the leftmost of the four buttons at the top of the palette, and the "
@@ -1307,41 +1339,47 @@ msgstr ""
 "المحددة حاليًا. "
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:471
-msgid "Show all kinds of terrain"
+#: data/core/editor/help.cfg:466
+#, fuzzy
+#| msgid "Show all kinds of terrain"
+msgid "Show all kinds of terrain</col></row>"
 msgstr "إظهار جميع أنواع التضاريس"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:472
-msgid "Show only water terrains"
+#: data/core/editor/help.cfg:467
+#, fuzzy
+#| msgid "Show only water terrains"
+msgid "Show only water terrains</col></row>"
 msgstr "إظهار التضاريس المائية فقط"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:473
-msgid "Show only villages"
+#: data/core/editor/help.cfg:468
+#, fuzzy
+#| msgid "Show only villages"
+msgid "Show only villages</col></row>"
 msgstr "عرض القرى فقط"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:485
+#: data/core/editor/help.cfg:481
 msgid "Wesnoth Map Format"
 msgstr "تنسيق خريطة ويسنوث"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:486
+#: data/core/editor/help.cfg:482
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr "تخزن ويسنوث خرائطه في ملفات نصية عادية يمكن قراءتها بواسطة الإنسان."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:488
+#: data/core/editor/help.cfg:484
 #, fuzzy
 msgid ""
-"<header>text='Native'</header>\n"
+"<header>Native</header>\n"
 "\n"
 "A map file consists of rows with comma separated terrain code strings. The "
 "only non-terrain information provided by the map syntax is the set of "
-"locations created by the <ref>dst='editor_tool_starting' text='Starting "
-"Locations Tool'</ref>. The files can be edited with a general purpose text "
-"editor like notepad.\n"
+"locations created by the <ref dst='editor_tool_starting'>Starting Locations "
+"Tool</ref>. The files can be edited with a general purpose text editor like "
+"notepad.\n"
 "\n"
 "These files can be used directly for multiplayer games, the number of "
 "players is automatically determined by the number of starting positions. "
@@ -1354,30 +1392,29 @@ msgid ""
 "providing additional information such as teams, custom events, and complex "
 "side setups. The .cfg file loads the map file with either of:\n"
 "\n"
-"• map_file=maps/01_First_Map.map <italic>text='— supported since Wesnoth "
-"1.14'</italic>\n"
-"• map_data=\"{maps/01_First_Map.map}\" <italic>text='— a WML preprocessor "
-"include'</italic>\n"
+"• <span face='monospace'>map_file=maps/01_First_Map.map</span> <italic>— "
+"supported since Wesnoth 1.14</italic>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
+"&quot;</span> <italic>— a WML preprocessor include</italic>\n"
 "\n"
-"The <italic>text='map_file'</italic> method is preferred over using a "
-"preprocessor include."
+"The <italic>map_file</italic> method is preferred over using a preprocessor "
+"include."
 msgstr ""
 "<header>text='Native'</header>\n"
 "\n"
 "يتكون ملف الخريطة من صفوف تحتوي على سلاسل رمز التضاريس مفصولة بفواصل. "
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:501
+#: data/core/editor/help.cfg:497
 #, fuzzy
 msgid ""
-"<header>text='Embedded'</header>\n"
+"<header>Embedded</header>\n"
 "\n"
 "The map data can stored as part of a scenario’s .cfg file, directly in the "
-"<italic>text='map_data'</italic> attribute. In other words, in the place "
-"that the preprocessor would include it when using the preprocessor-include "
-"method.\n"
+"<italic>map_data</italic> attribute. In other words, in the place that the "
+"preprocessor would include it when using the preprocessor-include method.\n"
 "\n"
-"<header>text='Using Embedded Format in Terrain Mode'</header>\n"
+"<header>Using Embedded Format in Terrain Mode</header>\n"
 "\n"
 "If you are editing the map and not using the Scenario Mode support, then "
 "it’s trivial to move the data to a native map file before opening it in the "
@@ -1392,18 +1429,18 @@ msgstr ""
 "<italic>text='map_data'</italic>. "
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:509
+#: data/core/editor/help.cfg:505
 #, fuzzy
 msgid ""
-"<header>text='Files created by the Scenario Editor'</header>\n"
+"<header>Files created by the Scenario Editor</header>\n"
 "\n"
 "In scenario mode, the editor saves the scenario data as a .cfg file and the "
 "map data as a separate .map file. The scenario then references the .map file "
 "via map_file. When loading a .cfg file, the scenario editor understands "
 "files created by the scenario editor itself, but is likely to have "
 "difficulty with files that have been edited by hand; problems can be avoided "
-"by <ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
-"ref> for the hand-edited parts."
+"by <ref dst='editor_separate_events_file'>using a separate .cfg file</ref> "
+"for the hand-edited parts."
 msgstr ""
 "<header>text='الملفات التي تم إنشاؤها بواسطة محرر السيناريو'</header>\n"
 "\n"
@@ -2008,72 +2045,85 @@ msgstr "المقدمة"
 
 #. [section]: id=gameplay
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:23 data/core/help.cfg:167
+#: data/core/help.cfg:23 data/core/help.cfg:164
 msgid "Gameplay"
 msgstr "قواعد اللعب"
 
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:539
-#: src/help/help_topic_generators.cpp:492
-#: src/help/help_topic_generators.cpp:515
+#: data/core/help.cfg:29 data/core/help.cfg:546
+#: src/help/help_topic_generators.cpp:508
+#: src/help/help_topic_generators.cpp:526
 msgid "Traits"
 msgstr "السمات"
 
 #. [section]: id=units
 #. [topic]: id=..units
-#: data/core/help.cfg:37 data/core/help.cfg:118
+#: data/core/help.cfg:37 data/core/help.cfg:116
 msgid "Units"
 msgstr "الوحدات"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:46 data/core/help.cfg:138
+#: data/core/help.cfg:46 data/core/help.cfg:136
 msgid "Abilities"
 msgstr "القدرات"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:54 data/core/help.cfg:147
+#: data/core/help.cfg:54 data/core/help.cfg:145
 msgid "Weapon Specials"
 msgstr "خاصيّات الأسلحة"
 
 #. [section]: id=eras_section
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:62 data/core/help.cfg:127
+#: data/core/help.cfg:62 data/core/help.cfg:125
 msgid "Eras"
 msgstr "عصور"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:70 data/core/help.cfg:554
+#: data/core/help.cfg:70 data/core/help.cfg:561
 msgid "Terrains"
 msgstr "تضاريس"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:78 data/core/help.cfg:607
+#: data/core/help.cfg:78 data/core/help.cfg:604
 msgid "Add-ons"
 msgstr "الإضافات"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:84 data/core/help.cfg:680
+#: data/core/help.cfg:84 data/core/help.cfg:677
 msgid "Commands"
 msgstr "أوامر التصحيح"
 
 #. [topic]: id=..introduction
 #: data/core/help.cfg:96
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy "
+#| "strategy game somewhat unusual among modern strategy games. While other "
+#| "games strive for complexity, <italic>text='Battle for Wesnoth'</italic> "
+#| "strives for simplicity of both rules and gameplay. This does not make the "
+#| "game simple, however — from these simple rules arises a wealth of "
+#| "strategy, making the game easy to learn but a challenge to master.\n"
+#| "\n"
+#| "The following pages outline all you need to know to play Wesnoth. As you "
+#| "play, new information is added to the various categories as you come "
+#| "across new aspects of the game. For more detailed information on special "
+#| "situations and exceptions, follow the included links."
 msgid ""
-"\n"
-"\n"
-"<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy strategy "
-"game somewhat unusual among modern strategy games. While other games strive "
-"for complexity, <italic>text='Battle for Wesnoth'</italic> strives for "
-"simplicity of both rules and gameplay. This does not make the game simple, "
-"however — from these simple rules arises a wealth of strategy, making the "
-"game easy to learn but a challenge to master.\n"
+"<br/><italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy "
+"strategy game somewhat unusual among modern strategy games. While other "
+"games strive for complexity, <italic>text='Battle for Wesnoth'</italic> "
+"strives for simplicity of both rules and gameplay. This does not make the "
+"game simple, however — from these simple rules arises a wealth of strategy, "
+"making the game easy to learn but a challenge to master.\n"
 "\n"
 "The following pages outline all you need to know to play Wesnoth. As you "
 "play, new information is added to the various categories as you come across "
@@ -2094,12 +2144,12 @@ msgstr ""
 "المضمنة."
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:106
+#: data/core/help.cfg:104
 msgid "About the Game"
 msgstr "عن اللعبة"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:107
+#: data/core/help.cfg:105
 #, fuzzy
 msgid ""
 "The game takes place on a hex-based game field, where your units battle "
@@ -2127,7 +2177,7 @@ msgstr ""
 "أنحاء العالم في "
 
 #. [topic]: id=..units
-#: data/core/help.cfg:119
+#: data/core/help.cfg:117
 #, fuzzy
 msgid ""
 "This section will list all the units you discover as you explore the world "
@@ -2140,7 +2190,7 @@ msgstr ""
 "سيدرج هذا القسم جميع الوحدات التي تكتشفها أثناء استكشافك لعالم Wesnoth. "
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:128
+#: data/core/help.cfg:126
 #, fuzzy
 msgid ""
 "A faction is a collection of units and leaders. Factions are assigned to "
@@ -2149,7 +2199,7 @@ msgid ""
 msgstr "الفصيل عبارة عن مجموعة من الوحدات والقادة. "
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:130
+#: data/core/help.cfg:128
 #, fuzzy
 msgid ""
 "An era is a collection of factions, intended to be played against one "
@@ -2159,7 +2209,7 @@ msgid ""
 msgstr "العصر عبارة عن مجموعة من الفصائل، تهدف إلى اللعب ضد بعضها البعض. "
 
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:139
+#: data/core/help.cfg:137
 #, fuzzy
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
@@ -2173,7 +2223,7 @@ msgstr ""
 "تأثير على كيفية تفاعل الوحدة مع الوحدات الأخرى. "
 
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:148
+#: data/core/help.cfg:146
 #, fuzzy
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
@@ -2185,15 +2235,14 @@ msgid ""
 msgstr "بعض الأسلحة لها مميزات خاصة تزيد من فعالية الهجوم بها. "
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:157
+#: data/core/help.cfg:155
 msgid "Unknown Unit"
 msgstr "نوع غير معروف"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:158
+#: data/core/help.cfg:156
 #, fuzzy
 msgid ""
-"\n"
 "\n"
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
@@ -2203,7 +2252,7 @@ msgstr ""
 "هذه الوحدة غير معروفة في الوقت الحالي. "
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:168
+#: data/core/help.cfg:165
 #, fuzzy
 msgid ""
 "Wesnoth is comprised of a series of battles, called "
@@ -2242,7 +2291,7 @@ msgstr ""
 "والتي تضع قواتك في مواجهة قوات واحد أو أكثر من الخصوم. "
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:177
+#: data/core/help.cfg:174
 msgid ""
 "\n"
 "\n"
@@ -2255,7 +2304,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:177
+#: data/core/help.cfg:174
 #, fuzzy
 msgid ""
 "While playing, keep in mind that you can mouse-over many items in the game, "
@@ -2268,12 +2317,12 @@ msgstr ""
 "اللعبة، مثل المعلومات المعروضة في جزء الحالة، لرؤية وصف مختصر يشرح كل عنصر. "
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:189
+#: data/core/help.cfg:186
 msgid "Victory and Defeat"
 msgstr "النصر والهزيمة"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:190
+#: data/core/help.cfg:187
 #, fuzzy
 msgid ""
 "\n"
@@ -2289,7 +2338,7 @@ msgstr ""
 "<bold>text='End Turn'</bold> إلى <bold>text='End Scenario'</bold>. "
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:190
+#: data/core/help.cfg:187
 #, fuzzy
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
@@ -2304,12 +2353,12 @@ msgstr ""
 "سيناريو. "
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:199
+#: data/core/help.cfg:196
 msgid "Recruiting and Recalling"
 msgstr "التجنيد والاستدعاء"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:200
+#: data/core/help.cfg:197
 #, fuzzy
 msgid ""
 "\n"
@@ -2325,7 +2374,7 @@ msgstr ""
 "الوحدة الجديدة في ذلك الشكل السداسي. "
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:200
+#: data/core/help.cfg:197
 #, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
@@ -2341,7 +2390,7 @@ msgid ""
 msgstr "يبدأ كل جانب بزعيم واحد في محفظته. "
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:202
+#: data/core/help.cfg:199
 msgid ""
 "\n"
 "\n"
@@ -2354,7 +2403,7 @@ msgstr ""
 "text='سمات'</ref> تعمل على تعديل إحصاءاتها."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:204
+#: data/core/help.cfg:201
 #, fuzzy
 msgid ""
 "\n"
@@ -2368,7 +2417,7 @@ msgstr ""
 "في السيناريوهات اللاحقة، يمكنك أيضًا استدعاء الناجين من المعارك السابقة. "
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:206
+#: data/core/help.cfg:203
 #, fuzzy
 msgid ""
 "\n"
@@ -2382,12 +2431,12 @@ msgstr ""
 "لا تكلف الوحدات ذهبًا للتجنيد أو الاستدعاء فحسب، بل تتطلب أيضًا أموالًا لدعمها. "
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:215
+#: data/core/help.cfg:212
 msgid "Income and Upkeep"
 msgstr "الدخل والصيانة"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:216
+#: data/core/help.cfg:213
 #, fuzzy
 msgid ""
 "\n"
@@ -2402,7 +2451,7 @@ msgstr ""
 "الدخل بسيط. "
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:216
+#: data/core/help.cfg:213
 #, fuzzy
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
@@ -2412,10 +2461,9 @@ msgid ""
 msgstr "في ويسنوث، لا يكفي مجرد تجنيد الوحدات والقتال. "
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:220
+#: data/core/help.cfg:217
 #, fuzzy
 msgid ""
-"\n"
 "\n"
 "Upkeep is also fairly simple. Each unit requires an amount of Upkeep equal "
 "to its level. You can support as many levels worth of units as you have "
@@ -2429,7 +2477,7 @@ msgstr ""
 "الصيانة أيضًا بسيطة إلى حد ما. "
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:222
+#: data/core/help.cfg:218
 msgid ""
 "\n"
 "\n"
@@ -2443,10 +2491,9 @@ msgstr ""
 "قرى، سيكون دخلك الناتج 10 قطع ذهب لكل دور."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:226
+#: data/core/help.cfg:222
 #, fuzzy
 msgid ""
-"\n"
 "\n"
 "In general, the base income, the amount of gold you get per village per "
 "turn, and the number of unit levels each village can support are "
@@ -2462,7 +2509,7 @@ msgstr ""
 "الحملات تكون القيم الموضحة أعلاه دائمًا تقريبًا. "
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:228
+#: data/core/help.cfg:223
 #, fuzzy
 msgid ""
 "\n"
@@ -2480,12 +2527,12 @@ msgstr ""
 "أبدًا للصيانة. "
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:237
+#: data/core/help.cfg:232
 msgid "Hitpoints and Experience"
 msgstr "نقاط الحياة والخبرة"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:238
+#: data/core/help.cfg:233
 #, fuzzy
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
@@ -2496,7 +2543,7 @@ msgid ""
 msgstr "كل وحدة لها عدد معين من <italic>text='hitpoints'</italic> (HP). "
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:242
+#: data/core/help.cfg:237
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -2506,7 +2553,7 @@ msgstr ""
 "(القيمة الحالية والحد الأقصى للقيمة التي يمكن أن تمتلكها الوحدة)."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:244
+#: data/core/help.cfg:239
 #, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
@@ -2518,12 +2565,12 @@ msgstr ""
 "أو ​​أصفر أو أحمر. "
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:251
+#: data/core/help.cfg:246
 msgid "Advancement"
 msgstr "تطوّر"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:252
+#: data/core/help.cfg:247
 #, fuzzy
 msgid ""
 "\n"
@@ -2539,7 +2586,7 @@ msgstr ""
 "للوحدات ذات السمة الذكية). "
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:252
+#: data/core/help.cfg:247
 #, fuzzy
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
@@ -2551,7 +2598,7 @@ msgstr ""
 "الوحدة التي تقاتلانها. "
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:254
+#: data/core/help.cfg:249
 #, fuzzy
 msgid ""
 "\n"
@@ -2573,12 +2620,12 @@ msgstr ""
 "مستويات. "
 
 #. [topic]: id=movement
-#: data/core/help.cfg:263
+#: data/core/help.cfg:258
 msgid "Movement"
 msgstr "الحركة"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:264
+#: data/core/help.cfg:259
 #, fuzzy
 msgid ""
 "\n"
@@ -2599,7 +2646,7 @@ msgstr ""
 "سداسي عشري جديد، اعتمادًا على تضاريس ذلك السداسي المحدد. "
 
 #. [topic]: id=movement
-#: data/core/help.cfg:264
+#: data/core/help.cfg:259
 #, fuzzy
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
@@ -2617,7 +2664,7 @@ msgid ""
 msgstr "الحركة في <italic>text='Battle for Wesnoth'</italic> بسيطة. "
 
 #. [topic]: id=movement
-#: data/core/help.cfg:266
+#: data/core/help.cfg:261
 #, fuzzy
 msgid ""
 "\n"
@@ -2636,7 +2683,7 @@ msgstr ""
 "التحكم'</italic>. "
 
 #. [topic]: id=movement
-#: data/core/help.cfg:268
+#: data/core/help.cfg:263
 #, fuzzy
 msgid ""
 "\n"
@@ -2651,14 +2698,14 @@ msgstr ""
 "v أو Cmd-v. "
 
 #. [topic]: id=vision
-#: data/core/help.cfg:277
+#: data/core/help.cfg:272
 #, fuzzy
 #| msgid "Vision:"
 msgid "Vision"
 msgstr "الرؤية:"
 
 #. [topic]: id=vision
-#: data/core/help.cfg:278
+#: data/core/help.cfg:273
 msgid ""
 "Vision determines how far a unit can see on the map. Normally, a unit’s "
 "vision range is calculated as its movement range plus one hex. Certain units "
@@ -2667,12 +2714,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:285
+#: data/core/help.cfg:280
 msgid "Shroud and Fog of War"
 msgstr "الحجاب وضباب الحرب"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:286
+#: data/core/help.cfg:281
 #, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
@@ -2698,12 +2745,12 @@ msgid ""
 msgstr "في بعض السيناريوهات، سيتم إخفاء أجزاء من الخريطة عنك. "
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:290
+#: data/core/help.cfg:285
 msgid "<header>text='Multiplayer and undo'</header>"
 msgstr "<header>text='متعدد اللاعبين والتراجع'</header>"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:292
+#: data/core/help.cfg:287
 #, fuzzy
 msgid ""
 "In multiplayer games, moves that have been sent to the network can’t be "
@@ -2717,12 +2764,12 @@ msgstr ""
 "الشبكة؛ "
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:299
+#: data/core/help.cfg:294
 msgid "Save-loading"
 msgstr "حفظ-تحميل"
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:300
+#: data/core/help.cfg:295
 #, fuzzy
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
@@ -2735,7 +2782,7 @@ msgstr ""
 "الوحدات بسبب سوء الحظ - وهذا جزء متوقع من اللعبة. "
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:302
+#: data/core/help.cfg:297
 #, fuzzy
 msgid ""
 "One of the challenges of the game is to work out how to protect your heroes. "
@@ -2746,7 +2793,7 @@ msgid ""
 msgstr "أحد تحديات اللعبة هو معرفة كيفية حماية أبطالك. "
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:305
+#: data/core/help.cfg:300
 #, fuzzy
 msgid ""
 "Small risks build up for your non-hero units too. While the story and "
@@ -2758,7 +2805,7 @@ msgid ""
 msgstr "تتراكم المخاطر الصغيرة على وحداتك غير البطلة أيضًا. "
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:307
+#: data/core/help.cfg:302
 #, fuzzy
 msgid ""
 "The difficulty levels are balanced assuming that the player won’t save-load. "
@@ -2769,7 +2816,7 @@ msgid ""
 msgstr "مستويات الصعوبة متوازنة على افتراض أن اللاعب لن يقوم بحفظ التحميل. "
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:309
+#: data/core/help.cfg:304
 #, fuzzy
 msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
@@ -2777,12 +2824,12 @@ msgid ""
 msgstr "ومع ذلك، إنها لعبة؛ "
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:316
+#: data/core/help.cfg:311
 msgid "Learning from Losses"
 msgstr "التعلم من الخسائر"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:317
+#: data/core/help.cfg:312
 msgid ""
 "<italic>text='Why did I lose that scenario?'</italic>\n"
 "\n"
@@ -2794,7 +2841,7 @@ msgstr ""
 "أحد أصعب الأجزاء في ويسنوث هو فهم سبب فقدان السيناريو."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:319
+#: data/core/help.cfg:314
 #, fuzzy
 msgid ""
 "\n"
@@ -2809,7 +2856,7 @@ msgstr ""
 "عندما تبدأ اللعب لأول مرة، فمن المحتمل أن تفقد بعض السيناريوهات. "
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:321
+#: data/core/help.cfg:316
 msgid ""
 "\n"
 "\n"
@@ -2820,7 +2867,7 @@ msgstr ""
 "بعض الأسباب الشائعة لخسارة السيناريو هي:"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:323
+#: data/core/help.cfg:318
 msgid ""
 "\n"
 "\n"
@@ -2833,7 +2880,7 @@ msgstr ""
 "ref> . حاول إعادة تشغيل السيناريو بصعوبة أسهل."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:325
+#: data/core/help.cfg:320
 msgid ""
 "\n"
 "\n"
@@ -2848,7 +2895,7 @@ msgstr ""
 "الاستفادة من ميزات التضاريس أو القدرات الخاصة للوحدات وما إلى ذلك."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:327
+#: data/core/help.cfg:322
 msgid ""
 "\n"
 "\n"
@@ -2864,7 +2911,7 @@ msgstr ""
 "إلى جانبك، خذ الوقت الكافي للاستماع إلى نصيحته؛ ربما ستحفظ حياتك."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:329
+#: data/core/help.cfg:324
 msgid ""
 "\n"
 "\n"
@@ -2892,7 +2939,7 @@ msgstr ""
 "خاصة في ظل الصعوبات الأعلى.)"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:331
+#: data/core/help.cfg:326
 msgid ""
 "\n"
 "\n"
@@ -2912,7 +2959,7 @@ msgstr ""
 "التالي. (سيكون هذا مثالاً على عبارة \"بالكاد حقق النصر\".)"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:333
+#: data/core/help.cfg:328
 msgid ""
 "\n"
 "\n"
@@ -2923,7 +2970,7 @@ msgstr ""
 "<header>text='أسباب غير محتملة'</header>"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:335
+#: data/core/help.cfg:330
 #, fuzzy
 msgid ""
 "\n"
@@ -2937,7 +2984,7 @@ msgstr ""
 "المحتملة، ولكنها ليست مستحيلة. "
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:337
+#: data/core/help.cfg:332
 msgid ""
 "\n"
 "\n"
@@ -2951,7 +2998,7 @@ msgstr ""
 "بمجموعة من الوحدات عالية المستوى غير مناسبة للسيناريو التالي."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:339
+#: data/core/help.cfg:334
 msgid ""
 "\n"
 "\n"
@@ -2971,7 +3018,7 @@ msgstr ""
 "طلب الحظ فوق المتوسط يمكن أن يعتبر خطأ.)"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:341
+#: data/core/help.cfg:336
 msgid ""
 "\n"
 "\n"
@@ -3004,7 +3051,7 @@ msgstr ""
 "هنا هو الحظ السيئ للغاية، على مدار عدة دورات."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:343
+#: data/core/help.cfg:338
 #, fuzzy
 msgid ""
 "\n"
@@ -3020,7 +3067,7 @@ msgstr ""
 "احذر من إرجاع الخسارة إلى أي من هذه الأسباب. "
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:345
+#: data/core/help.cfg:340
 msgid ""
 "\n"
 "\n"
@@ -3038,12 +3085,12 @@ msgstr ""
 "القليل من الحظ في النقاط الحرجة في الاشتباك."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:354
+#: data/core/help.cfg:349
 msgid "Combat"
 msgstr "قتال"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:355
+#: data/core/help.cfg:350
 msgid ""
 "\n"
 "\n"
@@ -3054,7 +3101,7 @@ msgstr ""
 "<header>text='ترتيب وعدد الضربات'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:355
+#: data/core/help.cfg:350
 #, fuzzy
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
@@ -3072,7 +3119,7 @@ msgstr ""
 "في السداسيات المتجاورة. "
 
 #. [topic]: id=combat
-#: data/core/help.cfg:357
+#: data/core/help.cfg:352
 #, fuzzy
 msgid ""
 "\n"
@@ -3090,7 +3137,7 @@ msgstr ""
 "المهاجم يحصل على الضربة الأولى، ثم ينتقم المدافع. "
 
 #. [topic]: id=combat
-#: data/core/help.cfg:359
+#: data/core/help.cfg:354
 msgid ""
 "\n"
 "\n"
@@ -3101,7 +3148,7 @@ msgstr ""
 "<header>text='فرصة الإصابة'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:361
+#: data/core/help.cfg:356
 #, fuzzy
 msgid ""
 "\n"
@@ -3121,7 +3168,7 @@ msgstr ""
 "الماوس الأيمن "
 
 #. [topic]: id=combat
-#: data/core/help.cfg:363
+#: data/core/help.cfg:358
 #, fuzzy
 msgid ""
 "\n"
@@ -3138,7 +3185,7 @@ msgstr ""
 "Attacks'</ref> و<ref>dst='weaponspecial_marksman' text='marksmen'</ref>. "
 
 #. [topic]: id=combat
-#: data/core/help.cfg:365
+#: data/core/help.cfg:360
 msgid ""
 "\n"
 "\n"
@@ -3149,7 +3196,7 @@ msgstr ""
 "<header>text=الضرر</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:367
+#: data/core/help.cfg:362
 #, fuzzy
 msgid ""
 "\n"
@@ -3167,7 +3214,7 @@ msgstr ""
 "كل ضربة تصيب تسبب قدرًا أساسيًا من الضرر اعتمادًا على نوع الهجوم. "
 
 #. [topic]: id=combat
-#: data/core/help.cfg:369
+#: data/core/help.cfg:364
 #, fuzzy
 msgid ""
 "\n"
@@ -3183,12 +3230,12 @@ msgstr ""
 "والتي تؤثر على الضرر الناتج في القتال. "
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:377
+#: data/core/help.cfg:372
 msgid "Damage Types and Resistance"
 msgstr "أنواع الضرر والمقاومة"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:378
+#: data/core/help.cfg:373
 #, fuzzy
 msgid ""
 "\n"
@@ -3205,7 +3252,7 @@ msgstr ""
 "الضرر، فستعاني من ضرر أقل بنسبة 40% عند إصابتها بنوع الضرر هذا. "
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:378
+#: data/core/help.cfg:373
 #, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
@@ -3219,7 +3266,7 @@ msgstr ""
 "<italic>text='blade, pierce, and Impact ضرر'</italic>. "
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:380
+#: data/core/help.cfg:375
 msgid ""
 "\n"
 "\n"
@@ -3234,7 +3281,7 @@ msgstr ""
 "السحرية."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:382
+#: data/core/help.cfg:377
 #, fuzzy
 msgid ""
 "\n"
@@ -3248,12 +3295,12 @@ msgstr ""
 "إذا تم تحديد الضربة، فسوف تسبب دائمًا نقطة واحدة على الأقل من الضرر. "
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:390
+#: data/core/help.cfg:385
 msgid "Orbs and ellipses"
 msgstr "الكريات والخسف"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:391
+#: data/core/help.cfg:386
 msgid ""
 "There are colored indicators above the energy bars of some units, consisting "
 "of a colored orb (and sometimes a <ref>dst='crowns' text='crown'</ref>)."
@@ -3263,7 +3310,7 @@ msgstr ""
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
-#: data/core/help.cfg:403
+#: data/core/help.cfg:397
 #, fuzzy
 msgid ""
 "The orbs show whether the unit can move or attack. The statuses and their "
@@ -3292,12 +3339,12 @@ msgid ""
 msgstr "تظهر الأجرام السماوية ما إذا كانت الوحدة يمكنها التحرك أو الهجوم. "
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:415
+#: data/core/help.cfg:409
 msgid "<header>text='Ellipses'</header>"
 msgstr "<header>النص = \"علامات الحذف\"</header>"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:418
+#: data/core/help.cfg:412
 #, fuzzy
 msgid ""
 "A team-colored shape is drawn on the ground under each unit. This is called "
@@ -3306,7 +3353,7 @@ msgstr "يتم رسم شكل بلون الفريق على الأرض تحت كل
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
-#: data/core/help.cfg:429
+#: data/core/help.cfg:422
 #, fuzzy
 msgid ""
 "• Most units have a circular ellipse.\n"
@@ -3323,12 +3370,12 @@ msgstr ""
 "• <ref>dst='crowns' text='وحدات البطل'</ref> لها شكل أصغر من "
 
 #. [topic]: id=crowns
-#: data/core/help.cfg:440
+#: data/core/help.cfg:433
 msgid "Crowns and loyal markers"
 msgstr "التيجان وعلامات الوفاء"
 
 #. [topic]: id=crowns
-#: data/core/help.cfg:441
+#: data/core/help.cfg:434
 #, fuzzy
 msgid ""
 "Some units have an additional marker superimposed on their <ref>dst='orbs' "
@@ -3340,7 +3387,7 @@ msgstr ""
 
 #. [topic]: id=crowns
 #. The help page has a set of images above this paragraph, in the same order as the first set of bullet points, showing what the "loyal icon" is and the difference between "silver" and "blueish-silver".
-#: data/core/help.cfg:456
+#: data/core/help.cfg:446
 #, fuzzy
 msgid ""
 "• Leaders are shown with a <bold>text='gold crown'</bold>.\n"
@@ -3368,22 +3415,24 @@ msgstr ""
 "• القادة القابلون للاستهلاك هم "
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:474
+#: data/core/help.cfg:464
 msgid "Time of Day"
 msgstr "الوقت من اليوم"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:475
+#: data/core/help.cfg:465
 #, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
-"• <bold>text='Lawful'</bold> units get +25% damage in daytime, and −25% "
-"damage at night.\n"
-"• <bold>text='Chaotic'</bold> units get +25% damage at night, and −25% in "
-"daytime.\n"
-"• <bold>text='Neutral'</bold> units are unaffected by the time of day.\n"
-"• <bold>text='Liminal'</bold> units get +25% damage during twilight."
+"• <span face='Serif' size='15'>LAWFUL</span> units get +25% damage in "
+"daytime, and −25% damage at night.\n"
+"• <span face='Serif' size='15'>CHAOTIC</span> units get +25% damage at "
+"night, and −25% in daytime.\n"
+"• <span face='Serif' size='15'>NEUTRAL</span> units are unaffected by the "
+"time of day.\n"
+"• <span face='Serif' size='15'>LIMINAL</span> units get +25% damage during "
+"twilight."
 msgstr ""
 "يؤثر الوقت من اليوم على ضرر بعض الوحدات كما يلي:\n"
 "\n"
@@ -3392,88 +3441,59 @@ msgstr ""
 " "
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:480
+#: data/core/help.cfg:470
 #, fuzzy
 msgid ""
 "\n"
 "\n"
 "The current time of day can be observed under the minimap in the status "
 "pane. For the usual day/night cycle, morning and afternoon count as day, "
-"first and second watch count as night:\n"
-"\n"
+"first and second watch count as night:"
 msgstr ""
 "\n"
 "\n"
 "يمكن ملاحظة الوقت الحالي من اليوم ضمن الخريطة المصغرة في جزء الحالة. "
 
 #. [topic]: id=time_of_day
-#. [time]: id=dawn
-#. [time]: id=dawn_hour
-#: data/core/help.cfg:484 data/core/macros/schedules.cfg:16
-#: data/core/macros/schedules.cfg:290
-msgid "Dawn"
-msgstr "غروب"
-
-#. [topic]: id=time_of_day
-#. [time]: id=morning
-#: data/core/help.cfg:485 data/core/macros/schedules.cfg:28
-msgid "Morning"
-msgstr "الصباح"
-
-#. [topic]: id=time_of_day
-#. [time]: id=afternoon
-#: data/core/help.cfg:486 data/core/macros/schedules.cfg:46
-msgid "Afternoon"
-msgstr "الظهر"
-
-#. [topic]: id=time_of_day
-#. [time]: id=dusk
-#. [time]: id=dusk_hour
-#: data/core/help.cfg:487 data/core/macros/schedules.cfg:55
-#: data/core/macros/schedules.cfg:411
-msgid "Dusk"
-msgstr "شفق"
-
-#. [topic]: id=time_of_day
-#. [time]: id=first_watch
-#: data/core/help.cfg:488 data/core/macros/schedules.cfg:67
-msgid "First Watch"
-msgstr "نصف الليلة الأول"
-
-#. [topic]: id=time_of_day
-#. [time]: id=second_watch
-#: data/core/help.cfg:489 data/core/macros/schedules.cfg:91
-msgid "Second Watch"
-msgstr "المراقبة الثانية"
-
-#. [topic]: id=time_of_day
-#: data/core/help.cfg:491
+#: data/core/help.cfg:497
+#, fuzzy
+#| msgid ""
+#| "Keep in mind that some scenarios take place underground, where it is "
+#| "perpetually night!\n"
 msgid ""
+"\n"
 "Keep in mind that some scenarios take place underground, where it is "
-"perpetually night!\n"
+"perpetually night!"
 msgstr ""
 "ضع في اعتبارك أن بعض السيناريوهات تحدث تحت الأرض، حيث يكون الليل دائمًا!\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:493
+#: data/core/help.cfg:499
 #, fuzzy
 msgid ""
+"\n"
 "Some underground locations are illuminated. They are perpetually "
-"intermediate between day and night.\n"
+"intermediate between day and night."
 msgstr "بعض المواقع تحت الأرض مضاءة. "
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:495
+#: data/core/help.cfg:501
+#, fuzzy
+#| msgid ""
+#| "Some role-playing scenarios take place indoors — these regions are "
+#| "similarly intermediate.\n"
 msgid ""
+"\n"
 "Some role-playing scenarios take place indoors — these regions are similarly "
-"intermediate.\n"
+"intermediate."
 msgstr ""
 "بعض سيناريوهات لعب الأدوار تحدث في الداخل — هذه المناطق متوسطة بالمثل.\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:497
+#: data/core/help.cfg:503
 #, fuzzy
 msgid ""
+"\n"
 "Finally, units with the <ref>dst='ability_illuminationilluminates' "
 "text='illuminates'</ref> ability and terrain features such as "
 "<ref>dst='terrain_lava' text='lava'</ref> change the time of day bonus "
@@ -3484,12 +3504,12 @@ msgstr ""
 "text='ava'</ref> تغير الوقت "
 
 #. [topic]: id=healing
-#: data/core/help.cfg:504
+#: data/core/help.cfg:511
 msgid "Healing"
 msgstr "الشفاء"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:505
+#: data/core/help.cfg:512
 msgid ""
 "\n"
 "\n"
@@ -3502,7 +3522,7 @@ msgstr ""
 "ستشفي 2 من نقاط الحياة في دورها التالي."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:505
+#: data/core/help.cfg:512
 #, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
@@ -3511,7 +3531,7 @@ msgid ""
 msgstr "في القتال، ستتعرض وحداتك للضرر حتمًا. "
 
 #. [topic]: id=healing
-#: data/core/help.cfg:507
+#: data/core/help.cfg:514
 #, fuzzy
 msgid ""
 "\n"
@@ -3524,7 +3544,7 @@ msgstr ""
 "<ref>dst='terrain_oasis' text='oasis'</ref> سوف تشفي 8HP. "
 
 #. [topic]: id=healing
-#: data/core/help.cfg:508
+#: data/core/help.cfg:515
 #, fuzzy
 msgid ""
 "\n"
@@ -3537,7 +3557,7 @@ msgstr ""
 "معينة (مثل المتصيدون) سوف تعالج 8HP تلقائيًا في كل دور. "
 
 #. [topic]: id=healing
-#: data/core/help.cfg:509
+#: data/core/help.cfg:516
 #, fuzzy
 msgid ""
 "\n"
@@ -3553,7 +3573,7 @@ msgstr ""
 "متحالفة، عادةً < "
 
 #. [topic]: id=healing
-#: data/core/help.cfg:510
+#: data/core/help.cfg:517
 #, fuzzy
 msgid ""
 "\n"
@@ -3568,7 +3588,7 @@ msgstr ""
 "الوحدات المجاورة المتحالفة (في "
 
 #. [topic]: id=healing
-#: data/core/help.cfg:511
+#: data/core/help.cfg:518
 #, fuzzy
 msgid ""
 "\n"
@@ -3581,7 +3601,7 @@ msgstr ""
 "text='advances'</ref>، فإنها ستشفى بالكامل. "
 
 #. [topic]: id=healing
-#: data/core/help.cfg:512
+#: data/core/help.cfg:519
 #, fuzzy
 msgid ""
 "\n"
@@ -3596,7 +3616,7 @@ msgstr ""
 "والشفاء والعلاج مع بعضها البعض: سيتم استخدام الخيار الأفضل. "
 
 #. [topic]: id=healing
-#: data/core/help.cfg:514
+#: data/core/help.cfg:521
 msgid ""
 "\n"
 "\n"
@@ -3607,7 +3627,7 @@ msgstr ""
 "<bold>text='متقدمة'</bold>"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:516
+#: data/core/help.cfg:523
 #, fuzzy
 msgid ""
 "\n"
@@ -3624,12 +3644,12 @@ msgstr ""
 "شفاءها، ولكن على دور المعالج. "
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:524
+#: data/core/help.cfg:531
 msgid "Wrap Up"
 msgstr "اختتام"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:525
+#: data/core/help.cfg:532
 #, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -3640,12 +3660,12 @@ msgid ""
 msgstr "وبهذا تنتهي أساسيات ويسنوث. "
 
 #. [topic]: id=license
-#: data/core/help.cfg:530
+#: data/core/help.cfg:537
 msgid "License"
 msgstr "الترخيص"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:541
+#: data/core/help.cfg:548
 #, fuzzy
 msgid ""
 "\n"
@@ -3660,7 +3680,7 @@ msgstr ""
 "معظم الوحدات لها سمتان. "
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:541
+#: data/core/help.cfg:548
 #, fuzzy
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
@@ -3670,7 +3690,7 @@ msgid ""
 msgstr "السمات هي تعديلات تغير سمات الوحدة قليلاً. "
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:543
+#: data/core/help.cfg:550
 #, fuzzy
 msgid ""
 "\n"
@@ -3687,7 +3707,7 @@ msgstr ""
 "<ref>dst='traits_quick' text='quick'</ "
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:545
+#: data/core/help.cfg:552
 #, fuzzy
 msgid ""
 "\n"
@@ -3706,12 +3726,18 @@ msgstr ""
 "يتلقى الأقزام <ref>dst='traits_healthy' text='healthy'</ref>. "
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:555
+#: data/core/help.cfg:562
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Terrains come in two types: <italic>text='basic'</italic> and "
+#| "<italic>text='mixed'</italic>."
 msgid ""
 "\n"
 "\n"
-"Terrains come in two types: <italic>text='basic'</italic> and "
-"<italic>text='mixed'</italic>."
+"Terrains come in two types: <italic>basic</italic> and <italic>mixed</"
+"italic>."
 msgstr ""
 "\n"
 "\n"
@@ -3719,7 +3745,7 @@ msgstr ""
 "italic>."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:555
+#: data/core/help.cfg:562
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -3728,18 +3754,23 @@ msgstr ""
 "والقدرة الدفاعية للوحدة في القتال."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:557
+#: data/core/help.cfg:564
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Basic Terrain Types'</header>"
 msgid ""
 "\n"
 "\n"
-"<header>text='Basic Terrain Types'</header>"
+"<header>Basic Terrain Types</header>"
 msgstr ""
 "\n"
 "\n"
 "<header>text='أنواع التضاريس الأساسية'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:559
+#: data/core/help.cfg:566
 #, fuzzy
 msgid ""
 "\n"
@@ -3755,11 +3786,25 @@ msgstr ""
 "والمستنقعات. "
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:563
+#: data/core/help.cfg:570
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Mixed Terrain Types'</header>"
 msgid ""
 "\n"
 "\n"
+"<header>Mixed Terrain Types</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='أنواع التضاريس المختلطة'</header>"
+
+#. [topic]: id=..terrains_section
+#: data/core/help.cfg:570
+#, fuzzy
+msgid ""
 "Every unit has a defense rating and a movement cost for each of the basic "
 "terrain types, and these values are listed in the unit’s help page. Basic "
 "terrain types may have unique properties like illumination effects as well."
@@ -3770,28 +3815,16 @@ msgstr ""
 "وهذه القيم مدرجة في صفحة المساعدة الخاصة بالوحدة. "
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:565
-msgid ""
-"\n"
-"\n"
-"<header>text='Mixed Terrain Types'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='أنواع التضاريس المختلطة'</header>"
-
-#. [topic]: id=..terrains_section
-#: data/core/help.cfg:567
+#: data/core/help.cfg:572
 #, fuzzy
 msgid ""
 "\n"
 "\n"
 "Mixed terrain types share the properties of multiple basic terrain types — "
-"units generally receive the <italic>text='best defense'</italic> and "
-"<italic>text='worst movement'</italic> of the underlying basic types when "
-"they move onto a mixed type. For example, this is the case with "
-"<italic>text='forested hills'</italic>, <italic>text='sand hills'</italic>, "
-"and <italic>text='cave hills'</italic>.\n"
+"units generally receive the <italic>best defense</italic> and <italic>worst "
+"movement</italic> of the underlying basic types when they move onto a mixed "
+"type. For example, this is the case with <italic>forested hills</italic>, "
+"<italic>sand hills</italic>, and <italic>cave hills</italic>.\n"
 "\n"
 msgstr ""
 "\n"
@@ -3801,18 +3834,15 @@ msgstr ""
 "حركة'</italic> من "
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:571
+#: data/core/help.cfg:576
 #, fuzzy
 msgid ""
-"\n"
-"\n"
-"One notable exception is bridge terrains, such as <italic>text='bridges over "
-"shallow water'</italic>, <italic>text='fords'</italic>, and "
-"<italic>text='bridges over chasms'</italic>. Fords are easily passable to "
-"both merfolk and humans — all units moving on a ford enjoy the best defense "
-"and best movement out of flat and shallow water, rather than the worse "
-"movement of the two. Similarly, bridges over chasms are passable to "
-"nonfliers (unsurprisingly).\n"
+"One notable exception is bridge terrains, such as <italic>bridges over "
+"shallow water</italic>, <italic>fords</italic>, and <italic>bridges over "
+"chasms</italic>. Fords are easily passable to both merfolk and humans — all "
+"units moving on a ford enjoy the best defense and best movement out of flat "
+"and shallow water, rather than the worse movement of the two. Similarly, "
+"bridges over chasms are passable to nonfliers (unsurprisingly).\n"
 "\n"
 msgstr ""
 "\n"
@@ -3821,13 +3851,11 @@ msgstr ""
 "الضحلة'</italic>، <italic>text='fords'</italic>، و<italic>text=' "
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:575
+#: data/core/help.cfg:578
 #, fuzzy
 msgid ""
-"\n"
-"\n"
-"Land-based villages generally give the best defense and movement as well. "
-"These villages are mixed terrains, based on the village terrain type, "
+"<br/>Land-based villages generally give the best defense and movement as "
+"well. These villages are mixed terrains, based on the village terrain type, "
 "together with hill, swamp, and cave, respectively.\n"
 "\n"
 msgstr ""
@@ -3836,11 +3864,9 @@ msgstr ""
 "القرى البرية عمومًا توفر أفضل دفاع وحركة أيضًا. "
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:579
+#: data/core/help.cfg:580
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "Finally, water villages are generally inhospitable to land units, and do not "
 "give defense or movement benefits associated with the village terrain type. "
 "Instead, they count only as water tiles.\n"
@@ -3852,10 +3878,31 @@ msgstr ""
 "دفاعية أو حركة مرتبطة بنوع تضاريس القرية. "
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:583
+#: data/core/help.cfg:582
+#, fuzzy
 msgid ""
 "\n"
 "\n"
+"You can see what type of behavior the mixed terrain gives by mousing over "
+"its hex and viewing the <italic>terrain description</italic> by either "
+"pressing the hotkey, or right clicking and selecting from the context menu."
+msgstr ""
+"\n"
+"\n"
+"يمكنك معرفة نوع السلوك الذي توفره التضاريس المختلطة عن طريق تمرير الماوس "
+"فوقها وعرض <italic>text='terrain description'</italic> إما عن طريق الضغط على "
+"مفتاح التشغيل السريع، أو النقر بزر الماوس الأيمن والاختيار من "
+
+#. [topic]: id=..terrains_section
+#: data/core/help.cfg:582
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "You can see what basic types a mixed terrain is comprised of by mousing "
+#| "over its hex and checking the terrain type icons displayed in the upper "
+#| "right (under the default theme)."
+msgid ""
 "You can see what basic types a mixed terrain is comprised of by mousing over "
 "its hex and checking the terrain type icons displayed in the upper right "
 "(under the default theme)."
@@ -3867,57 +3914,45 @@ msgstr ""
 "(في نمط العرض القياسي)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:585
+#: data/core/help.cfg:584
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Defense Caps'</header>"
 msgid ""
 "\n"
 "\n"
-"You can see what type of behavior the mixed terrain gives by mousing over "
-"its hex and viewing the <italic>text='terrain description'</italic> by "
-"either pressing the hotkey, or right clicking and selecting from the context "
-"menu."
-msgstr ""
-"\n"
-"\n"
-"يمكنك معرفة نوع السلوك الذي توفره التضاريس المختلطة عن طريق تمرير الماوس "
-"فوقها وعرض <italic>text='terrain description'</italic> إما عن طريق الضغط على "
-"مفتاح التشغيل السريع، أو النقر بزر الماوس الأيمن والاختيار من "
-
-#. [topic]: id=..terrains_section
-#: data/core/help.cfg:587
-msgid ""
-"\n"
-"\n"
-"<header>text='Defense Caps'</header>"
+"<header>Defense Caps</header>"
 msgstr ""
 "\n"
 "\n"
 "<header>text='سقف الدفاع'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:589
+#: data/core/help.cfg:586
 #, fuzzy
 msgid ""
 "\n"
 "\n"
-"Some units have <italic>text='defense caps'</italic> for a particular basic "
-"terrain type. These units suffer a penalty on mixed terrains with that type "
-"— their defense cannot exceed the cap."
+"Some units have <italic>defense caps</italic> for a particular basic terrain "
+"type. These units suffer a penalty on mixed terrains with that type — their "
+"defense cannot exceed the cap."
 msgstr ""
 "\n"
 "\n"
 "بعض الوحدات بها <italic>text='defense caps'</italic> لنوع تضاريس أساسي معين. "
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:591
+#: data/core/help.cfg:588
 #, fuzzy
 msgid ""
 "\n"
 "\n"
-"For example, the <ref>text='Loyalist Cavalryman' dst='unit_Cavalryman'</ref> "
-"has a defense rating of 30% on forests, and a defense cap for forests. Thus, "
-"on forested hills, he has a defense rating of 30% rather than 40%, because "
-"the mixed rating cannot exceed the cap."
+"For example, the <ref dst='unit_Cavalryman'>Loyalist Cavalryman</ref> has a "
+"defense rating of 30% on forests, and a defense cap for forests. Thus, on "
+"forested hills, he has a defense rating of 30% rather than 40%, because the "
+"mixed rating cannot exceed the cap."
 msgstr ""
 "\n"
 "\n"
@@ -3926,7 +3961,7 @@ msgstr ""
 "للغابات. "
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:593
+#: data/core/help.cfg:590
 msgid ""
 "\n"
 "\n"
@@ -3939,11 +3974,17 @@ msgstr ""
 "تلك التضاريس (لا يمكن أن يكون أكبر)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:595
+#: data/core/help.cfg:592
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Basic Terrain Types'</header>\n"
+#| "\n"
 msgid ""
 "\n"
 "\n"
-"<header>text='Basic Terrain Types'</header>\n"
+"<header>Basic Terrain Types</header>\n"
 "\n"
 msgstr ""
 "\n"
@@ -3952,7 +3993,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:608
+#: data/core/help.cfg:605
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -3965,12 +4006,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:618
+#: data/core/help.cfg:615
 msgid "Using Add-ons"
 msgstr "استخدام الإضافات"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:619
+#: data/core/help.cfg:616
 msgid ""
 "\n"
 "\n"
@@ -3981,7 +4022,7 @@ msgstr ""
 "<header>text='الحملات والسيناريوهات'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:619
+#: data/core/help.cfg:616
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
@@ -3990,7 +4031,7 @@ msgstr ""
 "أوضاع اللعب."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:621
+#: data/core/help.cfg:618
 #, fuzzy
 msgid ""
 "\n"
@@ -4006,7 +4047,7 @@ msgstr ""
 "قصة. "
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:623
+#: data/core/help.cfg:620
 msgid ""
 "\n"
 "\n"
@@ -4017,7 +4058,7 @@ msgstr ""
 "<header>text='حملات متعددة اللاعبين وسيناريوهات وحزم خرائط'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:625
+#: data/core/help.cfg:622
 #, fuzzy
 msgid ""
 "\n"
@@ -4032,7 +4073,7 @@ msgstr ""
 "بالكامل ومكتوبة أو حتى في حملات مصممة خصيصًا. "
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:627
+#: data/core/help.cfg:624
 msgid ""
 "\n"
 "\n"
@@ -4043,7 +4084,7 @@ msgstr ""
 "<header>text='عصور وفصائل متعددة اللاعبين'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:629
+#: data/core/help.cfg:626
 #, fuzzy
 msgid ""
 "\n"
@@ -4063,7 +4104,7 @@ msgstr ""
 "فصائل. "
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:633
+#: data/core/help.cfg:630
 msgid ""
 "\n"
 "\n"
@@ -4076,7 +4117,7 @@ msgstr ""
 "eras_section'</ref> للمساعدة."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:635
+#: data/core/help.cfg:632
 msgid ""
 "\n"
 "\n"
@@ -4087,7 +4128,7 @@ msgstr ""
 "<header>text='التعديلات'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:637
+#: data/core/help.cfg:634
 #, fuzzy
 msgid ""
 "\n"
@@ -4102,7 +4143,7 @@ msgstr ""
 "تغيير مجموعة القواعد الافتراضية بطرق مختلفة. "
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:639
+#: data/core/help.cfg:636
 msgid ""
 "\n"
 "\n"
@@ -4113,7 +4154,7 @@ msgstr ""
 "<header>text='النوى'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:641
+#: data/core/help.cfg:638
 #, fuzzy
 msgid ""
 "\n"
@@ -4131,7 +4172,7 @@ msgstr ""
 "تتيح النوى التحويل الكامل للمعركة من أجل ويسنوث. "
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:645
+#: data/core/help.cfg:642
 msgid ""
 "\n"
 "\n"
@@ -4142,7 +4183,7 @@ msgstr ""
 "<header>text='موارد المنشئ'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:647
+#: data/core/help.cfg:644
 #, fuzzy
 msgid ""
 "\n"
@@ -4160,12 +4201,12 @@ msgstr ""
 "البرمجية. "
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:656
+#: data/core/help.cfg:653
 msgid "Installing Add-ons"
 msgstr "تثبيت الإضافات"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:657
+#: data/core/help.cfg:654
 #, fuzzy
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
@@ -4194,12 +4235,12 @@ msgstr ""
 "<italic>text='Add-ons'</italic> في القائمة الرئيسية. "
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:670
+#: data/core/help.cfg:667
 msgid "Removing Add-ons"
 msgstr "إزالة الإضافات"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:671
+#: data/core/help.cfg:668
 #, fuzzy
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
@@ -4216,14 +4257,14 @@ msgstr ""
 "مربع حوار اتصال خادم الوظائف الإضافية. "
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:686
+#: data/core/help.cfg:683
 msgid "General Commands"
 msgstr "الأوامر العامة"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:687 data/core/help.cfg:732 data/core/help.cfg:770
+#: data/core/help.cfg:684 data/core/help.cfg:729 data/core/help.cfg:767
 #, fuzzy
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
@@ -4237,7 +4278,7 @@ msgstr ""
 " "
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:689
+#: data/core/help.cfg:686
 msgid ""
 "\n"
 "Similar to the ‘fps’ command, but also forces everything to redraw instead "
@@ -4251,7 +4292,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:692
+#: data/core/help.cfg:689
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -4262,7 +4303,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:695
+#: data/core/help.cfg:692
 #, fuzzy
 msgid ""
 "\n"
@@ -4275,7 +4316,7 @@ msgstr ""
 "قم بتشغيل وضع التصحيح (لا يعمل في اللعب المتعدد). "
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:699
+#: data/core/help.cfg:696
 #, fuzzy
 msgid ""
 "\n"
@@ -4291,7 +4332,7 @@ msgstr ""
 "تبديل الجانب بين التحكم البشري والتحكم بالذكاء الاصطناعي. "
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:702
+#: data/core/help.cfg:699
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -4302,7 +4343,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:705
+#: data/core/help.cfg:702
 #, fuzzy
 msgid ""
 "\n"
@@ -4314,7 +4355,7 @@ msgstr ""
 "تبديل عرض الإطارات الحالية في الثانية. "
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:708
+#: data/core/help.cfg:705
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -4325,7 +4366,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:711
+#: data/core/help.cfg:708
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -4336,7 +4377,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:714
+#: data/core/help.cfg:711
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -4347,7 +4388,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:717
+#: data/core/help.cfg:714
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -4358,7 +4399,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:720
+#: data/core/help.cfg:717
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -4369,7 +4410,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:723
+#: data/core/help.cfg:720
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -4378,12 +4419,12 @@ msgstr ""
 "احفظ اللعبة وقم بإنهاء السيناريو (بدون مطالبة)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:731
+#: data/core/help.cfg:728
 msgid "Multiplayer Commands"
 msgstr "أوامر متعددة اللاعبين"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:734
+#: data/core/help.cfg:731
 #, fuzzy
 msgid ""
 "\n"
@@ -4397,7 +4438,7 @@ msgstr ""
 "هذا وطرده. "
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:737
+#: data/core/help.cfg:734
 #, fuzzy
 msgid ""
 "\n"
@@ -4414,7 +4455,7 @@ msgstr ""
 "لقب اللاعب أو المراقب). "
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:740
+#: data/core/help.cfg:737
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -4426,7 +4467,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:743
+#: data/core/help.cfg:740
 #, fuzzy
 msgid ""
 "\n"
@@ -4438,7 +4479,7 @@ msgstr ""
 "تبديل حالة الخمول لأحد الجوانب. "
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:746
+#: data/core/help.cfg:743
 #, fuzzy
 msgid ""
 "\n"
@@ -4451,7 +4492,7 @@ msgstr ""
 "ركل مستخدم في لعبة متعددة اللاعبين. "
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:749
+#: data/core/help.cfg:746
 #, fuzzy
 msgid ""
 "\n"
@@ -4464,7 +4505,7 @@ msgstr ""
 "إرسال رسالة خاصة إلى المستخدم. "
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:752
+#: data/core/help.cfg:749
 #, fuzzy
 msgid ""
 "\n"
@@ -4476,7 +4517,7 @@ msgstr ""
 "كتم صوت مراقب محدد. "
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:755
+#: data/core/help.cfg:752
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -4487,7 +4528,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:758
+#: data/core/help.cfg:755
 #, fuzzy
 msgid ""
 "\n"
@@ -4500,7 +4541,7 @@ msgstr ""
 "اسم المستخدم هذا. "
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:761
+#: data/core/help.cfg:758
 #, fuzzy
 msgid ""
 "\n"
@@ -4511,12 +4552,12 @@ msgstr ""
 "إلغاء كتم صوت مراقب محدد. "
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:769
+#: data/core/help.cfg:766
 msgid "Debug Mode Commands"
 msgstr "أوامر وضع التصحيح"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:772
+#: data/core/help.cfg:769
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -4528,7 +4569,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:775
+#: data/core/help.cfg:772
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -4539,7 +4580,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:778
+#: data/core/help.cfg:775
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -4550,7 +4591,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:781
+#: data/core/help.cfg:778
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -4561,7 +4602,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:784
+#: data/core/help.cfg:781
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -4572,7 +4613,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:787
+#: data/core/help.cfg:784
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -4583,7 +4624,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:790
+#: data/core/help.cfg:787
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -4594,7 +4635,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:793
+#: data/core/help.cfg:790
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -4605,7 +4646,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:796
+#: data/core/help.cfg:793
 #, fuzzy
 msgid ""
 "\n"
@@ -4617,7 +4658,7 @@ msgstr ""
 "تعديل الخاصية المحددة للوحدة المحددة. "
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:799
+#: data/core/help.cfg:796
 #, fuzzy
 msgid ""
 "\n"
@@ -4946,17 +4987,49 @@ msgstr ""
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr "الحد الأقصى لنقاط الصحة الإضافية 3، الحد الأقصى لنقاط الخبرة 20%"
 
+#. [time]: id=dawn
+#. [time]: id=dawn_hour
+#: data/core/macros/schedules.cfg:16 data/core/macros/schedules.cfg:290
+msgid "Dawn"
+msgstr "غروب"
+
+#. [time]: id=morning
+#: data/core/macros/schedules.cfg:28
+msgid "Morning"
+msgstr "الصباح"
+
 #. [time]: id=midday
 #. [time]: id=midday_hour
 #: data/core/macros/schedules.cfg:37 data/core/macros/schedules.cfg:344
 msgid "Midday"
 msgstr "منتصف النهار"
 
+#. [time]: id=afternoon
+#: data/core/macros/schedules.cfg:46
+msgid "Afternoon"
+msgstr "الظهر"
+
+#. [time]: id=dusk
+#. [time]: id=dusk_hour
+#: data/core/macros/schedules.cfg:55 data/core/macros/schedules.cfg:411
+msgid "Dusk"
+msgstr "شفق"
+
+#. [time]: id=first_watch
+#: data/core/macros/schedules.cfg:67
+msgid "First Watch"
+msgstr "نصف الليلة الأول"
+
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:79 data/core/macros/schedules.cfg:206
 msgid "Midnight"
 msgstr "منتصف الليل"
+
+#. [time]: id=second_watch
+#: data/core/macros/schedules.cfg:91
+msgid "Second Watch"
+msgstr "المراقبة الثانية"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:218
@@ -6685,7 +6758,7 @@ msgid ""
 "establish a clear pecking order, with a chief at the top. On those occasions "
 "when the two genders interact they do not contest for dominance; instead, "
 "the situation determines the dominant gender. The chief of the males is "
-"alpha within the clan's village or encampment while the chief of females is "
+"alpha within the clan’s village or encampment while the chief of females is "
 "dominant anywhere else. This continues down the rank structure with each "
 "male or female being dominant over any member of the opposite gender with "
 "lower rank and submitting to members of the opposite gender with higher "
@@ -7217,18 +7290,6 @@ msgstr "مصدومة"
 msgid "stunned"
 msgstr "مصدوم"
 
-#: src/help/help.cpp:207
-msgid "Close"
-msgstr "غلق"
-
-#: src/help/help.cpp:211
-msgid "Help"
-msgstr "المساعدة"
-
-#: src/help/help.cpp:263 src/help/help.cpp:267
-msgid "Parse error when parsing help text:"
-msgstr "خطأ في التحليل عند تحليل نص التعليمات:"
-
 #: src/help/help_topic_generators.cpp:63
 msgid "Best of"
 msgstr "الأفضل في"
@@ -7238,20 +7299,20 @@ msgid "Worst of"
 msgstr "الأسوء في"
 
 #. TRANSLATORS: in a description of an overlay terrain, the terrain that it's placed on
-#: src/help/help_topic_generators.cpp:94
+#: src/help/help_topic_generators.cpp:122
 #, fuzzy
 #| msgid "Base Terrain: "
 msgid "base terrain"
 msgstr "الارضية الأساس: "
 
-#: src/help/help_topic_generators.cpp:165
+#: src/help/help_topic_generators.cpp:197
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr "القرى تمكن الوحدات الموجودة عليها من التعافي من السموم او الشفاء."
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
-#: src/help/help_topic_generators.cpp:170
+#: src/help/help_topic_generators.cpp:202
 msgid ""
 "This terrain allows units to be cured of poison, or to heal a single "
 "hitpoint."
@@ -7265,21 +7326,21 @@ msgstr[3] "هذه الآرضية تجعل الوحدة تشفى من السم و
 msgstr[4] "هذه الآرضية تجعل الوحدة تشفى من السم وتعالج $amount نقطة حياة."
 msgstr[5] "هذه الآرضية تجعل الوحدة تشفى من السم وتعالج $amount نقاط حياة."
 
-#: src/help/help_topic_generators.cpp:177
+#: src/help/help_topic_generators.cpp:209
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr "هذه التضاريس عبارة عن قلعة - يمكن تجنيد الوحدات فيها من معسكر متصل."
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-#: src/help/help_topic_generators.cpp:181
+#: src/help/help_topic_generators.cpp:213
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
 msgstr "هذا قصر يمكن أن يستعمله قائد ليجند منه وحدات نحو قلاع مرتبطة به."
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
-#: src/help/help_topic_generators.cpp:184
+#: src/help/help_topic_generators.cpp:216
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
@@ -7287,15 +7348,17 @@ msgstr ""
 "تسمح هذه القلعة غير العادية للقائد بالتجنيد أثناء وقوفه عليها، لكنها لا تسمح "
 "للقائد الموجود في منطقة متصلة بالتجنيد على هذه السداسية."
 
-#: src/help/help_topic_generators.cpp:188
-#: src/help/help_topic_generators.cpp:618
-msgid "Special Notes:"
+#: src/help/help_topic_generators.cpp:220
+#: src/help/help_topic_generators.cpp:630
+#, fuzzy
+#| msgid "Special Notes:"
+msgid "Special Notes"
 msgstr "ملاحظات خاصة:"
 
 #. TRANSLATORS: $types is a conjunct list, typical values will be "Castle" or "Flat and Shallow Water".
 #. The terrain names will be hypertext links to the help page of the corresponding terrain type.
 #. There will always be at least 1 item in the list, but unlikely to be more than 3.
-#: src/help/help_topic_generators.cpp:209
+#: src/help/help_topic_generators.cpp:241
 #, fuzzy
 #| msgid "Base Terrain: "
 msgid "Basic terrain type: $types"
@@ -7308,170 +7371,215 @@ msgstr[4] "الارضية الأساس: "
 msgstr[5] "الارضية الأساس: "
 
 #. TRANSLATORS: In the help for a terrain type, for example Dwarven Village is often placed on Cave Floor
-#: src/help/help_topic_generators.cpp:221
+#: src/help/help_topic_generators.cpp:253
 msgid "Typical base terrain: $type"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:227
+#: src/help/help_topic_generators.cpp:259
 msgid "Movement properties: "
 msgstr "خصائص الحركة: "
 
-#: src/help/help_topic_generators.cpp:231
+#: src/help/help_topic_generators.cpp:263
 msgid "Defense properties: "
 msgstr "خصائص الدفاع: "
 
-#: src/help/help_topic_generators.cpp:311
+#: src/help/help_topic_generators.cpp:341
 msgid "Level"
 msgstr "المستوى"
 
-#: src/help/help_topic_generators.cpp:375
+#: src/help/help_topic_generators.cpp:392
 msgid "Advances from: "
 msgstr "يتطور من: "
 
-#: src/help/help_topic_generators.cpp:377
+#: src/help/help_topic_generators.cpp:394
 msgid "Advances to: "
 msgstr "يتطور إلى: "
 
-#: src/help/help_topic_generators.cpp:406
+#: src/help/help_topic_generators.cpp:423
 msgid "Base unit: "
 msgstr "الوحدة الأساس: "
 
-#: src/help/help_topic_generators.cpp:411
+#: src/help/help_topic_generators.cpp:428
 msgid "Base units: "
 msgstr "الوحدات الأساس: "
 
-#: src/help/help_topic_generators.cpp:429
+#: src/help/help_topic_generators.cpp:446
 msgid "Variations: "
 msgstr "التنويعات: "
 
-#: src/help/help_topic_generators.cpp:453
+#: src/help/help_topic_generators.cpp:469
 msgid "race^Miscellaneous"
 msgstr "متنوعة"
 
-#: src/help/help_topic_generators.cpp:455
+#: src/help/help_topic_generators.cpp:471
 msgid "Race: "
 msgstr "العرق: "
 
-#: src/help/help_topic_generators.cpp:525
+#: src/help/help_topic_generators.cpp:536
 msgid "Abilities: "
 msgstr "القدرات: "
 
-#: src/help/help_topic_generators.cpp:551
+#: src/help/help_topic_generators.cpp:562
 msgid "Ability Upgrades: "
 msgstr "تطورات القدرات: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:581
+#: src/help/help_topic_generators.cpp:592
 msgid "HP:"
 msgstr "نقاط الحياة:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:585
+#: src/help/help_topic_generators.cpp:596
 msgid "Moves:"
 msgstr "الحركات:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:590
+#: src/help/help_topic_generators.cpp:601
 msgid "Vision:"
 msgstr "الرؤية:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:596
+#: src/help/help_topic_generators.cpp:607
 msgid "Jamming:"
 msgstr "القفز:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:601
+#: src/help/help_topic_generators.cpp:612
 msgid "Cost:"
 msgstr "الكلفة:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:605
+#: src/help/help_topic_generators.cpp:616
 msgid "Alignment:"
 msgstr "التوجه:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:612
+#: src/help/help_topic_generators.cpp:623
 msgid "Required XP:"
 msgstr "التجربة المطلوبة:"
 
-#: src/help/help_topic_generators.cpp:630
-msgid "unit help^Attacks"
-msgstr "الهجمات"
+#: src/help/help_topic_generators.cpp:641
+#, fuzzy
+#| msgid "Attack Type"
+msgid "Attacks"
+msgstr "نوع الهجوم"
 
-#: src/help/help_topic_generators.cpp:637
-msgid "unit help^Name"
-msgstr "الاسم"
+#: src/help/help_topic_generators.cpp:646
+msgid "Icon"
+msgstr ""
 
-#: src/help/help_topic_generators.cpp:638
+#: src/help/help_topic_generators.cpp:647
+msgid "Name"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:648
 msgid "Strikes"
 msgstr "الضربات"
 
-#: src/help/help_topic_generators.cpp:639
+#: src/help/help_topic_generators.cpp:649
 msgid "Range"
 msgstr "المدى"
 
-#: src/help/help_topic_generators.cpp:640
+#: src/help/help_topic_generators.cpp:650
 msgid "Type"
 msgstr "النوع"
 
-#: src/help/help_topic_generators.cpp:641
+#: src/help/help_topic_generators.cpp:651
 msgid "Special"
 msgstr "الخاصية"
 
-#: src/help/help_topic_generators.cpp:716
+#: src/help/help_topic_generators.cpp:739
 msgid "Resistances"
 msgstr "الدفاعات"
 
-#: src/help/help_topic_generators.cpp:720
+#: src/help/help_topic_generators.cpp:743
 msgid "Attack Type"
 msgstr "نوع الهجوم"
 
-#: src/help/help_topic_generators.cpp:721
+#: src/help/help_topic_generators.cpp:744
 msgid "Resistance"
 msgstr "المقاومة"
 
-#: src/help/help_topic_generators.cpp:751
+#: src/help/help_topic_generators.cpp:772
 msgid "Terrain Modifiers"
 msgstr "مغير الأرض"
 
-#: src/help/help_topic_generators.cpp:755
+#: src/help/help_topic_generators.cpp:776
 msgid "Terrain"
 msgstr "الارضية"
 
-#: src/help/help_topic_generators.cpp:756
+#: src/help/help_topic_generators.cpp:777
 msgid "Defense"
 msgstr "الدفاع"
 
-#: src/help/help_topic_generators.cpp:757
+#: src/help/help_topic_generators.cpp:778
 msgid "Movement Cost"
 msgstr "كلفة الحركة"
 
-#: src/help/help_topic_generators.cpp:761
+#: src/help/help_topic_generators.cpp:779
 msgid "Defense Cap"
 msgstr "حدّ الدفاع"
 
-#: src/help/help_topic_generators.cpp:766
+#: src/help/help_topic_generators.cpp:780
 msgid "Vision Cost"
 msgstr "كلفة الرؤية"
 
-#: src/help/help_topic_generators.cpp:770
+#: src/help/help_topic_generators.cpp:781
 msgid "Jamming Cost"
 msgstr "كلفة القفز"
+
+#, fuzzy
+#~ msgid ""
+#~ "Raised elevation editor palette icon\n"
+#~ "\n"
+#~ "To make a patch of terrain higher or lower, and still be able to use "
+#~ "other overlay terrains such as trees, you will need to use these markers. "
+#~ "Placing one of these arrows on the map will flood-fill the map with a "
+#~ "color-coded haze; neither the haze nor the arrow will be visible in game. "
+#~ "The hazed area will have a border ledge, making it look higher or lower "
+#~ "than the adjacent tiles.\n"
+#~ "\n"
+#~ "There are two high markers and two low markers, so it is possible to make "
+#~ "terraces of up to five levels (lowest, lower, normal, higher, highest). "
+#~ "Placing a high region next to a low region does not result in larger "
+#~ "cliffs.\n"
+#~ msgstr ""
+#~ "رمز لوحة محرر الارتفاع المرتفع\n"
+#~ "\n"
+#~ "لجعل رقعة من التضاريس أعلى أو أقل، مع الاستمرار في استخدام تضاريس أخرى "
+#~ "متراكبة مثل الأشجار، ستحتاج إلى استخدام هذه العلامات. "
+
+#~ msgid "Using a separate file for WML events"
+#~ msgstr "استخدام ملف منفصل لأحداث WML"
+
+#~ msgid "Close"
+#~ msgstr "غلق"
+
+#~ msgid "Help"
+#~ msgstr "المساعدة"
+
+#~ msgid "Parse error when parsing help text:"
+#~ msgstr "خطأ في التحليل عند تحليل نص التعليمات:"
+
+#~ msgid "unit help^Attacks"
+#~ msgstr "الهجمات"
+
+#~ msgid "unit help^Name"
+#~ msgstr "الاسم"
 
 #~ msgid ""
 #~ "A virtually impassable barrier between the <ref>dst='arkan_thoria' "

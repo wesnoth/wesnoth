@@ -5762,7 +5762,7 @@ void game_lua_kernel::load_game(const config& level)
 
 	lua_newtable(L);
 	int k = 1;
-	for(const auto [child_key, child_cfg] : level.all_children_range())
+	for(const auto [child_key, child_cfg] : level.all_children_view())
 	{
 		if (is_handled_file_tag(child_key)) continue;
 		lua_createtable(L, 2, 0);

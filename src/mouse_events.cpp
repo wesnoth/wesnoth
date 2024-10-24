@@ -616,7 +616,7 @@ bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_
 
 	if (gui().view_locked() || button < SDL_BUTTON_LEFT || button > buttons.size()) {
 		return false;
-	} else if (event.state > SDL_PRESSED || !gui().get_map().on_board(loc)) {
+	} else if (event.state > SDL_PRESSED || !pc_.get_map().on_board(loc)) {
 		return false;
 	}
 
@@ -754,8 +754,8 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		}
 	}
 
-	const map_location::DIRECTION preferred = loc.get_relative_dir(previous_hex_);
-	const map_location::DIRECTION second_preferred = loc.get_relative_dir(previous_free_hex_);
+	const map_location::direction preferred = loc.get_relative_dir(previous_hex_);
+	const map_location::direction second_preferred = loc.get_relative_dir(previous_free_hex_);
 
 	int best_rating = 100; // smaller is better
 
@@ -772,16 +772,16 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 		}
 
 		if(current_paths_.destinations.contains(adj[n])) {
-			static const std::size_t NDIRECTIONS = map_location::NDIRECTIONS;
+			static const std::size_t ndirections = static_cast<int>(map_location::direction::indeterminate);
 
-			unsigned int difference = std::abs(static_cast<int>(preferred - n));
-			if(difference > NDIRECTIONS / 2) {
-				difference = NDIRECTIONS - difference;
+			unsigned int difference = std::abs(static_cast<int>(static_cast<int>(preferred) - n));
+			if(difference > ndirections / 2) {
+				difference = ndirections - difference;
 			}
 
-			unsigned int second_difference = std::abs(static_cast<int>(second_preferred - n));
-			if(second_difference > NDIRECTIONS / 2) {
-				second_difference = NDIRECTIONS - second_difference;
+			unsigned int second_difference = std::abs(static_cast<int>(static_cast<int>(second_preferred) - n));
+			if(second_difference > ndirections / 2) {
+				second_difference = ndirections - second_difference;
 			}
 
 			const int rating = difference * 2 + (second_difference > difference);

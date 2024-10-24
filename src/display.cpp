@@ -163,7 +163,7 @@ display::display(const display_context* dc,
 	, theme_(theme::get_theme_config(theme_id.empty() ? prefs::get().theme() : theme_id), video::game_canvas())
 	, zoom_index_(0)
 	, fake_unit_man_(new fake_unit_manager(*this))
-	, builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
+	, builder_(new terrain_builder(level, (dc_ ? &context().map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
 	, minimap_renderer_(nullptr)
 	, minimap_location_(sdl::empty_rect)
 	, redraw_background_(false)
@@ -265,9 +265,9 @@ void display::init_flags()
 {
 	flags_.clear();
 	if (!dc_) return;
-	flags_.resize(dc_->teams().size());
+	flags_.resize(context().teams().size());
 
-	for(const team& t : dc_->teams()) {
+	for(const team& t : context().teams()) {
 		reinit_flags_for_team(t);
 	}
 }
@@ -322,7 +322,7 @@ void display::reinit_flags_for_team(const team& t)
 
 texture display::get_flag(const map_location& loc)
 {
-	for(const team& t : dc_->teams()) {
+	for(const team& t : context().teams()) {
 		if(t.owns_village(loc) && (!fogged(loc) || !viewing_team().is_enemy(t.side()))) {
 			auto& flag = flags_[t.side() - 1];
 			flag.update_last_draw_time();
@@ -340,20 +340,20 @@ texture display::get_flag(const map_location& loc)
 
 const team& display::playing_team() const
 {
-	return dc_->teams()[playing_team_index()];
+	return context().teams()[playing_team_index()];
 }
 
 const team& display::viewing_team() const
 {
-	return dc_->teams()[viewing_team_index()];
+	return context().teams()[viewing_team_index()];
 }
 
 void display::set_viewing_team_index(std::size_t teamindex, bool show_everything)
 {
-	assert(teamindex < dc_->teams().size());
+	assert(teamindex < context().teams().size());
 	viewing_team_index_ = teamindex;
 	if(!show_everything) {
-		labels().set_team(&dc_->teams()[teamindex]);
+		labels().set_team(&context().teams()[teamindex]);
 		dont_show_all_ = true;
 	} else {
 		labels().set_team(nullptr);
@@ -367,31 +367,30 @@ void display::set_viewing_team_index(std::size_t teamindex, bool show_everything
 
 void display::set_playing_team_index(std::size_t teamindex)
 {
-	assert(teamindex < dc_->teams().size());
+	assert(teamindex < context().teams().size());
 	playing_team_index_ = teamindex;
 	invalidate_game_status();
 }
 
-bool display::add_exclusive_draw(const map_location& loc, unit& unit)
+bool display::add_exclusive_draw(const map_location& loc, const unit& unit)
 {
-	if(loc.valid() && exclusive_unit_draw_requests_.find(loc) == exclusive_unit_draw_requests_.end()) {
-		exclusive_unit_draw_requests_[loc] = unit.id();
-		return true;
-	} else {
-		return false;
-	}
+	if(!loc.valid()) return false;
+	auto [iter, success] = exclusive_unit_draw_requests_.emplace(loc, unit.id());
+	return success;
 }
 
 std::string display::remove_exclusive_draw(const map_location& loc)
 {
-	std::string id = "";
-	if(loc.valid())
-	{
-		id = exclusive_unit_draw_requests_[loc];
-		//id will be set to the default "" string by the [] operator if the map doesn't have anything for that loc.
-		exclusive_unit_draw_requests_.erase(loc);
-	}
+	if(!loc.valid()) return {};
+	std::string id = exclusive_unit_draw_requests_[loc];
+	exclusive_unit_draw_requests_.erase(loc);
 	return id;
+}
+
+bool display::unit_can_draw_here(const map_location& loc, const unit& unit) const
+{
+	auto request = exclusive_unit_draw_requests_.find(loc);
+	return request == exclusive_unit_draw_requests_.end() || request->second == unit.id();
 }
 
 void display::update_tod(const time_of_day* tod_override)
@@ -449,7 +448,7 @@ void display::reload_map()
 void display::change_display_context(const display_context * dc)
 {
 	dc_ = dc;
-	builder_->change_map(&dc_->map()); //TODO: Should display_context own and initialize the builder object?
+	builder_->change_map(&context().map()); //TODO: Should display_context own and initialize the builder object?
 }
 
 void display::blindfold(bool value)
@@ -491,8 +490,8 @@ rect display::max_map_area() const
 	// To display a hex fully on screen,
 	// a little bit extra space is needed.
 	// Also added the border two times.
-	max_area.w = static_cast<int>((get_map().w() + 2 * theme_.border().size + 1.0 / 3.0) * hex_width());
-	max_area.h = static_cast<int>((get_map().h() + 2 * theme_.border().size + 0.5) * hex_size());
+	max_area.w = static_cast<int>((context().map().w() + 2 * theme_.border().size + 1.0 / 3.0) * hex_width());
+	max_area.h = static_cast<int>((context().map().h() + 2 * theme_.border().size + 0.5) * hex_size());
 
 	return max_area;
 }
@@ -540,7 +539,7 @@ bool display::outside_area(const SDL_Rect& area, const int x, const int y)
 }
 
 // This function uses the screen as reference
-const map_location display::hex_clicked_on(int xclick, int yclick) const
+map_location display::hex_clicked_on(int xclick, int yclick) const
 {
 	rect r = map_area();
 	if(!r.contains(xclick, yclick)) {
@@ -554,7 +553,7 @@ const map_location display::hex_clicked_on(int xclick, int yclick) const
 }
 
 // This function uses the rect of map_area as reference
-const map_location display::pixel_position_to_hex(int x, int y) const
+map_location display::pixel_position_to_hex(int x, int y) const
 {
 	// adjust for the border
 	x -= static_cast<int>(theme_.border().size * hex_width());
@@ -722,20 +721,20 @@ map_location display::minimap_location_on(int x, int y)
 	// probably more adjustments to do (border, minimap shift...)
 	// but the mouse and human capacity to evaluate the rectangle center
 	// is not pixel precise.
-	int px = (x - minimap_location_.x) * get_map().w() * hex_width() / std::max(minimap_location_.w, 1);
-	int py = (y - minimap_location_.y) * get_map().h() * hex_size() / std::max(minimap_location_.h, 1);
+	int px = (x - minimap_location_.x) * context().map().w() * hex_width() / std::max(minimap_location_.w, 1);
+	int py = (y - minimap_location_.y) * context().map().h() * hex_size() / std::max(minimap_location_.h, 1);
 
 	map_location loc = pixel_position_to_hex(px, py);
 	if(loc.x < 0) {
 		loc.x = 0;
-	} else if(loc.x >= get_map().w()) {
-		loc.x = get_map().w() - 1;
+	} else if(loc.x >= context().map().w()) {
+		loc.x = context().map().w() - 1;
 	}
 
 	if(loc.y < 0) {
 		loc.y = 0;
-	} else if(loc.y >= get_map().h()) {
-		loc.y = get_map().h() - 1;
+	} else if(loc.y >= context().map().h()) {
+		loc.y = context().map().h() - 1;
 	}
 
 	return loc;
@@ -748,7 +747,7 @@ surface display::screenshot(bool map_screenshot)
 		return video::read_pixels();
 	}
 
-	if (get_map().empty()) {
+	if (context().map().empty()) {
 		ERR_DP << "No map loaded, cannot create a map screenshot.";
 		return nullptr;
 	}
@@ -850,6 +849,11 @@ gui::button::TYPE string_to_button_type(const std::string& type)
 		return gui::button::TYPE_PRESS;
 	}
 }
+} // namespace
+namespace display_direction
+{
+
+	// named namespace called in game_display.cpp
 
 const std::string& get_direction(std::size_t n)
 {
@@ -857,7 +861,7 @@ const std::string& get_direction(std::size_t n)
 	static const std::array dirs{"-n"s, "-ne"s, "-se"s, "-s"s, "-sw"s, "-nw"s};
 	return dirs[n >= dirs.size() ? 0 : n];
 }
-} // namespace
+} // namespace display_direction
 
 void display::create_buttons()
 {
@@ -968,6 +972,7 @@ void display::unhide_buttons()
 
 std::vector<texture> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
 {
+	using namespace display_direction;
 	std::vector<std::string> names;
 	const auto adjacent = get_adjacent_tiles(loc);
 
@@ -1486,13 +1491,8 @@ void display::draw_text_in_hex(const map_location& loc,
 	renderer.set_foreground_color(color);
 	renderer.set_add_outline(true);
 
-	drawing_buffer_add(layer, loc, [x_in_hex, y_in_hex, res = renderer.render_and_get_texture()](const rect& dest) {
-		draw::blit(res, {
-			dest.x - (res.w() / 2) + static_cast<int>(x_in_hex * dest.w),
-			dest.y - (res.h() / 2) + static_cast<int>(y_in_hex * dest.h),
-			res.w(),
-			res.h()
-		});
+	drawing_buffer_add(layer, loc, [x_in_hex, y_in_hex, tex = renderer.render_and_get_texture()](const rect& dest) {
+		draw::blit(tex, rect{ dest.point_at(x_in_hex, y_in_hex) - tex.draw_size() / 2, tex.draw_size() });
 	});
 }
 
@@ -1613,8 +1613,8 @@ void display::recalculate_minimap()
 	}
 
 	minimap_renderer_ = image::prep_minimap_for_rendering(
-		get_map(),
-		dc_->teams().empty() ? nullptr : &viewing_team(),
+		context().map(),
+		context().teams().empty() ? nullptr : &viewing_team(),
 		nullptr,
 		(selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : nullptr
 	);
@@ -1651,8 +1651,8 @@ void display::draw_minimap()
 
 	// calculate the visible portion of the map:
 	// scaling between minimap and full map images
-	double xscaling = 1.0 * minimap_location_.w / (get_map().w() * hex_width());
-	double yscaling = 1.0 * minimap_location_.h / (get_map().h() * hex_size());
+	double xscaling = 1.0 * minimap_location_.w / (context().map().w() * hex_width());
+	double yscaling = 1.0 * minimap_location_.h / (context().map().h() * hex_size());
 
 	// we need to shift with the border size
 	// and the 0.25 from the minimap balanced drawing
@@ -1682,10 +1682,10 @@ void display::draw_minimap_units()
 {
 	if (!prefs::get().minimap_draw_units() || is_blindfolded()) return;
 
-	double xscaling = 1.0 * minimap_location_.w / get_map().w();
-	double yscaling = 1.0 * minimap_location_.h / get_map().h();
+	double xscaling = 1.0 * minimap_location_.w / context().map().w();
+	double yscaling = 1.0 * minimap_location_.h / context().map().h();
 
-	for(const auto& u : dc_->units()) {
+	for(const auto& u : context().units()) {
 		if (fogged(u.get_location()) ||
 		    (viewing_team().is_enemy(u.side()) &&
 		     u.invisible(u.get_location())) ||
@@ -1701,7 +1701,7 @@ void display::draw_minimap_units()
 			if(viewing_team().is_enemy(side)) {
 				status = orb_status::enemy;
 			} else if(viewing_team().side() == side) {
-				status = dc_->unit_orb_status(u);
+				status = context().unit_orb_status(u);
 			} else {
 				// no-op, status is already set to orb_status::allied;
 			}
@@ -2014,7 +2014,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 
 void display::scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type, bool check_fogged, bool force)
 {
-	if(get_map().on_board(loc) == false) {
+	if(context().map().on_board(loc) == false) {
 		ERR_DP << "Tile at " << loc << " isn't on the map, can't scroll to the tile.";
 		return;
 	}
@@ -2041,7 +2041,7 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 	bool valid = false;
 
 	for(const map_location& loc : locs) {
-		if(get_map().on_board(loc) == false) continue;
+		if(context().map().on_board(loc) == false) continue;
 		if(check_fogged && fogged(loc)) continue;
 
 		const auto [x, y] = get_location(loc);
@@ -2075,12 +2075,8 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 	if(!valid) return;
 
 	if (scroll_type == ONSCREEN || scroll_type == ONSCREEN_WARP) {
-		rect r = map_area();
 		int spacing = std::round(add_spacing * hex_size());
-		r.x += spacing;
-		r.y += spacing;
-		r.w -= 2*spacing;
-		r.h -= 2*spacing;
+		rect r = map_area().padded_by(-spacing); // Shrink
 		if (!outside_area(r, minx,miny) && !outside_area(r, maxx,maxy)) {
 			return;
 		}
@@ -2094,14 +2090,12 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 	locs_bbox.h = maxy - miny + hex_size();
 
 	// target the center
-	int target_x = locs_bbox.x + locs_bbox.w/2;
-	int target_y = locs_bbox.y + locs_bbox.h/2;
+	auto [target_x, target_y] = locs_bbox.center();
 
 	if (scroll_type == ONSCREEN || scroll_type == ONSCREEN_WARP) {
 		// when doing an ONSCREEN scroll we do not center the target unless needed
 		rect r = map_area();
-		int map_center_x = r.x + r.w/2;
-		int map_center_y = r.y + r.h/2;
+		auto [map_center_x, map_center_y] = r.center();
 
 		int h = r.h;
 		int w = r.w;
@@ -2161,8 +2155,8 @@ void display::bounds_check_position(int& xpos, int& ypos) const
 	const int tile_width = hex_width();
 
 	// Adjust for the border 2 times
-	const int xend = static_cast<int>(tile_width * (get_map().w() + 2 * theme_.border().size) + tile_width / 3);
-	const int yend = static_cast<int>(zoom_ * (get_map().h() + 2 * theme_.border().size) + zoom_ / 2);
+	const int xend = static_cast<int>(tile_width * (context().map().w() + 2 * theme_.border().size) + tile_width / 3);
+	const int yend = static_cast<int>(zoom_ * (context().map().h() + 2 * theme_.border().size) + zoom_ / 2);
 
 	xpos = std::clamp(xpos, 0, xend - map_area().w);
 	ypos = std::clamp(ypos, 0, yend - map_area().h);
@@ -2393,7 +2387,7 @@ void display::draw()
 		redraw_background_ = false;
 	}
 
-	if(!get_map().empty()) {
+	if(!context().map().empty()) {
 		if(!invalidated_.empty()) {
 			draw_invalidated();
 			invalidated_.clear();
@@ -2435,7 +2429,7 @@ void display::layout()
 
 	// Post-layout / Pre-render
 
-	if (!get_map().empty()) {
+	if (!context().map().empty()) {
 		if(redraw_background_) {
 			invalidateAll_ = true;
 		}
@@ -2620,7 +2614,7 @@ void display::draw_invalidated()
 
 	// The unit drawer can't function without teams
 	utils::optional<unit_drawer> drawer{};
-	if(!dc_->teams().empty()) {
+	if(!context().teams().empty()) {
 		drawer.emplace(*this);
 	}
 
@@ -2634,10 +2628,8 @@ void display::draw_invalidated()
 		drawn_hexes_ += 1;
 
 		if(drawer) {
-			const auto u_it = dc_->units().find(loc);
-			const auto request = exclusive_unit_draw_requests_.find(loc);
-
-			if(u_it != dc_->units().end() && (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id())) {
+			const auto u_it = context().units().find(loc);
+			if(u_it != context().units().end() && unit_can_draw_here(loc, *u_it)) {
 				drawer->redraw_unit(*u_it);
 			}
 		}
@@ -2650,7 +2642,7 @@ void display::draw_invalidated()
 
 void display::draw_hex(const map_location& loc)
 {
-	const bool on_map = get_map().on_board(loc);
+	const bool on_map = context().map().on_board(loc);
 	const time_of_day& tod = get_time_of_day(loc);
 
 	int num_images_fg = 0;
@@ -2694,7 +2686,7 @@ void display::draw_hex(const map_location& loc)
 		draw_overlays_at(loc);
 
 		// village-control flags.
-		if(get_map().is_village(loc)) {
+		if(context().map().is_village(loc)) {
 			drawing_buffer_add(drawing_layer::terrain_bg, loc,
 				[tex = get_flag(loc)](const rect& dest) { draw::blit(tex, dest); });
 		}
@@ -2773,7 +2765,7 @@ void display::draw_hex(const map_location& loc)
 		}
 
 		if(debug_flag_set(DEBUG_TERRAIN_CODES) && (game_config::debug || !is_shrouded)) {
-			ss << get_map().get_terrain(loc) << '\n';
+			ss << context().map().get_terrain(loc) << '\n';
 		}
 
 		if(debug_flag_set(DEBUG_NUM_BITMAPS)) {
@@ -2796,22 +2788,13 @@ void display::draw_hex(const map_location& loc)
 		renderer.set_maximum_width(-1);
 
 		drawing_buffer_add(drawing_layer::fog_shroud, loc, [tex = renderer.render_and_get_texture()](const rect& dest) {
-			const rect text_dest {
-				(dest.x + dest.w / 2) - (tex.w() / 2),
-				(dest.y + dest.h / 2) - (tex.h() / 2),
-				tex.w(),
-				tex.h()
-			};
+			// Center text in dest rect
+			const rect text_dest { dest.center() - tex.draw_size() / 2, tex.draw_size() };
 
-			// Add a little horizontal padding to the bg
-			const rect bg_dest {
-				text_dest.x - 3,
-				text_dest.y - 3,
-				text_dest.w + 6,
-				text_dest.h + 6
-			};
+			// Add a little padding to the bg
+			const rect bg_dest = text_dest.padded_by(3);
 
-			draw::fill(bg_dest, {0, 0, 0, 0xaa});
+			draw::fill(bg_dest, 0, 0, 0, 170);
 			draw::blit(tex, text_dest);
 		});
 	}
@@ -2856,7 +2839,7 @@ void display::draw_overlays_at(const map_location& loc)
 			: image::get_texture(ov.image, image::HEXED);
 
 		// Base submerge value for the terrain at this location
-		const double ter_sub = get_map().get_terrain_info(loc).unit_submerge();
+		const double ter_sub = context().map().get_terrain_info(loc).unit_submerge();
 
 		drawing_buffer_add(
 			drawing_layer::terrain_bg, loc, [this, tex, ter_sub, ovr_sub = ov.submerge](const rect& dest) mutable {
@@ -3211,8 +3194,8 @@ bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 
 void display::invalidate_animations_location(const map_location& loc)
 {
-	if(get_map().is_village(loc)) {
-		const int owner = dc_->village_owner(loc) - 1;
+	if(context().map().is_village(loc)) {
+		const int owner = context().village_owner(loc) - 1;
 		if(owner >= 0 && flags_[owner].need_update()
 			&& (!fogged(loc) || !viewing_team().is_enemy(owner + 1))) {
 			invalidate(loc);
@@ -3237,7 +3220,7 @@ void display::invalidate_animations()
 		}
 	}
 
-	for(const unit& u : dc_->units()) {
+	for(const unit& u : context().units()) {
 		u.anim_comp().refresh();
 	}
 	for(const unit* u : *fake_unit_man_) {
@@ -3247,7 +3230,7 @@ void display::invalidate_animations()
 	bool new_inval;
 	do {
 		new_inval = false;
-		for(const unit& u : dc_->units()) {
+		for(const unit& u : context().units()) {
 			new_inval |= u.anim_comp().invalidate(*this);
 		}
 		for(const unit* u : *fake_unit_man_) {
@@ -3260,7 +3243,7 @@ void display::invalidate_animations()
 
 void display::reset_standing_animations()
 {
-	for(const unit & u : dc_->units()) {
+	for(const unit & u : context().units()) {
 		u.anim_comp().set_standing();
 	}
 }
@@ -3322,7 +3305,7 @@ void display::process_reachmap_changes()
 
 		for (const auto& hex : get_visible_hexes()) {
 			reach_map::iterator reach = full.find(hex);
-			if (reach == full.end()) {
+			if (reach != full.end()) {
 				// Location needs to be darkened or brightened
 				invalidate(hex);
 			} else if (reach->second != 1) {
@@ -3331,18 +3314,10 @@ void display::process_reachmap_changes()
 			}
 		}
 	} else if (!reach_map_.empty()) {
-		// Invalidate only changes
+		// Invalidate new and old reach
 		reach_map::iterator reach, reach_old;
 		for (reach = reach_map_.begin(); reach != reach_map_.end(); ++reach) {
-			reach_old = reach_map_old_.find(reach->first);
-			if (reach_old == reach_map_old_.end()) {
-				invalidate(reach->first);
-			} else {
-				if (reach_old->second != reach->second) {
-					invalidate(reach->first);
-				}
-				reach_map_old_.erase(reach_old);
-			}
+			invalidate(reach->first);
 		}
 		for (reach_old = reach_map_old_.begin(); reach_old != reach_map_old_.end(); ++reach_old) {
 			invalidate(reach_old->first);

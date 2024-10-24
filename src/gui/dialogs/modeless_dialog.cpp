@@ -26,7 +26,6 @@ namespace gui2::dialogs
 modeless_dialog::modeless_dialog(const std::string& window_id)
 	: window(get_window_builder(window_id))
 {
-	window::finish_build(get_window_builder(window_id));
 	widget::set_id(window_id);
 }
 

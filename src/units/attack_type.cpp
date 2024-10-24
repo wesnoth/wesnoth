@@ -47,50 +47,29 @@ static lg::log_domain log_unit("unit");
 static lg::log_domain log_wml("wml");
 #define ERR_WML LOG_STREAM(err, log_wml)
 
-namespace {
-/**
- * Value of attack_type::num_recursion_ at which allocations of further recursion_guards fail. This
- * value is used per weapon, so if two weapon specials are depending on each other being active then
- * with ATTACK_RECURSION_LIMIT = 3 the recursion could go 6 levels deep (and then return false on
- * the 7th call to matches_simple_filter).
- *
- * The counter is checked at the start of matches_simple_filter, and even the first level needs an
- * allocation; setting the limit to zero would make matches_simple_filter always return false.
- *
- * With the recursion limit set to 1, the following tests fail; they just need a reasonable depth.
- * event_test_filter_attack_specials
- * event_test_filter_attack_opponent_weapon_condition
- * event_test_filter_attack_student_weapon_condition
- *
- * With the limit set to 2, all tests pass, but as the limit only affects cases that would otherwise
- * lead to a crash, it seems reasonable to leave a little headroom for more complex logic.
- */
-constexpr unsigned int ATTACK_RECURSION_LIMIT = 4;
-};
-
-attack_type::attack_type(const config& cfg) :
-	self_loc_(),
-	other_loc_(),
-	is_attacker_(false),
-	other_attack_(nullptr),
-	description_(cfg["description"].t_str()),
-	id_(cfg["name"]),
-	type_(cfg["type"]),
-	icon_(cfg["icon"]),
-	range_(cfg["range"]),
-	min_range_(cfg["min_range"].to_int(1)),
-	max_range_(cfg["max_range"].to_int(1)),
-	alignment_str_(),
-	damage_(cfg["damage"].to_int()),
-	num_attacks_(cfg["number"].to_int()),
-	attack_weight_(cfg["attack_weight"].to_double(1.0)),
-	defense_weight_(cfg["defense_weight"].to_double(1.0)),
-	accuracy_(cfg["accuracy"].to_int()),
-	movement_used_(cfg["movement_used"].to_int(100000)),
-	attacks_used_(cfg["attacks_used"].to_int(1)),
-	parry_(cfg["parry"].to_int()),
-	specials_(cfg.child_or_empty("specials")),
-	changed_(true)
+attack_type::attack_type(const config& cfg)
+	: self_loc_()
+	, other_loc_()
+	, is_attacker_(false)
+	, other_attack_(nullptr)
+	, description_(cfg["description"].t_str())
+	, id_(cfg["name"])
+	, type_(cfg["type"])
+	, icon_(cfg["icon"])
+	, range_(cfg["range"])
+	, min_range_(cfg["min_range"].to_int(1))
+	, max_range_(cfg["max_range"].to_int(1))
+	, alignment_str_(cfg["alignment"].str())
+	, damage_(cfg["damage"].to_int())
+	, num_attacks_(cfg["number"].to_int())
+	, attack_weight_(cfg["attack_weight"].to_double(1.0))
+	, defense_weight_(cfg["defense_weight"].to_double(1.0))
+	, accuracy_(cfg["accuracy"].to_int())
+	, movement_used_(cfg["movement_used"].to_int(100000))
+	, attacks_used_(cfg["attacks_used"].to_int(1))
+	, parry_(cfg["parry"].to_int())
+	, specials_(cfg.child_or_empty("specials"))
+	, changed_(true)
 {
 	if (description_.empty())
 		description_ = translation::egettext(id_.c_str());
@@ -101,17 +80,15 @@ attack_type::attack_type(const config& cfg) :
 		else
 			icon_ = "attacks/blank-attack.png";
 	}
-	if(cfg.has_attribute("alignment") && (cfg["alignment"] == "neutral" || cfg["alignment"] == "lawful" || cfg["alignment"] == "chaotic" || cfg["alignment"] == "liminal")){
-		alignment_str_ = cfg["alignment"].str();
-	} else if(self_){
-		alignment_str_ =unit_alignments::get_string(self_->alignment());
-	}
 }
 
-unit_alignments::type attack_type::alignment() const
+std::string attack_type::alignment_str() const
 {
-	// pick attack alignment or fall back to unit alignment
-	return (unit_alignments::get_enum(alignment_str_).value_or(self_ ? self_->alignment() : unit_alignments::type::neutral));
+	if (alignment()){
+		return unit_alignments::get_string(*alignment());
+	}
+	//if not alignment() fallback to unit alignment or return empty string if not available.
+	return (self_ ? unit_alignments::get_string(self_->alignment()) : "");
 }
 
 std::string attack_type::accuracy_parry_description() const
@@ -130,50 +107,12 @@ std::string attack_type::accuracy_parry_description() const
 	return s.str();
 }
 
-namespace {
-/**
- * Print "Recursion limit reached" log messages, including deduplication if the same problem has
- * already been logged.
- */
-void show_recursion_warning(const attack_type& attack, const config& filter) {
-	// This function is only called when the recursion limit has already been reached, meaning the
-	// filter has already been parsed multiple times, so I'm not trying to optimize the performance
-	// of this; it's merely to prevent the logs getting spammed. For example, each of
-	// four_cycle_recursion_branching and event_test_filter_attack_student_weapon_condition only log
-	// 3 unique messages, but without deduplication they'd log 1280 and 392 respectively.
-	static std::vector<std::tuple<std::string, std::string>> already_shown;
-
-	auto identifier = std::tuple<std::string, std::string>{attack.id(), filter.debug()};
-	if(utils::contains(already_shown, identifier)) {
-		return;
-	}
-
-	std::string_view filter_text_view = std::get<1>(identifier);
-	utils::trim(filter_text_view);
-	ERR_UT << "Recursion limit reached for weapon '" << attack.id()
-		<< "' while checking filter '" << filter_text_view << "'";
-
-	// Arbitrary limit, just ensuring that having a huge number of specials causing recursion
-	// warnings can't lead to unbounded memory consumption here.
-	if(already_shown.size() > 100) {
-		already_shown.clear();
-	}
-	already_shown.push_back(std::move(identifier));
-}
-
 /**
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
  */
-bool matches_simple_filter(const attack_type& attack, const config& filter, const std::string& check_if_recursion)
+static bool matches_simple_filter(const attack_type & attack, const config & filter, const std::string& check_if_recursion)
 {
-	//update and check variable_recursion for prevent check special_id/type_active in case of infinite recursion.
-	attack_type::recursion_guard filter_lock= attack.update_variables_recursion();
-	if(!filter_lock) {
-		show_recursion_warning(attack, filter);
-		return false;
-	}
-
 	const std::set<std::string> filter_range = utils::split_set(filter["range"].str());
 	const std::string& filter_min_range = filter["min_range"];
 	const std::string& filter_max_range = filter["max_range"];
@@ -339,7 +278,6 @@ bool matches_simple_filter(const attack_type& attack, const config& filter, cons
 	// Passed all tests.
 	return true;
 }
-} // anonymous namespace
 
 /**
  * Returns whether or not *this matches the given @a filter.
@@ -350,7 +288,7 @@ bool attack_type::matches_filter(const config& filter, const std::string& check_
 	bool matches = matches_simple_filter(*this, filter, check_if_recursion);
 
 	// Handle [and], [or], and [not] with in-order precedence
-	for(const auto [key, condition_cfg] : filter.all_children_range() )
+	for(const auto [key, condition_cfg] : filter.all_children_view() )
 	{
 		// Handle [and]
 		if ( key == "and" )
@@ -436,7 +374,7 @@ bool attack_type::apply_modification(const config& cfg)
 	if(del_specials.empty() == false) {
 		const std::vector<std::string>& dsl = utils::split(del_specials);
 		config new_specials;
-		for(const auto [key, cfg] : specials_.all_children_range()) {
+		for(const auto [key, cfg] : specials_.all_children_view()) {
 			std::vector<std::string>::const_iterator found_id =
 				std::find(dsl.begin(), dsl.end(), cfg["id"].str());
 			if (found_id == dsl.end()) {
@@ -456,7 +394,7 @@ bool attack_type::apply_modification(const config& cfg)
 		if(mode != "append") {
 			specials_.clear();
 		}
-		for(const auto [key, cfg] : set_specials->all_children_range()) {
+		for(const auto [key, cfg] : set_specials->all_children_view()) {
 			specials_.add_child(key, cfg);
 		}
 	}
@@ -717,20 +655,20 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 	return true;
 }
 
-attack_type::recursion_guard attack_type::update_variables_recursion() const
+attack_type::recursion_guard attack_type::update_variables_recursion(const config& special) const
 {
-	if(num_recursion_ < ATTACK_RECURSION_LIMIT) {
-		return recursion_guard(*this);
+	if(utils::contains(open_queries_, &special)) {
+		return recursion_guard();
 	}
-	return recursion_guard();
+	return recursion_guard(*this, special);
 }
 
 attack_type::recursion_guard::recursion_guard() = default;
 
-attack_type::recursion_guard::recursion_guard(const attack_type& weapon)
+attack_type::recursion_guard::recursion_guard(const attack_type& weapon, const config& special)
 	: parent(weapon.shared_from_this())
 {
-	weapon.num_recursion_++;
+	parent->open_queries_.emplace_back(&special);
 }
 
 attack_type::recursion_guard::recursion_guard(attack_type::recursion_guard&& other)
@@ -756,8 +694,10 @@ attack_type::recursion_guard& attack_type::recursion_guard::operator=(attack_typ
 attack_type::recursion_guard::~recursion_guard()
 {
 	if(parent) {
-		assert(parent->num_recursion_ > 0);
-		parent->num_recursion_--;
+		// As this only expects nested recursion, simply pop the top of the open_queries_ stack
+		// without checking that the top of the stack matches the filter passed to the constructor.
+		assert(!parent->open_queries_.empty());
+		parent->open_queries_.pop_back();
 	}
 }
 

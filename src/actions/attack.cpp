@@ -187,8 +187,9 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	int damage_multiplier = 100;
 
 	// Time of day bonus.
+	unit_alignments::type alignment = weapon->alignment().value_or(u.alignment());
 	damage_multiplier += combat_modifier(
-			resources::gameboard->units(), resources::gameboard->map(), u_loc, weapon->alignment(), u.is_fearless());
+			resources::gameboard->units(), resources::gameboard->map(), u_loc, alignment, u.is_fearless());
 
 	// Leadership bonus.
 	int leader_bonus = under_leadership(u, u_loc, weapon, opp_weapon);
@@ -316,8 +317,9 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 
 	int base_damage = weapon->modified_damage();
 	int damage_multiplier = 100;
+	unit_alignments::type alignment = weapon->alignment().value_or(u_type->alignment());
 	damage_multiplier
-			+= generic_combat_modifier(lawful_bonus, weapon->alignment(), u_type->musthave_status("fearless"), 0);
+			+= generic_combat_modifier(lawful_bonus, alignment, u_type->musthave_status("fearless"), 0);
 	damage_multiplier *= opp_type->resistance_against(weapon->type(), !attacking);
 
 	damage = round_damage(base_damage, damage_multiplier, 10000);
@@ -1307,7 +1309,7 @@ void attack::unit_killed(unit_info& attacker,
 			unit_ptr newunit = unit::create(*reanimator, attacker.get_unit().side(), true, unit_race::MALE);
 			newunit->set_attacks(0);
 			newunit->set_movement(0, true);
-			newunit->set_facing(map_location::get_opposite_dir(attacker.get_unit().facing()));
+			newunit->set_facing(map_location::get_opposite_direction(attacker.get_unit().facing()));
 
 			// Apply variation
 			if(undead_variation != "null") {

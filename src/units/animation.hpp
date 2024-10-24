@@ -167,7 +167,7 @@ private:
 	t_translation::ter_list terrain_types_;
 	std::vector<config> unit_filter_;
 	std::vector<config> secondary_unit_filter_;
-	std::vector<map_location::DIRECTION> directions_;
+	std::vector<map_location::direction> directions_;
 	int frequency_;
 	int base_score_;
 	std::vector<std::string> event_;

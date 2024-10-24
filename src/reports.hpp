@@ -17,7 +17,10 @@
 
 #include "display_context.hpp"
 
+#include "config.hpp"
 #include <vector>
+#include <map>
+#include <set>
 
 #include "utils/optional_reference.hpp"
 

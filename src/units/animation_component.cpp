@@ -163,7 +163,7 @@ bool unit_animation_component::invalidate (const display & disp)
 	// Very early calls, anim not initialized yet
 	if(get_animation()) {
 		frame_parameters params;
-		const gamemap & map = disp.get_map();
+		const gamemap& map = disp.context().map();
 		const t_translation::terrain_code terrain = map.get_terrain(u_.loc_);
 		const terrain_type& terrain_info = map.get_terrain_info(terrain);
 

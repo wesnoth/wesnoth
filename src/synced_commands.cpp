@@ -139,7 +139,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, use_undo, show, error_handler)
 	map_location loc(child, resources::gamedata);
 	map_location from(child.child_or_empty("from"), resources::gamedata);
 
-	if ( !actions::recall_unit(unit_id, current_team, loc, from, map_location::NDIRECTIONS, show, use_undo) ) {
+	if ( !actions::recall_unit(unit_id, current_team, loc, from, map_location::direction::indeterminate, show, use_undo) ) {
 		error_handler("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
 		//when recall_unit returned false nothing happened so we can safety return false;
 		return false;

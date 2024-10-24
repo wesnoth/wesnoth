@@ -150,12 +150,10 @@ void faction_select::on_faction_select()
 	on_leader_select();
 
 	// Print recruits
-	const std::vector<std::string> recruit_list = utils::split(flg_manager_.current_faction()["recruit"]);
 	std::vector<t_string> recruit_names;
-
-	for(const auto& recruit : recruit_list) {
+	for(const auto& recruit : utils::split(flg_manager_.current_faction()["recruit"])) {
 		if(const unit_type* rt = unit_types.find(recruit)) {
-			recruit_names.push_back(font::unicode_bullet + " " + rt->type_name());
+			recruit_names.push_back(rt->type_name());
 		}
 	}
 
@@ -163,7 +161,7 @@ void faction_select::on_faction_select()
 		return translation::compare(s1, s2) < 0;
 	});
 
-	find_widget<styled_widget>("recruits").set_label(utils::join(recruit_names, "\n"));
+	find_widget<styled_widget>("recruits").set_label(utils::bullet_list(recruit_names, 0));
 }
 
 void faction_select::on_leader_select()

@@ -294,27 +294,27 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 {
 	//if(!cfg["debug"].empty()) printf("DEBUG WML: FINAL\n%s\n\n",cfg.debug().c_str());
 
-	for(const config::any_child fr : cfg.all_children_range()) {
-		if(fr.key == frame_string) {
+	for(const auto [key, frame] : cfg.all_children_view()) {
+		if(key == frame_string) {
 			continue;
 		}
 
-		if(fr.key.find("_frame", fr.key.size() - 6) == std::string::npos) {
+		if(key.find("_frame", key.size() - 6) == std::string::npos) {
 			continue;
 		}
 
-		if(sub_anims_.find(fr.key) != sub_anims_.end()) {
+		if(sub_anims_.find(key) != sub_anims_.end()) {
 			continue;
 		}
 
-		sub_anims_[fr.key] = particle(cfg, fr.key.substr(0, fr.key.size() - 5));
+		sub_anims_[key] = particle(cfg, key.substr(0, key.size() - 5));
 	}
 
 	event_ = utils::split(cfg["apply_to"]);
 
 	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
 	for(const auto& direction :  my_directions) {
-		const map_location::DIRECTION d = map_location::parse_direction(direction);
+		const map_location::direction d = map_location::parse_direction(direction);
 		directions_.push_back(d);
 	}
 
@@ -386,7 +386,7 @@ int unit_animation::matches(const map_location& loc, const map_location& second_
 	}
 
 	if(!terrain_types_.empty()) {
-		if(!t_translation::terrain_matches(disp.get_map().get_terrain(loc), terrain_types_)) {
+		if(!t_translation::terrain_matches(disp.context().map().get_terrain(loc), terrain_types_)) {
 			return MATCH_FAIL;
 		}
 
@@ -417,7 +417,7 @@ int unit_animation::matches(const map_location& loc, const map_location& second_
 		}
 
 		if(!secondary_unit_filter_.empty()) {
-			unit_map::const_iterator unit = disp.get_units().find(second_loc);
+			unit_map::const_iterator unit = disp.context().units().find(second_loc);
 			if(!unit.valid()) {
 				return MATCH_FAIL;
 			}

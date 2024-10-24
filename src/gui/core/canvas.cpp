@@ -104,10 +104,12 @@ rectangle_shape::rectangle_shape(const config& cfg)
 
 void rectangle_shape::draw(wfl::map_formula_callable& variables)
 {
-	const int x = x_(variables);
-	const int y = y_(variables);
-	const int w = w_(variables);
-	const int h = h_(variables);
+	const rect area {
+		x_(variables),
+		y_(variables),
+		w_(variables),
+		h_(variables)
+	};
 
 	const color_t fill_color = fill_color_(variables);
 
@@ -115,32 +117,16 @@ void rectangle_shape::draw(wfl::map_formula_callable& variables)
 	if(!fill_color.null()) {
 		DBG_GUI_D << "fill " << fill_color;
 		draw::set_color(fill_color);
-
-		const SDL_Rect area {
-			x +  border_thickness_,
-			y +  border_thickness_,
-			w - (border_thickness_ * 2),
-			h - (border_thickness_ * 2)
-		};
-
-		draw::fill(area);
+		draw::fill(area.padded_by(-border_thickness_));
 	}
 
 	const color_t border_color = border_color_(variables);
 
 	// Draw the border
 	draw::set_color(border_color);
-	DBG_GUI_D << "border thickness " << border_thickness_
-		<< ", colour " << border_color;
+	DBG_GUI_D << "border thickness " << border_thickness_ << ", colour " << border_color;
 	for(int i = 0; i < border_thickness_; ++i) {
-		const SDL_Rect dimensions {
-			x + i,
-			y + i,
-			w - (i * 2),
-			h - (i * 2)
-		};
-
-		draw::rect(dimensions);
+		draw::rect(area.padded_by(-i));
 	}
 }
 
@@ -677,7 +663,7 @@ void canvas::parse_cfg(const config& cfg)
 {
 	log_scope2(log_gui_parse, "Canvas: parsing config.");
 
-	for(const auto [type, data] : cfg.all_children_range())
+	for(const auto [type, data] : cfg.all_children_view())
 	{
 		DBG_GUI_P << "Canvas: found shape of the type " << type << ".";
 
@@ -696,7 +682,7 @@ void canvas::parse_cfg(const config& cfg)
 		} else if(type == "pre_commit") {
 
 			/* note this should get split if more preprocessing is used. */
-			for(const auto [func_key, func_cfg] : data.all_children_range())
+			for(const auto [func_key, func_cfg] : data.all_children_view())
 			{
 				if(func_key == "blur") {
 					blur_depth_ = func_cfg["depth"].to_unsigned();

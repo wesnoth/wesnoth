@@ -16,11 +16,8 @@
 
 #include "undo_action.hpp"
 
-namespace actions
+namespace actions::undo
 {
-namespace undo
-{
-
 struct auto_shroud_action : undo_action_base {
 	bool active;
 
@@ -48,5 +45,4 @@ struct update_shroud_action : undo_action_base {
 	virtual void write(config & cfg) const;
 };
 
-}
 }

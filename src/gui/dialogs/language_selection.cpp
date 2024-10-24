@@ -24,6 +24,7 @@
 #include "gettext.hpp"
 #include "language.hpp"
 #include "preferences/preferences.hpp"
+#include "serialization/markup.hpp"
 
 namespace gui2::dialogs
 {
@@ -97,11 +98,11 @@ void language_selection::pre_show()
 
 		data["language"]["label"] = lang.language;
 		data["language"]["use_markup"] = "true";
-		data["translated_total"]["label"] = "<span color='" + game_config::red_to_green(lang.percent).to_hex_string() + "'>" + std::to_string(lang.percent) + "%</span>";
+		data["translated_total"]["label"] = markup::span_color(game_config::red_to_green(lang.percent), lang.percent, "%");
 		data["translated_total"]["use_markup"] = "true";
 
 		if(game_config::debug && !lang.localename.empty()) {
-			data["language"]["label"] += "\n<small><tt>" + lang.localename + "</tt></small>";
+			data["language"]["label"] += "\n" + markup::tag("small", markup::tag("tt", lang.localename));
 		}
 
 		list.add_row(data);

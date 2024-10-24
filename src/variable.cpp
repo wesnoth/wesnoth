@@ -184,7 +184,7 @@ config vconfig::get_parsed_config() const
 		res[key] = expand(key);
 	}
 
-	for(const auto [key, cfg] : cfg_->all_children_range())
+	for(const auto [key, cfg] : cfg_->all_children_view())
 	{
 		if (key == "insert_tag") {
 			vconfig insert_cfg(cfg, *variables_);
@@ -227,7 +227,7 @@ vconfig::child_list vconfig::get_children(const std::string& key_to_get) const
 {
 	vconfig::child_list res;
 
-	for(const auto [key, cfg] : cfg_->all_children_range())
+	for(const auto [key, cfg] : cfg_->all_children_view())
 	{
 		if (key == key_to_get) {
 			res.push_back(vconfig(cfg, cache_, *variables_));
@@ -257,7 +257,7 @@ std::size_t vconfig::count_children(const std::string& key_to_count) const
 {
 	std::size_t n = 0;
 
-	for(const auto [key, cfg] : cfg_->all_children_range())
+	for(const auto [key, cfg] : cfg_->all_children_view())
 	{
 		if (key == key_to_count) {
 			n++;

@@ -188,7 +188,6 @@ static int impl_unit_attacks_set(lua_State* L)
 		if(iter == end) {
 			atk = u.add_attack(end, cfg);
 		} else {
-		    auto ctx = atk->specials_context(u.shared_from_this(), map_location::null_location(), true);
 			iter.base()->reset(new attack_type(cfg));
 			atk = *iter.base();
 		}

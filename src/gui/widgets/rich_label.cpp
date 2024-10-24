@@ -18,7 +18,6 @@
 #include "gui/widgets/rich_label.hpp"
 
 #include "gui/core/log.hpp"
-
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/dialogs/message.hpp"
@@ -27,9 +26,11 @@
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
+#include "font/sdl_ttf_compat.hpp"
 #include "help/help_impl.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "serialization/markup.hpp"
 #include "serialization/unicode.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"
@@ -240,6 +241,21 @@ size_t rich_label::get_split_location(std::string_view text, const point& pos) {
 	return len;
 }
 
+std::vector<std::string> rich_label::split_in_width(const std::string &s, const int font_size, const unsigned width) {
+	std::vector<std::string> res;
+	try {
+		const std::string& first_line = font::pango_word_wrap(s, font_size, width, -1, 1, true);
+		res.push_back(first_line);
+		if(s.size() > first_line.size()) {
+			res.push_back(s.substr(first_line.size()));
+		}
+	} catch (utf8::invalid_utf8_exception&) {
+		throw markup::parse_error (_("corrupted original file"));
+	}
+
+	return res;
+}
+
 void rich_label::set_topic(const help::topic* topic) {
 	styled_widget::set_label(topic->text.parsed_text().debug());
 	std::tie(text_dom_, size_) = get_parsed_text(topic->text.parsed_text(), point(0,0), init_w_, true);
@@ -287,7 +303,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 	DBG_GUI_RL << parsed_text.debug();
 
-	for(const auto [key, child] : parsed_text.all_children_range()) {
+	for(const auto [key, child] : parsed_text.all_children_view()) {
 		if(key == "img") {
 			std::string name = child["src"];
 			std::string align = child["align"];
@@ -340,7 +356,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 			text_height = 0;
 
 			// init table vars
-			unsigned col_idx = 0, row_idx = 0;
+			unsigned col_idx = 0;
 			unsigned rows = child.child_count("row");
 			unsigned columns = 1;
 			if (rows > 0) {
@@ -375,7 +391,9 @@ std::pair<config, point> rich_label::get_parsed_text(
 					col_txt_cfg.append_attributes(col);
 
 					// attach data
+					auto links = links_;
 					const auto& [table_elem, size] = get_parsed_text(col_cfg, point(col_x, row_y), width/columns);
+					links_ = links;
 					col_widths[col_idx] = std::max(col_widths[col_idx], static_cast<unsigned>(size.x));
 					col_widths[col_idx] = std::min(col_widths[col_idx], width/columns);
 
@@ -383,13 +401,11 @@ std::pair<config, point> rich_label::get_parsed_text(
 					col_idx++;
 				}
 
-				row_idx++;
 				row_y += max_row_height + padding_;
 			}
 
 			// table layouting
 			row_y = prev_blk_height;
-			row_idx = 0;
 			for(const config& row : child.child_range("row")) {
 				col_x = 0;
 				col_idx = 0;
@@ -410,7 +426,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 					max_row_height = std::max(max_row_height, static_cast<unsigned>(size.y));
 
 					col_x += col_widths[col_idx] + 2 * padding_;
-					config& end_cfg = text_dom.all_children_range().back().cfg;
+					auto [_, end_cfg] = text_dom.all_children_view().back();
 					end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', %d), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % col_x % row_y % col_x % (width/columns));
 
 					DBG_GUI_RL << "jump to next column";
@@ -423,7 +439,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 				}
 
 				row_y += max_row_height + padding_;
-				config& end_cfg = text_dom.all_children_range().back().cfg;
+				auto [_, end_cfg] = text_dom.all_children_view().back();
 				end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', %d), set_var('tw', width - %d - %d)])") % row_y % col_x % col_widths[columns-1]);
 				DBG_GUI_RL << "row height: " << max_row_height;
 			}
@@ -431,7 +447,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 			prev_blk_height = row_y;
 			text_height = 0;
 
-			config& end_cfg = text_dom.all_children_range().back().cfg;
+			auto [_, end_cfg] = text_dom.all_children_view().back();
 			end_cfg["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('pos_y', %d), set_var('tw', 0)])") % row_y);
 
 			is_image = false;
@@ -483,7 +499,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 					(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
 					line = line.substr(1);
 				} else if (!line.empty() && line.at(0) != '\n') {
-					std::vector<std::string> parts = help::split_in_width(line, font::SIZE_NORMAL, init_width - x);
+					std::vector<std::string> parts = split_in_width(line, font::SIZE_NORMAL, (init_width-x));
 					// First line
 					if (!parts.front().empty()) {
 						line = parts.front();
@@ -540,7 +556,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 				add_text_with_attribute(*curr_item, line, key);
 				config parsed_children = get_parsed_text(child, point(x, prev_blk_height), init_width).first;
 
-				for (const auto [parsed_key, parsed_cfg] : parsed_children.all_children_range()) {
+				for (const auto [parsed_key, parsed_cfg] : parsed_children.all_children_view()) {
 					if (parsed_key == "text") {
 						const auto [start, end] = add_text(*curr_item, parsed_cfg["text"]);
 						for (const config& attr : parsed_cfg.child_range("attribute")) {
@@ -667,7 +683,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 				(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + " + std::to_string(img_size.y) + ")])";
 				text_dom.append(*remaining_item);
 				remaining_item = nullptr;
-				curr_item = &text_dom.all_children_range().back().cfg;
+				curr_item = &text_dom.all_children_view().back().second;
 			}
 		}
 
@@ -732,7 +748,7 @@ void rich_label::default_text_config(config* txt_ptr, t_string text) {
 		// ww -> wrap width, used for wrapping around floating image
 		// max text width shouldn't go beyond the rich_label's specified width
 		(*txt_ptr)["maximum_width"] = "(width - pos_x - ww - tw)";
-		(*txt_ptr)["actions"] = "([set_var('pos_y', pos_y + text_height)])";
+		(*txt_ptr)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + text_height)])";
 	}
 }
 

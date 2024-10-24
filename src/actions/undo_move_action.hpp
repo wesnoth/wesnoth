@@ -18,24 +18,21 @@
 #include "shroud_clearing_action.hpp"
 #include "units/ptr.hpp"
 
-namespace actions
+namespace actions::undo
 {
-namespace undo
-{
-
 struct move_action : undo_action, shroud_clearing_action
 {
 	int starting_moves;
-	map_location::DIRECTION starting_dir;
+	map_location::direction starting_dir;
 	map_location goto_hex;
 
 
 	move_action(const unit_const_ptr moved,
 	            const std::vector<map_location>::const_iterator & begin,
 	            const std::vector<map_location>::const_iterator & end,
-	            int sm, int timebonus, int orig, const map_location::DIRECTION dir);
+	            int sm, int timebonus, int orig, const map_location::direction dir);
 	move_action(const config & cfg, const config & unit_cfg,
-	            int sm, const map_location::DIRECTION dir)
+	            int sm, const map_location::direction dir)
 		: undo_action(cfg)
 		, shroud_clearing_action(cfg)
 		, starting_moves(sm)
@@ -54,5 +51,4 @@ struct move_action : undo_action, shroud_clearing_action
 	virtual bool undo(int side);
 };
 
-}
 }

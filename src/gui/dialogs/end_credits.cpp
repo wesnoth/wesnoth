@@ -23,6 +23,7 @@
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
+#include "serialization/markup.hpp"
 
 #include <functional>
 
@@ -59,11 +60,11 @@ void end_credits::pre_show()
 		group_stream << "\n";
 
 		if(!group.header.empty()) {
-			group_stream << "<span size='xx-large'>" << group.header << "</span>" << "\n";
+			group_stream << markup::span_size("xx-large", group.header) << "\n";
 		}
 
 		for(const about::credits_group::about_group& about : group.sections) {
-			group_stream << "\n" << "<span size='x-large'>" << about.title << "</span>" << "\n";
+			group_stream << "\n" << markup::span_size("x-large", about.title) << "\n";
 
 			for(const auto& entry : about.names) {
 				group_stream << entry.first << "\n";

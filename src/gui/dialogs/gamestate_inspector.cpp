@@ -25,9 +25,10 @@
 #include "gui/widgets/window.hpp"
 
 #include "desktop/clipboard.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "game_events/manager.hpp"
 #include "serialization/parser.hpp" // for write()
+#include "serialization/markup.hpp"
 
 #include "gettext.hpp"
 #include "recall_list_manager.hpp"
@@ -511,7 +512,7 @@ void variable_mode_controller::show_list(tree_view_node& node)
 
 	std::map<std::string, std::size_t> wml_array_sizes;
 
-	for(const auto [key, cfg] : vars().all_children_range())
+	for(const auto [key, cfg] : vars().all_children_view())
 	{
 		std::ostringstream cur_str;
 		cur_str << "[" << key << "][" << wml_array_sizes[key] << "]";
@@ -589,12 +590,11 @@ static stuff_list_adder add_unit_entry(stuff_list_adder& progress, const unit& u
 	progress.widget("loc", s.str());
 
 	s.str("");
-	s << font::span_color(team_color);
-	s << "side=" << u.side() << "</span>";
+	s << markup::span_color(team_color, "side=", u.side());
 	progress.widget("side", s.str(), true);
 
 	if(u.can_recruit()) {
-		progress.widget("leader", "<span color='yellow'>LEADER</span> ", true);
+		progress.widget("leader", markup::span_color("yellow", "LEADER "), true);
 	}
 
 	s.str("");
@@ -659,7 +659,7 @@ void unit_mode_controller::show_unit(tree_view_node& node)
 
 	std::map<std::string, std::size_t> wml_array_sizes;
 
-	for(const auto [key, cfg] : u->variables().all_children_range())
+	for(const auto [key, cfg] : u->variables().all_children_view())
 	{
 		std::ostringstream cur_str;
 		cur_str << "[" << key << "][" << wml_array_sizes[key] << "]";
@@ -863,7 +863,7 @@ void team_mode_controller::show_vars(tree_view_node& node, int side)
 
 	std::map<std::string, std::size_t> wml_array_sizes;
 
-	for(const auto [key, cfg] : t.variables().all_children_range())
+	for(const auto [key, cfg] : t.variables().all_children_view())
 	{
 		std::ostringstream cur_str;
 		cur_str << "[" << key << "][" << wml_array_sizes[key] << "]";

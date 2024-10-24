@@ -430,7 +430,7 @@ void unit_mover::wait_for_anims()
  * If @a dir is not supplied, the final direction will be determined by (the
  * last two traversed hexes of) the path.
  */
-void unit_mover::finish(unit_ptr u, map_location::DIRECTION dir)
+void unit_mover::finish(unit_ptr u, map_location::direction dir)
 {
 	// Nothing to do here if the display is not valid.
 	if ( !can_draw_ ) {
@@ -442,7 +442,7 @@ void unit_mover::finish(unit_ptr u, map_location::DIRECTION dir)
 	}
 
 	const map_location & end_loc = path_[current_];
-	const map_location::DIRECTION final_dir = current_ == 0 ?
+	const map_location::direction final_dir = current_ == 0 ?
 		path_[0].get_relative_dir(path_[1]) :
 		path_[current_-1].get_relative_dir(end_loc);
 
@@ -476,7 +476,7 @@ void unit_mover::finish(unit_ptr u, map_location::DIRECTION dir)
 	}
 
 	// Facing gets set even when not animating.
-	u->set_facing(dir == map_location::NDIRECTIONS ? final_dir : dir);
+	u->set_facing(dir == map_location::direction::indeterminate ? final_dir : dir);
 	u->anim_comp().set_standing(true);	// Need to reset u's animation so the new facing takes effect.
 
 	// Redraw path ends (even if not animating).
@@ -503,7 +503,7 @@ void unit_mover::finish(unit_ptr u, map_location::DIRECTION dir)
  * will still display the correct number of units.
  */
 void move_unit(const std::vector<map_location>& path, unit_ptr u,
-               bool animate, map_location::DIRECTION dir,
+               bool animate, map_location::direction dir,
                bool force_scroll)
 {
 	unit_mover mover(path, animate, force_scroll);
@@ -770,7 +770,7 @@ void unit_attack(display * disp, game_board & board,
 void reset_helpers(const unit *attacker,const unit *defender)
 {
 	display* disp = display::get_singleton();
-	const unit_map& units = disp->get_units();
+	const unit_map& units = disp->context().units();
 	if(attacker) {
 		unit_ability_list attacker_abilities = attacker->get_abilities("leadership");
 		for(auto& special : attacker->checking_tags()) {
@@ -804,13 +804,14 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 	}
 
 	const team& viewing_team = disp->viewing_team();
+	const unit_map& units = disp->context().units();
 
-	unit_map::const_iterator u = disp->get_units().find(loc);
-	if(u == disp->get_units().end()) return;
+	unit_map::const_iterator u = units.find(loc);
+	if(u == units.end()) return;
 	const bool unit_visible = u->is_visible_to_team(viewing_team, false);
 
-	unit_map::const_iterator leader = disp->get_units().find(leader_loc); // may be null_location
-	const bool leader_visible = (leader != disp->get_units().end()) && leader->is_visible_to_team(viewing_team, false);
+	unit_map::const_iterator leader = units.find(leader_loc); // may be null_location
+	const bool leader_visible = (leader != units.end()) && leader->is_visible_to_team(viewing_team, false);
 
 	unit_animator animator;
 
@@ -829,7 +830,7 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 		} else {
 			return;
 		}
-		if (leader != disp->get_units().end()) {
+		if(leader != units.end()) {
 			leader->set_facing(leader_loc.get_relative_dir(loc));
 			if (leader_visible) {
 				animator.add_animation(leader.get_shared_ptr(), "recruiting", leader_loc, loc, 0, true);

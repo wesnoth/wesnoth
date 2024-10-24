@@ -21,11 +21,11 @@
 #include "gui/widgets/unit_preview_pane.hpp"
 #include "gui/widgets/window.hpp"
 #include "display.hpp"
-#include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "units/map.hpp"
 #include "units/ptr.hpp"
 #include "units/unit.hpp"
+#include "serialization/markup.hpp"
 
 #include <functional>
 
@@ -46,39 +46,36 @@ unit_list::unit_list(std::vector<unit_const_ptr>& unit_list, map_location& scrol
 
 static std::string format_level_string(const int level)
 {
-	std::string lvl = std::to_string(level);
-
 	if(level < 1) {
-		return "<span color='#969696'>" + lvl + "</span>";
+		return markup::span_color("#969696", level);
 	} else if(level == 1) {
-		return lvl;
+		return std::to_string(level);
 	} else if(level == 2) {
-		return "<b>" + lvl + "</b>";
+		return markup::bold(level);
 	} else { // level must be > 2
-		return"<b><span color='#ffffff'>" + lvl + "</span></b>";
+		return markup::bold(markup::span_color("#ffffff", level));
 	}
 
 }
 
 static std::string format_if_leader(unit_const_ptr u, const std::string& str)
 {
-	return (*u).can_recruit() ? "<span color='#cdad00'>" + str + "</span>" : str;
+	return u->can_recruit() ? markup::span_color("#cdad00", str) : str;
 }
 
 static std::string format_movement_string(unit_const_ptr u)
 {
-	const int moves_left = (*u).movement_left();
-	const int moves_max  = (*u).total_movement();
+	const int moves_left = u->movement_left();
+	const int moves_max  = u->total_movement();
 
 	std::string color = "#00ff00";
-
 	if(moves_left == 0) {
 		color = "#ff0000";
 	} else if(moves_left < moves_max) {
 		color = "#ffff00";
 	}
 
-	return formatter() << "<span color='" << color << "'>" << moves_left << "/" << moves_max << "</span>";
+	return markup::span_color(color, moves_left, "/", moves_max);
 }
 
 void unit_list::pre_show()
@@ -108,7 +105,7 @@ void unit_list::pre_show()
 		row_data.emplace("unit_moves", column);
 
 		std::stringstream hp_str;
-		hp_str << font::span_color(unit->hp_color()) << unit->hitpoints() << "/" << unit->max_hitpoints() << "</span>";
+		hp_str << markup::span_color(unit->hp_color(), unit->hitpoints(), "/", unit->max_hitpoints());
 
 		column["label"] = hp_str.str();
 		row_data.emplace("unit_hp", column);
@@ -116,16 +113,11 @@ void unit_list::pre_show()
 		column["label"] = format_level_string(unit->level());
 		row_data.emplace("unit_level", column);
 
-		std::stringstream exp_str;
-		exp_str << font::span_color(unit->xp_color());
 		if(unit->can_advance()) {
-			exp_str << unit->experience() << "/" << unit->max_experience();
+			column["label"] = markup::span_color(unit->xp_color(), unit->experience(), "/", unit->max_experience());
 		} else {
-			exp_str << font::unicode_en_dash;
+			column["label"] = markup::span_color(unit->xp_color(), font::unicode_en_dash);
 		}
-		exp_str << "</span>";
-
-		column["label"] = exp_str.str();
 		row_data.emplace("unit_experience", column);
 
 		column["label"] = utils::join(unit->trait_names(), ", ");
@@ -194,7 +186,7 @@ void show_unit_list(display& gui)
 	std::vector<unit_const_ptr> unit_list;
 	map_location scroll_to;
 
-	const unit_map& units = gui.get_units();
+	const unit_map& units = gui.context().units();
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 		if(i->side() != gui.viewing_team().side()) {
 			continue;

@@ -57,6 +57,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 
+#include "serialization/markup.hpp"
 #include "wml_exception.hpp"
 
 #include <functional>
@@ -136,7 +137,7 @@ void preferences_dialog::set_resolution_list(menu_button& res_list)
 		const int y_ratio = res.y / div;
 
 		if(x_ratio <= 10 || y_ratio <= 10) {
-			option["details"] = formatter() << "<span color='#777777'>(" << x_ratio << ':' << y_ratio << ")</span>";
+			option["details"] = markup::span_color("#777777", "(", x_ratio, ':', y_ratio, ")");
 		}
 
 		options.push_back(std::move(option));
@@ -202,7 +203,7 @@ widget_data preferences_dialog::get_friends_list_row_data(const preferences::acq
 	}
 
 	if(!entry.get_notes().empty()) {
-		notes = " <small>(" + entry.get_notes() + ")</small>";
+		notes = " " + markup::tag("small", "(", entry.get_notes(), ")");
 	}
 
 	item["use_markup"] = "true";
@@ -213,7 +214,7 @@ widget_data preferences_dialog::get_friends_list_row_data(const preferences::acq
 	item["label"] = entry.get_nick() + notes;
 	data.emplace("friend_name", item);
 
-	item["label"] = "<small>" + descriptor + "</small>";
+	item["label"] = markup::tag("small", descriptor);
 	data.emplace("friend_status", item);
 
 	return data;
@@ -776,7 +777,7 @@ void preferences_dialog::initialize_callbacks()
 					config menu_item;
 					menu_item["label"] = choice["name"];
 					if(choice.has_attribute("description")) {
-						menu_item["details"] = std::string("<span color='#777'>") + choice["description"] + "</span>";
+						menu_item["details"] = markup::span_color("#777", choice["description"]);
 					}
 					menu_data.push_back(menu_item);
 					option_ids.push_back(choice["id"]);
@@ -898,9 +899,9 @@ listbox& preferences_dialog::setup_hotkey_list()
 	//
 
 	// These translated initials should match those used in data/gui/window/preferences/02_hotkeys.cfg
-	const std::string gh = "<span color='#0f0'>" + _("game_hotkeys^G") + "</span>";
-	const std::string eh = "<span color='#0f0'>" + _("editor_hotkeys^E") + "</span>";
-	const std::string mh = "<span color='#0f0'>" + _("mainmenu_hotkeys^M") + "</span>";
+	const std::string gh = markup::span_color("#0f0", _("game_hotkeys^G"));
+	const std::string eh = markup::span_color("#0f0", _("editor_hotkeys^E"));
+	const std::string mh = markup::span_color("#0f0", _("mainmenu_hotkeys^M"));
 
 	for(const auto& [id, hotkey_item] : hotkey::get_hotkey_commands()) {
 		if(hotkey_item.hidden) {

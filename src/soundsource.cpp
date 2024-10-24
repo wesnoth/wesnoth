@@ -234,17 +234,17 @@ void sourcespec::write(config& cfg) const
 	write_locations(locations_, cfg);
 }
 
-sourcespec::sourcespec(const config& cfg) :
-	id_(cfg["id"]),
-	files_(cfg["sounds"]),
-	min_delay_(cfg["delay"].to_int(DEFAULT_DELAY)),
-	chance_(cfg["chance"].to_int(DEFAULT_CHANCE)),
-	loops_(cfg["loop"].to_int()),
-	range_(cfg["full_range"].to_int(3)),
-	faderange_(cfg["fade_range"].to_int(14)),
-	check_fogged_(cfg["check_fogged"].to_bool(true)),
-	check_shrouded_(cfg["check_shrouded"].to_bool(true)),
-	locations_()
+sourcespec::sourcespec(const config& cfg)
+	: id_(cfg["id"])
+	, files_(cfg["sounds"])
+	, min_delay_(cfg["delay"].to_int(DEFAULT_DELAY))
+	, chance_(cfg["chance"].to_int(DEFAULT_CHANCE))
+	, loops_(cfg["loop"].to_int())
+	, range_(cfg["full_range"].to_int(3))
+	, faderange_(cfg["fade_range"].to_int(14))
+	, check_fogged_(cfg["check_fogged"].to_bool(true))
+	, check_shrouded_(cfg["check_shrouded"].to_bool(true))
+	, locations_()
 {
 	read_locations(cfg, locations_);
 }

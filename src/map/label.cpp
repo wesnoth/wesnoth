@@ -31,7 +31,7 @@
  */
 inline bool is_shrouded(const display* disp, const map_location& loc)
 {
-	return disp->shrouded(loc) || disp->shrouded(loc.get_direction(map_location::SOUTH));
+	return disp->shrouded(loc) || disp->shrouded(loc.get_direction(map_location::direction::south));
 }
 
 /**
@@ -535,8 +535,8 @@ void terrain_label::recalculate()
 	}
 
 	// Note: the y part of loc_nextx is not used at all.
-	const map_location loc_nextx = loc_.get_direction(map_location::NORTH_EAST);
-	const map_location loc_nexty = loc_.get_direction(map_location::SOUTH);
+	const map_location loc_nextx = loc_.get_direction(map_location::direction::north_east);
+	const map_location loc_nexty = loc_.get_direction(map_location::direction::south);
 	const int xloc = (disp->get_location_x(loc_) + disp->get_location_x(loc_nextx) * 2) / 3;
 	const int yloc = disp->get_location_y(loc_nexty) - scale_to_map_zoom(font::SIZE_NORMAL);
 
@@ -575,7 +575,7 @@ bool terrain_label::hidden() const
 	// Respect user's label preferences
 	std::string category = "cat:" + category_;
 	std::string creator = "side:" + std::to_string(creator_ + 1);
-	const std::vector<std::string>& hidden_categories = disp->get_disp_context().hidden_label_categories();
+	const std::vector<std::string>& hidden_categories = disp->context().hidden_label_categories();
 
 	if(std::find(hidden_categories.begin(), hidden_categories.end(), category) != hidden_categories.end()) {
 		return true;
@@ -623,7 +623,7 @@ bool terrain_label::viewable(const display& disp) const
 	}
 
 	// Observers are not privvy to team labels.
-	const bool can_see_team_labels = !disp.get_disp_context().is_observer();
+	const bool can_see_team_labels = !disp.context().is_observer();
 
 	// Global labels are shown unless covered by a team label.
 	if(team_name_.empty()) {

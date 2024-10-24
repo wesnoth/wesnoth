@@ -27,19 +27,16 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 
-namespace actions
+namespace actions::undo
 {
-namespace undo
-{
-
 move_action::move_action(const unit_const_ptr moved,
 			const std::vector<map_location>::const_iterator & begin,
 			const std::vector<map_location>::const_iterator & end,
-			int sm, int timebonus, int orig, const map_location::DIRECTION dir)
+			int sm, int timebonus, int orig, const map_location::direction dir)
 	: undo_action()
 	, shroud_clearing_action(moved, begin, end, orig, timebonus != 0)
 	, starting_moves(sm)
-	, starting_dir(dir == map_location::NDIRECTIONS ? moved->facing() : dir)
+	, starting_dir(dir == map_location::direction::indeterminate ? moved->facing() : dir)
 	, goto_hex(moved->get_goto())
 {
 }
@@ -108,7 +105,7 @@ bool move_action::undo(int)
 	// Move the unit.
 	unit_display::move_unit(rev_route, u.get_shared_ptr(), true, starting_dir);
 	bool halo_adjacent = false;
-	for(const auto [_, cfg] : u->abilities().all_children_range()){
+	for(const auto [_, cfg] : u->abilities().all_children_view()){
 		if(!cfg["halo_image"].empty() && cfg.has_child("affect_adjacent")){
 			halo_adjacent = true;
 			break;
@@ -130,6 +127,4 @@ bool move_action::undo(int)
 	return true;
 }
 
-
-}
 }

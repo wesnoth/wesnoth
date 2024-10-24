@@ -808,7 +808,7 @@ void schema_self_validator::validate(const config& cfg, const std::string& name,
 	} else if(name == "tag") {
 		bool first_tag = true, first_key = true;
 		std::vector<std::string> tag_names, key_names;
-		for(const auto [current_key, current_cfg] : cfg.all_children_range()) {
+		for(const auto [current_key, current_cfg] : cfg.all_children_view()) {
 			if(current_key == "tag" || current_key == "link") {
 				std::string tag_name = current_cfg["name"];
 				if(current_key == "link") {

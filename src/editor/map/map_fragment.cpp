@@ -104,11 +104,11 @@ void map_fragment::rotate_60_cw()
 		map_location l = map_location::ZERO();
 		int x = ti.offset.x;
 		int y = ti.offset.y;
-		// rotate the X-Y axes to SOUTH/SOUTH_EAST - SOUTH_WEST axes
+		// rotate the X-Y axes to direction::south/direction::south_east - direction::south_west axes
 		// but if x is odd, simply using x/2 + x/2 will lack a step
-		l = l.get_direction(map_location::SOUTH, (x+is_odd(x))/2);
-		l = l.get_direction(map_location::SOUTH_EAST, (x-is_odd(x))/2 );
-		l = l.get_direction(map_location::SOUTH_WEST, y);
+		l = l.get_direction(map_location::direction::south, (x+is_odd(x))/2);
+		l = l.get_direction(map_location::direction::south_east, (x-is_odd(x))/2 );
+		l = l.get_direction(map_location::direction::south_west, y);
 		ti.offset = l;
 		area_.insert(l);
 	}
@@ -124,11 +124,11 @@ void map_fragment::rotate_60_ccw()
 		map_location l = map_location::ZERO();
 		int x = ti.offset.x;
 		int y = ti.offset.y;
-		// rotate the X-Y axes to NORTH/NORTH_EAST - SOUTH_EAST axes'
+		// rotate the X-Y axes to direction::north/direction::north_east - direction::south_east axes'
 		// reverse of what the cw rotation does
-		l = l.get_direction(map_location::NORTH, (x-is_odd(x))/2);
-		l = l.get_direction(map_location::NORTH_EAST, (x+is_odd(x))/2 );
-		l = l.get_direction(map_location::SOUTH_EAST, y);
+		l = l.get_direction(map_location::direction::north, (x-is_odd(x))/2);
+		l = l.get_direction(map_location::direction::north_east, (x+is_odd(x))/2 );
+		l = l.get_direction(map_location::direction::south_east, y);
 		ti.offset = l;
 		area_.insert(l);
 	}

@@ -17,7 +17,7 @@
 
 #include "gui/dialogs/multiplayer/mp_change_control.hpp"
 
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_board.hpp"
@@ -28,6 +28,7 @@
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "menu_events.hpp"
+#include "serialization/markup.hpp"
 #include "team.hpp"
 
 #include <functional>
@@ -78,7 +79,7 @@ void mp_change_control::pre_show()
 		widget_item item;
 
 		std::string side_str = VGETTEXT("Side $side", {{"side", std::to_string(side)}});
-		side_str = font::span_color(team::get_side_color(side)) + side_str + "</span>";
+		side_str = markup::span_color(team::get_side_color(side), side_str);
 
 		item["id"] = (formatter() << "side_" << side).str();
 		item["label"] = side_str;
@@ -149,7 +150,7 @@ void mp_change_control::highlight_side_nick()
 		std::string label_str = "";
 
 		if(selected_side_ <= static_cast<unsigned int>(teams.size()) && teams.at(selected_side_).current_player() == nick) {
-			label_str = formatter() << "<b>" << nick << "</b>";
+			label_str = markup::bold(nick);
 		} else {
 			label_str = nick;
 		}

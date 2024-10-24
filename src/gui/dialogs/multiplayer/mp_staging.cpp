@@ -19,7 +19,7 @@
 #include "ai/configuration.hpp"
 #include "chat_log.hpp"
 #include "formula/string_utils.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "formatter.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
@@ -304,10 +304,18 @@ void mp_staging::add_side_node(ng::side_engine_ptr side)
 	// Colors
 	//
 	std::vector<config> color_options;
-	for(const auto& color : side->color_options()) {
+	for(const auto& color_opt : side->color_options()) {
+		auto name = game_config::team_rgb_name.find(color_opt);
+		auto color = game_config::team_rgb_colors.find(color_opt);
+		auto team_color = _("Invalid Color");
+
+		if (name != game_config::team_rgb_name.end() && color != game_config::team_rgb_colors.end()) {
+			team_color = markup::span_color(color->second[0], name->second);
+		}
+
 		color_options.emplace_back(
-			"label", font::get_color_string_pango(color),
-			"icon", (formatter() << "misc/status.png~RC(magenta>" << color << ")").str()
+			"label", team_color,
+			"icon", (formatter() << "misc/status.png~RC(magenta>" << color_opt << ")").str()
 		);
 	}
 
@@ -486,7 +494,7 @@ void mp_staging::update_leader_display(ng::side_engine_ptr side, grid& row_grid)
 
 	// Faction and leader
 	if(!side->cfg()["name"].empty()) {
-		current_leader = formatter() << side->cfg()["name"] << " (<i>" << current_leader << "</i>)";
+		current_leader = formatter() << side->cfg()["name"] << " (" << markup::italic(current_leader) << ")";
 	}
 
 	row_grid.find_widget<label>("leader_type").set_label(current_leader == "random" ? _("Random") : current_leader);

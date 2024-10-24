@@ -15,7 +15,7 @@
 
 #include "gui/dialogs/multiplayer/lobby_player_list_helper.hpp"
 
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/label.hpp"
@@ -76,11 +76,11 @@ void lobby_player_list_helper::update(const std::vector<mp::user_info>& user_inf
 			icon_ss << "-lobby";
 			break;
 		case mp::user_info::user_state::SEL_GAME:
-			name = font::span_color({0, 255, 255}, name);
+			name = markup::span_color(color_t(0, 255, 255), name);
 			icon_ss << (user.observing ? "-obs" : "-playing");
 			break;
 		case mp::user_info::user_state::GAME:
-			name = font::span_color(font::GRAY_COLOR, name);
+			name = markup::span_color(font::GRAY_COLOR, name);
 			icon_ss << (user.observing ? "-obs" : "-playing");
 			break;
 		}

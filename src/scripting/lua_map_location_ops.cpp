@@ -91,7 +91,7 @@ int intf_get_direction(lua_State* L)
 		lua_pop(L,1);
 	}
 
-	map_location::DIRECTION d;
+	map_location::direction d;
 	if (lua_isstring(L, -1)) {
 		d = map_location::parse_direction(luaL_checkstring(L,-1));
 		lua_pop(L,1);

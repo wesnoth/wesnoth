@@ -28,11 +28,11 @@ palette_manager::palette_manager(editor_display& gui, const game_config_view& cf
 		  gui_(gui),
 		  palette_start_(0),
 		  toolkit_(toolkit),
-		  terrain_palette_(new terrain_palette(gui, cfg, toolkit)),
-		  unit_palette_(new unit_palette(gui, cfg, toolkit)),
+		  terrain_palette_(new terrain_palette(gui, toolkit)),
+		  unit_palette_(new unit_palette(gui, toolkit)),
 		  empty_palette_(new empty_palette(gui)),
-		  item_palette_(new item_palette(gui, cfg, toolkit))
-		, location_palette_(new location_palette(gui, cfg, toolkit))
+		  item_palette_(new item_palette(gui, toolkit))
+		, location_palette_(new location_palette(gui, toolkit))
 {
 	unit_palette_->setup(cfg);
 	terrain_palette_->setup(cfg);

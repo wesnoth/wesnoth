@@ -25,6 +25,7 @@
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "preferences/preferences.hpp"
+#include "serialization/markup.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
@@ -101,7 +102,7 @@ void achievements_dialog::set_achievements_row()
 		if(!ach.achieved_) {
 			t_string name = ach.name_;
 			if(ach.max_progress_ != 0 && ach.current_progress_ != -1) {
-				name += " ("+std::to_string(ach.current_progress_)+"/"+std::to_string(ach.max_progress_)+")";
+				name += (formatter() << " (" << ach.current_progress_ << "/" << ach.max_progress_).str();
 			}
 			item["label"] = name;
 		} else {
@@ -113,7 +114,7 @@ void achievements_dialog::set_achievements_row()
 		if(!ach.achieved_) {
 			item["label"] = ach.description_;
 		} else {
-			item["label"] = "<span color='green'>"+ach.description_completed_+"</span>";
+			item["label"] = markup::span_color("green", ach.description_completed_);
 		}
 		row.emplace("description", item);
 

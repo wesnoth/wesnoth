@@ -657,7 +657,7 @@ void luaW_filltable(lua_State *L, const config& cfg)
 		return;
 
 	int k = 1;
-	for(const auto [child_key, child_cfg] : cfg.all_children_range())
+	for(const auto [child_key, child_cfg] : cfg.all_children_view())
 	{
 		luaW_push_namedtuple(L, {"tag", "contents"});
 		lua_pushstring(L, child_key.c_str());

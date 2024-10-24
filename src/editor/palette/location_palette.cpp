@@ -157,8 +157,7 @@ protected:
 
 };
 namespace editor {
-location_palette::location_palette(editor_display &gui, const game_config_view& /*cfg*/,
-                                   editor_toolkit &toolkit)
+location_palette::location_palette(editor_display &gui, editor_toolkit &toolkit)
 		: common_palette()
 		, item_size_(20)
 		//TODO avoid magic number

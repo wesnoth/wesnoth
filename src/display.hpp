@@ -73,6 +73,14 @@ namespace wb {
 #include <memory>
 #include <vector>
 
+namespace display_direction {
+	/**
+	 * @note needs to be defined after includes
+	 *       as it uses std::string
+	 */
+	const std::string& get_direction(std::size_t n);
+}
+
 struct submerge_data
 {
 	rect unsub_src;
@@ -104,10 +112,6 @@ public:
 
 	bool show_everything() const { return !dont_show_all_ && !is_blindfolded(); }
 
-	const gamemap& get_map() const { return dc_->map(); }
-
-	const std::vector<team>& get_teams() const {return dc_->teams();}
-
 	/** The playing team is the team whose turn it is. */
 	std::size_t playing_team_index() const { return playing_team_index_; }
 
@@ -117,7 +121,7 @@ public:
 	 *
 	 * For players, it will be their side (or one of them, if they control multiple sides).
 	 *
-	 * The value returned is a 0-based index into the vector returned by get_teams().
+	 * The value returned is a 0-based index into the vector returned by dc_->teams().
 	 */
 	std::size_t viewing_team_index() const { return viewing_team_index_; }
 
@@ -144,7 +148,6 @@ public:
 	 * Cancels all the exclusive draw requests.
 	 */
 	void clear_exclusive_draws() { exclusive_unit_draw_requests_.clear(); }
-	const unit_map& get_units() const {return dc_->units();}
 
 	/**
 	 * Allows a unit to request to be the only one drawn in its hex. Useful for situations where
@@ -153,13 +156,17 @@ public:
 	 * @param unit The unit requesting exclusivity.
 	 * @return false if there's already an exclusive draw request for this location.
 	 */
-	bool add_exclusive_draw(const map_location& loc, unit& unit);
+	bool add_exclusive_draw(const map_location& loc, const unit& unit);
+
 	/**
 	 * Cancels an exclusive draw request.
 	 * @return The id of the unit whose exclusive draw request was canceled, or else
 	 *         the empty string if there was no exclusive draw request for this location.
 	 */
 	std::string remove_exclusive_draw(const map_location& loc);
+
+	/** Returns true if there is no exclusive draw request for @a loc, or if there is, that it's for @a unit */
+	bool unit_can_draw_here(const map_location& loc, const unit& unit) const;
 
 	/**
 	 * Functions to add and remove overlays from locations.
@@ -183,7 +190,7 @@ public:
 
 	void change_display_context(const display_context* dc);
 
-	const display_context& get_disp_context() const
+	const display_context& context() const
 	{
 		return *dc_;
 	}
@@ -283,14 +290,14 @@ public:
 	 * location of the hex that this pixel corresponds to.
 	 * Returns an invalid location if the mouse isn't over any valid location.
 	 */
-	const map_location hex_clicked_on(int x, int y) const;
+	map_location hex_clicked_on(int x, int y) const;
 
 	/**
 	 * given x,y co-ordinates of a pixel on the map, will return the
 	 * location of the hex that this pixel corresponds to.
 	 * Returns an invalid location if the mouse isn't over any valid location.
 	 */
-	const map_location pixel_position_to_hex(int x, int y) const;
+	map_location pixel_position_to_hex(int x, int y) const;
 
 	/**
 	 * given x,y co-ordinates of the mouse, will return the location of the

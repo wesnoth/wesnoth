@@ -18,7 +18,6 @@
 #include "gui/dialogs/campaign_selection.hpp"
 
 #include "filesystem.hpp"
-#include "font/text_formatting.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"
@@ -30,9 +29,10 @@
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
 #include "preferences/preferences.hpp"
+#include "serialization/markup.hpp"
+#include "utils/irdya_datetime.hpp"
 
 #include <functional>
-#include "utils/irdya_datetime.hpp"
 
 namespace gui2::dialogs
 {
@@ -48,14 +48,14 @@ void campaign_selection::campaign_selected()
 
 	assert(tree.selected_item());
 
-	if(!tree.selected_item()->id().empty()) {
-		auto iter = std::find(page_ids_.begin(), page_ids_.end(), tree.selected_item()->id());
+	const std::string& campaign_id = tree.selected_item()->id();
 
-		if(tree.selected_item()->id() == missing_campaign_) {
-			find_widget<button>("ok").set_active(false);
-		} else {
-			find_widget<button>("ok").set_active(true);
-		}
+	if(!campaign_id.empty()) {
+		auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
+
+		button& ok_button = find_widget<button>("proceed");
+		ok_button.set_active(campaign_id != missing_campaign_);
+		ok_button.set_label((campaign_id == addons_) ? _("game^Get Add-ons") : _("game^Play"));
 
 		const int choice = std::distance(page_ids_.begin(), iter);
 		if(iter == page_ids_.end()) {
@@ -89,7 +89,7 @@ void campaign_selection::campaign_selected()
 				entry["label"] = cfg["label"].str() + " (" + cfg["description"].str() + ")";
 				entry["image"] = cfg["image"].str("misc/blank-hex.png");
 
-				if(prefs::get().is_campaign_completed(tree.selected_item()->id(), cfg["define"])) {
+				if(prefs::get().is_campaign_completed(campaign_id, cfg["define"])) {
 					std::string laurel;
 
 					if(n + 1 >= max_n) {
@@ -108,13 +108,11 @@ void campaign_selection::campaign_selected()
 					if(cfg["auto_markup"].to_bool(true) == false) {
 						desc = cfg["description"].str();
 					} else {
-						//desc = "<small>";
 						if(!cfg["old_markup"].to_bool()) {
-							desc += font::span_color(font::GRAY_COLOR) + "(" + cfg["description"].str() + ")</span>";
+							desc += markup::span_color(font::GRAY_COLOR, "(", cfg["description"].str(), ")");
 						} else {
-							desc += font::span_color(font::GRAY_COLOR) + cfg["description"].str() + "</span>";
+							desc += markup::span_color(font::GRAY_COLOR, cfg["description"].str());
 						}
-						//desc += "</small>";
 					}
 
 					// Icons get displayed instead of the labels on the dropdown menu itself,
@@ -208,9 +206,9 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 			for(const auto& word : last_search_words_) {
 				found = translation::ci_search(levels[i]->name(), word) ||
 						translation::ci_search(levels[i]->data()["name"].t_str().base_str(), word) ||
-				        translation::ci_search(levels[i]->description(), word) ||
+						translation::ci_search(levels[i]->description(), word) ||
 						translation::ci_search(levels[i]->data()["description"].t_str().base_str(), word) ||
-				        translation::ci_search(levels[i]->data()["abbrev"], word) ||
+						translation::ci_search(levels[i]->data()["abbrev"], word) ||
 						translation::ci_search(levels[i]->data()["abbrev"].t_str().base_str(), word);
 
 				if(!found) {
@@ -327,12 +325,16 @@ void campaign_selection::pre_show()
 	connect_signal_notify_modified(sort_time,
 		std::bind(&campaign_selection::toggle_sorting_selection, this, DATE));
 
+	connect_signal_mouse_left_click(find_widget<button>("proceed"),
+		std::bind(&campaign_selection::proceed, this));
+
 	keyboard_capture(filter);
 	add_to_keyboard_chain(&tree);
 
 	/***** Setup campaign details. *****/
 	multi_page& pages = find_widget<multi_page>("campaign_details");
 
+	// Setup completion filter
 	multimenu_button& filter_comp = find_widget<multimenu_button>("filter_completion");
 	connect_signal_notify_modified(filter_comp,
 		std::bind(&campaign_selection::sort_campaigns, this, RANK, 1));
@@ -340,6 +342,7 @@ void campaign_selection::pre_show()
 		filter_comp.select_option(j);
 	}
 
+	// Add campaigns to the list
 	for(const auto& level : engine_.get_levels_by_type_unfiltered(level_type::type::sp_campaign)) {
 		const config& campaign = level->data();
 
@@ -365,6 +368,25 @@ void campaign_selection::pre_show()
 		pages.add_page(data);
 		page_ids_.push_back(campaign["id"]);
 	}
+
+	//
+	// Addon Manager link
+	//
+	config addons;
+	addons["icon"] = "icons/icon-game.png~BLIT(icons/icon-addon-publish.png)";
+	addons["name"] = _("More campaigns...");
+	addons["completed"] = false;
+	addons["id"] = addons_;
+
+	add_campaign_to_tree(addons);
+
+	widget_data data;
+	widget_item item;
+
+	item["label"] = _("In addition to the mainline campaigns, Wesnoth also has an ever-growing list of add-on content created by other players available via the Add-ons server, included but not limited to more single and multiplayer campaigns, multiplayer maps, additional media and various other content! Be sure to give it a try!");
+	data.emplace("description", item);
+	pages.add_page(data);
+	page_ids_.push_back(addons_);
 
 	std::vector<std::string> dirs;
 	filesystem::get_files_in_dir(game_config::path + "/data/campaigns", nullptr, &dirs);
@@ -474,7 +496,7 @@ void campaign_selection::add_campaign_to_tree(const config& campaign)
 	tree.add_node("campaign", data).set_id(campaign["id"]);
 }
 
-void campaign_selection::post_show()
+void campaign_selection::proceed()
 {
 	tree_view& tree = find_widget<tree_view>("campaign_tree");
 
@@ -483,10 +505,16 @@ void campaign_selection::post_show()
 	}
 
 	assert(tree.selected_item());
-	if(!tree.selected_item()->id().empty()) {
-		auto iter = std::find(page_ids_.begin(), page_ids_.end(), tree.selected_item()->id());
-		if(iter != page_ids_.end()) {
-			choice_ = std::distance(page_ids_.begin(), iter);
+	const std::string& campaign_id = tree.selected_item()->id();
+	if(!campaign_id.empty()) {
+		if (campaign_id == addons_) {
+			set_retval(OPEN_ADDON_MANAGER);
+		} else {
+			auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
+			if(iter != page_ids_.end()) {
+				choice_ = std::distance(page_ids_.begin(), iter);
+			}
+			set_retval(retval::OK);
 		}
 	}
 
