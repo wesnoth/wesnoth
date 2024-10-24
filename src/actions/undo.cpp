@@ -407,7 +407,7 @@ void undo_list::redo()
 	temp.swap(redos_);
 	synced_context::run(commandname, data, /*use_undo*/ true, /*show*/ true, error_handler);
 	if(!resources::recorder->at_end()) {
-		error_handler(_"Unhandled choices while redoing");
+		error_handler(_("Unhandled choices while redoing"));
 		resources::recorder->set_to_end();
 	}
 	temp.swap(redos_);
