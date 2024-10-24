@@ -49,4 +49,11 @@ std::string unit_level_tooltip(const unit &u);
  * advance to.
  */
 std::string unit_level_tooltip(const unit_type &u);
+
+const std::string maybe_inactive(const std::string& str, bool active);
+std::string format_cost_string(int unit_recall_cost, const int team_recall_cost);
+std::string format_cost_string(int unit_cost);
+std::string format_name_string(const std::string& str, const bool can_recruit);
+std::string format_level_string(const int level, bool recallable);
+std::string format_movement_string(const int moves_left, const int moves_max);
 }

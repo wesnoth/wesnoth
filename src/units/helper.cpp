@@ -23,6 +23,7 @@
 #include "units/types.hpp"
 #include "play_controller.hpp"
 #include "serialization/markup.hpp"
+#include "font/standard_colors.hpp"
 
 namespace unit_helper {
 
@@ -86,6 +87,72 @@ std::string unit_level_tooltip(const unit_type &type)
 	const std::vector<config> mod_advancements(mod_adv_iters.begin(), mod_adv_iters.end());
 
 	return unit_level_tooltip(type.level(), type.advances_to(), mod_advancements);
+}
+
+const std::string maybe_inactive(const std::string& str, bool active)
+{
+	return (active ? str : markup::span_color(font::INACTIVE_COLOR, str));
+}
+
+std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
+{
+	std::stringstream str;
+
+	if(unit_recall_cost < 0) {
+		unit_recall_cost = team_recall_cost;
+	}
+
+	if(unit_recall_cost > team_recall_cost) {
+		str << markup::img("themes/gold.png") << markup::span_color("#ff0000", unit_recall_cost);
+	} else if(unit_recall_cost == team_recall_cost) {
+		str << markup::img("themes/gold.png") << unit_recall_cost;
+	} else if(unit_recall_cost < team_recall_cost) {
+		str << markup::img("themes/gold.png~GS()") << markup::span_color("#00ff00", unit_recall_cost);
+	}
+
+	return str.str();
+}
+
+std::string format_cost_string(int unit_cost)
+{
+	return formatter() << markup::img("themes/gold.png") << unit_cost;
+}
+
+std::string format_name_string(const std::string& str, const bool can_recruit)
+{
+	return can_recruit ? markup::span_color("#cdad00", str) : str;
+}
+
+std::string format_level_string(const int level, bool recallable)
+{
+	if(!recallable) {
+		// Same logic as when recallable, but always in inactive_color.
+		return markup::span_color(font::INACTIVE_COLOR,
+			(level < 2 ? std::to_string(level) : markup::bold(level)));
+	} else if(level < 1) {
+		return markup::span_color(font::INACTIVE_COLOR, level);
+	} else if(level == 1) {
+		return std::to_string(level);
+	} else if(level == 2) {
+		return markup::bold(level);
+	} else if(level == 3) {
+		return markup::span_color("#e2b776", markup::bold(level));
+	} else {
+		return markup::span_color("#dd6600", markup::bold(level));
+	}
+}
+
+std::string format_movement_string(const int moves_left, const int moves_max)
+{
+	std::string color = "#00ff00";
+
+	if(moves_left == 0) {
+		color = "#ff0000";
+	} else if(moves_left < moves_max) {
+		color = "#ffff00";
+	}
+
+	return markup::span_color(color, moves_left, "/", moves_max);
 }
 
 }

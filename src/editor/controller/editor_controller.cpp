@@ -38,12 +38,12 @@
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
+#include "gui/dialogs/units_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/dialogs/unit_list.hpp"
-#include "wml_exception.hpp"
 
 #include "resources.hpp"
 #include "reports.hpp"
+#include "wml_exception.hpp"
 
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
@@ -1341,7 +1341,23 @@ void editor_controller::rename_unit()
 
 void editor_controller::unit_list()
 {
-	gui2::dialogs::show_unit_list(*gui_);
+	std::vector<unit_const_ptr> unit_list;
+
+	const unit_map& units = gui().context().units();
+	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+		if(i->side() != gui().viewing_team().side()) {
+			continue;
+		}
+		unit_list.push_back(i.get_shared_ptr());
+	}
+
+	gui2::dialogs::units_dialog unit_dlg(unit_list);
+	unit_dlg.set_mode(gui2::dialogs::units_dialog::dialog_type::UNIT_LIST);
+	if (unit_dlg.show() && unit_dlg.get_retval() == gui2::retval::OK) {
+		const map_location& loc = unit_list[unit_dlg.get_selected_index()]->get_location();
+		gui().scroll_to_tile(loc, display::WARP);
+		gui().select_hex(loc);
+	}
 }
 
 void editor_controller::cut_selection()

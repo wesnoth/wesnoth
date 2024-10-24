@@ -34,7 +34,6 @@
 #include "game_board.hpp"
 #include "game_config_manager.hpp"
 #include "game_end_exceptions.hpp"
-#include "preferences/preferences.hpp"
 #include "game_initialization/multiplayer.hpp"
 #include "game_state.hpp"
 #include "gettext.hpp"
@@ -52,10 +51,8 @@
 #include "gui/dialogs/statistics_dialog.hpp"
 #include "gui/dialogs/terrain_layers.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/dialogs/unit_create.hpp"
-#include "gui/dialogs/unit_list.hpp"
-#include "gui/dialogs/unit_recall.hpp"
-#include "gui/dialogs/unit_recruit.hpp"
+#include "gui/dialogs/units_dialog.hpp"
+#include "gui/dialogs/unit_attack.hpp"
 #include "gui/widgets/retval.hpp"
 #include "help/help.hpp"
 #include "log.hpp"
@@ -65,6 +62,7 @@
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
 #include "playsingle_controller.hpp"
+#include "preferences/preferences.hpp"
 #include "replay.hpp"
 #include "replay_controller.hpp"
 #include "replay_helper.hpp"
@@ -135,7 +133,23 @@ void menu_handler::show_statistics(int side_num)
 
 void menu_handler::unit_list()
 {
-	gui2::dialogs::show_unit_list(*gui_);
+	std::vector<unit_const_ptr> unit_list;
+
+	const unit_map& units = gui_->context().units();
+	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+		if(i->side() != gui_->viewing_team().side()) {
+			continue;
+		}
+		unit_list.push_back(i.get_shared_ptr());
+	}
+
+	gui2::dialogs::units_dialog unit_dlg(unit_list);
+	unit_dlg.set_mode(gui2::dialogs::units_dialog::dialog_type::UNIT_LIST);
+	if (unit_dlg.show() && unit_dlg.get_retval() == gui2::retval::OK) {
+		const map_location& loc = unit_list[unit_dlg.get_selected_index()]->get_location();
+		gui_->scroll_to_tile(loc, display::WARP);
+		gui_->select_hex(loc);
+	}
 }
 
 void menu_handler::status_table()
@@ -236,11 +250,10 @@ bool menu_handler::has_friends() const
 
 void menu_handler::recruit(int side_num, const map_location& last_hex)
 {
-	std::map<const unit_type*, t_string> sample_units;
-
+	std::vector<const unit_type*> sample_units;
 	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
-
 	std::vector<t_string> unknown_units;
+
 	for(const auto& recruit : recruits) {
 		const unit_type* type = unit_types.find(recruit);
 		if(!type) {
@@ -251,8 +264,14 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 
 		map_location ignored;
 		map_location recruit_hex = last_hex;
-		sample_units[type] = (can_recruit(type->id(), side_num, recruit_hex, ignored));
+		std::string err_msg = can_recruit(type->id(), side_num, recruit_hex, ignored);
+		if (err_msg.empty()) {
+			sample_units.push_back(type);
+		} else {
+			gui2::show_error_message(err_msg);
+		}
 	}
+
 	if(!unknown_units.empty()) {
 		auto unknown_ids = utils::format_conjunct_list("", unknown_units);
 		// TRANSLATORS: An error that should never happen, might happen when loading an old savegame. If there are
@@ -270,11 +289,11 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 		return;
 	}
 
-	gui2::dialogs::unit_recruit dlg(sample_units, board().get_team(side_num));
+	gui2::dialogs::units_dialog dlg(sample_units, &board().get_team(side_num));
 
 	if(dlg.show()) {
 		map_location recruit_hex = last_hex;
-		const unit_type *type = dlg.get_selected_unit_type();
+		const unit_type *type = sample_units[dlg.get_selected_index()];
 		if (!type) {
 			gui2::show_transient_message("", _("No unit recruited."));
 			return;
@@ -292,6 +311,7 @@ void menu_handler::repeat_recruit(int side_num, const map_location& last_hex)
 	}
 }
 
+// TODO: This should be integrated into the unit_dialog itself?
 // TODO: Return multiple strings here, in case more than one error applies? For
 // example, if you start AOI S5 with 0GP and recruit a Mage, two reasons apply,
 // leader not on keep (extrarecruit=Mage) and not enough gold.
@@ -395,7 +415,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		return;
 	}
 
-	gui2::dialogs::unit_recall dlg(recall_list_team, current_team);
+	gui2::dialogs::units_dialog dlg(recall_list_team, &current_team);
 
 	if(!dlg.show()) {
 		return;
@@ -693,24 +713,20 @@ typedef std::tuple<const unit_type*, unit_race::GENDER, std::string> type_gender
  */
 type_gender_variation choose_unit()
 {
-	//
-	// The unit creation dialog makes sure unit types
-	// are properly cached.
-	//
-	gui2::dialogs::unit_create create_dlg;
+	gui2::dialogs::units_dialog create_dlg;
+
 	create_dlg.show();
 
-	if(create_dlg.no_choice()) {
+	if(!create_dlg.is_selected()) {
 		return type_gender_variation(nullptr, unit_race::NUM_GENDERS, "");
 	}
 
-	const std::string& ut_id = create_dlg.choice();
-	const unit_type* utp = unit_types.find(ut_id);
-	if(!utp) {
-		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id '" << ut_id << "'.";
+	const auto& type_opt = create_dlg.get_type();
+	if(!type_opt) {
+		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id.";
 		return type_gender_variation(static_cast<const unit_type*>(nullptr), unit_race::NUM_GENDERS, "");
 	}
-	const unit_type& ut = *utp;
+	const unit_type& ut = *type_opt.value();
 
 	unit_race::GENDER gender = create_dlg.gender();
 	// Do not try to set bad genders, may mess up l10n
@@ -720,7 +736,7 @@ type_gender_variation choose_unit()
 		gender = ut.genders().front();
 	}
 
-	return type_gender_variation(utp, gender, create_dlg.variation());
+	return type_gender_variation(type_opt.value(), gender, create_dlg.variation());
 }
 
 /**
