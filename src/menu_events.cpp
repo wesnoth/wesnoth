@@ -34,7 +34,6 @@
 #include "game_board.hpp"
 #include "game_config_manager.hpp"
 #include "game_end_exceptions.hpp"
-#include "preferences/preferences.hpp"
 #include "game_initialization/multiplayer.hpp"
 #include "game_state.hpp"
 #include "gettext.hpp"
@@ -52,9 +51,8 @@
 #include "gui/dialogs/statistics_dialog.hpp"
 #include "gui/dialogs/terrain_layers.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/dialogs/unit_create.hpp"
-#include "gui/dialogs/unit_recall.hpp"
-#include "gui/dialogs/unit_recruit.hpp"
+#include "gui/dialogs/units_dialog.hpp"
+#include "gui/dialogs/unit_attack.hpp"
 #include "gui/widgets/retval.hpp"
 #include "help/help.hpp"
 #include "log.hpp"
@@ -64,6 +62,7 @@
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
 #include "playsingle_controller.hpp"
+#include "preferences/preferences.hpp"
 #include "replay.hpp"
 #include "replay_controller.hpp"
 #include "replay_helper.hpp"
@@ -144,8 +143,8 @@ void menu_handler::unit_list()
 		unit_list.push_back(i.get_shared_ptr());
 	}
 
-	gui2::dialogs::unit_recall unit_dlg(unit_list);
-	unit_dlg.set_mode(gui2::dialogs::unit_recall::dialog_type::UNIT_LIST);
+	gui2::dialogs::units_dialog unit_dlg(unit_list);
+	unit_dlg.set_mode(gui2::dialogs::units_dialog::dialog_type::UNIT_LIST);
 	if (unit_dlg.show() && unit_dlg.get_retval() == gui2::retval::OK) {
 		const map_location& loc = unit_list[unit_dlg.get_selected_index()]->get_location();
 		gui_->scroll_to_tile(loc, display::WARP);
@@ -290,7 +289,7 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 		return;
 	}
 
-	gui2::dialogs::unit_recall dlg(sample_units, &board().get_team(side_num));
+	gui2::dialogs::units_dialog dlg(sample_units, &board().get_team(side_num));
 
 	if(dlg.show()) {
 		map_location recruit_hex = last_hex;
@@ -416,7 +415,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		return;
 	}
 
-	gui2::dialogs::unit_recall dlg(recall_list_team, &current_team);
+	gui2::dialogs::units_dialog dlg(recall_list_team, &current_team);
 
 	if(!dlg.show()) {
 		return;
@@ -714,27 +713,20 @@ typedef std::tuple<const unit_type*, unit_race::GENDER, std::string> type_gender
  */
 type_gender_variation choose_unit()
 {
-	std::vector<const unit_type*> units;
-	for(const auto& i : unit_types.types())
-	{
-		// Make sure this unit type is built with the data we need.
-		unit_types.build_unit_type(i.second, unit_type::FULL);
-		units.push_back(&i.second);
-	}
-	gui2::dialogs::unit_recall create_dlg(units);
-	create_dlg.set_mode(gui2::dialogs::unit_recall::dialog_type::UNIT_CREATE);
+	gui2::dialogs::units_dialog create_dlg;
+
 	create_dlg.show();
 
-	if(create_dlg.get_selected_index() == -1) {
+	if(!create_dlg.is_selected()) {
 		return type_gender_variation(nullptr, unit_race::NUM_GENDERS, "");
 	}
 
-	const unit_type* utp = units[create_dlg.get_selected_index()];
-	if(!utp) {
-		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id '" << utp->type_name() << "'.";
+	const auto& type_opt = create_dlg.get_type();
+	if(!type_opt) {
+		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id.";
 		return type_gender_variation(static_cast<const unit_type*>(nullptr), unit_race::NUM_GENDERS, "");
 	}
-	const unit_type& ut = *utp;
+	const unit_type& ut = *type_opt.value();
 
 	unit_race::GENDER gender = create_dlg.gender();
 	// Do not try to set bad genders, may mess up l10n
@@ -744,7 +736,7 @@ type_gender_variation choose_unit()
 		gender = ut.genders().front();
 	}
 
-	return type_gender_variation(utp, gender, create_dlg.variation());
+	return type_gender_variation(type_opt.value(), gender, create_dlg.variation());
 }
 
 /**

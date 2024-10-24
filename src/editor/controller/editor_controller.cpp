@@ -38,7 +38,7 @@
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
-#include "gui/dialogs/unit_recall.hpp"
+#include "gui/dialogs/units_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
 
 #include "resources.hpp"
@@ -1350,8 +1350,8 @@ void editor_controller::unit_list()
 		unit_list.push_back(i.get_shared_ptr());
 	}
 
-	gui2::dialogs::unit_recall unit_dlg(unit_list);
-	unit_dlg.set_mode(gui2::dialogs::unit_recall::dialog_type::UNIT_LIST);
+	gui2::dialogs::units_dialog unit_dlg(unit_list);
+	unit_dlg.set_mode(gui2::dialogs::units_dialog::dialog_type::UNIT_LIST);
 	if (unit_dlg.show() && unit_dlg.get_retval() == gui2::retval::OK) {
 		const map_location& loc = unit_list[unit_dlg.get_selected_index()]->get_location();
 		gui().scroll_to_tile(loc, display::WARP);

@@ -17,10 +17,12 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/unit_preview_pane.hpp"
 #include "team.hpp"
 #include "units/ptr.hpp"
 #include "units/types.hpp"
 
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -33,15 +35,39 @@ namespace gui2
 namespace dialogs
 {
 
-class unit_recall : public modal_dialog
+class units_dialog : public modal_dialog
 {
 public:
-	unit_recall(std::vector<const unit_type*>& recruit_list, team* team = nullptr);
-	unit_recall(std::vector<unit_const_ptr>& recall_list, team* team = nullptr);
+	units_dialog();
+	units_dialog(std::vector<const unit_type*>& recruit_list, team* team = nullptr);
+	units_dialog(std::vector<unit_const_ptr>& recall_list, team* team = nullptr);
 
 	int get_selected_index() const
 	{
 		return selected_index_;
+	}
+
+	bool is_selected() const
+	{
+		return selected_index_ != -1;
+	}
+
+	std::optional<unit_const_ptr> get_unit() const
+	{
+		if(is_selected() || !recall_list_.empty()) {
+			return std::optional{recall_list_[get_selected_index()]};
+		} else {
+			return std::nullopt;
+		}
+	}
+
+	std::optional<const unit_type*> get_type() const
+	{
+		if(is_selected() || !recruit_list_.empty()) {
+			return std::optional{recruit_list_[get_selected_index()]};
+		} else {
+			return std::nullopt;
+		}
 	}
 
 	/** Gender choice from the user. */
@@ -98,6 +124,7 @@ private:
 
 	void show_unit_types(listbox& list);
 	void show_units(listbox& list);
+	void update_gender_and_variations(unit_preview_pane& preview, int selected_row);
 
 	void gender_toggle_callback(const unit_race::GENDER val);
 	void variation_menu_callback();
