@@ -673,7 +673,7 @@ void unit_filter_compound::fill(vconfig cfg)
 									  << e.filename << ':' << e.line << ")\n";
 					ERR_WML << "Formula error while evaluating formula in unit filter: " << e.type << " at "
 							<< e.filename << ':' << e.line << ")";
-					return wfl::formula("", new wfl::gamestate_function_symbol_table());
+					return wfl::formula("");
 				}
 			},
 			[](const wfl::formula& form, const unit_filter_args& args)
