@@ -113,9 +113,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/unit_advance.hpp"
 #include "gui/dialogs/unit_attack.hpp"
-#include "gui/dialogs/unit_create.hpp"
-#include "gui/dialogs/unit_recall.hpp"
-#include "gui/dialogs/unit_recruit.hpp"
+#include "gui/dialogs/units_dialog.hpp"
 #include "gui/dialogs/wml_error.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/settings.hpp"
@@ -685,8 +683,7 @@ BOOST_AUTO_TEST_CASE(test_last)
 		"synched_choice_wait",
 		"drop_down_menu",
 		"preferences_dialog",
-		"unit_recruit",
-		"unit_recall",
+		"units_dialog",
 		"unit_advance",
 		"mp_host_game_prompt",
 		"mp_create_game",
