@@ -48,6 +48,8 @@ class effect
 
 		int get_composite_value() const
 		{ return composite_value_; }
+		double get_composite_double_value() const
+		{ return composite_double_value_; }
 		const_iterator begin() const
 		{ return effect_list_.begin(); }
 		const_iterator end() const
@@ -55,6 +57,7 @@ class effect
 	private:
 		std::vector<individual_effect> effect_list_;
 		int composite_value_;
+		double composite_double_value_;
 };
 
 
