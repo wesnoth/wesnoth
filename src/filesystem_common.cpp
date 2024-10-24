@@ -112,6 +112,14 @@ void blacklist_pattern_list::remove_blacklisted_files_and_dirs(std::vector<std::
 
 bool blacklist_pattern_list::match_file(const std::string& name) const
 {
+	if(std::any_of(file_exact_names_.begin(), file_exact_names_.end(),
+			[&name](const std::string& exact) { return name == exact; })) {
+		return true;
+	}
+	if(std::any_of(file_extensions_.begin(), file_extensions_.end(),
+			[&name](const std::string& extension) { return boost::algorithm::ends_with(name, extension); })) {
+		return true;
+	}
 	return std::any_of(file_patterns_.begin(), file_patterns_.end(),
 					   std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
 }
