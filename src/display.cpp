@@ -628,17 +628,9 @@ display::rect_of_hexes::iterator display::rect_of_hexes::end() const
 
 const display::rect_of_hexes display::hexes_under_rect(const rect& r) const
 {
-	rect_of_hexes res;
-
 	if(r.w <= 0 || r.h <= 0) {
-		// empty rect, return dummy values giving begin=end
-		res.left = 0;
-		res.right = -1; // end is right+1
-		res.top[0] = 0;
-		res.top[1] = 0;
-		res.bottom[0] = 0;
-		res.bottom[1] = 0;
-		return res;
+		// Dummy values giving begin == end (end is right + 1)
+		return {0, -1, {0, 0}, {0, 0}};
 	}
 
 	// translate rect coordinates from screen-based to map_area-based
@@ -648,27 +640,33 @@ const display::rect_of_hexes display::hexes_under_rect(const rect& r) const
 	double tile_width = hex_width();
 	double tile_size = hex_size();
 	double border = theme_.border().size;
-	// we minus "0.(3)", for horizontal imbrication.
-	// reason is: two adjacent hexes each overlap 1/4 of their width, so for
-	// grid calculation 3/4 of tile width is used, which by default gives
-	// 18/54=0.(3). Note that, while tile_width is zoom dependent, 0.(3) is not.
-	res.left = static_cast<int>(std::floor(-border + x / tile_width - 0.3333333));
-	// we remove 1 pixel of the rectangle dimensions
-	// (the rounded division take one pixel more than needed)
-	res.right = static_cast<int>(std::floor(-border + (x + r.w - 1) / tile_width));
 
-	// for odd x, we must shift up one half-hex. Since x will vary along the edge,
-	// we store here the y values for even and odd x, respectively
-	res.top[0] = static_cast<int>(std::floor(-border + y / tile_size));
-	res.top[1] = static_cast<int>(std::floor(-border + y / tile_size - 0.5));
-	res.bottom[0] = static_cast<int>(std::floor(-border + (y + r.h - 1) / tile_size));
-	res.bottom[1] = static_cast<int>(std::floor(-border + (y + r.h - 1) / tile_size - 0.5));
+	return {
+		// we minus "0.(3)", for horizontal imbrication.
+		// reason is: two adjacent hexes each overlap 1/4 of their width, so for
+		// grid calculation 3/4 of tile width is used, which by default gives
+		// 18/54=0.(3). Note that, while tile_width is zoom dependent, 0.(3) is not.
+		static_cast<int>(std::floor(-border + x / tile_width - 0.3333333)),
+
+		// we remove 1 pixel of the rectangle dimensions
+		// (the rounded division take one pixel more than needed)
+		static_cast<int>(std::floor(-border + (x + r.w - 1) / tile_width)),
+
+		// for odd x, we must shift up one half-hex. Since x will vary along the edge,
+		// we store here the y values for even and odd x, respectively
+		{
+			static_cast<int>(std::floor(-border + y / tile_size)),
+			static_cast<int>(std::floor(-border + y / tile_size - 0.5))
+		},
+		{
+			static_cast<int>(std::floor(-border + (y + r.h - 1) / tile_size)),
+			static_cast<int>(std::floor(-border + (y + r.h - 1) / tile_size - 0.5))
+		}
+	};
 
 	// TODO: in some rare cases (1/16), a corner of the big rect is on a tile
 	// (the 72x72 rectangle containing the hex) but not on the hex itself
 	// Can maybe be optimized by using pixel_position_to_hex
-
-	return res;
 }
 
 bool display::shrouded(const map_location& loc) const
