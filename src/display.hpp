@@ -316,8 +316,6 @@ public:
 	void invalidate_game_status() { invalidateGameStatus_ = true; }
 
 	/** Functions to get the on-screen positions of hexes. */
-	int get_location_x(const map_location& loc) const;
-	int get_location_y(const map_location& loc) const;
 	point get_location(const map_location& loc) const;
 
 	/** Returns the on-screen rect corresponding to a @a loc */

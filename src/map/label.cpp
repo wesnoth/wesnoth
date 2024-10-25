@@ -537,8 +537,8 @@ void terrain_label::recalculate()
 	// Note: the y part of loc_nextx is not used at all.
 	const map_location loc_nextx = loc_.get_direction(map_location::direction::north_east);
 	const map_location loc_nexty = loc_.get_direction(map_location::direction::south);
-	const int xloc = (disp->get_location_x(loc_) + disp->get_location_x(loc_nextx) * 2) / 3;
-	const int yloc = disp->get_location_y(loc_nexty) - scale_to_map_zoom(font::SIZE_NORMAL);
+	const int xloc = (disp->get_location(loc_).x + disp->get_location(loc_nextx).x * 2) / 3;
+	const int yloc = disp->get_location(loc_nexty).y - scale_to_map_zoom(font::SIZE_NORMAL);
 
 	// If a color is specified don't allow to override it with markup. (prevents faking map labels for example)
 	// FIXME: @todo Better detect if it's team label and not provided by the scenario.
