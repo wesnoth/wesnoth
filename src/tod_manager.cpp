@@ -26,6 +26,7 @@
 #include "units/abilities.hpp"
 #include "units/unit.hpp"
 #include "units/unit_alignments.hpp"
+#include "utils/general.hpp"
 
 #include <algorithm>
 #include <iterator>
@@ -79,7 +80,7 @@ void tod_manager::resolve_random(randomness::rng& r)
 	}
 
 	// Remove non-positive times
-	output.erase(std::remove_if(output.begin(), output.end(), [](int time) { return time <= 0; }), output.end());
+	utils::erase_if(output, [](int time) { return time <= 0; });
 
 	if(!output.empty()) {
 		int chosen = output[r.next_random() % output.size()];

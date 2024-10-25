@@ -23,6 +23,7 @@
 #include "log.hpp"
 #include "filesystem.hpp"
 #include "mt_rng.hpp"
+#include "utils/general.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -106,7 +107,7 @@ void rotate_logs(const std::string& log_dir)
 	std::vector<std::string> files;
 	filesystem::get_files_in_dir(log_dir, &files);
 
-	files.erase(std::remove_if(files.begin(), files.end(), is_not_log_file), files.end());
+	utils::erase_if(files, is_not_log_file);
 
 	if(files.size() <= lg::max_logs) {
 		return;

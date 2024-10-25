@@ -51,6 +51,7 @@
 #include "units/animation_component.hpp"
 #include "units/drawer.hpp"
 #include "units/orb_status.hpp"
+#include "utils/general.hpp"
 #include "video.hpp"
 #include "whiteboard/manager.hpp"
 
@@ -136,14 +137,8 @@ void display::remove_overlay(const map_location& loc)
 
 void display::remove_single_overlay(const map_location& loc, const std::string& toDelete)
 {
-	std::vector<overlay>& overlays = get_overlays()[loc];
-	overlays.erase(
-		std::remove_if(
-			overlays.begin(), overlays.end(),
-			[&toDelete](const overlay& ov) { return ov.image == toDelete || ov.halo == toDelete || ov.id == toDelete; }
-		),
-		overlays.end()
-	);
+	utils::erase_if(get_overlays()[loc],
+		[&toDelete](const overlay& ov) { return ov.image == toDelete || ov.halo == toDelete || ov.id == toDelete; });
 }
 
 display::display(const display_context* dc,
