@@ -642,7 +642,7 @@ const display::rect_of_hexes display::hexes_under_rect(const rect& r) const
 	}
 
 	// translate rect coordinates from screen-based to map_area-based
-	auto [x, y] = viewport_origin_ - map_area().pos() + r.pos();
+	auto [x, y] = viewport_origin_ - map_area().origin() + r.origin();
 	// we use the "double" type to avoid important rounding error (size of an hex!)
 	// we will also need to use std::floor to avoid bad rounding at border (negative values)
 	double tile_width = hex_width();
