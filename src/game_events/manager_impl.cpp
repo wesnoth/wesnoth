@@ -19,6 +19,7 @@
 #include "formula/string_utils.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/general.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -204,11 +205,7 @@ void event_handlers::remove_event_handler(const std::string& id)
 void event_handlers::clean_up_expired_handlers(const std::string& event_name)
 {
 	// First, remove all disabled handlers from the main list.
-	auto to_remove = std::remove_if(active_.begin(), active_.end(),
-		[](handler_ptr p) { return p->disabled(); }
-	);
-
-	active_.erase(to_remove, active_.end());
+	utils::erase_if(active_, [](const handler_ptr& p) { return p->disabled(); });
 
 	// Then remove any now-unlockable weak_ptrs from the by-name list.
 	// Might be more than one so we split.

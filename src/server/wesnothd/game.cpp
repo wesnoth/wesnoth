@@ -1786,7 +1786,7 @@ std::string game::get_replay_filename()
 	name << (*starting_pos(level_.root()))["name"] << " Turn " << current_turn() << " (" << db_id_ << ").bz2";
 	std::string filename(name.str());
 	std::replace(filename.begin(), filename.end(), ' ', '_');
-	filename.erase(std::remove_if(filename.begin(), filename.end(), is_invalid_filename_char), filename.end());
+	utils::erase_if(filename, is_invalid_filename_char);
 	return filename;
 }
 

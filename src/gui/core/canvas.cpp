@@ -718,10 +718,7 @@ void canvas::clear_shapes(const bool force)
 	if(force) {
 		shapes_.clear();
 	} else {
-		auto conditional = [](const std::unique_ptr<shape>& s)->bool { return !s->immutable(); };
-
-		auto iter = std::remove_if(shapes_.begin(), shapes_.end(), conditional);
-		shapes_.erase(iter, shapes_.end());
+		utils::erase_if(shapes_, [](const std::unique_ptr<shape>& s) { return !s->immutable(); });
 	}
 }
 

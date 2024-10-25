@@ -27,6 +27,7 @@
 #include "deprecation.hpp"
 #include "game_version.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/general.hpp"
 
 #include <algorithm>
 #include <cstring>
@@ -573,10 +574,7 @@ void config::clear_children_impl(config_key_type key)
 	if(i == children_.end())
 		return;
 
-	ordered_children.erase(
-		std::remove_if(ordered_children.begin(), ordered_children.end(), remove_ordered(i)),
-		ordered_children.end());
-
+	utils::erase_if(ordered_children, remove_ordered{i});
 	children_.erase(i);
 }
 
@@ -587,9 +585,7 @@ void config::splice_children(config& src, config_key_type key)
 		return;
 	}
 
-	src.ordered_children.erase(
-		std::remove_if(src.ordered_children.begin(), src.ordered_children.end(), remove_ordered(i_src)),
-		src.ordered_children.end());
+	utils::erase_if(src.ordered_children, remove_ordered{i_src});
 
 	auto i_dst = map_get(children_, key);
 	child_list& dst = i_dst->second;
