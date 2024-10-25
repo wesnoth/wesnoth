@@ -18,7 +18,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "terrain/terrain.hpp"
-
+#include "utils/general.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_G LOG_STREAM(err, lg::general())
@@ -169,11 +169,8 @@ terrain_type::terrain_type(const config& cfg)
 	union_type_.insert( union_type_.end(), vision_type_.begin(), vision_type_.end() );
 
 	// remove + and -
-	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
-				t_translation::MINUS), union_type_.end());
-
-	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
-				t_translation::PLUS), union_type_.end());
+	utils::erase(union_type_, t_translation::MINUS);
+	utils::erase(union_type_, t_translation::PLUS);
 
 	// remove doubles
 	std::sort(union_type_.begin(),union_type_.end());
@@ -266,11 +263,8 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	union_type_.insert( union_type_.end(), vision_type_.begin(), vision_type_.end() );
 
 	// remove + and -
-	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
-				t_translation::MINUS), union_type_.end());
-
-	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
-				t_translation::PLUS), union_type_.end());
+	utils::erase(union_type_, t_translation::MINUS);
+	utils::erase(union_type_, t_translation::PLUS);
 
 	// remove doubles
 	std::sort(union_type_.begin(),union_type_.end());

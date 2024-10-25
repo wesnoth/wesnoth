@@ -226,7 +226,7 @@ pump_monitor::pump_monitor()
 
 pump_monitor::~pump_monitor()
 {
-	pump_monitors.erase(std::remove(pump_monitors.begin(), pump_monitors.end(), this), pump_monitors.end());
+	utils::erase(pump_monitors, this);
 }
 
 event_context::event_context()

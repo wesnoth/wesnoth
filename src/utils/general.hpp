@@ -106,6 +106,20 @@ void erase_if(Container& container, const Predicate& predicate)
 }
 
 /**
+ * Convenience wrapper for using std::remove on a container.
+ *
+ * @todo C++20: use std::erase
+ */
+template<typename Container, typename Value>
+std::size_t erase(Container& container, const Value& value)
+{
+	auto iter = std::remove(container.begin(), container.end(), value);
+	auto num_removed = container.end() - iter;
+	container.erase(iter, container.end());
+	return num_removed;
+}
+
+/**
  * Convenience wrapper for using std::sort on a container.
  *
  */

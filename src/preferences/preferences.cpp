@@ -1217,7 +1217,7 @@ void prefs::add_recent_files_entry(const std::string& path)
 
 	// Enforce uniqueness. Normally shouldn't do a thing unless somebody
 	// has been tampering with the preferences file.
-	mru.erase(std::remove(mru.begin(), mru.end(), path), mru.end());
+	utils::erase(mru, path);
 
 	mru.insert(mru.begin(), path);
 	mru.resize(std::min(editor_mru_limit(), mru.size()));

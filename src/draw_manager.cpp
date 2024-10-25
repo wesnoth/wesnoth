@@ -329,8 +329,7 @@ static void tidy_drawables()
 {
 	// Remove all invalidated TLDs from the list.
 	DBG_DM << "tidying " << top_level_drawables_.size() << " drawables";
-	auto& vec = top_level_drawables_;
-	vec.erase(std::remove(vec.begin(), vec.end(), nullptr), vec.end());
+	utils::erase(top_level_drawables_, nullptr);
 	DBG_DM << top_level_drawables_.size() << " after tidying";
 }
 

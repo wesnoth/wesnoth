@@ -1709,7 +1709,7 @@ void unit::set_loyal(bool loyal)
 		overlays_.push_back("misc/loyal-icon.png");
 	} else {
 		upkeep_ = upkeep_full{};
-		overlays_.erase(std::remove(overlays_.begin(), overlays_.end(), "misc/loyal-icon.png"), overlays_.end());
+		utils::erase(overlays_, "misc/loyal-icon.png");
 	}
 }
 
@@ -2306,7 +2306,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 		if(!remove.empty()) {
 			for(const auto& to_remove : utils::parenthetical_split(remove, ',')) {
-				overlays_.erase(std::remove(overlays_.begin(), overlays_.end(), to_remove), overlays_.end());
+				utils::erase(overlays_, to_remove);
 			}
 		}
 		if(add.empty() && remove.empty() && !replace.empty()) {
