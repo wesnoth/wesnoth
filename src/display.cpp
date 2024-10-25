@@ -679,21 +679,11 @@ bool display::fogged(const map_location& loc) const
 	return is_blindfolded() || (dont_show_all_ && viewing_team().fogged(loc));
 }
 
-int display::get_location_x(const map_location& loc) const
-{
-	return static_cast<int>(map_area().x + (loc.x + theme_.border().size) * hex_width() - viewport_origin_.x);
-}
-
-int display::get_location_y(const map_location& loc) const
-{
-	return static_cast<int>(map_area().y + (loc.y + theme_.border().size) * zoom_ - viewport_origin_.y + (is_odd(loc.x) ? zoom_/2 : 0));
-}
-
 point display::get_location(const map_location& loc) const
 {
 	return {
-		get_location_x(loc),
-		get_location_y(loc)
+		static_cast<int>(map_area().x + (loc.x + theme_.border().size) * hex_width() - viewport_origin_.x),
+		static_cast<int>(map_area().y + (loc.y + theme_.border().size) * zoom_ - viewport_origin_.y + (is_odd(loc.x) ? zoom_/2 : 0))
 	};
 }
 
