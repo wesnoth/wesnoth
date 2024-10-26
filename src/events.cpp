@@ -778,9 +778,9 @@ void process_tooltip_strings(int mousex, int mousey)
 	}
 }
 
-int pump_info::ticks(unsigned* refresh_counter, unsigned refresh_rate)
+int pump_info::ticks()
 {
-	if(!ticks_ && !(refresh_counter && ++*refresh_counter % refresh_rate)) {
+	if(!ticks_) {
 		ticks_ = ::SDL_GetTicks();
 	}
 
