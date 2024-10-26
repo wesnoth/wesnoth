@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -5342,6 +5342,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					8D1107260486CEB800E47090 = {
@@ -6842,7 +6843,10 @@
 				LD_CLASSIC_1300 = "";
 				LD_CLASSIC_1400 = "";
 				LD_CLASSIC_1500 = "-ld_classic";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				LLVM_LTO = YES_THIN;
 				OTHER_CFLAGS = (
 					"-Wall",
@@ -6905,7 +6909,11 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks \"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/Frameworks",
+				);
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wno-shorten-64-to-32",
@@ -6930,7 +6938,10 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/TestFrameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/TestFrameworks",
+				);
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -6953,7 +6964,11 @@
 					"FIFODIR=\\\"/var/run/wesnoth_campaignd\\\"",
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks \"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_NAME = campaignd;
 			};
 			name = SignedRelease;
@@ -7033,7 +7048,11 @@
 					"FIFODIR=\\\"/var/run/wesnoth_campaignd\\\"",
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks \"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_NAME = campaignd;
 			};
 			name = Debug;
@@ -7050,7 +7069,11 @@
 					"FIFODIR=\\\"/var/run/wesnoth_campaignd\\\"",
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks \"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_NAME = campaignd;
 			};
 			name = Release;
@@ -7070,7 +7093,10 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/TestFrameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/TestFrameworks",
+				);
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -7095,7 +7121,10 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/TestFrameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/TestFrameworks",
+				);
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -7145,7 +7174,11 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks \"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/Frameworks",
+				);
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wno-shorten-64-to-32",
@@ -7193,7 +7226,11 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks \"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/Frameworks",
+				);
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wno-shorten-64-to-32",
@@ -7255,7 +7292,10 @@
 				LD_CLASSIC_1300 = "";
 				LD_CLASSIC_1400 = "";
 				LD_CLASSIC_1500 = "-ld_classic";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wno-shorten-64-to-32",
@@ -7327,7 +7367,10 @@
 				LD_CLASSIC_1300 = "";
 				LD_CLASSIC_1400 = "";
 				LD_CLASSIC_1500 = "-ld_classic";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				LLVM_LTO = YES_THIN;
 				OTHER_CFLAGS = (
 					"-Wall",
