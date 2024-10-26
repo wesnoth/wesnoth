@@ -485,10 +485,6 @@ void pump()
 
 	pump_info info;
 
-	// Used to keep track of double click events
-	static int last_mouse_down = -1;
-	static int last_click_x = -1, last_click_y = -1;
-
 	SDL_Event temp_event;
 	int poll_count = 0;
 	int begin_ignoring = 0;
@@ -658,24 +654,10 @@ void pump()
 			// Always make sure a cursor is displayed if the mouse moves or if the user clicks
 			cursor::set_focus(true);
 			if(event.button.button == SDL_BUTTON_LEFT || event.button.which == SDL_TOUCH_MOUSEID) {
-				static const int DoubleClickTime = 500;
-#ifdef __IPHONEOS__
-				static const int DoubleClickMaxMove = 15;
-#else
-				static const int DoubleClickMaxMove = 3;
-#endif
-
-				if(last_mouse_down >= 0 && info.ticks() - last_mouse_down < DoubleClickTime
-						&& std::abs(event.button.x - last_click_x) < DoubleClickMaxMove
-						&& std::abs(event.button.y - last_click_y) < DoubleClickMaxMove
-				) {
+				if(event.button.clicks == 2) {
 					sdl::UserEvent user_event(DOUBLE_CLICK_EVENT, event.button.which, event.button.x, event.button.y);
 					::SDL_PushEvent(reinterpret_cast<SDL_Event*>(&user_event));
 				}
-
-				last_mouse_down = info.ticks();
-				last_click_x = event.button.x;
-				last_click_y = event.button.y;
 			}
 			break;
 		}
