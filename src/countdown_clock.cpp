@@ -17,11 +17,11 @@
 #include "team.hpp"
 #include "preferences/preferences.hpp"
 #include "sound.hpp"
+#include "utils/rate_counter.hpp"
 
 namespace {
 	const int WARNTIME = 20000; //start beeping when 20 seconds are left (20,000ms)
-	unsigned timer_refresh = 0;
-	const unsigned timer_refresh_rate = 50; // prevents calling SDL_GetTicks() too frequently
+	utils::rate_counter timer_refresh_rate{50}; // prevents calling SDL_GetTicks() too frequently
 }
 
 
@@ -57,7 +57,7 @@ void countdown_clock::update_team(int new_timestamp)
 //make sure we think about countdown even while dialogs are open
 void countdown_clock::process(events::pump_info &info)
 {
-	if(info.ticks(&timer_refresh, timer_refresh_rate)) {
+	if(timer_refresh_rate.poll()) {
 		update(info.ticks());
 	}
 }

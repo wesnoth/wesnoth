@@ -153,7 +153,7 @@ inline void pump_and_draw() { pump(); draw(); }
 struct pump_info {
 	pump_info() : resize_dimensions(), ticks_(0) {}
 	std::pair<int,int> resize_dimensions;
-	int ticks(unsigned *refresh_counter=nullptr, unsigned refresh_rate=1);
+	int ticks();
 private:
 	int ticks_; //0 if not calculated
 };
