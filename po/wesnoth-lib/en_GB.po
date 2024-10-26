@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-21 11:11-0500\n"
-"PO-Revision-Date: 2024-09-18 21:25+1000\n"
+"PO-Revision-Date: 2024-10-23 10:30+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -789,15 +789,6 @@ msgstr "Non-mixed Mushroom Grove"
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
 #: data/core/terrain.cfg:1070 data/core/terrain.cfg:1090
-#, fuzzy
-#| msgid ""
-#| "editor^The overlays '^Uf' and '^Ufi' are deprecated because, although the "
-#| "graphics show an overlay with another terrain underneath, the movement "
-#| "and defense stats are purely fungus terrain, ignoring the underlying "
-#| "terrain. The recommended replacements are '^Tf' and '^Tfi' which look the "
-#| "same but have the stats implied by the graphics. For hexes where the "
-#| "stats of purely fungus are wanted, 'Tb' is a mushroom base terrain, which "
-#| "can be used with or without '^Tf' on top."
 msgid ""
 "editor^The overlays ‘^Uf’ and ‘^Ufi’ are deprecated because, although the "
 "graphics show an overlay with another terrain underneath, the movement and "
@@ -807,13 +798,13 @@ msgid ""
 "fungus are wanted, ‘Tb’ is a mushroom base terrain, which can be used with "
 "or without ‘^Tf’ on top."
 msgstr ""
-"The overlays '^Uf' and '^Ufi' are deprecated because, although the graphics "
+"The overlays ‘^Uf’ and ‘^Ufi’ are deprecated because, although the graphics "
 "show an overlay with another terrain underneath, the movement and defence "
-"stats are purely fungus terrain, ignoring the underlying terrain. The "
-"recommended replacements are '^Tf' and '^Tfi' which look the same but have "
-"the stats implied by the graphics. For hexes where the stats of purely "
-"fungus are wanted, 'Tb' is a mushroom base terrain, which can be used with "
-"or without '^Tf' on top."
+"characteristics are purely fungus terrain, ignoring the underlying terrain. "
+"The recommended replacements are ‘^Tf’ and ‘^Tfi’ which look the same but "
+"have the characteristics implied by the graphics. For hexes where the "
+"characteristics of purely fungus are wanted, ‘Tb’ is a mushroom base "
+"terrain, which can be used with or without ‘^Tf’ on top."
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -2658,7 +2649,7 @@ msgid ""
 "distribution terms by choosing “I Agree”."
 msgstr ""
 "Before uploading content to this server, you must accept the following "
-"distribution terms by choosing “I Agree”."
+"distribution terms by choosing ‘I Agree’."
 
 #. [button]: id=ok
 #: data/gui/themes/default/window/addon_license_prompt.cfg:103
@@ -4105,10 +4096,8 @@ msgstr "Open External"
 
 #. [button]: id=open_ext
 #: data/gui/themes/default/window/file_dialog.cfg:321
-#, fuzzy
-#| msgid "Open selected using platform's default applications"
 msgid "Open selected using platform’s default applications"
-msgstr "Open selected using platform's default applications"
+msgstr "Open selected using platform’s default applications"
 
 #. [button]: id=new_dir
 #. [label]: id=title
@@ -4484,18 +4473,14 @@ msgstr "Report Issue"
 
 #. [label]
 #: data/gui/themes/default/window/game_version.cfg:322
-#, fuzzy
-#| msgid ""
-#| "<i><span font_family='DejaVu Sans'>➤</span> Copy a full report here:</i>"
 msgid "<i><span font_family='DejaVu Sans'>➤</span> View Game Manual:</i>"
-msgstr ""
-"<i><span font_family='DejaVu Sans'>➤</span> Copy a full report here:</i>"
+msgstr "<i><span font_family='DejaVu Sans'>➤</span> View Game Manual:</i>"
 
 #. [button]: id=view_manual
 #. button to open the game manual in the platform's browser.
 #: data/gui/themes/default/window/game_version.cfg:335
 msgid "View Manual"
-msgstr ""
+msgstr "View Manual"
 
 #. [label]
 #: data/gui/themes/default/window/game_version.cfg:343
@@ -5709,12 +5694,12 @@ msgstr "Log on to the official Wesnoth multiplayer server"
 
 #. [widget]: id=name
 #: data/gui/themes/default/window/mp_method_selection.cfg:247
-#, fuzzy
-#| msgid "Join Official Server"
 msgid ""
 "Join\n"
 "Official Server"
-msgstr "Join Official Server"
+msgstr ""
+"Join\n"
+"Official Server"
 
 #. [column]
 #: data/gui/themes/default/window/mp_method_selection.cfg:258
@@ -5723,12 +5708,12 @@ msgstr "Join a different server"
 
 #. [widget]: id=name
 #: data/gui/themes/default/window/mp_method_selection.cfg:267
-#, fuzzy
-#| msgid "Connect to Server"
 msgid ""
 "Connect to\n"
 "Server"
-msgstr "Connect to Server"
+msgstr ""
+"Connect to\n"
+"Server"
 
 #. [column]
 #: data/gui/themes/default/window/mp_method_selection.cfg:278
@@ -5737,12 +5722,12 @@ msgstr "Host a game using a dedicated server"
 
 #. [widget]: id=name
 #: data/gui/themes/default/window/mp_method_selection.cfg:287
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid ""
 "Host Networked\n"
 "Game"
-msgstr "Host Networked Game"
+msgstr ""
+"Host Networked\n"
+"Game"
 
 #. [column]
 #: data/gui/themes/default/window/mp_method_selection.cfg:298
@@ -7070,10 +7055,8 @@ msgstr[0] "$num second"
 msgstr[1] "$num seconds"
 
 #: src/gui/core/canvas.cpp:263
-#, fuzzy
-#| msgid "Image doesn't fit on canvas."
 msgid "Image doesn’t fit on canvas."
-msgstr "Image doesn't fit on canvas."
+msgstr "Image doesn’t fit on canvas."
 
 #: src/gui/core/widget_definition.cpp:29
 msgid "No draw section defined for state."
@@ -7091,21 +7074,15 @@ msgid "No grid defined."
 msgstr "No grid defined."
 
 #: src/gui/core/window_builder.cpp:201
-#, fuzzy
-#| msgid "Grid '$grid' row $row must have at least one column."
 msgid "Grid ‘$grid’ row $row must have at least one column."
-msgstr "Grid '$grid' row $row must have at least one column."
+msgstr "Grid ‘$grid’ row $row must have at least one column."
 
 #: src/gui/core/window_builder.cpp:213
-#, fuzzy
-#| msgid ""
-#| "Grid '$grid' row $row has a differing number of columns ($found found, "
-#| "$expected expected)"
 msgid ""
 "Grid ‘$grid’ row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
-"Grid '$grid' row $row has a differing number of columns ($found found, "
+"Grid ‘$grid’ row $row has a differing number of columns ($found found, "
 "$expected expected)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:137
@@ -7173,10 +7150,8 @@ msgid "addons_of_type^Cores"
 msgstr "Cores"
 
 #: src/gui/dialogs/addon/manager.cpp:162
-#, fuzzy
-#| msgid "addons_of_type^Cores"
 msgid "addons_of_type^Themes"
-msgstr "Cores"
+msgstr "Themes"
 
 #: src/gui/dialogs/addon/manager.cpp:163
 msgid "addons_of_type^Resources"
@@ -7626,15 +7601,11 @@ msgid "Choose File"
 msgstr "Choose File"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:320
-#, fuzzy
-#| msgid ""
-#| "This file is outside Wesnoth's data dirs. Do you wish to copy it into "
-#| "your add-on?"
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
 msgstr ""
-"This file is outside Wesnoth's data directories. Do you wish to copy it into "
+"This file is outside Wesnoth’s data directories. Do you wish to copy it into "
 "your add-on?"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1032
@@ -7965,10 +7936,8 @@ msgid "Downloading lobby data"
 msgstr "Downloading lobby data"
 
 #: src/gui/dialogs/lua_interpreter.cpp:628
-#, fuzzy
-#| msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgid "The lua console can only be used in debug mode! (Run ‘:debug’ first)"
-msgstr "The lua console can only be used in debug mode! (Run ':debug' first)"
+msgstr "The lua console can only be used in debug mode! (Run ‘:debug’ first)"
 
 #: src/gui/dialogs/lua_interpreter.cpp:629
 msgid "lua console"
@@ -8000,18 +7969,13 @@ msgid "Incompatible User-made Content"
 msgstr "Incompatible User-made Content"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:173
-#, fuzzy
-#| msgid ""
-#| "This game cannot be joined because the host has out-of-date add-ons that "
-#| "are incompatible with your version. You might wish to suggest that the "
-#| "host's add-ons be updated."
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host’s "
 "add-ons be updated."
 msgstr ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
-"incompatible with your version. You might wish to suggest that the host's "
+"incompatible with your version. You might wish to suggest that the host’s "
 "add-ons be updated."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:188
@@ -8081,13 +8045,10 @@ msgid "lobby"
 msgstr "lobby"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:833
-#, fuzzy
-#| msgid ""
-#| "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgid ""
 "This game doesn’t allow observers. Observe using moderator rights anyway?"
 msgstr ""
-"This game doesn't allow observers. Observe using moderator rights anyway?"
+"This game doesn’t allow observers. Observe using moderator rights anyway?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:844
 msgid ""
@@ -8213,10 +8174,8 @@ msgid "Game"
 msgstr "Game"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:310
-#, fuzzy
-#| msgid "(Invalid)"
 msgid "Invalid Color"
-msgstr "(Invalid)"
+msgstr "Invalid Colour"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:517
 msgid "Waiting for players to choose factions..."
@@ -8447,10 +8406,8 @@ msgstr ""
 "messages from this player, type <i>/ignore $name</i>"
 
 #: src/gui/widgets/helper.cpp:122
-#, fuzzy
-#| msgid "Mandatory widget '$id' hasn't been defined."
 msgid "Mandatory widget ‘$id’ hasn't been defined."
-msgstr "Mandatory widget '$id' hasn't been defined."
+msgstr "Mandatory widget ‘$id’ hasn't been defined."
 
 #: src/gui/widgets/label.cpp:141 src/gui/widgets/multiline_text.cpp:427
 msgid "Open link?"
@@ -8461,13 +8418,10 @@ msgid "Copied link!"
 msgstr "Copied link!"
 
 #: src/gui/widgets/listbox.cpp:724 src/gui/widgets/multi_page.cpp:219
-#, fuzzy
-#| msgid ""
-#| "'list_data' must have the same number of columns as the 'list_definition'."
 msgid ""
 "‘list_data’ must have the same number of columns as the ‘list_definition’."
 msgstr ""
-"'list_data' must have the same number of columns as the 'list_definition'."
+"‘list_data’ must have the same number of columns as the ‘list_definition’."
 
 #: src/gui/widgets/listbox.cpp:769 src/gui/widgets/listbox.cpp:812
 #: src/gui/widgets/listbox.cpp:855 src/gui/widgets/scrollbar_panel.cpp:90
@@ -8476,22 +8430,20 @@ msgstr "No list defined."
 
 #: src/gui/widgets/listbox.cpp:774 src/gui/widgets/listbox.cpp:817
 #: src/gui/widgets/listbox.cpp:860
-#, fuzzy
-#| msgid "A 'list_definition' should contain one row."
 msgid "A ‘list_definition’ should contain one row."
-msgstr "A 'list_definition' should contain one row."
+msgstr "A ‘list_definition’ should contain one row."
 
 #: src/gui/widgets/multi_page.cpp:195
 msgid "No page defined."
 msgstr "No page defined."
 
 #: src/gui/widgets/multiline_text.cpp:432
-#, fuzzy
-#| msgid "Opening links is not supported, contact your packager"
 msgid ""
 "Opening links is not supported, contact your packager. Link URL has been "
 "copied to the clipboard."
-msgstr "Opening links is not supported, contact your packager"
+msgstr ""
+"Opening links is not supported, contact your packager. Link URL has been "
+"copied to the clipboard."
 
 #: src/gui/widgets/multimenu_button.cpp:171
 msgid "multimenu^All Selected"
@@ -8517,7 +8469,7 @@ msgstr "Need at least 1 parallel item."
 
 #: src/gui/widgets/rich_label.cpp:253
 msgid "corrupted original file"
-msgstr ""
+msgstr "corrupted original file"
 
 #: src/gui/widgets/size_lock.cpp:88
 msgid "Invalid size."
@@ -8528,10 +8480,8 @@ msgid "No widget defined."
 msgstr "No widget defined."
 
 #: src/gui/widgets/slider.cpp:356
-#, fuzzy
-#| msgid "The number of value_labels and values don't match."
 msgid "The number of value_labels and values don’t match."
-msgstr "The number of value_labels and values don't match."
+msgstr "The number of value_labels and values don’t match."
 
 #: src/gui/widgets/stacked_widget.cpp:242
 msgid "No stack layers defined."
@@ -8550,10 +8500,8 @@ msgid "No nodes defined for a tree view."
 msgstr "No nodes defined for a tree view."
 
 #: src/gui/widgets/tree_view.cpp:325
-#, fuzzy
-#| msgid "[node]id 'root' is reserved for the implementation."
 msgid "[node]id ‘root’ is reserved for the implementation."
-msgstr "[node]id 'root' is reserved for the implementation."
+msgstr "[node]id ‘root’ is reserved for the implementation."
 
 #: src/gui/widgets/tree_view_node.cpp:106
 msgid "Unknown builder id for tree view node."
@@ -8605,23 +8553,17 @@ msgid "Abilities"
 msgstr "Abilities"
 
 #: src/gui/widgets/window.cpp:293
-#, fuzzy
-#| msgid "Linked '$id' group has multiple definitions."
 msgid "Linked ‘$id’ group has multiple definitions."
-msgstr "Linked '$id' group has multiple definitions."
+msgstr "Linked ‘$id’ group has multiple definitions."
 
 #: src/gui/widgets/window.cpp:893
-#, fuzzy
-#| msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgid "Click dismiss needs a ‘click_dismiss’ or ‘ok’ button."
-msgstr "Click dismiss needs a 'click_dismiss' or 'ok' button."
+msgstr "Click dismiss needs a ‘click_dismiss’ or ‘OK’ button."
 
 #: src/gui/widgets/window.cpp:918 src/gui/widgets/window.cpp:955
 #: src/tests/gui/test_gui2.cpp:742
-#, fuzzy
-#| msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgid "Failed to show a dialog, which doesn’t fit on the screen."
-msgstr "Failed to show a dialogue, which doesn't fit on the screen."
+msgstr "Failed to show a dialogue, which doesn’t fit on the screen."
 
 #: src/hotkey/hotkey_command.cpp:52
 msgid "Saved Games"
@@ -8788,10 +8730,8 @@ msgid "Save Map"
 msgstr "Save Map"
 
 #: src/hotkey/hotkey_command.cpp:110
-#, fuzzy
-#| msgid "Loading..."
 msgid "Load Turn..."
-msgstr "Loading..."
+msgstr "Load Turn..."
 
 #: src/hotkey/hotkey_command.cpp:112
 msgid "Repeat Recruit"
@@ -9507,20 +9447,14 @@ msgid "When reporting the bug please include the following error message :"
 msgstr "When reporting the bug please include the following error message :"
 
 #: src/wml_exception.cpp:89
-#, fuzzy
-#| msgid ""
-#| "In section ‘[$section|]’ where ‘$primary_key|’ = $primary_value’ the "
-#| "mandatory key ‘$key|’ isn't set."
 msgid ""
 "In section ‘[$section|]’ where ‘$primary_key|’ = ‘$primary_value’ the "
 "mandatory key ‘$key|’ isn’t set."
 msgstr ""
-"In section ‘[$section|]’ where ‘$primary_key|’ = $primary_value’ the "
+"In section ‘[$section|]’ where ‘$primary_key|’ = ‘$primary_value’ the "
 "mandatory key ‘$key|’ isn’t set."
 
 #: src/wml_exception.cpp:92
-#, fuzzy
-#| msgid "In section ‘[$section|]’ the mandatory key ‘$key|’ isn't set."
 msgid "In section ‘[$section|]’ the mandatory key ‘$key|’ isn’t set."
 msgstr "In section ‘[$section|]’ the mandatory key ‘$key|’ isn’t set."
 
