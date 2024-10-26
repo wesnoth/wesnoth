@@ -618,8 +618,6 @@ void pump()
 			case SDL_WINDOWEVENT_RESIZED:
 				LOG_DP << "events/RESIZED "
 					<< event.window.data1 << 'x' << event.window.data2;
-				info.resize_dimensions.first = event.window.data1;
-				info.resize_dimensions.second = event.window.data2;
 				prefs::get().set_resolution(video::window_size());
 				break;
 

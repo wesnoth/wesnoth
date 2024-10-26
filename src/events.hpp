@@ -151,8 +151,7 @@ inline void pump_and_draw() { pump(); draw(); }
 // TODO: draw_manager - should this also raise_process_event? Some things do some don't
 
 struct pump_info {
-	pump_info() : resize_dimensions(), ticks_(0) {}
-	std::pair<int,int> resize_dimensions;
+	pump_info() : ticks_(0) {}
 	int ticks();
 private:
 	int ticks_; //0 if not calculated
