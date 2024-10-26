@@ -120,8 +120,8 @@ positional_source::positional_source(const sourcespec &spec) :
 	files_(spec.files()),
 	locations_(spec.get_locations())
 {
-	assert(range_ > 0);
-	assert(faderange_ > 0);
+	assert(range_ >= 0);
+	assert(faderange_ >= 0);
 }
 
 positional_source::~positional_source()
@@ -189,8 +189,8 @@ void positional_source::update_positions(unsigned int time, const display &disp)
 
 int positional_source::calculate_volume(const map_location &loc, const display &disp)
 {
-	assert(range_ > 0);
-	assert(faderange_ > 0);
+	assert(range_ >= 0);
+	assert(faderange_ >= 0);
 
 	if((check_shrouded_ && disp.shrouded(loc)) || (check_fogged_ && disp.fogged(loc)))
 		return DISTANCE_SILENT;
@@ -201,6 +201,10 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 
 	if(distance <= range_) {
 		return 0;
+	}
+
+	if(faderange_ == 0) {
+		return DISTANCE_SILENT;
 	}
 
 	return static_cast<int>((((distance - range_)
