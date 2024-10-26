@@ -26,13 +26,14 @@
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
+#include "font/constants.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "help/help_impl.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/markup.hpp"
-#include "serialization/unicode.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 #include "sound.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
@@ -66,6 +67,7 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 	, can_wrap_(true)
 	, link_aware_(builder.link_aware)
 	, link_color_(font::YELLOW_COLOR)
+	, font_size_(font::SIZE_NORMAL)
 	, can_shrink_(true)
 	, text_alpha_(ALPHA_OPAQUE)
 	, unparsed_text_()
@@ -73,12 +75,6 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 	, size_(0, 0)
 	, padding_(5)
 {
-	connect_signal<event::LEFT_BUTTON_CLICK>(
-		std::bind(&rich_label::signal_handler_left_button_click, this, std::placeholders::_3));
-	connect_signal<event::MOUSE_MOTION>(
-		std::bind(&rich_label::signal_handler_mouse_motion, this, std::placeholders::_3, std::placeholders::_5));
-	connect_signal<event::MOUSE_LEAVE>(
-		std::bind(&rich_label::signal_handler_mouse_leave, this, std::placeholders::_3));
 }
 
 wfl::map_formula_callable rich_label::setup_text_renderer(config text_cfg, unsigned width) const {
@@ -202,7 +198,7 @@ void rich_label::add_link(config& curr_item, std::string name, std::string dest,
 
 	// Add link
 	if (t_end.x > t_start.x) {
-		rect link_rect{ t_start, point{t_end.x - t_start.x, font::get_max_height(font::SIZE_NORMAL) }};
+		rect link_rect{ t_start, point{t_end.x - t_start.x, font::get_max_height(font_size_) }};
 		links_.emplace_back(link_rect, dest);
 
 		DBG_GUI_RL << "added link at rect: " << link_rect;
@@ -210,11 +206,11 @@ void rich_label::add_link(config& curr_item, std::string name, std::string dest,
 	} else {
 		//link straddles two lines, break into two rects
 		point t_size(size_.x - t_start.x - (origin.x == 0 ? img_width : 0), t_end.y - t_start.y);
-		point link_start2(origin.x, t_start.y + 1.3*font::get_max_height(font::SIZE_NORMAL));
+		point link_start2(origin.x, t_start.y + 1.3*font::get_max_height(font_size_));
 		point t_size2(t_end.x, t_end.y - t_start.y);
 
-		rect link_rect{ t_start, point{ t_size.x, font::get_max_height(font::SIZE_NORMAL) } };
-		rect link_rect2{ link_start2, point{ t_size2.x, font::get_max_height(font::SIZE_NORMAL) } };
+		rect link_rect{ t_start, point{ t_size.x, font::get_max_height(font_size_) } };
+		rect link_rect2{ link_start2, point{ t_size2.x, font::get_max_height(font_size_) } };
 
 		links_.emplace_back(link_rect, dest);
 		links_.emplace_back(link_rect2, dest);
@@ -499,7 +495,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 					(*curr_item)["actions"] = "([set_var('pos_x', 0), set_var('pos_y', pos_y + image_height + padding)])";
 					line = line.substr(1);
 				} else if (!line.empty() && line.at(0) != '\n') {
-					std::vector<std::string> parts = split_in_width(line, font::SIZE_NORMAL, (init_width-x));
+					std::vector<std::string> parts = split_in_width(line, font_size_, (init_width-x));
 					// First line
 					if (!parts.front().empty()) {
 						line = parts.front();
@@ -630,7 +626,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 					std::string removed_part = (*curr_item)["text"].str().substr(len+1);
 					(*curr_item)["text"] = (*curr_item)["text"].str().substr(0, len);
 					(*curr_item)["maximum_width"] = init_width - float_size.x;
-					(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('ww', 0), set_var('pos_y', pos_y + text_height + %d)])") % (0.3*font::get_max_height(font::SIZE_NORMAL)));
+					(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('ww', 0), set_var('pos_y', pos_y + text_height + %d)])") % (0.3*font::get_max_height(font_size_)));
 
 					// Height update
 					int ah = get_text_size(*curr_item, init_width - float_size.x).y;
@@ -639,7 +635,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 					}
 					text_height += ah - tmp_h;
 
-					prev_blk_height += text_height + 0.3*font::get_max_height(font::SIZE_NORMAL);
+					prev_blk_height += text_height + 0.3*font::get_max_height(font_size_);
 
 					DBG_GUI_RL << "wrap: " << prev_blk_height << "," << text_height;
 					text_height = 0;
@@ -738,7 +734,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 void rich_label::default_text_config(config* txt_ptr, t_string text) {
 	if (txt_ptr != nullptr) {
 		(*txt_ptr)["text"] = text;
-		(*txt_ptr)["font_size"] = font::SIZE_NORMAL;
+		(*txt_ptr)["font_size"] = font_size_;
 		(*txt_ptr)["text_alignment"] = encode_text_alignment(get_text_alignment());
 		(*txt_ptr)["x"] = "(pos_x)";
 		(*txt_ptr)["y"] = "(pos_y)";
@@ -811,6 +807,22 @@ void rich_label::set_state(const state_t state)
 		queue_redraw();
 	}
 }
+
+void rich_label::register_link_callback(std::function<void(std::string)> link_handler)
+{
+	if(!link_aware_) {
+		return;
+	}
+
+	connect_signal<event::LEFT_BUTTON_CLICK>(
+		std::bind(&rich_label::signal_handler_left_button_click, this, std::placeholders::_3));
+	connect_signal<event::MOUSE_MOTION>(
+		std::bind(&rich_label::signal_handler_mouse_motion, this, std::placeholders::_3, std::placeholders::_5));
+	connect_signal<event::MOUSE_LEAVE>(
+		std::bind(&rich_label::signal_handler_mouse_leave, this, std::placeholders::_3));
+	link_handler_ = link_handler;
+}
+
 
 void rich_label::signal_handler_left_button_click(bool& handled)
 {
@@ -904,6 +916,7 @@ rich_label_definition::rich_label_definition(const config& cfg)
 rich_label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, link_color(cfg["link_color"].empty() ? font::YELLOW_COLOR : color_t::from_rgba_string(cfg["link_color"].str()))
+	, font_size(cfg["text_font_size"].to_int(font::SIZE_NORMAL))
 {
 	// Note the order should be the same as the enum state_t is rich_label.hpp.
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("rich_label_definition][resolution", "state_enabled")));
@@ -932,6 +945,7 @@ std::unique_ptr<widget> builder_rich_label::build() const
 
 	lbl->set_text_alignment(text_alignment);
 	lbl->set_link_color(conf->link_color);
+	lbl->set_font_size(conf->font_size);
 	lbl->set_label(lbl->get_label());
 
 	DBG_GUI_G << "Window builder: placed rich_label '" << id << "' with definition '"
