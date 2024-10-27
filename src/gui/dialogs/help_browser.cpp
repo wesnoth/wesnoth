@@ -26,9 +26,12 @@
 #include "gui/widgets/scrollbar_panel.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
+#include "log.hpp"
+#include "video.hpp"
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
@@ -74,6 +77,22 @@ void help_browser::pre_show()
 	back_button.set_active(false);
 	connect_signal_mouse_left_click(back_button, std::bind(&help_browser::on_history_navigate, this, true));
 	connect_signal_mouse_left_click(next_button, std::bind(&help_browser::on_history_navigate, this, false));
+
+	toggle_button& contents = find_widget<toggle_button>("contents");
+
+	if (video::window_size().x <= 800) {
+		contents.set_value(false);
+		connect_signal_mouse_left_click(contents, std::bind([&]() {
+			topic_tree.set_visible(topic_tree.get_visible() == widget::visibility::visible
+				? widget::visibility::invisible
+				: widget::visibility::visible);
+			invalidate_layout();
+		}));
+		topic_tree.set_visible(widget::visibility::invisible);
+	} else {
+		contents.set_value(true);
+		contents.set_visible(widget::visibility::invisible);
+	}
 
 	topic_text.register_link_callback(std::bind(&help_browser::show_topic, this, std::placeholders::_1, true));
 
@@ -178,6 +197,11 @@ void help_browser::on_topic_select()
 
 	tree_view_node* selected = topic_tree.selected_item();
 	assert(selected);
+
+	if (selected->id()[0] != '+' && video::window_size().x <= 800) {
+		find_widget<toggle_button>("contents").set_value(false);
+		topic_tree.set_visible(widget::visibility::invisible);
+	}
 
 	show_topic(selected->id());
 }
