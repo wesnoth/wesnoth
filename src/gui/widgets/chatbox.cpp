@@ -587,6 +587,12 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 	if(whisper) {
 		add_whisper_received(sender, message);
 	} else {
+		if(message.size() > 14 && sender == "server" && data["type"] == "error" && std::string_view(message.data(), 12) == "Can't find '") {
+			bool dummy_var = false;
+
+			close_window_button_callback(message.substr(12, message.size() - 14), dummy_var, dummy_var);
+		}
+
 		if (!prefs::get().parse_should_show_lobby_join(sender, message)) return;
 
 		std::string room = data["room"];
@@ -594,13 +600,21 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 		// Attempt to send to the currently active room first.
 		if(room.empty()) {
 			LOG_LB << "Message without a room from " << sender << ", falling back to active window";
-			room = open_windows_[active_window_].name;
+			const lobby_chat_window& active_window = open_windows_[active_window_];
+
+			if(!active_window.whisper) {
+				room = active_window.name;
+			}
 		}
 
 		// If we still don't have a name, fall back to lobby.
 		if(room.empty()) {
 			LOG_LB << "Message without a room from " << sender << ", assuming lobby";
 			room = "lobby";
+
+			if(!room_window_open(room, false, false)) {
+				room = "this game";
+			}
 		}
 
 		if(log_ != nullptr && data["type"].str() == "motd") {
