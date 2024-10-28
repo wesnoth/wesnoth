@@ -1,21 +1,23 @@
-## Version 1.18.2+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.18.3
  ### Campaigns
+   * Eastern Invasion
+     * S04c: achievement now only triggers when escaping with all knights alive
+     * S11/S99: flying units can no longer enter prison cells via the river
+     * S12: fixed Dra-Nak (if present) having incorrect traits and portraits
+     * S17b: AI is now more forced to recruit only higher-level units when gold reserves get too high
+     * S99: prisoners now escape if their jailers are killed
    * Under the Burnings Suns
      * S04: added sprite for the Cold Dagger item (PR #9189)
  ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
+   * Added Show Tool Information toggle option in the menus and toolbar to allow hiding the informational tooltip on the edge of the screen that shows the current editor tool's usage and palette information
  ### Translations
    * Updated translations: Arabic, Bengali, British English, Chinese (Simplified), Czech, Finnish, French, German, Hungarian, Italian, Japanese, Turkish, Ukrainian
- ### Units
  ### User interface
    * Help button in the leaderchoosing window works on all languages (issue #9102)
  ### WML Engine
+   * Fix crash when weapon specials' filters lead to infinite recursion (issue #8940)
  ### Miscellaneous and Bug Fixes
+   * Search filter should now be case-insensitive for more than just ASCII characters (#9328)
 
 ## Version 1.18.2
  ### Translations
@@ -25,6 +27,7 @@
  ### Miscellaneous and Bug Fixes
    * Server-side fix for the "Something is wrong with the addon version check database supporting the multiplayer lobby." error (issue #8805)
    * Potential fix for log files not being written on Windows.
+   * Fixed the Load Game dialog forgetting the filename filter when changing directory
 
 ## Version 1.18.1
  ### Campaigns
