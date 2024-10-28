@@ -16,41 +16,41 @@
 
 ## Version 1.19.5
 ### Campaigns
-  * Eastern Invasion: "Drowned Plains" drastically shortened in length. Objective now involves gathering gold, not killing enemy leaders.
+   * Eastern Invasion: "Drowned Plains" drastically shortened in length. Objective now involves gathering gold, not killing enemy leaders.
 ### Editor
-  * Fixed a crash in some cases after setting which direction a unit is facing.
+   * Fixed a crash in some cases after setting which direction a unit is facing.
 ### Lua API
-  * Added new function gui.switch_theme() to allow switching to another gui2 theme from inside a scenario.
+   * Added new function gui.switch_theme() to allow switching to another gui2 theme from inside a scenario.
 ### Terrain
-  * Improved handling of bluffs/gulch transitions with mountains and frozen terrain
-  * Bluffs/Gulches less intrusive in mini-map
+   * Improved handling of bluffs/gulch transitions with mountains and frozen terrain
+   * Bluffs/Gulches less intrusive in mini-map
 ### Translations
-  * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, Italian, Japanese, Turkish
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, Italian, Japanese, Turkish
 ### Units
-  * Walking Corpse: arcane vulnerability reduced from 40% to 20%.
-  * Soulless: arcane vulnerability reduced from 40% to 20%.
-  * Skeletal Dragon stats were changed:
-    * hitpoints from 171 to 98
-    * cost from 288 to 160
-    * fire resistance from -20% to 20%
-    * jaw attack from 17x4 to 15x3
-    * claw attack from 24x3 to 27x2
+   * Walking Corpse: arcane vulnerability reduced from 40% to 20%.
+   * Soulless: arcane vulnerability reduced from 40% to 20%.
+   * Skeletal Dragon stats were changed:
+     * hitpoints from 171 to 98
+     * cost from 288 to 160
+     * fire resistance from -20% to 20%
+     * jaw attack from 17x4 to 15x3
+     * claw attack from 24x3 to 27x2
 ### User interface
-  * GUI2 themes can be loaded from add-ons. Requires a `gui-theme.cfg` file in add-on root with a `[gui]` tag that acts as the entry point for the theme.
-  * Hovering over units and selecting units now highlights reachable hexes instead of obscuring unreachable ones.
-  * Option key is now identified as such instead of Alt in the Hotkeys preferences section on macOS builds
-  * Search filter should now be case-insensitive for more than just ASCII characters (#9328)
-  * Added attack and defend animations for the Orcish Warrior, standing and attack animations for the Goblin Pillager, and an alternate attack animation for the Orcish Warlord.
-  * Fixed the displayed team name not always matching the actual teams that players are on.
+   * GUI2 themes can be loaded from add-ons. Requires a `gui-theme.cfg` file in add-on root with a `[gui]` tag that acts as the entry point for the theme.
+   * Hovering over units and selecting units now highlights reachable hexes instead of obscuring unreachable ones.
+   * Option key is now identified as such instead of Alt in the Hotkeys preferences section on macOS builds
+   * Search filter should now be case-insensitive for more than just ASCII characters (#9328)
+   * Added attack and defend animations for the Orcish Warrior, standing and attack animations for the Goblin Pillager, and an alternate attack animation for the Orcish Warlord.
+   * Fixed the displayed team name not always matching the actual teams that players are on.
 ### WML Engine
-  * Removed properties `unit.side` and `terrain.owner`. Use `unit.side_number` and `terrain.owner_side` instead.
-  * rechange [experimental_filter_ability/active] and [experimental_filter_specials] to [filter_ability/active] and [filter_specials] and make "experimental_" deprecated.
-  * Add alignment in [attack] to specify the alignment of an attack independent of the unit's alignment.
-  * GUI2 themes can now be provided by add-ons.
-  * When using `sub` in a weapon special to decrease the number of attacks a unit has, going below zero is now treated as still being 0.
+   * Removed properties `unit.side` and `terrain.owner`. Use `unit.side_number` and `terrain.owner_side` instead.
+   * rechange [experimental_filter_ability/active] and [experimental_filter_specials] to [filter_ability/active] and [filter_specials] and make "experimental_" deprecated.
+   * Add alignment in [attack] to specify the alignment of an attack independent of the unit's alignment.
+   * GUI2 themes can now be provided by add-ons.
+   * When using `sub` in a weapon special to decrease the number of attacks a unit has, going below zero is now treated as still being 0.
 ### Miscellaneous and Bug Fixes
-  * A variety of issues have been fixed in the rewritten in-game Help browser.
-  * Fixed the editor saving plain maps in a different folder than the game creation screen expects.
+   * A variety of issues have been fixed in the rewritten in-game Help browser.
+   * Fixed the editor saving plain maps in a different folder than the game creation screen expects.
 
 ## Version 1.19.4
 ### Lua API
