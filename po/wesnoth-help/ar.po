@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-25 21:28-0500\n"
+"POT-Creation-Date: 2024-10-28 12:38-0500\n"
 "PO-Revision-Date: 2024-04-06 12:06+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -47,7 +47,7 @@ msgstr ""
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:500
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:501
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "تحت الأرض"
@@ -369,13 +369,13 @@ msgstr "تعديل خرائط وسيناريو"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:372
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:377
 msgid "Terrain Editor"
 msgstr "تعديل الأرضية"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:384
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:389
 msgid "Scenario Editor"
 msgstr "تعديل سيناريو"
 
@@ -712,12 +712,12 @@ msgstr ""
 "كفن مزيف "
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:171
+#: data/core/editor/help.cfg:172
 msgid "Terrain Elevation Graphics"
 msgstr "رسومات ارتفاع التضاريس"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:172
+#: data/core/editor/help.cfg:173
 #, fuzzy
 msgid ""
 "A cosmetic elevation effect that looks a little different in the editor than "
@@ -728,12 +728,12 @@ msgstr ""
 "البصرية في المحرر؛ "
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:175
+#: data/core/editor/help.cfg:176
 msgid "editor^<bold>text='Direct Overlays'</bold>"
 msgstr "editor^<bold>text='التراكبات المباشرة'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:177
+#: data/core/editor/help.cfg:178
 #, fuzzy
 msgid ""
 "Bluffs and Gulch\n"
@@ -749,17 +749,17 @@ msgstr ""
 "القياسي، ويمكن استخدامها ببساطة بهذه الطريقة. "
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:182
+#: data/core/editor/help.cfg:183
 msgid "editor^<bold>text='Elevation Floodfill'</bold>"
 msgstr "editor^<bold>text='ارتفاع الفيضان'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:184
+#: data/core/editor/help.cfg:185
 msgid "Raised elevation on-map marker"
 msgstr "علامة الارتفاع المرتفعة على الخريطة"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:185
+#: data/core/editor/help.cfg:186
 #, fuzzy
 msgid ""
 "Raised elevation editor palette icon\n"
@@ -782,7 +782,7 @@ msgstr ""
 "متراكبة مثل الأشجار، ستحتاج إلى استخدام هذه العلامات. "
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:192
+#: data/core/editor/help.cfg:193
 #, fuzzy
 msgid ""
 "editor^<bold>text='How to Use'</bold>\n"
@@ -809,7 +809,7 @@ msgstr ""
 " "
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:203
+#: data/core/editor/help.cfg:204
 #, fuzzy
 msgid ""
 "editor^<format>text='Note for UMC authors: The flood-filled tiles do not "
@@ -822,14 +822,14 @@ msgstr ""
 "حسب الارتفاع ليس بالأمر السهل.' "
 
 #. [topic]: id=editor_deprecated_overlay
-#: data/core/editor/help.cfg:208
+#: data/core/editor/help.cfg:210
 msgid "Deprecated Terrain"
 msgstr "التضاريس المهملة"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
-#: data/core/editor/help.cfg:211
+#: data/core/editor/help.cfg:213
 msgid ""
 "editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
 "png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
@@ -854,12 +854,12 @@ msgstr ""
 "المحرر، ويصف الإيقاف والبدائل الموصى بها."
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:224
+#: data/core/editor/help.cfg:226
 msgid "Label Tool"
 msgstr "أداة اللصيقة"
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:225
+#: data/core/editor/help.cfg:227
 #, fuzzy
 msgid ""
 "Put text labels on the map.\n"
@@ -880,20 +880,21 @@ msgstr ""
 "• السحب والإفلات باستخدام "
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:240
+#: data/core/editor/help.cfg:242
 msgid "Item Tool (Scenery Tool)"
 msgstr "أداة العنصر (أداة المشهد)"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:241
+#: data/core/editor/help.cfg:243
 #, fuzzy
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
 "\n"
-"<bold>text='Note:'</bold> the tool doesn’t support deleting items once "
-"placed, nor does it support undo. Mistakes can currently only be fixed by "
-"editing the generated WML file.\n"
+"• Left-click will place a decoration on the clicked hex.\n"
+"• Right-click will remove the decoration.\n"
+"\n"
+"<bold>text='Note:'</bold> the tool doesn’t support undo.\n"
 "\n"
 "This tool is only available in Scenario Mode; the decorations are not part "
 "of the terrain and are implemented in the scenario using WML’s "
@@ -902,12 +903,12 @@ msgstr ""
 "أداة العنصر تسمح بوضع الزخارف مثل طواحين الهواء وخزائن الكتب والمتراصات. "
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:254
+#: data/core/editor/help.cfg:259
 msgid "Village Ownership Tool"
 msgstr "أداة ملكية القرية"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:255
+#: data/core/editor/help.cfg:260
 #, fuzzy
 msgid ""
 "This tool assigns ownership of villages at the start of a scenario. The "
@@ -923,12 +924,12 @@ msgid ""
 msgstr "تقوم هذه الأداة بتعيين ملكية القرى في بداية السيناريو. "
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:269
+#: data/core/editor/help.cfg:274
 msgid "Unit Tool"
 msgstr "أداة الوحدة"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:275
 #, fuzzy
 msgid ""
 "Place units belonging to the currently-selected side.\n"
@@ -949,12 +950,12 @@ msgstr ""
 "• تتم إضافة عمليات مختلفة إلى "
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:285
+#: data/core/editor/help.cfg:290
 msgid "Named Areas"
 msgstr "المناطق المسماة"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:286
+#: data/core/editor/help.cfg:291
 #, fuzzy
 msgid ""
 "This tool create sets of tiles that can be used in WML scripts’ Standard "
@@ -985,12 +986,12 @@ msgstr ""
 "المنطقة في <italic>text='area='</italic الخاص بالمرشح "
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:307
+#: data/core/editor/help.cfg:312
 msgid "Playlist Manager"
 msgstr "إدارة قائمة التشغيل"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:308
+#: data/core/editor/help.cfg:313
 #, fuzzy
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
@@ -1005,12 +1006,12 @@ msgstr ""
 "هذه الأداة متاحة فقط في وضع السيناريو؛ "
 
 #. [topic]: id=editor_addon_id
-#: data/core/editor/help.cfg:319
+#: data/core/editor/help.cfg:324
 msgid "Change Add-on ID"
 msgstr "تغيير معرف الإضافة"
 
 #. [topic]: id=editor_addon_id
-#: data/core/editor/help.cfg:320
+#: data/core/editor/help.cfg:325
 #, fuzzy
 msgid ""
 "Allows changing the ID of an add-on, which is the name of the folder it’s "
@@ -1021,12 +1022,12 @@ msgstr ""
 "فقط إلى إعادة تسمية هذا المجلد وتحديث أي مراجع إليه في ملف _main.cfg. "
 
 #. [topic]: id=editor_pbl_editor
-#: data/core/editor/help.cfg:329
+#: data/core/editor/help.cfg:334
 msgid "Add-on Publishing Editor"
 msgstr "محرر نشر الإضافة"
 
 #. [topic]: id=editor_pbl_editor
-#: data/core/editor/help.cfg:330
+#: data/core/editor/help.cfg:335
 #, fuzzy
 msgid ""
 "Allows setting up an add-on’s _server.pbl file, which is required for "
@@ -1037,12 +1038,12 @@ msgstr ""
 "إضافية إلى خادم الوظائف الإضافية ليتمكن اللاعبون الآخرون من تنزيلها. "
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:338
+#: data/core/editor/help.cfg:343
 msgid "Map/Scenario Editor"
 msgstr "محرر الخريطة/السيناريو"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:339
+#: data/core/editor/help.cfg:344
 #, fuzzy
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
@@ -1078,7 +1079,7 @@ msgstr ""
 "التي يحدث عليها كل سيناريو Wesnoth. "
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:351
+#: data/core/editor/help.cfg:356
 #, fuzzy
 msgid ""
 "In either mode, you will be prompted to choose an add-on to use for the "
@@ -1093,7 +1094,7 @@ msgstr ""
 "التي تقوم بإنشائها. "
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:353
+#: data/core/editor/help.cfg:358
 #, fuzzy
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
@@ -1125,7 +1126,7 @@ msgstr ""
 "الخريطة لن تبدو تمامًا كما هي في اللعبة "
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:373
+#: data/core/editor/help.cfg:378
 #, fuzzy
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
@@ -1145,7 +1146,7 @@ msgstr ""
 "ومجموعة الأدوات (راجع الصفحات الخاصة بكل أداة)، وخيارات الأداة، و< "
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:385
+#: data/core/editor/help.cfg:390
 #, fuzzy
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
@@ -1157,7 +1158,7 @@ msgstr ""
 "وعناصر المشهد. "
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:387
+#: data/core/editor/help.cfg:392
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -1175,7 +1176,7 @@ msgstr ""
 "• في وضع التضاريس فقط، تظهر قوائم \"المناطق\" و\"الجانبية\" باللون الرمادي."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:394
+#: data/core/editor/help.cfg:399
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -1200,7 +1201,7 @@ msgstr ""
 "القائمة \"ملف\"، وحدد ملف .cfg (وليس ملف .map)."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:402
+#: data/core/editor/help.cfg:407
 #, fuzzy
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
@@ -1222,12 +1223,12 @@ msgstr ""
 "عندما يكون في وضع السيناريو (كلاهما . "
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:414
+#: data/core/editor/help.cfg:419
 msgid "Using a separate file for WML events"
 msgstr "استخدام ملف منفصل لأحداث WML"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:415
+#: data/core/editor/help.cfg:420
 #, fuzzy
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
@@ -1266,12 +1267,12 @@ msgstr ""
 "أحد الخيارات هو إنشاء ملف WML منفصل، أيضًا باستخدام "
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:438
+#: data/core/editor/help.cfg:443
 msgid "Editor Mask Usage"
 msgstr "استخدام قناع المحرر"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:439
+#: data/core/editor/help.cfg:444
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -1281,12 +1282,12 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:447
+#: data/core/editor/help.cfg:452
 msgid "ToD and Schedule Editor"
 msgstr "ToD ومحرر الجدول الزمني"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:448
+#: data/core/editor/help.cfg:453
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -1307,13 +1308,13 @@ msgstr ""
 "dst='editor_named_area' text='المناطق الزمنية'</ref> ."
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:459
+#: data/core/editor/help.cfg:464
 msgid "Editor Palette"
 msgstr "لوحة المحرر"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:461
+#: data/core/editor/help.cfg:466
 #, fuzzy
 msgid ""
 "The editor palette contains the applicable items you may use with the "
@@ -1332,32 +1333,32 @@ msgstr ""
 "المحددة حاليًا. "
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:466
+#: data/core/editor/help.cfg:471
 msgid "Show all kinds of terrain"
 msgstr "إظهار جميع أنواع التضاريس"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:467
+#: data/core/editor/help.cfg:472
 msgid "Show only water terrains"
 msgstr "إظهار التضاريس المائية فقط"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:468
+#: data/core/editor/help.cfg:473
 msgid "Show only villages"
 msgstr "عرض القرى فقط"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:480
+#: data/core/editor/help.cfg:485
 msgid "Wesnoth Map Format"
 msgstr "تنسيق خريطة ويسنوث"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:481
+#: data/core/editor/help.cfg:486
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr "تخزن ويسنوث خرائطه في ملفات نصية عادية يمكن قراءتها بواسطة الإنسان."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:483
+#: data/core/editor/help.cfg:488
 #, fuzzy
 msgid ""
 "<header>text='Native'</header>\n"
@@ -1392,7 +1393,7 @@ msgstr ""
 "يتكون ملف الخريطة من صفوف تحتوي على سلاسل رمز التضاريس مفصولة بفواصل. "
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:496
+#: data/core/editor/help.cfg:501
 #, fuzzy
 msgid ""
 "<header>text='Embedded'</header>\n"
@@ -1417,7 +1418,7 @@ msgstr ""
 "<italic>text='map_data'</italic>. "
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:504
+#: data/core/editor/help.cfg:509
 #, fuzzy
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
@@ -4070,9 +4071,9 @@ msgid ""
 "‘m’ first to open the chat line).\n"
 "\n"
 msgstr ""
-"يمكن إصدار هذه الأوامر إما عبر سطر الأوامر عن طريق إضافة بادئة لها بـ ':' "
-"(كما هو موضح هنا) أو عبر الدردشة عن طريق بادئتها بـ '/' (اضغط 'm' أولاً لفتح "
-"خط الدردشة).\n"
+"يمكن إصدار هذه الأوامر إما عبر سطر الأوامر عن طريق إضافة بادئة لها بـ "
+"':' (كما هو موضح هنا) أو عبر الدردشة عن طريق بادئتها بـ '/' (اضغط 'm' أولاً "
+"لفتح خط الدردشة).\n"
 " "
 
 #. [topic]: id=general_commands

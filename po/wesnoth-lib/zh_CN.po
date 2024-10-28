@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-25 21:28-0500\n"
+"POT-Creation-Date: 2024-10-28 12:38-0500\n"
 "PO-Revision-Date: 2024-07-10 11:00+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -2363,7 +2363,7 @@ msgstr "发布附加组件"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:622
-#: src/gui/dialogs/addon/manager.cpp:1017
+#: src/gui/dialogs/addon/manager.cpp:1012
 msgid "Uninstall add-on"
 msgstr "卸载附加组件"
 
@@ -2644,7 +2644,7 @@ msgstr "依赖项目："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1097
+#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1092
 msgid "addon_dependencies^None"
 msgstr "无"
 
@@ -2657,7 +2657,7 @@ msgstr "翻译："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1111
+#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1106
 msgid "translations^None"
 msgstr "无"
 
@@ -2700,8 +2700,8 @@ msgstr "附加组件管理器"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:551
-#: src/gui/dialogs/addon/manager.cpp:825
+#: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:546
+#: src/gui/dialogs/addon/manager.cpp:820
 msgid "Add-on Details"
 msgstr "附加组件细节"
 
@@ -2892,7 +2892,7 @@ msgstr "选择难度："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:285
+#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:287
 msgid "Chat Log"
 msgstr "聊天记录"
 
@@ -3107,7 +3107,7 @@ msgstr "删除时段"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:990 src/gui/dialogs/file_dialog.cpp:306
+#: src/gui/dialogs/addon/manager.cpp:985 src/gui/dialogs/file_dialog.cpp:306
 #: src/gui/dialogs/file_dialog.cpp:732
 msgid "Confirm"
 msgstr "确认"
@@ -3579,7 +3579,7 @@ msgstr "无"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:246
+#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:248
 msgid "Generate Map"
 msgstr "生成地图"
 
@@ -3634,7 +3634,7 @@ msgstr "创建"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:245
+#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:247
 msgid "Resize Map"
 msgstr "改变地图大小"
 
@@ -5144,7 +5144,7 @@ msgstr "团队名称："
 #. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:256
-#: src/gui/dialogs/game_load.cpp:395
+#: src/gui/dialogs/game_load.cpp:394
 msgid "Multiplayer"
 msgstr "多人游戏"
 
@@ -6070,7 +6070,7 @@ msgstr "选择主题"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/window/title_screen.cfg:177 src/hotkey/hotkey_command.cpp:283
+#: data/gui/window/title_screen.cfg:177 src/hotkey/hotkey_command.cpp:285
 msgid "Help"
 msgstr "帮助"
 
@@ -6529,298 +6529,298 @@ msgstr ""
 msgid "Completed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:162
+#: src/gui/dialogs/addon/manager.cpp:157
 msgid "addons_view^All Add-ons"
 msgstr "全部附加组件"
 
-#: src/gui/dialogs/addon/manager.cpp:163
+#: src/gui/dialogs/addon/manager.cpp:158
 msgid "addons_view^Installed"
 msgstr "已安装"
 
-#: src/gui/dialogs/addon/manager.cpp:164
+#: src/gui/dialogs/addon/manager.cpp:159
 msgid "addons_view^Upgradable"
 msgstr "可升级"
 
-#: src/gui/dialogs/addon/manager.cpp:165
+#: src/gui/dialogs/addon/manager.cpp:160
 msgid "addons_view^Publishable"
 msgstr "可发布"
 
-#: src/gui/dialogs/addon/manager.cpp:166
+#: src/gui/dialogs/addon/manager.cpp:161
 msgid "addons_view^Not Installed"
 msgstr "未安装"
 
-#: src/gui/dialogs/addon/manager.cpp:170
+#: src/gui/dialogs/addon/manager.cpp:165
 msgid "addons_of_type^Campaigns"
 msgstr "战役"
 
-#: src/gui/dialogs/addon/manager.cpp:171
+#: src/gui/dialogs/addon/manager.cpp:166
 msgid "addons_of_type^Scenarios"
 msgstr "场景"
 
-#: src/gui/dialogs/addon/manager.cpp:172
+#: src/gui/dialogs/addon/manager.cpp:167
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "单人/多人游戏战役"
 
-#: src/gui/dialogs/addon/manager.cpp:173
+#: src/gui/dialogs/addon/manager.cpp:168
 msgid "addons_of_type^MP campaigns"
 msgstr "多人游戏战役"
 
-#: src/gui/dialogs/addon/manager.cpp:174
+#: src/gui/dialogs/addon/manager.cpp:169
 msgid "addons_of_type^MP scenarios"
 msgstr "多人游戏场景"
 
-#: src/gui/dialogs/addon/manager.cpp:175
+#: src/gui/dialogs/addon/manager.cpp:170
 msgid "addons_of_type^MP map-packs"
 msgstr "多人游戏地图包"
 
-#: src/gui/dialogs/addon/manager.cpp:176
+#: src/gui/dialogs/addon/manager.cpp:171
 msgid "addons_of_type^MP eras"
 msgstr "多人游戏时代"
 
-#: src/gui/dialogs/addon/manager.cpp:177
+#: src/gui/dialogs/addon/manager.cpp:172
 msgid "addons_of_type^MP factions"
 msgstr "多人游戏派系"
 
-#: src/gui/dialogs/addon/manager.cpp:178
+#: src/gui/dialogs/addon/manager.cpp:173
 msgid "addons_of_type^Modifications"
 msgstr "模组"
 
-#: src/gui/dialogs/addon/manager.cpp:179
+#: src/gui/dialogs/addon/manager.cpp:174
 msgid "addons_of_type^Cores"
 msgstr "核心"
 
-#: src/gui/dialogs/addon/manager.cpp:180
+#: src/gui/dialogs/addon/manager.cpp:175
 msgid "addons_of_type^Resources"
 msgstr "资源"
 
-#: src/gui/dialogs/addon/manager.cpp:182
+#: src/gui/dialogs/addon/manager.cpp:177
 msgid "addons_of_type^Other"
 msgstr "其他"
 
-#: src/gui/dialogs/addon/manager.cpp:183
+#: src/gui/dialogs/addon/manager.cpp:178
 msgid "addons_of_type^Unknown"
 msgstr "未知"
 
-#: src/gui/dialogs/addon/manager.cpp:187
+#: src/gui/dialogs/addon/manager.cpp:182
 msgid "addons_order^Name ($order)"
 msgstr "名称（$order）"
 
-#: src/gui/dialogs/addon/manager.cpp:190
+#: src/gui/dialogs/addon/manager.cpp:185
 msgid "addons_order^Author ($order)"
 msgstr "作者（$order）"
 
-#: src/gui/dialogs/addon/manager.cpp:193
+#: src/gui/dialogs/addon/manager.cpp:188
 msgid "addons_order^Size ($order)"
 msgstr "大小（$order）"
 
-#: src/gui/dialogs/addon/manager.cpp:196
+#: src/gui/dialogs/addon/manager.cpp:191
 msgid "addons_order^Downloads ($order)"
 msgstr "下载数（$order）"
 
-#: src/gui/dialogs/addon/manager.cpp:199
+#: src/gui/dialogs/addon/manager.cpp:194
 msgid "addons_order^Type ($order)"
 msgstr "类型（$order）"
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:197
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr "最近更新时间（$datelike_order）"
 
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:200
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr "首次上传时间（$datelike_order）"
 
-#: src/gui/dialogs/addon/manager.cpp:223
+#: src/gui/dialogs/addon/manager.cpp:218
 msgid "addon_tag^Cooperative"
 msgstr "协作"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:225
+#: src/gui/dialogs/addon/manager.cpp:220
 msgid "addon_tag^All human players are on the same team, versus the AI"
 msgstr "所有人类玩家在同一队，共同对抗AI"
 
-#: src/gui/dialogs/addon/manager.cpp:226
+#: src/gui/dialogs/addon/manager.cpp:221
 msgid "addon_tag^Cosmetic"
 msgstr "装饰性"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:228
+#: src/gui/dialogs/addon/manager.cpp:223
 msgid "addon_tag^These make the game look different, without changing gameplay"
 msgstr "这些附加组件让游戏看起来不同，但不改变玩法"
 
-#: src/gui/dialogs/addon/manager.cpp:229
+#: src/gui/dialogs/addon/manager.cpp:224
 msgid "addon_tag^Difficulty"
 msgstr "难度调整"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:231
+#: src/gui/dialogs/addon/manager.cpp:226
 msgid "addon_tag^Can make campaigns easier or harder"
 msgstr "可以让战役变得更困难或更简单"
 
-#: src/gui/dialogs/addon/manager.cpp:232
+#: src/gui/dialogs/addon/manager.cpp:227
 msgid "addon_tag^RNG"
 msgstr "随机性调整"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:234
+#: src/gui/dialogs/addon/manager.cpp:229
 msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
 msgstr "调整战斗机制中的随机性，或者完全移除随机性"
 
-#: src/gui/dialogs/addon/manager.cpp:235
+#: src/gui/dialogs/addon/manager.cpp:230
 msgid "addon_tag^Survival"
 msgstr "生存"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:237
+#: src/gui/dialogs/addon/manager.cpp:232
 msgid "addon_tag^Fight against waves of enemies"
 msgstr "与一波又一波敌人作战"
 
-#: src/gui/dialogs/addon/manager.cpp:238
+#: src/gui/dialogs/addon/manager.cpp:233
 msgid "addon_tag^Terraforming"
 msgstr "地形改造"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:240
+#: src/gui/dialogs/addon/manager.cpp:235
 msgid "addon_tag^Players can change the terrain"
 msgstr "玩家可以改变地形"
 
-#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:259 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "未安装"
 
-#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "已发布，未安装"
 
-#: src/gui/dialogs/addon/manager.cpp:269 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "已安装"
 
-#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "已发布"
 
-#: src/gui/dialogs/addon/manager.cpp:274
+#: src/gui/dialogs/addon/manager.cpp:269
 msgid "addon_state^Installed, not tracking local version"
 msgstr "已安装，未跟踪本地版本"
 
-#: src/gui/dialogs/addon/manager.cpp:277
+#: src/gui/dialogs/addon/manager.cpp:272
 msgid "addon_state^Published, not tracking local version"
 msgstr "已发布，未跟踪本地版本"
 
-#: src/gui/dialogs/addon/manager.cpp:281
+#: src/gui/dialogs/addon/manager.cpp:276
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "已安装（$local_version|），可升级"
 
-#: src/gui/dialogs/addon/manager.cpp:282
+#: src/gui/dialogs/addon/manager.cpp:277
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "已发布（$local_version|已安装），可升级"
 
-#: src/gui/dialogs/addon/manager.cpp:288
+#: src/gui/dialogs/addon/manager.cpp:283
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "已安装（$local_version|），服务器上的版本已过时"
 
-#: src/gui/dialogs/addon/manager.cpp:289
+#: src/gui/dialogs/addon/manager.cpp:284
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "已发布（$local_version 已安装|），服务器上的版本已过时"
 
-#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:290 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "已安装，未准备好发布"
 
-#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:291 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "已准备好发布"
 
-#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "已安装，已损坏"
 
-#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "已发布，已损坏"
 
-#: src/gui/dialogs/addon/manager.cpp:304 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:299 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "未知"
 
-#: src/gui/dialogs/addon/manager.cpp:444
+#: src/gui/dialogs/addon/manager.cpp:439
 msgid "ascending"
 msgstr "升序"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:446
+#: src/gui/dialogs/addon/manager.cpp:441
 msgid "oldest to newest"
 msgstr "从最旧到最新"
 
-#: src/gui/dialogs/addon/manager.cpp:449
+#: src/gui/dialogs/addon/manager.cpp:444
 msgid "descending"
 msgstr "降序"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:451
+#: src/gui/dialogs/addon/manager.cpp:446
 msgid "newest to oldest"
 msgstr "从最新到最旧"
 
-#: src/gui/dialogs/addon/manager.cpp:548
+#: src/gui/dialogs/addon/manager.cpp:543
 msgid "addons^Back to List"
 msgstr "回退到列表"
 
-#: src/gui/dialogs/addon/manager.cpp:560
+#: src/gui/dialogs/addon/manager.cpp:555
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "从服务器上下载附加组件列表时发生错误。"
 
-#: src/gui/dialogs/addon/manager.cpp:598
+#: src/gui/dialogs/addon/manager.cpp:593
 msgid "No Add-ons Available"
 msgstr "没有可用的附加组件"
 
-#: src/gui/dialogs/addon/manager.cpp:598
+#: src/gui/dialogs/addon/manager.cpp:593
 msgid "There are no add-ons available for download from this server."
 msgstr "此服务器上没有可供下载的附加组件。"
 
-#: src/gui/dialogs/addon/manager.cpp:867
+#: src/gui/dialogs/addon/manager.cpp:862
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr "下列附加组件似乎有发布或版本控制信息存储在本地，因此将不会被移除："
 
-#: src/gui/dialogs/addon/manager.cpp:875
+#: src/gui/dialogs/addon/manager.cpp:870
 msgid "The following add-on could not be deleted properly:"
 msgstr "下列附加组件无法正常删除："
 
-#: src/gui/dialogs/addon/manager.cpp:929
+#: src/gui/dialogs/addon/manager.cpp:924
 msgid "Warning"
 msgstr "警告"
 
-#: src/gui/dialogs/addon/manager.cpp:930
+#: src/gui/dialogs/addon/manager.cpp:925
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr "此附加组件的远程版本与正在上传的版本相同，或比它新。你真的希望继续吗？"
 
-#: src/gui/dialogs/addon/manager.cpp:948
+#: src/gui/dialogs/addon/manager.cpp:943
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:953
+#: src/gui/dialogs/addon/manager.cpp:948
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr "无效的图标路径。请确认路径指向有效的图像。"
 
-#: src/gui/dialogs/addon/manager.cpp:956 src/gui/dialogs/addon/manager.cpp:998
+#: src/gui/dialogs/addon/manager.cpp:951 src/gui/dialogs/addon/manager.cpp:993
 msgid "The server responded with an error:"
 msgstr "服务器返回了一个错误："
 
-#: src/gui/dialogs/addon/manager.cpp:959
+#: src/gui/dialogs/addon/manager.cpp:954
 msgid "The add-on was rejected by the server:"
 msgstr "附加组件被服务器拒绝："
 
-#: src/gui/dialogs/addon/manager.cpp:974 src/gui/dialogs/addon/manager.cpp:1001
+#: src/gui/dialogs/addon/manager.cpp:969 src/gui/dialogs/addon/manager.cpp:996
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:510
 msgid "Response"
 msgstr "回复"
 
-#: src/gui/dialogs/addon/manager.cpp:986
+#: src/gui/dialogs/addon/manager.cpp:981
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -6828,13 +6828,13 @@ msgstr ""
 "删除‘$addon|’将会从附加组件服务器上永久擦除其下载和上传计数。你真的希望继续"
 "吗？"
 
-#: src/gui/dialogs/addon/manager.cpp:1018
+#: src/gui/dialogs/addon/manager.cpp:1013
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "你要卸载’$addon|’吗？"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1050
+#: src/gui/dialogs/addon/manager.cpp:1045
 #, fuzzy
 #| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
@@ -6842,13 +6842,13 @@ msgstr "%Y-%m-%d %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1053
+#: src/gui/dialogs/addon/manager.cpp:1048
 #, fuzzy
 #| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
 msgstr "%Y-%m-%d %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1114
+#: src/gui/dialogs/addon/manager.cpp:1109
 msgid "url^None"
 msgstr "无"
 
@@ -7151,43 +7151,43 @@ msgstr ""
 msgid "The selected file is corrupt: "
 msgstr "选定的文件是损坏的："
 
-#: src/gui/dialogs/game_load.cpp:356
+#: src/gui/dialogs/game_load.cpp:355
 msgid "(Invalid)"
 msgstr "（无效）"
 
-#: src/gui/dialogs/game_load.cpp:386
+#: src/gui/dialogs/game_load.cpp:385
 msgid "Campaign: $campaign_name"
 msgstr "战役：$campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:397
 msgid "Tutorial"
 msgstr "教程"
 
-#: src/gui/dialogs/game_load.cpp:401
+#: src/gui/dialogs/game_load.cpp:400
 msgid "Test scenario"
 msgstr "测试场景"
 
-#: src/gui/dialogs/game_load.cpp:411
+#: src/gui/dialogs/game_load.cpp:410
 msgid "Replay"
 msgstr "录像"
 
-#: src/gui/dialogs/game_load.cpp:413
+#: src/gui/dialogs/game_load.cpp:412
 msgid "Turn"
 msgstr "回合"
 
-#: src/gui/dialogs/game_load.cpp:415
+#: src/gui/dialogs/game_load.cpp:414
 msgid "Scenario start"
 msgstr "场景开始"
 
-#: src/gui/dialogs/game_load.cpp:434
+#: src/gui/dialogs/game_load.cpp:433
 msgid "Difficulty: "
 msgstr "难度："
 
-#: src/gui/dialogs/game_load.cpp:457
+#: src/gui/dialogs/game_load.cpp:456
 msgid "Version: "
 msgstr "版本："
 
-#: src/gui/dialogs/game_load.cpp:462
+#: src/gui/dialogs/game_load.cpp:461
 msgid "Modifications: "
 msgstr "模组："
 
@@ -7679,7 +7679,7 @@ msgstr "$count|× $name"
 msgid "Screenshot"
 msgstr "截屏"
 
-#: src/gui/dialogs/title_screen.cpp:478 src/hotkey/hotkey_command.cpp:301
+#: src/gui/dialogs/title_screen.cpp:478 src/hotkey/hotkey_command.cpp:303
 msgid "Choose Test Scenario"
 msgstr "选择测试场景"
 
@@ -8403,7 +8403,9 @@ msgid "Item Tool"
 msgstr "物品工具"
 
 #: src/hotkey/hotkey_command.cpp:205
-msgid "Left mouse button sets a new item."
+#, fuzzy
+#| msgid "Left mouse button sets a new item."
+msgid "Left mouse button sets a new item. Right click removes item."
 msgstr "鼠标左键设置一个新物品。"
 
 #: src/hotkey/hotkey_command.cpp:206
@@ -8441,300 +8443,306 @@ msgid "Loyal"
 msgstr "忠诚"
 
 #: src/hotkey/hotkey_command.cpp:215
+#, fuzzy
+#| msgid "Server Information"
+msgid "Show Tool Information"
+msgstr "服务器信息"
+
+#: src/hotkey/hotkey_command.cpp:217
 msgid "Toggle Minimap Unit Coding"
 msgstr "开启/关闭小地图单位编码"
 
-#: src/hotkey/hotkey_command.cpp:216
+#: src/hotkey/hotkey_command.cpp:218
 msgid "Toggle Minimap Terrain Coding"
 msgstr "开启/关闭小地图地形编码"
 
-#: src/hotkey/hotkey_command.cpp:218
+#: src/hotkey/hotkey_command.cpp:220
 msgid "Toggle Minimap Unit Drawing"
 msgstr "开启/关闭小地图单位绘制"
 
-#: src/hotkey/hotkey_command.cpp:219
+#: src/hotkey/hotkey_command.cpp:221
 msgid "Toggle Minimap Village Drawing"
 msgstr "开启/关闭小地图村庄绘制"
 
-#: src/hotkey/hotkey_command.cpp:220
+#: src/hotkey/hotkey_command.cpp:222
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "开启/关闭小地图地形绘制"
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:224
 msgid "Next Brush"
 msgstr "下一笔刷"
 
-#: src/hotkey/hotkey_command.cpp:223
+#: src/hotkey/hotkey_command.cpp:225
 msgid "Default Brush"
 msgstr "默认笔刷"
 
-#: src/hotkey/hotkey_command.cpp:224
+#: src/hotkey/hotkey_command.cpp:226
 msgid "Single Tile"
 msgstr "单个图块"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Radius One"
 msgstr "半径一"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:228
 msgid "Radius Two"
 msgstr "半径二"
 
-#: src/hotkey/hotkey_command.cpp:227
+#: src/hotkey/hotkey_command.cpp:229
 msgid "Brush NW-SE"
 msgstr "西北-东南笔刷"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Brush SW-NE"
 msgstr "西南-东北笔刷"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Cut"
 msgstr "剪切"
 
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:233
 msgid "Copy"
 msgstr "复制"
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:234
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr "鼠标左键从剪贴板中粘贴，右键打开上下文菜单。"
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:234
 msgid "Paste"
 msgstr "粘贴"
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "导出所选坐标至系统剪贴板"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:236
 msgid "Select All"
 msgstr "全选"
 
-#: src/hotkey/hotkey_command.cpp:235
+#: src/hotkey/hotkey_command.cpp:237
 msgid "Select Inverse"
 msgstr "反选"
 
-#: src/hotkey/hotkey_command.cpp:236
+#: src/hotkey/hotkey_command.cpp:238
 msgid "Select None"
 msgstr "取消选择"
 
-#: src/hotkey/hotkey_command.cpp:237
+#: src/hotkey/hotkey_command.cpp:239
 msgid "Rotate Clipboard Clockwise"
 msgstr "顺时针旋转剪贴板"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "逆时针旋转剪贴板"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:241
 msgid "Flip Clipboard Horizontally"
 msgstr "水平翻转剪贴板"
 
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Flip Clipboard Vertically"
 msgstr "垂直翻转剪贴板"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:243
 msgid "Rotate Selection"
 msgstr "旋转选定区域"
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Flip Selection"
 msgstr "翻转选定区域"
 
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:245
 msgid "Fill Selection"
 msgstr "填充选定区域"
 
-#: src/hotkey/hotkey_command.cpp:244
+#: src/hotkey/hotkey_command.cpp:246
 msgid "Randomize Tiles in Selection"
 msgstr "将选定区域内的区块随机化"
 
-#: src/hotkey/hotkey_command.cpp:247
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Apply a Mask"
 msgstr "应用遮罩"
 
-#: src/hotkey/hotkey_command.cpp:248
+#: src/hotkey/hotkey_command.cpp:250
 msgid "Create Mask"
 msgstr "创建遮罩"
 
-#: src/hotkey/hotkey_command.cpp:249
+#: src/hotkey/hotkey_command.cpp:251
 msgid "Refresh Display"
 msgstr "刷新显示"
 
-#: src/hotkey/hotkey_command.cpp:251
+#: src/hotkey/hotkey_command.cpp:253
 msgid "Update Terrain Transitions"
 msgstr "更新地形过渡"
 
-#: src/hotkey/hotkey_command.cpp:254
+#: src/hotkey/hotkey_command.cpp:256
 msgid "Toggle Terrain Transition Update"
 msgstr "开启/关闭地形过渡更新"
 
-#: src/hotkey/hotkey_command.cpp:256
+#: src/hotkey/hotkey_command.cpp:258
 msgid "Auto-update Terrain Transitions"
 msgstr "自动更新地形过渡"
 
-#: src/hotkey/hotkey_command.cpp:257
+#: src/hotkey/hotkey_command.cpp:259
 msgid "Auto-update Terrain Transitions: No"
 msgstr "自动更新地形过渡：否"
 
-#: src/hotkey/hotkey_command.cpp:258
+#: src/hotkey/hotkey_command.cpp:260
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "自动更新地形过渡：部分"
 
-#: src/hotkey/hotkey_command.cpp:260
+#: src/hotkey/hotkey_command.cpp:262
 msgid "Refresh Image Cache"
 msgstr "刷新图像缓存"
 
-#: src/hotkey/hotkey_command.cpp:261
+#: src/hotkey/hotkey_command.cpp:263
 msgid "Draw Hex Coordinates"
 msgstr "绘制六角格坐标"
 
-#: src/hotkey/hotkey_command.cpp:262
+#: src/hotkey/hotkey_command.cpp:264
 msgid "Draw Terrain Codes"
 msgstr "绘制地形编码"
 
-#: src/hotkey/hotkey_command.cpp:263
+#: src/hotkey/hotkey_command.cpp:265
 msgid "Draw Number of Bitmaps"
 msgstr "绘制位图数量"
 
-#: src/hotkey/hotkey_command.cpp:265
+#: src/hotkey/hotkey_command.cpp:267
 msgid "Save Selection to Area"
 msgstr "将选区保存到区域"
 
-#: src/hotkey/hotkey_command.cpp:266
+#: src/hotkey/hotkey_command.cpp:268
 msgid "Rename Selected Area"
 msgstr "重命名所选区域"
 
-#: src/hotkey/hotkey_command.cpp:267
+#: src/hotkey/hotkey_command.cpp:269
 msgid "Remove Selected Area"
 msgstr "移除所选区域"
 
-#: src/hotkey/hotkey_command.cpp:268
+#: src/hotkey/hotkey_command.cpp:270
 msgid "Add New Area"
 msgstr "添加新的区域"
 
-#: src/hotkey/hotkey_command.cpp:270
+#: src/hotkey/hotkey_command.cpp:272
 msgid "Add-on Publishing Editor"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:271
+#: src/hotkey/hotkey_command.cpp:273
 msgid "Change Add-on ID"
 msgstr "修改附加组件ID"
 
-#: src/hotkey/hotkey_command.cpp:273
+#: src/hotkey/hotkey_command.cpp:275
 msgid "Edit Scenario"
 msgstr "编辑场景"
 
-#: src/hotkey/hotkey_command.cpp:274
+#: src/hotkey/hotkey_command.cpp:276
 msgid "Edit Side"
 msgstr "编辑阵营"
 
-#: src/hotkey/hotkey_command.cpp:275
+#: src/hotkey/hotkey_command.cpp:277
 msgid "Remove Side"
 msgstr "移除阵营"
 
-#: src/hotkey/hotkey_command.cpp:277
+#: src/hotkey/hotkey_command.cpp:279
 msgid "Delay Shroud Updates"
 msgstr "暂缓更新黑幕"
 
 # personally i like the original translation阴影区域, gonna discuss about this
-#: src/hotkey/hotkey_command.cpp:278
+#: src/hotkey/hotkey_command.cpp:280
 msgid "Update Shroud Now"
 msgstr "立即刷新黑幕"
 
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:281
 msgid "Continue Interrupted Move"
 msgstr "继续被中断的移动"
 
-#: src/hotkey/hotkey_command.cpp:280
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Find Label or Unit"
 msgstr "查找标签或单位"
 
-#: src/hotkey/hotkey_command.cpp:281
+#: src/hotkey/hotkey_command.cpp:283
 msgid "Speak to Ally"
 msgstr "向盟友说话"
 
-#: src/hotkey/hotkey_command.cpp:282
+#: src/hotkey/hotkey_command.cpp:284
 msgid "Speak to All"
 msgstr "向所有人说话"
 
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Help about save-loading"
 msgstr "关于S/L大法的帮助"
 
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Hint: save-loading is unnecessary"
 msgstr "提示：S/L大法是毫无必要的"
 
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:288
 msgid "Enter Command"
 msgstr "输入命令"
 
-#: src/hotkey/hotkey_command.cpp:287
+#: src/hotkey/hotkey_command.cpp:289
 msgid "Custom Command"
 msgstr "自定义命令"
 
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:290
 msgid "Run Formula"
 msgstr "运行公式"
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:291
 msgid "Clear Chat"
 msgstr "清除对话"
 
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Change Language"
 msgstr "改变语言"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:294
 msgid "Refresh WML"
 msgstr "刷新WML"
 
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:295
 msgid "Next Tip of the Day"
 msgstr "下一条每日提示"
 
-#: src/hotkey/hotkey_command.cpp:294
+#: src/hotkey/hotkey_command.cpp:296
 msgid "Previous Tip of the Day"
 msgstr "前一条每日提示"
 
-#: src/hotkey/hotkey_command.cpp:295
+#: src/hotkey/hotkey_command.cpp:297
 msgid "Start Campaign"
 msgstr "开始战役"
 
-#: src/hotkey/hotkey_command.cpp:296
+#: src/hotkey/hotkey_command.cpp:298
 msgid "Start Multiplayer Game"
 msgstr "开始多人游戏"
 
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:299
 msgid "Manage Add-ons"
 msgstr "管理附加组件"
 
-#: src/hotkey/hotkey_command.cpp:298
+#: src/hotkey/hotkey_command.cpp:300
 msgid "Manage Cores"
 msgstr "管理核心"
 
-#: src/hotkey/hotkey_command.cpp:299
+#: src/hotkey/hotkey_command.cpp:301
 msgid "Start Editor"
 msgstr "启动编辑器"
 
-#: src/hotkey/hotkey_command.cpp:300
+#: src/hotkey/hotkey_command.cpp:302
 msgid "Show Credits"
 msgstr "显示制作者名单"
 
-#: src/hotkey/hotkey_command.cpp:303
+#: src/hotkey/hotkey_command.cpp:305
 msgid "Show Helptip"
 msgstr "显示帮助提示"
 
-#: src/hotkey/hotkey_command.cpp:305
+#: src/hotkey/hotkey_command.cpp:307
 msgid "Show Lua Console"
 msgstr "显示Lua控制台"
 
-#: src/hotkey/hotkey_command.cpp:308
+#: src/hotkey/hotkey_command.cpp:310
 msgid "Unrecognized Command"
 msgstr "未识别的命令"
 

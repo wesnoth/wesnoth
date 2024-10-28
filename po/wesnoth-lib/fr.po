@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-25 21:28-0500\n"
+"POT-Creation-Date: 2024-10-28 12:38-0500\n"
 "PO-Revision-Date: 2024-06-05 14:43+0100\n"
 "Last-Translator: Thierry <ameilthi@gmail.com>\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -2434,7 +2434,7 @@ msgstr "Publier l'extension"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:622
-#: src/gui/dialogs/addon/manager.cpp:1017
+#: src/gui/dialogs/addon/manager.cpp:1012
 msgid "Uninstall add-on"
 msgstr "Désinstaller des extensions"
 
@@ -2717,7 +2717,7 @@ msgstr "Dépendances :"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1097
+#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1092
 msgid "addon_dependencies^None"
 msgstr "Aucune"
 
@@ -2730,7 +2730,7 @@ msgstr "Traductions :"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1111
+#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1106
 msgid "translations^None"
 msgstr "Aucune"
 
@@ -2773,8 +2773,8 @@ msgstr "Gestionnaire d'extensions"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:551
-#: src/gui/dialogs/addon/manager.cpp:825
+#: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:546
+#: src/gui/dialogs/addon/manager.cpp:820
 msgid "Add-on Details"
 msgstr "Détails de l'extension"
 
@@ -2967,7 +2967,7 @@ msgstr "Sélectionnez la difficulté :"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:285
+#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:287
 msgid "Chat Log"
 msgstr "Historique des discussions"
 
@@ -3182,7 +3182,7 @@ msgstr "Supprimer heure"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:990 src/gui/dialogs/file_dialog.cpp:306
+#: src/gui/dialogs/addon/manager.cpp:985 src/gui/dialogs/file_dialog.cpp:306
 #: src/gui/dialogs/file_dialog.cpp:732
 msgid "Confirm"
 msgstr "Confirmer"
@@ -3663,7 +3663,7 @@ msgstr "Aucune"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:246
+#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:248
 msgid "Generate Map"
 msgstr "Générer une carte"
 
@@ -3718,7 +3718,7 @@ msgstr "Créer"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:245
+#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:247
 msgid "Resize Map"
 msgstr "Redimensionner la carte"
 
@@ -5246,7 +5246,7 @@ msgstr "Nom de la partie :"
 #. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:256
-#: src/gui/dialogs/game_load.cpp:395
+#: src/gui/dialogs/game_load.cpp:394
 msgid "Multiplayer"
 msgstr "Multijoueur"
 
@@ -6196,7 +6196,7 @@ msgstr "Choisir le thème"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/window/title_screen.cfg:177 src/hotkey/hotkey_command.cpp:283
+#: data/gui/window/title_screen.cfg:177 src/hotkey/hotkey_command.cpp:285
 msgid "Help"
 msgstr "Aide"
 
@@ -6660,260 +6660,260 @@ msgstr ""
 msgid "Completed"
 msgstr "Réalisé"
 
-#: src/gui/dialogs/addon/manager.cpp:162
+#: src/gui/dialogs/addon/manager.cpp:157
 msgid "addons_view^All Add-ons"
 msgstr "Toutes"
 
-#: src/gui/dialogs/addon/manager.cpp:163
+#: src/gui/dialogs/addon/manager.cpp:158
 msgid "addons_view^Installed"
 msgstr "Installées"
 
-#: src/gui/dialogs/addon/manager.cpp:164
+#: src/gui/dialogs/addon/manager.cpp:159
 msgid "addons_view^Upgradable"
 msgstr "Mises à jour disponibles"
 
-#: src/gui/dialogs/addon/manager.cpp:165
+#: src/gui/dialogs/addon/manager.cpp:160
 msgid "addons_view^Publishable"
 msgstr "Publiable"
 
-#: src/gui/dialogs/addon/manager.cpp:166
+#: src/gui/dialogs/addon/manager.cpp:161
 msgid "addons_view^Not Installed"
 msgstr "Non installées"
 
-#: src/gui/dialogs/addon/manager.cpp:170
+#: src/gui/dialogs/addon/manager.cpp:165
 msgid "addons_of_type^Campaigns"
 msgstr "Campagnes"
 
-#: src/gui/dialogs/addon/manager.cpp:171
+#: src/gui/dialogs/addon/manager.cpp:166
 msgid "addons_of_type^Scenarios"
 msgstr "Scénarios"
 
-#: src/gui/dialogs/addon/manager.cpp:172
+#: src/gui/dialogs/addon/manager.cpp:167
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "Campagnes MJ/Solo"
 
-#: src/gui/dialogs/addon/manager.cpp:173
+#: src/gui/dialogs/addon/manager.cpp:168
 msgid "addons_of_type^MP campaigns"
 msgstr "Campagnes MJ"
 
-#: src/gui/dialogs/addon/manager.cpp:174
+#: src/gui/dialogs/addon/manager.cpp:169
 msgid "addons_of_type^MP scenarios"
 msgstr "Scénarios MJ"
 
-#: src/gui/dialogs/addon/manager.cpp:175
+#: src/gui/dialogs/addon/manager.cpp:170
 msgid "addons_of_type^MP map-packs"
 msgstr "Cartes additionnelles MJ"
 
-#: src/gui/dialogs/addon/manager.cpp:176
+#: src/gui/dialogs/addon/manager.cpp:171
 msgid "addons_of_type^MP eras"
 msgstr "Ères MJ"
 
-#: src/gui/dialogs/addon/manager.cpp:177
+#: src/gui/dialogs/addon/manager.cpp:172
 msgid "addons_of_type^MP factions"
 msgstr "Factions MJ"
 
-#: src/gui/dialogs/addon/manager.cpp:178
+#: src/gui/dialogs/addon/manager.cpp:173
 msgid "addons_of_type^Modifications"
 msgstr "Modifications"
 
-#: src/gui/dialogs/addon/manager.cpp:179
+#: src/gui/dialogs/addon/manager.cpp:174
 msgid "addons_of_type^Cores"
 msgstr "Noyaux"
 
-#: src/gui/dialogs/addon/manager.cpp:180
+#: src/gui/dialogs/addon/manager.cpp:175
 msgid "addons_of_type^Resources"
 msgstr "Ressources"
 
-#: src/gui/dialogs/addon/manager.cpp:182
+#: src/gui/dialogs/addon/manager.cpp:177
 msgid "addons_of_type^Other"
 msgstr "Autres"
 
-#: src/gui/dialogs/addon/manager.cpp:183
+#: src/gui/dialogs/addon/manager.cpp:178
 msgid "addons_of_type^Unknown"
 msgstr "Inconnu"
 
-#: src/gui/dialogs/addon/manager.cpp:187
+#: src/gui/dialogs/addon/manager.cpp:182
 msgid "addons_order^Name ($order)"
 msgstr "Nom ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:190
+#: src/gui/dialogs/addon/manager.cpp:185
 msgid "addons_order^Author ($order)"
 msgstr "Auteur ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:193
+#: src/gui/dialogs/addon/manager.cpp:188
 msgid "addons_order^Size ($order)"
 msgstr "Taille ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:196
+#: src/gui/dialogs/addon/manager.cpp:191
 msgid "addons_order^Downloads ($order)"
 msgstr "Téléchargements ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:199
+#: src/gui/dialogs/addon/manager.cpp:194
 msgid "addons_order^Type ($order)"
 msgstr "Type ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:197
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr "Dernière mise à jour ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:200
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr "Mise en ligne initiale ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:223
+#: src/gui/dialogs/addon/manager.cpp:218
 msgid "addon_tag^Cooperative"
 msgstr "Coopératif"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:225
+#: src/gui/dialogs/addon/manager.cpp:220
 msgid "addon_tag^All human players are on the same team, versus the AI"
 msgstr "Tous les joueurs humains dans la même équipe, contre l'IA"
 
-#: src/gui/dialogs/addon/manager.cpp:226
+#: src/gui/dialogs/addon/manager.cpp:221
 msgid "addon_tag^Cosmetic"
 msgstr "Cosmétique"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:228
+#: src/gui/dialogs/addon/manager.cpp:223
 msgid "addon_tag^These make the game look different, without changing gameplay"
 msgstr "Modifie l'apparence du jeu sans changer les règles"
 
-#: src/gui/dialogs/addon/manager.cpp:229
+#: src/gui/dialogs/addon/manager.cpp:224
 msgid "addon_tag^Difficulty"
 msgstr "Difficulté"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:231
+#: src/gui/dialogs/addon/manager.cpp:226
 msgid "addon_tag^Can make campaigns easier or harder"
 msgstr "Peut rendre les campagnes plus faciles ou plus difficiles"
 
-#: src/gui/dialogs/addon/manager.cpp:232
+#: src/gui/dialogs/addon/manager.cpp:227
 msgid "addon_tag^RNG"
 msgstr "RNG"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:234
+#: src/gui/dialogs/addon/manager.cpp:229
 msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
 msgstr ""
 "Modifie l'aléatoire dans les mécanismes de combat, ou l'enlève complètement"
 
-#: src/gui/dialogs/addon/manager.cpp:235
+#: src/gui/dialogs/addon/manager.cpp:230
 msgid "addon_tag^Survival"
 msgstr "Survie"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:237
+#: src/gui/dialogs/addon/manager.cpp:232
 msgid "addon_tag^Fight against waves of enemies"
 msgstr "Repousser des vagues d'ennemis"
 
-#: src/gui/dialogs/addon/manager.cpp:238
+#: src/gui/dialogs/addon/manager.cpp:233
 msgid "addon_tag^Terraforming"
 msgstr "Terraformation"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:240
+#: src/gui/dialogs/addon/manager.cpp:235
 msgid "addon_tag^Players can change the terrain"
 msgstr "Les joueurs peuvent modifier le terrain"
 
-#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:259 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "Non installée"
 
-#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "Publiée, non installée"
 
-#: src/gui/dialogs/addon/manager.cpp:269 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "Installée"
 
-#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "Publiée"
 
-#: src/gui/dialogs/addon/manager.cpp:274
+#: src/gui/dialogs/addon/manager.cpp:269
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Installée, pas de suivi de la version locale"
 
-#: src/gui/dialogs/addon/manager.cpp:277
+#: src/gui/dialogs/addon/manager.cpp:272
 msgid "addon_state^Published, not tracking local version"
 msgstr "Publiée, pas de suivi de la version locale"
 
-#: src/gui/dialogs/addon/manager.cpp:281
+#: src/gui/dialogs/addon/manager.cpp:276
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Installée ($local_version|), mise à jour disponible"
 
-#: src/gui/dialogs/addon/manager.cpp:282
+#: src/gui/dialogs/addon/manager.cpp:277
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Publiée, ($local_version| installée), mise à jour disponible"
 
-#: src/gui/dialogs/addon/manager.cpp:288
+#: src/gui/dialogs/addon/manager.cpp:283
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Installée ($local_version|), obsolète sur le serveur"
 
-#: src/gui/dialogs/addon/manager.cpp:289
+#: src/gui/dialogs/addon/manager.cpp:284
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Publiée ($local_version| installée), obsolète sur le serveur"
 
-#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:290 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Installée, pas en état de publier"
 
-#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:291 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "Prête à être publiée"
 
-#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "Installée, corrompue"
 
-#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "Publiée, corrompue"
 
-#: src/gui/dialogs/addon/manager.cpp:304 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:299 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "Inconnu"
 
-#: src/gui/dialogs/addon/manager.cpp:444
+#: src/gui/dialogs/addon/manager.cpp:439
 msgid "ascending"
 msgstr "Croissant(e)"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:446
+#: src/gui/dialogs/addon/manager.cpp:441
 msgid "oldest to newest"
 msgstr "du plus ancien au plus récent"
 
-#: src/gui/dialogs/addon/manager.cpp:449
+#: src/gui/dialogs/addon/manager.cpp:444
 msgid "descending"
 msgstr "Décroissant(e)"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:451
+#: src/gui/dialogs/addon/manager.cpp:446
 msgid "newest to oldest"
 msgstr "du plus récent au plus ancien"
 
-#: src/gui/dialogs/addon/manager.cpp:548
+#: src/gui/dialogs/addon/manager.cpp:543
 msgid "addons^Back to List"
 msgstr "Retour à la liste"
 
-#: src/gui/dialogs/addon/manager.cpp:560
+#: src/gui/dialogs/addon/manager.cpp:555
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 "Une erreur est survenue lors du téléchargement de la liste des extensions à "
 "partir du serveur"
 
-#: src/gui/dialogs/addon/manager.cpp:598
+#: src/gui/dialogs/addon/manager.cpp:593
 msgid "No Add-ons Available"
 msgstr "Aucune extension disponible"
 
-#: src/gui/dialogs/addon/manager.cpp:598
+#: src/gui/dialogs/addon/manager.cpp:593
 msgid "There are no add-ons available for download from this server."
 msgstr "Il n'y a aucune extension disponible au téléchargement sur ce serveur."
 
-#: src/gui/dialogs/addon/manager.cpp:867
+#: src/gui/dialogs/addon/manager.cpp:862
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6921,15 +6921,15 @@ msgstr ""
 "Les extensions suivantes semblent avoir des informations de publication ou "
 "de contrôle de version enregistrées localement et ne seront pas supprimées :"
 
-#: src/gui/dialogs/addon/manager.cpp:875
+#: src/gui/dialogs/addon/manager.cpp:870
 msgid "The following add-on could not be deleted properly:"
 msgstr "Les extensions suivantes ne peuvent pas être supprimées proprement :"
 
-#: src/gui/dialogs/addon/manager.cpp:929
+#: src/gui/dialogs/addon/manager.cpp:924
 msgid "Warning"
 msgstr "Avertissement"
 
-#: src/gui/dialogs/addon/manager.cpp:930
+#: src/gui/dialogs/addon/manager.cpp:925
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -6937,32 +6937,32 @@ msgstr ""
 "La version distante de cette extension est supérieure ou égale à la version "
 "en cours d'envoi. Voulez-vous vraiment continuer ?"
 
-#: src/gui/dialogs/addon/manager.cpp:948
+#: src/gui/dialogs/addon/manager.cpp:943
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr ""
 "Le mot de passe ne peut pas être rempli quand la méthode d'authentification "
 "par le forum est activée."
 
-#: src/gui/dialogs/addon/manager.cpp:953
+#: src/gui/dialogs/addon/manager.cpp:948
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Chemin pour les icônes invalide. Vérifiez que le chemin pointe vers une "
 "image valide."
 
-#: src/gui/dialogs/addon/manager.cpp:956 src/gui/dialogs/addon/manager.cpp:998
+#: src/gui/dialogs/addon/manager.cpp:951 src/gui/dialogs/addon/manager.cpp:993
 msgid "The server responded with an error:"
 msgstr "Le serveur a répondu avec une erreur :"
 
-#: src/gui/dialogs/addon/manager.cpp:959
+#: src/gui/dialogs/addon/manager.cpp:954
 msgid "The add-on was rejected by the server:"
 msgstr "L'extension a été rejetée par le serveur :"
 
-#: src/gui/dialogs/addon/manager.cpp:974 src/gui/dialogs/addon/manager.cpp:1001
+#: src/gui/dialogs/addon/manager.cpp:969 src/gui/dialogs/addon/manager.cpp:996
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:510
 msgid "Response"
 msgstr "Réponse"
 
-#: src/gui/dialogs/addon/manager.cpp:986
+#: src/gui/dialogs/addon/manager.cpp:981
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -6971,7 +6971,7 @@ msgstr ""
 "téléchargements et d'envois sur le serveur des extensions. Voulez-vous "
 "vraiment continuer ?"
 
-#: src/gui/dialogs/addon/manager.cpp:1018
+#: src/gui/dialogs/addon/manager.cpp:1013
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Voulez-vous désinstaller « $addon| » ?"
 
@@ -6979,18 +6979,18 @@ msgstr "Voulez-vous désinstaller « $addon| » ?"
 # Pour un affichage comme "le 8 avril 2024 à 00h53"
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1050
+#: src/gui/dialogs/addon/manager.cpp:1045
 msgid "%B %d %Y, %I:%M %p"
 msgstr "le %e %B %Y à %Hh%M"
 
 # Pour un affichage comme "le 8 avril 2024 à 00h53"
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1053
+#: src/gui/dialogs/addon/manager.cpp:1048
 msgid "%B %d %Y, %H:%M"
 msgstr "le %e %B %Y à %Hh%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1114
+#: src/gui/dialogs/addon/manager.cpp:1109
 msgid "url^None"
 msgstr "Aucun"
 
@@ -7294,43 +7294,43 @@ msgstr "$active actives, $reserve en réserve"
 msgid "The selected file is corrupt: "
 msgstr "Le fichier sélectionné est corrompu : "
 
-#: src/gui/dialogs/game_load.cpp:356
+#: src/gui/dialogs/game_load.cpp:355
 msgid "(Invalid)"
 msgstr "(Invalide)"
 
-#: src/gui/dialogs/game_load.cpp:386
+#: src/gui/dialogs/game_load.cpp:385
 msgid "Campaign: $campaign_name"
 msgstr "Campagne : $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:397
 msgid "Tutorial"
 msgstr "Tutoriel"
 
-#: src/gui/dialogs/game_load.cpp:401
+#: src/gui/dialogs/game_load.cpp:400
 msgid "Test scenario"
 msgstr "Tester un scénario"
 
-#: src/gui/dialogs/game_load.cpp:411
+#: src/gui/dialogs/game_load.cpp:410
 msgid "Replay"
 msgstr "Film"
 
-#: src/gui/dialogs/game_load.cpp:413
+#: src/gui/dialogs/game_load.cpp:412
 msgid "Turn"
 msgstr "Tour"
 
-#: src/gui/dialogs/game_load.cpp:415
+#: src/gui/dialogs/game_load.cpp:414
 msgid "Scenario start"
 msgstr "Début du scénario"
 
-#: src/gui/dialogs/game_load.cpp:434
+#: src/gui/dialogs/game_load.cpp:433
 msgid "Difficulty: "
 msgstr "Difficulté : "
 
-#: src/gui/dialogs/game_load.cpp:457
+#: src/gui/dialogs/game_load.cpp:456
 msgid "Version: "
 msgstr "Version : "
 
-#: src/gui/dialogs/game_load.cpp:462
+#: src/gui/dialogs/game_load.cpp:461
 msgid "Modifications: "
 msgstr "Modifications : "
 
@@ -7735,8 +7735,8 @@ msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"« <b>$hotkey_sequence|</b> » est utilisé par « <b>$old_hotkey_action|</"
-"b> ».\n"
+"« <b>$hotkey_sequence|</b> » est utilisé par « <b>$old_hotkey_action|</b> "
+"».\n"
 "Voulez-vous le réattribuer à « <b>$new_hotkey_action|</b> » ?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:907
@@ -7832,7 +7832,7 @@ msgstr "$count|× $name"
 msgid "Screenshot"
 msgstr "Capture d'écran"
 
-#: src/gui/dialogs/title_screen.cpp:478 src/hotkey/hotkey_command.cpp:301
+#: src/gui/dialogs/title_screen.cpp:478 src/hotkey/hotkey_command.cpp:303
 msgid "Choose Test Scenario"
 msgstr "Choisissez le scénario de test"
 
@@ -8567,7 +8567,9 @@ msgid "Item Tool"
 msgstr "Outil d'objet"
 
 #: src/hotkey/hotkey_command.cpp:205
-msgid "Left mouse button sets a new item."
+#, fuzzy
+#| msgid "Left mouse button sets a new item."
+msgid "Left mouse button sets a new item. Right click removes item."
 msgstr "Les clic gauche place un nouvel objet."
 
 #: src/hotkey/hotkey_command.cpp:206
@@ -8607,305 +8609,311 @@ msgid "Loyal"
 msgstr "Fidèle"
 
 #: src/hotkey/hotkey_command.cpp:215
+#, fuzzy
+#| msgid "Server Information"
+msgid "Show Tool Information"
+msgstr "Information du serveur"
+
+#: src/hotkey/hotkey_command.cpp:217
 msgid "Toggle Minimap Unit Coding"
 msgstr "Activer le codage des unités sur la minicarte"
 
-#: src/hotkey/hotkey_command.cpp:216
+#: src/hotkey/hotkey_command.cpp:218
 msgid "Toggle Minimap Terrain Coding"
 msgstr "Activer le codage des terrains sur la minicarte"
 
-#: src/hotkey/hotkey_command.cpp:218
+#: src/hotkey/hotkey_command.cpp:220
 msgid "Toggle Minimap Unit Drawing"
 msgstr "Activer le tracé des unités sur la minicarte"
 
-#: src/hotkey/hotkey_command.cpp:219
+#: src/hotkey/hotkey_command.cpp:221
 msgid "Toggle Minimap Village Drawing"
 msgstr "Activer le tracé des villages sur la minicarte"
 
-#: src/hotkey/hotkey_command.cpp:220
+#: src/hotkey/hotkey_command.cpp:222
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "Activer le tracé des terrains sur la minicarte"
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:224
 msgid "Next Brush"
 msgstr "Brosse suivante"
 
-#: src/hotkey/hotkey_command.cpp:223
+#: src/hotkey/hotkey_command.cpp:225
 msgid "Default Brush"
 msgstr "Brosse par défaut"
 
-#: src/hotkey/hotkey_command.cpp:224
+#: src/hotkey/hotkey_command.cpp:226
 msgid "Single Tile"
 msgstr "Une seule case"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Radius One"
 msgstr "Rayon un"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:228
 msgid "Radius Two"
 msgstr "Rayon deux"
 
-#: src/hotkey/hotkey_command.cpp:227
+#: src/hotkey/hotkey_command.cpp:229
 msgid "Brush NW-SE"
 msgstr "Brosse NO-SE"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Brush SW-NE"
 msgstr "Brosse SO-NE"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Cut"
 msgstr "Couper"
 
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:233
 msgid "Copy"
 msgstr "Copier"
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:234
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
 "Le clic gauche colle depuis le presse-papier, le clic droit fait appraître "
 "un menu contextuel."
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:234
 msgid "Paste"
 msgstr "Coller"
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Exporter les coordonnées sélectionnées vers le presse-papier"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:236
 msgid "Select All"
 msgstr "Sélectionner tout"
 
-#: src/hotkey/hotkey_command.cpp:235
+#: src/hotkey/hotkey_command.cpp:237
 msgid "Select Inverse"
 msgstr "Sélection inverse"
 
-#: src/hotkey/hotkey_command.cpp:236
+#: src/hotkey/hotkey_command.cpp:238
 msgid "Select None"
 msgstr "Tout désélectionner"
 
-#: src/hotkey/hotkey_command.cpp:237
+#: src/hotkey/hotkey_command.cpp:239
 msgid "Rotate Clipboard Clockwise"
 msgstr "Faire pivoter le presse-papier dans le sens des aiguilles d'une montre"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 "Faire pivoter le presse-papier en sens inverse des aiguilles d'une montre"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:241
 msgid "Flip Clipboard Horizontally"
 msgstr "Retourner horizontalement le presse-papier"
 
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Flip Clipboard Vertically"
 msgstr "Retourner verticalement le presse-papier"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:243
 msgid "Rotate Selection"
 msgstr "Pivoter la sélection"
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Flip Selection"
 msgstr "Inverser la sélection"
 
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:245
 msgid "Fill Selection"
 msgstr "Remplir la sélection"
 
-#: src/hotkey/hotkey_command.cpp:244
+#: src/hotkey/hotkey_command.cpp:246
 msgid "Randomize Tiles in Selection"
 msgstr "Modifier aléatoirement les cases dans la sélection"
 
-#: src/hotkey/hotkey_command.cpp:247
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Apply a Mask"
 msgstr "Appliquer un masque"
 
-#: src/hotkey/hotkey_command.cpp:248
+#: src/hotkey/hotkey_command.cpp:250
 msgid "Create Mask"
 msgstr "Créer un masque"
 
-#: src/hotkey/hotkey_command.cpp:249
+#: src/hotkey/hotkey_command.cpp:251
 msgid "Refresh Display"
 msgstr "Rafraîchir l'affichage"
 
 # Damien : les transitions sont entre terrains ; c'est pas dans la VO, mais je le rappelle.
-#: src/hotkey/hotkey_command.cpp:251
+#: src/hotkey/hotkey_command.cpp:253
 msgid "Update Terrain Transitions"
 msgstr "Mettre à jour les transitions de terrains"
 
 # Damien : les transitions sont entre terrains ; c'est pas dans la VO, mais je le rappelle.
-#: src/hotkey/hotkey_command.cpp:254
+#: src/hotkey/hotkey_command.cpp:256
 msgid "Toggle Terrain Transition Update"
 msgstr "Activer la mise à jour les transitions de terrains"
 
-#: src/hotkey/hotkey_command.cpp:256
+#: src/hotkey/hotkey_command.cpp:258
 msgid "Auto-update Terrain Transitions"
 msgstr "Mettre à jour automatiquement les transitions de terrains"
 
-#: src/hotkey/hotkey_command.cpp:257
+#: src/hotkey/hotkey_command.cpp:259
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Mettre à jour automatiquement les transitions de terrains : Non"
 
-#: src/hotkey/hotkey_command.cpp:258
+#: src/hotkey/hotkey_command.cpp:260
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr ""
 "Mettre à jour automatiquement les transitions de terrains : Partiellement"
 
-#: src/hotkey/hotkey_command.cpp:260
+#: src/hotkey/hotkey_command.cpp:262
 msgid "Refresh Image Cache"
 msgstr "Rafraîchir le cache des images"
 
-#: src/hotkey/hotkey_command.cpp:261
+#: src/hotkey/hotkey_command.cpp:263
 msgid "Draw Hex Coordinates"
 msgstr "Afficher les coordonnées des cases"
 
-#: src/hotkey/hotkey_command.cpp:262
+#: src/hotkey/hotkey_command.cpp:264
 msgid "Draw Terrain Codes"
 msgstr "Afficher le terrain"
 
-#: src/hotkey/hotkey_command.cpp:263
+#: src/hotkey/hotkey_command.cpp:265
 msgid "Draw Number of Bitmaps"
 msgstr "Afficher le nombre de bitmaps"
 
-#: src/hotkey/hotkey_command.cpp:265
+#: src/hotkey/hotkey_command.cpp:267
 msgid "Save Selection to Area"
 msgstr "Sauvegarder la sélection en temps que zone"
 
-#: src/hotkey/hotkey_command.cpp:266
+#: src/hotkey/hotkey_command.cpp:268
 msgid "Rename Selected Area"
 msgstr "Renommer la zone sélectionnée"
 
-#: src/hotkey/hotkey_command.cpp:267
+#: src/hotkey/hotkey_command.cpp:269
 msgid "Remove Selected Area"
 msgstr "Supprimer la zone sélectionnée"
 
-#: src/hotkey/hotkey_command.cpp:268
+#: src/hotkey/hotkey_command.cpp:270
 msgid "Add New Area"
 msgstr "Ajouter une nouvelle zone"
 
-#: src/hotkey/hotkey_command.cpp:270
+#: src/hotkey/hotkey_command.cpp:272
 msgid "Add-on Publishing Editor"
 msgstr "Éditeur de publication d'extension"
 
-#: src/hotkey/hotkey_command.cpp:271
+#: src/hotkey/hotkey_command.cpp:273
 msgid "Change Add-on ID"
 msgstr "Changer l'identifiant de l'extension"
 
-#: src/hotkey/hotkey_command.cpp:273
+#: src/hotkey/hotkey_command.cpp:275
 msgid "Edit Scenario"
 msgstr "Modifier le scénario"
 
-#: src/hotkey/hotkey_command.cpp:274
+#: src/hotkey/hotkey_command.cpp:276
 msgid "Edit Side"
 msgstr "Modifier le camp"
 
-#: src/hotkey/hotkey_command.cpp:275
+#: src/hotkey/hotkey_command.cpp:277
 msgid "Remove Side"
 msgstr "Supprimer le camp"
 
-#: src/hotkey/hotkey_command.cpp:277
+#: src/hotkey/hotkey_command.cpp:279
 msgid "Delay Shroud Updates"
 msgstr "Différer les mises à jour du voile"
 
-#: src/hotkey/hotkey_command.cpp:278
+#: src/hotkey/hotkey_command.cpp:280
 msgid "Update Shroud Now"
 msgstr "Mettre à jour le voile"
 
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:281
 msgid "Continue Interrupted Move"
 msgstr "Continuer le déplacement interrompu"
 
-#: src/hotkey/hotkey_command.cpp:280
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Find Label or Unit"
 msgstr "Chercher une note ou une unité"
 
-#: src/hotkey/hotkey_command.cpp:281
+#: src/hotkey/hotkey_command.cpp:283
 msgid "Speak to Ally"
 msgstr "Parler aux alliés"
 
-#: src/hotkey/hotkey_command.cpp:282
+#: src/hotkey/hotkey_command.cpp:284
 msgid "Speak to All"
 msgstr "Parler à tous"
 
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Help about save-loading"
 msgstr "Aide à propos de la sauvegarde-recharge"
 
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Hint: save-loading is unnecessary"
 msgstr "Conseil : la sauvegarde-recharge n'est pas nécessaire."
 
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:288
 msgid "Enter Command"
 msgstr "Saisir une commande"
 
-#: src/hotkey/hotkey_command.cpp:287
+#: src/hotkey/hotkey_command.cpp:289
 msgid "Custom Command"
 msgstr "Commande utilisateur"
 
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:290
 msgid "Run Formula"
 msgstr "Évaluer une formule d'IA"
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:291
 msgid "Clear Chat"
 msgstr "Effacer la discussion"
 
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Change Language"
 msgstr "Changer de langue"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:294
 msgid "Refresh WML"
 msgstr "Rafraîchir le WML"
 
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:295
 msgid "Next Tip of the Day"
 msgstr "Astuce du jour suivante"
 
-#: src/hotkey/hotkey_command.cpp:294
+#: src/hotkey/hotkey_command.cpp:296
 msgid "Previous Tip of the Day"
 msgstr "Astuce du jour précédente"
 
-#: src/hotkey/hotkey_command.cpp:295
+#: src/hotkey/hotkey_command.cpp:297
 msgid "Start Campaign"
 msgstr "Démarrer une campagne"
 
-#: src/hotkey/hotkey_command.cpp:296
+#: src/hotkey/hotkey_command.cpp:298
 msgid "Start Multiplayer Game"
 msgstr "Démarrer une partie multijoueur"
 
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:299
 msgid "Manage Add-ons"
 msgstr "Gérer les extensions"
 
-#: src/hotkey/hotkey_command.cpp:298
+#: src/hotkey/hotkey_command.cpp:300
 msgid "Manage Cores"
 msgstr "Gérer les noyaux"
 
-#: src/hotkey/hotkey_command.cpp:299
+#: src/hotkey/hotkey_command.cpp:301
 msgid "Start Editor"
 msgstr "Ouvrir l'éditeur"
 
-#: src/hotkey/hotkey_command.cpp:300
+#: src/hotkey/hotkey_command.cpp:302
 msgid "Show Credits"
 msgstr "Afficher les crédits"
 
-#: src/hotkey/hotkey_command.cpp:303
+#: src/hotkey/hotkey_command.cpp:305
 msgid "Show Helptip"
 msgstr "Afficher l'aide contextuelle"
 
-#: src/hotkey/hotkey_command.cpp:305
+#: src/hotkey/hotkey_command.cpp:307
 msgid "Show Lua Console"
 msgstr "Afficher la console Lua"
 
-#: src/hotkey/hotkey_command.cpp:308
+#: src/hotkey/hotkey_command.cpp:310
 msgid "Unrecognized Command"
 msgstr "Commande non reconnue"
 
@@ -9038,8 +9046,8 @@ msgstr ""
 #~ "The key '$deprecated_key' has been renamed to '$key'. Support for "
 #~ "'$deprecated_key' will be removed in version $removal_version."
 #~ msgstr ""
-#~ "La clef « $deprecated_key » a été remplacée par « $key ». "
-#~ "« $deprecated_key » ne sera plus maintenue à partir de la version "
+#~ "La clef « $deprecated_key » a été remplacée par « $key ». « "
+#~ "$deprecated_key » ne sera plus maintenue à partir de la version "
 #~ "$removal_version."
 
 #~ msgid "Show disengaged orb"
@@ -9505,8 +9513,8 @@ msgstr ""
 
 #~ msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 #~ msgstr ""
-#~ "Le groupe lié « $id » a besoin d'une clé « fixed_width » ou "
-#~ "« fixed_height »."
+#~ "Le groupe lié « $id » a besoin d'une clé « fixed_width » ou « "
+#~ "fixed_height »."
 
 #~ msgid "Items"
 #~ msgstr "Objets"

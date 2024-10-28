@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-25 21:28-0500\n"
+"POT-Creation-Date: 2024-10-28 12:38-0500\n"
 "PO-Revision-Date: 2024-05-12 17:56+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -2387,7 +2387,7 @@ msgstr "Julkaise lisäosa"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:622
-#: src/gui/dialogs/addon/manager.cpp:1017
+#: src/gui/dialogs/addon/manager.cpp:1012
 msgid "Uninstall add-on"
 msgstr "Poista lisäosa"
 
@@ -2668,7 +2668,7 @@ msgstr "Riippuvuudet:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1097
+#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1092
 msgid "addon_dependencies^None"
 msgstr "Ei riippuvuuksia"
 
@@ -2681,7 +2681,7 @@ msgstr "Käännökset:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1111
+#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1106
 msgid "translations^None"
 msgstr "Ei käännöksiä"
 
@@ -2724,8 +2724,8 @@ msgstr "Lisäosamanageri"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:551
-#: src/gui/dialogs/addon/manager.cpp:825
+#: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:546
+#: src/gui/dialogs/addon/manager.cpp:820
 msgid "Add-on Details"
 msgstr "Lisäosan tiedot"
 
@@ -2919,7 +2919,7 @@ msgstr "Valitse vaikeustaso:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:285
+#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:287
 msgid "Chat Log"
 msgstr "Keskusteluloki"
 
@@ -3136,7 +3136,7 @@ msgstr "Poista VrkAi"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:990 src/gui/dialogs/file_dialog.cpp:306
+#: src/gui/dialogs/addon/manager.cpp:985 src/gui/dialogs/file_dialog.cpp:306
 #: src/gui/dialogs/file_dialog.cpp:732
 msgid "Confirm"
 msgstr "Vahvista"
@@ -3612,7 +3612,7 @@ msgstr "Ei näköä"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:246
+#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:248
 msgid "Generate Map"
 msgstr "Generoi kartta"
 
@@ -3667,7 +3667,7 @@ msgstr "Luo"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:245
+#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:247
 msgid "Resize Map"
 msgstr "Muuta kartan kokoa"
 
@@ -5173,7 +5173,7 @@ msgstr "Pelin nimi:"
 #. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:256
-#: src/gui/dialogs/game_load.cpp:395
+#: src/gui/dialogs/game_load.cpp:394
 msgid "Multiplayer"
 msgstr "Moninpeli"
 
@@ -6110,7 +6110,7 @@ msgstr "Valitse teema"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/window/title_screen.cfg:177 src/hotkey/hotkey_command.cpp:283
+#: data/gui/window/title_screen.cfg:177 src/hotkey/hotkey_command.cpp:285
 msgid "Help"
 msgstr "Apua"
 
@@ -6573,257 +6573,257 @@ msgstr ""
 msgid "Completed"
 msgstr "Valmis"
 
-#: src/gui/dialogs/addon/manager.cpp:162
+#: src/gui/dialogs/addon/manager.cpp:157
 msgid "addons_view^All Add-ons"
 msgstr "Kaikki lisäosat"
 
-#: src/gui/dialogs/addon/manager.cpp:163
+#: src/gui/dialogs/addon/manager.cpp:158
 msgid "addons_view^Installed"
 msgstr "Asennettu"
 
-#: src/gui/dialogs/addon/manager.cpp:164
+#: src/gui/dialogs/addon/manager.cpp:159
 msgid "addons_view^Upgradable"
 msgstr "Päivitettävissä"
 
-#: src/gui/dialogs/addon/manager.cpp:165
+#: src/gui/dialogs/addon/manager.cpp:160
 msgid "addons_view^Publishable"
 msgstr "Julkaistavissa"
 
-#: src/gui/dialogs/addon/manager.cpp:166
+#: src/gui/dialogs/addon/manager.cpp:161
 msgid "addons_view^Not Installed"
 msgstr "Ei asennettu"
 
-#: src/gui/dialogs/addon/manager.cpp:170
+#: src/gui/dialogs/addon/manager.cpp:165
 msgid "addons_of_type^Campaigns"
 msgstr "Kampanjat"
 
-#: src/gui/dialogs/addon/manager.cpp:171
+#: src/gui/dialogs/addon/manager.cpp:166
 msgid "addons_of_type^Scenarios"
 msgstr "Skenaariot"
 
-#: src/gui/dialogs/addon/manager.cpp:172
+#: src/gui/dialogs/addon/manager.cpp:167
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "YP/MP-kampanjat"
 
-#: src/gui/dialogs/addon/manager.cpp:173
+#: src/gui/dialogs/addon/manager.cpp:168
 msgid "addons_of_type^MP campaigns"
 msgstr "MP-kampanjat"
 
-#: src/gui/dialogs/addon/manager.cpp:174
+#: src/gui/dialogs/addon/manager.cpp:169
 msgid "addons_of_type^MP scenarios"
 msgstr "MP-skenaariot"
 
-#: src/gui/dialogs/addon/manager.cpp:175
+#: src/gui/dialogs/addon/manager.cpp:170
 msgid "addons_of_type^MP map-packs"
 msgstr "MP-karttapaketti"
 
-#: src/gui/dialogs/addon/manager.cpp:176
+#: src/gui/dialogs/addon/manager.cpp:171
 msgid "addons_of_type^MP eras"
 msgstr "MP-aikakaudet"
 
-#: src/gui/dialogs/addon/manager.cpp:177
+#: src/gui/dialogs/addon/manager.cpp:172
 msgid "addons_of_type^MP factions"
 msgstr "MP-liittoumat"
 
-#: src/gui/dialogs/addon/manager.cpp:178
+#: src/gui/dialogs/addon/manager.cpp:173
 msgid "addons_of_type^Modifications"
 msgstr "Muunnelmat"
 
-#: src/gui/dialogs/addon/manager.cpp:179
+#: src/gui/dialogs/addon/manager.cpp:174
 msgid "addons_of_type^Cores"
 msgstr "Ytimet"
 
-#: src/gui/dialogs/addon/manager.cpp:180
+#: src/gui/dialogs/addon/manager.cpp:175
 msgid "addons_of_type^Resources"
 msgstr "Resurssit"
 
-#: src/gui/dialogs/addon/manager.cpp:182
+#: src/gui/dialogs/addon/manager.cpp:177
 msgid "addons_of_type^Other"
 msgstr "Muu"
 
-#: src/gui/dialogs/addon/manager.cpp:183
+#: src/gui/dialogs/addon/manager.cpp:178
 msgid "addons_of_type^Unknown"
 msgstr "Tuntematon"
 
-#: src/gui/dialogs/addon/manager.cpp:187
+#: src/gui/dialogs/addon/manager.cpp:182
 msgid "addons_order^Name ($order)"
 msgstr "Nimi ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:190
+#: src/gui/dialogs/addon/manager.cpp:185
 msgid "addons_order^Author ($order)"
 msgstr "Tekijä ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:193
+#: src/gui/dialogs/addon/manager.cpp:188
 msgid "addons_order^Size ($order)"
 msgstr "Koko ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:196
+#: src/gui/dialogs/addon/manager.cpp:191
 msgid "addons_order^Downloads ($order)"
 msgstr "Latauksia ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:199
+#: src/gui/dialogs/addon/manager.cpp:194
 msgid "addons_order^Type ($order)"
 msgstr "Tyyppi ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:197
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr "Viimeksi päivitetty ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:200
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr "Julkaisuaika ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:223
+#: src/gui/dialogs/addon/manager.cpp:218
 msgid "addon_tag^Cooperative"
 msgstr "Yhteistyö"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:225
+#: src/gui/dialogs/addon/manager.cpp:220
 msgid "addon_tag^All human players are on the same team, versus the AI"
 msgstr "Kaikki ihmispelaajat ovat samalla puolella tekoälyä vastaan"
 
-#: src/gui/dialogs/addon/manager.cpp:226
+#: src/gui/dialogs/addon/manager.cpp:221
 msgid "addon_tag^Cosmetic"
 msgstr "Kosmeettinen"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:228
+#: src/gui/dialogs/addon/manager.cpp:223
 msgid "addon_tag^These make the game look different, without changing gameplay"
 msgstr "Nämä muuttavat pelin ulkonäköä vaikuttamatta pelin kulkuun"
 
-#: src/gui/dialogs/addon/manager.cpp:229
+#: src/gui/dialogs/addon/manager.cpp:224
 msgid "addon_tag^Difficulty"
 msgstr "Vaikeustaso"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:231
+#: src/gui/dialogs/addon/manager.cpp:226
 msgid "addon_tag^Can make campaigns easier or harder"
 msgstr "Voi tehdä kampanjoista helpompia tai vaikeampia"
 
-#: src/gui/dialogs/addon/manager.cpp:232
+#: src/gui/dialogs/addon/manager.cpp:227
 msgid "addon_tag^RNG"
 msgstr "RNG"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:234
+#: src/gui/dialogs/addon/manager.cpp:229
 msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
 msgstr "Muokkaa satunnaisuutta taistelumekaniikoissa tai poistaa sen kokonaan"
 
-#: src/gui/dialogs/addon/manager.cpp:235
+#: src/gui/dialogs/addon/manager.cpp:230
 msgid "addon_tag^Survival"
 msgstr "Eloonjäänti"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:237
+#: src/gui/dialogs/addon/manager.cpp:232
 msgid "addon_tag^Fight against waves of enemies"
 msgstr "Taistele vihollisaaltoja vastaan"
 
-#: src/gui/dialogs/addon/manager.cpp:238
+#: src/gui/dialogs/addon/manager.cpp:233
 msgid "addon_tag^Terraforming"
 msgstr "Maastonmuokkaus"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:240
+#: src/gui/dialogs/addon/manager.cpp:235
 msgid "addon_tag^Players can change the terrain"
 msgstr "Pelaajat voivat muokkaa maastoa"
 
-#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:259 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "Ei asennettu"
 
-#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "Julkaistu, ei asennettu"
 
-#: src/gui/dialogs/addon/manager.cpp:269 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "Asennettu"
 
-#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "Julkaistu"
 
-#: src/gui/dialogs/addon/manager.cpp:274
+#: src/gui/dialogs/addon/manager.cpp:269
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Asennettu, ei seurata paikallista versiota"
 
-#: src/gui/dialogs/addon/manager.cpp:277
+#: src/gui/dialogs/addon/manager.cpp:272
 msgid "addon_state^Published, not tracking local version"
 msgstr "Julkaista, ei seurata paikallista versiota"
 
-#: src/gui/dialogs/addon/manager.cpp:281
+#: src/gui/dialogs/addon/manager.cpp:276
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Asennettu ($local_version) päivitettävissä"
 
-#: src/gui/dialogs/addon/manager.cpp:282
+#: src/gui/dialogs/addon/manager.cpp:277
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Julkaistu ($localversion| asennettu), päivitettävissä"
 
-#: src/gui/dialogs/addon/manager.cpp:288
+#: src/gui/dialogs/addon/manager.cpp:283
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Asennettu ($local_version|), vanhentunut palvelimessa"
 
-#: src/gui/dialogs/addon/manager.cpp:289
+#: src/gui/dialogs/addon/manager.cpp:284
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Julkaistu ($local_version| asennettu), vanhentunut palvelimessa"
 
-#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:290 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Asennettu, ei valmis julkaisuun"
 
-#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:291 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "Valmis julkaisuun"
 
-#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "Asennettu, rikki"
 
-#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "Julkaistu, rikki"
 
-#: src/gui/dialogs/addon/manager.cpp:304 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:299 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "Tuntematon"
 
-#: src/gui/dialogs/addon/manager.cpp:444
+#: src/gui/dialogs/addon/manager.cpp:439
 msgid "ascending"
 msgstr "nouseva"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:446
+#: src/gui/dialogs/addon/manager.cpp:441
 msgid "oldest to newest"
 msgstr "vanhasta uuteen"
 
-#: src/gui/dialogs/addon/manager.cpp:449
+#: src/gui/dialogs/addon/manager.cpp:444
 msgid "descending"
 msgstr "laskeva"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:451
+#: src/gui/dialogs/addon/manager.cpp:446
 msgid "newest to oldest"
 msgstr "uudesta vanhaan"
 
-#: src/gui/dialogs/addon/manager.cpp:548
+#: src/gui/dialogs/addon/manager.cpp:543
 msgid "addons^Back to List"
 msgstr "Takaisin listaan"
 
-#: src/gui/dialogs/addon/manager.cpp:560
+#: src/gui/dialogs/addon/manager.cpp:555
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Virhe tapahtui palvelimen lisäosalistan lataamisessa."
 
-#: src/gui/dialogs/addon/manager.cpp:598
+#: src/gui/dialogs/addon/manager.cpp:593
 msgid "No Add-ons Available"
 msgstr "Lisäosia ei saatavilla"
 
-#: src/gui/dialogs/addon/manager.cpp:598
+#: src/gui/dialogs/addon/manager.cpp:593
 msgid "There are no add-ons available for download from this server."
 msgstr "Tällä palvelimella ei ole lisäosia ladattavissa."
 
-#: src/gui/dialogs/addon/manager.cpp:867
+#: src/gui/dialogs/addon/manager.cpp:862
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6831,15 +6831,15 @@ msgstr ""
 "Seuraava lisäosa näyttää säilyttävän julkaisu- tai versionhallintatietoja "
 "paikallisesti, eikä täten poisteta:"
 
-#: src/gui/dialogs/addon/manager.cpp:875
+#: src/gui/dialogs/addon/manager.cpp:870
 msgid "The following add-on could not be deleted properly:"
 msgstr "Seuraavaa lisäosaa ei voitu poistaa oikein:"
 
-#: src/gui/dialogs/addon/manager.cpp:929
+#: src/gui/dialogs/addon/manager.cpp:924
 msgid "Warning"
 msgstr "Varoitus"
 
-#: src/gui/dialogs/addon/manager.cpp:930
+#: src/gui/dialogs/addon/manager.cpp:925
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -6847,28 +6847,28 @@ msgstr ""
 "Palvelimen lisäosan versio on suurempi tai sama kuin lähetettävä versio. "
 "Haluatko varmasti jatkaa?"
 
-#: src/gui/dialogs/addon/manager.cpp:948
+#: src/gui/dialogs/addon/manager.cpp:943
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr "Salasana-attribuutti ei voi olla läsnä, kun forum_auth on käytössä."
 
-#: src/gui/dialogs/addon/manager.cpp:953
+#: src/gui/dialogs/addon/manager.cpp:948
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr "Virheellinen kuvakepolku. Varmista, että polku osoittaa kuvaan."
 
-#: src/gui/dialogs/addon/manager.cpp:956 src/gui/dialogs/addon/manager.cpp:998
+#: src/gui/dialogs/addon/manager.cpp:951 src/gui/dialogs/addon/manager.cpp:993
 msgid "The server responded with an error:"
 msgstr "Palvelin vastasi virheellä:"
 
-#: src/gui/dialogs/addon/manager.cpp:959
+#: src/gui/dialogs/addon/manager.cpp:954
 msgid "The add-on was rejected by the server:"
 msgstr "Palvelin hylkäsi lisäosan:"
 
-#: src/gui/dialogs/addon/manager.cpp:974 src/gui/dialogs/addon/manager.cpp:1001
+#: src/gui/dialogs/addon/manager.cpp:969 src/gui/dialogs/addon/manager.cpp:996
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:510
 msgid "Response"
 msgstr "Vastaus"
 
-#: src/gui/dialogs/addon/manager.cpp:986
+#: src/gui/dialogs/addon/manager.cpp:981
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -6876,23 +6876,23 @@ msgstr ""
 "Lisäosan '$addon|' poistaminen poistaa pysyvästi sen lataus- ja "
 "lähetyskerrat lisäosapalvelimesta. Haluatko varmasti jatkaa?"
 
-#: src/gui/dialogs/addon/manager.cpp:1018
+#: src/gui/dialogs/addon/manager.cpp:1013
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Haluatko poistaa '$addon|'?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1050
+#: src/gui/dialogs/addon/manager.cpp:1045
 msgid "%B %d %Y, %I:%M %p"
 msgstr ""
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1053
+#: src/gui/dialogs/addon/manager.cpp:1048
 msgid "%B %d %Y, %H:%M"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:1114
+#: src/gui/dialogs/addon/manager.cpp:1109
 msgid "url^None"
 msgstr "Ei URL:ia"
 
@@ -7188,43 +7188,43 @@ msgstr "$active aktiivisia, $reserve reservissä"
 msgid "The selected file is corrupt: "
 msgstr "Valittu tiedosto on vioittunut: "
 
-#: src/gui/dialogs/game_load.cpp:356
+#: src/gui/dialogs/game_load.cpp:355
 msgid "(Invalid)"
 msgstr "(Epäkelpo)"
 
-#: src/gui/dialogs/game_load.cpp:386
+#: src/gui/dialogs/game_load.cpp:385
 msgid "Campaign: $campaign_name"
 msgstr "Kampanja: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:397
 msgid "Tutorial"
 msgstr "Tutoriaali"
 
-#: src/gui/dialogs/game_load.cpp:401
+#: src/gui/dialogs/game_load.cpp:400
 msgid "Test scenario"
 msgstr "Testaa skenaario"
 
-#: src/gui/dialogs/game_load.cpp:411
+#: src/gui/dialogs/game_load.cpp:410
 msgid "Replay"
 msgstr "Uusinta"
 
-#: src/gui/dialogs/game_load.cpp:413
+#: src/gui/dialogs/game_load.cpp:412
 msgid "Turn"
 msgstr "Vuoro"
 
-#: src/gui/dialogs/game_load.cpp:415
+#: src/gui/dialogs/game_load.cpp:414
 msgid "Scenario start"
 msgstr "Skenaarion aloitus"
 
-#: src/gui/dialogs/game_load.cpp:434
+#: src/gui/dialogs/game_load.cpp:433
 msgid "Difficulty: "
 msgstr "Vaikeustaso:"
 
-#: src/gui/dialogs/game_load.cpp:457
+#: src/gui/dialogs/game_load.cpp:456
 msgid "Version: "
 msgstr "Versio:"
 
-#: src/gui/dialogs/game_load.cpp:462
+#: src/gui/dialogs/game_load.cpp:461
 msgid "Modifications: "
 msgstr "Muunnelmat:"
 
@@ -7721,7 +7721,7 @@ msgstr "$count|× $name"
 msgid "Screenshot"
 msgstr "Kuvankaappaus"
 
-#: src/gui/dialogs/title_screen.cpp:478 src/hotkey/hotkey_command.cpp:301
+#: src/gui/dialogs/title_screen.cpp:478 src/hotkey/hotkey_command.cpp:303
 msgid "Choose Test Scenario"
 msgstr "Valitse testiskenaario"
 
@@ -8454,7 +8454,9 @@ msgid "Item Tool"
 msgstr "Kohteet-työkalu"
 
 #: src/hotkey/hotkey_command.cpp:205
-msgid "Left mouse button sets a new item."
+#, fuzzy
+#| msgid "Left mouse button sets a new item."
+msgid "Left mouse button sets a new item. Right click removes item."
 msgstr "Hiiren vasen nappi asettaa uuden kohteen."
 
 #: src/hotkey/hotkey_command.cpp:206
@@ -8494,299 +8496,305 @@ msgid "Loyal"
 msgstr "Uskollinen"
 
 #: src/hotkey/hotkey_command.cpp:215
+#, fuzzy
+#| msgid "Map Information"
+msgid "Show Tool Information"
+msgstr "Karttatietoa"
+
+#: src/hotkey/hotkey_command.cpp:217
 msgid "Toggle Minimap Unit Coding"
 msgstr "Vaihda minikartan yksikkökoodaus"
 
-#: src/hotkey/hotkey_command.cpp:216
+#: src/hotkey/hotkey_command.cpp:218
 msgid "Toggle Minimap Terrain Coding"
 msgstr "Vaihda minikartan maastokoodaus"
 
-#: src/hotkey/hotkey_command.cpp:218
+#: src/hotkey/hotkey_command.cpp:220
 msgid "Toggle Minimap Unit Drawing"
 msgstr "Vaihda minikartan yksiköiden piirron näkymä"
 
-#: src/hotkey/hotkey_command.cpp:219
+#: src/hotkey/hotkey_command.cpp:221
 msgid "Toggle Minimap Village Drawing"
 msgstr "Vaihda minikartan kylien piirron näkymä"
 
-#: src/hotkey/hotkey_command.cpp:220
+#: src/hotkey/hotkey_command.cpp:222
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "Vaihda minikartan maastonpiirto"
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:224
 msgid "Next Brush"
 msgstr "Seuraava sivellin"
 
-#: src/hotkey/hotkey_command.cpp:223
+#: src/hotkey/hotkey_command.cpp:225
 msgid "Default Brush"
 msgstr "Vakiosivellin"
 
-#: src/hotkey/hotkey_command.cpp:224
+#: src/hotkey/hotkey_command.cpp:226
 msgid "Single Tile"
 msgstr "Yksittäinen heksa"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Radius One"
 msgstr "Säde yksi"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:228
 msgid "Radius Two"
 msgstr "Säde kaksi"
 
-#: src/hotkey/hotkey_command.cpp:227
+#: src/hotkey/hotkey_command.cpp:229
 msgid "Brush NW-SE"
 msgstr "Sivellin Lu-Ka"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Brush SW-NE"
 msgstr "Sivellin Lo-Ko"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Cut"
 msgstr "Leikkaa"
 
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:233
 msgid "Copy"
 msgstr "Kopioi"
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:234
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr "Vasen hiirennappi liittää leikepöydältä, oikea tuo kontekstivalikon."
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:234
 msgid "Paste"
 msgstr "Liitä"
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Vie valitut koordinaatit leikepöydälle"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:236
 msgid "Select All"
 msgstr "Valitse kaikki"
 
-#: src/hotkey/hotkey_command.cpp:235
+#: src/hotkey/hotkey_command.cpp:237
 msgid "Select Inverse"
 msgstr "Valitse käänteisesti"
 
-#: src/hotkey/hotkey_command.cpp:236
+#: src/hotkey/hotkey_command.cpp:238
 msgid "Select None"
 msgstr "Nollaa valinta"
 
-#: src/hotkey/hotkey_command.cpp:237
+#: src/hotkey/hotkey_command.cpp:239
 msgid "Rotate Clipboard Clockwise"
 msgstr "Käännä leikepöytää myötäpäivään"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Käännä leikepöytää vastapäivään"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:241
 msgid "Flip Clipboard Horizontally"
 msgstr "Käännä leikepöytä ympäri vaakasuunnassa"
 
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Flip Clipboard Vertically"
 msgstr "Käännä leikepöytä ympäri pystysuunnassa"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:243
 msgid "Rotate Selection"
 msgstr "Kierrä valintaa"
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Flip Selection"
 msgstr "Käännä valinta ympäri"
 
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:245
 msgid "Fill Selection"
 msgstr "Täytä valinta"
 
-#: src/hotkey/hotkey_command.cpp:244
+#: src/hotkey/hotkey_command.cpp:246
 msgid "Randomize Tiles in Selection"
 msgstr "Satunnaista laatat valinnassa"
 
-#: src/hotkey/hotkey_command.cpp:247
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Apply a Mask"
 msgstr "Käytä maskia"
 
-#: src/hotkey/hotkey_command.cpp:248
+#: src/hotkey/hotkey_command.cpp:250
 msgid "Create Mask"
 msgstr "Luo maski"
 
-#: src/hotkey/hotkey_command.cpp:249
+#: src/hotkey/hotkey_command.cpp:251
 msgid "Refresh Display"
 msgstr "Päivitä näyttö"
 
-#: src/hotkey/hotkey_command.cpp:251
+#: src/hotkey/hotkey_command.cpp:253
 msgid "Update Terrain Transitions"
 msgstr "Päivitä maaston siirtymät"
 
-#: src/hotkey/hotkey_command.cpp:254
+#: src/hotkey/hotkey_command.cpp:256
 msgid "Toggle Terrain Transition Update"
 msgstr "Vaihda maastonsiirtymien päivitystä"
 
-#: src/hotkey/hotkey_command.cpp:256
+#: src/hotkey/hotkey_command.cpp:258
 msgid "Auto-update Terrain Transitions"
 msgstr "Päivitä maaston siirtymät automaattisesti"
 
-#: src/hotkey/hotkey_command.cpp:257
+#: src/hotkey/hotkey_command.cpp:259
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Maaston siirtymien automaattinen päivitys: Ei"
 
-#: src/hotkey/hotkey_command.cpp:258
+#: src/hotkey/hotkey_command.cpp:260
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Maaston siirtymien automaattinen päivitys: Osittain"
 
-#: src/hotkey/hotkey_command.cpp:260
+#: src/hotkey/hotkey_command.cpp:262
 msgid "Refresh Image Cache"
 msgstr "Päivitä kuvavarasto"
 
-#: src/hotkey/hotkey_command.cpp:261
+#: src/hotkey/hotkey_command.cpp:263
 msgid "Draw Hex Coordinates"
 msgstr "Piirrä heksakoordinaatit"
 
-#: src/hotkey/hotkey_command.cpp:262
+#: src/hotkey/hotkey_command.cpp:264
 msgid "Draw Terrain Codes"
 msgstr "Piirrä maastokoodit"
 
-#: src/hotkey/hotkey_command.cpp:263
+#: src/hotkey/hotkey_command.cpp:265
 msgid "Draw Number of Bitmaps"
 msgstr "Piirrä bittikarttojen määrä"
 
-#: src/hotkey/hotkey_command.cpp:265
+#: src/hotkey/hotkey_command.cpp:267
 msgid "Save Selection to Area"
 msgstr "Tallenna valinta alueelle"
 
-#: src/hotkey/hotkey_command.cpp:266
+#: src/hotkey/hotkey_command.cpp:268
 msgid "Rename Selected Area"
 msgstr "Nimeä valittu alue"
 
-#: src/hotkey/hotkey_command.cpp:267
+#: src/hotkey/hotkey_command.cpp:269
 msgid "Remove Selected Area"
 msgstr "Poista valittu alue"
 
-#: src/hotkey/hotkey_command.cpp:268
+#: src/hotkey/hotkey_command.cpp:270
 msgid "Add New Area"
 msgstr "Lisää uusi alue"
 
-#: src/hotkey/hotkey_command.cpp:270
+#: src/hotkey/hotkey_command.cpp:272
 msgid "Add-on Publishing Editor"
 msgstr "Lisäosan julkaisueditori"
 
-#: src/hotkey/hotkey_command.cpp:271
+#: src/hotkey/hotkey_command.cpp:273
 msgid "Change Add-on ID"
 msgstr "Vaihda lisäosan tunniste"
 
-#: src/hotkey/hotkey_command.cpp:273
+#: src/hotkey/hotkey_command.cpp:275
 msgid "Edit Scenario"
 msgstr "Muokkaa skenaariota"
 
-#: src/hotkey/hotkey_command.cpp:274
+#: src/hotkey/hotkey_command.cpp:276
 msgid "Edit Side"
 msgstr "Muokkaa osapuolta"
 
-#: src/hotkey/hotkey_command.cpp:275
+#: src/hotkey/hotkey_command.cpp:277
 msgid "Remove Side"
 msgstr "Poista osapuoli"
 
-#: src/hotkey/hotkey_command.cpp:277
+#: src/hotkey/hotkey_command.cpp:279
 msgid "Delay Shroud Updates"
 msgstr "Viivytä hunnun päivitystä"
 
-#: src/hotkey/hotkey_command.cpp:278
+#: src/hotkey/hotkey_command.cpp:280
 msgid "Update Shroud Now"
 msgstr "Päivitä huntu nyt"
 
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:281
 msgid "Continue Interrupted Move"
 msgstr "Jatka keskeytynyttä liikettä"
 
-#: src/hotkey/hotkey_command.cpp:280
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Find Label or Unit"
 msgstr "Etsi karttamerkintä tai yksikkö"
 
-#: src/hotkey/hotkey_command.cpp:281
+#: src/hotkey/hotkey_command.cpp:283
 msgid "Speak to Ally"
 msgstr "Puhu liittolaisille"
 
-#: src/hotkey/hotkey_command.cpp:282
+#: src/hotkey/hotkey_command.cpp:284
 msgid "Speak to All"
 msgstr "Puhu kaikille"
 
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Help about save-loading"
 msgstr "Apua tallenna-lataamisesta"
 
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Hint: save-loading is unnecessary"
 msgstr "Vinkki: tallennuksien latailu on turhaa"
 
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:288
 msgid "Enter Command"
 msgstr "Anna komento"
 
-#: src/hotkey/hotkey_command.cpp:287
+#: src/hotkey/hotkey_command.cpp:289
 msgid "Custom Command"
 msgstr "Kustomoitu komento"
 
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:290
 msgid "Run Formula"
 msgstr "Suorita kaava"
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:291
 msgid "Clear Chat"
 msgstr "Tyhjennä chatti"
 
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Change Language"
 msgstr "Vaihda käytettävää kieltä"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:294
 msgid "Refresh WML"
 msgstr "Päivitä WML"
 
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:295
 msgid "Next Tip of the Day"
 msgstr "Seuraava vinkki"
 
-#: src/hotkey/hotkey_command.cpp:294
+#: src/hotkey/hotkey_command.cpp:296
 msgid "Previous Tip of the Day"
 msgstr "Edellisen päivän vinkki"
 
-#: src/hotkey/hotkey_command.cpp:295
+#: src/hotkey/hotkey_command.cpp:297
 msgid "Start Campaign"
 msgstr "Aloita kampanja"
 
-#: src/hotkey/hotkey_command.cpp:296
+#: src/hotkey/hotkey_command.cpp:298
 msgid "Start Multiplayer Game"
 msgstr "Aloita monen pelaajan peli"
 
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:299
 msgid "Manage Add-ons"
 msgstr "Hallinnoi lisäosia"
 
-#: src/hotkey/hotkey_command.cpp:298
+#: src/hotkey/hotkey_command.cpp:300
 msgid "Manage Cores"
 msgstr "Hallinnoi ytimiä"
 
-#: src/hotkey/hotkey_command.cpp:299
+#: src/hotkey/hotkey_command.cpp:301
 msgid "Start Editor"
 msgstr "Käynnistä muokkausohjelma"
 
-#: src/hotkey/hotkey_command.cpp:300
+#: src/hotkey/hotkey_command.cpp:302
 msgid "Show Credits"
 msgstr "Näytä pelin tekijät"
 
-#: src/hotkey/hotkey_command.cpp:303
+#: src/hotkey/hotkey_command.cpp:305
 msgid "Show Helptip"
 msgstr "Näytä vinkki"
 
-#: src/hotkey/hotkey_command.cpp:305
+#: src/hotkey/hotkey_command.cpp:307
 msgid "Show Lua Console"
 msgstr "Näytä Lua-konsoli"
 
-#: src/hotkey/hotkey_command.cpp:308
+#: src/hotkey/hotkey_command.cpp:310
 msgid "Unrecognized Command"
 msgstr "Tunnistamaton komento"
 
@@ -9129,11 +9137,6 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 
 #~ msgid "No ignored"
 #~ msgstr "Ei torjuttuja"
-
-#, fuzzy
-#~| msgid "Map Information"
-#~ msgid "Information"
-#~ msgstr "Karttatietoa"
 
 #, fuzzy
 #~| msgid "Do you really want to delete this game?"

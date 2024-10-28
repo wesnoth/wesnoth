@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18 - wesnoth-help\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-25 21:28-0500\n"
+"POT-Creation-Date: 2024-10-28 12:38-0500\n"
 "PO-Revision-Date: 2024-06-07 00:12+0200\n"
 "Last-Translator: René Genz <liebundartig@freenet.de>\n"
 "Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:500
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:501
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "Unter Tage"
@@ -379,13 +379,13 @@ msgstr "Karten- und Szenarieneditor"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:372
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:377
 msgid "Terrain Editor"
 msgstr "Geländeeditor"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:384
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:389
 msgid "Scenario Editor"
 msgstr "Szenarieneditor"
 
@@ -419,9 +419,9 @@ msgstr ""
 "\n"
 "<bold>text='Tastenkombinationen'</bold>\n"
 "\n"
-"• Umschalt+Mausklick: Wenn eine Grundfläche ausgewählt ist, ändert es nur die "
-"Grundfläche, ohne das Overlay zu entfernen. Wenn ein Overlay ausgewählt ist, "
-"platziert es das Overlay, ohne die Grundfläche zu ändern.\n"
+"• Umschalt+Mausklick: Wenn eine Grundfläche ausgewählt ist, ändert es nur "
+"die Grundfläche, ohne das Overlay zu entfernen. Wenn ein Overlay ausgewählt "
+"ist, platziert es das Overlay, ohne die Grundfläche zu ändern.\n"
 "•Steuerung+Mausklick: Das Gelände unter dem Mauszeiger wird zur neuen "
 "Auswahl, genau so, als wäre es in der Palette ausgewählt worden. Gilt für "
 "Grundfläche und Overlay.\n"
@@ -476,9 +476,9 @@ msgstr ""
 "\n"
 "<bold>text='Tastenkombinationen'</bold>\n"
 "\n"
-"• Umschalt+Mausklick: Wenn eine Grundfläche ausgewählt ist, ändert es nur die "
-"Grundfläche, ohne das Overlay zu entfernen. Wenn ein Overlay ausgewählt ist, "
-"platziert es das Overlay, ohne die Grundfläche zu ändern.\n"
+"• Umschalt+Mausklick: Wenn eine Grundfläche ausgewählt ist, ändert es nur "
+"die Grundfläche, ohne das Overlay zu entfernen. Wenn ein Overlay ausgewählt "
+"ist, platziert es das Overlay, ohne die Grundfläche zu ändern.\n"
 "•Steuerung+Mausklick: Das Gelände unter dem Mauszeiger wird zur neuen "
 "Auswahl, genau so, als wäre es in der Palette ausgewählt worden. Gilt für "
 "Grundfläche und Overlay."
@@ -568,9 +568,8 @@ msgstr ""
 "Das Werkzeug zum Einfügen zeigt einen Umriss der Zwischenablage, welche mit "
 "der Hilfe eines Mausklicks eingefügt werden kann. Es wird zwar nur der "
 "Umriss gezeigt, aber Fehler beim Einfügen können mit der Rückgängig-Machen-"
-"Funktion beseitigt werden, indem man Steuerung und »Z« gleichzeitig "
-"betätigt oder die selbe Taste betätigt, die im Spiel für das "
-"Rückgängmachen steht.\n"
+"Funktion beseitigt werden, indem man Steuerung und »Z« gleichzeitig betätigt "
+"oder die selbe Taste betätigt, die im Spiel für das Rückgängmachen steht.\n"
 "\n"
 "Das Werkzeug zum Einfügen verfügt auch über einige Methoden, um die "
 "Zwischenablage zu manipulieren:"
@@ -680,10 +679,10 @@ msgid ""
 "editor; all the overlays described here are found in the terrain palette’s "
 "“special” group."
 msgstr ""
-"Im Allgemeinen sehen Karten im Editor so aus, wie sie auch im Spiel aussehen. "
-"Es gibt ein paar Ausnahmen, bei denen im Editor andere Grafiken verwendet "
-"werden als im Spiel; alle hier beschriebenen Overlays sind in der Gruppe "
-"»Spezielles« des Malwerkzeugs zu finden."
+"Im Allgemeinen sehen Karten im Editor so aus, wie sie auch im Spiel "
+"aussehen. Es gibt ein paar Ausnahmen, bei denen im Editor andere Grafiken "
+"verwendet werden als im Spiel; alle hier beschriebenen Overlays sind in der "
+"Gruppe »Spezielles« des Malwerkzeugs zu finden."
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
@@ -794,12 +793,12 @@ msgstr ""
 "Spielers das Feld sehen können."
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:171
+#: data/core/editor/help.cfg:172
 msgid "Terrain Elevation Graphics"
 msgstr "Geländehöhenunterschied-Editor"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:172
+#: data/core/editor/help.cfg:173
 msgid ""
 "A cosmetic elevation effect that looks a little different in the editor than "
 "in the game due to visual aids in the editor; all the overlays described "
@@ -810,12 +809,12 @@ msgstr ""
 "hier beschriebenen Overlays sind Teil der »Höhenunterschied«-Geländegruppe."
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:175
+#: data/core/editor/help.cfg:176
 msgid "editor^<bold>text='Direct Overlays'</bold>"
 msgstr "<bold>text='Direkte Overlays'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:177
+#: data/core/editor/help.cfg:178
 msgid ""
 "Bluffs and Gulch\n"
 "\n"
@@ -832,17 +831,17 @@ msgstr ""
 "kombinieren mit den »Markierungen« beschrieben im nächsten Abschnitt."
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:182
+#: data/core/editor/help.cfg:183
 msgid "editor^<bold>text='Elevation Floodfill'</bold>"
 msgstr "<bold>text='Höhenunterschied-Flutfüllung'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:184
+#: data/core/editor/help.cfg:185
 msgid "Raised elevation on-map marker"
 msgstr "Größerer-Höhenunterschied-Kartenmarkierung"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:185
+#: data/core/editor/help.cfg:186
 msgid ""
 "Raised elevation editor palette icon\n"
 "\n"
@@ -873,7 +872,7 @@ msgstr ""
 "nicht in einer größeren Klippe.\n"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:192
+#: data/core/editor/help.cfg:193
 msgid ""
 "editor^<bold>text='How to Use'</bold>\n"
 "\n"
@@ -912,7 +911,7 @@ msgstr ""
 "Grundgelände.\n"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:203
+#: data/core/editor/help.cfg:204
 msgid ""
 "editor^<format>text='Note for UMC authors: The flood-filled tiles do not "
 "have their terrain codes changed, or any other properties affected, so "
@@ -924,14 +923,14 @@ msgstr ""
 "nach Höhenunterschied ist nicht einfach.' italic='yes' font_size=10 </format>"
 
 #. [topic]: id=editor_deprecated_overlay
-#: data/core/editor/help.cfg:208
+#: data/core/editor/help.cfg:210
 msgid "Deprecated Terrain"
 msgstr "Veraltetes Gelände"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
-#: data/core/editor/help.cfg:211
+#: data/core/editor/help.cfg:213
 msgid ""
 "editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
 "png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
@@ -959,12 +958,12 @@ msgstr ""
 "der nur im Editor angezeigt wird, mögliche Alternativen."
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:224
+#: data/core/editor/help.cfg:226
 msgid "Label Tool"
 msgstr "Beschriftungswerkzeug"
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:225
+#: data/core/editor/help.cfg:227
 msgid ""
 "Put text labels on the map.\n"
 "\n"
@@ -989,27 +988,40 @@ msgstr ""
 "gespeichert wird."
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:240
+#: data/core/editor/help.cfg:242
 msgid "Item Tool (Scenery Tool)"
 msgstr "Gegenstandswerkzeug"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:241
+#: data/core/editor/help.cfg:243
+#, fuzzy
+#| msgid ""
+#| "The Item Tool allows placing decorations such as windmills, bookcases and "
+#| "monoliths. Multiple items can be placed on the same hex.\n"
+#| "\n"
+#| "<bold>text='Note:'</bold> the tool doesn’t support deleting items once "
+#| "placed, nor does it support undo. Mistakes can currently only be fixed by "
+#| "editing the generated WML file.\n"
+#| "\n"
+#| "This tool is only available in Scenario Mode; the decorations are not "
+#| "part of the terrain and are implemented in the scenario using WML’s "
+#| "<italic>text='[item]'</italic> tag."
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
 "\n"
-"<bold>text='Note:'</bold> the tool doesn’t support deleting items once "
-"placed, nor does it support undo. Mistakes can currently only be fixed by "
-"editing the generated WML file.\n"
+"• Left-click will place a decoration on the clicked hex.\n"
+"• Right-click will remove the decoration.\n"
+"\n"
+"<bold>text='Note:'</bold> the tool doesn’t support undo.\n"
 "\n"
 "This tool is only available in Scenario Mode; the decorations are not part "
 "of the terrain and are implemented in the scenario using WML’s "
 "<italic>text='[item]'</italic> tag."
 msgstr ""
 "Das Gegenstandswerkzeug erlaubt die Platzierung von Dekoration wie "
-"Windmühlen, Bücherregalen und Monolithen. Mehrere Gegenstände können auf "
-"dem selben Feld platziert werden.\n"
+"Windmühlen, Bücherregalen und Monolithen. Mehrere Gegenstände können auf dem "
+"selben Feld platziert werden.\n"
 "\n"
 "<bold>text='Anmerkung:'</bold> Das Werkzeug unterstützt weder die Entfernung "
 "von Gegenständen, sobald sie gesetzt worden sind, noch das Rückgängigmachen "
@@ -1021,12 +1033,12 @@ msgstr ""
 "<italic>text='[item]'</italic> implementiert."
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:254
+#: data/core/editor/help.cfg:259
 msgid "Village Ownership Tool"
 msgstr "Dorfwerkzeug"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:255
+#: data/core/editor/help.cfg:260
 msgid ""
 "This tool assigns ownership of villages at the start of a scenario. The "
 "villages must first be placed on the terrain with the "
@@ -1052,12 +1064,12 @@ msgstr ""
 "<italic>text='[side]'</italic>-Tags verwendet."
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:269
+#: data/core/editor/help.cfg:274
 msgid "Unit Tool"
 msgstr "Einheitenwerkzeug"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:275
 msgid ""
 "Place units belonging to the currently-selected side.\n"
 "\n"
@@ -1083,12 +1095,12 @@ msgstr ""
 "italic>-Tag ein."
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:285
+#: data/core/editor/help.cfg:290
 msgid "Named Areas"
 msgstr "Benannte Zonen"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:286
+#: data/core/editor/help.cfg:291
 msgid ""
 "This tool create sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
@@ -1115,8 +1127,8 @@ msgid ""
 msgstr ""
 "Dieses Werkzeug erstellt Feldersets, die in WML-Skripten per »Standard "
 "Location Filter« (deren Konzept ist im Detail im Wiki beschrieben) genutzt "
-"werden können durch Eintragen der Gebiets-ID in das "
-"<italic>text='area='</italic>-Attribut des Filters. Zum Beispiel:\n"
+"werden können durch Eintragen der Gebiets-ID in das <italic>text='area='</"
+"italic>-Attribut des Filters. Zum Beispiel:\n"
 "\n"
 "• weise diesen Hexagonfeldern eine lokale Zeitzone zu\n"
 "• filtere das Felderset, welches ein Ereignis auslöst, sobald eine Einheit "
@@ -1138,12 +1150,12 @@ msgstr ""
 
 # Ein kurzer Titel ist besser in der Seitenleiste
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:307
+#: data/core/editor/help.cfg:312
 msgid "Playlist Manager"
 msgstr "Wiedergabeliste"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:308
+#: data/core/editor/help.cfg:313
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
@@ -1158,12 +1170,12 @@ msgstr ""
 "<italic>text='[music]'</italic> zum Szenario hinzu."
 
 #. [topic]: id=editor_addon_id
-#: data/core/editor/help.cfg:319
+#: data/core/editor/help.cfg:324
 msgid "Change Add-on ID"
 msgstr "Erweiterungs-ID ändern"
 
 #. [topic]: id=editor_addon_id
-#: data/core/editor/help.cfg:320
+#: data/core/editor/help.cfg:325
 msgid ""
 "Allows changing the ID of an add-on, which is the name of the folder it’s "
 "in. This will only rename that folder and update any references to it in the "
@@ -1175,12 +1187,12 @@ msgstr ""
 "aktualisiert werden."
 
 #. [topic]: id=editor_pbl_editor
-#: data/core/editor/help.cfg:329
+#: data/core/editor/help.cfg:334
 msgid "Add-on Publishing Editor"
 msgstr "Erweiterungsveröffentlichungseditor"
 
 #. [topic]: id=editor_pbl_editor
-#: data/core/editor/help.cfg:330
+#: data/core/editor/help.cfg:335
 msgid ""
 "Allows setting up an add-on’s _server.pbl file, which is required for "
 "publishing an add-on to the add-ons server for other players to download. "
@@ -1193,12 +1205,12 @@ msgstr ""
 "Werte haben."
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:338
+#: data/core/editor/help.cfg:343
 msgid "Map/Scenario Editor"
 msgstr "Karten-/Szenarieneditor"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:339
+#: data/core/editor/help.cfg:344
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -1229,11 +1241,11 @@ msgid ""
 "at the start of the scenario. There’s also a <ref>dst='editor_playlist' "
 "text='playlist manager'</ref> for the music."
 msgstr ""
-"Wesnoths Karten- und Szenarieneditor erlaubt es Euch, Karten, auf denen jedes "
-"Szenario stattfindet, zu erstellen und zu editieren. Auch ist er mit einer "
-"begrenzten Anzahl an Funktionen ausgestattet, um ein grundlegendes Szenario "
-"zu erstellen und auch Erweiterungen zu initialisieren, welche genutzt werden "
-"können, um die erstellten Szenarien zu verteilen.\n"
+"Wesnoths Karten- und Szenarieneditor erlaubt es Euch, Karten, auf denen "
+"jedes Szenario stattfindet, zu erstellen und zu editieren. Auch ist er mit "
+"einer begrenzten Anzahl an Funktionen ausgestattet, um ein grundlegendes "
+"Szenario zu erstellen und auch Erweiterungen zu initialisieren, welche "
+"genutzt werden können, um die erstellten Szenarien zu verteilen.\n"
 "\n"
 "Der Editor kann von der <italic>text='Karteneditor'</italic>-Option im "
 "Hauptmenü aufgerufen werden.\n"
@@ -1264,7 +1276,7 @@ msgstr ""
 "Hintergrundmusik."
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:351
+#: data/core/editor/help.cfg:356
 msgid ""
 "In either mode, you will be prompted to choose an add-on to use for the "
 "scenarios you create. This can be an existing add-on or a brand new add-on. "
@@ -1283,7 +1295,7 @@ msgstr ""
 "auswählen zu können."
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:353
+#: data/core/editor/help.cfg:358
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -1331,7 +1343,7 @@ msgstr ""
 "verständlich zu machen."
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:373
+#: data/core/editor/help.cfg:378
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -1357,7 +1369,7 @@ msgstr ""
 "eröffnen«-Dialog des Mehrspielermodus gefunden werden."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:385
+#: data/core/editor/help.cfg:390
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -1371,7 +1383,7 @@ msgstr ""
 "muss. Der Szenarieneditor unterstützt kein Skripten der Szenarienereignisse."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:387
+#: data/core/editor/help.cfg:392
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -1391,7 +1403,7 @@ msgstr ""
 "ausgegraut."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:394
+#: data/core/editor/help.cfg:399
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -1418,7 +1430,7 @@ msgstr ""
 "die .map-Datei)."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:402
+#: data/core/editor/help.cfg:407
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
@@ -1446,12 +1458,12 @@ msgstr ""
 "Für diese Fälle wird empfohlen die .map-Datei direkt zu laden."
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:414
+#: data/core/editor/help.cfg:419
 msgid "Using a separate file for WML events"
 msgstr "Separate Datei für WML-Events"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:415
+#: data/core/editor/help.cfg:420
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -1513,13 +1525,13 @@ msgstr ""
 "zusäztlichen .cfg-Datei"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:438
+#: data/core/editor/help.cfg:443
 msgid "Editor Mask Usage"
 msgstr "Verwendung von Masken"
 
 # Es sollte auch erklärt werden, was mit einer Maske gemeint ist.
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:439
+#: data/core/editor/help.cfg:444
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -1531,12 +1543,12 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:447
+#: data/core/editor/help.cfg:452
 msgid "ToD and Schedule Editor"
 msgstr "Tageszeitplaneditor"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:448
+#: data/core/editor/help.cfg:453
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -1558,14 +1570,14 @@ msgstr ""
 "<ref>dst='editor_named_area' text='Zonen'</ref>."
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:459
+#: data/core/editor/help.cfg:464
 msgid "Editor Palette"
 msgstr "Editorenpalette"
 
 # Vielleicht Objekte statt Gegenstände, oder Elemente.
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:461
+#: data/core/editor/help.cfg:466
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -1594,33 +1606,33 @@ msgstr ""
 "Grafik. Hier einige Beispiele:"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:466
+#: data/core/editor/help.cfg:471
 msgid "Show all kinds of terrain"
 msgstr "Zeigt alle Arten von Gelände"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:467
+#: data/core/editor/help.cfg:472
 msgid "Show only water terrains"
 msgstr "Zeigt nur Gewässer an"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:468
+#: data/core/editor/help.cfg:473
 msgid "Show only villages"
 msgstr "Zeigt nur Dörfer an"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:480
+#: data/core/editor/help.cfg:485
 msgid "Wesnoth Map Format"
 msgstr "Wesnoths Kartenformat"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:481
+#: data/core/editor/help.cfg:486
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 "Wesnoth speichert seine Karten in für Menschen verständlichen Text-Dateien."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:483
+#: data/core/editor/help.cfg:488
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1680,7 +1692,7 @@ msgstr ""
 "Die <italic>text='map_file'</italic>-Methode wird bevorzugt."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:496
+#: data/core/editor/help.cfg:501
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1711,11 +1723,11 @@ msgstr ""
 "anzuhängen, bevor man diese im Editor öffnet. Diese Umformung wird empfohlen "
 "– der Editor unterstützt zwar die Bearbeitung des Inhalts von map_data "
 "während der Rest der Datei außen vor gelassen wird, was aber selten "
-"genutzter Code ist. Karten, die so geöffnet wurden, werden durch ein »E« "
-"im Fenstermenü markiert."
+"genutzter Code ist. Karten, die so geöffnet wurden, werden durch ein »E« im "
+"Fenstermenü markiert."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:504
+#: data/core/editor/help.cfg:509
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -4151,8 +4163,8 @@ msgid ""
 msgstr ""
 "Im Kampf werden Einheiten zwangsläufig Schaden nehmen. Es gibt mehrere "
 "Möglichkeiten, Einheiten zu heilen. Mit Ausnahme vom Rasten-Bonus addieren "
-"sich diese jedoch nicht. Pro Zug kann an einer Einheit nur ein Heilungseffekt "
-"auftreten."
+"sich diese jedoch nicht. Pro Zug kann an einer Einheit nur ein "
+"Heilungseffekt auftreten."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:499
@@ -4333,8 +4345,8 @@ msgid ""
 msgstr ""
 "Charakteristiken verändern die Eigenschaften einer Einheit leicht. "
 "Üblicherweise werden sie zufällig generiert, wenn eine Einheit ausgebildet "
-"wird. Charakteristiken, die eine Einheit haben kann, sind unter anderem durch "
-"die <italic>text='Spezies'</italic> der Einheit bestimmt."
+"wird. Charakteristiken, die eine Einheit haben kann, sind unter anderem "
+"durch die <italic>text='Spezies'</italic> der Einheit bestimmt."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:535
@@ -4904,11 +4916,11 @@ msgstr ""
 "italic>) hergestellt ist, wird eine Liste aller Erweiterungen präsentiert, "
 "die hier zum Download bereitgestellt wurden.\n"
 "\n"
-"Ob eine Erweiterung bereits installiert ist, wird unter jedem Eintrag angezeigt. "
-"Für Erweiterungen, welche <italic>text='aktualisiert'</italic> werden können "
-"oder auf dem Server <italic>text='veraltet'</italic> sind, werden sowohl die "
-"installierte als auch die auf dem Server verfügbare Versionsnummer "
-"angezeigt.\n"
+"Ob eine Erweiterung bereits installiert ist, wird unter jedem Eintrag "
+"angezeigt. Für Erweiterungen, welche <italic>text='aktualisiert'</italic> "
+"werden können oder auf dem Server <italic>text='veraltet'</italic> sind, "
+"werden sowohl die installierte als auch die auf dem Server verfügbare "
+"Versionsnummer angezeigt.\n"
 "\n"
 "Um per Stichwort nach einem Titel zu suchen, reicht es, eine beliebige "
 "Referenz im Feld <bold>text='Suche'</bold> einzutippen (Worte durch "
@@ -4973,8 +4985,8 @@ msgstr ""
 "zuerst:\n"
 "• entweder eine Kommandozeile öffnen (Standardtastenkürzel [:]; bei "
 "deutschem Tastaturlayout per Tastenkombination [Shift]+[.])\n"
-"• oder ein Gespräch starten (Standardtastenkürzel [m]), wobei das Präfix "
-"»/« genutzt werden muss.\n"
+"• oder ein Gespräch starten (Standardtastenkürzel [m]), wobei das Präfix »/« "
+"genutzt werden muss.\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -6357,8 +6369,8 @@ msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"Kriegsgerät oder Maschinen erhalten die Charakteristik <italic>text='mechanisch'</"
-"italic>."
+"Kriegsgerät oder Maschinen erhalten die Charakteristik "
+"<italic>text='mechanisch'</italic>."
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:107
@@ -6503,8 +6515,8 @@ msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
 "hitpoints than usual."
 msgstr ""
-"<italic>text='Schnelle'</italic> Einheiten haben einen BP "
-"extra, aber 5% weniger LP als andere."
+"<italic>text='Schnelle'</italic> Einheiten haben einen BP extra, aber 5% "
+"weniger LP als andere."
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:190
@@ -6541,8 +6553,7 @@ msgstr ""
 #: data/core/macros/traits.cfg:192
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
-"Intelligente Einheiten benötigen 20% weniger Erfahrung für "
-"eine Beförderung."
+"Intelligente Einheiten benötigen 20% weniger Erfahrung für eine Beförderung."
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:206
@@ -6854,8 +6865,8 @@ msgstr ""
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
-"Wenn diese Attacke offensiv verwendet wird, ist eine Trefferwahrscheinlichkeit "
-"von mindestens 60% garantiert."
+"Wenn diese Attacke offensiv verwendet wird, ist eine "
+"Trefferwahrscheinlichkeit von mindestens 60% garantiert."
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:100
@@ -7984,10 +7995,10 @@ msgid ""
 msgstr ""
 "Saurianer sind echsenähnliche Kreaturen. Sie sind kleiner und schlanker als "
 "Menschen, meist nicht größer als ein zehnjähriges Kind, können aber von der "
-"Schnauze bis zum Schwanz so lang sein wie ein durchschnittlicher Erwachsener. "
-"Klein und flink, wie sie sind, kämpfen die Krieger, als wären sie auf der Jagd "
-"– sie schlüpfen durch die gegnerischen Linien und greifen die Schwachen und "
-"Verwundeten an, während sie ihren Angreifern ausweichen.\n"
+"Schnauze bis zum Schwanz so lang sein wie ein durchschnittlicher "
+"Erwachsener. Klein und flink, wie sie sind, kämpfen die Krieger, als wären "
+"sie auf der Jagd – sie schlüpfen durch die gegnerischen Linien und greifen "
+"die Schwachen und Verwundeten an, während sie ihren Angreifern ausweichen.\n"
 "\n"
 "<header>text='Gesellschaft'</header>\n"
 "Saurianer sind mysteriöse Kreaturen, was daher kommt, dass sie in für andere "
@@ -8001,8 +8012,8 @@ msgstr ""
 "Spitze. Zwischen den Geschlechtern gibt es keinen Kampf um die Dominanz, "
 "stattdessen ist es situationsabhängig, wer das Sagen hat. In Dörfern und der "
 "Umgebung ist der Anführer der Männchen der Entscheider, während die Weibchen "
-"es sonst sind. Dieses Prinzip setzt sich in der Hierarchie von der Spitze bis "
-"nach unten durch.\n"
+"es sonst sind. Dieses Prinzip setzt sich in der Hierarchie von der Spitze "
+"bis nach unten durch.\n"
 "\n"
 "Die Trennung und Abwechslung der Geschlechterdominanz in der saurianischen "
 "Gesellschaft ist nur ein Teil der fest definierten Geschlechterrollen. Die "
@@ -8014,14 +8025,14 @@ msgstr ""
 "Heilung und Magie zu erlernen, sie aber auch zu einem leichten Ziel für ihre "
 "ärgsten Feinde macht – andere saurianische Sippen.\n"
 "\n"
-"Neue saurianische Sippen werden gegründet, wenn die Sterne es vorsehen. Jedes "
-"Weibchen, auf welches die astrologischen Zeichen zutreffen, wählt Saurianer "
-"niedrigeren Ranges aus und gründet mit ihnen eine neue Sippe. Üblicherweise "
-"treffen die Zeichen auf mehrere Weibchen zu, und es werden mehrere neue "
-"Sippen zeitgleich gegründet. Die Regeln sind einfach: Keine der neuen Sippen "
-"darf größer als eine andere sein, und die neuen Sippen dürfen zusammen nicht "
-"größer sein als die verbleibende, und der Rang entscheidet eventuelle "
-"Interessenkonflikte im Auswahlprozess.\n"
+"Neue saurianische Sippen werden gegründet, wenn die Sterne es vorsehen. "
+"Jedes Weibchen, auf welches die astrologischen Zeichen zutreffen, wählt "
+"Saurianer niedrigeren Ranges aus und gründet mit ihnen eine neue Sippe. "
+"Üblicherweise treffen die Zeichen auf mehrere Weibchen zu, und es werden "
+"mehrere neue Sippen zeitgleich gegründet. Die Regeln sind einfach: Keine der "
+"neuen Sippen darf größer als eine andere sein, und die neuen Sippen dürfen "
+"zusammen nicht größer sein als die verbleibende, und der Rang entscheidet "
+"eventuelle Interessenkonflikte im Auswahlprozess.\n"
 "\n"
 "Aufgrund des starken Bevölkerungswachstums, den sich oft aufteilenden Sippen "
 "und der Tatsache, dass Kannibalismus nicht tabu ist, leben Saurianer ein von "

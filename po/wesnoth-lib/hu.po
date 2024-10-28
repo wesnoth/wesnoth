@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-25 21:28-0500\n"
+"POT-Creation-Date: 2024-10-28 12:38-0500\n"
 "PO-Revision-Date: 2020-05-09 23:50+0200\n"
 "Last-Translator: Széll András <szell.andris@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -2547,7 +2547,7 @@ msgstr "Kiegészítő közzététele"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:622
-#: src/gui/dialogs/addon/manager.cpp:1017
+#: src/gui/dialogs/addon/manager.cpp:1012
 msgid "Uninstall add-on"
 msgstr "Kiegészítő eltávolítása"
 
@@ -2837,7 +2837,7 @@ msgstr "Függőségek:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1097
+#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1092
 msgid "addon_dependencies^None"
 msgstr "Nincs"
 
@@ -2850,7 +2850,7 @@ msgstr "Fordítások:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1111
+#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1106
 msgid "translations^None"
 msgstr "Egy sincs"
 
@@ -2895,8 +2895,8 @@ msgstr "Kiegészítőkezelő"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:551
-#: src/gui/dialogs/addon/manager.cpp:825
+#: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:546
+#: src/gui/dialogs/addon/manager.cpp:820
 #, fuzzy
 #| msgid "Addon Details"
 msgid "Add-on Details"
@@ -3097,7 +3097,7 @@ msgstr "Válassz nehézséget:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:285
+#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:287
 msgid "Chat Log"
 msgstr "Csevegésnapló"
 
@@ -3312,7 +3312,7 @@ msgstr "Napszak törlése"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:990 src/gui/dialogs/file_dialog.cpp:306
+#: src/gui/dialogs/addon/manager.cpp:985 src/gui/dialogs/file_dialog.cpp:306
 #: src/gui/dialogs/file_dialog.cpp:732
 msgid "Confirm"
 msgstr "Megerősítés"
@@ -3786,7 +3786,7 @@ msgstr "Nincs"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:246
+#: data/gui/window/editor_generate_map.cfg:43 src/hotkey/hotkey_command.cpp:248
 msgid "Generate Map"
 msgstr "Pálya generálása"
 
@@ -3841,7 +3841,7 @@ msgstr "Pálya létrehozása"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:245
+#: data/gui/window/editor_resize_map.cfg:35 src/hotkey/hotkey_command.cpp:247
 msgid "Resize Map"
 msgstr "Pálya átméretezése"
 
@@ -5420,7 +5420,7 @@ msgstr "Csapat neve:"
 #. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:256
-#: src/gui/dialogs/game_load.cpp:395
+#: src/gui/dialogs/game_load.cpp:394
 msgid "Multiplayer"
 msgstr "Többjátékos"
 
@@ -6378,7 +6378,7 @@ msgstr "Téma kiválasztása"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/window/title_screen.cfg:177 src/hotkey/hotkey_command.cpp:283
+#: data/gui/window/title_screen.cfg:177 src/hotkey/hotkey_command.cpp:285
 msgid "Help"
 msgstr "Segítség"
 
@@ -6844,259 +6844,259 @@ msgstr ""
 msgid "Completed"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:162
+#: src/gui/dialogs/addon/manager.cpp:157
 msgid "addons_view^All Add-ons"
 msgstr "Minden kiegészítő"
 
-#: src/gui/dialogs/addon/manager.cpp:163
+#: src/gui/dialogs/addon/manager.cpp:158
 msgid "addons_view^Installed"
 msgstr "Telepítve"
 
-#: src/gui/dialogs/addon/manager.cpp:164
+#: src/gui/dialogs/addon/manager.cpp:159
 msgid "addons_view^Upgradable"
 msgstr "Frissíthető"
 
-#: src/gui/dialogs/addon/manager.cpp:165
+#: src/gui/dialogs/addon/manager.cpp:160
 msgid "addons_view^Publishable"
 msgstr "Közzétehető"
 
-#: src/gui/dialogs/addon/manager.cpp:166
+#: src/gui/dialogs/addon/manager.cpp:161
 msgid "addons_view^Not Installed"
 msgstr "Nincs telepítve"
 
-#: src/gui/dialogs/addon/manager.cpp:170
+#: src/gui/dialogs/addon/manager.cpp:165
 msgid "addons_of_type^Campaigns"
 msgstr "Hadjáratok"
 
-#: src/gui/dialogs/addon/manager.cpp:171
+#: src/gui/dialogs/addon/manager.cpp:166
 msgid "addons_of_type^Scenarios"
 msgstr "Küldetések"
 
-#: src/gui/dialogs/addon/manager.cpp:172
+#: src/gui/dialogs/addon/manager.cpp:167
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "Egy/többjátékos hadjáratok"
 
-#: src/gui/dialogs/addon/manager.cpp:173
+#: src/gui/dialogs/addon/manager.cpp:168
 msgid "addons_of_type^MP campaigns"
 msgstr "Többjátékos hadjáratok"
 
-#: src/gui/dialogs/addon/manager.cpp:174
+#: src/gui/dialogs/addon/manager.cpp:169
 msgid "addons_of_type^MP scenarios"
 msgstr "Többjátékos küldetések"
 
-#: src/gui/dialogs/addon/manager.cpp:175
+#: src/gui/dialogs/addon/manager.cpp:170
 msgid "addons_of_type^MP map-packs"
 msgstr "Többjátékos térképcsomagok"
 
-#: src/gui/dialogs/addon/manager.cpp:176
+#: src/gui/dialogs/addon/manager.cpp:171
 msgid "addons_of_type^MP eras"
 msgstr "Többjátékos korszakok"
 
-#: src/gui/dialogs/addon/manager.cpp:177
+#: src/gui/dialogs/addon/manager.cpp:172
 msgid "addons_of_type^MP factions"
 msgstr "Többjátékos szövetségek"
 
-#: src/gui/dialogs/addon/manager.cpp:178
+#: src/gui/dialogs/addon/manager.cpp:173
 msgid "addons_of_type^Modifications"
 msgstr "Módosítók"
 
-#: src/gui/dialogs/addon/manager.cpp:179
+#: src/gui/dialogs/addon/manager.cpp:174
 msgid "addons_of_type^Cores"
 msgstr "Játékmagok"
 
-#: src/gui/dialogs/addon/manager.cpp:180
+#: src/gui/dialogs/addon/manager.cpp:175
 msgid "addons_of_type^Resources"
 msgstr "Források"
 
-#: src/gui/dialogs/addon/manager.cpp:182
+#: src/gui/dialogs/addon/manager.cpp:177
 msgid "addons_of_type^Other"
 msgstr "Egyéb"
 
-#: src/gui/dialogs/addon/manager.cpp:183
+#: src/gui/dialogs/addon/manager.cpp:178
 msgid "addons_of_type^Unknown"
 msgstr "Ismeretlen"
 
-#: src/gui/dialogs/addon/manager.cpp:187
+#: src/gui/dialogs/addon/manager.cpp:182
 msgid "addons_order^Name ($order)"
 msgstr "Név ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:190
+#: src/gui/dialogs/addon/manager.cpp:185
 msgid "addons_order^Author ($order)"
 msgstr "Készítő ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:193
+#: src/gui/dialogs/addon/manager.cpp:188
 msgid "addons_order^Size ($order)"
 msgstr "Méret ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:196
+#: src/gui/dialogs/addon/manager.cpp:191
 msgid "addons_order^Downloads ($order)"
 msgstr "Letöltések ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:199
+#: src/gui/dialogs/addon/manager.cpp:194
 msgid "addons_order^Type ($order)"
 msgstr "Típus ($order)"
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:197
 msgid "addons_order^Last updated ($datelike_order)"
 msgstr "Utoljára frissítve ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:200
 msgid "addons_order^First uploaded ($datelike_order)"
 msgstr "Először feltöltve ($datelike_order)"
 
-#: src/gui/dialogs/addon/manager.cpp:223
+#: src/gui/dialogs/addon/manager.cpp:218
 msgid "addon_tag^Cooperative"
 msgstr ""
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:225
+#: src/gui/dialogs/addon/manager.cpp:220
 msgid "addon_tag^All human players are on the same team, versus the AI"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:226
+#: src/gui/dialogs/addon/manager.cpp:221
 msgid "addon_tag^Cosmetic"
 msgstr ""
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:228
+#: src/gui/dialogs/addon/manager.cpp:223
 msgid "addon_tag^These make the game look different, without changing gameplay"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:229
+#: src/gui/dialogs/addon/manager.cpp:224
 #, fuzzy
 #| msgid "Difficulty"
 msgid "addon_tag^Difficulty"
 msgstr "Nehézség"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:231
+#: src/gui/dialogs/addon/manager.cpp:226
 msgid "addon_tag^Can make campaigns easier or harder"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:232
+#: src/gui/dialogs/addon/manager.cpp:227
 msgid "addon_tag^RNG"
 msgstr ""
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:234
+#: src/gui/dialogs/addon/manager.cpp:229
 msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:235
+#: src/gui/dialogs/addon/manager.cpp:230
 msgid "addon_tag^Survival"
 msgstr ""
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:237
+#: src/gui/dialogs/addon/manager.cpp:232
 msgid "addon_tag^Fight against waves of enemies"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:238
+#: src/gui/dialogs/addon/manager.cpp:233
 msgid "addon_tag^Terraforming"
 msgstr ""
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
-#: src/gui/dialogs/addon/manager.cpp:240
+#: src/gui/dialogs/addon/manager.cpp:235
 msgid "addon_tag^Players can change the terrain"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:259 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "Nincs telepítve"
 
-#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:260 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "Közzé téve, nincs telepítve "
 
-#: src/gui/dialogs/addon/manager.cpp:269 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "Telepítve"
 
-#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "Közzé téve"
 
-#: src/gui/dialogs/addon/manager.cpp:274
+#: src/gui/dialogs/addon/manager.cpp:269
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Telepítve, a helyi verzió nem ismert"
 
-#: src/gui/dialogs/addon/manager.cpp:277
+#: src/gui/dialogs/addon/manager.cpp:272
 msgid "addon_state^Published, not tracking local version"
 msgstr "Közzé téve, a helyi verzió nem ismert"
 
-#: src/gui/dialogs/addon/manager.cpp:281
+#: src/gui/dialogs/addon/manager.cpp:276
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Telepítve ($local_version|.), frissíthető"
 
-#: src/gui/dialogs/addon/manager.cpp:282
+#: src/gui/dialogs/addon/manager.cpp:277
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Közzé téve ($local_version|. verzió telepítve), frissíthető"
 
-#: src/gui/dialogs/addon/manager.cpp:288
+#: src/gui/dialogs/addon/manager.cpp:283
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Telepítve ($local_version|.), a kiszolgálón elavult"
 
-#: src/gui/dialogs/addon/manager.cpp:289
+#: src/gui/dialogs/addon/manager.cpp:284
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Közzé téve ($local_version|. verzió telepítve), a kiszolgálón elavult"
 
-#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:290 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Telepítve, nem közzétehető"
 
-#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:291 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "Közzétehető"
 
-#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "Telepítve, hibás"
 
-#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "Közzé téve, hibás"
 
-#: src/gui/dialogs/addon/manager.cpp:304 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:299 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "Ismeretlen"
 
-#: src/gui/dialogs/addon/manager.cpp:444
+#: src/gui/dialogs/addon/manager.cpp:439
 msgid "ascending"
 msgstr "növekvő sorrend"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:446
+#: src/gui/dialogs/addon/manager.cpp:441
 msgid "oldest to newest"
 msgstr "növekvő"
 
-#: src/gui/dialogs/addon/manager.cpp:449
+#: src/gui/dialogs/addon/manager.cpp:444
 msgid "descending"
 msgstr "csökkenő sorrend"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:451
+#: src/gui/dialogs/addon/manager.cpp:446
 msgid "newest to oldest"
 msgstr "csökkenő"
 
-#: src/gui/dialogs/addon/manager.cpp:548
+#: src/gui/dialogs/addon/manager.cpp:543
 msgid "addons^Back to List"
 msgstr "Vissza a listához"
 
-#: src/gui/dialogs/addon/manager.cpp:560
+#: src/gui/dialogs/addon/manager.cpp:555
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Hiba történt a kiegészítők listájának letöltése közben."
 
-#: src/gui/dialogs/addon/manager.cpp:598
+#: src/gui/dialogs/addon/manager.cpp:593
 msgid "No Add-ons Available"
 msgstr "Nincs elérhető kiegészítő"
 
-#: src/gui/dialogs/addon/manager.cpp:598
+#: src/gui/dialogs/addon/manager.cpp:593
 msgid "There are no add-ons available for download from this server."
 msgstr "Nincsenek letölthető kiegészítők ezen a kiszolgálón."
 
-#: src/gui/dialogs/addon/manager.cpp:867
+#: src/gui/dialogs/addon/manager.cpp:862
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -7104,15 +7104,15 @@ msgstr ""
 "Úgy néz ki, hogy az alábbi kiegészítőkhöz közzétételi vagy verziókezelési "
 "információk találhatók ezen a gépen, így nem lesznek eltávolítva:"
 
-#: src/gui/dialogs/addon/manager.cpp:875
+#: src/gui/dialogs/addon/manager.cpp:870
 msgid "The following add-on could not be deleted properly:"
 msgstr "Az alábbi kiegészítőt nem sikerült törölni:"
 
-#: src/gui/dialogs/addon/manager.cpp:929
+#: src/gui/dialogs/addon/manager.cpp:924
 msgid "Warning"
 msgstr "Figyelmeztetés"
 
-#: src/gui/dialogs/addon/manager.cpp:930
+#: src/gui/dialogs/addon/manager.cpp:925
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -7120,30 +7120,30 @@ msgstr ""
 "A kiegészítő távoli kiszolgálón található verziója nagyobb vagy egyenlő a "
 "feltöltendőjénél. Biztos, hogy folytatod?"
 
-#: src/gui/dialogs/addon/manager.cpp:948
+#: src/gui/dialogs/addon/manager.cpp:943
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:953
+#: src/gui/dialogs/addon/manager.cpp:948
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Érvénytelen ikon útvonal. Győződj meg róla, hogy az útvonal egy érvényes "
 "képre mutat."
 
-#: src/gui/dialogs/addon/manager.cpp:956 src/gui/dialogs/addon/manager.cpp:998
+#: src/gui/dialogs/addon/manager.cpp:951 src/gui/dialogs/addon/manager.cpp:993
 msgid "The server responded with an error:"
 msgstr "A kiszolgáló a következő hibával válaszolt:"
 
-#: src/gui/dialogs/addon/manager.cpp:959
+#: src/gui/dialogs/addon/manager.cpp:954
 msgid "The add-on was rejected by the server:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:974 src/gui/dialogs/addon/manager.cpp:1001
+#: src/gui/dialogs/addon/manager.cpp:969 src/gui/dialogs/addon/manager.cpp:996
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:510
 msgid "Response"
 msgstr "Válasz"
 
-#: src/gui/dialogs/addon/manager.cpp:986
+#: src/gui/dialogs/addon/manager.cpp:981
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -7151,23 +7151,23 @@ msgstr ""
 "„$addon|” törlése végérvényesen törölni fogja a letöltéseinek és "
 "feltöltéseinek számát a kiegészítő-kiszolgálón. Biztos, hogy folytatod?"
 
-#: src/gui/dialogs/addon/manager.cpp:1018
+#: src/gui/dialogs/addon/manager.cpp:1013
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Törölni akarod ezt a kiegészítőt: '$addon|'?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1050
+#: src/gui/dialogs/addon/manager.cpp:1045
 msgid "%B %d %Y, %I:%M %p"
 msgstr ""
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1053
+#: src/gui/dialogs/addon/manager.cpp:1048
 msgid "%B %d %Y, %H:%M"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:1114
+#: src/gui/dialogs/addon/manager.cpp:1109
 msgid "url^None"
 msgstr "Nincs"
 
@@ -7499,43 +7499,43 @@ msgstr ""
 msgid "The selected file is corrupt: "
 msgstr "A kiválasztott játékban nincsenek oldalak!"
 
-#: src/gui/dialogs/game_load.cpp:356
+#: src/gui/dialogs/game_load.cpp:355
 msgid "(Invalid)"
 msgstr "(Érvénytelen)"
 
-#: src/gui/dialogs/game_load.cpp:386
+#: src/gui/dialogs/game_load.cpp:385
 msgid "Campaign: $campaign_name"
 msgstr "Hadjárat: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:398
+#: src/gui/dialogs/game_load.cpp:397
 msgid "Tutorial"
 msgstr "Gyakorlás"
 
-#: src/gui/dialogs/game_load.cpp:401
+#: src/gui/dialogs/game_load.cpp:400
 msgid "Test scenario"
 msgstr "Próbapálya"
 
-#: src/gui/dialogs/game_load.cpp:411
+#: src/gui/dialogs/game_load.cpp:410
 msgid "Replay"
 msgstr "Visszajátszás"
 
-#: src/gui/dialogs/game_load.cpp:413
+#: src/gui/dialogs/game_load.cpp:412
 msgid "Turn"
 msgstr "Kör"
 
-#: src/gui/dialogs/game_load.cpp:415
+#: src/gui/dialogs/game_load.cpp:414
 msgid "Scenario start"
 msgstr "Pálya indítása"
 
-#: src/gui/dialogs/game_load.cpp:434
+#: src/gui/dialogs/game_load.cpp:433
 msgid "Difficulty: "
 msgstr "Nehézség: "
 
-#: src/gui/dialogs/game_load.cpp:457
+#: src/gui/dialogs/game_load.cpp:456
 msgid "Version: "
 msgstr "Verzió: "
 
-#: src/gui/dialogs/game_load.cpp:462
+#: src/gui/dialogs/game_load.cpp:461
 msgid "Modifications: "
 msgstr "Módosítók: "
 
@@ -8043,7 +8043,7 @@ msgstr "$count|× $name"
 msgid "Screenshot"
 msgstr "Képernyőkép"
 
-#: src/gui/dialogs/title_screen.cpp:478 src/hotkey/hotkey_command.cpp:301
+#: src/gui/dialogs/title_screen.cpp:478 src/hotkey/hotkey_command.cpp:303
 #, fuzzy
 #| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
@@ -8803,7 +8803,7 @@ msgstr "Tárgyeszköz"
 #: src/hotkey/hotkey_command.cpp:205
 #, fuzzy
 #| msgid "Left mouse button sets or drags a label, right clears."
-msgid "Left mouse button sets a new item."
+msgid "Left mouse button sets a new item. Right click removes item."
 msgstr ""
 "A bal egérgombbal címkét lehet létrehozni vagy áthelyezni, a jobb egérgomb "
 "törli a címkét."
@@ -8845,309 +8845,315 @@ msgid "Loyal"
 msgstr "Hűséges"
 
 #: src/hotkey/hotkey_command.cpp:215
+#, fuzzy
+#| msgid "Map Information"
+msgid "Show Tool Information"
+msgstr "Térképinformáció"
+
+#: src/hotkey/hotkey_command.cpp:217
 msgid "Toggle Minimap Unit Coding"
 msgstr "Egységkódolás átkapcs. a kis térképen"
 
-#: src/hotkey/hotkey_command.cpp:216
+#: src/hotkey/hotkey_command.cpp:218
 msgid "Toggle Minimap Terrain Coding"
 msgstr "Terepkódolás átkapcs. a kis térképen"
 
-#: src/hotkey/hotkey_command.cpp:218
+#: src/hotkey/hotkey_command.cpp:220
 msgid "Toggle Minimap Unit Drawing"
 msgstr "Egységrajzolás átkapcs. a kis térképen"
 
-#: src/hotkey/hotkey_command.cpp:219
+#: src/hotkey/hotkey_command.cpp:221
 msgid "Toggle Minimap Village Drawing"
 msgstr "Falurajzolás átkapcs. a kis térképen"
 
-#: src/hotkey/hotkey_command.cpp:220
+#: src/hotkey/hotkey_command.cpp:222
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "Tereprajzolás átkapcs. a kis térképen"
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:224
 msgid "Next Brush"
 msgstr "Következő ecset"
 
-#: src/hotkey/hotkey_command.cpp:223
+#: src/hotkey/hotkey_command.cpp:225
 msgid "Default Brush"
 msgstr "Alapértelmezett ecset"
 
-#: src/hotkey/hotkey_command.cpp:224
+#: src/hotkey/hotkey_command.cpp:226
 msgid "Single Tile"
 msgstr "Egyetlen mező"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Radius One"
 msgstr "Egy mező sugarú terület"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:228
 msgid "Radius Two"
 msgstr "Két mező sugarú terület"
 
-#: src/hotkey/hotkey_command.cpp:227
+#: src/hotkey/hotkey_command.cpp:229
 msgid "Brush NW-SE"
 msgstr "Festés ÉNy–DK irányba"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Brush SW-NE"
 msgstr "Festés DNy–ÉK irányba"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Cut"
 msgstr "Kivágás"
 
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:233
 msgid "Copy"
 msgstr "Másolás"
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:234
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
 "A bal egérgombbal beilleszthető a vágólap tartalma, a jobb egérgomb előhozza "
 "a jobb gombos menüt."
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:234
 msgid "Paste"
 msgstr "Beillesztés"
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "Kijelölt koordináták exportálása a vágólapra"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:236
 msgid "Select All"
 msgstr "Minden kijelölése"
 
-#: src/hotkey/hotkey_command.cpp:235
+#: src/hotkey/hotkey_command.cpp:237
 msgid "Select Inverse"
 msgstr "Kijelölés megfordítása"
 
-#: src/hotkey/hotkey_command.cpp:236
+#: src/hotkey/hotkey_command.cpp:238
 msgid "Select None"
 msgstr "Kijelölés törlése"
 
-#: src/hotkey/hotkey_command.cpp:237
+#: src/hotkey/hotkey_command.cpp:239
 msgid "Rotate Clipboard Clockwise"
 msgstr "Vágólap elforgatása óramutató szerint"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Vágólap forg. óramutatóval ellentétesen"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:241
 msgid "Flip Clipboard Horizontally"
 msgstr "Vágólap vízszintes tükrözése"
 
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Flip Clipboard Vertically"
 msgstr "Vágólap függőleges tükrözése"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:243
 msgid "Rotate Selection"
 msgstr "Kijelölt terület elforgatása"
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Flip Selection"
 msgstr "Kijelölt terület tükrözése"
 
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:245
 msgid "Fill Selection"
 msgstr "Kijelölt terület kitöltése"
 
-#: src/hotkey/hotkey_command.cpp:244
+#: src/hotkey/hotkey_command.cpp:246
 msgid "Randomize Tiles in Selection"
 msgstr "Mezők véletlenszerűen a kijelölt ter."
 
-#: src/hotkey/hotkey_command.cpp:247
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Apply a Mask"
 msgstr "Maszk alkalmazása"
 
-#: src/hotkey/hotkey_command.cpp:248
+#: src/hotkey/hotkey_command.cpp:250
 msgid "Create Mask"
 msgstr "Maszk létrehozása"
 
-#: src/hotkey/hotkey_command.cpp:249
+#: src/hotkey/hotkey_command.cpp:251
 msgid "Refresh Display"
 msgstr "Képernyő frissítése"
 
-#: src/hotkey/hotkey_command.cpp:251
+#: src/hotkey/hotkey_command.cpp:253
 msgid "Update Terrain Transitions"
 msgstr "Terepáttűnések frissítése"
 
-#: src/hotkey/hotkey_command.cpp:254
+#: src/hotkey/hotkey_command.cpp:256
 msgid "Toggle Terrain Transition Update"
 msgstr "Terepáttűnések frissítése be/ki"
 
-#: src/hotkey/hotkey_command.cpp:256
+#: src/hotkey/hotkey_command.cpp:258
 msgid "Auto-update Terrain Transitions"
 msgstr "Terepáttűnések automatikus frissítése"
 
-#: src/hotkey/hotkey_command.cpp:257
+#: src/hotkey/hotkey_command.cpp:259
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Terepáttűnések automatikus frissítése: Nem"
 
-#: src/hotkey/hotkey_command.cpp:258
+#: src/hotkey/hotkey_command.cpp:260
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Terepáttűnések automatikus frissítése: Részleges"
 
-#: src/hotkey/hotkey_command.cpp:260
+#: src/hotkey/hotkey_command.cpp:262
 msgid "Refresh Image Cache"
 msgstr "Képek átmeneti tárolójának frissítése"
 
-#: src/hotkey/hotkey_command.cpp:261
+#: src/hotkey/hotkey_command.cpp:263
 msgid "Draw Hex Coordinates"
 msgstr "Mezőkoordináták megjelenítése"
 
-#: src/hotkey/hotkey_command.cpp:262
+#: src/hotkey/hotkey_command.cpp:264
 msgid "Draw Terrain Codes"
 msgstr "Terepkódok megjelenítése"
 
-#: src/hotkey/hotkey_command.cpp:263
+#: src/hotkey/hotkey_command.cpp:265
 msgid "Draw Number of Bitmaps"
 msgstr "Bittérképek számának rajzolása"
 
-#: src/hotkey/hotkey_command.cpp:265
+#: src/hotkey/hotkey_command.cpp:267
 msgid "Save Selection to Area"
 msgstr "Kijelölés mentése a területre"
 
-#: src/hotkey/hotkey_command.cpp:266
+#: src/hotkey/hotkey_command.cpp:268
 msgid "Rename Selected Area"
 msgstr "Kijelölt terület átnevezése"
 
-#: src/hotkey/hotkey_command.cpp:267
+#: src/hotkey/hotkey_command.cpp:269
 msgid "Remove Selected Area"
 msgstr "Kijelölt terület eltávolítása"
 
-#: src/hotkey/hotkey_command.cpp:268
+#: src/hotkey/hotkey_command.cpp:270
 msgid "Add New Area"
 msgstr "Új terület hozzáadása"
 
-#: src/hotkey/hotkey_command.cpp:270
+#: src/hotkey/hotkey_command.cpp:272
 msgid "Add-on Publishing Editor"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:271
+#: src/hotkey/hotkey_command.cpp:273
 #, fuzzy
 #| msgid "Manage Add-ons"
 msgid "Change Add-on ID"
 msgstr "Kiegészítők kezelése"
 
-#: src/hotkey/hotkey_command.cpp:273
+#: src/hotkey/hotkey_command.cpp:275
 msgid "Edit Scenario"
 msgstr "Küldetés szerkesztése"
 
-#: src/hotkey/hotkey_command.cpp:274
+#: src/hotkey/hotkey_command.cpp:276
 msgid "Edit Side"
 msgstr "Csapat szerkesztése"
 
-#: src/hotkey/hotkey_command.cpp:275
+#: src/hotkey/hotkey_command.cpp:277
 msgid "Remove Side"
 msgstr "Csapat eltávolítása"
 
-#: src/hotkey/hotkey_command.cpp:277
+#: src/hotkey/hotkey_command.cpp:279
 msgid "Delay Shroud Updates"
 msgstr "Eltakarás frissítésének késleltetése"
 
-#: src/hotkey/hotkey_command.cpp:278
+#: src/hotkey/hotkey_command.cpp:280
 msgid "Update Shroud Now"
 msgstr "Eltakarás frissítése most"
 
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:281
 #, fuzzy
 #| msgid "Continue Move"
 msgid "Continue Interrupted Move"
 msgstr "Lépés folytatása"
 
-#: src/hotkey/hotkey_command.cpp:280
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Find Label or Unit"
 msgstr "Címke vagy egység keresése"
 
-#: src/hotkey/hotkey_command.cpp:281
+#: src/hotkey/hotkey_command.cpp:283
 msgid "Speak to Ally"
 msgstr "Szólás a szövetségesekhez"
 
-#: src/hotkey/hotkey_command.cpp:282
+#: src/hotkey/hotkey_command.cpp:284
 msgid "Speak to All"
 msgstr "Szólás mindenkihez"
 
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Help about save-loading"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:286
 msgid "Hint: save-loading is unnecessary"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:288
 #, fuzzy
 #| msgid "Enter User Command"
 msgid "Enter Command"
 msgstr "Felhasználói parancs megadása"
 
-#: src/hotkey/hotkey_command.cpp:287
+#: src/hotkey/hotkey_command.cpp:289
 msgid "Custom Command"
 msgstr "Tetszőleges parancs"
 
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:290
 msgid "Run Formula"
 msgstr "Minta futtatása"
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:291
 #, fuzzy
 #| msgid "Player Chat"
 msgid "Clear Chat"
 msgstr "Játékos csevegés"
 
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Change Language"
 msgstr "Nyelv megváltoztatása"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:294
 msgid "Refresh WML"
 msgstr "WML frissítése"
 
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:295
 msgid "Next Tip of the Day"
 msgstr "Következő napi tanács"
 
-#: src/hotkey/hotkey_command.cpp:294
+#: src/hotkey/hotkey_command.cpp:296
 msgid "Previous Tip of the Day"
 msgstr "Előző napi tanács"
 
-#: src/hotkey/hotkey_command.cpp:295
+#: src/hotkey/hotkey_command.cpp:297
 msgid "Start Campaign"
 msgstr "Hadjárat indítása"
 
-#: src/hotkey/hotkey_command.cpp:296
+#: src/hotkey/hotkey_command.cpp:298
 msgid "Start Multiplayer Game"
 msgstr "Többjátékos játék indítása"
 
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:299
 msgid "Manage Add-ons"
 msgstr "Kiegészítők kezelése"
 
-#: src/hotkey/hotkey_command.cpp:298
+#: src/hotkey/hotkey_command.cpp:300
 msgid "Manage Cores"
 msgstr "Játékmagok kezelése"
 
-#: src/hotkey/hotkey_command.cpp:299
+#: src/hotkey/hotkey_command.cpp:301
 msgid "Start Editor"
 msgstr "Szerkesztő indítása"
 
-#: src/hotkey/hotkey_command.cpp:300
+#: src/hotkey/hotkey_command.cpp:302
 msgid "Show Credits"
 msgstr "Készítők listájának mutatása"
 
-#: src/hotkey/hotkey_command.cpp:303
+#: src/hotkey/hotkey_command.cpp:305
 msgid "Show Helptip"
 msgstr "Eszközleírás mutatása"
 
-#: src/hotkey/hotkey_command.cpp:305
+#: src/hotkey/hotkey_command.cpp:307
 msgid "Show Lua Console"
 msgstr "Lua konzol megjelenítése"
 
-#: src/hotkey/hotkey_command.cpp:308
+#: src/hotkey/hotkey_command.cpp:310
 msgid "Unrecognized Command"
 msgstr "Ismeretlen parancs"
 
@@ -9384,11 +9390,6 @@ msgstr "A '[$section|]' részben a kötelező'$key|' kulcs nincs beállítva."
 
 #~ msgid "No ignored"
 #~ msgstr "A mellőzöttek nélkül"
-
-#, fuzzy
-#~| msgid "Map Information"
-#~ msgid "Information"
-#~ msgstr "Térképinformáció"
 
 #~ msgid "Do you want to open this link?"
 #~ msgstr "Meg akarod nyitni ezt a linket?"

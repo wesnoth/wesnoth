@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-03-17 19:07-0500\n"
+"POT-Creation-Date: 2024-10-28 12:38-0500\n"
 "PO-Revision-Date: 2017-05-31 13:43+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -236,17 +236,17 @@ msgid "units"
 msgstr "aonadan"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:453
+#: data/themes/editor.cfg:469
 msgid "Time Schedule Menu"
 msgstr "Clàr-taice nan sgeidealan ama"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:464
+#: data/themes/editor.cfg:480
 msgid "Playlist"
 msgstr "Liosta-chluich"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:470
+#: data/themes/editor.cfg:486
 msgid "Assign Time Schedule"
 msgstr "Sònraich sgeideal an ama"
 
@@ -270,15 +270,15 @@ msgstr "Rang: "
 msgid "Cost: "
 msgstr "Cosgais: "
 
-#: src/editor/controller/editor_controller.cpp:187
+#: src/editor/controller/editor_controller.cpp:188
 msgid "Fatal error"
 msgstr "Mearachd mharbhtach"
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:218
 msgid "Do you really want to quit?"
 msgstr "A bheil thu cinnteach gu bheil thu airson fàgail?"
 
-#: src/editor/controller/editor_controller.cpp:219
+#: src/editor/controller/editor_controller.cpp:220
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -286,7 +286,7 @@ msgstr ""
 "A bheil thu cinnteach gu bheil thu airson fàgail? Thèid na h-atharraichean a "
 "rinn thu air a’ mhapa an dèidh an t-sàbhalaidh mu dheireadh air chall."
 
-#: src/editor/controller/editor_controller.cpp:221
+#: src/editor/controller/editor_controller.cpp:222
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -295,129 +295,142 @@ msgstr ""
 "atharrachadh is thèid na h-atharraichean a rinn thu orra an dèidh an t-"
 "sàbhalaidh mu dheireadh air chall."
 
-#: src/editor/controller/editor_controller.cpp:230
+#: src/editor/controller/editor_controller.cpp:231
 msgid "No editor time-of-day found."
 msgstr "Cha deach àm dhen latha deasaiche a lorg."
 
-#: src/editor/controller/editor_controller.cpp:1254
+#: src/editor/controller/editor_controller.cpp:1270
 msgid "Change Unit ID"
 msgstr "Atharraich ID an aonaid"
 
-#: src/editor/controller/editor_controller.cpp:1255
+#: src/editor/controller/editor_controller.cpp:1271
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1271
+#: src/editor/controller/editor_controller.cpp:1287
 msgid "Rename Unit"
 msgstr "Thoir ainm ùr air an aonad"
 
-#: src/editor/controller/editor_controller.cpp:1272
+#: src/editor/controller/editor_controller.cpp:1288
 msgid "Name:"
 msgstr "Ainm:"
 
-#: src/editor/map/context_manager.cpp:217
+#: src/editor/map/context_manager.cpp:222
 msgid "Load Map"
 msgstr "Luchdaich mapa"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1112
+#: src/editor/map/context_manager.cpp:318 src/editor/map/map_context.cpp:1112
 msgid "New Map"
 msgstr "Mapa ùr"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1112
+#: src/editor/map/context_manager.cpp:331 src/editor/map/map_context.cpp:1112
 msgid "New Scenario"
 msgstr "Cnàmh-sgeul ùr"
 
-#: src/editor/map/context_manager.cpp:382
+#: src/editor/map/context_manager.cpp:387
 msgid "No Recent Files"
 msgstr "Chan eil faidhle o chionn ghoirid ann"
 
-#: src/editor/map/context_manager.cpp:420
+#: src/editor/map/context_manager.cpp:425
 msgid "Unnamed Area"
 msgstr "Raon gun ainm"
 
-#: src/editor/map/context_manager.cpp:451
+#: src/editor/map/context_manager.cpp:456
 msgid "New Side"
 msgstr "Taobh ùr"
 
-#: src/editor/map/context_manager.cpp:507
+#: src/editor/map/context_manager.cpp:512
 msgid "Apply Mask"
 msgstr "Cuir masg an sàs air"
 
-#: src/editor/map/context_manager.cpp:516
+#: src/editor/map/context_manager.cpp:521
 msgid "Error loading mask"
 msgstr "Mearachd le luchdadh a’ mhasga"
 
-#: src/editor/map/context_manager.cpp:536
+#: src/editor/map/context_manager.cpp:541
 msgid "Identifier:"
 msgstr "Aithnichear:"
 
-#: src/editor/map/context_manager.cpp:536
+#: src/editor/map/context_manager.cpp:541
 msgid "Rename Area"
 msgstr "Thoir ainm ùr air an raon"
 
-#: src/editor/map/context_manager.cpp:550
+#: src/editor/map/context_manager.cpp:555
 msgid "Choose Target Map"
 msgstr "Tagh mapa amais"
 
-#: src/editor/map/context_manager.cpp:559
-#: src/editor/map/context_manager.cpp:955
+#: src/editor/map/context_manager.cpp:564
+#: src/editor/map/context_manager.cpp:996
 msgid "Error loading map"
 msgstr "Mearachd le luchdadh a’ mhapa"
 
-#: src/editor/map/context_manager.cpp:685
+#: src/editor/map/context_manager.cpp:696
 msgid "Save Map As"
 msgstr "Sàbhail am mapa mar"
 
-#: src/editor/map/context_manager.cpp:696
-#: src/editor/map/context_manager.cpp:898
+#: src/editor/map/context_manager.cpp:712
+#: src/editor/map/context_manager.cpp:761 src/editor/map/map_context.cpp:266
+#: src/editor/palette/location_palette.cpp:265
+msgid "Error"
+msgstr "Mearachd"
+
+#: src/editor/map/context_manager.cpp:713
+#: src/editor/map/context_manager.cpp:762
+#, fuzzy
+#| msgid "Do you really want to quit?"
+msgid "Do you really want to save $type1 in $type2 folder?"
+msgstr "A bheil thu cinnteach gu bheil thu airson fàgail?"
+
+#: src/editor/map/context_manager.cpp:721
+#: src/editor/map/context_manager.cpp:939
 msgid "This map is already open."
 msgstr "Tha am mapa seo fosgailte mu thràth."
 
-#: src/editor/map/context_manager.cpp:717
+#: src/editor/map/context_manager.cpp:744
 msgid "Save Scenario As"
 msgstr "Sàbhail an cnàmh-sgeul mar"
 
-#: src/editor/map/context_manager.cpp:729
+#: src/editor/map/context_manager.cpp:770
 msgid "This scenario is already open."
 msgstr "Tha an cnàmh-sgeul seo fosgailte mar-thà."
 
-#: src/editor/map/context_manager.cpp:763
+#: src/editor/map/context_manager.cpp:804
 msgid "No random map generators found."
 msgstr "Cha deach gineadair mhapaichean tuaireamach a lorg."
 
-#: src/editor/map/context_manager.cpp:776
-#: src/editor/map/context_manager.cpp:781
+#: src/editor/map/context_manager.cpp:817
+#: src/editor/map/context_manager.cpp:822
 msgid "Map creation failed."
 msgstr "Dh’fhàillig le cruthachadh a’ mhapa."
 
-#: src/editor/map/context_manager.cpp:796
+#: src/editor/map/context_manager.cpp:837
 msgid "Unsaved Changes"
 msgstr "Atharraichean gun shàbhaladh"
 
-#: src/editor/map/context_manager.cpp:797
+#: src/editor/map/context_manager.cpp:838
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "A bheil thu airson a h-uile atharrachadh a rinn thu air a’ mhapa bhon t-"
 "sàbhaladh mu dheireadh a thilgeil air falbh?"
 
-#: src/editor/map/context_manager.cpp:859
+#: src/editor/map/context_manager.cpp:900
 msgid "Scenario saved."
 msgstr "Cnàmh-sgeul air a shàbhaladh."
 
-#: src/editor/map/context_manager.cpp:874
+#: src/editor/map/context_manager.cpp:915
 msgid "Map saved."
 msgstr "Mapa air a shàbhaladh."
 
-#: src/editor/map/context_manager.cpp:947
+#: src/editor/map/context_manager.cpp:988
 msgid "Loaded embedded map data"
 msgstr "Dàta leabaichte a’ mhapa air luchdadh"
 
-#: src/editor/map/context_manager.cpp:948
-#: src/editor/map/context_manager.cpp:951
+#: src/editor/map/context_manager.cpp:989
+#: src/editor/map/context_manager.cpp:992
 msgid "Map loaded from scenario"
 msgstr "Mapa air luchdadh bho chnàmh-sgeul"
 
-#: src/editor/map/context_manager.cpp:951
+#: src/editor/map/context_manager.cpp:992
 #, fuzzy
 #| msgid ""
 #| "Loaded referenced map file:\n"
@@ -461,11 +474,6 @@ msgid "Found the characters '<<' indicating inline lua is present - aborting"
 msgstr ""
 
 #: src/editor/map/map_context.cpp:266
-#: src/editor/palette/location_palette.cpp:265
-msgid "Error"
-msgstr "Mearachd"
-
-#: src/editor/map/map_context.cpp:266
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr ""
 
@@ -502,13 +510,21 @@ msgstr "Cha b' urrainn dhuinn am mapa a shàbhaladh: $msg"
 msgid "(Unknown Group)"
 msgstr "(Buidheann nach aithne dhuinn)"
 
-#: src/editor/palette/editor_palettes.cpp:314
+#: src/editor/palette/editor_palettes.cpp:311
 msgid "(non-core)"
 msgstr "(neo-eitean)"
 
-#: src/editor/palette/editor_palettes.cpp:315
+#: src/editor/palette/editor_palettes.cpp:312
 msgid "Will not work in game without extra care."
 msgstr "Chan obraich seo sa gheama gun chùram a bharrachd."
+
+#: src/editor/palette/item_palette.cpp:32
+msgid " | Right-click to remove"
+msgstr ""
+
+#: src/editor/palette/item_palette.cpp:32
+msgid "Left-click: Place item "
+msgstr ""
 
 #: src/editor/palette/location_palette.cpp:249
 msgid "Go To"

@@ -64,14 +64,14 @@ Belirtilen seferberliğin zorluğu (1 \- azami). Belirtilmezse, seferberlik
 zorluğu seçim gereci görünür.
 .TP 
 \fB\-\-campaign\-scenario\fP\fI\ senaryo\fP
-belirtilen seferberlikteki senaryonun kimliği. Belirtilmezse ilk senaryo
+Belirtilen seferberlikteki senaryonun kimliği. Belirtilmezse ilk senaryo
 öntanımlıdır.
 .TP 
 \fB\-\-campaign\-skip\-story\fP
-olayların \fBbaşlangıcındaki\fP [hikaye} ekranlarını atlar.
+Olayların \fBbaşlangıcındaki\fP [hikaye} ekranlarını atlar.
 .TP 
 \fB\-\-clock\fP
-çizim zamanlayıcısını denerken saati göstermek için bu seçeneği ekler.
+Çizim zamanlayıcısını denerken saati göstermek için bu seçeneği ekler.
 .TP 
 \fB\-\-config\-dir\fP\fI\ isim\fP
 Kullanım dışı, yerine \fB\-\-userdata\-dir\fP kullanın.
@@ -83,7 +83,7 @@ Kullanım dışı, yerine \fB\-\-userdata\-path\fP kullanın.
 kimliği belirtilen çekirdek yüklü olanın yerine geçer.
 .TP 
 \fB\-\-data\-dir\fP\fI\ dizin\fP
-data dizini olarak belirtilen dizin kullanılır.
+data dizini olarak belirtilen dizin kullanılır
 .TP 
 \fB\-\-data\-path\fP
 data dizininin yolunu basar ve çıkar.
@@ -93,7 +93,7 @@ oyun içi ek komut kipi seçeneklerini etkin kılar (komut kipi hakkında bilgi
 edinmek için http://www.wesnoth.org/wiki/CommandMode adresine bakınız).
 .TP 
 \fB\-\-debug\-lua\fP
-bazı Lua hata ayıklama mekanizmalarını etkinleştirir.
+bazı Lua hata ayıklama mekanizmalarını etkinleştirir
 .TP 
 \fB\-\-strict\-lua\fP
 kullanımı önerilmeyen Lua API çağrılarına izin verilmez
@@ -115,14 +115,14 @@ görüntüler ve bu değerleri userdata dizinindeki bir dosyaya yazar.
 oyunu tam ekran çalıştırır.
 .TP 
 \fB\-\-gunzip\fP\fI\ girdi\-dosyası.gz\fP
-Gzipli bir dosyanın sıkıştırmasını açar ve .gz uzantısız olarak
+gzipli bir dosyanın sıkıştırmasını açar ve .gz uzantısız olarak
 kaydeder. \fIdosya.gz\fP dosyasını da siler.
 .TP 
 \fB\-\-gzip\fP\fI\ girdi\-dosyası\fP
-Bir dosyayı \fIdosya\fP.gz adıyla sıkıştırarak kaydeder ve \fIdosya\fPyı siler.
+dosyayı \fIdosya\fP.gz adıyla sıkıştırarak kaydeder ve \fIdosya\fPyı siler.
 .TP 
 \fB\-h, \-\-help\fP
-Komut satırı seçeneklerini standart çıktıya listeler ve çıkar.
+komut satırı seçeneklerini standart çıktıya listeler ve çıkar.
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ dosya\fP
 kayıtlı oyun dosyası \fIdosya\fP, standart oyun kayıt dizininden yüklenir. Eğer
@@ -135,7 +135,7 @@ geçerli oturumda \fIlisan\fP (dilin resmi sembolü) ile belirtilen dil
 kullanılır. Örnek: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIseviye\fP\fB=\fP\fIalan1\fP\fB,\fP\fIalan2\fP\fB,\fP\fI...\fP
-Günlük kayıt alanlarının önem seviyelerini ayarlar. Bütün günlük alanlarını
+günlük kayıt alanlarının önem seviyelerini ayarlar. Bütün günlük alanlarını
 kapsamak üzere \fBall\fP belirtilebilir. Olası önem seviyeleri: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Çoğu sunucu \fBwarning\fP öntanımlı
 değerini kullanır, fakat \fB\-d\fP  seçeneği ile birlikte kullanılmadıkça
 \fBdeprecation\fP için \fBnone\fP öntanımlıdır.
@@ -151,19 +151,19 @@ kullanıldığında etkin olur.
 .TP 
 \fB\-\-logdomains[\fP\fI=süzgeç\fP\fB]\fP
 tanımlı günlük alanlarını listeler ve çıkar (bir \fIsüzgeç\fP belirtilmişse
-sadece belirtilenleri içerir).
+sadece belirtilenleri içerir)
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. Log files are created in the
-logs directory under the userdata folder.
+kaydedilen çıktının bir dosyaya yönlendirilmesini engeller. Günlük dosyaları
+userdata dizininin altındaki logs dizininde oluşturulur.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
-whether implicit or explicit.
+günlük çıktısı bir dosyaya yazılır. \-\-no\-log\-to\-file seçeneğinin dolaylı
+veya doğrudan etkisini iptal eder.
 .TP 
 \fB\-\-wnoconsole\fP
-For Windows, when used with \-\-no\-log\-to\-file, results in output being
-written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+Windows için, \-\-no\-log\-to\-file ile kullanıldığında, çıktının CONOUT yerine
+cerr/cout'a yazılmasıyla sonuçlanır. Aksi takdirde, hiçbir şey yapmaz.
 .TP 
 \fB\-\-max\-fps\fP\fI\ sayı\fP
 oyun sırasında ekrana her saniye çizilen kare sayısıdır. Değer \fB1\fP ile
@@ -177,7 +177,7 @@ açıklanan seçenekler belirtilebilir.
 çok oyunculu deneme senaryosu yükler.
 .TP 
 \fB\-\-new\-widgets\fP
-Yeni bir WIP gereci araçkutusu varsa bu seçenek onu etkin kılar. Çok
+yeni bir WIP gereci araçkutusu varsa bu seçenek onu etkin kılar. Çok
 deneysel olduğundan ve hataların çoğu bilindiğinden bir hata raporu
 doldurmayın. Kütüphanenin bölümleri kararlı sayılır ve bu anahtar olmadan da
 çalışacaktır.
@@ -191,7 +191,7 @@ kılınır.
 kullanıcı eklentilerinin yüklenmesini iptal eder.
 .TP 
 \fB\-\-nocache\fP
-Oyun verisinin belleklenmesini iptal eder.
+oyun verisinin belleklenmesini iptal eder.
 .TP 
 \fB\-\-nogui\fP
 oyunu GUI olmadan çalıştırır. Sadece \fB\-\-multiplayer\fP, \fB\-\-screenshot\fP veya
@@ -290,12 +290,12 @@ bağlanılır. Örnek: \fB\-\-server\fP \fBserver.wesnoth.org\fP.
 doğrulama hatalarını ölümcül hatalar haline getirir.
 .TP 
 \fB\-t[\fP\fIsenaryo\fP\fB],\ \-\-test[\fP\fI=senaryo\fP\fB]\fP
-runs the game in a small test scenario. The scenario should be one defined
-with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
-\fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.
+küçük bir deneme senaryosu çalıştırır. Senaryo bir \fB[test]\fP WML etiketi ile
+tanımlanmalıdır. \fBtest\fP öntanımlıdır. \fB[micro_ai]\fP yapay zekasının bir
+deneme gösterimi \fBmicro_ai_test\fP ile başlatılabilir.
 .TP 
 \fB\-\-translations\-over\fP\fI\ yüzde\fP
-oyun içi dil listesinde göstermek için standart çeviri tamamlanma oranını
+Oyun içi dil listesinde göstermek için standart çeviri tamamlanma oranını
 \fIyüzde\fP ile belirtilen değere ayarlar. Geçerli değerler 0 ile 100
 arasındadır.
 .TP 
@@ -322,7 +322,7 @@ veya $HOME/.config/wesnoth olup diğer sistemlerde kullanıcı verisi
 dizinidir.
 .TP 
 \fB\-\-userconfig\-path\fP
-Kullanıcı yapılandırma dizininin yolunu basar ve çıkar.
+kullanıcı yapılandırma dizininin yolunu basar ve çıkar.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ dizin\fP
 kullanıcı verisi dizini olarak *n*x türevlerinde $HOME, windows'ta
@@ -330,7 +330,7 @@ kullanıcı verisi dizini olarak *n*x türevlerinde $HOME, windows'ta
 $HOME veya "Belgelerim\eOyunlarım" dışında bir kullanıcı verisi dizinini de
 mutlak yolunu belirtmek suretiyle kullanabilirsiniz. Windows'ta ayrıca, yolu
 ".\e" veya "..\e" ile başlatarak sürecin çalışma dizinine göreli bir dosya
-yolu da belirtebilirsiniz
+yolu da belirtebilirsiniz.
 .TP 
 \fB\-\-userdata\-path\fP
 kullanıcı verileri dizininin yolunu basar ve çıkar.
@@ -388,7 +388,7 @@ tarafı kimin oynayacağı belirtilir. Olası değerler: \fBhuman\fP. \fBai\fP v
 \fBnull\fP. (sırayla insan, yapay zeka ve hiçbiri).
 .TP 
 \fB\-\-era\fP\fI\ değer\fP
-Bu seçenek oyunu öntanımlı (\fBDefault\fP) çağ yerine \fIdeğer\fP ile belirtilen
+bu seçenek oyunu öntanımlı (\fBDefault\fP) çağ yerine \fIdeğer\fP ile belirtilen
 çağda oynamak için kullanılır. Çağ bir kimlik ile belirtilir. Çağlar
 \fBdata/multiplayer/eras.cfg\fP dosyasında tanımlanmıştır.
 .TP 
@@ -417,7 +417,7 @@ kimliği belirtilen çok oyunculu senaryoyu seçer. Öntanımlı senaryo kimliğ
 \fBmultiplayer_The_Freelands\fP'dır.
 .TP 
 \fB\-\-side\fP\fI\ taraf\fP\fB:\fP\fIdeğer\fP
-Bu taraf için geçerli çağdan birlik seçmek için kullanılır. Birlikler
+bu taraf için geçerli çağdan birlik seçmek için kullanılır. Birlikler
 kimlikleriyle belirtilirler. Birlikler \fBdata/multiplayer.cfg\fP dosyasında
 tanımlanmıştır.
 .TP 
