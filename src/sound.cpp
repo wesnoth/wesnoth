@@ -20,6 +20,7 @@
 #include "random.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound_music_track.hpp"
+#include "utils/rate_counter.hpp"
 
 #include <SDL2/SDL.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL2/SDL_sound.h>
 #include <SDL2/SDL_mixer.h>
@@ -50,8 +51,7 @@ namespace
 {
 bool mix_ok = false;
 int music_start_time = 0;
-unsigned music_refresh = 0;
-unsigned music_refresh_rate = 20;
+utils::rate_counter music_refresh_rate{20};
 bool want_new_music = false;
 int fadingout_time = 5000;
 bool no_fading = false;
@@ -790,8 +790,8 @@ void music_thinker::process(events::pump_info& info)
 			fadingout_time = 0;
 		}
 
-		if(music_start_time && info.ticks(&music_refresh, music_refresh_rate) >= music_start_time - fadingout_time) {
-			want_new_music = true;
+		if(music_start_time && music_refresh_rate.poll()) {
+			want_new_music = info.ticks() >= music_start_time - fadingout_time;
 		}
 
 		if(want_new_music) {

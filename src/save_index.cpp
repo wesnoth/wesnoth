@@ -24,6 +24,7 @@
 #include "preferences/preferences.hpp"
 #include "serialization/parser.hpp"
 #include "team.hpp"
+#include "utils/general.hpp"
 
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
@@ -219,7 +220,7 @@ std::vector<save_info> save_index_class::get_saves_list(const std::string* filte
 	std::vector<std::string> filenames;
 	filesystem::get_files_in_dir(dir(), &filenames);
 
-	const auto should_remove = [filter](const std::string& filename) {
+	utils::erase_if(filenames, [filter](const std::string& filename) {
 		// Steam documentation indicates games can ignore their auto-generated 'steam_autocloud.vdf'.
 		// Reference: https://partner.steamgames.com/doc/features/cloud (under Steam Auto-Cloud section as of September 2021)
 		static const std::vector<std::string> to_ignore {"steam_autocloud.vdf"};
@@ -231,9 +232,7 @@ std::vector<save_info> save_index_class::get_saves_list(const std::string* filte
 		}
 
 		return false;
-	};
-
-	filenames.erase(std::remove_if(filenames.begin(), filenames.end(), should_remove), filenames.end());
+	});
 
 	std::vector<save_info> result;
 	std::transform(filenames.begin(), filenames.end(), std::back_inserter(result), creator);

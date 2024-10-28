@@ -127,10 +127,9 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 		{level_type::type::random_map, _("Random Maps")},
 	};
 
-	level_types_.erase(std::remove_if(level_types_.begin(), level_types_.end(),
-		[this](level_type_info& type_info) {
+	utils::erase_if(level_types_, [this](level_type_info& type_info) {
 		return create_engine_.get_levels_by_type_unfiltered(type_info.first).empty();
-	}), level_types_.end());
+	});
 
 	set_show_even_without_video(true);
 

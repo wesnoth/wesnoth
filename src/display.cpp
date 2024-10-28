@@ -51,6 +51,7 @@
 #include "units/animation_component.hpp"
 #include "units/drawer.hpp"
 #include "units/orb_status.hpp"
+#include "utils/general.hpp"
 #include "video.hpp"
 #include "whiteboard/manager.hpp"
 
@@ -136,14 +137,8 @@ void display::remove_overlay(const map_location& loc)
 
 void display::remove_single_overlay(const map_location& loc, const std::string& toDelete)
 {
-	std::vector<overlay>& overlays = get_overlays()[loc];
-	overlays.erase(
-		std::remove_if(
-			overlays.begin(), overlays.end(),
-			[&toDelete](const overlay& ov) { return ov.image == toDelete || ov.halo == toDelete || ov.id == toDelete; }
-		),
-		overlays.end()
-	);
+	utils::erase_if(get_overlays()[loc],
+		[&toDelete](const overlay& ov) { return ov.image == toDelete || ov.halo == toDelete || ov.id == toDelete; });
 }
 
 display::display(const display_context* dc,
@@ -157,8 +152,7 @@ display::display(const display_context* dc,
 	, exclusive_unit_draw_requests_()
 	, viewing_team_index_(0)
 	, dont_show_all_(false)
-	, xpos_(0)
-	, ypos_(0)
+	, viewport_origin_(0, 0)
 	, view_locked_(false)
 	, theme_(theme::get_theme_config(theme_id.empty() ? prefs::get().theme() : theme_id), video::game_canvas())
 	, zoom_index_(0)
@@ -549,7 +543,7 @@ map_location display::hex_clicked_on(int xclick, int yclick) const
 	xclick -= r.x;
 	yclick -= r.y;
 
-	return pixel_position_to_hex(xpos_ + xclick, ypos_ + yclick);
+	return pixel_position_to_hex(viewport_origin_.x + xclick, viewport_origin_.y + yclick);
 }
 
 // This function uses the rect of map_area as reference
@@ -627,51 +621,47 @@ display::rect_of_hexes::iterator display::rect_of_hexes::end() const
 	return iterator(map_location(right+1, top[(right+1) & 1]), *this);
 }
 
-const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
+const display::rect_of_hexes display::hexes_under_rect(const rect& r) const
 {
-	rect_of_hexes res;
-
 	if(r.w <= 0 || r.h <= 0) {
-		// empty rect, return dummy values giving begin=end
-		res.left = 0;
-		res.right = -1; // end is right+1
-		res.top[0] = 0;
-		res.top[1] = 0;
-		res.bottom[0] = 0;
-		res.bottom[1] = 0;
-		return res;
+		// Dummy values giving begin == end (end is right + 1)
+		return {0, -1, {0, 0}, {0, 0}};
 	}
 
-	rect map_rect = map_area();
 	// translate rect coordinates from screen-based to map_area-based
-	int x = xpos_ - map_rect.x + r.x;
-	int y = ypos_ - map_rect.y + r.y;
+	auto [x, y] = viewport_origin_ - map_area().origin() + r.origin();
 	// we use the "double" type to avoid important rounding error (size of an hex!)
 	// we will also need to use std::floor to avoid bad rounding at border (negative values)
 	double tile_width = hex_width();
 	double tile_size = hex_size();
 	double border = theme_.border().size;
-	// we minus "0.(3)", for horizontal imbrication.
-	// reason is: two adjacent hexes each overlap 1/4 of their width, so for
-	// grid calculation 3/4 of tile width is used, which by default gives
-	// 18/54=0.(3). Note that, while tile_width is zoom dependent, 0.(3) is not.
-	res.left = static_cast<int>(std::floor(-border + x / tile_width - 0.3333333));
-	// we remove 1 pixel of the rectangle dimensions
-	// (the rounded division take one pixel more than needed)
-	res.right = static_cast<int>(std::floor(-border + (x + r.w - 1) / tile_width));
 
-	// for odd x, we must shift up one half-hex. Since x will vary along the edge,
-	// we store here the y values for even and odd x, respectively
-	res.top[0] = static_cast<int>(std::floor(-border + y / tile_size));
-	res.top[1] = static_cast<int>(std::floor(-border + y / tile_size - 0.5));
-	res.bottom[0] = static_cast<int>(std::floor(-border + (y + r.h - 1) / tile_size));
-	res.bottom[1] = static_cast<int>(std::floor(-border + (y + r.h - 1) / tile_size - 0.5));
+	return {
+		// we minus "0.(3)", for horizontal imbrication.
+		// reason is: two adjacent hexes each overlap 1/4 of their width, so for
+		// grid calculation 3/4 of tile width is used, which by default gives
+		// 18/54=0.(3). Note that, while tile_width is zoom dependent, 0.(3) is not.
+		static_cast<int>(std::floor(-border + x / tile_width - 0.3333333)),
+
+		// we remove 1 pixel of the rectangle dimensions
+		// (the rounded division take one pixel more than needed)
+		static_cast<int>(std::floor(-border + (x + r.w - 1) / tile_width)),
+
+		// for odd x, we must shift up one half-hex. Since x will vary along the edge,
+		// we store here the y values for even and odd x, respectively
+		{
+			static_cast<int>(std::floor(-border + y / tile_size)),
+			static_cast<int>(std::floor(-border + y / tile_size - 0.5))
+		},
+		{
+			static_cast<int>(std::floor(-border + (y + r.h - 1) / tile_size)),
+			static_cast<int>(std::floor(-border + (y + r.h - 1) / tile_size - 0.5))
+		}
+	};
 
 	// TODO: in some rare cases (1/16), a corner of the big rect is on a tile
 	// (the 72x72 rectangle containing the hex) but not on the hex itself
 	// Can maybe be optimized by using pixel_position_to_hex
-
-	return res;
 }
 
 bool display::shrouded(const map_location& loc) const
@@ -684,21 +674,11 @@ bool display::fogged(const map_location& loc) const
 	return is_blindfolded() || (dont_show_all_ && viewing_team().fogged(loc));
 }
 
-int display::get_location_x(const map_location& loc) const
-{
-	return static_cast<int>(map_area().x + (loc.x + theme_.border().size) * hex_width() - xpos_);
-}
-
-int display::get_location_y(const map_location& loc) const
-{
-	return static_cast<int>(map_area().y + (loc.y + theme_.border().size) * zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0));
-}
-
 point display::get_location(const map_location& loc) const
 {
 	return {
-		get_location_x(loc),
-		get_location_y(loc)
+		static_cast<int>(map_area().x + (loc.x + theme_.border().size) * hex_width() - viewport_origin_.x),
+		static_cast<int>(map_area().y + (loc.y + theme_.border().size) * zoom_ - viewport_origin_.y + (is_odd(loc.x) ? zoom_/2 : 0))
 	};
 }
 
@@ -753,10 +733,8 @@ surface display::screenshot(bool map_screenshot)
 	}
 
 	// back up the current map view position and move to top-left
-	int old_xpos = xpos_;
-	int old_ypos = ypos_;
-	xpos_ = 0;
-	ypos_ = 0;
+	point old_pos = viewport_origin_;
+	viewport_origin_ = {0, 0};
 
 	// Reroute render output to a separate texture until the end of scope.
 	SDL_Rect area = max_map_area();
@@ -780,8 +758,7 @@ surface display::screenshot(bool map_screenshot)
 	map_screenshot_ = false;
 
 	// Restore map viewport position
-	xpos_ = old_xpos;
-	ypos_ = old_ypos;
+	viewport_origin_ = old_pos;
 
 	// Read rendered pixels back as an SDL surface.
 	LOG_DP << "reading pixels for map screenshot";
@@ -1663,8 +1640,8 @@ void display::draw_minimap()
 	double shift_x = -border * hex_width() - (map_out_rect.w - map_rect.w) / 2;
 	double shift_y = -(border + 0.25) * hex_size() - (map_out_rect.h - map_rect.h) / 2;
 
-	int view_x = static_cast<int>((xpos_ + shift_x) * xscaling);
-	int view_y = static_cast<int>((ypos_ + shift_y) * yscaling);
+	int view_x = static_cast<int>((viewport_origin_.x + shift_x) * xscaling);
+	int view_y = static_cast<int>((viewport_origin_.y + shift_y) * yscaling);
 	int view_w = static_cast<int>(map_out_rect.w * xscaling);
 	int view_h = static_cast<int>(map_out_rect.h * yscaling);
 
@@ -1725,32 +1702,27 @@ void display::draw_minimap_units()
 	}
 }
 
-bool display::scroll(int xmove, int ymove, bool force)
+bool display::scroll(const point& amount, bool force)
 {
 	if(view_locked_ && !force) {
 		return false;
 	}
 
 	// No move offset, do nothing.
-	if(xmove == 0 && ymove == 0) {
+	if(amount == point{}) {
 		return false;
 	}
 
-	int new_x = xpos_ + xmove;
-	int new_y = ypos_ + ymove;
-
-	bounds_check_position(new_x, new_y);
+	point new_pos = viewport_origin_ + amount;
+	bounds_check_position(new_pos.x, new_pos.y);
 
 	// Camera position doesn't change, exit.
-	if(xpos_ == new_x && ypos_ == new_y) {
+	if(viewport_origin_ == new_pos) {
 		return false;
 	}
 
-	const int diff_x = xpos_ - new_x;
-	const int diff_y = ypos_ - new_y;
-
-	xpos_ = new_x;
-	ypos_ = new_y;
+	point diff = viewport_origin_ - new_pos;
+	viewport_origin_ = new_pos;
 
 	/* Adjust floating label positions. This only affects labels whose position is anchored
 	 * to the map instead of the screen. In order to do that, we want to adjust their drawing
@@ -1762,7 +1734,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 	 *
 	 * const int label_[x,y]_adjust = [x,y]pos_ - new_[x,y];
 	 */
-	font::scroll_floating_labels(diff_x, diff_y);
+	font::scroll_floating_labels(diff.x, diff.y);
 
 	labels().recalculate_shroud();
 
@@ -1772,13 +1744,11 @@ bool display::scroll(int xmove, int ymove, bool force)
 
 	if(!video::headless()) {
 		rect dst = map_area();
-		dst.x += diff_x;
-		dst.y += diff_y;
+		dst.shift(diff);
 		dst.clip(map_area());
 
 		rect src = dst;
-		src.x -= diff_x;
-		src.y -= diff_y;
+		src.shift(-diff);
 
 		// swap buffers
 		std::swap(front_, back_);
@@ -1796,25 +1766,25 @@ bool display::scroll(int xmove, int ymove, bool force)
 		draw_manager::invalidate_region(map_area());
 	}
 
-	if(diff_y != 0) {
+	if(diff.y != 0) {
 		rect r = map_area();
 
-		if(diff_y < 0) {
-			r.y = r.y + r.h + diff_y;
+		if(diff.y < 0) {
+			r.y = r.y + r.h + diff.y;
 		}
 
-		r.h = std::abs(diff_y);
+		r.h = std::abs(diff.y);
 		invalidate_locations_in_rect(r);
 	}
 
-	if(diff_x != 0) {
+	if(diff.x != 0) {
 		rect r = map_area();
 
-		if(diff_x < 0) {
-			r.x = r.x + r.w + diff_x;
+		if(diff.x < 0) {
+			r.x = r.x + r.w + diff.x;
 		}
 
-		r.w = std::abs(diff_x);
+		r.w = std::abs(diff.x);
 		invalidate_locations_in_rect(r);
 	}
 
@@ -1884,13 +1854,12 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 	//
 	// (xpos_ + area.w/2) * new_zoom/zoom_ - area.w/2: Position of the
 	// leftmost visible map pixel, as it would be under new_zoom.
-	xpos_ = std::round(((xpos_ + area.w / 2) * zoom_factor) - (area.w / 2));
-	ypos_ = std::round(((ypos_ + area.h / 2) * zoom_factor) - (area.h / 2));
-	xpos_ -= (outside_area.w - area.w) / 2;
-	ypos_ -= (outside_area.h - area.h) / 2;
+	viewport_origin_.x = std::round(((viewport_origin_.x + area.w / 2) * zoom_factor) - (area.w / 2));
+	viewport_origin_.y = std::round(((viewport_origin_.y + area.h / 2) * zoom_factor) - (area.h / 2));
+	viewport_origin_ -= (outside_area.size() - area.size()) / 2;
 
 	zoom_ = new_zoom;
-	bounds_check_position(xpos_, ypos_);
+	bounds_check_position(viewport_origin_.x, viewport_origin_.y);
 	if(zoom_ != DefaultZoom) {
 		last_zoom_ = zoom_;
 	}
@@ -1930,24 +1899,22 @@ bool display::tile_nearly_on_screen(const map_location& loc) const
 	       y + hs >= area.y - hs && y < area.y + area.h + hs;
 }
 
-void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type, bool force)
+void display::scroll_to_xy(const point& screen_coordinates, SCROLL_TYPE scroll_type, bool force)
 {
 	if(!force && (view_locked_ || !prefs::get().scroll_to_action())) return;
 	if(video::headless()) {
 		return;
 	}
-	const rect area = map_area();
-	const int xmove_expected = screenxpos - (area.x + area.w/2);
-	const int ymove_expected = screenypos - (area.y + area.h/2);
 
-	int xpos = xpos_ + xmove_expected;
-	int ypos = ypos_ + ymove_expected;
-	bounds_check_position(xpos, ypos);
-	int xmove = xpos - xpos_;
-	int ymove = ypos - ypos_;
+	point expected_move = screen_coordinates - map_area().center();
+
+	point new_pos = viewport_origin_ + expected_move;
+	bounds_check_position(new_pos.x, new_pos.y);
+
+	point move = new_pos - viewport_origin_;
 
 	if(scroll_type == WARP || scroll_type == ONSCREEN_WARP || turbo_speed() > 2.0 || prefs::get().scroll_speed() > 99) {
-		scroll(xmove,ymove,true);
+		scroll(move, true);
 		redraw_minimap();
 		events::draw();
 		return;
@@ -1955,10 +1922,8 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 
 	// Doing an animated scroll, with acceleration etc.
 
-	int x_old = 0;
-	int y_old = 0;
-
-	const double dist_total = std::hypot(xmove, ymove);
+	point prev_pos;
+	const double dist_total = std::hypot(move.x, move.y);
 	double dist_moved = 0.0;
 
 	int t_prev = SDL_GetTicks();
@@ -1997,15 +1962,14 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 		dist_moved += velocity * dt;
 		if (dist_moved > dist_total) dist_moved = dist_total;
 
-		int x_new = std::round(xmove * dist_moved / dist_total);
-		int y_new = std::round(ymove * dist_moved / dist_total);
+		point next_pos(
+			std::round(move.x * dist_moved / dist_total),
+			std::round(move.y * dist_moved / dist_total)
+		);
 
-		int dx = x_new - x_old;
-		int dy = y_new - y_old;
-
-		scroll(dx,dy,true);
-		x_old += dx;
-		y_old += dy;
+		point diff = next_pos - prev_pos;
+		scroll(diff, true);
+		prev_pos += diff;
 
 		redraw_minimap();
 		events::draw();
@@ -2090,7 +2054,7 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 	locs_bbox.h = maxy - miny + hex_size();
 
 	// target the center
-	auto [target_x, target_y] = locs_bbox.center();
+	point target = locs_bbox.center();
 
 	if (scroll_type == ONSCREEN || scroll_type == ONSCREEN_WARP) {
 		// when doing an ONSCREEN scroll we do not center the target unless needed
@@ -2113,8 +2077,8 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 		if (w < 1) w = 1;
 		if (h < 1) h = 1;
 
-		r.x = target_x - w/2;
-		r.y = target_y - h/2;
+		r.x = target.x - w/2;
+		r.y = target.y - h/2;
 		r.w = w;
 		r.h = h;
 
@@ -2123,31 +2087,31 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 		// which will always be at the border of r
 
 		if (map_center_x < r.x) {
-			target_x = r.x;
-			target_y = std::clamp(map_center_y, r.y, r.y + r.h - 1);
+			target.x = r.x;
+			target.y = std::clamp(map_center_y, r.y, r.y + r.h - 1);
 		} else if (map_center_x > r.x+r.w-1) {
-			target_x = r.x + r.w - 1;
-			target_y = std::clamp(map_center_y, r.y, r.y + r.h - 1);
+			target.x = r.x + r.w - 1;
+			target.y = std::clamp(map_center_y, r.y, r.y + r.h - 1);
 		} else if (map_center_y < r.y) {
-			target_y = r.y;
-			target_x = std::clamp(map_center_x, r.x, r.x + r.w - 1);
+			target.y = r.y;
+			target.x = std::clamp(map_center_x, r.x, r.x + r.w - 1);
 		} else if (map_center_y > r.y+r.h-1) {
-			target_y = r.y + r.h - 1;
-			target_x = std::clamp(map_center_x, r.x, r.x + r.w - 1);
+			target.y = r.y + r.h - 1;
+			target.x = std::clamp(map_center_x, r.x, r.x + r.w - 1);
 		} else {
 			ERR_DP << "Bug in the scrolling code? Looks like we would not need to scroll after all...";
 			// keep the target at the center
 		}
 	}
 
-	scroll_to_xy(target_x, target_y,scroll_type,force);
+	scroll_to_xy(target, scroll_type, force);
 }
 
 
 void display::bounds_check_position()
 {
 	zoom_ = std::clamp(zoom_, MinZoom, MaxZoom);
-	bounds_check_position(xpos_, ypos_);
+	bounds_check_position(viewport_origin_.x, viewport_origin_.y);
 }
 
 void display::bounds_check_position(int& xpos, int& ypos) const
@@ -3275,8 +3239,8 @@ void display::update_arrow(arrow & arrow)
 
 map_location display::get_middle_location() const
 {
-	auto [center_x, center_y] = map_area().center();
-	return pixel_position_to_hex(xpos_ + center_x , ypos_ + center_y);
+	auto [center_x, center_y] = viewport_origin_ + map_area().center();
+	return pixel_position_to_hex(center_x, center_y);
 }
 
 void display::write(config& cfg) const

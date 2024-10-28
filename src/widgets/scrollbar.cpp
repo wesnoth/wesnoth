@@ -272,9 +272,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 	case SDL_MOUSEWHEEL:
 	{
 		const SDL_MouseWheelEvent& e = event.wheel;
-		int x, y;
-		sdl::get_mouse_state(&x, &y);
-		bool on_groove = groove.contains(x, y);
+		bool on_groove = groove.contains(sdl::get_mouse_location());
 		if (on_groove && e.y < 0) {
 			move_position(scroll_rate_);
 		} else if (on_groove && e.y > 0) {

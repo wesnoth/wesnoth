@@ -61,7 +61,7 @@ public:
 	{}
 
 	// subcomponent access
-	constexpr point pos() const { return {x, y}; }
+	constexpr point origin() const { return {x, y}; }
 	constexpr point size() const { return {w, h}; }
 
 	// Comparisons

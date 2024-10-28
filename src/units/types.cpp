@@ -86,6 +86,7 @@ unit_type::unit_type(const unit_type& o)
 	, hide_help_(o.hide_help_)
 	, do_not_list_(o.do_not_list_)
 	, advances_to_(o.advances_to_)
+	, advancements_(o.advancements_)
 	, experience_needed_(o.experience_needed_)
 	, alignment_(o.alignment_)
 	, movement_type_(o.movement_type_)
@@ -137,6 +138,7 @@ unit_type::unit_type(defaut_ctor_t, const config& cfg, const std::string & paren
 	, hide_help_(false)
 	, do_not_list_()
 	, advances_to_()
+	, advancements_(cfg.child_range("advancement"))
 	, experience_needed_(0)
 	, alignment_(unit_alignments::type::neutral)
 	, movement_type_()
@@ -1395,19 +1397,34 @@ void unit_type::apply_scenario_fix(const config& cfg)
 		}
 	}
 
+	if(cfg.has_child("advancement")) {
+		advancements_ = cfg.child_range("advancement");
+	}
+
 	// apply recursively to subtypes.
 	for(int gender = 0; gender <= 1; ++gender) {
 		if(!gender_types_[gender]) {
 			continue;
 		}
 		gender_types_[gender]->apply_scenario_fix(cfg);
+		std::string gender_str = gender == 0 ? "male" : "female";
+		if(cfg.has_child(gender_str)) {
+			auto gender_cfg = cfg.optional_child(gender_str);
+			if(gender_cfg){
+				gender_types_[gender]->apply_scenario_fix(*gender_cfg);
+			}
+		}
 	}
 
 	if(get_cfg().has_child("variation")) {
 		// Make sure the variations are created.
 		unit_types.build_unit_type(*this, VARIATIONS);
-		for(auto& v : variations_) {
-			v.second.apply_scenario_fix(cfg);
+		for (auto& cv : cfg.child_range("variation")){
+			for(auto& v : variations_) {
+				if(v.first == cv["variation_id"]){
+					v.second.apply_scenario_fix(cv);
+				}
+			}
 		}
 	}
 }
@@ -1444,6 +1461,7 @@ void unit_type::remove_scenario_fixes()
 	for(auto& v : variations_) {
 		v.second.remove_scenario_fixes();
 	}
+	advancements_ = get_cfg().child_range("advancement");
 }
 
 void unit_type_data::remove_scenario_fixes()

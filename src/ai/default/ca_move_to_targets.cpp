@@ -144,7 +144,7 @@ void move_to_targets_phase::execute()
 			}
 		}
 
-		targets.erase( std::remove_if(targets.begin(),targets.end(),remove_wrong_targets(*this)), targets.end() );
+		utils::erase_if(targets, remove_wrong_targets{*this});
 
 		if(targets.empty()) {
 			break;

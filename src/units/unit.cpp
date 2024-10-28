@@ -1709,7 +1709,7 @@ void unit::set_loyal(bool loyal)
 		overlays_.push_back("misc/loyal-icon.png");
 	} else {
 		upkeep_ = upkeep_full{};
-		overlays_.erase(std::remove(overlays_.begin(), overlays_.end(), "misc/loyal-icon.png"), overlays_.end());
+		utils::erase(overlays_, "misc/loyal-icon.png");
 	}
 }
 
@@ -2079,11 +2079,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 	} else if(apply_to == "remove_attacks") {
 		set_attr_changed(UA_ATTACKS);
-		auto iter = std::remove_if(attacks_.begin(), attacks_.end(), [&effect](attack_ptr a) {
-			return a->matches_filter(effect);
-		});
-
-		attacks_.erase(iter, attacks_.end());
+		utils::erase_if(attacks_, [&effect](attack_ptr a) { return a->matches_filter(effect); });
 	} else if(apply_to == "attack") {
 		set_attr_changed(UA_ATTACKS);
 		for(attack_ptr a : attacks_) {
@@ -2310,7 +2306,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 		if(!remove.empty()) {
 			for(const auto& to_remove : utils::parenthetical_split(remove, ',')) {
-				overlays_.erase(std::remove(overlays_.begin(), overlays_.end(), to_remove), overlays_.end());
+				utils::erase(overlays_, to_remove);
 			}
 		}
 		if(add.empty() && remove.empty() && !replace.empty()) {

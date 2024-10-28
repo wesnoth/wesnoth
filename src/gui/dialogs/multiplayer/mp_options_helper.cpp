@@ -106,11 +106,9 @@ void mp_options_helper::update_mod_options()
 int mp_options_helper::remove_nodes_for_type(const std::string& type)
 {
 	// Remove all visible options of the specified source type
-	auto vo_iter = std::remove_if(visible_options_.begin(), visible_options_.end(), [&type](const option_source& source) {
+	utils::erase_if(visible_options_, [&type](const option_source& source) {
 		return source.level_type == type;
 	});
-
-	visible_options_.erase(vo_iter, visible_options_.end());
 
 	// Get the node data for this specific source type
 	type_node_data* data;

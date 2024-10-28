@@ -108,6 +108,11 @@ public:
 		can_shrink_ = can_shrink;
 	}
 
+	void set_font_size(int font_size)
+	{
+		font_size_ = font_size;
+	}
+
 	void set_text_alpha(unsigned short alpha);
 
 	const t_string& get_label() const
@@ -130,10 +135,7 @@ public:
 		const bool finalize = false);
 
 	// Attaches a callback function that will be called when a link is clicked
-	void register_link_callback(std::function<void(std::string)> link_handler)
-	{
-		link_handler_ = link_handler;
-	}
+	void register_link_callback(std::function<void(std::string)> link_handler);
 
 private:
 	/**
@@ -176,6 +178,11 @@ private:
 	 * What color links will be rendered in.
 	 */
 	color_t link_color_;
+
+	/**
+	 * Base font size
+	 */
+	int font_size_;
 
 	bool can_shrink_;
 
@@ -286,6 +293,7 @@ struct rich_label_definition : public styled_widget_definition
 		explicit resolution(const config& cfg);
 
 		color_t link_color;
+		int font_size;
 	};
 };
 
