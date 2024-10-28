@@ -382,10 +382,11 @@ int game_lua_kernel::impl_add_movement(lua_State* L)
 		lua_pushinteger(L, temp.wml_y());
 	}
 	lua_pushboolean(L, true);
-	if(lua_isnoneornil(L, 4))
+	if(lua_isnoneornil(L, 4)) {
 		lua_pushnil(L);
-	else
+	} else {
 		lua_pushboolean(L, luaW_toboolean(L, 4));
+	}
 	lua_call(L, 5, 0);
 	return 0;
 }

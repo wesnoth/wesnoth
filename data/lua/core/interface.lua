@@ -43,7 +43,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	---@param queued boolean
 	---@param scroll boolean
 	function wesnoth.interface.move_unit_fake_queue(u, to_x, to_y, queued, scroll)
-        if to_x and to_y and u then
+		if to_x and to_y and u then
 			if scroll == nil then
 				scroll = true
 			end
@@ -61,25 +61,21 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 				wesnoth.interface.scroll_to_hex(from_x, from_y)
 			end
 			to_x, to_y = wesnoth.paths.find_vacant_hex(move.to_x, move.to_y, moving_unit)
-			if to_x < from_x then
-				moving_unit.facing = "sw"
-			elseif to_x > from_x then
-				moving_unit.facing = "se"
-			end
+			moving_unit.facing = wesnoth.map.get_relative_dir(from_x, from_y, to_x, to_y)
 			moving_unit.hidden = true;
-            wesnoth.wml_actions.move_unit_fake {
-                type      = moving_unit.type,
-                gender    = moving_unit.gender,
-                variation = moving_unit.variation,
-                side      = moving_unit.side,
-                x         = from_x .. ',' .. to_x,
-                y         = from_y .. ',' .. to_y
+			wesnoth.wml_actions.move_unit_fake {
+				type      = moving_unit.type,
+				gender    = moving_unit.gender,
+				variation = moving_unit.variation,
+				side      = moving_unit.side,
+				x         = from_x .. ',' .. to_x,
+				y         = from_y .. ',' .. to_y
 			}
 			wesnoth.wml_actions.redraw {}
 			moving_unit.hidden = false;
-        end
+		end
 		queued_movements = {}
-    end
+	end
 
 	wesnoth.delay = wesnoth.deprecate_api('wesnoth.delay', 'wesnoth.interface.delay', 1, nil, wesnoth.interface.delay)
 	wesnoth.float_label = wesnoth.deprecate_api('wesnoth.float_label', 'wesnoth.interface.float_label', 1, nil, wesnoth.interface.float_label)
