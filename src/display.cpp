@@ -3272,9 +3272,6 @@ void display::process_reachmap_changes()
 			if (reach != full.end()) {
 				// Location needs to be darkened or brightened
 				invalidate(hex);
-			} else if (reach->second != 1) {
-				// Number needs to be displayed or cleared
-				invalidate(hex);
 			}
 		}
 	} else if (!reach_map_.empty()) {
