@@ -451,7 +451,7 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 void chatbox::close_window_button_callback(std::string room_name, bool& handled, bool& halt)
 {
 	const int index = std::distance(open_windows_.begin(), std::find_if(open_windows_.begin(), open_windows_.end(),
-		[&room_name](const lobby_chat_window& room) { return room.name == room_name; }
+		[&room_name](const lobby_chat_window& room) { return room.name == room_name && room.whisper; }
 	));
 
 	close_window(index);
@@ -595,26 +595,10 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 
 		if (!prefs::get().parse_should_show_lobby_join(sender, message)) return;
 
-		std::string room = data["room"];
+		std::string room = "lobby";
 
-		// Attempt to send to the currently active room first.
-		if(room.empty()) {
-			LOG_LB << "Message without a room from " << sender << ", falling back to active window";
-			const lobby_chat_window& active_window = open_windows_[active_window_];
-
-			if(!active_window.whisper) {
-				room = active_window.name;
-			}
-		}
-
-		// If we still don't have a name, fall back to lobby.
-		if(room.empty()) {
-			LOG_LB << "Message without a room from " << sender << ", assuming lobby";
-			room = "lobby";
-
-			if(!room_window_open(room, false, false)) {
-				room = "this game";
-			}
+		if(!room_window_open(room, false, false)) {
+			room = "this game";
 		}
 
 		if(log_ != nullptr && data["type"].str() == "motd") {
