@@ -1176,7 +1176,8 @@ void server::handle_player_in_lobby(player_iterator player, simple_wml::document
 
 void server::handle_whisper(player_iterator player, simple_wml::node& whisper)
 {
-	if((whisper["receiver"].empty()) || (whisper["message"].empty())) {
+	const std::string receiver_str = whisper["receiver"].to_string();
+	if(receiver_str.empty() || (whisper["message"].empty())) {
 		static simple_wml::document data(
 			"[message]\n"
 			"message=\"Invalid number of arguments\"\n"
@@ -1191,15 +1192,15 @@ void server::handle_whisper(player_iterator player, simple_wml::node& whisper)
 
 	whisper.set_attr_dup("sender", player->name().c_str());
 
-	auto receiver_iter = player_connections_.get<name_t>().find(whisper["receiver"].to_string());
+	auto receiver_iter = player_connections_.get<name_t>().find(receiver_str);
 	if(receiver_iter == player_connections_.get<name_t>().end()) {
-		send_server_message(player, "Can't find '" + whisper["receiver"].to_string() + "'.", "error");
+		send_server_message(player, "Can't find '" + receiver_str + "'.", "error", receiver_str);
 		return;
 	}
 
 	auto g = player->get_game();
 	if(g && g->started() && g->is_player(player_connections_.project<0>(receiver_iter))) {
-		send_server_message(player, "You cannot send private messages to players in a running game you observe.", "error");
+		send_server_message(player, "You cannot send private messages to players in a running game you observe.", "error", receiver_str);
 		return;
 	}
 
@@ -1932,13 +1933,14 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			   << data.output();
 }
 
-template<class SocketPtr> void server::send_server_message(SocketPtr socket, const std::string& message, const std::string& type)
+template<class SocketPtr> void server::send_server_message(SocketPtr socket, const std::string& message, const std::string& type, const std::string& original_receiver)
 {
 	simple_wml::document server_message;
 	simple_wml::node& msg = server_message.root().add_child("message");
 	msg.set_attr("sender", "server");
 	msg.set_attr_dup("message", message.c_str());
 	msg.set_attr_dup("type", type.c_str());
+	msg.set_attr_dup("original_receiver", original_receiver.c_str());
 
 	async_send_doc_queued(socket, server_message);
 }

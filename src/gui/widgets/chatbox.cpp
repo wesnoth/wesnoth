@@ -334,18 +334,19 @@ void chatbox::add_chat_room_message_sent(const std::string& room, const std::str
 	add_active_window_message(prefs::get().login(), message, true);
 }
 
-void chatbox::add_chat_room_message_received(const std::string& room,
+void chatbox::add_chat_room_message_received_general(const std::string& room,
 	const std::string& speaker,
-	const std::string& message)
+	const std::string& message,
+	bool whisper)
 {
 	mp::notify_mode notify_mode = mp::notify_mode::none;
 
-	if(room_window_active(room)) {
+	if(room_window_active(room, whisper)) {
 		add_active_window_message(speaker, message);
 		notify_mode = mp::notify_mode::message;
 	} else {
-		add_room_window_message(room, speaker, message);
-		increment_waiting_messages(room);
+		add_room_window_message(room, speaker, message, whisper);
+		increment_waiting_messages(room, whisper);
 		notify_mode = mp::notify_mode::message_other_window;
 	}
 
@@ -360,21 +361,28 @@ void chatbox::add_chat_room_message_received(const std::string& room,
 	do_notify(notify_mode, speaker, message);
 }
 
+void chatbox::add_chat_room_message_received(const std::string& room,
+	const std::string& speaker,
+	const std::string& message)
+{
+	add_chat_room_message_received_general(room, speaker, message, false);
+}
+
 bool chatbox::whisper_window_active(const std::string& name)
 {
 	const lobby_chat_window& t = open_windows_[active_window_];
 	return t.name == name && t.whisper == true;
 }
 
-bool chatbox::room_window_active(const std::string& room)
+bool chatbox::room_window_active(const std::string& room, bool whisper)
 {
 	const lobby_chat_window& t = open_windows_[active_window_];
-	return t.name == room && t.whisper == false;
+	return t.name == room && t.whisper == whisper;
 }
 
-lobby_chat_window* chatbox::room_window_open(const std::string& room, const bool open_new, const bool allow_close)
+lobby_chat_window* chatbox::room_window_open(const std::string& room, const bool open_new, const bool allow_close, bool whisper)
 {
-	return find_or_create_window(room, false, open_new, allow_close,
+	return find_or_create_window(room, whisper, open_new, allow_close,
 		VGETTEXT("Joined <i>$name</i>", { { "name", translation::dsgettext("wesnoth-lib", room.c_str()) } }));
 }
 
@@ -478,9 +486,9 @@ void chatbox::increment_waiting_whispers(const std::string& name)
 	}
 }
 
-void chatbox::increment_waiting_messages(const std::string& room)
+void chatbox::increment_waiting_messages(const std::string& room, bool whisper)
 {
-	if(lobby_chat_window* t = room_window_open(room, false)) {
+	if(lobby_chat_window* t = room_window_open(room, false, true, whisper)) {
 		++t->pending_messages;
 
 		if(t->pending_messages == 1) {
@@ -551,9 +559,10 @@ void chatbox::close_window(std::size_t idx)
 
 void chatbox::add_room_window_message(const std::string& room,
 	const std::string& sender,
-	const std::string& message)
+	const std::string& message,
+	bool whisper)
 {
-	lobby_chat_window* t = room_window_open(room, false);
+	lobby_chat_window* t = room_window_open(room, false, true, whisper);
 	if(!t) {
 		ERR_LB << "Room window not open in add_room_window_message for " << room;
 		return;
@@ -587,18 +596,24 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 	if(whisper) {
 		add_whisper_received(sender, message);
 	} else {
-		if(message.size() > 14 && sender == "server" && data["type"] == "error" && std::string_view(message.data(), 12) == "Can't find '") {
-			bool dummy_var = false;
-
-			close_window_button_callback(message.substr(12, message.size() - 14), dummy_var, dummy_var);
-		}
 
 		if (!prefs::get().parse_should_show_lobby_join(sender, message)) return;
 
-		std::string room = "lobby";
+		const std::string original_receiver = data["original_receiver"];
 
-		if(!room_window_open(room, false, false)) {
-			room = "this game";
+		std::string room;
+		bool whisper;
+
+		if(original_receiver.empty() || !room_window_open(original_receiver, false, false, true)) {
+			room = "lobby";
+			whisper = false;
+
+			if(!room_window_open(room, false, false)) {
+				room = "this game";
+			}
+		} else {
+			room = original_receiver;
+			whisper = true;
 		}
 
 		if(log_ != nullptr && data["type"].str() == "motd") {
@@ -610,7 +625,7 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 			}
 		}
 
-		add_chat_room_message_received(room, sender, message);
+		add_chat_room_message_received_general(room, sender, message, whisper);
 	}
 
 	// Notify plugins about the message
