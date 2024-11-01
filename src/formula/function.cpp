@@ -26,6 +26,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/math/constants/constants.hpp>
 #include <cctype>
+#include <chrono>
 #include <deque>
 
 using namespace boost::math::constants;
@@ -307,16 +308,20 @@ DEFINE_WFL_FUNCTION(debug_profile, 1, 2)
 	}
 
 	const variant value = args()[i_value]->evaluate(variables, fdb);
-	long run_time = 0;
+	std::chrono::steady_clock::duration run_time;
 
 	for(int i = 1; i < 1000; i++) {
-		const long start = SDL_GetTicks();
+		const auto start = std::chrono::steady_clock::now();
 		args()[i_value]->evaluate(variables, fdb);
-		run_time += SDL_GetTicks() - start;
+		run_time += std::chrono::steady_clock::now() - start;
 	}
 
 	std::ostringstream str;
-	str << "Evaluated in " << (run_time / 1000.0) << " ms on average";
+#ifdef __cpp_lib_format
+	str << "Evaluated in " << std::chrono::duration_cast<std::chrono::milliseconds>(run_time) << " on average";
+#else
+	str << "Evaluated in " << std::chrono::duration_cast<std::chrono::milliseconds>(run_time).count() << " ms on average";
+#endif
 
 	LOG_SF << speaker << ": " << str.str();
 
@@ -1499,7 +1504,7 @@ variant formula_function_expression::execute(const formula_callable& variables, 
 
 	DBG_NG << indent << "executing '" << formula_->str() << "'";
 
-	const int begin_time = SDL_GetTicks();
+	const auto begin_time = std::chrono::steady_clock::now();
 	map_formula_callable callable;
 
 	for(std::size_t n = 0; n != arg_names_.size(); ++n) {
@@ -1523,8 +1528,8 @@ variant formula_function_expression::execute(const formula_callable& variables, 
 
 	variant res = formula_->evaluate(callable, fdb);
 
-	const int taken = SDL_GetTicks() - begin_time;
-	DBG_NG << indent << "returning: " << taken;
+	const auto taken = std::chrono::steady_clock::now() - begin_time;
+	DBG_NG << indent << "returning: " << taken.count();
 
 	indent.resize(indent.size() - 2);
 

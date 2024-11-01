@@ -43,6 +43,10 @@
 #include <iomanip>
 #include <boost/format.hpp>
 
+#ifdef __cpp_lib_format
+#include <format>
+#endif
+
 static void add_text(config &report, const std::string &text,
 	const std::string &tooltip, const std::string &help = "")
 {
@@ -1772,30 +1776,36 @@ REPORT_GENERATOR(battery, /*rc*/)
 
 REPORT_GENERATOR(report_countdown, rc)
 {
+	using namespace std::chrono_literals;
 	const team& viewing_team = rc.screen().viewing_team();
-	int min, sec;
-	if (viewing_team.countdown_time() == 0) {
+	if (viewing_team.countdown_time() == 0ms) {
 		return report_report_clock(rc);
 	}
 
 	std::ostringstream time_str, formatted_time_str;
 
+	using std::chrono::duration_cast;
+#ifdef __cpp_lib_format
+	auto sec = duration_cast<std::chrono::seconds>(viewing_team.countdown_time());
+	time_str << std::format("%M:%S", sec);
+#else
 	// Create the time string
-	sec = viewing_team.countdown_time() / 1000;
-	min = sec / 60;
-	time_str << min << ':';
-	sec = sec % 60;
-	if (sec < 10) {
+	auto sec = duration_cast<std::chrono::seconds>(viewing_team.countdown_time());
+	auto min = duration_cast<std::chrono::minutes>(sec);
+	time_str << min.count() << ':';
+	sec = sec % min;
+	if (sec < 10s) {
 		time_str << '0';
 	}
-	time_str << sec;
+	time_str << sec.count();
+#endif
 
 	// Colorize the time string
 	if (!rc.screen().viewing_team_is_playing()) {
 		formatted_time_str << span_color(font::GRAY_COLOR, time_str.str());
-	} else if (sec < 60) {
+	} else if (sec < 60s) {
 		formatted_time_str << span_color("#c80000", time_str.str());
-	} else if (sec < 120) {
+	} else if (sec < 120s) {
 		formatted_time_str << span_color("#c8c800", time_str.str());
 	} else {
 		formatted_time_str << time_str.str();

@@ -23,8 +23,7 @@
 #include "utils/general.hpp"
 #include "video.hpp"
 
-#include <SDL2/SDL_timer.h>
-
+#include <thread>
 #include <algorithm>
 #include <vector>
 
@@ -35,6 +34,8 @@ static lg::log_domain log_draw_man("draw/manager");
 #define DBG_DM LOG_STREAM(debug, log_draw_man)
 
 using gui2::top_level_drawable;
+using std::chrono::steady_clock;
+using namespace std::chrono_literals;
 
 // This is not publically exposed, because nobody else should be using it.
 // Implementation is in video.cpp.
@@ -45,7 +46,7 @@ std::vector<top_level_drawable*> top_level_drawables_;
 std::vector<rect> invalidated_regions_;
 bool drawing_ = false;
 bool tlds_need_tidying_ = false;
-uint32_t last_sparkle_ = 0;
+steady_clock::time_point last_sparkle_;
 bool extra_pass_requested_ = false;
 } // namespace
 
@@ -173,10 +174,10 @@ void sparkle()
 		wait_for_vsync();
 	}
 
-	last_sparkle_ = SDL_GetTicks();
+	last_sparkle_ = steady_clock::now();
 }
 
-int get_frame_length()
+std::chrono::milliseconds get_frame_length()
 {
 	int rr = video::current_refresh_rate();
 	if (rr <= 0) {
@@ -184,17 +185,18 @@ int get_frame_length()
 		rr = 60;
 	}
 	// allow 1ms for general processing
-	int vsync_delay = (1000 / rr) - 1;
+	auto vsync_delay = (1000ms / rr) - 1ms;
 	// if there's a preferred limit, limit to that
-	return std::clamp(vsync_delay, prefs::get().draw_delay(), 1000);
+	return std::clamp(vsync_delay, std::chrono::milliseconds{prefs::get().draw_delay()}, 1000ms);
 }
 
 static void wait_for_vsync()
 {
-	int time_to_wait = last_sparkle_ + get_frame_length() - SDL_GetTicks();
-	if (time_to_wait > 0) {
+	auto now = steady_clock::now();
+	auto next_frame = last_sparkle_ + get_frame_length();
+	if (now < next_frame) {
 		// delay a maximum of 1 second in case something crazy happens
-		SDL_Delay(std::min(time_to_wait, 1000));
+		std::this_thread::sleep_for(std::min<steady_clock::duration>(next_frame - now, 1s));
 	}
 }
 

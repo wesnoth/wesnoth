@@ -41,6 +41,8 @@
 #include "key.hpp"
 #include "quit_confirmation.hpp"
 
+#include <chrono>
+
 class game_config_view;
 class display;
 class plugins_context;
@@ -185,7 +187,7 @@ protected:
 	bool scroll_left_;
 	bool scroll_right_;
 	/* When the last scroll tick was processed */
-	uint32_t last_scroll_tick_;
+	std::chrono::steady_clock::time_point last_scroll_tick_;
 	/* Sub-pixel movement left over from a previous scroll tick.
 	 * This is added to the next scroll tick, if scrolling continues. */
 	double scroll_carry_x_;

@@ -66,6 +66,8 @@ static lg::log_domain log_filesystem("filesystem");
 static lg::log_domain advanced_preferences("advanced_preferences");
 #define ERR_ADV LOG_STREAM(err, advanced_preferences)
 
+using namespace std::chrono_literals;
+
 prefs::prefs()
 : preferences_()
 , fps_(false)
@@ -1593,12 +1595,12 @@ void prefs::set_options(const config& values)
 	options_initialized_ = false;
 }
 
-int prefs::countdown_init_time()
+std::chrono::seconds prefs::countdown_init_time()
 {
-	return std::clamp<int>(preferences_[prefs_list::mp_countdown_init_time].to_int(240), 0, 1500);
+	return std::clamp(preferences_[prefs_list::mp_countdown_init_time].to_duration(240s), 0s, 1500s);
 }
 
-void prefs::set_countdown_init_time(int value)
+void prefs::set_countdown_init_time(const std::chrono::seconds& value)
 {
 	preferences_[prefs_list::mp_countdown_init_time] = value;
 }
@@ -1608,12 +1610,12 @@ void prefs::clear_countdown_init_time()
 	preferences_.remove_attribute(prefs_list::mp_countdown_init_time);
 }
 
-int prefs::countdown_reservoir_time()
+std::chrono::seconds prefs::countdown_reservoir_time()
 {
-	return std::clamp<int>(preferences_[prefs_list::mp_countdown_reservoir_time].to_int(360), 30, 1500);
+	return std::clamp(preferences_[prefs_list::mp_countdown_reservoir_time].to_duration(360s), 30s, 1500s);
 }
 
-void prefs::set_countdown_reservoir_time(int value)
+void prefs::set_countdown_reservoir_time(const std::chrono::seconds& value)
 {
 	preferences_[prefs_list::mp_countdown_reservoir_time] = value;
 }
@@ -1623,12 +1625,12 @@ void prefs::clear_countdown_reservoir_time()
 	preferences_.remove_attribute(prefs_list::mp_countdown_reservoir_time);
 }
 
-int prefs::countdown_turn_bonus()
+std::chrono::seconds prefs::countdown_turn_bonus()
 {
-	return std::clamp<int>(preferences_[prefs_list::mp_countdown_turn_bonus].to_int(240), 0, 300);
+	return std::clamp(preferences_[prefs_list::mp_countdown_turn_bonus].to_duration(240s), 0s, 300s);
 }
 
-void prefs::set_countdown_turn_bonus(int value)
+void prefs::set_countdown_turn_bonus(const std::chrono::seconds& value)
 {
 	preferences_[prefs_list::mp_countdown_turn_bonus] = value;
 }
@@ -1638,12 +1640,12 @@ void prefs::clear_countdown_turn_bonus()
 	preferences_.remove_attribute(prefs_list::mp_countdown_turn_bonus);
 }
 
-int prefs::countdown_action_bonus()
+std::chrono::seconds prefs::countdown_action_bonus()
 {
-	return std::clamp<int>(preferences_[prefs_list::mp_countdown_action_bonus].to_int(), 0, 30);
+	return std::clamp(preferences_[prefs_list::mp_countdown_action_bonus].to_duration(0s), 0s, 30s);
 }
 
-void prefs::set_countdown_action_bonus(int value)
+void prefs::set_countdown_action_bonus(const std::chrono::seconds& value)
 {
 	preferences_[prefs_list::mp_countdown_action_bonus] = value;
 }

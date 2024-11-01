@@ -47,13 +47,15 @@ static std::vector<Mix_Chunk*> channel_chunks;
 static std::vector<int> channel_ids;
 }
 
+using namespace std::chrono_literals;
+
 namespace
 {
 bool mix_ok = false;
-int music_start_time = 0;
+utils::optional<std::chrono::steady_clock::time_point> music_start_time;
 utils::rate_counter music_refresh_rate{20};
 bool want_new_music = false;
-int fadingout_time = 5000;
+auto fade_out_time = 5000ms;
 bool no_fading = false;
 bool unload_music = false;
 
@@ -618,10 +620,10 @@ void play_music()
 		return;
 	}
 
-	music_start_time = 1; // immediate (same as effect as SDL_GetTicks())
+	music_start_time = std::chrono::steady_clock::now(); // immediate
 	want_new_music = true;
 	no_fading = false;
-	fadingout_time = previous_track != nullptr ? previous_track->ms_after() : 0;
+	fade_out_time = previous_track != nullptr ? previous_track->ms_after() : 0ms;
 }
 
 void play_track(unsigned int i)
@@ -638,7 +640,7 @@ void play_track(unsigned int i)
 
 static void play_new_music()
 {
-	music_start_time = 0; // reset status: no start time
+	music_start_time.reset(); // reset status: no start time
 	want_new_music = true;
 
 	if(!prefs::get().music_on() || !mix_ok || !current_track || !current_track->valid()) {
@@ -667,9 +669,9 @@ static void play_new_music()
 	}
 
 	LOG_AUDIO << "Playing track '" << filename << "'";
-	int fading_time = current_track->ms_before();
+	auto fading_time = current_track->ms_before();
 	if(no_fading) {
-		fading_time = 0;
+		fading_time = 0ms;
 	}
 
 	// Halt any existing music.
@@ -680,7 +682,7 @@ static void play_new_music()
 	Mix_HaltMusic();
 
 	// Fade in the new music
-	const int res = Mix_FadeInMusic(itor->second.get(), 1, fading_time);
+	const int res = Mix_FadeInMusic(itor->second.get(), 1, fading_time.count());
 	if(res < 0) {
 		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << filename << " ";
 	}
@@ -773,7 +775,7 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 	}
 }
 
-void music_thinker::process(events::pump_info& info)
+void music_thinker::process(events::pump_info&)
 {
 	if(Mix_FadingMusic() != MIX_NO_FADING) {
 		// Do not block everything while fading.
@@ -781,22 +783,25 @@ void music_thinker::process(events::pump_info& info)
 	}
 
 	if(prefs::get().music_on()) {
+		// TODO: rethink the music_thinker design, especially the use of fade_out_time
+		auto now = std::chrono::steady_clock::now();
+
 		if(!music_start_time && !current_track_list.empty() && !Mix_PlayingMusic()) {
 			// Pick next track, add ending time to its start time.
 			set_previous_track(current_track);
 			current_track = choose_track();
-			music_start_time = info.ticks();
+			music_start_time = now;
 			no_fading = true;
-			fadingout_time = 0;
+			fade_out_time = 0ms;
 		}
 
 		if(music_start_time && music_refresh_rate.poll()) {
-			want_new_music = info.ticks() >= music_start_time - fadingout_time;
+			want_new_music = now >= *music_start_time - fade_out_time;
 		}
 
 		if(want_new_music) {
 			if(Mix_PlayingMusic()) {
-				Mix_FadeOutMusic(fadingout_time);
+				Mix_FadeOutMusic(fade_out_time.count());
 				return;
 			}
 
@@ -900,11 +905,13 @@ void stop_sound(int id)
 	reposition_sound(id, DISTANCE_SILENT);
 }
 
+namespace
+{
 struct chunk_load_exception
 {
 };
 
-static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
+Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 {
 	sound_cache_iterator it_bgn, it_end;
 	sound_cache_iterator it;
@@ -962,13 +969,15 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 	return sound_cache.begin()->get_data();
 }
 
-static void play_sound_internal(const std::string& files,
+using namespace std::chrono_literals;
+
+void play_sound_internal(const std::string& files,
 		channel_group group,
 		unsigned int repeats = 0,
 		unsigned int distance = 0,
 		int id = -1,
-		int loop_ticks = 0,
-		int fadein_ticks = 0)
+		const std::chrono::milliseconds& loop_ticks = 0ms,
+		const std::chrono::milliseconds& fadein_ticks = 0ms)
 {
 	if(files.empty() || distance >= DISTANCE_SILENT || !mix_ok) {
 		return;
@@ -1002,19 +1011,19 @@ static void play_sound_internal(const std::string& files,
 	}
 
 	int res;
-	if(loop_ticks > 0) {
-		if(fadein_ticks > 0) {
-			res = Mix_FadeInChannelTimed(channel, chunk, -1, fadein_ticks, loop_ticks);
+	if(loop_ticks > 0ms) {
+		if(fadein_ticks > 0ms) {
+			res = Mix_FadeInChannelTimed(channel, chunk, -1, fadein_ticks.count(), loop_ticks.count());
 		} else {
 			res = Mix_PlayChannel(channel, chunk, -1);
 		}
 
 		if(res >= 0) {
-			Mix_ExpireChannel(channel, loop_ticks);
+			Mix_ExpireChannel(channel, loop_ticks.count());
 		}
 	} else {
-		if(fadein_ticks > 0) {
-			res = Mix_FadeInChannel(channel, chunk, repeats, fadein_ticks);
+		if(fadein_ticks > 0ms) {
+			res = Mix_FadeInChannel(channel, chunk, repeats, fadein_ticks.count());
 		} else {
 			res = Mix_PlayChannel(channel, chunk, repeats);
 		}
@@ -1031,6 +1040,8 @@ static void play_sound_internal(const std::string& files,
 	// reserve the channel's chunk from being freed, since it is playing
 	channel_chunks[res] = chunk;
 }
+
+} // end anon namespace
 
 void play_sound(const std::string& files, channel_group group, unsigned int repeats)
 {
@@ -1055,7 +1066,7 @@ void play_bell(const std::string& files)
 }
 
 // Play timer with separate volume setting
-void play_timer(const std::string& files, int loop_ticks, int fadein_ticks)
+void play_timer(const std::string& files, const std::chrono::milliseconds& loop_ticks, const std::chrono::milliseconds& fadein_ticks)
 {
 	if(prefs::get().sound()) {
 		play_sound_internal(files, SOUND_TIMER, 0, 0, -1, loop_ticks, fadein_ticks);

@@ -46,6 +46,7 @@
 #include "serialization/preprocessor.hpp"   // for preproc_define, etc
 #include "serialization/schema_validator.hpp" // for strict_validation_enabled and schema_validator
 #include "sound.hpp"                   // for commit_music_changes, etc
+#include "utils/optimer.hpp"
 #include "formula/string_utils.hpp" // VGETTEXT
 #include <functional>
 #include "game_version.hpp"        // for version_info
@@ -133,7 +134,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			return;
 		}
 
-		PLAIN_LOG << SDL_GetTicks() << " Reading cached defines from: " << file;
+		PLAIN_LOG << "Reading cached defines from: " << file;
 
 		config cfg;
 
@@ -153,13 +154,14 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			++read;
 		}
 
-		PLAIN_LOG << SDL_GetTicks() << " Read " << read << " defines.";
+		PLAIN_LOG << "Read " << read << " defines.";
 	}
 
 	const std::string resourceToProcess(*cmdline_opts.preprocess_path);
 	const std::string targetDir(*cmdline_opts.preprocess_target);
 
-	uint32_t startTime = SDL_GetTicks();
+	const utils::ms_optimer timer(
+		[](const auto& timer) { PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
 
 	// If the users add the SKIP_CORE define we won't preprocess data/core
 	bool skipCore = false;
@@ -237,8 +239,6 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			PLAIN_LOG << "couldn't open the file.";
 		}
 	}
-
-	PLAIN_LOG << "preprocessing finished. Took " << SDL_GetTicks() - startTime << " ticks.";
 }
 
 static int handle_validate_command(const std::string& file, abstract_validator& validator, const std::vector<std::string>& defines) {
@@ -670,7 +670,6 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	srand(std::time(nullptr));
 
 	const auto game = std::make_unique<game_launcher>(cmdline_opts);
-	const int start_ticks = SDL_GetTicks();
 
 	init_locale();
 
@@ -755,8 +754,6 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	if(res == false) {
 		return 1;
 	}
-
-	LOG_CONFIG << "time elapsed: " << (SDL_GetTicks() - start_ticks) << " ms";
 
 	plugins_manager plugins_man(new application_lua_kernel);
 

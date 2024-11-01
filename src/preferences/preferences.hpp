@@ -370,20 +370,20 @@ class prefs
 		const config& options();
 		void set_options(const config& values);
 
-		int countdown_init_time();
-		void set_countdown_init_time(int value);
+		std::chrono::seconds countdown_init_time();
+		void set_countdown_init_time(const std::chrono::seconds& value);
 		void clear_countdown_init_time();
 
-		int countdown_turn_bonus();
-		void set_countdown_turn_bonus(int value);
+		std::chrono::seconds countdown_turn_bonus();
+		void set_countdown_turn_bonus(const std::chrono::seconds& value);
 		void clear_countdown_turn_bonus();
 
-		int countdown_reservoir_time();
-		void set_countdown_reservoir_time(int value);
+		std::chrono::seconds countdown_reservoir_time();
+		void set_countdown_reservoir_time(const std::chrono::seconds& value);
 		void clear_countdown_reservoir_time();
 
-		int countdown_action_bonus();
-		void set_countdown_action_bonus(int value);
+		std::chrono::seconds countdown_action_bonus();
+		void set_countdown_action_bonus(const std::chrono::seconds& value);
 		void clear_countdown_action_bonus();
 
 		int village_gold();
@@ -556,7 +556,7 @@ class prefs
 		PREF_GETTER_SETTER(floating_labels, bool, true)
 		PREF_GETTER_SETTER(chat_timestamp, bool, false)
 		PREF_GETTER_SETTER(chat_lines, int, 6)
-		PREF_GETTER_SETTER(chat_message_aging, int, 20)
+		PREF_GETTER_SETTER(chat_message_aging, std::chrono::minutes, std::chrono::minutes{20})
 		PREF_GETTER_SETTER(show_all_units_in_help, bool, false)
 		PREF_GETTER_SETTER(custom_command, std::string, std::string(""))
 		PREF_GETTER_SETTER(player_joins_sound, bool, true)

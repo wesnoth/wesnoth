@@ -42,6 +42,7 @@
 #include "gui/core/event/handler.hpp"
 #include "sdl/point.hpp"
 
+#include <chrono>
 #include <string>
 #include <vector>
 
@@ -160,7 +161,7 @@ public:
 
 protected:
 	/** The time of the last click used for double clicking. */
-	uint32_t last_click_stamp_;
+	std::chrono::steady_clock::time_point last_click_stamp_;
 
 	/** The widget the last click was on, used for double clicking. */
 	widget* last_clicked_widget_;
