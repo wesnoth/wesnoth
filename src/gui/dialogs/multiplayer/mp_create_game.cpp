@@ -103,17 +103,17 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 		[]() {return prefs::get().xp_modifier();},
 		[](int v) {prefs::get().set_xp_modifier(v);}))
 	, init_turn_limit_(register_integer("init_turn_limit", true,
-		[]() {return prefs::get().countdown_init_time();},
-		[](int v) {prefs::get().set_countdown_init_time(v);}))
+		[]() {return prefs::get().countdown_init_time().count();},
+		[](int v) {prefs::get().set_countdown_init_time(std::chrono::seconds{v});}))
 	, turn_bonus_(register_integer("turn_bonus", true,
-		[]() {return prefs::get().countdown_turn_bonus();},
-		[](int v) {prefs::get().set_countdown_turn_bonus(v);}))
+		[]() {return prefs::get().countdown_turn_bonus().count();},
+		[](int v) {prefs::get().set_countdown_turn_bonus(std::chrono::seconds{v});}))
 	, reservoir_(register_integer("reservoir", true,
-		[]() {return prefs::get().countdown_reservoir_time();},
-		[](int v) {prefs::get().set_countdown_reservoir_time(v);}))
+		[]() {return prefs::get().countdown_reservoir_time().count();},
+		[](int v) {prefs::get().set_countdown_reservoir_time(std::chrono::seconds{v});}))
 	, action_bonus_(register_integer("action_bonus", true,
-		[]() {return prefs::get().countdown_action_bonus();},
-		[](int v) {prefs::get().set_countdown_action_bonus(v);}))
+		[]() {return prefs::get().countdown_action_bonus().count();},
+		[](int v) {prefs::get().set_countdown_action_bonus(std::chrono::seconds{v});}))
 	, mod_list_()
 	, eras_menu_button_()
 	, local_mode_(local_mode)
@@ -834,10 +834,10 @@ void mp_create_game::reset_timer_settings()
 	prefs::get().clear_countdown_turn_bonus();
 	prefs::get().clear_countdown_action_bonus();
 
-	init_turn_limit_->set_widget_value(prefs::get().countdown_init_time());
-	turn_bonus_->set_widget_value(prefs::get().countdown_turn_bonus());
-	reservoir_->set_widget_value(prefs::get().countdown_reservoir_time());
-	action_bonus_->set_widget_value(prefs::get().countdown_action_bonus());
+	init_turn_limit_->set_widget_value(prefs::get().countdown_init_time().count());
+	turn_bonus_->set_widget_value(prefs::get().countdown_turn_bonus().count());
+	reservoir_->set_widget_value(prefs::get().countdown_reservoir_time().count());
+	action_bonus_->set_widget_value(prefs::get().countdown_action_bonus().count());
 }
 
 bool mp_create_game::dialog_exit_hook(window& /*window*/)
@@ -950,10 +950,10 @@ void mp_create_game::post_show()
 		}
 
 		config_engine_->set_mp_countdown(time_limit_->get_widget_value());
-		config_engine_->set_mp_countdown_init_time(init_turn_limit_->get_widget_value());
-		config_engine_->set_mp_countdown_turn_bonus(turn_bonus_->get_widget_value());
-		config_engine_->set_mp_countdown_reservoir_time(reservoir_->get_widget_value());
-		config_engine_->set_mp_countdown_action_bonus(action_bonus_->get_widget_value());
+		config_engine_->set_mp_countdown_init_time(std::chrono::seconds{init_turn_limit_->get_widget_value()});
+		config_engine_->set_mp_countdown_turn_bonus(std::chrono::seconds{turn_bonus_->get_widget_value()});
+		config_engine_->set_mp_countdown_reservoir_time(std::chrono::seconds{reservoir_->get_widget_value()});
+		config_engine_->set_mp_countdown_action_bonus(std::chrono::seconds{action_bonus_->get_widget_value()});
 
 		config_engine_->set_allow_observers(observers_->get_widget_value());
 		config_engine_->set_private_replay(private_replay_->get_widget_value());

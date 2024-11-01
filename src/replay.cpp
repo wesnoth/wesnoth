@@ -856,13 +856,13 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 		else if (auto countdown_update = cfg->optional_child("countdown_update"))
 		{
-			int val = countdown_update["value"].to_int();
+			auto val = countdown_update["value"].to_duration<std::chrono::milliseconds>();
 			int tval = countdown_update["team"].to_int();
 			if (tval <= 0  || tval > static_cast<int>(resources::gameboard->teams().size())) {
 				std::stringstream errbuf;
 				errbuf << "Illegal countdown update \n"
 					<< "Received update for :" << tval << " Current user :"
-					<< side_num << "\n" << " Updated value :" << val;
+					<< side_num << "\n" << " Updated value :" << val.count();
 
 				replay::process_error(errbuf.str());
 			} else {

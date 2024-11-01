@@ -392,7 +392,7 @@ void team::build(const config& cfg, const gamemap& map, int gold)
 		}
 	}
 
-	countdown_time_ = cfg["countdown_time"].to_int();
+	countdown_time_ = cfg["countdown_time"].to_duration<std::chrono::milliseconds>();
 	action_bonus_count_ = cfg["action_bonus_count"].to_int();
 
 	planned_actions_.reset(new wb::side_actions());

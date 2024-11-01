@@ -17,6 +17,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
+#include <chrono>
+
 class game_classification;
 
 namespace gui2::dialogs
@@ -47,7 +49,7 @@ private:
 	std::string current_text_;
 	std::size_t text_index_;
 
-	unsigned int duration_;
+	std::chrono::milliseconds duration_;
 	int fade_alpha_;
 	uint32_t fade_start_;
 

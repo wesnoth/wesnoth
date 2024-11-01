@@ -106,9 +106,10 @@ void playmp_controller::play_human_turn()
 
 	remove_blindfold();
 
-	const std::unique_ptr<countdown_clock> timer(saved_game_.mp_settings().mp_countdown
-		? new countdown_clock(current_team())
-		: nullptr);
+	utils::optional<countdown_clock> timer;
+	if(saved_game_.mp_settings().mp_countdown) {
+		timer.emplace(current_team());
+	}
 
 	show_turn_dialog();
 
@@ -192,17 +193,17 @@ void playmp_controller::after_human_turn()
 {
 	if(saved_game_.mp_settings().mp_countdown) {
 		// time_left + turn_bonus + (action_bonus * number of actions done)
-		const int new_time_in_secs = (current_team().countdown_time() / 1000)
+		auto new_time = current_team().countdown_time()
 			+ saved_game_.mp_settings().mp_countdown_turn_bonus
 			+ saved_game_.mp_settings().mp_countdown_action_bonus * current_team().action_bonus_count();
 
-		const int new_time
-			= 1000 * std::min<int>(new_time_in_secs, saved_game_.mp_settings().mp_countdown_reservoir_time);
+		new_time
+			= std::min<std::chrono::milliseconds>(new_time, saved_game_.mp_settings().mp_countdown_reservoir_time);
 
 		current_team().set_action_bonus_count(0);
 		current_team().set_countdown_time(new_time);
 
-		recorder().add_countdown_update(new_time, current_side());
+		recorder().add_countdown_update(new_time.count(), current_side());
 	}
 
 	LOG_NG << "playmp::after_human_turn...";

@@ -341,7 +341,7 @@ manager::manager()
 	, tod_changed_("ai_tod_changed")
 	, gamestate_changed_("ai_gamestate_changed")
 	, turn_started_("ai_turn_started")
-	, last_interact_(0)
+	, last_interact_()
 	, num_interact_(0)
 {
 	registry::init();
@@ -419,8 +419,11 @@ void manager::raise_user_interact() {
 		return;
 	}
 
-	const int interact_time = 30;
-	const int time_since_interact = SDL_GetTicks() - last_interact_;
+	using namespace std::chrono_literals;
+	constexpr auto interact_time = 30ms;
+
+	const auto now = std::chrono::steady_clock::now();
+	const auto time_since_interact = now - last_interact_;
 	if(time_since_interact < interact_time) {
 		return;
 	}
@@ -428,8 +431,7 @@ void manager::raise_user_interact() {
 	++num_interact_;
 	user_interact_.notify_observers();
 
-	last_interact_ = SDL_GetTicks();
-
+	last_interact_ = now;
 }
 
 void manager::raise_sync_network() {
@@ -720,9 +722,9 @@ const ai::unit_advancements_aspect& manager::get_advancement_aspect_for_side(sid
 // =======================================================================
 
 void manager::play_turn( side_number side ){
-	last_interact_ = 0;
+	last_interact_ = {};
 	num_interact_ = 0;
-	const int turn_start_time = SDL_GetTicks();
+	const auto turn_start_time = std::chrono::steady_clock::now();
 	get_ai_info().recent_attacks.clear();
 	ai_composite& ai_obj = get_active_ai_for_side(side);
 	resources::game_events->pump().fire("ai_turn");
@@ -732,9 +734,9 @@ void manager::play_turn( side_number side ){
 	}
 	ai_obj.new_turn();
 	ai_obj.play_turn();
-	const int turn_end_time= SDL_GetTicks();
+	const auto turn_end_time = std::chrono::steady_clock::now();
 	DBG_AI_MANAGER << "side " << side << ": number of user interactions: "<<num_interact_;
-	DBG_AI_MANAGER << "side " << side << ": total turn time: "<<turn_end_time - turn_start_time << " ms ";
+	DBG_AI_MANAGER << "side " << side << ": total turn time: " << (turn_end_time - turn_start_time).count() << " ms ";
 }
 
 // =======================================================================

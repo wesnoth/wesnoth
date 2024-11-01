@@ -566,7 +566,7 @@ public:
 	void fade_tod_mask(const std::string& old, const std::string& new_);
 
 	/** Screen fade */
-	void fade_to(const color_t& color, int duration);
+	void fade_to(const color_t& color, const std::chrono::milliseconds& duration);
 	void set_fade(const color_t& color);
 
 private:
@@ -615,7 +615,7 @@ public:
 	struct announce_options
 	{
 		/** Lifetime measured in milliseconds. */
-		int lifetime;
+		std::chrono::milliseconds lifetime;
 
 		/**
 		 * An announcement according these options should replace the

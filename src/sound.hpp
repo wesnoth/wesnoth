@@ -92,7 +92,9 @@ void play_sound_positioned(const std::string &files, int id, int repeats, unsign
 void play_bell(const std::string& files);
 
 // Play sound, or random one of comma-separated sounds in timer channel
-void play_timer(const std::string& files, int loop_ticks, int fadein_ticks);
+void play_timer(const std::string& files,
+	const std::chrono::milliseconds& loop_ticks,
+	const std::chrono::milliseconds& fadein_ticks);
 
 // Play user-interface sound, or random one of comma-separated sounds.
 void play_UI_sound(const std::string& files);

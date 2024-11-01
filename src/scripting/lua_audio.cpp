@@ -279,8 +279,8 @@ static int impl_track_get(lua_State* L) {
 	return_bool_attrib("shuffle", (*track)->shuffle());
 	return_bool_attrib("immediate", (*track)->immediate());
 	return_bool_attrib("once", (*track)->play_once());
-	return_int_attrib("ms_before", (*track)->ms_before());
-	return_int_attrib("ms_after", (*track)->ms_after());
+	return_int_attrib("ms_before", (*track)->ms_before().count());
+	return_int_attrib("ms_after", (*track)->ms_after().count());
 	return_string_attrib("name", (*track)->id());
 	return_string_attrib("title", (*track)->title());
 
@@ -305,8 +305,8 @@ static int impl_track_set(lua_State* L) {
 	const char* m = luaL_checkstring(L, 2);
 	modify_bool_attrib("shuffle", (*track)->set_shuffle(value));
 	modify_bool_attrib("once", (*track)->set_play_once(value));
-	modify_int_attrib("ms_before", (*track)->set_ms_before(value));
-	modify_int_attrib("ms_after", (*track)->set_ms_after(value));
+	modify_int_attrib("ms_before", (*track)->set_ms_before(std::chrono::milliseconds{value}));
+	modify_int_attrib("ms_after", (*track)->set_ms_after(std::chrono::milliseconds{value}));
 	modify_string_attrib("title", (*track)->set_title(value));
 	return 0;
 }
@@ -387,7 +387,7 @@ static int impl_source_get(lua_State* L) {
 	const char* m = luaL_checkstring(L, 2);
 	return_string_attrib("id", src->id());
 	return_vector_string_attrib("sounds", utils::split(src->files()));
-	return_int_attrib("delay", src->minimum_delay());
+	return_int_attrib("delay", src->minimum_delay().count());
 	return_int_attrib("chance", src->chance());
 	return_int_attrib("loop", src->loops());
 	return_int_attrib("range", src->full_range());
@@ -411,7 +411,7 @@ static int impl_source_get(lua_State* L) {
 static int impl_source_set(lua_State* L) {
 	lua_sound_source& src = get_source(L, 1);
 	const char* m = luaL_checkstring(L, 2);
-	modify_int_attrib("delay", src->set_minimum_delay(value));
+	modify_int_attrib("delay", src->set_minimum_delay(std::chrono::milliseconds{value}));
 	modify_int_attrib("chance", src->set_chance(value));
 	modify_int_attrib("loop", src->set_loops(value));
 	modify_int_attrib("range", src->set_full_range(value));

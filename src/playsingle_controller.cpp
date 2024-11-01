@@ -95,7 +95,7 @@ std::string playsingle_controller::describe_result() const
 
 void playsingle_controller::init_gui()
 {
-	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks());
+	LOG_NG << "Initializing GUI... " << timer();
 	// If we are retarting replay from linger mode.
 	update_gui_linger();
 	play_controller::init_gui();
@@ -131,7 +131,7 @@ void playsingle_controller::init_gui()
 	gui_->set_prevent_draw(false);
 	gui_->queue_repaint();
 	if(!video::headless() && !video::testing()) {
-		gui_->fade_to({0,0,0,0}, 500);
+		gui_->fade_to({0,0,0,0}, std::chrono::milliseconds{500});
 	} else {
 		gui_->set_fade({0,0,0,0});
 	}
@@ -308,7 +308,7 @@ void playsingle_controller::finish_side_turn()
 
 void playsingle_controller::play_scenario_main_loop()
 {
-	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks());
+	LOG_NG << "starting main loop\n" << timer();
 
 	ai_testing::log_game_start();
 	while(!(gamestate().in_phase(game_data::GAME_ENDED) && end_turn_requested_ )) {

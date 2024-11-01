@@ -30,9 +30,8 @@
 
 #pragma once
 
+#include <chrono>
 #include <functional>
-
-#include <SDL2/SDL_types.h>
 
 namespace gui2
 {
@@ -50,7 +49,7 @@ namespace gui2
  * @returns                       The id of the timer.
  * @retval [0]                    Failed to create a timer.
  */
-std::size_t add_timer(const uint32_t interval,
+std::size_t add_timer(const std::chrono::milliseconds& interval,
 				 const std::function<void(std::size_t id)>& callback,
 				 const bool repeat = false);
 
