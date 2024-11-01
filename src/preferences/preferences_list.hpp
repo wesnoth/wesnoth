@@ -77,8 +77,8 @@ struct preferences_list_defines
 	ADDPREF(dir_bookmarks)
 	/** whether to automatically move units that were previously told to move towards hexes more than one turn away */
 	ADDPREF(disable_auto_moves)
-	/** used to enforce the FPS limit - minimum time between frame updates if the player's PC is capable of updating the screen faster than this */
-	ADDPREF(draw_delay)
+	/** maximum FPS, if set, at which to refresh the screen */
+	ADDPREF(refresh_rate)
 	/** whether to have the editor automatically update terrain transitions when placing terrain immediately, after the mouse click is released, or not at all */
 	ADDPREF(editor_auto_update_transitions)
 	/** the current add-on being used in the editor */
@@ -405,7 +405,7 @@ struct preferences_list_defines
 		delete_saves,
 		dir_bookmarks,
 		disable_auto_moves,
-		draw_delay,
+		refresh_rate,
 		editor_auto_update_transitions,
 		editor_chosen_addon,
 		editor_draw_hex_coordinates,

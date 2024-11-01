@@ -575,10 +575,6 @@ void preferences_dialog::initialize_callbacks()
 	//register_integer("scaling_slider", true,
 	//	font_scaling, set_font_scaling);
 
-	/* FPS LIMITER */
-	register_bool("fps_limiter", true,
-		[]() { return prefs::get().draw_delay() != 0; }, [](bool v) { prefs::get().set_draw_delay(v ? -1 : 0); });
-
 	/* VSYNC */
 	register_bool("vsync", true,
 		[]() {return prefs::get().vsync();},

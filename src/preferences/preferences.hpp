@@ -503,7 +503,7 @@ class prefs
 		PREF_GETTER_SETTER(stop_music_in_background, bool, false)
 		PREF_GETTER_SETTER(tile_size, unsigned, 0)
 		PREF_GETTER_SETTER(mouse_scrolling, bool, true)
-		PREF_GETTER_SETTER(draw_delay, int, -1)
+		PREF_GETTER_SETTER(refresh_rate, int, -1)
 		PREF_GETTER_SETTER(animate_map, bool, true)
 		PREF_GETTER_SETTER(animate_water, bool, true)
 		PREF_GETTER_SETTER(minimap_movement_coding, bool, true)
@@ -819,7 +819,7 @@ class prefs
 		static constexpr std::array unsynced_attributes_{
 			prefs_list::auto_pixel_scale,
 			prefs_list::core,
-			prefs_list::draw_delay,
+			prefs_list::refresh_rate,
 			prefs_list::editor_chosen_addon,
 			prefs_list::gui2_theme,
 			prefs_list::mp_server_program_name,

@@ -161,13 +161,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 		load_data_ = savegame::load_game_metadata{
 			savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load};
 	if(cmdline_opts_.max_fps) {
-		int fps = std::clamp(*cmdline_opts_.max_fps, 1, 1000);
-		fps = 1000 / fps;
-		// increase the delay to avoid going above the maximum
-		if(1000 % fps != 0) {
-			++fps;
-		}
-		prefs::get().set_draw_delay(fps);
+		prefs::get().set_refresh_rate(std::clamp(*cmdline_opts_.max_fps, 1, 1000));
 	}
 	if(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test) {
 		no_sound = true;
