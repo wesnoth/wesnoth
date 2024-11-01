@@ -56,7 +56,7 @@ void countdown_clock::update_team()
 }
 
 //make sure we think about countdown even while dialogs are open
-void countdown_clock::process(events::pump_info&)
+void countdown_clock::process()
 {
 	if(timer_refresh_rate.poll()) {
 		update();

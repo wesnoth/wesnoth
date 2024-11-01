@@ -775,7 +775,7 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 	}
 }
 
-void music_thinker::process(events::pump_info&)
+void music_thinker::process()
 {
 	if(Mix_FadingMusic() != MIX_NO_FADING) {
 		// Do not block everything while fading.

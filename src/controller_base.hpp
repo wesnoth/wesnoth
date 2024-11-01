@@ -156,7 +156,7 @@ protected:
 		// No action by default
 	}
 
-	virtual void process(events::pump_info&) override;
+	virtual void process() override;
 
 	/** Process keydown (always). Overridden in derived classes */
 	virtual void process_keydown_event(const SDL_Event& /*event*/)

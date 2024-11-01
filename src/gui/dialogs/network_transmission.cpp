@@ -29,7 +29,7 @@ using namespace std::chrono_literals;
 
 REGISTER_DIALOG(network_transmission)
 
-void network_transmission::pump_monitor::process(events::pump_info&)
+void network_transmission::pump_monitor::process()
 {
 	if(!window_)
 		return;
