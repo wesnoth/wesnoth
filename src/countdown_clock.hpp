@@ -32,7 +32,7 @@ public:
 	void update_team();
 
 	/** Inherited from pump_monitor */
-	virtual void process(events::pump_info& info) override;
+	virtual void process() override;
 
 	/** @returns whether there is time left */
 	bool update();

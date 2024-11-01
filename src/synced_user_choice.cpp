@@ -455,7 +455,7 @@ namespace {
 		~ucm_process_scope() { ucm_in_proccess = false; }
 	};
 }
-void user_choice_manager::process(events::pump_info&)
+void user_choice_manager::process()
 {
 	if(!oos_ && !finished() && !ucm_in_proccess)
 	{

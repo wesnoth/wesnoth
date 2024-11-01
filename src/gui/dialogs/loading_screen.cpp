@@ -150,7 +150,7 @@ void loading_screen::raise()
 }
 
 // This will be run inside the window::show() loop.
-void loading_screen::process(events::pump_info&)
+void loading_screen::process()
 {
 	if (load_funcs_.empty()) {
 		return;

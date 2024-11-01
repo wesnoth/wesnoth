@@ -119,6 +119,6 @@ public:
 	 */
 	static std::map<int, config> get_user_choice_internal(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides);
 	/** Inherited from events::pump_monitor */
-	void process(events::pump_info&);
+	void process();
 	events::generic_event changed_event_;
 };

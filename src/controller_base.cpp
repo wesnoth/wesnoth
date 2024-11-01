@@ -274,7 +274,7 @@ void controller_base::handle_event(const SDL_Event& event)
 	}
 }
 
-void controller_base::process(events::pump_info&)
+void controller_base::process()
 {
 	if(gui2::is_in_dialog()) {
 		return;

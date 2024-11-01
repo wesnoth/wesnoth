@@ -101,7 +101,7 @@ void play_UI_sound(const std::string& files);
 
 // A class to periodically check for new music that needs to be played
 class music_thinker : public events::pump_monitor {
-	void process(events::pump_info &info);
+	void process();
 };
 
 // A class to mute music when the game is in background
