@@ -18,7 +18,6 @@
 #include "exceptions.hpp"
 #include "log.hpp"
 #include "gui/core/top_level_drawable.hpp"
-#include "preferences/preferences.hpp"
 #include "sdl/rect.hpp"
 #include "utils/general.hpp"
 #include "video.hpp"
@@ -186,8 +185,7 @@ std::chrono::milliseconds get_frame_length()
 	}
 	// allow 1ms for general processing
 	auto vsync_delay = (1000ms / rr) - 1ms;
-	// if there's a preferred limit, limit to that
-	return std::clamp(vsync_delay, std::chrono::milliseconds{prefs::get().draw_delay()}, 1000ms);
+	return std::min(vsync_delay, 1000ms);
 }
 
 static void wait_for_vsync()
