@@ -461,6 +461,11 @@ protected:
 public:
 	void set_linked_group(const std::string& linked_group);
 
+	std::string get_linked_group() const
+	{
+		return linked_group_;
+	}
+
 	/*** *** *** *** *** *** *** *** Members. *** *** *** *** *** *** *** ***/
 
 private:

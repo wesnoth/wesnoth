@@ -50,6 +50,11 @@ public:
 
 	using scrollbar_container::finalize_setup;
 
+	const tree_view_node& get_root_node() const
+	{
+		return *root_node_;
+	}
+
 	tree_view_node& get_root_node()
 	{
 		return *root_node_;
@@ -83,6 +88,11 @@ public:
 	void set_indentation_step_size(const unsigned indentation_step_size)
 	{
 		indentation_step_size_ = indentation_step_size;
+	}
+
+	unsigned get_indentation_step_size() const
+	{
+		return indentation_step_size_;
 	}
 
 	tree_view_node* selected_item()

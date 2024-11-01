@@ -16,10 +16,14 @@
 #include "gui/auxiliary/iterator/iterator.hpp"
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
+#include "gui/widgets/combobox.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/progress_bar.hpp"
+#include "gui/widgets/rich_label.hpp"
+#include "gui/widgets/scroll_label.hpp"
+#include "gui/widgets/scroll_text.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/stacked_widget.hpp"
@@ -47,7 +51,6 @@
 #include <map>
 #include <utility>
 #include <vector>
-
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
@@ -254,6 +257,19 @@ WIDGET_SETTER("value_compat,value", int, gui2::slider)
 	w.set_value(value);
 }
 
+WIDGET_GETTER("best_slider_length", int, gui2::slider)
+{
+	return w.get_best_slider_length();
+}
+
+WIDGET_SETTER("best_slider_length", int, gui2::slider)
+{
+	if(value < 0) {
+		throw std::invalid_argument("best_slider_length must be >= 0");
+	}
+	w.set_best_slider_length(value);
+}
+
 WIDGET_GETTER("max_value", int, gui2::slider)
 {
 	return w.get_maximum_value();
@@ -264,6 +280,17 @@ WIDGET_SETTER("max_value", int, gui2::slider)
 	w.set_value_range(w.get_minimum_value(), value);
 }
 
+WIDGET_GETTER("maximum_value_label", t_string, gui2::slider)
+{
+	return w.get_maximum_value_label();
+}
+
+WIDGET_SETTER("maximum_value_label", t_string, gui2::slider)
+{
+	w.set_maximum_value_label(value);
+	INVALIDATE_LAYOUT;
+}
+
 WIDGET_GETTER("min_value", int, gui2::slider)
 {
 	return w.get_minimum_value();
@@ -272,6 +299,17 @@ WIDGET_GETTER("min_value", int, gui2::slider)
 WIDGET_SETTER("min_value", int, gui2::slider)
 {
 	w.set_value_range(value, w.get_maximum_value());
+}
+
+WIDGET_GETTER("minimum_value_label", t_string, gui2::slider)
+{
+	return w.get_minimum_value_label();
+}
+
+WIDGET_SETTER("minimum_value_label", t_string, gui2::slider)
+{
+	w.set_minimum_value_label(value);
+	INVALIDATE_LAYOUT;
 }
 
 WIDGET_GETTER("value_compat,percentage", int, gui2::progress_bar)
@@ -298,6 +336,11 @@ WIDGET_GETTER("path", std::vector<int>, gui2::tree_view_node)
 	return res;
 }
 
+WIDGET_GETTER("unfolded", bool, gui2::tree_view_node)
+{
+	return !w.is_folded();
+}
+
 WIDGET_SETTER("value_compat,unfolded", bool, gui2::tree_view_node)
 {
 	if(value) {
@@ -318,14 +361,35 @@ WIDGET_SETTER("value_compat,unit", lua_index_raw, gui2::unit_preview_pane)
 	}
 }
 
-WIDGET_GETTER("item_count", int, gui2::multi_page)
+WIDGET_GETTER("item_count", int, gui2::combobox)
 {
-	return w.get_page_count();
+	return w.get_item_count();
 }
 
 WIDGET_GETTER("item_count", int, gui2::listbox)
 {
 	return w.get_item_count();
+}
+
+WIDGET_GETTER("item_count", int, gui2::multi_page)
+{
+	return w.get_page_count();
+}
+
+WIDGET_GETTER("item_count", int, gui2::stacked_widget)
+{
+	return w.get_layer_count();
+}
+
+WIDGET_GETTER("item_count", int, gui2::tree_view)
+{
+	const gui2::tree_view_node& tvn = w.get_root_node();
+	return tvn.count_children();
+}
+
+WIDGET_GETTER("item_count", int, gui2::tree_view_node)
+{
+	return w.count_children();
 }
 
 WIDGET_GETTER("use_markup", bool, gui2::styled_widget)
@@ -348,6 +412,67 @@ WIDGET_SETTER("marked_up_text", t_string, gui2::styled_widget)
 	w.set_label(value);
 }
 
+WIDGET_GETTER("characters_per_line", int, gui2::label)
+{
+	return w.get_characters_per_line();
+}
+
+WIDGET_SETTER("characters_per_line", int, gui2::label)
+{
+	if(value < 0) {
+		throw std::invalid_argument("characters_per_line must be >= 0");
+	}
+	w.set_characters_per_line(value);
+	INVALIDATE_LAYOUT;
+}
+
+WIDGET_GETTER("editable", bool, gui2::text_box)
+{
+	return w.is_editable();
+}
+
+WIDGET_SETTER("editable", bool, gui2::text_box)
+{
+	w.set_editable(value);
+}
+
+WIDGET_GETTER("ellipse_mode", std::string, gui2::styled_widget)
+{
+	std::string s;
+
+	switch(w.get_text_ellipse_mode()) {
+		case(PangoEllipsizeMode::PANGO_ELLIPSIZE_NONE):
+			s = "none";
+			break;
+		case(PangoEllipsizeMode::PANGO_ELLIPSIZE_START):
+			s = "start";
+			break;
+		case(PangoEllipsizeMode::PANGO_ELLIPSIZE_MIDDLE):
+			s = "middle";
+			break;
+		case(PangoEllipsizeMode::PANGO_ELLIPSIZE_END):
+			s = "end";
+	}
+
+	return s;
+}
+
+WIDGET_SETTER("ellipse_mode", std::string, gui2::styled_widget)
+{
+	if(value == "none") {
+		w.set_text_ellipse_mode(PangoEllipsizeMode::PANGO_ELLIPSIZE_NONE);
+	} else if(value == "start") {
+		w.set_text_ellipse_mode(PangoEllipsizeMode::PANGO_ELLIPSIZE_START);
+	} else if(value == "middle") {
+		w.set_text_ellipse_mode(PangoEllipsizeMode::PANGO_ELLIPSIZE_MIDDLE);
+	} else if(value == "end") {
+		w.set_text_ellipse_mode(PangoEllipsizeMode::PANGO_ELLIPSIZE_END);
+	} else {
+		throw std::invalid_argument("ellipse_mode must be one of <none,start,middle,end>");
+	}
+	INVALIDATE_LAYOUT;
+}
+
 WIDGET_GETTER("enabled", bool, gui2::styled_widget)
 {
 	return w.get_active();
@@ -368,6 +493,217 @@ WIDGET_SETTER("help", t_string, gui2::styled_widget)
 	w.set_help_message(value);
 }
 
+WIDGET_GETTER("hint_image", std::string, gui2::combobox)
+{
+	return w.get_hint_image();
+}
+
+WIDGET_SETTER("hint_image", std::string, gui2::combobox)
+{
+	w.set_hint_image(value);
+	INVALIDATE_LAYOUT;
+}
+
+WIDGET_GETTER("hint_text", t_string, gui2::combobox)
+{
+	return w.get_hint_text();
+}
+
+WIDGET_SETTER("hint_text", t_string, gui2::combobox)
+{
+	w.set_hint_text(value);
+	INVALIDATE_LAYOUT;
+}
+
+WIDGET_GETTER("hint_image", std::string, gui2::text_box)
+{
+	return w.get_hint_image();
+}
+
+WIDGET_SETTER("hint_image", std::string, gui2::text_box)
+{
+	w.set_hint_image(value);
+	INVALIDATE_LAYOUT;
+}
+
+WIDGET_GETTER("hint_text", t_string, gui2::text_box)
+{
+	return w.get_hint_text();
+}
+
+WIDGET_SETTER("hint_text", t_string, gui2::text_box)
+{
+	w.set_hint_text(value);
+	INVALIDATE_LAYOUT;
+}
+
+WIDGET_SETTER("history", std::string, gui2::text_box)
+{
+	w.set_history(value);
+}
+
+WIDGET_GETTER("indentation_step_size", int, gui2::tree_view)
+{
+	return w.get_indentation_step_size();
+}
+
+WIDGET_SETTER("indentation_step_size", int, gui2::tree_view)
+{
+	if(value < 0) {
+		throw std::invalid_argument("indentation_step_size must be >= 0");
+	}
+	w.set_indentation_step_size(value);
+	INVALIDATE_LAYOUT;
+}
+
+WIDGET_GETTER("link_aware", bool, gui2::label)
+{
+	return w.get_link_aware();
+}
+
+WIDGET_SETTER("link_aware", bool, gui2::label)
+{
+	w.set_link_aware(value);
+	INVALIDATE_LAYOUT;
+}
+
+WIDGET_GETTER("link_aware", bool, gui2::rich_label)
+{
+	return w.get_link_aware();
+}
+
+WIDGET_SETTER("link_aware", bool, gui2::rich_label)
+{
+	w.set_link_aware(value);
+	INVALIDATE_LAYOUT;
+}
+
+WIDGET_GETTER("link_aware", bool, gui2::scroll_label)
+{
+	return w.get_link_aware();
+}
+
+WIDGET_SETTER("link_aware", bool, gui2::scroll_label)
+{
+	w.set_link_aware(value);
+	INVALIDATE_LAYOUT;
+}
+
+WIDGET_GETTER("link_aware", bool, gui2::scroll_text)
+{
+	return w.get_link_aware();
+}
+
+WIDGET_SETTER("link_aware", bool, gui2::scroll_text)
+{
+	w.set_link_aware(value);
+	INVALIDATE_LAYOUT;
+}
+
+WIDGET_GETTER("link_color", std::string, gui2::label)
+{
+	return w.get_link_color().to_hex_string();
+}
+
+WIDGET_SETTER("link_color", std::string, gui2::label)
+{
+	w.set_link_color(color_t::from_hex_string(value));
+	INVALIDATE_LAYOUT;
+}
+
+WIDGET_GETTER("link_color", std::string, gui2::rich_label)
+{
+	return w.get_link_color().to_hex_string();
+}
+
+WIDGET_SETTER("link_color", std::string, gui2::rich_label)
+{
+	w.set_link_color(color_t::from_hex_string(value));
+	INVALIDATE_LAYOUT;
+}
+
+WIDGET_GETTER("linked_group", std::string, gui2::widget)
+{
+	return w.get_linked_group();
+}
+
+WIDGET_SETTER("linked_group", std::string, gui2::widget)
+{
+	w.set_linked_group(value);
+}
+
+WIDGET_GETTER("max_input_length", int, gui2::combobox)
+{
+	return w.get_max_input_length();
+}
+
+WIDGET_SETTER("max_input_length", int, gui2::combobox)
+{
+	if(value < 0) {
+		throw std::invalid_argument("max_input_length must be >= 0");
+	}
+	w.set_max_input_length(value);
+	INVALIDATE_LAYOUT;
+}
+
+WIDGET_GETTER("max_input_length", int, gui2::text_box)
+{
+	return w.get_max_input_length();
+}
+
+WIDGET_SETTER("max_input_length", int, gui2::text_box)
+{
+	if(value < 0) {
+		throw std::invalid_argument("max_input_length must be >= 0");
+	}
+	w.set_max_input_length(value);
+	INVALIDATE_LAYOUT;
+}
+
+WIDGET_GETTER("step_size", int, gui2::slider)
+{
+	return w.get_step_size();
+}
+
+WIDGET_SETTER("step_size", int, gui2::slider)
+{
+	if(value < 0) {
+		throw std::invalid_argument("step_size must be >= 0");
+	}
+	w.set_step_size(value);
+}
+
+WIDGET_GETTER("text_alignment", std::string, gui2::styled_widget)
+{
+	std::string s;
+
+	switch(w.get_text_alignment()) {
+		case(PangoAlignment::PANGO_ALIGN_LEFT):
+			s = "left";
+			break;
+		case(PangoAlignment::PANGO_ALIGN_RIGHT):
+			s = "right";
+			break;
+		case(PangoAlignment::PANGO_ALIGN_CENTER):
+			s = "center";
+	}
+
+	return s;
+}
+
+WIDGET_SETTER("text_alignment", std::string, gui2::styled_widget)
+{
+	if(value == "left") {
+		w.set_text_alignment(PangoAlignment::PANGO_ALIGN_LEFT);
+	} else if(value == "right") {
+		w.set_text_alignment(PangoAlignment::PANGO_ALIGN_RIGHT);
+	} else if(value == "center") {
+		w.set_text_alignment(PangoAlignment::PANGO_ALIGN_CENTER);
+	} else {
+		throw std::invalid_argument("text_alignment must be one of <left,center,right>");
+	}
+}
+
 WIDGET_GETTER("tooltip", t_string, gui2::styled_widget)
 {
 	return w.tooltip();
@@ -378,12 +714,33 @@ WIDGET_SETTER("tooltip", t_string, gui2::styled_widget)
 	w.set_tooltip(value);
 }
 
+WIDGET_GETTER("use_tooltip_on_label_overflow", bool, gui2::styled_widget)
+{
+	return w.get_use_tooltip_on_label_overflow();
+}
+
+WIDGET_SETTER("use_tooltip_on_label_overflow", bool, gui2::styled_widget)
+{
+	w.set_use_tooltip_on_label_overflow(value);
+	INVALIDATE_LAYOUT;
+}
+
 WIDGET_GETTER("wrap", bool, gui2::label)
 {
 	return w.can_wrap();
 }
 
 WIDGET_SETTER("wrap", bool, gui2::label)
+{
+	w.set_can_wrap(value);
+}
+
+WIDGET_GETTER("wrap", bool, gui2::rich_label)
+{
+	return w.can_wrap();
+}
+
+WIDGET_SETTER("wrap", bool, gui2::rich_label)
 {
 	w.set_can_wrap(value);
 }
@@ -397,6 +754,24 @@ WIDGET_SETTER("callback", lua_index_raw, gui2::widget)
 	lua_pushvalue(L, value.index);
 	lua_call(L, 2, 0);
 }
+
+WIDGET_GETTER("visible", std::string, gui2::styled_widget)
+{
+	std::string s;
+	switch(w.get_visible()) {
+		case gui2::styled_widget::visibility::visible:
+			s = "visible";
+			break;
+		case gui2::styled_widget::visibility::hidden:
+			s = "hidden";
+			break;
+		case gui2::styled_widget::visibility::invisible:
+			s = "invisible";
+	}
+
+	return s;
+}
+
 
 WIDGET_SETTER("visible", lua_index_raw, gui2::styled_widget)
 {

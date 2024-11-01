@@ -80,7 +80,7 @@ public:
 		editable_ = editable;
 	}
 
-	bool is_editable()
+	bool is_editable() const
 	{
 		return editable_;
 	}
