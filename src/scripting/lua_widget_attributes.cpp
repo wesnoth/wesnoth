@@ -55,6 +55,14 @@
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
+#define INVALIDATE_LAYOUT \
+do { \
+	gui2::window* window = w.get_window(); \
+	if(window) { \
+		window->invalidate_layout(); \
+	} \
+} while(false)
+
 static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 {
 	assert(i > 0);
@@ -620,16 +628,6 @@ WIDGET_SETTER("link_color", std::string, gui2::rich_label)
 {
 	w.set_link_color(color_t::from_hex_string(value));
 	INVALIDATE_LAYOUT;
-}
-
-WIDGET_GETTER("linked_group", std::string, gui2::widget)
-{
-	return w.get_linked_group();
-}
-
-WIDGET_SETTER("linked_group", std::string, gui2::widget)
-{
-	w.set_linked_group(value);
 }
 
 WIDGET_GETTER("max_input_length", int, gui2::combobox)

@@ -24,12 +24,3 @@ int impl_widget_dir(lua_State* L);
 
 } // end namespace lua_widget
 
-#define INVALIDATE_LAYOUT \
-do { \
-    gui2::window* window = w.get_window(); \
-    if(window) { \
-        window->invalidate_layout(); \
-    } \
-} while(false)
-
-
