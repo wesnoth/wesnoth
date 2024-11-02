@@ -2127,22 +2127,17 @@ bool attack_type::has_special_with_filter(const config & filter) const
 
 bool attack_type::has_ability_with_filter(const config & filter) const
 {
-	bool check_if_active = filter["active"].to_bool();
+	if(!filter["active"].to_bool()){
+		return false;
+	}
 	const unit_map& units = get_unit_map();
 	if(self_){
 		for(const auto [key, cfg] : (*self_).abilities().all_children_view()) {
 			if(self_->ability_matches_filter(cfg, key, filter)){
-				if(!check_if_active){
-					return true;
-				}
 				if(check_self_abilities(cfg, key)){
 					return true;
 				}
 			}
-		}
-
-		if(!check_if_active){
-			return false;
 		}
 
 		const auto adjacent = get_adjacent_tiles(self_loc_);
