@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-21 11:10-0500\n"
-"PO-Revision-Date: 2024-01-04 16:05+0100\n"
+"PO-Revision-Date: 2024-10-31 12:05+0100\n"
 "Last-Translator: amnay <amnay@operamail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-Bookmarks: 32,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [brush]: id=brush-1
@@ -397,10 +397,8 @@ msgstr "خطأ"
 
 #: src/editor/map/context_manager.cpp:709
 #: src/editor/map/context_manager.cpp:758
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
-msgstr "أتريد فعلاً المغادرة؟"
+msgstr "أتريد فعلاً حفظ $type1 في الملف $type2 ?؟"
 
 #: src/editor/map/context_manager.cpp:717
 #: src/editor/map/context_manager.cpp:926
@@ -545,9 +543,9 @@ msgstr "لن تعمل في اللعبة بدون رعاية إضافية."
 
 #: src/editor/palette/item_palette.cpp:33
 #, fuzzy
-#| msgid "Right-click: "
+#| msgid " | Right-click to remove"
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr "الزر الأيمن: "
+msgstr " الزر الأيمن للحذف"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
@@ -616,13 +614,8 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
-#, fuzzy
-#~| msgid "Left-click: "
 #~ msgid "Left-click: Place item "
-#~ msgstr "الزر الأيسر: "
-
-#~ msgid "Clipboard support not found, contact your packager"
-#~ msgstr "لم يتم العثور على دعم الحافظة، اتصل بالمسئول عن الرزم"
+#~ msgstr "الزر الأيسر: وضع أداة "
 
 #, fuzzy
 #~ msgid "player^None"

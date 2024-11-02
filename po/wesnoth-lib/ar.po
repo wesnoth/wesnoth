@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-21 11:11-0500\n"
-"PO-Revision-Date: 2024-09-06 01:06+0100\n"
+"PO-Revision-Date: 2024-10-31 12:22+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
@@ -9178,10 +9178,8 @@ msgid "Item Tool"
 msgstr "أداة العنصر"
 
 #: src/hotkey/hotkey_command.cpp:209
-#, fuzzy
-#| msgid "Left mouse button sets a new item."
 msgid "Left mouse button sets a new item. Right click removes item."
-msgstr "زر الفأرة الأيسر يقوم بتعيين عنصر جديد."
+msgstr "زر الفأرة الأيسر يقوم بتعيين عنصر جديد. الزر الأيسر يمحو العنصر."
 
 #: src/hotkey/hotkey_command.cpp:210
 msgid ""
@@ -9220,9 +9218,8 @@ msgid "Loyal"
 msgstr "مخلص"
 
 #: src/hotkey/hotkey_command.cpp:219
-#, fuzzy
 msgid "Show Tool Information"
-msgstr "مُوَلِّد الخرائط"
+msgstr "إظهار معلومات الأداة"
 
 #: src/hotkey/hotkey_command.cpp:221
 msgid "Toggle Minimap Unit Coding"
@@ -9597,23 +9594,14 @@ msgstr "لم يحدد المفتاح الإجباري '$key|' في الفقرة 
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "لم يحدد المفتاح الإجباري '$key|' في الفقرة '[$section|]'."
 
-#~ msgid "Connected Players"
-#~ msgstr "اللاعبون المتصلون"
-
-#~ msgid "The text contains invalid Pango markup: "
-#~ msgstr "يحتوي النص على علامة Pango غير صالحة: "
-
-#~ msgid "Text has a font size of 0."
-#~ msgstr "حجم الخط للنص هو 0."
-
-#~ msgid "Clipboard support not found, contact your packager"
-#~ msgstr "لم يتم العثور على دعم الحافظة، اتصل بمزود الخدمة الخاص بك"
-
 #~ msgid "Rocky Sands"
 #~ msgstr "رمال صخرية"
 
 #~ msgid "Sands"
 #~ msgstr "رمال"
+
+#~ msgid "Connected Players"
+#~ msgstr "اللاعبون المتصلون"
 
 #~ msgid "Reloading alters future combat outcomes"
 #~ msgstr "إعادة التحميل يغير نتائج القتال المستقبلية"
@@ -9668,6 +9656,15 @@ msgstr "لم يحدد المفتاح الإجباري '$key|' في الفقرة 
 #~ msgstr ""
 #~ "استخدم المسارات المطلقة. تم إهمال المسارات النسبية لأنه يتم تفسيرها نسبة "
 #~ "إلى $HOME"
+
+#~ msgid "The text contains invalid Pango markup: "
+#~ msgstr "يحتوي النص على علامة Pango غير صالحة: "
+
+#~ msgid "Text has a font size of 0."
+#~ msgstr "حجم الخط للنص هو 0."
+
+#~ msgid "Clipboard support not found, contact your packager"
+#~ msgstr "لم يتم العثور على دعم الحافظة، اتصل بمزود الخدمة الخاص بك"
 
 #~ msgid "Running on $os"
 #~ msgstr "يعمل على $os"
