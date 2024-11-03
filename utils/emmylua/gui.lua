@@ -101,9 +101,13 @@ function gui.add_widget_definition(type, id, content) end
 ---A reference to a widget in a custom dialog box
 ---@class widget : gui.widget
 ---@field enabled boolean
+---@field help tstring
 ---@field tooltip tstring
 ---@field visible boolean|"'visible'"|"'hidden'"|"'invisible'"
 ---@field type string
+---@field text_alignment "'left'"|"'right'"|"'center'"
+---@field ellipsize_mode "'none'"|"'start'"|"'middle'"|"'end'"
+---@field overflow_to_tooltip boolean
 ---@field on_left_click fun()
 
 ---The window widget is a container that contains all other widgets in the dialog
@@ -141,22 +145,49 @@ function gui.add_widget_definition(type, id, content) end
 ---A container widget whose children all occupy the same space, overlayed on top of each other
 ---@class stacked_widget : widget
 ---@field selected_index integer
+---@field item_count integer
 
 ---A button that produces a dropdown menu when clicked
 ---@class menu_button : widget
 ---@field selected_index integer
 ---@field on_modified fun()
 
+---A button that produces a dropdown menu when clicked in addition to supporting text input
+---@class menu_button : combobox
+---@field hint_image string
+---@field hint_text tstring
+---@field item_count integer
+---@field max_input_length integer
+---@field selected_index integer
+---@field on_modified fun()
+
 ---An editable text box
 ---@class text_box : widget
 ---@field text string
+---@field editable boolean
+---@field hint_image string
+---@field hint_text tstring
+---@field history string
+---@field max_input_length integer
 ---@field on_modified fun()
+
+---A label that wraps its text and also has a vertical scrollbar
+---@class scroll_label : widget
+---@field link_aware boolean
+
+---A multiline text area that shows a scrollbar if the text gets too long
+---@class scroll_text : widget
+---@field link_aware boolean
 
 ---A slider
 ---@class slider : widget
 ---@field value integer
 ---@field min_value integer
 ---@field max_value integer
+---@field best_slider_length integer
+---@field maximum_value_label tstring
+---@field minimum_value_label tstring
+---@field step_size integer
 ---@field on_modified fun()
 
 ---A progress bar
@@ -166,11 +197,14 @@ function gui.add_widget_definition(type, id, content) end
 ---A dynamic, hierarchical list of items, shown with a scrollbar
 ---@class treeview : widget
 ---@field selected_item_path integer[]
+---@field item_count integer
 ---@field on_modified fun()
 
 ---A single node in a tree view
 ---@class tree_view_node : widget
 ---@field path integer[]
+---@field item_count integer
+---@field item_count integer
 ---@field unfolded boolean
 
 ---A panel that shows details on a given unit or unit type
@@ -183,6 +217,16 @@ function gui.add_widget_definition(type, id, content) end
 
 ---A static text label
 ---@class label : simple_widget
+---@field characters_per_line integer
+---@field link_aware boolean
+---@field link_color string
+---@field wrap boolean
+
+---A label that shows formatted text marked up with Help markup
+---@class rich_label : simple_widget
+---@field link_color string
+---@field wrap boolean
+
 ---A simple image
 ---@class image : simple_widget
 ---A simple button that triggers repeatedly if the mouse is held down
