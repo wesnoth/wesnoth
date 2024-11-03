@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-28 12:38-0500\n"
-"PO-Revision-Date: 2024-05-01 22:05+0200\n"
+"PO-Revision-Date: 2024-11-01 00:20+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: none\n"
 "Language: nb_NO\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -2847,45 +2847,43 @@ msgstr "Kopier denne loggen til utklippstavlen"
 #. Within the “Community” dialog, this chooses a tab with links to various Wesnoth websites.
 #: data/gui/window/community_dialog.cfg:42 data/gui/window/title_screen.cfg:262
 msgid "Community"
-msgstr ""
+msgstr "Samfunn"
 
 #. [button]: id=forums
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/window/community_dialog.cfg:63
-#, fuzzy
-#| msgid "Forum URL"
 msgid "Forums"
-msgstr "Forum URL"
+msgstr "Forum"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/window/community_dialog.cfg:82
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/window/community_dialog.cfg:101
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/window/community_dialog.cfg:120
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/window/community_dialog.cfg:139
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/window/community_dialog.cfg:158
 msgid "Donate"
-msgstr ""
+msgstr "Doner"
 
 #. [label]
 #: data/gui/window/core_dialog.cfg:44
@@ -3594,12 +3592,12 @@ msgstr "Steder"
 #. [button]: id=add_bookmark
 #: data/gui/window/file_dialog.cfg:299
 msgid "Bookmarks the current folder"
-msgstr ""
+msgstr "Bokmerke gjeldende mappe"
 
 #. [button]: id=remove_bookmark
 #: data/gui/window/file_dialog.cfg:312
 msgid "Removes the current bookmark"
-msgstr ""
+msgstr "Fjerner gjeldende bokmerke"
 
 #. [button]: id=new_dir
 #. [label]: id=title
@@ -3609,10 +3607,8 @@ msgstr "Ny mappe"
 
 #. [label]
 #: data/gui/window/file_dialog.cfg:391
-#, fuzzy
-#| msgid "File: "
 msgid "File:"
-msgstr "Fil: "
+msgstr "Fil:"
 
 #. [label]
 #: data/gui/window/formula_debugger.cfg:36
@@ -4139,6 +4135,8 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
+"<i>Kampen om Wesnoth</i> er avhengig av frivillige for utvikling, inkludert "
+"oversettelse. Oversettelser kan drive bak eller til og med bli forlatt."
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4149,6 +4147,9 @@ msgid ""
 "interface and in-game help only. More complete stats, including details for "
 "each campaign, are available at the following page:"
 msgstr ""
+"<b>Merk:</b> Oversettelsesprosentene som vises, omfatter bare grensesnittet "
+"for kjernespillet og spillets hjelpeside. Mer fullstendig statistikk, "
+"inkludert detaljer for hver kampanje, er tilgjengelig på følgende side:"
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4158,11 +4159,13 @@ msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
+"Hvis du er interessert i å oversette spillet selv, vennligst følg lenken "
+"nedenfor for mer informasjon:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/language_selection.cfg:276
 msgid "Show in-progress or abandoned translations"
-msgstr ""
+msgstr "Vis pågående eller forlatte oversettelser"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:183
@@ -4476,6 +4479,9 @@ msgid ""
 "multiplayer lobby; either by playing sound alerts or (if the game window is "
 "inactive or minimized) displaying desktop notifications."
 msgstr ""
+"vVelg hvordan du ønsker å bli varslet om hendelser i flerspillerspill eller "
+"i flerspillerlobbyen; enten ved å spille av lydvarsler eller (hvis "
+"spillvinduet er inaktivt eller minimert) ved å vise skrivebordsvarsler."
 
 #. [label]
 #. [widget]: id=label
@@ -4862,14 +4868,12 @@ msgid "Stricter checks for out-of-sync errors"
 msgstr ""
 
 #: data/gui/window/mp_create_game.cfg:987
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Private Replay"
-msgstr "Lagre Opptak"
+msgstr "Privat reprise"
 
 #: data/gui/window/mp_create_game.cfg:987
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "Hvorvidt reprisen vil være offentlig tilgjengelig"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:1003
@@ -4881,6 +4885,8 @@ msgstr "Navn på spill:"
 msgid ""
 "Set the password that people wanting to join your game as players must enter"
 msgstr ""
+"Angi passordet som folk som ønsker å bli med i spillet ditt som aktive "
+"spillere må angi"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5145,10 +5151,8 @@ msgstr ""
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:304
-#, fuzzy
-#| msgid "Show team colors"
 msgid "This side’s color"
-msgstr "Vis lagfarger"
+msgstr "Dette lagets farger"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:425
@@ -5714,17 +5718,13 @@ msgstr "Konfigurere innstillinger for flerspillervarsler"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:162
-#, fuzzy
-#| msgid "Send a private message"
 msgid "Server Executable"
-msgstr "Send privat melding"
+msgstr "Server kjørbar"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/window/preferences/05_multiplayer.cfg:163
-#, fuzzy
-#| msgid "Find and set path to MP server to host LAN games."
 msgid "Find and set path to MP server to host LAN games"
-msgstr "Finn og sett sti til MP server for å være vert for LAN-spill."
+msgstr "Finn og sett sti til FS server for å være vert for LAN-spill"
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
@@ -5732,6 +5732,8 @@ msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "‘player_name notes on friend’)"
 msgstr ""
+"Legg til dette brukernavnet i vennelisten din (legg til valgfrie notater, f."
+"eks. ‘player_name notater om venn’)"
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
@@ -5739,6 +5741,8 @@ msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "‘player_name reason ignored’)"
 msgstr ""
+"Legg til dette brukernavnet i ignoreringslisten din (legg til valgfri årsak, "
+"f.eks. ‘player_name grunn til ignorering’)"
 
 #. [button]: id=remove
 #: data/gui/window/preferences/05_multiplayer.cfg:290
@@ -5748,41 +5752,37 @@ msgstr "Fjern dette brukernavnet fra listen"
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
 msgid "You have not befriended or blocked any other players."
-msgstr ""
+msgstr "Du har ikke blitt venn med eller blokkert noen andre spillere."
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
 msgid "filesystem^Open"
-msgstr ""
+msgstr "Åpne"
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:50
 msgid "Open this file with an external application"
-msgstr ""
+msgstr "Åpne denne filen med et eksternt program"
 
 #. [button]: id=browse_dir
 #: data/gui/window/screenshot_notification.cfg:187
 msgid "Browse the screenshots folder using a file manager"
-msgstr ""
+msgstr "Bla gjennom skjermbildemappen ved hjelp av en filbehandler"
 
 #. [label]
 #: data/gui/window/select_orb_colors.cfg:140
 msgid "Choose Orb/Minimap Colors"
-msgstr ""
+msgstr "Velg kule/minikartfarger"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:144
-#, fuzzy
-#| msgid "Show Enemy Moves"
 msgid "Show unmoved orb"
-msgstr "Vis fiendens rekkevidde"
+msgstr "Vis kule for \"ikke flyttet\""
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:147
-#, fuzzy
-#| msgid "Show team colors"
 msgid "Show partially moved orb"
-msgstr "Vis lagfarger"
+msgstr "Vis kule for \"delvis forflyttet\""
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
@@ -5790,6 +5790,8 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
+"Hvis en enhet kan bevege seg, men ikke kan angripe, vis en tofarget kule med "
+"fargene for delvis og fullstendig flyttet."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
@@ -5798,17 +5800,13 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:150
-#, fuzzy
-#| msgid "Show team colors"
 msgid "Show moved orb"
-msgstr "Vis lagfarger"
+msgstr "Vis kule for \"forflyttet\""
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:153
-#, fuzzy
-#| msgid "Show all lobby joins"
 msgid "Show ally orb"
-msgstr "Vis alle nyankomne spillere"
+msgstr "Vis kule for alliert"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
@@ -5825,10 +5823,8 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:156
-#, fuzzy
-#| msgid "Show Enemy Moves"
 msgid "Show enemy orb"
-msgstr "Vis fiendens rekkevidde"
+msgstr "Vis fiendens kule"
 
 #. [label]: id=asdf
 #: data/gui/window/server_info.cfg:79
@@ -5936,7 +5932,7 @@ msgstr "Avslutt spill"
 #. [label]
 #: data/gui/window/terrain_layers.cfg:21
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:33
@@ -5966,14 +5962,12 @@ msgstr ""
 #. [label]
 #: data/gui/window/terrain_layers.cfg:105
 msgid "Center"
-msgstr ""
+msgstr "Senter"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:339
-#, fuzzy
-#| msgid "Draw Terrain Codes"
 msgid "Terrain Layers"
-msgstr "Tegn terrengkoder"
+msgstr "Terrenglag"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:384
@@ -6062,10 +6056,8 @@ msgstr "Se prestasjoner"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:262
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "Places to talk about Wesnoth"
-msgstr "Kampen om Wesnoth"
+msgstr "Steder å snakke om Wesnoth"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:263
@@ -6089,10 +6081,8 @@ msgstr "Endre språk"
 
 #. [label]
 #: data/gui/window/unit_advance.cfg:99
-#, fuzzy
-#| msgid "Advanced Mode"
 msgid "Advance Unit"
-msgstr "Avansert modus"
+msgstr "Forfrem enhet"
 
 #. [label]
 #: data/gui/window/unit_advance.cfg:144
@@ -6308,7 +6298,7 @@ msgstr ""
 #. translate this message as "sv,da", while Danish as "da,sv".
 #: src/filesystem.cpp:1768
 msgid "language code for localized resources^en_US"
-msgstr "nb,no"
+msgstr "nb_NO"
 
 #: src/font/text.cpp:886
 msgid "The text contains invalid Pango markup: "
@@ -6409,19 +6399,16 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/gui/core/canvas.cpp:273
-#, fuzzy
 msgid "Image doesn't fit on canvas."
-msgstr "Linjen passer ikke på lerretet"
+msgstr "Bildet passer ikke på lerretet."
 
 #: src/gui/core/canvas.cpp:417
 msgid "Text has a font size of 0."
 msgstr "Tekst har fontstørrelse på 0."
 
 #: src/gui/core/widget_definition.cpp:29
-#, fuzzy
-#| msgid "No state or draw section defined."
 msgid "No draw section defined for state."
-msgstr "No state or draw section defined."
+msgstr "Tegneseksjon er udefinert for tilstand."
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:133
 msgid "No resolution defined."
@@ -6432,19 +6419,19 @@ msgstr "Ingen definert oppløsning."
 #: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
 #: src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
-msgstr "Rutenett er ikke definert."
+msgstr "Udefinert rute."
 
 #: src/gui/core/window_builder.cpp:221
-#, fuzzy
-#| msgid "A row must have a column."
 msgid "Grid '$grid' row $row must have at least one column."
-msgstr "En rad må ha en kolonne"
+msgstr "Rute '$grid' rad $row må ha minst én kolonne."
 
 #: src/gui/core/window_builder.cpp:233
 msgid ""
 "Grid '$grid' row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
+"Rute '$grid' rad $row har et forskjellig antall kolonner ($found funnet, "
+"$expected forventet)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:137
 msgid "Completed"

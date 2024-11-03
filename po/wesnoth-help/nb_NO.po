@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-28 12:38-0500\n"
-"PO-Revision-Date: 2024-05-02 18:08+0200\n"
+"PO-Revision-Date: 2024-11-03 12:49+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
 "Language: no\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. [damage_type]: id=arcane_damage
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:548
@@ -1143,10 +1143,8 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
 #: data/core/editor/help.cfg:452
-#, fuzzy
-#| msgid "Time of Day"
 msgid "ToD and Schedule Editor"
-msgstr "Tid på døgnet"
+msgstr "Døgnsyklus og tidsplan-behandler"
 
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:453
@@ -1302,7 +1300,7 @@ msgstr ""
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:13
 msgid "Calendar"
-msgstr ""
+msgstr "Kalender"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
@@ -1324,13 +1322,28 @@ msgid ""
 "Blackfire\n"
 "\n"
 msgstr ""
+"Hvert år i Wesnoths kalender består av 12 måneder. Disse er, i rekkefølge:\n"
+"\n"
+"Hvitild (Whitefire)\n"
+"Blodmåne (Bleeding Moon)\n"
+"Spredningsfrø (Scatterseed)\n"
+"Dyprot (Deeproot)\n"
+"Spåblomst (Scryer's Bloom)\n"
+"Tornebusk (Thorntress)\n"
+"Toppstjerne (Summit Star)\n"
+"Ginsteild (Kindlefire)\n"
+"Stillfrø (Stillseed)\n"
+"Høstmånen (Reaper's Moon)\n"
+"Isblomst (Verglas Bloom)\n"
+"Svartild (Blackfire)\n"
+"\n"
 
 #. [section]: id=geography
 #. [topic]: id=..geography
 #: data/core/encyclopedia/geography.cfg:12
 #: data/core/encyclopedia/geography.cfg:19
 msgid "Geography"
-msgstr ""
+msgstr "Geografi"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:26
@@ -1346,9 +1359,8 @@ msgstr ""
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:32
-#, fuzzy
 msgid "Great River"
-msgstr "Kjempetre"
+msgstr "Den store elven"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:33
@@ -1361,9 +1373,8 @@ msgstr ""
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:38
-#, fuzzy
 msgid "Great Ocean"
-msgstr "Kjempetre"
+msgstr "Det store hav"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:39
@@ -1403,7 +1414,7 @@ msgstr ""
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:58
 msgid "Old Continent"
-msgstr ""
+msgstr "Det gamle kontinent"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:59
@@ -1415,7 +1426,7 @@ msgstr ""
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:64
 msgid "Great Continent"
-msgstr ""
+msgstr "Det store kontinent"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:65
@@ -1441,9 +1452,8 @@ msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:76
-#, fuzzy
 msgid "Kingdom of Wesnoth"
-msgstr "-- Wesnoths Krønike"
+msgstr "Kongeriket Wesnoth"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:77
@@ -1603,9 +1613,8 @@ msgstr ""
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:154
-#, fuzzy
 msgid "Heart Mountains"
-msgstr "Fjell"
+msgstr "Hjertefjellene"
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:155
@@ -1658,10 +1667,8 @@ msgstr ""
 
 #. [section]: id=schedule
 #: data/core/help.cfg:10
-#, fuzzy
-#| msgid "Time of Day"
 msgid "Time of Day Schedule"
-msgstr "Tid på døgnet"
+msgstr "Døgnsyklus"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
@@ -1960,7 +1967,7 @@ msgstr ""
 "tre vanskelighetsgrader: «Lett», «Normal» og «Utfordrende». Kampanjenivået "
 "angir hvilken grad av ferdighet i spillmekanikken (for eksempel "
 "<ref>dst='movement' text='kontrollsoner'</ref> og <ref>dst='time_of_day' "
-"text='tid på døgnet'</ref>) som forutsettes. Vanskelighetsgraden angir hvor "
+"text='døgnsyklus'</ref>) som forutsettes. Vanskelighetsgraden angir hvor "
 "utfordrende scenariene vil være for en erfaren spiller: På høyere "
 "vanskelighetsgrader vil hindringene for å vinne være større, og det vil "
 "kreve dyktigere spill for å overvinne dem. På høyere vanskelighetsgrader kan "
@@ -3024,7 +3031,7 @@ msgstr ""
 "angrepstypen. Et treff av en Alvisk Kriger med et 5×4 sverdangrep fører til "
 "en grunnskade på 5 helsepoeng (HP). Denne grunnskaden kan modifiseres, "
 "oftest på to måter: <ref>dst=damage_types_and_resistance text='Motstand'</"
-"ref> og <ref>dst=time_of_day text='Tid på Døgnet'</ref>. For å se hvordan "
+"ref> og <ref>dst=time_of_day text='Døgnsyklus'</ref>. For å se hvordan "
 "grunnskaden blir modifisert, velg <italic>text='Skadeberegninger'</italic> i "
 "menyen for valg av angrep."
 
@@ -3282,7 +3289,7 @@ msgstr ""
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:466
 msgid "Time of Day"
-msgstr "Tid på døgnet"
+msgstr "Døgnsyklus"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:467
@@ -3296,7 +3303,7 @@ msgid ""
 "• <bold>text='Neutral'</bold> units are unaffected by the time of day.\n"
 "• <bold>text='Liminal'</bold> units get +25% damage during twilight."
 msgstr ""
-"Tiden på døgnet påvirker skaden til visse enheter på følgende måte:\n"
+"Døgnsyklusen påvirker skaden til visse enheter på følgende måte:\n"
 "\n"
 "- <bold>text='Lovlydige'</bold> enheter får +25 % skade på dagtid, og -25 % "
 "skade om natten.\n"
@@ -3317,9 +3324,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Den gjeldende tid på døgnet kan lett finnes under minikartet på høyre side "
-"av skjermen. I den vanlige dag/natt-syklusen regnes For- og Ettermiddag som "
-"dag, mens Kveld og Natt regnes som natt.\n"
+"Gjeldende tidspunkt på dagen kan observeres under minikartet i statusfeltet. "
+"For den vanlige dag/natt-syklusen regnes morgengry og ettermiddag som dag, "
+"mens første og andre vakt regnes som natt:\n"
 "\n"
 
 #. [topic]: id=time_of_day
@@ -3354,13 +3361,13 @@ msgstr "Skumring"
 #. [time]: id=first_watch
 #: data/core/help.cfg:480 data/core/macros/schedules.cfg:67
 msgid "First Watch"
-msgstr "Kveld"
+msgstr "Første vakt"
 
 #. [topic]: id=time_of_day
 #. [time]: id=second_watch
 #: data/core/help.cfg:481 data/core/macros/schedules.cfg:91
 msgid "Second Watch"
-msgstr "Natt"
+msgstr "Andre vakt"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:483
@@ -3368,7 +3375,7 @@ msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
 msgstr ""
-"Husk at noen scenarier finner sted under jorden, hvor et evig mørke rår!\n"
+"Husk at noen scenarier finner sted under jorden, hvor natten varer evig!\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:485
@@ -3377,7 +3384,7 @@ msgid ""
 "intermediate between day and night.\n"
 msgstr ""
 "Noen underjordiske steder er opplyst. De befinner seg i en evig "
-"demringstilstand.\n"
+"demringstilstand, mellom dag og natt.\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:487
@@ -3398,7 +3405,7 @@ msgid ""
 msgstr ""
 "Til sist kan enheter med evnen <ref>dst='ability_illuminationilluminates' "
 "text='belyser'</ref> og terrengfunksjoner som <ref>dst='terrain_lava' "
-"text='lava'</ref> endre tid-på-dagen-bonusen rundt dem."
+"text='lava'</ref> endre døgnsyklus-bonusen rundt dem."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:496
@@ -3658,7 +3665,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:549
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3666,7 +3672,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Sjanse for å treffe'</header>"
+"<header>text='Grunnleggende terrengtyper'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:551
@@ -3691,7 +3697,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:557
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3699,7 +3704,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Sjanse for å treffe'</header>"
+"<header>text='Blandet terrengtyper'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:559
@@ -3775,7 +3780,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:579
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3783,7 +3787,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Sjanse for å treffe'</header>"
+"<header>text='Forsvarstak'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:581
@@ -4497,16 +4501,6 @@ msgstr ""
 
 #. [heals]: id=healing
 #: data/core/macros/abilities.cfg:11
-#, fuzzy
-#| msgid ""
-#| "Heals +4:\n"
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -4515,27 +4509,15 @@ msgid ""
 "This ability will not cure an affected unit of poison, however, only delay "
 "its effect."
 msgstr ""
-"Helbreder 4:\n"
-"Setter enheten i stand til å helbrede allierte naboenheter i begynnelsen av "
-"sin runde.\n"
+"Lar enheten helbrede tilstøtende allierte enheter ved starten av sin runde.\n"
 "\n"
-"En enhet som blir hjulpet av en helbreder kan hver runde heles opp til 4 HP, "
-"eller få stoppet virkningen av gift.\n"
-"En forgiftet enhet kan ikke bli kurert for giften av en helbreder, og må "
-"søke hjelp i en landsby eller hos en enhet som kan kurere."
+"En enhet som mottar pleie fra denne helbrederen kan gjenopprette opptil 4 HP "
+"per runde, eller forhindre at gift virker den aktuelle runden. Denne evnen "
+"vil imidlertid ikke kurere en enhet som er påvirket av gift, bare forsinke "
+"dens effekt."
 
 #. [heals]: id=healing
 #: data/core/macros/abilities.cfg:37
-#, fuzzy
-#| msgid ""
-#| "Heals +8:\n"
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -4545,14 +4527,13 @@ msgid ""
 "This ability will not cure an affected unit of poison, however, only delay "
 "its effect."
 msgstr ""
-"Helbreder:\n"
-"Denne enheten kombinerer urtemedisin med magi for å helbrede enheter "
-"hurtigere enn vanligvis mulig på slagmarken.\n"
+"Denne enheten kombinerer urtemedisiner med magi for å helbrede enheter "
+"raskere enn det som vanligvis er mulig på slagmarken.\n"
 "\n"
-"En enhet som blir hjulpet av denne kan hver runde heles opp til 8 HP, eller "
-"få stoppet virkningen av gift.\n"
-"En forgiftet enhet kan ikke bli kurert for giften av en helbreder, og må "
-"søke hjelp i en landsby eller hos en enhet som kan kurere."
+"En enhet som mottar pleie fra denne helbrederen kan gjenopprette opptil 8 HP "
+"per runde, eller forhindre at gift virker den aktuelle runden. Denne evnen "
+"vil imidlertid ikke kurere en enhet som er påvirket av gift, bare forsinke "
+"dens effekt."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:62
@@ -4561,18 +4542,12 @@ msgstr "kurerer"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:63
-#, fuzzy
-#| msgid ""
-#| "Cures:\n"
-#| "A curer can cure a unit of poison, although that unit will receive no "
-#| "additional healing on the turn it is cured of the poison."
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"Kurerer:\n"
-"Enheten kan kurere andre for gift, men enheter kan ikke helbredes og kureres "
-"samme runde."
+"En kurerer kan kurere en enhet for gift, men den enheten vil ikke motta "
+"ytterligere helbredelse den runden giften fjernes"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:95
@@ -4581,99 +4556,79 @@ msgstr "regenererer"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:96
-#, fuzzy
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Regenererer:\n"
-"Enheten vil helbrede seg selv 8 HP per runde. Hvis den er forgiftet, vil "
-"giften fjernes i stedet."
+"Enheten vil helbrede seg selv med 8 HP per runde. Hvis den er forgiftet, vil "
+"den fjerne giften i stedet for å helbrede."
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:108
-#, fuzzy
-#| msgid "regenerates"
 msgid "regenerates +4"
-msgstr "regenererer"
+msgstr "regenererer +4"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:109
-#, fuzzy
-#| msgid "female^regenerates"
 msgid "female^regenerates +4"
-msgstr "regenererer"
+msgstr "regenererer +4"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:110
-#, fuzzy
 msgid ""
 "The unit will heal itself 4 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Regenererer:\n"
-"Enheten vil helbrede seg selv 8 HP per runde. Hvis den er forgiftet, vil "
-"giften fjernes i stedet."
+"Enheten vil helbrede seg selv med 4 HP per runde. Hvis den er forgiftet, vil "
+"den fjerne giften i stedet for å helbrede."
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:111
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit heals itself each turn, though not as much as if stationed in a "
 "village."
 msgstr ""
-" Denne enheten regenererer. Den helbredes alltid som om den sto i landsby."
+"Denne enheten helbreder seg selv hver runde, men ikke like mye som om den "
+"var stasjonert i en landsby."
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:132
-#, fuzzy
-#| msgid ""
-#| "Steadfast:\n"
-#| "This unit’s resistances are doubled, up to a maximum of 50%, when "
-#| "defending. Vulnerabilities are not affected."
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
-"Standhaftig:\n"
-"Denne enhetens motstand mot skade dobles under forsvar, opp til et maksimum "
-"på 50% motstandskraft. Negative verdier for motstand påvirkes ikke."
+"Denne enhetens motstandsverdier dobles, opptil maksimalt 50 %, når den "
+"forsvarer seg. Sårbarheter påvirkes ikke."
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:145
 msgid "diversion"
-msgstr ""
+msgstr "avledning"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:146
-#, fuzzy
-#| msgid "female^leadership"
 msgid "female^diversion"
-msgstr "leder"
+msgstr "avledning"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:147
-#, fuzzy
 msgid ""
 "If there is an enemy of the target on the opposite side of the target, this "
 "unit diverts the target’s attention and reduces its chance to hit by 20%."
 msgstr ""
-" Hvis en alliert enhet oppholder fienden, kan denne enheten snike seg innpå "
-"og påføre fienden dobbel skade bakfra."
+"Hvis det finnes en fiende av målet på motsatt side av målet, avleder denne "
+"enheten oppmerksomheten til målet og reduserer treffsjansen med 20 %."
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:148
-#, fuzzy
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target’s attention and reduces its "
 "chance to hit."
 msgstr ""
-" Hvis en alliert enhet oppholder fienden, kan denne enheten snike seg innpå "
-"og påføre fienden dobbel skade bakfra."
+"Hvis det finnes en fiende av målet på motsatt side av målet når denne "
+"enheten angriper, avleder den oppmerksomheten til målet og reduserer målets "
+"treffsjanse."
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:200
@@ -4688,6 +4643,10 @@ msgid ""
 "All adjacent lower-level units from the same side deal 25% more damage for "
 "each difference in level."
 msgstr ""
+"Denne enheten kan lede andre tropper i kamp.\n"
+"\n"
+"Alle tilstøtende enheter av lavere nivå fra samme side gjør 25 % mer skade "
+"per nivåforskjell."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:220
@@ -4696,19 +4655,12 @@ msgstr "linjebryter"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:221
-#, fuzzy
-#| msgid ""
-#| "Skirmisher:\n"
-#| "This unit is skilled in moving past enemies quickly, and ignores all "
-#| "enemy Zones of Control."
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"Linjebryter:\n"
-"Denne enheten er trent i å snike seg raskt forbi fiender, og ignorerer "
-"derfor alle fiendtlige kontrollsoner (ZoC). (Unntak: hvis den stopper i en "
-"fiendtlig kontrollsone, vil den gjenværende forflytning bli satt til 0.) "
+"Denne enheten er dyktig til å bevege seg raskt forbi fiender og ignorerer "
+"alle fiendtlige kontrollsoner."
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:237
@@ -4724,12 +4676,11 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
-"Belyser:\n"
 "Denne enheten lyser opp det omkringliggende området, som gjør at lovlydige "
 "enheter kjemper bedre og kaotiske enheter kjemper dårligere.\n"
 "\n"
-"Enhver naboenhet til denne enheten vil kjempe som om det var skumring når "
-"det er natt, og som om det var dag når det er skumring eller morgengry."
+"Enhver tilstøtende enhet vil kjempe som om det var skumring når det er natt, "
+"og som om det var dag når det er skumring eller morgengry."
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:254
@@ -4738,14 +4689,12 @@ msgstr "teleporterer"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:255
-#, fuzzy
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
-"Teleporterer:\n"
-"Denne enheten kan bruke 1 flytt på å teleportere seg selv mellom to hvilke "
-"som helst vennligsinnede landsbyer. "
+"Denne enheten kan teleportere mellom to tomme landsbyer som tilhører dens "
+"side ved å bruke en av sine forflytningspoeng."
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:286
@@ -4754,7 +4703,6 @@ msgstr "bakhold"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:287
-#, fuzzy
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -4762,28 +4710,25 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
-"Skogsniker:\n"
-"Denne enheten kan gjemme seg i skog, og forbli uoppdaget av sine fiender.\n"
+"Denne enheten kan gjemme seg i skog, og forbli uoppdaget av fienden.\n"
 "\n"
-"Fiendtlige enheter kan ikke se eller angripe denne enheten når den er i "
-"skog, med unntak av når den har utført et angrep forrige runde, eller hvis "
-"de står rett ved siden av den."
+"Fiendtlige enheter kan ikke se denne enheten mens den hviler i skog, med "
+"mindre de har enheter ved siden av den. Enhver fiendtlig enhet som først "
+"oppdager denne enheten, mister umiddelbart alle gjenværende "
+"forflytningspoeng."
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:306
 msgid "burrow"
-msgstr ""
+msgstr "graver"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:307
-#, fuzzy
-#| msgid "female^slow"
 msgid "female^burrow"
-msgstr "treg"
+msgstr "graver"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:308
-#, fuzzy
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -4792,16 +4737,16 @@ msgid ""
 "except if they have units next to it. Any enemy unit that first discovers "
 "this unit immediately loses all its remaining movement."
 msgstr ""
-"Skogsniker:\n"
-"Denne enheten kan gjemme seg i skog, og forbli uoppdaget av sine fiender.\n"
+"Denne enheten kan gjemme seg i skog eller sand hvis den hviler (ikke har "
+"flyttet seg på en tur), og forbli uoppdaget av fienden.\n"
 "\n"
-"Fiendtlige enheter kan ikke se eller angripe denne enheten når den er i "
-"skog, med unntak av når den har utført et angrep forrige runde, eller hvis "
-"de står rett ved siden av den."
+"Fiendtlige enheter kan ikke se denne enheten mens den hviler i skog eller "
+"sand, med mindre de har enheter ved siden av den. Enhver fiendtlig enhet som "
+"først oppdager denne enheten, mister umiddelbart alle gjenværende "
+"forflytningspoeng."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:330
-#, fuzzy
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -4809,12 +4754,11 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
-"Nattskygger:\n"
-"Enheten blir usynlig gjennom natten.\n"
+"Enheten blir usynlig om natten.\n"
 "\n"
-"Fiendtlige enheter kan ikke se eller angripe denne enheten om natten, "
-"unntatt direkte etter at den har angrepet, eller hvis det er andre "
-"fiendtlige enheter i denne enhetens nabofelt. "
+"Fiendtlige enheter kan ikke se denne enheten om natten, med mindre de har "
+"enheter ved siden av den. Enhver fiendtlig enhet som oppdager denne enheten, "
+"mister umiddelbart alle gjenværende forflytningspoeng."
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:349
@@ -4823,7 +4767,6 @@ msgstr "skjulested"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:350
-#, fuzzy
 msgid ""
 "This unit can hide in villages, and remain undetected by its enemies, except "
 "by those standing next to it.\n"
@@ -4832,11 +4775,13 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Dykke:\n"
+"Denne enheten kan skjule seg i landsbyer og forbli uoppdaget av fiendene, "
+"bortsett fra de som står rett ved siden av den.\n"
 "\n"
-"Fiendtlige enheter kan ikke se eller angripe denne enheten når den befinner "
-"seg på dypt vann, unntatt for en runde rett etter at enheten selv har "
-"angrepet, eller hvis den har fiendtlige enheter i noe nabofelt. "
+"Fiendtlige enheter kan ikke se denne enheten mens den er i en landsby, med "
+"mindre de har enheter ved siden av den. Enhver fiendtlig enhet som først "
+"oppdager denne enheten, mister umiddelbart alle gjenværende "
+"forflytningspoeng."
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:368
@@ -4872,6 +4817,8 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
 msgstr ""
+"Denne enheten får 1 ekstra helsepong lagt til sitt maksimale hver gang den "
+"dreper en enhet, med unntak av enheter som er immune mot pest."
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -4882,518 +4829,415 @@ msgstr "Maks HP bonus +3, Maks FP +20%"
 #. [time]: id=midday_hour
 #: data/core/macros/schedules.cfg:37 data/core/macros/schedules.cfg:344
 msgid "Midday"
-msgstr ""
+msgstr "Middag"
 
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:79 data/core/macros/schedules.cfg:206
 msgid "Midnight"
-msgstr ""
+msgstr "Midnatt"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:218
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — First Hour"
-msgstr "Natt"
+msgstr "Andre vakt — Første time"
 
 #. [time]: id=second_watch_hour2
 #: data/core/macros/schedules.cfg:230
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
-msgstr "Natt"
+msgstr "Andre vakt — Andre time"
 
 #. [time]: id=second_watch_hour3
 #: data/core/macros/schedules.cfg:242
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
-msgstr "Natt"
+msgstr "Andre vakt — Tredje time"
 
 #. [time]: id=second_watch_hour4
 #: data/core/macros/schedules.cfg:254
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
-msgstr "Natt"
+msgstr "Andre vakt — Fjerde time"
 
 #. [time]: id=second_watch_hour5
 #: data/core/macros/schedules.cfg:266
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
-msgstr "Natt"
+msgstr "Andre vakt — Femte time"
 
 #. [time]: id=second_watch_hour6
 #: data/core/macros/schedules.cfg:278
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
-msgstr "Natt"
+msgstr "Andre vakt — Sjette time"
 
 #. [time]: id=morning_hour1
 #: data/core/macros/schedules.cfg:302
 msgid "Morning — First Hour"
-msgstr ""
+msgstr "Morgen — Første time"
 
 #. [time]: id=morning_hour2
 #: data/core/macros/schedules.cfg:314
 msgid "Morning — Second Hour"
-msgstr ""
+msgstr "Morgen — Andre time"
 
 #. [time]: id=morning_hour3
 #: data/core/macros/schedules.cfg:326
 msgid "Morning — Third Hour"
-msgstr ""
+msgstr "Morgen — Tredje time"
 
 #. [time]: id=morning_hour4
 #: data/core/macros/schedules.cfg:335
 msgid "Morning — Fourth Hour"
-msgstr ""
+msgstr "Morgen — Fjerde time"
 
 #. [time]: id=afternoon_hour1
 #: data/core/macros/schedules.cfg:353
 msgid "Afternoon — First Hour"
-msgstr ""
+msgstr "Ettermiddag — Første time"
 
 #. [time]: id=afternoon_hour2
 #: data/core/macros/schedules.cfg:362
 msgid "Afternoon — Second Hour"
-msgstr ""
+msgstr "Ettermiddag — Andre time"
 
 #. [time]: id=afternoon_hour3
 #: data/core/macros/schedules.cfg:371
 msgid "Afternoon — Third Hour"
-msgstr ""
+msgstr "Ettermiddag — Tredje time"
 
 #. [time]: id=afternoon_hour4
 #: data/core/macros/schedules.cfg:380
 msgid "Afternoon — Fourth Hour"
-msgstr ""
+msgstr "Ettermiddag — Fjerde time"
 
 #. [time]: id=afternoon_hour5
 #: data/core/macros/schedules.cfg:389
 msgid "Afternoon — Fifth Hour"
-msgstr ""
+msgstr "Ettermiddag — Femte time"
 
 #. [time]: id=afternoon_hour6
 #: data/core/macros/schedules.cfg:400
 msgid "Afternoon — Sixth Hour"
-msgstr ""
+msgstr "Ettermiddag — Sjette time"
 
 #. [time]: id=first_watch_hour1
 #: data/core/macros/schedules.cfg:423
 msgid "First Watch — First Hour"
-msgstr ""
+msgstr "Første vakt — Første time"
 
 #. [time]: id=first_watch_hour2
 #: data/core/macros/schedules.cfg:435
 msgid "First Watch — Second Hour"
-msgstr ""
+msgstr "Første vakt — Andre time"
 
 #. [time]: id=first_watch_hour3
 #: data/core/macros/schedules.cfg:447
 msgid "First Watch — Third Hour"
-msgstr ""
+msgstr "Første vakt — Tredje time"
 
 #. [time]: id=first_watch_hour4
 #: data/core/macros/schedules.cfg:459
 msgid "First Watch — Fourth Hour"
-msgstr ""
+msgstr "Første vakt — Fjerde time"
 
 #. [time]: id=dawn1
 #: data/core/macros/schedules.cfg:514
-#, fuzzy
-#| msgid "First Watch"
 msgid "First Dawn"
-msgstr "Kveld"
+msgstr "Første daggry"
 
 #. [time]: id=dawn2
 #: data/core/macros/schedules.cfg:525
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dawn"
-msgstr "Natt"
+msgstr "Andre dagry"
 
 #. [time]: id=morning1
 #: data/core/macros/schedules.cfg:536
-#, fuzzy
-#| msgid "Morning"
 msgid "First Morning"
-msgstr "Formiddag"
+msgstr "Første morgen"
 
 #. [time]: id=morning2
 #: data/core/macros/schedules.cfg:548
-#, fuzzy
-#| msgid "Morning"
 msgid "Second Morning"
-msgstr "Formiddag"
+msgstr "Andre morgen"
 
 #. [time]: id=midday1
 #: data/core/macros/schedules.cfg:560
-#, fuzzy
-#| msgid "First Watch"
 msgid "First Midday"
-msgstr "Kveld"
+msgstr "Første middag"
 
 #. [time]: id=midday2
 #: data/core/macros/schedules.cfg:572
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Midday"
-msgstr "Natt"
+msgstr "Andre middag"
 
 #. [time]: id=afternoon1
 #: data/core/macros/schedules.cfg:584
-#, fuzzy
-#| msgid "Afternoon"
 msgid "First Afternoon"
-msgstr "Ettermiddag"
+msgstr "Første ettermiddag"
 
 #. [time]: id=afternoon2
 #: data/core/macros/schedules.cfg:596
-#, fuzzy
-#| msgid "Afternoon"
 msgid "Second Afternoon"
-msgstr "Ettermiddag"
+msgstr "Andre ettermiddag"
 
 #. [time]: id=dusk1
 #: data/core/macros/schedules.cfg:608
-#, fuzzy
-#| msgid "firststrike"
 msgid "First Dusk"
-msgstr "førsteslag"
+msgstr "Første skumring"
 
 #. [time]: id=dusk2
 #: data/core/macros/schedules.cfg:619
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dusk"
-msgstr "Natt"
+msgstr "Andre skumring"
 
 #. [time]: id=short_dark
 #: data/core/macros/schedules.cfg:630
 msgid "The Short Dark"
-msgstr ""
+msgstr "Det korte mørket"
 
 #. [time]: id=long_dark1
 #: data/core/macros/schedules.cfg:642
 msgid "The Long Dark (1)"
-msgstr ""
+msgstr "Det lange mørket (1)"
 
 #. [time]: id=long_dark2
 #: data/core/macros/schedules.cfg:654
 msgid "The Long Dark (2)"
-msgstr ""
+msgstr "Det lange mørket (2)"
 
 #. [time]: id=long_dark3
 #: data/core/macros/schedules.cfg:666
 msgid "The Long Dark (3)"
-msgstr ""
+msgstr "Det lange mørket (3)"
 
 #. [time]: id=long_dark4
 #: data/core/macros/schedules.cfg:680
 msgid "The Long Dark (4)"
-msgstr ""
+msgstr "Det lange mørket (4)"
 
 #: data/core/macros/special-notes.cfg:9
-#, fuzzy
-#| msgid ""
-#| " Spirits have very unusual resistances to damage, and move quite slowly "
-#| "over open water."
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
-" Åndevesen har unaturlig høy ressistanse mot skade, men beveger seg sakte "
-"over åpent vann."
+"Ånder har svært uvanlige motstandsverdier mot skade og beveger seg ganske "
+"sakte over åpent vann."
 
 #: data/core/macros/special-notes.cfg:12
-#, fuzzy
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" Denne enheten har hellig angrep, og kan gjøre formidabel skade mot vandøde "
-"fiender."
+"Denne enhetens arkane angrep gjør enorm skade på magiske skapninger, og noe "
+"skade på alminnelige skapninger."
 
 #: data/core/macros/special-notes.cfg:19
-#, fuzzy
 msgid "This unit is capable of basic healing."
-msgstr ""
-" Denne enheten kan helbrede enheter rundt seg, eller kurere forgiftning."
+msgstr "Denne enheten kan utføre enkel helbredelse."
 
 #: data/core/macros/special-notes.cfg:22
-#, fuzzy
 msgid "This unit is capable of rapid healing."
-msgstr ""
-" Denne enheten kan helbrede enheter rundt seg, eller kurere forgiftning."
+msgstr "Denne enheten kan utføre rask helbredelse."
 
 #: data/core/macros/special-notes.cfg:25
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
-msgstr ""
-" Denne enheten kan helbrede enheter rundt seg, eller kurere forgiftning."
+msgstr "Denne enheten kan helbrede enheter rundt seg og kurere dem for gift."
 
 #: data/core/macros/special-notes.cfg:28
-#, fuzzy
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
-msgstr ""
-" Denne enheten kan helbrede enheter rundt seg eller hindre gift å gjøre "
-"skade."
+msgstr "Denne enheten kan nøytralisere gifteffekter hos enheter rundt seg."
 
 #: data/core/macros/special-notes.cfg:31
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
 msgstr ""
-" Denne enheten regenererer. Den helbredes alltid som om den sto i landsby."
+"Denne enheten regenererer og helbredes som om den alltid var stasjonert i en "
+"landsby."
 
 #: data/core/macros/special-notes.cfg:34
-#, fuzzy
-#| msgid ""
-#| " The steadiness of this unit reduces damage from some attacks, but only "
-#| "while defending."
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
-msgstr " Enhetens standhaftighet lar den doble ressistanser i forsvar."
+msgstr ""
+"Denne enhetens stabilitet reduserer skader fra enkelte angrep, men bare i "
+"forsvar."
 
 #: data/core/macros/special-notes.cfg:37
-#, fuzzy
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
-msgstr " Denne enheten kan lede enheter av lavere grad i kamp."
+msgstr ""
+"Lederevnen til denne enheten gjør at tilstøtende enheter på samme side gir "
+"mer skade i kamp, men dette gjelder kun enheter på lavere nivå."
 
 #: data/core/macros/special-notes.cfg:40
-#, fuzzy
-#| msgid ""
-#| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
-#| "control and thus move unhindered around them."
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" Denne enheten kan bryte gjennom fiendens linjer og ignorerer sonekontroll."
+"Denne enhetens dyktighet i linjebryting lar den ignorere fiendtlige "
+"kontrollsoner og bevege seg uhindret rundt dem."
 
 #: data/core/macros/special-notes.cfg:43
-#, fuzzy
-#| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
-msgstr ""
-" Enheten belyser området rundt seg, hederlige enheter vil kjempe bedre i "
-"mørke huler og nattestid."
+msgstr "Belyser øker lysnivået i tilstøtende områder."
 
 #: data/core/macros/special-notes.cfg:46
-#, fuzzy
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"Teleporterer:\n"
-"Denne enheten kan bruke 1 flytt på å teleportere seg selv mellom to hvilke "
-"som helst vennligsinnede landsbyer. "
+"Denne enheten kan bruke ett trekk til å teleportere mellom to tomme "
+"landsbyer kontrollert av dens side."
 
 #: data/core/macros/special-notes.cfg:49
-#, fuzzy
-#| msgid ""
-#| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
-#| "unless it is immediately adjacent or has revealed itself by attacking."
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
-" I skoglendt terreng kan denne enheten legge seg i skjul og angripe "
-"passerende fiender fra bakhold."
+"I skogområder gjør denne enhetens bakholdsegenskap den usynlig for fiender "
+"med mindre de står umiddelbart ved siden av eller har blitt avslørt ved "
+"angrep."
 
 #: data/core/macros/special-notes.cfg:52
-#, fuzzy
-#| msgid ""
-#| " This unit is able to hide at night, leaving no trace of its presence."
 msgid "This unit is able to hide at night, leaving no trace of its presence."
-msgstr " Denne enheten går i ett med nattens mørke."
+msgstr ""
+"Denne enheten kan skjule seg om natten uten å etterlate noen spor av sin "
+"tilstedeværelse."
 
 #: data/core/macros/special-notes.cfg:55
-#, fuzzy
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
-"Dykke:\n"
-"\n"
-"Fiendtlige enheter kan ikke se eller angripe denne enheten når den befinner "
-"seg på dypt vann, unntatt for en runde rett etter at enheten selv har "
-"angrepet, eller hvis den har fiendtlige enheter i noe nabofelt. "
+"Denne enheten kan skjule seg i landsbyer (med unntak av vannlandsbyer) og "
+"forbli uoppdaget av fiender, bortsett fra de som står ved siden av den."
 
 #: data/core/macros/special-notes.cfg:58
-#, fuzzy
-#| msgid ""
-#| " This unit can move unseen in deep water, requiring no air from the "
-#| "surface."
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
-msgstr " Denne enheten kan holde seg i skjul, neddykket på dypt vann."
+msgstr ""
+"Denne enheten kan bevege seg usett i dypt vann uten å trenge luft fra "
+"overflaten."
 
 #: data/core/macros/special-notes.cfg:61
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
+"Denne enheten får 1 ekstra helsepong lagt til sitt maksimum hver gang den "
+"dreper en levende enhet."
 
 #: data/core/macros/special-notes.cfg:64
-#, fuzzy
-#| msgid ""
-#| " Whenever its berserk attack is used, this unit continues to push the "
-#| "attack until either it or its enemy lies dead."
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-" Når et berserkerangrep brukes, fortsetter enheten kampen til en av de "
-"stridende faller."
+"Når den bruker sitt berserk-angrep, fortsetter denne enheten å angripe til "
+"enten den eller fienden er død."
 
 #: data/core/macros/special-notes.cfg:67
-#, fuzzy
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-" Hvis en alliert enhet oppholder fienden, kan denne enheten snike seg innpå "
-"og påføre fienden dobbel skade bakfra."
+"Hvis det er en fiende av målet på motsatt side av målet under angrep, kan "
+"denne enheten utføre bakholdsangrep som gir dobbelt skade ved å snike seg "
+"bak fienden."
 
 #: data/core/macros/special-notes.cfg:70
-#, fuzzy
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
-" Levende fiender som faller mot en forpestet fiende vil gjenoppstå som en "
-"vandød."
+"Fiender som dør av pest, vil gjenoppstå som vandøde, med mindre de står på "
+"en landsby."
 
 #: data/core/macros/special-notes.cfg:73
-#, fuzzy
 msgid ""
 "Foes who lose their life to certain horrors of nature become nourishment for "
 "a rapidly growing larva, unless they are standing in a village."
 msgstr ""
-" Levende fiender som faller mot en forpestet fiende vil gjenoppstå som en "
-"vandød."
+"Fiender som dør av naturens redsler, blir næring for en raskt voksende "
+"larve, med mindre de står i en landsby."
 
 #: data/core/macros/special-notes.cfg:76
-#, fuzzy
-#| msgid ""
-#| " This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
-" Denne enheten kan forsinke fiender. Forsinkede enheter har halvert "
-"forflytning og gjør halv skade en hel runde."
+"Denne enheten kan sakke fiender, halvere deres bevegelseshastighet og "
+"angrepsskade frem til de avslutter en runde."
 
 #: data/core/macros/special-notes.cfg:79
-#, fuzzy
-#| msgid ""
-#| " The ability to turn the living to stone makes this unit extremely "
-#| "dangerous."
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
-" Evnen til å forsteine levende fiender gjør denne enheten ekstremt farlig."
+"Evnen til å forvandle levende til stein gjør denne enheten ekstremt farlig."
 
 #: data/core/macros/special-notes.cfg:82
-#, fuzzy
-#| msgid ""
-#| " This unit’s marksmanship gives it a high chance of hitting targeted "
-#| "enemies, but only on the attack."
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
 msgstr ""
-" Enhetens skarpskytterferdigheter garanterer høy treffsjanse, men bare i "
-"angrep."
+"Denne enhetens treffsikkerhet gir den høy sjanse for å treffe fiender, men "
+"bare når den angriper."
 
 #: data/core/macros/special-notes.cfg:85
-#, fuzzy
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
-msgstr " Enhetsens avstandsangrep er magisk, og har alltid en god treffsjanse."
+msgstr ""
+"Denne enheten har magiske angrep som alltid har høy sannsynlighet for å "
+"treffe en motstander."
 
 #: data/core/macros/special-notes.cfg:88
-#, fuzzy
-#| msgid ""
-#| " The swarming attacks of this unit become less deadly whenever its "
-#| "members are wounded."
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
-msgstr " Enhetens svermende angrep svekkes etterhvert som enheten tar skade."
+msgstr ""
+"Denne enhetens svermeangrep blir mindre dødelige når medlemmene er skadet."
 
 #: data/core/macros/special-notes.cfg:91
-#, fuzzy
-#| msgid ""
-#| " Using a charging attack doubles both damage dealt and received; this "
-#| "does not affect defensive retaliation."
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-" Stormangrep dobler skaden når du angriper, både for angripende og "
-"forsvarende enhet. Skaden dobles derimot ikke når enheten med stormangrep "
-"forsvarer seg."
+"Et stormangrep dobler både skaden som gis og mottas; dette påvirker ikke "
+"defensiv gjengjeldelse."
 
 #: data/core/macros/special-notes.cfg:94
-#, fuzzy
-#| msgid ""
-#| " During battle, this unit can drain life from victims to renew its own "
-#| "health."
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr ""
-" Enheten kan suge til seg livskraft fra levende fiender for å gjenvinne egen "
-"helse."
+"Under kamp kan denne enheten sluke livskraft fra sine ofre for å fornye sin "
+"egen helse."
 
 #: data/core/macros/special-notes.cfg:97
-#, fuzzy
-#| msgid ""
-#| " The length of this unit’s weapon allows it to strike first in melee, "
-#| "even in defense."
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
-msgstr " Enhetens lange våpen lar den slå først, også i forsvar."
+msgstr ""
+"Lengden på denne enhetens våpen gjør det mulig å slå først i nærkamp, selv i "
+"forsvar."
 
 #: data/core/macros/special-notes.cfg:100
-#, fuzzy
-#| msgid ""
-#| " The victims of this unit’s poison will continually take damage until "
-#| "they can be cured in town or by a unit which cures."
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-" En forgiftet fiende vil få 8 skade hver runde til den kureres. Giften vil "
-"ikke redusere enheten under et helsepoeng."
+"Ofre for denne enhetens gift vil kontinuerlig ta skade til de kan bli "
+"helbredet i en landsby eller av en enhet som kurerer."
 
 #: data/core/macros/special-notes.cfg:103
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
+"Denne enheten har et forsvarstak på visse terrengtyper — den kan ikke oppnå "
+"høyere forsvarsevne på blandede terreng med slike terrengtyper."
 
 #. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
 #. Don't use markup in this, because it's shown by both Pango (in the sidebar's tooltips) and the GUI1 help browser (for unit descriptions).
@@ -5402,6 +5246,8 @@ msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
 "duplicates):"
 msgstr ""
+"Spesialnotater (versjon 1.14-format, vennligst oppdater til den nye "
+"listeformatet for å unngå duplikater):"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -5442,14 +5288,14 @@ msgstr ""
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:15
-#, fuzzy
 msgid ""
 "<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
 "upkeep cost at the end of every turn, which is equal to their level. Loyal "
 "units do not incur this cost."
 msgstr ""
-"Lojale enheter krever ikke lønn. De fleste enheter krever betaling lik "
-"graden sin hver runde, men dette gjelder ikke lojale enheter."
+"<italic>text='Lojale'</italic> enheter krever ikke lønn. De fleste enheter "
+"krever betaling lik graden sin hver runde, men dette gjelder ikke lojale "
+"enheter."
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:56
@@ -5461,13 +5307,11 @@ msgstr "vandød"
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:57 data/core/macros/traits.cfg:83
 #: data/core/macros/traits.cfg:109
-#, fuzzy
 msgid "Immune to drain, poison, and plague"
-msgstr "Immun mot gift, pest og blodsuging"
+msgstr "Immun mot blodsuging, gift og pest"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:58
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -5478,18 +5322,18 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Vandøde enheter har alle 'vandød' som sitt eneste karaktertrekk. Ettersom de "
-"allerede er gjenreist som vandøde vil ikke pest kunne reise dem igjen, det "
-"kreves nye lik til dette. Vandøde kan heller ikke forgiftes. Blodsugere kan "
-"ikke tappe livskraft fra vandøde fiender ettersom de ikke har friskt blod i "
-"kroppen."
+"Vandøde enheter har alle 'vandød' som sitt eneste karaktertrekk. Siden "
+"vandøde enheter er de dødes kropper, gjenoppstått for å strides på ny, har "
+"gift ingen effekt på dem. Dette kan gjøre dem uvurderlige i møte med fiender "
+"som bruker gift i sine angrep."
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:58
-#, fuzzy
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
-msgstr "Vandøde enheter er immune mot gift, blodsuging og pest."
+msgstr ""
+"<italic>text='Vandøde'</italic> enheter er immune mot gift, blodsuging og "
+"pest."
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:81
@@ -5510,26 +5354,30 @@ msgid ""
 "mechanical units don’t really have life, drain, poison, and plague have no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"Mekaniske enheter har vanligvis kun mekanisk som sitt eneste karaktertrekk . "
+"Siden mekaniske enheter egentlig ikke har liv, er de immun mot blodsuging, "
+"gift og pest."
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:84
-#, fuzzy
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
-msgstr "Vandøde enheter er immune mot gift, blodsuging og pest."
+msgstr ""
+"<italic>text='Mekaniske'</italic> enheter er immune mot gift, blodsuging og "
+"pest."
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:107
-#, fuzzy
 msgid "elemental"
-msgstr "skjulested"
+msgstr "elemental"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:108
-#, fuzzy
 msgid "female^elemental"
-msgstr "lojal"
+msgstr "elemental"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:110
@@ -5540,14 +5388,20 @@ msgid ""
 "elemental units are energy-based beings, drain, poison, and plague have no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"Elementalenheter har har vanligvis kun elemental som sitt eneste "
+"karaktertrekk. Siden elementaler er energibaserte vesener, har blodsuging, "
+"gift og pest ingen effekt på dem."
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:110
-#, fuzzy
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
-msgstr "Vandøde enheter er immune mot gift, blodsuging og pest."
+msgstr ""
+"<italic>text='Elementale'</italic> enheter er immune mot gift, blodsuging og "
+"pest."
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:132
@@ -5561,7 +5415,6 @@ msgstr "sterk"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -5572,18 +5425,19 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Karaktertrekket sterk nyttig for alle enheter med nærkampvåpen,men mest "
-"effektivt er det for enheter med et høyt antall slag, som alvekrigere. "
-"Sterke enheter kan være svært nyttige når en liten mengde ekstra skade er "
-"alt som skal til for å avgjøre en kamp."
+"Mens nyttig for enhver nærkampenhet, er 'sterk' spesielt effektiv for "
+"enheter som utfører mange slag, slik som alvenes kriger. Sterke enheter kan "
+"være svært nyttige når litt ekstra skade er alt som trengs for å gjøre et "
+"angrep om til et dødelig slag."
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
 "strike in melee combat, and have 1 additional hitpoint."
-msgstr "Sterke enheter gjør 1 mer skade i nærkamp, og har 1 HP mer enn vanlig."
+msgstr ""
+"<italic>text='Sterke'</italic> enheter gjør 1 ekstra skade for hvert "
+"vellykket slag i nærkamp og har 1 ekstra helsepong."
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:153
@@ -5597,7 +5451,6 @@ msgstr "hendig"
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:155
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -5608,18 +5461,19 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Hendig er et karaktertrekk som bare alver besitter. Det alvefolket er kjent "
-"for sin ynde og store ferdighet med buen. Noen er likevel begavet med et "
-"naturlig talent som overskrider deres brødres. Disse alvene gir et ekstra "
-"skadepoeng med hver pil."
+"Hendig er et karaktertrekk unikt for alver. Alver er kjent for sin "
+"uforklarlige eleganse og upåklagelige ferdighet med buer. Noen av dem er "
+"imidlertid begavet med et naturlig talent som overgår deres medbrødre. Disse "
+"alvene påfører ett ekstra poeng skade med hver pil."
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:155
-#, fuzzy
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
-msgstr "Hendige enheter gjør 1 mer skade med avstandsvåpen."
+msgstr ""
+"<italic>text='Hendige'</italic> enheter gjør 1 ekstra skade for hvert "
+"vellykket slag ved avstandsangrep."
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:170
@@ -5633,7 +5487,6 @@ msgstr "rask"
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:172
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -5646,20 +5499,21 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Rask er det mest merkbare karaktertrekket. Spesiellt på trege enheter som "
-"troll og panserinfanteri. Enheter som er kjappe kan ofte ha mye større "
-"mobilitet i røft terreng, så ta det med i betraktningen når du sender ut "
-"styrkene dine. Husk også at raske enheter er ikke så seige som andre og er "
-"derfor ikke så gode til å holde utsatte posisjoner."
+"Rask er det mest merkbare karaktertrekket, spesielt for saktegående enheter "
+"som troll eller tungt infanteri. Enheter med trekket 'rask' har ofte "
+"betydelig økt mobilitet i ulendt terreng, noe som kan være viktig å ta i "
+"betraktning når du plasserer styrkene dine. Rask-enheter er imidlertid ikke "
+"like robuste som enheter uten dette trekket, og er derfor mindre egnet til å "
+"holde omstridte posisjoner."
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:172
-#, fuzzy
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
 "hitpoints than usual."
 msgstr ""
-"Raske enheter har 1 ekstra forflyttningspoeng, men 10% mindre HP enn vanlig"
+"<italic>text='Raske'</italic> enheter har 1 ekstra forflytningspoeng, men 5 "
+"% færre helsepoeng enn vanlig."
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:190
@@ -5673,7 +5527,6 @@ msgstr "intelligent"
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:192
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -5686,10 +5539,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Intelligente enheter er svært nyttige i starten av et felttog, siden de "
-"raskt kan forfremmes til enheter av høyere grad. Senere i felttoget er de "
-"ikke så nyttige, og hvis du har mange enheter med høye grader kan det være "
-"lurere å tilbakekalle enheter med mer attraktive 'langsiktige' karaktertrekk."
+"<italic>text='Intelligente'</italic> enheter er svært nyttige i begynnelsen "
+"av en kampanje, da de raskere kan forfremmes til høyere nivåer. Senere i "
+"kampanjer er intelligent ikke like nyttig, ettersom "
+"<italic>text='Forfremmelse etter maksimalnivå'</italic> (FEMN) ikke gir like "
+"betydelig endring som en nivåoppgradering. Hvis du har mange enheter på "
+"'maksimalt nivå', kan det være lurt å hente frem enheter med mer ønskelige "
+"trekk."
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:192
@@ -5719,18 +5575,20 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Seige enheter kan være nyttige i alle stadium i en kampanje og er et nyttig "
-"karaktertrekk for alle enheter. Du vil legge mer merke til det på enkelte "
-"enheter enn andre. Seige enheter er spesiellt nyttige til å holde utsatte "
-"strategiske posisjoner mot motstanderen."
+"Seige enheter kan være nyttige i alle stadier av en kampanje, og dette er et "
+"fordelaktig karaktertrekk for alle enheter. Seig er ofte mest nyttig som "
+"trekk når det forekommer hos en enhet med en kombinasjon av lavt "
+"helsepoengnivå, god forsvarsevne eller høy motstand. Seige enheter er "
+"spesielt verdifulle for å holde strategiske posisjoner mot motstandere."
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:208
-#, fuzzy
 msgid ""
 "<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
 "gain 1 more per level."
-msgstr "Seige enheter har 10%+3 HP mer enn vanlig"
+msgstr ""
+"<italic>text='Seige'</italic> enheter har 4 ekstra helsepoeng og får 1 "
+"ekstra helsepoeng per nivå."
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:227
@@ -5751,6 +5609,11 @@ msgid ""
 "more per level. They will also heal 2 hitpoints each turn, regardless of "
 "whether they engaged in combat the turn before."
 msgstr ""
+"\n"
+"\n"
+"<italic>text='Sunne'</italic> enheter har 1 ekstra helsepoeng og får 1 "
+"ekstra helsepoeng per nivå. De vil også helbrede 2 helsepoeng hver runde, "
+"uavhengig av om de deltok i kamp i forrige runde."
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:230
@@ -5758,6 +5621,8 @@ msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when traveling."
 msgstr ""
+"Kjent for sin vitalitet, er noen dverger mer robuste enn andre og kan hvile "
+"selv mens de reiser."
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:253 data/core/macros/traits.cfg:270
@@ -5767,12 +5632,13 @@ msgstr "fryktløs"
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:254 data/core/macros/traits.cfg:271
 msgid "Fights normally during unfavorable times of day/night"
-msgstr ""
+msgstr "Kjemper normalt selv under ugunstige tider på døgnet."
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:255 data/core/macros/traits.cfg:272
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
+"Sensitivitet ovenfor lys og mørke har ingen effekt på disse modige sjelene."
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:285
@@ -5814,11 +5680,12 @@ msgstr "svak"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:306
-#, fuzzy
 msgid ""
 "Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
 "in hitpoints and melee damage."
-msgstr "Vandøde enheter er immune mot gift, blodsuging og pest."
+msgstr ""
+"Enheter med karaktertrekket <italic>text='svak'</italic> får 1 poeng "
+"reduksjon i helsepoeng og nærkampskade."
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:323
@@ -5993,6 +5860,8 @@ msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
 msgstr ""
+"Denne enhetens forsvarsteknikker reduserer sjansen for et vellykket "
+"fiendtlig angrep."
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/weapon_specials.cfg:115
@@ -6129,6 +5998,18 @@ msgid ""
 "by their stronger siblings. The stronger ones will routinely grab most of "
 "the food and thus grow stronger still, while their weaker siblings do not."
 msgstr ""
+"Til tross for orkenes avhengighet av rå styrke, er det få av deres barn som "
+"vokser opp med noen form for den. Tusser er, på tross av sitt utseende, født "
+"som søsken til orkene og medlemmer av samme rase. Mens andre raser vanligvis "
+"føder enkeltbarn eller tvillinger, får orkene store kull med barn på en "
+"gang, noe som får populasjonen deres til å vokse eksplosivt. I hvert kull "
+"vil det bare være én eller to som vokser opp til å ha styrken til en “ekte "
+"ork”, noen få som fødes litt mindre og svakere, mens resten, ofte halvparten "
+"av kullet, er mye svakere og skjebnebestemt til å bli tusser. Nesten fra "
+"fødselen av er klassesystemet i orkisk samfunn tydelig, der de svakere blir "
+"satt på plass av sine sterkere søsken. De sterkere vil jevnlig ta "
+"mesteparten av maten og dermed bli enda sterkere, mens deres svakere søsken "
+"gjør det ikke."
 
 #. [race]: id=bats
 #: data/core/units.cfg:39
@@ -6154,6 +6035,12 @@ msgid ""
 "especially when encountered in groups. Typically nocturnal, they are often "
 "kept (and occasionally tamed) by those who share their love of the night."
 msgstr ""
+"Flaggermus finnes i mange former og størrelser, og de fleste er ganske "
+"harmløse, og lever av insekter og andre smådyr. De større og mer aggressive "
+"artene er kjent for å utgjøre en trussel mot mennesker og andre raser samt "
+"deres husdyr, spesielt når de opptrer i flokker. Typisk nattaktive blir de "
+"ofte holdt (og av og til temmet) av dem som deler deres kjærlighet til "
+"natten."
 
 #. [race]: id=drake
 #: data/core/units.cfg:51
@@ -6235,6 +6122,63 @@ msgid ""
 "a relatively cold climate, a feature which has allowed them to populate even "
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
+"Draker er store, bevingede og ildsprutende skapninger som minner om ekte "
+"drager. I gjennomsnitt er en voksen drake rundt tre meter høy og veier lett "
+"mer enn en mann og en hest til sammen. Deres hud består av harde skjell som "
+"er motstandsdyktige mot de fleste fysiske angrep, med unntak av spiddende "
+"våpen og kulde. De fleste draker er i stand til ekte flyging og kan "
+"tilbakelegge lange avstander raskt. Imidlertid begrenser deres vekt og "
+"størrelse flyveegenskapene noe, og gjør dem klossete i luften. Hvor det er "
+"mulig, utnytter de terreng som åser, fjell og trær som avsatser for å oppnå "
+"større høyde og hastighet. Heldigvis for deres fiender gjør deres store "
+"størrelse dem til lette mål for dem som våger å angripe.\n"
+"\n"
+"Draker er iboende magiske vesener, drevet av en mystisk indre ild som gir "
+"dem liv. Dette kan lett observeres når en av deres art faller i kamp; deres "
+"indre ild frigjøres og brenner restene til aske. Denne indre ilden er også "
+"deres største svakhet, ettersom den gjør dem svært sårbare for kuldeangrep. "
+"Til tross for sin magiske natur er draker ute av stand til å kanalisere magi "
+"på en kontrollert måte. Selv om magien i drakens kropp gjør det mulig for "
+"dem å sprute ild og gir dem livskraft, har de ingen viljemessig kontroll "
+"over denne magiens funksjoner.\n"
+"\n"
+"<header>text='Samfunn'</header>\n"
+"Draker er en relativt krigersk rase, og deres samfunn kan best beskrives som "
+"kultiverte, militære samfunn. Kjernen i en drakestamme består av en liten "
+"gruppe erfarne krigere ledet av en gjensidig respektert – eller simpelthen "
+"fryktet – dominerende leder som styrer med hard hånd. Hver drake forventes å "
+"tjene sin plass i den strenge hierarkiet, adlyde sine overordnede og "
+"kommandere sine underordnede. Adgang til eliten er kun mulig ved å utfordre "
+"og beseire en overordnet i en-til-en-kamp, som også danner hierarkiet "
+"innenfor eliten. Enhver form for bedrag overfor andre draker betraktes, uten "
+"unntak, som feighet og er helt uakseptabelt.\n"
+"\n"
+"Selv om deres krigerske natur og territoriale instinkt driver dem til å "
+"forsvare sine områder vilt, invaderer eller krenker draker sjelden områder "
+"som allerede er bebodd av andre større raser. I stedet etablerer de seg i "
+"ubefolkede områder for å danne sitt eget territorium. De lever hovedsakelig "
+"av storvilt de jakter på i lavlandet rundt sine hjem, men både unger og "
+"lavere kaste-draker er kjent for å spise visse typer mose og sopp som de "
+"dyrker dypt i hulene sine. Draker setter stor pris på smedkunst innen "
+"rustning og våpen, men de verken behersker eller trenger annen vitenskap "
+"eller kultur utover dette. Likevel er de få redskapene de lager nesten uten "
+"sidestykke i kvalitet, bare matchet av de fineste smiene hos dvergene.\n"
+"\n"
+"Draker klekkes fra egg og kan naturlig leve i flere tiår, selv om noen har "
+"vært kjent for å overleve enda lengre. Likevel er døden i kamp den mest "
+"foretrukne måten for en drake å forlate denne verden på, og dermed lever de "
+"fleste draker ikke lenge nok til å oppleve sin naturlige levetid.\n"
+"\n"
+"<header>text='Geografi'</header>\n"
+"Draker stammer fra en øygruppe med vulkanske øyer kalt <ref>dst='morogor' "
+"text='Morogor'</ref> i <ref>dst='great_ocean' text='Det store hav'</ref>. En "
+"kombinasjon av befolkningspress og synkingen av mange av hjemøyene har ført "
+"til at drakekolonier har spredt seg til <ref>dst='great_continent' text='Det "
+"store kontinent'</ref>. Draker har en tendens til å bosette seg i fjellhuler "
+"nær vulkaner for å beskytte eggene, ungene og smiene sine. Selv om draker "
+"naturlig foretrekker varme, er deres indre ild mer enn nok til å holde dem i "
+"live selv i relativt kalde klima, en egenskap som har tillatt dem å befolke "
+"enkelte fjell i de nordligste områdene av Det store kontinent."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:87
@@ -6300,6 +6244,51 @@ msgid ""
 "Called runesmiths, they use these carvings to enchant items in order to "
 "augment certain aspects of their natures."
 msgstr ""
+"Dvergene er en rase kjent for sine gruvearbeidere, smeder, handelsmenn og "
+"krigere. Ansett som den tredje eldste rasen på Det store kontinent etter "
+"alver og troll, er deres tidlige historie innhyllet i mystikk. Legender "
+"forteller om en tid for lengst glemt da folket deres begynte å stige opp fra "
+"sin underjordiske verden gjennom huler. Ingenting er kjent om deres liv før "
+"de kom til overflaten, eller årsakene til at de tok steget opp, men de har "
+"vært en integrert del av kontinentets historie siden. Kort tid etter at de "
+"kom opp fra dypet, havnet dvergene i konflikt med landets opprinnelige "
+"innbyggere, alvene. Den opprinnelige årsaken til deres tvist har gått tapt i "
+"historien, men de to rasene har siden kjempet tre lange kriger, avbrutt av "
+"noen tiår med fred. I løpet av disse krigene klarte ikke dvergene å fordrive "
+"alvene fra de dype skogene i sør, men de sikret sin posisjon i åsene og "
+"fjellene i nord, nå kjent som Nordlandene. Siden den tid har de bygget "
+"fantastiske festningsverk og bosetninger dypt inne i fjellenes og klippenes "
+"sprekker i sitt territorium.\n"
+"\n"
+"Kanskje på grunn av sin isolasjon er dvergene generelt mistroiske eller "
+"fiendtlige overfor de fleste andre raser, spesielt alver. Det eneste "
+"unntaket fra dette temperamentet er overfor mennesker. Dette kan spores "
+"tilbake til æraen til Haldric I og menneskenes og orkenes ankomst til "
+"kontinentet. På dette tidspunktet begynte dvergene å tillate noen mennesker, "
+"hovedsakelig dissidenter og fredløse fra Kongeriket Wesnoth, å slå seg ned i "
+"visse områder av Nordlandene. Deres motivasjon var ikke overraskende. "
+"Skjebnen til disse individene minnet dvergene om deres tidlige historie med "
+"forfølgelse, og vekket en følelse av solidaritet. Dvergene hadde også mye å "
+"vinne på å knytte bånd til disse utstøtte. De slo seg ned i områder der "
+"dvergene selv ikke trivdes; sletter, skoger og sumper, noe som frigjorde dem "
+"fra ansvaret for å forsvare disse områdene.\n"
+"\n"
+"Dverger er små av vekst etter menneskelig standard, men på ingen måte "
+"skjøre. Deres krigere, tøffe og kraftige, er både fryktet og respektert over "
+"hele kontinentet for sin kampdyktighet. I tillegg er dvergene kjent for sine "
+"beregnende intellekter og utsøkte håndverk. Dvergesmeder er berømte for sine "
+"dødelige våpen og tunge rustninger. Disse utstyrene er uten sidestykke i "
+"kvalitet, muligens bare matchet av de som er laget av drakenes "
+"rustningssmeder. Deres intelligens og naturlige nysgjerrighet har også gjort "
+"dem til den mest teknologisk avanserte rasen på kontinentet. En av deres "
+"mest kjente og fryktede oppdagelser var et mystisk pulver som gir en enorm "
+"eksplosjon når det utsettes for ild eller gnister. Enkelte dvergkrigere "
+"bruker dette pulveret til å sende små objekter av gårde i ekstreme "
+"hastigheter. På grunn av sin teknologiske tilbøyelighet har mange dverger en "
+"tendens til å misstro magibrukere. Noen praktiserer imidlertid en form for "
+"magi basert på risting av runer. Kalt runesmeder bruker de disse "
+"utskjæringene for å fortrylle gjenstander og forsterke visse aspekter ved "
+"deres natur."
 
 #. [race]: id=elf
 #: data/core/units.cfg:107
@@ -6382,27 +6371,84 @@ msgid ""
 "tradition, in both Wesmere and Lintanir, an enchantress from the order of "
 "elven mystics is also called upon to facilitate the transition of power."
 msgstr ""
+"Sammenlignet med mennesker er alver noe høyere, mer smidige, men mindre "
+"robuste. De har litt spisse ører, blek hud og som regel blondt hår. En av de "
+"mest fremtredende forskjellene mellom mennesker og alver er deres uvanlig "
+"lange levetid — de fleste lever minst to århundrer, med mindre de rammes av "
+"sykdom, ulykke eller krig. Selv om noen alver med høy magisk evne har blitt "
+"kjent for å leve lenger, begynner de fleste å bli fysisk skrøpelige mellom "
+"250 og 300 år, og dør raskt etter dette.\n"
+"\n"
+"\n"
+"De fleste alver har en sterk tilknytning til urørt natur og føler seg "
+"ukomfortable i åpne, vegetasjonsløse områder. De bor hovedsakelig i skogene "
+"på Det store kontinent: Aethenwood i sørvest, Wesmere i nordvest og de store "
+"nordlige skogene hvor Lintanir-skogen danner den sørligste kanten.\n"
+"\n"
+"\n"
+"Alver er den eldste rasen på kontinentet, med mulig unntak av trollene. "
+"Mange av deres bosetninger kan ikke dateres med sikkerhet, da de utvilsomt "
+"har eksistert i flere tusen år.\n"
+"\n"
+"<header>text='Magi'</header>\n"
+"Selv om alver er fundamentalt annerledes enn de sagnomsuste feene, har deres "
+"magi en viss forbindelse til feene og er kilden til deres uvanlig skarpe "
+"sanser og lange liv. Alvenes magi har to hovedretninger: én som retter seg "
+"mot manipulering av den naturlige verden, og den andre på spådomskunst innen "
+"det arkanske domenet. Den vanligste veien er den innen fysisk endring, som "
+"har mer konkrete effekter enn sin antitese i det arkanske. Selv om alvenes "
+"naturmagi er dårlig egnet til kamp, har den en sterk evne til å utnytte "
+"jordiske energier for å pleie og beskytte, noe som er hovedårsaken til "
+"alvenes effektive helbredelse samt skjønnheten og livskraften i skogene "
+"deres.\n"
+"\n"
+"\n"
+"De som følger den arkanske veien er også høyt ansett av andre alver, men "
+"deres motiver og evner er ofte uklare for de utenfor deres orden. Noen som "
+"går langt ned i mystikkens vei, utvikler mer fe-lignende trekk, med "
+"ekstraordinær innsikt og lang levetid, men blir også følsomme for og til og "
+"med brent av tilstedeværelsen av kaldt jern.\n"
+"\n"
+"<header>text='Kultur'</header>\n"
+"Alver bruker mye av sin tid på å finpusse sine talenter og ferdigheter. De "
+"som ikke er dyktige i magiens kunst, vier vanligvis tiden sin til å skjerpe "
+"sine fysiske ferdigheter, ofte for sportslige formål. Som et resultat er "
+"alver utmerkede bueskyttere, en ferdighet som lett og effektivt kan anvendes "
+"i krig. Alver er også anerkjente musikere, spesielt dyktige med "
+"blåseinstrumenter og klimpreinstrumenter i små ensembler. De aeoliske harper "
+"fra Aethenwood, for eksempel, er laget av det fine treverket fra alvenes "
+"barlindtrær og er legendariske for sin myke, milde klang.\n"
+"\n"
+"<header>text='Samfunn'</header>\n"
+"Alvesamfunnet er grovt delt inn i tre fraksjoner: en pseudo-militær fraksjon "
+"som er ansvarlig for å forsvare skogene deres, fredelige sivile som "
+"vanligvis er håndverkere og kunstnere, og healere og mystikere som "
+"opprettholder alvenes forbindelse til feene. Ansvarlige for styringen av "
+"disse ulike aspektene er adelen, som behandles som tjenere for den bredere "
+"sosiale orden fremfor som strenge herskere over sitt folk. Prosessen for å "
+"velge disse adelsmennene varierer mellom de forskjellige alvesamfunnene, med "
+"styringsrådet i Wesmere — Ka’lian — som er valgt, mens adelen i Lintanir "
+"vanligvis er arvet.\n"
+"\n"
+"I tider med konflikt blir kommandostrukturen mer fleksibel, med den vanlige "
+"adelen som underordner seg mer krigsinnstilte marskalker. Tradisjonelt, både "
+"i Wesmere og Lintanir, kalles en trollkvinne fra ordenen av alvemystikere "
+"også inn for å legge til rette for maktskiftet."
 
 #. [race]: id=falcon
 #: data/core/units.cfg:137
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Falcon"
-msgstr "Menneske"
+msgstr "Falker"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:138
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Falcon"
-msgstr "Menneske"
+msgstr "Falk"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:139
-#, fuzzy
-#| msgid "race^Humans"
 msgid "race^Falcons"
-msgstr "Mennesker"
+msgstr "Falk"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:140
@@ -6416,6 +6462,14 @@ msgid ""
 "well, with certain falconers training their birds to distinguish between "
 "friend and foe, making them a useful asset to aid in an army’s charge."
 msgstr ""
+"Falker er rovfugler kjent for sin eksepsjonelle hastighet og smidighet. "
+"Lettere bygget og med svakere klør enn andre rovfugler, foretrekker falker å "
+"bruke nebbet for å drepe byttet sitt. Deres skarpe syn og evne til "
+"domestisering gjør dem til en utbredt og velkjent skapning, brukt både av "
+"adel i sport og av nomader eller stammer som finner dem nyttige til jakt på "
+"mat. Falker har også av og til en rolle på slagmarken, der enkelte "
+"falkonérer trener fuglene til å skille mellom venn og fiende, noe som gjør "
+"dem til en verdifull ressurs for å støtte et angrep."
 
 #. [race]: id=goblin
 #: data/core/units.cfg:148
@@ -6448,6 +6502,18 @@ msgid ""
 "that require the brute strength of true orcs. Those the orcs revel in as "
 "proof of their prowess."
 msgstr ""
+"\n"
+"\n"
+"Tusser er små og ganske skjøre, og vokser sjelden forbi størrelsen og "
+"bygningen til et menneskebarn.\n"
+"\n"
+"Tusser fødes inn i et liv nært opp til slaveri under sine større "
+"slektninger, og blir brukt som kanonføde i kamp. Til tross for sin tragiske "
+"skjebne trives de, dels fordi de er svært tallrike, og også fordi deres "
+"broderorker er klar over hvor avhengige de er av tussene. Tusser utfører det "
+"meste av det fysiske arbeidet orkene trenger, med unntak av oppgaver som "
+"krever den rå styrken til ekte orker. Disse oppgavene gleder orkene seg over "
+"som bevis på deres egen dyktighet."
 
 #. [race]: id=gryphon
 #: data/core/units.cfg:168
@@ -6476,6 +6542,13 @@ msgid ""
 "been a source of debate for centuries, but it remains as mysterious as their "
 "origins."
 msgstr ""
+"Griffer er brede, kraftige beist som kombinerer egenskaper fra både firbente "
+"rovdyr og rovfugler. Selv om de av og til temmes og ris på av de modigste, "
+"er griffer svært territoriale og aggressive, særlig når det gjelder å "
+"beskytte sine reir.\n"
+"\n"
+"Hvordan griffer klarer å fly til tross for sin store vekt har vært et "
+"debattert tema i århundrer, men dette er like mystisk som deres opprinnelse."
 
 #. [race]: id=horse
 #: data/core/units.cfg:181
@@ -6494,6 +6567,7 @@ msgstr "Hester"
 
 #. [race]: id=horse
 #: data/core/units.cfg:184
+#, fuzzy
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -6505,6 +6579,15 @@ msgid ""
 "Winged horses, man-horse hybrids, and ghost horses have made their way into "
 "written history, though few can honestly claim to have seen such things."
 msgstr ""
+"Temmede hester finnes i mange former og størrelser, fra kraftige krigshester "
+"til robuste trekkhester eller smidige kveghester. Selv om de er mer skjøre "
+"enn mange andre beist, gjør deres hurtighet og list det mulig for tidligere "
+"tamme hester å trives i naturen sammen med sine ville slektninger.\n"
+"\n"
+"Hester har vært en viktig del av mange sivilisasjoner, så det er ikke "
+"overraskende at det finnes mange myter og historier om dem. Vingede hester, "
+"menneske-hest-hybrider og spøkelseshester har funnet sin plass i historiske "
+"nedtegnelser, selv om få ærlig kan påstå at de har sett slike skapninger."
 
 #. [race]: id=human
 #: data/core/units.cfg:201
@@ -6563,27 +6646,56 @@ msgid ""
 "general, the Clan warriors are less organized than the civilized fighters, "
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
+"Menneskerasen er en ekstremt mangfoldig gruppe. Selv om de opprinnelig kom "
+"fra Det Gamle Kontinentet, har menneskene spredt seg over hele verden og "
+"delt seg i mange forskjellige kulturer og raser. Selv om de ikke er iboende "
+"magiske som andre skapninger, kan mennesker lære å bruke magi, og de kan "
+"lære flere typer enn de fleste andre. De har ingen spesielle evner utover "
+"sin allsidighet og drivkraft. Selv om de ofte er i konflikt med andre raser, "
+"kan de av og til danne allianser med de mindre aggressive rasene som alver "
+"og dverger. De mer hensynsløse blant dem nøler heller ikke med å leie "
+"orkesoldater som leiesoldater. Mennesker har ingen naturlige fiender, selv "
+"om de fleste, som folk fra alle raser, har en instinktiv motvilje mot de "
+"udøde. Mennesker er kortere enn alver, men høyere enn dverger. Hudfargen kan "
+"variere, fra nesten hvit til mørk brun.\n"
+"\n"
+"<header>text='Undersåtter av Kronen'</header>\n"
+"Mange ulike grupper av mennesker finnes, men flertallet av dem på Det store "
+"kontinent lever under Kronen av Wesnoths styre. Menneskene kom først til Det "
+"store kontinent fra et land langt vestover, den Grønne Øya, og etablerte "
+"snart sin hovedstad i innlandsbyen Weldyn. I de følgende århundrene har de "
+"bygget opp flere byer på tvers av kontinentet. Soldatene fra Wesnoth-kronen "
+"beskytter landet og utgjør den mest organiserte militære styrken i den "
+"kjente verden. Krigerne kommer fra hovedprovinsene, der alle menn blir "
+"innrullert fra ung alder.\n"
+"\n"
+"<header>text='Klanfolket'</header>\n"
+"De østlige provinsene av Wesnoth, kjent som Klansheim, har et landskap som "
+"består av mer åpne sletter og bølgende åser enn de vestlige, mer siviliserte "
+"provinsene. De er hjemsted for Hesteklanene, som er allierte med Kronen av "
+"Wesnoth, men som opererer uavhengig og opprettholder sin egen identitet. "
+"Noen ser på dem som en tributtsstat som sender mat og soldater til kronen i "
+"bytte mot beskyttelse. Andre mener at de er likestilt med den vestlige "
+"halvdelen av Wesnoth. Likevel har ikke de østlige provinsene en vernepliktig "
+"hær slik som det vestlige Wesnoth. Kamptrening er en del av klanenes "
+"livsstil; foreldrene lærer barna å ri, kjempe og skyte med bue fra ung "
+"alder. Generelt sett er klankrigere mindre organiserte enn de siviliserte "
+"soldatene, og styrkene og svakhetene til disse gruppene utfyller hverandre."
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:219
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Dunefolk Human"
-msgstr "Menneske"
+msgstr "Sandfolksmenneske"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:220
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
-msgstr "Menneske"
+msgstr "Sandfolk"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:221
-#, fuzzy
-#| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
-msgstr "Vandøde"
+msgstr "Sandfolket"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:223
@@ -6642,21 +6754,73 @@ msgid ""
 "The origins of this tradition likely lie in the heritage of the Dunefolk’s "
 "distant past in the exotic far corners of Irdya."
 msgstr ""
+"Som en utløper fra en bortglemt nomadisk sivilisasjon, har sandfolket gjort "
+"krav på elvedalene og oasene i Sandødet. Hvordan de kom til å bosette seg i "
+"denne fjerne kroken av Det store kontinent, er ukjent. Deres legender "
+"forteller om mange lange og farlige reiser gjennom fjerne land, men "
+"opprinnelsen til folket deres er tema for en endeløs og heftig debatt, selv "
+"blant de mest lærde av deres forskere.\n"
+"\n"
+"Uansett deres opprinnelse, har sandfolket blomstret. Travle byer står stolt "
+"i de største fruktbare områdene. Dyktige håndverkere, fine smeder og rike "
+"handelsmenn utgjør ryggraden i den urbane økonomien. Hver av disse byene "
+"nyter også en grad av selvstendighet som er mindre vanlig i de mer "
+"sentraliserte nasjonene i nord, og mange opprettholder til og med sine egne "
+"stående hærer. I tider med behov samles imidlertid alle under en høyere "
+"myndighet som beskytter nasjonens overordnede interesser.\n"
+"\n"
+"De som ikke har slått seg ned i disse urbane sentrene, holder fortsatt fast "
+"ved sine forfedres livsstil. De vandrer over sanddynene og leder flokkene "
+"sine fra et vannhull til et annet. De er mest aktive ved morgengry og i "
+"skumringen, når ørkenen verken er for varm eller for kald. Deres ferdigheter "
+"i å bevege seg gjennom sanden er imponerende selv etter sandfolkets "
+"standarder. Selv om de noen ganger blir sett ned på av byfolket, yter de en "
+"uvurderlig tjeneste som mobile, lette tropper i krig, eller som vakter for "
+"handelskaravaner i fredstid.\n"
+"\n"
+"Sandfolkets tilbøyelighet til handel og utforskning har gjort det mulig for "
+"byene deres å samle enorme formuer, noe som vekker både beundring og "
+"misunnelse hos andre raser. Gjensidige interesser har fremmet vennlige "
+"relasjoner med de nærliggende Naga-stammene, men mer lukkede raser som "
+"draker og alver har alltid ansett sandfolkets ekspedisjoner som for "
+"påtrengende, spesielt når de nærmer seg territorielle grenser. Det er ikke "
+"uvanlig at karavaner blir overfalt av troll i fjellene, noe som har gitt "
+"opphav til utallige historier om uante skatter gjemt i skjulte huler.\n"
+"\n"
+"Etter å ha levd i fiendtlige miljøer i århundrer, har sandfolket utviklet "
+"rasjonelle metoder for undersøkelse som de bruker for å forbedre sin "
+"forståelse av verden. Deres studier av urtemedisin holder deres krigere og "
+"arbeidere friske og sterke. Deres kunnskap om alkymi gjør dem i stand til å "
+"temme ild og bruke den som et dødelig våpen i kamp. Samtidig har denne "
+"analytiske tankegangen fjernet dem fra de magiske kunstene; for det "
+"rasjonelle sinnet er magi ukontrollerbar, uforutsigbar og dermed upålitelig. "
+"Av denne grunn avskyr sandfolket spesielt nekromantiens perverteringer og "
+"mørkekunster, enda mer enn andre raser.\n"
+"\n"
+"Sandfolkets nysgjerrige og utforskende natur utelukker ikke militær styrke. "
+"De stiller ikke bare med smidige lette tropper, katafrakter og tungt pansret "
+"infanteri, men deres inngående kunnskap om teknologi gir dem en avgjørende "
+"fordel over sine motstandere. Når man møter sandfolket i kamp, er imidlertid "
+"det mest fryktinngytende synet deres bruk av ville og bisarre beist. Fra den "
+"majestetiske Roc til den imponerende Wyvern gir deres samspill med disse "
+"skapningene stor fleksibilitet i strid. Opprinnelsen til denne tradisjonen "
+"ligger sannsynligvis i sandfolkets urgamle fortid fra de eksotiske, fjerne "
+"krokene av Irdya."
 
 #. [race]: id=lizard
 #: data/core/units.cfg:244
 msgid "race^Saurian"
-msgstr "Varan"
+msgstr "Saurer"
 
 #. [race]: id=lizard
 #: data/core/units.cfg:245
 msgid "race+female^Saurian"
-msgstr "Varan"
+msgstr "Saurer"
 
 #. [race]: id=lizard
 #: data/core/units.cfg:246
 msgid "race^Saurians"
-msgstr "Varaner"
+msgstr "Saurerne"
 
 #. [race]: id=lizard
 #: data/core/units.cfg:247
@@ -6727,6 +6891,67 @@ msgid ""
 "eating carrion and even committing cannibalism, which are both regular "
 "occurrences."
 msgstr ""
+"Saurerne er øglelignende skapninger. De er lavere og slankere enn mennesker, "
+"sjeldent høyere enn et ti år gammelt barn. Men fra snute til halespiss kan "
+"en saurer være like lang som en gjennomsnittlig voksen mann. Lette og "
+"smidige foretrekker krigerne å kjempe slik de jakter — ved å gli gjennom "
+"fiendens linjer og sikte seg inn på de svake og sårede, samtidig som de "
+"unngår angrepene fra motstanderne sine.\n"
+"\n"
+"<header>text='Samfunn'</header>\n"
+"Saurerne er svært mystiske vesener, da de har en tendens til å leve i "
+"områder som er ulevelige for andre, som sumper. Med en fatalistisk "
+"livsinnstilling tror saurerne at alle hendelser i et liv kan forutsies ved "
+"hjelp av en kompleks form for astrologi.\n"
+"\n"
+"Saurerkulturen er skarpt kjønnsdelt. Innen hvert kjønn konkurrerer "
+"medlemmene, og etablerer gjennom dyktighet, besluttsomhet og rykte en "
+"tydelig rangordning med en leder på toppen. Når de to kjønnene samhandler, "
+"konkurrerer de ikke om dominans; situasjonen avgjør i stedet hvilket kjønn "
+"som er dominerende. Høvdingen blant hannene er alfa innenfor klanens landsby "
+"eller leir, mens høvdingen blant hunnene dominerer overalt ellers. Denne "
+"regelen gjelder gjennom hele rangordningen, der hvert individ dominerer et "
+"medlem av det motsatte kjønn med lavere rang og underkaster seg et medlem av "
+"det motsatte kjønn med høyere rang.\n"
+"\n"
+"Den kjønnsdelte og vekslende dominansen i saurersamfunnet springer ut av "
+"deres klart definerte kjønnsroller. Det er hunnens ansvar å jakte og skaffe "
+"mat, ferdigheter som til slutt trener dem opp som krigere: de blir "
+"linjebrytere og bakholdsangripere som andre raser frykter. Hannene er "
+"ansvarlige for å vokte klasene — eggene som hunnene har lagt. Denne rollen "
+"gir hannene tid til å utvikle ferdigheter innen astrologi, helbredelse og "
+"magi, men det utsetter dem også for betydelig fare, da de er stasjonære mål "
+"for en saurerklans største fiende — andre saurerklaner.\n"
+"\n"
+"Nye saurerklaner oppstår når de riktige astrologiske tegnene leses. Kalt en "
+"“klekking,” velger hver hunn som er indikert av konjunksjonen, en gruppe "
+"individer med lavere rang og forlater sin opprinnelige klan. Ofte vil alle "
+"hunnene med et spesifikt trekk bli indikert, slik at flere klaner “klekkes” "
+"samtidig. Valgprosessen er enkel: ingen gruppe som forlater klanen kan være "
+"større enn en annen, alle gruppene samlet kan ikke være større enn gruppen "
+"de forlater, og høyere rang gir en hunn rett til å overstyre en annen hunns "
+"valg over hvem de tar med seg.\n"
+"\n"
+"På grunn av deres raske befolkningsvekst, hyppige klansplittelser og det "
+"faktum at kannibalisme ikke er tabu, er vold et av de mest fremtredende "
+"trekkene ved saurerlivet. Dette begrenser veksten i saurerkulturen, da mye "
+"av deres kunnskap overføres muntlig og deres eiendeler må være mobile.\n"
+"\n"
+"<header>text='Geografi'</header>\n"
+"Saurerne kan leve i mange ulike områder, men sumper er helt avgjort deres "
+"vanligste habitat.\n"
+"\n"
+"<header>text='Biologi'</header>\n"
+"Saurerne lever usedvanlig korte liv sammenlignet med de fleste andre raser i "
+"Wesnoth. De når full voksen alder innen tre år og dør ofte innen de er 10 "
+"til 15 år gamle. Den desidert vanligste dødsårsaken er vold. Saurerhunner "
+"produserer kull/klaser på rundt 20 egg omtrent en gang i året, noe som "
+"skaper et konstant befolkningspress som uten tvil ville tært på de fleste "
+"rovdyrs matforsyning. Som jegere og åtseletere har saurer svært kraftige "
+"kjever og et meget kraftig fordøyelsessystem med svært etsende væsker, noe "
+"som gjør dem i stand til å spise og fordøye hele byttet, inkludert hud, "
+"tenner, horn og bein. De viser ingen motvilje mot kannibalisme, som på linje "
+"med konsumering av åtsel er helt vanlig."
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:273
@@ -6746,6 +6971,10 @@ msgid ""
 "intelligent being. Most mechanical things neither move nor think on their "
 "own, but some do so as a result of magical enchantment."
 msgstr ""
+"Levendegjort av verken bilogi eller nekromanti, brukes begrepet "
+"<italic>text='mekanisk'</italic> for å beskrive et intelligent vesen som er "
+"kunstig framstilt. De fleste mekaniske ting verken beveger seg eller tenker "
+"på egen hånd, men noen gjør det som følge av magisk fortryllelse."
 
 #. [race]: id=merman
 #: data/core/units.cfg:284
@@ -6759,10 +6988,8 @@ msgstr "Havfrue"
 
 #. [race]: id=merman
 #: data/core/units.cfg:286
-#, fuzzy
-#| msgid "race^Troll"
 msgid "race^Merfolk"
-msgstr "Troll"
+msgstr "Marmæler"
 
 #. [race]: id=merman
 #: data/core/units.cfg:288
@@ -6777,6 +7004,15 @@ msgid ""
 "ocean. They are typically wary of dry land, as they are awkward and clumsy "
 "there and they struggle greatly to move over rough or forested terrain."
 msgstr ""
+"Marmæler er en gåtefull rase, og fremtrer som skapninger med blanding av "
+"menneskelige og fiskeaktige trekk. De har sterke haler som gir dem rask "
+"bevegelse i vannmiljøer, mens deres smidige hender og intelligente sinn "
+"muliggjør fremstilling av gode verktøy og fremtredende håndverk . Som semi-"
+"akvatiske vesener kan marmæler puste både i vann og luft uten "
+"vanskeligheter. Til tross for at de kan overleve på land, er de langt "
+"raskere og mer smidige i vann og finnes sjelden langt fra havet. De er "
+"varsomme med å trå på landjorden, da de blir stive og klossete der, og de "
+"har store utfordringer med å bevege seg over ulendt eller skogkledd terreng."
 
 #. [race]: id=monster
 #: data/core/units.cfg:296
@@ -6785,8 +7021,6 @@ msgstr "Monster"
 
 #. [race]: id=monster
 #: data/core/units.cfg:297
-#, fuzzy
-#| msgid "race^Monster"
 msgid "race+female^Monster"
 msgstr "Monster"
 
@@ -6802,6 +7036,9 @@ msgid ""
 "wilderness, ocean depths, and other climes of the world. They figure largely "
 "in the tales and nightmares of its denizens, as well."
 msgstr ""
+"Begrepet \"monster\" omfatter mange avskyelige beist som hjemsøker huler, "
+"villmark, havdyp og andre miljøer i verden. De figurerer ofte i fortellinger "
+"og mareritt blant verdens innbyggere."
 
 #. [race]: id=naga
 #: data/core/units.cfg:306
@@ -6810,10 +7047,8 @@ msgstr "Naga"
 
 #. [race]: id=naga
 #: data/core/units.cfg:307
-#, fuzzy
-#| msgid "race^Nagani"
 msgid "race^Nagini"
-msgstr "Nagine"
+msgstr "Naga"
 
 #. [race]: id=naga
 #: data/core/units.cfg:308
@@ -6837,6 +7072,19 @@ msgid ""
 "themselves at odds with merfolk when their territories overlap, but overall "
 "nagas tend to favor swamps and rivers as much as open water."
 msgstr ""
+"De slanglignende nagaene er en av de minst forståtte rasene på Det store "
+"kontinent. Dette skyldes delvis deres fremmedfiendtlige natur og delvis "
+"deres ukjente miljø. Nagaene er en av få raser med betydelig bevegelighet i "
+"vann, noe som gir dem tilgang til en hel verden som i praksis er forbudt for "
+"landboere og øker avstanden til de landlevende vesener de unngår. Likevel er "
+"de ikke ekte havvesener, og deres manglende evne til å puste under vann gjør "
+"dem engstelige for havets dyp. Ved å bo i kystområder får de en fluktrute "
+"til lands mot dyphavets skapninger, samtidig som de holder seg utenfor "
+"rekkevidde for dem som reiser til fots, med vinger eller hover. Selv om "
+"nagaene er noe skjøre i bygning, er de ofte raskere og mer smidige enn sine "
+"motstandere. De havner av og til i konflikt med marmælene når territoriene "
+"deres overlapper, men generelt foretrekker nagaene sumper og elver like mye "
+"som åpent vann."
 
 #. [race]: id=ogre
 #: data/core/units.cfg:317
@@ -6871,6 +7119,20 @@ msgid ""
 "is a sign of cooperation, domestication, or simply mutual opportunism is not "
 "known."
 msgstr ""
+"Riser er en vill og usivilisert rase som hovedsakelig holder til i "
+"villmarken på Det store kontinent. Fysisk ligner de på mennesker og orker, "
+"men de er større og sterkere. Selv riser-ungdommer er mer enn en utfordring "
+"for de fleste menn. Riser er mistrodd i mange befolkede områder og de unngår "
+"dem vanligvis, eller drives ut med makt. I stedet lusker de rundt i "
+"fjellområdene i utkanten av sivilisasjonen, der sultne riser-banditter "
+"utgjør en konstant trussel for reisende og karavaner. Selv om riser ikke er "
+"spesielt intelligente eller raske, gjør deres seighet og fysiske styrke dem "
+"til en verdifull ressurs i hærene til andre raser. De verdsettes spesielt av "
+"mer hensynsløse kommandanter som ikke har noe imot risenes brutalitet. Lite "
+"er kjent om deres biologi eller samfunn, om de i det hele tatt kan sies å ha "
+"et, men det sies at de angriper sammen med ulver og andre dyr. Om dette er "
+"et tegn på samarbeid, domestisering eller bare gjensidig opportunisme er "
+"ukjent."
 
 #. [race]: id=orc
 #: data/core/units.cfg:328
@@ -6940,6 +7202,53 @@ msgid ""
 "withered and frail in comparison and lack skill in battle.\n"
 "\n"
 msgstr ""
+"Av utseende ligner orker på mennesker, men med noen dyriske trekk. De er "
+"høyere, mer robuste og sterkere enn mennesker. Orker er krigerske, brutale "
+"og grusomme av natur. Blodet deres er mørkere og tykkere enn menneskeblod, "
+"og de bryr seg lite om personlig hygiene eller sitt eget utseende. Selv om "
+"orker er voldelige også mot hverandre, er de flokkdyr; en ork reiser aldri "
+"alene og bor sjelden i grupper på færre enn et halvt dusin.\n"
+"\n"
+"<header>text='Samfunn'</header>\n"
+"Nesten hver ork er medlem av en stamme eller en klan. Forholdet mellom "
+"nabostammer er vanligvis voldelig, bortsett fra når en felles fiende truer "
+"deres eksistens, eller utsikter til rikdom veier tyngre enn deres gjensidige "
+"fiendskap. Av og til kan en sterk høvding dukke opp og lede flere stammer, "
+"som regel gjennom å skremme tilhengere til lydighet. I fredstid fokuserer en "
+"orkestamme nesten utelukkende på å styrke seg selv i forberedelse til neste "
+"væpnede konflikt. Orker er kjent for å ha et primitivt skriftspråk — "
+"vanligvis med blod — men det brukes mest til å utveksle fornærmelser eller "
+"trusler blant stammeledere.\n"
+"\n"
+"Orkesamfunn er basert på lite annet enn styrke; makt gir rett, og en leder "
+"styrer og overlever bare så lenge ingen klarer å fravriste ham tittelen. En "
+"konstant maktkamp ulmer blant potensielle stammehøvdinger. En orkisk leder "
+"lever sjelden mer enn noen få år med absolutt autoritet før han blir drept "
+"for sin posisjon — selv om det finnes noen bemerkelsesverdige unntak. Orker "
+"har ingen spesifikke æreskoder, og selv om ren rå styrke vanligvis er den "
+"foretrukne metoden for å vise makt, er drap, forgiftning og forræderi "
+"fullstendig aksepterte midler for å oppnå egne mål.\n"
+"\n"
+"Orker lever stort sett i landlige områder, ofte i fjellområder eller i "
+"grotter. De dyrker ikke avlinger og holder ikke husdyr, men er dyktige "
+"jegere takket være sin fysiske styrke og brutalitet. På grunn av deres store "
+"antall er de i stand til å jakte et område nærmest tomt for alt større enn "
+"gnagere i løpet av kort tid. På grunn av dette, og deres ustabile lederskap, "
+"fører orkestammer ofte en semi-nomadisk livsstil og slår seg sjelden ned i "
+"ett område for lenge. De største stammene kan etablere seg i et område i "
+"flere år eller til og med tiår og bygge store leire som nesten ligner byer, "
+"men selv disse er lette å demontere og forlate hvis det blir nødvendig å "
+"flytte horden.\n"
+"\n"
+"De eldste kjente orkene har vært rundt 50–60 år gamle, men svært få lever "
+"mer enn to eller tre tiår før de møter sitt endelikt i krig eller ved en "
+"klansmanns hånd. De eldste orkene er ofte sjamaner, som kanskje er de eneste "
+"de fleste orker ser på som pålitelige og nøytrale. Opprinnelsen til denne "
+"skikken er ukjent, ettersom sjamanene ikke direkte bidrar mye til "
+"orkesamfunnet, men bare fungerer som rådgivere — noe orker vanligvis ikke "
+"tolererer. Sjamaner er på mange måter det motsatte av de fleste andre orker: "
+"de er ofte fysisk svekket og skjøre i sammenligning og mangler "
+"kampferdigheter.\n"
 
 #. [race]: id=orc
 #: data/core/units.cfg:342
@@ -6949,27 +7258,25 @@ msgid ""
 "Orcs who were not the strongest of their litter tend to specialize in other "
 "skills, like archery or assassination."
 msgstr ""
+"\n"
+"\n"
+"Orker som ikke var de sterkeste i sitt kull, har en tendens til å "
+"spesialisere seg i andre ferdigheter, som bueskyting eller snikmord."
 
 #. [race]: id=raven
 #: data/core/units.cfg:351
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Raven"
-msgstr "Dverger"
+msgstr "Ravn"
 
 #. [race]: id=raven
 #: data/core/units.cfg:352
-#, fuzzy
-#| msgid "race+female^Drake"
 msgid "race+female^Raven"
-msgstr "Drake"
+msgstr "Ravn"
 
 #. [race]: id=raven
 #: data/core/units.cfg:353
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Ravens"
-msgstr "Dverger"
+msgstr "Ravner"
 
 #. [race]: id=raven
 #: data/core/units.cfg:354
@@ -6990,6 +7297,21 @@ msgid ""
 "farmers struggle to keep ravens away from freshly sown seeds, but others are "
 "happy to have them around as sentries."
 msgstr ""
+"Ravner er generelle åtseletere og slår seg ofte sammen med jegere eller "
+"rovdyr i håp om å få del i byttet. Selv om de mangler det kraftige nebbet "
+"eller klørne til griffer eller rovfugler, kan de likevel utgjøre en trussel "
+"på grunn av sin intelligens og evne til å gjenkjenne enhver fordel.\n"
+"\n"
+"Etter et slag er de døde og sårede et festmåltid for ravner. For de "
+"beseirede er ravnene en plage, men noen seiersherre anser de som en del av "
+"de krigerske seiersritualene. Vold og store folkemengder blant både orker og "
+"mennesker gjør at disse rasene ofte omgås ravner i slike sammenhenger. "
+"Derfor har fuglene blitt sentrale figurer i fabler, lignelser og overtro "
+"knyttet til krig.\n"
+"\n"
+"Som intelligente åtseletere trenger ikke ravner krigsdøde for å overleve. "
+"Noen bønder kjemper for å holde ravner borte fra nyplantede frø, mens andre "
+"er glade for å ha dem i nærheten som vakter."
 
 #. [race]: id=troll
 #: data/core/units.cfg:365
@@ -7044,6 +7366,39 @@ msgid ""
 "dwarves who migrated there. Trolls are a common sight on the mountain ranges "
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
+"Troll er eldgamle skapninger og en av de eldste kjente rasene som befolker "
+"Det store kontinent. De er store, trege og enkle, og lever svært lange liv "
+"inne i dype huler eller på toppen av høye fjell. Trollenes mest unike "
+"egenskap er en indre livskraft som opprettholder og helbreder dem innenfra. "
+"Som et resultat lever de svært annerledes enn nesten alle andre kjente "
+"skapninger. Trollene har få reelle behov: de trenger lite mat og vann, og "
+"har derfor liten motivasjon til å gjøre annet enn å beskytte seg mot de som "
+"er fiendtlige mot dem. Dette betyr at de sjelden trenger å bekymre seg for "
+"noe og kan tilbringe mye av tiden sin sovende eller i dyp refleksjon. "
+"Trollene har en merkverdig tilknytning til naturen. De relaterer seg ikke "
+"til levende ting slik alver gjør, men heller til jord og stein. De er også "
+"noe nysgjerrige på omgivelsene, og mange yngre trollungdommer liker til og "
+"med å reise og oppleve verden. Etter hvert som trollene blir eldre, blir de "
+"mer passive og mister gradvis interessen for omgivelsene, og tilbringer i "
+"stede tiden i en stille og familier krok i sin hjemhule. Til slutt går de "
+"bort, og kroppene deres omformes sakte til livløse steinstatuer.\n"
+"\n"
+"Troll ses av mange bare som enda en barbarisk rase av monstre. Denne vanlige "
+"misforståelsen blir delvis opprettholdt av orkenes suksess i å overtale "
+"troll til å slutte seg til hærene deres. Fordi troll er enkle og ikke "
+"forstår de andre rasenes skikker, eller noen ganger ikke en gang kan skille "
+"dem fra hverandre, er det ofte lett for en orkehorde å overbevise en gruppe "
+"troll om at ved å slutte seg til dem, kan de hevne seg på de som tidligere "
+"har jaktet på dem. Disse nye rekruttene blir deretter henvist til å angripe "
+"de som orkene selv er i konflikt med, enten de tidligere var en fiende av "
+"trollene eller ikke, som igjen leder til flere fiender for de villedede "
+"trollene. Den mest vanlige fienden til troll er dverger, og fiendskapet "
+"mellom disse to rasene er eldgammelt.\n"
+"\n"
+"<header>text='Geografi'</header>\n"
+"Troll har befolket fjellene på Det store kontinentet lenger enn dvergene, "
+"som migrerte dit i senere tid. Troll er et vanlig syn i fjellkjedene nord og "
+"øst for Wesnoth, samt hvor enn orkiske horder reiser."
 
 #. [race]: id=undead
 #: data/core/units.cfg:388
@@ -7096,6 +7451,39 @@ msgid ""
 "only in the wake of Haldric I, they were not completely unheard of by elves "
 "and dwarves before that."
 msgstr ""
+"Vandøde er egentlig ikke én enkelt rase av skapninger, selv om de ofte anses "
+"som det. De fleste vanlige skapninger kan, med tilstrekkelig dyktighet fra "
+"en nekromantiker, gjenopplives som kreasjoner med varierende karakter — "
+"gjenopplivning av det fysiske legemet resulterer ofte i en undersått som "
+"adlyder sin herre uten spørsmål, mens manifestasjon av en sjel vanligvis gir "
+"en tjener med i det minste en viss grad av kognitiv funksjon. En stor gåte "
+"innen nekromantien er hvordan disse skapningene kan opprettholdes og "
+"kontrolleres uten kontinuerlig innsats fra nekromantikeren. De fleste "
+"mørkemagikere gir ikke konstant oppmerksomhet eller vedlikehold til sine "
+"skapninger, men tillater dem en liten grad av selvstendighet slik at de kan "
+"fungere autonomt i tråd med gitte kommandoer. Likevel, når de overlates til "
+"seg selv, kan noen vandøde oppnå nok selvstendighet til å bryte fri fra og "
+"til og med vende seg mot sin mester. Følgelig, selv om til og med de "
+"svakeste vandøde krever periodisk vedlikehold, er dette spesielt sant for "
+"mer mektige vandøde, særlig høyere ånder eller dødens riddere, som har en "
+"høy grad av iboende vilje. I disse tilfellene blir nekromantien en kamp om "
+"viljestyrke mellom åndemaner og undersått. Nekromantikeren må opprettholde "
+"en delikat balanse mellom kontroll over sine tjenere og tildeling av fri "
+"vilje — kilden til deres individuelle krefter.\n"
+"\n"
+"Nekromanti er nesten utelukkende begrenset til mennesker. Selv legender om "
+"magisk dyktige raser som alver og marmæler forteller om svært få av deres "
+"art som noen gang har fordypet seg i de mørke kunstartene. Det antas at "
+"nekromantisk magi krever stor tilpasningsevne og et fleksibelt sinn, "
+"ytterpunkter som oftest finnes hos mennesker. Det endelige målet for de "
+"fleste nekromantikere er å bruke den samme kunsten til å bevare og gi "
+"livskraft til seg selv, å forandre seg selv uansett kostnad, for til slutt å "
+"unnslippe døden ved å bevare sitt eget sinn og ånd.\n"
+"\n"
+"<header>text='Geografi'</header>\n"
+"Selv om vandøde herskere ankom Det store kontinent i betydelig antall først "
+"i kjølvannet av Haldric I, var de ikke helt ukjente for alver og dverger før "
+"den tid."
 
 #. [race]: id=wolf
 #: data/core/units.cfg:404
@@ -7104,10 +7492,8 @@ msgstr "Ulv"
 
 #. [race]: id=wolf
 #: data/core/units.cfg:405
-#, fuzzy
-#| msgid "race+female^Elf"
 msgid "race+female^Wolf"
-msgstr "Alv"
+msgstr "Ulv"
 
 #. [race]: id=wolf
 #: data/core/units.cfg:406
@@ -7125,6 +7511,12 @@ msgid ""
 "civilization, though, only occasionally venturing close to prey upon "
 "livestock."
 msgstr ""
+"Ulver er rovdyr blant de ville hundedyrene som ofte støtes på i villmarken. "
+"Raske, seige og utholdende, kan en enslig ulv lett skade eller drepe sivile "
+"og utrente soldater. Men det er deres tendens til å jakte i flokker og "
+"angripe i organisert form som gjør dem spesielt fryktede for reisende. De "
+"holder seg vanligvis unna bebyggelse, men våger seg av og til nærmere for å "
+"jakte på husdyr."
 
 #. [race]: id=wose
 #: data/core/units.cfg:416
@@ -7177,6 +7569,41 @@ msgid ""
 "only to march to the defense of the natural world and the forests it calls "
 "home."
 msgstr ""
+"De mektige trehyrdene holder til i de dypeste skogene i den kjente verden. "
+"For det utrente øyet ser trehyrden ut som intet annet enn et merkelig "
+"formet, men edelt tre. Som skogens voktere har trehyrdene en forbindelse til "
+"skoglandskapet dypere enn selv alvenes. Selv om trehyrdene er et fredelig "
+"folk, vil enhver forstyrrelse av de eldgamle skogene de verner fremkalle "
+"naturens vrede. Trehydrer er langsomme skapninger som kan tilbringe "
+"århundrer stående på ett sted, uberørt av tidens gang.\n"
+"\n"
+"Selv om de ikke praktiserer noen egen magi, deler trehyrdene en dyp "
+"forbindelse med feenes rike. Det lille som er kjent om denne eldgamle rasen "
+"kommer fra alviske lærde som tror at denne mystiske kraften, som de "
+"mektigste alver har viet sine liv til å mestre, er iboende i wosene. Selv om "
+"de ligner på trær, deler trehyrdene ingen slektskap med dem. Trehyrder antas "
+"å være blant de eldste skapningene i verden, kanskje enda eldre enn skogene "
+"de lever i, og det antas at kraften fra feenes rike har gitt disse vesenene "
+"den evige oppgaven å tjene som skogens voktere.\n"
+"\n"
+"Trehyrder er på ingen måte krigerske og er lite tilpasset kamp. De vil "
+"imidlertid svare med nådeløs vold i forsvar av sine skogsområder. Trehyrder "
+"beveger seg sakte og er sårbare utenfor skoglandskap. På grunn av deres nære "
+"forbindelse til feenes rike er trehyrder spesielt følsomme overfor det "
+"arkane. Det harde treverket som gjør trehyrdene nærmest udødelig ovenfor "
+"fysiske angrep, har også gjort dem svært sårbare for ild. Den tykke barken "
+"og deres evne til å bruke kraften fra feenes rike for rask regenerering når "
+"de blir såret, gjør at trehyrdene kan overleve et fiendtlig angrep lenge nok "
+"til å svare med en knusende styrke som står i kontrast til deres fredelige, "
+"langsomme natur. I sitt skoglige hjem kan trehyrdene forsvinne blant trærne "
+"og legge bakhold for selv de best trente alviske speidere.\n"
+"\n"
+"Trehyrdenes levetid er ukjent, men de eldste medlemmene av denne rasen har "
+"levd i flere hundre år og vokst til imponerende høyder. Det antas at med "
+"mindre en trehyrde faller i kamp, vil ikke dens liv nå en naturlig ende. "
+"Tilfreds med å stå som en vokter gjennom århundrene, uinteressert i den "
+"siviliserte verdens begivenheter, vil trehyrden bare bevege seg for å gå til "
+"forsvar for naturens verden og skogene den kaller sitt hjem."
 
 #: data/lua/feeding.lua:30 data/lua/feeding.lua:43
 msgid "+1 max HP"
@@ -7212,16 +7639,17 @@ msgstr "Lesefeil ved analyse av hjelpetekst:"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Best of"
-msgstr ""
+msgstr "Beste av"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Worst of"
-msgstr ""
+msgstr "Verste av"
 
 #: src/help/help_topic_generators.cpp:161
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
+"Landsbyer lar enhver stasjonert enhet helbredes eller kureres for gift."
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
@@ -7233,13 +7661,19 @@ msgid_plural ""
 "This terrain allows units to heal $amount hitpoints, or to be cured of "
 "poison, as if stationed in a village."
 msgstr[0] ""
+"Dette terrenget lar enheter bli kurert for gift eller helbrede et enkelt "
+"helsepoeng."
 msgstr[1] ""
+"Dette terrenget lar enheter helbrede $amount helsepoeng eller bli kurert for "
+"gift, som om de var stasjonert i en landsby."
 
 #: src/help/help_topic_generators.cpp:173
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr ""
+"Dette terrenget er et slott — enheter kan rekrutteres til det fra en "
+"tilkoblet borg."
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
 #: src/help/help_topic_generators.cpp:177
@@ -7247,6 +7681,8 @@ msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
 msgstr ""
+"Dette terrenget er en borg — en leder kan rekruttere fra denne ruten til "
+"tilkoblede slott-ruter."
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
 #: src/help/help_topic_generators.cpp:180
@@ -7254,6 +7690,9 @@ msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
+"Denne uvanlige borgen lar en leder rekruttere mens han står på den, men "
+"tillater ikke at en leder på en tilkoblet borg kan rekruttere til denne "
+"ruten."
 
 #: src/help/help_topic_generators.cpp:184
 #: src/help/help_topic_generators.cpp:604
@@ -7270,7 +7709,7 @@ msgstr "Forflytningsegenskaper: "
 
 #: src/help/help_topic_generators.cpp:217
 msgid "Defense properties: "
-msgstr ""
+msgstr "Forsvarsverdier: "
 
 #: src/help/help_topic_generators.cpp:297
 msgid "Level"
