@@ -153,7 +153,7 @@ function gui.add_widget_definition(type, id, content) end
 ---@field on_modified fun()
 
 ---A button that produces a dropdown menu when clicked in addition to supporting text input
----@class menu_button : combobox
+---@class combobox : widget
 ---@field hint_image string
 ---@field hint_text tstring
 ---@field item_count integer
@@ -198,12 +198,12 @@ function gui.add_widget_definition(type, id, content) end
 ---@class treeview : widget
 ---@field selected_item_path integer[]
 ---@field item_count integer
+---@field unfolded boolean
 ---@field on_modified fun()
 
 ---A single node in a tree view
 ---@class tree_view_node : widget
 ---@field path integer[]
----@field item_count integer
 ---@field item_count integer
 ---@field unfolded boolean
 

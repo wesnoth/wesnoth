@@ -344,6 +344,20 @@ WIDGET_GETTER("path", std::vector<int>, gui2::tree_view_node)
 	return res;
 }
 
+WIDGET_GETTER("unfolded", bool, gui2::tree_view)
+{
+	return !w.get_root_node().is_folded();
+}
+
+WIDGET_SETTER("value_compat,unfolded", bool, gui2::tree_view)
+{
+	if(value) {
+		w.get_root_node().unfold();
+	} else {
+		w.get_root_node().fold();
+	}
+}
+
 WIDGET_GETTER("unfolded", bool, gui2::tree_view_node)
 {
 	return !w.is_folded();
