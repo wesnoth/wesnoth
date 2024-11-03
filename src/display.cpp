@@ -1194,8 +1194,7 @@ namespace
 constexpr std::array layer_groups {
 	drawing_layer::terrain_bg,
 	drawing_layer::unit_first,
-	drawing_layer::unit_move_default,
-	drawing_layer::reachmap // Make sure the movement doesn't show above fog and reachmap.
+	drawing_layer::unit_move_default
 };
 
 enum {

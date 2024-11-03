@@ -271,7 +271,12 @@ void game_display::draw_hex(const map_location& loc)
 	// Draw reach_map information.
 	// We remove the reachability mask of the unit that we want to attack.
 	if(!is_shrouded && !reach_map_.empty() && reach_map_.find(loc) != reach_map_.end() && loc != attack_indicator_dst_) {
-		drawing_buffer_add(drawing_layer::fog_shroud, loc, [images = get_reachmap_images(loc)](const rect& dest) {
+		// draw the blue tint below units and high terrain graphics
+		drawing_buffer_add(drawing_layer::terrain_bg, loc, [tex = image::get_texture(game_config::reach_map_prefix + ".png", image::HEXED)](const rect& dest) {
+			draw::blit(tex, dest);
+		});
+		// draw the highlight borders on top of units and terrain
+		drawing_buffer_add(drawing_layer::terrain_fg, loc, [images = get_reachmap_images(loc)](const rect& dest) {
 			for(const texture& t : images) {
 				draw::blit(t, dest);
 			}
@@ -685,10 +690,6 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 		if(image::exists(name)) {
 			names.push_back(std::move(name));
 		}
-	}
-	else {
-		// else push the background image, as the rest of the graphics are meant to have it
-		names.push_back(*image_prefix_ + ".png");
 	}
 
 	// Find all the directions overlap occurs from
