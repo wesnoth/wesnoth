@@ -19,7 +19,7 @@
 
 #include "addon/validation.hpp"
 
-#include <ctime>
+#include <chrono>
 #include <set>
 #include <map>
 
@@ -99,8 +99,8 @@ struct addon_info
 
 	std::string feedback_url;
 
-	std::time_t updated;
-	std::time_t created;
+	std::chrono::system_clock::time_point updated;
+	std::chrono::system_clock::time_point created;
 
 	// Flag to indicate whether this object was generaled from pbl info for an addon
 	// not previously published.
