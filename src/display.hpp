@@ -760,7 +760,7 @@ protected:
 	boost::circular_buffer<std::chrono::milliseconds> frametimes_;
 	int current_frame_sample_ = 0;
 	unsigned int fps_counter_;
-	std::chrono::seconds fps_start_;
+	std::chrono::steady_clock::time_point fps_start_;
 	unsigned int fps_actual_;
 	utils::optional<std::chrono::steady_clock::time_point> last_frame_finished_ = {};
 

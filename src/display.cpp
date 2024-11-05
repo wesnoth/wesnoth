@@ -1510,22 +1510,17 @@ void display::set_diagnostic(const std::string& msg)
 
 void display::update_fps_count()
 {
-	using std::chrono::duration_cast;
-	using std::chrono::steady_clock;
-
-	auto now = steady_clock::now();
+	auto now = std::chrono::steady_clock::now();
 	if(last_frame_finished_) {
-		frametimes_.push_back(duration_cast<std::chrono::milliseconds>(now - *last_frame_finished_));
+		frametimes_.push_back(std::chrono::duration_cast<std::chrono::milliseconds>(now - *last_frame_finished_));
 	}
 
 	last_frame_finished_ = now;
 	++fps_counter_;
 
-	const auto current_second = duration_cast<std::chrono::seconds>(now.time_since_epoch());
-	if(current_second != fps_start_) {
-		fps_start_ = current_second;
-		fps_actual_ = fps_counter_;
-		fps_counter_ = 0;
+	if(now - fps_start_ >= 1s) {
+		fps_start_ = now;
+		fps_actual_ = std::exchange(fps_counter_, 0);
 	}
 }
 
