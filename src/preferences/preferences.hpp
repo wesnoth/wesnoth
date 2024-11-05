@@ -386,6 +386,9 @@ class prefs
 		void set_countdown_action_bonus(const std::chrono::seconds& value);
 		void clear_countdown_action_bonus();
 
+		std::chrono::minutes chat_message_aging();
+		void set_chat_message_aging(const std::chrono::minutes& value);
+
 		int village_gold();
 		void set_village_gold(int value);
 
@@ -556,7 +559,6 @@ class prefs
 		PREF_GETTER_SETTER(floating_labels, bool, true)
 		PREF_GETTER_SETTER(chat_timestamp, bool, false)
 		PREF_GETTER_SETTER(chat_lines, int, 6)
-		PREF_GETTER_SETTER(chat_message_aging, std::chrono::minutes, std::chrono::minutes{20})
 		PREF_GETTER_SETTER(show_all_units_in_help, bool, false)
 		PREF_GETTER_SETTER(custom_command, std::string, std::string(""))
 		PREF_GETTER_SETTER(player_joins_sound, bool, true)

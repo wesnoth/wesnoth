@@ -18,6 +18,7 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "preferences/preferences.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 #include "game_version.hpp"
 #include "game_config_manager.hpp"
@@ -51,7 +52,7 @@ game_classification::game_classification(const config& cfg)
 	, abbrev(cfg["abbrev"])
 	, end_credits(cfg["end_credits"].to_bool(true))
 	, end_text(cfg["end_text"])
-	, end_text_duration(std::clamp(cfg["end_text_duration"].to_duration(0ms), 0ms, 5000ms))
+	, end_text_duration(std::clamp(chrono::parse_duration(cfg["end_text_duration"], 0ms), 0ms, 5000ms))
 	, difficulty(cfg["difficulty"].empty() ? DEFAULT_DIFFICULTY : cfg["difficulty"].str())
 	, random_mode(cfg["random_mode"])
 	, oos_debug(cfg["oos_debug"].to_bool(false))

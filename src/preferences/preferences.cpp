@@ -36,6 +36,7 @@
 #include "map_settings.hpp"
 #include "map/map.hpp"
 #include "resources.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/parser.hpp"
 #include "sound.hpp"
 #include "units/unit.hpp"
@@ -1597,7 +1598,8 @@ void prefs::set_options(const config& values)
 
 std::chrono::seconds prefs::countdown_init_time()
 {
-	return std::clamp(preferences_[prefs_list::mp_countdown_init_time].to_duration(240s), 0s, 1500s);
+	auto val = chrono::parse_duration(preferences_[prefs_list::mp_countdown_init_time], 240s);
+	return std::clamp(val, 0s, 1500s);
 }
 
 void prefs::set_countdown_init_time(const std::chrono::seconds& value)
@@ -1612,7 +1614,8 @@ void prefs::clear_countdown_init_time()
 
 std::chrono::seconds prefs::countdown_reservoir_time()
 {
-	return std::clamp(preferences_[prefs_list::mp_countdown_reservoir_time].to_duration(360s), 30s, 1500s);
+	auto val = chrono::parse_duration(preferences_[prefs_list::mp_countdown_reservoir_time], 360s);
+	return std::clamp(val, 30s, 1500s);
 }
 
 void prefs::set_countdown_reservoir_time(const std::chrono::seconds& value)
@@ -1627,7 +1630,8 @@ void prefs::clear_countdown_reservoir_time()
 
 std::chrono::seconds prefs::countdown_turn_bonus()
 {
-	return std::clamp(preferences_[prefs_list::mp_countdown_turn_bonus].to_duration(240s), 0s, 300s);
+	auto val = chrono::parse_duration(preferences_[prefs_list::mp_countdown_turn_bonus], 240s);
+	return std::clamp(val, 0s, 300s);
 }
 
 void prefs::set_countdown_turn_bonus(const std::chrono::seconds& value)
@@ -1642,7 +1646,8 @@ void prefs::clear_countdown_turn_bonus()
 
 std::chrono::seconds prefs::countdown_action_bonus()
 {
-	return std::clamp(preferences_[prefs_list::mp_countdown_action_bonus].to_duration(0s), 0s, 30s);
+	auto val = chrono::parse_duration(preferences_[prefs_list::mp_countdown_action_bonus], 0s);
+	return std::clamp(val, 0s, 30s);
 }
 
 void prefs::set_countdown_action_bonus(const std::chrono::seconds& value)
@@ -1653,6 +1658,16 @@ void prefs::set_countdown_action_bonus(const std::chrono::seconds& value)
 void prefs::clear_countdown_action_bonus()
 {
 	preferences_.remove_attribute(prefs_list::mp_countdown_action_bonus);
+}
+
+std::chrono::minutes prefs::chat_message_aging()
+{
+	return chrono::parse_duration(preferences_[prefs_list::chat_message_aging], 20min);
+}
+
+void prefs::set_chat_message_aging(const std::chrono::minutes& value)
+{
+	preferences_[prefs_list::chat_message_aging] = value;
 }
 
 int prefs::village_gold()

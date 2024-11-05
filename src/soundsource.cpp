@@ -15,6 +15,7 @@
 
 #include "display.hpp"
 #include "random.hpp"
+#include "serialization/chrono.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
 
@@ -240,7 +241,7 @@ void sourcespec::write(config& cfg) const
 sourcespec::sourcespec(const config& cfg)
 	: id_(cfg["id"])
 	, files_(cfg["sounds"])
-	, min_delay_(cfg["delay"].to_duration(DEFAULT_DELAY))
+	, min_delay_(chrono::parse_duration(cfg["delay"], DEFAULT_DELAY))
 	, chance_(cfg["chance"].to_int(DEFAULT_CHANCE))
 	, loops_(cfg["loop"].to_int())
 	, range_(cfg["full_range"].to_int(3))

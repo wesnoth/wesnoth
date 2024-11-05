@@ -34,6 +34,7 @@
 #include "preferences/preferences.hpp"
 #include "replay_recorder_base.hpp"
 #include "resources.hpp"
+#include "serialization/chrono.hpp"
 #include "synced_context.hpp"
 #include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
@@ -856,7 +857,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 		else if (auto countdown_update = cfg->optional_child("countdown_update"))
 		{
-			auto val = countdown_update["value"].to_duration<std::chrono::milliseconds>();
+			auto val = chrono::parse_duration<std::chrono::milliseconds>(countdown_update["value"]);
 			int tval = countdown_update["team"].to_int();
 			if (tval <= 0  || tval > static_cast<int>(resources::gameboard->teams().size())) {
 				std::stringstream errbuf;

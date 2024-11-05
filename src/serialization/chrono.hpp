@@ -29,4 +29,11 @@ inline auto serialize_timestamp(const std::chrono::system_clock::time_point& tim
 {
 	return std::chrono::system_clock::to_time_t(time);
 }
+
+template<typename Duration>
+inline auto parse_duration(const config_attribute_value& val, const Duration& def = Duration{0})
+{
+	return Duration{val.to_long_long(def.count())};
+}
+
 } // namespace chrono
