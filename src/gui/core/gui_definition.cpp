@@ -22,6 +22,7 @@
 #include "gui/core/log.hpp"
 #include "gui/core/static_registry.hpp"
 #include "gui/widgets/settings.hpp"
+#include "serialization/chrono.hpp"
 #include "wml_exception.hpp"
 
 namespace gui2
@@ -125,12 +126,12 @@ gui_definition::gui_definition(const config& cfg)
 	const config& settings = cfg.mandatory_child("settings");
 
 	using namespace std::chrono_literals;
-	popup_show_delay_ = settings["popup_show_delay"].to_duration(0ms);
-	popup_show_time_ = settings["popup_show_time"].to_duration(0ms);
-	help_show_time_ = settings["help_show_time"].to_duration(0ms);
-	double_click_time_ = settings["double_click_time"].to_duration(0ms);
+	popup_show_delay_ = chrono::parse_duration(settings["popup_show_delay"], 0ms);
+	popup_show_time_ = chrono::parse_duration(settings["popup_show_time"], 0ms);
+	help_show_time_ = chrono::parse_duration(settings["help_show_time"], 0ms);
+	double_click_time_ = chrono::parse_duration(settings["double_click_time"], 0ms);
 
-	repeat_button_repeat_time_ = settings["repeat_button_repeat_time"].to_duration(0ms);
+	repeat_button_repeat_time_ = chrono::parse_duration(settings["repeat_button_repeat_time"], 0ms);
 
 	VALIDATE(!settings["double_click_time"].blank(), missing_mandatory_wml_key("settings", "double_click_time"));
 

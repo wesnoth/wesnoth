@@ -346,7 +346,7 @@ void server::load_config()
 	compress_level_ = cfg_["compress_level"].to_int(6);
 	// One month probably will be fine (#TODO: testing needed)
 	constexpr std::chrono::seconds seconds_in_a_month{30 * 24 * 60 * 60};
-	update_pack_lifespan_ = cfg_["update_pack_lifespan"].to_duration(seconds_in_a_month);
+	update_pack_lifespan_ = chrono::parse_duration(cfg_["update_pack_lifespan"], seconds_in_a_month);
 
 	const auto& svinfo_cfg = server_info();
 
@@ -979,7 +979,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	std::chrono::system_clock::time_point before;
 	if(before_flag) {
 		if(relative_to_now) {
-			auto time_delta = req.cfg["before"].to_duration<std::chrono::seconds>();
+			auto time_delta = chrono::parse_duration<std::chrono::seconds>(req.cfg["before"]);
 			before = now + time_delta; // delta may be negative
 		} else {
 			before = chrono::parse_timestamp(req.cfg["before"]);
@@ -990,7 +990,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	std::chrono::system_clock::time_point after;
 	if(after_flag) {
 		if(relative_to_now) {
-			auto time_delta = req.cfg["after"].to_duration<std::chrono::seconds>();
+			auto time_delta = chrono::parse_duration<std::chrono::seconds>(req.cfg["after"]);
 			after = now + time_delta; // delta may be negative
 		} else {
 			after = chrono::parse_timestamp(req.cfg["after"]);

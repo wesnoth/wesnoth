@@ -20,6 +20,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "game_version.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <cmath>
@@ -271,7 +272,7 @@ void load_config(const config &v)
 	recall_cost      = v["recall_cost"].to_int(20);
 	kill_experience  = v["kill_experience"].to_int(8);
 	combat_experience= v["combat_experience"].to_int(1);
-	lobby_refresh    = v["lobby_refresh"].to_duration(2000ms);
+	lobby_refresh    = chrono::parse_duration(v["lobby_refresh"], 2000ms);
 	default_terrain  = v["default_terrain"].str();
 	tile_size        = v["tile_size"].to_int(72);
 

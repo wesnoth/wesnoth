@@ -149,20 +149,11 @@ public:
 	std::string str(const std::string& fallback = "") const;
 	t_string t_str() const;
 
-	template<typename Duration>
-	auto to_duration(const Duration& def = Duration{0}) const
-	{
-		return Duration{to_long_long(def.count())};
-	}
-
 	bool to(const bool def) const { return to_bool(def); }
 	int to(int def) const { return to_int(def); }
 	unsigned to(unsigned def) const { return to_unsigned(def); }
 	double to(double def) const { return to_double(def); }
 	std::string to(const std::string& def) const { return str(def); }
-
-	template<typename... Args>
-	auto to(const std::chrono::duration<Args...>& def) const { return to_duration(def); }
 
 	// Implicit conversions:
 	operator std::string() const { return str(); }

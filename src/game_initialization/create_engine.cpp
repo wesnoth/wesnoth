@@ -28,6 +28,7 @@
 #include "side_controller.hpp"
 #include "wml_exception.hpp"
 
+#include "serialization/chrono.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/parser.hpp"
 
@@ -405,7 +406,7 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 	state_.classification().abbrev = current_level_data["abbrev"].str();
 
 	state_.classification().end_text = current_level_data["end_text"].str();
-	state_.classification().end_text_duration = current_level_data["end_text_duration"].to_duration<std::chrono::milliseconds>();
+	state_.classification().end_text_duration = chrono::parse_duration<std::chrono::milliseconds>(current_level_data["end_text_duration"]);
 	state_.classification().end_credits = current_level_data["end_credits"].to_bool(true);
 
 	state_.classification().campaign_define = current_level_data["define"].str();
