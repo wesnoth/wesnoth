@@ -1598,13 +1598,12 @@ void prefs::set_options(const config& values)
 
 std::chrono::seconds prefs::countdown_init_time()
 {
-	auto val = chrono::parse_duration(preferences_[prefs_list::mp_countdown_init_time], 240s);
-	return std::clamp(val, 0s, 1500s);
+	return chrono::parse_duration(preferences_[prefs_list::mp_countdown_init_time], 240s);
 }
 
 void prefs::set_countdown_init_time(const std::chrono::seconds& value)
 {
-	preferences_[prefs_list::mp_countdown_init_time] = value;
+	preferences_[prefs_list::mp_countdown_init_time] = std::clamp(value, 0s, 1500s);
 }
 
 void prefs::clear_countdown_init_time()
@@ -1614,13 +1613,12 @@ void prefs::clear_countdown_init_time()
 
 std::chrono::seconds prefs::countdown_reservoir_time()
 {
-	auto val = chrono::parse_duration(preferences_[prefs_list::mp_countdown_reservoir_time], 360s);
-	return std::clamp(val, 30s, 1500s);
+	return chrono::parse_duration(preferences_[prefs_list::mp_countdown_reservoir_time], 360s);
 }
 
 void prefs::set_countdown_reservoir_time(const std::chrono::seconds& value)
 {
-	preferences_[prefs_list::mp_countdown_reservoir_time] = value;
+	preferences_[prefs_list::mp_countdown_reservoir_time] = std::clamp(value, 30s, 1500s);
 }
 
 void prefs::clear_countdown_reservoir_time()
@@ -1630,13 +1628,12 @@ void prefs::clear_countdown_reservoir_time()
 
 std::chrono::seconds prefs::countdown_turn_bonus()
 {
-	auto val = chrono::parse_duration(preferences_[prefs_list::mp_countdown_turn_bonus], 240s);
-	return std::clamp(val, 0s, 300s);
+	return chrono::parse_duration(preferences_[prefs_list::mp_countdown_turn_bonus], 240s);
 }
 
 void prefs::set_countdown_turn_bonus(const std::chrono::seconds& value)
 {
-	preferences_[prefs_list::mp_countdown_turn_bonus] = value;
+	preferences_[prefs_list::mp_countdown_turn_bonus] = std::clamp(value, 0s, 300s);
 }
 
 void prefs::clear_countdown_turn_bonus()
@@ -1646,13 +1643,12 @@ void prefs::clear_countdown_turn_bonus()
 
 std::chrono::seconds prefs::countdown_action_bonus()
 {
-	auto val = chrono::parse_duration(preferences_[prefs_list::mp_countdown_action_bonus], 0s);
-	return std::clamp(val, 0s, 30s);
+	return chrono::parse_duration(preferences_[prefs_list::mp_countdown_action_bonus], 0s);
 }
 
 void prefs::set_countdown_action_bonus(const std::chrono::seconds& value)
 {
-	preferences_[prefs_list::mp_countdown_action_bonus] = value;
+	preferences_[prefs_list::mp_countdown_action_bonus] = std::clamp(value, 0s, 30s);
 }
 
 void prefs::clear_countdown_action_bonus()
