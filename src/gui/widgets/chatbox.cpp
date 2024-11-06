@@ -47,6 +47,7 @@ static lg::log_domain log_lobby("lobby");
 namespace gui2
 {
 
+bool chatbox::should_attach_redline_;
 // ------------ WIDGET -----------{
 
 REGISTER_WIDGET(chatbox)
@@ -86,9 +87,15 @@ void chatbox::finalize_setup()
 	connect_signal_pre_key_press(*chat_input_,
 		std::bind(&chatbox::chat_input_keypress_callback, this, std::placeholders::_5));
 }
-
+//mark the log should be end with a special red line, with a mark to make sure there's only one of it.
+// first element of <std::string, chatroom_log> indicates the name of window, not just a mark only visible to the program.
+// so only use it as a indicator, when it comes to redline, don't let it processed normally, but delt specially: 
+// not create a new window like usual, but merge into where it belongs, use part of its content to indicate the place
+// after that delete the marked redline.
 void chatbox::load_log(std::map<std::string, chatroom_log>& log, bool show_lobby)
 {
+	const std::string new_tip = formatter() << markup::span_color("#FF0000", "\n============NEW============");
+
 	for(const auto& l : log) {
 		const bool is_lobby = l.first == "lobby";
 
@@ -96,7 +103,16 @@ void chatbox::load_log(std::map<std::string, chatroom_log>& log, bool show_lobby
 			continue;
 		}
 
-		find_or_create_window(l.first, l.second.whisper, true, !is_lobby, l.second.log);
+		const std::size_t new_tip_index = l.second.log.find(new_tip);
+
+		if(new_tip_index != std::string::npos) {
+			std::string temp = l.second.log;
+			temp.replace(l.second.log.find(new_tip), new_tip.length(), "");
+			log.at(l.first).log = temp;
+			find_or_create_window(l.first, l.second.whisper, true, !is_lobby, temp + new_tip);
+		} else {
+			find_or_create_window(l.first, l.second.whisper, true, !is_lobby, l.second.log + new_tip);
+		}
 	}
 
 	log_ = &log;
@@ -209,7 +225,7 @@ void chatbox::append_to_chatbox(const std::string& text, const bool force_scroll
 {
 	append_to_chatbox(text, active_window_, force_scroll);
 }
-
+//mark red line here
 void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const bool force_scroll)
 {
 	grid& grid = chat_log_container_->page_grid(id);
@@ -217,7 +233,9 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 
 	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
 	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
+	//const std::string new_tip = formatter() << markup::span_color("#FF0000", "============NEW============\n");
 
+	//const std::string before_message = log.get_value().empty() ? "" : should_attach_redline_ ? new_tip : "\n";
 	const std::string before_message = log.get_value().empty() ? "" : "\n";
 	const std::string new_text = formatter()
 		<< log.get_value() << before_message << markup::span_color("#bcb088", prefs::get().get_chat_timestamp(std::time(0)), text);
@@ -371,7 +389,7 @@ bool chatbox::room_window_active(const std::string& room)
 	const lobby_chat_window& t = open_windows_[active_window_];
 	return t.name == room && t.whisper == false;
 }
-
+//mark might be start of the issue
 lobby_chat_window* chatbox::room_window_open(const std::string& room, const bool open_new, const bool allow_close)
 {
 	return find_or_create_window(room, false, open_new, allow_close,
@@ -384,7 +402,7 @@ lobby_chat_window* chatbox::whisper_window_open(const std::string& name, bool op
 		VGETTEXT("Started private message with <i>$name</i>. "
 		"If you do not want to receive messages from this player, type <i>/ignore $name</i>", { { "name", name } }));
 }
-
+//mark add a second-initial_text to impl red line
 lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	const bool whisper,
 	const bool open_new,

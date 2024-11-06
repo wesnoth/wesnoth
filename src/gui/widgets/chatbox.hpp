@@ -135,6 +135,8 @@ private:
 
 	std::map<std::string, chatroom_log>* log_;
 
+	static bool should_attach_redline_;
+
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();
