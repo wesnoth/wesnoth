@@ -667,12 +667,14 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 	const std::string* image_prefix_ = &game_config::reach_map_prefix;
 	DBG_DP << "Loaded image prefix: " << game_config::reach_map_prefix;
 
-	// Get the reachmap-context team, if no unit is selected, the reachmap belongs to the displayed unit
-	team t = resources::gameboard->get_team(context().get_visible_unit(displayedUnitHex_, viewing_team())->side());
+	// As a failsafe, make sure the team is initialized with a valid value
+	team t = viewing_team();
+	// Get the reachmap-context team, the selected unit's team shall override the displayed unit's.
 	if(context().units().count(selectedHex_)) {
 		t = resources::gameboard->get_team(context().get_visible_unit(selectedHex_, viewing_team())->side());
-	}
-
+	} else if(context().get_visible_unit(displayedUnitHex_, viewing_team()) != nullptr){
+		t = resources::gameboard->get_team(context().get_visible_unit(displayedUnitHex_, viewing_team())->side());
+	} 
 	for(int i = 0; i < 6; ++i) {
 		// look for units adjacent to loc
 		std::string test_location = std::to_string(adjacent[i].x) + "," + std::to_string(adjacent[i].y);
