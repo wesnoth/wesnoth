@@ -425,7 +425,7 @@ private:
 	std::size_t cursor_timer_;
 
 	unsigned short cursor_alpha_;
-	unsigned short cursor_blink_rate_ms_;
+	std::chrono::milliseconds cursor_blink_rate_;
 
 	/****** handling of special keys first the pure virtuals *****/
 

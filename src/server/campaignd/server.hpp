@@ -115,7 +115,7 @@ private:
 
 	bool read_only_;
 	int compress_level_; /**< Used for add-on archives. */
-	time_t update_pack_lifespan_;
+	std::chrono::seconds update_pack_lifespan_;
 
 	bool strict_versions_;
 

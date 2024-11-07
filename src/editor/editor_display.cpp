@@ -172,12 +172,13 @@ void editor_display::set_status(const std::string& str, const bool is_success)
 		formatted_str = VGETTEXT("<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>", {{"msg", str}});
 	}
 
+	using namespace std::chrono_literals;
 	font::floating_label flabel(formatted_str);
 	flabel.set_font_size(size);
 	flabel.set_position(0, canvas_size.y);
 	flabel.set_bg_color(color);
 	flabel.set_border_size(border);
-	flabel.set_lifetime(1000, 10);
+	flabel.set_lifetime(1000ms, 10ms);
 	flabel.use_markup(true);
 
 	const int f_handle = font::add_floating_label(flabel);

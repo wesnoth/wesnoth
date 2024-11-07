@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-21 16:11 UTC\n"
-"PO-Revision-Date: 2024-04-25 21:37+0200\n"
+"PO-Revision-Date: 2024-11-03 03:11+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Poedit-Bookmarks: 348,182,120,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [attack]: type=impact
@@ -258,9 +258,8 @@ msgstr "berøring"
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:26
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:23
 #: data/core/units/humans/Mage_of_Light.cfg:49
-#, fuzzy
 msgid "flail"
-msgstr "hale"
+msgstr "morgenstjerne"
 
 #. [attack]: type=blade
 #. [attack]: type=arcane
@@ -357,9 +356,8 @@ msgstr "armbrøst"
 #: data/core/units/humans/Loyalist_General.cfg:44
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:38
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:33
-#, fuzzy
 msgid "longsword"
-msgstr "sverd"
+msgstr "langsverd"
 
 #. [attack]: type=impact
 #: data/campaigns/Eastern_Invasion/units/Human_Konrad_King_of_Wesnoth.cfg:29
@@ -3926,20 +3924,10 @@ msgstr "langspyd"
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:4
 msgid "Royal Guard"
-msgstr "Livgardist"
+msgstr "Livsgardist"
 
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Royal Guards are picked from the best swordsmen in Wesnoth. Serving under "
-#| "any of the higher nobility, they function as bodyguards, and partly as a "
-#| "badge of office for their employers. A special force of Royal Guards is "
-#| "stationed at the capitol, guarding the palace grounds and the royal "
-#| "family. Because of their trusted relationship to their superiors, they, "
-#| "rather than mercenaries, are often deployed on missions of crucial "
-#| "import. Their reliability and mastery of close combat are their best "
-#| "assets, for which they are well-renowned."
 msgid ""
 "Royal Guards are picked from the best swordsmen in Wesnoth. Serving under "
 "any of the higher nobility, they function as bodyguards, and partly as a "
@@ -3950,13 +3938,14 @@ msgid ""
 "reliability and mastery of close combat are their best assets, for which "
 "they are well-renowned."
 msgstr ""
-"Wesnoths kongelige garde består av håndplukkede veteraner med utmerkede "
-"evner i sverdkamp. De tjenestegjør under kongehuset og adelen og fungerer "
-"vanligvis som livvakter. En spesialstyrke gardister er stasjonert i "
-"hovedstaden, med dedikert ansvar å vokte palasset og kongefamilien til "
-"enhver tid. Grunnet deres ubestridde lojalitet til sine overordnede sendes "
-"tidvis gardister, heller en leiesoldater, ut på særlig viktige oppdrag. "
-"Gardens dyktighet i nærkamp er viden kjent."
+"Livsgardistene velges ut blant de beste sverdmennene i Wesnoth. Tjenende "
+"under den høye adelen fungerer de som livvakter og delvis som en "
+"æresbetegnelse for sine oppdragsgivere. En spesialstyrke av livsgardister er "
+"stasjonert i hovedstaden, hvor de vokter palassområdet og kongefamilien. På "
+"grunn av det tillitsfulle forholdet til sine overordnede, blir de, i "
+"motsetning til leiesoldater, ofte sendt på oppdrag av avgjørende betydning. "
+"Deres pålitelighet og beherskelse av nærkamp er deres største fordeler, og "
+"de er vidkjent for disse kvalitetene."
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:22
@@ -3964,11 +3953,14 @@ msgid ""
 "Compared to other loyalists, Royal Guards have a higher resistance to "
 "‘blade’ and ‘impact’ attacks."
 msgstr ""
+"Sammenlignet med andre lojalister har livsgardister en høyere motstand mot "
+"\"hugg\" og \"slag\" angrep."
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:25
 msgid "Compared to other loyalists, Royal Guards have more movement points."
 msgstr ""
+"Sammenlignet med andre lojalister har livsgardister flere forflytningspoeng."
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
@@ -3977,11 +3969,6 @@ msgstr "Sersjant"
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The Sergeant is a low-ranking officer in the ranks of an army. Though "
-#| "academically trained, he will need some experience in the field before "
-#| "his leadership is sound and acknowledged."
 msgid ""
 "Sergeants are low-ranking officers of human armies. Though academically "
 "trained, they need some experience in the field before their leadership is "
@@ -3989,8 +3976,11 @@ msgid ""
 "combat means they can more effectively rouse civilians and peasants in "
 "trying situations."
 msgstr ""
-"Sersjantene er offiserer i Wesnoths armé. Selvom de er skikkelig skolert vil "
-"de også trenge litt felttrening før de er mektige ledere."
+"Sersjanter er lavt rangerte offiserer i menneskenes hærer. Selv om de har "
+"akademisk opplæring, trenger de felt-erfaring før deres lederskap er solid "
+"og anerkjent. Likevel gjør deres pliktoppfyllende holdning og grunnleggende "
+"kampforståelse dem bedre i stand til å inspirere sivile og bønder i "
+"vanskelige situasjoner."
 
 #. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
@@ -4009,15 +3999,13 @@ msgid ""
 "drawback of such heavy armor is, of course, the time it takes to move into "
 "and out of combat."
 msgstr ""
-"Frontkjempere er eliten blant panserinfanterister, og halvparten av nytten "
-"deres i strid består simpelthen i å ydmyke fienden. De er de største og "
-"sterkeste blant ifanteristene, og kledd i heldekkende platerustninger dekket "
-"med grove pigger, er de i sannhet et skremmende syn. Når frontkjemperne "
-"tramper inn blant fienden og knuser de som stiller iveien for dem med sine "
-"enorme morgenstjerner kan selv de mest rutinerte troppers moral forvitre, og "
-"fiender ha i kampens hete lurt på om det under rustningene skjuler seg "
-"beist, heller enn menn. Bakdelen med det tunge utstyret er selvsagt at det "
-"tar lang tid å flytte seg inn og ut av kamp."
+"Stormtropper er eliten innen tungt infanteri, og en betydelig del av deres "
+"rolle er ren skremsel. Bare menn med imponerende fysikk kan ta plass i deres "
+"rekker, og når de er kledd i svart panser fullt av pigger, er de et "
+"fryktinngytende syn. Å se stormtroppene bryte fiendens rekker svekker ofte "
+"moralen hos enhver motstand, som noen ganger undrer seg over om det er "
+"monstre, og ikke menn, som skjuler seg bak rustningen. Ulempen med slik tung "
+"rustning er selvsagt tiden det tar å bevege seg inn og ut av kamp."
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
@@ -4138,20 +4126,17 @@ msgid ""
 "unleash the full power of their art, something which is not to be taken "
 "lightly."
 msgstr ""
-"Tittelen erkemagiker oppnåes etter livslange studier og særskilte bragder. "
-"Erkemagikere kan tenker å være mentorer for velstående studenter eller nye "
-"generasjoner med magikere. Andre går leier ut sine tjenester til de som kan "
-"betale, og bytter sin enorme viten mot gull og et rolig sted å studere "
-"mellom de lønnede oppdragene. Enkelte andre skyr den siviliserte verden og "
-"velger et liv som eneboere. Langt ute i ødemarken fordyper de seg i viten "
-"som ville fått de fleste hedelige menn til å fnyse.\n"
+"Tittelen Erkemagiker tildeles tradisjonelt først etter et liv med studier og "
+"oppnådde bragder som samsvarer med tittelen. Erkemagikere er ofte ansatt i "
+"utdanningsstillinger eller som rådgivere for dem kloke nok til å søke deres "
+"visdoms frukter. Mange av dem har rike velgjørere, en lønnsom ordning for "
+"begge parter, da det, utenom enkelte oppvisninger i taumaturgi eller råd, "
+"gir magikeren anledning til å forske uforstyrret. Fra denne praksisen flyter "
+"menneskelig kunnskap videre; vitenskapene, filosofiene og kunstene som "
+"bringer skjønnhet til verden som helhet.\n"
 "\n"
-"På tross av at de verken har kamptrening eller stridsutrustning er "
-"erkemagikere en fryktet fiende på slagmarken. Med sitt magiarsenal kan de "
-"tilintetgjøre nærmest enhver fiende.\n"
-"\n"
-"Merk: Erkemagikerenes ildkuler er et magisk angrep, og har alltid en god "
-"treffsjanse."
+"Selv om de ikke er opplært i kamp, kan en erkemagiker, om nødvendig, utløse "
+"hele kraften i sin kunst — noe som ikke bør tas lett på."
 
 #. [special_note]
 #: data/core/units/humans/Mage_Arch.cfg:22
@@ -4159,6 +4144,8 @@ msgid ""
 "Compared to other mages, Arch Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"Sammenlignet med andre magikere, har erkemagikere større motstandsdyktighet "
+"mot 'ild' angrep."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Arch.cfg:47
@@ -4184,6 +4171,9 @@ msgid ""
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
+"En gang mektige har aldrende magikere sett sine krefter bli noe svekket "
+"etter mange slitne år på slagmarken. Likevel er de fryktet i kamp på grunn "
+"av sine kraftige lynangrep."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:35
@@ -4195,7 +4185,7 @@ msgstr "lyn"
 #. [unit_type]: id=Great Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Great.cfg:4
 msgid "Great Mage"
-msgstr "Mektig Magiker"
+msgstr "Stormagiker"
 
 #. [unit_type]: id=Great Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Great.cfg:19
@@ -4212,6 +4202,16 @@ msgid ""
 "Though they are not warriors, by any means, the application of their art to "
 "combat is something that often causes other soldiers to stand aside in awe."
 msgstr ""
+"Enhver som vurderes for tittelen Stormagiker er nesten som en levende "
+"legende, og byutroperne har lært seg forsiktighet i bruken av denne "
+"tittelen. Fortjenesten til tittelen vurderes nøye av et råd av tidens "
+"ledende magikere, og tildelingen skjer kun ved flertallsbeslutning. Uansett "
+"er alle som seriøst nomineres til æren av å bli kalt stormagiker, uten tvil "
+"mestere i sin kunst, og de har overgått nesten alle sine likemenn i "
+"ferdigheter.\n"
+"\n"
+"Selv om de på ingen måte er krigere, er anvendelsen av deres kunst i kamp "
+"noe som ofte får andre soldater til å trekke seg tilbake i ærefrykt."
 
 #. [special_note]
 #: data/core/units/humans/Mage_Great.cfg:23
@@ -4219,6 +4219,8 @@ msgid ""
 "Compared to other mages, Great Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"Sammenlignet med andre magikere, har stormagikere større motstandsdyktighet "
+"mot 'ild' angrep."
 
 #. [female]: gender=female
 #: data/core/units/humans/Mage_Great.cfg:90
@@ -4228,7 +4230,7 @@ msgstr "Mektig Magiker"
 #. [unit_type]: id=Red Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Red.cfg:4
 msgid "Red Mage"
-msgstr "Ildmagiker"
+msgstr "Rødmagiker"
 
 #. [unit_type]: id=Red Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Red.cfg:18
@@ -4246,15 +4248,17 @@ msgid ""
 "number of tricks up their sleeves, including the gouts of fire which may "
 "have cemented their colloquial name."
 msgstr ""
-"Etter fullendt læretid byttes de blå studentkappene ut med rød klesdrakt. "
-"Magikeren får tittelen 'mester' og får tillatelse til å utdanne nye "
-"magikere. Kallenavnet 'ildmagiker' oppsto ettersom flammer er de fleste "
-"magimesteres foretrukne våpen de skulle havne i kamp.\n"
+"Etter fullendt læretid, blir en magiker fratatt den brune kappen til en "
+"lærling og gitt den rødbrune kappen til en mester. Betydningen av denne "
+"endringen går ofte tapt på allmuen, som feilaktig titulerer Mestermagikere "
+"som \"Rødemagikere\". På samme måte misforstås ofte fargeendringen som et "
+"tegn på magikerens evne til tilsynelatende å mane fram ild fra løse luften, "
+"et triks som, selv om det uten tvil er nyttig, blir sett på av magikerne "
+"selv som en vulgær anvendelse av deres hardt tilegnede kunnskap.\n"
 "\n"
-"Selv om de er fysisk sårbare har ildmagikere en mengde triks på lager. Deres "
-"ildkuler er fryktet på slagmarken.\n"
-"\n"
-"Merk: Ildmagikerens ildkuler er magiske, og har alltid en god treffsjanse."
+"Selv om de er fysisk skjøre og ikke opplært som krigere, har "
+"\"Rødemagikerne\" flere knep på lur, inkludert de ildsprutende angrepene som "
+"trolig har forankret deres folkelige navn."
 
 #. [special_note]
 #: data/core/units/humans/Mage_Red.cfg:22
@@ -4262,6 +4266,8 @@ msgid ""
 "Compared to other mages, Red Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
+"Sammenlignet med andre magikere, har rødmagikere større motstandsdyktighet "
+"mot 'ild' angrep."
 
 #. [female]: gender=female
 #: data/core/units/humans/Mage_Red.cfg:98
@@ -4271,7 +4277,7 @@ msgstr "Ildmagiker"
 #. [unit_type]: id=Silver Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Silver.cfg:4
 msgid "Silver Mage"
-msgstr "Astralmagiker"
+msgstr "Sølvmagiker"
 
 #. [unit_type]: id=Silver Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Silver.cfg:19
@@ -4294,21 +4300,23 @@ msgid ""
 "skills are of undeniable use on the battlefield, if one can manage to induce "
 "the mage to apply them."
 msgstr ""
-"Magien veier er mange. Astralmagikere studerer kreftene som holder tid og "
-"sted sammen og har lyktes av avsløre mysterier større enn de fleste kan "
-"forestille. De opptrer ofte som vandrende vismenn og representerer noe "
-"mystisk og ukjent, selv for de fleste andre magikere. Selv om de kan være en "
-"nyttig støttespiller og tidvis tilbyr side tjenester, holder de alltid en "
-"distanse fra folk flest. De har også et eget forbund som vokter over deres "
-"hemmeligheter.\n"
+"De mange veiene en magiker kan ta i sine studier, fører til slående ulike "
+"mål. Sølvmagikere, ofte sett på som vismenn eller vandrende mystikere, "
+"handler etter en agenda som selv deres egne kolleger ofte finner gåtefull. "
+"Selv om de er til hjelp for magisteriene som ofte sender dem ut i felten, "
+"forblir de litt tilbaketrukne.\n"
 "\n"
-"Astralmagikerne er bedre fysisk trent enn de fleste andre magikere, og er "
-"formidabel motstander i kamp.\n"
+"Sølvmagikerne har faktisk sin egen orden blant magikernes rekker, en orden "
+"som holder visse hemmeligheter skjult fra sine likemenn. En av disse "
+"hemmelighetene er deres tilsynelatende evne til å krysse store avstander "
+"raskere enn man kunne ha reist til fots. Medlemmer av sølvordenen nekter "
+"hardnakket å diskutere hvordan dette fungerer med andre magikere, og på de "
+"sjeldne anledninger hvor andre har forsøkt å utforske deres arbeid, har de "
+"gitt opp og aldri nevnt det igjen.\n"
 "\n"
-"Merk: Astralmagikernes avstandsangrep er magisk og har alltid en god "
-"treffsjanse. De har også svært god motstandskraft mot ikke-fysisk skade. De "
-"kan teleportere mellom landsbyer, men begge må være tomme og under "
-"spillerens kontroll."
+"Sølvmagikere er ofte mer fysisk dyktige enn andre magikere, og deres "
+"ferdigheter er utvilsomt nyttige på slagmarken — hvis man klarer å overtale "
+"magikeren til å bruke dem."
 
 #. [special_note]
 #: data/core/units/humans/Mage_Silver.cfg:25
@@ -4316,6 +4324,8 @@ msgid ""
 "SPECIAL_NOTE^Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr ""
+"Sølvmagikere er svært godt tilpasset sin magiske natur og har høy "
+"motstandskraft mot ikke-fysiske skadetyper."
 
 #. [female]: gender=female
 #: data/core/units/humans/Mage_Silver.cfg:163
@@ -4325,7 +4335,7 @@ msgstr "Astralmagiker"
 #. [unit_type]: id=White Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_White.cfg:4
 msgid "White Mage"
-msgstr "Broder av Lyset"
+msgstr "Hvitmagiker"
 
 #. [unit_type]: id=White Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_White.cfg:18
@@ -4340,6 +4350,15 @@ msgid ""
 "Though not trained for combat, they are a potent ally against magical or "
 "unnatural things."
 msgstr ""
+"Noen magikere, etter hvert som de lærer om verden rundt seg og innser "
+"sannheten om den lidelse og elendighet menneskeheten altfor ofte lever i, "
+"finner ut at de ikke kan trekke seg tilbake til et liv med studier. Disse "
+"mennene og kvinnene gir opp livet som magiker og slutter seg til "
+"klosterordener, og dedikerer sine ferdigheter til alles beste. Etter sin "
+"ordinasjon reiser de ofte verden rundt, der de lindrer sykdom og skade.\n"
+"\n"
+"Selv om de ikke er opplært til kamp, er de en kraftfull alliert mot magiske "
+"eller unaturlige vesener."
 
 #. [special_note]
 #: data/core/units/humans/Mage_White.cfg:22
@@ -4347,6 +4366,8 @@ msgid ""
 "Compared to other mages, White Mages have a higher resistance to ‘arcane’ "
 "attacks."
 msgstr ""
+"Sammenlignet med andre magikere har hvite magikere høyere motstandskraft mot "
+"'arkane' angrep."
 
 #. [female]: gender=female
 #: data/core/units/humans/Mage_White.cfg:105
@@ -4356,7 +4377,7 @@ msgstr "Søster av Lyset"
 #. [unit_type]: id=Mage of Light, race=human, gender=male,female
 #: data/core/units/humans/Mage_of_Light.cfg:4
 msgid "Mage of Light"
-msgstr "Fader av Lyset"
+msgstr "Lysmagiker"
 
 #. [unit_type]: id=Mage of Light, race=human, gender=male,female
 #: data/core/units/humans/Mage_of_Light.cfg:19
@@ -4368,6 +4389,13 @@ msgid ""
 "Following a strict code of piety and honor, these men and women work "
 "tirelessly to bring life and order to the troubled world in which they live."
 msgstr ""
+"Etter mange års erfaring utvikler de mest hengivne blant hvite magikere "
+"store spirituelle krefter. Gjennom streng hengivenhet til lysets vei kan de "
+"påkalle dens hjelp for å jage bort nattens skygger.\n"
+"\n"
+"Ved å følge en streng kode for fromhet og ære arbeider disse mennene og "
+"kvinnene utrettelig for å bringe liv og orden til den urolige verdenen de "
+"lever i"
 
 #. [special_note]
 #: data/core/units/humans/Mage_of_Light.cfg:23
@@ -4375,6 +4403,8 @@ msgid ""
 "Compared to other mages, Mages of Light have a higher resistance to ‘arcane’ "
 "attacks."
 msgstr ""
+"Sammenlignet med andre magikere har Lysmagikere høyere motstandskraft mot "
+"'arkane' angrep."
 
 #. [female]: gender=female
 #: data/core/units/humans/Mage_of_Light.cfg:101
@@ -4397,6 +4427,13 @@ msgid ""
 "are somewhat ill at ease fighting during the day, preferring the cover of "
 "nightfall."
 msgstr ""
+"Etter noen års tjeneste stiger tidligere 'tråkkeputer' i gradene blant sine "
+"medforbrytere. Etter å ha bevist seg selv i kamp, får de tildelt farligere "
+"oppdrag og en større del av byttet. Selv om mange motstandere ville håne "
+"deres valg av våpen, er utbryterne fullt klar over våpenets dødelige "
+"potensial, samt den lett tilgjengelige tilgangen på ammunisjon. Utbryterne "
+"føler seg noe utilpass med å kjempe på dagtid og foretrekker nattemørkets "
+"dekke."
 
 #. [female]: gender=female
 #: data/core/units/humans/Outlaw.cfg:74
@@ -4417,6 +4454,12 @@ msgid ""
 "victims, be it poisoned knives thrown from afar, or a dagger planted in the "
 "back. Deadly at night, assassins are less able fighting under the sun."
 msgstr ""
+"De største av tyver får noen ganger i oppgave å ta langt mer enn bare "
+"offerets eiendeler. Som mestere i knivkamp og med en imponerende letthet i "
+"sine skritt, er disse truende skikkelsene villige til å bruke alle midler "
+"for å rydde sine ofre av veien, enten det er forgiftede kniver kastet fra "
+"avstand eller en dolk plantet i ryggen. Dødelige om natten, men mindre "
+"effektive i kamp under solens lys, er leiemordere farligst når mørket faller."
 
 #. [attack]: type=blade
 #: data/core/units/humans/Outlaw_Assassin.cfg:39
@@ -4445,6 +4488,12 @@ msgid ""
 "victims into submission. Like any sort of outlaw, they’re not comfortable "
 "fighting in broad daylight, being used to working at night."
 msgstr ""
+"Banditter er en brokete samling av menn, de fleste med tvilsom bakgrunn. De "
+"er muskelen i enhver organisert kriminell gruppe, og selv om de kanskje "
+"mangler eleganse eller intelligens, utmerker de seg i sin foretrukne oppgave "
+"med å banke ofre til underkastelse. Som alle utbrytere er de ikke "
+"komfortable med å kjempe i fullt dagslys, da de er vant til å operere om "
+"natten."
 
 #. [unit_type]: id=Footpad, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
@@ -4461,6 +4510,12 @@ msgid ""
 "their inferior weaponry they are quite good at harrying their enemies, "
 "especially under cover of darkness."
 msgstr ""
+"Disse småkriminelle blir ofte hånlig kalt 'tråkkeputer' av sine overordnede, "
+"da de får tildelt alle oppdrag som krever mye løping, ofte som budbringere "
+"eller speidere. Utholdenheten og smidigheten de opparbeider seg i denne "
+"rollen, tjener dem godt i kamp, og til tross for deres enkle bevæpning er de "
+"ganske dyktige til å trakassere fiendene sine, spesielt under dekke av "
+"mørket."
 
 #. [female]: gender=female
 #: data/core/units/humans/Outlaw_Footpad.cfg:89

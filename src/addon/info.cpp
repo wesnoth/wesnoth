@@ -20,6 +20,7 @@
 #include "gettext.hpp"
 #include "picture.hpp"
 #include "log.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 
 static lg::log_domain log_addons_client("addons-client");
@@ -102,8 +103,8 @@ void addon_info::read(const config& cfg)
 	tags = utils::split(cfg["tags"].str());
 	feedback_url = cfg["feedback_url"].str();
 
-	updated = cfg["timestamp"].to_time_t();
-	created = cfg["original_timestamp"].to_time_t();
+	updated = chrono::parse_timestamp(cfg["timestamp"]);
+	created = chrono::parse_timestamp(cfg["original_timestamp"]);
 
 	local_only = cfg["local_only"].to_bool();
 }
@@ -137,8 +138,8 @@ void addon_info::write(config& cfg) const
 	cfg["tags"] = utils::join(tags);
 	cfg["feedback_url"] = feedback_url;
 
-	cfg["timestamp"] = updated;
-	cfg["original_timestamp"] = created;
+	cfg["timestamp"] = chrono::serialize_timestamp(updated);
+	cfg["original_timestamp"] = chrono::serialize_timestamp(created);
 }
 
 void addon_info::write_minimal(config& cfg) const

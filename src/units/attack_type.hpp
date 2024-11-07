@@ -62,7 +62,7 @@ public:
 	void set_range(const std::string& value) { range_ = value; set_changed(true); }
 	void set_min_range(int value) { min_range_ = value; set_changed(true); }
 	void set_max_range(int value) { max_range_ = value; set_changed(true); }
-	void set_attack_alignment(const std::string& value) { alignment_str_ = value; set_changed(true); }
+	void set_attack_alignment(const std::string& value) { alignment_ = unit_alignments::get_enum(value); set_changed(true); }
 	void set_accuracy(int value) { accuracy_ = value; set_changed(true); }
 	void set_parry(int value) { parry_ = value; set_changed(true); }
 	void set_damage(int value) { damage_ = value; set_changed(true); }
@@ -87,12 +87,12 @@ public:
 	std::string weapon_specials() const;
 	std::string weapon_specials_value(const std::set<std::string> checking_tags) const;
 
-	/** Returns alignment specified by alignment_str_ variable If empty or not valid returns the unit's alignment or neutral if self_ variable empty.
+	/** Returns alignment specified by alignment_ variable.
 	 */
-	utils::optional<unit_alignments::type> alignment() const {return unit_alignments::get_enum(alignment_str_);}
+	utils::optional<unit_alignments::type> alignment() const { return alignment_; }
 	/** Returns alignment specified by alignment() for filtering when exist.
 	 */
-	std::string alignment_str() const;
+	std::string alignment_str() const { return alignment_ ? unit_alignments::get_string(*alignment_) : ""; }
 
 	/** Calculates the number of attacks this weapon has, considering specials. */
 	void modified_attacks(unsigned & min_attacks,
@@ -145,6 +145,17 @@ public:
 	 * uses when a defender has no weapon for a given range.
 	 */
 	bool attack_empty() const {return (id().empty() && name().empty() && type().empty() && range().empty());}
+	/** remove special if matche condition
+	 * @param filter if special check with filter, it will be removed.
+	 */
+	void remove_special_by_filter(const config& filter);
+	/** check if special matche
+	 * @return True if special matche with filter(if 'active' filter is true, check if special active).
+	 * @param filter if special check with filter, return true.
+	 */
+	bool has_special_with_filter(const config & filter) const;
+	bool has_ability_with_filter(const config & filter) const;
+	bool has_special_or_ability_with_filter(const config & filter) const;
 
 	// In unit_types.cpp:
 
@@ -414,7 +425,7 @@ private:
 	std::string icon_;
 	std::string range_;
 	int min_range_, max_range_;
-	std::string alignment_str_;
+	utils::optional<unit_alignments::type> alignment_;
 	int damage_;
 	int num_attacks_;
 	double attack_weight_;

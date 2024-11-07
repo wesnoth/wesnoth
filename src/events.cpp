@@ -483,8 +483,6 @@ void pump()
 		return;
 	}
 
-	pump_info info;
-
 	SDL_Event temp_event;
 	int poll_count = 0;
 	int begin_ignoring = 0;
@@ -716,7 +714,7 @@ void pump()
 
 	// Inform the pump monitors that an events::pump() has occurred
 	for(auto monitor : pump_monitors) {
-		monitor->process(info);
+		monitor->process();
 	}
 }
 
@@ -756,15 +754,6 @@ void process_tooltip_strings(int mousex, int mousey)
 			handler->process_tooltip_string(mousex, mousey);
 		}
 	}
-}
-
-int pump_info::ticks()
-{
-	if(!ticks_) {
-		ticks_ = ::SDL_GetTicks();
-	}
-
-	return ticks_;
 }
 
 /* The constants for the minimum and maximum are picked from the headers. */

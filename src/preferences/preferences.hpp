@@ -370,21 +370,24 @@ class prefs
 		const config& options();
 		void set_options(const config& values);
 
-		int countdown_init_time();
-		void set_countdown_init_time(int value);
+		std::chrono::seconds countdown_init_time();
+		void set_countdown_init_time(const std::chrono::seconds& value);
 		void clear_countdown_init_time();
 
-		int countdown_turn_bonus();
-		void set_countdown_turn_bonus(int value);
+		std::chrono::seconds countdown_turn_bonus();
+		void set_countdown_turn_bonus(const std::chrono::seconds& value);
 		void clear_countdown_turn_bonus();
 
-		int countdown_reservoir_time();
-		void set_countdown_reservoir_time(int value);
+		std::chrono::seconds countdown_reservoir_time();
+		void set_countdown_reservoir_time(const std::chrono::seconds& value);
 		void clear_countdown_reservoir_time();
 
-		int countdown_action_bonus();
-		void set_countdown_action_bonus(int value);
+		std::chrono::seconds countdown_action_bonus();
+		void set_countdown_action_bonus(const std::chrono::seconds& value);
 		void clear_countdown_action_bonus();
+
+		std::chrono::minutes chat_message_aging();
+		void set_chat_message_aging(const std::chrono::minutes& value);
 
 		int village_gold();
 		void set_village_gold(int value);
@@ -503,7 +506,7 @@ class prefs
 		PREF_GETTER_SETTER(stop_music_in_background, bool, false)
 		PREF_GETTER_SETTER(tile_size, unsigned, 0)
 		PREF_GETTER_SETTER(mouse_scrolling, bool, true)
-		PREF_GETTER_SETTER(draw_delay, int, -1)
+		PREF_GETTER_SETTER(refresh_rate, int, -1)
 		PREF_GETTER_SETTER(animate_map, bool, true)
 		PREF_GETTER_SETTER(animate_water, bool, true)
 		PREF_GETTER_SETTER(minimap_movement_coding, bool, true)
@@ -556,7 +559,6 @@ class prefs
 		PREF_GETTER_SETTER(floating_labels, bool, true)
 		PREF_GETTER_SETTER(chat_timestamp, bool, false)
 		PREF_GETTER_SETTER(chat_lines, int, 6)
-		PREF_GETTER_SETTER(chat_message_aging, int, 20)
 		PREF_GETTER_SETTER(show_all_units_in_help, bool, false)
 		PREF_GETTER_SETTER(custom_command, std::string, std::string(""))
 		PREF_GETTER_SETTER(player_joins_sound, bool, true)
@@ -819,7 +821,7 @@ class prefs
 		static constexpr std::array unsynced_attributes_{
 			prefs_list::auto_pixel_scale,
 			prefs_list::core,
-			prefs_list::draw_delay,
+			prefs_list::refresh_rate,
 			prefs_list::editor_chosen_addon,
 			prefs_list::gui2_theme,
 			prefs_list::mp_server_program_name,

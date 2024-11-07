@@ -31,6 +31,7 @@
 #include "tstring.hpp"
 #include "utils/variant.hpp"
 
+#include <chrono>
 #include <climits>
 #include <ctime>
 #include <iosfwd>
@@ -126,6 +127,12 @@ public:
 	config_attribute_value& operator=(const std::string &v);
 	config_attribute_value& operator=(const std::string_view &v);
 	config_attribute_value& operator=(const t_string &v);
+
+	template<typename... Args>
+	config_attribute_value& operator=(const std::chrono::duration<Args...>& v)
+	{
+		return this->operator=(v.count());
+	}
 
 	/** Calls @ref operator=(const std::string&) if @a v is not empty. */
 	void write_if_not_empty(const std::string& v);

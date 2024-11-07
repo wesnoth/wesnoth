@@ -34,8 +34,6 @@
 #include "gui/dialogs/loading_screen.hpp"
 #include "side_controller.hpp"
 
-#include <SDL2/SDL_timer.h>
-
 #include <algorithm>
 #include <set>
 
@@ -152,12 +150,12 @@ void game_state::init(const config& level, play_controller & pc)
 		place_sides_in_preferred_locations(level);
 	}
 
-	LOG_NG << "initialized time of day regions... "    << (SDL_GetTicks() - pc.ticks());
+	LOG_NG << "initialized time of day regions... " << pc.timer();
 	for (const config &t : level.child_range("time_area")) {
 		tod_manager_.add_time_area(board_.map(),t);
 	}
 
-	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - pc.ticks());
+	LOG_NG << "initialized teams... " << pc.timer();
 
 	board_.teams().resize(level.child_count("side"));
 	if (player_number_ != 1 && player_number_ > static_cast<int>(board_.teams().size())) {

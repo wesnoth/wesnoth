@@ -39,6 +39,7 @@
 #include "saved_game.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/utf8_exception.hpp"
+#include "utils/optimer.hpp"
 #include "video.hpp" // only for faked
 
 #include <iomanip>
@@ -452,8 +453,9 @@ void savegame::before_save()
 bool savegame::save_game(const std::string& filename)
 {
 	try {
-		uint32_t start, end;
-		start = SDL_GetTicks();
+		utils::optional<const utils::ms_optimer> timer([this](const auto& timer) {
+			LOG_SAVE << "Milliseconds to save " << filename_ << ": " << timer;
+		});
 
 		if(filename_.empty()) {
 			filename_ = filename;
@@ -476,8 +478,8 @@ bool savegame::save_game(const std::string& filename)
 		// the came campaign, for example).
 		save_index_manager_->rebuild(filename_);
 
-		end = SDL_GetTicks();
-		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start;
+		// Log time before showing the confirmation
+		timer.reset();
 
 		if(show_confirmation_) {
 			gui2::show_transient_message(_("Saved"), _("The game has been saved."));

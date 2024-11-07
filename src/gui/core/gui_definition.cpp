@@ -22,6 +22,7 @@
 #include "gui/core/log.hpp"
 #include "gui/core/static_registry.hpp"
 #include "gui/widgets/settings.hpp"
+#include "serialization/chrono.hpp"
 #include "wml_exception.hpp"
 
 namespace gui2
@@ -124,14 +125,15 @@ gui_definition::gui_definition(const config& cfg)
 	 */
 	const config& settings = cfg.mandatory_child("settings");
 
-	popup_show_delay_ = settings["popup_show_delay"].to_unsigned();
-	popup_show_time_ = settings["popup_show_time"].to_unsigned();
-	help_show_time_ = settings["help_show_time"].to_unsigned();
-	double_click_time_ = settings["double_click_time"].to_unsigned();
+	using namespace std::chrono_literals;
+	popup_show_delay_ = chrono::parse_duration(settings["popup_show_delay"], 0ms);
+	popup_show_time_ = chrono::parse_duration(settings["popup_show_time"], 0ms);
+	help_show_time_ = chrono::parse_duration(settings["help_show_time"], 0ms);
+	double_click_time_ = chrono::parse_duration(settings["double_click_time"], 0ms);
 
-	repeat_button_repeat_time_ = settings["repeat_button_repeat_time"].to_unsigned();
+	repeat_button_repeat_time_ = chrono::parse_duration(settings["repeat_button_repeat_time"], 0ms);
 
-	VALIDATE(double_click_time_, missing_mandatory_wml_key("settings", "double_click_time"));
+	VALIDATE(!settings["double_click_time"].blank(), missing_mandatory_wml_key("settings", "double_click_time"));
 
 	sound_button_click_ = settings["sound_button_click"].str();
 	sound_toggle_button_click_ = settings["sound_toggle_button_click"].str();

@@ -270,10 +270,6 @@ void chatbox::add_chat_message(const std::time_t& /*time*/,
 	events::chat_handler::MESSAGE_TYPE /*type*/)
 {
 	std::string text;
-
-	// FIXME: the chat_command_handler class (which handles chat commands) dispatches a
-	// message consisting of '/me insert text here' in the case the '/me' or '/emote'
-	// commands are used, so we need to do some manual preprocessing here.
 	if(message.compare(0, 4, "/me ") == 0) {
 		text = formatter() << markup::italic(speaker, " ", font::escape_text(message.substr(4)));
 	} else {

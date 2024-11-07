@@ -20,6 +20,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "game_version.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <cmath>
@@ -28,6 +29,8 @@
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
+
+using namespace std::chrono_literals;
 
 namespace game_config
 {
@@ -65,8 +68,8 @@ double xp_bar_scaling  = 0.5;
 //
 // Misc
 //
-unsigned lobby_network_timer  = 100;
-unsigned lobby_refresh        = 4000;
+std::chrono::milliseconds lobby_network_timer  = 100ms;
+std::chrono::milliseconds lobby_refresh        = 4000ms;
 
 const std::size_t max_loop = 65536;
 
@@ -269,7 +272,7 @@ void load_config(const config &v)
 	recall_cost      = v["recall_cost"].to_int(20);
 	kill_experience  = v["kill_experience"].to_int(8);
 	combat_experience= v["combat_experience"].to_int(1);
-	lobby_refresh    = v["lobby_refresh"].to_int(2000);
+	lobby_refresh    = chrono::parse_duration(v["lobby_refresh"], 2000ms);
 	default_terrain  = v["default_terrain"].str();
 	tile_size        = v["tile_size"].to_int(72);
 

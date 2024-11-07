@@ -159,7 +159,7 @@ private:
 
 	bool gamelist_dirty_;
 
-	unsigned last_lobby_update_;
+	std::chrono::steady_clock::time_point last_lobby_update_;
 
 	bool gamelist_diff_update_;
 
