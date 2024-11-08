@@ -544,6 +544,12 @@ bool unit::ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bo
 	if(!weapon) {
 		return false;
 	}
+	attack_type::recursion_guard filter_lock;
+	filter_lock  = weapon->update_variables_recursion(cfg);
+	if(!filter_lock) {
+		show_recursion_warning(*this, cfg);
+		return false;
+	}
 	return weapon->matches_filter(filter);
 }
 
