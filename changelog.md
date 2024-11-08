@@ -19,8 +19,6 @@
    * Eastern Invasion: "Drowned Plains" drastically shortened in length. Objective now involves gathering gold, not killing enemy leaders.
 ### Editor
    * Fixed a crash in some cases after setting which direction a unit is facing.
-### Lua API
-   * Added new function gui.switch_theme() to allow switching to another gui2 theme from inside a scenario.
 ### Terrain
    * Improved handling of bluffs/gulch transitions with mountains and frozen terrain
    * Bluffs/Gulches less intrusive in mini-map
@@ -36,7 +34,6 @@
      * jaw attack from 17x4 to 15x3
      * claw attack from 24x3 to 27x2
 ### User interface
-   * GUI2 themes can be loaded from add-ons. Requires a `gui-theme.cfg` file in add-on root with a `[gui]` tag that acts as the entry point for the theme.
    * Hovering over units and selecting units now highlights reachable hexes instead of obscuring unreachable ones.
    * Option key is now identified as such instead of Alt in the Hotkeys preferences section on macOS builds
    * Search filter should now be case-insensitive for more than just ASCII characters (#9328)
