@@ -308,14 +308,14 @@ void tristate_button::mouse_down(const SDL_MouseButtonEvent& event) {
 		return;
 
 	if (event.button == SDL_BUTTON_RIGHT) {
-		if (state_ == ACTIVE)
+		if (state_ == ACTIVE || state_ == NORMAL)
 			state_ = TOUCHED_RIGHT;
 		if (state_ == PRESSED_ACTIVE_LEFT)
 			state_ = TOUCHED_BOTH_LEFT;
 	}
 
 	if (event.button == SDL_BUTTON_LEFT) {
-		if (state_ == ACTIVE)
+		if (state_ == ACTIVE || state_ == NORMAL)
 			state_ = TOUCHED_LEFT;
 		if (state_ == PRESSED_ACTIVE_RIGHT)
 			state_ = TOUCHED_BOTH_RIGHT;
