@@ -3,21 +3,22 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # ihsan Haluk AKIN <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008, ... 2022.
+# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008-2024.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-21 11:11-0500\n"
-"PO-Revision-Date: 2024-08-21 18:37+0300\n"
+"PO-Revision-Date: 2024-11-07 16:06+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
-"Language-Team: Turkish\n"
+"Language-Team: Turkish <->\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 42.0\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -3984,9 +3985,9 @@ msgstr "Resim:"
 #. [label]
 #: data/gui/themes/default/window/editor_edit_unit.cfg:1170
 #, fuzzy
-#| msgid "Next Unit"
+#| msgid "Map Editor"
 msgid "Unit Type Editor"
-msgstr "Sonraki Birim"
+msgstr "Harita Düzenleyici"
 
 #. [tab]
 #: data/gui/themes/default/window/editor_edit_unit.cfg:1192
@@ -9174,10 +9175,8 @@ msgid "Item Tool"
 msgstr "Öğe Aracı"
 
 #: src/hotkey/hotkey_command.cpp:209
-#, fuzzy
-#| msgid "Left mouse button sets a new item."
 msgid "Left mouse button sets a new item. Right click removes item."
-msgstr "Sol fare tuşu yeni bir öğe seçer."
+msgstr "Sol fare tuşu yeni bir öğe seçer. Sağ tuş öğeyi kaldırır."
 
 #: src/hotkey/hotkey_command.cpp:210
 msgid ""
@@ -9216,10 +9215,8 @@ msgid "Loyal"
 msgstr "Sadık"
 
 #: src/hotkey/hotkey_command.cpp:219
-#, fuzzy
-#| msgid "Server Information"
 msgid "Show Tool Information"
-msgstr "Sunucu Bilgileri"
+msgstr "Araç Bilgilerini Göster"
 
 #: src/hotkey/hotkey_command.cpp:221
 msgid "Toggle Minimap Unit Coding"
@@ -9596,23 +9593,14 @@ msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmem
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmemiş."
 
-#~ msgid "Connected Players"
-#~ msgstr "Bağlı Oyuncular"
-
-#~ msgid "The text contains invalid Pango markup: "
-#~ msgstr "Bu metin geçersiz Pango işareti içeriyor: "
-
-#~ msgid "Text has a font size of 0."
-#~ msgstr "Yazı tipi boyutu 0."
-
-#~ msgid "Clipboard support not found, contact your packager"
-#~ msgstr "Pano desteği bulunamadı, paketçiniz ile iletişime geçin"
-
 #~ msgid "Rocky Sands"
 #~ msgstr "Taşlı Kum"
 
 #~ msgid "Sands"
 #~ msgstr "Kumlar"
+
+#~ msgid "Connected Players"
+#~ msgstr "Bağlı Oyuncular"
 
 #~ msgid "Reloading alters future combat outcomes"
 #~ msgstr "Yeniden yükleme sonraki savaş sonuçlarını değiştirir"
@@ -9666,6 +9654,15 @@ msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmem
 #~ msgstr ""
 #~ "Mutlak yol kullanın. $HOME'a göre yorumlandıklarından göreli yolların "
 #~ "kullanımı önerilmiyor"
+
+#~ msgid "The text contains invalid Pango markup: "
+#~ msgstr "Bu metin geçersiz Pango işareti içeriyor: "
+
+#~ msgid "Text has a font size of 0."
+#~ msgstr "Yazı tipi boyutu 0."
+
+#~ msgid "Clipboard support not found, contact your packager"
+#~ msgstr "Pano desteği bulunamadı, paketçiniz ile iletişime geçin"
 
 #~ msgid "Running on $os"
 #~ msgstr "$os ile yürütülüyor"
