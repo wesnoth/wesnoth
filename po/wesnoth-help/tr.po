@@ -4,21 +4,22 @@
 #
 # Nils Kneuper <crazy-ivanovic@gmx.net>, 2005.
 # ihsan Haluk AKIN <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008, ...,, 2024.
+# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008-2024.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-28 12:38-0500\n"
-"PO-Revision-Date: 2024-08-22 11:09+0300\n"
+"PO-Revision-Date: 2024-11-07 16:22+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
-"Language-Team: Turkish <>\n"
+"Language-Team: Turkish <->\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 42.0\n"
 
 #. [damage_type]: id=arcane_damage
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:548
@@ -967,18 +968,6 @@ msgstr "Öğe Aracı (Dekor Aracı)"
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:243
-#, fuzzy
-#| msgid ""
-#| "The Item Tool allows placing decorations such as windmills, bookcases and "
-#| "monoliths. Multiple items can be placed on the same hex.\n"
-#| "\n"
-#| "<bold>text='Note:'</bold> the tool doesn’t support deleting items once "
-#| "placed, nor does it support undo. Mistakes can currently only be fixed by "
-#| "editing the generated WML file.\n"
-#| "\n"
-#| "This tool is only available in Scenario Mode; the decorations are not "
-#| "part of the terrain and are implemented in the scenario using WML’s "
-#| "<italic>text='[item]'</italic> tag."
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
@@ -996,9 +985,11 @@ msgstr ""
 "yerleştirilmesini sağlar. Aynı altıgen üzerine birden fazla öğe "
 "yerleştirilebilir.\n"
 "\n"
+"• Sol tıklama, tıklanan altıgenin üzerine bir süsleme yerleştirecektir.\n"
+"• Sağ tıklama, süslemeyi kaldıracaktır.\n"
+"\n"
 "<bold>text='Bilginize:'</bold> Araç, öğelerin yerleştirildikten sonra "
-"silinmesini ve geri alınmasını desteklemez. Yanlışlar şu anda yalnızca "
-"oluşturulan WML dosyası düzenlenerek düzeltilebilir. \n"
+"silinmesini ve geri alınmasını desteklemez.\n"
 "\n"
 "Bu araç yalnızca Senaryo Kipinde mevcuttur; süslemeler arazinin bir parçası "
 "değildir ve senaryoda WML’nin <italic>text='[öğe]'</italic> etiketi "

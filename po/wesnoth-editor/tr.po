@@ -3,21 +3,22 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # İhsan Akın <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008, ..., 2024.
+# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008-2024.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-28 12:38-0500\n"
-"PO-Revision-Date: 2024-08-20 21:49+0300\n"
+"PO-Revision-Date: 2024-11-07 16:16+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
-"Language-Team: Turkish <>\n"
+"Language-Team: Turkish <->\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 42.0\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -370,10 +371,8 @@ msgstr "Hata"
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:762
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
-msgstr "Gerçekten çıkmak istiyor musunuz?"
+msgstr "Gerçekten $type1'i $type2 dizinine kaydetmek istiyor musunuz?"
 
 #: src/editor/map/context_manager.cpp:721
 #: src/editor/map/context_manager.cpp:939
@@ -505,16 +504,12 @@ msgid "Will not work in game without extra care."
 msgstr "Elden geçirilmedikçe oyunda çalışmaz."
 
 #: src/editor/palette/item_palette.cpp:32
-#, fuzzy
-#| msgid "Right-click: "
 msgid " | Right-click to remove"
-msgstr "Sağ-tıklama: "
+msgstr " | Sağ tuş siler"
 
 #: src/editor/palette/item_palette.cpp:32
-#, fuzzy
-#| msgid "Left-click: "
 msgid "Left-click: Place item "
-msgstr "Sol-tıklama: "
+msgstr "Sol tuş öğeyi yerleştirir: "
 
 #: src/editor/palette/location_palette.cpp:249
 msgid "Go To"
