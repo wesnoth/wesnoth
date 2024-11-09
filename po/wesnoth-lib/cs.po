@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-28 12:38-0500\n"
-"PO-Revision-Date: 2024-09-18 22:27+0200\n"
+"PO-Revision-Date: 2024-11-03 20:16+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -3140,7 +3140,7 @@ msgstr "Potvrdit"
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:96
 msgid "Would you like to apply the changes?"
-msgstr "Chcete skutečně uložit provedené změny?"
+msgstr "Chceš použít provedené změny?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -5064,8 +5064,8 @@ msgid ""
 "The server will run as a background process until all users have "
 "disconnected. Do you wish to continue?"
 msgstr ""
-"Pokud chcete hostovat síťovou hru, musíte spustit instanci serveru. Server "
-"poběží na pozadí dokud se všichni uživatelé neodpojí. Přejete si pokračovat?"
+"Pokud chceš hostovat síťovou hru, musíš spustit instanci serveru. Server "
+"poběží na pozadí, dokud se všichni uživatelé neodpojí. Přeješ si pokračovat?"
 
 #. [button]: id=select_leader
 #: data/gui/window/mp_join_game.cfg:71 data/gui/window/mp_staging.cfg:70
@@ -5422,7 +5422,7 @@ msgstr "Smazat automatické uložení na konci scénářů"
 msgid ""
 "Delete previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr ""
-"Při jakékoliv výhře a při prohře ve hře více hráčů smazat všechny dosavadní "
+"Při jakékoliv výhře a při prohře ve hře více hráčů smazat všechna dosavadní "
 "automatická uložení"
 
 #. [column]
@@ -5705,7 +5705,7 @@ msgstr "Pozastavit hudbu, když běží na pozadí"
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
 #: data/gui/window/preferences/04_sound.cfg:83
 msgid "Pause the music when you switch to any other window"
-msgstr "Pozastavit hudbu, když se přepnete do jiného okna"
+msgstr "Pozastavit hudbu, když se přepneš do jiného okna"
 
 #. [column]
 #: data/gui/window/preferences/04_sound.cfg:104
@@ -5790,7 +5790,7 @@ msgstr "Přiřadit čas k chatové zprávě"
 #. [toggle_button]: id=remember_password
 #: data/gui/window/preferences/05_multiplayer.cfg:69
 msgid "Uncheck to delete the saved password (on exit)"
-msgstr "Odklikněte pro smazání uložených hesel (při ukončení programu)"
+msgstr "Odklikni pro smazání uloženého hesla (při ukončení programu)"
 
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/window/preferences/05_multiplayer.cfg:84
@@ -5800,7 +5800,7 @@ msgstr "Přijímat šeptání jen od přátel"
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/window/preferences/05_multiplayer.cfg:85
 msgid "Only accept whisper messages from people on your friends list"
-msgstr "Přijímat soukromé zprávy pouze od lidí ve vašem seznamu přátel"
+msgstr "Přijímat soukromé zprávy pouze od lidí ve tvém seznamu přátel"
 
 #. [toggle_button]: id=lobby_joins_none
 #: data/gui/window/preferences/05_multiplayer.cfg:101
@@ -6576,14 +6576,14 @@ msgstr "Není definována žádná mřížka."
 
 #: src/gui/core/window_builder.cpp:221
 msgid "Grid '$grid' row $row must have at least one column."
-msgstr "Řádek $row mřížky '$grid' musí mít alespoň jeden sloupec."
+msgstr "Řádek $row mřížky „$grid“ musí mít alespoň jeden sloupec."
 
 #: src/gui/core/window_builder.cpp:233
 msgid ""
 "Grid '$grid' row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
-"Řádek $row mřížky '$grid' se liší v počtu sloupců (nalezeno $found, "
+"Řádek $row mřížky „$grid“ se liší v počtu sloupců (nalezeno $found, "
 "očekáváno $expected)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:137
@@ -7419,9 +7419,9 @@ msgid ""
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
-"Tato hra vyžaduje, aby bylo nainstalováno, nebo aktualizováno jedno či více "
-"uživatelských rožšířeních.\n"
-"Chcete je nainstalovat nyní?"
+"Tato hra vyžaduje instalaci nebo aktualizaci jednoho či více uživatelských "
+"rozšíření, aby ses mohl připojit.\n"
+"Chceš je zkusit nainstalovat?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:371
 msgid "Games: showing $num_shown out of $num_total"
@@ -7643,17 +7643,17 @@ msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"\"<b>$hotkey_sequence|</b>\" je používán při \"<b>$old_hotkey_action|</"
-"b>\".\n"
-"Přejete si ji přiřadit k \"<b>$new_hotkey_action|</b>\"?"
+"„<b>$hotkey_sequence|</b>“ se používá pro akci „<b>$old_hotkey_action|</"
+"b>“.\n"
+"Chceš ji přeřadit k akci „<b>$new_hotkey_action|</b>“?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:907
 msgid "Reassign Hotkey"
-msgstr "Znovupřiřadit klávesovou zkratku"
+msgstr "Přeřadit klávesovou zkratku"
 
 #: src/gui/dialogs/preferences_dialog.cpp:924
 msgid "All hotkeys have been reset to their default values."
-msgstr "Všechny zkratky byly nastaveny na své výchozí hodnoty"
+msgstr "Všechny zkratky byly nastaveny na své výchozí hodnoty."
 
 #: src/gui/dialogs/preferences_dialog.cpp:924
 msgid "Hotkeys Reset"
@@ -7831,7 +7831,7 @@ msgstr ""
 
 #: src/gui/widgets/helper.cpp:93
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "Povinný ovládací prvek '$id' nebyl definován."
+msgstr "Povinný ovládací prvek „$id“ nebyl definován."
 
 #: src/gui/widgets/label.cpp:123
 msgid "Opening links is not supported, contact your packager"
@@ -7849,7 +7849,7 @@ msgstr "Odkaz zkopírován!"
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
-"'list_data' musí obsahovat stejný počet sloupců jako 'list_definition'."
+"„list_data“ musí obsahovat stejný počet sloupců jako „list_definition“."
 
 #: src/gui/widgets/listbox.cpp:769 src/gui/widgets/listbox.cpp:812
 #: src/gui/widgets/listbox.cpp:855 src/gui/widgets/scrollbar_panel.cpp:92
@@ -7859,7 +7859,7 @@ msgstr "Nebyl definován žádný seznam."
 #: src/gui/widgets/listbox.cpp:774 src/gui/widgets/listbox.cpp:817
 #: src/gui/widgets/listbox.cpp:860
 msgid "A 'list_definition' should contain one row."
-msgstr "Pro 'list_definition' je vyžadována alespoň jedna řádka."
+msgstr "Pro „list_definition“ je vyžadována alespoň jedna řádka."
 
 #: src/gui/widgets/multi_page.cpp:196
 msgid "No page defined."
@@ -7915,7 +7915,7 @@ msgstr "Pro stromové zobrazení nejsou stanoveny žádné uzly."
 # Vzorná kryptohláška!
 #: src/gui/widgets/tree_view.cpp:326
 msgid "[node]id 'root' is reserved for the implementation."
-msgstr "[node]id 'root' je vyhrazen implementací."
+msgstr "[node]id „root“ je vyhrazen implementací."
 
 #: src/gui/widgets/tree_view_node.cpp:106
 msgid "Unknown builder id for tree view node."
@@ -7975,13 +7975,13 @@ msgstr "Schopnosti"
 
 #: src/gui/widgets/window.cpp:431
 msgid "Linked '$id' group has multiple definitions."
-msgstr "Spojená skupina '$id' má více definicí,"
+msgstr "Spojená skupina „$id“ má více definicí."
 
 #: src/gui/widgets/window.cpp:917
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 "Zavření kliknutím kamkoliv vyžaduje přítomnost parametru nebo tlačítka s id "
-"nastaveným na 'click_dismiss' nebo 'ok'."
+"nastaveným na „click_dismiss“ nebo „ok“."
 
 #: src/gui/widgets/window.cpp:942 src/gui/widgets/window.cpp:979
 #: src/tests/gui/test_gui2.cpp:736
@@ -8426,9 +8426,9 @@ msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
-"Levým tlačítkem myši vybírá nebo odebírá s Ctrl, pravé vyvolá kontextové "
-"menu. Podržte Shift pro výběr shodných políček se stejným terénem pomocí "
-"magické hůlky."
+"Levé tlačítko myši vybírá nebo pomocí klávesy Ctrl výběr ruší, pravé vyvolá "
+"souvisící nabídku. Podržením klávesy Shift vybíráš kouzelnou hůlkou políčka "
+"se stejným terénem."
 
 #: src/hotkey/hotkey_command.cpp:201
 msgid "Selection Tool"
@@ -8440,9 +8440,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
-"Levým tlačítkem myši zobrazíte výběr hráčů, pravým vymažete. Tlačítka čísel "
-"posunují k výchozí pozici, alt+čísla nastavují výchozí pozice na pozice "
-"kurzoru, pomocí delete se mažou."
+"Levé tlačítko myši umístí vybraného hráče, pravé umístění smaže. Klávesy "
+"s čísly přejíždí na startovní pozici, Alt + číslo nastaví příslušnou "
+"startovní pozici pod kurzor, Delete maže."
 
 #: src/hotkey/hotkey_command.cpp:202
 msgid "Starting Positions Tool"
@@ -8461,8 +8461,8 @@ msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
 msgstr ""
-"Levým tlačítkem myši nastavíte novou jednotku nebo ji tažením přesunete, "
-"pravým vyvoláte kontextové menu. Musí být vybrána strana."
+"Levým tlačítkem myši umístíš novou jednotku nebo ji tažením přesuneš, pravým "
+"vyvoláš souvisící nabídku. Musí být vybrána strana."
 
 #: src/hotkey/hotkey_command.cpp:204
 msgid "Unit Tool"
@@ -8473,18 +8473,16 @@ msgid "Item Tool"
 msgstr "Nástroj pro předměty"
 
 #: src/hotkey/hotkey_command.cpp:205
-#, fuzzy
-#| msgid "Left mouse button sets a new item."
 msgid "Left mouse button sets a new item. Right click removes item."
-msgstr "Levé tlačítko myši umístí nový předmět."
+msgstr "Levé tlačítko myši umístí nový předmět. Pravé předmět odstraní."
 
 #: src/hotkey/hotkey_command.cpp:206
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
 msgstr ""
-"Levým tlačítkem myši nastavíte vlastnění vesnice vybrané straně, pravým "
-"vymažete. Musí být vybrána strana."
+"Levým tlačítkem myši nastavíš vlastnictví vesnice vybrané straně, pravým "
+"vlastnictví zrušíš. Musí být vybrána strana."
 
 #: src/hotkey/hotkey_command.cpp:206
 msgid "Village Tool"
@@ -8515,10 +8513,8 @@ msgid "Loyal"
 msgstr "Věrný"
 
 #: src/hotkey/hotkey_command.cpp:215
-#, fuzzy
-#| msgid "Server Information"
 msgid "Show Tool Information"
-msgstr "Informace o serveru"
+msgstr "Ukázat informace k nástroji"
 
 #: src/hotkey/hotkey_command.cpp:217
 msgid "Toggle Minimap Unit Coding"
@@ -8580,7 +8576,7 @@ msgstr "Kopírovat"
 #: src/hotkey/hotkey_command.cpp:234
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
-msgstr "Levým tlačítkem vložíte ze schránky, pravým vyvoláte kontextové menu."
+msgstr "Levým tlačítkem vložíš ze schránky, pravým vyvoláš souvisící nabídku."
 
 #: src/hotkey/hotkey_command.cpp:234
 msgid "Paste"
@@ -8857,16 +8853,16 @@ msgstr ""
 
 #: src/wml_exception.cpp:68
 msgid "When reporting the bug please include the following error message :"
-msgstr "Při oznamování chyby prosím uveďte následující chybovou zprávu :"
+msgstr "Při oznamování chyby prosím uveď následující chybovou zprávu :"
 
 #: src/wml_exception.cpp:89
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
-"V sekci '[$section|]', kde '$primary_key| = $primary_value', není nastaven "
-"povinný klíč '$key|'."
+"V sekci „[$section|]“, kde „$primary_key|“ = „$primary_value“, není nastaven "
+"povinný klíč „$key|“."
 
 #: src/wml_exception.cpp:92
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
-msgstr "V sekci '[$section|]' není nastaven povinný klíč '$key|'."
+msgstr "V sekci „[$section|]“ není nastaven povinný klíč „$key|“."

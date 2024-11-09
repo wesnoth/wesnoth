@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-28 12:38-0500\n"
-"PO-Revision-Date: 2024-09-13 20:03+0200\n"
+"PO-Revision-Date: 2024-11-03 20:35+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -369,10 +369,8 @@ msgstr "Chyba"
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:762
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
-msgstr "Opravdu si přeješ skončit?"
+msgstr "Opravdu chceš uložit typ $type1 do složky typu $type2?"
 
 #: src/editor/map/context_manager.cpp:721
 #: src/editor/map/context_manager.cpp:939
@@ -456,7 +454,7 @@ msgstr ""
 
 #: src/editor/map/map_context.cpp:261
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
-msgstr "Nalezeny znaky „<<“ naznačující přítomnost inline lua – končím"
+msgstr "Nalezeny znaky „<<“ naznačující přítomnost inline lua – končím"
 
 #: src/editor/map/map_context.cpp:266
 msgid "Failed to load the scenario, attempting to load only the map."
@@ -500,16 +498,12 @@ msgid "Will not work in game without extra care."
 msgstr "Nefunguje ve hře bez dodatečných úprav."
 
 #: src/editor/palette/item_palette.cpp:32
-#, fuzzy
-#| msgid "Right-click: "
 msgid " | Right-click to remove"
-msgstr "Kliknutí pravým: "
+msgstr " | Kliknutí pravým pro odstranění"
 
 #: src/editor/palette/item_palette.cpp:32
-#, fuzzy
-#| msgid "Left-click: "
 msgid "Left-click: Place item "
-msgstr "Kliknutí levým: "
+msgstr "Kliknutí levým: umístit předmět "
 
 #: src/editor/palette/location_palette.cpp:249
 msgid "Go To"
@@ -560,8 +554,7 @@ msgstr "Ctrl + kliknutí: kopírovat terén"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:95
 msgid "Clipboard support not found, contact your packager"
-msgstr ""
-"Podpora pro schránku nebyla nalezena, kontaktujte správce vašeho balíčku"
+msgstr "Podpora pro schránku nebyla nalezena, kontaktuj správce svého balíčku"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:163
 msgid "Choose File"
