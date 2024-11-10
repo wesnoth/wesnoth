@@ -335,7 +335,6 @@ void undo_list::undo()
 	// Get the action to undo. (This will be placed on the redo stack, but
 	// only if the undo is successful.)
 	auto action = std::move(undos_.back());
-	undos_.pop_back();
 	if (undo_action* undoable_action = dynamic_cast<undo_action*>(action.get()))
 	{
 		int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
@@ -348,6 +347,7 @@ void undo_list::undo()
 		resources::gameboard->unit_id_manager().set_save_id(last_unit_id - undoable_action->unit_id_diff);
 
 		// Bookkeeping.
+		undos_.pop_back();
 		redos_.emplace_back(new config());
 		resources::recorder->undo_cut(*redos_.back());
 
@@ -361,6 +361,7 @@ void undo_list::undo()
 	else
 	{
 		//ignore this action, and undo the previous one.
+		undos_.pop_back();
 		config replay_data;
 		resources::recorder->undo_cut(replay_data);
 		undo();
