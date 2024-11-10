@@ -23,7 +23,6 @@
 #include "config.hpp"             // for config, etc
 #include "game_events/pump.hpp"
 #include "log.hpp"
-#include "manager.hpp"
 #include "map/location.hpp"       // for map_location
 #include "resources.hpp"
 #include "serialization/string_utils.hpp"
