@@ -467,7 +467,6 @@ void move_result::do_execute()
 	if (from_ != to_) {
 		std::size_t num_steps = ::actions::move_unit_and_record(
 			/*std::vector<map_location> steps*/ route_->steps,
-			/*::actions::undo_list* undo_stack*/ nullptr,
 			/*bool continue_move*/ true,
 			/*bool show_move*/ true,
 			/*bool* interrupted*/ nullptr,
