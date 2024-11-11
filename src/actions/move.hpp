@@ -122,7 +122,6 @@ void teleport_unit_from_replay(
  */
 std::size_t move_unit_and_record(
 	const std::vector<map_location> &steps,
-	undo_list* undo_stack,
 	bool continued_move = false,
 	bool show_move = true,
 	bool* interrupted = nullptr,
@@ -134,7 +133,6 @@ std::size_t move_unit_and_record(
  */
 std::size_t move_unit_from_replay(
 	const std::vector<map_location> &steps,
-	undo_list* undo_stack,
 	bool continued_move,
 	bool skip_ally_sighted,
 	bool show_move = true);

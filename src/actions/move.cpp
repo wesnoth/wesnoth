@@ -204,7 +204,7 @@ namespace { // Private helpers for move_unit()
 		/** Attempts to move the unit along the expected path. */
 		void try_actual_movement(bool show);
 		/** Does some bookkeeping and event firing, for use after movement. */
-		void post_move(undo_list *undo_stack);
+		void post_move();
 		/** Shows the various on-screen messages, for use after movement. */
 		void feedback() const;
 		/** Attempts to teleport the unit to a map_location. */
@@ -1094,15 +1094,16 @@ namespace { // Private helpers for move_unit()
 			wml_undo_disabled_ |= wml_undo_blocked;
 		}
 
-		post_move(resources::undo_stack);
+		post_move();
 	}
 
 	/**
 	 * Does some bookkeeping and event firing, for use after movement.
 	 * This includes village capturing and the undo stack.
 	 */
-	void unit_mover::post_move(undo_list *undo_stack)
+	void unit_mover::post_move()
 	{
+		auto* undo_stack = resources::undo_stack;
 		const map_location & final_loc = final_hex();
 
 		int orig_village_owner = 0;
@@ -1247,7 +1248,7 @@ namespace { // Private helpers for move_unit()
 }//end anonymous namespace
 
 
-static std::size_t move_unit_internal(undo_list* undo_stack,
+static std::size_t move_unit_internal(
 	bool show_move, bool* interrupted, unit_mover& mover)
 {
 	show_move = show_move && !resources::controller->is_skipping_actions();
@@ -1277,7 +1278,7 @@ static std::size_t move_unit_internal(undo_list* undo_stack,
 
 	// Bookkeeping, etc.
 	// also fires the moveto event
-	mover.post_move(undo_stack);
+	mover.post_move();
 	if (show_move) {
 		mover.feedback();
 	}
@@ -1347,7 +1348,7 @@ void teleport_unit_from_replay(const std::vector<map_location> &steps,
  *          than steps.size() ).
  */
 std::size_t move_unit_and_record(const std::vector<map_location> &steps,
-	undo_list* undo_stack, bool continued_move, bool show_move,
+	bool continued_move, bool show_move,
 	bool* interrupted, move_unit_spectator* move_spectator)
 {
 
@@ -1377,7 +1378,7 @@ std::size_t move_unit_and_record(const std::vector<map_location> &steps,
 		*/
 		resources::recorder->add_synced_command("move",replay_helper::get_movement(steps, continued_move, skip_ally_sighted));
 		set_scontext_synced sync;
-		std::size_t r =  move_unit_internal(undo_stack, show_move, interrupted, mover);
+		std::size_t r =  move_unit_internal(show_move, interrupted, mover);
 		resources::controller->check_victory();
 		resources::controller->maybe_throw_return_to_play_side();
 		sync.do_final_checkup();
@@ -1386,13 +1387,12 @@ std::size_t move_unit_and_record(const std::vector<map_location> &steps,
 	else
 	{
 		//we are already in synced mode and don't need to reenter it again.
-		return  move_unit_internal(undo_stack, show_move, interrupted, mover);
+		return  move_unit_internal(show_move, interrupted, mover);
 	}
 }
 
 std::size_t move_unit_from_replay(const std::vector<map_location> &steps,
-	undo_list* undo_stack, bool continued_move, bool skip_ally_sighted,
-	bool show_move)
+	bool continued_move, bool skip_ally_sighted, bool show_move)
 {
 	// Evaluate this move.
 	unit_mover mover(steps, nullptr, continued_move,skip_ally_sighted);
@@ -1402,7 +1402,7 @@ std::size_t move_unit_from_replay(const std::vector<map_location> &steps,
 		return 0;
 	}
 
-	return move_unit_internal(undo_stack, show_move, nullptr, mover);
+	return move_unit_internal(show_move, nullptr, mover);
 }
 
 
