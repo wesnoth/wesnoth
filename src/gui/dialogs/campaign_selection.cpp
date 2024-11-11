@@ -25,6 +25,7 @@
 #include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
+#include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
@@ -493,7 +494,12 @@ void campaign_selection::add_campaign_to_tree(const config& campaign)
 		data.emplace("victory", item);
 	}
 
-	tree.add_node("campaign", data).set_id(campaign["id"]);
+	auto& node = tree.add_node("campaign", data);
+	node.set_id(campaign["id"]);
+	connect_signal_mouse_left_double_click(
+		node.find_widget<toggle_panel>("tree_view_node_label"),
+		std::bind(&campaign_selection::proceed, this)
+	);
 }
 
 void campaign_selection::proceed()
