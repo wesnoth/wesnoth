@@ -216,6 +216,8 @@ struct preferences_list_defines
 	ADDPREF(scroll_threshold)
 	/** the most recently selected achievement group in the achievements dialog */
 	ADDPREF(selected_achievement_group)
+	/** contains the list of any player-entered multiplayer servers */
+	ADDPREF(server)
 	/** whether to show an orb over allied units */
 	ADDPREF(show_ally_orb)
 	/** whether to show an orb over disengaged units */
@@ -472,6 +474,7 @@ struct preferences_list_defines
 		scroll,
 		scroll_threshold,
 		selected_achievement_group,
+		server,
 		show_ally_orb,
 		show_disengaged_orb,
 		show_enemy_orb,

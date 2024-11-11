@@ -1516,7 +1516,7 @@ std::vector<game_config::server_info> prefs::user_servers_list()
 {
 	std::vector<game_config::server_info> pref_servers;
 
-	for(const config& server : preferences_.child_range("server")) {
+	for(const config& server : preferences_.child_range(prefs_list::server)) {
 		pref_servers.emplace_back();
 		pref_servers.back().name = server["name"].str();
 		pref_servers.back().address = server["address"].str();
@@ -1527,10 +1527,10 @@ std::vector<game_config::server_info> prefs::user_servers_list()
 
 void prefs::set_user_servers_list(const std::vector<game_config::server_info>& value)
 {
-	preferences_.clear_children("server");
+	preferences_.clear_children(prefs_list::server);
 
 	for(const auto& svinfo : value) {
-		config& sv_cfg = preferences_.add_child("server");
+		config& sv_cfg = preferences_.add_child(prefs_list::server);
 		sv_cfg["name"] = svinfo.name;
 		sv_cfg["address"] = svinfo.address;
 	}
