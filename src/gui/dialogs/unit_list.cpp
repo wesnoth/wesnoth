@@ -53,7 +53,7 @@ static std::string format_level_string(const int level)
 	} else if(level == 2) {
 		return markup::bold(level);
 	} else { // level must be > 2
-		return markup::bold(markup::span_color("#ffffff", level));
+		return markup::span_color("#ffffff", markup::bold(level));
 	}
 
 }
