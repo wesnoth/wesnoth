@@ -287,12 +287,12 @@ void display::reinit_flags_for_team(const team& t)
 	for(const std::string& item : items) {
 		const std::vector<std::string>& sub_items = utils::split(item, ':');
 		std::string str = item;
-		int time = 100;
+		auto time = 100ms;
 
 		if(sub_items.size() > 1) {
 			str = sub_items.front();
 			try {
-				time = std::max<int>(1, std::stoi(sub_items.back()));
+				time = std::max(1ms, std::chrono::milliseconds{std::stoi(sub_items.back())});
 			} catch(const std::invalid_argument&) {
 				ERR_DP << "Invalid time value found when constructing flag for side " << t.side() << ": " << sub_items.back();
 			}
@@ -307,8 +307,9 @@ void display::reinit_flags_for_team(const team& t)
 	animated<image::locator>& f = flags_[t.side() - 1];
 	f = temp_anim;
 	auto time = f.get_end_time();
-	if (time > 0) {
-		f.start_animation(randomness::rng::default_instance().get_random_int(0, time-1), true);
+	if (time > 0ms) {
+		int start_time = randomness::rng::default_instance().get_random_int(0, time.count() - 1);
+		f.start_animation(std::chrono::milliseconds{start_time}, true);
 	} else {
 		// this can happen if both flag and game_config::images::flag are empty.
 		ERR_DP << "missing flag for side " << t.side();
