@@ -817,6 +817,7 @@ class prefs
 			prefs_list::completed_campaigns,
 			prefs_list::history,
 			prefs_list::options,
+			prefs_list::server,
 		};
 		static constexpr std::array unsynced_attributes_{
 			prefs_list::auto_pixel_scale,
