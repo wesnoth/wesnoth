@@ -446,7 +446,7 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	// TODO: move to some general area of the code.
 	const auto yes_or_no = [](bool val) { return val ? _("yes") : _("no"); };
 
-	ss << "\n<big>" << markup::span_color(font::TITLE_COLOR, _("Settings")) << "</big>\n";
+	ss << "\n" << markup::tag("big", markup::span_color(font::TITLE_COLOR, _("Settings"))) << "\n";
 	ss << _("Experience modifier:")   << " " << game.xp << "\n";
 	ss << _("Gold per village:")      << " " << game.gold << "\n";
 	ss << _("Map size:")              << " " << game.map_size_info << "\n";
