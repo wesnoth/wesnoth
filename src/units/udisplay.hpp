@@ -65,8 +65,8 @@ private: // data
 	const bool animate_;
 	const bool force_scroll_;
 	unit_animator animator_;
-	/** The animation potential to wait until. INT_MIN for no wait; INT_MAX to wait for end. */
-	int wait_until_;
+	/** The animation potential to wait until. milliseconds::min for no wait; milliseconds::max to wait for end. */
+	std::chrono::milliseconds wait_until_;
 	/** The unit to be (re-)shown after an animation finishes. */
 	unit_ptr shown_unit_;
 	const std::vector<map_location>& path_;

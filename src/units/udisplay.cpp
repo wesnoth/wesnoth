@@ -124,9 +124,9 @@ void teleport_unit_between(const map_location& a, const map_location& b, unit& t
  *                   but will likely not be clear when we return.
  * @param disp       The game display. Assumed neither locked nor faked.
  * @returns  The animation potential until this animation will finish.
- *           INT_MIN indicates that no animation is pending.
+ *           milliseconds::min indicates that no animation is pending.
  */
-int move_unit_between(const map_location& a,
+std::chrono::milliseconds move_unit_between(const map_location& a,
 		const map_location& b,
 		unit_ptr temp_unit,
 		unsigned int step_num,
@@ -135,7 +135,7 @@ int move_unit_between(const map_location& a,
 		display& disp)
 {
 	if ( disp.fogged(a) && disp.fogged(b) ) {
-		return std::numeric_limits<int>::min();
+		return std::chrono::milliseconds::min();
 	}
 
 	temp_unit->set_location(a);
@@ -151,12 +151,12 @@ int move_unit_between(const map_location& a,
 	// useless now, previous short draw() just did one
 	// new_animation_frame();
 
-	int target_time = animator.get_animation_time_potential();
+	auto target_time = animator.get_animation_time_potential();
 		// target_time must be short to avoid jumpy move
 		// std::cout << "target time: " << target_time << "\n";
 	// we round it to the next multiple of 200 so that movement aligns to hex changes properly
-	target_time += 200;
-	target_time -= target_time%200;
+	target_time += 200ms;
+	target_time -= target_time % 200ms;
 
 	return target_time;
 }
@@ -177,7 +177,7 @@ unit_mover::unit_mover(const std::vector<map_location>& path, bool animate, bool
 	animate_(animate),
 	force_scroll_(force_scroll),
 	animator_(),
-	wait_until_(std::numeric_limits<int>::min()),
+	wait_until_(std::chrono::milliseconds::min()),
 	shown_unit_(),
 	path_(path),
 	current_(0),
@@ -392,10 +392,10 @@ void unit_mover::proceed_to(unit_ptr u, std::size_t path_index, bool update, boo
  */
 void unit_mover::wait_for_anims()
 {
-	if ( wait_until_ == std::numeric_limits<int>::max() )
+	if ( wait_until_ == std::chrono::milliseconds::max() )
 		// Wait for end (not currently used, but still supported).
 		animator_.wait_for_end();
-	else if ( wait_until_ != std::numeric_limits<int>::min() ) {
+	else if ( wait_until_ != std::chrono::milliseconds::min() ) {
 		// Wait until the specified time (used for normal movement).
 		animator_.wait_until(wait_until_);
 		// debug code, see unit_frame::redraw()
@@ -416,7 +416,7 @@ void unit_mover::wait_for_anims()
 	}
 
 	// Reset data.
-	wait_until_ = std::numeric_limits<int>::min();
+	wait_until_ = std::chrono::milliseconds::min();
 	animator_.clear();
 
 	update_shown_unit();
@@ -740,7 +740,7 @@ void unit_attack(display * disp, game_board & board,
 
 
 	animator.start_animations();
-	animator.wait_until(0);
+	animator.wait_until(0ms);
 	int damage_left = damage;
 	bool extra_hit_sounds_played = false;
 	while(damage_left > 0 && !animator.would_end()) {
@@ -751,13 +751,13 @@ void unit_attack(display * disp, game_board & board,
 			extra_hit_sounds_played = true;
 		}
 
-		int step_left = (animator.get_end_time() - animator.get_animation_time() )/50;
+		auto step_left = (animator.get_end_time() - animator.get_animation_time() ) / 50ms;
 		if(step_left < 1) step_left = 1;
 		int removed_hp =  damage_left/step_left ;
 		if(removed_hp < 1) removed_hp = 1;
 		defender.take_hit(removed_hp);
 		damage_left -= removed_hp;
-		animator.wait_until(animator.get_animation_time_potential() +50);
+		animator.wait_until(animator.get_animation_time_potential() + 50ms);
 	}
 	animator.wait_for_end();
 	// pass the animation back to the real unit

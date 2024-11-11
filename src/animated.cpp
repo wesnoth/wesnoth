@@ -20,20 +20,18 @@
 
 #include "animated.hpp"
 
-#include <SDL2/SDL_timer.h>
-
 // Put these here to ensure that there's only
 // one instance of the current_ticks variable
 namespace {
-	int current_ticks = 0;
+	std::chrono::steady_clock::time_point current_ticks;
 }
 
 void new_animation_frame()
 {
-	current_ticks = SDL_GetTicks();
+	current_ticks = std::chrono::steady_clock::now();
 }
 
-int get_current_animation_tick()
+std::chrono::steady_clock::time_point get_current_animation_tick()
 {
 	return current_ticks;
 }
