@@ -120,21 +120,12 @@ public:
 	/** @return A rng_deterministic if in determinsic mode otherwise a rng_synced. */
 	static std::shared_ptr<randomness::rng> get_rng_for_action();
 
-	/** @return whether we needed data from other clients about the action, in this case we need to send data about the current action to other clients. which means we cannot undo it. */
-	static bool is_simultaneous()
-	{
-		return is_simultaneous_;
-	}
-
-	/** Sets is_simultaneous_ = false, called when entering the synced context. */
-	static void reset_is_simultaneous()
-	{
-		is_simultaneous_ = false;
-	}
-
-	/** Sets is_simultaneous_ = true, called using a user choice that is not the currently playing side. */
-	static void set_is_simultaneous();
-	static void block_undo(bool do_block = true);
+	/**
+	 * @a set this to false to prevent clearing the undo stack, this is important when we cannot change the gamestate
+	 * becasue with dsu clearing the undo stack changes the gamestate, which we for example don't want during formula
+	 * evaluation, when it used the dice operator. TODO: consider removing this parameter when dsu is removed.
+	 */
+	static void block_undo(bool do_block = true, bool clear_undo = true);
 	static void reset_block_undo()
 	{
 		is_undo_blocked_ = false;
@@ -207,10 +198,7 @@ private:
 	 * been sent over the network.
 	 *
 	 * false = we are on a local turn and haven't sent anything yet.
-	 *
-	 * TODO: it would be better if the following variable were not static.
 	 */
-	static inline bool is_simultaneous_ = false;
 	static inline bool is_undo_blocked_ = false;
 
 	/** Used to restore the unit id manager when undoing. */
