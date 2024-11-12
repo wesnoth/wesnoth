@@ -714,9 +714,9 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 }
 
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
-                  const map_location & from, bool show)
+                  const map_location & from)
 {
-	show = show && !resources::controller->is_skipping_actions();
+	bool show = !resources::controller->is_skipping_actions();
 	const unit_ptr new_unit = unit::create(u_type, side_num, true);
 
 
@@ -739,9 +739,9 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 
 bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
-                 map_location::direction facing, bool show)
+                 map_location::direction facing)
 {
-	show = show && !resources::controller->is_skipping_actions();
+	bool show = !resources::controller->is_skipping_actions();
 	unit_ptr recall = current_team.recall_list().extract_if_matches_id(id);
 
 	if ( !recall )

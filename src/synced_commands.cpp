@@ -67,7 +67,6 @@ synced_command::map& synced_command::registry()
 
 SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, spectator)
 {
-	bool show = !resources::controller->is_skipping_replay();
 	int current_team_num = resources::controller->current_side();
 	team &current_team = resources::gameboard->get_team(current_team_num);
 
@@ -122,7 +121,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, spectator)
 		spectator.error(errbuf.str());
 	}
 
-	actions::recruit_unit(*u_type, current_team_num, loc, from, show);
+	actions::recruit_unit(*u_type, current_team_num, loc, from);
 
 	LOG_REPLAY << "recruit: team=" << current_team_num << " '" << type_id << "' at (" << loc
 		<< ") cost=" << u_type->cost() << " from gold=" << beginning_gold << ' '
@@ -132,7 +131,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, spectator)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, spectator)
 {
-	bool show = !resources::controller->is_skipping_replay();
 	int current_team_num = resources::controller->current_side();
 	team &current_team = resources::gameboard->get_team(current_team_num);
 
@@ -140,7 +138,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, spectator)
 	map_location loc(child, resources::gamedata);
 	map_location from(child.child_or_empty("from"), resources::gamedata);
 
-	if(!actions::recall_unit(unit_id, current_team, loc, from, map_location::direction::indeterminate, show)) {
+	if(!actions::recall_unit(unit_id, current_team, loc, from, map_location::direction::indeterminate)) {
 		spectator.error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
 		//when recall_unit returned false nothing happened so we can safety return false;
 		return false;

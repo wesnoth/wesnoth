@@ -169,7 +169,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
  * statistics, and (unless @a is_ai) updating the undo stack.
  */
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
-                  const map_location & from, bool show=true);
+                  const map_location & from);
 
 /**
  * Recalls the unit with the indicated ID for the provided team.
@@ -189,6 +189,5 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
  */
 bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
-                 map_location::direction facing = map_location::direction::indeterminate,
-                 bool show=true);
+                 map_location::direction facing = map_location::direction::indeterminate);
 }//namespace actions
