@@ -253,7 +253,7 @@ user_choice_manager::user_choice_manager(const std::string &name, const mp_sync:
 		assert(!t.is_empty());
 		if(side != current_side_)
 		{
-			synced_context::set_is_simultaneous();
+			synced_context::block_undo();
 		}
 	}
 

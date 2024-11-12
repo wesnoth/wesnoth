@@ -181,31 +181,31 @@ std::string synced_context::generate_random_seed()
 	return seed_val.str();
 }
 
-void synced_context::set_is_simultaneous()
+void synced_context::block_undo(bool do_block, bool clear_undo)
 {
-	resources::undo_stack->clear();
-	is_simultaneous_ = true;
-}
+	if(!do_block) {
+		return;
+	}
+	is_undo_blocked_ = true;
 
-void synced_context::block_undo(bool do_block)
-{
-	is_undo_blocked_ |= do_block;
-	resources::undo_stack->clear();
+	if(clear_undo) {
+		resources::undo_stack->clear();
+	}
 	// Since the action cannot be undone, send it immidiately to the other players.
 	resources::controller->send_actions();
 }
 
 bool synced_context::undo_blocked()
 {
-	// this method should only works in a synced context.
+	// this method only works in a synced context.
 	assert(!is_unsynced());
 	// if we sent data of this action over the network already, undoing is blocked.
-	// if we called the rng, undoing is blocked.
 	// if the game has ended, undoing is blocked.
 	// if the turn has ended undoing is blocked.
-	return is_simultaneous_
-	    || is_undo_blocked_
-	    || (is_synced() && (randomness::generator->get_random_calls() != 0))
+
+	// Important: once this function returned true, it has to return true for the rest of the duration of the current action
+	// otherwise OOS happens, so the following code in particular relies on the inability to revoke a [end_turn]/[endlevel]
+	return is_undo_blocked_
 	    || resources::controller->is_regular_game_end()
 	    || resources::gamedata->end_turn_forced();
 }
@@ -233,7 +233,12 @@ std::shared_ptr<randomness::rng> synced_context::get_rng_for_action()
 {
 	const std::string& mode = resources::classification->random_mode;
 	if(mode == "deterministic" || mode == "biased") {
-		return std::make_shared<randomness::rng_deterministic>(resources::gamedata->rng());
+		auto get_rng = []() {
+			//rnd is nonundoable, even when the deterministic rng is used.
+			synced_context::block_undo(true, false);
+			return resources::gamedata->rng().get_next_random();
+		};
+		return std::make_shared<randomness::rng_proxy>(get_rng);
 	} else {
 		return std::make_shared<randomness::synced_rng>(generate_random_seed);
 	}
@@ -262,15 +267,12 @@ config synced_context::ask_server_choice(const server_choice& sch)
 		return sch.local_choice();
 	}
 
-	set_is_simultaneous();
+	block_undo(true, false);
 	resources::controller->increase_server_request_number();
 	const bool is_mp_game = resources::controller->is_networked_mp();
 	bool did_require = false;
 
 	DBG_REPLAY << "ask_server for random_seed";
-
-	// As soon as random or similar is involved, undoing is impossible.
-	resources::undo_stack->clear();
 
 	// There might be speak or similar commands in the replay before the user input.
 	while(true) {
@@ -374,7 +376,6 @@ set_scontext_synced_base::set_scontext_synced_base()
 	assert(synced_context::get_synced_state() == synced_context::UNSYNCED);
 
 	synced_context::set_synced_state(synced_context::SYNCED);
-	synced_context::reset_is_simultaneous();
 	synced_context::reset_block_undo();
 	synced_context::set_last_unit_id(resources::gameboard->unit_id_manager().get_save_id());
 	synced_context::reset_undo_commands();
