@@ -463,16 +463,15 @@ void move_result::do_execute()
 
 	::actions::move_unit_spectator move_spectator(resources::gameboard->units());
 	move_spectator.set_unit(resources::gameboard->units().find(from_));
+	move_spectator.set_ai_move(true);
 
 	if (from_ != to_) {
-		std::size_t num_steps = ::actions::move_unit_and_record(
+		::actions::move_unit_and_record(
 			/*std::vector<map_location> steps*/ route_->steps,
 			/*bool continue_move*/ true,
-			/*bool show_move*/ true,
-			/*bool* interrupted*/ nullptr,
-			/*::actions::move_unit_spectator* move_spectator*/ &move_spectator);
+			/*::actions::move_unit_spectator* move_spectator*/ move_spectator);
 
-		if ( num_steps > 0 ) {
+		if( move_spectator.get_tiles_entered() > 0) {
 			set_gamestate_changed();
 		} else if ( move_spectator.get_ambusher().valid() ) {
 			// Unlikely, but some types of strange WML (or bad pathfinding)
