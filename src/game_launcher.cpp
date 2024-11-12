@@ -23,7 +23,7 @@
 #include "exceptions.hpp"          // for error
 #include "filesystem.hpp"          // for get_user_data_dir, etc
 #include "game_classification.hpp" // for game_classification, etc
-#include "game_config.hpp"         // for path, no_delay, revision, etc
+#include "game_config.hpp"         // for path, revision, etc
 #include "game_config_manager.hpp" // for game_config_manager
 #include "game_initialization/multiplayer.hpp"  // for start_client, etc
 #include "game_initialization/playcampaign.hpp" // for play_game, etc
@@ -168,8 +168,6 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	}
 	if(cmdline_opts_.new_widgets)
 		gui2::new_widgets = true;
-	if(cmdline_opts_.nodelay)
-		game_config::no_delay = true;
 	if(cmdline_opts_.nomusic)
 		no_music = true;
 	if(cmdline_opts_.nosound)
@@ -299,7 +297,6 @@ bool game_launcher::init_video()
 			// Other functions don't require a window at all.
 			video::init(video::fake::no_window);
 		}
-		game_config::no_delay = true;
 		return true;
 	}
 

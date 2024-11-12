@@ -1420,18 +1420,15 @@ void unit_animator::wait_until(const std::chrono::milliseconds& animation_time) 
 	auto end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
 
 	while(steady_clock::now() < end_tick - std::min(std::chrono::floor<std::chrono::milliseconds>(20ms / speed), 20ms)) {
-		if(!game_config::no_delay) {
-			auto rest = std::chrono::floor<std::chrono::milliseconds>((animation_time - get_animation_time()) * speed);
-			std::this_thread::sleep_for(std::clamp(rest, 0ms, 10ms));
-		}
+		auto rest = std::chrono::floor<std::chrono::milliseconds>((animation_time - get_animation_time()) * speed);
+		std::this_thread::sleep_for(std::clamp(rest, 0ms, 10ms));
+
 		resources::controller->play_slice();
 		end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
 	}
 
-	if(!game_config::no_delay) {
-		auto rest = std::max<steady_clock::duration>(0ms, end_tick - steady_clock::now() + 5ms);
-		std::this_thread::sleep_for(rest);
-	}
+	auto rest = std::max<steady_clock::duration>(0ms, end_tick - steady_clock::now() + 5ms);
+	std::this_thread::sleep_for(rest);
 
 	new_animation_frame();
 	animated_units_[0].my_unit->anim_comp().get_animation()->set_max_animation_time(0ms);
@@ -1439,8 +1436,6 @@ void unit_animator::wait_until(const std::chrono::milliseconds& animation_time) 
 
 void unit_animator::wait_for_end() const
 {
-	if(game_config::no_delay) return;
-
 	bool finished = false;
 	while(!finished) {
 		resources::controller->play_slice();

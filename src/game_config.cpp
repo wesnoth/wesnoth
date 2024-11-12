@@ -88,7 +88,6 @@ bool
 	ignore_replay_errors = false,
 	mp_debug             = false,
 	exit_at_end          = false,
-	no_delay             = false,
 	disable_autosave     = false,
 	no_addons            = false;
 
