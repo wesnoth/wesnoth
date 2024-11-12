@@ -155,7 +155,6 @@ void execute_move_unit(
 	const std::vector<map_location> &steps,
 	bool continued_move,
 	bool skip_ally_sighted,
-	bool show_move = true,
 	move_unit_spectator* move_spectator);
 
 }//namespace actions

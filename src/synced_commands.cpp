@@ -304,13 +304,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child, spectator)
 	bool skip_sighted = child["skip_sighted"] == "all";
 	bool skip_ally_sighted = child["skip_sighted"] == "only_ally";
 
-	bool show_move = !resources::controller->is_skipping_replay() ;
-
-	if ( current_team.is_local_ai() || current_team.is_network_ai())
-	{
-		show_move = show_move && !prefs::get().skip_ai_moves();
-	}
-	actions::execute_move_unit(steps, skip_sighted, skip_ally_sighted, show_move, dynamic_cast<actions::move_unit_spectator*>(&spectator));
+	actions::execute_move_unit(steps, skip_sighted, skip_ally_sighted, dynamic_cast<actions::move_unit_spectator*>(&spectator));
 
 	return true;
 }

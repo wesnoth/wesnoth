@@ -1277,10 +1277,9 @@ namespace { // Private helpers for move_unit()
 }//end anonymous namespace
 
 
-static void move_unit_internal(
-	bool show_move, unit_mover& mover)
+static void move_unit_internal(unit_mover& mover)
 {
-	show_move = show_move && !resources::controller->is_skipping_actions();
+	bool show_move = !resources::controller->is_skipping_replay() && !resources::controller->is_skipping_actions();
 	const events::command_disabler disable_commands;
 
 	// Attempt moving.
@@ -1329,7 +1328,6 @@ static void move_unit_internal(
 void execute_move_unit(const std::vector<map_location>& steps,
 	bool continued_move,
 	bool skip_ally_sighted,
-	bool show_move,
 	move_unit_spectator* move_spectator)
 {
 	// Evaluate this move.
@@ -1339,7 +1337,7 @@ void execute_move_unit(const std::vector<map_location>& steps,
 		return;
 	}
 
-	move_unit_internal(show_move, mover);
+	move_unit_internal(mover);
 }
 
 void teleport_unit_and_record(const map_location& teleport_from,
