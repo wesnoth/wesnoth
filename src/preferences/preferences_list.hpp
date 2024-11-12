@@ -30,6 +30,8 @@ struct preferences_list_defines
 	ADDPREF(_last_cache_cleaned_ver)
 	/** achievements completed for add-ons/UMC, are not steam achievements */
 	ADDPREF(achievements)
+	/** player names marked as either friends or as ignored */
+	ADDPREF(acquaintance)
 	/** the sort direction, ie: ascending */
 	ADDPREF(addon_manager_saved_order_direction)
 	/** the name of the column in the add-ons manager to use by default to sort results */
@@ -385,6 +387,7 @@ struct preferences_list_defines
 	ENUM_AND_ARRAY(
 		_last_cache_cleaned_ver,
 		achievements,
+		acquaintance,
 		addon_manager_saved_order_direction,
 		addon_manager_saved_order_name,
 		alias,

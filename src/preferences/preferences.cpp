@@ -95,7 +95,7 @@ prefs::prefs()
 		preferences_[prefs_list::scroll_threshold] = 10;
 	}
 
-	for(const config& acfg : preferences_.child_range("acquaintance")) {
+	for(const config& acfg : preferences_.child_range(prefs_list::acquaintance)) {
 		preferences::acquaintance ac = preferences::acquaintance(acfg);
 		acquaintances_[ac.get_nick()] = ac;
 	}
@@ -138,10 +138,10 @@ prefs::~prefs()
 	}
 	set_child(prefs_list::history, history);
 
-	preferences_.clear_children("acquaintance");
+	preferences_.clear_children(prefs_list::acquaintance);
 
 	for(auto& a : acquaintances_) {
-		config& item = preferences_.add_child("acquaintance");
+		config& item = preferences_.add_child(prefs_list::acquaintance);
 		a.second.save(item);
 	}
 
