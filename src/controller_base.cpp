@@ -406,7 +406,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 	return true;
 }
 
-void controller_base::play_slice(bool is_delay_enabled)
+void controller_base::play_slice()
 {
 	CKey key;
 
@@ -453,11 +453,6 @@ void controller_base::play_slice(bool is_delay_enabled)
 	scrolling_ = handle_scroll(mousex, mousey, mouse_flags);
 
 	map_location highlighted_hex = get_display().mouseover_hex();
-
-	// be nice when window is not visible	// NOTE should be handled by display instead, to only disable drawing
-	if(is_delay_enabled && !video::window_is_visible()) {
-		SDL_Delay(200);
-	}
 
 	// Scrolling ended, update the cursor and the brightened hex
 	if(!scrolling_ && was_scrolling) {

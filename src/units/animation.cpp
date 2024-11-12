@@ -1414,7 +1414,7 @@ void unit_animator::wait_until(const std::chrono::milliseconds& animation_time) 
 	display* disp = display::get_singleton();
 	double speed = disp->turbo_speed();
 
-	resources::controller->play_slice(false);
+	resources::controller->play_slice();
 
 	using std::chrono::steady_clock;
 	auto end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
@@ -1424,7 +1424,7 @@ void unit_animator::wait_until(const std::chrono::milliseconds& animation_time) 
 			auto rest = std::chrono::floor<std::chrono::milliseconds>((animation_time - get_animation_time()) * speed);
 			std::this_thread::sleep_for(std::clamp(rest, 0ms, 10ms));
 		}
-		resources::controller->play_slice(false);
+		resources::controller->play_slice();
 		end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
 	}
 
@@ -1443,7 +1443,7 @@ void unit_animator::wait_for_end() const
 
 	bool finished = false;
 	while(!finished) {
-		resources::controller->play_slice(false);
+		resources::controller->play_slice();
 
 		std::this_thread::sleep_for(10ms);
 
