@@ -26,10 +26,15 @@
 
 namespace markup {
 
+/**
+ * Returns a Help markup tag corresponding to a linebreak.
+ * See @ref gui2::rich_label for details on how this tag is parsed.
+ */
 const static std::string br = "<br/>";
 
 /**
- * Returns the contents enclosed inside `<tag_name>` and `</tag_name>`
+ * Returns the contents enclosed inside `<tag_name>` and `</tag_name>`.
+ * Does not escape its contents.
  */
 template<typename... Args>
 std::string tag(const std::string& tag_name, Args&&... contents)
@@ -42,27 +47,14 @@ std::string tag(const std::string& tag_name, Args&&... contents)
 }
 
 /**
- * Returns the contents enclosed inside `<tag_name>` and `</tag_name>`
- * This version escapes single quotes and backslashes.
- */
-template<typename... Args>
-std::string tag_esc(const std::string& tag_name, Args&&... contents)
-{
-	return ((formatter()
-		<< "<" << tag_name << ">")
-		<< ...
-		<< utils::escape(contents, "'\\"))
-		<< "</" << tag_name << ">";
-}
-
-/**
  * Returns a Pango formatting string using the provided color_t object.
  *
  * The string returned will be in format: `<span foreground=#color>#data</span>`
  *
  * @param color        The color_t object from which to retrieve the color.
  * @param data         The string to enclose inside the tag. All elements in this list
- *                     will be concatenated to formatter().
+ *                     will be concatenated to formatter(). This function does not escape
+ *                     data internally, so data should be escaped by the caller if needed.
  */
 template<typename... Args>
 std::string span_color(const color_t& color, Args&&... data)
@@ -77,7 +69,8 @@ std::string span_color(const color_t& color, Args&&... data)
  *
  * @param color        The hex color string.
  * @param data         The string to enclose inside the tag. All elements in this list
- *                     will be concatenated to formatter().
+ *                     will be concatenated to formatter(). This function does not escape
+ *                     data internally, so data should be escaped by the caller if needed.
  */
 template<typename... Args>
 std::string span_color(const std::string& color, Args&&... data)
@@ -92,7 +85,8 @@ std::string span_color(const std::string& color, Args&&... data)
  *
  * @param size         The font size. String so values like x-large, large etc could be used.
  * @param data         The string to enclose inside the tag. All elements in this list
- *                     will be concatenated to formatter().
+ *                     will be concatenated to formatter(). This function does not escape
+ *                     data internally, so data should be escaped by the caller if needed.
  */
 template<typename... Args>
 std::string span_size(const std::string& size, Args&&... data)
@@ -101,29 +95,50 @@ std::string span_size(const std::string& size, Args&&... data)
 }
 
 /**
- * Returns a Pango formatting string corresponding to bold formatting
+ * Returns a Pango formatting string corresponding to bold formatting.
  *
- * @param s         The string to enclose in bold tag.
+ * @param data      The string to enclose in bold tag. This function does not escape
+ *                  data internally, so data should be escaped by the caller if needed.
  */
 template<typename... Args>
-std::string bold(Args&&... s)
+std::string bold(Args&&... data)
 {
-	return tag_esc("b", (formatter() << ... << s).str());
+	return tag("b", (formatter() << ... << data).str());
 }
 
 /**
- * Returns a Pango formatting string corresponding to italic formatting
+ * Returns a Pango formatting string corresponding to italic formatting.
  *
- * @param s         The string to enclose in italic tag.
+ * @param data      The string to enclose in italic tag. This function does not escape
+ *                  data internally, so data should be escaped by the caller if needed.
  */
 template<typename... Args>
-std::string italic(Args&&... s)
+std::string italic(Args&&... data)
 {
-	return tag_esc("i", (formatter() << ... << s).str());
+	return tag("i", (formatter() << ... << data).str());
 }
 
+/**
+ * Returns a Help markup tag corresponding to an image. This function does not escape
+ * strings internally, so should be escaped by the caller if needed.
+ * See @ref gui2::rich_label for details on how this tag is parsed.
+ *
+ * @param src       The WML path to where the image is located. (i.e., 'units/drakes/arbiter.png')
+ * @param align     Alignment of this image. Possible values: left, right, center.
+ * @param floating  Is the image a floating image or an inline image?
+ *
+ */
 std::string img(const std::string& src, const std::string& align = "left", const bool floating = false);
 
+/**
+ * Returns a Help markup tag corresponding to a reference or link. This function does not
+ * escape strings internally, so should be escaped by the caller if needed.
+ * See @ref gui2::rich_label for details on how this tag is parsed.
+ *
+ * @param text      User visible text/caption of the link.
+ * @param dst       Destination of the link. Can be any string depending on the link handler in the parsing @ref gui2::rich_label.
+ *
+ */
 std::string make_link(const std::string& text, const std::string& dst);
 
 //
