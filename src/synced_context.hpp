@@ -47,27 +47,25 @@ public:
 	 *
 	 * @param commandname   The command to run.
 	 * @param data          The data to use with the command.
-	 * @param use_undo      This parameter is used to ignore undos during an ai move to optimize.
-	 * @param show
-	 * @param error_handler An error handler for the case that data contains invalid data.
+	 * @param spectator An error handler for the case that data contains invalid data.
 	 *
 	 * @return              True if the action was successful.
 	 */
 	static bool run(
-		const std::string& commandname, const config& data, action_spectator& observer = get_default_spectator());
+		const std::string& commandname, const config& data, action_spectator& spectator = get_default_spectator());
 
 	static bool run_and_store(
-		const std::string& commandname, const config& data, action_spectator& observer = get_default_spectator());
+		const std::string& commandname, const config& data, action_spectator& spectator = get_default_spectator());
 
 	static bool run_and_throw(
-		const std::string& commandname, const config& data, action_spectator& observer = get_default_spectator());
+		const std::string& commandname, const config& data, action_spectator& spectator = get_default_spectator());
 
 	/**
 	 * Checks whether we are currently running in a synced context, and if not we enters it.
 	 * This is never called from so_replay_handle.
 	 */
 	static bool run_in_synced_context_if_not_already(
-		const std::string& commandname, const config& data, action_spectator& observer = get_default_spectator());
+		const std::string& commandname, const config& data, action_spectator& spectator = get_default_spectator());
 
 	/**
 	 * @return Whether we are currently executing a synced action like recruit, start, recall, disband, movement,

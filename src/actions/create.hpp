@@ -184,7 +184,6 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
  * @param loc the location it was recalled onto.
  * @param from the location it was recalled from.
  * @param facing the desired facing for the unit, map_location::direction::indeterminate to determine facing automatically.
- * @param show
  * @returns false if the recall could not be found in the team's recall list.
  */
 bool recall_unit(const std::string & id, team & current_team,

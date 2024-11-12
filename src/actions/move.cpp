@@ -1321,7 +1321,6 @@ static void move_unit_internal(unit_mover& mover)
  * @param[in]  continued_move       If set to true, this is a continuation of an earlier move (movement is not
  * interrupted should units be spotted).
  * @param[in]  skip_ally_sighted    If set to true, movement is not interrupted should allied units be spotted.
- * @param[in]  show_move            Controls whether or not the movement is animated for the player.
  * @param[out] move_spectator       If supplied, this will be given the information uncovered by the move and about the
  * move
  */
