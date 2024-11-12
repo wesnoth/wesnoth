@@ -34,32 +34,36 @@ public:
 		STATE_ANIM};      /** normal anims */
 
 	/** Default construct a unit animation component corresponding to a unit. */
-	unit_animation_component(unit & my_unit) :
-		u_(my_unit),
-		anim_(nullptr),
-		animations_(),
-		state_(STATE_STANDING),
-		next_idling_(),
-		frame_begin_time_(0),
-		draw_bars_(false),
-		refreshing_(false),
-		unit_halo_(),
-		abil_halos_(),
-		abil_halos_ref_() {}
+	unit_animation_component(unit& my_unit)
+		: u_(my_unit)
+		, anim_(nullptr)
+		, animations_()
+		, state_(STATE_STANDING)
+		, next_idling_()
+		, frame_begin_time_(0)
+		, draw_bars_(false)
+		, refreshing_(false)
+		, unit_halo_()
+		, abil_halos_()
+		, abil_halos_ref_()
+	{
+	}
 
 	/** Copy construct a unit animation component, for use when copy constructing a unit. */
-	unit_animation_component(unit & my_unit, const unit_animation_component & o) :
-		u_(my_unit),
-		anim_(nullptr),
-		animations_(o.animations_),
-		state_(o.state_),
-		next_idling_(),
-		frame_begin_time_(o.frame_begin_time_),
-		draw_bars_(o.draw_bars_),
-		refreshing_(o.refreshing_),
-		unit_halo_(),
-		abil_halos_(),
-		abil_halos_ref_() {}
+	unit_animation_component(unit& my_unit, const unit_animation_component& o)
+		: u_(my_unit)
+		, anim_(nullptr)
+		, animations_(o.animations_)
+		, state_(o.state_)
+		, next_idling_()
+		, frame_begin_time_(o.frame_begin_time_)
+		, draw_bars_(o.draw_bars_)
+		, refreshing_(o.refreshing_)
+		, unit_halo_()
+		, abil_halos_()
+		, abil_halos_ref_()
+	{
+	}
 
 	/** Chooses an appropriate animation from the list of known animations. */
 	const unit_animation* choose_animation(
