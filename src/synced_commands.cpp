@@ -312,7 +312,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child, spectator)
 	{
 		show_move = show_move && !prefs::get().skip_ai_moves();
 	}
-	actions::move_unit_from_replay(steps, skip_sighted, skip_ally_sighted, show_move);
+	actions::execute_move_unit(steps, skip_sighted, skip_ally_sighted, show_move, dynamic_cast<actions::move_unit_spectator*>(&spectator));
 
 	return true;
 }
