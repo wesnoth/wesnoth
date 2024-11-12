@@ -167,7 +167,8 @@ void playmp_controller::play_idle_loop()
 		try {
 			process_network_data();
 			play_slice_catch();
-			SDL_Delay(1);
+			using namespace std::chrono_literals;
+			std::this_thread::sleep_for(1ms); // TODO: why?
 		} catch(...) {
 			DBG_NG << "Caught exception while playing idle loop: " << utils::get_unknown_exception_type();
 			throw;
@@ -183,7 +184,8 @@ void playmp_controller::wait_for_upload()
 		gui2::dialogs::loading_screen::progress(loading_stage::next_scenario);
 		while(!next_scenario_notified_ && !is_host()) {
 			process_network_data();
-			SDL_Delay(10);
+			using namespace std::chrono_literals;
+			std::this_thread::sleep_for(10ms);
 			gui2::dialogs::loading_screen::spin();
 		}
 	});

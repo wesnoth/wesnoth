@@ -50,6 +50,7 @@
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"
 
+#include <thread>
 
 static lg::log_domain log_aitesting("ai/testing");
 #define LOG_AIT LOG_STREAM(info, log_aitesting)
@@ -480,7 +481,8 @@ void playsingle_controller::play_idle_loop()
 {
 	while(!should_return_to_play_side()) {
 		play_slice_catch();
-		SDL_Delay(10);
+		using namespace std::chrono_literals;
+		std::this_thread::sleep_for(10ms);
 	}
 }
 
