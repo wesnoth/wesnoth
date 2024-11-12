@@ -69,7 +69,7 @@ public:
 	controller_base();
 	virtual ~controller_base();
 
-	virtual void play_slice(bool is_delay_enabled = true);
+	virtual void play_slice();
 
 	void apply_keyboard_scroll(int x, int y);
 

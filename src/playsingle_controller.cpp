@@ -722,7 +722,7 @@ void playsingle_controller::play_network_turn()
 void playsingle_controller::handle_generic_event(const std::string& name)
 {
 	if(name == "ai_user_interact") {
-		play_slice(false);
+		play_slice();
 	}
 }
 

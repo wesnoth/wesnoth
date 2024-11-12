@@ -319,7 +319,7 @@ void playmp_controller::receive_actions()
 }
 
 
-void playmp_controller::play_slice(bool is_delay_enabled)
+void playmp_controller::play_slice()
 {
 	if(!is_replay() && !network_processing_stopped_) {
 		// receive chat during animations and delay
@@ -330,7 +330,7 @@ void playmp_controller::play_slice(bool is_delay_enabled)
 		send_actions();
 	}
 
-	playsingle_controller::play_slice(is_delay_enabled);
+	playsingle_controller::play_slice();
 }
 
 bool playmp_controller::is_networked_mp() const

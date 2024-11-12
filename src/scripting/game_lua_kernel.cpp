@@ -376,7 +376,7 @@ int game_lua_kernel::impl_run_animation(lua_State* L)
 	}
 	events::command_disabler command_disabler;
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
-	play_controller_.play_slice(false);
+	play_controller_.play_slice();
 	anim.start_animations();
 	anim.wait_for_end();
 	anim.set_all_standing();
@@ -4432,7 +4432,7 @@ int game_lua_kernel::intf_delay(lua_State *L)
 	using namespace std::chrono_literals;
 	std::chrono::milliseconds delay{luaL_checkinteger(L, 1)};
 	if(delay == 0ms) {
-		play_controller_.play_slice(false);
+		play_controller_.play_slice();
 		return 0;
 	}
 	if(luaW_toboolean(L, 2) && game_display_ && game_display_->turbo_speed() > 0) {
@@ -4440,7 +4440,7 @@ int game_lua_kernel::intf_delay(lua_State *L)
 	}
 	const auto end_time = std::chrono::steady_clock::now() + delay;
 	do {
-		play_controller_.play_slice(false);
+		play_controller_.play_slice();
 		std::this_thread::sleep_for(10ms);
 	} while (std::chrono::steady_clock::now() < end_time);
 	return 0;
