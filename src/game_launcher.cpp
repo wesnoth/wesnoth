@@ -57,13 +57,12 @@
 #include <boost/process.hpp>
 #include <cstdlib>   // for system
 #include <new>
+#include <thread>
 #include <utility> // for pair
-
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
-
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
@@ -811,7 +810,8 @@ void game_launcher::start_wesnothd()
 #endif
 		c.detach();
 		// Give server a moment to start up
-		SDL_Delay(50);
+		using namespace std::chrono_literals;
+		std::this_thread::sleep_for(50ms);
 		return;
 	}
 	catch(const bp::process_error& e)

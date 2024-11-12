@@ -36,6 +36,7 @@
 
 #include <cassert>
 #include <sstream>
+#include <thread>
 
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)
@@ -320,7 +321,8 @@ config synced_context::ask_server_choice(const server_choice& sch)
 				did_require = true;
 			}
 
-			SDL_Delay(10);
+			using namespace std::chrono_literals;
+			std::this_thread::sleep_for(10ms);
 			continue;
 
 		} else if(!is_replay_end) {
