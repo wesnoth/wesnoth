@@ -148,7 +148,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, spectator)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, spectator)
 {
-	bool show = !resources::controller->is_skipping_replay();
 	const auto destination = child.optional_child("destination");
 	const auto source = child.optional_child("source");
 	//check_checksums(*cfg);
@@ -224,6 +223,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, spectator)
 	DBG_REPLAY << "Attacker XP (before attack): " << u->experience();
 
 	resources::undo_stack->clear();
+	bool show = !resources::controller->is_skipping_replay();
 	attack_unit_and_advance(src, dst, weapon_num, def_weapon_num, show);
 	return true;
 }
@@ -231,8 +231,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, spectator)
 SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, spectator)
 {
 
-	int current_team_num = resources::controller->current_side();
-	team &current_team = resources::gameboard->get_team(current_team_num);
+	team& current_team = resources::controller->current_team();
 
 	const std::string& unit_id = child["value"];
 	std::size_t old_size = current_team.recall_list().size();
@@ -257,8 +256,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, spectator)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(move, child, spectator)
 {
-	int current_team_num = resources::controller->current_side();
-	team &current_team = resources::gameboard->get_team(current_team_num);
+	team& current_team = resources::controller->current_team();
 
 	std::vector<map_location> steps;
 
