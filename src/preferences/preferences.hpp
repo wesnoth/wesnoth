@@ -813,6 +813,7 @@ class prefs
 			prefs_list::animate_water,
 		};
 		static constexpr std::array synced_children_{
+			prefs_list::acquaintance,
 			prefs_list::achievements,
 			prefs_list::completed_campaigns,
 			prefs_list::history,
