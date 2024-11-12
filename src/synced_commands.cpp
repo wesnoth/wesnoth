@@ -222,7 +222,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, spectator)
 
 	DBG_REPLAY << "Attacker XP (before attack): " << u->experience();
 
-	resources::undo_stack->clear();
+	synced_context::block_undo();
 	bool show = !resources::controller->is_skipping_replay();
 	attack_unit_and_advance(src, dst, weapon_num, def_weapon_num, show);
 	return true;
@@ -323,7 +323,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child, /*spectator*/)
 
 	// Not clearing the undo stack here causes OOS because we added an entry to the replay but no entry to the undo stack.
 	if(synced_context::undo_blocked()) {
-		resources::undo_stack->clear();
+		synced_context::block_undo();
 	} else {
 		resources::undo_stack->add_dummy();
 	}
@@ -336,7 +336,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(custom_command, child, /*spectator*/)
 	resources::lua_kernel->custom_command(child["name"], child.child_or_empty("data"));
 
 	if(synced_context::undo_blocked()) {
-		resources::undo_stack->clear();
+		synced_context::block_undo();
 	} else {
 		resources::undo_stack->add_dummy();
 	}
@@ -371,7 +371,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/, spectator)
 	bool res = resources::undo_stack->commit_vision();
 	resources::undo_stack->add_update_shroud();
 	if(res) {
-		resources::undo_stack->clear();
+		synced_context::block_undo();
 	}
 	return true;
 }
@@ -426,7 +426,7 @@ namespace
 
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_terrain, child, /*spectator*/)
 {
-	resources::undo_stack->clear();
+	synced_context::block_undo();
 	debug_cmd_notification("terrain");
 
 	map_location loc(child);
@@ -444,7 +444,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_terrain, child, /*spectator*/)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child, /*spectator*/)
 {
-	resources::undo_stack->clear();
+	synced_context::block_undo();
 	debug_cmd_notification("unit");
 	map_location loc(child);
 	const std::string name = child["name"];
@@ -513,7 +513,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child, /*spectator*/)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child, spectator)
 {
-	resources::undo_stack->clear();
+	synced_context::block_undo();
 
 	debug_notification(N_("A unit was created using debug mode during $player’s turn"));
 	map_location loc(child);
@@ -559,7 +559,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child, spectator)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_lua, child, /*spectator*/)
 {
-	resources::undo_stack->clear();
+	synced_context::block_undo();
 	debug_cmd_notification("lua");
 	resources::lua_kernel->run(child["code"].str().c_str(), "debug command");
 	resources::controller->pump().flush_messages();
@@ -569,7 +569,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_lua, child, /*spectator*/)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_teleport, child, /*spectator*/)
 {
-	resources::undo_stack->clear();
+	synced_context::block_undo();
 	debug_cmd_notification("teleport");
 
 	const map_location teleport_from(child["teleport_from_x"].to_int(), child["teleport_from_y"].to_int(), wml_loc());
@@ -588,7 +588,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_teleport, child, /*spectator*/)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, /*spectator*/)
 {
-	resources::undo_stack->clear();
+	synced_context::block_undo();
 	debug_cmd_notification("kill");
 
 	const map_location loc(child["x"].to_int(), child["y"].to_int(), wml_loc());
@@ -615,7 +615,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, /*spectator*/)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_next_level, child, /*spectator*/)
 {
-	resources::undo_stack->clear();
+	synced_context::block_undo();
 
 	debug_cmd_notification("next_level");
 
@@ -637,7 +637,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_next_level, child, /*spectator*/)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn_limit, child, /*spectator*/)
 {
-	resources::undo_stack->clear();
+	synced_context::block_undo();
 
 	debug_cmd_notification("turn_limit");
 
@@ -648,7 +648,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn_limit, child, /*spectator*/)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn, child, /*spectator*/)
 {
-	resources::undo_stack->clear();
+	synced_context::block_undo();
 
 	debug_cmd_notification("turn");
 
@@ -662,7 +662,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn, child, /*spectator*/)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_set_var, child, /*spectator*/)
 {
-	resources::undo_stack->clear();
+	synced_context::block_undo();
 
 	debug_cmd_notification("set_var");
 
@@ -678,7 +678,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_set_var, child, /*spectator*/)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_gold, child, /*spectator*/)
 {
-	resources::undo_stack->clear();
+	synced_context::block_undo();
 
 	debug_cmd_notification("gold");
 
@@ -690,7 +690,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_gold, child, /*spectator*/)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_event, child, /*spectator*/)
 {
-	resources::undo_stack->clear();
+	synced_context::block_undo();
 
 	debug_cmd_notification("throw");
 
@@ -703,7 +703,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_event, child, /*spectator*/)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_fog, /*child*/, /*spectator*/)
 {
-	resources::undo_stack->clear();
+	synced_context::block_undo();
 
 	debug_cmd_notification("fog");
 
@@ -720,7 +720,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_fog, /*child*/, /*spectator*/)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_shroud, /*child*/, /*spectator*/)
 {
-	resources::undo_stack->clear();
+	synced_context::block_undo();
 
 	debug_cmd_notification("shroud");
 
