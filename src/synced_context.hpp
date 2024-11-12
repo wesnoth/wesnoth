@@ -36,15 +36,6 @@ public:
 	 * However, if you cannot call this function you can also use set_scontext_synced directly
 	 * (use it like it's used in this method).
 	 *
-	 * Movement commands are currently treated specially because actions::move_unit returns a
-	 * value and some function use that value. Maybe I should add a way to return a value here.
-	 *
-	 * AI attacks are also treated special because the ai wants to pass advancement_aspects.
-	 *
-	 * Redoing does normally not take place in a synced context, because we saved the dependent=true
-	 * replay commands in the replay stack data. There are also no events of similar fired when
-	 * redoing an action (in most cases).
-	 *
 	 * @param commandname   The command to run.
 	 * @param data          The data to use with the command.
 	 * @param spectator An error handler for the case that data contains invalid data.
