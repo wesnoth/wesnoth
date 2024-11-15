@@ -1755,10 +1755,11 @@ compression::format prefs::save_compression_format()
 std::string prefs::get_chat_timestamp(const std::time_t& t)
 {
 	if(chat_timestamp()) {
+		auto temp = std::chrono::system_clock::from_time_t(t); // FIXME: remove
 		if(use_twelve_hour_clock_format() == false) {
-			return lg::get_timestamp(t, _("[%H:%M]")) + " ";
+			return chrono::format_local_timestamp(temp, _("[%H:%M]")) + " ";
 		} else {
-			return lg::get_timestamp(t, _("[%I:%M %p]")) + " ";
+			return chrono::format_local_timestamp(temp, _("[%I:%M %p]")) + " ";
 		}
 	}
 

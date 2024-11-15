@@ -17,9 +17,37 @@
 #include "config_attribute_value.hpp"
 
 #include <chrono>
+#include <iomanip>
+#include <sstream>
+#include <string_view>
+
+#if __cpp_lib_chrono >= 201907L
+#define CPP20_CHRONO_SUPPORT
+#endif
 
 namespace chrono
 {
+#ifdef CPP20_CHRONO_SUPPORT
+
+using std::chrono::days;
+using std::chrono::weeks;
+using std::chrono::months;
+using std::chrono::years;
+
+#else
+
+using days   = std::chrono::duration<int, std::ratio<86400>>;
+using weeks  = std::chrono::duration<int, std::ratio<604800>>;
+using months = std::chrono::duration<int, std::ratio<2629746>>;
+using years  = std::chrono::duration<int, std::ratio<31556952>>;
+
+#endif
+
+inline auto parse_timestamp(long long val)
+{
+	return std::chrono::system_clock::from_time_t(val);
+}
+
 inline auto parse_timestamp(const config_attribute_value& val)
 {
 	return std::chrono::system_clock::from_time_t(val.to_long_long());
@@ -30,10 +58,29 @@ inline auto serialize_timestamp(const std::chrono::system_clock::time_point& tim
 	return std::chrono::system_clock::to_time_t(time);
 }
 
+inline auto format_local_timestamp(const std::chrono::system_clock::time_point& time, std::string_view format = "%F %T")
+{
+	std::ostringstream ss;
+	auto as_time_t = std::chrono::system_clock::to_time_t(time);
+	ss << std::put_time(std::localtime(&as_time_t), format.data());
+	return ss.str();
+}
+
 template<typename Duration>
 inline auto parse_duration(const config_attribute_value& val, const Duration& def = Duration{0})
 {
 	return Duration{val.to_long_long(def.count())};
+}
+
+template<typename Rep, typename Period>
+constexpr auto deconstruct_duration(const std::chrono::duration<Rep, Period>& span)
+{
+	auto days    = std::chrono::duration_cast<chrono::days>(span);
+	auto hours   = std::chrono::duration_cast<std::chrono::hours>(span - days);
+	auto minutes = std::chrono::duration_cast<std::chrono::minutes>(span - days - hours);
+	auto seconds = std::chrono::duration_cast<std::chrono::seconds>(span - days - hours - minutes);
+
+	return std::tuple{ days, hours, minutes, seconds };
 }
 
 } // namespace chrono

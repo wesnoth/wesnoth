@@ -24,6 +24,7 @@
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "multiplayer_error_codes.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
@@ -74,6 +75,8 @@ static lg::log_domain log_server("server");
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
+
+using namespace std::chrono_literals;
 
 namespace wesnothd
 {
@@ -187,7 +190,7 @@ static std::string player_status(const wesnothd::player_record& player)
 {
 	std::ostringstream out;
 	out << "'" << player.name() << "' @ " << player.client_ip()
-		<< " logged on for " << lg::get_timespan(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - player.login_time).count());
+		<< " logged on for " << lg::format_timespan(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - player.login_time));
 	return out.str();
 }
 
@@ -232,8 +235,7 @@ server::server(int port,
 	, default_time_period_(0)
 	, concurrent_connections_(0)
 	, graceful_restart(false)
-	, lan_server_(std::time(nullptr))
-	, last_user_seen_time_(std::time(nullptr))
+	, lan_server_(0)
 	, restart_command()
 	, max_ip_log_size_(0)
 	, deny_unregistered_login_(false)
@@ -289,14 +291,14 @@ void server::handle_graceful_timeout(const boost::system::error_code& error)
 		process_command("msg All games ended. Shutting down now. Reconnect to the new server instance.", "system");
 		BOOST_THROW_EXCEPTION(server_shutdown("graceful shutdown timeout"));
 	} else {
-		timer_.expires_from_now(std::chrono::seconds(1));
+		timer_.expires_from_now(1s);
 		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, std::placeholders::_1));
 	}
 }
 
 void server::start_lan_server_timer()
 {
-	lan_server_timer_.expires_from_now(std::chrono::seconds(lan_server_));
+	lan_server_timer_.expires_from_now(lan_server_);
 	lan_server_timer_.async_wait([this](const boost::system::error_code& ec) { handle_lan_server_shutdown(ec); });
 }
 
@@ -452,7 +454,7 @@ void server::load_config()
 	information_ = cfg_["information"].str();
 	announcements_ = cfg_["announcements"].str();
 	server_id_ = cfg_["id"].str();
-	lan_server_ = cfg_["lan_server"].to_time_t(0);
+	lan_server_ = chrono::parse_duration(cfg_["lan_server"], 0s);
 
 	deny_unregistered_login_ = cfg_["deny_unregistered_login"].to_bool();
 
@@ -479,12 +481,12 @@ void server::load_config()
 	}
 
 	default_max_messages_ = cfg_["max_messages"].to_int(4);
-	default_time_period_ = cfg_["messages_time_period"].to_int(10);
+	default_time_period_ = chrono::parse_duration(cfg_["messages_time_period"], 10s);
 	concurrent_connections_ = cfg_["connections_allowed"].to_int(5);
 	max_ip_log_size_ = cfg_["max_ip_log_size"].to_int(500);
 
 	failed_login_limit_ = cfg_["failed_logins_limit"].to_int(10);
-	failed_login_ban_ = cfg_["failed_logins_ban"].to_int(3600);
+	failed_login_ban_ = chrono::parse_duration(cfg_["failed_logins_ban"], 3600s);
 	failed_login_buffer_size_ = cfg_["failed_logins_buffer_size"].to_int(500);
 
 	// Example config line:
@@ -587,7 +589,7 @@ std::string server::is_ip_banned(const std::string& ip)
 
 void server::start_dump_stats()
 {
-	dump_stats_timer_.expires_after(std::chrono::minutes(5));
+	dump_stats_timer_.expires_after(5min);
 	dump_stats_timer_.async_wait([this](const boost::system::error_code& ec) { dump_stats(ec); });
 }
 
@@ -648,7 +650,7 @@ void server::dummy_player_updates(const boost::system::error_code& ec)
 
 void server::start_tournaments_timer()
 {
-	tournaments_timer_.expires_after(std::chrono::minutes(60));
+	tournaments_timer_.expires_after(60min);
 	tournaments_timer_.async_wait([this](const boost::system::error_code& ec) { refresh_tournaments(ec); });
 }
 
@@ -805,7 +807,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 
 	// Log the IP
 	if(!user_handler_) {
-		connection_log ip_name { username, client_address(socket), 0 };
+		connection_log ip_name { username, client_address(socket), {} };
 
 		if(std::find(ip_log_.begin(), ip_log_.end(), ip_name) == ip_log_.end()) {
 			ip_log_.push_back(ip_name);
@@ -878,7 +880,7 @@ template<class SocketPtr> bool server::is_login_allowed(boost::asio::yield_conte
 		std::string ban_type_desc;
 		std::string ban_reason;
 		const char* msg_numeric;
-		std::string ban_duration = std::to_string(auth_ban.duration);
+		std::string ban_duration = std::to_string(auth_ban.duration.count());
 
 		switch(auth_ban.type) {
 		case user_handler::BAN_USER:
@@ -907,7 +909,7 @@ template<class SocketPtr> bool server::is_login_allowed(boost::asio::yield_conte
 		if(!is_moderator) {
 			LOG_SERVER << log_address(socket) << "\t" << username << "\tis banned by user_handler (" << ban_type_desc
 					   << ")";
-			if(auth_ban.duration) {
+			if(auth_ban.duration > 0s) {
 				// Temporary ban
 				async_send_error(socket, "You are banned from this server: " + ban_reason, msg_numeric, {{"duration", ban_duration}});
 			} else {
@@ -998,7 +1000,7 @@ template<class SocketPtr> bool server::authenticate(
 			}
 			// This name is registered and an incorrect password provided
 			else if(!(user_handler_->login(username, hashed_password))) {
-				const std::time_t now = std::time(nullptr);
+				const auto now = std::chrono::system_clock::now();
 
 				login_log login_ip { client_address(socket), 0, now };
 				auto i = std::find(failed_logins_.begin(), failed_logins_.end(), login_ip);
@@ -1068,7 +1070,7 @@ template<class SocketPtr> void server::send_password_request(SocketPtr socket,
 
 template<class SocketPtr> void server::handle_player(boost::asio::yield_context yield, SocketPtr socket, player_iterator player)
 {
-	if(lan_server_)
+	if(lan_server_ > 0s)
 		abort_lan_server_timer();
 
 	BOOST_SCOPE_EXIT_ALL(this, &player) {
@@ -1984,17 +1986,17 @@ void server::remove_player(player_iterator iter)
 	if(user_handler_) {
 		user_handler_->db_update_logout(iter->info().get_login_id());
 	} else {
-		connection_log ip_name { iter->info().name(), ip, 0 };
+		connection_log ip_name { iter->info().name(), ip, {} };
 
 		auto i = std::find(ip_log_.begin(), ip_log_.end(), ip_name);
 		if(i != ip_log_.end()) {
-			i->log_off = std::time(nullptr);
+			i->log_off = std::chrono::system_clock::now();
 		}
 	}
 
 	player_connections_.erase(iter);
 
-	if(lan_server_ && player_connections_.size() == 0)
+	if(lan_server_ > 0s && player_connections_.size() == 0)
 		start_lan_server_timer();
 
 	if(game_ended) delete_game(g->id());
@@ -2118,7 +2120,7 @@ void server::shut_down_handler(
 		acceptor_v6_.close();
 		acceptor_v4_.close();
 
-		timer_.expires_from_now(std::chrono::seconds(10));
+		timer_.expires_from_now(10s);
 		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, std::placeholders::_1));
 
 		process_command(
@@ -2149,7 +2151,7 @@ void server::restart_handler(const std::string& issuer_name,
 		graceful_restart = true;
 		acceptor_v6_.close();
 		acceptor_v4_.close();
-		timer_.expires_from_now(std::chrono::seconds(10));
+		timer_.expires_from_now(10s);
 		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, std::placeholders::_1));
 
 		start_new_server();
@@ -2552,9 +2554,9 @@ void server::ban_handler(
 	auto second_space = std::find(first_space + 1, parameters.end(), ' ');
 	const std::string target(parameters.begin(), first_space);
 	const std::string duration(first_space + 1, second_space);
-	std::time_t parsed_time = std::time(nullptr);
+	auto [success, parsed_time] = ban_manager_.parse_time(duration, std::chrono::system_clock::now());
 
-	if(ban_manager_.parse_time(duration, &parsed_time) == false) {
+	if(!success) {
 		*out << "Failed to parse the ban duration: '" << duration << "'\n" << ban_manager_.get_ban_help();
 		return;
 	}
@@ -2614,9 +2616,9 @@ void server::kickban_handler(
 	auto second_space = std::find(first_space + 1, parameters.end(), ' ');
 	const std::string target(parameters.begin(), first_space);
 	const std::string duration(first_space + 1, second_space);
-	std::time_t parsed_time = std::time(nullptr);
+	auto [success, parsed_time] = ban_manager_.parse_time(duration, std::chrono::system_clock::now());
 
-	if(ban_manager_.parse_time(duration, &parsed_time) == false) {
+	if(!success) {
 		*out << "Failed to parse the ban duration: '" << duration << "'\n" << ban_manager_.get_ban_help();
 		return;
 	}
@@ -2695,9 +2697,9 @@ void server::gban_handler(
 	second_space = std::find(first_space + 1, parameters.end(), ' ');
 
 	const std::string duration(first_space + 1, second_space);
-	std::time_t parsed_time = std::time(nullptr);
+	auto [success, parsed_time] = ban_manager_.parse_time(duration, std::chrono::system_clock::now());
 
-	if(ban_manager_.parse_time(duration, &parsed_time) == false) {
+	if(!success) {
 		*out << "Failed to parse the ban duration: '" << duration << "'\n" << ban_manager_.get_ban_help();
 		return;
 	}
@@ -2877,7 +2879,7 @@ void server::searchlog_handler(const std::string& /*issuer_name*/,
 					*out << std::endl << player_status(*player);
 				} else {
 					*out << "\n'" << username << "' @ " << ip
-						<< " last seen: " << lg::get_timestamp(i.log_off, "%H:%M:%S %d.%m.%Y");
+						<< " last seen: " << chrono::format_local_timestamp(i.log_off, "%H:%M:%S %d.%m.%Y");
 				}
 			}
 		}
