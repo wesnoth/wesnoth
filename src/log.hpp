@@ -230,8 +230,8 @@ public:
 
 void timestamps(bool);
 void precise_timestamps(bool);
-std::string get_timestamp(const std::time_t& t, const std::string& format="%Y%m%d %H:%M:%S ");
-std::string get_timespan(const std::time_t& t);
+/** TODO: we also have utils::format_timespan, which does something very similar... */
+std::string format_timespan(const std::chrono::seconds& span);
 std::string sanitize_log(const std::string& logstr);
 std::string get_log_file_path();
 

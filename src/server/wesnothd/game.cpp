@@ -18,6 +18,7 @@
 #include "filesystem.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
+#include "serialization/chrono.hpp"
 #include "server/wesnothd/player_network.hpp"
 #include "server/wesnothd/server.hpp"
 
@@ -1975,7 +1976,7 @@ void game::send_server_message(const char* message, utils::optional<player_itera
 		msg.set_attr("id", "server");
 		msg.set_attr_dup("message", message);
 		std::stringstream ss;
-		ss << ::std::time(nullptr);
+		ss << chrono::serialize_timestamp(std::chrono::system_clock::now());
 		msg.set_attr_dup("time", ss.str().c_str());
 	} else {
 		simple_wml::node& msg = doc.root().add_child("message");
