@@ -1,14 +1,20 @@
 ## Version 1.19.5+dev
 ### Add-ons client
+   * The Add-ons client now supports UI Theme type add-ons (id 'theme').
 ### Add-ons server
 ### Campaigns
+   * Son of the Black-Eye
+     * Allowed Saurian Skirmishers to advance into Saurian Spearthrower.
+   * The Hammer of Thursagan
+     * Added Achievements.
 ### Editor
 ### Multiplayer
+   * OOS-bugs have been fixed.
 ### Lua API
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Arabic, Bengali, British English, Chinese (Simplified), Czech, Hungarian, Norwegian, Turkish
+   * Updated translations: Arabic, Bengali, British English, Chinese (Simplified), Czech, German, Hungarian, Norwegian, Turkish
 ### Units
    * Elvish Scout: XP 42 -> 32
    * Elvish Rider: XP 75 -> 60, HP 49 -> 46, bow damage 11 -> 9, cost 28g -> 27g
@@ -17,9 +23,17 @@
    * Elvish Marshal: HP 68 -> 60, MP 5 -> 6
    * Huntsman: HP 57 -> 53, bow 9x4 marksman -> 10x4 marksman, cost 43g -> 47g, new ability: Swamp Lurk (invisibility in swamps)
    * Ranger: HP 60 -> 64, bow 7x4 -> 8x4, cost 43g -> 50g, defense: castle 60% -> 50%, frozen 20% -> 30%, reef 30% -> 50%, sand 30% -> 40%
-   * Forest Lion: HP 42 -> 48, MP 9 -> 7, claws 5x4 -> 6x4 (usable offensively), bite 15x2 -> 9x2 charge (usable defensively), arcane resistance 20% -> 10%, cost 21g -> 30g
+   * Forest Lion: HP 42 -> 48, MP 9 -> 7, claws 5x4 -> 6x4, bite 15x2 -> 9x2 charge, arcane resistance 20% -> 10%, cost 21g -> 30g
 ### User interface
+   * About Dialog's General tab now has a button to open the game manual for the currently selected language.
+   * An entry for accessing the Add-ons Manager has been added to the Campaign Selection dialog.
+   * Help Browser now has a checkbox for showing/hiding the contents list in low-resolution systems (800x600 or less).
+   * It is now possible to select text in MP Lobby chat and Gamestate Inspector via mouse drag.
 ### WML Engine
+   * Add a [remove_specials] tag in [effect] to be able to remove specials with other criteria than the id (type of the special, active_on, apply_to or other attributes).
+   * Add [filter_special] to [has_attack/filter_weapon] in order to simultaneously check specials with id and type, and/or other attributes.
+   * [modify_unit_type] can add a list of AMLAs in the unit_type, if a list is already written, it will be replaced.
+   * [modify_unit_type] can modify [male/female] or [variation] subtags if already written in unit_type.
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.5
