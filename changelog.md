@@ -10,6 +10,14 @@
 ### Translations
    * Updated translations: Arabic, Bengali, British English, Chinese (Simplified), Czech, Hungarian, Norwegian, Turkish
 ### Units
+   * Elvish Scout: XP 42 -> 32
+   * Elvish Rider: XP 75 -> 60, HP 49 -> 46, bow damage 11 -> 9, cost 28g -> 27g
+   * Elvish Outrider: MP 11 -> 10, HP 60 -> 57, bow damage 11 -> 9, sword damage 8 -> 7, cost 58g -> 50g
+   * Elvish Avenger: HP 59 -> 55, cost 60g -> 55g
+   * Elvish Marshal: HP 68 -> 60, MP 5 -> 6
+   * Huntsman: HP 57 -> 53, bow 9x4 marksman -> 10x4 marksman, cost 43g -> 47g, new ability: Swamp Lurk (invisibility in swamps)
+   * Ranger: HP 60 -> 64, bow 7x4 -> 8x4, cost 43g -> 50g, defense: castle 60% -> 50%, frozen 20% -> 30%, reef 30% -> 50%, sand 30% -> 40%
+   * Forest Lion: HP 42 -> 48, MP 9 -> 7, claws 5x4 -> 6x4 (usable offensively), bite 15x2 -> 9x2 charge (usable defensively), arcane resistance 20% -> 10%, cost 21g -> 30g
 ### User interface
 ### WML Engine
 ### Miscellaneous and Bug Fixes
