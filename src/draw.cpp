@@ -203,7 +203,6 @@ int draw::broken_hline(const SDL_Point start, const int length, const color_t& c
 
 	for(int i = 0; i < std::abs(length); i++) {
 		if(bits.test(offset)) {
-			//point(start.x + i, start.y);
 			point(start.x + (length > 0 ? i : i * -1), start.y);
 		}
 		offset = (offset + 1) % bits.size();
@@ -222,7 +221,6 @@ int draw::broken_vline(const SDL_Point start, const int length, const color_t& c
 
 	for(int i = 0; i < std::abs(length); i++) {
 		if(bits.test(offset)) {
-			//point(start.x, start.y + i);
 			point(start.x, start.y + (length > 0 ? i : i * -1));
 		}
 		offset = (offset + 1) % bits.size();
