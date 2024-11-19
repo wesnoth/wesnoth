@@ -55,13 +55,7 @@
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
-#define INVALIDATE_LAYOUT() \
-do { \
-	gui2::window* window = w.get_window(); \
-	if(window) { \
-		window->invalidate_layout(); \
-	} \
-} while(false)
+#define INVALIDATE_LAYOUT() if(auto window = w.get_window()) { window->invalidate_layout(); }
 
 static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 {
