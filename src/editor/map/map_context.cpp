@@ -732,7 +732,7 @@ config map_context::to_config()
 	// [unit]s
 	config traits;
 	preproc_map traits_map;
-	read(traits, *(preprocess_file(game_config::path+"/data/core/macros/traits.cfg", &traits_map)));
+	read(traits, *(preprocess_file(game_config::path + "/data/core/macros/traits.cfg", &traits_map)));
 
 	for(const auto& unit : units_) {
 		config& u = event.add_child("unit");
@@ -756,10 +756,11 @@ config map_context::to_config()
 			u["unrenamable"] = unit.unrenamable();
 		}
 
+		config& mods = u.add_child("modifications");
 		if(unit.loyal()) {
 			config trait_loyal;
-			read(trait_loyal, traits_map["TRAIT_LOYAL"].value);
-			u.append(trait_loyal);
+			read(trait_loyal, preprocess_string("{TRAIT_LOYAL}", &traits_map, "wesnoth-editor"));
+			mods.append(trait_loyal);
 		}
 		//TODO this entire block could also be replaced by unit.write(u, true)
 		//however, the resultant config is massive and contains many attributes we don't need.

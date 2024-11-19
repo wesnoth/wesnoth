@@ -143,8 +143,24 @@ std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& de
  */
 filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map* defines = nullptr);
 
-void preprocess_resource(const std::string& res_name,
-		preproc_map* defines_map,
-		bool write_cfg = false,
-		bool write_plain_cfg = false,
-		const std::string& target_directory = "");
+/**
+ * Function to use the WML preprocessor on a string.
+ *
+ * @param defines                 A map of symbols defined.
+ * @param contents                The string to be preprocessed.
+ * @param textdomain              The textdomain to associate the contents.
+ *                                Default: wesnoth
+ *
+ * @returns                       The resulting preprocessed string.
+ */
+std::string preprocess_string(
+	const std::string& contents,
+	preproc_map* defines,
+	const std::string& textdomain = "wesnoth");
+
+void preprocess_resource(
+	const std::string& res_name,
+	preproc_map* defines_map,
+	bool write_cfg = false,
+	bool write_plain_cfg = false,
+	const std::string& target_directory = "");
