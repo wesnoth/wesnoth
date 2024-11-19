@@ -621,21 +621,9 @@ WIDGET_GETTER("link_color", std::string, gui2::label)
 	return w.get_link_color().to_hex_string();
 }
 
-WIDGET_SETTER("link_color", std::string, gui2::label)
-{
-	w.set_link_color(color_t::from_hex_string(value));
-	INVALIDATE_LAYOUT();
-}
-
 WIDGET_GETTER("link_color", std::string, gui2::rich_label)
 {
 	return w.get_link_color().to_hex_string();
-}
-
-WIDGET_SETTER("link_color", std::string, gui2::rich_label)
-{
-	w.set_link_color(color_t::from_hex_string(value));
-	INVALIDATE_LAYOUT();
 }
 
 WIDGET_GETTER("max_input_length", int, gui2::combobox)
