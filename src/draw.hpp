@@ -29,6 +29,7 @@
  * resolution when possible, without any extra handling required.
  */
 
+#include "boost/dynamic_bitset.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 
@@ -161,6 +162,57 @@ void line(int from_x, int from_y, int to_x, int to_y);
  * @param c         The RGBA colour of the line.
  */
 void line(int from_x, int from_y, int to_x, int to_y, const color_t& c);
+
+/**
+ * Draw a horizontal broken line of the given colour.
+ *
+ * @param start     The start point of the line.
+ * @param length    The length of the line in pixels.
+ * @param c         The RGBA colour of the line.
+ * @param bits		The pattern describing points that construct the line (1 = draw point).
+ * @param offset    The index of the pattern to use as the first point in the line.
+ *
+ * @returns			The next offset.
+ */
+int broken_hline(const SDL_Point start, const int length, const color_t& c, const boost::dynamic_bitset<> bits, int offset = 0);
+
+/**
+ * Draw a horizontal broken line of the given colour.
+ *
+ * @param start     The start point of the line.
+ * @param length    The length of the line in pixels.
+ * @param c         The RGBA colour of the line.
+ * @param bits		The pattern describing points that construct the line (1 = draw point).
+ * @param offset    The index of the pattern to use as the first point in the line.
+ *
+ * @returns			The next offset.
+ */
+int broken_vline(const SDL_Point start, const int length, const color_t& c, const boost::dynamic_bitset<> bits, int offset = 0);
+
+/**
+ * Draw a broken line of the given colour.
+ *
+ * @param start     The start point of the line.
+ * @param end    	The end point of the line.
+ * @param c         The RGBA colour of the line.
+ * @param bits      The pattern describing points that construct the line (1 = draw point).
+ * @param offset    The index of the pattern to use as the first point in the line.
+ *
+ * @returns         The next offset.
+ */
+int broken_line(const SDL_Point start, const SDL_Point end, const color_t& c, const boost::dynamic_bitset<> bits, int offset = 0);
+
+/**
+ * Draw a rectangle with a 1 pixel wide broken border of the given colour.
+ *
+ * @param r     	The rectangle.
+ * @param c         The RGBA colour of the border.
+ * @param bits		The pattern describing points that construct the border (1 = draw point).
+ * @param offset    The index of the pattern to use as the first point in the border.
+ *
+ * @returns			The next offset.
+ */
+int broken_rect(const SDL_Rect r, const color_t& c, const boost::dynamic_bitset<> bits, int offset);
 
 /** Draw a set of points. */
 void points(const std::vector<SDL_Point>& points);

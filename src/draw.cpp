@@ -193,6 +193,108 @@ void draw::line(int from_x, int from_y, int to_x, int to_y, const color_t& c)
 	SDL_RenderDrawLine(renderer(), from_x, from_y, to_x, to_y);
 }
 
+int draw::broken_hline(const SDL_Point start, const int length, const color_t& c, const boost::dynamic_bitset<> bits, int offset)
+{
+	DBG_D << "broken horizontal line from (" << start.x << "," << start.y
+		<< ") to (" << start.x + length + (length > 0 ? - 1 : 1) << "," << start.y
+		<< ") with colour " << c;
+
+	SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
+
+	for(int i = 0; i < std::abs(length); i++) {
+		if(bits.test(offset)) {
+			//point(start.x + i, start.y);
+			point(start.x + (length > 0 ? i : i * -1), start.y);
+		}
+		offset = (offset + 1) % bits.size();
+	}
+
+	return offset;
+}
+
+int draw::broken_vline(const SDL_Point start, const int length, const color_t& c, const boost::dynamic_bitset<> bits, int offset)
+{
+	DBG_D << "broken vertical line from (" << start.x << "," << start.y
+		<< ") to (" << start.x << "," << start.y + length + (length > 0 ? - 1 : 1)
+		<< ") with colour " << c;
+
+	SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
+
+	for(int i = 0; i < std::abs(length); i++) {
+		if(bits.test(offset)) {
+			//point(start.x, start.y + i);
+			point(start.x, start.y + (length > 0 ? i : i * -1));
+		}
+		offset = (offset + 1) % bits.size();
+	}
+
+	return offset;
+}
+
+int draw::broken_line(const SDL_Point start, const SDL_Point end, const color_t& c, const boost::dynamic_bitset<> bits, int offset)
+{
+	DBG_D << "broken line from (" << start.x << ',' << start.y
+	      << ") to (" << end.x << ',' << end.y
+	      << ") with colour " << c;
+
+	SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
+
+	int dx = std::abs(end.x - start.x);
+	int dy = end.y - start.y;
+	double th = std::atan(static_cast<double>(dy)/dx);
+	int r = std::sqrt(dx * dx + dy * dy);
+
+	for(int i = 0; i <= r; i++) {
+			int x = start.x + (start.x <= end.x ? 1 : -1) * i * std::cos(th);
+			int y = start.y + i * std::sin(th);
+		if(bits.test(offset)) {
+			DBG_D << "\t\tplot " << x << "," << y;
+			point(x, y);
+		}
+
+		offset = (offset + 1) % bits.size();
+	}
+
+	return offset;
+
+}
+
+int draw::broken_rect(const SDL_Rect r, const color_t& c, const boost::dynamic_bitset<> bits, int offset)
+{
+	if(r.h == 1 && r.w == 1 && bits.test(offset)) {
+		SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
+		point(r.x, r.y);
+		offset = (offset + 1) % bits.size();
+		return offset;
+	}
+
+	SDL_Point p;
+	p.x = r.x;
+	p.y = r.y;
+
+	if(r.h == 1) {
+		return broken_hline(p, r.w, c, bits, offset);
+	} else if(r.w == 1) {
+		return broken_vline(p, r.h, c, bits, offset);
+	}
+
+	offset = broken_hline(p, r.w, c, bits, offset);  // top, left to right
+
+	p.y++;
+	p.x = r.x + r.w - 1;
+	offset = broken_vline(p, r.h - 1, c, bits, offset);  // right, top to bottom
+
+	p.x--;
+	p.y = r.y + r.h - 1;
+	offset = broken_hline(p, 1 - r.w, c, bits, offset); // bottom, right to left
+
+	p.x = r.x;
+	p.y--;
+	offset = broken_vline(p, 2 - r.h, c, bits, offset); // left, bottom to top
+
+	return offset;
+}
+
 void draw::points(const std::vector<SDL_Point>& points)
 {
 	DBG_D << points.size() << " points";
