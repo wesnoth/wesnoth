@@ -307,6 +307,7 @@ void tristate_button::mouse_down(const SDL_MouseButtonEvent& event) {
 	if (!hit(event.x, event.y))
 		return;
 
+	//The widget is expected to be in one of the "active" states when the mouse cursor is hovering over it, but that currently doesn't happen if the widget is moved under the cursor by scrolling the palette.
 	if (event.button == SDL_BUTTON_RIGHT) {
 		if (state_ == ACTIVE || state_ == NORMAL)
 			state_ = TOUCHED_RIGHT;
