@@ -65,7 +65,7 @@ private:
 
 	bool registered_;
 
-	std::chrono::system_clock::time_point flood_start_;
+	std::chrono::steady_clock::time_point flood_start_;
 	unsigned int messages_since_flood_start_;
 	const std::size_t MaxMessages;
 	const std::chrono::seconds TimePeriod;
