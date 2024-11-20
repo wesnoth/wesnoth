@@ -56,8 +56,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		for _index, move in ipairs(queued_movements) do
 			local moving_unit = move.u
 			local from_x, from_y = moving_unit.x, moving_unit.y
-			local scroll = move.scroll
-			if scroll then
+			if move.scroll then
 				wesnoth.interface.scroll_to_hex(from_x, from_y)
 			end
 			to_x, to_y = wesnoth.paths.find_vacant_hex(move.to_x, move.to_y, moving_unit)
