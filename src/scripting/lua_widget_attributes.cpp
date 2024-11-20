@@ -55,7 +55,12 @@
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
-#define INVALIDATE_LAYOUT() if(auto window = w.get_window()) { window->invalidate_layout(); }
+static void try_invalidate_layout(gui2::widget& w)
+{
+	if(auto window = w.get_window()) {
+		window->invalidate_layout();
+	}
+}
 
 static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 {
@@ -290,7 +295,7 @@ WIDGET_GETTER("maximum_value_label", t_string, gui2::slider)
 WIDGET_SETTER("maximum_value_label", t_string, gui2::slider)
 {
 	w.set_maximum_value_label(value);
-	INVALIDATE_LAYOUT();
+	try_invalidate_layout(w);
 }
 
 WIDGET_GETTER("min_value", int, gui2::slider)
@@ -311,7 +316,7 @@ WIDGET_GETTER("minimum_value_label", t_string, gui2::slider)
 WIDGET_SETTER("minimum_value_label", t_string, gui2::slider)
 {
 	w.set_minimum_value_label(value);
-	INVALIDATE_LAYOUT();
+	try_invalidate_layout(w);
 }
 
 WIDGET_GETTER("value_compat,percentage", int, gui2::progress_bar)
@@ -439,7 +444,7 @@ WIDGET_SETTER("characters_per_line", int, gui2::label)
 		throw std::invalid_argument("characters_per_line must be >= 0");
 	}
 	w.set_characters_per_line(value);
-	INVALIDATE_LAYOUT();
+	try_invalidate_layout(w);
 }
 
 WIDGET_GETTER("editable", bool, gui2::text_box)
@@ -486,7 +491,7 @@ WIDGET_SETTER("ellipsize_mode", std::string, gui2::styled_widget)
 	} else {
 		throw std::invalid_argument("ellipsize_mode must be one of <none,start,middle,end>");
 	}
-	INVALIDATE_LAYOUT();
+	try_invalidate_layout(w);
 }
 
 WIDGET_GETTER("enabled", bool, gui2::styled_widget)
@@ -517,7 +522,7 @@ WIDGET_GETTER("hint_image", std::string, gui2::combobox)
 WIDGET_SETTER("hint_image", std::string, gui2::combobox)
 {
 	w.set_hint_image(value);
-	INVALIDATE_LAYOUT();
+	try_invalidate_layout(w);
 }
 
 WIDGET_GETTER("hint_text", t_string, gui2::combobox)
@@ -528,7 +533,7 @@ WIDGET_GETTER("hint_text", t_string, gui2::combobox)
 WIDGET_SETTER("hint_text", t_string, gui2::combobox)
 {
 	w.set_hint_text(value);
-	INVALIDATE_LAYOUT();
+	try_invalidate_layout(w);
 }
 
 WIDGET_GETTER("hint_image", std::string, gui2::text_box)
@@ -539,7 +544,7 @@ WIDGET_GETTER("hint_image", std::string, gui2::text_box)
 WIDGET_SETTER("hint_image", std::string, gui2::text_box)
 {
 	w.set_hint_image(value);
-	INVALIDATE_LAYOUT();
+	try_invalidate_layout(w);
 }
 
 WIDGET_GETTER("hint_text", t_string, gui2::text_box)
@@ -550,7 +555,7 @@ WIDGET_GETTER("hint_text", t_string, gui2::text_box)
 WIDGET_SETTER("hint_text", t_string, gui2::text_box)
 {
 	w.set_hint_text(value);
-	INVALIDATE_LAYOUT();
+	try_invalidate_layout(w);
 }
 
 WIDGET_SETTER("history", std::string, gui2::text_box)
@@ -569,7 +574,7 @@ WIDGET_SETTER("indentation_step_size", int, gui2::tree_view)
 		throw std::invalid_argument("indentation_step_size must be >= 0");
 	}
 	w.set_indentation_step_size(value);
-	INVALIDATE_LAYOUT();
+	try_invalidate_layout(w);
 }
 
 WIDGET_GETTER("link_aware", bool, gui2::label)
@@ -580,7 +585,7 @@ WIDGET_GETTER("link_aware", bool, gui2::label)
 WIDGET_SETTER("link_aware", bool, gui2::label)
 {
 	w.set_link_aware(value);
-	INVALIDATE_LAYOUT();
+	try_invalidate_layout(w);
 }
 
 WIDGET_GETTER("link_aware", bool, gui2::rich_label)
@@ -591,7 +596,7 @@ WIDGET_GETTER("link_aware", bool, gui2::rich_label)
 WIDGET_SETTER("link_aware", bool, gui2::rich_label)
 {
 	w.set_link_aware(value);
-	INVALIDATE_LAYOUT();
+	try_invalidate_layout(w);
 }
 
 WIDGET_GETTER("link_aware", bool, gui2::scroll_label)
@@ -602,7 +607,7 @@ WIDGET_GETTER("link_aware", bool, gui2::scroll_label)
 WIDGET_SETTER("link_aware", bool, gui2::scroll_label)
 {
 	w.set_link_aware(value);
-	INVALIDATE_LAYOUT();
+	try_invalidate_layout(w);
 }
 
 WIDGET_GETTER("link_aware", bool, gui2::scroll_text)
@@ -613,7 +618,7 @@ WIDGET_GETTER("link_aware", bool, gui2::scroll_text)
 WIDGET_SETTER("link_aware", bool, gui2::scroll_text)
 {
 	w.set_link_aware(value);
-	INVALIDATE_LAYOUT();
+	try_invalidate_layout(w);
 }
 
 WIDGET_GETTER("link_color", std::string, gui2::label)
@@ -637,7 +642,7 @@ WIDGET_SETTER("max_input_length", int, gui2::combobox)
 		throw std::invalid_argument("max_input_length must be >= 0");
 	}
 	w.set_max_input_length(value);
-	INVALIDATE_LAYOUT();
+	try_invalidate_layout(w);
 }
 
 WIDGET_GETTER("max_input_length", int, gui2::text_box)
@@ -651,7 +656,7 @@ WIDGET_SETTER("max_input_length", int, gui2::text_box)
 		throw std::invalid_argument("max_input_length must be >= 0");
 	}
 	w.set_max_input_length(value);
-	INVALIDATE_LAYOUT();
+	try_invalidate_layout(w);
 }
 
 WIDGET_GETTER("step_size", int, gui2::slider)
@@ -716,7 +721,7 @@ WIDGET_GETTER("overflow_to_tooltip", bool, gui2::styled_widget)
 WIDGET_SETTER("overflow_to_tooltip", bool, gui2::styled_widget)
 {
 	w.set_use_tooltip_on_label_overflow(value);
-	INVALIDATE_LAYOUT();
+	try_invalidate_layout(w);
 }
 
 WIDGET_GETTER("wrap", bool, gui2::label)
