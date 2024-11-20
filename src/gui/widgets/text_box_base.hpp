@@ -196,7 +196,7 @@ public:
 	/**
 	 * Check whether text can be edited or not
 	 */
-	bool is_editable()
+	bool is_editable() const
 	{
 		return editable_;
 	}
