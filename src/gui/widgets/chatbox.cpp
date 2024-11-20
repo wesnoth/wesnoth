@@ -89,9 +89,10 @@ void chatbox::finalize_setup()
 
 void chatbox::load_log(std::map<std::string, chatroom_log>& log, bool show_lobby)
 {
-	const std::string new_tip = formatter() << markup::span_color("#FF0000", "\n============NEW============");
+	const std::string new_tip = formatter()
+		<< markup::span_color("#FF0000", "\n============" + translation::dsgettext("wesnoth", "NEW") + "============");
 
-	for(const auto& l : log) {
+	for(auto& l : log) {
 		const bool is_lobby = l.first == "lobby";
 
 		if(!show_lobby && is_lobby && !l.second.whisper) {
@@ -102,8 +103,8 @@ void chatbox::load_log(std::map<std::string, chatroom_log>& log, bool show_lobby
 
 		if(new_tip_index != std::string::npos) {
 			std::string new_log = l.second.log;
-			new_log.replace(l.second.log.find(new_tip), new_tip.length(), "");
-			log.at(l.first).log = new_log;
+			new_log.replace(new_tip_index, new_tip.length(), "");
+			l.second.log = new_log;
 			find_or_create_window(l.first, l.second.whisper, true, !is_lobby, new_log + new_tip);
 		} else {
 			find_or_create_window(l.first, l.second.whisper, true, !is_lobby, l.second.log + new_tip);
