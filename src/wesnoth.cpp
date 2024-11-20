@@ -1039,6 +1039,11 @@ int main(int argc, char** argv)
 	_putenv("PANGOCAIRO_BACKEND=fontconfig");
 	_putenv("FONTCONFIG_PATH=fonts");
 #endif
+#ifdef __APPLE__
+	// Using setenv with overwrite disabled so we can override this in the
+	// original process environment for research/testing purposes.
+	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
+#endif
 
 	// write_to_log_file means that writing to the log file will be done, if true.
 	// if false, output will be written to the terminal
