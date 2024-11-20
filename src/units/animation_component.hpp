@@ -62,13 +62,15 @@ public:
 		abil_halos_ref_() {}
 
 	/** Chooses an appropriate animation from the list of known animations. */
-	const unit_animation* choose_animation(
-			const map_location& loc, const std::string& event,
-			const map_location& second_loc = map_location::null_location(),
-			const int damage=0,
-			const strike_result::type hit_type = strike_result::type::invalid,
-			const_attack_ptr attack=nullptr,const_attack_ptr second_attack = nullptr,
-			int swing_num =0);
+	const unit_animation* choose_animation(const map_location& loc,
+		const std::string& event,
+		const map_location& second_loc = map_location::null_location(),
+		const int damage = 0,
+		const strike_result::type hit_type = strike_result::type::invalid,
+		const_attack_ptr attack = nullptr,
+		const_attack_ptr second_attack = nullptr,
+		int swing_num = 0,
+		bool from_lua = false);
 
 	/** Sets the animation state to standing. */
 	void set_standing(bool with_bars = true);

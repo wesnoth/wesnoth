@@ -364,8 +364,8 @@ static int impl_add_animation(lua_State* L)
 	} else if(!lua_isnoneornil(L, 5)) {
 		return luaW_type_error(L, 5, "table of options");
 	}
-
-	anim.add_animation(up, which, u.get_location(), dest, v1, bars, text, color, hits, primary, secondary, v2);
+	//u.set_facing(u.get_location().get_relative_dir(dest));
+	anim.add_animation(up, which, u.get_location(), dest, v1, bars, text, color, hits, primary, secondary, v2, true);
 	return 0;
 }
 
@@ -380,6 +380,7 @@ int game_lua_kernel::impl_run_animation(lua_State* L)
 	anim.start_animations();
 	anim.wait_for_end();
 	anim.set_all_standing();
+	anim.revert_facing();
 	anim.clear();
 	return 0;
 }

@@ -26,8 +26,16 @@
 #include "units/filter.hpp"
 #include "units/unit.hpp"
 #include "variable.hpp"
+#include "log.hpp" 
 
 #include <algorithm>
+
+static lg::log_domain log_scripting_lua("scripting/lua");
+#define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
+#define LOG_LUA LOG_STREAM(info, log_scripting_lua)
+#define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
+#define ERR_LUA LOG_STREAM(err, log_scripting_lua)
+
 
 static std::string get_heal_sound(const config& cfg)
 {
@@ -369,7 +377,6 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 
 	play_offscreen_ = cfg["offscreen"].to_bool(true);
 }
-
 int unit_animation::matches(const map_location& loc, const map_location& second_loc,
 		unit_const_ptr my_unit, const std::string& event, const int value, strike_result::type hit, const_attack_ptr attack,
 		const_attack_ptr second_attack, int value2) const
@@ -1025,7 +1032,11 @@ int unit_animation::get_begin_time() const
 
 	return result;
 }
-
+//mark start_animation_a after testing, facing seems can only be impl by actually change the facing status of unit before and after animating.
+//in other words: target only affect how the pool of chosen animations generated will be (before bug fix, this even don't work neither),
+//don't actually have anything to do with unit facing according to related impl codes.
+//in testing, first functionality has been proved to work.
+//so the next step is the second: finding out how to impl facing change with acceptable side effects.
 void unit_animation::start_animation(int start_time
 	, const map_location& src
 	, const map_location& dst
@@ -1033,9 +1044,15 @@ void unit_animation::start_animation(int start_time
 	, const color_t text_color
 	, const bool accelerate)
 {
-	unit_anim_.accelerate = accelerate;
-	src_ = src;
-	dst_ = dst;
+	if(from_lua_) {
+		unit_anim_.accelerate = accelerate;
+
+		LOG_LUA << "now dst in start_anim is " << dst_;
+	} else {
+		unit_anim_.accelerate = accelerate;
+		src_ = src;
+		dst_ = dst;
+	}
 
 	unit_anim_.start_animation(start_time);
 
@@ -1056,6 +1073,16 @@ void unit_animation::update_parameters(const map_location& src, const map_locati
 {
 	src_ = src;
 	dst_ = dst;
+}
+
+void unit_animation::update_fromlua(bool from_lua)
+{
+	from_lua_ = from_lua;
+}
+
+bool unit_animation::is_fromlua() const
+{
+	return from_lua_;
 }
 
 void unit_animation::pause_animation()
@@ -1288,7 +1315,7 @@ void unit_animation::particle::start_animation(int start_time)
 	animated<unit_frame>::start_animation(start_time,cycles_);
 	last_frame_begin_time_ = get_begin_time() -1;
 }
-
+//mark add_anim
 void unit_animator::add_animation(unit_const_ptr animated_unit
 		, const std::string& event
 		, const map_location &src
@@ -1300,16 +1327,24 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 		, const strike_result::type hit_type
 		, const_attack_ptr attack
 		, const_attack_ptr second_attack
-		, int value2)
+		, int value2
+		, bool fromlua)
 {
 	if(!animated_unit) return;
 
 	const unit_animation* anim =
-		animated_unit->anim_comp().choose_animation(src, event, dst, value, hit_type, attack, second_attack, value2);
+		animated_unit->anim_comp().choose_animation(src, event, dst, value, hit_type, attack, second_attack, value2, fromlua);
 	if(!anim) return;
 
 	start_time_ = std::max<int>(start_time_, anim->get_begin_time());
-	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, with_bars);
+
+	auto&& au_rvalue = std::move(animated_unit);
+	animated_units_.AGGREGATE_EMPLACE(au_rvalue, anim, text, text_color, src, au_rvalue->facing(), with_bars);
+	au_rvalue->set_facing(src.get_relative_dir(dst));
+	display* disp = display::get_singleton();
+	disp->invalidate(src);
+	disp->update();
+	LOG_LUA << "facing set to " << src.get_relative_dir(dst) << " expected, and actually is " << au_rvalue->facing();
 }
 
 void unit_animator::add_animation(unit_const_ptr animated_unit
@@ -1322,7 +1357,8 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 	if(!animated_unit || !anim) return;
 
 	start_time_ = std::max<int>(start_time_, anim->get_begin_time());
-	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, with_bars);
+	map_location::direction original_facing = map_location::direction::indeterminate;
+	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, original_facing, with_bars);
 }
 
 bool unit_animator::has_animation(unit_const_ptr animated_unit
@@ -1358,12 +1394,13 @@ void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit
 		 animated_unit->anim_comp().get_animation()->matches(
 			src, dst, animated_unit, event, value, hit_type, attack, second_attack, value2) > unit_animation::MATCH_FAIL)
 	{
-		animated_units_.AGGREGATE_EMPLACE(animated_unit, nullptr, text, text_color, src, with_bars);
+		map_location::direction original_facing = map_location::direction::indeterminate;
+		animated_units_.AGGREGATE_EMPLACE(animated_unit, nullptr, text, text_color, src, original_facing, with_bars);
 	} else {
 		add_animation(animated_unit,event,src,dst,value,with_bars,text,text_color,hit_type,attack,second_attack,value2);
 	}
 }
-
+//mark start_anims call start_anim_ac
 void unit_animator::start_animations()
 {
 	int begin_time = std::numeric_limits<int>::max();
@@ -1380,12 +1417,32 @@ void unit_animator::start_animations()
 
 	for(auto& anim : animated_units_) {
 		if(anim.animation) {
+			LOG_LUA << "now dst in start_anims if is " << anim.animation->get_dst();
+			LOG_LUA << "and facing is " << anim.src.get_direction(anim.my_unit->facing());
 			anim.my_unit->anim_comp().start_animation(begin_time, anim.animation, anim.with_bars, anim.text, anim.text_color);
+			//mark anim set to nptr this is why crash
 			anim.animation = nullptr;
 		} else {
+			LOG_LUA << "now dst in start_anims else is " << anim.animation->get_dst();
+			LOG_LUA << "and facing is " << anim.src.get_direction(anim.my_unit->facing());
 			anim.my_unit->anim_comp().get_animation()->update_parameters(anim.src, anim.src.get_direction(anim.my_unit->facing()));
 		}
 	}
+}
+//mark revert
+void unit_animator::revert_facing()
+{
+	display* disp = display::get_singleton();
+	for(auto& anim : animated_units_) {
+		//mark crash
+		if(anim.original_facing != map_location::direction::indeterminate) {
+			LOG_LUA << "unit facing reset from " << anim.my_unit->facing();
+			anim.my_unit->set_facing(anim.original_facing);
+			LOG_LUA << " to " << anim.my_unit->facing();
+			disp->invalidate(anim.my_unit->get_location());
+		}
+	}
+	disp->update();
 }
 
 bool unit_animator::would_end() const

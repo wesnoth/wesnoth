@@ -90,6 +90,9 @@ public:
 		, const bool accelerate = true);
 
 	void update_parameters(const map_location& src, const map_location& dst);
+	void update_fromlua(bool from_lua);
+	bool is_fromlua() const;
+	inline const map_location& get_dst() const {const map_location& _temp = dst_; return _temp;}
 	void pause_animation();
 	void restart_animation();
 	int get_current_frame_begin_time() const
@@ -184,6 +187,7 @@ private:
 	// optimization
 	bool invalidated_;
 	bool play_offscreen_;
+	bool from_lua_ = false;
 	std::set<map_location> overlaped_hex_;
 };
 
@@ -208,7 +212,8 @@ public:
 		, const strike_result::type hit_type = strike_result::type::invalid
 		, const_attack_ptr attack = nullptr
 		, const_attack_ptr second_attack = nullptr
-		, int value2 = 0);
+		, int value2 = 0
+		, bool fromlua = false);
 
 	/** has_animation : return an boolean value if animated unit present and have animation specified, used for verify prensence of [leading_anim] or [resistance_anim] for playability of [teaching_anim]
 	 * @return True if the  @a animated_unit is present and have animation.
@@ -256,6 +261,7 @@ public:
 
 	void set_all_standing();
 
+	void revert_facing();
 	bool would_end() const;
 	int get_animation_time() const;
 	int get_animation_time_potential() const;
@@ -271,6 +277,7 @@ private:
 		std::string text;
 		color_t text_color;
 		map_location src;
+		map_location::direction original_facing = map_location::direction::indeterminate;
 		bool with_bars = false;
 	};
 

@@ -22,9 +22,15 @@
 #include "random.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
+#include "log.hpp"
 
 #include <set>
 
+static lg::log_domain log_scripting_lua("scripting/lua");
+#define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
+#define LOG_LUA LOG_STREAM(info, log_scripting_lua)
+#define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
+#define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 namespace
 {
 int get_next_idle_time()
@@ -39,20 +45,37 @@ int get_next_idle_time()
 }
 } // namespace
 
-const unit_animation* unit_animation_component::choose_animation(const map_location& loc,const std::string& event,
-		const map_location& second_loc,const int value,const strike_result::type hit,
-		const_attack_ptr attack, const_attack_ptr second_attack, int swing_num)
+const unit_animation* unit_animation_component::choose_animation(const map_location& loc,
+	const std::string& event,
+	const map_location& second_loc,
+	const int value,
+	const strike_result::type hit,
+	const_attack_ptr attack,
+	const_attack_ptr second_attack,
+	int swing_num,
+	bool from_lua)
 {
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
 	int max_val = unit_animation::MATCH_FAIL;
-	for(const unit_animation& anim : animations_) {
+	for(unit_animation& anim : animations_) {
+		//mark choose_ani
 		int matching = anim.matches(loc,second_loc,u_.shared_from_this(),event,value,hit,attack,second_attack,swing_num);
 		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
+			if (from_lua){
+				LOG_LUA << "now dst in choose_anim upper changed from " << second_loc << " to " << anim.get_dst();
+				anim.update_parameters(loc, second_loc);
+				anim.update_fromlua(from_lua);
+			}
 			options.push_back(&anim);
 		} else if(matching > max_val) {
 			max_val = matching;
 			options.clear();
+			if (from_lua){
+				LOG_LUA << "now dst in choose_anim lower changed from " << second_loc<< " to " << anim.get_dst();
+				anim.update_parameters(loc, second_loc);
+				anim.update_fromlua(from_lua);
+			}
 			options.push_back(&anim);
 		}
 	}
@@ -118,8 +141,12 @@ void unit_animation_component::start_animation (int start_time, const unit_anima
 	// everything except standing select and idle
 	bool accelerate = (state != STATE_FORGET && state != STATE_STANDING);
 	draw_bars_ =  with_bars;
+	//? why reset? is this the reason why adjusting facing don't work?
+	//mark set facing before reset anim
+	//u_.set_facing(u_.loc_.get_relative_dir(anim_->get_dst()));
 	anim_.reset(new unit_animation(*animation));
 	const int real_start_time = start_time == std::numeric_limits<int>::max() ? anim_->get_begin_time() : start_time;
+	//mark start_animation_ac reset animation ptr of animator this is where the problem is
 	anim_->start_animation(real_start_time, u_.loc_, u_.loc_.get_direction(u_.facing_),
 		 text, text_color, accelerate);
 	frame_begin_time_ = anim_->get_begin_time() -1;
