@@ -253,9 +253,14 @@ Example:
 For details regarding the preprocessor visit:
 https://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor.
 .TP
+.BI --preprocess-string \ source-string
+preprocesses a given string and writes the output to stdout.
+.TP
 .BI --preprocess-defines= DEFINE1 , DEFINE2 , ...
 comma separated list of defines to be used by the
 .B --preprocess
+or
+.B --preprocess-string
 command. If
 .B SKIP_CORE
 is in the define list the "data/core" directory won't be preprocessed.
@@ -263,6 +268,8 @@ is in the define list the "data/core" directory won't be preprocessed.
 .BI --preprocess-input-macros \ source-file
 used only by the
 .B --preprocess
+or
+.B --preprocess-string
 command. Specifies a file that contains
 .BR [preproc_define] s
 to be included before preprocessing.
@@ -270,7 +277,9 @@ to be included before preprocessing.
 .BI --preprocess-output-macros[ =target-file ]
 used only by the
 .B --preprocess
-command. Will output all preprocessed macros in the target file. If the file is not specified
+command (But not by the
+.B --preprocess-string
+command). Will output all preprocessed macros in the target file. If the file is not specified
 the output will be file '_MACROS_.cfg' in the target directory of preprocess's command. The
 output file can be passed to
 .BR --preprocess-input-macros .

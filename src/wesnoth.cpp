@@ -123,6 +123,64 @@ static void safe_exit(int res)
 	exit(res);
 }
 
+static void handle_preprocess_string(const commandline_options& cmdline_opts)
+{
+	preproc_map defines_map;
+
+	if(cmdline_opts.preprocess_input_macros) {
+		std::string file = *cmdline_opts.preprocess_input_macros;
+		if(!filesystem::file_exists(file)) {
+			PLAIN_LOG << "please specify an existing file. File " << file << " doesn't exist.";
+			return;
+		}
+
+		PLAIN_LOG << "Reading cached defines from: " << file;
+
+		config cfg;
+
+		try {
+			filesystem::scoped_istream stream = filesystem::istream_file(file);
+			read(cfg, *stream);
+		} catch(const config::error& e) {
+			PLAIN_LOG << "Caught a config error while parsing file '" << file << "':\n" << e.message;
+		}
+
+		int read = 0;
+
+		// use static preproc_define::read_pair(config) to make a object
+		for(const auto [_, cfg] : cfg.all_children_view()) {
+			const preproc_map::value_type def = preproc_define::read_pair(cfg);
+			defines_map[def.first] = def.second;
+			++read;
+		}
+
+		PLAIN_LOG << "Read " << read << " defines.";
+	}
+
+	if(cmdline_opts.preprocess_defines) {
+		// add the specified defines
+		for(const std::string& define : *cmdline_opts.preprocess_defines) {
+			if(define.empty()) {
+				PLAIN_LOG << "empty define supplied";
+				continue;
+			}
+
+			LOG_PREPROC << "adding define: " << define;
+			defines_map.emplace(define, preproc_define(define));
+		}
+	}
+
+	// add the WESNOTH_VERSION define
+	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
+
+	// preprocess resource
+	PLAIN_LOG << "preprocessing specified string: " << *cmdline_opts.preprocess_source_string;
+	const utils::ms_optimer timer(
+		[](const auto& timer) { PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
+	std::cout << preprocess_string(*cmdline_opts.preprocess_source_string, &defines_map) << std::endl;
+	PLAIN_LOG << "added " << defines_map.size() << " defines.";
+}
+
 static void handle_preprocess_command(const commandline_options& cmdline_opts)
 {
 	preproc_map input_macros;
@@ -494,6 +552,11 @@ static int process_command_args(commandline_options& cmdline_opts)
 
 	if(cmdline_opts.preprocess) {
 		handle_preprocess_command(cmdline_opts);
+		return 0;
+	}
+
+	if(cmdline_opts.preprocess_source_string.has_value()) {
+		handle_preprocess_string(cmdline_opts);
 		return 0;
 	}
 

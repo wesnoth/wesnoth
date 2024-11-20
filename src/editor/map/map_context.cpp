@@ -759,7 +759,7 @@ config map_context::to_config()
 		config& mods = u.add_child("modifications");
 		if(unit.loyal()) {
 			config trait_loyal;
-			read(trait_loyal, preprocess_string("{TRAIT_LOYAL}", &traits_map, "wesnoth-editor"));
+			read(trait_loyal, preprocess_string("{TRAIT_LOYAL}", &traits_map, "wesnoth-help"));
 			mods.append(trait_loyal);
 		}
 		//TODO this entire block could also be replaced by unit.write(u, true)
