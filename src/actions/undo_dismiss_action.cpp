@@ -18,10 +18,19 @@
 #include "team.hpp"
 #include "units/unit.hpp"
 
-namespace actions
+namespace actions::undo
 {
-namespace undo
+dismiss_action::dismiss_action(const unit_const_ptr dismissed)
+	: undo_action()
+	, dismissed_unit(dismissed->clone())
 {
+}
+
+dismiss_action::dismiss_action(const config& cfg, const config& unit_cfg)
+	: undo_action(cfg)
+	, dismissed_unit(unit::create(unit_cfg))
+{
+}
 
 /**
  * Writes this into the provided config.
@@ -45,5 +54,4 @@ bool dismiss_action::undo(int side)
 	return true;
 }
 
-}
 }

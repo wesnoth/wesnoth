@@ -273,7 +273,7 @@ window::window(const builder_window::window_resolution& definition)
 	, functions_(definition.functions)
 	, tooltip_(definition.tooltip)
 	, helptip_(definition.helptip)
-	, click_dismiss_(false)
+	, click_dismiss_(definition.click_dismiss)
 	, enter_disabled_(false)
 	, escape_disabled_(false)
 	, linked_size_()
@@ -287,6 +287,26 @@ window::window(const builder_window::window_resolution& definition)
 	manager::instance().add(*this);
 
 	connect();
+
+	for(const auto& lg : definition.linked_groups) {
+		if(has_linked_size_group(lg.id)) {
+			FAIL(VGETTEXT("Linked ‘$id’ group has multiple definitions.", {{"id", lg.id}}));
+		}
+
+		init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
+	}
+
+	const auto conf = cast_config_to<window_definition>();
+	assert(conf);
+
+	if(conf->grid) {
+		init_grid(*conf->grid);
+		finalize(*definition.grid);
+	} else {
+		init_grid(*definition.grid);
+	}
+
+	add_to_keyboard_chain(this);
 
 	connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(
 			&window::signal_handler_sdl_video_resize, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
@@ -389,12 +409,6 @@ window::~window()
 	if(!hidden_) {
 		queue_redraw();
 	}
-
-#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-
-	delete debug_layout_;
-
-#endif
 }
 
 window* window::window_instance(const unsigned handle)
@@ -413,33 +427,6 @@ retval window::get_retval_by_id(const std::string& id)
 	} else {
 		return retval::NONE;
 	}
-}
-
-void window::finish_build(const builder_window::window_resolution& definition)
-{
-	for(const auto& lg : definition.linked_groups) {
-		if(has_linked_size_group(lg.id)) {
-			t_string msg = VGETTEXT("Linked ‘$id’ group has multiple definitions.", {{"id", lg.id}});
-
-			FAIL(msg);
-		}
-
-		init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
-	}
-
-	set_click_dismiss(definition.click_dismiss);
-
-	const auto conf = cast_config_to<window_definition>();
-	assert(conf);
-
-	if(conf->grid) {
-		init_grid(*conf->grid);
-		finalize(*definition.grid);
-	} else {
-		init_grid(*definition.grid);
-	}
-
-	add_to_keyboard_chain(this);
 }
 
 void window::show_tooltip(/*const unsigned auto_close_timeout*/)

@@ -62,7 +62,7 @@ mouse_handler::mouse_handler(game_display* gui, play_controller& pc)
 	, pc_(pc)
 	, previous_hex_()
 	, previous_free_hex_()
-	, selected_hex_()
+	, selected_hex_(map_location::null_location())
 	, next_unit_()
 	, current_route_()
 	, current_paths_()
@@ -128,13 +128,14 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 
 	// Fire the drag & drop only after minimal drag distance
 	// While we check the mouse buttons state, we also grab fresh position data.
-	int mx = drag_from_x_; // some default value to prevent unlikely SDL bug
-	int my = drag_from_y_;
+
 	if(is_dragging() && !dragging_started_) {
 		if(dragging_touch_) {
-			sdl::get_mouse_state(&mx, &my);
-			const double drag_distance = std::pow(static_cast<double>(drag_from_x_- mx), 2)
-										 + std::pow(static_cast<double>(drag_from_y_- my), 2);
+			point pos = sdl::get_mouse_location();
+			const double drag_distance =
+				std::pow(static_cast<double>(drag_from_.x - pos.x), 2) +
+				std::pow(static_cast<double>(drag_from_.y - pos.y), 2);
+
 			if(drag_distance > drag_threshold()*drag_threshold()) {
 				dragging_started_ = true;
 			}
@@ -145,15 +146,11 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	const auto found_unit = find_unit(selected_hex_);
 	bool selected_hex_has_my_unit = found_unit.valid() && found_unit.get_shared_ptr()->side() == side_num_;
 	if((browse || !found_unit.valid()) && is_dragging() && dragging_started_) {
-		sdl::get_mouse_state(&mx, &my);
 
 		if(gui().map_area().contains(x, y)) {
-			int dx = drag_from_x_ - mx;
-			int dy = drag_from_y_ - my;
-
-			gui().scroll(dx, dy);
-			drag_from_x_ = mx;
-			drag_from_y_ = my;
+			point pos = sdl::get_mouse_location();
+			gui().scroll(drag_from_ - pos);
+			drag_from_ = pos;
 		}
 		return;
 	}
@@ -616,7 +613,7 @@ bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_
 
 	if (gui().view_locked() || button < SDL_BUTTON_LEFT || button > buttons.size()) {
 		return false;
-	} else if (event.state > SDL_PRESSED || !gui().get_map().on_board(loc)) {
+	} else if (event.state > SDL_PRESSED || !pc_.get_map().on_board(loc)) {
 		return false;
 	}
 
@@ -675,9 +672,7 @@ const unit* mouse_handler::find_unit_nonowning(const map_location& hex) const
 
 const map_location mouse_handler::hovered_hex() const
 {
-	int x = -1;
-	int y = -1;
-	sdl::get_mouse_state(&x, &y);
+	auto [x, y] = sdl::get_mouse_location();
 	return gui_->hex_clicked_on(x, y);
 }
 
@@ -866,7 +861,7 @@ void mouse_handler::teleport_action()
 void mouse_handler::select_or_action(bool browse)
 {
 	if(!pc_.get_map().on_board(last_hex_)) {
-		tooltips::click(drag_from_x_, drag_from_y_);
+		tooltips::click(drag_from_.x, drag_from_.y);
 		return;
 	}
 
@@ -1096,8 +1091,10 @@ void mouse_handler::touch_action(const map_location touched_hex, bool browse)
 	}
 }
 
-void mouse_handler::select_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event)
+void mouse_handler::select_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event, const bool force_unhighlight)
 {
+	bool unhighlight = selected_hex_.valid() && force_unhighlight;
+
 	selected_hex_ = hex;
 
 	gui().select_hex(selected_hex_);
@@ -1173,7 +1170,8 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 
 		gui_->highlight_another_reach(reaching_unit_locations);
 	} else {
-		if(!pc_.get_units().find(last_hex_)) {
+		// unhighlight is needed because the highlight_reach here won't be reset with highlight assigned false.
+		if(!pc_.get_units().find(last_hex_) || unhighlight) {
 			unselected_reach_ = gui_->unhighlight_reach();
 		}
 
@@ -1266,7 +1264,7 @@ std::size_t mouse_handler::move_unit_along_route(const std::vector<map_location>
 	}
 
 	LOG_NG << "move unit along route  from " << steps.front() << " to " << steps.back();
-	std::size_t moves = actions::move_unit_and_record(steps, &pc_.get_undo_stack(), false, true, &interrupted);
+	std::size_t moves = actions::move_unit_and_record(steps, false, &interrupted);
 
 	cursor::set(cursor::NORMAL);
 	gui().invalidate_game_status();

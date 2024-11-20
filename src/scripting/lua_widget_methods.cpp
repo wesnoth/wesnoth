@@ -56,7 +56,7 @@ int intf_show_dialog(lua_State* L)
 	config def_cfg = luaW_checkconfig(L, 1);
 	gui2::builder_window::window_resolution def(def_cfg);
 
-	std::unique_ptr<gui2::window> wp(gui2::build(def));
+	auto wp = std::make_unique<gui2::window>(def);
 
 	if(!lua_isnoneornil(L, 2)) {
 		lua_pushvalue(L, 2);

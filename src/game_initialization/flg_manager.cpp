@@ -21,6 +21,7 @@
 #include "log.hpp"
 #include "mt_rng.hpp"
 #include "units/types.hpp"
+#include "utils/general.hpp"
 
 #include <algorithm>
 
@@ -318,11 +319,7 @@ void flg_manager::update_available_leaders()
 
 			// Remove duplicate leaders.
 			std::set<std::string> seen;
-			auto pos = std::remove_if(available_leaders_.begin(), available_leaders_.end(),
-				[&seen](const std::string& s) { return !seen.insert(s).second; }
-			);
-
-			available_leaders_.erase(pos, available_leaders_.end());
+			utils::erase_if(available_leaders_, [&seen](const std::string& s) { return !seen.insert(s).second; });
 
 			if(available_leaders_.size() > 1) {
 				available_leaders_.insert(available_leaders_.begin() + random_pos, "random");

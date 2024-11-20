@@ -80,7 +80,8 @@ public:
 
 	void select_hex(const map_location& hex, const bool browse,
 		const bool highlight = true,
-		const bool fire_event = true);
+		const bool fire_event = true,
+		const bool force_unhighlight = false);
 
 	void move_action(bool browse) override;
 	void teleport_action();

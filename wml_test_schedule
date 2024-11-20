@@ -155,6 +155,9 @@
 0 event_test_filter_ability_wml_no_match
 0 event_test_filter_ability_active
 0 event_test_filter_ability_active_inactive
+0 event_test_filter_special_active
+0 event_test_filter_special_active_inactive
+0 event_test_filter_special_simple_check
 0 event_test_filter_ability_with_value_by_default
 0 event_test_filter_ability_no_match_by_default
 0 event_test_filter_ability_apply_to_resistance
@@ -231,6 +234,9 @@
 0 test_attacks_used
 0 no_duplicate_advancements
 0 add_advancement
+0 add_or_replace_amla
+0 add_specific_female_amla_on_female
+0 add_specific_female_amla_on_male
 0 harm_unit_survivable_experience_no
 0 harm_unit_survivable_experience_unset
 0 harm_unit_survivable_experience_yes
@@ -393,6 +399,7 @@
 9 ability_cycle_recursion_by_id
 9 filter_self_ability_cycle_recursion_by_id
 9 adjacent_abilities_recursion_by_id
+9 leadership_filter_weapon_cycle_recursion
 0 negative_resistance_with_two_attack_types
 0 positive_resistance_with_two_attack_types
 0 taught_resistance_with_two_attack_types
@@ -1005,6 +1012,34 @@
 0 slow_affect_self_no
 0 slow_affect_enemies
 0 slow_affect_everybody
+# swarm tests
+0 swarm_affect_allies
+0 swarm_affect_enemies
+0 swarm_affect_everybody
+0 swarm_affect_self_no
+0 swarm_attacks_max
+0 swarm_attacks_max_fraction
+0 swarm_attacks_max_negative
+0 swarm_attacks_max_wfl
+0 swarm_attacks_min
+0 swarm_attacks_min_fraction
+0 swarm_attacks_min_higher
+0 swarm_attacks_min_lower
+0 swarm_attacks_min_negative
+0 swarm_attacks_min_wfl
+0 swarm_min_max_zero
+0 swarm_no_min_no_max
+0 swarm_overwrite_specials_both_sides
+0 swarm_overwrite_specials_mixed
+0 swarm_overwrite_specials_one_side
+0 swarm_overwrite_specials_two_both_sides
+0 swarm_overwrite_specials_two_one_side
+0 swarm_two_cumulative_mixed_same_id
+0 swarm_two_cumulative_mixed_unique_id
+0 swarm_two_cumulative_no_same_id
+0 swarm_two_cumulative_no_unique_id
+0 swarm_two_cumulative_yes_same_id
+0 swarm_two_cumulative_yes_unique_id
 # Warnings about WML
 0 unknown_scenario_false_positives
 0 unknown_scenario_interpolated

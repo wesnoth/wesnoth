@@ -714,8 +714,9 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 }
 
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
-                  const map_location & from, bool show, bool use_undo)
+                  const map_location & from)
 {
+	bool show = !resources::controller->is_skipping_actions();
 	const unit_ptr new_unit = unit::create(u_type, side_num, true);
 
 
@@ -723,17 +724,10 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 	place_recruit_result res = place_recruit(new_unit, loc, from, u_type.cost(), false, map_location::direction::indeterminate, show);
 	resources::controller->statistics().recruit_unit(*new_unit);
 
-	// To speed things a bit, don't bother with the undo stack during
-	// an AI turn. The AI will not undo nor delay shroud updates.
-	// (Undo stack processing is also suppressed when redoing a recruit.)
-	if ( use_undo ) {
-		resources::undo_stack->add_recruit(new_unit, loc, from, std::get<1>(res), std::get<2>(res));
-		// Check for information uncovered or randomness used.
+	resources::undo_stack->add_recruit(new_unit, loc, from, std::get<1>(res), std::get<2>(res));
+	// Check for information uncovered or randomness used.
 
-		if ( std::get<0>(res) || synced_context::undo_blocked()) {
-			resources::undo_stack->clear();
-		}
-	}
+	synced_context::block_undo(std::get<0>(res));
 
 	// Update the screen.
 	if (display::get_singleton() != nullptr )
@@ -743,16 +737,13 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 
 bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
-                 map_location::direction facing, bool show, bool use_undo)
+                 map_location::direction facing)
 {
+	bool show = !resources::controller->is_skipping_actions();
 	unit_ptr recall = current_team.recall_list().extract_if_matches_id(id);
 
 	if ( !recall )
 		return false;
-
-
-	// ** IMPORTANT: id might become invalid at this point!
-	// (Use recall.id() instead, if needed.)
 
 	// Place the recall.
 	// We also check to see if a custom unit level recall has been set if not,
@@ -768,15 +759,9 @@ bool recall_unit(const std::string & id, team & current_team,
 	}
 	resources::controller->statistics().recall_unit(*recall);
 
-	// To speed things a bit, don't bother with the undo stack during
-	// an AI turn. The AI will not undo nor delay shroud updates.
-	// (Undo stack processing is also suppressed when redoing a recall.)
-	if ( use_undo ) {
-		resources::undo_stack->add_recall(recall, loc, from, std::get<1>(res), std::get<2>(res));
-		if ( std::get<0>(res) || synced_context::undo_blocked()) {
-			resources::undo_stack->clear();
-		}
-	}
+	resources::undo_stack->add_recall(recall, loc, from, std::get<1>(res), std::get<2>(res));
+	synced_context::block_undo(std::get<0>(res));
+
 
 	// Update the screen.
 	if (display::get_singleton() != nullptr )

@@ -101,7 +101,7 @@ const std::string& spaced_em_dash()
 std::string make_game_type_marker(const std::string& text, bool color_for_missing)
 {
 	if(color_for_missing) {
-		return markup::bold(markup::span_color("#f00", "[", text, "] "));
+		return markup::span_color("#f00", markup::bold("[", text, "] "));
 	} else {
 		return markup::bold("[", text, "] ");
 	}

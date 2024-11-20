@@ -30,6 +30,7 @@
 #include "log.hpp"
 #include "video.hpp"
 
+#include <chrono>
 #include <functional>
 
 static lg::log_domain log_loadscreen("loadscreen");
@@ -66,7 +67,7 @@ static const std::map<loading_stage, std::string> stage_names {
 	{ loading_stage::download_lobby_data, N_("Downloading lobby data") },
 };
 
-namespace { int last_spin_ = 0; }
+namespace { std::chrono::steady_clock::time_point last_spin; }
 
 namespace gui2::dialogs
 {
@@ -133,9 +134,10 @@ void loading_screen::spin()
 	}
 
 	// Restrict actual update rate.
-	int elapsed = SDL_GetTicks() - last_spin_;
-	if (elapsed > draw_manager::get_frame_length() || elapsed < 0) {
-		last_spin_ = SDL_GetTicks();
+	auto now = std::chrono::steady_clock::now();
+	auto elapsed = now - last_spin;
+	if (elapsed > draw_manager::get_frame_length()) {
+		last_spin = now;
 		events::pump_and_draw();
 	}
 }
@@ -148,7 +150,7 @@ void loading_screen::raise()
 }
 
 // This will be run inside the window::show() loop.
-void loading_screen::process(events::pump_info&)
+void loading_screen::process()
 {
 	if (load_funcs_.empty()) {
 		return;

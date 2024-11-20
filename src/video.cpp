@@ -315,12 +315,12 @@ bool update_framebuffer()
 
 	rect active_area = to_output(draw_area());
 	if (active_area.size() != osize) {
-		LOG_DP << "render target offset: LT " << active_area.pos() << " RB "
-		       << osize - active_area.size() - active_area.pos();
+		LOG_DP << "render target offset: LT " << active_area.origin() << " RB "
+		       << osize - active_area.size() - active_area.origin();
 		// Translate active_area into display coordinates as input_area_
 		input_area_ = {
-			(active_area.pos() * wsize) / osize,
-			(active_area.size() * wsize) / osize
+			(active_area.origin() * wsize) / osize,
+			(active_area.origin() * wsize) / osize
 		};
 		LOG_DP << "input area: " << input_area_;
 	}
@@ -468,7 +468,7 @@ rect to_output(const rect& r)
 	// Multiply r by integer scale, adding draw_offset to the position.
 	point dsize = current_render_target_.draw_size();
 	point osize = current_render_target_.get_raw_size();
-	point pos = (r.pos() * (osize / dsize)) + draw_offset();
+	point pos = (r.origin() * (osize / dsize)) + draw_offset();
 	point size = r.size() * (osize / dsize);
 	return {pos, size};
 }
@@ -486,7 +486,7 @@ int get_pixel_scale()
 int current_refresh_rate()
 {
 	// TODO: this should be more clever, depending on usage
-	return refresh_rate_;
+	return std::min(prefs::get().refresh_rate(), refresh_rate_);
 }
 
 void force_render_target(const texture& t)

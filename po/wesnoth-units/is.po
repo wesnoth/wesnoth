@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
+"POT-Creation-Date: 2024-10-21 16:11 UTC\n"
 "PO-Revision-Date: 2009-05-10 12:21-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
@@ -154,7 +154,7 @@ msgstr ""
 #: data/core/units/bats/Bat_Vampire.cfg:116
 #: data/core/units/goblins/Direwolf_Rider.cfg:32
 #: data/core/units/goblins/Knight.cfg:34
-#: data/core/units/goblins/Pillager.cfg:32
+#: data/core/units/goblins/Pillager.cfg:59
 #: data/core/units/goblins/Wolf_Rider.cfg:46
 #: data/core/units/monsters/Ant.cfg:32 data/core/units/monsters/Ant_Fire.cfg:71
 #: data/core/units/monsters/Ant_Fire_Queen.cfg:75
@@ -444,7 +444,7 @@ msgstr "kuldastormur"
 #: data/core/units/humans/Woodsman_Ranger.cfg:53
 #: data/core/units/humans/Woodsman_Trapper.cfg:42
 #: data/core/units/orcs/Archer.cfg:33 data/core/units/orcs/Archer.cfg:42
-#: data/core/units/orcs/Warlord.cfg:33
+#: data/core/units/orcs/Warlord.cfg:39
 #: data/core/units/undead/Skele_Banebow.cfg:40
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
 #: data/core/units/undead/Skeleton_Archer.cfg:46
@@ -1318,8 +1318,8 @@ msgid ""
 "\n"
 "This is also the only caste that is allowed to break taboo and fight with "
 "spears in addition to the drake’s traditional metal claws, which makes them "
-"particularly good at \"resolving\" territorial disputes with other drakes "
-"and enforcing the laws of their tribe."
+"particularly good at “resolving” territorial disputes with other drakes and "
+"enforcing the laws of their tribe."
 msgstr ""
 
 #. [female]: gender=female
@@ -1997,7 +1997,7 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Marauder.cfg:61
 #: data/core/units/dunefolk/Raider.cfg:59
-#: data/core/units/goblins/Pillager.cfg:41
+#: data/core/units/goblins/Pillager.cfg:68
 msgid "torch"
 msgstr "kyndill"
 
@@ -3232,7 +3232,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/goblins/Pillager.cfg:50
+#: data/core/units/goblins/Pillager.cfg:77
 #: data/core/units/merfolk/Entangler.cfg:34
 #: data/core/units/merfolk/Netcaster.cfg:33
 msgid "net"
@@ -4409,7 +4409,7 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Brawler.cfg:30
-#: data/core/units/monsters/Cat_Jump.cfg:90
+#: data/core/units/monsters/Cat_Jump.cfg:92
 #: data/core/units/monsters/Fire_Dragon.cfg:42
 #: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
@@ -5029,6 +5029,8 @@ msgstr ""
 #: data/core/units/monsters/Dragonfly_Grand.cfg:44
 #: data/core/units/monsters/Giant_Scorpion.cfg:47
 #: data/core/units/monsters/Giant_Scorpling.cfg:32
+#: data/core/units/monsters/Sand_Scamperer.cfg:37
+#: data/core/units/monsters/Sand_Scuttler.cfg:49
 msgid "sting"
 msgstr "stinga"
 
@@ -5243,6 +5245,8 @@ msgstr ""
 #: data/core/units/monsters/Giant_Scorpion.cfg:59
 #: data/core/units/monsters/Giant_Scorpling.cfg:44
 #: data/core/units/monsters/Rock_Scorpion.cfg:53
+#: data/core/units/monsters/Sand_Scamperer.cfg:49
+#: data/core/units/monsters/Sand_Scuttler.cfg:61
 msgid "pincers"
 msgstr "klemmarar"
 
@@ -5252,16 +5256,16 @@ msgid "scuttler"
 msgstr ""
 
 #. [variation]
-#. [unit_type]: id=Sand Scuttler
+#. [unit_type]: id=Sand Scuttler, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:112
-#: data/core/units/monsters/Sand_Scuttler.cfg:8
+#: data/core/units/monsters/Sand_Scuttler.cfg:5
 msgid "Sand Scuttler"
 msgstr ""
 
 #. [variation]
-#. [unit_type]: id=Sand Scuttler
+#. [unit_type]: id=Sand Scuttler, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:119
-#: data/core/units/monsters/Sand_Scuttler.cfg:13
+#: data/core/units/monsters/Sand_Scuttler.cfg:43
 msgid ""
 "Making their homes in sandy dunes, these critters are an odd mix of mundane "
 "creature and elemental beast. Though usually timid, Sand Scuttlers sometimes "
@@ -5324,9 +5328,9 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/monsters/Horse.cfg:32
 #: data/core/units/monsters/Horse_Black.cfg:50
-#: data/core/units/monsters/Horse_Dark.cfg:44
+#: data/core/units/monsters/Horse_Dark.cfg:49
 #: data/core/units/monsters/Horse_Great.cfg:34
-#: data/core/units/monsters/Horse_White.cfg:39
+#: data/core/units/monsters/Horse_White.cfg:43
 msgid "hooves"
 msgstr ""
 
@@ -5345,7 +5349,7 @@ msgstr ""
 
 #. [attack]: type=cold
 #: data/core/units/monsters/Horse_Black.cfg:59
-#: data/core/units/monsters/Horse_Dark.cfg:53
+#: data/core/units/monsters/Horse_Dark.cfg:58
 msgid "whinny"
 msgstr ""
 
@@ -5360,15 +5364,15 @@ msgstr ""
 msgid "female^Black Nightmare"
 msgstr ""
 
-#. [unit_type]: id=Dark Horse, gender=male,female
+#. [unit_type]: id=Dark Horse, race=horse, gender=male,female
 #: data/core/units/monsters/Horse_Dark.cfg:14
 #, fuzzy
 #| msgid "Dark Sorcerer"
 msgid "Dark Horse"
 msgstr "Seiðskratti"
 
-#. [unit_type]: id=Dark Horse, gender=male,female
-#: data/core/units/monsters/Horse_Dark.cfg:40
+#. [unit_type]: id=Dark Horse, race=horse, gender=male,female
+#: data/core/units/monsters/Horse_Dark.cfg:33
 msgid ""
 "Dark Horses are wild animals, but they seem to take an odd interest in the "
 "civilized races. They leave no signs of their passage, but they have been "
@@ -5376,14 +5380,14 @@ msgid ""
 msgstr ""
 
 #. [male]
-#: data/core/units/monsters/Horse_Dark.cfg:88
+#: data/core/units/monsters/Horse_Dark.cfg:93
 #, fuzzy
 #| msgid "Drake Burner"
 msgid "male^Dark Horse"
 msgstr "Dreika Brennir"
 
 #. [female]
-#: data/core/units/monsters/Horse_Dark.cfg:92
+#: data/core/units/monsters/Horse_Dark.cfg:97
 #, fuzzy
 #| msgid "Drake Burner"
 msgid "female^Dark Horse"
@@ -5405,13 +5409,13 @@ msgid ""
 "arrogant prince or warlord has tried and failed."
 msgstr ""
 
-#. [unit_type]: id=White Horse
+#. [unit_type]: id=White Horse, race=horse
 #: data/core/units/monsters/Horse_White.cfg:14
 msgid "White Horse"
 msgstr ""
 
-#. [unit_type]: id=White Horse
-#: data/core/units/monsters/Horse_White.cfg:26
+#. [unit_type]: id=White Horse, race=horse
+#: data/core/units/monsters/Horse_White.cfg:29
 msgid ""
 "Some horses have a white color, and they are merely white horses. But there "
 "exist a special breed, found only in the wild woods, that are White Horses. "
@@ -5587,7 +5591,7 @@ msgstr ""
 #: data/core/units/monsters/Rock_Scorpion.cfg:47
 msgid ""
 "Rock scorpions have featured in tales of highwaymen and drunks, but there "
-"has been scant evidence that they truly exist. They've been described as "
+"has been scant evidence that they truly exist. They’ve been described as "
 "stealthy monsters with a hide of solid rock, and sharp, crystalline claws. "
 "Unlike most scorpions, they do not deliver their poison with a piercing "
 "stinger, but instead spray their enemies with a noxious, volatile stream."
@@ -5600,13 +5604,13 @@ msgstr ""
 msgid "spray"
 msgstr "vatnsúði"
 
-#. [unit_type]: id=Sand Scamperer
-#: data/core/units/monsters/Sand_Scamperer.cfg:11
+#. [unit_type]: id=Sand Scamperer, race=monster
+#: data/core/units/monsters/Sand_Scamperer.cfg:8
 msgid "Sand Scamperer"
 msgstr ""
 
-#. [unit_type]: id=Sand Scamperer
-#: data/core/units/monsters/Sand_Scamperer.cfg:16
+#. [unit_type]: id=Sand Scamperer, race=monster
+#: data/core/units/monsters/Sand_Scamperer.cfg:31
 msgid ""
 "This impressive creature swiftly moves through the scorching desert sand. "
 "Its body is covered in a thick, sand-colored exoskeleton absorbing any "
@@ -6128,7 +6132,7 @@ msgid ""
 "blades fly.\n"
 "\n"
 "While the old tales drive the elite warriors of this legacy to focus on the "
-"thrown blade, this doesn't mean they are weak in melee combat, as the "
+"thrown blade, this doesn’t mean they are weak in melee combat, as the "
 "unbalanced chakram can be enhanced with spikes and smaller blades.\n"
 msgstr ""
 
@@ -6159,7 +6163,7 @@ msgstr ""
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:23
 msgid ""
-"When still young, Ogres are sometimes captured and taken into armies to be "
+"When still young, ogres are sometimes captured and taken into armies to be "
 "trained. They cannot manage weapons skillfully, but they compensate for that "
 "lack with great strength."
 msgstr ""
@@ -6295,7 +6299,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
-#: data/core/units/orcs/Warlord.cfg:24 data/core/units/orcs/Warrior.cfg:38
+#: data/core/units/orcs/Warlord.cfg:30 data/core/units/orcs/Warrior.cfg:38
 msgid "greatsword"
 msgstr ""
 

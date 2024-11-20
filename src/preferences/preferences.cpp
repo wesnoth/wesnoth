@@ -36,6 +36,7 @@
 #include "map_settings.hpp"
 #include "map/map.hpp"
 #include "resources.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/parser.hpp"
 #include "sound.hpp"
 #include "units/unit.hpp"
@@ -66,6 +67,8 @@ static lg::log_domain log_filesystem("filesystem");
 static lg::log_domain advanced_preferences("advanced_preferences");
 #define ERR_ADV LOG_STREAM(err, advanced_preferences)
 
+using namespace std::chrono_literals;
+
 prefs::prefs()
 : preferences_()
 , fps_(false)
@@ -92,7 +95,7 @@ prefs::prefs()
 		preferences_[prefs_list::scroll_threshold] = 10;
 	}
 
-	for(const config& acfg : preferences_.child_range("acquaintance")) {
+	for(const config& acfg : preferences_.child_range(prefs_list::acquaintance)) {
 		preferences::acquaintance ac = preferences::acquaintance(acfg);
 		acquaintances_[ac.get_nick()] = ac;
 	}
@@ -135,10 +138,10 @@ prefs::~prefs()
 	}
 	set_child(prefs_list::history, history);
 
-	preferences_.clear_children("acquaintance");
+	preferences_.clear_children(prefs_list::acquaintance);
 
 	for(auto& a : acquaintances_) {
-		config& item = preferences_.add_child("acquaintance");
+		config& item = preferences_.add_child(prefs_list::acquaintance);
 		a.second.save(item);
 	}
 
@@ -271,12 +274,12 @@ void prefs::load_preferences()
 			}
 		}
 
-		for(const auto [key, _] : synced_prefs.all_children_range()) {
+		for(const auto [key, _] : synced_prefs.all_children_view()) {
 			if(std::find(synced_children_.begin(), synced_children_.end(), key) == synced_children_.end()) {
 				unknown_synced_children_.insert(key);
 			}
 		}
-		for(const auto [key, _] : unsynced_prefs.all_children_range()) {
+		for(const auto [key, _] : unsynced_prefs.all_children_view()) {
 			if(std::find(unsynced_children_.begin(), unsynced_children_.end(), key) == unsynced_children_.end()) {
 				unknown_unsynced_children_.insert(key);
 			}
@@ -324,7 +327,7 @@ void prefs::load_preferences()
 						message = foobar
 					[/line]
 		*/
-		for(const auto [key, cfg] : history->all_children_range()) {
+		for(const auto [key, cfg] : history->all_children_view()) {
 			for(const config& l : cfg.child_range("line")) {
 				history_map_[key].push_back(l["message"]);
 			}
@@ -1217,7 +1220,7 @@ void prefs::add_recent_files_entry(const std::string& path)
 
 	// Enforce uniqueness. Normally shouldn't do a thing unless somebody
 	// has been tampering with the preferences file.
-	mru.erase(std::remove(mru.begin(), mru.end(), path), mru.end());
+	utils::erase(mru, path);
 
 	mru.insert(mru.begin(), path);
 	mru.resize(std::min(editor_mru_limit(), mru.size()));
@@ -1513,7 +1516,7 @@ std::vector<game_config::server_info> prefs::user_servers_list()
 {
 	std::vector<game_config::server_info> pref_servers;
 
-	for(const config& server : preferences_.child_range("server")) {
+	for(const config& server : preferences_.child_range(prefs_list::server)) {
 		pref_servers.emplace_back();
 		pref_servers.back().name = server["name"].str();
 		pref_servers.back().address = server["address"].str();
@@ -1524,10 +1527,10 @@ std::vector<game_config::server_info> prefs::user_servers_list()
 
 void prefs::set_user_servers_list(const std::vector<game_config::server_info>& value)
 {
-	preferences_.clear_children("server");
+	preferences_.clear_children(prefs_list::server);
 
 	for(const auto& svinfo : value) {
-		config& sv_cfg = preferences_.add_child("server");
+		config& sv_cfg = preferences_.add_child(prefs_list::server);
 		sv_cfg["name"] = svinfo.name;
 		sv_cfg["address"] = svinfo.address;
 	}
@@ -1593,14 +1596,14 @@ void prefs::set_options(const config& values)
 	options_initialized_ = false;
 }
 
-int prefs::countdown_init_time()
+std::chrono::seconds prefs::countdown_init_time()
 {
-	return std::clamp<int>(preferences_[prefs_list::mp_countdown_init_time].to_int(240), 0, 1500);
+	return chrono::parse_duration(preferences_[prefs_list::mp_countdown_init_time], 240s);
 }
 
-void prefs::set_countdown_init_time(int value)
+void prefs::set_countdown_init_time(const std::chrono::seconds& value)
 {
-	preferences_[prefs_list::mp_countdown_init_time] = value;
+	preferences_[prefs_list::mp_countdown_init_time] = std::clamp(value, 0s, 1500s);
 }
 
 void prefs::clear_countdown_init_time()
@@ -1608,14 +1611,14 @@ void prefs::clear_countdown_init_time()
 	preferences_.remove_attribute(prefs_list::mp_countdown_init_time);
 }
 
-int prefs::countdown_reservoir_time()
+std::chrono::seconds prefs::countdown_reservoir_time()
 {
-	return std::clamp<int>(preferences_[prefs_list::mp_countdown_reservoir_time].to_int(360), 30, 1500);
+	return chrono::parse_duration(preferences_[prefs_list::mp_countdown_reservoir_time], 360s);
 }
 
-void prefs::set_countdown_reservoir_time(int value)
+void prefs::set_countdown_reservoir_time(const std::chrono::seconds& value)
 {
-	preferences_[prefs_list::mp_countdown_reservoir_time] = value;
+	preferences_[prefs_list::mp_countdown_reservoir_time] = std::clamp(value, 30s, 1500s);
 }
 
 void prefs::clear_countdown_reservoir_time()
@@ -1623,14 +1626,14 @@ void prefs::clear_countdown_reservoir_time()
 	preferences_.remove_attribute(prefs_list::mp_countdown_reservoir_time);
 }
 
-int prefs::countdown_turn_bonus()
+std::chrono::seconds prefs::countdown_turn_bonus()
 {
-	return std::clamp<int>(preferences_[prefs_list::mp_countdown_turn_bonus].to_int(240), 0, 300);
+	return chrono::parse_duration(preferences_[prefs_list::mp_countdown_turn_bonus], 240s);
 }
 
-void prefs::set_countdown_turn_bonus(int value)
+void prefs::set_countdown_turn_bonus(const std::chrono::seconds& value)
 {
-	preferences_[prefs_list::mp_countdown_turn_bonus] = value;
+	preferences_[prefs_list::mp_countdown_turn_bonus] = std::clamp(value, 0s, 300s);
 }
 
 void prefs::clear_countdown_turn_bonus()
@@ -1638,19 +1641,29 @@ void prefs::clear_countdown_turn_bonus()
 	preferences_.remove_attribute(prefs_list::mp_countdown_turn_bonus);
 }
 
-int prefs::countdown_action_bonus()
+std::chrono::seconds prefs::countdown_action_bonus()
 {
-	return std::clamp<int>(preferences_[prefs_list::mp_countdown_action_bonus].to_int(), 0, 30);
+	return chrono::parse_duration(preferences_[prefs_list::mp_countdown_action_bonus], 0s);
 }
 
-void prefs::set_countdown_action_bonus(int value)
+void prefs::set_countdown_action_bonus(const std::chrono::seconds& value)
 {
-	preferences_[prefs_list::mp_countdown_action_bonus] = value;
+	preferences_[prefs_list::mp_countdown_action_bonus] = std::clamp(value, 0s, 30s);
 }
 
 void prefs::clear_countdown_action_bonus()
 {
 	preferences_.remove_attribute(prefs_list::mp_countdown_action_bonus);
+}
+
+std::chrono::minutes prefs::chat_message_aging()
+{
+	return chrono::parse_duration(preferences_[prefs_list::chat_message_aging], 20min);
+}
+
+void prefs::set_chat_message_aging(const std::chrono::minutes& value)
+{
+	preferences_[prefs_list::chat_message_aging] = value;
 }
 
 int prefs::village_gold()
@@ -1742,10 +1755,11 @@ compression::format prefs::save_compression_format()
 std::string prefs::get_chat_timestamp(const std::time_t& t)
 {
 	if(chat_timestamp()) {
+		auto temp = std::chrono::system_clock::from_time_t(t); // FIXME: remove
 		if(use_twelve_hour_clock_format() == false) {
-			return lg::get_timestamp(t, _("[%H:%M]")) + " ";
+			return chrono::format_local_timestamp(temp, _("[%H:%M]")) + " ";
 		} else {
-			return lg::get_timestamp(t, _("[%I:%M %p]")) + " ";
+			return chrono::format_local_timestamp(temp, _("[%I:%M %p]")) + " ";
 		}
 	}
 

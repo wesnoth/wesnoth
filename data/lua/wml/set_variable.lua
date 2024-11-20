@@ -158,7 +158,7 @@ function wesnoth.wml_actions.set_variable(cfg, variables)
 
 	if cfg.formula then
 		local fcn = wesnoth.compile_formula(cfg.formula)
-		variables[name] = fcn(variables[name])
+		variables[name] = fcn({value = variables[name]})
 	end
 
 	local join_child = wml.get_child(cfg, "join")

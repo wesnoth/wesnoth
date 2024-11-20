@@ -18,6 +18,7 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "preferences/preferences.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 #include "game_version.hpp"
 #include "game_config_manager.hpp"
@@ -29,6 +30,8 @@ static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
+
+using namespace std::chrono_literals;
 
 /** The default difficulty setting for campaigns. */
 const std::string DEFAULT_DIFFICULTY("NORMAL");
@@ -49,7 +52,7 @@ game_classification::game_classification(const config& cfg)
 	, abbrev(cfg["abbrev"])
 	, end_credits(cfg["end_credits"].to_bool(true))
 	, end_text(cfg["end_text"])
-	, end_text_duration(std::clamp<unsigned>(cfg["end_text_duration"].to_unsigned(0), 0, 5000))
+	, end_text_duration(std::clamp(chrono::parse_duration(cfg["end_text_duration"], 0ms), 0ms, 5000ms))
 	, difficulty(cfg["difficulty"].empty() ? DEFAULT_DIFFICULTY : cfg["difficulty"].str())
 	, random_mode(cfg["random_mode"])
 	, oos_debug(cfg["oos_debug"].to_bool(false))
@@ -74,7 +77,7 @@ config game_classification::to_config() const
 	cfg["abbrev"] = abbrev;
 	cfg["end_credits"] = end_credits;
 	cfg["end_text"] = end_text;
-	cfg["end_text_duration"] = std::to_string(end_text_duration);
+	cfg["end_text_duration"] = end_text_duration;
 	cfg["difficulty"] = difficulty;
 	cfg["random_mode"] = random_mode;
 	cfg["oos_debug"] = oos_debug;

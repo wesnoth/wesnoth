@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-08-19 04:10 UTC\n"
-"PO-Revision-Date: 2024-07-23 13:12+0800\n"
+"POT-Creation-Date: 2024-10-21 16:10 UTC\n"
+"PO-Revision-Date: 2024-11-05 21:30+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -55,6 +55,8 @@ msgid ""
 "Quenoth elves include units that can attack several times per turn, and "
 "others that can move after attacking."
 msgstr ""
+"注：这个战役改变了一些标准机制，例如昼夜循环，召回费用以及对困难级别的通用方"
+"法。奎诺精灵包括可以每回合攻击数次的单位，以及可以攻击后移动的单位。"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:24
@@ -132,11 +134,6 @@ msgstr ""
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:21
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr "昏迷: 此单位已昏迷，无法确保其控制区域。"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:27
 msgid ""
 "dazed: This unit is dazed. It suffers a -10% penalty to both its defense and "
 "chance to hit (except for magical attacks)."
@@ -2136,7 +2133,7 @@ msgstr ""
 #. Custom steadfast ability. Has same name as the as the one in core, but works a bit different.
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
 msgid "Garak’s resistances are increased by 20% when defending."
-msgstr ""
+msgstr "伽拉克在防守时抗性增加20%."
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
@@ -2530,7 +2527,7 @@ msgstr "伽拉克怎么办？"
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1760
 msgid "I’ve asked and looked around, there is no sign of him or his body"
-msgstr "我问过了，也找过了，但没有发现他，也没看见他的尸体。"
+msgstr "我问过了，也找过了，但没有发现他，也没看见他的尸体"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1764
@@ -10465,17 +10462,12 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2345
-#, fuzzy
-#| msgid ""
-#| "Thank you. And I have also not forgotten the pledge I made to our merfolk "
-#| "friends. If it is possible, I would like to meet with your master. Your "
-#| "conduct is a testament to your people, and I, at least, trust you."
 msgid ""
 "Thank you. And I have also not forgotten the pledge I made to our merfolk "
 "friends. If it is possible, I would like to meet with your leader. Your "
 "conduct is a testament to your people, and I, at least, trust you."
 msgstr ""
-"谢谢你。我可能忘了与人鱼朋友的约定。可以的话，我乐意见见你们的主人。你们这么"
+"谢谢你。我可能忘了与人鱼朋友的约定。可以的话，我乐意见见你们的首领。你们这么"
 "好，你们的同胞肯定也不差，至少，我可以相信你们。"
 
 #. [message]: race=merman
@@ -10541,16 +10533,12 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2462
-#, fuzzy
-#| msgid ""
-#| "Before I decide, I have just one question: How did you merfolk plan on "
-#| "bringing us to meet your master, if she dwells far beneath the sea?"
 msgid ""
 "Before I decide, I have just one question: How did you merfolk plan on "
 "bringing us to meet your leader, if she dwells far beneath the sea?"
 msgstr ""
 "我做决定之前，还有一个问题要问：人鱼的主人远在海里，你们打算怎么带我们去见你"
-"们的主人？"
+"们的首领？"
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2469
@@ -13995,16 +13983,6 @@ msgstr "奎诺战士"
 
 #. [unit_type]: id=Quenoth Fighter, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Long ago, during more prosperous times, elven warriors favored the use of "
-#| "swords as more elegant, versatile weapons compared to other melee "
-#| "armaments. However, in recent times, the dearth of supplies for smithing "
-#| "has reduced the availability of blade-crafting, necessitating the "
-#| "fashioning of cheaper, more easily repaired weaponry. Quenoth Fighters "
-#| "are remarkably skilled in coordinated groups, where they can counteract "
-#| "the lack of more sophisticated weaponry by forming robust spear ranks "
-#| "capable of repelling nearly any frontal assault."
 msgid ""
 "Long ago, during more prosperous times, elven warriors favored the use of "
 "swords as more elegant, versatile weapons compared to other melee armaments. "
@@ -14018,8 +13996,9 @@ msgid ""
 msgstr ""
 "很久以前，在更繁荣的时期，相比其他近战武器，精灵战士更喜欢剑。它们更优雅、更"
 "全能。然而近来，由于缺乏锻造材料，刃器加工变少了，因此必须制造更便宜、更容易"
-"修复的武器。奎诺战士在互相配合的战斗团队中惊人地熟练，他们组成的强大长矛队伍"
-"能够抵消缺乏精致武器的劣势，并击退几乎任何正面进攻。"
+"修复的武器。为了弥补武器质量的下降，奎诺在武器的使用上采取了更大的灵活性。在"
+"开阔的沙地上，战士经过训练，可以培养出将注意力分散在多个敌人之间的敏锐度，无"
+"论是土匪、野生生物还是亡灵。"
 
 #. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
@@ -14606,19 +14585,17 @@ msgstr ""
 #. [advancement]: id=accurate_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:474
 msgid "Accurate Strikes"
-msgstr ""
+msgstr "精准打击"
 
 #. [advancement]: id=faster_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:491
-#, fuzzy
-#| msgid "true strike"
 msgid "Faster Strikes"
-msgstr "准确打击"
+msgstr "更快的打击"
 
 #. [advancement]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:503
 msgid "Sword Dance"
-msgstr ""
+msgstr "剑舞"
 
 #. [advancement]: id=bowmanship_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:527
@@ -14876,51 +14853,51 @@ msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:4
 msgid "uses 1 attack"
-msgstr ""
+msgstr "使用1个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:7
 msgid "uses 2 attacks"
-msgstr ""
+msgstr "使用2个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:10
 msgid "uses 3 attacks"
-msgstr ""
+msgstr "使用3个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
 msgid "uses 4 attacks"
-msgstr ""
+msgstr "使用4个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 msgid "uses 5 attacks"
-msgstr ""
+msgstr "使用5个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
 msgid "uses 6 attacks"
-msgstr ""
+msgstr "使用6个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 msgid "This attack uses 1 attack"
-msgstr ""
+msgstr "这个攻击使用1个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:25
 msgid "This attack uses 2 attacks"
-msgstr ""
+msgstr "这个攻击使用2个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:28
 msgid "This attack uses 3 attacks"
-msgstr ""
+msgstr "这个攻击使用3个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:31
 msgid "This attack uses 4 attacks"
-msgstr ""
+msgstr "这个攻击使用4个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:34
 msgid "This attack uses 5 attacks"
-msgstr ""
+msgstr "这个攻击使用5个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:37
 msgid "This attack uses 6 attacks"
-msgstr ""
+msgstr "这个攻击使用6个攻击次数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
 msgid ""
@@ -14970,10 +14947,8 @@ msgstr ""
 
 #. [illuminates]: id=illumination_song_verse
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:346
-#, fuzzy
-#| msgid "female^thirst"
 msgid "female^third verse illuminates"
-msgstr "口渴"
+msgstr ""
 
 #. [illuminates]: id=illumination_song_verse
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:347
@@ -15054,18 +15029,18 @@ msgstr ""
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +1"
-msgstr ""
+msgstr "在回合开始，这个单位为周围的单位增加+1移动点数"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:651
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +2"
-msgstr ""
+msgstr "在回合开始，这个单位为周围的单位增加+2移动点数"
 
 #. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:655
 msgid "tailwind +"
-msgstr ""
+msgstr "顺风+"
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:775
@@ -15310,11 +15285,11 @@ msgid "cooldown 2"
 msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1551
-msgid "After using this attack, you can't use it during your next turn."
+msgid "After using this attack, you can’t use it during your next turn."
 msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1554
-msgid "After using this attack, you can't use it during your next two turns."
+msgid "After using this attack, you can’t use it during your next two turns."
 msgstr ""
 
 #. [dummy]: id=pierce
@@ -15484,15 +15459,6 @@ msgstr "+$amount|经验值"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:7
-#, fuzzy
-#| msgid ""
-#| "Note: This campaign is probably not appropriate for beginners. It changes "
-#| "certain Wesnoth standards, such as the elves’ stats and the day/night "
-#| "cycle. This campaign emphasizes role-playing elements and tends to have "
-#| "longer scenarios with objectives that change in the middle. For these "
-#| "reasons, we strongly suggest that you occasionally save your game mid-"
-#| "scenario, so you won’t lose all your progress if you get stuck and have "
-#| "to start over."
 msgid ""
 "Note: This campaign is probably not appropriate for beginners. It changes "
 "certain Wesnoth standards, such as the elves’ stats, the day/night cycle, "
@@ -15502,10 +15468,11 @@ msgid ""
 "that you occasionally save your game mid-scenario, so you won’t lose all "
 "your progress if you get stuck and have to start over."
 msgstr ""
-"说明：本战役可能不适合初学者，它改变了韦诺的常规规则，比如精灵的能力数据以及"
-"昼夜循环等。本战役更强调角色扮演的成分，具有连绵的剧情场景，而且场景目标可能"
-"会在中途改变。鉴于以上原因，我们强烈建议玩家在游戏中经常保存进度， 这样当您在"
-"某处失败的时候，可以顺利地重新挑战，而不会丢失您的全部进度。"
+"说明：本战役可能不适合初学者，它改变了韦诺的常规规则，比如精灵的能力数据，昼"
+"夜循环，召回费用以及对困难级别的通用方法。本战役更强调角色扮演的成分，具有连"
+"绵的剧情场景，而且场景目标可能会在中途改变。鉴于以上原因，我们强烈建议玩家在"
+"游戏中经常保存进度， 这样当您在某处失败的时候，可以顺利地重新挑战，而不会丢失"
+"您的全部进度。"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:10
@@ -16088,20 +16055,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:166
-#, fuzzy
-#| msgid ""
-#| "Which brings me to the other alien concept I was trying to comprehend: "
-#| "our goddess Eloh. What was her plan? Why did she want me to surrender to "
-#| "the humans? Do the humans worship her as well? The humans seem so brutish "
-#| "and vile, that I can’t imagine them worshiping the same god as us. I "
-#| "thought Eloh was just our god, I don’t remember Zhul mentioning any other "
-#| "races worshiping her after the Great Fall, though perhaps things had "
-#| "changed in the intervening years. Her commands don’t make any sense; she "
-#| "doesn’t seem at all like the goddess Zhul told me about. And what was "
-#| "Esanoo talking about? How did his master know about ‘Yechnagoth’ and "
-#| "‘Zhangor’? If Eloh won’t help me, then I desperately need some answers. I "
-#| "pray to whatever gods may be left that I’m not leading my people into a "
-#| "trap..."
 msgid ""
 "Which brings me to the other alien concept I was trying to comprehend: our "
 "goddess Eloh. What was her plan? Why did she want me to surrender to the "
@@ -16119,7 +16072,7 @@ msgstr ""
 "么？她为什么要我向人类投降？人类也信奉她么？人类看起来如此残暴邪恶，我很难想"
 "象他们和我们信奉着同一个神。我以为伊洛只是我们的神，朱尔没有提过大陨落以后有"
 "其他种族也信奉她，当然也许这些年来事情已经发生了变化。她的命令毫无道理，她一"
-"点也不像朱尔和我讲过的那个神。还有伊瑟努说的是什么？他的主人怎么会知道“耶柯纳"
+"点也不像朱尔和我讲过的那个神。还有伊瑟努说的是什么？他的首领怎么会知道“耶柯纳"
 "戈斯”和“战戈”？如果伊洛不帮助我，那我急切地需要一些解答。我祈祷神能留下任何启"
 "示，来告诉我，我不是在把我的同胞带向一个陷阱……"
 
@@ -16214,17 +16167,12 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:202
-#, fuzzy
-#| msgid ""
-#| "That afternoon three of the merfolk sat in a circle and performed their "
-#| "ritual to determine the location of their master. Apparently it was a "
-#| "success, for they steered us straight towards the setting sun."
 msgid ""
 "That afternoon three of the merfolk sat in a circle and performed their "
 "ritual to determine the location of their leader. Apparently it was a "
 "success, for they steered us straight towards the setting sun."
 msgstr ""
-"那天下午，三个人鱼坐成一圈，用他们的仪式来确定主人的方位。最后显然成功了，因"
+"那天下午，三个人鱼坐成一圈，用他们的仪式来确定首领的方位。最后显然成功了，因"
 "为他们引导我们朝太阳升起的方向开去。"
 
 #. [part]
@@ -16352,6 +16300,10 @@ msgstr "幻影城堡"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "幻影主楼"
+
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr "昏迷: 此单位已昏迷，无法确保其控制区域。"
 
 #~ msgid "Hunter"
 #~ msgstr "猎手"

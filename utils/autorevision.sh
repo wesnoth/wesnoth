@@ -162,7 +162,7 @@ gitRepo() {
 	fi
 
 	# Is the working copy clean?
-	test -z "$(git status --untracked-files=normal --porcelain)"
+	test -z "$(git status --untracked-files=no --porcelain)"
 	VCS_WC_MODIFIED="${?}"
 
 	# Enumeration of changesets

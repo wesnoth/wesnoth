@@ -396,7 +396,7 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 	std::vector<topic> topics;
 	std::stringstream toplevel;
 
-	if (! resources::tod_manager) {
+	if (!resources::tod_manager) {
 		toplevel << _("Only available during a scenario.");
 		topics.emplace_back(_("Time of Day Schedule"), "..schedule", toplevel.str());
 		return topics;
@@ -411,30 +411,33 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 		const std::string image_neutral = markup::img("icons/alignments/alignment_neutral_30.png");
 		const std::string image_chaotic = markup::img("icons/alignments/alignment_chaotic_30.png");
 		const std::string image_liminal = markup::img("icons/alignments/alignment_liminal_30.png");
-		std::stringstream text;
+		std::stringstream text, row_ss;
 
 		const int lawful_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::lawful, false, resources::tod_manager->get_max_liminal_bonus());
 		const int neutral_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::neutral, false, resources::tod_manager->get_max_liminal_bonus());
 		const int chaotic_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::chaotic, false, resources::tod_manager->get_max_liminal_bonus());
 		const int liminal_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::liminal, false, resources::tod_manager->get_max_liminal_bonus());
 
-		toplevel << markup::make_link(time.name.str(), id) << " " << image << " " <<
-			image_lawful << time_of_day_bonus_colored(lawful_bonus) << " " <<
-			image_neutral << time_of_day_bonus_colored(neutral_bonus) << " " <<
-			image_chaotic << time_of_day_bonus_colored(chaotic_bonus) << " " <<
-			image_liminal << time_of_day_bonus_colored(liminal_bonus) << '\n';
+		row_ss << markup::tag("col", markup::make_link(time.name.str(), id))
+			   << markup::tag("col", image)
+			   << markup::tag("col", image_lawful, time_of_day_bonus_colored(lawful_bonus))
+			   << markup::tag("col", image_neutral, time_of_day_bonus_colored(neutral_bonus))
+			   << markup::tag("col", image_chaotic, time_of_day_bonus_colored(chaotic_bonus))
+			   << markup::tag("col", image_liminal, time_of_day_bonus_colored(liminal_bonus));
+		toplevel << markup::tag("row", row_ss.str());
 
-		text << image << '\n' << time.description.str() << '\n' <<
-			image_lawful << _("Lawful Bonus:") << ' ' << time_of_day_bonus_colored(lawful_bonus) << '\n' <<
-			image_neutral << _("Neutral Bonus:") << ' ' << time_of_day_bonus_colored(neutral_bonus) << '\n' <<
-			image_chaotic << _("Chaotic Bonus:") << ' ' << time_of_day_bonus_colored(chaotic_bonus) << '\n' <<
-			image_liminal << _("Liminal Bonus:") << ' ' << time_of_day_bonus_colored(liminal_bonus) << '\n' <<
-			'\n' << markup::make_link(_("Schedule"), "..schedule");
+		text << image << '\n'
+			 << time.description.str() << '\n'
+			 << image_lawful << _("Lawful Bonus:") << ' ' << time_of_day_bonus_colored(lawful_bonus) << '\n'
+			 << image_neutral << _("Neutral Bonus:") << ' ' << time_of_day_bonus_colored(neutral_bonus) << '\n'
+			 << image_chaotic << _("Chaotic Bonus:") << ' ' << time_of_day_bonus_colored(chaotic_bonus) << '\n'
+			 << image_liminal << _("Liminal Bonus:") << ' ' << time_of_day_bonus_colored(liminal_bonus) << '\n' << '\n'
+			 << markup::make_link(_("Schedule"), "..schedule");
 
 		topics.emplace_back(time.name.str(), id, text.str());
 	}
 
-	topics.emplace_back(_("Time of Day Schedule"), "..schedule", toplevel.str());
+	topics.emplace_back(_("Time of Day Schedule"), "..schedule", markup::tag("table", toplevel.str()));
 	return topics;
 }
 
@@ -477,9 +480,9 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		for(config adv : type.modification_advancements()) {
 			for(config effect : adv.child_range("effect")) {
 				if(effect["apply_to"] == "new_attack" && effect.has_child("specials")) {
-					for(config::any_child spec : effect.mandatory_child("specials").all_children_range()) {
-						if(!spec.cfg["name"].empty()) {
-							special_description.emplace(spec.cfg["name"].t_str(), spec.cfg["description"].t_str());
+					for(const auto [key, special] : effect.mandatory_child("specials").all_children_view()) {
+						if(!special["name"].empty()) {
+							special_description.emplace(special["name"].t_str(), special["description"].t_str());
 							if(!type.hide_help()) {
 								//add a link in the list of units having this special
 								std::string type_name = type.type_name();
@@ -489,14 +492,14 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 								//we put the translated name at the beginning of the hyperlink,
 								//so the automatic alphabetic sorting of std::set can use it
 								std::string link = markup::make_link(type_name, ref_id);
-								special_units[spec.cfg["name"]].insert(link);
+								special_units[special["name"]].insert(link);
 							}
 						}
 					}
 				} else if(effect["apply_to"] == "attack" && effect.has_child("set_specials")) {
-					for(config::any_child spec : effect.mandatory_child("set_specials").all_children_range()) {
-						if(!spec.cfg["name"].empty()) {
-							special_description.emplace(spec.cfg["name"].t_str(), spec.cfg["description"].t_str());
+					for(const auto [key, special] : effect.mandatory_child("set_specials").all_children_view()) {
+						if(!special["name"].empty()) {
+							special_description.emplace(special["name"].t_str(), special["description"].t_str());
 							if(!type.hide_help()) {
 								//add a link in the list of units having this special
 								std::string type_name = type.type_name();
@@ -506,7 +509,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 								//we put the translated name at the beginning of the hyperlink,
 								//so the automatic alphabetic sorting of std::set can use it
 								std::string link = markup::make_link(type_name, ref_id);
-								special_units[spec.cfg["name"]].insert(link);
+								special_units[special["name"]].insert(link);
 							}
 						}
 					}
@@ -717,7 +720,7 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 	// All traits that could be assigned to at least one discovered or HIDDEN_BUT_SHOW_MACROS unit.
 	// This is collected from the [units][trait], [race][traits], and [unit_type][traits] tags. If
 	// there are duplicates with the same id, it takes the first one encountered.
-	std::map<t_string, const config> trait_list;
+	std::map<std::string, const config> trait_list;
 
 	// The global traits that are direct children of a [units] tag
 	for (const config & trait : unit_types.traits()) {

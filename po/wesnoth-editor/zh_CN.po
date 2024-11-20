@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-09-17 21:18-0500\n"
+"POT-Creation-Date: 2024-10-21 11:10-0500\n"
 "PO-Revision-Date: 2023-09-10 08:31+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -253,23 +253,23 @@ msgstr "播放列表"
 msgid "Assign Time Schedule"
 msgstr "指定日程表"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:62
+#: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
 msgstr "标识符："
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:64
+#: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Name: "
 msgstr "名字："
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:66
+#: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Type: "
 msgstr "类型："
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:67
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Level: "
 msgstr "等级："
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
+#: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Cost: "
 msgstr "花费："
 
@@ -331,122 +331,122 @@ msgstr ""
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:220
+#: src/editor/map/context_manager.cpp:217
 msgid "Load Map"
 msgstr "载入地图"
 
-#: src/editor/map/context_manager.cpp:316 src/editor/map/map_context.cpp:1127
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1129
 msgid "New Map"
 msgstr "新建地图"
 
-#: src/editor/map/context_manager.cpp:329 src/editor/map/map_context.cpp:1127
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1129
 msgid "New Scenario"
 msgstr "新建场景"
 
-#: src/editor/map/context_manager.cpp:385
+#: src/editor/map/context_manager.cpp:382
 msgid "No Recent Files"
 msgstr "没有最近文件"
 
-#: src/editor/map/context_manager.cpp:423
+#: src/editor/map/context_manager.cpp:420
 msgid "Unnamed Area"
 msgstr "未命名区域"
 
-#: src/editor/map/context_manager.cpp:454
+#: src/editor/map/context_manager.cpp:451
 msgid "New Side"
 msgstr "新阵营"
 
-#: src/editor/map/context_manager.cpp:510
+#: src/editor/map/context_manager.cpp:507
 msgid "Apply Mask"
 msgstr "应用遮罩"
 
-#: src/editor/map/context_manager.cpp:519
+#: src/editor/map/context_manager.cpp:516
 msgid "Error loading mask"
 msgstr "载入遮罩时发生错误"
 
-#: src/editor/map/context_manager.cpp:539
+#: src/editor/map/context_manager.cpp:536
 msgid "Identifier:"
 msgstr "标识符："
 
-#: src/editor/map/context_manager.cpp:539
+#: src/editor/map/context_manager.cpp:536
 msgid "Rename Area"
 msgstr "区域重命名"
 
-#: src/editor/map/context_manager.cpp:553
+#: src/editor/map/context_manager.cpp:550
 msgid "Choose Target Map"
 msgstr "选择目标地图"
 
-#: src/editor/map/context_manager.cpp:562
-#: src/editor/map/context_manager.cpp:988
+#: src/editor/map/context_manager.cpp:559
+#: src/editor/map/context_manager.cpp:985
 msgid "Error loading map"
 msgstr "载入地图时发生错误"
 
-#: src/editor/map/context_manager.cpp:694
+#: src/editor/map/context_manager.cpp:691
 msgid "Save Map As"
 msgstr "地图另存为"
 
-#: src/editor/map/context_manager.cpp:711
-#: src/editor/map/context_manager.cpp:760 src/editor/map/map_context.cpp:269
-#: src/editor/palette/location_palette.cpp:264
+#: src/editor/map/context_manager.cpp:708
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:269
+#: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "错误"
 
-#: src/editor/map/context_manager.cpp:712
-#: src/editor/map/context_manager.cpp:761
+#: src/editor/map/context_manager.cpp:709
+#: src/editor/map/context_manager.cpp:758
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
 msgstr "你真的要退出吗？"
 
-#: src/editor/map/context_manager.cpp:720
-#: src/editor/map/context_manager.cpp:929
+#: src/editor/map/context_manager.cpp:717
+#: src/editor/map/context_manager.cpp:926
 msgid "This map is already open."
 msgstr "此地图已打开。"
 
-#: src/editor/map/context_manager.cpp:743
+#: src/editor/map/context_manager.cpp:740
 msgid "Save Scenario As"
 msgstr "场景另存为"
 
-#: src/editor/map/context_manager.cpp:769
+#: src/editor/map/context_manager.cpp:766
 msgid "This scenario is already open."
 msgstr "此场景已打开。"
 
-#: src/editor/map/context_manager.cpp:803
+#: src/editor/map/context_manager.cpp:800
 msgid "No random map generators found."
 msgstr "未找到随机地图生成器。"
 
-#: src/editor/map/context_manager.cpp:816
-#: src/editor/map/context_manager.cpp:821
+#: src/editor/map/context_manager.cpp:813
+#: src/editor/map/context_manager.cpp:818
 msgid "Map creation failed."
 msgstr "地图创建失败。"
 
-#: src/editor/map/context_manager.cpp:836
+#: src/editor/map/context_manager.cpp:833
 msgid "Unsaved Changes"
 msgstr "未保存的更改"
 
-#: src/editor/map/context_manager.cpp:837
+#: src/editor/map/context_manager.cpp:834
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "你要放弃上次保存之后对地图所作的全部修改吗？"
 
-#: src/editor/map/context_manager.cpp:890
+#: src/editor/map/context_manager.cpp:887
 msgid "Scenario saved."
 msgstr "场景已保存。"
 
-#: src/editor/map/context_manager.cpp:905
+#: src/editor/map/context_manager.cpp:902
 #, fuzzy
 #| msgid "Map saved."
 msgid "Map saved"
 msgstr "地图已保存。"
 
-#: src/editor/map/context_manager.cpp:980
+#: src/editor/map/context_manager.cpp:977
 msgid "Loaded embedded map data"
 msgstr "已载入嵌入的地图数据"
 
+#: src/editor/map/context_manager.cpp:978
 #: src/editor/map/context_manager.cpp:981
-#: src/editor/map/context_manager.cpp:984
 msgid "Map loaded from scenario"
 msgstr "已从场景中载入地图"
 
-#: src/editor/map/context_manager.cpp:984
+#: src/editor/map/context_manager.cpp:981
 #, fuzzy
 #| msgid ""
 #| "Loaded referenced map file:\n"
@@ -484,7 +484,7 @@ msgid ""
 msgstr "此地图文件看起来像是一幕场景，但是map_data的值指向了一个不存在的文件"
 
 #: src/editor/map/map_context.cpp:264
-msgid "Found the characters '<<' indicating inline lua is present - aborting"
+msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
 msgstr ""
 
 #: src/editor/map/map_context.cpp:269
@@ -505,27 +505,27 @@ msgstr "此地图文件看起来像是一幕场景，但是map_data的值指向�
 msgid "Unable to parse file to find map data"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:821 src/editor/map/map_context.cpp:861
+#: src/editor/map/map_context.cpp:823 src/editor/map/map_context.cpp:863
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "无法保存场景：$msg"
 
-#: src/editor/map/map_context.cpp:855
+#: src/editor/map/map_context.cpp:857
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "日程表菜单"
 
-#: src/editor/map/map_context.cpp:901
+#: src/editor/map/map_context.cpp:903
 msgid "Could not save the scenario: $msg"
 msgstr "无法保存场景：$msg"
 
-#: src/editor/map/map_context.cpp:932
+#: src/editor/map/map_context.cpp:934
 msgid "Could not save into scenario"
 msgstr "无法保存到场景"
 
-#: src/editor/map/map_context.cpp:942
+#: src/editor/map/map_context.cpp:944
 msgid "Could not save the map: $msg"
 msgstr "无法保存地图：$msg"
 
@@ -533,43 +533,35 @@ msgstr "无法保存地图：$msg"
 msgid "(Unknown Group)"
 msgstr "（未知分组）"
 
-#: src/editor/palette/editor_palettes.cpp:309
+#: src/editor/palette/editor_palettes.cpp:308
 msgid "(non-core)"
 msgstr "（非核心）"
 
-#: src/editor/palette/editor_palettes.cpp:310
+#: src/editor/palette/editor_palettes.cpp:309
 msgid "Will not work in game without extra care."
 msgstr "除非特别注意，否则不会在游戏中正常工作。"
 
-#: src/editor/palette/item_palette.cpp:32
-#, fuzzy
-#| msgid "Right-click: "
-msgid " | Right-click to remove"
-msgstr "右击："
+#: src/editor/palette/item_palette.cpp:33
+msgid "Left-click: Place item $item | Right-click to remove"
+msgstr ""
 
-#: src/editor/palette/item_palette.cpp:32
-#, fuzzy
-#| msgid "Left-click: "
-msgid "Left-click: Place item "
-msgstr "左击："
-
-#: src/editor/palette/location_palette.cpp:248
+#: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
 msgstr "前往"
 
-#: src/editor/palette/location_palette.cpp:255
+#: src/editor/palette/location_palette.cpp:254
 msgid "Add"
 msgstr "添加"
 
-#: src/editor/palette/location_palette.cpp:257
+#: src/editor/palette/location_palette.cpp:256
 msgid "New Location Identifier"
 msgstr "新建位置标识符"
 
-#: src/editor/palette/location_palette.cpp:265
+#: src/editor/palette/location_palette.cpp:264
 msgid "Invalid location id"
 msgstr "无效的位置ID"
 
-#: src/editor/palette/location_palette.cpp:272
+#: src/editor/palette/location_palette.cpp:271
 msgid "Delete"
 msgstr "删除"
 
@@ -600,26 +592,22 @@ msgstr "Cmd+点击：复制地形"
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl+点击：复制地形"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:96
-msgid "Clipboard support not found, contact your packager"
-msgstr "未找到剪贴板支持，请联系你的打包者"
-
-#: src/gui/dialogs/editor/custom_tod.cpp:176
+#: src/gui/dialogs/editor/custom_tod.cpp:170
 msgid "Choose File"
 msgstr "选择文件"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:177
+#: src/gui/dialogs/editor/custom_tod.cpp:171
 msgid "Select"
 msgstr "选择"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:184
+#: src/gui/dialogs/editor/custom_tod.cpp:178
 msgid ""
-"This file is outside Wesnoth's data dirs. Do you wish to copy it into your "
+"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:188
-#: src/gui/dialogs/editor/custom_tod.cpp:195
-#: src/gui/dialogs/editor/custom_tod.cpp:202
+#: src/gui/dialogs/editor/custom_tod.cpp:182
+#: src/gui/dialogs/editor/custom_tod.cpp:189
+#: src/gui/dialogs/editor/custom_tod.cpp:196
 msgid "Confirm"
 msgstr ""

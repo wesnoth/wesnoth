@@ -39,7 +39,7 @@ mp_options_helper::mp_options_helper(window& window, ng::create_engine& create_e
 	, visible_options_()
 	, options_data_()
 {
-	for(const auto [_, cfg] : prefs::get().options().all_children_range()) {
+	for(const auto [_, cfg] : prefs::get().options().all_children_view()) {
 		for(const auto& saved_option : cfg.child_range("option")) {
 			options_data_[cfg["id"]][saved_option["id"].str()] = saved_option["value"];
 		}
@@ -106,11 +106,9 @@ void mp_options_helper::update_mod_options()
 int mp_options_helper::remove_nodes_for_type(const std::string& type)
 {
 	// Remove all visible options of the specified source type
-	auto vo_iter = std::remove_if(visible_options_.begin(), visible_options_.end(), [&type](const option_source& source) {
+	utils::erase_if(visible_options_, [&type](const option_source& source) {
 		return source.level_type == type;
 	});
-
-	visible_options_.erase(vo_iter, visible_options_.end());
 
 	// Get the node data for this specific source type
 	type_node_data* data;
@@ -224,7 +222,7 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 		tree_view_node& option_node = options_tree_.add_node("option_node", data, node_position);
 		type_node_vector.push_back(&option_node);
 
-		for(const auto [option_key, option_cfg] : options.all_children_range()) {
+		for(const auto [option_key, option_cfg] : options.all_children_view()) {
 			data.clear();
 			item.clear();
 

@@ -132,7 +132,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game)
 	: controller_base()
 	, observer()
 	, quit_confirmation()
-	, ticks_(SDL_GetTicks())
+	, timer_()
 	, gamestate_()
 	, level_()
 	, saved_game_(state_of_game)
@@ -209,7 +209,7 @@ void play_controller::init(const config& level)
 	gui2::dialogs::loading_screen::display([this, &level]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_level);
 
-		LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks());
+		LOG_NG << "initializing game_state..." << timer();
 		gamestate_.reset(new game_state(level, *this));
 
 		resources::gameboard = &gamestate().board_;
@@ -224,19 +224,19 @@ void play_controller::init(const config& level)
 		gamestate_->init(level, *this);
 		resources::tunnels = gamestate().pathfind_manager_.get();
 
-		LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks());
+		LOG_NG << "initializing whiteboard..." << timer();
 		gui2::dialogs::loading_screen::progress(loading_stage::init_whiteboard);
 		whiteboard_manager_.reset(new wb::manager());
 		resources::whiteboard = whiteboard_manager_;
 
-		LOG_NG << "loading units..." << (SDL_GetTicks() - ticks());
+		LOG_NG << "loading units..." << timer();
 		gui2::dialogs::loading_screen::progress(loading_stage::load_units);
 		prefs::get().encounter_all_content(gamestate().board_);
 
-		LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks());
+		LOG_NG << "initializing theme... " << timer();
 		gui2::dialogs::loading_screen::progress(loading_stage::init_theme);
 
-		LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks());
+		LOG_NG << "building terrain rules... " << timer();
 		gui2::dialogs::loading_screen::progress(loading_stage::build_terrain);
 
 		gui_.reset(new game_display(gamestate().board_, whiteboard_manager_, *gamestate().reports_, theme(), level));
@@ -261,9 +261,9 @@ void play_controller::init(const config& level)
 		mouse_handler_.set_gui(gui_.get());
 		menu_handler_.set_gui(gui_.get());
 
-		LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks());
+		LOG_NG << "done initializing display... " << timer();
 
-		LOG_NG << "building gamestate to gui and whiteboard... " << (SDL_GetTicks() - ticks());
+		LOG_NG << "building gamestate to gui and whiteboard... " << timer();
 		// This *needs* to be created before the show_intro and show_map_scene
 		// as that functions use the manager state_of_game
 		// Has to be done before registering any events!
@@ -328,11 +328,11 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 
 void play_controller::init_managers()
 {
-	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks());
+	LOG_NG << "initializing managers... " << timer();
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
 
 	resources::soundsources = soundsources_manager_.get();
-	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks());
+	LOG_NG << "done initializing managers... " << timer();
 }
 
 void play_controller::fire_preload()
@@ -1137,7 +1137,7 @@ void play_controller::start_game()
 		// Initialize countdown clock.
 		for(const team& t : get_teams()) {
 			if(saved_game_.mp_settings().mp_countdown) {
-				t.set_countdown_time(1000 * saved_game_.mp_settings().mp_countdown_init_time);
+				t.set_countdown_time(saved_game_.mp_settings().mp_countdown_init_time);
 			}
 		}
 		did_autosave_this_turn_ = false;
@@ -1158,7 +1158,7 @@ static void find_next_scenarios(const config& parent, std::set<std::string>& res
 			result.insert(endlevel["next_scenario"]);
 		}
 	}
-	for(const auto [key, cfg] : parent.all_children_range()) {
+	for(const auto [key, cfg] : parent.all_children_view()) {
 		find_next_scenarios(cfg, result);
 	}
 };
@@ -1311,6 +1311,11 @@ void play_controller::toggle_skipping_replay()
 	if(skip_animation_button) {
 		skip_animation_button->set_check(skip_replay_);
 	}
+}
+
+bool play_controller::is_skipping_actions() const
+{
+	return is_skipping_replay() || (prefs::get().skip_ai_moves() && current_team().is_ai() && !is_replay());
 }
 
 bool play_controller::is_during_turn() const

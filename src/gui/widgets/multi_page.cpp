@@ -80,8 +80,8 @@ void multi_page::remove_page(const unsigned page, unsigned count)
 		return;
 	}
 
-	if(!count || count > get_page_count()) {
-		count = get_page_count();
+	if(!count || (page + count) > get_page_count()) {
+		count = get_page_count() - page;
 	}
 
 	for(; count; --count) {

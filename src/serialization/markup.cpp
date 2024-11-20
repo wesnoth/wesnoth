@@ -23,7 +23,7 @@ namespace markup {
 std::string make_link(const std::string& text, const std::string& dst)
 {
 	// some sorting done on list of links may rely on the fact that text is first
-	return "<ref dst='" + utils::escape(dst, "'\\") + "'>" + utils::escape(text, "'\\") + "</ref>";
+	return "<ref dst='" + dst+ "'>" + text + "</ref>";
 }
 
 std::string img(const std::string& src, const std::string& align, const bool floating)

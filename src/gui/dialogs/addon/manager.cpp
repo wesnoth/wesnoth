@@ -159,7 +159,7 @@ const std::vector<std::pair<ADDON_TYPE, std::string>> addon_manager::type_filter
 	{ADDON_MP_FACTION,     N_("addons_of_type^MP factions")},
 	{ADDON_MOD,            N_("addons_of_type^Modifications")},
 	{ADDON_CORE,           N_("addons_of_type^Cores")},
-	{ADDON_THEME,          N_("addons_of_type^UI Themes")},
+	{ADDON_THEME,          N_("addons_of_type^Themes")},
 	{ADDON_MEDIA,          N_("addons_of_type^Resources")},
 	// FIXME: (also in WML) should this and Unknown be a single option in the UI?
 	{ADDON_OTHER,          N_("addons_of_type^Other")},
@@ -1022,25 +1022,22 @@ void addon_manager::show_help()
 	help::show_help("installing_addons");
 }
 
-static std::string format_addon_time(std::time_t time)
+static std::string format_addon_time(const std::chrono::system_clock::time_point& time)
 {
-	if(time) {
-		std::ostringstream ss;
-
-		const std::string format = prefs::get().use_twelve_hour_clock_format()
-			// TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
-			// Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-			? _("%B %d %Y, %I:%M %p")
-			// TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
-			// Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-			: _("%B %d %Y, %H:%M");
-
-		ss << translation::strftime(format, std::localtime(&time));
-
-		return ss.str();
+	if(time == std::chrono::system_clock::time_point{}) {
+		return font::unicode_em_dash;
 	}
 
-	return font::unicode_em_dash;
+	const std::string format = prefs::get().use_twelve_hour_clock_format()
+		// TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
+		// Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
+		? _("%B %d %Y, %I:%M %p")
+		// TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
+		// Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
+		: _("%B %d %Y, %H:%M");
+
+	auto as_time_t = std::chrono::system_clock::to_time_t(time);
+	return translation::strftime(format, std::localtime(&as_time_t));
 }
 
 void addon_manager::on_addon_select()

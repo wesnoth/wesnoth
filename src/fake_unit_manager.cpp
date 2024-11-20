@@ -19,6 +19,7 @@
 #include "log.hpp"
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
+#include "utils/general.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -44,12 +45,8 @@ int fake_unit_manager::remove_temporary_unit(internal_ptr_type u)
 	int removed = 0;
 	if (fake_units_.empty())
 		return removed;
-	std::deque<internal_ptr_type>::iterator it =
-			std::remove(fake_units_.begin(), fake_units_.end(), u);
-	if (it != fake_units_.end()) {
-		removed = std::distance(it, fake_units_.end());
-		//std::remove doesn't remove anything without using erase afterwards.
-		fake_units_.erase(it, fake_units_.end());
+	removed = utils::erase(fake_units_, u);
+	if (removed > 0) {
 		my_display_.invalidate(u->get_location());
 		// Redraw with no location to get rid of haloes
 		u->anim_comp().clear_haloes();

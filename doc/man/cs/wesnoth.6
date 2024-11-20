@@ -89,7 +89,7 @@ zapíná některé mechanismy ladění Lua.
 \fB\-\-strict\-lua\fP
 nedovolit zastaralá volání Lua API.
 .TP 
-\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ levý\-soubor\fP\fB\ \fP\fIpravý\-soubor\fP
 porovná dva WML soubory. Nedojde k\ jejich předzpracování (k\ tomu je třeba
 projet je nejdřív volbou \fB\-p\fP). Rozdíl je jako DiffWML směrován na
 standardní výstup nebo do souboru označeného volbou \fI\-\-output\fP.
@@ -208,7 +208,7 @@ nastavení. Riskantní.
 Wesnothu. Podobné volbě \fB\-\-script\fP, ale Lua soubor by měl vrátit funkci,
 která poběží jako koprogram a\ bude pravidelně probouzena aktualizacemi.
 .TP 
-\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+\fB\-P,\ \-\-patch\fP\fI\ výchozí\-soubor\fP\fB\ \fP\fIsoubor\-se\-záplatou\fP
 použije na WML soubor DiffWML záplatu. Žádný ze souborů
 nepředzpracovává. Záplatovaný WML směruje na standardní výstup nebo do
 souboru označeného volbou \fI\-\-output\fP.
@@ -290,8 +290,8 @@ zpřístupní lua skriptům balíček \fBpackage\fP, takže mohou načítat libo
 balíčky. Nedělej to s\ nedůvěryhodnými skripty! Tento krok dá lua skriptům
 stejná oprávnění, jaká má spustitelný soubor wesnoth.
 .TP 
-\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
-sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
+\fB\-S,\ \-\-use\-schema\fP\fI\ cesta\fP
+nastaví WML schéma pro použití s\ volbou \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ název\fP
 nastaví \fInázev\fP adresáře s\ uživatelskými daty v\ $HOME, nebo pro Windows
@@ -316,7 +316,7 @@ ověřuje WML daného rozšíření, zatímco hraješ.
 \fB\-\-validate\-core\fP
 ověřuje WML jádra, zatímco hraješ.
 .TP 
-\fB\-\-validate\-schema\fP\fI\ path\fP
+\fB\-\-validate\-schema\fP\fI\ cesta\fP
 ověří soubor jako WML schéma.
 .TP 
 \fB\-\-validcache\fP

@@ -53,7 +53,7 @@ static std::string format_level_string(const int level)
 	} else if(level == 2) {
 		return markup::bold(level);
 	} else { // level must be > 2
-		return markup::bold(markup::span_color("#ffffff", level));
+		return markup::span_color("#ffffff", markup::bold(level));
 	}
 
 }
@@ -186,7 +186,7 @@ void show_unit_list(display& gui)
 	std::vector<unit_const_ptr> unit_list;
 	map_location scroll_to;
 
-	const unit_map& units = gui.get_units();
+	const unit_map& units = gui.context().units();
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 		if(i->side() != gui.viewing_team().side()) {
 			continue;

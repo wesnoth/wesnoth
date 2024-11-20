@@ -118,8 +118,10 @@ void teleport_group::get_teleport_pair(
 	const filter_context * fc = resources::filter_con;
 	assert(fc);
 
+	utils::optional<ignore_units_filter_context> ignore_context;
 	if (ignore_units) {
-		fc = new ignore_units_filter_context(*resources::filter_con);
+		ignore_context.emplace(*resources::filter_con);
+		fc = &ignore_context.value();
 	}
 
 	vconfig filter(cfg_.child_or_empty("filter"), true);
@@ -132,10 +134,6 @@ void teleport_group::get_teleport_pair(
 
 		terrain_filter target_filter(target, fc, false);
 		target_filter.get_locations(reversed_ ? loc_pair.first : loc_pair.second, u);
-	}
-
-	if (ignore_units) {
-		delete fc;
 	}
 }
 

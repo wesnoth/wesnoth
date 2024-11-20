@@ -55,15 +55,11 @@ file_progress::file_progress(const std::string& title, const std::string& messag
 
 void file_progress::update_progress(unsigned value)
 {
-	using std::chrono::duration_cast;
-	using std::chrono::milliseconds;
-	using namespace std::chrono_literals;
-
 	auto now = clock::now();
-	auto elapsed = duration_cast<milliseconds>(now - update_time_);
+	auto elapsed = now - update_time_;
 
 	// Update at most once per vsync.
-	if(elapsed < milliseconds(draw_manager::get_frame_length())) {
+	if(elapsed < draw_manager::get_frame_length()) {
 		return;
 	}
 

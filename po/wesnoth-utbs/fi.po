@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-08-19 04:10 UTC\n"
+"POT-Creation-Date: 2024-10-21 16:10 UTC\n"
 "PO-Revision-Date: 2024-09-03 11:05+0200\n"
 "Last-Translator: Jaakko Muilu <j4muil@gmail.com>\n"
 "Language-Team: none\n"
@@ -129,12 +129,6 @@ msgstr ""
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:21
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
-"tyrmätty: Tämä yksikkö on tyrmätty, eikä se voi ylläpitää aluehallintaansa."
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:27
 msgid ""
 "dazed: This unit is dazed. It suffers a -10% penalty to both its defense and "
 "chance to hit (except for magical attacks)."
@@ -16722,11 +16716,16 @@ msgid "cooldown 2"
 msgstr "odotusaika 2"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1551
-msgid "After using this attack, you can't use it during your next turn."
+#, fuzzy
+#| msgid "After using this attack, you can't use it during your next turn."
+msgid "After using this attack, you can’t use it during your next turn."
 msgstr "Tätä hyökkäystä ei voi käyttää seuraavassa vuorossa käytettyään."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1554
-msgid "After using this attack, you can't use it during your next two turns."
+#, fuzzy
+#| msgid ""
+#| "After using this attack, you can't use it during your next two turns."
+msgid "After using this attack, you can’t use it during your next two turns."
 msgstr "Tätä hyökkäystä ei voi käyttää kahteen vuoroon käytettyään."
 
 #. [dummy]: id=pierce
@@ -17875,6 +17874,12 @@ msgstr "Kummituslinna"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "Kummituslinnake"
+
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr ""
+#~ "tyrmätty: Tämä yksikkö on tyrmätty, eikä se voi ylläpitää "
+#~ "aluehallintaansa."
 
 #, fuzzy
 #~| msgid "Naga Hunter"

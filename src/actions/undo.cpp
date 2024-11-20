@@ -59,16 +59,15 @@ namespace actions {
  * Creates an undo_action based on a config.
  * @return a pointer that must be deleted, or nullptr if the @a cfg could not be parsed.
  */
-undo_action_base * undo_list::create_action(const config & cfg)
+std::unique_ptr<undo_action_base> undo_list::create_action(const config & cfg)
 {
 	const std::string str = cfg["type"];
-	undo_action_base * res = nullptr;
 	// The general division of labor in this function is that the various
 	// constructors will parse the "unit" child config, while this function
 	// parses everything else.
 
 	if ( str == "move" ) {
-		res = new undo::move_action(cfg, cfg.child_or_empty("unit"),
+		return std::make_unique<undo::move_action>(cfg, cfg.child_or_empty("unit"),
 		                       cfg["starting_moves"].to_int(),
 		                       map_location::parse_direction(cfg["starting_direction"]));
 	}
@@ -84,29 +83,28 @@ undo_action_base * undo_list::create_action(const config & cfg)
 			       << child["type"] << "' was not found.\n";
 			return nullptr;
 		}
-		res = new undo::recruit_action(cfg, *u_type, map_location(cfg.child_or_empty("leader"), nullptr));
+		return std::make_unique<undo::recruit_action>(cfg, *u_type, map_location(cfg.child_or_empty("leader"), nullptr));
 	}
 
 	else if ( str == "recall" )
-		res =  new undo::recall_action(cfg, map_location(cfg.child_or_empty("leader"), nullptr));
+		return std::make_unique<undo::recall_action>(cfg, map_location(cfg.child_or_empty("leader"), nullptr));
 
 	else if ( str == "dismiss" )
-		res =  new undo::dismiss_action(cfg, cfg.mandatory_child("unit"));
+		return std::make_unique<undo::dismiss_action>(cfg, cfg.mandatory_child("unit"));
 
 	else if ( str == "auto_shroud" )
-		res =  new undo::auto_shroud_action(cfg["active"].to_bool());
+		return std::make_unique<undo::auto_shroud_action>(cfg["active"].to_bool());
 
 	else if ( str == "update_shroud" )
-		res =  new undo::update_shroud_action();
+		return std::make_unique<undo::update_shroud_action>();
 	else if ( str == "dummy" )
-		res =  new undo_dummy_action(cfg);
+		return std::make_unique<undo_dummy_action>(cfg);
 	else
 	{
 		// Unrecognized type.
 		ERR_NG << "Unrecognized undo action type: " << str << ".";
 		return nullptr;
 	}
-	return res;
 }
 
 
@@ -134,12 +132,12 @@ undo_list::~undo_list()
  */
 void undo_list::add_auto_shroud(bool turned_on)
 {
-	add(new undo::auto_shroud_action(turned_on));
+	add(std::make_unique<undo::auto_shroud_action>(turned_on));
 }
 
 void undo_list::add_dummy()
 {
-	add(new undo_dummy_action());
+	add(std::make_unique<undo_dummy_action>());
 }
 
 /**
@@ -147,7 +145,7 @@ void undo_list::add_dummy()
  */
 void undo_list::add_dismissal(const unit_const_ptr u)
 {
-	add(new undo::dismiss_action(u));
+	add(std::make_unique<undo::dismiss_action>(u));
 }
 
 /**
@@ -159,7 +157,7 @@ void undo_list::add_move(const unit_const_ptr u,
                          int start_moves, int timebonus, int village_owner,
                          const map_location::direction dir)
 {
-	add(new undo::move_action(u, begin, end, start_moves, timebonus, village_owner, dir));
+	add(std::make_unique<undo::move_action>(u, begin, end, start_moves, timebonus, village_owner, dir));
 }
 
 /**
@@ -168,7 +166,7 @@ void undo_list::add_move(const unit_const_ptr u,
 void undo_list::add_recall(const unit_const_ptr u, const map_location& loc,
                            const map_location& from, int orig_village_owner, bool time_bonus)
 {
-	add(new undo::recall_action(u, loc, from, orig_village_owner, time_bonus));
+	add(std::make_unique<undo::recall_action>(u, loc, from, orig_village_owner, time_bonus));
 }
 
 /**
@@ -177,7 +175,7 @@ void undo_list::add_recall(const unit_const_ptr u, const map_location& loc,
 void undo_list::add_recruit(const unit_const_ptr u, const map_location& loc,
                             const map_location& from, int orig_village_owner, bool time_bonus)
 {
-	add(new undo::recruit_action(u, loc, from, orig_village_owner, time_bonus));
+	add(std::make_unique<undo::recruit_action>(u, loc, from, orig_village_owner, time_bonus));
 }
 
 /**
@@ -187,7 +185,7 @@ void undo_list::add_recruit(const unit_const_ptr u, const map_location& loc,
  */
 void undo_list::add_update_shroud()
 {
-	add(new undo::update_shroud_action());
+	add(std::make_unique<undo::update_shroud_action>());
 }
 
 
@@ -275,9 +273,8 @@ void undo_list::read(const config & cfg)
 	// Build the undo stack.
 	for (const config & child : cfg.child_range("undo")) {
 		try {
-			undo_action_base * action = create_action(child);
-			if ( action ) {
-				undos_.emplace_back(action);
+			if(auto action = create_action(child)) {
+				undos_.push_back(std::move(action));
 			}
 		} catch (const bad_lexical_cast &) {
 			ERR_NG << "Error when parsing undo list from config: bad lexical cast.";
@@ -338,7 +335,6 @@ void undo_list::undo()
 	// Get the action to undo. (This will be placed on the redo stack, but
 	// only if the undo is successful.)
 	auto action = std::move(undos_.back());
-	undos_.pop_back();
 	if (undo_action* undoable_action = dynamic_cast<undo_action*>(action.get()))
 	{
 		int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
@@ -351,6 +347,7 @@ void undo_list::undo()
 		resources::gameboard->unit_id_manager().set_save_id(last_unit_id - undoable_action->unit_id_diff);
 
 		// Bookkeeping.
+		undos_.pop_back();
 		redos_.emplace_back(new config());
 		resources::recorder->undo_cut(*redos_.back());
 
@@ -364,6 +361,7 @@ void undo_list::undo()
 	else
 	{
 		//ignore this action, and undo the previous one.
+		undos_.pop_back();
 		config replay_data;
 		resources::recorder->undo_cut(replay_data);
 		undo();
@@ -391,24 +389,25 @@ void undo_list::redo()
 	auto action = std::move(redos_.back());
 	redos_.pop_back();
 
-	auto [commandname, data] = action->mandatory_child("command").all_children_range().front();
+	auto [commandname, data] = action->mandatory_child("command").all_children_view().front();
 
 	// Note that this might add more than one [command]
 	resources::recorder->redo(*action);
 
-	auto error_handler =  [](const std::string&  msg) {
+	auto spectator = action_spectator([](const std::string& msg)
+	{
 		ERR_NG << "Out of sync when redoing: " << msg;
 		gui2::show_transient_message(_("Redo Error"),
 					_("The redo stack is out of sync. This is most commonly caused by a corrupt save file or by faulty WML code in the scenario or era. Details:") + msg);
 
-	};
+	});
 	// synced_context::run readds the undo command with the normal
 	// undo_list::add function which clears the redo stack which would
 	// make redoing of more than one move impossible. To work around
 	// that we save redo stack here and set it later.
 	redos_list temp;
 	temp.swap(redos_);
-	synced_context::run(commandname, data, /*use_undo*/ true, /*show*/ true, error_handler);
+	synced_context::run(commandname, data, spectator);
 	temp.swap(redos_);
 
 	// Screen updates.

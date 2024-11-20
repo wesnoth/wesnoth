@@ -51,7 +51,7 @@ private:
 	{
 	public:
 		connection_data*& connection_;
-		virtual void process(events::pump_info&);
+		virtual void process();
 
 		pump_monitor(connection_data*& connection)
 			: connection_(connection), window_()

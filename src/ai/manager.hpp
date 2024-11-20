@@ -431,7 +431,7 @@ private:
 	events::generic_event tod_changed_;
 	events::generic_event gamestate_changed_;
 	events::generic_event turn_started_;
-	int last_interact_;
+	std::chrono::steady_clock::time_point last_interact_;
 	int num_interact_;
 
 	AI_map_of_stacks ai_map_;

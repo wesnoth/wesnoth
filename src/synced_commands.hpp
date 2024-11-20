@@ -22,6 +22,30 @@
 
 class config;
 
+class action_spectator
+{
+public:
+	typedef std::function<void(const std::string&)> error_handler_function;
+	action_spectator() = default;
+	action_spectator(error_handler_function eh)
+		: eh_(eh)
+	{
+	}
+	virtual ~action_spectator() = default;
+	/**
+	 * Called when synced_context::run received nonsensial data based on the current gamestate.
+	 */
+	virtual void error(const std::string& message)
+	{
+		eh_(message);
+	}
+	error_handler_function eh_;
+};
+
+// TODO: it would be nice if we would use some consistent terminology along the codebase
+//       The things that the user invokes are sometimes called "commands" (in particular
+//       in the replay), and sometimes called "actions" (in particular inn the actions/ folder)
+
 class synced_command {
 	public:
 		/*
@@ -32,7 +56,7 @@ class synced_command {
 		/*
 			returns: true if the action succeeded correctly,
 		*/
-		typedef bool (*handler)(const config &, bool use_undo, bool show, error_handler_function error_handler);
+		typedef bool (*handler)(const config&, action_spectator& spectator);
 		typedef std::map<std::string, handler> map;
 
 
@@ -47,7 +71,7 @@ class synced_command {
 	but if you have a good reason feel free to do so.
 */
 
-#define SYNCED_COMMAND_HANDLER_FUNCTION(pname, pcfg, use_undo, show, error_handler) \
-	static bool synced_command_func_##pname(const config & pcfg, bool use_undo, bool show, synced_command::error_handler_function error_handler ); \
+#define SYNCED_COMMAND_HANDLER_FUNCTION(pname, pcfg, spectator) \
+	static bool synced_command_func_##pname(const config& pcfg, action_spectator& spectator); \
 	static synced_command synced_command_action_##pname(#pname, &synced_command_func_##pname);  \
-	static bool synced_command_func_##pname(const config & pcfg, bool use_undo, bool show, synced_command::error_handler_function error_handler)
+	static bool synced_command_func_##pname(const config& pcfg, action_spectator& spectator)

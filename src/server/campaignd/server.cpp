@@ -28,6 +28,7 @@
 #include "log.hpp"
 #include "serialization/base64.hpp"
 #include "serialization/binary_or_text.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
@@ -344,7 +345,8 @@ void server::load_config()
 	// Seems like compression level above 6 is a waste of CPU cycles.
 	compress_level_ = cfg_["compress_level"].to_int(6);
 	// One month probably will be fine (#TODO: testing needed)
-	update_pack_lifespan_ = cfg_["update_pack_lifespan"].to_time_t(30 * 24 * 60 * 60);
+	constexpr std::chrono::seconds seconds_in_a_month{30 * 24 * 60 * 60};
+	update_pack_lifespan_ = chrono::parse_duration(cfg_["update_pack_lifespan"], seconds_in_a_month);
 
 	const auto& svinfo_cfg = server_info();
 
@@ -488,16 +490,22 @@ std::ostream& operator<<(std::ostream& o, const server::request& r)
 
 void server::handle_new_client(tls_socket_ptr socket)
 {
-	boost::asio::spawn(io_service_, [this, socket](boost::asio::yield_context yield) {
-		serve_requests(socket, yield);
-	});
+	boost::asio::spawn(
+		io_service_, [this, socket](boost::asio::yield_context yield) { serve_requests(socket, yield); }
+#if BOOST_VERSION >= 108000
+		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+#endif
+	);
 }
 
 void server::handle_new_client(socket_ptr socket)
 {
-	boost::asio::spawn(io_service_, [this, socket](boost::asio::yield_context yield) {
-		serve_requests(socket, yield);
-	});
+	boost::asio::spawn(
+		io_service_, [this, socket](boost::asio::yield_context yield) { serve_requests(socket, yield); }
+#if BOOST_VERSION >= 108000
+		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+#endif
+	);
 }
 
 template<class Socket>
@@ -961,26 +969,32 @@ void server::handle_request_campaign_list(const server::request& req)
 {
 	LOG_CS << req << "Sending add-ons list";
 
-	std::time_t epoch = std::time(nullptr);
+	auto now = std::chrono::system_clock::now();
+	const bool relative_to_now = req.cfg["times_relative_to"] == "now";
+
 	config addons_list;
+	addons_list["timestamp"] = chrono::serialize_timestamp(now);
 
-	addons_list["timestamp"] = epoch;
-	if(req.cfg["times_relative_to"] != "now") {
-		epoch = 0;
+	bool before_flag = !req.cfg["before"].empty();
+	std::chrono::system_clock::time_point before;
+	if(before_flag) {
+		if(relative_to_now) {
+			auto time_delta = chrono::parse_duration<std::chrono::seconds>(req.cfg["before"]);
+			before = now + time_delta; // delta may be negative
+		} else {
+			before = chrono::parse_timestamp(req.cfg["before"]);
+		}
 	}
 
-	bool before_flag = false;
-	std::time_t before = epoch;
-	if(!req.cfg["before"].empty()) {
-		before += req.cfg["before"].to_time_t();
-		before_flag = true;
-	}
-
-	bool after_flag = false;
-	std::time_t after = epoch;
-	if(!req.cfg["after"].empty()) {
-		after += req.cfg["after"].to_time_t();
-		after_flag = true;
+	bool after_flag = !req.cfg["after"].empty();
+	std::chrono::system_clock::time_point after;
+	if(after_flag) {
+		if(relative_to_now) {
+			auto time_delta = chrono::parse_duration<std::chrono::seconds>(req.cfg["after"]);
+			after = now + time_delta; // delta may be negative
+		} else {
+			after = chrono::parse_timestamp(req.cfg["after"]);
+		}
 	}
 
 	const std::string& name = req.cfg["name"];
@@ -1000,10 +1014,10 @@ void server::handle_request_campaign_list(const server::request& req)
 
 		const auto& tm = i["timestamp"];
 
-		if(before_flag && (tm.empty() || tm.to_time_t(0) >= before)) {
+		if(before_flag && (tm.empty() || chrono::parse_timestamp(tm) >= before)) {
 			continue;
 		}
-		if(after_flag && (tm.empty() || tm.to_time_t(0) <= after)) {
+		if(after_flag && (tm.empty() || chrono::parse_timestamp(tm) <= after)) {
 			continue;
 		}
 
@@ -1467,7 +1481,7 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 
 void server::handle_upload(const server::request& req)
 {
-	const std::time_t upload_ts = std::time(nullptr);
+	const auto upload_ts = std::chrono::system_clock::now();
 	const config& upload = req.cfg;
 	const auto& name = upload["name"].str();
 
@@ -1495,7 +1509,7 @@ void server::handle_upload(const server::request& req)
 
 	if(!is_existing_upload) {
 		// Create a new add-ons list entry and work with that from now on
-		auto entry = addons_.emplace(name, config("original_timestamp", upload_ts));
+		auto entry = addons_.emplace(name, config("original_timestamp", chrono::serialize_timestamp(upload_ts)));
 		addon_ptr = &(*entry.first).second;
 	}
 
@@ -1524,7 +1538,7 @@ void server::handle_upload(const server::request& req)
 		addon["downloads"] = 0;
 	}
 
-	addon["timestamp"] = upload_ts;
+	addon["timestamp"] = chrono::serialize_timestamp(upload_ts);
 	addon["uploads"] = 1 + addon["uploads"].to_int();
 
 	addon.clear_children("feedback");
@@ -1645,7 +1659,7 @@ void server::handle_upload(const server::request& req)
 
 		pack_info["from"] = prev_version;
 		pack_info["to"] = new_version;
-		pack_info["expire"] = upload_ts + update_pack_lifespan_;
+		pack_info["expire"] = chrono::serialize_timestamp(upload_ts + update_pack_lifespan_);
 		pack_info["filename"] = update_pack_fn;
 
 		// Write the update pack to disk
@@ -1747,7 +1761,7 @@ void server::handle_upload(const server::request& req)
 	std::set<std::string> expire_packs;
 
 	for(const config& pack : addon.child_range("update_pack")) {
-		if(upload_ts > pack["expire"].to_time_t() || pack["from"].str() == new_version || (!is_delta_upload && pack["to"].str() == new_version)) {
+		if(upload_ts > chrono::parse_timestamp(pack["expire"]) || pack["from"].str() == new_version || (!is_delta_upload && pack["to"].str() == new_version)) {
 			LOG_CS << "Expiring upate pack for " << pack["from"].str() << " -> " << pack["to"].str();
 			const auto& pack_filename = pack["filename"].str();
 			filesystem::delete_file(pathstem + '/' + pack_filename);
@@ -1802,7 +1816,7 @@ void server::handle_upload(const server::request& req)
 		config& pack_info = addon.add_child("update_pack");
 		pack_info["from"] = prev_version_name;
 		pack_info["to"] = next_version_name;
-		pack_info["expire"] = upload_ts + update_pack_lifespan_;
+		pack_info["expire"] = chrono::serialize_timestamp(upload_ts + update_pack_lifespan_);
 		pack_info["filename"] = update_pack_fn;
 
 		// Generate the update pack from both full packs

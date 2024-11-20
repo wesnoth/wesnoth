@@ -30,6 +30,8 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
+using namespace std::chrono_literals;
+
 namespace gui2
 {
 
@@ -44,7 +46,7 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	, ime_start_point_(0)
 	, cursor_timer_(0)
 	, cursor_alpha_(0)
-	, cursor_blink_rate_ms_(750)
+	, cursor_blink_rate_(750ms)
 	, text_changed_callback_()
 {
 	auto cfg = get_control(control_type, builder.definition);
@@ -292,7 +294,7 @@ void text_box_base::set_state(const state_t state)
 
 void text_box_base::toggle_cursor_timer(bool enable)
 {
-	if(!cursor_blink_rate_ms_) {
+	if(cursor_blink_rate_ == 0ms) {
 		return;
 	}
 
@@ -301,7 +303,7 @@ void text_box_base::toggle_cursor_timer(bool enable)
 	}
 
 	cursor_timer_ = enable
-			? add_timer(cursor_blink_rate_ms_, std::bind(&text_box_base::cursor_timer_callback, this), true)
+			? add_timer(cursor_blink_rate_, std::bind(&text_box_base::cursor_timer_callback, this), true)
 			: 0;
 }
 
@@ -337,7 +339,7 @@ void text_box_base::cursor_timer_callback()
 
 void text_box_base::reset_cursor_state()
 {
-	if(!cursor_blink_rate_ms_) {
+	if(cursor_blink_rate_ == 0ms) {
 		return;
 	}
 

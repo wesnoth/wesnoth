@@ -19,6 +19,7 @@
 #include "draw.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
+#include "serialization/chrono.hpp"
 #include "sound.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -80,18 +81,20 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 	}
 
 	if(const config::attribute_value* v = cfg.get(frame_string + "duration")) {
-		duration(v->to_int());
+		duration(chrono::parse_duration<std::chrono::milliseconds>(*v));
 	} else if(!cfg.get(frame_string + "end")) {
-		int halo_duration = (progressive_string(halo_, 1)).duration();
-		int image_duration = (progressive_image(image_, 1)).duration();
-		int image_diagonal_duration = (progressive_image(image_diagonal_, 1)).duration();
+		auto halo_duration = progressive_string(halo_, 1ms).duration();
+		auto image_duration = progressive_image(image_, 1ms).duration();
+		auto image_diagonal_duration = progressive_image(image_diagonal_, 1ms).duration();
 
 		duration(std::max(std::max(image_duration, image_diagonal_duration), halo_duration));
 	} else {
-		duration(cfg[frame_string + "end"].to_int() - cfg[frame_string + "begin"].to_int());
+		auto t1 = chrono::parse_duration<std::chrono::milliseconds>(cfg[frame_string + "begin"]);
+		auto t2 = chrono::parse_duration<std::chrono::milliseconds>(cfg[frame_string + "end"]);
+		duration(t2 - t1);
 	}
 
-	duration_ = std::max(duration_, 1);
+	duration_ = std::max(duration_, 1ms);
 
 	const auto& blend_color_key = cfg[frame_string + "blend_color"];
 	if(!blend_color_key.empty()) {
@@ -141,7 +144,7 @@ frame_builder& frame_builder::halo(const std::string& halo, const std::string& h
 	return *this;
 }
 
-frame_builder& frame_builder::duration(const int duration)
+frame_builder& frame_builder::duration(const std::chrono::milliseconds& duration)
 {
 	duration_ = duration;
 	return *this;
@@ -220,8 +223,8 @@ frame_builder& frame_builder::drawing_layer(const std::string& drawing_layer)
 	return *this;
 }
 
-frame_parsed_parameters::frame_parsed_parameters(const frame_builder& builder, int duration)
-	: duration_(duration ? duration : builder.duration_)
+frame_parsed_parameters::frame_parsed_parameters(const frame_builder& builder, const std::chrono::milliseconds& duration)
+	: duration_(duration > std::chrono::milliseconds{0} ? duration : builder.duration_)
 	, image_(builder.image_,duration_)
 	, image_diagonal_(builder.image_diagonal_,duration_)
 	, image_mod_(builder.image_mod_)
@@ -271,7 +274,7 @@ bool frame_parsed_parameters::need_update() const
 	return !this->does_not_change();
 }
 
-frame_parameters frame_parsed_parameters::parameters(int current_time) const
+frame_parameters frame_parsed_parameters::parameters(const std::chrono::milliseconds& current_time) const
 {
 #ifdef __cpp_designated_initializers
 	return {
@@ -330,7 +333,7 @@ frame_parameters frame_parsed_parameters::parameters(int current_time) const
 #endif
 }
 
-void frame_parsed_parameters::override(int duration,
+void frame_parsed_parameters::override(const std::chrono::milliseconds& duration,
 		const std::string& highlight,
 		const std::string& blend_ratio,
 		color_t blend_color,
@@ -386,8 +389,8 @@ std::vector<std::string> frame_parsed_parameters::debug_strings() const
 {
 	std::vector<std::string> v;
 
-	if(duration_ > 0) {
-		v.emplace_back("duration=" + utils::half_signed_value(duration_));
+	if(duration_ > 0ms) {
+		v.emplace_back("duration=" + utils::half_signed_value(duration_.count()));
 	}
 
 	if(!image_.get_original().empty()) {
@@ -624,7 +627,7 @@ void render_unit_image(
 }
 } // namespace
 
-void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_of_frame,
+void unit_frame::redraw(const std::chrono::milliseconds& frame_time, bool on_start_time, bool in_scope_of_frame,
 		const map_location& src, const map_location& dst,
 		halo::handle& halo_id, halo::manager& halo_man,
 		const frame_parameters& animation_val, const frame_parameters& engine_val) const
@@ -790,7 +793,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 	}
 }
 
-std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const map_location& src, const map_location& dst,
+std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::milliseconds& frame_time, const map_location& src, const map_location& dst,
 		const frame_parameters& animation_val, const frame_parameters& engine_val) const
 {
 	display* disp = display::get_singleton();
@@ -911,7 +914,8 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
  * There is no absolute rule for merging, so creativity is the rule. If a value is never provided by the engine, assert.
  * This way if it becomes used, people will easily find the right place to look.
  */
-frame_parameters unit_frame::merge_parameters(int current_time, const frame_parameters& animation_val,
+frame_parameters unit_frame::merge_parameters(const std::chrono::milliseconds& current_time,
+		const frame_parameters& animation_val,
 		const frame_parameters& engine_val) const
 {
 	frame_parameters result;
@@ -971,7 +975,7 @@ frame_parameters unit_frame::merge_parameters(int current_time, const frame_para
 	result.halo_mod = current_val.halo_mod + animation_val.halo_mod;
 	result.halo_mod += engine_val.halo_mod;
 
-	assert(engine_val.duration == 0);
+	assert(engine_val.duration == 0ms);
 	result.duration = current_val.duration;
 
 	assert(engine_val.sound.empty());

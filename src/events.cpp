@@ -226,7 +226,7 @@ pump_monitor::pump_monitor()
 
 pump_monitor::~pump_monitor()
 {
-	pump_monitors.erase(std::remove(pump_monitors.begin(), pump_monitors.end(), this), pump_monitors.end());
+	utils::erase(pump_monitors, this);
 }
 
 event_context::event_context()
@@ -483,12 +483,6 @@ void pump()
 		return;
 	}
 
-	pump_info info;
-
-	// Used to keep track of double click events
-	static int last_mouse_down = -1;
-	static int last_click_x = -1, last_click_y = -1;
-
 	SDL_Event temp_event;
 	int poll_count = 0;
 	int begin_ignoring = 0;
@@ -618,8 +612,6 @@ void pump()
 			case SDL_WINDOWEVENT_RESIZED:
 				LOG_DP << "events/RESIZED "
 					<< event.window.data1 << 'x' << event.window.data2;
-				info.resize_dimensions.first = event.window.data1;
-				info.resize_dimensions.second = event.window.data2;
 				prefs::get().set_resolution(video::window_size());
 				break;
 
@@ -660,24 +652,10 @@ void pump()
 			// Always make sure a cursor is displayed if the mouse moves or if the user clicks
 			cursor::set_focus(true);
 			if(event.button.button == SDL_BUTTON_LEFT || event.button.which == SDL_TOUCH_MOUSEID) {
-				static const int DoubleClickTime = 500;
-#ifdef __IPHONEOS__
-				static const int DoubleClickMaxMove = 15;
-#else
-				static const int DoubleClickMaxMove = 3;
-#endif
-
-				if(last_mouse_down >= 0 && info.ticks() - last_mouse_down < DoubleClickTime
-						&& std::abs(event.button.x - last_click_x) < DoubleClickMaxMove
-						&& std::abs(event.button.y - last_click_y) < DoubleClickMaxMove
-				) {
+				if(event.button.clicks == 2) {
 					sdl::UserEvent user_event(DOUBLE_CLICK_EVENT, event.button.which, event.button.x, event.button.y);
 					::SDL_PushEvent(reinterpret_cast<SDL_Event*>(&user_event));
 				}
-
-				last_mouse_down = info.ticks();
-				last_click_x = event.button.x;
-				last_click_y = event.button.y;
 			}
 			break;
 		}
@@ -736,7 +714,7 @@ void pump()
 
 	// Inform the pump monitors that an events::pump() has occurred
 	for(auto monitor : pump_monitors) {
-		monitor->process(info);
+		monitor->process();
 	}
 }
 
@@ -776,15 +754,6 @@ void process_tooltip_strings(int mousex, int mousey)
 			handler->process_tooltip_string(mousex, mousey);
 		}
 	}
-}
-
-int pump_info::ticks(unsigned* refresh_counter, unsigned refresh_rate)
-{
-	if(!ticks_ && !(refresh_counter && ++*refresh_counter % refresh_rate)) {
-		ticks_ = ::SDL_GetTicks();
-	}
-
-	return ticks_;
 }
 
 /* The constants for the minimum and maximum are picked from the headers. */

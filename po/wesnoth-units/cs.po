@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
-"PO-Revision-Date: 2024-08-22 23:23+0200\n"
+"POT-Creation-Date: 2024-10-21 16:11 UTC\n"
+"PO-Revision-Date: 2024-10-25 21:02+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -161,7 +161,7 @@ msgstr "prak"
 #: data/core/units/bats/Bat_Vampire.cfg:116
 #: data/core/units/goblins/Direwolf_Rider.cfg:32
 #: data/core/units/goblins/Knight.cfg:34
-#: data/core/units/goblins/Pillager.cfg:32
+#: data/core/units/goblins/Pillager.cfg:59
 #: data/core/units/goblins/Wolf_Rider.cfg:46
 #: data/core/units/monsters/Ant.cfg:32 data/core/units/monsters/Ant_Fire.cfg:71
 #: data/core/units/monsters/Ant_Fire_Queen.cfg:75
@@ -465,7 +465,7 @@ msgstr "mrazivá bouře"
 #: data/core/units/humans/Woodsman_Ranger.cfg:53
 #: data/core/units/humans/Woodsman_Trapper.cfg:42
 #: data/core/units/orcs/Archer.cfg:33 data/core/units/orcs/Archer.cfg:42
-#: data/core/units/orcs/Warlord.cfg:33
+#: data/core/units/orcs/Warlord.cfg:39
 #: data/core/units/undead/Skele_Banebow.cfg:40
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
 #: data/core/units/undead/Skeleton_Archer.cfg:46
@@ -1409,8 +1409,8 @@ msgid ""
 "\n"
 "This is also the only caste that is allowed to break taboo and fight with "
 "spears in addition to the drake’s traditional metal claws, which makes them "
-"particularly good at \"resolving\" territorial disputes with other drakes "
-"and enforcing the laws of their tribe."
+"particularly good at “resolving” territorial disputes with other drakes and "
+"enforcing the laws of their tribe."
 msgstr ""
 "Rváči představují mezi drakonidy jedinečnou kastu. Vzhledem k váze "
 "a konstrukci pancíře, který na sebe navlékají, nemohou létat ani chrlit "
@@ -2270,7 +2270,7 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Marauder.cfg:61
 #: data/core/units/dunefolk/Raider.cfg:59
-#: data/core/units/goblins/Pillager.cfg:41
+#: data/core/units/goblins/Pillager.cfg:68
 msgid "torch"
 msgstr "louč"
 
@@ -2978,12 +2978,6 @@ msgstr "Trpasličí horník"
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/core/units/dwarves/Miner.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Dwarvish miners are the grunt workers of dwarvish society. They take the "
-#| "precious ores out of the ground, but do not ever take part in the "
-#| "crafting of weapons or artifacts. They have no military training, but "
-#| "they can still do some damage with their picks."
 msgid ""
 "Dwarvish Miners are the grunt workers of dwarvish society. They take the "
 "precious ores out of the ground, but do not ever take part in the crafting "
@@ -2992,7 +2986,7 @@ msgid ""
 msgstr ""
 "Trpasličí horníci jsou důlními dělníky trpasličí společnosti. Dobývají ze "
 "země vzácné rudy, ale nikdy se nepodílejí na výrobě zbraní nebo artefaktů. "
-"Nemají žádný vojenský výcvik, ale přesto mohou svými špičáky způsobit nějaké "
+"Přestože nemají vojenský výcvik, jejich těžké špičáky dokáží způsobit velké "
 "zranění."
 
 #. [attack]: type=pierce
@@ -4042,7 +4036,7 @@ msgstr ""
 "shromáždit na obranu či odvetu."
 
 #. [attack]: type=impact
-#: data/core/units/goblins/Pillager.cfg:50
+#: data/core/units/goblins/Pillager.cfg:77
 #: data/core/units/merfolk/Entangler.cfg:34
 #: data/core/units/merfolk/Netcaster.cfg:33
 msgid "net"
@@ -5636,7 +5630,7 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Brawler.cfg:30
-#: data/core/units/monsters/Cat_Jump.cfg:90
+#: data/core/units/monsters/Cat_Jump.cfg:92
 #: data/core/units/monsters/Fire_Dragon.cfg:42
 #: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
@@ -6277,12 +6271,6 @@ msgstr "Lesolev"
 
 #. [unit_type]: id=Forest Lion, race=cats
 #: data/core/units/monsters/Cat_Forest.cfg:31
-#, fuzzy
-#| msgid ""
-#| "Forest Lions are light-brown cats, roughly the same size as a wolf, that "
-#| "hunt the woods and hills at dusk and dawn.  Their most distinctive "
-#| "feature is their odd, triply branched tail, which they seem to use for "
-#| "camouflage and disruptive patterning."
 msgid ""
 "Forest Lions are light-brown cats, roughly the same size as a wolf, that "
 "hunt the woods and hills at dusk and dawn. Their most distinctive feature is "
@@ -6301,15 +6289,6 @@ msgstr "Skočka"
 
 #. [unit_type]: id=Jumpcat, race=cats
 #: data/core/units/monsters/Cat_Jump.cfg:30
-#, fuzzy
-#| msgid ""
-#| "Jumpcats are opportunistic predators with keen senses and fast reflexes, "
-#| "but very little bulk, so they are easily dispatched if they can be hit, "
-#| "and easily scared off if they can't.  One of the most distinctive "
-#| "features of these odd creatures is the hard clump of twigs, clay, and "
-#| "rocks they carry on their tail, which is their primary offensive weapon.  "
-#| "Their actions are mostly driven by instinct, but they are sometimes used "
-#| "as assassins by more sophisticated handlers."
 msgid ""
 "Jumpcats are opportunistic predators with keen senses and fast reflexes, but "
 "very little bulk, so they are easily dispatched if they can be hit, and "
@@ -6449,6 +6428,8 @@ msgstr ""
 #: data/core/units/monsters/Dragonfly_Grand.cfg:44
 #: data/core/units/monsters/Giant_Scorpion.cfg:47
 #: data/core/units/monsters/Giant_Scorpling.cfg:32
+#: data/core/units/monsters/Sand_Scamperer.cfg:37
+#: data/core/units/monsters/Sand_Scuttler.cfg:49
 msgid "sting"
 msgstr "bodec"
 
@@ -6701,6 +6682,8 @@ msgstr ""
 #: data/core/units/monsters/Giant_Scorpion.cfg:59
 #: data/core/units/monsters/Giant_Scorpling.cfg:44
 #: data/core/units/monsters/Rock_Scorpion.cfg:53
+#: data/core/units/monsters/Sand_Scamperer.cfg:49
+#: data/core/units/monsters/Sand_Scuttler.cfg:61
 msgid "pincers"
 msgstr "klepeta"
 
@@ -6710,16 +6693,16 @@ msgid "scuttler"
 msgstr "dupkal"
 
 #. [variation]
-#. [unit_type]: id=Sand Scuttler
+#. [unit_type]: id=Sand Scuttler, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:112
-#: data/core/units/monsters/Sand_Scuttler.cfg:8
+#: data/core/units/monsters/Sand_Scuttler.cfg:5
 msgid "Sand Scuttler"
 msgstr "Písečný dupkal"
 
 #. [variation]
-#. [unit_type]: id=Sand Scuttler
+#. [unit_type]: id=Sand Scuttler, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:119
-#: data/core/units/monsters/Sand_Scuttler.cfg:13
+#: data/core/units/monsters/Sand_Scuttler.cfg:43
 msgid ""
 "Making their homes in sandy dunes, these critters are an odd mix of mundane "
 "creature and elemental beast. Though usually timid, Sand Scuttlers sometimes "
@@ -6804,9 +6787,9 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/monsters/Horse.cfg:32
 #: data/core/units/monsters/Horse_Black.cfg:50
-#: data/core/units/monsters/Horse_Dark.cfg:44
+#: data/core/units/monsters/Horse_Dark.cfg:49
 #: data/core/units/monsters/Horse_Great.cfg:34
-#: data/core/units/monsters/Horse_White.cfg:39
+#: data/core/units/monsters/Horse_White.cfg:43
 msgid "hooves"
 msgstr "kopyta"
 
@@ -6828,7 +6811,7 @@ msgstr ""
 
 #. [attack]: type=cold
 #: data/core/units/monsters/Horse_Black.cfg:59
-#: data/core/units/monsters/Horse_Dark.cfg:53
+#: data/core/units/monsters/Horse_Dark.cfg:58
 msgid "whinny"
 msgstr "řehtání"
 
@@ -6844,13 +6827,13 @@ msgstr "Černý hřebec"
 msgid "female^Black Nightmare"
 msgstr "Černá kobyla"
 
-#. [unit_type]: id=Dark Horse, gender=male,female
+#. [unit_type]: id=Dark Horse, race=horse, gender=male,female
 #: data/core/units/monsters/Horse_Dark.cfg:14
 msgid "Dark Horse"
 msgstr "Šedohřívák"
 
-#. [unit_type]: id=Dark Horse, gender=male,female
-#: data/core/units/monsters/Horse_Dark.cfg:40
+#. [unit_type]: id=Dark Horse, race=horse, gender=male,female
+#: data/core/units/monsters/Horse_Dark.cfg:33
 msgid ""
 "Dark Horses are wild animals, but they seem to take an odd interest in the "
 "civilized races. They leave no signs of their passage, but they have been "
@@ -6861,12 +6844,12 @@ msgstr ""
 "pozorováno, jak během nocí prozkoumávají tábory a základny různých ras."
 
 #. [male]
-#: data/core/units/monsters/Horse_Dark.cfg:88
+#: data/core/units/monsters/Horse_Dark.cfg:93
 msgid "male^Dark Horse"
 msgstr "Šedohřívák"
 
 #. [female]
-#: data/core/units/monsters/Horse_Dark.cfg:92
+#: data/core/units/monsters/Horse_Dark.cfg:97
 msgid "female^Dark Horse"
 msgstr "Šedohřivka"
 
@@ -6888,13 +6871,13 @@ msgstr ""
 "temperament způsobuje, že je příliš obtížné je zkrotit. Ačkoli se o to "
 "pokusil nejeden arogantní kníže či vojevůdce, nikdo neuspěl."
 
-#. [unit_type]: id=White Horse
+#. [unit_type]: id=White Horse, race=horse
 #: data/core/units/monsters/Horse_White.cfg:14
 msgid "White Horse"
 msgstr "Bělohřívák"
 
-#. [unit_type]: id=White Horse
-#: data/core/units/monsters/Horse_White.cfg:26
+#. [unit_type]: id=White Horse, race=horse
+#: data/core/units/monsters/Horse_White.cfg:29
 msgid ""
 "Some horses have a white color, and they are merely white horses. But there "
 "exist a special breed, found only in the wild woods, that are White Horses. "
@@ -7122,7 +7105,7 @@ msgstr "Obří štír skalní"
 #: data/core/units/monsters/Rock_Scorpion.cfg:47
 msgid ""
 "Rock scorpions have featured in tales of highwaymen and drunks, but there "
-"has been scant evidence that they truly exist. They've been described as "
+"has been scant evidence that they truly exist. They’ve been described as "
 "stealthy monsters with a hide of solid rock, and sharp, crystalline claws. "
 "Unlike most scorpions, they do not deliver their poison with a piercing "
 "stinger, but instead spray their enemies with a noxious, volatile stream."
@@ -7138,13 +7121,13 @@ msgstr ""
 msgid "spray"
 msgstr "sprška"
 
-#. [unit_type]: id=Sand Scamperer
-#: data/core/units/monsters/Sand_Scamperer.cfg:11
+#. [unit_type]: id=Sand Scamperer, race=monster
+#: data/core/units/monsters/Sand_Scamperer.cfg:8
 msgid "Sand Scamperer"
 msgstr "Písečný cupkal"
 
-#. [unit_type]: id=Sand Scamperer
-#: data/core/units/monsters/Sand_Scamperer.cfg:16
+#. [unit_type]: id=Sand Scamperer, race=monster
+#: data/core/units/monsters/Sand_Scamperer.cfg:31
 msgid ""
 "This impressive creature swiftly moves through the scorching desert sand. "
 "Its body is covered in a thick, sand-colored exoskeleton absorbing any "
@@ -7820,7 +7803,7 @@ msgid ""
 "blades fly.\n"
 "\n"
 "While the old tales drive the elite warriors of this legacy to focus on the "
-"thrown blade, this doesn't mean they are weak in melee combat, as the "
+"thrown blade, this doesn’t mean they are weak in melee combat, as the "
 "unbalanced chakram can be enhanced with spikes and smaller blades.\n"
 msgstr ""
 "Jižní nágy si vypráví zvláštní příběh o Osnově větru Zefře a éterickém "
@@ -7890,7 +7873,7 @@ msgstr "Mladý obr"
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:23
 msgid ""
-"When still young, Ogres are sometimes captured and taken into armies to be "
+"When still young, ogres are sometimes captured and taken into armies to be "
 "trained. They cannot manage weapons skillfully, but they compensate for that "
 "lack with great strength."
 msgstr ""
@@ -8076,7 +8059,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
-#: data/core/units/orcs/Warlord.cfg:24 data/core/units/orcs/Warrior.cfg:38
+#: data/core/units/orcs/Warlord.cfg:30 data/core/units/orcs/Warrior.cfg:38
 msgid "greatsword"
 msgstr "velký meč"
 

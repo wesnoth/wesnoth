@@ -512,7 +512,7 @@ void variable_mode_controller::show_list(tree_view_node& node)
 
 	std::map<std::string, std::size_t> wml_array_sizes;
 
-	for(const auto [key, cfg] : vars().all_children_range())
+	for(const auto [key, cfg] : vars().all_children_view())
 	{
 		std::ostringstream cur_str;
 		cur_str << "[" << key << "][" << wml_array_sizes[key] << "]";
@@ -659,7 +659,7 @@ void unit_mode_controller::show_unit(tree_view_node& node)
 
 	std::map<std::string, std::size_t> wml_array_sizes;
 
-	for(const auto [key, cfg] : u->variables().all_children_range())
+	for(const auto [key, cfg] : u->variables().all_children_view())
 	{
 		std::ostringstream cur_str;
 		cur_str << "[" << key << "][" << wml_array_sizes[key] << "]";
@@ -863,7 +863,7 @@ void team_mode_controller::show_vars(tree_view_node& node, int side)
 
 	std::map<std::string, std::size_t> wml_array_sizes;
 
-	for(const auto [key, cfg] : t.variables().all_children_range())
+	for(const auto [key, cfg] : t.variables().all_children_view())
 	{
 		std::ostringstream cur_str;
 		cur_str << "[" << key << "][" << wml_array_sizes[key] << "]";

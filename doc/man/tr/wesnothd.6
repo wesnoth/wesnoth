@@ -45,7 +45,7 @@ aşağıdaki \fBSUNUCU YAPILANDIRMASI\fP bölümüne bakınız. Artalan sürecin
 sinyali göndererek yapılandırmayı yeniden yükleyebilirsiniz.
 .TP 
 \fB\-d, \-\-daemon\fP
- wesnothd'yi bir artalan süreci olarak çalıştırır.
+wesnothd'yi bir artalan süreci olarak çalıştırır.
 .TP 
 \fB\-h, \-\-help\fP
 komut satırı seçeneklerini basar ve çıkar.
@@ -107,17 +107,17 @@ patterns are supported. See \fBglob\fP(7)  for more details.  Default values
 \fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-sunucu komutlarının yansılandığı fifo yolu (oyun içinde /query ... ile aynı)
+Sunucu komutlarının yansılandığı fifo yolu (oyun içinde /query ... ile aynı)
 Yol belirtilmezse derleme sırasında belirtilen yol
 (\fB/var/run/wesnothd/socket\fP) öntanımlıdır.
 .TP 
 \fBid\fP
-The ID of the server when using the database functionality to store game
-information. Generally is the major.minor version of accepted clients, such
-as 1.16 or 1.17.
+Oyun bilgilerini depolamak için veritabanı işlevselliği kullanılırken
+sunucunun kimliği. Genellikle kabul edilen istemcilerin ana.küçük sürümüdür,
+örneğin 1.16 veya 1.17.
 .TP 
 \fBmax_messages\fP
- \fBmessages_time_period\fP süresince izin verilen ileti sayısı. \fB4\fP
+\fBmessages_time_period\fP süresince izin verilen ileti sayısı. \fB4\fP
 öntanımlıdır.
 .TP 
 \fBmessages_time_period\fP
@@ -128,7 +128,7 @@ cinsinden). \fB10\fP saniye öntanımlıdır.
 Günün sözü.
 .TP 
 \fBpasswd\fP
-yönetici yetkilerini kazanmak için kullanılacak parola. (kullanım: \fB/query admin \fP\fIparola\fP).
+Yönetici yetkilerini kazanmak için kullanılacak parola. (kullanım: \fB/query admin \fP\fIparola\fP).
 .TP 
 \fBreplay_save_path\fP
 Sunucunun oyun tekrarlarını sakladığı dizin. (dizini bir / ile sonlandırmayı
@@ -144,16 +144,17 @@ Sunucunun oyun tekrarlarını özdevinimli olarak kaydedip kaydetmeyeceğini
 belirler. (Öntanımlı değeri: \fBfalse\fP)
 .TP 
 \fBtls_enabled\fP
-Enable use of TLS. If true, requires 3 following options to be set too.
+TLS kullanımını etkinleştir. true belirtilirse, aşağıdaki 3 seçeneğin de
+ayarlanması gerekir.
 .TP 
 \fBtls_fullchain\fP
-TLS full certificate chain in .pem format
+TLS tam sertifika zinciri .pem formatında
 .TP 
 \fBtls_private_key\fP
-private key for TLS in .pem format
+TLS için gizli anahtar .pem formatında
 .TP 
 \fBtls_dh\fP
-TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out filename.pem 4096\fP
+TLS DH girdileri, .pem dosyası olarak. \fBopenssl dhparam \-out filename.pem 4096\fP ile oluşturulur
 .TP 
 \fBversions_accepted\fP
 sunucu tarafından kabul edilen sürüm dizgelerinin virgül ayraçlı
@@ -205,7 +206,7 @@ bölümü yapılandırmada yoksa sunucu herhangi bir kullanıcı kayıt hizmeti
 olmadan çalışacaktır. \fBforum_user_handler\fP'ın çalışması için gereken tüm ek
 tablolar Wesnoth kaynak deposundaki table_definitions.sql dosyasında
 bulunabilir. Etkin mysql desteği gerektirir. Bu, cmake için \fBENABLE_MYSQL\fP,
-scons için \fBforum_user_handler\fP etiketidir.
+scons için \fBforum_user_handler\fP etiketidir
 .RS
 .TP 
 \fBdb_host\fP
@@ -221,8 +222,9 @@ Veritabanına oturum açacak kullanıcının adı
 Bu kullanıcının parolası
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forum saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+phpbb forumlarınızın kullanıcı verilerini saklayacağı tablonun ismi. Bu
+tablo genellikle şöyle belirtilir: <tablo\-öneki>_users (örnek:
+phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
 wesnothd uygulamasının kullanıcılar hakkındaki kendi verilerini kaydedeceği
@@ -241,27 +243,27 @@ The name of the table in which wesnothd will save its own data about game
 content (scenario/era/modifications) used in a game.
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forum saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+phpbb forumlarınızdaki kullanıcıların grup verilerinin saklanacağı tablonun
+ismi. Bu tablo genellikle şöyle belirtilir:
+<tablo\-öneki>_users_group (örnek: phpbb3_users_group).
 .TP 
 \fBdb_tournament_query\fP
 The SQL query to find tournaments to announce on login. Should return
 tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
 .TP 
 \fBdb_connection_history_table\fP
-The name of the table in which to store login/logout times. Also used for
-matching IPs to users and vice versa.
+Oturum açma/oturum kapatma zamanlarının saklanacağı tablonun adı. Ayrıca
+IP'leri kullanıcılarla eşleştirmek ve tersi için de kullanılır.
 .TP 
 \fBdb_topics_table\fP
-The name of the table in which your phpbb forum saves its topic (thread)
-information. Most likely this will be <table\-prefix>_topics
-(e.g. phpbb3_topics).
+Phpbb forumunuzun konu başlığı bilgilerinin kaydedildiği tablonun adı. Bu
+tablo genellikle şöyle belirtilir: <tablo\-öneki>_topics (örnek:
+phpbb3_topics).
 .TP 
 \fBdb_banlist_table\fP
-The name of the table in which your phpbb forum saves its user bans
-data. Most likely this will be <table\-prefix>_banlist
-(e.g. phpbb3_banlist).
+Phpbb forumunuzun yasaklı kullanıcı verilerini kaydettiği tablonun adı. Bu
+tablo genellikle şöyle belirtilir: <tablo\-öneki>_banlist (örnek:
+phpbb3_banlist).
 .TP 
 \fBmp_mod_group\fP
 Yönetme yetkisine sahip olduğu kabul edilecek forum grubunun kimliği.

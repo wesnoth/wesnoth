@@ -16,6 +16,7 @@
 #include "sdl/point.hpp"
 #include "sdl/rect.hpp"
 
+#include <algorithm>
 #include <ostream>
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b)
@@ -118,6 +119,21 @@ rect rect::shifted_by(int x, int y) const
 rect rect::shifted_by(const point& other) const
 {
 	return shifted_by(other.x, other.y);
+}
+
+point rect::point_at(double x, double y) const
+{
+	return {
+		static_cast<int>(this->x + this->w * std::clamp(x, 0.0, 1.0)),
+		static_cast<int>(this->y + this->h * std::clamp(y, 0.0, 1.0))
+	};
+}
+
+rect rect::subrect(const SDL_FPoint& tl, const SDL_FPoint& br) const
+{
+	point p1 = point_at(tl.x, tl.y);
+	point p2 = point_at(br.x, br.y);
+	return { p1, p2 - p1 };
 }
 
 std::ostream& operator<<(std::ostream& s, const rect& r)

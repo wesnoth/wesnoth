@@ -34,6 +34,7 @@
 #include "preferences/preferences.hpp"
 #include "replay_recorder_base.hpp"
 #include "resources.hpp"
+#include "serialization/chrono.hpp"
 #include "synced_context.hpp"
 #include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
@@ -688,17 +689,12 @@ bool replay::add_start_if_not_there_yet()
 	}
 }
 
-static void show_oos_error_error_function(const std::string& message)
-{
-	replay::process_error(message);
-}
-
 REPLAY_ACTION_TYPE get_replay_action_type(const config& command)
 {
 	if(command.all_children_count() != 1) {
 		return REPLAY_ACTION_TYPE::INVALID;
 	}
-	auto [key, _] = command.all_children_range().front();
+	auto [key, _] = command.all_children_view().front();
 	if(key == "speak" || key == "label" || key == "surrender" || key == "clear_labels" || key == "rename" || key == "countdown_update") {
 		return REPLAY_ACTION_TYPE::UNSYNCED;
 	}
@@ -750,7 +746,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 
 
-		const auto ch_itors = cfg->all_children_range();
+		const auto ch_itors = cfg->all_children_view();
 		//if there is an empty command tag or a start tag
 		if (ch_itors.empty() || cfg->has_child("start"))
 		{
@@ -856,13 +852,13 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 		else if (auto countdown_update = cfg->optional_child("countdown_update"))
 		{
-			int val = countdown_update["value"].to_int();
+			auto val = chrono::parse_duration<std::chrono::milliseconds>(countdown_update["value"]);
 			int tval = countdown_update["team"].to_int();
 			if (tval <= 0  || tval > static_cast<int>(resources::gameboard->teams().size())) {
 				std::stringstream errbuf;
 				errbuf << "Illegal countdown update \n"
 					<< "Received update for :" << tval << " Current user :"
-					<< side_num << "\n" << " Updated value :" << val;
+					<< side_num << "\n" << " Updated value :" << val.count();
 
 				replay::process_error(errbuf.str());
 			} else {
@@ -882,7 +878,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			// but we are called from
 			// the only other option for "dependent" command is checksum which is already checked.
 			assert(cfg->all_children_count() == 1);
-			auto [child_name, _] = cfg->all_children_range().front();
+			auto [child_name, _] = cfg->all_children_view().front();
 			DBG_REPLAY << "got an dependent action name = " << child_name;
 			resources::recorder->revert_action();
 			return REPLAY_FOUND_DEPENDENT;
@@ -890,7 +886,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		else
 		{
 			//we checked for empty commands at the beginning.
-			const auto [commandname, data] = cfg->all_children_range().front();
+			const auto [commandname, data] = cfg->all_children_view().front();
 
 			if(!is_unsynced)
 			{
@@ -911,7 +907,8 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				/*
 					we need to use the undo stack during replays in order to make delayed shroud updated work.
 				*/
-				synced_context::run(commandname, data, true, !resources::controller->is_skipping_replay(), show_oos_error_error_function);
+				auto spectator = action_spectator([](const std::string& message) { replay::process_error(message); });
+				synced_context::run(commandname, data, spectator);
 				if(resources::controller->is_regular_game_end()) {
 					return REPLAY_FOUND_END_LEVEL;
 				}

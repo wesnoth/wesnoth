@@ -468,7 +468,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 			events_.add_child("event", unit_event);
 		}
 		for(const config& abilities : cfg.child_range("abilities")) {
-			for(const auto [key, ability] : abilities.all_children_range()) {
+			for(const auto [key, ability] : abilities.all_children_view()) {
 				for(const config& ability_event : ability.child_range("event")) {
 					events_.add_child("event", ability_event);
 				}
@@ -476,7 +476,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		}
 		for(const config& attack : cfg.child_range("attack")) {
 			for(const config& specials : attack.child_range("specials")) {
-				for(const auto [key, special] : specials.all_children_range()) {
+				for(const auto [key, special] : specials.all_children_view()) {
 					for(const config& special_event : special.child_range("event")) {
 						events_.add_child("event", special_event);
 					}
@@ -1086,7 +1086,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 			events.add_child("event", unit_event);
 		}
 		for(const config& abilities : cfg.child_range("abilities")) {
-			for(const auto [key, ability] : abilities.all_children_range()) {
+			for(const auto [key, ability] : abilities.all_children_view()) {
 				for(const config& ability_event : ability.child_range("event")) {
 					events.add_child("event", ability_event);
 				}
@@ -1094,7 +1094,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 		}
 		for(const config& attack : cfg.child_range("attack")) {
 			for(const config& specials : attack.child_range("specials")) {
-				for(const auto [key, special] : specials.all_children_range()) {
+				for(const auto [key, special] : specials.all_children_view()) {
 					for(const config& special_event : special.child_range("event")) {
 						events.add_child("event", special_event);
 					}
@@ -1467,7 +1467,7 @@ void unit::set_state(const std::string& state, bool value)
 
 bool unit::has_ability_by_id(const std::string& ability) const
 {
-	for(const auto [key, cfg] : abilities_.all_children_range()) {
+	for(const auto [key, cfg] : abilities_.all_children_view()) {
 		if(cfg["id"] == ability) {
 			return true;
 		}
@@ -1709,7 +1709,7 @@ void unit::set_loyal(bool loyal)
 		overlays_.push_back("misc/loyal-icon.png");
 	} else {
 		upkeep_ = upkeep_full{};
-		overlays_.erase(std::remove(overlays_.begin(), overlays_.end(), "misc/loyal-icon.png"), overlays_.end());
+		utils::erase(overlays_, "misc/loyal-icon.png");
 	}
 }
 
@@ -2071,7 +2071,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		set_attr_changed(UA_ATTACKS);
 		attacks_.emplace_back(new attack_type(effect));
 		for(const config& specials : effect.child_range("specials")) {
-			for(const auto [key, special] : specials.all_children_range()) {
+			for(const auto [key, special] : specials.all_children_view()) {
 				for(const config& special_event : special.child_range("event")) {
 					events.add_child("event", special_event);
 				}
@@ -2079,17 +2079,13 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 	} else if(apply_to == "remove_attacks") {
 		set_attr_changed(UA_ATTACKS);
-		auto iter = std::remove_if(attacks_.begin(), attacks_.end(), [&effect](attack_ptr a) {
-			return a->matches_filter(effect);
-		});
-
-		attacks_.erase(iter, attacks_.end());
+		utils::erase_if(attacks_, [&effect](attack_ptr a) { return a->matches_filter(effect); });
 	} else if(apply_to == "attack") {
 		set_attr_changed(UA_ATTACKS);
 		for(attack_ptr a : attacks_) {
 			a->apply_modification(effect);
 			for(const config& specials : effect.child_range("set_specials")) {
-				for(const auto [key, special] : specials.all_children_range()) {
+				for(const auto [key, special] : specials.all_children_view()) {
 					for(const config& special_event : special.child_range("event")) {
 						events.add_child("event", special_event);
 					}
@@ -2251,7 +2247,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		if(auto ab_effect = effect.optional_child("abilities")) {
 			set_attr_changed(UA_ABILITIES);
 			config to_append;
-			for(const auto [key, cfg] : ab_effect->all_children_range()) {
+			for(const auto [key, cfg] : ab_effect->all_children_view()) {
 				if(!has_ability_by_id(cfg["id"])) {
 					to_append.add_child(key, cfg);
 					for(const config& event : cfg.child_range("event")) {
@@ -2263,11 +2259,15 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 	} else if(apply_to == "remove_ability") {
 		if(auto ab_effect = effect.optional_child("abilities")) {
-			for(const auto [key, cfg] : ab_effect->all_children_range()) {
+			for(const auto [key, cfg] : ab_effect->all_children_view()) {
 				remove_ability_by_id(cfg["id"]);
 			}
 		}
+		if(auto fab_effect = effect.optional_child("filter_ability")) {
+			remove_ability_by_attribute(*fab_effect);
+		}
 		if(auto fab_effect = effect.optional_child("experimental_filter_ability")) {
+			deprecated_message("experimental_filter_ability", DEP_LEVEL::INDEFINITE, "", "Use filter_ability instead.");
 			remove_ability_by_attribute(*fab_effect);
 		}
 	} else if(apply_to == "image_mod") {
@@ -2306,7 +2306,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 		if(!remove.empty()) {
 			for(const auto& to_remove : utils::parenthetical_split(remove, ',')) {
-				overlays_.erase(std::remove(overlays_.begin(), overlays_.end(), to_remove), overlays_.end());
+				utils::erase(overlays_, to_remove);
 			}
 		}
 		if(add.empty() && remove.empty() && !replace.empty()) {
@@ -2571,7 +2571,7 @@ void unit::apply_modifications()
 	if(modifications_.has_child("advance")) {
 		deprecated_message("[advance]", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use [advancement] instead.");
 	}
-	for(const auto [key, cfg] : modifications_.all_children_range()) {
+	for(const auto [key, cfg] : modifications_.all_children_view()) {
 		add_modification(key, cfg, true);
 	}
 }
@@ -2627,7 +2627,7 @@ bool unit::is_visible_to_team(const team& team, bool const see_all) const
 
 bool unit::is_visible_to_team(const map_location& loc, const team& team, bool const see_all) const
 {
-	if(!display::get_singleton()->get_map().on_board(loc)) {
+	if(!display::get_singleton()->context().map().on_board(loc)) {
 		return false;
 	}
 

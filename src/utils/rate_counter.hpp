@@ -1,6 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
-	by Chris Beck <render787@gmail.com>
+	Copyright (C) 2003 - 2024
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -13,18 +12,21 @@
 	See the COPYING file for more details.
 */
 
-#include "units/make.hpp"
-#include "units/unit.hpp"
+#pragma once
 
-unit_ptr make_unit_ptr(const config& cfg, bool use_traits, const vconfig* vcfg)
+namespace utils
 {
-	return unit::create(cfg, use_traits, vcfg);
-}
-unit_ptr make_unit_ptr(const unit_type& t, int side, bool real_unit, unit_race::GENDER gender)
+class rate_counter
 {
-	return unit::create(t, side, real_unit, gender);
-}
-unit_ptr make_unit_ptr(const unit& u)
-{
-	return u.clone();
-}
+public:
+	explicit rate_counter(unsigned rate) : rate_(rate) {}
+
+	/** Increments the counter by one and checks whether it is now a multiple of the chosen rate. */
+	bool poll() { return (++counter_ % rate_) == 0; }
+
+private:
+	unsigned counter_ = 0;
+	unsigned rate_ = 1;
+};
+
+} // end namespace utils

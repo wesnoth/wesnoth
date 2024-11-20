@@ -97,7 +97,7 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 	, player_list_(std::bind(&mp_lobby::user_dialog_callback, this, std::placeholders::_1))
 	, player_list_dirty_(true)
 	, gamelist_dirty_(true)
-	, last_lobby_update_(0)
+	, last_lobby_update_()
 	, gamelist_diff_update_(true)
 	, network_connection_(connection)
 	, lobby_update_timer_(0)
@@ -249,7 +249,7 @@ void mp_lobby::update_gamelist()
 
 	update_selected_game();
 	gamelist_dirty_ = false;
-	last_lobby_update_ = SDL_GetTicks();
+	last_lobby_update_ = std::chrono::steady_clock::now();
 	finish_state_sync();
 	update_visible_games();
 }
@@ -356,7 +356,7 @@ void mp_lobby::update_gamelist_diff()
 
 	update_selected_game();
 	gamelist_dirty_ = false;
-	last_lobby_update_ = SDL_GetTicks();
+	last_lobby_update_ = std::chrono::steady_clock::now();
 	finish_state_sync();
 	update_visible_games();
 }
@@ -446,7 +446,7 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	// TODO: move to some general area of the code.
 	const auto yes_or_no = [](bool val) { return val ? _("yes") : _("no"); };
 
-	ss << "\n<big>" << markup::span_color(font::TITLE_COLOR, _("Settings")) << "</big>\n";
+	ss << "\n" << markup::tag("big", markup::span_color(font::TITLE_COLOR, _("Settings"))) << "\n";
 	ss << _("Experience modifier:")   << " " << game.xp << "\n";
 	ss << _("Gold per village:")      << " " << game.gold << "\n";
 	ss << _("Map size:")              << " " << game.map_size_info << "\n";
@@ -529,7 +529,7 @@ void mp_lobby::update_playerlist()
 	player_list_.update(lobby_info_.users(), selected_game_id_);
 
 	player_list_dirty_ = false;
-	last_lobby_update_ = SDL_GetTicks();
+	last_lobby_update_ = std::chrono::steady_clock::now();
 }
 
 void mp_lobby::update_selected_game()
@@ -721,7 +721,7 @@ void mp_lobby::network_handler()
 		throw;
 	}
 
-	if ((SDL_GetTicks() - last_lobby_update_ < game_config::lobby_refresh)) {
+	if(std::chrono::steady_clock::now() - last_lobby_update_ < game_config::lobby_refresh) {
 		return;
 	}
 

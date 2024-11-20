@@ -27,6 +27,7 @@
 
 #include <boost/asio/steady_timer.hpp>
 
+#include <chrono>
 #include <random>
 
 namespace wesnothd
@@ -95,7 +96,7 @@ private:
 	struct connection_log
 	{
 		std::string nick, ip;
-		std::time_t log_off;
+		std::chrono::system_clock::time_point log_off;
 
 		bool operator==(const connection_log& c) const
 		{
@@ -110,7 +111,7 @@ private:
 	{
 		std::string ip;
 		int attempts;
-		std::time_t first_attempt;
+		std::chrono::steady_clock::time_point first_attempt;
 
 		bool operator==(const login_log& l) const
 		{
@@ -151,11 +152,10 @@ private:
 	std::string tournaments_;
 	std::string information_;
 	std::size_t default_max_messages_;
-	std::size_t default_time_period_;
+	std::chrono::seconds default_time_period_;
 	std::size_t concurrent_connections_;
 	bool graceful_restart;
-	std::time_t lan_server_;
-	std::time_t last_user_seen_time_;
+	std::chrono::seconds lan_server_;
 	std::string restart_command;
 	std::size_t max_ip_log_size_;
 	bool deny_unregistered_login_;
@@ -165,7 +165,7 @@ private:
 	std::set<std::string> client_sources_;
 	std::vector<std::string> tor_ip_list_;
 	int failed_login_limit_;
-	std::time_t failed_login_ban_;
+	std::chrono::seconds failed_login_ban_;
 	std::deque<login_log>::size_type failed_login_buffer_size_;
 
 	/** Parse the server config into local variables. */
