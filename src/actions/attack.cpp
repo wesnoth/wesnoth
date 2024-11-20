@@ -1590,7 +1590,7 @@ void attack_unit_and_advance(const map_location& attacker,
 
 int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
-	unit_ability_list abil = u.get_abilities_weapons("leadership", loc, weapon, opp_weapon);
+	unit_ability_list abil = weapon ? weapon->attack_type::get_weapon_ability("leadership") : u.get_abilities_weapons("leadership", loc, weapon, opp_weapon);
 	unit_abilities::effect leader_effect(abil, 0, nullptr, unit_abilities::EFFECT_CUMULABLE);
 	return leader_effect.get_composite_value();
 }

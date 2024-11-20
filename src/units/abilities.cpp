@@ -1552,12 +1552,18 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list abil_list(loc);
 	if(self_) {
-		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const unit_ability& i) {
-			return special_active(*i.ability_cfg, AFFECT_SELF, ability, "filter_student");
-		});
+		if(ability != "leadership"){
+			abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const unit_ability& i) {
+				return special_active(*i.ability_cfg, AFFECT_SELF, ability, "filter_student");
+			});
+		} else {
+			abil_list.append_if((*self_).get_abilities_weapons(ability, self_loc_, shared_from_this(), other_attack_), [&](const unit_ability& i) {
+				return special_active(*i.ability_cfg, AFFECT_SELF, ability, "filter_student");
+			});
+		}
 	}
 
-	if(other_) {
+	if(other_ && (ability != "leadership")) {
 		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const unit_ability& i) {
 			return special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, "filter_student");
 		});
@@ -2226,13 +2232,15 @@ bool attack_type::special_active_impl(
 
 
 	// Does this affect the specified unit?
-	if ( whom == AFFECT_SELF ) {
-		if ( !special_affects_self(special, is_attacker) )
-			return false;
-	}
-	if ( whom == AFFECT_OTHER ) {
-		if ( !special_affects_opponent(special, is_attacker) )
-			return false;
+	if(tag_name != "leadership"){
+		if ( whom == AFFECT_SELF ) {
+			if ( !special_affects_self(special, is_attacker) )
+				return false;
+		}
+		if ( whom == AFFECT_OTHER ) {
+			if ( !special_affects_opponent(special, is_attacker) )
+				return false;
+		}
 	}
 
 	// Is this active on attack/defense?
