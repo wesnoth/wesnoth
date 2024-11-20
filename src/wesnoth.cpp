@@ -920,6 +920,11 @@ int main(int argc, char** argv)
 	_putenv("PANGOCAIRO_BACKEND=fontconfig");
 	_putenv("FONTCONFIG_PATH=fonts");
 #endif
+#ifdef __APPLE__
+	// Using setenv with overwrite disabled so we can override this in the
+	// original process environment for research/testing purposes.
+	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
+#endif
 
 	try {
 		commandline_options cmdline_opts = commandline_options(args);
