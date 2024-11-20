@@ -164,6 +164,8 @@ public:
 	utils::optional<std::string> preprocess_path;
 	/** Target (output) path that was given to the --preprocess option. */
 	utils::optional<std::string> preprocess_target;
+	/** String to preprocess */
+	utils::optional<std::string> preprocess_source_string;
 	/** Pair of AxB values specified after --resolution. Changes Wesnoth resolution. */
 	utils::optional<std::pair<int,int>> resolution;
 	/** RNG seed specified by --rng-seed option. Initializes RNG with given seed. */
@@ -178,7 +180,7 @@ public:
 	utils::optional<std::string> render_image;
 	/** Output file to put rendered image path in. Optional second parameter after --render-image */
 	utils::optional<std::string> render_image_dst;
-  /** Path of which to generate a spritesheet */
+	/** Path of which to generate a spritesheet */
 	utils::optional<std::string> generate_spritesheet;
 	/** True if --screenshot was given on the command line. Starts Wesnoth in screenshot mode. */
 	bool screenshot;
