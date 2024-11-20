@@ -111,7 +111,7 @@ private:
 	{
 		std::string ip;
 		int attempts;
-		std::chrono::system_clock::time_point first_attempt;
+		std::chrono::steady_clock::time_point first_attempt;
 
 		bool operator==(const login_log& l) const
 		{

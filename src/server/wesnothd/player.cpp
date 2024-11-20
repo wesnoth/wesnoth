@@ -80,8 +80,8 @@ void wesnothd::player::mark_registered(bool registered)
 
 bool wesnothd::player::is_message_flooding()
 {
-	const auto now = std::chrono::system_clock::now();
-	if (flood_start_ == std::chrono::system_clock::time_point{}) {
+	const auto now = std::chrono::steady_clock::now();
+	if (flood_start_ == std::chrono::steady_clock::time_point{}) {
 		flood_start_ = now;
 		return false;
 	}

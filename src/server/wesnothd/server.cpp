@@ -1000,9 +1000,9 @@ template<class SocketPtr> bool server::authenticate(
 			}
 			// This name is registered and an incorrect password provided
 			else if(!(user_handler_->login(username, hashed_password))) {
-				const auto now = std::chrono::system_clock::now();
+				const auto steady_now = std::chrono::steady_clock::now();
 
-				login_log login_ip { client_address(socket), 0, now };
+				login_log login_ip { client_address(socket), 0, steady_now };
 				auto i = std::find(failed_logins_.begin(), failed_logins_.end(), login_ip);
 
 				if(i == failed_logins_.end()) {
@@ -1015,7 +1015,7 @@ template<class SocketPtr> bool server::authenticate(
 					}
 				}
 
-				if(i->first_attempt + failed_login_ban_ < now) {
+				if(i->first_attempt + failed_login_ban_ < steady_now) {
 					// Clear and move to the beginning
 					failed_logins_.erase(i);
 					failed_logins_.push_back(login_ip);
@@ -1025,7 +1025,7 @@ template<class SocketPtr> bool server::authenticate(
 				i->attempts++;
 
 				if(i->attempts > failed_login_limit_) {
-					LOG_SERVER << ban_manager_.ban(login_ip.ip, now + failed_login_ban_,
+					LOG_SERVER << ban_manager_.ban(login_ip.ip, std::chrono::system_clock::now() + failed_login_ban_,
 						"Maximum login attempts exceeded", "automatic", "", username);
 
 					async_send_error(socket, "You have made too many failed login attempts.", MP_TOO_MANY_ATTEMPTS_ERROR);
