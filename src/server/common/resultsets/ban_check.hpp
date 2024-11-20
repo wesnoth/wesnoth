@@ -22,18 +22,18 @@
 
 class ban_check : public rs_base
 {
-    public:
-        ban_check();
-        explicit ban_check(const mariadb::result_set& rslt);
-        void read(mariadb::result_set_ref rslt) override;
-        long get_ban_type();
-        std::chrono::seconds get_ban_duration();
-        int get_user_id();
-        std::string get_email();
+public:
+	ban_check();
+	explicit ban_check(const mariadb::result_set& rslt);
+	void read(mariadb::result_set_ref rslt) override;
+	long get_ban_type();
+	std::chrono::seconds get_ban_duration();
+	int get_user_id();
+	std::string get_email();
 
-    private:
-        long ban_type;
-        std::chrono::seconds ban_duration;
-        int user_id;
-        std::string email;
+private:
+	long ban_type;
+	std::chrono::seconds ban_duration;
+	int user_id;
+	std::string email;
 };
