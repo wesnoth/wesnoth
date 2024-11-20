@@ -486,7 +486,11 @@ int get_pixel_scale()
 int current_refresh_rate()
 {
 	// TODO: this should be more clever, depending on usage
-	return std::min(prefs::get().refresh_rate(), refresh_rate_);
+	if(auto preferred = prefs::get().refresh_rate(); preferred > 0) {
+		return std::min(preferred, refresh_rate_);
+	} else {
+		return refresh_rate_;
+	}
 }
 
 void force_render_target(const texture& t)

@@ -135,6 +135,9 @@ std::vector<std::string> enumerate_drivers();
 /**
  * The refresh rate of the screen.
  *
+ * In most cases, this will be the native refresh rate of the display, but
+ * could be lower if FPS has been artificially capped (i.e., through --max-fps).
+ *
  * If a refresh cannot be detected, this may return 0, or it may return a
  * substitute value.
  */
