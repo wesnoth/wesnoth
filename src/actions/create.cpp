@@ -748,15 +748,9 @@ bool recall_unit(const std::string & id, team & current_team,
 	// Place the recall.
 	// We also check to see if a custom unit level recall has been set if not,
 	// we use the team's recall cost otherwise the unit's.
-	place_recruit_result res;
-	if (recall->recall_cost() < 0) {
-		res = place_recruit(recall, loc, from, current_team.recall_cost(),
+	int cost = recall->recall_cost() >= 0 ? recall->recall_cost() : current_team.recall_cost();
+	place_recruit_result res = place_recruit(recall, loc, from, cost,
 	                             true, facing, show);
-	}
-	else {
-		res = place_recruit(recall, loc, from, recall->recall_cost(),
-	                             true, facing, show);
-	}
 	resources::controller->statistics().recall_unit(*recall);
 
 	resources::undo_stack->add_recall(recall, loc, from, std::get<1>(res), std::get<2>(res));
