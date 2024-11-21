@@ -1190,7 +1190,6 @@ namespace { // Private helpers for move_unit()
 	 */
 	void unit_mover::post_move()
 	{
-		auto* undo_stack = resources::undo_stack;
 		const map_location & final_loc = final_hex();
 
 		int orig_village_owner = 0;
@@ -1236,15 +1235,17 @@ namespace { // Private helpers for move_unit()
 			spectator_->set_interrupted(interrupted());
 			spectator_->set_tiles_entered(steps_travelled());
 		}
-		if ( undo_stack ) {
-			const bool mover_valid = move_it_.valid();
+
+		const bool mover_valid = move_it_.valid();
 
 
-			if ( !mover_valid  ||  undo_blocked()  ||
-				(resources::whiteboard->is_active() && resources::whiteboard->should_clear_undo()) || synced_context::undo_blocked())
-			{
-				synced_context::block_undo();
-			}
+		if(!mover_valid || undo_blocked()) {
+			synced_context::block_undo();
+		}
+
+		// TODO: this looks wrong, whiteboard shouldn't effect the undo stack during a synced action.
+		if(resources::whiteboard->is_active() && resources::whiteboard->should_clear_undo()) {
+			synced_context::block_undo();
 		}
 
 		// Update the screen.
