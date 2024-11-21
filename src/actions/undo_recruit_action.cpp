@@ -32,9 +32,9 @@ static lg::log_domain log_engine("engine");
 namespace actions::undo
 {
 recruit_action::recruit_action(const unit_const_ptr recruited, const map_location& loc,
-			   const map_location& from, int orig_village_owner, bool time_bonus)
+			   const map_location& from)
 	: undo_action()
-	, shroud_clearing_action(recruited, loc, orig_village_owner, time_bonus)
+	, shroud_clearing_action(recruited, loc)
 	, u_type(recruited->type())
 	, recruit_from(from)
 {}
@@ -98,7 +98,6 @@ bool recruit_action::undo(int side)
 	// to also do the overlapped hexes
 	gui.invalidate(recruit_loc);
 	units.erase(recruit_loc);
-	this->return_village();
 	return true;
 }
 static auto reg_undo_recruit = undo_action_container::subaction_factory<recruit_action>();

@@ -159,7 +159,63 @@ void move_unit_spectator::set_unit(const unit_map::const_iterator &u)
 	unit_ = u;
 }
 
+namespace {
 
+/**
+ * The number of the side that preivously owned the village that the unit stepped on
+ * Note, that recruit/recall actions can also take a village if the unit was recruits/recalled onto a village
+ */
+struct take_village_step : undo_action
+{
+	int original_village_owner;
+	bool take_village_timebonus;
+	map_location loc;
+
+	take_village_step(
+		int orig_village_owner, bool time_bonus, map_location loc)
+		: original_village_owner(orig_village_owner)
+		, take_village_timebonus(time_bonus)
+		, loc(loc)
+	{
+	}
+
+	take_village_step(const config& cfg)
+		: original_village_owner(cfg["village_owner"].to_int())
+		, take_village_timebonus(cfg["village_timebonus"].to_bool())
+		, loc(cfg)
+	{
+	}
+
+	static const char* get_type_impl() { return "take_village"; }
+	virtual const char* get_type() const { return get_type_impl(); }
+
+	virtual ~take_village_step() { }
+
+	/** Writes this into the provided config. */
+	virtual void write(config& cfg) const
+	{
+		undo_action::write(cfg);
+		cfg["village_owner"] = original_village_owner;
+		cfg["village_timebonus"] = take_village_timebonus;
+		loc.write(cfg);
+	}
+
+	/** Undoes this action. */
+	virtual bool undo(int)
+	{
+		team& current_team = resources::controller->current_team();
+		if(resources::gameboard->map().is_village(loc)) {
+			get_village(loc, original_village_owner, nullptr, false);
+			// MP_COUNTDOWN take away capture bonus
+			if(take_village_timebonus) {
+				current_team.set_action_bonus_count(current_team.action_bonus_count() - 1);
+			}
+		}
+		return true;
+	}
+};
+
+}
 game_events::pump_result_t get_village(const map_location& loc, int side, bool *action_timebonus, bool fire_event)
 {
 	std::vector<team> &teams = resources::gameboard->teams();
@@ -201,6 +257,7 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
 		if (display::get_singleton() != nullptr) {
 			display::get_singleton()->invalidate(loc);
 		}
+		resources::undo_stack->add_custom<take_village_step>(old_owner_side, grants_timebonus, loc);
 		return t->get_village(loc, old_owner_side, fire_event ? resources::gamedata : nullptr);
 	}
 
@@ -1183,7 +1240,7 @@ namespace { // Private helpers for move_unit()
 				// MP_COUNTDOWN: added param
 				undo_stack->add_move(
 					move_it_.get_shared_ptr(), begin_, real_end_, orig_moves_,
-					action_time_bonus, orig_village_owner, orig_dir_);
+					orig_dir_);
 			}
 
 			if ( !mover_valid  ||  undo_blocked()  ||

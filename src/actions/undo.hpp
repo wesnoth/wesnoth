@@ -54,14 +54,14 @@ public:
 	void add_move(const unit_const_ptr u,
 	              const std::vector<map_location>::const_iterator & begin,
 	              const std::vector<map_location>::const_iterator & end,
-	              int start_moves, int timebonus=0, int village_owner=-1,
+	              int start_moves,
 	              const map_location::direction dir=map_location::direction::indeterminate);
 	/** Adds a recall to the undo stack. */
 	void add_recall(const unit_const_ptr u, const map_location& loc,
-	                const map_location& from, int orig_village_owner, bool time_bonus);
+	                const map_location& from);
 	/** Adds a recruit to the undo stack. */
 	void add_recruit(const unit_const_ptr u, const map_location& loc,
-	                 const map_location& from, int orig_village_owner, bool time_bonus);
+	                 const map_location& from);
 
 	template<class T, class... Args>
 	void add_custom(Args&&... args)

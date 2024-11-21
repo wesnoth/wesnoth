@@ -30,7 +30,7 @@ struct move_action : undo_action, shroud_clearing_action
 	move_action(const unit_const_ptr moved,
 	            const std::vector<map_location>::const_iterator & begin,
 	            const std::vector<map_location>::const_iterator & end,
-	            int sm, int timebonus, int orig, const map_location::direction dir);
+	            int sm, const map_location::direction dir);
 	move_action(const config & cfg)
 		: undo_action()
 		, shroud_clearing_action(cfg)
