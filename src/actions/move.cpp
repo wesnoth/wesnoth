@@ -396,7 +396,7 @@ namespace { // Private helpers for move_unit()
 
 		// This data stores the state from before the move started.
 		const int orig_side_;
-		const int orig_moves_;
+		int orig_moves_;
 		const map_location::direction orig_dir_;
 		const map_location goto_;
 
@@ -607,6 +607,9 @@ namespace { // Private helpers for move_unit()
 		auto [unit_it, success] = resources::gameboard->units().move(*move_loc_, *step_to);
 
 		if(success) {
+			resources::undo_stack->add_move(
+				unit_it.get_shared_ptr(), move_loc_, step_to + 1, orig_moves_, unit_it->facing());
+			orig_moves_ = unit_it->movement_left();
 			// Update the moving unit.
 			move_it_ = unit_it;
 			move_it_->set_facing(step_from->get_relative_dir(*step_to));
@@ -1236,12 +1239,6 @@ namespace { // Private helpers for move_unit()
 		if ( undo_stack ) {
 			const bool mover_valid = move_it_.valid();
 
-			if ( mover_valid ) {
-				// MP_COUNTDOWN: added param
-				undo_stack->add_move(
-					move_it_.get_shared_ptr(), begin_, real_end_, orig_moves_,
-					orig_dir_);
-			}
 
 			if ( !mover_valid  ||  undo_blocked()  ||
 				(resources::whiteboard->is_active() && resources::whiteboard->should_clear_undo()) || synced_context::undo_blocked())
