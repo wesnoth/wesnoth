@@ -96,28 +96,28 @@ void undo_list::add_dismissal(const unit_const_ptr u)
 void undo_list::add_move(const unit_const_ptr u,
                          const std::vector<map_location>::const_iterator & begin,
                          const std::vector<map_location>::const_iterator & end,
-                         int start_moves, int timebonus, int village_owner,
+                         int start_moves,
                          const map_location::direction dir)
 {
-	add(std::make_unique<undo::move_action>(u, begin, end, start_moves, timebonus, village_owner, dir));
+	add(std::make_unique<undo::move_action>(u, begin, end, start_moves, dir));
 }
 
 /**
  * Adds a recall to the undo stack.
  */
 void undo_list::add_recall(const unit_const_ptr u, const map_location& loc,
-                           const map_location& from, int orig_village_owner, bool time_bonus)
+                           const map_location& from)
 {
-	add(std::make_unique<undo::recall_action>(u, loc, from, orig_village_owner, time_bonus));
+	add(std::make_unique<undo::recall_action>(u, loc, from));
 }
 
 /**
  * Adds a recruit to the undo stack.
  */
 void undo_list::add_recruit(const unit_const_ptr u, const map_location& loc,
-                            const map_location& from, int orig_village_owner, bool time_bonus)
+                            const map_location& from)
 {
-	add(std::make_unique<undo::recruit_action>(u, loc, from, orig_village_owner, time_bonus));
+	add(std::make_unique<undo::recruit_action>(u, loc, from));
 }
 
 

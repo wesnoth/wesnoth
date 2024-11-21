@@ -33,9 +33,9 @@ static lg::log_domain log_engine("engine");
 namespace actions::undo
 {
 recall_action::recall_action(const unit_const_ptr recalled, const map_location& loc,
-			  const map_location& from, int orig_village_owner, bool time_bonus)
+			  const map_location& from)
 	: undo_action()
-	, shroud_clearing_action(recalled, loc, orig_village_owner, time_bonus)
+	, shroud_clearing_action(recalled, loc)
 	, id(recalled->id())
 	, recall_from(from)
 {}
@@ -97,7 +97,6 @@ bool recall_action::undo(int side)
 	units.erase(recall_loc);
 	resources::whiteboard->on_kill_unit();
 	un->anim_comp().clear_haloes();
-	this->return_village();
 	return true;
 }
 static auto reg_undo_recall = undo_action_container::subaction_factory<recall_action>();

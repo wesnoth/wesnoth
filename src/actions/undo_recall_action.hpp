@@ -27,7 +27,7 @@ struct recall_action : undo_action, shroud_clearing_action
 
 
 	recall_action(const unit_const_ptr recalled, const map_location& loc,
-				  const map_location& from, int orig_village_owner, bool time_bonus);
+				  const map_location& from);
 	recall_action(const config & cfg);
 
 	static const char* get_type_impl() { return "recall"; }
