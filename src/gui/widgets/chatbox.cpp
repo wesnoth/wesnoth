@@ -90,7 +90,9 @@ void chatbox::finalize_setup()
 void chatbox::load_log(std::map<std::string, chatroom_log>& log, bool show_lobby)
 {
 	const std::string new_tip = formatter()
-		<< markup::span_color("#FF0000", "\n============" + translation::dsgettext("wesnoth", "NEW") + "============");
+		<< "\n"
+		// TRANSLATORS # po: This is the new chat text indicator
+		<< markup::span_color("#FF0000", "============" + _("NEW") + "============");
 
 	for(auto& l : log) {
 		const bool is_lobby = l.first == "lobby";
@@ -102,13 +104,9 @@ void chatbox::load_log(std::map<std::string, chatroom_log>& log, bool show_lobby
 		const std::size_t new_tip_index = l.second.log.find(new_tip);
 
 		if(new_tip_index != std::string::npos) {
-			std::string new_log = l.second.log;
-			new_log.replace(new_tip_index, new_tip.length(), "");
-			l.second.log = new_log;
-			find_or_create_window(l.first, l.second.whisper, true, !is_lobby, new_log + new_tip);
-		} else {
-			find_or_create_window(l.first, l.second.whisper, true, !is_lobby, l.second.log + new_tip);
+			l.second.log.replace(new_tip_index, new_tip.length(), "");
 		}
+		find_or_create_window(l.first, l.second.whisper, true, !is_lobby, l.second.log + new_tip);
 	}
 
 	log_ = &log;
