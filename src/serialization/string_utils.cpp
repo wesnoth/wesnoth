@@ -67,7 +67,7 @@ void trim(std::string_view& s)
 		return;
 	}
 	//find_last_not_of never returns npos because !s.empty()
-	size_t first_to_trim = s.find_last_not_of(" \t\r\n") + 1;
+	std::size_t first_to_trim = s.find_last_not_of(" \t\r\n") + 1;
 	s = s.substr(0, first_to_trim);
 }
 
@@ -663,7 +663,7 @@ bool word_completion(std::string& text, std::vector<std::string>& wordlist) {
 	{
 		if (word->size() < semiword.size()
 		|| !std::equal(semiword.begin(), semiword.end(), word->begin(),
-				utils::chars_equal_insensitive))
+			[](char a, char b) { return tolower(a) == tolower(b); })) // TODO: is this the right approach?
 		{
 			continue;
 		}

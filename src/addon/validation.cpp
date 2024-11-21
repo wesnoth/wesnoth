@@ -31,8 +31,7 @@ namespace
 
 const std::array<std::string, ADDON_TYPES_COUNT> addon_type_strings {{
 	"unknown", "core", "campaign", "scenario", "campaign_sp_mp", "campaign_mp",
-	"scenario_mp", "map_pack", "era", "faction", "mod_mp", /*"gui", */ "media",
-	"other"
+	"scenario_mp", "map_pack", "era", "faction", "mod_mp", "media",	"theme", "other"
 }};
 
 struct addon_name_char_illegal
@@ -154,7 +153,7 @@ bool check_case_insensitive_duplicates_internal(const config& dir, const std::st
 				return false;
 			}
 		}
-		if (!check_case_insensitive_duplicates_internal(path, prefix + filename + "/", badlist) && !badlist){
+		if(!check_case_insensitive_duplicates_internal(path, with_prefix + "/", badlist) && !badlist) {
 			return false;
 		}
 	}
@@ -500,7 +499,7 @@ std::string addon_check_status_desc(unsigned int code)
 		},
 		{
 			ADDON_CHECK_STATUS::AUTH_TYPE_MISMATCH,
-			N_("The add-on's forum_auth attribute does not match what was previously uploaded.")
+			N_("The add-on’s forum_auth attribute does not match what was previously uploaded.")
 		},
 
 		//

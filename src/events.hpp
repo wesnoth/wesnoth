@@ -150,20 +150,12 @@ void draw();
 inline void pump_and_draw() { pump(); draw(); }
 // TODO: draw_manager - should this also raise_process_event? Some things do some don't
 
-struct pump_info {
-	pump_info() : resize_dimensions(), ticks_(0) {}
-	std::pair<int,int> resize_dimensions;
-	int ticks(unsigned *refresh_counter=nullptr, unsigned refresh_rate=1);
-private:
-	int ticks_; //0 if not calculated
-};
-
 class pump_monitor {
 //pump_monitors receive notification after an events::pump() occurs
 public:
 	pump_monitor();
 	virtual ~pump_monitor();
-	virtual void process(pump_info& info) = 0;
+	virtual void process() = 0;
 };
 
 void raise_process_event();

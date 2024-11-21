@@ -313,7 +313,7 @@ ban_check dbconn::get_ban_info(const std::string& name, const std::string& ip)
 		// selected ban_type value must be part of user_handler::BAN_TYPE
 		ban_check b;
 		get_complex_results(connection_, b, "select ban_userid, ban_email, case when ban_ip != '' then 1 when ban_userid != 0 then 2 when ban_email != '' then 3 end as ban_type, ban_end from `"+db_banlist_table_+"` where (ban_ip = ? or ban_userid = (select user_id from `"+db_users_table_+"` where UPPER(username) = UPPER(?)) or UPPER(ban_email) = (select UPPER(user_email) from `"+db_users_table_+"` where UPPER(username) = UPPER(?))) AND ban_exclude = 0 AND (ban_end = 0 OR ban_end >= ?)",
-			{ ip, name, name, std::time(nullptr) });
+			{ ip, name, name, std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()) });
 		return b;
 	}
 	catch(const mariadb::exception::base& e)

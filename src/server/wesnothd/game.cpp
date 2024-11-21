@@ -18,6 +18,7 @@
 #include "filesystem.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
+#include "serialization/chrono.hpp"
 #include "server/wesnothd/player_network.hpp"
 #include "server/wesnothd/server.hpp"
 
@@ -547,7 +548,7 @@ void game::transfer_side_control(player_iterator player, const simple_wml::node&
 		observers_.push_back(*old_player);
 
 		(*old_player)->info().set_status(player::OBSERVING);
-		players_.erase(std::remove(players_.begin(), players_.end(), old_player), players_.end());
+		utils::erase(players_, old_player);
 
 		// Tell others that the player becomes an observer.
 		send_and_record_server_message(old_player_name + " becomes an observer.");
@@ -564,7 +565,7 @@ void game::transfer_side_control(player_iterator player, const simple_wml::node&
 	if(is_observer(*newplayer)) {
 		players_.push_back(*newplayer);
 		(*newplayer)->info().set_status(player::PLAYING);
-		observers_.erase(std::remove(observers_.begin(), observers_.end(), newplayer), observers_.end());
+		utils::erase(observers_, newplayer);
 		// Send everyone but the new player the observer_quit message.
 		send_observerquit(*newplayer);
 	}
@@ -759,7 +760,7 @@ void game::unmute_observer(const simple_wml::node& unmute, player_iterator unmut
 	LOG_GAME << unmuter->client_ip() << "\t" << game::username(unmuter) << " unmuted: " << username << " ("
 	         << (*user)->client_ip() << ")\tin game:\t\"" << name_ << "\" (" << id_ << ", " << db_id_ << ")";
 
-	muted_observers_.erase(std::remove(muted_observers_.begin(), muted_observers_.end(), user), muted_observers_.end());
+	utils::erase(muted_observers_, user);
 	send_and_record_server_message(username.to_string() + " has been unmuted.");
 }
 
@@ -868,8 +869,8 @@ void game::unban_user(const simple_wml::node& unban, player_iterator unbanner)
 		<< "\tunbanned: " << username << " (" << (*user)->client_ip() << ")\tfrom game:\t\"" << name_ << "\" ("
 		<< id_ << ", " << db_id_ << ")";
 
-	bans_.erase(std::remove(bans_.begin(), bans_.end(), (*user)->client_ip()), bans_.end());
-	name_bans_.erase(std::remove(name_bans_.begin(), name_bans_.end(), username.to_string()), name_bans_.end());
+	utils::erase(bans_, (*user)->client_ip());
+	utils::erase(name_bans_, username.to_string());
 	send_and_record_server_message(username.to_string() + " has been unbanned.");
 }
 
@@ -1447,8 +1448,8 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 	const bool host = (player == owner_);
 	const bool observer = is_observer(player);
 
-	players_.erase(std::remove(players_.begin(), players_.end(), player), players_.end());
-	observers_.erase(std::remove(observers_.begin(), observers_.end(), player), observers_.end());
+	utils::erase(players_, player);
+	utils::erase(observers_, player);
 	players_not_advanced_.erase(&*player);
 
 	const bool game_ended = players_.empty() || (host && !started_);
@@ -1515,7 +1516,7 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 		if(!is_player(owner_)) {
 			DBG_GAME << "making the owner a player...";
 			owner_->info().set_status(player::PLAYING);
-			observers_.erase(std::remove(observers_.begin(), observers_.end(), owner_), observers_.end());
+			utils::erase(observers_, owner_);
 			players_.push_back(owner_);
 			send_observerquit(owner_);
 		}
@@ -1786,7 +1787,7 @@ std::string game::get_replay_filename()
 	name << (*starting_pos(level_.root()))["name"] << " Turn " << current_turn() << " (" << db_id_ << ").bz2";
 	std::string filename(name.str());
 	std::replace(filename.begin(), filename.end(), ' ', '_');
-	filename.erase(std::remove_if(filename.begin(), filename.end(), is_invalid_filename_char), filename.end());
+	utils::erase_if(filename, is_invalid_filename_char);
 	return filename;
 }
 
@@ -1975,7 +1976,7 @@ void game::send_server_message(const char* message, utils::optional<player_itera
 		msg.set_attr("id", "server");
 		msg.set_attr_dup("message", message);
 		std::stringstream ss;
-		ss << ::std::time(nullptr);
+		ss << chrono::serialize_timestamp(std::chrono::system_clock::now());
 		msg.set_attr_dup("time", ss.str().c_str());
 	} else {
 		simple_wml::node& msg = doc.root().add_child("message");

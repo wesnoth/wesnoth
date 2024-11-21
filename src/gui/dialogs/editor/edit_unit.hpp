@@ -72,7 +72,7 @@ private:
 	/** 0 means there are no attacks. 1 is the first attack, and so on.*/
 	unsigned int selected_attack_ = 0;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	virtual const std::string& window_id() const override;
 

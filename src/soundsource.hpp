@@ -33,8 +33,8 @@ class sourcespec;
  * appropriate delays, when sound emitting object is visible on screen.
  */
 class positional_source {
-	unsigned int last_played_;
-	int min_delay_;
+	std::chrono::steady_clock::time_point last_played_;
+	std::chrono::milliseconds min_delay_;
 	int chance_;
 	int loops_;
 	const unsigned int id_;
@@ -61,8 +61,8 @@ public:
 
 	bool is_global() const;
 
-	void update(unsigned int time, const display &disp);
-	void update_positions(unsigned int time, const display &disp);
+	void update(const std::chrono::steady_clock::time_point& time, const display &disp);
+	void update_positions(const std::chrono::steady_clock::time_point& time, const display &disp);
 
 	int calculate_volume(const map_location &loc, const display &disp);
 
@@ -117,7 +117,7 @@ class sourcespec
 	const std::string id_;
 	std::string files_;
 
-	int min_delay_;
+	std::chrono::milliseconds min_delay_;
 	int chance_;
 
 	int loops_;
@@ -130,7 +130,7 @@ class sourcespec
 
 public:
 	/** Parameter-list constructor. */
-	sourcespec(const std::string& id, const std::string& files, int min_delay, int chance) :
+	sourcespec(const std::string& id, const std::string& files, const std::chrono::milliseconds& min_delay, int chance) :
 		id_(id),
 		files_(files),
 		min_delay_(min_delay),
@@ -189,9 +189,9 @@ public:
 		faderange_ = value;
 	}
 
-	int minimum_delay() const { return min_delay_; }
+	auto minimum_delay() const { return min_delay_; }
 
-	void set_minimum_delay(int value) {
+	void set_minimum_delay(const std::chrono::milliseconds& value) {
 		min_delay_ = value;
 	}
 

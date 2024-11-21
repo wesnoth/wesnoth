@@ -170,7 +170,7 @@ void verify_and_set_global_variable(const vconfig &pcfg)
 	}
 	if (resources::controller->is_networked_mp()) {
 		config::attribute_value pcfg_side = pcfg["side"];
-		int side = pcfg_side;
+		int side = pcfg_side.to_int();
 		//Check side matching only if the side is not "global" or empty.
 		if (pcfg_side.str() != "global" && !pcfg_side.empty()) {
 			//Ensure that the side is valid.

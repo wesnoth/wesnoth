@@ -212,7 +212,7 @@ void preproc_define::read(const config& cfg)
 {
 	value = cfg["value"].str();
 	textdomain = cfg["textdomain"].str();
-	linenum = cfg["linenum"];
+	linenum = cfg["linenum"].to_int();
 	location = cfg["location"].str();
 
 	if(auto deprecated = cfg.optional_child("deprecated")) {
@@ -1126,7 +1126,7 @@ bool preprocessor_data::get_chunk()
 		++linenum_;
 	}
 
-	if(c == INLINED_PREPROCESS_DIRECTIVE_CHAR) {
+	if(c == static_cast<char>(INLINED_PREPROCESS_DIRECTIVE_CHAR)) {
 		std::string buffer(1, c);
 
 		while(true) {

@@ -118,8 +118,10 @@ void teleport_group::get_teleport_pair(
 	const filter_context * fc = resources::filter_con;
 	assert(fc);
 
+	utils::optional<ignore_units_filter_context> ignore_context;
 	if (ignore_units) {
-		fc = new ignore_units_filter_context(*resources::filter_con);
+		ignore_context.emplace(*resources::filter_con);
+		fc = &ignore_context.value();
 	}
 
 	vconfig filter(cfg_.child_or_empty("filter"), true);
@@ -132,10 +134,6 @@ void teleport_group::get_teleport_pair(
 
 		terrain_filter target_filter(target, fc, false);
 		target_filter.get_locations(reversed_ ? loc_pair.first : loc_pair.second, u);
-	}
-
-	if (ignore_units) {
-		delete fc;
 	}
 }
 
@@ -215,56 +213,39 @@ teleport_map::teleport_map(
 			}
 		}
 
-		std::string teleport_id = group.get_teleport_id();
 		std::set<map_location>::iterator source_it = locations.first.begin();
 		for (; source_it != locations.first.end(); ++source_it ) {
-			if(teleport_map_.count(*source_it) == 0) {
-				std::set<std::string> id_set;
-				id_set.insert(teleport_id);
-				teleport_map_.emplace(*source_it, id_set);
+			auto map_it = teleport_map_.find(*source_it);
+
+			if(map_it == teleport_map_.end()) {
+				teleport_map_.emplace(*source_it, std::unordered_set(locations.second.begin(), locations.second.end()));
 			} else {
-				(teleport_map_.find(*source_it)->second).insert(teleport_id);
+				map_it->second.insert(locations.second.begin(), locations.second.end());
 			}
 		}
-		sources_.emplace(teleport_id, locations.first);
-		targets_.emplace(teleport_id, locations.second);
+		sources_.insert(locations.first.begin(), locations.first.end());
+		targets_.insert(locations.second.begin(), locations.second.end());
 	}
 }
 
-std::set<map_location> teleport_map::get_adjacents(map_location loc) const
+const std::unordered_set<map_location>& teleport_map::get_adjacents(map_location loc) const
 {
 	const auto iter = teleport_map_.find(loc);
 	if(iter == teleport_map_.end()) {
-		return {};
+		return empty_set_;
 	}
 
-	std::set<map_location> res;
-	for(const std::string& key : iter->second) {
-		const auto& target = targets_.find(key)->second;
-		res.insert(target.begin(), target.end());
-	}
-
-	return res;
+	return iter->second;
 }
 
-std::set<map_location> teleport_map::get_sources() const
+const std::unordered_set<map_location>& teleport_map::get_sources() const
 {
-	std::set<map_location> res;
-	for(const auto& src : sources_) {
-		res.insert(src.second.begin(), src.second.end());
-	}
-
-	return res;
+	return sources_;
 }
 
-std::set<map_location> teleport_map::get_targets() const
+const std::unordered_set<map_location>& teleport_map::get_targets() const
 {
-	std::set<map_location> res;
-	for(const auto& tgt : targets_) {
-		res.insert(tgt.second.begin(), tgt.second.end());
-	}
-
-	return res;
+	return targets_;
 }
 
 const teleport_map get_teleport_locations(const unit &u,

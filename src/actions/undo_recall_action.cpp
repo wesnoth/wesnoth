@@ -30,11 +30,8 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 
-namespace actions
+namespace actions::undo
 {
-namespace undo
-{
-
 recall_action::recall_action(const unit_const_ptr recalled, const map_location& loc,
 			  const map_location& from, int orig_village_owner, bool time_bonus)
 	: undo_action()
@@ -105,5 +102,4 @@ bool recall_action::undo(int side)
 	return true;
 }
 
-}
 }

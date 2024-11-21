@@ -108,6 +108,11 @@ public:
 		can_shrink_ = can_shrink;
 	}
 
+	void set_font_size(int font_size)
+	{
+		font_size_ = font_size;
+	}
+
 	void set_text_alpha(unsigned short alpha);
 
 	const t_string& get_label() const
@@ -130,10 +135,7 @@ public:
 		const bool finalize = false);
 
 	// Attaches a callback function that will be called when a link is clicked
-	void register_link_callback(std::function<void(std::string)> link_handler)
-	{
-		link_handler_ = link_handler;
-	}
+	void register_link_callback(std::function<void(std::string)> link_handler);
 
 private:
 	/**
@@ -177,6 +179,11 @@ private:
 	 */
 	color_t link_color_;
 
+	/**
+	 * Base font size
+	 */
+	int font_size_;
+
 	bool can_shrink_;
 
 	unsigned short text_alpha_;
@@ -193,19 +200,12 @@ private:
 	/** The unparsed/raw text */
 	t_string unparsed_text_;
 
-	/** shapes used for size calculation */
-	std::unique_ptr<text_shape> tshape_;
-	std::unique_ptr<image_shape> ishape_;
-
 	/** Width and height of the canvas */
 	const unsigned init_w_;
-	unsigned w_, h_;
+	point size_;
 
 	/** Padding */
 	unsigned padding_;
-
-	/** Possible formatting tags, must be the same as those in gui2::text_shape::draw */
-	static const inline std::vector<std::string> format_tags_ = {"bold", "b", "italic", "i", "underline", "u"};
 
 	/** Create template for text config that can be shown in canvas */
 	void default_text_config(config* txt_ptr, t_string text = "");
@@ -218,12 +218,13 @@ private:
 	void add_link(config& curr_item, std::string name, std::string dest, const point& origin, int img_width);
 
 	/** size calculation functions */
-	point get_text_size(config& text_cfg, unsigned width = 0);
-	point get_image_size(config& img_cfg);
+	point get_text_size(config& text_cfg, unsigned width = 0) const;
+	point get_image_size(config& img_cfg) const;
 
-	wfl::map_formula_callable setup_text_renderer(config text_cfg, unsigned width = 0);
+	wfl::map_formula_callable setup_text_renderer(config text_cfg, unsigned width = 0) const;
 
-	size_t get_split_location(std::string text, const point& pos);
+	size_t get_split_location(std::string_view text, const point& pos);
+	std::vector<std::string> split_in_width(const std::string &s, const int font_size, const unsigned width);
 
 	/** link variables and functions */
 	std::vector<std::pair<rect, std::string>> links_;
@@ -242,9 +243,11 @@ private:
 
 	point calculate_best_size() const override
 	{
-		point size = styled_widget::calculate_best_size();
-		point new_size(w_ == 0 ? size.x : w_, h_ == 0 ? size.y : h_);
-		return new_size;
+		if(size_ == point{}) {
+			return styled_widget::calculate_best_size();
+		} else {
+			return size_;
+		}
 	}
 
 public:
@@ -290,6 +293,7 @@ struct rich_label_definition : public styled_widget_definition
 		explicit resolution(const config& cfg);
 
 		color_t link_color;
+		int font_size;
 	};
 };
 

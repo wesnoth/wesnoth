@@ -18,31 +18,33 @@
 #include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"
 
+#include <chrono>
 #include <vector>
 
 namespace image { class locator; }
+using namespace std::chrono_literals;
 
 template<typename T, typename D>
 class progressive_base
 {
 public:
-	using data_t = std::vector<std::pair<D, int>>;
+	using data_t = std::vector<std::pair<D, std::chrono::milliseconds>>;
 
 	progressive_base(const std::string& input)
 		: data_()
 		, input_(input)
 	{}
 
-	virtual const T get_current_element(int current_time, T default_val) const = 0;
+	virtual const T get_current_element(const std::chrono::milliseconds& current_time, T default_val) const = 0;
 
 	virtual bool does_not_change() const
 	{
 		return data_.size() <= 1;
 	}
 
-	int duration() const
+	std::chrono::milliseconds duration() const
 	{
-		int total = 0;
+		std::chrono::milliseconds total{0};
 		for(const auto& entry : data_) {
 			total += entry.second;
 		}
@@ -76,7 +78,7 @@ template<typename T>
 class progressive_pair : public progressive_base<T, std::pair<T, T>>
 {
 public:
-	progressive_pair(const std::string& input = "", int duration = 0)
+	progressive_pair(const std::string& input = "", const std::chrono::milliseconds& duration = std::chrono::milliseconds{0})
 		: progressive_base<T, std::pair<T, T>>(input)
 	{
 		auto& base_data = progressive_pair_base_type::data();
@@ -84,14 +86,14 @@ public:
 		const int split_flag = utils::REMOVE_EMPTY; // useless to strip spaces
 
 		const std::vector<std::string> comma_split = utils::split(input, ',', split_flag);
-		const int time_chunk = std::max<int>(1, duration / std::max<int>(comma_split.size(), 1));
+		const auto time_chunk = std::max(1ms, duration / std::max<int>(comma_split.size(), 1));
 
 		for(const auto& entry : comma_split) {
 			std::vector<std::string> colon_split = utils::split(entry, ':', split_flag);
-			int time = 0;
+			auto time = 0ms;
 
 			try {
-				time = (colon_split.size() > 1) ? std::stoi(colon_split[1]) : time_chunk;
+				time = (colon_split.size() > 1) ? std::chrono::milliseconds{std::stoi(colon_split[1])} : time_chunk;
 			} catch(const std::invalid_argument&) {
 				//ERR_NG << "Invalid time in unit animation: " << colon_split[1];
 			}
@@ -106,18 +108,18 @@ public:
 		}
 	}
 
-	virtual const T get_current_element(int current_time, T default_val = T()) const override
+	virtual const T get_current_element(const std::chrono::milliseconds& current_time, T default_val = T()) const override
 	{
 		const auto& base_data = progressive_pair_base_type::data();
-		const int& base_duration = progressive_pair_base_type::duration();
+		const std::chrono::milliseconds& base_duration = progressive_pair_base_type::duration();
 
 		if(base_data.empty()) {
 			return default_val;
 		}
 
-		int time = 0;
+		auto time = 0ms;
 		unsigned int i = 0;
-		const int searched_time = std::clamp(current_time, 0, base_duration);
+		const std::chrono::milliseconds searched_time = std::clamp(current_time, 0ms, base_duration);
 
 		while(time < searched_time && i < base_data.size()) {
 			time += base_data[i].second;
@@ -129,12 +131,12 @@ public:
 			time -= base_data[i].second;
 		}
 
-		const T first  = base_data[i].first.first;
-		const T second = base_data[i].first.second;
+		const auto [first, second] = base_data[i].first;
+		using fractional_milliseconds = std::chrono::duration<double, std::milli>;
 
 		return T((
-			static_cast<double>(searched_time - time) /
-			static_cast<double>(base_data[i].second)
+			fractional_milliseconds{searched_time - time} /
+			fractional_milliseconds{base_data[i].second}
 		) * (second - first) + first);
 	}
 
@@ -152,47 +154,51 @@ template<typename T>
 class progressive_single : public progressive_base<T, T>
 {
 public:
-	progressive_single(const std::string& input = "", int duration = 0)
+	progressive_single(const std::string& input = "", const std::chrono::milliseconds& duration = std::chrono::milliseconds{0})
 		: progressive_base<T, T>(input)
 	{
 		auto& base_data = progressive_single_base_type::data();
 
 		const std::vector<std::string> first_pass = utils::square_parenthetical_split(input);
-		int time_chunk = std::max<int>(duration, 1);
+		auto time_chunk = std::max(duration, 1ms);
 
-		if(duration > 1 && !first_pass.empty()) {
+		if(duration > 1ms && !first_pass.empty()) {
 			// If duration specified, divide evenly the time for items with unspecified times
-			int total_specified_time = 0;
+			auto total_specified_time = 0ms;
 
 			for(const std::string& fp_string : first_pass) {
 				std::vector<std::string> second_pass = utils::split(fp_string, ':');
 				if(second_pass.size() > 1) {
 					try {
-						total_specified_time += std::stoi(second_pass[1]);
+						total_specified_time += std::chrono::milliseconds{std::stoi(second_pass[1])};
 					} catch(const std::invalid_argument&) {
 						//ERR_NG << "Invalid time in unit animation: " << second_pass[1];
 					}
 				}
 			}
 
-			time_chunk = std::max<int>((duration - total_specified_time) / first_pass.size(), 1);
+			// Fun Fact: since size_t is unsigned, template argument deduction does not yield chrono::milliseconds,
+			// but rather duration<unsigned long long, std::milli>. That's why we explicitly cast to milliseconds.
+			std::chrono::milliseconds new_time_chunk{(duration - total_specified_time) / first_pass.size()};
+			time_chunk = std::max(new_time_chunk, 1ms);
 		}
 
 		for(const std::string& fp_string : first_pass) {
 			std::vector<std::string> second_pass = utils::split(fp_string, ':');
 			if(second_pass.size() > 1) {
 				try {
-					base_data.push_back({std::move(second_pass[0]), std::stoi(second_pass[1])});
+					std::chrono::milliseconds time{std::stoi(second_pass[1])};
+					base_data.emplace_back(std::move(second_pass[0]), time);
 				} catch(const std::invalid_argument&) {
 					//ERR_NG << "Invalid time in unit animation: " << second_pass[1];
 				}
 			} else {
-				base_data.push_back({std::move(second_pass[0]) ,time_chunk});
+				base_data.emplace_back(std::move(second_pass[0]), time_chunk);
 			}
 		}
 	}
 
-	virtual const T get_current_element(int current_time, T default_val = T()) const override
+	virtual const T get_current_element(const std::chrono::milliseconds& current_time, T default_val = T()) const override
 	{
 		const auto& base_data = progressive_single_base_type::data();
 
@@ -200,7 +206,7 @@ public:
 			return default_val;
 		}
 
-		int time = 0;
+		auto time = 0ms;
 		unsigned int i = 0;
 
 		while(time < current_time && i < base_data.size()) {
@@ -209,6 +215,8 @@ public:
 		}
 
 		// TODO: what is this for?
+		// ^ Seems that the value of i at this point is the first index whose time is *greater* than current_time,
+		// so the index needs to be adjusted to give the first whose time is less (or equal).
 		if(i) {
 			i--;
 		}

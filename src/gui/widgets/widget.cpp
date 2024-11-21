@@ -152,6 +152,16 @@ grid* widget::get_parent_grid()
 	return result ? dynamic_cast<grid*>(result) : nullptr;
 }
 
+const grid* widget::get_parent_grid() const
+{
+	const widget* result = parent_;
+	while(result && dynamic_cast<const grid*>(result) == nullptr) {
+		result = result->parent_;
+	}
+
+	return result ? dynamic_cast<const grid*>(result) : nullptr;
+}
+
 void widget::set_parent(widget* parent)
 {
 	parent_ = parent;

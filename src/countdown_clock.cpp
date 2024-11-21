@@ -17,21 +17,22 @@
 #include "team.hpp"
 #include "preferences/preferences.hpp"
 #include "sound.hpp"
+#include "utils/rate_counter.hpp"
+
+using namespace std::chrono_literals;
 
 namespace {
-	const int WARNTIME = 20000; //start beeping when 20 seconds are left (20,000ms)
-	unsigned timer_refresh = 0;
-	const unsigned timer_refresh_rate = 50; // prevents calling SDL_GetTicks() too frequently
+	constexpr auto warn_threshold = 20s; // start beeping when 20 seconds are left
+	constexpr auto fade_end = warn_threshold / 2;
+	utils::rate_counter timer_refresh_rate{50};
 }
-
 
 countdown_clock::countdown_clock(team& team)
 	: team_(team)
-	, last_timestamp_(SDL_GetTicks())
+	, last_timestamp_(clock::now())
 	, playing_sound_(false)
 {
 }
-
 
 countdown_clock::~countdown_clock()
 {
@@ -41,42 +42,42 @@ countdown_clock::~countdown_clock()
 	}
 }
 
-int countdown_clock::update_timestamp(int new_timestamp)
+std::chrono::milliseconds countdown_clock::update_timestamp()
 {
-	int res = std::max<int>(0, new_timestamp - last_timestamp_);
-	last_timestamp_ = new_timestamp;
-	return res;
+	auto now = clock::now();
+	auto prev_time = std::exchange(last_timestamp_, now);
+	return std::chrono::duration_cast<std::chrono::milliseconds>(now - prev_time);
 }
 
-void countdown_clock::update_team(int new_timestamp)
+void countdown_clock::update_team()
 {
-	int time_passed = update_timestamp(new_timestamp);
-	team_.set_countdown_time(std::max<int>(0, team_.countdown_time() - time_passed));
+	auto time_passed = update_timestamp();
+	team_.set_countdown_time(std::max(0ms, team_.countdown_time() - time_passed));
 }
 
 //make sure we think about countdown even while dialogs are open
-void countdown_clock::process(events::pump_info &info)
+void countdown_clock::process()
 {
-	if(info.ticks(&timer_refresh, timer_refresh_rate)) {
-		update(info.ticks());
+	if(timer_refresh_rate.poll()) {
+		update();
 	}
 }
 
-bool countdown_clock::update(int new_timestamp)
+bool countdown_clock::update()
 {
-	update_team(new_timestamp);
+	update_team();
 	maybe_play_sound();
-	return team_.countdown_time() > 0;
+	return team_.countdown_time() > 0ms;
 }
 
 void countdown_clock::maybe_play_sound()
 {
-	if(!playing_sound_ && team_.countdown_time() < WARNTIME )
+	if(!playing_sound_ && team_.countdown_time() < warn_threshold )
 	{
 		if(prefs::get().turn_bell() || prefs::get().sound() || prefs::get().ui_sound_on())
 		{
-			const int loop_ticks = team_.countdown_time();
-			const int fadein_ticks = (loop_ticks > WARNTIME / 2) ? loop_ticks - WARNTIME / 2 : 0;
+			const auto loop_ticks = team_.countdown_time();
+			const auto fadein_ticks = std::max(loop_ticks - fade_end, 0ms);
 			sound::play_timer(game_config::sounds::timer_bell, loop_ticks, fadein_ticks);
 			playing_sound_ = true;
 		}

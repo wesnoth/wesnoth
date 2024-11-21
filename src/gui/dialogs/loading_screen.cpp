@@ -24,13 +24,13 @@
 #include "cursor.hpp"
 #include "draw_manager.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "video.hpp"
 
+#include <chrono>
 #include <functional>
 
 static lg::log_domain log_loadscreen("loadscreen");
@@ -67,7 +67,7 @@ static const std::map<loading_stage, std::string> stage_names {
 	{ loading_stage::download_lobby_data, N_("Downloading lobby data") },
 };
 
-namespace { int last_spin_ = 0; }
+namespace { std::chrono::steady_clock::time_point last_spin; }
 
 namespace gui2::dialogs
 {
@@ -96,18 +96,18 @@ loading_screen::loading_screen(std::function<void()> f)
 	singleton_ = this;
 }
 
-void loading_screen::pre_show(window& window)
+void loading_screen::pre_show()
 {
-	window.set_enter_disabled(true);
-	window.set_escape_disabled(true);
+	set_enter_disabled(true);
+	set_escape_disabled(true);
 
 	cursor_setter_.reset(new cursor::setter(cursor::WAIT));
 
-	progress_stage_label_ = find_widget<label>(&window, "status", false, true);
-	animation_ = find_widget<drawing>(&window, "animation", false, true);
+	progress_stage_label_ = find_widget<label>("status", false, true);
+	animation_ = find_widget<drawing>("animation", false, true);
 }
 
-void loading_screen::post_show(window& /*window*/)
+void loading_screen::post_show()
 {
 	cursor_setter_.reset();
 }
@@ -134,9 +134,10 @@ void loading_screen::spin()
 	}
 
 	// Restrict actual update rate.
-	int elapsed = SDL_GetTicks() - last_spin_;
-	if (elapsed > draw_manager::get_frame_length() || elapsed < 0) {
-		last_spin_ = SDL_GetTicks();
+	auto now = std::chrono::steady_clock::now();
+	auto elapsed = now - last_spin;
+	if (elapsed > draw_manager::get_frame_length()) {
+		last_spin = now;
 		events::pump_and_draw();
 	}
 }
@@ -149,7 +150,7 @@ void loading_screen::raise()
 }
 
 // This will be run inside the window::show() loop.
-void loading_screen::process(events::pump_info&)
+void loading_screen::process()
 {
 	if (load_funcs_.empty()) {
 		return;

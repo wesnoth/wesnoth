@@ -19,7 +19,6 @@ class config;
 
 #include "exceptions.hpp"
 
-#include <ctime>
 #include <string>
 
 #include <boost/asio/io_service.hpp>
@@ -103,20 +102,8 @@ public:
 	/** Ban status description */
 	struct ban_info
 	{
-		BAN_TYPE type;			/**< Ban type */
-		std::time_t duration;	/**< Ban duration (0 if permanent) */
-
-		ban_info()
-			: type(BAN_NONE)
-			, duration(0)
-		{
-		}
-
-		ban_info(BAN_TYPE ptype, std::time_t pduration)
-			: type(ptype)
-			, duration(pduration)
-		{
-		}
+		BAN_TYPE type = BAN_NONE;			/**< Ban type */
+		std::chrono::seconds duration{0};	/**< Ban duration (0 if permanent) */
 	};
 
 	/**

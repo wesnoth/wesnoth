@@ -165,14 +165,16 @@ public:
 	struct rule_image_variant
 	{
 		/** Constructor for the normal default case */
-		rule_image_variant(const std::string& image_string, const std::string& variations, int random_start = -1);
+		rule_image_variant(const std::string& image_string,
+			const std::string& variations,
+			const std::chrono::milliseconds& random_start = std::chrono::milliseconds{-1});
 
 		/** Constructor for true [variant] cases */
 		rule_image_variant(const std::string& image_string,
 				const std::string& variations,
 				const std::string& tod,
 				const std::string& has_flag,
-				int random_start = -1);
+				const std::chrono::milliseconds& random_start = std::chrono::milliseconds{-1});
 
 		/** A string representing either the filename for an image, or
 		 *  a list of images, with an optional timing for each image.
@@ -211,7 +213,7 @@ public:
 
 		/** Specify the allowed amount of random shift (in milliseconds) applied
 		 * to the animation start time, -1 for shifting without limitation.*/
-		int random_start;
+		std::chrono::milliseconds random_start;
 	};
 
 	/**

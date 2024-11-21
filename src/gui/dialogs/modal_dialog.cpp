@@ -42,7 +42,6 @@ modal_dialog::modal_dialog(const std::string& window_id)
 	, allow_plugin_skip_(true)
 	, show_even_without_video_(false)
 {
-	window::finish_build(get_window_builder(window_id));
 	widget::set_id(window_id);
 }
 
@@ -84,7 +83,7 @@ bool modal_dialog::show(const unsigned auto_close_time)
 
 	init_fields();
 
-	pre_show(*this);
+	pre_show();
 
 	{ // Scope the window stack
 		cursor::setter cur{cursor::NORMAL};
@@ -108,7 +107,7 @@ bool modal_dialog::show(const unsigned auto_close_time)
 
 	finalize_fields((retval_ == retval::OK || always_save_fields_));
 
-	post_show(*this);
+	post_show();
 
 	// post_show may have updated the window retval. Update it here.
 	retval_ = window::get_retval();
@@ -226,12 +225,12 @@ field_label* modal_dialog::register_label(const std::string& id,
 	return field;
 }
 
-void modal_dialog::pre_show(window& /*window*/)
+void modal_dialog::pre_show()
 {
 	/* DO NOTHING */
 }
 
-void modal_dialog::post_show(window& /*window*/)
+void modal_dialog::post_show()
 {
 	/* DO NOTHING */
 }

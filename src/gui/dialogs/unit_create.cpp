@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/unit_create.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/label.hpp"
@@ -50,12 +49,12 @@ unit_create::unit_create()
 {
 }
 
-void unit_create::pre_show(window& window)
+void unit_create::pre_show()
 {
 	toggle_button& male_toggle
-			= find_widget<toggle_button>(&window, "male_toggle", false);
+			= find_widget<toggle_button>("male_toggle");
 	toggle_button& female_toggle
-			= find_widget<toggle_button>(&window, "female_toggle", false);
+			= find_widget<toggle_button>("female_toggle");
 
 	gender_toggle.add_member(&male_toggle, unit_race::MALE);
 	gender_toggle.add_member(&female_toggle, unit_race::FEMALE);
@@ -65,26 +64,26 @@ void unit_create::pre_show(window& window)
 	gender_toggle.set_callback_on_value_change(
 		std::bind(&unit_create::gender_toggle_callback, this, std::placeholders::_2));
 
-	menu_button& var_box = find_widget<menu_button>(&window, "variation_box", false);
+	menu_button& var_box = find_widget<menu_button>("variation_box");
 
 	connect_signal_notify_modified(var_box, std::bind(&unit_create::variation_menu_callback, this));
 
-	listbox& list = find_widget<listbox>(&window, "unit_type_list", false);
+	listbox& list = find_widget<listbox>("unit_type_list");
 
 	text_box* filter
-			= find_widget<text_box>(&window, "filter_box", false, true);
+			= find_widget<text_box>("filter_box", false, true);
 
 	filter->set_text_changed_callback(
 			std::bind(&unit_create::filter_text_changed, this, std::placeholders::_2));
 
-	window.keyboard_capture(filter);
-	window.add_to_keyboard_chain(&list);
+	keyboard_capture(filter);
+	add_to_keyboard_chain(&list);
 
 	connect_signal_notify_modified(list, std::bind(&unit_create::list_item_clicked, this));
 
 	list.clear();
 
-	for(const auto & i : unit_types.types())
+	for(const auto& i : unit_types.types())
 	{
 		// Make sure this unit type is built with the data we need.
 		unit_types.build_unit_type(i.second, unit_type::FULL);
@@ -125,9 +124,9 @@ void unit_create::pre_show(window& window)
 	list_item_clicked();
 }
 
-void unit_create::post_show(window& window)
+void unit_create::post_show()
 {
-	listbox& list = find_widget<listbox>(&window, "unit_type_list", false);
+	listbox& list = find_widget<listbox>("unit_type_list");
 
 	choice_ = "";
 
@@ -153,7 +152,7 @@ void unit_create::post_show(window& window)
 void unit_create::update_displayed_type()
 {
 	const int selected_row
-		= find_widget<listbox>(this, "unit_type_list", false).get_selected_row();
+		= find_widget<listbox>("unit_type_list").get_selected_row();
 
 	if(selected_row == -1) {
 		return;
@@ -167,13 +166,13 @@ void unit_create::update_displayed_type()
 		ut = &ut->get_variation(variation_);
 	}
 
-	find_widget<unit_preview_pane>(this, "unit_details", false).set_displayed_type(*ut);
+	find_widget<unit_preview_pane>("unit_details").set_displayed_type(*ut);
 }
 
 void unit_create::list_item_clicked()
 {
 	const int selected_row
-		= find_widget<listbox>(this, "unit_type_list", false).get_selected_row();
+		= find_widget<listbox>("unit_type_list").get_selected_row();
 
 	if(selected_row == -1) {
 		return;
@@ -185,7 +184,7 @@ void unit_create::list_item_clicked()
 		return units_[selected_row]->has_gender_variation(gender);
 	});
 
-	menu_button& var_box = find_widget<menu_button>(this, "variation_box", false);
+	menu_button& var_box = find_widget<menu_button>("variation_box");
 	std::vector<config> var_box_values;
 	var_box_values.emplace_back("label", _("unit_variation^Default Variation"), "variation_id", "");
 
@@ -229,7 +228,7 @@ void unit_create::list_item_clicked()
 
 void unit_create::filter_text_changed(const std::string& text)
 {
-	listbox& list = find_widget<listbox>(this, "unit_type_list", false);
+	listbox& list = find_widget<listbox>("unit_type_list");
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
@@ -244,11 +243,9 @@ void unit_create::filter_text_changed(const std::string& text)
 		for(unsigned int i = 0; i < list.get_item_count(); i++) {
 			grid* row = list.get_row_grid(i);
 
-			grid::iterator it = row->begin();
-			label& type_label
-					= find_widget<label>(*it, "unit_type", false);
-			label& race_label
-					= find_widget<label>(*it, "race", false);
+//			grid::iterator it = row->begin();
+			label& type_label = row->find_widget<label>("unit_type");
+			label& race_label = row->find_widget<label>("race");
 
 			assert(i < units_.size());
 			const std::string& unit_type_id = units_[i] ? units_[i]->id() : "";
@@ -282,7 +279,7 @@ void unit_create::gender_toggle_callback(const unit_race::GENDER val)
 
 void unit_create::variation_menu_callback()
 {
-	menu_button& var_box = find_widget<menu_button>(this, "variation_box", false);
+	menu_button& var_box = find_widget<menu_button>("variation_box");
 	variation_ = var_box.get_value_config()["variation_id"].str();
 
 	update_displayed_type();

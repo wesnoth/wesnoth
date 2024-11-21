@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/game_stats.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/stacked_widget.hpp"
@@ -25,6 +24,7 @@
 #include "game_classification.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
+#include "serialization/markup.hpp"
 #include "resources.hpp"
 #include "units/map.hpp"
 #include "units/unit.hpp"
@@ -39,10 +39,10 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(game_stats)
 
-game_stats::game_stats(const display_context& board, const int viewing_team, int& selected_side_number)
+game_stats::game_stats(const display_context& board, const team& viewing_team, int& selected_side_number)
 	: modal_dialog(window_id())
 	, board_(board)
-	, viewing_team_(board_.teams()[viewing_team])
+	, viewing_team_(viewing_team)
 	, selected_side_number_(selected_side_number)
 {
 }
@@ -61,13 +61,13 @@ unit_const_ptr game_stats::get_leader(const int side)
 static std::string controller_name(const team& t)
 {
 	static const side_controller::sized_array<t_string> names {_("controller^Idle"), _("controller^Human"), _("controller^AI"), _("controller^Reserved")};
-	return "<span color='#808080'><small>" + names[static_cast<int>(t.controller())] + "</small></span>";
+	return markup::span_color("#808080", markup::tag("small", names[static_cast<int>(t.controller())]));
 }
 
-void game_stats::pre_show(window& window)
+void game_stats::pre_show()
 {
-	listbox& stats_list    = find_widget<listbox>(&window, "game_stats_list", false);
-	listbox& settings_list = find_widget<listbox>(&window, "scenario_settings_list", false);
+	listbox& stats_list    = find_widget<listbox>("game_stats_list");
+	listbox& settings_list = find_widget<listbox>("scenario_settings_list");
 
 	for(const auto& team : board_.teams()) {
 		if(team.hidden()) {
@@ -108,7 +108,7 @@ void game_stats::pre_show(window& window)
 				}
 			}
 
-			leader_name = "<span color='" + team::get_side_highlight_pango(team.side()) + "'>" + leader_name + "</span>";
+			leader_name = markup::span_color(team::get_side_highlight_pango(team.side()), leader_name);
 		}
 
 		//
@@ -134,7 +134,7 @@ void game_stats::pre_show(window& window)
 				gold_str = utils::half_signed_value(team.gold());
 			}
 
-			column_stats["label"] = team.gold() < 0 ? "<span color='#ff0000'>" + gold_str + "</span>" : gold_str;
+			column_stats["label"] = team.gold() < 0 ? markup::span_color("#ff0000", gold_str) : gold_str;
 			row_data_stats.emplace("team_gold", column_stats);
 
 			std::string village_count = std::to_string(team.villages().size());
@@ -152,7 +152,7 @@ void game_stats::pre_show(window& window)
 			row_data_stats.emplace("team_upkeep", column_stats);
 
 			const std::string income = utils::signed_value(data.net_income);
-			column_stats["label"] = data.net_income < 0 ? "<span color='#ff0000'>" + income + "</span>" : income;
+			column_stats["label"] = data.net_income < 0 ? markup::span_color("#ff0000", income) : income;
 			row_data_stats.emplace("team_income", column_stats);
 		}
 
@@ -227,9 +227,9 @@ void game_stats::pre_show(window& window)
 	//
 	// Set up tab control
 	//
-	listbox& tab_bar = find_widget<listbox>(&window, "tab_bar", false);
+	listbox& tab_bar = find_widget<listbox>("tab_bar");
 
-	window.keyboard_capture(&tab_bar);
+	keyboard_capture(&tab_bar);
 
 	connect_signal_notify_modified(tab_bar, std::bind(&game_stats::on_tab_select, this));
 
@@ -238,23 +238,23 @@ void game_stats::pre_show(window& window)
 
 void game_stats::on_tab_select()
 {
-	const int i = find_widget<listbox>(get_window(), "tab_bar", false).get_selected_row();
+	const int i = find_widget<listbox>("tab_bar").get_selected_row();
 
-	find_widget<stacked_widget>(get_window(), "pager", false).select_layer(i);
+	find_widget<stacked_widget>("pager").select_layer(i);
 
 	// There are only two tabs, so this is simple
-	find_widget<label>(get_window(), "title", false).set_label(
+	find_widget<label>("title").set_label(
 		i == 0 ? _("Current Status") : _("Scenario Settings")
 	);
 }
 
-void game_stats::post_show(window& window)
+void game_stats::post_show()
 {
 	if(get_retval() == retval::OK) {
-		const int selected_tab = find_widget<listbox>(&window, "tab_bar", false).get_selected_row();
+		const int selected_tab = find_widget<listbox>("tab_bar").get_selected_row();
 
 		const std::string list_id = selected_tab == 0 ? "game_stats_list" : "scenario_settings_list";
-		selected_side_number_ = team_data_[find_widget<listbox>(&window, list_id, false).get_selected_row()].side;
+		selected_side_number_ = team_data_[find_widget<listbox>(list_id).get_selected_row()].side;
 	}
 }
 

@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "sdl/input.hpp" // for sdl::get_mods
 #include "serialization/unicode.hpp"
+#include "utils/general.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -327,7 +328,7 @@ bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 void del_hotkey(hotkey_ptr item)
 {
 	if(!hotkeys_.empty()) {
-		hotkeys_.erase(std::remove(hotkeys_.begin(), hotkeys_.end(), item));
+		utils::erase(hotkeys_, item);
 	}
 }
 

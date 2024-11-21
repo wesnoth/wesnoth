@@ -28,8 +28,7 @@ class editor_palette : public tristate_palette {
 
 public:
 
-	editor_palette(editor_display &gui, const game_config_view& /*cfg*/
-	             , int item_size, std::size_t columns, editor_toolkit &toolkit)
+	editor_palette(editor_display &gui, int item_size, std::size_t columns, editor_toolkit &toolkit)
 		: tristate_palette()
 		, groups_()
 		, gui_(gui)
@@ -48,8 +47,6 @@ public:
 		, buttons_()
 	{
 	}
-
-
 
 	virtual sdl_handler_vector handler_members() override;
 
@@ -90,7 +87,7 @@ public:
 
 	void swap() override;
 
-	virtual std::string get_help_string() = 0;
+	virtual std::string get_help_string() const = 0;
 
 	/** Return the currently selected foreground/background item. */
 	const Item& selected_fg_item() const { return item_map_.find(selected_fg_item_)->second; }

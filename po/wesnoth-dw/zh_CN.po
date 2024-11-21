@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2024-06-02 16:50+0800\n"
+"POT-Creation-Date: 2024-10-21 16:11 UTC\n"
+"PO-Revision-Date: 2024-09-16 13:04+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -526,7 +526,7 @@ msgid ""
 msgstr ""
 "我们沿着海岸向北，然后向西去比尔希尔德岛。泰歌雅住在比尔希尔德岛西边的小岛"
 "上，那里位于提里嘎兹城的西南偏西方向的大洋中。所有人都得去；留在这里就是等"
-"死，而小群小群的部队去闯提瑞格斯西面的外海是很危险的。"
+"死，而小群小群的部队去闯提里嘎兹西面的外海是很危险的。"
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:360
@@ -1529,7 +1529,7 @@ msgid ""
 "thought they might be safe."
 msgstr ""
 "虽然人鱼们知道浅水更加安全，但现在他们别无选择，只能横穿外海。几天以后，他们"
-"发现前方有几座岛屿。难民中柔弱的和年幼的需要休息；丝琳娜只隐约记得这些岛，但"
+"发现前方有几座岛屿。难民中柔弱的和年幼的需要休息；赛兰娜只隐约记得这些岛，但"
 "以为它们也许是安全的。"
 
 #. [side]: id=Growloff, type=Ranger
@@ -2042,94 +2042,157 @@ msgid "Hungry Creatures"
 msgstr "饥饿的生物"
 
 #. [objective]: condition=win
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:70
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:74
 msgid "Find Caladon the mage"
 msgstr "找到法师卡拉东"
 
+#. [objective]: condition=win
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:84
+msgid "Move a merfolk unit to Caladon’s shack and talk to him"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:94
+msgid "You can also visit Caladon with Keshan"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:107
+msgid "You can also visit Caladon with Inky"
+msgstr ""
+
+#. [unit]: type=Silver Mage, id=Caladon
+#. [side]
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:136
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:96
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:98
+msgid "Caladon"
+msgstr "卡拉东"
+
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:141
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:213
 msgid ""
 "I do not much care for the look of this area. The darkness seems to hang "
 "beneath the trees, unnaturally dense."
 msgstr "虽然我不关心这个地区的样子，但黑暗似乎萦绕在树下，浓密得不正常。"
 
 #. [message]: speaker=Teeloa
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:145
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:217
 msgid "I just heard a splash. I think something’s out there."
 msgstr "我刚听到了什么东西溅起来的声音。我想有什么东西在这儿。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:149
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:221
 msgid "Let us find the mage quickly and leave."
 msgstr "我们快点找到那个法师，然后离开这里。"
 
 #. [message]: speaker=Teeloa
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:339
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:408
 msgid "Hey, that cavern is full of bats! I HATE those things."
 msgstr "嘿，洞里到处都是蝙蝠！我<b>恨</b>这些东西。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:343
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:412
 msgid "I hope there aren’t any more bats in there."
 msgstr "我希望那边不要有更多的蝙蝠。"
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:353
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:422
 msgid ""
 "This is a good place for a large colony, so I think we will see more soon."
 msgstr "这地方是个很合适的聚居地，所以我觉得我们很快还会看到更多蝙蝠。"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:359
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:428
 msgid ""
 "This is a good place for a large colony, so I imagine we will see more soon."
 msgstr "这地方是个很合适的聚居地，所以我猜想我们很快还会看到更多蝙蝠。"
 
-#. [unit]: type=Silver Mage, id=Caladon
-#. [side]
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:383
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:96
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:98
-msgid "Caladon"
-msgstr "卡拉东"
+#. [message]: speaker=unit
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:452
+msgid "Neep, neep, neep!"
+msgstr "吱，吱，吱！"
 
-#. [message]: speaker=Keshan
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:400
+#. [message]: speaker=Caladon
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:460
+msgid "Another of these ACCURSED bats! BEGONE!"
+msgstr ""
+
+#. [floating_text]
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:480
+msgid "SHRIEK!"
+msgstr ""
+
+#. [message]: speaker=Cylanna
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:505
+msgid "Caladon does not seem to be very happy about the bat infestation."
+msgstr ""
+
+#. [message]: speaker=Cylanna
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:505
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:576
+msgid "He might be more welcoming of one of our people."
+msgstr ""
+
+#. [message]: speaker=Kai Krellis
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:509
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:580
+msgid "Let’s go, men!"
+msgstr ""
+
+#. [label]
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:513
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:584
+msgid "Caladon’s shack"
+msgstr ""
+
+#. [message]: speaker=Caladon
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:538
+msgid "What kind of abomination is THAT!?!"
+msgstr ""
+
+#. [message]: speaker=Cylanna
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:576
+msgid "It appears that Caladon does not want to deal with the undead."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:626
 msgid "There is somebody here."
 msgstr "这里有人。"
 
+#. [message]: speaker=unit
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:632
+msgid "Gllllbbbg!"
+msgstr ""
+
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:404
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:638
 msgid "Whoa there! BACK off or else!"
 msgstr "谁在那儿！<b>滚开</b>，不然的话！"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:408
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:642
 msgid "Do not worry about him. He is friendly."
 msgstr "别害怕他。他是朋友。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:420
-msgid "Neep, neep, neep!"
-msgstr "吱，吱，吱！"
-
-#. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:426
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:648
 msgid "Hey, I found somebody!"
 msgstr "嘿，我找到个人！"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:434
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:654
 msgid "You must be Caladon. We are glad to see you."
 msgstr "您一定是卡拉东吧。我们见到您很高兴。"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:438
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:658
 msgid "I am Caladon. Am I glad to see YOU?"
 msgstr "我是卡拉东。我见到<b>你们</b>能高兴得起来吗？"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:442
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:662
 msgid ""
 "I am Kai Krellis of Jotha. I am seeking a flaming sword, and I am told you "
 "know where to find it."
@@ -2137,7 +2200,7 @@ msgstr ""
 "我是礁沙城的克雷利斯凯王。我在寻找一把烈焰神剑，我听说您知道该去哪里找。"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:446
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:666
 msgid ""
 "Ha! A MERman wants the Flaming Sword of AGNOVON! Why would YOU be able to "
 "get it when so many others could NOT? Although you do have an impressive "
@@ -2147,12 +2210,12 @@ msgstr ""
 "<b>你们</b>凭什么可以？虽说你倒确实是有一群让人印象深刻的盟友。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:450
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:670
 msgid "Whether I can succeed or not, I must try. Will you help me find it?"
 msgstr "不管能不能成功，我总是要试一下的。您愿意帮我们找到它吗？"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:454
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:674
 msgid ""
 "I will show you EXACTLY where it is, but knowing where to FIND it isn’t the "
 "hard part. Oh, no! You will see, my fine merman, you will see."
@@ -2161,12 +2224,12 @@ msgstr ""
 "哦，不！你会明白的，我的好人鱼，你会明白的。"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:458
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:678
 msgid "We would be very grateful if you would guide us."
 msgstr "如果您愿意做我们的向导的话，我们会很感激您的。"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:462
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:682
 msgid ""
 "I would be HAPPY to guide such a pretty mermaid AND her friends. Follow me "
 "everybody!"
@@ -2174,20 +2237,20 @@ msgstr ""
 "我也很<b>高兴</b>能给像您这样美丽的人鱼<b>和</b>您的朋友做向导。大家跟我来！"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:486
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:712
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1105
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:135
 msgid "Cylanna! I need you!"
 msgstr "赛兰娜！救我！"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:490
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:716
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1109
 msgid "Tyegëa will never forgive me. We are lost."
 msgstr "泰歌雅永远也不会原谅我的。我们失败了。"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:504
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:730
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1123
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:149
 msgid "We are lost without our king!"

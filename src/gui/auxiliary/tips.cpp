@@ -21,6 +21,7 @@
 #include "preferences/preferences.hpp"
 #include "random.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/general.hpp"
 
 namespace gui2
 {
@@ -38,7 +39,7 @@ std::vector<game_tip> load(const config& cfg)
 	std::vector<game_tip> result;
 
 	for(const auto& tip : cfg.child_range("tip")) {
-		result.emplace_back(tip["text"], tip["source"], tip["encountered_units"]);
+		result.emplace_back(tip["text"].t_str(), tip["source"].t_str(), tip["encountered_units"].str());
 	}
 
 	return result;
@@ -50,7 +51,7 @@ std::vector<game_tip> shuffle(const std::vector<game_tip>& tips)
 	const std::set<std::string>& units = prefs::get().encountered_units();
 
 	// Remove entries whose filters do not match from the tips list.
-	const auto iter = std::remove_if(result.begin(), result.end(), [&units](const game_tip& tip) {
+	utils::erase_if(result, [&units](const game_tip& tip) {
 		const auto& filters = tip.unit_filter_;
 
 		// Filter passes there's no filter at all or if every unit specified has already been
@@ -63,9 +64,6 @@ std::vector<game_tip> shuffle(const std::vector<game_tip>& tips)
 
 		return !passes_filter;
 	});
-
-	// Prune invalid entries.
-	result.erase(iter, result.end());
 
 	// Shuffle the list.
 	std::shuffle(result.begin(), result.end(), randomness::rng::default_instance());

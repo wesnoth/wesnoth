@@ -174,8 +174,8 @@ static int intf_wml_merge(lua_State* L)
 		base.append_children(merge);
 	} else {
 		if(mode == "replace") {
-			for(const auto c : merge.all_children_range()) {
-				base.clear_children(c.key);
+			for(const auto [key, _] : merge.all_children_view()) {
+				base.clear_children(key);
 			}
 		} else if(mode != "merge") {
 			return luaL_argerror(L, 3, "invalid merge mode - must be merge, append, or replace");

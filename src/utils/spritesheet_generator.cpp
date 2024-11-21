@@ -24,6 +24,7 @@
 #include "sdl/surface.hpp"
 #include "sdl/utils.hpp"
 #include "serialization/binary_or_text.hpp"
+#include "utils/optimer.hpp"
 
 #include <SDL2/SDL_image.h>
 
@@ -228,9 +229,9 @@ void handle_dir_contents(const fs::path& path)
 
 void build_spritesheet_from(const std::string& entry_point)
 {
-#ifdef DEBUG_SPRITESHEET_OUTPUT
-	const std::size_t start = SDL_GetTicks();
-#endif
+	const utils::ms_optimer timer([&](const auto& timer) {
+		PLAIN_LOG << "Spritesheet generation of '" << entry_point << "' took: " << timer;
+	});
 
 	if(auto path = filesystem::get_binary_file_location("images", entry_point)) {
 		try {
@@ -241,10 +242,6 @@ void build_spritesheet_from(const std::string& entry_point)
 	} else {
 		PLAIN_LOG << "Cannot find entry point to build spritesheet: " << entry_point;
 	}
-
-#ifdef DEBUG_SPRITESHEET_OUTPUT
-	PLAIN_LOG << "Spritesheet generation of '" << entry_point << "' took: " << (SDL_GetTicks() - start) << "ms\n";
-#endif
 }
 
 } // namespace image

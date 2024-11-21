@@ -73,6 +73,7 @@
 #include "random.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "side_controller.hpp"
+#include "utils/general.hpp"
 #include "variable.hpp" // for config_variable_set
 #include "variable_info.hpp"
 
@@ -708,7 +709,7 @@ void saved_game::update_label()
 		label = classification().abbrev + "-" + starting_point_["name"];
 	}
 
-	label.erase(std::remove_if(label.begin(), label.end(), is_illegal_file_char), label.end());
+	utils::erase_if(label, is_illegal_file_char);
 	std::replace(label.begin(), label.end(), '_', ' ');
 }
 

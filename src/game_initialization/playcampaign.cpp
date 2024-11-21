@@ -59,7 +59,7 @@ level_result::type campaign_controller::playsingle_scenario(end_level_data &end_
 
 	playsingle_controller playcontroller(starting_point, state_);
 
-	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.ticks());
+	LOG_NG << "created objects... " << playcontroller.timer();
 	if(is_replay_) {
 		playcontroller.enable_replay(is_unit_test_);
 	}
@@ -276,7 +276,7 @@ level_result::type campaign_controller::play_game()
 		utils::string_map symbols;
 		symbols["scenario"] = state_.get_scenario_id();
 
-		std::string message = _("Unknown scenario: '$scenario|'");
+		std::string message = _("Unknown scenario: ‘$scenario|’");
 		message = utils::interpolate_variables_into_string(message, &symbols);
 
 		gui2::show_error_message(message);

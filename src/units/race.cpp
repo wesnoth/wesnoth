@@ -46,37 +46,36 @@ static const config &empty_topics() {
 		return cfg;
 }
 
-unit_race::unit_race() :
-		cfg_(),
-		id_(),
-		name_(),
-		plural_name_(),
-		description_(),
-		ntraits_(0),
-		traits_(empty_traits().child_range("trait")),
-		topics_(empty_topics().child_range("topic")),
-		global_traits_(true),
-		undead_variation_(),
-		help_taxonomy_()
+unit_race::unit_race()
+	: cfg_()
+	, id_()
+	, name_()
+	, plural_name_()
+	, description_()
+	, ntraits_(0)
+	, traits_(empty_traits().child_range("trait"))
+	, topics_(empty_topics().child_range("topic"))
+	, global_traits_(true)
+	, undead_variation_()
+	, help_taxonomy_()
 {
 	for(auto& generator : name_generator_) {
 		generator.reset(new name_generator());
 	}
 }
 
-unit_race::unit_race(const config& cfg) :
-		cfg_(cfg),
-		id_(cfg["id"]),
-		icon_(cfg["editor_icon"]),
-		plural_name_(cfg["plural_name"].t_str()),
-		description_(cfg["description"].t_str()),
-		ntraits_(cfg["num_traits"]),
-		traits_(cfg.child_range("trait")),
-		topics_(cfg.child_range("topic")),
-		global_traits_(!cfg["ignore_global_traits"].to_bool()),
-		undead_variation_(cfg["undead_variation"]),
-		help_taxonomy_(cfg["help_taxonomy"])
-
+unit_race::unit_race(const config& cfg)
+	: cfg_(cfg)
+	, id_(cfg["id"])
+	, icon_(cfg["editor_icon"])
+	, plural_name_(cfg["plural_name"].t_str())
+	, description_(cfg["description"].t_str())
+	, ntraits_(cfg["num_traits"].to_int())
+	, traits_(cfg.child_range("trait"))
+	, topics_(cfg.child_range("topic"))
+	, global_traits_(!cfg["ignore_global_traits"].to_bool())
+	, undead_variation_(cfg["undead_variation"])
+	, help_taxonomy_(cfg["help_taxonomy"])
 {
 	if (plural_name_.empty()) {
 		lg::log_to_chat() << "[race] id='" << id_ << "' is missing a plural_name field.\n";

@@ -67,7 +67,7 @@ suppose_dead::suppose_dead(const config& cfg, bool hidden)
 	, loc_(cfg.mandatory_child("loc_")["x"],cfg.mandatory_child("loc_")["y"], wml_loc())
 {
 	// Construct and validate unit_
-	unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"]);
+	unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"].to_size_t());
 	if(unit_itor == resources::gameboard->units().end())
 		throw action::ctor_err("suppose_dead: Invalid underlying_id");
 

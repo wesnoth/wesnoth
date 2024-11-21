@@ -20,6 +20,7 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/schema_validator.hpp"
+#include "utils/general.hpp"
 #include "game_version.hpp"
 #include "wml_exception.hpp"
 
@@ -231,8 +232,7 @@ static std::string strip_cr(std::string str, bool strip)
 {
 	if(!strip)
 		return str;
-	std::string::iterator new_end = std::remove_if(str.begin(), str.end(), IsCR);
-	str.erase(new_end, str.end());
+	utils::erase_if(str, IsCR);
 	return str;
 }
 

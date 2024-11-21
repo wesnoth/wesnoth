@@ -23,20 +23,19 @@ persist_manager::persist_manager()
 
 persist_manager::~persist_manager() {
 	cancel_transaction();
-	for (context_map::iterator i = contexts_.begin(); i != contexts_.end(); ++i)
-		delete (i->second);
 }
 
 persist_context &persist_manager::get_context(const std::string &ns)
 {
 	persist_context::name_space name(ns,true);
 	std::string key(name.root_);
-	context_map::iterator i = contexts_.find(key);
-	if (i == contexts_.end()) {
-		contexts_[key] = new persist_file_context(key);
-		if (in_transaction_) contexts_[key]->start_transaction();
+	context_map::iterator iter = contexts_.find(key);
+	if (iter == contexts_.end()) {
+		auto pfc = std::make_unique<persist_file_context>(key);
+		if (in_transaction_) pfc->start_transaction();
+		std::tie(iter, std::ignore) = contexts_.emplace(key, std::move(pfc));
 	}
-	persist_context *ret = contexts_[key];
+	auto& ret = iter->second;
 	if (ret->get_node() != ns)
 		ret->set_node(name.descendants_);
 	return *ret;

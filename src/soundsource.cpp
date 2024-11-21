@@ -15,15 +15,15 @@
 
 #include "display.hpp"
 #include "random.hpp"
+#include "serialization/chrono.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
 
-#include <SDL2/SDL_timer.h>
-
 namespace soundsource {
 
+using namespace std::chrono_literals;
 const unsigned DEFAULT_CHANCE           = 100;
-const unsigned DEFAULT_DELAY            = 1000;
+const auto DEFAULT_DELAY                = 1000ms;
 
 unsigned int positional_source::last_id = 0;
 
@@ -80,7 +80,7 @@ bool manager::contains(const std::string& id)
 
 void manager::update()
 {
-	unsigned int time = SDL_GetTicks();
+	auto time = std::chrono::steady_clock::now();
 
 	for(positional_source_iterator it = sources_.begin(); it != sources_.end(); ++it) {
 		(*it).second->update(time, disp_);
@@ -89,7 +89,7 @@ void manager::update()
 
 void manager::update_positions()
 {
-	unsigned int time = SDL_GetTicks();
+	auto time = std::chrono::steady_clock::now();
 
 	for(positional_source_iterator it = sources_.begin(); it != sources_.end(); ++it) {
 		(*it).second->update_positions(time, disp_);
@@ -108,7 +108,7 @@ void manager::write_sourcespecs(config& cfg) const
 }
 
 positional_source::positional_source(const sourcespec &spec) :
-	last_played_(0),
+	last_played_(),
 	min_delay_(spec.minimum_delay()),
 	chance_(spec.chance()),
 	loops_(spec.loops()),
@@ -120,8 +120,8 @@ positional_source::positional_source(const sourcespec &spec) :
 	files_(spec.files()),
 	locations_(spec.get_locations())
 {
-	assert(range_ > 0);
-	assert(faderange_ > 0);
+	assert(range_ >= 0);
+	assert(faderange_ >= 0);
 }
 
 positional_source::~positional_source()
@@ -134,9 +134,9 @@ bool positional_source::is_global() const
 	return locations_.empty();
 }
 
-void positional_source::update(unsigned int time, const display &disp)
+void positional_source::update(const std::chrono::steady_clock::time_point& time, const display &disp)
 {
-	if (time - last_played_ < static_cast<unsigned>(min_delay_) || sound::is_sound_playing(id_))
+	if (time - last_played_ < min_delay_ || sound::is_sound_playing(id_))
 		return;
 
 	int i = randomness::rng::default_instance().get_random_int(1, 100);
@@ -166,7 +166,7 @@ void positional_source::update(unsigned int time, const display &disp)
 	}
 }
 
-void positional_source::update_positions(unsigned int time, const display &disp)
+void positional_source::update_positions(const std::chrono::steady_clock::time_point& time, const display &disp)
 {
 	if(is_global()) {
 		return;
@@ -189,8 +189,8 @@ void positional_source::update_positions(unsigned int time, const display &disp)
 
 int positional_source::calculate_volume(const map_location &loc, const display &disp)
 {
-	assert(range_ > 0);
-	assert(faderange_ > 0);
+	assert(range_ >= 0);
+	assert(faderange_ >= 0);
 
 	if((check_shrouded_ && disp.shrouded(loc)) || (check_fogged_ && disp.fogged(loc)))
 		return DISTANCE_SILENT;
@@ -201,6 +201,10 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 
 	if(distance <= range_) {
 		return 0;
+	}
+
+	if(faderange_ == 0) {
+		return DISTANCE_SILENT;
 	}
 
 	return static_cast<int>((((distance - range_)
@@ -234,17 +238,17 @@ void sourcespec::write(config& cfg) const
 	write_locations(locations_, cfg);
 }
 
-sourcespec::sourcespec(const config& cfg) :
-	id_(cfg["id"]),
-	files_(cfg["sounds"]),
-	min_delay_(cfg["delay"].to_int(DEFAULT_DELAY)),
-	chance_(cfg["chance"].to_int(DEFAULT_CHANCE)),
-	loops_(cfg["loop"]),
-	range_(cfg["full_range"].to_int(3)),
-	faderange_(cfg["fade_range"].to_int(14)),
-	check_fogged_(cfg["check_fogged"].to_bool(true)),
-	check_shrouded_(cfg["check_shrouded"].to_bool(true)),
-	locations_()
+sourcespec::sourcespec(const config& cfg)
+	: id_(cfg["id"])
+	, files_(cfg["sounds"])
+	, min_delay_(chrono::parse_duration(cfg["delay"], DEFAULT_DELAY))
+	, chance_(cfg["chance"].to_int(DEFAULT_CHANCE))
+	, loops_(cfg["loop"].to_int())
+	, range_(cfg["full_range"].to_int(3))
+	, faderange_(cfg["fade_range"].to_int(14))
+	, check_fogged_(cfg["check_fogged"].to_bool(true))
+	, check_shrouded_(cfg["check_shrouded"].to_bool(true))
+	, locations_()
 {
 	read_locations(cfg, locations_);
 }

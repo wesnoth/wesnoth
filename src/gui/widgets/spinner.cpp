@@ -17,7 +17,6 @@
 
 #include "gui/widgets/spinner.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/repeating_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/core/log.hpp"
@@ -51,7 +50,7 @@ spinner::spinner(const implementation::builder_spinner& builder)
 
 text_box* spinner::get_internal_text_box()
 {
-	return find_widget<text_box>(this, "_text", false, true);
+	return find_widget<text_box>("_text", false, true);
 }
 
 void spinner::set_value(const int val)
@@ -90,8 +89,8 @@ int spinner::get_value()
 
 void spinner::finalize_setup()
 {
-	repeating_button* btn_prev = find_widget<repeating_button>(this, "_prev", false, true);
-	repeating_button* btn_next = find_widget<repeating_button>(this, "_next", false, true);
+	repeating_button* btn_prev = find_widget<repeating_button>("_prev", false, true);
+	repeating_button* btn_next = find_widget<repeating_button>("_next", false, true);
 	btn_prev->connect_signal_mouse_left_down(std::bind(&spinner::prev, this));
 	btn_next->connect_signal_mouse_left_down(std::bind(&spinner::next, this));
 

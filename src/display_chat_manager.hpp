@@ -18,7 +18,7 @@
 #include "chat_events.hpp"
 
 #include <cstdint>
-#include <ctime>
+#include <chrono>
 #include <set>
 #include <string>
 #include <vector>
@@ -52,7 +52,7 @@ private:
 
 		int speaker_handle;
 		int handle;
-		uint32_t created_at;
+		std::chrono::steady_clock::time_point created_at;
 	};
 
 	void prune_chat_messages(bool remove_all=false);

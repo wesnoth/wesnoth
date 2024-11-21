@@ -22,11 +22,8 @@
 
 class unit_type;
 
-namespace actions
+namespace actions::undo
 {
-namespace undo
-{
-
 struct recruit_action : undo_action, shroud_clearing_action
 {
 	const unit_type & u_type;
@@ -46,5 +43,4 @@ struct recruit_action : undo_action, shroud_clearing_action
 	virtual bool undo(int side);
 };
 
-}
 }

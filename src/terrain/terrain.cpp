@@ -18,7 +18,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "terrain/terrain.hpp"
-
+#include "utils/general.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_G LOG_STREAM(err, lg::general())
@@ -31,81 +31,83 @@ static lg::log_domain log_config("config");
  */
 void merge_alias_lists(t_translation::ter_list& first, const t_translation::ter_list& second);
 
-terrain_type::terrain_type() :
-		minimap_image_(),
-		minimap_image_overlay_(),
-		editor_image_(),
-		id_(),
-		name_(),
-		editor_name_(),
-		description_(),
-		help_topic_text_(),
-		number_(t_translation::VOID_TERRAIN),
-		mvt_type_(1, t_translation::VOID_TERRAIN),
-		vision_type_(1, t_translation::VOID_TERRAIN),
-		def_type_(1, t_translation::VOID_TERRAIN),
-		union_type_(1, t_translation::VOID_TERRAIN),
-		height_adjust_(0),
-		height_adjust_set_(false),
-		submerge_(0.0),
-		submerge_set_(false),
-		light_modification_(0),
-		max_light_(0),
-		min_light_(0),
-		heals_(0),
-		income_description_(),
-		income_description_ally_(),
-		income_description_enemy_(),
-		income_description_own_(),
-		editor_group_(),
-		village_(false),
-		castle_(false),
-		keep_(false),
-		overlay_(false),
-		combined_(false),
-		editor_default_base_(t_translation::VOID_TERRAIN),
-		hide_help_(false),
-		hide_in_editor_(false),
-		hide_if_impassable_(false)
-{}
+terrain_type::terrain_type()
+	: minimap_image_()
+	, minimap_image_overlay_()
+	, editor_image_()
+	, id_()
+	, name_()
+	, editor_name_()
+	, description_()
+	, help_topic_text_()
+	, number_(t_translation::VOID_TERRAIN)
+	, mvt_type_(1, t_translation::VOID_TERRAIN)
+	, vision_type_(1, t_translation::VOID_TERRAIN)
+	, def_type_(1, t_translation::VOID_TERRAIN)
+	, union_type_(1, t_translation::VOID_TERRAIN)
+	, height_adjust_(0)
+	, height_adjust_set_(false)
+	, submerge_(0.0)
+	, submerge_set_(false)
+	, light_modification_(0)
+	, max_light_(0)
+	, min_light_(0)
+	, heals_(0)
+	, income_description_()
+	, income_description_ally_()
+	, income_description_enemy_()
+	, income_description_own_()
+	, editor_group_()
+	, village_(false)
+	, castle_(false)
+	, keep_(false)
+	, overlay_(false)
+	, combined_(false)
+	, editor_default_base_(t_translation::VOID_TERRAIN)
+	, hide_help_(false)
+	, hide_in_editor_(false)
+	, hide_if_impassable_(false)
+{
+}
 
-terrain_type::terrain_type(const config& cfg) :
-		icon_image_(cfg["icon_image"]),
-		minimap_image_(cfg["symbol_image"]),
-		minimap_image_overlay_(),
-		editor_image_(cfg["editor_image"].empty() ? "terrain/" + minimap_image_ + ".png" : "terrain/" + cfg["editor_image"].str() + ".png"),
-		id_(cfg["id"]),
-		name_(cfg["name"].t_str()),
-		editor_name_(cfg["editor_name"].t_str()),
-		description_(cfg["description"].t_str()),
-		help_topic_text_(cfg["help_topic_text"].t_str()),
-		number_(t_translation::read_terrain_code(cfg["string"].str())),
-		mvt_type_(),
-		vision_type_(),
-		def_type_(),
-		union_type_(),
-		height_adjust_(cfg["unit_height_adjust"]),
-		height_adjust_set_(!cfg["unit_height_adjust"].empty()),
-		submerge_(cfg["submerge"].to_double()),
-		submerge_set_(!cfg["submerge"].empty()),
-		light_modification_(cfg["light"]),
-		max_light_(cfg["max_light"].to_int(light_modification_)),
-		min_light_(cfg["min_light"].to_int(light_modification_)),
-		heals_(cfg["heals"]),
-		income_description_(),
-		income_description_ally_(),
-		income_description_enemy_(),
-		income_description_own_(),
-		editor_group_(cfg["editor_group"]),
-		village_(cfg["gives_income"].to_bool()),
-		castle_(cfg["recruit_onto"].to_bool()),
-		keep_(cfg["recruit_from"].to_bool()),
-		overlay_(number_.base == t_translation::NO_LAYER),
-		combined_(false),
-		editor_default_base_(t_translation::read_terrain_code(cfg["default_base"].str())),
-		hide_help_(cfg["hide_help"].to_bool(false)),
-		hide_in_editor_(cfg["hidden"].to_bool(false)),
-		hide_if_impassable_(cfg["hide_if_impassable"].to_bool(false))
+terrain_type::terrain_type(const config& cfg)
+	: icon_image_(cfg["icon_image"])
+	, minimap_image_(cfg["symbol_image"])
+	, minimap_image_overlay_()
+	, editor_image_(cfg["editor_image"].empty() ? "terrain/" + minimap_image_ + ".png"
+												: "terrain/" + cfg["editor_image"].str() + ".png")
+	, id_(cfg["id"])
+	, name_(cfg["name"].t_str())
+	, editor_name_(cfg["editor_name"].t_str())
+	, description_(cfg["description"].t_str())
+	, help_topic_text_(cfg["help_topic_text"].t_str())
+	, number_(t_translation::read_terrain_code(cfg["string"].str()))
+	, mvt_type_()
+	, vision_type_()
+	, def_type_()
+	, union_type_()
+	, height_adjust_(cfg["unit_height_adjust"].to_int())
+	, height_adjust_set_(!cfg["unit_height_adjust"].empty())
+	, submerge_(cfg["submerge"].to_double())
+	, submerge_set_(!cfg["submerge"].empty())
+	, light_modification_(cfg["light"].to_int())
+	, max_light_(cfg["max_light"].to_int(light_modification_))
+	, min_light_(cfg["min_light"].to_int(light_modification_))
+	, heals_(cfg["heals"].to_int())
+	, income_description_()
+	, income_description_ally_()
+	, income_description_enemy_()
+	, income_description_own_()
+	, editor_group_(cfg["editor_group"])
+	, village_(cfg["gives_income"].to_bool())
+	, castle_(cfg["recruit_onto"].to_bool())
+	, keep_(cfg["recruit_from"].to_bool())
+	, overlay_(number_.base == t_translation::NO_LAYER)
+	, combined_(false)
+	, editor_default_base_(t_translation::read_terrain_code(cfg["default_base"].str()))
+	, hide_help_(cfg["hide_help"].to_bool(false))
+	, hide_in_editor_(cfg["hidden"].to_bool(false))
+	, hide_if_impassable_(cfg["hide_if_impassable"].to_bool(false))
 {
 /**
  *  @todo reenable these validations. The problem is that all MP
@@ -167,11 +169,8 @@ terrain_type::terrain_type(const config& cfg) :
 	union_type_.insert( union_type_.end(), vision_type_.begin(), vision_type_.end() );
 
 	// remove + and -
-	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
-				t_translation::MINUS), union_type_.end());
-
-	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
-				t_translation::PLUS), union_type_.end());
+	utils::erase(union_type_, t_translation::MINUS);
+	utils::erase(union_type_, t_translation::PLUS);
 
 	// remove doubles
 	std::sort(union_type_.begin(),union_type_.end());
@@ -264,11 +263,8 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	union_type_.insert( union_type_.end(), vision_type_.begin(), vision_type_.end() );
 
 	// remove + and -
-	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
-				t_translation::MINUS), union_type_.end());
-
-	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
-				t_translation::PLUS), union_type_.end());
+	utils::erase(union_type_, t_translation::MINUS);
+	utils::erase(union_type_, t_translation::PLUS);
 
 	// remove doubles
 	std::sort(union_type_.begin(),union_type_.end());

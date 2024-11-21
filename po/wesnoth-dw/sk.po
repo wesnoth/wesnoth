@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"POT-Creation-Date: 2024-10-21 16:11 UTC\n"
 "PO-Revision-Date: 2023-11-04 21:49+0100\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
@@ -2146,12 +2146,35 @@ msgid "Hungry Creatures"
 msgstr "Hladné Stvorenia"
 
 #. [objective]: condition=win
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:70
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:74
 msgid "Find Caladon the mage"
 msgstr "Nájdi mága Caladona"
 
+#. [objective]: condition=win
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:84
+msgid "Move a merfolk unit to Caladon’s shack and talk to him"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:94
+msgid "You can also visit Caladon with Keshan"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:107
+msgid "You can also visit Caladon with Inky"
+msgstr ""
+
+#. [unit]: type=Silver Mage, id=Caladon
+#. [side]
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:136
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:96
+#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:98
+msgid "Caladon"
+msgstr "Caladon"
+
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:141
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:213
 msgid ""
 "I do not much care for the look of this area. The darkness seems to hang "
 "beneath the trees, unnaturally dense."
@@ -2160,27 +2183,27 @@ msgstr ""
 "neprirodzene hustá."
 
 #. [message]: speaker=Teeloa
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:145
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:217
 msgid "I just heard a splash. I think something’s out there."
 msgstr "Práve som počul šplechnutie. Myslím, že tu niečo je."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:149
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:221
 msgid "Let us find the mage quickly and leave."
 msgstr "Rýchlo nájdime mága a potom švihom preč."
 
 #. [message]: speaker=Teeloa
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:339
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:408
 msgid "Hey, that cavern is full of bats! I HATE those things."
 msgstr "Hej, táto jaskyňa je plná netopierov! NENÁVIDÍM tieto veci."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:343
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:412
 msgid "I hope there aren’t any more bats in there."
 msgstr "Dúfam, že viac netopierov tu už nie je."
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:353
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:422
 msgid ""
 "This is a good place for a large colony, so I think we will see more soon."
 msgstr ""
@@ -2188,58 +2211,98 @@ msgstr ""
 "uvidíme viac."
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:359
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:428
 msgid ""
 "This is a good place for a large colony, so I imagine we will see more soon."
 msgstr ""
 "Toto je dobré miesto pre väčšiu skupinu, takže sa domnievam, že čoskoro "
 "uvidíme viac."
 
-#. [unit]: type=Silver Mage, id=Caladon
-#. [side]
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:383
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:96
-#: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:98
-msgid "Caladon"
-msgstr "Caladon"
+#. [message]: speaker=unit
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:452
+msgid "Neep, neep, neep!"
+msgstr "Ňíp, ňíp, ňíp!"
 
-#. [message]: speaker=Keshan
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:400
+#. [message]: speaker=Caladon
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:460
+msgid "Another of these ACCURSED bats! BEGONE!"
+msgstr ""
+
+#. [floating_text]
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:480
+msgid "SHRIEK!"
+msgstr ""
+
+#. [message]: speaker=Cylanna
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:505
+msgid "Caladon does not seem to be very happy about the bat infestation."
+msgstr ""
+
+#. [message]: speaker=Cylanna
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:505
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:576
+msgid "He might be more welcoming of one of our people."
+msgstr ""
+
+#. [message]: speaker=Kai Krellis
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:509
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:580
+msgid "Let’s go, men!"
+msgstr ""
+
+#. [label]
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:513
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:584
+msgid "Caladon’s shack"
+msgstr ""
+
+#. [message]: speaker=Caladon
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:538
+msgid "What kind of abomination is THAT!?!"
+msgstr ""
+
+#. [message]: speaker=Cylanna
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:576
+msgid "It appears that Caladon does not want to deal with the undead."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:626
 msgid "There is somebody here."
 msgstr "Niekto tu je."
 
+#. [message]: speaker=unit
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:632
+msgid "Gllllbbbg!"
+msgstr ""
+
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:404
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:638
 msgid "Whoa there! BACK off or else!"
 msgstr "Whoa ty tam! NASPÄŤ, inak ... !"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:408
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:642
 msgid "Do not worry about him. He is friendly."
 msgstr "Neboj sa ho. Je priateľský."
 
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:420
-msgid "Neep, neep, neep!"
-msgstr "Ňíp, ňíp, ňíp!"
-
-#. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:426
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:648
 msgid "Hey, I found somebody!"
 msgstr "Hej! Niekoho som našiel!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:434
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:654
 msgid "You must be Caladon. We are glad to see you."
 msgstr "Ty musíš byť Caladon. Som rád, že ťa vidím."
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:438
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:658
 msgid "I am Caladon. Am I glad to see YOU?"
 msgstr "Som Caladon. Mám byť tiež rád, že vidím TEBA?"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:442
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:662
 msgid ""
 "I am Kai Krellis of Jotha. I am seeking a flaming sword, and I am told you "
 "know where to find it."
@@ -2248,7 +2311,7 @@ msgstr ""
 "možné nájsť."
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:446
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:666
 msgid ""
 "Ha! A MERman wants the Flaming Sword of AGNOVON! Why would YOU be able to "
 "get it when so many others could NOT? Although you do have an impressive "
@@ -2259,12 +2322,12 @@ msgstr ""
 "zaujímavú zbierku spojencov."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:450
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:670
 msgid "Whether I can succeed or not, I must try. Will you help me find it?"
 msgstr "Či už môžem uspieť alebo nie, musím to vyskúšať. Pomôžeš mi ho nájsť?"
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:454
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:674
 msgid ""
 "I will show you EXACTLY where it is, but knowing where to FIND it isn’t the "
 "hard part. Oh, no! You will see, my fine merman, you will see."
@@ -2273,12 +2336,12 @@ msgstr ""
 "podstatná. Veď uvidíš, môj milý morský človiečik, veď uvidíš."
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:458
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:678
 msgid "We would be very grateful if you would guide us."
 msgstr "Budeme ti veľmi povďační, ak nás tam povedieš."
 
 #. [message]: speaker=Caladon
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:462
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:682
 msgid ""
 "I would be HAPPY to guide such a pretty mermaid AND her friends. Follow me "
 "everybody!"
@@ -2287,20 +2350,20 @@ msgstr ""
 "priateľov. Tak všetci za mnou!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:486
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:712
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1105
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:135
 msgid "Cylanna! I need you!"
 msgstr "Cylanna! Potrebujem ťa!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:490
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:716
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1109
 msgid "Tyegëa will never forgive me. We are lost."
 msgstr "Tyegea mi nikdy neodpustí. Sme stratení."
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:504
+#: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:730
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1123
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:149
 msgid "We are lost without our king!"

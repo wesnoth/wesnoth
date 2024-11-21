@@ -42,7 +42,7 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	struct combatant_data
 	{
@@ -58,7 +58,7 @@ private:
 		unit_const_ptr unit_;
 	};
 
-	void set_data(window& window, const combatant_data& attacker, const combatant_data& defender) const;
+	void set_data(const combatant_data& attacker, const combatant_data& defender);
 
 	hp_probability_vector get_hitpoint_probabilities(const std::vector<double>& hp_dist) const;
 
@@ -66,7 +66,7 @@ private:
 	static const unsigned int graph_height;
 	static const unsigned int graph_max_rows;
 
-	void draw_hp_graph(drawing& hp_graph, const combatant_data& attacker, const combatant_data& defender) const;
+	void draw_hp_graph(drawing& hp_graph, const combatant_data& attacker, const combatant_data& defender);
 
 	combatant_data attacker_data_;
 	combatant_data defender_data_;

@@ -72,7 +72,7 @@ void terrain_palette::select_fg_item(const t_translation::terrain_code& terrain)
 void terrain_palette::setup(const game_config_view& cfg)
 {
 	// Get the available terrains temporary in items
-	t_translation::ter_list items = map().get_terrain_list();
+	t_translation::ter_list items = gui_.get_map().get_terrain_list();
 
 	//move "invalid" items to the end
 	std::stable_partition(items.begin(), items.end(), is_valid_terrain);
@@ -114,7 +114,7 @@ void terrain_palette::setup(const game_config_view& cfg)
 	// add the groups for all terrains to the map
 	for (const t_translation::terrain_code& t : items) {
 
-		const terrain_type& t_info = map().get_terrain_info(t);
+		const terrain_type& t_info = gui_.get_map().get_terrain_info(t);
 		DBG_ED << "Palette: processing terrain " << t_info.name()
 			<< "(editor name: '" << t_info.editor_name() << "') "
 			<< "(" << t_info.number() << ")"
@@ -170,7 +170,7 @@ void terrain_palette::setup_item(
 	texture& overlay_image,
 	std::stringstream& tooltip_text)
 {
-	const auto& info = map().get_terrain_info(terrain);
+	const auto& info = gui_.get_map().get_terrain_info(terrain);
 
 	//Draw default base for overlay terrains
 	if(info.has_default_base()) {
@@ -200,29 +200,29 @@ void terrain_palette::setup_item(
 		}
 	}
 
-	tooltip_text << map().get_terrain_editor_string(terrain);
+	tooltip_text << gui_.get_map().get_terrain_editor_string(terrain);
 	if(gui_.debug_flag_set(display::DEBUG_TERRAIN_CODES)) {
 		tooltip_text << " " + font::unicode_em_dash + " " << terrain;
 	}
 }
 
-terrain_palette::terrain_palette(editor_display &gui, const game_config_view& cfg, editor_toolkit &toolkit)
+terrain_palette::terrain_palette(editor_display &gui, editor_toolkit &toolkit)
 //TODO avoid magic numbers
-	:	editor_palette<t_translation::terrain_code>(gui, cfg, 36, 4, toolkit)
+	:	editor_palette<t_translation::terrain_code>(gui, 36, 4, toolkit)
 {
 }
 
 const std::string& terrain_palette::get_id(const t_translation::terrain_code& terrain)
 {
-	const terrain_type& t_info = map().get_terrain_info(terrain);
+	const terrain_type& t_info = gui_.get_map().get_terrain_info(terrain);
 	return t_info.id();
 }
 
-std::string terrain_palette::get_help_string()
+std::string terrain_palette::get_help_string() const
 {
 	std::ostringstream msg;
-	msg << _("Left-click: ") << map().get_terrain_editor_string(selected_fg_item())	<< " | "
-		<< _("Right-click: ") << map().get_terrain_editor_string(selected_bg_item()) << "\n";
+	msg << _("Left-click: ") << gui_.get_map().get_terrain_editor_string(selected_fg_item())	<< " | "
+		<< _("Right-click: ") << gui_.get_map().get_terrain_editor_string(selected_bg_item()) << "\n";
 	if(selected_fg_item().base == t_translation::NO_LAYER) {
 		// TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
 		// because the logic of whether to show the "overlay only" or "base only" version depends on the

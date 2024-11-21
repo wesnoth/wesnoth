@@ -31,6 +31,7 @@
 #include "tstring.hpp"
 #include "utils/variant.hpp"
 
+#include <chrono>
 #include <climits>
 #include <ctime>
 #include <iosfwd>
@@ -122,9 +123,16 @@ public:
 
 	// String assignments:
 	config_attribute_value& operator=(const char *v) { return operator=(std::string(v)); }
+	config_attribute_value& operator=(std::string&& v);
 	config_attribute_value& operator=(const std::string &v);
 	config_attribute_value& operator=(const std::string_view &v);
 	config_attribute_value& operator=(const t_string &v);
+
+	template<typename... Args>
+	config_attribute_value& operator=(const std::chrono::duration<Args...>& v)
+	{
+		return this->operator=(v.count());
+	}
 
 	/** Calls @ref operator=(const std::string&) if @a v is not empty. */
 	void write_if_not_empty(const std::string& v);
@@ -148,11 +156,8 @@ public:
 	std::string to(const std::string& def) const { return str(def); }
 
 	// Implicit conversions:
-	operator int() const { return to_int(); }
 	operator std::string() const { return str(); }
 	operator t_string() const { return t_str(); }
-	// This is to prevent int conversion being used when an attribute value is tested in an if statement
-	explicit operator bool() const {return to_bool(); }
 
 	/** Tests for an attribute that was never set. */
 	bool blank() const;
@@ -182,7 +187,7 @@ public:
 			v = comp;
 			return *this == v;
 		} else {
-			return utils::holds_alternative<T>(value_) && T(*this) == comp;
+			return utils::holds_alternative<T>(value_) && this->to(T{}) == comp;
 		}
 	}
 

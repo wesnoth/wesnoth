@@ -298,7 +298,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 				events::call_in_main_thread([&]() {
 					gui2::dialogs::wml_error::display(
 						_("Error loading core data."),
-						_("Can't locate the default core.")
+						_("Can’t locate the default core.")
 						+ '\n' + _("The game will now exit."));
 				});
 				throw;
@@ -394,8 +394,8 @@ static void show_deprecated_warnings(config& umc_cfg)
 		for(auto& unit_type : units.child_range("unit_type")) {
 			for(const auto& advancefrom : unit_type.child_range("advancefrom")) {
 				auto symbols = utils::string_map {
-					{"lower_level", advancefrom["unit"]},
-					{"higher_level", unit_type["id"]}
+					{"lower_level", advancefrom["unit"].str()},
+					{"higher_level", unit_type["id"].str()}
 				};
 				auto message = VGETTEXT(
 					// TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
@@ -569,9 +569,8 @@ void game_config_manager::load_addons_cfg()
 			};
 
 			// Annotate appropriate addon types with addon_id info.
-			for(auto child : umc_cfg.all_children_range()) {
-				if(tags_with_addon_id.count(child.key) > 0) {
-					auto& cfg = child.cfg;
+			for(auto [key, cfg] : umc_cfg.all_children_view()) {
+				if(tags_with_addon_id.count(key) > 0) {
 					cfg["addon_id"] = addon_id;
 					cfg["addon_title"] = addon_title;
 					// Note that this may reformat the string in a canonical form.

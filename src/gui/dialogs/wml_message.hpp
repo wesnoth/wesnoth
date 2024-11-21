@@ -126,10 +126,10 @@ private:
 	int* chosen_option_;
 
 protected:
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 private:
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 };
 
 /** Shows a dialog with the portrait on the left side. */
@@ -183,7 +183,7 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	std::string second_portrait_;
 

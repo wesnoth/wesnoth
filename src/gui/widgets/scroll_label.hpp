@@ -66,6 +66,12 @@ public:
 
 	void set_text_alpha(unsigned short alpha);
 
+    /** See @ref styled_widget::get_link_aware. */
+    virtual bool get_link_aware() const override
+    {
+        return link_aware_;
+    }
+
 	void set_link_aware(bool l);
 
 	void set_text_max_width(int max_width) {

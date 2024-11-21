@@ -26,7 +26,7 @@ wesnothd \- Demone multigiocatore di rete per Battle for \fBWesnoth\fP
 .
 .SH SINOSSI
 .
-\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|]
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIpercorso\fP\|] [\|\fB\-p\fP \fIporta\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
@@ -102,9 +102,9 @@ Impedisce agli utenti che non si sono registrati con \fBuser_handler\fP di
 accedere. (default: falso)
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
-patterns are supported. See \fBglob\fP(7)  for more details.  Default values
-(used if nothing is specified) are:
+I nomi o nick che non sono accettati dal server. Si possono usare i
+caratteri jolly \fB*\fP e \fB?\fP. Vedi \fBglob\fP(7) per maggiori dettagli. I valori
+predefiniti (usati in mancanza di specifiche diverse) sono:
 \fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
@@ -247,8 +247,8 @@ Il nome della tabella nella quale il processo wesnothd salverà i suoi dati
 dei giocatori di una partita.
 .TP 
 \fBdb_game_content_info_table\fP
-The name of the table in which wesnothd will save its own data about game
-content (scenario/era/modifications) used in a game.
+Il nome della tabella nella quale il processo wesnothd salverà i suoi dati
+dei contenuti (scenario(era/modifiche) utilizzate in una partita.
 .TP 
 \fBdb_user_group_table\fP
 Il nome della tabella nella quale il vostro forum phpbb salva i dati del
@@ -256,8 +256,9 @@ gruppo dell’utente. Di solito questo valore è
 <table\-prefix>_user_group (i.e. phpbb3_user_group).
 .TP 
 \fBdb_tournament_query\fP
-The SQL query to find tournaments to announce on login. Should return
-tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
+La query SQL per trovare tornei da annunciare al momento
+dell'accesso. Dovrebbe restituire \fBtitle\fP, \fBstatus\fP and \fBurl\fP di un
+torneo.
 .TP 
 \fBdb_connection_history_table\fP
 Il nome della tabella nella quale memorizzare i tempi di login/logout. Viene

@@ -39,11 +39,11 @@ unsigned gamemap_x_offset = 0;
 unsigned gamemap_width = 0;
 unsigned gamemap_height = 0;
 
-unsigned popup_show_delay = 0;
-unsigned popup_show_time = 0;
-unsigned help_show_time = 0;
-unsigned double_click_time = 0;
-unsigned repeat_button_repeat_time = 0;
+std::chrono::milliseconds popup_show_delay{0};
+std::chrono::milliseconds popup_show_time{0};
+std::chrono::milliseconds help_show_time{0};
+std::chrono::milliseconds double_click_time{0};
+std::chrono::milliseconds repeat_button_repeat_time{0};
 
 std::string sound_button_click = "";
 std::string sound_toggle_button_click = "";

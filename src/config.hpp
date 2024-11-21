@@ -33,10 +33,19 @@
 #include "utils/const_clone.hpp"
 #include "utils/optional_reference.hpp"
 
-#ifdef __cpp_lib_ranges
+#ifdef CONFIG_USE_STL_RANGES
+#undef CONFIG_USE_STL_RANGES
+#endif
+
+#ifdef __cpp_lib_ranges // C++20
+#define CONFIG_USE_STL_RANGES
+#endif
+
+#ifdef CONFIG_USE_STL_RANGES
 #include <ranges>
 #else
 #include <boost/range/adaptor/map.hpp>
+#include <boost/range/adaptor/transformed.hpp>
 #endif
 
 #include <functional>
@@ -182,8 +191,8 @@ public:
 	 * Pass the keys/tags and values/children alternately.
 	 * For example: config("key", 42, "value", config())
 	 */
-	template<typename... T>
-	explicit config(config_key_type first, T&&... args);
+	template<typename... Args>
+	explicit config(config_key_type first, Args&&... args);
 
 	~config();
 
@@ -779,6 +788,42 @@ public:
 	all_children_iterator ordered_end();
 	all_children_iterator erase(const all_children_iterator& i);
 
+private:
+	template<typename Res>
+	static auto any_tag_view(const child_pos& elem) -> std::pair<const child_map::key_type&, Res>
+	{
+		const auto& [key, list] = *elem.pos;
+		return { key, *list[elem.index] };
+	}
+
+public:
+#ifdef __cpp_explicit_this_parameter // C++23
+
+	/** In-order iteration over all children. */
+	template<typename Self>
+	auto all_children_view(this Self&& self)
+	{ return self.ordered_children | std::views::transform(&config::any_tag_view<Self>); }
+
+#else
+
+	/** In-order iteration over all children. */
+	auto all_children_view() const
+#ifdef CONFIG_USE_STL_RANGES
+	{ return ordered_children | std::views::transform(&config::any_tag_view<const config&>); }
+#else
+	{ return ordered_children | boost::adaptors::transformed(&config::any_tag_view<const config&>); }
+#endif
+
+	/** In-order iteration over all children. */
+	auto all_children_view()
+#ifdef CONFIG_USE_STL_RANGES
+	{ return ordered_children | std::views::transform(&config::any_tag_view<config&>); }
+#else
+	{ return ordered_children | boost::adaptors::transformed(&config::any_tag_view<config&>); }
+#endif
+
+#endif // __cpp_explicit_this_parameter
+
 	/**
 	 * A function to get the differences between this object,
 	 * and 'c', as another config object.
@@ -909,56 +954,25 @@ using optional_const_config = optional_config_impl<const config>;
 /** Implement non-member swap function for std::swap (calls @ref config::swap). */
 void swap(config& lhs, config& rhs);
 
-namespace detail {
-	template<typename... T>
-	struct config_construct_unpacker;
-
-	template<>
-	struct config_construct_unpacker<>
+namespace detail
+{
+	template<typename Key, typename Value, typename... Rest>
+	inline void config_construct_unpack(config& cfg, Key&& key, Value&& val, Rest... fwd)
 	{
-		void visit(config&) {}
-	};
-
-	template<typename K, typename V, typename... Rest>
-	struct config_construct_unpacker<K, V, Rest...>
-	{
-		template<typename K2 = K, typename V2 = V>
-		void visit(config& cfg, K2&& key, V2&& val, Rest... fwd)
-		{
-			cfg.insert(std::forward<K>(key), std::forward<V>(val));
-			config_construct_unpacker<Rest...> unpack;
-			unpack.visit(cfg, std::forward<Rest>(fwd)...);
+		if constexpr(std::is_same_v<std::decay_t<Value>, config>) {
+			cfg.add_child(std::forward<Key>(key), std::forward<Value>(val));
+		} else {
+			cfg.insert(std::forward<Key>(key), std::forward<Value>(val));
 		}
-	};
 
-	template<typename T, typename... Rest>
-	struct config_construct_unpacker<T, config, Rest...>
-	{
-		template<typename T2 = T, typename C = config>
-		void visit(config& cfg, T2&& tag, C&& child, Rest... fwd)
-		{
-			cfg.add_child(std::forward<T>(tag), std::forward<config>(child));
-			config_construct_unpacker<Rest...> unpack;
-			unpack.visit(cfg, std::forward<Rest>(fwd)...);
+		if constexpr(sizeof...(Rest) > 0) {
+			config_construct_unpack(cfg, std::forward<Rest>(fwd)...);
 		}
-	};
-
-	template<typename T, typename... Rest>
-	struct config_construct_unpacker<T, config&, Rest...>
-	{
-		template<typename T2 = T>
-		void visit(config& cfg, T2&& tag, config& child, Rest... fwd)
-		{
-			cfg.add_child(std::forward<T>(tag), std::forward<config>(child));
-			config_construct_unpacker<Rest...> unpack;
-			unpack.visit(cfg, std::forward<Rest>(fwd)...);
-		}
-	};
+	}
 }
 
-template<typename... T>
-inline config::config(config_key_type first, T&&... args)
+template<typename... Args>
+inline config::config(config_key_type first, Args&&... args)
 {
-	detail::config_construct_unpacker<config_key_type, T...> unpack;
-	unpack.visit(*this, first, std::forward<T>(args)...);
+	detail::config_construct_unpack(*this, first, std::forward<Args>(args)...);
 }

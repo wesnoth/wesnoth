@@ -23,6 +23,8 @@
 
 #include "utils/optional_fwd.hpp"
 
+#include <chrono>
+
 struct mp_game_settings
 {
 	mp_game_settings();
@@ -45,10 +47,10 @@ struct mp_game_settings
 	int village_gold;
 	int village_support;
 	int xp_modifier;
-	int mp_countdown_init_time;
-	int mp_countdown_reservoir_time;
-	int mp_countdown_turn_bonus;
-	int mp_countdown_action_bonus;
+	std::chrono::seconds mp_countdown_init_time;
+	std::chrono::seconds mp_countdown_reservoir_time;
+	std::chrono::seconds mp_countdown_turn_bonus;
+	std::chrono::seconds mp_countdown_action_bonus;
 	bool mp_countdown;
 	bool use_map_settings;
 	bool random_start_time;

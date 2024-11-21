@@ -32,7 +32,7 @@ public:
 
 	lua_interpreter(lua_kernel_base & lk);
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	enum WHICH_KERNEL { APP, GAME };
 	static void display(lua_kernel_base * lk);

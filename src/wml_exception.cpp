@@ -87,10 +87,10 @@ std::string missing_mandatory_wml_key(
 		symbols["primary_value"] = primary_value;
 
 		return VGETTEXT("In section ‘[$section|]’ where ‘$primary_key|’ = "
-			"$primary_value’ the mandatory key ‘$key|’ isn't set.", symbols);
+			"‘$primary_value’ the mandatory key ‘$key|’ isn’t set.", symbols);
 	} else {
 		return VGETTEXT("In section ‘[$section|]’ the "
-			"mandatory key ‘$key|’ isn't set.", symbols);
+			"mandatory key ‘$key|’ isn’t set.", symbols);
 	}
 }
 

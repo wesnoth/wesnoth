@@ -17,20 +17,20 @@
 
 wesnothd::player::player(const std::string& n, simple_wml::node& cfg, long id,
                          bool registered, const std::string& version, const std::string& source, unsigned long long login_id, const std::size_t max_messages,
-                         const std::size_t time_period,
+                         const std::chrono::seconds& time_period,
                          const bool moderator)
-  : name_(n)
-  , version_(version)
-  , source_(source)
-  , cfg_(cfg)
-  , registered_(registered)
-  , flood_start_(0)
-  , messages_since_flood_start_(0)
-  , MaxMessages(max_messages)
-  , TimePeriod(time_period)
-  , status_(LOBBY)
-  , moderator_(moderator)
-  , login_id_(login_id)
+	: name_(n)
+	, version_(version)
+	, source_(source)
+	, cfg_(cfg)
+	, registered_(registered)
+	, flood_start_()
+	, messages_since_flood_start_(0)
+	, MaxMessages(max_messages)
+	, TimePeriod(time_period)
+	, status_(LOBBY)
+	, moderator_(moderator)
+	, login_id_(login_id)
 {
 	cfg_.set_attr_dup("name", n.c_str());
 	cfg_.set_attr("registered", registered ? "yes" : "no");
@@ -80,8 +80,8 @@ void wesnothd::player::mark_registered(bool registered)
 
 bool wesnothd::player::is_message_flooding()
 {
-	const std::time_t now = std::time(nullptr);
-	if (flood_start_ == 0) {
+	const auto now = std::chrono::steady_clock::now();
+	if (flood_start_ == std::chrono::steady_clock::time_point{}) {
 		flood_start_ = now;
 		return false;
 	}

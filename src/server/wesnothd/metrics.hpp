@@ -17,7 +17,7 @@
 
 #include "server/common/simple_wml.hpp"
 
-#include <ctime>
+#include <chrono>
 #include <iosfwd>
 #include <map>
 #include <string>
@@ -31,7 +31,10 @@ public:
 	void service_request();
 	void no_requests();
 
-	void record_sample(const simple_wml::string_span& name, clock_t parsing_time, clock_t processing_time);
+	/** @todo: Currently unused. Use for something? */
+	void record_sample(const simple_wml::string_span& name,
+		const std::chrono::steady_clock::duration& parsing_time,
+		const std::chrono::steady_clock::duration& processing_time);
 
 	void game_terminated(const std::string& reason);
 
@@ -41,20 +44,12 @@ public:
 
 	struct sample
 	{
-		sample()
-			: name()
-			, nsamples(0)
-			, parsing_time(0)
-			, processing_time(0)
-			, max_parsing_time(0)
-			, max_processing_time(0)
-		{
-		}
-
-		simple_wml::string_span name;
-		int nsamples;
-		clock_t parsing_time, processing_time;
-		clock_t max_parsing_time, max_processing_time;
+		simple_wml::string_span name{};
+		int nsamples = 0;
+		std::chrono::steady_clock::duration parsing_time{0};
+		std::chrono::steady_clock::duration processing_time{0};
+		std::chrono::steady_clock::duration max_parsing_time{0};
+		std::chrono::steady_clock::duration max_processing_time{0};
 
 		operator const simple_wml::string_span&()
 		{
@@ -69,7 +64,7 @@ private:
 	int current_requests_;
 	int nrequests_;
 	int nrequests_waited_;
-	const std::time_t started_at_;
+	const std::chrono::steady_clock::time_point started_at_;
 	std::map<std::string, int> terminations_;
 };
 

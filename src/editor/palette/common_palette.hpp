@@ -80,7 +80,16 @@ public:
 	virtual std::size_t start_num() = 0;
 	virtual void set_start_item(std::size_t index) = 0;
 
+	/** Whether the hotkey system should the enable GUI button connected to swap(). */
 	virtual bool supports_swap() { return true; }
+	/**
+	 * For tools which support fg and bg items, exchange the two items. Typically, fg and bg mean
+	 * that they're placed by left or right mouse clicks, respectively.
+	 *
+	 * There's a mismatch between class structure and responsibilities here, as part of the UX isn't
+	 * part of the palette. The tool decides what right-click does. Even for the scenery item tool,
+	 * where right-click deletes an item, fg and bg provide a way to switch between two items.
+	 */
 	virtual void swap() = 0;
 
 	virtual std::vector<std::string> action_pressed() const { return std::vector<std::string>(); }

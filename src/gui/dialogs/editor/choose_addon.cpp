@@ -16,7 +16,6 @@
 
 #include "filesystem.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -31,25 +30,22 @@ editor_choose_addon::editor_choose_addon(std::string& addon_id)
 	: modal_dialog(window_id())
 	, addon_id_(addon_id)
 {
-	connect_signal_mouse_left_click(find_widget<toggle_button>(get_window(), "show_all", false),
+	connect_signal_mouse_left_click(
+		find_widget<toggle_button>("show_all"),
 		std::bind(&editor_choose_addon::toggle_installed, this));
 
 	populate_list(false);
 }
 
-void editor_choose_addon::pre_show(window&)
+void editor_choose_addon::post_show()
 {
-}
-
-void editor_choose_addon::post_show(window& win)
-{
-	listbox& existing_addons = find_widget<listbox>(&win, "existing_addons", false);
+	listbox& existing_addons = find_widget<listbox>("existing_addons");
 	int selected_row = existing_addons.get_selected_row();
 
 	if(selected_row == 0) {
 		addon_id_ = "///newaddon///";
 		prefs::get().set_editor_chosen_addon("");
-	} else if(selected_row == 1 && find_widget<toggle_button>(get_window(), "show_all", false).get_value_bool()) {
+	} else if(selected_row == 1 && find_widget<toggle_button>("show_all").get_value_bool()) {
 		addon_id_ = "mainline";
 		prefs::get().set_editor_chosen_addon("");
 	} else {
@@ -61,13 +57,13 @@ void editor_choose_addon::post_show(window& win)
 
 void editor_choose_addon::toggle_installed()
 {
-	toggle_button& show_all = find_widget<toggle_button>(get_window(), "show_all", false);
+	toggle_button& show_all = find_widget<toggle_button>("show_all");
 	populate_list(show_all.get_value_bool());
 }
 
 void editor_choose_addon::populate_list(bool show_all)
 {
-	listbox& existing_addons = find_widget<listbox>(get_window(), "existing_addons", false);
+	listbox& existing_addons = find_widget<listbox>("existing_addons");
 	existing_addons.clear();
 
 	std::vector<std::string> dirs;

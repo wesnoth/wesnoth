@@ -15,7 +15,6 @@
 
 #include "gui/dialogs/addon/uninstall_list.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -27,20 +26,19 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(addon_uninstall_list)
 
-void addon_uninstall_list::pre_show(window& window)
+void addon_uninstall_list::pre_show()
 {
-	listbox& list = find_widget<listbox>(&window, "addons_list", false);
-	window.keyboard_capture(&list);
-
-	this->selections_.clear();
+	listbox& list = find_widget<listbox>("addons_list");
+	keyboard_capture(&list);
+	selections_.clear();
 
 	for(const auto & entry : titles_map_)
 	{
 		const std::string& id = entry.first;
 		const std::string& title = entry.second;
 
-		this->ids_.push_back(id);
-		this->selections_[id] = false;
+		ids_.push_back(id);
+		selections_[id] = false;
 
 		widget_data data;
 		widget_item column;
@@ -52,22 +50,22 @@ void addon_uninstall_list::pre_show(window& window)
 	}
 }
 
-void addon_uninstall_list::post_show(window& window)
+void addon_uninstall_list::post_show()
 {
-	const listbox& list = find_widget<listbox>(&window, "addons_list", false);
+	const listbox& list = find_widget<listbox>("addons_list");
 	const unsigned rows = list.get_item_count();
 
-	assert(rows == this->ids_.size() && rows == this->titles_map_.size());
+	assert(rows == ids_.size() && rows == titles_map_.size());
 
 	if(!rows || get_retval() != retval::OK) {
 		return;
 	}
 
 	for(unsigned k = 0; k < rows; ++k) {
-		grid const* g = list.get_row_grid(k);
+		const grid* g = list.get_row_grid(k);
 		const toggle_button& checkbox
-				= find_widget<const toggle_button>(g, "checkbox", false);
-		this->selections_[this->ids_[k]] = checkbox.get_value_bool();
+				= g->find_widget<const toggle_button>("checkbox");
+		selections_[ids_[k]] = checkbox.get_value_bool();
 	}
 }
 

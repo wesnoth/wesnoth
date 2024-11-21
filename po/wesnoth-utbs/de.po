@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-08-19 04:10 UTC\n"
+"POT-Creation-Date: 2024-10-21 16:10 UTC\n"
 "PO-Revision-Date: 2023-09-17 02:21+0200\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
@@ -139,13 +139,6 @@ msgstr ""
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:21
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
-"gelähmt: Diese Einheit ist gelähmt. Sie kann keine Kontrollzone aufrecht "
-"erhalten."
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:27
 msgid ""
 "dazed: This unit is dazed. It suffers a -10% penalty to both its defense and "
 "chance to hit (except for magical attacks)."
@@ -17493,13 +17486,18 @@ msgid "cooldown 2"
 msgstr "Abkühlung 2"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1551
-msgid "After using this attack, you can't use it during your next turn."
+#, fuzzy
+#| msgid "After using this attack, you can't use it during your next turn."
+msgid "After using this attack, you can’t use it during your next turn."
 msgstr ""
 "Nach der Verwendung dieses Angriffs kann er nicht im nächsten Zug verwendet "
 "werden."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1554
-msgid "After using this attack, you can't use it during your next two turns."
+#, fuzzy
+#| msgid ""
+#| "After using this attack, you can't use it during your next two turns."
+msgid "After using this attack, you can’t use it during your next two turns."
 msgstr ""
 "Nach der Verwendung dieses Angriffs kann er nicht in den nächsten zwei Zügen "
 "verwendet werden."
@@ -18724,6 +18722,12 @@ msgstr "Phantom-Burg"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "Phantom-Burgfried"
+
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr ""
+#~ "gelähmt: Diese Einheit ist gelähmt. Sie kann keine Kontrollzone aufrecht "
+#~ "erhalten."
 
 #~ msgid "Hunter"
 #~ msgstr "Jäger"

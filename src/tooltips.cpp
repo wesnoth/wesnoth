@@ -211,7 +211,7 @@ void manager::layout()
 	}
 	// Update the active tooltip's draw state.
 	// This will trigger redraws if necessary.
-	tips.at(active_tooltip).label.update(SDL_GetTicks());
+	tips.at(active_tooltip).label.update(std::chrono::steady_clock::now());
 }
 
 bool manager::expose(const rect& region)
@@ -333,7 +333,7 @@ static void select_active(int id)
 	LOG_FT << "showing tip " << id << " for " << tip.origin;
 	clear_active();
 	active_tooltip = id;
-	tip.label.update(SDL_GetTicks());
+	tip.label.update(std::chrono::steady_clock::now());
 	raise_to_top();
 }
 

@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/core_selection.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/window.hpp"
@@ -32,27 +31,27 @@ REGISTER_DIALOG(core_selection)
 void core_selection::core_selected()
 {
 	const int selected_row
-			= find_widget<listbox>(this, "core_list", false)
+			= find_widget<listbox>("core_list")
 					  .get_selected_row();
 
 	multi_page& pages
-			= find_widget<multi_page>(this, "core_details", false);
+			= find_widget<multi_page>("core_details");
 
 	pages.select_page(selected_row);
 }
 
-void core_selection::pre_show(window& window)
+void core_selection::pre_show()
 {
 	/***** Setup core list. *****/
-	listbox& list = find_widget<listbox>(&window, "core_list", false);
+	listbox& list = find_widget<listbox>("core_list");
 
 	connect_signal_notify_modified(list, std::bind(&core_selection::core_selected, this));
 
-	window.keyboard_capture(&list);
+	keyboard_capture(&list);
 
 	/***** Setup core details. *****/
 	multi_page& pages
-			= find_widget<multi_page>(&window, "core_details", false);
+			= find_widget<multi_page>("core_details");
 
 	for(const auto & core : cores_)
 	{
@@ -84,9 +83,9 @@ void core_selection::pre_show(window& window)
 	core_selected();
 }
 
-void core_selection::post_show(window& window)
+void core_selection::post_show()
 {
-	choice_ = find_widget<listbox>(&window, "core_list", false)
+	choice_ = find_widget<listbox>("core_list")
 					  .get_selected_row();
 }
 

@@ -28,13 +28,9 @@ namespace gui2
 
 struct timer
 {
-	timer() : sdl_id(0), interval(0), callback()
-	{
-	}
-
-	SDL_TimerID sdl_id;
-	uint32_t interval;
-	std::function<void(std::size_t id)> callback;
+	SDL_TimerID sdl_id{0};
+	std::chrono::milliseconds interval{0};
+	std::function<void(std::size_t id)> callback{};
 };
 
 /** Ids for the timers. */
@@ -99,7 +95,7 @@ static uint32_t timer_callback(uint32_t, void* id)
 	DBG_GUI_E << "Pushing timer event in queue.";
 	// iTunes still reports a couple of crashes here. Cannot see a problem yet.
 
-	Uint32 result;
+	uint32_t result;
 	{
 		std::scoped_lock lock(timers_mutex);
 
@@ -107,7 +103,7 @@ static uint32_t timer_callback(uint32_t, void* id)
 		if(itor == get_timers().end()) {
 			return 0;
 		}
-		result = itor->second.interval;
+		result = itor->second.interval.count();
 	}
 
 	SDL_Event event;
@@ -124,7 +120,7 @@ static uint32_t timer_callback(uint32_t, void* id)
 
 } // extern "C"
 
-std::size_t add_timer(const uint32_t interval,
+std::size_t add_timer(const std::chrono::milliseconds& interval,
 				 const std::function<void(std::size_t id)>& callback,
 				 const bool repeat)
 {
@@ -141,7 +137,7 @@ std::size_t add_timer(const uint32_t interval,
 		} while(next_timer_id == 0 || get_timers().count(next_timer_id) > 0);
 
 		timer.sdl_id = SDL_AddTimer(
-				interval, timer_callback, reinterpret_cast<void*>(next_timer_id));
+				interval.count(), timer_callback, reinterpret_cast<void*>(next_timer_id));
 	}
 
 	if(timer.sdl_id == 0) {
@@ -214,7 +210,7 @@ bool execute_timer(const std::size_t id)
 
 		callback = itor->second.callback;
 
-		if(itor->second.interval == 0) {
+		if(itor->second.interval == std::chrono::milliseconds{0}) {
 			get_timers().erase(itor);
 		}
 	}

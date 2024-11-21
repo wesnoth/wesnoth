@@ -17,7 +17,6 @@
 
 #include "gui/widgets/pane.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/grid.hpp"
@@ -25,6 +24,8 @@
 #include "utils/const_clone.hpp"
 #include "gui/core/event/message.hpp"
 #include "gettext.hpp"
+
+#include "wml_exception.hpp"
 
 #include <functional>
 
@@ -122,8 +123,7 @@ unsigned pane::create_item(const widget_data& item_data,
 
 	for(const auto & data : item_data)
 	{
-		styled_widget* control
-				= find_widget<styled_widget>(item.item_grid.get(), data.first, false, false);
+		styled_widget* control = item.item_grid.get()->find_widget<styled_widget>(data.first, false, false);
 
 		if(control) {
 			control->set_members(data.second);
@@ -355,7 +355,7 @@ namespace implementation
 builder_pane::builder_pane(const config& cfg)
 	: builder_widget(cfg)
 	, grow_dir(*grow_direction::get_enum(cfg["grow_direction"].str()))
-	, parallel_items(cfg["parallel_items"])
+	, parallel_items(cfg["parallel_items"].to_int())
 	, item_definition(new builder_grid(VALIDATE_WML_CHILD(cfg, "item_definition", missing_mandatory_wml_tag("pane", "item_definition"))))
 {
 	VALIDATE(parallel_items > 0, _("Need at least 1 parallel item."));

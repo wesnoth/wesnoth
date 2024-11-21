@@ -161,7 +161,7 @@ halo_impl::effect::effect(int xpos, int ypos,
 
 	set_location(xpos, ypos);
 
-	images_.start_animation(0, infinite);
+	images_.start_animation(std::chrono::milliseconds{0}, infinite);
 
 	update();
 }

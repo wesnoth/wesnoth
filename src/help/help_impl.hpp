@@ -37,7 +37,9 @@
 #include "font/constants.hpp"
 #include "font/standard_colors.hpp"
 #include "gettext.hpp"
+#include "serialization/string_utils.hpp"
 #include "utils/optional_fwd.hpp"
+
 #include <cstring>
 #include <list>                         // for list
 #include <memory>
@@ -209,12 +211,6 @@ public:
 	}
 };
 
-/** Thrown when the help system fails to parse something. */
-struct parse_error : public game::error
-{
-	parse_error(const std::string& msg) : game::error(msg) {}
-};
-
 // Generator stuff below. Maybe move to a separate file? This one is
 // getting crowded. Dunno if much more is needed though so I'll wait and
 // see.
@@ -225,6 +221,12 @@ std::vector<topic> generate_topics(const bool sort_topics,const std::string &gen
 std::string generate_topic_text(const std::string &generator, const config *help_cfg, const section &sec);
 std::string generate_contents_links(const std::string& section_name, config const *help_cfg);
 std::string generate_contents_links(const section &sec);
+
+/** Thrown when the help system fails to parse something. */
+struct parse_error : public game::error
+{
+	parse_error(const std::string& msg) : game::error(msg) {}
+};
 
 /**
  * return a hyperlink with the unit's name and pointing to the unit page
@@ -304,20 +306,7 @@ const topic *find_topic(const section &sec, const std::string &id);
 const section *find_section(const section &sec, const std::string &id);
 section *find_section(section &sec, const std::string &id);
 
-/**
- * Parse a xml style marked up text string. Return a config with the different parts of the
- * text. Each markup item is a separate part while the text between
- * markups are separate parts.
- */
-config parse_text(const std::string &text);
-
-/** Make a best effort to word wrap s. All parts are less than width. */
-std::vector<std::string> split_in_width(const std::string &s, const int font_size, const unsigned width);
-
 std::string remove_first_space(const std::string& text);
-
-/** Prepend all chars with meaning inside attributes with a backslash. */
-std::string escape(const std::string &s);
 
 /** Return the first word in s, not removing any spaces in the start of it. */
 std::string get_first_word(const std::string &s);
@@ -367,23 +356,5 @@ bool is_visible_id(const std::string &id);
  * be defined in the config.
  */
 bool is_valid_id(const std::string &id);
-
-// Helpers for making generation of topics easier.
-
-inline std::string make_link(const std::string& text, const std::string& dst)
-{
-	// some sorting done on list of links may rely on the fact that text is first
-	return "<ref dst='" + help::escape(dst) + "'>" + help::escape(text) + "</ref>";
-}
-
-inline std::string bold(const std::string &s)
-{
-	std::stringstream ss;
-	ss << "<b>" << help::escape(s) << "</b>";
-	return ss.str();
-}
-
-// A string to be displayed and its width.
-typedef std::pair< std::string, unsigned > item;
 
 } // end namespace help

@@ -280,7 +280,7 @@ builder_tree_view::builder_tree_view(const config& cfg)
 	: builder_styled_widget(cfg)
 	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
-	, indentation_step_size(cfg["indentation_step_size"])
+	, indentation_step_size(cfg["indentation_step_size"].to_unsigned())
 	, nodes()
 {
 	for(const auto& node : cfg.child_range("node")) {
@@ -322,7 +322,7 @@ tree_node::tree_node(const config& cfg)
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("node", "id"));
 
 	// TODO: interpolate this value into the error message
-	VALIDATE(id != tree_view::root_node_id, _("[node]id 'root' is reserved for the implementation."));
+	VALIDATE(id != tree_view::root_node_id, _("[node]id ‘root’ is reserved for the implementation."));
 
 	auto node_definition = VALIDATE_WML_CHILD(cfg, "node_definition", missing_mandatory_wml_tag("node", "node_definition"));
 	builder = std::make_shared<builder_grid>(node_definition);

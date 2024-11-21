@@ -44,11 +44,11 @@
 #include <map>
 #include <sstream>
 #include <string>
+#include <thread>
 #include <utility>
 
 #include <functional>
 #include <boost/range/adaptors.hpp>
-#include <SDL2/SDL.h>
 
 #include "lua/wrapper_lauxlib.h"
 
@@ -88,8 +88,7 @@ static int intf_describe_plugins(lua_State * L)
 
 static int intf_delay(lua_State* L)
 {
-	unsigned int delay = static_cast<unsigned int>(luaL_checkinteger(L, 1));
-	SDL_Delay(delay);
+	std::this_thread::sleep_for(std::chrono::milliseconds{luaL_checkinteger(L, 1)});
 	return 0;
 }
 

@@ -36,8 +36,8 @@ public:
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(gui_test_dialog)
 
 private:
-	virtual void pre_show(window& /*window*/) override;
-	virtual void post_show(window& /*window*/) override;
+	virtual void pre_show() override;
+	virtual void post_show() override;
 
 	virtual const std::string& window_id() const override;
 };

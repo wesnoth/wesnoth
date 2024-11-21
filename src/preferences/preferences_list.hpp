@@ -30,6 +30,8 @@ struct preferences_list_defines
 	ADDPREF(_last_cache_cleaned_ver)
 	/** achievements completed for add-ons/UMC, are not steam achievements */
 	ADDPREF(achievements)
+	/** player names marked as either friends or as ignored */
+	ADDPREF(acquaintance)
 	/** the sort direction, ie: ascending */
 	ADDPREF(addon_manager_saved_order_direction)
 	/** the name of the column in the add-ons manager to use by default to sort results */
@@ -77,8 +79,8 @@ struct preferences_list_defines
 	ADDPREF(dir_bookmarks)
 	/** whether to automatically move units that were previously told to move towards hexes more than one turn away */
 	ADDPREF(disable_auto_moves)
-	/** used to enforce the FPS limit - minimum time between frame updates if the player's PC is capable of updating the screen faster than this */
-	ADDPREF(draw_delay)
+	/** maximum FPS, if set, at which to refresh the screen */
+	ADDPREF(refresh_rate)
 	/** whether to have the editor automatically update terrain transitions when placing terrain immediately, after the mouse click is released, or not at all */
 	ADDPREF(editor_auto_update_transitions)
 	/** the current add-on being used in the editor */
@@ -216,6 +218,8 @@ struct preferences_list_defines
 	ADDPREF(scroll_threshold)
 	/** the most recently selected achievement group in the achievements dialog */
 	ADDPREF(selected_achievement_group)
+	/** contains the list of any player-entered multiplayer servers */
+	ADDPREF(server)
 	/** whether to show an orb over allied units */
 	ADDPREF(show_ally_orb)
 	/** whether to show an orb over disengaged units */
@@ -383,6 +387,7 @@ struct preferences_list_defines
 	ENUM_AND_ARRAY(
 		_last_cache_cleaned_ver,
 		achievements,
+		acquaintance,
 		addon_manager_saved_order_direction,
 		addon_manager_saved_order_name,
 		alias,
@@ -405,7 +410,7 @@ struct preferences_list_defines
 		delete_saves,
 		dir_bookmarks,
 		disable_auto_moves,
-		draw_delay,
+		refresh_rate,
 		editor_auto_update_transitions,
 		editor_chosen_addon,
 		editor_draw_hex_coordinates,
@@ -472,6 +477,7 @@ struct preferences_list_defines
 		scroll,
 		scroll_threshold,
 		selected_achievement_group,
+		server,
 		show_ally_orb,
 		show_disengaged_orb,
 		show_enemy_orb,

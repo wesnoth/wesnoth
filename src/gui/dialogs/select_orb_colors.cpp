@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/select_orb_colors.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/iterator/iterator.hpp"
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/widgets/button.hpp"
@@ -53,7 +52,7 @@ select_orb_colors::select_orb_colors()
 {
 }
 
-void select_orb_colors::pre_show(window& window)
+void select_orb_colors::pre_show()
 {
 	setup_orb_group("unmoved", show_unmoved_, prefs::get().unmoved_color());
 	setup_orb_group_two_color("partial", show_partial_, show_disengaged_, prefs::get().partial_color());
@@ -62,10 +61,10 @@ void select_orb_colors::pre_show(window& window)
 	setup_orb_group("enemy", show_enemy_, prefs::get().enemy_color());
 
 	connect_signal_mouse_left_click(
-		find_widget<button>(&window, "orb_defaults", false), std::bind(&select_orb_colors::reset_orb_callback, this));
+		find_widget<button>("orb_defaults"), std::bind(&select_orb_colors::reset_orb_callback, this));
 }
 
-void select_orb_colors::post_show(window&)
+void select_orb_colors::post_show()
 {
 	if(get_retval() != retval::OK) {
 		return;
@@ -89,7 +88,7 @@ void select_orb_colors::post_show(window&)
 void select_orb_colors::setup_orb_toggle(const std::string& base_id, bool& shown)
 {
 	const std::string prefix = get_orb_widget_prefix(base_id);
-	toggle_button& toggle = find_widget<toggle_button>(get_window(), prefix + "show", false);
+	toggle_button& toggle = find_widget<toggle_button>(prefix + "show");
 	toggle.set_value_bool(shown);
 
 	connect_signal_mouse_left_click(toggle, std::bind(&select_orb_colors::toggle_orb_callback, this, std::ref(shown)));
@@ -106,7 +105,7 @@ void select_orb_colors::setup_orb_group(const std::string& base_id, bool& shown,
 
 	// Grid containing each color option toggle.
 	const std::string prefix = get_orb_widget_prefix(base_id);
-	grid& selection = find_widget<grid>(get_window(), prefix + "selection", false);
+	grid& selection = find_widget<grid>(prefix + "selection");
 
 	for(iteration::bottom_up_iterator<true, false, true> iter(selection); !iter.at_end(); ++iter) {
 		if(toggle_button* button = dynamic_cast<toggle_button*>(iter.get())) {
@@ -123,7 +122,7 @@ void select_orb_colors::setup_orb_group_two_color(const std::string& base_id, bo
 	setup_orb_group(base_id, shown, initial);
 
 	const std::string prefix = get_orb_widget_prefix(base_id);
-	toggle_button& toggle = find_widget<toggle_button>(get_window(), prefix + "two_color", false);
+	toggle_button& toggle = find_widget<toggle_button>(prefix + "two_color");
 	toggle.set_value_bool(two_color);
 
 	connect_signal_mouse_left_click(toggle, std::bind(&select_orb_colors::toggle_orb_callback, this, std::ref(two_color)));
@@ -133,7 +132,7 @@ void select_orb_colors::reset_orb_toggle(const std::string& base_id, bool shown)
 {
 	const std::string prefix = get_orb_widget_prefix(base_id);
 
-	toggle_button& toggle = find_widget<toggle_button>(get_window(), prefix + "show", false);
+	toggle_button& toggle = find_widget<toggle_button>(prefix + "show");
 	toggle.set_value_bool(shown);
 }
 
@@ -149,7 +148,7 @@ void select_orb_colors::reset_orb_group_two_color(const std::string& base_id, bo
 
 	const std::string prefix = get_orb_widget_prefix(base_id);
 
-	toggle_button& toggle = find_widget<toggle_button>(get_window(), prefix + "two_color", false);
+	toggle_button& toggle = find_widget<toggle_button>(prefix + "two_color");
 	toggle.set_value_bool(two_color);
 }
 

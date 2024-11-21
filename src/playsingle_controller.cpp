@@ -50,6 +50,7 @@
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"
 
+#include <thread>
 
 static lg::log_domain log_aitesting("ai/testing");
 #define LOG_AIT LOG_STREAM(info, log_aitesting)
@@ -95,7 +96,7 @@ std::string playsingle_controller::describe_result() const
 
 void playsingle_controller::init_gui()
 {
-	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks());
+	LOG_NG << "Initializing GUI... " << timer();
 	// If we are retarting replay from linger mode.
 	update_gui_linger();
 	play_controller::init_gui();
@@ -131,7 +132,7 @@ void playsingle_controller::init_gui()
 	gui_->set_prevent_draw(false);
 	gui_->queue_repaint();
 	if(!video::headless() && !video::testing()) {
-		gui_->fade_to({0,0,0,0}, 500);
+		gui_->fade_to({0,0,0,0}, std::chrono::milliseconds{500});
 	} else {
 		gui_->set_fade({0,0,0,0});
 	}
@@ -180,7 +181,7 @@ void playsingle_controller::play_scenario_init(const config& level)
 		gui2::show_transient_message(
 			// TODO: find a better title
 			_("Game Error"),
-			_("This multiplayer game uses an alternative random mode, if you don't know what this message means, then "
+			_("This multiplayer game uses an alternative random mode, if you don’t know what this message means, then "
 			  "most likely someone is cheating or someone reloaded a corrupt game."));
 	}
 }
@@ -308,7 +309,7 @@ void playsingle_controller::finish_side_turn()
 
 void playsingle_controller::play_scenario_main_loop()
 {
-	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks());
+	LOG_NG << "starting main loop\n" << timer();
 
 	ai_testing::log_game_start();
 	while(!(gamestate().in_phase(game_data::GAME_ENDED) && end_turn_requested_ )) {
@@ -330,7 +331,7 @@ void playsingle_controller::play_scenario_main_loop()
 				get_saved_game().statistics().clear_current_scenario();
 			}
 
-			reset_gamestate(*ex.level, (*ex.level)["replay_pos"]);
+			reset_gamestate(*ex.level, (*ex.level)["replay_pos"].to_int());
 
 			for(std::size_t i = 0; i < local_players.size(); ++i) {
 				resources::gameboard->teams()[i].set_local(local_players[i]);
@@ -480,7 +481,8 @@ void playsingle_controller::play_idle_loop()
 {
 	while(!should_return_to_play_side()) {
 		play_slice_catch();
-		SDL_Delay(10);
+		using namespace std::chrono_literals;
+		std::this_thread::sleep_for(10ms);
 	}
 }
 
@@ -720,7 +722,7 @@ void playsingle_controller::play_network_turn()
 void playsingle_controller::handle_generic_event(const std::string& name)
 {
 	if(name == "ai_user_interact") {
-		play_slice(false);
+		play_slice();
 	}
 }
 

@@ -142,15 +142,14 @@ void menu_handler::status_table()
 {
 	int selected_side;
 
-	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team_index(), selected_side)) {
+	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team(), selected_side)) {
 		gui_->scroll_to_leader(selected_side);
 	}
 }
 
 void menu_handler::save_map()
 {
-	const std::string& input_name
-			= filesystem::get_dir(filesystem::get_dir(filesystem::get_user_data_dir() + "/editor") + "/maps/");
+	const std::string input_name = filesystem::get_legacy_editor_dir() + "/maps/";
 
 	gui2::dialogs::file_dialog dlg;
 
@@ -392,7 +391,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		return;
 	}
 	if(recall_list_team.empty()) {
-		gui2::show_transient_message("", _("You currently can't recall at the highlighted location."));
+		gui2::show_transient_message("", _("You currently can’t recall at the highlighted location."));
 		return;
 	}
 
@@ -447,8 +446,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	if(!pc_.get_whiteboard()
 			|| !pc_.get_whiteboard()->save_recall(*recall_list_team[res].get(), side_num, recall_location)) {
 		bool success = synced_context::run_and_throw("recall",
-				replay_helper::get_recall(recall_list_team[res]->id(), recall_location, recall_from), true, true,
-				synced_context::ignore_error_function);
+				replay_helper::get_recall(recall_list_team[res]->id(), recall_location, recall_from));
 
 		if(!success) {
 			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list.";
@@ -839,8 +837,9 @@ void menu_handler::clear_labels()
 		);
 
 		if(res == gui2::retval::OK) {
-			gui_->labels().clear(gui_->current_team_name(), false);
-			resources::recorder->clear_labels(gui_->current_team_name(), false);
+			std::string viewing_team = gui_->viewing_team().team_name();
+			gui_->labels().clear(viewing_team, false);
+			resources::recorder->clear_labels(viewing_team, false);
 		}
 	}
 }
@@ -885,7 +884,7 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator& ui,
 
 	{
 		LOG_NG << "move_unit_to_loc " << route.steps.front() << " to " << route.steps.back();
-		actions::move_unit_and_record(route.steps, &pc_.get_undo_stack(), continue_move);
+		actions::move_unit_and_record(route.steps, continue_move);
 	}
 
 	mousehandler.deselect_hex();
@@ -963,7 +962,7 @@ void menu_handler::execute_gotos(mouse_handler& mousehandler, int side)
 
 			{
 				LOG_NG << "execute goto from " << route.steps.front() << " to " << route.steps.back();
-				int moves = actions::move_unit_and_record(route.steps, &pc_.get_undo_stack());
+				int moves = actions::move_unit_and_record(route.steps);
 				change = moves > 0;
 			}
 
@@ -1240,7 +1239,7 @@ protected:
 		register_command(
 				"layers", &console_handler::do_layers, _("Debug layers from terrain under the mouse."), "", "D");
 		register_command("fps", &console_handler::do_fps, _("Display and log fps (Frames Per Second)."));
-		register_command("benchmark", &console_handler::do_benchmark, _("Similar to the 'fps' command, but also forces everything to redraw instead of only things that have changed."));
+		register_command("benchmark", &console_handler::do_benchmark, _("Similar to the ‘fps’ command, but also forces everything to redraw instead of only things that have changed."));
 		register_command("save", &console_handler::do_save, _("Save game."));
 		register_alias("save", "w");
 		register_command("quit", &console_handler::do_quit, _("Quit game."));
@@ -1251,7 +1250,7 @@ protected:
 		register_command("ignore_replay_errors", &console_handler::do_ignore_replay_errors, _("Ignore replay errors."));
 		register_command("nosaves", &console_handler::do_nosaves, _("Disable autosaves."));
 		register_command("next_level", &console_handler::do_next_level,
-				_("Advance to the next scenario, or scenario identified by 'id'"), _("<id>"), "DS");
+				_("Advance to the next scenario, or scenario identified by ‘id’"), _("<id>"), "DS");
 		register_alias("next_level", "n");
 		register_command("choose_level", &console_handler::do_choose_level, _("Choose next scenario"), "", "DS");
 		register_alias("choose_level", "cl");
@@ -1287,7 +1286,7 @@ protected:
 		// register_command("unbuff", &console_handler::do_unbuff,
 		//    _("Remove a trait from a unit. (Does not work yet.)"), "", "D");
 		register_command("discover", &console_handler::do_discover, _("Discover all units in help."), "");
-		register_command("undiscover", &console_handler::do_undiscover, _("'Undiscover' all units in help."), "");
+		register_command("undiscover", &console_handler::do_undiscover, _("‘Undiscover’ all units in help."), "");
 		register_command("create", &console_handler::do_create, _("Create a unit."), _("<unit type id>"), "DS");
 		register_command("fog", &console_handler::do_fog, _("Toggle fog for the current player."), "", "DS");
 		register_command("shroud", &console_handler::do_shroud, _("Toggle shroud for the current player."), "", "DS");
@@ -1468,10 +1467,10 @@ void console_handler::do_droid()
 	symbols["side"] = std::to_string(side);
 
 	if(side < 1 || side > menu_handler_.pc_.get_teams().size()) {
-		command_failed(VGETTEXT("Can't droid invalid side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can’t droid invalid side: ‘$side’.", symbols));
 		return;
 	} else if(menu_handler_.board().get_team(side).is_network()) {
-		command_failed(VGETTEXT("Can't droid networked side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can’t droid networked side: ‘$side’.", symbols));
 		return;
 	} else if(menu_handler_.board().get_team(side).is_local()) {
 		bool changed = false;
@@ -1483,7 +1482,7 @@ void console_handler::do_droid()
 
 		if(action == "on") {
 			if(is_ai && !is_your_turn) {
-				command_failed(_("It is not allowed to change a side from AI to human control when it's not your turn."));
+				command_failed(_("It is not allowed to change a side from AI to human control when it’s not your turn."));
 				return;
 			}
 			if(!is_human || !is_droid) {
@@ -1493,13 +1492,13 @@ void console_handler::do_droid()
 				if(is_ai) {
 					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::human}});
 				}
-				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
+				print(get_cmd(), VGETTEXT("Side ‘$side’ controller is now controlled by: AI.", symbols));
 			} else {
-				print(get_cmd(), VGETTEXT("Side '$side' is already droided.", symbols));
+				print(get_cmd(), VGETTEXT("Side ‘$side’ is already droided.", symbols));
 			}
 		} else if(action == "off") {
 			if(is_ai && !is_your_turn) {
-				command_failed(_("It is not allowed to change a side from AI to human control when it's not your turn."));
+				command_failed(_("It is not allowed to change a side from AI to human control when it’s not your turn."));
 				return;
 			}
 			if(!is_human || !is_proxy_human) {
@@ -1509,13 +1508,13 @@ void console_handler::do_droid()
 				if(is_ai) {
 					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::human}});
 				}
-				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
+				print(get_cmd(), VGETTEXT("Side ‘$side’ controller is now controlled by: human.", symbols));
 			} else {
-				print(get_cmd(), VGETTEXT("Side '$side' is already not droided.", symbols));
+				print(get_cmd(), VGETTEXT("Side ‘$side’ is already not droided.", symbols));
 			}
 		} else if(action == "full") {
 			if(!is_your_turn) {
-				command_failed(_("It is not allowed to change a side from human to AI control when it's not your turn."));
+				command_failed(_("It is not allowed to change a side from human to AI control when it’s not your turn."));
 				return;
 			}
 			if(!is_ai || !is_droid) {
@@ -1525,13 +1524,13 @@ void console_handler::do_droid()
 				if(is_human || is_proxy_human) {
 					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::ai}});
 				}
-				print(get_cmd(), VGETTEXT("Side '$side' controller is now fully controlled by: AI.", symbols));
+				print(get_cmd(), VGETTEXT("Side ‘$side’ controller is now fully controlled by: AI.", symbols));
 			} else {
-				print(get_cmd(), VGETTEXT("Side '$side' is already fully AI controlled.", symbols));
+				print(get_cmd(), VGETTEXT("Side ‘$side’ is already fully AI controlled.", symbols));
 			}
 		} else if(action == "") {
 			if(is_ai && !is_your_turn) {
-				command_failed(_("It is not allowed to change a side from AI to human control when it's not your turn."));
+				command_failed(_("It is not allowed to change a side from AI to human control when it’s not your turn."));
 				return;
 			}
 			if(is_ai || is_droid) {
@@ -1541,7 +1540,7 @@ void console_handler::do_droid()
 				if(is_ai) {
 					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::human}});
 				}
-				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
+				print(get_cmd(), VGETTEXT("Side ‘$side’ controller is now controlled by: human.", symbols));
 			} else {
 				menu_handler_.board().get_team(side).make_human();
 				menu_handler_.board().get_team(side).make_droid();
@@ -1549,10 +1548,10 @@ void console_handler::do_droid()
 				if(is_ai) {
 					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::human}});
 				}
-				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
+				print(get_cmd(), VGETTEXT("Side ‘$side’ controller is now controlled by: AI.", symbols));
 			}
 		} else {
-			print(get_cmd(), VGETTEXT("Invalid action provided for side '$side'. Valid actions are: on, off, full.", symbols));
+			print(get_cmd(), VGETTEXT("Invalid action provided for side ‘$side’. Valid actions are: on, off, full.", symbols));
 		}
 
 		if(team_num_ == side && changed) {
@@ -1561,7 +1560,7 @@ void console_handler::do_droid()
 			}
 		}
 	} else {
-		command_failed(VGETTEXT("Side '$side' is not a human or AI player.", symbols));
+		command_failed(VGETTEXT("Side ‘$side’ is not a human or AI player.", symbols));
 		return;
 	}
 	menu_handler_.textbox_info_.close();
@@ -1597,17 +1596,17 @@ void console_handler::do_idle()
 	if(side < 1 || side > menu_handler_.pc_.get_teams().size()) {
 		utils::string_map symbols;
 		symbols["side"] = side_s;
-		command_failed(VGETTEXT("Can't idle invalid side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can’t idle invalid side: ‘$side’.", symbols));
 		return;
 	} else if(menu_handler_.board().get_team(side).is_network()) {
 		utils::string_map symbols;
 		symbols["side"] = std::to_string(side);
-		command_failed(VGETTEXT("Can't idle networked side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can’t idle networked side: ‘$side’.", symbols));
 		return;
 	} else if(menu_handler_.board().get_team(side).is_local_ai()) {
 		utils::string_map symbols;
 		symbols["side"] = std::to_string(side);
-		command_failed(VGETTEXT("Can't idle local ai side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can’t idle local ai side: ‘$side’.", symbols));
 		return;
 	} else if(menu_handler_.board().get_team(side).is_local_human()) {
 		if(menu_handler_.board().get_team(side).is_idle() ? action == " on" : action == " off") {
@@ -1668,7 +1667,7 @@ void console_handler::do_control()
 		if(it_t == teams.end()) {
 			utils::string_map symbols;
 			symbols["side"] = side;
-			command_failed(VGETTEXT("Can't change control of invalid side: '$side'.", symbols));
+			command_failed(VGETTEXT("Can’t change control of invalid side: ‘$side’.", symbols));
 			return;
 		} else {
 			side_num = it_t->side();
@@ -1678,7 +1677,7 @@ void console_handler::do_control()
 	if(side_num < 1 || side_num > menu_handler_.pc_.get_teams().size()) {
 		utils::string_map symbols;
 		symbols["side"] = side;
-		command_failed(VGETTEXT("Can't change control of out-of-bounds side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can’t change control of out-of-bounds side: ‘$side’.", symbols));
 		return;
 	}
 
@@ -1695,14 +1694,14 @@ void console_handler::do_controller()
 	} catch(const bad_lexical_cast&) {
 		utils::string_map symbols;
 		symbols["side"] = side;
-		command_failed(VGETTEXT("Can't query control of invalid side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can’t query control of invalid side: ‘$side’.", symbols));
 		return;
 	}
 
 	if(side_num < 1 || side_num > menu_handler_.pc_.get_teams().size()) {
 		utils::string_map symbols;
 		symbols["side"] = side;
-		command_failed(VGETTEXT("Can't query control of out-of-bounds side: '$side'.", symbols));
+		command_failed(VGETTEXT("Can’t query control of out-of-bounds side: ‘$side’.", symbols));
 		return;
 	}
 
@@ -1745,7 +1744,7 @@ void console_handler::do_layers()
 	//
 	// -- vultraz, 2017-09-21
 	//
-	if(disp.get_map().on_board_with_border(loc)) {
+	if(menu_handler_.pc_.get_map().on_board_with_border(loc)) {
 		gui2::dialogs::terrain_layers::display(disp, loc);
 	}
 }
@@ -1978,7 +1977,7 @@ void console_handler::do_unit()
 		utils::string_map symbols;
 		symbols["unit"] = get_arg(1);
 		command_failed(VGETTEXT(
-			"Debug command 'unit: $unit' failed: no unit selected or hovered over.",
+			"Debug command ‘unit: $unit’ failed: no unit selected or hovered over.",
 			symbols));
 		return;
 	}
@@ -1996,7 +1995,7 @@ void console_handler::do_unit()
 			utils::string_map symbols;
 			symbols["alignment"] = get_arg(1);
 			command_failed(VGETTEXT(
-					"Invalid alignment: '$alignment', needs to be one of lawful, neutral, chaotic, or liminal.",
+					"Invalid alignment: ‘$alignment’, needs to be one of lawful, neutral, chaotic, or liminal.",
 					symbols));
 			return;
 		}

@@ -87,22 +87,22 @@ int configure_engine::xp_modifier_default() const
 		: prefs::get().xp_modifier();
 }
 
-int configure_engine::mp_countdown_init_time_default() const
+std::chrono::seconds configure_engine::mp_countdown_init_time_default() const
 {
 	return prefs::get().countdown_init_time();
 }
 
-int configure_engine::mp_countdown_reservoir_time_default() const
+std::chrono::seconds configure_engine::mp_countdown_reservoir_time_default() const
 {
 	return prefs::get().countdown_reservoir_time();
 }
 
-int configure_engine::mp_countdown_turn_bonus_default() const
+std::chrono::seconds configure_engine::mp_countdown_turn_bonus_default() const
 {
 	return prefs::get().countdown_turn_bonus();
 }
 
-int configure_engine::mp_countdown_action_bonus_default() const
+std::chrono::seconds configure_engine::mp_countdown_action_bonus_default() const
 {
 	return prefs::get().countdown_action_bonus();
 }

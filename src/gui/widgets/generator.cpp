@@ -1157,7 +1157,7 @@ static_assert(false, "GUI2/Generator: GENERATE_BODY already defined!");
 	}
 #endif
 
-std::unique_ptr<generator_base>  generator_base::build(
+std::unique_ptr<generator_base> generator_base::build(
 		const bool has_minimum, const bool has_maximum, const placement placement, const bool select)
 {
 	std::unique_ptr<generator_base> result = nullptr;
@@ -1171,27 +1171,22 @@ namespace {
 
 void pointer_test()
 {
-	generator_base *a = generator_base::build(
+	auto a = generator_base::build(
 			true, true, generator_base::horizontal_list, true);
 
-	generator_base *b = generator_base::build(
+	auto b = generator_base::build(
 			true, false, generator_base::horizontal_list, true);
 
-	generator_base *c = generator_base::build(
+	auto c = generator_base::build(
 			false, true, generator_base::horizontal_list, true);
 
-	generator_base *d = generator_base::build(
+	auto d = generator_base::build(
 			false, false, generator_base::horizontal_list, true);
 
 	a->clear();
 	b->clear();
 	c->clear();
 	d->clear();
-
-	delete a;
-	delete b;
-	delete c;
-	delete d;
 }
 
 void direct_test()

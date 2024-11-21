@@ -18,6 +18,7 @@
 #include <chrono>
 #include <functional>
 #include <iosfwd>
+#include <utility>
 
 namespace utils {
 
@@ -64,10 +65,10 @@ struct optimer
 		}
 	}
 
-	/** Resets the timer back to zero. */
-	void reset()
+	/** Resets the timer back to zero and returns the previous tick value. */
+	point reset()
 	{
-		start_ = clock::now();
+		return std::exchange(start_, clock::now());
 	}
 
 	/** Returns the start time point. */
@@ -80,6 +81,19 @@ struct optimer
 	interval elapsed() const
 	{
 		return clock::now() - start_;
+	}
+
+	/**
+	 * Resets the starting tick and returns the elapsed time.
+	 *
+	 * @note This method is preferred to calling elapsed() followed by reset()
+	 * since it guarantees resetting to the same tick as is used for duration
+	 * (or, in other words, clock::now() is called only once.)
+	 */
+	interval lap()
+	{
+		auto prev_start = reset();
+		return start_ - prev_start;
 	}
 
 private:

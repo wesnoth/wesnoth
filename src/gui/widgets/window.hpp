@@ -82,8 +82,6 @@ public:
 	/** Gets the retval for the default buttons. */
 	static retval get_retval_by_id(const std::string& id);
 
-	void finish_build(const builder_window::window_resolution&);
-
 	/**
 	 * Shows the window, running an event loop until it should close.
 	 *
@@ -670,7 +668,7 @@ private:
 	void finalize(const builder_grid& content_grid);
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	debug_layout_graph* debug_layout_;
+	std::unique_ptr<debug_layout_graph> debug_layout_;
 
 public:
 	/** wrapper for debug_layout_graph::generate_dot_file. */

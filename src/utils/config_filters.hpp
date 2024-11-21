@@ -44,14 +44,6 @@ bool double_matches_if_present(const config& filter, const config& cfg, const st
 bool int_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, utils::optional<int> def = utils::nullopt);
 
 /**
- * Restricts filters to only looking for values that are zero or more.
- *
- * A filter such as "-1-10" or "-10--1,1-10" is considered invalid and never matches anything, not
- * even a positive value that would be accepted by a stricter subset of the filter.
- */
-bool unsigned_matches_if_present(const config& filter, const config& cfg, const std::string& attribute);
-
-/**
  * Supports filters using "add" and "sub" attributes, for example a filter `add=1` matching a cfg containing either
  * `add=1` or `sub=-1`; this assumes that code elsewhere has already checked that cfg contains at most one of those
  * keys.

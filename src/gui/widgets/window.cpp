@@ -29,8 +29,9 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "wml_exception.hpp"
+
 #include "gui/auxiliary/typed_formula.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/event/distributor.hpp"
 #include "gui/core/event/handler.hpp"
 #include "gui/core/event/message.hpp"
@@ -56,7 +57,6 @@
 #include "sdl/texture.hpp"
 #include "formula/variant.hpp"
 #include "video.hpp" // only for toggle_fullscreen
-#include "wml_exception.hpp"
 #include "sdl/userevent.hpp"
 #include "sdl/input.hpp" // get_mouse_button_mask
 
@@ -273,7 +273,7 @@ window::window(const builder_window::window_resolution& definition)
 	, functions_(definition.functions)
 	, tooltip_(definition.tooltip)
 	, helptip_(definition.helptip)
-	, click_dismiss_(false)
+	, click_dismiss_(definition.click_dismiss)
 	, enter_disabled_(false)
 	, escape_disabled_(false)
 	, linked_size_()
@@ -287,6 +287,26 @@ window::window(const builder_window::window_resolution& definition)
 	manager::instance().add(*this);
 
 	connect();
+
+	for(const auto& lg : definition.linked_groups) {
+		if(has_linked_size_group(lg.id)) {
+			FAIL(VGETTEXT("Linked ‘$id’ group has multiple definitions.", {{"id", lg.id}}));
+		}
+
+		init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
+	}
+
+	const auto conf = cast_config_to<window_definition>();
+	assert(conf);
+
+	if(conf->grid) {
+		init_grid(*conf->grid);
+		finalize(*definition.grid);
+	} else {
+		init_grid(*definition.grid);
+	}
+
+	add_to_keyboard_chain(this);
 
 	connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(
 			&window::signal_handler_sdl_video_resize, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
@@ -319,12 +339,13 @@ window::window(const builder_window::window_resolution& definition)
 						SDL_BUTTON_RMASK),
 			event::dispatcher::front_child);
 
+	// FIXME investigate why this handler is being called twice and if this is actually needed
 	connect_signal<event::SDL_KEY_DOWN>(
 			std::bind(
-					&window::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6, true),
+					&window::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6, false),
 			event::dispatcher::back_post_child);
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
-			&window::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6, false));
+			&window::signal_handler_sdl_key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6, true));
 
 	connect_signal<event::MESSAGE_SHOW_TOOLTIP>(
 			std::bind(&window::signal_handler_message_show_tooltip,
@@ -388,12 +409,6 @@ window::~window()
 	if(!hidden_) {
 		queue_redraw();
 	}
-
-#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-
-	delete debug_layout_;
-
-#endif
 }
 
 window* window::window_instance(const unsigned handle)
@@ -412,33 +427,6 @@ retval window::get_retval_by_id(const std::string& id)
 	} else {
 		return retval::NONE;
 	}
-}
-
-void window::finish_build(const builder_window::window_resolution& definition)
-{
-	for(const auto& lg : definition.linked_groups) {
-		if(has_linked_size_group(lg.id)) {
-			t_string msg = VGETTEXT("Linked '$id' group has multiple definitions.", {{"id", lg.id}});
-
-			FAIL(msg);
-		}
-
-		init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
-	}
-
-	set_click_dismiss(definition.click_dismiss);
-
-	const auto conf = cast_config_to<window_definition>();
-	assert(conf);
-
-	if(conf->grid) {
-		init_grid(*conf->grid);
-		finalize(*definition.grid);
-	} else {
-		init_grid(*definition.grid);
-	}
-
-	add_to_keyboard_chain(this);
 }
 
 void window::show_tooltip(/*const unsigned auto_close_timeout*/)
@@ -891,20 +879,18 @@ void window::layout()
 	}
 
 	/***** Handle click dismiss status. *****/
-	button* click_dismiss_button = nullptr;
-	if((click_dismiss_button
-		= find_widget<button>(this, "click_dismiss", false, false))) {
-
+	button* click_dismiss_button = find_widget<button>("click_dismiss", false, false);
+	if(click_dismiss_button) {
 		click_dismiss_button->set_visible(widget::visibility::invisible);
 	}
 	if(click_dismiss_) {
-		button* btn = find_widget<button>(this, "ok", false, false);
+		button* btn = find_widget<button>("ok", false, false);
 		if(btn) {
 			btn->set_visible(widget::visibility::invisible);
 			click_dismiss_button = btn;
 		}
 		VALIDATE(click_dismiss_button,
-				 _("Click dismiss needs a 'click_dismiss' or 'ok' button."));
+				 _("Click dismiss needs a ‘click_dismiss’ or ‘ok’ button."));
 	}
 
 	/***** Layout. *****/
@@ -930,7 +916,7 @@ void window::layout()
 			 << settings::screen_width << ',' << settings::screen_height << '.';
 
 		throw wml_exception(_("Failed to show a dialog, "
-							   "which doesn't fit on the screen."),
+							   "which doesn’t fit on the screen."),
 							 sstr.str());
 	}
 
@@ -967,7 +953,7 @@ void window::layout()
 				 << '.';
 
 			throw wml_exception(_("Failed to show a dialog, "
-								   "which doesn't fit on the screen."),
+								   "which doesn’t fit on the screen."),
 								 sstr.str());
 		}
 	}
@@ -1118,7 +1104,7 @@ void window::finalize(const builder_grid& content_grid)
 	// Make sure the new child has same id.
 	widget->set_id(id);
 
-	auto* parent_grid = find_widget<grid>(&get_grid(), id, true, false);
+	auto* parent_grid = get_grid().find_widget<grid>(id, true, false);
 	assert(parent_grid);
 
 	if(grid* grandparent_grid = dynamic_cast<grid*>(parent_grid->parent())) {

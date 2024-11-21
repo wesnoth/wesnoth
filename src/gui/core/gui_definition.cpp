@@ -22,6 +22,7 @@
 #include "gui/core/log.hpp"
 #include "gui/core/static_registry.hpp"
 #include "gui/widgets/settings.hpp"
+#include "serialization/chrono.hpp"
 #include "wml_exception.hpp"
 
 namespace gui2
@@ -124,21 +125,22 @@ gui_definition::gui_definition(const config& cfg)
 	 */
 	const config& settings = cfg.mandatory_child("settings");
 
-	popup_show_delay_ = settings["popup_show_delay"];
-	popup_show_time_ = settings["popup_show_time"];
-	help_show_time_ = settings["help_show_time"];
-	double_click_time_ = settings["double_click_time"];
+	using namespace std::chrono_literals;
+	popup_show_delay_ = chrono::parse_duration(settings["popup_show_delay"], 0ms);
+	popup_show_time_ = chrono::parse_duration(settings["popup_show_time"], 0ms);
+	help_show_time_ = chrono::parse_duration(settings["help_show_time"], 0ms);
+	double_click_time_ = chrono::parse_duration(settings["double_click_time"], 0ms);
 
-	repeat_button_repeat_time_ = settings["repeat_button_repeat_time"];
+	repeat_button_repeat_time_ = chrono::parse_duration(settings["repeat_button_repeat_time"], 0ms);
 
-	VALIDATE(double_click_time_, missing_mandatory_wml_key("settings", "double_click_time"));
+	VALIDATE(!settings["double_click_time"].blank(), missing_mandatory_wml_key("settings", "double_click_time"));
 
 	sound_button_click_ = settings["sound_button_click"].str();
 	sound_toggle_button_click_ = settings["sound_toggle_button_click"].str();
 	sound_toggle_panel_click_ = settings["sound_toggle_panel_click"].str();
 	sound_slider_adjust_ = settings["sound_slider_adjust"].str();
 
-	has_helptip_message_ = settings["has_helptip_message"];
+	has_helptip_message_ = settings["has_helptip_message"].t_str();
 
 	VALIDATE(!has_helptip_message_.empty(), missing_mandatory_wml_key("settings", "has_helptip_message"));
 }

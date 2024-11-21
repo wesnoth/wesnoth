@@ -70,7 +70,7 @@ public:
 
 	void enter_lobby();
 
-	const std::chrono::time_point<std::chrono::steady_clock> login_time;
+	const std::chrono::steady_clock::time_point login_time;
 
 private:
 	const any_socket_ptr socket_;

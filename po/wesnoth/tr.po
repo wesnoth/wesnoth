@@ -4,21 +4,22 @@
 #
 # Nils Kneuper <crazy-ivanovic@gmx.net>, 2005.
 # ihsan Haluk AKIN <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008, ..., 2024.
+# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008-2024.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-09-17 21:19-0500\n"
-"PO-Revision-Date: 2024-08-20 22:06+0300\n"
+"POT-Creation-Date: 2024-10-21 11:11-0500\n"
+"PO-Revision-Date: 2024-11-07 16:01+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
-"Language-Team: Turkish <>\n"
+"Language-Team: Turkish <->\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -236,7 +237,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1062
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1064
 msgid "poisoned"
 msgstr "zehirlenmiş"
 
@@ -2703,84 +2704,6 @@ msgstr ""
 "centre_v=na|lla|na|ri|li|ni|ri|rae|bri\n"
 
 #: data/core/macros/names.cfg:144
-#, fuzzy
-#| msgid ""
-#| "Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
-#| "Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
-#| "Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,"
-#| "Abdul-Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,"
-#| "Abdul-Haqq,Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,"
-#| "Abdul-Khabir,Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,"
-#| "Abdul-Mubdiʾ,Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-"
-#| "Muʿid,Abdul-Muʿizz,Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,"
-#| "Abdul-Musawwir,Abdul-Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-"
-#| "Nur,Abdul-Qadir,Abdul-Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-"
-#| "Rafi,Abdul-Rahim,Abdul-Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-"
-#| "Shakur,Abdul-Tawwab,Abdul-Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,"
-#| "Abdul-Wakil,Abdul-Wali,Abdul-Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,"
-#| "ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,"
-#| "Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-Din,Alʿ Abbas,Aladdin,al-Bara,"
-#| "al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,Almahdi,al-Safi,Altaf,Altair,"
-#| "al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,Amir,ʿAmir,Amjad,ʿAmmar,"
-#| "ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,ʿArif,Asad,Asʿad,Asadel,"
-#| "Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-Rahman,Athil,Athir,ʿAtif,"
-#| "ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,ʿAzab,Azhar,Azim,ʿAziz,"
-#| "ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,Bahaʿ,Bahiyy al-Din,"
-#| "Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,Bashshar,Basil,Basim,"
-#| "Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,Bushr,Butrus,Dabir,"
-#| "Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,Diya,Diya al-"
-#| "Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,Faʿiz,Fakhir,"
-#| "Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,Fariq,"
-#| "Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,Fida,"
-#| "Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,Ghawth,"
-#| "Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,Hamal,"
-#| "Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
-#| "Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
-#| "Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam "
-#| "al-Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,"
-#| "Imran,Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz "
-#| "al-Din,Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,"
-#| "Jamal,Jamal al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,"
-#| "Jibril,Jubair,Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,"
-#| "Kamil,Karam,Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,"
-#| "Khalid,Khalil,Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,"
-#| "Khulus,Khuzaymah,Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,"
-#| "Lutfi,Maʿd,Madani,Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,"
-#| "Majd,Majdy,Majd al-Din,Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,"
-#| "Mansur,Marghub,Marid,Maʿruf,Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,"
-#| "Masun,Maysarah,Mazhar,Mazin,Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,"
-#| "Mishʿal,Miyaz,Muʾadh,Muʾawiyah,Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,"
-#| "Mufid,Muflih,Muhab,Muhayr,Muhammad,Muhanna,Muhannad,Muhib,Muhibb,Muhsin,"
-#| "Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,Mujahid,Mukarram,Mukhlis,Mukhtar,"
-#| "Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,Mundhir,Munib,Munif,Munir,"
-#| "Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,Murtada,Musa,Musʿab,"
-#| "Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,Mutawalli,Muʿtazz,"
-#| "Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,Nabighah,Nabih,"
-#| "Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,Najid,Najjar,"
-#| "Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,Nasim,Nasir,"
-#| "Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,Nazmi,Nibras,"
-#| "Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-Din,Nuri,"
-#| "Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,Qutaybah,"
-#| "Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,Raʿif,"
-#| "Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
-#| "Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,"
-#| "Ridwan,Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,"
-#| "Sabir,Sabri,Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,"
-#| "Safiy al-Din,Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif "
-#| "al-Din,Sajid,Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,"
-#| "Sami,Samih,Samir,Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,"
-#| "Shadin,Shafi,Shafiq,Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,"
-#| "Shamal,Shamil,Shamim,Sharaf,Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,"
-#| "Shuʿayb,Shukri,Shumayl,Siddiq,Sinan,Siraj,Siraj al-Din,Sofian,Subhi,"
-#| "Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,Sumrah,Suraqah,Suʿud,Tahir,Tahsin,"
-#| "Taym Allah,Taj,Taj al-Din,Talal,Talib,Tamim,Tamir,Tamam,Tammam,Taqiy,"
-#| "Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,Taysir,Tayyib,Thabit,Thamir,"
-#| "Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,ʿUdayl,ʿUday,ʿUmar,Umarah,"
-#| "Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,Waddah,Wadi,Wadid,Wafiq,"
-#| "Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,Walid,Walif,Waliy Allah,"
-#| "Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,Wazir,Yahya,Yaman,Yaʿqub,"
-#| "Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,"
-#| "Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
 msgid ""
 "Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
 "Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
@@ -2856,94 +2779,139 @@ msgid ""
 "Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,"
 "Zayn,Zarif,Zakarriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
 msgstr ""
-"Aban,Abbas,Abbud,Abdül-ʿAdil,Abdül-Ehad,Abdül-Alim,Abdül-Aliy,Abdül-Azim,"
-"Abdül-Aziz,Abdül-Badi,Abdül-Bayit,Abdül-Baki,Abdül-Bari,Abdül-Barr,Abdül-"
-"Basir,Abdül-Basit,Abdül-Fettah,Abdül-Gaffar,Abdül-Gafur,Abdül-Gani,Abdül-"
-"Hadi,Abdül-Hafız,Abdül-Hakam,Abdül-Hakim,Abdül-Halim,Abdül-Hamid,Abdül-Hak,"
-"Abdül-Hasib,Abdül-Hey,Abdül-Cabbar,Abdül-Calil,Abdül-Kerim,Abdül-Kabir,Abdül-"
-"Halik,Abdül-Latif,Abdül-Malik,Abdül-Mecid,Abdül-Metin,Abdül-Mübdiʾ,Abdül-"
-"Mugni,Abdül-Muhayimin,Abdül-Muhsi,Abdül-Muhyi,Abdül-Muʿid,Abdül-Muʿizz,Abdül-"
-"Mücib,Abdül-Mumin,Abdül-Mukaddim,Abdül-Müktedir,Abdül-Müsavir,Abdül-Mutaʿal,"
-"Abdül-Nafi,Abdül-Nasser,Abdül-Nasır,Abdül-Nur,Abdül-Kadir,Abdül-Kahar,Abdül-"
-"Kavi,Abdül-Kayyum,Abdül-Kuddüs,Abdül-Rafi,Abdül-Rahim,Abdül-Rahman,Abdül-"
-"Raşid,Abdül-Raʿuf,Abdül-Rezzak,Abdül-Şükür,Abdül-Tayyib,Abdül-Vadud,Abdül-"
-"Vahab,Abdül-Vahid,Abdül-Vacid,Abdül-Vekil,Abdül-Vali,Abdül-Valiy,Abdül-Varit,"
-"Abdül-Zahir,Abdüllah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,Adil,Adham,Adib,"
-"ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-Din,Alʿ Abbas,"
-"Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,Almahdi,al-Safi,"
-"Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,Amir,ʿAmir,Amca,"
-"ʿEmir,ʿAmro,Anas,Anis,ʿAntarah,Anvar,ʿAkil,Arfan,Arif,ʿArif,Esat,Asʿad,"
-"Asadel,Eşref,Asif,ʿAsım,Esved,Ataʿ,Ataʿ Allah,Ataʿ al-Rahman,Atil,Atir,ʿAtif,"
-"ʿAvad,ʿAvf,Avs,Avvab,Ayham,Ayman,Ayser,Eyyüb,Aza,ʿAzab,Azhar,Azim,ʿAziz,"
-"ʿAzzam,Bedi,Bedi al-Zaman,Bedir,Bedrettin,Bedri,Bahaʿ,Bahiyettin,Behiç,Bahir,"
-"Bekr,Bekri,Balig,Bandar,Baraka,Barir,Başşar,Basil,Basim,Bassam,Beyazıt,"
-"Bayhas,Bilal,Beşir,Bulos,Budail,Burhan,Buşar,Butrus,Dabir,Dani,Derviş,Davʿud,"
-"Zakir,Zekiy,Dakvan,Zülfikar,Dirar,Diya,Diyaettin,Dukak,Fadi,Fadil,Fadl,Fadl "
-"Allah,Fahd,Fahad,Fehmi,Faisal,Faʿiz,Fakhir,Fahrettin,Fahri,Fakih,Falah,Falih,"
-"Faraş,Farhan,Farid,Faruk,Farik,Faris,Faruk,Fath,Fethi,Fatih,Fatin,Favaz,"
-"Fawzan,Fawzi,Fayyad,Ferran,Fida,Fikri,Firas,Fuʿat,Fudail,Cemal,Gayt,Gali,"
-"Galib,Ganim,Hassan,Gawt,Gazvan,Giyat,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,"
+"Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
+"Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baki,Abdul-Bari,Abdul-Barr,Abdul-"
+"Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,Abdul-"
+"Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,Abdul-Hakk,"
+"Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,Abdul-Khabir,"
+"Abdul-Khalik,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,Abdul-Mubdiʾ,"
+"Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-Muʿid,Abdul-Muʿizz,"
+"Abdul-Mujib,Abdul-Mumin,Abdul-Mukaddim,Abdul-Muktadir,Abdul-Musavvir,Abdul-"
+"Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-Nur,Abdul-Kadir,Abdul-"
+"Kahhar,Abdul-Kavi,Abdul-Kayyum,Abdul-Kuddus,Abdul-Rafi,Abdul-Rahim,Abdul-"
+"Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzak,Abdul-Shakur,Abdul-Tavvab,Abdul-"
+"Vadud,Abdul-Vahhab,Abdul-Vahid,Abdul-Vajid,Abdul-Vakil,Abdul-Vali,Abdul-"
+"Valiy,Abdul-Varith,Abdul-Zahir,Abdullah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,"
+"Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-"
+"Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,"
+"Almahdi,al-Safi,Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,"
+"Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anvar,ʿAkil,Arfan,Arif,"
+"ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,Asvad,Ataʿ,Ataʿ Allah,Ataʿ al-"
+"Rahman,Athil,Athir,ʿAtif,ʿAvad,ʿAvf,Avs,Avvab,Ayham,Ayman,Ayser,Ayyub,Aza,"
+"ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,"
+"Bahaʿ,Bahiyy al-Din,Bahij,Bahir,Bakr,Baligh,Bandar,Barakah,Barir,Bashshar,"
+"Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,Bushr,"
+"Butrus,Dabir,Dani,Darvish,Daʿud,Dhakir,Dhakiy,Dhakvan,Dhul Fikar,Dirar,Diya,"
+"Diya al-Din,Dukak,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,Faʿiz,"
+"Fakhir,Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Farik,Farik,"
+"Faris,Faruk,Fath,Fathi,Fatih,Fatin,Favvaz,Favzan,Favzi,Fayyad,Ferran,Fida,"
+"Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,Ghavth,"
+"Ghazvan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,Hamal,Hamas,"
+"Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,Hannad,Haris,"
+"Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,Hilal,Hilmi,"
+"Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam al-Din,Ibrahim,"
+"ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,Imran,Imtiyaz,"
+"Inʿam,Ikbal,ʿIrfan,ʿIsa,ʿIsam,Ishak,Ismaʿil,Iyad,Iyas,Izz al-Din,Jabbar,Jabr,"
+"Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,Jamal,Jamal al-Din,Jamil,"
+"Jarir,Jasim,Jaul,Jaun,Javad,Javdah,Javhar,Jibran,Jibril,Jubair,Jul,Jumah,"
+"Junayd,Juvain,Kadar,Kadin,Kadir,Kahil,Kalik,Kamal,Kamil,Karam,Kardal,Karif,"
+"Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,Khalil al-Allah,"
+"Khalis,Khatib,Khair al-Din,Khairi,Khoury,Khulus,Khuzaymah,Kutaiba,Labib,"
+"Lablab,Latif,Layth,LuʿayLubayd,Lukman,Lut,Lutfi,Maʿd,Madani,Mahbub,Mahdi,"
+"Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd al-Din,Majid,Makin,"
+"Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marghub,Marid,Maʿruf,Marvan,Marzuk,"
+"Mashʿal,Mashhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,Mehmed,Mihran,"
+"Mihyar,Mikaʾil,Mikdad,Misbah,Mishʿal,Miyaz,Muʾadh,Muʾaviyah,Muʾayyad,Mubarak,"
+"Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,Muhanna,Muhannad,"
+"Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,"
+"Abdul-Alim,Abdul-Aliyy,Abdul-Azim,Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-"
+"Baki,Abdul-Bari,Abdul-Barr,Abdul-Basir,Abdul-Basit,Abdul-Fattah,Abdul-"
+"Ghaffar,Abdul-Ghafur,Abdul-Ghani,Abdul-Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-"
+"Hakim,Abdul-Halim,Abdul-Hamid,Abdul-Hakk,Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,"
+"Abdul-Jalil,Abdul-Karim,Abdul-Khabir,Abdul-Khalik,Abdul-Latif,Abdul-Malik,"
+"Abdul-Majid,Abdul-Matin,Abdul-Mubdiʾ,Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,"
+"Abdul-Muhyi,Abdul-Muʿid,Abdul-Muʿizz,Abdul-Mujib,Abdul-Mumin,Abdul-Mukaddim,"
+"Abdul-Muktadir,Abdul-Musavvir,Abdul-Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-"
+"Nasir,Abdul-Nur,Abdul-Kadir,Abdul-Kahhar,Abdul-Kavi,Abdul-Kayyum,Abdul-"
+"Kuddus,Abdul-Rafi,Abdul-Rahim,Abdul-Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-"
+"Razzak,Abdul-Shakur,Abdul-Tavvab,Abdul-Vadud,Abdul-Vahhab,Abdul-Vahid,Abdul-"
+"Vajid,Abdul-Vakil,Abdul-Vali,Abdul-Valiy,Abdul-Varith,Abdul-Zahir,Abdullah,"
+"ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,"
+"ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,"
+"al-Harith,Alhasan,Alhusain,Ali,Alim,Almahdi,al-Safi,Altaf,Altair,al-Tayyib,"
+"al-Tijani,al-Tufail,Amid,ʿAmid,Amin,Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,"
+"ʿAntarah,Anvar,ʿAkil,Arfan,Arif,ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,"
+"Asvad,Ataʿ,Ataʿ Allah,Ataʿ al-Rahman,Athil,Athir,ʿAtif,ʿAvad,ʿAvf,Avs,Avvab,"
+"Ayham,Ayman,Ayser,Ayyub,Aza,ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi al-Zaman,"
+"Badr,Badr al-Din,Badri,Bahaʿ,Bahiyy al-Din,Bahij,Bahir,Bakr,Baligh,Bandar,"
+"Barakah,Barir,Bashshar,Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,"
+"Budail,Burhan,Bushr,Butrus,Dabir,Dani,Darvish,Daʿud,Dhakir,Dhakiy,Dhakvan,"
+"Dhul Fikar,Dirar,Diya,Diya al-Din,Dukak,Fadi,Fadil,Fadl,Fadl Allah,Fahd,"
+"Fahad,Fahmi,Faisal,Faʿiz,Fakhir,Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,"
+"Farhan,Farid,Farik,Farik,Faris,Faruk,Fath,Fathi,Fatih,Fatin,Favvaz,Favzan,"
+"Favzi,Fayyad,Ferran,Fida,Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,"
+"Ghanim,Ghassan,Ghavth,Ghazvan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,"
 "Hakim,Halim,Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,"
-"Hani,Hanif,Hannad,Haris,Harith,Harun,Haşim,Hassan,Hatim,Haydar,Haytam,Hayyan,"
-"Hazim,Hilal,Hilmi,Hişam,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,"
-"Hüsemettin,Ibrahim,ʿId,Idris,Ihsan,Ihtişam,ʿIkrimah,Ilias,ʿImad,Imadettin,"
-"Imran,Imtiyaz,Inʿam,Ikbal,ʿIrfan,ʿIsa,ʿIsam,Işak,Ismaʿil,Iyad,Iyas,Izzetin,"
-"Cabbar,Cabr,Cabir,Cad Allah,Caʿfar,Cal,Celal,Celalettin,Celil,Cemal,"
-"Cemalettin,Cemil,Carir,Casim,Caul,Caun,Cevat,Cawdah,Cevher,Cibran,Cibril,"
-"Cubair,Cul,Cuma,Cüneyt,Cüveyn,Kadar,Kadin,Kadir,Kahil,Kaliq,Kemal,Kamil,"
-"Keram,Kardal,Karif,Kerim,Kasib,Kasim,Katib,Kazım,Kalaf,Haldun,Halit,Halil,"
-"Halil al-Allah,Halis,Hatib,Kair al-Din,Hairi,Houri,Hulus,Huzaymah,Kutaiba,"
-"Labib,Lablab,Latif,Layth,LuʿayLubayd,Lokman,Lut,Lutfi,Maʿd,Madani,Mahbub,"
-"Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdi,Majd al-Din,Majid,"
-"Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marhub,Marid,Maʿruf,Mervan,"
-"Marzuk,Maşʿal,Maşhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,Mehmed,Mihran,"
-"Mihyar,Mikaʾil,Mikdad,Misbah,Mişʿal,Miyaz,Muʾadih,Muʾaviye,Muʾayyad,Mubarak,"
-"Mubin,Mudar,Muddathir,Mufid,Muflih,Muhab,Muhayr,Muhammad,Muhanna,Muhannad,"
-"Muhib,Muhib,Muhsin,Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,Mujahid,Mukarram,"
-"Muhlis,Muhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,Mundhir,Munib,"
-"Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murşid,Murtada,Musa,"
-"Musʿab,Musaʿid,Muştak,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,Mutevelli,Muʿtaziz,"
-"Muthanna,Muti,Muvaffak,Muyassar,Muzaffer,Mussammil,Nabhan,Nabigah,Nabih,"
-"Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,Najid,Najjar,"
-"Necmettin,Naʿaman,Namir,Naşʿah,Naşʿat,Naşvan,Nasib,Nasih,Nasim,Nasir,"
-"Nasrettin,Nasr,Nasri,Nasuh,Navaf,Navfal,Nayif,Nazih,Nazim,Nazmi,Nibras,Nidal,"
-"Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nurettiin,Nuri,Nusra,Nusrat,"
-"Omar,Orhan,Osman,Kasım,kays,kudamah,kusay,katadah,kutaybah,kutb,kutuz,Rabah,"
-"Rabi,Radi,Rafi,Rafid,Rafik,Ragib,Rahman,Raʿid,Raʿif,Rais,Rajaa,Rajab,Raji,"
-"Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Raşad,Raşid,Rasil,Rasin,Rasmi,Rasul,"
-"Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridvan,Rihab,Riyad,Rizk,Ruhi,Ruşd,"
-"Ruşdi,Ruvayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,Saʿd,Sadettin,Sadad,Sadid,"
-"Sadık,Saʿdun,Saʿid,Safi,Safiy,Seyfettin,Safuh,Safwah,Safvat,Safvan,Sahib,"
-"Sahir,Sahl,Saʾib,Saif,Saif al-Din,Sajid,Sajjad,Sakhr,Salah,Salahattin,"
-"Salamah,Salih,Salim,Salman,Sami,Samih,Samir,Samman,Saqr,Sariyah,Sati,Saud,"
-"Sayyid,Shaʿban,Shadi,Shadin,Şafi,Şafik,Şahid,Şahin,Şahir,Şakib,Şakir,"
-"Şemsettin,Şamal,Şamil,Şamim,Şaraf,Şarif,Şevki,Şihab,Şahabettin,Şihad,Şuʿayib,"
-"Şukri,Şumayl,Siddik,Sinan,Siraj,Siracettin,Sofian,Suphi,Sufyan,Suhayib,"
-"Suheyl,Suhaym,Suleyman,Sumrah,Surakah,Suʿud,Tahir,Tahsin,Taym Allah,Taj,"
-"Tacettin,Talal,Talib,Tamim,Tamir,Tamam,Tammam,Takiy,Tarif,Tarik,Taslim,"
-"Tevfik,Tevhid,Taymullah,Taysir,Tayyib,Tabit,Tamir,Takib,Tavab,Tavban,"
-"ʿUbaidah,Ubaid,Ubayy,ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,Urvah,Usaym,Usama,"
-"ʿUtbah,Uthal,Uthman,Vaddah,Vadi,Vadid,Vafiq,Vahab,Vahhab,Vahid,Vaʾil,Vajdi,"
+"Hani,Hanif,Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,"
+"Hayyan,Hazim,Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,"
+"Husam,Husam al-Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,"
+"Imad al-Din,Imran,Imtiyaz,Inʿam,Ikbal,ʿIrfan,ʿIsa,ʿIsam,Ishak,Ismaʿil,Iyad,"
+"Iyas,Izz al-Din,Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,"
+"Jalil,Jamal,Jamal al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Javad,Javdah,Javhar,"
+"Jibran,Jibril,Jubair,Jul,Jumah,Junayd,Juvain,Kadar,Kadin,Kadir,Kahil,Kalik,"
+"Kamal,Kamil,Karam,Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,"
+"Khalid,Khalil,Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,"
+"Khulus,Khuzaymah,Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Lukman,Lut,"
+"Lutfi,Maʿd,Madani,Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,"
+"Majdy,Majd al-Din,Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,"
+"Marghub,Marid,Maʿruf,Marvan,Marzuk,Mashʿal,Mashhur,Masrur,Masʿud,Masun,"
+"Maysarah,Mazhar,Mazin,Mehmed,Mihran,Mihyar,Mikaʾil,Mikdad,Misbah,Mishʿal,"
+"Miyaz,Muʾadh,Muʾaviyah,Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,Mufid,Muflih,"
+"Muhab,Muhayr,Muhammad,Muhanna,Muhannad,Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-"
+"Din,Muʿin,Muʿizz,Mujab,Mujahid,Mukarram,Mukhlis,Mukhtar,Mulham,Mulhim,"
+"Muʿmmar,Muʿmin,Mumtaz,Munahid,Mundhir,Munib,Munif,Munir,Muʿnis,Munjid,Munsif,"
+"Muntasir,Murad,Murid,Murshid,Murtada,Musa,Musʿab,Musaʿid,Mushtak,Muslih,"
+"Muslim,Mutafa,Mutaʾ,Muʿtasim,Mutavalli,Muʿtazz,Muthanna,Muti,Muvaffak,"
+"Muyassar,Muzaffar,Mussammil,Nabhan,Nabighah,Nabih,Nabil,Nadhir,Nadim,Nadir,"
+"Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,Najid,Najjar,Najm al-Din,Naʿaman,Namir,"
+"Nashʿah,Nashʿat,Nashvan,Nasib,Nasih,Nasim,Nasir,Nasir al-Din,Nasr,Nasri,"
+"Nasuh,Navaf,Navfal,Nayif,Nazih,Nazim,Nazmi,Nibras,Nidal,Nijad,Nimr,Nizar,"
+"Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-Din,Nuri,Nusrah,Nusrat,Omar,Orhan,"
+"Osman,Kasim,Kays,Kudamah,Kusay,Katadah,Kutaybah,Kutb,Kutuz,Rabah,Rabi,Radi,"
+"Rafi,Rafid,Rafik,Raghib,Rahman,Raʿid,Raʿif,Rais,Rajaa,Rajab,Raji,Rajih,Rakin,"
+"Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,"
+"Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridvan,Rihab,Riyad,Rizk,Ruhi,Rushd,Rushdi,"
+"Ruvayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,Saʿd,Saʿd al-Din,Sadad,Sadid,Sadik,"
+"Saʿdun,Saʿid,Safi,Safiy,Safiy al-Din,Safuh,Safvah,Safvat,Safvan,Sahib,Sahir,"
+"Sahl,Saʾib,Saif,Saif al-Din,Sajid,Sajjad,Sakhr,Salah,Salah al-Din,Salamah,"
+"Salih,Salim,Salman,Sami,Samih,Samir,Samman,Sakr,Sariyah,Sati,Saud,Sayyid,"
+"Shaʿban,Shadi,Shadin,Shafi,Shafik,Shahid,Shahin,Shahir,Shakib,Shakir,Shams "
+"al-Din,Shamal,Shamil,Shamim,Sharaf,Sharif,Shavki,Shihab,Shihab al-Din,Shihad,"
+"Shuʿayb,Shukri,Shumayl,Siddik,Sinan,Siraj,Siraj al-Din,Sofian,Subhi,Sufyan,"
+"Suhayb,Suhayl,Suhaym,Sulaiman,Sumrah,Surakah,Suʿud,Tahir,Tahsin,Taym Allah,"
+"Taj,Taj al-Din,Talal,Talib,Tamim,Tamir,Tamam,Tammam,Takiy,Tarif,Tarik,Taslim,"
+"Tavfik,Tavhid,Taymullah,Taysir,Tayyib,Thabit,Thamir,Thakib,Thavab,Thavban,"
+"ʿUbaidah,Ubaid,Ubayy,ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,ʾaUrvah,Usaym,Usama,"
+"ʿUtbah,Uthal,Uthman,Vaddah,Vadi,Vadid,Vafik,Vahab,Vahhab,Vahid,Vaʾil,Vajdi,"
 "Vajid,Vajih,Vakil,Valid,Valif,Valiy Allah,Valiy al-Din,Vakar,Vakkas,Vard,"
 "Vasif,Vasil,Vasim,Vazir,Yahya,Yaman,Yaʿkub,Yasar,Yasin,Yasir,Yazan,Yazid,"
-"Yunus,Yuşua,Yusri,Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,"
-"Zekerriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
+"Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,"
+"Zakarriya,Zaki,Zakvan,Ziyad,Zubayr,Zuhayr"
 
 #: data/core/macros/names.cfg:145
 #, fuzzy
 #| msgid ""
 #| "Abiha,Afaf,A'isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
-#| "Chaima,Cynthia,Dalal,Dalia,Eliana,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,"
-#| "Hajra,Halima,Hamida,Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,"
-#| "Jamila,Jawahir,Jena,Jumana,Kareena,Karima,Katya,Khadija,Khairunnisa,"
-#| "Khawla,Khawlah,Lama,Lamia,Latifa,Layal,Layan,Leila,Lina,Lulwa,Madiha,Maha,"
-#| "Mahmuna,Mai,Malika,Marwa,Maryam,Maya,Maysoon,Melissa,Nadia,Nafisa,Nahla,"
-#| "Naila,Najat,Nasim,Nasrin,Nejla,Nezha,Niusha,Qistina,Rahima,Rana,Rashida,"
-#| "Reem,Ruqayya,Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,"
-#| "Sarah,Shahd,Shatha,Sherine,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,"
-#| "Zakiya,Zaynab"
+#| "Chaima,Dalia,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,Hajra,Halima,Hamida,"
+#| "Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,Jamila,Jawahir,Jena,"
+#| "Jumana,Kareena,Karima,Katya,Khadija,Khairunnisa,Khawla,Khawlah,Lama,"
+#| "Latifa,Layal,Layan,Leila,Lina,Lulwa,Madiha,Maha,Mahmuna,Mai,Malika,Marwa,"
+#| "Maryam,Maya,Maysoon,Nadia,Nafisa,Nahla,Naila,Najat,Nasim,Nasrin,Nejla,"
+#| "Nezha,Niusha,Rahima,Rana,Rashida,Reem,Ruqayya,Saadia,Sabiha,Safiya,Sahar,"
+#| "Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,Shatha,Shumaila,Sumaya,"
+#| "Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
 msgid ""
-"Abiha,Afaf,A'isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
+"Abiha,Afaf,A’isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
 "Chaima,Dalia,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,Hajra,Halima,Hamida,"
 "Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,Jamila,Jawahir,Jena,Jumana,"
 "Kareena,Karima,Katya,Khadija,Khairunnisa,Khawla,Khawlah,Lama,Latifa,Layal,"
@@ -2953,15 +2921,13 @@ msgid ""
 "Sakhra,Salma,Samira,Sarah,Shahd,Shatha,Shumaila,Sumaya,Taslima,Umm,Yara,"
 "Yasmin,Zahra,Zakiya,Zaynab"
 msgstr ""
-"Abiha,Afaf,Ayşe,Ajda,Aliye,Amire,Aşrakat,Atike,Azra,Büteyna,Buşra,Çayima,"
-"Sintiya,Dalal,Dalya,Elyana,Esma,Feride,Fatma,Feyruz,Habibe,Hafize,Hayra,"
-"Halime,Hamide,Hanife,Havva,Hayat,Hessa,İbtizam,İbtizzam,İnam,Cemile,Cevahir,"
-"Cena,Jumene,Karina,Kerime,Katya,Hediye,Hayrunisa,Hayla,Haylah,Lama,Lamia,"
-"Latife,Leyal,Leyan,Leyla,Lina,Lilya,Mediha,Meha,Mahmune,Maya,Melika,Merve,"
-"Meryem,Maya,Meysun,Melissa,Nadya,Nefise,Nahla,Nayla,Nayat,Nesim,Nesrin,Necla,"
-"Nezha,Nüsha,Kistina,Rahime,Rana,Reşide,Reim,Rukiye,Sadiye,Sabiha,Safiye,"
-"Seher,Saide,Sayide,Sahra,Salme,Semra,Sarah,Şadiye,Şata,Şerine,Hümeyra,Şumeya,"
-"Teslime,Ümmühan,Yara,Yasemin,Zehra,Zekiye,Zeynep"
+"Ayla,Afife,Ayşe,Ajda,Aliye,Amire,Asiye,Atiye,Azra,Büteyna,Büşra,Saime,Deniz,"
+"Esma,Feride,Fatma,Feyruz,Habibe,Hafsa,Hayra,Halime,Hamide,Hanife,Havva,Hayat,"
+"Hessa,İbtisam,İbtissam,İnaam,Cemile,Cevahir,Jena,Jumana,Hayriye,Kerime,Katya,"
+"Hediye,Hayrunisa,Kavla,Kavlah,Lama,Latife,Layal,Layan,Leyla,Lina,Lulva,"
+"Mediha,Melahat,Mahmure,Maya,Melike,Merve,Meryem,Maya,Aysun,Nadya,Nefise,"
+"Nalan,Naile,Nejat,Nesim,Nesrin,Necla,Nezihe,Nil,Rahime,Rana,Raşie,Reyhan,"
+"Rukiye,Sadiye,Sabiha,Teslime,Umm,Yara,Yasemin,Zehra,Zekiye,Zeynep"
 
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:147
@@ -3052,18 +3018,6 @@ msgstr ""
 "kib\n"
 
 #: data/core/macros/names.cfg:179
-#, fuzzy
-#| msgid ""
-#| "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
-#| "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
-#| "Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,"
-#| "Kerx,Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,"
-#| "Laizix,Lazki,Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,"
-#| "Presch,Sailik,Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,"
-#| "Skeely,Skeezix,Sklizle,Skrez,Slizilx,Sprizz,Ssexur,Ssizer,Ssorix,Sszasz,"
-#| "Sterizz,Talerez,Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,"
-#| "Vriss,Waks,Xaffrasz,Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,"
-#| "Xirtrez,Xirz,Zandler,Zedrix,Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
@@ -3076,18 +3030,16 @@ msgid ""
 "Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,Zilrix,"
 "Zizzasz,Zslap,Zzalkz,Zzupde"
 msgstr ""
-"Ampirikista,Aneksir,Anitraz,Ariks,Aksiz,Bizzikza,Çamil,Çilezi,Çilez,Fazzis,"
-"Fiziztraks,Fliksta,Flizzil,Frikes,Frizle,Hasiz,Heffez,Hertrazir,Hesiz,Hezzir,"
-"Hezzis,Hiks,Aneksis,Ayriks,Jezziks,Jiziz,Kalizez,Kepizis,Keriniks,Kerseziz,"
-"Kertirasiz,Keriks,Kerkeniks,Keziz,Kleksaz,Kleziks,Krarakis,Krenarekis,Krekis,"
-"Krineks,Krisesis,Lajizikis,Lazikij,Liksesez,Merakis,Meksisis,Moksanozoz,"
-"Naksisiz,Nikis,Pekizis,Plaksis,Plesikis,Preş,Sasilik,Salaniks,Salik,Sandiks,"
-"Sapraziz,Satras,Skalikis,Skandikis,Skazikis,Skeleli,Skezezikis,Skelizle,"
-"Skerez,Silizilikis,Sipriziz,Siseksur,Sisizer,Sisoriks,Siszasiz,Siteriziz,"
-"Talerez,Tarekis,Tarnikis,Tezzaz,Tirasis,Tirakis,Tirikis,Treziz,Veneziz,"
-"Virisis,Vakis,Safafrasaz,Saretrez,Sasız,Saztekzis,Serksizis,Siraksiz,Zirir,"
-"Zirtiras,Zirtirez,Ziriz,Zandler,Zedrikis,Zilrikis,Zizzasaz,Zaslap,Zazalakaz,"
-"Zuzupde"
+"Ampriksta,Aneksir,Anitraz,Ariks,Aksiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
+"Fizztraks,Fliksta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
+"Hezzis,Hiks,Ineksis,Iriks,Jezziks,Kaliez,Kepzs,Kerniks,Kersezz,Kertrasz,"
+"Kerks,Kerkseniks,Kezz,Kleksaz,Klezyks,Kraraks,Krenareks,Kreks,Krineks,"
+"Krisess,Laiziks,Lazki,Likseez,Meraks,Meksiss,Moksanzz,Naksisz,Niks,Pekzs,"
+"Plaksis,Plesiks,Presch,Sailik,Salaniks,Salik,Sandiks,Saprazz,Satras,Skaliks,"
+"Skandiks,Skaziks,Skeely,Skeeziks,Sklizle,Skrez,Slizilks,Sprizz,Ssizer,"
+"Ssoriks,Sszasz,Sterizz,Talerez,Tareks,Tarniks,Tezzaz,Tirasch,Tiraks,Tiriks,"
+"Trezz,Venezz,Vriss,Vaks,Kaffrasz,Kartrez,Kasz,Kazteks,Kerksiks,Kirasz,Kirr,"
+"Kirtras,Kirtrez,Kirz,Zandler,Zedriks,Zilriks,Zizzasz,Zslap,Zzalkz,Zzupde"
 
 #. Generator for saurian names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:181
@@ -3860,7 +3812,7 @@ msgstr "Mantar"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
-#: data/core/team-colors.cfg:207 src/terrain/terrain.cpp:186
+#: data/core/team-colors.cfg:207 src/terrain/terrain.cpp:188
 msgid "Village"
 msgstr "Köy"
 
@@ -3891,14 +3843,14 @@ msgstr "Geçilmez"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:243 src/game_initialization/lobby_data.cpp:383
+#: data/core/team-colors.cfg:243 src/game_initialization/lobby_data.cpp:384
 msgid "Fog"
 msgstr "Sis"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:249 src/game_initialization/lobby_data.cpp:386
-#: src/game_initialization/lobby_data.cpp:389
+#: data/core/team-colors.cfg:249 src/game_initialization/lobby_data.cpp:387
+#: src/game_initialization/lobby_data.cpp:390
 msgid "Shroud"
 msgstr "Örtü"
 
@@ -4327,31 +4279,31 @@ msgstr "Geçersiz kullanım dışı bırakma seviyesi (1-4 arası olmalı)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1062
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1064
 msgid "female^poisoned"
 msgstr "zehirlendi"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1069
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1071
 msgid "female^slowed"
 msgstr "yavaşlatıldı"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1069
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1071
 msgid "slowed"
 msgstr "yavaşlatıldı"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1075
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1077
 msgid "female^petrified"
 msgstr "taşlaştı"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1075
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1077
 msgid "petrified"
 msgstr "taşlaştı"
 
@@ -4367,8 +4319,8 @@ msgstr "iyileştirilemez"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3689
-#: src/scripting/game_lua_kernel.cpp:3724
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3690
+#: src/scripting/game_lua_kernel.cpp:3725
 msgid "input"
 msgstr "girdi"
 
@@ -5518,7 +5470,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "bir terfi seçeneği"
 
-#: src/actions/attack.cpp:584 src/actions/attack.cpp:1383
+#: src/actions/attack.cpp:586 src/actions/attack.cpp:1385
 msgid "An invalid attacker weapon got selected."
 msgstr "Geçersiz bir saldırgan silahı seçildi."
 
@@ -5614,11 +5566,11 @@ msgstr[1] "$friends dost birim göründü"
 msgid "(press $hotkey to keep moving)"
 msgstr "(devam etmek için $hotkey tuşuna basınız)"
 
-#: src/actions/undo.cpp:401
+#: src/actions/undo.cpp:398
 msgid "Redo Error"
 msgstr "Tekrar Hatası"
 
-#: src/actions/undo.cpp:402
+#: src/actions/undo.cpp:399
 msgid ""
 "The redo stack is out of sync. This is most commonly caused by a corrupt "
 "save file or by faulty WML code in the scenario or era. Details:"
@@ -5686,7 +5638,7 @@ msgid ""
 "<i>$addon_title</i> cannot be uploaded."
 msgstr ""
 "Uzak sunucuya bağlantı güvenli değil. Eklenti, <i>$addon_title</i> sunucuya "
-"yüklenemedi "
+"yüklenemedi."
 
 #: src/addon/client.cpp:221
 msgid "Requesting file index..."
@@ -5932,15 +5884,15 @@ msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr "Eklenti sunucusunda $addon_ids ile eşleşen eklentiler bulunamadı."
 
-#: src/addon/validation.cpp:389
+#: src/addon/validation.cpp:388
 msgid "Success."
 msgstr "Başarılı."
 
-#: src/addon/validation.cpp:393
+#: src/addon/validation.cpp:392
 msgid "Incorrect add-on passphrase."
 msgstr "Eklenti parolası yanlış."
 
-#: src/addon/validation.cpp:397
+#: src/addon/validation.cpp:396
 msgid ""
 "Forum authentication was requested for a user that is not registered on the "
 "forums."
@@ -5948,31 +5900,31 @@ msgstr ""
 "Forumlara kayıtlı olmayan bir kullanıcı için forum kimlik doğrulaması "
 "istendi."
 
-#: src/addon/validation.cpp:401
+#: src/addon/validation.cpp:400
 msgid "Upload denied. Please contact the server administration for assistance."
 msgstr "Karşıya yükleme reddedildi. Destek için sunucu yönetimine başvurun."
 
-#: src/addon/validation.cpp:405
+#: src/addon/validation.cpp:404
 msgid "Attempted to upload an update pack for a non-existent add-on."
 msgstr "Varolmayan bir eklentiye güncelleme paketi yüklenmeye çalışıldı."
 
-#: src/addon/validation.cpp:414
+#: src/addon/validation.cpp:413
 msgid "No add-on data was supplied by the client."
 msgstr "İstemciden eklenti verisi gelmedi."
 
-#: src/addon/validation.cpp:418
+#: src/addon/validation.cpp:417
 msgid "Invalid upload pack."
 msgstr "Geçersiz güncelleme paketi."
 
-#: src/addon/validation.cpp:422
+#: src/addon/validation.cpp:421
 msgid "Invalid add-on name."
 msgstr "Geçersiz eklenti adı."
 
-#: src/addon/validation.cpp:426
+#: src/addon/validation.cpp:425
 msgid "Formatting character in add-on name."
 msgstr "Eklenti isminde biçemleme karakteri."
 
-#: src/addon/validation.cpp:430
+#: src/addon/validation.cpp:429
 msgid ""
 "The add-on contains files or directories with illegal names.\n"
 "\n"
@@ -5994,7 +5946,7 @@ msgstr ""
 "Bundan başka, isimler 255 karakterden uzun olamaz, '..' içeremez ve  '.'  "
 "ile bitemez."
 
-#: src/addon/validation.cpp:440
+#: src/addon/validation.cpp:439
 msgid ""
 "The add-on contains files or directories with case conflicts.\n"
 "\n"
@@ -6006,147 +5958,151 @@ msgstr ""
 "Aynı dizin altındaki dizin/dosya adlarındaki karakterler büyük/küçük "
 "yapılarak bu adlar farklılaştırılamaz."
 
-#: src/addon/validation.cpp:446
+#: src/addon/validation.cpp:445
 msgid "The add-on name contains an invalid UTF-8 sequence."
 msgstr "Eklenti ismi geçersiz UTF-8 karakter içeriyor."
 
-#: src/addon/validation.cpp:455
+#: src/addon/validation.cpp:454
 msgid "No add-on title specified."
 msgstr "Eklenti başlığı belirtilmemiş."
 
-#: src/addon/validation.cpp:459
+#: src/addon/validation.cpp:458
 msgid "No add-on author/maintainer name specified."
 msgstr "Eklenti yazar/sürdürücüsü belirtilmemiş."
 
-#: src/addon/validation.cpp:463
+#: src/addon/validation.cpp:462
 msgid "No add-on version specified."
 msgstr "Eklenti sürümü belirtilmemiş."
 
-#: src/addon/validation.cpp:467
+#: src/addon/validation.cpp:466
 msgid "No add-on description specified."
 msgstr "Bu eklenti için bir açıklama yok."
 
-#: src/addon/validation.cpp:471
+#: src/addon/validation.cpp:470
 msgid "No add-on author/maintainer email specified."
 msgstr "Eklenti yazar/sürdürücüsünün eposta adresi belirtilmemiş."
 
-#: src/addon/validation.cpp:475
+#: src/addon/validation.cpp:474
 msgid "Missing passphrase."
 msgstr "Parola eksik."
 
-#: src/addon/validation.cpp:479
+#: src/addon/validation.cpp:478
 msgid "Formatting character in add-on title."
 msgstr "Eklenti başlığında biçemleme karakteri."
 
-#: src/addon/validation.cpp:483
+#: src/addon/validation.cpp:482
 msgid "Invalid or unspecified add-on type."
 msgstr "Geçersiz veya belirsiz eklenti türü."
 
-#: src/addon/validation.cpp:487
+#: src/addon/validation.cpp:486
 msgid "Version number not greater than the latest uploaded version."
 msgstr "Sürüm numarası evvelce yüklenen sürümden büyük olmalı."
 
-#: src/addon/validation.cpp:491
+#: src/addon/validation.cpp:490
 msgid "Feedback topic id is not a number."
 msgstr "Geri bildirim konu kimliği bir sayı değil."
 
-#: src/addon/validation.cpp:495
+#: src/addon/validation.cpp:494
 msgid "Feedback topic does not exist."
 msgstr "Geri bildirim konusu mevcut değil."
 
-#: src/addon/validation.cpp:499
+#: src/addon/validation.cpp:498
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr "Eklenti yayınlama bilgisi geçersiz UTF-8 karakter içeriyor."
 
-#: src/addon/validation.cpp:503
+#: src/addon/validation.cpp:502
+#, fuzzy
+#| msgid ""
+#| "The add-on's forum_auth attribute does not match what was previously "
+#| "uploaded."
 msgid ""
-"The add-on's forum_auth attribute does not match what was previously "
+"The add-on’s forum_auth attribute does not match what was previously "
 "uploaded."
 msgstr "Eklentinin forum_auth niteliği önceki yüklenenle uyuşmuyor."
 
-#: src/addon/validation.cpp:512
+#: src/addon/validation.cpp:511
 msgid "Unspecified server error."
 msgstr "Beklenmedik sunucu hatası."
 
-#: src/addon/validation.cpp:516
+#: src/addon/validation.cpp:515
 msgid "Server is in read-only mode."
 msgstr "Sunucu salt-okunur kipte."
 
-#: src/addon/validation.cpp:520
+#: src/addon/validation.cpp:519
 msgid "Corrupted server add-ons list."
 msgstr "Sunucu eklenti listesi bozuk."
 
-#: src/addon/validation.cpp:524
+#: src/addon/validation.cpp:523
 msgid "Empty add-on version list on the server."
 msgstr "Sunucudaki eklenti listesi boş."
 
-#: src/addon/validation.cpp:528
+#: src/addon/validation.cpp:527
 msgid ""
 "This server does not support using the forum_auth attribute in your pbl."
 msgstr ""
 "Bu sunucu pbl'nizde forum_auth niteliğinin kullanılmasını desteklemiyor."
 
-#: src/addon/validation.cpp:538
+#: src/addon/validation.cpp:537
 msgid "Unspecified validation failure."
 msgstr "Belirtilmemiş doğrulama hatası."
 
-#: src/carryover_show_gold.cpp:51
+#: src/carryover_show_gold.cpp:52
 msgid "Scenario Report"
 msgstr "Senaryo Raporu"
 
-#: src/carryover_show_gold.cpp:53
+#: src/carryover_show_gold.cpp:54
 msgid "Victory"
 msgstr "Galibiyet"
 
-#: src/carryover_show_gold.cpp:54
+#: src/carryover_show_gold.cpp:55
 msgid "You have emerged victorious!"
 msgstr "Galip olarak tamamladın!"
 
-#: src/carryover_show_gold.cpp:56
+#: src/carryover_show_gold.cpp:57
 msgid "Defeat"
 msgstr "Yenilgi"
 
-#: src/carryover_show_gold.cpp:57
+#: src/carryover_show_gold.cpp:58
 msgid "You have been defeated!"
 msgstr "Yenildin!"
 
-#: src/carryover_show_gold.cpp:93
+#: src/carryover_show_gold.cpp:94
 msgid "Remaining gold: "
 msgstr "Kalan altın: "
 
-#: src/carryover_show_gold.cpp:97
+#: src/carryover_show_gold.cpp:99
 msgid "Turns finished early: "
 msgstr "Erken bitirilen eller: "
 
-#: src/carryover_show_gold.cpp:98
+#: src/carryover_show_gold.cpp:101
 msgid " per turn"
 msgstr " el başına"
 
-#: src/carryover_show_gold.cpp:98
+#: src/carryover_show_gold.cpp:101
 msgid "Early finish bonus: "
 msgstr "Erken bitirme ödülü: "
 
-#: src/carryover_show_gold.cpp:99
+#: src/carryover_show_gold.cpp:102
 msgid "Total bonus: "
 msgstr "Toplam ödül: "
 
-#: src/carryover_show_gold.cpp:102
+#: src/carryover_show_gold.cpp:105
 msgid "Total gold: "
 msgstr "Toplam altın: "
 
-#: src/carryover_show_gold.cpp:106
+#: src/carryover_show_gold.cpp:109
 msgid "Carryover percentage: "
 msgstr "Aktarım oranı: "
 
-#: src/carryover_show_gold.cpp:110
+#: src/carryover_show_gold.cpp:113
 msgid "Bonus gold: "
 msgstr "Altın ödülü: "
 
-#: src/carryover_show_gold.cpp:112
+#: src/carryover_show_gold.cpp:115
 msgid "Retained gold: "
 msgstr "Kalan Altın: "
 
-#: src/carryover_show_gold.cpp:125
+#: src/carryover_show_gold.cpp:128
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -6160,7 +6116,7 @@ msgstr[1] ""
 "Sonraki senaryoya tanımlı asgari başlangıç altınının üstüne $gold altınla "
 "başlayacaksınız."
 
-#: src/carryover_show_gold.cpp:132
+#: src/carryover_show_gold.cpp:135
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
@@ -6168,7 +6124,7 @@ msgid_plural ""
 msgstr[0] "Sonraki senaryoya belirlenmiş asgari altınla başlayacaksınız."
 msgstr[1] "Sonraki senaryoya belirlenmiş asgari altınla başlayacaksınız."
 
-#: src/carryover_show_gold.cpp:139
+#: src/carryover_show_gold.cpp:142
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -6406,13 +6362,9 @@ msgstr "$elem kullanımdan çıkarıldı ve kaldırıldı."
 msgid "Chat message"
 msgstr "Sohbet iletisi"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:577
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:576
 msgid "The Battle for Wesnoth"
 msgstr "Vesnot Savaşı"
-
-#: src/font/text_formatting.cpp:51
-msgid "Invalid Color"
-msgstr "Geçersiz Renk"
 
 #. TRANSLATORS: 24-hour time, eg '13:59'
 #: src/format_time_summary.cpp:48
@@ -6444,7 +6396,7 @@ msgstr "%d %b"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: src/game_config.cpp:525
+#: src/game_config.cpp:524
 msgid "Invalid color in range: "
 msgstr "Geçersiz renk aralığı: "
 
@@ -6492,7 +6444,9 @@ msgid "Falling back to the default core."
 msgstr "Varsayılan çekirdeğe dönülüyor."
 
 #: src/game_config_manager.cpp:301
-msgid "Can't locate the default core."
+#, fuzzy
+#| msgid "Can't locate the default core."
+msgid "Can’t locate the default core."
 msgstr "Varsayılan çekirdek bulunamıyor."
 
 #: src/game_config_manager.cpp:302
@@ -6539,13 +6493,13 @@ msgstr ""
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr "bunun yerine [campaign]  etiketinde makro ismini kullan"
 
-#: src/game_config_manager.cpp:635
+#: src/game_config_manager.cpp:634
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Şu eklenti hatalı ve yüklenemedi:"
 msgstr[1] "Şu eklentiler hatalı ve yüklenemedi:"
 
-#: src/game_config_manager.cpp:639
+#: src/game_config_manager.cpp:638
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6581,7 +6535,7 @@ msgid "Anonymous player"
 msgstr "Anonim oyuncu"
 
 #: src/game_initialization/connect_engine.cpp:940
-#: src/game_initialization/connect_engine.cpp:1238
+#: src/game_initialization/connect_engine.cpp:1205
 msgid "Computer Player"
 msgstr "Bilgisayar Oyuncusu"
 
@@ -6589,19 +6543,19 @@ msgstr "Bilgisayar Oyuncusu"
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1234
+#: src/game_initialization/connect_engine.cpp:1201
 msgid "Network Player"
 msgstr "Ağ Oyuncusu"
 
-#: src/game_initialization/connect_engine.cpp:1237
+#: src/game_initialization/connect_engine.cpp:1204
 msgid "Local Player"
 msgstr "Yerel Oyuncu"
 
-#: src/game_initialization/connect_engine.cpp:1239
+#: src/game_initialization/connect_engine.cpp:1206
 msgid "Nobody"
 msgstr "Hiçkimse"
 
-#: src/game_initialization/connect_engine.cpp:1242
+#: src/game_initialization/connect_engine.cpp:1209
 msgid "Reserved"
 msgstr "Kayıtlı"
 
@@ -6616,7 +6570,7 @@ msgstr "Harita yüklenemedi."
 
 #: src/game_initialization/create_engine.cpp:94
 msgid "not available."
-msgstr " Mevcut değil."
+msgstr "mevcut değil."
 
 #: src/game_initialization/create_engine.cpp:149
 msgid "Custom map."
@@ -6631,7 +6585,9 @@ msgid "OK"
 msgstr "Tamam"
 
 #: src/game_initialization/depcheck.cpp:516
-msgid "Scenario can't be activated. Some dependencies are missing: "
+#, fuzzy
+#| msgid "Scenario can't be activated. Some dependencies are missing: "
+msgid "Scenario can’t be activated. Some dependencies are missing: "
 msgstr "Senaryo etkinleştirilemiyor. Bazı bağımlılıklar eksik: "
 
 #: src/game_initialization/depcheck.cpp:570
@@ -6640,7 +6596,9 @@ msgid "No compatible eras found."
 msgstr "Uyumlu çağ bulunamadı."
 
 #: src/game_initialization/depcheck.cpp:585
-msgid "Era can't be activated. Some dependencies are missing: "
+#, fuzzy
+#| msgid "Era can't be activated. Some dependencies are missing: "
+msgid "Era can’t be activated. Some dependencies are missing: "
 msgstr "Çağ etkinleştirilemedi. Bazı bağımlılıklar eksik: "
 
 #: src/game_initialization/depcheck.cpp:638
@@ -6672,72 +6630,76 @@ msgstr "$faction ekibi için bir lider türü bulunamıyor"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Geçersiz lider $leader için cinsiyet bulunamıyor"
 
-#: src/game_initialization/lobby_data.cpp:160
+#: src/game_initialization/lobby_data.cpp:161
 msgid "Missing addon: $name"
 msgstr "Kayıp eklenti: $name"
 
-#: src/game_initialization/lobby_data.cpp:162
+#: src/game_initialization/lobby_data.cpp:163
 msgid "Missing addon: $id"
 msgstr "Kayıp eklenti: $id"
 
-#: src/game_initialization/lobby_data.cpp:194
+#: src/game_initialization/lobby_data.cpp:195
 msgid "Unknown era"
 msgstr "Bilinmeyen çağ"
 
-#: src/game_initialization/lobby_data.cpp:261
-#: src/game_initialization/lobby_data.cpp:295
+#: src/game_initialization/lobby_data.cpp:262
+#: src/game_initialization/lobby_data.cpp:296
 msgid "scenario_abbreviation^S"
 msgstr "S"
 
-#: src/game_initialization/lobby_data.cpp:281
+#: src/game_initialization/lobby_data.cpp:282
 msgid "Remote scenario"
 msgstr "Uzak Senaryo"
 
-#: src/game_initialization/lobby_data.cpp:302
-#: src/game_initialization/lobby_data.cpp:328
+#: src/game_initialization/lobby_data.cpp:303
+#: src/game_initialization/lobby_data.cpp:329
 msgid "campaign_abbreviation^C"
 msgstr "C"
 
-#: src/game_initialization/lobby_data.cpp:334
+#: src/game_initialization/lobby_data.cpp:335
 msgid "Unknown scenario"
 msgstr "Bilinmeyen Senaryo"
 
-#: src/game_initialization/lobby_data.cpp:348
+#: src/game_initialization/lobby_data.cpp:349
 msgid "Reloaded game"
 msgstr "Oyun yeniden yüklendi"
 
-#: src/game_initialization/lobby_data.cpp:363
+#: src/game_initialization/lobby_data.cpp:364
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Boş yer:"
 msgstr[1] "Boş yerler:"
 
-#: src/game_initialization/lobby_data.cpp:365
+#: src/game_initialization/lobby_data.cpp:366
 msgid "mp_game_available_slots^Full"
 msgstr "Dolu"
 
-#: src/game_initialization/lobby_data.cpp:376
-#: src/game_initialization/lobby_data.cpp:378 src/savegame.cpp:652
+#: src/game_initialization/lobby_data.cpp:377
+#: src/game_initialization/lobby_data.cpp:379 src/savegame.cpp:652
 msgid "Turn"
 msgstr "El"
 
-#: src/game_initialization/lobby_data.cpp:391
+#: src/game_initialization/lobby_data.cpp:392
 msgid "vision^none"
 msgstr "yok"
 
-#: src/game_initialization/lobby_data.cpp:400
+#: src/game_initialization/lobby_data.cpp:401
 msgid "time limit^none"
 msgstr "yok"
 
-#: src/game_initialization/lobby_data.cpp:444
+#: src/game_initialization/lobby_data.cpp:445
+#, fuzzy
+#| msgid ""
+#| "The host's version of <i>$addon</i> is incompatible. They have version "
+#| "<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version "
+"The host’s version of <i>$addon</i> is incompatible. They have version "
 "<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 "Sunucunun <i>$addon</i> sürümü uyumsuz. Onlarınki <b>$host_ver</b> iken "
 "sizinki <b>$local_ver</b>."
 
-#: src/game_initialization/lobby_data.cpp:458
+#: src/game_initialization/lobby_data.cpp:459
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version "
 "<b>$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6749,8 +6711,10 @@ msgstr ""
 msgid "Defeat enemy leader(s)"
 msgstr "Düşman lider(ler)ini öldür"
 
-#: src/game_initialization/mp_game_utils.cpp:103
-msgid "Cannot find era '$era'"
+#: src/game_initialization/mp_game_utils.cpp:102
+#, fuzzy
+#| msgid "Cannot find era '$era'"
+msgid "Cannot find era ‘$era’"
 msgstr "'$era' çağı bulunamıyor"
 
 #: src/game_initialization/multiplayer.cpp:233
@@ -6758,9 +6722,13 @@ msgid "Invalid address specified for multiplayer server"
 msgstr "Çok oyunculu sunucusu için geçersiz adres belirtilmiş"
 
 #: src/game_initialization/multiplayer.cpp:268
+#, fuzzy
+#| msgid ""
+#| "The server accepts versions '$required_version', but you are using "
+#| "version '$your_version'"
 msgid ""
-"The server accepts versions '$required_version', but you are using version "
-"'$your_version'"
+"The server accepts versions ‘$required_version’, but you are using version "
+"‘$your_version’"
 msgstr "Bu sunucu '$required_version' kabul ediyor ama sizinki '$your_version'"
 
 #: src/game_initialization/multiplayer.cpp:281
@@ -6835,7 +6803,7 @@ msgstr "IP adresiniz bu sunucunun forumlarında $duration süreyle yasaklıdır.
 
 #: src/game_initialization/multiplayer.cpp:431
 msgid "Your IP address is banned on this server’s forums."
-msgstr " IP adresiniz bu sunucunun forumlarında yasaklıdır"
+msgstr " IP adresiniz bu sunucunun forumlarında yasaklıdır."
 
 #: src/game_initialization/multiplayer.cpp:435
 msgid ""
@@ -6906,7 +6874,9 @@ msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Bu senaryo bitti. Seferberliğe devam etmek istiyor musunuz?"
 
 #: src/game_initialization/playcampaign.cpp:279
-msgid "Unknown scenario: '$scenario|'"
+#, fuzzy
+#| msgid "Unknown scenario: '$scenario|'"
+msgid "Unknown scenario: ‘$scenario|’"
 msgstr "Bilinmeyen Senaryo: ‘$scenario|’"
 
 #: src/game_initialization/singleplayer.cpp:43
@@ -6940,13 +6910,19 @@ msgid "Connection failed: "
 msgstr "Bağlantı başarısız: "
 
 #: src/generators/default_map_generator_job.cpp:706
-msgid "Random maps with an odd width aren't supported."
+#, fuzzy
+#| msgid "Random maps with an odd width aren't supported."
+msgid "Random maps with an odd width aren’t supported."
 msgstr "Tek sayılı genişliğe sahip rastgele haritalar desteklenmiyor."
 
 #: src/generators/default_map_generator_job.cpp:969
+#, fuzzy
+#| msgid ""
+#| "No valid castle location found. Too many or too few mountain hexes? "
+#| "(please check the 'max hill size' parameter)"
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
-"check the 'max hill size' parameter)"
+"check the ‘max hill size’ parameter)"
 msgstr ""
 "Kale koyulacak müsait bir yer bulunamadı. Çok fazla veya çok az dağ altıgeni "
 "mi var? (Lütfen \"azami tepe boyutu' değiştirgesine bakın)"
@@ -6957,7 +6933,7 @@ msgstr ""
 "'$id' bağlantılı grubun 'fixed_width' veya 'fixed_height' anahtarına "
 "ihtiyacı var."
 
-#: src/gui/dialogs/addon/install_dependencies.cpp:34
+#: src/gui/dialogs/addon/install_dependencies.cpp:33
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6971,19 +6947,19 @@ msgstr[1] ""
 "Seçili eklentinin aşağıdaki bağımlılıkları var ve bunlar kurulmamış veya "
 "eski sürüm. Devam etmeden önce bunları kurmak ister misiniz?"
 
-#: src/gui/dialogs/editor/choose_addon.cpp:77
+#: src/gui/dialogs/editor/choose_addon.cpp:73
 msgid "Create a new add-on"
 msgstr "Yeni eklenti oluştur"
 
-#: src/gui/dialogs/editor/choose_addon.cpp:77
+#: src/gui/dialogs/editor/choose_addon.cpp:73
 msgid "New Add-on"
 msgstr "Yeni Eklenti"
 
-#: src/gui/dialogs/editor/choose_addon.cpp:84
+#: src/gui/dialogs/editor/choose_addon.cpp:80
 msgid "Mainline"
 msgstr "Yerleşik"
 
-#: src/gui/dialogs/editor/choose_addon.cpp:84
+#: src/gui/dialogs/editor/choose_addon.cpp:80
 msgid "Mainline multiplayer scenarios"
 msgstr "Yerleşik çok oyunculu senaryolar"
 
@@ -6991,15 +6967,15 @@ msgstr "Yerleşik çok oyunculu senaryolar"
 msgid "No visible sides found."
 msgstr "Görünür bir taraf bulunamadı."
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:172
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:171
 msgid "Selected Game"
 msgstr "Seçili Oyun"
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:172
 msgid "Lobby"
 msgstr "Salon"
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:174
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
 msgid "Other Games"
 msgstr "Diğer Oyunlar"
 
@@ -7041,67 +7017,67 @@ msgid "Request encountered an unexpected error, please check the logs."
 msgstr ""
 "İstek beklenmeyen bir hatayla karşılaştı, lütfen günlükleri gözden geçirin."
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:105
+#: src/gui/dialogs/multiplayer/player_info.cpp:104
 msgid "In game:"
 msgstr "Oyunda:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:107
+#: src/gui/dialogs/multiplayer/player_info.cpp:106
 msgid "(observing)"
 msgstr "(gözlemliyor)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:109
+#: src/gui/dialogs/multiplayer/player_info.cpp:108
 msgid "(playing)"
 msgstr "(oynuyor)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:112
+#: src/gui/dialogs/multiplayer/player_info.cpp:111
 msgid "In lobby"
 msgstr "Lobide"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:141
+#: src/gui/dialogs/multiplayer/player_info.cpp:140
 msgid "On friends list"
 msgstr "Arkadaş listesinde"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:146
+#: src/gui/dialogs/multiplayer/player_info.cpp:145
 msgid "On ignores list"
 msgstr "Gözardı listesinde"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:151
+#: src/gui/dialogs/multiplayer/player_info.cpp:150
 msgid "Neither a friend nor ignored"
 msgstr "Ne arkadaş ne de gözardı"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:156
+#: src/gui/dialogs/multiplayer/player_info.cpp:155
 msgid "You"
 msgstr "Siz"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:159
+#: src/gui/dialogs/multiplayer/player_info.cpp:158
 msgid "Error"
 msgstr "Hata"
 
-#: src/gui/dialogs/unit_attack.cpp:158 src/gui/dialogs/unit_attack.cpp:173
+#: src/gui/dialogs/unit_attack.cpp:157 src/gui/dialogs/unit_attack.cpp:172
 msgid "Other aspects: "
 msgstr "Diğer hususlar: "
 
-#: src/gui/dialogs/unit_attack.cpp:185 src/gui/dialogs/unit_attack.cpp:198
-#: src/reports.cpp:818 src/reports.cpp:1090 src/reports.cpp:1102
+#: src/gui/dialogs/unit_attack.cpp:184 src/gui/dialogs/unit_attack.cpp:197
+#: src/reports.cpp:814 src/reports.cpp:1101 src/reports.cpp:1113
 msgid "Weapon: "
 msgstr "Silah: "
 
-#: src/gui/dialogs/unit_attack.cpp:186 src/gui/dialogs/unit_attack.cpp:199
-#: src/reports.cpp:191
+#: src/gui/dialogs/unit_attack.cpp:185 src/gui/dialogs/unit_attack.cpp:198
+#: src/reports.cpp:190
 msgid "Type: "
 msgstr "Tür: "
 
-#: src/gui/dialogs/unit_attack.cpp:187 src/gui/dialogs/unit_attack.cpp:200
-#: src/reports.cpp:819 src/reports.cpp:1091
+#: src/gui/dialogs/unit_attack.cpp:186 src/gui/dialogs/unit_attack.cpp:199
+#: src/reports.cpp:815 src/reports.cpp:1102
 msgid "Damage: "
 msgstr "Hasar: "
 
-#: src/gui/dialogs/unit_attack.cpp:188 src/gui/dialogs/unit_attack.cpp:201
-#: src/reports.cpp:840
+#: src/gui/dialogs/unit_attack.cpp:187 src/gui/dialogs/unit_attack.cpp:200
+#: src/reports.cpp:836
 msgid "Attacks: "
 msgstr "Saldırılar: "
 
-#: src/gui/dialogs/unit_attack.cpp:189 src/gui/dialogs/unit_attack.cpp:202
+#: src/gui/dialogs/unit_attack.cpp:188 src/gui/dialogs/unit_attack.cpp:201
 msgid "Chance to hit: "
 msgstr "İsabet şansı: "
 
@@ -7117,110 +7093,102 @@ msgstr "hayır"
 msgid "yes"
 msgstr "evet"
 
-#: src/help/help_browser.cpp:155
-msgid "Reference to unknown topic: "
-msgstr "Bilinmeyen bir konuya bağlantı: "
-
-#: src/help/help_impl.cpp:407
+#: src/help/help_impl.cpp:400
 msgid "Only available during a scenario."
 msgstr "Sadece senaryo sırasında var."
 
-#: src/help/help_impl.cpp:408 src/help/help_impl.cpp:444
+#: src/help/help_impl.cpp:401 src/help/help_impl.cpp:440
 msgid "Time of Day Schedule"
 msgstr "Günün Saati Zamanlaması"
 
-#: src/help/help_impl.cpp:435
+#: src/help/help_impl.cpp:431
 msgid "Lawful Bonus:"
 msgstr "Adil Ödülü:"
 
-#: src/help/help_impl.cpp:436
+#: src/help/help_impl.cpp:432
 msgid "Neutral Bonus:"
 msgstr "Tarafsız Ödülü:"
 
-#: src/help/help_impl.cpp:437
+#: src/help/help_impl.cpp:433
 msgid "Chaotic Bonus:"
 msgstr "Kaypak Ödülü:"
 
-#: src/help/help_impl.cpp:438
+#: src/help/help_impl.cpp:434
 msgid "Liminal Bonus:"
 msgstr "İntikalî Ödülü:"
 
-#: src/help/help_impl.cpp:439
+#: src/help/help_impl.cpp:435
 msgid "Schedule"
 msgstr "Program"
 
-#: src/help/help_impl.cpp:531
+#: src/help/help_impl.cpp:527
 msgid "<header>text='Units with this special attack'</header>"
 msgstr "<header>text='Bu özel saldırıya sahip birimler'</header>"
 
-#: src/help/help_impl.cpp:595
+#: src/help/help_impl.cpp:591
 msgid "<header>text='Units with this ability'</header>"
 msgstr "<header>text='Bu yeteneğe sahip birimler'</header>"
 
-#: src/help/help_impl.cpp:625
+#: src/help/help_impl.cpp:621
 msgid "Era:"
 msgstr "Çağ:"
 
-#: src/help/help_impl.cpp:633
+#: src/help/help_impl.cpp:629
 msgid "Factions"
 msgstr "Taraflar"
 
-#: src/help/help_impl.cpp:681
+#: src/help/help_impl.cpp:677
 msgid "Races: "
 msgstr "Irklar: "
 
-#: src/help/help_impl.cpp:690 src/help/help_impl.cpp:1138
+#: src/help/help_impl.cpp:686 src/help/help_impl.cpp:1134
 msgid "Alignments: "
 msgstr "Yönelimler: "
 
-#: src/help/help_impl.cpp:697
+#: src/help/help_impl.cpp:693
 msgid "Leaders"
 msgstr "Liderler"
 
-#: src/help/help_impl.cpp:706
+#: src/help/help_impl.cpp:702
 msgid "Recruits"
 msgstr "Askere alımlar"
 
-#: src/help/help_impl.cpp:791 src/units/types.cpp:487
+#: src/help/help_impl.cpp:787 src/units/types.cpp:487
 msgid "No description available."
 msgstr "Bu konuda bir açıklama yok."
 
-#: src/help/help_impl.cpp:901 src/help/help_impl.cpp:1115
+#: src/help/help_impl.cpp:897 src/help/help_impl.cpp:1111
 msgid "race^Miscellaneous"
 msgstr "Çeşitli"
 
-#: src/help/help_impl.cpp:1138 src/reports.cpp:389
+#: src/help/help_impl.cpp:1134 src/reports.cpp:387 src/reports.cpp:966
 msgid "Alignment: "
 msgstr "Yönelim: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1157
+#: src/help/help_impl.cpp:1153
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
 msgstr ""
 "Bu birim grubunu <ref>dst='$topic_id' text='$help_taxonomy'</ref> oluşturur."
 
-#: src/help/help_impl.cpp:1162
+#: src/help/help_impl.cpp:1158
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Bu grubun altındaki birim grupları'</header>"
 
-#: src/help/help_impl.cpp:1164
+#: src/help/help_impl.cpp:1160
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Bu ırkın birim grupları'</header>"
 
-#: src/help/help_impl.cpp:1173
+#: src/help/help_impl.cpp:1169
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Bu grubun birimleri'</header>"
 
-#: src/help/help_impl.cpp:1175
+#: src/help/help_impl.cpp:1171
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Bu ırkın birimleri'</header>"
-
-#: src/help/help_impl.cpp:1525
-msgid "corrupted original file"
-msgstr "özgün dosya bozuk"
 
 #: src/hotkey/command_executor.cpp:404
 msgid "Do you really want to surrender the game?"
@@ -7246,19 +7214,19 @@ msgstr "Gazlanmış hız etkinleştirildi!"
 msgid "Accelerated speed disabled!"
 msgstr "Gazlanmış hız kapatıldı!"
 
-#: src/hotkey/hotkey_handler.cpp:429
+#: src/hotkey/hotkey_handler.cpp:430
 msgid "Back to Start"
 msgstr "Başa Dön"
 
-#: src/hotkey/hotkey_handler.cpp:429
+#: src/hotkey/hotkey_handler.cpp:430
 msgid "Back to Turn "
 msgstr "Ele Geri Dön "
 
-#: src/hotkey/hotkey_handler.cpp:445
+#: src/hotkey/hotkey_handler.cpp:446
 msgid "Replay from Start"
 msgstr "Baştan Yeniden Oynat"
 
-#: src/hotkey/hotkey_handler.cpp:445
+#: src/hotkey/hotkey_handler.cpp:446
 msgid "Replay from Turn "
 msgstr "Elden Yeniden Oynat "
 
@@ -7291,27 +7259,27 @@ msgstr "Yüklemeye çalıştığınız dosya geçerli oturumdan değil."
 msgid "System default language"
 msgstr "Öntanımlı sistem dili"
 
-#: src/map/location.cpp:165
+#: src/map/location.cpp:179
 msgid "North"
 msgstr "Kuzey"
 
-#: src/map/location.cpp:167
+#: src/map/location.cpp:181
 msgid "North East"
 msgstr "Kuzeydoğu"
 
-#: src/map/location.cpp:169
+#: src/map/location.cpp:183
 msgid "North West"
 msgstr "Kuzeybatı"
 
-#: src/map/location.cpp:171
+#: src/map/location.cpp:185
 msgid "South"
 msgstr "Güney"
 
-#: src/map/location.cpp:173
+#: src/map/location.cpp:187
 msgid "South East"
 msgstr "Güneydoğu"
 
-#: src/map/location.cpp:175
+#: src/map/location.cpp:189
 msgid "South West"
 msgstr "Güneybatı"
 
@@ -7320,16 +7288,24 @@ msgid "This command is currently unavailable."
 msgstr "Bu komut hazır değil."
 
 #: src/map_command_handler.hpp:225
+#, fuzzy
+#| msgid ""
+#| "Unknown command '$command', did you mean '$command_proposal'? try "
+#| "$help_command for a list of available commands."
 msgid ""
-"Unknown command '$command', did you mean '$command_proposal'? try "
+"Unknown command ‘$command’, did you mean ‘$command_proposal’? try "
 "$help_command for a list of available commands."
 msgstr ""
 "Bilinmeyen '$command' komutu, '$command_proposal' komutu mu acaba? Mümkün "
 "komutlar için $help_command deneyiniz."
 
 #: src/map_command_handler.hpp:229
+#, fuzzy
+#| msgid ""
+#| "Unknown command '$command', try $help_command for a list of available "
+#| "commands."
 msgid ""
-"Unknown command '$command', try $help_command for a list of available "
+"Unknown command ‘$command’, try $help_command for a list of available "
 "commands."
 msgstr ""
 "Bilinmeyen '$command' komutu, mümkün komutlar için $help_command deneyiniz."
@@ -7395,34 +7371,34 @@ msgid_plural "Aliases:"
 msgstr[0] "Takma Ad:"
 msgstr[1] "Takma Adlar:"
 
-#: src/menu_events.cpp:157
+#: src/menu_events.cpp:156
 msgid "Save Map As"
 msgstr "Haritayı Farklı Kaydet"
 
-#: src/menu_events.cpp:168
+#: src/menu_events.cpp:167
 msgid "Map saved."
 msgstr "Harita kaydedildi."
 
-#: src/menu_events.cpp:172
+#: src/menu_events.cpp:171
 msgid "Could not save the map: $msg"
 msgstr "Harita kaydedilemedi: $msg"
 
-#: src/menu_events.cpp:200
+#: src/menu_events.cpp:199
 msgid "Message:"
 msgstr "İleti:"
 
-#: src/menu_events.cpp:202
+#: src/menu_events.cpp:201
 msgid "Send to observers only"
 msgstr "Sadece seyircilere gönder"
 
-#: src/menu_events.cpp:203
+#: src/menu_events.cpp:202
 msgid "Send to allies only"
 msgstr "Sadece müttefiklere gönder"
 
 #. TRANSLATORS: An error that should never happen, might happen when loading an old savegame. If there are
 #. any units that the player can recruit then their standard recruitment dialog will be shown after this
 #. error message, otherwise they'll get the "You have no units available to recruit." error after this one.
-#: src/menu_events.cpp:262
+#: src/menu_events.cpp:261
 msgid "Error: there’s an unknown unit type on your recruit list: $unknown_ids"
 msgid_plural ""
 "Error: there are several unknown unit types on your recruit list: "
@@ -7432,26 +7408,26 @@ msgstr[0] ""
 msgstr[1] ""
 "Hata: Birim çağırma listenizde bilinmeyen birim türleri var: $unknown_ids"
 
-#: src/menu_events.cpp:270
+#: src/menu_events.cpp:269
 msgid "You have no units available to recruit."
 msgstr "Askere alabilecek birimin yok."
 
-#: src/menu_events.cpp:280
+#: src/menu_events.cpp:279
 msgid "No unit recruited."
 msgstr "Askere alınmış birim yok."
 
-#: src/menu_events.cpp:305
+#: src/menu_events.cpp:304
 msgid "Internal error. Please report this as a bug! Details:\n"
 msgstr ""
 "Dahili hata. Bunu lütfen bir yazılım hatası (bug) olarak bildirin! "
 "Ayrıntılar:\n"
 
-#: src/menu_events.cpp:311
+#: src/menu_events.cpp:310
 msgid "You cannot recruit a $unit_type_name at this time."
 msgstr "Artık bir $unit_type_name askere alamazsınız."
 
 #. TRANSLATORS: "plan" refers to Planning Mode
-#: src/menu_events.cpp:325
+#: src/menu_events.cpp:324
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
@@ -7459,15 +7435,15 @@ msgstr ""
 "Planladığınız gibi bu noktada, bu birimi askere almak için yeterli altınınız "
 "olmayacak."
 
-#: src/menu_events.cpp:327
+#: src/menu_events.cpp:326
 msgid "You do not have enough gold to recruit this unit."
 msgstr "Bu birimi askere almak için yeterli altınınız yok."
 
-#: src/menu_events.cpp:370
+#: src/menu_events.cpp:369
 msgid "You are separated from your soldiers and may not recall them."
 msgstr "Askerlerinizden ayrı durumdasınız ve onları çağırmanız mümkün değil."
 
-#: src/menu_events.cpp:391
+#: src/menu_events.cpp:390
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
@@ -7475,53 +7451,55 @@ msgstr ""
 "Geri çağırılabilecek askeriniz yok\n"
 "(Önceki senaryoda sağ kalmış kıdemlilerin olması lazım.)"
 
-#: src/menu_events.cpp:395
-msgid "You currently can't recall at the highlighted location."
+#: src/menu_events.cpp:394
+#, fuzzy
+#| msgid "You currently can't recall at the highlighted location."
+msgid "You currently can’t recall at the highlighted location."
 msgstr "Belirtilen bölgede birim çağıramazsın."
 
-#: src/menu_events.cpp:407
+#: src/menu_events.cpp:406
 msgid "No unit recalled."
 msgstr "Çağrılmış birim yok."
 
-#: src/menu_events.cpp:424
+#: src/menu_events.cpp:423
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] "Bir birimi tekrar çağırmak için en az 1 altınınız olmalı."
 msgstr[1] "Bu birimi tekrar çağırmak için en az $cost altınınız olmalı."
 
-#: src/menu_events.cpp:570
+#: src/menu_events.cpp:569
 msgid "You cannot end your turn yet!"
 msgstr "Elinizi henüz bitiremezsiniz!"
 
-#: src/menu_events.cpp:585
+#: src/menu_events.cpp:584
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Daha ele başlamadınız. Gerçekten eli bitirmek istiyor musunuz?"
 
-#: src/menu_events.cpp:594
+#: src/menu_events.cpp:593
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Bazı birimlerin hareket hakları kaldı. Gerçekten eli bitirmek istiyor "
 "musunuz?"
 
-#: src/menu_events.cpp:603
+#: src/menu_events.cpp:602
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr ""
 "Bazı birimler hiç hareket etmedi. Eli gerçekten bitirmek istiyor musunuz?"
 
-#: src/menu_events.cpp:659
+#: src/menu_events.cpp:658
 msgid "Rename Unit"
 msgstr "Birimin ismini değiştir"
 
-#: src/menu_events.cpp:660
+#: src/menu_events.cpp:659
 msgid "Name:"
 msgstr "İsim:"
 
-#: src/menu_events.cpp:836
+#: src/menu_events.cpp:835
 msgid "Clear Labels"
 msgstr "Etiketleri temizle"
 
-#: src/menu_events.cpp:837
+#: src/menu_events.cpp:836
 msgid "Are you sure you want to clear map labels?"
 msgstr "Harita etiketlerini temizlemek istediğinize emin misiniz?"
 
@@ -7619,8 +7597,12 @@ msgid "Display and log fps (Frames Per Second)."
 msgstr "Saniyedeki kara sayısını gösterir ve kaydeder."
 
 #: src/menu_events.cpp:1243
+#, fuzzy
+#| msgid ""
+#| "Similar to the 'fps' command, but also forces everything to redraw "
+#| "instead of only things that have changed."
 msgid ""
-"Similar to the 'fps' command, but also forces everything to redraw instead "
+"Similar to the ‘fps’ command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
 "'fps' komutunun benzeri olup sadece değişenlerin değil herşeyin yeniden "
@@ -7651,7 +7633,9 @@ msgid "<id>"
 msgstr "<kimlik>"
 
 #: src/menu_events.cpp:1254
-msgid "Advance to the next scenario, or scenario identified by 'id'"
+#, fuzzy
+#| msgid "Advance to the next scenario, or scenario identified by 'id'"
+msgid "Advance to the next scenario, or scenario identified by ‘id’"
 msgstr "Sonraki senaryoya veya 'kimliği'’ belirtilen senaryoya geçilir"
 
 #: src/menu_events.cpp:1256
@@ -7752,7 +7736,9 @@ msgid "Discover all units in help."
 msgstr "Yardım kısmındaki bütün birimleri keşfet."
 
 #: src/menu_events.cpp:1290
-msgid "'Undiscover' all units in help."
+#, fuzzy
+#| msgid "'Undiscover' all units in help."
+msgid "‘Undiscover’ all units in help."
 msgstr "Yardım kısmındaki bütün birimleri unut."
 
 #: src/menu_events.cpp:1291
@@ -7812,86 +7798,126 @@ msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "‘$search’ dizesini içeren etiket veya birim bulunamadı."
 
 #: src/menu_events.cpp:1471
-msgid "Can't droid invalid side: '$side'."
+#, fuzzy
+#| msgid "Can't droid invalid side: '$side'."
+msgid "Can’t droid invalid side: ‘$side’."
 msgstr "Geçersiz taraf droid olamaz: '$side'."
 
 #: src/menu_events.cpp:1474
-msgid "Can't droid networked side: '$side'."
+#, fuzzy
+#| msgid "Can't droid networked side: '$side'."
+msgid "Can’t droid networked side: ‘$side’."
 msgstr "Ağ tarafı droid olamaz: '$side'."
 
 #: src/menu_events.cpp:1486 src/menu_events.cpp:1502 src/menu_events.cpp:1534
+#, fuzzy
+#| msgid ""
+#| "It is not allowed to change a side from AI to human control when it's not "
+#| "your turn."
 msgid ""
-"It is not allowed to change a side from AI to human control when it's not "
+"It is not allowed to change a side from AI to human control when it’s not "
 "your turn."
 msgstr "Sıranız gelmeden bir tarafı YZ'dan insana çeviremezsiniz."
 
 #: src/menu_events.cpp:1496 src/menu_events.cpp:1552
-msgid "Side '$side' controller is now controlled by: AI."
+#, fuzzy
+#| msgid "Side '$side' controller is now controlled by: AI."
+msgid "Side ‘$side’ controller is now controlled by: AI."
 msgstr "'$side' tarafının denetimi artık şunun elinde: YZ."
 
 #: src/menu_events.cpp:1498
-msgid "Side '$side' is already droided."
+#, fuzzy
+#| msgid "Side '$side' is already droided."
+msgid "Side ‘$side’ is already droided."
 msgstr "'$side' tarafı zaten droid."
 
 #: src/menu_events.cpp:1512 src/menu_events.cpp:1544
-msgid "Side '$side' controller is now controlled by: human."
+#, fuzzy
+#| msgid "Side '$side' controller is now controlled by: human."
+msgid "Side ‘$side’ controller is now controlled by: human."
 msgstr "'$side' tarafının denetimi artık şunun elinde: insan."
 
 #: src/menu_events.cpp:1514
-msgid "Side '$side' is already not droided."
+#, fuzzy
+#| msgid "Side '$side' is already not droided."
+msgid "Side ‘$side’ is already not droided."
 msgstr "'$side' tarafı henüz droid değil."
 
 #: src/menu_events.cpp:1518
+#, fuzzy
+#| msgid ""
+#| "It is not allowed to change a side from human to AI control when it's not "
+#| "your turn."
 msgid ""
-"It is not allowed to change a side from human to AI control when it's not "
+"It is not allowed to change a side from human to AI control when it’s not "
 "your turn."
 msgstr "Sıranız gelmeden bir tarafı insandan YZ'ya çeviremezsiniz."
 
 #: src/menu_events.cpp:1528
-msgid "Side '$side' controller is now fully controlled by: AI."
+#, fuzzy
+#| msgid "Side '$side' controller is now fully controlled by: AI."
+msgid "Side ‘$side’ controller is now fully controlled by: AI."
 msgstr "'$side' tarafının denetimi tamamen artık şunun elinde: YZ."
 
 #: src/menu_events.cpp:1530
-msgid "Side '$side' is already fully AI controlled."
+#, fuzzy
+#| msgid "Side '$side' is already fully AI controlled."
+msgid "Side ‘$side’ is already fully AI controlled."
 msgstr "'$side' tarafı zaten tamamen YZ denetiminde."
 
 #: src/menu_events.cpp:1555
+#, fuzzy
+#| msgid ""
+#| "Invalid action provided for side '$side'. Valid actions are: on, off, "
+#| "full."
 msgid ""
-"Invalid action provided for side '$side'. Valid actions are: on, off, full."
+"Invalid action provided for side ‘$side’. Valid actions are: on, off, full."
 msgstr "'$side' tarafı için geçersiz eylem. Geçerli eylemler: on, off, full."
 
 #: src/menu_events.cpp:1564
-#, fuzzy
-#| msgid "Side '$side' is already fully AI controlled."
-msgid "Side '$side' is not a human or AI player."
-msgstr "'$side' tarafı zaten tamamen YZ denetiminde."
+msgid "Side ‘$side’ is not a human or AI player."
+msgstr ""
 
 #: src/menu_events.cpp:1600
-msgid "Can't idle invalid side: '$side'."
+#, fuzzy
+#| msgid "Can't idle invalid side: '$side'."
+msgid "Can’t idle invalid side: ‘$side’."
 msgstr "Geçersiz taraf boş bırakılamaz: '$side'."
 
 #: src/menu_events.cpp:1605
-msgid "Can't idle networked side: '$side'."
+#, fuzzy
+#| msgid "Can't idle networked side: '$side'."
+msgid "Can’t idle networked side: ‘$side’."
 msgstr "Ağdaki taraf boş bırakılamaz: '$side'."
 
 #: src/menu_events.cpp:1610
-msgid "Can't idle local ai side: '$side'."
+#, fuzzy
+#| msgid "Can't idle local ai side: '$side'."
+msgid "Can’t idle local ai side: ‘$side’."
 msgstr "Yerel yz taraf boş bırakılamaz: '$side'."
 
 #: src/menu_events.cpp:1671
-msgid "Can't change control of invalid side: '$side'."
+#, fuzzy
+#| msgid "Can't change control of invalid side: '$side'."
+msgid "Can’t change control of invalid side: ‘$side’."
 msgstr "Geçersiz ‘$side’ tarafının denetimi değiştirilemiyor."
 
 #: src/menu_events.cpp:1681
-msgid "Can't change control of out-of-bounds side: '$side'."
+#, fuzzy
+#| msgid "Can't change control of out-of-bounds side: '$side'."
+msgid "Can’t change control of out-of-bounds side: ‘$side’."
 msgstr "Kapsamdışı ‘$side’ tarafının denetimi değiştirilemiyor."
 
 #: src/menu_events.cpp:1698
-msgid "Can't query control of invalid side: '$side'."
+#, fuzzy
+#| msgid "Can't query control of invalid side: '$side'."
+msgid "Can’t query control of invalid side: ‘$side’."
 msgstr "Geçersiz tarafın denetimi sorgulanamıyor: '$side'."
 
 #: src/menu_events.cpp:1705
-msgid "Can't query control of out-of-bounds side: '$side'."
+#, fuzzy
+#| msgid "Can't query control of out-of-bounds side: '$side'."
+msgid "Can’t query control of out-of-bounds side: ‘$side’."
 msgstr "Kapsamdışı ‘$side’ tarafının denetimi sorgulanamıyor."
 
 #: src/menu_events.cpp:1827
@@ -7936,14 +7962,21 @@ msgid "Variable not found"
 msgstr "Değişken bulunamadı"
 
 #: src/menu_events.cpp:1981
-msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
+#, fuzzy
+#| msgid ""
+#| "Debug command 'unit: $unit' failed: no unit selected or hovered over."
+msgid "Debug command ‘unit: $unit’ failed: no unit selected or hovered over."
 msgstr ""
 "Hata ayıklama komutu 'birim: $unit' başarısız: seçilen veya üzerinde "
 "gezinilen bir birim yok."
 
 #: src/menu_events.cpp:1999
+#, fuzzy
+#| msgid ""
+#| "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
+#| "chaotic, or liminal."
 msgid ""
-"Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
+"Invalid alignment: ‘$alignment’, needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
 "Geçersiz yönelim: '$alignment', adil, tarafsız, kaypak veya intikali olmalı."
@@ -8187,8 +8220,13 @@ msgid "Game Error"
 msgstr "Oyun Hatası"
 
 #: src/playsingle_controller.cpp:183
+#, fuzzy
+#| msgid ""
+#| "This multiplayer game uses an alternative random mode, if you don't know "
+#| "what this message means, then most likely someone is cheating or someone "
+#| "reloaded a corrupt game."
 msgid ""
-"This multiplayer game uses an alternative random mode, if you don't know "
+"This multiplayer game uses an alternative random mode, if you don’t know "
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
 msgstr ""
@@ -8236,40 +8274,40 @@ msgstr "Çıkış"
 msgid "Do you really want to quit?"
 msgstr "Çıkmak istediğinize emin misiniz?"
 
-#: src/reports.cpp:170 src/savegame.cpp:423
+#: src/reports.cpp:169 src/savegame.cpp:423
 msgid "Name: "
 msgstr "İsim: "
 
-#: src/reports.cpp:194
+#: src/reports.cpp:193
 msgid "Special Notes:"
 msgstr "Özel Bilgiler:"
 
-#: src/reports.cpp:217
+#: src/reports.cpp:216
 msgid "Race: "
 msgstr "Irk: "
 
-#: src/reports.cpp:236
+#: src/reports.cpp:235
 msgid "Side: <b>$side_name</b> ($color_name)"
 msgstr "Taraf: <b>$side_name</b> ($color_name|)"
 
-#: src/reports.cpp:314
+#: src/reports.cpp:313
 msgid "Trait: "
 msgstr "Mizaç: "
 
-#: src/reports.cpp:337
+#: src/reports.cpp:336
 msgid "invisible: "
 msgstr "görünmez: "
 
-#: src/reports.cpp:338
+#: src/reports.cpp:337
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Bu birim görünmez. Düşman birimleri tarafından görülemez ve saldırılamaz."
 
-#: src/reports.cpp:341
+#: src/reports.cpp:340
 msgid "slowed: "
 msgstr "yavaşlatılmış: "
 
-#: src/reports.cpp:342
+#: src/reports.cpp:341
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
@@ -8277,11 +8315,11 @@ msgstr ""
 "Bu birim yavaşlatıldı; artık her araziyi iki misli yavaş geçecek ve "
 "saldırırken de normalin yarısı kadar hasar verebilecek."
 
-#: src/reports.cpp:345
+#: src/reports.cpp:344
 msgid "poisoned: "
 msgstr "zehirlenmiş: "
 
-#: src/reports.cpp:346
+#: src/reports.cpp:345
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the ‘cures’ "
@@ -8296,19 +8334,19 @@ msgstr ""
 "Bir birim sadece zehir ile öldürülemez. Zehir yaşam enerjisini 1 YP’nin "
 "altına düşürmez."
 
-#: src/reports.cpp:349
+#: src/reports.cpp:348
 msgid "petrified: "
 msgstr "taşlaştı: "
 
-#: src/reports.cpp:350
+#: src/reports.cpp:349
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "Bu birim taşa çevirildi. Artık hareket edemez ve saldıramaz."
 
-#: src/reports.cpp:353
+#: src/reports.cpp:352
 msgid "unhealable: "
 msgstr "iyileştirilemez: "
 
-#: src/reports.cpp:354
+#: src/reports.cpp:353
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn’t benefit from resting."
@@ -8316,209 +8354,209 @@ msgstr ""
 "Bu birim iyileştirilemez. Şifacılar veya köyler tarafından iyileştirilemez "
 "ve dinlenmekten faydalanmaz."
 
-#: src/reports.cpp:357
+#: src/reports.cpp:356
 msgid "invulnerable: "
 msgstr "yaralanmaz: "
 
-#: src/reports.cpp:358
+#: src/reports.cpp:357
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
 msgstr "Bu birim yaralanmaz. Hiçbir saldırı ona zarar veremez."
 
-#: src/reports.cpp:436
+#: src/reports.cpp:434
 msgid "Ability: "
 msgstr "Yetenek: "
 
-#: src/reports.cpp:438 src/reports.cpp:1001
+#: src/reports.cpp:436 src/reports.cpp:1009
 msgid " (inactive)"
 msgstr " (etkisiz)"
 
-#: src/reports.cpp:506
+#: src/reports.cpp:500
 msgid "Resistances: "
 msgstr "Dirençler: "
 
-#: src/reports.cpp:508
+#: src/reports.cpp:502
 msgid "(Att / Def)"
 msgstr "(Sald / Sav)"
 
-#: src/reports.cpp:539
+#: src/reports.cpp:531
 msgid "Experience Modifier: "
 msgstr "Tecrübe Niteleyicisi: "
 
-#: src/reports.cpp:589
+#: src/reports.cpp:581
 msgid "Terrain: "
 msgstr "Arazi: "
 
-#: src/reports.cpp:606
+#: src/reports.cpp:598
 msgid "maximum^max."
 msgstr "azami."
 
-#: src/reports.cpp:606
+#: src/reports.cpp:598
 msgid "minimum^min."
 msgstr "asgari."
 
-#: src/reports.cpp:611
+#: src/reports.cpp:603
 msgid "Defense: "
 msgstr "Savunma: "
 
-#: src/reports.cpp:646 src/reports.cpp:647
+#: src/reports.cpp:638 src/reports.cpp:639
 msgid "vision:"
 msgstr "görüş:"
 
-#: src/reports.cpp:651 src/reports.cpp:652
+#: src/reports.cpp:643 src/reports.cpp:644
 msgid "jamming:"
 msgstr "sıkıştırma:"
 
-#: src/reports.cpp:681
+#: src/reports.cpp:673
 msgid "Movement Costs:"
 msgstr "Hareket Bedelleri:"
 
-#: src/reports.cpp:823
+#: src/reports.cpp:819
 msgid "Base damage: "
 msgstr "Temel hasar: "
 
-#: src/reports.cpp:825 src/reports.cpp:859 src/reports.cpp:869
+#: src/reports.cpp:821 src/reports.cpp:855 src/reports.cpp:865
 msgid "With specials: "
 msgstr "Özeller ile: "
 
-#: src/reports.cpp:828
+#: src/reports.cpp:824
 msgid "Time of day: "
 msgstr "Günün saati: "
 
-#: src/reports.cpp:832
+#: src/reports.cpp:828
 msgid "Leadership: "
 msgstr "Liderlik: "
 
-#: src/reports.cpp:836
+#: src/reports.cpp:832
 msgid "Slowed: "
 msgstr "Yavaşlatılmış: "
 
-#: src/reports.cpp:844
+#: src/reports.cpp:840
 msgid "Max swarm bonus: "
 msgstr "Azami üşüşme ödülü: "
 
-#: src/reports.cpp:845 src/reports.cpp:864
+#: src/reports.cpp:841 src/reports.cpp:860
 msgid "Swarm: "
 msgstr "Üşüşme: "
 
-#: src/reports.cpp:846 src/reports.cpp:857 src/reports.cpp:868
+#: src/reports.cpp:842 src/reports.cpp:853 src/reports.cpp:864
 msgid "Base attacks: "
 msgstr "Temel saldırılar: "
 
-#: src/reports.cpp:852
+#: src/reports.cpp:848
 msgid "Specials: "
 msgstr "Özeller: "
 
-#: src/reports.cpp:862
+#: src/reports.cpp:858
 msgid "Subject to swarm: "
 msgstr "Üşüşülecek hedef: "
 
-#: src/reports.cpp:902
+#: src/reports.cpp:897
 msgid "Weapon range: "
 msgstr "Silah menzili: "
 
-#: src/reports.cpp:903
+#: src/reports.cpp:898
 msgid "Damage type: "
 msgstr "Hasar türü: "
 
-#: src/reports.cpp:904
+#: src/reports.cpp:899
 msgid "Damage versus: "
 msgstr "Aleyhinde hasar: "
 
-#: src/reports.cpp:968
+#: src/reports.cpp:978
 msgid "Accuracy:"
 msgstr "İsabetlilik:"
 
-#: src/reports.cpp:973
+#: src/reports.cpp:982
 msgid "Parry:"
 msgstr "Savuştur:"
 
-#: src/reports.cpp:999
+#: src/reports.cpp:1007
 msgid "Weapon special: "
 msgstr "Silah özel: "
 
-#: src/reports.cpp:1074
+#: src/reports.cpp:1084
 msgid "weapon^None"
 msgstr "Yok"
 
-#: src/reports.cpp:1103
+#: src/reports.cpp:1114
 msgid "Total damage"
 msgstr "Toplam hasar"
 
-#: src/reports.cpp:1167
+#: src/reports.cpp:1172
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Saldırı"
 msgstr[1] "Saldırılar"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1175
+#: src/reports.cpp:1179
 msgid "Remaining: $left/$max"
 msgstr "Kalan: $left/$max"
 
-#: src/reports.cpp:1179
+#: src/reports.cpp:1183
 msgid "This unit can attack multiple times per turn."
 msgstr "Bu birim bir elde birden fazla saldırı yapabilir."
 
-#: src/reports.cpp:1271
+#: src/reports.cpp:1275
 msgid "Time of day schedule:"
 msgstr "Günün saati zamanlaması:"
 
-#: src/reports.cpp:1320
+#: src/reports.cpp:1326
 msgid "Time of day:"
 msgstr "Günün saati:"
 
-#: src/reports.cpp:1321 src/reports.cpp:1375
+#: src/reports.cpp:1327 src/reports.cpp:1381
 msgid "Lawful units: "
 msgstr "Adil birimler: "
 
-#: src/reports.cpp:1323 src/reports.cpp:1377
+#: src/reports.cpp:1329 src/reports.cpp:1383
 msgid "Neutral units: "
 msgstr "Tarafsız birimler: "
 
-#: src/reports.cpp:1324 src/reports.cpp:1378
+#: src/reports.cpp:1330 src/reports.cpp:1384
 msgid "Chaotic units: "
 msgstr "Kaypak birimler: "
 
-#: src/reports.cpp:1326 src/reports.cpp:1380
+#: src/reports.cpp:1332 src/reports.cpp:1386
 msgid "Liminal units: "
 msgstr "İntikalî birimler: "
 
-#: src/reports.cpp:1439
+#: src/reports.cpp:1447
 msgid "Turn Number"
 msgstr "El Numarası"
 
-#: src/reports.cpp:1441
+#: src/reports.cpp:1451
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr "Oyun 2. sayının belirttiği tur sayısını aşınca sona erecektir."
 
-#: src/reports.cpp:1466
+#: src/reports.cpp:1474
 msgid "Gold"
 msgstr "Altın"
 
-#: src/reports.cpp:1466
+#: src/reports.cpp:1474
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr "Askere alım ve ordunun bakımı için mevcut altın miktarı."
 
-#: src/reports.cpp:1484
+#: src/reports.cpp:1492
 msgid "The fraction of known villages that your side has captured."
 msgstr "Tarafınızın ele geçirdiği bilinen köylerin oranı."
 
-#: src/reports.cpp:1484
+#: src/reports.cpp:1492
 msgid "Villages"
 msgstr "Köyler"
 
-#: src/reports.cpp:1489
+#: src/reports.cpp:1497
 msgid "The total number of units on your side."
 msgstr "Tarafınızdaki toplam birim sayısı."
 
-#: src/reports.cpp:1489
+#: src/reports.cpp:1497
 msgid "Units"
 msgstr "Birimler"
 
-#: src/reports.cpp:1498
+#: src/reports.cpp:1506
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8531,15 +8569,15 @@ msgstr ""
 "toplamdır. İkinci sayı ise köy gelirlerinin kapattıkları da dahil toplam "
 "bakım masrafı — yani köyleriniz olmasaydı eksilecek altın miktarı."
 
-#: src/reports.cpp:1498
+#: src/reports.cpp:1506
 msgid "Upkeep"
 msgstr "Gider"
 
-#: src/reports.cpp:1533
+#: src/reports.cpp:1536
 msgid "Net Income"
 msgstr "Net Gelir"
 
-#: src/reports.cpp:1533
+#: src/reports.cpp:1536
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8547,23 +8585,23 @@ msgstr ""
 "Elinizde bulunan köylerden her el kazandığınız net altın miktarı, ya da "
 "birim bakımı için her el kaybettiğiniz altın miktarı."
 
-#: src/reports.cpp:1731
+#: src/reports.cpp:1737
 msgid "Observers:"
 msgstr "Seyirciler:"
 
-#: src/reports.cpp:1751
+#: src/reports.cpp:1757
 msgid "Clock"
 msgstr "Saat"
 
-#: src/reports.cpp:1762
+#: src/reports.cpp:1768
 msgid "Battery"
 msgstr "Pil"
 
-#: src/reports.cpp:1792
+#: src/reports.cpp:1807
 msgid "Countdown until your turn automatically ends."
 msgstr "Elinizin kendiliğinden bitmesine geri sayım."
 
-#: src/reports.cpp:1792
+#: src/reports.cpp:1807
 msgid "Turn Countdown"
 msgstr "El geri sayımı"
 
@@ -8656,8 +8694,11 @@ msgid "Overwrite?"
 msgstr "Üzerine yazılsın mı?"
 
 #: src/savegame.cpp:431
+#, fuzzy
+#| msgid ""
+#| "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgid ""
-"Save names should not end on '.gz' or '.bz2'. Please remove the extension."
+"Save names should not end on ‘.gz’ or ‘.bz2’. Please remove the extension."
 msgstr "Kayıt isimleri ‘.gz’ veya '.bz2.' ile bitemez. Lütfen uzantıyı silin."
 
 #: src/savegame.cpp:436
@@ -8698,72 +8739,74 @@ msgstr "Oyunu Kaydet"
 msgid "Game state is corrupted"
 msgstr "Oyun durumu bozulmuş"
 
-#: src/serialization/parser.cpp:152
+#: src/serialization/parser.cpp:151
 msgid "Unexpected characters at line start"
 msgstr "Satır başlangıcında beklenmedik karakterler"
 
-#: src/serialization/parser.cpp:179
+#: src/serialization/parser.cpp:178
 msgid "Missing closing tag for tag [$tag]"
 msgstr "[$tag] etiketi için kapama etiketi kayıp"
 
-#: src/serialization/parser.cpp:180
+#: src/serialization/parser.cpp:179
 msgid "expected at $pos"
 msgstr "$pos da bekleniyor"
 
-#: src/serialization/parser.cpp:181 src/serialization/parser.cpp:268
+#: src/serialization/parser.cpp:180 src/serialization/parser.cpp:267
 msgid "opened at $pos"
 msgstr "$pos da açıldı"
 
-#: src/serialization/parser.cpp:199
+#: src/serialization/parser.cpp:198
 msgid "Unterminated [element] tag"
 msgstr "Sonlandırılmamış [element] etiketi"
 
-#: src/serialization/parser.cpp:215 src/serialization/parser.cpp:283
+#: src/serialization/parser.cpp:214 src/serialization/parser.cpp:282
 msgid "Invalid tag name"
 msgstr "Geçersiz etiket adı"
 
-#: src/serialization/parser.cpp:221
+#: src/serialization/parser.cpp:220
 msgid "Unterminated [+element] tag"
 msgstr "Sonlandırılmamış [+element] etiketi"
 
-#: src/serialization/parser.cpp:245
+#: src/serialization/parser.cpp:244
 msgid "Invalid closing tag name"
 msgstr "Geçersiz kapama etiketi adı"
 
-#: src/serialization/parser.cpp:251
+#: src/serialization/parser.cpp:250
 msgid "Unterminated closing tag"
 msgstr "Sonlandırılmamış kapama etiketi"
 
-#: src/serialization/parser.cpp:255
+#: src/serialization/parser.cpp:254
 msgid "Unexpected closing tag"
 msgstr "Beklenmedik kapama etiketi"
 
-#: src/serialization/parser.cpp:267
+#: src/serialization/parser.cpp:266
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
 msgstr "[$tag1] için geçersiz kapama etiketi [/$tag2] bulundu"
 
-#: src/serialization/parser.cpp:269
+#: src/serialization/parser.cpp:268
 msgid "closed at $pos"
 msgstr "şurada kapatıldı: $pos"
 
-#: src/serialization/parser.cpp:305 src/serialization/parser.cpp:321
+#: src/serialization/parser.cpp:304 src/serialization/parser.cpp:320
 msgid "Empty variable name"
 msgstr "Değişken adı yok"
 
-#: src/serialization/parser.cpp:313
+#: src/serialization/parser.cpp:312
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Değişken adından sonra beklenmedik karakterler (beklenen , veya =)"
 
-#: src/serialization/parser.cpp:360 src/serialization/parser.cpp:400
+#: src/serialization/parser.cpp:359 src/serialization/parser.cpp:399
 msgid "Unterminated quoted string"
 msgstr "Sonlandırılmamış tırnaklı dize"
 
-#: src/serialization/parser.cpp:467
+#: src/serialization/parser.cpp:466
 msgid "at $pos"
 msgstr "$pos da"
 
-#: src/serialization/parser.cpp:480
-msgid "Value: '$value' Previous: '$previous_value'"
+#: src/serialization/parser.cpp:479
+#, fuzzy
+#| msgid "Value: '$value' Previous: '$previous_value'"
+msgid "Value: ‘$value’ Previous: ‘$previous_value’"
 msgstr "Değer: '$value' Önceki: '$previous_value'"
 
 #: src/serialization/string_utils.cpp:557
@@ -8893,15 +8936,15 @@ msgstr "girdi"
 msgid "“$color_id”"
 msgstr "“$color_id”"
 
-#: src/terrain/terrain.cpp:191
+#: src/terrain/terrain.cpp:193
 msgid "Allied village"
 msgstr "Müttefik köyü"
 
-#: src/terrain/terrain.cpp:196
+#: src/terrain/terrain.cpp:198
 msgid "Enemy village"
 msgstr "Düşman köyü"
 
-#: src/terrain/terrain.cpp:201
+#: src/terrain/terrain.cpp:203
 msgid "Owned village"
 msgstr "Bizim köy"
 
@@ -8921,26 +8964,26 @@ msgstr "Taslak Günün Saati"
 msgid "This Time of Day is only a Stub!"
 msgstr "Günün bu saati daha bir taslak!"
 
-#: src/units/abilities.cpp:1075
+#: src/units/abilities.cpp:1051
 msgid "Owned: "
 msgstr "Bizimki: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1079
+#: src/units/abilities.cpp:1055
 msgid "Taught: "
 msgstr "Öğretilen: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1083
+#: src/units/abilities.cpp:1059
 msgid "Taught: (by an enemy): "
 msgstr "Öğretilen (düşman tarafından): "
 
-#: src/units/abilities.cpp:1096
+#: src/units/abilities.cpp:1072
 msgid "Used by opponent: "
 msgstr "Rakip tarafından kullanılan: "
 
 #. TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:567
+#: src/units/attack_type.cpp:527
 #, fuzzy
 #| msgid "$number damage"
 #| msgid_plural "$number damage"
@@ -8948,7 +8991,7 @@ msgid "$number min range"
 msgstr "$number hasar"
 
 #. TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:574
+#: src/units/attack_type.cpp:534
 #, fuzzy
 #| msgid "<span color=\"$color\">$number_or_percent</span> damage"
 #| msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
@@ -8956,7 +8999,7 @@ msgid "<span color=\"$color\">$number_or_percent</span> min range"
 msgstr "<span color=\"$color\">$number_or_percent</span> hasar"
 
 #. TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:581
+#: src/units/attack_type.cpp:541
 #, fuzzy
 #| msgid "$number damage"
 #| msgid_plural "$number damage"
@@ -8964,7 +9007,7 @@ msgid "$number max range"
 msgstr "$number hasar"
 
 #. TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:588
+#: src/units/attack_type.cpp:548
 #, fuzzy
 #| msgid "<span color=\"$color\">$number_or_percent</span> damage"
 #| msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
@@ -8972,85 +9015,85 @@ msgid "<span color=\"$color\">$number_or_percent</span> max range"
 msgstr "<span color=\"$color\">$number_or_percent</span> hasar"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:595
+#: src/units/attack_type.cpp:555
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> hasar"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> hasar"
 
-#: src/units/attack_type.cpp:604
+#: src/units/attack_type.cpp:564
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "$number hasar"
 msgstr[1] "$number hasar"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:613
+#: src/units/attack_type.cpp:573
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> vuruş"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> vuruş"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:622
+#: src/units/attack_type.cpp:582
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number vuruş"
 msgstr[1] "$number vuruş"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:631
+#: src/units/attack_type.cpp:591
 msgid "$number| accuracy"
 msgstr "$number isabetlilik"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:638
+#: src/units/attack_type.cpp:598
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">%$number_or_percent</span> isabetlilik"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:645
+#: src/units/attack_type.cpp:605
 msgid "$number parry"
 msgstr "$number savuşturma"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:652
+#: src/units/attack_type.cpp:612
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> savuşturma"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:659
+#: src/units/attack_type.cpp:619
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number hareket"
 msgstr[1] "$number hareket"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:668
+#: src/units/attack_type.cpp:628
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> hareket"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> hareket sayıları"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:677
+#: src/units/attack_type.cpp:637
 msgid "$number attack used"
 msgid_plural "$number attacks used"
 msgstr[0] "$number saldırı yapıldı"
 msgstr[1] "$number hasar"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:686
+#: src/units/attack_type.cpp:646
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> saldırı yapıldı"
 msgstr[1] "El başına <span color=\"$color\">$number_or_percent</span> saldırı"
 
-#: src/units/helper.cpp:57
+#: src/units/helper.cpp:58
 msgid "Level: "
 msgstr "Seviye: "
 
-#: src/units/helper.cpp:60
+#: src/units/helper.cpp:61
 msgid "Advancements:"
 msgstr "Terfiler:"
 
@@ -9090,44 +9133,44 @@ msgstr "kaypak"
 msgid "liminal"
 msgstr "intikalî"
 
-#: src/units/unit.cpp:1984
+#: src/units/unit.cpp:1986
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1990
+#: src/units/unit.cpp:1992
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> YP"
 
-#: src/units/unit.cpp:2000
+#: src/units/unit.cpp:2002
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> hareket"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> hareket"
 
-#: src/units/unit.cpp:2006
+#: src/units/unit.cpp:2008
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> görüş"
 
-#: src/units/unit.cpp:2010
+#: src/units/unit.cpp:2012
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> sıkıştırma"
 
-#: src/units/unit.cpp:2015
+#: src/units/unit.cpp:2017
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "Terfi için <span color=\"$color\">$number_or_percent</span> TP"
 
-#: src/units/unit.cpp:2019
+#: src/units/unit.cpp:2021
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "El başına <span color=\"$color\">$number_or_percent</span> saldırı"
 msgstr[1] "El başına <span color=\"$color\">$number_or_percent</span> saldırı"
 
-#: src/units/unit.cpp:2026
+#: src/units/unit.cpp:2028
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> çağırma bedeli"
 
-#: src/units/unit.cpp:2507
+#: src/units/unit.cpp:2511
 msgid "$effect_description per level"
 msgstr "seviye başına $effect_description"
 
@@ -9188,3 +9231,12 @@ msgstr "Planları $player için gizle"
 #: src/whiteboard/manager.cpp:1140
 msgid "Whiteboard Options"
 msgstr "Beyaztahta Ayarları"
+
+#~ msgid "Invalid Color"
+#~ msgstr "Geçersiz Renk"
+
+#~ msgid "Reference to unknown topic: "
+#~ msgstr "Bilinmeyen bir konuya bağlantı: "
+
+#~ msgid "corrupted original file"
+#~ msgstr "özgün dosya bozuk"

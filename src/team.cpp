@@ -30,6 +30,7 @@
 #include "play_controller.hpp"
 #include "playsingle_controller.hpp"
 #include "resources.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 #include "synced_context.hpp"
 #include "units/types.hpp"
@@ -164,8 +165,8 @@ team::team_info::team_info()
 
 void team::team_info::read(const config& cfg)
 {
-	gold = cfg["gold"];
-	income = cfg["income"];
+	gold = cfg["gold"].to_int();
+	income = cfg["income"].to_int();
 	team_name = cfg["team_name"].str();
 	user_team_name = cfg["user_team_name"];
 	side_name = cfg["side_name"];
@@ -174,7 +175,7 @@ void team::team_info::read(const config& cfg)
 	save_id = cfg["save_id"].str();
 	current_player = cfg["current_player"].str();
 	countdown_time = cfg["countdown_time"].str();
-	action_bonus_count = cfg["action_bonus_count"];
+	action_bonus_count = cfg["action_bonus_count"].to_int();
 	flag = cfg["flag"].str();
 	flag_icon = cfg["flag_icon"].str();
 	id = cfg["id"].str();
@@ -217,7 +218,7 @@ void team::team_info::read(const config& cfg)
 	// at the start of a scenario "start_gold" is not set, we need to take the
 	// value from the gold setting (or fall back to the gold default)
 	if(!cfg["start_gold"].empty()) {
-		start_gold = cfg["start_gold"];
+		start_gold = cfg["start_gold"].to_int();
 	} else if(!cfg["gold"].empty()) {
 		start_gold = gold;
 	} else {
@@ -392,8 +393,8 @@ void team::build(const config& cfg, const gamemap& map, int gold)
 		}
 	}
 
-	countdown_time_ = cfg["countdown_time"];
-	action_bonus_count_ = cfg["action_bonus_count"];
+	countdown_time_ = chrono::parse_duration<std::chrono::milliseconds>(cfg["countdown_time"]);
+	action_bonus_count_ = cfg["action_bonus_count"].to_int();
 
 	planned_actions_.reset(new wb::side_actions());
 	planned_actions_->set_team_index(info_.side - 1);

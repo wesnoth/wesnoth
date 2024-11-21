@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/simple_item_selector.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
@@ -43,10 +42,10 @@ simple_item_selector::simple_item_selector(const std::string& title,
 	register_label("message", true, message, message_uses_markup);
 }
 
-void simple_item_selector::pre_show(window& window)
+void simple_item_selector::pre_show()
 {
-	listbox& list = find_widget<listbox>(&window, "listbox", false);
-	window.keyboard_capture(&list);
+	listbox& list = find_widget<listbox>("listbox");
+	keyboard_capture(&list);
 
 	for(const auto & it : items_)
 	{
@@ -65,8 +64,8 @@ void simple_item_selector::pre_show(window& window)
 
 	index_ = -1;
 
-	button& button_ok = find_widget<button>(&window, "ok", false);
-	button& button_cancel = find_widget<button>(&window, "cancel", false);
+	button& button_ok = find_widget<button>("ok");
+	button& button_cancel = find_widget<button>("cancel");
 
 	if(!ok_label_.empty()) {
 		button_ok.set_label(ok_label_);
@@ -81,10 +80,10 @@ void simple_item_selector::pre_show(window& window)
 	}
 }
 
-void simple_item_selector::post_show(window& window)
+void simple_item_selector::post_show()
 {
 	if(get_retval() == retval::OK || single_button_) {
-		index_ = find_widget<listbox>(&window, "listbox", false).get_selected_row();
+		index_ = find_widget<listbox>("listbox").get_selected_row();
 	}
 }
 

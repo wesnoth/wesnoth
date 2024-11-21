@@ -55,7 +55,7 @@ line_shape::line_shape(const config& cfg)
 	, x2_(cfg["x2"])
 	, y2_(cfg["y2"])
 	, color_(cfg["color"])
-	, thickness_(cfg["thickness"])
+	, thickness_(cfg["thickness"].to_unsigned())
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
@@ -87,7 +87,7 @@ void line_shape::draw(wfl::map_formula_callable& variables)
 
 rectangle_shape::rectangle_shape(const config& cfg)
 	: rect_bounded_shape(cfg)
-	, border_thickness_(cfg["border_thickness"])
+	, border_thickness_(cfg["border_thickness"].to_int())
 	, border_color_(cfg["border_color"], color_t::null_color())
 	, fill_color_(cfg["fill_color"], color_t::null_color())
 {
@@ -104,10 +104,12 @@ rectangle_shape::rectangle_shape(const config& cfg)
 
 void rectangle_shape::draw(wfl::map_formula_callable& variables)
 {
-	const int x = x_(variables);
-	const int y = y_(variables);
-	const int w = w_(variables);
-	const int h = h_(variables);
+	const rect area {
+		x_(variables),
+		y_(variables),
+		w_(variables),
+		h_(variables)
+	};
 
 	const color_t fill_color = fill_color_(variables);
 
@@ -115,32 +117,16 @@ void rectangle_shape::draw(wfl::map_formula_callable& variables)
 	if(!fill_color.null()) {
 		DBG_GUI_D << "fill " << fill_color;
 		draw::set_color(fill_color);
-
-		const SDL_Rect area {
-			x +  border_thickness_,
-			y +  border_thickness_,
-			w - (border_thickness_ * 2),
-			h - (border_thickness_ * 2)
-		};
-
-		draw::fill(area);
+		draw::fill(area.padded_by(-border_thickness_));
 	}
 
 	const color_t border_color = border_color_(variables);
 
 	// Draw the border
 	draw::set_color(border_color);
-	DBG_GUI_D << "border thickness " << border_thickness_
-		<< ", colour " << border_color;
+	DBG_GUI_D << "border thickness " << border_thickness_ << ", colour " << border_color;
 	for(int i = 0; i < border_thickness_; ++i) {
-		const SDL_Rect dimensions {
-			x + i,
-			y + i,
-			w - (i * 2),
-			h - (i * 2)
-		};
-
-		draw::rect(dimensions);
+		draw::rect(area.padded_by(-i));
 	}
 }
 
@@ -149,7 +135,7 @@ void rectangle_shape::draw(wfl::map_formula_callable& variables)
 round_rectangle_shape::round_rectangle_shape(const config& cfg)
 	: rect_bounded_shape(cfg)
 	, r_(cfg["corner_radius"])
-	, border_thickness_(cfg["border_thickness"])
+	, border_thickness_(cfg["border_thickness"].to_int())
 	, border_color_(cfg["border_color"], color_t::null_color())
 	, fill_color_(cfg["fill_color"], color_t::null_color())
 {
@@ -274,7 +260,7 @@ void image_shape::dimension_validation(unsigned value, const std::string& name, 
 {
 	const int as_int = static_cast<int>(value);
 
-	VALIDATE_WITH_DEV_MESSAGE(as_int >= 0, _("Image doesn't fit on canvas."),
+	VALIDATE_WITH_DEV_MESSAGE(as_int >= 0, _("Image doesn’t fit on canvas."),
 		formatter() << "Image '" << name << "', " << key << " = " << as_int << "."
 	);
 }
@@ -420,7 +406,7 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	, link_aware_(cfg["text_link_aware"], false)
 	, link_color_(cfg["text_link_color"], color_t::from_hex_string("ffff00"))
 	, maximum_width_(cfg["maximum_width"], -1)
-	, characters_per_line_(cfg["text_characters_per_line"])
+	, characters_per_line_(cfg["text_characters_per_line"].to_unsigned())
 	, maximum_height_(cfg["maximum_height"], -1)
 	, highlight_start_(cfg["highlight_start"])
 	, highlight_end_(cfg["highlight_end"])
@@ -677,11 +663,8 @@ void canvas::parse_cfg(const config& cfg)
 {
 	log_scope2(log_gui_parse, "Canvas: parsing config.");
 
-	for(const auto shape : cfg.all_children_range())
+	for(const auto [type, data] : cfg.all_children_view())
 	{
-		const std::string& type = shape.key;
-		const config& data = shape.cfg;
-
 		DBG_GUI_P << "Canvas: found shape of the type " << type << ".";
 
 		if(type == "line") {
@@ -699,11 +682,10 @@ void canvas::parse_cfg(const config& cfg)
 		} else if(type == "pre_commit") {
 
 			/* note this should get split if more preprocessing is used. */
-			for(const auto function : data.all_children_range())
+			for(const auto [func_key, func_cfg] : data.all_children_view())
 			{
-
-				if(function.key == "blur") {
-					blur_depth_ = function.cfg["depth"];
+				if(func_key == "blur") {
+					blur_depth_ = func_cfg["depth"].to_unsigned();
 				} else {
 					ERR_GUI_P << "Canvas: found a pre commit function"
 							  << " of an invalid type " << type << ".";
@@ -736,10 +718,7 @@ void canvas::clear_shapes(const bool force)
 	if(force) {
 		shapes_.clear();
 	} else {
-		auto conditional = [](const std::unique_ptr<shape>& s)->bool { return !s->immutable(); };
-
-		auto iter = std::remove_if(shapes_.begin(), shapes_.end(), conditional);
-		shapes_.erase(iter, shapes_.end());
+		utils::erase_if(shapes_, [](const std::unique_ptr<shape>& s) { return !s->immutable(); });
 	}
 }
 

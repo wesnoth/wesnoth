@@ -50,26 +50,26 @@ editor_edit_side::editor_edit_side(editor::editor_team_info& info)
 	register_bool("hidden", true, info.hidden);
 }
 
-void editor_edit_side::pre_show(window& window)
+void editor_edit_side::pre_show()
 {
-	controller_group.add_member(find_widget<toggle_button>(&window, "controller_human", false, true), side_controller::type::human);
-	controller_group.add_member(find_widget<toggle_button>(&window, "controller_ai", false, true),    side_controller::type::ai);
-	controller_group.add_member(find_widget<toggle_button>(&window, "controller_null", false, true),  side_controller::type::none);
+	controller_group.add_member(find_widget<toggle_button>("controller_human", false, true), side_controller::type::human);
+	controller_group.add_member(find_widget<toggle_button>("controller_ai", false, true),    side_controller::type::ai);
+	controller_group.add_member(find_widget<toggle_button>("controller_null", false, true),  side_controller::type::none);
 
 	controller_group.set_member_states(controller_);
 
-	vision_group.add_member(find_widget<toggle_button>(&window, "vision_all", false, true),    team_shared_vision::type::all);
-	vision_group.add_member(find_widget<toggle_button>(&window, "vision_shroud", false, true), team_shared_vision::type::shroud);
-	vision_group.add_member(find_widget<toggle_button>(&window, "vision_null", false, true),   team_shared_vision::type::none);
+	vision_group.add_member(find_widget<toggle_button>("vision_all", false, true),    team_shared_vision::type::all);
+	vision_group.add_member(find_widget<toggle_button>("vision_shroud", false, true), team_shared_vision::type::shroud);
+	vision_group.add_member(find_widget<toggle_button>("vision_null", false, true),   team_shared_vision::type::none);
 
 	vision_group.set_member_states(share_vision_);
 
-	window.add_to_tab_order(find_widget<text_box>(&window, "team_name", false, true));
-	window.add_to_tab_order(find_widget<text_box>(&window, "user_team_name", false, true));
-	window.add_to_tab_order(find_widget<text_box>(&window, "recruit_list", false, true));
+	add_to_tab_order(find_widget<text_box>("team_name", false, true));
+	add_to_tab_order(find_widget<text_box>("user_team_name", false, true));
+	add_to_tab_order(find_widget<text_box>("recruit_list", false, true));
 }
 
-void editor_edit_side::post_show(window&)
+void editor_edit_side::post_show()
 {
 	controller_ = controller_group.get_active_member_value();
 	share_vision_ = vision_group.get_active_member_value();

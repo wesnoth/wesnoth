@@ -26,6 +26,7 @@
 #include "side_proxy_controller.hpp"
 #include "team_shared_vision.hpp"
 
+#include <chrono>
 #include <set>
 
 #include <boost/dynamic_bitset.hpp>
@@ -193,9 +194,8 @@ public:
 	void set_start_gold(const int amount) { info_.start_gold = amount; }
 	void spend_gold(const int amount) { gold_ -= amount; }
 	void set_base_income(int amount) { info_.income = amount - game_config::base_income; }
-	int countdown_time() const {  return countdown_time_; }
-	void set_countdown_time (const int amount) const
-		{ countdown_time_ = amount; }
+	std::chrono::milliseconds countdown_time() const { return countdown_time_; }
+	void set_countdown_time(const std::chrono::milliseconds& amount) const { countdown_time_ = amount; }
 	int action_bonus_count() const { return action_bonus_count_; }
 	void set_action_bonus_count(const int count) { action_bonus_count_ = count; }
 	recall_list_manager& recall_list() {return recall_list_;}
@@ -413,7 +413,7 @@ private:
 
 	team_info info_;
 
-	mutable int countdown_time_;
+	mutable std::chrono::milliseconds countdown_time_;
 	int action_bonus_count_;
 
 	recall_list_manager recall_list_;

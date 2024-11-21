@@ -41,6 +41,9 @@ public:
 		RNG_BIASED,
 	};
 
+	//return value for opening addon manager
+	const static int OPEN_ADDON_MANAGER = 3;
+
 	explicit campaign_selection(ng::create_engine& eng)
 		: modal_dialog(window_id())
 		, engine_(eng)
@@ -82,9 +85,9 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	void proceed();
 
 	void sort_campaigns(CAMPAIGN_ORDER order, bool ascending);
 
@@ -119,6 +122,7 @@ private:
 	std::vector<std::string> last_search_words_;
 
 	inline const static std::string missing_campaign_ = "////missing-campaign////";
+	inline const static std::string addons_ = "////addons////";
 
 	std::vector<std::string> mod_ids_;
 };

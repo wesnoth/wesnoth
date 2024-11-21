@@ -15,7 +15,6 @@
 
 #include "gui/dialogs/multiplayer/player_info.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -53,11 +52,11 @@ lobby_player_info::~lobby_player_info()
 {
 }
 
-void lobby_player_info::pre_show(window& window)
+void lobby_player_info::pre_show()
 {
-	relation_ = find_widget<label>(&window, "relation_info", false, true);
+	relation_ = find_widget<label>("relation_info", false, true);
 
-	button& whisper = find_widget<button>(&window, "start_whisper", false);
+	button& whisper = find_widget<button>("start_whisper");
 	if(info_.get_relation() != mp::user_info::user_relation::ME) {
 		connect_signal_mouse_left_click(whisper,
 			std::bind(&lobby_player_info::start_whisper_button_callback, this));
@@ -65,39 +64,39 @@ void lobby_player_info::pre_show(window& window)
 		whisper.set_active(false);
 	}
 
-	add_to_friends_ = find_widget<button>(&window, "add_to_friends", false, true);
+	add_to_friends_ = find_widget<button>("add_to_friends", false, true);
 	connect_signal_mouse_left_click(
 			*add_to_friends_,
 			std::bind(&lobby_player_info::add_to_friends_button_callback, this));
 
-	add_to_ignores_ = find_widget<button>(&window, "add_to_ignores", false, true);
+	add_to_ignores_ = find_widget<button>("add_to_ignores", false, true);
 	connect_signal_mouse_left_click(
 			*add_to_ignores_,
 			std::bind(&lobby_player_info::add_to_ignores_button_callback, this));
 
 	remove_from_list_
-			= find_widget<button>(&window, "remove_from_list", false, true);
+			= find_widget<button>("remove_from_list", false, true);
 	connect_signal_mouse_left_click(
 			*remove_from_list_,
 			std::bind(&lobby_player_info::remove_from_list_button_callback, this));
 
 	connect_signal_mouse_left_click(
-			find_widget<button>(&window, "check_status", false),
+			find_widget<button>("check_status"),
 			std::bind(&lobby_player_info::check_status_button_callback, this));
 
 	connect_signal_mouse_left_click(
-			find_widget<button>(&window, "kick", false),
+			find_widget<button>("kick"),
 			std::bind(&lobby_player_info::kick_button_callback, this));
 
 	connect_signal_mouse_left_click(
-			find_widget<button>(&window, "kick_ban", false),
+			find_widget<button>("kick_ban"),
 			std::bind(&lobby_player_info::kick_ban_button_callback, this));
 
 	connect_signal_mouse_left_click(
-			find_widget<button>(&window, "stopgame", false),
+			find_widget<button>("stopgame"),
 			std::bind(&lobby_player_info::stopgame_button_callback, this));
 
-	find_widget<label>(&window, "player_name", false).set_label(info_.name);
+	find_widget<label>("player_name").set_label(info_.name);
 
 	std::stringstream loc;
 	const mp::game_info* game = lobby_info_.get_game_by_id(info_.game_id);
@@ -112,22 +111,22 @@ void lobby_player_info::pre_show(window& window)
 		loc << _("In lobby");
 	}
 
-	time_ = find_widget<text_box>(&window, "time", false, true);
-	reason_ = find_widget<text_box>(&window, "reason", false, true);
-	window.add_to_tab_order(reason_);
-	window.add_to_tab_order(time_);
+	time_ = find_widget<text_box>("time", false, true);
+	reason_ = find_widget<text_box>("reason", false, true);
+	add_to_tab_order(reason_);
+	add_to_tab_order(time_);
 
-	find_widget<label>(&window, "location_info", false).set_label(loc.str());
+	find_widget<label>("location_info").set_label(loc.str());
 
 	update_relation();
 
 	if(!mp::logged_in_as_moderator()) {
-		widget* aw = window.find("admin", false);
+		widget* aw = find("admin", false);
 		aw->set_visible(widget::visibility::invisible);
 	}
 }
 
-void lobby_player_info::post_show(window& /*window*/)
+void lobby_player_info::post_show()
 {
 }
 

@@ -31,6 +31,7 @@
 #include "map/map.hpp"
 #include "mp_game_settings.hpp"
 #include "preferences/preferences.hpp"
+#include "serialization/markup.hpp"
 #include "wml_exception.hpp"
 
 
@@ -51,7 +52,7 @@ namespace mp {
 user_info::user_info(const config& c)
 	: name(c["name"])
 	, forum_id(c["forum_id"].to_int())
-	, game_id(c["game_id"])
+	, game_id(c["game_id"].to_int())
 	, registered(c["registered"].to_bool())
 	, observing(c["status"] == "observing")
 	, moderator(c["moderator"].to_bool(false))
@@ -100,16 +101,16 @@ const std::string& spaced_em_dash()
 std::string make_game_type_marker(const std::string& text, bool color_for_missing)
 {
 	if(color_for_missing) {
-		return formatter() << "<b><span color='#f00'>[" << text << "]</span></b> ";
+		return markup::span_color("#f00", markup::bold("[", text, "] "));
 	} else {
-		return formatter() << "<b>[" << text << "]</b> ";
+		return markup::bold("[", text, "] ");
 	}
 }
 
 } // end anon namespace
 
 game_info::game_info(const config& game, const std::vector<std::string>& installed_addons)
-	: id(game["id"])
+	: id(game["id"].to_int())
 	, map_data(game["map_data"])
 	, name(font::escape_text(game["name"]))
 	, scenario()
@@ -441,7 +442,7 @@ game_info::addon_req game_info::check_addon_version_compatibility(const config& 
 				<< "'";
 			r.outcome = addon_req::CANNOT_SATISFY;
 
-			r.message = VGETTEXT("The host's version of <i>$addon</i> is incompatible. They have version <b>$host_ver</b> while you have version <b>$local_ver</b>.", {
+			r.message = VGETTEXT("The host’s version of <i>$addon</i> is incompatible. They have version <b>$host_ver</b> while you have version <b>$local_ver</b>.", {
 				{"addon",     local_item["addon_title"].str()},
 				{"host_ver",  remote_ver.str()},
 				{"local_ver", local_ver.str()}

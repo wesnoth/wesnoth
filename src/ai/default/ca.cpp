@@ -933,7 +933,7 @@ bool get_villages_phase::remove_village(
 	bool result = false;
 	treachmap::iterator itor = reachmap.begin();
 	while(itor != reachmap.end()) {
-		itor->second.erase(std::remove(itor->second.begin(), itor->second.end(), village), itor->second.end());
+		utils::erase(itor->second, village);
 		if(itor->second.empty()) {
 			result = true;
 			itor = remove_unit(reachmap, moves, itor);

@@ -62,7 +62,7 @@ public:
 	void set_range(const std::string& value) { range_ = value; set_changed(true); }
 	void set_min_range(int value) { min_range_ = value; set_changed(true); }
 	void set_max_range(int value) { max_range_ = value; set_changed(true); }
-	void set_attack_alignment(const std::string& value) { alignment_str_ = value; set_changed(true); }
+	void set_attack_alignment(const std::string& value) { alignment_ = unit_alignments::get_enum(value); set_changed(true); }
 	void set_accuracy(int value) { accuracy_ = value; set_changed(true); }
 	void set_parry(int value) { parry_ = value; set_changed(true); }
 	void set_damage(int value) { damage_ = value; set_changed(true); }
@@ -87,12 +87,12 @@ public:
 	std::string weapon_specials() const;
 	std::string weapon_specials_value(const std::set<std::string> checking_tags) const;
 
-	/** Returns alignment specified by alignment_str_ variable If empty or not valid returns the unit's alignment or neutral if self_ variable empty.
+	/** Returns alignment specified by alignment_ variable.
 	 */
-	unit_alignments::type alignment() const;
-	/** Returns alignment specified by alignment() for filtering.
+	utils::optional<unit_alignments::type> alignment() const { return alignment_; }
+	/** Returns alignment specified by alignment() for filtering when exist.
 	 */
-	std::string alignment_str() const {return unit_alignments::get_string(alignment());}
+	std::string alignment_str() const { return alignment_ ? unit_alignments::get_string(*alignment_) : ""; }
 
 	/** Calculates the number of attacks this weapon has, considering specials. */
 	void modified_attacks(unsigned & min_attacks,
@@ -145,6 +145,17 @@ public:
 	 * uses when a defender has no weapon for a given range.
 	 */
 	bool attack_empty() const {return (id().empty() && name().empty() && type().empty() && range().empty());}
+	/** remove special if matche condition
+	 * @param filter if special check with filter, it will be removed.
+	 */
+	void remove_special_by_filter(const config& filter);
+	/** check if special matche
+	 * @return True if special matche with filter(if 'active' filter is true, check if special active).
+	 * @param filter if special check with filter, return true.
+	 */
+	bool has_special_with_filter(const config & filter) const;
+	bool has_ability_with_filter(const config & filter) const;
+	bool has_special_or_ability_with_filter(const config & filter) const;
 
 	// In unit_types.cpp:
 
@@ -174,7 +185,7 @@ public:
 		/**
 		 * Only expected to be called in update_variables_recursion(), which handles some of the checks.
 		 */
-		explicit recursion_guard(const attack_type& weapon);
+		explicit recursion_guard(const attack_type& weapon, const config& special);
 	public:
 		/**
 		 * Construct an empty instance, only useful for extending the lifetime of a
@@ -204,12 +215,11 @@ public:
 	 * recursion might occur, similar to a reentrant mutex that's limited to a small number of
 	 * reentrances.
 	 *
-	 * This is a cheap function, so no reason to optimise by doing some filters before calling it.
-	 * However, it only expects to be called in a single thread, but the whole of attack_type makes
-	 * that assumption, for example its mutable members are assumed to be set up by the current
+	 * This only expects to be called in a single thread, but the whole of attack_type makes
+	 * that assumption, for example its' mutable members are assumed to be set up by the current
 	 * caller (or caller's caller, probably several layers up).
 	 */
-	recursion_guard update_variables_recursion() const;
+	recursion_guard update_variables_recursion(const config& special) const;
 
 private:
 	// In unit_abilities.cpp:
@@ -415,7 +425,7 @@ private:
 	std::string icon_;
 	std::string range_;
 	int min_range_, max_range_;
-	std::string alignment_str_;
+	utils::optional<unit_alignments::type> alignment_;
 	int damage_;
 	int num_attacks_;
 	double attack_weight_;
@@ -427,8 +437,12 @@ private:
 	int parry_;
 	config specials_;
 	bool changed_;
-	/** Number of instances of recursion_guard that are currently allocated permission to recurse */
-	mutable unsigned int num_recursion_ = 0;
+	/**
+	 * While processing a recursive match, all the filters that are currently being checked, oldest first.
+	 * Each will have an instance of recursion_guard that is currently allocated permission to recurse, and
+	 * which will pop the config off this stack when the recursion_guard is finalized.
+	 */
+	mutable std::vector<const config*> open_queries_;
 };
 
 using attack_list = std::vector<attack_ptr>;

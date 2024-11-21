@@ -24,6 +24,7 @@ struct map_location;
 
 #include "units/map.hpp"
 #include "game_events/fwd.hpp"
+#include "synced_commands.hpp"
 
 #include <vector>
 
@@ -32,8 +33,11 @@ namespace actions {
 	class undo_list;
 
 
-class move_unit_spectator {
+class move_unit_spectator : public action_spectator {
 public:
+
+	/** ingerited from action_spectator */
+	void error(const std::string& message) override;
 	/** add a location of a seen friend */
 	void add_seen_friend(const unit_map::const_iterator &u);
 
@@ -63,7 +67,9 @@ public:
 
 
 	/** constructor */
-	move_unit_spectator(const unit_map &units);
+	move_unit_spectator(const unit_map& units);
+
+	move_unit_spectator();
 
 
 	/** destructor */
@@ -83,12 +89,25 @@ public:
 
 	/** set the iterator to moved unit*/
 	void set_unit(const unit_map::const_iterator &u);
+
+	void set_ai_move(bool ai_move = true) { is_ai_move_ = ai_move; }
+	bool is_ai_move() const { return is_ai_move_; }
+
+	void set_interrupted(bool interrupted) { interrupted_ = interrupted; }
+	bool get_interrupted() const { return interrupted_; }
+
+	void set_tiles_entered(std::size_t tiles_entered) { tiles_entered_ = tiles_entered; }
+	std::size_t get_tiles_entered() const { return tiles_entered_; }
+
 private:
 	unit_map::const_iterator ambusher_;
 	unit_map::const_iterator failed_teleport_;
 	std::vector<unit_map::const_iterator> seen_enemies_;
 	std::vector<unit_map::const_iterator> seen_friends_;
 	unit_map::const_iterator unit_;
+	std::size_t tiles_entered_;
+	bool interrupted_;
+	bool is_ai_move_ = false;
 };
 
 /**
@@ -103,7 +122,6 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
  */
 void teleport_unit_and_record(const map_location& teleport_from,
 	const map_location& teleport_to,
-	bool show_move = false,
 	move_unit_spectator* move_spectator = nullptr);
 
 /**
@@ -120,23 +138,23 @@ void teleport_unit_from_replay(
  * Moves a unit across the board.
  * And enters the synced context.
  */
-std::size_t move_unit_and_record(
+void move_unit_and_record(
 	const std::vector<map_location> &steps,
-	undo_list* undo_stack,
+	bool continued_move,
+	move_unit_spectator& move_spectator);
+
+std::size_t move_unit_and_record(const std::vector<map_location>& steps,
 	bool continued_move = false,
-	bool show_move = true,
-	bool* interrupted = nullptr,
-	move_unit_spectator* move_spectator = nullptr);
+	bool* interrupted = nullptr);
 
 /**
  * Moves a unit across the board.
  * to be called from replay when we are already in the synced context.
  */
-std::size_t move_unit_from_replay(
+void execute_move_unit(
 	const std::vector<map_location> &steps,
-	undo_list* undo_stack,
 	bool continued_move,
 	bool skip_ally_sighted,
-	bool show_move = true);
+	move_unit_spectator* move_spectator);
 
 }//namespace actions

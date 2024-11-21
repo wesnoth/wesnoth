@@ -17,12 +17,12 @@
 
 #include "gui/widgets/multi_page.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/generator.hpp"
 
 #include "gettext.hpp"
+#include "wml_exception.hpp"
 
 #include <functional>
 
@@ -80,8 +80,8 @@ void multi_page::remove_page(const unsigned page, unsigned count)
 		return;
 	}
 
-	if(!count || count > get_page_count()) {
-		count = get_page_count();
+	if(!count || (page + count) > get_page_count()) {
+		count = get_page_count() - page;
 	}
 
 	for(; count; --count) {
@@ -208,16 +208,16 @@ builder_multi_page::builder_multi_page(const config& cfg)
 		for(const auto & column : row.child_range("column"))
 		{
 			data.emplace_back();
-			for(const auto & i : column.attribute_range())
+			for(const auto& [key, value] : column.attribute_range())
 			{
-				data.back()[i.first] = i.second;
+				data.back()[key] = value;
 			}
 			++col;
 		}
 
 		VALIDATE(col == builder->cols,
-				 _("'list_data' must have "
-				   "the same number of columns as the 'list_definition'."));
+				 _("‘list_data’ must have "
+				   "the same number of columns as the ‘list_definition’."));
 	}
 }
 

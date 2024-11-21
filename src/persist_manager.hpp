@@ -16,13 +16,14 @@
 #pragma once
 
 #include <map>
+#include <memory>
 #include <string>
 
 class persist_context;
 
 class persist_manager {
 	protected:
-		typedef std::map<std::string,persist_context *> context_map;
+		typedef std::map<std::string, std::unique_ptr<persist_context>> context_map;
 
 		bool in_transaction_;
 		context_map contexts_;

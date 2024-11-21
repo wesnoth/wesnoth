@@ -38,6 +38,7 @@
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/map.hpp"
+#include "utils/general.hpp"
 #include "utils/ranges.hpp"
 
 namespace wb
@@ -225,7 +226,7 @@ void highlighter::find_secondary_highlights()
 	std::deque<action_ptr> actions = find_actions_of(*owner_unit_);
 
 	// Remove main_highlight_ if present
-	actions.erase(std::remove(actions.begin(), actions.end(), main_highlight_.lock()), actions.end());
+	utils::erase(actions, main_highlight_.lock());
 
 	// Copy in secondary_highlights_
 	std::copy(actions.begin(), actions.end(), std::back_inserter(secondary_highlights_));

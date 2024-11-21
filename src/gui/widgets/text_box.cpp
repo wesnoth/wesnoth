@@ -420,7 +420,7 @@ namespace implementation
 builder_text_box::builder_text_box(const config& cfg)
 	: builder_styled_widget(cfg)
 	, history(cfg["history"])
-	, max_input_length(cfg["max_input_length"])
+	, max_input_length(cfg["max_input_length"].to_size_t())
 	, hint_text(cfg["hint_text"].t_str())
 	, hint_image(cfg["hint_image"])
 	, editable(cfg["editable"].to_bool(true))

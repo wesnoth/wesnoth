@@ -307,23 +307,17 @@ void set_language(const language_def& locale)
 
 bool load_strings(bool complain)
 {
-	DBG_G << "Loading strings";
 	config cfg;
 
-	LOG_G << "There are " << languages_.size() << " [language] blocks";
 	if (complain && languages_.empty()) {
 		PLAIN_LOG << "No [language] block found";
 		return false;
 	}
 	for (const config &lang : languages_) {
-		DBG_G << "[language]";
 		for(const auto& [key, value] : lang.attribute_range()) {
-			DBG_G << key << "=\"" << value << "\"";
 			strings_[key] = value;
 		}
-		DBG_G << "[/language]";
 	}
-	DBG_G << "done";
 
 	return true;
 }

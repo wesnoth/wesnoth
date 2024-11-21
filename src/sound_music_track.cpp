@@ -27,42 +27,42 @@ static lg::log_domain log_audio("audio");
 
 namespace sound {
 
-music_track::music_track() :
-	id_(),
-	file_path_(),
-	ms_before_(0),
-	ms_after_(0),
-	once_(false),
-	append_(false),
-	immediate_(false),
-	shuffle_(true)
+music_track::music_track()
+	: id_()
+	, file_path_()
+	, ms_before_(0)
+	, ms_after_(0)
+	, once_(false)
+	, append_(false)
+	, immediate_(false)
+	, shuffle_(true)
 {
 }
 
-music_track::music_track(const config& node) :
-	id_(node["name"]),
-	file_path_(),
-	title_(node["title"]),
-	ms_before_(node["ms_before"]),
-	ms_after_(node["ms_after"]),
-	once_(node["play_once"].to_bool()),
-	append_(node["append"].to_bool()),
-	immediate_(node["immediate"].to_bool()),
-	shuffle_(node["shuffle"].to_bool(true))
+music_track::music_track(const config& node)
+	: id_(node["name"])
+	, file_path_()
+	, title_(node["title"])
+	, ms_before_(node["ms_before"].to_int())
+	, ms_after_(node["ms_after"].to_int())
+	, once_(node["play_once"].to_bool())
+	, append_(node["append"].to_bool())
+	, immediate_(node["immediate"].to_bool())
+	, shuffle_(node["shuffle"].to_bool(true))
 {
 	resolve();
 }
 
-music_track::music_track(const std::string& v_name) :
-	id_(v_name),
-	file_path_(),
-	title_(),
-	ms_before_(0),
-	ms_after_(0),
-	once_(false),
-	append_(false),
-	immediate_(false),
-	shuffle_(true)
+music_track::music_track(const std::string& v_name)
+	: id_(v_name)
+	, file_path_()
+	, title_()
+	, ms_before_(0)
+	, ms_after_(0)
+	, once_(false)
+	, append_(false)
+	, immediate_(false)
+	, shuffle_(true)
 {
 	resolve();
 }

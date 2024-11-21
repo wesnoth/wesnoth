@@ -45,9 +45,9 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	ng::create_engine create_engine_;
 	std::unique_ptr<ng::configure_engine> config_engine_;

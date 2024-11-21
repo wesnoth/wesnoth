@@ -28,6 +28,7 @@
 #include "side_controller.hpp"
 #include "wml_exception.hpp"
 
+#include "serialization/chrono.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/parser.hpp"
 
@@ -265,10 +266,10 @@ create_engine::create_engine(saved_game& state)
 	dependency_manager_.reset(new depcheck::manager(game_config_, state_.classification().is_multiplayer()));
 
 	// TODO: the editor dir is already configurable, is the preferences value
-	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &user_map_names_,
+	filesystem::get_files_in_dir(filesystem::get_legacy_editor_dir() + "/maps", &user_map_names_,
 		nullptr, filesystem::name_mode::FILE_NAME_ONLY);
 
-	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/scenarios", &user_scenario_names_,
+	filesystem::get_files_in_dir(filesystem::get_legacy_editor_dir() + "/scenarios", &user_scenario_names_,
 		nullptr, filesystem::name_mode::FILE_NAME_ONLY);
 
 	DBG_MP << "initializing all levels, eras and mods";
@@ -405,7 +406,7 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 	state_.classification().abbrev = current_level_data["abbrev"].str();
 
 	state_.classification().end_text = current_level_data["end_text"].str();
-	state_.classification().end_text_duration = current_level_data["end_text_duration"];
+	state_.classification().end_text_duration = chrono::parse_duration<std::chrono::milliseconds>(current_level_data["end_text_duration"]);
 	state_.classification().end_credits = current_level_data["end_credits"].to_bool(true);
 
 	state_.classification().campaign_define = current_level_data["define"].str();
@@ -687,10 +688,10 @@ void create_engine::init_all_levels()
 		{
 			config data;
 			try {
-				read(data, *preprocess_file(filesystem::get_user_data_dir() + "/editor/scenarios/" + user_scenario_names_[i]));
+				read(data, *preprocess_file(filesystem::get_legacy_editor_dir() + "/scenarios/" + user_scenario_names_[i]));
 			} catch(const config::error & e) {
 				ERR_CF << "Caught a config error while parsing user made (editor) scenarios:\n" << e.message;
-				ERR_CF << "Skipping file: " << (filesystem::get_user_data_dir() + "/editor/scenarios/" + user_scenario_names_[i]);
+				ERR_CF << "Skipping file: " << (filesystem::get_legacy_editor_dir() + "/scenarios/" + user_scenario_names_[i]);
 				continue;
 			}
 

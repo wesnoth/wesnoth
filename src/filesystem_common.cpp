@@ -19,6 +19,7 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
+#include "utils/general.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -102,12 +103,8 @@ bool is_legal_user_file_name(const std::string& name, bool allow_whitespace)
 
 void blacklist_pattern_list::remove_blacklisted_files_and_dirs(std::vector<std::string>& files, std::vector<std::string>& directories) const
 {
-	files.erase(
-		std::remove_if(files.begin(), files.end(), [this](const std::string& name) { return match_file(name); }),
-		files.end());
-	directories.erase(
-		std::remove_if(directories.begin(), directories.end(), [this](const std::string& name) { return match_dir(name); }),
-		directories.end());
+	utils::erase_if(files, [this](const std::string& name) { return match_file(name); });
+	utils::erase_if(directories, [this](const std::string& name) { return match_dir(name); });
 }
 
 bool blacklist_pattern_list::match_file(const std::string& name) const
@@ -304,7 +301,7 @@ std::string read_map(const std::string& name)
 	}
 
 	if(res.empty()) {
-		res = read_file(get_user_data_dir() + "/editor/maps/" + name);
+		res = read_file(get_legacy_editor_dir() + "/maps/" + name);
 	}
 
 	return res;
@@ -323,7 +320,7 @@ std::string read_scenario(const std::string& name)
 	}
 
 	if(res.empty()) {
-		res = read_file(get_user_data_dir() + "/editor/scenarios/" + name);
+		res = read_file(get_legacy_editor_dir() + "/scenarios/" + name);
 	}
 
 	return res;

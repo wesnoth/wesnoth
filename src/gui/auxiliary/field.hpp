@@ -23,7 +23,6 @@
 
 #pragma once
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/field-fwd.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/selectable_item.hpp"
@@ -75,7 +74,7 @@ public:
 	void attach_to_window(window& window)
 	{
 		assert(!widget_);
-		widget_ = find_widget<styled_widget>(&window, id(), false, mandatory_);
+		widget_ = window.find_widget<styled_widget>(id(), false, mandatory_);
 	}
 
 	/**

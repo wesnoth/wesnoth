@@ -172,17 +172,6 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	// TODO: this is now completely redundant, as a modal dialog is a window
-	/** Returns a pointer to the dialog's window. Will be null if it hasn't been built yet. */
-	window* get_window()
-	{
-		return this;
-	}
-	const window* get_window() const
-	{
-		return this;
-	}
-
 	/** Returns the cached window exit code. */
 	int get_retval() const
 	{
@@ -398,28 +387,21 @@ private:
 	 *
 	 * At this point the registered fields are registered and initialized with
 	 * their initial values.
-	 *
-	 * @param window              The window to be shown.
 	 */
-	virtual void pre_show(window& window);
-	// TODO: this window parameter is now redundant
+	virtual void pre_show();
 
 	/**
 	 * Actions to be taken after the window has been shown.
 	 *
-	 * At this point the registered fields already stored their values (if the
-	 * OK has been pressed).
-	 *
-	 * @param window              The window which has been shown.
+	 * At this point the registered fields already stored their values
+	 * (if the button with id 'ok' has been pressed).
 	 */
-	virtual void post_show(window& window);
-	// TODO: this window parameter is now redundant
+	virtual void post_show();
 
 	/**
 	 * Initializes all fields in the dialog and set the keyboard focus.
 	 */
-	virtual void init_fields();
-	// TODO: Nothing else uses this. Why is it virtual?
+	void init_fields();
 
 	/**
 	 * When the dialog is closed with the OK status saves all fields.
@@ -428,8 +410,7 @@ private:
 	 *
 	 * @param save_fields         Does the value in the fields need to be saved?
 	 */
-	virtual void finalize_fields(const bool save_fields);
-	// TODO: Nothing else uses this. Why is it virtual?
+	void finalize_fields(const bool save_fields);
 };
 
 } // namespace dialogs

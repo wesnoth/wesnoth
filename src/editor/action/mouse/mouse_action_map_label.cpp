@@ -84,7 +84,7 @@ std::unique_ptr<editor_action> mouse_action_map_label::up_right(editor_display& 
 	map_location hex = disp.hex_clicked_on(x, y);
 
 	//TODO
-//	const terrain_label* clicked_label = disp.map().get_map_labels().get_label(hex);
+//	const terrain_label* clicked_label = disp.get_map().get_map_labels().get_label(hex);
 	//if (!clicked_label)
 	//	return nullptr;
 

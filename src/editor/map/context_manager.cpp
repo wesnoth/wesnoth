@@ -48,6 +48,7 @@
 #include "gui/dialogs/editor/edit_pbl.hpp"
 #include "game_config_view.hpp"
 
+#include "serialization/markup.hpp"
 #include "terrain/translation.hpp"
 
 #include <memory>
@@ -61,15 +62,11 @@ int last_context_ = 0;
 
 const std::string get_menu_marker(const bool changed)
 {
-	std::ostringstream ss;
-	ss << "[<span ";
-
-	if(changed) {
-		ss << "color='#f00' ";
+	if (changed) {
+		return "[" + markup::span_color("#f00", font::unicode_bullet) + "]";
+	} else {
+		return font::unicode_bullet;
 	}
-
-	ss << ">" << font::unicode_bullet << "</span>]";
-	return ss.str();
 }
 
 }
@@ -111,7 +108,7 @@ void context_manager::refresh_on_context_change()
 	resources::classification = &get_map_context().get_classification();
 
 	// Reset side when switching to an existing scenario
-	if (gui().get_teams().size() > 0) {
+	if(!get_map_context().teams().empty()) {
 		gui().set_viewing_team_index(0, true);
 		gui().set_playing_team_index(0);
 	}
@@ -357,7 +354,7 @@ void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
 		const bool changed = mc.modified();
 
 		if(changed) {
-			ss << "<i>" << filename << "</i>";
+			ss << markup::italic(filename);
 		} else {
 			ss << filename;
 		}
@@ -420,7 +417,7 @@ void context_manager::expand_areas_menu(std::vector<config>& items, int i)
 		ss << "[" << mci + 1 << "] ";\
 
 		if(area.empty()) {
-			ss << "<i>" << _("Unnamed Area") << "</i>";
+			ss << markup::italic(_("Unnamed Area"));
 		} else {
 			ss << area;
 		}
@@ -451,7 +448,7 @@ void context_manager::expand_sides_menu(std::vector<config>& items, int i)
 		label << "[" << mci+1 << "] ";
 
 		if(teamname.empty()) {
-			label << "<i>" << _("New Side") << "</i>";
+			label << markup::italic(_("New Side"));
 		} else {
 			label << teamname;
 		}

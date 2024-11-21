@@ -27,9 +27,9 @@ namespace storyscreen
 {
 floating_image::floating_image(const config& cfg)
 	: file_(cfg["file"])
-	, x_(cfg["x"])
-	, y_(cfg["y"])
-	, delay_(cfg["delay"])
+	, x_(cfg["x"].to_int())
+	, y_(cfg["y"].to_int())
+	, delay_(cfg["delay"].to_int())
 	, resize_with_background_(cfg["resize_with_background"].to_bool())
 	, centered_(cfg["centered"].to_bool())
 {

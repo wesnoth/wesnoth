@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
+"POT-Creation-Date: 2024-10-21 16:11 UTC\n"
 "PO-Revision-Date: 2022-01-13 19:27+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -35,12 +35,12 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Dark_Forecast
 #: data/multiplayer/achievements.cfg:11
-msgid "Complete the survival scenario <i>2p - Dark Forecast</i>."
+msgid "Complete the survival scenario <i>2p — Dark Forecast</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Dark_Forecast
 #: data/multiplayer/achievements.cfg:12
-msgid "Completed the survival scenario <i>2p - Dark Forecast</i>."
+msgid "Completed the survival scenario <i>2p — Dark Forecast</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Isle_of_Mists
@@ -55,12 +55,12 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Isle_of_Mists
 #: data/multiplayer/achievements.cfg:22
-msgid "Complete the survival scenario <i>2p - Isle of Mists</i>."
+msgid "Complete the survival scenario <i>2p — Isle of Mists</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Isle_of_Mists
 #: data/multiplayer/achievements.cfg:23
-msgid "Completed the survival scenario <i>2p - Isle of Mists</i>."
+msgid "Completed the survival scenario <i>2p — Isle of Mists</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Team_Survival
@@ -70,12 +70,12 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Team_Survival
 #: data/multiplayer/achievements.cfg:33
-msgid "Complete the survival scenario <i>6p - Team Survival</i>."
+msgid "Complete the survival scenario <i>6p — Team Survival</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Team_Survival
 #: data/multiplayer/achievements.cfg:34
-msgid "Completed the survival scenario <i>6p - Team Survival</i>."
+msgid "Completed the survival scenario <i>6p — Team Survival</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL
@@ -85,12 +85,12 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL
 #: data/multiplayer/achievements.cfg:44
-msgid "Complete the survival scenario <i>4p - A New Land</i>."
+msgid "Complete the survival scenario <i>4p — A New Land</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL
 #: data/multiplayer/achievements.cfg:45
-msgid "Completed the survival scenario <i>4p - A New Land</i>."
+msgid "Completed the survival scenario <i>4p — A New Land</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_mines
@@ -100,12 +100,12 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_mines
 #: data/multiplayer/achievements.cfg:54
-msgid "Destroy all enemy mushroom mines in <i>4p - A New Land</i>."
+msgid "Destroy all enemy mushroom mines in <i>4p — A New Land</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_mines
 #: data/multiplayer/achievements.cfg:55
-msgid "Destroyed all enemy mushroom mines in <i>4p - A New Land</i>."
+msgid "Destroyed all enemy mushroom mines in <i>4p — A New Land</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_rescue_allies
@@ -115,12 +115,12 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_rescue_allies
 #: data/multiplayer/achievements.cfg:65
-msgid "Rescue the trapped units in <i>4p - A New Land</i>."
+msgid "Rescue the trapped units in <i>4p — A New Land</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_rescue_allies
 #: data/multiplayer/achievements.cfg:66
-msgid "Rescued the trapped units in <i>4p - A New Land</i>."
+msgid "Rescued the trapped units in <i>4p — A New Land</i>."
 msgstr ""
 
 #. [era]: id=era_default, type=hybrid
@@ -211,15 +211,15 @@ msgstr "Tha na taobhan $winners co-ionnann."
 msgid "dialog^Turns Over"
 msgstr "Cuairtean deiseil"
 
-#. [multiplayer_side]: id=Drakes, type=random
+#. [multiplayer_side]: id=Drakes, type=random, description=<img>src='portraits/drakes/inferno.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 #: data/multiplayer/factions/drakes-default.cfg:4
 msgid "Drakes"
 msgstr "Dràic"
 
-#. [multiplayer_side]: id=Drakes, type=random
-#: data/multiplayer/factions/drakes-aoh.cfg:14
-#: data/multiplayer/factions/drakes-default.cfg:14
+#. [multiplayer_side]: id=Drakes, type=random, description=<img>src='portraits/drakes/inferno.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/drakes-aoh.cfg:12
+#: data/multiplayer/factions/drakes-default.cfg:12
 msgid ""
 "The <bold>text='Drakes'</bold> are a faction of dragon-like "
 "<ref>text='Drakes' dst='..race_drake'</ref> and their lizard "
@@ -238,15 +238,15 @@ msgstr ""
 "innleachd a chleachdadh leotha a tha annasach am measg buidhnean an "
 "<ref>text='linn bhunaitich' dst='..era_era_default'</ref>."
 
-#. [multiplayer_side]: id=Dunefolk, type=random
+#. [multiplayer_side]: id=Dunefolk, type=random, description=<img>src='portraits/dunefolk/herbalist.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
 #: data/multiplayer/factions/dunefolk-default.cfg:4
 msgid "Dunefolk"
 msgstr "Muinntir na Gainmhich"
 
-#. [multiplayer_side]: id=Dunefolk, type=random
-#: data/multiplayer/factions/dunefolk-aoh.cfg:14
-#: data/multiplayer/factions/dunefolk-default.cfg:14
+#. [multiplayer_side]: id=Dunefolk, type=random, description=<img>src='portraits/dunefolk/herbalist.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/dunefolk-aoh.cfg:12
+#: data/multiplayer/factions/dunefolk-default.cfg:12
 msgid ""
 "The <bold>text='Dunefolk'</bold> are a faction of humans from the deserts "
 "and hills of the southern lands. The Dunefolk specialize in using terrain "
@@ -265,15 +265,15 @@ msgstr ""
 "aonadan nan Dìlseach san fharsaingeachd, gluaisidh iad glè luath air an "
 "taobh eile – gu seachd àraidh air cnuic."
 
-#. [multiplayer_side]: id=Knalgan Alliance, type=random
+#. [multiplayer_side]: id=Knalgan Alliance, type=random, description=<img>src='portraits/dwarves/ulfserker.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 #: data/multiplayer/factions/knalgans-default.cfg:4
 msgid "Knalgan Alliance"
 msgstr "Caidreachas Chnalga"
 
-#. [multiplayer_side]: id=Knalgan Alliance, type=random
-#: data/multiplayer/factions/knalgans-aoh.cfg:13
-#: data/multiplayer/factions/knalgans-default.cfg:13
+#. [multiplayer_side]: id=Knalgan Alliance, type=random, description=<img>src='portraits/dwarves/ulfserker.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/knalgans-aoh.cfg:11
+#: data/multiplayer/factions/knalgans-default.cfg:11
 msgid ""
 "The <bold>text='Knalgan Alliance'</bold> is a faction of <ref>text='Dwarves' "
 "dst='..race_dwarf'</ref> and their outlaw <ref>text='Human' dst='.."
@@ -295,15 +295,15 @@ msgstr ""
 "daoine a thèid air na tìrean nach eil na troichean math air sabaid a "
 "dhèanamh orra."
 
-#. [multiplayer_side]: id=Loyalists, type=random
+#. [multiplayer_side]: id=Loyalists, type=random, description=<img>src='portraits/humans/grand-knight.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 #: data/multiplayer/factions/loyalists-default.cfg:4
 msgid "Loyalists"
 msgstr "Dìlsich"
 
-#. [multiplayer_side]: id=Loyalists, type=random
-#: data/multiplayer/factions/loyalists-aoh.cfg:14
-#: data/multiplayer/factions/loyalists-default.cfg:14
+#. [multiplayer_side]: id=Loyalists, type=random, description=<img>src='portraits/humans/grand-knight.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/loyalists-aoh.cfg:12
+#: data/multiplayer/factions/loyalists-default.cfg:12
 msgid ""
 "The <bold>text='Loyalists'</bold> are a faction of <ref>text='Humans' dst='.."
 "race_human'</ref> who are loyal to the throne of Wesnoth. Humans are a "
@@ -318,15 +318,15 @@ msgstr ""
 "cuideam air a’ choisridh ach le taic chudromach aig astar o na boghadairean "
 "is draoidhean aca."
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
+#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Tuathaich"
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
-#: data/multiplayer/factions/northerners-aoh.cfg:16
-#: data/multiplayer/factions/northerners-default.cfg:15
+#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/northerners-aoh.cfg:12
+#: data/multiplayer/factions/northerners-default.cfg:11
 msgid ""
 "The <bold>text='Northerners'</bold> are a faction of <ref>text='Orcs' dst='.."
 "race_orc'</ref> and their allies who live in the north of the Great "
@@ -347,15 +347,15 @@ msgstr ""
 "fhasa cluich me bheir thu buannachd às na saighdearan saora le grunn "
 "phuingean-beatha aca."
 
-#. [multiplayer_side]: id=Rebels, type=random
+#. [multiplayer_side]: id=Rebels, type=random, description=<img>src='portraits/elves/druid.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
 msgstr "Aramaichean"
 
-#. [multiplayer_side]: id=Rebels, type=random
-#: data/multiplayer/factions/rebels-aoh.cfg:14
-#: data/multiplayer/factions/rebels-default.cfg:14
+#. [multiplayer_side]: id=Rebels, type=random, description=<img>src='portraits/elves/druid.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/rebels-aoh.cfg:12
+#: data/multiplayer/factions/rebels-default.cfg:12
 msgid ""
 "The <bold>text='Rebels'</bold> are a faction of <ref>text='Elves' dst='.."
 "race_elf'</ref> and their various forest-dwelling allies. They get their "
@@ -383,15 +383,15 @@ msgstr ""
 "Aramaichean, faigh buannachd às an dìon aca sa choille, an comasan air "
 "ionnsaighean astair agus co-thaobhadh neodrach nan sìthichean."
 
-#. [multiplayer_side]: id=Undead, type=random
+#. [multiplayer_side]: id=Undead, type=random, description=<img>src='portraits/undead/spectre.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/undead-aoh.cfg:4
 #: data/multiplayer/factions/undead-default.cfg:4
 msgid "Undead"
 msgstr "Closaich"
 
-#. [multiplayer_side]: id=Undead, type=random
-#: data/multiplayer/factions/undead-aoh.cfg:14
-#: data/multiplayer/factions/undead-default.cfg:14
+#. [multiplayer_side]: id=Undead, type=random, description=<img>src='portraits/undead/spectre.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/undead-aoh.cfg:12
+#: data/multiplayer/factions/undead-default.cfg:12
 msgid ""
 "The <bold>text='Undead'</bold> are a faction of <ref>text='undead' dst='.."
 "race_undead'</ref> creatures and <ref>text='human' dst='..race_human'</ref> "
@@ -3036,8 +3036,10 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:5
-msgid "3p - Elevation Test"
-msgstr ""
+#, fuzzy
+#| msgid "2p — Clearing Gushes"
+msgid "3p — Elevation Test"
+msgstr "2chl – Maoim blàir"
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:6

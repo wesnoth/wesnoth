@@ -38,16 +38,12 @@ cave_map_generator::cave_map_generator(const config &cfg) :
 	castle_(t_translation::DWARVEN_CASTLE),
 	keep_(t_translation::DWARVEN_KEEP),
 	cfg_(cfg),
-	width_(50),
-	height_(50),
-	village_density_(0),
-	flipx_chance_(cfg_["flipx_chance"]),
-	flipy_chance_(cfg_["flipy_chance"])
+	width_(cfg_["map_width"].to_int(50)),
+	height_(cfg_["map_height"].to_int(50)),
+	village_density_(cfg_["village_density"].to_int(0)),
+	flipx_chance_(cfg_["flipx_chance"].to_int()),
+	flipy_chance_(cfg_["flipy_chance"].to_int())
 {
-	width_ = cfg_["map_width"];
-	height_ = cfg_["map_height"];
-
-	village_density_ = cfg_["village_density"];
 }
 
 std::string cave_map_generator::config_name() const
@@ -187,7 +183,7 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 		const std::size_t y = translate_y(min_ypos + (rng_()%(max_ypos-min_ypos)));
 
 		int chamber_size = ch["size"].to_int(3);
-		int jagged_edges = ch["jagged"];
+		int jagged_edges = ch["jagged"].to_int();
 
 		chamber new_chamber;
 		new_chamber.center = map_location(x,y);
@@ -228,9 +224,9 @@ void cave_map_generator::cave_map_generator_job::place_chamber(const chamber& c)
 	if (c.items == nullptr || c.locs.empty()) return;
 
 	std::size_t index = 0;
-	for (const config::any_child it : c.items->all_children_range())
+	for(const auto [child_key, child_cfg] : c.items->all_children_view())
 	{
-		config cfg = it.cfg;
+		config cfg = child_cfg;
 		auto filter = cfg.optional_child("filter");
 		config* object_filter = nullptr;
 		if (auto object = cfg.optional_child("object")) {
@@ -239,10 +235,10 @@ void cave_map_generator::cave_map_generator_job::place_chamber(const chamber& c)
 			}
 		}
 
-		if (!it.cfg["same_location_as_previous"].to_bool()) {
+		if (!child_cfg["same_location_as_previous"].to_bool()) {
 			index = rng_()%c.locs.size();
 		}
-		std::string loc_var = it.cfg["store_location_as"];
+		std::string loc_var = child_cfg["store_location_as"];
 
 		std::set<map_location>::const_iterator loc = c.locs.begin();
 		std::advance(loc,index);
@@ -261,11 +257,11 @@ void cave_map_generator::cave_map_generator_job::place_chamber(const chamber& c)
 		}
 
 		// If this is a side, place a castle for the side
-		if (it.key == "side" && !it.cfg["no_castle"].to_bool()) {
-			place_castle(it.cfg["side"].to_int(-1), *loc);
+		if (child_key == "side" && !child_cfg["no_castle"].to_bool()) {
+			place_castle(child_cfg["side"].to_int(-1), *loc);
 		}
 
-		res_.add_child(it.key, cfg);
+		res_.add_child(child_key, cfg);
 
 		if(!loc_var.empty()) {
 			config &temp = res_.add_child("event");
@@ -319,8 +315,7 @@ void cave_map_generator::cave_map_generator_job::place_passage(const passage& p)
 		return;
 	}
 
-
-	int windiness = p.cfg["windiness"];
+	int windiness = p.cfg["windiness"].to_int();
 	double laziness = std::max<double>(1.0, p.cfg["laziness"].to_double());
 
 	passage_path_calculator calc(map_, params.wall_, laziness, windiness, rng_);
@@ -328,7 +323,7 @@ void cave_map_generator::cave_map_generator_job::place_passage(const passage& p)
 	pathfind::plain_route rt = a_star_search(p.src, p.dst, 10000.0, calc, params.width_, params.height_);
 
 	int width = std::max<int>(1, p.cfg["width"].to_int());
-	int jagged = p.cfg["jagged"];
+	int jagged = p.cfg["jagged"].to_int();
 
 	for(std::vector<map_location>::const_iterator i = rt.steps.begin(); i != rt.steps.end(); ++i) {
 		std::set<map_location> locs;

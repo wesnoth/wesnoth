@@ -14,6 +14,8 @@ function wesnoth.wml_actions.hint_message(cfg)
             size = 18,
             location = {5,5},
             color = {255, 255, 255},
+            bgcolor = {0, 0, 0},
+            bgalpha = 85,
             duration = "unlimited",
             max_width = "40%",
             valign = "top",

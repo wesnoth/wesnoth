@@ -18,9 +18,9 @@
 #include "server/common/user_handler.hpp"
 #include "server/common/dbconn.hpp"
 
+#include <chrono>
 #include <vector>
 #include <memory>
-#include <ctime>
 
 /**
  * A class to handle the non-SQL logic for connecting to the phpbb forum database.
@@ -344,11 +344,11 @@ private:
 	 * @param user The player's username.
 	 * @return The player's last login time.
 	 */
-	std::time_t get_lastlogin(const std::string& user);
+	std::chrono::system_clock::time_point get_lastlogin(const std::string& user);
 
 	/**
 	 * @param user The player's username.
 	 * @return The player's forum registration date.
 	 */
-	std::time_t get_registrationdate(const std::string& user);
+	std::chrono::system_clock::time_point get_registrationdate(const std::string& user);
 };

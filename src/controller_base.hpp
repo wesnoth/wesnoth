@@ -41,6 +41,8 @@
 #include "key.hpp"
 #include "quit_confirmation.hpp"
 
+#include <chrono>
+
 class game_config_view;
 class display;
 class plugins_context;
@@ -67,7 +69,7 @@ public:
 	controller_base();
 	virtual ~controller_base();
 
-	virtual void play_slice(bool is_delay_enabled = true);
+	virtual void play_slice();
 
 	void apply_keyboard_scroll(int x, int y);
 
@@ -154,7 +156,7 @@ protected:
 		// No action by default
 	}
 
-	virtual void process(events::pump_info&) override;
+	virtual void process() override;
 
 	/** Process keydown (always). Overridden in derived classes */
 	virtual void process_keydown_event(const SDL_Event& /*event*/)
@@ -185,7 +187,7 @@ protected:
 	bool scroll_left_;
 	bool scroll_right_;
 	/* When the last scroll tick was processed */
-	uint32_t last_scroll_tick_;
+	std::chrono::steady_clock::time_point last_scroll_tick_;
 	/* Sub-pixel movement left over from a previous scroll tick.
 	 * This is added to the next scroll tick, if scrolling continues. */
 	double scroll_carry_x_;

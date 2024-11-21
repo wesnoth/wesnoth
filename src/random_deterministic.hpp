@@ -18,6 +18,8 @@
 #include "random.hpp"
 #include "mt_rng.hpp"
 
+
+#include <functional>
 namespace randomness
 {
 	/**
@@ -36,6 +38,26 @@ namespace randomness
 		virtual uint32_t next_random_impl();
 	private:
 		mt_rng& generator_;
+	};
+
+	class rng_proxy : public randomness::rng
+	{
+	public:
+		using t_impl = std::function<uint32_t()>;
+		rng_proxy(t_impl&& impl)
+			: impl_(std::move(impl))
+		{
+		}
+		virtual ~rng_proxy() = default;
+
+	protected:
+		virtual uint32_t next_random_impl()
+		{
+			return impl_();
+		};
+
+	private:
+		t_impl impl_;
 	};
 
 	/**

@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/depcheck_select_new.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gettext.hpp"
@@ -57,9 +56,9 @@ depcheck_select_new::depcheck_select_new(
 	register_label("message", false, message);
 }
 
-void depcheck_select_new::pre_show(window& window)
+void depcheck_select_new::pre_show()
 {
-	listbox& items = find_widget<listbox>(&window, "itemlist", false);
+	listbox& items = find_widget<listbox>("itemlist");
 
 	for(const auto & item : items_)
 	{
@@ -72,10 +71,10 @@ void depcheck_select_new::pre_show(window& window)
 	items.select_row(0);
 }
 
-void depcheck_select_new::post_show(window& window)
+void depcheck_select_new::post_show()
 {
 	if(get_retval() == retval::OK) {
-		listbox& items = find_widget<listbox>(&window, "itemlist", false);
+		listbox& items = find_widget<listbox>("itemlist");
 		result_ = items.get_selected_row();
 	}
 }

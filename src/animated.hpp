@@ -20,25 +20,28 @@
 
 #pragma once
 
+#include <chrono>
 #include <vector>
 
 void new_animation_frame();
-int get_current_animation_tick();
+std::chrono::steady_clock::time_point get_current_animation_tick();
 
 template<typename T>
 class animated
 {
 public:
-	typedef std::pair<int, T> frame_description;
+	typedef std::pair<std::chrono::milliseconds, T> frame_description;
 	typedef std::vector<frame_description> anim_description;
 
-	animated(int start_time = 0);
-	explicit animated(const std::vector<frame_description>& cfg, int start_time = 0, bool force_change = false);
+	animated(const std::chrono::milliseconds& start_time = std::chrono::milliseconds{0});
+	explicit animated(const anim_description& cfg, const std::chrono::milliseconds& start_time = std::chrono::milliseconds{0}, bool force_change = false);
 
 	virtual ~animated() = default;
 
 	/** Adds a frame to an animation. */
-	void add_frame(int duration, const T& value, bool force_change = false);
+	void add_frame(const std::chrono::milliseconds& duration, const T& value, bool force_change = false);
+
+	bool not_started() const;
 
 	/**
 	 * Starts an animation cycle.
@@ -46,7 +49,7 @@ public:
 	 * The first frame of the animation to start may be set to any value by
 	 * using a start_time different to 0.
 	 */
-	void start_animation(int start_time, bool cycles = false);
+	void start_animation(const std::chrono::milliseconds& start_time, bool cycles = false);
 	void pause_animation()
 	{
 		started_ = false;
@@ -54,16 +57,17 @@ public:
 
 	void restart_animation()
 	{
-		if(start_tick_)
+		if(start_tick_ != std::chrono::steady_clock::time_point{}) {
 			started_ = true;
+		}
 	}
 
-	int get_begin_time() const;
-	int get_end_time() const;
-	void set_begin_time(int new_begin_time);
+	std::chrono::milliseconds get_begin_time() const;
+	std::chrono::milliseconds get_end_time() const;
+	void set_begin_time(const std::chrono::milliseconds& new_begin_time);
 
-	int time_to_tick(int animation_time) const;
-	int tick_to_time(int animation_tick) const;
+	std::chrono::steady_clock::time_point time_to_tick(const std::chrono::milliseconds& animation_time) const;
+	std::chrono::milliseconds tick_to_time(const std::chrono::steady_clock::time_point& animation_tick) const;
 
 	void update_last_draw_time(double acceleration = 0);
 	bool need_update() const;
@@ -76,17 +80,17 @@ public:
 	/** Returns true if the current animation was finished. */
 	bool animation_finished() const;
 	bool animation_finished_potential() const;
-	int get_animation_time() const;
-	int get_animation_time_potential() const;
-	void set_animation_time(int time);
-	void set_max_animation_time(int time);
+	std::chrono::milliseconds get_animation_time() const;
+	std::chrono::milliseconds get_animation_time_potential() const;
+	void set_animation_time(const std::chrono::milliseconds& time);
+	void set_max_animation_time(const std::chrono::milliseconds& time);
 
-	int get_animation_duration() const;
+	std::chrono::milliseconds get_animation_duration() const;
 	const T& get_current_frame() const;
-	int get_current_frame_begin_time() const;
-	int get_current_frame_end_time() const;
-	int get_current_frame_duration() const;
-	int get_current_frame_time() const;
+	std::chrono::milliseconds get_current_frame_begin_time() const;
+	std::chrono::milliseconds get_current_frame_end_time() const;
+	std::chrono::milliseconds get_current_frame_duration() const;
+	std::chrono::milliseconds get_current_frame_time() const;
 	const T& get_first_frame() const;
 	const T& get_frame(std::size_t n) const;
 	const T& get_last_frame() const;
@@ -107,25 +111,18 @@ public:
 protected:
 	friend class unit_animation;
 
-	void remove_frames_until(int starting_time);
-	void set_end_time(int ending_time);
+	void remove_frames_until(const std::chrono::milliseconds& starting_time);
+	void set_end_time(const std::chrono::milliseconds& ending_time);
 
-	int starting_frame_time_;
+	std::chrono::milliseconds starting_frame_time_;
 
 private:
 	struct frame
 	{
-		frame(int duration, const T& value, int start_time)
-			: duration_(duration)
-			, value_(value)
-			, start_time_(start_time)
-		{
-		}
-
 		// Represents the timestamp of the frame start
-		int duration_;
+		std::chrono::milliseconds duration_;
 		T value_;
-		int start_time_;
+		std::chrono::milliseconds start_time_;
 	};
 
 	bool does_not_change_; // Optimization for 1-frame permanent animations
@@ -135,13 +132,13 @@ private:
 
 	// Can set a maximum animation time so that movement in particular does not exceed potential time
 	// Ignored if has a value of 0
-	int max_animation_time_;
+	std::chrono::milliseconds max_animation_time_;
 
 	// These are only valid when anim is started
-	int start_tick_; // time at which we started
+	std::chrono::steady_clock::time_point start_tick_; // time at which we started
 	bool cycles_;
 	double acceleration_;
-	int last_update_tick_;
+	std::chrono::steady_clock::time_point last_update_tick_;
 	int current_frame_key_;
 };
 

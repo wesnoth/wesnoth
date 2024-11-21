@@ -22,17 +22,17 @@
 
 class tournaments : public rs_base
 {
-    struct data
-    {
-        std::string title;
-        std::string status;
-        std::string url;
-    };
+	struct data
+	{
+		std::string title;
+		std::string status;
+		std::string url;
+	};
 
-    public:
-        void read(mariadb::result_set_ref rslt);
-        std::string str();
+public:
+	void read(mariadb::result_set_ref rslt);
+	std::string str();
 
-    private:
-        std::vector<data> rows;
+private:
+	std::vector<data> rows;
 };

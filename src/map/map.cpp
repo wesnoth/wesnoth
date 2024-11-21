@@ -28,6 +28,7 @@
 #include "serialization/string_utils.hpp"
 #include "terrain/terrain.hpp"
 #include "terrain/type_data.hpp"
+#include "utils/general.hpp"
 #include "wml_exception.hpp"
 
 #include <algorithm>
@@ -411,7 +412,7 @@ void gamemap::set_terrain(const map_location& loc, const t_translation::terrain_
 		const bool new_village = tdata_->is_village(new_terrain);
 
 		if(old_village && !new_village) {
-			villages_.erase(std::remove(villages_.begin(),villages_.end(),loc),villages_.end());
+			utils::erase(villages_, loc);
 		} else if(!old_village && new_village) {
 			villages_.push_back(loc);
 		}

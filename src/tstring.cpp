@@ -248,6 +248,15 @@ t_string_base::t_string_base(const std::string& string)
 {
 }
 
+t_string_base::t_string_base(std::string&& string)
+	: value_(std::move(string))
+	, translated_value_()
+	, translation_timestamp_(0)
+	, translatable_(false)
+	, last_untranslatable_(false)
+{
+}
+
 t_string_base::t_string_base(const std::string& string, const std::string& textdomain)
 	: value_(1, ID_TRANSLATABLE_PART)
 	, translated_value_()
@@ -614,6 +623,11 @@ t_string::t_string(const char* o)
 
 t_string::t_string(const std::string& o)
 	: val_(new base(o))
+{
+}
+
+t_string::t_string(std::string&& o)
+	: val_(new base(std::move(o)))
 {
 }
 

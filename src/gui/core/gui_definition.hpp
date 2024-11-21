@@ -69,11 +69,11 @@ private:
 
 	t_string description_;
 
-	unsigned popup_show_delay_;
-	unsigned popup_show_time_;
-	unsigned help_show_time_;
-	unsigned double_click_time_;
-	unsigned repeat_button_repeat_time_;
+	std::chrono::milliseconds popup_show_delay_;
+	std::chrono::milliseconds popup_show_time_;
+	std::chrono::milliseconds help_show_time_;
+	std::chrono::milliseconds double_click_time_;
+	std::chrono::milliseconds repeat_button_repeat_time_;
 
 	std::string sound_button_click_;
 	std::string sound_toggle_button_click_;

@@ -145,7 +145,7 @@ if(ENABLE_DISPLAY_REVISION)
 	)
 
 	add_dependencies(wesnoth-revision wesnoth-revision_dummy)
-	set_source_files_properties(game_config.cpp PROPERTIES COMPILE_DEFINITIONS "LOAD_REVISION")
+	set_source_files_properties(game_version.cpp PROPERTIES COMPILE_DEFINITIONS "LOAD_REVISION")
 endif()
 
 ########### Conf Tests ###########

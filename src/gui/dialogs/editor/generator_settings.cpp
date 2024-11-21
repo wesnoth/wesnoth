@@ -51,25 +51,25 @@ generator_settings::generator_settings(generator_data& data)
 	register_bool("show_labels",     true, data.show_labels);
 }
 
-void generator_settings::pre_show(window& window)
+void generator_settings::pre_show()
 {
 	// We adjust the minimum values of the width and height sliders when the number of players changes.
 	// This is done because the map generator needs more space to generate more castles for more players.
 	connect_signal_notify_modified(*players_->get_widget(), std::bind(
 		&generator_settings::adjust_minimum_size_by_players, this));
 
-	gui2::bind_status_label<slider>(&window, "players");
+	gui2::bind_status_label<slider>(this, "players");
 
-	update_width_label_  = gui2::bind_status_label<slider>(&window, "width");
-	update_height_label_ = gui2::bind_status_label<slider>(&window, "height");
+	update_width_label_  = gui2::bind_status_label<slider>(this, "width");
+	update_height_label_ = gui2::bind_status_label<slider>(this, "height");
 
 	// Update min size initially.
 	// Do this *after* assigning the 'update_*_label_` functions or the game will crash!
 	adjust_minimum_size_by_players();
 
-	gui2::bind_status_label<slider>(&window, "villages", [](const slider& s) { return t_string(formatter() << s.get_value() << _("/1000 tiles")); });
-	gui2::bind_status_label<slider>(&window, "castle_size");
-	gui2::bind_status_label<slider>(&window, "landform", [](const slider& s) {
+	gui2::bind_status_label<slider>(this, "villages", [](const slider& s) { return t_string(formatter() << s.get_value() << _("/1000 tiles")); });
+	gui2::bind_status_label<slider>(this, "castle_size");
+	gui2::bind_status_label<slider>(this, "landform", [](const slider& s) {
 		return s.get_value() == 0 ? _("Inland") : (s.get_value() < max_coastal ? _("Coastal") : _("Island")); });
 }
 

@@ -63,7 +63,9 @@ public:
 
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string_base(const t_string_base&);
+	t_string_base(t_string_base&&) noexcept = default;
 	t_string_base(const std::string& string);
+	t_string_base(std::string&& string);
 	t_string_base(const std::string& string, const std::string& textdomain);
 	t_string_base(const std::string& sing, const std::string& pl, int count, const std::string& textdomain);
 	t_string_base(const char* string);
@@ -73,6 +75,7 @@ public:
 
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string_base& operator=(const t_string_base&);
+	t_string_base& operator=(t_string_base&&) noexcept = default;
 	t_string_base& operator=(const std::string&);
 	t_string_base& operator=(const char*);
 
@@ -139,12 +142,17 @@ public:
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string(const t_string&);
 
+	t_string(t_string&&) noexcept = default;
+
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string& operator=(const t_string&);
+
+	t_string& operator=(t_string&&) noexcept = default;
 
 	t_string(const base &);
 	t_string(const char *);
 	t_string(const std::string &);
+	t_string(std::string&&);
 	t_string(const std::string &str, const std::string &textdomain);
 	t_string(const std::string& sing, const std::string& pl, int count, const std::string& textdomain);
 

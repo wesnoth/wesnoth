@@ -24,7 +24,6 @@
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "game_launcher.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/tips.hpp"
 #include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/core_selection.hpp"
@@ -56,6 +55,7 @@
 #include "sdl/surface.hpp"
 #include "serialization/unicode.hpp"
 #include "video.hpp"
+#include "wml_exception.hpp"
 
 #include <algorithm>
 #include <functional>
@@ -93,7 +93,7 @@ void title_screen::register_button(const std::string& id, hotkey::HOTKEY_COMMAND
 	}
 
 	try {
-		button& btn = find_widget<button>(this, id, false);
+		button& btn = find_widget<button>(id);
 		connect_signal_mouse_left_click(btn, std::bind(callback));
 	} catch(const wml_exception& e) {
 		ERR_GUI_P << e.user_message;
@@ -188,13 +188,13 @@ void title_screen::init_callbacks()
 	get_canvas(0).set_variable("title_image", wfl::variant(game_config::images::game_title));
 	get_canvas(0).set_variable("background_image", wfl::variant(game_config::images::game_title_background));
 
-	find_widget<image>(this, "logo-bg", false).set_image(game_config::images::game_logo_background);
-	find_widget<image>(this, "logo", false).set_image(game_config::images::game_logo);
+	find_widget<image>("logo-bg").set_image(game_config::images::game_logo_background);
+	find_widget<image>("logo").set_image(game_config::images::game_logo);
 
 	//
 	// Tip-of-the-day browser
 	//
-	multi_page* tip_pages = find_widget<multi_page>(this, "tips", false, false);
+	multi_page* tip_pages = find_widget<multi_page>("tips", false, false);
 
 	if(tip_pages != nullptr) {
 		std::vector<game_tip> tips = tip_of_the_day::shuffle(settings::tips);
@@ -346,7 +346,7 @@ void title_screen::init_callbacks()
 	//
 	register_button("quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [this]() { set_retval(QUIT_GAME); });
 	// A sanity check, exit immediately if the .cfg file didn't have a "quit" button.
-	find_widget<button>(this, "quit", false, true);
+	find_widget<button>("quit", false, true);
 
 	//
 	// Debug clock
@@ -354,7 +354,7 @@ void title_screen::init_callbacks()
 	register_button("clock", hotkey::HOTKEY_NULL,
 		std::bind(&title_screen::show_debug_clock_window, this));
 
-	auto clock = find_widget<button>(this, "clock", false, false);
+	auto clock = find_widget<button>("clock", false, false);
 	if(clock) {
 		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
 	}
@@ -365,7 +365,7 @@ void title_screen::init_callbacks()
 	register_button("test_dialog", hotkey::HOTKEY_NULL,
 		std::bind(&title_screen::show_gui_test_dialog, this));
 
-	auto test_dialog = find_widget<button>(this, "test_dialog", false, false);
+	auto test_dialog = find_widget<button>("test_dialog", false, false);
 	if(test_dialog) {
 		test_dialog->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
 	}
@@ -383,7 +383,7 @@ void title_screen::update_static_labels()
 	//
 	const std::string& version_string = VGETTEXT("Version $version", {{ "version", game_config::revision }});
 
-	if(label* version_label = find_widget<label>(this, "revision_number", false, false)) {
+	if(label* version_label = find_widget<label>("revision_number", false, false)) {
 		version_label->set_label(version_string);
 	}
 
@@ -392,7 +392,7 @@ void title_screen::update_static_labels()
 	//
 	// Language menu label
 	//
-	if(auto* lang_button = find_widget<button>(this, "language", false, false); lang_button) {
+	if(auto* lang_button = find_widget<button>("language", false, false); lang_button) {
 		const auto& locale = translation::get_effective_locale_info();
 		// Just assume everything is UTF-8 (it should be as long as we're called Wesnoth)
 		// and strip the charset from the Boost locale identifier.
@@ -425,7 +425,7 @@ void title_screen::on_resize()
 
 void title_screen::update_tip(const bool previous)
 {
-	multi_page* tip_pages = find_widget<multi_page>(get_window(), "tips", false, false);
+	multi_page* tip_pages = find_widget<multi_page>("tips", false, false);
 	if(tip_pages == nullptr) {
 		return;
 	}
@@ -515,12 +515,12 @@ void title_screen::show_preferences()
 	// preferences will cause the title screen tip and menu panels to
 	// capture the prefs dialog in their blur. This workaround simply
 	// forces them to re-capture the blur after the dialog closes.
-	panel* tip_panel = find_widget<panel>(this, "tip_panel", false, false);
+	panel* tip_panel = find_widget<panel>("tip_panel", false, false);
 	if(tip_panel != nullptr) {
 		tip_panel->get_canvas(tip_panel->get_state()).queue_reblur();
 		tip_panel->queue_redraw();
 	}
-	panel* menu_panel = find_widget<panel>(this, "menu_panel", false, false);
+	panel* menu_panel = find_widget<panel>("menu_panel", false, false);
 	if(menu_panel != nullptr) {
 		menu_panel->get_canvas(menu_panel->get_state()).queue_reblur();
 		menu_panel->queue_redraw();

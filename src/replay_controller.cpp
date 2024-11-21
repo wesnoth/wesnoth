@@ -177,7 +177,7 @@ void replay_controller::play_side_impl()
 					stop_condition_->new_side_turn(controller_.current_side(), controller_.gamestate().tod_manager_.turn());
 				}
 			}
-			controller_.play_slice(false);
+			controller_.play_slice();
 
 			// Update the buttons once, on the transition from not-stopped to stopped.
 			if(stop_condition_->should_stop()) {
@@ -189,7 +189,7 @@ void replay_controller::play_side_impl()
 			// Don't move the update_enabled_buttons() call here. This play_slice() should block
 			// until the next event occurs, but on X11/Linux update_enabled_buttons() seems to put
 			// an event in the queue, turning this into a busy loop.
-			controller_.play_slice(true);
+			controller_.play_slice();
 		}
 	}
 	return;

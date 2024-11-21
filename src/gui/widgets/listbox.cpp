@@ -18,7 +18,6 @@
 #include "gui/widgets/listbox.hpp"
 
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/core/widget_definition.hpp"
@@ -430,11 +429,11 @@ point listbox::calculate_best_size() const
 	// Get the size from the base class, then add any extra space for the header and footer.
 	point result = scrollbar_container::calculate_best_size();
 
-	if(const grid* header = find_widget<const grid>(&get_grid(), "_header_grid", false, false)) {
+	if(const grid* header = get_grid().find_widget<const grid>("_header_grid", false, false)) {
 		result.y += header->get_best_size().y;
 	}
 
-	if(const grid* footer = find_widget<const grid>(&get_grid(), "_footer_grid", false, false)) {
+	if(const grid* footer = get_grid().find_widget<const grid>("_footer_grid", false, false)) {
 		result.y += footer->get_best_size().y;
 	}
 
@@ -530,7 +529,7 @@ void listbox::finalize(std::unique_ptr<generator_base> generator,
 		swap_grid(&get_grid(), content_grid(), header->build(), "_header_grid");
 	}
 
-	grid& p = find_widget<grid>(this, "_header_grid", false);
+	grid& p = find_widget<grid>("_header_grid");
 
 	for(unsigned i = 0, max = std::max(p.get_cols(), p.get_rows()); i < max; ++i) {
 		//
@@ -540,7 +539,7 @@ void listbox::finalize(std::unique_ptr<generator_base> generator,
 		//
 		// - vultraz, 2017-08-23
 		//
-		if(toggle_button* selectable = find_widget<toggle_button>(&p, "sort_" + std::to_string(i), false, false)) {
+		if(toggle_button* selectable = p.find_widget<toggle_button>("sort_" + std::to_string(i), false, false)) {
 			// Register callback to sort the list.
 			connect_signal_notify_modified(*selectable, std::bind(&listbox::order_by_column, this, i, std::placeholders::_1));
 
@@ -621,9 +620,9 @@ void listbox::register_translatable_sorting_option(const int col, translatable_s
 void listbox::set_active_sorting_option(const order_pair& sort_by, const bool select_first)
 {
 	// TODO: should this be moved to a public header_grid() getter function?
-	grid& header_grid = find_widget<grid>(this, "_header_grid", false);
+	grid& header_grid = find_widget<grid>("_header_grid");
 
-	selectable_item& w = find_widget<selectable_item>(&header_grid, "sort_" + std::to_string(sort_by.first), false);
+	selectable_item& w = header_grid.find_widget<selectable_item>("sort_" + std::to_string(sort_by.first));
 
 	// Set the sorting toggle widgets' value (in this case, its state) to the given sorting
 	// order. This is necessary since the widget's value is used to determine the order in
@@ -722,21 +721,21 @@ static std::vector<widget_data> parse_list_data(const config& data, const unsign
 		auto cols = row.child_range("column");
 
 		VALIDATE(static_cast<unsigned>(cols.size()) == req_cols,
-			_("'list_data' must have the same number of columns as the 'list_definition'.")
+			_("‘list_data’ must have the same number of columns as the ‘list_definition’.")
 		);
 
 		for(const auto& c : cols) {
 			list_data.emplace_back();
 
-			for(const auto& i : c.attribute_range()) {
-				list_data.back()[""][i.first] = i.second;
+			for(const auto& [key, value] : c.attribute_range()) {
+				list_data.back()[""][key] = value;
 			}
 
 			for(const auto& w : c.child_range("widget")) {
 				VALIDATE(w.has_attribute("id"), missing_mandatory_wml_key("[list_data][row][column][widget]", "id"));
 
-				for(const auto& i : w.attribute_range()) {
-					list_data.back()[w["id"]][i.first] = i.second;
+				for(const auto& [key, value] : w.attribute_range()) {
+					list_data.back()[w["id"]][key] = value;
 				}
 			}
 		}
@@ -772,7 +771,7 @@ builder_listbox::builder_listbox(const config& cfg)
 	list_builder = std::make_shared<builder_grid>(*l);
 	assert(list_builder);
 
-	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
+	VALIDATE(list_builder->rows == 1, _("A ‘list_definition’ should contain one row."));
 
 	if(cfg.has_child("list_data")) {
 		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
@@ -815,7 +814,7 @@ builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
 	list_builder = std::make_shared<builder_grid>(*l);
 	assert(list_builder);
 
-	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
+	VALIDATE(list_builder->rows == 1, _("A ‘list_definition’ should contain one row."));
 
 	if(cfg.has_child("list_data")) {
 		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
@@ -858,7 +857,7 @@ builder_grid_listbox::builder_grid_listbox(const config& cfg)
 	list_builder = std::make_shared<builder_grid>(*l);
 	assert(list_builder);
 
-	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
+	VALIDATE(list_builder->rows == 1, _("A ‘list_definition’ should contain one row."));
 
 	if(cfg.has_child("list_data")) {
 		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);

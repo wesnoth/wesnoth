@@ -77,7 +77,7 @@ recall::recall(const config& cfg, bool hidden)
 	, original_recall_pos_(0)
 {
 	// Construct and validate temp_unit_
-	std::size_t underlying_id = cfg["temp_unit_"];
+	std::size_t underlying_id = cfg["temp_unit_"].to_size_t();
 	for(const unit_ptr & recall_unit : resources::gameboard->teams().at(team_index()).recall_list())
 	{
 		if(recall_unit->underlying_id()==underlying_id)
@@ -127,10 +127,7 @@ void recall::execute(bool& success, bool& complete)
 	}
 	current_team.get_side_actions()->change_gold_spent_by(-cost);
 	bool const result = synced_context::run_and_throw("recall",
-		replay_helper::get_recall(temp_unit_->id(), recall_hex_, map_location::null_location()),
-		true,
-		true,
-		synced_context::ignore_error_function);
+		replay_helper::get_recall(temp_unit_->id(), recall_hex_, map_location::null_location()));
 
 	if (!result) {
 		current_team.get_side_actions()->change_gold_spent_by(cost);
