@@ -143,6 +143,9 @@ std::vector<std::string> enumerate_drivers();
  */
 int current_refresh_rate();
 
+/** The native refresh rate of display, not taking any user preferences into account. */
+int native_refresh_rate();
+
 /** True iff the window is not hidden. */
 bool window_is_visible();
 /** True iff the window has mouse or input focus */
