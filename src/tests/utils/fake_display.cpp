@@ -50,7 +50,7 @@ public:
 	//		~fake_display_manager();
 };
 
-fake_display_manager* fake_display_manager::manager_ = 0;
+fake_display_manager* fake_display_manager::manager_ = nullptr;
 
 fake_display_manager* fake_display_manager::get_manager()
 {

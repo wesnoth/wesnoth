@@ -269,7 +269,7 @@ void set_log_to_file()
 
 		// make stdout unbuffered - otherwise some output might be lost
 		// in practice shouldn't make much difference either way, given how little output goes through stdout/std::cout
-		if(setvbuf(stdout, NULL, _IONBF, 2) == -1) {
+		if(setvbuf(stdout, nullptr, _IONBF, 2) == -1) {
 			std::cerr << "Failed to set stdout to be unbuffered";
 		}
 

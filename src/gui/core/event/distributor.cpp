@@ -437,7 +437,7 @@ void mouse_button<I>::initialize_state(int32_t button_state)
 {
 	last_click_stamp_ = {};
 	last_clicked_widget_ = nullptr;
-	focus_ = 0;
+	focus_ = nullptr;
 	// SDL_BUTTON_LEFT, SDL_BUTTON_MIDDLE, and SDL_BUTTON_RIGHT correspond to 1,2,3
 	is_down_ = button_state & SDL_BUTTON(I + 1);
 }
