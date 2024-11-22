@@ -120,6 +120,7 @@ opts.AddVariables(
     BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False),
     BoolVariable("history", "Clear to disable GNU history support in lua console", True),
     BoolVariable('force_color', 'Always produce ANSI-colored output (GNU/Clang only).', False),
+    BoolVariable('compile_db', 'Produce a compile_commands.json file.', False),
     )
 
 #
@@ -188,6 +189,11 @@ if env['distcc']:
     env.Tool('distcc')
 
 if env['ccache']: env.Tool('ccache')
+
+if env['compile_db']:
+    env.Tool('compilation_db')
+    cdb = env.CompilationDatabase()
+    Alias('cdb', cdb) 
 
 boost_version = "1.67"
 
