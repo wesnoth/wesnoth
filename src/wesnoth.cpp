@@ -916,13 +916,13 @@ int main(int argc, char** argv)
 	auto args = read_argv(argc, argv);
 	assert(!args.empty());
 
+	// Using setenv with overwrite disabled so we can override these in the
+	// original process environment for research/testing purposes.
 #ifdef _WIN32
-	_putenv("PANGOCAIRO_BACKEND=fontconfig");
-	_putenv("FONTCONFIG_PATH=fonts");
+	_setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
+	_setenv("FONTCONFIG_PATH", "fonts", 0);
 #endif
 #ifdef __APPLE__
-	// Using setenv with overwrite disabled so we can override this in the
-	// original process environment for research/testing purposes.
 	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
 #endif
 
