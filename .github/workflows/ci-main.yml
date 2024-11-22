@@ -90,9 +90,14 @@ jobs:
                 scons "$@" build="$CFG" ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
                   extra_flags_config="-pipe" forum_user_handler=true \
                   nls=false enable_lto="$LTO" system_lua="$SYS_LUA" force_color=true \
-                  jobs=2 --debug=time glibcxx_debug=true glibcxx_assertions=true
+                  jobs=2 --debug=time glibcxx_debug=true glibcxx_assertions=true compile_db=true
               }
               build strict=true wesnoth boost_unit_tests
+
+              build cdb
+              # disable all warnings since we have coverage on them in a standard build, and clang-tidy
+              # triggers false positive compiler warnings that clang itself won't
+              run-clang-tidy -use-color -j 2 -extra-arg="-w" '^(?!.*src/modules/|.*build/)'
 
               apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
 
