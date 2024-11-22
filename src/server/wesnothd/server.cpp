@@ -855,7 +855,6 @@ template<class SocketPtr> bool server::is_login_allowed(boost::asio::yield_conte
 	bool name_taken = p != player_connections_.get<name_t>().end();
 
 	// Check for password
-
 	if(!authenticate(socket, username, (*login)["password"].to_string(), name_taken, registered))
 		return false;
 
@@ -866,6 +865,20 @@ template<class SocketPtr> bool server::is_login_allowed(boost::asio::yield_conte
 			MP_NAME_UNREGISTERED_ERROR
 		);
 
+		return false;
+	}
+
+	// Check if the user is banned (server-set bans only. See below for forum ban handling)
+	if(const std::string reason = is_ip_banned(client_address(socket)); !reason.empty()) {
+		LOG_SERVER << log_address(socket) << "\trejected banned user. Reason: " << reason;
+		async_send_error(socket, "You are banned. Reason: " + reason);
+		return false;
+	}
+
+	// Check if we have too many clients connecting from the same IP address
+	if(ip_exceeds_connection_limit(client_address(socket))) {
+		LOG_SERVER << log_address(socket) << "\trejected ip due to excessive connections";
+		async_send_error(socket, "Too many connections from your IP.");
 		return false;
 	}
 

@@ -199,27 +199,16 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 			return;
 	}
 
-	utils::visit([this](auto&& socket) {
-		const std::string ip = client_address(socket);
-
-		const std::string reason = is_ip_banned(ip);
-		if (!reason.empty()) {
-			LOG_SERVER << ip << "\trejected banned user. Reason: " << reason;
-			async_send_error(socket, "You are banned. Reason: " + reason);
-				return;
-		} else if (ip_exceeds_connection_limit(ip)) {
-			LOG_SERVER << ip << "\trejected ip due to excessive connections";
-			async_send_error(socket, "Too many connections from your IP.");
-			return;
-		} else {
-			if constexpr (utils::decayed_is_same<tls_socket_ptr, decltype(socket)>) {
-				DBG_SERVER << ip << "\tnew encrypted connection fully accepted";
+	utils::visit(
+		[this](auto&& socket) {
+			if constexpr(utils::decayed_is_same<tls_socket_ptr, decltype(socket)>) {
+				DBG_SERVER << client_address(socket) << "\tnew encrypted connection fully accepted";
 			} else {
-				DBG_SERVER << ip << "\tnew connection fully accepted";
+				DBG_SERVER << client_address(socket) << "\tnew connection fully accepted";
 			}
 			this->handle_new_client(socket);
-		}
-	}, final_socket);
+		},
+		final_socket);
 }
 
 #ifndef _WIN32
