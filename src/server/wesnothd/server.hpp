@@ -163,7 +163,6 @@ private:
 	std::string replay_save_path_;
 	bool allow_remote_shutdown_;
 	std::set<std::string> client_sources_;
-	std::vector<std::string> tor_ip_list_;
 	int failed_login_limit_;
 	std::chrono::seconds failed_login_ban_;
 	std::deque<login_log>::size_type failed_login_buffer_size_;
@@ -172,7 +171,7 @@ private:
 	void load_config();
 
 	bool ip_exceeds_connection_limit(const std::string& ip) const;
-	std::string is_ip_banned(const std::string& ip);
+	utils::optional<server_base::login_ban_info> is_ip_banned(const std::string& ip);
 
 	simple_wml::document version_query_response_;
 	simple_wml::document login_response_;

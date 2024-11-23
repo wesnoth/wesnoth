@@ -199,27 +199,40 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 			return;
 	}
 
-	utils::visit([this](auto&& socket) {
-		const std::string ip = client_address(socket);
+	utils::visit(
+		[this](auto&& socket) {
+			const std::string ip = client_address(socket);
 
-		const std::string reason = is_ip_banned(ip);
-		if (!reason.empty()) {
-			LOG_SERVER << ip << "\trejected banned user. Reason: " << reason;
-			async_send_error(socket, "You are banned. Reason: " + reason);
+			if(const auto ban_info = is_ip_banned(ip)) {
+				const auto& [error_code, reason, time_remaining] = *ban_info;
+
+				if(time_remaining) {
+					// Temporary ban
+					async_send_error(socket, "You are banned from this server: " + reason, error_code,
+						{{ "duration", std::to_string(time_remaining->count()) }});
+				} else {
+					// Permanent ban
+					async_send_error(socket, "You are banned from this server: " + reason, error_code);
+				}
+
+				LOG_SERVER << log_address(socket) << "\trejected banned user. Reason: " << reason;
 				return;
-		} else if (ip_exceeds_connection_limit(ip)) {
-			LOG_SERVER << ip << "\trejected ip due to excessive connections";
-			async_send_error(socket, "Too many connections from your IP.");
-			return;
-		} else {
-			if constexpr (utils::decayed_is_same<tls_socket_ptr, decltype(socket)>) {
+			}
+
+			if(ip_exceeds_connection_limit(ip)) {
+				LOG_SERVER << ip << "\trejected ip due to excessive connections";
+				async_send_error(socket, "Too many connections from your IP.");
+				return;
+			}
+
+			if constexpr(utils::decayed_is_same<tls_socket_ptr, decltype(socket)>) {
 				DBG_SERVER << ip << "\tnew encrypted connection fully accepted";
 			} else {
 				DBG_SERVER << ip << "\tnew connection fully accepted";
 			}
 			this->handle_new_client(socket);
-		}
-	}, final_socket);
+		},
+		final_socket);
 }
 
 #ifndef _WIN32

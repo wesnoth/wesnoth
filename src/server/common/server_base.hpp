@@ -25,6 +25,7 @@
 
 #include "utils/variant.hpp"
 #include "utils/general.hpp"
+#include "utils/optional_fwd.hpp"
 
 #ifdef _WIN32
 #include "serialization/unicode_cast.hpp"
@@ -167,8 +168,16 @@ protected:
 	virtual void handle_new_client(tls_socket_ptr socket) = 0;
 
 	virtual bool accepting_connections() const { return true; }
-	virtual std::string is_ip_banned(const std::string&) { return std::string(); }
 	virtual bool ip_exceeds_connection_limit(const std::string&) const { return false; }
+
+	struct login_ban_info
+	{
+		const char* error_code;
+		std::string reason;
+		utils::optional<std::chrono::seconds> time_remaining;
+	};
+
+	virtual utils::optional<login_ban_info> is_ip_banned(const std::string&) { return {}; }
 
 #ifndef _WIN32
 	boost::asio::posix::stream_descriptor input_;
