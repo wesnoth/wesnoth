@@ -163,6 +163,7 @@ private:
 	std::string replay_save_path_;
 	bool allow_remote_shutdown_;
 	std::set<std::string> client_sources_;
+	std::vector<std::string> tor_ip_list_;
 	int failed_login_limit_;
 	std::chrono::seconds failed_login_ban_;
 	std::deque<login_log>::size_type failed_login_buffer_size_;
