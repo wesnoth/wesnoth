@@ -39,21 +39,23 @@ unit_attack::unit_attack(const unit_map::iterator& attacker_itor,
 						   const unit_map::iterator& defender_itor,
 						   std::vector<battle_context>&& weapons,
 						   const int best_weapon,
-						   std::vector<gui2::widget_data>& data_vector)
+						   std::vector<gui2::widget_data>& bc_widget_data_vector,
+						   const int leadership_bonus)
 	: modal_dialog(window_id())
 	, selected_weapon_(-1)
 	, attacker_itor_(attacker_itor)
 	, defender_itor_(defender_itor)
 	, weapons_(std::move(weapons))
 	, best_weapon_(best_weapon)
-	, data_vector_(data_vector)
+	, bc_widget_data_vector_(bc_widget_data_vector)
+	, leadership_bonus_(leadership_bonus)
 {
 }
 
 void unit_attack::damage_calc_callback()
 {
 	const std::size_t index = find_widget<listbox>("weapon_list").get_selected_row();
-	attack_predictions::display(weapons_[index], attacker_itor_.get_shared_ptr(), defender_itor_.get_shared_ptr());
+	attack_predictions::display(weapons_[index], attacker_itor_.get_shared_ptr(), defender_itor_.get_shared_ptr(), leadership_bonus_);
 }
 
 void unit_attack::pre_show()
@@ -74,8 +76,8 @@ void unit_attack::pre_show()
 	keyboard_capture(&weapon_list);
 
 	// Possible TODO: If a "blank weapon" is generally useful, add it as a static member in attack_type.
-	for (widget_data& data : data_vector_)
-			weapon_list.add_row(data);
+	for (widget_data& data : bc_widget_data_vector_)
+		weapon_list.add_row(data);
 
 	// If these two aren't the same size, we can't use list selection incides
 	// to access to weapons list!

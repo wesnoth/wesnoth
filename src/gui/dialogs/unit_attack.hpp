@@ -29,7 +29,8 @@ public:
 				 const unit_map::iterator& defender_itor,
 				 std::vector<battle_context>&& weapons,
 				 const int best_weapon,
-				 std::vector<gui2::widget_data>& data_vector);
+				 std::vector<gui2::widget_data>& bc_widget_data_vector,
+				 const int leadership_bonus);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -62,7 +63,9 @@ private:
 	/** The best weapon, aka the one high-lighted. */
 	int best_weapon_;
 
-	std::vector<gui2::widget_data> data_vector_;
+	std::vector<gui2::widget_data> bc_widget_data_vector_;
+
+	const int leadership_bonus_;
 };
 
 } // namespace dialogs

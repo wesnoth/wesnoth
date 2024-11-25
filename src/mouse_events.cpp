@@ -43,7 +43,7 @@
 #include "whiteboard/typedefs.hpp" // for whiteboard_lock
 #include "sdl/input.hpp" // for get_mouse_state
 #include "language.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 
 #include <cassert>     // for assert
 #include <new>         // for bad_alloc
@@ -1346,6 +1346,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	std::vector<battle_context> bc_vector;
 	std::vector<gui2::widget_data> data_vector;
 	int best;
+	int leadership_bonus = 0;
 	{
 		pathfind::paths::dest_vect::const_iterator itor = current_paths_.destinations.find(attacker_loc);
 		temporary_unit_mover temp_mover(pc_.get_units(), attacker_src, attacker_loc, itor->move_left, true);
@@ -1368,6 +1369,11 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 
 			const attack_type& attacker_weapon = *attacker_stats.weapon;
 			const attack_type& defender_weapon = defender_stats.weapon ? *defender_stats.weapon : *no_weapon;
+
+			if(leadership_bonus == 0) {
+				leadership_bonus
+					= under_leadership(*attacker, attacker_loc, attacker_stats.weapon, defender_stats.weapon);
+			}
 
 			const color_t a_cth_color = game_config::red_to_green(attacker_stats.chance_to_hit);
 			const color_t d_cth_color = game_config::red_to_green(defender_stats.chance_to_hit);
@@ -1438,7 +1444,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 			}
 			if(!attw_specials_others.empty()) {
 				attw_specials_others
-					= "\n" + ("<b>" + _("Other aspects: ") + "</b>") + "\n" + ("<i>" + attw_specials_others + "</i>");
+					= "\n" + markup::bold(_("Other aspects: ")) + "\n" + markup::italic(defw_specials_others);
 			}
 			if(!defw_specials.empty()) {
 				defw_specials = " " + defw_specials;
@@ -1454,40 +1460,40 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 			}
 			if(!defw_specials_others.empty()) {
 				defw_specials_others
-					= "\n" + ("<b>" + _("Other aspects: ") + "</b>") + "\n" + ("<i>" + defw_specials_others + "</i>");
+					= "\n" + markup::bold(_("Other aspects: ")) + "\n" + markup::italic(defw_specials_others);
 			}
 
 			std::stringstream attacker_stats_str, defender_stats_str, attacker_tooltip, defender_tooltip;
 
 			// Use attacker/defender.num_blows instead of attacker/defender_weapon.num_attacks() because the latter does
 			// not consider the swarm weapon special
-			attacker_stats_str << "<b>" << attw_name << "</b>" << "\n"
+			attacker_stats_str << markup::bold(attw_name) << "\n"
 							   << attw_type << attw_type_second << "\n"
 							   << attacker_stats.damage << font::weapon_numbers_sep << attacker_stats.num_blows
 							   << attw_specials << "\n"
-							   << font::span_color(a_cth_color) << attacker_stats.chance_to_hit << "%</span>";
+							   << markup::span_color(a_cth_color,  attacker_stats.chance_to_hit, "%");
 
-			attacker_tooltip << _("Weapon: ") << "<b>" << attw_name << "</b>" << "\n"
+			attacker_tooltip << _("Weapon: ") << markup::bold(attw_name) << "\n"
 							 << _("Type: ") << attw_type << attw_type_second << "\n"
-							 << _("Damage: ") << attacker_stats.damage << "<i>" << attw_specials_dmg << "</i>" << "\n"
-							 << _("Attacks: ") << attacker_stats.num_blows << "<i>" << attw_specials_atk << "</i>"
-							 << "\n"
-							 << _("Chance to hit: ") << font::span_color(a_cth_color) << attacker_stats.chance_to_hit
-							 << "%</span>" << "<i>" << attw_specials_cth << "</i>" << attw_specials_others;
+							 << _("Damage: ") << attacker_stats.damage << markup::italic(attw_specials_dmg) << "\n"
+							 << _("Attacks: ") << attacker_stats.num_blows << markup::italic(attw_specials_atk) << "\n"
+							 << _("Chance to hit: ")
+							 << markup::span_color(a_cth_color, attacker_stats.chance_to_hit, "%")
+							 << markup::italic(attw_specials_cth) << attw_specials_others;
 
-			defender_stats_str << "<b>" << defw_name << "</b>" << "\n"
+			defender_stats_str << markup::bold(defw_name) << "\n"
 							   << defw_type << defw_type_second << "\n"
 							   << defender_stats.damage << font::weapon_numbers_sep << defender_stats.num_blows
 							   << defw_specials << "\n"
-							   << font::span_color(d_cth_color) << defender_stats.chance_to_hit << "%</span>";
+							   << markup::span_color(d_cth_color, defender_stats.chance_to_hit, "%");
 
-			defender_tooltip << _("Weapon: ") << "<b>" << defw_name << "</b>" << "\n"
+			defender_tooltip << _("Weapon: ") << markup::bold(defw_name) << "\n"
 							 << _("Type: ") << defw_type << defw_type_second << "\n"
-							 << _("Damage: ") << defender_stats.damage << "<i>" << defw_specials_dmg << "</i>" << "\n"
-							 << _("Attacks: ") << defender_stats.num_blows << "<i>" << defw_specials_atk << "</i>"
-							 << "\n"
-							 << _("Chance to hit: ") << font::span_color(d_cth_color) << defender_stats.chance_to_hit
-							 << "%</span>" << "<i>" << defw_specials_cth << "</i>" << defw_specials_others;
+							 << _("Damage: ") << defender_stats.damage << markup::italic(defw_specials_dmg) << "\n"
+							 << _("Attacks: ") << defender_stats.num_blows << markup::italic(defw_specials_atk) << "\n"
+							 << _("Chance to hit: ")
+							 << markup::span_color(d_cth_color, defender_stats.chance_to_hit, "%")
+							 << markup::italic(defw_specials_cth) << defw_specials_others;
 
 			gui2::widget_data data;
 			gui2::widget_item item;
@@ -1502,8 +1508,8 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 			data.emplace("attacker_weapon", item);
 			item["tooltip"] = "";
 
-			item["label"] = "<span color='#a69275'>" + font::unicode_em_dash + " " + range + " " + font::unicode_em_dash
-				+ "</span>";
+			item["label"]
+				= markup::span_color("#a69275", font::unicode_em_dash, " ", range, " ", font::unicode_em_dash);
 			data.emplace("range", item);
 
 			item["tooltip"] = defender_attack ? defender_tooltip.str() : "";
@@ -1524,7 +1530,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		}
 	}
 	//data_vector's element could be empty. find a way to deal with it
-	gui2::dialogs::unit_attack dlg(attacker, defender, std::move(bc_vector), best, data_vector);
+	gui2::dialogs::unit_attack dlg(attacker, defender, std::move(bc_vector), best, data_vector, leadership_bonus);
 
 	if(dlg.show()) {
 		return dlg.get_selected_weapon();
