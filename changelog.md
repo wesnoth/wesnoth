@@ -32,6 +32,7 @@
    * An entry for accessing the Add-ons Manager has been added to the Campaign Selection dialog.
    * Help Browser now has a checkbox for showing/hiding the contents list in low-resolution systems (800x600 or less).
    * It is now possible to select text in MP Lobby chat and Gamestate Inspector via mouse drag.
+   * Switched default Pango/Cairo backend from CoreText to Fontconfig on macOS to fix issues with certain fonts such as Oldania ADF Std being unrecognized on current OS versions (issue #8488).
 ### WML Engine
    * Add a [remove_specials] tag in [effect] to be able to remove specials with other criteria than the id (type of the special, active_on, apply_to or other attributes).
    * Add [filter_special] to [has_attack/filter_weapon] in order to simultaneously check specials with id and type, and/or other attributes.
