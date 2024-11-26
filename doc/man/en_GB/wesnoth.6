@@ -166,10 +166,6 @@ there is a new WIP widget tool\-kit, this option enables it. This is very
 experimental, don't fill bug reports since most are known. Parts of the
 library are deemed stable and will work without this switch.
 .TP 
-\fB\-\-nodelay\fP
-runs the game without any delays for graphic benchmarking. This is
-automatically enabled by \fB\-\-nogui\fP.
-.TP 
 \fB\-\-noaddons\fP
 disables loading of user add\-ons.
 .TP 
@@ -219,21 +215,26 @@ will be preprocessed before the specified resources.  Example: \fB\-p ~/wesnoth/
 preprocessor visit:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-comma separated list of defines to be used by the \fB\-\-preprocess\fP
-command. If \fBSKIP_CORE\fP is in the define list the "data/core" directory
-won't be preprocessed.
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
-used only by the \fB\-\-preprocess\fP command. Specifies a file that contains
-\fB[preproc_define]\fPs to be included before preprocessing.
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
-used only by the \fB\-\-preprocess\fP command. Will output all preprocessed
-macros in the target file. If the file is not specified the output will be
-file '_MACROS_.cfg' in the target directory of preprocess's command. The
-output file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch
-should be typed before the \fB\-\-preprocess\fP command.
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 sets the screen resolution. Example: \fB\-r\fP \fB800x600\fP.

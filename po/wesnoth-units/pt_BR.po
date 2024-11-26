@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 16:11 UTC\n"
+"POT-Creation-Date: 2024-11-26 18:08 UTC\n"
 "PO-Revision-Date: 2023-01-06 17:50-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil <gnome-l10n-br@listas.cipsga.org.br>\n"
@@ -50,8 +50,8 @@ msgstr ""
 #: data/core/units/dunefolk/Sunderer.cfg:32
 #: data/core/units/dunefolk/Windbolt.cfg:32
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:37
-#: data/core/units/nagas/Guard_Shield.cfg:35
+#: data/core/units/nagas/Guard.cfg:26 data/core/units/nagas/Guard_High.cfg:36
+#: data/core/units/nagas/Guard_Shield.cfg:36
 msgid "mace"
 msgstr "maça"
 
@@ -287,7 +287,7 @@ msgstr "funda"
 #: data/core/units/monsters/Bear.cfg:42 data/core/units/monsters/Caribe.cfg:114
 #: data/core/units/monsters/Caribe_Hunter.cfg:115
 #: data/core/units/monsters/Caribe_Nibbler.cfg:129
-#: data/core/units/monsters/Cat_Forest.cfg:92
+#: data/core/units/monsters/Cat_Forest.cfg:91
 #: data/core/units/monsters/Giant_Spider.cfg:28
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Shadow_Jumping_Spider.cfg:87
@@ -523,7 +523,7 @@ msgstr "mangual"
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:25
 #: data/core/units/humans/Loyalist_Sergeant.cfg:27
 #: data/core/units/humans/Loyalist_Swordsman.cfg:29
-#: data/core/units/humans/Woodsman_Ranger.cfg:44
+#: data/core/units/humans/Woodsman_Ranger.cfg:49
 #: data/core/units/nagas/Fighter.cfg:30 data/core/units/nagas/Myrmidon.cfg:29
 #: data/core/units/nagas/Warrior.cfg:27 data/core/units/orcs/Grunt.cfg:88
 #: data/core/units/orcs/Leader.cfg:27
@@ -776,9 +776,9 @@ msgstr "tempestade gélida"
 #: data/core/units/elves/Rider.cfg:41 data/core/units/elves/Scout.cfg:41
 #: data/core/units/humans/Loyalist_Bowman.cfg:32
 #: data/core/units/humans/Woodsman.cfg:37
-#: data/core/units/humans/Woodsman_Huntsman.cfg:45
+#: data/core/units/humans/Woodsman_Huntsman.cfg:48
 #: data/core/units/humans/Woodsman_Poacher.cfg:42
-#: data/core/units/humans/Woodsman_Ranger.cfg:53
+#: data/core/units/humans/Woodsman_Ranger.cfg:58
 #: data/core/units/humans/Woodsman_Trapper.cfg:42
 #: data/core/units/orcs/Archer.cfg:33 data/core/units/orcs/Archer.cfg:42
 #: data/core/units/orcs/Warlord.cfg:39
@@ -999,7 +999,7 @@ msgstr "maldição"
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
 #: data/core/units/monsters/Boar.cfg:50
 #: data/core/units/monsters/Boar_Piglet.cfg:50
-#: data/core/units/monsters/Crocodile.cfg:159
+#: data/core/units/monsters/Crocodile.cfg:146
 #: data/core/units/monsters/Dragonfly.cfg:31
 #: data/core/units/monsters/Dragonfly_Grand.cfg:32
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:62
@@ -1184,7 +1184,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Rogue.cfg:26
 #: data/core/units/humans/Outlaw_Thief.cfg:94
 #: data/core/units/humans/Woodsman.cfg:28
-#: data/core/units/humans/Woodsman_Huntsman.cfg:36
+#: data/core/units/humans/Woodsman_Huntsman.cfg:39
 #: data/core/units/humans/Woodsman_Poacher.cfg:33
 #: data/core/units/humans/Woodsman_Trapper.cfg:33
 #: data/core/units/nagas/Dirkfang.cfg:29 data/core/units/orcs/Archer.cfg:24
@@ -1907,7 +1907,7 @@ msgstr "Barco"
 # File: data/core/units/boats/Boat.cfg, line: 18
 # File: data/core/units/boats/Boat.cfg, line: 18
 #. [unit_type]: id=Boat, race=mechanical
-#: data/core/units/boats/Boat.cfg:17
+#: data/core/units/boats/Boat.cfg:21
 msgid ""
 "Propelled by oars or small sails, boats are used to travel short distances "
 "and in shallows where large ships cannot navigate."
@@ -1915,6 +1915,79 @@ msgstr ""
 "Impulsionados por remos ou pequenas velas, barcos são usados para viajar "
 "distâncias curtas em águas rasas, nas quais embarcações grandes não podem "
 "navegar."
+
+#. [unit_type]: id=Derelict Hulk, race=transport
+#: data/core/units/boats/Derelict_Galleon.cfg:4
+msgid "Derelict Hulk"
+msgstr ""
+
+#. [unit_type]: id=Derelict Hulk, race=transport
+#: data/core/units/boats/Derelict_Galleon.cfg:18
+msgid ""
+"Derelicts are abandoned wrecks that continue to drift across the seas.  Most "
+"are merely ruined ships that will soon sink, but there are tales of others "
+"that haunt certain waterways for generations."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/boats/Derelict_Galleon.cfg:135
+msgid "jetsam"
+msgstr ""
+
+#
+# File: data/core/units/drakes/Armageddon.cfg, line: 65
+# File: data/core/units/drakes/Blademaster.cfg, line: 49
+# File: data/core/units/drakes/Burner.cfg, line: 48
+# File: data/core/units/drakes/Fighter.cfg, line: 47
+# File: data/core/units/drakes/Fire.cfg, line: 50
+# File: data/core/units/drakes/Flameheart.cfg, line: 49
+# File: data/core/units/drakes/Flare.cfg, line: 48
+# File: data/core/units/drakes/Glider.cfg, line: 52
+# File: data/core/units/drakes/Hurricane.cfg, line: 73
+# File: data/core/units/drakes/Inferno.cfg, line: 52
+# File: data/core/units/drakes/Sky.cfg, line: 72
+# File: data/core/units/drakes/Warrior.cfg, line: 47
+# File: data/core/units/monsters/Fire_Dragon.cfg, line: 49
+# File: data/core/units/monsters/Fire_Guardian.cfg, line: 37
+# File: data/core/units/drakes/Armageddon.cfg, line: 65
+# File: data/core/units/drakes/Blademaster.cfg, line: 49
+# File: data/core/units/drakes/Burner.cfg, line: 48
+# File: data/core/units/drakes/Fighter.cfg, line: 47
+# File: data/core/units/drakes/Fire.cfg, line: 50
+# File: data/core/units/drakes/Flameheart.cfg, line: 49
+# File: data/core/units/drakes/Flare.cfg, line: 48
+# File: data/core/units/drakes/Glider.cfg, line: 52
+# File: data/core/units/drakes/Hurricane.cfg, line: 73
+# File: data/core/units/drakes/Inferno.cfg, line: 52
+# File: data/core/units/drakes/Sky.cfg, line: 72
+# File: data/core/units/drakes/Warrior.cfg, line: 47
+# File: data/core/units/monsters/Fire_Dragon.cfg, line: 49
+# File: data/core/units/monsters/Fire_Guardian.cfg, line: 37
+#. [unit_type]: id=Fireship, race=transport
+#: data/core/units/boats/Fireship.cfg:4
+#, fuzzy
+#| msgid "Fire Wraith"
+msgid "Fireship"
+msgstr "Espectro de Fogo"
+
+#. [unit_type]: id=Fireship, race=transport
+#: data/core/units/boats/Fireship.cfg:18
+msgid ""
+"Fireships are generally derelict or doomed ships set ablaze to create chaos "
+"in one last act of belligerence.  Their main hazard is fiery collision, but "
+"they also shed burning embers.  Sometimes they have a skeleton crew to guide "
+"them, but often they just drift along on unseen winds and currents."
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/boats/Fireship.cfg:135
+msgid "ember"
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/boats/Fireship.cfg:144
+msgid "crash"
+msgstr ""
 
 #
 # File: data/core/units/boats/Galleon.cfg, line: 6
@@ -1928,7 +2001,7 @@ msgstr "Galeão"
 # File: data/core/units/boats/Galleon.cfg, line: 21
 # File: data/core/units/boats/Galleon.cfg, line: 21
 #. [unit_type]: id=Galleon, race=mechanical
-#: data/core/units/boats/Galleon.cfg:19
+#: data/core/units/boats/Galleon.cfg:23
 msgid "Galleons are blue-water ships built for trade and transport."
 msgstr ""
 "Galeões são navios construídos para o comércio e transporte em alto mar."
@@ -1936,7 +2009,7 @@ msgstr ""
 #
 # File: data/core/units/boats/Pirate_Galleon.cfg, line: 4
 # File: data/core/units/boats/Pirate_Galleon.cfg, line: 4
-#. [unit_type]: id=Pirate Galleon, race=mechanical
+#. [unit_type]: id=Pirate Galleon, race=transport
 #: data/core/units/boats/Pirate_Galleon.cfg:4
 msgid "Pirate Galleon"
 msgstr "Galeão Pirata"
@@ -1944,8 +2017,8 @@ msgstr "Galeão Pirata"
 #
 # File: data/core/units/boats/Pirate_Galleon.cfg, line: 18
 # File: data/core/units/boats/Pirate_Galleon.cfg, line: 18
-#. [unit_type]: id=Pirate Galleon, race=mechanical
-#: data/core/units/boats/Pirate_Galleon.cfg:17
+#. [unit_type]: id=Pirate Galleon, race=transport
+#: data/core/units/boats/Pirate_Galleon.cfg:22
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
@@ -1961,15 +2034,15 @@ msgstr ""
 # File: data/core/units/boats/Pirate_Galleon.cfg, line: 21
 # File: data/core/units/boats/Transport_Galleon.cfg, line: 22
 #. [attack]: type=pierce
-#: data/core/units/boats/Pirate_Galleon.cfg:20
-#: data/core/units/boats/Transport_Galleon.cfg:20
+#: data/core/units/boats/Pirate_Galleon.cfg:160
+#: data/core/units/boats/Transport_Galleon.cfg:158
 msgid "ballista"
 msgstr "balista"
 
 #
 # File: data/core/units/boats/Transport_Galleon.cfg, line: 4
 # File: data/core/units/boats/Transport_Galleon.cfg, line: 4
-#. [unit_type]: id=Transport Galleon, race=mechanical
+#. [unit_type]: id=Transport Galleon, race=transport
 #: data/core/units/boats/Transport_Galleon.cfg:4
 msgid "Transport Galleon"
 msgstr "Galeão de Transporte"
@@ -1977,8 +2050,8 @@ msgstr "Galeão de Transporte"
 #
 # File: data/core/units/boats/Transport_Galleon.cfg, line: 18
 # File: data/core/units/boats/Transport_Galleon.cfg, line: 18
-#. [unit_type]: id=Transport Galleon, race=mechanical
-#: data/core/units/boats/Transport_Galleon.cfg:16
+#. [unit_type]: id=Transport Galleon, race=transport
+#: data/core/units/boats/Transport_Galleon.cfg:20
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can land the troops to attack."
@@ -7328,14 +7401,30 @@ msgstr "Caçador"
 # File: data/core/units/humans/Woodsman_Huntsman.cfg, line: 20
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:19
+#, fuzzy
+#| msgid ""
+#| "Hunting is a popular sport of noblemen, but it can also be a livelihood "
+#| "for commoners. Like any other craft, it has men of masterful skill in its "
+#| "practice. Huntsmen know all the tricks of their trade, and are skilled at "
+#| "navigating the wilderness, at tracking, and at the use of the bow. They "
+#| "are a fair shot at moving targets, and targets hiding under brush and "
+#| "cover; a skill wrought from years of practice at shooting game, and one "
+#| "which garrisoned bowmen often lack.\n"
+#| "\n"
+#| "Master hunters are employed by any group living in or passing through "
+#| "wild country, be they men of the law, or those working against it. Even "
+#| "nature itself can have deadly surprises, and any commander who fails to "
+#| "hire a such a guide can lose his men to nothing more than terrain. Good "
+#| "woodsmen can save lives, ease travel, provide food, and their skill with "
+#| "a bow is capitally useful in a fight."
 msgid ""
 "Hunting is a popular sport of noblemen, but it can also be a livelihood for "
 "commoners. Like any other craft, it has men of masterful skill in its "
 "practice. Huntsmen know all the tricks of their trade, and are skilled at "
-"navigating the wilderness, at tracking, and at the use of the bow. They are "
-"a fair shot at moving targets, and targets hiding under brush and cover; a "
-"skill wrought from years of practice at shooting game, and one which "
-"garrisoned bowmen often lack.\n"
+"tracking, the use of the bow, and at disguising their silhouette and scent "
+"among the marshy wilds. They are a fair shot at moving targets, and targets "
+"hiding under brush and cover; a skill wrought from years of practice at "
+"shooting game, and one which garrisoned bowmen often lack.\n"
 "\n"
 "Master hunters are employed by any group living in or passing through wild "
 "country, be they men of the law, or those working against it. Even nature "
@@ -7405,12 +7494,27 @@ msgstr "Ranger"
 # File: data/core/units/humans/Woodsman_Ranger.cfg, line: 20
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:19
+#, fuzzy
+#| msgid ""
+#| "Rangers are wild men and wanderers, who have chosen to shun the company "
+#| "of their fellow men for myriad reasons. They have spent the better part "
+#| "of their lives in the thick of nature, and know many of its secrets. They "
+#| "are excellent pathfinders and explorers, and can find food and shelter "
+#| "where other men would find only sticks and stones.\n"
+#| "\n"
+#| "The presence of these men troubles the more authoritarian of rulers; they "
+#| "are an element that knights and landed armies cannot control. They are "
+#| "men of dubious motives, and are the first to scoff at any royal decree, "
+#| "if they even hear of it at all. Rangers can be hired, but they are just "
+#| "as likely to be in the employ of bandits, as they are to be in the king’s "
+#| "service."
 msgid ""
 "Rangers are wild men and wanderers, who have chosen to shun the company of "
-"their fellow men for myriad reasons. They have spent the better part of "
-"their lives in the thick of nature, and know many of its secrets. They are "
-"excellent pathfinders and explorers, and can find food and shelter where "
-"other men would find only sticks and stones.\n"
+"their fellow men for myriad reasons. Unaccustomed to places of civilization, "
+"they have spent the better part of their lives in the thick of nature, and "
+"know many of its secrets. They are excellent pathfinders and explorers, and "
+"can find food and shelter where other men would find only sticks and "
+"stones.\n"
 "\n"
 "The presence of these men troubles the more authoritarian of rulers; they "
 "are an element that knights and landed armies cannot control. They are men "
@@ -8292,33 +8396,6 @@ msgid ""
 msgstr ""
 "Esta unidade consegue se mover por entre as águas pantanais sem ser vista, "
 "mantendo a maior parte do seu corpo submerso."
-
-#. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:144
-msgid "swamp lurk"
-msgstr "espreitar em pântanos"
-
-#. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:145
-msgid "female^swamp lurk"
-msgstr "espreitar em pântanos"
-
-#. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:146
-msgid ""
-"This unit can hide in swamp, and remain undetected by its enemies.\n"
-"\n"
-"Enemy units cannot see this unit while it is in swamp, except if they have "
-"units next to it. Any enemy unit that first discovers this unit immediately "
-"loses all its remaining movement."
-msgstr ""
-"Essa unidade pode se esconder em pântanos, ficando indetectável pelos "
-"inimigos.\n"
-"\n"
-"Unidades inimigas não conseguem ver essa unidade enquanto ela estiver em um "
-"pântano, exceto se eles tiverem unidades próximas à ela. A primeira unidade "
-"inimiga que descobrir essa unidade imediatamente perde todos os seus pontos "
-"de movimento restantes."
 
 #
 # File: data/core/units/monsters/Cuttle_Fish.cfg, line: 4
@@ -9710,7 +9787,7 @@ msgid "Naga Guard"
 msgstr "Naga Guarda"
 
 #. [unit_type]: id=Naga Guard, race=naga
-#: data/core/units/nagas/Guard.cfg:22
+#: data/core/units/nagas/Guard.cfg:21
 msgid ""
 "Nagas tend to value agility and grace on the battlefield, but the slower, "
 "stronger individuals play a key role in defending important positions. These "
@@ -9734,7 +9811,7 @@ msgid "Naga High Guard"
 msgstr "Naga Guarda Alto"
 
 #. [unit_type]: id=Naga High Guard, race=naga
-#: data/core/units/nagas/Guard_High.cfg:23
+#: data/core/units/nagas/Guard_High.cfg:22
 msgid ""
 "The elite naga guards are a rigid barrier to any invaders of a naga "
 "stronghold. They have powerful strikes and, like the lesser Shield Guard, "
@@ -9751,8 +9828,8 @@ msgstr ""
 "um terreno mais vantajoso."
 
 #. [attack]: type=impact
-#: data/core/units/nagas/Guard_High.cfg:45
-#: data/core/units/nagas/Guard_Shield.cfg:43
+#: data/core/units/nagas/Guard_High.cfg:47
+#: data/core/units/nagas/Guard_Shield.cfg:47
 msgid "shield"
 msgstr "escudo"
 
@@ -9765,17 +9842,19 @@ msgid "Naga Shield Guard"
 msgstr "Naga Guarda Escudeiro"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
-#: data/core/units/nagas/Guard_Shield.cfg:22
+#: data/core/units/nagas/Guard_Shield.cfg:21
 msgid ""
-"The veteran naga guards are more difficult to dislodge from their posts "
-"because of effective use of a shield in melee techniques. This tactic does "
-"nothing against ranged attacks, but the nagas can usually seek better "
-"terrain advantage in such situations."
+"The veteran naga guards have learnt a unique fighting style, different from "
+"the heavy infantry of other races. By combining the inertia of a heavy mace "
+"with the flexibility of their bodies, they can deliver a series of swift and "
+"crushing blows.\n"
+"\n"
+"This technique can be powerful given time to prepare, but is challenging to "
+"use under duress. Defensively, Shield Guards instead leverage their natural "
+"flexibility to shield themselves and bend in the direction of the blow, "
+"absorbing some of the damage. Though their small shields do little against "
+"ranged attacks, this tactic nevertheless makes them sturdy fighters in melee."
 msgstr ""
-"É mais difícil retirar um guarda naga veterano de uma posição devido ao seu "
-"efetivo uso do escudo. Essa tática não funciona contra ataques à distância, "
-"mas nessas situações os nagas geralmente podem buscar um terreno mais "
-"vantajoso."
 
 #
 # File: data/core/units/nagas/Myrmidon.cfg, line: 4
@@ -9884,7 +9963,7 @@ msgid "curved blade"
 msgstr "lâmina curva"
 
 #. [attack]: type=pierce
-#: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:41
+#: data/core/units/nagas/Ophidian.cfg:36
 msgid "jarid"
 msgstr "jerid"
 
@@ -9973,11 +10052,16 @@ msgstr ""
 "e usar suas pesadas lâminas curvas para defletir ou distrair em momentos "
 "cruciais."
 
+#. [attack]: type=pierce
+#: data/core/units/nagas/Sicarius.cfg:40
+msgid "trishula"
+msgstr ""
+
 #
 # File: data/core/units/nagas/Warrior.cfg, line: 59
 # File: data/core/units/nagas/Warrior.cfg, line: 59
 #. [female]: gender=female
-#: data/core/units/nagas/Sicarius.cfg:95
+#: data/core/units/nagas/Sicarius.cfg:94
 msgid "Nagini Sicarius"
 msgstr "Nagini Sicária"
 
@@ -12079,6 +12163,38 @@ msgid ""
 msgstr ""
 "Estes woses são capazes de comandar plantas das florestas, como cipós e "
 "trepadeiras, para prender seus inimigos."
+
+#~ msgid "swamp lurk"
+#~ msgstr "espreitar em pântanos"
+
+#~ msgid "female^swamp lurk"
+#~ msgstr "espreitar em pântanos"
+
+#~ msgid ""
+#~ "This unit can hide in swamp, and remain undetected by its enemies.\n"
+#~ "\n"
+#~ "Enemy units cannot see this unit while it is in swamp, except if they "
+#~ "have units next to it. Any enemy unit that first discovers this unit "
+#~ "immediately loses all its remaining movement."
+#~ msgstr ""
+#~ "Essa unidade pode se esconder em pântanos, ficando indetectável pelos "
+#~ "inimigos.\n"
+#~ "\n"
+#~ "Unidades inimigas não conseguem ver essa unidade enquanto ela estiver em "
+#~ "um pântano, exceto se eles tiverem unidades próximas à ela. A primeira "
+#~ "unidade inimiga que descobrir essa unidade imediatamente perde todos os "
+#~ "seus pontos de movimento restantes."
+
+#~ msgid ""
+#~ "The veteran naga guards are more difficult to dislodge from their posts "
+#~ "because of effective use of a shield in melee techniques. This tactic "
+#~ "does nothing against ranged attacks, but the nagas can usually seek "
+#~ "better terrain advantage in such situations."
+#~ msgstr ""
+#~ "É mais difícil retirar um guarda naga veterano de uma posição devido ao "
+#~ "seu efetivo uso do escudo. Essa tática não funciona contra ataques à "
+#~ "distância, mas nessas situações os nagas geralmente podem buscar um "
+#~ "terreno mais vantajoso."
 
 #
 # File: data/core/units/elves/Sylph.cfg, line: 53

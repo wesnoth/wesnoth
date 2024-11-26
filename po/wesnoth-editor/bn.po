@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 11:10-0500\n"
+"POT-Creation-Date: 2024-11-26 12:08-0600\n"
 "PO-Revision-Date: 2024-06-06 19:04+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
@@ -273,15 +273,15 @@ msgstr "পর্যায়: "
 msgid "Cost: "
 msgstr "মূল্য: "
 
-#: src/editor/controller/editor_controller.cpp:186
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "মারাত্মক ত্রুটি"
 
-#: src/editor/controller/editor_controller.cpp:216
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "আপনি কী সত্যিই বেরিয়ে যেতে চান?"
 
-#: src/editor/controller/editor_controller.cpp:218
+#: src/editor/controller/editor_controller.cpp:219
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -289,7 +289,7 @@ msgstr ""
 "আপনি কী সত্যিই বেরিয়ে যেতে চান? এতে শেষ সঞ্চয়ের পর হওয়া সকল পরিবর্তন হারিয়ে "
 "যাবে ।"
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -297,35 +297,35 @@ msgstr ""
 "আপনি কী সত্যিই বেরিয়ে যেতে চান? পরবর্তী মানচিত্রগুলি পাল্টানো হয়েছে এবং সেগুলিতে "
 "শেষ সঞ্চয়ের পর হওয়া সকল পরিবর্তন হারিয়ে যাবে ।"
 
-#: src/editor/controller/editor_controller.cpp:237
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr "পরিমার্জকের জন্য কোনো সময়সূচী পাওয়া যায়নি ।"
 
-#: src/editor/controller/editor_controller.cpp:880
+#: src/editor/controller/editor_controller.cpp:882
 #, fuzzy
 #| msgid "Add-on"
 msgid "Add-on Files"
 msgstr "অ্যাড-অন"
 
-#: src/editor/controller/editor_controller.cpp:893
+#: src/editor/controller/editor_controller.cpp:895
 #, fuzzy
 #| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr "ক্লিপবোর্ড সহায়তা পাওয়া যাচ্ছে না, আপনার প্যাকেজারের সঙ্গে যোগাযোগ করুন"
 
-#: src/editor/controller/editor_controller.cpp:1313
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "Change Unit ID"
 msgstr "ইউনিটের আইডি পাল্টান"
 
-#: src/editor/controller/editor_controller.cpp:1314
+#: src/editor/controller/editor_controller.cpp:1316
 msgid "ID:"
 msgstr "আইডি:"
 
-#: src/editor/controller/editor_controller.cpp:1330
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Rename Unit"
 msgstr "ইউনিটের নাম পাল্টান"
 
-#: src/editor/controller/editor_controller.cpp:1331
+#: src/editor/controller/editor_controller.cpp:1333
 msgid "Name:"
 msgstr "নাম:"
 
@@ -341,11 +341,11 @@ msgstr ""
 msgid "Load Map"
 msgstr "মানচিত্র খুলুন"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1130
 msgid "New Map"
 msgstr "নতুন মানচিত্র"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1130
 msgid "New Scenario"
 msgstr "নতুন ঘটনাক্রম"
 
@@ -508,27 +508,27 @@ msgstr ""
 msgid "Unable to parse file to find map data"
 msgstr "মানচিত্র ফাইল পড়ে মানচিত্রের তথ্য পাওয়া যায়নি"
 
-#: src/editor/map/map_context.cpp:823 src/editor/map/map_context.cpp:863
+#: src/editor/map/map_context.cpp:824 src/editor/map/map_context.cpp:864
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "ঘটনাক্রম সঞ্চয় করা যাচ্ছে না: $msg"
 
-#: src/editor/map/map_context.cpp:857
+#: src/editor/map/map_context.cpp:858
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "সময়সূচী মেনু"
 
-#: src/editor/map/map_context.cpp:903
+#: src/editor/map/map_context.cpp:904
 msgid "Could not save the scenario: $msg"
 msgstr "ঘটনাক্রম সঞ্চয় করা যাচ্ছে না: $msg"
 
-#: src/editor/map/map_context.cpp:934
+#: src/editor/map/map_context.cpp:935
 msgid "Could not save into scenario"
 msgstr "ঘটনাক্রমের মধ্যে সঞ্চয় করা যাচ্ছে না"
 
-#: src/editor/map/map_context.cpp:944
+#: src/editor/map/map_context.cpp:945
 msgid "Could not save the map: $msg"
 msgstr "মানচিত্র সঞ্চয় করা যাচ্ছে না: $msg"
 
@@ -597,25 +597,11 @@ msgstr "Cmd + ক্লিক: ভূমিরূপ প্রতিলিপি
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + ক্লিক: ভূমিরূপ প্রতিলিপি"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:170
-msgid "Choose File"
-msgstr "ফাইল পছন্দ করুন"
+#~ msgid "Choose File"
+#~ msgstr "ফাইল পছন্দ করুন"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:171
-msgid "Select"
-msgstr "নির্বাচন"
-
-#: src/gui/dialogs/editor/custom_tod.cpp:178
-msgid ""
-"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
-"add-on?"
-msgstr ""
-
-#: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/custom_tod.cpp:189
-#: src/gui/dialogs/editor/custom_tod.cpp:196
-msgid "Confirm"
-msgstr ""
+#~ msgid "Select"
+#~ msgstr "নির্বাচন"
 
 #, fuzzy
 #~| msgid "Left-click: "
