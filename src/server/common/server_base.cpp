@@ -205,6 +205,7 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 
 			if(const auto ban_info = is_ip_banned(ip)) {
 				const auto& [error_code, reason, time_remaining] = *ban_info;
+				LOG_SERVER << log_address(socket) << "\trejected banned user. Reason: " << reason;
 
 				if(time_remaining) {
 					// Temporary ban
@@ -215,12 +216,11 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 					async_send_error(socket, "You are banned from this server: " + reason, error_code);
 				}
 
-				LOG_SERVER << log_address(socket) << "\trejected banned user. Reason: " << reason;
 				return;
 			}
 
 			if(ip_exceeds_connection_limit(ip)) {
-				LOG_SERVER << ip << "\trejected ip due to excessive connections";
+				LOG_SERVER << log_address(socket) << "\trejected ip due to excessive connections";
 				async_send_error(socket, "Too many connections from your IP.");
 				return;
 			}
