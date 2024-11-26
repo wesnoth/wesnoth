@@ -418,6 +418,12 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 				} else if(ec == MP_NAME_UNREGISTERED_ERROR) {
 					error_message = VGETTEXT("The nickname ‘$nick’ is not registered on this server.", i18n_symbols)
 							+ _(" This server disallows unregistered nicknames.");
+				} else if(ec == MP_SERVER_IP_BAN_ERROR) {
+					if(extra_data) {
+						error_message = VGETTEXT("Your IP address is banned on this server for $duration|.", i18n_symbols);
+					} else {
+						error_message = _("Your IP address is banned on this server.");
+					}
 				} else if(ec == MP_NAME_AUTH_BAN_USER_ERROR) {
 					if(extra_data) {
 						error_message = VGETTEXT("The nickname ‘$nick’ is banned on this server’s forums for $duration|.", i18n_symbols);

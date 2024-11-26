@@ -576,15 +576,21 @@ bool server::ip_exceeds_connection_limit(const std::string& ip) const
 	return connections >= concurrent_connections_;
 }
 
-std::string server::is_ip_banned(const std::string& ip)
+utils::optional<server_base::login_ban_info> server::is_ip_banned(const std::string& ip)
 {
-	if(!tor_ip_list_.empty()) {
-		if(find(tor_ip_list_.begin(), tor_ip_list_.end(), ip) != tor_ip_list_.end()) {
-			return "TOR IP";
-		}
+	if(utils::contains(tor_ip_list_, ip)) {
+		return login_ban_info{ MP_SERVER_IP_BAN_ERROR, "TOR IP", {} };
 	}
 
-	return ban_manager_.is_ip_banned(ip);
+	if(auto server_ban_info = ban_manager_.get_ban_info(ip)) {
+		return login_ban_info{
+			MP_SERVER_IP_BAN_ERROR,
+			server_ban_info->get_reason(),
+			server_ban_info->get_remaining_ban_time()
+		};
+	}
+
+	return {};
 }
 
 void server::start_dump_stats()
