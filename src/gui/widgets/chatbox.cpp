@@ -91,7 +91,7 @@ void chatbox::load_log(std::map<std::string, chatroom_log>& log, bool show_lobby
 {
 	const std::string new_tip = formatter()
 		<< "\n"
-		// TRANSLATORS # po: This is the new chat text indicator
+		// TRANSLATORS: This is the new chat text indicator
 		<< markup::span_color("#FF0000", "============", _("NEW"), "============");
 
 	for(auto& l : log) {
