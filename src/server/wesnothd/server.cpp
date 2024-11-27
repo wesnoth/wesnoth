@@ -554,7 +554,7 @@ void server::load_config()
 			dummy_user.set_attr_dup("status", "lobby");
 		}
 		if(cfg_["dummy_player_timer_interval"].to_int() > 0) {
-			dummy_player_timer_interval_ = cfg_["dummy_player_timer_interval"].to_int();
+			dummy_player_timer_interval_ = chrono::parse_duration(cfg_["dummy_player_timer_interval"], 0s);
 		}
 		start_dummy_player_updates();
 	}
@@ -613,7 +613,7 @@ void server::dump_stats(const boost::system::error_code& ec)
 
 void server::start_dummy_player_updates()
 {
-	dummy_player_timer_.expires_after(std::chrono::seconds(dummy_player_timer_interval_));
+	dummy_player_timer_.expires_after(dummy_player_timer_interval_);
 	dummy_player_timer_.async_wait([this](const boost::system::error_code& ec) { dummy_player_updates(ec); });
 }
 
