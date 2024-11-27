@@ -171,15 +171,14 @@ bool undo_event::undo(int)
 	assert(resources::lua_kernel);
 	assert(resources::gamedata);
 
-	config::attribute_value& x1 = resources::gamedata->get_variable("x1");
-	config::attribute_value& y1 = resources::gamedata->get_variable("y1");
-	config::attribute_value& x2 = resources::gamedata->get_variable("x2");
-	config::attribute_value& y2 = resources::gamedata->get_variable("y2");
-	int oldx1 = x1.to_int(), oldy1 = y1.to_int(), oldx2 = x2.to_int(), oldy2 = y2.to_int();
-	x1 = e.filter_loc1.wml_x();
-	y1 = e.filter_loc1.wml_y();
-	x2 = e.filter_loc2.wml_x();
-	y2 = e.filter_loc2.wml_y();
+	config::attribute_value x1 = config::attribute_value::create(e.filter_loc1.wml_x());
+	config::attribute_value y1 = config::attribute_value::create(e.filter_loc1.wml_y());
+	config::attribute_value x2 = config::attribute_value::create(e.filter_loc2.wml_x());
+	config::attribute_value y2 = config::attribute_value::create(e.filter_loc2.wml_y());
+	std::swap(x1, resources::gamedata->get_variable("x1"));
+	std::swap(y1, resources::gamedata->get_variable("y1"));
+	std::swap(x2, resources::gamedata->get_variable("x2"));
+	std::swap(y2, resources::gamedata->get_variable("y2"));
 
 	std::unique_ptr<scoped_xy_unit> u1, u2;
 	if(unit_ptr who = get_unit(e.uid1, e.id1)) {
@@ -200,10 +199,10 @@ bool undo_event::undo(int)
 	}
 	sound::commit_music_changes();
 
-	x1 = oldx1;
-	y1 = oldy1;
-	x2 = oldx2;
-	y2 = oldy2;
+	std::swap(x1, resources::gamedata->get_variable("x1"));
+	std::swap(y1, resources::gamedata->get_variable("y1"));
+	std::swap(x2, resources::gamedata->get_variable("x2"));
+	std::swap(y2, resources::gamedata->get_variable("y2"));
 	return true;
 }
 
