@@ -189,7 +189,7 @@ void game_state::init(const config& level, play_controller & pc)
 
 		tod_manager_.resolve_random(*randomness::generator);
 
-		undo_stack_->read(level.child_or_empty("undo_stack"));
+		undo_stack_->read(level.child_or_empty("undo_stack"), player_number_);
 
 		for(team_builder& tb : team_builders) {
 			tb.build_team_stage_two();
