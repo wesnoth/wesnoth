@@ -196,12 +196,15 @@ void undo_list::new_side_turn(int side)
  * Currently, this is only used when the undo_list is empty, but in theory
  * it could be used to append the config to the current data.
  */
-void undo_list::read(const config & cfg)
+void undo_list::read(const config& cfg, int current_side)
 {
-	// Merge header data.
-	// TODO: remove side parameter, its already stored in [snapshot].
-	side_ = cfg["side"].to_int(side_);
+	side_ = current_side;
 	committed_actions_ = committed_actions_ || cfg["committed"].to_bool();
+
+	//If we have the side parameter this means that this was the old format pre 1.19.7, we ignore this since it's incompatible.
+	if(cfg.has_attribute("side")) {
+		return;
+	}
 
 	// Build the undo stack.
 	try {
@@ -235,7 +238,6 @@ void undo_list::read(const config & cfg)
  */
 void undo_list::write(config & cfg) const
 {
-	cfg["side"] = side_;
 	cfg["committed"] = committed_actions_;
 
 	for ( const auto& action_ptr : undos_)

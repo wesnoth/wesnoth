@@ -85,7 +85,7 @@ public:
 	/** Returns true if the player has performed any actions this turn. */
 	bool player_acted() const { return committed_actions_ || !undos_.empty(); }
 	/** Read the undo_list from the provided config. */
-	void read(const config & cfg);
+	void read(const config & cfg, int current_side);
 	/** Write the undo_list into the provided config. */
 	void write(config & cfg) const;
 
