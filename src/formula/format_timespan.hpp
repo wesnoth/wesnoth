@@ -24,6 +24,39 @@
 
 namespace utils
 {
+namespace implementation
+{
+static constexpr std::array descriptors {
+	// TRANSLATORS: The "timespan^$num xxxxx" strings originating from the same file
+	// as the string with this comment MUST be translated following the usual rules
+	// for WML variable interpolation -- that is, without including or translating
+	// the caret^ prefix, and leaving the $num variable specification intact, since
+	// it is technically code. The only translatable natural word to be found here
+	// is the time unit (year, month, etc.) For example, for French you would
+	// translate "timespan^$num years" as "$num ans", thus allowing the game UI to
+	// generate output such as "39 ans" after variable interpolation.
+	std::tuple{ N_n("timespan^$num year",   "timespan^$num years")   },
+	std::tuple{ N_n("timespan^$num month",  "timespan^$num months")  },
+	std::tuple{ N_n("timespan^$num week",   "timespan^$num weeks")   },
+	std::tuple{ N_n("timespan^$num day",    "timespan^$num days")    },
+	std::tuple{ N_n("timespan^$num hour",   "timespan^$num hours")   },
+	std::tuple{ N_n("timespan^$num minute", "timespan^$num minutes") },
+	std::tuple{ N_n("timespan^$num second", "timespan^$num seconds") },
+};
+
+// Each duration type should have its description at its matching descriptor index
+static constexpr auto deconstruct_format = std::tuple<
+	chrono::years,
+	chrono::months,
+	chrono::weeks,
+	chrono::days,
+	std::chrono::hours,
+	std::chrono::minutes,
+	std::chrono::seconds
+>{};
+
+} // namespace implementation
+
 /**
  * Formats a timespan into human-readable text for player authentication functions.
  *
@@ -56,35 +89,6 @@ static std::string format_timespan(const std::chrono::duration<Rep, Period>& spa
 		return _("timespan^expired");
 	}
 
-	static constexpr std::array descriptors {
-		// TRANSLATORS: The "timespan^$num xxxxx" strings originating from the same file
-		// as the string with this comment MUST be translated following the usual rules
-		// for WML variable interpolation -- that is, without including or translating
-		// the caret^ prefix, and leaving the $num variable specification intact, since
-		// it is technically code. The only translatable natural word to be found here
-		// is the time unit (year, month, etc.) For example, for French you would
-		// translate "timespan^$num years" as "$num ans", thus allowing the game UI to
-		// generate output such as "39 ans" after variable interpolation.
-		std::tuple{ N_n("timespan^$num year",   "timespan^$num years")   },
-		std::tuple{ N_n("timespan^$num month",  "timespan^$num months")  },
-		std::tuple{ N_n("timespan^$num week",   "timespan^$num weeks")   },
-		std::tuple{ N_n("timespan^$num day",    "timespan^$num days")    },
-		std::tuple{ N_n("timespan^$num hour",   "timespan^$num hours")   },
-		std::tuple{ N_n("timespan^$num minute", "timespan^$num minutes") },
-		std::tuple{ N_n("timespan^$num second", "timespan^$num seconds") },
-	};
-
-	// Each duration type should have its description at its matching descriptor index
-	static constexpr auto deconstruct_format = std::tuple<
-		chrono::years,
-		chrono::months,
-		chrono::weeks,
-		chrono::days,
-		std::chrono::hours,
-		std::chrono::minutes,
-		std::chrono::seconds
-	>{};
-
 	std::vector<t_string> display_text;
 	const auto push_description = [&](const auto& time_component, const auto& description)
 	{
@@ -101,9 +105,9 @@ static std::string format_timespan(const std::chrono::duration<Rep, Period>& spa
 	std::apply(
 		[&push_description](auto&&... args) {
 			std::size_t i{0};
-			(... && push_description(args, descriptors[i++]));
+			(... && push_description(args, implementation::descriptors[i++]));
 		},
-		chrono::deconstruct_duration(deconstruct_format, span));
+		chrono::deconstruct_duration(implementation::deconstruct_format, span));
 
 	return format_conjunct_list(_("timespan^expired"), display_text);
 }
