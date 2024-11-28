@@ -19,6 +19,7 @@
 #include "commandline_options.hpp"
 #include "connect_engine.hpp"
 #include "events.hpp"
+#include "formula/format_timespan.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/playcampaign.hpp"
@@ -396,7 +397,8 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 
 				const auto extra_data = error->optional_child("data");
 				if(extra_data) {
-					i18n_symbols["duration"] = utils::format_timespan((*extra_data)["duration"].to_time_t());
+					using namespace std::chrono_literals;
+					i18n_symbols["duration"] = utils::format_timespan(chrono::parse_duration((*extra_data)["duration"], 0s));
 				}
 
 				const std::string ec = (*error)["error_code"];

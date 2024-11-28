@@ -407,7 +407,7 @@ std::string format_timespan(const std::chrono::seconds& span)
 		return "expired";
 	}
 
-	auto [days, hours, minutes, seconds] = chrono::deconstruct_duration(span);
+	auto [days, hours, minutes, seconds] = chrono::deconstruct_duration(chrono::format::days_hours_mins_secs, span);
 	std::vector<std::string> formatted_values;
 
 	// TODO C++20: see if we can use the duration stream operators

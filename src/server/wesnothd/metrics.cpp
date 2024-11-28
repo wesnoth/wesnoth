@@ -152,7 +152,7 @@ std::ostream& metrics::requests(std::ostream& out) const
 std::ostream& operator<<(std::ostream& out, metrics& met)
 {
 	const auto time_up = std::chrono::steady_clock::now() - met.started_at_;
-	auto [days, hours, minutes, seconds] = chrono::deconstruct_duration(time_up);
+	auto [days, hours, minutes, seconds] = chrono::deconstruct_duration(chrono::format::days_hours_mins_secs, time_up);
 
 	const int requests_immediate = met.nrequests_ - met.nrequests_waited_;
 	const int percent_immediate = (requests_immediate*100)/(met.nrequests_ > 0 ? met.nrequests_ : 1);
