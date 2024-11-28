@@ -734,7 +734,10 @@ std::pair<config, point> rich_label::get_parsed_text(
 void rich_label::default_text_config(config* txt_ptr, t_string text) {
 	if (txt_ptr != nullptr) {
 		(*txt_ptr)["text"] = text;
+		(*txt_ptr)["color"] = text_color_enabled_.to_rgba_string();
+		(*txt_ptr)["font_family"] = font_family_;
 		(*txt_ptr)["font_size"] = font_size_;
+		(*txt_ptr)["font_style"] = font_style_;
 		(*txt_ptr)["text_alignment"] = encode_text_alignment(get_text_alignment());
 		(*txt_ptr)["x"] = "(pos_x)";
 		(*txt_ptr)["y"] = "(pos_y)";
@@ -915,8 +918,12 @@ rich_label_definition::rich_label_definition(const config& cfg)
 
 rich_label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
+	, text_color_enabled(color_t::from_rgba_string(cfg["text_font_color_enabled"].str()))
+	, text_color_disabled(color_t::from_rgba_string(cfg["text_font_color_disabled"].str()))
 	, link_color(cfg["link_color"].empty() ? font::YELLOW_COLOR : color_t::from_rgba_string(cfg["link_color"].str()))
+	, font_family(cfg["text_font_family"].str())
 	, font_size(cfg["text_font_size"].to_int(font::SIZE_NORMAL))
+	, font_style(cfg["text_font_style"].str("normal"))
 {
 	// Note the order should be the same as the enum state_t is rich_label.hpp.
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("rich_label_definition][resolution", "state_enabled")));
@@ -944,8 +951,12 @@ std::unique_ptr<widget> builder_rich_label::build() const
 	assert(conf);
 
 	lbl->set_text_alignment(text_alignment);
+	lbl->set_text_color(conf->text_color_enabled, true);
+	lbl->set_text_color(conf->text_color_enabled, false);
 	lbl->set_link_color(conf->link_color);
+	lbl->set_font_family(conf->font_family);
 	lbl->set_font_size(conf->font_size);
+	lbl->set_font_style(conf->font_style);
 	lbl->set_label(lbl->get_label());
 
 	DBG_GUI_G << "Window builder: placed rich_label '" << id << "' with definition '"
