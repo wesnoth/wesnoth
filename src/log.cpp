@@ -498,6 +498,7 @@ void log_in_progress::operator|(formatter&& message)
 			auto fractional = std::chrono::duration_cast<std::chrono::microseconds>(now - as_seconds);
 			stream_ << "." << std::setw(6) << fractional.count();
 		}
+		stream_ << " ";
 	}
 	stream_ << prefix_ << sanitize_log(message.str());
 	if(auto_newline_) {
