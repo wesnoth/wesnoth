@@ -338,6 +338,11 @@ void game_display::layout()
 {
 	display::layout();
 
+	// We need teams for the reports below
+	if(context().teams().empty()) {
+		return;
+	}
+
 	refresh_report("report_clock");
 	refresh_report("report_battery");
 	refresh_report("report_countdown");
