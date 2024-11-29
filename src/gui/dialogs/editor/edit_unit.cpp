@@ -24,8 +24,8 @@
 #include "gettext.hpp"
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/unit_create.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/dialogs/units_dialog.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/combobox.hpp"
 #include "gui/widgets/image.hpp"
@@ -351,9 +351,11 @@ void editor_edit_unit::select_file(const std::string& default_dir, const std::st
 }
 
 void editor_edit_unit::load_unit_type() {
-	gui2::dialogs::unit_create dlg_uc;
-	if (dlg_uc.show()) {
-		const unit_type *type = unit_types.find(dlg_uc.choice());
+	gui2::dialogs::units_dialog type_select;
+	type_select.show();
+	const auto& type_opt = type_select.get_type();
+	if (type_opt) {
+		const unit_type *type = type_opt.value();
 
 		tab_container& tabs = find_widget<tab_container>("tabs");
 		tabs.select_tab(0);
