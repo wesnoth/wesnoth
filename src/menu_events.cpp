@@ -20,6 +20,8 @@
  * E.g. Unitlist, status_table, save_game, save_map, chat, show_help, etc.
  */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "menu_events.hpp"
 
 #include "actions/create.hpp"
@@ -34,7 +36,6 @@
 #include "game_board.hpp"
 #include "game_config_manager.hpp"
 #include "game_end_exceptions.hpp"
-#include "preferences/preferences.hpp"
 #include "game_initialization/multiplayer.hpp"
 #include "game_state.hpp"
 #include "gettext.hpp"
@@ -52,10 +53,8 @@
 #include "gui/dialogs/statistics_dialog.hpp"
 #include "gui/dialogs/terrain_layers.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/dialogs/unit_create.hpp"
-#include "gui/dialogs/unit_list.hpp"
-#include "gui/dialogs/unit_recall.hpp"
-#include "gui/dialogs/unit_recruit.hpp"
+#include "gui/dialogs/units_dialog.hpp"
+#include "gui/dialogs/unit_attack.hpp"
 #include "gui/widgets/retval.hpp"
 #include "help/help.hpp"
 #include "log.hpp"
@@ -65,14 +64,18 @@
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
 #include "playsingle_controller.hpp"
+#include "preferences/preferences.hpp"
 #include "replay.hpp"
 #include "replay_controller.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
+#include "serialization/markup.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/plugins/manager.hpp"
 #include "synced_context.hpp"
+#include "units/helper.hpp"
+#include "units/ptr.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
 #include "whiteboard/manager.hpp"
@@ -135,7 +138,87 @@ void menu_handler::show_statistics(int side_num)
 
 void menu_handler::unit_list()
 {
-	gui2::dialogs::show_unit_list(*gui_);
+	std::vector<unit_const_ptr> unit_list;
+
+	const unit_map& units = gui_->context().units();
+	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+		if(i->side() != gui_->viewing_team().side()) {
+			continue;
+		}
+		unit_list.push_back(i.get_shared_ptr());
+	}
+
+	gui2::dialogs::units_dialog unit_dlg;
+	unit_dlg.set_title(_("Unit List"))
+		.set_ok_label(_("Scroll To"))
+		.show_rename_option(true)
+		.set_help_topic("..units")
+		.set_units(std::move(unit_list))
+		.set_row_num(unit_list.size())
+		.set_column_generator("unit_name", unit_list, [&](const auto& unit) {
+			return !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
+		}, true)
+		.set_column_generator("unit_details", unit_list, [&](const auto& unit) {
+			return unit->type_name().str();
+		}, true)
+		.set_column_generator("unit_level", unit_list, [&](const auto& unit) {
+			return unit_helper::format_level_string(unit->level(), true);
+		})
+		.set_column_generator("unit_moves", unit_list, [&](const auto& unit) {
+			return unit_helper::format_movement_string(unit->movement_left(), unit->total_movement());
+		})
+		.set_column_generator("unit_hp", unit_list, [&](const auto& unit) {
+			return markup::span_color(unit->hp_color(), unit->hitpoints(), "/", unit->max_hitpoints());
+		})
+		.set_column_generator("unit_experience",  unit_list, [&](const auto& unit) {
+			std::stringstream exp_str;
+			if(unit->can_advance()) {
+				exp_str << unit->experience() << "/" << unit->max_experience();
+			} else {
+				exp_str << font::unicode_en_dash;
+			}
+			return markup::span_color(unit->xp_color(), exp_str.str());
+		})
+		.set_column_generator("unit_status", unit_list, [&](const auto& unit) {
+			// Status
+			if(unit->get_state(unit::STATE_PETRIFIED)) {
+				return "misc/petrified.png";
+			}
+
+			if(unit->get_state(unit::STATE_POISONED)) {
+				return "misc/poisoned.png";
+			}
+
+			if(unit->get_state(unit::STATE_SLOWED)) {
+				return "misc/slowed.png";
+			}
+
+			if(unit->invisible(unit->get_location(), false)) {
+				return "misc/invisible.png";
+			}
+
+			return "";
+		})
+		.set_column_generator("unit_traits",  unit_list, [&](const auto& unit) {
+			return utils::join(unit->trait_names(), ", ");
+		}, true)
+		.set_sorter(2, [&](const int i) {
+			const unit& u = *unit_list[i];
+			return std::tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
+		})
+		.set_sorter(3, [&](const int i) { return unit_list[i]->movement_left(); })
+		.set_sorter(4, [&](const int i) { return unit_list[i]->hitpoints(); })
+		.set_sorter(5, [&](const int i) {
+			// this allows 0/35, 0/100 etc to be sorted
+			// also sorts 23/35 before 0/35, after which 0/100 comes
+			return unit_list[i]->experience() + unit_list[i]->max_experience();
+		});
+
+	if (unit_dlg.show() && unit_dlg.get_retval() == gui2::retval::OK) {
+		const map_location& loc = unit_dlg.get_unit().value()->get_location();
+		gui_->scroll_to_tile(loc, display::WARP);
+		gui_->select_hex(loc);
+	}
 }
 
 void menu_handler::status_table()
@@ -236,11 +319,10 @@ bool menu_handler::has_friends() const
 
 void menu_handler::recruit(int side_num, const map_location& last_hex)
 {
-	std::map<const unit_type*, t_string> sample_units;
-
+	std::vector<const unit_type*> recruit_list;
 	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
-
 	std::vector<t_string> unknown_units;
+
 	for(const auto& recruit : recruits) {
 		const unit_type* type = unit_types.find(recruit);
 		if(!type) {
@@ -250,9 +332,14 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 		}
 
 		map_location ignored;
-		map_location recruit_hex = last_hex;
-		sample_units[type] = (can_recruit(type->id(), side_num, recruit_hex, ignored));
+		std::string err_msg = can_recruit(type->id(), side_num, last_hex, ignored);
+		if (err_msg.empty()) {
+			recruit_list.push_back(type);
+		} else {
+			gui2::show_error_message(err_msg);
+		}
 	}
+
 	if(!unknown_units.empty()) {
 		auto unknown_ids = utils::format_conjunct_list("", unknown_units);
 		// TRANSLATORS: An error that should never happen, might happen when loading an old savegame. If there are
@@ -265,21 +352,35 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 		gui2::show_transient_message("", message);
 	}
 
-	if(sample_units.empty()) {
+	if(recruit_list.empty()) {
 		gui2::show_transient_message("", _("You have no units available to recruit."));
 		return;
 	}
 
-	gui2::dialogs::unit_recruit dlg(sample_units, board().get_team(side_num));
+	gui2::dialogs::units_dialog dlg;
+	dlg.set_title(_("Recruit Unit"))
+		.set_ok_label(_("Recruit"))
+		.set_help_topic("recruit_and_recall")
+		.set_types(recruit_list)
+		.set_row_num(recruit_list.size())
+		.set_team(&board().get_team(side_num))
+		.hide_all_headers()
+		.set_column_generator("unit_image", recruit_list, [&](const auto& recruit) {
+			std::string image_string = recruit->image();
+			image_string += "~RC(" + recruit->flag_rgb() + ">" + board().get_team(side_num).color() + ")";
+			return image_string;
+		})
+		.set_column_generator("unit_details", recruit_list, [&](const auto& recruit) {
+			return recruit->type_name() + unit_helper::format_cost_string(recruit->cost());
+		});
 
 	if(dlg.show()) {
-		map_location recruit_hex = last_hex;
-		const unit_type *type = dlg.get_selected_unit_type();
-		if (!type) {
+		const auto& type = dlg.get_type();
+		if (!type.has_value()) {
 			gui2::show_transient_message("", _("No unit recruited."));
 			return;
 		}
-		do_recruit(type->id(), side_num, recruit_hex);
+		do_recruit(type.value()->id(), side_num, last_hex);
 	}
 }
 
@@ -287,15 +388,14 @@ void menu_handler::repeat_recruit(int side_num, const map_location& last_hex)
 {
 	const std::string& last_recruit = board().get_team(side_num).last_recruit();
 	if(last_recruit.empty() == false) {
-		map_location recruit_hex = last_hex;
-		do_recruit(last_recruit, side_num, recruit_hex);
+		do_recruit(last_recruit, side_num, last_hex);
 	}
 }
 
 // TODO: Return multiple strings here, in case more than one error applies? For
 // example, if you start AOI S5 with 0GP and recruit a Mage, two reasons apply,
 // leader not on keep (extrarecruit=Mage) and not enough gold.
-t_string menu_handler::can_recruit(const std::string& name, int side_num, map_location& loc, map_location& recruited_from)
+t_string menu_handler::can_recruit(const std::string& name, int side_num, const map_location& loc, const map_location& recruited_from)
 {
 	team& current_team = board().get_team(side_num);
 
@@ -331,7 +431,8 @@ t_string menu_handler::can_recruit(const std::string& name, int side_num, map_lo
 
 	{
 		wb::future_map_if_active future; /* start planned unit map scope if in planning mode */
-		std::string msg = actions::find_recruit_location(side_num, loc, recruited_from, name);
+		std::string msg = actions::find_recruit_location(
+			side_num, const_cast<map_location&>(loc), const_cast<map_location&>(recruited_from), name);
 		if(!msg.empty()) {
 			return msg;
 		}
@@ -340,7 +441,7 @@ t_string menu_handler::can_recruit(const std::string& name, int side_num, map_lo
 	return "";
 }
 
-bool menu_handler::do_recruit(const std::string& name, int side_num, map_location& loc)
+bool menu_handler::do_recruit(const std::string& name, int side_num, const map_location& loc)
 {
 	map_location recruited_from = map_location::null_location();
 	const std::string res = can_recruit(name, side_num, loc, recruited_from);
@@ -380,6 +481,18 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		empty = current_team.recall_list().empty();
 	}
 
+	int wb_gold = pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0;
+	int unit_cost = current_team.recall_cost();
+	bool recallable = (unit_cost <= current_team.gold() - wb_gold);
+	if(!recallable) {
+		utils::string_map i18n_symbols;
+		i18n_symbols["cost"] = std::to_string(unit_cost);
+		std::string msg = VNGETTEXT("You must have at least 1 gold piece to recall a unit.",
+				"You must have at least $cost gold pieces to recall this unit.", unit_cost, i18n_symbols);
+		gui2::show_transient_message("", msg);
+		return;
+	}
+
 	DBG_WB << "menu_handler::recall: Contents of wb-modified recall list:";
 	for(const unit_const_ptr& unit : recall_list_team) {
 		DBG_WB << unit->name() << " [" << unit->id() << "]";
@@ -390,43 +503,120 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 			_("There are no troops available to recall.\n(You must have veteran survivors from a previous scenario.)"));
 		return;
 	}
+
 	if(recall_list_team.empty()) {
 		gui2::show_transient_message("", _("You currently can’t recall at the highlighted location."));
 		return;
 	}
 
-	gui2::dialogs::unit_recall dlg(recall_list_team, current_team);
+	gui2::dialogs::units_dialog dlg;
+	dlg.set_title(_("Recall Unit"))
+		.set_ok_label(_("Recall"))
+		.set_help_topic("recruit_and_recall")
+		.set_units(recall_list_team)
+		.set_row_num(recall_list_team.size())
+		.set_team(&current_team)
+		.set_column_generator("unit_image", recall_list_team, [&](const auto& unit) {
+			std::string mods = unit->image_mods();
+			if(unit->can_recruit()) { mods += "~BLIT(" + unit::leader_crown() + ")"; }
+			for(const std::string& overlay : unit->overlays()) {
+				mods += "~BLIT(" + overlay + ")";
+			}
+
+			if(!recallable) {
+				mods += "~GS()";
+			}
+
+			return unit->absolute_image() + mods;
+		})
+		.set_column_generator("unit_name", recall_list_team, [&](const auto& unit) {
+			const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
+			return unit_helper::maybe_inactive(name, recallable);
+		})
+		.set_column_generator("unit_details", recall_list_team, [&](const auto& unit) {
+			std::stringstream details;
+			details << unit_helper::maybe_inactive(unit->type_name().str(), recallable);
+			details << unit_helper::format_cost_string(
+				unit->recall_cost(), current_team.recall_cost());
+			return details.str();
+		})
+		.set_column_generator("unit_moves", recall_list_team, [&](const auto& unit) {
+			return unit_helper::format_movement_string(unit->movement_left(), unit->total_movement());
+		})
+		.set_column_generator("unit_level", recall_list_team, [&](const auto& unit) {
+			return unit_helper::format_level_string(unit->level(), recallable);
+		})
+		.set_column_generator("unit_hp", recall_list_team, [&](const auto& unit) {
+			return markup::span_color(unit->hp_color(), unit->hitpoints(), "/", unit->max_hitpoints());
+		})
+		.set_column_generator("unit_experience", recall_list_team, [&](const auto& unit) {
+			std::stringstream exp_str;
+			if(unit->can_advance()) {
+				exp_str << unit->experience() << "/" << unit->max_experience();
+			} else {
+				exp_str << font::unicode_en_dash;
+			}
+			return markup::span_color(unit->xp_color(), exp_str.str());
+		})
+		.set_column_generator("unit_traits", recall_list_team, [&](const auto& unit) {
+			std::string traits;
+			for(const std::string& trait : unit->trait_names()) {
+				traits += (traits.empty() ? "" : "\n") + trait;
+			}
+			return unit_helper::maybe_inactive((!traits.empty() ? traits : font::unicode_en_dash), recallable);
+		})
+		// Hide "Status" header and show "Traits" header
+		.show_header(6, false)
+		.show_header(7, true)
+		.set_tooltip_generator([&](const auto /**/) {
+			if (!recallable) {
+				// Just set the tooltip on every single element in this row.
+				if(wb_gold > 0) {
+					return _("This unit cannot be recalled because you will not have enough gold at this point in your plan.");
+				} else {
+					return _("This unit cannot be recalled because you do not have enough gold.");
+				}
+			} else {
+				return std::string();
+			}
+		})
+		.set_translatable_sorter(0, recall_list_team, [&](const auto& recall) { return recall->name().str(); })
+		.set_translatable_sorter(1, recall_list_team, [&](const auto& recall) { return recall->type_name().str(); })
+		.set_sorter(2, [&](const int i) {
+			const unit& u = *recall_list_team[i];
+			return std::tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
+		})
+		.set_sorter(3, [&](const int i) { return recall_list_team[i]->movement_left(); })
+		.set_sorter(4, [&](const int i) { return recall_list_team[i]->hitpoints(); })
+		.set_sorter(5, [&](const int i) {
+			// this allows 0/35, 0/100 etc to be sorted
+			// also sorts 23/35 before 0/35, after which 0/100 comes
+			return recall_list_team[i]->experience() + recall_list_team[i]->max_experience();
+		})
+		.set_translatable_sorter(7, recall_list_team, [&](const auto& recall) {
+			return !recall->trait_names().empty() ? recall->trait_names().front().str() : "";
+		});
 
 	if(!dlg.show()) {
 		return;
 	}
 
-	int res = dlg.get_selected_index();
-	if (res < 0) {
+	if (!dlg.is_selected()) {
 		gui2::show_transient_message("", _("No unit recalled."));
 		return;
 	}
-	int unit_cost = current_team.recall_cost();
+	const unit_const_ptr sel_unit = dlg.get_unit().value();
+
 
 	// we need to check if unit has a specific recall cost
 	// if it does we use it elsewise we use the team.recall_cost()
 	// the magic number -1 is what it gets set to if the unit doesn't
 	// have a special recall_cost of its own.
-	if(recall_list_team[res]->recall_cost() > -1) {
-		unit_cost = recall_list_team[res]->recall_cost();
+	if(sel_unit->recall_cost() > -1) {
+		unit_cost = sel_unit->recall_cost();
 	}
 
-	int wb_gold = pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0;
-	if(current_team.gold() - wb_gold < unit_cost) {
-		utils::string_map i18n_symbols;
-		i18n_symbols["cost"] = std::to_string(unit_cost);
-		std::string msg = VNGETTEXT("You must have at least 1 gold piece to recall a unit.",
-				"You must have at least $cost gold pieces to recall this unit.", unit_cost, i18n_symbols);
-		gui2::show_transient_message("", msg);
-		return;
-	}
-
-	LOG_NG << "recall index: " << res;
+	LOG_NG << "recall index: " << dlg.get_selected_index();
 	const events::command_disabler disable_commands;
 
 	map_location recall_location = last_hex;
@@ -435,7 +625,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	{
 		wb::future_map_if_active
 				future; // future unit map removes invisible units from map, don't do this outside of planning mode
-		err = actions::find_recall_location(side_num, recall_location, recall_from, *recall_list_team[res].get());
+		err = actions::find_recall_location(side_num, recall_location, recall_from, *sel_unit);
 	} // end planned unit map scope
 
 	if(!err.empty()) {
@@ -444,9 +634,9 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	}
 
 	if(!pc_.get_whiteboard()
-			|| !pc_.get_whiteboard()->save_recall(*recall_list_team[res].get(), side_num, recall_location)) {
+		|| !pc_.get_whiteboard()->save_recall(*sel_unit, side_num, recall_location)) {
 		bool success = synced_context::run_and_throw("recall",
-				replay_helper::get_recall(recall_list_team[res]->id(), recall_location, recall_from));
+				replay_helper::get_recall(sel_unit->id(), recall_location, recall_from));
 
 		if(!success) {
 			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list.";
@@ -692,24 +882,50 @@ typedef std::tuple<const unit_type*, unit_race::GENDER, std::string> type_gender
  */
 type_gender_variation choose_unit()
 {
-	//
-	// The unit creation dialog makes sure unit types
-	// are properly cached.
-	//
-	gui2::dialogs::unit_create create_dlg;
-	create_dlg.show();
+	gui2::dialogs::units_dialog create_dlg;
+	const std::vector<const unit_type*>& types_list = unit_types.types_list();
 
-	if(create_dlg.no_choice()) {
+	const auto type_gen = [](const auto& type) {
+		std::string type_name = type->type_name();
+		if(type_name != type->id()) {
+			type_name += " (" + type->id() + ")";
+		}
+		return type_name;
+	};
+
+	const auto race_gen = [](const auto& type) {
+		return type->race()->plural_name();
+	};
+
+	create_dlg.set_title(_("Create Unit"))
+		.set_ok_label(_("Create"))
+		.set_help_topic("..units")
+		.show_gender(true)
+		.show_variations(true)
+		.set_types(types_list)
+		.set_row_num(types_list.size())
+		.hide_all_headers()
+		.show_header(0)
+		.show_header(1)
+		.set_column_generator("unit_name", types_list, type_gen)
+		.set_column_generator("unit_details", types_list, race_gen)
+		.set_translatable_sorter(0, types_list, type_gen)
+		.set_translatable_sorter(1, types_list, race_gen);
+
+	if (!create_dlg.show()) {
 		return type_gender_variation(nullptr, unit_race::NUM_GENDERS, "");
 	}
 
-	const std::string& ut_id = create_dlg.choice();
-	const unit_type* utp = unit_types.find(ut_id);
-	if(!utp) {
-		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id '" << ut_id << "'.";
+	if(!create_dlg.is_selected()) {
+		return type_gender_variation(nullptr, unit_race::NUM_GENDERS, "");
+	}
+
+	const auto& type_opt = create_dlg.get_type();
+	if(!type_opt) {
+		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id.";
 		return type_gender_variation(static_cast<const unit_type*>(nullptr), unit_race::NUM_GENDERS, "");
 	}
-	const unit_type& ut = *utp;
+	const unit_type& ut = *type_opt.value();
 
 	unit_race::GENDER gender = create_dlg.gender();
 	// Do not try to set bad genders, may mess up l10n
@@ -719,7 +935,7 @@ type_gender_variation choose_unit()
 		gender = ut.genders().front();
 	}
 
-	return type_gender_variation(utp, gender, create_dlg.variation());
+	return type_gender_variation(type_opt.value(), gender, create_dlg.variation());
 }
 
 /**
