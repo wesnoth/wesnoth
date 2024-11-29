@@ -38,6 +38,9 @@ extern const color_t
 	TITLE_COLOR,
 	DISABLED_COLOR,
 	LABEL_COLOR,
+	INACTIVE_COLOR,
+	GREEN_COLOR,
+	BLUE_COLOR,
 
 	// General purpose color values
 	weapon_color,
