@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-11-26 12:08-0600\n"
-"PO-Revision-Date: 2024-09-16 19:23+0200\n"
+"PO-Revision-Date: 2024-11-23 14:02+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -328,11 +328,11 @@ msgstr "Nome:"
 
 #: src/editor/editor_display.cpp:170
 msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
-msgstr ""
+msgstr "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
 
 #: src/editor/editor_display.cpp:172
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
-msgstr ""
+msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 
 #: src/editor/map/context_manager.cpp:217
 msgid "Load Map"
@@ -435,10 +435,8 @@ msgid "Scenario saved."
 msgstr "Scenario salvato."
 
 #: src/editor/map/context_manager.cpp:902
-#, fuzzy
-#| msgid "Map saved."
 msgid "Map saved"
-msgstr "Mappa salvata."
+msgstr "Mappa salvata"
 
 #: src/editor/map/context_manager.cpp:977
 msgid "Loaded embedded map data"
@@ -485,12 +483,9 @@ msgstr ""
 "indica un file esistente"
 
 #: src/editor/map/map_context.cpp:264
-#, fuzzy
-#| msgid ""
-#| "Found the characters '<<' indicating inline lua is present - aborting"
 msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
 msgstr ""
-"Trovati i caratteri '<<' che indicano la presenza di una inline lua - "
+"Trovati i caratteri «<<» che indicano la presenza di una inline lua - "
 "abortire"
 
 #: src/editor/map/map_context.cpp:269
@@ -543,10 +538,8 @@ msgid "Will not work in game without extra care."
 msgstr "Non funzionerà all’interno del gioco senza particolari attenzioni."
 
 #: src/editor/palette/item_palette.cpp:33
-#, fuzzy
-#| msgid "Right-click: "
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr "Mouse tasto-dx: "
+msgstr "Mouse tasto-sx: Piazza oggetto $item | tasto-dx per rimuovere"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
@@ -601,10 +594,6 @@ msgstr "Cmd + tasto mouse: copia terreno"
 #~ msgid "Select"
 #~ msgstr "Seleziona"
 
-#, fuzzy
-#~| msgid ""
-#~| "This file is outside Wesnoth's data dirs. Do you wish to copy it into "
-#~| "your add-on?"
 #~ msgid ""
 #~ "This file is outside Wesnoth’s data dirs. Do you wish to copy it into "
 #~ "your add-on?"
@@ -615,10 +604,8 @@ msgstr "Cmd + tasto mouse: copia terreno"
 #~ msgid "Confirm"
 #~ msgstr "Conferma"
 
-#, fuzzy
-#~| msgid "Left-click: "
 #~ msgid "Left-click: Place item "
-#~ msgstr "Mouse tasto-sx: "
+#~ msgstr "Mouse tasto-sx: piazza oggetto "
 
 #~ msgid "Clipboard support not found, contact your packager"
 #~ msgstr "Supporto per la clipboard non disponibile, contatta il tuo packager"
