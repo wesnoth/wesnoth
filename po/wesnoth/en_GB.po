@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-11-26 12:08-0600\n"
-"PO-Revision-Date: 2024-10-23 10:10+1100\n"
+"PO-Revision-Date: 2024-11-27 10:10+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -1709,7 +1709,7 @@ msgstr ""
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/deprecated-utils.cfg:400
 msgid "deflect"
-msgstr ""
+msgstr "deflect"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/deprecated-utils.cfg:401
@@ -1717,6 +1717,8 @@ msgid ""
 "When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
 msgstr ""
+"When used defensively, this attack reduces the opponent’s chance to hit by "
+"10%."
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/deprecated-utils.cfg:402
@@ -1724,11 +1726,13 @@ msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
 msgstr ""
+"This unit’s defensive techniques reduce the chance of a successful enemy "
+"attack."
 
 #. [damage]: id=absorb
 #: data/core/macros/deprecated-utils.cfg:416
 msgid "absorb"
-msgstr ""
+msgstr "absorb"
 
 #. [damage]: id=absorb
 #: data/core/macros/deprecated-utils.cfg:417
@@ -1736,12 +1740,15 @@ msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
+"This attack puts the unit in good defensive position, and it absorbs some of "
+"the damage dealt by an enemy strike."
 
 #. [damage]: id=absorb
 #: data/core/macros/deprecated-utils.cfg:418
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
+"This unit can block enemy strikes, so that it takes reduced damage when hit."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:23
@@ -3309,20 +3316,6 @@ msgstr ""
 
 #. Generator for ship names
 #: data/core/macros/names.cfg:251
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
-#| "{starting_consonnant}{vowel}{consonnant}{ending_vowel}|{starting_vowel}"
-#| "{consonnant}{vowel}{ending_consonnant}|{starting_consonnant}{vowel}"
-#| "{ending_consonnant}|{starting_vowel}{consonnant}{ending_vowel}\n"
-#| "starting_consonnant=B|Br|D|Dr|G|Gr|Gh|H|Kh|M|N|P|Pr|R|S|Sh|T|V\n"
-#| "starting_vowel=A|I|O|U\n"
-#| "consonnant=b|br|d|dr|g|gr|gh|kh|m|n|p|pr|r|s|sh|t|v|gz|zg|rb|br|dr|vr|khr|"
-#| "gd|shn\n"
-#| "vowel=a|i|o|u\n"
-#| "ending_consonnant=b|g|r|sh|k\n"
-#| "ending_vowel=o|u\n"
 msgid ""
 "\n"
 "main={prefix} {starting_consonnant}{vowel}{consonnant}{vowel}"
@@ -3339,17 +3332,18 @@ msgid ""
 "ending_vowel=a|ae|o|u\n"
 msgstr ""
 "\n"
-"main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
-"{starting_consonnant}{vowel}{consonnant}{ending_vowel}|{starting_vowel}"
-"{consonnant}{vowel}{ending_consonnant}|{starting_consonnant}{vowel}"
-"{ending_consonnant}|{starting_vowel}{consonnant}{ending_vowel}\n"
-"starting_consonnant=B|Br|D|Dr|G|Gr|Gh|H|Kh|M|N|P|Pr|R|S|Sh|T|V\n"
-"starting_vowel=A|I|O|U\n"
-"consonnant=b|br|d|dr|g|gr|gh|kh|m|n|p|pr|r|s|sh|t|v|gz|zg|rb|br|dr|vr|khr|gd|"
-"shn\n"
-"vowel=a|i|o|u\n"
-"ending_consonnant=b|g|r|sh|k\n"
-"ending_vowel=o|u\n"
+"main={prefix} {starting_consonnant}{vowel}{consonnant}{vowel}"
+"{ending_consonnant}|{prefix} {starting_vowel}{consonnant}{ending_vowel}|"
+"{starting_vowel}{consonnant}{vowel}{ending_consonnant}|{prefix} "
+"{starting_consonnant}{vowel}{ending_consonnant}|{starting_vowel}{consonnant}"
+"{vowel}{consonnant}{ending_vowel}\n"
+"prefix=Blessed|Golden|Fearless|Mighty|Lucky|Old|The|The|Valiant\n"
+"starting_consonnant=B|C|Cr|D|F|G|H|Kh|L|M|N|P|R|S|T|Th|V\n"
+"starting_vowel=A|E|I|O|U\n"
+"consonnant=b|br|ch|d|dr|g|gr|gh|kh|m|n|p|pr|r|s|sh|t|v|ol|z|vr|khr|shn\n"
+"vowel=a|ae|é|i|o|u\n"
+"ending_consonnant=yan|oic|ell|yll|tar|sh\n"
+"ending_vowel=a|ae|o|u\n"
 
 #: data/core/macros/names.cfg:264
 msgid ""
@@ -6792,16 +6786,12 @@ msgid " This server disallows unregistered nicknames."
 msgstr " This server disallows unregistered nicknames."
 
 #: src/game_initialization/multiplayer.cpp:423
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums for $duration|."
 msgid "Your IP address is banned on this server for $duration|."
-msgstr "Your IP address is banned on this server’s forums for $duration|."
+msgstr "Your IP address is banned on this server for $duration|."
 
 #: src/game_initialization/multiplayer.cpp:425
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server."
-msgstr "Your IP address is banned on this server’s forums."
+msgstr "Your IP address is banned on this server."
 
 #: src/game_initialization/multiplayer.cpp:429
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
@@ -8637,9 +8627,6 @@ msgid "Overwrite?"
 msgstr "Overwrite?"
 
 #: src/savegame.cpp:432
-#, fuzzy
-#| msgid ""
-#| "Save names should not end on ‘.gz’ or ‘.bz2’. Please remove the extension."
 msgid ""
 "Save names should not end with ‘.gz’ or ‘.bz2’. Please remove the extension."
 msgstr ""
