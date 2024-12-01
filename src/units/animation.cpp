@@ -650,7 +650,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		anim["cycles"] = true;
 
 		// Add cycles to all frames within a standing animation block
-		for(const config::const_all_children_iterator ci : ab.children) {
+		for(const config::const_all_children_iterator& ci : ab.children) {
 			const std::string sub_frame_name = ci->key;
 			const std::size_t pos = sub_frame_name.find("_frame");
 			if(pos != std::string::npos) {
@@ -675,7 +675,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		anim["apply_to"] = "default";
 		anim["cycles"] = true;
 
-		for(const config::const_all_children_iterator ci : ab.children) {
+		for(const config::const_all_children_iterator& ci : ab.children) {
 			const std::string sub_frame_name = ci->key;
 			const std::size_t pos = sub_frame_name.find("_frame");
 			if(pos != std::string::npos) {

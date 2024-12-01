@@ -1661,7 +1661,7 @@ void unit::write(config& cfg, bool write_all) const
 
 	if(write_all || get_attr_changed(UA_ATTACKS) || get_attacks_changed()) {
 		cfg.clear_children("attack");
-		for(const attack_ptr i : attacks_) {
+		for(const attack_ptr& i : attacks_) {
 			i->write(cfg.add_child("attack"));
 		}
 	}
@@ -1979,7 +1979,7 @@ std::string unit::describe_builtin_effect(const std::string& apply_to, const con
 		std::vector<t_string> attack_names;
 
 		std::string desc;
-		for(const attack_ptr a : attacks_) {
+		for(const attack_ptr& a : attacks_) {
 			const bool affected = a->describe_modification(effect, &desc);
 			if(affected && !desc.empty()) {
 				attack_names.emplace_back(a->name(), "wesnoth-units");
@@ -2088,7 +2088,7 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 		utils::erase_if(attacks_, [&effect](const attack_ptr& a) { return a->matches_filter(effect); });
 	} else if(apply_to == "attack") {
 		set_attr_changed(UA_ATTACKS);
-		for(const attack_ptr a : attacks_) {
+		for(const attack_ptr& a : attacks_) {
 			a->apply_modification(effect);
 			for(const config& specials : effect.child_range("set_specials")) {
 				for(const auto [key, special] : specials.all_children_view()) {

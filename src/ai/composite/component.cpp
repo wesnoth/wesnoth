@@ -220,7 +220,7 @@ static void print_component(component *root, const std::string &type, std::strin
 
 	s << offset_str << type<<"["<<root->get_id() <<"] "<<root->get_engine()<<" "<<root->get_name()<< std::endl;
 
-	for(const std::string t : t_list) {
+	for(const std::string& t : t_list) {
 		const std::vector<component*> c_list = root->get_children(t);
 		for (component *c : c_list) {
 			print_component(c,t,s,offset+1);
