@@ -143,9 +143,6 @@ Windowsの場合に \-\-no\-log\-to\-file と共に使用すると、出力は C
 \fB\-\-new\-widgets\fP
 開発中の新しいウィジェットツールキットを有効にする。まだ試験的な機能であり、多くのバグが既知であるため、バグ報告は不要。ライブラリのパーツは安定しており、このオプションを有効にせずとも動作する。
 .TP 
-\fB\-\-nodelay\fP
-グラフィックベンチマーク用にディレイなしでゲームを実行する。これは \fB\-\-nogui\fP では自動的に有効になる。
-.TP 
 \fB\-\-noaddons\fP
 ユーザーのアドオンを読み込まない。
 .TP 
@@ -187,19 +184,26 @@ DiffWMLパッチをWMLファイルに適用する。どちらのファイルに�
 ファイルを指定したフォルダに生成する。フォルダを指定した場合、プリプロセッサーのルールに従ってフォルダ内は再帰的にプリプロセスされる。「data/core/macros」内の共通マクロは、指定したリソースよりも前にプリプロセスされる。例：\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result\fP
 。詳細は以下のプリプロセッサーについてを参照：https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-カンマで区切られた、\fB\-\-preprocess\fP コマンドで使用される定義のリスト。\fBSKIP_CORE\fP
-がリスト内にある場合、「data/core」ディレクトリ内は前処理されない。
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
-\fB\-\-preprocess\fP コマンドによっのみ使用される。 前処理の前に組み込まれるべき \fB[preproc_define]\fP
-を含むファイルを指定する。
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
-\fB\-\-preprocess\fP コマンドによってのみ使用される。
-ターゲットのファイル内の前処理されたマクロを出力する。ファイルが指定されない場合、出力は前処理コマンド内のターゲットのディレクトリ内の「_MACROS_.cfg」ファイルとなる。出力ファイルは
-\fB\-\-preprocess\-input\-macros\fP に渡すこともできる。この切り替えは \fB\-\-preprocess\fP
-コマンドより前に記述されるべきである。
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 画面解像度を指定する。例：\fB\-r\fP \fB800x600\fP

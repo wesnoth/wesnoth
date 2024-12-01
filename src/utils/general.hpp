@@ -126,4 +126,15 @@ void sort_if(Container& container, const Predicate& predicate)
 	std::sort(container.begin(), container.end(), predicate);
 }
 
+/**
+ * Convenience wrapper for using find on a container without needing to comare to end()
+ *
+ */
+template<typename Container, typename Value>
+auto* find(Container& container, const Value& value)
+{
+	auto res = container.find(value);
+	return (res == container.end()) ? nullptr : &*res;
+}
+
 } // namespace utils

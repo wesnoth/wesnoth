@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 11:10-0500\n"
-"PO-Revision-Date: 2024-09-16 19:23+0200\n"
+"POT-Creation-Date: 2024-11-26 12:08-0600\n"
+"PO-Revision-Date: 2024-11-23 14:02+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -272,15 +272,15 @@ msgstr "Livello: "
 msgid "Cost: "
 msgstr "Costo: "
 
-#: src/editor/controller/editor_controller.cpp:186
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "Errore fatale"
 
-#: src/editor/controller/editor_controller.cpp:216
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "Vuoi davvero uscire?"
 
-#: src/editor/controller/editor_controller.cpp:218
+#: src/editor/controller/editor_controller.cpp:219
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -288,7 +288,7 @@ msgstr ""
 "Vuoi davvero uscire? Le modifiche apportate alla mappa dopo l’ultimo "
 "salvataggio saranno perdute."
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -296,53 +296,53 @@ msgstr ""
 "Vuoi davvero uscire? Le seguenti mappe sono state modificate e tutte le "
 "modifiche apportate dopo l’ultimo salvataggio saranno perdute:"
 
-#: src/editor/controller/editor_controller.cpp:237
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr ""
 "Non è stato possibile trovare un periodo della giornata applicabile "
 "all’editor."
 
-#: src/editor/controller/editor_controller.cpp:880
+#: src/editor/controller/editor_controller.cpp:882
 msgid "Add-on Files"
 msgstr "File dell’estensione"
 
-#: src/editor/controller/editor_controller.cpp:893
+#: src/editor/controller/editor_controller.cpp:895
 msgid "Opening files is not supported, contact your packager"
 msgstr "L’apertura dei file non è supportata, contatta il tuo packager"
 
-#: src/editor/controller/editor_controller.cpp:1313
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "Change Unit ID"
 msgstr "Cambia ID dell’unità"
 
-#: src/editor/controller/editor_controller.cpp:1314
+#: src/editor/controller/editor_controller.cpp:1316
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1330
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Rename Unit"
 msgstr "Rinomina unità"
 
-#: src/editor/controller/editor_controller.cpp:1331
+#: src/editor/controller/editor_controller.cpp:1333
 msgid "Name:"
 msgstr "Nome:"
 
 #: src/editor/editor_display.cpp:170
 msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
-msgstr ""
+msgstr "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
 
 #: src/editor/editor_display.cpp:172
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
-msgstr ""
+msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 
 #: src/editor/map/context_manager.cpp:217
 msgid "Load Map"
 msgstr "Carica mappa"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1130
 msgid "New Map"
 msgstr "Nuova mappa"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1130
 msgid "New Scenario"
 msgstr "Nuovo scenario"
 
@@ -435,10 +435,8 @@ msgid "Scenario saved."
 msgstr "Scenario salvato."
 
 #: src/editor/map/context_manager.cpp:902
-#, fuzzy
-#| msgid "Map saved."
 msgid "Map saved"
-msgstr "Mappa salvata."
+msgstr "Mappa salvata"
 
 #: src/editor/map/context_manager.cpp:977
 msgid "Loaded embedded map data"
@@ -485,12 +483,9 @@ msgstr ""
 "indica un file esistente"
 
 #: src/editor/map/map_context.cpp:264
-#, fuzzy
-#| msgid ""
-#| "Found the characters '<<' indicating inline lua is present - aborting"
 msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
 msgstr ""
-"Trovati i caratteri '<<' che indicano la presenza di una inline lua - "
+"Trovati i caratteri «<<» che indicano la presenza di una inline lua - "
 "abortire"
 
 #: src/editor/map/map_context.cpp:269
@@ -510,23 +505,23 @@ msgstr ""
 msgid "Unable to parse file to find map data"
 msgstr "Impossibile analizzare il file per trovare i dati della mappa"
 
-#: src/editor/map/map_context.cpp:823 src/editor/map/map_context.cpp:863
+#: src/editor/map/map_context.cpp:824 src/editor/map/map_context.cpp:864
 msgid "Could not save time schedule: $msg"
 msgstr "Impossibile salvare lo schema temporale: $msg"
 
-#: src/editor/map/map_context.cpp:857
+#: src/editor/map/map_context.cpp:858
 msgid "Time schedule saved."
 msgstr "Schema temporale salvato."
 
-#: src/editor/map/map_context.cpp:903
+#: src/editor/map/map_context.cpp:904
 msgid "Could not save the scenario: $msg"
 msgstr "Impossibile salvare lo scenario: $msg"
 
-#: src/editor/map/map_context.cpp:934
+#: src/editor/map/map_context.cpp:935
 msgid "Could not save into scenario"
 msgstr "Impossibile salvare nello scenario"
 
-#: src/editor/map/map_context.cpp:944
+#: src/editor/map/map_context.cpp:945
 msgid "Could not save the map: $msg"
 msgstr "Impossibile salvare la mappa: $msg"
 
@@ -543,10 +538,8 @@ msgid "Will not work in game without extra care."
 msgstr "Non funzionerà all’interno del gioco senza particolari attenzioni."
 
 #: src/editor/palette/item_palette.cpp:33
-#, fuzzy
-#| msgid "Right-click: "
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr "Mouse tasto-dx: "
+msgstr "Mouse tasto-sx: Piazza oggetto $item | tasto-dx per rimuovere"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
@@ -595,36 +588,24 @@ msgstr "Cmd + tasto mouse: copia terreno"
 msgid "Ctrl + click: copy terrain"
 msgstr "Cmd + tasto mouse: copia terreno"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:170
-msgid "Choose File"
-msgstr "Scegli un file"
+#~ msgid "Choose File"
+#~ msgstr "Scegli un file"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:171
-msgid "Select"
-msgstr "Seleziona"
+#~ msgid "Select"
+#~ msgstr "Seleziona"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:178
-#, fuzzy
-#| msgid ""
-#| "This file is outside Wesnoth's data dirs. Do you wish to copy it into "
-#| "your add-on?"
-msgid ""
-"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
-"add-on?"
-msgstr ""
-"Questo file si trova all’esterno della directory data di Wesnoth. Desideri "
-"copiarlo nelle tue estensioni?"
+#~ msgid ""
+#~ "This file is outside Wesnoth’s data dirs. Do you wish to copy it into "
+#~ "your add-on?"
+#~ msgstr ""
+#~ "Questo file si trova all’esterno della directory data di Wesnoth. "
+#~ "Desideri copiarlo nelle tue estensioni?"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/custom_tod.cpp:189
-#: src/gui/dialogs/editor/custom_tod.cpp:196
-msgid "Confirm"
-msgstr "Conferma"
+#~ msgid "Confirm"
+#~ msgstr "Conferma"
 
-#, fuzzy
-#~| msgid "Left-click: "
 #~ msgid "Left-click: Place item "
-#~ msgstr "Mouse tasto-sx: "
+#~ msgstr "Mouse tasto-sx: piazza oggetto "
 
 #~ msgid "Clipboard support not found, contact your packager"
 #~ msgstr "Supporto per la clipboard non disponibile, contatta il tuo packager"

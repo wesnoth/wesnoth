@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 11:10-0500\n"
+"POT-Creation-Date: 2024-11-26 12:08-0600\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -52,15 +52,15 @@ msgstr "𐑓𐑽𐑤𐑩𐑕"
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/weapon_specials.cfg:41
-#: data/core/macros/weapon_specials.cfg:52
+#: data/core/macros/weapon_specials.cfg:51
+#: data/core/macros/weapon_specials.cfg:62
 msgid "plague"
 msgstr "𐑐𐑤𐑱𐑜"
 
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
-#: data/core/macros/weapon_specials.cfg:53
+#: data/core/macros/weapon_specials.cfg:63
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -272,14 +272,14 @@ msgstr "𐑷𐑤𐑢𐑱𐑟 𐑮𐑧𐑕𐑑 𐑣𐑰𐑤𐑟"
 #. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
-#: data/core/macros/weapon_specials.cfg:21
+#: data/core/macros/weapon_specials.cfg:31
 msgid "backstab"
 msgstr "𐑚𐑨𐑒𐑕𐑑𐑨𐑚"
 
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:500
-#: data/core/macros/abilities.cfg:389
+#: data/core/macros/abilities.cfg:408
 msgid "feeding"
 msgstr "𐑓𐑰𐑛𐑦𐑙"
 
@@ -312,7 +312,7 @@ msgstr "𐑒𐑩𐑯𐑕𐑰𐑤𐑥𐑩𐑯𐑑"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:166
+#: data/core/macros/weapon_specials.cfg:161
 msgid "drains"
 msgstr "𐑛𐑮𐑱𐑯𐑟"
 
@@ -334,7 +334,7 @@ msgstr "𐑣𐑦𐑤𐑟"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/weapon_specials.cfg:86
+#: data/core/macros/weapon_specials.cfg:96
 msgid "marksman"
 msgstr "𐑥𐑸𐑒𐑕𐑥𐑩𐑯"
 
@@ -350,7 +350,7 @@ msgstr "𐑯𐑲𐑑𐑕𐑑𐑷𐑒"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:188
+#: data/core/macros/weapon_specials.cfg:183
 msgid "poison"
 msgstr "𐑐𐑶𐑟𐑩𐑯"
 
@@ -366,7 +366,7 @@ msgstr "𐑕𐑒𐑻𐑥𐑦𐑖𐑻"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/weapon_specials.cfg:64
+#: data/core/macros/weapon_specials.cfg:74
 msgid "slows"
 msgstr "𐑕𐑤𐑴𐑟"
 
@@ -972,7 +972,7 @@ msgid ""
 "\n"
 "• Event handlers and scripting\n"
 "\n"
-"The editor is not a tool to help you scripting the scenario’s event "
+"The editor is not a tool to help you with scripting the scenario’s event "
 "handlers.\n"
 "\n"
 "• Infinite Backwards Compatibility\n"
@@ -1083,7 +1083,7 @@ msgid ""
 "scenario mode\n"
 "• <span face='monospace'>scenarios/other.cfg</span>\n"
 "  ◦ this is the .cfg file containing everything that the scenario editor "
-"doesn't understand\n"
+"doesn’t understand\n"
 "• <span face='monospace'>scenarios/first.cfg</span>\n"
 "  ◦ inside the <span face='monospace'>[scenario]</span> element, use <span "
 "face='monospace'>map_file=&quot;first.map&quot;</span> to load the map file\n"
@@ -1100,8 +1100,8 @@ msgstr ""
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:439
 msgid ""
-"Masks can be applied to a base map for reusal in several scenarios playing "
-"at the same locations."
+"Masks can be applied to a base map for reuse in several scenarios playing at "
+"the same locations."
 msgstr ""
 
 #. [topic]: id=editor_time_schedule
@@ -1148,17 +1148,17 @@ msgstr ""
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:466
-msgid "Show all kinds of terrain</col></row>"
+msgid "Show all kinds of terrain"
 msgstr ""
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:467
-msgid "Show only water terrains</col></row>"
+msgid "Show only water terrains"
 msgstr ""
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:468
-msgid "Show only villages</col></row>"
+msgid "Show only villages"
 msgstr ""
 
 #. [topic]: id=editor_map_format
@@ -1176,11 +1176,10 @@ msgstr ""
 msgid ""
 "<header>Native</header>\n"
 "\n"
-"A map file consists of rows with comma separated terrain code strings. The "
+"A map file consists of rows with comma-separated terrain code strings. The "
 "only non-terrain information provided by the map syntax is the set of "
 "locations created by the <ref dst='editor_tool_starting'>Starting Locations "
-"Tool</ref>. The files can be edited with a general purpose text editor like "
-"notepad.\n"
+"Tool</ref>. The files can be edited with a general purpose text editor.\n"
 "\n"
 "These files can be used directly for multiplayer games, the number of "
 "players is automatically determined by the number of starting positions. "
@@ -1207,9 +1206,10 @@ msgstr ""
 msgid ""
 "<header>Embedded</header>\n"
 "\n"
-"The map data can stored as part of a scenario’s .cfg file, directly in the "
-"<italic>map_data</italic> attribute. In other words, in the place that the "
-"preprocessor would include it when using the preprocessor-include method.\n"
+"The map data can be stored as part of a scenario’s .cfg file, directly in "
+"the <italic>map_data</italic> attribute. In other words, in the place that "
+"the preprocessor would include it when using the preprocessor-include "
+"method.\n"
 "\n"
 "<header>Using Embedded Format in Terrain Mode</header>\n"
 "\n"
@@ -1848,12 +1848,12 @@ msgstr "𐑒𐑩𐑥𐑭𐑯𐑛𐑟"
 #: data/core/help.cfg:96
 #, fuzzy
 msgid ""
-"<br/><italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy "
-"strategy game somewhat unusual among modern strategy games. While other "
-"games strive for complexity, <italic>text='Battle for Wesnoth'</italic> "
-"strives for simplicity of both rules and gameplay. This does not make the "
-"game simple, however — from these simple rules arises a wealth of strategy, "
-"making the game easy to learn but a challenge to master.\n"
+"<italic>Battle for Wesnoth</italic> is a turn-based fantasy strategy game "
+"somewhat unusual among modern strategy games. While other games strive for "
+"complexity, <italic>Battle for Wesnoth</italic> strives for simplicity of "
+"both rules and gameplay. This does not make the game simple, however — from "
+"these simple rules arises a wealth of strategy, making the game easy to "
+"learn but a challenge to master.\n"
 "\n"
 "The following pages outline all you need to know to play Wesnoth. As you "
 "play, new information is added to the various categories as you come across "
@@ -3553,8 +3553,8 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:578
 msgid ""
-"<br/>Land-based villages generally give the best defense and movement as "
-"well. These villages are mixed terrains, based on the village terrain type, "
+"Land-based villages generally give the best defense and movement as well. "
+"These villages are mixed terrains, based on the village terrain type, "
 "together with hill, swamp, and cave, respectively.\n"
 "\n"
 msgstr ""
@@ -4707,13 +4707,49 @@ msgstr ""
 "𐑯𐑧𐑒𐑕𐑑 𐑑 𐑦𐑑. 𐑧𐑯𐑦 𐑧𐑯𐑩𐑥𐑦 𐑿𐑯𐑦𐑑 𐑞𐑨𐑑 𐑓𐑻𐑕𐑑 𐑛𐑦𐑕𐑒𐑳𐑝𐑼𐑟 𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑦𐑥𐑰𐑛𐑾𐑑𐑤𐑰 𐑤𐑵𐑟𐑩𐑟 𐑷𐑤 𐑦𐑑𐑕 "
 "𐑮𐑦𐑥𐑱𐑯𐑦𐑙 𐑥𐑵𐑝𐑥𐑩𐑯𐑑."
 
-#. [dummy]: id=feeding
+#. [hides]: id=swamp_lurk
+#: data/core/macros/abilities.cfg:388
+msgid "swamp lurk"
+msgstr ""
+
+#. [hides]: id=swamp_lurk
+#: data/core/macros/abilities.cfg:389
+#, fuzzy
+#| msgid "female^weak"
+msgid "female^swamp lurk"
+msgstr "𐑢𐑰𐑒"
+
+#. [hides]: id=swamp_lurk
 #: data/core/macros/abilities.cfg:390
+#, fuzzy
+#| msgid ""
+#| "Ambush:\n"
+#| "This unit can hide in forest, and remain undetected by its enemies.\n"
+#| "\n"
+#| "Enemy units cannot see this unit while it is in forest, except if they "
+#| "have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
+msgid ""
+"This unit can hide in swamp, and remain undetected by its enemies.\n"
+"\n"
+"Enemy units cannot see this unit while it is in swamp, except if they have "
+"units next to it. Any enemy unit that first discovers this unit immediately "
+"loses all its remaining movement."
+msgstr ""
+"𐑨𐑥𐑚𐑫𐑖:\n"
+"𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑒𐑨𐑯 𐑣𐑲𐑛 𐑦𐑯 𐑓𐑹𐑦𐑕𐑑, 𐑯 𐑮𐑦𐑥𐑱𐑯 𐑩𐑯𐑛𐑦𐑑𐑧𐑒𐑑𐑦𐑛 𐑚𐑲 𐑦𐑑𐑕 𐑧𐑯𐑦𐑥𐑦𐑟.\n"
+"\n"
+"𐑧𐑯𐑩𐑥𐑦 𐑿𐑯𐑦𐑑𐑕 𐑒𐑨𐑯𐑪𐑑 𐑕𐑰 𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑢𐑲𐑤 𐑦𐑑 𐑦𐑟 𐑦𐑯 𐑓𐑹𐑦𐑕𐑑, 𐑦𐑒𐑕𐑧𐑐𐑑 𐑦𐑓 𐑞𐑱 𐑣𐑨𐑝 𐑿𐑯𐑦𐑑𐑕 "
+"𐑯𐑧𐑒𐑕𐑑 𐑑 𐑦𐑑. 𐑧𐑯𐑦 𐑧𐑯𐑩𐑥𐑦 𐑿𐑯𐑦𐑑 𐑞𐑨𐑑 𐑓𐑻𐑕𐑑 𐑛𐑦𐑕𐑒𐑳𐑝𐑼𐑟 𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑦𐑥𐑰𐑛𐑾𐑑𐑤𐑰 𐑤𐑵𐑟𐑩𐑟 𐑷𐑤 𐑦𐑑𐑕 "
+"𐑮𐑦𐑥𐑱𐑯𐑦𐑙 𐑥𐑵𐑝𐑥𐑩𐑯𐑑."
+
+#. [dummy]: id=feeding
+#: data/core/macros/abilities.cfg:409
 msgid "female^feeding"
 msgstr "𐑓𐑰𐑛𐑦𐑙"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:391
+#: data/core/macros/abilities.cfg:410
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -5820,13 +5856,28 @@ msgid ""
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr "𐑿𐑯𐑦𐑑𐑕 𐑢𐑦𐑞 𐑑𐑮𐑱𐑑 𐑢𐑰𐑒 𐑜𐑧𐑑 𐑩 -1 𐑦𐑯𐑒𐑮𐑩𐑥𐑩𐑯𐑑 𐑦𐑯 𐑣𐑦𐑑𐑐𐑶𐑯𐑑𐑕 𐑯 𐑥𐑱𐑤𐑱 𐑛𐑨𐑥𐑦𐑡."
 
+#. [disable]: id=unwieldy
+#: data/core/macros/weapon_specials.cfg:7
+msgid "unwieldy"
+msgstr ""
+
+#. [disable]: id=unwieldy
+#: data/core/macros/weapon_specials.cfg:8
+msgid "This attack can only be used offensively."
+msgstr ""
+
+#. [disable]: id=unwieldy
+#: data/core/macros/weapon_specials.cfg:10
+msgid "This unit has an unwieldy weapon, which cannot be used defensively."
+msgstr ""
+
 #. [berserk]: id=berserk
-#: data/core/macros/weapon_specials.cfg:9
+#: data/core/macros/weapon_specials.cfg:19
 msgid "berserk"
 msgstr "𐑚𐑻𐑕𐑻𐑒"
 
 #. [berserk]: id=berserk
-#: data/core/macros/weapon_specials.cfg:10
+#: data/core/macros/weapon_specials.cfg:20
 #, fuzzy
 #| msgid ""
 #| "Berserk:\n"
@@ -5842,7 +5893,7 @@ msgstr ""
 "𐑝 𐑞 𐑒𐑩𐑥𐑚𐑨𐑑𐑩𐑯𐑑𐑕 𐑦𐑟 𐑕𐑤𐑱𐑯, 𐑹 30 𐑮𐑬𐑯𐑛𐑟 𐑝 𐑩𐑑𐑨𐑒𐑕 𐑣𐑨𐑝 𐑪𐑒𐑻𐑛."
 
 #. [damage]: id=backstab
-#: data/core/macros/weapon_specials.cfg:22
+#: data/core/macros/weapon_specials.cfg:32
 #, fuzzy
 #| msgid ""
 #| "Backstab:\n"
@@ -5860,7 +5911,7 @@ msgstr ""
 "𐑕𐑑𐑴𐑯 𐑹 𐑳𐑞𐑼𐑢𐑲𐑟 𐑐𐑺𐑩𐑤𐑲𐑟𐑛)."
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/weapon_specials.cfg:42
+#: data/core/macros/weapon_specials.cfg:52
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -5877,7 +5928,7 @@ msgstr ""
 "𐑕𐑱𐑥 𐑕𐑲𐑛 𐑨𐑟 𐑞 𐑿𐑯𐑦𐑑 𐑢𐑦𐑞 𐑞 𐑐𐑤𐑱𐑜 𐑩𐑑𐑨𐑒. 𐑞𐑦𐑕 𐑛𐑳𐑟𐑯𐑑 𐑢𐑻𐑒 𐑪𐑯 𐑳𐑯𐑛𐑧𐑛 𐑹 𐑿𐑯𐑦𐑑𐑕 𐑦𐑯 𐑝𐑦𐑤𐑦𐑡𐑦𐑟."
 
 #. [slow]: id=slow
-#: data/core/macros/weapon_specials.cfg:65
+#: data/core/macros/weapon_specials.cfg:75
 #, fuzzy
 #| msgid ""
 #| "Slow:\n"
@@ -5897,12 +5948,12 @@ msgstr ""
 "𐑲𐑒𐑪𐑯 𐑦𐑯 𐑦𐑑𐑕 𐑕𐑲𐑛𐑚𐑸 𐑦𐑯𐑓𐑼𐑥𐑱𐑖𐑩𐑑𐑦𐑪𐑯 𐑢𐑧𐑯 𐑦𐑑 𐑦𐑟 𐑕𐑩𐑤𐑧𐑒𐑑𐑩𐑛."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:75
+#: data/core/macros/weapon_specials.cfg:85
 msgid "petrifies"
 msgstr "𐑐𐑧𐑑𐑮𐑩𐑓𐑲𐑟"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:76
+#: data/core/macros/weapon_specials.cfg:86
 #, fuzzy
 #| msgid ""
 #| "Petrify:\n"
@@ -5917,7 +5968,7 @@ msgstr ""
 "𐑯𐑪𐑑 𐑥𐑵𐑝 𐑹 𐑩𐑑𐑨𐑒."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/weapon_specials.cfg:87
+#: data/core/macros/weapon_specials.cfg:97
 #, fuzzy
 #| msgid ""
 #| "Marksman:\n"
@@ -5929,39 +5980,13 @@ msgstr ""
 "𐑥𐑸𐑒𐑕𐑥𐑩𐑯:\n"
 "𐑢𐑧𐑯 𐑫𐑖𐑔𐑴𐑵𐑿𐑕𐑑 𐑩𐑓𐑧𐑯𐑕𐑦𐑝𐑤𐑰, 𐑞𐑦𐑕 𐑩𐑑𐑨𐑒 𐑷𐑤𐑢𐑱𐑟 𐑣𐑨𐑟 𐑨𐑑 𐑤𐑰𐑕𐑑 𐑩 60% 𐑗𐑭𐑯𐑕 𐑑 𐑣𐑦𐑑."
 
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/weapon_specials.cfg:100
-msgid "deflect"
-msgstr ""
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/weapon_specials.cfg:101
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
-msgid ""
-"When used defensively, this attack reduces the opponent’s chance to hit by "
-"10%."
-msgstr ""
-"𐑥𐑸𐑒𐑕𐑥𐑩𐑯:\n"
-"𐑢𐑧𐑯 𐑫𐑖𐑔𐑴𐑵𐑿𐑕𐑑 𐑩𐑓𐑧𐑯𐑕𐑦𐑝𐑤𐑰, 𐑞𐑦𐑕 𐑩𐑑𐑨𐑒 𐑷𐑤𐑢𐑱𐑟 𐑣𐑨𐑟 𐑨𐑑 𐑤𐑰𐑕𐑑 𐑩 60% 𐑗𐑭𐑯𐑕 𐑑 𐑣𐑦𐑑."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/weapon_specials.cfg:102
-msgid ""
-"This unit’s defensive techniques reduce the chance of a successful enemy "
-"attack."
-msgstr ""
-
 #. [chance_to_hit]: id=magical
-#: data/core/macros/weapon_specials.cfg:115
+#: data/core/macros/weapon_specials.cfg:110
 msgid "magical"
 msgstr "𐑥𐑨𐑡𐑦𐑒𐑩𐑤"
 
 #. [chance_to_hit]: id=magical
-#: data/core/macros/weapon_specials.cfg:116
+#: data/core/macros/weapon_specials.cfg:111
 #, fuzzy
 #| msgid ""
 #| "Magical:\n"
@@ -5976,12 +6001,12 @@ msgstr ""
 "𐑚𐑰𐑦𐑙 𐑩𐑑𐑨𐑒𐑑."
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:128
+#: data/core/macros/weapon_specials.cfg:123
 msgid "swarm"
 msgstr "𐑕𐑢𐑹𐑥"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:129
+#: data/core/macros/weapon_specials.cfg:124
 #, fuzzy
 #| msgid ""
 #| "Swarm:\n"
@@ -6001,12 +6026,12 @@ msgstr ""
 "𐑿𐑯𐑦𐑑 𐑢𐑦𐑞 3/4 𐑝 𐑦𐑑𐑕 𐑥𐑨𐑒𐑕𐑦𐑥𐑩𐑥 HP 𐑢𐑦𐑤 𐑜𐑧𐑑 3/4 𐑝 𐑞 𐑯𐑳𐑥𐑚𐑻 𐑝 𐑕𐑑𐑮𐑲𐑒𐑕."
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:139
+#: data/core/macros/weapon_specials.cfg:134
 msgid "charge"
 msgstr "𐑗𐑸𐑡"
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:140
+#: data/core/macros/weapon_specials.cfg:135
 #, fuzzy
 #| msgid ""
 #| "Charge:\n"
@@ -6021,26 +6046,25 @@ msgstr ""
 "𐑢𐑧𐑯 𐑫𐑖𐑔𐑴𐑵𐑿𐑕𐑑 𐑩𐑓𐑧𐑯𐑕𐑦𐑝𐑤𐑰, 𐑞𐑦𐑕 𐑩𐑑𐑨𐑒 𐑛𐑰𐑤𐑟 𐑛𐑳𐑚𐑩𐑤 𐑛𐑨𐑥𐑦𐑡 𐑑 𐑞 𐑑𐑸𐑜𐑧𐑑. 𐑦𐑑 𐑷𐑤𐑕𐑴 𐑒𐑷𐑟𐑩𐑟 "
 "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑑 𐑑𐑱𐑒 𐑛𐑳𐑚𐑩𐑤 𐑛𐑨𐑥𐑦𐑡 𐑓𐑮𐑪𐑥 𐑞 𐑑𐑸𐑜𐑩𐑑𐑕 𐑒𐑬𐑯𐑑𐑻𐑩𐑑𐑨𐑒."
 
-#. [damage]: id=absorb
-#: data/core/macros/weapon_specials.cfg:153
-msgid "absorb"
+#. [damage]: id=guard
+#: data/core/macros/weapon_specials.cfg:148
+msgid "guard"
 msgstr ""
 
-#. [damage]: id=absorb
-#: data/core/macros/weapon_specials.cfg:154
-msgid ""
-"This attack puts the unit in good defensive position, and it absorbs some of "
-"the damage dealt by an enemy strike."
+#. [damage]: id=guard
+#: data/core/macros/weapon_specials.cfg:149
+msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr ""
 
-#. [damage]: id=absorb
-#: data/core/macros/weapon_specials.cfg:155
+#. [damage]: id=guard
+#: data/core/macros/weapon_specials.cfg:150
 msgid ""
-"This unit can block enemy strikes, so that it takes reduced damage when hit."
+"This unit’s guarding attack can halve incoming damage, but only when used in "
+"combat."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:167
+#: data/core/macros/weapon_specials.cfg:162
 #, fuzzy
 #| msgid ""
 #| "Drain:\n"
@@ -6055,14 +6079,14 @@ msgstr ""
 "𐑛𐑰𐑤𐑟 (𐑮𐑬𐑯𐑛𐑩𐑛 𐑛𐑬𐑯)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:177
+#: data/core/macros/weapon_specials.cfg:172
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
 msgstr "J𐑓𐑻𐑕𐑑𐑕𐑑𐑮𐑲𐑒"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:178
+#: data/core/macros/weapon_specials.cfg:173
 #, fuzzy
 #| msgid ""
 #| "First Strike:\n"
@@ -6075,7 +6099,7 @@ msgstr ""
 "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑷𐑤𐑢𐑱𐑟 𐑕𐑑𐑮𐑲𐑒𐑕 𐑓𐑻𐑕𐑑 𐑢𐑦𐑞 𐑞𐑦𐑕 𐑩𐑑𐑨𐑒, 𐑰𐑝𐑩𐑯 𐑦𐑓 𐑞𐑱 𐑸 𐑛𐑦𐑓𐑧𐑯𐑛𐑦𐑙."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:189
+#: data/core/macros/weapon_specials.cfg:184
 #, fuzzy
 #| msgid ""
 #| "Poison:\n"
@@ -6092,19 +6116,19 @@ msgstr ""
 "𐑒𐑘𐑫𐑼𐑛 𐑹 𐑸 𐑮𐑦𐑛𐑿𐑕𐑑 𐑑 1 HP. 𐑐𐑶𐑟𐑩𐑯 𐑒𐑨𐑯 𐑯𐑪𐑑, 𐑝 𐑦𐑑𐑕𐑧𐑤𐑓, 𐑒𐑦𐑤 𐑩 𐑿𐑯𐑦𐑑."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:199
+#: data/core/macros/weapon_specials.cfg:194
 msgid "stun"
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:200
+#: data/core/macros/weapon_specials.cfg:195
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:201
+#: data/core/macros/weapon_specials.cfg:196
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -6116,19 +6140,19 @@ msgstr ""
 "𐑞𐑱 𐑧𐑯𐑛 𐑩 𐑑𐑻𐑯."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:208
+#: data/core/macros/weapon_specials.cfg:205
 msgid "arcane"
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:209
+#: data/core/macros/weapon_specials.cfg:206
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:210
+#: data/core/macros/weapon_specials.cfg:207
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -6383,9 +6407,8 @@ msgid ""
 "in the northwest, and the great northern woods of which the Lintanir Forest "
 "is the southernmost edge.\n"
 "\n"
-"Elves are the eldest race of the continent, with the possible exception of "
-"trolls. Many of their settlements cannot be reliably dated, undoubtedly "
-"having existed for several millennia.\n"
+"Elves are among the eldest races of the continent. Many of their settlements "
+"cannot be reliably dated, undoubtedly having existed for several millennia.\n"
 "\n"
 "<header>text='Magic'</header>\n"
 "While elves are fundamentally different creatures than the fabled fair folk, "
@@ -6874,25 +6897,50 @@ msgid ""
 "own, but some do so as a result of magical enchantment."
 msgstr ""
 
-#. [race]: id=merman
+#. [race]: id=transport
 #: data/core/units.cfg:294
+#, fuzzy
+#| msgid "race^Saurian"
+msgid "race^Ship"
+msgstr "𐑕𐑸𐑾𐑯"
+
+#. [race]: id=transport
+#: data/core/units.cfg:295
+#, fuzzy
+#| msgid "race+plural^Mechanical"
+msgid "race+plural^Ships"
+msgstr "𐑥𐑩𐑒𐑨𐑯𐑦𐑒𐑩𐑤"
+
+#. [race]: id=transport
+#: data/core/units.cfg:296
+msgid ""
+"Ships are not living beings, but they are crafted and (usually) controlled "
+"by living beings.  Although inanimate objects, they are very dear to their "
+"masters, needing care and attention in return for providing sustenance and "
+"protection.  For this reason, most are given names and attributed traits.  "
+"Those traits may be technical or they may simply reflect the collective "
+"attitude of the crew, but they are real."
+msgstr ""
+
+#. [race]: id=merman
+#: data/core/units.cfg:310
 msgid "race^Merman"
 msgstr "𐑥𐑻𐑥𐑨𐑯"
 
 #. [race]: id=merman
-#: data/core/units.cfg:295
+#: data/core/units.cfg:311
 msgid "race^Mermaid"
 msgstr "𐑥𐑻𐑥𐑱𐑛"
 
 #. [race]: id=merman
-#: data/core/units.cfg:296
+#: data/core/units.cfg:312
 #, fuzzy
 #| msgid "race^Troll"
 msgid "race^Merfolk"
 msgstr "𐑑𐑮𐑴𐑤"
 
 #. [race]: id=merman
-#: data/core/units.cfg:298
+#: data/core/units.cfg:314
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -6906,24 +6954,24 @@ msgid ""
 msgstr ""
 
 #. [race]: id=monster
-#: data/core/units.cfg:306
+#: data/core/units.cfg:322
 msgid "race^Monster"
 msgstr "𐑥𐑪𐑯𐑕𐑑𐑼"
 
 #. [race]: id=monster
-#: data/core/units.cfg:307
+#: data/core/units.cfg:323
 #, fuzzy
 #| msgid "race^Monster"
 msgid "race+female^Monster"
 msgstr "𐑥𐑪𐑯𐑕𐑑𐑼"
 
 #. [race]: id=monster
-#: data/core/units.cfg:308
+#: data/core/units.cfg:324
 msgid "race^Monsters"
 msgstr "𐑥𐑪𐑯𐑕𐑑𐑼𐑟"
 
 #. [race]: id=monster
-#: data/core/units.cfg:309
+#: data/core/units.cfg:325
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -6931,24 +6979,24 @@ msgid ""
 msgstr ""
 
 #. [race]: id=naga
-#: data/core/units.cfg:316
+#: data/core/units.cfg:332
 msgid "race^Naga"
 msgstr "𐑯𐑭𐑜𐑩"
 
 #. [race]: id=naga
-#: data/core/units.cfg:317
+#: data/core/units.cfg:333
 #, fuzzy
 #| msgid "race^Nagani"
 msgid "race^Nagini"
 msgstr "𐑯𐑨𐑜𐑭𐑯𐑰"
 
 #. [race]: id=naga
-#: data/core/units.cfg:318
+#: data/core/units.cfg:334
 msgid "race^Nagas"
 msgstr "𐑯𐑭𐑜𐑩𐑟"
 
 #. [race]: id=naga
-#: data/core/units.cfg:319
+#: data/core/units.cfg:335
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -6966,22 +7014,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=ogre
-#: data/core/units.cfg:327
+#: data/core/units.cfg:343
 msgid "race^Ogre"
 msgstr "𐑴𐑜𐑻"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:328
+#: data/core/units.cfg:344
 msgid "race+female^Ogre"
 msgstr "𐑴𐑜𐑻"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:329
+#: data/core/units.cfg:345
 msgid "race^Ogres"
 msgstr "𐑴𐑜𐑻𐑟"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:330
+#: data/core/units.cfg:346
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -7000,22 +7048,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:338
+#: data/core/units.cfg:354
 msgid "race^Orc"
 msgstr "𐑹𐑒"
 
 #. [race]: id=orc
-#: data/core/units.cfg:339
+#: data/core/units.cfg:355
 msgid "race+female^Orc"
 msgstr "𐑹𐑒"
 
 #. [race]: id=orc
-#: data/core/units.cfg:340
+#: data/core/units.cfg:356
 msgid "race^Orcs"
 msgstr "𐑹𐑒𐑕"
 
 #. [race]: id=orc
-#: data/core/units.cfg:341
+#: data/core/units.cfg:357
 #, fuzzy
 #| msgid ""
 #| "In appearance, orcs are half men and half beasts. They are taller, "
@@ -7175,7 +7223,7 @@ msgstr ""
 "𐑑𐑧𐑯𐑛 𐑑 𐑕𐑐𐑧𐑖𐑩𐑤𐑲𐑟 𐑦𐑯 𐑳𐑞𐑼 𐑕𐑒𐑦𐑤𐑟, 𐑤𐑲𐑒 𐑸𐑗𐑻𐑰 𐑹 𐑩𐑕𐑨𐑕𐑩𐑯𐑱𐑖𐑩𐑯."
 
 #. [race]: id=orc
-#: data/core/units.cfg:352
+#: data/core/units.cfg:368
 msgid ""
 "\n"
 "\n"
@@ -7184,28 +7232,28 @@ msgid ""
 msgstr ""
 
 #. [race]: id=raven
-#: data/core/units.cfg:361
+#: data/core/units.cfg:377
 #, fuzzy
 #| msgid "race^Dwarves"
 msgid "race^Raven"
 msgstr "𐑛𐑢𐑹𐑝𐑟"
 
 #. [race]: id=raven
-#: data/core/units.cfg:362
+#: data/core/units.cfg:378
 #, fuzzy
 #| msgid "race+female^Drake"
 msgid "race+female^Raven"
 msgstr "𐑛𐑮𐑱𐑒"
 
 #. [race]: id=raven
-#: data/core/units.cfg:363
+#: data/core/units.cfg:379
 #, fuzzy
 #| msgid "race^Dwarves"
 msgid "race^Ravens"
 msgstr "𐑛𐑢𐑹𐑝𐑟"
 
 #. [race]: id=raven
-#: data/core/units.cfg:364
+#: data/core/units.cfg:380
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
@@ -7225,22 +7273,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:375
+#: data/core/units.cfg:391
 msgid "race^Troll"
 msgstr "𐑑𐑮𐑴𐑤"
 
 #. [race]: id=troll
-#: data/core/units.cfg:376
+#: data/core/units.cfg:392
 msgid "race+female^Troll"
 msgstr "𐑑𐑮𐑴𐑤"
 
 #. [race]: id=troll
-#: data/core/units.cfg:377
+#: data/core/units.cfg:393
 msgid "race^Trolls"
 msgstr "𐑑𐑮𐑴𐑤𐑟"
 
 #. [race]: id=troll
-#: data/core/units.cfg:378
+#: data/core/units.cfg:394
 #, fuzzy
 #| msgid ""
 #| "Trolls are ancient creatures, one of the oldest known races known to "
@@ -7345,22 +7393,22 @@ msgstr ""
 "𐑢𐑺𐑧𐑝𐑻 𐑹𐑒𐑦𐑖 𐑣𐑹𐑛𐑟 𐑑𐑮𐑨𐑝𐑩𐑤."
 
 #. [race]: id=undead
-#: data/core/units.cfg:398
+#: data/core/units.cfg:414
 msgid "race^Undead"
 msgstr "𐑳𐑯𐑛𐑧𐑛"
 
 #. [race]: id=undead
-#: data/core/units.cfg:399
+#: data/core/units.cfg:415
 msgid "race+female^Undead"
 msgstr "𐑳𐑯𐑛𐑧𐑛"
 
 #. [race]: id=undead
-#: data/core/units.cfg:400
+#: data/core/units.cfg:416
 msgid "race+plural^Undead"
 msgstr "𐑳𐑯𐑛𐑧𐑛"
 
 #. [race]: id=undead
-#: data/core/units.cfg:401
+#: data/core/units.cfg:417
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -7397,24 +7445,24 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wolf
-#: data/core/units.cfg:414
+#: data/core/units.cfg:430
 msgid "race^Wolf"
 msgstr "𐑢𐑫𐑤𐑓"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:415
+#: data/core/units.cfg:431
 #, fuzzy
 #| msgid "race+female^Elf"
 msgid "race+female^Wolf"
 msgstr "𐑧𐑤𐑓"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:416
+#: data/core/units.cfg:432
 msgid "race^Wolves"
 msgstr "𐑢𐑫𐑤𐑝𐑟"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:417
+#: data/core/units.cfg:433
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -7426,17 +7474,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wose
-#: data/core/units.cfg:426
+#: data/core/units.cfg:442
 msgid "race^Wose"
 msgstr "𐑢𐑴𐑟"
 
 #. [race]: id=wose
-#: data/core/units.cfg:427
+#: data/core/units.cfg:443
 msgid "race^Woses"
 msgstr "𐑢𐑴𐑟𐑧𐑟"
 
 #. [race]: id=wose
-#: data/core/units.cfg:428
+#: data/core/units.cfg:444
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -7774,6 +7822,18 @@ msgstr ""
 msgid "Jamming Cost"
 msgstr ""
 
+#, fuzzy
+#~| msgid ""
+#~| "Marksman:\n"
+#~| "When used offensively, this attack always has at least a 60% chance to "
+#~| "hit."
+#~ msgid ""
+#~ "When used defensively, this attack reduces the opponent’s chance to hit "
+#~ "by 10%."
+#~ msgstr ""
+#~ "𐑥𐑸𐑒𐑕𐑥𐑩𐑯:\n"
+#~ "𐑢𐑧𐑯 𐑫𐑖𐑔𐑴𐑵𐑿𐑕𐑑 𐑩𐑓𐑧𐑯𐑕𐑦𐑝𐑤𐑰, 𐑞𐑦𐑕 𐑩𐑑𐑨𐑒 𐑷𐑤𐑢𐑱𐑟 𐑣𐑨𐑟 𐑨𐑑 𐑤𐑰𐑕𐑑 𐑩 60% 𐑗𐑭𐑯𐑕 𐑑 𐑣𐑦𐑑."
+
 #~ msgid "Close"
 #~ msgstr "𐑒𐑤𐑴𐑟"
 
@@ -8064,11 +8124,6 @@ msgstr ""
 #~| msgid "race+female^Human"
 #~ msgid "race+female^Khalifate Human"
 #~ msgstr "𐑣𐑿𐑥𐑩𐑯"
-
-#, fuzzy
-#~| msgid "race+plural^Mechanical"
-#~ msgid "race+plural^Khalifate"
-#~ msgstr "𐑥𐑩𐑒𐑨𐑯𐑦𐑒𐑩𐑤"
 
 #~ msgid "female^nightstalk"
 #~ msgstr "𐑯𐑲𐑑𐑕𐑑𐑷𐑒"

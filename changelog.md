@@ -1,18 +1,29 @@
-## Version 1.19.5+dev
+## Version 1.19.6+dev
+### Add-ons client
+### Add-ons server
+### Campaigns
+### Editor
+### Multiplayer
+### Lua API
+### Packaging
+### Terrain
+### Translations
+   * Updated translations: Bengali, British English, Italian
+### Units
+### User interface
+### WML Engine
+### Miscellaneous and Bug Fixes
+
+## Version 1.19.6
 ### Add-ons client
    * The Add-ons client now supports UI Theme type add-ons (id 'theme').
-### Add-ons server
 ### Campaigns
    * Son of the Black-Eye
      * Allowed Saurian Skirmishers to advance into Saurian Spearthrower.
    * The Hammer of Thursagan
      * Added Achievements.
-### Editor
 ### Multiplayer
    * OOS-bugs have been fixed.
-### Lua API
-### Packaging
-### Terrain
 ### Translations
    * Updated translations: Arabic, Bengali, British English, Chinese (Simplified), Czech, German, Hungarian, Norwegian, Turkish
 ### Units
@@ -32,6 +43,8 @@
    * An entry for accessing the Add-ons Manager has been added to the Campaign Selection dialog.
    * Help Browser now has a checkbox for showing/hiding the contents list in low-resolution systems (800x600 or less).
    * It is now possible to select text in MP Lobby chat and Gamestate Inspector via mouse drag.
+   * Switched default Pango/Cairo backend from CoreText to Fontconfig on macOS to fix issues with certain fonts such as Oldania ADF Std being unrecognized on current OS versions (issue #8488).
+   * More titlescreen images have been added.
 ### WML Engine
    * Add a [remove_specials] tag in [effect] to be able to remove specials with other criteria than the id (type of the special, active_on, apply_to or other attributes).
    * Add [filter_special] to [has_attack/filter_weapon] in order to simultaneously check specials with id and type, and/or other attributes.

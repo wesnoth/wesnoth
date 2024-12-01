@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 16:11 UTC\n"
-"PO-Revision-Date: 2024-09-16 19:13+0200\n"
+"POT-Creation-Date: 2024-11-26 18:08 UTC\n"
+"PO-Revision-Date: 2024-11-23 15:18+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <>\n"
 "Language: it\n"
@@ -41,8 +41,8 @@ msgstr ""
 #: data/core/units/dunefolk/Sunderer.cfg:32
 #: data/core/units/dunefolk/Windbolt.cfg:32
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:37
-#: data/core/units/nagas/Guard_Shield.cfg:35
+#: data/core/units/nagas/Guard.cfg:26 data/core/units/nagas/Guard_High.cfg:36
+#: data/core/units/nagas/Guard_Shield.cfg:36
 msgid "mace"
 msgstr "mazza"
 
@@ -176,7 +176,7 @@ msgstr "fionda"
 #: data/core/units/monsters/Bear.cfg:42 data/core/units/monsters/Caribe.cfg:114
 #: data/core/units/monsters/Caribe_Hunter.cfg:115
 #: data/core/units/monsters/Caribe_Nibbler.cfg:129
-#: data/core/units/monsters/Cat_Forest.cfg:92
+#: data/core/units/monsters/Cat_Forest.cfg:91
 #: data/core/units/monsters/Giant_Spider.cfg:28
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Shadow_Jumping_Spider.cfg:87
@@ -325,7 +325,7 @@ msgstr "mazzafrusto"
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:25
 #: data/core/units/humans/Loyalist_Sergeant.cfg:27
 #: data/core/units/humans/Loyalist_Swordsman.cfg:29
-#: data/core/units/humans/Woodsman_Ranger.cfg:44
+#: data/core/units/humans/Woodsman_Ranger.cfg:49
 #: data/core/units/nagas/Fighter.cfg:30 data/core/units/nagas/Myrmidon.cfg:29
 #: data/core/units/nagas/Warrior.cfg:27 data/core/units/orcs/Grunt.cfg:88
 #: data/core/units/orcs/Leader.cfg:27
@@ -467,9 +467,9 @@ msgstr "tempesta gelida"
 #: data/core/units/elves/Rider.cfg:41 data/core/units/elves/Scout.cfg:41
 #: data/core/units/humans/Loyalist_Bowman.cfg:32
 #: data/core/units/humans/Woodsman.cfg:37
-#: data/core/units/humans/Woodsman_Huntsman.cfg:45
+#: data/core/units/humans/Woodsman_Huntsman.cfg:48
 #: data/core/units/humans/Woodsman_Poacher.cfg:42
-#: data/core/units/humans/Woodsman_Ranger.cfg:53
+#: data/core/units/humans/Woodsman_Ranger.cfg:58
 #: data/core/units/humans/Woodsman_Trapper.cfg:42
 #: data/core/units/orcs/Archer.cfg:33 data/core/units/orcs/Archer.cfg:42
 #: data/core/units/orcs/Warlord.cfg:39
@@ -619,7 +619,7 @@ msgstr "maledizione"
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
 #: data/core/units/monsters/Boar.cfg:50
 #: data/core/units/monsters/Boar_Piglet.cfg:50
-#: data/core/units/monsters/Crocodile.cfg:159
+#: data/core/units/monsters/Crocodile.cfg:146
 #: data/core/units/monsters/Dragonfly.cfg:31
 #: data/core/units/monsters/Dragonfly_Grand.cfg:32
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:62
@@ -749,7 +749,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Rogue.cfg:26
 #: data/core/units/humans/Outlaw_Thief.cfg:94
 #: data/core/units/humans/Woodsman.cfg:28
-#: data/core/units/humans/Woodsman_Huntsman.cfg:36
+#: data/core/units/humans/Woodsman_Huntsman.cfg:39
 #: data/core/units/humans/Woodsman_Poacher.cfg:33
 #: data/core/units/humans/Woodsman_Trapper.cfg:33
 #: data/core/units/nagas/Dirkfang.cfg:29 data/core/units/orcs/Archer.cfg:24
@@ -1207,7 +1207,7 @@ msgid "Boat"
 msgstr "Barca"
 
 #. [unit_type]: id=Boat, race=mechanical
-#: data/core/units/boats/Boat.cfg:17
+#: data/core/units/boats/Boat.cfg:21
 msgid ""
 "Propelled by oars or small sails, boats are used to travel short distances "
 "and in shallows where large ships cannot navigate."
@@ -1216,25 +1216,69 @@ msgstr ""
 "brevi distanze o per gli spostamenti nelle acque basse, dove le grandi navi "
 "non riescono a navigare."
 
+#. [unit_type]: id=Derelict Hulk, race=transport
+#: data/core/units/boats/Derelict_Galleon.cfg:4
+msgid "Derelict Hulk"
+msgstr ""
+
+#. [unit_type]: id=Derelict Hulk, race=transport
+#: data/core/units/boats/Derelict_Galleon.cfg:18
+msgid ""
+"Derelicts are abandoned wrecks that continue to drift across the seas.  Most "
+"are merely ruined ships that will soon sink, but there are tales of others "
+"that haunt certain waterways for generations."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/boats/Derelict_Galleon.cfg:135
+msgid "jetsam"
+msgstr ""
+
+#. [unit_type]: id=Fireship, race=transport
+#: data/core/units/boats/Fireship.cfg:4
+#, fuzzy
+#| msgid "Fire Wisp"
+msgid "Fireship"
+msgstr "Spiritello di Fuoco"
+
+#. [unit_type]: id=Fireship, race=transport
+#: data/core/units/boats/Fireship.cfg:18
+msgid ""
+"Fireships are generally derelict or doomed ships set ablaze to create chaos "
+"in one last act of belligerence.  Their main hazard is fiery collision, but "
+"they also shed burning embers.  Sometimes they have a skeleton crew to guide "
+"them, but often they just drift along on unseen winds and currents."
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/boats/Fireship.cfg:135
+msgid "ember"
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/boats/Fireship.cfg:144
+msgid "crash"
+msgstr ""
+
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
 msgstr "Galeone"
 
 #. [unit_type]: id=Galleon, race=mechanical
-#: data/core/units/boats/Galleon.cfg:19
+#: data/core/units/boats/Galleon.cfg:23
 msgid "Galleons are blue-water ships built for trade and transport."
 msgstr ""
 "I galeoni sono navi d’alto mare costruite per il commercio e il trasporto "
 "marittimo."
 
-#. [unit_type]: id=Pirate Galleon, race=mechanical
+#. [unit_type]: id=Pirate Galleon, race=transport
 #: data/core/units/boats/Pirate_Galleon.cfg:4
 msgid "Pirate Galleon"
 msgstr "Galeone pirata"
 
-#. [unit_type]: id=Pirate Galleon, race=mechanical
-#: data/core/units/boats/Pirate_Galleon.cfg:17
+#. [unit_type]: id=Pirate Galleon, race=transport
+#: data/core/units/boats/Pirate_Galleon.cfg:22
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
@@ -1245,18 +1289,18 @@ msgstr ""
 "altre navi a disfarsi del loro pesante carico."
 
 #. [attack]: type=pierce
-#: data/core/units/boats/Pirate_Galleon.cfg:20
-#: data/core/units/boats/Transport_Galleon.cfg:20
+#: data/core/units/boats/Pirate_Galleon.cfg:160
+#: data/core/units/boats/Transport_Galleon.cfg:158
 msgid "ballista"
 msgstr "balista"
 
-#. [unit_type]: id=Transport Galleon, race=mechanical
+#. [unit_type]: id=Transport Galleon, race=transport
 #: data/core/units/boats/Transport_Galleon.cfg:4
 msgid "Transport Galleon"
 msgstr "Galeone da trasporto"
 
-#. [unit_type]: id=Transport Galleon, race=mechanical
-#: data/core/units/boats/Transport_Galleon.cfg:16
+#. [unit_type]: id=Transport Galleon, race=transport
+#: data/core/units/boats/Transport_Galleon.cfg:20
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can land the troops to attack."
@@ -1422,19 +1466,6 @@ msgstr "Drago Distruttore"
 
 #. [unit_type]: id=Drake Clasher, race=drake, gender=male,female
 #: data/core/units/drakes/Clasher.cfg:19
-#, fuzzy
-#| msgid ""
-#| "The Clashers are members of a unique caste among the drakes. Their thick "
-#| "armor, while compensating for the drakes’ natural weakness against spears "
-#| "and arrows, is so heavy and restricting that they are not able to fly or "
-#| "muster enough breath to use their inner fire. They have embraced this "
-#| "handicap, completely encasing their wings to emphasize that they do not "
-#| "need flight to triumph in battle.\n"
-#| "\n"
-#| "This is also the only caste that is allowed to break taboo and fight with "
-#| "spears in addition to the drake’s traditional metal claws, which makes "
-#| "them particularly good at \"resolving\" territorial disputes with other "
-#| "drakes and enforcing the laws of their tribe."
 msgid ""
 "The Clashers are members of a unique caste among the drakes. Their thick "
 "armor, while compensating for the drakes’ natural weakness against spears "
@@ -1806,7 +1837,7 @@ msgid ""
 "Compared to other drakes, Drake Wardens have a higher resistance to ‘pierce’ "
 "attacks."
 msgstr ""
-"Rispetto agli altri draghi, i Custodi hanno una resistenza maggiore agli "
+"Rispetto agli altri draghi, i custodi hanno una resistenza maggiore agli "
 "attacchi di tipo ‘perforazione’."
 
 #. [female]: gender=female
@@ -2204,7 +2235,7 @@ msgid ""
 "thrust of spears is often enough to severely cripple the target, allowing "
 "the main Dunefolk force to close in and finish the job."
 msgstr ""
-"Sebbene le Albanelle possano svolgere un ruolo simile a quello delle "
+"Sebbene le albanelle possano svolgere un ruolo simile a quello delle "
 "Tiratrici nell’ostacolare le forze nemiche, il loro epiteto deriva in realtà "
 "dal tipo di falco che impiegano per mantenere il contatto col grosso di una "
 "truppa del Popolo delle Dune: un falco albanese, o appunto albanella. "
@@ -3090,12 +3121,6 @@ msgstr "Nano Minatore"
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/core/units/dwarves/Miner.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Dwarvish miners are the grunt workers of dwarvish society. They take the "
-#| "precious ores out of the ground, but do not ever take part in the "
-#| "crafting of weapons or artifacts. They have no military training, but "
-#| "they can still do some damage with their picks."
 msgid ""
 "Dwarvish Miners are the grunt workers of dwarvish society. They take the "
 "precious ores out of the ground, but do not ever take part in the crafting "
@@ -3103,7 +3128,7 @@ msgid ""
 "weighty pickaxes can deal substantial damage."
 msgstr ""
 "I nani minatori sono la bassa manovalanza della società nanica. Estraggono i "
-"preziosi minerali dal suolo, ma non prendono parte nella manifattura delle "
+"preziosi minerali dal suolo, ma non prendono parte alla manifattura delle "
 "armi o degli artefatti. Non hanno alcun addestramento militare, ma possono "
 "comunque causare dei danni attaccando con i loro picconi."
 
@@ -4933,14 +4958,14 @@ msgid ""
 "Compared to other loyalists, Royal Guards have a higher resistance to "
 "‘blade’ and ‘impact’ attacks."
 msgstr ""
-"Rispetto agli altri lealisti, le Guardie Reali hanno una resistenza maggiore "
+"Rispetto agli altri lealisti, le guardie reali hanno una resistenza maggiore "
 "agli attacchi di tipo ‘taglio’ e ‘impatto’."
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:25
 msgid "Compared to other loyalists, Royal Guards have more movement points."
 msgstr ""
-"Rispetto agli altri lealisti, le Guardie Reali hanno più punti movimento."
+"Rispetto agli altri lealisti, le guardie reali hanno più punti movimento."
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
@@ -4980,7 +5005,7 @@ msgid ""
 "drawback of such heavy armor is, of course, the time it takes to move into "
 "and out of combat."
 msgstr ""
-"Le truppe d’assalto sono il corpo migliore della fanteria pesante: una parte "
+"Le truppe d’assalto sono l’elite della fanteria pesante: una parte "
 "significativa del loro impiego consiste nella semplice intimidazione. I soli "
 "uomini che possono entrare nelle loro fila appaiono incredibilmente possenti "
 "e, quando indossano le loro armature nere ricoperte di spuntoni, sono uno "
@@ -5041,7 +5066,7 @@ msgid ""
 "Compared to other loyalists, Swordsmen have a higher resistance to ‘blade’ "
 "and ‘impact’ attacks."
 msgstr ""
-"Rispetto agli altri lealisti, gli Armigeri hanno una resistenza maggiore "
+"Rispetto agli altri lealisti, gli armigeri hanno una resistenza maggiore "
 "agli attacchi di tipo ‘taglio’ e ‘impatto’."
 
 #. [unit_type]: id=Mage, race=human, gender=male,female
@@ -5221,7 +5246,7 @@ msgid ""
 "Compared to other mages, Great Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
-"Rispetto agli altri maghi, i Maghi Supremi hanno una resistenza maggiore "
+"Rispetto agli altri maghi, i maghi supremi hanno una resistenza maggiore "
 "agli attacchi di tipo ‘fuoco’."
 
 #. [female]: gender=female
@@ -5270,7 +5295,7 @@ msgid ""
 "Compared to other mages, Red Mages have a higher resistance to ‘fire’ "
 "attacks."
 msgstr ""
-"Rispetto agli altri maghi, i Maghi Rossi hanno una resistenza maggiore agli "
+"Rispetto agli altri maghi, i maghi rossi hanno una resistenza maggiore agli "
 "attacchi di tipo ‘fuoco’."
 
 #. [female]: gender=female
@@ -5372,7 +5397,7 @@ msgid ""
 "Compared to other mages, White Mages have a higher resistance to ‘arcane’ "
 "attacks."
 msgstr ""
-"Rispetto agli altri maghi, i Maghi Bianchi hanno una resistenza maggiore "
+"Rispetto agli altri maghi, i maghi bianchi hanno una resistenza maggiore "
 "agli attacchi di tipo ‘arcano’."
 
 #. [female]: gender=female
@@ -5409,7 +5434,7 @@ msgid ""
 "Compared to other mages, Mages of Light have a higher resistance to ‘arcane’ "
 "attacks."
 msgstr ""
-"Rispetto agli altri maghi, i Maghi della Luce hanno una resistenza maggiore "
+"Rispetto agli altri maghi, i maghi della luce hanno una resistenza maggiore "
 "agli attacchi di tipo ‘arcano’."
 
 #. [female]: gender=female
@@ -5749,14 +5774,30 @@ msgstr "Maestro di Caccia"
 
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:19
+#, fuzzy
+#| msgid ""
+#| "Hunting is a popular sport of noblemen, but it can also be a livelihood "
+#| "for commoners. Like any other craft, it has men of masterful skill in its "
+#| "practice. Huntsmen know all the tricks of their trade, and are skilled at "
+#| "navigating the wilderness, at tracking, and at the use of the bow. They "
+#| "are a fair shot at moving targets, and targets hiding under brush and "
+#| "cover; a skill wrought from years of practice at shooting game, and one "
+#| "which garrisoned bowmen often lack.\n"
+#| "\n"
+#| "Master hunters are employed by any group living in or passing through "
+#| "wild country, be they men of the law, or those working against it. Even "
+#| "nature itself can have deadly surprises, and any commander who fails to "
+#| "hire a such a guide can lose his men to nothing more than terrain. Good "
+#| "woodsmen can save lives, ease travel, provide food, and their skill with "
+#| "a bow is capitally useful in a fight."
 msgid ""
 "Hunting is a popular sport of noblemen, but it can also be a livelihood for "
 "commoners. Like any other craft, it has men of masterful skill in its "
 "practice. Huntsmen know all the tricks of their trade, and are skilled at "
-"navigating the wilderness, at tracking, and at the use of the bow. They are "
-"a fair shot at moving targets, and targets hiding under brush and cover; a "
-"skill wrought from years of practice at shooting game, and one which "
-"garrisoned bowmen often lack.\n"
+"tracking, the use of the bow, and at disguising their silhouette and scent "
+"among the marshy wilds. They are a fair shot at moving targets, and targets "
+"hiding under brush and cover; a skill wrought from years of practice at "
+"shooting game, and one which garrisoned bowmen often lack.\n"
 "\n"
 "Master hunters are employed by any group living in or passing through wild "
 "country, be they men of the law, or those working against it. Even nature "
@@ -5815,12 +5856,27 @@ msgstr "Ranger"
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:19
+#, fuzzy
+#| msgid ""
+#| "Rangers are wild men and wanderers, who have chosen to shun the company "
+#| "of their fellow men for myriad reasons. They have spent the better part "
+#| "of their lives in the thick of nature, and know many of its secrets. They "
+#| "are excellent pathfinders and explorers, and can find food and shelter "
+#| "where other men would find only sticks and stones.\n"
+#| "\n"
+#| "The presence of these men troubles the more authoritarian of rulers; they "
+#| "are an element that knights and landed armies cannot control. They are "
+#| "men of dubious motives, and are the first to scoff at any royal decree, "
+#| "if they even hear of it at all. Rangers can be hired, but they are just "
+#| "as likely to be in the employ of bandits, as they are to be in the king’s "
+#| "service."
 msgid ""
 "Rangers are wild men and wanderers, who have chosen to shun the company of "
-"their fellow men for myriad reasons. They have spent the better part of "
-"their lives in the thick of nature, and know many of its secrets. They are "
-"excellent pathfinders and explorers, and can find food and shelter where "
-"other men would find only sticks and stones.\n"
+"their fellow men for myriad reasons. Unaccustomed to places of civilization, "
+"they have spent the better part of their lives in the thick of nature, and "
+"know many of its secrets. They are excellent pathfinders and explorers, and "
+"can find food and shelter where other men would find only sticks and "
+"stones.\n"
 "\n"
 "The presence of these men troubles the more authoritarian of rulers; they "
 "are an element that knights and landed armies cannot control. They are men "
@@ -6197,10 +6253,10 @@ msgid ""
 "wreak damage. They are also useful in melee, even deep under the surface, "
 "which is something that certainly cannot be said of arrows."
 msgstr ""
-"L’uso di arco e frecce non trova grandi favori tra i nereidi, per i quali i "
-"giavellotti svolgono una funzione simile. Anche se i giavellotti sono ben "
-"poco utili sott’acqua, risultano estremamente efficaci in superficie, dove "
-"il loro peso permette loro di sprofondare ad alcuni piedi sott’acqua "
+"L’uso di arco e frecce non è molto apprezzato dai nereidi, preferendo "
+"utilizzare i giavellotti in loro vece. Sebbene i giavellotti siano ben poco "
+"utili sott’acqua, risultano estremamente efficaci in superficie, dove il "
+"peso dell’arma permette loro di sprofondare ad alcuni piedi sott’acqua "
 "mantenendo una forza cinetica sufficiente a causare dei danni. Inoltre si "
 "rivelano utili nel combattimento in mischia, anche sotto la superficie "
 "dell’acqua, cosa che non si può invece dire delle frecce."
@@ -6292,7 +6348,7 @@ msgid ""
 "any suitable location.\n"
 "\n"
 msgstr ""
-"Le Formiche Giganti sono diffuse in quasi tutti gli ambienti, e le loro uova "
+"Le formiche giganti sono diffuse in quasi tutti gli ambienti, e le loro uova "
 "da cui emergono si trovano spesso in caverne o in qualsiasi ambiente "
 "riparato. La maggior parte delle uova proviene da una delle regine della "
 "colonia, ma le operaie le trasportano in qualsiasi luogo adatto.\n"
@@ -6311,7 +6367,7 @@ msgid ""
 "colony queens, but the workers transport them to any suitable location.\n"
 "\n"
 msgstr ""
-"Quando in gran numero, le Formiche del Fuoco possono rappresentare una seria "
+"Quando in gran numero, le formiche del fuoco possono rappresentare una seria "
 "minaccia, e quei numeri minacciosi iniziano dalle loro uova. La maggior "
 "parte delle uova proviene da una delle regine della colonia, ma le operaie "
 "le trasportano in qualsiasi luogo adatto.\n"
@@ -6358,7 +6414,7 @@ msgid ""
 "Fire ants possess fierce fangs and an unusual ability to generate fire, and "
 "the queen is no different."
 msgstr ""
-"Le Formiche del Fuoco sfoderano possenti zanne e una insolita capacità di "
+"Le formiche del fuoco sfoderano possenti zanne e una insolita capacità di "
 "generare fuoco; la loro regina non è diversa."
 
 #. [unit_type]: id=Firebane Ant, race=monster
@@ -6380,8 +6436,8 @@ msgid ""
 "also makes them weak to physical attacks and they cannot sustain the fire as "
 "their health fails."
 msgstr ""
-"Le Formiche del Fuoco possono evolvere e specializzarsi in diversi modi. Le "
-"Incendiarie possono produrre e trasportare grosse quantità del loro spray "
+"Le formiche del fuoco possono evolvere e specializzarsi in diversi modi. Le "
+"incendiarie possono produrre e trasportare grosse quantità del loro spray "
 "infiammabile in un addome rigonfio, che può essere utilizzato per un "
 "terribile attacco, ma che le rende anche vulnerabili agli attacchi fisici e "
 "non permette loro di sostenere il fuoco mentre la loro salute peggiora."
@@ -6403,7 +6459,7 @@ msgid ""
 "a very short continued existence — and if their flesh is warm and "
 "nourishing, they can host an ant egg."
 msgstr ""
-"Le Formiche Giganti sono piuttosto comuni in quasi tutti gli ambienti, dalle "
+"Le formiche giganti sono piuttosto comuni in quasi tutti gli ambienti, dalle "
 "più profonde caverne della terra alle più alte cime delle montagne. Le "
 "regine non sono così regali come vengono considerate quelle di molte altre "
 "razze, ma sono il cuore pulsante di ogni nido operativo e verranno difese ad "
@@ -6553,12 +6609,6 @@ msgstr "Leone delle foreste"
 
 #. [unit_type]: id=Forest Lion, race=cats
 #: data/core/units/monsters/Cat_Forest.cfg:31
-#, fuzzy
-#| msgid ""
-#| "Forest Lions are light-brown cats, roughly the same size as a wolf, that "
-#| "hunt the woods and hills at dusk and dawn.  Their most distinctive "
-#| "feature is their odd, triply branched tail, which they seem to use for "
-#| "camouflage and disruptive patterning."
 msgid ""
 "Forest Lions are light-brown cats, roughly the same size as a wolf, that "
 "hunt the woods and hills at dusk and dawn. Their most distinctive feature is "
@@ -6567,8 +6617,8 @@ msgid ""
 msgstr ""
 "I leoni delle foreste sono dei felini dal manto marrone chiaro, più o meno "
 "della taglia di un lupo, che cacciano nei boschi e nelle colline all’alba e "
-"al tramonto. Caratteristica e distintiva è la loro strana coda a tre rami, "
-"che sembrano usare per mimetizzarsi o come azione di disturbo."
+"al tramonto. Caratteristica distintiva è la loro strana coda a tre rami, che "
+"sembrano usare per mimetizzarsi o come azione di disturbo."
 
 #. [unit_type]: id=Jumpcat, race=cats
 #: data/core/units/monsters/Cat_Jump.cfg:4
@@ -6577,15 +6627,6 @@ msgstr "Gatto salterino"
 
 #. [unit_type]: id=Jumpcat, race=cats
 #: data/core/units/monsters/Cat_Jump.cfg:30
-#, fuzzy
-#| msgid ""
-#| "Jumpcats are opportunistic predators with keen senses and fast reflexes, "
-#| "but very little bulk, so they are easily dispatched if they can be hit, "
-#| "and easily scared off if they can't.  One of the most distinctive "
-#| "features of these odd creatures is the hard clump of twigs, clay, and "
-#| "rocks they carry on their tail, which is their primary offensive weapon.  "
-#| "Their actions are mostly driven by instinct, but they are sometimes used "
-#| "as assassins by more sophisticated handlers."
 msgid ""
 "Jumpcats are opportunistic predators with keen senses and fast reflexes, but "
 "very little bulk, so they are easily dispatched if they can be hit, and "
@@ -6596,8 +6637,8 @@ msgid ""
 "sophisticated handlers."
 msgstr ""
 "I gatti salterini sono dei predatori opportunisti dai sensi acuti e i "
-"riflessi rapidi, ma piuttosto piccoli e quindi vengono facilmente eliminati "
-"se possono essere colpiti e facilmente spaventati se non si riesce farlo. "
+"riflessi rapidi, ma piuttosto piccoli e quindi possono essere facilmente "
+"eliminati se si riesce a colpirli, o quantomeno a spaventarli se si mancano. "
 "Una delle caratteristiche più distintive di queste strane creature è il duro "
 "ammasso di ramoscelli, argilla e rocce che trasportano sulla coda, che è la "
 "loro principale arma offensiva. Le loro azioni sono per lo più guidate "
@@ -6620,7 +6661,7 @@ msgid ""
 "ancestors."
 msgstr ""
 "Le paludi sono ambienti vibranti, ma spesso poco amichevoli per umani o "
-"orchi. Le Lucertole Palustri sono uno dei pericoli più grandi, con le loro "
+"orchi. Le lucertole palustri sono uno dei pericoli più grandi, con le loro "
 "potenti mascelle e la pelle corazzata. Nonostante il loro aspetto primitivo, "
 "queste lucertole non sono stupide e, dopo generazioni in cui sono state "
 "cacciate per le loro pelli, hanno adottato una atteggiamento minaccioso \"su "
@@ -6634,33 +6675,6 @@ msgid ""
 msgstr ""
 "Questa unità può muoversi inosservata sui territori paludosi, mantenendo la "
 "maggior parte del suo corpo sott’acqua."
-
-#. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:144
-msgid "swamp lurk"
-msgstr "agguato nella palude"
-
-#. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:145
-msgid "female^swamp lurk"
-msgstr "agguato nella palude"
-
-#. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:146
-msgid ""
-"This unit can hide in swamp, and remain undetected by its enemies.\n"
-"\n"
-"Enemy units cannot see this unit while it is in swamp, except if they have "
-"units next to it. Any enemy unit that first discovers this unit immediately "
-"loses all its remaining movement."
-msgstr ""
-"Questa unità può nascondersi nella palude e non essere rilevata dai suoi "
-"nemici.\n"
-"\n"
-"Le unità nemiche non possono vedere questa unità mentre si trova nella "
-"palude, a meno che non abbiano accanto una unità. Qualsiasi unità nemica che "
-"scopre per prima questa unità perde immediatamente tutto il suo movimento "
-"rimanente."
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
@@ -6914,7 +6928,7 @@ msgid ""
 "animals, but are quite territorial and the young adults have been known to "
 "attack larger intruders, including humans and orcs."
 msgstr ""
-"Gli Ermellini dei Ghiacci sono dei subdoli roditori che possono essere "
+"Gli ermellini dei ghiacci sono dei subdoli roditori che possono essere "
 "trovati prevalentemente nei territori ghiacciati del Nord, sebbene possano "
 "sopravvivere dappertutto. La loro principale caratteristica sono gli artigli "
 "ghiacciati delle zampe anteriori, diversi da quelli di qualsiasi altro "
@@ -7430,14 +7444,6 @@ msgstr "Scorpione delle rocce"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:47
-#, fuzzy
-#| msgid ""
-#| "Rock scorpions have featured in tales of highwaymen and drunks, but there "
-#| "has been scant evidence that they truly exist. They've been described as "
-#| "stealthy monsters with a hide of solid rock, and sharp, crystalline "
-#| "claws. Unlike most scorpions, they do not deliver their poison with a "
-#| "piercing stinger, but instead spray their enemies with a noxious, "
-#| "volatile stream."
 msgid ""
 "Rock scorpions have featured in tales of highwaymen and drunks, but there "
 "has been scant evidence that they truly exist. They’ve been described as "
@@ -7724,7 +7730,7 @@ msgid ""
 "match. Posing a considerable threat to even experienced soldiers, direwolves "
 "are avoided by all but madmen."
 msgstr ""
-"I ‘Metalupi’ differiscono dalla varietà comune solo per dimensioni e colore. "
+"I ‘metalupi’ differiscono dalla varietà comune solo per dimensioni e colore. "
 "In genere sono più alti di un cavallo al garrese e hanno un appetito "
 "adeguato alla loro statura. Costituendo una minaccia considerevole anche per "
 "dei soldati esperti, i metalupi vengono evitati da tutti tranne che dai "
@@ -7846,7 +7852,7 @@ msgid "Naga Guard"
 msgstr "Naga Guardiano"
 
 #. [unit_type]: id=Naga Guard, race=naga
-#: data/core/units/nagas/Guard.cfg:22
+#: data/core/units/nagas/Guard.cfg:21
 msgid ""
 "Nagas tend to value agility and grace on the battlefield, but the slower, "
 "stronger individuals play a key role in defending important positions. These "
@@ -7868,7 +7874,7 @@ msgid "Naga High Guard"
 msgstr "Naga Guardiano Supremo"
 
 #. [unit_type]: id=Naga High Guard, race=naga
-#: data/core/units/nagas/Guard_High.cfg:23
+#: data/core/units/nagas/Guard_High.cfg:22
 msgid ""
 "The elite naga guards are a rigid barrier to any invaders of a naga "
 "stronghold. They have powerful strikes and, like the lesser Shield Guard, "
@@ -7886,8 +7892,8 @@ msgstr ""
 "a loro favorevole."
 
 #. [attack]: type=impact
-#: data/core/units/nagas/Guard_High.cfg:45
-#: data/core/units/nagas/Guard_Shield.cfg:43
+#: data/core/units/nagas/Guard_High.cfg:47
+#: data/core/units/nagas/Guard_Shield.cfg:47
 msgid "shield"
 msgstr "colpo di scudo"
 
@@ -7897,18 +7903,19 @@ msgid "Naga Shield Guard"
 msgstr "Naga Scudiero"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
-#: data/core/units/nagas/Guard_Shield.cfg:22
+#: data/core/units/nagas/Guard_Shield.cfg:21
 msgid ""
-"The veteran naga guards are more difficult to dislodge from their posts "
-"because of effective use of a shield in melee techniques. This tactic does "
-"nothing against ranged attacks, but the nagas can usually seek better "
-"terrain advantage in such situations."
+"The veteran naga guards have learnt a unique fighting style, different from "
+"the heavy infantry of other races. By combining the inertia of a heavy mace "
+"with the flexibility of their bodies, they can deliver a series of swift and "
+"crushing blows.\n"
+"\n"
+"This technique can be powerful given time to prepare, but is challenging to "
+"use under duress. Defensively, Shield Guards instead leverage their natural "
+"flexibility to shield themselves and bend in the direction of the blow, "
+"absorbing some of the damage. Though their small shields do little against "
+"ranged attacks, this tactic nevertheless makes them sturdy fighters in melee."
 msgstr ""
-"I veterani tra i naga guardiani sono molto difficili da scalzare dalle loro "
-"postazioni, a causa dell’efficace utilizzo di uno scudo nelle tecniche di "
-"lotta in mischia. Queste tattiche non sono molto efficaci contro attacchi da "
-"lontano, ma in questi casi i naga solitamente cercano di sfruttare i "
-"vantaggi di un terreno a loro favorevole."
 
 #. [unit_type]: id=Naga Myrmidon, race=naga, gender=male,female
 #: data/core/units/nagas/Myrmidon.cfg:4
@@ -7971,7 +7978,7 @@ msgid ""
 "encourage a healthy amount of competition among the surface factions, "
 "ensuring their services are valued by one tribe or another."
 msgstr ""
-"I guerrieri esperti dei Naga Meridionali spesso trovano lavoro come "
+"I guerrieri esperti dei naga meridionali spesso trovano lavoro come "
 "mercenari, solitamente assunti dai vicini del Popolo delle Dune per "
 "controllare i corsi d’acqua chiave vicino alla costa. A causa dei loro "
 "continui confronti con i cavalieri nemici, i Serpentini hanno riposto le "
@@ -7992,7 +7999,7 @@ msgid "curved blade"
 msgstr "lama curva"
 
 #. [attack]: type=pierce
-#: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:41
+#: data/core/units/nagas/Ophidian.cfg:36
 msgid "jarid"
 msgstr "jarid"
 
@@ -8056,11 +8063,11 @@ msgid ""
 "blade to deflect or distract at the critical moment."
 msgstr ""
 "Anche se a volte continuano a fungere da mercenari per potenziali alleati "
-"del Popolo delle Dune, i Naga Sicari sono più spesso i custodi di rotte "
+"del Popolo delle Dune, i naga sicari sono più spesso i custodi di rotte "
 "commerciali e giacimenti di risorse vicino ai corsi d’acqua. Per il giusto "
 "compenso o cambio merce, un Sicario garantirà viaggi sicuri o libero accesso "
 "a forniture di valore nel suo territorio. Preso nel modo sbagliato, un "
-"Sicario diventa un temibile nemico, non tanto per la sua personale forza in "
+"sicario diventa un temibile nemico, non tanto per la sua personale forza in "
 "combattimento, ma piuttosto a causa dei numerosi alleati a cui può fare "
 "appello per reprimere qualsiasi potenziale seccatore. Sebbene guerrieri "
 "perfettamente capaci qualora il contesto lo richieda, questi mercenari "
@@ -8070,8 +8077,13 @@ msgstr ""
 "molti attacchi nemici e utilizzare la loro pesante lama ricurva per deviare "
 "o sviare un attacco nel momento critico."
 
+#. [attack]: type=pierce
+#: data/core/units/nagas/Sicarius.cfg:40
+msgid "trishula"
+msgstr ""
+
 #. [female]: gender=female
-#: data/core/units/nagas/Sicarius.cfg:95
+#: data/core/units/nagas/Sicarius.cfg:94
 msgid "Nagini Sicarius"
 msgstr "Nagini Sicaria"
 
@@ -8126,45 +8138,6 @@ msgstr "Naga Zefiro"
 
 #. [unit_type]: id=Naga Zephyr, race=naga, gender=male,female
 #: data/core/units/nagas/Zephyr.cfg:19
-#, fuzzy
-#| msgid ""
-#| "The Southern Naga commonly recount a curious story about the Wind Spirit, "
-#| "Zefra and the aetherial chakram:\n"
-#| "\n"
-#| "In the distant past, there was a chakram wielder who was possessed of "
-#| "legendary skill. It is said that he could cleave the very seas with a "
-#| "flurry of blades, fell a hundred foes before a single could reach him, "
-#| "and deflect a thousand arrows without being struck. Called by the name of "
-#| "Xylrix, tempest, he was a warrior whose arrogance was as great as his "
-#| "talent. He was always more than willing to boast his prowess to any and "
-#| "all who would watch him. Then one day, while flaunting himself to a band "
-#| "of young Nagini, he chose a sacred Allnai tree as his target.\n"
-#| "\n"
-#| "‘Watch,’ he bellowed, and split the tree straight in two.\n"
-#| "\n"
-#| "In that moment, a great wind surrounded him and the Wind Spirit’s voice "
-#| "echoed in his ears, ‘You think yourself mighty for slaying my hapless "
-#| "offspring? Though talent you possess, no mortal should trifle with the "
-#| "divinity that guides them.’\n"
-#| "\n"
-#| "He retorted, ‘Come, spirit. I am not afraid. No weapon, steel, water, or "
-#| "wind, shall stand up to my rings.’\n"
-#| "\n"
-#| "The wind whirled ever faster, a torrent of gale force spiraling and "
-#| "spiraling in a gyrating dance of fury. He felt himself lifted from the "
-#| "ground, spinning at a tremendous rate, rendered utterly hapless at the "
-#| "mercy of Zefra’s wrath. Face upturned in terror, he let go of his blades "
-#| "and suddenly saw it in the whirling tempest—the twirling motion of the "
-#| "ringed chakrams, patterned in the very wind itself.\n"
-#| "\n"
-#| "As quickly as the storm came, it vanished, leaving Xylrix to contemplate "
-#| "his broken weapons. When he finally returned to his home many days later, "
-#| "he announced his new name: Zephyr, a warrior who serves the Wind on which "
-#| "his blades fly.\n"
-#| "\n"
-#| "While the old tales drive the elite warriors of this legacy to focus on "
-#| "the thrown blade, this doesn't mean they are weak in melee combat, as the "
-#| "unbalanced chakram can be enhanced with spikes and smaller blades.\n"
 msgid ""
 "The Southern Naga commonly recount a curious story about the Wind Spirit, "
 "Zefra and the aetherial chakram:\n"
@@ -8204,25 +8177,25 @@ msgid ""
 "thrown blade, this doesn’t mean they are weak in melee combat, as the "
 "unbalanced chakram can be enhanced with spikes and smaller blades.\n"
 msgstr ""
-"I Naga meridionali raccontano comunemente una curiosa storia che narra di "
+"I naga meridionali raccontano comunemente una curiosa storia che narra di "
 "Zefra, lo Spirito del Vento, e del chakram etereo:\n"
 "\n"
 "C’era una volta, tanto tempo fa, un lanciatore di chakram che possedeva "
-"abilità leggendarie. Si diceva che potesse fendere anche i mai con una "
+"abilità leggendarie. Si diceva che potesse fendere anche i mari con una "
 "raffica di lame, che potesse abbattere cento nemici prima che uno solo "
 "riuscisse a sfiorarlo, e a deviare mille frecce senza essere colpito. "
-"Rispondeva al nome di Xylrix, ed era un guerriero la cui arroganza era "
-"grande tanto quanto il suo talento. Era sempre più che disposto a vantarsi "
-"delle sue abilità con chiunque lo guardasse. Poi, un giorno, mentre si "
-"pavoneggiava davanti ad un gruppo di giovani Nagini, scelse come suo "
-"bersaglio un albero sacro ad Allnai.\n"
+"Rispondeva al nome di Xylrix, la tempesta, ed era un guerriero la cui "
+"arroganza era grande tanto quanto il suo talento. Era sempre più che "
+"disposto a vantarsi delle sue abilità con chiunque lo guardasse. Poi, un "
+"giorno, mentre si pavoneggiava davanti ad un gruppo di giovani nagini, "
+"scelse come suo bersaglio un albero sacro ad Allnai.\n"
 "\n"
-"\"Guardate\", urlò, e divise l’albero in due.\n"
+"\"Guardate\", urlò, e spaccò l’albero in due.\n"
 "\n"
 "In quell’istante, fu circondato da un forte vento e la voce dello Spirito "
 "del Vento gli riecheggiò nelle orecchie: \"Ti ritieni potente per aver "
 "ucciso la mia sfortunata prole? Anche se possiedi del talento, nessun "
-"mortale dovrebbe farsi beffe delle divinità che lo guidano.\"\n"
+"mortale dovrebbe farsi beffe delle divinità che li guidano.\"\n"
 "\n"
 "Lui ribatté: ’Vieni, spirito. Non sono spaventato. Nessuna arma, acciaio, "
 "acqua o vento resisterà ai miei anelli.\"\n"
@@ -8236,8 +8209,8 @@ msgstr ""
 "\n"
 "Così come era apparsa, la tempesta scomparve improvvisamente, lasciando "
 "Xylrix a contemplare le sue armi spezzate. Quando finalmente tornò a casa, "
-"molti giorni dopo, annunciò il suo nuovo nome: Zefiro, un guerriero che "
-"server il Vento sul quale volano le sue lame.\n"
+"molti giorni dopo, annunciò il suo nuovo nome: Zefiro, un guerriero "
+"servitore del Vento sul quale volano le sue lame.\n"
 "\n"
 "Sebbene gli antichi racconti spingano i guerrieri elitari seguaci di questa "
 "disciplina a concentrarsi sul lancio delle lame, questo non significa che "
@@ -8274,17 +8247,12 @@ msgstr "Giovane Ogre"
 
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:23
-#, fuzzy
-#| msgid ""
-#| "When still young, Ogres are sometimes captured and taken into armies to "
-#| "be trained. They cannot manage weapons skillfully, but they compensate "
-#| "for that lack with great strength."
 msgid ""
 "When still young, ogres are sometimes captured and taken into armies to be "
 "trained. They cannot manage weapons skillfully, but they compensate for that "
 "lack with great strength."
 msgstr ""
-"Ancora in giovane età, gli ogre vengono talvolta catturati e inseriti "
+"Quando capita che vengano catturati da giovani, gli ogre sono inseriti "
 "nell’esercito per ricevere un addestramento. Pur non essendo in grado di "
 "maneggiare con abilità le armi, compensano questa mancanza con la loro "
 "grande forza."
@@ -8436,7 +8404,7 @@ msgstr ""
 "miglior offerente. Quando l’accordo è stato concluso e le provviste "
 "necessarie ottenute, l’assassino colpisce rapidamente e silenziosamente il "
 "suo bersaglio, eliminandolo silenziosamente sotto la copertura "
-"dell’oscurità. Un contratto con una Lamaoscura è quasi sempre una condanna a "
+"dell’oscurità. Un contratto con una lamaoscura è quasi sempre una condanna a "
 "morte per la vittima, il che rende tale competenza degna del suo alto prezzo."
 
 #. [attack]: type=blade
@@ -9863,6 +9831,39 @@ msgid ""
 msgstr ""
 "Questi wose sono in grado di controllare le piante delle foreste, possono "
 "quindi ostacolare i loro nemici con viticci e rampicanti."
+
+#~ msgid "swamp lurk"
+#~ msgstr "agguato nella palude"
+
+#~ msgid "female^swamp lurk"
+#~ msgstr "agguato nella palude"
+
+#~ msgid ""
+#~ "This unit can hide in swamp, and remain undetected by its enemies.\n"
+#~ "\n"
+#~ "Enemy units cannot see this unit while it is in swamp, except if they "
+#~ "have units next to it. Any enemy unit that first discovers this unit "
+#~ "immediately loses all its remaining movement."
+#~ msgstr ""
+#~ "Questa unità può nascondersi nella palude e non essere rilevata dai suoi "
+#~ "nemici.\n"
+#~ "\n"
+#~ "Le unità nemiche non possono vedere questa unità mentre si trova nella "
+#~ "palude, a meno che un esagono a loro adiacente. Qualsiasi unità nemica "
+#~ "che scopre per prima questa unità perde immediatamente tutto il suo "
+#~ "movimento rimanente."
+
+#~ msgid ""
+#~ "The veteran naga guards are more difficult to dislodge from their posts "
+#~ "because of effective use of a shield in melee techniques. This tactic "
+#~ "does nothing against ranged attacks, but the nagas can usually seek "
+#~ "better terrain advantage in such situations."
+#~ msgstr ""
+#~ "I veterani tra i naga guardiani sono molto difficili da scalzare dalle "
+#~ "loro postazioni, a causa dell’efficace utilizzo di uno scudo nelle "
+#~ "tecniche di lotta in mischia. Queste tattiche non sono molto efficaci "
+#~ "contro attacchi da lontano, ma in questi casi i naga solitamente cercano "
+#~ "di sfruttare i vantaggi di un terreno a loro favorevole."
 
 #~ msgid "gossamer"
 #~ msgstr "ragnatela"

@@ -172,7 +172,7 @@ private:
 	void load_config();
 
 	bool ip_exceeds_connection_limit(const std::string& ip) const;
-	std::string is_ip_banned(const std::string& ip);
+	utils::optional<server_base::login_ban_info> is_ip_banned(const std::string& ip);
 
 	simple_wml::document version_query_response_;
 	simple_wml::document login_response_;
@@ -267,7 +267,7 @@ private:
 	void handle_lan_server_shutdown(const boost::system::error_code& error);
 
 	boost::asio::steady_timer dummy_player_timer_;
-	int dummy_player_timer_interval_;
+	std::chrono::seconds dummy_player_timer_interval_;
 	void start_dummy_player_updates();
 	void dummy_player_updates(const boost::system::error_code& ec);
 };

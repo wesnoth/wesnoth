@@ -626,6 +626,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 	if (full_movement) {
 		u->set_movement(u->total_movement(), true);
 	} else {
+		//TODO: it looks to me like this change of unit stats is not properly undone yet.
 		u->set_movement(0, true);
 		u->set_attacks(0);
 	}
@@ -721,10 +722,11 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 
 
 	// Place the recruit.
-	place_recruit_result res = place_recruit(new_unit, loc, from, u_type.cost(), false, map_location::direction::indeterminate, show);
+	resources::undo_stack->add_recruit(new_unit, loc, from);
+	place_recruit_result res
+		= place_recruit(new_unit, loc, from, u_type.cost(), false, map_location::direction::indeterminate, show);
 	resources::controller->statistics().recruit_unit(*new_unit);
 
-	resources::undo_stack->add_recruit(new_unit, loc, from, std::get<1>(res), std::get<2>(res));
 	// Check for information uncovered or randomness used.
 
 	synced_context::block_undo(std::get<0>(res));
@@ -745,21 +747,16 @@ bool recall_unit(const std::string & id, team & current_team,
 	if ( !recall )
 		return false;
 
+	resources::undo_stack->add_recall(recall, loc, from);
 	// Place the recall.
 	// We also check to see if a custom unit level recall has been set if not,
 	// we use the team's recall cost otherwise the unit's.
-	place_recruit_result res;
-	if (recall->recall_cost() < 0) {
-		res = place_recruit(recall, loc, from, current_team.recall_cost(),
-	                             true, facing, show);
-	}
-	else {
-		res = place_recruit(recall, loc, from, recall->recall_cost(),
-	                             true, facing, show);
-	}
-	resources::controller->statistics().recall_unit(*recall);
+	int cost = recall->recall_cost() >= 0 ? recall->recall_cost() : current_team.recall_cost();
 
-	resources::undo_stack->add_recall(recall, loc, from, std::get<1>(res), std::get<2>(res));
+	place_recruit_result res = place_recruit(recall, loc, from, cost,
+	                             true, facing, show);
+
+	resources::controller->statistics().recall_unit(*recall);
 	synced_context::block_undo(std::get<0>(res));
 
 
@@ -770,6 +767,5 @@ bool recall_unit(const std::string & id, team & current_team,
 
 	return true;
 }
-
 
 }//namespace actions

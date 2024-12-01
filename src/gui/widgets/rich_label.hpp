@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include "color.hpp"
 #include "gui/widgets/styled_widget.hpp"
 
 #include "font/standard_colors.hpp"
@@ -108,12 +109,31 @@ public:
 		can_shrink_ = can_shrink;
 	}
 
+	void set_font_family(const std::string& font_family)
+	{
+		font_family_ = font_family;
+	}
+
 	void set_font_size(int font_size)
 	{
 		font_size_ = font_size;
 	}
 
+	void set_font_style(const std::string& font_style)
+	{
+		font_style_ = font_style;
+	}
+
 	void set_text_alpha(unsigned short alpha);
+
+	void set_text_color(const color_t& color, bool enabled)
+	{
+		if (enabled) {
+			text_color_enabled_ = color;
+		} else {
+			text_color_disabled_ = color;
+		}
+	}
 
 	const t_string& get_label() const
 	{
@@ -175,14 +195,34 @@ private:
 	bool link_aware_;
 
 	/**
+	 * Base text color, enabled state
+	 */
+	color_t text_color_enabled_;
+
+	/**
+	 * Base text color, disabled state
+	 */
+	color_t text_color_disabled_;
+
+	/**
 	 * What color links will be rendered in.
 	 */
 	color_t link_color_;
 
 	/**
+	 * Base font family
+	 */
+	std::string font_family_;
+
+	/**
 	 * Base font size
 	 */
 	int font_size_;
+
+	/**
+	 * Base font style
+	 */
+	std::string font_style_;
 
 	bool can_shrink_;
 
@@ -292,8 +332,11 @@ struct rich_label_definition : public styled_widget_definition
 	{
 		explicit resolution(const config& cfg);
 
+		color_t text_color_enabled, text_color_disabled;
 		color_t link_color;
+		std::string font_family;
 		int font_size;
+		std::string font_style;
 	};
 };
 

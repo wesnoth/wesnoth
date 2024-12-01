@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 11:10-0500\n"
+"POT-Creation-Date: 2024-11-26 12:08-0600\n"
 "PO-Revision-Date: 2024-11-03 20:45+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -270,22 +270,22 @@ msgstr "Level: "
 msgid "Cost: "
 msgstr "Cena: "
 
-#: src/editor/controller/editor_controller.cpp:186
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "Kritická chyba"
 
-#: src/editor/controller/editor_controller.cpp:216
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "Opravdu si přeješ skončit?"
 
-#: src/editor/controller/editor_controller.cpp:218
+#: src/editor/controller/editor_controller.cpp:219
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr ""
 "Opravdu si přeješ skončit? Změny v mapě od posledního uložení budou ztraceny."
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -293,31 +293,31 @@ msgstr ""
 "Opravdu si přeješ skončit? Následující mapy byly změněny; všechny změny od "
 "posledního uložení budou ztraceny:"
 
-#: src/editor/controller/editor_controller.cpp:237
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr "Nenalezena žádná denní doba pro editor."
 
-#: src/editor/controller/editor_controller.cpp:880
+#: src/editor/controller/editor_controller.cpp:882
 msgid "Add-on Files"
 msgstr "Soubory rozšíření"
 
-#: src/editor/controller/editor_controller.cpp:893
+#: src/editor/controller/editor_controller.cpp:895
 msgid "Opening files is not supported, contact your packager"
 msgstr "Otevření souborů není podporováno, obrať se na správce balíčku"
 
-#: src/editor/controller/editor_controller.cpp:1313
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "Change Unit ID"
 msgstr "Změnit ID jednotky"
 
-#: src/editor/controller/editor_controller.cpp:1314
+#: src/editor/controller/editor_controller.cpp:1316
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1330
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Rename Unit"
 msgstr "Přejmenovat jednotku"
 
-#: src/editor/controller/editor_controller.cpp:1331
+#: src/editor/controller/editor_controller.cpp:1333
 msgid "Name:"
 msgstr "Jméno:"
 
@@ -333,11 +333,11 @@ msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgid "Load Map"
 msgstr "Načíst mapu"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1130
 msgid "New Map"
 msgstr "Nová mapa"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1130
 msgid "New Scenario"
 msgstr "Nový scénář"
 
@@ -493,23 +493,23 @@ msgstr ""
 msgid "Unable to parse file to find map data"
 msgstr "Nedokážu rozebrat soubor a najít mapová data"
 
-#: src/editor/map/map_context.cpp:823 src/editor/map/map_context.cpp:863
+#: src/editor/map/map_context.cpp:824 src/editor/map/map_context.cpp:864
 msgid "Could not save time schedule: $msg"
 msgstr "Nelze uložit rozvrh dne: $msg"
 
-#: src/editor/map/map_context.cpp:857
+#: src/editor/map/map_context.cpp:858
 msgid "Time schedule saved."
 msgstr "Rozvrh dne uložen."
 
-#: src/editor/map/map_context.cpp:903
+#: src/editor/map/map_context.cpp:904
 msgid "Could not save the scenario: $msg"
 msgstr "Nepodařilo se uložit scénář: $msg"
 
-#: src/editor/map/map_context.cpp:934
+#: src/editor/map/map_context.cpp:935
 msgid "Could not save into scenario"
 msgstr "Nebylo možno uložit do scénáře"
 
-#: src/editor/map/map_context.cpp:944
+#: src/editor/map/map_context.cpp:945
 msgid "Could not save the map: $msg"
 msgstr "Nepodařilo se uložit mapu: $msg"
 
@@ -576,27 +576,21 @@ msgstr "Cmd + kliknutí: kopírovat terén"
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + kliknutí: kopírovat terén"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:170
-msgid "Choose File"
-msgstr "Vybrat soubor"
+#~ msgid "Choose File"
+#~ msgstr "Vybrat soubor"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:171
-msgid "Select"
-msgstr "Vybrat"
+#~ msgid "Select"
+#~ msgstr "Vybrat"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:178
-msgid ""
-"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
-"add-on?"
-msgstr ""
-"Tento soubor se nachází mimo adresáře s daty Wesnothu. Chceš jej zkopírovat "
-"do svého rozšíření?"
+#~ msgid ""
+#~ "This file is outside Wesnoth’s data dirs. Do you wish to copy it into "
+#~ "your add-on?"
+#~ msgstr ""
+#~ "Tento soubor se nachází mimo adresáře s daty Wesnothu. Chceš jej "
+#~ "zkopírovat do svého rozšíření?"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/custom_tod.cpp:189
-#: src/gui/dialogs/editor/custom_tod.cpp:196
-msgid "Confirm"
-msgstr "Potvrdit"
+#~ msgid "Confirm"
+#~ msgstr "Potvrdit"
 
 #~ msgid "Clipboard support not found, contact your packager"
 #~ msgstr ""

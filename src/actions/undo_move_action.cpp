@@ -32,9 +32,9 @@ namespace actions::undo
 move_action::move_action(const unit_const_ptr moved,
 			const std::vector<map_location>::const_iterator & begin,
 			const std::vector<map_location>::const_iterator & end,
-			int sm, int timebonus, int orig, const map_location::direction dir)
+			int sm, const map_location::direction dir)
 	: undo_action()
-	, shroud_clearing_action(moved, begin, end, orig, timebonus != 0)
+	, shroud_clearing_action(moved, begin, end)
 	, starting_moves(sm)
 	, starting_dir(dir == map_location::direction::indeterminate ? moved->facing() : dir)
 	, goto_hex(moved->get_goto())
@@ -91,12 +91,11 @@ bool move_action::undo(int)
 	// Check units.
 	unit_map::iterator u = units.find(rev_route.front());
 	const unit_map::iterator u_end = units.find(rev_route.back());
-	if ( u == units.end()  ||  u_end != units.end() ) {
-		//this can actually happen if the scenario designer has abused the [allow_undo] command
+	if(u == units.end() || u_end != units.end()) {
+		// this can actually happen if the scenario designer has abused the [allow_undo] command
 		ERR_NG << "Illegal 'undo' found. Possible abuse of [allow_undo]?";
 		return false;
 	}
-	this->return_village();
 
 	// Record the unit's current state so it can be redone.
 	starting_moves = u->movement_left();
@@ -123,8 +122,8 @@ bool move_action::undo(int)
 	u->anim_comp().set_standing();
 
 	gui.invalidate_unit_after_move(rev_route.front(), rev_route.back());
-	execute_undo_umc_wml();
 	return true;
 }
+static auto reg_undo_move = undo_action_container::subaction_factory<move_action>();
 
 }

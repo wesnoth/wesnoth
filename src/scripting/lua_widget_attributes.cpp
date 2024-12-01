@@ -15,6 +15,7 @@
 
 #include "gui/auxiliary/iterator/iterator.hpp"
 #include "gui/widgets/clickable_item.hpp"
+#include "gui/widgets/helper.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/combobox.hpp"
 #include "gui/widgets/label.hpp"
@@ -459,38 +460,12 @@ WIDGET_SETTER("editable", bool, gui2::text_box)
 
 WIDGET_GETTER("ellipsize_mode", std::string, gui2::styled_widget)
 {
-	std::string s;
-
-	switch(w.get_text_ellipse_mode()) {
-		case(PangoEllipsizeMode::PANGO_ELLIPSIZE_NONE):
-			s = "none";
-			break;
-		case(PangoEllipsizeMode::PANGO_ELLIPSIZE_START):
-			s = "start";
-			break;
-		case(PangoEllipsizeMode::PANGO_ELLIPSIZE_MIDDLE):
-			s = "middle";
-			break;
-		case(PangoEllipsizeMode::PANGO_ELLIPSIZE_END):
-			s = "end";
-	}
-
-	return s;
+	return gui2::encode_ellipsize_mode(w.get_text_ellipse_mode());
 }
 
 WIDGET_SETTER("ellipsize_mode", std::string, gui2::styled_widget)
 {
-	if(value == "none") {
-		w.set_text_ellipse_mode(PangoEllipsizeMode::PANGO_ELLIPSIZE_NONE);
-	} else if(value == "start") {
-		w.set_text_ellipse_mode(PangoEllipsizeMode::PANGO_ELLIPSIZE_START);
-	} else if(value == "middle") {
-		w.set_text_ellipse_mode(PangoEllipsizeMode::PANGO_ELLIPSIZE_MIDDLE);
-	} else if(value == "end") {
-		w.set_text_ellipse_mode(PangoEllipsizeMode::PANGO_ELLIPSIZE_END);
-	} else {
-		throw std::invalid_argument("ellipsize_mode must be one of <none,start,middle,end>");
-	}
+	w.set_text_ellipse_mode(gui2::decode_ellipsize_mode(value));
 	try_invalidate_layout(w);
 }
 
@@ -674,33 +649,12 @@ WIDGET_SETTER("step_size", int, gui2::slider)
 
 WIDGET_GETTER("text_alignment", std::string, gui2::styled_widget)
 {
-	std::string s;
-
-	switch(w.get_text_alignment()) {
-		case(PangoAlignment::PANGO_ALIGN_LEFT):
-			s = "left";
-			break;
-		case(PangoAlignment::PANGO_ALIGN_RIGHT):
-			s = "right";
-			break;
-		case(PangoAlignment::PANGO_ALIGN_CENTER):
-			s = "center";
-	}
-
-	return s;
+	return gui2::encode_text_alignment(w.get_text_alignment());
 }
 
 WIDGET_SETTER("text_alignment", std::string, gui2::styled_widget)
 {
-	if(value == "left") {
-		w.set_text_alignment(PangoAlignment::PANGO_ALIGN_LEFT);
-	} else if(value == "right") {
-		w.set_text_alignment(PangoAlignment::PANGO_ALIGN_RIGHT);
-	} else if(value == "center") {
-		w.set_text_alignment(PangoAlignment::PANGO_ALIGN_CENTER);
-	} else {
-		throw std::invalid_argument("text_alignment must be one of <left,center,right>");
-	}
+	w.set_text_alignment(gui2::decode_text_alignment(value));
 }
 
 WIDGET_GETTER("tooltip", t_string, gui2::styled_widget)

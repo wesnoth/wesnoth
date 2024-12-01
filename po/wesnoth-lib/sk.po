@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 11:11-0500\n"
+"POT-Creation-Date: 2024-11-26 12:08-0600\n"
 "PO-Revision-Date: 2023-11-22 15:07+0100\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
@@ -2327,7 +2327,7 @@ msgstr " (Stlačte '$hotkey' pre viac informácií)"
 #. [label]
 #. [toggle_button]: id=sort_1
 #: data/gui/themes/default/widget/addon_list.cfg:78
-#: data/gui/themes/default/window/campaign_dialog.cfg:214
+#: data/gui/themes/default/window/campaign_dialog.cfg:212
 #: data/gui/themes/default/window/game_load.cfg:170
 #: data/gui/themes/default/window/mp_connect.cfg:159
 #: data/gui/themes/default/window/terrain_layers.cfg:45
@@ -2433,7 +2433,7 @@ msgstr "Čakajúce správy"
 #: data/gui/themes/default/window/game_version.cfg:992
 #: data/gui/themes/default/window/gamestate_inspector.cfg:398
 #: data/gui/themes/default/window/generator_settings.cfg:190
-#: data/gui/themes/default/window/help_browser.cfg:277
+#: data/gui/themes/default/window/help_browser.cfg:288
 #: data/gui/themes/default/window/lobby_player_info.cfg:292
 #: data/gui/themes/default/window/lua_interpreter.cfg:130
 #: data/gui/themes/default/window/message.cfg:135
@@ -2541,7 +2541,7 @@ msgstr "OK"
 #: data/gui/themes/default/window/addon_connect.cfg:211
 #: data/gui/themes/default/window/addon_license_prompt.cfg:114
 #: data/gui/themes/default/window/addon_uninstall_list.cfg:174
-#: data/gui/themes/default/window/campaign_dialog.cfg:535
+#: data/gui/themes/default/window/campaign_dialog.cfg:533
 #: data/gui/themes/default/window/campaign_difficulty.cfg:234
 #: data/gui/themes/default/window/core_dialog.cfg:241
 #: data/gui/themes/default/window/custom_tod.cfg:524
@@ -2688,7 +2688,7 @@ msgstr "Aktualizované:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/window/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:581
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:580
 msgid "No description available."
 msgstr "Nie je dostupný popis."
 
@@ -2729,7 +2729,7 @@ msgstr "Závislosti:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/themes/default/window/addon_manager.cfg:713
-#: src/gui/dialogs/addon/manager.cpp:1079
+#: src/gui/dialogs/addon/manager.cpp:1076
 msgid "addon_dependencies^None"
 msgstr "Žiadne"
 
@@ -2743,7 +2743,7 @@ msgstr "Preklady:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/themes/default/window/addon_manager.cfg:748
-#: src/gui/dialogs/addon/manager.cpp:1093
+#: src/gui/dialogs/addon/manager.cpp:1090
 msgid "translations^None"
 msgstr "Žiadne"
 
@@ -2873,27 +2873,27 @@ msgid "Defender"
 msgstr "Obranca"
 
 #. [toggle_button]: id=sort_name
-#: data/gui/themes/default/window/campaign_dialog.cfg:215
+#: data/gui/themes/default/window/campaign_dialog.cfg:213
 msgid "Sort by full campaign name in alphabetical order"
 msgstr "Zoradiť podľa úplného názvu kampane v abecednom poradí"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/window/campaign_dialog.cfg:226
+#: data/gui/themes/default/window/campaign_dialog.cfg:224
 msgid "Timeline"
 msgstr "Časová os"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/window/campaign_dialog.cfg:227
+#: data/gui/themes/default/window/campaign_dialog.cfg:225
 msgid "Sort in approximate chronological order of story events"
 msgstr "Zoraďte udalosti príbehu v približnom chronologickom poradí"
 
 #. [multimenu_button]: id=filter_completion
-#: data/gui/themes/default/window/campaign_dialog.cfg:237
+#: data/gui/themes/default/window/campaign_dialog.cfg:235
 msgid "Filter by campaign completion status"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:240
+#: data/gui/themes/default/window/campaign_dialog.cfg:238
 #, fuzzy
 #| msgid "Completed"
 msgid "Not Completed"
@@ -2901,77 +2901,77 @@ msgstr "Dokončené"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
-#: data/gui/themes/default/window/campaign_dialog.cfg:242
+#: data/gui/themes/default/window/campaign_dialog.cfg:240
 msgid "Show campaigns not completed by player"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:246
+#: data/gui/themes/default/window/campaign_dialog.cfg:244
 #, fuzzy
 #| msgid "Completed"
 msgid "Completed: Bronze"
 msgstr "Dokončené"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:247
+#: data/gui/themes/default/window/campaign_dialog.cfg:245
 msgid "Show campaigns completed at easiest difficulty"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:251
+#: data/gui/themes/default/window/campaign_dialog.cfg:249
 #, fuzzy
 #| msgid "Completed"
 msgid "Completed: Silver"
 msgstr "Dokončené"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:252
+#: data/gui/themes/default/window/campaign_dialog.cfg:250
 msgid "Show campaigns completed at intermediate difficulties"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:256
+#: data/gui/themes/default/window/campaign_dialog.cfg:254
 #, fuzzy
 #| msgid "Completed"
 msgid "Completed: Gold"
 msgstr "Dokončené"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:257
+#: data/gui/themes/default/window/campaign_dialog.cfg:255
 msgid "Show campaigns completed at hardest difficulty"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:261
+#: data/gui/themes/default/window/campaign_dialog.cfg:259
 #, fuzzy
 #| msgid "Completed"
 msgid "Completed: All"
 msgstr "Dokončené"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:262
+#: data/gui/themes/default/window/campaign_dialog.cfg:260
 msgid "Show completed campaigns"
 msgstr ""
 
 #. [label]
 #. [label]: id=mods_header
-#: data/gui/themes/default/window/campaign_dialog.cfg:313
+#: data/gui/themes/default/window/campaign_dialog.cfg:311
 #: data/gui/themes/default/window/mp_create_game.cfg:220
 msgid "Modifications:"
 msgstr "Modifikácie:"
 
 #. [label]
-#: data/gui/themes/default/window/campaign_dialog.cfg:338
+#: data/gui/themes/default/window/campaign_dialog.cfg:336
 msgid "Combat:"
 msgstr "Boj:"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:353
+#: data/gui/themes/default/window/campaign_dialog.cfg:351
 msgid "Default RNG"
 msgstr "Predvolená náhodnosť"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:354
+#: data/gui/themes/default/window/campaign_dialog.cfg:352
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -2980,12 +2980,12 @@ msgid ""
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:359
+#: data/gui/themes/default/window/campaign_dialog.cfg:357
 msgid "Predictable RNG"
 msgstr "Predvídateľná náhodnosť"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:360
+#: data/gui/themes/default/window/campaign_dialog.cfg:358
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -2995,14 +2995,14 @@ msgid ""
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:365
+#: data/gui/themes/default/window/campaign_dialog.cfg:363
 #, fuzzy
 #| msgid "Predictable RNG"
 msgid "Reduced RNG"
 msgstr "Predvídateľná náhodnosť"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:366
+#: data/gui/themes/default/window/campaign_dialog.cfg:364
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3012,33 +3012,36 @@ msgid ""
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/window/campaign_dialog.cfg:383
+#: data/gui/themes/default/window/campaign_dialog.cfg:381
 msgid "Difficulty:"
 msgstr "Náročnosť:"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:397
+#: data/gui/themes/default/window/campaign_dialog.cfg:395
 msgid "Easy"
 msgstr "Ľahká"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:400
+#: data/gui/themes/default/window/campaign_dialog.cfg:398
 msgid "Normal"
 msgstr "Normálna"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:403
+#: data/gui/themes/default/window/campaign_dialog.cfg:401
 msgid "Hard"
 msgstr "Ťažká"
 
 #. [label]
-#: data/gui/themes/default/window/campaign_dialog.cfg:460
+#: data/gui/themes/default/window/campaign_dialog.cfg:458
 msgid "Play a Campaign"
 msgstr "Hrať výpravu"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=proceed
 #. [button]: id=ok
-#: data/gui/themes/default/window/campaign_dialog.cfg:524
+#: data/gui/themes/default/window/campaign_dialog.cfg:522
 #: data/gui/themes/default/window/campaign_difficulty.cfg:221
+#: src/gui/dialogs/campaign_selection.cpp:59
 msgid "game^Play"
 msgstr "Hraj"
 
@@ -3124,8 +3127,9 @@ msgstr "Načítať základ"
 #. [button]: id=ok
 #: data/gui/themes/default/window/core_dialog.cfg:228
 #: data/gui/themes/default/window/language_selection.cfg:293
+#: src/gui/dialogs/editor/custom_tod.cpp:171
 #: src/gui/dialogs/editor/edit_unit.cpp:312
-#: src/preferences/preferences.cpp:1303
+#: src/preferences/preferences.cpp:1306
 msgid "Select"
 msgstr "Označiť"
 
@@ -3276,6 +3280,9 @@ msgstr ""
 #. [label]
 #: data/gui/themes/default/window/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:973
+#: src/gui/dialogs/editor/custom_tod.cpp:182
+#: src/gui/dialogs/editor/custom_tod.cpp:189
+#: src/gui/dialogs/editor/custom_tod.cpp:196
 #: src/gui/dialogs/editor/edit_unit.cpp:325
 #: src/gui/dialogs/editor/edit_unit.cpp:333
 #: src/gui/dialogs/editor/edit_unit.cpp:341
@@ -4762,6 +4769,13 @@ msgstr "Zobraziť nápisy"
 msgid "Battle For Wesnoth Help"
 msgstr "Návod pre Bitku o Wesnoth"
 
+#. [toggle_button]: id=contents
+#: data/gui/themes/default/window/help_browser.cfg:160
+#, fuzzy
+#| msgid "Show Credits"
+msgid "Show Topics"
+msgstr "Zobraziť autorov hry"
+
 #. [label]
 #: data/gui/themes/default/window/hotkey_bind.cfg:35
 msgid "Press desired hotkey (Esc cancels)"
@@ -6001,7 +6015,7 @@ msgstr "Klávesa"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:902
+#: src/gui/dialogs/preferences_dialog.cpp:898
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -6014,7 +6028,7 @@ msgstr "Dostupné v hre"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:903
+#: src/gui/dialogs/preferences_dialog.cpp:899
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -6027,7 +6041,7 @@ msgstr "Dostupné v editore"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:904
+#: src/gui/dialogs/preferences_dialog.cpp:900
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -6105,29 +6119,15 @@ msgstr ""
 "Znižuje trhanie synchronizáciou vykresľovania s obnovovacou frekvenciou "
 "obrazovky (aby sa prejavilo, vyžaduje reštart)"
 
-#. [toggle_button]: id=fps_limiter
-#: data/gui/themes/default/window/preferences/03_display.cfg:145
-msgid "Limit FPS"
-msgstr "FPS limit"
-
-#. [toggle_button]: id=fps_limiter
-#: data/gui/themes/default/window/preferences/03_display.cfg:146
-msgid ""
-"Disabling this increases CPU usage, but may slightly improve performance "
-"(requires restart to take effect)"
-msgstr ""
-"Zakázanie tejto funkcie zvyšuje využitie CPU, ale môže mierne zlepšiť výkon "
-"(vyžaduje reštart, aby sa prejavil)."
-
 #. [label]
-#: data/gui/themes/default/window/preferences/03_display.cfg:168
+#: data/gui/themes/default/window/preferences/03_display.cfg:152
 #, fuzzy
 #| msgid "Interface theme:"
 msgid "In-game theme:"
 msgstr "Téma rozhrania:"
 
 #. [menu_button]: id=choose_theme
-#: data/gui/themes/default/window/preferences/03_display.cfg:181
+#: data/gui/themes/default/window/preferences/03_display.cfg:165
 msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
@@ -6136,14 +6136,14 @@ msgstr ""
 "doplnkami"
 
 #. [label]
-#: data/gui/themes/default/window/preferences/03_display.cfg:192
+#: data/gui/themes/default/window/preferences/03_display.cfg:176
 #, fuzzy
 #| msgid "Interface theme:"
 msgid "UI theme:"
 msgstr "Téma rozhrania:"
 
 #. [menu_button]: id=choose_gui2_theme
-#: data/gui/themes/default/window/preferences/03_display.cfg:208
+#: data/gui/themes/default/window/preferences/03_display.cfg:192
 #, fuzzy
 #| msgid ""
 #| "Change the in-game interface theme. Additional themes may be provided by "
@@ -6156,29 +6156,29 @@ msgstr ""
 "doplnkami"
 
 #. [button]: id=apply
-#: data/gui/themes/default/window/preferences/03_display.cfg:217
+#: data/gui/themes/default/window/preferences/03_display.cfg:201
 msgid "Apply"
 msgstr "Použi"
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/window/preferences/03_display.cfg:239
+#: data/gui/themes/default/window/preferences/03_display.cfg:223
 msgid "Combat damage indicators"
 msgstr "Indikátory poškodenia v boji"
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/window/preferences/03_display.cfg:240
+#: data/gui/themes/default/window/preferences/03_display.cfg:224
 msgid "Show amount of damage inflicted or healed as fading labels above units"
 msgstr ""
 "Zobrazenie výšky spôsobeného alebo vyliečeného poškodenia ako blednúce "
 "štítky nad jednotkami"
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/window/preferences/03_display.cfg:253
+#: data/gui/themes/default/window/preferences/03_display.cfg:237
 msgid "Team color indicators"
 msgstr "Indikátory farby tímu"
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/window/preferences/03_display.cfg:254
+#: data/gui/themes/default/window/preferences/03_display.cfg:238
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -6187,62 +6187,62 @@ msgstr ""
 "strane patrí"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/themes/default/window/preferences/03_display.cfg:267
+#: data/gui/themes/default/window/preferences/03_display.cfg:251
 msgid "Grid overlay"
 msgstr "Prekrytie mriežkou"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/themes/default/window/preferences/03_display.cfg:268
+#: data/gui/themes/default/window/preferences/03_display.cfg:252
 msgid "Overlay a grid over the map"
 msgstr "Zobrazuj na mape šesťuholníkovú mriežku"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/window/preferences/03_display.cfg:303
+#: data/gui/themes/default/window/preferences/03_display.cfg:287
 msgid "Animate map"
 msgstr "Animovať mapu"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/window/preferences/03_display.cfg:304
+#: data/gui/themes/default/window/preferences/03_display.cfg:288
 msgid "Display animated terrain graphics"
 msgstr "Zobraziť animovanú grafiku terénu"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/themes/default/window/preferences/03_display.cfg:317
+#: data/gui/themes/default/window/preferences/03_display.cfg:301
 msgid "Animate water"
 msgstr "Animovať vodu"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/themes/default/window/preferences/03_display.cfg:318
+#: data/gui/themes/default/window/preferences/03_display.cfg:302
 msgid "Display animated water graphics (can be slow)"
 msgstr "Zobraziť animovanú grafiku vodu (môže byť pomalé)"
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/window/preferences/03_display.cfg:333
+#: data/gui/themes/default/window/preferences/03_display.cfg:317
 msgid "Unit standing animations"
 msgstr "Animácie nečinných jednotiek"
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/window/preferences/03_display.cfg:334
+#: data/gui/themes/default/window/preferences/03_display.cfg:318
 msgid "Continuously animate standing units on the battlefield"
 msgstr "Nepretržite animovať stojace jednotky na bojisku"
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/window/preferences/03_display.cfg:352
+#: data/gui/themes/default/window/preferences/03_display.cfg:336
 msgid "Unit idle animations"
 msgstr "Animácie nečinných jednotiek"
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/window/preferences/03_display.cfg:353
+#: data/gui/themes/default/window/preferences/03_display.cfg:337
 msgid "Play short random animations for idle units"
 msgstr "Prehrať náhodnú krátku animáciu pre nečinné jednotky"
 
 #. [label]
-#: data/gui/themes/default/window/preferences/03_display.cfg:376
+#: data/gui/themes/default/window/preferences/03_display.cfg:360
 msgid "Frequency:"
 msgstr "Frekvencia:"
 
 #. [slider]: id=idle_anim_frequency
-#: data/gui/themes/default/window/preferences/03_display.cfg:392
+#: data/gui/themes/default/window/preferences/03_display.cfg:376
 msgid "Set the frequency of unit idle animations"
 msgstr "Nastav frekvenciu animácie nečinných jednotiek"
 
@@ -7467,17 +7467,17 @@ msgstr "Chcete odinštalovať '$addon|'?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1033
+#: src/gui/dialogs/addon/manager.cpp:1034
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%B %d %Y, %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1036
+#: src/gui/dialogs/addon/manager.cpp:1037
 msgid "%B %d %Y, %H:%M"
 msgstr "%B %d %Y, %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1096
+#: src/gui/dialogs/addon/manager.cpp:1093
 msgid "url^None"
 msgstr "Nič"
 
@@ -7501,13 +7501,34 @@ msgstr "Odolnosť útočníka vs."
 msgid "Attacker vulnerability vs"
 msgstr "Zraniteľnosť útočníka vs."
 
-#: src/gui/dialogs/campaign_selection.cpp:368
+#: src/gui/dialogs/campaign_selection.cpp:59
+#, fuzzy
+#| msgid "Add-ons"
+msgid "game^Get Add-ons"
+msgstr "Doplnky"
+
+#: src/gui/dialogs/campaign_selection.cpp:378
+#, fuzzy
+#| msgid "Campaign"
+msgid "More campaigns..."
+msgstr "Výprava"
+
+#: src/gui/dialogs/campaign_selection.cpp:387
+msgid ""
+"In addition to the mainline campaigns, Wesnoth also has an ever-growing list "
+"of add-on content created by other players available via the Add-ons server, "
+"included but not limited to more single and multiplayer campaigns, "
+"multiplayer maps, additional media and various other content! Be sure to "
+"give it a try!"
+msgstr ""
+
+#: src/gui/dialogs/campaign_selection.cpp:397
 msgid "Missing Campaigns"
 msgstr "Chýbajúce kampane"
 
 #. TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
 #. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
-#: src/gui/dialogs/campaign_selection.cpp:379
+#: src/gui/dialogs/campaign_selection.cpp:408
 msgid ""
 "Wesnoth normally includes more than 15 mainline campaigns, even before "
 "installing any from the add-ons server. If you’ve installed the game via a "
@@ -7519,7 +7540,7 @@ msgstr ""
 "prostredníctvom správcu balíkov, pravdepodobne existuje samostatný balík na "
 "inštaláciu úplných údajov o hre."
 
-#: src/gui/dialogs/campaign_selection.cpp:410
+#: src/gui/dialogs/campaign_selection.cpp:439
 #: src/gui/dialogs/multiplayer/lobby.cpp:433
 msgid "active_modifications^None"
 msgstr "Žiadne"
@@ -7555,6 +7576,20 @@ msgid ""
 msgstr ""
 "Zvolená modifikácia nie je kompatibilná s aktuálnym prostredím.\n"
 "Prosím zvoľ nejakú kompatibilnú."
+
+#: src/gui/dialogs/editor/custom_tod.cpp:170
+#: src/gui/dialogs/editor/edit_unit.cpp:311
+#, fuzzy
+#| msgid "Choose Player"
+msgid "Choose File"
+msgstr "Vyber hráča"
+
+#: src/gui/dialogs/editor/custom_tod.cpp:178
+#: src/gui/dialogs/editor/edit_unit.cpp:320
+msgid ""
+"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
+"add-on?"
+msgstr ""
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:171
 msgid "Core"
@@ -7663,18 +7698,6 @@ msgstr ""
 
 #: src/gui/dialogs/editor/edit_unit.cpp:198
 msgid "healer"
-msgstr ""
-
-#: src/gui/dialogs/editor/edit_unit.cpp:311
-#, fuzzy
-#| msgid "Choose Player"
-msgid "Choose File"
-msgstr "Vyber hráča"
-
-#: src/gui/dialogs/editor/edit_unit.cpp:320
-msgid ""
-"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
-"add-on?"
 msgstr ""
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1032
@@ -7918,91 +7941,91 @@ msgstr "Nápisy tímu"
 msgid "Side $side_number ($name)"
 msgstr "Strana $side_number ($name)"
 
-#: src/gui/dialogs/loading_screen.cpp:44
+#: src/gui/dialogs/loading_screen.cpp:45
 msgid "Building terrain rules"
 msgstr "Pravidlá budovania terénu"
 
-#: src/gui/dialogs/loading_screen.cpp:45
+#: src/gui/dialogs/loading_screen.cpp:46
 msgid "Reading files and creating cache"
 msgstr "Čítanie súborov a vytváranie vyrovnávacej pamäte"
 
-#: src/gui/dialogs/loading_screen.cpp:46 src/gui/dialogs/loading_screen.cpp:49
+#: src/gui/dialogs/loading_screen.cpp:47 src/gui/dialogs/loading_screen.cpp:50
 msgid "Initializing display"
 msgstr "Inicializácia displeja"
 
-#: src/gui/dialogs/loading_screen.cpp:47
+#: src/gui/dialogs/loading_screen.cpp:48
 msgid "Reinitialize fonts for the current language"
 msgstr "Znovu inicializovať písma pre aktuálny jazyk"
 
-#: src/gui/dialogs/loading_screen.cpp:48
+#: src/gui/dialogs/loading_screen.cpp:49
 msgid "Initializing teams"
 msgstr "Inicializácia tímov"
 
-#: src/gui/dialogs/loading_screen.cpp:50
+#: src/gui/dialogs/loading_screen.cpp:51
 msgid "Loading game configuration"
 msgstr "Načíta sa nastavenie hry"
 
-#: src/gui/dialogs/loading_screen.cpp:51
+#: src/gui/dialogs/loading_screen.cpp:52
 msgid "Loading data files"
 msgstr "Načítavajú sa údajové súbory"
 
-#: src/gui/dialogs/loading_screen.cpp:52
+#: src/gui/dialogs/loading_screen.cpp:53
 msgid "Loading level"
 msgstr "Načítavanie levelu"
 
-#: src/gui/dialogs/loading_screen.cpp:53
+#: src/gui/dialogs/loading_screen.cpp:54
 msgid "Initializing scripting engine"
 msgstr "Inicializácia skriptovacieho enginu"
 
-#: src/gui/dialogs/loading_screen.cpp:54
+#: src/gui/dialogs/loading_screen.cpp:55
 msgid "Initializing planning mode"
 msgstr "Spúšťa sa plánovací režim"
 
-#: src/gui/dialogs/loading_screen.cpp:55
+#: src/gui/dialogs/loading_screen.cpp:56
 msgid "Reading unit files"
 msgstr "Čítanie súborov jednotiek"
 
-#: src/gui/dialogs/loading_screen.cpp:56
+#: src/gui/dialogs/loading_screen.cpp:57
 msgid "Loading units"
 msgstr "Načítavanie jednotiek"
 
-#: src/gui/dialogs/loading_screen.cpp:57
+#: src/gui/dialogs/loading_screen.cpp:58
 msgid "Searching for installed add-ons"
 msgstr "Hľadajú sa nainštalované doplnky"
 
-#: src/gui/dialogs/loading_screen.cpp:58
+#: src/gui/dialogs/loading_screen.cpp:59
 msgid "Starting game"
 msgstr "Spúšťa sa hra"
 
-#: src/gui/dialogs/loading_screen.cpp:59
+#: src/gui/dialogs/loading_screen.cpp:60
 msgid "Verifying cache"
 msgstr "Overenie vyrovnávacej pamäte"
 
-#: src/gui/dialogs/loading_screen.cpp:60
+#: src/gui/dialogs/loading_screen.cpp:61
 msgid "Connecting to server"
 msgstr "Pripája sa na server"
 
-#: src/gui/dialogs/loading_screen.cpp:61
+#: src/gui/dialogs/loading_screen.cpp:62
 msgid "Logging in"
 msgstr "Prihlasuje sa"
 
-#: src/gui/dialogs/loading_screen.cpp:62
+#: src/gui/dialogs/loading_screen.cpp:63
 msgid "Waiting for server"
 msgstr "Čakanie na server"
 
-#: src/gui/dialogs/loading_screen.cpp:63
+#: src/gui/dialogs/loading_screen.cpp:64
 msgid "Connecting to redirected server"
 msgstr "Pripája sa na presmerovaný server"
 
-#: src/gui/dialogs/loading_screen.cpp:64
+#: src/gui/dialogs/loading_screen.cpp:65
 msgid "Waiting for next scenario"
 msgstr "Čakanie na ďalší scenár"
 
-#: src/gui/dialogs/loading_screen.cpp:65
+#: src/gui/dialogs/loading_screen.cpp:66
 msgid "Getting game data"
 msgstr "Získavajú sa údaje hry"
 
-#: src/gui/dialogs/loading_screen.cpp:66
+#: src/gui/dialogs/loading_screen.cpp:67
 msgid "Downloading lobby data"
 msgstr "Sťahovanie údajov z lobby"
 
@@ -8186,41 +8209,41 @@ msgstr "Vlastné scenáre"
 msgid "Random Maps"
 msgstr "Náhodné mapy"
 
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:192
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:193
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:194
 msgid "No games found."
 msgstr "Neboli nájdené žiadne hry."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:260
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:259
 msgid "No eras found."
 msgstr "Neboli nájdené žiadne éry."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:261
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:260
 msgid "No eras found"
 msgstr "Neboli nájdené žiadne éry"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:527
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:526
 msgid "No eras available for this game."
 msgstr "Pre túto hru nie sú k dispozícii žiadne éry."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:733
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:732
 msgid "number of players^$min to $max"
 msgstr "$min až $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:847
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:846
 msgid "The selected game has no sides!"
 msgstr "Vybraná hra nemá strany!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:854
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:853
 msgid "The selected game cannot be created."
 msgstr "Vybranú hru nie je možné vytvoriť."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:926
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
 msgid "Choose Starting Scenario"
 msgstr "Výber východiskového scenára"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:926
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
 msgid "Select at which point to begin this campaign."
 msgstr "Vyber, v ktorom bode sa má táto kampaň začať."
 
@@ -8267,7 +8290,7 @@ msgstr "(Neplatné)"
 msgid "Waiting for players to choose factions..."
 msgstr "Čakáme, kým si hráči vyberú frakcie..."
 
-#: src/gui/dialogs/outro.cpp:56
+#: src/gui/dialogs/outro.cpp:58
 msgid "The End"
 msgstr "Koniec"
 
@@ -8292,12 +8315,12 @@ msgstr "Neplatné používateľské meno"
 msgid "Not on friends or ignore lists"
 msgstr "Nie je v zoznamoch priateľov alebo ignorovaných"
 
-#: src/gui/dialogs/preferences_dialog.cpp:948
-#: src/gui/dialogs/preferences_dialog.cpp:1012
+#: src/gui/dialogs/preferences_dialog.cpp:944
+#: src/gui/dialogs/preferences_dialog.cpp:1008
 msgid "No hotkey selected"
 msgstr "Nie je vybratá žiadna klávesová skratka"
 
-#: src/gui/dialogs/preferences_dialog.cpp:976
+#: src/gui/dialogs/preferences_dialog.cpp:972
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8305,15 +8328,15 @@ msgstr ""
 "“<b>$hotkey_sequence|</b>” je používaná “<b>$old_hotkey_action|</b>”.\n"
 "Chceš ju predefinovať na “<b>$new_hotkey_action|</b>”?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:982
+#: src/gui/dialogs/preferences_dialog.cpp:978
 msgid "Reassign Hotkey"
 msgstr "Predefinovať klávesovú skratku"
 
-#: src/gui/dialogs/preferences_dialog.cpp:999
+#: src/gui/dialogs/preferences_dialog.cpp:995
 msgid "All hotkeys have been reset to their default values."
 msgstr "Všetky klávesové skratky boli nastavené na štandardné hodnoty."
 
-#: src/gui/dialogs/preferences_dialog.cpp:999
+#: src/gui/dialogs/preferences_dialog.cpp:995
 msgid "Hotkeys Reset"
 msgstr "Zrušiť klávesové skratky"
 
@@ -8473,15 +8496,15 @@ msgstr "Zverejnený, na serveri zastaralý"
 msgid "Delete add-on from server"
 msgstr "Odstránenie doplnku zo servera"
 
-#: src/gui/widgets/chatbox.cpp:294
+#: src/gui/widgets/chatbox.cpp:290
 msgid "whisper to $receiver"
 msgstr "šepkanie s $receiver"
 
-#: src/gui/widgets/chatbox.cpp:378
+#: src/gui/widgets/chatbox.cpp:374
 msgid "Joined <i>$name</i>"
 msgstr "<i>$name</i> sa pripojil"
 
-#: src/gui/widgets/chatbox.cpp:384
+#: src/gui/widgets/chatbox.cpp:380
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
@@ -8559,7 +8582,7 @@ msgstr "Žiadne vybrané"
 msgid "Need at least 1 parallel item."
 msgstr "Vyžaduje sa aspoň jeden súbežný predmet."
 
-#: src/gui/widgets/rich_label.cpp:253
+#: src/gui/widgets/rich_label.cpp:249
 msgid "corrupted original file"
 msgstr ""
 
@@ -9533,11 +9556,11 @@ msgstr "Zobraz konzolu Lua"
 msgid "Unrecognized Command"
 msgstr "Nerozpoznaný príkaz"
 
-#: src/preferences/preferences.cpp:1260
+#: src/preferences/preferences.cpp:1263
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Nepoznám žiadnu tému. Skús ju nastaviť vnútri existujúcej hry."
 
-#: src/preferences/preferences.cpp:1297
+#: src/preferences/preferences.cpp:1300
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9547,15 +9570,15 @@ msgstr ""
 "hráčov a je potrebná na hosťovanie hier v miestnej sieti. Zvyčajne sa "
 "nachádza v rovnakom priečinku ako spustiteľný súbor hry."
 
-#: src/preferences/preferences.cpp:1301
+#: src/preferences/preferences.cpp:1304
 msgid "Find Server Application"
 msgstr "Nájdi serverovú aplikáciu"
 
-#: src/preferences/preferences.cpp:1746
+#: src/preferences/preferences.cpp:1760
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1748
+#: src/preferences/preferences.cpp:1762
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -9594,6 +9617,16 @@ msgstr "V sekcii '[$section|]' nie je nastavený povinný kĺúč '$key|'."
 #| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "V sekcii '[$section|]' nie je nastavený povinný kĺúč '$key|'."
+
+#~ msgid "Limit FPS"
+#~ msgstr "FPS limit"
+
+#~ msgid ""
+#~ "Disabling this increases CPU usage, but may slightly improve performance "
+#~ "(requires restart to take effect)"
+#~ msgstr ""
+#~ "Zakázanie tejto funkcie zvyšuje využitie CPU, ale môže mierne zlepšiť "
+#~ "výkon (vyžaduje reštart, aby sa prejavil)."
 
 #~ msgid "Connected Players"
 #~ msgstr "Pripojení hráči"
@@ -10119,11 +10152,6 @@ msgstr "V sekcii '[$section|]' nie je nastavený povinný kĺúč '$key|'."
 #~ msgstr "Neznámy"
 
 #, fuzzy
-#~| msgid "Add-ons"
-#~ msgid "Get Add-ons"
-#~ msgstr "Doplnky"
-
-#, fuzzy
 #~| msgid "Connect to Server"
 #~ msgid "Send new version to server"
 #~ msgstr "Pripojiť na server"
@@ -10188,11 +10216,6 @@ msgstr "V sekcii '[$section|]' nie je nastavený povinný kĺúč '$key|'."
 #~| msgid "Close Map"
 #~ msgid "User Maps"
 #~ msgstr "Zavri mapu"
-
-#, fuzzy
-#~| msgid "Campaign"
-#~ msgid "SP Campaigns"
-#~ msgstr "Výprava"
 
 #, fuzzy
 #~| msgid "No description available."

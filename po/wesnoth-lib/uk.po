@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 11:11-0500\n"
+"POT-Creation-Date: 2024-11-26 12:08-0600\n"
 "PO-Revision-Date: 2024-09-11 15:26+0300\n"
 "Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
 "discord: amakri>\n"
@@ -2334,7 +2334,7 @@ msgstr " (Натисніть '$hotkey' щоб дізнатися більше)"
 #. [label]
 #. [toggle_button]: id=sort_1
 #: data/gui/themes/default/widget/addon_list.cfg:78
-#: data/gui/themes/default/window/campaign_dialog.cfg:214
+#: data/gui/themes/default/window/campaign_dialog.cfg:212
 #: data/gui/themes/default/window/game_load.cfg:170
 #: data/gui/themes/default/window/mp_connect.cfg:159
 #: data/gui/themes/default/window/terrain_layers.cfg:45
@@ -2440,7 +2440,7 @@ msgstr "Очікуючі повідомлення"
 #: data/gui/themes/default/window/game_version.cfg:992
 #: data/gui/themes/default/window/gamestate_inspector.cfg:398
 #: data/gui/themes/default/window/generator_settings.cfg:190
-#: data/gui/themes/default/window/help_browser.cfg:277
+#: data/gui/themes/default/window/help_browser.cfg:288
 #: data/gui/themes/default/window/lobby_player_info.cfg:292
 #: data/gui/themes/default/window/lua_interpreter.cfg:130
 #: data/gui/themes/default/window/message.cfg:135
@@ -2548,7 +2548,7 @@ msgstr "Гаразд"
 #: data/gui/themes/default/window/addon_connect.cfg:211
 #: data/gui/themes/default/window/addon_license_prompt.cfg:114
 #: data/gui/themes/default/window/addon_uninstall_list.cfg:174
-#: data/gui/themes/default/window/campaign_dialog.cfg:535
+#: data/gui/themes/default/window/campaign_dialog.cfg:533
 #: data/gui/themes/default/window/campaign_difficulty.cfg:234
 #: data/gui/themes/default/window/core_dialog.cfg:241
 #: data/gui/themes/default/window/custom_tod.cfg:524
@@ -2695,7 +2695,7 @@ msgstr "Оновлено:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/window/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:581
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:580
 msgid "No description available."
 msgstr "Опису немає."
 
@@ -2736,7 +2736,7 @@ msgstr "Залежності:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/themes/default/window/addon_manager.cfg:713
-#: src/gui/dialogs/addon/manager.cpp:1079
+#: src/gui/dialogs/addon/manager.cpp:1076
 msgid "addon_dependencies^None"
 msgstr "Немає"
 
@@ -2750,7 +2750,7 @@ msgstr "Переклади:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/themes/default/window/addon_manager.cfg:748
-#: src/gui/dialogs/addon/manager.cpp:1093
+#: src/gui/dialogs/addon/manager.cpp:1090
 msgid "translations^None"
 msgstr "Немає"
 
@@ -2880,95 +2880,95 @@ msgid "Defender"
 msgstr "Захисник"
 
 #. [toggle_button]: id=sort_name
-#: data/gui/themes/default/window/campaign_dialog.cfg:215
+#: data/gui/themes/default/window/campaign_dialog.cfg:213
 msgid "Sort by full campaign name in alphabetical order"
 msgstr "Сортувати за повним ім'ям кампанії за абеткою"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/window/campaign_dialog.cfg:226
+#: data/gui/themes/default/window/campaign_dialog.cfg:224
 msgid "Timeline"
 msgstr "Хронологія"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/window/campaign_dialog.cfg:227
+#: data/gui/themes/default/window/campaign_dialog.cfg:225
 msgid "Sort in approximate chronological order of story events"
 msgstr "Сортувати за приблизним хронологічним порядком"
 
 #. [multimenu_button]: id=filter_completion
-#: data/gui/themes/default/window/campaign_dialog.cfg:237
+#: data/gui/themes/default/window/campaign_dialog.cfg:235
 msgid "Filter by campaign completion status"
 msgstr "Фільтрувати за статусом проходження"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:240
+#: data/gui/themes/default/window/campaign_dialog.cfg:238
 msgid "Not Completed"
 msgstr "Не пройдено"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
-#: data/gui/themes/default/window/campaign_dialog.cfg:242
+#: data/gui/themes/default/window/campaign_dialog.cfg:240
 msgid "Show campaigns not completed by player"
 msgstr "Показувати непройдені гравцем кампанії"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:246
+#: data/gui/themes/default/window/campaign_dialog.cfg:244
 msgid "Completed: Bronze"
 msgstr "Пройдено: Бронза"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:247
+#: data/gui/themes/default/window/campaign_dialog.cfg:245
 msgid "Show campaigns completed at easiest difficulty"
 msgstr "Показувати кампанії, що пройдені на найлегшій складності"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:251
+#: data/gui/themes/default/window/campaign_dialog.cfg:249
 msgid "Completed: Silver"
 msgstr "Пройдено: Срібло"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:252
+#: data/gui/themes/default/window/campaign_dialog.cfg:250
 msgid "Show campaigns completed at intermediate difficulties"
 msgstr "Показувати кампанії, що пройдені на середній складності"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:256
+#: data/gui/themes/default/window/campaign_dialog.cfg:254
 msgid "Completed: Gold"
 msgstr "Пройдено: Золото"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:257
+#: data/gui/themes/default/window/campaign_dialog.cfg:255
 msgid "Show campaigns completed at hardest difficulty"
 msgstr "Показувати кампанії, що пройдені на важкій складності"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:261
+#: data/gui/themes/default/window/campaign_dialog.cfg:259
 msgid "Completed: All"
 msgstr "Пройдено: Всі"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:262
+#: data/gui/themes/default/window/campaign_dialog.cfg:260
 msgid "Show completed campaigns"
 msgstr "Показувати пройдені кампанії"
 
 #. [label]
 #. [label]: id=mods_header
-#: data/gui/themes/default/window/campaign_dialog.cfg:313
+#: data/gui/themes/default/window/campaign_dialog.cfg:311
 #: data/gui/themes/default/window/mp_create_game.cfg:220
 msgid "Modifications:"
 msgstr "Модифікації:"
 
 #. [label]
-#: data/gui/themes/default/window/campaign_dialog.cfg:338
+#: data/gui/themes/default/window/campaign_dialog.cfg:336
 msgid "Combat:"
 msgstr "Битва:"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:353
+#: data/gui/themes/default/window/campaign_dialog.cfg:351
 msgid "Default RNG"
 msgstr "Типовий RNG"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:354
+#: data/gui/themes/default/window/campaign_dialog.cfg:352
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -2982,12 +2982,12 @@ msgstr ""
 "промахнутися двічі."
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:359
+#: data/gui/themes/default/window/campaign_dialog.cfg:357
 msgid "Predictable RNG"
 msgstr "Передбачуваний RNG"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:360
+#: data/gui/themes/default/window/campaign_dialog.cfg:358
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -3003,12 +3003,12 @@ msgstr ""
 "Обидва удари все одно не промахнуться."
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:365
+#: data/gui/themes/default/window/campaign_dialog.cfg:363
 msgid "Reduced RNG"
 msgstr "Зменшений RNG"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:366
+#: data/gui/themes/default/window/campaign_dialog.cfg:364
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3023,33 +3023,36 @@ msgstr ""
 "принаймні один раз і промахнетеся принаймні один раз."
 
 #. [label]
-#: data/gui/themes/default/window/campaign_dialog.cfg:383
+#: data/gui/themes/default/window/campaign_dialog.cfg:381
 msgid "Difficulty:"
 msgstr "Складність:"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:397
+#: data/gui/themes/default/window/campaign_dialog.cfg:395
 msgid "Easy"
 msgstr "Легко"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:400
+#: data/gui/themes/default/window/campaign_dialog.cfg:398
 msgid "Normal"
 msgstr "Нормально"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:403
+#: data/gui/themes/default/window/campaign_dialog.cfg:401
 msgid "Hard"
 msgstr "Важко"
 
 #. [label]
-#: data/gui/themes/default/window/campaign_dialog.cfg:460
+#: data/gui/themes/default/window/campaign_dialog.cfg:458
 msgid "Play a Campaign"
 msgstr "Грати кампанію"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=proceed
 #. [button]: id=ok
-#: data/gui/themes/default/window/campaign_dialog.cfg:524
+#: data/gui/themes/default/window/campaign_dialog.cfg:522
 #: data/gui/themes/default/window/campaign_difficulty.cfg:221
+#: src/gui/dialogs/campaign_selection.cpp:59
 msgid "game^Play"
 msgstr "Грати"
 
@@ -3135,8 +3138,9 @@ msgstr "Завантажити компоненти"
 #. [button]: id=ok
 #: data/gui/themes/default/window/core_dialog.cfg:228
 #: data/gui/themes/default/window/language_selection.cfg:293
+#: src/gui/dialogs/editor/custom_tod.cpp:171
 #: src/gui/dialogs/editor/edit_unit.cpp:312
-#: src/preferences/preferences.cpp:1303
+#: src/preferences/preferences.cpp:1306
 msgid "Select"
 msgstr "Вибрати"
 
@@ -3283,6 +3287,9 @@ msgstr "Переглянути зміни кольору на мапі"
 #. [label]
 #: data/gui/themes/default/window/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:973
+#: src/gui/dialogs/editor/custom_tod.cpp:182
+#: src/gui/dialogs/editor/custom_tod.cpp:189
+#: src/gui/dialogs/editor/custom_tod.cpp:196
 #: src/gui/dialogs/editor/edit_unit.cpp:325
 #: src/gui/dialogs/editor/edit_unit.cpp:333
 #: src/gui/dialogs/editor/edit_unit.cpp:341
@@ -4736,6 +4743,13 @@ msgstr "Показувати мітки"
 msgid "Battle For Wesnoth Help"
 msgstr "Довідка Battle for Wesnoth"
 
+#. [toggle_button]: id=contents
+#: data/gui/themes/default/window/help_browser.cfg:160
+#, fuzzy
+#| msgid "Show Credits"
+msgid "Show Topics"
+msgstr "Показати авторів"
+
 #. [label]
 #: data/gui/themes/default/window/hotkey_bind.cfg:35
 msgid "Press desired hotkey (Esc cancels)"
@@ -5981,7 +5995,7 @@ msgstr "Гаряча клавіша"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:902
+#: src/gui/dialogs/preferences_dialog.cpp:898
 msgid "game_hotkeys^G"
 msgstr "Г"
 
@@ -5994,7 +6008,7 @@ msgstr "Доступно у грі"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:903
+#: src/gui/dialogs/preferences_dialog.cpp:899
 msgid "editor_hotkeys^E"
 msgstr "Р"
 
@@ -6007,7 +6021,7 @@ msgstr "Доступно у редакторі"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:904
+#: src/gui/dialogs/preferences_dialog.cpp:900
 msgid "mainmenu_hotkeys^M"
 msgstr "М"
 
@@ -6086,27 +6100,13 @@ msgstr ""
 "Зменшує розриви, синхронізуючи промальовку з частотою оновлення екрану "
 "(вимагає перезапуску)"
 
-#. [toggle_button]: id=fps_limiter
-#: data/gui/themes/default/window/preferences/03_display.cfg:145
-msgid "Limit FPS"
-msgstr "Обмежити FPS"
-
-#. [toggle_button]: id=fps_limiter
-#: data/gui/themes/default/window/preferences/03_display.cfg:146
-msgid ""
-"Disabling this increases CPU usage, but may slightly improve performance "
-"(requires restart to take effect)"
-msgstr ""
-"Вимкнення підвищує завантаженість процесору, але може трохи покращити "
-"продуктивність (вимагає перезапуску)"
-
 #. [label]
-#: data/gui/themes/default/window/preferences/03_display.cfg:168
+#: data/gui/themes/default/window/preferences/03_display.cfg:152
 msgid "In-game theme:"
 msgstr "Тема гри:"
 
 #. [menu_button]: id=choose_theme
-#: data/gui/themes/default/window/preferences/03_display.cfg:181
+#: data/gui/themes/default/window/preferences/03_display.cfg:165
 msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
@@ -6115,12 +6115,12 @@ msgstr ""
 "аддонах"
 
 #. [label]
-#: data/gui/themes/default/window/preferences/03_display.cfg:192
+#: data/gui/themes/default/window/preferences/03_display.cfg:176
 msgid "UI theme:"
 msgstr "Тема інтерфейсу:"
 
 #. [menu_button]: id=choose_gui2_theme
-#: data/gui/themes/default/window/preferences/03_display.cfg:208
+#: data/gui/themes/default/window/preferences/03_display.cfg:192
 msgid ""
 "Change the UI (GUI2) theme. Additional themes may be provided by community-"
 "made add-ons"
@@ -6129,27 +6129,27 @@ msgstr ""
 "зроблених спільнотою"
 
 #. [button]: id=apply
-#: data/gui/themes/default/window/preferences/03_display.cfg:217
+#: data/gui/themes/default/window/preferences/03_display.cfg:201
 msgid "Apply"
 msgstr "Застосувати"
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/window/preferences/03_display.cfg:239
+#: data/gui/themes/default/window/preferences/03_display.cfg:223
 msgid "Combat damage indicators"
 msgstr "Показники під час бою"
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/window/preferences/03_display.cfg:240
+#: data/gui/themes/default/window/preferences/03_display.cfg:224
 msgid "Show amount of damage inflicted or healed as fading labels above units"
 msgstr "Показувати величину шкоди і зцілення тимчасовими написами над бійцем"
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/window/preferences/03_display.cfg:253
+#: data/gui/themes/default/window/preferences/03_display.cfg:237
 msgid "Team color indicators"
 msgstr "Показувати еліпси під бійцями"
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/window/preferences/03_display.cfg:254
+#: data/gui/themes/default/window/preferences/03_display.cfg:238
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -6158,62 +6158,62 @@ msgstr ""
 "чиїй стороні"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/themes/default/window/preferences/03_display.cfg:267
+#: data/gui/themes/default/window/preferences/03_display.cfg:251
 msgid "Grid overlay"
 msgstr "Сітка на мапі"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/themes/default/window/preferences/03_display.cfg:268
+#: data/gui/themes/default/window/preferences/03_display.cfg:252
 msgid "Overlay a grid over the map"
 msgstr "Показувати сітку на карті"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/window/preferences/03_display.cfg:303
+#: data/gui/themes/default/window/preferences/03_display.cfg:287
 msgid "Animate map"
 msgstr "Анімувати карту"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/window/preferences/03_display.cfg:304
+#: data/gui/themes/default/window/preferences/03_display.cfg:288
 msgid "Display animated terrain graphics"
 msgstr "Показувати анімацію місцевості"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/themes/default/window/preferences/03_display.cfg:317
+#: data/gui/themes/default/window/preferences/03_display.cfg:301
 msgid "Animate water"
 msgstr "Анімувати воду"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/themes/default/window/preferences/03_display.cfg:318
+#: data/gui/themes/default/window/preferences/03_display.cfg:302
 msgid "Display animated water graphics (can be slow)"
 msgstr "Показувати анімацію води (може сповільнювати гру)"
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/window/preferences/03_display.cfg:333
+#: data/gui/themes/default/window/preferences/03_display.cfg:317
 msgid "Unit standing animations"
 msgstr "Анімації нерухомих бійців"
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/window/preferences/03_display.cfg:334
+#: data/gui/themes/default/window/preferences/03_display.cfg:318
 msgid "Continuously animate standing units on the battlefield"
 msgstr "Безперервно анімувати стоячих бійців на полі бою"
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/window/preferences/03_display.cfg:352
+#: data/gui/themes/default/window/preferences/03_display.cfg:336
 msgid "Unit idle animations"
 msgstr "Анімації бездіяльних бійців"
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/window/preferences/03_display.cfg:353
+#: data/gui/themes/default/window/preferences/03_display.cfg:337
 msgid "Play short random animations for idle units"
 msgstr "Програвати коротку випадкову анімацію для стоячих бійців"
 
 #. [label]
-#: data/gui/themes/default/window/preferences/03_display.cfg:376
+#: data/gui/themes/default/window/preferences/03_display.cfg:360
 msgid "Frequency:"
 msgstr "Частота:"
 
 #. [slider]: id=idle_anim_frequency
-#: data/gui/themes/default/window/preferences/03_display.cfg:392
+#: data/gui/themes/default/window/preferences/03_display.cfg:376
 msgid "Set the frequency of unit idle animations"
 msgstr "Задати частоту анімації при бездіяльності"
 
@@ -7439,17 +7439,17 @@ msgstr "Ви дійсно хочете видалити '$addon|'?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1033
+#: src/gui/dialogs/addon/manager.cpp:1034
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%d %B %Y, %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1036
+#: src/gui/dialogs/addon/manager.cpp:1037
 msgid "%B %d %Y, %H:%M"
 msgstr "%d %B %Y, %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1096
+#: src/gui/dialogs/addon/manager.cpp:1093
 msgid "url^None"
 msgstr "Немає"
 
@@ -7473,13 +7473,34 @@ msgstr "Атакуючий стійкий до"
 msgid "Attacker vulnerability vs"
 msgstr "Атакуючий вразливий до"
 
-#: src/gui/dialogs/campaign_selection.cpp:368
+#: src/gui/dialogs/campaign_selection.cpp:59
+#, fuzzy
+#| msgid "Add-ons"
+msgid "game^Get Add-ons"
+msgstr "Аддони"
+
+#: src/gui/dialogs/campaign_selection.cpp:378
+#, fuzzy
+#| msgid "Campaign"
+msgid "More campaigns..."
+msgstr "Кампанія"
+
+#: src/gui/dialogs/campaign_selection.cpp:387
+msgid ""
+"In addition to the mainline campaigns, Wesnoth also has an ever-growing list "
+"of add-on content created by other players available via the Add-ons server, "
+"included but not limited to more single and multiplayer campaigns, "
+"multiplayer maps, additional media and various other content! Be sure to "
+"give it a try!"
+msgstr ""
+
+#: src/gui/dialogs/campaign_selection.cpp:397
 msgid "Missing Campaigns"
 msgstr "Відсутні кампанії"
 
 #. TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
 #. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
-#: src/gui/dialogs/campaign_selection.cpp:379
+#: src/gui/dialogs/campaign_selection.cpp:408
 msgid ""
 "Wesnoth normally includes more than 15 mainline campaigns, even before "
 "installing any from the add-ons server. If you’ve installed the game via a "
@@ -7491,7 +7512,7 @@ msgstr ""
 "встановили гру через менеджер пакетів, можливо, там також є окремий пакет, "
 "який включає повні дані гри."
 
-#: src/gui/dialogs/campaign_selection.cpp:410
+#: src/gui/dialogs/campaign_selection.cpp:439
 #: src/gui/dialogs/multiplayer/lobby.cpp:433
 msgid "active_modifications^None"
 msgstr "Немає"
@@ -7527,6 +7548,24 @@ msgid ""
 msgstr ""
 "Наразі обрана модифікація несумісна з вашим встановленням.\n"
 "Виберіть сумісну."
+
+#: src/gui/dialogs/editor/custom_tod.cpp:170
+#: src/gui/dialogs/editor/edit_unit.cpp:311
+msgid "Choose File"
+msgstr "Оберіть файл"
+
+#: src/gui/dialogs/editor/custom_tod.cpp:178
+#: src/gui/dialogs/editor/edit_unit.cpp:320
+#, fuzzy
+#| msgid ""
+#| "This file is outside Wesnoth's data dirs. Do you wish to copy it into "
+#| "your add-on?"
+msgid ""
+"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
+"add-on?"
+msgstr ""
+"Цей файл знаходиться поза директоріями Весноту. Чи ви бажаєте скопіювати їх "
+"у ваш аддон?"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:171
 msgid "Core"
@@ -7632,22 +7671,6 @@ msgstr "змішаний воїн"
 #: src/gui/dialogs/editor/edit_unit.cpp:198
 msgid "healer"
 msgstr "цілитель"
-
-#: src/gui/dialogs/editor/edit_unit.cpp:311
-msgid "Choose File"
-msgstr "Оберіть файл"
-
-#: src/gui/dialogs/editor/edit_unit.cpp:320
-#, fuzzy
-#| msgid ""
-#| "This file is outside Wesnoth's data dirs. Do you wish to copy it into "
-#| "your add-on?"
-msgid ""
-"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
-"add-on?"
-msgstr ""
-"Цей файл знаходиться поза директоріями Весноту. Чи ви бажаєте скопіювати їх "
-"у ваш аддон?"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1032
 #, fuzzy
@@ -7886,91 +7909,91 @@ msgstr "Мітки команд"
 msgid "Side $side_number ($name)"
 msgstr "Сторона $side_number ($name)"
 
-#: src/gui/dialogs/loading_screen.cpp:44
+#: src/gui/dialogs/loading_screen.cpp:45
 msgid "Building terrain rules"
 msgstr "Побудова правил місцевості"
 
-#: src/gui/dialogs/loading_screen.cpp:45
+#: src/gui/dialogs/loading_screen.cpp:46
 msgid "Reading files and creating cache"
 msgstr "Читання файлів та створення кешу"
 
-#: src/gui/dialogs/loading_screen.cpp:46 src/gui/dialogs/loading_screen.cpp:49
+#: src/gui/dialogs/loading_screen.cpp:47 src/gui/dialogs/loading_screen.cpp:50
 msgid "Initializing display"
 msgstr "Ініціалізація дисплею"
 
-#: src/gui/dialogs/loading_screen.cpp:47
+#: src/gui/dialogs/loading_screen.cpp:48
 msgid "Reinitialize fonts for the current language"
 msgstr "Перезавантажити шрифти для поточної мови"
 
-#: src/gui/dialogs/loading_screen.cpp:48
+#: src/gui/dialogs/loading_screen.cpp:49
 msgid "Initializing teams"
 msgstr "Ініціалізація команд"
 
-#: src/gui/dialogs/loading_screen.cpp:50
+#: src/gui/dialogs/loading_screen.cpp:51
 msgid "Loading game configuration"
 msgstr "Завантаження налаштувань гри"
 
-#: src/gui/dialogs/loading_screen.cpp:51
+#: src/gui/dialogs/loading_screen.cpp:52
 msgid "Loading data files"
 msgstr "Завантаження даних"
 
-#: src/gui/dialogs/loading_screen.cpp:52
+#: src/gui/dialogs/loading_screen.cpp:53
 msgid "Loading level"
 msgstr "Завантаження рівня"
 
-#: src/gui/dialogs/loading_screen.cpp:53
+#: src/gui/dialogs/loading_screen.cpp:54
 msgid "Initializing scripting engine"
 msgstr "Ініціалізація скриптів рушія"
 
-#: src/gui/dialogs/loading_screen.cpp:54
+#: src/gui/dialogs/loading_screen.cpp:55
 msgid "Initializing planning mode"
 msgstr "Ініціалізація режиму планування"
 
-#: src/gui/dialogs/loading_screen.cpp:55
+#: src/gui/dialogs/loading_screen.cpp:56
 msgid "Reading unit files"
 msgstr "Читання файлів бійців"
 
-#: src/gui/dialogs/loading_screen.cpp:56
+#: src/gui/dialogs/loading_screen.cpp:57
 msgid "Loading units"
 msgstr "Завантаження бійців"
 
-#: src/gui/dialogs/loading_screen.cpp:57
+#: src/gui/dialogs/loading_screen.cpp:58
 msgid "Searching for installed add-ons"
 msgstr "Пошук встановлених аддонів"
 
-#: src/gui/dialogs/loading_screen.cpp:58
+#: src/gui/dialogs/loading_screen.cpp:59
 msgid "Starting game"
 msgstr "Початок гри"
 
-#: src/gui/dialogs/loading_screen.cpp:59
+#: src/gui/dialogs/loading_screen.cpp:60
 msgid "Verifying cache"
 msgstr "Перевірка кешу"
 
-#: src/gui/dialogs/loading_screen.cpp:60
+#: src/gui/dialogs/loading_screen.cpp:61
 msgid "Connecting to server"
 msgstr "З'єднуюсь з сервером"
 
-#: src/gui/dialogs/loading_screen.cpp:61
+#: src/gui/dialogs/loading_screen.cpp:62
 msgid "Logging in"
 msgstr "Виконую вхід"
 
-#: src/gui/dialogs/loading_screen.cpp:62
+#: src/gui/dialogs/loading_screen.cpp:63
 msgid "Waiting for server"
 msgstr "Чекаю на сервер"
 
-#: src/gui/dialogs/loading_screen.cpp:63
+#: src/gui/dialogs/loading_screen.cpp:64
 msgid "Connecting to redirected server"
 msgstr "З'єднуюсь з перенаправленим сервером"
 
-#: src/gui/dialogs/loading_screen.cpp:64
+#: src/gui/dialogs/loading_screen.cpp:65
 msgid "Waiting for next scenario"
 msgstr "Чекаю наступного сценарію"
 
-#: src/gui/dialogs/loading_screen.cpp:65
+#: src/gui/dialogs/loading_screen.cpp:66
 msgid "Getting game data"
 msgstr "Отримання даних гри"
 
-#: src/gui/dialogs/loading_screen.cpp:66
+#: src/gui/dialogs/loading_screen.cpp:67
 msgid "Downloading lobby data"
 msgstr "Завантаження даних фойє"
 
@@ -8155,41 +8178,41 @@ msgstr "Користувацькі сценарії"
 msgid "Random Maps"
 msgstr "Випадкові карти"
 
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:192
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:193
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:194
 msgid "No games found."
 msgstr "Ігри не знайдені."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:260
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:259
 msgid "No eras found."
 msgstr "Ери не знайдені."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:261
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:260
 msgid "No eras found"
 msgstr "Ери не знайдені"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:527
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:526
 msgid "No eras available for this game."
 msgstr "Немає доступної для цієї гри ери."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:733
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:732
 msgid "number of players^$min to $max"
 msgstr "від $min до $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:847
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:846
 msgid "The selected game has no sides!"
 msgstr "Вибрана гра не має сторін!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:854
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:853
 msgid "The selected game cannot be created."
 msgstr "Вибрана гра не може бути створена."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:926
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
 msgid "Choose Starting Scenario"
 msgstr "Виберіть початковий сценарій"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:926
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
 msgid "Select at which point to begin this campaign."
 msgstr "Виберіть точку початку цієї кампанії."
 
@@ -8236,7 +8259,7 @@ msgstr "(Недійсний)"
 msgid "Waiting for players to choose factions..."
 msgstr "Чекаємо дока гравці виберуть фракції..."
 
-#: src/gui/dialogs/outro.cpp:56
+#: src/gui/dialogs/outro.cpp:58
 msgid "The End"
 msgstr "Кінець"
 
@@ -8261,12 +8284,12 @@ msgstr "Невірне ім'я користувача"
 msgid "Not on friends or ignore lists"
 msgstr "Не в списку ваших друзів або ігнорованих"
 
-#: src/gui/dialogs/preferences_dialog.cpp:948
-#: src/gui/dialogs/preferences_dialog.cpp:1012
+#: src/gui/dialogs/preferences_dialog.cpp:944
+#: src/gui/dialogs/preferences_dialog.cpp:1008
 msgid "No hotkey selected"
 msgstr "Гаряча клавіша не вибрана"
 
-#: src/gui/dialogs/preferences_dialog.cpp:976
+#: src/gui/dialogs/preferences_dialog.cpp:972
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8274,15 +8297,15 @@ msgstr ""
 "“<b>$hotkey_sequence|</b>” використовується “<b>$old_hotkey_action|</b>”.\n"
 "Хочете перевизначити її на “<b>$new_hotkey_action|</b>”?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:982
+#: src/gui/dialogs/preferences_dialog.cpp:978
 msgid "Reassign Hotkey"
 msgstr "Перевизначити клавішу"
 
-#: src/gui/dialogs/preferences_dialog.cpp:999
+#: src/gui/dialogs/preferences_dialog.cpp:995
 msgid "All hotkeys have been reset to their default values."
 msgstr "Всі гарячі клавіші були скинуті на типові."
 
-#: src/gui/dialogs/preferences_dialog.cpp:999
+#: src/gui/dialogs/preferences_dialog.cpp:995
 msgid "Hotkeys Reset"
 msgstr "Скидання клавіш"
 
@@ -8443,15 +8466,15 @@ msgstr "Опублікований, застарілий на сервері"
 msgid "Delete add-on from server"
 msgstr "Видалити аддон з серверу"
 
-#: src/gui/widgets/chatbox.cpp:294
+#: src/gui/widgets/chatbox.cpp:290
 msgid "whisper to $receiver"
 msgstr "шепотіти користувачеві $receiver"
 
-#: src/gui/widgets/chatbox.cpp:378
+#: src/gui/widgets/chatbox.cpp:374
 msgid "Joined <i>$name</i>"
 msgstr "<i>$name</i> приєднався"
 
-#: src/gui/widgets/chatbox.cpp:384
+#: src/gui/widgets/chatbox.cpp:380
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
@@ -8529,7 +8552,7 @@ msgstr "Нічого не вибрано"
 msgid "Need at least 1 parallel item."
 msgstr "Потрібен принаймні 1 паралельний елемент."
 
-#: src/gui/widgets/rich_label.cpp:253
+#: src/gui/widgets/rich_label.cpp:249
 msgid "corrupted original file"
 msgstr ""
 
@@ -9493,11 +9516,11 @@ msgstr "Показати консоль Lua"
 msgid "Unrecognized Command"
 msgstr "Невідома команда"
 
-#: src/preferences/preferences.cpp:1260
+#: src/preferences/preferences.cpp:1263
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Невідома тема. Спробуйте поміняти в існуючій грі."
 
-#: src/preferences/preferences.cpp:1297
+#: src/preferences/preferences.cpp:1300
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9507,15 +9530,15 @@ msgstr ""
 "серверу і необхідний для хостування ігор у локальній мережі. Зазвичай його "
 "можна знайти у теці з грою."
 
-#: src/preferences/preferences.cpp:1301
+#: src/preferences/preferences.cpp:1304
 msgid "Find Server Application"
 msgstr "Знайти додаток серверу"
 
-#: src/preferences/preferences.cpp:1746
+#: src/preferences/preferences.cpp:1760
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1748
+#: src/preferences/preferences.cpp:1762
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -9555,6 +9578,16 @@ msgstr "У розділі '[$section|]' не заданий обов'язков�
 #| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "У розділі '[$section|]' не заданий обов'язковий параметр '$key|'."
+
+#~ msgid "Limit FPS"
+#~ msgstr "Обмежити FPS"
+
+#~ msgid ""
+#~ "Disabling this increases CPU usage, but may slightly improve performance "
+#~ "(requires restart to take effect)"
+#~ msgstr ""
+#~ "Вимкнення підвищує завантаженість процесору, але може трохи покращити "
+#~ "продуктивність (вимагає перезапуску)"
 
 #~ msgid "Connected Players"
 #~ msgstr "Під'єднані гравці"
@@ -10047,11 +10080,6 @@ msgstr "У розділі '[$section|]' не заданий обов'язков�
 #~ msgstr "Невідомо"
 
 #, fuzzy
-#~| msgid "Add-ons"
-#~ msgid "Get Add-ons"
-#~ msgstr "Аддони"
-
-#, fuzzy
 #~| msgid "Connect to Server"
 #~ msgid "Send new version to server"
 #~ msgstr "З'єднатись з сервером"
@@ -10111,11 +10139,6 @@ msgstr "У розділі '[$section|]' не заданий обов'язков�
 #~| msgid "Close Map"
 #~ msgid "User Maps"
 #~ msgstr "Закрити карту"
-
-#, fuzzy
-#~| msgid "Campaign"
-#~ msgid "SP Campaigns"
-#~ msgstr "Кампанія"
 
 #, fuzzy
 #~| msgid "No description available."

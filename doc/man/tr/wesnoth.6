@@ -167,11 +167,6 @@ deneysel olduğundan ve hataların çoğu bilindiğinden bir hata raporu
 doldurmayın. Kütüphanenin bölümleri kararlı sayılır ve bu anahtar olmadan da
 çalışacaktır.
 .TP 
-\fB\-\-nodelay\fP
-çizgesel başarımı ölçümlemek amacıyla oyunu gecikmeler olmaksızın
-çalıştırır. Bu seçenek \fB\-\-nogui\fP seçeneği tarafından kendiliğinden etkin
-kılınır.
-.TP 
 \fB\-\-noaddons\fP
 kullanıcı eklentilerinin yüklenmesini iptal eder.
 .TP 
@@ -224,22 +219,26 @@ ayrıntılar için
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor adresine
 balınız.
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fITANIM1\fP\fB,\fP\fITANIM2\fP\fB,\fP\fI...\fP
-\fB\-\-preprocess\fP seçeneği tarafından kullanılacak tanımların virgülle
-ayrılmış listesi. Eğer \fBSKIP_CORE\fP tanım listesinde ise "data/core"
-dizinine önişlem uygulanmaz.
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ kaynak\-dosya\fP
-sadece \fB\-\-preprocess\fP seçeneği tarafından kullanılır. Önişleme başlamadan
-önce eklenecek \fB[önişlem_tanım]\fPlarını içeren dosyayı belirtir.
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=hedef\-dosya\fP\fB]\fP
-sadece \fB\-\-preprocess\fP seçeneğiyle kullanılır. Önişlemden geçmiş tüm
-makroları hedef dosyaya çıktılar. Eğer dosya belirtilmemişse, çıktılama
-önişlem seçeneğinin hedef dizinindeki '_MACROS_.cfg' dosyasına
-yapılır. Çıktı dosyası \fB\-\-preprocess\-input\-macros\fP seçeneğine
-aktarılabilir. Bu seçenek komut satırında \fB\-\-preprocess\fP seçeneğinden önce
-yer almalıdır.
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 ekran çözünürlüğünü ayarlar. Örnek: \fB\-r\fP \fB800x600\fP.

@@ -170,10 +170,6 @@ a\ tato volba ji zapíná. Tohle je velmi experimentální. Nevyplňuj žádná
 chybová hlášení, protože o\ většině chyb se ví. Část této knihovny je
 považována za stabilní a\ bude pracovat bez tohoto přepínače.
 .TP 
-\fB\-\-nodelay\fP
-spustí hru bez jakýchkoli zpoždění pro otestování grafiky. Tohle je
-automaticky zapnuto volbou \fB\-\-nogui\fP.
-.TP 
 \fB\-\-noaddons\fP
 vypne načtení uživatelských rozšíření.
 .TP 
@@ -222,22 +218,26 @@ předzpracována před zadanými zdroji. Příklad: \fB\-p ~/wesnoth/data/campai
 se preprocesoru navštiv:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINICE1\fP\fB,\fP\fIDEFINICE2\fP\fB,\fP\fI...\fP
-seznam definic oddělených čárkami, které budou použity příkazem
-\fB\-\-preprocess\fP. Pokud je v\ seznamu definic \fBSKIP_CORE\fP, nebude
-předzpracován adresář „data/core“.
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ zdrojový\-soubor\fP
-použito pouze příkazem \fB\-\-preprocess\fP. Určuje soubor, který obsahuje značky
-\fB[preproc_define]\fP, pro začlenění definic dříve, než se spustí
-předzpracování.
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=cílový\-soubor\fP\fB]\fP
-použito pouze příkazem \fB\-\-preprocess\fP. Zapíše všechna předzpracovaná makra
-do cílového souboru. Pokud soubor není určen, bude výstupem soubor
-„_MACROS_.cfg“ v\ cílovém adresáři příkazu preprocess. Výstupní soubor může
-být předán volbě \fB\-\-preprocess\-input\-macros\fP. Tento přepínač by měl být
-napsán před příkazem \fB\-\-preprocess\fP.
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 nastaví rozlišení obrazovky. Příklad: \fB\-r\fP \fB800x600\fP.

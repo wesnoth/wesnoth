@@ -269,7 +269,7 @@ void set_log_to_file()
 
 		// make stdout unbuffered - otherwise some output might be lost
 		// in practice shouldn't make much difference either way, given how little output goes through stdout/std::cout
-		if(setvbuf(stdout, NULL, _IONBF, 2) == -1) {
+		if(setvbuf(stdout, nullptr, _IONBF, 2) == -1) {
 			std::cerr << "Failed to set stdout to be unbuffered";
 		}
 
@@ -407,7 +407,7 @@ std::string format_timespan(const std::chrono::seconds& span)
 		return "expired";
 	}
 
-	auto [days, hours, minutes, seconds] = chrono::deconstruct_duration(span);
+	auto [days, hours, minutes, seconds] = chrono::deconstruct_duration(chrono::format::days_hours_mins_secs, span);
 	std::vector<std::string> formatted_values;
 
 	// TODO C++20: see if we can use the duration stream operators
@@ -498,6 +498,7 @@ void log_in_progress::operator|(formatter&& message)
 			auto fractional = std::chrono::duration_cast<std::chrono::microseconds>(now - as_seconds);
 			stream_ << "." << std::setw(6) << fractional.count();
 		}
+		stream_ << " ";
 	}
 	stream_ << prefix_ << sanitize_log(message.str());
 	if(auto_newline_) {

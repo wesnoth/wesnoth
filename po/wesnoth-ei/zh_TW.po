@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 16:11 UTC\n"
+"POT-Creation-Date: 2024-11-26 18:08 UTC\n"
 "PO-Revision-Date: 2022-07-14 16:31+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -457,8 +457,8 @@ msgstr ""
 #| "River Guard posts had been abandoned, as colonists spread into the "
 #| "Estmarks and the orcs were driven in retreat north of the Great River."
 msgid ""
-"In the days of King Garard I, two strong points had been built along the "
-"near bank of the River Weldyn, south of Soradoc, to stop bandits and orcish "
+"In the days of King Garard I, two strong points had been built along the far "
+"bank of the River Weldyn, south of Soradoc, to stop bandits and orcish "
 "raiders out of the Estmarks from entering Wesnoth. In later years, the river "
 "guard posts had been abandoned as colonists spread into the Estmarks and the "
 "orcs were driven in retreat north of the Great River."
@@ -573,7 +573,7 @@ msgstr "韋諾人"
 #: data/campaigns/Eastern_Invasion/scenarios/01_Eastern_Invasion.cfg:101
 #: data/campaigns/Eastern_Invasion/scenarios/01_Eastern_Invasion.cfg:137
 #: data/campaigns/Eastern_Invasion/scenarios/01_Eastern_Invasion.cfg:183
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:176
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:178
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:53
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:83
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:114
@@ -626,7 +626,7 @@ msgstr ""
 #. if Mel Guthrak dies in S01, the pursuer in S02 is renamed Mal-Talar
 #. if Mal-Talar dies in S01, S02 can and S06b does rename to "Mal-Bakral"
 #: data/campaigns/Eastern_Invasion/scenarios/01_Eastern_Invasion.cfg:145
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:213
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:215
 #: data/campaigns/Eastern_Invasion/scenarios/06b_Soradoc.cfg:248
 msgid "Mal-Talar"
 msgstr "馬爾-塔拉爾"
@@ -636,7 +636,7 @@ msgstr "馬爾-塔拉爾"
 #. See comments for Mal-Talar about which necromancer appears in S02.
 #. This guy reappears no matter what in S16 (reanimated as a lich).
 #: data/campaigns/Eastern_Invasion/scenarios/01_Eastern_Invasion.cfg:189
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:168
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:170
 #: data/campaigns/Eastern_Invasion/scenarios/16_Eleventh_Hour.cfg:662
 msgid "Mel Guthrak"
 msgstr ""
@@ -670,8 +670,8 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/01_Eastern_Invasion.cfg:316
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:226
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:508
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:228
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:510
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:169
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Interlude.cfg:177
 #: data/campaigns/Eastern_Invasion/scenarios/04b_Ill_Humors.cfg:314
@@ -941,29 +941,29 @@ msgid "Nag"
 msgstr "納夫加"
 
 #. [side]: type=Troll, id=Kabak
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:136
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:146
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:138
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:148
 msgid "Hur"
 msgstr ""
 
 #. [then]
 #. [modify_unit]
 #. If Mal-Talar was killed in S01, use a different name.
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:209
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:211
 #: data/campaigns/Eastern_Invasion/scenarios/06b_Soradoc.cfg:481
 msgid "Mal-Bakral"
 msgstr "馬爾-巴克拉爾"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:222
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:504
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:224
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:506
 #, fuzzy
 #| msgid "Move Gweddry to the tunnel exit"
 msgid "Move any unit to the tunnel exit"
 msgstr "移動柯維卓至隧道出口"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:244
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:246
 #, fuzzy
 #| msgid "Where are we? I can’t see where we are going."
 msgid "Where are we? I can hardly see my own nose."
@@ -971,28 +971,28 @@ msgstr "我們在哪？我看不到我們要去的地方。"
 
 #. [message]: speaker=Dacyn
 #. "We" is not just Gweddry and Dacyn, but also all survivors from S01
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:249
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:251
 msgid ""
 "We are in a tunnel under the outpost. Smugglers originally dug it to sneak "
 "behind Wesnoth’s patrols. I believe it to be currently inhabited by trolls."
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:305
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:307
 #, fuzzy
 #| msgid "We must make haste to escape before the undead catch up."
 msgid "We must make haste to escape before the undead catch us."
 msgstr "我們必須在不死族追上前趕緊脫逃出去。"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:309
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:311
 #, fuzzy
 #| msgid "Wait, before we go anywhere — who were those undead?"
 msgid "Wait, before we go anywhere — who were those necromancers?"
 msgstr "等等，在我們到任何地方之前──那些不死族是誰？"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:313
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:315
 msgid ""
 "Is this really the time for questions? Suffice to say they represent an army "
 "much too powerful for us; perhaps too powerful for all of Wesnoth. We must "
@@ -1001,12 +1001,12 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. speaker is a dwarf
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:332
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:334
 msgid "Who goes there?"
 msgstr "誰在那裡？"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:336
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:338
 #, fuzzy
 #| msgid ""
 #| "We are soldiers of the King of Wesnoth. Will you help us fight these "
@@ -1018,14 +1018,14 @@ msgstr "我們是韋諾國王的士兵。你們能跟我們一起和巨魔戰鬥
 
 #. [message]: speaker=Knutan
 #. in plain English, "Yes, we'll help anyone quarreling with the trolls. But what are you doing down here?"
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:345
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:347
 msgid ""
 "Aye, we’ll help anyone quarrelin’ wi’ them trolls. But what be ye doing down "
 "here?"
 msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:349
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:351
 msgid ""
 "Undead are pursuing us, purging the land of all that lives. You should join "
 "us and flee!"
@@ -1033,7 +1033,7 @@ msgstr ""
 
 #. [message]: speaker=Knutan
 #. "My clan has lived in these caves for nearly a century. We'll not be scattered now by some sacks of bones"
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:354
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:356
 #, fuzzy
 #| msgid ""
 #| "My clan ha’ lived in these caves for centuries. We’ll no’ be scattered "
@@ -1044,7 +1044,7 @@ msgid ""
 msgstr "我的家族在這些洞穴生活了數百年了。我們不會因為一些不死族而四散的。"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:358
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:360
 #, fuzzy
 #| msgid ""
 #| "Very well. The best of luck in your battle. Gweddry, we may be able to "
@@ -1057,32 +1057,32 @@ msgstr "很好。祝你武運昌隆。柯維卓，我們可以透過走矮人的
 
 #. [message]: speaker=Duduril
 #. speaker is a dwarf, currently alone
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:376
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:378
 msgid "Humans! What be ye doin’ in our caves?"
 msgstr ""
 
 #. [message]: speaker=second_unit
 #. "you" meaning a single dwarf
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:381
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:383
 msgid "A horde of undead is pursuing us! You should come with us and escape."
 msgstr ""
 
 #. [message]: speaker=Duduril
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:385
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:387
 msgid "Thursagan’s beard! I’ve got to go help the others!"
 msgstr ""
 
 # 故意寫錯字。正確是：「巨魔藏寶洞：滾開」
 #. [message]: speaker=unit
 #. "troll treasure hole, keep out"
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:408
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:410
 #, fuzzy
 #| msgid "TROL TREZZUR HOLE: KEEP OWT"
 msgid "TROL TREZZUR HOL: KEIP OWT"
 msgstr "<b>巨磨臧竇洞：混開</b>"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:427
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:429
 #, fuzzy
 #| msgid ""
 #| "It seems these trolls were hiding some gold. I think I can count fifty "
@@ -1091,21 +1091,21 @@ msgid "It seems these trolls were hiding some gold. I count fifty gold pieces!"
 msgstr "看來這些巨魔藏了一些金幣。我想我可以數出50枚金幣！"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:448
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:450
 msgid ""
 "I recognize the enchantment on that quiver. How did trolls come to possess "
 "such an artifact?"
 msgstr ""
 
 #. [message]: speaker=Mel Guthrak
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:493
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:495
 #, fuzzy
 #| msgid "We have found you, fleshbag! Prepare to die!"
 msgid "I have found your hiding spot, fleshbag! Prepare to die!"
 msgstr "我們找到你了，臭皮囊！準備好受死吧！"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:497
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:499
 #, fuzzy
 #| msgid ""
 #| "They follow us... we must escape through this tunnel. That is "
@@ -1121,47 +1121,47 @@ msgstr ""
 "丘陵，會超過韋諾的邊界。但這是我們唯一的選擇."
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:531
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:533
 msgid "I see daylight! Follow me!"
 msgstr ""
 
 #. [message]: speaker=Knutan
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:557
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:559
 msgid "Maybe I ain’t been the wisest leader..."
 msgstr ""
 
 #. [message]: speaker=Kabak
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:568
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:570
 msgid "From stone I come... now stone I return..."
 msgstr ""
 
 #. [message]: speaker=Mel Guthrak
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:579
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:581
 msgid "I die? But how?"
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:583
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:585
 msgid "A small victory. He will be replaced soon enough; we must still flee."
 msgstr ""
 
 #. [event]
 #. [side]: type=Dark Adept, id=Mal-Tar
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:628
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:630
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:87
 #: data/campaigns/Eastern_Invasion/scenarios/17b_All-In.cfg:351
 msgid "Mal-Tar"
 msgstr "馬爾-塔"
 
 #. [message]: speaker=Mal-Tar
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:636
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:638
 msgid ""
 "Hello? My masters said I should see what was making all the noise down in "
 "this old cave..."
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:640
+#: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:642
 msgid "We are discovered and surrounded. Now Wesnoth is doomed..."
 msgstr ""
 
@@ -1304,36 +1304,36 @@ msgid "We will watch your career with great interest..."
 msgstr ""
 
 #. [message]: speaker=Mal-Tar
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:336
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:333
 msgid "Wait, please, not like this!"
 msgstr ""
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:351
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:344
 msgid "I told him he should have studied harder."
 msgstr ""
 
 #. [message]: speaker=Mal-Kallat
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:355
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:348
 msgid ""
 "I wanted to avoid as much battle as I could, but it seems like we have no "
 "choice..."
 msgstr ""
 
 #. [message]: speaker=Mal-Kallat
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:367
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:360
 msgid "Skrai, no!! Cursed Wesnothians, he was my precious little brother..."
 msgstr ""
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:388
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:381
 msgid ""
 "Kala, no!! Curse you Wesnothians! You may have killed my sister, but I will "
 "chase you east and take my revenge!"
 msgstr ""
 
 #. [message]: speaker=Mal-Tar
-#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:418
+#: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:411
 msgid "... wait, what just happened? Why am I still alive?"
 msgstr ""
 

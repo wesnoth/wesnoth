@@ -165,10 +165,6 @@ written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 недейте да записвате доклади с бъгове, тъй като повечето са известни. Части
 от достъпното се считат за стабилни и ще работят без това копче.
 .TP 
-\fB\-\-nodelay\fP
-пуска играта без никакви забавяния за графични тестове на
-производителността. Това се включва автоматично с \fB\-\-nogui\fP.
-.TP 
 \fB\-\-noaddons\fP
 изключва зареждането на потребителски добавки.
 .TP 
@@ -218,21 +214,26 @@ will be preprocessed before the specified resources.  Example: \fB\-p ~/wesnoth/
 preprocessor visit:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-списък от уточнения, разделени със запетая, използвани от командата
-\fB\-\-preprocess\fP. Ако в списъка има \fBSKIP_CORE\fP, директорията "data/core"
-няма да бъде преобработена.
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
-използвана опция само от командата \fB\-\-preprocess\fP. Уточнява файл, който
-съдържа \fB[preproc_define]\fPs, за да бъде включен преди преобработката.
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
-used only by the \fB\-\-preprocess\fP command. Will output all preprocessed
-macros in the target file. If the file is not specified the output will be
-file '_MACROS_.cfg' in the target directory of preprocess's command. The
-output file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch
-should be typed before the \fB\-\-preprocess\fP command.
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 определя разделителната способност на екрана. Пример: \fB\-r\fP \fB800x600\fP.
