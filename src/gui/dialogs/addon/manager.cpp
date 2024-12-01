@@ -591,7 +591,7 @@ void addon_manager::load_addon_list()
 
 	const std::vector<std::string> publishable_addons = available_addons();
 
-	for(const std::string id : publishable_addons) {
+	for(const std::string& id : publishable_addons) {
 		if(addons_.find(id) == addons_.end()) {
 			// Get a config from the addon's pbl file
 			// Note that the name= key is necessary or stuff breaks, since the filter code uses this key

@@ -745,7 +745,7 @@ void unit_attack(display * disp, game_board & board,
 	bool extra_hit_sounds_played = false;
 	while(damage_left > 0 && !animator.would_end()) {
 		if(!extra_hit_sounds_played && extra_hit_sounds != nullptr) {
-			for(const std::string hit_sound : *extra_hit_sounds) {
+			for(const std::string& hit_sound : *extra_hit_sounds) {
 				sound::play_sound(hit_sound);
 			}
 			extra_hit_sounds_played = true;

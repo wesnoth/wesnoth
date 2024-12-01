@@ -119,7 +119,7 @@ bool ai_composite::add_stage(const config &cfg)
 	std::vector< stage_ptr > stages;
 	create_stage(stages,cfg);
 	int j=0;
-	for(const stage_ptr b : stages) {
+	for(const stage_ptr& b : stages) {
 		stages_.push_back(b);
 		j++;
 	}
@@ -131,7 +131,7 @@ bool ai_composite::add_goal(const config &cfg)
 	std::vector< goal_ptr > goals;
 	create_goal(goals,cfg);
 	int j=0;
-	for(const goal_ptr b : goals) {
+	for(const goal_ptr& b : goals) {
 		get_goals().push_back(b);
 		j++;
 	}

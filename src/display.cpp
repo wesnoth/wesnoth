@@ -2298,7 +2298,7 @@ void display::queue_rerender()
 
 	// This is only for one specific use, which is by the editor controller.
 	// It would be vastly better if this didn't exist.
-	for(const std::function<void(display&)> f : redraw_observers_) {
+	for(const std::function<void(display&)>& f : redraw_observers_) {
 		f(*this);
 	}
 

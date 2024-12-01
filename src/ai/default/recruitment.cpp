@@ -974,7 +974,7 @@ void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
 			possible_recruits.insert(team.recruits().begin(), team.recruits().end());
 			// Add extra recruits.
 			const std::vector<unit_map::const_iterator> leaders = units.find_leaders(team.side());
-			for(const unit_map::const_iterator leader : leaders) {
+			for(const unit_map::const_iterator& leader : leaders) {
 				possible_recruits.insert(leader->recruits().begin(), leader->recruits().end());
 			}
 			// Insert set in enemy_units.
@@ -1829,10 +1829,10 @@ recruitment_aspect::recruitment_aspect(readonly_context &context, const config &
 		parsed_cfg.add_child("recruit", config {"importance", 0});
 	}
 	// Finally, populate our lists
-	for(const config job : parsed_cfg.child_range("recruit")) {
+	for(const config& job : parsed_cfg.child_range("recruit")) {
 		create_job(jobs_, job);
 	}
-	for(const config lim : parsed_cfg.child_range("limit")) {
+	for(const config& lim : parsed_cfg.child_range("limit")) {
 		create_limit(limits_, lim);
 	}
 	const std::function<void(std::vector<std::shared_ptr<recruit_job>>&, const config&)> factory_jobs

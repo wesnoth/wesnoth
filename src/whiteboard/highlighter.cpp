@@ -105,7 +105,7 @@ void highlighter::set_mouseover_hex(const map_location& hex)
 	if(side_actions_->empty()) {
 		return;
 	}
-	for(const action_ptr act : *side_actions_ | utils::views::reverse) {
+	for(const action_ptr& act : *side_actions_ | utils::views::reverse) {
 		/**@todo "is_numbering_hex" is not the "correct" criterion by which to
 		 * select the highlighted/selected action. It's just convenient for me
 		 * to use at the moment since it happens to coincide with the "correct"
@@ -148,7 +148,7 @@ void highlighter::highlight()
 		if(!secondary_highlights_.empty()) {
 			//Highlight secondary highlights
 			highlight_secondary_visitor hs_visitor(*this);
-			for(const weak_action_ptr weak : secondary_highlights_) {
+			for(const weak_action_ptr& weak : secondary_highlights_) {
 				if(const action_ptr action = weak.lock()) {
 					action->accept(hs_visitor);
 				}
@@ -167,7 +167,7 @@ void highlighter::unhighlight()
 	}
 
 	//unhighlight secondary highlights
-	for(const weak_action_ptr weak : secondary_highlights_) {
+	for(const weak_action_ptr& weak : secondary_highlights_) {
 		if(const action_ptr action = weak.lock()) {
 			action->accept(uh_visitor);
 		}

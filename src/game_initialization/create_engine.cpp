@@ -592,7 +592,7 @@ std::pair<level_type::type, int> create_engine::find_level_by_id(const std::stri
 int create_engine::find_extra_by_id(const MP_EXTRA extra_type, const std::string& id) const
 {
 	int i = 0;
-	for(const extras_metadata_ptr extra : get_const_extras_by_type(extra_type)) {
+	for(const extras_metadata_ptr& extra : get_const_extras_by_type(extra_type)) {
 		if(extra->id == id) {
 			return i;
 		}

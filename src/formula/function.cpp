@@ -77,7 +77,7 @@ std::string function_expression::str() const
 	s << get_name();
 	s << '(';
 	bool first_arg = true;
-	for(const expression_ptr a : args()) {
+	for(const expression_ptr& a : args()) {
 		if(!first_arg) {
 			s << ',';
 		} else {
@@ -505,7 +505,7 @@ DEFINE_WFL_FUNCTION(length, 1, 1)
 DEFINE_WFL_FUNCTION(concatenate, 1, -1)
 {
 	std::string result;
-	for(const expression_ptr arg : args()) {
+	for(const expression_ptr& arg : args()) {
 		result += arg->evaluate(variables, fdb).string_cast();
 	}
 
@@ -1050,7 +1050,7 @@ std::vector<variant> get_input(
 		std::vector<variant> input;
 		input.reserve(args.size());
 
-		for(const expression_ptr expr : args) {
+		for(const expression_ptr& expr : args) {
 			input.push_back(expr->evaluate(variables, fdb));
 		}
 
