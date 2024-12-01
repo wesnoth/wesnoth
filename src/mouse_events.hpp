@@ -71,7 +71,7 @@ public:
 
 	// show the attack dialog and return the choice made
 	// which can be invalid if 'cancel' was used
-	int show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc);
+	int show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc, const map_location& attacker_src);
 	// wrapper to catch bad_alloc so this should be called
 	void attack_enemy(const map_location& attacker_loc, const map_location& defender_loc, int choice);
 
