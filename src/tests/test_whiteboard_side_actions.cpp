@@ -61,7 +61,7 @@ BOOST_AUTO_TEST_CASE( test_insertion )
 	BOOST_REQUIRE(sac.num_turns() == 1);
 
 	int tmp=0;
-	for(const action_ptr act : sac) {
+	for(const action_ptr& act : sac) {
 		++tmp;
 		BOOST_REQUIRE(dact = std::dynamic_pointer_cast<dummy_action>(act));
 		BOOST_REQUIRE(dact->id_ == tmp);
@@ -82,7 +82,7 @@ BOOST_AUTO_TEST_CASE( test_insertion )
 	BOOST_REQUIRE(sac.num_turns() == 3);
 
 	tmp=0;
-	for(const action_ptr act : sac) {
+	for(const action_ptr& act : sac) {
 		++tmp;
 		BOOST_REQUIRE(dact = std::dynamic_pointer_cast<dummy_action>(act));
 		BOOST_REQUIRE(dact->id_ == tmp);

@@ -423,7 +423,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 
 void readonly_context_impl::add_aspects(std::vector< aspect_ptr > &aspects )
 {
-	for(const aspect_ptr a : aspects) {
+	for(const aspect_ptr& a : aspects) {
 		const std::string id = a->get_id();
 		const known_aspect_map::iterator i = known_aspects_.find(id);
 		if (i != known_aspects_.end()) {
