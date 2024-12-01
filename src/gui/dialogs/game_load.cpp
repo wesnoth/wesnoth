@@ -499,7 +499,7 @@ void game_load::key_press_callback(const SDL_Keycode key)
 
 void game_load::handle_dir_select()
 {
-	menu_button& dir_list = find_widget<menu_button>("dirList");
+	const menu_button& dir_list = find_widget<menu_button>("dirList");
 
 	const auto& path = dir_list.get_value_config()["path"].str();
 	if(path.empty()) {

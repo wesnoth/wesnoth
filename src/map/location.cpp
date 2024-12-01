@@ -71,7 +71,7 @@ auto map_location::all_directions() -> std::vector<direction>
 }
 
 std::size_t hash_value(const map_location& a){
-	std::hash<std::size_t> h;
+	const std::hash<std::size_t> h;
 	return h( (static_cast<uint32_t>(a.x) << 16) ^ static_cast<uint32_t>(a.y) );
 }
 
@@ -90,7 +90,7 @@ map_location::direction map_location::parse_direction(const std::string& str)
 	const std::size_t open = str.find_first_of('('), close = str.find_last_of(')');
 	if (open != std::string::npos && close != std::string::npos) {
 		std::string sub = str.substr(open + 1, close - open - 1);
-		map_location::direction dir = parse_direction(sub);
+		const map_location::direction dir = parse_direction(sub);
 		sub = str;
 		sub.replace(open, close - open + 1, write_direction(dir));
 		return parse_direction(sub);
@@ -242,15 +242,15 @@ map_location::direction map_location::get_relative_dir(const map_location& loc, 
 	if (opt == map_location::DEFAULT) {
 		map_location::direction dir = direction::indeterminate;
 
-		int dx = loc.x - x;
+		const int dx = loc.x - x;
 		int dy = loc.y - y;
 		if (loc.x%2==0 && x%2==1) dy--;
 
 		if (dx==0 && dy==0) return direction::indeterminate;
 
 		int dist = std::abs(dx);                                   // Distance from north-south line
-		int dist_diag_SW_NE = std::abs(dy + (dx + (dy>0?0:1) )/2); // Distance from diagonal line SW-NE
-		int dist_diag_SE_NW = std::abs(dy - (dx - (dy>0?0:1) )/2); // Distance from diagonal line SE-NW
+		const int dist_diag_SW_NE = std::abs(dy + (dx + (dy > 0 ? 0 : 1)) / 2); // Distance from diagonal line SW-NE
+		const int dist_diag_SE_NW = std::abs(dy - (dx - (dy > 0 ? 0 : 1)) / 2); // Distance from diagonal line SE-NW
 
 		if (dy > 0) dir = direction::south;
 		else        dir = direction::north;
@@ -308,7 +308,7 @@ map_location map_location::rotate_right_around_center(const map_location& center
 	// The sign indicates whether that cell contains -1 or 1.
 	static const int rotations[6][3] = {{1,2,3}, {-2,-3,-1}, {3,1,2}, {-1,-2,-3}, {2,3,1}, {-3,-1,-2}};
 	int vec_temp[3] = {vec.q, vec.r, vec.s}, vec_temp2[3];
-	int i = ((k % 6) + 6) % 6; // modulo-clamp rotation count to the range [0,6)
+	const int i = ((k % 6) + 6) % 6; // modulo-clamp rotation count to the range [0,6)
 	assert(i >= 0 && i < 6);
 	#define sgn(x) ((x) < 0 ? -1 : 1) // Not quite right, but we know we won't be passing in a 0
 	for(int j = 0; j < 3; j++) vec_temp2[j] = sgn(rotations[i][j]) * vec_temp[abs(rotations[i][j])-1];
@@ -375,10 +375,12 @@ map_location map_location::get_direction(map_location::direction dir, unsigned i
 		return map_location(x,y+n);
 	}
 
-	int x_factor = (static_cast<unsigned int> (dir) <= 2u) ? 1 : -1; //whether we go east + or west -
+	const int x_factor = (static_cast<unsigned int>(dir) <= 2u) ? 1 : -1; // whether we go east + or west -
 
-	unsigned int tmp_y = static_cast<unsigned int> (dir) - 2; //South East => 0, South => 1, South West => 2, North West => 3, North => INT_MAX, North East => INT_MAX - 1
-	int y_factor = (tmp_y <= 2u) ? 1 : -1; //whether we go south + or north -
+	const unsigned int tmp_y
+		= static_cast<unsigned int>(dir) - 2; // South East => 0, South => 1, South West => 2, North West => 3, North =>
+											  // INT_MAX, North East => INT_MAX - 1
+	const int y_factor = (tmp_y <= 2u) ? 1 : -1; // whether we go south + or north -
 
 	if (tmp_y <= 2u) {
 		return map_location(x + x_factor * n, y + y_factor * ((n + ((x & 1) == 1)) / 2));

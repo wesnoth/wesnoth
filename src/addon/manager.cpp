@@ -279,14 +279,14 @@ static void archive_dir(const std::string& path, const std::string& dirname, con
 	std::vector<std::string> files, dirs;
 	filesystem::get_files_in_dir(dir,&files,&dirs);
 	for(const std::string& name : files) {
-		bool valid = !filesystem::looks_like_pbl(name) && !ignore_patterns.match_file(name);
+		const bool valid = !filesystem::looks_like_pbl(name) && !ignore_patterns.match_file(name);
 		if (valid) {
 			archive_file(dir,name,cfg.add_child("file"));
 		}
 	}
 
 	for(const std::string& name : dirs) {
-		bool valid = !ignore_patterns.match_dir(name);
+		const bool valid = !ignore_patterns.match_dir(name);
 		if (valid) {
 			archive_dir(dir,name,cfg.add_child("dir"),ignore_patterns);
 		}
@@ -297,7 +297,7 @@ void archive_addon(const std::string& addon_name, config& cfg)
 {
 	const std::string parentd = filesystem::get_addons_dir();
 
-	filesystem::blacklist_pattern_list ignore_patterns(read_ignore_patterns(addon_name));
+	const filesystem::blacklist_pattern_list ignore_patterns(read_ignore_patterns(addon_name));
 	archive_dir(parentd, addon_name, cfg.add_child("dir"), ignore_patterns);
 }
 
@@ -428,6 +428,6 @@ void refresh_addon_version_info_cache()
 version_info get_addon_version_info(const std::string& addon)
 {
 	static const version_info nil;
-	std::map< std::string, version_info >::iterator entry = version_info_cache.find(addon);
+	const std::map<std::string, version_info>::iterator entry = version_info_cache.find(addon);
 	return entry != version_info_cache.end() ? entry->second : nil;
 }

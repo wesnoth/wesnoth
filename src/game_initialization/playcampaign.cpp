@@ -64,7 +64,7 @@ level_result::type campaign_controller::playsingle_scenario(end_level_data &end_
 		playcontroller.enable_replay(is_unit_test_);
 	}
 
-	level_result::type res = playcontroller.play_scenario(starting_point);
+	const level_result::type res = playcontroller.play_scenario(starting_point);
 	if(res == level_result::type::quit) {
 		return level_result::type::quit;
 	}
@@ -85,7 +85,7 @@ level_result::type campaign_controller::playsingle_scenario(end_level_data &end_
 level_result::type campaign_controller::playmp_scenario(end_level_data &end_level)
 {
 	playmp_controller playcontroller(state_.get_starting_point(), state_, mp_info_);
-	level_result::type res = playcontroller.play_scenario(state_.get_starting_point());
+	const level_result::type res = playcontroller.play_scenario(state_.get_starting_point());
 
 	// Check if the player started as mp client and changed to host
 	if(res == level_result::type::quit) {

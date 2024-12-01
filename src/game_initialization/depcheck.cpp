@@ -70,7 +70,8 @@ manager::manager(const game_config_view& gamecfg, bool mp)
 	DBG_MP << "Initializing the dependency manager";
 
 	for(const config& cfg : gamecfg.child_range("modification")) {
-		component_availability::type type = component_availability::get_enum(cfg["type"].str()).value_or(component_availability::type::hybrid);
+		const component_availability::type type
+			= component_availability::get_enum(cfg["type"].str()).value_or(component_availability::type::hybrid);
 
 		if((type != component_availability::type::mp || mp) && (type != component_availability::type::sp || !mp)) {
 			config info;
@@ -86,7 +87,8 @@ manager::manager(const game_config_view& gamecfg, bool mp)
 	}
 
 	for(const config& cfg : gamecfg.child_range("era")) {
-		component_availability::type type = component_availability::get_enum(cfg["type"].str()).value_or(component_availability::type::mp);
+		const component_availability::type type
+			= component_availability::get_enum(cfg["type"].str()).value_or(component_availability::type::mp);
 
 		if((type != component_availability::type::mp || mp) && (type != component_availability::type::sp || !mp)) {
 			config info;
@@ -163,7 +165,7 @@ std::vector<std::string> manager::get_required_not_installed(const elem& e) cons
 {
 	std::vector<std::string> result;
 
-	std::vector<std::string> items = get_required(e);
+	const std::vector<std::string> items = get_required(e);
 
 	for(const std::string& str : items) {
 		if(!exists(elem(str, "modification"))) {
@@ -193,10 +195,10 @@ std::vector<std::string> manager::get_required(const elem& e) const
 
 std::vector<std::string> manager::get_required_not_enabled(const elem& e) const
 {
-	std::vector<std::string> required = get_required(e);
+	const std::vector<std::string> required = get_required(e);
 	std::vector<std::string> result;
 
-	for(std::string str : required) {
+	for(const std::string str : required) {
 		if(!utils::contains(mods_, str)) {
 			result.push_back(str);
 		}
@@ -235,7 +237,7 @@ bool manager::does_conflict(const elem& elem1, const elem& elem2, bool directonl
 
 	// Whether we should skip the check entirely
 	if(data1.has_attribute("ignore_incompatible_" + elem2.type)) {
-		std::vector<std::string> ignored = utils::split(data1["ignore_incompatible_" + elem2.type]);
+		const std::vector<std::string> ignored = utils::split(data1["ignore_incompatible_" + elem2.type]);
 
 		if(utils::contains(ignored, elem2.id)) {
 			return false;
@@ -243,7 +245,7 @@ bool manager::does_conflict(const elem& elem1, const elem& elem2, bool directonl
 	}
 
 	if(data2.has_attribute("ignore_incompatible_" + elem1.type)) {
-		std::vector<std::string> ignored = utils::split(data2["ignore_incompatible_" + elem1.type]);
+		const std::vector<std::string> ignored = utils::split(data2["ignore_incompatible_" + elem1.type]);
 
 		if(utils::contains(ignored, elem1.id)) {
 			return false;
@@ -258,21 +260,21 @@ bool manager::does_conflict(const elem& elem1, const elem& elem2, bool directonl
 
 	// Checking for direct conflicts between elem1 and elem2
 	if(data1.has_attribute("allow_" + elem2.type)) {
-		std::vector<std::string> allowed = utils::split(data1["allow_" + elem2.type]);
+		const std::vector<std::string> allowed = utils::split(data1["allow_" + elem2.type]);
 
 		result = !utils::contains(allowed, elem2.id) && !does_require(elem1, elem2);
 	} else if(data1.has_attribute("disallow_" + elem2.type)) {
-		std::vector<std::string> disallowed = utils::split(data1["disallow_" + elem2.type]);
+		const std::vector<std::string> disallowed = utils::split(data1["disallow_" + elem2.type]);
 
 		result = utils::contains(disallowed, elem2.id);
 	}
 
 	if(data2.has_attribute("allow_" + elem1.type)) {
-		std::vector<std::string> allowed = utils::split(data2["allow_" + elem1.type]);
+		const std::vector<std::string> allowed = utils::split(data2["allow_" + elem1.type]);
 
 		result = result || (!utils::contains(allowed, elem1.id) && !does_require(elem2, elem1));
 	} else if(data2.has_attribute("disallow_" + elem1.type)) {
-		std::vector<std::string> disallowed = utils::split(data2["disallow_" + elem1.type]);
+		const std::vector<std::string> disallowed = utils::split(data2["disallow_" + elem1.type]);
 
 		result = result || utils::contains(disallowed, elem1.id);
 	}
@@ -286,7 +288,7 @@ bool manager::does_conflict(const elem& elem1, const elem& elem2, bool directonl
 		std::vector<std::string> req1 = get_required(elem1), req2 = get_required(elem2);
 
 		for(const std::string& s : req1) {
-			elem m(s, "modification");
+			const elem m(s, "modification");
 
 			if(does_conflict(elem2, m, true)) {
 				return true;
@@ -294,7 +296,7 @@ bool manager::does_conflict(const elem& elem1, const elem& elem2, bool directonl
 		}
 
 		for(const std::string& s : req2) {
-			elem m(s, "modification");
+			const elem m(s, "modification");
 
 			if(does_conflict(elem1, m, true)) {
 				return true;
@@ -302,10 +304,10 @@ bool manager::does_conflict(const elem& elem1, const elem& elem2, bool directonl
 		}
 
 		for(const std::string& id1 : req1) {
-			elem m1(id1, "modification");
+			const elem m1(id1, "modification");
 
 			for(const std::string& id2 : req2) {
-				elem m2(id2, "modification");
+				const elem m2(id2, "modification");
 
 				if(does_conflict(m1, m2)) {
 					return true;
@@ -326,7 +328,7 @@ bool manager::does_require(const elem& elem1, const elem& elem2) const
 	config data = depinfo_.find_mandatory_child(elem1.type, "id", elem1.id);
 
 	if(data.has_attribute("force_modification")) {
-		std::vector<std::string> required = utils::split(data["force_modification"]);
+		const std::vector<std::string> required = utils::split(data["force_modification"]);
 
 		return utils::contains(required, elem2.id);
 	}
@@ -376,7 +378,7 @@ void manager::try_modification_by_id(const std::string& id, bool activate, bool 
 			mods_copy.push_back(id);
 		}
 	} else {
-		std::vector<std::string>::iterator pos = std::find(mods_copy.begin(), mods_copy.end(), id);
+		const std::vector<std::string>::iterator pos = std::find(mods_copy.begin(), mods_copy.end(), id);
 		if(pos != mods_copy.end()) {
 			mods_copy.erase(pos);
 		}
@@ -426,7 +428,7 @@ int manager::get_scenario_index() const
 
 bool manager::is_modification_active(int index) const
 {
-	std::string id = depinfo_.mandatory_child("modification", index)["id"];
+	const std::string id = depinfo_.mandatory_child("modification", index)["id"];
 	return std::find(mods_.begin(), mods_.end(), id) != mods_.end();
 }
 
@@ -523,12 +525,12 @@ bool manager::change_scenario(const std::string& id)
 
 	scenario_ = id;
 
-	elem scen = elem(id, "scenario");
-	std::string scen_name = find_name_for(scen);
+	const elem scen = elem(id, "scenario");
+	const std::string scen_name = find_name_for(scen);
 
 	// Firstly, we check if we have to enable/disable any mods
-	std::vector<std::string> req = get_required_not_enabled(scen);
-	std::vector<std::string> con = get_conflicting_enabled(scen);
+	const std::vector<std::string> req = get_required_not_enabled(scen);
+	const std::vector<std::string> con = get_conflicting_enabled(scen);
 
 	if(!req.empty()) {
 		if(!enable_mods_dialog(req, scen_name)) {
@@ -591,11 +593,11 @@ bool manager::change_era(const std::string& id)
 
 	era_ = id;
 
-	elem era = elem(id, "era");
-	std::string era_name = find_name_for(era);
+	const elem era = elem(id, "era");
+	const std::string era_name = find_name_for(era);
 
-	std::vector<std::string> req = get_required_not_enabled(era);
-	std::vector<std::string> con = get_conflicting_enabled(era);
+	const std::vector<std::string> req = get_required_not_enabled(era);
+	const std::vector<std::string> con = get_conflicting_enabled(era);
 
 	// Firstly, we check if we have to enable/disable any mods
 	if(!req.empty()) {
@@ -652,7 +654,7 @@ bool manager::change_modifications(const std::vector<std::string>& modifications
 	std::vector<std::string> filtered;
 	for(const std::string& i : modifications) {
 		bool ok = true;
-		elem ei(i, "modification");
+		const elem ei(i, "modification");
 
 		for(const std::string& j : filtered) {
 			ok = ok && !does_conflict(ei, elem(j, "modification"));
@@ -674,7 +676,7 @@ bool manager::change_modifications(const std::vector<std::string>& modifications
 	// modifications, and changing era if necessary
 	std::vector<std::string> compatible;
 	for(const config& c : depinfo_.child_range("era")) {
-		elem era(c["id"], "era");
+		const elem era(c["id"], "era");
 		bool ok = true;
 
 		for(const std::string& s : mods_) {
@@ -712,7 +714,7 @@ bool manager::change_modifications(const std::vector<std::string>& modifications
 	// Checking if the currently selected scenario is compatible with
 	// the set modifications, and changing scenario if necessary
 	for(const config& c : depinfo_.child_range("scenario")) {
-		elem scen(c["id"], "scenario");
+		const elem scen(c["id"], "scenario");
 		bool ok = true;
 		for(const std::string& s : mods_) {
 			ok = ok && !does_conflict(scen, elem(s, "modification"));

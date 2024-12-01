@@ -77,7 +77,7 @@ std::string function_expression::str() const
 	s << get_name();
 	s << '(';
 	bool first_arg = true;
-	for(expression_ptr a : args()) {
+	for(const expression_ptr a : args()) {
 		if(!first_arg) {
 			s << ',';
 		} else {
@@ -115,7 +115,7 @@ DEFINE_WFL_FUNCTION(debug, 0, 1)
 
 DEFINE_WFL_FUNCTION(dir, 1, 1)
 {
-	variant var = args()[0]->evaluate(variables, fdb);
+	const variant var = args()[0]->evaluate(variables, fdb);
 
 	auto callable = var.as_callable();
 	formula_input_vector inputs = callable->inputs();
@@ -146,10 +146,10 @@ DEFINE_WFL_FUNCTION(if, 2, -1)
 
 DEFINE_WFL_FUNCTION(switch, 3, -1)
 {
-	variant var = args()[0]->evaluate(variables, fdb);
+	const variant var = args()[0]->evaluate(variables, fdb);
 
 	for(std::size_t n = 1; n < args().size() - 1; n += 2) {
-		variant val = args()[n]->evaluate(variables, fdb);
+		const variant val = args()[n]->evaluate(variables, fdb);
 
 		if(val == var) {
 			return args()[n + 1]->evaluate(variables, fdb);
@@ -394,7 +394,7 @@ DEFINE_WFL_FUNCTION(tomap, 1, 2)
 
 DEFINE_WFL_FUNCTION(substring, 2, 3)
 {
-	std::string result = args()[0]->evaluate(variables, fdb).as_string();
+	const std::string result = args()[0]->evaluate(variables, fdb).as_string();
 
 	int offset = args()[1]->evaluate(variables, fdb).as_int();
 	if(offset < 0) {
@@ -426,7 +426,7 @@ DEFINE_WFL_FUNCTION(substring, 2, 3)
 DEFINE_WFL_FUNCTION(replace, 3, 4)
 {
 	std::string result = args()[0]->evaluate(variables, fdb).as_string();
-	std::string replacement = args().back()->evaluate(variables, fdb).as_string();
+	const std::string replacement = args().back()->evaluate(variables, fdb).as_string();
 
 	int offset = args()[1]->evaluate(variables, fdb).as_int();
 	if(offset < 0) {
@@ -458,30 +458,30 @@ DEFINE_WFL_FUNCTION(replace, 3, 4)
 DEFINE_WFL_FUNCTION(replace_all, 3, 3)
 {
 	std::string result = args()[0]->evaluate(variables, fdb).as_string();
-	std::string needle = args()[1]->evaluate(variables, fdb).as_string();
-	std::string replacement = args().back()->evaluate(variables, fdb).as_string();
+	const std::string needle = args()[1]->evaluate(variables, fdb).as_string();
+	const std::string replacement = args().back()->evaluate(variables, fdb).as_string();
 	boost::replace_all(result, needle, replacement);
 	return variant(result);
 }
 
 DEFINE_WFL_FUNCTION(starts_with, 2, 2)
 {
-	std::string str = args()[0]->evaluate(variables, fdb).as_string();
-	std::string prefix = args()[1]->evaluate(variables, fdb).as_string();
+	const std::string str = args()[0]->evaluate(variables, fdb).as_string();
+	const std::string prefix = args()[1]->evaluate(variables, fdb).as_string();
 	return variant(boost::starts_with(str, prefix));
 }
 
 DEFINE_WFL_FUNCTION(ends_with, 2, 2)
 {
-	std::string str = args()[0]->evaluate(variables, fdb).as_string();
-	std::string prefix = args()[1]->evaluate(variables, fdb).as_string();
+	const std::string str = args()[0]->evaluate(variables, fdb).as_string();
+	const std::string prefix = args()[1]->evaluate(variables, fdb).as_string();
 	return variant(boost::ends_with(str, prefix));
 }
 
 DEFINE_WFL_FUNCTION(insert, 3, 3)
 {
 	std::string result = args()[0]->evaluate(variables, fdb).as_string();
-	std::string insert = args().back()->evaluate(variables, fdb).as_string();
+	const std::string insert = args().back()->evaluate(variables, fdb).as_string();
 
 	int offset = args()[1]->evaluate(variables, fdb).as_int();
 	if(offset < 0) {
@@ -505,7 +505,7 @@ DEFINE_WFL_FUNCTION(length, 1, 1)
 DEFINE_WFL_FUNCTION(concatenate, 1, -1)
 {
 	std::string result;
-	for(expression_ptr arg : args()) {
+	for(const expression_ptr arg : args()) {
 		result += arg->evaluate(variables, fdb).string_cast();
 	}
 
@@ -821,7 +821,7 @@ private:
 
 DEFINE_WFL_FUNCTION(sort, 1, 2)
 {
-	variant list = args()[0]->evaluate(variables, fdb);
+	const variant list = args()[0]->evaluate(variables, fdb);
 
 	std::vector<variant> vars;
 	vars.reserve(list.num_elements());
@@ -860,8 +860,8 @@ DEFINE_WFL_FUNCTION(reverse, 1, 1)
 
 DEFINE_WFL_FUNCTION(contains_string, 2, 2)
 {
-	std::string str = args()[0]->evaluate(variables, fdb).as_string();
-	std::string key = args()[1]->evaluate(variables, fdb).as_string();
+	const std::string str = args()[0]->evaluate(variables, fdb).as_string();
+	const std::string key = args()[1]->evaluate(variables, fdb).as_string();
 
 	return variant(str.find(key) != std::string::npos);
 }
@@ -871,7 +871,7 @@ DEFINE_WFL_FUNCTION(find_string, 2, 2)
 	const std::string str = args()[0]->evaluate(variables, fdb).as_string();
 	const std::string key = args()[1]->evaluate(variables, fdb).as_string();
 
-	std::size_t pos = str.find(key);
+	const std::size_t pos = str.find(key);
 	return variant(static_cast<int>(pos));
 }
 
@@ -1004,7 +1004,7 @@ DEFINE_WFL_FUNCTION(take_while, 2, 2)
 		}
 	}
 
-	std::vector<variant> result(items.begin(), it);
+	const std::vector<variant> result(items.begin(), it);
 	return variant(result);
 }
 
@@ -1050,7 +1050,7 @@ std::vector<variant> get_input(
 		std::vector<variant> input;
 		input.reserve(args.size());
 
-		for(expression_ptr expr : args) {
+		for(const expression_ptr expr : args) {
 			input.push_back(expr->evaluate(variables, fdb));
 		}
 
@@ -1066,7 +1066,7 @@ DEFINE_WFL_FUNCTION(zip, 1, -1)
 
 	// So basically this does [[a,b,c],[d,e,f],[x,y,z]] -> [[a,d,x],[b,e,y],[c,f,z]]
 	// Or [[a,b,c,d],[x,y,z]] -> [[a,x],[b,y],[c,z],[d,null()]]
-	std::size_t max_i = std::max_element(input.begin(), input.end(), comparator())->num_elements();
+	const std::size_t max_i = std::max_element(input.begin(), input.end(), comparator())->num_elements();
 	output.reserve(max_i);
 
 	for(std::size_t i = 0; i < max_i; i++) {
@@ -1110,7 +1110,7 @@ DEFINE_WFL_FUNCTION(sum, 1, 2)
 	const variant items = args()[0]->evaluate(variables, fdb);
 	if(items.num_elements() > 0) {
 		if(items[0].is_list()) {
-			std::vector<variant> tmp;
+			const std::vector<variant> tmp;
 			res = variant(tmp);
 			if(args().size() >= 2) {
 				res = args()[1]->evaluate(variables, fdb);
@@ -1118,7 +1118,7 @@ DEFINE_WFL_FUNCTION(sum, 1, 2)
 					return variant();
 			}
 		} else if(items[0].is_map()) {
-			std::map<variant, variant> tmp;
+			const std::map<variant, variant> tmp;
 			res = variant(tmp);
 			if(args().size() >= 2) {
 				res = args()[1]->evaluate(variables, fdb);
@@ -1142,7 +1142,7 @@ DEFINE_WFL_FUNCTION(sum, 1, 2)
 DEFINE_WFL_FUNCTION(head, 1, 2)
 {
 	const variant items = args()[0]->evaluate(variables, fdb);
-	variant_iterator it = items.begin();
+	const variant_iterator it = items.begin();
 	if(it == items.end()) {
 		return variant();
 	}
@@ -1203,7 +1203,7 @@ DEFINE_WFL_FUNCTION(null, 0, -1)
 
 DEFINE_WFL_FUNCTION(ceil, 1, 1)
 {
-	variant decimal = args()[0]->evaluate(variables, fdb);
+	const variant decimal = args()[0]->evaluate(variables, fdb);
 	int d = decimal.as_decimal();
 
 	if((d >= 0) && (d % 1000 != 0)) {
@@ -1217,9 +1217,9 @@ DEFINE_WFL_FUNCTION(ceil, 1, 1)
 
 DEFINE_WFL_FUNCTION(round, 1, 1)
 {
-	variant decimal = args()[0]->evaluate(variables, fdb);
+	const variant decimal = args()[0]->evaluate(variables, fdb);
 	int d = decimal.as_decimal();
-	int f = d % 1000;
+	const int f = d % 1000;
 
 	if(f >= 500) {
 		d /= 1000;
@@ -1235,7 +1235,7 @@ DEFINE_WFL_FUNCTION(round, 1, 1)
 
 DEFINE_WFL_FUNCTION(floor, 1, 1)
 {
-	variant decimal = args()[0]->evaluate(variables, fdb);
+	const variant decimal = args()[0]->evaluate(variables, fdb);
 	int d = decimal.as_decimal();
 
 	if((d < 0) && (d % 1000 != 0)) {
@@ -1249,15 +1249,15 @@ DEFINE_WFL_FUNCTION(floor, 1, 1)
 
 DEFINE_WFL_FUNCTION(trunc, 1, 1)
 {
-	variant decimal = args()[0]->evaluate(variables, fdb);
-	int d = decimal.as_int();
+	const variant decimal = args()[0]->evaluate(variables, fdb);
+	const int d = decimal.as_int();
 
 	return variant(d);
 }
 
 DEFINE_WFL_FUNCTION(frac, 1, 1)
 {
-	variant decimal = args()[0]->evaluate(variables, fdb);
+	const variant decimal = args()[0]->evaluate(variables, fdb);
 	int d = decimal.as_decimal();
 
 	d %= 1000;
@@ -1266,7 +1266,7 @@ DEFINE_WFL_FUNCTION(frac, 1, 1)
 
 DEFINE_WFL_FUNCTION(sgn, 1, 1)
 {
-	variant decimal = args()[0]->evaluate(variables, fdb);
+	const variant decimal = args()[0]->evaluate(variables, fdb);
 	int d = decimal.as_decimal();
 
 	if(d != 0) {
@@ -1278,8 +1278,8 @@ DEFINE_WFL_FUNCTION(sgn, 1, 1)
 
 DEFINE_WFL_FUNCTION(as_decimal, 1, 1)
 {
-	variant decimal = args()[0]->evaluate(variables, fdb);
-	int d = decimal.as_decimal();
+	const variant decimal = args()[0]->evaluate(variables, fdb);
+	const int d = decimal.as_decimal();
 
 	return variant(d, variant::DECIMAL_VARIANT);
 }
@@ -1334,7 +1334,7 @@ DEFINE_WFL_FUNCTION(locations_in_radius, 2, 2)
 {
 	const map_location loc = args()[0]->evaluate(variables, fdb).convert_to<location_callable>()->loc();
 
-	int range = args()[1]->evaluate(variables, fdb).as_int();
+	const int range = args()[1]->evaluate(variables, fdb).as_int();
 
 	if(range < 0) {
 		return variant();
@@ -1399,7 +1399,7 @@ DEFINE_WFL_FUNCTION(direction_from, 2, 3)
 	const std::string dir_str =
 		args()[1]->evaluate(variables, add_debug_info(fdb, 1, "direction_from:dir")).as_string();
 
-	int n = args().size() == 3
+	const int n = args().size() == 3
 		? args()[2]->evaluate(variables, add_debug_info(fdb, 2, "direction_from:count")).as_int()
 		: 1;
 
@@ -1418,7 +1418,7 @@ DEFINE_WFL_FUNCTION(rotate_loc_around, 2, 3)
 		.convert_to<location_callable>()
 		->loc();
 
-	int n = args().size() == 3
+	const int n = args().size() == 3
 		? args()[2]->evaluate(variables, add_debug_info(fdb, 2, "direction_from:count")).as_int()
 		: 1;
 
@@ -1509,7 +1509,7 @@ variant formula_function_expression::execute(const formula_callable& variables, 
 	map_formula_callable callable;
 
 	for(std::size_t n = 0; n != arg_names_.size(); ++n) {
-		variant var = args()[n]->evaluate(variables, fdb);
+		const variant var = args()[n]->evaluate(variables, fdb);
 		callable.add(arg_names_[n], var);
 
 		if(static_cast<int>(n) == star_arg_) {

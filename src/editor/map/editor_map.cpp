@@ -114,7 +114,7 @@ void editor_map::sanity_check()
 
 std::set<map_location> editor_map::get_contiguous_terrain_tiles(const map_location& start) const
 {
-	t_translation::terrain_code terrain = get_terrain(start);
+	const t_translation::terrain_code terrain = get_terrain(start);
 	std::set<map_location> result;
 	std::deque<map_location> queue;
 	result.insert(start);
@@ -140,8 +140,9 @@ std::set<map_location> editor_map::set_starting_position_labels(display& disp)
 
 
 	for (const auto& pair : special_locations().left) {
-
-		bool is_number = std::find_if(pair.first.begin(), pair.first.end(), [](char c) { return !std::isdigit(c); }) == pair.first.end();
+		const bool is_number = std::find_if(pair.first.begin(), pair.first.end(), [](char c) {
+			return !std::isdigit(c);
+		}) == pair.first.end();
 		if (is_number) {
 			label = VGETTEXT("Player $side_num", utils::string_map{ { "side_num", pair.first } });
 		}
@@ -213,8 +214,8 @@ bool editor_map::everything_selected() const
 void editor_map::resize(int width, int height, int x_offset, int y_offset,
 	const t_translation::terrain_code & filler)
 {
-	int old_w = w();
-	int old_h = h();
+	const int old_w = w();
+	const int old_h = h();
 	if (old_w == width && old_h == height && x_offset == 0 && y_offset == 0) {
 		return;
 	}

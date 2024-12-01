@@ -61,7 +61,7 @@ BOOST_AUTO_TEST_CASE( test_insertion )
 	BOOST_REQUIRE(sac.num_turns() == 1);
 
 	int tmp=0;
-	for(action_ptr act : sac) {
+	for(const action_ptr act : sac) {
 		++tmp;
 		BOOST_REQUIRE(dact = std::dynamic_pointer_cast<dummy_action>(act));
 		BOOST_REQUIRE(dact->id_ == tmp);
@@ -82,7 +82,7 @@ BOOST_AUTO_TEST_CASE( test_insertion )
 	BOOST_REQUIRE(sac.num_turns() == 3);
 
 	tmp=0;
-	for(action_ptr act : sac) {
+	for(const action_ptr act : sac) {
 		++tmp;
 		BOOST_REQUIRE(dact = std::dynamic_pointer_cast<dummy_action>(act));
 		BOOST_REQUIRE(dact->id_ == tmp);
@@ -111,11 +111,11 @@ BOOST_AUTO_TEST_CASE( test_removal )
 	auto act6 = std::make_shared<dummy_action>(0, false, 6);
 
 	sac.queue(0, act1);
-	side_actions::iterator ite2 = sac.queue(0, act2);
+	const side_actions::iterator ite2 = sac.queue(0, act2);
 	sac.queue(0, act3);
-	side_actions::iterator ite4 = sac.queue(1, act4);
+	const side_actions::iterator ite4 = sac.queue(1, act4);
 	sac.queue(1, act5);
-	side_actions::iterator ite6 = sac.queue(2, act6);
+	const side_actions::iterator ite6 = sac.queue(2, act6);
 
 	sac.erase(ite2);
 	sac.erase(ite4);

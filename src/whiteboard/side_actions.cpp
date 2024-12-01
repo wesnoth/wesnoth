@@ -86,7 +86,7 @@ std::size_t side_actions_container::get_turn_impl(std::size_t begin, std::size_t
 		}
 		return begin;
 	}
-	std::size_t mid = (begin+end) / 2;
+	const std::size_t mid = (begin + end) / 2;
 	if(it < turn_beginnings_[mid]) {
 		return get_turn_impl(begin, mid, it);
 	} else {
@@ -128,7 +128,7 @@ side_actions_container::iterator side_actions_container::push_front(std::size_t 
 
 	iterator res = insert(turn_begin(turn), action);
 	if(res != end()) {
-		bool current_turn_unplanned = turn_size(0) == 0;
+		const bool current_turn_unplanned = turn_size(0) == 0;
 		turn_beginnings_[turn] = res;
 
 		if(current_turn_unplanned && turn == 1) {
@@ -142,9 +142,9 @@ side_actions_container::iterator side_actions_container::insert(iterator positio
 {
 	assert(position <= end());
 
-	bool first = position == begin();
+	const bool first = position == begin();
 
-	std::pair<iterator,bool> res = actions_.insert(position, action);
+	const std::pair<iterator, bool> res = actions_.insert(position, action);
 	if(!res.second) {
 		return end();
 	}
@@ -159,14 +159,14 @@ side_actions_container::iterator side_actions_container::queue(std::size_t turn_
 {
 	// Are we inserting an action in the future while the current turn is empty?
 	// That is, are we in the sole case where an empty turn can be followed by a non-empty one.
-	bool future_only = turn_num == 1 && num_turns() == 0;
+	const bool future_only = turn_num == 1 && num_turns() == 0;
 
-	bool current_turn_unplanned = turn_size(0) == 0;
+	const bool current_turn_unplanned = turn_size(0) == 0;
 
 	//for a little extra safety, since we should never resize by much at a time
 	assert(turn_num <= num_turns() || future_only);
 
-	std::pair<iterator,bool> res = actions_.insert(turn_end(turn_num), action);
+	const std::pair<iterator, bool> res = actions_.insert(turn_end(turn_num), action);
 	if(!res.second) {
 		return end();
 	}
@@ -190,8 +190,8 @@ side_actions_container::iterator side_actions_container::bump_earlier(iterator p
 	assert(position > begin());
 	assert(position < end());
 
-	action_ptr rhs = *position;
-	action_ptr lhs = *(position - 1);
+	const action_ptr rhs = *position;
+	const action_ptr lhs = *(position - 1);
 
 	actions_.replace(position, lhs);
 	actions_.replace(position - 1, rhs);
@@ -209,11 +209,11 @@ side_actions_container::iterator side_actions_container::erase(iterator position
 	assert(position < end());
 
 	//prepare
-	iterator next = position + 1;
-	bool deleting_last_element = next == end();
+	const iterator next = position + 1;
+	const bool deleting_last_element = next == end();
 
 	// pre-processing (check if position is at the beginning of a turn)
-	action_limits::iterator beginning = std::find(turn_beginnings_.begin(), turn_beginnings_.end(), position);
+	const action_limits::iterator beginning = std::find(turn_beginnings_.begin(), turn_beginnings_.end(), position);
 	if(beginning != turn_beginnings_.end()) {
 		if(deleting_last_element) {
 			if(size() == 1) {
@@ -285,13 +285,13 @@ void side_actions::get_numbers(const map_location& hex, numbers_t& result)
 	std::vector<std::size_t>& team_numbers = result.team_numbers;
 	int& main_number = result.main_number;
 	std::set<std::size_t>& secondary_numbers = result.secondary_numbers;
-	std::shared_ptr<highlighter> hlighter = resources::whiteboard->get_highlighter().lock();
+	const std::shared_ptr<highlighter> hlighter = resources::whiteboard->get_highlighter().lock();
 
 	for(const_iterator it = begin(); it != end(); ++it) {
 		if((*it)->is_numbering_hex(hex)) {
 			//store number corresponding to iterator's position + 1
 			std::size_t number = (it - begin()) + 1;
-			std::size_t index = numbers_to_draw.size();
+			const std::size_t index = numbers_to_draw.size();
 			numbers_to_draw.push_back(number);
 			team_numbers.push_back(team_index());
 
@@ -300,7 +300,7 @@ void side_actions::get_numbers(const map_location& hex, numbers_t& result)
 					main_number = index;
 				}
 
-				for(weak_action_ptr action : hlighter->get_secondary_highlights()) {
+				for(const weak_action_ptr action : hlighter->get_secondary_highlights()) {
 					if(action.lock() == *it) {
 						secondary_numbers.insert(index);
 					}
@@ -333,7 +333,7 @@ bool side_actions::execute(side_actions::iterator position)
 
 	LOG_WB << "Before execution, " << *this;
 
-	action_ptr action = *position;
+	const action_ptr action = *position;
 
 	if(!action->valid()) {
 		LOG_WB << "Invalid action sent to execution, deleting.";
@@ -392,7 +392,7 @@ void side_actions::hide()
 
 	hidden_ = true;
 
-	for(action_ptr act : *this) {
+	for(const action_ptr act : *this) {
 		act->hide();
 	}
 }
@@ -404,7 +404,7 @@ void side_actions::show()
 
 	hidden_ = false;
 
-	for(action_ptr act : *this) {
+	for(const action_ptr act : *this) {
 		act->show();
 	}
 }
@@ -473,7 +473,7 @@ namespace
 			const unit_const_ptr leader = second_->get_unit();
 			if(leader->can_recruit() && dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(*leader, loc)) {
 				if(const unit_const_ptr backup_leader = find_backup_leader(*leader)) {
-					side_actions::iterator it = sa_.find_first_action_of(*backup_leader);
+					const side_actions::iterator it = sa_.find_first_action_of(*backup_leader);
 					if(!(it == sa_.end() || position_ < it)) {
 						return; //backup leader but he moves before us, refuse bump
 					}
@@ -501,7 +501,7 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 		return end();
 	}
 
-	side_actions::iterator previous = position - 1;
+	const side_actions::iterator previous = position - 1;
 
 	//Verify we're not moving an action out-of-order compared to other action of the same unit
 	const unit_const_ptr previous_ptr = (*previous)->get_unit();
@@ -510,7 +510,7 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 		return end();
 	}
 
-	if(move_ptr second = std::dynamic_pointer_cast<move>(*position)) {
+	if(const move_ptr second = std::dynamic_pointer_cast<move>(*position)) {
 		swapable_with_move check(*this, position, second);
 		(*previous)->accept(check);
 		if(!check.valid()) {
@@ -520,9 +520,9 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 
 	LOG_WB << "Before bumping earlier, " << *this;
 
-	int turn_number = get_turn(position);
-	int action_number = actions_.position_in_turn(position);
-	int last_position = turn_size(turn_number) - 1;
+	const int turn_number = get_turn(position);
+	const int action_number = actions_.position_in_turn(position);
+	const int last_position = turn_size(turn_number) - 1;
 	LOG_WB << "In turn #" << turn_number
 			<< ", bumping action #" << action_number << "/" << last_position
 			<< " to position #" << action_number - 1  << "/" << last_position
@@ -661,7 +661,8 @@ std::size_t side_actions::count_actions_of(const unit& unit)
 std::deque<action_ptr> side_actions::actions_of(const unit& target)
 {
 	typedef container::action_set::index<container::by_unit>::type::iterator unit_iterator;
-	std::pair<unit_iterator, unit_iterator> action_its = actions_.get<container::by_unit>().equal_range(target.underlying_id());
+	const std::pair<unit_iterator, unit_iterator> action_its
+		= actions_.get<container::by_unit>().equal_range(target.underlying_id());
 
 	std::deque<action_ptr> actions (action_its.first, action_its.second);
 	return actions;
@@ -669,7 +670,7 @@ std::deque<action_ptr> side_actions::actions_of(const unit& target)
 
 std::size_t side_actions::get_turn_num_of(const unit& u) const
 {
-	const_iterator itor = find_last_action_of(u);
+	const const_iterator itor = find_last_action_of(u);
 	if(itor == end()) {
 		return 0;
 	}
@@ -692,7 +693,7 @@ void side_actions::reset_gold_spent()
 void side_actions::update_recruited_unit(std::size_t old_id, unit& new_unit)
 {
 	for(const_iterator it = begin(); it != end(); ++it) {
-		if(move_ptr mp = std::dynamic_pointer_cast<move>(*it)) {
+		if(const move_ptr mp = std::dynamic_pointer_cast<move>(*it)) {
 			if(mp->raw_uid() == old_id) {
 				actions_.modify(it, [&](action_ptr& p) {
 					static_cast<move&>(*p).modify_unit(new_unit);
@@ -738,7 +739,7 @@ side_actions::iterator side_actions::synced_enqueue(std::size_t turn_num, const 
 
 side_actions::iterator side_actions::safe_erase(const iterator& itor)
 {
-	action_ptr action = *itor;
+	const action_ptr action = *itor;
 	resources::whiteboard->pre_delete_action(action); //misc cleanup
 	iterator return_itor = actions_.erase(itor);
 	resources::whiteboard->post_delete_action(action);
@@ -746,42 +747,42 @@ side_actions::iterator side_actions::safe_erase(const iterator& itor)
 }
 side_actions::iterator side_actions::queue_move(std::size_t turn, const unit& mover, const pathfind::marked_route& route, const arrow_ptr& arrow, fake_unit_ptr fake_unit)
 {
-	move_ptr new_move(std::make_shared<move>(team_index(), hidden_, mover, route, arrow, std::move(fake_unit)));
+	const move_ptr new_move(std::make_shared<move>(team_index(), hidden_, mover, route, arrow, std::move(fake_unit)));
 	return queue_action(turn, new_move);
 }
 
 side_actions::iterator side_actions::queue_attack(std::size_t turn, const unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route, const arrow_ptr& arrow, fake_unit_ptr fake_unit)
 {
-	attack_ptr new_attack(std::make_shared<attack>(team_index(), hidden_, mover, target_hex, weapon_choice, route, arrow, std::move(fake_unit)));
+	const attack_ptr new_attack(std::make_shared<attack>(team_index(), hidden_, mover, target_hex, weapon_choice, route, arrow, std::move(fake_unit)));
 	return queue_action(turn, new_attack);
 }
 
 side_actions::iterator side_actions::queue_recruit(std::size_t turn, const std::string& unit_name, const map_location& recruit_hex)
 {
-	recruit_ptr new_recruit(std::make_shared<recruit>(team_index(), hidden_, unit_name, recruit_hex));
+	const recruit_ptr new_recruit(std::make_shared<recruit>(team_index(), hidden_, unit_name, recruit_hex));
 	return queue_action(turn, new_recruit);
 }
 
 side_actions::iterator side_actions::queue_recall(std::size_t turn, const unit& unit, const map_location& recall_hex)
 {
-	recall_ptr new_recall(std::make_shared<recall>(team_index(), hidden_, unit, recall_hex));
+	const recall_ptr new_recall(std::make_shared<recall>(team_index(), hidden_, unit, recall_hex));
 	return queue_action(turn, new_recall);
 }
 
 side_actions::iterator side_actions::queue_suppose_dead(std::size_t turn, const unit& curr_unit, const map_location& loc)
 {
-	suppose_dead_ptr new_suppose_dead(std::make_shared<suppose_dead>(team_index(), hidden_, curr_unit, loc));
+	const suppose_dead_ptr new_suppose_dead(std::make_shared<suppose_dead>(team_index(), hidden_, curr_unit, loc));
 	return queue_action(turn, new_suppose_dead);
 }
 
 void side_actions::execute_net_cmd(const net_cmd& cmd)
 {
-	std::string type = cmd["type"];
+	const std::string type = cmd["type"];
 
 	if(type=="insert") {
-		std::size_t turn = cmd["turn"].to_int();
-		std::size_t pos = cmd["pos"].to_int();
-		action_ptr act = action::from_config(cmd.mandatory_child("action"), hidden_);
+		const std::size_t turn = cmd["turn"].to_int();
+		const std::size_t pos = cmd["pos"].to_int();
+		const action_ptr act = action::from_config(cmd.mandatory_child("action"), hidden_);
 		if(!act) {
 			ERR_WB << "side_actions::execute_network_command(): received invalid action data!";
 			return;
@@ -797,19 +798,19 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 
 		//update numbering hexes as necessary
 		++itor;
-		for(iterator end_itor = end(); itor != end_itor; ++itor) {
+		for(const iterator end_itor = end(); itor != end_itor; ++itor) {
 			display::get_singleton()->invalidate((*itor)->get_numbering_hex());
 		}
 	} else if(type=="replace") {
-		std::size_t turn = cmd["turn"].to_int();
-		std::size_t pos = cmd["pos"].to_int();
-		action_ptr act = action::from_config(cmd.mandatory_child("action"), hidden_);
+		const std::size_t turn = cmd["turn"].to_int();
+		const std::size_t pos = cmd["pos"].to_int();
+		const action_ptr act = action::from_config(cmd.mandatory_child("action"), hidden_);
 		if(!act) {
 			ERR_WB << "side_actions::execute_network_command(): received invalid action data!";
 			return;
 		}
 
-		iterator itor = turn_begin(turn) + pos;
+		const iterator itor = turn_begin(turn) + pos;
 		if(itor >= end() || get_turn(itor) != turn) {
 			ERR_WB << "side_actions::execute_network_command(): received invalid pos!";
 			return;
@@ -822,8 +823,8 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 
 		LOG_WB << "Command received: action replaced on turn #" << turn << ", position #" << pos << ": " << act;
 	} else if(type=="remove") {
-		std::size_t turn = cmd["turn"].to_int();
-		std::size_t pos = cmd["pos"].to_int();
+		const std::size_t turn = cmd["turn"].to_int();
+		const std::size_t pos = cmd["pos"].to_int();
 
 		iterator itor = turn_begin(turn) + pos;
 		if(itor >= end() || get_turn(itor) != turn) {
@@ -836,21 +837,21 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 		LOG_WB << "Command received: action removed on turn #" << turn << ", position #" << pos;
 
 		//update numbering hexes as necessary
-		for(iterator end_itor = end(); itor != end_itor; ++itor) {
+		for(const iterator end_itor = end(); itor != end_itor; ++itor) {
 			display::get_singleton()->invalidate((*itor)->get_numbering_hex());
 		}
 	} else if(type=="bump_later") {
-		std::size_t turn = cmd["turn"].to_int();
-		std::size_t pos = cmd["pos"].to_int();
+		const std::size_t turn = cmd["turn"].to_int();
+		const std::size_t pos = cmd["pos"].to_int();
 
-		iterator itor = turn_begin(turn) + pos;
+		const iterator itor = turn_begin(turn) + pos;
 		if(itor+1 >= end() || get_turn(itor) != turn) {
 			ERR_WB << "side_actions::execute_network_command(): received invalid pos!";
 			return;
 		}
 
-		action_ptr first_action = *itor;
-		action_ptr second_action = itor[1];
+		const action_ptr first_action = *itor;
+		const action_ptr second_action = itor[1];
 		bump_later(itor, false);
 
 		LOG_WB << "Command received: action bumped later from turn #" << turn << ", position #" << pos;
@@ -888,7 +889,7 @@ side_actions::net_cmd side_actions::make_net_cmd_insert(const const_iterator& po
 	if(pos == begin()) {
 		return make_net_cmd_insert(0,0,act);
 	} else {
-		const_iterator prec = pos - 1;
+		const const_iterator prec = pos - 1;
 		return make_net_cmd_insert(get_turn(prec), actions_.position_in_turn(prec)+1, act);
 	}
 }
@@ -940,18 +941,18 @@ void side_actions::raw_turn_shift()
 	//find units who still have plans for turn 0 (i.e. were too lazy to finish their jobs)
 	std::set<unit_const_ptr> lazy_units;
 	for(const action_ptr& act : iter_turn(0)) {
-		unit_const_ptr u = act->get_unit();
+		const unit_const_ptr u = act->get_unit();
 		if(u) {
 			lazy_units.insert(u);
 		}
 	}
 
 	//push their plans back one turn
-	std::set<unit_const_ptr>::iterator lazy_end = lazy_units.end();
+	const std::set<unit_const_ptr>::iterator lazy_end = lazy_units.end();
 	iterator itor = end();
 	while(itor != begin()) {
 		--itor;
-		action_ptr act = *itor;
+		const action_ptr act = *itor;
 
 		if(lazy_units.find(act->get_unit()) != lazy_end) {
 			safe_insert(get_turn(itor)+1, 0, act);

@@ -49,7 +49,7 @@ game_stats::game_stats(const display_context& board, const team& viewing_team, i
 
 unit_const_ptr game_stats::get_leader(const int side)
 {
-	unit_map::const_iterator leader = board_.units().find_leader(side);
+	const unit_map::const_iterator leader = board_.units().find_leader(side);
 
 	if(leader != board_.units().end()) {
 		return leader.get_shared_ptr();
@@ -84,7 +84,7 @@ void game_stats::pre_show()
 
 		const team_data& data = team_data_.back();
 
-		unit_const_ptr leader = get_leader(team.side());
+		const unit_const_ptr leader = get_leader(team.side());
 
 		std::string leader_name;
 		std::string leader_image;
@@ -199,7 +199,7 @@ void game_stats::pre_show()
 	// Sorting options for the status list
 	stats_list.set_sorters(
 		[this](const std::size_t i) {
-			unit_const_ptr leader = get_leader(i + 1);
+			const unit_const_ptr leader = get_leader(i + 1);
 			return leader ? leader->name() : t_string();
 		},
 		[this](const std::size_t i) { return board_.teams()[i].user_team_name(); },
@@ -213,7 +213,7 @@ void game_stats::pre_show()
 	// Sorting options for the settings list
 	settings_list.set_sorters(
 		[this](const std::size_t i) {
-			unit_const_ptr leader = get_leader(i + 1);
+			const unit_const_ptr leader = get_leader(i + 1);
 			return leader ? leader->name() : t_string();
 		},
 		[this](const std::size_t i) { return board_.teams()[i].side(); },

@@ -208,8 +208,8 @@ void campaign::set_metadata()
 {
 	image_label_ = data_["image"].str();
 
-	int min = data_["min_players"].to_int(1);
-	int max = data_["max_players"].to_int(1);
+	const int min = data_["min_players"].to_int(1);
+	const int max = data_["max_players"].to_int(1);
 
 	min_players_ = max_players_ =  min;
 
@@ -255,7 +255,7 @@ create_engine::create_engine(saved_game& state)
 	DBG_MP << "restoring game config";
 
 	// Restore game config for multiplayer.
-	campaign_type::type type = state_.classification().type;
+	const campaign_type::type type = state_.classification().type;
 
 	state_.clear();
 	state_.classification().type = type;
@@ -549,7 +549,7 @@ bool create_engine::toggle_mod(const std::string& id, bool force)
 {
 	force |= state_.classification().type != campaign_type::type::multiplayer;
 
-	bool is_active = dependency_manager_->is_modification_active(id);
+	const bool is_active = dependency_manager_->is_modification_active(id);
 	dependency_manager_->try_modification_by_id(id, !is_active, force);
 
 	state_.classification().active_mods = dependency_manager_->get_modifications();
@@ -592,7 +592,7 @@ std::pair<level_type::type, int> create_engine::find_level_by_id(const std::stri
 int create_engine::find_extra_by_id(const MP_EXTRA extra_type, const std::string& id) const
 {
 	int i = 0;
-	for(extras_metadata_ptr extra : get_const_extras_by_type(extra_type)) {
+	for(const extras_metadata_ptr extra : get_const_extras_by_type(extra_type)) {
 		if(extra->id == id) {
 			return i;
 		}
@@ -626,7 +626,7 @@ std::vector<create_engine::extras_metadata_ptr> create_engine::active_mods_data(
 
 const config& create_engine::curent_era_cfg() const
 {
-	int era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
+	const int era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
 	return *eras_[era_index]->cfg;
 }
 
@@ -634,7 +634,7 @@ const mp_game_settings& create_engine::get_parameters()
 {
 	DBG_MP << "getting parameter values";
 
-	int era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
+	const int era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
 	state_.classification().era_id = eras_[era_index]->id;
 	state_.mp_settings().mp_era_name = eras_[era_index]->name;
 
@@ -644,7 +644,7 @@ const mp_game_settings& create_engine::get_parameters()
 void create_engine::init_all_levels()
 {
 	if(auto generic_multiplayer = game_config_.optional_child("generic_multiplayer")) {
-		config gen_mp_data = *generic_multiplayer;
+		const config gen_mp_data = *generic_multiplayer;
 
 		// User maps.
 		int dep_index_offset = 0;
@@ -766,14 +766,14 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 	std::vector<extras_metadata_ptr>& extras = get_extras_by_type(extra_type);
 	const std::string extra_name = (extra_type == ERA) ? "era" : "modification";
 
-	component_availability::type default_availabilty = (extra_type == ERA)
-		? component_availability::type::mp
-		: component_availability::type::hybrid;
+	const component_availability::type default_availabilty
+		= (extra_type == ERA) ? component_availability::type::mp : component_availability::type::hybrid;
 
 	std::set<std::string> found_ids;
 	for(const config& extra : game_config_.child_range(extra_name))
 	{
-		component_availability::type type = component_availability::get_enum(extra["type"].str()).value_or(default_availabilty);
+		const component_availability::type type
+			= component_availability::get_enum(extra["type"].str()).value_or(default_availabilty);
 		const bool mp = state_.classification().is_multiplayer();
 
 		if((type != component_availability::type::mp || mp) && (type != component_availability::type::sp || !mp) )
@@ -816,7 +816,7 @@ std::vector<create_engine::level_ptr> create_engine::get_levels_by_type(level_ty
 	auto& g_list = type_map_.at(type);
 
 	std::vector<level_ptr> levels;
-	for(std::size_t level : g_list.games_filtered) {
+	for(const std::size_t level : g_list.games_filtered) {
 		levels.push_back(g_list.games[level]);
 	}
 

@@ -162,7 +162,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 	for(const auto& a : addons) {
 		const addon_info& addon = a.second;
-		addon_tracking_info tracking_info = get_addon_tracking_info(addon);
+		const addon_tracking_info tracking_info = get_addon_tracking_info(addon);
 
 		addon_vector_.push_back(&addon);
 
@@ -390,10 +390,8 @@ void addon_list::set_addon_order(const addon_sort_func& func)
 {
 	listbox& list = get_listbox();
 
-	generator_base::order_func generator_func = [this, func](unsigned a, unsigned b)
-	{
-		return func(*addon_vector_[a], *addon_vector_[b]);
-	};
+	const generator_base::order_func generator_func
+		= [this, func](unsigned a, unsigned b) { return func(*addon_vector_[a], *addon_vector_[b]); };
 
 	list.mark_as_unsorted();
 	list.order_by(generator_func);
@@ -420,7 +418,7 @@ addon_list_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Add a dummy state since every widget needs a state.
-	static config dummy("draw");
+	static const config dummy("draw");
 	state.emplace_back(dummy);
 
 	auto child = cfg.optional_child("grid");

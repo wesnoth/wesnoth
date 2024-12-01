@@ -48,7 +48,7 @@ std::vector<game_tip> tips;
 
 void update_screen_size_variables()
 {
-	point canvas_size = video::game_canvas_size();
+	const point canvas_size = video::game_canvas_size();
 
 	screen_width = canvas_size.x;
 	screen_height = canvas_size.y;

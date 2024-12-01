@@ -89,16 +89,16 @@ namespace { // Support functions
 
 	fake_unit_ptr create_fake_unit(const vconfig& cfg)
 	{
-		std::string type = cfg["type"];
-		std::string variation = cfg["variation"];
-		std::string img_mods = cfg["image_mods"];
+		const std::string type = cfg["type"];
+		const std::string variation = cfg["variation"];
+		const std::string img_mods = cfg["image_mods"];
 
 		std::size_t side_num = cfg["side"].to_int(1);
 		if (!resources::gameboard->has_team(side_num)) {
 			side_num = 1;
 		}
 
-		unit_race::GENDER gender = string_gender(cfg["gender"]);
+		unit_race::GENDER const gender = string_gender(cfg["gender"]);
 		const unit_type *ut = unit_types.find(type);
 		if (!ut) return fake_unit_ptr();
 		fake_unit_ptr fake = fake_unit_ptr(unit::create(*ut, side_num, false, gender));
@@ -144,10 +144,8 @@ namespace { // Support functions
 				path.push_back(src);
 				continue;
 			}
-			pathfind::shortest_path_calculator calc(fake_unit,
-					resources::gameboard->get_team(fake_unit.side()),
-					resources::gameboard->teams(),
-					*game_map);
+			const pathfind::shortest_path_calculator calc(
+				fake_unit, resources::gameboard->get_team(fake_unit.side()), resources::gameboard->teams(), *game_map);
 
 			try {
 				dst.set_wml_x(std::stoi(xvals[i]));
@@ -165,7 +163,7 @@ namespace { // Support functions
 
 			if (route.steps.empty()) {
 				WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities";
-				pathfind::emergency_path_calculator emergency_calc(fake_unit, *game_map);
+				const pathfind::emergency_path_calculator emergency_calc(fake_unit, *game_map);
 
 				route = pathfind::a_star_search(src, dst, 10000, emergency_calc,
 						game_map->w(), game_map->h());
@@ -174,7 +172,7 @@ namespace { // Support functions
 					// over locations which are unreachable to it (infinite movement
 					// costs). This really cannot fail.
 					WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain";
-					pathfind::dummy_path_calculator dummy_calc(fake_unit, *game_map);
+					const pathfind::dummy_path_calculator dummy_calc(fake_unit, *game_map);
 					route = a_star_search(src, dst, 10000, dummy_calc, game_map->w(), game_map->h());
 					assert(!route.steps.empty());
 				}
@@ -324,9 +322,9 @@ WML_HANDLER_FUNCTION(get_global_variable,,pcfg)
 
 WML_HANDLER_FUNCTION(modify_turns,, cfg)
 {
-	config::attribute_value value = cfg["value"];
-	std::string add = cfg["add"];
-	config::attribute_value current = cfg["current"];
+	const config::attribute_value value = cfg["value"];
+	const std::string add = cfg["add"];
+	const config::attribute_value current = cfg["current"];
 	tod_manager& tod_man = *resources::tod_manager;
 	if(!add.empty()) {
 		tod_man.modify_turns_by_wml(add);
@@ -336,7 +334,7 @@ WML_HANDLER_FUNCTION(modify_turns,, cfg)
 	// change current turn only after applying mods
 	if(!current.empty()) {
 		const unsigned int current_turn_number = tod_man.turn();
-		int new_turn_number = current.to_int(current_turn_number);
+		const int new_turn_number = current.to_int(current_turn_number);
 		const unsigned int new_turn_number_u = static_cast<unsigned int>(new_turn_number);
 		if(new_turn_number_u < 1 || (new_turn_number > tod_man.number_of_turns() && tod_man.number_of_turns() != -1)) {
 			ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ")";
@@ -353,8 +351,8 @@ WML_HANDLER_FUNCTION(modify_turns,, cfg)
  */
 WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 {
-	set_scontext_unsynced leave_synced_context;
-	events::command_disabler command_disabler;
+	const set_scontext_unsynced leave_synced_context;
+	const events::command_disabler command_disabler;
 	fake_unit_ptr dummy_unit(create_fake_unit(cfg));
 	if(!dummy_unit.get())
 		return;
@@ -376,13 +374,13 @@ WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 
 WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 {
-	set_scontext_unsynced leave_synced_context;
-	events::command_disabler command_disabler;
+	const set_scontext_unsynced leave_synced_context;
+	const events::command_disabler command_disabler;
 	LOG_NG << "Processing [move_units_fake]";
 
 	const bool force_scroll = cfg["force_scroll"].to_bool();
 	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
-	std::size_t num_units = unit_cfgs.size();
+	const std::size_t num_units = unit_cfgs.size();
 	std::vector<fake_unit_ptr > units;
 	units.reserve(num_units);
 	std::vector<std::vector<map_location>> paths;
@@ -395,7 +393,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 	for (const vconfig& config : unit_cfgs) {
 		const std::vector<std::string> xvals = utils::split(config["x"]);
 		const std::vector<std::string> yvals = utils::split(config["y"]);
-		int skip_steps = config["skip_steps"].to_int();
+		const int skip_steps = config["skip_steps"].to_int();
 		fake_unit_ptr u = create_fake_unit(config);
 		units.push_back(u);
 		paths.push_back(fake_unit_path(*u, xvals, yvals));
@@ -436,7 +434,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
  */
 WML_HANDLER_FUNCTION(recall,, cfg)
 {
-	events::command_disabler command_disabler;
+	const events::command_disabler command_disabler;
 	LOG_NG << "recalling unit...";
 	config temp_config(cfg.get_config());
 	// Prevent the recall unit filter from using the location as a criterion
@@ -449,7 +447,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 	temp_config["x"] = "recall";
 	temp_config["y"] = "recall";
 	temp_config.remove_attribute("location_id");
-	vconfig unit_filter_cfg(temp_config);
+	const vconfig unit_filter_cfg(temp_config);
 	const vconfig & leader_filter = cfg.child("secondary_unit");
 
 	for(team& t : resources::gameboard->teams()) {
@@ -463,13 +461,13 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 		}
 
 		recall_list_manager & avail = t.recall_list();
-		std::vector<unit_map::unit_iterator> leaders = resources::gameboard->units().find_leaders(t.side());
+		const std::vector<unit_map::unit_iterator> leaders = resources::gameboard->units().find_leaders(t.side());
 
 		const unit_filter ufilt(unit_filter_cfg);
 		const unit_filter lfilt(leader_filter); // Note that if leader_filter is null, this correctly gives a null filter that matches all units.
 		for(std::vector<unit_ptr>::iterator u = avail.begin(); u != avail.end(); ++u) {
 			DBG_NG << "checking unit against filter...";
-			scoped_recall_unit auto_store("this_unit", player_id, std::distance(avail.begin(), u));
+			const scoped_recall_unit auto_store("this_unit", player_id, std::distance(avail.begin(), u));
 			if (ufilt(*(*u), map_location())) {
 				DBG_NG << (*u)->id() << " matched the filter...";
 				const unit_ptr to_recruit = *u;
@@ -484,7 +482,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 					}
 				}
 
-				for (unit_map::const_unit_iterator leader : leaders) {
+				for(const unit_map::const_unit_iterator leader : leaders) {
 					DBG_NG << "...considering " + leader->id() + " as the recalling leader...";
 					map_location loc = cfg_loc;
 					if ( lfilt(*leader)  &&
@@ -513,7 +511,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 					if (resources::gameboard->map().on_board(loc)) {
 						DBG_NG << "No usable leader found, but found usable location. Recalling.";
 						avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
-						map_location null_location = map_location::null_location();
+						const map_location null_location = map_location::null_location();
 						actions::place_recruit(to_recruit, loc, null_location, 0, true,
 						                       map_location::parse_direction(cfg["facing"]),
 						                       cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false),
@@ -534,7 +532,7 @@ namespace {
 		std::string filename_;
 		virtual config query_user(int /*side*/) const override
 		{
-			std::string res = filesystem::read_map(filename_);
+			const std::string res = filesystem::read_map(filename_);
 			return config {"map_data", res};
 		}
 		virtual config random_choice(int /*side*/) const override
@@ -635,7 +633,7 @@ WML_HANDLER_FUNCTION(set_global_variable,,pcfg)
 WML_HANDLER_FUNCTION(set_variables,, cfg)
 {
 	const std::string name = cfg["name"];
-	variable_access_create dest = resources::gamedata->get_variable_access_write(name);
+	const variable_access_create dest = resources::gamedata->get_variable_access_write(name);
 	if(name.empty()) {
 		ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().debug();
 		return;
@@ -646,7 +644,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 	{
 		try
 		{
-			variable_access_const tovar = resources::gamedata->get_variable_access_read(cfg["to_variable"]);
+			const variable_access_const tovar = resources::gamedata->get_variable_access_read(cfg["to_variable"]);
 			for (const config& c : tovar.as_array())
 			{
 				data.push_back(c);
@@ -674,7 +672,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 					key_name="value";
 				}
 
-				bool remove_empty = split_element["remove_empty"].to_bool();
+				const bool remove_empty = split_element["remove_empty"].to_bool();
 
 				char* separator = separator_string.empty() ? nullptr : &separator_string[0];
 				if(separator_string.size() > 1){
@@ -760,11 +758,11 @@ WML_HANDLER_FUNCTION(store_relative_direction,, cfg)
 	const map_location src = cfg_to_loc(cfg.child("source"));
 	const map_location dst = cfg_to_loc(cfg.child("destination"));
 
-	std::string variable = cfg["variable"];
-	map_location::RELATIVE_DIR_MODE mode = static_cast<map_location::RELATIVE_DIR_MODE> (cfg["mode"].to_int(0));
+	const std::string variable = cfg["variable"];
+	map_location::RELATIVE_DIR_MODE const mode = static_cast<map_location::RELATIVE_DIR_MODE>(cfg["mode"].to_int(0));
 	try
 	{
-		variable_access_create store = resources::gamedata->get_variable_access_write(variable);
+		const variable_access_create store = resources::gamedata->get_variable_access_write(variable);
 
 		store.as_scalar() = map_location::write_direction(src.get_relative_dir(dst,mode));
 	}
@@ -798,12 +796,12 @@ WML_HANDLER_FUNCTION(store_rotate_map_location,, cfg)
 	const map_location src = cfg_to_loc(cfg.child("source"));
 	const map_location dst = cfg_to_loc(cfg.child("destination"));
 
-	std::string variable = cfg["variable"];
-	int angle = cfg["angle"].to_int(1);
+	const std::string variable = cfg["variable"];
+	const int angle = cfg["angle"].to_int(1);
 
 	try
 	{
-		variable_access_create store = resources::gamedata->get_variable_access_write(variable);
+		const variable_access_create store = resources::gamedata->get_variable_access_write(variable);
 
 		dst.rotate_right_around_center(src,angle).write(store.as_container());
 	}
@@ -846,14 +844,14 @@ WML_HANDLER_FUNCTION(tunnel,, cfg)
 /** If we should spawn a new unit on the map somewhere */
 WML_HANDLER_FUNCTION(unit,, cfg)
 {
-	events::command_disabler command_disabler;
+	const events::command_disabler command_disabler;
 	config parsed_cfg = cfg.get_parsed_config();
 
-	config::attribute_value to_variable = cfg["to_variable"];
+	const config::attribute_value to_variable = cfg["to_variable"];
 	if (!to_variable.blank())
 	{
 		parsed_cfg.remove_attribute("to_variable");
-		unit_ptr new_unit = unit::create(parsed_cfg, true, &cfg);
+		const unit_ptr new_unit = unit::create(parsed_cfg, true, &cfg);
 		try
 		{
 			config &var = resources::gamedata->get_variable_cfg(to_variable);
@@ -870,8 +868,7 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 
 	}
 
-	int side = parsed_cfg["side"].to_int(1);
-
+	const int side = parsed_cfg["side"].to_int(1);
 
 	if ((side<1)||(side > static_cast<int>(resources::gameboard->teams().size()))) {
 		ERR_NG << "wrong side in [unit] tag - no such side: "<<side<<" ( number of teams :"<<resources::gameboard->teams().size()<<")";

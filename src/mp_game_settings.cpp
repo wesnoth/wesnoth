@@ -190,7 +190,7 @@ void mp_game_settings::update_addon_requirements(const config & cfg) {
 		new_data.min_version = new_data.version;
 	}
 
-	std::map<std::string, addon_version_info>::iterator it = addons.find(cfg["id"].str());
+	const std::map<std::string, addon_version_info>::iterator it = addons.find(cfg["id"].str());
 	// Check if this add-on already has an entry as a dependency for this scenario. If so, try to reconcile their version info,
 	// by taking the larger of the min versions. The version should be the same for all WML from the same add-on...
 	if (it != addons.end()) {

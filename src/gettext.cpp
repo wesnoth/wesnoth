@@ -59,7 +59,7 @@ namespace
 			try
 			{
 				//NOTE: the default_locale objects needs to live as least as long as the locale_info object. Otherwise the program will segfault.
-				std::locale default_locale = bl::generator().generate("");
+				const std::locale default_locale = bl::generator().generate("");
 				const bl::info& locale_info = std::use_facet<bl::info>(default_locale);
 				name_ += locale_info.language();
 				if(!locale_info.country().empty())
@@ -277,7 +277,7 @@ namespace
 
 		void set_language(const std::string& language)
 		{
-			std::string::size_type at_pos = language.rfind('@');
+			const std::string::size_type at_pos = language.rfind('@');
 			if(language.empty())
 			{
 				current_language_ = default_utf8_locale_name::name();

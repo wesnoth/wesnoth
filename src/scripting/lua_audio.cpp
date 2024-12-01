@@ -140,7 +140,7 @@ static int impl_music_get(lua_State* L) {
 		config playlist;
 		sound::write_music_play_list(playlist);
 		const auto& range = playlist.child_range("music");
-		std::vector<config> tracks(range.begin(), range.end());
+		const std::vector<config> tracks(range.begin(), range.end());
 		lua_push(L, tracks);
 		return 1;
 	}
@@ -152,7 +152,7 @@ static int impl_music_get(lua_State* L) {
 
 static int impl_music_set(lua_State* L) {
 	if(lua_isnumber(L, 2)) {
-		unsigned int i = lua_tointeger(L, 2) - 1;
+		const unsigned int i = lua_tointeger(L, 2) - 1;
 		config cfg;
 		if(lua_isnil(L, 3)) {
 			if(i < sound::get_num_tracks()) {
@@ -201,7 +201,7 @@ static int intf_music_play(lua_State* L) {
 }
 
 static int intf_music_next(lua_State*) {
-	std::size_t n = sound::get_num_tracks();
+	const std::size_t n = sound::get_num_tracks();
 	if(n > 0) {
 		sound::play_track(n);
 	}
@@ -255,7 +255,7 @@ static int intf_music_remove(lua_State* L) {
 	for(int i = 1; i <= lua_gettop(L); i++) {
 		to_remove.insert(luaL_checkinteger(L, i));
 	}
-	for(int i : to_remove) {
+	for(const int i : to_remove) {
 		sound::remove_track(i);
 	}
 	return 0;
@@ -343,7 +343,7 @@ static int impl_sndsrc_get(lua_State* L) {
 	if(!resources::soundsources) {
 		return 0;
 	}
-	std::string id = luaL_checkstring(L, 2);
+	const std::string id = luaL_checkstring(L, 2);
 	if(!resources::soundsources->contains(id)) {
 		return 0;
 	}
@@ -360,13 +360,13 @@ static int impl_sndsrc_set(lua_State* L) {
 	if(!resources::soundsources) {
 		return 0;
 	}
-	std::string id = luaL_checkstring(L, 2);
+	const std::string id = luaL_checkstring(L, 2);
 	config cfg;
 	if(lua_isnil(L, 3)) {
 		resources::soundsources->remove(id);
 	} else if(luaW_toconfig(L, 3, cfg)) {
 		cfg["id"] = id;
-		soundsource::sourcespec spec(cfg);
+		const soundsource::sourcespec spec(cfg);
 		resources::soundsources->add(spec);
 		resources::soundsources->update();
 	} else {
@@ -477,9 +477,9 @@ static int impl_source_eq(lua_State* L) {
  */
 static int impl_audio_get(lua_State* L)
 {
-	std::string m = luaL_checkstring(L, 2);
+	const std::string m = luaL_checkstring(L, 2);
 	if(m != "volume") return 0;
-	int vol = prefs::get().sound_volume();
+	const int vol = prefs::get().sound_volume();
 	lua_pushnumber(L, sound::get_sound_volume() * 100.0 / vol);
 	return 1;
 }
@@ -490,13 +490,13 @@ static int impl_audio_get(lua_State* L)
  */
 static int impl_audio_set(lua_State* L)
 {
-	std::string m = luaL_checkstring(L, 2);
+	const std::string m = luaL_checkstring(L, 2);
 	if(m != "volume") {
 		lua_rawset(L, 1);
 		return 0;
 	}
 	int vol = prefs::get().sound_volume();
-	float rel = lua_tonumber(L, 3);
+	const float rel = lua_tonumber(L, 3);
 	if(rel < 0.0f || rel > 100.0f) {
 		return luaL_argerror(L, 1, "volume must be in range 0..100");
 	}

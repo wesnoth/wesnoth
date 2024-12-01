@@ -59,8 +59,8 @@ point spacer::calculate_best_size() const
 {
 	const wfl::map_formula_callable& size = get_screen_size_variables();
 
-	unsigned width = width_(size);
-	unsigned height = height_(size);
+	const unsigned width = width_(size);
+	const unsigned height = height_(size);
 
 	point best_size;
 

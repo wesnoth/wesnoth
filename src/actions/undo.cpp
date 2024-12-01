@@ -153,7 +153,7 @@ void undo_list::clear()
 bool undo_list::commit_vision()
 {
 	// Update fog/shroud.
-	bool cleared_something = apply_shroud_changes();
+	const bool cleared_something = apply_shroud_changes();
 
 	if (cleared_something) {
 		// The actions that led to information being revealed can no longer

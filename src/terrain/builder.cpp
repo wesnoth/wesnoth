@@ -60,7 +60,7 @@ static map_location legacy_negation(const map_location& me)
 
 static map_location& legacy_sum_assign(map_location& me, const map_location& a)
 {
-	bool parity = (me.x & 1) != 0;
+	const bool parity = (me.x & 1) != 0;
 	me.x += a.x;
 	me.y += a.y;
 	if((a.x > 0) && (a.x % 2) && parity)
@@ -102,8 +102,8 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 	}
 
 	for(const rule_image_rand& ri : images) {
-		bool is_background = ri->is_background();
-		bool animate = (!ri.ri->is_water || prefs::get().animate_water());
+		const bool is_background = ri->is_background();
+		const bool animate = (!ri.ri->is_water || prefs::get().animate_water());
 
 		imagelist& img_list = is_background ? images_background : images_foreground;
 
@@ -128,7 +128,7 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 
 			// need to break parity pattern in RNG
 			/** @todo improve this */
-			unsigned int rnd = ri.rand / 7919; // just the 1000th prime
+			const unsigned int rnd = ri.rand / 7919; // just the 1000th prime
 			const animated<image::locator>& anim = variant.images[rnd % variant.images.size()];
 
 			bool is_empty = true;
@@ -177,10 +177,10 @@ void terrain_builder::tile::clear()
 
 static unsigned int get_noise(const map_location& loc, unsigned int index)
 {
-	unsigned int a = (loc.x + 92872973) ^ 918273;
-	unsigned int b = (loc.y + 1672517) ^ 128123;
-	unsigned int c = (index + 127390) ^ 13923787;
-	unsigned int abc = a * b * c + a * b + b * c + a * c + a + b + c;
+	const unsigned int a = (loc.x + 92872973) ^ 918273;
+	const unsigned int b = (loc.y + 1672517) ^ 128123;
+	const unsigned int c = (index + 127390) ^ 13923787;
+	const unsigned int abc = a * b * c + a * b + b * c + a * c + a + b + c;
 	return abc * abc;
 }
 
@@ -383,7 +383,7 @@ void terrain_builder::rebuild_all()
 
 static bool image_exists(const std::string& name)
 {
-	bool precached = name.find("..") == std::string::npos;
+	const bool precached = name.find("..") == std::string::npos;
 
 	if(precached && image::precached_file_exists(name)) {
 		return true;
@@ -407,7 +407,7 @@ static std::vector<std::string> get_variations(const std::string& base, const st
 		res.push_back(base);
 		return res;
 	}
-	std::vector<std::string> vars = utils::split(variations, ';', 0);
+	const std::vector<std::string> vars = utils::split(variations, ';', 0);
 
 	for(const std::string& v : vars) {
 		res.push_back(base);
@@ -431,10 +431,10 @@ bool terrain_builder::load_images(building_rule& rule)
 	for(terrain_constraint& constraint : rule.constraints) {
 		for(rule_image& ri : constraint.images) {
 			for(rule_image_variant& variant : ri.variants) {
-				std::vector<std::string> var_strings = get_variations(variant.image_string, variant.variations);
+				const std::vector<std::string> var_strings = get_variations(variant.image_string, variant.variations);
 				for(const std::string& var : var_strings) {
 					/** @todo improve this, 99% of terrains are not animated. */
-					std::vector<std::string> frames = utils::square_parenthetical_split(var, ',');
+					const std::vector<std::string> frames = utils::square_parenthetical_split(var, ',');
 					animated<image::locator> res;
 
 					for(const std::string& frame : frames) {
@@ -442,7 +442,7 @@ bool terrain_builder::load_images(building_rule& rule)
 						const std::string& str = items.front();
 
 						const std::size_t tilde = str.find('~');
-						bool has_tilde = tilde != std::string::npos;
+						const bool has_tilde = tilde != std::string::npos;
 						const std::string filename = "terrain/" + (has_tilde ? str.substr(0, tilde) : str);
 
 						if(!image_exists(filename)) {
@@ -537,11 +537,11 @@ void terrain_builder::rotate(terrain_constraint& ret, int angle)
 	angle %= 6;
 
 	// Vector i is going from n to s, vector j is going from ne to sw.
-	int vi = ret.loc.y - ret.loc.x / 2;
-	int vj = ret.loc.x;
+	const int vi = ret.loc.y - ret.loc.x / 2;
+	const int vj = ret.loc.x;
 
-	int ri = rotations[angle].ii * vi + rotations[angle].ij * vj;
-	int rj = rotations[angle].ji * vi + rotations[angle].jj * vj;
+	const int ri = rotations[angle].ii * vi + rotations[angle].ij * vj;
+	const int rj = rotations[angle].ji * vi + rotations[angle].jj * vj;
 
 	ret.loc.x = rj;
 	ret.loc.y = ri + (rj >= 0 ? rj / 2 : (rj - 1) / 2);
@@ -681,7 +681,7 @@ terrain_builder::rule_image_variant::rule_image_variant(const std::string& image
 void terrain_builder::add_images_from_config(rule_imagelist& images, const config& cfg, bool global, int dx, int dy)
 {
 	for(const config& img : cfg.child_range("image")) {
-		int layer = img["layer"].to_int();
+		const int layer = img["layer"].to_int();
 
 		int basex = tilewidth_ / 2 + dx, basey = tilewidth_ / 2 + dy;
 		if(const config::attribute_value* base_ = img.get("base")) {
@@ -709,7 +709,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 			}
 		}
 
-		bool is_water = img["is_water"].to_bool();
+		const bool is_water = img["is_water"].to_bool();
 
 		images.AGGREGATE_EMPLACE(layer, basex - dx, basey - dy, global, center_x, center_y, is_water);
 
@@ -721,7 +721,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 			const std::string& has_flag = variant["has_flag"];
 
 			// If an integer is given then assign that, but if a bool is given, then assign -1 if true and 0 if false
-			int random_start = variant["random_start"].to_bool(true) ? variant["random_start"].to_int(-1) : 0;
+			const int random_start = variant["random_start"].to_bool(true) ? variant["random_start"].to_int(-1) : 0;
 
 			images.back().variants.emplace_back(name, variations, tod, has_flag, std::chrono::milliseconds{random_start});
 		}
@@ -731,7 +731,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		const std::string& name = img["name"];
 		const std::string& variations = img["variations"];
 
-		int random_start = img["random_start"].to_bool(true) ? img["random_start"].to_int(-1) : 0;
+		const int random_start = img["random_start"].to_bool(true) ? img["random_start"].to_int(-1) : 0;
 
 		images.back().variants.emplace_back(name, variations, std::chrono::milliseconds{random_start});
 	}
@@ -760,8 +760,8 @@ terrain_builder::terrain_constraint& terrain_builder::add_constraints(terrain_bu
 		cons->terrain_types_match = type;
 	}
 
-	int x = loc.x * tilewidth_ * 3 / 4;
-	int y = loc.y * tilewidth_ + (loc.x % 2) * tilewidth_ / 2;
+	const int x = loc.x * tilewidth_ * 3 / 4;
+	const int y = loc.y * tilewidth_ + (loc.x % 2) * tilewidth_ / 2;
 	add_images_from_config(cons->images, global_images, true, x, y);
 
 	return *cons;
@@ -918,7 +918,7 @@ void terrain_builder::parse_config(const game_config_view& cfg, bool local)
 				add_constraints(pbr.constraints, loc, tc, br);
 			}
 			if(const config::attribute_value* v = tc.get("pos")) {
-				int pos = v->to_int();
+				const int pos = v->to_int();
 				if(anchors.find(pos) == anchors.end()) {
 					WRN_NG << "Invalid anchor!";
 					continue;
@@ -1031,7 +1031,7 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule& rule,
 	}
 
 	if(rule.probability != 100) {
-		unsigned int random = get_noise(loc, rule.get_hash()) % 100;
+		const unsigned int random = get_noise(loc, rule.get_hash()) % 100;
 		if(random > static_cast<unsigned int>(rule.probability)) {
 			return false;
 		}
@@ -1073,7 +1073,7 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule& rule,
 
 void terrain_builder::apply_rule(const terrain_builder::building_rule& rule, const map_location& loc)
 {
-	unsigned int rand_seed = get_noise(loc, rule.get_hash());
+	const unsigned int rand_seed = get_noise(loc, rule.get_hash());
 
 	for(const terrain_constraint& constraint : rule.constraints) {
 		const map_location tloc = legacy_sum(loc, constraint.loc);

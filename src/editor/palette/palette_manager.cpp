@@ -56,7 +56,7 @@ void palette_manager::adjust_size()
 
 void palette_manager::scroll_down()
 {
-	bool scrolled = active_palette().scroll_down();
+	const bool scrolled = active_palette().scroll_down();
 
 	if (scrolled) {
 		set_dirty();
@@ -75,7 +75,7 @@ bool palette_manager::can_scroll_down()
 
 void palette_manager::scroll_up()
 {
-	bool scrolled_up = active_palette().scroll_up();
+	const bool scrolled_up = active_palette().scroll_up();
 
 	if(scrolled_up) {
 		set_dirty();
@@ -99,13 +99,13 @@ void palette_manager::layout()
 		return;
 	}
 
-	std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
+	const std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
 	if (upscroll_button)
 		upscroll_button->hide(false);
-	std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
+	const std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
 	if (downscroll_button)
 		downscroll_button->hide(false);
-	std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
+	const std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 	if (palette_menu_button)
 		palette_menu_button->hide(false);
 

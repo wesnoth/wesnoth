@@ -34,18 +34,18 @@ BOOST_AUTO_TEST_CASE( validate_mt19937 )
 		// silence C4834 warning in MSVC
 		static_cast<void>(rng());
 	}
-	unsigned long val = rng();
+	const unsigned long val = rng();
 	BOOST_CHECK_EQUAL( val , 4123659995U );
 }
 
 /* this test checks the soundness of mt_rng string manipulations */
 BOOST_AUTO_TEST_CASE( test_mt_rng_seed_manip )
 {
-	uint32_t seed = 42;
+	const uint32_t seed = 42;
 	std::stringstream stream;
 	stream << std::setfill('0') << std::setw(sizeof(uint32_t)*2) << std::hex << seed;
 
-	std::string seed_str = stream.str();
+	const std::string seed_str = stream.str();
 
 	randomness::mt_rng rng;
 	rng.seed_random(seed_str);
@@ -53,23 +53,22 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_seed_manip )
 	BOOST_CHECK (rng.get_random_seed() == seed);
 	BOOST_CHECK (rng.get_random_seed_str() == seed_str);
 
-	std::string seed_str2 = rng.get_random_seed_str();
+	const std::string seed_str2 = rng.get_random_seed_str();
 	rng.seed_random(seed_str2);
 
 	BOOST_CHECK (rng.get_random_seed() == seed);
 	BOOST_CHECK (rng.get_random_seed_str() == seed_str);
 
-
-	uint32_t seed3 = 1123581321; //try the same with a different number
+	const uint32_t seed3 = 1123581321; // try the same with a different number
 	std::stringstream stream2;
 	stream2 << std::setfill('0') << std::setw(sizeof(uint32_t)*2) << std::hex << seed3;
-	std::string seed_str3 = stream2.str();
+	const std::string seed_str3 = stream2.str();
 
 	rng.seed_random(seed_str3);
 	BOOST_CHECK (rng.get_random_seed() == seed3);
 	BOOST_CHECK (rng.get_random_seed_str() == seed_str3);
 
-	std::string seed_str4 = rng.get_random_seed_str();
+	const std::string seed_str4 = rng.get_random_seed_str();
 	rng.seed_random(seed_str4);
 
 	BOOST_CHECK (rng.get_random_seed() == seed3);
@@ -84,10 +83,10 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_seed_manip )
 
 BOOST_AUTO_TEST_CASE( test_mt_rng_config_seed_manip )
 {
-	uint32_t seed = 42;
+	const uint32_t seed = 42;
 	std::stringstream stream;
 	stream << std::setfill('0') << std::setw(sizeof(uint32_t)*2) << std::hex << seed;
-	std::string seed_str = stream.str();
+	const std::string seed_str = stream.str();
 
 	config cfg;
 	cfg["random_seed"] = seed_str;
@@ -98,17 +97,16 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_config_seed_manip )
 	BOOST_CHECK (rng.get_random_seed() == seed);
 	BOOST_CHECK (rng.get_random_seed_str() == seed_str);
 
-	std::string seed_str2 = rng.get_random_seed_str();
+	const std::string seed_str2 = rng.get_random_seed_str();
 	rng.seed_random(seed_str2);
 
 	BOOST_CHECK (rng.get_random_seed() == seed);
 	BOOST_CHECK (rng.get_random_seed_str() == seed_str);
 
-
-	uint32_t seed3 = 1123581321; //try the same with a different number
+	const uint32_t seed3 = 1123581321; // try the same with a different number
 	std::stringstream stream2;
 	stream2 << std::setfill('0') << std::setw(sizeof(uint32_t)*2) << std::hex << seed3;
-	std::string seed_str3 = stream2.str();
+	const std::string seed_str3 = stream2.str();
 
 	config cfg2;
 	cfg2["random_seed"] = seed_str3;
@@ -119,7 +117,7 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_config_seed_manip )
 	BOOST_CHECK (rng2.get_random_seed() == seed3);
 	BOOST_CHECK (rng2.get_random_seed_str() == seed_str3);
 
-	std::string seed_str4 = rng2.get_random_seed_str();
+	const std::string seed_str4 = rng2.get_random_seed_str();
 	rng2.seed_random(seed_str4);
 
 	BOOST_CHECK (rng2.get_random_seed() == seed3);
@@ -212,8 +210,8 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility5 )
 
 	randomness::mt_rng rng2(cfg2);
 
-	uint32_t result1 = rng.get_next_random();
-	uint32_t result2 = rng2.get_next_random();
+	const uint32_t result1 = rng.get_next_random();
+	const uint32_t result2 = rng2.get_next_random();
 
 	BOOST_CHECK (rng == rng2);
 	BOOST_CHECK (rng.get_random_seed_str() == rng2.get_random_seed_str());
@@ -224,10 +222,10 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility5 )
 	cfg_save["random_seed"] = rng.get_random_seed_str();
 	cfg_save["random_calls"] = rng.get_random_calls();
 
-	uint32_t result3 = rng.get_next_random();
+	const uint32_t result3 = rng.get_next_random();
 
 	randomness::mt_rng rng3(cfg_save);
-	uint32_t result4 = rng3.get_next_random();
+	const uint32_t result4 = rng3.get_next_random();
 
 	BOOST_CHECK (rng == rng3);
 	BOOST_CHECK (rng.get_random_seed_str() == rng3.get_random_seed_str());
@@ -313,7 +311,7 @@ BOOST_AUTO_TEST_CASE( validate_get_random_int )
 
 	auto gen_ = std::make_shared<randomness::rng_deterministic>(mt_);
 
-	int val = gen_->get_random_int(0, validation_get_random_int_max);
+	const int val = gen_->get_random_int(0, validation_get_random_int_max);
 	BOOST_CHECK_EQUAL ( val , validation_get_random_int_correct_answer );
 }
 
@@ -325,7 +323,7 @@ BOOST_AUTO_TEST_CASE( validate_get_random_int2 )
 		gen_->next_random();
 	}
 
-	int val = gen_->get_random_int(0,validation_get_random_int_max);
+	const int val = gen_->get_random_int(0, validation_get_random_int_max);
 	BOOST_CHECK_EQUAL ( val , validation_get_random_int_correct_answer );
 }
 

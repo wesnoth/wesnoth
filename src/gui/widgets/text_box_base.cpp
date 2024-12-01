@@ -161,7 +161,7 @@ void text_box_base::insert_char(const std::string& unicode)
 
 	if(text_.insert_text(selection_start_, unicode, get_use_markup())) {
 		// Update status
-		size_t plain_text_len = utf8::size(plain_text());
+		const size_t plain_text_len = utf8::size(plain_text());
 		size_t cursor_pos = selection_start_ + utf8::size(unicode);
 		if (get_use_markup() && (selection_start_ + utf8::size(unicode) > plain_text_len + 1)) {
 			cursor_pos = plain_text_len;
@@ -178,8 +178,8 @@ size_t text_box_base::get_composition_length() const
 		return 0;
 	}
 
-	size_t text_length = utf8::size(text_.text());
-	size_t text_cached_length = utf8::size(text_cached_);
+	const size_t text_length = utf8::size(text_.text());
+	const size_t text_cached_length = utf8::size(text_cached_);
 	if(text_length < text_cached_length) {
 		return 0;
 	}
@@ -309,7 +309,7 @@ void text_box_base::toggle_cursor_timer(bool enable)
 
 void text_box_base::cursor_timer_callback()
 {
-	unsigned was_alpha = cursor_alpha_;
+	const unsigned was_alpha = cursor_alpha_;
 	switch(state_) {
 		case DISABLED:
 			cursor_alpha_ = 0;
@@ -461,7 +461,7 @@ void text_box_base::handle_editing(bool& handled, const std::string& unicode, in
 {
 	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;
-		std::size_t new_len = utf8::size(unicode);
+		const std::size_t new_len = utf8::size(unicode);
 		if(!is_composing()) {
 			ime_composing_ = true;
 			delete_selection();
@@ -494,7 +494,7 @@ void text_box_base::handle_editing(bool& handled, const std::string& unicode, in
 		text_.set_text(new_text, get_use_markup());
 
 #endif
-		int maximum_length = text_.get_length();
+		const int maximum_length = text_.get_length();
 
 		// Update status
 		set_cursor(std::min(maximum_length, ime_start_point_ + start), false);

@@ -51,17 +51,17 @@ void terrain_type_data::lazy_initialization() const
 			if(terrain == curr) {
 				LOG_G << "Merging terrain " << terrain.number()
 					<< ": " << terrain.id() << " (" << terrain.name() << ")";
-				std::vector<std::string> eg1 = utils::split(curr.editor_group());
-				std::vector<std::string> eg2 = utils::split(terrain.editor_group());
+				const std::vector<std::string> eg1 = utils::split(curr.editor_group());
+				const std::vector<std::string> eg2 = utils::split(terrain.editor_group());
 				std::set<std::string> egs;
 				bool clean_merge = true;
-				for (std::string& t : eg1) {
+				for(const std::string& t : eg1) {
 					clean_merge &= egs.insert(t).second;
 				}
-				for (std::string& t : eg2) {
+				for(const std::string& t : eg2) {
 					clean_merge &= egs.insert(t).second;
 				}
-				std::string joined = utils::join(egs);
+				const std::string joined = utils::join(egs);
 
 				if(clean_merge) {
 					LOG_G << "Editor groups merged to: " << joined;

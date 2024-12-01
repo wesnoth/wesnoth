@@ -57,7 +57,7 @@ bool synced_context::run(const std::string& commandname, const config& data, act
 	if(!p_handler) {
 		spectator.error("commandname [" + commandname + "] not found");
 	} else {
-		bool success = p_handler->second(data, spectator);
+		const bool success = p_handler->second(data, spectator);
 		if(!success) {
 			return false;
 		}
@@ -87,7 +87,7 @@ bool synced_context::run_and_store(const std::string& commandname, const config&
 
 	assert(resources::recorder->at_end());
 	resources::recorder->add_synced_command(commandname, data);
-	bool success = run(commandname, data, spectator);
+	const bool success = run(commandname, data, spectator);
 	if(!success) {
 		resources::recorder->undo();
 	} else {
@@ -98,7 +98,7 @@ bool synced_context::run_and_store(const std::string& commandname, const config&
 
 bool synced_context::run_and_throw(const std::string& commandname, const config& data, action_spectator& spectator)
 {
-	bool success = run_and_store(commandname, data, spectator);
+	const bool success = run_and_store(commandname, data, spectator);
 	if(success) {
 		resources::controller->maybe_throw_return_to_play_side();
 	}
@@ -120,7 +120,7 @@ bool synced_context::run_in_synced_context_if_not_already(
 		// simultaneously so it could result in invoking different synced commands simultaneously.
 		return false;
 	case(synced_context::SYNCED): {
-		synced_command::map::iterator it = synced_command::registry().find(commandname);
+		const synced_command::map::iterator it = synced_command::registry().find(commandname);
 		if(it == synced_command::registry().end()) {
 			spectator.error("commandname [" + commandname + "] not found");
 			return false;
@@ -176,7 +176,7 @@ public:
 std::string synced_context::generate_random_seed()
 {
 	config retv_c = synced_context::ask_server_choice(random_server_choice());
-	config::attribute_value seed_val = retv_c["new_seed"];
+	const config::attribute_value seed_val = retv_c["new_seed"];
 
 	return seed_val.str();
 }
@@ -277,12 +277,12 @@ config synced_context::ask_server_choice(const server_choice& sch)
 	// There might be speak or similar commands in the replay before the user input.
 	while(true) {
 		do_replay_handle();
-		bool is_replay_end = resources::recorder->at_end();
+		const bool is_replay_end = resources::recorder->at_end();
 
 		if(is_replay_end && !is_mp_game) {
 			// The decision is ours, and it will be inserted into the replay.
 			DBG_REPLAY << "MP synchronization: local server choice";
-			leave_synced_context sync;
+			const leave_synced_context sync;
 			config cfg = sch.local_choice();
 			cfg["request_id"] = sch.request_id();
 			//-1 for "server" todo: change that.

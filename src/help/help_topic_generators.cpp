@@ -60,8 +60,8 @@ struct terrain_movement_info
 };
 
 static std::string best_str(bool best) {
-	std::string lang_policy = (best ? _("Best of") : _("Worst of"));
-	std::string color_policy = (best ? "green": "red");
+	const std::string lang_policy = (best ? _("Best of") : _("Worst of"));
+	const std::string color_policy = (best ? "green" : "red");
 
 	return markup::span_color(color_policy, lang_policy);
 }
@@ -71,7 +71,7 @@ static std::string format_mp_entry(const int cost, const int max_cost) {
 	const bool cannot = cost < max_cost;
 
 	// passing true to select the less saturated red-to-green scale
-	color_t color = game_config::red_to_green(100.0 - 25.0 * max_cost, true);
+	const color_t color = game_config::red_to_green(100.0 - 25.0 * max_cost, true);
 
 	// A 5 point margin; if the costs go above
 	// the unit's mp cost + 5, we replace it with dashes.
@@ -182,7 +182,7 @@ std::string terrain_topic_generator::operator()() const {
 		ss << "\n";
 	}
 
-	std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data();
+	const std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data();
 
 	if (!tdata) {
 		WRN_HP << "When building terrain help topics, we couldn't acquire any terrain types data";
@@ -377,8 +377,7 @@ std::string unit_topic_generator::operator()() const {
 	bool reverse = first_reverse_value;
 	if (variation_.empty()) {
 		do {
-			std::vector<std::string> adv_units =
-				reverse ? type_.advances_from() : type_.advances_to();
+			const std::vector<std::string> adv_units = reverse ? type_.advances_from() : type_.advances_to();
 			bool first = true;
 
 			for (const std::string &adv : adv_units) {
@@ -474,7 +473,7 @@ std::string unit_topic_generator::operator()() const {
 
 	// Print the possible traits of the unit, cross-reference them
 	// to their respective topics.
-	if (config::const_child_itors traits = type_.possible_traits()) {
+	if(const config::const_child_itors traits = type_.possible_traits()) {
 		std::vector<trait_data> must_have_traits;
 		std::vector<trait_data> random_traits;
 		int must_have_nameless_traits = 0;
@@ -492,7 +491,7 @@ std::string unit_topic_generator::operator()() const {
 			else
 				continue; // Hidden trait
 
-			std::string lang_trait_name = translation::gettext(trait_name.c_str());
+			const std::string lang_trait_name = translation::gettext(trait_name.c_str());
 			if (lang_trait_name.empty() && trait["availability"].str() == "musthave") {
 				++must_have_nameless_traits;
 				continue;
@@ -501,11 +500,11 @@ std::string unit_topic_generator::operator()() const {
 			((trait["availability"].str() == "musthave") ? must_have_traits : random_traits).emplace_back(lang_trait_name, ref_id);
 		}
 
-		bool line1 = !must_have_traits.empty();
-		bool line2 = !random_traits.empty() && type_.num_traits() > must_have_traits.size();
+		const bool line1 = !must_have_traits.empty();
+		const bool line2 = !random_traits.empty() && type_.num_traits() > must_have_traits.size();
 
 		if (line1) {
-			std::string traits_label = _("Traits");
+			const std::string traits_label = _("Traits");
 			ss << traits_label;
 			if (line2) {
 				std::stringstream must_have_count;
@@ -550,7 +549,7 @@ std::string unit_topic_generator::operator()() const {
 				start = false;
 			}
 
-			std::string lang_ability = translation::gettext(iter->name.c_str());
+			const std::string lang_ability = translation::gettext(iter->name.c_str());
 			ss << markup::make_link(lang_ability, ref_id);
 		}
 
@@ -576,7 +575,7 @@ std::string unit_topic_generator::operator()() const {
 				start = false;
 			}
 
-			std::string lang_ability = translation::gettext(iter->name.c_str());
+			const std::string lang_ability = translation::gettext(iter->name.c_str());
 			ss << markup::make_link(lang_ability, ref_id);
 		}
 
@@ -654,8 +653,8 @@ std::string unit_topic_generator::operator()() const {
 		for(const attack_type& attack : type_.attacks()) {
 			std::stringstream attack_ss;
 
-			std::string lang_weapon = attack.name();
-			std::string lang_type = string_table["type_" + attack.type()];
+			const std::string lang_weapon = attack.name();
+			const std::string lang_type = string_table["type_" + attack.type()];
 
 			// Attack icon
 			attack_ss << markup::tag("col", markup::img(attack.icon()));
@@ -715,7 +714,7 @@ std::string unit_topic_generator::operator()() const {
 	// with resistance, defense, movement, jamming and vision data
 	// updated according to any 'musthave' traits which always apply.
 	movetype movement_type = type_.movement_type();
-	config::const_child_itors traits = type_.possible_traits();
+	const config::const_child_itors traits = type_.possible_traits();
 	if (!traits.empty() && type_.num_traits() > 0) {
 		for (const config & t : traits) {
 			if (t["availability"].str() == "musthave") {
@@ -743,8 +742,8 @@ std::string unit_topic_generator::operator()() const {
 		markup::tag("col", markup::bold(_("Attack Type"))),
 		markup::tag("col", markup::bold(_("Resistance"))));
 
-	utils::string_map_res dam_tab = movement_type.damage_table();
-	for(std::pair<std::string, std::string> dam_it : dam_tab) {
+	const utils::string_map_res dam_tab = movement_type.damage_table();
+	for(const std::pair<std::string, std::string> dam_it : dam_tab) {
 		int resistance = 100;
 		try {
 			resistance -= std::stoi(dam_it.second);
@@ -754,7 +753,7 @@ std::string unit_topic_generator::operator()() const {
 		if (pos != std::string::npos) {
 			resist.replace(pos, 1, font::unicode_minus);
 		}
-		std::string color = unit_helper::resistance_color(resistance);
+		const std::string color = unit_helper::resistance_color(resistance);
 		const std::string lang_type = string_table["type_" + dam_it.first];
 		const std::string type_icon = "icons/profiles/" + dam_it.first + ".png~SCALE_INTO(16,16)";
 		table_ss << markup::tag("row",
@@ -767,7 +766,7 @@ std::string unit_topic_generator::operator()() const {
 	// Terrain Modifiers table
 	//
 	std::stringstream().swap(table_ss);
-	if (std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data()) {
+	if(const std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data()) {
 		// Print the terrain modifier table of the unit.
 		ss << "\n" << markup::tag("header", _("Terrain Modifiers"));
 
@@ -783,7 +782,7 @@ std::string unit_topic_generator::operator()() const {
 
 		// Organize terrain movetype data
 		std::set<terrain_movement_info> terrain_moves;
-		for (t_translation::terrain_code terrain : prefs::get().encountered_terrains()) {
+		for(const t_translation::terrain_code terrain : prefs::get().encountered_terrains()) {
 			if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
 				continue;
 			}
@@ -795,16 +794,9 @@ std::string unit_topic_generator::operator()() const {
 			}
 
 			if (info.is_indivisible() && info.is_nonnull()) {
-				terrain_movement_info movement_info =
-				{
-					info.name(),
-					info.id(),
-					100 - movement_type.defense_modifier(terrain),
-					moves,
-					movement_type.vision_cost(terrain),
-					movement_type.jamming_cost(terrain),
-					movement_type.get_defense().capped(terrain)
-				};
+				const terrain_movement_info movement_info = {info.name(), info.id(),
+					100 - movement_type.defense_modifier(terrain), moves, movement_type.vision_cost(terrain),
+					movement_type.jamming_cost(terrain), movement_type.get_defense().capped(terrain)};
 
 				terrain_moves.insert(movement_info);
 			}
@@ -814,7 +806,7 @@ std::string unit_topic_generator::operator()() const {
 		for(const terrain_movement_info &m : terrain_moves)
 		{
 			std::stringstream().swap(row_ss);
-			bool high_res = false;
+			const bool high_res = false;
 			const std::string tc_base = high_res ? "images/buttons/icon-base-32.png" : "images/buttons/icon-base-16.png";
 			const std::string terrain_image = "icons/terrain/terrain_type_" + m.id + (high_res ? "_30.png" : ".png");
 			const std::string final_image = tc_base + "~RC(magenta>" + m.id + ")~BLIT(" + terrain_image + ")";
@@ -823,7 +815,7 @@ std::string unit_topic_generator::operator()() const {
 
 			// Defense  -  range: +10 % .. +70 %
 			// passing false to select the more saturated red-to-green scale
-			color_t def_color = game_config::red_to_green(m.defense, false);
+			const color_t def_color = game_config::red_to_green(m.defense, false);
 			row_ss << markup::tag("col", markup::span_color(def_color, m.defense, "%"));
 
 			// Movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable

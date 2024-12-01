@@ -25,20 +25,23 @@
 BOOST_AUTO_TEST_SUITE( recall_list_suite )
 
 BOOST_AUTO_TEST_CASE( test_1 ) {
-	config game_config(test_utils::get_test_config());
+	const config game_config(test_utils::get_test_config());
 
-	config orc_config {
-		"id",			"Orcish Grunt",
-		"random_traits", 	false,
-		"animate",		false,
+	const config orc_config{
+		"id",
+		"Orcish Grunt",
+		"random_traits",
+		false,
+		"animate",
+		false,
 	};
 
-	unit_type orc_type(orc_config);
+	const unit_type orc_type(orc_config);
 
 	unit_types.build_unit_type(orc_type, unit_type::FULL);
 
-	unit_ptr orc1 = unit::create(orc_type, 1, false);
-	unit_ptr orc2 = unit::create(orc_type, 1, false);
+	const unit_ptr orc1 = unit::create(orc_type, 1, false);
+	const unit_ptr orc2 = unit::create(orc_type, 1, false);
 
 	orc1->set_name("Larry");
 	orc2->set_name("Moe");

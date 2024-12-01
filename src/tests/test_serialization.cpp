@@ -487,14 +487,14 @@ BOOST_AUTO_TEST_CASE( utils_unicode_test )
 	std::string unicode = "ünicod€ check";
 	BOOST_CHECK( utf8::size(unicode) == 13 );
 
-	int euro = utf8::index(unicode,6);
+	const int euro = utf8::index(unicode, 6);
 	BOOST_CHECK( unicode.substr(euro,utf8::index(unicode,7)-euro) == "€" );
 
 	BOOST_CHECK( utf8::truncate(unicode,3) == "üni");
 
-	std::string apple_u8("apple");
-	std::u32string apple_u4 = unicode_cast<std::u32string>(apple_u8);
-	std::u16string apple_u16 = unicode_cast<std::u16string>(apple_u4);
+	const std::string apple_u8("apple");
+	const std::u32string apple_u4 = unicode_cast<std::u32string>(apple_u8);
+	const std::u16string apple_u16 = unicode_cast<std::u16string>(apple_u4);
 
 	BOOST_CHECK( apple_u4.size() == 5 );
 	BOOST_CHECK_EQUAL( apple_u8, unicode_cast<std::string>(apple_u4) );
@@ -505,7 +505,7 @@ BOOST_AUTO_TEST_CASE( utils_unicode_test )
 
 	std::u32string water_u4;
 	water_u4.push_back(0x6C34);
-	std::string water_u8 = unicode_cast<std::string>(water_u4);
+	const std::string water_u8 = unicode_cast<std::string>(water_u4);
 
 #if defined(_WIN32) || defined(_WIN64)
 	// Windows complains it can't be represented in the currentl code-page.
@@ -519,10 +519,10 @@ BOOST_AUTO_TEST_CASE( utils_unicode_test )
 	// Same as above.
 	std::string nonbmp_u8("\xF0\x90\x80\x80");
 #else
-	std::string nonbmp_u8("\U00010000");
+	const std::string nonbmp_u8("\U00010000");
 #endif
-	std::u32string nonbmp_u4 = unicode_cast<std::u32string>(nonbmp_u8);
-	std::u16string nonbmp_u16 = unicode_cast<std::u16string>(nonbmp_u4);
+	const std::u32string nonbmp_u4 = unicode_cast<std::u32string>(nonbmp_u8);
+	const std::u16string nonbmp_u16 = unicode_cast<std::u16string>(nonbmp_u4);
 
 	BOOST_CHECK_EQUAL(nonbmp_u8.size(), 4u);
 	BOOST_CHECK_EQUAL(nonbmp_u8, unicode_cast<std::string>(nonbmp_u4));

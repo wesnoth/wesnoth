@@ -32,7 +32,7 @@ REGISTER_WINDOW(file_progress)
 
 const std::string& file_progress::window_id() const
 {
-	static std::string wid = "file_progress";
+	static const std::string wid = "file_progress";
 	return wid;
 }
 

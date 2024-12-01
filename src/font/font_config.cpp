@@ -119,7 +119,7 @@ const t_string& get_font_families(family_class fclass)
 
 manager::manager()
 {
-	std::string font_path = game_config::path + "/fonts";
+	const std::string font_path = game_config::path + "/fonts";
 	if (!FcConfigAppFontAddDir(FcConfigGetCurrent(),
 		reinterpret_cast<const FcChar8 *>(font_path.c_str())))
 	{
@@ -127,8 +127,8 @@ manager::manager()
 		throw font::error("font config lib failed to add the font path: '" + font_path + "'");
 	}
 
-	std::string font_file = font_path + "/fonts.conf";
-	std::string font_file_contents = filesystem::read_file(font_file);
+	const std::string font_file = font_path + "/fonts.conf";
+	const std::string font_file_contents = filesystem::read_file(font_file);
 
 // msys2 crosscompiling for windows for whatever reason makes the cache directory prefer using drives other than C:
 // ie - D:\a\msys64\var\cache\fontconfig

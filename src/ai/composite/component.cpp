@@ -60,7 +60,7 @@ static lg::log_domain log_ai_component("ai/component");
 
 component* component::get_child(const path_element &child)
 {
-	std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
+	const std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
 	if (i!=property_handlers_.end()) {
 		return i->second->handle_get(child);
 	}
@@ -69,7 +69,7 @@ component* component::get_child(const path_element &child)
 
 bool component::add_child(const path_element &child, const config &cfg)
 {
-	std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
+	const std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
 	if (i!=property_handlers_.end()) {
 		return i->second->handle_add(child,cfg);
 	}
@@ -78,7 +78,7 @@ bool component::add_child(const path_element &child, const config &cfg)
 
 bool component::change_child(const path_element &child, const config &cfg)
 {
-	std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
+	const std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
 	if (i!=property_handlers_.end()) {
 		return i->second->handle_change(child,cfg);
 	}
@@ -87,7 +87,7 @@ bool component::change_child(const path_element &child, const config &cfg)
 
 bool component::delete_child(const path_element &child)
 {
-	std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
+	const std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
 	if (i!=property_handlers_.end()) {
 		return i->second->handle_delete(child);
 	}
@@ -96,7 +96,7 @@ bool component::delete_child(const path_element &child)
 
 std::vector<component*> component::get_children(const std::string &type)
 {
-	property_handler_map::iterator i = property_handlers_.find(type);
+	const property_handler_map::iterator i = property_handlers_.find(type);
 	if (i!=property_handlers_.end()) {
 		return i->second->handle_get_children();
 	}
@@ -107,7 +107,7 @@ std::vector<component*> component::get_children(const std::string &type)
 std::vector<std::string> component::get_children_types()
 {
 	std::vector<std::string> types;
-	for (property_handler_map::value_type &ph : property_handlers_) {
+	for(const property_handler_map::value_type& ph : property_handlers_) {
 		types.push_back(ph.first);
 	}
 	return types;
@@ -125,10 +125,10 @@ static component *find_component(component *root, const std::string &path, path_
 	}
 
 	//match path elements in [modify_ai] tag
-	boost::regex re(R"(([^\.^\[]+)(\[(\d*)\]|\[([^\]]+)\]|()))");
+	const boost::regex re(R"(([^\.^\[]+)(\[(\d*)\]|\[([^\]]+)\]|()))");
 	const int sub_matches[] {1,3,4};
 	boost::sregex_token_iterator i(path.begin(), path.end(), re, sub_matches);
-	boost::sregex_token_iterator j;
+	const boost::sregex_token_iterator j;
 
 	component *c  = root;
 
@@ -137,7 +137,7 @@ static component *find_component(component *root, const std::string &path, path_
 	{
 		path_element pe;
 		pe.property = *i++;
-		std::string position = *i++;
+		const std::string position = *i++;
 		pe.id = *i++;
 		if (position.empty()) {
 			pe.position = -2;
@@ -155,7 +155,7 @@ static component *find_component(component *root, const std::string &path, path_
 		return nullptr;
 	}
 
-	std::vector< path_element >::iterator k_max = elements.end()-1;
+	const std::vector<path_element>::iterator k_max = elements.end() - 1;
 	for (std::vector< path_element >::iterator k = elements.begin(); k!=k_max; ++k) {
 		//not last
 		c = c->get_child(*k);
@@ -220,8 +220,8 @@ static void print_component(component *root, const std::string &type, std::strin
 
 	s << offset_str << type<<"["<<root->get_id() <<"] "<<root->get_engine()<<" "<<root->get_name()<< std::endl;
 
-	for (std::string t : t_list) {
-		std::vector<component*> c_list = root->get_children(t);
+	for(const std::string t : t_list) {
+		const std::vector<component*> c_list = root->get_children(t);
 		for (component *c : c_list) {
 			print_component(c,t,s,offset+1);
 		}
