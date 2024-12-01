@@ -162,7 +162,7 @@ field_integer* modal_dialog::register_integer(
 		const std::string& id,
 		const bool mandatory,
 		const std::function<int()>& callback_load_value,
-		const std::function<void(const int)>& callback_save_value)
+		const std::function<void(int)>& callback_save_value)
 {
 	field_integer* field = new field_integer(
 			id, mandatory, callback_load_value, callback_save_value);
