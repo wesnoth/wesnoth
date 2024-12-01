@@ -77,7 +77,7 @@ std::string cave_map_generator::create_map(utils::optional<uint32_t> randomseed)
 
 config cave_map_generator::create_scenario(utils::optional<uint32_t> randomseed)
 {
-	cave_map_generator_job job(*this, randomseed);
+	const cave_map_generator_job job(*this, randomseed);
 	return job.res_;
 }
 
@@ -101,7 +101,7 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 			"message", "Use the Lua cave generator instead, with scenario_generation=lua and create_scenario= (see wiki for details).",
 		},
 	});
-	uint32_t seed = randomseed ? *randomseed : seed_rng::next_seed();
+	const uint32_t seed = randomseed ? *randomseed : seed_rng::next_seed();
 	rng_.seed(seed);
 	LOG_NG << "creating random cave with seed: " << seed;
 	flipx_ = static_cast<int>(rng_() % 100) < params.flipx_chance_;
@@ -182,8 +182,8 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 		const std::size_t x = translate_x(min_xpos + (rng_()%(max_xpos-min_xpos)));
 		const std::size_t y = translate_y(min_ypos + (rng_()%(max_ypos-min_ypos)));
 
-		int chamber_size = ch["size"].to_int(3);
-		int jagged_edges = ch["jagged"].to_int();
+		const int chamber_size = ch["size"].to_int(3);
+		const int jagged_edges = ch["jagged"].to_int();
 
 		chamber new_chamber;
 		new_chamber.center = map_location(x,y);
@@ -238,7 +238,7 @@ void cave_map_generator::cave_map_generator_job::place_chamber(const chamber& c)
 		if (!child_cfg["same_location_as_previous"].to_bool()) {
 			index = rng_()%c.locs.size();
 		}
-		std::string loc_var = child_cfg["store_location_as"];
+		const std::string loc_var = child_cfg["store_location_as"];
 
 		std::set<map_location>::const_iterator loc = c.locs.begin();
 		std::advance(loc,index);
@@ -315,15 +315,15 @@ void cave_map_generator::cave_map_generator_job::place_passage(const passage& p)
 		return;
 	}
 
-	int windiness = p.cfg["windiness"].to_int();
-	double laziness = std::max<double>(1.0, p.cfg["laziness"].to_double());
+	const int windiness = p.cfg["windiness"].to_int();
+	const double laziness = std::max<double>(1.0, p.cfg["laziness"].to_double());
 
-	passage_path_calculator calc(map_, params.wall_, laziness, windiness, rng_);
+	const passage_path_calculator calc(map_, params.wall_, laziness, windiness, rng_);
 
 	pathfind::plain_route rt = a_star_search(p.src, p.dst, 10000.0, calc, params.width_, params.height_);
 
-	int width = std::max<int>(1, p.cfg["width"].to_int());
-	int jagged = p.cfg["jagged"].to_int();
+	const int width = std::max<int>(1, p.cfg["width"].to_int());
+	const int jagged = p.cfg["jagged"].to_int();
 
 	for(std::vector<map_location>::const_iterator i = rt.steps.begin(); i != rt.steps.end(); ++i) {
 		std::set<map_location> locs;
@@ -355,9 +355,7 @@ void cave_map_generator::cave_map_generator_job::place_castle(int starting_posit
 	if (starting_position != -1) {
 		set_terrain(loc, params.keep_);
 
-		t_translation::coordinate coord(
-				  loc.x + gamemap::default_border
-				, loc.y + gamemap::default_border);
+		const t_translation::coordinate coord(loc.x + gamemap::default_border, loc.y + gamemap::default_border);
 		starting_positions_.insert(t_translation::starting_positions::value_type(std::to_string(starting_position), coord));
 	}
 

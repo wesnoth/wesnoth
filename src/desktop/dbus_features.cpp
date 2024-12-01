@@ -94,7 +94,7 @@ DBusHandlerResult filter_dbus_signal(DBusConnection *, DBusMessage *buf, void *)
 		DBUS_TYPE_UINT32, &id,
 		DBUS_TYPE_INVALID);
 
-	std::size_t num_erased = notifications.get<by_id>().erase(id);
+	const std::size_t num_erased = notifications.get<by_id>().erase(id);
 	LOG_DU << "Erased " << num_erased << " notifications records matching id=" << id;
 
 	return DBUS_HANDLER_RESULT_HANDLED;
@@ -164,7 +164,7 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 			DBUS_TYPE_INVALID);
 	}
 
-	std::string app_icon_ = filesystem::normalize_path(game_config::path + "/" + game_config::images::app_icon);
+	const std::string app_icon_ = filesystem::normalize_path(game_config::path + "/" + game_config::images::app_icon);
 	if (!filesystem::file_exists(app_icon_)) {
 		ERR_DU << "Error: Could not find notification icon.";
 		ERR_DU << "raw path =\'" << game_config::path << "\' / \'" << game_config::images::app_icon << "\'";
@@ -221,11 +221,9 @@ T get_power_source_property(const std::string &name, T fallback)
 	DBusConnection *connection = get_dbus_system_bus();
 	if (!connection) return fallback;
 
-	std::unique_ptr<DBusMessage, std::function<void(DBusMessage*)>> msg(dbus_message_new_method_call(
-			"org.freedesktop.UPower",
-			"/org/freedesktop/UPower/devices/DisplayDevice",
-			"org.freedesktop.DBus.Properties",
-			"Get"),
+	const std::unique_ptr<DBusMessage, std::function<void(DBusMessage*)>> msg(
+		dbus_message_new_method_call("org.freedesktop.UPower", "/org/freedesktop/UPower/devices/DisplayDevice",
+			"org.freedesktop.DBus.Properties", "Get"),
 		dbus_message_unref);
 
 	const char *interface_name = "org.freedesktop.UPower.Device";
@@ -238,8 +236,8 @@ T get_power_source_property(const std::string &name, T fallback)
 	DBusError err;
 	dbus_error_init(&err);
 
-	std::unique_ptr<DBusMessage, std::function<void(DBusMessage*)>> ret(dbus_connection_send_with_reply_and_block(
-		connection, msg.get(), 1000, &err), dbus_message_unref);
+	const std::unique_ptr<DBusMessage, std::function<void(DBusMessage*)>> ret(
+		dbus_connection_send_with_reply_and_block(connection, msg.get(), 1000, &err), dbus_message_unref);
 	if (ret == nullptr) {
 		DBG_DU << "Failed to query power source properties: " << err.message;
 		dbus_error_free(&err);
@@ -270,7 +268,7 @@ void send_notification(const std::string & owner, const std::string & message, b
 
 	wnotify_by_owner & noticias = notifications.get<by_owner>();
 
-	wnotify_owner_it i = noticias.find(owner);
+	const wnotify_owner_it i = noticias.find(owner);
 
 	if (i != noticias.end()) {
 		if (with_history) {
@@ -292,10 +290,10 @@ void send_notification(const std::string & owner, const std::string & message, b
 		send_dbus_notification(connection, i->id, owner, i->message);
 		return;
 	} else {
-		uint32_t id = send_dbus_notification(connection, 0, owner, message);
+		const uint32_t id = send_dbus_notification(connection, 0, owner, message);
 		if (!id) return;
-		wnotify visual(id,owner,message);
-		std::pair<wnotify_owner_it, bool> result = noticias.insert(visual);
+		const wnotify visual(id, owner, message);
+		const std::pair<wnotify_owner_it, bool> result = noticias.insert(visual);
 		if (!result.second) {
 			ERR_DU << "Failed to insert a dbus notification message:";
 			ERR_DU << "New Item:\n" << "\tid=" << id << "\n\towner=" << owner << "\n\tmessage=" << message;

@@ -160,7 +160,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 	// See if there is already a label in this location for this team.
 	// (We do not use get_label_private() here because we might need
 	// the label_map as well as the terrain_label.)
-	team_label_map::iterator current_label_map = labels_.find(team_name);
+	const team_label_map::iterator current_label_map = labels_.find(team_name);
 	label_map::iterator current_label;
 
 	if(current_label_map != labels_.end() &&
@@ -399,11 +399,11 @@ void terrain_label::read(const config& cfg)
 	immutable_ = cfg["immutable"].to_bool(true);
 	category_ = cfg["category"].str();
 
-	int side = cfg["side"].to_int(-1);
+	const int side = cfg["side"].to_int(-1);
 	if(side >= 0) {
 		creator_ = side - 1;
 	} else if(cfg["side"].str() == "current") {
-		config::attribute_value current_side = vs.get_variable_const("side_number");
+		const config::attribute_value current_side = vs.get_variable_const("side_number");
 		if(!current_side.empty()) {
 			creator_ = current_side.to_int();
 		}
@@ -542,7 +542,7 @@ void terrain_label::recalculate()
 
 	// If a color is specified don't allow to override it with markup. (prevents faking map labels for example)
 	// FIXME: @todo Better detect if it's team label and not provided by the scenario.
-	bool use_markup = color_ == font::LABEL_COLOR;
+	const bool use_markup = color_ == font::LABEL_COLOR;
 
 	font::floating_label flabel(text_.str());
 	flabel.set_font_size(scale_to_map_zoom(font::SIZE_NORMAL));
@@ -573,8 +573,8 @@ bool terrain_label::hidden() const
 	}
 
 	// Respect user's label preferences
-	std::string category = "cat:" + category_;
-	std::string creator = "side:" + std::to_string(creator_ + 1);
+	const std::string category = "cat:" + category_;
+	const std::string creator = "side:" + std::to_string(creator_ + 1);
 	const std::vector<std::string>& hidden_categories = disp->context().hidden_label_categories();
 
 	if(std::find(hidden_categories.begin(), hidden_categories.end(), category) != hidden_categories.end()) {

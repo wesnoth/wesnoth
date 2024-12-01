@@ -185,7 +185,7 @@ void editor_action_paste::extend(const editor_map& map, const std::set<map_locat
 
 std::unique_ptr<editor_action> editor_action_paste::perform(map_context& mc) const
 {
-	map_fragment mf(mc.map(), paste_.get_offset_area(offset_));
+	const map_fragment mf(mc.map(), paste_.get_offset_area(offset_));
 	auto undo = std::make_unique<editor_action_paste>(mf);
 
 	perform_without_undo(mc);
@@ -203,7 +203,7 @@ IMPLEMENT_ACTION(paint_area)
 
 std::unique_ptr<editor_action> editor_action_paint_area::perform(map_context& mc) const
 {
-	map_fragment mf(mc.map(), area_);
+	const map_fragment mf(mc.map(), area_);
 	auto undo = std::make_unique<editor_action_paste>(mf);
 
 	perform_without_undo(mc);
@@ -220,7 +220,7 @@ IMPLEMENT_ACTION(fill)
 
 std::unique_ptr<editor_action> editor_action_fill::perform(map_context& mc) const
 {
-	std::set<map_location> to_fill = mc.map().get_contiguous_terrain_tiles(loc_);
+	const std::set<map_location> to_fill = mc.map().get_contiguous_terrain_tiles(loc_);
 	auto undo = std::make_unique<editor_action_paint_area>(to_fill, mc.map().get_terrain(loc_));
 
 	mc.draw_terrain(t_, to_fill, one_layer_);
@@ -231,7 +231,7 @@ std::unique_ptr<editor_action> editor_action_fill::perform(map_context& mc) cons
 
 void editor_action_fill::perform_without_undo(map_context& mc) const
 {
-	std::set<map_location> to_fill = mc.map().get_contiguous_terrain_tiles(loc_);
+	const std::set<map_location> to_fill = mc.map().get_contiguous_terrain_tiles(loc_);
 	mc.draw_terrain(t_, to_fill, one_layer_);
 	mc.set_needs_terrain_rebuild();
 }
@@ -243,7 +243,7 @@ std::unique_ptr<editor_action> editor_action_starting_position::perform(map_cont
 	std::unique_ptr<editor_action> undo;
 
 	const std::string* old_loc_id = mc.map().is_special_location(loc_);
-	map_location old_loc = mc.map().special_location(loc_id_);
+	const map_location old_loc = mc.map().special_location(loc_id_);
 
 	if(old_loc_id != nullptr) {
 		// If another player was starting at the location, we actually perform two actions, so the undo is an
@@ -309,7 +309,7 @@ IMPLEMENT_ACTION(shuffle_area)
 
 std::unique_ptr<editor_action> editor_action_shuffle_area::perform(map_context& mc) const
 {
-	map_fragment mf(mc.map(), area_);
+	const map_fragment mf(mc.map(), area_);
 	auto undo = std::make_unique<editor_action_paste>(mf);
 	perform_without_undo(mc);
 	return undo;
@@ -326,7 +326,7 @@ void editor_action_shuffle_area::perform_without_undo(map_context& mc) const
 	std::set<map_location>::const_iterator orig_it = area_.begin();
 
 	while(orig_it != area_.end()) {
-		t_translation::terrain_code tmp = mc.map().get_terrain(*orig_it);
+		const t_translation::terrain_code tmp = mc.map().get_terrain(*orig_it);
 
 		mc.draw_terrain(mc.map().get_terrain(*shuffle_it), *orig_it);
 		mc.draw_terrain(tmp, *shuffle_it);

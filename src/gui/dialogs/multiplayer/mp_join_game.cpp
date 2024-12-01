@@ -290,7 +290,7 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 			return false;
 		}
 
-		config::const_child_itors possible_sides = era->child_range("multiplayer_side");
+		const config::const_child_itors possible_sides = era->child_range("multiplayer_side");
 		if(possible_sides.empty()) {
 			WRN_MP << "no [multiplayer_side] found in era '" << era["id"] << "'.";
 			return false;
@@ -302,7 +302,7 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 		//make this safe against changes to level_ that might make possible_sides invalid pointers.
 		config era_copy;
 		for(const config& side : possible_sides) {
-			config& side_new = era_copy.add_child("multiplayer_side", side);
+			const config& side_new = era_copy.add_child("multiplayer_side", side);
 			era_factions.push_back(&side_new);
 		}
 
@@ -315,7 +315,7 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 
 		{
 			gui2::dialogs::faction_select flg_dialog(flg, color, side_num);
-			utils::guard_value guard(flg_dialog_, &flg_dialog);
+			const utils::guard_value guard(flg_dialog_, &flg_dialog);
 
 			if(!flg_dialog.show() && !first_time) {
 				return true;

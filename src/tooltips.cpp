@@ -58,8 +58,8 @@ tooltip::tooltip(const SDL_Rect& r, const std::string& msg, const std::string& a
 void tooltip::init_label()
 {
 	const color_t bgcolor {0,0,0,192};
-	rect game_canvas = video::game_canvas();
-	unsigned int border = 10;
+	const rect game_canvas = video::game_canvas();
+	const unsigned int border = 10;
 
 	rect huge;
 	huge.h=1000000;
@@ -116,9 +116,9 @@ void tooltip::init_label()
 
 void tooltip::update_label_pos()
 {
-	rect game_canvas = video::game_canvas();
+	const rect game_canvas = video::game_canvas();
 
-	point lsize = label.get_draw_size();
+	const point lsize = label.get_draw_size();
 	loc = {0, 0, lsize.x, lsize.y};
 
 	DBG_FT << "\nupdate_label_pos() Start: loc = " << loc.x << "," << loc.y << " origin = " << origin.x << "," << origin.y;
@@ -266,7 +266,7 @@ void clear_tooltips(const SDL_Rect& r)
 
 bool update_tooltip(int id, const SDL_Rect& origin, const std::string& message)
 {
-	std::map<int, tooltip>::iterator it = tips.find(id);
+	const std::map<int, tooltip>::iterator it = tips.find(id);
 	if (it == tips.end() ) return false;
 	tooltip& tip = it->second;
 	if(tip.message == message && tip.origin == origin) {
@@ -339,7 +339,7 @@ static void select_active(int id)
 
 void process(int mousex, int mousey)
 {
-	point mouseloc{mousex, mousey};
+	const point mouseloc{mousex, mousey};
 	for(auto& [id, tip] : tips) {
 		if(tip.origin.contains(mouseloc)) {
 			select_active(id);

@@ -147,18 +147,18 @@ BOOST_AUTO_TEST_CASE(test_formula_dice) {
 }
 
 BOOST_AUTO_TEST_CASE(test_formula_containers) {
-	variant myarray = formula("[1,2,3]").evaluate();
+	const variant myarray = formula("[1,2,3]").evaluate();
 	BOOST_CHECK_EQUAL(myarray.num_elements(), 3);
 	BOOST_CHECK_EQUAL(myarray[0].as_int(), 1);
 	BOOST_CHECK_EQUAL(myarray[1].as_int(), 2);
 	BOOST_CHECK_EQUAL(myarray[2].as_int(), 3);
 
-	variant mydict = formula("['foo' -> 5, 'bar' ->7]").evaluate();
+	const variant mydict = formula("['foo' -> 5, 'bar' ->7]").evaluate();
 	BOOST_CHECK_EQUAL(mydict.num_elements(), 2);
 	BOOST_CHECK_EQUAL(mydict[variant("foo")].as_int(), 5);
 	BOOST_CHECK_EQUAL(mydict[variant("bar")].as_int(), 7);
 
-	variant myrange = formula("-2~2").evaluate();
+	const variant myrange = formula("-2~2").evaluate();
 	BOOST_CHECK_EQUAL(myrange.num_elements(), 5);
 	BOOST_CHECK_EQUAL(myrange[0].as_int(), -2);
 	BOOST_CHECK_EQUAL(myrange[1].as_int(), -1);
@@ -166,7 +166,7 @@ BOOST_AUTO_TEST_CASE(test_formula_containers) {
 	BOOST_CHECK_EQUAL(myrange[3].as_int(), 1);
 	BOOST_CHECK_EQUAL(myrange[4].as_int(), 2);
 
-	variant myslice = formula("(10~20)[[1,3,7,9]]").evaluate();
+	const variant myslice = formula("(10~20)[[1,3,7,9]]").evaluate();
 	BOOST_CHECK_EQUAL(myslice.num_elements(), 4);
 	BOOST_CHECK_EQUAL(myslice[0].as_int(), 11);
 	BOOST_CHECK_EQUAL(myslice[1].as_int(), 13);

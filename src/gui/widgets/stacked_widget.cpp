@@ -90,7 +90,7 @@ void stacked_widget::finalize(std::unique_ptr<generator_base> generator, const s
 	generator_ = generator.get();
 	assert(generator_);
 
-	widget_item empty_data;
+	const widget_item empty_data;
 	for(const auto & builder : widget_builders) {
 		generator->create_item(-1, builder, empty_data, nullptr);
 	}
@@ -217,7 +217,7 @@ stacked_widget_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Add a dummy state since every widget needs a state.
-	static config dummy("draw");
+	static const config dummy("draw");
 	state.emplace_back(dummy);
 
 	auto child = cfg.optional_child("grid");

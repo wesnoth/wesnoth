@@ -49,7 +49,8 @@ const unit_animation* unit_animation_component::choose_animation(const map_locat
 	std::vector<const unit_animation*> options;
 	int max_val = unit_animation::MATCH_FAIL;
 	for(const unit_animation& anim : animations_) {
-		int matching = anim.matches(loc,second_loc,u_.shared_from_this(),event,value,hit,attack,second_attack,swing_num);
+		const int matching
+			= anim.matches(loc, second_loc, u_.shared_from_this(), event, value, hit, attack, second_attack, swing_num);
 		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
 			options.push_back(&anim);
 		} else if(matching > max_val) {
@@ -118,7 +119,7 @@ void unit_animation_component::start_animation(const std::chrono::milliseconds& 
 	}
 	state_ = state;
 	// everything except standing select and idle
-	bool accelerate = (state != STATE_FORGET && state != STATE_STANDING);
+	const bool accelerate = (state != STATE_FORGET && state != STATE_STANDING);
 	draw_bars_ =  with_bars;
 	anim_.reset(new unit_animation(*animation));
 	const auto real_start_time = start_time == std::chrono::milliseconds::max() ? anim_->get_begin_time() : start_time;
@@ -135,7 +136,7 @@ void unit_animation_component::refresh()
 		set_standing();
 		return;
 	}
-	display &disp = *display::get_singleton();
+	const display& disp = *display::get_singleton();
 	if (state_ != STATE_STANDING || get_current_animation_tick() < next_idling_ ||
 	    !disp.tile_nearly_on_screen(u_.loc_) || u_.incapacitated())
 	{

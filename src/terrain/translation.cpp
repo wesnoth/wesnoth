@@ -229,7 +229,7 @@ ter_list read_list(std::string_view str, const ter_layer filler)
 		// Get a terrain chunk
 		const std::string separators = ",";
 		const size_t pos_separator = str.find_first_of(separators, offset);
-		std::string_view terrain = str.substr(offset, pos_separator - offset);
+		const std::string_view terrain = str.substr(offset, pos_separator - offset);
 
 		// Process the chunk
 		const terrain_code tile = string_to_number_(terrain, filler);
@@ -311,7 +311,7 @@ ter_map read_game_map(std::string_view str, starting_positions& starting_positio
 		// Get a terrain chunk
 		const std::string separators = ",\n\r";
 		const std::size_t pos_separator = str.find_first_of(separators, offset);
-		std::string_view terrain = str.substr(offset, pos_separator - offset);
+		const std::string_view terrain = str.substr(offset, pos_separator - offset);
 
 		// Process the chunk
 		std::vector<std::string> sp;
@@ -518,7 +518,7 @@ bool terrain_matches(const terrain_code& src, const ter_match& dest)
 	// Since dest.mask and dest.masked_terrain need to be in sync,
 	// they are less often looked up, so no iterator for them.
 	std::size_t i = 0;
-	ter_list::const_iterator end = dest.terrain.end();
+	const ter_list::const_iterator end = dest.terrain.end();
 	for(ter_list::const_iterator terrain_itor = dest.terrain.begin();
 			terrain_itor != end;
 			++i, ++terrain_itor) {

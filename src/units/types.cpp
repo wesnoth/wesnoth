@@ -792,7 +792,7 @@ int unit_type::resistance_against(const std::string& damage_name, bool attacker)
 	}
 
 	if(!resistance_abilities.empty()) {
-		unit_abilities::effect resist_effect(resistance_abilities, 100 - resistance);
+		const unit_abilities::effect resist_effect(resistance_abilities, 100 - resistance);
 
 		resistance = 100 - std::min<int>(
 			resist_effect.get_composite_value(),
@@ -943,7 +943,7 @@ void patch_movetype(movetype& mt,
 		// before the formula is evaluated.
 		std::list<config> config_copies;
 
-		gui2::typed_formula<int> formula(formula_str, default_val);
+		const gui2::typed_formula<int> formula(formula_str, default_val);
 		wfl::map_formula_callable original;
 
 		// These three need to follow movetype's fallback system, where values for
@@ -1335,10 +1335,10 @@ void unit_type_data::read_hide_help(const config& cfg)
 	hide_help_type_.back().insert(trees.begin(), trees.end());
 
 	for(const std::string& t_id : trees) {
-		unit_type_map::iterator ut = types_.find(t_id);
+		const unit_type_map::iterator ut = types_.find(t_id);
 
 		if(ut != types_.end()) {
-			std::set<std::string> adv_tree = ut->second.advancement_tree();
+			const std::set<std::string> adv_tree = ut->second.advancement_tree();
 			hide_help_type_.back().insert(adv_tree.begin(), adv_tree.end());
 		}
 	}
@@ -1355,7 +1355,7 @@ bool unit_type_data::hide_help(const std::string& type, const std::string& race)
 	int lvl = hide_help_all_ ? 1 : 0; // first level is covered by 'all=yes'
 
 	// supposed to be equal but let's be cautious
-	int lvl_nb = std::min(hide_help_race_.size(), hide_help_type_.size());
+	const int lvl_nb = std::min(hide_help_race_.size(), hide_help_type_.size());
 
 	for(; lvl < lvl_nb; ++lvl) {
 		if(hide_help_race_[lvl].count(race) || hide_help_type_[lvl].count(type)) {
@@ -1368,7 +1368,7 @@ bool unit_type_data::hide_help(const std::string& type, const std::string& race)
 
 const unit_race* unit_type_data::find_race(const std::string& key) const
 {
-	race_map::const_iterator i = races_.find(key);
+	const race_map::const_iterator i = races_.find(key);
 	return i != races_.end() ? &i->second : nullptr;
 }
 
@@ -1407,7 +1407,7 @@ void unit_type::apply_scenario_fix(const config& cfg)
 			continue;
 		}
 		gender_types_[gender]->apply_scenario_fix(cfg);
-		std::string gender_str = gender == 0 ? "male" : "female";
+		const std::string gender_str = gender == 0 ? "male" : "female";
 		if(cfg.has_child(gender_str)) {
 			auto gender_cfg = cfg.optional_child(gender_str);
 			if(gender_cfg){
@@ -1431,7 +1431,7 @@ void unit_type::apply_scenario_fix(const config& cfg)
 
 void unit_type_data::apply_scenario_fix(const config& cfg)
 {
-	unit_type_map::iterator itor = types_.find(cfg["type"].str());
+	const unit_type_map::iterator itor = types_.find(cfg["type"].str());
 	// This might happen if units of another era are requested (for example for savegames)
 	if(itor != types_.end()) {
 		itor->second.apply_scenario_fix(cfg);

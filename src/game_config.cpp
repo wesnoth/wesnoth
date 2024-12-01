@@ -99,14 +99,14 @@ void set_debug(bool new_debug) {
 		// Turning debug mode off; decrease deprecation severity
 		lg::severity severity;
 		if(lg::get_log_domain_severity("deprecation", severity)) {
-            int severityInt = static_cast<int>(severity);
+			const int severityInt = static_cast<int>(severity);
 			lg::set_log_domain_severity("deprecation", static_cast<lg::severity>(severityInt - 2));
 		}
 	} else if(!debug_impl && new_debug) {
 		// Turning debug mode on; increase deprecation severity
         lg::severity severity;
 		if(lg::get_log_domain_severity("deprecation", severity)) {
-            int severityInt = static_cast<int>(severity);
+			const int severityInt = static_cast<int>(severity);
 			lg::set_log_domain_severity("deprecation", static_cast<lg::severity>(severityInt + 2));
 		}
 	}
@@ -278,14 +278,15 @@ void load_config(const config &v)
 	std::vector<std::string> zoom_levels_str = utils::split(v["zoom_levels"]);
 	if(!zoom_levels_str.empty()) {
 		zoom_levels.clear();
-		std::transform(zoom_levels_str.begin(), zoom_levels_str.end(), std::back_inserter(zoom_levels), [](const std::string& zoom) {
-			int z = std::stoi(zoom);
-			if((z / 4) * 4 != z) {
-				ERR_NG << "zoom level " << z << " is not divisible by 4."
-					<< " This will cause graphical glitches!";
-			}
-			return z;
-		});
+		std::transform(zoom_levels_str.begin(), zoom_levels_str.end(), std::back_inserter(zoom_levels),
+			[](const std::string& zoom) {
+				const int z = std::stoi(zoom);
+				if((z / 4) * 4 != z) {
+					ERR_NG << "zoom level " << z << " is not divisible by 4."
+						   << " This will cause graphical glitches!";
+				}
+				return z;
+			});
 	}
 
 	title_music           = v["title_music"].str();
@@ -319,7 +320,7 @@ void load_config(const config &v)
 			// Select a background at random
 			const auto backgrounds = utils::split(i["game_title_background"].str());
 			if (backgrounds.size() > 1) {
-				int r = rand() % (backgrounds.size());
+				const int r = rand() % (backgrounds.size());
 				game_title_background = backgrounds.at(r);
 			} else if (backgrounds.size() == 1) {
 				game_title_background = backgrounds.at(0);
@@ -543,7 +544,7 @@ const std::vector<color_t>& tc_info(std::string_view name)
 		try {
 			temp.push_back(color_t::from_hex_string(s));
 		} catch(const std::invalid_argument& e) {
-			static std::vector<color_t> stv;
+			static const std::vector<color_t> stv;
 			ERR_NG << "Invalid color in palette: " << s << " (" << e.what() << ")";
 			return stv;
 		}

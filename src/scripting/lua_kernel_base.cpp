@@ -83,8 +83,8 @@ static const char * Interp = "lua interpreter";
 template<VERSION_COMP_OP vop>
 static int impl_version_compare(lua_State* L)
 {
-	version_info& v1 = *static_cast<version_info*>(luaL_checkudata(L, 1, Version));
-	version_info& v2 = *static_cast<version_info*>(luaL_checkudata(L, 2, Version));
+	const version_info& v1 = *static_cast<version_info*>(luaL_checkudata(L, 1, Version));
+	const version_info& v2 = *static_cast<version_info*>(luaL_checkudata(L, 2, Version));
 	const bool result = do_version_check(v1, vop, v2);
 	lua_pushboolean(L, result);
 	return 1;
@@ -95,9 +95,9 @@ static int impl_version_compare(lua_State* L)
  */
 static int impl_version_get(lua_State* L)
 {
-	version_info& vers = *static_cast<version_info*>(luaL_checkudata(L, 1, Version));
+	const version_info& vers = *static_cast<version_info*>(luaL_checkudata(L, 1, Version));
 	if(lua_isinteger(L, 2)) {
-		int n = lua_tointeger(L, 2) - 1;
+		const int n = lua_tointeger(L, 2) - 1;
 		auto& components = vers.components();
 		if(n >= 0 && size_t(n) < components.size()) {
 			lua_pushinteger(L, vers.components()[n]);
@@ -112,7 +112,7 @@ static int impl_version_get(lua_State* L)
 	return_int_attrib("revision", vers.revision_level());
 	return_bool_attrib("is_canonical", vers.is_canonical());
 	return_string_attrib("special", vers.special_version());
-	if(char sep = vers.special_version_separator()) {
+	if(const char sep = vers.special_version_separator()) {
 		return_string_attrib("sep", std::string(1, sep));
 	} else if(strcmp(m, "sep") == 0) {
 		lua_pushnil(L);
@@ -143,7 +143,7 @@ static int impl_version_finalize(lua_State* L)
  */
 static int impl_version_tostring(lua_State* L)
 {
-	version_info& vers = *static_cast<version_info*>(luaL_checkudata(L, 1, Version));
+	const version_info& vers = *static_cast<version_info*>(luaL_checkudata(L, 1, Version));
 	lua_push(L, vers.str());
 	return 1;
 }
@@ -213,7 +213,7 @@ static int intf_current_version(lua_State* L) {
 int lua_kernel_base::intf_print(lua_State* L)
 {
 	DBG_LUA << "intf_print called:";
-	std::size_t nargs = lua_gettop(L);
+	const std::size_t nargs = lua_gettop(L);
 
 	lua_getglobal(L, "tostring");
 	for (std::size_t i = 1; i <= nargs; ++i) {
@@ -270,14 +270,14 @@ static int intf_load(lua_State* L)
 {
 	std::string chunk = luaL_checkstring(L, 1);
 	const char* name = luaL_optstring(L, 2, chunk.c_str());
-	std::string mode = luaL_optstring(L, 3, "t");
-	bool override_env = !lua_isnone(L, 4);
+	const std::string mode = luaL_optstring(L, 3, "t");
+	const bool override_env = !lua_isnone(L, 4);
 
 	if(mode != "t") {
 		return luaL_argerror(L, 3, "binary chunks are not allowed for security reasons");
 	}
 
-	int result = luaL_loadbufferx(L, chunk.data(), chunk.length(), name, "t");
+	const int result = luaL_loadbufferx(L, chunk.data(), chunk.length(), name, "t");
 	if(result != LUA_OK) {
 		lua_pushnil(L);
 		// Move the nil as the first return value, like Lua's own load() does.
@@ -308,7 +308,7 @@ static int intf_pcall(lua_State *L)
 	lua_CFunction function = lua_tocfunction(L, lua_upvalueindex(1));
 	assert(function); // The upvalue should be Lua's pcall or xpcall, or else something is very wrong.
 
-	int nRets = function(L);
+	const int nRets = function(L);
 
 	// If a jailbreak exception was stored while running (x)pcall, rethrow it so Lua doesn't continue.
 	lua_jailbreak_exception::rethrow();
@@ -320,7 +320,8 @@ static int intf_pcall(lua_State *L)
 int lua_kernel_base::intf_show_lua_console(lua_State *L)
 {
 	if (cmd_log_.external_log_) {
-		std::string message = "There is already an external logger attached to this lua kernel, you cannot open the lua console right now.";
+		const std::string message = "There is already an external logger attached to this lua kernel, you cannot open "
+									"the lua console right now.";
 		log_error(message.c_str());
 		cmd_log_ << message << "\n";
 		return 0;
@@ -345,7 +346,7 @@ static int impl_name_generator_collect(lua_State *L)
 
 static int intf_name_generator(lua_State *L)
 {
-	std::string type = luaL_checkstring(L, 1);
+	const std::string type = luaL_checkstring(L, 1);
 	name_generator* gen = nullptr;
 	try {
 		if(type == "markov" || type == "markov_chain") {
@@ -355,8 +356,8 @@ static int intf_name_generator(lua_State *L)
 			} else {
 				input = utils::parenthetical_split(luaW_checktstring(L, 2).str(), ',');
 			}
-			int chain_sz = luaL_optinteger(L, 3, 2);
-			int max_len = luaL_optinteger(L, 4, 12);
+			const int chain_sz = luaL_optinteger(L, 3, 2);
+			const int max_len = luaL_optinteger(L, 4, 12);
 			gen = new(L) markov_generator(input, chain_sz, max_len);
 			// Ensure the pointer didn't change when cast
 			assert(static_cast<void*>(gen) == dynamic_cast<markov_generator*>(gen));
@@ -472,7 +473,7 @@ static int intf_named_tuple(lua_State* L)
 	}
 	auto names = lua_check<std::vector<std::string>>(L, 2);
 	lua_len(L, 1);
-	int len = luaL_checkinteger(L, -1);
+	const int len = luaL_checkinteger(L, -1);
 	luaW_push_namedtuple(L, names);
 	for(int i = 1; i <= std::max<int>(len, names.size()); i++) {
 		lua_geti(L, 1, i);
@@ -620,7 +621,7 @@ std::vector<std::string> luaW_get_attributes(lua_State* L, int idx)
 			lua_settop(L, save_top);
 		};
 		do {
-			int table_idx = lua_absindex(L, -1);
+			const int table_idx = lua_absindex(L, -1);
 			for(lua_pushnil(L); lua_next(L, table_idx); lua_pop(L, 1)) {
 				if(lua_type(L, -2) == LUA_TSTRING) {
 					keys.push_back(lua_tostring(L,-2));
@@ -687,16 +688,15 @@ static int intf_object_dir(lua_State* L)
 	if(!lua_isfunction(L, 2)) {
 		luaW_getglobal(L, "print");
 	}
-	int fcn_idx = lua_gettop(L);
+	const int fcn_idx = lua_gettop(L);
 	auto keys = luaW_get_attributes(L, 1);
-	size_t max_len = std::accumulate(keys.begin(), keys.end(), 0, [](size_t max, const std::string& next) {
-		return std::max(max, next.size());
-	});
+	const size_t max_len = std::accumulate(
+		keys.begin(), keys.end(), 0, [](size_t max, const std::string& next) { return std::max(max, next.size()); });
 	// Let's limit to about 80 characters of total width with minimum 3 characters padding between columns
 	static const size_t MAX_WIDTH = 80, COL_PADDING = 3, SUFFIX_PADDING = 2;
-	size_t col_width = max_len + COL_PADDING + SUFFIX_PADDING;
-	size_t n_cols = (MAX_WIDTH + COL_PADDING) / col_width;
-	size_t n_rows = ceil(keys.size() / double(n_cols));
+	const size_t col_width = max_len + COL_PADDING + SUFFIX_PADDING;
+	const size_t n_cols = (MAX_WIDTH + COL_PADDING) / col_width;
+	const size_t n_rows = ceil(keys.size() / double(n_cols));
 	for(size_t i = 0; i < n_rows; i++) {
 		std::ostringstream line;
 		line.fill(' ');
@@ -876,7 +876,7 @@ lua_kernel_base::lua_kernel_base()
 	lua_pop(L, 1);
 	lua_settop(L, 0);
 	lua_pushstring(L, "lua/package.lua");
-	int res = intf_require(L);
+	const int res = intf_require(L);
 	if(res != 1) {
 		cmd_log_ << "Error: Failed to initialize package repository. Falling back to less flexible C++ implementation.\n";
 	}
@@ -1017,13 +1017,13 @@ void lua_kernel_base::throw_exception(char const * msg, char const * context)
 
 bool lua_kernel_base::protected_call(int nArgs, int nRets)
 {
-	error_handler eh = std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2 );
+	const error_handler eh = std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2);
 	return this->protected_call(nArgs, nRets, eh);
 }
 
 bool lua_kernel_base::load_string(char const * prog, const std::string& name)
 {
-	error_handler eh = std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2 );
+	const error_handler eh = std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2);
 	return this->load_string(prog, name, eh);
 }
 
@@ -1034,7 +1034,7 @@ bool lua_kernel_base::protected_call(int nArgs, int nRets, const error_handler& 
 
 bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, const error_handler& e_h)
 {
-	int errcode = luaW_pcall_internal(L, nArgs, nRets);
+	const int errcode = luaW_pcall_internal(L, nArgs, nRets);
 
 	if (errcode != LUA_OK) {
 		char const * msg = lua_tostring(L, -1);
@@ -1068,10 +1068,10 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, const 
 bool lua_kernel_base::load_string(char const * prog, const std::string& name, const error_handler& e_h)
 {
 	// pass 't' to prevent loading bytecode which is unsafe and can be used to escape the sandbox.
-	int errcode = luaL_loadbufferx(mState, prog, strlen(prog), name.empty() ? prog : name.c_str(), "t");
+	const int errcode = luaL_loadbufferx(mState, prog, strlen(prog), name.empty() ? prog : name.c_str(), "t");
 	if (errcode != LUA_OK) {
 		char const * msg = lua_tostring(mState, -1);
-		std::string message = msg ? msg : "null string";
+		const std::string message = msg ? msg : "null string";
 
 		std::string context = "When parsing a string to lua, ";
 
@@ -1106,7 +1106,8 @@ void lua_kernel_base::run_lua_tag(const config& cfg)
 void lua_kernel_base::throwing_run(const char * prog, const std::string& name, int nArgs, bool in_interpreter)
 {
 	cmd_log_ << "$ " << prog << "\n";
-	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2 );
+	const error_handler eh
+		= std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2);
 	this->load_string(prog, name, eh);
 	if(in_interpreter) {
 		lua_getfield(mState, LUA_REGISTRYINDEX, Interp);
@@ -1132,9 +1133,10 @@ void lua_kernel_base::run(const char * prog, const std::string& name, int nArgs)
 void lua_kernel_base::interactive_run(char const * prog) {
 	std::string experiment = "return ";
 	experiment += prog;
-	int top = lua_gettop(mState);
+	const int top = lua_gettop(mState);
 
-	error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2 );
+	const error_handler eh
+		= std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2);
 	luaW_getglobal(mState, "ilua", "_pretty_print");
 
 	try {
@@ -1155,11 +1157,11 @@ void lua_kernel_base::interactive_run(char const * prog) {
 	cmd_log_ << "$ " << prog << "\n";
 	this->protected_call(0, LUA_MULTRET, eh);
 PRINT:
-	int nRets = lua_gettop(mState) - top - 1;
+	const int nRets = lua_gettop(mState) - top - 1;
 	{
 		// Assign first result to _
 		lua_getfield(mState, LUA_REGISTRYINDEX, Interp);
-		int env_idx = lua_gettop(mState);
+		const int env_idx = lua_gettop(mState);
 		lua_pushvalue(mState, top + 2);
 		lua_setfield(mState, -2, "_");
 		// Now duplicate EVERY result and pass it to table.pack, assigning to _all
@@ -1402,7 +1404,7 @@ std::vector<std::string> lua_kernel_base::get_global_var_names()
 
 	lua_State *L = mState;
 
-	int idx = lua_gettop(L);
+	const int idx = lua_gettop(L);
 	lua_getglobal(L, "_G");
 	lua_pushnil(L);
 
@@ -1423,14 +1425,14 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 {
 	std::vector<std::string> ret;
 	std::string base_path = input;
-	std::size_t last_dot = base_path.find_last_of('.');
-	std::string partial_name = base_path.substr(last_dot + 1);
+	const std::size_t last_dot = base_path.find_last_of('.');
+	const std::string partial_name = base_path.substr(last_dot + 1);
 	base_path.erase(last_dot);
-	std::string load = "return " + base_path;
+	const std::string load = "return " + base_path;
 
 	lua_State* L = mState;
-	int save_stack = lua_gettop(L);
-	int result = luaL_loadstring(L, load.c_str());
+	const int save_stack = lua_gettop(L);
+	const int result = luaL_loadstring(L, load.c_str());
 	if(result != LUA_OK) {
 		// This isn't at error level because it's a really low priority error; it just means the user tried to tab-complete something that doesn't exist.
 		LOG_LUA << "Error when attempting tab completion:";
@@ -1442,8 +1444,8 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 
 	luaW_pcall(L, 0, 1);
 	if(lua_istable(L, -1) || lua_isuserdata(L, -1)) {
-		int top = lua_gettop(L);
-		int obj = lua_absindex(L, -1);
+		const int top = lua_gettop(L);
+		const int obj = lua_absindex(L, -1);
 		if(luaL_getmetafield(L, obj, "__tab_enum") == LUA_TFUNCTION) {
 			lua_pushvalue(L, obj);
 			lua_pushlstring(L, partial_name.c_str(), partial_name.size());

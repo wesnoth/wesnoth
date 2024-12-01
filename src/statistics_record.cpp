@@ -34,7 +34,7 @@ static config write_str_int_map(const stats_t::str_int_map& m)
 {
 	config res;
 	for(stats_t::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		std::string n = std::to_string(i->second);
+		const std::string n = std::to_string(i->second);
 		if(res.has_attribute(n)) {
 			res[n] = res[n].str() + "," + i->first;
 		} else {
@@ -104,7 +104,7 @@ static stats_t::battle_result_map read_battle_result_map(const config& cfg)
 	stats_t::battle_result_map m;
 	for(const config& i : cfg.child_range("sequence")) {
 		config item = i;
-		int key = item["_num"].to_int();
+		const int key = item["_num"].to_int();
 		item.remove_attribute("_num");
 		m[key] = read_str_int_map(item);
 	}
@@ -132,7 +132,7 @@ static stats_t::hitrate_map read_by_cth_map_from_battle_result_maps(
 	merge_battle_result_maps(merged, defends);
 
 	for(const auto& i : merged) {
-		int cth = i.first;
+		const int cth = i.first;
 		const stats_t::battle_sequence_frequency_map& frequency_map = i.second;
 		for(const auto& j : frequency_map) {
 			const std::string& res = j.first; // see attack_context::~attack_context()

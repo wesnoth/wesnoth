@@ -213,7 +213,7 @@ static hitrate_table_element tally(const statistics_t::stats::hitrate_map& by_ct
 	if(by_cth.empty())
 		tooltip << '\n' << _("(no attacks have taken place yet)");
 	for(const auto& i : by_cth) {
-		int cth = i.first;
+		const int cth = i.first;
 		overall_hits += i.second.hits;
 		expected_hits += (cth * 0.01) * i.second.strikes;
 		overall_strikes += i.second.strikes;
@@ -226,27 +226,19 @@ static hitrate_table_element tally(const statistics_t::stats::hitrate_map& by_ct
 
 	// Compute the a priori probability of this actual result, by simulating many attacks against a single defender.
 	{
-		config defender_cfg(
-			"id", "statistics_dialog_dummy_defender",
-			"hide_help", true,
-			"do_not_list", true,
-			"hitpoints", overall_strikes
-		);
-		unit_type defender_type(defender_cfg);
+		const config defender_cfg("id", "statistics_dialog_dummy_defender", "hide_help", true, "do_not_list", true,
+			"hitpoints", overall_strikes);
+		const unit_type defender_type(defender_cfg);
 		unit_types.build_unit_type(defender_type, unit_type::BUILD_STATUS::FULL);
 
 		battle_context_unit_stats defender_bc(&defender_type, nullptr, false, nullptr, nullptr, 0 /* not used */);
 		auto current_defender = std::make_unique<combatant>(defender_bc);
 
 		for(const auto& i : by_cth) {
-			int cth = i.first;
-			config attacker_cfg(
-				"id", "statistics_dialog_dummy_attacker" + std::to_string(cth),
-				"hide_help", true,
-				"do_not_list", true,
-				"hitpoints", 1
-			);
-			unit_type attacker_type(attacker_cfg);
+			const int cth = i.first;
+			const config attacker_cfg("id", "statistics_dialog_dummy_attacker" + std::to_string(cth), "hide_help", true,
+				"do_not_list", true, "hitpoints", 1);
+			const unit_type attacker_type(attacker_cfg);
 			unit_types.build_unit_type(attacker_type, unit_type::BUILD_STATUS::FULL);
 
 			auto attack = std::make_shared<attack_type>(config(
@@ -257,7 +249,8 @@ static hitrate_table_element tally(const statistics_t::stats::hitrate_map& by_ct
 				"number", i.second.strikes
 			));
 
-			battle_context_unit_stats attacker_bc(&attacker_type, attack, true, &defender_type, nullptr, 100 - cth);
+			const battle_context_unit_stats attacker_bc(
+				&attacker_type, attack, true, &defender_type, nullptr, 100 - cth);
 			defender_bc = battle_context_unit_stats(&defender_type, nullptr, false, &attacker_type, attack, 0 /* not used */);
 
 			// Update current_defender with the new defender_bc.
@@ -277,9 +270,9 @@ static hitrate_table_element tally(const statistics_t::stats::hitrate_map& by_ct
 			probability_lt += chance_of_exactly_N_hits(i);
 		}
 		// The a priori probability of scoring exactly the actual number of hits
-		double probability_eq = chance_of_exactly_N_hits(overall_hits);
+		const double probability_eq = chance_of_exactly_N_hits(overall_hits);
 		// The a priori probability of scoring more hits than the actual number of hits
-		double probability_gt = 1.0 - (probability_lt + probability_eq);
+		const double probability_gt = 1.0 - (probability_lt + probability_eq);
 
 		if(overall_strikes == 0) {
 			// Start of turn

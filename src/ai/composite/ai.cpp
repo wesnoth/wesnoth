@@ -63,22 +63,23 @@ void ai_composite::on_create()
 
 	config cfg;
 	cfg["engine"] = "fai";
-	engine_ptr e_ptr = get_engine_by_cfg(cfg);
+	const engine_ptr e_ptr = get_engine_by_cfg(cfg);
 	if (e_ptr) {
 		e_ptr->set_ai_context(this);
 	}
 
-	std::function<void(std::vector<engine_ptr>&, const config&)> factory_engines =
-		std::bind(&ai::ai_composite::create_engine, *this, std::placeholders::_1, std::placeholders::_2);
+	const std::function<void(std::vector<engine_ptr>&, const config&)> factory_engines
+		= std::bind(&ai::ai_composite::create_engine, *this, std::placeholders::_1, std::placeholders::_2);
 
-	std::function<void(std::vector<goal_ptr>&, const config&)> factory_goals =
-		std::bind(&ai::ai_composite::create_goal, *this, std::placeholders::_1, std::placeholders::_2);
+	const std::function<void(std::vector<goal_ptr>&, const config&)> factory_goals
+		= std::bind(&ai::ai_composite::create_goal, *this, std::placeholders::_1, std::placeholders::_2);
 
-	std::function<void(std::vector<stage_ptr>&, const config&)> factory_stages =
-		std::bind(&ai::ai_composite::create_stage, *this, std::placeholders::_1, std::placeholders::_2);
+	const std::function<void(std::vector<stage_ptr>&, const config&)> factory_stages
+		= std::bind(&ai::ai_composite::create_stage, *this, std::placeholders::_1, std::placeholders::_2);
 
-	std::function<void(std::map<std::string,aspect_ptr>&, const config&, std::string)> factory_aspects =
-		std::bind(&ai::ai_composite::replace_aspect,*this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
+	const std::function<void(std::map<std::string, aspect_ptr>&, const config&, std::string)> factory_aspects
+		= std::bind(&ai::ai_composite::replace_aspect, *this, std::placeholders::_1, std::placeholders::_2,
+			std::placeholders::_3);
 
 	register_vector_property(property_handlers(),"engine",get_engines(), factory_engines);
 	register_vector_property(property_handlers(),"goal",get_goals(), factory_goals);
@@ -118,7 +119,7 @@ bool ai_composite::add_stage(const config &cfg)
 	std::vector< stage_ptr > stages;
 	create_stage(stages,cfg);
 	int j=0;
-	for (stage_ptr b : stages) {
+	for(const stage_ptr b : stages) {
 		stages_.push_back(b);
 		j++;
 	}
@@ -130,7 +131,7 @@ bool ai_composite::add_goal(const config &cfg)
 	std::vector< goal_ptr > goals;
 	create_goal(goals,cfg);
 	int j=0;
-	for (goal_ptr b : goals) {
+	for(const goal_ptr b : goals) {
 		get_goals().push_back(b);
 		j++;
 	}
@@ -138,7 +139,7 @@ bool ai_composite::add_goal(const config &cfg)
 }
 
 void ai_composite::play_turn(){
-	for (stage_ptr &s : stages_) {
+	for(const stage_ptr& s : stages_) {
 		s->play_stage();
 	}
 }
@@ -163,7 +164,7 @@ std::string ai_composite::evaluate(const std::string& str)
 {
 	config cfg;
 	cfg["engine"] = "fai";
-	engine_ptr e_ptr = get_engine_by_cfg(cfg);
+	const engine_ptr e_ptr = get_engine_by_cfg(cfg);
 	if (!e_ptr) {
 		// This should be unreachable, but not entirely sure...
 		return "engine not found for evaluate command";

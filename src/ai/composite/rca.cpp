@@ -39,7 +39,7 @@ candidate_action::candidate_action(rca_context &context, const config &cfg):
 	id_(cfg["id"]), name_(cfg["name"]), type_(cfg["type"]), to_be_removed_(false)
 {
 	if (auto filter_own = cfg.optional_child("filter_own")) {
-		vconfig vcfg(*filter_own);
+		const vconfig vcfg(*filter_own);
 		vcfg.make_safe();
 		filter_own_.reset(new unit_filter(vcfg));
 	}

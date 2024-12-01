@@ -22,7 +22,7 @@
 namespace utils {
 
 std::string format_time_summary(std::time_t t) {
-	std::time_t curtime = std::time(nullptr);
+	const std::time_t curtime = std::time(nullptr);
 	const std::tm* timeptr = std::localtime(&curtime);
 	if(timeptr == nullptr) {
 		return "";

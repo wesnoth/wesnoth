@@ -26,7 +26,7 @@ namespace sdl
 
 uint32_t get_mouse_state(int *x, int *y)
 {
-	uint32_t buttons = SDL_GetMouseState(x, y);
+	const uint32_t buttons = SDL_GetMouseState(x, y);
 
 	if (video::headless()) {
 		return buttons;
@@ -34,12 +34,12 @@ uint32_t get_mouse_state(int *x, int *y)
 
 	// The game canvas may be offset inside the window,
 	// as well as potentially having a different size.
-	rect input_area = video::input_area();
+	const rect input_area = video::input_area();
 	*x -= input_area.x;
 	*y -= input_area.y;
 
 	// Translate to game-native coordinates
-	point canvas_size = video::game_canvas_size();
+	const point canvas_size = video::game_canvas_size();
 	*x = (*x * canvas_size.x) / input_area.w;
 	*y = (*y * canvas_size.y) / input_area.h;
 

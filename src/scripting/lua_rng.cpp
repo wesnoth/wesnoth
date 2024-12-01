@@ -36,7 +36,7 @@ static const char * Rng = "Rng";
 
 int impl_rng_create(lua_State* L)
 {
-	uint32_t seed = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L).get_random_seed();
+	const uint32_t seed = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L).get_random_seed();
 	new(L) mt_rng(seed);
 	luaL_setmetatable(L, Rng);
 
@@ -60,7 +60,7 @@ int impl_rng_destroy(lua_State* L)
 int impl_rng_seed(lua_State* L)
 {
 	mt_rng * rng = static_cast<mt_rng *>(luaL_checkudata(L, 1, Rng));
-	std::string seed = luaL_checkstring(L, 2);
+	const std::string seed = luaL_checkstring(L, 2);
 
 	rng->seed_random(seed);
 	return 0;

@@ -68,9 +68,7 @@ unsigned horizontal_scrollbar::offset_after() const
 
 bool horizontal_scrollbar::on_positioner(const point& coordinate) const
 {
-	rect positioner_rect(
-		get_positioner_offset(), 0, get_positioner_length(), get_height()
-	);
+	const rect positioner_rect(get_positioner_offset(), 0, get_positioner_length(), get_height());
 
 	// Note we assume the positioner is over the entire height of the widget.
 	return positioner_rect.contains(coordinate);

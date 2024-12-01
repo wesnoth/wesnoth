@@ -120,7 +120,7 @@ game::~game()
 	try {
 		save_replay();
 
-		for(player_iterator user_ptr : all_game_users()) {
+		for(const player_iterator user_ptr : all_game_users()) {
 			remove_player(user_ptr, false, true);
 		}
 
@@ -215,7 +215,7 @@ void game::perform_controller_tweaks()
 				send_and_record_server_message(msg.str());
 			}
 
-			std::string user_name = username(*sides_[side_index]);
+			const std::string user_name = username(*sides_[side_index]);
 
 			// Issue change_controller command, transferring this side to its owner with proper name and controller.
 			// Ensures that what the server now thinks is true is effected on all of the clients.
@@ -282,7 +282,7 @@ void game::start_game(player_iterator starter)
 
 
 	for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {
-		simple_wml::node& side = *sides[side_index];
+		const simple_wml::node& side = *sides[side_index];
 
 		if(side["controller"] != side_controller::none) {
 			if(side_index >= sides_.size()) {
@@ -625,7 +625,7 @@ void game::notify_new_host()
 	simple_wml::document cfg;
 	cfg.root().add_child("host_transfer");
 
-	std::string message = owner_name + " has been chosen as the new host.";
+	const std::string message = owner_name + " has been chosen as the new host.";
 	server.send_to_player(owner_, cfg);
 	send_and_record_server_message(message);
 }
@@ -686,7 +686,7 @@ void game::send_muted_observers(player_iterator user) const
 		return;
 	}
 
-	std::string muted_nicks = list_users(muted_observers_);
+	const std::string muted_nicks = list_users(muted_observers_);
 
 	send_server_message("Muted observers: " + muted_nicks, user);
 }
@@ -926,7 +926,7 @@ bool game::is_legal_command(const simple_wml::node& command, player_iterator use
 			return false;
 		}
 
-		std::size_t side_number = sn.to_int();
+		const std::size_t side_number = sn.to_int();
 		if(side_number >= sides_.size() || sides_[side_number] != user) {
 			return false;
 		} else {
@@ -1049,7 +1049,7 @@ bool game::process_turn(simple_wml::document& data, player_iterator user)
 			}
 			send_and_record_server_message(username(user) + " has surrendered.");
 		} else if(is_current_player(user) && (*command).child("end_turn")) {
-			simple_wml::node& endturn = *(*command).child("end_turn");
+			const simple_wml::node& endturn = *(*command).child("end_turn");
 			turn_ended = end_turn(endturn["next_player_number"].to_int());
 		}
 
@@ -1111,7 +1111,7 @@ bool game::process_turn(simple_wml::document& data, player_iterator user)
 
 void game::handle_random_choice()
 {
-	uint32_t seed = rng_.get_next_random();
+	const uint32_t seed = rng_.get_next_random();
 
 	std::stringstream stream;
 	stream << std::setfill('0') << std::setw(sizeof(uint32_t) * 2) << std::hex << seed;
@@ -1226,7 +1226,7 @@ void game::handle_choice(const simple_wml::node& data, player_iterator user)
 		return;
 	}
 
-	int request_id = lexical_cast_default<int>(data["request_id"], -10);
+	const int request_id = lexical_cast_default<int>(data["request_id"], -10);
 	if(request_id <= last_choice_request_id_) {
 		// We gave already an anwer to this request.
 		return;
@@ -1665,8 +1665,8 @@ void game::send_data_sides(simple_wml::document& data,
 
 bool game::controls_side(const std::vector<int>& sides, player_iterator player) const
 {
-	for(int side : sides) {
-		std::size_t side_index = side - 1;
+	for(const int side : sides) {
+		const std::size_t side_index = side - 1;
 
 		if(side_index < sides_.size() && sides_[side_index] == player) {
 			return true;
@@ -1830,10 +1830,10 @@ void game::save_replay()
 			<< (has_old_replay ? "" : "\t[command]\n\t\t[start]\n\t\t[/start]\n\t[/command]\n")
 			<< replay_commands << "[/replay]\n";
 
-		std::string replay_data_str = replay_data.str();
+		const std::string replay_data_str = replay_data.str();
 		simple_wml::document replay(replay_data_str.c_str(), simple_wml::INIT_STATIC);
 
-		std::string filename = get_replay_filename();
+		const std::string filename = get_replay_filename();
 		DBG_GAME << "saving replay: " << filename;
 
 		filesystem::scoped_ostream os(filesystem::ostream_file(replay_save_path_ + filename));

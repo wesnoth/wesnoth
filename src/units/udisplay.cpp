@@ -618,8 +618,8 @@ void unit_attack(display * disp, game_board & board,
 	const unit_map::iterator def = board.find_unit(b);
 	assert(def.valid());
 	unit &defender = *def;
-	int def_hitpoints = defender.hitpoints();
-	const_attack_ptr weapon = attack.shared_from_this();
+	const int def_hitpoints = defender.hitpoints();
+	const const_attack_ptr weapon = attack.shared_from_this();
 	auto ctx = weapon->specials_context(attacker.shared_from_this(), defender.shared_from_this(), a, b, attacking, secondary_attack);
 	utils::optional<decltype(ctx)> opp_ctx;
 
@@ -631,8 +631,8 @@ void unit_attack(display * disp, game_board & board,
 	def->set_facing(b.get_relative_dir(a));
 	defender.set_facing(b.get_relative_dir(a));
 
-	std::string text = number_and_text(damage, hit_text);
-	std::string text_2 = number_and_text(std::abs(drain_amount), att_text);
+	const std::string text = number_and_text(damage, hit_text);
+	const std::string text_2 = number_and_text(std::abs(drain_amount), att_text);
 
 	strike_result::type hit_type;
 	if(damage >= defender.hitpoints()) {
@@ -655,8 +655,8 @@ void unit_attack(display * disp, game_board & board,
 
 	animator.add_animation(defender.shared_from_this(), defender_anim, def->get_location(), true, text, {255, 0, 0});
 
-	unit_ability_list leadership_list = attacker.get_abilities_weapons("leadership", weapon, secondary_attack);
-	unit_ability_list resistance_list = defender.get_abilities_weapons("resistance", secondary_attack, weapon);
+	const unit_ability_list leadership_list = attacker.get_abilities_weapons("leadership", weapon, secondary_attack);
+	const unit_ability_list resistance_list = defender.get_abilities_weapons("resistance", secondary_attack, weapon);
 	for(const unit_ability& ability : leadership_list) {
 		if(ability.teacher_loc == a) {
 			continue;
@@ -666,7 +666,7 @@ void unit_attack(display * disp, game_board & board,
 			continue;
 		}
 
-		unit_map::const_iterator leader = board.units().find(ability.teacher_loc);
+		const unit_map::const_iterator leader = board.units().find(ability.teacher_loc);
 		assert(leader.valid());
 		leader->set_facing(ability.teacher_loc.get_relative_dir(a));
 		leader->anim_comp().invalidate(*disp);
@@ -684,7 +684,7 @@ void unit_attack(display * disp, game_board & board,
 			continue;
 		}
 
-		unit_map::const_iterator helper = board.units().find(ability.teacher_loc);
+		const unit_map::const_iterator helper = board.units().find(ability.teacher_loc);
 		assert(helper.valid());
 		helper->set_facing(ability.teacher_loc.get_relative_dir(b));
 		animator.add_animation(helper.get_shared_ptr(), "resistance", ability.teacher_loc,
@@ -722,7 +722,7 @@ void unit_attack(display * disp, game_board & board,
 			}
 		}
 
-		unit_map::const_iterator leader = board.units().find(ability.teacher_loc);
+		const unit_map::const_iterator leader = board.units().find(ability.teacher_loc);
 		assert(leader.valid());
 		leader->set_facing(ability.teacher_loc.get_relative_dir(a));
 		if(animator.has_animation(leader.get_shared_ptr(), "leading", ability.teacher_loc,
@@ -745,7 +745,7 @@ void unit_attack(display * disp, game_board & board,
 	bool extra_hit_sounds_played = false;
 	while(damage_left > 0 && !animator.would_end()) {
 		if(!extra_hit_sounds_played && extra_hit_sounds != nullptr) {
-			for (std::string hit_sound : *extra_hit_sounds) {
+			for(const std::string hit_sound : *extra_hit_sounds) {
 				sound::play_sound(hit_sound);
 			}
 			extra_hit_sounds_played = true;
@@ -777,7 +777,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 			attacker_abilities.append(attacker->get_abilities(special));
 		}
 		for(const unit_ability& ability : attacker_abilities) {
-			unit_map::const_iterator leader = units.find(ability.teacher_loc);
+			const unit_map::const_iterator leader = units.find(ability.teacher_loc);
 			assert(leader != units.end());
 			leader->anim_comp().set_standing();
 		}
@@ -789,7 +789,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 			defender_abilities.append(defender->get_abilities(special));
 		}
 		for(const unit_ability& ability : defender_abilities) {
-			unit_map::const_iterator helper = units.find(ability.teacher_loc);
+			const unit_map::const_iterator helper = units.find(ability.teacher_loc);
 			assert(helper != units.end());
 			helper->anim_comp().set_standing();
 		}
@@ -806,11 +806,11 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 	const team& viewing_team = disp->viewing_team();
 	const unit_map& units = disp->context().units();
 
-	unit_map::const_iterator u = units.find(loc);
+	const unit_map::const_iterator u = units.find(loc);
 	if(u == units.end()) return;
 	const bool unit_visible = u->is_visible_to_team(viewing_team, false);
 
-	unit_map::const_iterator leader = units.find(leader_loc); // may be null_location
+	const unit_map::const_iterator leader = units.find(leader_loc); // may be null_location
 	const bool leader_visible = (leader != units.end()) && leader->is_visible_to_team(viewing_team, false);
 
 	unit_animator animator;

@@ -189,7 +189,7 @@ double recruitment::evaluate() {
 			return BAD_SCORE;
 		}
 		// Check Gold. But proceed if there is a unit with cost <= 0 (WML can do that)
-		int cheapest_unit_cost = get_cheapest_unit_cost_for_leader(leader);
+		const int cheapest_unit_cost = get_cheapest_unit_cost_for_leader(leader);
 		if (current_team().gold() < cheapest_unit_cost && cheapest_unit_cost > 0) {
 			continue;
 		}
@@ -236,7 +236,7 @@ void recruitment::execute() {
 			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " has no free hexes";
 			continue;
 		}
-		int cheapest_unit_cost = get_cheapest_unit_cost_for_leader(leader);
+		const int cheapest_unit_cost = get_cheapest_unit_cost_for_leader(leader);
 		if (current_team().gold() < cheapest_unit_cost && cheapest_unit_cost > 0) {
 			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " recruits are too expensive.";
 			continue;
@@ -361,9 +361,9 @@ void recruitment::execute() {
 
 		// Check if we may want to save gold by not recruiting.
 		update_state();
-		int save_gold_turn = get_recruitment_save_gold()["active"].to_int(2);  // From aspect.
-		int current_turn = resources::tod_manager->turn();
-		bool save_gold_active = save_gold_turn > 0 && save_gold_turn <= current_turn;
+		const int save_gold_turn = get_recruitment_save_gold()["active"].to_int(2); // From aspect.
+		const int current_turn = resources::tod_manager->turn();
+		const bool save_gold_active = save_gold_turn > 0 && save_gold_turn <= current_turn;
 		if (state_ == SAVE_GOLD && save_gold_active) {
 			break;
 		}
@@ -446,8 +446,8 @@ void recruitment::execute() {
 		state_ = NORMAL;
 	}
 
-	int status = (action_result) ? action_result->get_status() : -1;
-	bool no_gold = (status == recruit_result::E_NO_GOLD || status == recall_result::E_NO_GOLD);
+	const int status = (action_result) ? action_result->get_status() : -1;
+	const bool no_gold = (status == recruit_result::E_NO_GOLD || status == recall_result::E_NO_GOLD);
 	if (state_ == SPEND_ALL_GOLD && no_gold) {
 		state_ = SAVE_GOLD;
 	}
@@ -511,8 +511,7 @@ double recruitment::recall_unit_value(const unit_const_ptr & recall_unit) const 
 		// Unit don't have advancements. Use cost of unit itself.
 		average_cost_of_advanced_unit = recall_unit->cost();
 	}
-	double xp_quantity = static_cast<double>(recall_unit->experience()) /
-			recall_unit->max_experience();
+	const double xp_quantity = static_cast<double>(recall_unit->experience()) / recall_unit->max_experience();
 	double recall_value = recall_unit->cost() + xp_quantity * average_cost_of_advanced_unit;
 	int cost = current_team().recall_cost();
 	if (recall_unit->recall_cost() > -1) {
@@ -573,9 +572,9 @@ data* recruitment::get_best_leader_from_ratio_scores(std::vector<data>& leader_d
 		if (!leader_matches_job(data, job)) {
 			continue;
 		}
-		double desired_ammount = data.ratio_score / ratio_score_sum * (total_recruit_count + 1);
-		double current_ammount = data.recruit_count;
-		double difference = desired_ammount - current_ammount;
+		const double desired_ammount = data.ratio_score / ratio_score_sum * (total_recruit_count + 1);
+		const double current_ammount = data.recruit_count;
+		const double difference = desired_ammount - current_ammount;
 		if (difference > biggest_difference) {
 			biggest_difference = difference;
 			best_leader_data = &data;
@@ -592,7 +591,7 @@ data* recruitment::get_best_leader_from_ratio_scores(std::vector<data>& leader_d
 const std::string recruitment::get_best_recruit_from_scores(const data& leader_data,
 		const config* job) {
 	assert(job);
-	std::string pattern_type = get_random_pattern_type_if_exists(leader_data, job);
+	const std::string pattern_type = get_random_pattern_type_if_exists(leader_data, job);
 	if (!pattern_type.empty()) {
 		LOG_AI_RECRUITMENT << "Randomly chosen pattern_type: " << pattern_type;
 	}
@@ -615,8 +614,8 @@ const std::string recruitment::get_best_recruit_from_scores(const data& leader_d
 			}
 		}
 
-		double desired_ammount = score * (total_own_units_ + 1);
-		double current_ammount = own_units_count_[unit];
+		const double desired_ammount = score * (total_own_units_ + 1);
+		const double current_ammount = own_units_count_[unit];
 		double difference = desired_ammount - current_ammount;
 		if (scouts_wanted_ > 0 && recruit_matches_type(unit, "scout")) {
 			difference += 1000.;
@@ -649,8 +648,8 @@ void recruitment::compare_cost_maps_and_update_important_hexes(
 	double biggest_border_movecost = 0;
 
 	map.for_each_walkable_loc([&](map_location loc) {
-		double my_cost_average = my_cost_map.get_average_cost_at(loc);
-		double enemy_cost_average = enemy_cost_map.get_average_cost_at(loc);
+		const double my_cost_average = my_cost_map.get_average_cost_at(loc);
+		const double enemy_cost_average = enemy_cost_map.get_average_cost_at(loc);
 		if (my_cost_average == -1 || enemy_cost_average == -1) {
 			return;
 		}
@@ -658,7 +657,7 @@ void recruitment::compare_cost_maps_and_update_important_hexes(
 		// to favor high cost hexes (a bit).
 		if (std::abs(my_cost_average - MAP_OFFENSIVE_SHIFT - enemy_cost_average) <
 				MAP_BORDER_THICKNESS * average_local_cost_[loc]) {
-			double border_movecost = (my_cost_average + enemy_cost_average) / 2;
+			const double border_movecost = (my_cost_average + enemy_cost_average) / 2;
 			important_hexes_candidates[loc] = border_movecost;
 
 			if (border_movecost < smallest_border_movecost) {
@@ -668,11 +667,10 @@ void recruitment::compare_cost_maps_and_update_important_hexes(
 				biggest_border_movecost = border_movecost;
 			}
 		}
-
 	});
 
-	double threshold = (biggest_border_movecost - smallest_border_movecost) *
-			MAP_BORDER_WIDTH + smallest_border_movecost;
+	const double threshold
+		= (biggest_border_movecost - smallest_border_movecost) * MAP_BORDER_WIDTH + smallest_border_movecost;
 	for (const border_cost_map::value_type& candidate : important_hexes_candidates) {
 		if (candidate.second < threshold) {
 			important_hexes_.insert(candidate.first);
@@ -694,13 +692,12 @@ double recruitment::get_average_defense(const std::string& u_type) const {
 	int total_terrains = 0;
 	for (const terrain_count_map::value_type& entry : important_terrain_) {
 		const t_translation::terrain_code& terrain = entry.first;
-		int count = entry.second;
-		int defense = 100 - u_info->movement_type().defense_modifier(terrain);
+		const int count = entry.second;
+		const int defense = 100 - u_info->movement_type().defense_modifier(terrain);
 		summed_defense += static_cast<long>(defense) * count;
 		total_terrains += count;
 	}
-	double average_defense = (total_terrains == 0) ? 0.0 :
-			static_cast<double>(summed_defense) / total_terrains;
+	const double average_defense = (total_terrains == 0) ? 0.0 : static_cast<double>(summed_defense) / total_terrains;
 	return average_defense;
 }
 
@@ -730,7 +727,7 @@ const  pathfind::full_cost_map recruitment::get_cost_map_of_side(int side) const
 
 	// If this side has not so many units yet, add unit_types with the leaders position as origin.
 	if (unit_count < UNIT_THRESHOLD) {
-		std::vector<unit_map::const_iterator> leaders = units.find_leaders(side);
+		const std::vector<unit_map::const_iterator> leaders = units.find_leaders(side);
 		for (const unit_map::const_iterator& leader : leaders) {
 			// First add team-recruits (it's fine when (team-)recruits are added multiple times).
 			for (const std::string& recruit : team.recruits()) {
@@ -788,7 +785,7 @@ void recruitment::update_average_local_cost() {
 
 	for(int x = 0; x < map.w(); ++x) {
 		for (int y = 0; y < map.h(); ++y) {
-			map_location loc(x, y);
+			const map_location loc(x, y);
 			int summed_cost = 0;
 			int count = 0;
 			for (const std::string& recruit : team.recruits()) {
@@ -796,7 +793,7 @@ void recruitment::update_average_local_cost() {
 				if (!unit_type) {
 					continue;
 				}
-				int cost = unit_type->movement_type().get_movement().cost(map[loc]);
+				const int cost = unit_type->movement_type().get_movement().cost(map[loc]);
 				if (cost < 99) {
 					summed_cost += cost;
 					++count;
@@ -896,8 +893,8 @@ double recruitment::compare_unit_types(const std::string& a, const std::string& 
 		ERR_AI_RECRUITMENT << "Couldn't find unit type: " << ((type_a) ? b : a) << ".";
 		return 0.0;
 	}
-	double defense_a = get_average_defense(a);
-	double defense_b = get_average_defense(b);
+	const double defense_a = get_average_defense(a);
+	const double defense_b = get_average_defense(b);
 
 	const double* cache_value = get_cached_combat_value(a, b, defense_a, defense_b);
 	if (cache_value) {
@@ -912,10 +909,10 @@ double recruitment::compare_unit_types(const std::string& a, const std::string& 
 	// b attacks a
 	simulate_attack(type_b, type_a, defense_b, defense_a, &damage_to_b, &damage_to_a);
 
-	int a_cost = (type_a->cost() > 0) ? type_a->cost() : 1;
-	int b_cost = (type_b->cost() > 0) ? type_b->cost() : 1;
-	int a_max_hp = (type_a->hitpoints() > 0) ? type_a->hitpoints() : 1;
-	int b_max_hp = (type_b->hitpoints() > 0) ? type_b->hitpoints() : 1;
+	const int a_cost = (type_a->cost() > 0) ? type_a->cost() : 1;
+	const int b_cost = (type_b->cost() > 0) ? type_b->cost() : 1;
+	const int a_max_hp = (type_a->hitpoints() > 0) ? type_a->hitpoints() : 1;
+	const int b_max_hp = (type_b->hitpoints() > 0) ? type_b->hitpoints() : 1;
 
 	double retval = 1.;
 	// There are rare cases where a unit deals 0 damage (eg. Elvish Lady).
@@ -928,8 +925,8 @@ double recruitment::compare_unit_types(const std::string& a, const std::string& 
 		retval = -2.;
 	} else {
 		// Normal case
-		double value_of_a = damage_to_b / (b_max_hp * a_cost);
-		double value_of_b = damage_to_a / (a_max_hp * b_cost);
+		const double value_of_a = damage_to_b / (b_max_hp * a_cost);
+		const double value_of_b = damage_to_a / (a_max_hp * b_cost);
 
 		if (value_of_a > value_of_b) {
 			retval = value_of_a / value_of_b;
@@ -977,14 +974,14 @@ void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
 			possible_recruits.insert(team.recruits().begin(), team.recruits().end());
 			// Add extra recruits.
 			const std::vector<unit_map::const_iterator> leaders = units.find_leaders(team.side());
-			for (unit_map::const_iterator leader : leaders) {
+			for(const unit_map::const_iterator leader : leaders) {
 				possible_recruits.insert(leader->recruits().begin(), leader->recruits().end());
 			}
 			// Insert set in enemy_units.
 			for (const std::string& possible_recruit : possible_recruits) {
 				const unit_type* recruit_type = unit_types.find(possible_recruit);
 				if (recruit_type) {
-					int hp = recruit_type->hitpoints();
+					const int hp = recruit_type->hitpoints();
 					enemy_units.emplace_back(possible_recruit, hp);
 				}
 			}
@@ -1000,7 +997,7 @@ void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
 
 		for (const unit_hp_vector::value_type& entry : enemy_units) {
 			const std::string& enemy_unit = entry.first;
-			int enemy_unit_hp = entry.second;
+			const int enemy_unit_hp = entry.second;
 			for (const std::string& recruit : leader.recruits) {
 				double score = compare_unit_types(recruit, enemy_unit);
 				score *= enemy_unit_hp;
@@ -1016,19 +1013,19 @@ void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
 		double max = -99999.;
 		double sum = 0;
 		for (const simple_score_map::value_type& entry : temp_scores) {
-			double score = entry.second;
+			const double score = entry.second;
 			if (score > max) {
 				max = score;
 			}
 			sum += score;
 		}
-		double average = sum / temp_scores.size();
+		const double average = sum / temp_scores.size();
 
 		// What we do now is a linear transformation.
 		// We want to map the scores in temp_scores to something between 0 and 100.
 		// The max score shall always be 100.
 		// The min score depends on the aspect "recruitment_diversity".
-		double new_100 = max;
+		const double new_100 = max;
 		double score_threshold = get_recruitment_diversity();
 		if (score_threshold <= 0) {
 			score_threshold = 0.0001;
@@ -1041,7 +1038,7 @@ void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
 
 		for (const simple_score_map::value_type& entry : temp_scores) {
 			const std::string& recruit = entry.first;
-			double score = entry.second;
+			const double score = entry.second;
 
 			// Here we transform.
 			// (If score <= new_0 then normalized_score will be 0)
@@ -1066,8 +1063,8 @@ const double* recruitment::get_cached_combat_value(const std::string& a, const s
 	const double* best_value = nullptr;
 	const std::set<cached_combat_value>& cache = combat_cache_[a][b];
 	for (const cached_combat_value& entry : cache) {
-		double distance_a = std::abs(entry.a_defense - a_defense);
-		double distance_b = std::abs(entry.b_defense - b_defense);
+		const double distance_a = std::abs(entry.a_defense - a_defense);
+		const double distance_b = std::abs(entry.b_defense - b_defense);
 		if (distance_a <= COMBAT_CACHE_TOLERANCY && distance_b <= COMBAT_CACHE_TOLERANCY) {
 			if(distance_a + distance_b <= best_distance) {
 				best_distance = distance_a + distance_b;
@@ -1154,8 +1151,8 @@ void recruitment::simulate_attack(
 		ERR_AI_RECRUITMENT << "nullptr pointer in simulate_attack()";
 		return;
 	}
-	const_attack_itors attacker_weapons = attacker->attacks();
-	const_attack_itors defender_weapons = defender->attacks();
+	const const_attack_itors attacker_weapons = attacker->attacks();
+	const const_attack_itors defender_weapons = defender->attacks();
 
 	std::shared_ptr<attack_simulation> best_att_attack;
 
@@ -1208,9 +1205,9 @@ config* recruitment::get_most_important_job() {
 		if (job.empty()) {
 			continue;
 		}
-		int importance = job["importance"].to_int(1);
+		const int importance = job["importance"].to_int(1);
 		int number = job["number"].to_int(99999);
-		bool total = job["total"].to_bool(false);
+		const bool total = job["total"].to_bool(false);
 		if (total) {
 			// If the total flag is set we have to subtract
 			// all existing units which matches the type.
@@ -1350,14 +1347,14 @@ bool recruitment::limit_ok(const std::string& recruit) const {
 	const config aspect = get_recruitment_instructions();
 
 	for (const config& limit : aspect.child_range("limit")) {
-		std::vector<std::string> types = utils::split(limit["type"]);
+		const std::vector<std::string> types = utils::split(limit["type"]);
 		// First check if the recruit matches one of the types.
 		if (recruit_matches_types(recruit, types)) {
 			// Count all own existing units which matches the type.
 			int count = 0;
 			for (const count_map::value_type& entry : own_units_count_) {
 				const std::string& unit = entry.first;
-				int number = entry.second;
+				const int number = entry.second;
 				if (recruit_matches_types(unit, types)) {
 					count += number;
 				}
@@ -1377,7 +1374,7 @@ bool recruitment::limit_ok(const std::string& recruit) const {
  */
 bool recruitment::recruit_matches_job(const std::string& recruit, const config* job) const {
 	assert(job);
-	std::vector<std::string> job_types = utils::split(job->operator[]("type"));
+	const std::vector<std::string> job_types = utils::split(job->operator[]("type"));
 	return recruit_matches_types(recruit, job_types);
 }
 
@@ -1454,10 +1451,10 @@ double recruitment::get_estimated_income(int turns) const {
 
 	double total_income = 0;
 	for (int i = 1; i <= turns; ++i) {
-		double income = (own_villages + village_gain * i) * game_config::village_income;
-		double upkeep = resources::gameboard->side_upkeep(get_side()) + unit_gain * i -
-				(own_villages + village_gain * i) * game_config::village_support;
-		double resulting_income = team.base_income() + income - std::max(0., upkeep);
+		const double income = (own_villages + village_gain * i) * game_config::village_income;
+		const double upkeep = resources::gameboard->side_upkeep(get_side()) + unit_gain * i
+			- (own_villages + village_gain * i) * game_config::village_support;
+		const double resulting_income = team.base_income() + income - std::max(0., upkeep);
 		total_income += resulting_income;
 	}
 	return total_income;
@@ -1499,8 +1496,8 @@ double recruitment::get_unit_ratio() const {
 		if (unit.incapacitated() || unit.total_movement() <= 0 || unit.can_recruit()) {
 			continue;
 		}
-		double value = unit.cost() *
-			static_cast<double>(unit.hitpoints()) / static_cast<double>(unit.max_hitpoints());
+		const double value
+			= unit.cost() * static_cast<double>(unit.hitpoints()) / static_cast<double>(unit.max_hitpoints());
 		if (current_team().is_enemy(unit.side())) {
 			enemy_total_value += value;
 		} else {
@@ -1528,8 +1525,8 @@ double recruitment::get_unit_ratio() const {
 	// Then we return the minimum.
 	// This prevents cases where side1 will recruit until the save_gold begin threshold
 	// is reached, and side2 won't recruit anything. (assuming side1 and side2 are allied)
-	double own_ratio = (own_total_value / enemy_total_value) * allies_count;
-	double team_ratio = team_total_value / enemy_total_value;
+	const double own_ratio = (own_total_value / enemy_total_value) * allies_count;
+	const double team_ratio = team_total_value / enemy_total_value;
 	return std::min<double>(own_ratio, team_ratio);
 }
 
@@ -1542,13 +1539,13 @@ void recruitment::update_state() {
 		return;
 	}
 	// Retrieve from aspect.
-	int spend_all_gold = get_recruitment_save_gold()["spend_all_gold"].to_int(-1);
+	const int spend_all_gold = get_recruitment_save_gold()["spend_all_gold"].to_int(-1);
 	if (spend_all_gold > 0 && current_team().gold() >= spend_all_gold) {
 		state_ = SPEND_ALL_GOLD;
 		LOG_AI_RECRUITMENT << "Changed state_ to SPEND_ALL_GOLD.";
 		return;
 	}
-	double ratio = get_unit_ratio();
+	const double ratio = get_unit_ratio();
 	double income_estimation = 1.;
 	if (!get_recruitment_save_gold()["save_on_negative_income"].to_bool(false)) {
 		income_estimation = get_estimated_income(SAVE_GOLD_FORECAST_TURNS);
@@ -1557,8 +1554,8 @@ void recruitment::update_state() {
 	LOG_AI_RECRUITMENT << "Estimated income is " << income_estimation;
 
 	// Retrieve from aspect.
-	double save_gold_begin = get_recruitment_save_gold()["begin"].to_double(1.5);
-	double save_gold_end = get_recruitment_save_gold()["end"].to_double(1.1);
+	const double save_gold_begin = get_recruitment_save_gold()["begin"].to_double(1.5);
+	const double save_gold_end = get_recruitment_save_gold()["end"].to_double(1.1);
 
 	if (state_ == NORMAL && ratio > save_gold_begin && income_estimation > 0) {
 		state_ = SAVE_GOLD;
@@ -1632,7 +1629,7 @@ void recruitment::do_similarity_penalty(std::vector<data>* leader_data) const {
  * Called at the beginning and whenever the recruitment list changes.
  */
 int recruitment::get_cheapest_unit_cost_for_leader(const unit_map::const_iterator& leader) {
-	std::map<std::size_t, int>::const_iterator it = cheapest_unit_costs_.find(leader->underlying_id());
+	const std::map<std::size_t, int>::const_iterator it = cheapest_unit_costs_.find(leader->underlying_id());
 	if (it != cheapest_unit_costs_.end()) {
 		return it->second;
 	}
@@ -1749,13 +1746,13 @@ void recruitment::update_scouts_wanted() {
 			++neutral_villages;
 		}
 	}
-	double our_share = static_cast<double>(neutral_villages) / resources::gameboard->teams().size();
+	const double our_share = static_cast<double>(neutral_villages) / resources::gameboard->teams().size();
 
 	// The villages per scout is for a two-side battle,
 	// accounting for all neutral villages on the map.
 	// We only look at our share of villages, so we halve it,
 	// making us get twice as many scouts.
-	double villages_per_scout = (VILLAGE_PER_SCOUT_MULTIPLICATOR * get_villages_per_scout()) / 2;
+	const double villages_per_scout = (VILLAGE_PER_SCOUT_MULTIPLICATOR * get_villages_per_scout()) / 2;
 
 	scouts_wanted_ = (villages_per_scout > 0) ? std::round(our_share / villages_per_scout) : 0;
 
@@ -1832,16 +1829,16 @@ recruitment_aspect::recruitment_aspect(readonly_context &context, const config &
 		parsed_cfg.add_child("recruit", config {"importance", 0});
 	}
 	// Finally, populate our lists
-	for (config job : parsed_cfg.child_range("recruit")) {
+	for(const config job : parsed_cfg.child_range("recruit")) {
 		create_job(jobs_, job);
 	}
-	for (config lim : parsed_cfg.child_range("limit")) {
+	for(const config lim : parsed_cfg.child_range("limit")) {
 		create_limit(limits_, lim);
 	}
-	std::function<void(std::vector<std::shared_ptr<recruit_job>>&, const config&)> factory_jobs =
-		std::bind(&recruitment_aspect::create_job, *this, std::placeholders::_1, std::placeholders::_2);
-	std::function<void(std::vector<std::shared_ptr<recruit_limit>>&, const config&)> factory_limits =
-		std::bind(&recruitment_aspect::create_limit, *this, std::placeholders::_1, std::placeholders::_2);
+	const std::function<void(std::vector<std::shared_ptr<recruit_job>>&, const config&)> factory_jobs
+		= std::bind(&recruitment_aspect::create_job, *this, std::placeholders::_1, std::placeholders::_2);
+	const std::function<void(std::vector<std::shared_ptr<recruit_limit>>&, const config&)> factory_limits
+		= std::bind(&recruitment_aspect::create_limit, *this, std::placeholders::_1, std::placeholders::_2);
 	register_vector_property(property_handlers(), "recruit", jobs_, factory_jobs);
 	register_vector_property(property_handlers(), "limit", limits_, factory_limits);
 }

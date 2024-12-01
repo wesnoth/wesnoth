@@ -73,7 +73,7 @@ private:
 	void set_up_image_paths()
 	{
 		config cfg;
-		game_config_view v = game_config_view::wrap(cfg);
+		const game_config_view v = game_config_view::wrap(cfg);
 		cfg.add_child("binary_path",
 			      create_path_config("data/core"));
 
@@ -119,7 +119,7 @@ BOOST_AUTO_TEST_SUITE(image_modification_parsing)
  */
 BOOST_AUTO_TEST_CASE(test_modificaiton_queue_order)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
 	modification_queue queue;
 
@@ -160,9 +160,9 @@ BOOST_AUTO_TEST_CASE(test_modificaiton_queue_order)
 /** Tests if the TC modification is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_tc_modification_decoding)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~TC(1,blue)");
+	const modification_queue queue = modification::decode("~TC(1,blue)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -174,7 +174,7 @@ BOOST_AUTO_TEST_CASE(test_tc_modification_decoding)
 	const std::vector<color_t>& old_color = game_config::tc_info("blue");
 	// The first team color is red
 	const color_range& new_color = game_config::color_info("red");
-	color_range_map expected = recolor_range(new_color, old_color);
+	const color_range_map expected = recolor_range(new_color, old_color);
 
 	BOOST_CHECK(expected == mod->map());
 }
@@ -182,9 +182,9 @@ BOOST_AUTO_TEST_CASE(test_tc_modification_decoding)
 /** Tests if the TC modification with invalid arguments is ignored */
 BOOST_AUTO_TEST_CASE(test_tc_modification_decoding_invalid_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~TC()~TC(1)~TC(0,blue)");
+	const modification_queue queue = modification::decode("~TC()~TC(1)~TC(0,blue)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 0);
 }
@@ -192,9 +192,9 @@ BOOST_AUTO_TEST_CASE(test_tc_modification_decoding_invalid_args)
 /** Tests if the RC modification is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_rc_modification_decoding)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~RC(red>blue)");
+	const modification_queue queue = modification::decode("~RC(red>blue)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -205,7 +205,7 @@ BOOST_AUTO_TEST_CASE(test_rc_modification_decoding)
 
 	const std::vector<color_t>& old_color = game_config::tc_info("red");
 	const color_range& new_color = game_config::color_info("blue");
-	color_range_map expected = recolor_range(new_color, old_color);
+	const color_range_map expected = recolor_range(new_color, old_color);
 
 	BOOST_CHECK(expected == mod->map());
 }
@@ -213,9 +213,9 @@ BOOST_AUTO_TEST_CASE(test_rc_modification_decoding)
 /** Tests if the RC modification with invalid arguments is ignored */
 BOOST_AUTO_TEST_CASE(test_rc_modification_decoding_invalid_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~RC()~RC(blue)~RC(>)");
+	const modification_queue queue = modification::decode("~RC()~RC(blue)~RC(>)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 0);
 }
@@ -223,10 +223,9 @@ BOOST_AUTO_TEST_CASE(test_rc_modification_decoding_invalid_args)
 /** Tests if the PAL modification is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_pal_modification_decoding)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue =
-		modification::decode("~PAL(000000,005000 > FFFFFF,FF00FF)");
+	const modification_queue queue = modification::decode("~PAL(000000,005000 > FFFFFF,FF00FF)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -240,7 +239,7 @@ BOOST_AUTO_TEST_CASE(test_pal_modification_decoding)
 	color_range_map expected;
 
 	for(std::size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
-	environment_setup env_setup;
+		const environment_setup env_setup;
 
 		expected[old_palette[i]] = new_palette[i];
 	}
@@ -251,10 +250,9 @@ BOOST_AUTO_TEST_CASE(test_pal_modification_decoding)
 /** Tests if the PAL modification with invalid arguments is ignored */
 BOOST_AUTO_TEST_CASE(test_pal_modification_decoding_invalid_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue =
-		modification::decode("~PAL()~PAL(>)");
+	const modification_queue queue = modification::decode("~PAL()~PAL(>)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 0);
 }
@@ -262,9 +260,9 @@ BOOST_AUTO_TEST_CASE(test_pal_modification_decoding_invalid_args)
 /** Tests if the FL modification is correctly decoded without arguments */
 BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_default)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~FL()");
+	const modification_queue queue = modification::decode("~FL()");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -280,9 +278,9 @@ BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_default)
 /** Tests if the FL modification is correctly decoded with the horiz argument */
 BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_horiz)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~FL(horiz)");
+	const modification_queue queue = modification::decode("~FL(horiz)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -298,9 +296,9 @@ BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_horiz)
 /** Tests if the FL modification is correctly decoded with the vert argument */
 BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_vert)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~FL(vert)");
+	const modification_queue queue = modification::decode("~FL(vert)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -316,9 +314,9 @@ BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_vert)
 /** Tests if the FL modification is correctly decoded with both horiz and vert */
 BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_horiz_and_vert)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~FL(horiz,vert)");
+	const modification_queue queue = modification::decode("~FL(horiz,vert)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -334,9 +332,9 @@ BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_horiz_and_vert)
 /** Tests if the GS modification is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_gs_modification_decoding)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~GS()");
+	const modification_queue queue = modification::decode("~GS()");
 
 	BOOST_REQUIRE(queue.size() == 1);
 
@@ -349,9 +347,9 @@ BOOST_AUTO_TEST_CASE(test_gs_modification_decoding)
 /** Tests if the CROP modification without arguments is ignored */
 BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_no_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~CROP()");
+	const modification_queue queue = modification::decode("~CROP()");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 0);
 }
@@ -359,9 +357,9 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_no_args)
 /** Tests if the CROP modification is correctly decoded when given one argument */
 BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_1_arg)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~CROP(1)");
+	const modification_queue queue = modification::decode("~CROP(1)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -381,9 +379,9 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_1_arg)
 /** Tests if the CROP modification is correctly decoded when given two args */
 BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_2_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~CROP(1,2)");
+	const modification_queue queue = modification::decode("~CROP(1,2)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -403,9 +401,9 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_2_args)
 /** Tests if the CROP modification is correctly decoded when given three args */
 BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_3_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~CROP(1,2,3)");
+	const modification_queue queue = modification::decode("~CROP(1,2,3)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -425,9 +423,9 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_3_args)
 /** Tests if the CROP modification is correctly decoded when given four args */
 BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_4_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~CROP(1,2,3,4)");
+	const modification_queue queue = modification::decode("~CROP(1,2,3,4)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -450,9 +448,9 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_4_args)
  */
 BOOST_AUTO_TEST_CASE(test_blit_modification_decoding_1_arg)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~BLIT(wesnoth-icon.png)");
+	const modification_queue queue = modification::decode("~BLIT(wesnoth-icon.png)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -472,9 +470,9 @@ BOOST_AUTO_TEST_CASE(test_blit_modification_decoding_1_arg)
  */
 BOOST_AUTO_TEST_CASE(test_blit_modification_decoding_3_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~BLIT(wesnoth-icon.png,1,2)");
+	const modification_queue queue = modification::decode("~BLIT(wesnoth-icon.png,1,2)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -491,14 +489,13 @@ BOOST_AUTO_TEST_CASE(test_blit_modification_decoding_3_args)
 /** Tests if the BLIT modification with invalid arguments is ignored */
 BOOST_AUTO_TEST_CASE(test_blit_modification_decoding_invalid_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue =
-		modification::decode("~BLIT()"
-				     "~BLIT(wesnoth-icon.png,1,-2)"
-				     "~BLIT(wesnoth-icon.png,-1,2)"
-				     "~BLIT(wesnoth-icon.png,-1,-2)"
-				     "~BLIT(wesnoth-icon.png,1,2,3)");
+	const modification_queue queue = modification::decode("~BLIT()"
+														  "~BLIT(wesnoth-icon.png,1,-2)"
+														  "~BLIT(wesnoth-icon.png,-1,2)"
+														  "~BLIT(wesnoth-icon.png,-1,-2)"
+														  "~BLIT(wesnoth-icon.png,1,2,3)");
 
 	BOOST_CHECK_EQUAL(queue.size(), 3);
 }
@@ -509,9 +506,9 @@ BOOST_AUTO_TEST_CASE(test_blit_modification_decoding_invalid_args)
  */
 BOOST_AUTO_TEST_CASE(test_mask_modification_decoding_1_arg)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~MASK(wesnoth-icon.png)");
+	const modification_queue queue = modification::decode("~MASK(wesnoth-icon.png)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -531,9 +528,9 @@ BOOST_AUTO_TEST_CASE(test_mask_modification_decoding_1_arg)
  */
 BOOST_AUTO_TEST_CASE(test_mask_modification_decoding_3_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~MASK(wesnoth-icon.png,3,4)");
+	const modification_queue queue = modification::decode("~MASK(wesnoth-icon.png,3,4)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -550,13 +547,12 @@ BOOST_AUTO_TEST_CASE(test_mask_modification_decoding_3_args)
 /** Tests if the MASK modification with invalid arguments is ignored */
 BOOST_AUTO_TEST_CASE(test_mask_modification_decoding_invalid_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue =
-		modification::decode("~MASK()"
-				     "~MASK(wesnoth-icon.png,3,-4)"
-				     "~MASK(wesnoth-icon.png,-3,4)"
-				     "~MASK(wesnoth-icon.png,-3,-4)");
+	const modification_queue queue = modification::decode("~MASK()"
+														  "~MASK(wesnoth-icon.png,3,-4)"
+														  "~MASK(wesnoth-icon.png,-3,4)"
+														  "~MASK(wesnoth-icon.png,-3,-4)");
 
 	BOOST_CHECK_EQUAL(queue.size(), 0);
 }
@@ -564,9 +560,9 @@ BOOST_AUTO_TEST_CASE(test_mask_modification_decoding_invalid_args)
 /** Tests if the L modification without arguments is ignored */
 BOOST_AUTO_TEST_CASE(test_l_modification_decoding_no_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~L()");
+	const modification_queue queue = modification::decode("~L()");
 
 	BOOST_CHECK_EQUAL(queue.size(), 0);
 }
@@ -577,9 +573,9 @@ BOOST_AUTO_TEST_CASE(test_l_modification_decoding_no_args)
  */
 BOOST_AUTO_TEST_CASE(test_l_modification_decoding_1_arg)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~L(wesnoth-icon.png)");
+	const modification_queue queue = modification::decode("~L(wesnoth-icon.png)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -594,9 +590,9 @@ BOOST_AUTO_TEST_CASE(test_l_modification_decoding_1_arg)
 /** Tests if the SCALE modification without arguments is ignored */
 BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_no_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~SCALE()");
+	const modification_queue queue = modification::decode("~SCALE()");
 
 	BOOST_CHECK_EQUAL(queue.size(), 0);
 }
@@ -604,9 +600,9 @@ BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_no_args)
 /** Tests if the SCALE modification with one argument is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_1_arg)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~SCALE(3)");
+	const modification_queue queue = modification::decode("~SCALE(3)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -622,9 +618,9 @@ BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_1_arg)
 /** Tests if the SCALE modification with two arguments is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_2_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~SCALE(4,5)");
+	const modification_queue queue = modification::decode("~SCALE(4,5)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -640,9 +636,9 @@ BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_2_args)
 /** Tests if the O modification with a percent argument is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_o_modification_decoding_percent_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~O(45%)");
+	const modification_queue queue = modification::decode("~O(45%)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -658,9 +654,9 @@ BOOST_AUTO_TEST_CASE(test_o_modification_decoding_percent_args)
 /** Tests if the O modification with a fraction argument is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_o_modification_decoding_fraction_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~O(0.34)");
+	const modification_queue queue = modification::decode("~O(0.34)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -676,9 +672,9 @@ BOOST_AUTO_TEST_CASE(test_o_modification_decoding_fraction_args)
 /** Tests if the BL modification without arguments is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_bl_modification_decoding_no_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~BL()");
+	const modification_queue queue = modification::decode("~BL()");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -693,9 +689,9 @@ BOOST_AUTO_TEST_CASE(test_bl_modification_decoding_no_args)
 /** Tests if the BL modification with one argument is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_bl_modification_decoding)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~BL(2)");
+	const modification_queue queue = modification::decode("~BL(2)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -710,14 +706,14 @@ BOOST_AUTO_TEST_CASE(test_bl_modification_decoding)
 /** Tests if the R, G and B modifications without args are correctly decoded */
 BOOST_AUTO_TEST_CASE(test_rgb_modification_decoding_no_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
 	modification_queue queue = modification::decode("~R()~G()~B()");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 3);
 
 	for(int i = 0; i < 3; i++) {
-	environment_setup env_setup;
+		const environment_setup env_setup;
 
 		cs_modification* mod = dynamic_cast<cs_modification*>(queue.top());
 
@@ -735,9 +731,9 @@ BOOST_AUTO_TEST_CASE(test_rgb_modification_decoding_no_args)
 /** Tests if the R modification with one argument is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_r_modification_decoding)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~R(123)");
+	const modification_queue queue = modification::decode("~R(123)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -754,9 +750,9 @@ BOOST_AUTO_TEST_CASE(test_r_modification_decoding)
 /** Tests if the G modification with one argument is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_g_modification_decoding)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~G(132)");
+	const modification_queue queue = modification::decode("~G(132)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -773,9 +769,9 @@ BOOST_AUTO_TEST_CASE(test_g_modification_decoding)
 /** Tests if the B modification with one argument is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_b_modification_decoding)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~B(312)");
+	const modification_queue queue = modification::decode("~B(312)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -792,9 +788,9 @@ BOOST_AUTO_TEST_CASE(test_b_modification_decoding)
 /** Tests if the BG modification without arguments is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_no_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~BG()");
+	const modification_queue queue = modification::decode("~BG()");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -812,9 +808,9 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_no_args)
 /** Tests if the BG modification with one argument is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_1_arg)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~BG(1)");
+	const modification_queue queue = modification::decode("~BG(1)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -832,9 +828,9 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_1_arg)
 /** Tests if the BG modification with two arguments is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_2_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~BG(1,2)");
+	const modification_queue queue = modification::decode("~BG(1,2)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -852,9 +848,9 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_2_args)
 /** Tests if the BG modification with three arguments is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_3_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~BG(1,2,3)");
+	const modification_queue queue = modification::decode("~BG(1,2,3)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
@@ -872,9 +868,9 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_3_args)
 /** Tests if the BG modification with four arguments is correctly decoded */
 BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_4_args)
 {
-	environment_setup env_setup;
+	const environment_setup env_setup;
 
-	modification_queue queue = modification::decode("~BG(1,2,3,4)");
+	const modification_queue queue = modification::decode("~BG(1,2,3,4)");
 
 	BOOST_REQUIRE_EQUAL(queue.size(), 1);
 
