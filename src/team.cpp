@@ -479,7 +479,7 @@ int team::minimum_recruit_price() const
 		return info_.minimum_recruit_price;
 	}
 	int min = 20;
-	for(const std::string recruit : info_.can_recruit) {
+	for(const std::string& recruit : info_.can_recruit) {
 		const unit_type* ut = unit_types.find(recruit);
 		if(!ut) {
 			continue;

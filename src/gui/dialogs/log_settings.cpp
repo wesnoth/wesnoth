@@ -70,7 +70,7 @@ void log_settings::pre_show()
 		group<std::string>& group = groups_[this_domain];
 
 		grid* this_grid = logger_box.get_row_grid(i);
-		for(const std::string this_id : widget_id_) {
+		for(const std::string& this_id : widget_id_) {
 			widget* this_widget = this_grid->find(this_id, false);
 			toggle_button* button = dynamic_cast<toggle_button*>(this_widget);
 			if(button != nullptr) {
@@ -101,7 +101,7 @@ void log_settings::filter_text_changed(const std::string& text)
 
 void log_settings::post_show()
 {
-	for(const std::string this_domain : domain_list_) {
+	for(const std::string& this_domain : domain_list_) {
 		set_logger(this_domain);
 	}
 }
