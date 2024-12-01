@@ -198,7 +198,7 @@ std::vector<std::string> manager::get_required_not_enabled(const elem& e) const
 	const std::vector<std::string> required = get_required(e);
 	std::vector<std::string> result;
 
-	for(const std::string str : required) {
+	for(const std::string& str : required) {
 		if(!utils::contains(mods_, str)) {
 			result.push_back(str);
 		}

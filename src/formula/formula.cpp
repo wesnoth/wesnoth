@@ -346,7 +346,7 @@ private:
 		std::stringstream s;
 		s << '[';
 		bool first_item = true;
-		for(const expression_ptr a : items_) {
+		for(const expression_ptr& a : items_) {
 			if(!first_item) {
 				s << ',';
 			} else {

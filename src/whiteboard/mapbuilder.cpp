@@ -180,7 +180,7 @@ void mapbuilder::post_visit_team(std::size_t turn)
 
 	// Go backwards through the actions of this turn to identify
 	// which ones are moves that end a turn.
-	for(const action_ptr action : utils::reversed_view(applied_actions_this_turn_)) {
+	for(const action_ptr& action : utils::reversed_view(applied_actions_this_turn_)) {
 		const move_ptr move = std::dynamic_pointer_cast<class move>(action);
 		if(move) {
 			move->set_turn_number(0);
@@ -200,7 +200,7 @@ void mapbuilder::post_visit_team(std::size_t turn)
 void mapbuilder::restore_normal_map()
 {
 	//applied_actions_ contain only the actions that we applied to the unit map
-	for(const action_ptr act : utils::reversed_view(applied_actions_)) {
+	for(const action_ptr& act : utils::reversed_view(applied_actions_)) {
 		act->remove_temp_modifier(unit_map_);
 	}
 }
