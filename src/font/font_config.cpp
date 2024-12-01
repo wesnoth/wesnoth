@@ -128,15 +128,17 @@ manager::manager()
 	}
 
 	const std::string font_file = font_path + "/fonts.conf";
-	const std::string font_file_contents = filesystem::read_file(font_file);
-
-// msys2 crosscompiling for windows for whatever reason makes the cache directory prefer using drives other than C:
-// ie - D:\a\msys64\var\cache\fontconfig
-// fontconfig also does not seem to provide a way to set the cachedir for a specific platform
-// so load the fonts.conf file into memory and only for windows insert the cachedir configuration
+	const std::string font_file_contents = [&font_file]() {
+		auto contents = filesystem::read_file(font_file);
+		// msys2 crosscompiling for windows for whatever reason makes the cache directory prefer using drives other than
+		// C: ie - D:\a\msys64\var\cache\fontconfig fontconfig also does not seem to provide a way to set the cachedir
+		// for a specific platform so load the fonts.conf file into memory and only for windows insert the cachedir
+		// configuration
 #ifdef _WIN32
-	font_file_contents.insert(font_file_contents.find("</fontconfig>"), "<cachedir>"+filesystem::get_cache_dir()+"</cachedir>\n");
+		contents.insert(contents.find("</fontconfig>"), "<cachedir>" + filesystem::get_cache_dir() + "</cachedir>\n");
 #endif
+		return contents;
+	}();
 
 	if(!FcConfigParseAndLoadFromMemory(FcConfigGetCurrent(),
 							 reinterpret_cast<const FcChar8*>(font_file_contents.c_str()),
