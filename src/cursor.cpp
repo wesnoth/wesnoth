@@ -109,7 +109,7 @@ SDL_Cursor* create_cursor(surface surf)
 
 	// See https://wiki.libsdl.org/SDL_CreateCursor for documentation
 	// on the format that data has to be in to pass to SDL_CreateCursor
-	const_surface_lock lock(surf);
+	const const_surface_lock lock(surf);
 	const uint32_t* const pixels = lock.pixels();
 
 	for(int y = 0; y != surf->h; ++y) {

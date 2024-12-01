@@ -55,7 +55,7 @@ void manager::add(const sourcespec &spec)
 sourcespec manager::get(const std::string &id)
 {
 	config cfg;
-	positional_source_iterator it = sources_.find(id);
+	const positional_source_iterator it = sources_.find(id);
 	if(it != sources_.end()) {
 		it->second->write_config(cfg);
 	}
@@ -139,7 +139,7 @@ void positional_source::update(const std::chrono::steady_clock::time_point& time
 	if (time - last_played_ < min_delay_ || sound::is_sound_playing(id_))
 		return;
 
-	int i = randomness::rng::default_instance().get_random_int(1, 100);
+	const int i = randomness::rng::default_instance().get_random_int(1, 100);
 
 	if(i <= chance_) {
 		last_played_ = time;
@@ -153,7 +153,7 @@ void positional_source::update(const std::chrono::steady_clock::time_point& time
 
 		int distance_volume = DISTANCE_SILENT;
 		for(const map_location& l : locations_) {
-			int v = calculate_volume(l, disp);
+			const int v = calculate_volume(l, disp);
 			if(v < distance_volume) {
 				distance_volume = v;
 			}
@@ -174,7 +174,7 @@ void positional_source::update_positions(const std::chrono::steady_clock::time_p
 
 	int distance_volume = DISTANCE_SILENT;
 	for(std::vector<map_location>::iterator i = locations_.begin(); i != locations_.end(); ++i) {
-		int v = calculate_volume(*i, disp);
+		const int v = calculate_volume(*i, disp);
 		if(v < distance_volume) {
 			distance_volume = v;
 		}
@@ -195,9 +195,9 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 	if((check_shrouded_ && disp.shrouded(loc)) || (check_fogged_ && disp.fogged(loc)))
 		return DISTANCE_SILENT;
 
-	SDL_Rect area = disp.map_area();
-	map_location center = disp.hex_clicked_on(area.x + area.w / 2, area.y + area.h / 2);
-	int distance = distance_between(loc, center);
+	const SDL_Rect area = disp.map_area();
+	const map_location center = disp.hex_clicked_on(area.x + area.w / 2, area.y + area.h / 2);
+	const int distance = distance_between(loc, center);
 
 	if(distance <= range_) {
 		return 0;

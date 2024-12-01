@@ -53,8 +53,8 @@ namespace builtin_conditions {
 		if(!resources::gameboard) {
 			return false;
 		}
-		std::vector<std::pair<int,int>> counts = cfg.has_attribute("count")
-			? utils::parse_ranges_unsigned(cfg["count"]) : default_counts;
+		const std::vector<std::pair<int, int>> counts
+			= cfg.has_attribute("count") ? utils::parse_ranges_unsigned(cfg["count"]) : default_counts;
 		int match_count = 0;
 		const unit_filter ufilt(cfg);
 		for(const unit &i : resources::gameboard->units()) {
@@ -75,7 +75,7 @@ namespace builtin_conditions {
 					if(counts == default_counts && match_count) {
 						break;
 					}
-					scoped_recall_unit auto_store("this_unit", team.save_id_or_number(), t);
+					const scoped_recall_unit auto_store("this_unit", team.save_id_or_number(), t);
 					if(ufilt(*team.recall_list()[t])) {
 						++match_count;
 					}
@@ -90,8 +90,8 @@ namespace builtin_conditions {
 		std::set<map_location> res;
 		terrain_filter(cfg, resources::filter_con, false).get_locations(res);
 
-		std::vector<std::pair<int,int>> counts = cfg.has_attribute("count")
-		? utils::parse_ranges_unsigned(cfg["count"]) : default_counts;
+		const std::vector<std::pair<int, int>> counts
+			= cfg.has_attribute("count") ? utils::parse_ranges_unsigned(cfg["count"]) : default_counts;
 		return in_ranges<int>(res.size(), counts);
 	}
 
@@ -103,7 +103,7 @@ namespace builtin_conditions {
 			return true;
 		}
 		const std::string name = values["name"];
-		config::attribute_value value = resources::gamedata->get_variable_const(name);
+		const config::attribute_value value = resources::gamedata->get_variable_const(name);
 
 		if(auto n = values.get_config().attribute_count(); n > 2) {
 			lg::log_to_chat() << "[variable] name='" << name << "' found with multiple comparison attributes\n";

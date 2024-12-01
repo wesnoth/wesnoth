@@ -214,7 +214,7 @@ void multiline_text::delete_selection()
 void multiline_text::handle_mouse_selection(point mouse, const bool start_selection)
 {
 	mouse -= get_origin();
-	point text_offset(text_x_offset_, text_y_offset_);
+	const point text_offset(text_x_offset_, text_y_offset_);
 	// FIXME we don't test for overflow in width
 	if(mouse < text_offset
 		|| mouse.y >= static_cast<int>(text_y_offset_ + get_lines_count() * font::get_line_spacing_factor() * text_height_))
@@ -399,7 +399,7 @@ void multiline_text::signal_handler_mouse_motion(const event::ui_event event,
 			return; // without marking event as "handled"
 		}
 
-		point mouse = coordinate - get_origin();
+		const point mouse = coordinate - get_origin();
 		if (!get_label_link(mouse).empty()) {
 			cursor::set(cursor::HYPERLINK);
 		} else {
@@ -418,10 +418,10 @@ void multiline_text::signal_handler_left_button_down(const event::ui_event event
 	get_window()->keyboard_capture(this);
 	get_window()->mouse_capture();
 
-	point mouse_pos = get_mouse_position();
+	const point mouse_pos = get_mouse_position();
 
 	if (get_link_aware()) {
-		std::string link = get_label_link(mouse_pos - get_origin());
+		const std::string link = get_label_link(mouse_pos - get_origin());
 		DBG_GUI_E << "Clicked Link:\"" << link << "\"";
 
 		if (!link.empty()) {

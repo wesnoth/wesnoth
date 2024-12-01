@@ -54,7 +54,7 @@ std::vector<color_t> recolor_range_impl(const color_range& new_range, const Cont
 		const uint8_t old_avg = (old_c.r + old_c.g + old_c.b) / 3;
 
 		if(reference_avg && old_avg <= reference_avg) {
-			float old_ratio = static_cast<float>(old_avg) / reference_avg;
+			const float old_ratio = static_cast<float>(old_avg) / reference_avg;
 
 			clist.emplace_back(
 				std::min<uint32_t>(255u, static_cast<uint32_t>(old_ratio * mid_c.r + (1 - old_ratio) * min_c.r)),
@@ -62,7 +62,7 @@ std::vector<color_t> recolor_range_impl(const color_range& new_range, const Cont
 				std::min<uint32_t>(255u, static_cast<uint32_t>(old_ratio * mid_c.b + (1 - old_ratio) * min_c.b))
 			);
 		} else if(reference_avg != 255) {
-			float old_ratio = (255.0f - static_cast<float>(old_avg)) / (255.0f - reference_avg);
+			const float old_ratio = (255.0f - static_cast<float>(old_avg)) / (255.0f - reference_avg);
 
 			clist.emplace_back(
 				std::min<uint32_t>(255u, static_cast<uint32_t>(old_ratio * mid_c.r + (1 - old_ratio) * max_c.r)),
@@ -85,7 +85,7 @@ constexpr auto base_palette = []() {
 		res[index++] = {0, 0, i};
 
 		// Avoid duplicate entries on the first pass when i == j
-		if(uint8_t j = 255u - i; j != 0) {
+		if(const uint8_t j = 255u - i; j != 0) {
 			res[index++] = {j, j, 255};
 		}
 	}

@@ -101,14 +101,14 @@ team& readwrite_context_impl::current_team_w()
 }
 
 attack_result_ptr readwrite_context_impl::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
-	unit_map::iterator i = resources::gameboard->units().find(attacker_loc);
-	double m_aggression = i.valid() && i->can_recruit() ? get_leader_aggression() : get_aggression();
+	const unit_map::iterator i = resources::gameboard->units().find(attacker_loc);
+	const double m_aggression = i.valid() && i->can_recruit() ? get_leader_aggression() : get_aggression();
 	return actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon, m_aggression);
 }
 
 attack_result_ptr readonly_context_impl::check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
-	unit_map::iterator i = resources::gameboard->units().find(attacker_loc);
-	double m_aggression = i.valid() && i->can_recruit() ? get_leader_aggression() : get_aggression();
+	const unit_map::iterator i = resources::gameboard->units().find(attacker_loc);
+	const double m_aggression = i.valid() && i->can_recruit() ? get_leader_aggression() : get_aggression();
 	return actions::execute_attack_action(get_side(),false,attacker_loc,defender_loc,attacker_weapon, m_aggression);
 }
 
@@ -358,7 +358,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 
 		// Insert the trivial moves of staying on the same map location.
 		if (un_it->movement_left() > 0) {
-			std::pair<map_location,map_location> trivial_mv(un_it->get_location(), un_it->get_location());
+			const std::pair<map_location, map_location> trivial_mv(un_it->get_location(), un_it->get_location());
 			srcdst.insert(trivial_mv);
 			dstsrc.insert(trivial_mv);
 		}
@@ -399,7 +399,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			if(!enemy && resources::gameboard->map().is_village(dst)) {
 				for(const team& t : resources::gameboard->teams()) {
 					if(t.owns_village(dst)) {
-						int side = t.side();
+						const int side = t.side();
 						if(get_side() != side && !current_team().is_enemy(side)) {
 							friend_owns = true;
 						}
@@ -423,9 +423,9 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 
 void readonly_context_impl::add_aspects(std::vector< aspect_ptr > &aspects )
 {
-	for(aspect_ptr a : aspects) {
+	for(const aspect_ptr a : aspects) {
 		const std::string id = a->get_id();
-		known_aspect_map::iterator i = known_aspects_.find(id);
+		const known_aspect_map::iterator i = known_aspects_.find(id);
 		if (i != known_aspects_.end()) {
 			i->second->set(a);
 		} else {
@@ -436,7 +436,7 @@ void readonly_context_impl::add_aspects(std::vector< aspect_ptr > &aspects )
 
 void readonly_context_impl::add_facet(const std::string &id, const config &cfg) const
 {
-	known_aspect_map::const_iterator i = known_aspects_.find(id);
+	const known_aspect_map::const_iterator i = known_aspects_.find(id);
 	if (i != known_aspects_.end()) {
 		i->second->add_facet(cfg);
 	} else {
@@ -501,7 +501,7 @@ const unit_advancements_aspect& readonly_context_impl::get_advancements() const
 		return advancements_->get();
 	}
 
-	static unit_advancements_aspect uaa = unit_advancements_aspect();
+	static const unit_advancements_aspect uaa = unit_advancements_aspect();
 	return uaa;
 }
 
@@ -536,7 +536,7 @@ const attacks_vector& readonly_context_impl::get_attacks() const
 	if (attacks_) {
 		return attacks_->get();
 	}
-	static attacks_vector av;
+	static const attacks_vector av;
 	return av;
 }
 
@@ -545,7 +545,7 @@ const wfl::variant& readonly_context_impl::get_attacks_as_variant() const
 	if (attacks_) {
 		return attacks_->get_variant();
 	}
-	static wfl::variant v;
+	static const wfl::variant v;
 	return v;
 }
 
@@ -556,7 +556,7 @@ const terrain_filter& readonly_context_impl::get_avoid() const
 	}
 	config cfg;
 	cfg.add_child("not");
-	static terrain_filter tf(vconfig(cfg, true), resources::filter_con, false);
+	static const terrain_filter tf(vconfig(cfg, true), resources::filter_con, false);
 	return tf;
 }
 
@@ -616,7 +616,7 @@ engine_ptr readonly_context_impl::get_engine_by_cfg(const config& cfg)
 		return *en;
 	}
 
-	engine_factory::factory_map::iterator eng = engine_factory::get_list().find(engine_name);
+	const engine_factory::factory_map::iterator eng = engine_factory::get_list().find(engine_name);
 	if (eng == engine_factory::get_list().end()){
 		ERR_AI << "side "<<get_side()<<" : UNABLE TO FIND engine["<<
 			engine_name << ']';
@@ -624,7 +624,7 @@ engine_ptr readonly_context_impl::get_engine_by_cfg(const config& cfg)
 		return engine_ptr();
 	}
 
-	engine_ptr new_engine = eng->second->get_new_instance(*this,engine_name);
+	const engine_ptr new_engine = eng->second->get_new_instance(*this, engine_name);
 	if (!new_engine) {
 		ERR_AI << "side "<<get_side()<<" : UNABLE TO CREATE engine["<<
 			engine_name << ']';
@@ -1013,7 +1013,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 
 		typedef move_map::const_iterator Itor;
 		typedef std::pair<Itor,Itor> Range;
-		Range its = dstsrc.equal_range(locs[i]);
+		const Range its = dstsrc.equal_range(locs[i]);
 
 		map_location* const beg_used = used_locs;
 		map_location* end_used = used_locs + num_used_locs;
@@ -1048,20 +1048,21 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			}
 
 			// The 0.5 power avoids underestimating too much the damage of a wounded unit.
-			int64_t hp = static_cast<int>(std::sqrt(static_cast<double>(un.hitpoints()) / un.max_hitpoints()) * 1000);
+			const int64_t hp
+				= static_cast<int>(std::sqrt(static_cast<double>(un.hitpoints()) / un.max_hitpoints()) * 1000);
 			int64_t most_damage = 0;
 			for(const attack_type &att : un.attacks())
 			{
-				int damage = att.damage() * att.num_attacks() * (100 + tod_modifier);
+				const int damage = att.damage() * att.num_attacks() * (100 + tod_modifier);
 				if (damage > most_damage) {
 					most_damage = damage;
 				}
 			}
 
-			int64_t village_bonus = map_.is_village(terrain) ? 3 : 2;
-			int64_t defense = 100 - un.defense_modifier(terrain);
-			int64_t rating_64 = hp * defense * most_damage * village_bonus / 200;
-			int rating = rating_64;
+			const int64_t village_bonus = map_.is_village(terrain) ? 3 : 2;
+			const int64_t defense = 100 - un.defense_modifier(terrain);
+			const int64_t rating_64 = hp * defense * most_damage * village_bonus / 200;
+			const int rating = rating_64;
 			if(static_cast<int64_t>(rating) != rating_64) {
 				WRN_AI << "overflow in ai attack calculation";
 			}
@@ -1077,7 +1078,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 
 		if (!best_unit.valid()) continue;
 		map_location *pos = std::find(beg_used, end_used, best_unit);
-		int index = pos - beg_used;
+		const int index = pos - beg_used;
 		if (index == num_used_locs)
 			++num_used_locs;
 		else if (best_rating == ratings[index])
@@ -1103,9 +1104,9 @@ void readonly_context_impl::recalculate_move_maps() const
 	srcdst_ = move_map();
 	calculate_possible_moves(possible_moves_,srcdst_,dstsrc_,false,false,&get_avoid());
 	if (is_passive_leader("") && !is_passive_keep_sharing_leader("")) {
-		unit_map::iterator i = resources::gameboard->units().find_leader(get_side());
+		const unit_map::iterator i = resources::gameboard->units().find_leader(get_side());
 		if (i.valid()) {
-			map_location loc = i->get_location();
+			const map_location loc = i->get_location();
 			srcdst_.erase(loc);
 			for(move_map::iterator it = dstsrc_.begin(); it != dstsrc_.end(); ) {
 				if(it->second == loc) {
@@ -1214,7 +1215,7 @@ bool readonly_context_impl::is_active(const std::string &time_of_day, const std:
 	}
 
 	if(turns.empty() == false) {
-		int turn = resources::tod_manager->turn();
+		const int turn = resources::tod_manager->turn();
 		const std::vector<std::string>& turns_list = utils::split(turns);
 		for(std::vector<std::string>::const_iterator j = turns_list.begin(); j != turns_list.end() ; ++j ) {
 			const std::pair<int,int> range = utils::parse_range(*j);

@@ -33,9 +33,9 @@ namespace
 
 std::string generate_salt(std::size_t len)
 {
-	boost::mt19937 mt(std::time(nullptr));
+	const boost::mt19937 mt(std::time(nullptr));
 	auto salt = std::string(len, '0');
-	boost::uniform_int<> from_str(0, 63); // 64 possible values for base64
+	const boost::uniform_int<> from_str(0, 63); // 64 possible values for base64
 	boost::variate_generator< boost::mt19937, boost::uniform_int<>> get_char(mt, from_str);
 
 	for(std::size_t i = 0; i < len; i++) {

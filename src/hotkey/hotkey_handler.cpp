@@ -254,19 +254,19 @@ bool play_controller::hotkey_handler::do_execute_command(const hotkey::ui_comman
 {
 	DBG_G << "play_controller::do_execute_command: Found command:" << cmd.id;
 	if(balg::starts_with(cmd.id, quickload_prefix)) {
-		std::string savename = std::string(cmd.id.substr(quickload_prefix.size()));
+		const std::string savename = std::string(cmd.id.substr(quickload_prefix.size()));
 		// Load the game by throwing load_game_exception
 		load_autosave(savename, false);
 	}
 	if(balg::starts_with(cmd.id, quickreplay_prefix)) {
-		std::string savename = std::string(cmd.id.substr(quickreplay_prefix.size()));
+		const std::string savename = std::string(cmd.id.substr(quickreplay_prefix.size()));
 		// Load the game by throwing load_game_exception
 		load_autosave(savename, true);
 	}
 	// TODO c++20: Use string::starts_with
 	// wml commands that don't allow hotkey bindings use hotkey::HOTKEY_NULL. othes use HOTKEY_WML
 	if(balg::starts_with(cmd.id, wml_menu_hotkey_prefix)) {
-		std::string name = std::string(cmd.id.substr(wml_menu_hotkey_prefix.length()));
+		const std::string name = std::string(cmd.id.substr(wml_menu_hotkey_prefix.length()));
 		const map_location& hex = mouse_handler_.get_last_hex();
 
 		return gamestate().get_wml_menu_items().fire_item(
@@ -401,9 +401,9 @@ static void foreach_autosave(int turn, saved_game& sg, F func) {
 
 	const compression::format comp_format = prefs::get().save_compression_format();
 
-	compression::format compression_format = prefs::get().save_compression_format();
-	savegame::autosave_savegame autosave(sg, compression_format);
-	savegame::scenariostart_savegame scenariostart_save(sg, compression_format);
+	const compression::format compression_format = prefs::get().save_compression_format();
+	const savegame::autosave_savegame autosave(sg, compression_format);
+	const savegame::scenariostart_savegame scenariostart_save(sg, compression_format);
 
 	const std::string start_name = scenariostart_save.create_filename();
 
@@ -427,7 +427,7 @@ void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& item
 
 	foreach_autosave(play_controller_.turn(), saved_game_, [&](int turn, const std::string& filename) {
 		// TODO: should this use variable substitution instead?
-		std::string label = turn > 0 ? _("Back to Turn ") + std::to_string(turn) : _("Back to Start");
+		const std::string label = turn > 0 ? _("Back to Turn ") + std::to_string(turn) : _("Back to Start");
 		newitems.emplace_back("label", label, "id", quickload_prefix + filename);
 	});
 	// Make sure list doesn't get too long: keep top two, midpoint and bottom.
@@ -443,7 +443,7 @@ void play_controller::hotkey_handler::expand_quickreplay(std::vector<config>& it
 
 	foreach_autosave(play_controller_.turn(), saved_game_, [&](int turn, const std::string& filename) {
 		// TODO: should this use variable substitution instead?
-		std::string label = turn > 0 ? _("Replay from Turn ") + std::to_string(turn) : _("Replay from Start");
+		const std::string label = turn > 0 ? _("Replay from Turn ") + std::to_string(turn) : _("Replay from Start");
 		newitems.emplace_back("label", label, "id", quickreplay_prefix + filename);
 	});
 	// Make sure list doesn't get too long: keep top two, midpoint and bottom.
@@ -474,9 +474,8 @@ void play_controller::hotkey_handler::show_menu(const std::vector<config>& items
 
 	std::vector<config> items;
 	for(const auto& item : items_arg) {
-
-		std::string id = item["id"];
-		hotkey::ui_command cmd = hotkey::ui_command(id);
+		const std::string id = item["id"];
+		const hotkey::ui_command cmd = hotkey::ui_command(id);
 
 		if(id == "wml" || (can_execute_command(cmd) && (!context_menu || in_context_menu(cmd)))) {
 			items.emplace_back("id", id);
@@ -519,7 +518,7 @@ bool play_controller::hotkey_handler::in_context_menu(const hotkey::ui_command& 
 		     !play_controller_.get_map().is_castle(last_hex) )
 			return false;
 
-		wb::future_map future; /* lasts until method returns. */
+		const wb::future_map future; /* lasts until method returns. */
 
 		return gamestate().side_can_recruit_on(viewing_side, last_hex);
 	}

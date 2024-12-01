@@ -92,7 +92,7 @@ void scrollbar::adjust_position(unsigned pos)
 
 void scrollbar::move_position(int dep)
 {
-	int pos = grip_position_ + dep;
+	const int pos = grip_position_ + dep;
 	if (pos > 0)
 		set_position(pos);
 	else
@@ -105,7 +105,7 @@ void scrollbar::set_shown_size(unsigned h)
 		h = full_height_;
 	if (h == grip_height_)
 		return;
-	bool at_bottom = get_position() == get_max_position() && get_max_position() > 0;
+	const bool at_bottom = get_position() == get_max_position() && get_max_position() > 0;
 	grip_height_ = h;
 	if (at_bottom)
 		grip_position_ = get_max_position();
@@ -117,7 +117,7 @@ void scrollbar::set_full_size(unsigned h)
 {
 	if (h == full_height_)
 		return;
-	bool at_bottom = get_position() == get_max_position() && get_max_position() > 0;
+	const bool at_bottom = get_position() == get_max_position() && get_max_position() > 0;
 	full_height_ = h;
 	if (at_bottom)
 		grip_position_ = get_max_position();
@@ -149,7 +149,7 @@ SDL_Rect scrollbar::grip_area() const
 	int h = static_cast<int>(loc.h) * grip_height_ / full_height_;
 	if (h < minimum_grip_height_)
 		h = minimum_grip_height_;
-	int y = loc.y + (static_cast<int>(loc.h) - h) * grip_position_ / (full_height_ - grip_height_);
+	const int y = loc.y + (static_cast<int>(loc.h) - h) * grip_position_ / (full_height_ - grip_height_);
 	return {loc.x, y, loc.w, h};
 }
 
@@ -184,7 +184,7 @@ void scrollbar::draw_contents()
 		break;
 	}
 
-	SDL_Rect grip = grip_area();
+	const SDL_Rect grip = grip_area();
 
 	int mid_height = grip.h - top_img.h() - bot_img.h();
 	if (mid_height <= 0) {
@@ -194,7 +194,7 @@ void scrollbar::draw_contents()
 		mid_height = 1;
 	}
 
-	SDL_Rect groove = location();
+	const SDL_Rect groove = location();
 
 	if (grip.h > groove.h) {
 		PLAIN_LOG << "abort draw scrollbar: grip too large";
@@ -232,15 +232,15 @@ void scrollbar::handle_event(const SDL_Event& event)
 	case SDL_MOUSEBUTTONUP:
 	{
 		const SDL_MouseButtonEvent& e = event.button;
-		bool on_grip = grip.contains(e.x, e.y);
+		const bool on_grip = grip.contains(e.x, e.y);
 		new_state = on_grip ? ACTIVE : NORMAL;
 		break;
 	}
 	case SDL_MOUSEBUTTONDOWN:
 	{
 		const SDL_MouseButtonEvent& e = event.button;
-		bool on_grip = grip.contains(e.x, e.y);
-		bool on_groove = groove.contains(e.x, e.y);
+		const bool on_grip = grip.contains(e.x, e.y);
+		const bool on_groove = groove.contains(e.x, e.y);
 		if (on_grip && e.button == SDL_BUTTON_LEFT) {
 			mousey_on_grip_ = e.y - grip.y;
 			new_state = DRAGGED;
@@ -250,8 +250,8 @@ void scrollbar::handle_event(const SDL_Event& event)
 			else
 				move_position(grip_height_);
 		} else if (on_groove && e.button == SDL_BUTTON_MIDDLE && groove.h != grip.h) {
-			int y_dep = e.y - grip.y - grip.h/2;
-			int dep = y_dep * int(full_height_ - grip_height_)/ (groove.h - grip.h);
+			const int y_dep = e.y - grip.y - grip.h / 2;
+			const int dep = y_dep * int(full_height_ - grip_height_) / (groove.h - grip.h);
 			move_position(dep);
 		}
 		break;
@@ -260,11 +260,11 @@ void scrollbar::handle_event(const SDL_Event& event)
 	{
 		const SDL_MouseMotionEvent& e = event.motion;
 		if (state_ == NORMAL || state_ == ACTIVE) {
-			bool on_grip = grip.contains(e.x, e.y);
+			const bool on_grip = grip.contains(e.x, e.y);
 			new_state = on_grip ? ACTIVE : NORMAL;
 		} else if (state_ == DRAGGED && groove.h != grip.h) {
-			int y_dep = e.y - grip.y - mousey_on_grip_;
-			int dep = y_dep * static_cast<int>(full_height_ - grip_height_) / (groove.h - grip.h);
+			const int y_dep = e.y - grip.y - mousey_on_grip_;
+			const int dep = y_dep * static_cast<int>(full_height_ - grip_height_) / (groove.h - grip.h);
 			move_position(dep);
 		}
 		break;
@@ -272,7 +272,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 	case SDL_MOUSEWHEEL:
 	{
 		const SDL_MouseWheelEvent& e = event.wheel;
-		bool on_groove = groove.contains(sdl::get_mouse_location());
+		const bool on_groove = groove.contains(sdl::get_mouse_location());
 		if (on_groove && e.y < 0) {
 			move_position(scroll_rate_);
 		} else if (on_groove && e.y > 0) {

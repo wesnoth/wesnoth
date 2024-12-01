@@ -27,7 +27,7 @@ persist_manager::~persist_manager() {
 
 persist_context &persist_manager::get_context(const std::string &ns)
 {
-	persist_context::name_space name(ns,true);
+	const persist_context::name_space name(ns, true);
 	std::string key(name.root_);
 	context_map::iterator iter = contexts_.find(key);
 	if (iter == contexts_.end()) {

@@ -202,18 +202,18 @@ void wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& e
 		return;
 	}
 
-	unit_map& units = resources::gameboard->units();
-	scoped_xy_unit first_unit("unit", ev.loc1, units);
-	scoped_xy_unit second_unit("second_unit", ev.loc2, units);
-	scoped_weapon_info first_weapon("weapon", ev.data.optional_child("first"));
-	scoped_weapon_info second_weapon("second_weapon", ev.data.optional_child("second"));
+	const unit_map& units = resources::gameboard->units();
+	const scoped_xy_unit first_unit("unit", ev.loc1, units);
+	const scoped_xy_unit second_unit("second_unit", ev.loc2, units);
+	const scoped_weapon_info first_weapon("weapon", ev.data.optional_child("first"));
+	const scoped_weapon_info second_weapon("second_weapon", ev.data.optional_child("second"));
 
 	if(!handler_p->filter_event(ev)) {
 		return;
 	}
 
 	// The event hasn't been filtered out, so execute the handler.
-	context::scoped evc(impl_->contexts_);
+	const context::scoped evc(impl_->contexts_);
 	assert(resources::lua_kernel != nullptr);
 	handler_p->handle_event(ev, *resources::lua_kernel);
 	// NOTE: handler_p may be null at this point!
@@ -327,15 +327,15 @@ context::scoped::scoped(std::stack<context::state>& contexts, bool m)
 	// The default context at least should always be on the stack
 	assert(contexts_.size() > 0);
 
-	bool skip_messages = (contexts_.size() > 1) && contexts_.top().skip_messages;
+	const bool skip_messages = (contexts_.size() > 1) && contexts_.top().skip_messages;
 	contexts_.emplace(skip_messages, m);
 }
 
 context::scoped::~scoped()
 {
 	assert(contexts_.size() > 1);
-	bool undo_disabled = contexts_.top().undo_disabled;
-	bool action_canceled = contexts_.top().action_canceled;
+	const bool undo_disabled = contexts_.top().undo_disabled;
+	const bool action_canceled = contexts_.top().action_canceled;
 
 	contexts_.pop();
 	contexts_.top().undo_disabled |= undo_disabled;
@@ -458,10 +458,10 @@ pump_result_t wml_event_pump::operator()()
 
 	// Ensure the whiteboard doesn't attempt to build its future unit map
 	// while events are being processed.
-	wb::real_map real_unit_map;
+	const wb::real_map real_unit_map;
 
 	pump_manager pump_instance(*impl_);
-	context::scoped evc(impl_->contexts_, false);
+	const context::scoped evc(impl_->contexts_, false);
 	// Loop through the events we need to process.
 	while(!pump_instance.done()) {
 		queued_event& ev = pump_instance.next();
@@ -478,7 +478,7 @@ pump_result_t wml_event_pump::operator()()
 		unit::clear_status_caches();
 
 		{ // Block for context::scoped
-			context::scoped inner_evc(impl_->contexts_, false);
+			const context::scoped inner_evc(impl_->contexts_, false);
 			resources::lua_kernel->run_event(ev);
 		}
 

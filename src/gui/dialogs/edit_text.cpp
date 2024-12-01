@@ -51,7 +51,7 @@ void edit_text::pre_show()
 
 void edit_text::on_text_change()
 {
-	text_box& text = find_widget<text_box>("text");
+	const text_box& text = find_widget<text_box>("text");
 	button& ok_button = find_widget<button>("ok");
 
 	ok_button.set_active(!boost::trim_copy(text.get_value()).empty());

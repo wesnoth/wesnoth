@@ -133,6 +133,6 @@ markov_generator::markov_generator(const std::vector<std::string>& items, std::s
 
 std::string markov_generator::generate() const
 {
-	std::u32string name = markov_generate_name(prefixes_, chain_size_, max_len_);
+	const std::u32string name = markov_generate_name(prefixes_, chain_size_, max_len_);
 	return unicode_cast<std::string>(name);
 }

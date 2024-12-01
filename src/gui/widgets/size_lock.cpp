@@ -82,8 +82,8 @@ point size_lock::calculate_best_size() const
 {
 	const wfl::map_formula_callable& size = get_screen_size_variables();
 
-	unsigned width = width_(size);
-	unsigned height = height_(size);
+	const unsigned width = width_(size);
+	const unsigned height = height_(size);
 
 	VALIDATE(width > 0 || height > 0, _("Invalid size."));
 
@@ -103,7 +103,7 @@ size_lock_definition::resolution::resolution(const config& cfg)
 	, grid(nullptr)
 {
 	// Add a dummy state since every widget needs a state.
-	static config dummy("draw");
+	static const config dummy("draw");
 	state.emplace_back(dummy);
 
 	auto child = cfg.optional_child("grid");

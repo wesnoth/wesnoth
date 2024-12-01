@@ -50,14 +50,14 @@ static int intf_wml_tostring(lua_State* L) {
  */
 static int intf_load_wml(lua_State* L)
 {
-	std::string file = luaL_checkstring(L, 1);
+	const std::string file = luaL_checkstring(L, 1);
 	bool preprocess = true;
 	preproc_map defines_map;
 	if(lua_type(L, 2) == LUA_TBOOLEAN) {
 		preprocess = luaW_toboolean(L, 2);
 	} else if(lua_type(L, 2) == LUA_TTABLE || lua_type(L, 2) == LUA_TUSERDATA) {
 		lua_len(L, 2);
-		int n = lua_tointeger(L, -1);
+		const int n = lua_tointeger(L, -1);
 		lua_pop(L, 1);
 		for(int i = 0; i < n; i++) {
 			lua_geti(L, 2, i);
@@ -73,13 +73,13 @@ static int intf_load_wml(lua_State* L)
 	} else if(!lua_isnoneornil(L, 2)) {
 		return luaL_argerror(L, 2, "expected bool or array of strings");
 	}
-	std::string schema_path = luaL_optstring(L, 3, "");
+	const std::string schema_path = luaL_optstring(L, 3, "");
 	std::shared_ptr<schema_validation::schema_validator> validator;
 	if(!schema_path.empty()) {
 		validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location(schema_path).value()));
 		validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 	}
-	std::string wml_file = filesystem::get_wml_location(file).value();
+	const std::string wml_file = filesystem::get_wml_location(file).value();
 	filesystem::scoped_istream stream;
 	config result;
 	if(preprocess) {
@@ -99,8 +99,8 @@ static int intf_load_wml(lua_State* L)
  */
 static int intf_parse_wml(lua_State* L)
 {
-	std::string wml = luaL_checkstring(L, 1);
-	std::string schema_path = luaL_optstring(L, 2, "");
+	const std::string wml = luaL_checkstring(L, 1);
+	const std::string schema_path = luaL_optstring(L, 2, "");
 	std::shared_ptr<schema_validation::schema_validator> validator;
 	if(!schema_path.empty()) {
 		validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location(schema_path).value()));
@@ -123,8 +123,8 @@ static int intf_clone_wml(lua_State* L)
 	const vconfig* vcfg = nullptr;
 	const config& cfg = luaW_checkconfig(L, 1, vcfg);
 	if(vcfg) {
-		config clone_underlying = vcfg->get_config();
-		vconfig clone(clone_underlying);
+		const config clone_underlying = vcfg->get_config();
+		const vconfig clone(clone_underlying);
 		luaW_pushvconfig(L, clone);
 	} else {
 		luaW_pushconfig(L, cfg);
@@ -140,8 +140,8 @@ static int intf_clone_wml(lua_State* L)
 static int intf_wml_interpolate(lua_State* L)
 {
 	config cfg = luaW_checkconfig(L, 1), vars_cfg = luaW_checkconfig(L, 2);
-	config_variable_set vars(vars_cfg);
-	vconfig vcfg(cfg, vars);
+	const config_variable_set vars(vars_cfg);
+	const vconfig vcfg(cfg, vars);
 	luaW_pushconfig(L, vcfg.get_parsed_config());
 	return 1;
 }
@@ -153,8 +153,8 @@ static int intf_wml_interpolate(lua_State* L)
 */
 static int intf_wml_matches_filter(lua_State* L)
 {
-	config cfg = luaW_checkconfig(L, 1);
-	config filter = luaW_checkconfig(L, 2);
+	const config cfg = luaW_checkconfig(L, 1);
+	const config filter = luaW_checkconfig(L, 2);
 	lua_pushboolean(L, cfg.matches(filter));
 	return 1;
 }
@@ -193,8 +193,8 @@ static int intf_wml_merge(lua_State* L)
 */
 static int intf_wml_diff(lua_State* L)
 {
-	config lhs = luaW_checkconfig(L, 1);
-	config rhs = luaW_checkconfig(L, 2);
+	const config lhs = luaW_checkconfig(L, 1);
+	const config rhs = luaW_checkconfig(L, 2);
 	luaW_pushconfig(L, lhs.get_diff(rhs));
 	return 1;
 }
@@ -207,7 +207,7 @@ static int intf_wml_diff(lua_State* L)
 static int intf_wml_patch(lua_State* L)
 {
 	config base = luaW_checkconfig(L, 1);
-	config patch = luaW_checkconfig(L, 2);
+	const config patch = luaW_checkconfig(L, 2);
 	base.apply_diff(patch);
 	luaW_pushconfig(L, base);
 	return 1;
@@ -220,8 +220,8 @@ static int intf_wml_patch(lua_State* L)
 */
 static int intf_wml_equal(lua_State* L)
 {
-	config left = luaW_checkconfig(L, 1);
-	config right = luaW_checkconfig(L, 2);
+	const config left = luaW_checkconfig(L, 1);
+	const config right = luaW_checkconfig(L, 2);
 	lua_pushboolean(L, left == right);
 	return 1;
 }

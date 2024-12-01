@@ -64,7 +64,7 @@ namespace
 
 config::attribute_value config_variable_set::get_variable_const(const std::string &id) const {
 	try {
-		variable_access_const variable = get_variable_access_read(id);
+		const variable_access_const variable = get_variable_access_read(id);
 		return variable.as_scalar();
 	} catch(const invalid_variablename_exception&) {
 		ERR_NG << "invalid variablename " << id;
@@ -187,15 +187,15 @@ config vconfig::get_parsed_config() const
 	for(const auto [key, cfg] : cfg_->all_children_view())
 	{
 		if (key == "insert_tag") {
-			vconfig insert_cfg(cfg, *variables_);
-			std::string name = insert_cfg["name"];
-			std::string vname = insert_cfg["variable"];
+			const vconfig insert_cfg(cfg, *variables_);
+			const std::string name = insert_cfg["name"];
+			const std::string vname = insert_cfg["variable"];
 			if(!vconfig_recursion.insert(vname).second) {
 				throw recursion_error("vconfig::get_parsed_config() infinite recursion detected, aborting");
 			}
 			try
 			{
-				config::const_child_itors range = as_nonempty_range(vname, *variables_);
+				const config::const_child_itors range = as_nonempty_range(vname, *variables_);
 				for (const config& ch : range)
 				{
 					res.add_child(name, vconfig(ch, *variables_).get_parsed_config());
@@ -232,12 +232,12 @@ vconfig::child_list vconfig::get_children(const std::string& key_to_get) const
 		if (key == key_to_get) {
 			res.push_back(vconfig(cfg, cache_, *variables_));
 		} else if (key == "insert_tag") {
-			vconfig insert_cfg(cfg, *variables_);
+			const vconfig insert_cfg(cfg, *variables_);
 			if(insert_cfg["name"] == key_to_get)
 			{
 				try
 				{
-					config::const_child_itors range = as_nonempty_range(insert_cfg["variable"], *variables_);
+					const config::const_child_itors range = as_nonempty_range(insert_cfg["variable"], *variables_);
 					for (const config& ch : range)
 					{
 						res.push_back(vconfig(ch, true, variables_));
@@ -262,12 +262,12 @@ std::size_t vconfig::count_children(const std::string& key_to_count) const
 		if (key == key_to_count) {
 			n++;
 		} else if (key == "insert_tag") {
-			vconfig insert_cfg(cfg, *variables_);
+			const vconfig insert_cfg(cfg, *variables_);
 			if(insert_cfg["name"] == key_to_count)
 			{
 				try
 				{
-					config::const_child_itors range = as_nonempty_range(insert_cfg["variable"], *variables_);
+					const config::const_child_itors range = as_nonempty_range(insert_cfg["variable"], *variables_);
 					n += range.size();
 				}
 				catch(const invalid_variablename_exception&)
@@ -292,12 +292,12 @@ vconfig vconfig::child(const std::string& key) const
 	}
 	for (const config &ins : cfg_->child_range("insert_tag"))
 	{
-		vconfig insert_cfg(ins, *variables_);
+		const vconfig insert_cfg(ins, *variables_);
 		if(insert_cfg["name"] == key)
 		{
 			try
 			{
-				config::const_child_itors range = as_nonempty_range(insert_cfg["variable"], *variables_);
+				const config::const_child_itors range = as_nonempty_range(insert_cfg["variable"], *variables_);
 				return vconfig(range.front(), true, variables_);
 			}
 			catch(const invalid_variablename_exception&)
@@ -319,7 +319,7 @@ bool vconfig::has_child(const std::string& key) const
 	}
 	for (const config &ins : cfg_->child_range("insert_tag"))
 	{
-		vconfig insert_cfg(ins, *variables_);
+		const vconfig insert_cfg(ins, *variables_);
 		if(insert_cfg["name"] == key) {
 			return true;
 		}
@@ -387,9 +387,10 @@ vconfig::all_children_iterator& vconfig::all_children_iterator::operator++()
 	{
 		try
 		{
-			variable_access_const vinfo = variables_->get_variable_access_read(vconfig(i_->cfg, *variables_)["variable"]);
+			const variable_access_const vinfo
+				= variables_->get_variable_access_read(vconfig(i_->cfg, *variables_)["variable"]);
 
-			config::const_child_itors range = vinfo.as_array();
+			const config::const_child_itors range = vinfo.as_array();
 
 			if (++inner_index_ < static_cast<int>(range.size()))
 			{
@@ -544,7 +545,7 @@ scoped_wml_variable::~scoped_wml_variable()
 
 void scoped_xy_unit::activate()
 {
-	unit_map::const_iterator itor = umap_.find(loc_);
+	const unit_map::const_iterator itor = umap_.find(loc_);
 	if(itor != umap_.end()) {
 		config &tmp_cfg = store();
 		itor->write(tmp_cfg);
@@ -569,7 +570,8 @@ void scoped_recall_unit::activate()
 
 	const std::vector<team>& teams = resources::gameboard->teams();
 
-	std::vector<team>::const_iterator team_it = std::find_if(teams.begin(), teams.end(), [&](const team& t) { return t.save_id_or_number() == player_; });
+	const std::vector<team>::const_iterator team_it
+		= std::find_if(teams.begin(), teams.end(), [&](const team& t) { return t.save_id_or_number() == player_; });
 
 	if(team_it != teams.end()) {
 		if(team_it->recall_list().size() > recall_index_) {

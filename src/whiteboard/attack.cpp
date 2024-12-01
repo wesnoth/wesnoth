@@ -145,7 +145,7 @@ void attack::execute(bool& success, bool& complete)
 	complete = true;
 
 	//check that attacking unit is still alive, if not, consider the attack a failure
-	unit_map::const_iterator survivor = resources::gameboard->units().find(get_dest_hex());
+	const unit_map::const_iterator survivor = resources::gameboard->units().find(get_dest_hex());
 	if(!survivor.valid() || (!unit_id_.empty() && (survivor->id() != unit_id_)))
 	{
 		success = false;

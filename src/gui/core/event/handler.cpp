@@ -373,7 +373,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		return;
 	}
 
-	uint8_t button = event.button.button;
+	const uint8_t button = event.button.button;
 
 	switch(event.type) {
 		case SDL_MOUSEMOTION:
@@ -463,36 +463,31 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_FINGERMOTION:
 			{
-				point c = video::game_canvas_size();
-				touch_motion(
-					point(event.tfinger.x * c.x, event.tfinger.y * c.y),
-					point(event.tfinger.dx * c.x, event.tfinger.dy * c.y)
-				);
+			const point c = video::game_canvas_size();
+			touch_motion(point(event.tfinger.x * c.x, event.tfinger.y * c.y),
+				point(event.tfinger.dx * c.x, event.tfinger.dy * c.y));
 			}
 			break;
 
 		case SDL_FINGERUP:
 			{
-				point c = video::game_canvas_size();
-				touch_up(point(event.tfinger.x * c.x, event.tfinger.y * c.y));
+			const point c = video::game_canvas_size();
+			touch_up(point(event.tfinger.x * c.x, event.tfinger.y * c.y));
 			}
 			break;
 
 		case SDL_FINGERDOWN:
 			{
-				point c = video::game_canvas_size();
-				touch_down(point(event.tfinger.x * c.x, event.tfinger.y * c.y));
+			const point c = video::game_canvas_size();
+			touch_down(point(event.tfinger.x * c.x, event.tfinger.y * c.y));
 			}
 			break;
 
 		case SDL_MULTIGESTURE:
 			{
-				point c = video::game_canvas_size();
-				touch_multi_gesture(
-					point(event.mgesture.x * c.x, event.mgesture.y * c.y),
-					event.mgesture.dTheta, event.mgesture.dDist,
-					event.mgesture.numFingers
-				);
+			const point c = video::game_canvas_size();
+			touch_multi_gesture(point(event.mgesture.x * c.x, event.mgesture.y * c.y), event.mgesture.dTheta,
+				event.mgesture.dDist, event.mgesture.numFingers);
 			}
 			break;
 
@@ -878,7 +873,7 @@ std::vector<dispatcher*>& get_all_dispatchers()
 
 void init_mouse_location()
 {
-	point mouse = get_mouse_position();
+	const point mouse = get_mouse_position();
 
 	SDL_Event event{};
 	event.type = SDL_MOUSEMOTION;

@@ -53,7 +53,7 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 		add_whisperer( sender );
 	}
 	//remove disconnected user from whisperer
-	std::string::size_type pos = message.find(" has disconnected");
+	const std::string::size_type pos = message.find(" has disconnected");
 	if (pos != std::string::npos){
 		for(std::set<std::string>::const_iterator w = whisperers().begin(); w != whisperers().end(); ++w){
 			if (*w == message.substr(0,pos)) remove_whisperer(*w);
@@ -160,7 +160,7 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	spk_flabel.set_border_size(chat_message_border);
 	spk_flabel.use_markup(false);
 
-	int speaker_handle = font::add_floating_label(spk_flabel);
+	const int speaker_handle = font::add_floating_label(spk_flabel);
 
 	font::floating_label msg_flabel(message_str.str());
 	msg_flabel.set_font_size(font::SIZE_15);
@@ -173,7 +173,7 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	msg_flabel.set_border_size(chat_message_border);
 	msg_flabel.use_markup(false);
 
-	int message_handle = font::add_floating_label(msg_flabel);
+	const int message_handle = font::add_floating_label(msg_flabel);
 
 	chat_messages_.emplace_back(speaker_handle,message_handle);
 

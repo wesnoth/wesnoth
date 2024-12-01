@@ -633,14 +633,14 @@ void window::hide()
 
 void window::update_render_textures()
 {
-	point draw = get_size();
-	point render = draw * video::get_pixel_scale();
+	const point draw = get_size();
+	const point render = draw * video::get_pixel_scale();
 
 	// Check that the render buffer size is correct.
-	point buf_raw = render_buffer_.get_raw_size();
-	point buf_draw = render_buffer_.draw_size();
-	bool raw_size_changed = buf_raw.x != render.x || buf_raw.y != render.y;
-	bool draw_size_changed = buf_draw.x != draw.x || buf_draw.y != draw.y;
+	const point buf_raw = render_buffer_.get_raw_size();
+	const point buf_draw = render_buffer_.draw_size();
+	const bool raw_size_changed = buf_raw.x != render.x || buf_raw.y != render.y;
+	const bool draw_size_changed = buf_draw.x != draw.x || buf_draw.y != draw.y;
 	if (!raw_size_changed && !draw_size_changed) {
 		// buffers are fine
 		return;
@@ -811,7 +811,7 @@ void window::remove_linked_widget(const std::string& id, const widget* wgt)
 	}
 
 	std::vector<widget*>& widgets = linked_size_[id].widgets;
-	auto itor = std::find(widgets.begin(), widgets.end(), wgt);
+	const auto itor = std::find(widgets.begin(), widgets.end(), wgt);
 
 	if(itor != widgets.end()) {
 		widgets.erase(itor);

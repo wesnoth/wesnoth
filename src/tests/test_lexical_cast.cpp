@@ -163,7 +163,7 @@ BOOST_AUTO_TEST_CASE(test_lexical_cast_result)
 
 	BOOST_CHECK_EQUAL(lexical_cast<double>("0x11"), 0);
 
-	std::string a = "01234567890123456789";
+	const std::string a = "01234567890123456789";
 	BOOST_CHECK_EQUAL(lexical_cast<long long>(a), 1234567890123456789ll);
 	BOOST_CHECK_THROW(lexical_cast<int>(a), bad_lexical_cast);
 	BOOST_CHECK_EQUAL(lexical_cast<double>(a), 1.23456789012345678e18);
@@ -171,7 +171,7 @@ BOOST_AUTO_TEST_CASE(test_lexical_cast_result)
 	BOOST_CHECK_EQUAL(lexical_cast_default<int>(a, 0), 0);
 	BOOST_CHECK_EQUAL(lexical_cast_default<double>(a, 0.0), 1.23456789012345678e18);
 
-	std::string b = "99999999999999999999";
+	const std::string b = "99999999999999999999";
 	BOOST_CHECK_THROW(lexical_cast<long long>(b), bad_lexical_cast);
 	BOOST_CHECK_THROW(lexical_cast<int>(b), bad_lexical_cast);
 	BOOST_CHECK_EQUAL(lexical_cast<double>(b), 1e20);

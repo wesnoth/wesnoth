@@ -41,19 +41,19 @@ namespace gui2::dialogs
 
 static custom_tod::string_pair tod_getter_image(const time_of_day& tod)
 {
-	static std::string type = "image";
+	static const std::string type = "image";
 	return {type, tod.image};
 }
 
 static custom_tod::string_pair tod_getter_mask(const time_of_day& tod)
 {
-	static std::string type = "mask";
+	static const std::string type = "mask";
 	return {type, tod.image_mask};
 }
 
 static custom_tod::string_pair tod_getter_sound(const time_of_day& tod)
 {
-	static std::string type = "sound";
+	static const std::string type = "sound";
 	return {type, tod.sounds};
 }
 
@@ -76,11 +76,8 @@ custom_tod::custom_tod(const std::vector<time_of_day>& times, int current_time, 
 
 void custom_tod::pre_show()
 {
-	static std::map<std::string, tod_attribute_getter> metadata_stuff {
-		{"image", tod_getter_image},
-		{"mask",  tod_getter_mask },
-		{"sound", tod_getter_sound}
-	};
+	static const std::map<std::string, tod_attribute_getter> metadata_stuff{
+		{"image", tod_getter_image}, {"mask", tod_getter_mask}, {"sound", tod_getter_sound}};
 
 	add_to_tab_order(find_widget<text_box>("tod_name", false, true));
 	add_to_tab_order(find_widget<text_box>("tod_desc", false, true));
@@ -160,7 +157,7 @@ void custom_tod::select_file(const std::string& default_dir)
 {
 	const string_pair& data = (*fptr)(get_selected_tod());
 
-	std::string fn = filesystem::base_name(data.second);
+	const std::string fn = filesystem::base_name(data.second);
 	std::string dn = filesystem::directory_name(fn);
 	if(dn.empty()) {
 		dn = default_dir;
@@ -270,12 +267,12 @@ void custom_tod::color_slider_callback(COLOR_TYPE type)
 }
 
 void custom_tod::play_sound() {
-	std::string sound_path = find_widget<text_box>("path_sound").get_value();
+	const std::string sound_path = find_widget<text_box>("path_sound").get_value();
 	sound::play_sound(sound_path, sound::SOUND_SOURCES);
 }
 
 void custom_tod::update_image(const std::string& id_stem) {
-	std::string img_path = find_widget<text_box>("path_"+id_stem).get_value();
+	const std::string img_path = find_widget<text_box>("path_" + id_stem).get_value();
 	find_widget<image>("current_tod_" + id_stem).set_label(img_path);
 
 	invalidate_layout();

@@ -84,19 +84,19 @@ static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 		return &multi_page->page_grid(i - 1);
 	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(&w)) {
 		gui2::tree_view_node& tvn = tree_view->get_root_node();
-		int n = tvn.count_children();
+		const int n = tvn.count_children();
 		if(i > n) {
 			throw std::invalid_argument("out of range");
 		}
 		return &tvn.get_child_at(i - 1);
 	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(&w)) {
-		int n = tree_view_node->count_children();
+		const int n = tree_view_node->count_children();
 		if(i > n) {
 			throw std::invalid_argument("out of range");
 		}
 		return &tree_view_node->get_child_at(i - 1);
 	} else if(gui2::stacked_widget* stacked_widget = dynamic_cast<gui2::stacked_widget*>(&w)) {
-		int n = stacked_widget->get_layer_count();
+		const int n = stacked_widget->get_layer_count();
 		if(i > n) {
 			throw std::invalid_argument("out of range");
 		}
@@ -909,9 +909,9 @@ int impl_widget_get(lua_State* L)
 		}
 
 	}
-	std::string_view str = lua_check<std::string_view>(L, 2);
+	const std::string_view str = lua_check<std::string_view>(L, 2);
 
-	tgetters::iterator it = getters.find(std::string(str));
+	const tgetters::iterator it = getters.find(std::string(str));
 	if(it != getters.end()) {
 		for(const auto& func : it->second) {
 			if(func(L, w, false)) {
@@ -935,10 +935,9 @@ int impl_widget_get(lua_State* L)
 int impl_widget_set(lua_State* L)
 {
 	gui2::widget& w = luaW_checkwidget(L, 1);
-	std::string_view str = lua_check<std::string_view>(L, 2);
+	const std::string_view str = lua_check<std::string_view>(L, 2);
 
-
-	tsetters::iterator it = setters.find(std::string(str));
+	const tsetters::iterator it = setters.find(std::string(str));
 	if(it != setters.end()) {
 		for(const auto& func : it->second) {
 			if(func(L, 3, w, false)) {

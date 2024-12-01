@@ -53,7 +53,7 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 
 		disp.clear_mouseover_hex_overlay();
 
-		SDL_Rect rect = disp.get_location_rect(hex);
+		const SDL_Rect rect = disp.get_location_rect(hex);
 		std::stringstream str;
 		str << _("Identifier: ") << unit_it->id()     << "\n";
 		if(unit_it->name() != "") {
@@ -88,7 +88,7 @@ std::unique_ptr<editor_action> mouse_action_unit::click_left(editor_display& dis
 
 std::unique_ptr<editor_action> mouse_action_unit::drag_left(editor_display& disp, int x, int y, bool& /*partial*/, editor_action* /*last_undo*/)
 {
-	map_location hex = disp.hex_clicked_on(x, y);
+	const map_location hex = disp.hex_clicked_on(x, y);
 	click_ = (hex == start_hex_);
 	return nullptr;
 }
@@ -97,7 +97,7 @@ std::unique_ptr<editor_action> mouse_action_unit::up_left(editor_display& disp, 
 {
 	if (!click_) return nullptr;
 	click_ = false;
-	map_location hex = disp.hex_clicked_on(x, y);
+	const map_location hex = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(hex)) {
 		return nullptr;
 	}
@@ -116,9 +116,9 @@ std::unique_ptr<editor_action> mouse_action_unit::up_left(editor_display& disp, 
 	}
 
 	const unit_type &ut = *new_unit_type;
-	unit_race::GENDER gender = ut.genders().front();
+	unit_race::GENDER const gender = ut.genders().front();
 
-	unit_ptr new_unit = unit::create(ut, disp.viewing_team().side(), true, gender);
+	const unit_ptr new_unit = unit::create(ut, disp.viewing_team().side(), true, gender);
 	auto action = std::make_unique<editor_action_unit>(hex, *new_unit);
 	return action;
 }
@@ -127,7 +127,7 @@ std::unique_ptr<editor_action> mouse_action_unit::drag_end_left(editor_display& 
 {
 	if (click_) return nullptr;
 
-	map_location hex = disp.hex_clicked_on(x, y);
+	const map_location hex = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(hex))
 		return nullptr;
 

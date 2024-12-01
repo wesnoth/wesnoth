@@ -600,11 +600,11 @@ addons_client::install_result addons_client::do_resolve_addon_dependencies(const
 	// then the version cache will not be updated after the first is downloaded
 	// which will result in it being treated as version 0.0.0, which is then interpreted as being "upgradeable"
 	// which then causes the user to be prompted to download the same dependency multiple times
-	version_info unknown_version(0, 0, 0);
+	const version_info unknown_version(0, 0, 0);
 
 	for(const std::string& dep : deps) {
 		try {
-			addon_tracking_info info = get_addon_tracking_info(addons.at(dep));
+			const addon_tracking_info info = get_addon_tracking_info(addons.at(dep));
 
 			// ADDON_NONE means not installed.
 			if(info.state == ADDON_NONE) {

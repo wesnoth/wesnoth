@@ -148,7 +148,8 @@ void playsingle_controller::hotkey_handler::whiteboard_toggle() {
 	whiteboard_manager_->set_active(!whiteboard_manager_->is_active());
 
 	if (whiteboard_manager_->is_active()) {
-		std::string hk = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_WB_TOGGLE).id);
+		const std::string hk
+			= hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_WB_TOGGLE).id);
 		utils::string_map symbols;
 		symbols["hotkey"] = hk;
 
@@ -186,7 +187,8 @@ void playsingle_controller::hotkey_handler::whiteboard_suppose_dead()
 {
 	const unit* curr_unit;
 	map_location loc;
-	{ wb::future_map future; //start planned unit map scope
+	{
+		const wb::future_map future; // start planned unit map scope
 		curr_unit = &*menu_handler_.current_unit();
 		loc = curr_unit->get_location();
 	} // end planned unit map scope
@@ -205,15 +207,16 @@ hotkey::ACTION_STATE playsingle_controller::hotkey_handler::get_action_state(con
 
 bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ui_command& cmd) const
 {
-	hotkey::HOTKEY_COMMAND command = cmd.hotkey_command;
+	hotkey::HOTKEY_COMMAND const command = cmd.hotkey_command;
 	bool res = true;
-	int prefixlen = wml_menu_hotkey_prefix.length();
+	const int prefixlen = wml_menu_hotkey_prefix.length();
 	switch (command){
 		case hotkey::HOTKEY_NULL:
 		case hotkey::HOTKEY_WML:
 		{
 			if(cmd.id.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0) {
-				game_events::wmi_manager::item_ptr item = gamestate().get_wml_menu_items().get_item(std::string(cmd.id.substr(prefixlen)));
+				const game_events::wmi_manager::item_ptr item
+					= gamestate().get_wml_menu_items().get_item(std::string(cmd.id.substr(prefixlen)));
 				if(!item) {
 					return false;
 				}

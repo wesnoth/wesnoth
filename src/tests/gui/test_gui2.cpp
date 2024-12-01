@@ -145,7 +145,7 @@ struct test_gui2_fixture {
 	, dummy_args({"wesnoth", "--noaddons"})
 	{
 		/** The main config, which contains the entire WML tree. */
-		game_config_view game_config_view_ = game_config_view::wrap(main_config);
+		const game_config_view game_config_view_ = game_config_view::wrap(main_config);
 		config_manager.reset(new game_config_manager(dummy_args));
 
 		game_config::config_cache& cache = game_config::config_cache::instance();
@@ -215,7 +215,7 @@ namespace {
 			const std::unique_ptr<modal_dialog> dlg(ctor.create());
 			BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
 
-			std::string id = get_modal_dialog_id(*dlg.get());
+			const std::string id = get_modal_dialog_id(*dlg.get());
 			filesystem::write_file(test_gui2_fixture::widgets_file, ","+id, std::ios_base::app);
 
 			std::string exception;
@@ -259,7 +259,7 @@ namespace {
 				const std::unique_ptr<modeless_dialog> dlg(ctor.create());
 				BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
 
-				std::string id = get_modeless_dialog_id(*dlg.get());
+				const std::string id = get_modeless_dialog_id(*dlg.get());
 				filesystem::write_file(test_gui2_fixture::widgets_file, ","+id, std::ios_base::app);
 
 				std::string exception;
@@ -339,8 +339,8 @@ namespace {
 
 const resolution_list& get_gui_resolutions()
 {
-	static resolution_list result {
-		{800,  600},
+	static const resolution_list result{
+		{800, 600},
 		{1024, 768},
 		{1280, 1024},
 		{1680, 1050},
@@ -666,8 +666,9 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_edit_unit)
 BOOST_AUTO_TEST_CASE(test_last)
 {
 	std::set<std::string> widget_list = gui2::registered_window_types();
-	std::vector<std::string> widgets_tested = utils::split(filesystem::read_file(test_gui2_fixture::widgets_file));
-	std::set<std::string> omitted {
+	const std::vector<std::string> widgets_tested
+		= utils::split(filesystem::read_file(test_gui2_fixture::widgets_file));
+	const std::set<std::string> omitted{
 		/*
 		 * The unit attack unit test are disabled for now, they calling parameters
 		 * don't allow 'nullptr's needs to be fixed.
@@ -703,13 +704,13 @@ BOOST_AUTO_TEST_CASE(test_last)
 		"help_browser",
 		"story_viewer",
 		"outro",
-		"mp_change_control", // Basically useless without a game_board object, so disabling
-		"game_stats", // segfault with LTO
+		"mp_change_control",   // Basically useless without a game_board object, so disabling
+		"game_stats",          // segfault with LTO
 		"gamestate_inspector", // segfault with LTO
 		"server_info",
-		"sp_options_configure",// segfault with LTO
-		"campaign_selection",// segfault with LTO
-		"game_load",// segfault after disabling the above tests
+		"sp_options_configure", // segfault with LTO
+		"campaign_selection",   // segfault with LTO
+		"game_load",            // segfault after disabling the above tests
 		"file_progress",
 	};
 	filesystem::delete_file(test_gui2_fixture::widgets_file);

@@ -136,7 +136,7 @@ namespace gui{
 		if (matches.size() == 1 && mode_ == gui::TEXTBOX_MESSAGE) {
 			text.append(line_start ? ": " : " ");
 		} else if (matches.size() > 1) {
-			std::string completion_list = utils::join(matches, " ");
+			const std::string completion_list = utils::join(matches, " ");
 			game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), "", 0, completion_list,
 					events::chat_handler::MESSAGE_PRIVATE, false);
 		}

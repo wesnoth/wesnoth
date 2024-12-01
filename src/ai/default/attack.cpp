@@ -104,7 +104,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 	for (m = movements.begin(); m != movements.end(); ++m) {
 		// We fix up units map to reflect what this would look like.
-		unit_ptr up = units.extract(m->first);
+		const unit_ptr up = units.extract(m->first);
 		up->set_location(m->second);
 		units.insert(up);
 		double m_aggression = aggression;
@@ -153,13 +153,13 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		}
 
 		// Note we didn't fight at all if defender is already dead.
-		double prob_fought = (1.0 - prob_dead_already);
+		const double prob_fought = (1.0 - prob_dead_already);
 
-		double prob_killed = def.hp_dist[0] - prob_dead_already;
+		const double prob_killed = def.hp_dist[0] - prob_dead_already;
 		prob_dead_already = def.hp_dist[0];
 
-		double prob_died = att.hp_dist[0];
-		double prob_survived = (1.0 - prob_died) * prob_fought;
+		const double prob_died = att.hp_dist[0];
+		const double prob_survived = (1.0 - prob_died) * prob_fought;
 
 		double cost = up->cost();
 		const bool on_village = map.is_village(m->second);
@@ -192,8 +192,8 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 			if (xp_for_advance == 0)
 				xp_for_advance = 1;
 
-			int fight_xp = game_config::combat_xp(defend_it->level());
-			int kill_xp = game_config::kill_xp(fight_xp);
+			const int fight_xp = game_config::combat_xp(defend_it->level());
+			const int kill_xp = game_config::kill_xp(fight_xp);
 
 			if (fight_xp >= xp_for_advance) {
 				advance_prob = prob_fought;
@@ -226,8 +226,8 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		// If we didn't advance, we took this damage.
 		avg_damage_taken += (up->hitpoints() - att.average_hp()) * (1.0 - advance_prob);
 
-		int fight_xp = game_config::combat_xp(up->level());
-		int kill_xp = game_config::kill_xp(fight_xp);
+		const int fight_xp = game_config::combat_xp(up->level());
+		const int kill_xp = game_config::kill_xp(fight_xp);
 		def_avg_experience += fight_xp * (1.0 - att.hp_dist[0]) + kill_xp * att.hp_dist[0];
 		if (m == movements.begin()) {
 			first_chance_kill = def.hp_dist[0];
@@ -255,7 +255,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 bool attack_analysis::attack_close(const map_location& loc) const
 {
-	std::set<map_location> &attacks = manager::get_singleton().get_ai_info().recent_attacks;
+	const std::set<map_location>& attacks = manager::get_singleton().get_ai_info().recent_attacks;
 	for(std::set<map_location>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
 		if(distance_between(*i,loc) < 4) {
 			return true;
@@ -440,7 +440,7 @@ wfl::variant attack_analysis::execute_self(wfl::variant ctxt) {
 			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), move_result::E_NO_UNIT, move_from));
 		}
 
-		ai::move_result_ptr result = get_ai_context(ctxt.as_callable()).execute_move_action(move_from, att_src);
+		const ai::move_result_ptr result = get_ai_context(ctxt.as_callable()).execute_move_action(move_from, att_src);
 		if(!result->is_ok()) {
 			//move part failed
 			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function";
@@ -449,7 +449,8 @@ wfl::variant attack_analysis::execute_self(wfl::variant ctxt) {
 	}
 
 	if(units.count(att_src)) {
-		ai::attack_result_ptr result = get_ai_context(ctxt.as_callable()).execute_attack_action(movements.front().second, target, -1);
+		const ai::attack_result_ptr result
+			= get_ai_context(ctxt.as_callable()).execute_attack_action(movements.front().second, target, -1);
 		if(!result->is_ok()) {
 			//attack failed
 			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function";

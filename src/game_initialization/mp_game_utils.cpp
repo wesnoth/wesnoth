@@ -130,7 +130,7 @@ config initial_level_config(saved_game& state)
 
 void level_to_gamestate(const config& level, saved_game& state)
 {
-	campaign_type::type type = state.classification().type;
+	const campaign_type::type type = state.classification().type;
 	state = saved_game(level);
 	state.classification().type = type;
 }

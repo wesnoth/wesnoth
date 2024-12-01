@@ -98,7 +98,7 @@ void end_credits::pre_show()
 	// also truncates the length of the line to 200 characters
 	// 200 characters is completely arbitrary, just prevent the possibility of ridiculously wide lines
 	// NOTE: this depends on the assumption that the <span>s added above only ever wrap a single line
-	std::vector<std::string> lines = utils::split(content_, '\n', 0);
+	const std::vector<std::string> lines = utils::split(content_, '\n', 0);
 	int i = 0;
 	for(const std::string& line : lines) {
 		if(i % lines_per_chunk_ == 0) {
@@ -130,18 +130,18 @@ void end_credits::pre_show()
 
 void end_credits::update()
 {
-	uint32_t now = SDL_GetTicks();
+	const uint32_t now = SDL_GetTicks();
 	if(last_scroll_ > now) {
 		return;
 	}
 
-	uint32_t missed_time = now - last_scroll_;
+	const uint32_t missed_time = now - last_scroll_;
 
 	unsigned int cur_pos = text_widget_->get_vertical_scrollbar_item_position();
 
 	// Calculate how far the text should have scrolled by now
 	// The division by 1000 is to convert milliseconds to seconds.
-	unsigned int needed_dist = missed_time * scroll_speed_ / 1000;
+	const unsigned int needed_dist = missed_time * scroll_speed_ / 1000;
 
 	// TODO: this doesn't allow for scrolling up again after been scrolled down
 	// only the content in the current sliding window can be scrolled up

@@ -390,8 +390,8 @@ bool attack_type::apply_modification(const config& cfg)
 		const std::vector<std::string>& dsl = utils::split(del_specials);
 		config new_specials;
 		for(const auto [key, cfg] : specials_.all_children_view()) {
-			std::vector<std::string>::const_iterator found_id =
-				std::find(dsl.begin(), dsl.end(), cfg["id"].str());
+			const std::vector<std::string>::const_iterator found_id
+				= std::find(dsl.begin(), dsl.end(), cfg["id"].str());
 			if (found_id == dsl.end()) {
 				new_specials.add_child(key, cfg);
 			}

@@ -33,7 +33,7 @@ static std::string get_persist_cfg_name(const std::string &name_space) {
 
 void persist_file_context::load()
 {
-	std::string cfg_name = get_persist_cfg_name(namespace_.root_);
+	const std::string cfg_name = get_persist_cfg_name(namespace_.root_);
 	if (filesystem::file_exists(cfg_name) && !filesystem::is_directory(cfg_name)) {
 		filesystem::scoped_istream file_stream = filesystem::istream_file(cfg_name);
 		if (!(file_stream->fail())) {
@@ -74,12 +74,12 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 		if (!exists) {
 			if (cfg.has_child(global)) {
 				exists = true;
-				std::string::const_iterator index_start = std::find(global.begin(),global.end(),'[');
+				const std::string::const_iterator index_start = std::find(global.begin(), global.end(), '[');
 				if (index_start != global.end())
 				{
 					const std::string::const_iterator index_end = std::find(global.begin(),global.end(),']');
 					const std::string index_str(index_start+1,index_end);
-					std::size_t index = static_cast<std::size_t>(lexical_cast_default<int>(index_str));
+					const std::size_t index = static_cast<std::size_t>(lexical_cast_default<int>(index_str));
 					cfg.remove_child(global,index);
 					if (immediate) bactive.remove_child(global,index);
 				} else {
@@ -163,7 +163,7 @@ config persist_file_context::get_var(const std::string &global) const
 	const config *active = get_node(cfg_, namespace_);
 	if (active && (active->has_child("variables"))) {
 		const config &cfg = active->mandatory_child("variables");
-		std::size_t arrsize = cfg.child_count(global);
+		const std::size_t arrsize = cfg.child_count(global);
 		if (arrsize > 0) {
 			for (std::size_t i = 0; i < arrsize; i++)
 				ret.add_child(global, cfg.mandatory_child(global,i));
@@ -178,7 +178,7 @@ config persist_file_context::get_var(const std::string &global) const
 bool persist_file_context::save_context() {
 	bool success = false;
 
-	std::string cfg_name = get_persist_cfg_name(namespace_.root_);
+	const std::string cfg_name = get_persist_cfg_name(namespace_.root_);
 	if (!cfg_name.empty()) {
 		if (cfg_.empty()) {
 			success = filesystem::delete_file(cfg_name);
@@ -230,7 +230,7 @@ bool persist_file_context::set_var(const std::string &global,const config &val, 
 	if (!in_transaction_)
 		return save_context();
 	else if (immediate) {
-		bool ret = save_context();
+		const bool ret = save_context();
 		cfg_ = bak;
 		active = get_node(cfg_, namespace_, true);
 		active->clear_children("variables");

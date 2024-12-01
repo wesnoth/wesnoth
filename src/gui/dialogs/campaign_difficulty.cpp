@@ -122,7 +122,7 @@ void campaign_difficulty::pre_show()
 void campaign_difficulty::post_show()
 {
 	if(get_retval() == retval::OK) {
-		listbox& list = find_widget<listbox>("listbox");
+		const listbox& list = find_widget<listbox>("listbox");
 		selected_difficulty_ = difficulties_.mandatory_child("difficulty", list.get_selected_row())["define"].str();
 	}
 }

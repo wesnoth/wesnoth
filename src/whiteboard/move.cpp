@@ -105,7 +105,7 @@ move::move(const config& cfg, bool hidden)
 	, fake_unit_hidden_(false)
 {
 	// Construct and validate unit_
-	unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"].to_size_t());
+	const unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"].to_size_t());
 	if(unit_itor == resources::gameboard->units().end())
 		throw action::ctor_err("move: Invalid underlying_id");
 	unit_underlying_id_ = unit_itor->underlying_id();
@@ -161,19 +161,18 @@ void move::init(unit* u)
 	{
 		fake_unit_->anim_comp().set_ghosted(true);
 	}
-	side_actions_ptr side_actions = resources::gameboard->teams().at(team_index()).get_side_actions();
-	side_actions::iterator action = side_actions->find_last_action_of(unit_underlying_id_);
+	const side_actions_ptr side_actions = resources::gameboard->teams().at(team_index()).get_side_actions();
+	const side_actions::iterator action = side_actions->find_last_action_of(unit_underlying_id_);
 	if (action != side_actions->end())
 	{
-		if (move_ptr move = std::dynamic_pointer_cast<class move>(*action))
-		{
+		if(const move_ptr move = std::dynamic_pointer_cast<class move>(*action)) {
 			if (move->fake_unit_)
 				move->fake_unit_->anim_comp().set_disabled_ghosted(true);
 		}
 	}
 
 	// Initialize arrow_brightness_ and arrow_texture_ using arrow_->style_
-	std::string arrow_style = arrow_->get_style();
+	const std::string arrow_style = arrow_->get_style();
 	if(arrow_style == arrow::STYLE_STANDARD)
 	{
 		arrow_brightness_ = ARROW_BRIGHTNESS_STANDARD;
@@ -236,7 +235,7 @@ void move::execute(bool& success, bool& complete)
 		throw; // we rely on the caller to delete this action
 	}
 	const map_location & final_location = steps[num_steps];
-	unit_map::const_iterator unit_it = resources::gameboard->units().find(final_location);
+	const unit_map::const_iterator unit_it = resources::gameboard->units().find(final_location);
 
 	if ( num_steps == 0 )
 	{
@@ -288,7 +287,7 @@ void move::execute(bool& success, bool& complete)
 
 unit_ptr move::get_unit() const
 {
-	unit_map::iterator itor = resources::gameboard->units().find(unit_underlying_id_);
+	const unit_map::iterator itor = resources::gameboard->units().find(unit_underlying_id_);
 	if (itor.valid())
 		return itor.get_shared_ptr();
 	else
@@ -322,9 +321,8 @@ void move::modify_unit(unit& new_unit)
 bool move::calculate_new_route(const map_location& source_hex, const map_location& dest_hex)
 {
 	pathfind::plain_route new_plain_route;
-	pathfind::shortest_path_calculator path_calc(*get_unit(),
-						resources::gameboard->teams().at(team_index()),
-						resources::gameboard->teams(), resources::gameboard->map());
+	const pathfind::shortest_path_calculator path_calc(*get_unit(), resources::gameboard->teams().at(team_index()),
+		resources::gameboard->teams(), resources::gameboard->map());
 	new_plain_route = pathfind::a_star_search(source_hex,
 						dest_hex, 10000, path_calc, resources::gameboard->map().w(), resources::gameboard->map().h());
 	if (new_plain_route.move_cost >= path_calc.getNoPathValue()) return false;
@@ -347,7 +345,7 @@ void move::apply_temp_modifier(unit_map& unit_map)
 	//@todo: we may need to change unit status here and change it back in remove_temp_modifier
 	unit* unit;
 	{
-		unit_map::iterator unit_it = unit_map.find(get_source_hex());
+		const unit_map::iterator unit_it = unit_map.find(get_source_hex());
 		assert(unit_it != unit_map.end());
 		unit = &*unit_it;
 	}
@@ -380,7 +378,7 @@ void move::remove_temp_modifier(unit_map&)
 	{
 		unit* unit;
 		{
-			unit_map::iterator unit_it = resources::gameboard->units().find(get_dest_hex());
+			const unit_map::iterator unit_it = resources::gameboard->units().find(get_dest_hex());
 			assert(unit_it != resources::gameboard->units().end());
 			unit = &*unit_it;
 		}

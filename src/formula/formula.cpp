@@ -128,7 +128,7 @@ formula::formula(const std::string& text, function_symbol_table* symbols)
 		try {
 			tokens.push_back(tk::get_token(i1,i2));
 
-			tk::token_type current_type = tokens.back().type;
+			const tk::token_type current_type = tokens.back().type;
 
 			if(current_type == tk::token_type::whitespace)  {
 				tokens.pop_back();
@@ -136,7 +136,7 @@ formula::formula(const std::string& text, function_symbol_table* symbols)
 				// Since we can have multiline comments, let's see how many EOL are within it
 				int counter = 0;
 
-				std::string comment = std::string(tokens.back().begin, tokens.back().end);
+				const std::string comment = std::string(tokens.back().begin, tokens.back().end);
 				for(const auto& str_it : comment) {
 					if(str_it == '\n') {
 						counter++;
@@ -174,7 +174,7 @@ formula::formula(const std::string& text, function_symbol_table* symbols)
 				}
 			} else if(fai_keyword || wfl_keyword) {
 				if(current_type == tk::token_type::string_literal) {
-					std::string str = std::string(tokens.back().begin, tokens.back().end);
+					const std::string str = std::string(tokens.back().begin, tokens.back().end);
 					files.emplace_back(str , 1);
 
 					auto [pos, success] = filenames.insert(str);
@@ -270,7 +270,7 @@ variant formula::execute(const formula_callable& variables, formula_debugger*fdb
 
 variant formula::execute(formula_debugger*fdb) const
 {
-	static map_formula_callable null_callable;
+	static const map_formula_callable null_callable;
 	return execute(null_callable,fdb);
 }
 
@@ -346,7 +346,7 @@ private:
 		std::stringstream s;
 		s << '[';
 		bool first_item = true;
-		for(expression_ptr a : items_) {
+		for(const expression_ptr a : items_) {
 			if(!first_item) {
 				s << ',';
 			} else {
@@ -390,8 +390,8 @@ private:
 	{
 		std::map<variant,variant> res;
 		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); (i != items_.end()) && (i + 1 != items_.end()) ; i += 2) {
-			variant key = (*i)->evaluate(variables, add_debug_info(fdb, 0, "key ->"));
-			variant value = (*(i+1))->evaluate(variables, add_debug_info(fdb, 1, "-> value"));
+			const variant key = (*i)->evaluate(variables, add_debug_info(fdb, 0, "key ->"));
+			const variant value = (*(i + 1))->evaluate(variables, add_debug_info(fdb, 1, "-> value"));
 			res[key] = value;
 		}
 
@@ -465,7 +465,7 @@ public:
 			return variant(string_.as_string().empty());
 		} else if(key == "char" || key == "chars") {
 			std::vector<variant> chars;
-			for(char c : string_.as_string()) {
+			for(const char c : string_.as_string()) {
 				chars.emplace_back(std::string(1, c));
 			}
 
@@ -475,7 +475,7 @@ public:
 			const std::string& str = string_.as_string();
 			std::size_t next_space = 0;
 			do {
-				std::size_t last_space = next_space;
+				const std::size_t last_space = next_space;
 				next_space = str.find_first_of(" \t", next_space);
 				words.emplace_back(str.substr(last_space, next_space - last_space));
 				next_space = str.find_first_not_of(" \t", next_space);
@@ -483,7 +483,7 @@ public:
 
 			return variant(words);
 		} else if(key == "item" || key == "items") {
-			std::vector<std::string> split = utils::parenthetical_split(string_.as_string(), ',');
+			const std::vector<std::string> split = utils::parenthetical_split(string_.as_string(), ',');
 			std::vector<variant> items;
 			items.reserve(split.size());
 			for(const std::string& s : split) {
@@ -558,9 +558,9 @@ public:
 				continue;
 			}
 
-			std::string key = key_variant.as_string();
+			const std::string key = key_variant.as_string();
 			bool valid = true;
-			for(char c : key) {
+			for(const char c : key) {
 				if(!isalpha(c) && c != '_') {
 					valid = false;
 					break;
@@ -637,27 +637,27 @@ private:
 		variant left = left_->evaluate(variables, add_debug_info(fdb,0,"left ."));
 		if(!left.is_callable()) {
 			if(left.is_list()) {
-				list_callable list_call(left);
-				dot_callable callable(variables, list_call);
+				const list_callable list_call(left);
+				const dot_callable callable(variables, list_call);
 				return right_->evaluate(callable,fdb);
 			}
 
 			if(left.is_map()) {
-				map_callable map_call(left);
-				dot_callable callable(variables, map_call);
+				const map_callable map_call(left);
+				const dot_callable callable(variables, map_call);
 				return right_->evaluate(callable,fdb);
 			}
 
 			if(left.is_string()) {
-				string_callable string_call(left);
-				dot_callable callable(variables, string_call);
+				const string_callable string_call(left);
+				const dot_callable callable(variables, string_call);
 				return right_->evaluate(callable,fdb);
 			}
 
 			return left;
 		}
 
-		dot_callable callable(variables, *left.as_callable());
+		const dot_callable callable(variables, *left.as_callable());
 		return right_->evaluate(callable, add_debug_info(fdb,1,". right"));
 	}
 
@@ -834,9 +834,9 @@ private:
 
 	variant get_value(const std::string& key) const
 	{
-		expr_table::iterator i = table_->find(key);
+		const expr_table::iterator i = table_->find(key);
 		if(i != table_->end()) {
-			expr_table_evaluated::const_iterator ev = evaluated_table_.find(key);
+			const expr_table_evaluated::const_iterator ev = evaluated_table_.find(key);
 			if(ev != evaluated_table_.end()) {
 				return ev->second;
 			}
@@ -875,7 +875,7 @@ private:
 
 	variant execute(const formula_callable& variables,formula_debugger*fdb) const
 	{
-		where_variables wrapped_variables(variables, clauses_, fdb);
+		const where_variables wrapped_variables(variables, clauses_, fdb);
 		return body_->evaluate(wrapped_variables, add_debug_info(fdb, 0, "... where"));
 	}
 };
@@ -1223,7 +1223,7 @@ static void parse_where_clauses(const tk::token* i1, const tk::token* i2, const 
 				beg = i1+1;
 				var_name = "";
 			} else if(i1->type == tk::token_type::operator_token) {
-				std::string op_name(i1->begin, i1->end);
+				const std::string op_name(i1->begin, i1->end);
 
 				if(op_name == "=") {
 					if(beg->type != tk::token_type::identifier) {
@@ -1389,7 +1389,7 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 			} else if(i1->type == tk::token_type::identifier) {
 				return std::make_shared<identifier_expression>(std::string(i1->begin, i1->end));
 			} else if(i1->type == tk::token_type::integer) {
-				int n = std::stoi(std::string(i1->begin, i1->end));
+				const int n = std::stoi(std::string(i1->begin, i1->end));
 				return std::make_shared<integer_expression>(n);
 			} else if(i1->type == tk::token_type::decimal) {
 				tk::iterator dot = i1->begin;
@@ -1397,7 +1397,7 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 					++dot;
 				}
 
-				int n = std::stoi(std::string(i1->begin,dot));
+				const int n = std::stoi(std::string(i1->begin, dot));
 
 				tk::iterator literal_end = i1->end;
 
@@ -1474,7 +1474,7 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 	}
 
 	if(op_name == "where") {
-		expr_table_ptr table(new expr_table());
+		const expr_table_ptr table(new expr_table());
 		parse_where_clauses(op+1, i2, table, symbols);
 
 		return std::make_shared<where_expression>(parse_expression(i1, op, symbols), table);

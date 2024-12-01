@@ -63,7 +63,7 @@ styled_widget_definition::styled_widget_definition(const config& cfg)
 	 * translatable string is not in the header and we don't need to pull in
 	 * extra header dependencies.
 	 */
-	config::const_child_itors itors = cfg.child_range("resolution");
+	const config::const_child_itors itors = cfg.child_range("resolution");
 	VALIDATE(!itors.empty(), _("No resolution defined for ") + id);
 }
 

@@ -94,7 +94,7 @@ static void decrement_chunk_usage(Mix_Chunk* mcp)
 		return;
 	}
 
-	std::map<Mix_Chunk*, int>::iterator this_usage = chunk_usage.find(mcp);
+	const std::map<Mix_Chunk*, int>::iterator this_usage = chunk_usage.find(mcp);
 	assert(this_usage != chunk_usage.end());
 	if(--(this_usage->second) == 0) {
 		Mix_FreeChunk(mcp);
@@ -419,7 +419,7 @@ std::string current_driver()
 std::vector<std::string> enumerate_drivers()
 {
 	std::vector<std::string> res;
-	int num_drivers = SDL_GetNumVideoDrivers();
+	const int num_drivers = SDL_GetNumVideoDrivers();
 
 	for(int n = 0; n < num_drivers; ++n) {
 		const char* drvname = SDL_GetAudioDriver(n);
@@ -526,10 +526,10 @@ void close_sound()
 
 void reset_sound()
 {
-	bool music = prefs::get().music_on();
-	bool sound = prefs::get().sound();
-	bool UI_sound = prefs::get().ui_sound_on();
-	bool bell = prefs::get().turn_bell();
+	const bool music = prefs::get().music_on();
+	const bool sound = prefs::get().sound();
+	const bool UI_sound = prefs::get().ui_sound_on();
+	const bool bell = prefs::get().turn_bell();
 
 	if(music || sound || bell || UI_sound) {
 		sound::close_sound();
@@ -722,7 +722,7 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 	// vultraz 5/8/2017
 	//
 
-	music_track track(music_node);
+	const music_track track(music_node);
 
 	if(!track.valid() && !track.id().empty()) {
 		ERR_AUDIO << "cannot open track '" << track.id() << "'; disabled in this playlist.";
@@ -881,7 +881,7 @@ void write_music_play_list(config& snapshot)
 
 void reposition_sound(int id, unsigned int distance)
 {
-	audio_lock lock;
+	const audio_lock lock;
 	for(unsigned ch = 0; ch < channel_ids.size(); ++ch) {
 		if(channel_ids[ch] != id) {
 			continue;
@@ -897,7 +897,7 @@ void reposition_sound(int id, unsigned int distance)
 
 bool is_sound_playing(int id)
 {
-	audio_lock lock;
+	const audio_lock lock;
 	return std::find(channel_ids.begin(), channel_ids.end(), id) != channel_ids.end();
 }
 
@@ -935,7 +935,7 @@ Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		bool cache_full = (sound_cache.size() == max_cached_chunks);
 		while(cache_full && it != it_bgn) {
 			// make sure this chunk is not being played before freeing it
-			std::vector<Mix_Chunk*>::iterator ch_end = channel_chunks.end();
+			const std::vector<Mix_Chunk*>::iterator ch_end = channel_chunks.end();
 			if(std::find(channel_chunks.begin(), ch_end, (--it)->get_data()) == ch_end) {
 				sound_cache.erase(it);
 				cache_full = false;
@@ -984,17 +984,17 @@ void play_sound_internal(const std::string& files,
 		return;
 	}
 
-	audio_lock lock;
+	const audio_lock lock;
 
 	// find a free channel in the desired group
-	int channel = Mix_GroupAvailable(group);
+	const int channel = Mix_GroupAvailable(group);
 	if(channel == -1) {
 		LOG_AUDIO << "All channels dedicated to sound group(" << group << ") are busy, skipping.";
 		return;
 	}
 
 	Mix_Chunk* chunk;
-	std::string file = pick_one(files);
+	const std::string file = pick_one(files);
 
 	try {
 		chunk = load_chunk(file, group);

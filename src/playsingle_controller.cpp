@@ -118,7 +118,7 @@ void playsingle_controller::init_gui()
 			scroll_team = 1;
 		}
 
-		map_location loc(get_map().starting_position(scroll_team));
+		const map_location loc(get_map().starting_position(scroll_team));
 		if((loc.x >= 0) && (loc.y >= 0)) {
 			gui_->scroll_to_tile(loc, game_display::WARP);
 			LOG_NG << "Found bad stored ui location " << map_start_ << " using side starting location " << loc;
@@ -148,7 +148,7 @@ void playsingle_controller::play_scenario_init(const config& level)
 	assert(soundsources_manager_ != nullptr);
 	for(const config& s : level.child_range("sound_source")) {
 		try {
-			soundsource::sourcespec spec(s);
+			const soundsource::sourcespec spec(s);
 			soundsources_manager_->add(spec);
 		} catch(const bad_lexical_cast&) {
 			ERR_NG << "Error when parsing sound_source config: bad lexical cast.";
@@ -191,7 +191,7 @@ playsingle_controller::ses_result playsingle_controller::skip_empty_sides(int si
 	const int max = side_num + sides;
 
 	for (; side_num != max; ++side_num) {
-		int side_num_mod = modulo(side_num, sides, 1);
+		const int side_num_mod = modulo(side_num, sides, 1);
 		if(!gamestate().board_.get_team(side_num_mod).is_empty()) {
 			return { side_num_mod, side_num_mod != side_num };
 		}
@@ -265,7 +265,7 @@ void playsingle_controller::finish_side_turn()
 
 	/// Make a copy, since the [end_turn] was already sent to to server any changes to
 	//  next_player_number by wml would cause OOS otherwise.
-	int next_player_number_temp = gamestate_->next_player_number_;
+	const int next_player_number_temp = gamestate_->next_player_number_;
 	whiteboard_manager_->on_finish_side_turn(current_side());
 
 	finish_side_turn_events();
@@ -371,7 +371,7 @@ void playsingle_controller::do_end_level()
 	pump().fire(is_victory ? "local_victory" : "local_defeat");
 
 	{ // Block for set_scontext_synced_base
-		set_scontext_synced_base sync;
+		const set_scontext_synced_base sync;
 		pump().fire(end_level.proceed_to_next_level ? level_result::victory : level_result::defeat);
 		pump().fire("scenario_end");
 	}
@@ -454,7 +454,7 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 		saved_game_.clear();
 		throw;
 	} catch(const wesnothd_error& e) {
-		scoped_savegame_snapshot snapshot(*this);
+		const scoped_savegame_snapshot snapshot(*this);
 		savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
 		if(e.message == "") {
 			save.save_game_interactive(
@@ -539,7 +539,7 @@ void playsingle_controller::before_human_turn()
 
 	if(!did_autosave_this_turn_ && !game_config::disable_autosave && prefs::get().auto_save_max() > 0) {
 		did_autosave_this_turn_ = true;
-		scoped_savegame_snapshot snapshot(*this);
+		const scoped_savegame_snapshot snapshot(*this);
 		savegame::autosave_savegame save(saved_game_, prefs::get().save_compression_format());
 		save.autosave(game_config::disable_autosave, prefs::get().auto_save_max(), pref_constants::INFINITE_AUTO_SAVES);
 	}
@@ -552,7 +552,7 @@ void playsingle_controller::before_human_turn()
 void playsingle_controller::show_turn_dialog()
 {
 	if(prefs::get().turn_dialog() && !is_regular_game_end()) {
-		blindfold b(*gui_, true); // apply a blindfold for the duration of this dialog
+		const blindfold b(*gui_, true); // apply a blindfold for the duration of this dialog
 		gui_->queue_rerender();
 		std::string message = _("It is now $name|’s turn");
 		utils::string_map symbols;
@@ -661,7 +661,7 @@ void playsingle_controller::play_ai_turn()
 	// Correct an oddball case where a human could have left delayed shroud
 	// updates on before giving control to the AI. (The AI does not bother
 	// with the undo stack, so it cannot delay shroud updates.)
-	team& cur_team = current_team();
+	const team& cur_team = current_team();
 	if(!cur_team.auto_shroud_updates()) {
 		// We just took control, so the undo stack is empty. We still need
 		// to record this change for the replay though.
@@ -809,7 +809,7 @@ void playsingle_controller::update_viewing_player()
 {
 	if(replay_controller_ && replay_controller_->is_controlling_view()) {
 		replay_controller_->update_viewing_player();
-	} else if(int side_num = find_viewing_side()) {
+	} else if(const int side_num = find_viewing_side()) {
 		if(side_num != gui_->viewing_team().side() || gui_->show_everything()) {
 			update_gui_to_player(side_num - 1);
 		}

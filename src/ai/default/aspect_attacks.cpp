@@ -53,13 +53,13 @@ aspect_attacks::aspect_attacks(readonly_context& context, const config& cfg, con
 	, filter_enemy_()
 {
 	if(auto filter_own = cfg.optional_child("filter_own")) {
-		vconfig vcfg(*filter_own);
+		const vconfig vcfg(*filter_own);
 		vcfg.make_safe();
 		filter_own_.reset(new unit_filter(vcfg));
 	}
 
 	if(auto filter_enemy = cfg.optional_child("filter_enemy")) {
-		vconfig vcfg(*filter_enemy);
+		const vconfig vcfg(*filter_enemy);
 		vcfg.make_safe();
 		filter_enemy_.reset(new unit_filter(vcfg));
 	}
@@ -157,7 +157,7 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 	for(std::size_t i = 0; i != units.size(); ++i) {
 		const map_location current_unit = units[i];
 
-		unit_map::iterator unit_itor = units_.find(current_unit);
+		const unit_map::iterator unit_itor = units_.find(current_unit);
 		assert(unit_itor != units_.end());
 
 		// See if the unit has the backstab ability.
@@ -248,8 +248,8 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 				}
 			}
 
-			int best_leadership_bonus = under_leadership(*unit_itor, tiles[j]);
-			double leadership_bonus = static_cast<double>(best_leadership_bonus + 100) / 100.0;
+			const int best_leadership_bonus = under_leadership(*unit_itor, tiles[j]);
+			const double leadership_bonus = static_cast<double>(best_leadership_bonus + 100) / 100.0;
 			if(leadership_bonus > 1.1) {
 				LOG_AI << unit_itor->name() << " is getting leadership " << leadership_bonus;
 			}
@@ -281,7 +281,7 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 			}
 
 			// See if this position is the best rated we've seen so far.
-			int rating = static_cast<int>(rate_terrain(*unit_itor, tiles[j]) * backstab_bonus * leadership_bonus);
+			const int rating = static_cast<int>(rate_terrain(*unit_itor, tiles[j]) * backstab_bonus * leadership_bonus);
 			if(cur_position >= 0 && rating < best_rating) {
 				continue;
 			}
@@ -349,7 +349,7 @@ int aspect_attacks_base::rate_terrain(const unit& u, const map_location& loc)
 	}
 
 	if(map_.is_village(terrain)) {
-		int owner = resources::gameboard->village_owner(loc);
+		const int owner = resources::gameboard->village_owner(loc);
 
 		if(owner == u.side()) {
 			rating += friendly_village_value;
@@ -432,7 +432,7 @@ void aspect_attacks_lua::recalculate() const
 	const config empty_cfg;
 	handler_->handle(params_, empty_cfg, true, obj_);
 
-	aspect_attacks_lua_filter filt = *obj_->get();
+	const aspect_attacks_lua_filter filt = *obj_->get();
 	aspect_attacks_base::recalculate();
 
 	if(filt.lua) {
@@ -463,7 +463,7 @@ static bool call_lua_filter_fcn(lua_State* L, const unit& u, int idx)
 	lua_rawgeti(L, LUA_REGISTRYINDEX, idx);
 	luaW_pushunit(L, u.underlying_id());
 	luaW_pcall(L, 1, 1);
-	bool result = luaW_toboolean(L, -1);
+	const bool result = luaW_toboolean(L, -1);
 	lua_pop(L, 1);
 	return result;
 }

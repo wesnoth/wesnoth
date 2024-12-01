@@ -415,19 +415,19 @@ int unit_animation::matches(const map_location& loc, const map_location& second_
 		}
 
 		for(const auto& filter : unit_filter_) {
-			unit_filter f{ vconfig(filter) };
+			const unit_filter f{vconfig(filter)};
 			if(!f(*my_unit, loc)) return MATCH_FAIL;
 			++result;
 		}
 
 		if(!secondary_unit_filter_.empty()) {
-			unit_map::const_iterator unit = disp.context().units().find(second_loc);
+			const unit_map::const_iterator unit = disp.context().units().find(second_loc);
 			if(!unit.valid()) {
 				return MATCH_FAIL;
 			}
 
 			for(const config& c : secondary_unit_filter_) {
-				unit_filter f{ vconfig(c) };
+				const unit_filter f{vconfig(c)};
 				if(!f(*unit, second_loc)) return MATCH_FAIL;
 				result++;
 			}
@@ -650,9 +650,9 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		anim["cycles"] = true;
 
 		// Add cycles to all frames within a standing animation block
-		for(config::const_all_children_iterator ci : ab.children) {
-			std::string sub_frame_name = ci->key;
-			std::size_t pos = sub_frame_name.find("_frame");
+		for(const config::const_all_children_iterator ci : ab.children) {
+			const std::string sub_frame_name = ci->key;
+			const std::size_t pos = sub_frame_name.find("_frame");
 			if(pos != std::string::npos) {
 				anim[sub_frame_name.substr(0, pos) + "_cycles"] = true;
 			}
@@ -675,9 +675,9 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		anim["apply_to"] = "default";
 		anim["cycles"] = true;
 
-		for(config::const_all_children_iterator ci : ab.children) {
-			std::string sub_frame_name = ci->key;
-			std::size_t pos = sub_frame_name.find("_frame");
+		for(const config::const_all_children_iterator ci : ab.children) {
+			const std::string sub_frame_name = ci->key;
+			const std::size_t pos = sub_frame_name.find("_frame");
 			if(pos != std::string::npos) {
 				anim[sub_frame_name.substr(0, pos) + "_cycles"] = true;
 			}
@@ -776,7 +776,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			animations.emplace_back(anim);
 			animations.back().base_score_--;
 
-			image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
+			const image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
 			animations.back().add_frame(225ms, frame_builder()
 				.image(image_loc.get_filename()+image_loc.get_modifications())
 				.duration(225ms)
@@ -788,7 +788,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 				animations.emplace_back(tmp);
 
-				image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
+				const image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
 				if(hit_type == "yes" || hit_type == strike_result::hit || hit_type == strike_result::kill) {
 					animations.back().add_frame(225ms, frame_builder()
 						.image(image_loc.get_filename() + image_loc.get_modifications())
@@ -810,7 +810,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			anim["layer"] = move_layer;
 		}
 
-		config::const_child_itors missile_fs = anim.child_range("missile_frame");
+		const config::const_child_itors missile_fs = anim.child_range("missile_frame");
 		if(anim["offset"].empty() && missile_fs.empty()) {
 			anim["offset"] ="0~0.6,0.6~0";
 		}
@@ -843,7 +843,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		}
 
 		animations.emplace_back(anim);
-		image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
+		const image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
 
 		animations.back().add_frame(600ms, frame_builder()
 			.image(image_loc.get_filename()+image_loc.get_modifications())
@@ -934,7 +934,7 @@ unit_animation::particle::particle(const config& cfg, const std::string& frame_s
 {
 	starting_frame_time_ = std::chrono::milliseconds::max();
 
-	config::const_child_itors range = cfg.child_range(frame_string + "frame");
+	const config::const_child_itors range = cfg.child_range(frame_string + "frame");
 	if(!range.empty() && cfg[frame_string + "start_time"].empty()) {
 		for(const config& frame : range) {
 			starting_frame_time_ = std::min(starting_frame_time_, chrono::parse_duration<std::chrono::milliseconds>(frame["begin"]));
@@ -944,7 +944,7 @@ unit_animation::particle::particle(const config& cfg, const std::string& frame_s
 	}
 
 	for(const config& frame : range) {
-		unit_frame tmp_frame(frame);
+		const unit_frame tmp_frame(frame);
 		add_frame(tmp_frame.duration(), tmp_frame, !tmp_frame.does_not_change());
 	}
 
@@ -1003,7 +1003,7 @@ bool unit_animation::animation_finished_potential() const
 
 void unit_animation::update_last_draw_time()
 {
-	double acceleration = unit_anim_.accelerate ? display::get_singleton()->turbo_speed() : 1.0;
+	const double acceleration = unit_anim_.accelerate ? display::get_singleton()->turbo_speed() : 1.0;
 	unit_anim_.update_last_draw_time(acceleration);
 	for(auto& anim : sub_anims_) {
 		anim.second.update_last_draw_time(acceleration);
@@ -1117,7 +1117,7 @@ bool unit_animation::invalidate(frame_parameters& value)
 			value.primary_frame = false;
 
 			for(auto& anim : sub_anims_) {
-				std::set<map_location> tmp = anim.second.get_overlaped_hex(value, src_, dst_);
+				const std::set<map_location> tmp = anim.second.get_overlaped_hex(value, src_, dst_);
 				overlaped_hex_.insert(tmp.begin(), tmp.end());
 			}
 		} else {
@@ -1156,7 +1156,7 @@ std::string unit_animation::debug() const
 
 std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animation)
 {
-	std::string events_string = utils::join(u_animation.event_);
+	const std::string events_string = utils::join(u_animation.event_);
 	outstream << "[" << events_string << "]\n";
 
 	outstream << "\tstart_time=" << u_animation.get_begin_time().count() << '\n';
@@ -1223,10 +1223,10 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 		outstream << "\t[/frame]\n";
 	}
 
-	for(std::pair<std::string, unit_animation::particle> p : u_animation.sub_anims_) {
+	for(const std::pair<std::string, unit_animation::particle> p : u_animation.sub_anims_) {
 		for(std::size_t i = 0; i < p.second.get_frames_count(); i++) {
 			std::string sub_frame_name = p.first;
-			std::size_t pos = sub_frame_name.find("_frame");
+			const std::size_t pos = sub_frame_name.find("_frame");
 			if(pos != std::string::npos) sub_frame_name = sub_frame_name.substr(0, pos);
 
 			outstream << "\t" << sub_frame_name << "_start_time=" << p.second.get_begin_time().count() << '\n';
@@ -1412,7 +1412,7 @@ void unit_animator::wait_until(const std::chrono::milliseconds& animation_time) 
 	animated_units_[0].my_unit->anim_comp().get_animation()->set_max_animation_time(animation_time);
 
 	display* disp = display::get_singleton();
-	double speed = disp->turbo_speed();
+	const double speed = disp->turbo_speed();
 
 	resources::controller->play_slice();
 

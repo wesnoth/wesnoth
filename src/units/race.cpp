@@ -36,12 +36,12 @@ const std::string unit_race::s_female("female");
 const std::string unit_race::s_male("male");
 
 static const config& empty_traits() {
-	static config cfg;
+	static const config cfg;
 	return cfg;
 }
 
 static const config& empty_topics() {
-	static config cfg;
+	static const config cfg;
 	return cfg;
 }
 
@@ -102,7 +102,7 @@ unit_race::unit_race(const config& cfg)
 	name_generator_factory generator_factory = name_generator_factory(cfg, {"male", "female"});
 
 	for(int i=MALE; i<NUM_GENDERS; i++) {
-		GENDER gender = static_cast<GENDER>(i);
+		GENDER const gender = static_cast<GENDER>(i);
 		name_generator_[i] = generator_factory.get_name_generator(gender_string(gender));
 	}
 }

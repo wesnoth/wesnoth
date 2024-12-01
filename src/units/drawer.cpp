@@ -137,17 +137,15 @@ void draw_bar(int index, const energy_bar& data, const rect& bounds)
 	// All absolute bar coordinates are normalized relative to the standard 72px hex.
 	using game_config::tile_size;
 
-	SDL_FPoint p1{
+	const SDL_FPoint p1{
 		float(energy_bar::def_origin.x + energy_bar::spacing * index) / tile_size,
-		float(energy_bar::def_origin.y                              ) / tile_size,
+		float(energy_bar::def_origin.y) / tile_size,
 	};
 
 	// If the top of the bar sits 13px from the top of the scaled hex rect, the bottom
 	// of the bar should extend no closer than 13px from the bottom.
-	SDL_FPoint p2{
-		std::min(p1.x + float(data.def_w) / tile_size, 1.0f - p1.x),
-		std::min(p1.y + float(data.bar_h) / tile_size, 1.0f - p1.y)
-	};
+	const SDL_FPoint p2{std::min(p1.x + float(data.def_w) / tile_size, 1.0f - p1.x),
+		std::min(p1.y + float(data.bar_h) / tile_size, 1.0f - p1.y)};
 
 	// Full bar dimensions
 	const SDL_FRect bar_rect = sdl::precise_subrect(bounds, p1, p2);
@@ -156,15 +154,15 @@ void draw_bar(int index, const energy_bar& data, const rect& bounds)
 	// Size of a single pixel relative to the standard hex
 	const float one_pixel = 1.0f / tile_size;
 
-	SDL_FPoint bg1{ p1.x + one_pixel, p1.y + one_pixel };
-	SDL_FPoint bg2{ p2.x - one_pixel, p2.y - one_pixel };
+	const SDL_FPoint bg1{p1.x + one_pixel, p1.y + one_pixel};
+	const SDL_FPoint bg2{p2.x - one_pixel, p2.y - one_pixel};
 
 	// Full inner dimensions
 	const SDL_FRect inner_rect = sdl::precise_subrect(bounds, bg1, bg2);
 	draw::fill(inner_rect, energy_bar::background_color);
 
-	SDL_FPoint fill1{ 0.0f, 1.0f - data.filled };
-	SDL_FPoint fill2{ 1.0f, 1.0f };
+	const SDL_FPoint fill1{0.0f, 1.0f - data.filled};
+	const SDL_FPoint fill2{1.0f, 1.0f};
 
 	// Filled area, relative to the bottom of the inner bar area
 	const SDL_FRect fill_rect = sdl::precise_subrect(inner_rect, fill1, fill2);
@@ -202,15 +200,15 @@ bool unit_drawer::selected_or_reachable(const map_location& loc) const
 void unit_drawer::redraw_unit(const unit& u) const
 {
 	unit_animation_component & ac = u.anim_comp();
-	map_location loc = u.get_location();
+	const map_location loc = u.get_location();
 
-	int side = u.side();
+	const int side = u.side();
 
-	bool hidden = u.get_hidden();
-	bool is_flying = u.is_flying();
-	map_location::direction facing = u.facing();
+	const bool hidden = u.get_hidden();
+	const bool is_flying = u.is_flying();
+	const map_location::direction facing = u.facing();
 
-	bool can_recruit = u.can_recruit();
+	const bool can_recruit = u.can_recruit();
 
 	const bool is_selected_hex = selected_or_reachable(loc);
 
@@ -292,7 +290,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 	const auto [xdst, ydst] = disp.get_location(dst);
 
 	// FIXME: double check whether the shift amount accounts for zoom level
-	rect unit_rect = disp.get_location_rect(loc).shifted_by(0, adjusted_params.y);
+	const rect unit_rect = disp.get_location_rect(loc).shifted_by(0, adjusted_params.y);
 
 	// We draw bars only if wanted, visible on the map view
 	if(ac.draw_bars_ && unit_rect.overlaps(disp.map_outside_area())) {
@@ -432,7 +430,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 		)
 		+ hex_size_by_2 - height_adjust_unit * zoom_factor;
 
-	bool has_halo = ac.unit_halo_ && ac.unit_halo_->valid();
+	const bool has_halo = ac.unit_halo_ && ac.unit_halo_->valid();
 	if(!has_halo && !u.image_halo().empty()) {
 		ac.unit_halo_ = halo_man.add(
 			halo_x, halo_y,
@@ -448,38 +446,32 @@ void unit_drawer::redraw_unit(const unit& u) const
 	}
 
 	const std::vector<std::string> halos_abilities = u.halo_abilities();
-	bool has_abil_halo = !ac.abil_halos_.empty() && ac.abil_halos_.front()->valid();
+	const bool has_abil_halo = !ac.abil_halos_.empty() && ac.abil_halos_.front()->valid();
 	if(!has_abil_halo && !halos_abilities.empty()) {
 		for(const std::string& halo_ab : halos_abilities){
-			halo::handle abil_halo = halo_man.add(
-				halo_x, halo_y,
-				halo_ab + u.TC_image_mods(),
-				map_location(-1, -1)
-			);
+			const halo::handle abil_halo
+				= halo_man.add(halo_x, halo_y, halo_ab + u.TC_image_mods(), map_location(-1, -1));
 			if(abil_halo->valid()){
 				ac.abil_halos_.push_back(abil_halo);
 			}
 		}
 	}
 	if(has_abil_halo && (ac.abil_halos_ref_ != halos_abilities || halos_abilities.empty())){
-		for(halo::handle& abil_halo : ac.abil_halos_){
+		for(const halo::handle& abil_halo : ac.abil_halos_) {
 			halo_man.remove(abil_halo);
 		}
 		ac.abil_halos_.clear();
 		if(!halos_abilities.empty()){
 			for(const std::string& halo_ab : halos_abilities){
-				halo::handle abil_halo = halo_man.add(
-					halo_x, halo_y,
-					halo_ab + u.TC_image_mods(),
-					map_location(-1, -1)
-				);
+				const halo::handle abil_halo
+					= halo_man.add(halo_x, halo_y, halo_ab + u.TC_image_mods(), map_location(-1, -1));
 				if(abil_halo->valid()){
 					ac.abil_halos_.push_back(abil_halo);
 				}
 			}
 		}
 	} else if(has_abil_halo){
-		for(halo::handle& abil_halo : ac.abil_halos_){
+		for(const halo::handle& abil_halo : ac.abil_halos_) {
 			halo_man.set_location(abil_halo, halo_x, halo_y);
 		}
 	}
@@ -492,7 +484,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 
 void unit_drawer::draw_ellipses(const unit& u, const frame_parameters& params) const
 {
-	std::string ellipse = u.image_ellipse();
+	const std::string ellipse = u.image_ellipse();
 	if(ellipse == "none") {
 		return;
 	}

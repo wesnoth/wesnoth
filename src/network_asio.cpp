@@ -47,7 +47,7 @@ std::deque<boost::asio::const_buffer> split_buffer(const boost::asio::streambuf:
 	const uint8_t* data = static_cast<const uint8_t*>(source_buffer.data());
 
 	while(remaining_size > 0u) {
-		unsigned int size = std::min(remaining_size, chunk_size);
+		const unsigned int size = std::min(remaining_size, chunk_size);
 		buffers.emplace_back(data, size);
 		data += size;
 		remaining_size -= size;
@@ -146,7 +146,7 @@ template<typename Verifier> auto verbose_verify(Verifier&& verifier)
 		char subject_name[256];
 		X509* cert = X509_STORE_CTX_get_current_cert(ctx.native_handle());
 		X509_NAME_oneline(X509_get_subject_name(cert), subject_name, 256);
-		bool verified = verifier(preverified, ctx);
+		const bool verified = verifier(preverified, ctx);
 		DBG_NW << "Verifying TLS certificate: " << subject_name << ": " <<
 			(verified ? "verified" : "failed");
 		BIO* bio = BIO_new(BIO_s_mem());
@@ -220,7 +220,7 @@ void connection::fallback_to_unencrypted()
 	assert(use_tls_ == true);
 	use_tls_ = false;
 
-	boost::asio::ip::tcp::endpoint endpoint { utils::get<raw_socket>(socket_)->remote_endpoint() };
+	const boost::asio::ip::tcp::endpoint endpoint{utils::get<raw_socket>(socket_)->remote_endpoint()};
 	utils::get<raw_socket>(socket_)->close();
 
 	utils::get<raw_socket>(socket_)->async_connect(endpoint,

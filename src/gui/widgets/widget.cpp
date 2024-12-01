@@ -209,9 +209,9 @@ point widget::get_best_size() const
 		result = calculate_best_size();
 		//Adjust to linked widget size if linked widget size was already calculated.
 		if (get_window() && !get_window()->get_need_layout() && !linked_group_.empty()) {
-				point linked_size = get_window()->get_linked_size(linked_group_);
-				result.x = std::max(result.x, linked_size.x);
-				result.y = std::max(result.y, linked_size.y);
+			const point linked_size = get_window()->get_linked_size(linked_group_);
+			result.x = std::max(result.x, linked_size.x);
+			result.y = std::max(result.y, linked_size.y);
 		}
 	}
 
@@ -390,7 +390,7 @@ bool widget::draw_background()
 	rect dest = calculate_blitting_rectangle();
 	rect clip = calculate_clipping_rectangle();
 	// Presumably we are drawing to our window's render buffer.
-	point window_origin = get_window()->get_origin();
+	const point window_origin = get_window()->get_origin();
 	dest.shift(-window_origin);
 	auto view_setter = draw::set_viewport(dest);
 	clip.shift(-get_origin());
@@ -411,7 +411,7 @@ void widget::draw_children()
 	rect dest = calculate_blitting_rectangle();
 	rect clip = calculate_clipping_rectangle();
 	// Presumably we are drawing to our window's render buffer.
-	point window_origin = get_window()->get_origin();
+	const point window_origin = get_window()->get_origin();
 	dest.shift(-window_origin);
 	auto view_setter = draw::set_viewport(dest);
 	clip.shift(-get_origin());
@@ -432,7 +432,7 @@ bool widget::draw_foreground()
 	rect dest = calculate_blitting_rectangle();
 	rect clip = calculate_clipping_rectangle();
 	// Presumably we are drawing to our window's render buffer.
-	point window_origin = get_window()->get_origin();
+	const point window_origin = get_window()->get_origin();
 	dest.shift(-window_origin);
 	auto view_setter = draw::set_viewport(dest);
 	clip.shift(-get_origin());
@@ -490,7 +490,7 @@ void widget::set_visible(const visibility visible)
 
 	if(need_resize) {
 		if(visible == visibility::visible && new_widgets) {
-			event::message message;
+			const event::message message;
 			fire(event::REQUEST_PLACEMENT, *this, message);
 		} else {
 			window* window = get_window();

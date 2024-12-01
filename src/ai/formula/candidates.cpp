@@ -67,8 +67,7 @@ candidate_action_with_filters::candidate_action_with_filters(
 	if( filter_params ) {
 		for(const auto& [key, value] : filter_params->attribute_range())
 		{
-			const_formula_ptr filter_formula(
-					new formula(value, function_table));
+			const const_formula_ptr filter_formula(new formula(value, function_table));
 
 			filter_map_[key]=filter_formula;
 		}
@@ -95,7 +94,7 @@ void move_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 {
 	score_ = 0;
 
-	candidate_action_filters::const_iterator me_filter = filter_map_.find("me");
+	const candidate_action_filters::const_iterator me_filter = filter_map_.find("me");
 
 	std::vector<variant> unit_vector;
 
@@ -125,7 +124,7 @@ void move_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 			map_formula_callable callable(ai->fake_ptr());
 			callable.add("me", *i);
 
-			int res = execute_formula(eval_, callable, ai);
+			const int res = execute_formula(eval_, callable, ai);
 
 			if(res > score_) {
 				score_ = res;
@@ -151,8 +150,8 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 {
 	score_ = 0;
 
-	candidate_action_filters::const_iterator me_filter = filter_map_.find("me");
-	candidate_action_filters::const_iterator target_filter = filter_map_.find("target");
+	const candidate_action_filters::const_iterator me_filter = filter_map_.find("me");
+	const candidate_action_filters::const_iterator target_filter = filter_map_.find("target");
 
 	std::vector<variant> my_res, enemy_res;
 
@@ -230,7 +229,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 				callable.add("me", filtered_my_units[my_unit]);
 				callable.add("target", filtered_enemy_units[enemy_unit]);
 
-				int res = execute_formula(eval_, callable, ai);
+				const int res = execute_formula(eval_, callable, ai);
 
 				if(res > score_) {
 					score_ = res;

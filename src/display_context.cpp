@@ -34,7 +34,7 @@ bool display_context::has_team(int side) const
 bool display_context::would_be_discovered(const map_location & loc, int side_num, bool see_all)
 {
 	for(const map_location& u_loc : get_adjacent_tiles(loc)) {
-		unit_map::const_iterator u_it = units().find(u_loc);
+		const unit_map::const_iterator u_it = units().find(u_loc);
 		if (!u_it.valid()) {
 			continue;
 		}
@@ -98,15 +98,15 @@ display_context::can_move_result display_context::unit_can_move(const unit& u) c
 	    }
 
 		if(!attackable_distances.empty()) {
-			int max_distance = *std::prev(attackable_distances.end());
+			const int max_distance = *std::prev(attackable_distances.end());
 
 			for (int dx = -max_distance; dx <= max_distance; ++dx) {
 				for (int dy = -max_distance; dy <= max_distance && !result.attack_here; ++dy) {
 					// Adjust for hex grid
-					int adjusted_dy = dy + floor(dx / 2.0);
+					const int adjusted_dy = dy + floor(dx / 2.0);
 
-					map_location locs(u.get_location().x + dx, u.get_location().y + adjusted_dy);
-					int distance = distance_between(u.get_location(), locs);
+					const map_location locs(u.get_location().x + dx, u.get_location().y + adjusted_dy);
+					const int distance = distance_between(u.get_location(), locs);
 
 					if (attackable_distances.find(distance) == attackable_distances.end()) {
 						continue;

@@ -174,10 +174,10 @@ const typename TList::value_type& get_best_resolution(const TList& list, const T
 	const int screen_h = settings::screen_height;
 
 	for(const auto& res : list) {
-		point size = get_size(res);
+		const point size = get_size(res);
 
-		int w = size.x ? size.x : 1;
-		int h = size.y ? size.y : 1;
+		const int w = size.x ? size.x : 1;
+		const int h = size.y ? size.y : 1;
 		int score = 0;
 
 		if(w <= screen_w && h <= screen_h) {

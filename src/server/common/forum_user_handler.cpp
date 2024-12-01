@@ -66,7 +66,7 @@ fuh::fuh(const config& c)
 bool fuh::login(const std::string& name, const std::string& password) {
 	// Retrieve users' password as hash
 	try {
-		std::string hash = get_hashed_password_from_db(name);
+		const std::string hash = get_hashed_password_from_db(name);
 
 		if(utils::md5::is_valid_hash(hash) || utils::bcrypt::is_valid_prefix(hash)) { // md5 hash
 			return password == hash;
@@ -125,7 +125,7 @@ long fuh::get_forum_id(const std::string& name) {
 }
 
 bool fuh::user_is_active(const std::string& name) {
-	int user_type = conn_.get_user_int(db_users_table_, "user_type", name);
+	const int user_type = conn_.get_user_int(db_users_table_, "user_type", name);
 	return user_type != USER_INACTIVE && user_type != USER_IGNORE;
 }
 
@@ -181,7 +181,7 @@ std::string fuh::user_info(const std::string& name) {
 	auto ll_date = get_lastlogin(name);
 
 	static constexpr std::string_view format = "%a %b %d %T %Y"; // equivalent to std::ctime
-	std::string reg_string = chrono::format_local_timestamp(reg_date, format);
+	const std::string reg_string = chrono::format_local_timestamp(reg_date, format);
 	std::string ll_string;
 
 	if(ll_date > decltype(ll_date){}) {
@@ -260,7 +260,7 @@ void fuh::db_set_oos_flag(const std::string& uuid, int game_id){
 void fuh::async_test_query(boost::asio::io_context& io_service, int limit) {
 	boost::asio::post([this, limit, &io_service] {
 		ERR_UH << "async test query starts!";
-		int i = conn_.async_test_query(limit);
+		const int i = conn_.async_test_query(limit);
 		boost::asio::post(io_service, [i]{ ERR_UH << "async test query output: " << i; });
 	 });
 }

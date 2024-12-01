@@ -43,7 +43,7 @@ log_settings::log_settings()
 
 
 	//empty string is the filter (in other words, this grabs the whole list of domains)
-	std::string temp_string = lg::list_log_domains("");
+	const std::string temp_string = lg::list_log_domains("");
 	//std::cout<<temp_string; //use to print the full log domain list
 	std::string one_domain;
 
@@ -59,7 +59,7 @@ void log_settings::pre_show()
 	listbox& logger_box = find_widget<listbox>("logger_listbox");
 
 	for(unsigned int i = 0; i < domain_list_.size(); i++){
-		std::string this_domain = domain_list_[i];
+		const std::string this_domain = domain_list_[i];
 		widget_data data;
 		widget_item item;
 
@@ -70,7 +70,7 @@ void log_settings::pre_show()
 		group<std::string>& group = groups_[this_domain];
 
 		grid* this_grid = logger_box.get_row_grid(i);
-		for(std::string this_id : widget_id_){
+		for(const std::string this_id : widget_id_) {
 			widget* this_widget = this_grid->find(this_id, false);
 			toggle_button* button = dynamic_cast<toggle_button*>(this_widget);
 			if(button != nullptr) {
@@ -78,7 +78,7 @@ void log_settings::pre_show()
 			}
 		}
 		lg::severity current_sev;
-        lg::severity max_sev = lg::severity::LG_DEBUG;
+		const lg::severity max_sev = lg::severity::LG_DEBUG;
 		if (lg::get_log_domain_severity(this_domain, current_sev)) {
 			if (current_sev <= max_sev) {
 				group.set_member_states(widget_id_[static_cast<int>(current_sev) + 1]);
@@ -101,14 +101,14 @@ void log_settings::filter_text_changed(const std::string& text)
 
 void log_settings::post_show()
 {
-	for(std::string this_domain : domain_list_){
+	for(const std::string this_domain : domain_list_) {
 		set_logger(this_domain);
 	}
 }
 
 void log_settings::set_logger(const std::string& log_domain)
 {
-	std::string active_value = groups_[log_domain].get_active_member_value();
+	const std::string active_value = groups_[log_domain].get_active_member_value();
 
 	if(active_value == widget_id_[2]){ //default value, level1: warning
 		lg::set_log_domain_severity(log_domain, lg::warn());

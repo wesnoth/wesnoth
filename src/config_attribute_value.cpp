@@ -88,13 +88,13 @@ config_attribute_value& config_attribute_value::operator=(double v)
 	// Try to store integers in other types.
 	if(v > 0.0) {
 		// Convert to unsigned and pass this off to that assignment operator.
-		unsigned long long ull = static_cast<unsigned long long>(v);
+		const unsigned long long ull = static_cast<unsigned long long>(v);
 		if(static_cast<double>(ull) == v) {
 			return *this = ull;
 		}
 	} else {
 		// Convert to integer and pass this off to that assignment operator.
-		int i = static_cast<int>(v);
+		const int i = static_cast<int>(v);
 		if(static_cast<double>(i) == v) {
 			return *this = i;
 		}

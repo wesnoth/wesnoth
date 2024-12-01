@@ -146,7 +146,7 @@ bool luaW_setwidgetcallback(lua_State* L, gui2::widget* wg, gui2::window* owner,
 	//stack: function, {}, name
 	lua_rawget(L, -2);
 	// function, old_function
-	bool existed_already = !lua_isnoneornil(L, -1);
+	const bool existed_already = !lua_isnoneornil(L, -1);
 	lua_pop(L, 1);
 	// function,
 	lua_push(L, name);

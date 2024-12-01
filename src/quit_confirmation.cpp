@@ -72,7 +72,7 @@ bool quit_confirmation::default_prompt()
 	if(!(pmc == nullptr || humans_notme_cnt < 1 || pmc->is_linger_mode() || pmc->is_observer())) {
 		gui2::dialogs::surrender_quit sq;
 		sq.show();
-		int retval = sq.get_retval();
+		const int retval = sq.get_retval();
 		if(retval == 1)
 		{
 			pmc->surrender(display::get_singleton()->viewing_team_index());

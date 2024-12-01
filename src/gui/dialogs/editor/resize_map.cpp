@@ -58,9 +58,9 @@ void editor_resize_map::pre_show()
 			width,
 			std::bind(&editor_resize_map::update_expand_direction, this));
 
-	std::string name_prefix = "expand";
+	const std::string name_prefix = "expand";
 	for(int i = 0; i < 9; ++i) {
-		std::string name = name_prefix + std::to_string(i);
+		const std::string name = name_prefix + std::to_string(i);
 		direction_buttons_[i]
 				= find_widget<toggle_button>(name, false, true);
 
@@ -112,10 +112,10 @@ void editor_resize_map::update_expand_direction()
 		set_direction_icon(i, "none");
 	}
 
-	int xdiff = width_->get_widget_value() - old_width_;
-	int ydiff = height_->get_widget_value() - old_height_;
-	int x = static_cast<int>(expand_direction_) % 3;
-	int y = static_cast<int>(expand_direction_) / 3;
+	const int xdiff = width_->get_widget_value() - old_width_;
+	const int ydiff = height_->get_widget_value() - old_height_;
+	const int x = static_cast<int>(expand_direction_) % 3;
+	const int y = static_cast<int>(expand_direction_) / 3;
 	set_direction_icon(expand_direction_, "center");
 	if(xdiff != 0) {
 		int left = resize_grid_xy_to_idx(x - 1, y);

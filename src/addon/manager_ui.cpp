@@ -254,7 +254,7 @@ bool manage_addons()
 
 bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 {
-	std::string remote_address = prefs::get().campaign_server();
+	const std::string remote_address = prefs::get().campaign_server();
 
 	// These exception handlers copied from addon_manager_ui fcn above.
 	try {
@@ -272,7 +272,7 @@ bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 		bool return_value = true;
 		std::ostringstream os;
 		for(const std::string& addon_id : addon_ids) {
-			addons_list::const_iterator it = addons.find(addon_id);
+			const addons_list::const_iterator it = addons.find(addon_id);
 			if(it != addons.end()) {
 				const addon_info& addon = it->second;
 				const std::string addon_dir = filesystem::get_addons_dir()+"/"+addon_id;
@@ -289,7 +289,7 @@ bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 					game_config::config_cache& cache = game_config::config_cache::instance();
 					config info;
 					cache.get_config(info_cfg, info);
-					version_info installed_addon_version(info.child_or_empty("info")["version"]);
+					const version_info installed_addon_version(info.child_or_empty("info")["version"]);
 
 					// if the installed version is outdated, download the most recent version from the add-ons server
 					if(installed_addon_version >= addon.current_version) {
@@ -298,7 +298,7 @@ bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 				}
 
 				// if the add-on exists locally and needs to be updated, or it doesn't exist and needs to be downloaded
-				addons_client::install_result res = client.install_addon_with_checks(addons, addon);
+				const addons_client::install_result res = client.install_addon_with_checks(addons, addon);
 				return_value = return_value && (res.outcome == addons_client::install_outcome::success);
 			} else {
 				if(!return_value) {

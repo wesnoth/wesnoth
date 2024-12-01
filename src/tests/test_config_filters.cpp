@@ -28,12 +28,12 @@ BOOST_AUTO_TEST_SUITE(config_filters)
 BOOST_AUTO_TEST_CASE(test_int_signed_filter)
 {
 	// These can be used both as the filter and as the input to be filtered.
-	config minus_3 {"x", -3};
-	config plus_3 {"x", 3};
+	const config minus_3{"x", -3};
+	const config plus_3{"x", 3};
 
-	config any_negative {"x", "-infinity--1"};
-	config any_positive {"x", "1-infinity"};
-	config any_number {"x", "-infinity-infinity"};
+	const config any_negative{"x", "-infinity--1"};
+	const config any_positive{"x", "1-infinity"};
+	const config any_number{"x", "-infinity-infinity"};
 
 	BOOST_ASSERT(int_matches_if_present(minus_3, minus_3, "x"));
 	BOOST_ASSERT(int_matches_if_present(plus_3, plus_3, "x"));
@@ -52,16 +52,16 @@ BOOST_AUTO_TEST_CASE(test_int_signed_filter)
 
 BOOST_AUTO_TEST_CASE(test_int_add_sub_filter)
 {
-	config add_minus_3 {"add", -3};
-	config sub_3 {"sub", 3};
+	const config add_minus_3{"add", -3};
+	const config sub_3{"sub", 3};
 
 	BOOST_ASSERT(int_matches_if_present(add_minus_3, add_minus_3, "add"));
 	BOOST_ASSERT(int_matches_if_present_or_negative(add_minus_3, add_minus_3, "add", "sub"));
 	BOOST_ASSERT(int_matches_if_present(add_minus_3, add_minus_3, "some_other_key"));
 
 	// A range, and one that only matches positive numbers
-	config add_2_to_4 {"add", "2-4"};
-	config sub_2_to_4 {"sub", "2-4"};
+	const config add_2_to_4{"add", "2-4"};
+	const config sub_2_to_4{"sub", "2-4"};
 
 	BOOST_ASSERT(!int_matches_if_present(add_2_to_4, add_minus_3, "add"));
 	BOOST_ASSERT(int_matches_if_present(add_2_to_4, add_minus_3, "some_other_key"));
@@ -71,8 +71,8 @@ BOOST_AUTO_TEST_CASE(test_int_add_sub_filter)
 
 BOOST_AUTO_TEST_CASE(test_without_attribute_filter)
 {
-	config add_3 {"add", 3};
-	config value_3 {"value", 3};
+	const config add_3{"add", 3};
+	const config value_3{"value", 3};
 
 	BOOST_ASSERT(!int_matches_if_present(value_3, add_3, "value"));
 	BOOST_ASSERT(int_matches_if_present(value_3, add_3, "value", 3));

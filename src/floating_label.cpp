@@ -168,10 +168,10 @@ void floating_label::update(const clock::time_point& time)
 		return;
 	}
 
-	point new_pos = get_pos(time);
-	rect draw_loc {new_pos.x, new_pos.y, tex_.w(), tex_.h()};
+	const point new_pos = get_pos(time);
+	const rect draw_loc{new_pos.x, new_pos.y, tex_.w(), tex_.h()};
 
-	uint8_t new_alpha = get_alpha(time);
+	const uint8_t new_alpha = get_alpha(time);
 
 	// Invalidate former draw loc
 	draw_manager::invalidate_region(get_bg_rect(screen_loc_));
@@ -247,7 +247,7 @@ uint8_t floating_label::get_alpha(const clock::time_point& time)
 		auto time_alive = get_time_alive(time);
 		if(time_alive >= lifetime_ && tex_ != nullptr) {
 			// fade out moving floating labels
-			int alpha_sub = 255 * (time_alive - lifetime_) / fadeout_;
+			const int alpha_sub = 255 * (time_alive - lifetime_) / fadeout_;
 			if (alpha_sub >= 255) {
 				return 0;
 			} else {
@@ -321,7 +321,7 @@ SDL_Rect get_floating_label_rect(int handle)
 	const label_map::iterator i = labels.find(handle);
 	if(i != labels.end()) {
 		if (i->second.create_texture()) {
-			SDL_Point size = i->second.get_draw_size();
+			const SDL_Point size = i->second.get_draw_size();
 			return {0, 0, size.x, size.y};
 		}
 	}

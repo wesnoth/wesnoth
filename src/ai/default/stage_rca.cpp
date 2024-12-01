@@ -52,10 +52,10 @@ void candidate_action_evaluation_loop::on_create()
 		engine::parse_candidate_action_from_config(*this,cfg_element,back_inserter(candidate_actions_));
 	}
 
-	std::function<void(std::vector<candidate_action_ptr>&, const config&)> factory_candidate_actions = [this](std::vector<candidate_action_ptr> &candidate_actions, const config &cfg)
-	{
-		engine::parse_candidate_action_from_config(*this, cfg, std::back_inserter(candidate_actions));
-	};
+	const std::function<void(std::vector<candidate_action_ptr>&, const config&)> factory_candidate_actions
+		= [this](std::vector<candidate_action_ptr>& candidate_actions, const config& cfg) {
+			  engine::parse_candidate_action_from_config(*this, cfg, std::back_inserter(candidate_actions));
+		  };
 	register_vector_property(property_handlers(),"candidate_action",candidate_actions_, factory_candidate_actions);
 
 }
@@ -63,7 +63,7 @@ void candidate_action_evaluation_loop::on_create()
 config candidate_action_evaluation_loop::to_config() const
 {
 	config cfg = stage::to_config();
-	for (candidate_action_ptr ca : candidate_actions_) {
+	for(const candidate_action_ptr ca : candidate_actions_) {
 		cfg.add_child("candidate_action",ca->to_config());
 	}
 	return cfg;
@@ -82,7 +82,7 @@ bool candidate_action_evaluation_loop::do_play_stage()
 {
 	LOG_AI_TESTING_RCA_DEFAULT << "Starting candidate action evaluation loop for side "<< get_side();
 
-	for (candidate_action_ptr ca : candidate_actions_) {
+	for(const candidate_action_ptr ca : candidate_actions_) {
 		ca->enable();
 	}
 
@@ -97,7 +97,7 @@ bool candidate_action_evaluation_loop::do_play_stage()
 		candidate_action_ptr best_ptr;
 
 		//Evaluation
-		for (candidate_action_ptr ca_ptr : candidate_actions_) {
+		for(const candidate_action_ptr ca_ptr : candidate_actions_) {
 			if (!ca_ptr->is_enabled()){
 				DBG_AI_TESTING_RCA_DEFAULT << "Skipping disabled candidate action: "<< *ca_ptr;
 				continue;
@@ -109,7 +109,7 @@ bool candidate_action_evaluation_loop::do_play_stage()
 			}
 
 			DBG_AI_TESTING_RCA_DEFAULT << "Evaluating candidate action: "<< *ca_ptr;
-			double score = ca_ptr->evaluate();
+			const double score = ca_ptr->evaluate();
 			DBG_AI_TESTING_RCA_DEFAULT << "Evaluated candidate action to score "<< score << " : " << *ca_ptr;
 
 			if (score>best_score) {
@@ -157,8 +157,10 @@ void candidate_action_evaluation_loop::remove_completed_cas()
 	for (std::size_t i = 0; i != tbr.size(); ++i)
 	{
 		// we should go downwards, so that index shifts don't affect us
-		std::size_t index = tbr.size() - i - 1; // downcounting for is not possible using unsigned counters, so we hack around
-		std::string path = "stage[" + this->get_id() + "].candidate_action[" + candidate_actions_[tbr[index]]->get_name() + "]";
+		const std::size_t index
+			= tbr.size() - i - 1; // downcounting for is not possible using unsigned counters, so we hack around
+		const std::string path
+			= "stage[" + this->get_id() + "].candidate_action[" + candidate_actions_[tbr[index]]->get_name() + "]";
 
 		config cfg = config();
 		cfg["path"] = path;

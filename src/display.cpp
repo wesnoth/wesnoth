@@ -106,9 +106,9 @@ static int get_zoom_levels_index(unsigned int zoom_level)
 
 	// find closest match
 	if(iter != zoom_levels.begin() && iter != zoom_levels.end()) {
-		float diff = *iter - *(iter - 1);
-		float lower = (zoom_level - *(iter - 1)) / diff;
-		float upper = (*iter - zoom_level) / diff;
+		const float diff = *iter - *(iter - 1);
+		const float lower = (zoom_level - *(iter - 1)) / diff;
+		const float upper = (*iter - zoom_level) / diff;
 
 		// the previous element is closer to zoom_level than the current one
 		if(lower < upper) {
@@ -272,8 +272,8 @@ void display::init_flags()
 void display::reinit_flags_for_team(const team& t)
 {
 	std::string flag = t.flag();
-	std::string old_rgb = game_config::flag_rgb;
-	std::string new_rgb = t.color();
+	const std::string old_rgb = game_config::flag_rgb;
+	const std::string new_rgb = t.color();
 
 	if(flag.empty()) {
 		flag = game_config::images::flag;
@@ -284,7 +284,7 @@ void display::reinit_flags_for_team(const team& t)
 	// Must recolor flag image
 	animated<image::locator> temp_anim;
 
-	std::vector<std::string> items = utils::square_parenthetical_split(flag);
+	const std::vector<std::string> items = utils::square_parenthetical_split(flag);
 
 	for(const std::string& item : items) {
 		const std::vector<std::string>& sub_items = utils::split(item, ':');
@@ -302,7 +302,7 @@ void display::reinit_flags_for_team(const team& t)
 
 		std::stringstream temp;
 		temp << str << "~RC(" << old_rgb << ">"<< new_rgb << ")";
-		image::locator flag_image(temp.str());
+		const image::locator flag_image(temp.str());
 		temp_anim.add_frame(time, flag_image);
 	}
 
@@ -310,7 +310,7 @@ void display::reinit_flags_for_team(const team& t)
 	f = temp_anim;
 	auto time = f.get_end_time();
 	if (time > 0ms) {
-		int start_time = randomness::rng::default_instance().get_random_int(0, time.count() - 1);
+		const int start_time = randomness::rng::default_instance().get_random_int(0, time.count() - 1);
 		f.start_animation(std::chrono::milliseconds{start_time}, true);
 	} else {
 		// this can happen if both flag and game_config::images::flag are empty.
@@ -358,7 +358,7 @@ void display::set_viewing_team_index(std::size_t teamindex, bool show_everything
 		dont_show_all_ = false;
 	}
 	labels().recalculate_labels();
-	if(std::shared_ptr<wb::manager> w = wb_.lock()) {
+	if(const std::shared_ptr<wb::manager> w = wb_.lock()) {
 		w->on_viewer_change(teamindex);
 	}
 }
@@ -539,7 +539,7 @@ bool display::outside_area(const SDL_Rect& area, const int x, const int y)
 // This function uses the screen as reference
 map_location display::hex_clicked_on(int xclick, int yclick) const
 {
-	rect r = map_area();
+	const rect r = map_area();
 	if(!r.contains(xclick, yclick)) {
 		return map_location();
 	}
@@ -636,9 +636,9 @@ const display::rect_of_hexes display::hexes_under_rect(const rect& r) const
 	auto [x, y] = viewport_origin_ - map_area().origin() + r.origin();
 	// we use the "double" type to avoid important rounding error (size of an hex!)
 	// we will also need to use std::floor to avoid bad rounding at border (negative values)
-	double tile_width = hex_width();
-	double tile_size = hex_size();
-	double border = theme_.border().size;
+	const double tile_width = hex_width();
+	const double tile_size = hex_size();
+	const double border = theme_.border().size;
 
 	return {
 		// we minus "0.(3)", for horizontal imbrication.
@@ -705,8 +705,8 @@ map_location display::minimap_location_on(int x, int y)
 	// probably more adjustments to do (border, minimap shift...)
 	// but the mouse and human capacity to evaluate the rectangle center
 	// is not pixel precise.
-	int px = (x - minimap_location_.x) * context().map().w() * hex_width() / std::max(minimap_location_.w, 1);
-	int py = (y - minimap_location_.y) * context().map().h() * hex_size() / std::max(minimap_location_.h, 1);
+	const int px = (x - minimap_location_.x) * context().map().w() * hex_width() / std::max(minimap_location_.w, 1);
+	const int py = (y - minimap_location_.y) * context().map().h() * hex_size() / std::max(minimap_location_.h, 1);
 
 	map_location loc = pixel_position_to_hex(px, py);
 	if(loc.x < 0) {
@@ -737,17 +737,17 @@ surface display::screenshot(bool map_screenshot)
 	}
 
 	// back up the current map view position and move to top-left
-	point old_pos = viewport_origin_;
+	const point old_pos = viewport_origin_;
 	viewport_origin_ = {0, 0};
 
 	// Reroute render output to a separate texture until the end of scope.
-	SDL_Rect area = max_map_area();
+	const SDL_Rect area = max_map_area();
 	if (area.w > 1 << 16 || area.h > 1 << 16) {
 		WRN_DP << "Excessively large map screenshot area";
 	}
 	LOG_DP << "creating " << area.w << " by " << area.h
 	       << " texture for map screenshot";
-	texture output_texture(area.w, area.h, SDL_TEXTUREACCESS_TARGET);
+	const texture output_texture(area.w, area.h, SDL_TEXTUREACCESS_TARGET);
 	auto target_setter = draw::set_render_target(output_texture);
 	auto clipper = draw::override_clip(area);
 
@@ -1076,12 +1076,12 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 
 		if(lt.empty()) {
 			// color the full hex before adding transitions
-			tod_color col = tod.color + color_adjust_;
+			const tod_color col = tod.color + color_adjust_;
 			lt = image::get_light_string(0, col.r, col.g, col.b);
 		}
 
 		// add the directional transitions
-		tod_color acol = atod1.color + color_adjust_;
+		const tod_color acol = atod1.color + color_adjust_;
 		lt += image::get_light_string(d + 1, acol.r, acol.g, acol.b);
 	}
 
@@ -1108,12 +1108,12 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 
 		if(lt.empty()) {
 			// color the full hex before adding transitions
-			tod_color col = tod.color + color_adjust_;
+			const tod_color col = tod.color + color_adjust_;
 			lt = image::get_light_string(0, col.r, col.g, col.b);
 		}
 
 		// add the directional transitions
-		tod_color acol = atod1.color + color_adjust_;
+		const tod_color acol = atod1.color + color_adjust_;
 		lt += image::get_light_string(d + 7, acol.r, acol.g, acol.b);
 	}
 
@@ -1140,17 +1140,17 @@ void display::get_terrain_images(const map_location& loc, const std::string& tim
 
 		if(lt.empty()) {
 			// color the full hex before adding transitions
-			tod_color col = tod.color + color_adjust_;
+			const tod_color col = tod.color + color_adjust_;
 			lt = image::get_light_string(0, col.r, col.g, col.b);
 		}
 
 		// add the directional transitions
-		tod_color acol = atod2.color + color_adjust_;
+		const tod_color acol = atod2.color + color_adjust_;
 		lt += image::get_light_string(d + 13, acol.r, acol.g, acol.b);
 	}
 
 	if(lt.empty()){
-		tod_color col = tod.color + color_adjust_;
+		const tod_color col = tod.color + color_adjust_;
 		if(!col.is_zero()){
 			// no real lightmap needed but still color the hex
 			lt = image::get_light_string(-1, col.r, col.g, col.b);
@@ -1319,7 +1319,7 @@ void display::update_fps_label()
 
 	// flush out the stored fps values every so often
 	if(fps_history_.size() == 1000) {
-		std::string filename = filesystem::get_user_data_dir() + "/fps_log.csv";
+		const std::string filename = filesystem::get_user_data_dir() + "/fps_log.csv";
 		auto fps_log = filesystem::ostream_file(filename, std::ios_base::binary | std::ios_base::app);
 
 		for(const auto& [min, avg, max] : fps_history_) {
@@ -1392,7 +1392,7 @@ void display::draw_panel(const theme::panel& panel)
 
 	DBG_DP << "drawing panel " << panel.get_id() << ' ' << loc;
 
-	texture tex(image::get_texture(panel.image()));
+	const texture tex(image::get_texture(panel.image()));
 	if (!tex) {
 		ERR_DP << "failed to load panel " << panel.get_id()
 			<< " texture: " << panel.image();
@@ -1633,29 +1633,24 @@ void display::draw_minimap()
 
 	// calculate the visible portion of the map:
 	// scaling between minimap and full map images
-	double xscaling = 1.0 * minimap_location_.w / (context().map().w() * hex_width());
-	double yscaling = 1.0 * minimap_location_.h / (context().map().h() * hex_size());
+	const double xscaling = 1.0 * minimap_location_.w / (context().map().w() * hex_width());
+	const double yscaling = 1.0 * minimap_location_.h / (context().map().h() * hex_size());
 
 	// we need to shift with the border size
 	// and the 0.25 from the minimap balanced drawing
 	// and the possible difference between real map and outside off-map
-	rect map_rect = map_area();
-	rect map_out_rect = map_outside_area();
-	double border = theme_.border().size;
-	double shift_x = -border * hex_width() - (map_out_rect.w - map_rect.w) / 2;
-	double shift_y = -(border + 0.25) * hex_size() - (map_out_rect.h - map_rect.h) / 2;
+	const rect map_rect = map_area();
+	const rect map_out_rect = map_outside_area();
+	const double border = theme_.border().size;
+	const double shift_x = -border * hex_width() - (map_out_rect.w - map_rect.w) / 2;
+	const double shift_y = -(border + 0.25) * hex_size() - (map_out_rect.h - map_rect.h) / 2;
 
-	int view_x = static_cast<int>((viewport_origin_.x + shift_x) * xscaling);
-	int view_y = static_cast<int>((viewport_origin_.y + shift_y) * yscaling);
-	int view_w = static_cast<int>(map_out_rect.w * xscaling);
-	int view_h = static_cast<int>(map_out_rect.h * yscaling);
+	const int view_x = static_cast<int>((viewport_origin_.x + shift_x) * xscaling);
+	const int view_y = static_cast<int>((viewport_origin_.y + shift_y) * yscaling);
+	const int view_w = static_cast<int>(map_out_rect.w * xscaling);
+	const int view_h = static_cast<int>(map_out_rect.h * yscaling);
 
-	rect outline_rect {
-		minimap_location_.x + view_x - 1,
-		minimap_location_.y + view_y - 1,
-		view_w + 2,
-		view_h + 2
-	};
+	const rect outline_rect{minimap_location_.x + view_x - 1, minimap_location_.y + view_y - 1, view_w + 2, view_h + 2};
 
 	draw::rect(outline_rect, 255, 255, 255);
 }
@@ -1664,8 +1659,8 @@ void display::draw_minimap_units()
 {
 	if (!prefs::get().minimap_draw_units() || is_blindfolded()) return;
 
-	double xscaling = 1.0 * minimap_location_.w / context().map().w();
-	double yscaling = 1.0 * minimap_location_.h / context().map().h();
+	const double xscaling = 1.0 * minimap_location_.w / context().map().w();
+	const double yscaling = 1.0 * minimap_location_.h / context().map().h();
 
 	for(const auto& u : context().units()) {
 		if (fogged(u.get_location()) ||
@@ -1675,7 +1670,7 @@ void display::draw_minimap_units()
 			continue;
 		}
 
-		int side = u.side();
+		const int side = u.side();
 		color_t col = team::get_minimap_color(side);
 
 		if(!prefs::get().minimap_movement_coding()) {
@@ -1690,18 +1685,14 @@ void display::draw_minimap_units()
 			col = game_config::color_info(orb_status_helper::get_orb_color(status)).rep();
 		}
 
-		double u_x = u.get_location().x * xscaling;
-		double u_y = (u.get_location().y + (is_odd(u.get_location().x) ? 1 : -1)/4.0) * yscaling;
+		const double u_x = u.get_location().x * xscaling;
+		const double u_y = (u.get_location().y + (is_odd(u.get_location().x) ? 1 : -1) / 4.0) * yscaling;
 		// use 4/3 to compensate the horizontal hexes imbrication
-		double u_w = 4.0 / 3.0 * xscaling;
-		double u_h = yscaling;
+		const double u_w = 4.0 / 3.0 * xscaling;
+		const double u_h = yscaling;
 
-		rect r {
-				  minimap_location_.x + int(std::round(u_x))
-				, minimap_location_.y + int(std::round(u_y))
-				, int(std::round(u_w))
-				, int(std::round(u_h))
-		};
+		const rect r{minimap_location_.x + int(std::round(u_x)), minimap_location_.y + int(std::round(u_y)),
+			int(std::round(u_w)), int(std::round(u_h))};
 
 		draw::fill(r, col.r, col.g, col.b, col.a);
 	}
@@ -1726,7 +1717,7 @@ bool display::scroll(const point& amount, bool force)
 		return false;
 	}
 
-	point diff = viewport_origin_ - new_pos;
+	const point diff = viewport_origin_ - new_pos;
 	viewport_origin_ = new_pos;
 
 	/* Adjust floating label positions. This only affects labels whose position is anchored
@@ -1845,7 +1836,7 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 	const rect area = map_area();
 
 	// Turn the zoom factor to a double in order to avoid rounding errors.
-	double zoom_factor = static_cast<double>(new_zoom) / static_cast<double>(zoom_);
+	const double zoom_factor = static_cast<double>(new_zoom) / static_cast<double>(zoom_);
 
 	// INVARIANT: xpos_ + area.w == xend where xend is as in bounds_check_position()
 	//
@@ -1911,12 +1902,12 @@ void display::scroll_to_xy(const point& screen_coordinates, SCROLL_TYPE scroll_t
 		return;
 	}
 
-	point expected_move = screen_coordinates - map_area().center();
+	const point expected_move = screen_coordinates - map_area().center();
 
 	point new_pos = viewport_origin_ + expected_move;
 	bounds_check_position(new_pos.x, new_pos.y);
 
-	point move = new_pos - viewport_origin_;
+	const point move = new_pos - viewport_origin_;
 
 	if(scroll_type == WARP || scroll_type == ONSCREEN_WARP || turbo_speed() > 2.0 || prefs::get().scroll_speed() > 99) {
 		scroll(move, true);
@@ -1951,12 +1942,12 @@ void display::scroll_to_xy(const point& screen_coordinates, SCROLL_TYPE scroll_t
 
 		double velocity_max = prefs::get().scroll_speed() * 60.0;
 		velocity_max *= turbo_speed();
-		double accel = velocity_max / accel_time;
-		double decel = velocity_max / decel_time;
+		const double accel = velocity_max / accel_time;
+		const double decel = velocity_max / decel_time;
 
 		// If we started to decelerate now, where would we stop?
-		double stop_time = velocity / decel;
-		double dist_stop = dist_moved + velocity*stop_time - 0.5*decel*stop_time*stop_time;
+		const double stop_time = velocity / decel;
+		const double dist_stop = dist_moved + velocity * stop_time - 0.5 * decel * stop_time * stop_time;
 		if (dist_stop > dist_total || velocity > velocity_max) {
 			velocity -= decel * dt_as_double;
 			if (velocity < 1.0) velocity = 1.0;
@@ -1968,12 +1959,10 @@ void display::scroll_to_xy(const point& screen_coordinates, SCROLL_TYPE scroll_t
 		dist_moved += velocity * dt_as_double;
 		if (dist_moved > dist_total) dist_moved = dist_total;
 
-		point next_pos(
-			std::round(move.x * dist_moved / dist_total),
-			std::round(move.y * dist_moved / dist_total)
-		);
+		const point next_pos(
+			std::round(move.x * dist_moved / dist_total), std::round(move.y * dist_moved / dist_total));
 
-		point diff = next_pos - prev_pos;
+		const point diff = next_pos - prev_pos;
 		scroll(diff, true);
 		prev_pos += diff;
 
@@ -2023,10 +2012,10 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 			maxy = y;
 			valid = true;
 		} else {
-			int minx_new = std::min<int>(minx,x);
-			int miny_new = std::min<int>(miny,y);
-			int maxx_new = std::max<int>(maxx,x);
-			int maxy_new = std::max<int>(maxy,y);
+			const int minx_new = std::min<int>(minx, x);
+			const int miny_new = std::min<int>(miny, y);
+			const int maxx_new = std::max<int>(maxx, x);
+			const int maxy_new = std::max<int>(maxy, y);
 			rect r = map_area();
 			r.x = minx_new;
 			r.y = miny_new;
@@ -2045,8 +2034,8 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 	if(!valid) return;
 
 	if (scroll_type == ONSCREEN || scroll_type == ONSCREEN_WARP) {
-		int spacing = std::round(add_spacing * hex_size());
-		rect r = map_area().padded_by(-spacing); // Shrink
+		const int spacing = std::round(add_spacing * hex_size());
+		const rect r = map_area().padded_by(-spacing); // Shrink
 		if (!outside_area(r, minx,miny) && !outside_area(r, maxx,maxy)) {
 			return;
 		}
@@ -2071,7 +2060,7 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 		int w = r.w;
 
 		// we do not want to be only inside the screen rect, but center a bit more
-		double inside_frac = 0.5; // 0.0 = always center the target, 1.0 = scroll the minimum distance
+		const double inside_frac = 0.5; // 0.0 = always center the target, 1.0 = scroll the minimum distance
 		w = static_cast<int>(w * inside_frac);
 		h = static_cast<int>(h * inside_frac);
 
@@ -2218,7 +2207,7 @@ void display::fade_tod_mask(
 	auto duration = 300ms / turbo_speed();
 	auto start = std::chrono::steady_clock::now();
 	for(auto now = start; now < start + duration; now = std::chrono::steady_clock::now()) {
-		uint8_t p = float_to_color(chrono::normalize_progress(now - start, duration));
+		const uint8_t p = float_to_color(chrono::normalize_progress(now - start, duration));
 		tod_hex_alpha2 = p;
 		tod_hex_alpha1 = ~p;
 		draw_manager::invalidate_region(map_outside_area());
@@ -2251,7 +2240,7 @@ void display::fade_to(const color_t& c, const std::chrono::milliseconds& duratio
 
 	// Smoothly blend and display
 	for(auto now = start; now < start + duration; now = std::chrono::steady_clock::now()) {
-		uint8_t p = float_to_color(chrono::normalize_progress(now - start, duration));
+		const uint8_t p = float_to_color(chrono::normalize_progress(now - start, duration));
 		fade_color_ = fade_start.smooth_blend(fade_end, p);
 		draw_manager::invalidate_region(map_outside_area());
 		events::pump_and_draw();
@@ -2309,7 +2298,7 @@ void display::queue_rerender()
 
 	// This is only for one specific use, which is by the editor controller.
 	// It would be vastly better if this didn't exist.
-	for(std::function<void(display&)> f : redraw_observers_) {
+	for(const std::function<void(display&)> f : redraw_observers_) {
 		f(*this);
 	}
 
@@ -2345,7 +2334,7 @@ void display::draw()
 
 	// I have no idea why this is messing with sync context,
 	// but i'm not going to touch it.
-	set_scontext_unsynced leave_synced_context;
+	const set_scontext_unsynced leave_synced_context;
 
 	// This isn't the best, but also isn't important enough to do better.
 	if(redraw_background_ && !map_screenshot_) {
@@ -2450,7 +2439,7 @@ bool display::expose(const rect& region)
 		return false;
 	}
 
-	rect clipped_region = draw::get_clip().intersect(region);
+	const rect clipped_region = draw::get_clip().intersect(region);
 
 	// Blit from the pre-rendered front buffer.
 	if(clipped_region.overlaps(map_outside_area())) {
@@ -2504,15 +2493,15 @@ void display::update_render_textures()
 
 	// We ignore any logical offset on the underlying window buffer.
 	// Render buffer size is always a simple multiple of the draw area.
-	rect darea = video::game_canvas();
-	rect oarea = darea * video::get_pixel_scale();
+	const rect darea = video::game_canvas();
+	const rect oarea = darea * video::get_pixel_scale();
 
 	// Check that the front buffer size is correct.
 	// Buffers are always resized together, so we only need to check one.
-	point size = front_.get_raw_size();
-	point dsize = front_.draw_size();
-	bool raw_size_changed = size.x != oarea.w || size.y != oarea.h;
-	bool draw_size_changed = dsize.x != darea.w || dsize.y != darea.h;
+	const point size = front_.get_raw_size();
+	const point dsize = front_.draw_size();
+	const bool raw_size_changed = size.x != oarea.w || size.y != oarea.h;
+	const bool draw_size_changed = dsize.x != darea.w || dsize.y != darea.h;
 	if (!raw_size_changed && !draw_size_changed) {
 		// buffers are fine
 		return;
@@ -2546,7 +2535,7 @@ void display::render_map_outside_area()
 	// This could be optimized to avoid the map area,
 	// but it's only called on game creation or zoom anyway.
 	const rect clip_rect = map_outside_area();
-	texture bgtex = image::get_texture(theme_.border().background_image);
+	const texture bgtex = image::get_texture(theme_.border().background_image);
 	for(int i = 0; i < 2; ++i) {
 		auto setter = draw::set_render_target(i ? back_ : front_);
 		if(bgtex) {
@@ -2575,7 +2564,7 @@ rect display::get_clip_rect() const
 void display::draw_invalidated()
 {
 	//	log_scope("display::draw_invalidated");
-	rect clip_rect = get_clip_rect();
+	const rect clip_rect = get_clip_rect();
 	const auto clipper = draw::reduce_clip(clip_rect);
 
 	DBG_DP << "drawing " << invalidated_.size() << " invalidated hexes with clip " << clip_rect;
@@ -2587,7 +2576,7 @@ void display::draw_invalidated()
 	}
 
 	for(const map_location& loc : invalidated_) {
-		rect hex_rect = get_location_rect(loc);
+		const rect hex_rect = get_location_rect(loc);
 		if(!hex_rect.overlaps(clip_rect)) {
 			continue;
 		}
@@ -2775,15 +2764,15 @@ void display::draw_overlays_at(const map_location& loc)
 		return;
 	}
 
-	std::vector<overlay>& overlays = it->second;
+	const std::vector<overlay>& overlays = it->second;
 	if(overlays.empty()) {
 		return;
 	}
 
 	const time_of_day& tod = get_time_of_day(loc);
-	tod_color tod_col = tod.color + color_adjust_;
+	const tod_color tod_col = tod.color + color_adjust_;
 
-	image::light_string lt = image::get_light_string(-1, tod_col.r, tod_col.g, tod_col.b);
+	const image::light_string lt = image::get_light_string(-1, tod_col.r, tod_col.g, tod_col.b);
 
 	for(const overlay& ov : overlays) {
 		if(fogged(loc) && !ov.visible_in_fog) {
@@ -2794,8 +2783,9 @@ void display::draw_overlays_at(const map_location& loc)
 			const auto current_team_names = utils::split_view(viewing_team().team_name());
 			const auto team_names = utils::split_view(ov.team_name);
 
-			bool item_visible_for_team = std::find_first_of(team_names.begin(), team_names.end(),
-				current_team_names.begin(), current_team_names.end()) != team_names.end();
+			const bool item_visible_for_team = std::find_first_of(team_names.begin(), team_names.end(),
+												   current_team_names.begin(), current_team_names.end())
+				!= team_names.end();
 
 			if(!item_visible_for_team) {
 				continue;
@@ -2813,9 +2803,9 @@ void display::draw_overlays_at(const map_location& loc)
 			drawing_layer::terrain_bg, loc, [tex, ter_sub, ovr_sub = ov.submerge](const rect& dest) mutable {
 				if(ovr_sub > 0.0 && ter_sub > 0.0) {
 					// Adjust submerge appropriately
-					double submerge = ter_sub * ovr_sub;
+					const double submerge = ter_sub * ovr_sub;
 
-					submerge_data data
+					const submerge_data data
 						= display::get_submerge_data(dest, submerge, tex.draw_size(), ALPHA_OPAQUE, false, false);
 
 					// set clip for dry part
@@ -2859,7 +2849,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		mhb = resources::controller->get_mouse_handler_base();
 	}
 
-	reports::context temp_context = reports::context(*dc_, *this, *resources::tod_manager, wb_.lock(), mhb);
+	const reports::context temp_context = reports::context(*dc_, *this, *resources::tod_manager, wb_.lock(), mhb);
 
 	const config generated_cfg = new_cfg ? config() : reports_object_->generate_report(report_name, temp_context);
 	if ( new_cfg == nullptr )
@@ -3132,7 +3122,7 @@ bool display::propagate_invalidation(const std::set<map_location>& locs)
 			// propagate invalidation
 			// 'i' is already in, but I suspect that splitting the range is bad
 			// especially because locs are often adjacents
-			size_t previous_size = invalidated_.size();
+			const size_t previous_size = invalidated_.size();
 			invalidated_.insert(locs.begin(), locs.end());
 			result = previous_size < invalidated_.size();
 		}
@@ -3272,7 +3262,7 @@ void display::process_reachmap_changes()
 		reach_map &full = reach_map_.empty() ? reach_map_old_ : reach_map_;
 
 		for (const auto& hex : get_visible_hexes()) {
-			reach_map::iterator reach = full.find(hex);
+			const reach_map::iterator reach = full.find(hex);
 			if (reach != full.end()) {
 				// Location needs to be darkened or brightened
 				invalidate(hex);

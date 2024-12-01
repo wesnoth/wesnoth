@@ -53,7 +53,7 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 	for(std::string & file : files)
 	{
 		std::string base;
-		std::string filename = filesystem::base_name(file);
+		const std::string filename = filesystem::base_name(file);
 		std::string parent_path;
 
 		const bool is_main_cfg = filename == "_main.cfg";

@@ -82,9 +82,8 @@ namespace test_utils {
 			game_config::config_cache::instance().get_config(game_config::path + "/data/test/", cfg_);
 			::init_textdomains(game_config_view_);
 			const std::vector<language_def>& languages = get_languages();
-			std::vector<language_def>::const_iterator English = std::find_if(languages.begin(),
-					languages.end(),
-					match_english); // Using German because the most active translation
+			const std::vector<language_def>::const_iterator English = std::find_if(languages.begin(), languages.end(),
+				match_english); // Using German because the most active translation
 			::set_language(*English);
 
 			unit_types.set_config(game_config_view_.merged_children_view("units"));

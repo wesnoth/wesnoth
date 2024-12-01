@@ -226,7 +226,7 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
 		return game_events::pump_result_t();
 	}
 
-	bool not_defeated = t && !resources::gameboard->team_is_defeated(*t);
+	const bool not_defeated = t && !resources::gameboard->team_is_defeated(*t);
 
 	bool grants_timebonus = false;
 
@@ -234,7 +234,7 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
 	// We strip the village off all other sides, unless it is held by an ally
 	// and our side is already defeated (and thus we can't occupy it)
 	for(team& tm : teams) {
-		int i_side = tm.side();
+		const int i_side = tm.side();
 		if (!t || not_defeated || t->is_enemy(i_side)) {
 			if(tm.owns_village(loc)) {
 				old_owner_side = i_side;
@@ -898,7 +898,7 @@ namespace { // Private helpers for move_unit()
 			}
 		}
 
-		route_iterator min_end =  start == begin_ ? start : start + 1;
+		const route_iterator min_end = start == begin_ ? start : start + 1;
 		while (end != min_end  &&  resources::gameboard->has_visible_unit(*(end - 1), *current_team_)) {
 			// Backtrack.
 			--end;
@@ -955,7 +955,7 @@ namespace { // Private helpers for move_unit()
 	 */
 	void unit_mover::pump_sighted(const route_iterator & from)
 	{
-		game_events::pump_result_t pump_res = clearer_.fire_events();
+		const game_events::pump_result_t pump_res = clearer_.fire_events();
 		post_wml(pump_res, from);
 	}
 
@@ -990,10 +990,10 @@ namespace { // Private helpers for move_unit()
 		game_display &disp = *game_display::get_singleton();
 
 		// Find the unit at the indicated location.
-		unit_map::iterator ambusher = units.find(hex);
+		const unit_map::iterator ambusher = units.find(hex);
 		if ( ambusher != units.end() ) {
 			// Prepare for sighted events.
-			std::vector<int> sight_cache(get_sides_not_seeing(*ambusher));
+			const std::vector<int> sight_cache(get_sides_not_seeing(*ambusher));
 			// Make sure the unit is visible (during sighted events, and in case
 			// we had to backtrack).
 			ambusher->set_state(unit::STATE_UNCOVERED, true);
@@ -1065,7 +1065,7 @@ namespace { // Private helpers for move_unit()
 
 		if ( begin_ != ambush_limit_ ) {
 			// Cache the moving unit's visibility.
-			std::vector<int> not_seeing = get_sides_not_seeing(*move_it_);
+			const std::vector<int> not_seeing = get_sides_not_seeing(*move_it_);
 
 			// Prepare to animate.
 			unit_display::unit_mover animator(route_, show);
@@ -1099,7 +1099,7 @@ namespace { // Private helpers for move_unit()
 				}
 
 				// We can leave *step_from. Make the move to *real_end_.
-				bool new_animation = do_move(step_from, real_end_, animator);
+				const bool new_animation = do_move(step_from, real_end_, animator);
 				// Update the fog.
 				if ( current_uses_fog_ )
 					handle_fog(*real_end_, new_animation);
@@ -1150,14 +1150,14 @@ namespace { // Private helpers for move_unit()
 	{
 		const route_iterator step_from = real_end_ - 1;
 
-		std::vector<int> not_seeing = get_sides_not_seeing(*move_it_);
+		const std::vector<int> not_seeing = get_sides_not_seeing(*move_it_);
 
 		// Prepare to animate.
 		unit_display::unit_mover animator(route_, show);
 		animator.start(move_it_.get_shared_ptr());
 		fire_hex_event("exit hex", step_from, begin_);
 
-		bool new_animation = do_teleport(animator);
+		const bool new_animation = do_teleport(animator);
 
 		if(current_uses_fog_)
 			handle_fog(*(begin_ + 1), new_animation);
@@ -1278,7 +1278,7 @@ namespace { // Private helpers for move_unit()
 
 		// Failed teleport feedback?
 		if ( playing_team_is_viewing_  &&  teleport_failed_ ) {
-			std::string teleport_string = _("Failed teleport! Exit not empty");
+			const std::string teleport_string = _("Failed teleport! Exit not empty");
 			disp.announce(message_prefix + teleport_string, font::BAD_COLOR, announce_options);
 			message_prefix += " \n";
 		}
@@ -1320,11 +1320,12 @@ namespace { // Private helpers for move_unit()
 		// Suggest "continue move"?
 		if ( playing_team_is_viewing_ && sighted_stop_ && !resources::whiteboard->is_executing_actions() ) {
 			// See if the "Continue Move" action has an associated hotkey
-			std::string name = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_CONTINUE_MOVE).id);
+			const std::string name
+				= hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_CONTINUE_MOVE).id);
 			if ( !name.empty() ) {
 				utils::string_map symbols;
 				symbols["hotkey"] = name;
-				std::string message = VGETTEXT("(press $hotkey to keep moving)", symbols);
+				const std::string message = VGETTEXT("(press $hotkey to keep moving)", symbols);
 				disp.announce(message_prefix + message, font::NORMAL_COLOR, announce_options);
 				message_prefix += " \n";
 			}
@@ -1336,7 +1337,8 @@ namespace { // Private helpers for move_unit()
 
 static void move_unit_internal(unit_mover& mover)
 {
-	bool show_move = !resources::controller->is_skipping_replay() && !resources::controller->is_skipping_actions();
+	const bool show_move
+		= !resources::controller->is_skipping_replay() && !resources::controller->is_skipping_actions();
 	const events::command_disabler disable_commands;
 
 	// Attempt moving.
@@ -1348,7 +1350,7 @@ static void move_unit_internal(unit_mover& mover)
 		"final_hex_x", mover.final_hex().wml_x(),
 		"final_hex_y", mover.final_hex().wml_y(),
 	};
-	bool matches_replay = checkup_instance->local_checkup(cn,co);
+	const bool matches_replay = checkup_instance->local_checkup(cn, co);
 	if(!matches_replay)
 	{
 		replay::process_error("calculated movement destination (x="+ cn["final_hex_x"].str() +  " y=" + cn["final_hex_y"].str() +

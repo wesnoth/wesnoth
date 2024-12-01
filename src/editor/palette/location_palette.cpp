@@ -94,7 +94,7 @@ public:
 		if (hidden() || !enabled() || mouse_locked())
 			return;
 
-		state_t start_state = state_;
+		const state_t start_state = state_;
 
 		switch (e.type) {
 		case SDL_MOUSEBUTTONUP:
@@ -196,7 +196,7 @@ void location_palette::hide(bool hidden)
 
 	disp_.clear_help_string();
 
-	std::shared_ptr<gui::button> palette_menu_button = disp_.find_menu_button("menu-editor-terrain");
+	const std::shared_ptr<gui::button> palette_menu_button = disp_.find_menu_button("menu-editor-terrain");
 	palette_menu_button->set_overlay("");
 	palette_menu_button->enable(false);
 
@@ -246,7 +246,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	if (!button_goto_) {
 		button_goto_.reset(new location_palette_button(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Go To"), [this]() {
 			//static_cast<mouse_action_starting_position&>(toolkit_.get_mouse_action()). ??
-			map_location pos = disp_.get_map().special_location(selected_item_);
+			const map_location pos = disp_.get_map().special_location(selected_item_);
 			if (pos.valid()) {
 				disp_.scroll_to_tile(pos, display::WARP);
 			}
@@ -287,7 +287,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 		// This simplifies the scrolling code in add_item.
 		const std::size_t buttons_needed = items_fitting;
 		if(buttons_.size() != buttons_needed) {
-			location_palette_item lpi(this);
+			const location_palette_item lpi(this);
 			buttons_.resize(buttons_needed, lpi);
 		}
 	}
@@ -341,10 +341,10 @@ void location_palette::layout()
 
 	// The hotkey system will automatically enable and disable the buttons when it runs, but it doesn't
 	// get triggered when handling mouse-wheel scrolling. Therefore duplicate that functionality here.
-	std::shared_ptr<gui::button> upscroll_button = disp_.find_action_button("upscroll-button-editor");
+	const std::shared_ptr<gui::button> upscroll_button = disp_.find_action_button("upscroll-button-editor");
 	if(upscroll_button)
 		upscroll_button->enable(can_scroll_up());
-	std::shared_ptr<gui::button> downscroll_button = disp_.find_action_button("downscroll-button-editor");
+	const std::shared_ptr<gui::button> downscroll_button = disp_.find_action_button("downscroll-button-editor");
 	if(downscroll_button)
 		downscroll_button->enable(can_scroll_down());
 
@@ -373,7 +373,7 @@ void location_palette::layout()
 
 		// These could have tooltips, but currently don't. Adding their hex co-ordinates would be an option,
 		// and for player starts adding the raw ID next might be good.
-		std::stringstream tooltip_text;
+		const std::stringstream tooltip_text;
 
 		tile.set_tooltip_string(tooltip_text.str());
 		tile.set_item_id(item_id);

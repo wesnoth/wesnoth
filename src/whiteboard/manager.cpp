@@ -268,7 +268,8 @@ bool manager::allow_leader_to_move(const unit& leader) const
 		return true;
 
 	//Look for another leader on another keep in the same castle
-	{ wb::future_map future; // start planned unit map scope
+	{
+		const wb::future_map future; // start planned unit map scope
 
 		// TODO: when the game executes all whiteboard moves at turn end applying the future map
 		//       will fail because we are currently executing actions, and if one of those actions
@@ -291,10 +292,9 @@ bool manager::allow_leader_to_move(const unit& leader) const
 	}
 
 	//Look for planned recruits that depend on this leader
-	for(action_const_ptr action : *viewer_actions())
-	{
-		recruit_const_ptr recruit = std::dynamic_pointer_cast<class recruit const>(action);
-		recall_const_ptr recall = std::dynamic_pointer_cast<class recall const>(action);
+	for(const action_const_ptr action : *viewer_actions()) {
+		const recruit_const_ptr recruit = std::dynamic_pointer_cast<class recruit const>(action);
+		const recall_const_ptr recall = std::dynamic_pointer_cast<class recall const>(action);
 		if(recruit || recall)
 		{
 			map_location const target_hex = recruit?recruit->get_recruit_hex():recall->get_recall_hex();
@@ -343,13 +343,13 @@ void manager::post_delete_action(const action_ptr& action)
 	// If the last remaining action of the unit that owned this move is a move as well,
 	// adjust its appearance accordingly.
 
-	side_actions_ptr side_actions = resources::gameboard->teams().at(action->team_index()).get_side_actions();
+	const side_actions_ptr side_actions = resources::gameboard->teams().at(action->team_index()).get_side_actions();
 
-	unit_ptr actor = action->get_unit();
+	const unit_ptr actor = action->get_unit();
 	if(actor) { // The unit might have died following the execution of an attack
-		side_actions::iterator action_it = side_actions->find_last_action_of(*actor);
+		const side_actions::iterator action_it = side_actions->find_last_action_of(*actor);
 		if(action_it != side_actions->end()) {
-			move_ptr move = std::dynamic_pointer_cast<class move>(*action_it);
+			const move_ptr move = std::dynamic_pointer_cast<class move>(*action_it);
 			if(move && move->get_fake_unit()) {
 				move->get_fake_unit()->anim_comp().set_standing(true);
 			}
@@ -359,7 +359,7 @@ void manager::post_delete_action(const action_ptr& action)
 
 static void hide_all_plans()
 {
-	for(team& t : resources::gameboard->teams()){
+	for(const team& t : resources::gameboard->teams()) {
 		t.get_side_actions()->hide();
 	}
 }
@@ -372,8 +372,7 @@ void manager::update_plan_hiding(std::size_t team_index)
 		hide_all_plans();
 	else // normal circumstance
 	{
-		for(team& t : resources::gameboard->teams())
-		{
+		for(const team& t : resources::gameboard->teams()) {
 			//make sure only appropriate teams are hidden
 			if(!t.is_network_human())
 				team_plans_hidden_[t.side()-1] = false;
@@ -417,10 +416,10 @@ void manager::on_change_controller(int side, const team& t)
 			hide_all_plans(); // give up knowledge of everyone's plans, in case we became an observer
 
 		//tell them our plans -- they may not have received them up to this point
-		std::size_t num_teams = resources::gameboard->teams().size();
+		const std::size_t num_teams = resources::gameboard->teams().size();
 		for(std::size_t i=0; i<num_teams; ++i)
 		{
-			team& local_team = resources::gameboard->teams().at(i);
+			const team& local_team = resources::gameboard->teams().at(i);
 			if(local_team.is_local_human() && !local_team.is_enemy(side))
 				queue_net_cmd(i,local_team.get_side_actions()->make_net_cmd_refresh());
 		}
@@ -440,7 +439,7 @@ bool manager::current_side_has_actions()
 		return false;
 	}
 
-	side_actions::range_t range = current_side_actions()->iter_turn(0);
+	const side_actions::range_t range = current_side_actions()->iter_turn(0);
 	return range.first != range.second; //non-empty range
 }
 
@@ -460,7 +459,7 @@ static void draw_numbers(const map_location& hex, side_actions::numbers_t number
 {
 	std::vector<int>& numbers_to_draw = numbers.numbers_to_draw;
 	std::vector<std::size_t>& team_numbers = numbers.team_numbers;
-	int& main_number = numbers.main_number;
+	const int& main_number = numbers.main_number;
 	std::set<std::size_t>& secondary_numbers = numbers.secondary_numbers;
 
 	const double x_offset_base = 0.0;
@@ -472,18 +471,18 @@ static void draw_numbers(const map_location& hex, side_actions::numbers_t number
 	const double y_origin = 0.5 - numbers_to_draw.size() * (y_offset_base / 2);
 	double x_offset = 0, y_offset = 0;
 
-	std::size_t size = numbers_to_draw.size();
+	const std::size_t size = numbers_to_draw.size();
 	for(std::size_t i=0; i<size; ++i)
 	{
-		int number = numbers_to_draw[i];
+		const int number = numbers_to_draw[i];
 
-		std::string number_text = std::to_string(number);
+		const std::string number_text = std::to_string(number);
 		std::size_t font_size;
 		if (static_cast<int>(i) == main_number) font_size = 19;
 		else if (secondary_numbers.find(i)!=secondary_numbers.end()) font_size = 17;
 		else font_size = 15;
 
-		color_t color = team::get_side_color(static_cast<int>(team_numbers[i]+1));
+		const color_t color = team::get_side_color(static_cast<int>(team_numbers[i] + 1));
 		const double x_in_hex = x_origin + x_offset;
 		const double y_in_hex = y_origin + y_offset;
 		display::get_singleton()->draw_text_in_hex(hex, drawing_layer::actions_numbering,
@@ -514,7 +513,7 @@ namespace
 		}
 
 		virtual void visit(move_ptr move) {
-			if(std::size_t id = move->get_unit_id()) {
+			if(const std::size_t id = move->get_unit_id()) {
 				move_owners_.insert(id);
 			}
 		}
@@ -522,7 +521,7 @@ namespace
 		virtual void visit(attack_ptr attack) {
 			//also add attacks if they have an associated move
 			if(attack->get_route().steps.size() >= 2) {
-				if(std::size_t id = attack->get_unit_id()) {
+				if(const std::size_t id = attack->get_unit_id()) {
 					move_owners_.insert(id);
 				}
 			}
@@ -543,8 +542,8 @@ void manager::pre_draw()
 		for_each_action(std::ref(move_finder));
 		units_owning_moves_ = move_finder.get_units_owning_moves();
 
-		for (std::size_t unit_id : units_owning_moves_) {
-			unit_map::iterator unit_iter = resources::gameboard->units().find(unit_id);
+		for(const std::size_t unit_id : units_owning_moves_) {
+			const unit_map::iterator unit_iter = resources::gameboard->units().find(unit_id);
 			if(unit_iter.valid()) {
 				ghost_owner_unit(&*unit_iter);
 			}
@@ -554,9 +553,8 @@ void manager::pre_draw()
 
 void manager::post_draw()
 {
-	for (std::size_t unit_id : units_owning_moves_)
-	{
-		unit_map::iterator unit_iter = resources::gameboard->units().find(unit_id);
+	for(const std::size_t unit_id : units_owning_moves_) {
+		const unit_map::iterator unit_iter = resources::gameboard->units().find(unit_id);
 		if (unit_iter.valid()) {
 			unghost_owner_unit(&*unit_iter);
 		}
@@ -579,8 +577,7 @@ void manager::draw_hex(const map_location& hex)
 
 		//Info about the action numbers to be displayed on screen.
 		side_actions::numbers_t numbers;
-		for (team& t : resources::gameboard->teams())
-		{
+		for(const team& t : resources::gameboard->teams()) {
 			side_actions& sa = *t.get_side_actions();
 			if(!sa.hidden())
 				sa.get_numbers(hex,numbers);
@@ -592,10 +589,10 @@ void manager::draw_hex(const map_location& hex)
 
 void manager::on_mouseover_change(const map_location& hex)
 {
-
-	map_location selected_hex = resources::controller->get_mouse_handler_base().get_selected_hex();
+	const map_location selected_hex = resources::controller->get_mouse_handler_base().get_selected_hex();
 	bool hex_has_unit;
-	{ wb::future_map future; // start planned unit map scope
+	{
+		const wb::future_map future; // start planned unit map scope
 		hex_has_unit = resources::gameboard->units().find(selected_hex) != resources::gameboard->units().end();
 	} // end planned unit map scope
 	if (!((selected_hex.valid() && hex_has_unit)
@@ -624,7 +621,7 @@ void manager::on_gamestate_change()
 
 void manager::send_network_data()
 {
-	std::size_t size = net_buffer_.size();
+	const std::size_t size = net_buffer_.size();
 	for(std::size_t team_index=0; team_index<size; ++team_index)
 	{
 		config& buf_cfg = net_buffer_[team_index];
@@ -641,7 +638,7 @@ void manager::send_network_data()
 
 		resources::controller->send_to_wesnothd(packet, "whiteboard");
 
-		std::size_t count = wb_cfg.child_count("net_cmd");
+		const std::size_t count = wb_cfg.child_count("net_cmd");
 		LOG_WB << "Side " << (team_index+1) << " sent wb data (" << count << " cmds).";
 	}
 }
@@ -650,10 +647,10 @@ void manager::process_network_data(const config& cfg)
 {
 	if(auto wb_cfg = cfg.optional_child("whiteboard"))
 	{
-		std::size_t count = wb_cfg->child_count("net_cmd");
+		const std::size_t count = wb_cfg->child_count("net_cmd");
 		LOG_WB << "Received wb data (" << count << ").";
 
-		team& team_from = resources::gameboard->get_team(wb_cfg["side"].to_int());
+		const team& team_from = resources::gameboard->get_team(wb_cfg["side"].to_int());
 		for(const side_actions::net_cmd& cmd : wb_cfg->child_range("net_cmd"))
 			team_from.get_side_actions()->execute_net_cmd(cmd);
 	}
@@ -705,14 +702,13 @@ void manager::create_temp_move()
 	std::size_t turn = 0;
 	std::vector<map_location>::iterator prev_itor = route.steps.begin();
 	std::vector<map_location>::iterator curr_itor = prev_itor;
-	std::vector<map_location>::iterator end_itor  = route.steps.end();
+	const std::vector<map_location>::iterator end_itor = route.steps.end();
 	for(; curr_itor!=end_itor; ++curr_itor)
 	{
 		const map_location& hex = *curr_itor;
 
 		//search for end-of-turn marks
-		pathfind::marked_route::mark_map::const_iterator w =
-				route.marks.find(hex);
+		const pathfind::marked_route::mark_map::const_iterator w = route.marks.find(hex);
 		if(w != route.marks.end() && w->second.turns > 0)
 		{
 			turn = w->second.turns-1;
@@ -734,7 +730,7 @@ void manager::create_temp_move()
 				move_arrow->set_style(arrow::STYLE_HIGHLIGHTED);
 			}
 
-			arrow_path_t path(prev_itor,curr_itor+1);
+			const arrow_path_t path(prev_itor, curr_itor + 1);
 			move_arrow->set_path(path);
 
 			if(path.size() >= 2)
@@ -760,7 +756,7 @@ void manager::create_temp_move()
 		}
 	}
 	//in case path shortens on next step and one ghosted unit has to be removed
-	int ind = fake_units_.size() - 1;
+	const int ind = fake_units_.size() - 1;
 	fake_units_[ind]->anim_comp().invalidate(*game_display::get_singleton());
 	//toss out old arrows and fake units
 	move_arrows_.resize(turn+1);
@@ -787,19 +783,19 @@ void manager::save_temp_move()
 		side_actions& sa = *viewer_actions();
 		const unit* u = future_visible_unit(route_->steps.front());
 		assert(u);
-		std::size_t first_turn = sa.get_turn_num_of(*u);
+		const std::size_t first_turn = sa.get_turn_num_of(*u);
 
 		validate_viewer_actions();
 
 		assert(move_arrows_.size() == fake_units_.size());
-		std::size_t size = move_arrows_.size();
+		const std::size_t size = move_arrows_.size();
 		for(std::size_t i=0; i<size; ++i)
 		{
-			arrow_ptr move_arrow = move_arrows_[i];
+			const arrow_ptr move_arrow = move_arrows_[i];
 			if(!arrow::valid_path(move_arrow->get_path()))
 				continue;
 
-			std::size_t turn = first_turn + i;
+			const std::size_t turn = first_turn + i;
 
 			//@todo Using a marked_route here is wrong, since right now it's not marked
 			//either switch over to a plain route for planned moves, or mark it correctly
@@ -887,11 +883,12 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 		{
 			side_actions& sa = *viewer_actions();
 			unit* recruiter;
-			{ wb::future_map raii;
+			{
+				const wb::future_map raii;
 				recruiter = find_recruiter(side_num-1,recruit_hex);
 			} // end planned unit map scope
 			assert(recruiter);
-			std::size_t turn = sa.get_turn_num_of(*recruiter);
+			const std::size_t turn = sa.get_turn_num_of(*recruiter);
 			sa.queue_recruit(turn,name,recruit_hex);
 			created_planned_recruit = true;
 
@@ -945,7 +942,7 @@ void manager::contextual_execute()
 		erase_temp_move();
 
 		//For exception-safety, this struct sets executing_actions_ to false on destruction.
-		variable_finalizer<bool> finally(executing_actions_, false);
+		const variable_finalizer<bool> finally(executing_actions_, false);
 
 		side_actions::iterator it = viewer_actions()->end();
 		unit const* selected_unit = future_visible_unit(resources::controller->get_mouse_handler_base().get_selected_hex(), viewer_side());
@@ -987,8 +984,8 @@ bool manager::execute_all_actions()
 	}
 	//exception-safety: finalizers set variables to false on destruction
 	//i.e. when method exits naturally or exception is thrown
-	variable_finalizer<bool> finalize_executing_actions(executing_actions_, false);
-	variable_finalizer<bool> finalize_executing_all_actions(executing_all_actions_, false);
+	const variable_finalizer<bool> finalize_executing_actions(executing_actions_, false);
+	const variable_finalizer<bool> finalize_executing_all_actions(executing_all_actions_, false);
 
 	validate_viewer_actions();
 	if(viewer_actions()->empty() || viewer_actions()->turn_size(0) == 0)
@@ -1009,7 +1006,7 @@ bool manager::execute_all_actions()
 	executing_actions_ = true;
 	executing_all_actions_ = true;
 
-	side_actions_ptr sa = viewer_actions();
+	const side_actions_ptr sa = viewer_actions();
 
 	if (has_planned_unit_map())
 	{
@@ -1020,7 +1017,7 @@ bool manager::execute_all_actions()
 
 	while (sa->turn_begin(0) != sa->turn_end(0))
 	{
-		bool action_successful = sa->execute(sa->begin());
+		const bool action_successful = sa->execute(sa->begin());
 
 		// Interrupt on incomplete action
 		if (!action_successful)
@@ -1061,7 +1058,7 @@ void manager::contextual_bump_up_action()
 {
 	validate_viewer_actions();
 	if(can_enable_reorder_hotkeys()) {
-		action_ptr action = highlighter_->get_bump_target();
+		const action_ptr action = highlighter_->get_bump_target();
 		if(action) {
 			viewer_actions()->bump_earlier(viewer_actions()->get_position_of(action));
 			validate_viewer_actions(); // Redraw arrows
@@ -1073,7 +1070,7 @@ void manager::contextual_bump_down_action()
 {
 	validate_viewer_actions();
 	if(can_enable_reorder_hotkeys()) {
-		action_ptr action = highlighter_->get_bump_target();
+		const action_ptr action = highlighter_->get_bump_target();
 		if(action) {
 			viewer_actions()->bump_later(viewer_actions()->get_position_of(action));
 			validate_viewer_actions(); // Redraw arrows
@@ -1109,7 +1106,7 @@ bool manager::should_clear_undo() const
 
 void manager::options_dlg()
 {
-	int v_side = viewer_side();
+	const int v_side = viewer_side();
 
 	int selection = 0;
 
@@ -1130,7 +1127,7 @@ void manager::options_dlg()
 		allies.push_back(&t);
 
 		t_vars["player"] = t.current_player();
-		std::size_t t_index = t.side()-1;
+		const std::size_t t_index = t.side() - 1;
 		if(team_plans_hidden_[t_index])
 			options.emplace_back(VGETTEXT("Show plans for $player", t_vars));
 		else
@@ -1159,9 +1156,9 @@ void manager::options_dlg()
 	default:
 		if(selection > 1)
 		{
-			std::size_t t_index = allies[selection-2]->side()-1;
+			const std::size_t t_index = allies[selection - 2]->side() - 1;
 			//toggle ...
-			bool hidden = team_plans_hidden_[t_index];
+			const bool hidden = team_plans_hidden_[t_index];
 			team_plans_hidden_[t_index] = !hidden;
 		}
 		break;

@@ -38,7 +38,7 @@ void formula_debugger::pre_show()
 			= find_widget<scroll_label>("stack", false, true);
 
 	std::stringstream stack_text;
-	std::string indent = "  ";
+	const std::string indent = "  ";
 	int c = 0;
 	for(const auto & i : fdb_.get_call_stack())
 	{

@@ -244,13 +244,13 @@ void story_viewer::display_part()
 	//
 	label& title_label = find_widget<label>("title");
 
-	std::string title_text = current_part_->title();
+	const std::string title_text = current_part_->title();
 	bool showing_title;
 
 	if(current_part_->show_title() && !title_text.empty()) {
 		showing_title = true;
 
-		PangoAlignment title_text_alignment = decode_text_alignment(current_part_->title_text_alignment());
+		const PangoAlignment title_text_alignment = decode_text_alignment(current_part_->title_text_alignment());
 
 		title_label.set_visible(widget::visibility::visible);
 		title_label.set_text_alignment(title_text_alignment);
@@ -304,7 +304,7 @@ void story_viewer::display_part()
 	}
 
 	// Convert the story part text alignment types into the Pango equivalents
-	PangoAlignment story_text_alignment = decode_text_alignment(current_part_->story_text_alignment());
+	const PangoAlignment story_text_alignment = decode_text_alignment(current_part_->story_text_alignment());
 
 	scroll_label& text_label = find_widget<scroll_label>("part_text");
 	text_label.set_text_alignment(story_text_alignment);
@@ -368,7 +368,7 @@ void story_viewer::draw_floating_image(floating_image_list::const_iterator image
 		}
 
 		image["name"] = floating_image.file();
-		config cfg{"image", std::move(image)};
+		const config cfg{"image", std::move(image)};
 
 		window_canvas.append_cfg(cfg);
 
@@ -492,7 +492,7 @@ void story_viewer::update()
 		return;
 	}
 
-	unsigned short new_alpha = std::clamp<short>(fade_step_ * 25.5, 0, ALPHA_OPAQUE);
+	const unsigned short new_alpha = std::clamp<short>(fade_step_ * 25.5, 0, ALPHA_OPAQUE);
 	find_widget<scroll_label>("part_text").set_text_alpha(new_alpha);
 
 	// The text stack also needs to be marked dirty so the background panel redraws correctly.

@@ -40,7 +40,7 @@ static int byte_size_from_utf8_first(const unsigned char ch)
 	/* first bit set: character not in US-ASCII, multiple bytes
 	 * number of set bits at the beginning = bytes per character
 	 * e.g. 11110xxx indicates a 4-byte character */
-	int count = count_leading_ones(ch);
+	const int count = count_leading_ones(ch);
 	if (count == 1 || count > 6) {		// count > 4 after RFC 3629
 		throw invalid_utf8_exception(); // Stop on invalid characters
 	}
@@ -103,7 +103,7 @@ std::string& insert(std::string& str, const std::size_t pos, const std::string& 
 std::string& erase(std::string& str, const std::size_t start, const std::size_t len)
 {
 	if (start > size(str)) return str;
-	unsigned pos = index(str, start);
+	const unsigned pos = index(str, start);
 
 	if (len == std::string::npos) {
 		// without second argument, std::string::erase truncates

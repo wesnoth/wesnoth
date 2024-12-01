@@ -34,7 +34,7 @@ bool generic_event::attach_handler(observer* obs){
 	if (!notify_active_){
 		change_handler_ = true;
 		try{
-			std::vector<observer*>::const_iterator it = std::find(observers_.begin(), observers_.end(), obs);
+			const std::vector<observer*>::const_iterator it = std::find(observers_.begin(), observers_.end(), obs);
 			if (it != observers_.end()){
 				handler_attached = false;
 			}

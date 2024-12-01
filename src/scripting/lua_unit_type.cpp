@@ -195,7 +195,7 @@ static int impl_unit_type_list(lua_State* L) {
 
 static int impl_unit_type_lookup(lua_State* L)
 {
-	std::string id = luaL_checkstring(L, 2);
+	const std::string id = luaL_checkstring(L, 2);
 	const unit_type* ut;
 	if(const unit_type* base = *static_cast<const unit_type**>(luaL_testudata(L, 1, UnitTypeTable))) {
 		if(id == "male" || id == "female") {

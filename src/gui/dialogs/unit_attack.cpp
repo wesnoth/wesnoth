@@ -73,7 +73,7 @@ void unit_attack::pre_show()
 
 	// Possible TODO: If a "blank weapon" is generally useful, add it as a static member in attack_type.
 	static const config empty;
-	static const_attack_ptr no_weapon(new attack_type(empty));
+	static const const_attack_ptr no_weapon(new attack_type(empty));
 
 	for(const auto & weapon : weapons_) {
 		const battle_context_unit_stats& attacker = weapon.get_attacker_stats();
@@ -109,12 +109,12 @@ void unit_attack::pre_show()
 			attacker_itor_->get_location(), false, attacker.weapon
 		);
 
-		std::string types = attacker_weapon.effective_damage_type().first;
+		const std::string types = attacker_weapon.effective_damage_type().first;
 		std::string attw_type = !(types).empty() ? types : attacker_weapon.type();
 		if (!attw_type.empty()) {
 			attw_type = string_table["type_" + attw_type];
 		}
-		std::string def_types = defender_weapon.effective_damage_type().first;
+		const std::string def_types = defender_weapon.effective_damage_type().first;
 		std::string defw_type = !(def_types).empty() ? def_types : defender_weapon.type();
 		if (!defw_type.empty()) {
 			defw_type = string_table["type_" + defw_type];
@@ -126,7 +126,8 @@ void unit_attack::pre_show()
 		std::string attw_specials_atk = attacker_weapon.weapon_specials_value({"attacks", "swarm"});
 		std::string attw_specials_cth = attacker_weapon.weapon_specials_value({"chance_to_hit"});
 		std::string attw_specials_others = attacker_weapon.weapon_specials_value(checking_tags_other);
-		bool defender_attack = !(defender_weapon.name().empty() && defender_weapon.damage() == 0 && defender_weapon.num_attacks() == 0 && defender.chance_to_hit == 0);
+		const bool defender_attack = !(defender_weapon.name().empty() && defender_weapon.damage() == 0
+			&& defender_weapon.num_attacks() == 0 && defender.chance_to_hit == 0);
 		std::string defw_specials = defender_attack ? defender_weapon.weapon_specials() : "";
 		std::string defw_specials_dmg = defender_attack ? defender_weapon.weapon_specials_value({"leadership", "damage"}) : "";
 		std::string defw_specials_atk = defender_attack ? defender_weapon.weapon_specials_value({"attacks", "swarm"}) : "";

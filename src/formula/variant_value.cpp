@@ -52,7 +52,7 @@ std::string variant_decimal::to_string_impl(const bool sign_value) const
 	std::ostringstream ss;
 
 	int fractional =  value_ % 1000;
-	int integer    = (value_ - fractional) / 1000;
+	const int integer = (value_ - fractional) / 1000;
 
 	if(sign_value) {
 		// Make sure we get the sign on small negative values.
@@ -115,7 +115,7 @@ std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool ve
 			seen.push_back(callable_);
 		}
 
-		formula_input_vector v = callable_->inputs();
+		const formula_input_vector v = callable_->inputs();
 		bool first = true;
 
 		for(const auto& input : v) {
@@ -145,13 +145,13 @@ std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool ve
 
 bool variant_callable::equals(variant_value_base& other) const
 {
-	variant_callable& other_ref = value_ref_cast<variant_callable>(other);
+	const variant_callable& other_ref = value_ref_cast<variant_callable>(other);
 	return callable_ ? callable_->equals(*other_ref.callable_) : callable_ == other_ref.callable_;
 }
 
 bool variant_callable::less_than(variant_value_base& other) const
 {
-	variant_callable& other_ref = value_ref_cast<variant_callable>(other);
+	const variant_callable& other_ref = value_ref_cast<variant_callable>(other);
 	return callable_ ? callable_->less(*other_ref.callable_) : other_ref.callable_ != nullptr;
 }
 

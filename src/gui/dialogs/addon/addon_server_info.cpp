@@ -71,13 +71,13 @@ void addon_server_info::post_show()
 
 void addon_server_info::downloads_by_version()
 {
-	config downloads = client_.get_addon_downloads_by_version(addon_);
+	const config downloads = client_.get_addon_downloads_by_version(addon_);
 	PLAIN_LOG << downloads.debug();
 }
 
 void addon_server_info::addon_count_by_forum_auth()
 {
-	config forum_auths = client_.get_forum_auth_usage();
+	const config forum_auths = client_.get_forum_auth_usage();
 	PLAIN_LOG << forum_auths.debug();
 }
 

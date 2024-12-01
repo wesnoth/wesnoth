@@ -87,7 +87,7 @@ bool loadgame::show_difficulty_dialog()
 		return false;
 	}
 
-	std::string campaign_id = load_data_.summary["campaign"];
+	const std::string campaign_id = load_data_.summary["campaign"];
 
 	for(const config& campaign : game_config_.child_range("campaign")) {
 		if(campaign["id"] != campaign_id) {
@@ -298,7 +298,7 @@ bool loadgame::load_multiplayer_game()
 	// been populated. Since we do that, we report any errors in that process first.
 	std::string error_log;
 	{
-		cursor::setter cur(cursor::WAIT);
+		const cursor::setter cur(cursor::WAIT);
 		log_scope("load_game");
 
 		read_save_file(load_data_.manager->dir(), load_data_.filename, load_data_.load_config, &error_log);
@@ -572,8 +572,8 @@ replay_savegame::replay_savegame(saved_game& gamestate, const compression::forma
 
 std::string replay_savegame::create_initial_filename(unsigned int) const
 {
-	time_t t = std::time(nullptr);
-	tm tm = *std::localtime(&t);
+	const time_t t = std::time(nullptr);
+	const tm tm = *std::localtime(&t);
 	auto time = std::put_time(&tm, "%Y%m%d-%H%M%S");
 
 	// TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
@@ -828,7 +828,7 @@ static void convert_old_saves_1_13_1(config& cfg)
 		for(config& side : carryover_sides_start->child_range("side")) {
 			for(config& unit : side.child_range("unit")) {
 				if(auto modifications = unit.optional_child("modifications")) {
-					for(config& advancement : modifications->child_range("advance")) {
+					for(const config& advancement : modifications->child_range("advance")) {
 						modifications->add_child("advancement", advancement);
 					}
 					modifications->clear_children("advance");
@@ -864,7 +864,7 @@ static void convert_old_saves_1_15_3(config& cfg)
 
 void convert_old_saves(config& cfg)
 {
-	version_info loaded_version(cfg["version"]);
+	const version_info loaded_version(cfg["version"]);
 	if(loaded_version < version_info("1.12.0")) {
 		convert_old_saves_1_11_0(cfg);
 	}

@@ -433,7 +433,7 @@ static int impl_side_set(lua_State *L)
 static int impl_side_equal(lua_State *L)
 {
 	// Hidden metamethod, so arg1 has to be a pointer to a team.
-	team &t1 = luaW_checkteam(L, 1);
+	const team& t1 = luaW_checkteam(L, 1);
 	if(team* t2 = luaW_toteam(L, 2)) {
 		lua_pushboolean(L, t1.side() == t2->side());
 	} else {
@@ -548,9 +548,9 @@ team& luaW_checkteam(lua_State* L, int idx)
 team& luaW_checkteam(lua_State* L, int idx, game_board& board)
 {
 	if(lua_isinteger(L, idx)) {
-		int side = lua_tointeger(L, idx);
+		const int side = lua_tointeger(L, idx);
 		if(!board.has_team(side)) {
-			std::string error = "side " + std::to_string(side) + " does not exist";
+			const std::string error = "side " + std::to_string(side) + " does not exist";
 			luaL_argerror(L, 1, error.c_str());
 			// Unreachable
 		}

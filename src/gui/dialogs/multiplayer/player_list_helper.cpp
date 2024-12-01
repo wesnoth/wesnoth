@@ -24,10 +24,8 @@ player_list_helper::player_list_helper(window* window)
 	: list_(window->find_widget<listbox>("player_list"))
 {
 	// add ourselves as the host
-	widget_data data = {
-		{ "player_type_icon", {{ "label", "misc/leader-crown.png~CROP(12, 1, 15, 15)"}}},
-		{ "player_name",      {{ "label", prefs::get().login()}}}
-	};
+	const widget_data data = {{"player_type_icon", {{"label", "misc/leader-crown.png~CROP(12, 1, 15, 15)"}}},
+		{"player_name", {{"label", prefs::get().login()}}}};
 	list_.add_row(data);
 	list_.select_row(0);
 }

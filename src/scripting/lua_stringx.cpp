@@ -33,14 +33,14 @@ namespace lua_stringx {
 */
 static int intf_format(lua_State* L)
 {
-	config cfg = luaW_checkconfig(L, 2);
-	config_variable_set variables(cfg);
+	const config cfg = luaW_checkconfig(L, 2);
+	const config_variable_set variables(cfg);
 	if(lua_isstring(L, 1)) {
-		std::string str = lua_tostring(L, 1);
+		const std::string str = lua_tostring(L, 1);
 		lua_push(L, utils::interpolate_variables_into_string(str, variables));
 		return 1;
 	}
-	t_string str = luaW_checktstring(L, 1);
+	const t_string str = luaW_checktstring(L, 1);
 	lua_push(L, utils::interpolate_variables_into_tstring(str, variables));
 	return 1;
 }
@@ -72,8 +72,8 @@ static int impl_str_index(lua_State* L)
 		return 1;
 	} else if(lua_type(L, 2) == LUA_TNUMBER) {
 		// get the string length and the index
-		int len = lua_rawlen(L, 1);
-		int i = luaL_checkinteger(L, 2);
+		const int len = lua_rawlen(L, 1);
+		const int i = luaL_checkinteger(L, 2);
 		// In order to not break ipairs, an out-of-bounds access needs to return nil
 		if(i == 0 || abs(i) > len) {
 			lua_pushnil(L);
@@ -111,7 +111,7 @@ static int intf_str_split(lua_State* L)
 		if(luaW_table_get_def(L, 3, "strip_spaces", true)) {
 			flags |= utils::STRIP_SPACES;
 		}
-		bool anim = luaW_table_get_def(L, 3, "expand_anim", false);
+		const bool anim = luaW_table_get_def(L, 3, "expand_anim", false);
 		if(luaW_tableget(L, 3, "escape")) {
 			if(anim) {
 				return luaL_error(L, "escape and expand_anim options are incompatible!");
@@ -179,7 +179,7 @@ static int intf_str_paren_split(lua_State* L)
 	if(left.size() != right.size()) {
 		return luaL_error(L, "left and right need to be strings of the same length");
 	}
-	bool strip_spaces = luaL_opt(L, luaW_toboolean, 4, true);
+	const bool strip_spaces = luaL_opt(L, luaW_toboolean, 4, true);
 	lua_push(L, utils::parenthetical_split(str, 0, left, right, strip_spaces ? utils::STRIP_SPACES : 0));
 	return 1;
 }
@@ -305,7 +305,7 @@ static int intf_str_trim(lua_State* L)
 // Override string.format to coerce the format to a string
 static int intf_str_format(lua_State* L)
 {
-	int nargs = lua_gettop(L);
+	const int nargs = lua_gettop(L);
 	if(luaW_iststring(L, 1)) {
 		// get the tostring() function and call it on the first argument
 		lua_getglobal(L, "tostring");

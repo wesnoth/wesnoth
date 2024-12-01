@@ -91,8 +91,8 @@ static void characterization_distance_direction (const std::vector<map_location>
 			std::cout << "(std::make_pair(" << distance_between(a,b) << ",\t\""
 				<< map_location::write_direction( a.get_relative_dir(b,mode)) << "\"))" << std::endl;
 #else
-			int expected_dist = *(int_it++);
-			map_location::direction expected_dir = *(dir_it++);
+			const int expected_dist = *(int_it++);
+			const map_location::direction expected_dir = *(dir_it++);
 			BOOST_CHECK_EQUAL( expected_dist, distance_between(a,b) );
 			BOOST_CHECK_EQUAL( expected_dist, distance_between(b,a) );
 			BOOST_CHECK_EQUAL( expected_dir, a.get_relative_dir(b, mode) );
@@ -293,9 +293,9 @@ BOOST_AUTO_TEST_CASE ( reality_check_vector_negation )
 
 static void reality_check_get_direction_helper(const map_location & loc, const map_location::direction d)
 {
-	map_location lz(vz.get_direction(d));
+	const map_location lz(vz.get_direction(d));
 
-	map_location temp(loc.vector_sum(lz));
+	const map_location temp(loc.vector_sum(lz));
 	BOOST_CHECK_EQUAL(temp, loc.get_direction(d));
 	BOOST_CHECK(tiles_adjacent(loc,temp));
 	BOOST_CHECK(tiles_adjacent(temp,loc));
@@ -304,8 +304,8 @@ static void reality_check_get_direction_helper(const map_location & loc, const m
 
 BOOST_AUTO_TEST_CASE ( reality_check_get_direction )
 {
-	map_location a(3,4);
-	map_location b(6,5);
+	const map_location a(3, 4);
+	const map_location b(6, 5);
 
 	reality_check_get_direction_helper(a,n);
 	reality_check_get_direction_helper(a,nw);
@@ -346,7 +346,7 @@ static map_location::direction legacy_get_opposite_dir(map_location::direction d
 BOOST_AUTO_TEST_CASE ( check_get_opposite_dir_refactor )
 {
 	for (unsigned int i = 0; i < 7; i++ ) {
-		map_location::direction d = static_cast<map_location::direction> (i);
+		const map_location::direction d = static_cast<map_location::direction>(i);
 		BOOST_CHECK_EQUAL ( map_location::get_opposite_direction(d), legacy_get_opposite_dir(d) );
 	}
 }
@@ -373,7 +373,7 @@ BOOST_AUTO_TEST_CASE ( check_rotate )
 
 
 	for (unsigned int i = 0; i < 7; i++ ) {
-		map_location::direction d = static_cast<map_location::direction> (i);
+		const map_location::direction d = static_cast<map_location::direction>(i);
 		BOOST_CHECK_EQUAL ( map_location::get_opposite_direction(d), map_location::rotate_direction(d,3) );
 		BOOST_CHECK_EQUAL ( map_location::rotate_direction(d,-2), map_location::rotate_direction(d,4) );
 	}

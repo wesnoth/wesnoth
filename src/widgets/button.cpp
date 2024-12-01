@@ -309,7 +309,7 @@ void button::draw_contents()
 		break;
 	}
 
-	SDL_Rect loc = location();
+	const SDL_Rect loc = location();
 	SDL_Rect clipArea = loc;
 	const int texty = loc.y + loc.h / 2 - textRect_.h / 2 + offset;
 	int textx;
@@ -541,7 +541,7 @@ void button::handle_event(const SDL_Event& event)
 	if (hidden() || !enabled())
 		return;
 
-	STATE start_state = state_;
+	STATE const start_state = state_;
 
 	if (!mouse_locked())
 	{

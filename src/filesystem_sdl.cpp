@@ -93,11 +93,11 @@ rwops_ptr make_write_RWops(const std::string &path) {
 
 static int64_t ifs_size (struct SDL_RWops * context) {
 	std::istream *ifs = static_cast<std::istream*>(context->hidden.unknown.data1);
-	std::streampos orig = ifs->tellg();
+	const std::streampos orig = ifs->tellg();
 
 	ifs->seekg(0, std::ios::end);
 
-	std::streampos len = ifs->tellg();
+	const std::streampos len = ifs->tellg();
 
 	ifs->seekg(orig);
 
@@ -105,11 +105,11 @@ static int64_t ifs_size (struct SDL_RWops * context) {
 }
 static int64_t ofs_size (struct SDL_RWops * context) {
 	std::ostream *ofs = static_cast<std::ostream*>(context->hidden.unknown.data1);
-	std::streampos orig = ofs->tellp();
+	const std::streampos orig = ofs->tellp();
 
 	ofs->seekp(0, std::ios::end);
 
-	std::streampos len = ofs->tellp();
+	const std::streampos len = ofs->tellp();
 
 	ofs->seekp(orig);
 
@@ -145,7 +145,7 @@ static int64_t SDLCALL ifs_seek(struct SDL_RWops *context, int64_t offset, int w
 		ifs->seekg(0, std::ios_base::beg);
 	}
 
-	std::streamsize pos = ifs->tellg();
+	const std::streamsize pos = ifs->tellg();
 	return static_cast<int>(pos);
 }
 static int64_t SDLCALL ofs_seek(struct SDL_RWops *context, int64_t offset, int whence) {
@@ -162,7 +162,7 @@ static int64_t SDLCALL ofs_seek(struct SDL_RWops *context, int64_t offset, int w
 		ofs->seekp(0, std::ios_base::beg);
 	}
 
-	std::streamsize pos = ofs->tellp();
+	const std::streamsize pos = ofs->tellp();
 	return static_cast<int>(pos);
 }
 
@@ -171,7 +171,7 @@ static std::size_t SDLCALL ifs_read(struct SDL_RWops *context, void *ptr, std::s
 
 	// This seems overly simplistic, but it's the same as mem_read's implementation
 	ifs->read(static_cast<char*>(ptr), maxnum * size);
-	std::streamsize num = ifs->good() ? maxnum : ifs->gcount() / size;
+	const std::streamsize num = ifs->good() ? maxnum : ifs->gcount() / size;
 
 	// EOF sticks unless we clear it. Bad is an actual I/O error
 	if(!ifs->bad())

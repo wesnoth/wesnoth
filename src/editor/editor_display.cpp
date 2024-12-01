@@ -137,7 +137,7 @@ void editor_display::layout()
 
 		if(place_at_top != help_string_at_top_) {
 			const auto& r = font::get_floating_label_rect(help_handle_);
-			double delta = map_outside_area().h - r.h;
+			const double delta = map_outside_area().h - r.h;
 			if(place_at_top) {
 				font::move_floating_label(help_handle_, 0.0, -delta);
 			} else {
@@ -161,8 +161,8 @@ display::overlay_map& editor_display::get_overlays()
 void editor_display::set_status(const std::string& str, const bool is_success)
 {
 	const color_t color{0, 0, 0, 0xbb};
-	int size = font::SIZE_SMALL;
-	point canvas_size = video::game_canvas_size();
+	const int size = font::SIZE_SMALL;
+	const point canvas_size = video::game_canvas_size();
 	const int border = 3;
 
 	std::string formatted_str;
@@ -218,7 +218,7 @@ void editor_display::set_help_string(const std::string& str)
 	const color_t color{0, 0, 0, 0xbb};
 
 	int size = font::SIZE_LARGE;
-	point canvas_size = video::game_canvas_size();
+	const point canvas_size = video::game_canvas_size();
 
 	while(size > 0) {
 		if(auto [lw, _] = font::pango_line_size(str, size); lw * 2 > canvas_size.x) {

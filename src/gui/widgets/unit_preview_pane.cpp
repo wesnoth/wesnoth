@@ -151,13 +151,13 @@ static inline std::string get_mp_tooltip(int total_movement, const std::function
 	std::ostringstream tooltip;
 	tooltip << markup::tag("big", _("Movement Costs:"));
 
-	std::shared_ptr<terrain_type_data> tdata = help::load_terrain_types_data();
+	const std::shared_ptr<terrain_type_data> tdata = help::load_terrain_types_data();
 
 	if(!tdata) {
 		return "";
 	}
 
-	for(t_translation::terrain_code terrain : prefs::get().encountered_terrains()) {
+	for(const t_translation::terrain_code terrain : prefs::get().encountered_terrains()) {
 		if(terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
 			continue;
 		}
@@ -174,7 +174,7 @@ static inline std::string get_mp_tooltip(int total_movement, const std::function
 
 		// movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 		const bool cannot_move = tm.moves > total_movement;     // cannot move in this terrain
-		double movement_red_to_green = 100.0 - 25.0 * tm.moves;
+		const double movement_red_to_green = 100.0 - 25.0 * tm.moves;
 
 		std::stringstream move_ss;
 		// A 5 MP margin; if the movement costs go above the unit's max moves + 5, we replace it with dashes.
@@ -283,7 +283,7 @@ void unit_preview_pane::set_display_data(const unit_type& type)
 	}
 
 	if(label_level_) {
-		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(type.level())}});
+		const std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(type.level())}});
 
 		label_level_->set_label(markup::bold(l_str));
 		label_level_->set_tooltip(unit_helper::unit_level_tooltip(type));
@@ -314,7 +314,7 @@ void unit_preview_pane::set_display_data(const unit_type& type)
 
 		str << markup::span_color(font::unit_type_color, type.type_name()) << "\n";
 
-		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(type.level())}});
+		const std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(type.level())}});
 		str << l_str << "\n";
 
 		str << unit_alignments::get_string(type.alignment()) << "\n";
@@ -355,7 +355,7 @@ void unit_preview_pane::set_display_data(const unit_type& type)
 			tree_view_node* header_node = nullptr;
 
 			for(const auto& tr : type.possible_traits()) {
-				t_string name = tr[type.genders().front() == unit_race::FEMALE ? "female_name" : "male_name"];
+				const t_string name = tr[type.genders().front() == unit_race::FEMALE ? "female_name" : "male_name"];
 				if(tr["availability"] != "musthave" || name.empty()) {
 					continue;
 				}
@@ -423,7 +423,7 @@ void unit_preview_pane::set_display_data(const unit& u)
 	}
 
 	if(label_level_) {
-		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(u.level())}});
+		const std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(u.level())}});
 
 		label_level_->set_label(markup::bold(l_str));
 		label_level_->set_tooltip(unit_helper::unit_level_tooltip(u));
@@ -455,7 +455,7 @@ void unit_preview_pane::set_display_data(const unit& u)
 
 		str << markup::span_color(font::unit_type_color, u.type_name()) << "\n";
 
-		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(u.level())}});
+		const std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(u.level())}});
 		str << l_str << "\n";
 
 		str << unit_type::alignment_description(u.alignment(), u.gender()) << "\n";

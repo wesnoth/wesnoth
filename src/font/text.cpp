@@ -160,7 +160,7 @@ point pango_text::get_cursor_position(const unsigned column, const unsigned line
 	recalculate();
 
 	// Determing byte offset
-	std::unique_ptr<PangoLayoutIter, std::function<void(PangoLayoutIter*)>> itor(
+	const std::unique_ptr<PangoLayoutIter, std::function<void(PangoLayoutIter*)>> itor(
 		pango_layout_get_iter(layout_.get()), pango_layout_iter_free);
 
 	// Go the wanted line.
@@ -222,7 +222,7 @@ std::string pango_text::get_token(const point & position, const char * delim) co
 
 	std::string txt = pango_layout_get_text(layout_.get());
 
-	std::string d(delim);
+	const std::string d(delim);
 
 	if (index < 0 || (static_cast<std::size_t>(index) >= txt.size()) || d.find(txt.at(index)) != std::string::npos) {
 		return ""; // if the index is out of bounds, or the index character is a delimiter, return nothing
@@ -678,7 +678,7 @@ static constexpr inverse_table inverse_table_;
  * Div should be the high-precision inverse for the alpha value.
  */
 static void unpremultiply(uint8_t & value, const unsigned div) {
-	unsigned temp = (value * div) / 256u;
+	const unsigned temp = (value * div) / 256u;
 	// Note: It's always the case that alpha * div < 256 if div is the inverse
 	// for alpha, so if cairo is computing premultiplied alpha by rounding down,
 	// this min is not necessary. However, if cairo generates illegal output,
@@ -695,7 +695,7 @@ static void unpremultiply(uint8_t & value, const unsigned div) {
  */
 static void from_cairo_format(uint32_t & c)
 {
-	uint8_t a = (c >> 24) & 0xff;
+	const uint8_t a = (c >> 24) & 0xff;
 	uint8_t r = (c >> 16) & 0xff;
 	uint8_t g = (c >> 8) & 0xff;
 	uint8_t b = c & 0xff;
@@ -710,13 +710,13 @@ static void from_cairo_format(uint32_t & c)
 
 void pango_text::render(PangoLayout& layout, const SDL_Rect& viewport, const unsigned stride)
 {
-	cairo_format_t format = CAIRO_FORMAT_ARGB32;
+	const cairo_format_t format = CAIRO_FORMAT_ARGB32;
 
 	uint8_t* buffer = &surface_buffer_[0];
 
-	std::unique_ptr<cairo_surface_t, std::function<void(cairo_surface_t*)>> cairo_surface(
+	const std::unique_ptr<cairo_surface_t, std::function<void(cairo_surface_t*)>> cairo_surface(
 		cairo_image_surface_create_for_data(buffer, format, viewport.w, viewport.h, stride), cairo_surface_destroy);
-	std::unique_ptr<cairo_t, std::function<void(cairo_t*)>> cr(cairo_create(cairo_surface.get()), cairo_destroy);
+	const std::unique_ptr<cairo_t, std::function<void(cairo_t*)>> cr(cairo_create(cairo_surface.get()), cairo_destroy);
 
 	if(cairo_status(cr.get()) == CAIRO_STATUS_INVALID_SIZE) {
 		throw std::length_error("Text is too long to render");
@@ -768,7 +768,7 @@ surface pango_text::create_surface(const SDL_Rect& viewport)
 {
 	assert(layout_.get());
 
-	cairo_format_t format = CAIRO_FORMAT_ARGB32;
+	const cairo_format_t format = CAIRO_FORMAT_ARGB32;
 	const int stride = cairo_format_stride_for_width(format, viewport.w);
 
 	// The width and stride can be zero if the text is empty or the stride can be negative to indicate an error from
@@ -813,14 +813,14 @@ bool pango_text::set_markup(std::string_view text, PangoLayout& layout)
 {
 	char* raw_text;
 	std::string semi_escaped;
-	bool valid = validate_markup(text, &raw_text, semi_escaped);
+	const bool valid = validate_markup(text, &raw_text, semi_escaped);
 	if(!semi_escaped.empty()) {
 		text = semi_escaped;
 	}
 
 	if(valid) {
 		if(link_aware_) {
-			std::string formatted_text = format_links(text);
+			const std::string formatted_text = format_links(text);
 			pango_layout_set_markup(&layout, formatted_text.c_str(), formatted_text.size());
 		} else {
 			pango_layout_set_markup(&layout, text.data(), text.size());
@@ -923,14 +923,14 @@ std::vector<std::string> pango_text::get_lines() const
 
 	PangoLayout* const layout = layout_.get();
 	std::vector<std::string> res;
-	int count = pango_layout_get_line_count(layout);
+	const int count = pango_layout_get_line_count(layout);
 
 	if(count < 1) {
 		return res;
 	}
 
 	using layout_iterator = std::unique_ptr<PangoLayoutIter, std::function<void(PangoLayoutIter*)>>;
-	layout_iterator i{pango_layout_get_iter(layout), pango_layout_iter_free};
+	const layout_iterator i{pango_layout_get_iter(layout), pango_layout_iter_free};
 
 	res.reserve(count);
 

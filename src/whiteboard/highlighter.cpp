@@ -74,10 +74,10 @@ void highlighter::set_mouseover_hex(const map_location& hex)
 		return;
 	}
 
-	real_map ensure_real_map;
+	const real_map ensure_real_map;
 	mouseover_hex_ = hex;
 	//if we're right over a unit, just highlight all of this unit's actions
-	unit_map::iterator it = get_unit_map().find(hex);
+	const unit_map::iterator it = get_unit_map().find(hex);
 	if(it != get_unit_map().end()) {
 		selection_candidate_ = it.get_shared_ptr();
 
@@ -95,7 +95,7 @@ void highlighter::set_mouseover_hex(const map_location& hex)
 
 	//Set the execution/deletion/bump targets.
 	if(owner_unit_) {
-		side_actions::iterator itor = side_actions_->find_first_action_of(*owner_unit_);
+		const side_actions::iterator itor = side_actions_->find_first_action_of(*owner_unit_);
 		if(itor != side_actions_->end()) {
 			selected_action_ = *itor;
 		}
@@ -105,7 +105,7 @@ void highlighter::set_mouseover_hex(const map_location& hex)
 	if(side_actions_->empty()) {
 		return;
 	}
-	for(action_ptr act : *side_actions_ | utils::views::reverse) {
+	for(const action_ptr act : *side_actions_ | utils::views::reverse) {
 		/**@todo "is_numbering_hex" is not the "correct" criterion by which to
 		 * select the highlighted/selected action. It's just convenient for me
 		 * to use at the moment since it happens to coincide with the "correct"
@@ -131,7 +131,7 @@ void highlighter::highlight()
 	//Find main action to highlight if any, as well as owner unit
 	find_main_highlight();
 
-	if(action_ptr main = main_highlight_.lock()) {
+	if(const action_ptr main = main_highlight_.lock()) {
 		//Highlight main highlight
 		highlight_main_visitor hm_visitor(*this);
 		main->accept(hm_visitor);
@@ -148,8 +148,8 @@ void highlighter::highlight()
 		if(!secondary_highlights_.empty()) {
 			//Highlight secondary highlights
 			highlight_secondary_visitor hs_visitor(*this);
-			for(weak_action_ptr weak : secondary_highlights_) {
-				if(action_ptr action = weak.lock()) {
+			for(const weak_action_ptr weak : secondary_highlights_) {
+				if(const action_ptr action = weak.lock()) {
 					action->accept(hs_visitor);
 				}
 			}
@@ -162,19 +162,19 @@ void highlighter::unhighlight()
 	unhighlight_visitor uh_visitor(*this);
 
 	//unhighlight main highlight
-	if(action_ptr main = main_highlight_.lock()) {
+	if(const action_ptr main = main_highlight_.lock()) {
 		main->accept(uh_visitor);
 	}
 
 	//unhighlight secondary highlights
-	for(weak_action_ptr weak : secondary_highlights_) {
-		if(action_ptr action = weak.lock()) {
+	for(const weak_action_ptr weak : secondary_highlights_) {
+		if(const action_ptr action = weak.lock()) {
 			action->accept(uh_visitor);
 		}
 	}
 
 	//unhide other units if needed
-	for(map_location hex : exclusive_display_hexes_) {
+	for(const map_location hex : exclusive_display_hexes_) {
 		display::get_singleton()->remove_exclusive_draw(hex);
 	}
 	exclusive_display_hexes_.clear();
@@ -186,12 +186,14 @@ void highlighter::last_action_redraw(const move_ptr& move)
 	if(move->get_fake_unit()) {
 		side_actions& sa = *resources::gameboard->teams().at(move->team_index()).get_side_actions().get();
 
-		side_actions::iterator last_action = sa.find_last_action_of(move->get_unit_id());
-		side_actions::iterator second_to_last_action = last_action != sa.end() && last_action != sa.begin() ? last_action - 1 : sa.end();
+		const side_actions::iterator last_action = sa.find_last_action_of(move->get_unit_id());
+		const side_actions::iterator second_to_last_action
+			= last_action != sa.end() && last_action != sa.begin() ? last_action - 1 : sa.end();
 
-		bool this_is_last_action = last_action != sa.end() && move == *last_action;
-		bool last_action_has_fake_unit = last_action != sa.end() && (*last_action)->get_fake_unit();
-		bool this_is_second_to_last_action = (second_to_last_action != sa.end() && move == *second_to_last_action);
+		const bool this_is_last_action = last_action != sa.end() && move == *last_action;
+		const bool last_action_has_fake_unit = last_action != sa.end() && (*last_action)->get_fake_unit();
+		const bool this_is_second_to_last_action
+			= (second_to_last_action != sa.end() && move == *second_to_last_action);
 
 		if(this_is_last_action || (this_is_second_to_last_action && !last_action_has_fake_unit)) {
 			move->get_fake_unit()->anim_comp().set_standing(true);
@@ -209,7 +211,7 @@ void highlighter::find_main_highlight()
 	//assert(side_actions_->team_index() == display::get_singleton()->viewing_team());
 
 	main_highlight_ = find_action_at(mouseover_hex_);
-	if(action_ptr main = main_highlight_.lock()) {
+	if(const action_ptr main = main_highlight_.lock()) {
 		owner_unit_ = main->get_unit();
 	}
 }
@@ -236,7 +238,7 @@ void highlighter::find_secondary_highlights()
 
 action_ptr highlighter::get_execute_target()
 {
-	if(action_ptr locked = selected_action_.lock()) {
+	if(const action_ptr locked = selected_action_.lock()) {
 		return *side_actions_->find_first_action_of(locked->get_unit_id());
 	} else {
 		return action_ptr();
@@ -244,7 +246,7 @@ action_ptr highlighter::get_execute_target()
 }
 action_ptr highlighter::get_delete_target()
 {
-	if(action_ptr locked = selected_action_.lock()) {
+	if(const action_ptr locked = selected_action_.lock()) {
 		return *side_actions_->find_last_action_of(locked->get_unit_id());
 	} else {
 		return action_ptr();

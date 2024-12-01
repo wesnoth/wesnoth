@@ -51,13 +51,13 @@ void migrate_version_selection::execute()
 migrate_version_selection::migrate_version_selection()
 	: modal_dialog(window_id())
 {
-	version_info current_version = game_config::wesnoth_version;
-	std::string current_version_str = filesystem::get_version_path_suffix();
+	const version_info current_version = game_config::wesnoth_version;
+	const std::string current_version_str = filesystem::get_version_path_suffix();
 
 	for(unsigned int i = 1; i < current_version.minor_version(); i++) {
-		std::string previous_version_str = std::to_string(current_version.major_version()) + "."
+		const std::string previous_version_str = std::to_string(current_version.major_version()) + "."
 			+ std::to_string(current_version.minor_version() - i);
-		std::string previous_addons_dir
+		const std::string previous_addons_dir
 			= boost::replace_all_copy(filesystem::get_addons_dir(), current_version_str, previous_version_str);
 
 		if(previous_addons_dir != filesystem::get_addons_dir() && filesystem::file_exists(previous_addons_dir)) {
@@ -84,18 +84,18 @@ void migrate_version_selection::pre_show()
 void migrate_version_selection::post_show()
 {
 	if(get_retval() == gui2::OK) {
-		std::string current_version_str = filesystem::get_version_path_suffix();
-		listbox& version_list = find_widget<listbox>("versions_listbox");
-		int selected_row = version_list.get_selected_row();
-		std::string selected = versions_.at(selected_row);
+		const std::string current_version_str = filesystem::get_version_path_suffix();
+		const listbox& version_list = find_widget<listbox>("versions_listbox");
+		const int selected_row = version_list.get_selected_row();
+		const std::string selected = versions_.at(selected_row);
 
-		std::string migrate_addons_dir
+		const std::string migrate_addons_dir
 			= boost::replace_all_copy(filesystem::get_addons_dir(), current_version_str, selected);
-		std::string migrate_synced_prefs_file
+		const std::string migrate_synced_prefs_file
 			= boost::replace_all_copy(filesystem::get_synced_prefs_file(), current_version_str, selected);
-		std::string migrate_unsynced_prefs_file
+		const std::string migrate_unsynced_prefs_file
 			= boost::replace_all_copy(filesystem::get_unsynced_prefs_file(), current_version_str, selected);
-		std::string migrate_credentials_file
+		const std::string migrate_credentials_file
 			= boost::replace_all_copy(filesystem::get_credentials_file(), current_version_str, selected);
 
 		// given self-compilation and linux distros being able to do whatever they want plus command line options to
@@ -117,9 +117,9 @@ void migrate_version_selection::post_show()
 
 #if !defined(_WIN32) && !defined(__APPLE__)
 		bool already_migrated = false;
-		std::string linux_old_config_dir = old_config_dir();
-		std::string old_migrate_prefs_file = linux_old_config_dir + "/preferences";
-		std::string old_migrate_credentials_file = linux_old_config_dir + "/credentials-aes";
+		const std::string linux_old_config_dir = old_config_dir();
+		const std::string old_migrate_prefs_file = linux_old_config_dir + "/preferences";
+		const std::string old_migrate_credentials_file = linux_old_config_dir + "/credentials-aes";
 
 		if(filesystem::file_exists(old_migrate_prefs_file)) {
 			already_migrated = true;

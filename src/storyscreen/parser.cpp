@@ -47,7 +47,7 @@ void story_parser::resolve_wml(const vconfig& cfg)
 			// condition not passed, check [elseif] and [else]
 			else {
 				// get all [elseif] children and set a flag
-				vconfig::child_list elseif_children = node.get_children("elseif");
+				const vconfig::child_list elseif_children = node.get_children("elseif");
 				bool elseif_flag = false;
 				// for each [elseif]: test if it has a [then] child
 				// if the condition matches, execute [then] and raise flag
@@ -101,7 +101,7 @@ void story_parser::resolve_wml(const vconfig& cfg)
 		// [deprecated_message]
 		else if(key == "deprecated_message") {
 			// Won't appear until the scenario start event finishes.
-			DEP_LEVEL level = DEP_LEVEL(node["level"].to_int(2));
+			DEP_LEVEL const level = DEP_LEVEL(node["level"].to_int(2));
 			deprecated_message(node["what"], level, node["version"].str(), node["message"]);
 		}
 		// [wml_message]

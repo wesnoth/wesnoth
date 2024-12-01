@@ -101,8 +101,8 @@ namespace {
 			addon_info dep;
 			addon_tracking_info depstate;
 
-			addons_list::const_iterator ali = addons_list.find(dep_id);
-			addons_tracking_list::const_iterator tli = addon_states.find(dep_id);
+			const addons_list::const_iterator ali = addons_list.find(dep_id);
+			const addons_tracking_list::const_iterator tli = addon_states.find(dep_id);
 
 			if(ali == addons_list.end()) {
 				dep.id = dep_id; // Build dummy addon_info.
@@ -240,7 +240,7 @@ static std::string describe_status_verbose(const addon_tracking_info& state)
 {
 	std::string s;
 
-	utils::string_map i18n_symbols {{"local_version", state.installed_version.str()}};
+	const utils::string_map i18n_symbols{{"local_version", state.installed_version.str()}};
 
 	switch(state.state) {
 		case ADDON_NONE:
@@ -425,7 +425,7 @@ void addon_manager::pre_show()
 		// Only show languages, which have a translation as per langcode_to_string() method
 		// Do not show tranlations with their langcode e.g. "sv_SV"
 		// Also put them into a set, so same lang strings are not producing doublettes
-		if (std::string lang_code_string = langcode_to_string(i); !lang_code_string.empty()) {
+		if(const std::string lang_code_string = langcode_to_string(i); !lang_code_string.empty()) {
 			language_strings_available.insert(lang_code_string);
 		}
 	}
@@ -574,7 +574,7 @@ void addon_manager::toggle_details(button& btn, stacked_widget& stk)
 
 void addon_manager::fetch_addons_list()
 {
-	bool success = client_.request_addons_list(cfg_, prefs::get().addon_icons());
+	const bool success = client_.request_addons_list(cfg_, prefs::get().addon_icons());
 	if(!success) {
 		gui2::show_error_message(_("An error occurred while downloading the add-ons list from the server."));
 		close();
@@ -589,9 +589,9 @@ void addon_manager::load_addon_list()
 
 	read_addons_list(cfg_, addons_);
 
-	std::vector<std::string> publishable_addons = available_addons();
+	const std::vector<std::string> publishable_addons = available_addons();
 
-	for(std::string id : publishable_addons) {
+	for(const std::string id : publishable_addons) {
 		if(addons_.find(id) == addons_.end()) {
 			// Get a config from the addon's pbl file
 			// Note that the name= key is necessary or stuff breaks, since the filter code uses this key
@@ -604,7 +604,7 @@ void addon_manager::load_addon_list()
 				pbl_cfg["local_only"] = true;
 
 				// Add the add-on to the list.
-				addon_info addon(pbl_cfg);
+				const addon_info addon(pbl_cfg);
 				addons_[id] = addon;
 
 				// Add the addon to the config entry
@@ -648,7 +648,7 @@ boost::dynamic_bitset<> addon_manager::get_name_filter_visibility() const
 	const text_box& name_filter = find_widget<const text_box>("filter");
 	const std::string& text = name_filter.get_value();
 
-	filter_transform filter(utils::split(text, ' '));
+	const filter_transform filter(utils::split(text, ' '));
 	boost::dynamic_bitset<> res;
 
 	const config::const_child_itors& addon_cfgs = cfg_.child_range("campaign");
@@ -694,7 +694,7 @@ boost::dynamic_bitset<> addon_manager::get_tag_filter_visibility() const
 	const auto toggle_states = tag_filter.get_toggle_states();
 	if(toggle_states.none()) {
 		// Nothing selected. It means that all add-ons are shown.
-		boost::dynamic_bitset<> res_flipped(addons_.size());
+		const boost::dynamic_bitset<> res_flipped(addons_.size());
 		return ~res_flipped;
 	}
 
@@ -727,18 +727,15 @@ boost::dynamic_bitset<> addon_manager::get_type_filter_visibility() const
 	boost::dynamic_bitset<> toggle_states = type_filter.get_toggle_states();
 	if(toggle_states.none()) {
 		// Nothing selected. It means that *all* add-ons are shown.
-		boost::dynamic_bitset<> res_flipped(addons_.size());
+		const boost::dynamic_bitset<> res_flipped(addons_.size());
 		return ~res_flipped;
 	} else {
 		boost::dynamic_bitset<> res;
 
 		for(const auto& a : addons_) {
-			int index = std::distance(type_filter_types_.begin(),
+			const int index = std::distance(type_filter_types_.begin(),
 				std::find_if(type_filter_types_.begin(), type_filter_types_.end(),
-					[&a](const std::pair<ADDON_TYPE, std::string>& entry) {
-						return entry.first == a.second.type;
-					})
-				);
+					[&a](const std::pair<ADDON_TYPE, std::string>& entry) { return entry.first == a.second.type; }));
 			res.push_back(toggle_states[index]);
 		}
 		return res;
@@ -752,7 +749,7 @@ boost::dynamic_bitset<> addon_manager::get_lang_filter_visibility() const
 	boost::dynamic_bitset<> toggle_states = lang_filter.get_toggle_states();
 
 	if(toggle_states.none()) {
-		boost::dynamic_bitset<> res_flipped(addons_.size());
+		const boost::dynamic_bitset<> res_flipped(addons_.size());
 		return ~res_flipped;
 	} else {
 		boost::dynamic_bitset<> res;
@@ -768,9 +765,10 @@ boost::dynamic_bitset<> addon_manager::get_lang_filter_visibility() const
 			for (long unsigned int i = 0; i < toggle_states.size(); i++) {
 				if (toggle_states[i] == true) {
 					// does lang_code match?
-					bool contains_lang_code = utils::contains(a.second.locales, language_filter_types_[i].second);
+					const bool contains_lang_code = utils::contains(a.second.locales, language_filter_types_[i].second);
 					// does land_string match?
-					bool contains_lang_string = utils::contains(lang_string_vector, language_filter_types_[i].second);
+					const bool contains_lang_string
+						= utils::contains(lang_string_vector, language_filter_types_[i].second);
 					if ((contains_lang_code || contains_lang_string) == true)
 						retval = true;
 				}
@@ -808,7 +806,8 @@ void addon_manager::order_addons()
 {
 	const menu_button& order_menu = find_widget<const menu_button>("order_dropdown");
 	const addon_order& order_struct = all_orders_.at(order_menu.get_value() / 2);
-	sort_order::type order = order_menu.get_value() % 2 == 0 ? sort_order::type::ascending : sort_order::type::descending;
+	const sort_order::type order
+		= order_menu.get_value() % 2 == 0 ? sort_order::type::ascending : sort_order::type::descending;
 	addon_list::addon_sort_func func;
 	if(order == sort_order::type::ascending) {
 		func = order_struct.sort_func_asc;
@@ -844,7 +843,7 @@ void addon_manager::execute_action_on_selected_addon()
 		find_widget<button>("details_toggle").set_label(_("Add-on Details"));
 	}
 
-	addon_list& addons = find_widget<addon_list>("addons");
+	const addon_list& addons = find_widget<addon_list>("addons");
 	const addon_info* addon = addons.get_selected_addon();
 
 	if(addon == nullptr) {
@@ -868,7 +867,7 @@ void addon_manager::install_addon(const addon_info& addon)
 		versioned_addon.current_version = find_widget<menu_button>("version_filter").get_value_string();
 	}
 
-	addons_client::install_result result = client_.install_addon_with_checks(addons_, versioned_addon);
+	const addons_client::install_result result = client_.install_addon_with_checks(addons_, versioned_addon);
 
 	// Take note if any wml_changes occurred
 	need_wml_cache_refresh_ |= result.wml_changed;
@@ -887,7 +886,7 @@ void addon_manager::uninstall_addon(const addon_info& addon)
 		return;
 	}
 
-	bool success = remove_local_addon(addon.id);
+	const bool success = remove_local_addon(addon.id);
 
 	if(!success) {
 		gui2::show_error_message(_("The following add-on could not be deleted properly:") + " " + addon.display_title_full());
@@ -913,7 +912,7 @@ void addon_manager::update_all_addons()
 {
 	for(const auto& a : addons_) {
 		if(tracking_info_[a.first].state == ADDON_INSTALLED_UPGRADABLE) {
-			addons_client::install_result result = client_.install_addon_with_checks(addons_, a.second);
+			const addons_client::install_result result = client_.install_addon_with_checks(addons_, a.second);
 
 			if(result.wml_changed) {
 				// Updating an add-on may have resulted in its dependencies being updated
@@ -942,7 +941,7 @@ void addon_manager::info()
 		find_widget<button>("details_toggle").set_label(_("Add-on Details"));
 	}
 
-	addon_list& addons = find_widget<addon_list>("addons");
+	const addon_list& addons = find_widget<addon_list>("addons");
 	const addon_info* addon = addons.get_selected_addon();
 
 	bool needs_refresh = false;
@@ -1057,8 +1056,8 @@ void addon_manager::execute_default_action(const addon_info& addon)
 			break;
 		case ADDON_INSTALLED:
 			if(!tracking_info_[addon.id].can_publish) {
-				utils::string_map symbols{ { "addon", addon.display_title_full() } };
-				int res = gui2::show_message(_("Uninstall add-on"),
+				const utils::string_map symbols{{"addon", addon.display_title_full()}};
+				const int res = gui2::show_message(_("Uninstall add-on"),
 					VGETTEXT("Do you want to uninstall '$addon|'?", symbols),
 					gui2::dialogs::message::ok_cancel_buttons);
 				if(res == gui2::retval::OK) {
@@ -1154,8 +1153,8 @@ void addon_manager::on_addon_select()
 	parent->find_widget<label>("url").set_label(!feedback_url.empty() ? feedback_url : _("url^None"));
 	parent->find_widget<label>("id").set_label(info->id);
 
-	bool installed = is_installed_addon_status(tracking_info_[info->id].state);
-	bool updatable = tracking_info_[info->id].state == ADDON_INSTALLED_UPGRADABLE;
+	const bool installed = is_installed_addon_status(tracking_info_[info->id].state);
+	const bool updatable = tracking_info_[info->id].state == ADDON_INSTALLED_UPGRADABLE;
 
 	stacked_widget& action_stack = parent->find_widget<stacked_widget>("action_stack");
 	// #TODO: Add tooltips with upload time and pack size
@@ -1208,8 +1207,8 @@ void addon_manager::on_selected_version_change()
 	}
 
 	if(!tracking_info_[info->id].can_publish && is_installed_addon_status(tracking_info_[info->id].state)) {
-		bool updatable = tracking_info_[info->id].installed_version
-						 != find_widget<menu_button>("version_filter").get_value_string();
+		const bool updatable = tracking_info_[info->id].installed_version
+			!= find_widget<menu_button>("version_filter").get_value_string();
 		stacked_widget& action_stack = find_widget<stacked_widget>("action_stack");
 		action_stack.select_layer(0);
 

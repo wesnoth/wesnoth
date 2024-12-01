@@ -163,11 +163,11 @@ std::vector<description*> configuration::get_available_ais()
 
 const config& configuration::get_ai_config_for(const std::string& id)
 {
-	description_map::iterator cfg_it = ai_configurations_.find(id);
+	const description_map::iterator cfg_it = ai_configurations_.find(id);
 	if (cfg_it==ai_configurations_.end()){
-		description_map::iterator era_cfg_it = era_ai_configurations_.find(id);
+		const description_map::iterator era_cfg_it = era_ai_configurations_.find(id);
 		if (era_cfg_it==era_ai_configurations_.end()){
-			description_map::iterator mod_cfg_it = mod_ai_configurations_.find(id);
+			const description_map::iterator mod_cfg_it = mod_ai_configurations_.find(id);
 			if (mod_cfg_it==mod_ai_configurations_.end()) {
 				return default_config_;
 			} else {

@@ -122,7 +122,7 @@ static config& find_ref(const std::string& id, config& cfg, bool remove = false)
 {
 	static config empty_config;
 
-	config::all_children_itors itors = cfg.all_children_range();
+	const config::all_children_itors itors = cfg.all_children_range();
 	for(config::all_children_iterator i = itors.begin(); i != itors.end(); ++i) {
 		config& icfg = i->cfg;
 		if(i->cfg["id"] == id) {
@@ -610,8 +610,8 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	int current_rating = 1000000;
 	const config* current = nullptr;
 	for(const config& i : cfg_.child_range("resolution")) {
-		int width = i["width"].to_int();
-		int height = i["height"].to_int();
+		const int width = i["width"].to_int();
+		const int height = i["height"].to_int();
 		LOG_DP << "comparing resolution " << screen.w << "," << screen.h << " to " << width << "," << height;
 		if(screen.w >= width && screen.h >= height) {
 			LOG_DP << "loading theme: " << width << "," << height;
@@ -811,7 +811,7 @@ void theme::set_object_location(theme::object& element, const std::string& rect_
 		ref_element = find_element(ref_id);
 	}
 	if(ref_element.get_id() == ref_id) {
-		SDL_Rect location_ref_rect = ref_element.get_location();
+		const SDL_Rect location_ref_rect = ref_element.get_location();
 		element.modify_location(rect_str, location_ref_rect);
 	}
 }
@@ -833,8 +833,8 @@ void theme::modify(const config& cfg)
 
 	// Change existing theme objects.
 	for(const config& c : cfg.child_range("change")) {
-		std::string id = c["id"];
-		std::string ref_id = c["ref"];
+		const std::string id = c["id"];
+		const std::string ref_id = c["ref"];
 		theme::object& element = find_element(id);
 		if(element.get_id() == id)
 			set_object_location(element, c["rect"], ref_id);
@@ -1019,6 +1019,6 @@ const config& theme::get_theme_config(const std::string& id)
 
 	ERR_DP << "Default theme not found.";
 
-	static config empty;
+	static const config empty;
 	return empty;
 }

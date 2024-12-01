@@ -42,7 +42,7 @@ image::image(const implementation::builder_image& builder)
 
 point image::calculate_best_size() const
 {
-	point image_size = ::image::get_size(::image::locator{get_label()});
+	const point image_size = ::image::get_size(::image::locator{get_label()});
 
 	if(image_size.x == 0 || image_size.y == 0) {
 		DBG_GUI_L << LOG_HEADER << " empty image return default.";

@@ -258,7 +258,7 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 {
 	std::map<const unit_type*, t_string> err_msgs_map;
 	std::vector<const unit_type*> recruit_list;
-	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
+	const std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
 	std::vector<t_string> unknown_units;
 	team& current_team = board().get_team(side_num);
 
@@ -272,7 +272,7 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 
 		map_location ignored;
 		map_location recruit_hex = last_hex;
-		t_string err_msg = unit_helper::recruit_message(type->id(), recruit_hex, ignored, current_team);
+		t_string const err_msg = unit_helper::recruit_message(type->id(), recruit_hex, ignored, current_team);
 		if (!err_msg.empty()) {
 			err_msgs_map[type] = err_msg;
 		}
@@ -347,7 +347,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 
 	std::vector<unit_const_ptr> recall_list_team;
 	{
-		wb::future_map future; // ensures recall list has planned recalls removed
+		const wb::future_map future; // ensures recall list has planned recalls removed
 		recall_list_team = actions::get_recalls(side_num, last_hex);
 	}
 
@@ -373,7 +373,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		return;
 	}
 
-	int res = dlg->get_selected_index();
+	int const res = dlg->get_selected_index();
 
 	int unit_cost = current_team.recall_cost();
 	const unit_const_ptr sel_unit = recall_list_team[res];
@@ -386,12 +386,12 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		unit_cost = sel_unit->recall_cost();
 	}
 
-	int wb_gold = pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0;
+	int const wb_gold = pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0;
 
 	if(current_team.gold() - wb_gold < unit_cost) {
 		utils::string_map i18n_symbols;
 		i18n_symbols["cost"] = std::to_string(unit_cost);
-		std::string msg = VNGETTEXT("You must have at least 1 gold piece to recall a unit.",
+		std::string const msg = VNGETTEXT("You must have at least 1 gold piece to recall a unit.",
 				"You must have at least $cost gold pieces to recall this unit.", unit_cost, i18n_symbols);
 		gui2::show_transient_message("", msg);
 		return;
@@ -404,7 +404,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	map_location recall_from = map_location::null_location();
 	std::string err;
 	{
-		wb::future_map_if_active
+		const wb::future_map_if_active
 				future; // future unit map removes invisible units from map, don't do this outside of planning mode
 		err = actions::find_recall_location(side_num, recall_location, recall_from, *sel_unit);
 	} // end planned unit map scope
@@ -416,7 +416,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 
 	if(!pc_.get_whiteboard()
 		|| !pc_.get_whiteboard()->save_recall(*sel_unit, side_num, recall_location)) {
-		bool success = synced_context::run_and_throw("recall",
+		const bool success = synced_context::run_and_throw("recall",
 				replay_helper::get_recall(sel_unit->id(), recall_location, recall_from));
 
 		if(!success) {
@@ -428,7 +428,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 // Highlights squares that an enemy could move to on their turn, showing how many can reach each square.
 void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 {
-	wb::future_map future; // use unit positions as if all planned actions were executed
+	const wb::future_map future; // use unit positions as if all planned actions were executed
 
 	mouse_handler& mh = pc_.get_mouse_handler_base();
 	const map_location& hex_under_mouse = mh.hovered_hex();
@@ -437,7 +437,7 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 
 	// Compute enemy movement positions
 	for(auto& u : pc_.get_units()) {
-		bool invisible = u.invisible(u.get_location());
+		const bool invisible = u.invisible(u.get_location());
 
 		if(board().get_team(side_num).is_enemy(u.side()) && !gui_->fogged(u.get_location()) && !u.incapacitated()
 				&& !invisible) {
@@ -467,8 +467,8 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 
 void menu_handler::toggle_shroud_updates(int side_num)
 {
-	team& current_team = board().get_team(side_num);
-	bool auto_shroud = current_team.auto_shroud_updates();
+	const team& current_team = board().get_team(side_num);
+	const bool auto_shroud = current_team.auto_shroud_updates();
 	// If we're turning automatic shroud updates on, then commit all moves
 	if(!auto_shroud) {
 		update_shroud_now(side_num);
@@ -542,7 +542,7 @@ bool menu_handler::end_turn(int side_num)
 		return false;
 	}
 
-	std::size_t team_num = static_cast<std::size_t>(side_num - 1);
+	const std::size_t team_num = static_cast<std::size_t>(side_num - 1);
 	if(team_num < pc_.get_teams().size() && pc_.get_teams()[team_num].no_turn_confirmation()) {
 		// Skip the confirmations that follow.
 	}
@@ -587,7 +587,7 @@ bool menu_handler::end_turn(int side_num)
 
 void menu_handler::goto_leader(int side_num)
 {
-	unit_map::const_iterator i = pc_.get_units().find_leader(side_num);
+	const unit_map::const_iterator i = pc_.get_units().find_leader(side_num);
 	if(i != pc_.get_units().end() && i->is_visible_to_team(gui_->viewing_team(), false)) {
 		gui_->scroll_to_tile(i->get_location(), game_display::WARP);
 	}
@@ -640,7 +640,8 @@ unit_map::iterator menu_handler::current_unit()
 	const mouse_handler& mousehandler = pc_.get_mouse_handler_base();
 	const bool see_all = gui_->show_everything() || (pc_.is_replay() && pc_.get_replay_controller()->see_all());
 
-	unit_map::iterator res = board().find_visible_unit(mousehandler.get_last_hex(), gui_->viewing_team(), see_all);
+	const unit_map::iterator res
+		= board().find_visible_unit(mousehandler.get_last_hex(), gui_->viewing_team(), see_all);
 	if(res != pc_.get_units().end()) {
 		return res;
 	}
@@ -673,7 +674,7 @@ type_gender_variation choose_unit()
 
 	const unit_type* ut = types_list[create_dlg->get_selected_index()];
 
-	unit_race::GENDER gender = create_dlg->gender();
+	const unit_race::GENDER gender = create_dlg->gender();
 	return type_gender_variation(ut, gender, create_dlg->variation());
 }
 
@@ -793,7 +794,7 @@ void menu_handler::clear_labels()
 		);
 
 		if(res == gui2::retval::OK) {
-			std::string viewing_team = gui_->viewing_team().team_name();
+			const std::string viewing_team = gui_->viewing_team().team_name();
 			gui_->labels().clear(viewing_team, false);
 			resources::recorder->clear_labels(viewing_team, false);
 		}
@@ -919,7 +920,7 @@ void menu_handler::execute_gotos(mouse_handler& mousehandler, int side)
 
 			{
 				LOG_NG << "execute goto from " << route.steps.front() << " to " << route.steps.back();
-				int moves = actions::move_unit_and_record(route.steps);
+				const int moves = actions::move_unit_and_record(route.steps);
 				change = moves > 0;
 			}
 
@@ -1138,7 +1139,7 @@ protected:
 	using chat_command_handler::get_command_flags_description; // silence a warning
 	std::string get_command_flags_description(const chmap::command& c) const
 	{
-		std::string space(" ");
+		const std::string space(" ");
 		return (c.has_flag('D') ? space + _("(debug command)") : "")
 		     + (c.has_flag('N') ? space + _("(network only)") : "")
 		     + (c.has_flag('A') ? space + _("(admin only)") : "")
@@ -1290,7 +1291,7 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 		cfg["side"] = side;
 	}
 
-	bool private_message = has_friends() && allies_only;
+	const bool private_message = has_friends() && allies_only;
 
 	if(private_message) {
 		if(board().is_observer()) {
@@ -1333,7 +1334,7 @@ void menu_handler::do_search(const std::string& new_search)
 		loc = map_location(pc_.get_map().w() - 1, pc_.get_map().h() - 1);
 	}
 
-	map_location start = loc;
+	const map_location start = loc;
 	while(!found) {
 		// Move to the next location
 		loc.x = (loc.x + 1) % pc_.get_map().w();
@@ -1351,7 +1352,7 @@ void menu_handler::do_search(const std::string& new_search)
 
 		// Search unit name
 		if(!gui_->fogged(loc)) {
-			unit_map::const_iterator ui = pc_.get_units().find(loc);
+			const unit_map::const_iterator ui = pc_.get_units().find(loc);
 			if(ui != pc_.get_units().end()) {
 				const std::string& unit_name = ui->name();
 				if(translation::ci_search(unit_name, last_search_)) {
@@ -1748,7 +1749,7 @@ void console_handler::do_next_level()
 
 void console_handler::do_choose_level()
 {
-	std::string tag = menu_handler_.pc_.get_classification().get_tagname();
+	const std::string tag = menu_handler_.pc_.get_classification().get_tagname();
 	std::vector<std::string> options;
 	std::string next;
 	if(tag != "multiplayer") {
@@ -1762,12 +1763,12 @@ void console_handler::do_choose_level()
 	} else {
 		// find scenarios of multiplayer campaigns
 		// (assumes that scenarios are ordered properly in the game_config)
-		std::string scenario_id = menu_handler_.pc_.get_mp_settings().mp_scenario;
+		const std::string scenario_id = menu_handler_.pc_.get_mp_settings().mp_scenario;
 		if(auto this_scenario = menu_handler_.game_config_.find_child(tag, "id", scenario_id)) {
-			std::string addon_id = this_scenario["addon_id"].str();
+			const std::string addon_id = this_scenario["addon_id"].str();
 			for(const config& sc : menu_handler_.game_config_.child_range(tag)) {
 				if(sc["addon_id"] == addon_id) {
-					std::string id = sc["id"];
+					const std::string id = sc["id"];
 					options.push_back(id);
 					if(id == menu_handler_.gamedata().next_scenario()) {
 						next = id;
@@ -1796,7 +1797,7 @@ void console_handler::do_choose_level()
 
 void console_handler::do_turn()
 {
-	tod_manager& tod_man = menu_handler_.gamestate().tod_manager_;
+	const tod_manager& tod_man = menu_handler_.gamestate().tod_manager_;
 
 	int turn = tod_man.turn() + 1;
 	const std::string& data = get_data();
@@ -1808,7 +1809,7 @@ void console_handler::do_turn()
 
 void console_handler::do_turn_limit()
 {
-	int limit = get_data().empty() ? -1 : lexical_cast_default<int>(get_data(), 1);
+	const int limit = get_data().empty() ? -1 : lexical_cast_default<int>(get_data(), 1);
 	synced_context::run_and_throw("debug_turn_limit", config {"turn_limit", limit});
 }
 
@@ -1911,7 +1912,7 @@ void console_handler::do_show_var()
 
 void console_handler::do_inspect()
 {
-	vconfig cfg = vconfig::empty_vconfig();
+	vconfig const cfg = vconfig::empty_vconfig();
 	gamestate_inspector::display(
 		menu_handler_.gamedata().get_variables(), *resources::game_events, menu_handler_.board());
 }
@@ -1928,7 +1929,7 @@ void console_handler::do_unit()
 		return;
 	}
 
-	unit_map::iterator i = menu_handler_.current_unit();
+	const unit_map::iterator i = menu_handler_.current_unit();
 	if(i == menu_handler_.pc_.get_units().end()) {
 		utils::string_map symbols;
 		symbols["unit"] = get_arg(1);
@@ -2076,7 +2077,7 @@ void menu_handler::user_command()
 
 void menu_handler::request_control_change(int side_num, const std::string& player)
 {
-	std::string side = std::to_string(side_num);
+	const std::string side = std::to_string(side_num);
 	if(board().get_team(side_num).is_local_human() && player == prefs::get().login()) {
 		// this is already our side.
 		return;

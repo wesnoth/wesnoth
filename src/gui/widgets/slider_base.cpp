@@ -176,7 +176,7 @@ void slider_base::recalculate()
 
 void slider_base::move_positioner(int new_offset)
 {
-	int max_offset = this->max_offset();
+	const int max_offset = this->max_offset();
 	new_offset = std::clamp(new_offset, 0, max_offset);
 
 	slider_base::slider_position_t final_offset = {new_offset, max_offset};
@@ -190,7 +190,7 @@ void slider_base::move_positioner(int new_offset)
 
 void slider_base::update_slider_position(slider_base::slider_position_t& pos)
 {
-	int new_position = rounded_division(pos.offset, item_last_, pos.max_offset);
+	const int new_position = rounded_division(pos.offset, item_last_, pos.max_offset);
 
 	if(snap_) {
 		pos.offset = rounded_division(new_position, pos.max_offset, item_last_);

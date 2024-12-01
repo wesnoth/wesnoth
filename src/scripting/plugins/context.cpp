@@ -62,7 +62,7 @@ std::size_t plugins_context::erase_callback(const std::string & name)
 
 std::size_t plugins_context::clear_callbacks()
 {
-	std::size_t ret = callbacks_.size();
+	const std::size_t ret = callbacks_.size();
 	callbacks_ = callback_list();
 	return ret;
 }
@@ -95,7 +95,7 @@ std::size_t plugins_context::erase_accessor(const std::string & name)
 
 std::size_t plugins_context::clear_accessors()
 {
-	std::size_t ret = accessors_.size();
+	const std::size_t ret = accessors_.size();
 	accessors_ = accessor_list();
 	return ret;
 }

@@ -109,7 +109,7 @@ static void launch_lua_console()
 
 static void make_screenshot()
 {
-	surface screenshot = video::read_pixels();
+	const surface screenshot = video::read_pixels();
 	if(screenshot) {
 		std::string filename = filesystem::get_screenshot_dir() + "/" + _("Screenshot") + "_";
 		filename = filesystem::get_next_filename(filename, ".jpg");
@@ -241,7 +241,7 @@ void title_screen::init_callbacks()
 	// Help
 	//
 	register_button("help", hotkey::HOTKEY_HELP, []() {
-		help::help_manager help_manager(&game_config_manager::get()->game_config());
+		const help::help_manager help_manager(&game_config_manager::get()->game_config());
 		help::show_help();
 	});
 
@@ -472,7 +472,7 @@ void title_screen::hotkey_callback_select_tests()
 	gui2::dialogs::simple_item_selector dlg(_("Choose Test Scenario"), "", options);
 	dlg.show();
 
-	int choice = dlg.selected_index();
+	const int choice = dlg.selected_index();
 	if(choice >= 0) {
 		game_.set_test(options[choice]);
 		set_retval(LAUNCH_GAME);
@@ -487,7 +487,7 @@ void title_screen::show_achievements()
 
 void title_screen::show_community()
 {
-	game_version dlg;
+	const game_version dlg;
 	// shows the 5th tab, community, when the dialog is shown
 	dlg.display(4);
 }

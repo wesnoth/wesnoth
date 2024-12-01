@@ -290,7 +290,7 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	{
 		scale_quality = image::scale_quality::linear;
 	}
-	texture tex = image::get_texture(image::locator(name), scale_quality);
+	const texture tex = image::get_texture(image::locator(name), scale_quality);
 
 	if(!tex) {
 		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn.";
@@ -531,7 +531,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	// Execute the provided actions for this context.
 	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
 
-	texture tex = text_renderer.render_and_get_texture();
+	const texture tex = text_renderer.render_and_get_texture();
 	if(!tex) {
 		DBG_GUI_D << "Text: Rendering '" << text << "' resulted in an empty canvas, leave.";
 		return;

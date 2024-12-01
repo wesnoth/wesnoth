@@ -111,7 +111,7 @@ void mp_connect::insert_into_server_listbox(listbox& listbox, const server_info&
 
 void mp_connect::select_first_match()
 {
-	text_box& hostname_box = find_widget<text_box>("host_name");
+	const text_box& hostname_box = find_widget<text_box>("host_name");
 	listbox& server_list = find_widget<listbox>("server_list");
 	button& button_add = find_widget<button>("server_add");
 	button& button_del = find_widget<button>("server_delete");
@@ -157,7 +157,7 @@ void mp_connect::on_address_change()
 
 void mp_connect::on_server_add()
 {
-	text_box& hostname_box = find_widget<text_box>("host_name");
+	const text_box& hostname_box = find_widget<text_box>("host_name");
 	listbox& server_list = find_widget<listbox>("server_list");
 
 	const auto& address = boost::trim_copy(hostname_box.get_value());
@@ -237,7 +237,7 @@ void mp_connect::on_server_select()
 
 mp_connect::selection mp_connect::current_selection()
 {
-	listbox& server_list = find_widget<listbox>("server_list");
+	const listbox& server_list = find_widget<listbox>("server_list");
 	return { this, server_list.get_selected_row() };
 }
 
