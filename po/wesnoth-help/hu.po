@@ -13,21 +13,21 @@ msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-28 12:38-0500\n"
-"PO-Revision-Date: 2020-09-06 18:46+0200\n"
-"Last-Translator: Széll András <szell.andris@gmail.com>\n"
+"PO-Revision-Date: 2024-12-01 18:24+0100\n"
+"Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.5\n"
 
 #. [damage_type]: id=arcane_damage
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:548
 #: data/core/macros/weapon_specials.cfg:208
 msgid "arcane"
-msgstr ""
+msgstr "földöntúli"
 
 #. [damage_type]: id=arcane_damage
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:549
@@ -36,6 +36,8 @@ msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
+"Ez a támadás kombinálja a földöntúli jelleget a használt fegyver típusával, "
+"így a földöntúlival szembeni ellenállás nem sújtja a felhasználót."
 
 #. [damage_type]: id=arcane_damage
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:550
@@ -44,6 +46,8 @@ msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
 msgstr ""
+"Ez az egységnél akkor tud érvényesülni a földöntúli jelleg, ha az ellenfél "
+"különösen érzékeny rá, azzal a fegyverrel szemben, amelyen alkalmazzák."
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -151,10 +155,9 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:680
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:719
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:749
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
-msgstr " Ez az egység képes alapszinten gyógyítani."
+msgstr ""
+"Ez az egység képes alapszinten gyógyítani és lassítani s dehidratációt."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:698
@@ -190,17 +193,13 @@ msgstr ""
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
-#, fuzzy
-#| msgid "heals +4"
 msgid "heals +12"
-msgstr "gyógyítás +4"
+msgstr "gyógyítás +12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
-#, fuzzy
-#| msgid "female^heals +4"
 msgid "female^heals +12"
-msgstr "gyógyítás +4"
+msgstr "gyógyítás +12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:730
@@ -233,16 +232,12 @@ msgstr ""
 
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:755
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
-" Ez az egység képes gyógyítani a körülötte állók sebződéseit, valamint "
-"kigyógyítani őket a mérgezésből."
+"Ez az egység képes gyógyítani a körülötte állókat, lassítani a "
+"dehidratációt, valamint kigyógyítani őket a mérgezésből."
 
 #. [artifact]
 #. [chance]
@@ -382,31 +377,42 @@ msgstr "méregűzés"
 #. [section]: id=editor
 #: data/core/editor/help.cfg:5
 msgid "Map and Scenario Editor"
-msgstr ""
+msgstr "Térkép és küldetés szerkesztő"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:13 data/core/editor/help.cfg:377
-#, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Terrain Editor"
-msgstr "Terepfüggő jellemzők"
+msgstr "Terepszerkesztő"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:20 data/core/editor/help.cfg:389
-#, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Scenario Editor"
-msgstr "Terepfüggő jellemzők"
+msgstr "Küldetés-szerkesztő"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
 msgid "Paint Tool"
-msgstr ""
+msgstr "Rajzeszköz"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:29
+#, fuzzy
+#| msgid ""
+#| "Paint terrain tiles on the map.\n"
+#| "The paint tool utilizes the brush sizes and the terrain palette.\n"
+#| "\n"
+#| "<header>Keyboard Modifiers</header>\n"
+#| "• Shift+mouse click: If a base terrain is selected, change the base "
+#| "without changing the overlay. If an overlay is selected, change the "
+#| "overlay without changing the base.\n"
+#| "• Control+mouse click: Select the terrain under the mouse cursor, as if "
+#| "it had been selected on the terrain palette (picks up both base and "
+#| "overlay).\n"
+#| "\n"
+#| "<header>Brush Sizes</header>\n"
+#| "The selected brush changes the size of the tool:"
 msgid ""
 "Paint terrain tiles on the map.\n"
 "\n"
@@ -424,34 +430,62 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Terepmezőket rajzol a térképre.\n"
+"A festőeszköz felhasználja az ecsetméreteket és a terep színpalettáját.\n"
+"\n"
+"<header>Billentyűzet módosítók</header>\n"
+"• Shift + egérkattintás: Ha alapterep van kiválasztva, akkor az átfedés "
+"megváltoztatása nélkül változtatja meg az alapot. Ha átfedés van "
+"kiválasztva, akkor az átfedést változtatja meg az alap módosítása nélkül.\n"
+"• Control + egérkattintás: Kiválasztja a terepet az egérkurzor alatt, mintha "
+"a tereppalettán lett volna kiválasztva (mind az alapot, mind az átfedést "
+"egybefogja).\n"
+"\n"
+"<header>Ecsetméretek</header>\n"
+"A kiválasztott ecset megváltoztatja az eszköz méretét:"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:41
 msgid "Paint single hexes."
-msgstr ""
+msgstr "Egyetlen mezőt rajzol."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:42
 msgid "Paint seven hexes at a time."
-msgstr ""
+msgstr "Egyszerre hét mezőt rajzol."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:43
 msgid "Paint nineteen hexes at a time."
-msgstr ""
+msgstr "Egyszerre tizenkilenc mezőt rajzol."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
 msgid "Paint three hexes in a line."
-msgstr ""
+msgstr "Három mezőt rajzol egyvonalban."
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:52
 msgid "Fill Tool"
-msgstr ""
+msgstr "Kitöltés eszköz"
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:53
+#, fuzzy
+#| msgid ""
+#| "Paint terrain tiles on the map.\n"
+#| "The paint tool utilizes the brush sizes and the terrain palette.\n"
+#| "\n"
+#| "<header>Keyboard Modifiers</header>\n"
+#| "• Shift+mouse click: If a base terrain is selected, change the base "
+#| "without changing the overlay. If an overlay is selected, change the "
+#| "overlay without changing the base.\n"
+#| "• Control+mouse click: Select the terrain under the mouse cursor, as if "
+#| "it had been selected on the terrain palette (picks up both base and "
+#| "overlay).\n"
+#| "\n"
+#| "<header>Brush Sizes</header>\n"
+#| "The selected brush changes the size of the tool:"
 msgid ""
 "Fill continuous regions of terrain with a different one.\n"
 "\n"
@@ -465,11 +499,24 @@ msgid ""
 "• Control+mouse click: Select the terrain under the mouse cursor, as if it "
 "had been selected on the terrain palette (picks up both base and overlay)."
 msgstr ""
+"Terepmezőket rajzol a térképre.\n"
+"A festőeszköz felhasználja az ecsetméreteket és a terep színpalettáját.\n"
+"\n"
+"<header>Billentyűzet módosítók</header>\n"
+"• Shift + egérkattintás: Ha alapterep van kiválasztva, akkor az átfedés "
+"megváltoztatása nélkül változtatja meg az alapot. Ha átfedés van "
+"kiválasztva, akkor az átfedést változtatja meg az alap módosítása nélkül.\n"
+"• Control + egérkattintás: Kiválasztja a terepet az egérkurzor alatt, mintha "
+"a tereppalettán lett volna kiválasztva (mind az alapot, mind az átfedést "
+"egybefogja).\n"
+"\n"
+"<header>Ecsetméretek</header>\n"
+"A kiválasztott ecset megváltoztatja az eszköz méretét:"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:67
 msgid "Select Tool"
-msgstr ""
+msgstr "Kijelölés eszköz"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:68
@@ -491,27 +538,27 @@ msgstr ""
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:78
 msgid "Select single hexes."
-msgstr ""
+msgstr "Egyetlen mezőt választ ki."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:79
 msgid "Select seven hexes at a time."
-msgstr ""
+msgstr "Egyszerre hét mezőt választ ki."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:80
 msgid "Select nineteen hexes at a time."
-msgstr ""
+msgstr "Egyszerre tizenkilenc mezőt választ ki."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
 msgid "Select three hexes in a line."
-msgstr ""
+msgstr "Három mezőt választ ki egyvonalban."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:89
 msgid "Clipboard and Paste Tool"
-msgstr ""
+msgstr "Vágólap és beillesztés eszköz"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:90
@@ -532,27 +579,27 @@ msgstr ""
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:97
 msgid "Rotate clockwise by 60°."
-msgstr ""
+msgstr "Elforgatás óramutatóval megegyező irányba 60°-kal."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:98
 msgid "Rotate counter-clockwise by 60°."
-msgstr ""
+msgstr "Elforgatás óramutatóval ellentétes irányba 60°-kal."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:99
 msgid "Flip horizontally"
-msgstr ""
+msgstr "Vízszintes tükrözés"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:100
 msgid "Flip vertically"
-msgstr ""
+msgstr "Függőleges tükrözés"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:107
 msgid "Starting Locations Tool"
-msgstr ""
+msgstr "Kezdő helyszínek eszköz"
 
 #. [topic]: id=editor_tool_starting
 #. the parts about "10" being shown as "Player 10" use the translatable string "Player $side_num" in the wesnoth-editor textdomain
@@ -592,7 +639,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:128
 msgid "Editor Terrain-Overlay Graphics"
-msgstr ""
+msgstr "Terep-átfedő grafika szerkesztő"
 
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:129
@@ -602,6 +649,10 @@ msgid ""
 "editor; all the overlays described here are found in the terrain palette’s "
 "“special” group."
 msgstr ""
+"A térképek általában hasonlóan néznek ki a szerkesztőben, mint a játékban. "
+"Van néhány kivétel, ahol különböző grafikákat használnak a szerkesztőben; Az "
+"itt leírt összes átfedés megtalálható a tereppaletta \"speciális\" "
+"csoportjában."
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
@@ -670,26 +721,47 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:172
-#, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Terrain Elevation Graphics"
-msgstr "Terepfüggő jellemzők"
+msgstr "Terepmagasság grafikák"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:173
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "A cosmetic elevation effect that looks a little different in the editor "
+#| "than in the game due to visual aids in the editor; all the overlays "
+#| "described here are found in the terrain palette’s “elevation” group.\n"
 msgid ""
 "A cosmetic elevation effect that looks a little different in the editor than "
 "in the game due to visual aids in the editor; all the overlays described "
 "here are found in the terrain palette’s “elevation” group."
 msgstr ""
+"\n"
+"Kozmetikai magassági hatás, amely kissé másképp néz ki a szerkesztőben, mint "
+"a játékban a szerkesztő vizuális segédeszközei miatt; Az itt leírt összes "
+"átfedés megtalálható a tereppaletta \"magasság\" csoportjában.\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:176
+#, fuzzy
+#| msgid "editor^<header>Direct Overlays</header>"
 msgid "editor^<bold>text='Direct Overlays'</bold>"
-msgstr ""
+msgstr "<header>Közvetlen átfedések</header>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:178
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "<b>Bluffs and Gulch</b>\n"
+#| "\n"
+#| "The bluffs, gulches, and similar variations are much like a standard "
+#| "terrain overlay, and can simply be used that way. However, for larger "
+#| "areas of the map, where you will want to allow the use of other overlay "
+#| "terrains, you will want to combine these with the “markers” described in "
+#| "the next section.\n"
+#| "\n"
 msgid ""
 "Bluffs and Gulch\n"
 "\n"
@@ -698,16 +770,27 @@ msgid ""
 "map, where you will want to allow the use of other overlay terrains, you "
 "will want to combine these with the “markers” described in the next section."
 msgstr ""
+"\n"
+"<b>Meredélyek és szakadékok</b>\n"
+"\n"
+"A meredélyek, szurdokok és hasonlók nagyon hasonlítanak egy szabványos "
+"terepfedvényre, és egyszerűen így is használhatók. A térkép nagyobb "
+"területein azonban, ahol engedélyezni szeretné más átfedési terepek "
+"használatát, ezeket kombinálni kell a következő szakaszban leírt "
+"\"jelölőkkel\".\n"
+"\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:183
+#, fuzzy
+#| msgid "editor^<header>Elevation Floodfill</header>"
 msgid "editor^<bold>text='Elevation Floodfill'</bold>"
-msgstr ""
+msgstr "szerkesztő^<header>Magassági kitöltés</header>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:185
 msgid "Raised elevation on-map marker"
-msgstr ""
+msgstr "Térképi magasságjelölő"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:186
@@ -729,6 +812,25 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:193
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "editor^<header>How to Use</header>\n"
+#| "\n"
+#| "The marker arrows are not very useful by themselves, but the bluffs/gulch-"
+#| "type terrains can be used to contain the floodfilled area.\n"
+#| "\n"
+#| "An example use case would be:\n"
+#| "1.  Select the Bluffs (^Qhh) from the editor palette and use single-hex "
+#| "paint tool to outline a big blob over an empty, all-grass map.\n"
+#| "2.  Place a Marker High (^_mh) arrow on a tile inside the blob (not on "
+#| "the Bluffs border).\n"
+#| "3.  The blob should all be raised now, and as long as you don’t overwrite "
+#| "the Marker or Bluffs overlays, you can add other terrain overlays as "
+#| "needed.\n"
+#| "\n"
+#| "The graphics used to represent the ledge borders are determined by the "
+#| "base terrain.\n"
 msgid ""
 "editor^<bold>text='How to Use'</bold>\n"
 "\n"
@@ -747,6 +849,13 @@ msgid ""
 "The graphics used to represent the ledge borders are determined by the base "
 "terrain.\n"
 msgstr ""
+"\n"
+"<header>Hogyan kell használni</header>\n"
+"\n"
+"A jelölőnyilak önmagukban nem túl hasznosak, de a meredek/szakadék típusú "
+"terepek felhasználhatók kitöltés körülhatárolására.\n"
+"\n"
+"A szegélyek ábrázolására használt grafikát az alapterep határozza meg.\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:204
@@ -759,10 +868,8 @@ msgstr ""
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:210
-#, fuzzy
-#| msgid "Base Terrain: "
 msgid "Deprecated Terrain"
-msgstr "Alap terep: "
+msgstr "Elavult terep"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
@@ -785,7 +892,7 @@ msgstr ""
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:226
 msgid "Label Tool"
-msgstr ""
+msgstr "Címkézés eszköz"
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:227
@@ -804,7 +911,7 @@ msgstr ""
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:242
 msgid "Item Tool (Scenery Tool)"
-msgstr ""
+msgstr "Elem eszköz (Tájkép eszköz)"
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:243
@@ -825,7 +932,7 @@ msgstr ""
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:259
 msgid "Village Ownership Tool"
-msgstr ""
+msgstr "Település birtokos eszköz"
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:260
@@ -845,7 +952,7 @@ msgstr ""
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:274
 msgid "Unit Tool"
-msgstr ""
+msgstr "Egység eszköz"
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:275
@@ -865,7 +972,7 @@ msgstr ""
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:290
 msgid "Named Areas"
-msgstr ""
+msgstr "Elnevezett területek"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:291
@@ -897,7 +1004,7 @@ msgstr ""
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:312
 msgid "Playlist Manager"
-msgstr ""
+msgstr "Lejátszási lista kezelő"
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:313
@@ -911,10 +1018,8 @@ msgstr ""
 
 #. [topic]: id=editor_addon_id
 #: data/core/editor/help.cfg:324
-#, fuzzy
-#| msgid "Using Add-ons"
 msgid "Change Add-on ID"
-msgstr "Kiegészítések használata"
+msgstr "Kiegészítő azonosítójának cseréje"
 
 #. [topic]: id=editor_addon_id
 #: data/core/editor/help.cfg:325
@@ -927,7 +1032,7 @@ msgstr ""
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:334
 msgid "Add-on Publishing Editor"
-msgstr ""
+msgstr "Kiegészítő közzététel szerkesztő"
 
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:335
@@ -940,7 +1045,7 @@ msgstr ""
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:343
 msgid "Map/Scenario Editor"
-msgstr ""
+msgstr "Térkép/Küldetés szerkesztő"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:344
@@ -1122,7 +1227,7 @@ msgstr ""
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:443
 msgid "Editor Mask Usage"
-msgstr ""
+msgstr "Szerkesztő maszk használata"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:444
@@ -1134,10 +1239,8 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
 #: data/core/editor/help.cfg:452
-#, fuzzy
-#| msgid "Time of Day Schedule"
 msgid "ToD and Schedule Editor"
-msgstr "Napszakok ütemezése"
+msgstr "Napszak szerkesztése"
 
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:453
@@ -1155,7 +1258,7 @@ msgstr ""
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:464
 msgid "Editor Palette"
-msgstr ""
+msgstr "Szerkesztő színpaletta"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
@@ -1177,27 +1280,29 @@ msgstr ""
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:471
 msgid "Show all kinds of terrain"
-msgstr ""
+msgstr "Mindenféle terepet mutat"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:472
 msgid "Show only water terrains"
-msgstr ""
+msgstr "Csak vízi terepet mutat"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:473
 msgid "Show only villages"
-msgstr ""
+msgstr "Csak falvakat mutat"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:485
 msgid "Wesnoth Map Format"
-msgstr ""
+msgstr "Wesnoth térképformátum"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:486
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
+"A Wesnoth a térképeit egyszerű szövegfájlba menti, így könnyen olvasható a "
+"tartalma."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:488
@@ -1284,18 +1389,18 @@ msgstr "Enciklopédia"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
-#, fuzzy
-#| msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgid ""
 "<ref>dst='..calendar' text='Calendar'</ref>\n"
 "<ref>dst='..geography' text='Geography'</ref>"
-msgstr "<ref>dst='..geography' text='Földrajz'</ref>"
+msgstr ""
+"<ref>dst='..calendar' text='Naptár'</ref>\n"
+"<ref>dst='..geography' text='Földrajz'</ref>"
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:13
 msgid "Calendar"
-msgstr ""
+msgstr "Naptár"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
@@ -1341,10 +1446,8 @@ msgstr ""
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:32
-#, fuzzy
-#| msgid "Great Ocean"
 msgid "Great River"
-msgstr "Nagy-Óceán"
+msgstr "Nagy folyó"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:33
@@ -1419,10 +1522,15 @@ msgstr "Zöld-sziget"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:53
+#, fuzzy
+#| msgid ""
+#| "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</"
+#| "ref>, formerly home to the Islefolk and Wesfolk."
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
-"Egy jelentősebb sziget a <ref>dst='great_ocean' text='Nagy-Óceánon'</ref>."
+"Egy nagyobb sziget, amely a <ref>dst='great_ocean' text='Nagy-Óceán'</ref> "
+"területén fekszik, korábban az Islefolk és Wesfolk otthona volt."
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:58
@@ -1431,6 +1539,10 @@ msgstr "Óvilág"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:59
+#, fuzzy
+#| msgid ""
+#| "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
+#| "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
@@ -1470,7 +1582,7 @@ msgstr ""
 "A bolygó neve, ahol <ref>dst='kingdom_wesnoth' text='Wesnoth'</ref> "
 "található. Ezt a kifejezést azonban nagyon ritkán használták abban az "
 "időben, amikor a térkép készült. Mindenki egyszerűen csak „A világ”, vagy "
-"költőien „A széles zöld világ” névvel illette. "
+"költőien „A széles zöld világ” névvel illette."
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:76
@@ -1838,7 +1950,6 @@ msgstr "Délnyugati tünde területek"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:142
-#, fuzzy
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -1857,21 +1968,6 @@ msgid ""
 "    • Black Forest: An ancient forest of which very little is known, "
 "abandoned by the elves long ago."
 msgstr ""
-"Az erdei tündék az északiaktól elkülönülten élnek, csak időnként kerülnek "
-"kapcsolatba velük, vagy más országokkal. Területük határai nyugaton az "
-"<ref>dst='great_ocean' text='óceán'</ref>, délen és délkeleten a Fekete-"
-"folyó, Wesnoth földjei északon és Kerlath tartománya keleten.\n"
-"\n"
-"<header>text='Jelentős városok:'</header>\n"
-"    • Nem ismert.\n"
-"\n"
-"<header>text='Jelentős szárazföldi területek:'</header>\n"
-"    • Aethen-erdőség: A legnagyobb déli rengeteg neve, amely messze délre "
-"húzódik, és a <ref>dst='..race_elf' text='tündék'</ref> otthona. Noha a "
-"tündék nem tesznek ilyen különbséget, Kerlath lakói az erdő déli részét Déli-"
-"erdőnek hívják.\n"
-"    • Fekete-erdő: Egy ősi erdőség, melyről nem sok ismerettel rendelkezünk, "
-"az elfek rég elhagyták."
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:154
@@ -1892,7 +1988,7 @@ msgstr ""
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:160
 msgid "Far North"
-msgstr "Távol-Észak"
+msgstr "messzi észak"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:161
@@ -2064,6 +2160,19 @@ msgstr "Parancsok"
 
 #. [topic]: id=..introduction
 #: data/core/help.cfg:96
+#, fuzzy
+#| msgid ""
+#| "<italic>Battle for Wesnoth</italic> is a turn-based fantasy strategy game "
+#| "somewhat unusual among modern strategy games. While other games strive "
+#| "for complexity, <italic>Battle for Wesnoth</italic> strives for "
+#| "simplicity of both rules and gameplay. This does not make the game "
+#| "simple, however — from these simple rules arises a wealth of strategy, "
+#| "making the game easy to learn but a challenge to master.\n"
+#| "\n"
+#| "The following pages outline all you need to know to play Wesnoth. As you "
+#| "play, new information is added to the various categories as you come "
+#| "across new aspects of the game. For more detailed information on special "
+#| "situations and exceptions, follow the included links."
 msgid ""
 "\n"
 "\n"
@@ -2079,15 +2188,13 @@ msgid ""
 "new aspects of the game. For more detailed information on special situations "
 "and exceptions, follow the included links."
 msgstr ""
-"\n"
-"\n"
 "A <italic>text='Harc Wesnothért'</italic> egy körökre osztott stratégiai "
 "játék, mely kicsit rendhagyó a mai stratégiai játékok közt. Míg más játékok "
 "bonyolultságra törekednek, a <italic>text='Harc Wesnothért'</italic> célja "
 "az egyszerűség a szabályok és a játékmenet terén egyaránt. Ettől még nem "
 "lesz maga a játék is egyszerű, sőt! Ezekből az egyszerű szabályokból "
 "emelkedik ki a stratégiai lehetőségek gazdagsága, így a játék könnyen "
-"elsajátítható, de művelése kihívás marad.\n"
+"elsajátítható, de a játék vele kihívás marad.\n"
 "\n"
 "A következő oldalak bemutatnak mindent, amire a Wesnoth játszása közben "
 "szükséged lehet. Ahogy előrehaladsz, a játék különböző részeit megismerve új "
@@ -2146,6 +2253,9 @@ msgid ""
 "sides in multiplayer games.\n"
 "\n"
 msgstr ""
+"A frakció egységek és vezetők gyülekezete. A frakciókat oldalakhoz rendelik "
+"a többjátékos játékokban.\n"
+"\n"
 
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:130
@@ -2155,6 +2265,10 @@ msgid ""
 "factions are available from add-ons.\n"
 "\n"
 msgstr ""
+"Egy korszak frakciók összessége, amelyekkel egymás ellen kell játszani. A "
+"játékkal járó fő korszakok mellett számos felhasználó által készített "
+"frakció érhető el a kiegészítőkből.\n"
+"\n"
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:139
@@ -2198,13 +2312,17 @@ msgstr "Ismeretlen egység"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:158
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "This unit is unknown for the moment. You must discover it in the game to "
+#| "be allowed to see its description."
 msgid ""
 "\n"
 "\n"
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
 msgstr ""
-"\n"
 "\n"
 "Ez az egység jelenleg ismeretlen. Előbb találkoznod kell vele a játék során, "
 "és csak utána láthatod a leírását."
@@ -2247,14 +2365,16 @@ msgstr ""
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
-#, fuzzy
-#| msgid "<header>text='Units of this race'</header>"
 msgid ""
 "\n"
 "\n"
 "<header>text='Fundamentals of Gameplay'</header>\n"
 "\n"
-msgstr "<header>text='A fajhoz tartozó egységek'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='A játékmenet alapjai'</header>\n"
+"\n"
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
@@ -2484,6 +2604,16 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:220
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Upkeep is also fairly simple. Each unit requires an amount of Upkeep "
+#| "equal to its level. You can support as many levels worth of units as you "
+#| "have villages, without paying any upkeep. However, for each level of unit "
+#| "beyond the number of villages you have, you must pay one gold per turn. "
+#| "For example, if you have twelve level one units and ten villages, you "
+#| "would have to pay two gold each turn in upkeep."
 msgid ""
 "\n"
 "\n"
@@ -2607,10 +2737,8 @@ msgstr ""
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:251
-#, fuzzy
-#| msgid "Advances to: "
 msgid "Advancement"
-msgstr "Szintlépés mivé: "
+msgstr "Előmenetel"
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:252
@@ -2846,16 +2974,8 @@ msgstr ""
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:282
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Eras and Factions'</header>"
 msgid "<header>text='Multiplayer and undo'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Többjátékos korszakok és szövetségek'</header>"
+msgstr "<header>text='Többjátékos mód és visszavonás'</header>"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:284
@@ -2871,7 +2991,7 @@ msgstr ""
 #. [topic]: id=saveload
 #: data/core/help.cfg:291
 msgid "Save-loading"
-msgstr ""
+msgstr "Mentés betöltés"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:292
@@ -2924,7 +3044,7 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:308
 msgid "Learning from Losses"
-msgstr ""
+msgstr "Tanulás a veszteségekből"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:309
@@ -2953,6 +3073,8 @@ msgid ""
 "\n"
 "Some common reasons for losing a scenario are:"
 msgstr ""
+"\n"
+"A küldetések elvesztésének néhány gyakori oka:"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:315
@@ -3016,11 +3138,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:325
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3028,7 +3145,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Alkotói tárház'</header>"
+"<header>text='Valószínűtlen okok'</header>"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:327
@@ -3376,7 +3493,7 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:382
 msgid "Orbs and ellipses"
-msgstr ""
+msgstr "Gömbök és ellipszisek"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:383
@@ -3416,16 +3533,8 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:407
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid "<header>text='Ellipses'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Alkotói tárház'</header>"
+msgstr "<header>text='Ellipszisek'</header>"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:410
@@ -3451,7 +3560,7 @@ msgstr ""
 #. [topic]: id=crowns
 #: data/core/help.cfg:432
 msgid "Crowns and loyal markers"
-msgstr ""
+msgstr "Koronák és lojalitás-jelölők"
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:433
@@ -3526,7 +3635,7 @@ msgstr ""
 #| "\n"
 #| "The current time of day can be observed under the minimap in the status "
 #| "pane. For the usual day/night cycle, morning and afternoon count as day, "
-#| "first and second watch count as night:\n"
+#| "first and second watch count as night:"
 msgid ""
 "\n"
 "\n"
@@ -3539,7 +3648,7 @@ msgstr ""
 "\n"
 "Az aktuális napszak megfigyelhető a jobb oldali panelen a kis térkép alatt. "
 "A napszakok általános körforgásában a reggel és a délután számít nappalnak, "
-"az éjszaka első és második fele pedig éjszakának:\n"
+"az éjszaka első és második fele pedig éjszakának:"
 
 #. [topic]: id=time_of_day
 #. [time]: id=dawn
@@ -3585,13 +3694,15 @@ msgstr "Éjszaka második fele"
 #: data/core/help.cfg:483
 #, fuzzy
 #| msgid ""
+#| "\n"
 #| "Keep in mind that some scenarios take place underground, where it is "
 #| "perpetually night!"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!\n"
 msgstr ""
-"Tartsd észben, hogy egyes pályákon előfordulnak olyan föld alatti területek,"
+"\n"
+"Tartsd észben, hogy egyes pályákon előfordulnak olyan föld alatti területek, "
 "ahol örökké éjszaka van!"
 
 #. [topic]: id=time_of_day
@@ -3624,12 +3735,6 @@ msgstr "Gyógyítás"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:497
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<italic>text='Resting'</italic>: A unit which neither moves, attacks, nor "
-#| "is attacked will heal 2 HP in its next turn."
 msgid ""
 "\n"
 "\n"
@@ -3638,8 +3743,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<italic>text='Pihenés'</italic>: Ha egy egység nem mozog és nem harcol (őt "
-"sem támadják) egy körben, akkor a következő körben 2 ÉP-t gyógyul."
+"• <bold>text='Pihenés'</bold>: Ha egy egység nem mozog, nem harcol és őt sem "
+"támadják egy körben, akkor a következő körben 2 életpontot gyógyul."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:497
@@ -3651,11 +3756,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:499
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<italic>text='Villages'</italic>: A unit which starts a turn in a village "
-#| "will heal 8HP."
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -3663,16 +3763,12 @@ msgid ""
 "poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
-"<italic>text=Falvak'</italic>: Az egységek, amelyek az új kört egy faluban "
-"kezdik, 8 ÉP-t gyógyulnak."
+"• <bold>text='Falvak'</bold>: Az egységek, amelyek az új kört egy faluban "
+"vagy <ref>dst='terrain_oasis' text='oázisban'</ref> kezdik, 8 életpontot "
+"gyógyulnak."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:500
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
-#| "(such as trolls) will automatically heal 8HP every turn."
 msgid ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
@@ -3680,19 +3776,12 @@ msgid ""
 "the unit is poisoned, the poison will be cured instead."
 msgstr ""
 "\n"
-"<ref>dst='ability_regenerates' text='Regenerálódás'</ref>: Bizonyos egységek "
-"(mint a trollok) minden körben automatikusan 8 ÉP-t gyógyulnak."
+"• <ref>dst='ability_regeneratesregenerates' text='Regenerálódás'</ref>: "
+"Bizonyos egységek (mint a trollok) minden körben automatikusan 8 életpontot "
+"gyógyulnak. Ha az egység meg van mérgezve, akkor a mérgezésből gyógyul ki."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:501
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<italic>text='Healing units'</italic>: Units with the "
-#| "<ref>dst='ability_heals +4' text='Heals'</ref> ability will heal each "
-#| "allied adjacent unit, usually <ref>dst='ability_heals +4' text='4HP'</"
-#| "ref> or <ref>dst='ability_heals +8' text='8HP'</ref> per turn, or prevent "
-#| "Poison from causing that unit damage."
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -3702,22 +3791,15 @@ msgid ""
 "prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"<italic>text='Gyógyító egységek'</italic>: a <ref>dst='ability_heals +4' "
-"text='gyógyítás'</ref> képességével rendelkező egységek minden, a közvetlen "
-"közelükben tartózkodó baráti egységet gyógyítani fognak "
-"<ref>dst='ability_heals +4' text='4'</ref>, illetve <ref>dst='ability_heals "
-"+8' text='8'</ref> ÉP-vel körönként, vagy megakadályozzák a mérgek további "
-"hatását."
+"• <bold>text='Gyógyító egységek'</bold>: A <ref>dst='ability_healingheals "
+"+4' text='gyógyítás'</ref> képességgel rendelkező egységek minden "
+"szövetséges szomszédos egységet meggyógyítanak, általában "
+"<ref>dst='ability_healingheals +4' text='4 ÉP'</ref> vagy "
+"<ref>dst='ability_healingheals +8' text='8 ÉP'</ref> körönként, vagy "
+"megakadályozzák, hogy a mérgezés sebzést okozzon az egységnek."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:502
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<italic>text='Curing units'</italic>: Units with the "
-#| "<ref>dst='ability_cures' text='cures'</ref> ability will cure Poison in "
-#| "all allied adjacent units (in preference to healing, if it has that "
-#| "ability as well)."
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the "
@@ -3726,10 +3808,10 @@ msgid ""
 "ability as well)."
 msgstr ""
 "\n"
-"<italic>text='Méregűző egységek'</italic>: A <ref>dst='ability_cures' "
-"text='méregűzés'</ref> képességével rendelkező egységek minden, a közvetlen "
-"közelükben tartózkodó baráti egységet ki tudnak gyógyítani a mérgezésből (a "
-"gyógyításhoz képest elsődlegesen, ha ezt a képességet is birtokolják)."
+"• <bold>text='Méregűző egységek'</bold>: A <ref>dst='ability_curingcures' "
+"text='méregűzés'</ref> képességgel rendelkező egységek minden szövetséges "
+"szomszédos egységben meggyógyítják a mérgezést (előnyben részesítve a "
+"gyógyítást, ha ezzel a képességgel is rendelkezik)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:503
@@ -3763,6 +3845,9 @@ msgid ""
 "\n"
 "<bold>text='Advanced'</bold>"
 msgstr ""
+"\n"
+"\n"
+"<bold>text='Speciális'</bold>"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:508
@@ -3804,13 +3889,6 @@ msgstr "Licenc"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:533
-#, fuzzy
-#| msgid ""
-#| "Most units have two traits. However, undead units are assigned the single "
-#| "trait <italic>text='undead'</italic>, and woses do not receive any "
-#| "traits. Traits are modifications that change a unit’s attributes "
-#| "slightly. They are usually randomly assigned to a unit when it is "
-#| "recruited."
 msgid ""
 "\n"
 "\n"
@@ -3819,11 +3897,12 @@ msgid ""
 "and in some cases <italic>text='fearless'</italic>, and woses do not receive "
 "any traits. "
 msgstr ""
-"A legtöbb egység két jellemvonással rendelkezik, kivéve az élőholtakat, akik "
-"csak az <italic>text='élőholt'</italic> jellemvonást kapják meg, és a "
-"fapásztorokat, akik nem kapnak semmilyet. A jellemvonások apró változtatások "
-"az egység tulajdonságain. Az egységek alapvetően véletlenszerűen kapják meg "
-"őket toborozáskor."
+"\n"
+"\n"
+"A legtöbb egység két jellemvonással rendelkezik. A koboldok azonban csak "
+"eggyel és az élőholtak, akik mindig csak az <italic>text='élőhalott'</"
+"italic> és csak bizonyos esetekben a <italic>text='rettenthetetlen'</italic> "
+"jellemvonást kapják meg, a fapásztorok pedig nem kapnak semmilyent. "
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:533
@@ -3836,14 +3915,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:535
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "The traits that are available to all non-undead units are "
-#| "<ref>dst='traits_intelligent' text='intelligent'</ref>, "
-#| "<ref>dst='traits_quick' text='quick'</ref>, <ref>dst='traits_resilient' "
-#| "text='resilient'</ref>, and <ref>dst='traits_strong' text='strong'</ref>."
 msgid ""
 "\n"
 "\n"
@@ -3861,14 +3932,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:537
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Other traits that may be assigned to units are <ref>dst='traits_dextrous' "
-#| "text='dextrous'</ref>, <ref>dst='traits_loyal' text='loyal'</ref>, and "
-#| "<ref>dst='traits_undead' text='undead'</ref>.\n"
-#| "\n"
 msgid ""
 "\n"
 "\n"
@@ -3882,9 +3945,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"További jellemvonások, amelyekkel az egységek bírhatnak, a következők: az "
-"<ref>dst='traits_dextrous' text='ügyeskezű'</ref>, a <ref>dst='traits_loyal' "
-"text='hűséges'</ref> és az <ref>dst='traits_undead' text='élőholt'</ref>.\n"
+"A tündék rendelkezhetnek még az <ref>dst='traits_dextrous' text='ügyeskezű'</"
+"ref>, a törpök pedig az <ref>dst='traits_healthy' text='életerős'</ref> "
+"tulajdonságokkal. A trollok és bizonyos emberek megkaphatják <ref>a "
+"dst='traits_fearless' text='rettenthetetlen'</ref> értéket. Egyéb "
+"hozzárendelhető tulajdonságok közé tartozik a <ref>dst='traits_loyal' "
+"text='hűséges'</ref>, az <ref>dst='traits_feral' text='elvadult'</ref> és az "
+"<ref>dst='traits_undead' text='élőhalott'</ref>.\n"
 "\n"
 
 #. [topic]: id=..terrains_section
@@ -3911,7 +3978,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Creator Resources'</header>"
+#| "<header>Basic Terrain Types</header>"
 msgid ""
 "\n"
 "\n"
@@ -3919,7 +3986,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Alkotói tárház'</header>"
+"<header>Alapvető tereptípusok</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:551
@@ -3948,7 +4015,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Creator Resources'</header>"
+#| "<header>Mixed Terrain Types</header>"
 msgid ""
 "\n"
 "\n"
@@ -3956,7 +4023,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Alkotói tárház'</header>"
+"<header>Vegyes tereptípusok</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:559
@@ -4036,7 +4103,7 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Creator Resources'</header>"
+#| "<header>Defense Caps</header>"
 msgid ""
 "\n"
 "\n"
@@ -4044,7 +4111,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Alkotói tárház'</header>"
+"<header>Védekezési korlátok</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:581
@@ -4082,7 +4149,8 @@ msgstr ""
 #| msgid ""
 #| "\n"
 #| "\n"
-#| "<header>text='Creator Resources'</header>"
+#| "<header>Basic Terrain Types</header>\n"
+#| "\n"
 msgid ""
 "\n"
 "\n"
@@ -4091,7 +4159,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Alkotói tárház'</header>"
+"<header>Alapvető tereptípusok</header>\n"
+"\n"
 
 #. [topic]: id=..addons
 #: data/core/help.cfg:600
@@ -4223,11 +4292,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:627
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Modifications'</header>"
 msgid ""
 "\n"
 "\n"
@@ -4235,18 +4299,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Többjátékos módosítók'</header>"
+"<header>text='Módosítók'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:629
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Modifications are optional scenario- and era-independent scripts for "
-#| "<italic>text='Multiplayer'</italic> games that can alter the default "
-#| "ruleset in various ways. You can choose and configure modifications when "
-#| "creating a new game."
 msgid ""
 "\n"
 "\n"
@@ -4256,18 +4312,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"A módosítók a <italic>text='többjátékos'</italic> játszmákhoz készült "
-"küldetés- és korszaksemleges szkriptek, melyek számos módon képesek "
-"befolyásolni a játék alapértelmezett szabályait. Új játszma létrehozásakor "
-"lehet módosítót választani és beállítani."
+"A módosítók opcionális küldetés- és korszakfüggetlen szkriptek, amelyek "
+"különböző módokon változtatják meg az alapértelmezett szabályrendszert. Új "
+"játék létrehozásakor kiválaszthatja és konfigurálhatja a módosítókat."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:631
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -4275,7 +4325,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Alkotói tárház'</header>"
+"<header>text='Szoftvermagok'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:633
@@ -4290,6 +4340,16 @@ msgid ""
 "War II campaign, or even a different game altogether, as long as it can be "
 "represented as a hexagonal map with ’units’ in some way."
 msgstr ""
+"\n"
+"A szoftvermagok (Core) lehetővé teszik a Wesnothért folytatott harc teljes "
+"átalakítását. A szoftvermag helyettesítheti Wesnoth összes tartalmát: amikor "
+"egy másik magot töltenek be, a szokásos egységek, terepek és hasonlók nem "
+"léteznek.\n"
+"\n"
+"A szoftvermagok jelentősen eltérő játékélményt tesznek lehetővé: például egy "
+"második világháborús hadjáratot, vagy akár egy teljesen más játékot, "
+"feltéve, hogy valamilyen módon hatszögletű térképként ábrázolható "
+"\"egységekkel\"."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:637
@@ -4384,8 +4444,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:678
-#, fuzzy
-#| msgid "General commands"
 msgid "General Commands"
 msgstr "Általános parancsok"
 
@@ -4393,12 +4451,6 @@ msgstr "Általános parancsok"
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:679 data/core/help.cfg:724 data/core/help.cfg:762
-#, fuzzy
-#| msgid ""
-#| "These commands can either be issued via the command line by prefixing "
-#| "them with ':' (as shown here) or via the chat by prefixing them with '/' "
-#| "(press 'm' first to open the chat line).\n"
-#| "\n"
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ‘:’ (as shown here) or via the chat by prefixing them with ‘/’ (press "
@@ -4472,11 +4524,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:697
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Toggle the display of the current frames per second.\n"
-#| "\n"
 msgid ""
 "\n"
 "Toggle the display of the current frames per second. Also writes these "
@@ -4485,7 +4532,8 @@ msgid ""
 msgstr ""
 "\n"
 "A képkockafrissítés gyakoriságának aktuális értékét mutató kijelző ki-/"
-"bekapcsolása.\n"
+"bekapcsolása. Az értékeket egyben az userdata könyvtárban lévő fájlba is "
+"menti.\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -4555,10 +4603,8 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:723
-#, fuzzy
-#| msgid "Multiplayer commands"
 msgid "Multiplayer Commands"
-msgstr "Többjátékos parancsok"
+msgstr "Többjátékos mód parancsai"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:726
@@ -4703,10 +4749,8 @@ msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:761
-#, fuzzy
-#| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
-msgstr "A hibakereső üzemmód parancsai"
+msgstr "Hibakeresési mód parancsai"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:764
@@ -4822,15 +4866,6 @@ msgstr ""
 
 #. [heals]: id=healing
 #: data/core/macros/abilities.cfg:11
-#, fuzzy
-#| msgid ""
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -4845,20 +4880,11 @@ msgstr ""
 "A gyógyító által kezelt egység legfeljebb 4 életerőpontot gyógyulhat "
 "körönként. Ha az ellátott egység meg van mérgezve, akkor ugyan nem gyógyul, "
 "de a méreg az adott körben nem mérgezi tovább.\n"
-"Mérgezett egységet a gyógyító nem képes kigyógyítani a mérgezésből, annak "
-"csak egy falu vagy egy méregűzésre képes egység lehet a segítségére."
+"Mérgezett egységet a gyógyító nem képes kigyógyítani a mérgezésből, csak "
+"késleltetni képes a hatását."
 
 #. [heals]: id=healing
 #: data/core/macros/abilities.cfg:37
-#, fuzzy
-#| msgid ""
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -4872,10 +4898,10 @@ msgstr ""
 "gyorsabban gyógyít, mint az a csatatéren általában lehetséges.\n"
 "\n"
 "A gyógyító által kezelt egység akár 8 életerőpontot is gyógyulhat körönként, "
-"illetve ha az ellátott egység meg van mérgezve, akkor nem gyógyul ugyan, de "
-"az adott körben a méreg nem hat.\n"
-"Mérgezett egységet a gyógyító nem képes kigyógyítani a mérgezésből, annak "
-"csak egy falu vagy egy méregűzésre képes egység lehet a segítségére."
+"illetve ha az ellátott egység meg van mérgezve, akkor az adott körben "
+"megfékezi a méreg hatását.\n"
+"Mérgezett egységet a gyógyító nem képes kigyógyítani a mérgezésből, csak "
+"késleltetni tudja a hatását."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:62
@@ -4907,43 +4933,31 @@ msgstr ""
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:108
-#, fuzzy
-#| msgid "regenerates"
 msgid "regenerates +4"
-msgstr "regenerálódás"
+msgstr "regenerálódás +4"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:109
-#, fuzzy
-#| msgid "female^regenerates"
 msgid "female^regenerates +4"
-msgstr "regenerálódás"
+msgstr "regenerálódás +4"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:110
-#, fuzzy
-#| msgid ""
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 4 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Ez az egység minden körben 8 ÉP-t gyógyul. Ha megmérgezték, akkor gyógyulás "
-"helyett elveszíti mérgezettségét."
+"Ez az egység minden körben 4 életpontot gyógyul. Ha megmérgezték, akkor "
+"gyógyulás helyett elveszíti mérgezettségét."
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:111
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit heals itself each turn, though not as much as if stationed in a "
 "village."
 msgstr ""
-" Ez az egység regenerálódik, így minden körben gyógyul, mintha csak faluban "
-"lenne."
+"Ez az egység minden körben regenerálódik, de nem oly mértékben, mintha "
+"faluban lenne."
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:132
@@ -4957,45 +4971,33 @@ msgstr ""
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:145
 msgid "diversion"
-msgstr ""
+msgstr "megtévesztés"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:146
-#, fuzzy
-#| msgid "female^leadership"
 msgid "female^diversion"
-msgstr "hadvezetés"
+msgstr "megtévesztés"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:147
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target, this "
 "unit diverts the target’s attention and reduces its chance to hit by 20%."
 msgstr ""
-" Ha ez az egység támad, és a célpontnak a támadóval ellentétes oldalán is "
-"van egy, a célpont számára ellenséges egység, a támadó hátbatámadással "
-"támad. Ez kétszeres sebzést jelent."
+"Ha ez az egység támad, és a célpontnak a támadóval ellentétes oldalán is van "
+"egy, a célpont számára ellenséges egység, a támadó eltereli a figyelmét, "
+"mellyel 20%-kal csökkenti a sebzése esélyét."
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:148
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target’s attention and reduces its "
 "chance to hit."
 msgstr ""
-" Ha ez az egység támad, és a célpontnak a támadóval ellentétes oldalán is "
-"van egy, a célpont számára ellenséges egység, a támadó hátbatámadással "
-"támad. Ez kétszeres sebzést jelent."
+"Ha ez az egység támad, és a célpontnak a támadóval ellentétes oldalán is van "
+"egy, a célpont számára ellenséges egység, a támadó eltereli a figyelmét, "
+"mellyel csökkenti a sebzése esélyét."
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:200
@@ -5010,6 +5012,10 @@ msgid ""
 "All adjacent lower-level units from the same side deal 25% more damage for "
 "each difference in level."
 msgstr ""
+"Ez az egység más csapatokat vezethet a csatában.\n"
+"\n"
+"Az összes szomszédos ugyanazon oldali alacsonyabb szintű egység 25%-kal több "
+"sebzést okoz minden szintkülönbségért."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:220
@@ -5028,7 +5034,7 @@ msgstr ""
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:237
 msgid "illuminates"
-msgstr "megvilágítás"
+msgstr "fénylő"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:239
@@ -5048,7 +5054,7 @@ msgstr ""
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:254
 msgid "female^teleport"
-msgstr "teleportáció"
+msgstr "teleportáló"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:255
@@ -5083,24 +5089,15 @@ msgstr ""
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:306
 msgid "burrow"
-msgstr ""
+msgstr "elbújó"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:307
-#, fuzzy
-#| msgid "female^slow"
 msgid "female^burrow"
-msgstr "lassú"
+msgstr "elbújó"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:308
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -5109,12 +5106,13 @@ msgid ""
 "except if they have units next to it. Any enemy unit that first discovers "
 "this unit immediately loses all its remaining movement."
 msgstr ""
-"Az egység képes elrejtőzni az ellenség elől az erdőben.\n"
+"Ez az egység elrejtőzhet az erdőben vagy a homokban, ha pihen (nem mozdult "
+"egy körre), így ellenségei számára észrevétlen marad.\n"
 "\n"
-"Ha ez az egység erdős terepen tartózkodik, az ellenség nem látja, csak ha "
-"vannak közvetlenül mellette saját egységei. Ha egy egység elsőként fényt "
-"derít egy rejtőzködő egység hollétére, azonnal elveszíti a maradék lépési "
-"pontját."
+"Az ellenséges egységek nem láthatják ezt az egységet, amíg erdőben vagy "
+"homokban pihen, kivéve, ha egységek vannak mellette. Bármely ellenséges "
+"egység, amely először felfedezi ezt az egységet, azonnal elveszíti az összes "
+"fennmaradó mozgáspontját."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:330
@@ -5138,15 +5136,6 @@ msgstr "rejtőzködés"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:350
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units can not see this unit while it is in a village, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in villages, and remain undetected by its enemies, except "
 "by those standing next to it.\n"
@@ -5155,14 +5144,13 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Ez az egység képes elrejtőzni ellenségei elől a falvakban (kivéve a vízi "
-"falvakban), és az ellenség számára észrevétlen marad, kivéve ha épp mellette "
-"áll.\n"
+"Ez az egység elrejtőzhet a falvakban, és észrevétlen marad az ellenségei "
+"számára, kivéve a mellette állókat.\n"
 "\n"
-"Ha ez az egység egy faluban tartózkodik, az ellenség nem látja, csak ha "
-"vannak közvetlenül mellette saját egységei. Ha egy egység elsőként fényt "
-"derít egy rejtőzködő egység hollétére, azonnal elveszíti a maradék lépési "
-"pontját."
+"Az ellenséges egységek nem láthatják ezt az egységet, amíg egy faluban van, "
+"kivéve, ha vannak mellette egységek. Bármely ellenséges egység, amely "
+"először felfedezi ezt az egységet, azonnal elveszíti az összes fennmaradó "
+"mozgáspontját."
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:368
@@ -5398,181 +5386,121 @@ msgid "The Long Dark (4)"
 msgstr "Hosszú sötétség (4)"
 
 #: data/core/macros/special-notes.cfg:9
-#, fuzzy
-#| msgid ""
-#| " Spirits have very unusual resistances to damage, and move quite slowly "
-#| "over open water."
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
-" A lelkeknek rendhagyó ellenállásaik vannak a támadásokkal szemben, valamint "
-"nyílt víz fölött csak lassan repülhetnek."
+"A szellemek különösen ellenállak a támadásokkal szemben, valamint nyílt víz "
+"fölött csak lassan repülhetnek."
 
 #: data/core/macros/special-notes.cfg:12
-#, fuzzy
-#| msgid ""
-#| " This unit’s arcane attack deals tremendous damage to magical creatures, "
-#| "and even some to mundane creatures."
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" Ennek az egységnek a földöntúli támadása óriási sebzést okoz az "
-"élőholtaknak, de néhány még élőnek is."
+"Ennek az egységnek a földöntúli támadása óriási sebzést okoz a mágikus "
+"teremtményeknek, de néha még az evilágiaknak is."
 
 #: data/core/macros/special-notes.cfg:19
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
-msgstr " Ez az egység képes alapszinten gyógyítani."
+msgstr "Ez az egység képes alapszinten gyógyítani."
 
 #: data/core/macros/special-notes.cfg:22
-#, fuzzy
-#| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
-msgstr " Ez az egység képes gyorsan gyógyítani."
+msgstr "Ez az egység képes gyorsan gyógyítani."
 
 #: data/core/macros/special-notes.cfg:25
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
-" Ez az egység képes gyógyítani a körülötte állók sebződéseit, valamint "
+"Ez az egység képes gyógyítani a körülötte állók sebződéseit, valamint "
 "kigyógyítani őket a mérgezésből."
 
 #: data/core/macros/special-notes.cfg:28
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of neutralizing the effects of poison in units "
-#| "around it."
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-" Ez az egység képes semlegesíteni a mérgek hatását a körülötte állókban."
+"Ez az egység képes semlegesíteni a mérgek hatását a körülötte állókban."
 
 #: data/core/macros/special-notes.cfg:31
-#, fuzzy
-#| msgid ""
-#| " This unit regenerates, which allows it to heal as though always "
-#| "stationed in a village."
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
 msgstr ""
-" Ez az egység regenerálódik, így minden körben gyógyul, mintha csak faluban "
+"Ez az egység regenerálódik, így minden körben gyógyul, mintha csak faluban "
 "lenne."
 
 #: data/core/macros/special-notes.cfg:34
-#, fuzzy
-#| msgid ""
-#| " The steadiness of this unit reduces damage from some attacks, but only "
-#| "while defending."
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
 msgstr ""
-" Ennek az egységnek a robusztussága néhány támadással szemben csökkenti a "
+"Ennek az egységnek a robusztussága néhány támadással szemben csökkenti a "
 "sebződését, de kizárólag védekezéskor."
 
 #: data/core/macros/special-notes.cfg:37
-#, fuzzy
-#| msgid ""
-#| " The leadership of this unit enables adjacent units of the same side to "
-#| "deal more damage in combat, though this only applies to units of lower "
-#| "level."
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" Ennek az egységnek a hadvezetői képessége lehetővé teszi a mellette álló "
+"Ennek az egységnek a hadvezetői képessége lehetővé teszi a mellette álló "
 "baráti egységeknek, hogy többet sebezzenek a harc során, bár ez csak az "
 "alacsonyabb szintű egységekre vonatkozik."
 
 #: data/core/macros/special-notes.cfg:40
-#, fuzzy
-#| msgid ""
-#| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
-#| "control and thus move unhindered around them."
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" Ennek az egységnek a portyázó képessége lehetővé teszi, hogy átlépjen az "
+"Ennek az egységnek a portyázó képessége lehetővé teszi, hogy átlépjen az "
 "ellenséges egységek ellenőrzött területén, így megállíthatatlanul járkálhat "
 "közöttük."
 
 #: data/core/macros/special-notes.cfg:43
-#, fuzzy
-#| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
-msgstr " A megvilágítás megnöveli a napfény szintjét a környező mezőkön."
+msgstr ""
+"A megvilágosodás megnöveli a fizikai megvilágítás szintjét is a környező "
+"mezőkön."
 
 #: data/core/macros/special-notes.cfg:46
-#, fuzzy
-#| msgid ""
-#| " This unit can use one move to teleport between any two empty villages "
-#| "controlled by its side."
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-" Ez az egység egy lépéspontból képes bármely két üresen álló szövetséges "
-"falu közti térugrásos helyváltoztatásra."
+"Ez az egység egy lépéssel képes bármely két üresen álló szövetséges falu "
+"közti teleportálásra."
 
 #: data/core/macros/special-notes.cfg:49
-#, fuzzy
-#| msgid ""
-#| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
-#| "unless it is immediately adjacent or has revealed itself by attacking."
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
-" Az erdőkben ez az egység a rajtaütés képességével láthatatlan az ellenség "
-"számára, hacsak nem áll közvetlenül mellette, vagy nem fedi fel magát azzal, "
-"hogy támad."
+"Az erdőkben ez az egység a lesből támadási képességével láthatatlan az "
+"ellenség számára, hacsak nem áll közvetlenül mellette, vagy nem fedi fel "
+"magát azzal, hogy támad."
 
 #: data/core/macros/special-notes.cfg:52
-#, fuzzy
-#| msgid ""
-#| " This unit is able to hide at night, leaving no trace of its presence."
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
-" Ez az egység képes elrejtőzni az éjszakában, így nyoma sincs jelenlétének."
+"Ez az egység képes elrejtőzni az éjszakában, így nyoma sincs jelenlétének."
 
 #: data/core/macros/special-notes.cfg:55
-#, fuzzy
-#| msgid ""
-#| " This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to it."
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
-" Ez az egység el tud bújni a falvakban (a vízi falvak kivételével), és "
+"Ez az egység el tud bújni a falvakban (a vízi falvak kivételével), és "
 "észrevétlen marad az ellenség számára, kivéve azokat, akik mellette állnak."
 
 #: data/core/macros/special-notes.cfg:58
-#, fuzzy
-#| msgid ""
-#| " This unit can move unseen in deep water, requiring no air from the "
-#| "surface."
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
-" Ez az egység észrevétlenül közlekedik mély vízben, mivel nincsen szüksége "
-"levegőre a felszínről."
+"Ez az egység észrevétlenül közlekedik mély vízben, mivel nincsen szüksége "
+"felszíni levegővételre."
 
 #: data/core/macros/special-notes.cfg:61
-#, fuzzy
-#| msgid ""
-#| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
@@ -5580,161 +5508,109 @@ msgstr ""
 "Ez az egység 1 életpontot kap a maximumához, ha megöl egy élő egységet."
 
 #: data/core/macros/special-notes.cfg:64
-#, fuzzy
-#| msgid ""
-#| " Whenever its berserk attack is used, this unit continues to push the "
-#| "attack until either it or its enemy lies dead."
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-" Amikor ez az egység dühöngő támadásba lendül, a csatát mindig addig "
+"Amikor ez az egység dühöngő támadásba lendül, a csatát mindig addig "
 "folytatja, amíg vagy ő vagy ellenfele el nem esik."
 
 #: data/core/macros/special-notes.cfg:67
-#, fuzzy
-#| msgid ""
-#| " If there is an enemy of the target on the opposite side of the target "
-#| "while attacking it, this unit may backstab, inflicting double damage by "
-#| "creeping around behind that enemy."
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-" Ha ez az egység támad, és a célpontnak a támadóval ellentétes oldalán is "
-"van egy, a célpont számára ellenséges egység, a támadó hátbatámadással "
-"támad. Ez kétszeres sebzést jelent."
+"Ha ez az egység támad, és a célpontnak a támadóval ellentétes oldalán is van "
+"egy, a célpont számára ellenséges egység, a támadó mögékúszik és hátba "
+"támadja. Ez kétszeres sebzést jelent."
 
 #: data/core/macros/special-notes.cfg:70
-#, fuzzy
-#| msgid ""
-#| " Foes who lose their life to the plague will rise again in unlife, unless "
-#| "they are standing on a village."
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
-" Azok az ellenfelek, akiket dögvészes támadás terít le, újra felkelnek "
-"élőholtként, kivéve, ha épp faluban álltak."
+"Azok az ellenfelek, akiket dögvészes támadás terít le, élőholtként kelnek új "
+"\"életre\", kivéve, ha épp faluban álltak."
 
 #: data/core/macros/special-notes.cfg:73
-#, fuzzy
-#| msgid ""
-#| " Foes who lose their life to the plague will rise again in unlife, unless "
-#| "they are standing on a village."
 msgid ""
 "Foes who lose their life to certain horrors of nature become nourishment for "
 "a rapidly growing larva, unless they are standing in a village."
 msgstr ""
-" Azok az ellenfelek, akiket dögvészes támadás terít le, újra felkelnek "
-"élőholtként, kivéve, ha épp faluban álltak."
+"Azok az ellenségek, akik a természet bizonyos borzalmai miatt veszítik "
+"életüket, gyorsan növekvő lárva táplálékává válnak, hacsak nem egy faluban "
+"állnak."
 
 #: data/core/macros/special-notes.cfg:76
-#, fuzzy
-#| msgid ""
-#| " This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
-" Ez az egység képes lelassítani ellenségeit, megfelezve ezzel mozgásuk "
+"Ez az egység képes lelassítani ellenségeit, megfelezve ezzel mozgásuk "
 "gyorsaságát és sebzésüket a körük végéig."
 
 #: data/core/macros/special-notes.cfg:79
-#, fuzzy
-#| msgid ""
-#| " The ability to turn the living to stone makes this unit extremely "
-#| "dangerous."
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
-" Az a képessége, hogy kővé változtathatja az élőket, nagyon veszélyessé "
-"teszi ezt az egységet."
+"Az a képessége, hogy kővé változtathatja az élőket, nagyon veszélyessé teszi "
+"ezt az egységet."
 
 #: data/core/macros/special-notes.cfg:82
-#, fuzzy
-#| msgid ""
-#| " This unit’s marksmanship gives it a high chance of hitting targeted "
-#| "enemies, but only on the attack."
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
 msgstr ""
-" Ennek az egységnek a mesterlövészi képessége jó esélyt ad a kiszemelt "
+"Ennek az egységnek a mesterlövészi képessége jó esélyt ad a kiszemelt "
 "áldozat megsebzésére, de csak támadáskor."
 
 #: data/core/macros/special-notes.cfg:85
-#, fuzzy
-#| msgid ""
-#| " This unit has magical attacks, which always have a high chance of "
-#| "hitting an opponent."
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
-" Ennek az egységnek van mágikus támadása, amellyel mindig jó eséllyel célba "
+"Ennek az egységnek van mágikus támadása, amellyel mindig jó eséllyel célba "
 "talál."
 
 #: data/core/macros/special-notes.cfg:88
-#, fuzzy
-#| msgid ""
-#| " The swarming attacks of this unit become less deadly whenever its "
-#| "members are wounded."
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
-" Ennek az egységnek a kirajzó támadása egyre veszélytelenebbé válik, ahogyan "
+"Ennek az egységnek a kirajzó támadása egyre veszélytelenebbé válik, ahogyan "
 "tagjai megsebesülnek."
 
 #: data/core/macros/special-notes.cfg:91
-#, fuzzy
-#| msgid ""
-#| " Using a charging attack doubles both damage dealt and received; this "
-#| "does not affect defensive retaliation."
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-" A rohamtámadás használata megkétszerezi mind az okozott, mind a kapott "
+"A rohamtámadás használata megkétszerezi mind az okozott, mind a kapott "
 "sebzést. Ez nem befolyásolja a védekező visszatámadást."
 
 #: data/core/macros/special-notes.cfg:94
-#, fuzzy
-#| msgid ""
-#| " During battle, this unit can drain life from victims to renew its own "
-#| "health."
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr ""
-" Ez az egység csata közben áldozataitól el tudja szívni az életerejüket, "
+"Ez az egység csata közben áldozataitól el tudja szívni az életerejüket, "
 "ezzel megnövelve a sajátját."
 
 #: data/core/macros/special-notes.cfg:97
-#, fuzzy
-#| msgid ""
-#| " The length of this unit’s weapon allows it to strike first in melee, "
-#| "even in defense."
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
 msgstr ""
-" Ennek az egységnek a hosszú fegyvere lehetővé teszi, hogy közelharcban "
+"Ennek az egységnek a hosszú fegyvere lehetővé teszi, hogy közelharcban "
 "először támadhasson, még védekezéskor is."
 
 #: data/core/macros/special-notes.cfg:100
-#, fuzzy
-#| msgid ""
-#| " The victims of this unit’s poison will continually take damage until "
-#| "they can be cured in town or by a unit which cures."
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-" Ennek az egységnek az áldozatai folyamatosan sebződni fognak a méregtől, "
-"amíg egy faluban vagy egy méregűző egység mellett meg nem gyógyulnak."
+"Ennek az egységnek az áldozatai folyamatosan sebződni fognak a méregtől, "
+"amíg egy faluban vagy egy gyógyító egység mellett meg nem gyógyulnak."
 
 #: data/core/macros/special-notes.cfg:103
 msgid ""
@@ -5749,6 +5625,8 @@ msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
 "duplicates):"
 msgstr ""
+"Különleges megjegyzések (1.14-es stílus, kérjük, frissítse az új "
+"listaformátumra az ismétlődések elkerülése érdekében):"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -5874,12 +5752,12 @@ msgstr ""
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:107
 msgid "elemental"
-msgstr "elemi"
+msgstr "elemi lény"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:108
 msgid "female^elemental"
-msgstr "elemi"
+msgstr "elemi lény"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:110
@@ -5934,16 +5812,12 @@ msgstr ""
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:134
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Strong'</italic> units do 1 more damage for every "
-#| "successful strike in melee combat, and have 1 more HP."
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
 "strike in melee combat, and have 1 additional hitpoint."
 msgstr ""
 "Az <italic>text='erős'</italic> egységek közelharcban 1-gyel többet sebeznek "
-"minden sikeres támadáskor, és 1-gyel több ÉP-jük van."
+"minden sikeres támadáskor, és 1-gyel több életpontjuk van."
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:153
@@ -6015,16 +5889,12 @@ msgstr ""
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:172
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% "
-#| "less HP than usual."
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
 "hitpoints than usual."
 msgstr ""
 "A <italic>text='gyors'</italic> egységeknek 1-gyel több a lépési pontjuk, "
-"ugyanakkor 5%-kal kevesebb ÉP-jük van a szokásosnál."
+"ugyanakkor 5%-kal kevesebb életpontjuk van a szokásosnál."
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:190
@@ -6096,10 +5966,6 @@ msgstr ""
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:208
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level "
-#| "more than usual."
 msgid ""
 "<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
 "gain 1 more per level."
@@ -6129,10 +5995,6 @@ msgstr ""
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:230
-#, fuzzy
-#| msgid ""
-#| "Renowned for their vitality, some dwarves are sturdier than others and "
-#| "can rest even when travelling."
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when traveling."
@@ -6149,7 +6011,7 @@ msgstr "vakmerő"
 #: data/core/macros/traits.cfg:254 data/core/macros/traits.cfg:271
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
-"A számára kedvezőtlen napszak nem befolyásolja hátrányosan a harci erejét."
+"A számára kedvezőtlen napszak nem befolyásolja hátrányosan a harci erejét"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:255 data/core/macros/traits.cfg:272
@@ -6171,7 +6033,7 @@ msgstr "kóbor"
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:287
 msgid "Receives only 50% defense in land-based villages"
-msgstr "A szárazföldi falvakban csak 50% védelmet kap."
+msgstr "A szárazföldi falvakban csak 50% védelmet kap"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:288
@@ -6198,16 +6060,12 @@ msgstr "gyenge"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:306
-#, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='weak'</italic> get a −1 increment in "
-#| "hitpoints and melee damage."
 msgid ""
 "Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
 "in hitpoints and melee damage."
 msgstr ""
-"A <italic>text='gyenge'</italic> egységek közelharcban 1-gyel kevesebbet "
-"sebeznek minden sikeres támadáskor, és 1-gyel kevesebb ÉP-jük van."
+"A <italic>text='gyenge'</italic> egységek közelharcban 1-gyel kevesebb "
+"életpontot sebeznek."
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:323
@@ -6236,15 +6094,12 @@ msgstr ""
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:325
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
 msgid ""
 "<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
 "hitpoints."
 msgstr ""
 "A <italic>text='lassú'</italic> egységeknek 1-gyel kevesebb a lépési "
-"pontjuk, ugyanakkor 5%-kal több ÉP-jük van a szokásosnál."
+"pontjuk, ugyanakkor 5%-kal több életpontot sebeznek."
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:343
@@ -6290,17 +6145,13 @@ msgstr "elaggott"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:361
-#, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='aged'</italic> get a −8 increment in "
-#| "hitpoints and a −1 increment in movement and melee damage."
 msgid ""
 "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr ""
-"A <italic>text='vén'</italic> egységek közelharcban 1-gyel kevesebbet "
-"sebeznek minden sikeres támadáskor, 1-gyel kevesebb lépési pontjuk, és 8-cal "
-"kevesebb ÉP-jük van."
+"A <italic>text='vén'</italic> egységeknek 8-cal kevesebb életpontjuk van és "
+"közelharcban 1-gyel kevesebbet sebeznek, illetve 1-gyel kevesebb lépési "
+"pontjuk van."
 
 #. [berserk]: id=berserk
 #: data/core/macros/weapon_specials.cfg:9
@@ -6330,11 +6181,6 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/weapon_specials.cfg:42
-#, fuzzy
-#| msgid ""
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
@@ -6488,11 +6334,6 @@ msgstr ""
 
 #. [poison]: id=poison
 #: data/core/macros/weapon_specials.cfg:189
-#, fuzzy
-#| msgid ""
-#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
-#| "kill a unit."
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -6505,7 +6346,7 @@ msgstr ""
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:199
 msgid "stun"
-msgstr ""
+msgstr "kábít"
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:200
@@ -6513,17 +6354,16 @@ msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
+"Ez a támadó csapás az ellenséget úgy összezavarja, hogy az nem lesz képes a "
+"védelmi zónáját uralni. A hatás elmúlik, amikor az ellenfél legközelebb "
+"sorra kerül."
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:201
-#, fuzzy
-#| msgid ""
-#| " This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
-" Ez az egység képes lelassítani ellenségeit, megfelezve ezzel mozgásuk "
+"Ez az egység képes lelassítani ellenségeit, megfelezve ezzel mozgásuk "
 "gyorsaságát és sebzésüket a körük végéig."
 
 #: data/core/units.cfg:4
@@ -6589,75 +6429,6 @@ msgstr "Perzsekények"
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
-#, fuzzy
-#| msgid ""
-#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
-#| "true dragons. On average, an adult drake stands around three meters tall "
-#| "and easily weighs more than a man and a horse combined. Their skin is "
-#| "made up of hard scales, resistant to most physical strikes except "
-#| "piercing and cold damage. Most drakes are capable of true flight and can "
-#| "travel long distances quickly. However, their sheer weight and bulk "
-#| "limits their flight ability somewhat, making them ungainly in the air. "
-#| "Where possible, they make use of terrain features such as hills, "
-#| "mountains and trees as launch points in order to gain greater height and "
-#| "speed. Fortunately for their enemies, they are still quite clumsy "
-#| "creatures and surprisingly slow in combat. This, combined with their "
-#| "large size, renders them easy targets for those who dare attack them.\n"
-#| "\n"
-#| "Drakes are inherently magical creatures, with a mysterious internal fire "
-#| "fueling their very lives. This can easily be witnessed when one of their "
-#| "kind perishes in combat; its internal fire is released, burning their "
-#| "remains in to ashes. Their internal fire is also their greatest weakness; "
-#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
-#| "nature, drakes are incapable of channeling magic in a controlled manner. "
-#| "While the magic imbued within a drake’s body enables it to spit fire and "
-#| "gives it life, they have no willful control over the functions of this "
-#| "magic.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Drakes are a relatively warlike race and their societies can be best "
-#| "described as cultured martial societies. The core of a drake tribe is a "
-#| "small group of veteran warriors headed by a mutually respected — or "
-#| "simply feared — <ref>dst='dominant' text='dominant'</ref> who rules the "
-#| "society with an iron fist. Every drake is expected to earn their place in "
-#| "the strict hierarchy, to obey their superiors and command their "
-#| "inferiors. Entry to the ruling elite is only possible through challenging "
-#| "and defeating a superior in single combat, which is the way the hierarchy "
-#| "within the elite itself is established. The use of deception of any kind "
-#| "towards any fellow drake is, without exception, seen as cowardly and "
-#| "unacceptable.\n"
-#| "\n"
-#| "While their warlike nature and sense of territory drives them to defend "
-#| "their territories savagely, drakes rarely invade or trespass on areas "
-#| "already occupied by the other major races. Instead, they settle in "
-#| "unpopulated areas to establish their own territory there. They primarily "
-#| "feed on large game they hunt in the lowlands around their homes, but "
-#| "hatchlings and lower caste drakes are known to feed also on certain kinds "
-#| "of moss and fungi they cultivate deep in their caverns. The only "
-#| "technology drakes value is armor- and weapon-smithing, and neither know "
-#| "or need other science and culture besides this. However the few "
-#| "implements they do fashion are almost unrivaled in quality, only matched "
-#| "by those produced in the finest Dwarvish foundries.\n"
-#| "\n"
-#| "Drakes are hatched from eggs and usually live naturally between 20 to 30 "
-#| "years. Death in battle is the most preferred way for a drake to leave "
-#| "this world. Unlike the elder members of other races, drakes naturally "
-#| "grow more aggressive and reckless towards the ends of their natural "
-#| "lives, perhaps to help ensure their place in the heroic legends of their "
-#| "kind.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Drakes originated from an archipelago of volcanic islands called "
-#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
-#| "text='Great Ocean'</ref>. A combination of population pressure and the "
-#| "subsidence of many of their home islands has caused colonies of drakes to "
-#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
-#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
-#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
-#| "warmth, their internal fire is more than capable of sustaining them even "
-#| "in a relatively cold climate, a feature which has allowed them to "
-#| "populate even some of the mountains of the far north of the Great "
-#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -6805,55 +6576,6 @@ msgstr "Törpök"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:90
-#, fuzzy
-#| msgid ""
-#| "The dwarves are a race famed for their miners, blacksmiths, merchants and "
-#| "warriors. Considered as the third oldest race on the great continent "
-#| "after the elves and trolls, their early history is shrouded in mystery. "
-#| "Legends tell of a time long forgotten when their people began emerging "
-#| "from their underground world through caves. Nothing is known about their "
-#| "life prior to their arrival, or their reasons for entering the surface "
-#| "world, but they have been an integral part of the history of the "
-#| "continent since. Soon after their emergence from the underground, the "
-#| "dwarves entered into conflict with the original inhabitants of the land, "
-#| "the elves. The original reason for their dispute has been lost to "
-#| "history, but the two races have since fought three long wars, interrupted "
-#| "by a few decades of peace. During these wars the dwarves could not "
-#| "dislodge the elves from the deep forests in the south, but managed to "
-#| "consolidate their position in hills and the mountains in the north of the "
-#| "continent, known now as the Northlands. Since then they have constructed "
-#| "fantastic fortifications and settlements deep within the mountains and "
-#| "crags of their territory.\n"
-#| "\n"
-#| "Possibly due to their isolation, the dwarves are generally distrustful or "
-#| "hostile towards most other races, particularly the elves. The single "
-#| "exception to this temperament is towards humans. This could be traced "
-#| "back to the era of Haldric I and the arrival of humans and orcs to the "
-#| "continent. At this point the dwarves began allowing some humans, mostly "
-#| "dissidents and outlaws from the Kingdom of Wesnoth, to settle in certain "
-#| "areas of the Northlands. Their motivation was unsurprising. The plight of "
-#| "these individuals reminded the dwarves of their early history of "
-#| "persecution, eliciting a sense of solidarity. The dwarves also had much "
-#| "to gain in forming a bond with these outcasts. They would settle in areas "
-#| "where dwarves disliked living themselves; plains, forests, and swamps, "
-#| "freeing them from defending these areas.\n"
-#| "\n"
-#| "Dwarves are of small stature by human measure, but they are by no means "
-#| "fragile. Their warriors, tough and powerful are both feared and respected "
-#| "throughout the continent for their prowess in battle. In addition, "
-#| "dwarves are known for their calculating intellects and superb "
-#| "craftsmanship. Dwarven smiths are renowned for their deadly weapons and "
-#| "heavy armor. These accouterments are unrivaled in quality, possibly only "
-#| "matched by those produced by drake armorers. Their intelligence and "
-#| "natural inquisitiveness has also made them the most technically advanced "
-#| "race on the continent. One of their most famous, and feared, discoveries "
-#| "was a mysterious powder that produces an immense explosion when exposed "
-#| "to fire or sparks. Certain dwarf warriors use this powder to hurl small "
-#| "objects at tremendous speeds. Given their technological inclinations, "
-#| "many dwarves tend to distrust magic users. However some practice a form "
-#| "of magic based on the engraving of runes. Called runesmiths, they use "
-#| "these carvings to enchant items in order to augment certain aspects of "
-#| "their natures."
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -7076,26 +6798,6 @@ msgstr "Koboldok"
 
 #. [race]: id=goblin
 #: data/core/units.cfg:151
-#, fuzzy
-#| msgid ""
-#| "Goblins are, despite their appearance, born as siblings to the orcs and "
-#| "members of the same race. While other races usually bear children singly "
-#| "or in pairs, orcs will have large litters of children all at once, "
-#| "causing their populations to explode rather quickly. Within any litter, "
-#| "there will only be one or two true orcs, who will grow to the full size "
-#| "and strength of their race. A few more will be half-orcs, notably weaker "
-#| "than their big brothers, and relegated to supporting roles in combat, "
-#| "such as archery. The rest, often a full half of more of any litter, will "
-#| "be goblins. Goblins are puny and quite frail, rarely growing past the "
-#| "size and stature of a human child. Goblins are born into a lifetime of "
-#| "near-slavery to their larger kin, and used as sword-fodder in battle. "
-#| "They thrive in spite of their tragic fate; in part because they are so "
-#| "very numerous, and also because their brother orcs are well aware how "
-#| "dependent they are on the goblins.\n"
-#| "\n"
-#| "Goblins perform the bulk of manual labor needed by the orcs, with the "
-#| "sole exception of jobs that require the brute strength of true orcs. "
-#| "Those the orcs revel in as proof of their prowess."
 msgid ""
 "\n"
 "\n"
@@ -7110,25 +6812,18 @@ msgid ""
 "that require the brute strength of true orcs. Those the orcs revel in as "
 "proof of their prowess."
 msgstr ""
-"A koboldok – kinézetük ellenére – az orkok gyerekei, és egyazon fajba "
-"tartoznak. Míg más fajok egyesével-kettesével hozzák világra utódaikat, az "
-"orkoknál egyszerre egy egész alom születik, ezért népességük meglehetősen "
-"gyorsan növekszik. Minden alomban csupán egy vagy kettő igazi ork lesz, aki "
-"felnőve eléri a fajra jellemző teljes testméretet és erőt. Néhányan fél-"
-"orkok lesznek, akik jóval gyengébbek nagyobb testvéreiknél, és így "
-"kénytelenek alávaló, harci támogató – például íjász – szerepet betölteni. A "
-"maradék, amely gyakran az egész alom felét teszi ki, hitvány kobold lesz. A "
-"koboldok apró, igencsak törékeny lények, akik ritkán nőnek nagyobbra, mint "
-"egy embergyerek. Adottságaik miatt fajtársaik egész életen át tartó, szinte "
-"rabszolgaságot jelentő életet kényszerítenek rájuk, és ágyútölteléknek "
-"használják őket a csatamezőn. Tragikus sorsuk ellenére létszámuk mégis "
-"folyamatosan növekszik, részben mivel annyian születnek, másfelől pedig "
-"azért, mert ork testvéreik nagyon is jól tudják, hogy mennyire függnek a "
-"koboldoktól.\n"
 "\n"
-"A koboldok végzik el a fizikai munka dandárját, csupán azokat a feladatokat "
-"meghagyva, amelyek igénylik az igazi orkok nyers erejét. Ezeket az orkok "
-"szívesen végzik el felsőbbrendűségük bizonyítására."
+"\n"
+"A koboldok aprók és meglehetősen törékenyek, ritkán nőnek túl egy emberi "
+"gyermek méretén és termetén.\n"
+"\n"
+"A koboldok élethosszig tartó rabszolgasorba születnek és nagyobb rokonaik "
+"ágyútöltelékként használják őket a csatában. Tragikus sorsuk ellenére is "
+"boldogulnak, részben mert olyan sokan vannak, és azért is, mert "
+"orktestvéreik tisztában vannak azzal, hogy mennyire függenek a koboldoktól. "
+"Ők végzik az orkok számára szükséges fizikai munka nagy részét, kivéve "
+"azokat a munkákat, amelyek az igazi orkok nyers erejét igénylik. Azokét, "
+"akikben az orkok kedvüket lelik, mint bátorságuk bizonyítékait."
 
 #. [race]: id=gryphon
 #: data/core/units.cfg:168
@@ -7160,24 +6855,18 @@ msgstr ""
 
 #. [race]: id=horse
 #: data/core/units.cfg:181
-#, fuzzy
-#| msgid "race^Wose"
 msgid "race^Horse"
-msgstr "Fapásztor"
+msgstr "Ló"
 
 #. [race]: id=horse
 #: data/core/units.cfg:182
-#, fuzzy
-#| msgid "race+female^Ogre"
 msgid "race+female^Horse"
-msgstr "Ogre"
+msgstr "Ló"
 
 #. [race]: id=horse
 #: data/core/units.cfg:183
-#, fuzzy
-#| msgid "race^Woses"
 msgid "race^Horses"
-msgstr "Fapásztorok"
+msgstr "Lovak"
 
 #. [race]: id=horse
 #: data/core/units.cfg:184
@@ -7210,47 +6899,6 @@ msgstr "Emberek"
 
 #. [race]: id=human
 #: data/core/units.cfg:204
-#, fuzzy
-#| msgid ""
-#| "The race of men is an extremely diverse one. Although they originally "
-#| "came from the Old Continent, men have spread all over the world and split "
-#| "into many different cultures and races. Although they are not imbued with "
-#| "magic like other creatures, humans can learn to wield it and able to "
-#| "learn more types than most others. They have no extra special abilities "
-#| "or aptitudes except their versatility and drive. While often at odds with "
-#| "other races, they can occasionally form alliances with the less "
-#| "aggressive races such as elves and dwarves. The less scrupulous among "
-#| "them do not shrink back from hiring orcish mercenaries, either. They have "
-#| "no natural enemies, although the majority of men, like most people of all "
-#| "races, have an instinctive dislike of the undead. Men are shorter than "
-#| "the elves, but taller still than dwarves. Their skin color can vary, from "
-#| "almost white to dark brown.\n"
-#| "\n"
-#| "<header>text='Subjects of the Crown'</header>\n"
-#| "Many different groups of men exist, but the majority of them on the Great "
-#| "Continent live under the rule of the Crown of Wesnoth. The humans first "
-#| "appeared on the Great Continent from a land far across the ocean to the "
-#| "West, the Green Isle, and soon established their capital at the inland "
-#| "city of Weldyn. Over the following centuries they have built up a number "
-#| "cities across the continent. The soldiers from the Crown of Wesnoth "
-#| "protect the country, forming the most organized military force in the "
-#| "known world. Its warriors come from the main provinces, where all men are "
-#| "conscripted at an early age.\n"
-#| "\n"
-#| "<header>text='The Clansmen'</header>\n"
-#| "The eastern provinces of Wesnoth, known as the Clan Homelands, have a "
-#| "geography consisting of more open plains and rolling hills than the "
-#| "western, more civilized provinces. They are home to the Horse Clans, who "
-#| "are allied with the Crown of Wesnoth but operate independently and "
-#| "maintain their own identity. Some consider them to be a tributary state, "
-#| "which sends food and soldiers to Crown in exchange for protection. Others "
-#| "say they are on equal footing with the western half of Wesnoth. In any "
-#| "case, the eastern provinces do not have a conscript army the way Western "
-#| "Wesnoth does. Training for fighting is part of the way of life of the "
-#| "Clans; the parents teach the children to ride horses, fight and shoot a "
-#| "bow from an early age. In general, the Clan warriors are less organized "
-#| "than the civilized fighters, and the strengths and weaknesses of these "
-#| "groups complement each other."
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -7331,24 +6979,18 @@ msgstr ""
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:219
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Dunefolk Human"
-msgstr "Ember"
+msgstr "Dűnelakó ember"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:220
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
-msgstr "Ember"
+msgstr "Dűnelakó nő"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:221
-#, fuzzy
-#| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
-msgstr "Élőholtak"
+msgstr "Dűnelakók"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:223
@@ -7528,10 +7170,8 @@ msgstr "Sellő"
 
 #. [race]: id=merman
 #: data/core/units.cfg:286
-#, fuzzy
-#| msgid "race^Troll"
 msgid "race^Merfolk"
-msgstr "Troll"
+msgstr "Sellőnép"
 
 #. [race]: id=merman
 #: data/core/units.cfg:288
@@ -7693,66 +7333,6 @@ msgstr "Orkok"
 
 #. [race]: id=orc
 #: data/core/units.cfg:331
-#, fuzzy
-#| msgid ""
-#| "In appearance, orcs are half men and half beasts. They are taller, "
-#| "sturdier and stronger than humans. They are warlike, savage, and cruel by "
-#| "nature. Their blood is darker and thicker than that of normal humans and "
-#| "they have little care for personal hygiene or their personal appearance. "
-#| "Although Orcs are violent even among themselves creatures, they are pack-"
-#| "oriented; an orc never travels long or lives alone in groups smaller than "
-#| "half a dozen.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Almost every orc are a member of a tribe or a clan. Relations between "
-#| "neighboring tribes are usually violent, except in cases of a mutual enemy "
-#| "threatens their existence or prospects of great plunder override mutual "
-#| "animosity. Occasionally, a single strong chieftain may emerge to lead "
-#| "multiple tribes from time to time, usually through intimidation of "
-#| "followers. An orc tribe in times of peace tends to focus almost solely on "
-#| "strengthening itself in preparation for the next armed conflict. Orcs are "
-#| "known to possess a crude system of writing — usually in blood — although "
-#| "it’s most commonly used to trade insults or threats among tribal "
-#| "leaders.\n"
-#| "\n"
-#| "Orc societies are based on little else but strength; might makes right, "
-#| "and a leader leads and survives only as long as no one manages to wrest "
-#| "the title from him. A constant struggle for power simmers among potential "
-#| "tribal chiefs. An orcish leader rarely lives more than a handful of years "
-#| "to enjoy his absolute authority before being killed for his position — "
-#| "although history knows some notable exceptions. Orcs hold no particular "
-#| "honor code and while indisputable raw strength is usually the preferred "
-#| "method of displaying power, assassination, poisoning and backstabbing are "
-#| "completely viable means to further one’s own goals.\n"
-#| "\n"
-#| "Orcs mostly live in rural areas, often in foothills or mountainous "
-#| "regions, sometimes in caves. They grow no crops nor keep livestock, but "
-#| "are competent hunters as a result of their physical stature and "
-#| "brutality. Due to their large numbers they are capable of hunting an area "
-#| "virtually clean of anything larger than rodents in relatively short "
-#| "period of time. Due to this and their unstable leadership, orcish tribes "
-#| "tend to lead a semi-nomadic lifestyle, never settling in one region for "
-#| "too long. The larger tribes may establish themselves firmly in an area "
-#| "for years or even decades and build large encampments almost resembling "
-#| "cities, but even these are easily dismantled and abandoned if there is a "
-#| "need to relocate the horde.\n"
-#| "\n"
-#| "The oldest known orcs have been around 50 to 60 years of age, but very "
-#| "few individuals ever live to see over two or three decades before meeting "
-#| "their end either in war or by the hand of one of their kin. The oldest "
-#| "orcs are often shamans, which are perhaps the only ones most of their "
-#| "kind sees as being trustworthy and neutral. The origins of this custom "
-#| "are unknown, as the shamans do not directly contribute much to orcish "
-#| "societies but only act as advisors — not something orcs tend to otherwise "
-#| "tolerate. Shamans are in many ways the opposite of most other orcs: they "
-#| "are often physically withered and frail in comparison and lack skill in "
-#| "battle. Despite their reliance on raw strength, not nearly all orcs are "
-#| "destined to grow to possess any. Many orcs are born smaller and weaker "
-#| "than the rest, and already almost as newborns are put in their place by "
-#| "their stronger siblings. The stronger ones will routinely grab most of "
-#| "the food and thus grow stronger still, while their weaker siblings do "
-#| "not. Many of these individuals tend to specialize in other skills, like "
-#| "archery or assassination."
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -7858,7 +7438,7 @@ msgstr ""
 "többiek, és az erősebb testvéreik már újszülöttként kiszorítják őket. Az "
 "erősebbek elragadják az étel nagyját, és így erősebbre, nagyobbra nőnek, míg "
 "a gyengébb testvérek nem. Közülük sokan másban szereznek jártasságot, mint "
-"az íjászat és az orgyilkosság."
+"az íjászat és az orgyilkosság.\n"
 
 #. [race]: id=orc
 #: data/core/units.cfg:342
@@ -7871,24 +7451,18 @@ msgstr ""
 
 #. [race]: id=raven
 #: data/core/units.cfg:351
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Raven"
-msgstr "Törpök"
+msgstr "Holló"
 
 #. [race]: id=raven
 #: data/core/units.cfg:352
-#, fuzzy
-#| msgid "race+female^Drake"
 msgid "race+female^Raven"
-msgstr "Perzsekény"
+msgstr "Holló"
 
 #. [race]: id=raven
 #: data/core/units.cfg:353
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Ravens"
-msgstr "Törpök"
+msgstr "Hollók"
 
 #. [race]: id=raven
 #: data/core/units.cfg:354
@@ -7927,43 +7501,6 @@ msgstr "Trollok"
 
 #. [race]: id=troll
 #: data/core/units.cfg:368
-#, fuzzy
-#| msgid ""
-#| "Trolls are ancient creatures, one of the oldest known races known to "
-#| "inhabit the Great Continent. They are large, slow, simple-minded, and "
-#| "live extremely long lives inside deep caves or atop high mountains. The "
-#| "most unique characteristic of trolls is an internal vitality that "
-#| "sustains and heals them from within. As a result they live very different "
-#| "lives from almost any known creature. Trolls have few real needs: they "
-#| "require little food or water, and thus they have little incentive to "
-#| "pursue much besides protection from those who are hostile towards them. "
-#| "This in turn means they rarely have to worry about anything and can spend "
-#| "much of their time sleeping or in contemplation. Trolls have a curious "
-#| "affinity with nature. They do not relate with living things like elves "
-#| "do, but instead with earth and stone. They are also somewhat curious of "
-#| "their surroundings and many younger whelps even enjoy traveling and "
-#| "seeing the world. As trolls grow older they tend to become increasingly "
-#| "passive, gradually losing interest in their environment and spending more "
-#| "of their time sleeping in a quiet, familiar corner of their home cave. "
-#| "This is until they finally pass away as their bodies themselves slowly "
-#| "turn into lifeless statues of stone.\n"
-#| "\n"
-#| "Trolls are seen by many as being little more than yet another race of "
-#| "savage monsters. This common misconception is in part perpetuated by orcs "
-#| "to persuade trolls to join their armies. Because they are rather simple "
-#| "and do not understand the ways of other races or sometimes can even tell "
-#| "them apart, it is usually easy for an orcish band to convince a group of "
-#| "trolls that by joining them they get to exact revenge on those that have "
-#| "before hunted them. These new recruits are then directed to attack "
-#| "whoever the orcs themselves are currently in conflict with, whether "
-#| "previously a foe of the trolls or not, accumulating even more enemies for "
-#| "the misled trolls. The most common enemy of trolls are dwarves, and the "
-#| "animosity between these two races is ancient.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Trolls have inhabited the mountains of the Great Continent longer than "
-#| "the dwarves who migrated there. Trolls are a common sight on the mountain "
-#| "ranges north and east of Wesnoth, and wherever Orcish hordes travel."
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -8054,32 +7591,6 @@ msgstr "Élőholtak"
 
 #. [race]: id=undead
 #: data/core/units.cfg:391
-#, fuzzy
-#| msgid ""
-#| "Undead are not really a single race of creatures, although often treated "
-#| "as such. Almost any dead creature can, by a sufficiently skilled "
-#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
-#| "most part unnatural but mindless constructs, obeying whoever created them "
-#| "without question nor thought. A greater mystery of necromancy is in how "
-#| "constructs are sustained without continuous effort from the necromancer. "
-#| "An undead creature does not require the constant attention of the "
-#| "necromancer to command and sustain, but can work autonomously according "
-#| "to the commands of its master. Only rarely, perhaps once every few "
-#| "months, does the necromancer need to maintain his creation.\n"
-#| "\n"
-#| "Necromancy is almost solely limited to humans. Even the legends of "
-#| "magically apt races like elves and mermen tell of very few of their kind "
-#| "who have ever delved in the dark arts. It is surmised that necromantic "
-#| "magic requires great adaptability and a flexible mind, extremes of which "
-#| "are most commonly found in humans. The ultimate goal of most necromancers "
-#| "is to turn the same art of preserving and imbuing life upon themselves, "
-#| "to alter themselves at whatever cost, to ultimately escape death by "
-#| "preserving their own mind and spirit.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "While undead lords arrived on the Great Continent in considerable numbers "
-#| "only in the wake of Haldric I, they were not completely unheard of by "
-#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -8226,19 +7737,17 @@ msgstr "+1 max ÉP"
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/lua/stun.lua:14
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
+msgstr "kábult: Ez az egység elkábult. Nem érvényesül a befolyási zónája."
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:24
-#, fuzzy
-#| msgid "female^undead"
 msgid "female^stunned"
-msgstr "élőholt"
+msgstr "kábult"
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:26
 msgid "stunned"
-msgstr ""
+msgstr "kábult"
 
 #: src/help/help.cpp:211
 msgid "Close"
@@ -8266,6 +7775,8 @@ msgstr ""
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
+"A falvak lehetővé teszik, hogy az ott állomásozó egységek meggyógyuljanak, "
+"vagy kigyógyuljanak a mérgezésből."
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
@@ -8277,13 +7788,19 @@ msgid_plural ""
 "This terrain allows units to heal $amount hitpoints, or to be cured of "
 "poison, as if stationed in a village."
 msgstr[0] ""
+"Ez a terep lehetővé teszi az egységek számára, hogy kigyógyuljanak a "
+"mérgezésből, vagy egyetlen életerőpontot gyógyuljanak."
 msgstr[1] ""
+"Ez a terep lehetővé teszi az egységek számára, hogy kigyógyuljanak a "
+"mérgezésből, vagy $amount életerőpontot gyógyuljanak."
 
 #: src/help/help_topic_generators.cpp:173
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr ""
+"Ez a terep egy kastély – egységeket lehet toborozni rajta egy kapcsolódó "
+"vártoronyból."
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
 #: src/help/help_topic_generators.cpp:177
@@ -8291,6 +7808,8 @@ msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
 msgstr ""
+"Ez a terep egy vártorony — egy vezető ebből a mezőből toborozhat a "
+"kapcsolódó kastélymezőkre."
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
 #: src/help/help_topic_generators.cpp:180
@@ -8298,37 +7817,32 @@ msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
+"Ez a szokatlan vártorony lehetővé teszi a vezető számára, hogy toborozzon, "
+"miközben rajta áll, de nem teszi lehetővé, hogy egy kapcsolódó vártornyon "
+"lévő vezető toborozzon erre a mezőre."
 
 #: src/help/help_topic_generators.cpp:184
 #: src/help/help_topic_generators.cpp:604
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
+#| msgid "Special Notes"
 msgid "Special Notes:"
-msgstr ""
-"\n"
-"\n"
-"Megjegyzés:"
+msgstr "Megjegyzések"
 
 #: src/help/help_topic_generators.cpp:193
+#, fuzzy
+#| msgid "base terrain"
 msgid "Base Terrain: "
-msgstr "Alap terep: "
+msgstr "alapterep"
 
 #: src/help/help_topic_generators.cpp:213
-#, fuzzy
-#| msgid "Movement Cost"
 msgid "Movement properties: "
-msgstr "Lépéspontköltség"
+msgstr "Mozgásjellemzők: "
 
 #: src/help/help_topic_generators.cpp:217
 msgid "Defense properties: "
-msgstr ""
+msgstr "Védekezési jellemzők: "
 
 #: src/help/help_topic_generators.cpp:297
-#, fuzzy
-#| msgid "level"
 msgid "Level"
 msgstr "szint"
 
@@ -8337,10 +7851,8 @@ msgid "Advances from: "
 msgstr "Szintlépés ebből: "
 
 #: src/help/help_topic_generators.cpp:363
-#, fuzzy
-#| msgid "Advances from: "
 msgid "Advances to: "
-msgstr "Szintlépés ebből: "
+msgstr "Előléptetés: "
 
 #: src/help/help_topic_generators.cpp:392
 msgid "Base unit: "
@@ -8374,64 +7886,50 @@ msgstr "Képességek továbbfejlesztése: "
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:567
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "ÉP: "
+msgstr "ÉP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:571
-#, fuzzy
-#| msgid "Moves: "
 msgid "Moves:"
-msgstr "Lépés: "
+msgstr "Lépés:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:576
-#, fuzzy
-#| msgid "Vision: "
 msgid "Vision:"
-msgstr "Látótáv: "
+msgstr "Látótáv:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:582
-#, fuzzy
-#| msgid "Jamming: "
 msgid "Jamming:"
-msgstr "Zavarás: "
+msgstr "Zavarás:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:587
-#, fuzzy
-#| msgid "Cost: "
 msgid "Cost:"
-msgstr "Ár: "
+msgstr "Költség:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:591
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
-msgstr "Beállítottság: "
+msgstr "Beállítottság:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:598
-#, fuzzy
-#| msgid "Required XP: "
 msgid "Required XP:"
-msgstr "TP követelmény: "
+msgstr "TP követelmény:"
 
 #: src/help/help_topic_generators.cpp:616
 msgid "unit help^Attacks"
@@ -8470,8 +7968,6 @@ msgid "Resistance"
 msgstr "Ellenállás"
 
 #: src/help/help_topic_generators.cpp:737
-#, fuzzy
-#| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "Terepfüggő jellemzők"
 
@@ -8488,10 +7984,8 @@ msgid "Movement Cost"
 msgstr "Lépéspontköltség"
 
 #: src/help/help_topic_generators.cpp:747
-#, fuzzy
-#| msgid "Defense"
 msgid "Defense Cap"
-msgstr "Védekezés"
+msgstr "Védekezési korlát"
 
 #: src/help/help_topic_generators.cpp:752
 msgid "Vision Cost"
@@ -8500,6 +7994,178 @@ msgstr "Látáspontköltség"
 #: src/help/help_topic_generators.cpp:756
 msgid "Jamming Cost"
 msgstr "Zavaráspontköltség"
+
+#~ msgid "Separate Event Files"
+#~ msgstr "Eseményfájlok elkülönítése"
+
+#~ msgid ""
+#~ "The Ford of Abez is a crossing between Wesnoth and the Northlands, and is "
+#~ "the westernmost point where the Great River can be crossed without ships."
+#~ msgstr ""
+#~ "Az Abez gázlója egy átkelő Wesnoth és Északföld között, és a legnyugatibb "
+#~ "pont, ahol a Nagy Folyón hajók nélkül lehet átkelni."
+
+#~ msgid ""
+#~ "The Kingdom of Wesnoth is located in the north-central portion of the "
+#~ "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
+#~ "mainline campaigns revolve around it. It is bounded on the map by the "
+#~ "<ref>dst='great_river' text='Great River'</ref> to the north, the shore "
+#~ "of the <ref>dst='great_ocean' text='ocean'</ref> to the west, the "
+#~ "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
+#~ "ref>, and the Bitter Swamp to the southeast.\n"
+#~ "\n"
+#~ "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
+#~ "region. It is bounded to the south (off-map) by dense woods of which the "
+#~ "Aethenwood may be considered a northernmost extension."
+#~ msgstr ""
+#~ "A Wesnoth Királyság a <ref>dst='great_continent' text='Nagy Kontinens'</"
+#~ "ref> északi-középső részén található. A legtöbb fő hadjárat e körül "
+#~ "forog. A térképen északon a <ref>dst='great_river' text='Nagy Folyó'</"
+#~ "ref> , nyugaton a <ref>dst='great_ocean' text='Nagy Óceán'</ref> partja, "
+#~ "az Aethenwood <ref>dst='southwest_elven_lands' text='délnyugaton'</ref> "
+#~ "és a Bitter Swamp délkeleten határolja.\n"
+#~ "\n"
+#~ "Az Aethen folyó felett, Fort Tahntól délre, Wesnoth határvidéke "
+#~ "található. Délről (térképen kívül) sűrű erdők határolják, amelyek közül "
+#~ "az Aethenwood a legészakibb nyúlványnak tekinthető."
+
+#, fuzzy
+#~ msgid ""
+#~ "The Wood Elves are separate from those of the north, and have only "
+#~ "intermittent relations with them and most other countries. Its borders "
+#~ "are the <ref>dst='great_ocean' text='ocean'</ref> to the west, the Black "
+#~ "River to the south and southeast, the lands of Wesnoth to the north and "
+#~ "the Kerlath province to the east."
+#~ msgstr ""
+#~ "Az erdei tündék az északiaktól elkülönülten élnek, csak időnként kerülnek "
+#~ "kapcsolatba velük, vagy más országokkal. Területük határai nyugaton az "
+#~ "<ref>dst='great_ocean' text='óceán'</ref>, délen és délkeleten a Fekete-"
+#~ "folyó, Wesnoth földjei északon és Kerlath tartománya keleten.\n"
+#~ "\n"
+#~ "<header>text='Jelentős városok:'</header>\n"
+#~ "    • Nem ismert.\n"
+#~ "\n"
+#~ "<header>text='Jelentős szárazföldi területek:'</header>\n"
+#~ "    • Aethen-erdőség: A legnagyobb déli rengeteg neve, amely messze délre "
+#~ "húzódik, és a <ref>dst='..race_elf' text='tündék'</ref> otthona. Noha a "
+#~ "tündék nem tesznek ilyen különbséget, Kerlath lakói az erdő déli részét "
+#~ "Déli-erdőnek hívják.\n"
+#~ "    • Fekete-erdő: Egy ősi erdőség, melyről nem sok ismerettel "
+#~ "rendelkezünk, az elfek rég elhagyták."
+
+#, fuzzy
+#~ msgid ""
+#~ "<header>text='Notable land features:'</header>\n"
+#~ "    • Aethenwood: The largest southern forest, it extends far to the "
+#~ "south and is home to <ref>dst='..race_elf' text='elves'</ref>. Although "
+#~ "the elves make no such distinction, the southern part of the forest has "
+#~ "been named Southwood by denizens of Kerlath."
+#~ msgstr ""
+#~ "Az erdei tündék az északiaktól elkülönülten élnek, csak időnként kerülnek "
+#~ "kapcsolatba velük, vagy más országokkal. Területük határai nyugaton az "
+#~ "<ref>dst='great_ocean' text='óceán'</ref>, délen és délkeleten a Fekete-"
+#~ "folyó, Wesnoth földjei északon és Kerlath tartománya keleten.\n"
+#~ "\n"
+#~ "<header>text='Jelentős városok:'</header>\n"
+#~ "    • Nem ismert.\n"
+#~ "\n"
+#~ "<header>text='Jelentős szárazföldi területek:'</header>\n"
+#~ "    • Aethen-erdőség: A legnagyobb déli rengeteg neve, amely messze délre "
+#~ "húzódik, és a <ref>dst='..race_elf' text='tündék'</ref> otthona. Noha a "
+#~ "tündék nem tesznek ilyen különbséget, Kerlath lakói az erdő déli részét "
+#~ "Déli-erdőnek hívják.\n"
+#~ "    • Fekete-erdő: Egy ősi erdőség, melyről nem sok ismerettel "
+#~ "rendelkezünk, az elfek rég elhagyták."
+
+#~ msgid "Far South"
+#~ msgstr "messzi dél"
+
+#~ msgid ""
+#~ "A vast region south of Kerlath home to the Dunefolk Civilization. It is "
+#~ "also inhabited by many local creatures, including the Jinn and Wyverns."
+#~ msgstr ""
+#~ "Egy hatalmas régió Kerlathtól délre, amely a dűnelakók civilizációjának "
+#~ "ad otthont. Számos más teremtmény is él helyben, köztük a dzsinnek és a "
+#~ "sárkánygíkok."
+
+#~ msgid "Vision"
+#~ msgstr "Látótáv"
+
+#~ msgid "swamp lurk"
+#~ msgstr "lápi rejtőzködő"
+
+#~ msgid "female^swamp lurk"
+#~ msgstr "lápi rejtőzködő"
+
+#~ msgid ""
+#~ "This unit can hide in swamp, and remain undetected by its enemies.\n"
+#~ "\n"
+#~ "Enemy units cannot see this unit while it is in swamp, except if they "
+#~ "have units next to it. Any enemy unit that first discovers this unit "
+#~ "immediately loses all its remaining movement."
+#~ msgstr ""
+#~ "Ez az egység elrejtőzhet a mocsárban, ellenségei észrevétlenül.\n"
+#~ "\n"
+#~ "Az ellenséges egységek nem láthatják ezt az egységet, amíg mocsárban van, "
+#~ "kivéve, ha mellette állnak. Bármely ellenséges egység, amely először "
+#~ "felfedezi ezt az egységet, azonnal elveszíti az összes fennmaradó "
+#~ "mozgáspontját."
+
+#~ msgid "unwieldy"
+#~ msgstr "esetlen"
+
+#~ msgid "This attack can only be used offensively."
+#~ msgstr "Ez a csapás csak támadó jelleggel alkalmazható."
+
+#~ msgid "This unit has an unwieldy weapon, which cannot be used defensively."
+#~ msgstr ""
+#~ "Ennek az egységnek ormótlan fegyvere van, amelyet nem lehet védekezően "
+#~ "használni."
+
+#~ msgid "guard"
+#~ msgstr "védelmez"
+
+#~ msgid "This attack blocks half of the damage from its target’s strikes."
+#~ msgstr "Ez a támadás blokkolja a célpont csapásaiból származó sebzés felét."
+
+#~ msgid ""
+#~ "This unit’s guarding attack can halve incoming damage, but only when used "
+#~ "in combat."
+#~ msgstr ""
+#~ "Ennek az egységnek a védekező csapása felére csökkentheti a bejövő "
+#~ "sebzést, de csak akkor, ha harcban használják."
+
+#~ msgid "race^Cat"
+#~ msgstr "Macska"
+
+#~ msgid "race+female^Cat"
+#~ msgstr "Macska"
+
+#~ msgid "race^Cats"
+#~ msgstr "Macskák"
+
+#~ msgid "race^Ship"
+#~ msgstr "Hajó"
+
+#~ msgid "race+plural^Ships"
+#~ msgstr "Hajók"
+
+#~ msgid "Basic terrain type: $types"
+#~ msgid_plural "Basic terrain types: $types"
+#~ msgstr[0] "Alapterep típus: $types"
+#~ msgstr[1] "Alapterep típusok: $types"
+
+#~ msgid "Typical base terrain: $type"
+#~ msgstr "Tipikus alapterep: $type"
+
+#~ msgid "Attacks"
+#~ msgstr "Támadások"
+
+#~ msgid "Icon"
+#~ msgstr "Ikon"
+
+#~ msgid "Name"
+#~ msgstr "Név"
 
 #, fuzzy
 #~| msgid "first strike"
@@ -8821,9 +8487,6 @@ msgstr "Zavaráspontköltség"
 
 #~ msgid "race+female^Khalifate Human"
 #~ msgstr "Kalifátusi ember"
-
-#~ msgid "race+plural^Khalifate"
-#~ msgstr "Kalifátusiak"
 
 #~ msgid "female^nightstalk"
 #~ msgstr "éjszakai lopakodás"
