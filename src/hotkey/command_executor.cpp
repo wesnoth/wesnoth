@@ -53,7 +53,7 @@ namespace {
 
 void make_screenshot(const std::string& name, bool map_screenshot)
 {
-	surface screenshot = display::get_singleton()->screenshot(map_screenshot);
+	const surface screenshot = display::get_singleton()->screenshot(map_screenshot);
 	if(screenshot) {
 		std::string filename = filesystem::get_screenshot_dir() + "/" + name + "_";
 		filename = filesystem::get_next_filename(filename, ".jpg");
@@ -418,7 +418,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 
 	int res = -1;
 	{
-		SDL_Rect pos {xloc, yloc, 1, 1};
+		const SDL_Rect pos{xloc, yloc, 1, 1};
 		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, true, false); // TODO: last value should be variable
 		if(mmenu.show()) {
 			res = mmenu.selected_item();
@@ -426,13 +426,13 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	} // This will kill the dialog.
 	if (res < 0 || std::size_t(res) >= items.size()) return;
 
-	std::string id = items[res]["id"];
+	const std::string id = items[res]["id"];
 	const theme::menu* submenu = gui.get_theme().get_menu_item(id);
 	if (submenu) {
 		auto [x, y] = sdl::get_mouse_location();
 		this->show_menu(submenu->items(), x, y, submenu->is_context(), gui);
 	} else {
-		hotkey::ui_command cmd = hotkey::ui_command(id, res);
+		const hotkey::ui_command cmd = hotkey::ui_command(id, res);
 		do_execute_command(cmd);
 		set_button_state();
 	}
@@ -447,7 +447,7 @@ void command_executor::execute_action(const std::vector<std::string>& items_arg,
 
 	std::vector<std::string>::iterator i = items.begin();
 	while(i != items.end()) {
-		hotkey::ui_command cmd = hotkey::ui_command(*i);
+		const hotkey::ui_command cmd = hotkey::ui_command(*i);
 		if (can_execute_command(cmd)) {
 			do_execute_command(cmd);
 			set_button_state();
@@ -461,7 +461,7 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 	const std::string base_image_name = "icons/action/" + command + "_25.png";
 	const std::string pressed_image_name = "icons/action/" + command + "_25-pressed.png";
 
-	hotkey::ui_command cmd = hotkey::ui_command(command, index);
+	const hotkey::ui_command cmd = hotkey::ui_command(command, index);
 	const hotkey::ACTION_STATE state = get_action_state(cmd);
 
 	const theme::menu* menu = disp.get_theme().get_menu_item(command);
@@ -501,7 +501,7 @@ void command_executor::get_menu_images(display& disp, std::vector<config>& items
 		const hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey_command(item_id).command;
 
 		//see if this menu item has an associated image
-		std::string img(get_menu_image(disp, item_id, i));
+		const std::string img(get_menu_image(disp, item_id, i));
 		if (img.empty() == false) {
 			item["icon"] = img;
 		}
@@ -567,7 +567,7 @@ void keyup_event(const SDL_Event&, command_executor* executor)
 void run_events(command_executor* executor)
 {
 	if(!executor) return;
-	bool commands_ran = executor->run_queued_commands();
+	const bool commands_ran = executor->run_queued_commands();
 	if(commands_ran) {
 		executor->set_button_state();
 	}
@@ -593,11 +593,10 @@ void command_executor::queue_command(const SDL_Event& event, int index)
 	}
 
 	const hotkey_command& command = hotkey::get_hotkey_command(hk->get_command());
-	bool keypress = (event.type == SDL_KEYDOWN || event.type == SDL_TEXTINPUT) &&
-		!press_event_sent_;
-	bool press = keypress ||
-		(event.type == SDL_JOYBUTTONDOWN || event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_FINGERDOWN);
-	bool release = event.type == SDL_KEYUP;
+	const bool keypress = (event.type == SDL_KEYDOWN || event.type == SDL_TEXTINPUT) && !press_event_sent_;
+	const bool press = keypress
+		|| (event.type == SDL_JOYBUTTONDOWN || event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_FINGERDOWN);
+	const bool release = event.type == SDL_KEYUP;
 	if(press) {
 		LOG_HK << "sending press event (keypress = " <<
 			std::boolalpha << keypress << std::noboolalpha << ")";
@@ -668,14 +667,12 @@ void command_executor_default::set_button_state()
 {
 	display& disp = get_display();
 	for (const theme::menu& menu : disp.get_theme().menus()) {
-
-		std::shared_ptr<gui::button> button = disp.find_menu_button(menu.get_id());
+		const std::shared_ptr<gui::button> button = disp.find_menu_button(menu.get_id());
 		if (!button) continue;
 		bool enabled = false;
 		for (const auto& command : menu.items()) {
-
-			ui_command command_obj = ui_command(command["id"].str());
-			bool can_execute = can_execute_command(command_obj);
+			const ui_command command_obj = ui_command(command["id"].str());
+			const bool can_execute = can_execute_command(command_obj);
 			if (can_execute) {
 				enabled = true;
 				break;
@@ -685,26 +682,24 @@ void command_executor_default::set_button_state()
 	}
 
 	for (const theme::action& action : disp.get_theme().actions()) {
-
-		std::shared_ptr<gui::button> button = disp.find_action_button(action.get_id());
+		const std::shared_ptr<gui::button> button = disp.find_action_button(action.get_id());
 		if (!button) continue;
 		bool enabled = false;
 		int i = 0;
 		for (const std::string& command : action.items()) {
-
-			ui_command command_obj = ui_command(command);
-			std::string tooltip = action.tooltip(i);
+			const ui_command command_obj = ui_command(command);
+			const std::string tooltip = action.tooltip(i);
 			if (filesystem::file_exists(game_config::path + "/images/icons/action/" + command + "_25.png" ))
 				button->set_overlay("icons/action/" + command);
 			if (!tooltip.empty())
 				button->set_tooltip_string(tooltip);
 
-			bool can_execute = can_execute_command(command_obj);
+			const bool can_execute = can_execute_command(command_obj);
 			i++;
 			if (!can_execute) continue;
 			enabled = true;
 
-			ACTION_STATE state = get_action_state(command_obj);
+			ACTION_STATE const state = get_action_state(command_obj);
 			switch (state) {
 			case ACTION_SELECTED:
 			case ACTION_ON:
@@ -737,7 +732,7 @@ std::vector<command_executor::queued_command> command_executor::filter_command_q
 	std::set<command_with_keyrelease> seen_commands;
 
 	for(const queued_command& cmd : command_queue_) {
-		command_with_keyrelease command_key(cmd.command, cmd.release);
+		const command_with_keyrelease command_key(cmd.command, cmd.release);
 		if(seen_commands.find(command_key) == seen_commands.end()) {
 			seen_commands.insert(command_key);
 			filtered_commands.push_back(cmd);
@@ -751,7 +746,7 @@ std::vector<command_executor::queued_command> command_executor::filter_command_q
 
 bool command_executor::run_queued_commands()
 {
-	std::vector<queued_command> commands = filter_command_queue();
+	const std::vector<queued_command> commands = filter_command_queue();
 	for(const queued_command& cmd : commands) {
 		execute_command_wrap(cmd);
 	}

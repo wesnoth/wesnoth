@@ -64,20 +64,20 @@ namespace {
 		}
 
 		char** end = nullptr;
-		int res = strtol(&s[0], end, 10);
+		const int res = strtol(&s[0], end, 10);
 		return res;
 	}
 
 	std::pair<int, int> parse_single_range(string_view s)
 	{
-		int dash_pos = s.find('-');
+		const int dash_pos = s.find('-');
 		if(dash_pos == int(string_view::npos)) {
-			int res = atoi(s);
+			const int res = atoi(s);
 			return {res, res};
 		}
 		else {
-			string_view first = s.substr(0, dash_pos);
-			string_view second = s.substr(dash_pos + 1);
+			const string_view first = s.substr(0, dash_pos);
+			const string_view second = s.substr(dash_pos + 1);
 			return {atoi(first), atoi(second)};
 		}
 	}
@@ -87,7 +87,7 @@ namespace {
 		dynamic_bitset res;
 		utils::split_foreach(s, ',', utils::STRIP_SPACES, [&](string_view part){
 			auto pair = parse_single_range(part);
-			int m = std::max(pair.first, pair.second);
+			const int m = std::max(pair.first, pair.second);
 			if(m >= int(res.size())) {
 				res.resize(m + 1);
 				for(int i = pair.first; i <= pair.second; ++i) {
@@ -168,7 +168,7 @@ static std::set<map_location> luaW_to_locationset(lua_State* L, int index)
 	}
 	if(!lua_istable(L, index)) return res;
 	lua_pushvalue(L, index);
-	size_t len = lua_rawlen(L, -1);
+	const size_t len = lua_rawlen(L, -1);
 	for(size_t i = 0; i != len; ++i) {
 		lua_geti(L, -1, i + 1);
 		res.insert(luaW_checklocation(L, -1));
@@ -198,7 +198,7 @@ public:
 		:list_()
 	{
 		LOG_LMG << "creating con filter";
-		size_t len = lua_rawlen(L, -1);
+		const size_t len = lua_rawlen(L, -1);
 		for(size_t i = 1; i != len; ++i) {
 			lua_geti(L, -1, i + 1);
 			list_.emplace_back(build_filter(L, res_index, ks));
@@ -308,8 +308,8 @@ public:
 	bool matches(const gamemap_base& m, map_location l) const override
 	{
 		LOG_MATCHES(cached);
-		int cache_size = 2 * m.total_width() * m.total_height();
-		int loc_index = 2 * (l.wml_x() + l.wml_y() * m.total_width());
+		const int cache_size = 2 * m.total_width() * m.total_height();
+		const int loc_index = 2 * (l.wml_x() + l.wml_y() * m.total_width());
 
 		if(int(cache_.size()) != cache_size) {
 			cache_ = dynamic_bitset(cache_size);
@@ -318,7 +318,7 @@ public:
 			return cache_[loc_index + 1];
 		}
 		else {
-			bool res = filter_->matches(m, l);
+			const bool res = filter_->matches(m, l);
 			cache_[loc_index] = true;
 			cache_[loc_index + 1] = res;
 			return res;
@@ -443,7 +443,7 @@ public:
 		// is_odd == is_even in wml coordinates.
 		const offset_list_t& offsets = (l.wml_x() & 1) ?  odd_offsets_ : even_offsets_;
 		for(const auto& offset : offsets) {
-			map_location ad = {l.x + offset.first, l.y + offset.second};
+			const map_location ad = {l.x + offset.first, l.y + offset.second};
 			if(m.on_board_with_border(ad) && filter_->matches(m, ad)) {
 				if(accepted_counts_.size() == 0) {
 					return true;
@@ -466,7 +466,7 @@ public:
 		: set_(nullptr)
 	{
 		LOG_LMG << "creating findin filter";
-		int idx = lua_absindex(L, -1);
+		const int idx = lua_absindex(L, -1);
 		switch(lua_geti(L, idx, 2)) {
 		case LUA_TTABLE:
 			// Also accepts a single location of the form {x,y} or {x=x,y=y}
@@ -493,7 +493,7 @@ public:
 	}
 
 	void init_from_single_loc(int x, int y) {
-		map_location loc(x, y, wml_loc());
+		const map_location loc(x, y, wml_loc());
 		inline_.insert(loc);
 		set_ = &inline_;
 	}
@@ -571,7 +571,7 @@ public:
 			}
 		);
 
-		for (map_location lr : result) {
+		for(const map_location lr : result) {
 			if(!filter_ || filter_->matches(m, lr)) {
 				return true;
 			}
@@ -600,7 +600,7 @@ public:
 		LOG_MATCHES(formula);
 		try {
 			const wfl::location_callable callable1(l);
-			wfl::map_formula_callable callable(callable1.fake_ptr());
+			const wfl::map_formula_callable callable(callable1.fake_ptr());
 			return (formula_.get() != nullptr) && formula_->evaluate(callable).as_bool();
 		} catch(const wfl::formula_error& e) {
 			ERR_LMG << "Formula error: " << e.type << " at " << e.filename << ':' << e.line << ")";
@@ -636,7 +636,7 @@ std::unique_ptr<filter_impl> build_filter(lua_State* L, int res_index, known_set
 		throw invalid_lua_argument("buildfilter: expected table");
 	}
 	lua_rawgeti(L, -1, 1);
-	std::string s = std::string(luaW_tostring(L, -1));
+	const std::string s = std::string(luaW_tostring(L, -1));
 	LOG_LMG << "buildfilter: got: " << s;
 	auto it = keys.find(s);
 	if(it == keys.end()) {
@@ -718,7 +718,7 @@ int intf_mg_get_locations(lua_State* L)
 	LOG_LMG <<  "map:get_locations vaidargs";
 	if(!lua_isnone(L, 3)) {
 		LOG_LMG <<  "map:get_locations some locations";
-		location_set s = luaW_to_locationset(L, 3);
+		const location_set s = luaW_to_locationset(L, 3);
 		LOG_LMG <<  "map:get_locations #args = " << s.size();
 		for (const map_location& l : s) {
 			if(f->matches(m, l)) {
@@ -745,7 +745,7 @@ int intf_mg_get_tiles_radius(lua_State* L)
 {
 	gamemap_base& m = luaW_checkterrainmap(L, 1);
 	location_set s = luaW_to_locationset(L, 2);
-	int r = luaL_checkinteger(L, 3);
+	const int r = luaL_checkinteger(L, 3);
 	const auto f = luaW_check_mgfilter(L, 4, true);
 	location_set res;
 	get_tiles_radius(std::move(s), r, res,

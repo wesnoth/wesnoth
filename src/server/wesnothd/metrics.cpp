@@ -86,8 +86,8 @@ void metrics::record_sample(const simple_wml::string_span& name,
 		if(samples_.size() > 30) {
 			return;
 		}
-		int index = std::distance(samples_.begin(), isample);
-		simple_wml::string_span dup_name(name.duplicate());
+		const int index = std::distance(samples_.begin(), isample);
+		const simple_wml::string_span dup_name(name.duplicate());
 		sample new_sample;
 		new_sample.name = dup_name;
 		samples_.insert(isample, new_sample);

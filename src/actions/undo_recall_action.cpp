@@ -70,18 +70,18 @@ bool recall_action::undo(int side)
 	team &current_team = resources::gameboard->get_team(side);
 
 	const map_location & recall_loc = route.front();
-	unit_map::iterator un_it = units.find(recall_loc);
+	const unit_map::iterator un_it = units.find(recall_loc);
 	if ( un_it == units.end() ) {
 		return false;
 	}
 
-	unit_ptr un = un_it.get_shared_ptr();
+	const unit_ptr un = un_it.get_shared_ptr();
 	if (!un) {
 		return false;
 	}
 
 	resources::controller->statistics().un_recall_unit(*un);
-	int cost = un->recall_cost();
+	const int cost = un->recall_cost();
 	if (cost < 0) {
 		current_team.spend_gold(-current_team.recall_cost());
 	}

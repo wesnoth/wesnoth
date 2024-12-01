@@ -192,7 +192,7 @@ namespace {
 
 		using comp_list = std::vector<unsigned int>;
 		using comp_pair = std::tuple<const comp_list&, const std::string&>;
-		Fcn<comp_pair> comp;
+		const Fcn<comp_pair> comp;
 
 		const comp_pair& lp = std::tie(lc, l.special_version());
 		const comp_pair& rp = std::tie(rc, r.special_version());

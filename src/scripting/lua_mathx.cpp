@@ -28,8 +28,8 @@ namespace lua_mathx {
 static int intf_random(lua_State* L)
 {
 	if (lua_isnoneornil(L, 1)) {
-		double r = static_cast<double>(randomness::generator->next_random());
-		double r_max = static_cast<double>(std::numeric_limits<uint32_t>::max());
+		const double r = static_cast<double>(randomness::generator->next_random());
+		const double r_max = static_cast<double>(std::numeric_limits<uint32_t>::max());
 		lua_push(L, r / (r_max + 1));
 		return 1;
 	}
@@ -53,7 +53,7 @@ static int intf_random(lua_State* L)
 }
 
 static int intf_round(lua_State* L) {
-	double n = lua_tonumber(L, 1);
+	const double n = lua_tonumber(L, 1);
 	lua_pushinteger(L, std::round(n));
 	return 1;
 }

@@ -64,7 +64,8 @@ bool stage_unit_formulas::do_play_stage()
 				int priority = 0;
 				if (i->formula_manager().has_priority_formula()) {
 					try {
-						wfl::const_formula_ptr priority_formula(fai_.create_optional_formula(i->formula_manager().get_priority_formula()));
+						const wfl::const_formula_ptr priority_formula(
+							fai_.create_optional_formula(i->formula_manager().get_priority_formula()));
 						if (priority_formula) {
 							wfl::map_formula_callable callable(fai_.fake_ptr());
 							callable.add("me", wfl::variant(std::make_shared<wfl::unit_callable>(*i)));
@@ -91,13 +92,14 @@ bool stage_unit_formulas::do_play_stage()
 
 	for(wfl::unit_formula_set::iterator pair_it = units_with_formulas.begin() ; pair_it != units_with_formulas.end() ; ++pair_it)
 	{
-		unit_map::iterator i = pair_it->first;
+		const unit_map::iterator i = pair_it->first;
 
 		if( i.valid() ) {
 
 			if (i->formula_manager().has_formula()) {
 				try {
-					wfl::const_formula_ptr formula(fai_.create_optional_formula(i->formula_manager().get_formula()));
+					const wfl::const_formula_ptr formula(
+						fai_.create_optional_formula(i->formula_manager().get_formula()));
 					if (formula) {
 						wfl::map_formula_callable callable(fai_.fake_ptr());
 						callable.add("me", wfl::variant(std::make_shared<wfl::unit_callable>(*i)));
@@ -119,7 +121,8 @@ bool stage_unit_formulas::do_play_stage()
 			if (i->formula_manager().has_loop_formula())
 			{
 				try {
-					wfl::const_formula_ptr loop_formula(fai_.create_optional_formula(i->formula_manager().get_loop_formula()));
+					const wfl::const_formula_ptr loop_formula(
+						fai_.create_optional_formula(i->formula_manager().get_loop_formula()));
 					if (loop_formula) {
 						wfl::map_formula_callable callable(fai_.fake_ptr());
 						callable.add("me", wfl::variant(std::make_shared<wfl::unit_callable>(*i)));

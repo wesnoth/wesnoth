@@ -98,7 +98,7 @@ std::unique_ptr<widget> build_single_widget_instance_helper(const std::string& t
 	const auto& iter = widget_builder_lookup().find(type);
 	VALIDATE(iter != widget_builder_lookup().end(), "Invalid widget type '" + type + "'");
 
-	widget_builder_func_t& builder = iter->second;
+	const widget_builder_func_t& builder = iter->second;
 	return builder(cfg)->build();
 }
 
@@ -109,7 +109,7 @@ void builder_window::read(const config& cfg)
 
 	DBG_GUI_P << "Window builder: reading data for window " << id_ << ".";
 
-	config::const_child_itors cfgs = cfg.child_range("resolution");
+	const config::const_child_itors cfgs = cfg.child_range("resolution");
 	VALIDATE(!cfgs.empty(), _("No resolution defined for ") + id_);
 
 	for(const auto& i : cfgs) {

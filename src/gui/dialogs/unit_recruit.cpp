@@ -138,8 +138,7 @@ void unit_recruit::pre_show()
 		widget_data row_data;
 		widget_item column;
 
-		std::string	image_string = recruit->image() + "~RC(" + recruit->flag_rgb() + ">"
-			+ team_.color() + ")";
+		const std::string image_string = recruit->image() + "~RC(" + recruit->flag_rgb() + ">" + team_.color() + ")";
 
 		const bool is_recruitable = error.empty();
 

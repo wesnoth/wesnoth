@@ -113,7 +113,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings2 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -129,7 +129,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings3 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -146,7 +146,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings4 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -162,7 +162,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings5 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -178,7 +178,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings6 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -195,7 +195,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings7 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -211,7 +211,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings8 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -227,7 +227,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings9 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -245,7 +245,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings10 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -262,7 +262,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings11 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -279,7 +279,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings12 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -296,11 +296,9 @@ BOOST_AUTO_TEST_CASE( flg_map_settings13 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
-	ng::side_engine_ptr side_engine;
-	config side;
-
-
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const ng::side_engine_ptr side_engine;
+	const config side;
 }
 
 BOOST_AUTO_TEST_CASE( flg_map_settings14 )
@@ -308,7 +306,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings14 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -325,7 +323,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings15 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -346,11 +344,9 @@ BOOST_AUTO_TEST_CASE( flg_map_settings16 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
-	ng::side_engine_ptr side_engine;
-	config side;
-
-
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const ng::side_engine_ptr side_engine;
+	const config side;
 }
 
 BOOST_AUTO_TEST_CASE( flg_map_settings17 )
@@ -358,7 +354,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings17 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -374,7 +370,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings18 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -391,7 +387,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings19 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -408,7 +404,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings20 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -425,7 +421,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings21 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -442,7 +438,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings22 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -460,7 +456,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings23 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -477,11 +473,9 @@ BOOST_AUTO_TEST_CASE( flg_map_settings24 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
-	ng::side_engine_ptr side_engine;
-	config side;
-
-
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const ng::side_engine_ptr side_engine;
+	const config side;
 }
 
 BOOST_AUTO_TEST_CASE( flg_map_settings25 )
@@ -489,7 +483,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings25 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -506,7 +500,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings26 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -525,7 +519,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings27 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -545,7 +539,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings28 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 
@@ -566,7 +560,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings29 )
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
 	state->mp_settings().saved_game = saved_game_mode::type::no;
-	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
 	ng::side_engine_ptr side_engine;
 	config side;
 

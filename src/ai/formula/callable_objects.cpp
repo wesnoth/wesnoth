@@ -79,7 +79,7 @@ int move_callable::do_compare(const formula_callable* callable) const
 	const map_location& other_src = mv_callable->src_;
 	const map_location& other_dst = mv_callable->dst_;
 
-	if (int cmp = src_.do_compare(other_src)) {
+	if(const int cmp = src_.do_compare(other_src)) {
 		return cmp;
 	}
 
@@ -88,7 +88,7 @@ int move_callable::do_compare(const formula_callable* callable) const
 
 variant move_callable::execute_self(variant ctxt) {
 	ai_context& ai = get_ai_context(ctxt.as_callable());
-	move_result_ptr move_result = ai.execute_move_action(src_, dst_, true);
+	const move_result_ptr move_result = ai.execute_move_action(src_, dst_, true);
 
 	if(!move_result->is_ok()) {
 		LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move' formula function";
@@ -108,7 +108,7 @@ int move_partial_callable::do_compare(const formula_callable* callable) const
 	const map_location& other_src = mv_callable->src_;
 	const map_location& other_dst = mv_callable->dst_;
 
-	if (int cmp = src_.do_compare(other_src)) {
+	if(const int cmp = src_.do_compare(other_src)) {
 		return cmp;
 	}
 
@@ -117,7 +117,7 @@ int move_partial_callable::do_compare(const formula_callable* callable) const
 
 variant move_partial_callable::execute_self(variant ctxt) {
 	ai_context& ai = get_ai_context(ctxt.as_callable());
-	move_result_ptr move_result = ai.execute_move_action(src_, dst_, false);
+	const move_result_ptr move_result = ai.execute_move_action(src_, dst_, false);
 
 	if(!move_result->is_ok()) {
 		LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move_partial' formula function";
@@ -193,19 +193,19 @@ int attack_callable::do_compare(const wfl::formula_callable* callable)
 
 	const map_location& other_from = a_callable->move_from();
 
-	if (int cmp = move_from_.do_compare(other_from)) {
+	if(const int cmp = move_from_.do_compare(other_from)) {
 		return cmp;
 	}
 	const map_location& other_src = a_callable->src();
-	if (int cmp = src_.do_compare(other_src)) {
+	if(const int cmp = src_.do_compare(other_src)) {
 		return cmp;
 	}
 	const map_location& other_dst = a_callable->dst();
-	if (int cmp = dst_.do_compare(other_dst)) {
+	if(const int cmp = dst_.do_compare(other_dst)) {
 		return cmp;
 	}
 	const int other_weapon = a_callable->weapon();
-	if (int cmp = (this->weapon() - other_weapon)) {
+	if(const int cmp = (this->weapon() - other_weapon)) {
 		return cmp;
 	}
 	const int other_def_weapon = a_callable->defender_weapon();
@@ -230,7 +230,7 @@ variant attack_callable::execute_self(variant ctxt) {
 
 	if(!move_result || move_result->is_ok()) {
 		//if move wasn't done at all or was done successfully
-		attack_result_ptr attack_result = ai.execute_attack_action(src_, dst_, weapon());
+		const attack_result_ptr attack_result = ai.execute_attack_action(src_, dst_, weapon());
 		gamestate_changed |= attack_result->is_gamestate_changed();
 		if(!attack_result->is_ok()) {
 			//attack failed
@@ -273,7 +273,7 @@ void attack_map_callable::collect_possible_attacks(std::vector<variant>& vars, m
 		/* if adjacent tile is outside the board */
 		if (! resources::gameboard->map().on_board(adj))
 			continue;
-		unit_map::const_iterator unit = units_.find(adj);
+		const unit_map::const_iterator unit = units_.find(adj);
 		/* if tile is empty */
 		if (unit == units_.end())
 			continue;
@@ -303,7 +303,7 @@ void recall_callable::get_inputs(formula_input_vector& inputs) const {
 
 variant recall_callable::execute_self(variant ctxt) {
 	ai_context& ai = get_ai_context(ctxt.as_callable());
-	recall_result_ptr recall_result = ai.check_recall_action(id_, loc_);
+	const recall_result_ptr recall_result = ai.check_recall_action(id_, loc_);
 
 	if(recall_result->is_ok()) {
 		recall_result->execute();
@@ -330,7 +330,7 @@ void recruit_callable::get_inputs(formula_input_vector& inputs) const {
 
 variant recruit_callable::execute_self(variant ctxt) {
 	ai_context& ai = get_ai_context(ctxt.as_callable());
-	recruit_result_ptr recruit_result = ai.check_recruit_action(type_, loc_);
+	const recruit_result_ptr recruit_result = ai.check_recruit_action(type_, loc_);
 
 	//is_ok()==true means that the action is successful (eg. no unexpected events)
 	//is_ok() must be checked or the code will complain :)

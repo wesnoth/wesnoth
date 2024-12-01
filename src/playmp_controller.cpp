@@ -145,7 +145,7 @@ void playmp_controller::play_human_turn()
 			}
 
 			if(timer) {
-				bool time_left = timer->update();
+				const bool time_left = timer->update();
 				if(!time_left) {
 					end_turn_requested_ = true;
 				}
@@ -258,7 +258,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const
 		temp_buf << " \n";
 	}
 
-	scoped_savegame_snapshot snapshot(*this);
+	const scoped_savegame_snapshot snapshot(*this);
 	savegame::oos_savegame save(saved_game_, ignore_replay_errors_);
 
 	save.save_game_interactive(temp_buf.str(), savegame::savegame::YES_NO);
@@ -434,7 +434,7 @@ playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_i
 	}
 	else if (cfg.has_child("whiteboard"))
 	{
-		set_scontext_unsynced scontext;
+		const set_scontext_unsynced scontext;
 		get_whiteboard()->process_network_data(cfg);
 	}
 	else if (auto change = cfg.optional_child("change_controller"))
@@ -493,7 +493,7 @@ void playmp_controller::process_network_side_drop_impl(const config& side_drop_c
 {
 	// Only the host receives this message when a player leaves/disconnects.
 	const int  side_drop = side_drop_c["side_num"].to_int(0);
-	std::size_t index = side_drop -1;
+	const std::size_t index = side_drop - 1;
 
 	player_type_changed_ |= side_drop == game_display::get_singleton()->playing_team().side();
 
@@ -521,7 +521,7 @@ void playmp_controller::process_network_side_drop_impl(const config& side_drop_c
 	int action = 0;
 	int first_observer_option_idx = 0;
 	int control_change_options = 0;
-	bool has_next_scenario = gamestate().has_next_scenario();
+	const bool has_next_scenario = gamestate().has_next_scenario();
 
 	std::vector<std::string> observers;
 	std::vector<const team *> allies;
@@ -671,7 +671,7 @@ void playmp_controller::send_actions()
 	const bool send_everything = synced_context::is_unsynced() ? !undo_stack().can_undo() : synced_context::undo_blocked();
 	const replay::DATA_TYPE data_type = send_everything ? replay::ALL_DATA : replay::NON_UNDO_DATA;
 
-	config data = recorder().get_unsent_commands(data_type);
+	const config data = recorder().get_unsent_commands(data_type);
 	if (!data.empty()) {
 		send_to_wesnothd(config{ "turn", data});
 	}

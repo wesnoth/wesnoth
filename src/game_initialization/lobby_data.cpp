@@ -179,7 +179,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 			era = era_cfg["name"].str();
 
 			if(require) {
-				addon_req result = check_addon_version_compatibility(*era_cfg, game);
+				const addon_req result = check_addon_version_compatibility(*era_cfg, game);
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			}
 		} else {
@@ -205,7 +205,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 
 		if(cfg["require_modification"].to_bool(true)) {
 			if(auto mod = game_config.find_child("modification", "id", cfg["id"])) {
-				addon_req result = check_addon_version_compatibility(*mod, game);
+				const addon_req result = check_addon_version_compatibility(*mod, game);
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			} else {
 				have_all_mods = false;
@@ -230,7 +230,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		info_stream << " — ??×??";
 	} else {
 		try {
-			gamemap map(map_data);
+			const gamemap map(map_data);
 			std::ostringstream msi;
 			msi << map.w() << font::unicode_multiplication_sign << map.h();
 			map_size_info = msi.str();
@@ -267,7 +267,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 			// to test them, since they always would appear as remote scenarios
 			if(!reloaded) {
 				if(auto hashes = game_config.optional_child("multiplayer_hashes")) {
-					std::string hash = game["hash"];
+					const std::string hash = game["hash"];
 					bool hash_found = false;
 					for(const auto & i : hashes->attribute_range()) {
 						if(i.first == game["mp_scenario"] && i.second == hash) {
@@ -286,7 +286,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 			}
 
 			if(require) {
-				addon_req result = check_addon_version_compatibility((*level_cfg), game);
+				const addon_req result = check_addon_version_compatibility((*level_cfg), game);
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			}
 		} else {
@@ -322,8 +322,8 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 
 			// TODO: should we have this?
 			//if(game["require_scenario"].to_bool(false)) {
-				addon_req result = check_addon_version_compatibility(*campaign_cfg, game);
-				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
+			const addon_req result = check_addon_version_compatibility(*campaign_cfg, game);
+			addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			//}
 		} else {
 			type_marker = make_game_type_marker(_("campaign_abbreviation^C"), true);

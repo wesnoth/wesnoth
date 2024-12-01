@@ -91,7 +91,7 @@ wfl::map_formula_callable rich_label::setup_text_renderer(config text_cfg, unsig
 }
 
 point rich_label::get_text_size(config& text_cfg, unsigned width) const {
-	wfl::map_formula_callable variables = setup_text_renderer(text_cfg, width);
+	const wfl::map_formula_callable variables = setup_text_renderer(text_cfg, width);
 	return {
 		variables.query_value("text_width").as_int(),
 		variables.query_value("text_height").as_int()
@@ -111,9 +111,9 @@ point rich_label::get_image_size(config& img_cfg) const {
 
 std::pair<size_t, size_t> rich_label::add_text(config& curr_item, const std::string& text) {
 	auto& attr = curr_item["text"];
-	size_t start = attr.str().size();
+	const size_t start = attr.str().size();
 	attr = attr.str() + std::move(text);
-	size_t end = attr.str().size();
+	const size_t end = attr.str().size();
 	return { start, end };
 }
 
@@ -188,7 +188,7 @@ void rich_label::add_link(config& curr_item, const std::string& name, const std:
 	t_start = origin + get_xy_from_offset(utf8::size(curr_item["text"].str()));
 	DBG_GUI_RL << "link text start:" << t_start;
 
-	std::string link_text = name.empty() ? dest : name;
+	const std::string link_text = name.empty() ? dest : name;
 	add_text_with_attribute(curr_item, link_text, "color", link_color_.to_hex_string());
 
 	setup_text_renderer(curr_item, init_w_ - origin.x - img_width);
@@ -199,19 +199,19 @@ void rich_label::add_link(config& curr_item, const std::string& name, const std:
 
 	// Add link
 	if (t_end.x > t_start.x) {
-		rect link_rect{ t_start, point{t_end.x - t_start.x, font::get_max_height(font_size_) }};
+		const rect link_rect{t_start, point{t_end.x - t_start.x, font::get_max_height(font_size_)}};
 		links_.emplace_back(link_rect, dest);
 
 		DBG_GUI_RL << "added link at rect: " << link_rect;
 
 	} else {
 		//link straddles two lines, break into two rects
-		point t_size(size_.x - t_start.x - (origin.x == 0 ? img_width : 0), t_end.y - t_start.y);
-		point link_start2(origin.x, t_start.y + 1.3*font::get_max_height(font_size_));
-		point t_size2(t_end.x, t_end.y - t_start.y);
+		const point t_size(size_.x - t_start.x - (origin.x == 0 ? img_width : 0), t_end.y - t_start.y);
+		const point link_start2(origin.x, t_start.y + 1.3 * font::get_max_height(font_size_));
+		const point t_size2(t_end.x, t_end.y - t_start.y);
 
-		rect link_rect{ t_start, point{ t_size.x, font::get_max_height(font_size_) } };
-		rect link_rect2{ link_start2, point{ t_size2.x, font::get_max_height(font_size_) } };
+		const rect link_rect{t_start, point{t_size.x, font::get_max_height(font_size_)}};
+		const rect link_rect2{link_start2, point{t_size2.x, font::get_max_height(font_size_)}};
 
 		links_.emplace_back(link_rect, dest);
 		links_.emplace_back(link_rect2, dest);
@@ -261,7 +261,7 @@ void rich_label::set_topic(const help::topic* topic) {
 void rich_label::set_label(const t_string& text) {
 	styled_widget::set_label(text);
 	unparsed_text_ = text;
-	help::topic_text marked_up_text(text);
+	const help::topic_text marked_up_text(text);
 	std::tie(text_dom_, size_) = get_parsed_text(marked_up_text.parsed_text(), point(0,0), init_w_, true);
 }
 
@@ -302,9 +302,9 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 	for(const auto [key, child] : parsed_text.all_children_view()) {
 		if(key == "img") {
-			std::string name = child["src"];
-			std::string align = child["align"];
-			bool is_curr_float = child["float"].to_bool(false);
+			const std::string name = child["src"];
+			const std::string align = child["align"];
+			const bool is_curr_float = child["float"].to_bool(false);
 
 			curr_item = &(text_dom.add_child("image"));
 			add_image(*curr_item, name, align, is_image, is_curr_float);
@@ -354,13 +354,13 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 			// init table vars
 			unsigned col_idx = 0;
-			unsigned rows = child.child_count("row");
+			const unsigned rows = child.child_count("row");
 			unsigned columns = 1;
 			if (rows > 0) {
 				columns = child.mandatory_child("row").child_count("col");
 			}
 			columns = (columns == 0) ? 1 : columns;
-			unsigned width = child["width"].to_int(init_width);
+			const unsigned width = child["width"].to_int(init_width);
 			unsigned col_x = 0;
 			unsigned row_y = prev_blk_height;
 			unsigned max_row_height = 0;
@@ -620,17 +620,18 @@ std::pair<config, point> rich_label::get_parsed_text(
 				if (wrap_mode && (float_size.y > 0) && (text_size.y > float_size.y)) {
 					DBG_GUI_RL << "wrap start";
 
-					size_t len = get_split_location((*curr_item)["text"].str(), point(init_width - float_size.x, float_size.y * video::get_pixel_scale()));
+					const size_t len = get_split_location((*curr_item)["text"].str(),
+						point(init_width - float_size.x, float_size.y * video::get_pixel_scale()));
 					DBG_GUI_RL << "wrap around area: " << float_size;
 
 					// first part of the text
-					std::string removed_part = (*curr_item)["text"].str().substr(len+1);
+					const std::string removed_part = (*curr_item)["text"].str().substr(len + 1);
 					(*curr_item)["text"] = (*curr_item)["text"].str().substr(0, len);
 					(*curr_item)["maximum_width"] = init_width - float_size.x;
 					(*curr_item)["actions"] = boost::str(boost::format("([set_var('pos_x', 0), set_var('ww', 0), set_var('pos_y', pos_y + text_height + %d)])") % (0.3*font::get_max_height(font_size_)));
 
 					// Height update
-					int ah = get_text_size(*curr_item, init_width - float_size.x).y;
+					const int ah = get_text_size(*curr_item, init_width - float_size.x).y;
 					if (tmp_h > ah) {
 						tmp_h = 0;
 					}
@@ -665,8 +666,8 @@ std::pair<config, point> rich_label::get_parsed_text(
 				is_image = false;
 			}
 
-			point size = get_text_size(*curr_item, init_width - (x == 0 ? float_size.x : x));
-			int ah = size.y;
+			const point size = get_text_size(*curr_item, init_width - (x == 0 ? float_size.x : x));
+			const int ah = size.y;
 			// update text size and widget height
 			if (tmp_h > ah) {
 				tmp_h = 0;
@@ -836,7 +837,7 @@ void rich_label::signal_handler_left_button_click(bool& handled)
 		return; // without marking event as "handled"
 	}
 
-	point mouse = get_mouse_position() - get_origin();
+	const point mouse = get_mouse_position() - get_origin();
 
 	DBG_GUI_RL << "(mouse) " << mouse;
 	DBG_GUI_RL << "link count :" << links_.size();
@@ -867,7 +868,7 @@ void rich_label::signal_handler_mouse_motion(bool& handled, const point& coordin
 		return; // without marking event as "handled"
 	}
 
-	point mouse = coordinate - get_origin();
+	const point mouse = coordinate - get_origin();
 
 	for (const auto& entry : links_) {
 		if (entry.first.contains(mouse)) {

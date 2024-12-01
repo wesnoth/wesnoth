@@ -51,7 +51,7 @@ IMPLEMENT_ACTION(unit_delete)
 std::unique_ptr<editor_action> editor_action_unit_delete::perform(map_context& mc) const
 {
 	unit_map& units = mc.units();
-	unit_map::const_unit_iterator unit_it = units.find(loc_);
+	const unit_map::const_unit_iterator unit_it = units.find(loc_);
 
 	if(unit_it != units.end()) {
 		auto undo = std::make_unique<editor_action_unit>(loc_, *unit_it);
@@ -87,7 +87,7 @@ void editor_action_unit_replace::perform_without_undo(map_context& mc) const
 	units.move(loc_, new_loc_);
 	unit::clear_status_caches();
 
-	unit& u = *units.find(new_loc_);
+	const unit& u = *units.find(new_loc_);
 
 	// TODO do we still need set_standing?
 	u.anim_comp().set_standing();
@@ -118,7 +118,7 @@ std::unique_ptr<editor_action> editor_action_unit_facing::perform(map_context& m
 void editor_action_unit_facing::perform_without_undo(map_context& mc) const
 {
 	unit_map& units = mc.units();
-	unit_map::unit_iterator unit_it = units.find(loc_);
+	const unit_map::unit_iterator unit_it = units.find(loc_);
 
 	if(unit_it != units.end()) {
 		unit_it->set_facing(new_direction_);

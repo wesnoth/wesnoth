@@ -145,7 +145,7 @@ hotkey_ptr create_hotkey(const std::string& id, const SDL_Event& event)
 		}
 		auto keyboard = std::make_shared<hotkey_keyboard>();
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
-		std::string text = std::string(event.text.text);
+		const std::string text = std::string(event.text.text);
 		keyboard->set_text(text);
 		if(text == ":" || text == "`") {
 			mods = mods & ~KMOD_SHIFT;
@@ -191,7 +191,7 @@ hotkey_ptr load_from_config(const config& cfg)
 		auto keyboard = std::make_shared<hotkey_keyboard>();
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 
-		SDL_Keycode keycode = SDL_GetKeyFromName(key_cfg.c_str());
+		const SDL_Keycode keycode = SDL_GetKeyFromName(key_cfg.c_str());
 		if(keycode == SDLK_UNKNOWN) {
 			ERR_G << "Unknown key: " << key_cfg;
 		}
@@ -229,7 +229,7 @@ bool hotkey_mouse::matches_helper(const SDL_Event& event) const
 		return false;
 	}
 
-	unsigned mods = sdl::get_mods();
+	const unsigned mods = sdl::get_mods();
 	if((mods != mod_)) {
 		return false;
 	}
@@ -348,7 +348,7 @@ void add_hotkey(hotkey_ptr item)
 
 void clear_hotkeys(const std::string& command)
 {
-	for(hotkey::hotkey_ptr& item : hotkeys_) {
+	for(const hotkey::hotkey_ptr& item : hotkeys_) {
 		if(item->get_command() == command) {
 			if(item->is_default()) {
 				item->disable();
@@ -390,7 +390,7 @@ void load_default_hotkeys(const game_config_view& cfg)
 void load_custom_hotkeys(const game_config_view& cfg)
 {
 	for(const config& hk : cfg.child_range("hotkey")) {
-		if(hotkey_ptr item = load_from_config(hk); !item->null()) {
+		if(const hotkey_ptr item = load_from_config(hk); !item->null()) {
 			item->unset_default();
 			add_hotkey(item);
 		}
@@ -417,7 +417,7 @@ void save_hotkeys(config& cfg)
 {
 	cfg.clear_children("hotkey");
 
-	for(hotkey_ptr& item : hotkeys_) {
+	for(const hotkey_ptr& item : hotkeys_) {
 		if((!item->is_default() && item->active()) || (item->is_default() && item->is_disabled())) {
 			item->save(cfg.add_child("hotkey"));
 		}
@@ -454,7 +454,7 @@ bool is_hotkeyable_event(const SDL_Event& event)
 		return true;
 	}
 
-	unsigned mods = sdl::get_mods();
+	const unsigned mods = sdl::get_mods();
 
 	if(mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI) {
 		return event.type == SDL_KEYUP;
