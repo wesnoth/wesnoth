@@ -72,14 +72,14 @@ public:
 			return BAD_SCORE;
 		}
 
-		std::shared_ptr<double> result = l_obj->get();
+		const std::shared_ptr<double> result = l_obj->get();
 
 		return result ? *result : 0.0;
 	}
 
 	virtual void execute()	{
 		if (execution_action_handler_) {
-			lua_object_ptr nil;
+			const lua_object_ptr nil;
 			execution_action_handler_->handle(serialized_evaluation_state_, serialized_filterown_, false, nil);
 		}
 	}
@@ -162,8 +162,8 @@ private:
 	bool use_parms_;
 
 	void generate_code(std::string& eval, std::string& exec) {
-		std::string preamble = "local self, params, data, filter_own = ...\n";
-		std::string load = "wesnoth.require(\"" + location_ + "\")";
+		const std::string preamble = "local self, params, data, filter_own = ...\n";
+		const std::string load = "wesnoth.require(\"" + location_ + "\")";
 		if (use_parms_) {
 			eval = preamble + "return " + load + ":evaluation(ai, {" + eval_parms_ + "}, {data = data})";
 			exec = preamble + load + ":execution(ai, {" + exec_parms_ + "}, {data = data})";
@@ -180,7 +180,7 @@ public:
 		: lua_candidate_action_wrapper(context, cfg, lua_ai_ctx)
 		, bound_unit_()
 	{
-		map_location loc(cfg["unit_x"], cfg["unit_y"], wml_loc()); // lua and c++ coords differ by one
+		const map_location loc(cfg["unit_x"], cfg["unit_y"], wml_loc()); // lua and c++ coords differ by one
 		bound_unit_ = (*resources::gameboard->units().find(loc)).clone();
 	}
 
@@ -233,7 +233,7 @@ public:
 		gamestate_observer gs_o;
 
 		if (action_handler_) {
-			lua_object_ptr nil;
+			const lua_object_ptr nil;
 			const config empty_cfg;
 			action_handler_->handle(serialized_evaluation_state_, empty_cfg, false, nil);
 		}
@@ -265,8 +265,8 @@ engine_lua::engine_lua( readonly_context &context, const config &cfg )
 		get_engine_code(cfg).c_str(), this))
 {
 	name_ = "lua";
-	config data(cfg.child_or_empty("data"));
-	config args(cfg.child_or_empty("args"));
+	const config data(cfg.child_or_empty("data"));
+	const config args(cfg.child_or_empty("args"));
 
 	if (lua_ai_context_) { // The context might be nullptr if the config contains errors
 		lua_ai_context_->set_persistent_data(data);
@@ -342,14 +342,14 @@ void engine_lua::do_parse_stage_from_config( ai_context &context, const config &
 void engine_lua::do_parse_aspect_from_config( const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr > > b )
 {
 	const std::string aspect_factory_key = id+"*lua_aspect"; // @note: factory key for a lua_aspect
-	lua_aspect_factory::factory_map::iterator f = lua_aspect_factory::get_list().find(aspect_factory_key);
+	const lua_aspect_factory::factory_map::iterator f = lua_aspect_factory::get_list().find(aspect_factory_key);
 
 	if (f == lua_aspect_factory::get_list().end()){
 		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNKNOWN aspect["<<aspect_factory_key<<"]";
 		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
-	aspect_ptr new_aspect = f->second->get_new_instance(ai_,cfg,id,lua_ai_context_);
+	const aspect_ptr new_aspect = f->second->get_new_instance(ai_, cfg, id, lua_ai_context_);
 	if (!new_aspect) {
 		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNABLE TO CREATE aspect, key=["<<aspect_factory_key<<"]";
 		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg;
@@ -360,13 +360,13 @@ void engine_lua::do_parse_aspect_from_config( const config &cfg, const std::stri
 
 void engine_lua::do_parse_goal_from_config(const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b )
 {
-	goal_factory::factory_map::iterator f = goal_factory::get_list().find(cfg["name"]);
+	const goal_factory::factory_map::iterator f = goal_factory::get_list().find(cfg["name"]);
 	if (f == goal_factory::get_list().end()){
 		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNKNOWN goal["<<cfg["name"]<<"]";
 		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
-	goal_ptr new_goal = f->second->get_new_instance(ai_,cfg);
+	const goal_ptr new_goal = f->second->get_new_instance(ai_, cfg);
 	new_goal->on_create(lua_ai_context_);
 	if (!new_goal || !new_goal->ok()) {
 		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNABLE TO CREATE goal["<<cfg["name"]<<"]";

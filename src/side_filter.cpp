@@ -94,7 +94,7 @@ bool side_filter::match_internal(const team &t) const
 		}
 	}
 
-	config::attribute_value cfg_team_name = cfg_["team_name"];
+	const config::attribute_value cfg_team_name = cfg_["team_name"];
 	if (!cfg_team_name.blank()) {
 		const std::string& that_team_name = cfg_team_name;
 		const std::string& this_team_name = t.team_name();
@@ -134,7 +134,8 @@ bool side_filter::match_internal(const team &t) const
 		}
 		if(!found && ufilt_cfg["search_recall_list"].to_bool(false)) {
 			for(const unit_const_ptr u : t.recall_list()) {
-				scoped_recall_unit this_unit("this_unit", t.save_id_or_number(), t.recall_list().find_index(u->id()));
+				const scoped_recall_unit this_unit(
+					"this_unit", t.save_id_or_number(), t.recall_list().find_index(u->id()));
 				if(ufilter_->matches(*u)) {
 					found = true;
 					break;
@@ -240,7 +241,7 @@ bool side_filter::match_internal(const team &t) const
 	}
 
 	if (cfg_.has_attribute("lua_function")) {
-		std::string lua_function = cfg_["lua_function"].str();
+		const std::string lua_function = cfg_["lua_function"].str();
 		if (!lua_function.empty() && fc_->get_lua_kernel()) {
 			if (!fc_->get_lua_kernel()->run_filter(lua_function.c_str(), t)) {
 				return false;

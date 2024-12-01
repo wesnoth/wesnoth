@@ -29,7 +29,7 @@ luaW_Registry::~luaW_Registry() {
 }
 
 int luaW_Registry::get(lua_State* L) {
-	std::string_view str = lua_check<std::string_view>(L, 2);
+	const std::string_view str = lua_check<std::string_view>(L, 2);
 
 	auto it = getters.find(std::string(str));
 	if(it != getters.end()) {
@@ -51,7 +51,7 @@ int luaW_Registry::get(lua_State* L) {
 }
 
 int luaW_Registry::set(lua_State* L) {
-	std::string_view str = lua_check<std::string_view>(L, 2);
+	const std::string_view str = lua_check<std::string_view>(L, 2);
 
 	auto it = setters.find(std::string(str));
 	if(it != setters.end()) {

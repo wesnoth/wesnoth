@@ -239,7 +239,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 		DBG_AI_GOAL << "side " << get_side() << ": "<< goal_type << " goal with criteria" << std::endl << cfg_.mandatory_child("criteria");
 	}
 
-	unit_map &units = resources::gameboard->units();
+	const unit_map& units = resources::gameboard->units();
 
 	std::set<map_location> items;
 	if (protect_unit_) {
@@ -265,7 +265,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 	{
 		for (const unit &u : units)
 		{
-			int distance = distance_between(u.get_location(), loc);
+			const int distance = distance_between(u.get_location(), loc);
 			if (current_team().is_enemy(u.side()) && distance < radius_ &&
 			    !u.invisible(u.get_location()))
 			{
@@ -309,15 +309,14 @@ void lua_goal::on_create(std::shared_ptr<ai::lua_ai_context> l_ctx)
 
 void lua_goal::add_targets(std::back_insert_iterator< std::vector< target >> target_list)
 {
-	std::shared_ptr<lua_object<std::vector<target>>> l_obj = std::make_shared<lua_object<std::vector<target>>>();
-	config c(cfg_.child_or_empty("args"));
+	const std::shared_ptr<lua_object<std::vector<target>>> l_obj = std::make_shared<lua_object<std::vector<target>>>();
+	const config c(cfg_.child_or_empty("args"));
 	const config empty_cfg;
 	handler_->handle(c, empty_cfg, true, l_obj);
 
-	std::vector < target > targets = *(l_obj->get());
+	const std::vector<target> targets = *(l_obj->get());
 
-	for (target tg : targets)
-	{
+	for(const target tg : targets) {
 		*target_list = tg;
 	}
 }

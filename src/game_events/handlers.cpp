@@ -68,7 +68,7 @@ event_handler::event_handler(const std::string& types, const std::string& id)
 
 std::vector<std::string> event_handler::names(const variable_set* vars) const
 {
-	std::string names = types_;
+	const std::string names = types_;
 
 	// Do some standardization on the name field.
 	// Split the name field and standardize each one individually.
@@ -255,11 +255,12 @@ struct filter_attack : public event_filter {
 			const auto u = unit_a->shared_from_this();
 			auto temp_weapon = event_info.data.optional_child(first_ ? "first" : "second");
 			if(temp_weapon){
-				const_attack_ptr attack = std::make_shared<const attack_type>(*temp_weapon);
+				const const_attack_ptr attack = std::make_shared<const attack_type>(*temp_weapon);
 				if(unit_d != units.end() && loc_d.matches_unit(unit_d)) {
 					const auto opp = unit_d->shared_from_this();
 					auto temp_other_weapon = event_info.data.optional_child(!first_ ? "first" : "second");
-					const_attack_ptr second_attack = temp_other_weapon ? std::make_shared<const attack_type>(*temp_other_weapon) : nullptr;
+					const const_attack_ptr second_attack
+						= temp_other_weapon ? std::make_shared<const attack_type>(*temp_other_weapon) : nullptr;
 					auto ctx = attack->specials_context(u, opp, loc, loc_d, first_, second_attack);
 					utils::optional<decltype(ctx)> opp_ctx;
 					if(second_attack){
@@ -291,9 +292,9 @@ struct filter_formula : public event_filter {
 	filter_formula(const std::string& formula) : formula_(formula) {}
 	bool operator()(const queued_event& event_info) const override
 	{
-		wfl::gamestate_callable gs;
-		wfl::event_callable evt(event_info);
-		wfl::formula_callable_with_backup data(evt, gs);
+		const wfl::gamestate_callable gs;
+		const wfl::event_callable evt(event_info);
+		const wfl::formula_callable_with_backup data(evt, gs);
 		return formula_.evaluate(data).as_bool();
 	}
 	void serialize(config& cfg) const override
@@ -339,7 +340,7 @@ struct filter_dynamic : public event_filter {
 	filter_dynamic(const std::string& tag, const std::string& var) : tag_(tag), var_(var) {}
 	bool operator()(const queued_event& event_info) const override
 	{
-		variable_access_const variable(var_, resources::gamedata->get_variables());
+		const variable_access_const variable(var_, resources::gamedata->get_variables());
 		if(!variable.exists_as_container()) return false;
 		if(auto filter = make_filter(tag_, vconfig(variable.as_container()))) {
 			return (*filter)(event_info);
@@ -363,7 +364,7 @@ private:
 void event_handler::read_filters(const config &cfg)
 {
 	for(const auto [filter_key, filter_cfg] : cfg.all_children_view()) {
-		vconfig vcfg(filter_cfg);
+		const vconfig vcfg(filter_cfg);
 		if(auto filter_ptr = make_filter(filter_key, vcfg)) {
 			add_filter(std::move(filter_ptr));
 		} else if(filter_key == "insert_tag" && make_filter(vcfg["name"], vconfig::empty_vconfig())) {

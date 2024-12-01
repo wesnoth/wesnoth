@@ -93,7 +93,7 @@ game_version::game_version(unsigned start_page)
 
 void game_version::pre_show()
 {
-	utils::string_map i18n_syms;
+	const utils::string_map i18n_syms;
 
 	tab_container& tabs = find_widget<tab_container>("tabs");
 

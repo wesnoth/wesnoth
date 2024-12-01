@@ -72,18 +72,18 @@ void mp_options_helper::update_game_options()
 	// For game options, we check for both types and remove them. This is to prevent options from a game
 	// of one type remaining visible when selecting a game of another type.
 	          remove_nodes_for_type("campaign");
-	int pos = remove_nodes_for_type("multiplayer");
+			  const int pos = remove_nodes_for_type("multiplayer");
 
-	display_custom_options(type, pos, create_engine_.current_level().data());
+			  display_custom_options(type, pos, create_engine_.current_level().data());
 
-	update_status_label();
+			  update_status_label();
 }
 
 void mp_options_helper::update_era_options()
 {
 	static const std::string type = "era";
 
-	int pos = remove_nodes_for_type(type);
+	const int pos = remove_nodes_for_type(type);
 
 	display_custom_options(type, pos, create_engine_.curent_era_cfg());
 
@@ -94,7 +94,7 @@ void mp_options_helper::update_mod_options()
 {
 	static const std::string type = "modification";
 
-	int pos = remove_nodes_for_type(type);
+	const int pos = remove_nodes_for_type(type);
 
 	for(const auto& mod : create_engine_.active_mods_data()) {
 		display_custom_options(type, pos, *mod->cfg);

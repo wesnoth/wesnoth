@@ -47,7 +47,7 @@ void scrollarea::update_location(const SDL_Rect& rect)
 	SDL_Rect r = rect;
 	shown_scrollbar_ = has_scrollbar();
 	if (shown_scrollbar_) {
-		int w = r.w - scrollbar_.width();
+		const int w = r.w - scrollbar_.width();
 		r.x += w;
 		r.w -= w;
 		scrollbar_.set_location(r);
@@ -124,7 +124,7 @@ void scrollarea::set_scroll_rate(unsigned r)
 
 void scrollarea::process_event()
 {
-	int grip_position = scrollbar_.get_position();
+	const int grip_position = scrollbar_.get_position();
 	if (grip_position == old_position_)
 		return;
 	old_position_ = grip_position;
@@ -170,7 +170,7 @@ void scrollarea::handle_event(const SDL_Event& event)
 		// These events are given as a proportion of the full game canvas.
 		// 0.0 is top/left edge, 1.0 is bottom/right edge.
 		// Thus first convert them to game pixels.
-		point canvas_size = video::game_canvas_size();
+		const point canvas_size = video::game_canvas_size();
 		auto tx = static_cast<int>(event.tfinger.x * canvas_size.x);
 		auto ty = static_cast<int>(event.tfinger.y * canvas_size.y);
 		auto dy = static_cast<int>(event.tfinger.dy * canvas_size.y);
@@ -188,7 +188,7 @@ void scrollarea::handle_event(const SDL_Event& event)
 				return;
 			}
 
-			int scrollbar_step = scrollbar_.height() / scrollbar_.get_max_position();
+			const int scrollbar_step = scrollbar_.height() / scrollbar_.get_max_position();
 			if (scrollbar_step <= 0) {
 				return;
 			}
@@ -196,9 +196,8 @@ void scrollarea::handle_event(const SDL_Event& event)
 			if (inner_location().contains(swipe_origin_.x, swipe_origin_.y)
 				&& abs(swipe_dy_) >= scrollbar_step)
 			{
-				unsigned int pos = std::max(
-						static_cast<int>(scrollbar_.get_position() - swipe_dy_ / scrollbar_step),
-						0);
+				const unsigned int pos
+					= std::max(static_cast<int>(scrollbar_.get_position() - swipe_dy_ / scrollbar_step), 0);
 				scrollbar_.set_position(pos);
 				swipe_dy_ %= scrollbar_step;
 			}

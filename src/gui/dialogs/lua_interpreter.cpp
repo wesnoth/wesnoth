@@ -242,7 +242,7 @@ public:
 				history_set_pos(history_length);
 
 				if (prefix_.size() > 0) {
-					int result = history_search_prefix(prefix_.c_str(), direction);
+					const int result = history_search_prefix(prefix_.c_str(), direction);
 					if (result == 0) {
 						e = current_history();
 					}
@@ -253,7 +253,7 @@ public:
 		} else {
 			e = (direction > 0) ? next_history() : previous_history();
 			if (prefix_.size() > 0 && e) {
-				int result = history_search_prefix(prefix_.c_str(), direction);
+				const int result = history_search_prefix(prefix_.c_str(), direction);
 				if (result == 0) {
 					e = current_history();
 				} else {
@@ -533,7 +533,7 @@ void lua_interpreter::controller::tab()
 	std::string text = text_entry->get_value();
 
 	std::string prefix;
-	std::size_t prefix_end_pos = text.find_last_of(" (");
+	const std::size_t prefix_end_pos = text.find_last_of(" (");
 	if (prefix_end_pos != std::string::npos) {
 		prefix = text.substr(0, prefix_end_pos + 1);
 		text = text.substr(prefix_end_pos + 1);
@@ -607,7 +607,7 @@ void lua_interpreter::controller::tab()
 
 void lua_interpreter::controller::search(int direction)
 {
-	std::string current_text = text_entry->get_value();
+	const std::string current_text = text_entry->get_value();
 	input_model_->maybe_update_prefix(current_text);
 	text_entry->set_value(input_model_->search(direction));
 

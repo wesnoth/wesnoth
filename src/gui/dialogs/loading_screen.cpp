@@ -182,7 +182,7 @@ void loading_screen::layout()
 
 	DBG_DP << "loading_screen::layout";
 
-	loading_stage stage = current_stage_.load(std::memory_order_acquire);
+	const loading_stage stage = current_stage_.load(std::memory_order_acquire);
 
 	if(stage != loading_stage::none && (current_visible_stage_ == visible_stages_.end() || stage != current_visible_stage_->first)) {
 		auto iter = visible_stages_.find(stage);

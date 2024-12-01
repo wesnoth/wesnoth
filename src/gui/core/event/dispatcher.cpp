@@ -151,7 +151,7 @@ void dispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id, const hotkey_f
 
 bool dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
 {
-	std::map<hotkey::HOTKEY_COMMAND, hotkey_function>::iterator itor = hotkeys_.find(id);
+	const std::map<hotkey::HOTKEY_COMMAND, hotkey_function>::iterator itor = hotkeys_.find(id);
 
 	if(itor == hotkeys_.end()) {
 		return false;

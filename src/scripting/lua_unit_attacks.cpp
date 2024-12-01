@@ -83,7 +83,7 @@ const_attack_ptr luaW_toweapon(lua_State* L, int idx)
 
 attack_type& luaW_checkweapon(lua_State* L, int idx)
 {
-	attack_ref& atk = luaW_checkweapon_ref(L, idx);
+	const attack_ref& atk = luaW_checkweapon_ref(L, idx);
 	if(!atk.attack) {
 		luaL_argerror(L, idx, "attack is read-only");
 	}
@@ -134,10 +134,12 @@ static int impl_unit_attacks_get(lua_State *L)
 	const unit_type* ut = luaW_tounittype(L, -1);
 	if(lu && lu->get()) {
 		unit* u = lu->get();
-		attack_ptr atk = lua_isnumber(L, 2) ? find_attack(u, luaL_checkinteger(L, 2) - 1) : find_attack(u, luaL_checkstring(L, 2));
+		const attack_ptr atk
+			= lua_isnumber(L, 2) ? find_attack(u, luaL_checkinteger(L, 2) - 1) : find_attack(u, luaL_checkstring(L, 2));
 		luaW_pushweapon(L, atk);
 	} else if(ut) {
-		const_attack_ptr atk = lua_isnumber(L, 2) ? find_attack(ut, luaL_checkinteger(L, 2) - 1) : find_attack(ut, luaL_checkstring(L, 2));
+		const const_attack_ptr atk = lua_isnumber(L, 2) ? find_attack(ut, luaL_checkinteger(L, 2) - 1)
+														: find_attack(ut, luaL_checkstring(L, 2));
 		luaW_pushweapon(L, atk);
 	} else {
 		return luaL_argerror(L, 1, "unit not found");
@@ -177,7 +179,7 @@ static int impl_unit_attacks_set(lua_State* L)
 	}
 
 	auto iter = get_attack_iter(u, atk), end = u.attacks().end();
-	if(const_attack_ptr atk2 = luaW_toweapon(L, 3)) {
+	if(const const_attack_ptr atk2 = luaW_toweapon(L, 3)) {
 		if(iter == end) {
 			atk = u.add_attack(end, *atk2);
 		} else {
@@ -185,7 +187,7 @@ static int impl_unit_attacks_set(lua_State* L)
 			atk = *iter.base();
 		}
 	} else {
-		config cfg = luaW_checkconfig(L, 3);
+		const config cfg = luaW_checkconfig(L, 3);
 		if(iter == end) {
 			atk = u.add_attack(end, cfg);
 		} else {
@@ -222,8 +224,8 @@ static int impl_unit_attacks_len(lua_State *L)
 static int impl_unit_attacks_next(lua_State *L)
 {
 	lua_len(L, 1);
-	int n = luaL_checkinteger(L, 2) + 1;
-	int max_n = luaL_checkinteger(L, -1);
+	const int n = luaL_checkinteger(L, 2) + 1;
+	const int max_n = luaL_checkinteger(L, -1);
 	if(n > max_n) {
 		return 0;
 	}
@@ -249,7 +251,7 @@ static int impl_unit_attacks_iter(lua_State* L)
  */
 static int impl_unit_attack_get(lua_State *L)
 {
-	attack_ref& atk_ref = luaW_checkweapon_ref(L, 1);
+	const attack_ref& atk_ref = luaW_checkweapon_ref(L, 1);
 	const attack_type& attack = *atk_ref.cattack;
 	char const *m = luaL_checkstring(L, 2);
 	return_bool_attrib("read_only", atk_ref.attack == nullptr);
@@ -318,8 +320,8 @@ static int impl_unit_attack_set(lua_State *L)
 
 static int impl_unit_attack_equal(lua_State* L)
 {
-	const_attack_ptr ut1 = luaW_toweapon(L, 1);
-	const_attack_ptr ut2 = luaW_toweapon(L, 2);
+	const const_attack_ptr ut1 = luaW_toweapon(L, 1);
+	const const_attack_ptr ut2 = luaW_toweapon(L, 2);
 	lua_pushboolean(L, ut1 == ut2);
 	return 1;
 }
@@ -329,7 +331,7 @@ static int impl_unit_attack_equal(lua_State* L)
  */
 static int impl_unit_attack_tostring(lua_State* L)
 {
-	const_attack_ptr atk = luaW_checkweapon_ref(L, 1).cattack;
+	const const_attack_ptr atk = luaW_checkweapon_ref(L, 1).cattack;
 	std::ostringstream str;
 	str << "weapon: <" << atk->id() << '>';
 	lua_push(L, str.str());
@@ -338,8 +340,8 @@ static int impl_unit_attack_tostring(lua_State* L)
 
 static int impl_unit_attack_match(lua_State* L)
 {
-	const_attack_ptr atk = luaW_toweapon(L, 1);
-	config cfg = luaW_checkconfig(L, 2);
+	const const_attack_ptr atk = luaW_toweapon(L, 1);
+	const config cfg = luaW_checkconfig(L, 2);
 	if(!atk) {
 		return luaL_argerror(L, 1, "invalid attack");
 	}

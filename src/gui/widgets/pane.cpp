@@ -132,7 +132,7 @@ unsigned pane::create_item(const widget_data& item_data,
 
 	items_.push_back(std::move(item));
 
-	event::message message;
+	const event::message message;
 	fire(event::REQUEST_PLACEMENT, *this, message);
 
 	return item.id;

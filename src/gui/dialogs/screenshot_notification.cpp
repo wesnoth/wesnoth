@@ -84,13 +84,13 @@ void screenshot_notification::pre_show()
 void screenshot_notification::save_screenshot()
 {
 	text_box& path_box = find_widget<text_box>("path");
-	std::string filename = path_box.get_value();
+	const std::string filename = path_box.get_value();
 	boost::filesystem::path path(screenshots_dir_path_);
 	path /= filename;
 
 	path_ = path.string();
 
-	image::save_result res = image::save_image(screenshot_, path.string());
+	const image::save_result res = image::save_image(screenshot_, path.string());
 	if(res == image::save_result::unsupported_format) {
 		gui2::show_error_message(_("Unsupported image format.\n\n"
 			"Try to save the screenshot as PNG instead."));

@@ -130,7 +130,7 @@ double move_to_targets_phase::evaluate()
 
 void move_to_targets_phase::execute()
 {
-	unit_map::const_iterator leader = resources::gameboard->units().find_leader(get_side());
+	const unit_map::const_iterator leader = resources::gameboard->units().find_leader(get_side());
 	LOG_AI << "finding targets...";
 	std::vector<target> targets;
 	while(true) {
@@ -151,7 +151,7 @@ void move_to_targets_phase::execute()
 		}
 
 		LOG_AI << "choosing move with " << targets.size() << " targets";
-		std::pair<map_location,map_location> move = choose_move(targets);
+		const std::pair<map_location, map_location> move = choose_move(targets);
 		LOG_AI << "choose_move ends with " << targets.size() << " targets";
 
 		for(std::vector<target>::const_iterator ittg = targets.begin();
@@ -168,7 +168,7 @@ void move_to_targets_phase::execute()
 
 		LOG_AI << "move: " << move.first << " -> " << move.second;
 
-		move_result_ptr move_ptr = execute_move_action(move.first,move.second,true);
+		const move_result_ptr move_ptr = execute_move_action(move.first, move.second, true);
 		if(!move_ptr->is_ok()) {
 			WRN_AI << "unexpected outcome of move";
 			break;
@@ -300,7 +300,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	std::vector<rated_target> rated_targets;
 	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
 		// passing a dummy route to have the maximal rating
-		double max_rating = rate_target(*tg, u, dstsrc, enemy_dstsrc, dummy_route);
+		const double max_rating = rate_target(*tg, u, dstsrc, enemy_dstsrc, dummy_route);
 		rated_targets.emplace_back(tg, max_rating);
 	}
 
@@ -330,14 +330,15 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 		// as it can cause the AI to give up on searches and just do nothing.
 		const double locStopValue = 500.0;
 		const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*u, current_team());
-		pathfind::plain_route real_route = a_star_search(u->get_location(), tg.loc, locStopValue, cost_calc, map_.w(), map_.h(), &allowed_teleports);
+		const pathfind::plain_route real_route
+			= a_star_search(u->get_location(), tg.loc, locStopValue, cost_calc, map_.w(), map_.h(), &allowed_teleports);
 
 		if(real_route.steps.empty()) {
 			LOG_AI << "Can't reach target: " << locStopValue << " = " << tg.value << "/" << best_rating;
 			continue;
 		}
 
-		double real_rating = rate_target(tg, u, dstsrc, enemy_dstsrc, real_route);
+		const double real_rating = rate_target(tg, u, dstsrc, enemy_dstsrc, real_route);
 
 		LOG_AI << tg.value << "/" << real_route.move_cost << " = " << real_rating;
 
@@ -372,7 +373,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	//if we have the 'simple_targeting' flag set, then we don't
 	//see if any other units can put a better bid forward for this
 	//target
-	bool simple_targeting = get_simple_targeting();
+	const bool simple_targeting = get_simple_targeting();
 
 	if(simple_targeting == false) {
 		LOG_AI << "complex targeting...";
@@ -394,13 +395,14 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 			// as it can cause the AI to give up on searches and just do nothing.
 			const double locStopValue = 500.0;
 			const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*u, current_team());
-			pathfind::plain_route cur_route = pathfind::a_star_search(u->get_location(), best_target->loc, locStopValue, calc, map_.w(), map_.h(), &allowed_teleports);
+			const pathfind::plain_route cur_route = pathfind::a_star_search(
+				u->get_location(), best_target->loc, locStopValue, calc, map_.w(), map_.h(), &allowed_teleports);
 
 			if(cur_route.steps.empty()) {
 				continue;
 			}
 
-			double rating = rate_target(*best_target, u, dstsrc, enemy_dstsrc, cur_route);
+			const double rating = rate_target(*best_target, u, dstsrc, enemy_dstsrc, cur_route);
 
 			if(best == units_.end() || rating > best_rating) {
 				best_rating = rating;
@@ -569,7 +571,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 			if (its.first->second == best->get_location()) {
 				if(!should_retreat(its.first->first,best,fullmove_srcdst,fullmove_dstsrc,enemy_dstsrc,
 								   get_caution())) {
-					double value = best_target->value - best->cost() / 20.0;
+					const double value = best_target->value - best->cost() / 20.0;
 
 					if(value > 0.0 && best_target->type != ai_target::type::mass) {
 						//there are enemies ahead. Rally troops around us to
@@ -626,9 +628,10 @@ void move_to_targets_phase::access_points(const move_map& srcdst, const map_loca
 	for(move_map::const_iterator i = locs.first; i != locs.second; ++i) {
 		const map_location& loc = i->second;
 		if (static_cast<int>(distance_between(loc,dst)) <= u_it->total_movement()) {
-			pathfind::shortest_path_calculator calc(*u_it, current_team(), resources::gameboard->teams(), map_);
+			const pathfind::shortest_path_calculator calc(*u_it, current_team(), resources::gameboard->teams(), map_);
 			const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*u_it, current_team());
-			pathfind::plain_route rt = a_star_search(loc, dst, u_it->total_movement(), calc, map_.w(), map_.h(), &allowed_teleports);
+			const pathfind::plain_route rt
+				= a_star_search(loc, dst, u_it->total_movement(), calc, map_.w(), map_.h(), &allowed_teleports);
 			if(rt.steps.empty() == false) {
 				out.push_back(loc);
 			}
@@ -759,7 +762,7 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 				continue;
 			}
 
-			int defense = un->defense_modifier(map_.get_terrain(*j));
+			const int defense = un->defense_modifier(map_.get_terrain(*j));
 			if(best_loc.valid() == false || defense < best_defense) {
 				best_loc = *j;
 				best_defense = defense;
@@ -767,7 +770,7 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 		}
 
 		if(best_loc.valid()) {
-			move_result_ptr move_res = execute_move_action(*i,best_loc);
+			const move_result_ptr move_res = execute_move_action(*i, best_loc);
 			gamestate_changed |= move_res->is_gamestate_changed();
 
 			//if we were ambushed or something went wrong,  abort the group's movement.
@@ -836,8 +839,8 @@ bool move_to_targets_phase::should_retreat(const map_location& loc, const unit_m
 		return false;
 	}
 
-	double optimal_terrain = best_defensive_position(un->get_location(), dstsrc,
-			srcdst, enemy_dstsrc).chance_to_hit/100.0;
+	const double optimal_terrain
+		= best_defensive_position(un->get_location(), dstsrc, srcdst, enemy_dstsrc).chance_to_hit / 100.0;
 	const double proposed_terrain =
 		un->defense_modifier(resources::gameboard->map().get_terrain(loc))/100.0;
 

@@ -253,7 +253,7 @@ bool game_launcher::init_language()
 
 	language_def locale;
 	if(cmdline_opts_.language) {
-		std::vector<language_def> langs = get_languages(true);
+		const std::vector<language_def> langs = get_languages(true);
 		for(const language_def& def : langs) {
 			if(def.localename == *cmdline_opts_.language) {
 				locale = def;
@@ -338,7 +338,7 @@ bool game_launcher::init_lua_script()
 			jump_to_editor_ = false;
 			jump_to_campaign_.jump = false;
 
-			std::string full_script((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
+			const std::string full_script((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
 
 			PLAIN_LOG << "\nRunning lua script: " << *cmdline_opts_.script_file;
 
@@ -350,7 +350,7 @@ bool game_launcher::init_lua_script()
 	}
 
 	if(cmdline_opts_.plugin_file) {
-		std::string filename = *cmdline_opts_.plugin_file;
+		const std::string filename = *cmdline_opts_.plugin_file;
 
 		PLAIN_LOG << "Loading a plugin file'" << filename << "'...";
 
@@ -366,11 +366,11 @@ bool game_launcher::init_lua_script()
 			jump_to_editor_ = false;
 			jump_to_campaign_.jump = false;
 
-			std::string full_plugin((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
+			const std::string full_plugin((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
 
 			plugins_manager& pm = *plugins_manager::get();
 
-			std::size_t i = pm.add_plugin(filename, full_plugin);
+			const std::size_t i = pm.add_plugin(filename, full_plugin);
 
 			for(std::size_t j = 0; j < pm.size(); ++j) {
 				PLAIN_LOG << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j);

@@ -128,8 +128,8 @@ void texture::set_draw_size(const point& p)
 
 void texture::set_src(const rect& r)
 {
-	rect dsrc = r.intersect({0, 0, w_, h_});
-	point rsize = get_raw_size();
+	const rect dsrc = r.intersect({0, 0, w_, h_});
+	const point rsize = get_raw_size();
 	if (draw_size() == rsize) {
 		src_ = dsrc;
 	} else {
@@ -143,7 +143,7 @@ void texture::set_src(const rect& r)
 
 void texture::set_src_raw(const rect& r)
 {
-	rect max = {{}, get_raw_size()};
+	const rect max = {{}, get_raw_size()};
 	src_ = r.intersect(max);
 	has_src_ = true;
 }

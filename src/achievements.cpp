@@ -60,7 +60,7 @@ achievement::achievement(const config& cfg, const std::string& content_for, bool
 
 	for(const config& sub_ach : cfg.child_range("sub_achievement"))
 	{
-		std::string sub_id = sub_ach["id"].str();
+		const std::string sub_id = sub_ach["id"].str();
 
 		if(sub_id.empty()) {
 			ERR_CONFIG << "Achievement " << id_ << " has a sub-achievement missing the id attribute:\n" << sub_ach.debug();
@@ -77,7 +77,7 @@ achievement_group::achievement_group(const config& cfg)
 	, achievements_()
 {
 	for(const config& ach : cfg.child_range("achievement")) {
-		std::string id = ach["id"].str();
+		const std::string id = ach["id"].str();
 
 		if(id.empty()) {
 			ERR_CONFIG << content_for_ + " achievement missing id attribute:\n" << ach.debug();
@@ -110,7 +110,7 @@ void achievements::reload()
 	achievement_list_.clear();
 	// mainline
 	try {
-		config cfg = read_achievements_file(game_config::path + "/data/achievements.cfg");
+		const config cfg = read_achievements_file(game_config::path + "/data/achievements.cfg");
 		process_achievements_file(cfg, "Mainline");
 	} catch(const game::error& e) {
 		ERR_CONFIG << "Error processing mainline achievements, ignoring: " << e.what();
@@ -121,7 +121,7 @@ void achievements::reload()
 	filesystem::get_files_in_dir(filesystem::get_addons_dir(), nullptr, &dirs);
 	for(const std::string& dir : dirs) {
 		try {
-			config cfg = read_achievements_file(filesystem::get_addons_dir() + "/" + dir + "/achievements.cfg");
+			const config cfg = read_achievements_file(filesystem::get_addons_dir() + "/" + dir + "/achievements.cfg");
 			process_achievements_file(cfg, dir);
 		} catch(const game::error& e) {
 			ERR_CONFIG << "Error processing add-on " << dir << " achievements, ignoring: " << e.what();

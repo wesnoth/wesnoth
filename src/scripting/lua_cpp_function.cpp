@@ -36,10 +36,10 @@ char const * cpp_function = "CPP_Function";
 static int intf_dispatcher ( lua_State* L )
 {
 	//make a temporary copy, in case lua_remove(L,1) might cause lua to garbage collect and destroy it
-	lua_function f = * static_cast<lua_function *> (luaL_checkudata(L, 1, cpp_function));
+	const lua_function f = *static_cast<lua_function*>(luaL_checkudata(L, 1, cpp_function));
 	// remove from the stack before executing, so that like all other callbacks, f finds only its intended arguments on the stack.
 	lua_remove(L,1);
-	int result = (f)(L);
+	const int result = (f)(L);
 	return result;
 }
 

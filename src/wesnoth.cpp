@@ -131,7 +131,7 @@ static void handle_preprocess_string(const commandline_options& cmdline_opts)
 	preproc_map defines_map;
 
 	if(cmdline_opts.preprocess_input_macros) {
-		std::string file = *cmdline_opts.preprocess_input_macros;
+		const std::string file = *cmdline_opts.preprocess_input_macros;
 		if(!filesystem::file_exists(file)) {
 			PLAIN_LOG << "please specify an existing file. File " << file << " doesn't exist.";
 			return;
@@ -189,7 +189,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	preproc_map input_macros;
 
 	if(cmdline_opts.preprocess_input_macros) {
-		std::string file = *cmdline_opts.preprocess_input_macros;
+		const std::string file = *cmdline_opts.preprocess_input_macros;
 		if(filesystem::file_exists(file) == false) {
 			PLAIN_LOG << "please specify an existing file. File " << file << " doesn't exist.";
 			return;
@@ -285,7 +285,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			outputFileName = *cmdline_opts.preprocess_output_macros;
 		}
 
-		std::string outputPath = targetDir + "/" + outputFileName;
+		const std::string outputPath = targetDir + "/" + outputFileName;
 
 		PLAIN_LOG << "writing '" << outputPath << "' with " << defines_map.size() << " defines.";
 
@@ -426,7 +426,8 @@ static int process_command_args(commandline_options& cmdline_opts)
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
 		if(game_config::path.empty()) {
 			if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
-				if(std::string auto_dir = filesystem::autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()) {
+				if(const std::string auto_dir = filesystem::autodetect_game_data_dir(std::move(exe_dir));
+					!auto_dir.empty()) {
 					if(!cmdline_opts.nobanner) {
 						PLAIN_LOG << "Automatically found a possible data directory at: " << auto_dir;
 					}
@@ -782,7 +783,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	if(!lg::log_dir_writable().value_or(true)) {
 		utils::string_map symbols;
 		symbols["logdir"] = filesystem::get_logs_dir();
-		std::string msg = VGETTEXT("Unable to create log files in directory $logdir. This is often caused by incorrect folder permissions, anti-virus software restricting folder access, or using OneDrive to manage your My Documents folder.", symbols);
+		const std::string msg = VGETTEXT("Unable to create log files in directory $logdir. This is often caused by incorrect folder permissions, anti-virus software restricting folder access, or using OneDrive to manage your My Documents folder.", symbols);
 		gui2::show_message(_("Logging Failure"), msg, message::ok_button);
 	}
 
@@ -821,7 +822,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		return 1;
 	}
 
-	plugins_manager plugins_man(new application_lua_kernel);
+	const plugins_manager plugins_man(new application_lua_kernel);
 
 	const plugins_context::reg_vec callbacks {
 		{"play_multiplayer", std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::mp_mode::CONNECT)},
@@ -991,7 +992,7 @@ int main(int argc, char** argv)
 
 	try {
 		commandline_options cmdline_opts = commandline_options(args);
-		int finished = process_command_args(cmdline_opts);
+		const int finished = process_command_args(cmdline_opts);
 
 		if(finished != -1) {
 #ifdef _WIN32
@@ -1020,7 +1021,7 @@ int main(int argc, char** argv)
 #endif
 
 		// declare this here so that it will always be at the front of the event queue.
-		events::event_context global_context;
+		const events::event_context global_context;
 
 		SDL_StartTextInput();
 

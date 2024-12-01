@@ -96,7 +96,7 @@ prefs::prefs()
 	}
 
 	for(const config& acfg : preferences_.child_range(prefs_list::acquaintance)) {
-		preferences::acquaintance ac = preferences::acquaintance(acfg);
+		const preferences::acquaintance ac = preferences::acquaintance(acfg);
 		acquaintances_[ac.get_nick()] = ac;
 	}
 }
@@ -114,7 +114,7 @@ prefs::~prefs()
 	set_child(prefs_list::completed_campaigns, campaigns);
 
 	preferences_[prefs_list::encountered_units] = utils::join(encountered_units_set_);
-	t_translation::ter_list terrain(encountered_terrains_set_.begin(), encountered_terrains_set_.end());
+	const t_translation::ter_list terrain(encountered_terrains_set_.begin(), encountered_terrains_set_.end());
 	preferences_[prefs_list::encountered_terrain_list] = t_translation::write_list(terrain);
 
 	/* Structure of the history
@@ -197,7 +197,8 @@ void prefs::migrate_preferences(const std::string& migrate_prefs_file)
 			read(old_cfg, *old_stream);
 
 			// when both files have the same attribute, use the one from whichever was most recently modified
-			bool current_prefs_are_older = filesystem::file_modified_time(filesystem::get_synced_prefs_file()) < filesystem::file_modified_time(migrate_prefs_file);
+			const bool current_prefs_are_older = filesystem::file_modified_time(filesystem::get_synced_prefs_file())
+				< filesystem::file_modified_time(migrate_prefs_file);
 			for(const auto& [key, value] : old_cfg.attribute_range()) {
 				if(current_prefs_are_older || !current_cfg.has_attribute(key)) {
 					preferences_[key] = value;
@@ -237,7 +238,7 @@ void prefs::load_preferences()
 {
 	preferences_.clear();
 	try{
-		config default_prefs;
+		const config default_prefs;
 		config unsynced_prefs;
 		config synced_prefs;
 #ifdef DEFAULT_PREFS_PATH
@@ -338,8 +339,8 @@ void prefs::load_preferences()
 void prefs::write_preferences()
 {
 #ifndef _WIN32
-	bool synced_prefs_file_existed = filesystem::file_exists(filesystem::get_synced_prefs_file());
-	bool unsynced_prefs_file_existed = filesystem::file_exists(filesystem::get_unsynced_prefs_file());
+	const bool synced_prefs_file_existed = filesystem::file_exists(filesystem::get_synced_prefs_file());
+	const bool unsynced_prefs_file_existed = filesystem::file_exists(filesystem::get_unsynced_prefs_file());
 #endif
 
 	config synced;
@@ -433,7 +434,7 @@ void prefs::load_credentials()
 		return;
 	}
 	clear_credentials();
-	std::string cred_file = filesystem::get_credentials_file();
+	const std::string cred_file = filesystem::get_credentials_file();
 	if(!filesystem::file_exists(cred_file)) {
 		return;
 	}
@@ -446,10 +447,10 @@ void prefs::load_credentials()
 		return;
 	}
 	for(const std::string& elem : utils::split(std::string(data.begin(), data.end()), pref_constants::CREDENTIAL_SEPARATOR, utils::REMOVE_EMPTY)) {
-		std::size_t at = elem.find_last_of('@');
-		std::size_t eq = elem.find_first_of('=', at + 1);
+		const std::size_t at = elem.find_last_of('@');
+		const std::size_t eq = elem.find_first_of('=', at + 1);
 		if(at != std::string::npos && eq != std::string::npos) {
-			preferences::secure_buffer key(elem.begin() + eq + 1, elem.end());
+			const preferences::secure_buffer key(elem.begin() + eq + 1, elem.end());
 			credentials_.emplace_back(elem.substr(0, at), elem.substr(at + 1, eq - at - 1), unescape(key));
 		}
 	}
@@ -463,7 +464,7 @@ void prefs::save_credentials()
 	}
 
 #ifndef _WIN32
-	bool creds_file_existed = filesystem::file_exists(filesystem::get_credentials_file());
+	const bool creds_file_existed = filesystem::file_exists(filesystem::get_credentials_file());
 #endif
 
 	preferences::secure_buffer credentials_data;
@@ -530,7 +531,7 @@ static std::string fix_orb_color_name(const std::string& color) {
 }
 
 std::string prefs::allied_color() {
-	std::string ally_color = preferences_[prefs_list::ally_orb_color].str();
+	const std::string ally_color = preferences_[prefs_list::ally_orb_color].str();
 	if (ally_color.empty())
 		return game_config::colors::ally_orb_color;
 	return fix_orb_color_name(ally_color);
@@ -540,7 +541,7 @@ void prefs::set_allied_color(const std::string& color_id) {
 }
 
 std::string prefs::enemy_color() {
-	std::string enemy_color = preferences_[prefs_list::enemy_orb_color].str();
+	const std::string enemy_color = preferences_[prefs_list::enemy_orb_color].str();
 	if (enemy_color.empty())
 		return game_config::colors::enemy_orb_color;
 	return fix_orb_color_name(enemy_color);
@@ -550,7 +551,7 @@ void prefs::set_enemy_color(const std::string& color_id) {
 }
 
 std::string prefs::moved_color() {
-	std::string moved_color = preferences_[prefs_list::moved_orb_color].str();
+	const std::string moved_color = preferences_[prefs_list::moved_orb_color].str();
 	if (moved_color.empty())
 		return game_config::colors::moved_orb_color;
 	return fix_orb_color_name(moved_color);
@@ -560,7 +561,7 @@ void prefs::set_moved_color(const std::string& color_id) {
 }
 
 std::string prefs::unmoved_color() {
-	std::string unmoved_color = preferences_[prefs_list::unmoved_orb_color].str();
+	const std::string unmoved_color = preferences_[prefs_list::unmoved_orb_color].str();
 	if (unmoved_color.empty())
 		return game_config::colors::unmoved_orb_color;
 	return fix_orb_color_name(unmoved_color);
@@ -570,7 +571,7 @@ void prefs::set_unmoved_color(const std::string& color_id) {
 }
 
 std::string prefs::partial_color() {
-	std::string partmoved_color = preferences_[prefs_list::partial_orb_color].str();
+	const std::string partmoved_color = preferences_[prefs_list::partial_orb_color].str();
 	if (partmoved_color.empty())
 		return game_config::colors::partial_orb_color;
 	return fix_orb_color_name(partmoved_color);
@@ -1002,7 +1003,7 @@ int prefs::progress_achievement(const std::string& content_for, const std::strin
 				if(in_progress["id"].str() == id)
 				{
 					// don't let using 'limit' decrease the achievement's current progress
-					int starting_progress = in_progress["progress_at"].to_int();
+					const int starting_progress = in_progress["progress_at"].to_int();
 					if(starting_progress >= limit) {
 						return starting_progress;
 					}
@@ -1400,7 +1401,7 @@ bool prefs::remove_acquaintance(const std::string& nick)
 
 	// nick might include the notes, depending on how we're removing
 	if(i == acquaintances_.end()) {
-		std::size_t pos = nick.find_first_of(' ');
+		const std::size_t pos = nick.find_first_of(' ');
 
 		if(pos != std::string::npos) {
 			i = acquaintances_.find(nick.substr(0, pos));
@@ -1469,7 +1470,7 @@ bool prefs::parse_should_show_lobby_join(const std::string& sender, const std::s
 		}
 	}
 
-	pref_constants::lobby_joins lj = get_lobby_joins();
+	const pref_constants::lobby_joins lj = get_lobby_joins();
 	if(lj == pref_constants::lobby_joins::show_none) {
 		return false;
 	}
@@ -1483,7 +1484,7 @@ bool prefs::parse_should_show_lobby_join(const std::string& sender, const std::s
 
 pref_constants::lobby_joins prefs::get_lobby_joins()
 {
-	std::string pref = preferences_[prefs_list::lobby_joins];
+	const std::string pref = preferences_[prefs_list::lobby_joins];
 	if(pref == "friends") {
 		return pref_constants::lobby_joins::show_friends;
 	} else if(pref == "all") {
@@ -1508,7 +1509,7 @@ void prefs::set_lobby_joins(pref_constants::lobby_joins show)
 
 const std::vector<game_config::server_info>& prefs::builtin_servers_list()
 {
-	static std::vector<game_config::server_info> pref_servers = game_config::server_list;
+	static const std::vector<game_config::server_info> pref_servers = game_config::server_list;
 	return pref_servers;
 }
 
@@ -1833,7 +1834,7 @@ void prefs::encounter_map_terrain(const gamemap& map)
 	map.for_each_loc([&](const map_location& loc) {
 		const t_translation::terrain_code terrain = map.get_terrain(loc);
 		encountered_terrains().insert(terrain);
-		for(t_translation::terrain_code t : map.underlying_union_terrain(loc)) {
+		for(const t_translation::terrain_code t : map.underlying_union_terrain(loc)) {
 			encountered_terrains().insert(t);
 		}
 	});
@@ -2208,7 +2209,7 @@ void prefs::set_password(const std::string& server, const std::string& login, co
 	auto login_clean = login;
 	boost::trim(login_clean);
 
-	preferences::secure_buffer temp(key.begin(), key.end());
+	const preferences::secure_buffer temp(key.begin(), key.end());
 	if(!remember_password()) {
 		clear_credentials();
 		credentials_.emplace_back(login_clean, server, aes_encrypt(temp, build_key(server, login_clean)));

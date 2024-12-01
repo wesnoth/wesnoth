@@ -76,9 +76,9 @@ void mp_match_history::pre_show()
 
 void mp_match_history::new_search()
 {
-	int old_offset = offset_;
-	std::string old_player_name = player_name_;
-	text_box& search_player = find_widget<text_box>("search_player");
+	const int old_offset = offset_;
+	const std::string old_player_name = player_name_;
+	const text_box& search_player = find_widget<text_box>("search_player");
 	player_name_ = search_player.get_value();
 
 	// display update failed, set the offset back to what it was before
@@ -142,7 +142,7 @@ bool mp_match_history::update_display()
 
 	int i = 0;
 	for(const config& game : history.mandatory_child("game_history_results").child_range("game_history_result")) {
-		widget_data row;
+		const widget_data row;
 		grid& history_grid = history_box->add_row(row);
 
 		dynamic_cast<label*>(history_grid.find("game_name", false))->set_label(key_with_fallback(game["game_name"]));
@@ -152,10 +152,10 @@ bool mp_match_history::update_display()
 		dynamic_cast<label*>(history_grid.find("version", false))->set_label(key_with_fallback(game["version"]));
 
 		button* replay_download = dynamic_cast<button*>(history_grid.find("replay_download", false));
-		std::string replay_url = game["replay_url"].str();
+		const std::string replay_url = game["replay_url"].str();
 		if(!replay_url.empty()) {
-			std::string filename = utils::split(replay_url, '/').back();
-			std::string local_save = filesystem::get_saves_dir()+"/"+filename;
+			const std::string filename = utils::split(replay_url, '/').back();
+			const std::string local_save = filesystem::get_saves_dir() + "/" + filename;
 
 			connect_signal_mouse_left_click(*replay_download, std::bind(&network::download, replay_url, local_save));
 		} else {
@@ -281,7 +281,7 @@ void mp_match_history::tab_switch_callback()
 {
 	listbox* history_box = find_widget<listbox>("history", false, true);
 	listbox* tab_bar = find_widget<listbox>("tab_bar", false, true);
-	int tab = tab_bar->get_selected_row();
+	const int tab = tab_bar->get_selected_row();
 
 	for(unsigned i = 0; i < history_box->get_item_count(); i++) {
 		grid* history_grid = history_box->get_row_grid(i);

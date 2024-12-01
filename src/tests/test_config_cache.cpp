@@ -97,7 +97,7 @@ BOOST_AUTO_TEST_CASE( test_preproc_defines )
 
 	// scoped
 	{
-		test_scoped_define test("TEST");
+		const test_scoped_define test("TEST");
 		defines_map["TEST"] = preproc_define();
 
 		BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(),
@@ -124,7 +124,7 @@ BOOST_AUTO_TEST_CASE( test_preproc_defines )
 
 BOOST_AUTO_TEST_CASE( test_config_cache_defaults )
 {
-	test_config_cache& cache = test_config_cache::instance();
+	const test_config_cache& cache = test_config_cache::instance();
 	preproc_map defines_map(setup_test_preproc_map());
 
 	const preproc_map& test_defines = cache.get_preproc_map();
@@ -160,8 +160,7 @@ BOOST_AUTO_TEST_CASE( test_load_config )
 	config &child = test_config.add_child("test_key2");
 	child["define"] = t_string("testing translation reset.", GETTEXT_DOMAIN);
 
-
-	test_scoped_define test_define_def("TEST_DEFINE");
+	const test_scoped_define test_define_def("TEST_DEFINE");
 	cached_config.clear();
 	cache.get_config(test_data_path, cached_config);
 	BOOST_CHECK_EQUAL(test_config, cached_config);
@@ -171,8 +170,7 @@ BOOST_AUTO_TEST_CASE( test_load_config )
 
 BOOST_AUTO_TEST_CASE( test_non_clean_config_loading )
 {
-
-	config test_config = setup_test_config();
+	const config test_config = setup_test_config();
 
 	// Test clean load first
 	{
@@ -201,7 +199,7 @@ BOOST_AUTO_TEST_CASE( test_macrosubstitution )
 	child2["defined"] = "parameter";
 
 	// test first that macro loading works
-	test_scoped_define macro("TEST_MACRO");
+	const test_scoped_define macro("TEST_MACRO");
 
 	// Without cache
 	config cached_config;
@@ -226,7 +224,7 @@ BOOST_AUTO_TEST_CASE( test_transaction )
 	(*child)["defined"] = "parameter";
 
 	// test first that macro loading works
-	test_scoped_define macro("TEST_MACRO");
+	const test_scoped_define macro("TEST_MACRO");
 
 	//Start transaction
 
@@ -260,7 +258,7 @@ BOOST_AUTO_TEST_CASE( test_define_loading )
 	(*child)["defined"] = "parameter";
 
 	// test first that macro loading works
-	test_scoped_define macro("TEST_MACRO");
+	const test_scoped_define macro("TEST_MACRO");
 
 	//Start transaction
 

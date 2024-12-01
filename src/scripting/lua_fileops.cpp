@@ -41,7 +41,7 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 static int intf_get_image_size(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	image::locator img(m);
+	const image::locator img(m);
 	if(!image::exists(img)) return 0;
 	const point s = get_size(img);
 	lua_pushinteger(L, s.x);
@@ -114,7 +114,7 @@ static bool canonical_path(std::string& filename, const std::string& currentdir)
 	}
 	//resolve /./
 	while(true) {
-		std::size_t pos = filename.find("/./");
+		const std::size_t pos = filename.find("/./");
 		if(pos == std::string::npos) {
 			break;
 		}
@@ -122,7 +122,7 @@ static bool canonical_path(std::string& filename, const std::string& currentdir)
 	}
 	//resolve //
 	while(true) {
-		std::size_t pos = filename.find("//");
+		const std::size_t pos = filename.find("//");
 		if(pos == std::string::npos) {
 			break;
 		}
@@ -130,11 +130,11 @@ static bool canonical_path(std::string& filename, const std::string& currentdir)
 	}
 	//resolve /../
 	while(true) {
-		std::size_t pos = filename.find("/..");
+		const std::size_t pos = filename.find("/..");
 		if(pos == std::string::npos) {
 			break;
 		}
-		std::size_t pos2 = filename.find_last_of('/', pos - 1);
+		const std::size_t pos2 = filename.find_last_of('/', pos - 1);
 		if(pos2 == std::string::npos || pos2 >= pos) {
 			return false;
 		}
@@ -212,7 +212,7 @@ int intf_read_file(lua_State *L)
 		std::vector<std::string> files, dirs;
 		filesystem::get_files_in_dir(p, &files, &dirs);
 		filesystem::default_blacklist.remove_blacklisted_files_and_dirs(files, dirs);
-		std::size_t ndirs = dirs.size();
+		const std::size_t ndirs = dirs.size();
 		std::copy(files.begin(), files.end(), std::back_inserter(dirs));
 		lua_push(L, dirs);
 		lua_pushnumber(L, ndirs);
@@ -276,7 +276,7 @@ public:
 	{
 		lua_filestream lfs(fname);
 		//lua uses '@' to know that this is a file (as opposed to something loaded via loadstring )
-		std::string chunkname = '@' + relativename;
+		const std::string chunkname = '@' + relativename;
 		LOG_LUA << "starting to read from " << fname;
 		return  lua_load(L, &lua_filestream::lua_read_data, &lfs, chunkname.c_str(), "t");
 	}

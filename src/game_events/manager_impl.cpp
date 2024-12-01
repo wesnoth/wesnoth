@@ -171,7 +171,7 @@ void event_handlers::remove_event_handler(const std::string& id)
 	// Find the existing handler with this ID.
 	auto find_it = id_map_.find(id);
 	if(find_it != id_map_.end()) {
-		handler_ptr handler = find_it->second.lock();
+		const handler_ptr handler = find_it->second.lock();
 
 		if(handler && !handler->disabled()) {
 			handler->disable();

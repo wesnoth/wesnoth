@@ -139,7 +139,7 @@ int get_retval(const std::string& retval_id,
 			   const std::string& id)
 {
 	if(!retval_id.empty()) {
-		int result = window::get_retval_by_id(retval_id);
+		const int result = window::get_retval_by_id(retval_id);
 		if(result) {
 			return result;
 		} else {

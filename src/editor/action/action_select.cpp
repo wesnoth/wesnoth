@@ -93,10 +93,10 @@ IMPLEMENT_ACTION(select_all)
 
 std::unique_ptr<editor_action> editor_action_select_all::perform(map_context& mc) const
 {
-	std::set<map_location> current = mc.map().selection();
+	const std::set<map_location> current = mc.map().selection();
 	mc.map().select_all();
 
-	std::set<map_location> all = mc.map().selection();
+	const std::set<map_location> all = mc.map().selection();
 	std::set<map_location> undo_locs;
 
 	std::set_difference(
@@ -116,7 +116,7 @@ IMPLEMENT_ACTION(select_none)
 
 std::unique_ptr<editor_action> editor_action_select_none::perform(map_context& mc) const
 {
-	std::set<map_location> current = mc.map().selection();
+	const std::set<map_location> current = mc.map().selection();
 	mc.map().clear_selection();
 	mc.set_everything_changed();
 	return std::make_unique<editor_action_select>(current);

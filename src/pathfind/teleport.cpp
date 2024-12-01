@@ -73,7 +73,7 @@ public:
 		, tm_(&dc.teams())
 		, lbls_(&dc.hidden_label_categories())
 	{
-		static unit_map empty_unit_map;
+		static const unit_map empty_unit_map;
 		um_ = &empty_unit_map;
 	}
 	const unit_map & units() const override { return *um_; }
@@ -124,15 +124,15 @@ void teleport_group::get_teleport_pair(
 		fc = &ignore_context.value();
 	}
 
-	vconfig filter(cfg_.child_or_empty("filter"), true);
-	vconfig source(cfg_.child_or_empty("source"), true);
-	vconfig target(cfg_.child_or_empty("target"), true);
+	const vconfig filter(cfg_.child_or_empty("filter"), true);
+	const vconfig source(cfg_.child_or_empty("source"), true);
+	const vconfig target(cfg_.child_or_empty("target"), true);
 	const unit_filter ufilt(filter); //Note: Don't use the ignore units filter context here, only for the terrain filters. (That's how it worked before the filter contexts were introduced)
 	if (ufilt.matches(u)) {
-		terrain_filter source_filter(source, fc, false);
+		const terrain_filter source_filter(source, fc, false);
 		source_filter.get_locations(reversed_ ? loc_pair.second : loc_pair.first, u);
 
-		terrain_filter target_filter(target, fc, false);
+		const terrain_filter target_filter(target, fc, false);
 		target_filter.get_locations(reversed_ ? loc_pair.first : loc_pair.second, u);
 	}
 }
@@ -257,7 +257,7 @@ const teleport_map get_teleport_locations(const unit &u,
 	for (const unit_ability & teleport : u.get_abilities("teleport")) {
 		const int tunnel_count = (teleport.ability_cfg)->child_count("tunnel");
 		for(int i = 0; i < tunnel_count; ++i) {
-			config teleport_group_cfg = (teleport.ability_cfg)->mandatory_child("tunnel", i);
+			const config teleport_group_cfg = (teleport.ability_cfg)->mandatory_child("tunnel", i);
 			groups.emplace_back(vconfig(teleport_group_cfg, true), false);
 		}
 	}

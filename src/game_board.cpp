@@ -158,7 +158,7 @@ void game_board::check_victory(bool& continue_level,
 	}
 
 	for(std::set<unsigned>::iterator n = not_defeated.begin(); n != not_defeated.end(); ++n) {
-		std::size_t side = *n - 1;
+		const std::size_t side = *n - 1;
 		DBG_EE << "Side " << (side + 1) << " is a not-defeated team";
 
 		std::set<unsigned>::iterator m(n);
@@ -188,7 +188,7 @@ unit_map::iterator game_board::find_visible_unit(const map_location& loc, const 
 		return units_.end();
 	}
 
-	unit_map::iterator u = units_.find(loc);
+	const unit_map::iterator u = units_.find(loc);
 	if(!u.valid() || !u->is_visible_to_team(current_team, see_all)) {
 		return units_.end();
 	}
@@ -202,7 +202,7 @@ bool game_board::has_visible_unit(const map_location& loc, const team& current_t
 		return false;
 	}
 
-	unit_map::const_iterator u = units_.find(loc);
+	const unit_map::const_iterator u = units_.find(loc);
 	if(!u.valid() || !u->is_visible_to_team(current_team, see_all)) {
 		return false;
 	}
@@ -220,7 +220,7 @@ void game_board::side_drop_to(int side_num, side_controller::type ctrl, side_pro
 
 	tm.set_current_player(side_controller::get_string(ctrl) + std::to_string(side_num));
 
-	unit_map::iterator leader = units_.find_leader(side_num);
+	const unit_map::iterator leader = units_.find_leader(side_num);
 	if(leader.valid()) {
 		leader->rename(side_controller::get_string(ctrl) + std::to_string(side_num));
 	}
@@ -248,7 +248,7 @@ void game_board::side_change_controller(
 
 	tm.set_current_player(pname);
 
-	unit_map::iterator leader = units_.find_leader(side_num);
+	const unit_map::iterator leader = units_.find_leader(side_num);
 	if(leader.valid()) {
 		leader->rename(pname);
 	}
@@ -318,7 +318,7 @@ bool game_board::change_terrain(
 	const map_location& loc, const std::string& t_str, const std::string& mode_str, bool replace_if_failed)
 {
 	// Code internalized from the implementation in lua.cpp
-	t_translation::terrain_code terrain = t_translation::read_terrain_code(t_str);
+	const t_translation::terrain_code terrain = t_translation::read_terrain_code(t_str);
 	if(terrain == t_translation::NONE_TERRAIN) {
 		return false;
 	}
@@ -344,8 +344,8 @@ bool game_board::change_terrain(const map_location &loc, const t_translation::te
 	 * unit loose its movement points, should capture events be fired. It is
 	 * easier to do this as wanted by the author in WML.
 	 */
-	t_translation::terrain_code old_t = map_->get_terrain(loc);
-	t_translation::terrain_code new_t = map_->tdata()->merge_terrains(old_t, terrain, mode, replace_if_failed);
+	const t_translation::terrain_code old_t = map_->get_terrain(loc);
+	const t_translation::terrain_code new_t = map_->tdata()->merge_terrains(old_t, terrain, mode, replace_if_failed);
 
 	if(new_t == t_translation::NONE_TERRAIN) {
 		return false;
@@ -354,7 +354,7 @@ bool game_board::change_terrain(const map_location &loc, const t_translation::te
 	prefs::get().encountered_terrains().insert(new_t);
 
 	if(map_->tdata()->is_village(old_t) && !map_->tdata()->is_village(new_t)) {
-		int owner = village_owner(loc);
+		const int owner = village_owner(loc);
 		if(owner != 0)
 			get_team(owner).lose_village(loc);
 	}

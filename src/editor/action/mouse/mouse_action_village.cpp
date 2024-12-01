@@ -22,7 +22,7 @@ namespace editor {
 
 std::unique_ptr<editor_action> mouse_action_village::up_left(editor_display& disp, int x, int y)
 {
-	map_location hex = disp.hex_clicked_on(x, y);
+	const map_location hex = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(hex))   return nullptr;
 	if (!disp.get_map().is_village(hex)) return nullptr;
 
@@ -31,7 +31,7 @@ std::unique_ptr<editor_action> mouse_action_village::up_left(editor_display& dis
 
 std::unique_ptr<editor_action> mouse_action_village::up_right(editor_display& disp, int x, int y)
 {
-	map_location hex = disp.hex_clicked_on(x, y);
+	const map_location hex = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(hex))   return nullptr;
 	if (!disp.get_map().is_village(hex)) return nullptr;
 

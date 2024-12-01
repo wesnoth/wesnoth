@@ -110,14 +110,14 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 {
 	std::vector<placing_info> placings;
 
-	int num_pos = board_.map().num_valid_starting_positions();
+	const int num_pos = board_.map().num_valid_starting_positions();
 
 	int side_num = 1;
 	for(const config &side : level.child_range("side"))
 	{
 		for(int p = 1; p <= num_pos; ++p) {
 			const map_location& pos = board_.map().starting_position(p);
-			int score = placing_score(side, board_.map(), pos);
+			const int score = placing_score(side, board_.map(), pos);
 			placing_info obj;
 			obj.side = side_num;
 			obj.score = score;
@@ -185,7 +185,7 @@ void game_state::init(const config& level, play_controller & pc)
 
 	{
 		//sync traits of start units and the random start time.
-		randomness::set_random_determinstic deterministic(gamedata_.rng());
+		const randomness::set_random_determinstic deterministic(gamedata_.rng());
 
 		tod_manager_.resolve_random(*randomness::generator);
 
@@ -201,7 +201,7 @@ void game_state::init(const config& level, play_controller & pc)
 		for(const team& t : board_.teams()) {
 			// Labels from players in your ignore list default to hidden
 			if(prefs::get().is_ignored(t.current_player())) {
-				std::string label_cat = "side:" + std::to_string(t.side());
+				const std::string label_cat = "side:" + std::to_string(t.side());
 				board_.hidden_label_categories().push_back(label_cat);
 			}
 		}
@@ -340,13 +340,13 @@ bool game_state::can_recruit_on(const map_location& leader_loc, const map_locati
 			return false;
 		}
 
-		castle_cost_calculator calc(map, view_team);
+		const castle_cost_calculator calc(map, view_team);
 
 		// The limit computed in the third argument is more than enough for
 		// any convex castle on the map. Strictly speaking it could be
 		// reduced to sqrt(map.w()**2 + map.h()**2).
-		pathfind::plain_route rt =
-			pathfind::a_star_search(leader_loc, recruit_loc, map.w() + map.h(), calc, map.w(), map.h());
+		const pathfind::plain_route rt
+			= pathfind::a_star_search(leader_loc, recruit_loc, map.w() + map.h(), calc, map.w(), map.h());
 
 		return !rt.steps.empty();
 	} catch(const std::out_of_range&) {
@@ -435,5 +435,5 @@ void game_state::add_side_wml(config cfg)
 	//TODO: is this it? are there caches which must be cleared?
 	board_.teams().emplace_back();
 	board_.teams().back().build(cfg, board_.map());
-	config choice = synced_context::ask_server_choice(add_side_wml_choice());
+	const config choice = synced_context::ask_server_choice(add_side_wml_choice());
 }

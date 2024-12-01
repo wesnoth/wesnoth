@@ -92,7 +92,7 @@ void map_fragment::center_by_mass()
 {
 	shift(center_of_mass().vector_negation());
 	area_.clear();
-	for (tile_info& ti : items_) {
+	for(const tile_info& ti : items_) {
 		area_.insert(ti.offset);
 	}
 }
@@ -102,8 +102,8 @@ void map_fragment::rotate_60_cw()
 	area_.clear();
 	for (tile_info& ti : items_) {
 		map_location l = map_location::ZERO();
-		int x = ti.offset.x;
-		int y = ti.offset.y;
+		const int x = ti.offset.x;
+		const int y = ti.offset.y;
 		// rotate the X-Y axes to direction::south/direction::south_east - direction::south_west axes
 		// but if x is odd, simply using x/2 + x/2 will lack a step
 		l = l.get_direction(map_location::direction::south, (x+is_odd(x))/2);
@@ -122,8 +122,8 @@ void map_fragment::rotate_60_ccw()
 	area_.clear();
 	for (tile_info& ti : items_) {
 		map_location l = map_location::ZERO();
-		int x = ti.offset.x;
-		int y = ti.offset.y;
+		const int x = ti.offset.x;
+		const int y = ti.offset.y;
 		// rotate the X-Y axes to direction::north/direction::north_east - direction::south_east axes'
 		// reverse of what the cw rotation does
 		l = l.get_direction(map_location::direction::north, (x-is_odd(x))/2);

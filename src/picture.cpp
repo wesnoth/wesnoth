@@ -246,9 +246,9 @@ locator::locator(const std::string& fn)
 	}
 
 	if(boost::algorithm::starts_with(filename_, data_uri_prefix)) {
-		if(parsed_data_URI parsed{ filename_ }; !parsed.good) {
-			std::string_view view{ filename_ };
-			std::string_view stripped = view.substr(0, view.find(","));
+		if(const parsed_data_URI parsed{filename_}; !parsed.good) {
+			const std::string_view view{filename_};
+			const std::string_view stripped = view.substr(0, view.find(","));
 			ERR_IMG << "Invalid data URI: " << stripped;
 		}
 
@@ -318,7 +318,7 @@ bool locator::operator<(const locator& a) const
 static void add_localized_overlay(const std::string& ovr_file, surface& orig_surf)
 {
 	filesystem::rwops_ptr rwops = filesystem::make_read_RWops(ovr_file);
-	surface ovr_surf = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
+	const surface ovr_surf = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
 	if(!ovr_surf) {
 		return;
 	}
@@ -340,7 +340,7 @@ static surface load_image_file(const image::locator& loc)
 	// If the file does not exist in ".png" format, also try ".webp".
 	// Similarly for ".jpg", which conveniently has the same number of letters as ".png".
 	if(!location && (boost::algorithm::ends_with(name, ".png") || boost::algorithm::ends_with(name, ".jpg"))) {
-		std::string webp_name = name.substr(0, name.size() - 4) + ".webp";
+		const std::string webp_name = name.substr(0, name.size() - 4) + ".webp";
 		location = filesystem::get_binary_file_location("images", webp_name);
 		if(location) {
 			WRN_IMG << "Replaced missing '" << name << "' with found '"
@@ -451,11 +451,11 @@ static surface load_image_data_uri(const image::locator& loc)
 {
 	surface surf;
 
-	parsed_data_URI parsed{loc.get_filename()};
+	const parsed_data_URI parsed{loc.get_filename()};
 
 	if(!parsed.good) {
-		std::string_view fn = loc.get_filename();
-		std::string_view stripped = fn.substr(0, fn.find(","));
+		const std::string_view fn = loc.get_filename();
+		const std::string_view stripped = fn.substr(0, fn.find(","));
 		ERR_IMG << "Invalid data URI: " << stripped;
 	} else if(parsed.mime.substr(0, 5) != "image") {
 		ERR_IMG << "Data URI not of image MIME type: " << parsed.mime;
@@ -499,7 +499,7 @@ static surface apply_light(surface surf, const light_string& ls)
 	if(ls.size() == 4) {
 		// if no lightmap (first char = -1) then we need the initial value
 		//(before the halving done for lightmap)
-		int m = ls[0] == -1 ? 2 : 1;
+		const int m = ls[0] == -1 ? 2 : 1;
 		adjust_surface_color(surf, ls[1] * m, ls[2] * m, ls[3] * m);
 		return surf;
 	}
@@ -529,7 +529,7 @@ static surface apply_light(surface surf, const light_string& ls)
 			// get the corresponding image and apply the lightmap operation to it
 			// This allows to also cache lightmap parts.
 			// note that we avoid infinite recursion by using only atomic operation
-			surface lts = image::get_lighted_image(lm_img[sls[0]], sls);
+			const surface lts = image::get_lighted_image(lm_img[sls[0]], sls);
 
 			// first image will be the base where we blit the others
 			if(lightmap == nullptr) {
@@ -590,7 +590,7 @@ void set_color_adjustment(int r, int g, int b)
 static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 {
 	surface image = get_surface(i_locator, UNSCALED, skip_cache).clone();
-	surface mask = get_hexmask();
+	const surface mask = get_hexmask();
 	// Ensure the image is the correct size by cropping and/or centering.
 	// TODO: this should probably be a function of sdl/utils
 	if(image && (image->w != mask->w || image->h != mask->h)) {
@@ -603,16 +603,16 @@ static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 			// fill the crop surface with transparency
 			SDL_FillRect(fit, nullptr, SDL_MapRGBA(fit->format, 0, 0, 0, 0));
 			// crop the input image to hexmask dimensions
-			int cutx = std::max(0, image->w - mask->w) / 2;
-			int cuty = std::max(0, image->h - mask->h) / 2;
-			int cutw = std::min(image->w, mask->w);
-			int cuth = std::min(image->h, mask->h);
+			const int cutx = std::max(0, image->w - mask->w) / 2;
+			const int cuty = std::max(0, image->h - mask->h) / 2;
+			const int cutw = std::min(image->w, mask->w);
+			const int cuth = std::min(image->h, mask->h);
 			image = cut_surface(image, {cutx, cuty, cutw, cuth});
 			// image will now have dimensions <= mask
 		}
 		// center image
-		int placex = (mask->w - image->w) / 2;
-		int placey = (mask->h - image->h) / 2;
+		const int placex = (mask->w - image->w) / 2;
+		const int placey = (mask->h - image->h) / 2;
 		rect dst = {placex, placey, image->w, image->h};
 		sdl_blit(image, nullptr, fit, &dst);
 		image = fit;
@@ -788,7 +788,7 @@ bool is_in_hex(const locator& i_locator)
 	if(const bool* cached_value = in_hex_info_.locate_in_cache(i_locator)) {
 		return *cached_value;
 	} else {
-		bool res = in_mask_surface(get_surface(i_locator, UNSCALED), get_hexmask());
+		const bool res = in_mask_surface(get_surface(i_locator, UNSCALED), get_hexmask());
 		in_hex_info_.add_to_cache(i_locator, res);
 		return res;
 	}

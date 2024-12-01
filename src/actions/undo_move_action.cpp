@@ -61,7 +61,7 @@ void move_action::write(config & cfg) const
 static void reset_adjacent(bool& halo_adjacent, unit_map& units, const map_location& loc)
 {
 	if(halo_adjacent){
-		unit_map::iterator u = units.find(loc);
+		const unit_map::iterator u = units.find(loc);
 		const auto adjacent = get_adjacent_tiles(loc);
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
 			const unit_map::const_iterator it = units.find(adjacent[i]);

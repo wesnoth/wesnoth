@@ -98,7 +98,7 @@ bool any_recruiter(int team_num, const map_location& loc, const std::function<bo
 
 const unit* future_visible_unit(map_location hex, int viewer_side)
 {
-	future_map planned_unit_map;
+	const future_map planned_unit_map;
 	if(!resources::whiteboard->has_planned_unit_map())
 	{
 		ERR_WB << "future_visible_unit cannot find unit, future unit map failed to build.";
@@ -160,7 +160,7 @@ void unghost_owner_unit(unit* unit)
 
 bool has_actions()
 {
-	for (team& t : resources::gameboard->teams()) {
+	for(const team& t : resources::gameboard->teams()) {
 		if (!t.get_side_actions()->empty())
 			return true;
 	}
@@ -198,12 +198,12 @@ action_ptr find_action_at(map_location hex, const team_filter& team_filter)
 	for(team &side : resources::gameboard->teams()) {
 		side_actions &actions = *side.get_side_actions();
 		if(team_filter(side)) {
-			side_actions::iterator chall = actions.find_first_action_at(hex);
+			const side_actions::iterator chall = actions.find_first_action_at(hex);
 			if(chall == actions.end()) {
 				continue;
 			}
 
-			std::size_t chall_turn = actions.get_turn(chall);
+			const std::size_t chall_turn = actions.get_turn(chall);
 			if(chall_turn < result_turn) {
 				result = *chall;
 				result_turn = chall_turn;

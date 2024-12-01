@@ -80,7 +80,7 @@ bool wmi_manager::fire_item(
 		const std::string& id, const map_location& hex, game_data& gamedata, filter_context& fc, unit_map& units, bool is_key_hold_repeat) const
 {
 	// Does this item exist?
-	item_ptr wmi = get_item(id);
+	const item_ptr wmi = get_item(id);
 	if(!wmi) {
 		return false;
 	} else if(is_key_hold_repeat && !wmi->hotkey_repeat()) {
@@ -88,11 +88,11 @@ bool wmi_manager::fire_item(
 	}
 
 	// Prepare for can show().
-	config::attribute_value x1 = gamedata.get_variable("x1");
-	config::attribute_value y1 = gamedata.get_variable("y1");
+	const config::attribute_value x1 = gamedata.get_variable("x1");
+	const config::attribute_value y1 = gamedata.get_variable("y1");
 	gamedata.get_variable("x1") = hex.wml_x();
 	gamedata.get_variable("y1") = hex.wml_y();
-	scoped_xy_unit highlighted_unit("unit", hex, units);
+	const scoped_xy_unit highlighted_unit("unit", hex, units);
 
 	// Can this item be shown?
 	if(wmi->can_show(hex, gamedata, fc)) {
@@ -125,16 +125,15 @@ void wmi_manager::get_items(const map_location& hex,
 
 	// Prepare for can show().
 
-
-	config::attribute_value x1 = gamedata.get_variable("x1");
-	config::attribute_value y1 = gamedata.get_variable("y1");
+	const config::attribute_value x1 = gamedata.get_variable("x1");
+	const config::attribute_value y1 = gamedata.get_variable("y1");
 	gamedata.get_variable("x1") = hex.wml_x();
 	gamedata.get_variable("y1") = hex.wml_y();
-	scoped_xy_unit highlighted_unit("unit", hex, units);
+	const scoped_xy_unit highlighted_unit("unit", hex, units);
 
 	// Check each menu item.
 	for(const auto& item_pair : wml_menu_items_) {
-		item_ptr item = item_pair.second;
+		const item_ptr item = item_pair.second;
 
 		// Can this item be shown?
 		if(item->use_wml_menu() && (!item->is_synced() || resources::controller->can_use_synced_wml_menu())

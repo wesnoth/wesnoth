@@ -139,8 +139,8 @@ static void draw_rect_as_lines(const SDL_Rect& rect)
 	if (rect.w <= 0 || rect.h <= 0) {
 		return;
 	}
-	int x2 = rect.x + rect.w - 1;
-	int y2 = rect.y + rect.h - 1;
+	const int x2 = rect.x + rect.w - 1;
+	const int y2 = rect.y + rect.h - 1;
 	draw::line(rect.x, rect.y, x2, rect.y);
 	draw::line(rect.x, rect.y, rect.x, y2);
 	draw::line(x2, rect.y, x2, y2);
@@ -351,7 +351,7 @@ void draw::flipped(
 	DBG_D << "flipped (" << flip_h << '|' << flip_v
 	      << ") to " << dst;
 
-	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
+	const SDL_RendererFlip flip = get_flip(flip_h, flip_v);
 	SDL_RenderCopyEx(renderer(), tex, tex.src(), &dst, 0.0, nullptr, flip);
 }
 
@@ -360,7 +360,7 @@ void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
 	if (!tex) { DBG_D << "null flipped"; return; }
 	DBG_D << "flipped (" << flip_h << '|' << flip_v << ')';
 
-	SDL_RendererFlip flip = get_flip(flip_h, flip_v);
+	const SDL_RendererFlip flip = get_flip(flip_h, flip_v);
 	SDL_RenderCopyEx(renderer(), tex, tex.src(), nullptr, 0.0, nullptr, flip);
 }
 
@@ -419,7 +419,7 @@ void draw::tiled_highres(const texture& tex, const SDL_Rect& dst,
 		bool hf = false;
 		for (t.x = dst.x - xoff; t.x < dst.x + dst.w; t.x += t.w, hf = !hf) {
 			if (mirrored) {
-				SDL_RendererFlip flip = get_flip(hf, vf);
+				const SDL_RendererFlip flip = get_flip(hf, vf);
 				SDL_RenderCopyExF(renderer(), tex, nullptr, &t, 0.0, nullptr, flip);
 			} else {
 				SDL_RenderCopyF(renderer(), tex, nullptr, &t);
@@ -438,7 +438,7 @@ void draw::smooth_shaded(const texture& tex, const SDL_Rect& dst,
 	const SDL_FPoint pTR{float(dst.x + dst.w), float(dst.y)};
 	const SDL_FPoint pBL{float(dst.x), float(dst.y + dst.h)};
 	const SDL_FPoint pBR{float(dst.x + dst.w), float(dst.y + dst.h)};
-	std::array<SDL_Vertex,4> verts {
+	const std::array<SDL_Vertex, 4> verts{
 		SDL_Vertex{pTL, cTL, uvTL},
 		SDL_Vertex{pTR, cTR, uvTR},
 		SDL_Vertex{pBL, cBL, uvBL},
@@ -451,7 +451,7 @@ void draw::smooth_shaded(const texture& tex, const SDL_Rect& dst,
 	const SDL_Color& cTL, const SDL_Color& cTR,
 	const SDL_Color& cBL, const SDL_Color& cBR)
 {
-	SDL_FPoint uv[4] = {
+	const SDL_FPoint uv[4] = {
 		{0.f, 0.f}, // top left
 		{1.f, 0.f}, // top right
 		{0.f, 1.f}, // bottom left
@@ -574,11 +574,7 @@ draw::viewport_setter::viewport_setter(const SDL_Rect& view)
 	if (clip_enabled_) {
 		c_ = draw::get_clip();
 		// adjust clip for difference in viewport position
-		SDL_Rect c_view = {
-			c_.x + v_.x - view.x,
-			c_.y + v_.y - view.y,
-			c_.w, c_.h
-		};
+		const SDL_Rect c_view = {c_.x + v_.x - view.x, c_.y + v_.y - view.y, c_.w, c_.h};
 		draw::force_clip(c_view);
 	}
 }

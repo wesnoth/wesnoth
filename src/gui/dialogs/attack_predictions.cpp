@@ -138,8 +138,8 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 	}
 
 	// Get damage modifiers.
-	unit_ability_list dmg_specials = weapon->get_specials_and_abilities("damage");
-	unit_abilities::effect dmg_effect(dmg_specials, weapon->damage());
+	const unit_ability_list dmg_specials = weapon->get_specials_and_abilities("damage");
+	const unit_abilities::effect dmg_effect(dmg_specials, weapon->damage());
 
 	// Get the SET damage modifier, if any.
 	auto set_dmg_effect = std::find_if(dmg_effect.begin(), dmg_effect.end(),
@@ -206,7 +206,7 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 			}
 		}
 
-		std::pair<std::string, std::string> types = weapon->damage_type();
+		const std::pair<std::string, std::string> types = weapon->damage_type();
 		std::string type_bis = types.second;
 		if (!type_bis.empty()) {
 			type_bis = ", " + string_table["type_" + type_bis];
@@ -228,7 +228,7 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 	// Time of day modifier.
 	const unit& u = *attacker.unit_;
 
-	unit_alignments::type alignment = weapon->alignment().value_or(u.alignment());
+	const unit_alignments::type alignment = weapon->alignment().value_or(u.alignment());
 	const int tod_modifier = combat_modifier(resources::gameboard->units(), resources::gameboard->map(),
 		u.get_location(), alignment, u.is_fearless());
 

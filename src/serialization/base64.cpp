@@ -62,7 +62,7 @@ std::vector<uint8_t> generic_decode_be(std::string_view in, const std::vector<in
 	out.reserve(length);
 
 	int val = 0, bits = -8;
-	for(unsigned char c: in) {
+	for(const unsigned char c : in) {
 		if(atoi_map[c] == -1) {
 			// Non-base64 character encountered. Should be =
 			if(c != '='){
@@ -238,7 +238,7 @@ std::string encode(utils::byte_string_view bytes)
 }
 int decode(char encoded_char)
 {
-	std::size_t pos = crypt64_itoa_map.find(encoded_char);
+	const std::size_t pos = crypt64_itoa_map.find(encoded_char);
 	return pos == std::string::npos ? -1 : pos;
 }
 char encode(int value)

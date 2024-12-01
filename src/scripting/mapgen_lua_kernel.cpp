@@ -53,8 +53,8 @@ static int intf_random(lua_State *L)
 {
 	std::mt19937& rng = lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L).get_default_rng();
 	if(lua_isnoneornil(L, 1)) {
-		double r = double (rng());
-		double r_max = double (rng.max());
+		const double r = double(rng());
+		const double r_max = double(rng.max());
 		lua_push(L, r / (r_max + 1));
 		return 1;
 	}
@@ -84,8 +84,8 @@ static int intf_default_generate(lua_State *L)
 {
 	std::mt19937& rng = lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L).get_default_rng();
 
-	int width = luaL_checkinteger(L, 1);
-	int height = luaL_checkinteger(L, 2);
+	const int width = luaL_checkinteger(L, 1);
+	const int height = luaL_checkinteger(L, 2);
 
 	config cfg = luaW_checkconfig(L, 3);
 
@@ -109,7 +109,7 @@ static int intf_default_generate(lua_State *L)
 	}
 
 	default_map_generator_job job(seed);
-	std::string res = job.default_generate_map(arg, nullptr, cfg);
+	const std::string res = job.default_generate_map(arg, nullptr, cfg);
 
 	lua_push(L, res);
 	return 1;
@@ -122,8 +122,8 @@ static int intf_default_generate_height_map(lua_State *L)
 {
 	std::mt19937& rng = lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L).get_default_rng();
 
-	int width = luaL_checkinteger(L, 1);
-	int height = luaL_checkinteger(L, 2);
+	const int width = luaL_checkinteger(L, 1);
+	const int height = luaL_checkinteger(L, 2);
 
 	config cfg = luaW_checkconfig(L, 3);
 
@@ -131,13 +131,13 @@ static int intf_default_generate_height_map(lua_State *L)
 		deprecated_message("generate_height_map(..., {location_set=false})", DEP_LEVEL::PREEMPTIVE, "1.17", "The default value of this option will be changed to true in 1.17.");
 	}
 
-	int iterations = cfg["iterations"].to_int(1);
-	int hill_size = cfg["hill_size"].to_int(1);
-	int island_size = cfg["island_size"].to_int(width/2);
-	int center_x = cfg["center_x"].to_int(width/2);
-	int center_y = cfg["center_y"].to_int(height/2);
-	bool flip_layout = cfg["flip_format"].to_bool();
-	bool as_locset = cfg["location_set"].to_bool(false);
+	const int iterations = cfg["iterations"].to_int(1);
+	const int hill_size = cfg["hill_size"].to_int(1);
+	const int island_size = cfg["island_size"].to_int(width / 2);
+	const int center_x = cfg["center_x"].to_int(width / 2);
+	const int center_y = cfg["center_y"].to_int(height / 2);
+	const bool flip_layout = cfg["flip_format"].to_bool();
+	const bool as_locset = cfg["location_set"].to_bool(false);
 	uint32_t seed = cfg["seed"].to_int(0);
 
 	if(!cfg.has_attribute("seed")) {
@@ -148,16 +148,16 @@ static int intf_default_generate_height_map(lua_State *L)
 	lua_createtable (L, width * height, 0);
 	assert(int(res.size()) == width);
 	assert((width == 0 || int(res[0].size()) == height));
-	std::hash<map_location> loc_hash;
+	const std::hash<map_location> loc_hash;
 	for(int x = 0; x != width; ++x) {
 		for(int y = 0; y != height; ++y) {
-			int h = res[x][y];
+			const int h = res[x][y];
 			lua_pushinteger (L, h);
 			if(as_locset) {
-				map_location loc(flip_layout ? y : x, flip_layout ? x : y, wml_loc());
+				const map_location loc(flip_layout ? y : x, flip_layout ? x : y, wml_loc());
 				lua_rawseti(L, -2, loc_hash(loc));
 			} else {
-				int i = flip_layout ? (y + x * height) : (x + y * width);
+				const int i = flip_layout ? (y + x * height) : (x + y * width);
 				lua_rawseti(L, -2, i);
 			}
 		}
@@ -178,7 +178,7 @@ static int intf_default_generate_height_map(lua_State *L)
  */
 static int intf_find_path(lua_State *L)
 {
-	int arg = 1;
+	const int arg = 1;
 	map_location src = luaW_checklocation(L, 1), dst = luaW_checklocation(L, 2);
 	if(lua_isfunction(L, arg)) {
 		const char *msg = lua_pushfstring(L, "%s expected, got %s", lua_typename(L, LUA_TFUNCTION), luaL_typename(L, 3));
@@ -216,7 +216,7 @@ static int intf_find_path(lua_State *L)
 	}
 	pathfind::plain_route res = pathfind::a_star_search(src, dst, 10000, *calc, width, height, nullptr, border);
 
-	int nb = res.steps.size();
+	const int nb = res.steps.size();
 	lua_createtable(L, nb, 0);
 	for (int i = 0; i < nb; ++i)
 	{
@@ -352,7 +352,7 @@ config mapgen_lua_kernel::create_scenario(const char * prog, const config & gene
 	}
 	config result;
 	if (!luaW_toconfig(mState, -1, result)) {
-		std::string msg = "expected a config, but it is malformed ";
+		const std::string msg = "expected a config, but it is malformed ";
 		lua_pop(mState, 1);
 		throw game::lua_error(msg.c_str(),"bad return value");
 	}

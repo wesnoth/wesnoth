@@ -211,7 +211,7 @@ void styled_widget::request_reduce_width(const unsigned maximum_width)
 
 	} else if(label_.empty() || text_can_shrink()) {
 		point size = get_best_size();
-		point min_size = get_config_minimum_size();
+		const point min_size = get_config_minimum_size();
 		size.x = std::min(size.x, std::max<int>(maximum_width, min_size.x));
 		set_layout_size(size);
 
@@ -230,7 +230,7 @@ void styled_widget::request_reduce_height(const unsigned maximum_height)
 		// Do nothing
 	} else {
 		point size = get_best_size();
-		point min_size = get_config_minimum_size();
+		const point min_size = get_config_minimum_size();
 		size.y = std::min(size.y, std::max<int>(maximum_height, min_size.y));
 		set_layout_size(size);
 
@@ -385,13 +385,9 @@ void styled_widget::update_canvas()
 		canvas.set_variable("text_link_aware", wfl::variant(get_link_aware()));
 
 		// Possible TODO: consider making a formula_callable for colors.
-		color_t link_color = get_link_color();
-		std::vector<wfl::variant> link_color_as_list {
-			wfl::variant(link_color.r),
-			wfl::variant(link_color.g),
-			wfl::variant(link_color.b),
-			wfl::variant(link_color.a)
-		};
+		const color_t link_color = get_link_color();
+		const std::vector<wfl::variant> link_color_as_list{wfl::variant(link_color.r), wfl::variant(link_color.g),
+			wfl::variant(link_color.b), wfl::variant(link_color.a)};
 
 		canvas.set_variable("text_link_color", wfl::variant(link_color_as_list));
 		canvas.set_variable("text_alignment",
@@ -541,7 +537,7 @@ void styled_widget::signal_handler_show_tooltip(const event::ui_event event,
 									 settings::has_helptip_message, &symbols);
 		}
 
-		event::message_show_tooltip message(tip, location, get_rectangle());
+		const event::message_show_tooltip message(tip, location, get_rectangle());
 		handled = fire(event::MESSAGE_SHOW_TOOLTIP, *this, message);
 	}
 }
@@ -553,7 +549,7 @@ void styled_widget::signal_handler_show_helptip(const event::ui_event event,
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(!help_message_.empty()) {
-		event::message_show_helptip message(help_message_, location, get_rectangle());
+		const event::message_show_helptip message(help_message_, location, get_rectangle());
 		handled = fire(event::MESSAGE_SHOW_HELPTIP, *this, message);
 	}
 }

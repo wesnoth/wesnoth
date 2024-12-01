@@ -145,11 +145,7 @@ static void test_control(T&& control)
 
 	}
 	{
-		gui2::iteration::iterator< gui2::iteration::policy::order::top_down<
-				false
-				, true
-				, true>>
-			iterator(control);
+		const gui2::iteration::iterator<gui2::iteration::policy::order::top_down<false, true, true>> iterator(control);
 
 		/***** INITIAL STATE *****/
 
@@ -157,11 +153,12 @@ static void test_control(T&& control)
 	}
 
 	{
-		gui2::iteration::iterator<gui2::iteration::policy::order::bottom_up<true, true, true>> iterator(control);
+		const gui2::iteration::iterator<gui2::iteration::policy::order::bottom_up<true, true, true>> iterator(control);
 		BOOST_CHECK_EQUAL(iterator.at_end(), false);
 	}
 	{
-		gui2::iteration::iterator<gui2::iteration::policy::order::bottom_up<false, false, false>> iterator(control);
+		const gui2::iteration::iterator<gui2::iteration::policy::order::bottom_up<false, false, false>> iterator(
+			control);
 		BOOST_CHECK_EQUAL(iterator.at_end(), true);
 	}
 }
@@ -197,7 +194,7 @@ static void test_grid()
 
 	{
 		std::stringstream sstr;
-		lg::redirect_output_setter redirect_output(sstr);
+		const lg::redirect_output_setter redirect_output(sstr);
 
 		gui2::iteration::iterator<gui2::iteration::policy::order::top_down<
 				true
@@ -213,7 +210,7 @@ static void test_grid()
 	}
 	{
 		std::stringstream sstr;
-		lg::redirect_output_setter redirect_output(sstr);
+		const lg::redirect_output_setter redirect_output(sstr);
 
 		gui2::iteration::iterator<gui2::iteration::policy::order::top_down<
 				true
@@ -229,7 +226,7 @@ static void test_grid()
 	}
 	{
 		std::stringstream sstr;
-		lg::redirect_output_setter redirect_output(sstr);
+		const lg::redirect_output_setter redirect_output(sstr);
 
 		gui2::iteration::iterator<gui2::iteration::policy::order::bottom_up<
 				true
@@ -245,7 +242,7 @@ static void test_grid()
 	}
 	{
 		std::stringstream sstr;
-		lg::redirect_output_setter redirect_output(sstr);
+		const lg::redirect_output_setter redirect_output(sstr);
 
 		gui2::iteration::iterator<gui2::iteration::policy::order::bottom_up<
 				true
@@ -274,7 +271,7 @@ BOOST_AUTO_TEST_CASE(test_gui2_iterator)
 	lg::timestamps(false);
 
 	std::stringstream sstr;
-	lg::redirect_output_setter redirect_output(sstr);
+	const lg::redirect_output_setter redirect_output(sstr);
 
 	test_control();
 	test_grid();

@@ -230,7 +230,7 @@ void tristate_button::draw_contents()
 
 	// Draw the item.
 	// TODO: don't hardcode an implicit reliance on 38 pixel buttons
-	SDL_Rect magic{loc.x + 1, loc.y + 1, 36, 36};
+	const SDL_Rect magic{loc.x + 1, loc.y + 1, 36, 36};
 	draw::blit(itemBaseImage_, magic);
 	if (itemOverlayImage_) {
 		draw::blit(itemOverlayImage_, magic);
@@ -384,7 +384,7 @@ void tristate_button::handle_event(const SDL_Event& event) {
 	if (hidden() || !enabled())
 		return;
 
-	STATE start_state = state_;
+	STATE const start_state = state_;
 
 	if (!mouse_locked()) {
 		switch (event.type) {

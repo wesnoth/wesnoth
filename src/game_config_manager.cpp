@@ -101,12 +101,12 @@ game_config_manager* game_config_manager::get()
 bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 {
 	// Add preproc defines according to the command line arguments.
-	game_config::scoped_preproc_define multiplayer("MULTIPLAYER", cmdline_opts_.multiplayer);
-	game_config::scoped_preproc_define test("TEST", cmdline_opts_.test.has_value());
-	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest);
-	game_config::scoped_preproc_define editor("EDITOR", cmdline_opts_.editor.has_value());
-	game_config::scoped_preproc_define title_screen("TITLE_SCREEN",
-		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !cmdline_opts_.editor);
+	const game_config::scoped_preproc_define multiplayer("MULTIPLAYER", cmdline_opts_.multiplayer);
+	const game_config::scoped_preproc_define test("TEST", cmdline_opts_.test.has_value());
+	const game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest);
+	const game_config::scoped_preproc_define editor("EDITOR", cmdline_opts_.editor.has_value());
+	const game_config::scoped_preproc_define title_screen(
+		"TITLE_SCREEN", !cmdline_opts_.multiplayer && !cmdline_opts_.test && !cmdline_opts_.editor);
 
 	game_config::reset_color_info();
 
@@ -160,8 +160,7 @@ void game_config_manager::load_game_config_with_loadscreen(
 		FORCE_LOG_TO(lg::info(), log_config) << out.str();
 	}
 
-	game_config::scoped_preproc_define debug_mode("DEBUG_MODE",
-		game_config::debug || game_config::mp_debug);
+	const game_config::scoped_preproc_define debug_mode("DEBUG_MODE", game_config::debug || game_config::mp_debug);
 
 	bool reload_everything = true;
 
@@ -325,7 +324,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 		LOG_CONFIG << "active_addons_ has size " << active_addons_.size() << " and contents: " << utils::join(active_addons_);
 		if(classification) {
 			LOG_CONFIG << "Enabling only some add-ons!";
-			std::set<std::string> active_addons = classification->active_addons(scenario_id);
+			const std::set<std::string> active_addons = classification->active_addons(scenario_id);
 			// IMPORTANT: this is a significant performance optimization, particularly for the worst case example of the batched WML unit tests
 			if(!reload_everything && active_addons == active_addons_) {
 				LOG_CONFIG << "Configs not reloaded and active add-ons remain the same; returning early.";
@@ -543,7 +542,7 @@ void game_config_manager::load_addons_cfg()
 			addon_title = addon_id;
 		}
 
-		version_info addon_version(metadata["version"]);
+		const version_info addon_version(metadata["version"]);
 
 		try {
 			std::unique_ptr<schema_validation::schema_validator> validator;
@@ -677,25 +676,21 @@ void game_config_manager::reload_changed_game_config()
 
 void game_config_manager::load_game_config_for_editor()
 {
-	game_config::scoped_preproc_define editor("EDITOR");
+	const game_config::scoped_preproc_define editor("EDITOR");
 	load_game_config_with_loadscreen(NO_FORCE_RELOAD, nullptr, "");
 }
 
 void game_config_manager::load_game_config_for_game(
 	const game_classification& classification, const std::string& scenario_id)
 {
-	game_config::scoped_preproc_define difficulty(classification.difficulty,
-		!classification.difficulty.empty());
-	game_config::scoped_preproc_define campaign(classification.campaign_define,
-		!classification.campaign_define.empty());
-	game_config::scoped_preproc_define scenario(classification.scenario_define,
-		!classification.scenario_define.empty());
-	game_config::scoped_preproc_define era(classification.era_define,
-		!classification.era_define.empty());
-	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
-		classification.is_multiplayer());
-	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest &&
-		classification.is_multiplayer());
+	const game_config::scoped_preproc_define difficulty(classification.difficulty, !classification.difficulty.empty());
+	const game_config::scoped_preproc_define campaign(
+		classification.campaign_define, !classification.campaign_define.empty());
+	const game_config::scoped_preproc_define scenario(
+		classification.scenario_define, !classification.scenario_define.empty());
+	const game_config::scoped_preproc_define era(classification.era_define, !classification.era_define.empty());
+	const game_config::scoped_preproc_define multiplayer("MULTIPLAYER", classification.is_multiplayer());
+	const game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest && classification.is_multiplayer());
 
 	//
 	// NOTE: these deques aren't used here, but the objects within are utilized as RAII helpers.
@@ -734,11 +729,11 @@ void game_config_manager::load_game_config_for_game(
 
 void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)
 {
-	game_config::scoped_preproc_define multiplayer("MULTIPLAYER", is_mp);
-	game_config::scoped_preproc_define test("TEST", is_test);
-	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest && is_mp);
+	const game_config::scoped_preproc_define multiplayer("MULTIPLAYER", is_mp);
+	const game_config::scoped_preproc_define test("TEST", is_test);
+	const game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest && is_mp);
 	/** During an mp game the default difficulty define is also defined so better already load it now if we already must reload config cache. */
-	game_config::scoped_preproc_define normal(
+	const game_config::scoped_preproc_define normal(
 		DEFAULT_DIFFICULTY, !map_includes(old_defines_map_, cache_.get_preproc_map()));
 
 	try {

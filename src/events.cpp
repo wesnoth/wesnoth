@@ -352,7 +352,7 @@ void sdl_handler::join_same(sdl_handler* parent)
 
 void sdl_handler::leave()
 {
-	sdl_handler_vector members = handler_members();
+	const sdl_handler_vector members = handler_members();
 
 	if(members.empty()) {
 		assert(event_contexts.empty() == false);
@@ -519,7 +519,7 @@ void pump()
 		}
 	}
 
-	for(SDL_Event& event : events) {
+	for(const SDL_Event& event : events) {
 		for(context& c : event_contexts) {
 			c.add_staging_handlers();
 		}
@@ -692,10 +692,10 @@ void pump()
 		if(event_contexts.empty() == false) {
 			// As pump() can recurse, pretty much anything can happen here
 			// including destroying handlers or the event context.
-			size_t ec_index = event_contexts.size();
+			const size_t ec_index = event_contexts.size();
 			context& c = event_contexts.back();
 			handler_list& h = c.handlers;
-			size_t h_size = h.size();
+			const size_t h_size = h.size();
 			for(auto it = h.begin(); it != h.end(); ++it) {
 				// Pass the event on to the handler.
 				(*it)->handle_event(event);
@@ -736,7 +736,7 @@ void raise_process_event()
 
 void raise_resize_event()
 {
-	point size = video::window_size();
+	const point size = video::window_size();
 	SDL_Event event;
 	event.window.type = SDL_WINDOWEVENT;
 	event.window.event = SDL_WINDOWEVENT_SIZE_CHANGED;

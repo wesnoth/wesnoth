@@ -169,7 +169,7 @@ void modify_grid_with_data(grid* grid, const widget_data& map)
 bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_addon>& reqs, mp::game_info::addon_req addon_outcome)
 {
 	if(addon_outcome == mp::game_info::addon_req::CANNOT_SATISFY) {
-		std::string e_title = _("Incompatible User-made Content");
+		const std::string e_title = _("Incompatible User-made Content");
 		std::string err_msg = _("This game cannot be joined because the host has out-of-date add-ons that are incompatible with your version. You might wish to suggest that the host’s add-ons be updated.");
 
 		err_msg +="\n\n";
@@ -185,7 +185,7 @@ bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_add
 
 		return false;
 	} else if(addon_outcome == mp::game_info::addon_req::NEED_DOWNLOAD) {
-		std::string e_title = _("Missing User-made Content");
+		const std::string e_title = _("Missing User-made Content");
 		std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join.\nDo you want to try to install them?");
 
 		err_msg +="\n\n";
@@ -308,7 +308,7 @@ void mp_lobby::update_gamelist_diff()
 				return;
 			}
 
-			int listbox_game_id = gamelist_id_at_row_[list_i + list_rows_deleted];
+			const int listbox_game_id = gamelist_id_at_row_[list_i + list_rows_deleted];
 			if(game.id != listbox_game_id) {
 				ERR_LB << "Listbox game id does not match expected id "
 					   << listbox_game_id << " " << game.id << " (row " << list_i << ")";
@@ -974,7 +974,7 @@ void mp_lobby::game_filter_keypress_callback(const SDL_Keycode key)
 void mp_lobby::user_dialog_callback(const mp::user_info* info)
 {
 	delay_playerlist_update_ = true;
-	lobby_delay_gamelist_update_guard g(*this);
+	const lobby_delay_gamelist_update_guard g(*this);
 
 	lobby_player_info dlg(*chatbox_, *info, lobby_info_);
 	dlg.show();

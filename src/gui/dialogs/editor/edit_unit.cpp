@@ -487,7 +487,7 @@ void editor_edit_unit::save_unit_type() {
 	type_cfg_.clear();
 
 	// Textdomain
-	std::string current_textdomain = "wesnoth-"+addon_id_;
+	const std::string current_textdomain = "wesnoth-" + addon_id_;
 
 	tab_container& tabs = find_widget<tab_container>("tabs");
 
@@ -600,7 +600,7 @@ void editor_edit_unit::store_resistances() {
 }
 
 void editor_edit_unit::enable_resistances_slider() {
-	bool toggle = find_widget<toggle_button>("resistances_checkbox").get_value();
+	const bool toggle = find_widget<toggle_button>("resistances_checkbox").get_value();
 	res_toggles_[find_widget<menu_button>("resistances_list").get_value()] = toggle;
 	find_widget<slider>("resistances_slider").set_active(toggle);
 }
@@ -623,7 +623,7 @@ void editor_edit_unit::store_defenses() {
 }
 
 void editor_edit_unit::enable_defense_slider() {
-	bool toggle = find_widget<toggle_button>("defense_checkbox").get_value();
+	const bool toggle = find_widget<toggle_button>("defense_checkbox").get_value();
 	def_toggles_[find_widget<menu_button>("defense_list").get_value()] = toggle;
 	find_widget<slider>("defense_slider").set_active(toggle);
 }
@@ -646,14 +646,14 @@ void editor_edit_unit::store_movement_costs() {
 }
 
 void editor_edit_unit::enable_movement_slider() {
-	bool toggle = find_widget<toggle_button>("movement_costs_checkbox").get_value();
+	const bool toggle = find_widget<toggle_button>("movement_costs_checkbox").get_value();
 	move_toggles_[find_widget<menu_button>("movement_costs_list").get_value()] = toggle;
 	find_widget<slider>("movement_costs_slider").set_active(toggle);
 }
 
 void editor_edit_unit::store_attack() {
 	// Textdomain
-	std::string current_textdomain = "wesnoth-"+addon_id_;
+	const std::string current_textdomain = "wesnoth-" + addon_id_;
 
 	// Save current attack data
 	if (selected_attack_ < 1) {
@@ -663,7 +663,7 @@ void editor_edit_unit::store_attack() {
 	config& attack = attacks_.at(selected_attack_-1).second;
 
 	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
+	const int prev_tab = tabs.get_active_tab_index();
 	tabs.select_tab(2);
 
 	attack["name"] = find_widget<text_box>("atk_id_box").get_value();
@@ -688,7 +688,7 @@ void editor_edit_unit::update_attacks() {
 	config& attack = attacks_.at(selected_attack_-1).second;
 
 	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
+	const int prev_tab = tabs.get_active_tab_index();
 	tabs.select_tab(2);
 
 	find_widget<text_box>("atk_id_box").set_value(attack["name"]);
@@ -710,7 +710,7 @@ void editor_edit_unit::update_attacks() {
 
 void editor_edit_unit::update_index() {
 	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
+	const int prev_tab = tabs.get_active_tab_index();
 	tabs.select_tab(2);
 
 	find_widget<button>("atk_prev").set_active(selected_attack_ > 1);
@@ -736,10 +736,10 @@ void editor_edit_unit::update_index() {
 
 void editor_edit_unit::add_attack() {
 	// Textdomain
-	std::string current_textdomain = "wesnoth-"+addon_id_;
+	const std::string current_textdomain = "wesnoth-" + addon_id_;
 
 	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
+	const int prev_tab = tabs.get_active_tab_index();
 	tabs.select_tab(2);
 
 	config attack;
@@ -765,7 +765,7 @@ void editor_edit_unit::add_attack() {
 
 void editor_edit_unit::delete_attack() {
 	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
+	const int prev_tab = tabs.get_active_tab_index();
 	tabs.select_tab(2);
 
 	//remove attack
@@ -824,7 +824,7 @@ void editor_edit_unit::select_attack() {
 //TODO Check if works with non-mainline movetypes
 void editor_edit_unit::load_movetype() {
 	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
+	const int prev_tab = tabs.get_active_tab_index();
 	tabs.select_tab(1);
 
 	for(const auto& movetype : game_config_
@@ -986,10 +986,10 @@ void editor_edit_unit::update_image(const std::string& id_stem) {
 		rel_path = rel_path.substr(0, rel_path.find("~"));
 	}
 
-	int scale_size = 200; // TODO: Arbitrary, can be changed later.
+	const int scale_size = 200; // TODO: Arbitrary, can be changed later.
 	if (rel_path.size() > 0) {
-		point img_size = ::image::get_size(::image::locator{rel_path});
-		float aspect_ratio = static_cast<float>(img_size.x)/img_size.y;
+		const point img_size = ::image::get_size(::image::locator{rel_path});
+		const float aspect_ratio = static_cast<float>(img_size.x) / img_size.y;
 		if(img_size.x > scale_size) {
 			rel_path.append("~SCALE(" + std::to_string(scale_size) + "," + std::to_string(scale_size*aspect_ratio) + ")");
 		} else if (img_size.y > scale_size) {
@@ -1009,7 +1009,7 @@ void editor_edit_unit::update_image(const std::string& id_stem) {
 }
 
 bool editor_edit_unit::check_id(const std::string& id) {
-	for(char c : id) {
+	for(const char c : id) {
 		if (!(std::isalnum(c) || c == '_' || c == ' ')) {
 			// One bad char means entire id string is invalid
 			return false;
@@ -1021,8 +1021,8 @@ bool editor_edit_unit::check_id(const std::string& id) {
 void editor_edit_unit::button_state_change() {
 	grid* grid = find_widget<tab_container>("tabs").get_tab_grid(0);
 
-	std::string id = grid->find_widget<text_box>("id_box").get_value();
-	std::string name = grid->find_widget<text_box>("name_box").get_value();
+	const std::string id = grid->find_widget<text_box>("id_box").get_value();
+	const std::string name = grid->find_widget<text_box>("name_box").get_value();
 
 	find_widget<button>("ok").set_active(!id.empty() && !name.empty() && check_id(id));
 
@@ -1045,7 +1045,8 @@ void editor_edit_unit::write() {
 	boost::algorithm::replace_all(unit_name, " ", "_");
 
 	// Path to <unit_type_name>.cfg
-	std::string unit_path = filesystem::get_current_editor_dir(addon_id_) + "/units/" + unit_name + filesystem::wml_extension;
+	const std::string unit_path
+		= filesystem::get_current_editor_dir(addon_id_) + "/units/" + unit_name + filesystem::wml_extension;
 
 	// Write to file
 	try {

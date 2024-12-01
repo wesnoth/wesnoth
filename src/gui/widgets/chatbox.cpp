@@ -153,7 +153,7 @@ void chatbox::chat_input_keypress_callback(const SDL_Keycode key)
 		return;
 	}
 
-	lobby_chat_window& t = open_windows_[active_window_];
+	const lobby_chat_window& t = open_windows_[active_window_];
 
 	switch(key) {
 	case SDLK_RETURN:
@@ -201,7 +201,7 @@ void chatbox::chat_input_keypress_callback(const SDL_Keycode key)
 		if(matches.size() == 1) {
 			input.append(line_start ? ": " : " ");
 		} else {
-			std::string completion_list = utils::join(matches, " ");
+			const std::string completion_list = utils::join(matches, " ");
 			append_to_chatbox(completion_list);
 		}
 
@@ -254,7 +254,7 @@ void chatbox::send_chat_message(const std::string& message, bool /*allies_only*/
 {
 	add_chat_message(std::time(nullptr), prefs::get().login(), 0, message);
 
-	::config c {"message", ::config {"message", message, "sender", prefs::get().login()}};
+	const ::config c{"message", ::config{"message", message, "sender", prefs::get().login()}};
 	send_to_server(c);
 }
 
@@ -303,8 +303,8 @@ void chatbox::add_whisper_sent(const std::string& receiver, const std::string& m
 
 void chatbox::add_whisper_received(const std::string& sender, const std::string& message)
 {
-	bool can_go_to_active = !prefs::get().lobby_whisper_friends_only() || prefs::get().is_friend(sender);
-	bool can_open_new = prefs::get().auto_open_whisper_windows() && can_go_to_active;
+	const bool can_go_to_active = !prefs::get().lobby_whisper_friends_only() || prefs::get().is_friend(sender);
+	const bool can_open_new = prefs::get().auto_open_whisper_windows() && can_go_to_active;
 
 	if(whisper_window_open(sender, can_open_new)) {
 		if(whisper_window_active(sender)) {
@@ -490,7 +490,7 @@ void chatbox::increment_waiting_messages(const std::string& room)
 		++t->pending_messages;
 
 		if(t->pending_messages == 1) {
-			int idx = t - &open_windows_[0];
+			const int idx = t - &open_windows_[0];
 
 			DBG_LB << "do room pending mark row " << idx << " with " << t->name;
 
@@ -579,7 +579,7 @@ void chatbox::add_active_window_message(const std::string& sender,
 
 void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 {
-	std::string sender = data["sender"];
+	const std::string sender = data["sender"];
 	DBG_LB << "process message from " << sender << " " << (whisper ? "(w)" : "")
 		<< ", len " << data["message"].str().size();
 

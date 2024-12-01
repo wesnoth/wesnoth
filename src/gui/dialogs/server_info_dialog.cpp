@@ -53,7 +53,7 @@ void server_info::pre_show()
 void server_info::tab_switch_callback()
 {
 	stacked_widget& pager = find_widget<stacked_widget>("tabs_container");
-	listbox& tab_bar = find_widget<listbox>("tab_bar");
+	const listbox& tab_bar = find_widget<listbox>("tab_bar");
 
 	pager.select_layer(std::max<int>(0, tab_bar.get_selected_row()));
 }

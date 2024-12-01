@@ -145,7 +145,7 @@ BOOST_AUTO_TEST_CASE( test_fs_enum )
 BOOST_AUTO_TEST_CASE( test_fs_binary_path )
 {
 	config main_config;
-	game_config_view game_config_view_ = game_config_view::wrap(main_config);
+	const game_config_view game_config_view_ = game_config_view::wrap(main_config);
 	game_config::config_cache& cache = game_config::config_cache::instance();
 
 	cache.clear_defines();

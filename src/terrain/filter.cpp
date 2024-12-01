@@ -99,7 +99,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 		return false;
 	}
 
-	std::string lua_function = cfg_["lua_function"];
+	const std::string lua_function = cfg_["lua_function"];
 	if (!lua_function.empty() && fc_->get_lua_kernel()) {
 		if (!fc_->get_lua_kernel()->run_filter(lua_function.c_str(), loc)) {
 			return false;
@@ -137,7 +137,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 			if (const game_data * gd = fc_->get_game_data()) {
 				try
 				{
-					variable_access_const vi = gd->get_variable_access_read(cfg_["find_in"]);
+					const variable_access_const vi = gd->get_variable_access_read(cfg_["find_in"]);
 
 					bool found = false;
 					for (const config &cfg : vi.as_array()) {
@@ -157,7 +157,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 		if (cfg_.has_attribute("location_id")) {
 			std::set<map_location> matching_locs;
 			for(const auto& id : utils::split(cfg_["location_id"])) {
-				map_location test_loc = fc_->get_disp_context().map().special_location(id);
+				const map_location test_loc = fc_->get_disp_context().map().special_location(id);
 				if(test_loc.valid()) {
 					matching_locs.insert(test_loc);
 				}
@@ -185,16 +185,16 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 		const vconfig::child_list& vis_filt = cfg_.get_children("filter_vision");
 		vconfig::child_list::const_iterator i, i_end = vis_filt.end();
 		for (i = vis_filt.begin(); i != i_end; ++i) {
-			bool visible = (*i)["visible"].to_bool(true);
-			bool respect_fog = (*i)["respect_fog"].to_bool(true);
+			const bool visible = (*i)["visible"].to_bool(true);
+			const bool respect_fog = (*i)["respect_fog"].to_bool(true);
 
-			side_filter ssf(*i, fc_);
-			std::vector<int> sides = ssf.get_teams();
+			const side_filter ssf(*i, fc_);
+			const std::vector<int> sides = ssf.get_teams();
 
 			bool found = false;
 			for (const int side : sides) {
 				const team &viewing_team = fc_->get_disp_context().get_team(side);
-				bool viewer_sees = respect_fog ? !viewing_team.fogged(loc) : !viewing_team.shrouded(loc);
+				const bool viewer_sees = respect_fog ? !viewing_team.fogged(loc) : !viewing_team.shrouded(loc);
 				if (visible == viewer_sees) {
 					found = true;
 					break;
@@ -211,7 +211,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 		vconfig::child_list::const_iterator i, i_end, i_begin = adj_cfgs.begin();
 		for (i = i_begin, i_end = adj_cfgs.end(); i != i_end; ++i) {
 			int match_count = 0;
-			vconfig::child_list::difference_type index = i - i_begin;
+			const vconfig::child_list::difference_type index = i - i_begin;
 			std::vector<map_location::direction> dirs = (*i).has_attribute("adjacent")
 				? map_location::parse_directions((*i)["adjacent"]) : map_location::all_directions();
 			std::vector<map_location::direction>::const_iterator j, j_end = dirs.end();
@@ -221,14 +221,13 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 					if(cache_.adjacent_matches == nullptr) {
 						while(index >= std::distance(cache_.adjacent_match_cache.begin(), cache_.adjacent_match_cache.end())) {
 							const vconfig& adj_cfg = adj_cfgs[cache_.adjacent_match_cache.size()];
-							std::pair<terrain_filter, std::map<map_location,bool>> amc_pair(
-								terrain_filter(adj_cfg, *this),
-								std::map<map_location,bool>());
+							const std::pair<terrain_filter, std::map<map_location, bool>> amc_pair(
+								terrain_filter(adj_cfg, *this), std::map<map_location, bool>());
 							cache_.adjacent_match_cache.push_back(amc_pair);
 						}
-						terrain_filter &amc_filter = cache_.adjacent_match_cache[index].first;
+						const terrain_filter& amc_filter = cache_.adjacent_match_cache[index].first;
 						std::map<map_location,bool> &amc = cache_.adjacent_match_cache[index].second;
-						std::map<map_location,bool>::iterator lookup = amc.find(adj);
+						const std::map<map_location, bool>::iterator lookup = amc.find(adj);
 						if(lookup == amc.end()) {
 							if(amc_filter(adj)) {
 								amc[adj] = true;
@@ -248,9 +247,9 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 					}
 				}
 			}
-			static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
-			std::vector<std::pair<int,int>> counts = (*i).has_attribute("count")
-				? utils::parse_ranges_unsigned((*i)["count"]) : default_counts;
+			static const std::vector<std::pair<int, int>> default_counts = utils::parse_ranges_unsigned("1-6");
+			const std::vector<std::pair<int, int>> counts
+				= (*i).has_attribute("count") ? utils::parse_ranges_unsigned((*i)["count"]) : default_counts;
 			if(!in_ranges(match_count, counts)) {
 				return false;
 			}
@@ -312,7 +311,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 		}
 		if(!fc_->get_disp_context().map().is_village(loc))
 			return false;
-		side_filter ssf(filter_owner, fc_);
+		const side_filter ssf(filter_owner, fc_);
 		const std::vector<int>& sides = ssf.get_teams();
 		bool found = false;
 		if(sides.empty() && fc_->get_disp_context().village_owner(loc) == 0)
@@ -396,7 +395,7 @@ bool terrain_filter::match_impl(const map_location& loc, const unit* ref_unit) c
 	if ( radius == 0 )
 		hexes.insert(loc_vec.begin(), loc_vec.end());
 	else if ( cfg_.has_child("filter_radius") ) {
-		terrain_filter r_filter(cfg_.child("filter_radius"), *this);
+		const terrain_filter r_filter(cfg_.child("filter_radius"), *this);
 		if(ref_unit) {
 			get_tiles_radius(fc_->get_disp_context().map(), loc_vec, radius, hexes, false, filter_with_unit(r_filter, *ref_unit));
 		} else {
@@ -455,7 +454,7 @@ public:
 	template<typename T, typename F1, typename F2, typename F3>
 	static void filter_final(T&& src, location_set& dest, const terrain_filter&, const F1& f1, const F2& f2, const F3& f3)
 	{
-		for (map_location loc : src) {
+		for(const map_location loc : src) {
 			if (f1(loc) && f2(loc) && f3(loc)) {
 				dest.insert(loc);
 			}
@@ -468,7 +467,7 @@ public:
 		if (filter.cfg_.has_attribute("location_id")) {
 			std::set<map_location> matching_locs;
 			for(const auto& id : utils::split(filter.cfg_["location_id"])) {
-				map_location test_loc = filter.fc_->get_disp_context().map().special_location(id);
+				const map_location test_loc = filter.fc_->get_disp_context().map().special_location(id);
 				if(test_loc.valid()) {
 					matching_locs.insert(test_loc);
 				}
@@ -541,7 +540,8 @@ void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref
 		}
 	}
 	else if (cfg_.has_attribute("x") || cfg_.has_attribute("y")) {
-		std::vector<map_location> xy_vector = fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
+		const std::vector<map_location> xy_vector
+			= fc_->get_disp_context().map().parse_location_range(cfg_["x"], cfg_["y"], with_border);
 		terrain_filterimpl::filter_area(xy_vector, match_set, *this, terrain_filterimpl::no_filter());
 	}
 	else if (cfg_.has_attribute("area")) {
@@ -550,7 +550,7 @@ void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref
 	}
 	else if (cfg_.has_attribute("location_id")) {
 		for(const auto& id : utils::split(cfg_["location_id"])) {
-			map_location test_loc = fc_->get_disp_context().map().special_location(id);
+			const map_location test_loc = fc_->get_disp_context().map().special_location(id);
 			if(test_loc.valid()) {
 				match_set.insert(test_loc);
 			}
@@ -562,9 +562,9 @@ void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref
 	}
 	else {
 		//consider all locations on the map
-		int bs = fc_->get_disp_context().map().border_size();
-		int w = with_border ? fc_->get_disp_context().map().w() + bs : fc_->get_disp_context().map().w();
-		int h = with_border ? fc_->get_disp_context().map().h() + bs : fc_->get_disp_context().map().h();
+		const int bs = fc_->get_disp_context().map().border_size();
+		const int w = with_border ? fc_->get_disp_context().map().w() + bs : fc_->get_disp_context().map().w();
+		const int h = with_border ? fc_->get_disp_context().map().h() + bs : fc_->get_disp_context().map().h();
 		for (int x = with_border ? 0 - bs : 0; x < w; ++x) {
 			for (int y = with_border ? 0 - bs : 0; y < h; ++y) {
 				match_set.insert(map_location(x, y));
@@ -654,9 +654,9 @@ void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref
 		radius = max_loop_;
 	}
 	if(radius > 0) {
-		std::vector<map_location> xy_vector (match_set.begin(), match_set.end());
+		const std::vector<map_location> xy_vector(match_set.begin(), match_set.end());
 		if(cfg_.has_child("filter_radius")) {
-			terrain_filter r_filter(cfg_.child("filter_radius"), *this);
+			const terrain_filter r_filter(cfg_.child("filter_radius"), *this);
 			get_tiles_radius(fc_->get_disp_context().map(), xy_vector, radius, locs, with_border, r_filter);
 		} else {
 			get_tiles_radius(fc_->get_disp_context().map(), xy_vector, radius, locs, with_border);

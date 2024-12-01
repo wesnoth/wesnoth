@@ -45,7 +45,7 @@ context_free_grammar_generator::context_free_grammar_generator(const std::string
 	while (*reading != 0) {
 		if (*reading == '=') {
 			// Leading and trailing whitespace is not significant, but internal whitespace is
-			std::string key = boost::trim_copy(buf);
+			const std::string key = boost::trim_copy(buf);
 			if(key == "!" || key =="(" || key == ")") {
 				throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: nonterminals (, ! and ) may not be overridden");
 			}
@@ -102,12 +102,12 @@ context_free_grammar_generator::context_free_grammar_generator(const std::map<st
 		if(key == "!" || key =="(" || key == ")") {
 			throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: nonterminals (, ! and ) may not be overridden");
 		}
-		for(std::string str : rule.second) {
+		for(const std::string str : rule.second) {
 			nonterminals_[key].possibilities_.emplace_back();
 			std::vector<std::string>* filled = &nonterminals_[key].possibilities_.back();
 			std::string buf;
 			// A little code duplication here...
-			for(char c : str) {
+			for(const char c : str) {
 				if (c == '{') {
 					if (!filled) {
 						throw  name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: misplaced { symbol");
@@ -144,7 +144,7 @@ std::string context_free_grammar_generator::print_nonterminal(const std::string&
 	else {
 		std::string result = "";
 
-		std::map<std::string,nonterminal>::const_iterator found = nonterminals_.find(name);
+		const std::map<std::string, nonterminal>::const_iterator found = nonterminals_.find(name);
 		if (found == nonterminals_.end()) {
 			lg::log_to_chat() << "[context_free_grammar_generator] Warning: needed nonterminal " << name << " not defined\n";
 			ERR_WML << "[context_free_grammar_generator] Warning: needed nonterminal " << name << " not defined";

@@ -511,7 +511,7 @@ void render_unit_image(
 
 	display* disp = display::get_singleton();
 
-	rect dest = disp->scaled_to_zoom({x, y, image_size.x, image_size.y});
+	const rect dest = disp->scaled_to_zoom({x, y, image_size.x, image_size.y});
 	if(!dest.overlaps(disp->map_area())) {
 		return;
 	}
@@ -541,7 +541,7 @@ void render_unit_image(
 			draw::flipped(tex, dest, hreverse, vreverse);
 		}
 
-		if(uint8_t hl = float_to_color(highlight); hl > 0) {
+		if(const uint8_t hl = float_to_color(highlight); hl > 0) {
 			tex.set_blend_mode(SDL_BLENDMODE_ADD);
 			tex.set_alpha_mod(hl);
 
@@ -604,7 +604,7 @@ void render_unit_image(
 			draw::flipped(tex, dest, hreverse, vreverse);
 		}
 
-		if(uint8_t hl = float_to_color(highlight); hl > 0) {
+		if(const uint8_t hl = float_to_color(highlight); hl > 0) {
 			tex.set_blend_mode(SDL_BLENDMODE_ADD);
 			tex.set_alpha_mod(hl);
 
@@ -639,7 +639,7 @@ void unit_frame::redraw(const std::chrono::milliseconds& frame_time, bool on_sta
 	const map_location::direction direction = src.get_relative_dir(dst);
 
 	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val);
-	double tmp_offset = current_data.offset;
+	const double tmp_offset = current_data.offset;
 
 	// Debug code to see the number of frames and their position
 	//if(tmp_offset) {
@@ -804,7 +804,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 
 	const frame_parameters current_data = merge_parameters(frame_time, animation_val, engine_val);
 
-	double tmp_offset = current_data.offset;
+	const double tmp_offset = current_data.offset;
 	const int d2 = display::get_singleton()->hex_size() / 2;
 
 	image::locator image_loc;
@@ -890,7 +890,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 			// Check if our underlying hexes are invalidated. If we need to update ourselves because we changed,
 			// invalidate our hexes and return whether or not was successful.
 			const SDL_Rect r {my_x, my_y, int(w * disp_zoom), int(h * disp_zoom)};
-			display::rect_of_hexes underlying_hex = disp->hexes_under_rect(r);
+			const display::rect_of_hexes underlying_hex = disp->hexes_under_rect(r);
 
 			result.insert(src);
 			result.insert(underlying_hex.begin(), underlying_hex.end());

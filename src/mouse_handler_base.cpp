@@ -131,7 +131,7 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 
 	if(is_dragging() && !dragging_started_) {
 		point pos = drag_from_; // some default value to prevent unlikely SDL bug
-		uint32_t mouse_state = dragging_left_ || dragging_right_ ? sdl::get_mouse_state(&pos.x, &pos.y) : 0;
+		const uint32_t mouse_state = dragging_left_ || dragging_right_ ? sdl::get_mouse_state(&pos.x, &pos.y) : 0;
 
 #ifdef MOUSE_TOUCH_EMULATION
 		if(dragging_left_ && (mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT))) {
@@ -174,7 +174,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	}
 
 	show_menu_ = false;
-	map_location loc = gui().hex_clicked_on(event.x, event.y);
+	const map_location loc = gui().hex_clicked_on(event.x, event.y);
 	mouse_update(browse, loc);
 
 	static clock_t touch_timestamp = 0;
@@ -191,7 +191,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			minimap_scrolling_ = false;
 
 			if (!dragging_started_ && touch_timestamp > 0) {
-				clock_t dt = clock() - touch_timestamp;
+				const clock_t dt = clock() - touch_timestamp;
 				if (dt > CLOCKS_PER_SEC * 3 / 10) {
 					if (!mouse_button_event(event, SDL_BUTTON_RIGHT, loc, true)) {
 						// BUG: This function won't do anything in the game, need right_mouse_up()
@@ -241,7 +241,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			set_scroll_start(event.x, event.y);
 			scroll_started_ = true;
 
-			map_location minimap_loc = gui().minimap_location_on(event.x, event.y);
+			const map_location minimap_loc = gui().minimap_location_on(event.x, event.y);
 			minimap_scrolling_ = false;
 			if(minimap_loc.valid()) {
 				simple_warp_ = false;
@@ -356,8 +356,8 @@ void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 {
 	auto [x, y] = sdl::get_mouse_location();
 
-	int movex = scrollx * prefs::get().scroll_speed();
-	int movey = scrolly * prefs::get().scroll_speed();
+	const int movex = scrollx * prefs::get().scroll_speed();
+	const int movey = scrolly * prefs::get().scroll_speed();
 
 	// Don't scroll map if cursor is not in gamemap area
 	if(!gui().map_area().contains(x, y)) {
@@ -365,7 +365,7 @@ void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 	}
 
 	if(movex != 0 || movey != 0) {
-		CKey pressed;
+		const CKey pressed;
 		// Alt + mousewheel do an 90° rotation on the scroll direction
 		if(pressed[SDLK_LALT] || pressed[SDLK_RALT]) {
 			gui().scroll(point{movey, movex});

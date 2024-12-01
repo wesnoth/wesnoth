@@ -287,7 +287,7 @@ void config_cache::read_defines_queue()
 void config_cache::load_configs(const std::string& config_path, config& cfg, abstract_validator* validator)
 {
 	// Make sure that we have fake transaction if no real one is going on
-	fake_transaction fake;
+	const fake_transaction fake;
 
 	if (use_cache_) {
 		read_cache(config_path, cfg, validator);

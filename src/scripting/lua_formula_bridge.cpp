@@ -44,7 +44,7 @@ public:
 	variant get_value(const std::string& key) const {
 		if(key == "__list") {
 			std::vector<variant> values;
-			std::size_t n = lua_rawlen(mState, table_i);
+			const std::size_t n = lua_rawlen(mState, table_i);
 			if(n == 0) {
 				return variant();
 			}
@@ -72,10 +72,10 @@ public:
 		add_input(inputs, "__map");
 		for(lua_pushnil(mState); lua_next(mState, table_i); lua_pop(mState,1)) {
 			lua_pushvalue(mState, -2);
-			bool is_valid_key = (lua_type(mState, -1) == LUA_TSTRING) && !lua_isnumber(mState, -1);
+			const bool is_valid_key = (lua_type(mState, -1) == LUA_TSTRING) && !lua_isnumber(mState, -1);
 			lua_pop(mState, 1);
 			if(is_valid_key) {
-				std::string key = lua_tostring(mState, -2);
+				const std::string key = lua_tostring(mState, -2);
 				if(key.find_first_not_of(formula::id_chars) != std::string::npos) {
 					add_input(inputs, key);
 				}
@@ -91,7 +91,7 @@ public:
 			if(lua_compare(mState, table_i, lua->table_i, LUA_OPEQ)) {
 				return 0;
 			}
-			int top = lua_gettop(mState);
+			const int top = lua_gettop(mState);
 			if(lua_getmetatable(mState, table_i)) {
 				lua_getfield(mState, -1, "__lt");
 				if(!lua_isnoneornil(mState, -1)) {
@@ -146,7 +146,7 @@ void luaW_pushfaivariant(lua_State* L, const variant& val) {
 		// First try a few special cases
 		if(auto u_ref = val.try_convert<unit_callable>()) {
 			const unit& u = u_ref->get_unit();
-			unit_map::iterator un_it = resources::gameboard->units().find(u.get_location());
+			const unit_map::iterator un_it = resources::gameboard->units().find(u.get_location());
 			if(&*un_it == &u) {
 				luaW_pushunit(L, u.underlying_id());
 			} else {
@@ -205,7 +205,7 @@ variant luaW_tofaivariant(lua_State* L, int i) {
 				return variant(std::make_shared<unit_callable>(*u));
 			} else if(const unit_type* ut = luaW_tounittype(L, i)) {
 				return variant(std::make_shared<unit_type_callable>(*ut));
-			} else if(const_attack_ptr atk = luaW_toweapon(L, i)) {
+			} else if(const const_attack_ptr atk = luaW_toweapon(L, i)) {
 				return variant(std::make_shared<attack_type_callable>(*atk));
 			} else if(team* t = luaW_toteam(L, i)) {
 				return variant(std::make_shared<team_callable>(*t));
@@ -254,7 +254,7 @@ int lua_formula_bridge::intf_eval_formula(lua_State *L)
 		context.reset(new unit_callable(*u));
 	} else if(const unit_type* ut = luaW_tounittype(L, 2)) {
 		context.reset(new unit_type_callable(*ut));
-	} else if(const_attack_ptr atk = luaW_toweapon(L, 2)) {
+	} else if(const const_attack_ptr atk = luaW_toweapon(L, 2)) {
 		context.reset(new attack_type_callable(*atk));
 	} else if(team* t = luaW_toteam(L, 2)) {
 		context.reset(new team_callable(*t));
@@ -263,7 +263,7 @@ int lua_formula_bridge::intf_eval_formula(lua_State *L)
 	} else {
 		context.reset(new map_formula_callable);
 	}
-	variant result = form->evaluate(*context);
+	const variant result = form->evaluate(*context);
 	luaW_pushfaivariant(L, result);
 	return 1;
 }

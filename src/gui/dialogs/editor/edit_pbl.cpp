@@ -257,7 +257,7 @@ config editor_edit_pbl::create_cfg()
 		cfg["version"] = version;
 	}
 
-	multimenu_button& dependencies = find_widget<multimenu_button>("dependencies");
+	const multimenu_button& dependencies = find_widget<multimenu_button>("dependencies");
 	boost::dynamic_bitset<> dep_states = dependencies.get_toggle_states();
 	std::vector<std::string> chosen_deps;
 	for(unsigned i = 0; i < dep_states.size(); i++) {
@@ -293,11 +293,11 @@ config editor_edit_pbl::create_cfg()
 		feedback["topic_id"] = topic_id;
 	}
 
-	if(unsigned value = find_widget<menu_button>("type").get_value(); value != 0) {
+	if(const unsigned value = find_widget<menu_button>("type").get_value(); value != 0) {
 		cfg["type"] = type_values[value];
 	}
 
-	multimenu_button& tags = find_widget<multimenu_button>("tags");
+	const multimenu_button& tags = find_widget<multimenu_button>("tags");
 	boost::dynamic_bitset<> tag_states = tags.get_toggle_states();
 	std::vector<std::string> chosen_tags;
 	for(unsigned i = 0; i < tag_states.size(); i++) {
@@ -324,7 +324,7 @@ config editor_edit_pbl::create_cfg()
 
 void editor_edit_pbl::toggle_auth()
 {
-	toggle_button& forum_auth = find_widget<toggle_button>("forum_auth");
+	const toggle_button& forum_auth = find_widget<toggle_button>("forum_auth");
 	if(forum_auth.get_value_bool()) {
 		find_widget<text_box>("email").set_visible(gui2::widget::visibility::invisible);
 		find_widget<text_box>("password").set_visible(gui2::widget::visibility::invisible);
@@ -397,9 +397,9 @@ void editor_edit_pbl::validate()
 
 void editor_edit_pbl::update_icon_preview()
 {
-	std::string icon = find_widget<text_box>("icon").get_value();
+	const std::string icon = find_widget<text_box>("icon").get_value();
 	if(icon.find(".png") != std::string::npos || icon.find(".jpg") != std::string::npos || icon.find(".webp") != std::string::npos) {
-		std::string path = filesystem::get_core_images_dir() + icon;
+		const std::string path = filesystem::get_core_images_dir() + icon;
 		drawing& img = find_widget<drawing>("preview");
 
 		if(filesystem::file_exists(path) || icon.find("data:image") != std::string::npos) {
@@ -413,7 +413,7 @@ void editor_edit_pbl::update_icon_preview()
 
 void editor_edit_pbl::update_url_preview()
 {
-	std::string topic = find_widget<text_box>("forum_thread").get_value();
+	const std::string topic = find_widget<text_box>("forum_thread").get_value();
 	find_widget<label>("forum_url").set_label("https://r.wesnoth.org/t" + topic);
 }
 
@@ -424,14 +424,14 @@ void editor_edit_pbl::select_icon_file()
 	dlg.set_title(_("Choose an icon")).set_path(filesystem::get_core_images_dir() + "/icons/");
 
 	if(dlg.show()) {
-		std::string path = dlg.path();
+		const std::string path = dlg.path();
 		if(path.find(filesystem::get_core_images_dir()) == 0) {
-			std::string icon = path.substr(filesystem::get_core_images_dir().length() + 1);
+			const std::string icon = path.substr(filesystem::get_core_images_dir().length() + 1);
 			// setting this programmatically doesn't seem to trigger connect_signal_notify_modified()
 			find_widget<text_box>("icon").set_value(icon);
 			find_widget<drawing>("preview").set_label(icon);
 		} else {
-			std::string uri = filesystem::read_file_as_data_uri(path);
+			const std::string uri = filesystem::read_file_as_data_uri(path);
 
 			if(!uri.empty()) {
 				find_widget<text_box>("icon").set_value(uri);

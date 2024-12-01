@@ -63,7 +63,7 @@ void carryover::transfer_all_gold_to(config& side_cfg){
 }
 
 void carryover::transfer_all_recruits_to(config& side_cfg){
-	std::string can_recruit_str = utils::join(previous_recruits_, ",");
+	const std::string can_recruit_str = utils::join(previous_recruits_, ",");
 	previous_recruits_.clear();
 	side_cfg["previous_recruits"] = can_recruit_str;
 }
@@ -169,11 +169,8 @@ void carryover_info::transfer_all_to(config& side_cfg){
 	if(side_cfg["save_id"].empty()){
 		side_cfg["save_id"] = side_cfg["id"];
 	}
-	std::vector<carryover>::iterator iside = std::find_if(
-		carryover_sides_.begin(),
-		carryover_sides_.end(),
-		save_id_equals(side_cfg["save_id"])
-	);
+	const std::vector<carryover>::iterator iside
+		= std::find_if(carryover_sides_.begin(), carryover_sides_.end(), save_id_equals(side_cfg["save_id"]));
 	if(iside != carryover_sides_.end())
 	{
 		iside->transfer_all_gold_to(side_cfg);
@@ -255,11 +252,8 @@ void carryover_info::merge_old_carryover(const carryover_info& old_carryover)
 {
 	for(const carryover & old_side : old_carryover.carryover_sides_)
 	{
-		std::vector<carryover>::iterator iside = std::find_if(
-			carryover_sides_.begin(),
-			carryover_sides_.end(),
-			save_id_equals(old_side.get_save_id())
-			);
+		const std::vector<carryover>::iterator iside
+			= std::find_if(carryover_sides_.begin(), carryover_sides_.end(), save_id_equals(old_side.get_save_id()));
 		//add the side if don't already have it.
 		if(iside == carryover_sides_.end())
 		{

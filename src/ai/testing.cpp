@@ -45,14 +45,14 @@ void ai_testing::log_turn_end(unsigned int side)
 void ai_testing::log_turn(const char* msg, unsigned int side)
 {
 	assert(side>=1);
-	team& current_team = resources::gameboard->get_team(side);
+	const team& current_team = resources::gameboard->get_team(side);
 
-	int _turn_number = resources::tod_manager->turn();
-	int _units = resources::gameboard->side_units(side);
-	int _units_cost = resources::gameboard->side_units_cost(side);
-	int _gold = current_team.gold();
-	int _villages = current_team.villages().size();
-	int _income = current_team.total_income();
+	const int _turn_number = resources::tod_manager->turn();
+	const int _units = resources::gameboard->side_units(side);
+	const int _units_cost = resources::gameboard->side_units_cost(side);
+	const int _gold = current_team.gold();
+	const int _villages = current_team.villages().size();
+	const int _income = current_team.total_income();
 
 	DBG_AI_TESTING << msg <<                   side << ": " << _turn_number;
 	DBG_AI_TESTING << msg << "_UNITS "      << side << ": " << _units;
@@ -90,7 +90,7 @@ void ai_testing::log_victory(const std::set<unsigned int>& winners)
 void ai_testing::log_game_start()
 {
 	for(const team& tm : resources::gameboard->teams()) {
-		int side = tm.side();
+		const int side = tm.side();
 		LOG_AI_TESTING << "AI_IDENTIFIER " << side << ": " << ai::manager::get_singleton().get_active_ai_identifier_for_side(side);
 		resources::recorder->add_log_data("ai_log", "ai_id" + std::to_string(side), ai::manager::get_singleton().get_active_ai_identifier_for_side(side));
 	}
@@ -104,7 +104,7 @@ void ai_testing::log_game_end()
 	resources::recorder->add_log_data("ai_log","end_turn",
 		std::to_string(resources::tod_manager->turn()));
 	for(const team& tm : resources::gameboard->teams()) {
-		int side = tm.side();
+		const int side = tm.side();
 		resources::recorder->add_log_data("ai_log","end_gold"+std::to_string(side),std::to_string(tm.gold()));
 		resources::recorder->add_log_data("ai_log","end_units"+std::to_string(side),std::to_string(resources::gameboard->side_units(side)));
 	}

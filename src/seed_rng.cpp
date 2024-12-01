@@ -35,7 +35,7 @@ namespace seed_rng {
 	}
 
 	std::string next_seed_str() {
-		uint32_t random_seed_ = next_seed();
+		const uint32_t random_seed_ = next_seed();
 		std::stringstream stream;
 		stream << std::setfill('0') << std::setw(sizeof(uint32_t)*2) << std::hex << random_seed_;
 

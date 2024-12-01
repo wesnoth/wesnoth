@@ -353,7 +353,7 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(const std::stri
 			if(!error) break;
 
 			do {
-				std::string password = prefs::get().password(host, login);
+				const std::string password = prefs::get().password(host, login);
 
 				const bool fall_through = (*error)["force_confirmation"].to_bool()
 					? (gui2::show_message(_("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::retval::CANCEL)
@@ -785,11 +785,11 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 	}
 
 	if(resources::recorder && cmdline_opts.multiplayer_label) {
-		std::string label = *cmdline_opts.multiplayer_label;
+		const std::string label = *cmdline_opts.multiplayer_label;
 		resources::recorder->add_log_data("ai_log","ai_label",label);
 	}
 
-	unsigned int repeat = (cmdline_opts.multiplayer_repeat) ? *cmdline_opts.multiplayer_repeat : 1;
+	const unsigned int repeat = (cmdline_opts.multiplayer_repeat) ? *cmdline_opts.multiplayer_repeat : 1;
 	for(unsigned int i = 0; i < repeat; i++){
 		saved_game state_copy(state);
 		campaign_controller controller(state_copy);

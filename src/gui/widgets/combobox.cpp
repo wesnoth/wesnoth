@@ -209,7 +209,7 @@ void combobox::handle_mouse_selection(point mouse, const bool start_selection)
 		return;
 	}
 
-	int offset = get_column_line(point(mouse.x - text_x_offset_, mouse.y - text_y_offset_)).x;
+	const int offset = get_column_line(point(mouse.x - text_x_offset_, mouse.y - text_y_offset_)).x;
 
 	if(offset < 0) {
 		return;
@@ -305,8 +305,8 @@ void combobox::set_selected(unsigned selected, bool fire_event)
 
 void combobox::update_mouse_cursor()
 {
-	unsigned right_border = get_x() + this->get_size().x;
-	unsigned mouse_x = get_mouse_position().x;
+	const unsigned right_border = get_x() + this->get_size().x;
+	const unsigned mouse_x = get_mouse_position().x;
 
 	if ((mouse_x <= right_border) && (mouse_x >= right_border-ICON_SIZE)) {
 		cursor::set(cursor::NORMAL);
@@ -346,8 +346,8 @@ void combobox::signal_handler_left_button_down(const event::ui_event event,
 	 * so get_x() + this->get_size().x is the right border
 	 * ICON_SIZE is the size of the icon.*/
 
-	unsigned right_border = get_x() + this->get_size().x;
-	unsigned mouse_x = get_mouse_position().x;
+	const unsigned right_border = get_x() + this->get_size().x;
+	const unsigned mouse_x = get_mouse_position().x;
 
 	if ((mouse_x <= right_border) && (mouse_x >= right_border-ICON_SIZE)) {
 		// If a button has a retval do the default handling.

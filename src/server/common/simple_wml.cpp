@@ -106,7 +106,7 @@ char* compress_buffer(const char* input, string_span* span, bool bzip2)
 	int nalloc = strlen(input);
 	int state = 0;
 	try {
-		std::string in(input);
+		const std::string in(input);
 		state = 1;
 		std::istringstream istream(in);
 		state = 2;
@@ -120,7 +120,7 @@ char* compress_buffer(const char* input, string_span* span, bool bzip2)
 		state = 4;
 		nalloc = in.size()*2 + 80;
 		std::vector<char> buf(nalloc);
-		boost::iostreams::array_sink out(&buf[0], buf.size());
+		const boost::iostreams::array_sink out(&buf[0], buf.size());
 		filter.push(boost::iostreams::counter());
 		filter.push(out);
 
@@ -283,7 +283,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 				throw error("did not find '=' after attribute");
 			}
 
-			string_span name(s, end - s);
+			const string_span name(s, end - s);
 			s = end + 1;
 			if(*s == '_') {
 				s = strchr(s, '"');
@@ -345,10 +345,10 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			++s;
 
 			read_attribute:
-			string_span value(s, end - s);
-			if(attr_.empty() == false && !(attr_.back().key < name)) {
-				ERR_SWML << "attributes: '" << attr_.back().key << "' < '" << name << "'";
-				throw error("attributes not in order");
+				const string_span value(s, end - s);
+				if(attr_.empty() == false && !(attr_.back().key < name)) {
+					ERR_SWML << "attributes: '" << attr_.back().key << "' < '" << name << "'";
+					throw error("attributes not in order");
 			}
 
 			s = end + 1;
@@ -391,10 +391,10 @@ struct string_span_pair_comparer
 
 const string_span& node::operator[](const char* key) const
 {
-	static string_span empty("");
-	string_span span(key);
-	std::pair<attribute_list::const_iterator,
-	          attribute_list::const_iterator> range = std::equal_range(attr_.begin(), attr_.end(), span, string_span_pair_comparer());
+	static const string_span empty("");
+	const string_span span(key);
+	const std::pair<attribute_list::const_iterator, attribute_list::const_iterator> range
+		= std::equal_range(attr_.begin(), attr_.end(), span, string_span_pair_comparer());
 	if(range.first != range.second) {
 		return range.first->value;
 	}
@@ -404,9 +404,9 @@ const string_span& node::operator[](const char* key) const
 
 bool node::has_attr(const char* key) const
 {
-	string_span span(key);
-	std::pair<attribute_list::const_iterator,
-	          attribute_list::const_iterator> range = std::equal_range(attr_.begin(), attr_.end(), span, string_span_pair_comparer());
+	const string_span span(key);
+	const std::pair<attribute_list::const_iterator, attribute_list::const_iterator> range
+		= std::equal_range(attr_.begin(), attr_.end(), span, string_span_pair_comparer());
 	return range.first != range.second;
 }
 
@@ -414,9 +414,9 @@ node& node::set_attr(const char* key, const char* value)
 {
 	set_dirty();
 
-	string_span span(key);
-	std::pair<attribute_list::iterator,
-	          attribute_list::iterator> range = std::equal_range(attr_.begin(), attr_.end(), span, string_span_pair_comparer());
+	const string_span span(key);
+	const std::pair<attribute_list::iterator, attribute_list::iterator> range
+		= std::equal_range(attr_.begin(), attr_.end(), span, string_span_pair_comparer());
 	if(range.first != range.second) {
 		range.first->value = string_span(value);
 	} else {
@@ -440,7 +440,7 @@ node& node::set_attr_dup(const char* key, const string_span& value)
 
 node& node::set_attr_int(const char* key, int value)
 {
-	std::string temp = std::to_string(value);
+	const std::string temp = std::to_string(value);
 	return set_attr_dup(key, temp.c_str());
 }
 
@@ -481,7 +481,7 @@ void node::remove_child(const string_span& name, std::size_t index)
 	set_dirty();
 
 	//if we don't already have a vector for this item we don't want to add one.
-	child_map::iterator itor = find_in_map(children_, name);
+	const child_map::iterator itor = find_in_map(children_, name);
 	if(itor == children_.end()) {
 		return;
 	}
@@ -545,7 +545,7 @@ void node::remove_ordered_child(int child_map_index, int child_list_index)
 
 void node::insert_ordered_child_list(int child_map_index)
 {
-	std::vector<node_pos>::iterator i = ordered_children_.begin();
+	const std::vector<node_pos>::iterator i = ordered_children_.begin();
 	while(i != ordered_children_.end()) {
 		if(i->child_map_index >= child_map_index) {
 			i->child_map_index++;
@@ -856,8 +856,8 @@ void node::apply_diff(const node& diff)
 	const node* deletes = diff.child("delete");
 	if(deletes != nullptr) {
 		for(attribute_list::const_iterator i = deletes->attr_.begin(); i != deletes->attr_.end(); ++i) {
-			std::pair<attribute_list::iterator,
-	                  attribute_list::iterator> range = std::equal_range(attr_.begin(), attr_.end(), i->key, string_span_pair_comparer());
+			const std::pair<attribute_list::iterator, attribute_list::iterator> range
+				= std::equal_range(attr_.begin(), attr_.end(), i->key, string_span_pair_comparer());
 			if(range.first != range.second) {
 				attr_.erase(range.first);
 			}
@@ -870,7 +870,7 @@ void node::apply_diff(const node& diff)
 		for(child_map::const_iterator j = (*i)->children_.begin(); j != (*i)->children_.end(); ++j) {
 			const string_span& name = j->first;
 			for(child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
-				child_map::iterator itor = find_in_map(children_, name);
+				const child_map::iterator itor = find_in_map(children_, name);
 				if(itor != children_.end()) {
 					if(index < itor->second.size()) {
 						itor->second[index]->apply_diff(**k);

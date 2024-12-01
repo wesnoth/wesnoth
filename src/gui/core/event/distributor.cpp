@@ -148,7 +148,7 @@ void mouse_motion::signal_handler_sdl_mouse_motion(const event::ui_event event, 
 	if(signal_handler_sdl_mouse_motion_entered_) {
 		return;
 	}
-	resource_locker lock{signal_handler_sdl_mouse_motion_entered_};
+	const resource_locker lock{signal_handler_sdl_mouse_motion_entered_};
 
 	DBG_GUI_E << LOG_HEADER << event << ".";
 
@@ -449,7 +449,7 @@ void mouse_button<I>::signal_handler_sdl_button_down(
 	if(signal_handler_sdl_button_down_entered_) {
 		return;
 	}
-	resource_locker lock{signal_handler_sdl_button_down_entered_};
+	const resource_locker lock{signal_handler_sdl_button_down_entered_};
 
 	DBG_GUI_E << LOG_HEADER << event << ".";
 
@@ -500,7 +500,7 @@ void mouse_button<I>::signal_handler_sdl_button_up(
 	if(signal_handler_sdl_button_up_entered_) {
 		return;
 	}
-	resource_locker lock{signal_handler_sdl_button_up_entered_};
+	const resource_locker lock{signal_handler_sdl_button_up_entered_};
 
 	DBG_GUI_E << LOG_HEADER << event << ".";
 

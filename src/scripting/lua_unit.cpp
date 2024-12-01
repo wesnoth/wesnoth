@@ -52,7 +52,7 @@ unit* lua_unit::get() const
 	if (side) {
 		return resources::gameboard->get_team(side).recall_list().find_if_matches_underlying_id(uid).get();
 	}
-	unit_map::unit_iterator ui = resources::gameboard->units().find(uid);
+	const unit_map::unit_iterator ui = resources::gameboard->units().find(uid);
 	if (!ui.valid()) return nullptr;
 	return ui.get_shared_ptr().get(); //&*ui would not be legal, must get new shared_ptr by copy ctor because the unit_map itself is holding a boost shared pointer.
 }
@@ -62,7 +62,7 @@ unit_ptr lua_unit::get_shared() const
 	if (side) {
 		return resources::gameboard->get_team(side).recall_list().find_if_matches_underlying_id(uid);
 	}
-	unit_map::unit_iterator ui = resources::gameboard->units().find(uid);
+	const unit_map::unit_iterator ui = resources::gameboard->units().find(uid);
 	if (!ui.valid()) return unit_ptr();
 	return ui.get_shared_ptr(); //&*ui would not be legal, must get new shared_ptr by copy ctor because the unit_map itself is holding a boost shared pointer.
 }
@@ -84,7 +84,7 @@ bool lua_unit::put_map(const map_location &loc)
 			return false;
 		}
 	} else if (side) { // recall list
-		unit_ptr it = resources::gameboard->get_team(side).recall_list().extract_if_matches_underlying_id(uid);
+		const unit_ptr it = resources::gameboard->get_team(side).recall_list().extract_if_matches_underlying_id(uid);
 		if (it) {
 			side = 0;
 			// uid may be changed by unit_map on insertion
@@ -94,9 +94,9 @@ bool lua_unit::put_map(const map_location &loc)
 			return false;
 		}
 	} else { // on map
-		unit_map::unit_iterator ui = resources::gameboard->units().find(uid);
+		const unit_map::unit_iterator ui = resources::gameboard->units().find(uid);
 		if (ui != resources::gameboard->units().end()) {
-			map_location from = ui->get_location();
+			const map_location from = ui->get_location();
 			if (from != loc) { // This check is redundant in current usage
 				resources::gameboard->units().erase(loc);
 				resources::gameboard->units().move(from, loc);
@@ -231,8 +231,8 @@ static int impl_unit_collect(lua_State *L)
  */
 static int impl_unit_equality(lua_State* L)
 {
-	unit& left = luaW_checkunit(L, 1);
-	unit& right = luaW_checkunit(L, 2);
+	const unit& left = luaW_checkunit(L, 1);
+	const unit& right = luaW_checkunit(L, 2);
 	const bool equal = left.underlying_id() == right.underlying_id();
 	lua_pushboolean(L, equal);
 	return 1;
@@ -256,7 +256,7 @@ static int impl_unit_tostring(lua_State* L)
 		str << u->type_id() << " ";
 	}
 	if(u) {
-		if(int side = lu->on_recall_list()) {
+		if(const int side = lu->on_recall_list()) {
 			str << "at (side " << side << " recall list)";
 		} else {
 			if(!lu->on_map()) {
@@ -295,7 +295,7 @@ static void handle_unit_move(lua_State* L, lua_unit* lu, map_location dst) {
 	if(!lu->on_map()) {
 		(*lu)->set_location(dst);
 	} else {
-		unit& u = *lu->get();
+		const unit& u = *lu->get();
 
 		// Handle moving an on-map unit
 		game_board* gb = resources::gameboard;
@@ -304,13 +304,13 @@ static void handle_unit_move(lua_State* L, lua_unit* lu, map_location dst) {
 			return;
 		}
 
-		map_location src = u.get_location();
+		const map_location src = u.get_location();
 
 		// TODO: could probably be relegated to a helper function.
 		if(src != dst) {
 			// If the dst isn't on the map, the unit will be clobbered. Guard against that.
 			if(!gb->map().on_board(dst)) {
-				std::string err_msg = formatter() << "destination hex not on map (excluding border): " << dst;
+				const std::string err_msg = formatter() << "destination hex not on map (excluding border): " << dst;
 				return void(luaL_argerror(L, 2, err_msg.c_str()));
 			}
 

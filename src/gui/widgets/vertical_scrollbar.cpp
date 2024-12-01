@@ -62,9 +62,7 @@ unsigned vertical_scrollbar::offset_after() const
 
 bool vertical_scrollbar::on_positioner(const point& coordinate) const
 {
-	rect positioner_rect(
-		0, get_positioner_offset(), get_width(), get_positioner_length()
-	);
+	const rect positioner_rect(0, get_positioner_offset(), get_width(), get_positioner_length());
 
 	// Note we assume the positioner is over the entire height of the widget.
 	return positioner_rect.contains(coordinate);

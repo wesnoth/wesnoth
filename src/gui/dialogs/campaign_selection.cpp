@@ -226,8 +226,8 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 
 	bool exists_in_filtered_result = false;
 	for(unsigned i = 0; i < levels.size(); ++i) {
-		bool completed = prefs::get().is_campaign_completed(levels[i]->data()["id"]);
-		config::const_child_itors difficulties = levels[i]->data().child_range("difficulty");
+		const bool completed = prefs::get().is_campaign_completed(levels[i]->data()["id"]);
+		const config::const_child_itors difficulties = levels[i]->data().child_range("difficulty");
 		auto did_complete_at = [](const config& c) { return c["completed_at"].to_bool(); };
 
 		// Check for non-completion on every difficulty save the first.
@@ -463,7 +463,7 @@ void campaign_selection::add_campaign_to_tree(const config& campaign)
 
 	// We completed the campaign! Calculate the appropriate victory laurel.
 	if(campaign["completed"].to_bool()) {
-		config::const_child_itors difficulties = campaign.child_range("difficulty");
+		const config::const_child_itors difficulties = campaign.child_range("difficulty");
 
 		auto did_complete_at = [](const config& c) { return c["completed_at"].to_bool(); };
 
@@ -531,8 +531,7 @@ void campaign_selection::proceed()
 
 void campaign_selection::mod_toggled()
 {
-	boost::dynamic_bitset<> new_mod_states =
-		find_widget<multimenu_button>("mods_menu").get_toggle_states();
+	const boost::dynamic_bitset<> new_mod_states = find_widget<multimenu_button>("mods_menu").get_toggle_states();
 
 	// Get a mask of any mods that were toggled, regardless of new state
 	mod_states_ = mod_states_ ^ new_mod_states;

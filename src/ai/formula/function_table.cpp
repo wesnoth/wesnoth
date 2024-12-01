@@ -74,7 +74,7 @@ class unit_adapter {
 		 */
 		int damage_from(const attack_type& attack) const {
 			if(unit_type_ != nullptr) {
-				std::pair<std::string, std::string> types = attack.damage_type();
+				const std::pair<std::string, std::string> types = attack.damage_type();
 				int res = unit_type_->movement_type().resistance_against(types.first);
 				if(!(types.second).empty()){
 					// max not min, resistance_against() returns the percentage taken, so higher means more damage
@@ -130,7 +130,7 @@ DEFINE_FAI_FUNCTION(distance_to_nearest_unowned_village, 1, 1)
 	const std::vector<map_location>& villages = resources::gameboard->map().villages();
 	const std::set<map_location>& my_villages = ai_.current_team().villages();
 	for(std::vector<map_location>::const_iterator i = villages.begin(); i != villages.end(); ++i) {
-		int distance = distance_between(loc, *i);
+		const int distance = distance_between(loc, *i);
 		if(distance < best) {
 			if(my_villages.count(*i) == 0) {
 				best = distance;
@@ -206,8 +206,8 @@ namespace {
 		static std::vector<node> nodes;
 		nodes.resize(static_cast<size_t>(map.w()) * map.h());
 
-		indexer index(map.w(), map.h());
-		comp node_comp(nodes);
+		const indexer index(map.w(), map.h());
+		const comp node_comp(nodes);
 
 		nodes[index(loc)] = node(0, loc);
 		std::vector<int> pq;
@@ -223,7 +223,7 @@ namespace {
 				if (!locs[i].valid(map.w(), map.h())) continue;
 
 				node& next = nodes[index(locs[i])];
-				bool next_visited = next.in - search_counter <= 1u;
+				const bool next_visited = next.in - search_counter <= 1u;
 
 				// test if the current path to locs[i] is better than this one could possibly be.
 				// we do this a couple more times below
@@ -234,7 +234,7 @@ namespace {
 
 				if (next_visited &&  !(t < next)) continue;
 
-				bool in_list = next.in == search_counter + 1;
+				const bool in_list = next.in == search_counter + 1;
 				t.in = search_counter + 1;
 				next = t;
 
@@ -252,7 +252,7 @@ namespace {
 		for (int x = 0; x < map.w(); ++x) {
 			for (int y = 0; y < map.h(); ++y)
 			{
-				int i = y * map.w() + x;
+				const int i = y * map.w() + x;
 				const node &n = nodes[i];
 				scores[i] = scores[i] + n.movement_cost_;
 				//std::cout << x << "," << y << ":" << n.movement_cost << std::endl;
@@ -263,8 +263,8 @@ namespace {
 
 DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 {
-	int w = resources::gameboard->map().w();
-	int h = resources::gameboard->map().h();
+	const int w = resources::gameboard->map().w();
+	const int h = resources::gameboard->map().h();
 
 	const variant units_input = args()[0]->evaluate(variables,fdb);
 	const variant leaders_input = args()[1]->evaluate(variables,fdb);
@@ -284,7 +284,7 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 	if( !units_input.is_list() )
 		return variant();
 
-	std::size_t number_of_teams = units_input.num_elements();
+	const std::size_t number_of_teams = units_input.num_elements();
 
 	std::vector< std::vector<int>> scores( number_of_teams );
 
@@ -307,7 +307,7 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 		const variant units_of_side = units_input[side];
 
 		for(std::size_t unit_it = 0 ; unit_it < units_of_side.num_elements() ; ++unit_it) {
-			unit_adapter unit(units_of_side[unit_it]);
+			const unit_adapter unit(units_of_side[unit_it]);
 			find_movemap( unit, loc, scores[side], true, ai_ );
 		}
 	}
@@ -327,7 +327,7 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 	//std::vector<variant> res;
 	std::map<variant, variant> res;
 
-	std::size_t current_side = ai_.get_side() - 1 ;
+	const std::size_t current_side = ai_.get_side() - 1;
 
 	std::vector<int> enemies;
 	std::vector<int> allies;
@@ -350,15 +350,15 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 	for (int x = 0; x < w; ++x) {
 		for (int y = 0; y < h; ++y)
 		{
-			int i = y * w + x;
+			const int i = y * w + x;
 			bool valid = true;
 			bool enemy_border = false;
 
 			if( scores[current_side][i] > 98 )
 				continue;
 
-			for (int side : enemies) {
-				int diff = scores[current_side][i] - scores[side][i];
+			for(const int side : enemies) {
+				const int diff = scores[current_side][i] - scores[side][i];
 				if ( diff > enemy_tolerance) {
 					valid = false;
 					break;
@@ -367,7 +367,7 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 			}
 
 			if( valid ) {
-				for (int side : allies) {
+				for(const int side : allies) {
 					if ( scores[current_side][i] - scores[side][i] > ally_tolerance ) {
 						valid = false;
 						break;
@@ -389,14 +389,14 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 DEFINE_WFL_FUNCTION(nearest_loc, 2, 2)
 {
 	const map_location loc = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "nearest_loc:location")).convert_to<location_callable>()->loc();
-	variant items = args()[1]->evaluate(variables,add_debug_info(fdb,1,"nearest_loc:locations"));
+	const variant items = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "nearest_loc:locations"));
 	int best = 1000000;
 	int best_i = -1;
 
 	for(std::size_t i = 0; i < items.num_elements(); ++i) {
 
 		const map_location move_loc = items[i].convert_to<location_callable>()->loc();
-		int distance = distance_between(loc, move_loc);
+		const int distance = distance_between(loc, move_loc);
 
 		if(distance < best) {
 				best = distance;
@@ -426,9 +426,9 @@ DEFINE_FAI_FUNCTION(run_file, 1, 1)
 		return variant(); //no suitable file
 	}
 
-	std::string formula_string = filesystem::read_file(path.value());
+	const std::string formula_string = filesystem::read_file(path.value());
 	//need to get function_table from somewhere or delegate to someone who has access to it
-	formula_ptr parsed_formula = ai_.create_optional_formula(formula_string);
+	const formula_ptr parsed_formula = ai_.create_optional_formula(formula_string);
 	if(parsed_formula == formula_ptr()) {
 		ERR_AI << "run_file : unable to create formula";
 		return variant(); //was unable to create a formula from file
@@ -486,7 +486,7 @@ DEFINE_WFL_FUNCTION(castle_locs, 1, 1)
  */
 DEFINE_WFL_FUNCTION(timeofday_modifier, 1, 2)
 {
-	variant u = args()[0]->evaluate(variables,add_debug_info(fdb,0,"timeofday_modifier:unit"));
+	const variant u = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "timeofday_modifier:unit"));
 
 	if( u.is_null() ) {
 		return variant();
@@ -520,10 +520,10 @@ DEFINE_FAI_FUNCTION(nearest_keep, 1, 1)
 	int best_i = -1;
 
 	ai_.get_keeps();
-	int size = ai_.get_keeps_cache().num_elements();
+	const int size = ai_.get_keeps_cache().num_elements();
 
 	for( int i = 0 ; i < size; ++i) {
-		int distance = distance_between(loc, ai_.get_keeps_cache()[i].convert_to<location_callable>()->loc() );
+		const int distance = distance_between(loc, ai_.get_keeps_cache()[i].convert_to<location_callable>()->loc());
 		if(distance < best)
 		{
 				best = distance;
@@ -585,9 +585,9 @@ DEFINE_FAI_FUNCTION(close_enemies, 2, 2)
 		WRN_AI << "close_enemies_function: range is negative (" << range_s << ")";
 		range_s = 0;
 	}
-	std::size_t range = static_cast<std::size_t>(range_s);
+	const std::size_t range = static_cast<std::size_t>(range_s);
 	unit_map::const_iterator un = resources::gameboard->units().begin();
-	unit_map::const_iterator end = resources::gameboard->units().end();
+	const unit_map::const_iterator end = resources::gameboard->units().end();
 	while (un != end) {
 		if (distance_between(loc, un->get_location()) <= range) {
 			if (un->side() != ai_.get_side()) {//fixme: ignores allied units
@@ -607,16 +607,22 @@ DEFINE_WFL_FUNCTION(calculate_outcome, 3, 4)
 	else weapon = -1;
 
 	const unit_map& units = resources::gameboard->units();
-	map_location attacker_location =
-		args()[0]->evaluate(variables, add_debug_info(fdb, 0, "calculate_outcome:attacker_current_location")).convert_to<location_callable>()->loc();
+	const map_location attacker_location
+		= args()[0]
+			  ->evaluate(variables, add_debug_info(fdb, 0, "calculate_outcome:attacker_current_location"))
+			  .convert_to<location_callable>()
+			  ->loc();
 	if(units.count(attacker_location) == 0) {
 		ERR_AI << "Performing calculate_outcome() with non-existent attacker at (" <<
 			attacker_location.wml_x() << "," << attacker_location.wml_y() << ")";
 		return variant();
 	}
 
-	map_location defender_location =
-		args()[2]->evaluate(variables,add_debug_info(fdb, 2, "calculate_outcome:defender_location")).convert_to<location_callable>()->loc();
+	const map_location defender_location
+		= args()[2]
+			  ->evaluate(variables, add_debug_info(fdb, 2, "calculate_outcome:defender_location"))
+			  .convert_to<location_callable>()
+			  ->loc();
 	if(units.count(defender_location) == 0) {
 		ERR_AI << "Performing calculate_outcome() with non-existent defender at (" <<
 			defender_location.wml_x() << "," << defender_location.wml_y() << ")";
@@ -676,7 +682,7 @@ DEFINE_WFL_FUNCTION(calculate_outcome, 3, 4)
 
 DEFINE_WFL_FUNCTION(outcomes, 1, 1)
 {
-	variant attack = args()[0]->evaluate(variables,add_debug_info(fdb,0,"outcomes:attack"));
+	const variant attack = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "outcomes:attack"));
 	auto analysis = attack.convert_to<ai::attack_analysis>();
 	//unit_map units_with_moves(resources::gameboard->units());
 	//typedef std::pair<map_location, map_location> mv;
@@ -702,7 +708,7 @@ DEFINE_WFL_FUNCTION(outcomes, 1, 1)
 
 DEFINE_FAI_FUNCTION(rate_action, 1, 1)
 {
-	variant act = args()[0]->evaluate(variables,add_debug_info(fdb,0,"rate_action:action"));
+	const variant act = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "rate_action:action"));
 	auto analysis = act.convert_to<ai::attack_analysis>();
 
 	return variant(analysis->rating(ai_.get_aggression(),ai_)*1000,variant::DECIMAL_VARIANT);
@@ -794,9 +800,9 @@ DEFINE_FAI_FUNCTION(simplest_path, 2, 3)
 		throw formula_error( str.str(), "", "", 0);
 	}
 
-	pathfind::teleport_map allowed_teleports = ai_.get_allowed_teleports(unit_it);
+	const pathfind::teleport_map allowed_teleports = ai_.get_allowed_teleports(unit_it);
 
-	pathfind::emergency_path_calculator em_calc(*unit_it, resources::gameboard->map());
+	const pathfind::emergency_path_calculator em_calc(*unit_it, resources::gameboard->map());
 
 	pathfind::plain_route route = pathfind::a_star_search(src, dst, 1000.0, em_calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 
@@ -923,9 +929,9 @@ DEFINE_FAI_FUNCTION(debug_label, 2, 2)
 		text = var1.to_debug_string();
 
 	display* gui = display::get_singleton();
-	std::string team_name;
+	const std::string team_name;
 
-	color_t color = team::get_side_color(ai_.get_side());
+	const color_t color = team::get_side_color(ai_.get_side());
 
 	const terrain_label *res;
 	res = gui->labels().set_label(location, text, ai_.get_side() - 1, team_name, color);
@@ -975,7 +981,7 @@ DEFINE_FAI_FUNCTION(is_unowned_village, 2, 3)
 
 DEFINE_FAI_FUNCTION(unit_moves, 1, 1)
 {
-	variant res = args()[0]->evaluate(variables,add_debug_info(fdb,0,"unit_moves:unit_location"));
+	const variant res = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "unit_moves:unit_location"));
 	std::vector<variant> vars;
 	if(res.is_null()) {
 		return variant(vars);
@@ -984,7 +990,7 @@ DEFINE_FAI_FUNCTION(unit_moves, 1, 1)
 	const map_location& loc = res.convert_to<location_callable>()->loc();
 	const ai::move_map& srcdst = ai_.get_srcdst();
 	typedef ai::move_map::const_iterator Itor;
-	std::pair<Itor,Itor> range = srcdst.equal_range(loc);
+	const std::pair<Itor, Itor> range = srcdst.equal_range(loc);
 
 	for(Itor i = range.first; i != range.second; ++i) {
 		vars.emplace_back(std::make_shared<location_callable>(i->second));
@@ -996,12 +1002,13 @@ DEFINE_FAI_FUNCTION(unit_moves, 1, 1)
 DEFINE_WFL_FUNCTION(units_can_reach, 2, 2)
 {
 	std::vector<variant> vars;
-	variant dstsrc_var = args()[0]->evaluate(variables,add_debug_info(fdb,0,"units_can_reach:possible_move_list"));
+	const variant dstsrc_var
+		= args()[0]->evaluate(variables, add_debug_info(fdb, 0, "units_can_reach:possible_move_list"));
 	const ai::move_map& dstsrc = dstsrc_var.convert_to<move_map_callable>()->dstsrc();
 	std::pair<ai::move_map::const_iterator,ai::move_map::const_iterator> range =
 		dstsrc.equal_range(args()[1]->evaluate(variables, add_debug_info(fdb, 1, "units_can_reach:possible_move_list")).convert_to<location_callable>()->loc());
 	while(range.first != range.second) {
-		unit_map::const_iterator un = resources::gameboard->units().find(range.first->second);
+		const unit_map::const_iterator un = resources::gameboard->units().find(range.first->second);
 		assert(un != resources::gameboard->units().end());
 		vars.emplace_back(std::make_shared<unit_callable>(*un));
 		++range.first;
@@ -1012,7 +1019,7 @@ DEFINE_WFL_FUNCTION(units_can_reach, 2, 2)
 
 DEFINE_FAI_FUNCTION(is_avoided_location, 1, 1)
 {
-	variant res = args()[0]->evaluate(variables,add_debug_info(fdb,0,"is_avoided_location:location"));
+	const variant res = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "is_avoided_location:location"));
 	if(res.is_null()) {
 		return variant();
 	}
@@ -1022,8 +1029,8 @@ DEFINE_FAI_FUNCTION(is_avoided_location, 1, 1)
 
 DEFINE_WFL_FUNCTION(max_possible_damage, 2, 2)
 {
-	variant u1 = args()[0]->evaluate(variables,add_debug_info(fdb,0,"max_possible_damage:unit1"));
-	variant u2 = args()[1]->evaluate(variables,add_debug_info(fdb,1,"max_possible_damage:unit2"));
+	const variant u1 = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "max_possible_damage:unit1"));
+	const variant u2 = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "max_possible_damage:unit2"));
 	if(u1.is_null() || u2.is_null()) {
 		return variant();
 	}
@@ -1058,19 +1065,21 @@ namespace {
 
 DEFINE_WFL_FUNCTION(max_possible_damage_with_retaliation, 2, 2)
 {
-	variant u1 = args()[0]->evaluate(variables,add_debug_info(fdb,0,"max_possible_damage_with_retaliation:unit1"));
-	variant u2 = args()[1]->evaluate(variables,add_debug_info(fdb,1,"max_possible_damage_with_retaliation:unit2"));
+	const variant u1
+		= args()[0]->evaluate(variables, add_debug_info(fdb, 0, "max_possible_damage_with_retaliation:unit1"));
+	const variant u2
+		= args()[1]->evaluate(variables, add_debug_info(fdb, 1, "max_possible_damage_with_retaliation:unit2"));
 
 	if(u1.is_null() || u2.is_null()) {
 		return variant();
 	}
 
-	unit_adapter attacker(u1);
-	unit_adapter defender(u2);
+	const unit_adapter attacker(u1);
+	const unit_adapter defender(u2);
 
 	// find max damage inflicted by attacker and by defender to the attacker
-	std::pair<int, int> best_attacker_attacks = best_melee_and_ranged_attacks(attacker, defender);
-	std::pair<int, int> best_defender_attacks = best_melee_and_ranged_attacks(defender, attacker);
+	const std::pair<int, int> best_attacker_attacks = best_melee_and_ranged_attacks(attacker, defender);
+	const std::pair<int, int> best_defender_attacks = best_melee_and_ranged_attacks(defender, attacker);
 
 	std::vector<variant> vars;
 	vars.emplace_back(best_attacker_attacks.first);

@@ -243,7 +243,7 @@ static void wesnoth_setlocale(int category, const std::string& slocale,
 	for (;;)
 	{
 		std::string lang = locale, extra;
-		std::string::size_type pos = locale.find('@');
+		const std::string::size_type pos = locale.find('@');
 		if (pos != std::string::npos) {
 			lang.erase(pos);
 			extra = locale.substr(pos);
@@ -307,7 +307,7 @@ void set_language(const language_def& locale)
 
 bool load_strings(bool complain)
 {
-	config cfg;
+	const config cfg;
 
 	if (complain && languages_.empty()) {
 		PLAIN_LOG << "No [language] block found";

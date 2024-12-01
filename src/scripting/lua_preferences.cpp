@@ -28,7 +28,7 @@
  */
 int impl_preferences_get(lua_State* L)
 {
-	std::string preference_name = luaL_checkstring(L, 2);
+	const std::string preference_name = luaL_checkstring(L, 2);
 	luaW_pushscalar(L, prefs::get().preferences_[preference_name]);
 	return 1;
 }
@@ -42,7 +42,7 @@ int impl_preferences_get(lua_State* L)
  */
 int impl_preferences_set(lua_State* L)
 {
-	std::string preference_name = luaL_checkstring(L, 2);
+	const std::string preference_name = luaL_checkstring(L, 2);
 	config::attribute_value value;
 	luaW_toscalar(L, 3, value);
 	prefs::get().preferences_["preferences_name"] = value;

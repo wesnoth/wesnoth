@@ -63,7 +63,7 @@ unsigned grid::add_row(const unsigned count)
 
 	// FIXME the warning in set_rows_cols should be killed.
 
-	unsigned result = rows_;
+	const unsigned result = rows_;
 	set_rows_cols(rows_ + count, cols_);
 	return result;
 }
@@ -256,7 +256,7 @@ void grid::request_reduce_width(const unsigned maximum_width)
 						*this, col, wanted_width);
 
 		if(width < col_width_[col]) {
-			unsigned reduction = col_width_[col] - width;
+			const unsigned reduction = col_width_[col] - width;
 
 			DBG_GUI_L << LOG_HEADER << " reduced " << reduction
 					  << " pixels for column " << col << ".";
@@ -348,7 +348,7 @@ void grid::request_reduce_height(const unsigned maximum_height)
 				*this, row, wanted_height);
 
 		if(height < row_height_[row]) {
-			unsigned reduction = row_height_[row] - height;
+			const unsigned reduction = row_height_[row] - height;
 
 			DBG_GUI_L << LOG_HEADER << " row " << row << " height "
 					  << row_height_[row] << " want to reduce " << too_high
@@ -383,7 +383,7 @@ void grid::request_placement(dispatcher&, const event::ui_event, bool& handled, 
 		return;
 	}
 
-	point size = get_size();
+	const point size = get_size();
 	point best_size = calculate_best_size();
 	if(size.x >= best_size.x && size.y >= best_size.y) {
 		place(get_origin(), size);
@@ -952,7 +952,7 @@ void grid::set_child_alignment(widget* widget, unsigned set_flag, unsigned mode_
 
 	cell->set_flags(flags);
 
-	event::message message;
+	const event::message message;
 	fire(event::REQUEST_PLACEMENT, *this, message);
 }
 

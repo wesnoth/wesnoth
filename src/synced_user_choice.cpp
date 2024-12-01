@@ -81,7 +81,7 @@ namespace
 		void start_show_label()
 		{
 			assert(label_id_ == -1);
-			SDL_Rect area = display::get_singleton()->map_outside_area();
+			const SDL_Rect area = display::get_singleton()->map_outside_area();
 			font::floating_label flabel(message_);
 			flabel.set_font_size(font::SIZE_LARGE);
 			flabel.set_color(font::NORMAL_COLOR);
@@ -115,8 +115,7 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 		return std::map<int,config>();
 	}
 
-	for(int side : sides)
-	{
+	for(const int side : sides) {
 		if(1 > side || side > max_side)
 		{
 			replay::process_error("MP synchronization with an invalid side number.\n");
@@ -128,23 +127,20 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 		for empty sides we want to use random choice instead.
 	*/
 	std::set<int> empty_sides;
-	for(int side : sides)
-	{
+	for(const int side : sides) {
 		if( resources::gameboard->get_team(side).is_empty())
 		{
 			empty_sides.insert(side);
 		}
 	}
 
-	for(int side : empty_sides)
-	{
+	for(const int side : empty_sides) {
 		sides.erase(side);
 	}
 
 	std::map<int,config> retv =  user_choice_manager::get_user_choice_internal(name, uch, sides);
 
-	for(int side : empty_sides)
-	{
+	for(const int side : empty_sides) {
 		retv[side] = uch.random_choice(side);
 	}
 	return retv;
@@ -246,8 +242,7 @@ user_choice_manager::user_choice_manager(const std::string &name, const mp_sync:
 	update_local_choice();
 	const int max_side  = static_cast<int>(resources::gameboard->teams().size());
 
-	for(int side : required_)
-	{
+	for(const int side : required_) {
 		assert(1 <= side && side <= max_side);
 		const team& t = resources::gameboard->get_team(side);
 		assert(!t.is_empty());
@@ -285,7 +280,7 @@ void user_choice_manager::search_in_replay()
 			changed_event_.notify_observers();
 			return;
 		}
-		int from_side = (*action)["from_side"].to_int(0);
+		const int from_side = (*action)["from_side"].to_int(0);
 		if((*action)["side_invalid"].to_bool(false) == true)
 		{
 			//since this 'cheat' can have a quite heavy effect especially in umc content we give an oos error .
@@ -315,13 +310,12 @@ void user_choice_manager::pull()
 
 void user_choice_manager::update_local_choice()
 {
-	int local_choice_prev = local_choice_;
+	const int local_choice_prev = local_choice_;
 	//equals to any side in sides that is local, 0 if no such side exists.
 	local_choice_ = 0;
 	//if for any side from which we need an answer
 	std::vector<t_string> sides_str;
-	for(int side : required_)
-	{
+	for(const int side : required_) {
 		//and we haven't already received our answer from that side
 		if(res_.find(side) == res_.end())
 		{
@@ -354,11 +348,11 @@ void user_choice_manager::ask_local_choice()
 {
 	assert(local_choice_ != 0);
 
-	leave_synced_context sync;
+	const leave_synced_context sync;
 	/* At least one of the decisions is ours, and it will be inserted
 	into the replay. */
 	DBG_REPLAY << "MP synchronization: local choice";
-	config cfg = uch_.query_user(local_choice_);
+	const config cfg = uch_.query_user(local_choice_);
 	if(res_.find(local_choice_) != res_.end()) {
 		// It might be possible that we this choice was already made by another client while we were in uch_.query_user
 		// because our side might be reassigned while we made our choice.
@@ -382,8 +376,7 @@ void user_choice_manager::fix_oos()
 {
 	assert(oos_);
 	ERR_REPLAY << "A sync error appeared while waiting for a synced user choice of type '" << uch_.description() << "' ([" + tagname_ + "]), doing the choice locally";
-	for(int side : required_)
-	{
+	for(const int side : required_) {
 		if(res_.find(side) == res_.end())
 		{
 			ERR_REPLAY << "Doing a local choice for side " << side;
@@ -459,7 +452,7 @@ void user_choice_manager::process()
 {
 	if(!oos_ && !finished() && !ucm_in_proccess)
 	{
-		ucm_process_scope scope1;
+		const ucm_process_scope scope1;
 		pull();
 	}
 }

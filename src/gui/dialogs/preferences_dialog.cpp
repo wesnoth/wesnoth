@@ -168,7 +168,7 @@ void preferences_dialog::set_theme_list(menu_button& theme_list)
 
 void preferences_dialog::set_gui2_theme_list(menu_button& theme_list)
 {
-	std::string current_gui_theme_name = prefs::get().gui2_theme();
+	const std::string current_gui_theme_name = prefs::get().gui2_theme();
 
 	std::vector<config> options;
 	bool theme_found = false;
@@ -259,7 +259,7 @@ void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& t
 
 	std::string reason;
 
-	std::size_t pos = username.find_first_of(' ');
+	const std::size_t pos = username.find_first_of(' ');
 	if(pos != std::string::npos) {
 		reason = username.substr(pos + 1);
 		username = username.substr(0, pos);
@@ -330,12 +330,11 @@ void preferences_dialog::remove_friend_list_entry(listbox& friends_list, text_bo
 void preferences_dialog::apply_pixel_scale()
 {
 	// Update pixel scale preference.
-	slider& ps_slider = find_widget<slider>("pixel_scale_slider");
+	const slider& ps_slider = find_widget<slider>("pixel_scale_slider");
 	prefs::get().set_pixel_scale(ps_slider.get_value());
 
 	// Update auto pixel scale preference.
-	toggle_button& auto_ps_toggle =
-		find_widget<toggle_button>("auto_pixel_scale");
+	const toggle_button& auto_ps_toggle = find_widget<toggle_button>("auto_pixel_scale");
 	prefs::get().set_auto_pixel_scale(auto_ps_toggle.get_value_bool());
 
 	// Update draw buffers, taking these into account.
@@ -951,7 +950,7 @@ listbox& preferences_dialog::setup_hotkey_list()
 
 void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 {
-	int row_number = hotkeys.get_selected_row();
+	const int row_number = hotkeys.get_selected_row();
 	if(row_number < 0) {
 		gui2::show_transient_message("", _("No hotkey selected"));
 		return;
@@ -962,7 +961,7 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 	gui2::dialogs::hotkey_bind bind_dlg(hotkey_item.id);
 	bind_dlg.show();
 
-	hotkey::hotkey_ptr newhk = bind_dlg.get_new_binding();
+	const hotkey::hotkey_ptr newhk = bind_dlg.get_new_binding();
 	hotkey::hotkey_ptr oldhk;
 
 	// only if not cancelled.
@@ -1015,7 +1014,7 @@ void preferences_dialog::default_hotkey_callback()
 
 void preferences_dialog::remove_hotkey_callback(listbox& hotkeys)
 {
-	int row_number = hotkeys.get_selected_row();
+	const int row_number = hotkeys.get_selected_row();
 	if(row_number < 0) {
 		gui2::show_transient_message("", _("No hotkey selected"));
 		return;
@@ -1034,7 +1033,7 @@ void preferences_dialog::hotkey_filter_callback()
 	boost::dynamic_bitset<> toggle_states = hotkey_menu.get_toggle_states();
 	boost::dynamic_bitset<> res(visible_hotkeys_.size());
 
-	std::string text = name_filter.get_value();
+	const std::string text = name_filter.get_value();
 
 	// Nothing selected. It means that *all* categories are shown.
 	if(toggle_states.none()) {
@@ -1209,7 +1208,7 @@ void preferences_dialog::handle_res_select()
 
 void preferences_dialog::handle_theme_select()
 {
-	menu_button& theme_list = find_widget<menu_button>("choose_theme");
+	const menu_button& theme_list = find_widget<menu_button>("choose_theme");
 
 	const auto selection = theme_list.get_value();
 	const auto& theme = themes_.at(selection);
@@ -1224,8 +1223,8 @@ void preferences_dialog::handle_theme_select()
 
 void preferences_dialog::handle_gui2_theme_select()
 {
-	menu_button& gui2_theme_list = find_widget<menu_button>("choose_gui2_theme");
-	unsigned selected_theme = gui2_theme_list.get_value();
+	const menu_button& gui2_theme_list = find_widget<menu_button>("choose_gui2_theme");
+	const unsigned selected_theme = gui2_theme_list.get_value();
 	if (selected_theme != current_gui_theme_) {
 		current_gui_theme_ = selected_theme;
 		prefs::get().set_gui2_theme(gui2_themes_.at(selected_theme));

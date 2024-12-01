@@ -53,7 +53,7 @@ token get_token(iterator& i1, const iterator i2) {
 			while(i1 != i2 && (std::isalpha(*i1, std::locale::classic()) || *i1 == '_'))
 				++i1;
 
-			int diff = i1 - it;
+			const int diff = i1 - it;
 			token_type t = token_type::identifier;
 
 			//check if this string matches any keyword or an operator
@@ -85,17 +85,17 @@ token get_token(iterator& i1, const iterator i2) {
 						t = token_type::keyword;
 				}
 			} else if( diff == 5 ) {
-				std::string s(it, i1);
+				const std::string s(it, i1);
 				if( s == "where" )
 					t = token_type::operator_token;
 			} else if( diff == 6 ) {
-				std::string s(it, i1);
+				const std::string s(it, i1);
 				if( s == "faiend" )
 					t = token_type::keyword;
 				else if( s == "wflend" )
 					t = token_type::keyword;
 			} else if( diff == 9 ) {
-				std::string s(it, i1);
+				const std::string s(it, i1);
 				if( s == "functions" )
 					t = token_type::keyword;
 			}

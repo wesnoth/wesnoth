@@ -59,7 +59,7 @@ config action::to_config() const
 /* static */
 action_ptr action::from_config(const config& cfg, bool hidden)
 {
-	std::string type = cfg["type"];
+	const std::string type = cfg["type"];
 
 	try {
 		if(type == "move")
@@ -105,7 +105,7 @@ action::action(const config& cfg, bool hidden)
 	, hidden_(hidden)
 {
 	// Construct and validate team_index_
-	int team_index_temp = cfg["team_index_"].to_int(-1); //default value: -1
+	const int team_index_temp = cfg["team_index_"].to_int(-1); // default value: -1
 	if(team_index_temp < 0
 			|| team_index_temp >= static_cast<int>(resources::gameboard->teams().size()))
 		throw ctor_err("action: Invalid team_index_");
@@ -118,7 +118,7 @@ action::~action()
 
 std::size_t action::get_unit_id() const
 {
-	unit_ptr ret = get_unit();
+	const unit_ptr ret = get_unit();
 	return ret ? ret->underlying_id() : 0;
 }
 

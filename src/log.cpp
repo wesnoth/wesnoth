@@ -145,7 +145,7 @@ std::string unique_log_filename()
 
 void check_log_dir_writable()
 {
-	std::string dummy_log = filesystem::get_logs_dir()+"/dummy.log";
+	const std::string dummy_log = filesystem::get_logs_dir() + "/dummy.log";
 
 	// log directory doesn't exist and can't be created
 	if(!filesystem::file_exists(filesystem::get_logs_dir()) && !filesystem::make_directory(filesystem::get_logs_dir())) {
@@ -220,7 +220,7 @@ void move_log_file()
 		std::cout.flush();
 		std::freopen((output_file_path_+lg::out_log_file_suffix).c_str(), "a", stdout);
 #else
-		std::string old_path = get_log_file_path();
+		const std::string old_path = get_log_file_path();
 		output_file_path_ = filesystem::get_logs_dir()+"/"+unique_log_filename();
 
 		// non-Windows can just move the file
@@ -346,7 +346,7 @@ log_domain::log_domain(char const *name, severity severity)
 
 bool set_log_domain_severity(const std::string& name, severity severity)
 {
-	std::string::size_type s = name.size();
+	const std::string::size_type s = name.size();
 	if (name == "all") {
 		for(logd &l : *domains) {
 			l.second = severity;
@@ -357,7 +357,7 @@ bool set_log_domain_severity(const std::string& name, severity severity)
 				l.second = severity;
 		}
 	} else {
-		domain_map::iterator it = domains->find(name);
+		const domain_map::iterator it = domains->find(name);
 		if (it == domains->end())
 			return false;
 		it->second = severity;
@@ -370,7 +370,7 @@ bool set_log_domain_severity(const std::string& name, const logger &lg) {
 
 bool get_log_domain_severity(const std::string& name, severity &severity)
 {
-	domain_map::iterator it = domains->find(name);
+	const domain_map::iterator it = domains->find(name);
 	if (it == domains->end())
 		return false;
 	severity = it->second;
@@ -380,7 +380,7 @@ bool get_log_domain_severity(const std::string& name, severity &severity)
 std::string list_log_domains(const std::string& filter)
 {
 	std::ostringstream res;
-	for(logd &l : *domains) {
+	for(const logd& l : *domains) {
 		if(l.first.find(filter) != std::string::npos)
 			res << l.first << "\n";
 	}
@@ -463,7 +463,7 @@ log_in_progress::log_in_progress(std::ostream& stream)
 
 void log_in_progress::operator|(formatter&& message)
 {
-	std::scoped_lock lock(log_mutex);
+	const std::scoped_lock lock(log_mutex);
 	for(int i = 0; i < indent; ++i)
 		stream_ << "  ";
 	if(timestamp_) {

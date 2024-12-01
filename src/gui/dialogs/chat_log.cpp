@@ -87,7 +87,7 @@ public:
 
 	int count_of_pages() const
 	{
-		int size = chat_log_history.size();
+		const int size = chat_log_history.size();
 		return (size % COUNT_PER_PAGE == 0) ? (size / COUNT_PER_PAGE)
 											: (size / COUNT_PER_PAGE) + 1;
 	}
@@ -275,7 +275,7 @@ public:
 		LOG_CHAT_LOG
 			<< "Entering chat_log::controller::update_view_from_model";
 		model_.msg_label->set_use_markup(true);
-		int size = model_.chat_log_history.size();
+		const int size = model_.chat_log_history.size();
 		LOG_CHAT_LOG << "Number of chat messages: " << size;
 		// determine count of pages
 		const int count_of_pages = std::max(1, model_.count_of_pages());
@@ -289,8 +289,8 @@ public:
 		const int first = range.first;
 		const int last = range.second;
 		// determine has previous, determine has next
-		bool has_next = page + 1 < count_of_pages;
-		bool has_previous = page > 0;
+		const bool has_next = page + 1 < count_of_pages;
+		const bool has_previous = page > 0;
 		model_.previous_page->set_active(has_previous);
 		model_.next_page->set_active(has_next);
 		model_.populate_chat_message_list(first, last);

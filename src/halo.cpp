@@ -168,7 +168,7 @@ halo_impl::effect::effect(int xpos, int ypos,
 
 void halo_impl::effect::set_location(int x, int y)
 {
-	point new_center = point{x, y} - disp->get_location(map_location::ZERO());
+	const point new_center = point{x, y} - disp->get_location(map_location::ZERO());
 	if(new_center != abs_mid_) {
 		DBG_HL << "setting halo location " << new_center;
 		abs_mid_ = new_center;
@@ -184,7 +184,7 @@ rect halo_impl::effect::get_draw_location()
 /** Update the current location, animation frame, etc. */
 void halo_impl::effect::update()
 {
-	double zf = disp->get_zoom_factor();
+	const double zf = disp->get_zoom_factor();
 
 	if(map_loc_.x != -1 && map_loc_.y != -1) {
 		// If the halo is attached to a particular map location,
@@ -211,8 +211,8 @@ void halo_impl::effect::update()
 	}
 
 	// Update draw location
-	int w(tex_.w() * disp->get_zoom_factor());
-	int h(tex_.h() * disp->get_zoom_factor());
+	const int w(tex_.w() * disp->get_zoom_factor());
+	const int h(tex_.h() * disp->get_zoom_factor());
 
 	const auto [zero_x, zero_y] = disp->get_location(map_location::ZERO());
 
@@ -307,7 +307,7 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 	const int id = halo_id++;
 	DBG_HL << "adding halo " << id;
 	animated<image::locator>::anim_description image_vector;
-	std::vector<std::string> items = utils::square_parenthetical_split(image, ',');
+	const std::vector<std::string> items = utils::square_parenthetical_split(image, ',');
 
 	for(const std::string& item : items) {
 		const std::vector<std::string>& sub_items = utils::split(item, ':');
@@ -366,12 +366,12 @@ void halo_impl::update()
 		}
 	}
 	// Make sure deleted halos get undrawn
-	for(int id : deleted_haloes) {
+	for(const int id : deleted_haloes) {
 		DBG_HL << "invalidating deleted halo " << id;
 		haloes.at(id).queue_undraw();
 	}
 	// Remove deleted halos
-	for(int id : deleted_haloes) {
+	for(const int id : deleted_haloes) {
 		DBG_HL << "deleting halo " << id;
 		changing_haloes.erase(id);
 		haloes.erase(id);
@@ -384,7 +384,7 @@ void halo_impl::update()
 	}
 
 	// Invalidate any animated halos which need updating
-	for(int id : changing_haloes) {
+	for(const int id : changing_haloes) {
 		auto& halo = haloes.at(id);
 		if(halo.need_update() && halo.visible()) {
 			DBG_HL << "invalidating changed halo " << id;
@@ -420,7 +420,7 @@ manager::manager() : impl_(new halo_impl())
 handle manager::add(int x, int y, const std::string& image, const map_location& loc,
 		ORIENTATION orientation, bool infinite)
 {
-	int new_halo = impl_->add(x,y,image, loc, orientation, infinite);
+	const int new_halo = impl_->add(x, y, image, loc, orientation, infinite);
 	return handle(new halo_record(new_halo, impl_));
 }
 
@@ -468,7 +468,7 @@ halo_record::~halo_record()
 {
 	if (!valid()) return;
 
-	std::shared_ptr<halo_impl> man = my_manager_.lock();
+	const std::shared_ptr<halo_impl> man = my_manager_.lock();
 
 	if(man) {
 		man->remove(id_);

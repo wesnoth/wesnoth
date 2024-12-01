@@ -78,7 +78,7 @@ int show_message_dialog(lua_State* L)
 	gui2::dialogs::wml_message_options options{};
 	if(!lua_isnoneornil(L, 2)) {
 		luaL_checktype(L, 2, LUA_TTABLE);
-		std::size_t n = lua_rawlen(L, 2);
+		const std::size_t n = lua_rawlen(L, 2);
 		for(std::size_t i = 1; i <= n; i++) {
 			lua_rawgeti(L, 2, i);
 			t_string short_opt;
@@ -91,7 +91,7 @@ int show_message_dialog(lua_State* L)
 				error << i << " was a " << lua_typename(L, lua_type(L, -1));
 				return luaL_argerror(L, 2, error.str().c_str());
 			}
-			gui2::dialogs::wml_message_option option(opt["label"], opt["description"], opt["image"]);
+			const gui2::dialogs::wml_message_option option(opt["label"], opt["description"], opt["image"]);
 			if(opt["default"].to_bool(false)) {
 				options.chosen_option = i - 1;
 			}
@@ -100,7 +100,7 @@ int show_message_dialog(lua_State* L)
 		}
 		lua_getfield(L, 2, "default");
 		if(lua_isnumber(L, -1)) {
-			int i = lua_tointeger(L, -1);
+			const int i = lua_tointeger(L, -1);
 			if(i < 1 || std::size_t(i) > n) {
 				std::ostringstream error;
 				error << "default= key in options list is not a valid option index (1-" << n << ")";
@@ -130,7 +130,7 @@ int show_message_dialog(lua_State* L)
 		right.reset(new portrait {def_cfg["second_portrait"], def_cfg["second_mirror"].to_bool(false)});
 	}
 
-	int dlg_result = gui2::dialogs::show_wml_message(title, message, left.get(), right.get(), options, input);
+	const int dlg_result = gui2::dialogs::show_wml_message(title, message, left.get(), right.get(), options, input);
 
 	if(!has_input && options.option_list.empty()) {
 		lua_pushinteger(L, dlg_result);
@@ -154,9 +154,9 @@ int show_message_dialog(lua_State* L)
  * - Arg 3: Image (optional)
  */
 int show_popup_dialog(lua_State *L) {
-	t_string title = luaW_checktstring(L, 1);
-	t_string msg = luaW_checktstring(L, 2);
-	std::string image = lua_isnoneornil(L, 3) ? "" : luaL_checkstring(L, 3);
+	const t_string title = luaW_checktstring(L, 1);
+	const t_string msg = luaW_checktstring(L, 2);
+	const std::string image = lua_isnoneornil(L, 3) ? "" : luaL_checkstring(L, 3);
 
 	gui2::show_transient_message(title, msg, image, true, true);
 	return 0;
@@ -168,8 +168,8 @@ int show_popup_dialog(lua_State *L) {
  * - Arg 2: The default title
  */
 int show_story(lua_State* L) {
-	config story = luaW_checkconfig(L, 1);
-	t_string title = luaW_checktstring(L, 2);
+	const config story = luaW_checkconfig(L, 1);
+	const t_string title = luaW_checktstring(L, 2);
 	gui2::dialogs::story_viewer::display(title, story);
 	return 0;
 }
@@ -179,7 +179,7 @@ int show_story(lua_State* L) {
  * - Arg 1: The id of the theme to switch to
  */
 int switch_theme(lua_State* L) {
-	std::string theme_id = luaL_checkstring(L, 1);
+	const std::string theme_id = luaL_checkstring(L, 1);
 	gui2::switch_theme(theme_id);
 	return 0;
 }
@@ -191,8 +191,8 @@ int switch_theme(lua_State* L) {
  * - Args 2, 3: Initial selection (integer); whether to parse markup (boolean)
  */
 int show_menu(lua_State* L) {
-	std::vector<config> items = lua_check<std::vector<config>>(L, 1);
-	rect pos{ sdl::get_mouse_location(), {1, 1} };
+	const std::vector<config> items = lua_check<std::vector<config>>(L, 1);
+	const rect pos{sdl::get_mouse_location(), {1, 1}};
 
 	int initial = -1;
 	bool markup = false;
@@ -219,7 +219,7 @@ int show_message_box(lua_State* L) {
 	const t_string title = luaW_checktstring(L, 1), message = luaW_checktstring(L, 2);
 	std::string button = luaL_optstring(L, 3, "ok"), btn_style;
 	std::transform(button.begin(), button.end(), std::inserter(btn_style, btn_style.begin()), [](char c) { return std::tolower(c); });
-	bool markup = lua_isnoneornil(L, 3) ? luaW_toboolean(L, 3) : luaW_toboolean(L, 4);
+	const bool markup = lua_isnoneornil(L, 3) ? luaW_toboolean(L, 3) : luaW_toboolean(L, 4);
 	using button_style = gui2::dialogs::message::button_style;
 	utils::optional<button_style> style;
 	if(btn_style.empty()) {
@@ -236,7 +236,7 @@ int show_message_box(lua_State* L) {
 		style = button_style::yes_no_buttons;
 	}
 	if(style) {
-		int result = gui2::show_message(title, message, *style, markup, markup);
+		const int result = gui2::show_message(title, message, *style, markup, markup);
 		if(style == button_style::ok_cancel_buttons || style == button_style::yes_no_buttons) {
 			lua_pushboolean(L, result == gui2::retval::OK);
 			return 1;
@@ -390,8 +390,8 @@ static int show_help(lua_State *L)
 
 int intf_add_widget_definition(lua_State* L)
 {
-	std::string type = luaL_checkstring(L, 1);
-	std::string id = luaL_checkstring(L, 2);
+	const std::string type = luaL_checkstring(L, 1);
+	const std::string id = luaL_checkstring(L, 2);
 	try {
 		if(gui2::add_single_widget_definition(type, id, luaW_checkconfig(L, 3))) {
 			lua_kernel_base::get_lua_kernel<lua_kernel_base>(L).add_widget_definition(type, id);

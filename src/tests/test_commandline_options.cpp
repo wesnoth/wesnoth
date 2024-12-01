@@ -22,9 +22,8 @@ BOOST_AUTO_TEST_SUITE( cmdline_opts )
 
 BOOST_AUTO_TEST_CASE (test_empty_options)
 {
-
-	std::vector<std::string> args {"wesnoth"};
-	commandline_options co(args);
+	const std::vector<std::string> args{"wesnoth"};
+	const commandline_options co(args);
 
 	BOOST_CHECK(!co.campaign);
 	BOOST_CHECK(!co.campaign_difficulty);
@@ -86,14 +85,8 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 
 BOOST_AUTO_TEST_CASE (test_default_options)
 {
-	std::vector<std::string> args {
-		"wesnoth",
-		"--campaign",
-		"--editor",
-		"--logdomains",
-		"--preprocess-output-macros",
-		"--server",
-		"--test"};
+	const std::vector<std::string> args{
+		"wesnoth", "--campaign", "--editor", "--logdomains", "--preprocess-output-macros", "--server", "--test"};
 
 	commandline_options co(args);
 	BOOST_CHECK(co.campaign && co.campaign->empty());
@@ -156,68 +149,22 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 
 BOOST_AUTO_TEST_CASE (test_full_options)
 {
-	std::vector<std::string> args {
-		"wesnoth",
-		"--ai-config=1:aifoo",
-		"--ai-config=2:aibar",
-		"--algorithm=3:algfoo",
-		"--algorithm=4:algbar",
-		"--campaign=campfoo",
-		"--campaign-difficulty=16",
-		"--campaign-scenario=scenfoo",
-		"--campaign-skip-story",
-		"--clock",
-		"--controller=5:confoo",
-		"--controller=6:conbar",
-		"--data-dir=datadirfoo",
-		"--data-path",
-		"--debug",
+	const std::vector<std::string> args{"wesnoth", "--ai-config=1:aifoo", "--ai-config=2:aibar", "--algorithm=3:algfoo",
+		"--algorithm=4:algbar", "--campaign=campfoo", "--campaign-difficulty=16", "--campaign-scenario=scenfoo",
+		"--campaign-skip-story", "--clock", "--controller=5:confoo", "--controller=6:conbar", "--data-dir=datadirfoo",
+		"--data-path", "--debug",
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-		"--debug-dot-domain=ddfoo",
-		"--debug-dot-level=dlfoo",
+		"--debug-dot-domain=ddfoo", "--debug-dot-level=dlfoo",
 #endif
-		"--editor=editfoo",
-		"--era=erafoo",
-		"--exit-at-end",
-		"--fps",
-		"--fullscreen",
-		"--help",
-		"--ignore-map-settings",
-		"--label=labelfoo",
-		"--load=loadfoo",
-		"--log-error=errfoo,errbar/*",
-		"--log-warning=warnfoo,warnfoo/bar",
-		"--log-info=infofoo",
-		"--log-debug=dbgfoo,dbgbar,dbg/foo/bar/baz",
-		"--logdomains=filterfoo",
-		"--max-fps=100",
-		"--multiplayer",
-		"--new-widgets",
-		"--nocache",
-		"--nomusic",
-		"--nosound",
-		"--nogui",
-		"--parm=7:parmfoo:valfoo",
-		"--parm=8:parmbar:valbar",
-		"--preprocess", "preppathfoo", "preptargfoo",
-		"--preprocess-defines=DEFFOO,DEFBAR",
-		"--preprocess-input-macros=inmfoo",
-		"--preprocess-output-macros=outmfoo",
-		"--resolution=800x600",
-		"--rng-seed=1234",
-		"--scenario=scenfoo",
-		"--screenshot", "mapfoo", "outssfoo",
-		"--side=9:sidefoo",
-		"--side=10:sidebar",
-		"--server=servfoo",
-		"--test=testfoo",
-		"--turns=42",
-		"--userdata-dir=userdatadirfoo",
-		"--userdata-path",
-		"--validcache",
-		"--version",
-		"--windowed",
-		"--with-replay"};
+		"--editor=editfoo", "--era=erafoo", "--exit-at-end", "--fps", "--fullscreen", "--help", "--ignore-map-settings",
+		"--label=labelfoo", "--load=loadfoo", "--log-error=errfoo,errbar/*", "--log-warning=warnfoo,warnfoo/bar",
+		"--log-info=infofoo", "--log-debug=dbgfoo,dbgbar,dbg/foo/bar/baz", "--logdomains=filterfoo", "--max-fps=100",
+		"--multiplayer", "--new-widgets", "--nocache", "--nomusic", "--nosound", "--nogui", "--parm=7:parmfoo:valfoo",
+		"--parm=8:parmbar:valbar", "--preprocess", "preppathfoo", "preptargfoo", "--preprocess-defines=DEFFOO,DEFBAR",
+		"--preprocess-input-macros=inmfoo", "--preprocess-output-macros=outmfoo", "--resolution=800x600",
+		"--rng-seed=1234", "--scenario=scenfoo", "--screenshot", "mapfoo", "outssfoo", "--side=9:sidefoo",
+		"--side=10:sidebar", "--server=servfoo", "--test=testfoo", "--turns=42", "--userdata-dir=userdatadirfoo",
+		"--userdata-path", "--validcache", "--version", "--windowed", "--with-replay"};
 
 	commandline_options co(args);
 
@@ -303,9 +250,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 
 BOOST_AUTO_TEST_CASE (test_positional_options)
 {
-	std::vector<std::string> args {
-		"wesnoth",
-		"datadirfoo"};
+	const std::vector<std::string> args{"wesnoth", "datadirfoo"};
 
 	commandline_options co(args);
 
@@ -369,13 +314,8 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 
 BOOST_AUTO_TEST_CASE (test_log_domain_severity_override_order)
 {
-	std::vector<std::string> args {
-		"wesnoth",
-		"--log-error=gui/draw",
-		"--log-info=all,gui/general",
-		"--log-debug=gui/*",
-		"--log-none=all,gui/general,gui/draw",
-		"--log-error=gui/general"};
+	const std::vector<std::string> args{"wesnoth", "--log-error=gui/draw", "--log-info=all,gui/general",
+		"--log-debug=gui/*", "--log-none=all,gui/general,gui/draw", "--log-error=gui/general"};
 
 	commandline_options co(args);
 

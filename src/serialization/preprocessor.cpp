@@ -459,7 +459,7 @@ int preprocessor_streambuf::underflow()
 	}
 
 	char* begin = &*out_buffer_.begin();
-	unsigned bs = out_buffer_.size();
+	const unsigned bs = out_buffer_.size();
 
 	setg(begin, begin + sz, begin + bs);
 
@@ -528,7 +528,7 @@ std::string lineno_string(const std::string& lineno)
 {
 	std::vector<std::string> pos = utils::quoted_split(lineno, ' ');
 	std::vector<std::string>::const_iterator i = pos.begin(), end = pos.end();
-	std::string included_from = preprocessor_error_detail_prefix + "included from ";
+	const std::string included_from = preprocessor_error_detail_prefix + "included from ";
 	std::string res;
 
 	while(i != end) {
@@ -610,7 +610,7 @@ public:
 	{
 		while(pos_ != end_) {
 			const std::string& name = *(pos_++);
-			unsigned sz = name.size();
+			const unsigned sz = name.size();
 
 			// Use reverse iterator to optimize testing
 			if(sz < 5 || !std::equal(name.rbegin(), name.rbegin() + 4, "gfc.")) {
@@ -787,7 +787,7 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf& t, const std::strin
 		);
 
 		for(const std::string& fname : files_) {
-			std::size_t cpos = fname.rfind(" ");
+			const std::size_t cpos = fname.rfind(" ");
 
 			if(cpos != std::string::npos && cpos >= symbol_index) {
 				std::stringstream ss;
@@ -906,8 +906,8 @@ void preprocessor_data::push_token(token_desc::token_type t)
 
 void preprocessor_data::pop_token()
 {
-	token_desc::token_type inner_type = tokens_.back().type;
-	unsigned stack_pos = tokens_.back().stack_pos;
+	const token_desc::token_type inner_type = tokens_.back().type;
+	const unsigned stack_pos = tokens_.back().stack_pos;
 
 	tokens_.pop_back();
 
@@ -949,7 +949,7 @@ void preprocessor_data::pop_token()
 void preprocessor_data::skip_spaces()
 {
 	while(true) {
-		int c = in_.peek();
+		const int c = in_.peek();
 
 		if(in_.eof() || (c != ' ' && c != '\t')) {
 			return;
@@ -962,7 +962,7 @@ void preprocessor_data::skip_spaces()
 void preprocessor_data::skip_eol()
 {
 	while(true) {
-		int c = in_.get();
+		const int c = in_.get();
 
 		if(c == '\n') {
 			++linenum_;
@@ -980,7 +980,7 @@ std::string preprocessor_data::read_word()
 	std::string res;
 
 	while(true) {
-		int c = in_.peek();
+		const int c = in_.peek();
 
 		if(c == preprocessor_streambuf::traits_type::eof() || utils::portable_isspace(c)) {
 			// DBG_PREPROC << "(" << res << ")";
@@ -997,7 +997,7 @@ std::string preprocessor_data::read_line()
 	std::string res;
 
 	while(true) {
-		int c = in_.get();
+		const int c = in_.get();
 
 		if(c == '\n') {
 			++linenum_;
@@ -1019,7 +1019,7 @@ std::string preprocessor_data::read_rest_of_line()
 	std::string res;
 
 	while(in_.peek() != '\n' && !in_.eof()) {
-		int c = in_.get();
+		const int c = in_.get();
 
 		if(c != '\r') {
 			res += static_cast<char>(c);
@@ -1040,9 +1040,9 @@ void preprocessor_data::put(char c)
 		return;
 	}
 
-	int cond_linenum = c == '\n' ? linenum_ - 1 : linenum_;
+	const int cond_linenum = c == '\n' ? linenum_ - 1 : linenum_;
 
-	if(unsigned diff = cond_linenum - parent_.linenum_) {
+	if(const unsigned diff = cond_linenum - parent_.linenum_) {
 		parent_.linenum_ = cond_linenum;
 
 		if(diff <= parent_.location_.size() + 11) {
@@ -1085,7 +1085,7 @@ void preprocessor_data::conditional_skip(bool skip)
 
 bool preprocessor_data::get_chunk()
 {
-	char c = static_cast<char>(in_.get());
+	const char c = static_cast<char>(in_.get());
 	token_desc& token = tokens_.back();
 
 	if(in_.eof()) {
@@ -1130,7 +1130,7 @@ bool preprocessor_data::get_chunk()
 		std::string buffer(1, c);
 
 		while(true) {
-			char d = static_cast<char>(in_.get());
+			const char d = static_cast<char>(in_.get());
 
 			if(in_.eof() || d == '\n') {
 				break;
@@ -1177,7 +1177,7 @@ bool preprocessor_data::get_chunk()
 
 		if(command == "define") {
 			skip_spaces();
-			int linenum = linenum_;
+			const int linenum = linenum_;
 			std::vector<std::string> items = utils::split(read_line(), ' ');
 			std::map<std::string, std::string> optargs;
 
@@ -1185,7 +1185,7 @@ bool preprocessor_data::get_chunk()
 				parent_.error("No macro name found after #define directive", linenum);
 			}
 
-			std::string symbol = items.front();
+			const std::string symbol = items.front();
 			items.erase(items.begin());
 			int found_arg = 0, found_enddef = 0, found_deprecate = 0;
 			utils::optional<DEP_LEVEL> deprecation_level;
@@ -1194,7 +1194,7 @@ bool preprocessor_data::get_chunk()
 			while(true) {
 				if(in_.eof())
 					break;
-				char d = static_cast<char>(in_.get());
+				const char d = static_cast<char>(in_.get());
 				if(d == '\n')
 					++linenum_;
 				buffer += d;
@@ -1212,7 +1212,7 @@ bool preprocessor_data::get_chunk()
 							buffer.erase(buffer.end() - 4, buffer.end());
 
 							skip_spaces();
-							std::string argname = read_word();
+							const std::string argname = read_word();
 							skip_eol();
 
 							std::string argbuffer;
@@ -1223,7 +1223,7 @@ bool preprocessor_data::get_chunk()
 									break;
 								}
 
-								char e = static_cast<char>(in_.get());
+								const char e = static_cast<char>(in_.get());
 								if(e == '\n') {
 									++linenum_;
 								}
@@ -1297,7 +1297,7 @@ bool preprocessor_data::get_chunk()
 			}
 
 			if(!skipping_) {
-				preproc_map::const_iterator old_i = parent_.defines_->find(symbol);
+				const preproc_map::const_iterator old_i = parent_.defines_->find(symbol);
 				if(old_i != parent_.defines_->end()) {
 					std::ostringstream new_pos, old_pos;
 					const preproc_define& old_d = old_i->second;
@@ -1324,7 +1324,7 @@ bool preprocessor_data::get_chunk()
 			if(symbol.empty()) {
 				parent_.error("No macro argument found after #ifdef/#ifndef directive", linenum_);
 			}
-			bool found = parent_.defines_->count(symbol) != 0;
+			const bool found = parent_.defines_->count(symbol) != 0;
 			DBG_PREPROC << "testing for macro " << symbol << ": " << (found ? "defined" : "not defined");
 			conditional_skip(negate ? found : !found);
 		} else if(command == "ifhave" || command == "ifnhave") {
@@ -1334,7 +1334,7 @@ bool preprocessor_data::get_chunk()
 			if(symbol.empty()) {
 				parent_.error("No path argument found after #ifhave/#ifnhave directive", linenum_);
 			}
-			bool found = filesystem::get_wml_location(symbol, directory_).has_value();
+			const bool found = filesystem::get_wml_location(symbol, directory_).has_value();
 			DBG_PREPROC << "testing for file or directory " << symbol << ": " << (found ? "found" : "not found");
 			conditional_skip(negate ? found : !found);
 		} else if(command == "ifver" || command == "ifnver") {
@@ -1446,7 +1446,7 @@ bool preprocessor_data::get_chunk()
 				version = version_info(read_word());
 			}
 			skip_spaces();
-			std::string detail = read_rest_of_line();
+			const std::string detail = read_rest_of_line();
 			deprecated_message(get_filename(parent_.location_), level, version, detail);
 		} else {
 			comment = token.type != token_desc::token_type::macro_space;
@@ -1490,7 +1490,7 @@ bool preprocessor_data::get_chunk()
 			std::string symbol = strings_[token.stack_pos];
 			std::string::size_type pos;
 			while((pos = symbol.find(INLINED_PREPROCESS_DIRECTIVE_CHAR)) != std::string::npos) {
-				std::string::iterator b = symbol.begin(); // invalidated at each iteration
+				const std::string::iterator b = symbol.begin(); // invalidated at each iteration
 				symbol.erase(b + pos, b + symbol.find('\n', pos + 1) + 1);
 			}
 
@@ -1526,7 +1526,7 @@ bool preprocessor_data::get_chunk()
 				put(v.str());
 			} else if(parent_.depth() < 100 && (macro = parent_.defines_->find(symbol)) != parent_.defines_->end()) {
 				const preproc_define& val = macro->second;
-				std::size_t nb_arg = strings_.size() - token.stack_pos - 1;
+				const std::size_t nb_arg = strings_.size() - token.stack_pos - 1;
 				std::size_t optional_arg_num = 0;
 
 				auto defines = std::make_unique<std::map<std::string, std::string>>();
@@ -1544,13 +1544,13 @@ bool preprocessor_data::get_chunk()
 					} else {
 						// These should be optional argument overrides
 
-						std::string str = strings_[token.stack_pos + i + 1];
-						std::size_t equals_pos = str.find_first_of("=");
+						const std::string str = strings_[token.stack_pos + i + 1];
+						const std::size_t equals_pos = str.find_first_of("=");
 
 						if(equals_pos != std::string::npos) {
-							std::size_t argname_pos = str.substr(0, equals_pos).find_last_of(" \n") + 1;
+							const std::size_t argname_pos = str.substr(0, equals_pos).find_last_of(" \n") + 1;
 
-							std::string argname = str.substr(argname_pos, equals_pos - argname_pos);
+							const std::string argname = str.substr(argname_pos, equals_pos - argname_pos);
 
 							if(val.optional_arguments.find(argname) != val.optional_arguments.end()) {
 								(*defines)[argname] = str.substr(equals_pos + 1);
@@ -1577,7 +1577,7 @@ bool preprocessor_data::get_chunk()
 							std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(parent_));
 
 							buf->textdomain_ = parent_.textdomain_;
-							std::istream in(buf.get());
+							const std::istream in(buf.get());
 
 							filesystem::scoped_istream buffer{new std::istringstream(argument.second)};
 
@@ -1628,7 +1628,7 @@ bool preprocessor_data::get_chunk()
 
 					std::ostringstream res;
 					{
-						std::istream in(buf.get());
+						const std::istream in(buf.get());
 						buf->add_preprocessor<preprocessor_data>(
 							std::move(buffer), val.location, "", val.linenum, dir, val.textdomain, std::move(defines), true);
 
@@ -1651,7 +1651,7 @@ bool preprocessor_data::get_chunk()
 
 						std::ostringstream res;
 						{
-							std::istream in(buf.get());
+							const std::istream in(buf.get());
 							buf->add_preprocessor<preprocessor_file>(nfname.value(), nfname->size() - symbol.size());
 
 							res << in.rdbuf();
@@ -1805,7 +1805,7 @@ void preprocess_resource(const std::string& res_name,
 	// disable filename encoding to get clear #line in cfg.plain
 	encode_filename = false;
 
-	filesystem::scoped_istream stream = preprocess_file(res_name, defines_map);
+	const filesystem::scoped_istream stream = preprocess_file(res_name, defines_map);
 
 	std::stringstream ss;
 
@@ -1821,7 +1821,7 @@ void preprocess_resource(const std::string& res_name,
 
 	if(write_cfg || write_plain_cfg) {
 		config cfg;
-		std::string streamContent = ss.str();
+		const std::string streamContent = ss.str();
 
 		read(cfg, streamContent);
 

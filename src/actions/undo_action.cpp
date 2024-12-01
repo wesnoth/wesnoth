@@ -45,7 +45,7 @@ undo_action_container::undo_action_container()
 
 bool undo_action_container::undo(int side)
 {
-	int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
+	const int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
 	for(auto& p_step : steps_ | utils::views::reverse) {
 		p_step->undo(side);
 	}
@@ -167,7 +167,7 @@ unit_ptr get_unit(std::size_t uid, const std::string& id)
 bool undo_event::undo(int)
 {
 	undo_event& e = *this;
-	std::string tag = "undo";
+	const std::string tag = "undo";
 	assert(resources::lua_kernel);
 	assert(resources::gamedata);
 
@@ -181,17 +181,18 @@ bool undo_event::undo(int)
 	std::swap(y2, resources::gamedata->get_variable("y2"));
 
 	std::unique_ptr<scoped_xy_unit> u1, u2;
-	if(unit_ptr who = get_unit(e.uid1, e.id1)) {
+	if(const unit_ptr who = get_unit(e.uid1, e.id1)) {
 		u1.reset(new scoped_xy_unit("unit", who->get_location(), resources::gameboard->units()));
 	}
-	if(unit_ptr who = get_unit(e.uid2, e.id2)) {
+	if(const unit_ptr who = get_unit(e.uid2, e.id2)) {
 		u2.reset(new scoped_xy_unit("unit", who->get_location(), resources::gameboard->units()));
 	}
 
-	scoped_weapon_info w1("weapon", e.data.optional_child("first"));
-	scoped_weapon_info w2("second_weapon", e.data.optional_child("second"));
+	const scoped_weapon_info w1("weapon", e.data.optional_child("first"));
+	const scoped_weapon_info w2("second_weapon", e.data.optional_child("second"));
 
-	game_events::queued_event q(tag, "", map_location(x1, y1, wml_loc()), map_location(x2, y2, wml_loc()), e.data);
+	const game_events::queued_event q(
+		tag, "", map_location(x1, y1, wml_loc()), map_location(x2, y2, wml_loc()), e.data);
 	if(e.lua_idx.has_value()) {
 		resources::lua_kernel->run_wml_event(*e.lua_idx, vconfig(e.commands), q);
 	} else {

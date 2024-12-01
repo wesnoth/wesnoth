@@ -27,7 +27,7 @@ static bool luaW_tocubeloc(lua_State* L, int idx, cubic_location& out) {
 	if(!lua_istable(L, idx)) {
 		return false;
 	}
-	int n = lua_absindex(L, -1);
+	const int n = lua_absindex(L, -1);
 	if(!luaW_tableget(L, n, "q")) {
 		return false;
 	}
@@ -79,7 +79,7 @@ int intf_get_direction(lua_State* L)
 	if(!luaW_tolocation(L, 1, l)) {
 		return luaL_argerror(L, 1, "get_direction: first argument(S) must be a location");
 	}
-	int nargs = lua_gettop(L);
+	const int nargs = lua_gettop(L);
 	if (nargs < 2) {
 		luaL_error(L, "get_direction: not missing direction argument");
 		return 0;
@@ -101,7 +101,7 @@ int intf_get_direction(lua_State* L)
 		return luaL_argerror(L, -1, msg.c_str());
 	}
 
-	map_location result = l.get_direction(d, n);
+	const map_location result = l.get_direction(d, n);
 	luaW_pushlocation(L, result);
 	return 1;
 }
@@ -157,7 +157,7 @@ int intf_vector_negation(lua_State* L)
  */
 int intf_rotate_right_around_center(lua_State* L)
 {
-	int k = luaL_checkinteger(L, -1);
+	const int k = luaL_checkinteger(L, -1);
 	lua_pop(L,1);
 	map_location center, loc;
 	if(!luaW_tolocation(L, 1, loc) || !luaW_tolocation(L, 2, center)) {
@@ -217,7 +217,7 @@ int intf_get_tile_ring(lua_State* L)
 	if(!luaW_tolocation(L, 1, l1)) {
 		return luaL_argerror(L, 1, "expected a location");
 	}
-	int radius = luaL_checkinteger(L, 2);
+	const int radius = luaL_checkinteger(L, 2);
 
 	std::vector<map_location> locs;
 	get_tile_ring(l1, radius, locs);
@@ -238,7 +238,7 @@ int intf_get_tiles_in_radius(lua_State* L)
 	if(!luaW_tolocation(L, 1, l1)) {
 		return luaL_argerror(L, 1, "expected a location");
 	}
-	int radius = luaL_checkinteger(L, 2);
+	const int radius = luaL_checkinteger(L, 2);
 
 	std::vector<map_location> locs;
 	get_tiles_in_radius(l1, radius, locs);
@@ -295,7 +295,7 @@ int intf_get_from_cubic(lua_State* L)
 	// Adjust it from the WML location system
 	h.q--;
 	h.s++;
-	map_location l = map_location::from_cubic(h);
+	const map_location l = map_location::from_cubic(h);
 	luaW_pushlocation(L, l);
 	return 1;
 }
