@@ -82,19 +82,6 @@ bool event_handlers::cmp(const handler_ptr lhs, const handler_ptr rhs)
 }
 
 /**
- * Read-only access to the handlers with fixed event names, by event name.
- */
-handler_list& event_handlers::get(const std::string& name)
-{
-	// Empty list for the "not found" case.
-	static handler_list empty_list;
-
-	// Look for the name in the name map.
-	auto find_it = by_name_.find(standardize_name(name));
-	return find_it == by_name_.end() ? empty_list : find_it->second;
-}
-
-/**
  * Adds an event handler.
  * An event with a nonempty ID will not be added if an event with that
  * ID already exists.
@@ -210,7 +197,7 @@ void event_handlers::clean_up_expired_handlers(const std::string& event_name)
 	// Then remove any now-unlockable weak_ptrs from the by-name list.
 	// Might be more than one so we split.
 	for(const std::string& name : utils::split(event_name)) {
-		get(name).remove_if(
+		by_name_[standardize_name(name)].remove_if(
 			[](weak_handler_ptr ptr) { return ptr.expired(); }
 		);
 	}

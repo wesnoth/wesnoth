@@ -112,9 +112,6 @@ public:
 		return active_;
 	}
 
-	/** Access to the handlers with fixed event names, by event name. */
-	handler_list& get(const std::string& name);
-
 	/** Adds an event handler. */
 	pending_event_handler add_event_handler(const std::string& name, const std::string& id, bool repeat, double priority = 0., bool is_menu_item = false);
 
