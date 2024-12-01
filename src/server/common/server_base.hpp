@@ -124,21 +124,6 @@ public:
 	template<class SocketPtr> void async_send_warning(SocketPtr socket, const std::string& msg, const char* warning_code = "", const info_table& info = {});
 
 	/**
-	 * Create the poor security nonce for use with passwords still hashed with MD5.
-	 * Uses 8 random integer digits, 29.8 bits entropy.
-	 *
-	 * @param length How many random numbers to generate.
-	 * @return The nonce to use.
-	 */
-	std::string create_unsecure_nonce(int length = 8);
-	/**
-	 * Create a good security nonce for use with bcrypt/crypt_blowfish hashing.
-	 * Uses 32 random Base64 characters, cryptographic-strength, 192 bits entropy
-	 *
-	 * @return The nonce to use.
-	 */
-	std::string create_secure_nonce();
-	/**
 	 * Handles hashing the password provided by the player before comparing it to the hashed password in the forum database.
 	 *
 	 * @param pw The plaintext password.
