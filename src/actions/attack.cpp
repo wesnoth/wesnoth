@@ -672,7 +672,7 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 
 namespace
 {
-void refresh_weapon_index(int& weap_index, const std::string& weap_id, attack_itors attacks)
+void refresh_weapon_index(int& weap_index, const std::string& weap_id, const attack_itors& attacks)
 {
 	// No attacks to choose from.
 	if(attacks.empty()) {

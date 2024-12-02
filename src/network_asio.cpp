@@ -37,7 +37,7 @@ static lg::log_domain log_network("network");
 
 namespace
 {
-std::deque<boost::asio::const_buffer> split_buffer(boost::asio::streambuf::const_buffers_type source_buffer)
+std::deque<boost::asio::const_buffer> split_buffer(const boost::asio::streambuf::const_buffers_type& source_buffer)
 {
 	const unsigned int chunk_size = 4096;
 
