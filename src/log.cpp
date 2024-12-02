@@ -401,30 +401,6 @@ bool broke_strict() {
 	return strict_threw_;
 }
 
-std::string format_timespan(const std::chrono::seconds& span)
-{
-	if(span <= std::chrono::seconds{0}) {
-		return "expired";
-	}
-
-	auto [days, hours, minutes, seconds] = chrono::deconstruct_duration(chrono::format::days_hours_mins_secs, span);
-	std::vector<std::string> formatted_values;
-
-	// TODO C++20: see if we can use the duration stream operators
-	const auto format_time = [&formatted_values](const auto& val, const std::string& suffix) {
-		if(val > std::decay_t<decltype(val)>{0}) {
-			formatted_values.push_back(formatter{} << val.count() << " " << suffix);
-		}
-	};
-
-	format_time(days, "days");
-	format_time(hours, "hours");
-	format_time(minutes, "minutes");
-	format_time(seconds, "seconds");
-
-	return utils::join(formatted_values, ", ");
-}
-
 void set_log_sanitize(bool sanitize) {
 	log_sanitization = sanitize;
 }
