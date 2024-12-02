@@ -438,7 +438,7 @@ bool dbconn::topic_id_exists(int topic_id) {
 	}
 }
 
-void dbconn::insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id, const std::string uploader)
+void dbconn::insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id, const std::string& uploader)
 {
 	try
 	{
@@ -558,7 +558,7 @@ void dbconn::delete_addon_authors(const std::string& instance_version, const std
 	}
 }
 
-void dbconn::insert_addon_author(const std::string& instance_version, const std::string& id, const std::string author, int is_primary) {
+void dbconn::insert_addon_author(const std::string& instance_version, const std::string& id, const std::string& author, int is_primary) {
 	try
 	{
 		modify(connection_, "INSERT INTO `"+db_addon_authors_table_+"`(INSTANCE_VERSION, ADDON_ID, AUTHOR, IS_PRIMARY) VALUES(?,?,?,?)",
@@ -586,17 +586,17 @@ bool dbconn::do_any_authors_exist(const std::string& instance_version, const std
 //
 // handle complex query results
 //
-void dbconn::get_complex_results(mariadb::connection_ref connection, rs_base& base, const std::string& sql, const sql_parameters& params)
+void dbconn::get_complex_results(const mariadb::connection_ref& connection, rs_base& base, const std::string& sql, const sql_parameters& params)
 {
-	mariadb::result_set_ref rslt = select(connection, sql, params);
+	mariadb::result_set_ref rslt = select(std::move(connection), sql, params);
 	base.read(rslt);
 }
 //
 // handle single values
 //
-std::string dbconn::get_single_string(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params)
+std::string dbconn::get_single_string(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
-	mariadb::result_set_ref rslt = select(connection, sql, params);
+	mariadb::result_set_ref rslt = select(std::move(connection), sql, params);
 	if(rslt->next())
 	{
 		return rslt->get_string(0);
@@ -606,9 +606,9 @@ std::string dbconn::get_single_string(mariadb::connection_ref connection, const 
 		throw mariadb::exception::base("No string value found in the database!");
 	}
 }
-long dbconn::get_single_long(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params)
+long dbconn::get_single_long(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
-	mariadb::result_set_ref rslt = select(connection, sql, params);
+	mariadb::result_set_ref rslt = select(std::move(connection), sql, params);
 	if(rslt->next())
 	{
 		// mariadbpp checks for strict integral equivalence, but we don't care
@@ -639,20 +639,20 @@ long dbconn::get_single_long(mariadb::connection_ref connection, const std::stri
 		throw mariadb::exception::base("No long value found in the database!");
 	}
 }
-bool dbconn::exists(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params)
+bool dbconn::exists(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
-	mariadb::result_set_ref rslt = select(connection, sql, params);
+	mariadb::result_set_ref rslt = select(std::move(connection), sql, params);
 	return rslt->next();
 }
 
 //
 // select or modify values
 //
-mariadb::result_set_ref dbconn::select(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params)
+mariadb::result_set_ref dbconn::select(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
 	try
 	{
-		mariadb::statement_ref stmt = query(connection, sql, params);
+		mariadb::statement_ref stmt = query(std::move(connection), sql, params);
 		mariadb::result_set_ref rslt = mariadb::result_set_ref(stmt->query());
 		return rslt;
 	}
@@ -662,11 +662,11 @@ mariadb::result_set_ref dbconn::select(mariadb::connection_ref connection, const
 		throw e;
 	}
 }
-unsigned long long dbconn::modify(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params)
+unsigned long long dbconn::modify(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
 	try
 	{
-		mariadb::statement_ref stmt = query(connection, sql, params);
+		mariadb::statement_ref stmt = query(std::move(connection), sql, params);
 		unsigned long long count = stmt->execute();
 		return count;
 	}
@@ -676,11 +676,11 @@ unsigned long long dbconn::modify(mariadb::connection_ref connection, const std:
 		throw e;
 	}
 }
-unsigned long long dbconn::modify_get_id(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params)
+unsigned long long dbconn::modify_get_id(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
 	try
 	{
-		mariadb::statement_ref stmt = query(connection, sql, params);
+		mariadb::statement_ref stmt = query(std::move(connection), sql, params);
 		unsigned long long count = stmt->insert();
 		return count;
 	}
@@ -691,7 +691,7 @@ unsigned long long dbconn::modify_get_id(mariadb::connection_ref connection, con
 	}
 }
 
-mariadb::statement_ref dbconn::query(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params)
+mariadb::statement_ref dbconn::query(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
 	mariadb::statement_ref stmt = connection->create_statement(sql);
 

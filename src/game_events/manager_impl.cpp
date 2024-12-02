@@ -198,7 +198,7 @@ void event_handlers::clean_up_expired_handlers(const std::string& event_name)
 	// Might be more than one so we split.
 	for(const std::string& name : utils::split(event_name)) {
 		by_name_[standardize_name(name)].remove_if(
-			[](weak_handler_ptr ptr) { return ptr.expired(); }
+			[](const weak_handler_ptr& ptr) { return ptr.expired(); }
 		);
 	}
 
