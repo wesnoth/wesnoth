@@ -1,4 +1,7 @@
 ---
-Checks:          '-*,modernize-use-nullptr'
+Checks:          '-*,bugprone-move-forwarding-reference,bugprone-use-after-move,cppcoreguidelines-rvalue-reference-param-not-moved,modernize-use-nullptr,performance-move-const-arg,performance-move-constructor-init,performance-no-automatic-move'
+CheckOptions:
+  - key: cppcoreguidelines-rvalue-reference-param-not-moved.AllowPartialMove
+    value: true
 WarningsAsErrors: true
 ...

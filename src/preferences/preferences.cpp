@@ -1538,7 +1538,7 @@ void prefs::set_user_servers_list(const std::vector<game_config::server_info>& v
 
 std::string prefs::network_host()
 {
-	const std::string res = preferences_[prefs_list::host];
+	std::string res = preferences_[prefs_list::host];
 	if(res.empty()) {
 		return builtin_servers_list().front().address;
 	} else {

@@ -130,12 +130,13 @@ unsigned pane::create_item(const widget_data& item_data,
 		}
 	}
 
+    const auto item_id = item.id;
 	items_.push_back(std::move(item));
 
 	event::message message;
 	fire(event::REQUEST_PLACEMENT, *this, message);
 
-	return item.id;
+	return item_id;
 }
 
 void pane::place(const point& origin, const point& size)
