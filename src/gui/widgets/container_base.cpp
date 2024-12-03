@@ -20,12 +20,7 @@
 #include "gui/auxiliary/iterator/walker_container.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/auxiliary/iterator/walker_grid.hpp"
-#include "gui/core/event/message.hpp"
-#include "gui/core/log.hpp"
-#include "gui/core/layout_exception.hpp"
-#include "gui/widgets/styled_widget.hpp"
-#include "gui/widgets/window.hpp"
+
 #include <algorithm>
 
 #define LOG_SCOPE_HEADER                                                       \
@@ -65,12 +60,7 @@ void container_base::reduce_width(const unsigned maximum_width)
 	point size = get_best_size();
 	point grid_size = grid_.get_best_size();
 	if(static_cast<int>(maximum_width) - border_space().x < grid_size.x) {
-		try {
-			LOG_GUI_L << LOG_HEADER << "requsting reduce_width between size of " << grid_size << " and maximum_width of " << maximum_width - border_space().x;
-			grid_.reduce_width(maximum_width - border_space().x);
-		} catch(layout_exception_width_resize_failed e) {
-			LOG_GUI_L << LOG_HEADER << "error is from container_base::reduce_width, and ignored";
-		}
+		grid_.reduce_width(maximum_width - border_space().x);
 		grid_size = grid_.get_best_size();
 		size.x = grid_size.x + border_space().x;
 		size.y = std::max(size.y, grid_size.y + border_space().y);

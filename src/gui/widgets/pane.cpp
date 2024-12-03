@@ -208,7 +208,7 @@ const widget* pane::find_at(const point& coordinate,
 {
 	return pane_implementation::find_at(this, coordinate, must_be_active);
 }
-//mark calc_best get_size() = point of width_ etc.
+
 point pane::calculate_best_size() const
 {
 	prepare_placement();
@@ -289,7 +289,7 @@ void pane::place_or_set_origin_children()
 		++index;
 	}
 }
-//mark prepare_place
+
 void pane::prepare_placement() const
 {
 	assert(placer_.get());

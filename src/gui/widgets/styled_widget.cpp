@@ -190,7 +190,7 @@ void styled_widget::layout_initialize(const bool full_initialization)
 		shrunken_ = false;
 	}
 }
-//mark styled_widget::request_reduce_width
+
 void styled_widget::request_reduce_width(const unsigned maximum_width)
 {
 	assert(config_);
