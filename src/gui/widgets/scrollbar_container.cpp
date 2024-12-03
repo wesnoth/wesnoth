@@ -109,7 +109,7 @@ scrollbar_container::scrollbar_container(
 						std::placeholders::_6),
 			event::dispatcher::back_post_child);
 }
-
+//mark scrollbar
 void scrollbar_container::layout_initialize(const bool full_initialization)
 {
 	// Inherited.

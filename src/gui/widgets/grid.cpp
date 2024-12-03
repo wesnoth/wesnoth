@@ -209,6 +209,7 @@ void grid::reduce_width(const unsigned maximum_width)
 	point size = get_best_size();
 	if(size.x <= static_cast<int>(maximum_width)) {
 		DBG_GUI_L << LOG_HEADER << " Already fits.";
+		LOG_GUI_L << LOG_HEADER << " Already fits.";
 		return;
 	}
 
@@ -221,6 +222,8 @@ void grid::reduce_width(const unsigned maximum_width)
 		DBG_GUI_L << LOG_HEADER << " Resize request honored.";
 		return;
 	}
+	//mark currently, size.x > static_cast<int>(maximum_width) when solution is too small. this is crash reason to fix
+	//outside stack layers seems fine, maximum width = 777 and size is (1145,341) when crash .
 
 	/***** ***** ***** ***** Demand resize ***** ***** ***** *****/
 
@@ -228,7 +231,7 @@ void grid::reduce_width(const unsigned maximum_width)
 
 	/***** ***** ***** ***** Acknowledge failure ***** ***** ***** *****/
 
-	DBG_GUI_L << LOG_HEADER << " Resizing failed.";
+	LOG_GUI_L << LOG_HEADER << " Resizing failed with size of " << size << " and maximum width of " << maximum_width;
 
 	throw layout_exception_width_resize_failed();
 }

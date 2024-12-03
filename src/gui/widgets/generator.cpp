@@ -617,6 +617,7 @@ point table::calculate_best_size() const
 	});
 }
 
+//mark probably text showing code
 void table::place(const point& origin, const point& size)
 {
 	/*

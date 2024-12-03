@@ -46,7 +46,7 @@ void placer_vertical_list::initialize()
 	row_ = 0;
 	column_ = 0;
 }
-
+//mark add_i
 void placer_vertical_list::add_item(const point& size)
 {
 	if(size.x > columns_[column_]) {

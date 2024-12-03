@@ -199,7 +199,7 @@ void widget::demand_reduce_height(const unsigned /*maximum_height*/)
 {
 	/* DO NOTHING */
 }
-
+//mark get_best_size
 point widget::get_best_size() const
 {
 	assert(visible_ != visibility::invisible);
@@ -210,6 +210,8 @@ point widget::get_best_size() const
 		//Adjust to linked widget size if linked widget size was already calculated.
 		if (get_window() && !get_window()->get_need_layout() && !linked_group_.empty()) {
 				point linked_size = get_window()->get_linked_size(linked_group_);
+				//mark quickly locating result resetting report tested won't run
+				LOG_GUI_L << "linked_size in get_best_size() reset between " << linked_size << " and " << result;
 				result.x = std::max(result.x, linked_size.x);
 				result.y = std::max(result.y, linked_size.y);
 		}
@@ -312,7 +314,7 @@ point widget::get_origin() const
 {
 	return point(x_, y_);
 }
-
+//mark get_size
 point widget::get_size() const
 {
 	return point(width_, height_);

@@ -40,6 +40,7 @@ void size_lock::place(const point& origin, const point& size)
 	point content_size = widget_->get_best_size();
 
 	if(content_size.x > size.x) {
+		//mark container_base::reduce_width called here
 		reduce_width(size.x);
 		content_size = widget_->get_best_size();
 	}
