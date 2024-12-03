@@ -385,7 +385,7 @@ void addon_list::finalize_setup()
 	list.set_active_sorting_option(order);
 }
 
-void addon_list::set_addon_order(addon_sort_func func)
+void addon_list::set_addon_order(const addon_sort_func& func)
 {
 	listbox& list = get_listbox();
 

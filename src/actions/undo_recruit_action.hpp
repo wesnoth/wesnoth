@@ -30,10 +30,13 @@ struct recruit_action : undo_action, shroud_clearing_action
 	map_location recruit_from;
 
 
-	recruit_action(const unit_const_ptr recruited, const map_location& loc,
-	               const map_location& from, int orig_village_owner, bool time_bonus);
-	recruit_action(const config & cfg, const unit_type & type, const map_location& from);
-	virtual const char* get_type() const { return "recruit"; }
+	recruit_action(const unit_const_ptr& recruited, const map_location& loc,
+	               const map_location& from);
+	recruit_action(const config & cfg);
+
+	static const char* get_type_impl() { return "recruit"; }
+	virtual const char* get_type() const { return get_type_impl(); }
+
 	virtual ~recruit_action() {}
 
 	/** Writes this into the provided config. */

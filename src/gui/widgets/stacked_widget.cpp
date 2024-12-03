@@ -104,7 +104,7 @@ void stacked_widget::set_self_active(const bool /*active*/)
 	/* DO NOTHING */
 }
 
-void stacked_widget::select_layer_impl(std::function<bool(unsigned int i)> display_condition)
+void stacked_widget::select_layer_impl(const std::function<bool(unsigned int i)>& display_condition)
 {
 	const unsigned int num_layers = get_layer_count();
 

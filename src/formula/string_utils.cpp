@@ -293,52 +293,6 @@ std::string format_disjunct_list(const t_string& empty, const std::vector<t_stri
 	return VGETTEXT("disjunct end^$prefix, or $last", {{"prefix", prefix}, {"last", elems.back()}});
 }
 
-std::string format_timespan(std::time_t time, bool detailed)
-{
-	if(time <= 0) {
-		return _("timespan^expired");
-	}
-
-	typedef std::tuple<std::time_t, const char*, const char*> time_factor;
-
-	static const std::vector<time_factor> TIME_FACTORS{
-		// TRANSLATORS: The "timespan^$num xxxxx" strings originating from the same file
-		// as the string with this comment MUST be translated following the usual rules
-		// for WML variable interpolation -- that is, without including or translating
-		// the caret^ prefix, and leaving the $num variable specification intact, since
-		// it is technically code. The only translatable natural word to be found here
-		// is the time unit (year, month, etc.) For example, for French you would
-		// translate "timespan^$num years" as "$num ans", thus allowing the game UI to
-		// generate output such as "39 ans" after variable interpolation.
-		time_factor{ 31104000, N_n("timespan^$num year",   "timespan^$num years")   }, // 12 months
-		time_factor{ 2592000,  N_n("timespan^$num month",  "timespan^$num months")  }, // 30 days
-		time_factor{ 604800,   N_n("timespan^$num week",   "timespan^$num weeks")   },
-		time_factor{ 86400,    N_n("timespan^$num day",    "timespan^$num days")    },
-		time_factor{ 3600,     N_n("timespan^$num hour",   "timespan^$num hours")   },
-		time_factor{ 60,       N_n("timespan^$num minute", "timespan^$num minutes") },
-		time_factor{ 1,        N_n("timespan^$num second", "timespan^$num seconds") },
-	};
-
-	std::vector<t_string> display_text;
-	string_map i18n;
-
-	for(const auto& factor : TIME_FACTORS) {
-		const auto [ secs, fmt_singular, fmt_plural ] = factor;
-		const int amount = time / secs;
-
-		if(amount) {
-			time -= secs * amount;
-			i18n["num"] = std::to_string(amount);
-			display_text.emplace_back(VNGETTEXT(fmt_singular, fmt_plural, amount, i18n));
-			if(!detailed) {
-				break;
-			}
-		}
-	}
-
-	return format_conjunct_list(_("timespan^expired"), display_text);
-}
-
 }
 
 std::string vgettext_impl(const char *domain

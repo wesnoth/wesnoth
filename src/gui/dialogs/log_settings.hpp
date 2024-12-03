@@ -38,7 +38,7 @@ public:
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(log_settings)
 
 private:
-	void set_logger(const std::basic_string<char> log_domain);
+	void set_logger(const std::basic_string<char>& log_domain);
 
 	std::map<std::string, group<std::string>> groups_;
 	std::vector<std::string> domain_list_, widget_id_;

@@ -321,12 +321,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child, /*spectator*/)
 		synced_context::block_undo(std::get<0>(resources::game_events->pump().fire(event_name)));
 	}
 
-	// Not clearing the undo stack here causes OOS because we added an entry to the replay but no entry to the undo stack.
-	if(synced_context::undo_blocked()) {
-		synced_context::block_undo();
-	} else {
-		resources::undo_stack->add_dummy();
-	}
 	return true;
 }
 
@@ -335,11 +329,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(custom_command, child, /*spectator*/)
 	assert(resources::lua_kernel);
 	resources::lua_kernel->custom_command(child["name"], child.child_or_empty("data"));
 
-	if(synced_context::undo_blocked()) {
-		synced_context::block_undo();
-	} else {
-		resources::undo_stack->add_dummy();
-	}
 	return true;
 }
 
@@ -369,7 +358,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/, spectator)
 		spectator.error("Team has DSU disabled but we found an explicit shroud update");
 	}
 	bool res = resources::undo_stack->commit_vision();
-	resources::undo_stack->add_update_shroud();
 	if(res) {
 		synced_context::block_undo();
 	}

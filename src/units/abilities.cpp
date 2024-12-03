@@ -40,7 +40,9 @@
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/function_gamestate.hpp"
+#include "units/filter.hpp"
 #include "deprecation.hpp"
+#include <utility>
 
 
 
@@ -56,7 +58,7 @@ namespace {
 		map_location::direction save_dir_;
 		unit_const_ptr u_;
 	public:
-		temporary_facing(unit_const_ptr u, map_location::direction new_dir)
+		temporary_facing(const unit_const_ptr& u, map_location::direction new_dir)
 			: save_dir_(u ? u->facing() : map_location::direction::indeterminate)
 			, u_(u)
 		{
@@ -534,7 +536,7 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 	return unit_filter(vconfig(*filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
 }
 
-bool unit::ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const
+bool unit::ability_affects_weapon(const config& cfg, const const_attack_ptr& weapon, bool is_opp) const
 {
 	const std::string filter_tag_name = is_opp ? "filter_second_weapon" : "filter_weapon";
 	if(!cfg.has_child(filter_tag_name)) {
@@ -651,7 +653,7 @@ private:
 };
 
 template<typename T, typename TFuncFormula>
-T get_single_ability_value(const config::attribute_value& v, T def, const unit_ability& ability_info, const map_location& receiver_loc, const_attack_ptr att, const TFuncFormula& formula_handler)
+T get_single_ability_value(const config::attribute_value& v, T def, const unit_ability& ability_info, const map_location& receiver_loc, const const_attack_ptr& att, const TFuncFormula& formula_handler)
 {
 	return v.apply_visitor(get_ability_value_visitor(def, [&](const std::string& s) {
 
@@ -974,7 +976,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
  * @param[in] name string who must be or not added
  * @param[in,out] checking_name the reference for checking if @name already added
  */
-static void add_name(std::string& temp_string, bool active, const std::string name, std::set<std::string>& checking_name)
+static void add_name(std::string& temp_string, bool active, const std::string& name, std::set<std::string>& checking_name)
 {
 	if (active) {
 		if (!name.empty() && checking_name.count(name) == 0) {
@@ -1029,7 +1031,7 @@ std::string attack_type::weapon_specials() const
 	return res;
 }
 
-static void add_name_list(std::string& temp_string, std::string& weapon_abilities, std::set<std::string>& checking_name, const std::string from_str)
+static void add_name_list(std::string& temp_string, std::string& weapon_abilities, std::set<std::string>& checking_name, const std::string& from_str)
 {
 	if(!temp_string.empty()){
 		temp_string = from_str.c_str() + temp_string;
@@ -1040,7 +1042,7 @@ static void add_name_list(std::string& temp_string, std::string& weapon_abilitie
 	}
 }
 
-std::string attack_type::weapon_specials_value(const std::set<std::string> checking_tags) const
+std::string attack_type::weapon_specials_value(const std::set<std::string>& checking_tags) const
 {
 	//log_scope("weapon_specials_value");
 	std::string temp_string, weapon_abilities;
@@ -1082,9 +1084,9 @@ std::string attack_type::weapon_specials_value(const std::set<std::string> check
 
 void attack_type::weapon_specials_impl_self(
 	std::string& temp_string,
-	unit_const_ptr self,
-	const_attack_ptr self_attack,
-	const_attack_ptr other_attack,
+	const unit_const_ptr& self,
+	const const_attack_ptr& self_attack,
+	const const_attack_ptr& other_attack,
 	const map_location& self_loc,
 	AFFECTS whom,
 	std::set<std::string>& checking_name,
@@ -1102,9 +1104,9 @@ void attack_type::weapon_specials_impl_self(
 
 void attack_type::weapon_specials_impl_adj(
 	std::string& temp_string,
-	unit_const_ptr self,
-	const_attack_ptr self_attack,
-	const_attack_ptr other_attack,
+	const unit_const_ptr& self,
+	const const_attack_ptr& self_attack,
+	const const_attack_ptr& other_attack,
 	const map_location& self_loc,
 	AFFECTS whom,
 	std::set<std::string>& checking_name,
@@ -1154,12 +1156,12 @@ attack_type::specials_context_t::specials_context_t(
 	bool attacking)
 	: parent(weapon.shared_from_this())
 {
-	weapon.self_ = self;
-	weapon.other_ = other;
+	weapon.self_ = std::move(self);
+	weapon.other_ = std::move(other);
 	weapon.self_loc_ = unit_loc;
 	weapon.other_loc_ = other_loc;
 	weapon.is_attacker_ = attacking;
-	weapon.other_attack_ = other_attack;
+	weapon.other_attack_ = std::move(other_attack);
 	weapon.is_for_listing_ = false;
 }
 
@@ -1174,7 +1176,7 @@ attack_type::specials_context_t::specials_context_t(
 attack_type::specials_context_t::specials_context_t(const attack_type& weapon, unit_const_ptr self, const map_location& loc, bool attacking)
 	: parent(weapon.shared_from_this())
 {
-	weapon.self_ = self;
+	weapon.self_ = std::move(self);
 	weapon.other_ = unit_ptr();
 	weapon.self_loc_ = loc;
 	weapon.other_loc_ = map_location::null_location();
@@ -1285,7 +1287,7 @@ static std::string select_replacement_type(const unit_ability_list& damage_type_
 	return type_list.front();
 }
 
-static std::string select_alternative_type(const unit_ability_list& damage_type_list, unit_ability_list resistance_list, const unit& u)
+static std::string select_alternative_type(const unit_ability_list& damage_type_list, const unit_ability_list& resistance_list, const unit& u)
 {
 	std::map<std::string, int> type_res;
 	int max_res = std::numeric_limits<int>::min();
@@ -1313,7 +1315,7 @@ static std::string select_alternative_type(const unit_ability_list& damage_type_
 	return type_list.front();
 }
 
-std::string attack_type::select_damage_type(const unit_ability_list& damage_type_list, const std::string& key_name, unit_ability_list resistance_list) const
+std::string attack_type::select_damage_type(const unit_ability_list& damage_type_list, const std::string& key_name, const unit_ability_list& resistance_list) const
 {
 	bool is_alternative = (key_name == "alternative_type");
 	if(is_alternative && other_){
@@ -1429,7 +1431,7 @@ namespace { // Helpers for attack_type::special_active()
 	 * Print "Recursion limit reached" log messages, including deduplication if the same problem has
 	 * already been logged.
 	 */
-	void show_recursion_warning(const_attack_ptr& attack, const config& filter) {
+	void show_recursion_warning(const const_attack_ptr& attack, const config& filter) {
 		// This function is only called when a special is checked for the second time
 		// filter has already been parsed multiple times, so I'm not trying to optimize the performance
 		// of this; it's merely to prevent the logs getting spammed. For example, each of
@@ -1470,7 +1472,7 @@ namespace { // Helpers for attack_type::special_active()
 	static bool special_unit_matches(unit_const_ptr & u,
 		                             unit_const_ptr & u2,
 		                             const map_location & loc,
-		                             const_attack_ptr& weapon,
+		                             const const_attack_ptr& weapon,
 		                             const config & filter,
 									 const bool for_listing,
 		                             const std::string & child_tag, const std::string& check_if_recursion)
@@ -1733,12 +1735,12 @@ bool unit::get_adj_ability_bool(const config& cfg, const std::string& ability, i
 	return (affects_side(cfg, side(), from.side()) && from.ability_active_impl(ability, cfg, adjacent[dir]) && ability_affects_adjacent(ability, cfg, dir, loc, from));
 }
 
-bool unit::get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+bool unit::get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const
 {
 	return (get_self_ability_bool(special, tag_name, loc) && ability_affects_weapon(special, weapon, false) && ability_affects_weapon(special, opp_weapon, true));
 }
 
-bool unit::get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+bool unit::get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const
 {
 	return (get_adj_ability_bool(special, tag_name, dir, loc, from) && ability_affects_weapon(special, weapon, false) && ability_affects_weapon(special, opp_weapon, true));
 }
@@ -1748,7 +1750,7 @@ bool attack_type::check_self_abilities(const config& cfg, const std::string& spe
 	return check_self_abilities_impl(shared_from_this(), other_attack_, cfg, self_, self_loc_, AFFECT_SELF, special, true);
 }
 
-bool attack_type::check_self_abilities_impl(const_attack_ptr self_attack, const_attack_ptr other_attack, const config& special, unit_const_ptr u, const map_location& loc, AFFECTS whom, const std::string& tag_name, bool leader_bool)
+bool attack_type::check_self_abilities_impl(const const_attack_ptr& self_attack, const const_attack_ptr& other_attack, const config& special, const unit_const_ptr& u, const map_location& loc, AFFECTS whom, const std::string& tag_name, bool leader_bool)
 {
 	if(tag_name == "leadership" && leader_bool){
 		if((*u).get_self_ability_bool_weapon(special, tag_name, loc, self_attack, other_attack)) {
@@ -1768,7 +1770,7 @@ bool attack_type::check_adj_abilities(const config& cfg, const std::string& spec
 	return check_adj_abilities_impl(shared_from_this(), other_attack_, cfg, self_, from, dir, self_loc_, AFFECT_SELF, special, true);
 }
 
-bool attack_type::check_adj_abilities_impl(const_attack_ptr self_attack, const_attack_ptr other_attack, const config& special, unit_const_ptr u, const unit& from, int dir, const map_location& loc, AFFECTS whom, const std::string& tag_name, bool leader_bool)
+bool attack_type::check_adj_abilities_impl(const const_attack_ptr& self_attack, const const_attack_ptr& other_attack, const config& special, const unit_const_ptr& u, const unit& from, int dir, const map_location& loc, AFFECTS whom, const std::string& tag_name, bool leader_bool)
 {
 	if(tag_name == "leadership" && leader_bool){
 		if((*u).get_adj_ability_bool_weapon(special, tag_name, dir, loc, from, self_attack, other_attack)) {
@@ -2212,8 +2214,8 @@ bool attack_type::special_active(const config& special, AFFECTS whom, const std:
  *  @param filter_self      the filter to use
  */
 bool attack_type::special_active_impl(
-	const_attack_ptr self_attack,
-	const_attack_ptr other_attack,
+	const const_attack_ptr& self_attack,
+	const const_attack_ptr& other_attack,
 	const config& special,
 	AFFECTS whom,
 	const std::string& tag_name,
@@ -2302,8 +2304,8 @@ bool attack_type::special_active_impl(
 	unit_const_ptr & def = is_attacker ? other : self;
 	const map_location & att_loc   = is_attacker ? self_loc : other_loc;
 	const map_location & def_loc   = is_attacker ? other_loc : self_loc;
-	const_attack_ptr& att_weapon = is_attacker ? self_attack : other_attack;
-	const_attack_ptr& def_weapon = is_attacker ? other_attack : self_attack;
+	const const_attack_ptr& att_weapon = is_attacker ? self_attack : other_attack;
+	const const_attack_ptr& def_weapon = is_attacker ? other_attack : self_attack;
 
 	// Filter firststrike here, if both units have first strike then the effects cancel out. Only check
 	// the opponent if "whom" is the defender, otherwise this leads to infinite recursion.
@@ -2425,7 +2427,7 @@ bool filter_base_matches(const config& cfg, int def)
 	return true;
 }
 
-effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFFECTS wham) :
+effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& att, EFFECTS wham) :
 	effect_list_(),
 	composite_value_(0)
 {

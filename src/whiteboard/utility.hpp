@@ -55,7 +55,7 @@ unit* find_recruiter(std::size_t team_index, const map_location&);
  * executes @a func for each unti of side of @a side_num that can recruit on @a loc.
  * @a func takes the leader unit and can return true to 'break' the loop
  */
-bool any_recruiter(int side_num, const map_location& loc, std::function<bool(unit&)> func);
+bool any_recruiter(int side_num, const map_location& loc, const std::function<bool(unit&)>& func);
 
 /**
  * Applies the future unit map and @return a pointer to the unit at hex
@@ -134,8 +134,8 @@ bool team_has_visible_plan(team&);
  * @param function the function to execute.
  * @param team_filter select whether a team is visited (default to @ref team_has_visible_plan).
  */
-void for_each_action(std::function<void(action*)> function,
-                     team_filter team_filter = team_has_visible_plan);
+void for_each_action(const std::function<void(action*)>& function,
+                     const team_filter& team_filter = team_has_visible_plan);
 
 /**
  * Find the first action occurring on a given hex.
@@ -147,7 +147,7 @@ void for_each_action(std::function<void(action*)> function,
  * @param team_filter select whether a team is visited (default to @ref team_has_visible_plan).
  * @retval action_ptr() when no action verifying the team_filter are present on the given hex.
  */
-action_ptr find_action_at(map_location hex, team_filter team_filter = team_has_visible_plan);
+action_ptr find_action_at(map_location hex, const team_filter& team_filter = team_has_visible_plan);
 
 /**
  * Find the actions of an unit.

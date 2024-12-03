@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2024-11-26 12:08-0600\n"
-"PO-Revision-Date: 2024-09-16 21:13+0200\n"
+"PO-Revision-Date: 2024-11-23 14:54+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -207,7 +207,7 @@ msgid ""
 msgstr ""
 "Aggiunge l’opzione per mostrare un orologio per testare il drawing timer. "
 "Aggiunge anche l’opzione per mostrare un orologio per mostrare i dialoghi "
-"test dell'interfaccia grafica."
+"test dell’interfaccia grafica."
 
 # type: TP
 #. type: TP
@@ -291,10 +291,9 @@ msgstr "non permette di utilizzare chiamate Lua API deprecate"
 
 #. type: TP
 #: doc/man/wesnoth.6:89
-#, fuzzy, no-wrap
-#| msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
+#, no-wrap
 msgid "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
-msgstr "B<-D,--diff>I<\\ file-sinistro>B<\\ >I<file-destro>"
+msgstr "B<-D,\\ --diff>I<\\ file-sinistro>B<\\ >I<file-destro>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:95
@@ -527,7 +526,7 @@ msgid ""
 "disables the anonymization that's normally applied when logging, for example "
 "replacing usernames with USER."
 msgstr ""
-"disabilita l'anonimizzazione che viene normalmente applicata nella "
+"disabilita l’anonimizzazione che viene normalmente applicata nella "
 "memorizzazione dei log, ad esempio sostituendo i nomi utente con un generico "
 "USER."
 
@@ -760,10 +759,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:236
-#, fuzzy, no-wrap
-#| msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+#, no-wrap
 msgid "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
-msgstr "B<-P,--patch>I<\\ file-base>B<\\ >I<file-correzione>"
+msgstr "B<-P,\\ --patch>I<\\ file-base>B<\\ >I<file-correzione>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:241
@@ -913,7 +911,7 @@ msgid ""
 "outputs to a .png file. Image path functions are documented at https://wiki."
 "wesnoth.org/ImagePathFunctionWML."
 msgstr ""
-"prende una stringa valida 'image path string' con funzioni immagine per "
+"prende una stringa valida «image path string» con funzioni immagine per "
 "wesnoth e restituisce un file in formato .png. Le funzioni per cartella "
 "immagini sono documentate in https://wiki.wesnoth.org/ImagePathFunctionWML."
 
@@ -1087,17 +1085,14 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:352
-#, fuzzy, no-wrap
-#| msgid "B<-S,--use-schema>I<\\ path>"
+#, no-wrap
 msgid "B<-S,\\ --use-schema>I<\\ path>"
-msgstr "B<--scenario>I<\\ percorso>"
+msgstr "B<-S,\\ --use-schema>I<\\ percorso>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:356
-#, fuzzy
-#| msgid "sets the WML schema for use with B<-V,--validate>."
 msgid "sets the WML schema for use with B<-V,\\ --validate>."
-msgstr "imposta lo schema WML da utilizzare con B<-V,--validate>."
+msgstr "imposta lo schema WML da utilizzare con B<-V,\\ --validate>."
 
 # type: TP
 #. type: TP
@@ -1188,10 +1183,9 @@ msgstr "valida in nucleo WML durante il gioco."
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:382
-#, fuzzy, no-wrap
-#| msgid "B<--validate-schema \\ path>"
+#, no-wrap
 msgid "B<--validate-schema>I<\\ path>"
-msgstr "B<--validate-schema \\ percorso>"
+msgstr "B<--validate-schema>I<\\ percorso>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:385
@@ -2428,7 +2422,7 @@ msgid ""
 "The SQL query to find tournaments to announce on login. Should return "
 "tournament B<title>, B<status> and B<url>."
 msgstr ""
-"La query SQL per trovare tornei da annunciare al momento dell'accesso. "
+"La query SQL per trovare tornei da annunciare al momento dell’accesso. "
 "Dovrebbe restituire B<title>, B<status> and B<url> di un torneo."
 
 # type: TP

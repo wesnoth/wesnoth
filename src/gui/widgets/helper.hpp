@@ -18,8 +18,6 @@
 #include "color.hpp"
 #include "font/text.hpp"
 
-#include <pango/pango-layout.h>
-
 #include <string>
 #include <string_view>
 
@@ -36,7 +34,7 @@ namespace gui2
 /**
  * Converts a color string to a color.
  *
- * @param color                   A color string.
+ * @param color                   A color string, @see color_t::from_rgba_string.
  *
  * @returns                       The color.
  */
@@ -45,7 +43,7 @@ color_t decode_color(const std::string& color);
 /**
  * Converts a text alignment string to a text alignment.
  *
- * @param alignment               An alignment string.
+ * @param alignment               An alignment string, possible values: "left", "right", "center".
  *
  * @returns                       The text alignment.
  */
@@ -54,7 +52,7 @@ PangoAlignment decode_text_alignment(const std::string& alignment);
 /**
  * Converts a text weight string to a PangoWeight.
  *
- * @param weight                  A weight string, possible values: "thin", "light", "normal", "semibold", "bold", "heavy"
+ * @param weight                  A weight string, possible values: "thin", "light", "normal", "semibold", "bold", "heavy".
  *
  * @returns                       The corresponding PangoWeight.
  */
@@ -63,29 +61,47 @@ PangoWeight decode_text_weight(const std::string& weight);
 /**
  * Converts a text style string to a PangoStyle.
  *
- * @param style                  A style string, possible values: "normal", "italic", "oblique
+ * @param style                  A style string, possible values: "normal", "italic", "oblique".
  *
- * @returns                       The corresponding PangoStyle.
+ * @returns                      The corresponding PangoStyle.
  */
 PangoStyle decode_text_style(const std::string& style);
 
 /**
- * Converts a text alignment to its string representation.
- *
- * @param alignment               An alignment.
- *
- * @returns                       An alignment string.
- */
-std::string encode_text_alignment(const PangoAlignment alignment);
-
-/**
  * Converts a font style string to a font style.
  *
- * @param style                   A font style string.
+ * @param style                   A font style string, possible values: "bold", "italic", "normal", "underline".
  *
  * @returns                       The font style.
  */
 font::pango_text::FONT_STYLE decode_font_style(const std::string& style);
+
+/**
+ * Converts a text ellipsize mode string to a PangoEllipsizeMode.
+ *
+ * @param ellipsize_mode          A ellipsize mode string, possible values: "none", "start", "middle", "end".
+ *
+ * @returns                       The corresponding PangoEllipsizeMode.
+ */
+PangoEllipsizeMode decode_ellipsize_mode(const std::string& ellipsize_mode);
+
+/**
+ * Converts a PangoAlignment to its string representation.
+ *
+ * @param alignment               A PangoAlignment.
+ *
+ * @returns                       An alignment string, possible values: "left", "right", "center".
+ */
+std::string encode_text_alignment(const PangoAlignment alignment);
+
+/**
+ * Converts a PangoEllipsizeMode to its string representation.
+ *
+ * @param ellipsize_mode          A PangoEllipsizeMode.
+ *
+ * @returns                       An pango ellipsize mode string, possible values: "none", "start", "middle", "end".
+ */
+std::string encode_ellipsize_mode(const PangoEllipsizeMode ellipsize_mode);
 
 /**
  * Returns a default error message if a mandatory widget is omitted.

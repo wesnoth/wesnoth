@@ -87,7 +87,7 @@ private:
 };
 
 /** Dumps an attack on a stream, for debug purposes. */
-std::ostream& operator<<(std::ostream &s, attack_ptr attack);
-std::ostream& operator<<(std::ostream &s, attack_const_ptr attack);
+std::ostream& operator<<(std::ostream &s, const attack_ptr& attack);
+std::ostream& operator<<(std::ostream &s, const attack_const_ptr& attack);
 
 } // end namespace wb

@@ -92,22 +92,22 @@ public:
 	 * @param doc
 	 * @param yield The function will suspend on write operation using this yield context
 	 */
-	template<class SocketPtr> void coro_send_doc(SocketPtr socket, simple_wml::document& doc, boost::asio::yield_context yield);
+	template<class SocketPtr> void coro_send_doc(SocketPtr socket, simple_wml::document& doc, const boost::asio::yield_context& yield);
 	/**
 	 * Send contents of entire file directly to socket from within a coroutine
 	 * @param socket
 	 * @param filename
 	 * @param yield The function will suspend on write operations using this yield context
 	 */
-	void coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield);
-	void coro_send_file(tls_socket_ptr socket, const std::string& filename, boost::asio::yield_context yield);
+	void coro_send_file(const socket_ptr& socket, const std::string& filename, const boost::asio::yield_context& yield);
+	void coro_send_file(tls_socket_ptr socket, const std::string& filename, const boost::asio::yield_context& yield);
 	/**
 	 * Receive WML document from a coroutine
 	 * @param socket
 	 * @param yield The function will suspend on read operation using this yield context
 	 * @return unique_ptr with doc deceived. In case of error empty unique_ptr
 	 */
-	template<class SocketPtr> std::unique_ptr<simple_wml::document> coro_receive_doc(SocketPtr socket, boost::asio::yield_context yield);
+	template<class SocketPtr> std::unique_ptr<simple_wml::document> coro_receive_doc(SocketPtr socket, const boost::asio::yield_context& yield);
 
 	/**
 	 * High level wrapper for sending a WML document
@@ -123,21 +123,6 @@ public:
 	template<class SocketPtr> void async_send_error(SocketPtr socket, const std::string& msg, const char* error_code = "", const info_table& info = {});
 	template<class SocketPtr> void async_send_warning(SocketPtr socket, const std::string& msg, const char* warning_code = "", const info_table& info = {});
 
-	/**
-	 * Create the poor security nonce for use with passwords still hashed with MD5.
-	 * Uses 8 random integer digits, 29.8 bits entropy.
-	 *
-	 * @param length How many random numbers to generate.
-	 * @return The nonce to use.
-	 */
-	std::string create_unsecure_nonce(int length = 8);
-	/**
-	 * Create a good security nonce for use with bcrypt/crypt_blowfish hashing.
-	 * Uses 32 random Base64 characters, cryptographic-strength, 192 bits entropy
-	 *
-	 * @return The nonce to use.
-	 */
-	std::string create_secure_nonce();
 	/**
 	 * Handles hashing the password provided by the player before comparing it to the hashed password in the forum database.
 	 *
@@ -160,7 +145,7 @@ protected:
 	void load_tls_config(const config& cfg);
 
 	void start_server();
-	void serve(boost::asio::yield_context yield, boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint);
+	void serve(const boost::asio::yield_context& yield, boost::asio::ip::tcp::acceptor& acceptor, const boost::asio::ip::tcp::endpoint& endpoint);
 
 	uint32_t handshake_response_;
 

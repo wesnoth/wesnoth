@@ -32,7 +32,7 @@ public:
 	{}
 
 	const wfl::map_formula_callable_ptr& formula_vars() const { return formula_vars_; }
-	void add_formula_var(std::string str, wfl::variant var);
+	void add_formula_var(const std::string& str, const wfl::variant& var);
 	bool has_formula() const { return !unit_formula_.empty(); }
 	bool has_loop_formula() const { return !unit_loop_formula_.empty(); }
 	bool has_priority_formula() const { return !unit_priority_formula_.empty(); }

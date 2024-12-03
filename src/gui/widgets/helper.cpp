@@ -101,6 +101,37 @@ PangoAlignment decode_text_alignment(const std::string& alignment)
 	return PANGO_ALIGN_LEFT;
 }
 
+PangoEllipsizeMode decode_ellipsize_mode(const std::string& ellipsize_mode)
+{
+	if(ellipsize_mode == "start") {
+		return PANGO_ELLIPSIZE_START;
+	} else if(ellipsize_mode == "middle") {
+		return PANGO_ELLIPSIZE_MIDDLE;
+	} else if(ellipsize_mode == "end") {
+		return PANGO_ELLIPSIZE_END;
+	}
+
+	if(!ellipsize_mode.empty() && ellipsize_mode != "none") {
+		ERR_GUI_E << "Invalid text ellipsization mode '" << ellipsize_mode << "', falling back to 'none'.";
+	}
+
+	return PANGO_ELLIPSIZE_NONE;
+}
+
+std::string encode_ellipsize_mode(const PangoEllipsizeMode ellipsize_mode)
+{
+	switch(ellipsize_mode) {
+		case PANGO_ELLIPSIZE_START:
+			return "start";
+		case PANGO_ELLIPSIZE_MIDDLE:
+			return "middle";
+		case PANGO_ELLIPSIZE_END:
+			return "end";
+		default:
+			return "none";
+	}
+}
+
 std::string encode_text_alignment(const PangoAlignment alignment)
 {
 	switch(alignment) {

@@ -30,6 +30,8 @@
 #include "actions/advancement.hpp"           // for advance_unit_at, etc
 #include "actions/move.hpp"		// for clear_shroud
 #include "actions/vision.hpp"		// for clear_shroud and create_jamming_map
+#include "actions/undo.hpp"		// for clear_shroud and create_jamming_map
+#include "actions/undo_action.hpp"		// for clear_shroud and create_jamming_map
 #include "ai/composite/ai.hpp"          // for ai_composite
 #include "ai/composite/component.hpp"   // for component, etc
 #include "ai/composite/contexts.hpp"    // for ai_context
@@ -4212,10 +4214,10 @@ int game_lua_kernel::intf_add_undo_actions(lua_State *L)
 {
 	config cfg;
 	if(luaW_toconfig(L, 1, cfg)) {
-		synced_context::add_undo_commands(cfg, get_event_info());
+		game_state_.undo_stack_->add_custom<actions::undo_event>(cfg, get_event_info());
 	} else {
 		luaW_toconfig(L, 2, cfg);
-		synced_context::add_undo_commands(save_wml_event(1), cfg, get_event_info());
+		game_state_.undo_stack_->add_custom<actions::undo_event>(save_wml_event(1), cfg, get_event_info());
 	}
 	return 0;
 }
@@ -4318,7 +4320,7 @@ int game_lua_kernel::cfun_undoable_event(lua_State* L)
 	lua_pushvalue(L, lua_upvalueindex(1));
 	lua_push(L, 1);
 	luaW_pcall(L, 1, 0);
-	synced_context::add_undo_commands(lua_upvalueindex(2), get_event_info());
+	game_state_.undo_stack_->add_custom<actions::undo_event>(lua_upvalueindex(2), config(), get_event_info());
 	return 0;
 }
 
@@ -4899,7 +4901,7 @@ namespace {
 /**
  * Executes its upvalue as a theme item generator.
  */
-int game_lua_kernel::impl_theme_item(lua_State *L, std::string m)
+int game_lua_kernel::impl_theme_item(lua_State *L, const std::string& m)
 {
 	reports::context temp_context = reports::context(board(), *game_display_, tod_man(), play_controller_.get_whiteboard(), play_controller_.get_mouse_handler_base());
 	luaW_pushconfig(L, reports_.generate_report(m.c_str(), temp_context , true));

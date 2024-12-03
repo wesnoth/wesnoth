@@ -32,6 +32,7 @@
 #include "synced_checkup.hpp"
 #include "syncmp_handler.hpp"
 #include "units/id.hpp"
+#include "utils/general.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <cassert>
@@ -51,12 +52,13 @@ bool synced_context::run(const std::string& commandname, const config& data, act
 	// use this after resources::recorder->add_synced_command
 	// because set_scontext_synced sets the checkup to the last added command
 	set_scontext_synced sync;
+	resources::undo_stack->init_action();
 
-	synced_command::map::iterator it = synced_command::registry().find(commandname);
-	if(it == synced_command::registry().end()) {
+	auto p_handler = utils::find(synced_command::registry(), commandname);
+	if(!p_handler) {
 		spectator.error("commandname [" + commandname + "] not found");
 	} else {
-		bool success = it->second(data, spectator);
+		bool success = p_handler->second(data, spectator);
 		if(!success) {
 			return false;
 		}
@@ -66,12 +68,10 @@ bool synced_context::run(const std::string& commandname, const config& data, act
 
 	sync.do_final_checkup();
 
-	// TODO: It would be nice if this could automaticially detect that
-	//       no entry was pushed to the undo stack for this action
-	//       and always clear the undo stack in that case.
+	resources::undo_stack->finish_action(!undo_blocked());
+
 	if(undo_blocked()) {
 		// This in particular helps the networking code to make sure this command is sent.
-		resources::undo_stack->clear();
 		send_user_choice();
 	}
 
@@ -91,8 +91,9 @@ bool synced_context::run_and_store(const std::string& commandname, const config&
 	bool success = run(commandname, data, spectator);
 	if(!success) {
 		resources::recorder->undo();
+	} else {
+		resources::undo_stack->cleanup_action();
 	}
-
 	return success;
 }
 
@@ -344,21 +345,6 @@ config synced_context::ask_server_choice(const server_choice& sch)
 	}
 }
 
-void synced_context::add_undo_commands(const config& commands, const game_events::queued_event& ctx)
-{
-	undo_commands_.emplace_front(commands, ctx);
-}
-
-void synced_context::add_undo_commands(int idx, const game_events::queued_event& ctx)
-{
-	undo_commands_.emplace_front(idx, ctx);
-}
-
-void synced_context::add_undo_commands(int idx, const config& args, const game_events::queued_event& ctx)
-{
-	undo_commands_.emplace_front(idx, args, ctx);
-}
-
 bool synced_context::ignore_undo()
 {
 	auto& ct = resources::controller->current_team();
@@ -378,7 +364,6 @@ set_scontext_synced_base::set_scontext_synced_base()
 	synced_context::set_synced_state(synced_context::SYNCED);
 	synced_context::reset_block_undo();
 	synced_context::set_last_unit_id(resources::gameboard->unit_id_manager().get_save_id());
-	synced_context::reset_undo_commands();
 
 	old_rng_ = randomness::generator;
 	randomness::generator = new_rng_.get();

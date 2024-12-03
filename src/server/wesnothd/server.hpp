@@ -267,7 +267,7 @@ private:
 	void handle_lan_server_shutdown(const boost::system::error_code& error);
 
 	boost::asio::steady_timer dummy_player_timer_;
-	int dummy_player_timer_interval_;
+	std::chrono::seconds dummy_player_timer_interval_;
 	void start_dummy_player_updates();
 	void dummy_player_updates(const boost::system::error_code& ec);
 };

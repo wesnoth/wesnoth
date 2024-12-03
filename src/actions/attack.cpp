@@ -20,6 +20,8 @@
 
 #include "actions/attack.hpp"
 
+#include <utility>
+
 #include "actions/advancement.hpp"
 #include "actions/vision.hpp"
 
@@ -77,7 +79,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		bool attacking,
 		nonempty_unit_const_ptr oppp,
 		const map_location& opp_loc,
-		const_attack_ptr opp_weapon)
+		const const_attack_ptr& opp_weapon)
 	: weapon(nullptr)
 	, attack_num(u_attack_num)
 	, is_attacker(attacking)
@@ -229,10 +231,10 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 		const_attack_ptr att_weapon,
 		bool attacking,
 		const unit_type* opp_type,
-		const_attack_ptr opp_weapon,
+		const const_attack_ptr& opp_weapon,
 		unsigned int opp_terrain_defense,
 		int lawful_bonus)
-	: weapon(att_weapon)
+	: weapon(std::move(att_weapon))
 	, attack_num(-2) // This is and stays invalid. Always use weapon when using this constructor.
 	, is_attacker(attacking)
 	, is_poisoned(false)
@@ -523,7 +525,7 @@ bool battle_context::better_combat(const combatant& us_a,
 }
 
 battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr attacker,
-		nonempty_unit_const_ptr defender,
+		const nonempty_unit_const_ptr& defender,
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
 		double harm_weight,
@@ -1590,7 +1592,7 @@ void attack_unit_and_advance(const map_location& attacker,
 
 int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
-	unit_ability_list abil = u.get_abilities_weapons("leadership", loc, weapon, opp_weapon);
+	unit_ability_list abil = u.get_abilities_weapons("leadership", loc, std::move(weapon), std::move(opp_weapon));
 	unit_abilities::effect leader_effect(abil, 0, nullptr, unit_abilities::EFFECT_CUMULABLE);
 	return leader_effect.get_composite_value();
 }

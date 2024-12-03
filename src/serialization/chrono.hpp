@@ -72,15 +72,27 @@ inline auto parse_duration(const config_attribute_value& val, const Duration& de
 	return Duration{val.to_long_long(def.count())};
 }
 
-template<typename Rep, typename Period>
-constexpr auto deconstruct_duration(const std::chrono::duration<Rep, Period>& span)
+template<typename... Ts, typename Rep, typename Period>
+constexpr auto deconstruct_duration(const std::tuple<Ts...>&, const std::chrono::duration<Rep, Period>& span)
 {
-	auto days    = std::chrono::duration_cast<chrono::days>(span);
-	auto hours   = std::chrono::duration_cast<std::chrono::hours>(span - days);
-	auto minutes = std::chrono::duration_cast<std::chrono::minutes>(span - days - hours);
-	auto seconds = std::chrono::duration_cast<std::chrono::seconds>(span - days - hours - minutes);
-
-	return std::tuple{ days, hours, minutes, seconds };
+	auto time_remaining = std::chrono::duration_cast<std::common_type_t<Ts...>>(span);
+	return std::tuple{[&time_remaining]() {
+		auto duration = std::chrono::duration_cast<Ts>(time_remaining);
+		time_remaining -= duration;
+		return duration;
+	}()...};
 }
+
+/** Helper types to be used with @ref deconstruct_duration */
+namespace format
+{
+constexpr auto days_hours_mins_secs = std::tuple<
+	chrono::days,
+	std::chrono::hours,
+	std::chrono::minutes,
+	std::chrono::seconds
+>{};
+
+} // namespace format
 
 } // namespace chrono

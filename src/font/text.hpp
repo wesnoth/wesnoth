@@ -382,7 +382,7 @@ public:
  	 * @param end_offset          Byte index of the cursor where size change ends
  	 * @param family              The font family
 	 */
-	void add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, std::string family);
+	void add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, const std::string& family);
 
 	/** Clears all attributes from the global attribute list */
 	void clear_attribute_list();

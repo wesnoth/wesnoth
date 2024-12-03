@@ -39,9 +39,10 @@
 #include "units/unit_alignments.hpp"
 #include "whiteboard/manager.hpp"
 
+#include <boost/format.hpp>
 #include <ctime>
 #include <iomanip>
-#include <boost/format.hpp>
+#include <utility>
 
 #ifdef __cpp_lib_format
 #include <format>
@@ -117,7 +118,7 @@ static static_report_generators static_generators;
 
 struct report_generator_helper
 {
-	report_generator_helper(const char *name, reports::generator_function g)
+	report_generator_helper(const char *name, const reports::generator_function& g)
 	{
 		static_generators.insert(static_report_generators::value_type(name, g));
 	}
@@ -993,7 +994,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		//If we have a second unit, do the 2-unit specials_context
 		bool attacking = (u.side() == rc.screen().playing_team().side());
 		auto ctx = (sec_u == nullptr) ? at.specials_context_for_listing(attacking) :
-						at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, sec_u_weapon);
+						at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, std::move(sec_u_weapon));
 
 		boost::dynamic_bitset<> active;
 		const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
@@ -1050,7 +1051,7 @@ static std::string format_hp(unsigned hp)
 	return res.str();
 }
 
-static config unit_weapons(const reports::context& rc, unit_const_ptr attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
+static config unit_weapons(const reports::context& rc, const unit_const_ptr& attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
 {
 	if (!attacker || !defender) return config();
 

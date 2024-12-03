@@ -159,7 +159,63 @@ void move_unit_spectator::set_unit(const unit_map::const_iterator &u)
 	unit_ = u;
 }
 
+namespace {
 
+/**
+ * The number of the side that preivously owned the village that the unit stepped on
+ * Note, that recruit/recall actions can also take a village if the unit was recruits/recalled onto a village
+ */
+struct take_village_step : undo_action
+{
+	int original_village_owner;
+	bool take_village_timebonus;
+	map_location loc;
+
+	take_village_step(
+		int orig_village_owner, bool time_bonus, map_location loc)
+		: original_village_owner(orig_village_owner)
+		, take_village_timebonus(time_bonus)
+		, loc(loc)
+	{
+	}
+
+	take_village_step(const config& cfg)
+		: original_village_owner(cfg["village_owner"].to_int())
+		, take_village_timebonus(cfg["village_timebonus"].to_bool())
+		, loc(cfg)
+	{
+	}
+
+	static const char* get_type_impl() { return "take_village"; }
+	virtual const char* get_type() const { return get_type_impl(); }
+
+	virtual ~take_village_step() { }
+
+	/** Writes this into the provided config. */
+	virtual void write(config& cfg) const
+	{
+		undo_action::write(cfg);
+		cfg["village_owner"] = original_village_owner;
+		cfg["village_timebonus"] = take_village_timebonus;
+		loc.write(cfg);
+	}
+
+	/** Undoes this action. */
+	virtual bool undo(int)
+	{
+		team& current_team = resources::controller->current_team();
+		if(resources::gameboard->map().is_village(loc)) {
+			get_village(loc, original_village_owner, nullptr, false);
+			// MP_COUNTDOWN take away capture bonus
+			if(take_village_timebonus) {
+				current_team.set_action_bonus_count(current_team.action_bonus_count() - 1);
+			}
+		}
+		return true;
+	}
+};
+
+}
 game_events::pump_result_t get_village(const map_location& loc, int side, bool *action_timebonus, bool fire_event)
 {
 	std::vector<team> &teams = resources::gameboard->teams();
@@ -201,6 +257,7 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
 		if (display::get_singleton() != nullptr) {
 			display::get_singleton()->invalidate(loc);
 		}
+		resources::undo_stack->add_custom<take_village_step>(old_owner_side, grants_timebonus, loc);
 		return t->get_village(loc, old_owner_side, fire_event ? resources::gamedata : nullptr);
 	}
 
@@ -339,7 +396,7 @@ namespace { // Private helpers for move_unit()
 
 		// This data stores the state from before the move started.
 		const int orig_side_;
-		const int orig_moves_;
+		int orig_moves_;
 		const map_location::direction orig_dir_;
 		const map_location goto_;
 
@@ -550,6 +607,9 @@ namespace { // Private helpers for move_unit()
 		auto [unit_it, success] = resources::gameboard->units().move(*move_loc_, *step_to);
 
 		if(success) {
+			resources::undo_stack->add_move(
+				unit_it.get_shared_ptr(), move_loc_, step_to + 1, orig_moves_, unit_it->facing());
+			orig_moves_ = unit_it->movement_left();
 			// Update the moving unit.
 			move_it_ = unit_it;
 			move_it_->set_facing(step_from->get_relative_dir(*step_to));
@@ -1130,7 +1190,6 @@ namespace { // Private helpers for move_unit()
 	 */
 	void unit_mover::post_move()
 	{
-		auto* undo_stack = resources::undo_stack;
 		const map_location & final_loc = final_hex();
 
 		int orig_village_owner = 0;
@@ -1176,21 +1235,17 @@ namespace { // Private helpers for move_unit()
 			spectator_->set_interrupted(interrupted());
 			spectator_->set_tiles_entered(steps_travelled());
 		}
-		if ( undo_stack ) {
-			const bool mover_valid = move_it_.valid();
 
-			if ( mover_valid ) {
-				// MP_COUNTDOWN: added param
-				undo_stack->add_move(
-					move_it_.get_shared_ptr(), begin_, real_end_, orig_moves_,
-					action_time_bonus, orig_village_owner, orig_dir_);
-			}
+		const bool mover_valid = move_it_.valid();
 
-			if ( !mover_valid  ||  undo_blocked()  ||
-				(resources::whiteboard->is_active() && resources::whiteboard->should_clear_undo()) || synced_context::undo_blocked())
-			{
-				synced_context::block_undo();
-			}
+
+		if(!mover_valid || undo_blocked()) {
+			synced_context::block_undo();
+		}
+
+		// TODO: this looks wrong, whiteboard shouldn't effect the undo stack during a synced action.
+		if(resources::whiteboard->is_active() && resources::whiteboard->should_clear_undo()) {
+			synced_context::block_undo();
 		}
 
 		// Update the screen.

@@ -57,7 +57,7 @@ public:
 	 */
 	listbox(const implementation::builder_styled_widget& builder,
 			const generator_base::placement placement,
-			builder_grid_ptr list_builder);
+			const builder_grid_ptr& list_builder);
 
 	/***** ***** ***** ***** Row handling. ***** ***** ****** *****/
 
@@ -268,7 +268,7 @@ public:
 	using translatable_sorter_func_t = std::function<std::string(const int)>;
 
 	/** Registers a special sorting function specifically for translatable values. */
-	void register_translatable_sorting_option(const int col, translatable_sorter_func_t f);
+	void register_translatable_sorting_option(const int col, const translatable_sorter_func_t& f);
 
 	using order_pair = std::pair<int, sort_order::type>;
 
@@ -343,8 +343,8 @@ private:
 	 * @param list_data           The initial data to fill the listbox with.
 	 */
 	void finalize(std::unique_ptr<generator_base> generator,
-			builder_grid_const_ptr header,
-			builder_grid_const_ptr footer,
+			const builder_grid_const_ptr& header,
+			const builder_grid_const_ptr& footer,
 			const std::vector<widget_data>& list_data);
 
 	/**

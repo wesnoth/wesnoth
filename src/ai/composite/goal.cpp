@@ -53,6 +53,8 @@ void goal::on_create()
 	LOG_AI_GOAL << "side " << get_side() << " : " << " created goal with name=[" << cfg_["name"] << "]";
 }
 
+// In this case, the API is intended to cause an error with this specific type.
+// NOLINTNEXTLINE(performance-unnecessary-value-param)
 void goal::on_create(std::shared_ptr<ai::lua_ai_context>)
 {
 	unrecognized();

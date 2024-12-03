@@ -83,7 +83,7 @@ private:
 	void save_unit_type();
 
 	/** Write macro to a stream at specified tab level */
-	void write_macro(std::ostream& out, unsigned level, const std::string macro_name);
+	void write_macro(std::ostream& out, unsigned level, const std::string& macro_name);
 
 	/** Update wml preview */
 	void update_wml_view();
@@ -132,7 +132,7 @@ private:
 	void quit_confirmation();
 
 	/** Utility method to check if ID contains any invalid characters */
-	bool check_id(std::string id);
+	bool check_id(const std::string& id);
 
 	void set_selected_from_string(menu_button& list, std::vector<config> values, std::string item) {
 		for (unsigned i = 0; i < values.size(); ++i) {

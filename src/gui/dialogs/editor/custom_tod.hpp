@@ -30,7 +30,7 @@ namespace dialogs
 class custom_tod : public modal_dialog
 {
 public:
-	custom_tod(const std::vector<time_of_day>& times, int current_time, const std::string addon_id = "");
+	custom_tod(const std::vector<time_of_day>& times, int current_time, const std::string& addon_id = "");
 
 	/** The execute function. See @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(custom_tod)
@@ -82,7 +82,7 @@ private:
 
 	void update_selected_tod_info();
 
-	void copy_to_clipboard_callback(std::pair<std::string, tod_attribute_getter> data);
+	void copy_to_clipboard_callback(const std::pair<std::string, tod_attribute_getter>& data);
 
 	/** Update current TOD with values from the GUI */
 	void update_schedule();

@@ -94,14 +94,14 @@ void config_cache::get_config(const std::string& file_path, config& cfg, abstrac
 	load_configs(file_path, cfg, validator);
 }
 
-void config_cache::write_file(std::string file_path, const config& cfg)
+void config_cache::write_file(const std::string& file_path, const config& cfg)
 {
 	filesystem::scoped_ostream stream = filesystem::ostream_file(file_path);
 	config_writer writer(*stream, true, game_config::cache_compression_level);
 	writer.write(cfg);
 }
 
-void config_cache::write_file(std::string file_path, const preproc_map& defines)
+void config_cache::write_file(const std::string& file_path, const preproc_map& defines)
 {
 	if(defines.empty()) {
 		if(filesystem::file_exists(file_path)) {
@@ -408,7 +408,7 @@ bool config_cache::delete_cache_files(const std::vector<std::string>& paths,
 }
 
 config_cache_transaction::state config_cache_transaction::state_ = FREE;
-config_cache_transaction* config_cache_transaction::active_ = 0;
+config_cache_transaction* config_cache_transaction::active_ = nullptr;
 
 config_cache_transaction::config_cache_transaction()
 	: define_filenames_()
@@ -422,7 +422,7 @@ config_cache_transaction::config_cache_transaction()
 config_cache_transaction::~config_cache_transaction()
 {
 	state_ = FREE;
-	active_ = 0;
+	active_ = nullptr;
 }
 
 void config_cache_transaction::lock()

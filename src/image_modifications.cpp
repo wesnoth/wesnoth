@@ -15,6 +15,8 @@
 
 #include "image_modifications.hpp"
 
+#include <utility>
+
 #include "color.hpp"
 #include "config.hpp"
 #include "game_config.hpp"
@@ -537,7 +539,7 @@ struct parse_mod_registration
 {
 	parse_mod_registration(const char* name, mod_parser parser)
 	{
-		mod_parsers[name] = parser;
+		mod_parsers[name] = std::move(parser);
 	}
 };
 
