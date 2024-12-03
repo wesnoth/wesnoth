@@ -89,14 +89,24 @@ void chatbox::finalize_setup()
 
 void chatbox::load_log(std::map<std::string, chatroom_log>& log, bool show_lobby)
 {
-	for(const auto& l : log) {
+	const std::string new_tip = formatter()
+		<< "\n"
+		// TRANSLATORS: This is the new chat text indicator
+		<< markup::span_color("#FF0000", "============", _("NEW"), "============");
+
+	for(auto& l : log) {
 		const bool is_lobby = l.first == "lobby";
 
 		if(!show_lobby && is_lobby && !l.second.whisper) {
 			continue;
 		}
 
-		find_or_create_window(l.first, l.second.whisper, true, !is_lobby, l.second.log);
+		const std::size_t new_tip_index = l.second.log.find(new_tip);
+
+		if(new_tip_index != std::string::npos) {
+			l.second.log.replace(new_tip_index, new_tip.length(), "");
+		}
+		find_or_create_window(l.first, l.second.whisper, true, !is_lobby, l.second.log + new_tip);
 	}
 
 	log_ = &log;
