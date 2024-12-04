@@ -148,71 +148,7 @@ void menu_handler::unit_list()
 		unit_list.push_back(i.get_shared_ptr());
 	}
 
-	gui2::dialogs::units_dialog unit_dlg;
-	unit_dlg.set_title(_("Unit List"))
-		.set_ok_label(_("Scroll To"))
-		.show_rename_option(true)
-		.set_help_topic("..units")
-		.set_units(std::move(unit_list))
-		.set_row_num(unit_list.size())
-		.set_column_generator("unit_name", unit_list, [&](const auto& unit) {
-			return !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
-		}, true)
-		.set_column_generator("unit_details", unit_list, [&](const auto& unit) {
-			return unit->type_name().str();
-		}, true)
-		.set_column_generator("unit_level", unit_list, [&](const auto& unit) {
-			return unit_helper::format_level_string(unit->level(), true);
-		})
-		.set_column_generator("unit_moves", unit_list, [&](const auto& unit) {
-			return unit_helper::format_movement_string(unit->movement_left(), unit->total_movement());
-		})
-		.set_column_generator("unit_hp", unit_list, [&](const auto& unit) {
-			return markup::span_color(unit->hp_color(), unit->hitpoints(), "/", unit->max_hitpoints());
-		})
-		.set_column_generator("unit_experience",  unit_list, [&](const auto& unit) {
-			std::stringstream exp_str;
-			if(unit->can_advance()) {
-				exp_str << unit->experience() << "/" << unit->max_experience();
-			} else {
-				exp_str << font::unicode_en_dash;
-			}
-			return markup::span_color(unit->xp_color(), exp_str.str());
-		})
-		.set_column_generator("unit_status", unit_list, [&](const auto& unit) {
-			// Status
-			if(unit->get_state(unit::STATE_PETRIFIED)) {
-				return "misc/petrified.png";
-			}
-
-			if(unit->get_state(unit::STATE_POISONED)) {
-				return "misc/poisoned.png";
-			}
-
-			if(unit->get_state(unit::STATE_SLOWED)) {
-				return "misc/slowed.png";
-			}
-
-			if(unit->invisible(unit->get_location(), false)) {
-				return "misc/invisible.png";
-			}
-
-			return "";
-		})
-		.set_column_generator("unit_traits",  unit_list, [&](const auto& unit) {
-			return utils::join(unit->trait_names(), ", ");
-		}, true)
-		.set_sorter(2, [&](const int i) {
-			const unit& u = *unit_list[i];
-			return std::tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
-		})
-		.set_sorter(3, [&](const int i) { return unit_list[i]->movement_left(); })
-		.set_sorter(4, [&](const int i) { return unit_list[i]->hitpoints(); })
-		.set_sorter(5, [&](const int i) {
-			// this allows 0/35, 0/100 etc to be sorted
-			// also sorts 23/35 before 0/35, after which 0/100 comes
-			return unit_list[i]->experience() + unit_list[i]->max_experience();
-		});
+	auto& unit_dlg = gui2::dialogs::units_dialog::build_unit_list_dialog(unit_list);
 
 	if (unit_dlg.show() && unit_dlg.is_selected()) {
 		const map_location& loc = unit_list[unit_dlg.get_selected_index()]->get_location();
@@ -881,9 +817,8 @@ typedef std::tuple<const unit_type*, unit_race::GENDER, std::string> type_gender
  */
 type_gender_variation choose_unit()
 {
-	const std::vector<const unit_type*>& types_list = unit_types.types_list();
-	gui2::dialogs::units_dialog create_dlg;
-	create_dlg.build_create_dialog(types_list);
+	const auto& types_list = unit_types.types_list();
+	auto& create_dlg = gui2::dialogs::units_dialog::build_create_dialog(types_list);
 
 	if (!create_dlg.show() || !create_dlg.is_selected()) {
 		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id.";

@@ -193,7 +193,8 @@ public:
 	}
 
 	// } -------------------- BUILDERS -------------------- {
-	units_dialog& build_create_dialog(const std::vector<const unit_type*>& types_list);
+	static units_dialog& build_create_dialog(const std::vector<const unit_type*>& types_list);
+	static units_dialog& build_unit_list_dialog(const std::vector<unit_const_ptr>& units_list);
 
 private:
 	std::vector<const unit_type*> unit_type_list_;

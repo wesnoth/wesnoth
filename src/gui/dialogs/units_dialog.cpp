@@ -515,22 +515,89 @@ units_dialog& units_dialog::build_create_dialog(const std::vector<const unit_typ
 		return type->race()->plural_name();
 	};
 
-	set_title(_("Create Unit"));
-	set_ok_label(_("Create"));
-	set_help_topic("..units");
-	show_gender(true);
-	show_variations(true);
-	set_types(types_list);
-	set_row_num(types_list.size());
-	hide_all_headers();
-	show_header(0);
-	show_header(1);
-	set_column_generator("unit_name", types_list, type_gen);
-	set_column_generator("unit_details", types_list, race_gen);
-	set_translatable_sorter(0, types_list, type_gen);
-	set_translatable_sorter(1, types_list, race_gen);
+	return units_dialog{}
+		.set_title(_("Create Unit"))
+		.set_ok_label(_("Create"))
+		.set_help_topic("..units")
+		.show_gender(true)
+		.show_variations(true)
+		.set_types(types_list)
+		.set_row_num(types_list.size())
+		.hide_all_headers()
+		.show_header(0)
+		.show_header(1)
+		.set_column_generator("unit_name", types_list, type_gen)
+		.set_column_generator("unit_details", types_list, race_gen)
+		.set_translatable_sorter(0, types_list, type_gen)
+		.set_translatable_sorter(1, types_list, race_gen);
+}
 
-	return *this;
+units_dialog& units_dialog::build_unit_list_dialog(const std::vector<unit_const_ptr>& unit_list)
+{
+	return units_dialog{}
+		.set_title(_("Unit List"))
+		.set_ok_label(_("Scroll To"))
+		.show_rename_option(true)
+		.set_help_topic("..units")
+		.set_units(unit_list)
+		.set_column_generator("unit_name", unit_list, [&](const auto& unit) {
+			return !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
+		}, true)
+		.set_column_generator("unit_details", unit_list, [&](const auto& unit) {
+			return unit->type_name().str();
+		}, true)
+		.set_column_generator("unit_level", unit_list, [&](const auto& unit) {
+			return unit_helper::format_level_string(unit->level(), true);
+		})
+		.set_column_generator("unit_moves", unit_list, [&](const auto& unit) {
+			return unit_helper::format_movement_string(unit->movement_left(), unit->total_movement());
+		})
+		.set_column_generator("unit_hp", unit_list, [&](const auto& unit) {
+			return markup::span_color(unit->hp_color(), unit->hitpoints(), "/", unit->max_hitpoints());
+		})
+		.set_column_generator("unit_experience",  unit_list, [&](const auto& unit) {
+			std::stringstream exp_str;
+			if(unit->can_advance()) {
+				exp_str << unit->experience() << "/" << unit->max_experience();
+			} else {
+				exp_str << font::unicode_en_dash;
+			}
+			return markup::span_color(unit->xp_color(), exp_str.str());
+		})
+		.set_column_generator("unit_status", unit_list, [&](const auto& unit) {
+			// Status
+			if(unit->get_state(unit::STATE_PETRIFIED)) {
+				return "misc/petrified.png";
+			}
+
+			if(unit->get_state(unit::STATE_POISONED)) {
+				return "misc/poisoned.png";
+			}
+
+			if(unit->get_state(unit::STATE_SLOWED)) {
+				return "misc/slowed.png";
+			}
+
+			if(unit->invisible(unit->get_location(), false)) {
+				return "misc/invisible.png";
+			}
+
+			return "";
+		})
+		.set_column_generator("unit_traits",  unit_list, [&](const auto& unit) {
+			return utils::join(unit->trait_names(), ", ");
+		}, true)
+		.set_sorter(2, [&](const int i) {
+			const unit& u = *unit_list[i];
+			return std::tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
+		})
+		.set_sorter(3, [&](const int i) { return unit_list[i]->movement_left(); })
+		.set_sorter(4, [&](const int i) { return unit_list[i]->hitpoints(); })
+		.set_sorter(5, [&](const int i) {
+			// this allows 0/35, 0/100 etc to be sorted
+			// also sorts 23/35 before 0/35, after which 0/100 comes
+			return unit_list[i]->experience() + unit_list[i]->max_experience();
+		});
 }
 
 } // namespace dialogs
