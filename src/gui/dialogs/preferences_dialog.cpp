@@ -842,7 +842,7 @@ void preferences_dialog::initialize_callbacks()
 	filter.set_text_changed_callback(std::bind(&preferences_dialog::hotkey_filter_callback, this));
 
 	// Action column
-	hotkey_list.register_translatable_sorting_option(0, [this](const int i) { return visible_hotkeys_[i]->description.str(); });
+	hotkey_list.register_sorting_option(0, [this](const int i) { return visible_hotkeys_[i]->description; });
 
 	// Hotkey column
 	hotkey_list.register_sorting_option(1, [this](const int i) { return hotkey::get_names(visible_hotkeys_[i]->id); });

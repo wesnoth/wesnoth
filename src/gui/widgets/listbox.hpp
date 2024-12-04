@@ -254,21 +254,33 @@ public:
 
 	void order_by(const generator_base::order_func& func);
 
-	void set_column_order(unsigned col, const generator_sort_array& func);
+private:
+	void set_column_order(unsigned col, generator_sort_array&& func);
 
+	struct sort_helper
+	{
+		template<typename T>
+		static bool less(const T& lhs, const T& rhs) { return lhs < rhs; }
+
+		/** Performs case-insensitive comparison using the current locale. */
+		static bool less(const t_string& lhs, const t_string& rhs);
+
+		template<typename T>
+		static bool more(const T& lhs, const T& rhs) { return lhs > rhs; }
+
+		/** Performs case-insensitive comparison using the current locale. */
+		static bool more(const t_string& lhs, const t_string& rhs);
+	};
+
+public:
 	template<typename Func>
 	void register_sorting_option(const int col, const Func& f)
 	{
-		set_column_order(col, {{
-			[f](int lhs, int rhs) { return f(lhs) < f(rhs); },
-			[f](int lhs, int rhs) { return f(lhs) > f(rhs); }
-		}});
+		set_column_order(col, {
+			[f](int lhs, int rhs) { return sort_helper::less(f(lhs), f(rhs)); },
+			[f](int lhs, int rhs) { return sort_helper::more(f(lhs), f(rhs)); }
+		});
 	}
-
-	using translatable_sorter_func_t = std::function<std::string(const int)>;
-
-	/** Registers a special sorting function specifically for translatable values. */
-	void register_translatable_sorting_option(const int col, const translatable_sorter_func_t& f);
 
 	using order_pair = std::pair<int, sort_order::type>;
 

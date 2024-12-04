@@ -144,8 +144,8 @@ void unit_list::pre_show()
 		}
 	}
 
-	list.register_translatable_sorting_option(0, [this](const int i) { return unit_list_[i]->type_name().str(); });
-	list.register_translatable_sorting_option(1, [this](const int i) { return unit_list_[i]->name().str(); });
+	list.register_sorting_option(0, [this](const int i) { return unit_list_[i]->type_name(); });
+	list.register_sorting_option(1, [this](const int i) { return unit_list_[i]->name(); });
 	list.register_sorting_option(2, [this](const int i) { return unit_list_[i]->movement_left(); });
 	list.register_sorting_option(3, [this](const int i) { return unit_list_[i]->hitpoints(); });
 	list.register_sorting_option(4, [this](const int i) {
@@ -153,8 +153,8 @@ void unit_list::pre_show()
 		return std::tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
 	});
 	list.register_sorting_option(5, [this](const int i) { return unit_list_[i]->experience(); });
-	list.register_translatable_sorting_option(6, [this](const int i) {
-		return !unit_list_[i]->trait_names().empty() ? unit_list_[i]->trait_names().front().str() : ""; });
+	list.register_sorting_option(6, [this](const int i) {
+		return !unit_list_[i]->trait_names().empty() ? unit_list_[i]->trait_names().front() : t_string(); });
 
 	list_item_clicked();
 }
