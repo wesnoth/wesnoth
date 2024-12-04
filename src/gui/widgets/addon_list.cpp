@@ -375,11 +375,11 @@ void addon_list::finalize_setup()
 {
 	listbox& list = get_listbox();
 
-	list.register_translatable_sorting_option(0, [this](const int i) { return addon_vector_[i]->display_title_full(); });
+	list.register_sorting_option(0, [this](const int i) { return t_string(addon_vector_[i]->display_title_full()); });
 	list.register_sorting_option(1, [this](const int i) { return addon_vector_[i]->author; });
 	list.register_sorting_option(2, [this](const int i) { return addon_vector_[i]->size; });
 	list.register_sorting_option(3, [this](const int i) { return addon_vector_[i]->downloads; });
-	list.register_translatable_sorting_option(4, [this](const int i) { return addon_vector_[i]->display_type(); });
+	list.register_sorting_option(4, [this](const int i) { return t_string(addon_vector_[i]->display_type()); });
 
 	auto order = std::pair(0, sort_order::type::ascending);
 	list.set_active_sorting_option(order);

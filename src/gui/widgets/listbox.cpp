@@ -600,21 +600,23 @@ void listbox::order_by(const generator_base::order_func& func)
 	update_layout();
 }
 
-void listbox::set_column_order(unsigned col, const generator_sort_array& func)
+void listbox::set_column_order(unsigned col, generator_sort_array&& func)
 {
 	if(col >= orders_.size()) {
 		orders_.resize(col + 1);
 	}
 
-	orders_[col].second = func;
+	orders_[col].second = std::move(func);
 }
 
-void listbox::register_translatable_sorting_option(const int col, const translatable_sorter_func_t& f)
+bool listbox::sort_helper::less(const t_string& lhs, const t_string& rhs)
 {
-	set_column_order(col, {{
-		[f](int lhs, int rhs) { return translation::icompare(f(lhs), f(rhs)) < 0; },
-		[f](int lhs, int rhs) { return translation::icompare(f(lhs), f(rhs)) > 0; }
-	}});
+	return translation::icompare(lhs, rhs) < 0;
+}
+
+bool listbox::sort_helper::more(const t_string& lhs, const t_string& rhs)
+{
+	return translation::icompare(lhs, rhs) > 0;
 }
 
 void listbox::set_active_sorting_option(const order_pair& sort_by, const bool select_first)
