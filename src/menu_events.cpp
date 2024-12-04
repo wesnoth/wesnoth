@@ -214,8 +214,8 @@ void menu_handler::unit_list()
 			return unit_list[i]->experience() + unit_list[i]->max_experience();
 		});
 
-	if (unit_dlg.show() && unit_dlg.get_retval() == gui2::retval::OK) {
-		const map_location& loc = unit_dlg.get_unit().value()->get_location();
+	if (unit_dlg.show() && unit_dlg.is_selected()) {
+		const map_location& loc = unit_list[unit_dlg.get_selected_index()]->get_location();
 		gui_->scroll_to_tile(loc, display::WARP);
 		gui_->select_hex(loc);
 	}
@@ -374,13 +374,11 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 			return recruit->type_name() + unit_helper::format_cost_string(recruit->cost());
 		});
 
-	if(dlg.show()) {
-		const auto& type = dlg.get_type();
-		if (!type.has_value()) {
-			gui2::show_transient_message("", _("No unit recruited."));
-			return;
-		}
-		do_recruit(type.value()->id(), side_num, last_hex);
+	if(dlg.show() && dlg.is_selected()) {
+		const auto& type = recruit_list[dlg.get_selected_index()];
+		do_recruit(type->id(), side_num, last_hex);
+	} else {
+		gui2::show_transient_message("", _("No unit recruited."));
 	}
 }
 
@@ -605,7 +603,8 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		gui2::show_transient_message("", _("No unit recalled."));
 		return;
 	}
-	const unit_const_ptr sel_unit = dlg.get_unit().value();
+
+	const unit_const_ptr sel_unit = recall_list_team[dlg.get_selected_index()];
 
 
 	// we need to check if unit has a specific recall cost
@@ -884,58 +883,17 @@ type_gender_variation choose_unit()
 {
 	gui2::dialogs::units_dialog create_dlg;
 	const std::vector<const unit_type*>& types_list = unit_types.types_list();
+	gui2::dialogs::units_dialog_builder::build_create_dialog(create_dlg, types_list);
 
-	const auto type_gen = [](const auto& type) {
-		std::string type_name = type->type_name();
-		if(type_name != type->id()) {
-			type_name += " (" + type->id() + ")";
-		}
-		return type_name;
-	};
-
-	const auto race_gen = [](const auto& type) {
-		return type->race()->plural_name();
-	};
-
-	create_dlg.set_title(_("Create Unit"))
-		.set_ok_label(_("Create"))
-		.set_help_topic("..units")
-		.show_gender(true)
-		.show_variations(true)
-		.set_types(types_list)
-		.set_row_num(types_list.size())
-		.hide_all_headers()
-		.show_header(0)
-		.show_header(1)
-		.set_column_generator("unit_name", types_list, type_gen)
-		.set_column_generator("unit_details", types_list, race_gen)
-		.set_translatable_sorter(0, types_list, type_gen)
-		.set_translatable_sorter(1, types_list, race_gen);
-
-	if (!create_dlg.show()) {
-		return type_gender_variation(nullptr, unit_race::NUM_GENDERS, "");
-	}
-
-	if(!create_dlg.is_selected()) {
-		return type_gender_variation(nullptr, unit_race::NUM_GENDERS, "");
-	}
-
-	const auto& type_opt = create_dlg.get_type();
-	if(!type_opt) {
+	if (!create_dlg.show() || !create_dlg.is_selected()) {
 		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id.";
-		return type_gender_variation(static_cast<const unit_type*>(nullptr), unit_race::NUM_GENDERS, "");
+		return type_gender_variation(nullptr, unit_race::NUM_GENDERS, "");
 	}
-	const unit_type& ut = *type_opt.value();
+
+	const unit_type* ut = types_list[create_dlg.get_selected_index()];
 
 	unit_race::GENDER gender = create_dlg.gender();
-	// Do not try to set bad genders, may mess up l10n
-	// TODO: Is this actually necessary?
-	// (Maybe create_dlg can enforce proper gender selection?)
-	if(ut.genders().end() == std::find(ut.genders().begin(), ut.genders().end(), gender)) {
-		gender = ut.genders().front();
-	}
-
-	return type_gender_variation(type_opt.value(), gender, create_dlg.variation());
+	return type_gender_variation(ut, gender, create_dlg.variation());
 }
 
 /**
@@ -1079,11 +1037,12 @@ void menu_handler::continue_move(mouse_handler& mousehandler, int side_num)
 	move_unit_to_loc(i, i->get_interrupted_move(), true, side_num, mousehandler);
 }
 
-void menu_handler::move_unit_to_loc(const unit_map::iterator& ui,
-		const map_location& target,
-		bool continue_move,
-		int side_num,
-		mouse_handler& mousehandler)
+void menu_handler::move_unit_to_loc(
+	const unit_map::iterator& ui,
+	const map_location& target,
+	bool continue_move,
+	int side_num,
+	mouse_handler& mousehandler)
 {
 	assert(ui != pc_.get_units().end());
 

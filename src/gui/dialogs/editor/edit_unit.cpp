@@ -351,134 +351,137 @@ void editor_edit_unit::select_file(const std::string& default_dir, const std::st
 }
 
 void editor_edit_unit::load_unit_type() {
-	gui2::dialogs::units_dialog type_select;
-	type_select.show();
-	const auto& type_opt = type_select.get_type();
-	if (type_opt) {
-		const unit_type *type = type_opt.value();
+	units_dialog type_select;
+	const auto& all_type_list = unit_types.types_list();
+	units_dialog_builder::build_create_dialog(type_select, all_type_list);
 
-		tab_container& tabs = find_widget<tab_container>("tabs");
-		tabs.select_tab(0);
-
-		find_widget<text_box>("id_box").set_value(type->id());
-		find_widget<text_box>("name_box").set_value(type->type_name().base_str());
-		find_widget<spinner>("level_box").set_value(type->level());
-		find_widget<slider>("cost_slider").set_value(type->cost());
-		find_widget<text_box>("adv_box").set_value(utils::join(type->advances_to()));
-		find_widget<slider>("hp_slider").set_value(type->hitpoints());
-		find_widget<slider>("xp_slider").set_value(type->experience_needed());
-		find_widget<slider>("move_slider").set_value(type->movement());
-		find_widget<scroll_text>("desc_box").set_value(type->unit_description().base_str());
-		find_widget<text_box>("path_unit_image").set_value(type->image());
-		find_widget<text_box>("path_portrait_image").set_value(type->big_profile());
-
-		for (const auto& gender : type->genders())
-		{
-			if (gender == unit_race::GENDER::MALE) {
-				find_widget<toggle_button>("gender_male").set_value(true);
-			}
-
-			if (gender == unit_race::GENDER::FEMALE) {
-				find_widget<toggle_button>("gender_female").set_value(true);
-			}
-		}
-
-		set_selected_from_string(
-				find_widget<menu_button>("race_list"),
-				race_list_,
-				type->race_id());
-
-		set_selected_from_string(
-				find_widget<menu_button>("alignment_list"),
-				align_list_,
-				unit_alignments::get_string(type->alignment()));
-
-		update_image("unit_image");
-
-		tabs.select_tab(1);
-		find_widget<text_box>("path_small_profile_image").set_value(type->small_profile());
-
-		set_selected_from_string(
-				find_widget<menu_button>("movetype_list"),
-				movetype_list_,
-				type->movement_type_id());
-
-		config cfg;
-		type->movement_type().write(cfg, false);
-		movement_ = cfg.mandatory_child("movement_costs");
-		defenses_ = cfg.mandatory_child("defense");
-		resistances_ = cfg.mandatory_child("resistance");
-
-		// Overrides for resistance/defense/movement costs
-		for (unsigned i = 0; i < resistances_list_.size(); i++) {
-			if (!type->get_cfg().has_child("resistance")) {
-				break;
-			}
-
-			for (const auto& [key, _] : type->get_cfg().mandatory_child("resistance").attribute_range()) {
-				if (resistances_list_.at(i)["label"] == key) {
-					res_toggles_[i] = 1;
-				}
-			}
-		}
-
-		for (unsigned i = 0; i < defense_list_.size(); i++) {
-			if (type->get_cfg().has_child("defense")) {
-				for (const auto& [key, _] : type->get_cfg().mandatory_child("defense").attribute_range()) {
-					if (defense_list_.at(i)["label"] == key) {
-						def_toggles_[i] = 1;
-					}
-				}
-			}
-
-			if (type->get_cfg().has_child("movement_costs")) {
-				for (const auto& [key, _] : type->get_cfg().mandatory_child("movement_costs").attribute_range()) {
-					if (defense_list_.at(i)["label"] == key) {
-						move_toggles_[i] = 1;
-					}
-				}
-			}
-		}
-
-		update_resistances();
-		update_defenses();
-		update_resistances();
-
-		set_selected_from_string(
-				find_widget<menu_button>("usage_list"),
-				usage_type_list_,
-				type->usage());
-
-		update_image("small_profile_image");
-
-		tabs.select_tab(2);
-		attacks_.clear();
-		for(const auto& atk : type->attacks())
-		{
-			config attack;
-			boost::dynamic_bitset<> enabled(specials_list_.size());
-			attack["name"] = atk.id();
-			attack["description"] = atk.name().base_str();
-			attack["icon"] = atk.icon();
-			attack["range"] = atk.range();
-			attack["damage"] = atk.damage();
-			attack["number"] = atk.num_attacks();
-			attack["type"] = atk.type();
-			attacks_.push_back(std::make_pair(enabled, attack));
-		}
-
-		if (!type->attacks().empty()) {
-			selected_attack_ = 1;
-			update_attacks();
-		}
-
-		update_index();
-
-		tabs.select_tab(0);
-
-		button_state_change();
-		invalidate_layout();
+	if (!type_select.show() && !type_select.is_selected()) {
+		return;
 	}
+
+	const auto& type = all_type_list[type_select.get_selected_index()];
+
+	tab_container& tabs = find_widget<tab_container>("tabs");
+	tabs.select_tab(0);
+
+	find_widget<text_box>("id_box").set_value(type->id());
+	find_widget<text_box>("name_box").set_value(type->type_name().base_str());
+	find_widget<spinner>("level_box").set_value(type->level());
+	find_widget<slider>("cost_slider").set_value(type->cost());
+	find_widget<text_box>("adv_box").set_value(utils::join(type->advances_to()));
+	find_widget<slider>("hp_slider").set_value(type->hitpoints());
+	find_widget<slider>("xp_slider").set_value(type->experience_needed());
+	find_widget<slider>("move_slider").set_value(type->movement());
+	find_widget<scroll_text>("desc_box").set_value(type->unit_description().base_str());
+	find_widget<text_box>("path_unit_image").set_value(type->image());
+	find_widget<text_box>("path_portrait_image").set_value(type->big_profile());
+
+	for (const auto& gender : type->genders())
+	{
+		if (gender == unit_race::GENDER::MALE) {
+			find_widget<toggle_button>("gender_male").set_value(true);
+		}
+
+		if (gender == unit_race::GENDER::FEMALE) {
+			find_widget<toggle_button>("gender_female").set_value(true);
+		}
+	}
+
+	set_selected_from_string(
+			find_widget<menu_button>("race_list"),
+			race_list_,
+			type->race_id());
+
+	set_selected_from_string(
+			find_widget<menu_button>("alignment_list"),
+			align_list_,
+			unit_alignments::get_string(type->alignment()));
+
+	update_image("unit_image");
+
+	tabs.select_tab(1);
+	find_widget<text_box>("path_small_profile_image").set_value(type->small_profile());
+
+	set_selected_from_string(
+			find_widget<menu_button>("movetype_list"),
+			movetype_list_,
+			type->movement_type_id());
+
+	config cfg;
+	type->movement_type().write(cfg, false);
+	movement_ = cfg.mandatory_child("movement_costs");
+	defenses_ = cfg.mandatory_child("defense");
+	resistances_ = cfg.mandatory_child("resistance");
+
+	// Overrides for resistance/defense/movement costs
+	for (unsigned i = 0; i < resistances_list_.size(); i++) {
+		if (!type->get_cfg().has_child("resistance")) {
+			break;
+		}
+
+		for (const auto& [key, _] : type->get_cfg().mandatory_child("resistance").attribute_range()) {
+			if (resistances_list_.at(i)["label"] == key) {
+				res_toggles_[i] = 1;
+			}
+		}
+	}
+
+	for (unsigned i = 0; i < defense_list_.size(); i++) {
+		if (type->get_cfg().has_child("defense")) {
+			for (const auto& [key, _] : type->get_cfg().mandatory_child("defense").attribute_range()) {
+				if (defense_list_.at(i)["label"] == key) {
+					def_toggles_[i] = 1;
+				}
+			}
+		}
+
+		if (type->get_cfg().has_child("movement_costs")) {
+			for (const auto& [key, _] : type->get_cfg().mandatory_child("movement_costs").attribute_range()) {
+				if (defense_list_.at(i)["label"] == key) {
+					move_toggles_[i] = 1;
+				}
+			}
+		}
+	}
+
+	update_resistances();
+	update_defenses();
+	update_resistances();
+
+	set_selected_from_string(
+			find_widget<menu_button>("usage_list"),
+			usage_type_list_,
+			type->usage());
+
+	update_image("small_profile_image");
+
+	tabs.select_tab(2);
+	attacks_.clear();
+	for(const auto& atk : type->attacks())
+	{
+		config attack;
+		boost::dynamic_bitset<> enabled(specials_list_.size());
+		attack["name"] = atk.id();
+		attack["description"] = atk.name().base_str();
+		attack["icon"] = atk.icon();
+		attack["range"] = atk.range();
+		attack["damage"] = atk.damage();
+		attack["number"] = atk.num_attacks();
+		attack["type"] = atk.type();
+		attacks_.push_back(std::make_pair(enabled, attack));
+	}
+
+	if (!type->attacks().empty()) {
+		selected_attack_ = 1;
+		update_attacks();
+	}
+
+	update_index();
+
+	tabs.select_tab(0);
+
+	button_state_change();
+	invalidate_layout();
 }
 
 void editor_edit_unit::save_unit_type() {
