@@ -192,6 +192,9 @@ public:
 		return *this;
 	}
 
+	// } -------------------- BUILDERS -------------------- {
+	units_dialog& build_create_dialog(const std::vector<const unit_type*>& types_list);
+
 private:
 	std::vector<const unit_type*> unit_type_list_;
 	std::vector<unit_const_ptr> unit_list_;
@@ -237,47 +240,7 @@ private:
 
 	virtual void pre_show() override;
 	virtual void post_show() override;
-};
 
-/**
- * Builders for default dialogs
- */
-class units_dialog_builder
-{
-public:
-
-	static void build_create_dialog(
-		units_dialog& create_dlg,
-		const std::vector<const unit_type*>& types_list)
-	{
-		const auto type_gen = [](const auto& type) {
-			std::string type_name = type->type_name();
-			if(type_name != type->id()) {
-				type_name += " (" + type->id() + ")";
-			}
-			return type_name;
-		};
-
-		const auto race_gen = [](const auto& type) {
-			return type->race()->plural_name();
-		};
-
-		create_dlg
-			.set_title(_("Create Unit"))
-			.set_ok_label(_("Create"))
-			.set_help_topic("..units")
-			.show_gender(true)
-			.show_variations(true)
-			.set_types(types_list)
-			.set_row_num(types_list.size())
-			.hide_all_headers()
-			.show_header(0)
-			.show_header(1)
-			.set_column_generator("unit_name", types_list, type_gen)
-			.set_column_generator("unit_details", types_list, race_gen)
-			.set_translatable_sorter(0, types_list, type_gen)
-			.set_translatable_sorter(1, types_list, race_gen);
-	}
 };
 
 } // namespace gui2::dialogs
