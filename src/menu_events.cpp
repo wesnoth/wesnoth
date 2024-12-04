@@ -881,9 +881,9 @@ typedef std::tuple<const unit_type*, unit_race::GENDER, std::string> type_gender
  */
 type_gender_variation choose_unit()
 {
-	gui2::dialogs::units_dialog create_dlg;
 	const std::vector<const unit_type*>& types_list = unit_types.types_list();
-	gui2::dialogs::units_dialog_builder::build_create_dialog(create_dlg, types_list);
+	gui2::dialogs::units_dialog create_dlg;
+	create_dlg.build_create_dialog(types_list);
 
 	if (!create_dlg.show() || !create_dlg.is_selected()) {
 		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id.";
@@ -900,13 +900,14 @@ type_gender_variation choose_unit()
  * Creates a unit and places it on the board.
  * (Intended for use with any units created via debug mode.)
  */
-void create_and_place(game_display&,
-		const gamemap&,
-		unit_map&,
-		const map_location& loc,
-		const unit_type& u_type,
-		unit_race::GENDER gender = unit_race::NUM_GENDERS,
-		const std::string& variation = "")
+void create_and_place(
+	game_display&,
+	const gamemap&,
+	unit_map&,
+	const map_location& loc,
+	const unit_type& u_type,
+	unit_race::GENDER gender = unit_race::NUM_GENDERS,
+	const std::string& variation = "")
 {
 	synced_context::run_and_throw("debug_create_unit",
 		config {
