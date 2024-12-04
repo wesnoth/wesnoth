@@ -351,8 +351,8 @@ void editor_edit_unit::select_file(const std::string& default_dir, const std::st
 }
 
 void editor_edit_unit::load_unit_type() {
-	units_dialog type_select;
 	const auto& all_type_list = unit_types.types_list();
+	auto& type_select = units_dialog::build_create_dialog(all_type_list);
 	type_select.build_create_dialog(all_type_list);
 
 	if (!type_select.show() && !type_select.is_selected()) {
