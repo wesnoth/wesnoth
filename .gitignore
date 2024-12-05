@@ -83,6 +83,13 @@ cmake-build-release
 # KDevelop caches (KDevelop 4.3.1, KDE Development Platform 4.8.4).
 *.kate-swp
 
+# Gradle
+packaging/android/build
+packaging/android/classes
+packaging/android/compiled
+packaging/android/gen
+packaging/android/.gradle
+
 # autotools
 config.h
 config.h.in
@@ -165,6 +172,8 @@ po/**/Makefile*
 data/tools/unit_tree/**/files
 data/tools/unit_tree/**/reports
 data/tools/unit_tree/**/Locale
+data/tools/macro_reference.html
+about.wiki
 
 # doc
 doc/doxygen/html
@@ -219,6 +228,7 @@ config.h
 callgrind.out.*
 data/dist
 clean.sh
+widgets_tested.log
 
 # clangd cache
 .cache/clangd
