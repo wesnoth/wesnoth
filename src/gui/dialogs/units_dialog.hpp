@@ -160,7 +160,7 @@ public:
 		column_generators_.try_emplace(id, [&container, generator](size_t index) { return generator(container[index]); });
 		// use the generator function also as sorter function
 		if (use_as_sorter) {
-			find_widget<gui2::listbox>("recall_list").register_translatable_sorting_option(
+			find_widget<gui2::listbox>("recall_list").register_sorting_option(
 				column_generators_.size()-1,
 				[&container, generator](size_t index) { return generator(container[index]); });
 		}
@@ -187,7 +187,7 @@ public:
 	units_dialog& set_translatable_sorter(
 		const int col, const std::vector<Value>& container, const Generator& generator)
 	{
-		find_widget<gui2::listbox>("recall_list").register_translatable_sorting_option(
+		find_widget<gui2::listbox>("recall_list").register_sorting_option(
 			col, [&container, generator](size_t index) { return generator(container[index]); });
 		return *this;
 	}
