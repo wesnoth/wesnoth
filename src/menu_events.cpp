@@ -148,7 +148,8 @@ void menu_handler::unit_list()
 		unit_list.push_back(i.get_shared_ptr());
 	}
 
-	auto& unit_dlg = gui2::dialogs::units_dialog::build_unit_list_dialog(unit_list);
+	gui2::dialogs::units_dialog unit_dlg;
+	unit_dlg.build_unit_list_dialog(unit_list);
 
 	if (unit_dlg.show() && unit_dlg.is_selected()) {
 		const map_location& loc = unit_list[unit_dlg.get_selected_index()]->get_location();
@@ -818,7 +819,8 @@ typedef std::tuple<const unit_type*, unit_race::GENDER, std::string> type_gender
 type_gender_variation choose_unit()
 {
 	const auto& types_list = unit_types.types_list();
-	auto& create_dlg = gui2::dialogs::units_dialog::build_create_dialog(types_list);
+	gui2::dialogs::units_dialog create_dlg;
+	create_dlg.build_create_dialog(types_list);
 
 	if (!create_dlg.show() || !create_dlg.is_selected()) {
 		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id.";
