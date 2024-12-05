@@ -61,9 +61,6 @@
 
 #endif
 
-#ifdef __ANDROID__
-#include <SDL2/SDL_system.h>
-#endif
 
 static lg::log_domain log_filesystem("filesystem");
 #define DBG_FS LOG_STREAM(debug, log_filesystem)
@@ -728,10 +725,6 @@ void set_user_data_dir(std::string newprefdir)
 		backupprefdir = std::string(sdl_pref_path) + backupprefdir;
 		SDL_free(sdl_pref_path);
 	}
-#endif
-
-#ifdef __ANDROID__
-	backupprefdir = std::string(SDL_AndroidGetInternalStoragePath()) + "/" + backupprefdir;
 #endif
 
 #ifdef _X11
