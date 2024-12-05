@@ -9,7 +9,7 @@ for arch in "x86_64" "armeabi-v7a" "arm64-v8a" "x86"
 do
 	mkdir -p $BUILDDIR_PREFIX/wesnoth-$arch
 	pushd $BUILDDIR_PREFIX/wesnoth-$arch
-		scons -j`nproc` -Y $REPO prefix=$BUILDDIR_PREFIX/android-prefix/$arch host=android-$arch ndkdir=$NDKDIR extra_flags_config=-lm autorevision=false android_api=23 android_home=$ANDROID_HOME wesnoth
+		scons -j`nproc` -Y $REPO prefix=$BUILDDIR_PREFIX/android-prefix/$arch host=android-$arch ndkdir=$NDKDIR extra_flags_config=-lm autorevision=false android_api=23 android_home=$ANDROID_HOME native-lib
 	popd
 
 	LIBDIR=$REPO/packaging/android/app/src/main/jniLibs/$arch
