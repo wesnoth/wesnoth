@@ -22,6 +22,7 @@
 
 #include "storyscreen/parser.hpp"
 
+#include <chrono>
 #include <string>
 #include <vector>
 
@@ -99,7 +100,7 @@ public:
 	 * Delay after displaying this image and before displaying the next image,
 	 * in milliseconds.
 	 */
-	int display_delay() const
+	const std::chrono::milliseconds& display_delay() const
 	{
 		return delay_;
 	}
@@ -107,7 +108,7 @@ public:
 private:
 	std::string file_;
 	int x_, y_; // referential (non corrected) x,y
-	int delay_;
+	std::chrono::milliseconds delay_;
 	bool resize_with_background_;
 	bool centered_;
 

@@ -18,19 +18,22 @@
 
 #include "server/common/resultsets/rs_base.hpp"
 
+#include <chrono>
+
 class ban_check : public rs_base
 {
     public:
         ban_check();
-        void read(mariadb::result_set_ref rslt);
+        explicit ban_check(const mariadb::result_set& rslt);
+        void read(mariadb::result_set_ref rslt) override;
         long get_ban_type();
-        int get_ban_duration();
+        std::chrono::seconds get_ban_duration();
         int get_user_id();
         std::string get_email();
 
     private:
         long ban_type;
-        int ban_duration;
+        std::chrono::seconds ban_duration;
         int user_id;
         std::string email;
 };

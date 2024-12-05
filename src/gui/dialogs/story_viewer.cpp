@@ -378,8 +378,8 @@ void story_viewer::draw_floating_image(floating_image_list::const_iterator image
 		get_window()->queue_redraw();
 
 		// If a delay is specified, schedule the next image draw and break out of the loop.
-		const unsigned int draw_delay = floating_image.display_delay();
-		if(draw_delay != 0) {
+		const auto& draw_delay = floating_image.display_delay();
+		if(draw_delay != std::chrono::milliseconds{0}) {
 			// This must be a non-repeating timer
 			timer_id_ = add_timer(draw_delay, std::bind(&story_viewer::draw_floating_image, this, image_iter, this_part_index), false);
 			return;

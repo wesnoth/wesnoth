@@ -17,6 +17,7 @@
 
 #include "server/common/forum_user_handler.hpp"
 #include "server/wesnothd/server.hpp"
+#include "serialization/chrono.hpp"
 #include "hash.hpp"
 #include "log.hpp"
 #include "config.hpp"
@@ -99,7 +100,8 @@ std::string fuh::extract_salt(const std::string& name) {
 }
 
 void fuh::user_logged_in(const std::string& name) {
-	conn_.write_user_int("user_lastvisit", name, static_cast<int>(std::time(nullptr)));
+	auto now = chrono::serialize_timestamp(std::chrono::system_clock::now());
+	conn_.write_user_int("user_lastvisit", name, static_cast<int>(now));
 }
 
 bool fuh::user_exists(const std::string& name) {
@@ -156,14 +158,15 @@ std::string fuh::user_info(const std::string& name) {
 		throw error("No user with the name '" + name + "' exists.");
 	}
 
-	std::time_t reg_date = get_registrationdate(name);
-	std::time_t ll_date = get_lastlogin(name);
+	auto reg_date = get_registrationdate(name);
+	auto ll_date = get_lastlogin(name);
 
-	std::string reg_string = ctime(&reg_date);
+	static constexpr std::string_view format = "%a %b %d %T %Y"; // equivalent to std::ctime
+	std::string reg_string = chrono::format_local_timestamp(reg_date, format);
 	std::string ll_string;
 
-	if(ll_date) {
-		ll_string = ctime(&ll_date);
+	if(ll_date > decltype(ll_date){}) {
+		ll_string = chrono::format_local_timestamp(ll_date, format);
 	} else {
 		ll_string = "Never\n";
 	}
@@ -191,12 +194,12 @@ void fuh::db_update_addon_download_count(const std::string& instance_version, co
 	return conn_.update_addon_download_count(instance_version, id, version);
 }
 
-std::time_t fuh::get_lastlogin(const std::string& user) {
-	return std::time_t(conn_.get_user_int(db_extra_table_, "user_lastvisit", user));
+std::chrono::system_clock::time_point fuh::get_lastlogin(const std::string& user) {
+	return chrono::parse_timestamp(conn_.get_user_int(db_extra_table_, "user_lastvisit", user));
 }
 
-std::time_t fuh::get_registrationdate(const std::string& user) {
-	return std::time_t(conn_.get_user_int(db_users_table_, "user_regdate", user));
+std::chrono::system_clock::time_point fuh::get_registrationdate(const std::string& user) {
+	return chrono::parse_timestamp(conn_.get_user_int(db_users_table_, "user_regdate", user));
 }
 
 std::string fuh::get_uuid(){

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-21 11:11-0500\n"
-"PO-Revision-Date: 2024-09-28 17:17+0200\n"
+"PO-Revision-Date: 2024-11-07 21:00+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -787,15 +787,6 @@ msgstr "Souvislý houbový háj"
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
 #: data/core/terrain.cfg:1070 data/core/terrain.cfg:1090
-#, fuzzy
-#| msgid ""
-#| "editor^The overlays '^Uf' and '^Ufi' are deprecated because, although the "
-#| "graphics show an overlay with another terrain underneath, the movement "
-#| "and defense stats are purely fungus terrain, ignoring the underlying "
-#| "terrain. The recommended replacements are '^Tf' and '^Tfi' which look the "
-#| "same but have the stats implied by the graphics. For hexes where the "
-#| "stats of purely fungus are wanted, 'Tb' is a mushroom base terrain, which "
-#| "can be used with or without '^Tf' on top."
 msgid ""
 "editor^The overlays ‘^Uf’ and ‘^Ufi’ are deprecated because, although the "
 "graphics show an overlay with another terrain underneath, the movement and "
@@ -3297,7 +3288,7 @@ msgstr "Potvrdit"
 #. [label]
 #: data/gui/themes/default/window/depcheck_confirm_change.cfg:96
 msgid "Would you like to apply the changes?"
-msgstr "Chcete skutečně uložit provedené změny?"
+msgstr "Chceš použít provedené změny?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -4096,8 +4087,6 @@ msgstr "Otevřít externě"
 
 #. [button]: id=open_ext
 #: data/gui/themes/default/window/file_dialog.cfg:321
-#, fuzzy
-#| msgid "Open selected using platform's default applications"
 msgid "Open selected using platform’s default applications"
 msgstr "Otevřít vybraný pomocí výchozích programů platformy"
 
@@ -4479,19 +4468,15 @@ msgstr "Nahlásit problém"
 
 #. [label]
 #: data/gui/themes/default/window/game_version.cfg:322
-#, fuzzy
-#| msgid ""
-#| "<i><span font_family='DejaVu Sans'>➤</span> Copy a full report here:</i>"
 msgid "<i><span font_family='DejaVu Sans'>➤</span> View Game Manual:</i>"
 msgstr ""
-"<i><span font_family='DejaVu Sans'>➤</span> Celou zprávu si můžeš zkopírovat "
-"zde:</i>"
+"<i><span font_family='DejaVu Sans'>➤</span> Podívat se na herní příručku:</i>"
 
 #. [button]: id=view_manual
 #. button to open the game manual in the platform's browser.
 #: data/gui/themes/default/window/game_version.cfg:335
 msgid "View Manual"
-msgstr ""
+msgstr "Podívat se na příručku"
 
 #. [label]
 #: data/gui/themes/default/window/game_version.cfg:343
@@ -5570,8 +5555,8 @@ msgid ""
 "The server will run as a background process until all users have "
 "disconnected. Do you wish to continue?"
 msgstr ""
-"Pokud chcete hostovat síťovou hru, musíte spustit instanci serveru. Server "
-"poběží na pozadí dokud se všichni uživatelé neodpojí. Přejete si pokračovat?"
+"Pokud chceš hostovat síťovou hru, musíš spustit instanci serveru. Server "
+"poběží na pozadí, dokud se všichni uživatelé neodpojí. Přeješ si pokračovat?"
 
 #. [button]: id=select_leader
 #: data/gui/themes/default/window/mp_join_game.cfg:71
@@ -5708,12 +5693,12 @@ msgstr "Přihlas se na oficiální herní server Wesnothu"
 
 #. [widget]: id=name
 #: data/gui/themes/default/window/mp_method_selection.cfg:247
-#, fuzzy
-#| msgid "Join Official Server"
 msgid ""
 "Join\n"
 "Official Server"
-msgstr "Připoj se na oficiální server"
+msgstr ""
+"Připojit se\n"
+"na oficiální server"
 
 #. [column]
 #: data/gui/themes/default/window/mp_method_selection.cfg:258
@@ -5722,12 +5707,12 @@ msgstr "Připoj se na jiný server"
 
 #. [widget]: id=name
 #: data/gui/themes/default/window/mp_method_selection.cfg:267
-#, fuzzy
-#| msgid "Connect to Server"
 msgid ""
 "Connect to\n"
 "Server"
-msgstr "Připoj se na server"
+msgstr ""
+"Připojit se\n"
+"na server"
 
 #. [column]
 #: data/gui/themes/default/window/mp_method_selection.cfg:278
@@ -5736,12 +5721,12 @@ msgstr "Hostuj hru dedikovaným serverem"
 
 #. [widget]: id=name
 #: data/gui/themes/default/window/mp_method_selection.cfg:287
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid ""
 "Host Networked\n"
 "Game"
-msgstr "Hostuj síťovou hru"
+msgstr ""
+"Hostit\n"
+"síťovou hru"
 
 #. [column]
 #: data/gui/themes/default/window/mp_method_selection.cfg:298
@@ -5942,7 +5927,7 @@ msgstr "Smazat automatické uložení na konci scénářů"
 msgid ""
 "Delete previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr ""
-"Při jakékoliv výhře a při prohře ve hře více hráčů smazat všechny dosavadní "
+"Při jakékoliv výhře a při prohře ve hře více hráčů smazat všechna dosavadní "
 "automatická uložení"
 
 #. [column]
@@ -6244,7 +6229,7 @@ msgstr "Pozastavit hudbu, když běží na pozadí"
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
 #: data/gui/themes/default/window/preferences/04_sound.cfg:83
 msgid "Pause the music when you switch to any other window"
-msgstr "Pozastavit hudbu, když se přepnete do jiného okna"
+msgstr "Pozastavit hudbu, když se přepneš do jiného okna"
 
 #. [column]
 #: data/gui/themes/default/window/preferences/04_sound.cfg:104
@@ -6329,7 +6314,7 @@ msgstr "Přiřadit čas k chatové zprávě"
 #. [toggle_button]: id=remember_password
 #: data/gui/themes/default/window/preferences/05_multiplayer.cfg:69
 msgid "Uncheck to delete the saved password (on exit)"
-msgstr "Odklikněte pro smazání uložených hesel (při ukončení programu)"
+msgstr "Odklikni pro smazání uloženého hesla (při ukončení programu)"
 
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/themes/default/window/preferences/05_multiplayer.cfg:84
@@ -6339,7 +6324,7 @@ msgstr "Přijímat šeptání jen od přátel"
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/themes/default/window/preferences/05_multiplayer.cfg:85
 msgid "Only accept whisper messages from people on your friends list"
-msgstr "Přijímat soukromé zprávy pouze od lidí ve vašem seznamu přátel"
+msgstr "Přijímat soukromé zprávy pouze od lidí ve tvém seznamu přátel"
 
 #. [toggle_button]: id=lobby_joins_none
 #: data/gui/themes/default/window/preferences/05_multiplayer.cfg:101
@@ -7086,8 +7071,6 @@ msgstr[1] "$num vteřiny"
 msgstr[2] "$num vteřin"
 
 #: src/gui/core/canvas.cpp:263
-#, fuzzy
-#| msgid "Image doesn't fit on canvas."
 msgid "Image doesn’t fit on canvas."
 msgstr "Obrázek se nevejde na plátno."
 
@@ -7107,21 +7090,15 @@ msgid "No grid defined."
 msgstr "Není definována žádná mřížka."
 
 #: src/gui/core/window_builder.cpp:201
-#, fuzzy
-#| msgid "Grid '$grid' row $row must have at least one column."
 msgid "Grid ‘$grid’ row $row must have at least one column."
-msgstr "Řádek $row mřížky '$grid' musí mít alespoň jeden sloupec."
+msgstr "Řádek $row mřížky „$grid“ musí mít alespoň jeden sloupec."
 
 #: src/gui/core/window_builder.cpp:213
-#, fuzzy
-#| msgid ""
-#| "Grid '$grid' row $row has a differing number of columns ($found found, "
-#| "$expected expected)"
 msgid ""
 "Grid ‘$grid’ row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
-"Řádek $row mřížky '$grid' se liší v počtu sloupců (nalezeno $found, "
+"Řádek $row mřížky „$grid“ se liší v počtu sloupců (nalezeno $found, "
 "očekáváno $expected)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:137
@@ -7189,10 +7166,8 @@ msgid "addons_of_type^Cores"
 msgstr "Jádra"
 
 #: src/gui/dialogs/addon/manager.cpp:162
-#, fuzzy
-#| msgid "addons_of_type^Cores"
 msgid "addons_of_type^Themes"
-msgstr "Jádra"
+msgstr "Motivy"
 
 #: src/gui/dialogs/addon/manager.cpp:163
 msgid "addons_of_type^Resources"
@@ -7579,7 +7554,7 @@ msgstr "Média"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:182
 msgid "Theme"
-msgstr ""
+msgstr "Motiv"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:183
 msgid "Other"
@@ -7642,10 +7617,6 @@ msgid "Choose File"
 msgstr "Vybrat soubor"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:320
-#, fuzzy
-#| msgid ""
-#| "This file is outside Wesnoth's data dirs. Do you wish to copy it into "
-#| "your add-on?"
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
@@ -7981,8 +7952,6 @@ msgid "Downloading lobby data"
 msgstr "Stahování dat čekárny"
 
 #: src/gui/dialogs/lua_interpreter.cpp:628
-#, fuzzy
-#| msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgid "The lua console can only be used in debug mode! (Run ‘:debug’ first)"
 msgstr ""
 "Konzoli lua lze použít pouze v režimu ladění! (Nejdřív spusť „:debug“.)"
@@ -8017,11 +7986,6 @@ msgid "Incompatible User-made Content"
 msgstr "Nekompatibilní uživatelský obsah"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:173
-#, fuzzy
-#| msgid ""
-#| "This game cannot be joined because the host has out-of-date add-ons that "
-#| "are incompatible with your version. You might wish to suggest that the "
-#| "host's add-ons be updated."
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host’s "
@@ -8041,9 +8005,9 @@ msgid ""
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
-"Tato hra vyžaduje, aby bylo nainstalováno, nebo aktualizováno jedno či více "
-"uživatelských rožšířeních.\n"
-"Chcete je nainstalovat nyní?"
+"Tato hra vyžaduje instalaci nebo aktualizaci jednoho či více uživatelských "
+"rozšíření, aby ses mohl připojit.\n"
+"Chceš je zkusit nainstalovat?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:366
 msgid "Games: showing $num_shown out of $num_total"
@@ -8098,9 +8062,6 @@ msgid "lobby"
 msgstr "čekárna"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:833
-#, fuzzy
-#| msgid ""
-#| "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgid ""
 "This game doesn’t allow observers. Observe using moderator rights anyway?"
 msgstr "Tato hra nepovoluje pozorovatele. Sledovat pomocí práv moderátora?"
@@ -8230,10 +8191,8 @@ msgid "Game"
 msgstr "Hra"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:310
-#, fuzzy
-#| msgid "(Invalid)"
 msgid "Invalid Color"
-msgstr "(Invalid)"
+msgstr "Neplatná barva"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:517
 msgid "Waiting for players to choose factions..."
@@ -8274,17 +8233,17 @@ msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"\"<b>$hotkey_sequence|</b>\" je používán při \"<b>$old_hotkey_action|</"
-"b>\".\n"
-"Přejete si ji přiřadit k \"<b>$new_hotkey_action|</b>\"?"
+"„<b>$hotkey_sequence|</b>“ se používá pro akci „<b>$old_hotkey_action|</"
+"b>“.\n"
+"Chceš ji přeřadit k akci „<b>$new_hotkey_action|</b>“?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:982
 msgid "Reassign Hotkey"
-msgstr "Znovupřiřadit klávesovou zkratku"
+msgstr "Přeřadit klávesovou zkratku"
 
 #: src/gui/dialogs/preferences_dialog.cpp:999
 msgid "All hotkeys have been reset to their default values."
-msgstr "Všechny zkratky byly nastaveny na své výchozí hodnoty"
+msgstr "Všechny zkratky byly nastaveny na své výchozí hodnoty."
 
 #: src/gui/dialogs/preferences_dialog.cpp:999
 msgid "Hotkeys Reset"
@@ -8465,10 +8424,8 @@ msgstr ""
 "přijímat zprávy, napiš <i>/ignore $name</i>."
 
 #: src/gui/widgets/helper.cpp:122
-#, fuzzy
-#| msgid "Mandatory widget '$id' hasn't been defined."
 msgid "Mandatory widget ‘$id’ hasn't been defined."
-msgstr "Povinný ovládací prvek '$id' nebyl definován."
+msgstr "Povinný ovládací prvek „$id“ nebyl definován."
 
 #: src/gui/widgets/label.cpp:141 src/gui/widgets/multiline_text.cpp:427
 msgid "Open link?"
@@ -8479,13 +8436,10 @@ msgid "Copied link!"
 msgstr "Odkaz zkopírován!"
 
 #: src/gui/widgets/listbox.cpp:724 src/gui/widgets/multi_page.cpp:219
-#, fuzzy
-#| msgid ""
-#| "'list_data' must have the same number of columns as the 'list_definition'."
 msgid ""
 "‘list_data’ must have the same number of columns as the ‘list_definition’."
 msgstr ""
-"'list_data' musí obsahovat stejný počet sloupců jako 'list_definition'."
+"„list_data“ musí obsahovat stejný počet sloupců jako „list_definition“."
 
 #: src/gui/widgets/listbox.cpp:769 src/gui/widgets/listbox.cpp:812
 #: src/gui/widgets/listbox.cpp:855 src/gui/widgets/scrollbar_panel.cpp:90
@@ -8494,22 +8448,20 @@ msgstr "Nebyl definován žádný seznam."
 
 #: src/gui/widgets/listbox.cpp:774 src/gui/widgets/listbox.cpp:817
 #: src/gui/widgets/listbox.cpp:860
-#, fuzzy
-#| msgid "A 'list_definition' should contain one row."
 msgid "A ‘list_definition’ should contain one row."
-msgstr "Pro 'list_definition' je vyžadována alespoň jedna řádka."
+msgstr "Pro „list_definition“ je vyžadována alespoň jedna řádka."
 
 #: src/gui/widgets/multi_page.cpp:195
 msgid "No page defined."
 msgstr "Není definována žádná stránka."
 
 #: src/gui/widgets/multiline_text.cpp:432
-#, fuzzy
-#| msgid "Opening links is not supported, contact your packager"
 msgid ""
 "Opening links is not supported, contact your packager. Link URL has been "
 "copied to the clipboard."
-msgstr "Otevírání odkazů není podporováno, kontaktuj správce svého balíčku"
+msgstr ""
+"Otevírání odkazů není podporováno, kontaktuj správce svého balíčku. URL "
+"odkaz byl zkopírován do schránky."
 
 #: src/gui/widgets/multimenu_button.cpp:171
 msgid "multimenu^All Selected"
@@ -8536,7 +8488,7 @@ msgstr "Je třeba alespoň jedna souběžná věc."
 
 #: src/gui/widgets/rich_label.cpp:253
 msgid "corrupted original file"
-msgstr ""
+msgstr "poškozený původní soubor"
 
 #: src/gui/widgets/size_lock.cpp:88
 msgid "Invalid size."
@@ -8547,8 +8499,6 @@ msgid "No widget defined."
 msgstr "Nebyl definován žádný widget."
 
 #: src/gui/widgets/slider.cpp:356
-#, fuzzy
-#| msgid "The number of value_labels and values don't match."
 msgid "The number of value_labels and values don’t match."
 msgstr "Nesouhlasí počet value_labels a values."
 
@@ -8570,10 +8520,8 @@ msgstr "Pro stromové zobrazení nejsou stanoveny žádné uzly."
 
 # Vzorná kryptohláška!
 #: src/gui/widgets/tree_view.cpp:325
-#, fuzzy
-#| msgid "[node]id 'root' is reserved for the implementation."
 msgid "[node]id ‘root’ is reserved for the implementation."
-msgstr "[node]id 'root' je vyhrazen implementací."
+msgstr "[node]id „root“ je vyhrazen implementací."
 
 #: src/gui/widgets/tree_view_node.cpp:106
 msgid "Unknown builder id for tree view node."
@@ -8625,23 +8573,17 @@ msgid "Abilities"
 msgstr "Schopnosti"
 
 #: src/gui/widgets/window.cpp:293
-#, fuzzy
-#| msgid "Linked '$id' group has multiple definitions."
 msgid "Linked ‘$id’ group has multiple definitions."
-msgstr "Spojená skupina '$id' má více definicí,"
+msgstr "Spojená skupina „$id“ má více definicí."
 
 #: src/gui/widgets/window.cpp:893
-#, fuzzy
-#| msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgid "Click dismiss needs a ‘click_dismiss’ or ‘ok’ button."
 msgstr ""
 "Zavření kliknutím kamkoliv vyžaduje přítomnost parametru nebo tlačítka s id "
-"nastaveným na 'click_dismiss' nebo 'ok'."
+"nastaveným na „click_dismiss“ nebo „ok“."
 
 #: src/gui/widgets/window.cpp:918 src/gui/widgets/window.cpp:955
 #: src/tests/gui/test_gui2.cpp:742
-#, fuzzy
-#| msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgid "Failed to show a dialog, which doesn’t fit on the screen."
 msgstr "Nebyl zobrazen dialog, který se nevejde na obrazovku."
 
@@ -8810,10 +8752,8 @@ msgid "Save Map"
 msgstr "Uložit mapu"
 
 #: src/hotkey/hotkey_command.cpp:110
-#, fuzzy
-#| msgid "Loading..."
 msgid "Load Turn..."
-msgstr "Načítám..."
+msgstr "Nahrát kolo..."
 
 #: src/hotkey/hotkey_command.cpp:112
 msgid "Repeat Recruit"
@@ -9097,9 +9037,9 @@ msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
-"Levým tlačítkem myši vybírá nebo odebírá s Ctrl, pravé vyvolá kontextové "
-"menu. Podržte Shift pro výběr shodných políček se stejným terénem pomocí "
-"magické hůlky."
+"Levé tlačítko myši vybírá nebo pomocí klávesy Ctrl výběr ruší, pravé vyvolá "
+"souvisící nabídku. Podržením klávesy Shift vybíráš kouzelnou hůlkou políčka "
+"se stejným terénem."
 
 #: src/hotkey/hotkey_command.cpp:205
 msgid "Selection Tool"
@@ -9111,9 +9051,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
-"Levým tlačítkem myši zobrazíte výběr hráčů, pravým vymažete. Tlačítka čísel "
-"posunují k výchozí pozici, alt+čísla nastavují výchozí pozice na pozice "
-"kurzoru, pomocí delete se mažou."
+"Levé tlačítko myši umístí vybraného hráče, pravé umístění smaže. Klávesy "
+"s čísly přejíždí na startovní pozici, Alt + číslo nastaví příslušnou "
+"startovní pozici pod kurzor, Delete maže."
 
 #: src/hotkey/hotkey_command.cpp:206
 msgid "Starting Positions Tool"
@@ -9132,8 +9072,8 @@ msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
 msgstr ""
-"Levým tlačítkem myši nastavíte novou jednotku nebo ji tažením přesunete, "
-"pravým vyvoláte kontextové menu. Musí být vybrána strana."
+"Levým tlačítkem myši umístíš novou jednotku nebo ji tažením přesuneš, pravým "
+"vyvoláš souvisící nabídku. Musí být vybrána strana."
 
 #: src/hotkey/hotkey_command.cpp:208
 msgid "Unit Tool"
@@ -9152,8 +9092,8 @@ msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
 msgstr ""
-"Levým tlačítkem myši nastavíte vlastnění vesnice vybrané straně, pravým "
-"vymažete. Musí být vybrána strana."
+"Levým tlačítkem myši nastavíš vlastnictví vesnice vybrané straně, pravým "
+"vlastnictví zrušíš. Musí být vybrána strana."
 
 #: src/hotkey/hotkey_command.cpp:210
 msgid "Village Tool"
@@ -9247,7 +9187,7 @@ msgstr "Kopírovat"
 #: src/hotkey/hotkey_command.cpp:238
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
-msgstr "Levým tlačítkem vložíte ze schránky, pravým vyvoláte kontextové menu."
+msgstr "Levým tlačítkem vložíš ze schránky, pravým vyvoláš souvisící nabídku."
 
 #: src/hotkey/hotkey_command.cpp:238
 msgid "Paste"
@@ -9532,23 +9472,17 @@ msgstr ""
 
 #: src/wml_exception.cpp:68
 msgid "When reporting the bug please include the following error message :"
-msgstr "Při oznamování chyby prosím uveďte následující chybovou zprávu :"
+msgstr "Při oznamování chyby prosím uveď následující chybovou zprávu :"
 
 #: src/wml_exception.cpp:89
-#, fuzzy
-#| msgid ""
-#| "In section ‘[$section|]’ where ‘$primary_key|’ = $primary_value’ the "
-#| "mandatory key ‘$key|’ isn't set."
 msgid ""
 "In section ‘[$section|]’ where ‘$primary_key|’ = ‘$primary_value’ the "
 "mandatory key ‘$key|’ isn’t set."
 msgstr ""
-"V sekci „[$section|]“, kde „$primary_key| = $primary_value“, není nastaven "
+"V sekci „[$section|]“, kde „$primary_key|“ = „$primary_value“, není nastaven "
 "povinný klíč „$key|“."
 
 #: src/wml_exception.cpp:92
-#, fuzzy
-#| msgid "In section ‘[$section|]’ the mandatory key ‘$key|’ isn't set."
 msgid "In section ‘[$section|]’ the mandatory key ‘$key|’ isn’t set."
 msgstr "V sekci „[$section|]“ není nastaven povinný klíč „$key|“."
 

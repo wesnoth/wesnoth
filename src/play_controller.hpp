@@ -25,6 +25,7 @@
 #include "persist_manager.hpp"
 #include "tod_manager.hpp"
 #include "game_state.hpp"
+#include "utils/optimer.hpp"
 #include "utils/optional_fwd.hpp"
 
 #include <set>
@@ -208,6 +209,7 @@ public:
 	config to_config() const;
 
 	bool is_skipping_replay() const { return skip_replay_; }
+	bool is_skipping_actions() const;
 	void toggle_skipping_replay();
 	void do_autosave();
 
@@ -273,7 +275,7 @@ public:
 
 	bool can_use_synced_wml_menu() const;
 	std::set<std::string> all_players() const;
-	int ticks() const { return ticks_; }
+	const auto& timer() const { return timer_; }
 	game_display& get_display() override;
 
 	void update_savegame_snapshot() const;
@@ -334,7 +336,7 @@ public:
 	/** returns 0 if no such team was found. */
 	virtual int find_viewing_side() const = 0;
 private:
-	const int ticks_;
+	utils::ms_optimer timer_;
 
 protected:
 	//gamestate

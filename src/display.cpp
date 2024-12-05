@@ -72,6 +72,7 @@
 #include <windows.h>
 #endif
 
+using namespace std::chrono_literals;
 // Includes for bug #17573
 
 static lg::log_domain log_display("display");
@@ -286,12 +287,12 @@ void display::reinit_flags_for_team(const team& t)
 	for(const std::string& item : items) {
 		const std::vector<std::string>& sub_items = utils::split(item, ':');
 		std::string str = item;
-		int time = 100;
+		auto time = 100ms;
 
 		if(sub_items.size() > 1) {
 			str = sub_items.front();
 			try {
-				time = std::max<int>(1, std::stoi(sub_items.back()));
+				time = std::max(1ms, std::chrono::milliseconds{std::stoi(sub_items.back())});
 			} catch(const std::invalid_argument&) {
 				ERR_DP << "Invalid time value found when constructing flag for side " << t.side() << ": " << sub_items.back();
 			}
@@ -306,8 +307,9 @@ void display::reinit_flags_for_team(const team& t)
 	animated<image::locator>& f = flags_[t.side() - 1];
 	f = temp_anim;
 	auto time = f.get_end_time();
-	if (time > 0) {
-		f.start_animation(randomness::rng::default_instance().get_random_int(0, time-1), true);
+	if (time > 0ms) {
+		int start_time = randomness::rng::default_instance().get_random_int(0, time.count() - 1);
+		f.start_animation(std::chrono::milliseconds{start_time}, true);
 	} else {
 		// this can happen if both flag and game_config::images::flag are empty.
 		ERR_DP << "missing flag for side " << t.side();
@@ -1289,7 +1291,6 @@ void display::drawing_buffer_commit()
 
 static unsigned calculate_fps(std::chrono::milliseconds frametime)
 {
-	using namespace std::chrono_literals;
 	return frametime > 0ms ? 1s / frametime : 999u;
 }
 
@@ -1306,7 +1307,6 @@ void display::update_fps_label()
 
 	const auto [min_iter, max_iter] = std::minmax_element(frametimes_.begin(), frametimes_.end());
 
-	using namespace std::chrono_literals;
 	const std::chrono::milliseconds render_avg = std::accumulate(frametimes_.begin(), frametimes_.end(), 0ms) / frametimes_.size();
 
 	// NOTE: max FPS corresponds to the *shortest* time between frames (that is, min_iter)
@@ -1511,22 +1511,17 @@ void display::set_diagnostic(const std::string& msg)
 
 void display::update_fps_count()
 {
-	using std::chrono::duration_cast;
-	using std::chrono::steady_clock;
-
-	auto now = steady_clock::now();
+	auto now = std::chrono::steady_clock::now();
 	if(last_frame_finished_) {
-		frametimes_.push_back(duration_cast<std::chrono::milliseconds>(now - *last_frame_finished_));
+		frametimes_.push_back(std::chrono::duration_cast<std::chrono::milliseconds>(now - *last_frame_finished_));
 	}
 
 	last_frame_finished_ = now;
 	++fps_counter_;
 
-	const auto current_second = duration_cast<std::chrono::seconds>(now.time_since_epoch());
-	if(current_second != fps_start_) {
-		fps_start_ = current_second;
-		fps_actual_ = fps_counter_;
-		fps_counter_ = 0;
+	if(now - fps_start_ >= 1s) {
+		fps_start_ = now;
+		fps_actual_ = std::exchange(fps_counter_, 0);
 	}
 }
 
@@ -1926,20 +1921,21 @@ void display::scroll_to_xy(const point& screen_coordinates, SCROLL_TYPE scroll_t
 	const double dist_total = std::hypot(move.x, move.y);
 	double dist_moved = 0.0;
 
-	int t_prev = SDL_GetTicks();
+	using fractional_seconds = std::chrono::duration<double>;
+	auto prev_time = std::chrono::steady_clock::now();
 
 	double velocity = 0.0;
 	while (dist_moved < dist_total) {
 		events::pump();
 
-		int t = SDL_GetTicks();
-		double dt = (t - t_prev) / 1000.0;
-		if (dt > 0.200) {
-			// Do not skip too many frames on slow PCs
-			dt = 0.200;
-		}
-		t_prev = t;
+		auto time = std::chrono::steady_clock::now();
+		auto dt = std::chrono::duration_cast<fractional_seconds>(time - prev_time);
 
+		// Do not skip too many frames on slow PCs
+		dt = std::min<fractional_seconds>(dt, 200ms);
+		prev_time = time;
+
+		const double dt_as_double = dt.count();
 		const double accel_time = 0.3 / turbo_speed(); // seconds until full speed is reached
 		const double decel_time = 0.4 / turbo_speed(); // seconds from full speed to stop
 
@@ -1952,14 +1948,14 @@ void display::scroll_to_xy(const point& screen_coordinates, SCROLL_TYPE scroll_t
 		double stop_time = velocity / decel;
 		double dist_stop = dist_moved + velocity*stop_time - 0.5*decel*stop_time*stop_time;
 		if (dist_stop > dist_total || velocity > velocity_max) {
-			velocity -= decel * dt;
+			velocity -= decel * dt_as_double;
 			if (velocity < 1.0) velocity = 1.0;
 		} else {
-			velocity += accel * dt;
+			velocity += accel * dt_as_double;
 			if (velocity > velocity_max) velocity = velocity_max;
 		}
 
-		dist_moved += velocity * dt;
+		dist_moved += velocity * dt_as_double;
 		if (dist_moved > dist_total) dist_moved = dist_total;
 
 		point next_pos(
@@ -2209,10 +2205,10 @@ void display::fade_tod_mask(
 	tod_hex_mask1 = image::get_texture(old_mask, image::HEXED);
 	tod_hex_mask2 = image::get_texture(new_mask, image::HEXED);
 
-	int duration = 300 / turbo_speed();
-	int start = SDL_GetTicks();
-	for(int now = start; now < start + duration; now = SDL_GetTicks()) {
-		float prop_f = float(now - start) / float(duration);
+	auto duration = 300ms / turbo_speed();
+	auto start = std::chrono::steady_clock::now();
+	for(auto now = start; now < start + duration; now = std::chrono::steady_clock::now()) {
+		float prop_f = float((now - start).count()) / float(duration.count());
 		uint8_t p = float_to_color(prop_f);
 		tod_hex_alpha2 = p;
 		tod_hex_alpha1 = ~p;
@@ -2224,9 +2220,9 @@ void display::fade_tod_mask(
 	tod_hex_mask2.reset();
 }
 
-void display::fade_to(const color_t& c, int duration)
+void display::fade_to(const color_t& c, const std::chrono::milliseconds& duration)
 {
-	uint32_t start = SDL_GetTicks();
+	auto start = std::chrono::steady_clock::now();
 	color_t fade_start = fade_color_;
 	color_t fade_end = c;
 
@@ -2245,8 +2241,8 @@ void display::fade_to(const color_t& c, int duration)
 	}
 
 	// Smoothly blend and display
-	for(uint32_t now = start; now < start + duration; now = SDL_GetTicks()) {
-		float prop_f = float(now - start) / float(duration);
+	for(auto now = start; now < start + duration; now = std::chrono::steady_clock::now()) {
+		float prop_f = float((now - start).count()) / float(duration.count());
 		uint8_t p = float_to_color(prop_f);
 		fade_color_ = fade_start.smooth_blend(fade_end, p);
 		draw_manager::invalidate_region(map_outside_area());

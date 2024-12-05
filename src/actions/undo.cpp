@@ -335,7 +335,6 @@ void undo_list::undo()
 	// Get the action to undo. (This will be placed on the redo stack, but
 	// only if the undo is successful.)
 	auto action = std::move(undos_.back());
-	undos_.pop_back();
 	if (undo_action* undoable_action = dynamic_cast<undo_action*>(action.get()))
 	{
 		int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
@@ -348,6 +347,7 @@ void undo_list::undo()
 		resources::gameboard->unit_id_manager().set_save_id(last_unit_id - undoable_action->unit_id_diff);
 
 		// Bookkeeping.
+		undos_.pop_back();
 		redos_.emplace_back(new config());
 		resources::recorder->undo_cut(*redos_.back());
 
@@ -361,6 +361,7 @@ void undo_list::undo()
 	else
 	{
 		//ignore this action, and undo the previous one.
+		undos_.pop_back();
 		config replay_data;
 		resources::recorder->undo_cut(replay_data);
 		undo();
@@ -393,19 +394,20 @@ void undo_list::redo()
 	// Note that this might add more than one [command]
 	resources::recorder->redo(*action);
 
-	auto error_handler =  [](const std::string&  msg) {
+	auto spectator = action_spectator([](const std::string& msg)
+	{
 		ERR_NG << "Out of sync when redoing: " << msg;
 		gui2::show_transient_message(_("Redo Error"),
 					_("The redo stack is out of sync. This is most commonly caused by a corrupt save file or by faulty WML code in the scenario or era. Details:") + msg);
 
-	};
+	});
 	// synced_context::run readds the undo command with the normal
 	// undo_list::add function which clears the redo stack which would
 	// make redoing of more than one move impossible. To work around
 	// that we save redo stack here and set it later.
 	redos_list temp;
 	temp.swap(redos_);
-	synced_context::run(commandname, data, /*use_undo*/ true, /*show*/ true, error_handler);
+	synced_context::run(commandname, data, spectator);
 	temp.swap(redos_);
 
 	// Screen updates.

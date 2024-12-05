@@ -22,6 +22,7 @@ class color_range;
 #include "tstring.hpp"
 #include "game_config_view.hpp"
 
+#include <chrono>
 #include <vector>
 #include <map>
 
@@ -37,8 +38,8 @@ namespace game_config
 	extern int kill_experience;
 	extern int combat_experience;
 	extern unsigned int tile_size;
-	extern unsigned lobby_network_timer;
-	extern unsigned lobby_refresh;
+	extern std::chrono::milliseconds lobby_network_timer;
+	extern std::chrono::milliseconds lobby_refresh;
 	extern const std::string default_title_string;
 	extern std::string default_terrain;
 
@@ -58,7 +59,7 @@ namespace game_config
 	extern const int gold_carryover_percentage;
 
 	extern bool debug_lua, strict_lua, editor, ignore_replay_errors, mp_debug,
-		exit_at_end, no_delay, disable_autosave, no_addons;
+		exit_at_end, disable_autosave, no_addons;
 
 	extern bool allow_insecure;
 

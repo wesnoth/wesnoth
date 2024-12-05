@@ -24,6 +24,7 @@
 #include "replay.hpp"
 #include "resources.hpp"
 #include "gui/dialogs/multiplayer/synced_choice_wait.hpp"
+#include <chrono>
 #include <set>
 #include <map>
 #include "formula/string_utils.hpp"
@@ -37,18 +38,19 @@ static lg::log_domain log_replay("replay");
 
 namespace
 {
+	using namespace std::chrono_literals;
 	class user_choice_notifer_ingame
 	{
 		//the handle for the label on the screen -1 if not shown yet.
 		int label_id_;
 		std::string message_;
-		unsigned int start_show_;
+		std::chrono::steady_clock::time_point start_show_;
 
 	public:
 		user_choice_notifer_ingame()
 			: label_id_(-1)
 			, message_()
-			, start_show_(SDL_GetTicks() + 2000)
+			, start_show_(std::chrono::steady_clock::now() + 2000ms)
 		{
 
 		}
@@ -62,7 +64,7 @@ namespace
 
 		void update(const std::string& message)
 		{
-			if(label_id_ == -1 && SDL_GetTicks() > start_show_)
+			if(label_id_ == -1 && std::chrono::steady_clock::now() > start_show_)
 			{
 				start_show_label();
 			}
@@ -84,7 +86,7 @@ namespace
 			flabel.set_font_size(font::SIZE_LARGE);
 			flabel.set_color(font::NORMAL_COLOR);
 			flabel.set_position(area.w/2, area.h/4);
-			flabel.set_lifetime(-1);
+			flabel.set_lifetime(std::chrono::milliseconds{-1});
 			flabel.set_clip_rect(area);
 			label_id_ = font::add_floating_label(flabel);
 		}
@@ -251,7 +253,7 @@ user_choice_manager::user_choice_manager(const std::string &name, const mp_sync:
 		assert(!t.is_empty());
 		if(side != current_side_)
 		{
-			synced_context::set_is_simultaneous();
+			synced_context::block_undo();
 		}
 	}
 
@@ -453,7 +455,7 @@ namespace {
 		~ucm_process_scope() { ucm_in_proccess = false; }
 	};
 }
-void user_choice_manager::process(events::pump_info&)
+void user_choice_manager::process()
 {
 	if(!oos_ && !finished() && !ucm_in_proccess)
 	{

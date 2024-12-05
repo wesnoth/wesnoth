@@ -58,7 +58,6 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.multiplayer_turns);
 	BOOST_CHECK(!co.max_fps);
 	BOOST_CHECK(!co.nocache);
-	BOOST_CHECK(!co.nodelay);
 	BOOST_CHECK(!co.nogui);
 	BOOST_CHECK(!co.nomusic);
 	BOOST_CHECK(!co.nosound);
@@ -130,7 +129,6 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	BOOST_CHECK(!co.multiplayer_turns);
 	BOOST_CHECK(!co.max_fps);
 	BOOST_CHECK(!co.nocache);
-	BOOST_CHECK(!co.nodelay);
 	BOOST_CHECK(!co.nogui);
 	BOOST_CHECK(!co.nomusic);
 	BOOST_CHECK(!co.nosound);
@@ -196,7 +194,6 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--multiplayer",
 		"--new-widgets",
 		"--nocache",
-		"--nodelay",
 		"--nomusic",
 		"--nosound",
 		"--nogui",
@@ -279,7 +276,6 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.multiplayer_turns && *co.multiplayer_turns == "42");
 	BOOST_CHECK(co.max_fps && *co.max_fps == 100);
 	BOOST_CHECK(co.nocache);
-	BOOST_CHECK(co.nodelay);
 	BOOST_CHECK(co.nogui);
 	BOOST_CHECK(co.nomusic);
 	BOOST_CHECK(co.nosound);
@@ -346,7 +342,6 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 	BOOST_CHECK(!co.multiplayer_turns);
 	BOOST_CHECK(!co.max_fps);
 	BOOST_CHECK(!co.nocache);
-	BOOST_CHECK(!co.nodelay);
 	BOOST_CHECK(!co.nogui);
 	BOOST_CHECK(!co.nomusic);
 	BOOST_CHECK(!co.nosound);

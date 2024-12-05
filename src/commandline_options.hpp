@@ -142,8 +142,6 @@ public:
 	bool noaddons;
 	/** True if --nocache was given on the command line. Disables cache usage. */
 	bool nocache;
-	/** True if --nodelay was given on the command line. */
-	bool nodelay;
 	/** True if --nogui was given on the command line. Disables GUI. */
 	bool nogui;
 	/** True if --nobanner was given on the command line. Disables startup banner. */

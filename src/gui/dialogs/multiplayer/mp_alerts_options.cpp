@@ -76,7 +76,7 @@ window.find_widget<toggle_button>(prefs_list::pref_item_notif).set_value(prefs::
 window.find_widget<toggle_button>(prefs_list::pref_item_lobby).set_value(prefs::get().pref_item_lobby());
 
 
-void revert_to_default_pref_values(window& window)
+static void revert_to_default_pref_values(window& window)
 {
 	// clear existing preferences for MP alerts
 	prefs::get().clear_mp_alert_prefs();

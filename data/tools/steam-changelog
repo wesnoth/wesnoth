@@ -101,7 +101,7 @@ def process_changelog(file_handle, version_heading):
             if list_item:
                 indent = len(list_item.group(1))
                 if indent < LIST_ITEM_BASE_INDENT:
-                    warn(lno, "Bad base indent for list item (expected {}, got {}), list may be corrupted".format(indent, LIST_ITEM_BASE_INDENT))
+                    warn(lno, "Bad base indent for list item (expected {}, got {}), list may be corrupted".format(LIST_ITEM_BASE_INDENT, indent))
                 depth = int((indent - LIST_ITEM_BASE_INDENT) / LIST_ITEM_NESTED_INDENT + 1)
                 if depth < in_list_item:
                     # Stop current list, write it
@@ -119,7 +119,7 @@ def process_changelog(file_handle, version_heading):
                     continue
                 indent = len(list_item.group(1))
                 if indent < LIST_ITEM_BASE_INDENT + LIST_ITEM_NESTED_INDENT:
-                    warn(lno, "Bad base indent for list item continuation (expected {}, got {}), list may be corrupted".format(indent, LIST_ITEM_BASE_INDENT + LIST_ITEM_NESTED_INDENT))
+                    warn(lno, "Bad base indent for list item continuation (expected {}, got {}), list may be corrupted".format(LIST_ITEM_BASE_INDENT + LIST_ITEM_NESTED_INDENT, indent))
                 depth = int((indent - LIST_ITEM_BASE_INDENT) / LIST_ITEM_NESTED_INDENT)
                 if depth != in_list_item:
                     warn(lno, "Weird indent for list item continuation (expected {}, got {}), list may be corrupted".format(in_list_item, depth))

@@ -27,11 +27,13 @@
 
 #include <cmath>
 
+using namespace std::chrono_literals;
+
 namespace
 {
 
 // How long text fading should take - currently a hardcoded value.
-const unsigned FADE_DURATION_MS = 500;
+const auto fade_duration = 500ms;
 
 } // end unnamed namespace
 
@@ -95,8 +97,8 @@ outro::outro(const game_classification& info)
 
 	current_text_ = text_[0];
 
-	if(!duration_) {
-		duration_ = 3500; // 3.5 seconds
+	if(duration_ == 0ms) {
+		duration_ = 3500ms; // 3.5 seconds
 	}
 }
 
@@ -167,7 +169,7 @@ void outro::update()
 	}
 
 	fade_alpha_ = std::clamp<int>(
-		std::round(255.0 * double(current_ticks - fade_start_) / double(FADE_DURATION_MS)),
+		std::round(255.0 * double(current_ticks - fade_start_) / double(fade_duration.count())),
 		0, 255);
 	if(!fading_in_) {
 		fade_alpha_ = 255 - fade_alpha_;

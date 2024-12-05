@@ -26,104 +26,144 @@
 
 namespace markup {
 
+/**
+ * @return  A Help markup tag corresponding to a linebreak.
+ * @see gui2::rich_label for details on how this tag is parsed.
+ */
 const static std::string br = "<br/>";
 
 /**
- * Returns the contents enclosed inside `<tag_name>` and `</tag_name>`
+ * @return             The contents enclosed inside `<tag_name>` and `</tag_name>`.
+ *                     Does not escape its contents and returns empty string
+ *                     if empty or no contents is passed.
+ *
+ * @param tag_name     Name of the tag.
+ * @param contents     Variable list of contents to enclose inside @p tag_name.
+ *                     Could anything that can be appended to a @ref formatter.
  */
 template<typename... Args>
 std::string tag(const std::string& tag_name, Args&&... contents)
 {
-	return ((formatter()
-		<< "<" << tag_name << ">")
-		<< ...
-		<< contents)
-		<< "</" << tag_name << ">";
+	std::string input_text = ((formatter()) << ... << contents);
+	if (input_text.empty()) {
+		return "";
+	} else {
+		return formatter()
+			<< "<" << tag_name << ">"
+			<< input_text
+			<< "</" << tag_name << ">";
+	}
 }
 
 /**
- * Returns the contents enclosed inside `<tag_name>` and `</tag_name>`
- * This version escapes single quotes and backslashes.
- */
-template<typename... Args>
-std::string tag_esc(const std::string& tag_name, Args&&... contents)
-{
-	return ((formatter()
-		<< "<" << tag_name << ">")
-		<< ...
-		<< utils::escape(contents, "'\\"))
-		<< "</" << tag_name << ">";
-}
-
-/**
- * Returns a Pango formatting string using the provided color_t object.
- *
- * The string returned will be in format: `<span foreground=#color>#data</span>`
+ * @return             A Pango formatting string using the provided color_t object.
+ *                     The string returned will be in format: `<span foreground=#color>#data</span>`.
  *
  * @param color        The color_t object from which to retrieve the color.
- * @param data         The string to enclose inside the tag. All elements in this list
- *                     will be concatenated to formatter().
+ * @param data         Variable list of contents to enclose inside the span tag.
+ *                     Could anything that can be appended to a @ref formatter.
+ *                     This function does not escape data internally, so data should be escaped by the caller if needed.
  */
 template<typename... Args>
 std::string span_color(const color_t& color, Args&&... data)
 {
-	return ((formatter() << "<span color='" << color.to_hex_string() << "'>") << ... << data) << "</span>";
+	std::string input_text = ((formatter()) << ... << data);
+	if (input_text.empty()) {
+		return "";
+	} else {
+		return formatter()
+			<< "<span color='" << color.to_hex_string() << "'>" << input_text << "</span>";
+	}
 }
 
 /**
- * Returns a Pango formatting string using the provided hex color string.
- *
- * The string returned will be in format: `<span foreground=#color>#data</span>`
+ * @return             A Pango formatting string using the provided hex color string.
+ *                     The string returned will be in format: `<span foreground=#color>#data</span>`.
  *
  * @param color        The hex color string.
- * @param data         The string to enclose inside the tag. All elements in this list
- *                     will be concatenated to formatter().
+ * @param data         Variable list of contents to enclose inside the span tag.
+ *                     Could anything that can be appended to a @ref formatter.
+ *                     This function does not escape data internally, so data should be escaped by the caller if needed.
  */
 template<typename... Args>
 std::string span_color(const std::string& color, Args&&... data)
 {
-	return ((formatter() << "<span color='" << color << "'>") << ... << data) << "</span>";
+	std::string input_text = ((formatter()) << ... << data);
+	if (input_text.empty()) {
+		return "";
+	} else {
+		return formatter()
+			<< "<span color='" << color << "'>" << input_text << "</span>";
+	}
 }
 
 /**
- * Returns a Pango formatting string that set the font size of the enclosed data.
- *
- * The string returned will be in format: `<span size=#size>#data</span>`
+ * @return             A Pango formatting string that set the font size of the enclosed data.
+ *                     The string returned will be in format: `<span size=#size>#data</span>`.
  *
  * @param size         The font size. String so values like x-large, large etc could be used.
- * @param data         The string to enclose inside the tag. All elements in this list
- *                     will be concatenated to formatter().
+ * @param data         Variable list of contents to enclose inside the span tag.
+ *                     Could anything that can be appended to a @ref formatter.
+ *                     This function does not escape data internally, so data should be escaped by the caller if needed.
  */
 template<typename... Args>
 std::string span_size(const std::string& size, Args&&... data)
 {
-	return ((formatter() << "<span size='" << size << "'>") << ... << data) << "</span>";
+	std::string input_text = ((formatter()) << ... << data);
+	if (input_text.empty()) {
+		return "";
+	} else {
+		return formatter()
+			<< "<span size='" << size << "'>" << input_text << "</span>";
+	}
 }
 
 /**
- * Returns a Pango formatting string corresponding to bold formatting
+ * @return          A Pango formatting string corresponding to bold formatting.
  *
- * @param s         The string to enclose in bold tag.
+ * @param data      Variable list of contents to enclose inside the bold tag. Could anything that can be appended to a @ref formatter.
+ *                  This function does not escape data internally, so data should be escaped by the caller if needed.
  */
 template<typename... Args>
-std::string bold(Args&&... s)
+std::string bold(Args&&... data)
 {
-	return tag_esc("b", (formatter() << ... << s).str());
+	return tag("b", (formatter() << ... << data).str());
 }
 
 /**
- * Returns a Pango formatting string corresponding to italic formatting
+ * @return          A Pango formatting string corresponding to italic formatting.
  *
- * @param s         The string to enclose in italic tag.
+ * @param data      Variable list of contents to enclose inside the italic tag. Could anything that can be appended to a @ref formatter.
+ *                  This function does not escape data internally, so data should be escaped by the caller if needed.
  */
 template<typename... Args>
-std::string italic(Args&&... s)
+std::string italic(Args&&... data)
 {
-	return tag_esc("i", (formatter() << ... << s).str());
+	return tag("i", (formatter() << ... << data).str());
 }
 
+/**
+ * @return          A Help markup tag corresponding to an image. This function does not escape
+ *                  strings internally, so should be escaped by the caller if needed.
+ *
+ * @param src       The WML path to where the image is located. (i.e., 'units/drakes/arbiter.png')
+ * @param align     Alignment of this image. Possible values: left, right, center.
+ * @param floating  Is the image a floating image or an inline image?
+ *
+ * @see gui2::rich_label for details on how this tag is parsed.
+ *
+ */
 std::string img(const std::string& src, const std::string& align = "left", const bool floating = false);
 
+/**
+ * @return          A Help markup tag corresponding to a reference or link. This function does not
+ *                  escape strings internally, so should be escaped by the caller if needed.
+ *
+ * @param text      User visible text/caption of the link.
+ * @param dst       Destination of the link. Can be any string depending on the link handler in the parsing @ref gui2::rich_label.
+ *
+ * @see gui2::rich_label for details on how this tag is parsed.
+ */
 std::string make_link(const std::string& text, const std::string& dst);
 
 //

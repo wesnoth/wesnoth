@@ -22,6 +22,7 @@
 #include "play_controller.hpp"
 #include "random.hpp"
 #include "resources.hpp"
+#include "serialization/chrono.hpp"
 #include "units/animation_component.hpp"
 #include "units/filter.hpp"
 #include "units/unit.hpp"
@@ -29,6 +30,9 @@
 #include "log.hpp" 
 
 #include <algorithm>
+#include <thread>
+
+using namespace std::chrono_literals;
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
@@ -254,7 +258,7 @@ static animation_branches prepare_animation(const config& cfg, const std::string
 	return expanded_animations;
 }
 
-unit_animation::unit_animation(int start_time,
+unit_animation::unit_animation(const std::chrono::milliseconds& start_time,
 		const unit_frame& frame, const std::string& event, const int variation, const frame_builder& builder)
 	: terrain_types_()
 	, unit_filter_()
@@ -500,12 +504,12 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 	const std::string default_image = cfg["image"];
 
 	if(animation_base.empty()) {
-		animation_base.push_back(unit_animation(0, frame_builder().image(default_image).duration(1), "", unit_animation::DEFAULT_ANIM));
+		animation_base.push_back(unit_animation(0ms, frame_builder().image(default_image).duration(1ms), "", unit_animation::DEFAULT_ANIM));
 	}
 
-	animations.push_back(unit_animation(0, frame_builder().image(default_image).duration(1), "_disabled_", 0));
-	animations.push_back(unit_animation(0,
-		frame_builder().image(default_image).duration(300).blend("0.0~0.3:100,0.3~0.0:200", {255,255,255}),
+	animations.push_back(unit_animation(0ms, frame_builder().image(default_image).duration(1ms), "_disabled_", 0));
+	animations.push_back(unit_animation(0ms,
+		frame_builder().image(default_image).duration(300ms).blend("0.0~0.3:100,0.3~0.0:200", {255,255,255}),
 		"_disabled_selected_", 0));
 
 	for(const auto& base : animation_base) {
@@ -515,44 +519,44 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 		animations.push_back(base);
 		animations.back().event_ = { "_ghosted_" };
-		animations.back().unit_anim_.override(0, animations.back().unit_anim_.get_animation_duration(),particle::UNSET,"0.9", "", {0,0,0}, "", "", "~GS()");
+		animations.back().unit_anim_.override(0ms, animations.back().unit_anim_.get_animation_duration(),particle::UNSET,"0.9", "", {0,0,0}, "", "", "~GS()");
 
 		animations.push_back(base);
 		animations.back().event_ = { "_disabled_ghosted_" };
-		animations.back().unit_anim_.override(0, 1, particle::UNSET, "0.4", "", {0,0,0}, "", "", "~GS()");
+		animations.back().unit_anim_.override(0ms, 1ms, particle::UNSET, "0.4", "", {0,0,0}, "", "", "~GS()");
 
 		animations.push_back(base);
 		animations.back().event_ = { "selected" };
-		animations.back().unit_anim_.override(0, 300, particle::UNSET, "", "0.0~0.3:100,0.3~0.0:200", {255,255,255});
+		animations.back().unit_anim_.override(0ms, 300ms, particle::UNSET, "", "0.0~0.3:100,0.3~0.0:200", {255,255,255});
 
 		animations.push_back(base);
 		animations.back().event_ = { "recruited" };
-		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "0~1:600");
+		animations.back().unit_anim_.override(0ms, 600ms, particle::NO_CYCLE, "0~1:600");
 
 		animations.push_back(base);
 		animations.back().event_ = { "levelin" };
-		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "", "1~0:600", {255,255,255});
+		animations.back().unit_anim_.override(0ms, 600ms, particle::NO_CYCLE, "", "1~0:600", {255,255,255});
 
 		animations.push_back(base);
 		animations.back().event_ = { "levelout" };
-		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "", "0~1:600,1", {255,255,255});
+		animations.back().unit_anim_.override(0ms, 600ms, particle::NO_CYCLE, "", "0~1:600,1", {255,255,255});
 
 		animations.push_back(base);
 		animations.back().event_ = { "pre_movement" };
-		animations.back().unit_anim_.override(0, 1, particle::NO_CYCLE);
+		animations.back().unit_anim_.override(0ms, 1ms, particle::NO_CYCLE);
 
 		animations.push_back(base);
 		animations.back().event_ = { "post_movement" };
-		animations.back().unit_anim_.override(0, 1, particle::NO_CYCLE);
+		animations.back().unit_anim_.override(0ms, 1ms, particle::NO_CYCLE);
 
 		animations.push_back(base);
 		animations.back().event_ = { "movement" };
-		animations.back().unit_anim_.override(0, 200,
+		animations.back().unit_anim_.override(0ms, 200ms,
 			particle::NO_CYCLE, "", "", {0,0,0}, "0~1:200", std::to_string(get_abs_frame_layer(drawing_layer::unit_move_default)));
 
 		animations.push_back(base);
 		animations.back().event_ = { "defend" };
-		animations.back().unit_anim_.override(0, animations.back().unit_anim_.get_animation_duration(),
+		animations.back().unit_anim_.override(0ms, animations.back().unit_anim_.get_animation_duration(),
 			particle::NO_CYCLE, "", "0.0,0.5:75,0.0:75,0.5:75,0.0", {255,0,0});
 		animations.back().hits_.push_back(strike_result::type::hit);
 		animations.back().hits_.push_back(strike_result::type::kill);
@@ -562,30 +566,30 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 		animations.push_back(base);
 		animations.back().event_ = { "attack" };
-		animations.back().unit_anim_.override(-150, 300, particle::NO_CYCLE, "", "", {0,0,0}, "0~0.6:150,0.6~0:150", std::to_string(get_abs_frame_layer(drawing_layer::unit_move_default)));
+		animations.back().unit_anim_.override(-150ms, 300ms, particle::NO_CYCLE, "", "", {0,0,0}, "0~0.6:150,0.6~0:150", std::to_string(get_abs_frame_layer(drawing_layer::unit_move_default)));
 		animations.back().primary_attack_filter_.emplace_back("range", "melee");
 
 		animations.push_back(base);
 		animations.back().event_ = { "attack" };
-		animations.back().unit_anim_.override(-150, 150, particle::NO_CYCLE);
+		animations.back().unit_anim_.override(-150ms, 150ms, particle::NO_CYCLE);
 		animations.back().primary_attack_filter_.emplace_back("range", "ranged");
 
 		animations.push_back(base);
 		animations.back().event_ = { "death" };
-		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "1~0:600");
+		animations.back().unit_anim_.override(0ms, 600ms, particle::NO_CYCLE, "1~0:600");
 		animations.back().sub_anims_["_death_sound"] = particle();
-		animations.back().sub_anims_["_death_sound"].add_frame(1, frame_builder().sound(cfg["die_sound"]), true);
+		animations.back().sub_anims_["_death_sound"].add_frame(1ms, frame_builder().sound(cfg["die_sound"]), true);
 
 		animations.push_back(base);
 		animations.back().event_ = { "victory" };
-		animations.back().unit_anim_.override(0, animations.back().unit_anim_.get_animation_duration(), particle::CYCLE);
+		animations.back().unit_anim_.override(0ms, animations.back().unit_anim_.get_animation_duration(), particle::CYCLE);
 
 		animations.push_back(base);
-		animations.back().unit_anim_.override(0, 150, particle::NO_CYCLE, "1~0:150");
+		animations.back().unit_anim_.override(0ms, 150ms, particle::NO_CYCLE, "1~0:150");
 		animations.back().event_ = { "pre_teleport" };
 
 		animations.push_back(base);
-		animations.back().unit_anim_.override(0, 150, particle::NO_CYCLE, "0~1:150,1");
+		animations.back().unit_anim_.override(0ms, 150ms, particle::NO_CYCLE, "0~1:150,1");
 		animations.back().event_ = { "post_teleport" };
 
 		animations.push_back(base);
@@ -593,17 +597,17 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 		animations.push_back(base);
 		animations.back().event_ = { "healed" };
-		animations.back().unit_anim_.override(0, 300, particle::NO_CYCLE, "", "0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", {255,255,255});
+		animations.back().unit_anim_.override(0ms, 300ms, particle::NO_CYCLE, "", "0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", {255,255,255});
 
 		const std::string healed_sound = get_heal_sound(cfg);
 
-		animations.back().sub_anims_["_healed_sound"].add_frame(1, frame_builder().sound(healed_sound), true);
+		animations.back().sub_anims_["_healed_sound"].add_frame(1ms, frame_builder().sound(healed_sound), true);
 
 		animations.push_back(base);
 		animations.back().event_ = { "poisoned" };
-		animations.back().unit_anim_.override(0, 300, particle::NO_CYCLE, "", "0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", {0,255,0});
+		animations.back().unit_anim_.override(0ms, 300ms, particle::NO_CYCLE, "", "0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", {0,255,0});
 		animations.back().sub_anims_["_poison_sound"] = particle();
-		animations.back().sub_anims_["_poison_sound"].add_frame(1, frame_builder().sound(game_config::sounds::status::poisoned), true);
+		animations.back().sub_anims_["_poison_sound"].add_frame(1ms, frame_builder().sound(game_config::sounds::status::poisoned), true);
 	}
 }
 
@@ -722,7 +726,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.back().sub_anims_["_healed_sound"] = particle();
 
 		const std::string healed_sound = get_heal_sound(cfg);
-		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound(healed_sound),true);
+		animations.back().sub_anims_["_healed_sound"].add_frame(1ms,frame_builder().sound(healed_sound),true);
 	}
 
 	for(const animation_branch &ab : prepare_animation(cfg, "poison_anim")) {
@@ -736,7 +740,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 		animations.emplace_back(anim);
 		animations.back().sub_anims_["_poison_sound"] = particle();
-		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound(game_config::sounds::status::poisoned),true);
+		animations.back().sub_anims_["_poison_sound"].add_frame(1ms,frame_builder().sound(game_config::sounds::status::poisoned),true);
 	}
 
 	add_simple_anim(animations, cfg, "pre_movement_anim", "pre_movement", drawing_layer::unit_move_default);
@@ -780,9 +784,9 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			animations.back().base_score_--;
 
 			image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
-			animations.back().add_frame(225, frame_builder()
+			animations.back().add_frame(225ms, frame_builder()
 				.image(image_loc.get_filename()+image_loc.get_modifications())
-				.duration(225)
+				.duration(225ms)
 				.blend("0.0,0.5:75,0.0:75,0.5:75,0.0", {255,0,0}));
 		} else {
 			for(const std::string& hit_type : utils::split(anim["hits"])) {
@@ -793,9 +797,9 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 				image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
 				if(hit_type == "yes" || hit_type == strike_result::hit || hit_type == strike_result::kill) {
-					animations.back().add_frame(225, frame_builder()
+					animations.back().add_frame(225ms, frame_builder()
 						.image(image_loc.get_filename() + image_loc.get_modifications())
-						.duration(225)
+						.duration(225ms)
 						.blend("0.0,0.5:75,0.0:75,0.5:75,0.0", {255,0,0}));
 				}
 			}
@@ -848,14 +852,14 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.emplace_back(anim);
 		image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
 
-		animations.back().add_frame(600, frame_builder()
+		animations.back().add_frame(600ms, frame_builder()
 			.image(image_loc.get_filename()+image_loc.get_modifications())
-			.duration(600)
+			.duration(600ms)
 			.highlight("1~0:600"));
 
 		if(!cfg["die_sound"].empty()) {
 			animations.back().sub_anims_["_death_sound"] = particle();
-			animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
+			animations.back().sub_anims_["_death_sound"].add_frame(1ms,frame_builder().sound(cfg["die_sound"]),true);
 		}
 	}
 
@@ -880,16 +884,16 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 		anim["apply_to"] = "pre_teleport";
 		animations.emplace_back(anim);
-		animations.back().unit_anim_.set_end_time(0);
+		animations.back().unit_anim_.set_end_time(0ms);
 
 		anim["apply_to"] ="post_teleport";
 		animations.emplace_back(anim);
-		animations.back().unit_anim_.remove_frames_until(0);
+		animations.back().unit_anim_.remove_frames_until(0ms);
 	}
 }
 
-void unit_animation::particle::override(int start_time
-	, int duration
+void unit_animation::particle::override(const std::chrono::milliseconds& start_time
+	, const std::chrono::milliseconds& duration
 	, const cycle_state cycles
 	, const std::string& highlight
 	, const std::string& blend_ratio
@@ -935,15 +939,15 @@ unit_animation::particle::particle(const config& cfg, const std::string& frame_s
 	, last_frame_begin_time_(0)
 	, cycles_(false)
 {
-	starting_frame_time_ = std::numeric_limits<int>::max();
+	starting_frame_time_ = std::chrono::milliseconds::max();
 
 	config::const_child_itors range = cfg.child_range(frame_string + "frame");
 	if(!range.empty() && cfg[frame_string + "start_time"].empty()) {
 		for(const config& frame : range) {
-			starting_frame_time_ = std::min(starting_frame_time_, frame["begin"].to_int());
+			starting_frame_time_ = std::min(starting_frame_time_, chrono::parse_duration<std::chrono::milliseconds>(frame["begin"]));
 		}
 	} else {
-		starting_frame_time_ = cfg[frame_string + "start_time"].to_int();
+		starting_frame_time_ = chrono::parse_duration<std::chrono::milliseconds>(cfg[frame_string + "start_time"]);
 	}
 
 	for(const config& frame : range) {
@@ -1013,31 +1017,36 @@ void unit_animation::update_last_draw_time()
 	}
 }
 
-int unit_animation::get_end_time() const
+std::chrono::milliseconds unit_animation::get_end_time() const
 {
-	int result = unit_anim_.get_end_time();
+	auto result = unit_anim_.get_end_time();
 	for(const auto& anim : sub_anims_) {
-		result = std::max<int>(result, anim.second.get_end_time());
+		result = std::max(result, anim.second.get_end_time());
 	}
 
 	return result;
 }
 
-int unit_animation::get_begin_time() const
+std::chrono::milliseconds unit_animation::get_begin_time() const
 {
-	int result = unit_anim_.get_begin_time();
+	auto result = unit_anim_.get_begin_time();
 	for(const auto& anim : sub_anims_) {
-		result = std::min<int>(result, anim.second.get_begin_time());
+		result = std::min(result, anim.second.get_begin_time());
 	}
 
 	return result;
 }
+<<<<<<< HEAD
 //mark start_animation_a after testing, facing seems can only be impl by actually change the facing status of unit before and after animating.
 //in other words: target only affect how the pool of chosen animations generated will be (before bug fix, this even don't work neither),
 //don't actually have anything to do with unit facing according to related impl codes.
 //in testing, first functionality has been proved to work.
 //so the next step is the second: finding out how to impl facing change with acceptable side effects.
 void unit_animation::start_animation(int start_time
+=======
+
+void unit_animation::start_animation(const std::chrono::milliseconds& start_time
+>>>>>>> Fix_create_animator
 	, const map_location& src
 	, const map_location& dst
 	, const std::string& text
@@ -1058,8 +1067,8 @@ void unit_animation::start_animation(int start_time
 
 	if(!text.empty()) {
 		particle crude_build;
-		crude_build.add_frame(1, frame_builder());
-		crude_build.add_frame(1, frame_builder().text(text, text_color), true);
+		crude_build.add_frame(1ms, frame_builder());
+		crude_build.add_frame(1ms, frame_builder().text(text, text_color), true);
 		sub_anims_["_add_text"] = crude_build;
 	}
 
@@ -1182,7 +1191,7 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 	std::string events_string = utils::join(u_animation.event_);
 	outstream << "[" << events_string << "]\n";
 
-	outstream << "\tstart_time=" << u_animation.get_begin_time() << '\n';
+	outstream << "\tstart_time=" << u_animation.get_begin_time().count() << '\n';
 
 	if(u_animation.hits_.size() > 0) {
 		std::vector<std::string> hits;
@@ -1252,7 +1261,7 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 			std::size_t pos = sub_frame_name.find("_frame");
 			if(pos != std::string::npos) sub_frame_name = sub_frame_name.substr(0, pos);
 
-			outstream << "\t" << sub_frame_name << "_start_time=" << p.second.get_begin_time() << '\n';
+			outstream << "\t" << sub_frame_name << "_start_time=" << p.second.get_begin_time().count() << '\n';
 			outstream << "\t[" << p.first << "]\n";
 
 			for(const std::string& frame_string : p.second.get_frame(i).debug_strings()) {
@@ -1270,7 +1279,7 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 void unit_animation::particle::redraw(const frame_parameters& value,const map_location& src, const map_location& dst, halo::manager& halo_man)
 {
 	const unit_frame& current_frame = get_current_frame();
-	const int animation_time = get_animation_time();
+	const auto animation_time = get_animation_time();
 	const frame_parameters default_val = parameters_.parameters(animation_time - get_begin_time());
 
 	// Everything is relative to the first frame in an attack/defense/etc. block.
@@ -1308,12 +1317,12 @@ unit_animation::particle::~particle()
 	halo_id_.reset();
 }
 
-void unit_animation::particle::start_animation(int start_time)
+void unit_animation::particle::start_animation(const std::chrono::milliseconds& start_time)
 {
 	halo_id_.reset();
 	parameters_.override(get_animation_duration());
 	animated<unit_frame>::start_animation(start_time,cycles_);
-	last_frame_begin_time_ = get_begin_time() -1;
+	last_frame_begin_time_ = get_begin_time() - 1ms;
 }
 //mark add_anim
 void unit_animator::add_animation(unit_const_ptr animated_unit
@@ -1336,6 +1345,7 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 		animated_unit->anim_comp().choose_animation(src, event, dst, value, hit_type, attack, second_attack, value2, fromlua);
 	if(!anim) return;
 
+<<<<<<< HEAD
 	start_time_ = std::max<int>(start_time_, anim->get_begin_time());
 
 	auto&& au_rvalue = std::move(animated_unit);
@@ -1345,6 +1355,10 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 	disp->invalidate(src);
 	disp->update();
 	LOG_LUA << "facing set to " << src.get_relative_dir(dst) << " expected, and actually is " << au_rvalue->facing();
+=======
+	start_time_ = std::max(start_time_, anim->get_begin_time());
+	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, with_bars);
+>>>>>>> Fix_create_animator
 }
 
 void unit_animator::add_animation(unit_const_ptr animated_unit
@@ -1356,9 +1370,14 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 {
 	if(!animated_unit || !anim) return;
 
+<<<<<<< HEAD
 	start_time_ = std::max<int>(start_time_, anim->get_begin_time());
 	map_location::direction original_facing = map_location::direction::indeterminate;
 	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, original_facing, with_bars);
+=======
+	start_time_ = std::max(start_time_, anim->get_begin_time());
+	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, with_bars);
+>>>>>>> Fix_create_animator
 }
 
 bool unit_animator::has_animation(unit_const_ptr animated_unit
@@ -1403,14 +1422,14 @@ void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit
 //mark start_anims call start_anim_ac
 void unit_animator::start_animations()
 {
-	int begin_time = std::numeric_limits<int>::max();
+	auto begin_time = std::chrono::milliseconds::max();
 
 	for(const auto& anim : animated_units_) {
 		if(anim.my_unit->anim_comp().get_animation()) {
 			if(anim.animation) {
-				begin_time = std::min<int>(begin_time, anim.animation->get_begin_time());
+				begin_time = std::min(begin_time, anim.animation->get_begin_time());
 			} else  {
-				begin_time = std::min<int>(begin_time, anim.my_unit->anim_comp().get_animation()->get_begin_time());
+				begin_time = std::min(begin_time, anim.my_unit->anim_comp().get_animation()->get_begin_time());
 			}
 		}
 	}
@@ -1455,7 +1474,7 @@ bool unit_animator::would_end() const
 	return finished;
 }
 
-void unit_animator::wait_until(int animation_time) const
+void unit_animator::wait_until(const std::chrono::milliseconds& animation_time) const
 {
 	if(animated_units_.empty()) {
 		return;
@@ -1467,34 +1486,33 @@ void unit_animator::wait_until(int animation_time) const
 	display* disp = display::get_singleton();
 	double speed = disp->turbo_speed();
 
-	resources::controller->play_slice(false);
+	resources::controller->play_slice();
 
-	int end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
-	while(SDL_GetTicks() < unsigned(end_tick - std::min(int(20 / speed), 20))) {
-		if(!game_config::no_delay) {
-			SDL_Delay(std::clamp(int((animation_time - get_animation_time()) * speed), 0, 10));
-		}
-		resources::controller->play_slice(false);
+	using std::chrono::steady_clock;
+	auto end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
+
+	while(steady_clock::now() < end_tick - std::min(std::chrono::floor<std::chrono::milliseconds>(20ms / speed), 20ms)) {
+		auto rest = std::chrono::floor<std::chrono::milliseconds>((animation_time - get_animation_time()) * speed);
+		std::this_thread::sleep_for(std::clamp(rest, 0ms, 10ms));
+
+		resources::controller->play_slice();
 		end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
 	}
 
-	if(!game_config::no_delay) {
-		SDL_Delay(std::max<int>(0, end_tick - SDL_GetTicks() + 5));
-	}
+	auto rest = std::max<steady_clock::duration>(0ms, end_tick - steady_clock::now() + 5ms);
+	std::this_thread::sleep_for(rest);
 
 	new_animation_frame();
-	animated_units_[0].my_unit->anim_comp().get_animation()->set_max_animation_time(0);
+	animated_units_[0].my_unit->anim_comp().get_animation()->set_max_animation_time(0ms);
 }
 
 void unit_animator::wait_for_end() const
 {
-	if(game_config::no_delay) return;
-
 	bool finished = false;
 	while(!finished) {
-		resources::controller->play_slice(false);
+		resources::controller->play_slice();
 
-		SDL_Delay(10);
+		std::this_thread::sleep_for(10ms);
 
 		finished = true;
 		for(const auto& anim : animated_units_) {
@@ -1503,28 +1521,28 @@ void unit_animator::wait_for_end() const
 	}
 }
 
-int unit_animator::get_animation_time() const
+std::chrono::milliseconds unit_animator::get_animation_time() const
 {
 	if(animated_units_.empty()) {
-		return 0;
+		return 0ms;
 	}
 	return animated_units_[0].my_unit->anim_comp().get_animation()->get_animation_time() ;
 }
 
-int unit_animator::get_animation_time_potential() const
+std::chrono::milliseconds unit_animator::get_animation_time_potential() const
 {
 	if(animated_units_.empty()) {
-		return 0;
+		return 0ms;
 	}
 	return animated_units_[0].my_unit->anim_comp().get_animation()->get_animation_time_potential() ;
 }
 
-int unit_animator::get_end_time() const
+std::chrono::milliseconds unit_animator::get_end_time() const
 {
-	int end_time = std::numeric_limits<int>::min();
+	auto end_time = std::chrono::milliseconds::min();
 	for(const auto& anim : animated_units_) {
 		if(anim.my_unit->anim_comp().get_animation()) {
-			end_time = std::max<int>(end_time, anim.my_unit->anim_comp().get_animation()->get_end_time());
+			end_time = std::max(end_time, anim.my_unit->anim_comp().get_animation()->get_end_time());
 		}
 	}
 

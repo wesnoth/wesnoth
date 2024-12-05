@@ -23,6 +23,8 @@
 #include "log.hpp"
 #include "filesystem.hpp"
 #include "mt_rng.hpp"
+#include "serialization/chrono.hpp"
+#include "serialization/string_utils.hpp"
 #include "utils/general.hpp"
 
 #include <boost/algorithm/string.hpp>
@@ -399,41 +401,28 @@ bool broke_strict() {
 	return strict_threw_;
 }
 
-std::string get_timestamp(const std::time_t& t, const std::string& format) {
-	std::ostringstream ss;
-
-	ss << std::put_time(std::localtime(&t), format.c_str());
-
-	return ss.str();
-}
-std::string get_timespan(const std::time_t& t) {
-	std::ostringstream sout;
-	// There doesn't seem to be any library function for this
-	const std::time_t minutes = t / 60;
-	const std::time_t days = minutes / 60 / 24;
-	if(t <= 0) {
-		sout << "expired";
-	} else if(minutes == 0) {
-		sout << t << " seconds";
-	} else if(days == 0) {
-		sout << minutes / 60 << " hours, " << minutes % 60 << " minutes";
-	} else {
-		sout << days << " days, " << (minutes / 60) % 24 << " hours, " << minutes % 60 << " minutes";
-	}
-	return sout.str();
-}
-
-static void print_precise_timestamp(std::ostream& out) noexcept
+std::string format_timespan(const std::chrono::seconds& span)
 {
-	try {
-		auto now = std::chrono::system_clock::now();
-		auto seconds = std::chrono::time_point_cast<std::chrono::seconds>(now);
-		auto fractional = std::chrono::duration_cast<std::chrono::microseconds>(now - seconds);
-		std::time_t tm = std::chrono::system_clock::to_time_t(seconds);
-		char c = out.fill('0');
-		out << std::put_time(std::localtime(&tm), "%Y%m%d %H:%M:%S") << "." << std::setw(6) << fractional.count() << ' ';
-		out.fill(c);
-	} catch(...) {}
+	if(span <= std::chrono::seconds{0}) {
+		return "expired";
+	}
+
+	auto [days, hours, minutes, seconds] = chrono::deconstruct_duration(span);
+	std::vector<std::string> formatted_values;
+
+	// TODO C++20: see if we can use the duration stream operators
+	const auto format_time = [&formatted_values](const auto& val, const std::string& suffix) {
+		if(val > std::decay_t<decltype(val)>{0}) {
+			formatted_values.push_back(formatter{} << val.count() << " " << suffix);
+		}
+	};
+
+	format_time(days, "days");
+	format_time(hours, "hours");
+	format_time(minutes, "minutes");
+	format_time(seconds, "seconds");
+
+	return utils::join(formatted_values, ", ");
 }
 
 void set_log_sanitize(bool sanitize) {
@@ -502,10 +491,12 @@ void log_in_progress::operator|(formatter&& message)
 	for(int i = 0; i < indent; ++i)
 		stream_ << "  ";
 	if(timestamp_) {
+		auto now = std::chrono::system_clock::now();
+		stream_ << chrono::format_local_timestamp(now); // Truncates precision to seconds
 		if(precise_timestamp) {
-			print_precise_timestamp(stream_);
-		} else {
-			stream_ << get_timestamp(std::time(nullptr));
+			auto as_seconds = std::chrono::time_point_cast<std::chrono::seconds>(now);
+			auto fractional = std::chrono::duration_cast<std::chrono::microseconds>(now - as_seconds);
+			stream_ << "." << std::setw(6) << fractional.count();
 		}
 	}
 	stream_ << prefix_ << sanitize_log(message.str());

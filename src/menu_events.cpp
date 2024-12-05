@@ -446,8 +446,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	if(!pc_.get_whiteboard()
 			|| !pc_.get_whiteboard()->save_recall(*recall_list_team[res].get(), side_num, recall_location)) {
 		bool success = synced_context::run_and_throw("recall",
-				replay_helper::get_recall(recall_list_team[res]->id(), recall_location, recall_from), true, true,
-				synced_context::ignore_error_function);
+				replay_helper::get_recall(recall_list_team[res]->id(), recall_location, recall_from));
 
 		if(!success) {
 			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list.";
@@ -885,7 +884,7 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator& ui,
 
 	{
 		LOG_NG << "move_unit_to_loc " << route.steps.front() << " to " << route.steps.back();
-		actions::move_unit_and_record(route.steps, &pc_.get_undo_stack(), continue_move);
+		actions::move_unit_and_record(route.steps, continue_move);
 	}
 
 	mousehandler.deselect_hex();
@@ -963,7 +962,7 @@ void menu_handler::execute_gotos(mouse_handler& mousehandler, int side)
 
 			{
 				LOG_NG << "execute goto from " << route.steps.front() << " to " << route.steps.back();
-				int moves = actions::move_unit_and_record(route.steps, &pc_.get_undo_stack());
+				int moves = actions::move_unit_and_record(route.steps);
 				change = moves > 0;
 			}
 

@@ -30,6 +30,7 @@
 #include "play_controller.hpp"
 #include "playsingle_controller.hpp"
 #include "resources.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 #include "synced_context.hpp"
 #include "units/types.hpp"
@@ -392,7 +393,7 @@ void team::build(const config& cfg, const gamemap& map, int gold)
 		}
 	}
 
-	countdown_time_ = cfg["countdown_time"].to_int();
+	countdown_time_ = chrono::parse_duration<std::chrono::milliseconds>(cfg["countdown_time"]);
 	action_bonus_count_ = cfg["action_bonus_count"].to_int();
 
 	planned_actions_.reset(new wb::side_actions());

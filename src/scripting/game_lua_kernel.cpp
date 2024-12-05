@@ -122,10 +122,10 @@
 #include <new>                          // for operator new
 #include <set>                          // for set
 #include <sstream>                      // for operator<<, basic_ostream, etc
+#include <thread>
 #include <utility>                      // for pair
 #include <algorithm>
 #include <vector>                       // for vector, etc
-#include <SDL2/SDL_timer.h>                  // for SDL_GetTicks
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -369,6 +369,28 @@ static int impl_add_animation(lua_State* L)
 	return 0;
 }
 
+// Todo: make a C++ impl to replace this method.
+int game_lua_kernel::impl_add_movement(lua_State* L)
+{
+	lua_getglobal(L, "wesnoth");
+	lua_getfield(L, -1, "interface");
+	lua_getfield(L, -1, "move_unit_fake_queue");
+	luaW_pushunit(L, luaW_checkunit_ptr(L, 2, false));
+	{
+		map_location temp = luaW_checklocation(L, 3);
+		lua_pushinteger(L, temp.wml_x());
+		lua_pushinteger(L, temp.wml_y());
+	}
+	lua_pushboolean(L, true);
+	if(lua_isnoneornil(L, 4)) {
+		lua_pushnil(L);
+	} else {
+		lua_pushboolean(L, luaW_toboolean(L, 4));
+	}
+	lua_call(L, 5, 0);
+	return 0;
+}
+
 int game_lua_kernel::impl_run_animation(lua_State* L)
 {
 	if(video::headless() || resources::controller->is_skipping_replay()) {
@@ -376,7 +398,17 @@ int game_lua_kernel::impl_run_animation(lua_State* L)
 	}
 	events::command_disabler command_disabler;
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
-	play_controller_.play_slice(false);
+	play_controller_.play_slice();
+	lua_getglobal(L, "wesnoth");
+	lua_getfield(L, -1, "interface");
+	lua_getfield(L, -1, "move_unit_fake_queue");
+	lua_pushnil(L);
+	lua_pushnil(L);
+	lua_pushnil(L);
+	lua_pushboolean(L, false);
+	lua_pushnil(L);
+	lua_call(L, 5, 0);
+
 	anim.start_animations();
 	anim.wait_for_end();
 	anim.set_all_standing();
@@ -406,6 +438,7 @@ int game_lua_kernel::intf_create_animator(lua_State* L)
 			{"__gc", impl_animator_collect},
 			{"__index", impl_animator_get},
 			{"add", impl_add_animation},
+			{"add_movement", &dispatch<&game_lua_kernel::impl_add_movement>},
 			{"run", &dispatch<&game_lua_kernel::impl_run_animation>},
 			{"clear", impl_clear_animation},
 			{nullptr, nullptr},
@@ -1508,10 +1541,10 @@ static int impl_mp_settings_get(lua_State* L)
 		return_string_attrib("side_users", utils::join_map(settings.side_users));
 		return_int_attrib("experience_modifier", settings.xp_modifier);
 		return_bool_attrib("mp_countdown", settings.mp_countdown);
-		return_int_attrib("mp_countdown_init_time", settings.mp_countdown_init_time);
-		return_int_attrib("mp_countdown_turn_bonus", settings.mp_countdown_turn_bonus);
-		return_int_attrib("mp_countdown_reservoir_bonus", settings.mp_countdown_reservoir_time);
-		return_int_attrib("mp_countdown_action_bonus", settings.mp_countdown_action_bonus);
+		return_int_attrib("mp_countdown_init_time", settings.mp_countdown_init_time.count());
+		return_int_attrib("mp_countdown_turn_bonus", settings.mp_countdown_turn_bonus.count());
+		return_int_attrib("mp_countdown_reservoir_bonus", settings.mp_countdown_reservoir_time.count());
+		return_int_attrib("mp_countdown_action_bonus", settings.mp_countdown_action_bonus.count());
 		return_int_attrib("mp_num_turns", settings.num_turns);
 		return_int_attrib("mp_village_gold", settings.village_gold);
 		return_int_attrib("mp_village_support", settings.village_support);
@@ -1687,11 +1720,11 @@ SCENARIO_SETTER("end_text", t_string) {
 }
 
 SCENARIO_GETTER("end_text_duration", int) {
-	return k.cls().end_text_duration;
+	return k.cls().end_text_duration.count();
 }
 
 SCENARIO_SETTER("end_text_duration", int) {
-	k.cls().end_text_duration = value;
+	k.cls().end_text_duration = std::chrono::milliseconds{value};
 }
 
 SCENARIO_VALID("campaign") {
@@ -2499,7 +2532,7 @@ static int impl_floating_label_getmethod(lua_State* L)
 int game_lua_kernel::intf_remove_floating_label(lua_State* L)
 {
 	int* handle = luaW_check_floating_label(L, 1);
-	int fade = luaL_optinteger(L, 2, -1);
+	std::chrono::milliseconds fade{luaL_optinteger(L, 2, -1)};
 	if(*handle != 0) {
 		// Passing -1 as the second argument means it uses the fade time that was set when the label was created
 		font::remove_floating_label(*handle, fade);
@@ -2696,13 +2729,14 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 			break;
 	}
 
+	using std::chrono::milliseconds;
 	font::floating_label flabel(text);
 	flabel.set_font_size(size);
 	flabel.set_color(color);
 	flabel.set_bg_color(bgcolor);
 	flabel.set_alignment(alignment);
 	flabel.set_position(x, y);
-	flabel.set_lifetime(lifetime, fadeout);
+	flabel.set_lifetime(milliseconds{lifetime}, milliseconds{fadeout});
 	flabel.set_clip_rect(rect);
 
 	*handle = font::add_floating_label(flabel);
@@ -4412,7 +4446,7 @@ int game_lua_kernel::intf_screen_fade(lua_State *L)
 			return luaW_type_error(L, 1, "array of 4 integers");
 		}
 		color_t fade{vec[0], vec[1], vec[2], vec[3]};
-		game_display_->fade_to(fade, luaL_checkinteger(L, 2));
+		game_display_->fade_to(fade, std::chrono::milliseconds{luaL_checkinteger(L, 2)});
 	}
 	return 0;
 }
@@ -4429,19 +4463,20 @@ int game_lua_kernel::intf_delay(lua_State *L)
 		return 0;
 	}
 	events::command_disabler command_disabler;
-	lua_Integer delay = luaL_checkinteger(L, 1);
-	if(delay == 0) {
-		play_controller_.play_slice(false);
+	using namespace std::chrono_literals;
+	std::chrono::milliseconds delay{luaL_checkinteger(L, 1)};
+	if(delay == 0ms) {
+		play_controller_.play_slice();
 		return 0;
 	}
 	if(luaW_toboolean(L, 2) && game_display_ && game_display_->turbo_speed() > 0) {
 		delay /= game_display_->turbo_speed();
 	}
-	const unsigned final = SDL_GetTicks() + delay;
+	const auto end_time = std::chrono::steady_clock::now() + delay;
 	do {
-		play_controller_.play_slice(false);
-		SDL_Delay(10);
-	} while (static_cast<int>(final - SDL_GetTicks()) > 0);
+		play_controller_.play_slice();
+		std::this_thread::sleep_for(10ms);
+	} while (std::chrono::steady_clock::now() < end_time);
 	return 0;
 }
 

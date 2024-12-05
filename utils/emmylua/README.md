@@ -1,5 +1,5 @@
 
-These files can be used to allow Lua linting tools to understand Wesnoth types and functions that are defined in C++. Documentation of the annotations format can be found [here](https://github.com/sumneko/lua-language-server/wiki/EmmyLua-Annotations).
+These files can be used to allow Lua linting tools to understand Wesnoth types and functions that are defined in C++. Documentation of the annotations format can be found [here](https://luals.github.io/wiki/annotations/).
 
 
 To enable in Visual Studio Code, install [this Lua plugin](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) and add the following settings to your settings.json:
