@@ -180,6 +180,7 @@ elif env["PLATFORM"] == 'win32':
 elif env["PLATFORM"] == 'android':
     client_env["CPPDEFINES"].remove("SDL_MAIN_HANDLED")
     wesnoth = client_env.SharedLibrary("#packaging/android/lib/libmain.so", ["wesnoth.cpp"] + sorted(list(set(wesnoth_client_sources).union(set(libwesnoth_sdl_sources)).union(libwesnoth_widgets_sources))) + shobjs_lua + libwesnoth_core_sources + libwesnoth_game_sources)
+    Alias("native-lib", wesnoth)
     Export("wesnoth")
 else:
     wesnoth = client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects, have_client_prereqs)
