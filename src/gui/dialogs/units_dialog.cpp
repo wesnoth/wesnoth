@@ -515,7 +515,6 @@ units_dialog& units_dialog::build_create_dialog(const std::vector<const unit_typ
 		return type->race()->plural_name();
 	};
 
-
 	set_title(_("Create Unit"));
 	set_ok_label(_("Create"));
 	set_help_topic("..units");
@@ -526,10 +525,8 @@ units_dialog& units_dialog::build_create_dialog(const std::vector<const unit_typ
 	hide_all_headers();
 	show_header(0);
 	show_header(1);
-	set_column_generator("unit_name", types_list, type_gen);
-	set_column_generator("unit_details", types_list, race_gen);
-	set_translatable_sorter(0, types_list, type_gen);
-	set_translatable_sorter(1, types_list, race_gen);
+	set_column_generator("unit_name", types_list, type_gen, true);
+	set_column_generator("unit_details", types_list, race_gen, true);
 
 	return *this;
 }
