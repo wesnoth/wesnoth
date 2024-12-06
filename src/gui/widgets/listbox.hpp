@@ -284,9 +284,9 @@ public:
 
 	/**
 	 * Sorts the listbox by a pre-set sorting option. The corresponding header widget will also be toggled.
-	 * The sorting option should already have been registered by @ref listbox::register_sorting_option().
+	 * The sorting option should already have been registered by @ref listbox::set_sorting_options().
 	 *
-	 * @param sort_by         Pair of column index and sort direction. The column (first arguemnt)
+	 * @param sort_by         Pair of column index and sort direction. The column (first argument)
 	 *                        argument will be sorted in the specified direction (second argument)
 	 *
 	 * @param select_first    If true, the first row post-sort will be selected. If false (default),
