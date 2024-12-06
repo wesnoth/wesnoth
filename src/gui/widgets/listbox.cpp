@@ -737,16 +737,55 @@ static std::vector<widget_data> parse_list_data(const config& data, const unsign
 	return list_data;
 }
 
-builder_listbox::builder_listbox(const config& cfg)
+builder_listbox_base::builder_listbox_base(const config& cfg)
 	: builder_styled_widget(cfg)
 	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
-	, header(nullptr)
-	, footer(nullptr)
 	, list_builder(nullptr)
 	, list_data()
 	, has_minimum_(cfg["has_minimum"].to_bool(true))
 	, has_maximum_(cfg["has_maximum"].to_bool(true))
+{
+	auto l = cfg.optional_child("list_definition");
+
+	VALIDATE(l, _("No list defined."));
+
+	list_builder = std::make_shared<builder_grid>(*l);
+	assert(list_builder);
+
+	VALIDATE(list_builder->rows == 1, _("A ‘list_definition’ should contain one row."));
+
+	if(cfg.has_child("list_data")) {
+		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
+	}
+}
+
+std::unique_ptr<widget> builder_listbox_base::generic_build(
+		generator_base::placement placement,
+		const builder_grid_const_ptr& header,
+		const builder_grid_const_ptr& footer,
+		bool allow_selection) const
+{
+	auto widget = std::make_unique<listbox>(*this, placement, list_builder);
+
+	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
+	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
+
+	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.";
+
+	const auto conf = widget->cast_config_to<listbox_definition>();
+	assert(conf);
+
+	widget->init_grid(*conf->grid);
+
+	auto generator = generator_base::build(has_minimum_, has_maximum_, placement, allow_selection);
+	widget->finalize(std::move(generator), header, footer, list_data);
+
+	return widget;
+}
+
+builder_listbox::builder_listbox(const config& cfg)
+	: builder_listbox_base(cfg)
 	, allow_selection_(cfg["allow_selection"].to_bool(true))
 {
 	if(auto h = cfg.optional_child("header")) {
@@ -756,125 +795,31 @@ builder_listbox::builder_listbox(const config& cfg)
 	if(auto f = cfg.optional_child("footer")) {
 		footer = std::make_shared<builder_grid>(*f);
 	}
-
-	auto l = cfg.optional_child("list_definition");
-
-	VALIDATE(l, _("No list defined."));
-
-	list_builder = std::make_shared<builder_grid>(*l);
-	assert(list_builder);
-
-	VALIDATE(list_builder->rows == 1, _("A ‘list_definition’ should contain one row."));
-
-	if(cfg.has_child("list_data")) {
-		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
-	}
 }
 
 std::unique_ptr<widget> builder_listbox::build() const
 {
-	auto widget = std::make_unique<listbox>(*this, generator_base::vertical_list, list_builder);
-
-	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
-	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
-
-	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.";
-
-	const auto conf = widget->cast_config_to<listbox_definition>();
-	assert(conf);
-
-	widget->init_grid(*conf->grid);
-
-	auto generator = generator_base::build(has_minimum_, has_maximum_, generator_base::vertical_list, allow_selection_);
-	widget->finalize(std::move(generator), header, footer, list_data);
-
-	return widget;
+	return generic_build(generator_base::vertical_list, header, footer, allow_selection_);
 }
 
 builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
-	: builder_styled_widget(cfg)
-	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
-	, list_builder(nullptr)
-	, list_data()
-	, has_minimum_(cfg["has_minimum"].to_bool(true))
-	, has_maximum_(cfg["has_maximum"].to_bool(true))
+	: builder_listbox_base(cfg)
 {
-	auto l = cfg.optional_child("list_definition");
-
-	VALIDATE(l, _("No list defined."));
-
-	list_builder = std::make_shared<builder_grid>(*l);
-	assert(list_builder);
-
-	VALIDATE(list_builder->rows == 1, _("A ‘list_definition’ should contain one row."));
-
-	if(cfg.has_child("list_data")) {
-		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
-	}
 }
 
 std::unique_ptr<widget> builder_horizontal_listbox::build() const
 {
-	auto widget = std::make_unique<listbox>(*this, generator_base::horizontal_list, list_builder);
-
-	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
-	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
-
-	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.";
-
-	const auto conf = widget->cast_config_to<listbox_definition>();
-	assert(conf);
-
-	widget->init_grid(*conf->grid);
-
-	auto generator = generator_base::build(has_minimum_, has_maximum_, generator_base::horizontal_list, true);
-	widget->finalize(std::move(generator), nullptr, nullptr, list_data);
-
-	return widget;
+	return generic_build(generator_base::horizontal_list);
 }
 
 builder_grid_listbox::builder_grid_listbox(const config& cfg)
-	: builder_styled_widget(cfg)
-	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
-	, list_builder(nullptr)
-	, list_data()
-	, has_minimum_(cfg["has_minimum"].to_bool(true))
-	, has_maximum_(cfg["has_maximum"].to_bool(true))
+	: builder_listbox_base(cfg)
 {
-	auto l = cfg.optional_child("list_definition");
-
-	VALIDATE(l, _("No list defined."));
-
-	list_builder = std::make_shared<builder_grid>(*l);
-	assert(list_builder);
-
-	VALIDATE(list_builder->rows == 1, _("A ‘list_definition’ should contain one row."));
-
-	if(cfg.has_child("list_data")) {
-		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
-	}
 }
 
 std::unique_ptr<widget> builder_grid_listbox::build() const
 {
-	auto widget = std::make_unique<listbox>(*this, generator_base::table, list_builder);
-
-	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
-	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
-
-	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.";
-
-	const auto conf = widget->cast_config_to<listbox_definition>();
-	assert(conf);
-
-	widget->init_grid(*conf->grid);
-
-	auto generator = generator_base::build(has_minimum_, has_maximum_, generator_base::table, true);
-	widget->finalize(std::move(generator), nullptr, nullptr, list_data);
-
-	return widget;
+	return generic_build(generator_base::table);
 }
 
 } // namespace implementation
