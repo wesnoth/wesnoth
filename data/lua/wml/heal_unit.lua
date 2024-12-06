@@ -62,6 +62,7 @@ function wesnoth.wml_actions.heal_unit(cfg)
 			u.status.poisoned = false
 			u.status.petrified = false
 			u.status.slowed = false
+			u.status.cursed = false
 			u.status.unhealable = false
 		end
 

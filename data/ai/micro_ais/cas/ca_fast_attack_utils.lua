@@ -215,6 +215,10 @@ function ca_fast_attack_utils.damage_rating_unit(attacker_info, defender_info, a
     if (att_stat.slowed ~= 0) then
         damage = damage + 4 * (att_stat.slowed - att_stat.hp_chance[0])
     end
+    -- Count cursed as additional 4 HP damage times probability of being cursed
+    if (att_stat.cursed ~= 0) then
+        damage = damage + 4 * (att_stat.cursed - att_stat.hp_chance[0])
+    end
 
     -- If attack is from a healing location, count its healing_value
     if healing then
@@ -412,7 +416,8 @@ function ca_fast_attack_utils.battle_outcome(attacker_copy, defender_proxy, dst,
         hp_chance = {},
         average_hp = tmp_att_stat.average_hp,
         poisoned = tmp_att_stat.poisoned,
-        slowed = tmp_att_stat.slowed
+        slowed = tmp_att_stat.slowed,
+        slowed = tmp_att_stat.cursed
     }
 
     att_stat.hp_chance[0] = tmp_att_stat.hp_chance[0]
@@ -426,7 +431,8 @@ function ca_fast_attack_utils.battle_outcome(attacker_copy, defender_proxy, dst,
         hp_chance = {},
         average_hp = tmp_def_stat.average_hp,
         poisoned = tmp_def_stat.poisoned,
-        slowed = tmp_def_stat.slowed
+        slowed = tmp_def_stat.slowed,
+        slowed = tmp_def_stat.cursed
     }
 
     def_stat.hp_chance[0] = tmp_def_stat.hp_chance[0]

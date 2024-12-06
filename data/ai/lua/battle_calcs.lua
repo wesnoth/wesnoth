@@ -629,6 +629,13 @@ function battle_calcs.hp_distribution(coeffs, att_hit_prob, def_hit_prob, starti
         stats.slowed = 0
     end
 
+    -- Add curse probability
+    if opp_attack and opp_attack.curse then
+        stats.cursed = 1. - stats.hp_chance[starting_hp]
+    else
+        stats.cursed = 0
+    end
+
     return stats
 end
 
@@ -724,10 +731,10 @@ function battle_calcs.simulate_combat_fake()
 
     att_stats.hp_chance[0] = 0
     att_stats.hp_chance[21], att_stats.hp_chance[23], att_stats.hp_chance[25], att_stats.hp_chance[27] = 0.125, 0.375, 0.375, 0.125
-    att_stats.poisoned, att_stats.slowed, att_stats.average_hp = 0.875, 0, 24
+    att_stats.poisoned, att_stats.slowed, att_stats.cursed, att_stats.average_hp = 0.875, 0, 0, 24
 
     def_stats.hp_chance[0], def_stats.hp_chance[2], def_stats.hp_chance[10] = 0.09, 0.42, 0.49
-    def_stats.poisoned, def_stats.slowed, def_stats.average_hp = 0, 0, 1.74
+    def_stats.poisoned, def_stats.slowed, def_stats.cursed, def_stats.average_hp = 0, 0, 0, 1.74
 
     return att_stats, def_stats
 end
@@ -816,6 +823,10 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
     -- Count slowed as additional 6 HP damage times probability of being slowed
     if (att_stats.slowed ~= 0) then
         att_damage = att_damage + 6 * (att_stats.slowed - att_stats.hp_chance[0])
+    end
+    -- Count cursed as additional 6 HP damage times probability of being slowed
+    if (att_stats.cursed ~= 0) then
+        att_damage = att_damage + 6 * (att_stats.cursed - att_stats.hp_chance[0])
     end
 
     local map = wesnoth.current.map
@@ -1027,10 +1038,10 @@ function battle_calcs.attack_combo_stats(tmp_attackers, tmp_dsts, defender, cach
             -- high variance attacks. I think that is what we want.
             local rating = base_rating --+ outcome_variance
 
-            -- If attacker has attack with 'slow' special, it should always go first
+            -- If attacker has attack with 'slow' or 'curse' special, it should always go first
             -- Almost, bonus should not be quite as high as a really high CTK
             -- This isn't quite true in reality, but can be refined later
-            if attacker:find_attack { special_id = "slow" } then
+            if attacker:find_attack { special_id = "slow" } or attacker:find_attack { special_id = "curse" } then
                 rating = rating + defender.cost / 2.
             end
 
@@ -1103,12 +1114,14 @@ function battle_calcs.attack_combo_stats(tmp_attackers, tmp_dsts, defender, cach
                     def_stats[i].hp_chance[hp2] = (def_stats[i].hp_chance[hp2] or 0) + prob1 * prob2
                 end
 
-                -- Also do poisoned, slowed
+                -- Also do poisoned, slowed and cursed
                 if (not att_stats[i].poisoned) then
                     att_stats[i].poisoned = ast.poisoned
                     att_stats[i].slowed = ast.slowed
+                    att_stats[i].cursed = ast.cursed
                     def_stats[i].poisoned = 1. - (1. - dst.poisoned) * (1. - def_stats[i-1].poisoned)
                     def_stats[i].slowed = 1. - (1. - dst.slowed) * (1. - def_stats[i-1].slowed)
+                    def_stats[i].cursed = 1. - (1. - dst.cursed) * (1. - def_stats[i-1].cursed)
                 end
             end
         end

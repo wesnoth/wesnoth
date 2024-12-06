@@ -207,6 +207,7 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avo
         local base_rating = - u.hitpoints + u.max_hitpoints / 2.
         if u.status.poisoned then base_rating = base_rating + wesnoth.game_config.poison_amount end
         if u.status.slowed then base_rating = base_rating + 4 end
+        if u.status.cursed then base_rating = base_rating + 4 end
         base_rating = base_rating * 1000
 
         print_dbg(string.format('check retreat hexes for: %-20s  base_rating = %f8.1', u.id, base_rating))

@@ -260,8 +260,8 @@ function ca_attack_highxp:evaluation(cfg, data, filter_own)
 
                         rating = rating - own_value_loss
 
-                        -- Strongly discourage poison or slow attacks
-                        if att_weapon.poisons or att_weapon.slows then
+                        -- Strongly discourage poison, curse or slow attacks
+                        if att_weapon.poisons or att_weapon.curses or att_weapon.slows then
                             rating = rating - 100
                         end
 

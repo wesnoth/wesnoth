@@ -644,6 +644,7 @@ function wml_actions.put_to_recall_list(cfg)
 			unit.attacks_left = unit.max_attacks
 			unit.status.poisoned = false
 			unit.status.slowed = false
+			unit.status.cursed = false
 		end
 		unit:to_recall(unit.side)
 	end

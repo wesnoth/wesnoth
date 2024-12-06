@@ -311,6 +311,17 @@ local function can_slow(unit)
     return false
 end
 
+local function can_curse(unit)
+    local attacks = unit.attacks
+    for i_a = 1,#attacks do
+        for _,sp in ipairs(attacks[i_a].specials) do
+            if (sp[1] == 'curse') then
+                return true
+            end
+        end
+    end
+    return false
+end
 
 local function get_hp_ratio_with_gold()
     local function sum_gold_for_sides(side_filter)
@@ -775,6 +786,9 @@ local function find_best_recruit(attack_type_count, unit_attack_type_count, recr
         if can_slow(recruit_unit) then
             unit_score["slows"] = true
         end
+        if can_curse(recruit_unit) then
+            unit_score["curse"] = true
+        end
         if recruit_unit:matches { ability = "healing" } then
             unit_score["heals"] = true
         end
@@ -836,6 +850,9 @@ local function find_best_recruit(attack_type_count, unit_attack_type_count, recr
 
         local bonus = math.random()*randomness
         if scores["slows"] then
+            bonus = bonus + 0.4
+        end
+        if scores["curses"] then
             bonus = bonus + 0.4
         end
         if scores["heals"] then
