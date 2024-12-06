@@ -588,7 +588,7 @@ bool dbconn::do_any_authors_exist(const std::string& instance_version, const std
 //
 void dbconn::get_complex_results(const mariadb::connection_ref& connection, rs_base& base, const std::string& sql, const sql_parameters& params)
 {
-	mariadb::result_set_ref rslt = select(std::move(connection), sql, params);
+	mariadb::result_set_ref rslt = select(connection, sql, params);
 	base.read(rslt);
 }
 //
@@ -596,7 +596,7 @@ void dbconn::get_complex_results(const mariadb::connection_ref& connection, rs_b
 //
 std::string dbconn::get_single_string(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
-	mariadb::result_set_ref rslt = select(std::move(connection), sql, params);
+	mariadb::result_set_ref rslt = select(connection, sql, params);
 	if(rslt->next())
 	{
 		return rslt->get_string(0);
@@ -608,7 +608,7 @@ std::string dbconn::get_single_string(const mariadb::connection_ref& connection,
 }
 long dbconn::get_single_long(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
-	mariadb::result_set_ref rslt = select(std::move(connection), sql, params);
+	mariadb::result_set_ref rslt = select(connection, sql, params);
 	if(rslt->next())
 	{
 		// mariadbpp checks for strict integral equivalence, but we don't care
@@ -641,7 +641,7 @@ long dbconn::get_single_long(const mariadb::connection_ref& connection, const st
 }
 bool dbconn::exists(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params)
 {
-	mariadb::result_set_ref rslt = select(std::move(connection), sql, params);
+	mariadb::result_set_ref rslt = select(connection, sql, params);
 	return rslt->next();
 }
 
@@ -652,7 +652,7 @@ mariadb::result_set_ref dbconn::select(const mariadb::connection_ref& connection
 {
 	try
 	{
-		mariadb::statement_ref stmt = query(std::move(connection), sql, params);
+		mariadb::statement_ref stmt = query(connection, sql, params);
 		mariadb::result_set_ref rslt = mariadb::result_set_ref(stmt->query());
 		return rslt;
 	}
@@ -666,7 +666,7 @@ unsigned long long dbconn::modify(const mariadb::connection_ref& connection, con
 {
 	try
 	{
-		mariadb::statement_ref stmt = query(std::move(connection), sql, params);
+		mariadb::statement_ref stmt = query(connection, sql, params);
 		unsigned long long count = stmt->execute();
 		return count;
 	}
@@ -680,7 +680,7 @@ unsigned long long dbconn::modify_get_id(const mariadb::connection_ref& connecti
 {
 	try
 	{
-		mariadb::statement_ref stmt = query(std::move(connection), sql, params);
+		mariadb::statement_ref stmt = query(connection, sql, params);
 		unsigned long long count = stmt->insert();
 		return count;
 	}
