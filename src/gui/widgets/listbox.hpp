@@ -33,7 +33,6 @@ namespace gui2
 class selectable_item;
 namespace implementation
 {
-struct builder_listbox_base;
 struct builder_listbox;
 struct builder_horizontal_listbox;
 struct builder_grid_listbox;
@@ -42,8 +41,9 @@ struct builder_grid_listbox;
 /** The listbox class. */
 class listbox : public scrollbar_container
 {
-	friend struct implementation::builder_listbox_base;
 	friend struct implementation::builder_listbox;
+	friend struct implementation::builder_horizontal_listbox;
+	friend struct implementation::builder_grid_listbox;
 
 	friend class debug_layout_graph;
 
@@ -441,15 +441,40 @@ struct listbox_definition : public styled_widget_definition
 namespace implementation
 {
 
-struct builder_listbox_base : public builder_styled_widget
+struct builder_listbox : public builder_styled_widget
 {
-	explicit builder_listbox_base(const config& cfg);
+	explicit builder_listbox(const config& cfg);
 
-	std::unique_ptr<widget> generic_build(
-		generator_base::placement placement,
-		const builder_grid_const_ptr& header = nullptr,
-		const builder_grid_const_ptr& footer = nullptr,
-		bool allow_selection = true) const;
+	using builder_styled_widget::build;
+
+	virtual std::unique_ptr<widget> build() const override;
+
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
+
+	builder_grid_ptr header;
+	builder_grid_ptr footer;
+
+	builder_grid_ptr list_builder;
+
+	/**
+	 * Listbox data.
+	 *
+	 * Contains a vector with the data to set in every cell, it's used to
+	 * serialize the data in the config, so the config is no longer required.
+	 */
+	std::vector<widget_data> list_data;
+
+	bool has_minimum_, has_maximum_, allow_selection_;
+};
+
+struct builder_horizontal_listbox : public builder_styled_widget
+{
+	explicit builder_horizontal_listbox(const config& cfg);
+
+	using builder_styled_widget::build;
+
+	virtual std::unique_ptr<widget> build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
@@ -467,36 +492,28 @@ struct builder_listbox_base : public builder_styled_widget
 	bool has_minimum_, has_maximum_;
 };
 
-struct builder_listbox : public builder_listbox_base
-{
-	explicit builder_listbox(const config& cfg);
-
-	using builder_styled_widget::build;
-
-	virtual std::unique_ptr<widget> build() const override;
-
-	builder_grid_ptr header;
-	builder_grid_ptr footer;
-
-	bool allow_selection_;
-};
-
-struct builder_horizontal_listbox : public builder_listbox_base
-{
-	explicit builder_horizontal_listbox(const config& cfg);
-
-	using builder_styled_widget::build;
-
-	virtual std::unique_ptr<widget> build() const override;
-};
-
-struct builder_grid_listbox : public builder_listbox_base
+struct builder_grid_listbox : public builder_styled_widget
 {
 	explicit builder_grid_listbox(const config& cfg);
 
-	using builder_listbox_base::build;
+	using builder_styled_widget::build;
 
 	virtual std::unique_ptr<widget> build() const override;
+
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
+
+	builder_grid_ptr list_builder;
+
+	/**
+	 * Listbox data.
+	 *
+	 * Contains a vector with the data to set in every cell, it's used to
+	 * serialize the data in the config, so the config is no longer required.
+	 */
+	std::vector<widget_data> list_data;
+
+	bool has_minimum_, has_maximum_;
 };
 
 } // namespace implementation
