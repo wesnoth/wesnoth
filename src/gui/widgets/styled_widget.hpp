@@ -309,7 +309,7 @@ protected:
 
 	void set_config(resolution_definition_ptr config)
 	{
-		config_ = config;
+		config_ = std::move(config);
 	}
 
 	/***** ***** ***** ***** miscellaneous ***** ***** ***** *****/
