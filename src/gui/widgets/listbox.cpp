@@ -43,7 +43,7 @@ REGISTER_WIDGET(listbox)
 REGISTER_WIDGET3(listbox_definition, horizontal_listbox, nullptr)
 REGISTER_WIDGET3(listbox_definition, grid_listbox, nullptr)
 
-listbox::listbox(const implementation::builder_styled_widget& builder,
+listbox::listbox(const implementation::builder_scrollbar_container& builder,
 		const generator_base::placement placement,
 		const builder_grid_ptr& list_builder)
 	: scrollbar_container(builder, type())
@@ -738,9 +738,7 @@ static std::vector<widget_data> parse_list_data(const config& data, const unsign
 }
 
 builder_listbox::builder_listbox(const config& cfg)
-	: builder_styled_widget(cfg)
-	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	: builder_scrollbar_container(cfg)
 	, header(nullptr)
 	, footer(nullptr)
 	, list_builder(nullptr)
@@ -775,9 +773,6 @@ std::unique_ptr<widget> builder_listbox::build() const
 {
 	auto widget = std::make_unique<listbox>(*this, generator_base::vertical_list, list_builder);
 
-	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
-	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
-
 	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.";
 
 	const auto conf = widget->cast_config_to<listbox_definition>();
@@ -792,9 +787,7 @@ std::unique_ptr<widget> builder_listbox::build() const
 }
 
 builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
-	: builder_styled_widget(cfg)
-	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	: builder_scrollbar_container(cfg)
 	, list_builder(nullptr)
 	, list_data()
 	, has_minimum_(cfg["has_minimum"].to_bool(true))
@@ -818,9 +811,6 @@ std::unique_ptr<widget> builder_horizontal_listbox::build() const
 {
 	auto widget = std::make_unique<listbox>(*this, generator_base::horizontal_list, list_builder);
 
-	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
-	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
-
 	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.";
 
 	const auto conf = widget->cast_config_to<listbox_definition>();
@@ -835,9 +825,7 @@ std::unique_ptr<widget> builder_horizontal_listbox::build() const
 }
 
 builder_grid_listbox::builder_grid_listbox(const config& cfg)
-	: builder_styled_widget(cfg)
-	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	: builder_scrollbar_container(cfg)
 	, list_builder(nullptr)
 	, list_data()
 	, has_minimum_(cfg["has_minimum"].to_bool(true))
@@ -860,9 +848,6 @@ builder_grid_listbox::builder_grid_listbox(const config& cfg)
 std::unique_ptr<widget> builder_grid_listbox::build() const
 {
 	auto widget = std::make_unique<listbox>(*this, generator_base::table, list_builder);
-
-	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
-	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
 	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.";
 

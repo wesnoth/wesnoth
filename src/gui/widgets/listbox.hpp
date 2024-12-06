@@ -55,7 +55,7 @@ public:
 	 * @param placement           How are the items placed.
 	 * @param list_builder        Grid builder for the listbox definition grid.
 	 */
-	listbox(const implementation::builder_styled_widget& builder,
+	listbox(const implementation::builder_scrollbar_container& builder,
 			const generator_base::placement placement,
 			const builder_grid_ptr& list_builder);
 
@@ -441,16 +441,13 @@ struct listbox_definition : public styled_widget_definition
 namespace implementation
 {
 
-struct builder_listbox : public builder_styled_widget
+struct builder_listbox : public builder_scrollbar_container
 {
 	explicit builder_listbox(const config& cfg);
 
 	using builder_styled_widget::build;
 
 	virtual std::unique_ptr<widget> build() const override;
-
-	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
 	builder_grid_ptr header;
 	builder_grid_ptr footer;
@@ -468,16 +465,13 @@ struct builder_listbox : public builder_styled_widget
 	bool has_minimum_, has_maximum_, allow_selection_;
 };
 
-struct builder_horizontal_listbox : public builder_styled_widget
+struct builder_horizontal_listbox : public builder_scrollbar_container
 {
 	explicit builder_horizontal_listbox(const config& cfg);
 
 	using builder_styled_widget::build;
 
 	virtual std::unique_ptr<widget> build() const override;
-
-	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
 	builder_grid_ptr list_builder;
 
@@ -492,16 +486,13 @@ struct builder_horizontal_listbox : public builder_styled_widget
 	bool has_minimum_, has_maximum_;
 };
 
-struct builder_grid_listbox : public builder_styled_widget
+struct builder_grid_listbox : public builder_scrollbar_container
 {
 	explicit builder_grid_listbox(const config& cfg);
 
 	using builder_styled_widget::build;
 
 	virtual std::unique_ptr<widget> build() const override;
-
-	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
 	builder_grid_ptr list_builder;
 
