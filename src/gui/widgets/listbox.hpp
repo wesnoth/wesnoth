@@ -255,8 +255,6 @@ public:
 	void order_by(const generator_base::order_func& func);
 
 private:
-	void set_column_order(unsigned col, generator_sort_array&& func);
-
 	struct sort_helper
 	{
 		template<typename T>
@@ -273,22 +271,22 @@ private:
 	};
 
 public:
-	template<typename Func>
-	void register_sorting_option(const int col, const Func& f)
+	template<typename... Args>
+	void set_sorting_options(Args&&... functors)
 	{
-		set_column_order(col, {
-			[f](int lhs, int rhs) { return sort_helper::less(f(lhs), f(rhs)); },
-			[f](int lhs, int rhs) { return sort_helper::more(f(lhs), f(rhs)); }
-		});
+		orders_ = {{ nullptr, {
+			[f = functors](int lhs, int rhs) { return sort_helper::less(f(lhs), f(rhs)); },
+			[f = functors](int lhs, int rhs) { return sort_helper::more(f(lhs), f(rhs)); }
+		}}...};
 	}
 
 	using order_pair = std::pair<int, sort_order::type>;
 
 	/**
 	 * Sorts the listbox by a pre-set sorting option. The corresponding header widget will also be toggled.
-	 * The sorting option should already have been registered by @ref listbox::register_sorting_option().
+	 * The sorting option should already have been registered by @ref listbox::set_sorting_options().
 	 *
-	 * @param sort_by         Pair of column index and sort direction. The column (first arguemnt)
+	 * @param sort_by         Pair of column index and sort direction. The column (first argument)
 	 *                        argument will be sorted in the specified direction (second argument)
 	 *
 	 * @param select_first    If true, the first row post-sort will be selected. If false (default),
@@ -372,8 +370,7 @@ private:
 	/** Contains the builder for the new items. */
 	builder_grid_const_ptr list_builder_;
 
-	typedef std::vector<std::pair<selectable_item*, generator_sort_array>> torder_list;
-	torder_list orders_;
+	std::vector<std::pair<selectable_item*, generator_sort_array>> orders_;
 
 	std::function<void(unsigned, sort_order::type)> callback_order_change_;
 

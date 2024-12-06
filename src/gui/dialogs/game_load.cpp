@@ -106,8 +106,10 @@ void game_load::pre_show()
 	keyboard_capture(filter);
 	add_to_keyboard_chain(&list);
 
-	list.register_sorting_option(0, [this](const int i) { return games_[i].name(); });
-	list.register_sorting_option(1, [this](const int i) { return games_[i].modified(); });
+	list.set_sorting_options(
+		[this](const std::size_t i) { return games_[i].name(); },
+ 		[this](const std::size_t i) { return games_[i].modified(); }
+	);
 
 	populate_game_list();
 

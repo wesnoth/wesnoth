@@ -841,16 +841,18 @@ void preferences_dialog::initialize_callbacks()
 	text_box& filter = find_widget<text_box>("filter");
 	filter.set_text_changed_callback(std::bind(&preferences_dialog::hotkey_filter_callback, this));
 
-	// Action column
-	hotkey_list.register_sorting_option(0, [this](const int i) { return visible_hotkeys_[i]->description; });
+	hotkey_list.set_sorting_options(
+		// Action column
+		[this](const std::size_t i) { return visible_hotkeys_[i]->description; },
 
-	// Hotkey column
-	hotkey_list.register_sorting_option(1, [this](const int i) { return hotkey::get_names(visible_hotkeys_[i]->id); });
+		// Hotkey column
+		[this](const std::size_t i) { return hotkey::get_names(visible_hotkeys_[i]->id); },
 
-	// Scope columns
-	hotkey_list.register_sorting_option(2, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_GAME]; });
-	hotkey_list.register_sorting_option(3, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_EDITOR]; });
-	hotkey_list.register_sorting_option(4, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_MAIN_MENU]; });
+		// Scope columns
+		[this](const std::size_t i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_GAME]; },
+		[this](const std::size_t i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_EDITOR]; },
+		[this](const std::size_t i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_MAIN_MENU]; }
+	);
 
 	hotkey_list.set_active_sorting_option({0, sort_order::type::ascending}, true);
 
