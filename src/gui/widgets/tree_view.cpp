@@ -37,7 +37,7 @@ REGISTER_WIDGET(tree_view)
 tree_view::tree_view(const implementation::builder_tree_view& builder)
 	: scrollbar_container(builder, type())
 	, node_definitions_(builder.nodes)
-	, indentation_step_size_(0)
+	, indentation_step_size_(builder.indentation_step_size)
 	, need_layout_(false)
 	, root_node_(nullptr)
 	, selected_item_(nullptr)
@@ -295,8 +295,6 @@ std::unique_ptr<widget> builder_tree_view::build() const
 	 *  building in several steps.
 	 */
 	auto widget = std::make_unique<tree_view>(*this);
-
-	widget->set_indentation_step_size(indentation_step_size);
 
 	DBG_GUI_G << "Window builder: placed tree_view '" << id << "' with definition '" << definition << "'.";
 
