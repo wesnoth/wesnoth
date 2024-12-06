@@ -33,17 +33,13 @@ namespace gui2
 class selectable_item;
 namespace implementation
 {
-struct builder_listbox;
-struct builder_horizontal_listbox;
-struct builder_grid_listbox;
+struct builder_listbox_base;
 }
 
 /** The listbox class. */
 class listbox : public scrollbar_container
 {
-	friend struct implementation::builder_listbox;
-	friend struct implementation::builder_horizontal_listbox;
-	friend struct implementation::builder_grid_listbox;
+	friend struct implementation::builder_listbox_base;
 
 	friend class debug_layout_graph;
 
@@ -52,12 +48,8 @@ public:
 	 * Constructor.
 	 *
 	 * @param builder             The builder for the appropriate listbox variant.
-	 * @param placement           How are the items placed.
-	 * @param list_builder        Grid builder for the listbox definition grid.
 	 */
-	listbox(const implementation::builder_scrollbar_container& builder,
-			const generator_base::placement placement,
-			const builder_grid_ptr& list_builder);
+	listbox(const implementation::builder_listbox_base& builder);
 
 	/***** ***** ***** ***** Row handling. ***** ***** ****** *****/
 
@@ -345,17 +337,9 @@ private:
 	 */
 
 	/**
-	 * Finishes the building initialization of the widget.
-	 *
-	 * @param generator           Generator for the list
-	 * @param header              Builder for the header.
-	 * @param footer              Builder for the footer.
-	 * @param list_data           The initial data to fill the listbox with.
+	 * Finishes binding callbacks to header sorting toggles.
 	 */
-	void finalize(std::unique_ptr<generator_base> generator,
-			const builder_grid_const_ptr& header,
-			const builder_grid_const_ptr& footer,
-			const std::vector<widget_data>& list_data);
+	void initialize_header();
 
 	/**
 	 * Contains a pointer to the generator.
@@ -365,7 +349,7 @@ private:
 	 */
 	generator_base* generator_;
 
-	const bool is_horizontal_;
+	generator_base::placement placement_;
 
 	/** Contains the builder for the new items. */
 	builder_grid_const_ptr list_builder_;
@@ -440,14 +424,17 @@ struct listbox_definition : public styled_widget_definition
 
 namespace implementation
 {
-
-struct builder_listbox : public builder_scrollbar_container
+struct builder_listbox_base : public builder_scrollbar_container
 {
-	explicit builder_listbox(const config& cfg);
+	explicit builder_listbox_base(const config& cfg, const generator_base::placement placement);
 
 	using builder_styled_widget::build;
 
+	/** Inherited from builder_widget */
 	virtual std::unique_ptr<widget> build() const override;
+
+	/** Flag for vertical, horizontal, or grid placement. */
+	generator_base::placement placement;
 
 	builder_grid_ptr header;
 	builder_grid_ptr footer;
@@ -462,49 +449,28 @@ struct builder_listbox : public builder_scrollbar_container
 	 */
 	std::vector<widget_data> list_data;
 
-	bool has_minimum_, has_maximum_, allow_selection_;
+	bool has_minimum, has_maximum, allow_selection;
 };
 
-struct builder_horizontal_listbox : public builder_scrollbar_container
+struct builder_listbox : public builder_listbox_base
 {
-	explicit builder_horizontal_listbox(const config& cfg);
-
-	using builder_styled_widget::build;
-
-	virtual std::unique_ptr<widget> build() const override;
-
-	builder_grid_ptr list_builder;
-
-	/**
-	 * Listbox data.
-	 *
-	 * Contains a vector with the data to set in every cell, it's used to
-	 * serialize the data in the config, so the config is no longer required.
-	 */
-	std::vector<widget_data> list_data;
-
-	bool has_minimum_, has_maximum_;
+	explicit builder_listbox(const config& cfg);
 };
 
-struct builder_grid_listbox : public builder_scrollbar_container
+struct builder_horizontal_listbox : public builder_listbox_base
 {
-	explicit builder_grid_listbox(const config& cfg);
+	explicit builder_horizontal_listbox(const config& cfg)
+		: builder_listbox_base(cfg, generator_base::horizontal_list)
+	{
+	}
+};
 
-	using builder_styled_widget::build;
-
-	virtual std::unique_ptr<widget> build() const override;
-
-	builder_grid_ptr list_builder;
-
-	/**
-	 * Listbox data.
-	 *
-	 * Contains a vector with the data to set in every cell, it's used to
-	 * serialize the data in the config, so the config is no longer required.
-	 */
-	std::vector<widget_data> list_data;
-
-	bool has_minimum_, has_maximum_;
+struct builder_grid_listbox : public builder_listbox_base
+{
+	explicit builder_grid_listbox(const config& cfg)
+		: builder_listbox_base(cfg, generator_base::table)
+	{
+	}
 };
 
 } // namespace implementation

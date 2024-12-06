@@ -43,16 +43,52 @@ REGISTER_WIDGET(listbox)
 REGISTER_WIDGET3(listbox_definition, horizontal_listbox, nullptr)
 REGISTER_WIDGET3(listbox_definition, grid_listbox, nullptr)
 
-listbox::listbox(const implementation::builder_scrollbar_container& builder,
-		const generator_base::placement placement,
-		const builder_grid_ptr& list_builder)
+listbox::listbox(const implementation::builder_listbox_base& builder)
 	: scrollbar_container(builder, type())
 	, generator_(nullptr)
-	, is_horizontal_(placement == generator_base::horizontal_list)
-	, list_builder_(list_builder)
+	, placement_(builder.placement)
+	, list_builder_(builder.list_builder)
 	, orders_()
 	, callback_order_change_()
 {
+	const auto conf = cast_config_to<listbox_definition>();
+	assert(conf);
+
+	// FIXME: replacements (rightfully) clobber IDs. Is there a way around that?
+	builder_widget::replacements_map replacements;
+
+	if(auto header = builder.header) {
+		header->id = "_header_grid";
+		replacements.try_emplace("_header_grid_placeholder", std::move(header));
+	}
+
+	if(auto footer = builder.footer) {
+		footer->id = "_footer_grid";
+		replacements.try_emplace("_footer_grid_placeholder", std::move(footer));
+	}
+
+	conf->grid->build(get_grid(), replacements);
+
+	// "Inherited."
+	scrollbar_container::finalize_setup();
+
+	auto generator = generator_base::build(
+		builder.has_minimum,
+		builder.has_maximum,
+		builder.placement,
+		builder.allow_selection);
+
+	// Save our *non-owning* pointer before this gets moved into the grid.
+	generator_ = generator.get();
+	assert(generator_);
+
+	generator->create_items(-1, *list_builder_, builder.list_data,
+		std::bind(&listbox::list_item_clicked, this, std::placeholders::_1));
+
+	// TODO: can we use the replacements system here?
+	swap_grid(nullptr, content_grid(), std::move(generator), "_list_grid");
+
+	initialize_header();
 }
 
 grid& listbox::add_row(const widget_item& item, const int index)
@@ -90,14 +126,16 @@ void listbox::remove_row(const unsigned row, unsigned count)
 	int height_reduced = 0;
 	int width_reduced = 0;
 
+	const bool is_horizontal = placement_ == generator_base::horizontal_list;
+
 	// TODO: Fix this for horizontal listboxes
 	// Note the we have to use content_grid_ and cannot use "_list_grid" which is what generator_ uses.
-	int row_pos_y = is_horizontal_ ? -1 : generator_->item(row).get_y() - content_grid_->get_y();
-	int row_pos_x = is_horizontal_ ? -1 : 0;
+	int row_pos_y = is_horizontal ? -1 : generator_->item(row).get_y() - content_grid_->get_y();
+	int row_pos_x = is_horizontal ? -1 : 0;
 
 	for(; count; --count) {
 		if(generator_->item(row).get_visible() != visibility::invisible) {
-			if(is_horizontal_) {
+			if(is_horizontal) {
 				width_reduced += generator_->item(row).get_width();
 			} else {
 				height_reduced += generator_->item(row).get_height();
@@ -517,21 +555,14 @@ void listbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 	}
 }
 
-void listbox::finalize(std::unique_ptr<generator_base> generator,
-		const builder_grid_const_ptr& header,
-		const builder_grid_const_ptr& footer,
-		const std::vector<widget_data>& list_data)
+void listbox::initialize_header()
 {
-	// "Inherited."
-	scrollbar_container::finalize_setup();
-
-	if(header) {
-		swap_grid(&get_grid(), content_grid(), header->build(), "_header_grid");
+	auto header = find_widget<grid>("_header_grid", false, false);
+	if(!header) {
+		return;
 	}
 
-	grid& p = find_widget<grid>("_header_grid");
-
-	for(unsigned i = 0, max = std::max(p.get_cols(), p.get_rows()); i < max; ++i) {
+	for(unsigned i = 0, max = std::max(header->get_cols(), header->get_rows()); i < max; ++i) {
 		//
 		// TODO: I had to change this to case to a toggle_button in order to use a signal handler.
 		// Should probably look into a way to make it more general like it was before (used to be
@@ -539,7 +570,7 @@ void listbox::finalize(std::unique_ptr<generator_base> generator,
 		//
 		// - vultraz, 2017-08-23
 		//
-		if(toggle_button* selectable = p.find_widget<toggle_button>("sort_" + std::to_string(i), false, false)) {
+		if(toggle_button* selectable = header->find_widget<toggle_button>("sort_" + std::to_string(i), false, false)) {
 			// Register callback to sort the list.
 			connect_signal_notify_modified(*selectable, std::bind(&listbox::order_by_column, this, i, std::placeholders::_1));
 
@@ -550,17 +581,6 @@ void listbox::finalize(std::unique_ptr<generator_base> generator,
 			orders_[i].first = selectable;
 		}
 	}
-
-	if(footer) {
-		swap_grid(&get_grid(), content_grid(), footer->build(), "_footer_grid");
-	}
-
-	// Save our *non-owning* pointer before this gets moved into the grid.
-	generator_ = generator.get();
-	assert(generator_);
-
-	generator->create_items(-1, *list_builder_, list_data, std::bind(&listbox::list_item_clicked, this, std::placeholders::_1));
-	swap_grid(nullptr, content_grid(), std::move(generator), "_list_grid");
 }
 
 void listbox::order_by_column(unsigned column, widget& widget)
@@ -613,9 +633,12 @@ bool listbox::sort_helper::more(const t_string& lhs, const t_string& rhs)
 void listbox::set_active_sorting_option(const order_pair& sort_by, const bool select_first)
 {
 	// TODO: should this be moved to a public header_grid() getter function?
-	grid& header_grid = find_widget<grid>("_header_grid");
+	auto header = find_widget<grid>("_header_grid", false, false);
+	if(!header) {
+		return;
+	}
 
-	selectable_item& w = header_grid.find_widget<selectable_item>("sort_" + std::to_string(sort_by.first));
+	selectable_item& w = header->find_widget<selectable_item>("sort_" + std::to_string(sort_by.first));
 
 	// Set the sorting toggle widgets' value (in this case, its state) to the given sorting
 	// order. This is necessary since the widget's value is used to determine the order in
@@ -737,15 +760,40 @@ static std::vector<widget_data> parse_list_data(const config& data, const unsign
 	return list_data;
 }
 
-builder_listbox::builder_listbox(const config& cfg)
+builder_listbox_base::builder_listbox_base(const config& cfg, const generator_base::placement placement)
 	: builder_scrollbar_container(cfg)
+	, placement(placement)
 	, header(nullptr)
 	, footer(nullptr)
 	, list_builder(nullptr)
 	, list_data()
-	, has_minimum_(cfg["has_minimum"].to_bool(true))
-	, has_maximum_(cfg["has_maximum"].to_bool(true))
-	, allow_selection_(cfg["allow_selection"].to_bool(true))
+	, has_minimum(cfg["has_minimum"].to_bool(true))
+	, has_maximum(cfg["has_maximum"].to_bool(true))
+	, allow_selection(cfg["allow_selection"].to_bool(true))
+{
+	auto l = cfg.optional_child("list_definition");
+
+	VALIDATE(l, _("No list defined."));
+
+	list_builder = std::make_shared<builder_grid>(*l);
+	assert(list_builder);
+
+	VALIDATE(list_builder->rows == 1, _("A ‘list_definition’ should contain one row."));
+
+	if(cfg.has_child("list_data")) {
+		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
+	}
+}
+
+std::unique_ptr<widget> builder_listbox_base::build() const
+{
+	auto widget = std::make_unique<listbox>(*this);
+	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.";
+	return widget;
+}
+
+builder_listbox::builder_listbox(const config& cfg)
+	: builder_listbox_base(cfg, generator_base::vertical_list)
 {
 	if(auto h = cfg.optional_child("header")) {
 		header = std::make_shared<builder_grid>(*h);
@@ -754,112 +802,6 @@ builder_listbox::builder_listbox(const config& cfg)
 	if(auto f = cfg.optional_child("footer")) {
 		footer = std::make_shared<builder_grid>(*f);
 	}
-
-	auto l = cfg.optional_child("list_definition");
-
-	VALIDATE(l, _("No list defined."));
-
-	list_builder = std::make_shared<builder_grid>(*l);
-	assert(list_builder);
-
-	VALIDATE(list_builder->rows == 1, _("A ‘list_definition’ should contain one row."));
-
-	if(cfg.has_child("list_data")) {
-		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
-	}
-}
-
-std::unique_ptr<widget> builder_listbox::build() const
-{
-	auto widget = std::make_unique<listbox>(*this, generator_base::vertical_list, list_builder);
-
-	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.";
-
-	const auto conf = widget->cast_config_to<listbox_definition>();
-	assert(conf);
-
-	widget->init_grid(*conf->grid);
-
-	auto generator = generator_base::build(has_minimum_, has_maximum_, generator_base::vertical_list, allow_selection_);
-	widget->finalize(std::move(generator), header, footer, list_data);
-
-	return widget;
-}
-
-builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
-	: builder_scrollbar_container(cfg)
-	, list_builder(nullptr)
-	, list_data()
-	, has_minimum_(cfg["has_minimum"].to_bool(true))
-	, has_maximum_(cfg["has_maximum"].to_bool(true))
-{
-	auto l = cfg.optional_child("list_definition");
-
-	VALIDATE(l, _("No list defined."));
-
-	list_builder = std::make_shared<builder_grid>(*l);
-	assert(list_builder);
-
-	VALIDATE(list_builder->rows == 1, _("A ‘list_definition’ should contain one row."));
-
-	if(cfg.has_child("list_data")) {
-		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
-	}
-}
-
-std::unique_ptr<widget> builder_horizontal_listbox::build() const
-{
-	auto widget = std::make_unique<listbox>(*this, generator_base::horizontal_list, list_builder);
-
-	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.";
-
-	const auto conf = widget->cast_config_to<listbox_definition>();
-	assert(conf);
-
-	widget->init_grid(*conf->grid);
-
-	auto generator = generator_base::build(has_minimum_, has_maximum_, generator_base::horizontal_list, true);
-	widget->finalize(std::move(generator), nullptr, nullptr, list_data);
-
-	return widget;
-}
-
-builder_grid_listbox::builder_grid_listbox(const config& cfg)
-	: builder_scrollbar_container(cfg)
-	, list_builder(nullptr)
-	, list_data()
-	, has_minimum_(cfg["has_minimum"].to_bool(true))
-	, has_maximum_(cfg["has_maximum"].to_bool(true))
-{
-	auto l = cfg.optional_child("list_definition");
-
-	VALIDATE(l, _("No list defined."));
-
-	list_builder = std::make_shared<builder_grid>(*l);
-	assert(list_builder);
-
-	VALIDATE(list_builder->rows == 1, _("A ‘list_definition’ should contain one row."));
-
-	if(cfg.has_child("list_data")) {
-		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
-	}
-}
-
-std::unique_ptr<widget> builder_grid_listbox::build() const
-{
-	auto widget = std::make_unique<listbox>(*this, generator_base::table, list_builder);
-
-	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.";
-
-	const auto conf = widget->cast_config_to<listbox_definition>();
-	assert(conf);
-
-	widget->init_grid(*conf->grid);
-
-	auto generator = generator_base::build(has_minimum_, has_maximum_, generator_base::table, true);
-	widget->finalize(std::move(generator), nullptr, nullptr, list_data);
-
-	return widget;
 }
 
 } // namespace implementation
