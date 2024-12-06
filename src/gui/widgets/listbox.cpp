@@ -600,15 +600,6 @@ void listbox::order_by(const generator_base::order_func& func)
 	update_layout();
 }
 
-void listbox::set_column_order(unsigned col, generator_sort_array&& func)
-{
-	if(col >= orders_.size()) {
-		orders_.resize(col + 1);
-	}
-
-	orders_[col].second = std::move(func);
-}
-
 bool listbox::sort_helper::less(const t_string& lhs, const t_string& rhs)
 {
 	return translation::icompare(lhs, rhs) < 0;
