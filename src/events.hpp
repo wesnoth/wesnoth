@@ -120,6 +120,8 @@ void focus_handler(const sdl_handler* ptr);
 
 bool has_focus(const sdl_handler* ptr, const SDL_Event* event);
 
+void set_main_thread();
+
 // whether the currently executing thread is the main thread.
 bool is_in_main_thread();
 

@@ -106,6 +106,9 @@ opts.AddVariables(
     BoolVariable('system_lua', 'Enable use of system Lua ' + lua_ver + ' (compiled as C++, only for non-Windows systems).', False),
     PathVariable('luadir', 'Directory where Lua binary package is unpacked.', "", OptionalPath),
     ('host', 'Cross-compile host.', ''),
+    PathVariable('ndkdir', 'Root directory of android NDK to use', "", OptionalPath),
+    PathVariable('android_home', 'Root directory of android SDK to use', "", OptionalPath),
+    ('android_api', 'Target android api', 31),
     EnumVariable('multilib_arch', 'Address model for multilib compiler: 32-bit or 64-bit', "", ["", "32", "64"]),
     ('jobs', 'Set the number of parallel compilations', "1", lambda key, value, env: int(value), int),
     BoolVariable('distcc', 'Use distcc', False),
@@ -359,10 +362,7 @@ if env["prereqs"]:
     def CheckAsio(conf):
         if env["PLATFORM"] == 'win32':
             conf.env.Append(LIBS = ["libws2_32"])
-            have_libpthread = True
-        else:
-            have_libpthread = conf.CheckLib("pthread")
-        return have_libpthread & \
+        return \
             conf.CheckBoost("system") & \
             conf.CheckBoost("asio", header_only = True) & \
             conf.CheckBoost("context") & \
@@ -695,7 +695,7 @@ if env['autorevision']:
         pass
 
 Export(Split("env client_env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
-SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
+SConscript(dirs = Split("po doc packaging/windows packaging/systemd packaging/android"))
 
 binaries = Split("wesnoth wesnothd campaignd boost_unit_tests")
 builds = {
