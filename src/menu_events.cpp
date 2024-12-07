@@ -295,21 +295,7 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 	}
 
 	gui2::dialogs::units_dialog dlg;
-	dlg.set_title(_("Recruit Unit"))
-		.set_ok_label(_("Recruit"))
-		.set_help_topic("recruit_and_recall")
-		.set_types(recruit_list)
-		.set_row_num(recruit_list.size())
-		.set_team(&board().get_team(side_num))
-		.hide_all_headers()
-		.set_column_generator("unit_image", recruit_list, [&](const auto& recruit) {
-			std::string image_string = recruit->image();
-			image_string += "~RC(" + recruit->flag_rgb() + ">" + board().get_team(side_num).color() + ")";
-			return image_string;
-		})
-		.set_column_generator("unit_details", recruit_list, [&](const auto& recruit) {
-			return recruit->type_name() + unit_helper::format_cost_string(recruit->cost());
-		});
+	dlg.build_recruit_dialog(recruit_list, board().get_team(side_num));
 
 	if(dlg.show() && dlg.is_selected()) {
 		const auto& type = recruit_list[dlg.get_selected_index()];
