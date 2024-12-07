@@ -69,7 +69,7 @@ units_dialog::units_dialog()
 	, unit_list_()
 	, team_(nullptr)
 	, selected_index_(-1)
-	, row_num_()
+	, row_num_(0)
 	, ok_label_(_("OK"))
 	, show_variation_grid_(false)
 	, show_gender_grid_(false)
@@ -200,7 +200,7 @@ void units_dialog::pre_show()
 
 void units_dialog::show_list(listbox& list)
 {
-	if (unit_type_list_.empty() && unit_list_.empty()) {
+	if (row_num_ == 0) {
 		return;
 	}
 
@@ -599,5 +599,28 @@ units_dialog& units_dialog::build_unit_list_dialog(const std::vector<unit_const_
 
 	return *this;
 }
+
+units_dialog& units_dialog::build_recruit_dialog(
+	const std::vector<const unit_type*>& recruit_list,
+	const team& team)
+{
+	set_title(_("Recruit Unit"));
+	set_ok_label(_("Recruit"));
+	set_help_topic("recruit_and_recall");
+	set_types(recruit_list);
+	set_row_num(recruit_list.size());
+	hide_all_headers();
+	set_column_generator("unit_image", recruit_list, [&](const auto& recruit) {
+		std::string image_string = recruit->image();
+		image_string += "~RC(" + recruit->flag_rgb() + ">" + team.color() + ")";
+		return image_string;
+	});
+	set_column_generator("unit_details", recruit_list, [&](const auto& recruit) {
+		return recruit->type_name() + unit_helper::format_cost_string(recruit->cost());
+	}, true);
+	return *this;
+}
+
+
 
 } // namespace dialogs
