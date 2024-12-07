@@ -585,16 +585,19 @@ units_dialog& units_dialog::build_unit_list_dialog(const std::vector<unit_const_
 	set_column_generator("unit_traits",  unit_list, [&](const auto& unit) {
 		return utils::join(unit->trait_names(), ", ");
 	}, true);
-	set_sorter(2, [&](const int i) {
-		const unit& u = *unit_list[i];
-		return std::tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
+	set_sorter(2, unit_list, [&](const auto& u) {
+		return std::tuple(u->level(), -static_cast<int>(u->experience_to_advance()));
 	});
-	set_sorter(3, [&](const int i) { return unit_list[i]->movement_left(); });
-	set_sorter(4, [&](const int i) { return unit_list[i]->hitpoints(); });
-	set_sorter(5, [&](const int i) {
+	set_sorter(3, unit_list, [&](const auto& u) {
+		return u->movement_left();
+	});
+	set_sorter(4, unit_list, [&](const auto& u) {
+		return u->hitpoints();
+	});
+	set_sorter(5, unit_list, [&](const auto& u) {
 		// this allows 0/35, 0/100 etc to be sorted
 		// also sorts 23/35 before 0/35, after which 0/100 comes
-		return unit_list[i]->experience() + unit_list[i]->max_experience();
+		return u->experience() + u->max_experience();
 	});
 
 	return *this;
