@@ -176,15 +176,8 @@ public:
 		return *this;
 	}
 
-	template<typename Func>
-	units_dialog& set_sorter(int col, const Func& sorter)
-	{
-		find_widget<gui2::listbox>("recall_list").register_sorting_option(col, sorter);
-		return *this;
-	}
-
 	template<typename Value, typename Generator = std::function<std::string(const Value&)>>
-	units_dialog& set_translatable_sorter(
+	units_dialog& set_sorter(
 		const int col, const std::vector<Value>& container, const Generator& generator)
 	{
 		find_widget<gui2::listbox>("recall_list").register_sorting_option(
