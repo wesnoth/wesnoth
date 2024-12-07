@@ -63,6 +63,9 @@
 		461CE967205C3A8700E6E98F /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		461DC52D241F836300B9DD10 /* lua_color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 461DC52B241F836200B9DD10 /* lua_color.cpp */; };
 		461DC52E241F875A00B9DD10 /* lua_color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 461DC52B241F836200B9DD10 /* lua_color.cpp */; };
+		462311AE2D047E6800DAE465 /* libboost_charconv-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 462311AD2D047E6800DAE465 /* libboost_charconv-mt.dylib */; };
+		462311AF2D047E6800DAE465 /* libboost_charconv-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 462311AD2D047E6800DAE465 /* libboost_charconv-mt.dylib */; };
+		462311B02D047E7000DAE465 /* libboost_charconv-mt.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 462311AD2D047E6800DAE465 /* libboost_charconv-mt.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		463896712034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
 		463896722034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
 		46406DE9230DA7030069492E /* libogg.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0363228361B6007D2741 /* libogg.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -1530,6 +1533,7 @@
 				4674EEA124CD207F007C18CE /* libgio-2.0.0.dylib in Copy Frameworks */,
 				46406DF0230DA7190069492E /* libvorbisfile.dylib in Copy Frameworks */,
 				46406DE9230DA7030069492E /* libogg.0.dylib in Copy Frameworks */,
+				462311B02D047E7000DAE465 /* libboost_charconv-mt.dylib in Copy Frameworks */,
 				91B622171B76C0A600B00E0F /* libpango-1.0.0.dylib in Copy Frameworks */,
 				46406DEB230DA7180069492E /* libSDL2_mixer-2.0.0.dylib in Copy Frameworks */,
 				46081FF52B2F11FF006ACAD7 /* libsharpyuv.0.dylib in Copy Frameworks */,
@@ -1624,6 +1628,7 @@
 		46181DD12119F74C00908BC2 /* battery_info.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = battery_info.cpp; sourceTree = "<group>"; };
 		461DC52B241F836200B9DD10 /* lua_color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_color.cpp; sourceTree = "<group>"; };
 		461DC52C241F836200B9DD10 /* lua_color.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_color.hpp; sourceTree = "<group>"; };
+		462311AD2D047E6800DAE465 /* libboost_charconv-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_charconv-mt.dylib"; path = "lib/libboost_charconv-mt.dylib"; sourceTree = "<group>"; };
 		4638966F2034180800075E54 /* deprecation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = deprecation.hpp; sourceTree = "<group>"; };
 		463896702034180900075E54 /* deprecation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = deprecation.cpp; sourceTree = "<group>"; };
 		4649B879202886F000827CFB /* test_irdya_date.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_irdya_date.cpp; sourceTree = "<group>"; };
@@ -3001,6 +3006,7 @@
 				46A72F4524D7108A0033B5A9 /* CoreGraphics.framework in Frameworks */,
 				F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */,
 				464C0370228361B7007D2741 /* libSDL2_mixer-2.0.0.dylib in Frameworks */,
+				462311AF2D047E6800DAE465 /* libboost_charconv-mt.dylib in Frameworks */,
 				464C036B228361B7007D2741 /* libogg.0.dylib in Frameworks */,
 				468A5BB4258CD40E004A80EF /* libboost_thread-mt.dylib in Frameworks */,
 				468A5BAB258CD3E0004A80EF /* libboost_locale-mt.dylib in Frameworks */,
@@ -3109,6 +3115,7 @@
 				464C03762283695D007D2741 /* libSDL2_mixer-2.0.0.dylib in Frameworks */,
 				464C037322836954007D2741 /* libvorbisfile.dylib in Frameworks */,
 				91A215E21CAD9B9000927AEA /* libpango-1.0.0.dylib in Frameworks */,
+				462311AE2D047E6800DAE465 /* libboost_charconv-mt.dylib in Frameworks */,
 				468A5B9B258CD3B5004A80EF /* libboost_coroutine-mt.dylib in Frameworks */,
 				91A215E31CAD9B9000927AEA /* libpangocairo-1.0.0.dylib in Frameworks */,
 				916718EB1CADA88800B055A9 /* libgobject-2.0.0.dylib in Frameworks */,
@@ -3519,6 +3526,7 @@
 			children = (
 				46CAC4CB29BD07C0004763BE /* libcurl.tbd */,
 				4690FBC42884726900986A47 /* libboost_atomic-mt.dylib */,
+				462311AD2D047E6800DAE465 /* libboost_charconv-mt.dylib */,
 				468A5B85258CD3B4004A80EF /* libboost_chrono-mt.dylib */,
 				468A5B86258CD3B4004A80EF /* libboost_context-mt.dylib */,
 				468A5B8D258CD3B4004A80EF /* libboost_coroutine-mt.dylib */,
