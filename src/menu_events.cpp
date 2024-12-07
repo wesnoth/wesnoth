@@ -436,6 +436,8 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		.set_units(recall_list_team)
 		.set_row_num(recall_list_team.size())
 		.set_team(&current_team)
+		.show_rename_option(true)
+		.show_dismiss_option(true)
 		.set_column_generator("unit_image", recall_list_team, [&](const auto& unit) {
 			std::string mods = unit->image_mods();
 			if(unit->can_recruit()) { mods += "~BLIT(" + unit::leader_crown() + ")"; }
@@ -500,20 +502,19 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 				return std::string();
 			}
 		})
-		.set_translatable_sorter(0, recall_list_team, [&](const auto& recall) { return recall->name().str(); })
-		.set_translatable_sorter(1, recall_list_team, [&](const auto& recall) { return recall->type_name().str(); })
-		.set_sorter(2, [&](const int i) {
-			const unit& u = *recall_list_team[i];
-			return std::tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
+		.set_sorter(0, recall_list_team, [&](const auto& recall) { return recall->name().str(); })
+		.set_sorter(1, recall_list_team, [&](const auto& recall) { return recall->type_name().str(); })
+		.set_sorter(2, recall_list_team, [&](const auto& recall) {
+			return std::tuple(recall->level(), -static_cast<int>(recall->experience_to_advance()));
 		})
-		.set_sorter(3, [&](const int i) { return recall_list_team[i]->movement_left(); })
-		.set_sorter(4, [&](const int i) { return recall_list_team[i]->hitpoints(); })
-		.set_sorter(5, [&](const int i) {
+		.set_sorter(3, recall_list_team, [&](const auto& recall) { return recall->movement_left(); })
+		.set_sorter(4, recall_list_team, [&](const auto& recall) { return recall->hitpoints(); })
+		.set_sorter(5, recall_list_team, [&](const auto& recall) {
 			// this allows 0/35, 0/100 etc to be sorted
 			// also sorts 23/35 before 0/35, after which 0/100 comes
-			return recall_list_team[i]->experience() + recall_list_team[i]->max_experience();
+			return recall->experience() + recall->max_experience();
 		})
-		.set_translatable_sorter(7, recall_list_team, [&](const auto& recall) {
+		.set_sorter(7, recall_list_team, [&](const auto& recall) {
 			return !recall->trait_names().empty() ? recall->trait_names().front().str() : "";
 		});
 
