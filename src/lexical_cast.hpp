@@ -165,16 +165,17 @@ struct lexical_caster<
 	  std::string
 	, From
 	, void
-	, std::enable_if_t<std::is_integral_v<std::remove_pointer_t<From>>>
+	, std::enable_if_t<std::is_arithmetic_v<From>>
 >
 {
 	std::string operator()(From value, utils::optional<std::string>) const
 	{
-		DEBUG_THROW("specialized - To std::string - From integral (pointer)");
-
-		std::stringstream sstr;
-		sstr << value;
-		return sstr.str();
+		DEBUG_THROW("specialized - To std::string - From arithmetic");
+		if constexpr (std::is_same_v<bool, From>) {
+			return value ? "1" : "0";
+		} else {
+			return utils::charconv_buffer(value).to_string();
+		}
 	}
 };
 
@@ -183,7 +184,7 @@ struct lexical_caster<
 /**
  * Specialized conversion class.
  *
- * Specialized for returning arithmetic from a string_view, also used by std::string and (const) char*
+ * @note is specialized to silence C4804 from MSVC.
  */
 template <>
 struct lexical_caster<
@@ -244,7 +245,7 @@ struct lexical_caster<
 /**
  * Specialized conversion class.
  *
- * Specialized for returning arithmetic from a string
+ * Specialized for returning arithmetic from a std::string
  */
 template <typename To>
 struct lexical_caster<
