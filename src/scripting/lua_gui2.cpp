@@ -289,7 +289,7 @@ int intf_show_recruit_dialog(lua_State* L)
 {
 	const size_t len = lua_rawlen(L, 1);
 	if (!lua_istable(L, 1)) {
-		return 1;
+		return 0;
 	}
 
 	std::vector<const unit_type*> types;
@@ -309,6 +309,7 @@ int intf_show_recruit_dialog(lua_State* L)
 		dlg.build_recruit_dialog(types, disp->playing_team());
 		if(dlg.show() && dlg.is_selected()) {
 			luaW_pushunittype(L, *types[dlg.get_selected_index()]);
+			return 1;
 		}
 	} else {
 		ERR_LUA << "Unable to show recruit dialog";
@@ -321,7 +322,7 @@ int intf_show_recall_dialog(lua_State* L)
 {
 	const size_t len = lua_rawlen(L, 1);
 	if (!lua_istable(L, 1)) {
-		return 1;
+		return 0;
 	}
 
 	std::vector<unit_const_ptr> units;
@@ -340,7 +341,8 @@ int intf_show_recall_dialog(lua_State* L)
 		gui2::dialogs::units_dialog dlg;
 		dlg.build_recall_dialog(units, disp->playing_team());
 		if(dlg.show() && dlg.is_selected()) {
-			luaW_pushunit(L, units[dlg.get_selected_index()]);
+			luaW_pushlocalunit(L, const_cast<unit&>(*units[dlg.get_selected_index()]));
+			return 1;
 		}
 	} else {
 		ERR_LUA << "Unable to show recall dialog";
