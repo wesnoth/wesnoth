@@ -20,8 +20,6 @@
  * E.g. Unitlist, status_table, save_game, save_map, chat, show_help, etc.
  */
 
-#define GETTEXT_DOMAIN "wesnoth-lib"
-
 #include "menu_events.hpp"
 
 #include "actions/create.hpp"
@@ -328,7 +326,7 @@ t_string menu_handler::can_recruit(const std::string& name, int side_num, const 
 	// search for the unit to be recruited in recruits
 	if(!utils::contains(actions::get_recruits(side_num, loc), name)) {
 		return VGETTEXT("You cannot recruit a $unit_type_name at this time.",
-				utils::string_map { { "unit_type_name", u_type->type_name() }});
+				utils::string_map{{ "unit_type_name", u_type->type_name() }});
 	}
 
 	// TODO take a wb::future_map RAII as unit_recruit::pre_show does
@@ -430,99 +428,9 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	}
 
 	gui2::dialogs::units_dialog dlg;
-	dlg.set_title(_("Recall Unit"))
-		.set_ok_label(_("Recall"))
-		.set_help_topic("recruit_and_recall")
-		.set_units(recall_list_team)
-		.set_row_num(recall_list_team.size())
-		.set_team(&current_team)
-		.show_rename_option(true)
-		.show_dismiss_option(true)
-		.set_column_generator("unit_image", recall_list_team, [&](const auto& unit) {
-			std::string mods = unit->image_mods();
-			if(unit->can_recruit()) { mods += "~BLIT(" + unit::leader_crown() + ")"; }
-			for(const std::string& overlay : unit->overlays()) {
-				mods += "~BLIT(" + overlay + ")";
-			}
+	dlg.build_recall_dialog(recall_list_team, current_team, recallable, wb_gold);
 
-			if(!recallable) {
-				mods += "~GS()";
-			}
-
-			return unit->absolute_image() + mods;
-		})
-		.set_column_generator("unit_name", recall_list_team, [&](const auto& unit) {
-			const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
-			return unit_helper::maybe_inactive(name, recallable);
-		})
-		.set_column_generator("unit_details", recall_list_team, [&](const auto& unit) {
-			std::stringstream details;
-			details << unit_helper::maybe_inactive(unit->type_name().str(), recallable);
-			details << unit_helper::format_cost_string(
-				unit->recall_cost(), current_team.recall_cost());
-			return details.str();
-		})
-		.set_column_generator("unit_moves", recall_list_team, [&](const auto& unit) {
-			return unit_helper::format_movement_string(unit->movement_left(), unit->total_movement());
-		})
-		.set_column_generator("unit_level", recall_list_team, [&](const auto& unit) {
-			return unit_helper::format_level_string(unit->level(), recallable);
-		})
-		.set_column_generator("unit_hp", recall_list_team, [&](const auto& unit) {
-			return markup::span_color(unit->hp_color(), unit->hitpoints(), "/", unit->max_hitpoints());
-		})
-		.set_column_generator("unit_experience", recall_list_team, [&](const auto& unit) {
-			std::stringstream exp_str;
-			if(unit->can_advance()) {
-				exp_str << unit->experience() << "/" << unit->max_experience();
-			} else {
-				exp_str << font::unicode_en_dash;
-			}
-			return markup::span_color(unit->xp_color(), exp_str.str());
-		})
-		.set_column_generator("unit_traits", recall_list_team, [&](const auto& unit) {
-			std::string traits;
-			for(const std::string& trait : unit->trait_names()) {
-				traits += (traits.empty() ? "" : "\n") + trait;
-			}
-			return unit_helper::maybe_inactive((!traits.empty() ? traits : font::unicode_en_dash), recallable);
-		})
-		// Hide "Status" header and show "Traits" header
-		.show_header(6, false)
-		.show_header(7, true)
-		.set_tooltip_generator([&](const auto /**/) {
-			if (!recallable) {
-				// Just set the tooltip on every single element in this row.
-				if(wb_gold > 0) {
-					return _("This unit cannot be recalled because you will not have enough gold at this point in your plan.");
-				} else {
-					return _("This unit cannot be recalled because you do not have enough gold.");
-				}
-			} else {
-				return std::string();
-			}
-		})
-		.set_sorter(0, recall_list_team, [&](const auto& recall) { return recall->name().str(); })
-		.set_sorter(1, recall_list_team, [&](const auto& recall) { return recall->type_name().str(); })
-		.set_sorter(2, recall_list_team, [&](const auto& recall) {
-			return std::tuple(recall->level(), -static_cast<int>(recall->experience_to_advance()));
-		})
-		.set_sorter(3, recall_list_team, [&](const auto& recall) { return recall->movement_left(); })
-		.set_sorter(4, recall_list_team, [&](const auto& recall) { return recall->hitpoints(); })
-		.set_sorter(5, recall_list_team, [&](const auto& recall) {
-			// this allows 0/35, 0/100 etc to be sorted
-			// also sorts 23/35 before 0/35, after which 0/100 comes
-			return recall->experience() + recall->max_experience();
-		})
-		.set_sorter(7, recall_list_team, [&](const auto& recall) {
-			return !recall->trait_names().empty() ? recall->trait_names().front().str() : "";
-		});
-
-	if(!dlg.show()) {
-		return;
-	}
-
-	if (!dlg.is_selected()) {
+	if(!dlg.show() || !dlg.is_selected()) {
 		gui2::show_transient_message("", _("No unit recalled."));
 		return;
 	}
