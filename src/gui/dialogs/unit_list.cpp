@@ -144,7 +144,7 @@ void unit_list::pre_show()
 		}
 	}
 
-	list.set_sorting_options(
+	list.set_sorters(
 		[this](const std::size_t i) { return unit_list_[i]->type_name(); },
 		[this](const std::size_t i) { return unit_list_[i]->name(); },
 		[this](const std::size_t i) { return unit_list_[i]->movement_left(); },
