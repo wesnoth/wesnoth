@@ -27,6 +27,7 @@
 #include "gui/dialogs/units_dialog.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/retval.hpp"
+#include "scripting/lua_unit.hpp"
 #include "scripting/lua_unit_type.hpp"
 #include "scripting/lua_widget_methods.hpp" //intf_show_dialog
 
@@ -41,6 +42,8 @@
 #include "help/help.hpp"
 #include "tstring.hpp"
 #include "sdl/input.hpp" // get_mouse_state
+#include "units/ptr.hpp"
+#include "units/unit.hpp"
 #include "utils/optional_fwd.hpp"
 
 #include <functional>
@@ -314,21 +317,54 @@ int intf_show_recruit_dialog(lua_State* L)
 	return 0;
 }
 
+int intf_show_recall_dialog(lua_State* L)
+{
+	const size_t len = lua_rawlen(L, 1);
+	if (!lua_istable(L, 1)) {
+		return 1;
+	}
+
+	std::vector<unit_const_ptr> units;
+	units.reserve(len);
+	for (size_t i = 1; i <= len; i++) {
+		lua_rawgeti(L, 1, i);
+		unit_const_ptr u(luaW_tounit(L, -1));
+		if (u) {
+			units.push_back(u);
+		}
+		lua_pop(L, 1);
+	}
+
+	const display* disp = display::get_singleton();
+	if (!units.empty() && disp != nullptr) {
+		gui2::dialogs::units_dialog dlg;
+		dlg.build_recall_dialog(units, disp->playing_team());
+		if(dlg.show() && dlg.is_selected()) {
+			luaW_pushunit(L, units[dlg.get_selected_index()]);
+		}
+	} else {
+		ERR_LUA << "Unable to show recall dialog";
+	}
+
+	return 0;
+}
+
 int luaW_open(lua_State* L)
 {
 	auto& lk = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L);
 	lk.add_log("Adding gui module...\n");
 	static luaL_Reg const gui_callbacks[] = {
-		{ "show_menu",          &show_menu },
-		{ "show_narration",     &show_message_dialog },
-		{ "show_popup",         &show_popup_dialog },
-		{ "show_story",         &show_story },
-		{ "show_prompt",        &show_message_box },
-		{ "show_help",          &show_help   },
-		{ "switch_theme",             &switch_theme },
-		{ "add_widget_definition",    &intf_add_widget_definition },
-		{ "show_dialog",              &intf_show_dialog },
-		{ "show_recruit_dialog",      &intf_show_recruit_dialog },
+		{ "show_menu",              &show_menu },
+		{ "show_narration",         &show_message_dialog },
+		{ "show_popup",             &show_popup_dialog },
+		{ "show_story",             &show_story },
+		{ "show_prompt",            &show_message_box },
+		{ "show_help",              &show_help   },
+		{ "switch_theme",           &switch_theme },
+		{ "add_widget_definition",  &intf_add_widget_definition },
+		{ "show_dialog",            &intf_show_dialog },
+		{ "show_recruit_dialog",    &intf_show_recruit_dialog },
+		{ "show_recall_dialog",     &intf_show_recall_dialog },
 		{ nullptr, nullptr },
 	};
 	std::vector<lua_cpp::Reg> const cpp_gui_callbacks {
