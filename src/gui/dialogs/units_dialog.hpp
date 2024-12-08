@@ -188,7 +188,9 @@ public:
 	// } -------------------- BUILDERS -------------------- {
 	units_dialog& build_create_dialog(const std::vector<const unit_type*>& types_list);
 	units_dialog& build_unit_list_dialog(const std::vector<unit_const_ptr>& units_list);
-	units_dialog& build_recruit_dialog(const std::vector<const unit_type*>& recruit_list, const team& team);
+	units_dialog& build_recruit_dialog(
+		const std::vector<const unit_type*>& recruit_list,
+		const team& team);
 	units_dialog& build_recall_dialog(
 		const std::vector<unit_const_ptr>& unit_list,
 		const team& current_team,
