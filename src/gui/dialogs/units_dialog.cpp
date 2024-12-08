@@ -71,6 +71,7 @@ units_dialog::units_dialog()
 	, selected_index_(-1)
 	, row_num_(0)
 	, ok_label_(_("OK"))
+	, cancel_label_(_("Cancel"))
 	, show_variation_grid_(false)
 	, show_gender_grid_(false)
 	, show_dismiss_(false)
@@ -182,6 +183,7 @@ void units_dialog::pre_show()
 
 	find_widget<label>("title").set_label(title_);
 	find_widget<button>("ok").set_label(ok_label_);
+	find_widget<button>("cancel").set_label(cancel_label_);
 	find_widget<button>("dismiss").set_visible(
 		show_dismiss_ ? widget::visibility::visible : widget::visibility::invisible);
 	find_widget<button>("rename").set_visible(
