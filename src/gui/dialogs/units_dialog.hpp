@@ -72,6 +72,12 @@ public:
 		return *this;
 	}
 
+	units_dialog& set_cancel_label(const std::string& cancel_label)
+	{
+		cancel_label_ = cancel_label;
+		return *this;
+	}
+
 	units_dialog& show_variations(const bool show_variation)
 	{
 		show_variation_grid_ = show_variation;
@@ -208,6 +214,7 @@ private:
 
 	std::string title_;
 	std::string ok_label_;
+	std::string cancel_label_;
 	std::string topic_id_;
 	bool show_variation_grid_;
 	bool show_gender_grid_;
