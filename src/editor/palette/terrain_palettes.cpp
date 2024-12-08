@@ -133,7 +133,7 @@ void terrain_palette::setup(const game_config_view& cfg)
 
 		for (const std::string& k : keys) {
 			group_map_[k].push_back(get_id(t));
-			std::map<std::string, item_group*>::iterator i = id_to_group.find(k);
+			const std::map<std::string, item_group*>::iterator i = id_to_group.find(k);
 			if (i != id_to_group.end()) {
 				if (i->second->core) {
 					core = true;

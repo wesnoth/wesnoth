@@ -690,8 +690,8 @@ void gamemap_callable::get_inputs(formula_input_vector& inputs) const
 variant gamemap_callable::get_value(const std::string& key) const
 {
 	if(key == "terrain") {
-		int w = get_gamemap().w();
-		int h = get_gamemap().h();
+		const int w = get_gamemap().w();
+		const int h = get_gamemap().h();
 
 		std::vector<variant> vars;
 		for(int i = 0; i < w; i++) {
@@ -703,8 +703,8 @@ variant gamemap_callable::get_value(const std::string& key) const
 
 		return variant(vars);
 	} else if(key == "gamemap") {
-		int w = get_gamemap().w();
-		int h = get_gamemap().h();
+		const int w = get_gamemap().w();
+		const int h = get_gamemap().h();
 
 		std::map<variant, variant> vars;
 		for(int i = 0; i < w; i++) {

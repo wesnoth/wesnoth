@@ -77,7 +77,7 @@ recall::recall(const config& cfg, bool hidden)
 	, original_recall_pos_(0)
 {
 	// Construct and validate temp_unit_
-	std::size_t underlying_id = cfg["temp_unit_"].to_size_t();
+	const std::size_t underlying_id = cfg["temp_unit_"].to_size_t();
 	for(const unit_ptr & recall_unit : resources::gameboard->teams().at(team_index()).recall_list())
 	{
 		if(recall_unit->underlying_id()==underlying_id)
@@ -115,7 +115,7 @@ void recall::accept(visitor& v)
 
 void recall::execute(bool& success, bool& complete)
 {
-	team & current_team = resources::gameboard->teams().at(team_index());
+	const team& current_team = resources::gameboard->teams().at(team_index());
 
 	assert(valid());
 	assert(temp_unit_.get());
@@ -144,7 +144,10 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 			<< "] at position " << temp_unit_->get_location() << ".";
 
 	//temporarily remove unit from recall list
-	unit_ptr it = resources::gameboard->teams().at(team_index()).recall_list().extract_if_matches_id(temp_unit_->id(), &original_recall_pos_);
+	const unit_ptr it = resources::gameboard->teams()
+							.at(team_index())
+							.recall_list()
+							.extract_if_matches_id(temp_unit_->id(), &original_recall_pos_);
 	assert(it);
 
 	//Usually (temp_unit_ == it) is true here, but wml might have changed the original unit in which case not doing 'temp_unit_ = it' would result in a gamestate change.
@@ -193,16 +196,16 @@ void recall::draw_hex(const map_location& hex)
 		const double y_offset = 0.7;
 		//position 0,0 in the hex is the upper left corner
 		std::stringstream number_text;
-		unit &it = *get_unit();
-		int cost = it.recall_cost();
+		const unit& it = *get_unit();
+		const int cost = it.recall_cost();
 		if (cost < 0) {
 			number_text << font::unicode_minus << resources::gameboard->teams().at(team_index()).recall_cost();
 		}
 		else {
 			number_text << font::unicode_minus << cost;
 		}
-		std::size_t font_size = 16;
-		color_t color {255, 0, 0}; //red
+		const std::size_t font_size = 16;
+		const color_t color{255, 0, 0}; // red
 		display::get_singleton()->draw_text_in_hex(hex, drawing_layer::actions_numbering,
 						number_text.str(), font_size, color, x_offset, y_offset);
 	}
@@ -228,7 +231,7 @@ action::error recall::check_validity() const
 		return NOT_ENOUGH_GOLD;
 	}
 	//Check that there is a leader available to recall this unit
-	bool has_recruiter = any_recruiter(team_index() + 1, get_recall_hex(), [&](unit& leader) {
+	const bool has_recruiter = any_recruiter(team_index() + 1, get_recall_hex(), [&](unit& leader) {
 		const unit_filter ufilt(vconfig(leader.recall_filter()));
 		return ufilt(*temp_unit_, map_location::null_location());
 	});

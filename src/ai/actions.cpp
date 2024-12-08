@@ -268,8 +268,8 @@ void attack_result::do_execute()
 	battle_context bc(resources::gameboard->units(), attacker_loc_,
 		defender_loc_, attacker_weapon_, -1, aggression_);
 
-	int attacker_weapon = bc.get_attacker_stats().attack_num;
-	int defender_weapon = bc.get_defender_stats().attack_num;
+	const int attacker_weapon = bc.get_attacker_stats().attack_num;
+	const int defender_weapon = bc.get_defender_stats().attack_num;
 
 	if(attacker_weapon < 0) {
 		set_error(E_UNABLE_TO_CHOOSE_ATTACKER_WEAPON);
@@ -280,7 +280,8 @@ void attack_result::do_execute()
 	const unit_map::const_iterator d_ = resources::gameboard->units().find(defender_loc_);
 
 	if(resources::simulation_){
-		bool gamestate_changed = simulated_attack(attacker_loc_, defender_loc_, bc.get_attacker_combatant().average_hp(), bc.get_defender_combatant().average_hp());
+		const bool gamestate_changed = simulated_attack(attacker_loc_, defender_loc_,
+			bc.get_attacker_combatant().average_hp(), bc.get_defender_combatant().average_hp());
 
 		sim_gamestate_changed(this, gamestate_changed);
 
@@ -336,7 +337,7 @@ move_result::move_result(side_number side, const map_location& from,
 
 const unit *move_result::get_unit()
 {
-	unit_map::const_iterator un = resources::gameboard->units().find(from_);
+	const unit_map::const_iterator un = resources::gameboard->units().find(from_);
 	if (un==resources::gameboard->units().end()){
 		set_error(E_NO_UNIT);
 		return nullptr;
@@ -373,11 +374,11 @@ bool move_result::test_route(const unit &un)
 		return false;
 	}
 
-	team &my_team = get_my_team();
+	const team& my_team = get_my_team();
 	const pathfind::shortest_path_calculator calc(un, my_team, resources::gameboard->teams(), resources::gameboard->map());
 
 	//allowed teleports
-	pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(un, my_team, true);
+	const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(un, my_team, true);
 
 	//do an A*-search
 	route_.reset(new pathfind::plain_route(pathfind::a_star_search(un.get_location(), to_, 10000.0, calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports)));
@@ -445,13 +446,13 @@ void move_result::do_execute()
 	if(resources::simulation_){
 		bool gamestate_changed = false;
 		if(from_ != to_){
-			int step = route_->steps.size();
+			const int step = route_->steps.size();
 			gamestate_changed = simulated_move(get_side(), from_, to_, step, unit_location_);
 		} else {
 			assert(remove_movement_);
 		}
 
-		unit_map::const_iterator un = resources::gameboard->units().find(unit_location_);
+		const unit_map::const_iterator un = resources::gameboard->units().find(unit_location_);
 		if(remove_movement_ && un->movement_left() > 0 && unit_location_ == to_){
 			gamestate_changed = simulated_stopunit(unit_location_, true, false);
 		}
@@ -486,7 +487,8 @@ void move_result::do_execute()
 		unit_location_ = move_spectator.get_unit()->get_location();
 		if (remove_movement_ && move_spectator.get_unit()->movement_left() > 0 && unit_location_ == to_)
 		{
-			stopunit_result_ptr stopunit_res = actions::execute_stopunit_action(get_side(),true,unit_location_,true,false);
+			const stopunit_result_ptr stopunit_res
+				= actions::execute_stopunit_action(get_side(), true, unit_location_, true, false);
 			if (!stopunit_res->is_ok()) {
 				set_error(stopunit_res->get_status());
 			}
@@ -596,7 +598,7 @@ void recall_result::do_check_after()
 		return;
 	}
 
-	unit_map::const_iterator unit = resources::gameboard->units().find(recall_location_);
+	const unit_map::const_iterator unit = resources::gameboard->units().find(recall_location_);
 	if (unit==resources::gameboard->units().end()){
 		set_error(AI_ACTION_FAILURE);
 		return;
@@ -635,7 +637,7 @@ void recall_result::do_execute()
 	assert(location_checked_);
 
 	if(resources::simulation_){
-		bool gamestate_changed = simulated_recall(get_side(), unit_id_, recall_location_);
+		const bool gamestate_changed = simulated_recall(get_side(), unit_id_, recall_location_);
 
 		sim_gamestate_changed(this, gamestate_changed);
 
@@ -742,7 +744,7 @@ void recruit_result::do_check_after()
 		return;
 	}
 
-	unit_map::const_iterator unit = resources::gameboard->units().find(recruit_location_);
+	const unit_map::const_iterator unit = resources::gameboard->units().find(recruit_location_);
 	if (unit==resources::gameboard->units().end()) {
 		set_error(AI_ACTION_FAILURE);
 		return;
@@ -782,7 +784,7 @@ void recruit_result::do_execute()
 	assert(location_checked_  &&  u != nullptr);
 
 	if(resources::simulation_){
-		bool gamestate_changed = simulated_recruit(get_side(), u, recruit_location_);
+		const bool gamestate_changed = simulated_recruit(get_side(), u, recruit_location_);
 
 		sim_gamestate_changed(this, gamestate_changed);
 
@@ -814,7 +816,7 @@ stopunit_result::stopunit_result( side_number side, const map_location& unit_loc
 
 const unit *stopunit_result::get_unit()
 {
-	unit_map::const_iterator un = resources::gameboard->units().find(unit_location_);
+	const unit_map::const_iterator un = resources::gameboard->units().find(unit_location_);
 	if (un==resources::gameboard->units().end()){
 		set_error(E_NO_UNIT);
 		return nullptr;
@@ -842,7 +844,7 @@ void stopunit_result::do_check_before()
 
 void stopunit_result::do_check_after()
 {
-	unit_map::const_iterator un = resources::gameboard->units().find(unit_location_);
+	const unit_map::const_iterator un = resources::gameboard->units().find(unit_location_);
 	if (un==resources::gameboard->units().end()){
 		set_error(AI_ACTION_FAILURE);
 		return;
@@ -880,10 +882,10 @@ void stopunit_result::do_execute()
 {
 	LOG_AI_ACTIONS << "start of execution of: " << *this;
 	assert(is_success());
-	unit_map::iterator un = resources::gameboard->units().find(unit_location_);
+	const unit_map::iterator un = resources::gameboard->units().find(unit_location_);
 
 	if(resources::simulation_){
-		bool gamestate_changed = simulated_stopunit(unit_location_, remove_movement_, remove_attacks_);
+		const bool gamestate_changed = simulated_stopunit(unit_location_, remove_movement_, remove_attacks_);
 
 		sim_gamestate_changed(this, gamestate_changed);
 
@@ -941,7 +943,7 @@ std::string synced_command_result::do_describe() const
 void synced_command_result::do_execute()
 {
 	if(resources::simulation_){
-		bool gamestate_changed = simulated_synced_command();
+		const bool gamestate_changed = simulated_synced_command();
 
 		sim_gamestate_changed(this, gamestate_changed);
 

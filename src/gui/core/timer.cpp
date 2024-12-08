@@ -97,7 +97,7 @@ static uint32_t timer_callback(uint32_t, void* id)
 
 	uint32_t result;
 	{
-		std::scoped_lock lock(timers_mutex);
+		const std::scoped_lock lock(timers_mutex);
 
 		auto itor = get_timers().find(reinterpret_cast<std::size_t>(id));
 		if(itor == get_timers().end()) {
@@ -130,7 +130,7 @@ std::size_t add_timer(const std::chrono::milliseconds& interval,
 
 	timer timer;
 	{
-		std::scoped_lock lock(timers_mutex);
+		const std::scoped_lock lock(timers_mutex);
 
 		do {
 			++next_timer_id;
@@ -152,7 +152,7 @@ std::size_t add_timer(const std::chrono::milliseconds& interval,
 	timer.callback = callback;
 
 	{
-		std::scoped_lock lock(timers_mutex);
+		const std::scoped_lock lock(timers_mutex);
 
 		get_timers().emplace(next_timer_id, timer);
 	}
@@ -165,7 +165,7 @@ bool remove_timer(const std::size_t id)
 {
 	DBG_GUI_E << "Removing timer " << id << ".";
 
-	std::scoped_lock lock(timers_mutex);
+	const std::scoped_lock lock(timers_mutex);
 
 	auto itor = get_timers().find(id);
 	if(itor == get_timers().end()) {
@@ -200,7 +200,7 @@ bool execute_timer(const std::size_t id)
 
 	std::function<void(size_t)> callback = nullptr;
 	{
-		std::scoped_lock lock(timers_mutex);
+		const std::scoped_lock lock(timers_mutex);
 
 		auto itor = get_timers().find(id);
 		if(itor == get_timers().end()) {

@@ -249,7 +249,7 @@ std::string interpolate_variables_into_string(const std::string &str, const vari
 t_string interpolate_variables_into_tstring(const t_string &tstr, const variable_set& variables)
 {
 	if(!tstr.str().empty()) {
-		std::string interp = utils::interpolate_variables_into_string(tstr.str(), variables);
+		const std::string interp = utils::interpolate_variables_into_string(tstr.str(), variables);
 		if(tstr.str() != interp) {
 			return t_string(interp);
 		}

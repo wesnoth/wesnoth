@@ -71,7 +71,7 @@ namespace
 			previews.push_back(get_advanced_unit(u, advance));
 		}
 
-		std::size_t num_real_advances = previews.size();
+		const std::size_t num_real_advances = previews.size();
 		bool always_display = false;
 
 		for (const config& advance : u.get_modification_advances()) {
@@ -123,7 +123,7 @@ namespace
 
 		if (animate && !video::headless() && !resources::controller->is_skipping_replay()) {
 			unit_animator animator;
-			bool with_bars = true;
+			const bool with_bars = true;
 			animator.add_animation(u.get_shared_ptr(), "levelout", u->get_location(), map_location(), 0, with_bars);
 			animator.start_animations();
 			animator.wait_for_end();
@@ -194,10 +194,10 @@ namespace
 		{
 			//the 'side' parameter might differ from side_num_-
 			int res = 0;
-			team t = resources::gameboard->get_team(side_num_);
+			const team t = resources::gameboard->get_team(side_num_);
 			//i wonder how this got included here ?
-			bool is_mp = resources::controller->is_networked_mp();
-			bool is_current_side = resources::controller->current_side() == side_num_;
+			const bool is_mp = resources::controller->is_networked_mp();
+			const bool is_current_side = resources::controller->current_side() == side_num_;
 			//note, that the advancements for networked sides are also determined on the current playing side.
 
 			//to make mp games equal we only allow selecting advancements to the current side.
@@ -213,15 +213,15 @@ namespace
 				const ai::unit_advancements_aspect& ai_advancement = ai::manager::get_singleton().get_advancement_aspect_for_side(side_num_);
 				//if ai_advancement_ is the default advancement the following code will
 				//have no effect because get_advancements returns an empty list.
-				unit_map::iterator u = resources::gameboard->units().find(loc_);
+				const unit_map::iterator u = resources::gameboard->units().find(loc_);
 				if(!u) {
 					ERR_NG << "unit_advancement_choice: unit not found";
 					return config{};
 				}
 
-				std::vector<std::string> allowed = ai_advancement.get_advancements(u);
+				const std::vector<std::string> allowed = ai_advancement.get_advancements(u);
 				for(const auto& adv_id : allowed) {
-					int res_new = get_advancement_index(*u, adv_id);
+					const int res_new = get_advancement_index(*u, adv_id);
 					if(res_new != -1) {
 						// if the advancement ids were really unique we could also make this function return the
 						// advancements id instead of its index. But i dont think there are guaraenteed to be unique.
@@ -292,11 +292,12 @@ void advance_unit_at(const advance_unit_params& params)
 		}
 		//we don't want to let side 1 decide it during start/prestart.
 		//The "0" parameter here is the default and gets resolves to "current player"
-		int side_for = resources::gamedata->has_current_player() ? 0: u->side();
+		const int side_for = resources::gamedata->has_current_player() ? 0 : u->side();
 		config selected = mp_sync::get_user_choice("choose",
 			unit_advancement_choice(params.loc_, unit_helper::number_of_possible_advances(*u), u->side(), params.force_dialog_), side_for);
 		//calls actions::advance_unit.
-		bool result = animate_unit_advancement(params.loc_, selected["value"].to_size_t(), params.fire_events_, params.animate_);
+		const bool result = animate_unit_advancement(
+			params.loc_, selected["value"].to_size_t(), params.fire_events_, params.animate_);
 
 		DBG_NG << "animate_unit_advancement result = " << result;
 		u = resources::gameboard->units().find(params.loc_);
@@ -348,7 +349,7 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 		return;
 	}
 	// original_type is not a reference, since the unit may disappear at any moment.
-	std::string original_type = u->type_id();
+	const std::string original_type = u->type_id();
 
 	// "advance" event.
 	if(fire_event)
@@ -369,7 +370,7 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	// This is not normally necessary, but if a unit loses power when leveling
 	// (e.g. loses "jamming" or ambush), it could be discovered as a result of
 	// the advancement.
-	std::vector<int> not_seeing = actions::get_sides_not_seeing(*u);
+	const std::vector<int> not_seeing = actions::get_sides_not_seeing(*u);
 
 	// Create the advanced unit.
 	auto [new_unit, use_amla] = utils::visit(

@@ -142,7 +142,8 @@ void replay_controller::handle_generic_event(const std::string& name)
 	if(name == "theme_reset") {
 		add_replay_theme();
 	}
-	if(std::shared_ptr<gui::button> skip_animation_button = controller_.get_display().find_action_button("skip-animation")) {
+	if(const std::shared_ptr<gui::button> skip_animation_button
+		= controller_.get_display().find_action_button("skip-animation")) {
 		skip_animation_button->set_check(controller_.is_skipping_replay());
 	}
 }
@@ -164,7 +165,7 @@ void replay_controller::play_side_impl()
 				on_end_replay_();
 			}
 			else {
-				REPLAY_RETURN res = do_replay(true);
+				REPLAY_RETURN const res = do_replay(true);
 				if(controller_.is_regular_game_end()) {
 					return;
 				}
@@ -248,7 +249,7 @@ void replay_controller::update_teams()
 void replay_controller::update_viewing_player()
 {
 	assert(vision_);
-	int viewing_side_num = vision_ == HUMAN_TEAM ? controller_.find_viewing_side() : controller_.current_side();
+	const int viewing_side_num = vision_ == HUMAN_TEAM ? controller_.find_viewing_side() : controller_.current_side();
 	if(viewing_side_num != 0) {
 		controller_.update_gui_to_player(viewing_side_num - 1, *vision_ == SHOW_ALL);
 	}

@@ -108,7 +108,7 @@ int default_ai_context_impl::rate_terrain(const unit& u, const map_location& loc
 	}
 
 	if(map_.is_village(terrain)) {
-		int owner = resources::gameboard->village_owner(loc);
+		const int owner = resources::gameboard->village_owner(loc);
 
 		if(owner == get_side()) {
 			rating += friendly_village_value;
@@ -127,7 +127,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 
 	log_scope2(log_ai, "finding targets...");
 	unit_map &units_ = resources::gameboard->units();
-	unit_map::iterator leader = units_.find_leader(get_side());
+	const unit_map::iterator leader = units_.find_leader(get_side());
 	const gamemap &map_ = resources::gameboard->map();
 	const bool has_leader = leader != units_.end();
 
@@ -137,7 +137,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 
 	//if enemy units are in range of the leader, then we target the enemies who are in range.
 	if(has_leader) {
-		double threat = power_projection(leader->get_location(), enemy_dstsrc);
+		const double threat = power_projection(leader->get_location(), enemy_dstsrc);
 		if(threat > 0.0) {
 			//find the location of enemy threats
 			std::set<map_location> threats;
@@ -163,8 +163,8 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 		}
 	}
 
-	double corner_distance = distance_between(map_location::ZERO(), map_location(map_.w(),map_.h()));
-	double village_value = get_village_value();
+	const double corner_distance = distance_between(map_location::ZERO(), map_location(map_.w(), map_.h()));
+	const double village_value = get_village_value();
 	if(has_leader && village_value > 0.0) {
 		std::map<map_location,pathfind::paths> friends_possible_moves;
 		move_map friends_srcdst, friends_dstsrc;
@@ -190,16 +190,16 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 					if (enemy > 0)
 					{
 						enemy *= 1.7;
-						double our = power_projection(village_loc, friends_dstsrc);
-						double value = village_value * our / enemy;
+						const double our = power_projection(village_loc, friends_dstsrc);
+						const double value = village_value * our / enemy;
 						add_target(target(village_loc, value, ai_target::type::support));
 					}
 				}
 			}
 			else
 			{
-				double leader_distance = distance_between(village_loc, leader->get_location());
-				double value = village_value * (1.0 - leader_distance / corner_distance);
+				const double leader_distance = distance_between(village_loc, leader->get_location());
+				const double value = village_value * (1.0 - leader_distance / corner_distance);
 				LOG_AI << "found village target... " << village_loc
 					<< " with value: " << value
 					<< " distance: " << leader_distance;

@@ -44,7 +44,7 @@ const std::string hash_prefix = "$H$";
 
 template<std::size_t len>
 std::string encode_hash(const std::array<uint8_t, len>& bytes) {
-	utils::byte_string_view view{bytes.data(), len};
+	const utils::byte_string_view view{bytes.data(), len};
 	return crypt64::encode(view);
 }
 
@@ -52,7 +52,7 @@ template<std::size_t len>
 std::string hexencode_hash(const std::array<uint8_t, len>& input) {
 	std::ostringstream sout;
 	sout << std::hex;
-	for(uint8_t c : input) {
+	for(const uint8_t c : input) {
 		sout << static_cast<int>(c);
 	}
 	return sout.str();
@@ -139,7 +139,7 @@ bcrypt::bcrypt(const std::string& input)
 bcrypt bcrypt::from_salted_salt(const std::string& input)
 {
 	bcrypt hash { input };
-	std::string bcrypt_salt = input.substr(0, hash.iteration_count_delim_pos + 23);
+	const std::string bcrypt_salt = input.substr(0, hash.iteration_count_delim_pos + 23);
 	if(bcrypt_salt.size() >= BCRYPT_HASHSIZE)
 		throw hash_error("hash string too large");
 	strcpy(hash.hash.data(), bcrypt_salt.c_str());
@@ -175,7 +175,7 @@ bool bcrypt::is_valid_prefix(const std::string& hash) {
 
 std::string bcrypt::get_salt() const
 {
-	std::size_t salt_pos = iteration_count_delim_pos + 23;
+	const std::size_t salt_pos = iteration_count_delim_pos + 23;
 	if(salt_pos >= BCRYPT_HASHSIZE)
 		throw hash_error("malformed hash");
 	return std::string(hash.data(), salt_pos);

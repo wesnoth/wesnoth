@@ -44,7 +44,7 @@ std::string initialize_addon()
 
 	if(addon_id == "///newaddon///") {
 		static constexpr std::string_view ts_format = "%Y-%m-%d_%H-%M-%S";
-		std::string timestamp = chrono::format_local_timestamp(std::chrono::system_clock::now(), ts_format);
+		const std::string timestamp = chrono::format_local_timestamp(std::chrono::system_clock::now(), ts_format);
 
 		addon_id = "MyAwesomeAddon-" + timestamp;
 		std::string addon_id_new = addon_id;
@@ -60,7 +60,7 @@ std::string initialize_addon()
 		return addon_id;
 	}
 
-	std::string addon_dir = filesystem::get_addons_dir() + "/" + addon_id;
+	const std::string addon_dir = filesystem::get_addons_dir() + "/" + addon_id;
 
 	if(filesystem::file_exists(addon_dir)) {
 		return addon_id;

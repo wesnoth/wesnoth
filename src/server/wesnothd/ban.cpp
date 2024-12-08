@@ -75,7 +75,7 @@ banned::banned(const std::string& ip)
 	, group_()
 	, nick_()
 {
-	ip_mask pair = parse_ip(ip);
+	const ip_mask pair = parse_ip(ip);
 	ip_ = pair.first;
 	mask_ = 0xFFFFFFFF;
 }
@@ -96,7 +96,7 @@ banned::banned(const std::string& ip,
 	, group_(group)
 	, nick_(nick)
 {
-	ip_mask pair = parse_ip(ip_text_);
+	const ip_mask pair = parse_ip(ip_text_);
 	ip_ = pair.first;
 	mask_ = pair.second;
 }
@@ -145,7 +145,7 @@ ip_mask parse_ip(const std::string& ip)
 				// Adding 0 to ip and mask is nop
 			} else {
 				// wildcard = false;
-				unsigned int part_ip = lexical_cast_default<unsigned int>(*part, complete_part_mask + 1);
+				const unsigned int part_ip = lexical_cast_default<unsigned int>(*part, complete_part_mask + 1);
 				if(part_ip > complete_part_mask) {
 					throw banned::error("Malformed ip address: '" + ip + "'");
 				}
@@ -165,7 +165,7 @@ void banned::read(const config& cfg)
 	{
 		// parse ip and mask
 		ip_text_ = cfg["ip"].str();
-		ip_mask pair = parse_ip(ip_text_);
+		const ip_mask pair = parse_ip(ip_text_);
 		ip_ = pair.first;
 		mask_ = pair.second;
 	}
@@ -385,7 +385,7 @@ std::pair<bool, utils::optional<std::chrono::system_clock::time_point>> ban_mana
 	} else {
 		std::string::const_iterator i = duration.begin();
 		int number = -1;
-		for (std::string::const_iterator d_end = duration.end(); i != d_end; ++i) {
+		for(const std::string::const_iterator d_end = duration.end(); i != d_end; ++i) {
 			if (is_digit(*i))
 			{
 				if (number == -1) number = 0;
@@ -554,7 +554,7 @@ void ban_manager::unban(std::ostringstream& os, const std::string& ip, bool imme
 void ban_manager::unban_group(std::ostringstream& os, const std::string& group)
 {
 	ban_set temp;
-	std::insert_iterator<ban_set> temp_inserter(temp, temp.begin());
+	const std::insert_iterator<ban_set> temp_inserter(temp, temp.begin());
 	std::remove_copy_if(bans_.begin(), bans_.end(), temp_inserter, [&group](const banned_ptr& p) { return p->match_group(group); });
 
 	os << "Removed " << (bans_.size() - temp.size()) << " bans";
@@ -566,7 +566,7 @@ void ban_manager::unban_group(std::ostringstream& os, const std::string& group)
 void ban_manager::check_ban_times(const std::chrono::system_clock::time_point& time_now)
 {
 	while(!time_queue_.empty()) {
-		banned_ptr ban = time_queue_.top();
+		const banned_ptr ban = time_queue_.top();
 		const auto& end_time = ban->get_end_time();
 
 		if(!end_time || *end_time > time_now) {

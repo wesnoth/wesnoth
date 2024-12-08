@@ -485,7 +485,7 @@ void play_controller::do_init_side()
 			// If the expense is less than the number of villages owned
 			// times the village support capacity,
 			// then we don't have to pay anything at all
-			int expense = gamestate().board_.side_upkeep(current_side()) - current_team().support();
+			const int expense = gamestate().board_.side_upkeep(current_side()) - current_team().support();
 			if(expense > 0) {
 				current_team().spend_gold(expense);
 			}
@@ -694,7 +694,7 @@ void play_controller::textbox_move_vertically(bool up)
 
 void play_controller::tab()
 {
-	gui::TEXTBOX_MODE mode = menu_handler_.get_textbox().mode();
+	gui::TEXTBOX_MODE const mode = menu_handler_.get_textbox().mode();
 
 	std::set<std::string> dictionary;
 	switch(mode) {
@@ -835,7 +835,7 @@ void play_controller::process_keyup_event(const SDL_Event& event)
 
 			if(u.valid()) {
 				// if it's not the unit's turn, we reset its moves
-				unit_movement_resetter move_reset(*u, u->side() != current_side());
+				const unit_movement_resetter move_reset(*u, u->side() != current_side());
 
 				mouse_handler_.set_current_paths(pathfind::paths(
 					*u, false, true, gui_->viewing_team(), mouse_handler_.get_path_turns()));
@@ -846,7 +846,7 @@ void play_controller::process_keyup_event(const SDL_Event& event)
 			}
 		}
 	} else if(event.key.keysym.sym == SDLK_TAB) {
-		CKey keys;
+		const CKey keys;
 		if(!keys[SDLK_TAB]) {
 			whiteboard_manager_->set_invert_behavior(false);
 		}
@@ -865,14 +865,14 @@ void play_controller::save_game()
 	// because it may lead to expired event handlers being saved.
 	assert(!gamestate().events_manager_->is_event_running());
 
-	scoped_savegame_snapshot snapshot(*this);
+	const scoped_savegame_snapshot snapshot(*this);
 	savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_interactive("", savegame::savegame::OK_CANCEL);
 }
 
 void play_controller::save_game_auto(const std::string& filename)
 {
-	scoped_savegame_snapshot snapshot(*this);
+	const scoped_savegame_snapshot snapshot(*this);
 	savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_automatic(false, filename);
 }
@@ -989,7 +989,7 @@ void play_controller::check_victory()
 
 	if(video::headless()) {
 		LOG_AIT << "winner: ";
-		for(unsigned l : not_defeated) {
+		for(const unsigned l : not_defeated) {
 			std::string ai = ai::manager::get_singleton().get_active_ai_identifier_for_side(l);
 			if(ai.empty())
 				ai = "default ai";
@@ -1023,7 +1023,7 @@ void play_controller::process_oos(const std::string& msg) const
 	message << _("The game is out of sync. It might not make much sense to continue. Do you want to save your game?");
 	message << "\n\n" << _("Error details:") << "\n\n" << msg;
 
-	scoped_savegame_snapshot snapshot(*this);
+	const scoped_savegame_snapshot snapshot(*this);
 	savegame::oos_savegame save(saved_game_, ignore_replay_errors_);
 	save.save_game_interactive(message.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
 }
@@ -1042,14 +1042,14 @@ void play_controller::update_gui_to_player(const int team_index, const bool obse
 
 void play_controller::do_autosave()
 {
-	scoped_savegame_snapshot snapshot(*this);
+	const scoped_savegame_snapshot snapshot(*this);
 	savegame::autosave_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.autosave(false, prefs::get().auto_save_max(), pref_constants::INFINITE_AUTO_SAVES);
 }
 
 void play_controller::do_consolesave(const std::string& filename)
 {
-	scoped_savegame_snapshot snapshot(*this);
+	const scoped_savegame_snapshot snapshot(*this);
 	savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
 	save.save_game_automatic(true, filename);
 }
@@ -1202,7 +1202,7 @@ void play_controller::check_next_scenario_is_known() {
 		return;
 	}
 
-	std::string title = _("Warning: broken campaign branches");
+	const std::string title = _("Warning: broken campaign branches");
 	std::stringstream message;
 
 	message << _n(
@@ -1257,7 +1257,7 @@ void play_controller::check_time_over()
 
 	if(!time_left) {
 		LOG_NG << "firing time over event...";
-		set_scontext_synced_base sync;
+		const set_scontext_synced_base sync;
 		pump().fire("time_over");
 		LOG_NG << "done firing time over event...";
 
@@ -1299,7 +1299,8 @@ void play_controller::show_objectives() const
 {
 	const team& t = gui_->viewing_team();
 	static const std::string no_objectives(_("No objectives available"));
-	std::string objectives = utils::interpolate_variables_into_string(t.objectives(), *gamestate_->get_game_data());
+	const std::string objectives
+		= utils::interpolate_variables_into_string(t.objectives(), *gamestate_->get_game_data());
 	gui2::show_transient_message(get_scenario_name(), (objectives.empty() ? no_objectives : objectives), "", true);
 	t.reset_objectives_changed();
 }

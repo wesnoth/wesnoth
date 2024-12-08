@@ -74,7 +74,7 @@ void depcheck_select_new::pre_show()
 void depcheck_select_new::post_show()
 {
 	if(get_retval() == retval::OK) {
-		listbox& items = find_widget<listbox>("itemlist");
+		const listbox& items = find_widget<listbox>("itemlist");
 		result_ = items.get_selected_row();
 	}
 }

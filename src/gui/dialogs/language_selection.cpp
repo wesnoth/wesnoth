@@ -72,7 +72,7 @@ language_selection::language_selection()
 
 void language_selection::shown_filter_callback()
 {
-	toggle_button& show_all_toggle = find_widget<toggle_button>("show_all");
+	const toggle_button& show_all_toggle = find_widget<toggle_button>("show_all");
 	listbox& list = find_widget<listbox>("language_list");
 
 	if(show_all_toggle.get_value_bool()) {

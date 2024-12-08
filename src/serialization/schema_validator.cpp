@@ -484,7 +484,7 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 		}
 
 		for(const auto& tag : active.tags(cfg)) {
-			int cnt = counter_.top()[tag.first].cnt;
+			const int cnt = counter_.top()[tag.first].cnt;
 
 			if(tag.second.get_min() > cnt) {
 				queue_message(cfg, MISSING_TAG, file, start_line, tag.second.get_min(), tag.first, "", name);
@@ -496,7 +496,7 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 			}
 		}
 
-		int total_cnt = counter_.top()[""].cnt;
+		const int total_cnt = counter_.top()[""].cnt;
 		if(active.get_min_children() > total_cnt) {
 			queue_message(cfg, MISSING_TAG, file, start_line, active.get_min_children(), "*", "", active.get_name());
 		} else if(active_tag().get_max_children() < total_cnt) {
@@ -746,10 +746,10 @@ bool schema_self_validator::tag_path_exists(const config& cfg, const reference& 
 	std::string suffix = path.back();
 	path.pop_back();
 	while(!path.empty()) {
-		std::string prefix = utils::join(path, "/");
+		const std::string prefix = utils::join(path, "/");
 		auto link = links_.find(prefix);
 		if(link != links_.end()) {
-			std::string new_path = link->second + "/" + suffix;
+			const std::string new_path = link->second + "/" + suffix;
 			if(defined_tag_paths_.count(new_path) > 0) {
 				return true;
 			}
@@ -770,7 +770,7 @@ bool schema_self_validator::tag_path_exists(const config& cfg, const reference& 
 					}
 				}
 			}
-			std::string new_path = prefix + "/" + suffix;
+			const std::string new_path = prefix + "/" + suffix;
 			if(defined_tag_paths_.count(new_path) > 0) {
 				return true;
 			}
@@ -822,7 +822,7 @@ void schema_self_validator::validate(const config& cfg, const std::string& name,
 				}
 				check_for_duplicates(tag_name, tag_names, current_cfg, DUPLICATE_TAG, file, start_line, current_key);
 			} else if(current_key == "key") {
-				std::string key_name = current_cfg["name"];
+				const std::string key_name = current_cfg["name"];
 				if(first_key) {
 					key_names.push_back(key_name);
 					first_key = false;
@@ -881,7 +881,7 @@ void schema_self_validator::validate_key(const config& cfg, const std::string& n
 			referenced_types_.emplace_back(cfg["link"], file, start_line, tag_name);
 		} else if(tag_name == "link" && name == "name") {
 			referenced_tag_paths_.emplace_back(cfg["name"], file, start_line, tag_name);
-			std::string link_name = utils::split(cfg["name"].str(), '/').back();
+			const std::string link_name = utils::split(cfg["name"].str(), '/').back();
 			links_.emplace(current_path() + "/" + link_name, cfg["name"]);
 		} else if(tag_name == "tag" && name == "super") {
 			for(auto super : utils::split(cfg["super"])) {

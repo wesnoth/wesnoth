@@ -301,7 +301,7 @@ static void find_routes(
 	}
 	// Initialize the nodes for this search.
 	nodes.resize(static_cast<size_t>(map.w()) * map.h());
-	findroute_comp node_comp(nodes);
+	const findroute_comp node_comp(nodes);
 	findroute_indexer index(map.w(), map.h());
 
 	assert(index.on_board(origin));
@@ -424,7 +424,7 @@ static void find_routes(
 			if ( full_cost_map ) {
 				if ( (*full_cost_map)[next_index].second == 0 )
 					(*full_cost_map)[next_index].first = 0;
-				int summed_cost = (turns_left - next.turns_left + 1) * max_moves - next.moves_left;
+				const int summed_cost = (turns_left - next.turns_left + 1) * max_moves - next.moves_left;
 				(*full_cost_map)[next_index].first += summed_cost;
 				(*full_cost_map)[next_index].second += 1;
 			}
@@ -463,8 +463,7 @@ static void find_routes(
 		{
 			const findroute_node &n = nodes[index(x,y)];
 			if ( n.search_num == search_counter ) {
-				paths::step s =
-					{ map_location(x,y), n.prev, n.moves_left + n.turns_left*max_moves };
+				const paths::step s = {map_location(x, y), n.prev, n.moves_left + n.turns_left * max_moves};
 				destinations.push_back(s);
 			}
 		}
@@ -484,9 +483,9 @@ paths::dest_vect::const_iterator paths::dest_vect::find(const map_location &loc)
 
 void paths::dest_vect::insert(const map_location &loc)
 {
-	iterator i = std::lower_bound(begin(), end(), loc, step_compare);
+	const iterator i = std::lower_bound(begin(), end(), loc, step_compare);
 	if (i != end() && i->curr == loc) return;
-	paths::step s { loc, map_location(), 0 };
+	const paths::step s{loc, map_location(), 0};
 	std::vector<step>::insert(i, s);
 }
 
@@ -662,7 +661,7 @@ marked_route mark_route(const plain_route &rt, bool update_move_cost)
 	if (rt.steps.empty()) return marked_route();
 	res.route = rt;
 
-	unit_map::const_iterator it = resources::gameboard->units().find(rt.steps.front());
+	const unit_map::const_iterator it = resources::gameboard->units().find(rt.steps.front());
 	if (it == resources::gameboard->units().end()) return marked_route();
 	const unit& u = *it;
 
@@ -675,7 +674,7 @@ marked_route mark_route(const plain_route &rt, bool update_move_cost)
 	std::vector<map_location>::const_iterator i = rt.steps.begin();
 
 	for (; i !=rt.steps.end(); ++i) {
-		bool last_step = (i+1 == rt.steps.end());
+		const bool last_step = (i + 1 == rt.steps.end());
 
 		// move_cost of the next step is irrelevant for the last step
 		assert(last_step || resources::gameboard->map().on_board(*(i+1)));
@@ -688,12 +687,12 @@ marked_route mark_route(const plain_route &rt, bool update_move_cost)
 			// if it's an enemy unit and a fogged village, we assume a capture
 			// (if he already owns it, we can't know that)
 			// if it's not an enemy, we can always know if he owns the village
-			bool capture = resources::gameboard->map().is_village(*i) && ( !unit_team.owns_village(*i)
-				 || (viewing_team.is_enemy(u.side()) && viewing_team.fogged(*i)) );
+			const bool capture = resources::gameboard->map().is_village(*i)
+				&& (!unit_team.owns_village(*i) || (viewing_team.is_enemy(u.side()) && viewing_team.fogged(*i)));
 
 			++turns;
 
-			bool invisible = u.invisible(*i, false);
+			const bool invisible = u.invisible(*i, false);
 
 			res.marks[*i] = marked_route::mark(turns, zoc, capture, invisible);
 
@@ -955,7 +954,7 @@ void full_cost_map::add_unit(const map_location& origin, const unit_type* const 
 	if (!ut) {
 		return;
 	}
-	unit_ptr u = unit::create(*ut, side, false);
+	const unit_ptr u = unit::create(*ut, side, false);
 	u->set_location(origin);
 	add_unit(*u);
 }

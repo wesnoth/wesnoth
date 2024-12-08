@@ -64,17 +64,17 @@ wml_tag::wml_tag(const config& cfg)
 	}
 
 	for(const config& child : cfg.child_range("tag")) {
-		wml_tag child_tag(child);
+		const wml_tag child_tag(child);
 		add_tag(child_tag);
 	}
 
 	for(const config& child : cfg.child_range("key")) {
-		wml_key child_key(child);
+		const wml_key child_key(child);
 		add_key(child_key);
 	}
 
 	for(const config& link : cfg.child_range("link")) {
-		std::string link_name = link["name"].str();
+		const std::string link_name = link["name"].str();
 		add_link(link_name);
 	}
 
@@ -110,7 +110,7 @@ void wml_tag::set_max(const std::string& s)
 
 void wml_tag::add_link(const std::string& link)
 {
-	std::string::size_type pos_last = link.rfind('/');
+	const std::string::size_type pos_last = link.rfind('/');
 	// if (pos_last == std::string::npos) return;
 	std::string name_link = link.substr(pos_last + 1, link.length());
 	links_.emplace(name_link, link);
@@ -147,12 +147,13 @@ const wml_key* wml_tag::find_key(const std::string& name, const config& match, b
 		return &(it_keys->second);
 	}
 
-	key_map::const_iterator it_fuzzy = std::find_if(keys_.begin(), keys_.end(), [&name](const key_map::value_type& key){
-		if(!key.second.is_fuzzy()) {
-			return false;
-		}
-		return utils::wildcard_string_match(name, key.second.get_name());
-	});
+	const key_map::const_iterator it_fuzzy
+		= std::find_if(keys_.begin(), keys_.end(), [&name](const key_map::value_type& key) {
+			  if(!key.second.is_fuzzy()) {
+				  return false;
+			  }
+			  return utils::wildcard_string_match(name, key.second.get_name());
+		  });
 	if(it_fuzzy != keys_.end()) {
 		return &(it_fuzzy->second);
 	}
@@ -205,7 +206,7 @@ const wml_tag* wml_tag::find_tag(const std::string& fullpath, const wml_tag& roo
 		return nullptr;
 	}
 
-	std::string::size_type pos = fullpath.find('/');
+	const std::string::size_type pos = fullpath.find('/');
 	std::string name;
 	std::string next_path;
 
@@ -365,9 +366,9 @@ void wml_tag::add_tag(const std::string& path, const wml_tag& tag, wml_tag& root
 		return;
 	}
 
-	std::string::size_type pos = path.find('/');
+	const std::string::size_type pos = path.find('/');
 	std::string name = path.substr(0, pos);
-	std::string next_path = path.substr(pos + 1, path.length());
+	const std::string next_path = path.substr(pos + 1, path.length());
 
 	auto it_links = links_.find(name);
 	if(it_links != links_.end()) {

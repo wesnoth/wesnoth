@@ -204,7 +204,7 @@ void movetype::terrain_info::data::merge(const config & new_values, bool overwri
 	else {
 		for(const auto& [new_key, new_value] : new_values.attribute_range()) {
 			config::attribute_value & dest = cfg_[new_key];
-			int old = dest.to_int(params_.max_value);
+			const int old = dest.to_int(params_.max_value);
 
 			// The new value is the absolute value of the old plus the
 			// provided value, capped between minimum and maximum, then
@@ -379,8 +379,8 @@ int movetype::terrain_info::data::value(
 	unsigned recurse_count) const
 {
 	// Check the cache.
-	std::pair<cache_t::iterator, bool> cache_it =
-		cache_.emplace(terrain, -127); // Bogus value that should never be seen.
+	const std::pair<cache_t::iterator, bool> cache_it
+		= cache_.emplace(terrain, -127); // Bogus value that should never be seen.
 	if ( cache_it.second )
 		// The cache did not have an entry for this terrain, so calculate the value.
 		cache_it.first->second = calc_value(terrain, fallback, recurse_count);

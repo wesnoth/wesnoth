@@ -66,7 +66,7 @@ config preprocess_and_parse(const std::string& wml_str, preproc_map* macro_map)
 
 void check_wml_equivalence(const std::string& a, const std::string& b)
 {
-	config config_a = preprocess_and_parse(a);
-	config config_b = preprocess_and_parse(b);
+	const config config_a = preprocess_and_parse(a);
+	const config config_b = preprocess_and_parse(b);
 	BOOST_CHECK_EQUAL(config_a, config_b);
 }

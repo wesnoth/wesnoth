@@ -63,7 +63,7 @@ std::string text_history::up(const std::string& text)
 	if(!enabled_) {
 		return "";
 	} else if(pos_ == history_->size()) {
-		unsigned curr = pos_;
+		const unsigned curr = pos_;
 		push(text);
 		pos_ = curr;
 	}
@@ -262,7 +262,7 @@ void text_box::handle_mouse_selection(point mouse, const bool start_selection)
 		return;
 	}
 
-	int offset = get_column_line(point(mouse.x - text_x_offset_, mouse.y - text_y_offset_)).x;
+	const int offset = get_column_line(point(mouse.x - text_x_offset_, mouse.y - text_y_offset_)).x;
 
 	if(offset < 0) {
 		return;

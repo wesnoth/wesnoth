@@ -29,12 +29,12 @@ BOOST_AUTO_TEST_SUITE(feature_test_WML_macro_define)
 BOOST_AUTO_TEST_CASE(macro_define_noArgument_ParseAsExpected)
 {
 	// Test WML macro: #define
-	std::string actual = "#define Macro\n"
-						 "[A][/A]\n"
-						 "#enddef\n"
-						 "{Macro}\n"
-						 "{Macro}{Macro}\n"
-						 "{Macro}{Macro}{Macro}\n";
+	const std::string actual = "#define Macro\n"
+							   "[A][/A]\n"
+							   "#enddef\n"
+							   "{Macro}\n"
+							   "{Macro}{Macro}\n"
+							   "{Macro}{Macro}{Macro}\n";
 	std::string expected = "";
 	for(int i = 0; i < 6; ++i) {
 		expected += "[A][/A]";
@@ -45,10 +45,10 @@ BOOST_AUTO_TEST_CASE(macro_define_noArgument_ParseAsExpected)
 BOOST_AUTO_TEST_CASE(macro_define_1Argument_ParseAsExpected)
 {
 	// Test WML macro: #define with 1 argument
-	std::string actual = "#define MACRO\n"
-						 "abc#enddef\n"
-						 "a=\"{MACRO}\"\n";
-	std::string expected = "a=\"abc\"";
+	const std::string actual = "#define MACRO\n"
+							   "abc#enddef\n"
+							   "a=\"{MACRO}\"\n";
+	const std::string expected = "a=\"abc\"";
 	check_wml_equivalence(actual, expected);
 }
 

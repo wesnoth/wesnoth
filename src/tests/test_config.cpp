@@ -266,24 +266,24 @@ BOOST_AUTO_TEST_CASE(test_config_attribute_value)
 
 BOOST_AUTO_TEST_CASE(test_variable_info)
 {
-	config c;
+	const config c;
 	{
-		variable_access_const access("", c);
+		const variable_access_const access("", c);
 		// We dotn allow empty keys
 		BOOST_CHECK_THROW(access.as_scalar(), invalid_variablename_exception);
 	}
 	{
-		variable_access_const access("some_non_existent.", c);
+		const variable_access_const access("some_non_existent.", c);
 		// We dotn allow empty keys
 		BOOST_CHECK_THROW(access.as_scalar(), invalid_variablename_exception);
 	}
 	{
-		variable_access_const access("some_non_existent[0]value", c);
+		const variable_access_const access("some_non_existent[0]value", c);
 		// We expect '.' after ']'
 		BOOST_CHECK_THROW(access.as_scalar(), invalid_variablename_exception);
 	}
 	{
-		variable_access_const access("some_non_existent", c);
+		const variable_access_const access("some_non_existent", c);
 		// we return empty be default
 		BOOST_CHECK(!access.exists_as_container());
 		BOOST_CHECK_EQUAL(access.as_container(), config());
@@ -291,7 +291,7 @@ BOOST_AUTO_TEST_CASE(test_variable_info)
 		BOOST_CHECK_EQUAL(access.as_scalar(), config::attribute_value());
 	}
 	{
-		variable_access_const access("a.b[0].c[1].d.e.f[2]", c);
+		const variable_access_const access("a.b[0].c[1].d.e.f[2]", c);
 		// we return empty be default
 		BOOST_CHECK(!access.exists_as_container());
 		BOOST_CHECK_EQUAL(access.as_container(), config());
@@ -301,7 +301,7 @@ BOOST_AUTO_TEST_CASE(test_variable_info)
 	BOOST_CHECK(c.empty());
 	{
 		config c2;
-		variable_access_create access("a.b[0].c[1].d.e.f[2].g", c2);
+		const variable_access_create access("a.b[0].c[1].d.e.f[2].g", c2);
 		access.as_scalar() = 84;
 		BOOST_CHECK_EQUAL(variable_access_const("a.length", c2).as_scalar(), 1);
 		BOOST_CHECK_EQUAL(variable_access_const("a.b.length", c2).as_scalar(), 1);
@@ -313,7 +313,7 @@ BOOST_AUTO_TEST_CASE(test_variable_info)
 	}
 	{
 		config c2;
-		variable_access_throw access("a.b[9].c", c2);
+		const variable_access_throw access("a.b[9].c", c2);
 		BOOST_CHECK_THROW(access.as_scalar(), invalid_variablename_exception);
 	}
 	{

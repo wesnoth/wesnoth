@@ -52,7 +52,7 @@ bool rect::empty() const
 
 bool rect::contains(int x, int y) const
 {
-	SDL_Point p{x, y};
+	const SDL_Point p{x, y};
 	return SDL_PointInRect(&p, this) != SDL_FALSE;
 }
 
@@ -131,8 +131,8 @@ point rect::point_at(double x, double y) const
 
 rect rect::subrect(const SDL_FPoint& tl, const SDL_FPoint& br) const
 {
-	point p1 = point_at(tl.x, tl.y);
-	point p2 = point_at(br.x, br.y);
+	const point p1 = point_at(tl.x, tl.y);
+	const point p2 = point_at(br.x, br.y);
 	return { p1, p2 - p1 };
 }
 
