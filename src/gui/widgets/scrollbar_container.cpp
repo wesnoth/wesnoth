@@ -21,6 +21,7 @@
 #include "gui/core/event/message.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/core/log.hpp"
+#include "gui/core/window_builder/helper.hpp"
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
@@ -68,11 +69,11 @@ const std::map<std::string, scrollbar_base::scroll_mode>& scroll_lookup()
 } // namespace
 
 scrollbar_container::scrollbar_container(
-		const implementation::builder_styled_widget& builder, const std::string& control_type)
+		const implementation::builder_scrollbar_container& builder, const std::string& control_type)
 	: container_base(builder, control_type)
 	, state_(ENABLED)
-	, vertical_scrollbar_mode_(AUTO_VISIBLE_FIRST_RUN)
-	, horizontal_scrollbar_mode_(AUTO_VISIBLE_FIRST_RUN)
+	, vertical_scrollbar_mode_(builder.vertical_scrollbar_mode)
+	, horizontal_scrollbar_mode_(builder.horizontal_scrollbar_mode)
 	, vertical_scrollbar_grid_(nullptr)
 	, horizontal_scrollbar_grid_(nullptr)
 	, vertical_scrollbar_(nullptr)
@@ -1239,6 +1240,15 @@ scrollbar_container::signal_handler_sdl_touch_motion(const event::ui_event event
 	}
 }
 
+namespace implementation
+{
+builder_scrollbar_container::builder_scrollbar_container(const config& cfg)
+	: builder_styled_widget(cfg)
+	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+{
+}
 
+} // namespace implementation
 
 } // namespace gui2

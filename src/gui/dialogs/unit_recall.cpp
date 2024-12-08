@@ -48,8 +48,8 @@ namespace gui2::dialogs
 {
 
 // Index 2 is by-level
-static listbox::order_pair sort_last    {-1, sort_order::type::none};
-static listbox::order_pair sort_default { 2, sort_order::type::descending};
+static std::pair sort_last    {-1, sort_order::type::none};
+static std::pair sort_default { 2, sort_order::type::descending};
 
 REGISTER_DIALOG(unit_recall)
 
@@ -286,7 +286,7 @@ void unit_recall::pre_show()
 		}
 	}
 
-	list.set_sorting_options(
+	list.set_sorters(
 		[this](const std::size_t i) { return recall_list_[i]->type_name(); },
 		[this](const std::size_t i) { return recall_list_[i]->name(); },
 		[this](const std::size_t i) {
@@ -299,7 +299,8 @@ void unit_recall::pre_show()
 		}
 	);
 
-	list.set_active_sorting_option(sort_last.first >= 0 ? sort_last	: sort_default, true);
+	const auto& [index, order] = sort_last.first >= 0 ? sort_last : sort_default;
+	list.set_active_sorting_option(index, order, true);
 
 	list_item_clicked();
 }

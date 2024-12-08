@@ -78,11 +78,7 @@ namespace implementation
 {
 
 builder_scrollbar_panel::builder_scrollbar_panel(const config& cfg)
-	: builder_styled_widget(cfg)
-	, vertical_scrollbar_mode(
-			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(
-			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	: builder_scrollbar_container(cfg)
 	, grid_(nullptr)
 {
 	auto grid_definition = cfg.optional_child("definition");
@@ -95,9 +91,6 @@ builder_scrollbar_panel::builder_scrollbar_panel(const config& cfg)
 std::unique_ptr<widget> builder_scrollbar_panel::build() const
 {
 	auto panel = std::make_unique<scrollbar_panel>(*this);
-
-	panel->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
-	panel->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
 	DBG_GUI_G << "Window builder: placed scrollbar_panel '" << id
 			  << "' with definition '" << definition << "'.";

@@ -197,7 +197,7 @@ void game_stats::pre_show()
 	}
 
 	// Sorting options for the status list
-	stats_list.set_sorting_options(
+	stats_list.set_sorters(
 		[this](const std::size_t i) {
 			unit_const_ptr leader = get_leader(i + 1);
 			return leader ? leader->name() : t_string();
@@ -211,7 +211,7 @@ void game_stats::pre_show()
 	);
 
 	// Sorting options for the settings list
-	settings_list.set_sorting_options(
+	settings_list.set_sorters(
 		[this](const std::size_t i) {
 			unit_const_ptr leader = get_leader(i + 1);
 			return leader ? leader->name() : t_string();

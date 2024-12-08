@@ -77,16 +77,13 @@ struct scrollbar_panel_definition : public styled_widget_definition
 namespace implementation
 {
 
-struct builder_scrollbar_panel : public builder_styled_widget
+struct builder_scrollbar_panel : public builder_scrollbar_container
 {
 	explicit builder_scrollbar_panel(const config& cfg);
 
 	using builder_styled_widget::build;
 
 	virtual std::unique_ptr<widget> build() const override;
-
-	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
 	builder_grid_ptr grid_;
 };

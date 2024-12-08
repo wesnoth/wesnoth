@@ -36,6 +36,12 @@ inline constexpr bool decayed_is_same = std::is_same_v<std::decay_t<T1>, std::de
 template<typename>
 inline constexpr bool dependent_false_v = false;
 
+template<typename Enum>
+constexpr std::underlying_type_t<Enum> to_underlying(Enum e) noexcept
+{
+	return static_cast<std::underlying_type_t<Enum>>(e);
+}
+
 namespace detail
 {
 /**
