@@ -558,13 +558,13 @@ void listbox::initialize_sorter(std::string_view id, generator_sort_array&& arra
 	auto header = find_widget<grid>("_header_grid", false, false);
 	if(!header) return;
 
-	auto toggle = header->find_widget<selectable_item>(id, false, true);
+	auto& toggle = header->find_widget<selectable_item>(id);
 
 	const std::size_t i = orders_.size();
-	orders_.emplace_back(toggle, std::move(array));
+	orders_.emplace_back(&toggle, std::move(array));
 
 	// TODO: we can bind the pair directly if we remove the on-order callback
-	connect_signal_notify_modified(dynamic_cast<widget&>(*toggle),
+	connect_signal_notify_modified(dynamic_cast<widget&>(toggle),
 		std::bind(&listbox::order_by_column, this, i, std::placeholders::_1));
 }
 
