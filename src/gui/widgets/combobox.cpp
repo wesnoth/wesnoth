@@ -39,13 +39,15 @@ namespace gui2
 
 REGISTER_WIDGET(combobox)
 
-combobox::combobox(const implementation::builder_styled_widget& builder)
+combobox::combobox(const implementation::builder_combobox& builder)
 	: text_box_base(builder, type())
-	, max_input_length_(0)
+	, max_input_length_(builder.max_input_length)
 	, text_x_offset_(0)
 	, text_y_offset_(0)
 	, text_height_(0)
 	, dragging_(false)
+	, hint_text_(builder.hint_text)
+	, hint_image_(builder.hint_image)
 	, values_()
 	, selected_(0)
 {
@@ -440,9 +442,6 @@ std::unique_ptr<widget> builder_combobox::build() const
 	if(!options_.empty()) {
 		widget->set_values(options_);
 	}
-
-	widget->set_max_input_length(max_input_length);
-	widget->set_hint_data(hint_text, hint_image);
 
 	DBG_GUI_G << "Window builder: placed text box '" << id
 			  << "' with definition '" << definition << "'.";

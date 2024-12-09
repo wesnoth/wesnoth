@@ -51,8 +51,8 @@ REGISTER_WIDGET(addon_list)
 addon_list::addon_list(const implementation::builder_addon_list& builder)
 	: container_base(builder, type())
 	, addon_vector_()
-	, install_status_visibility_(visibility::visible)
-	, install_buttons_visibility_(visibility::invisible)
+	, install_status_visibility_(builder.install_status_visibility)
+	, install_buttons_visibility_(builder.install_buttons_visibility)
 	, install_function_()
 	, uninstall_function_()
 	, publish_function_()
@@ -447,15 +447,15 @@ static widget::visibility parse_visibility(const std::string& str)
 
 builder_addon_list::builder_addon_list(const config& cfg)
 	: builder_styled_widget(cfg)
-	, install_status_visibility_(widget::visibility::visible)
-	, install_buttons_visibility_(widget::visibility::invisible)
+	, install_status_visibility(widget::visibility::visible)
+	, install_buttons_visibility(widget::visibility::invisible)
 {
 	if(cfg.has_attribute("install_status_visibility")) {
-		install_status_visibility_ = parse_visibility(cfg["install_status_visibility"]);
+		install_status_visibility = parse_visibility(cfg["install_status_visibility"]);
 	}
 
 	if(cfg.has_attribute("install_buttons_visibility")) {
-		install_buttons_visibility_ = parse_visibility(cfg["install_buttons_visibility"]);
+		install_buttons_visibility = parse_visibility(cfg["install_buttons_visibility"]);
 	}
 }
 
@@ -470,10 +470,6 @@ std::unique_ptr<widget> builder_addon_list::build() const
 	assert(conf != nullptr);
 
 	widget->init_grid(*conf->grid);
-
-	widget->set_install_status_visibility(install_status_visibility_);
-	widget->set_install_buttons_visibility(install_buttons_visibility_);
-
 	widget->finalize_setup();
 
 	return widget;

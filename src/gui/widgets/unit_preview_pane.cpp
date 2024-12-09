@@ -64,7 +64,7 @@ unit_preview_pane::unit_preview_pane(const implementation::builder_unit_preview_
 	, label_details_(nullptr)
 	, tree_details_(nullptr)
 	, button_profile_(nullptr)
-	, image_mods_()
+	, image_mods_(builder.image_mods)
 {
 }
 
@@ -584,7 +584,7 @@ namespace implementation
 
 builder_unit_preview_pane::builder_unit_preview_pane(const config& cfg)
 	: builder_styled_widget(cfg)
-	, image_mods_(cfg["image_mods"])
+	, image_mods(cfg["image_mods"])
 {
 }
 
@@ -600,7 +600,6 @@ std::unique_ptr<widget> builder_unit_preview_pane::build() const
 
 	widget->init_grid(*conf->grid);
 	widget->finalize_setup();
-	widget->set_image_mods(image_mods_);
 
 	return widget;
 }

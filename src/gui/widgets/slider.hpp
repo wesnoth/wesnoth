@@ -265,8 +265,9 @@ struct builder_slider : public builder_styled_widget
 
 	virtual std::unique_ptr<widget> build() const override;
 
+	unsigned best_slider_length;
+
 private:
-	unsigned best_slider_length_;
 	int minimum_value_;
 	int maximum_value_;
 	unsigned step_size_;
