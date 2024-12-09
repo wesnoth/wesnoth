@@ -531,7 +531,13 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_hotkey_bind)
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_install_dependencies)
 {
-	test<install_dependencies>();
+	try {
+		test<install_dependencies>();
+	} catch(const std::exception& e) {
+		BOOST_FAIL("Why is there an exception here! " + e.what());
+	} catch(...) {
+		BOOST_FAIL("Unknown exception in weird place.");
+	}
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_language_selection)
 {
