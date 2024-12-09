@@ -558,8 +558,7 @@ void listbox::initialize_sorter(std::string_view id, generator_sort_array&& arra
 	auto header = find_widget<grid>("_header_grid", false, false);
 	if(!header) return;
 
-	auto toggle = header->find_widget<selectable_item>(id, false, false);
-	if(!toggle) return;
+	auto toggle = header->find_widget<selectable_item>(id, false, true);
 
 	const std::size_t i = orders_.size();
 	orders_.emplace_back(toggle, std::move(array));
