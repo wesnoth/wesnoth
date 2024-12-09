@@ -534,7 +534,7 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_install_dependencies)
 	try {
 		test<install_dependencies>();
 	} catch(const std::exception& e) {
-		BOOST_FAIL("Why is there an exception here! " + e.what());
+		BOOST_FAIL(std::string(e.what()));
 	} catch(...) {
 		BOOST_FAIL("Unknown exception in weird place.");
 	}
