@@ -428,8 +428,11 @@ void unit_recall::post_show()
 {
 	listbox& list = find_widget<listbox>("recall_list");
 
-	const auto [sorter, order] = list.get_active_sorter();
-	sort_last = std::pair{ sorter->id(), order };
+	if(const auto [sorter, order] = list.get_active_sorter(); sorter) {
+		sort_last.emplace(sorter->id(), order);
+	} else {
+		sort_last.reset();
+	}
 
 	if(get_retval() == retval::OK) {
 		selected_index_ = list.get_selected_row();
