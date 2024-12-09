@@ -166,8 +166,8 @@ public:
 		column_generators_.try_emplace(id, [&container, generator](size_t index) { return generator(container[index]); });
 		// use the generator function also as sorter function
 		if (use_as_sorter) {
-			find_widget<gui2::listbox>("recall_list").register_sorting_option(
-				column_generators_.size()-1,
+			find_widget<gui2::listbox>("recall_list").set_single_sorter(
+				formatter() << "sort_" << column_generators_.size()-1,
 				[&container, generator](size_t index) { return generator(container[index]); });
 		}
 		return *this;
@@ -176,18 +176,24 @@ public:
 	/**
 	 * Sets the generator function for the tooltips
 	 */
-	units_dialog& set_tooltip_generator(const std::function<std::string(const int)>& generator)
+	template<typename Value, typename Generator = std::function<std::string(const Value&)>>
+	units_dialog& set_tooltip_generator(
+		const std::vector<Value>& container, const Generator& generator)
 	{
-		tooltip_gen_ = generator;
+		tooltip_gen_ = [&container, generator](size_t index) { return generator(container[index]); };
 		return *this;
 	}
 
+	/**
+	 * Sets the generator function for column data
+	 */
 	template<typename Value, typename Generator = std::function<std::string(const Value&)>>
 	units_dialog& set_sorter(
 		const int col, const std::vector<Value>& container, const Generator& generator)
 	{
-		find_widget<gui2::listbox>("recall_list").register_sorting_option(
-			col, [&container, generator](size_t index) { return generator(container[index]); });
+		find_widget<gui2::listbox>("recall_list").set_single_sorter(
+			formatter() << "sort_" << col,
+			[&container, generator](size_t index) { return generator(container[index]); });
 		return *this;
 	}
 
@@ -198,10 +204,8 @@ public:
 		const std::vector<const unit_type*>& recruit_list,
 		const team& team);
 	units_dialog& build_recall_dialog(
-		const std::vector<unit_const_ptr>& unit_list,
-		const team& current_team,
-		const bool recallable = true,
-		const int wb_gold = 0);
+		const std::vector<unit_const_ptr>& recall_list,
+		const team& current_team);
 
 private:
 	std::vector<const unit_type*> unit_type_list_;

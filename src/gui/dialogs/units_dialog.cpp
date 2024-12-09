@@ -57,8 +57,8 @@ namespace gui2::dialogs
 namespace
 {
 // Index 2 is by-level
-listbox::order_pair sort_last    {-1, sort_order::type::none};
-listbox::order_pair sort_default { 2, sort_order::type::descending};
+static std::pair sort_default{ std::string{"sort_2"}, sort_order::type::descending };
+static utils::optional<decltype(sort_default)> sort_last;
 }
 
 REGISTER_DIALOG(units_dialog)
@@ -229,7 +229,8 @@ void units_dialog::show_list(listbox& list)
 		list.add_row(row_data);
 	}
 
-	list.set_active_sorting_option(sort_last.first >= 0 ? sort_last : sort_default, true);
+	const auto [sorter_id, order] = sort_last.value_or(sort_default);
+	list.set_active_sorter(sorter_id, order, true);
 }
 
 void units_dialog::rename_unit()
@@ -425,7 +426,11 @@ void units_dialog::update_gender_and_variations(unit_preview_pane& preview, int 
 void units_dialog::post_show()
 {
 	listbox& list = find_widget<listbox>("recall_list");
-	sort_last = list.get_active_sorting_option();
+	if(const auto [sorter, order] = list.get_active_sorter(); sorter) {
+		sort_last.emplace(sorter->id(), order);
+	} else {
+		sort_last.reset();
+	}
 
 	if(get_retval() == retval::OK) {
 		selected_index_ = list.get_selected_row();
@@ -540,6 +545,7 @@ units_dialog& units_dialog::build_unit_list_dialog(const std::vector<unit_const_
 	show_rename_option(true);
 	set_help_topic("..units");
 	set_units(unit_list);
+	set_row_num(unit_list.size());
 	set_column_generator("unit_name", unit_list, [&](const auto& unit) {
 		return !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
 	}, true);
@@ -566,15 +572,15 @@ units_dialog& units_dialog::build_unit_list_dialog(const std::vector<unit_const_
 	});
 	set_column_generator("unit_status", unit_list, [&](const auto& unit) {
 		// Status
-		if(unit->get_state(unit::STATE_PETRIFIED)) {
+		if(unit->incapacitated()) {
 			return "misc/petrified.png";
 		}
 
-		if(unit->get_state(unit::STATE_POISONED)) {
+		if(unit->poisoned()) {
 			return "misc/poisoned.png";
 		}
 
-		if(unit->get_state(unit::STATE_SLOWED)) {
+		if(unit->slowed()) {
 			return "misc/slowed.png";
 		}
 
@@ -627,53 +633,67 @@ units_dialog& units_dialog::build_recruit_dialog(
 }
 
 units_dialog& units_dialog::build_recall_dialog(
-	const std::vector<unit_const_ptr>& recall_list_team,
-	const team& current_team,
-	const bool recallable,
-	const int wb_gold
-)
+	const std::vector<unit_const_ptr>& recall_list,
+	const team& current_team)
 {
-	set_title(_("Recall Unit"))
-	.set_ok_label(_("Recall"))
-	.set_help_topic("recruit_and_recall")
-	.set_units(recall_list_team)
-	.set_row_num(recall_list_team.size())
-	.show_rename_option(true)
-	.show_dismiss_option(true)
-	.set_column_generator("unit_image", recall_list_team, [&](const auto& unit) {
+	int wb_gold = 0;
+	if(resources::controller && resources::controller->get_whiteboard()) {
+		wb::future_map future; // So gold takes into account planned spending
+		wb_gold = resources::controller->get_whiteboard()->get_spent_gold_for(current_team.side());
+	}
+
+	// Lambda to check if a unit is recallable
+	static const auto& recallable = [&](const unit_const_ptr& unit) {
+		// Note: Our callers apply [filter_recall], but leave it to us
+		// to apply cost-based filtering.
+		const int recall_cost =
+			(unit->recall_cost() > -1 ? unit->recall_cost() : current_team.recall_cost());
+
+		return (recall_cost <= current_team.gold() - wb_gold);
+	};
+
+	set_title(_("Recall Unit"));
+	set_ok_label(_("Recall"));
+	set_help_topic("recruit_and_recall");
+	set_units(recall_list);
+	set_row_num(recall_list.size());
+	show_rename_option(true);
+	show_dismiss_option(true);
+
+	set_column_generator("unit_image", recall_list, [&](const auto& unit) {
 		std::string mods = unit->image_mods();
 		if(unit->can_recruit()) { mods += "~BLIT(" + unit::leader_crown() + ")"; }
 		for(const std::string& overlay : unit->overlays()) {
-		mods += "~BLIT(" + overlay + ")";
+			mods += "~BLIT(" + overlay + ")";
 		}
-
-		if(!recallable) {
-			mods += "~GS()";
-		}
-
+		if(!recallable(unit)) { mods += "~GS()"; }
 		return unit->absolute_image() + mods;
-	})
-	.set_column_generator("unit_name", recall_list_team, [&](const auto& unit) {
+	});
+
+	set_column_generator("unit_name", recall_list, [&](const auto& unit) {
 		const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
-		return unit_helper::maybe_inactive(name, recallable);
-	})
-	.set_column_generator("unit_details", recall_list_team, [&](const auto& unit) {
+		return unit_helper::maybe_inactive(name, recallable(unit));
+	});
+
+	set_column_generator("unit_details", recall_list, [&](const auto& unit) {
 		std::stringstream details;
-		details << unit_helper::maybe_inactive(unit->type_name().str(), recallable);
-		details << unit_helper::format_cost_string(
-			unit->recall_cost(), current_team.recall_cost());
+		details << unit_helper::maybe_inactive(unit->type_name().str(), recallable(unit));
+		details << unit_helper::format_cost_string(unit->recall_cost(), current_team.recall_cost());
 		return details.str();
-	})
-	.set_column_generator("unit_moves", recall_list_team, [&](const auto& unit) {
+	});
+
+	set_column_generator("unit_moves", recall_list, [&](const auto& unit) {
 		return unit_helper::format_movement_string(unit->movement_left(), unit->total_movement());
-	})
-	.set_column_generator("unit_level", recall_list_team, [&](const auto& unit) {
-		return unit_helper::format_level_string(unit->level(), recallable);
-	})
-	.set_column_generator("unit_hp", recall_list_team, [&](const auto& unit) {
+	});
+	set_column_generator("unit_level", recall_list, [&](const auto& unit) {
+		return unit_helper::format_level_string(unit->level(), recallable(unit));
+	});
+
+	set_column_generator("unit_hp", recall_list, [&](const auto& unit) {
 		return markup::span_color(unit->hp_color(), unit->hitpoints(), "/", unit->max_hitpoints());
-	})
-	.set_column_generator("unit_experience", recall_list_team, [&](const auto& unit) {
+	});
+
+	set_column_generator("unit_experience", recall_list, [&](const auto& unit) {
 		std::stringstream exp_str;
 		if(unit->can_advance()) {
 			exp_str << unit->experience() << "/" << unit->max_experience();
@@ -681,19 +701,22 @@ units_dialog& units_dialog::build_recall_dialog(
 			exp_str << font::unicode_en_dash;
 		}
 		return markup::span_color(unit->xp_color(), exp_str.str());
-	})
-	.set_column_generator("unit_traits", recall_list_team, [&](const auto& unit) {
+	});
+
+	set_column_generator("unit_traits", recall_list, [&](const auto& unit) {
 		std::string traits;
 		for(const std::string& trait : unit->trait_names()) {
 			traits += (traits.empty() ? "" : "\n") + trait;
 		}
-		return unit_helper::maybe_inactive((!traits.empty() ? traits : font::unicode_en_dash), recallable);
-	})
+		return unit_helper::maybe_inactive((!traits.empty() ? traits : font::unicode_en_dash), recallable(unit));
+	});
+
 	// Hide "Status" header and show "Traits" header
-	.show_header(6, false)
-	.show_header(7, true)
-	.set_tooltip_generator([&](const auto /**/) {
-		if (!recallable) {
+	show_header(6, false);
+	show_header(7, true);
+
+	set_tooltip_generator(recall_list, [&](const auto& recall) {
+		if (!recallable(recall)) {
 			// Just set the tooltip on every single element in this row.
 			if(wb_gold > 0) {
 				return _("This unit cannot be recalled because you will not have enough gold at this point in your plan.");
@@ -703,20 +726,22 @@ units_dialog& units_dialog::build_recall_dialog(
 		} else {
 			return std::string();
 		}
-	})
-	.set_sorter(0, recall_list_team, [&](const auto& recall) { return recall->name().str(); })
-	.set_sorter(1, recall_list_team, [&](const auto& recall) { return recall->type_name().str(); })
-	.set_sorter(2, recall_list_team, [&](const auto& recall) {
+	});
+
+	set_sorter(0, recall_list, [&](const auto& recall) { return recall->name().str(); });
+
+	set_sorter(1, recall_list, [&](const auto& recall) { return recall->type_name().str(); });
+	set_sorter(2, recall_list, [&](const auto& recall) {
 		return std::tuple(recall->level(), -static_cast<int>(recall->experience_to_advance()));
-	})
-	.set_sorter(3, recall_list_team, [&](const auto& recall) { return recall->movement_left(); })
-	.set_sorter(4, recall_list_team, [&](const auto& recall) { return recall->hitpoints(); })
-	.set_sorter(5, recall_list_team, [&](const auto& recall) {
+	});
+	set_sorter(3, recall_list, [&](const auto& recall) { return recall->movement_left(); });
+	set_sorter(4, recall_list, [&](const auto& recall) { return recall->hitpoints(); });
+	set_sorter(5, recall_list, [&](const auto& recall) {
 		// this allows 0/35, 0/100 etc to be sorted
 		// also sorts 23/35 before 0/35, after which 0/100 comes
 		return recall->experience() + recall->max_experience();
-	})
-	.set_sorter(7, recall_list_team, [&](const auto& recall) {
+	});
+	set_sorter(7, recall_list, [&](const auto& recall) {
 		return !recall->trait_names().empty() ? recall->trait_names().front().str() : "";
 	});
 
