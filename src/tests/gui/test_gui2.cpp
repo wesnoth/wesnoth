@@ -533,8 +533,9 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_install_dependencies)
 {
 	try {
 		test<install_dependencies>();
-	} catch(const std::exception& e) {
-		BOOST_FAIL(std::string(e.what()));
+	} catch(const wml_exception& e) {
+		std::string reason = "WML EXCEPTION: " + e.dev_message + " " + e.user_message;
+		BOOST_FAIL(reason);
 	} catch(...) {
 		BOOST_FAIL(utils::get_unknown_exception_type());
 	}
