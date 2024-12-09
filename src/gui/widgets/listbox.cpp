@@ -87,8 +87,6 @@ listbox::listbox(const implementation::builder_listbox_base& builder)
 
 	// TODO: can we use the replacements system here?
 	swap_grid(nullptr, content_grid(), std::move(generator), "_list_grid");
-
-	initialize_header();
 }
 
 grid& listbox::add_row(const widget_item& item, const int index)
@@ -555,57 +553,41 @@ void listbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 	}
 }
 
-void listbox::initialize_header()
+void listbox::initialize_sorter(const std::string& id, generator_sort_array&& array)
 {
 	auto header = find_widget<grid>("_header_grid", false, false);
-	if(!header) {
-		return;
-	}
+	if(!header) return;
 
-	for(unsigned i = 0, max = std::max(header->get_cols(), header->get_rows()); i < max; ++i) {
-		//
-		// TODO: I had to change this to case to a toggle_button in order to use a signal handler.
-		// Should probably look into a way to make it more general like it was before (used to be
-		// cast to selectable_item).
-		//
-		// - vultraz, 2017-08-23
-		//
-		if(toggle_button* selectable = header->find_widget<toggle_button>("sort_" + std::to_string(i), false, false)) {
-			// Register callback to sort the list.
-			connect_signal_notify_modified(*selectable, std::bind(&listbox::order_by_column, this, i, std::placeholders::_1));
+	auto toggle = header->find_widget<selectable_item>(id, false, false);
+	if(!toggle) return;
 
-			if(orders_.size() < max) {
-				orders_.resize(max);
-			}
+	const std::size_t i = orders_.size();
+	orders_.emplace_back(toggle, std::move(array));
 
-			orders_[i].first = selectable;
-		}
-	}
+	// TODO: we can bind the pair directly if we remove the on-order callback
+	connect_signal_notify_modified(dynamic_cast<widget&>(*toggle),
+		std::bind(&listbox::order_by_column, this, i, std::placeholders::_1));
 }
 
 void listbox::order_by_column(unsigned column, widget& widget)
 {
 	selectable_item& selectable = dynamic_cast<selectable_item&>(widget);
-	if(column >= orders_.size()) {
-		return;
-	}
 
-	for(auto& pair : orders_) {
-		if(pair.first != nullptr && pair.first != &selectable) {
-			pair.first->set_value(static_cast<unsigned int>(sort_order::type::none));
+	for(auto& [w, _] : orders_) {
+		if(w && w != &selectable) {
+			w->set_value(utils::to_underlying(sort_order::type::none));
 		}
 	}
 
-	sort_order::type order = sort_order::get_enum(selectable.get_value()).value_or(sort_order::type::none);
-
-	if(static_cast<unsigned int>(order) > orders_[column].second.size()) {
+	auto order = sort_order::get_enum(selectable.get_value()).value_or(sort_order::type::none);
+	if(static_cast<unsigned>(order) > orders_[column].second.size()) {
 		return;
 	}
 
 	if(order == sort_order::type::none) {
 		order_by(std::less<unsigned>());
 	} else {
-		order_by(orders_[column].second[static_cast<unsigned int>(order) - 1]);
+		order_by(orders_[column].second[utils::to_underlying(order) - 1]);
 	}
 
 	if(callback_order_change_ != nullptr) {
@@ -630,48 +612,39 @@ bool listbox::sort_helper::more(const t_string& lhs, const t_string& rhs)
 	return translation::icompare(lhs, rhs) > 0;
 }
 
-void listbox::set_active_sorting_option(const order_pair& sort_by, const bool select_first)
+void listbox::set_active_sorter(const std::string& id, sort_order::type order, bool select_first)
 {
-	// TODO: should this be moved to a public header_grid() getter function?
-	auto header = find_widget<grid>("_header_grid", false, false);
-	if(!header) {
-		return;
-	}
+	for(auto& [w, _] : orders_) {
+		if(!w || dynamic_cast<widget*>(w)->id() != id) continue;
 
-	selectable_item& w = header->find_widget<selectable_item>("sort_" + std::to_string(sort_by.first));
+		// Set the state and fire a modified event to handle updating the list
+		w->set_value(utils::to_underlying(order), true);
 
-	// Set the sorting toggle widgets' value (in this case, its state) to the given sorting
-	// order. This is necessary since the widget's value is used to determine the order in
-	// @ref order_by_column in lieu of a direction being passed directly.
-	w.set_value(static_cast<int>(sort_by.second));
-
-	order_by_column(sort_by.first, dynamic_cast<widget&>(w));
-
-	if(select_first && generator_->get_item_count() > 0) {
-		select_row_at(0);
+		if(select_first && generator_->get_item_count() > 0) {
+			select_row_at(0);
+		}
 	}
 }
 
-const listbox::order_pair listbox::get_active_sorting_option()
+std::pair<widget*, sort_order::type> listbox::get_active_sorter() const
 {
-	for(unsigned int column = 0; column < orders_.size(); ++column) {
-		selectable_item* w = orders_[column].first;
+	for(const auto& [w, _] : orders_) {
 		if(!w) continue;
 
-		sort_order::type sort = sort_order::get_enum(w->get_value()).value_or(sort_order::type::none);
+		auto sort = sort_order::get_enum(w->get_value()).value_or(sort_order::type::none);
 		if(sort != sort_order::type::none) {
-			return std::pair(column, sort);
+			return { dynamic_cast<widget*>(w), sort };
 		}
 	}
 
-	return std::pair(-1, sort_order::type::none);
+	return { nullptr, sort_order::type::none };
 }
 
 void listbox::mark_as_unsorted()
 {
-	for(auto& pair : orders_) {
-		if(pair.first != nullptr) {
-			pair.first->set_value(static_cast<unsigned int>(sort_order::type::none));
+	for(auto& [w, _] : orders_) {
+		if(w) {
+			w->set_value(utils::to_underlying(sort_order::type::none));
 		}
 	}
 }
