@@ -29,7 +29,6 @@ local function on_hit(weapon, opponent)
         wesnoth.interface.float_label(opponent.x, opponent.y, text, color)
     end
     opponent:add_modification('object', {
-        -- id = 'curse_object',
         duration = 'turn end',
         wml.tag.effect{
             apply_to = 'image_mod',
@@ -87,17 +86,8 @@ wesnoth.game_events.add{
 }
 
 -- Dubious hack to remove the effect at the right time
---[[wesnoth.game_events.add_repeating("side turn", function(ctx)
-    for index, cursed_unit in ipairs(wesnoth.units.find_on_map{wml.tag.filter_wml{wml.tag.variables{curse_side = wesnoth.current.side}}}) do
-            wesnoth.wml_actions.remove_object{id = cursed_unit.id, object_id = 'curse_object'}
-            cursed_unit.status.cursed = false
-            wesnoth.wml_actions.clear_variable({name = 'curse_side'}, cursed_unit.variables)
-        -- end
-    end
-end)--]]
 wesnoth.game_events.add_repeating("side turn end", function(ctx)
-    local all_my_units = wesnoth.units.find{side = wesnoth.current.side}
-    for i = 1, #all_my_units do
-        all_my_units[i].status.cursed = false
+    for index, cursed_unit in ipairs(wesnoth.units.find_on_map{side = wesnoth.current.side,status = 'cursed'}) do
+        cursed_unit.status.cursed = false
     end
 end)
