@@ -167,7 +167,7 @@ public:
 		// use the generator function also as sorter function
 		if (use_as_sorter) {
 			find_widget<gui2::listbox>("recall_list").set_single_sorter(
-				formatter() << "sort_" << column_generators_.size()-1,
+				"sort_" + std::to_string(column_generators_.size()-1),
 				[&container, generator](size_t index) { return generator(container[index]); });
 		}
 		return *this;
@@ -192,7 +192,7 @@ public:
 		const int col, const std::vector<Value>& container, const Generator& generator)
 	{
 		find_widget<gui2::listbox>("recall_list").set_single_sorter(
-			formatter() << "sort_" << col,
+			"sort_" + std::to_string(col),
 			[&container, generator](size_t index) { return generator(container[index]); });
 		return *this;
 	}

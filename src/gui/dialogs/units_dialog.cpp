@@ -643,7 +643,7 @@ units_dialog& units_dialog::build_recall_dialog(
 	}
 
 	// Lambda to check if a unit is recallable
-	static const auto& recallable = [&](const unit_const_ptr& unit) {
+	const auto& recallable = [&](const unit_const_ptr& unit) {
 		// Note: Our callers apply [filter_recall], but leave it to us
 		// to apply cost-based filtering.
 		const int recall_cost =
@@ -660,7 +660,7 @@ units_dialog& units_dialog::build_recall_dialog(
 	show_rename_option(true);
 	show_dismiss_option(true);
 
-	set_column_generator("unit_image", recall_list, [&](const auto& unit) {
+	set_column_generator("unit_image", recall_list, [&, recallable](const auto& unit) {
 		std::string mods = unit->image_mods();
 		if(unit->can_recruit()) { mods += "~BLIT(" + unit::leader_crown() + ")"; }
 		for(const std::string& overlay : unit->overlays()) {
@@ -670,12 +670,12 @@ units_dialog& units_dialog::build_recall_dialog(
 		return unit->absolute_image() + mods;
 	});
 
-	set_column_generator("unit_name", recall_list, [&](const auto& unit) {
+	set_column_generator("unit_name", recall_list, [&, recallable](const auto& unit) {
 		const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
 		return unit_helper::maybe_inactive(name, recallable(unit));
 	});
 
-	set_column_generator("unit_details", recall_list, [&](const auto& unit) {
+	set_column_generator("unit_details", recall_list, [&, recallable](const auto& unit) {
 		std::stringstream details;
 		details << unit_helper::maybe_inactive(unit->type_name().str(), recallable(unit));
 		details << unit_helper::format_cost_string(unit->recall_cost(), current_team.recall_cost());
@@ -685,7 +685,7 @@ units_dialog& units_dialog::build_recall_dialog(
 	set_column_generator("unit_moves", recall_list, [&](const auto& unit) {
 		return unit_helper::format_movement_string(unit->movement_left(), unit->total_movement());
 	});
-	set_column_generator("unit_level", recall_list, [&](const auto& unit) {
+	set_column_generator("unit_level", recall_list, [&, recallable](const auto& unit) {
 		return unit_helper::format_level_string(unit->level(), recallable(unit));
 	});
 
@@ -703,7 +703,7 @@ units_dialog& units_dialog::build_recall_dialog(
 		return markup::span_color(unit->xp_color(), exp_str.str());
 	});
 
-	set_column_generator("unit_traits", recall_list, [&](const auto& unit) {
+	set_column_generator("unit_traits", recall_list, [&, recallable](const auto& unit) {
 		std::string traits;
 		for(const std::string& trait : unit->trait_names()) {
 			traits += (traits.empty() ? "" : "\n") + trait;
