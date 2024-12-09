@@ -34,22 +34,12 @@ class selectable_item;
 namespace implementation
 {
 struct builder_listbox_base;
-<<<<<<< HEAD
-=======
-struct builder_listbox;
-struct builder_horizontal_listbox;
-struct builder_grid_listbox;
->>>>>>> 81fdfc2fa79 (unified units dialog)
 }
 
 /** The listbox class. */
 class listbox : public scrollbar_container
 {
 	friend struct implementation::builder_listbox_base;
-<<<<<<< HEAD
-=======
-	friend struct implementation::builder_listbox;
->>>>>>> 81fdfc2fa79 (unified units dialog)
 
 	friend class debug_layout_graph;
 
