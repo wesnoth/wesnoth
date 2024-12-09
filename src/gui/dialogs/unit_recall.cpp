@@ -47,9 +47,8 @@ static lg::log_domain log_display("display");
 namespace gui2::dialogs
 {
 
-// Index 2 is by-level
-static listbox::order_pair sort_last    {-1, sort_order::type::none};
-static listbox::order_pair sort_default { 2, sort_order::type::descending};
+static std::pair sort_default{ std::string{"sort_2"}, sort_order::type::descending };
+static utils::optional<decltype(sort_default)> sort_last;
 
 REGISTER_DIALOG(unit_recall)
 
@@ -286,7 +285,7 @@ void unit_recall::pre_show()
 		}
 	}
 
-	list.set_sorting_options(
+	list.set_sorters(
 		[this](const std::size_t i) { return recall_list_[i]->type_name(); },
 		[this](const std::size_t i) { return recall_list_[i]->name(); },
 		[this](const std::size_t i) {
@@ -299,7 +298,8 @@ void unit_recall::pre_show()
 		}
 	);
 
-	list.set_active_sorting_option(sort_last.first >= 0 ? sort_last	: sort_default, true);
+	const auto [sorter_id, order] = sort_last.value_or(sort_default);
+	list.set_active_sorter(sorter_id, order, true);
 
 	list_item_clicked();
 }
@@ -427,7 +427,9 @@ void unit_recall::list_item_clicked()
 void unit_recall::post_show()
 {
 	listbox& list = find_widget<listbox>("recall_list");
-	sort_last = list.get_active_sorting_option();
+
+	const auto [sorter, order] = list.get_active_sorter();
+	sort_last = std::pair{ sorter->id(), order };
 
 	if(get_retval() == retval::OK) {
 		selected_index_ = list.get_selected_row();

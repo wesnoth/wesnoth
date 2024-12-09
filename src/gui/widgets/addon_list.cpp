@@ -375,7 +375,7 @@ void addon_list::finalize_setup()
 {
 	listbox& list = get_listbox();
 
-	list.set_sorting_options(
+	list.set_sorters(
 		[this](const std::size_t i) { return t_string(addon_vector_[i]->display_title_full()); },
 		[this](const std::size_t i) { return addon_vector_[i]->author; },
 		[this](const std::size_t i) { return addon_vector_[i]->size; },
@@ -383,8 +383,7 @@ void addon_list::finalize_setup()
 		[this](const std::size_t i) { return t_string(addon_vector_[i]->display_type()); }
 	);
 
-	auto order = std::pair(0, sort_order::type::ascending);
-	list.set_active_sorting_option(order);
+	list.set_active_sorter("sort_0", sort_order::type::ascending);
 }
 
 void addon_list::set_addon_order(const addon_sort_func& func)

@@ -262,32 +262,62 @@ private:
 		static bool more(const t_string& lhs, const t_string& rhs);
 	};
 
-public:
-	template<typename... Args>
-	void set_sorting_options(Args&&... functors)
+	/** Implementation detail of @ref set_single_sorter */
+	void initialize_sorter(const std::string& id, generator_sort_array&&);
+
+	/** Implementation detail of @ref set_sorters */
+	template<std::size_t... Is, typename... Args>
+	void set_sorters_impl(std::index_sequence<Is...>, Args&&... fs)
 	{
-		orders_ = {{ nullptr, {
-			[f = functors](int lhs, int rhs) { return sort_helper::less(f(lhs), f(rhs)); },
-			[f = functors](int lhs, int rhs) { return sort_helper::more(f(lhs), f(rhs)); }
-		}}...};
+		(set_single_sorter("sort_" + std::to_string(Is), fs), ...);
 	}
 
-	using order_pair = std::pair<int, sort_order::type>;
+public:
+	/**
+	 * Registers a single sorting control by ID.
+	 *
+	 * @param id           The ID of the selectable_item header widget to bind to.
+	 * @param f            Any callable whose result is sortable.
+	 */
+	template<typename Func>
+	void set_single_sorter(const std::string& id, const Func& f)
+	{
+		initialize_sorter(id, {
+			[f](int lhs, int rhs) { return sort_helper::less(f(lhs), f(rhs)); },
+			[f](int lhs, int rhs) { return sort_helper::more(f(lhs), f(rhs)); }
+		});
+	}
 
 	/**
-	 * Sorts the listbox by a pre-set sorting option. The corresponding header widget will also be toggled.
-	 * The sorting option should already have been registered by @ref listbox::set_sorting_options().
+	 * Registers sorting controls using magic index IDs.
 	 *
-	 * @param sort_by         Pair of column index and sort direction. The column (first argument)
-	 *                        argument will be sorted in the specified direction (second argument)
+	 * This function accepts any callable whose result is sortable. Each callable passed
+	 * will be bound to a corresponding selectable_item widget in the header, if present,
+	 * whose ID is sort_N, where N is the index of the callable in the parameter pack.
 	 *
-	 * @param select_first    If true, the first row post-sort will be selected. If false (default),
-	 *                        the selected row will be maintained post-sort  as per standard sorting
-	 *                        functionality.
+	 * @param functors     Zero or more callables with the signature T(std::size_t).
 	 */
-	void set_active_sorting_option(const order_pair& sort_by, const bool select_first = false);
+	template<typename... Args>
+	void set_sorters(Args&&... functors)
+	{
+		set_sorters_impl(std::index_sequence_for<Args...>{}, std::forward<Args>(functors)...);
+	}
 
-	const order_pair get_active_sorting_option();
+	/**
+	 * Sorts the listbox by a pre-set sorting option. The corresponding header widget
+	 * will also be toggled. The sorting option should already have been registered by
+	 * @ref listbox::set_sorters().
+	 *
+	 * @param id              The id of the sorter widget whose value to set.
+	 * @param order           The order to sort by (ascending, descending, or none).
+	 * @param select_first    If true, the first row post-sort will be selected.
+	 *                        If false (default), the selected row will be maintained
+	 *                        post-sort as per standard sorting functionality.
+	 */
+	void set_active_sorter(const std::string& id, sort_order::type order, bool select_first = false);
+
+	/** Returns a widget pointer to the active sorter, along with its corresponding order. */
+	std::pair<widget*, sort_order::type> get_active_sorter() const;
 
 	/** Deactivates all sorting toggle buttons at the top, making the list look like it's not sorted. */
 	void mark_as_unsorted();
@@ -335,11 +365,6 @@ private:
 	 *
 	 * For now it's always fixed width depending on the first row.
 	 */
-
-	/**
-	 * Finishes binding callbacks to header sorting toggles.
-	 */
-	void initialize_header();
 
 	/**
 	 * Contains a pointer to the generator.
