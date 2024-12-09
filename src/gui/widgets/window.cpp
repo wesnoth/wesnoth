@@ -440,7 +440,7 @@ void window::show_tooltip(/*const unsigned auto_close_timeout*/)
 		connect();
 	}
 
-	log_scope2(log_gui_draw, "Window: show as tooltip.");
+	const log_scope2(log_gui_draw, "Window: show as tooltip.");
 
 	generate_dot_file("show", SHOW);
 
@@ -472,7 +472,7 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 		connect();
 	}
 
-	log_scope2(log_gui_draw, "Window: show non modal.");
+	const log_scope2(log_gui_draw, "Window: show non modal.");
 
 	generate_dot_file("show", SHOW);
 

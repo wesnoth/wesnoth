@@ -706,7 +706,7 @@ REPLAY_ACTION_TYPE get_replay_action_type(const config& command)
 
 REPLAY_RETURN do_replay(bool one_move)
 {
-	log_scope("do replay");
+	const log_scope("do replay");
 
 	if (!resources::controller->is_skipping_replay()) {
 		display::get_singleton()->recalculate_minimap();

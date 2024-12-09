@@ -1741,7 +1741,7 @@ struct preprocessor_scope_helper : std::basic_istream<char>
 
 filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map* defines)
 {
-	log_scope("preprocessing file " + fname + " ...");
+	const log_scope("preprocessing file " + fname + " ...");
 
 	// NOTE: the preprocessor_scope_helper does *not* take ownership of defines.
 	return filesystem::scoped_istream(new preprocessor_scope_helper(fname, defines));
@@ -1749,7 +1749,7 @@ filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map
 
 std::string preprocess_string(const std::string& contents, preproc_map* defines, const std::string& textdomain)
 {
-	log_scope("preprocessing string " + contents.substr(0, 10) + " ...");
+	const log_scope("preprocessing string " + contents.substr(0, 10) + " ...");
 
 	std::unique_ptr<preprocessor_streambuf> buf;
 	std::unique_ptr<preproc_map> local_defines;

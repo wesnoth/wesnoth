@@ -760,7 +760,7 @@ void saved_game::swap(saved_game& other)
 
 void saved_game::set_data(config& cfg)
 {
-	log_scope("read_game");
+	const log_scope("read_game");
 
 	if(auto caryover_sides = cfg.optional_child("carryover_sides")) {
 		carryover_.swap(*caryover_sides);

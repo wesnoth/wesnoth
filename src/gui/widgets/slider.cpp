@@ -61,7 +61,7 @@ slider::slider(const implementation::builder_slider& builder)
 
 point slider::calculate_best_size() const
 {
-	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
+	const log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	// Inherited.
 	point result = styled_widget::calculate_best_size();

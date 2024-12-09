@@ -535,7 +535,7 @@ battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr at
 		double harm_weight,
 		const combatant* prev_def)
 {
-	log_scope2(log_attack, "choose_attacker_weapon");
+	const log_scope2(log_attack, "choose_attacker_weapon");
 	std::vector<battle_context> choices;
 
 	// What options does attacker have?
@@ -588,7 +588,7 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 		const map_location& defender_loc,
 		const combatant* prev_def)
 {
-	log_scope2(log_attack, "choose_defender_weapon");
+	const log_scope2(log_attack, "choose_defender_weapon");
 	VALIDATE(attacker_weapon < attacker->attacks().size(), _("An invalid attacker weapon got selected."));
 
 	const attack_type& att = attacker->attacks()[attacker_weapon];

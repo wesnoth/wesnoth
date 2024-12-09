@@ -426,7 +426,7 @@ void unit_recall::list_item_clicked()
 
 void unit_recall::post_show()
 {
-	listbox& list = find_widget<listbox>("recall_list");
+	const listbox& list = find_widget<listbox>("recall_list");
 
 	const auto [sorter, order] = list.get_active_sorter();
 	sort_last = std::pair{ sorter->id(), order };

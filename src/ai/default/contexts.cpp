@@ -125,7 +125,7 @@ int default_ai_context_impl::rate_terrain(const unit& u, const map_location& loc
 std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_dstsrc)
 {
 
-	log_scope2(log_ai, "finding targets...");
+	const log_scope2(log_ai, "finding targets...");
 	unit_map &units_ = resources::gameboard->units();
 	const unit_map::iterator leader = units_.find_leader(get_side());
 	const gamemap &map_ = resources::gameboard->map();

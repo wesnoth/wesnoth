@@ -2571,7 +2571,7 @@ std::string unit::default_anim_image() const
 
 void unit::apply_modifications()
 {
-	log_scope("apply mods");
+	const log_scope("apply mods");
 
 	variables_.clear_children("mods");
 	if(modifications_.has_child("advance")) {

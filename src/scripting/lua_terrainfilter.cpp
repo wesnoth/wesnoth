@@ -698,7 +698,7 @@ filter::filter(lua_State* L, int data_index, int res_index)
 
 bool filter::matches(const gamemap_base& m, map_location l) const
 {
-	log_scope("filter::matches");
+	const log_scope("filter::matches");
 	return impl_->matches(m, l);
 }
 
