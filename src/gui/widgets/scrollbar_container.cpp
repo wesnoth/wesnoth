@@ -500,12 +500,12 @@ const widget* scrollbar_container::find_at(const point& coordinate, const bool m
 	return w;
 }
 
-widget* scrollbar_container::find(const std::string& id, const bool must_be_active)
+widget* scrollbar_container::find(const std::string_view id, const bool must_be_active)
 {
 	return scrollbar_container_implementation::find<widget>(*this, id, must_be_active);
 }
 
-const widget* scrollbar_container::find(const std::string& id, const bool must_be_active) const
+const widget* scrollbar_container::find(const std::string_view id, const bool must_be_active) const
 {
 	return scrollbar_container_implementation::find<const widget>(*this, id, must_be_active);
 }

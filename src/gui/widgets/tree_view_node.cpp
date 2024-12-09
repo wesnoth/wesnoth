@@ -424,7 +424,7 @@ const widget* tree_view_node::find_at(const point& coordinate, const bool must_b
 	return tree_view_node_implementation::find_at<const widget>(*this, coordinate, must_be_active);
 }
 
-widget* tree_view_node::find(const std::string& id, const bool must_be_active)
+widget* tree_view_node::find(const std::string_view id, const bool must_be_active)
 {
 	widget* result = widget::find(id, must_be_active);
 	if(result) {
@@ -446,7 +446,7 @@ widget* tree_view_node::find(const std::string& id, const bool must_be_active)
 	return nullptr;
 }
 
-const widget* tree_view_node::find(const std::string& id, const bool must_be_active) const
+const widget* tree_view_node::find(const std::string_view id, const bool must_be_active) const
 {
 	const widget* result = widget::find(id, must_be_active);
 	if(result) {
