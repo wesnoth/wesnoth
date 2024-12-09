@@ -297,8 +297,6 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 	if(dlg.show() && dlg.is_selected()) {
 		const auto& type = recruit_list[dlg.get_selected_index()];
 		do_recruit(type->id(), side_num, last_hex);
-	} else {
-		gui2::show_transient_message("", _("No unit recruited."));
 	}
 }
 
@@ -392,21 +390,19 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	team& current_team = board().get_team(side_num);
 
 	std::vector<unit_const_ptr> recall_list_team;
-	bool empty;
 	{
 		wb::future_map future; // ensures recall list has planned recalls removed
 		recall_list_team = actions::get_recalls(side_num, last_hex);
-		empty = current_team.recall_list().empty();
 	}
 
 	int wb_gold = pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0;
-	int unit_cost = current_team.recall_cost();
-	bool recallable = (unit_cost <= current_team.gold() - wb_gold);
+	int team_recall_cost = current_team.recall_cost();
+	bool recallable = (team_recall_cost <= current_team.gold() - wb_gold);
 	if(!recallable) {
 		utils::string_map i18n_symbols;
-		i18n_symbols["cost"] = std::to_string(unit_cost);
+		i18n_symbols["cost"] = std::to_string(team_recall_cost);
 		std::string msg = VNGETTEXT("You must have at least 1 gold piece to recall a unit.",
-				"You must have at least $cost gold pieces to recall this unit.", unit_cost, i18n_symbols);
+				"You must have at least $cost gold pieces to recall this unit.", team_recall_cost, i18n_symbols);
 		gui2::show_transient_message("", msg);
 		return;
 	}
@@ -416,7 +412,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		DBG_WB << unit->name() << " [" << unit->id() << "]";
 	}
 
-	if(empty) {
+	if(current_team.recall_list().empty()) {
 		gui2::show_transient_message("",
 			_("There are no troops available to recall.\n(You must have veteran survivors from a previous scenario.)"));
 		return;
@@ -428,10 +424,9 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	}
 
 	gui2::dialogs::units_dialog dlg;
-	dlg.build_recall_dialog(recall_list_team, current_team, recallable, wb_gold);
+	dlg.build_recall_dialog(recall_list_team, current_team);
 
 	if(!dlg.show() || !dlg.is_selected()) {
-		gui2::show_transient_message("", _("No unit recalled."));
 		return;
 	}
 
@@ -443,7 +438,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	// the magic number -1 is what it gets set to if the unit doesn't
 	// have a special recall_cost of its own.
 	if(sel_unit->recall_cost() > -1) {
-		unit_cost = sel_unit->recall_cost();
+		team_recall_cost = sel_unit->recall_cost();
 	}
 
 	LOG_NG << "recall index: " << dlg.get_selected_index();
