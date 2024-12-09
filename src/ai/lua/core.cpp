@@ -59,7 +59,7 @@ void lua_ai_context::init(lua_State *L)
 
 void lua_ai_context::get_arguments(config &cfg) const
 {
-	int top = lua_gettop(L);
+	const int top = lua_gettop(L);
 
 	lua_getfield(L, LUA_REGISTRYINDEX, aisKey);
 	lua_rawgeti(L, -1, num_);
@@ -72,7 +72,7 @@ void lua_ai_context::get_arguments(config &cfg) const
 
 void lua_ai_context::set_arguments(const config &cfg)
 {
-	int top = lua_gettop(L);
+	const int top = lua_gettop(L);
 
 	lua_getfield(L, LUA_REGISTRYINDEX, aisKey);
 	lua_rawgeti(L, -1, num_);
@@ -85,7 +85,7 @@ void lua_ai_context::set_arguments(const config &cfg)
 
 void lua_ai_context::get_persistent_data(config &cfg) const
 {
-	int top = lua_gettop(L);
+	const int top = lua_gettop(L);
 
 	lua_getfield(L, LUA_REGISTRYINDEX, aisKey);
 	lua_rawgeti(L, -1, num_);
@@ -98,7 +98,7 @@ void lua_ai_context::get_persistent_data(config &cfg) const
 
 void lua_ai_context::set_persistent_data(const config &cfg)
 {
-	int top = lua_gettop(L);
+	const int top = lua_gettop(L);
 
 	lua_getfield(L, LUA_REGISTRYINDEX, aisKey);
 	lua_rawgeti(L, -1, num_);
@@ -122,7 +122,7 @@ static ai::readonly_context &get_readonly_context(lua_State *L)
 
 void lua_ai_context::push_ai_table()
 {
-	lua_ai_load ctx(*this, false);
+	const lua_ai_load ctx(*this, false);
 }
 
 static int transform_ai_action(lua_State *L, const ai::action_result_ptr& action_result)
@@ -141,9 +141,9 @@ static int transform_ai_action(lua_State *L, const ai::action_result_ptr& action
 
 static int cfun_ai_get_suitable_keep(lua_State *L)
 {
-	int index = 1;
+	const int index = 1;
 
-	ai::readonly_context &context = get_readonly_context(L);
+	const ai::readonly_context& context = get_readonly_context(L);
 	unit* leader = nullptr;
 	if (lua_isuserdata(L, index))
 	{
@@ -166,14 +166,15 @@ static int cfun_ai_get_suitable_keep(lua_State *L)
 
 static int ai_move(lua_State *L, bool exec, bool remove_movement)
 {
-	int side = get_readonly_context(L).get_side();
-	map_location from = luaW_checklocation(L, 1);
-	map_location to = luaW_checklocation(L, 2);
+	const int side = get_readonly_context(L).get_side();
+	const map_location from = luaW_checklocation(L, 1);
+	const map_location to = luaW_checklocation(L, 2);
 	bool unreach_is_ok = false;
 	if (lua_isboolean(L, 3)) {
 		unreach_is_ok = luaW_toboolean(L, 3);
 	}
-	ai::move_result_ptr move_result = ai::actions::execute_move_action(side,exec,from,to,remove_movement, unreach_is_ok);
+	const ai::move_result_ptr move_result
+		= ai::actions::execute_move_action(side, exec, from, to, remove_movement, unreach_is_ok);
 	return transform_ai_action(L,move_result);
 }
 
@@ -194,11 +195,11 @@ static int cfun_ai_check_move(lua_State *L)
 
 static int ai_attack(lua_State *L, bool exec)
 {
-	ai::readonly_context &context = get_readonly_context(L);
+	const ai::readonly_context& context = get_readonly_context(L);
 
-	int side = context.get_side();
-	map_location attacker = luaW_checklocation(L, 1);
-	map_location defender = luaW_checklocation(L, 2);
+	const int side = context.get_side();
+	const map_location attacker = luaW_checklocation(L, 1);
+	const map_location defender = luaW_checklocation(L, 2);
 
 	int attacker_weapon = -1;//-1 means 'select what is best'
 	double aggression = context.get_aggression();//use the aggression from the context
@@ -218,7 +219,8 @@ static int ai_attack(lua_State *L, bool exec)
 		aggression = lua_tonumber(L, 4);
 	}
 
-	ai::attack_result_ptr attack_result = ai::actions::execute_attack_action(side,exec,attacker,defender,attacker_weapon,aggression);
+	const ai::attack_result_ptr attack_result
+		= ai::actions::execute_attack_action(side, exec, attacker, defender, attacker_weapon, aggression);
 	return transform_ai_action(L,attack_result);
 }
 
@@ -234,10 +236,11 @@ static int cfun_ai_check_attack(lua_State *L)
 
 static int ai_stopunit_select(lua_State *L, bool exec, bool remove_movement, bool remove_attacks)
 {
-	int side = get_readonly_context(L).get_side();
-	map_location loc = luaW_checklocation(L, 1);
+	const int side = get_readonly_context(L).get_side();
+	const map_location loc = luaW_checklocation(L, 1);
 
-	ai::stopunit_result_ptr stopunit_result = ai::actions::execute_stopunit_action(side,exec,loc,remove_movement,remove_attacks);
+	const ai::stopunit_result_ptr stopunit_result
+		= ai::actions::execute_stopunit_action(side, exec, loc, remove_movement, remove_attacks);
 	return transform_ai_action(L,stopunit_result);
 }
 
@@ -264,11 +267,12 @@ static int cfun_ai_check_stopunit(lua_State *L)
 static int ai_recruit(lua_State *L, bool exec)
 {
 	const char *unit_name = luaL_checkstring(L, 1);
-	int side = get_readonly_context(L).get_side();
+	const int side = get_readonly_context(L).get_side();
 	map_location where;
 	luaW_tolocation(L, 2, where);
-	map_location from = map_location::null_location();
-	ai::recruit_result_ptr recruit_result = ai::actions::execute_recruit_action(side,exec,std::string(unit_name),where,from);
+	const map_location from = map_location::null_location();
+	const ai::recruit_result_ptr recruit_result
+		= ai::actions::execute_recruit_action(side, exec, std::string(unit_name), where, from);
 	return transform_ai_action(L,recruit_result);
 }
 
@@ -285,11 +289,12 @@ static int cfun_ai_check_recruit(lua_State *L)
 static int ai_recall(lua_State *L, bool exec)
 {
 	const char *unit_id = luaL_checkstring(L, 1);
-	int side = get_readonly_context(L).get_side();
+	const int side = get_readonly_context(L).get_side();
 	map_location where;
 	luaW_tolocation(L, 2, where);
-	map_location from = map_location::null_location();
-	ai::recall_result_ptr recall_result = ai::actions::execute_recall_action(side,exec,std::string(unit_id),where,from);
+	const map_location from = map_location::null_location();
+	const ai::recall_result_ptr recall_result
+		= ai::actions::execute_recall_action(side, exec, std::string(unit_id), where, from);
 	return transform_ai_action(L,recall_result);
 }
 
@@ -312,7 +317,7 @@ static int cfun_ai_fallback_human(lua_State*)
 
 static int cfun_ai_get_targets(lua_State *L)
 {
-	move_map enemy_dst_src = get_readonly_context(L).get_enemy_dstsrc();
+	const move_map enemy_dst_src = get_readonly_context(L).get_enemy_dstsrc();
 	std::vector<target> targets = get_engine(L).get_ai_context()->find_targets(enemy_dst_src);
 	int i = 1;
 
@@ -345,7 +350,7 @@ static int cfun_ai_get_targets(lua_State *L)
 // Aspect section
 static int cfun_ai_get_aggression(lua_State *L)
 {
-	double aggression = get_readonly_context(L).get_aggression();
+	const double aggression = get_readonly_context(L).get_aggression();
 	lua_pushnumber(L, aggression);
 	return 1;
 }
@@ -356,7 +361,7 @@ static int cfun_ai_get_attacks(lua_State *L)
 	// This is because ai.aspects.attacks returns the viable units but this returns a full attack analysis
 	const ai::attacks_vector& attacks = get_readonly_context(L).get_attacks();
 	lua_createtable(L, attacks.size(), 0);
-	int table_index = lua_gettop(L);
+	const int table_index = lua_gettop(L);
 
 	ai::attacks_vector::const_iterator it = attacks.begin();
 	for (int i = 1; it != attacks.end(); ++it, ++i)
@@ -371,7 +376,7 @@ static int cfun_ai_get_attacks(lua_State *L)
 static int cfun_ai_get_avoid(lua_State *L)
 {
 	std::set<map_location> locs;
-	terrain_filter avoid = get_readonly_context(L).get_avoid();
+	const terrain_filter avoid = get_readonly_context(L).get_avoid();
 	avoid.get_locations(locs);
 	luaW_push_locationset(L, locs);
 
@@ -380,28 +385,28 @@ static int cfun_ai_get_avoid(lua_State *L)
 
 static int cfun_ai_get_caution(lua_State *L)
 {
-	double caution = get_readonly_context(L).get_caution();
+	const double caution = get_readonly_context(L).get_caution();
 	lua_pushnumber(L, caution);
 	return 1;
 }
 
 static int cfun_ai_get_grouping(lua_State *L)
 {
-	std::string grouping = get_readonly_context(L).get_grouping();
+	const std::string grouping = get_readonly_context(L).get_grouping();
 	lua_pushstring(L, grouping.c_str());
 	return 1;
 }
 
 static int cfun_ai_get_leader_aggression(lua_State *L)
 {
-	double leader_aggression = get_readonly_context(L).get_leader_aggression();
+	const double leader_aggression = get_readonly_context(L).get_leader_aggression();
 	lua_pushnumber(L, leader_aggression);
 	return 1;
 }
 
 static int cfun_ai_get_leader_goal(lua_State *L)
 {
-	config goal = get_readonly_context(L).get_leader_goal();
+	const config goal = get_readonly_context(L).get_leader_goal();
 	luaW_pushconfig(L, goal);
 	return 1;
 }
@@ -435,7 +440,7 @@ static int cfun_ai_get_leader_ignores_keep(lua_State *L)
 
 static int cfun_ai_get_leader_value(lua_State *L)
 {
-	double leader_value = get_readonly_context(L).get_leader_value();
+	const double leader_value = get_readonly_context(L).get_leader_value();
 	lua_pushnumber(L, leader_value);
 	return 1;
 }
@@ -455,7 +460,7 @@ static int cfun_ai_get_passive_leader_shares_keep(lua_State *L)
 static int cfun_ai_get_recruitment_pattern(lua_State *L)
 {
 	std::vector<std::string> recruiting = get_readonly_context(L).get_recruitment_pattern();
-	int size = recruiting.size();
+	const int size = recruiting.size();
 	lua_createtable(L, size, 0); // create an empty table with predefined size
 	for (int i = 0; i < size; ++i)
 	{
@@ -468,35 +473,35 @@ static int cfun_ai_get_recruitment_pattern(lua_State *L)
 
 static int cfun_ai_get_scout_village_targeting(lua_State *L)
 {
-	double scout_village_targeting = get_readonly_context(L).get_scout_village_targeting();
+	const double scout_village_targeting = get_readonly_context(L).get_scout_village_targeting();
 	lua_pushnumber(L, scout_village_targeting);
 	return 1;
 }
 
 static int cfun_ai_get_simple_targeting(lua_State *L)
 {
-	bool simple_targeting = get_readonly_context(L).get_simple_targeting();
+	const bool simple_targeting = get_readonly_context(L).get_simple_targeting();
 	lua_pushboolean(L, simple_targeting);
 	return 1;
 }
 
 static int cfun_ai_get_support_villages(lua_State *L)
 {
-	bool support_villages = get_readonly_context(L).get_support_villages();
+	const bool support_villages = get_readonly_context(L).get_support_villages();
 	lua_pushboolean(L, support_villages);
 	return 1;
 }
 
 static int cfun_ai_get_village_value(lua_State *L)
 {
-	double village_value = get_readonly_context(L).get_village_value();
+	const double village_value = get_readonly_context(L).get_village_value();
 	lua_pushnumber(L, village_value);
 	return 1;
 }
 
 static int cfun_ai_get_villages_per_scout(lua_State *L)
 {
-	int villages_per_scout = get_readonly_context(L).get_villages_per_scout();
+	const int villages_per_scout = get_readonly_context(L).get_villages_per_scout();
 	lua_pushnumber(L, villages_per_scout);
 	return 1;
 }
@@ -504,7 +509,7 @@ static int cfun_ai_get_villages_per_scout(lua_State *L)
 
 static int cfun_attack_rating(lua_State *L)
 {
-	int top = lua_gettop(L);
+	const int top = lua_gettop(L);
 	// the attack_analysis table should be on top of the stack
 	lua_getfield(L, -1, "att_ptr"); // [-2: attack_analysis; -1: pointer to attack_analysis object in c++]
 	// now the pointer to our attack_analysis C++ object is on top
@@ -512,9 +517,9 @@ static int cfun_attack_rating(lua_State *L)
 
 	//[-2: attack_analysis; -1: pointer to attack_analysis object in c++]
 
-	double aggression = get_readonly_context(L).get_aggression();
+	const double aggression = get_readonly_context(L).get_aggression();
 
-	double rating = aa_ptr->rating(aggression, get_readonly_context(L));
+	const double rating = aa_ptr->rating(aggression, get_readonly_context(L));
 
 	lua_settop(L, top);
 
@@ -526,7 +531,7 @@ static void push_movements(lua_State *L, const std::vector< std::pair < map_loca
 {
 	lua_createtable(L, moves.size(), 0);
 
-	int table_index = lua_gettop(L);
+	const int table_index = lua_gettop(L);
 
 	std::vector< std::pair < map_location, map_location > >::const_iterator move = moves.begin();
 
@@ -640,11 +645,11 @@ static void push_move_map(lua_State *L, const move_map& m)
 
 	int index = 1;
 
-	std::hash<map_location> lhash;
+	const std::hash<map_location> lhash;
 
 	do
 	{
-		map_location key = it->first;
+		const map_location key = it->first;
 		lua_pushinteger(L, lhash(key));
 
 		lua_createtable(L, 0, 0);
@@ -668,7 +673,7 @@ static void push_move_map(lua_State *L, const move_map& m)
 
 static int cfun_ai_get_dstsrc(lua_State *L)
 {
-	move_map dst_src = get_readonly_context(L).get_dstsrc();
+	const move_map dst_src = get_readonly_context(L).get_dstsrc();
 	get_readonly_context(L).set_dst_src_valid_lua();
 	push_move_map(L, dst_src);
 	return 1;
@@ -676,7 +681,7 @@ static int cfun_ai_get_dstsrc(lua_State *L)
 
 static int cfun_ai_get_srcdst(lua_State *L)
 {
-	move_map src_dst = get_readonly_context(L).get_srcdst();
+	const move_map src_dst = get_readonly_context(L).get_srcdst();
 	get_readonly_context(L).set_src_dst_valid_lua();
 	push_move_map(L, src_dst);
 	return 1;
@@ -684,7 +689,7 @@ static int cfun_ai_get_srcdst(lua_State *L)
 
 static int cfun_ai_get_enemy_dstsrc(lua_State *L)
 {
-	move_map enemy_dst_src = get_readonly_context(L).get_enemy_dstsrc();
+	const move_map enemy_dst_src = get_readonly_context(L).get_enemy_dstsrc();
 	get_readonly_context(L).set_dst_src_enemy_valid_lua();
 	push_move_map(L, enemy_dst_src);
 	return 1;
@@ -692,7 +697,7 @@ static int cfun_ai_get_enemy_dstsrc(lua_State *L)
 
 static int cfun_ai_get_enemy_srcdst(lua_State *L)
 {
-	move_map enemy_src_dst = get_readonly_context(L).get_enemy_srcdst();
+	const move_map enemy_src_dst = get_readonly_context(L).get_enemy_srcdst();
 	get_readonly_context(L).set_src_dst_enemy_valid_lua();
 	push_move_map(L, enemy_src_dst);
 	return 1;
@@ -700,28 +705,28 @@ static int cfun_ai_get_enemy_srcdst(lua_State *L)
 
 static int cfun_ai_is_dst_src_valid(lua_State *L)
 {
-	bool valid = get_readonly_context(L).is_dst_src_valid_lua();
+	const bool valid = get_readonly_context(L).is_dst_src_valid_lua();
 	lua_pushboolean(L, valid);
 	return 1;
 }
 
 static int cfun_ai_is_dst_src_enemy_valid(lua_State *L)
 {
-	bool valid = get_readonly_context(L).is_dst_src_enemy_valid_lua();
+	const bool valid = get_readonly_context(L).is_dst_src_enemy_valid_lua();
 	lua_pushboolean(L, valid);
 	return 1;
 }
 
 static int cfun_ai_is_src_dst_valid(lua_State *L)
 {
-	bool valid = get_readonly_context(L).is_src_dst_valid_lua();
+	const bool valid = get_readonly_context(L).is_src_dst_valid_lua();
 	lua_pushboolean(L, valid);
 	return 1;
 }
 
 static int cfun_ai_is_src_dst_enemy_valid(lua_State *L)
 {
-	bool valid = get_readonly_context(L).is_src_dst_enemy_valid_lua();
+	const bool valid = get_readonly_context(L).is_src_dst_enemy_valid_lua();
 	lua_pushboolean(L, valid);
 	return 1;
 }
@@ -747,7 +752,7 @@ typesafe_aspect<T>* try_aspect_as(aspect_ptr p)
 static int impl_ai_aspect_get(lua_State* L)
 {
 	const aspect_map& aspects = get_engine(L).get_readonly_context().get_aspects();
-	aspect_map::const_iterator iter = aspects.find(luaL_checkstring(L, 2));
+	const aspect_map::const_iterator iter = aspects.find(luaL_checkstring(L, 2));
 	if(iter == aspects.end()) {
 		return 0;
 	}
@@ -762,7 +767,7 @@ static int impl_ai_aspect_get(lua_State* L)
 			aspect_as_attacks_vector = &dynamic_cast<typesafe_aspect<attacks_vector>&>(composite.find_active());
 			real_aspect = dynamic_cast<aspect_attacks_base*>(aspect_as_attacks_vector);
 		}
-		int my_side = get_engine(L).get_readonly_context().get_side();
+		const int my_side = get_engine(L).get_readonly_context().get_side();
 		std::vector<unit_const_ptr> attackers, enemies;
 		for(unit_map::const_iterator u = resources::gameboard->units().begin(); u != resources::gameboard->units().end(); ++u) {
 			if(!u.valid()) {
@@ -789,9 +794,9 @@ static int impl_ai_aspect_get(lua_State* L)
 		lua_setfield(L, -2, "enemy");
 	} else if(typesafe_aspect<unit_advancements_aspect>* aspect_as_unit_advancements_aspects = try_aspect_as<unit_advancements_aspect>(iter->second)) {
 		const unit_advancements_aspect& val = aspect_as_unit_advancements_aspects->get();
-		int my_side = get_engine(L).get_readonly_context().get_side();
+		const int my_side = get_engine(L).get_readonly_context().get_side();
 		lua_newtable(L);
-		std::hash<map_location> lhash;
+		const std::hash<map_location> lhash;
 		for (unit_map::const_iterator u = resources::gameboard->units().begin(); u != resources::gameboard->units().end(); ++u) {
 			if (!u.valid() || u->side() != my_side) {
 				continue;
@@ -840,7 +845,7 @@ static int impl_ai_get(lua_State* L)
 		return 0;
 	}
 	ai::engine_lua& engine = get_engine(L);
-	std::string m = lua_tostring(L,2);
+	const std::string m = lua_tostring(L, 2);
 	if(m == "side") {
 		lua_pushinteger(L, engine.get_readonly_context().get_side());
 		return 1;
@@ -861,7 +866,7 @@ static int impl_ai_get(lua_State* L)
 	}
 	lua_pushstring(L, "read_only");
 	lua_rawget(L, 1);
-	bool read_only = luaW_toboolean(L, -1);
+	const bool read_only = luaW_toboolean(L, -1);
 	lua_pop(L, 1);
 	if(read_only) {
 		return 0;
@@ -958,7 +963,7 @@ static size_t generate_and_push_ai_state(lua_State* L, ai::engine_lua* engine)
 {
 	// Retrieve the ai elements table from the registry.
 	lua_getfield(L, LUA_REGISTRYINDEX, aisKey); // [-1: AIs registry table]
-	size_t length_ai = lua_rawlen(L, -1); // length of table
+	const size_t length_ai = lua_rawlen(L, -1); // length of table
 	lua_newtable(L); // [-1: AI state table  -2: AIs registry table]
 	generate_and_push_ai_table(L, engine); // [-1: AI routines  -2: AI state  -3: AIs registry]
 	lua_setfield(L, -2, "ai"); // [-1: AI state  -2: AIs registry]
@@ -977,7 +982,7 @@ void lua_ai_context::apply_micro_ai(const config &cfg)
 
 lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engine_lua *engine)
 {
-	int res_ai = luaL_loadbufferx(L, code, strlen(code), /*name*/ code, "t"); // [-1: AI code]
+	const int res_ai = luaL_loadbufferx(L, code, strlen(code), /*name*/ code, "t"); // [-1: AI code]
 	if (res_ai != 0)
 	{
 
@@ -987,7 +992,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		return nullptr;
 	}
 	//push data table here
-	size_t idx = generate_and_push_ai_state(L, engine); // [-1: AI state  -2: AI code]
+	const size_t idx = generate_and_push_ai_state(L, engine); // [-1: AI state  -2: AI code]
 	lua_pushvalue(L, -2); // [-1: AI code  -2: AI state  -3: AI code]
 	lua_setfield(L, -2, "update_self"); // [-1: AI state  -2: AI code]
 	lua_pushlightuserdata(L, engine);
@@ -998,7 +1003,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 
 void lua_ai_context::update_state()
 {
-	lua_ai_load ctx(*this, true); // [-1: AI state table]
+	const lua_ai_load ctx(*this, true); // [-1: AI state table]
 
 	// Load the AI code and arguments
 	lua_getfield(L, -1, "update_self"); // [-1: AI code  -2: AI state]
@@ -1019,7 +1024,7 @@ void lua_ai_context::update_state()
 
 lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *code, lua_ai_context &context)
 {
-	int res = luaL_loadbufferx(L, code, strlen(code), /*name*/ code, "t");//stack size is now 1 [ -1: f]
+	const int res = luaL_loadbufferx(L, code, strlen(code), /*name*/ code, "t"); // stack size is now 1 [ -1: f]
 	if (res)
 	{
 		char const *m = lua_tostring(L, -1);
@@ -1031,7 +1036,7 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 	// Retrieve the ai elements table from the registry.
 	lua_getfield(L, LUA_REGISTRYINDEX, aisKey);   //stack size is now 2  [-1: ais_table -2: f]
 	// Push the function in the table so that it is not collected.
-	size_t length = lua_rawlen(L, -1);//length of ais_table
+	const size_t length = lua_rawlen(L, -1); // length of ais_table
 	lua_pushvalue(L, -2); //stack size is now 3: [-1: f  -2: ais_table  -3: f]
 	lua_rawseti(L, -2, length + 1);// ais_table[length+1]=f.  stack size is now 2 [-1: ais_table  -2: f]
 	lua_remove(L, -1);//stack size is now 1 [-1: f]
@@ -1100,10 +1105,10 @@ lua_ai_context::~lua_ai_context()
 
 void lua_ai_action_handler::handle(const config &cfg, const config &filter_own, bool read_only, const lua_object_ptr& l_obj)
 {
-	int initial_top = lua_gettop(L);//get the old stack size
+	const int initial_top = lua_gettop(L); // get the old stack size
 
 	// Load the context
-	lua_ai_load ctx(context_, read_only); // [-1: AI state table]
+	const lua_ai_load ctx(context_, read_only); // [-1: AI state table]
 
 	// Load the user function from the registry.
 	lua_getfield(L, LUA_REGISTRYINDEX, aisKey); // [-1: AI registry  -2: AI state]
@@ -1111,7 +1116,7 @@ void lua_ai_action_handler::handle(const config &cfg, const config &filter_own, 
 	lua_remove(L, -2); // [-1: AI action  -2: AI state]
 
 	// Load the arguments
-	int iState = lua_absindex(L, -2);
+	const int iState = lua_absindex(L, -2);
 	lua_getfield(L, iState, "self");
 	luaW_pushconfig(L, cfg);
 	lua_getfield(L, iState, "data");

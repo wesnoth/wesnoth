@@ -137,7 +137,7 @@ void context_manager::refresh_all()
 		if(!get_map_context().is_pure_map()) {
 			// If the scenario has more than 9 teams, add locations for them
 			// (First 9 teams are always in the list)
-			size_t n_teams = get_map_context().teams().size();
+			const size_t n_teams = get_map_context().teams().size();
 			for(size_t i = 10; i <= n_teams; i++) {
 				locs_->add_item(std::to_string(i));
 			}
@@ -194,7 +194,7 @@ std::size_t context_manager::modified_maps(std::string& message)
 		}
 	}
 
-	for(std::string& str : modified) {
+	for(const std::string& str : modified) {
 		message += "\n" + font::unicode_bullet + " " + str;
 	}
 
@@ -244,7 +244,7 @@ void context_manager::edit_side_dialog(const team& t)
 void context_manager::edit_pbl()
 {
 	if(!current_addon_.empty()) {
-		std::string pbl = filesystem::get_current_editor_dir(current_addon_) + "/_server.pbl";
+		const std::string pbl = filesystem::get_current_editor_dir(current_addon_) + "/_server.pbl";
 		gui2::dialogs::editor_edit_pbl::execute(pbl, current_addon_);
 	}
 }
@@ -254,10 +254,10 @@ void context_manager::change_addon_id()
 	std::string new_addon_id = current_addon_;
 	gui2::dialogs::prompt::execute(new_addon_id);
 
-	std::string old_dir = filesystem::get_current_editor_dir(current_addon_);
-	std::string new_dir = filesystem::get_current_editor_dir(new_addon_id);
+	const std::string old_dir = filesystem::get_current_editor_dir(current_addon_);
+	const std::string new_dir = filesystem::get_current_editor_dir(new_addon_id);
 	if(addon_filename_legal(new_addon_id) && filesystem::rename_dir(old_dir, new_dir)) {
-		std::string main_cfg = new_dir + "/_main.cfg";
+		const std::string main_cfg = new_dir + "/_main.cfg";
 		std::string main = filesystem::read_file(main_cfg);
 
 		// update paths
@@ -335,7 +335,7 @@ void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
 	std::vector<config> contexts;
 
 	for(std::size_t mci = 0; mci < map_contexts_.size(); ++mci) {
-		map_context& mc = *map_contexts_[mci];
+		const map_context& mc = *map_contexts_[mci];
 
 		std::string filename;
 		if(mc.is_pure_map()) {
@@ -510,7 +510,7 @@ void context_manager::apply_mask_dialog()
 	if(dlg.show()) {
 		try {
 			map_context mask(game_config_, dlg.path(), current_addon_);
-			editor_action_apply_mask a(mask.map());
+			const editor_action_apply_mask a(mask.map());
 			perform_refresh(a);
 		} catch (const editor_map_load_exception& e) {
 			gui2::show_transient_message(_("Error loading mask"), e.what());
@@ -530,7 +530,7 @@ void context_manager::perform_refresh(const editor_action& action, bool drag_par
 
 void context_manager::rename_area_dialog()
 {
-	int active_area  = get_map_context().get_active_area();
+	const int active_area = get_map_context().get_active_area();
 	std::string name = get_map_context().get_time_manager()->get_area_ids()[active_area];
 
 	if(gui2::dialogs::edit_text::execute(N_("Rename Area"), N_("Identifier:"), name)) {
@@ -553,7 +553,7 @@ void context_manager::create_mask_to_dialog()
 	if(dlg.show()) {
 		try {
 			map_context map(game_config_, dlg.path(), current_addon_);
-			editor_action_create_mask a(map.map());
+			const editor_action_create_mask a(map.map());
 			perform_refresh(a);
 		} catch (const editor_map_load_exception& e) {
 			gui2::show_transient_message(_("Error loading map"), e.what());
@@ -668,7 +668,7 @@ void context_manager::resize_map_dialog()
 				break;
 		}
 
-		editor_action_resize_map a(w, h, x_offset, y_offset, fill);
+		const editor_action_resize_map a(w, h, x_offset, y_offset, fill);
 		perform_refresh(a);
 	}
 }
@@ -698,10 +698,10 @@ void context_manager::save_map_as_dialog()
 		return;
 	}
 
-	boost::filesystem::path save_path(dlg.path());
+	const boost::filesystem::path save_path(dlg.path());
 
 	// Show warning the first time user tries to save in a wrong folder
-	std::string last_folder = save_path.parent_path().filename().string();
+	const std::string last_folder = save_path.parent_path().filename().string();
 	if ((last_folder == "scenarios")
 		&& first_pick
 		&& (gui2::show_message(
@@ -712,12 +712,12 @@ void context_manager::save_map_as_dialog()
 		return;
 	}
 
-	std::size_t is_open = check_open_map(save_path.string());
+	const std::size_t is_open = check_open_map(save_path.string());
 	if(is_open < map_contexts_.size() && is_open != static_cast<unsigned>(current_context_index_)) {
 		gui2::show_transient_message(_("This map is already open."), save_path.string());
 	}
 
-	std::string old_filename = get_map_context().get_filename();
+	const std::string old_filename = get_map_context().get_filename();
 
 	get_map_context().set_filename(save_path.string());
 
@@ -747,10 +747,10 @@ void context_manager::save_scenario_as_dialog()
 		return;
 	}
 
-	boost::filesystem::path save_path(dlg.path());
+	const boost::filesystem::path save_path(dlg.path());
 
 	// Show warning the first time user tries to save in a wrong folder
-	std::string last_folder = save_path.parent_path().filename().string();
+	const std::string last_folder = save_path.parent_path().filename().string();
 	if ((last_folder == "maps")
 		&& first_pick
 		&& (gui2::show_message(
@@ -761,13 +761,13 @@ void context_manager::save_scenario_as_dialog()
 		return;
 	}
 
-	std::size_t is_open = check_open_map(save_path.string());
+	const std::size_t is_open = check_open_map(save_path.string());
 	if(is_open < map_contexts_.size() && is_open != static_cast<unsigned>(current_context_index_)) {
 		gui2::show_transient_message(_("This scenario is already open."), save_path.string());
 		return;
 	}
 
-	std::string old_filename = get_map_context().get_filename();
+	const std::string old_filename = get_map_context().get_filename();
 
 	get_map_context().set_filename(save_path.string());
 
@@ -817,8 +817,8 @@ void context_manager::generate_map_dialog()
 		if(map_string.empty()) {
 			gui2::show_transient_message("", _("Map creation failed."));
 		} else {
-			editor_map new_map(map_string);
-			editor_action_whole_map a(new_map);
+			const editor_map new_map(map_string);
+			const editor_action_whole_map a(new_map);
 			get_map_context().set_needs_labels_reset(); // Ensure Player Start labels are updated together with newly generated map
 			perform_refresh(a);
 		}
@@ -845,7 +845,7 @@ void context_manager::fill_selection()
 
 void context_manager::save_all_maps()
 {
-	int current = current_context_index_;
+	const int current = current_context_index_;
 	for(std::size_t i = 0; i < map_contexts_.size(); ++i) {
 		switch_context(i);
 		save_map();
@@ -921,7 +921,7 @@ std::size_t context_manager::check_open_map(const std::string& fn) const
 
 bool context_manager::check_switch_open_map(const std::string& fn)
 {
-	std::size_t i = check_open_map(fn);
+	const std::size_t i = check_open_map(fn);
 	if(i < map_contexts_.size()) {
 		gui2::show_transient_message(_("This map is already open."), fn);
 		switch_context(i);
@@ -966,7 +966,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 			}
 
 			if(new_context) {
-				int new_id = add_map_context_of(std::move(mc));
+				const int new_id = add_map_context_of(std::move(mc));
 				switch_context(new_id);
 			} else {
 				replace_map_context_with(std::move(mc));
@@ -993,7 +993,7 @@ void context_manager::revert_map()
 		return;
 	}
 
-	std::string filename = get_map_context().get_filename();
+	const std::string filename = get_map_context().get_filename();
 	if(filename.empty()) {
 		ERR_ED << "Empty filename in map revert";
 		return;
@@ -1005,10 +1005,10 @@ void context_manager::revert_map()
 void context_manager::new_map(int width, int height, const t_translation::terrain_code& fill, bool new_context)
 {
 	const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
-	editor_map m(width, height, fill);
+	const editor_map m(width, height, fill);
 
 	if(new_context) {
-		int new_id = add_map_context(m, true, default_schedule, current_addon_);
+		const int new_id = add_map_context(m, true, default_schedule, current_addon_);
 		switch_context(new_id);
 	} else {
 		replace_map_context(m, true, default_schedule, current_addon_);
@@ -1018,10 +1018,10 @@ void context_manager::new_map(int width, int height, const t_translation::terrai
 void context_manager::new_scenario(int width, int height, const t_translation::terrain_code& fill, bool new_context)
 {
 	auto default_schedule = game_config_.find_child("editor_times", "id", "empty");
-	editor_map m(width, height, fill);
+	const editor_map m(width, height, fill);
 
 	if(new_context) {
-		int new_id = add_map_context(m, false, *default_schedule, current_addon_);
+		const int new_id = add_map_context(m, false, *default_schedule, current_addon_);
 		switch_context(new_id);
 	} else {
 		replace_map_context(m, false, *default_schedule, current_addon_);
@@ -1077,8 +1077,7 @@ void context_manager::create_default_context()
 
 void context_manager::create_blank_context()
 {
-	t_translation::terrain_code default_terrain =
-			t_translation::read_terrain_code(game_config::default_terrain);
+	const t_translation::terrain_code default_terrain = t_translation::read_terrain_code(game_config::default_terrain);
 
 	const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
 	add_map_context(editor_map(44, 33, default_terrain), true, default_schedule, current_addon_);

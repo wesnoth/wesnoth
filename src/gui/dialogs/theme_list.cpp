@@ -67,7 +67,7 @@ void theme_list::post_show()
 		return;
 	}
 
-	listbox& list = find_widget<listbox>("themes");
+	const listbox& list = find_widget<listbox>("themes");
 	index_ = list.get_selected_row();
 }
 } // namespace dialogs

@@ -164,21 +164,21 @@ bool unit_drawer::selected_or_reachable(const map_location& loc) const
 void unit_drawer::redraw_unit(const unit& u) const
 {
 	unit_animation_component & ac = u.anim_comp();
-	map_location loc = u.get_location();
+	const map_location loc = u.get_location();
 
-	int side = u.side();
+	const int side = u.side();
 
-	bool hidden = u.get_hidden();
-	bool is_flying = u.is_flying();
-	map_location::direction facing = u.facing();
-	int hitpoints = u.hitpoints();
-	int max_hitpoints = u.max_hitpoints();
+	const bool hidden = u.get_hidden();
+	const bool is_flying = u.is_flying();
+	const map_location::direction facing = u.facing();
+	const int hitpoints = u.hitpoints();
+	const int max_hitpoints = u.max_hitpoints();
 
-	bool can_recruit = u.can_recruit();
-	bool can_advance = u.can_advance();
+	const bool can_recruit = u.can_recruit();
+	const bool can_advance = u.can_advance();
 
-	int experience = u.experience();
-	int max_experience = u.max_experience();
+	const int experience = u.experience();
+	const int max_experience = u.max_experience();
 
 	color_t hp_color=u.hp_color();
 	color_t xp_color=u.xp_color();
@@ -267,7 +267,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 	const auto [xdst, ydst] = disp.get_location(dst);
 
 	// FIXME: double check whether the shift amount accounts for zoom level
-	rect unit_rect = disp.get_location_rect(loc).shifted_by(0, adjusted_params.y);
+	const rect unit_rect = disp.get_location_rect(loc).shifted_by(0, adjusted_params.y);
 
 	// We draw bars only if wanted, visible on the map view
 	if(ac.draw_bars_ && unit_rect.overlaps(disp.map_outside_area())) {
@@ -361,12 +361,12 @@ void unit_drawer::redraw_unit(const unit& u) const
 				// Offset slightly to make room for the XP bar
 				const int hp_offset = static_cast<int>(-5 * display::get_zoom_factor());
 
-				double filled = static_cast<double>(hitpoints) / static_cast<double>(max_hitpoints);
+				const double filled = static_cast<double>(hitpoints) / static_cast<double>(max_hitpoints);
 				draw_bar(origin.x + hp_offset, origin.y, bar_hp_height, filled, hp_color);
 			}
 
 			if(experience > 0 && can_advance) {
-				double filled = static_cast<double>(experience) / static_cast<double>(max_experience);
+				const double filled = static_cast<double>(experience) / static_cast<double>(max_experience);
 				draw_bar(origin.x, origin.y, bar_xp_height, filled, xp_color);
 			}
 		});
@@ -402,7 +402,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 		)
 		+ hex_size_by_2 - height_adjust_unit * zoom_factor;
 
-	bool has_halo = ac.unit_halo_ && ac.unit_halo_->valid();
+	const bool has_halo = ac.unit_halo_ && ac.unit_halo_->valid();
 	if(!has_halo && !u.image_halo().empty()) {
 		ac.unit_halo_ = halo_man.add(
 			halo_x, halo_y,
@@ -418,38 +418,32 @@ void unit_drawer::redraw_unit(const unit& u) const
 	}
 
 	const std::vector<std::string> halos_abilities = u.halo_abilities();
-	bool has_abil_halo = !ac.abil_halos_.empty() && ac.abil_halos_.front()->valid();
+	const bool has_abil_halo = !ac.abil_halos_.empty() && ac.abil_halos_.front()->valid();
 	if(!has_abil_halo && !halos_abilities.empty()) {
 		for(const std::string& halo_ab : halos_abilities){
-			halo::handle abil_halo = halo_man.add(
-				halo_x, halo_y,
-				halo_ab + u.TC_image_mods(),
-				map_location(-1, -1)
-			);
+			const halo::handle abil_halo
+				= halo_man.add(halo_x, halo_y, halo_ab + u.TC_image_mods(), map_location(-1, -1));
 			if(abil_halo->valid()){
 				ac.abil_halos_.push_back(abil_halo);
 			}
 		}
 	}
 	if(has_abil_halo && (ac.abil_halos_ref_ != halos_abilities || halos_abilities.empty())){
-		for(halo::handle& abil_halo : ac.abil_halos_){
+		for(const halo::handle& abil_halo : ac.abil_halos_) {
 			halo_man.remove(abil_halo);
 		}
 		ac.abil_halos_.clear();
 		if(!halos_abilities.empty()){
 			for(const std::string& halo_ab : halos_abilities){
-				halo::handle abil_halo = halo_man.add(
-					halo_x, halo_y,
-					halo_ab + u.TC_image_mods(),
-					map_location(-1, -1)
-				);
+				const halo::handle abil_halo
+					= halo_man.add(halo_x, halo_y, halo_ab + u.TC_image_mods(), map_location(-1, -1));
 				if(abil_halo->valid()){
 					ac.abil_halos_.push_back(abil_halo);
 				}
 			}
 		}
 	} else if(has_abil_halo){
-		for(halo::handle& abil_halo : ac.abil_halos_){
+		for(const halo::handle& abil_halo : ac.abil_halos_) {
 			halo_man.set_location(abil_halo, halo_x, halo_y);
 		}
 	}
@@ -462,7 +456,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 
 void unit_drawer::draw_ellipses(const unit& u, const frame_parameters& params) const
 {
-	std::string ellipse = u.image_ellipse();
+	const std::string ellipse = u.image_ellipse();
 	if(ellipse == "none") {
 		return;
 	}

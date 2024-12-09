@@ -128,7 +128,7 @@ void unit_create::pre_show()
 
 void unit_create::post_show()
 {
-	listbox& list = find_widget<listbox>("unit_type_list");
+	const listbox& list = find_widget<listbox>("unit_type_list");
 
 	choice_ = "";
 
@@ -246,8 +246,8 @@ void unit_create::filter_text_changed(const std::string& text)
 			grid* row = list.get_row_grid(i);
 
 //			grid::iterator it = row->begin();
-			label& type_label = row->find_widget<label>("unit_type");
-			label& race_label = row->find_widget<label>("race");
+			const label& type_label = row->find_widget<label>("unit_type");
+			const label& race_label = row->find_widget<label>("race");
 
 			assert(i < units_.size());
 			const std::string& unit_type_id = units_[i] ? units_[i]->id() : "";
@@ -281,7 +281,7 @@ void unit_create::gender_toggle_callback(const unit_race::GENDER val)
 
 void unit_create::variation_menu_callback()
 {
-	menu_button& var_box = find_widget<menu_button>("variation_box");
+	const menu_button& var_box = find_widget<menu_button>("variation_box");
 	variation_ = var_box.get_value_config()["variation_id"].str();
 
 	update_displayed_type();

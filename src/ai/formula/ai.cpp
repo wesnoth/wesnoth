@@ -148,16 +148,15 @@ void formula_ai::set_ai_context(ai_context *context)
 std::string formula_ai::evaluate(const std::string& formula_str)
 {
 	try{
+		const formula f(formula_str, &function_table_);
 
-		formula f(formula_str, &function_table_);
-
-		map_formula_callable callable(fake_ptr());
+		const map_formula_callable callable(fake_ptr());
 
 		//formula_debugger fdb;
 		const variant v = f.evaluate(callable,nullptr);
 
 		if (ai_ptr_) {
-			variant var = variant(this->fake_ptr()).execute_variant(v);
+			const variant var = variant(this->fake_ptr()).execute_variant(v);
 
 			if (  !var.is_empty() ) {
 				return "Made move: " + var.to_debug_string();
@@ -198,9 +197,10 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
 	map_location destination = dst;
 
 	unit_map &units_ = resources::gameboard->units();
-	pathfind::shortest_path_calculator calc(*unit_it, current_team(), resources::gameboard->teams(), resources::gameboard->map());
+	const pathfind::shortest_path_calculator calc(
+		*unit_it, current_team(), resources::gameboard->teams(), resources::gameboard->map());
 
-	unit_map::const_iterator dst_un = units_.find(destination);
+	const unit_map::const_iterator dst_un = units_.find(destination);
 
 	map_location res;
 
@@ -496,7 +496,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "my_leader")
 	{
-		unit_map::const_iterator i = units.find_leader(get_side());
+		const unit_map::const_iterator i = units.find_leader(get_side());
 		if(i == units.end()) {
 			return variant();
 		}
@@ -631,7 +631,7 @@ void formula_ai::on_create(){
 		const std::string inputs = func["inputs"];
 		const std::string formula_str = func["formula"];
 
-		std::vector<std::string> args = utils::split(inputs);
+		const std::vector<std::string> args = utils::split(inputs);
 		try {
 			add_formula_function(name,
 					     create_optional_formula(formula_str),
@@ -665,7 +665,7 @@ bool formula_ai::execute_candidate_action(const ca_ptr& fai_ca)
 {
 	map_formula_callable callable(fake_ptr());
 	fai_ca->update_callable_map( callable );
-	const_formula_ptr move_formula(fai_ca->get_action());
+	const const_formula_ptr move_formula(fai_ca->get_action());
 	return !make_action(move_formula, callable).is_empty();
 }
 

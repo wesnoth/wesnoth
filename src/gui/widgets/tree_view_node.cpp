@@ -217,9 +217,7 @@ std::vector<std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_child
 		int best_size = node->get_best_size().x;
 		best_size += get_indentation_level() * get_tree_view().indentation_step_size_;
 
-		int new_width = best_size > current_size.x
-			? best_size - current_size.x
-			: 0;
+		const int new_width = best_size > current_size.x ? best_size - current_size.x : 0;
 
 		if(new_width > width_modification)
 		{
@@ -494,7 +492,7 @@ point tree_view_node::get_current_size(bool assume_visible) const
 			continue;
 		}
 
-		point node_size = node->get_current_size();
+		const point node_size = node->get_current_size();
 
 		size.y += node_size.y;
 		size.x = std::max(size.x, node_size.x);
@@ -525,7 +523,7 @@ point tree_view_node::get_unfolded_size() const
 			continue;
 		}
 
-		point node_size = node->get_current_size(true);
+		const point node_size = node->get_current_size(true);
 
 		size.y += node_size.y;
 		size.x = std::max(size.x, node_size.x);
@@ -536,7 +534,7 @@ point tree_view_node::get_unfolded_size() const
 
 point tree_view_node::calculate_best_size(const int indentation_level, const unsigned indentation_step_size) const
 {
-	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
+	const log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	point best_size = grid_.get_best_size();
 	if(indentation_level > 0) {
@@ -582,7 +580,7 @@ void tree_view_node::place(const point& origin, const point& size)
 
 unsigned tree_view_node::place(const unsigned indentation_step_size, point origin, unsigned width)
 {
-	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
+	const log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 	DBG_GUI_L << LOG_HEADER << " origin " << origin << ".";
 
 	const unsigned offset = origin.y;
@@ -618,7 +616,7 @@ unsigned tree_view_node::place(const unsigned indentation_step_size, point origi
 
 void tree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
 {
-	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
+	const log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 	DBG_GUI_L << LOG_HEADER << " rectangle " << rectangle << ".";
 	grid_.set_visible_rectangle(rectangle);
 

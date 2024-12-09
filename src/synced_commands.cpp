@@ -67,8 +67,8 @@ synced_command::map& synced_command::registry()
 
 SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, spectator)
 {
-	int current_team_num = resources::controller->current_side();
-	team &current_team = resources::gameboard->get_team(current_team_num);
+	const int current_team_num = resources::controller->current_side();
+	const team& current_team = resources::gameboard->get_team(current_team_num);
 
 	map_location loc(child, resources::gamedata);
 	map_location from(child.child_or_empty("from"), resources::gamedata);
@@ -87,7 +87,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, spectator)
 	}
 
 	// Get the unit_type ID.
-	std::string type_id = child["type"];
+	const std::string type_id = child["type"];
 	if ( type_id.empty() ) {
 		spectator.error("Recruitment is missing a unit type.");
 		return false;
@@ -131,12 +131,12 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, spectator)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, spectator)
 {
-	int current_team_num = resources::controller->current_side();
+	const int current_team_num = resources::controller->current_side();
 	team &current_team = resources::gameboard->get_team(current_team_num);
 
 	const std::string& unit_id = child["value"];
-	map_location loc(child, resources::gamedata);
-	map_location from(child.child_or_empty("from"), resources::gamedata);
+	const map_location loc(child, resources::gamedata);
+	const map_location from(child.child_or_empty("from"), resources::gamedata);
 
 	if(!actions::recall_unit(unit_id, current_team, loc, from, map_location::direction::indeterminate)) {
 		spectator.error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
@@ -167,7 +167,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, spectator)
 	const map_location src(source.value(), resources::gamedata);
 	const map_location dst(destination.value(), resources::gamedata);
 
-	int weapon_num = child["weapon"].to_int();
+	const int weapon_num = child["weapon"].to_int();
 	// having defender_weapon in the replay fixes a bug (OOS) where one player (or observer) chooses a different defensive weapon.
 	// Xan pointed out this was a possibility: we calculate defense weapon
 	// now based on attack_prediction code, but this uses floating point
@@ -180,7 +180,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, spectator)
 		def_weapon_num = -1;
 	}
 
-	unit_map::iterator u = resources::gameboard->units().find(src);
+	const unit_map::iterator u = resources::gameboard->units().find(src);
 	if (!u.valid()) {
 		spectator.error("unfound location for source of attack\n");
 		return false;
@@ -198,7 +198,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, spectator)
 		return false;
 	}
 
-	unit_map::const_iterator tgt = resources::gameboard->units().find(dst);
+	const unit_map::const_iterator tgt = resources::gameboard->units().find(dst);
 
 	if (!tgt.valid()) {
 		std::stringstream errbuf;
@@ -223,7 +223,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, spectator)
 	DBG_REPLAY << "Attacker XP (before attack): " << u->experience();
 
 	synced_context::block_undo();
-	bool show = !resources::controller->is_skipping_replay();
+	const bool show = !resources::controller->is_skipping_replay();
 	attack_unit_and_advance(src, dst, weapon_num, def_weapon_num, show);
 	return true;
 }
@@ -234,10 +234,10 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, spectator)
 	team& current_team = resources::controller->current_team();
 
 	const std::string& unit_id = child["value"];
-	std::size_t old_size = current_team.recall_list().size();
+	const std::size_t old_size = current_team.recall_list().size();
 
 	// Find the unit in the recall list.
-	unit_ptr dismissed_unit = current_team.recall_list().find_if_matches_id(unit_id);
+	const unit_ptr dismissed_unit = current_team.recall_list().find_if_matches_id(unit_id);
 	if (!dismissed_unit) {
 		spectator.error("illegal disband\n");
 		return false;
@@ -256,7 +256,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, spectator)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(move, child, spectator)
 {
-	team& current_team = resources::controller->current_team();
+	const team& current_team = resources::controller->current_team();
 
 	std::vector<map_location> steps;
 
@@ -299,8 +299,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child, spectator)
 		return false;
 	}
 
-	bool skip_sighted = child["skip_sighted"] == "all";
-	bool skip_ally_sighted = child["skip_sighted"] == "only_ally";
+	const bool skip_sighted = child["skip_sighted"] == "all";
+	const bool skip_ally_sighted = child["skip_sighted"] == "only_ally";
 
 	actions::execute_move_unit(steps, skip_sighted, skip_ally_sighted, dynamic_cast<actions::move_unit_spectator*>(&spectator));
 
@@ -336,7 +336,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child, /*spectator*/)
 {
 	team &current_team = resources::controller->current_team();
 
-	bool active = child["active"].to_bool();
+	const bool active = child["active"].to_bool();
 	if(active && !current_team.auto_shroud_updates()) {
 		resources::undo_stack->commit_vision();
 	}
@@ -353,11 +353,11 @@ SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/, spectator)
 	// Updates fog/shroud based on the undo stack, then updates stack as needed.
 	// This may fire events and change the game state.
 
-	team &current_team = resources::controller->current_team();
+	const team& current_team = resources::controller->current_team();
 	if(current_team.auto_shroud_updates()) {
 		spectator.error("Team has DSU disabled but we found an explicit shroud update");
 	}
-	bool res = resources::undo_stack->commit_vision();
+	const bool res = resources::undo_stack->commit_vision();
 	if(res) {
 		synced_context::block_undo();
 	}
@@ -371,7 +371,7 @@ namespace
 		auto& controller = *resources::controller;
 		auto& current_team = controller.current_team();
 		static bool ignore = false;
-		bool show_long_message = controller.is_replay() || !current_team.is_local();
+		const bool show_long_message = controller.is_replay() || !current_team.is_local();
 
 		std::string message;
 		utils::string_map i18n_vars = {{ "player", current_team.current_player() }};
@@ -388,7 +388,7 @@ namespace
 		}
 
 		if(show_long_message && !ignore) {
-			play_controller::scoped_savegame_snapshot snapshot(controller);
+			const play_controller::scoped_savegame_snapshot snapshot(controller);
 			std::stringstream sbuilder;
 			sbuilder << _("A player used a debug command during the game. If this is unexpected, it is possible the player in question is cheating.")
 			         << "\n\n"
@@ -401,7 +401,7 @@ namespace
 			save.save_game_interactive(sbuilder.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
 		}
 		else {
-			display::announce_options announce_options;
+			const display::announce_options announce_options;
 			display::get_singleton()->announce(message, font::NORMAL_COLOR, announce_options);
 		}
 	}
@@ -417,11 +417,11 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_terrain, child, /*spectator*/)
 	synced_context::block_undo();
 	debug_cmd_notification("terrain");
 
-	map_location loc(child);
+	const map_location loc(child);
 	const std::string& terrain_type = child["terrain_type"];
 	const std::string& mode_str = child["mode_str"];
 
-	bool result = resources::gameboard->change_terrain(loc, terrain_type, mode_str, false);
+	const bool result = resources::gameboard->change_terrain(loc, terrain_type, mode_str, false);
 	if(result) {
 		display::get_singleton()->invalidate(loc);
 		game_display::get_singleton()->needs_rebuild(result);
@@ -434,7 +434,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child, /*spectator*/)
 {
 	synced_context::block_undo();
 	debug_cmd_notification("unit");
-	map_location loc(child);
+	const map_location loc(child);
 	const std::string name = child["name"];
 	const std::string value = child["value"];
 
@@ -478,7 +478,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child, /*spectator*/)
 
 		// Attempt to create a new unit. If there are error (such an invalid type key), exit.
 		try{
-			unit_ptr new_u = unit::create(cfg, true);
+			const unit_ptr new_u = unit::create(cfg, true);
 			new_u->set_location(loc);
 			// Don't remove the unit until after we've verified there are no errors in creating the new one,
 			// or else the unit would simply be removed from the map with no replacement.
@@ -504,7 +504,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child, spectator)
 	synced_context::block_undo();
 
 	debug_notification(N_("A unit was created using debug mode during $player’s turn"));
-	map_location loc(child);
+	const map_location loc(child);
 	resources::whiteboard->on_kill_unit();
 	const std::string& variation = child["variation"].str();
 	const unit_race::GENDER gender = string_gender(child["gender"], unit_race::NUM_GENDERS);
@@ -518,7 +518,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child, spectator)
 			? resources::controller->current_side() : 1;
 
 	// Create the unit.
-	unit_ptr created = unit::create(*u_type, side_num, true, gender, variation);
+	const unit_ptr created = unit::create(*u_type, side_num, true, gender, variation);
 	created->new_turn();
 
 	unit_map::unit_iterator unit_it;
@@ -607,7 +607,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_next_level, child, /*spectator*/)
 
 	debug_cmd_notification("next_level");
 
-	std::string next_level = child["next_level"];
+	const std::string next_level = child["next_level"];
 	if (!next_level.empty())
 		resources::gamedata->set_next_scenario(next_level);
 	end_level_data e;

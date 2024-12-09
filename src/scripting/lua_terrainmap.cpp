@@ -42,8 +42,8 @@ using std::string_view;
 
 static int impl_slocs_get(lua_State* L)
 {
-	gamemap_base& m = luaW_checkterrainmap(L, 1);
-	string_view id = luaL_checkstring(L, 2);
+	const gamemap_base& m = luaW_checkterrainmap(L, 1);
+	const string_view id = luaL_checkstring(L, 2);
 	auto res = m.special_location(std::string(id));
 	if(res.valid()) {
 		luaW_pushlocation(L, res);
@@ -57,8 +57,8 @@ static int impl_slocs_get(lua_State* L)
 static int impl_slocs_set(lua_State* L)
 {
 	gamemap_base& m = luaW_checkterrainmap(L, 1);
-	string_view id = luaL_checkstring(L, 2);
-	map_location loc = luaW_checklocation(L, 3);
+	const string_view id = luaL_checkstring(L, 2);
+	const map_location loc = luaW_checklocation(L, 3);
 
 	m.set_special_location(std::string(id), loc);
 	return 0;
@@ -136,7 +136,7 @@ static void simplemerge(t_translation::terrain_code old_t, t_translation::terrai
 
 void mapgen_gamemap::set_terrain(const map_location& loc, const terrain_code & terrain, const terrain_type_data::merge_mode mode, bool)
 {
-	terrain_code old = get_terrain(loc);
+	const terrain_code old = get_terrain(loc);
 	terrain_code t = terrain;
 	simplemerge(old, t, mode);
 	tiles().get(loc.x + border_size(), loc.y + border_size()) = t;
@@ -196,12 +196,12 @@ gamemap_base& luaW_checkterrainmap(lua_State *L, int index)
 int intf_terrainmap_create(lua_State *L)
 {
 	if(lua_isnumber(L, 1) && lua_isnumber(L, 2)) {
-		int w = lua_tointeger(L, 1);
-		int h = lua_tointeger(L, 2);
+		const int w = lua_tointeger(L, 1);
+		const int h = lua_tointeger(L, 2);
 		auto terrain = t_translation::read_terrain_code(luaL_checkstring(L, 3));
 		new(L) lua_map_ref(w, h, terrain);
 	} else {
-		string_view data_str = luaL_checkstring(L, 1);
+		const string_view data_str = luaL_checkstring(L, 1);
 		new(L) lua_map_ref(data_str);
 	}
 	luaL_setmetatable(L, terrainmapKey);
@@ -255,7 +255,7 @@ static void impl_merge_terrain(lua_State* L, gamemap_base& map, map_location loc
 
 	if(auto gm = dynamic_cast<gamemap*>(&map)) {
 		if(resources::gameboard) {
-			bool result = resources::gameboard->change_terrain(loc, ter, mode, replace_if_failed);
+			const bool result = resources::gameboard->change_terrain(loc, ter, mode, replace_if_failed);
 
 			for(team& t : resources::gameboard->teams()) {
 				t.fix_villages(*gm);
@@ -354,9 +354,9 @@ static int impl_terrainmap_iter(lua_State* L)
 {
 	// Retrieve the upvalues stored with the function
 	gamemap_base& tm = luaW_checkterrainmap(L, lua_upvalueindex(1));
-	map_location prev_loc = luaW_checklocation(L, lua_upvalueindex(2));
-	int w = with_border ? tm.total_width() - 1 : tm.w();
-	int h = with_border ? tm.total_height() - 1 : tm.h();
+	const map_location prev_loc = luaW_checklocation(L, lua_upvalueindex(2));
+	const int w = with_border ? tm.total_width() - 1 : tm.w();
+	const int h = with_border ? tm.total_height() - 1 : tm.h();
 	int x, y;
 
 	// Given the previous location, determine the next one to be returned
@@ -374,7 +374,7 @@ static int impl_terrainmap_iter(lua_State* L)
 	}
 
 	// Assign the upvalue representing the previous location
-	map_location next_loc(x, y, wml_loc{});
+	const map_location next_loc(x, y, wml_loc{});
 	luaW_pushlocation(L, next_loc);
 	lua_replace(L, lua_upvalueindex(2));
 
@@ -389,7 +389,7 @@ static int impl_terrainmap_iter(lua_State* L)
 int intf_terrainmap_iter(lua_State* L)
 {
 	luaW_checkterrainmap(L, 1);
-	bool with_border = lua_isboolean(L, 2) ? luaW_toboolean(L, 2) : false;
+	const bool with_border = lua_isboolean(L, 2) ? luaW_toboolean(L, 2) : false;
 	lua_settop(L, 1);
 	luaW_pushlocation(L, map_location(with_border ? -1 : 0, 1, wml_loc{}));
 
@@ -403,9 +403,9 @@ int intf_terrainmap_iter(lua_State* L)
 
 int intf_on_board(lua_State* L)
 {
-	gamemap_base& tm = luaW_checkterrainmap(L, 1);
-	map_location loc = luaW_checklocation(L, 2);
-	bool with_border = luaL_opt(L, luaW_toboolean, 3, false);
+	const gamemap_base& tm = luaW_checkterrainmap(L, 1);
+	const map_location loc = luaW_checklocation(L, 2);
+	const bool with_border = luaL_opt(L, luaW_toboolean, 3, false);
 
 	lua_pushboolean(L, with_border ? tm.on_board_with_border(loc) : tm.on_board(loc));
 	return 1;
@@ -413,8 +413,8 @@ int intf_on_board(lua_State* L)
 
 int intf_on_border(lua_State* L)
 {
-	gamemap_base& tm = luaW_checkterrainmap(L, 1);
-	map_location loc = luaW_checklocation(L, 2);
+	const gamemap_base& tm = luaW_checkterrainmap(L, 1);
+	const map_location loc = luaW_checklocation(L, 2);
 
 	lua_pushboolean(L, tm.on_board_with_border(loc) && !tm.on_board(loc));
 	return 1;
@@ -481,7 +481,7 @@ static std::vector<gamemap::overlay_rule> read_rules_vector(lua_State *L, int in
 int intf_terrain_mask(lua_State *L)
 {
 	gamemap_base& map = luaW_checkterrainmap(L, 1);
-	map_location loc = luaW_checklocation(L, 2);
+	const map_location loc = luaW_checklocation(L, 2);
 
 	bool is_odd = false;
 	bool ignore_special_locations = false;
@@ -512,7 +512,7 @@ int intf_terrain_mask(lua_State *L)
 		}
 		map.overlay(*mask, loc, rules, is_odd, ignore_special_locations);
 	} else {
-		gamemap_base& mask = luaW_checkterrainmap(L, 3);
+		const gamemap_base& mask = luaW_checkterrainmap(L, 3);
 		map.overlay(mask, loc, rules, is_odd, ignore_special_locations);
 	}
 
@@ -535,7 +535,7 @@ int intf_replace_if_failed(lua_State* L)
 {
 	auto mode = terrain_type_data::BOTH;
 	if(!lua_isnoneornil(L, 2)) {
-		string_view mode_str = luaL_checkstring(L, 2);
+		const string_view mode_str = luaL_checkstring(L, 2);
 		if(mode_str == "base") {
 			mode = terrain_type_data::BASE;
 		} else if(mode_str == "overlay") {
@@ -558,9 +558,9 @@ static int impl_replace_if_failed_tostring(lua_State* L)
 {
 	static const char* mode_strs[] = {"base", "overlay", "both"};
 	lua_getiuservalue(L, 1, replace_if_failed_idx::CODE);
-	string_view t_str = luaL_checkstring(L, -1);
+	const string_view t_str = luaL_checkstring(L, -1);
 	lua_getiuservalue(L, 1, replace_if_failed_idx::MODE);
-	int mode = luaL_checkinteger(L, -1);
+	const int mode = luaL_checkinteger(L, -1);
 	lua_pushfstring(L, "replace_if_failed('%s', '%s')", t_str.data(), mode_strs[mode]);
 	return 1;
 }

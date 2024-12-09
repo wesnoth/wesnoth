@@ -44,7 +44,7 @@ void playmp_controller::hotkey_handler::stop_network(){
 
 bool playmp_controller::hotkey_handler::can_execute_command(const hotkey::ui_command& cmd) const
 {
-	hotkey::HOTKEY_COMMAND command = cmd.hotkey_command;
+	hotkey::HOTKEY_COMMAND const command = cmd.hotkey_command;
 	bool res = true;
 	switch (command){
 		case hotkey::HOTKEY_ENDTURN:

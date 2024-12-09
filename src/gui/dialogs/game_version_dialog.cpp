@@ -93,7 +93,7 @@ game_version::game_version(unsigned start_page)
 
 void game_version::pre_show()
 {
-	utils::string_map i18n_syms;
+	const utils::string_map i18n_syms;
 
 	tab_container& tabs = find_widget<tab_container>("tabs");
 
@@ -275,13 +275,13 @@ void game_version::report_issue() {
 void game_version::show_manual() {
 	if (desktop::open_object_is_supported()) {
 		std::string manual_filename = "manual." + get_language().localename + ".html";
-		std::string local_path = game_config::path + "/doc/manual/" + manual_filename;
+		const std::string local_path = game_config::path + "/doc/manual/" + manual_filename;
 		if (filesystem::file_exists(local_path)) {
 			desktop::open_object("file://" + local_path);
 		} else {
 			// If a filename like manual.en_GB.html is not found, try manual.en.html
 			manual_filename = "manual." + utils::split(get_language().localename, '_')[0] + ".html";
-			std::string local_path = game_config::path + "/doc/manual/" + manual_filename;
+			const std::string local_path = game_config::path + "/doc/manual/" + manual_filename;
 			if (filesystem::file_exists(local_path)) {
 				desktop::open_object("file://" + local_path);
 			} else {

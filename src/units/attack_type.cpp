@@ -168,7 +168,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 			}
 		} else {
 			//if the type is different from "damage_type" then damage_type() can be called for safe checking.
-			std::pair<std::string, std::string> damage_type = attack.damage_type();
+			const std::pair<std::string, std::string> damage_type = attack.damage_type();
 			if (filter_type.count(damage_type.first) == 0 && filter_type.count(damage_type.second) == 0){
 				return false;
 			}
@@ -387,8 +387,8 @@ bool attack_type::apply_modification(const config& cfg)
 		const std::vector<std::string>& dsl = utils::split(del_specials);
 		config new_specials;
 		for(const auto [key, cfg] : specials_.all_children_view()) {
-			std::vector<std::string>::const_iterator found_id =
-				std::find(dsl.begin(), dsl.end(), cfg["id"].str());
+			const std::vector<std::string>::const_iterator found_id
+				= std::find(dsl.begin(), dsl.end(), cfg["id"].str());
 			if (found_id == dsl.end()) {
 				new_specials.add_child(key, cfg);
 			}

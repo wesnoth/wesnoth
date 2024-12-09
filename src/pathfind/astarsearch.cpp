@@ -36,9 +36,9 @@ double heuristic(const map_location& src, const map_location& dst)
 	// based on how the path looks on the screen.
 
 	// 0.75 comes from the horizontal hex imbrication
-	double xdiff = (src.x - dst.x) * 0.75;
+	const double xdiff = (src.x - dst.x) * 0.75;
 	// we must add 0.5 to the y coordinate when x is odd
-	double ydiff = (src.y - dst.y) + ((src.x & 1) - (dst.x & 1)) * 0.5;
+	const double ydiff = (src.y - dst.y) + ((src.x & 1) - (dst.x & 1)) * 0.5;
 
 	// we assume a map with a maximum diagonal of 300 (bigger than a 200x200)
 	// and we divide by 90000 * 10000 to avoid interfering with the defense subcost
@@ -91,7 +91,7 @@ struct node {
 				}
 			}
 
-			double new_h = srch + dsth + 1.0;
+			const double new_h = srch + dsth + 1.0;
 			if (new_h < h) {
 				h = new_h;
 				t = g + h;
@@ -161,8 +161,8 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	static std::vector<node> nodes;
 	nodes.resize(width * height);  // this create uninitialized nodes
 
-	indexer index(width);
-	comp node_comp(nodes);
+	const indexer index(width);
+	const comp node_comp(nodes);
 
 	node& dst_node = nodes[index(dst)];
 
@@ -207,10 +207,10 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 			}
 			// cost() is always >= 1  (assumed and needed by the heuristic)
 			if (n.g + 1 >= thresh) continue;
-			double cost = n.g + calc.cost(loc, n.g);
+			const double cost = n.g + calc.cost(loc, n.g);
 			if (cost >= thresh) continue;
 
-			bool in_list = next.in == search_counter + 1;
+			const bool in_list = next.in == search_counter + 1;
 
 			next = node(cost, loc, n.curr, dst, true, teleports, srch, dsth);
 

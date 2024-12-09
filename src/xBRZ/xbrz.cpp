@@ -304,10 +304,12 @@ BlendResult preProcessCorners(const Kernel_4x4& ker, const xbrz::ScalerCfg& cfg)
 
     auto dist = [&](uint32_t pix1, uint32_t pix2) { return ColorDistance::dist(pix1, pix2, cfg.luminanceWeight); };
 
-    double jg = dist(ker.i, ker.f) + dist(ker.f, ker.c) + dist(ker.n, ker.k) + dist(ker.k, ker.h) + cfg.centerDirectionBias * dist(ker.j, ker.g);
-    double fk = dist(ker.e, ker.j) + dist(ker.j, ker.o) + dist(ker.b, ker.g) + dist(ker.g, ker.l) + cfg.centerDirectionBias * dist(ker.f, ker.k);
+	const double jg = dist(ker.i, ker.f) + dist(ker.f, ker.c) + dist(ker.n, ker.k) + dist(ker.k, ker.h)
+		+ cfg.centerDirectionBias * dist(ker.j, ker.g);
+	const double fk = dist(ker.e, ker.j) + dist(ker.j, ker.o) + dist(ker.b, ker.g) + dist(ker.g, ker.l)
+		+ cfg.centerDirectionBias * dist(ker.f, ker.k);
 
-    if (jg < fk) //test sample: 70% of values max(jg, fk) / min(jg, fk) are between 1.1 and 3.7 with median being 1.8
+	if (jg < fk) //test sample: 70% of values max(jg, fk) / min(jg, fk) are between 1.1 and 3.7 with median being 1.8
     {
         const bool dominantGradient = cfg.dominantDirectionThreshold * jg < fk;
         if (ker.f != ker.g && ker.f != ker.j)

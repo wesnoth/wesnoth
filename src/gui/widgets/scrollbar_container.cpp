@@ -533,8 +533,8 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 
 	assert(content_ && content_grid_);
 
-	point best_size = content_grid_->recalculate_best_size();
-	point size = content_->get_size();
+	const point best_size = content_grid_->recalculate_best_size();
+	const point size = content_->get_size();
 
 	DBG_GUI_L << LOG_HEADER << " wanted size " << best_size << " available size " << size << ".";
 
@@ -571,7 +571,7 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 		) {
 			DBG_GUI_L << LOG_HEADER << " can't use horizontal scrollbar, request placement.";
 
-			event::message message;
+			const event::message message;
 			fire(event::REQUEST_PLACEMENT, *this, message);
 			return false;
 		}
@@ -588,7 +588,7 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 		) {
 			DBG_GUI_L << LOG_HEADER << " can't use vertical scrollbar, request placement.";
 
-			event::message message;
+			const event::message message;
 			fire(event::REQUEST_PLACEMENT, *this, message);
 			return false;
 		}

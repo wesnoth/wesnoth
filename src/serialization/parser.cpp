@@ -163,7 +163,7 @@ void parser::operator()()
 	assert(!elements.empty());
 
 	if(validator_) {
-		element& el = elements.top();
+		const element& el = elements.top();
 		validator_->validate(*el.cfg, el.name, el.start_line, el.file);
 		validator_->close_tag();
 	}
@@ -271,7 +271,7 @@ void parser::parse_element()
 		}
 
 		if(validator_) {
-			element& el = elements.top();
+			const element& el = elements.top();
 			validator_->validate(*el.cfg, el.name, el.start_line, el.file);
 			validator_->close_tag();
 		}
@@ -452,7 +452,7 @@ std::string parser::lineno_string(utils::string_map& i18n_symbols,
 		result += '\n' + debug_string;
 	}
 
-	for(utils::string_map::value_type& var : i18n_symbols) {
+	for(const utils::string_map::value_type& var : i18n_symbols) {
 		boost::algorithm::replace_all(result, std::string("$") + var.first, std::string(var.second));
 	}
 

@@ -37,7 +37,7 @@ namespace randomness
 			initialize();
 		}
 		//getting here means random was called form inside a synced context.
-		uint32_t retv = gen_.get_next_random();
+		const uint32_t retv = gen_.get_next_random();
 
 		LOG_RND << "randomness::rng::next_random_impl returned " << retv;
 		return retv;
@@ -45,7 +45,7 @@ namespace randomness
 
 	void synced_rng::initialize()
 	{
-		std::string new_seed = seed_generator_();
+		const std::string new_seed = seed_generator_();
 		gen_.seed_random(new_seed, 0);
 		has_valid_seed_ = true;
 	}

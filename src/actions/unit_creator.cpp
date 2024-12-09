@@ -121,7 +121,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 		}
 
 		else if ( place == "leader"  ||  place == "leader_passable" ) {
-			unit_map::const_iterator leader = board_->units().find_leader(team_.side());
+			const unit_map::const_iterator leader = board_->units().find_leader(team_.side());
 			//todo: take 'leader in recall list' possibility into account
 			if (leader.valid()) {
 				loc = leader->get_location();
@@ -173,16 +173,16 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 	temp_cfg["side"] = team_.side();
 
 	const std::string& id =(cfg)["id"];
-	bool animate = temp_cfg["animate"].to_bool();
-	bool fire_event = temp_cfg["fire_event"].to_bool(true);
+	const bool animate = temp_cfg["animate"].to_bool();
+	const bool fire_event = temp_cfg["fire_event"].to_bool(true);
 	temp_cfg.remove_attribute("animate");
 
-	unit_ptr recall_list_element = team_.recall_list().find_if_matches_id(id);
+	const unit_ptr recall_list_element = team_.recall_list().find_if_matches_id(id);
 
 	if ( !recall_list_element ) {
 		//make the new unit
-		unit_ptr new_unit = unit::create(temp_cfg, true, vcfg);
-		map_location loc = find_location(temp_cfg, new_unit.get());
+		const unit_ptr new_unit = unit::create(temp_cfg, true, vcfg);
+		const map_location loc = find_location(temp_cfg, new_unit.get());
 		if ( loc.valid() ) {
 			//add the new unit to map
 			board_->units().replace(loc, new_unit);
@@ -197,7 +197,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 		}
 	} else {
 		//get unit from recall list
-		map_location loc = find_location(temp_cfg, recall_list_element.get());
+		const map_location loc = find_location(temp_cfg, recall_list_element.get());
 		if ( loc.valid() ) {
 			board_->units().replace(loc, recall_list_element);
 			LOG_NG << "inserting unit from recall list for side " << recall_list_element->side()<< " with id="<< id;
@@ -220,8 +220,8 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 		prefs::get().encountered_units().insert(new_unit.type_id());
 	}
 
-	bool show = show_ && (display::get_singleton() !=nullptr) && !display::get_singleton()->fogged(loc);
-	bool animate = show && anim;
+	const bool show = show_ && (display::get_singleton() != nullptr) && !display::get_singleton()->fogged(loc);
+	const bool animate = show && anim;
 
 	if (get_village_) {
 		assert(resources::gameboard);

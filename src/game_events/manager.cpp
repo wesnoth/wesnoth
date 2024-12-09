@@ -211,7 +211,7 @@ void manager::execute_on_events(const std::string& event_id, const manager::even
 
 	{
 		// Ensure that event handlers won't be cleaned up while we're iterating them.
-		event_handler_list_lock lock;
+		const event_handler_list_lock lock;
 
 		for (unsigned i = 0; i < active_handlers.size(); ++i) {
 			handler_ptr handler = nullptr;

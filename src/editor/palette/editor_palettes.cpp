@@ -51,7 +51,7 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items
 		}
 		std::string img = item_groups[mci].icon + "_30";
 		if (mci == active_group_index()) {
-			std::string pressed_img = img + "-pressed.png";
+			const std::string pressed_img = img + "-pressed.png";
 			if(filesystem::get_binary_file_location("images", pressed_img).has_value()) {
 				img = pressed_img;
 			} else {
@@ -120,7 +120,7 @@ void editor_palette<Item>::set_group(const std::string& id)
 	for (const item_group& group : groups_) {
 		if (group.id == id) {
 			found = true;
-			std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
+			const std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 			if (palette_menu_button) {
 				palette_menu_button->set_tooltip_string(group.name);
 				palette_menu_button->set_overlay(group.icon);
@@ -267,10 +267,10 @@ void editor_palette<Item>::layout()
 
 	toolkit_.set_mouseover_overlay(gui_);
 
-	std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
+	const std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 	if(palette_menu_button) {
-		t_string& name = groups_[active_group_index()].name;
-		std::string& icon = groups_[active_group_index()].icon;
+		const t_string& name = groups_[active_group_index()].name;
+		const std::string& icon = groups_[active_group_index()].icon;
 
 		palette_menu_button->set_tooltip_string(name);
 		palette_menu_button->set_overlay(icon);
@@ -278,10 +278,10 @@ void editor_palette<Item>::layout()
 
 	// The hotkey system will automatically enable and disable the buttons when it runs, but it doesn't
 	// get triggered when handling mouse-wheel scrolling. Therefore duplicate that functionality here.
-	std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
+	const std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
 	if(upscroll_button)
 		upscroll_button->enable(can_scroll_up());
-	std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
+	const std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
 	if(downscroll_button)
 		downscroll_button->enable(can_scroll_down());
 
@@ -297,12 +297,12 @@ void editor_palette<Item>::layout()
 		}
 
 		const std::string item_id = active_group()[item_index];
-		typename item_map::iterator item = item_map_.find(item_id);
+		const typename item_map::iterator item = item_map_.find(item_id);
 
 		texture item_base, item_overlay;
 		std::stringstream tooltip_text;
 		setup_item((*item).second, item_base, item_overlay, tooltip_text);
-		bool is_core = non_core_items_.find(get_id((*item).second)) == non_core_items_.end();
+		const bool is_core = non_core_items_.find(get_id((*item).second)) == non_core_items_.end();
 		if (!is_core) {
 			tooltip_text << " "
 			<< _("(non-core)") << "\n"

@@ -48,8 +48,8 @@ void helper_advance_unit(const map_location& loc);
 bool simulated_attack(const map_location& attacker_loc, const map_location& defender_loc, double attacker_hp, double defender_hp){
 	LOG_AI_SIM_ACTIONS << "Simulated attack";
 
-	unit_map::iterator attack_unit = resources::gameboard->units().find(attacker_loc);
-	unit_map::iterator defend_unit = resources::gameboard->units().find(defender_loc);
+	const unit_map::iterator attack_unit = resources::gameboard->units().find(attacker_loc);
+	const unit_map::iterator defend_unit = resources::gameboard->units().find(defender_loc);
 
 	LOG_AI_SIM_ACTIONS << attack_unit->type_name() << " at " << attacker_loc << " attack "
 		<< defend_unit->type_name() << " at " << defender_loc;
@@ -127,7 +127,7 @@ bool simulated_recall(int side, const std::string& unit_id, const map_location& 
 	LOG_AI_SIM_ACTIONS << "Simulated recall";
 
 	team own_team = resources::gameboard->get_team(side);
-	unit_ptr recall_unit = own_team.recall_list().extract_if_matches_id(unit_id);
+	const unit_ptr recall_unit = own_team.recall_list().extract_if_matches_id(unit_id);
 
 	helper_place_unit(*recall_unit, recall_location);
 
@@ -142,7 +142,9 @@ bool simulated_recall(int side, const std::string& unit_id, const map_location& 
 bool simulated_recruit(int side, const unit_type* u, const map_location& recruit_location){
 	LOG_AI_SIM_ACTIONS << "Simulated recruit";
 
-	unit_ptr recruit_unit = unit::create(*u, side, false);	// Random traits, name and gender are not needed. This will cause "duplicate id conflicts" inside unit_map::insert(), but engine will manage this issue correctly.
+	const unit_ptr recruit_unit = unit::create(
+		*u, side, false); // Random traits, name and gender are not needed. This will cause "duplicate id conflicts"
+						  // inside unit_map::insert(), but engine will manage this issue correctly.
 	helper_place_unit(*recruit_unit, recruit_location);
 
 	resources::gameboard->get_team(side).spend_gold(u->cost());
@@ -156,7 +158,7 @@ bool simulated_recruit(int side, const unit_type* u, const map_location& recruit
 bool simulated_stopunit(const map_location& unit_location, bool remove_movement, bool remove_attacks){
 	LOG_AI_SIM_ACTIONS << "Simulated stopunit";
 
-	unit_map::iterator stop_unit = resources::gameboard->units().find(unit_location);
+	const unit_map::iterator stop_unit = resources::gameboard->units().find(unit_location);
 	bool changed = false;
 	if(remove_movement){
 		stop_unit->set_movement(0, true);
@@ -188,12 +190,12 @@ void helper_check_village(const map_location& loc, int side){
 		return;
 	}
 
-	bool has_leader = resources::gameboard->units().find_leader(side).valid();
+	const bool has_leader = resources::gameboard->units().find_leader(side).valid();
 
 	// Strip the village off all other sides.
 	int old_owner_side = 0;
 	for(team& tm : teams) {
-		int i_side = tm.side();
+		const int i_side = tm.side();
 		if(!t || has_leader || t->is_enemy(i_side)){
 			if(tm.owns_village(loc)){
 				old_owner_side = i_side;
@@ -213,7 +215,7 @@ void helper_check_village(const map_location& loc, int side){
 }
 
 void helper_place_unit(const unit& u, const map_location& loc){
-	unit_ptr new_unit = u.clone();
+	const unit_ptr new_unit = u.clone();
 	new_unit->set_movement(0, true);
 	new_unit->set_attacks(0);
 	new_unit->heal_fully();
@@ -233,20 +235,20 @@ void helper_advance_unit(const map_location& loc){
 	// Then get all possible options, include modification advancements, like {AMLA DEFAULT} in cfg.
 	// And then randomly choose one to advanced to.
 
-	unit_map::iterator advance_unit = resources::gameboard->units().find(loc);
+	const unit_map::iterator advance_unit = resources::gameboard->units().find(loc);
 
 	if(!unit_helper::will_certainly_advance(advance_unit))
 		return;
 
 	const std::vector<std::string>& options = advance_unit->advances_to();
 	std::vector<config> mod_options = advance_unit->get_modification_advances();
-	int options_num = unit_helper::number_of_possible_advances(*advance_unit);
+	const int options_num = unit_helper::number_of_possible_advances(*advance_unit);
 
-	std::size_t advance_choice = randomness::generator->get_random_int(0, options_num-1);
-	unit_ptr advanced_unit = (*advance_unit).clone();
+	const std::size_t advance_choice = randomness::generator->get_random_int(0, options_num - 1);
+	const unit_ptr advanced_unit = (*advance_unit).clone();
 
 	if(advance_choice < options.size()){
-		std::string advance_unit_typename = options[advance_choice];
+		const std::string advance_unit_typename = options[advance_choice];
 		const unit_type *advanced_type = unit_types.find(advance_unit_typename);
 		if(!advanced_type) {
 			ERR_AI_SIM_ACTIONS << "Simulating advancing to unknown unit type: " << advance_unit_typename;

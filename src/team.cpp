@@ -385,7 +385,7 @@ void team::build(const config& cfg, const gamemap& map, int gold)
 
 	// Load in the villages the side controls at the start
 	for(const config& v : cfg.child_range("village")) {
-		map_location loc(v);
+		const map_location loc(v);
 		if(map.is_village(loc)) {
 			villages_.insert(loc);
 		} else {
@@ -490,7 +490,7 @@ int team::minimum_recruit_price() const
 		return info_.minimum_recruit_price;
 	}
 	int min = 20;
-	for(std::string recruit : info_.can_recruit) {
+	for(const std::string& recruit : info_.can_recruit) {
 		const unit_type* ut = unit_types.find(recruit);
 		if(!ut) {
 			continue;
@@ -525,7 +525,7 @@ bool team::calculate_is_enemy(std::size_t index) const
 	}
 
 	// We are friends with anyone who we share a teamname with
-	std::vector<std::string> our_teams = utils::split(info_.team_name);
+	const std::vector<std::string> our_teams = utils::split(info_.team_name);
 	std::vector<std::string> their_teams = utils::split(resources::gameboard->teams()[index].info_.team_name);
 
 	LOG_NGE << "team " << info_.side << " calculates if it has enemy in team " << index + 1 << "; our team_name ["
@@ -746,8 +746,8 @@ void team::remove_fog_override(const std::set<map_location>& hexes)
 {
 	// Take a set difference.
 	std::vector<map_location> result(fog_clearer_.size());
-	std::vector<map_location>::iterator result_end =
-		std::set_difference(fog_clearer_.begin(), fog_clearer_.end(), hexes.begin(), hexes.end(), result.begin());
+	const std::vector<map_location>::iterator result_end
+		= std::set_difference(fog_clearer_.begin(), fog_clearer_.end(), hexes.begin(), hexes.end(), result.begin());
 
 	// Put the result into fog_clearer_.
 	fog_clearer_.clear();
@@ -875,7 +875,7 @@ std::string shroud_map::write() const
 	for(const auto& sh : data_) {
 		shroud_str << '|';
 
-		for(bool i : sh) {
+		for(const bool i : sh) {
 			shroud_str << (i ? '1' : '0');
 		}
 
@@ -947,7 +947,7 @@ bool shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 
 const color_range team::get_side_color_range(int side)
 {
-	std::string index = get_side_color_id(side);
+	const std::string index = get_side_color_id(side);
 	auto gp = game_config::team_rgb_range.find(index);
 
 	if(gp != game_config::team_rgb_range.end()) {
@@ -1020,7 +1020,7 @@ std::string team::get_side_color_id_from_config(const config& cfg)
 	}
 
 	// Do the same as above for numeric color key values.
-	if(unsigned side = c.to_unsigned()) {
+	if(const unsigned side = c.to_unsigned()) {
 		return get_side_color_id(side);
 	}
 

@@ -54,7 +54,7 @@ void achievements_dialog::pre_show()
 
 	achievements_box_ = find_widget<listbox>("achievements_list", false, true);
 
-	std::vector<achievement_group> groups = game_config_manager::get()->get_achievements();
+	const std::vector<achievement_group> groups = game_config_manager::get()->get_achievements();
 	int selected = 0;
 
 	for(const auto& list : groups) {

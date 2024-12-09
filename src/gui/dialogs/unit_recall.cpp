@@ -138,7 +138,7 @@ static std::string get_title_suffix(int side_num)
 
 	std::stringstream msg;
 	if(controlled_recruiters >= 2) {
-		unit_map::const_iterator leader = resources::gameboard->units().find_leader(side_num);
+		const unit_map::const_iterator leader = resources::gameboard->units().find_leader(side_num);
 		if(leader != resources::gameboard->units().end() && !leader->name().empty()) {
 			msg << " (" << leader->name(); msg << ")";
 		}
@@ -188,7 +188,7 @@ void unit_recall::pre_show()
 		int wb_gold = 0;
 		if(resources::controller) {
 			if(const std::shared_ptr<wb::manager>& whiteb = resources::controller->get_whiteboard()) {
-				wb::future_map future; // So gold takes into account planned spending
+				const wb::future_map future; // So gold takes into account planned spending
 				wb_gold = whiteb->get_spent_gold_for(team_.side());
 			}
 		}
@@ -390,7 +390,7 @@ void unit_recall::dismiss_unit()
 	dump_recall_list_to_console(team_.recall_list());
 
 	// Find the unit in the recall list.
-	unit_ptr dismissed_unit = team_.recall_list().find_if_matches_id(u.id());
+	const unit_ptr dismissed_unit = team_.recall_list().find_if_matches_id(u.id());
 	assert(dismissed_unit);
 
 	// Record the dismissal, then delete the unit.
@@ -426,7 +426,7 @@ void unit_recall::list_item_clicked()
 
 void unit_recall::post_show()
 {
-	listbox& list = find_widget<listbox>("recall_list");
+	const listbox& list = find_widget<listbox>("recall_list");
 
 	if(const auto [sorter, order] = list.get_active_sorter(); sorter) {
 		sort_last.emplace(sorter->id(), order);

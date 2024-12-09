@@ -60,7 +60,7 @@ toggle_button::toggle_button(const implementation::builder_toggle_button& builde
 
 unsigned toggle_button::num_states() const
 {
-	std::div_t res = std::div(this->get_config()->state.size(), COUNT);
+	const std::div_t res = std::div(this->get_config()->state.size(), COUNT);
 	assert(res.rem == 0);
 	assert(res.quot > 0);
 	return res.quot;
@@ -71,7 +71,7 @@ void toggle_button::set_members(const widget_item& data)
 	// Inherit
 	styled_widget::set_members(data);
 
-	widget_item::const_iterator itor = data.find("icon");
+	const widget_item::const_iterator itor = data.find("icon");
 	if(itor != data.end()) {
 		set_icon_name(itor->second);
 	}
