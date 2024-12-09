@@ -263,7 +263,7 @@ private:
 	};
 
 	/** Implementation detail of @ref set_single_sorter */
-	void initialize_sorter(const std::string& id, generator_sort_array&&);
+	void initialize_sorter(std::string_view id, generator_sort_array&&);
 
 	/** Implementation detail of @ref set_sorters */
 	template<std::size_t... Is, typename... Args>
@@ -280,7 +280,7 @@ public:
 	 * @param f            Any callable whose result is sortable.
 	 */
 	template<typename Func>
-	void set_single_sorter(const std::string& id, const Func& f)
+	void set_single_sorter(std::string_view id, const Func& f)
 	{
 		initialize_sorter(id, {
 			[f](int lhs, int rhs) { return sort_helper::less(f(lhs), f(rhs)); },
@@ -314,7 +314,7 @@ public:
 	 *                        If false (default), the selected row will be maintained
 	 *                        post-sort as per standard sorting functionality.
 	 */
-	void set_active_sorter(const std::string& id, sort_order::type order, bool select_first = false);
+	void set_active_sorter(std::string_view id, sort_order::type order, bool select_first = false);
 
 	/** Returns a widget pointer to the active sorter, along with its corresponding order. */
 	std::pair<widget*, sort_order::type> get_active_sorter() const;

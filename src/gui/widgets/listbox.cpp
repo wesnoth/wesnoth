@@ -553,7 +553,7 @@ void listbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 	}
 }
 
-void listbox::initialize_sorter(const std::string& id, generator_sort_array&& array)
+void listbox::initialize_sorter(std::string_view id, generator_sort_array&& array)
 {
 	auto header = find_widget<grid>("_header_grid", false, false);
 	if(!header) return;
@@ -612,7 +612,7 @@ bool listbox::sort_helper::more(const t_string& lhs, const t_string& rhs)
 	return translation::icompare(lhs, rhs) > 0;
 }
 
-void listbox::set_active_sorter(const std::string& id, sort_order::type order, bool select_first)
+void listbox::set_active_sorter(std::string_view id, sort_order::type order, bool select_first)
 {
 	for(auto& [w, _] : orders_) {
 		if(!w || dynamic_cast<widget*>(w)->id() != id) continue;
