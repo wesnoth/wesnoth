@@ -341,7 +341,7 @@ int intf_show_recall_dialog(lua_State* L)
 		gui2::dialogs::units_dialog dlg;
 		dlg.build_recall_dialog(units, disp->playing_team());
 		if(dlg.show() && dlg.is_selected()) {
-			luaW_pushlocalunit(L, const_cast<unit&>(*units[dlg.get_selected_index()]));
+			luaW_pushunit(L, units[dlg.get_selected_index()]->underlying_id());
 			return 1;
 		}
 	} else {
