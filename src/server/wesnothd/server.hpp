@@ -77,10 +77,13 @@ public:
 	}
 	void send_to_lobby(simple_wml::document& data, std::optional<player_iterator> exclude = {});
 	void send_to_player(player_iterator player, simple_wml::document& data) {
-		utils::visit(
-			[this, &data](auto&& socket) { async_send_doc_queued(socket, data); },
-			player->socket()
-		);
+		if(player_connections_.get<socket_t>().find(player->socket()) != player_connections_.end())
+		{
+			utils::visit(
+				[this, &data](auto&& socket) { async_send_doc_queued(socket, data); },
+				player->socket()
+			);
+		}
 	}
 	void send_server_message_to_lobby(const std::string& message, std::optional<player_iterator> exclude = {});
 	void send_server_message_to_all(const std::string& message, std::optional<player_iterator> exclude = {});
