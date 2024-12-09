@@ -10,7 +10,7 @@ function wesnoth.interface.game_display.unit_status()
     if u.status.cursed then
 		table.insert(s, wml.tag.element{ 
             image = "misc/cursed.png",
-			tooltip = _ "cursed: This unit is cursed. Its physical and elemental resistances are reduced by 10%."
+			tooltip = _ "cursed: This unit is cursed. Its physical and elemental resistances are reduced by 20%."
 		})
 	end
 
