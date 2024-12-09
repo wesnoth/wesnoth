@@ -301,7 +301,7 @@ const widget* styled_widget::find_at(const point& coordinate,
 				   : nullptr;
 }
 
-widget* styled_widget::find(const std::string& id, const bool must_be_active)
+widget* styled_widget::find(const std::string_view id, const bool must_be_active)
 {
 	return (widget::find(id, must_be_active)
 			&& (!must_be_active || get_active()))
@@ -309,7 +309,7 @@ widget* styled_widget::find(const std::string& id, const bool must_be_active)
 				   : nullptr;
 }
 
-const widget* styled_widget::find(const std::string& id, const bool must_be_active)
+const widget* styled_widget::find(const std::string_view id, const bool must_be_active)
 		const
 {
 	return (widget::find(id, must_be_active)

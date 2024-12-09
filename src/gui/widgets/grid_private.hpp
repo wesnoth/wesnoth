@@ -83,7 +83,7 @@ struct grid_implementation
 	 */
 	template <class W>
 	static W* find(utils::const_clone_ref<grid, W> grid,
-				   const std::string& id,
+				   const std::string_view id,
 				   const bool must_be_active)
 	{
 		// Inherited.

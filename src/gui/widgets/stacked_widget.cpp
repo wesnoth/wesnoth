@@ -40,7 +40,7 @@ struct stacked_widget_implementation
 {
 	template<typename W>
 	static W* find(utils::const_clone_ref<stacked_widget, W> stack,
-			const std::string& id,
+			const std::string_view id,
 			const bool must_be_active)
 	{
 		// Use base method if find-in-all-layer isn't set.
@@ -193,12 +193,12 @@ const grid* stacked_widget::get_layer_grid(unsigned int i) const
 	return &generator_->item(i);
 }
 
-widget* stacked_widget::find(const std::string& id, const bool must_be_active)
+widget* stacked_widget::find(const std::string_view id, const bool must_be_active)
 {
 	return stacked_widget_implementation::find<widget>(*this, id, must_be_active);
 }
 
-const widget* stacked_widget::find(const std::string& id, const bool must_be_active) const
+const widget* stacked_widget::find(const std::string_view id, const bool must_be_active) const
 {
 	return stacked_widget_implementation::find<const widget>(*this, id, must_be_active);
 }

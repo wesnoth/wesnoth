@@ -174,10 +174,10 @@ private:
 
 public:
 	/** See @ref widget::find. */
-	virtual widget* find(const std::string& id, const bool must_be_active) override;
+	virtual widget* find(const std::string_view id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	virtual const widget* find(const std::string& id, const bool must_be_active) const override;
+	virtual const widget* find(const std::string_view id, const bool must_be_active) const override;
 };
 
 // }---------- DEFINITION ---------{
