@@ -12,6 +12,7 @@
 ### Units
 ### User interface
 ### WML Engine
+   * [stacked_widget] no longer accepts the long-deprecated [stack] tag
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.6

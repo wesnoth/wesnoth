@@ -236,14 +236,9 @@ stacked_widget_definition::resolution::resolution(const config& cfg)
 namespace implementation
 {
 
-builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
-	: builder_styled_widget(real_cfg), stack()
+builder_stacked_widget::builder_stacked_widget(const config& cfg)
+	: builder_styled_widget(cfg), stack()
 {
-	const config& cfg = real_cfg.has_child("stack") ? real_cfg.mandatory_child("stack") : real_cfg;
-	if(&cfg != &real_cfg) {
-		lg::log_to_chat() << "Stacked widgets no longer require a [stack] tag. Instead, place [layer] tags directly in the widget definition.\n";
-		ERR_WML << "Stacked widgets no longer require a [stack] tag. Instead, place [layer] tags directly in the widget definition.";
-	}
 	VALIDATE(cfg.has_child("layer"), _("No stack layers defined."));
 	for(const auto & layer : cfg.child_range("layer"))
 	{
