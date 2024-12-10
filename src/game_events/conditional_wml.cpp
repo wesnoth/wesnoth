@@ -116,8 +116,8 @@ namespace builtin_conditions {
 #define TEST_STR_ATTR(name, test) \
 		do { \
 			if (values.has_attribute(name)) { \
-				std::string attr_str = values[name].str(); \
-				std::string str_value = value.str(); \
+				const std::string attr_str = values[name].str(); \
+				const std::string str_value = value.str(); \
 				return (test); \
 			} \
 		} while (0)
@@ -125,8 +125,8 @@ namespace builtin_conditions {
 #define TEST_NUM_ATTR(name, test) \
 		do { \
 			if (values.has_attribute(name)) { \
-				double attr_num = values[name].to_double(); \
-				double num_value = value.to_double(); \
+				const double attr_num = values[name].to_double(); \
+				const double num_value = value.to_double(); \
 				return (test); \
 			} \
 		} while (0)
@@ -134,8 +134,8 @@ namespace builtin_conditions {
 #define TEST_BOL_ATTR(name, test) \
 		do { \
 			if (values.has_attribute(name)) { \
-				bool attr_bool = values[name].to_bool(); \
-				bool bool_value = value.to_bool(); \
+				const bool attr_bool = values[name].to_bool(); \
+				const bool bool_value = value.to_bool(); \
 				return (test); \
 			} \
 		} while (0)

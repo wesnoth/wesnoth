@@ -273,8 +273,8 @@ std::stringstream& log_to_chat();
 
 } // namespace lg
 
-#define log_scope(description) lg::scope_logger scope_logging_object__(lg::general(), description);
-#define log_scope2(domain,description) lg::scope_logger scope_logging_object__(domain, description);
+#define log_scope(description) const lg::scope_logger scope_logging_object__(lg::general(), description);
+#define log_scope2(domain,description) const lg::scope_logger scope_logging_object__(domain, description);
 
 #define LOG_STREAM(level, domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain) | formatter()
 
