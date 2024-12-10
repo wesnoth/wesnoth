@@ -104,16 +104,14 @@ public:
 
 	units_dialog& show_all_headers()
 	{
-		find_widget<listbox>("main_list")
-		.find_widget<grid>("_header_grid")
+		find_widget<grid>("_header_grid")
 		.set_visible(widget::visibility::visible);
 		return *this;
 	}
 
 	units_dialog& hide_all_headers()
 	{
-		find_widget<listbox>("main_list")
-		.find_widget<grid>("_header_grid")
+		find_widget<grid>("_header_grid")
 		.set_visible(widget::visibility::invisible);
 		return *this;
 	}
@@ -162,7 +160,7 @@ public:
 	 * in the [list_definition] in the WML file.
 	 */
 	template<typename Value, typename Generator = std::function<std::string(const Value&)>>
-	units_dialog& set_column_generator(
+	units_dialog& set_column(
 		std::string_view id,
 		const std::vector<Value>& container,
 		const Generator& generator,
@@ -179,14 +177,15 @@ public:
 
 	template<typename Value, typename Generator = std::function<std::string(const Value&)>
 	, typename Sorter = std::function<std::string(const Value&)>>
-	units_dialog& set_column_generator(
+	units_dialog& set_column(
 		std::string_view id,
 		const std::vector<Value>& container,
 		const Generator& generator,
 		const Sorter& sorter)
 	{
 		column_generators_.try_emplace(id, [&container, generator](size_t index) { return generator(container[index]); });
-		set_sorter(id, container, sorter);
+		find_widget<gui2::listbox>("main_list").set_single_sorter(
+			id, [&container, sorter](size_t index) { return sorter(container[index]); });
 		return *this;
 	}
 
@@ -198,18 +197,6 @@ public:
 		const std::vector<Value>& container, const Generator& generator)
 	{
 		tooltip_gen_ = [&container, generator](size_t index) { return generator(container[index]); };
-		return *this;
-	}
-
-	/**
-	 * Sets the generator function for column data
-	 */
-	template<typename Value, typename Generator = std::function<std::string(const Value&)>>
-	units_dialog& set_sorter(
-		std::string_view id, const std::vector<Value>& container, const Generator& generator)
-	{
-		find_widget<gui2::listbox>("main_list").set_single_sorter(
-			id, [&container, generator](size_t index) { return generator(container[index]); });
 		return *this;
 	}
 
