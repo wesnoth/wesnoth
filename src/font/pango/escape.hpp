@@ -30,7 +30,7 @@ namespace font
  *
  * @returns                       The escaped text.
  */
-inline std::string escape_text(const std::string& text)
+inline std::string escape_text(std::string_view text)
 {
 	std::ostringstream ss;
 	for(const char c : text) {
@@ -49,7 +49,7 @@ inline std::string escape_text(const std::string& text)
 
 // Escape only the ampersands. This is used by pango_text to try to recover from
 // markup parsing failure.
-inline std::string semi_escape_text(const std::string & text)
+inline std::string semi_escape_text(std::string_view text)
 {
 	std::ostringstream ss;
 	for(const char c : text) {
