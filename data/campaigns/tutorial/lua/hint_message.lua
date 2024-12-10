@@ -11,8 +11,9 @@ function wesnoth.wml_actions.hint_message(cfg)
             hint_text = "<b><big>" .. cfg.caption .. "</big></b>\n" .. hint_text
         end
         hint_message = wesnoth.interface.add_overlay_text(hint_text, {
+            -- Be careful of setting location here, as it could cause issues
+            -- with the border of the text box
             size = 18,
-            location = {5,5},
             color = {255, 255, 255},
             bgcolor = {0, 0, 0},
             bgalpha = 85,
