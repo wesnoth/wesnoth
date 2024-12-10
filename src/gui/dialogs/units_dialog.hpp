@@ -104,19 +104,24 @@ public:
 
 	units_dialog& show_all_headers()
 	{
-		visible_headers_.set();
+		find_widget<listbox>("main_list")
+		.find_widget<grid>("_header_grid")
+		.set_visible(widget::visibility::visible);
 		return *this;
 	}
 
 	units_dialog& hide_all_headers()
 	{
-		visible_headers_.reset();
+		find_widget<listbox>("main_list")
+		.find_widget<grid>("_header_grid")
+		.set_visible(widget::visibility::invisible);
 		return *this;
 	}
 
-	units_dialog& show_header(const int col_num, const bool visible = true)
+	units_dialog& show_header(std::string_view id, const bool visible = true)
 	{
-		visible_headers_[col_num] = visible;
+		find_widget<toggle_button>(id).set_visible(
+			visible ? widget::visibility::visible : widget::visibility::invisible);
 		return *this;
 	}
 
@@ -158,7 +163,7 @@ public:
 	 */
 	template<typename Value, typename Generator = std::function<std::string(const Value&)>>
 	units_dialog& set_column_generator(
-		const std::string& id,
+		std::string_view id,
 		const std::vector<Value>& container,
 		const Generator& generator,
 		const bool use_as_sorter = false)
@@ -166,10 +171,22 @@ public:
 		column_generators_.try_emplace(id, [&container, generator](size_t index) { return generator(container[index]); });
 		// use the generator function also as sorter function
 		if (use_as_sorter) {
-			find_widget<gui2::listbox>("recall_list").set_single_sorter(
-				"sort_" + std::to_string(column_generators_.size()-1),
-				[&container, generator](size_t index) { return generator(container[index]); });
+			find_widget<gui2::listbox>("main_list").set_single_sorter(
+				id, [&container, generator](size_t index) { return generator(container[index]); });
 		}
+		return *this;
+	}
+
+	template<typename Value, typename Generator = std::function<std::string(const Value&)>
+	, typename Sorter = std::function<std::string(const Value&)>>
+	units_dialog& set_column_generator(
+		std::string_view id,
+		const std::vector<Value>& container,
+		const Generator& generator,
+		const Sorter& sorter)
+	{
+		column_generators_.try_emplace(id, [&container, generator](size_t index) { return generator(container[index]); });
+		set_sorter(id, container, sorter);
 		return *this;
 	}
 
@@ -189,11 +206,10 @@ public:
 	 */
 	template<typename Value, typename Generator = std::function<std::string(const Value&)>>
 	units_dialog& set_sorter(
-		const int col, const std::vector<Value>& container, const Generator& generator)
+		std::string_view id, const std::vector<Value>& container, const Generator& generator)
 	{
-		find_widget<gui2::listbox>("recall_list").set_single_sorter(
-			"sort_" + std::to_string(col),
-			[&container, generator](size_t index) { return generator(container[index]); });
+		find_widget<gui2::listbox>("main_list").set_single_sorter(
+			id, [&container, generator](size_t index) { return generator(container[index]); });
 		return *this;
 	}
 
@@ -224,7 +240,7 @@ private:
 	bool show_rename_;
 
 	boost::dynamic_bitset<> visible_headers_;
-	std::map<std::string, std::function<std::string(size_t)>> column_generators_;
+	std::map<std::string_view, std::function<std::string(size_t)>> column_generators_;
 	std::function<std::string(size_t)> tooltip_gen_;
 
 	unit_race::GENDER gender_;
@@ -238,7 +254,9 @@ private:
 	void list_item_clicked();
 	void filter_text_changed();
 	void rename_unit();
-	void dismiss_unit();
+
+	// FIXME only thing needing team
+	void dismiss_unit(const team& team);
 
 	void show_list(listbox& list);
 	void show_help() const;
