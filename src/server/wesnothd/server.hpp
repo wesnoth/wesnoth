@@ -82,6 +82,15 @@ public:
 			player->socket()
 		);
 	}
+	void send_to_player(any_socket_ptr socket, simple_wml::document& data) {
+		if(player_connections_.get<socket_t>().find(socket) != player_connections_.end())
+		{
+			utils::visit(
+				[this, &data](auto&& socket) { async_send_doc_queued(socket, data); },
+				socket
+			);
+		}
+	}
 	void send_server_message_to_lobby(const std::string& message, std::optional<player_iterator> exclude = {});
 	void send_server_message_to_all(const std::string& message, std::optional<player_iterator> exclude = {});
 
