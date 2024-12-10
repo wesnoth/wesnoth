@@ -439,7 +439,7 @@ std::string unescape(const std::string &str)
 		res.erase(pos, 1);
 		pos = res.find('\\', pos + 1);
 	} while (pos != std::string::npos);
-	return str;
+	return res;
 }
 
 std::string urlencode(const std::string &str)
