@@ -225,7 +225,6 @@ private:
 	bool show_dismiss_;
 	bool show_rename_;
 
-	boost::dynamic_bitset<> visible_headers_;
 	std::map<std::string_view, std::function<std::string(size_t)>> column_generators_;
 	std::function<std::string(size_t)> tooltip_gen_;
 
