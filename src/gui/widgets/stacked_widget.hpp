@@ -119,14 +119,6 @@ public:
 
 private:
 	/**
-	 * Finishes the building initialization of the widget.
-	 *
-	 * @param generator           Generator for the list
-	 * @param widget_builders     The builder to build the contents of the widget.
-	 */
-	void finalize(std::unique_ptr<generator_base> generator, const std::vector<builder_grid>& widget_builders);
-
-	/**
 	 * Contains a pointer to the generator.
 	 *
 	 * The pointer is not owned by this class, it's stored in the content_grid_

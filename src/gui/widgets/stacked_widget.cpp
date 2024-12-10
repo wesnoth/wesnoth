@@ -64,6 +64,26 @@ stacked_widget::stacked_widget(const implementation::builder_stacked_widget& bui
 	, selected_layer_(-1)
 	, find_in_all_layers_(false)
 {
+	const auto conf = cast_config_to<stacked_widget_definition>();
+	assert(conf);
+
+	init_grid(*conf->grid);
+
+	auto generator = generator_base::build(false, false, generator_base::independent, false);
+
+	// Save our *non-owning* pointer before this gets moved into the grid.
+	generator_ = generator.get();
+	assert(generator_);
+
+	const widget_item empty_data;
+	for(const auto& layer_builder : builder.stack) {
+		generator->create_item(-1, layer_builder, empty_data, nullptr);
+	}
+
+	// TODO: can we use the replacements system here?
+	swap_grid(nullptr, &get_grid(), std::move(generator), "_content_grid");
+
+	select_layer(-1);
 }
 
 bool stacked_widget::get_active() const
@@ -82,21 +102,6 @@ void stacked_widget::layout_children()
 	for(unsigned i = 0; i < generator_->get_item_count(); ++i) {
 		generator_->item(i).layout_children();
 	}
-}
-
-void stacked_widget::finalize(std::unique_ptr<generator_base> generator, const std::vector<builder_grid>& widget_builders)
-{
-	// Save our *non-owning* pointer before this gets moved into the grid.
-	generator_ = generator.get();
-	assert(generator_);
-
-	widget_item empty_data;
-	for(const auto & builder : widget_builders) {
-		generator->create_item(-1, builder, empty_data, nullptr);
-	}
-	swap_grid(nullptr, &get_grid(), std::move(generator), "_content_grid");
-
-	select_layer(-1);
 }
 
 void stacked_widget::set_self_active(const bool /*active*/)
@@ -249,18 +254,7 @@ builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
 std::unique_ptr<widget> builder_stacked_widget::build() const
 {
 	auto widget = std::make_unique<stacked_widget>(*this);
-
-	DBG_GUI_G << "Window builder: placed stacked widget '" << id
-			  << "' with definition '" << definition << "'.";
-
-	const auto conf = widget->cast_config_to<stacked_widget_definition>();
-	assert(conf);
-
-	widget->init_grid(*conf->grid);
-
-	auto generator = generator_base::build(false, false, generator_base::independent, false);
-	widget->finalize(std::move(generator), stack);
-
+	DBG_GUI_G << "Window builder: placed stacked widget '" << id << "' with definition '" << definition << "'.";
 	return widget;
 }
 
