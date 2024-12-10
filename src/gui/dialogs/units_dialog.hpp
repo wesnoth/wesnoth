@@ -126,7 +126,7 @@ public:
 		return *this;
 	}
 
-	units_dialog& set_team(team* team)
+	units_dialog& set_team(const team* team)
 	{
 		team_ = team;
 		return *this;
@@ -201,17 +201,15 @@ public:
 	units_dialog& build_create_dialog(const std::vector<const unit_type*>& types_list);
 	units_dialog& build_unit_list_dialog(const std::vector<unit_const_ptr>& units_list);
 	units_dialog& build_recruit_dialog(
-		const std::vector<const unit_type*>& recruit_list,
-		const team& team);
+		const std::vector<const unit_type*>& recruit_list, const team& team);
 	units_dialog& build_recall_dialog(
-		const std::vector<unit_const_ptr>& recall_list,
-		const team& current_team);
+		const std::vector<unit_const_ptr>& recall_list,	const team& team);
 
 private:
 	std::vector<const unit_type*> unit_type_list_;
 	std::vector<unit_const_ptr> unit_list_;
 
-	team* team_;
+	const team* team_;
 
 	int selected_index_;
 	size_t row_num_;
@@ -244,7 +242,8 @@ private:
 
 	void show_list(listbox& list);
 	void show_help() const;
-	void update_gender_and_variations(unit_preview_pane& preview, int selected_row);
+
+	unit_type update_gender_and_variations(int selected_row);
 
 	void gender_toggle_callback(const unit_race::GENDER val);
 	void variation_menu_callback();

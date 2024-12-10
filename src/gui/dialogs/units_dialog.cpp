@@ -324,7 +324,7 @@ void units_dialog::dismiss_unit()
 
 
 	// Find the unit in the recall list.
-	unit_ptr dismissed_unit = team_->recall_list().find_if_matches_id(u.id());
+	unit_const_ptr dismissed_unit = team_->recall_list().find_if_matches_id(u.id());
 	assert(dismissed_unit);
 
 	// Record the dismissal, then delete the unit.
@@ -359,28 +359,32 @@ void units_dialog::list_item_clicked()
 		unit_preview.set_displayed_unit(selected_unit);
 		find_widget<button>("rename").set_active(!selected_unit.unrenamable());
 	} else if (!unit_type_list_.empty()) {
-		if (show_gender_grid_ || show_variation_grid_) {
-			update_gender_and_variations(unit_preview, selected_row);
-		} else {
-			unit_preview.set_displayed_type(*unit_type_list_[selected_row]);
-		}
+		unit_preview.set_displayed_type(update_gender_and_variations(selected_row));
 	}
 }
 
-void units_dialog::update_gender_and_variations(unit_preview_pane& preview, int selected_row)
+unit_type units_dialog::update_gender_and_variations(int selected_row)
 {
-	const unit_type* ut = &unit_type_list_[selected_row]->get_gender_unit_type(gender_);
+	const unit_type* ut = unit_type_list_[selected_row];
+
+	if (!show_gender_grid_) {
+		return *ut;
+	}
+
+	gender_toggle_.set_members_enabled([&](const unit_race::GENDER& gender)->bool {
+		return unit_type_list_[selected_row]->has_gender_variation(gender);
+	});
+	ut = &ut->get_gender_unit_type(gender_);
+
+	if (!show_variation_grid_) {
+		return *ut;
+	}
+
 	if(!variation_.empty()) {
 		// This effectively translates to `ut = ut` if somehow variation_ does
 		// not refer to a variation that the unit type supports.
 		ut = &ut->get_variation(variation_);
 	}
-
-	preview.set_displayed_type(*ut);
-
-	gender_toggle_.set_members_enabled([&](const unit_race::GENDER& gender)->bool {
-		return unit_type_list_[selected_row]->has_gender_variation(gender);
-	});
 
 	menu_button& var_box = find_widget<menu_button>("variation_box");
 	std::vector<config> var_box_values;
@@ -421,6 +425,8 @@ void units_dialog::update_gender_and_variations(unit_preview_pane& preview, int 
 	}
 
 	var_box.set_values(var_box_values, selection);
+
+	return *ut;
 }
 
 void units_dialog::post_show()
@@ -634,12 +640,12 @@ units_dialog& units_dialog::build_recruit_dialog(
 
 units_dialog& units_dialog::build_recall_dialog(
 	const std::vector<unit_const_ptr>& recall_list,
-	const team& current_team)
+	const team& team)
 {
 	int wb_gold = 0;
 	if(resources::controller && resources::controller->get_whiteboard()) {
 		wb::future_map future; // So gold takes into account planned spending
-		wb_gold = resources::controller->get_whiteboard()->get_spent_gold_for(current_team.side());
+		wb_gold = resources::controller->get_whiteboard()->get_spent_gold_for(team.side());
 	}
 
 	// Lambda to check if a unit is recallable
@@ -647,15 +653,16 @@ units_dialog& units_dialog::build_recall_dialog(
 		// Note: Our callers apply [filter_recall], but leave it to us
 		// to apply cost-based filtering.
 		const int recall_cost =
-			(unit->recall_cost() > -1 ? unit->recall_cost() : current_team.recall_cost());
+			(unit->recall_cost() > -1 ? unit->recall_cost() : team.recall_cost());
 
-		return (recall_cost <= current_team.gold() - wb_gold);
+		return (recall_cost <= team.gold() - wb_gold);
 	};
 
 	set_title(_("Recall Unit"));
 	set_ok_label(_("Recall"));
 	set_help_topic("recruit_and_recall");
 	set_units(recall_list);
+	set_team(&team);
 	set_row_num(recall_list.size());
 	show_rename_option(true);
 	show_dismiss_option(true);
@@ -678,7 +685,7 @@ units_dialog& units_dialog::build_recall_dialog(
 	set_column_generator("unit_details", recall_list, [&, recallable](const auto& unit) {
 		std::stringstream details;
 		details << unit_helper::maybe_inactive(unit->type_name().str(), recallable(unit));
-		details << unit_helper::format_cost_string(unit->recall_cost(), current_team.recall_cost());
+		details << unit_helper::format_cost_string(unit->recall_cost(), team.recall_cost());
 		return details.str();
 	});
 
