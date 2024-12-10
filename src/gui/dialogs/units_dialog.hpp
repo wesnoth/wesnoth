@@ -104,15 +104,13 @@ public:
 
 	units_dialog& show_all_headers()
 	{
-		find_widget<grid>("_header_grid")
-		.set_visible(widget::visibility::visible);
+		show_header_ = true;
 		return *this;
 	}
 
 	units_dialog& hide_all_headers()
 	{
-		find_widget<grid>("_header_grid")
-		.set_visible(widget::visibility::invisible);
+		show_header_ = false;
 		return *this;
 	}
 
@@ -221,6 +219,7 @@ private:
 	std::string ok_label_;
 	std::string cancel_label_;
 	std::string topic_id_;
+	bool show_header_;
 	bool show_variation_grid_;
 	bool show_gender_grid_;
 	bool show_dismiss_;
