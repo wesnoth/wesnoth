@@ -289,7 +289,7 @@ int intf_show_recruit_dialog(lua_State* L)
 {
 	const size_t len = lua_rawlen(L, 1);
 	if (!lua_istable(L, 1)) {
-		return 0;
+		return luaL_error(L, "List of unit types not specified!");
 	}
 
 	std::vector<const unit_type*> types;
@@ -322,14 +322,14 @@ int intf_show_recall_dialog(lua_State* L)
 {
 	const size_t len = lua_rawlen(L, 1);
 	if (!lua_istable(L, 1)) {
-		return 0;
+		return luaL_error(L, "List of units not specified!");
 	}
 
 	std::vector<unit_const_ptr> units;
 	units.reserve(len);
 	for (size_t i = 1; i <= len; i++) {
 		lua_rawgeti(L, 1, i);
-		unit_const_ptr u(luaW_tounit(L, -1));
+		unit_const_ptr u(luaW_tounit_ptr(L, -1));
 		if (u) {
 			units.push_back(u);
 		}
