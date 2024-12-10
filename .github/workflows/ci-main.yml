@@ -250,7 +250,6 @@ jobs:
     runs-on: macos-13
     env:
       CFG: ${{ matrix.cfg }}
-      DEVELOPER_DIR: /Applications/Xcode_13.1.app/Contents/Developer
 
     steps:
       - uses: actions/checkout@v4
