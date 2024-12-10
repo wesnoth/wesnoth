@@ -48,13 +48,13 @@ lua_unit* luaW_pushlocalunit(lua_State *L, unit& u);
  * Similar to luaW_tounit but returns a unit_ptr; use this instead of
  * luaW_tounit when using an api that needs unit_ptr.
  */
-unit_ptr luaW_tounit_ptr(lua_State *L, int index, bool only_on_map);
+unit_ptr luaW_tounit_ptr(lua_State *L, int index, bool only_on_map = false);
 
 /**
  * Similar to luaW_checkunit but returns a unit_ptr; use this instead of
  * luaW_checkunit when using an api that needs unit_ptr.
  */
-unit_ptr luaW_checkunit_ptr(lua_State *L, int index, bool only_on_map);
+unit_ptr luaW_checkunit_ptr(lua_State *L, int index, bool only_on_map = false);
 
 /**
  * Similar to luaW_tounit but returns a lua_unit; use this if you need
