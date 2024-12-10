@@ -1183,7 +1183,7 @@ void server::handle_player_in_lobby(player_iterator player, simple_wml::document
 			std::string search_content = request->attr("search_content").to_string();
 			LOG_SERVER << "Querying game history requested by player `" << player->info().name() << "` for player id `" << player_id << "`."
 					   << "Searching for game name `" << search_game_name << "`, search content type `" << search_content_type << "`, search content `" << search_content << "`.";
-			user_handler_->async_get_and_send_game_history(io_service_, *this, player, player_id, offset, search_game_name, search_content_type, search_content);
+			user_handler_->async_get_and_send_game_history(io_service_, *this, player->socket(), player_id, offset, search_game_name, search_content_type, search_content);
 		}
 		return;
 	}
