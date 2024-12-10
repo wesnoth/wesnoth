@@ -82,10 +82,6 @@ units_dialog::units_dialog()
 	, filter_options_()
 	, last_words_()
 {
-	// FIXME number of columns shouldn't be hardcoded.
-	// should be calculated from grid instead
-	visible_headers_.resize(8);
-	visible_headers_.set(); // headers are shown by default
 }
 
 namespace {
