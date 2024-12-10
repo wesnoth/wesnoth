@@ -168,7 +168,7 @@ static config unit_name(const unit *u)
 	 * The name needs to be escaped, it might be set by the user and using
 	 * markup. Also names often contain a forbidden single quote.
 	 */
-	const std::string& name = font::escape_text(u->name());
+	const std::string& name = font::escape_text(u->name().str());
 	std::ostringstream str, tooltip;
 	str << markup::bold(name);
 	tooltip << _("Name: ") << markup::bold(name);
