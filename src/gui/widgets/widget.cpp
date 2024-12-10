@@ -202,7 +202,12 @@ void widget::demand_reduce_height(const unsigned /*maximum_height*/)
 
 point widget::get_best_size() const
 {
-	assert(visible_ != visibility::invisible);
+	// TODO Does commenting out this line and the {0,0} return
+	// breaks anything? Needs investigation.
+	// assert(visible_ != visibility::invisible);
+	if (visible_ == visibility::invisible) {
+		return {0, 0};
+	}
 
 	point result = layout_size_;
 	if(result == point()) {

@@ -72,6 +72,7 @@ units_dialog::units_dialog()
 	, row_num_(0)
 	, ok_label_(_("OK"))
 	, cancel_label_(_("Cancel"))
+	, show_header_(true)
 	, show_variation_grid_(false)
 	, show_gender_grid_(false)
 	, show_dismiss_(false)
@@ -185,13 +186,10 @@ void units_dialog::pre_show()
 		show_rename_ ? widget::visibility::visible : widget::visibility::invisible);
 	find_widget<grid>("variation_gender_grid").set_visible(
 		show_gender_grid_ ? widget::visibility::visible : widget::visibility::invisible);
+	find_widget<grid>("_header_grid").set_visible(
+		show_header_ ? widget::visibility::visible : widget::visibility::invisible);
 
-	// for (size_t i = 0; i < visible_headers_.size(); i++) {
-	// 	find_widget<toggle_button>("sort_" + std::to_string(i))
-	// 		.set_visible(visible_headers_[i]
-	// 			? widget::visibility::visible
-	// 			: widget::visibility::invisible);
-	// }
+
 	list_item_clicked();
 }
 
