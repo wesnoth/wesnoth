@@ -109,23 +109,15 @@ void unit_attack::pre_show()
 			attacker_itor_->get_location(), false, attacker.weapon
 		);
 
-		std::pair<std::string, std::string> types = attacker_weapon.damage_type();
-		std::string attw_type_second = types.second;
-		std::string attw_type = !(types.first).empty() ? types.first : attacker_weapon.type();
+		std::string types = attacker_weapon.effective_damage_type().first;
+		std::string attw_type = !(types).empty() ? types : attacker_weapon.type();
 		if (!attw_type.empty()) {
 			attw_type = string_table["type_" + attw_type];
 		}
-		if (!attw_type_second.empty()) {
-			attw_type_second = ", " + string_table["type_" + attw_type_second];
-		}
-		std::pair<std::string, std::string> def_types = defender_weapon.damage_type();
-		std::string defw_type_second = def_types.second;
-		std::string defw_type = !(def_types.first).empty() ? def_types.first : defender_weapon.type();
+		std::string def_types = defender_weapon.effective_damage_type().first;
+		std::string defw_type = !(def_types).empty() ? def_types : defender_weapon.type();
 		if (!defw_type.empty()) {
 			defw_type = string_table["type_" + defw_type];
-		}
-		if (!defw_type_second.empty()) {
-			defw_type_second = ", " + string_table["type_" + defw_type_second];
 		}
 
 		const std::set<std::string> checking_tags_other = {"damage_type", "disable", "berserk", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
@@ -176,26 +168,26 @@ void unit_attack::pre_show()
 
 		// Use attacker/defender.num_blows instead of attacker/defender_weapon.num_attacks() because the latter does not consider the swarm weapon special
 		attacker_stats << markup::bold(attw_name) << "\n"
-			<< attw_type << attw_type_second << "\n"
+			<< attw_type << "\n"
 			<< attacker.damage << font::weapon_numbers_sep << attacker.num_blows
 			<< attw_specials << "\n"
 			<< markup::span_color(a_cth_color, attacker.chance_to_hit, "%");
 
 		attacker_tooltip << _("Weapon: ") << markup::bold(attw_name) << "\n"
-			<< _("Type: ") << attw_type << attw_type_second << "\n"
+			<< _("Type: ") << attw_type << "\n"
 			<< _("Damage: ") << attacker.damage << markup::italic(attw_specials_dmg) << "\n"
 			<< _("Attacks: ") << attacker.num_blows << markup::italic(attw_specials_atk) << "\n"
 			<< _("Chance to hit: ") << markup::span_color(a_cth_color, attacker.chance_to_hit, "%")
 			<< markup::italic(attw_specials_cth) << attw_specials_others;
 
 		defender_stats << markup::bold(defw_name) << "\n"
-			<< defw_type << defw_type_second << "\n"
+			<< defw_type << "\n"
 			<< defender.damage << font::weapon_numbers_sep << defender.num_blows
 			<< defw_specials << "\n"
 			<< markup::span_color(d_cth_color, defender.chance_to_hit, "%");
 
 		defender_tooltip << _("Weapon: ") << markup::bold(defw_name) << "\n"
-			<< _("Type: ") << defw_type << defw_type_second << "\n"
+			<< _("Type: ") << defw_type << "\n"
 			<< _("Damage: ") << defender.damage << markup::italic(defw_specials_dmg) << "\n"
 			<< _("Attacks: ") << defender.num_blows <<  markup::italic(defw_specials_atk) << "\n"
 			<< _("Chance to hit: ") << markup::span_color(d_cth_color, defender.chance_to_hit, "%")
