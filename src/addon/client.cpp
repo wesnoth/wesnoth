@@ -159,7 +159,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	response_message.clear();
 
 	utils::string_map i18n_symbols;
-	i18n_symbols["addon_title"] = font::escape_text(cfg["title"]);
+	i18n_symbols["addon_title"] = font::escape_text(cfg["title"].str());
 	if(i18n_symbols["addon_title"].empty()) {
 		i18n_symbols["addon_title"] = font::escape_text(make_addon_title(id));
 	}
@@ -275,7 +275,7 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 	config cfg = get_addon_pbl_info(id, false);
 
 	utils::string_map i18n_symbols;
-	i18n_symbols["addon_title"] = font::escape_text(cfg["title"]);
+	i18n_symbols["addon_title"] = font::escape_text(cfg["title"].str());
 	if(i18n_symbols["addon_title"].empty()) {
 		i18n_symbols["addon_title"] = font::escape_text(make_addon_title(id));
 	}
