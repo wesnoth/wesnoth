@@ -297,7 +297,7 @@ do { \
 #define return_cfg_attrib(name, accessor) \
 do { \
 	if (strcmp(m, (name)) == 0) { \
-		config cfg; \
+		const config cfg; \
 		{accessor;} \
 		luaW_pushconfig(L, cfg); \
 		return 1; \
@@ -404,7 +404,7 @@ do { \
 #define modify_bool_attrib(name, accessor) \
 do { \
 	if (strcmp(m, (name)) == 0) { \
-		bool value = luaW_toboolean(L, 3); \
+		const bool value = luaW_toboolean(L, 3); \
 		{accessor;} \
 		return 0; \
 	} \
