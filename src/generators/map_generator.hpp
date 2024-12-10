@@ -66,5 +66,5 @@ public:
 	 */
 	virtual std::string create_map(utils::optional<uint32_t> randomseed = {}) = 0;
 
-	virtual config create_scenario(utils::optional<uint32_t> randomseed = {});
+	virtual config create_scenario(utils::optional<uint32_t> randomseed = {}) = 0;
 };
