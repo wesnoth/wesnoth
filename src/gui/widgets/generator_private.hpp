@@ -521,7 +521,7 @@ struct show : public virtual generator_base
 {
 	void select(grid& grid, const bool show)
 	{
-		grid.set_visible(show ? widget::visibility::visible : widget::visibility::hidden);
+		grid.set_hidden(show);
 	}
 
 	/**
@@ -638,7 +638,7 @@ public:
 		if(items_[index]->shown != show) {
 			/*** Set the proper visible state. ***/
 			items_[index]->shown = show;
-			items_[index]->child_grid.set_visible(show ? widget::visibility::visible : widget::visibility::invisible);
+			items_[index]->child_grid.set_visible(show);
 
 			/*** Update the selection. ***/
 			minimum_selection::set_item_shown(index, show);

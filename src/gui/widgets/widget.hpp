@@ -633,6 +633,18 @@ public:
 	void set_visible(const visibility visible);
 	visibility get_visible() const;
 
+	/** Sets widget to visible if @a visible is true, else invisible. */
+	void set_visible(bool visible)
+	{
+		set_visible(visible ? visibility::visible : visibility::invisible);
+	}
+
+	/** Sets widget to visible if @a hidden is true, else hidden. */
+	void set_hidden(bool hidden)
+	{
+		set_visible(hidden ? visibility::visible : visibility::hidden);
+	}
+
 	redraw_action get_drawing_action() const;
 
 	void set_debug_border_mode(const debug_border debug_border_mode);

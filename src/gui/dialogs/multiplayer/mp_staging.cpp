@@ -379,7 +379,7 @@ void mp_staging::on_controller_select(const ng::side_engine_ptr& side, grid& row
 	menu_button& controller_selection = row_grid.find_widget<menu_button>("controller");
 
 	if(side->controller_changed(controller_selection.get_value())) {
-		ai_selection.set_visible(side->controller() == ng::CNTR_COMPUTER ? widget::visibility::visible : widget::visibility::hidden);
+		ai_selection.set_hidden(side->controller() == ng::CNTR_COMPUTER);
 
 		set_state_changed();
 	}

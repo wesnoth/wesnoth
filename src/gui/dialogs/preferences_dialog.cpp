@@ -245,8 +245,7 @@ void preferences_dialog::update_friends_list_controls(listbox& list)
 
 	find_widget<button>("remove").set_active(!list_empty);
 
-	find_widget<label>("no_friends_notice").set_visible(
-		list_empty ? widget::visibility::visible : widget::visibility::invisible);
+	find_widget<label>("no_friends_notice").set_visible(list_empty);
 }
 
 void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& textbox)
