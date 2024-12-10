@@ -526,8 +526,8 @@ units_dialog& units_dialog::build_create_dialog(const std::vector<const unit_typ
 	set_types(types_list);
 	set_row_num(types_list.size());
 	hide_all_headers();
-	set_column_generator("unit_name", types_list, type_gen, true);
-	set_column_generator("unit_details", types_list, race_gen, true);
+	set_column("unit_name", types_list, type_gen, true);
+	set_column("unit_details", types_list, race_gen, true);
 
 	return *this;
 }
@@ -540,15 +540,15 @@ units_dialog& units_dialog::build_unit_list_dialog(const std::vector<unit_const_
 	set_help_topic("..units");
 	set_units(unit_list);
 	set_row_num(unit_list.size());
-	set_column_generator("unit_name", unit_list, [&](const auto& unit) {
+	set_column("unit_name", unit_list, [&](const auto& unit) {
 		return !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
 	}, true);
 
-	set_column_generator("unit_details", unit_list, [&](const auto& unit) {
+	set_column("unit_details", unit_list, [&](const auto& unit) {
 		return unit->type_name().str();
 	}, true);
 
-	set_column_generator("unit_level", unit_list,
+	set_column("unit_level", unit_list,
 		[&](const auto& unit) {
 			return unit_helper::format_level_string(unit->level(), true);
 		},
@@ -556,7 +556,7 @@ units_dialog& units_dialog::build_unit_list_dialog(const std::vector<unit_const_
 			return std::tuple(u->level(), -static_cast<int>(u->experience_to_advance()));
 		});
 
-	set_column_generator("unit_moves", unit_list,
+	set_column("unit_moves", unit_list,
 		[&](const auto& unit) {
 			return unit_helper::format_movement_string(unit->movement_left(), unit->total_movement());
 		},
@@ -564,7 +564,7 @@ units_dialog& units_dialog::build_unit_list_dialog(const std::vector<unit_const_
 			return u->movement_left();
 		});
 
-	set_column_generator("unit_hp", unit_list,
+	set_column("unit_hp", unit_list,
 		[&](const auto& unit) {
 			return markup::span_color(unit->hp_color(), unit->hitpoints(), "/", unit->max_hitpoints());
 		},
@@ -572,7 +572,7 @@ units_dialog& units_dialog::build_unit_list_dialog(const std::vector<unit_const_
 			return u->hitpoints();
 		});
 
-	set_column_generator("unit_xp",  unit_list,
+	set_column("unit_xp",  unit_list,
 		[&](const auto& unit) {
 			std::stringstream exp_str;
 			if(unit->can_advance()) {
@@ -587,7 +587,7 @@ units_dialog& units_dialog::build_unit_list_dialog(const std::vector<unit_const_
 			// also sorts 23/35 before 0/35, after which 0/100 comes
 			return u->experience() + u->max_experience();
 		});
-	set_column_generator("unit_status", unit_list, [&](const auto& unit) {
+	set_column("unit_status", unit_list, [&](const auto& unit) {
 		// Status
 		if(unit->incapacitated()) {
 			return "misc/petrified.png";
@@ -607,7 +607,7 @@ units_dialog& units_dialog::build_unit_list_dialog(const std::vector<unit_const_
 
 		return "";
 	});
-	set_column_generator("unit_traits",  unit_list, [&](const auto& unit) {
+	set_column("unit_traits",  unit_list, [&](const auto& unit) {
 		return utils::join(unit->trait_names(), ", ");
 	}, true);
 
@@ -625,12 +625,12 @@ units_dialog& units_dialog::build_recruit_dialog(
 	set_row_num(recruit_list.size());
 	set_team(&team);
 	hide_all_headers();
-	set_column_generator("unit_image", recruit_list, [&](const auto& recruit) {
+	set_column("unit_image", recruit_list, [&](const auto& recruit) {
 		std::string image_string = recruit->image();
 		image_string += "~RC(" + recruit->flag_rgb() + ">" + team.color() + ")";
 		return image_string;
 	});
-	set_column_generator("unit_details", recruit_list, [&](const auto& recruit) {
+	set_column("unit_details", recruit_list, [&](const auto& recruit) {
 		return recruit->type_name() + unit_helper::format_cost_string(recruit->cost());
 	}, true);
 	return *this;
@@ -665,7 +665,7 @@ units_dialog& units_dialog::build_recall_dialog(
 	show_rename_option(true);
 	show_dismiss_option(true);
 
-	set_column_generator("unit_image", recall_list, [&, recallable](const auto& unit) {
+	set_column("unit_image", recall_list, [&, recallable](const auto& unit) {
 		std::string mods = unit->image_mods();
 		if(unit->can_recruit()) { mods += "~BLIT(" + unit::leader_crown() + ")"; }
 		for(const std::string& overlay : unit->overlays()) {
@@ -675,14 +675,14 @@ units_dialog& units_dialog::build_recall_dialog(
 		return unit->absolute_image() + mods;
 	});
 
-	set_column_generator("unit_name", recall_list,
+	set_column("unit_name", recall_list,
 		[&, recallable](const auto& unit) {
 			const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
 			return unit_helper::maybe_inactive(name, recallable(unit));
 		},
 		[&](const auto& unit) { return unit->name().str(); });
 
-	set_column_generator("unit_details", recall_list,
+	set_column("unit_details", recall_list,
 		[&, recallable](const auto& unit) {
 			std::stringstream details;
 			details << unit_helper::maybe_inactive(unit->type_name().str(), recallable(unit));
@@ -691,13 +691,13 @@ units_dialog& units_dialog::build_recall_dialog(
 		},
 		[&](const auto& unit) { return unit->type_name().str(); });
 
-	set_column_generator("unit_moves", recall_list,
+	set_column("unit_moves", recall_list,
 		[&](const auto& unit) {
 			return unit_helper::format_movement_string(unit->movement_left(), unit->total_movement());
 		},
 		[&](const auto& recall) { return recall->movement_left(); });
 
-	set_column_generator("unit_level", recall_list,
+	set_column("unit_level", recall_list,
 		[&, recallable](const auto& unit) {
 			return unit_helper::format_level_string(unit->level(), recallable(unit));
 		},
@@ -705,13 +705,13 @@ units_dialog& units_dialog::build_recall_dialog(
 			return std::tuple(recall->level(), -static_cast<int>(recall->experience_to_advance()));
 		});
 
-	set_column_generator("unit_hp", recall_list,
+	set_column("unit_hp", recall_list,
 		[&](const auto& unit) {
 			return markup::span_color(unit->hp_color(), unit->hitpoints(), "/", unit->max_hitpoints());
 		},
 		[&](const auto& recall) { return recall->hitpoints(); });
 
-	set_column_generator("unit_xp", recall_list,
+	set_column("unit_xp", recall_list,
 		[&](const auto& unit) {
 			std::stringstream exp_str;
 			if(unit->can_advance()) {
@@ -727,7 +727,7 @@ units_dialog& units_dialog::build_recall_dialog(
 			return recall->experience() + recall->max_experience();
 		});
 
-	set_column_generator("unit_traits", recall_list,
+	set_column("unit_traits", recall_list,
 		[&, recallable](const auto& unit) {
 			std::string traits;
 			for(const std::string& trait : unit->trait_names()) {
