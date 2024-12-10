@@ -126,7 +126,7 @@ public:
 	 *
 	 * @param io_service The boost io_service to use to post the query results back to the main boost::asio thread.
 	 * @param s The server instance the player is connected to.
-	 * @param player The player iterator used to communicate with the player's client.
+	 * @param socket The socket used to communicate with the player's client.
 	 * @param player_id The forum ID of the player to get the game history for.
 	 * @param offset Where to start returning rows to the client from the query results.
 	 * @param search_game_name Query for games matching this name. Supports leading and/or trailing wildcards.
