@@ -195,7 +195,7 @@ void units_dialog::show_list(listbox& list)
 		return;
 	}
 
-	for(size_t i = 0; i < row_num_; i++) {
+	for(std::size_t i = 0; i < row_num_; i++) {
 		widget_data row_data;
 		widget_item column;
 		formatter filter_fmt;

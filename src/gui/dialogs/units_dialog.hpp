@@ -145,7 +145,7 @@ public:
 		return *this;
 	}
 
-	units_dialog& set_row_num(const size_t row_num)
+	units_dialog& set_row_num(const std::size_t row_num)
 	{
 		row_num_ = row_num;
 		return *this;
@@ -164,11 +164,11 @@ public:
 		const Generator& generator,
 		const bool use_as_sorter = false)
 	{
-		column_generators_.try_emplace(id, [&container, generator](size_t index) { return generator(container[index]); });
+		column_generators_.try_emplace(id, [&container, generator](std::size_t index) { return generator(container[index]); });
 		// use the generator function also as sorter function
 		if (use_as_sorter) {
 			find_widget<gui2::listbox>("main_list").set_single_sorter(
-				id, [&container, generator](size_t index) { return generator(container[index]); });
+				id, [&container, generator](std::size_t index) { return generator(container[index]); });
 		}
 		return *this;
 	}
@@ -181,9 +181,9 @@ public:
 		const Generator& generator,
 		const Sorter& sorter)
 	{
-		column_generators_.try_emplace(id, [&container, generator](size_t index) { return generator(container[index]); });
+		column_generators_.try_emplace(id, [&container, generator](std::size_t index) { return generator(container[index]); });
 		find_widget<gui2::listbox>("main_list").set_single_sorter(
-			id, [&container, sorter](size_t index) { return sorter(container[index]); });
+			id, [&container, sorter](std::size_t index) { return sorter(container[index]); });
 		return *this;
 	}
 
@@ -194,7 +194,7 @@ public:
 	units_dialog& set_tooltip_generator(
 		const std::vector<Value>& container, const Generator& generator)
 	{
-		tooltip_gen_ = [&container, generator](size_t index) { return generator(container[index]); };
+		tooltip_gen_ = [&container, generator](std::size_t index) { return generator(container[index]); };
 		return *this;
 	}
 
@@ -213,7 +213,7 @@ private:
 	const team* team_;
 
 	int selected_index_;
-	size_t row_num_;
+	std::size_t row_num_;
 
 	std::string title_;
 	std::string ok_label_;
@@ -225,8 +225,8 @@ private:
 	bool show_dismiss_;
 	bool show_rename_;
 
-	std::map<std::string_view, std::function<std::string(size_t)>> column_generators_;
-	std::function<std::string(size_t)> tooltip_gen_;
+	std::map<std::string_view, std::function<std::string(std::size_t)>> column_generators_;
+	std::function<std::string(std::size_t)> tooltip_gen_;
 
 	unit_race::GENDER gender_;
 	std::string variation_;
@@ -255,6 +255,10 @@ private:
 
 	virtual void pre_show() override;
 	virtual void post_show() override;
+
+};
+
+struct unit_view_builder {
 
 };
 
