@@ -15,6 +15,7 @@
 
 #include "scripting/lua_gui2.hpp"
 
+#include "game_display.hpp"
 #include "gui/gui.hpp"
 #include "gui/core/gui_definition.hpp"
 #include "gui/dialogs/drop_down_menu.hpp"
@@ -25,9 +26,13 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/retval.hpp"
+#include "scripting/lua_unit.hpp"
+#include "scripting/lua_unit_type.hpp"
 #include "scripting/lua_widget_methods.hpp" //intf_show_dialog
 
 #include "config.hpp"
+#include "game_data.hpp"
+#include "game_state.hpp"
 #include "log.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
@@ -35,13 +40,12 @@
 #include "scripting/push_check.hpp"
 #include "help/help.hpp"
 #include "tstring.hpp"
-#include "game_data.hpp"
-#include "game_state.hpp"
 #include "sdl/input.hpp" // get_mouse_state
-
-#include <functional>
+#include "units/ptr.hpp"
+#include "units/unit.hpp"
 #include "utils/optional_fwd.hpp"
 
+#include <functional>
 #include <vector>
 
 
@@ -285,15 +289,15 @@ int luaW_open(lua_State* L)
 	auto& lk = lua_kernel_base::get_lua_kernel<lua_kernel_base>(L);
 	lk.add_log("Adding gui module...\n");
 	static luaL_Reg const gui_callbacks[] = {
-		{ "show_menu",          &show_menu },
-		{ "show_narration",     &show_message_dialog },
-		{ "show_popup",         &show_popup_dialog },
-		{ "show_story",         &show_story },
-		{ "show_prompt",        &show_message_box },
-		{ "show_help",          &show_help   },
-		{ "switch_theme",             &switch_theme   },
-		{ "add_widget_definition",    &intf_add_widget_definition },
-		{ "show_dialog",              &intf_show_dialog   },
+		{ "show_menu",              &show_menu },
+		{ "show_narration",         &show_message_dialog },
+		{ "show_popup",             &show_popup_dialog },
+		{ "show_story",             &show_story },
+		{ "show_prompt",            &show_message_box },
+		{ "show_help",              &show_help   },
+		{ "switch_theme",           &switch_theme },
+		{ "add_widget_definition",  &intf_add_widget_definition },
+		{ "show_dialog",            &intf_show_dialog },
 		{ nullptr, nullptr },
 	};
 	std::vector<lua_cpp::Reg> const cpp_gui_callbacks {

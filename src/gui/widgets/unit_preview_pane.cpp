@@ -258,7 +258,7 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 	}
 }
 
-void unit_preview_pane::set_displayed_type(const unit_type& type)
+void unit_preview_pane::set_display_data(const unit_type& type)
 {
 	// Sets the current type id for the profile button callback to use
 	current_type_ = type;
@@ -389,7 +389,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 	}
 }
 
-void unit_preview_pane::set_displayed_unit(const unit& u)
+void unit_preview_pane::set_display_data(const unit& u)
 {
 	// Sets the current type id for the profile button callback to use
 	current_type_ = u.type();
