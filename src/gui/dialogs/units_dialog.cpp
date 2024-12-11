@@ -151,12 +151,12 @@ void units_dialog::pre_show()
 		gender_toggle_.add_member(&female_toggle, unit_race::FEMALE);
 		gender_toggle_.set_member_states(unit_race::MALE);
 		gender_toggle_.set_callback_on_value_change(
-			std::bind(&units_dialog::gender_toggle_callback, this, std::placeholders::_2));
+			std::bind(&units_dialog::update_gender, this, std::placeholders::_2));
 	}
 
 	if (show_variation_grid_) {
 		menu_button& var_box = find_widget<menu_button>("variation_box");
-		connect_signal_notify_modified(var_box, std::bind(&units_dialog::variation_menu_callback, this));
+		connect_signal_notify_modified(var_box, std::bind(&units_dialog::update_variation, this));
 	}
 
 	if (show_rename_) {
@@ -334,15 +334,11 @@ void units_dialog::list_item_clicked()
 		return;
 	}
 
-	auto& unit_preview = find_widget<unit_preview_pane>("unit_details");
-
-	if (!unit_list_.empty()) {
-		const unit& selected_unit = *unit_list_[selected_index_];
-		unit_preview.set_display_data(selected_unit);
-		find_widget<button>("rename").set_active(!selected_unit.unrenamable());
-	} else if (!unit_type_list_.empty()) {
-		unit_preview.set_display_data(update_gender_and_variations(unit_type_list_[selected_index_]));
+	if (update_view_ != nullptr) {
+		update_view_(selected_index_);
 	}
+
+	// find_widget<button>("rename").set_active(!selected_unit.unrenamable());
 }
 
 unit_type units_dialog::update_gender_and_variations(const unit_type* ut)
@@ -463,7 +459,7 @@ void units_dialog::filter_text_changed()
 	find_widget<button>("dismiss").set_active(any_shown);
 }
 
-void units_dialog::gender_toggle_callback(const unit_race::GENDER val)
+void units_dialog::update_gender(const unit_race::GENDER val)
 {
 	gender_ = val;
 
@@ -477,7 +473,7 @@ void units_dialog::gender_toggle_callback(const unit_race::GENDER val)
 	unit_preview.set_display_data(*ut);
 }
 
-void units_dialog::variation_menu_callback()
+void units_dialog::update_variation()
 {
 	menu_button& var_box = find_widget<menu_button>("variation_box");
 	variation_ = var_box.get_value_config()["variation_id"].str();
@@ -518,6 +514,9 @@ units_dialog& units_dialog::build_create_dialog(const std::vector<const unit_typ
 	hide_all_headers();
 	set_column("unit_name", types_list, type_gen, true);
 	set_column("unit_details", types_list, race_gen, true);
+	set_update_function([&, this](const std::size_t index) {
+		find_widget<unit_preview_pane>("unit_details").set_display_data(*types_list[index]);
+	});
 
 	return *this;
 }
@@ -600,6 +599,9 @@ units_dialog& units_dialog::build_unit_list_dialog(const std::vector<unit_const_
 	set_column("unit_traits",  unit_list, [&](const auto& unit) {
 		return utils::join(unit->trait_names(), ", ");
 	}, true);
+	set_update_function([&, this](const std::size_t index) {
+		find_widget<unit_preview_pane>("unit_details").set_display_data(*unit_list[index]);
+	});
 
 	return *this;
 }
@@ -623,6 +625,9 @@ units_dialog& units_dialog::build_recruit_dialog(
 	set_column("unit_details", recruit_list, [&](const auto& recruit) {
 		return recruit->type_name() + unit_helper::format_cost_string(recruit->cost());
 	}, true);
+	set_update_function([&, this](const std::size_t index) {
+		find_widget<unit_preview_pane>("unit_details").set_display_data(*recruit_list[index]);
+	});
 	return *this;
 }
 
@@ -742,6 +747,10 @@ units_dialog& units_dialog::build_recall_dialog(
 		} else {
 			return std::string();
 		}
+	});
+
+	set_update_function([&, this](const std::size_t index) {
+		find_widget<unit_preview_pane>("unit_details").set_display_data(*recall_list[index]);
 	});
 
 	return *this;

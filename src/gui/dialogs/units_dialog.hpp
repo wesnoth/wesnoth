@@ -151,6 +151,12 @@ public:
 		return *this;
 	}
 
+	units_dialog& set_update_function(const std::function<void(const std::size_t)>& update_func)
+	{
+		update_view_ = update_func;
+		return *this;
+	}
+
 	/**
 	 * Corresponding to each widget in the row with id 'id', there is a lambda that generates
 	 * the corresponding label to set to that widget. This method sets those generator functions.
@@ -227,6 +233,7 @@ private:
 
 	std::map<std::string_view, std::function<std::string(std::size_t)>> column_generators_;
 	std::function<std::string(std::size_t)> tooltip_gen_;
+	std::function<void(const std::size_t)> update_view_;
 
 	unit_race::GENDER gender_;
 	std::string variation_;
@@ -248,8 +255,8 @@ private:
 
 	unit_type update_gender_and_variations(const unit_type* ut);
 
-	void gender_toggle_callback(const unit_race::GENDER val);
-	void variation_menu_callback();
+	void update_gender(const unit_race::GENDER val);
+	void update_variation();
 
 	virtual const std::string& window_id() const override;
 
