@@ -246,7 +246,7 @@ private:
 	void show_list(listbox& list);
 	void show_help() const;
 
-	unit_type update_gender_and_variations(int selected_row);
+	unit_type update_gender_and_variations(const unit_type* ut);
 
 	void gender_toggle_callback(const unit_race::GENDER val);
 	void variation_menu_callback();
@@ -255,10 +255,6 @@ private:
 
 	virtual void pre_show() override;
 	virtual void post_show() override;
-
-};
-
-struct unit_view_builder {
 
 };
 

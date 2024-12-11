@@ -260,12 +260,12 @@ void units_dialog::dismiss_unit(const team& team)
 	LOG_DP << "Recall list units:"; dump_recall_list_to_console(unit_list_);
 
 	listbox& list = find_widget<listbox>("main_list");
-	const int index = list.get_selected_row();
-	if (index == -1) {
+	selected_index_ = list.get_selected_row();
+	if (selected_index_ == -1) {
 		return;
 	}
 
-	const unit& u = *unit_list_[index].get();
+	const unit& u = *unit_list_[selected_index_].get();
 
 	// If the unit is of level > 1, or is close to advancing, we warn the player about it
 	std::stringstream message;
@@ -292,20 +292,19 @@ void units_dialog::dismiss_unit(const team& team)
 		}
 	}
 
-	unit_list_.erase(unit_list_.begin() + index);
+	unit_list_.erase(unit_list_.begin() + selected_index_);
 
 	// Remove the entry from the dialog list
-	list.remove_row(index);
+	list.remove_row(selected_index_);
 	list_item_clicked();
 
 	// Remove the entry from the filter list
-	filter_options_.erase(filter_options_.begin() + index);
+	filter_options_.erase(filter_options_.begin() + selected_index_);
 	assert(filter_options_.size() == list.get_item_count());
 
 	LOG_DP << "Dismissing a unit, side = " << u.side() << ", id = '" << u.id() << "'";
 	LOG_DP << "That side's recall list:";
 	dump_recall_list_to_console(team.recall_list());
-
 
 	// Find the unit in the recall list.
 	unit_const_ptr dismissed_unit = team.recall_list().find_if_matches_id(u.id());
@@ -329,10 +328,9 @@ void units_dialog::show_help() const
 
 void units_dialog::list_item_clicked()
 {
-	const int selected_row
-		= find_widget<listbox>("main_list").get_selected_row();
+	selected_index_ = find_widget<listbox>("main_list").get_selected_row();
 
-	if (selected_row == -1) {
+	if (selected_index_ == -1) {
 		return;
 	}
 
@@ -347,16 +345,14 @@ void units_dialog::list_item_clicked()
 	}
 }
 
-unit_type units_dialog::update_gender_and_variations(int selected_row)
+unit_type units_dialog::update_gender_and_variations(const unit_type* ut)
 {
-	const unit_type* ut = unit_type_list_[selected_row];
-
 	if (!show_gender_grid_) {
 		return *ut;
 	}
 
 	gender_toggle_.set_members_enabled([&](const unit_race::GENDER& gender)->bool {
-		return unit_type_list_[selected_row]->has_gender_variation(gender);
+		return ut->has_gender_variation(gender);
 	});
 	ut = &ut->get_gender_unit_type(gender_);
 
