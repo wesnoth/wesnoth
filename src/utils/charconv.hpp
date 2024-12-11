@@ -21,7 +21,7 @@
 #include <cctype>
 #include <string_view>
 #include <string>
-
+#include <stdexcept>
 // The gcc implemenetation of from_chars is in some versions just a temporaty solution that calls
 // strtod that's why we prefer the boost version if available.
 #if BOOST_VERSION >= 108500 && __has_include(<boost/charconv.hpp>)
@@ -134,4 +134,32 @@ namespace utils
 			return std::string(buffer.data(), size);
 		}
 	};
+
+	/// Same interface as std::stod and meant as a drop in replacement, except:
+	/// - It takes a std::string_view
+	/// - It is locale independent
+	inline double stod(std::string_view str) {
+		trim_for_from_chars(str);
+		double res;
+		auto [ptr, ec] = utils::charconv::from_chars(str.data(), str.data() + str.size(), res);
+		if(ec == std::errc::invalid_argument) {
+			throw std::invalid_argument("");
+		} else if(ec == std::errc::result_out_of_range) {
+			throw std::out_of_range("");
+		}
+		return res;
+	}
+	/// Same interface as std::stoi and meant as a drop in replacement, except:
+	/// - It takes a std::string_view
+	inline int stoi(std::string_view str) {
+		trim_for_from_chars(str);
+		int res;
+		auto [ptr, ec] = utils::charconv::from_chars(str.data(), str.data() + str.size(), res);
+		if(ec == std::errc::invalid_argument) {
+			throw std::invalid_argument("");
+		} else if(ec == std::errc::result_out_of_range) {
+			throw std::out_of_range("");
+		}
+		return res;
+	}
 }

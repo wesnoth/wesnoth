@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
+#include "utils/charconv.hpp"
 #include "utils/general.hpp"
 #include <array>
 #include <limits>
@@ -866,7 +867,7 @@ std::pair<int, int> parse_range(const std::string& str)
 			// both of those will report an invalid range.
 			res.first = std::numeric_limits<int>::min();
 		} else {
-			res.first = std::stoi(a);
+			res.first = utils::stoi(a);
 		}
 
 		if(!b) {
@@ -874,7 +875,7 @@ std::pair<int, int> parse_range(const std::string& str)
 		} else if(*b == "infinity") {
 			res.second = std::numeric_limits<int>::max();
 		} else {
-			res.second = std::stoi(*b);
+			res.second = utils::stoi(*b);
 			if(res.second < res.first) {
 				res.second = res.first;
 			}
@@ -898,7 +899,7 @@ std::pair<double, double> parse_range_real(const std::string& str)
 				"Don't know how negative infinity is treated on this architecture");
 			res.first = -std::numeric_limits<double>::infinity();
 		} else {
-			res.first = std::stod(a);
+			res.first = utils::stod(a);
 		}
 
 		if(!b) {
@@ -906,7 +907,7 @@ std::pair<double, double> parse_range_real(const std::string& str)
 		} else if(*b == "infinity") {
 			res.second = std::numeric_limits<double>::infinity();
 		} else {
-			res.second = std::stod(*b);
+			res.second = utils::stod(*b);
 			if(res.second < res.first) {
 				res.second = res.first;
 			}
