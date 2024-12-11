@@ -339,11 +339,11 @@ void units_dialog::list_item_clicked()
 	auto& unit_preview = find_widget<unit_preview_pane>("unit_details");
 
 	if (!unit_list_.empty()) {
-		const unit& selected_unit = *unit_list_[selected_row].get();
-		unit_preview.set_displayed_unit(selected_unit);
+		const unit& selected_unit = *unit_list_[selected_index_];
+		unit_preview.set_display_data(selected_unit);
 		find_widget<button>("rename").set_active(!selected_unit.unrenamable());
 	} else if (!unit_type_list_.empty()) {
-		unit_preview.set_displayed_type(update_gender_and_variations(selected_row));
+		unit_preview.set_display_data(update_gender_and_variations(unit_type_list_[selected_index_]));
 	}
 }
 
@@ -478,7 +478,7 @@ void units_dialog::gender_toggle_callback(const unit_race::GENDER val)
 
 	auto& unit_preview = find_widget<unit_preview_pane>("unit_details");
 	const unit_type* ut = &unit_type_list_[selected_row]->get_gender_unit_type(gender_);
-	unit_preview.set_displayed_type(*ut);
+	unit_preview.set_display_data(*ut);
 }
 
 void units_dialog::variation_menu_callback()
@@ -493,7 +493,7 @@ void units_dialog::variation_menu_callback()
 
 	if(!variation_.empty()) {
 		auto& unit_preview = find_widget<unit_preview_pane>("unit_details");
-		unit_preview.set_displayed_type(unit_type_list_[selected_row]->get_variation(variation_));
+		unit_preview.set_display_data(unit_type_list_[selected_row]->get_variation(variation_));
 	}
 }
 

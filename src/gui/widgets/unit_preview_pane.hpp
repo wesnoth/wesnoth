@@ -46,11 +46,11 @@ class unit_preview_pane : public container_base
 public:
 	explicit unit_preview_pane(const implementation::builder_unit_preview_pane& builder);
 
-	/** Displays the stats of a specified unit type */
-	void set_displayed_type(const unit_type& type);
-
-	/** Displays the stats of a specific unit */
-	void set_displayed_unit(const unit& u);
+	/** Displays the given data, either from a unit or unit_type */
+	template<typename Value>
+	void set_display_data(const Value& /*v*/) {};
+	void set_display_data(const unit_type& v);
+	void set_display_data(const unit& v);
 
 	/** Sets the facing of the unit image */
 	void set_image_mods(const std::string& mods);
