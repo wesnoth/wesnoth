@@ -27,31 +27,31 @@
 #include "scripting/game_lua_kernel.hpp"
 
 #include "actions/attack.hpp"           // for battle_context_unit_stats, etc
-#include "actions/advancement.hpp"           // for advance_unit_at, etc
-#include "actions/move.hpp"		// for clear_shroud
-#include "actions/vision.hpp"		// for clear_shroud and create_jamming_map
-#include "actions/undo.hpp"		// for clear_shroud and create_jamming_map
-#include "actions/undo_action.hpp"		// for clear_shroud and create_jamming_map
+#include "actions/advancement.hpp"      // for advance_unit_at, etc
+#include "actions/move.hpp"             // for clear_shroud
+#include "actions/vision.hpp"           // for clear_shroud and create_jamming_map
+#include "actions/undo.hpp"             // for clear_shroud and create_jamming_map
+#include "actions/undo_action.hpp"      // for clear_shroud and create_jamming_map
 #include "ai/composite/ai.hpp"          // for ai_composite
 #include "ai/composite/component.hpp"   // for component, etc
 #include "ai/composite/contexts.hpp"    // for ai_context
-#include "ai/lua/engine_lua.hpp"  // for engine_lua
-#include "ai/composite/rca.hpp"  // for candidate_action
-#include "ai/composite/stage.hpp"  // for stage
+#include "ai/lua/engine_lua.hpp"        // for engine_lua
+#include "ai/composite/rca.hpp"         // for candidate_action
+#include "ai/composite/stage.hpp"       // for stage
 #include "ai/configuration.hpp"         // for configuration
 #include "ai/lua/core.hpp"              // for lua_ai_context, etc
 #include "ai/manager.hpp"               // for manager, holder
 #include "attack_prediction.hpp"        // for combatant
 #include "chat_events.hpp"              // for chat_handler, etc
 #include "config.hpp"                   // for config, etc
-#include "display_chat_manager.hpp"	// for clear_chat_messages
+#include "display_chat_manager.hpp"     // for clear_chat_messages
 #include "floating_label.hpp"
 #include "formatter.hpp"
 #include "game_board.hpp"               // for game_board
 #include "game_classification.hpp"      // for game_classification, etc
 #include "game_config.hpp"              // for debug, base_income, etc
 #include "game_config_manager.hpp"      // for game_config_manager
-#include "game_data.hpp"               // for game_data, etc
+#include "game_data.hpp"                // for game_data, etc
 #include "game_display.hpp"             // for game_display
 #include "game_errors.hpp"              // for game_error
 #include "game_events/conditional_wml.hpp"  // for conditional_passed
@@ -59,9 +59,10 @@
 #include "game_events/handlers.hpp"
 #include "game_events/manager_impl.hpp" // for pending_event_handler
 #include "game_events/pump.hpp"         // for queued_event
-#include "preferences/preferences.hpp"         // for encountered_units
+#include "preferences/preferences.hpp"  // for encountered_units
+#include "gui/dialogs/units_dialog.hpp"
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "map/map.hpp"                      // for gamemap
+#include "map/map.hpp"                  // for gamemap
 #include "map/label.hpp"
 #include "map/location.hpp"             // for map_location
 #include "mouse_events.hpp"             // for mouse_handler
@@ -81,7 +82,7 @@
 #include "scripting/lua_unit_attacks.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
-#include "scripting/lua_gui2.hpp"	// for show_gamestate_inspector
+#include "scripting/lua_gui2.hpp"	    // for show_gamestate_inspector
 #include "scripting/lua_pathfind_cost_calculator.hpp"
 #include "scripting/lua_race.hpp"
 #include "scripting/lua_team.hpp"
@@ -89,25 +90,25 @@
 #include "scripting/lua_unit_type.hpp"
 #include "scripting/push_check.hpp"
 #include "synced_commands.hpp"
-#include "color.hpp"                // for surface
+#include "color.hpp"                    // for surface
 #include "side_filter.hpp"              // for side_filter
 #include "sound.hpp"                    // for commit_music_changes, etc
 #include "synced_context.hpp"           // for synced_context, etc
 #include "synced_user_choice.hpp"
 #include "team.hpp"                     // for team, village_owner
-#include "terrain/terrain.hpp"                  // for terrain_type
+#include "terrain/terrain.hpp"          // for terrain_type
 #include "terrain/filter.hpp"           // for terrain_filter
 #include "terrain/translation.hpp"      // for read_terrain_code, etc
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"              // for tod_manager
 #include "tstring.hpp"                  // for t_string, operator+
-#include "units/unit.hpp"                     // for unit
+#include "units/unit.hpp"                 // for unit
 #include "units/animation_component.hpp"  // for unit_animation_component
 #include "units/udisplay.hpp"
 #include "units/filter.hpp"
-#include "units/map.hpp"  // for unit_map, etc
-#include "units/ptr.hpp"                 // for unit_const_ptr, unit_ptr
-#include "units/types.hpp"    // for unit_type_data, unit_types, etc
+#include "units/map.hpp"                // for unit_map, etc
+#include "units/ptr.hpp"                // for unit_const_ptr, unit_ptr
+#include "units/types.hpp"              // for unit_type_data, unit_types, etc
 #include "utils/scope_exit.hpp"
 #include "variable.hpp"                 // for vconfig, etc
 #include "variable_info.hpp"
@@ -115,7 +116,7 @@
 #include "whiteboard/manager.hpp"       // for whiteboard
 #include "deprecation.hpp"
 
-#include <functional>               // for bind_t, bind
+#include <functional>                   // for bind_t, bind
 #include <array>
 #include <cassert>                      // for assert
 #include <cstring>                      // for strcmp
@@ -465,6 +466,72 @@ int game_lua_kernel::intf_get_unit(lua_State *L)
 
 	luaW_pushunit(L, ui->underlying_id());
 	return 1;
+}
+
+int game_lua_kernel::intf_show_recruit_dialog(lua_State* L)
+{
+	const size_t len = lua_rawlen(L, 1);
+	if (!lua_istable(L, 1)) {
+		return luaL_error(L, "List of unit types not specified!");
+	}
+
+	std::vector<const unit_type*> types;
+	types.reserve(len);
+	for (size_t i = 1; i <= len; i++) {
+		lua_rawgeti(L, 1, i);
+		const unit_type* ut = luaW_tounittype(L, -1);
+		if (ut) {
+			types.push_back(ut);
+		}
+		lua_pop(L, 1);
+	}
+
+	const display* disp = display::get_singleton();
+	if (!types.empty() && disp != nullptr) {
+		gui2::dialogs::units_dialog dlg;
+		dlg.build_recruit_dialog(types, disp->playing_team());
+		if(dlg.show() && dlg.is_selected()) {
+			luaW_pushunittype(L, *types[dlg.get_selected_index()]);
+			return 1;
+		}
+	} else {
+		ERR_LUA << "Unable to show recruit dialog";
+	}
+
+	return 0;
+}
+
+int game_lua_kernel::intf_show_recall_dialog(lua_State* L)
+{
+	const size_t len = lua_rawlen(L, 1);
+	if (!lua_istable(L, 1)) {
+		return luaL_error(L, "List of units not specified!");
+	}
+
+	std::vector<unit_const_ptr> units;
+	units.reserve(len);
+	for (size_t i = 1; i <= len; i++) {
+		lua_rawgeti(L, 1, i);
+		unit_const_ptr u(luaW_tounit_ptr(L, -1));
+		if (u) {
+			units.push_back(u);
+		}
+		lua_pop(L, 1);
+	}
+
+	const display* disp = display::get_singleton();
+	if (!units.empty() && disp != nullptr) {
+		gui2::dialogs::units_dialog dlg;
+		dlg.build_recall_dialog(units, disp->playing_team());
+		if(dlg.show() && dlg.is_selected()) {
+			luaW_pushunit(L, units[dlg.get_selected_index()]->underlying_id());
+			return 1;
+		}
+	} else {
+		ERR_LUA << "Unable to show recall dialog";
+	}
+
+	return 0;
 }
 
 /**
@@ -5260,6 +5327,10 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_getglobal(L, "gui");
 	lua_pushcfunction(L, &dispatch<&game_lua_kernel::intf_gamestate_inspector>);
 	lua_setfield(L, -2, "show_inspector");
+	lua_pushcfunction(L, &dispatch<&game_lua_kernel::intf_show_recruit_dialog>);
+	lua_setfield(L, -2, "show_recruit_dialog");
+	lua_pushcfunction(L, &dispatch<&game_lua_kernel::intf_show_recall_dialog>);
+	lua_setfield(L, -2, "show_recall_dialog");
 	lua_pop(L, 1);
 
 	if(play_controller_.get_classification().is_test()) {
