@@ -1065,7 +1065,7 @@ bool pango_text::validate_markup(std::string_view text, char** raw_text, std::st
 	 * So only try to recover from broken ampersands, by simply replacing them
 	 * with the escaped version.
 	 */
-	semi_escaped = semi_escape_text(std::string(text));
+	semi_escaped = semi_escape_text(text);
 
 	/*
 	 * If at least one ampersand is replaced the semi-escaped string

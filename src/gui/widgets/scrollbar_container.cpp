@@ -21,6 +21,7 @@
 #include "gui/core/event/message.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/core/log.hpp"
+#include "gui/core/window_builder/helper.hpp"
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
@@ -68,11 +69,11 @@ const std::map<std::string, scrollbar_base::scroll_mode>& scroll_lookup()
 } // namespace
 
 scrollbar_container::scrollbar_container(
-		const implementation::builder_styled_widget& builder, const std::string& control_type)
+		const implementation::builder_scrollbar_container& builder, const std::string& control_type)
 	: container_base(builder, control_type)
 	, state_(ENABLED)
-	, vertical_scrollbar_mode_(AUTO_VISIBLE_FIRST_RUN)
-	, horizontal_scrollbar_mode_(AUTO_VISIBLE_FIRST_RUN)
+	, vertical_scrollbar_mode_(builder.vertical_scrollbar_mode)
+	, horizontal_scrollbar_mode_(builder.horizontal_scrollbar_mode)
 	, vertical_scrollbar_grid_(nullptr)
 	, horizontal_scrollbar_grid_(nullptr)
 	, vertical_scrollbar_(nullptr)
@@ -333,7 +334,7 @@ static void set_scrollbar_mode(grid* scrollbar_grid,
 
 	if(scrollbar_mode == scrollbar_container::AUTO_VISIBLE) {
 		const bool scrollbar_needed = items > visible_items;
-		scrollbar_grid->set_visible(scrollbar_needed ? widget::visibility::visible : widget::visibility::hidden);
+		scrollbar_grid->set_hidden(scrollbar_needed);
 	} else if(scrollbar_mode == scrollbar_container::AUTO_VISIBLE_FIRST_RUN) {
 		if(items <= visible_items && content_grid != nullptr
 				&& scrollbar_grid->get_visible() == widget::visibility::visible
@@ -393,7 +394,7 @@ static void adjust_scrollbar_mode(grid* scrollbar_grid,
 
 	if(scrollbar_mode == scrollbar_container::AUTO_VISIBLE) {
 		const bool scrollbar_needed = items_after > visible_items;
-		scrollbar_grid->set_visible(scrollbar_needed ? widget::visibility::visible : widget::visibility::hidden);
+		scrollbar_grid->set_hidden(scrollbar_needed);
 	}
 }
 
@@ -499,12 +500,12 @@ const widget* scrollbar_container::find_at(const point& coordinate, const bool m
 	return w;
 }
 
-widget* scrollbar_container::find(const std::string& id, const bool must_be_active)
+widget* scrollbar_container::find(const std::string_view id, const bool must_be_active)
 {
 	return scrollbar_container_implementation::find<widget>(*this, id, must_be_active);
 }
 
-const widget* scrollbar_container::find(const std::string& id, const bool must_be_active) const
+const widget* scrollbar_container::find(const std::string_view id, const bool must_be_active) const
 {
 	return scrollbar_container_implementation::find<const widget>(*this, id, must_be_active);
 }
@@ -1239,6 +1240,15 @@ scrollbar_container::signal_handler_sdl_touch_motion(const event::ui_event event
 	}
 }
 
+namespace implementation
+{
+builder_scrollbar_container::builder_scrollbar_container(const config& cfg)
+	: builder_styled_widget(cfg)
+	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+{
+}
 
+} // namespace implementation
 
 } // namespace gui2

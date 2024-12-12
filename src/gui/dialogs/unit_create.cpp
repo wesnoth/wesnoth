@@ -115,13 +115,13 @@ void unit_create::pre_show()
 				  << std::endl;
 	}
 
-	list.set_sorting_options(
+	list.set_sorters(
 		[this](const std::size_t i) { return units_[i]->race()->plural_name(); },
 		[this](const std::size_t i) { return units_[i]->type_name(); }
 	);
 
 	// Select the first entry on sort if no previous selection was provided.
-	list.set_active_sorting_option({0, sort_order::type::ascending}, choice_.empty());
+	list.set_active_sorter("sort_0", sort_order::type::ascending, choice_.empty());
 
 	list_item_clicked();
 }

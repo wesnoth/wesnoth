@@ -356,7 +356,7 @@ void title_screen::init_callbacks()
 
 	auto clock = find_widget<button>("clock", false, false);
 	if(clock) {
-		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+		clock->set_visible(show_debug_clock_button);
 	}
 
 	//
@@ -367,7 +367,7 @@ void title_screen::init_callbacks()
 
 	auto test_dialog = find_widget<button>("test_dialog", false, false);
 	if(test_dialog) {
-		test_dialog->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+		test_dialog->set_visible(show_debug_clock_button);
 	}
 
 	//

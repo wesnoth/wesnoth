@@ -385,6 +385,7 @@ if env["prereqs"]:
         conf.CheckBoost("program_options", require_version = boost_version) & \
         conf.CheckBoost("random", require_version = boost_version) & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
+        conf.CheckBoostCharconv() & \
 	CheckAsio(conf) & \
 	conf.CheckBoost("thread") & \
         conf.CheckBoost("locale") & \

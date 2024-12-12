@@ -135,15 +135,13 @@ namespace implementation
 
 struct builder_unit_preview_pane : public builder_styled_widget
 {
-public:
 	explicit builder_unit_preview_pane(const config& cfg);
 
 	using builder_styled_widget::build;
 
 	virtual std::unique_ptr<widget> build() const override;
 
-private:
-	const std::string image_mods_;
+	std::string image_mods;
 };
 
 } // namespace implementation

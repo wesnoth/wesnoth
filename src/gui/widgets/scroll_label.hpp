@@ -147,7 +147,7 @@ struct scroll_label_definition : public styled_widget_definition
 namespace implementation
 {
 
-struct builder_scroll_label : public builder_styled_widget
+struct builder_scroll_label : public builder_scrollbar_container
 {
 	explicit builder_scroll_label(const config& cfg);
 

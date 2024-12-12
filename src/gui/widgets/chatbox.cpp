@@ -230,7 +230,7 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 
 	const std::string before_message = log.get_value().empty() ? "" : "\n";
 	const std::string new_text = formatter()
-		<< log.get_value() << before_message << markup::span_color("#bcb088", prefs::get().get_chat_timestamp(std::time(nullptr)), text);
+		<< log.get_value() << before_message << markup::span_color("#bcb088", prefs::get().get_chat_timestamp(std::chrono::system_clock::now()), text);
 
 	log.set_use_markup(true);
 	log.set_value(new_text);

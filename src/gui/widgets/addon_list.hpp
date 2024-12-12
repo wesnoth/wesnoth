@@ -210,16 +210,14 @@ namespace implementation
 
 struct builder_addon_list : public builder_styled_widget
 {
-public:
 	explicit builder_addon_list(const config& cfg);
 
 	using builder_styled_widget::build;
 
 	virtual std::unique_ptr<widget> build() const override;
 
-private:
-	widget::visibility install_status_visibility_;
-	widget::visibility install_buttons_visibility_;
+	widget::visibility install_status_visibility;
+	widget::visibility install_buttons_visibility;
 };
 }
 }
