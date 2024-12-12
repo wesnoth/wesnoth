@@ -133,12 +133,6 @@ public:
 		return *this;
 	}
 
-	units_dialog& set_types(const std::vector<const unit_type*>& types)
-	{
-		unit_type_list_ = types;
-		return *this;
-	}
-
 	units_dialog& set_units(const std::vector<unit_const_ptr>& units)
 	{
 		unit_list_ = units;
@@ -217,7 +211,6 @@ public:
 		const std::vector<unit_const_ptr>& recall_list,	const team& team);
 
 private:
-	std::vector<const unit_type*> unit_type_list_;
 	std::vector<unit_const_ptr> unit_list_;
 
 	const team* team_;
