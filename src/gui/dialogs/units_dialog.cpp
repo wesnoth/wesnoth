@@ -65,8 +65,6 @@ REGISTER_DIALOG(units_dialog)
 
 units_dialog::units_dialog()
 	: modal_dialog(window_id())
-	, unit_list_()
-	, team_(nullptr)
 	, selected_index_(-1)
 	, row_num_(0)
 	, ok_label_(_("OK"))
@@ -74,8 +72,6 @@ units_dialog::units_dialog()
 	, show_header_(true)
 	, show_variation_grid_(false)
 	, show_gender_grid_(false)
-	, show_dismiss_(false)
-	, show_rename_(false)
 	, gender_(unit_race::GENDER::MALE)
 	, variation_()
 	, filter_options_()
@@ -159,27 +155,13 @@ void units_dialog::pre_show()
 		connect_signal_notify_modified(var_box, std::bind(&units_dialog::update_variation, this));
 	}
 
-	if (show_rename_) {
-		connect_signal_mouse_left_click(
-		find_widget<button>("rename"),
-		std::bind(&units_dialog::rename_unit, this));
-	}
-
-	if (show_dismiss_ && team_) {
-		connect_signal_mouse_left_click(
-			find_widget<button>("dismiss"),
-			std::bind(&units_dialog::dismiss_unit, this, *team_));
-	}
-
 	show_list(list);
 
 	find_widget<label>("title").set_label(title_);
 	find_widget<button>("ok").set_label(ok_label_);
 	find_widget<button>("cancel").set_label(cancel_label_);
-	find_widget<button>("dismiss").set_visible(
-		show_dismiss_ ? widget::visibility::visible : widget::visibility::invisible);
-	find_widget<button>("rename").set_visible(
-		show_rename_ ? widget::visibility::visible : widget::visibility::invisible);
+	find_widget<button>("dismiss").set_visible(widget::visibility::invisible);
+	find_widget<button>("rename").set_visible(widget::visibility::invisible);
 	find_widget<grid>("variation_gender_grid").set_visible(
 		show_gender_grid_ ? widget::visibility::visible : widget::visibility::invisible);
 	find_widget<grid>("_header_grid").set_visible(
@@ -222,7 +204,7 @@ void units_dialog::show_list(listbox& list)
 	list.set_active_sorter(sorter_id, order, true);
 }
 
-void units_dialog::rename_unit()
+void units_dialog::rename_unit(std::vector<unit_const_ptr>& unit_list)
 {
 	listbox& list = find_widget<listbox>("main_list");
 
@@ -231,7 +213,7 @@ void units_dialog::rename_unit()
 		return;
 	}
 
-	unit& selected_unit = const_cast<unit&>(*unit_list_[selected_index_].get());
+	unit& selected_unit = const_cast<unit&>(*unit_list[selected_index_]);
 
 	std::string name = selected_unit.name();
 
@@ -253,9 +235,9 @@ void units_dialog::rename_unit()
 	}
 }
 
-void units_dialog::dismiss_unit(const team& team)
+void units_dialog::dismiss_unit(std::vector<unit_const_ptr>& unit_list, const team& team)
 {
-	LOG_DP << "Recall list units:"; dump_recall_list_to_console(unit_list_);
+	LOG_DP << "Recall list units:"; dump_recall_list_to_console(unit_list);
 
 	listbox& list = find_widget<listbox>("main_list");
 	selected_index_ = list.get_selected_row();
@@ -263,7 +245,7 @@ void units_dialog::dismiss_unit(const team& team)
 		return;
 	}
 
-	const unit& u = *unit_list_[selected_index_].get();
+	const unit& u = *unit_list[selected_index_].get();
 
 	// If the unit is of level > 1, or is close to advancing, we warn the player about it
 	std::stringstream message;
@@ -290,7 +272,7 @@ void units_dialog::dismiss_unit(const team& team)
 		}
 	}
 
-	unit_list_.erase(unit_list_.begin() + selected_index_);
+	unit_list.erase(unit_list.begin() + selected_index_);
 
 	// Remove the entry from the dialog list
 	list.remove_row(selected_index_);
@@ -509,14 +491,40 @@ units_dialog& units_dialog::build_create_dialog(const std::vector<const unit_typ
 	return *this;
 }
 
+units_dialog& units_dialog::build_recruit_dialog(
+	const std::vector<const unit_type*>& recruit_list,
+	const team& team)
+{
+	set_title(_("Recruit Unit") + get_title_suffix(team.side()));
+	set_ok_label(_("Recruit"));
+	set_help_topic("recruit_and_recall");
+	set_row_num(recruit_list.size());
+	hide_all_headers();
+	set_column("unit_image", recruit_list, [&](const auto& recruit) {
+		std::string image_string = recruit->image();
+		image_string += "~RC(" + recruit->flag_rgb() + ">" + team.color() + ")";
+		return image_string;
+	});
+	set_column("unit_details", recruit_list, [&](const auto& recruit) {
+		return recruit->type_name() + unit_helper::format_cost_string(recruit->cost());
+	}, true);
+	set_update_function([&, this](const std::size_t index) {
+		find_widget<unit_preview_pane>("unit_details").set_display_data(*recruit_list[index]);
+	});
+	return *this;
+}
+
 units_dialog& units_dialog::build_unit_list_dialog(const std::vector<unit_const_ptr>& unit_list)
 {
 	set_title(_("Unit List"));
 	set_ok_label(_("Scroll To"));
-	show_rename_option(true);
 	set_help_topic("..units");
-	set_units(unit_list);
 	set_row_num(unit_list.size());
+
+	// Rename functionality
+	button& rename = find_widget<button>("rename");
+	connect_signal_mouse_left_click(rename, std::bind(&units_dialog::rename_unit, this, unit_list));
+
 	set_column("unit_name", unit_list, [&](const auto& unit) {
 		return !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
 	}, true);
@@ -588,34 +596,11 @@ units_dialog& units_dialog::build_unit_list_dialog(const std::vector<unit_const_
 		return utils::join(unit->trait_names(), ", ");
 	}, true);
 	set_update_function([&, this](const std::size_t index) {
-		find_widget<button>("rename").set_active(!unit_list[index]->unrenamable());
+		rename.set_visible(widget::visibility::visible);
+		rename.set_active(!unit_list[index]->unrenamable());
 		find_widget<unit_preview_pane>("unit_details").set_display_data(*unit_list[index]);
 	});
 
-	return *this;
-}
-
-units_dialog& units_dialog::build_recruit_dialog(
-	const std::vector<const unit_type*>& recruit_list,
-	const team& team)
-{
-	set_title(_("Recruit Unit") + get_title_suffix(team.side()));
-	set_ok_label(_("Recruit"));
-	set_help_topic("recruit_and_recall");
-	set_row_num(recruit_list.size());
-	set_team(&team);
-	hide_all_headers();
-	set_column("unit_image", recruit_list, [&](const auto& recruit) {
-		std::string image_string = recruit->image();
-		image_string += "~RC(" + recruit->flag_rgb() + ">" + team.color() + ")";
-		return image_string;
-	});
-	set_column("unit_details", recruit_list, [&](const auto& recruit) {
-		return recruit->type_name() + unit_helper::format_cost_string(recruit->cost());
-	}, true);
-	set_update_function([&, this](const std::size_t index) {
-		find_widget<unit_preview_pane>("unit_details").set_display_data(*recruit_list[index]);
-	});
 	return *this;
 }
 
@@ -635,18 +620,23 @@ units_dialog& units_dialog::build_recall_dialog(
 		// to apply cost-based filtering.
 		const int recall_cost =
 			(unit->recall_cost() > -1 ? unit->recall_cost() : team.recall_cost());
-
 		return (recall_cost <= team.gold() - wb_gold);
 	};
 
 	set_title(_("Recall Unit") + get_title_suffix(team.side()));
 	set_ok_label(_("Recall"));
 	set_help_topic("recruit_and_recall");
-	set_units(recall_list);
-	set_team(&team);
 	set_row_num(recall_list.size());
-	show_rename_option(true);
-	show_dismiss_option(true);
+
+	// Rename functionality
+	button& rename = find_widget<button>("rename");
+	connect_signal_mouse_left_click(rename, std::bind(&units_dialog::rename_unit, this, recall_list));
+
+	// Dismiss functionality
+	button& dismiss = find_widget<button>("dismiss");
+	connect_signal_mouse_left_click(
+		find_widget<button>("dismiss"),
+		std::bind(&units_dialog::dismiss_unit, this, recall_list, team));
 
 	set_column("unit_image", recall_list, [&, recallable](const auto& unit) {
 		std::string mods = unit->image_mods();
@@ -738,9 +728,14 @@ units_dialog& units_dialog::build_recall_dialog(
 	});
 
 	set_update_function([&, this](const std::size_t index) {
-		find_widget<button>("rename").set_active(!recall_list[index]->unrenamable());
+		rename.set_visible(widget::visibility::visible);
+		rename.set_active(!recall_list[index]->unrenamable());
+		dismiss.set_visible(widget::visibility::visible);
 		find_widget<unit_preview_pane>("unit_details").set_display_data(*recall_list[index]);
 	});
+
+	connect_signal_mouse_left_click(find_widget<button>("rename"),
+		std::bind(&units_dialog::rename_unit, this, recall_list));
 
 	return *this;
 }
