@@ -6,6 +6,7 @@
 ### Multiplayer
 ### Lua API
 ### Packaging
+   * Windows 10 or later is now required
 ### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Hungarian, Italian
