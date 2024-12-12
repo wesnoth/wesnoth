@@ -615,7 +615,7 @@ units_dialog& units_dialog::build_recall_dialog(
 	}
 
 	// Lambda to check if a unit is recallable
-	const auto& recallable = [&](const unit_const_ptr& unit) {
+	const auto& recallable = [wb_gold, team](const unit_const_ptr& unit) {
 		// Note: Our callers apply [filter_recall], but leave it to us
 		// to apply cost-based filtering.
 		const int recall_cost =
