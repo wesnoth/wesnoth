@@ -70,8 +70,6 @@ units_dialog::units_dialog()
 	, ok_label_(_("OK"))
 	, cancel_label_(_("Cancel"))
 	, show_header_(true)
-	, show_variation_grid_(false)
-	, show_gender_grid_(false)
 	, gender_(unit_race::GENDER::MALE)
 	, variation_()
 	, filter_options_()
@@ -139,34 +137,15 @@ void units_dialog::pre_show()
 	keyboard_capture(&filter);
 	add_to_keyboard_chain(&list);
 
-	if (show_gender_grid_) {
-		toggle_button& male_toggle = find_widget<toggle_button>("male_toggle");
-		toggle_button& female_toggle = find_widget<toggle_button>("female_toggle");
-
-		gender_toggle_.add_member(&male_toggle, unit_race::MALE);
-		gender_toggle_.add_member(&female_toggle, unit_race::FEMALE);
-		gender_toggle_.set_member_states(unit_race::MALE);
-		gender_toggle_.set_callback_on_value_change(
-			std::bind(&units_dialog::update_gender, this, std::placeholders::_2));
-	}
-
-	if (show_variation_grid_) {
-		menu_button& var_box = find_widget<menu_button>("variation_box");
-		connect_signal_notify_modified(var_box, std::bind(&units_dialog::update_variation, this));
-	}
-
 	show_list(list);
 
 	find_widget<label>("title").set_label(title_);
 	find_widget<button>("ok").set_label(ok_label_);
 	find_widget<button>("cancel").set_label(cancel_label_);
-	find_widget<button>("dismiss").set_visible(widget::visibility::invisible);
-	find_widget<button>("rename").set_visible(widget::visibility::invisible);
-	find_widget<grid>("variation_gender_grid").set_visible(
-		show_gender_grid_ ? widget::visibility::visible : widget::visibility::invisible);
-	find_widget<grid>("_header_grid").set_visible(
-		show_header_ ? widget::visibility::visible : widget::visibility::invisible);
-
+	find_widget<button>("dismiss").set_visible(false);
+	find_widget<button>("rename").set_visible(false);
+	find_widget<grid>("variation_gender_grid").set_visible(false);
+	find_widget<grid>("_header_grid").set_visible(show_header_ );
 
 	list_item_clicked();
 }
@@ -459,13 +438,26 @@ units_dialog& units_dialog::build_create_dialog(const std::vector<const unit_typ
 	set_title(_("Create Unit"));
 	set_ok_label(_("Create"));
 	set_help_topic("..units");
-	show_gender(true);
-	show_variations(true);
 	set_row_num(types_list.size());
 	hide_all_headers();
+
+	// Gender and variation selectors
+	toggle_button& male_toggle = find_widget<toggle_button>("male_toggle");
+	toggle_button& female_toggle = find_widget<toggle_button>("female_toggle");
+	gender_toggle_.add_member(&male_toggle, unit_race::MALE);
+	gender_toggle_.add_member(&female_toggle, unit_race::FEMALE);
+	gender_toggle_.set_member_states(unit_race::MALE);
+	gender_toggle_.set_callback_on_value_change(
+		std::bind(&units_dialog::update_gender, this, std::placeholders::_2));
+	menu_button& var_box = find_widget<menu_button>("variation_box");
+	connect_signal_notify_modified(var_box, std::bind(&units_dialog::update_variation, this));
+
+	// Listbox data
 	set_column("unit_name", types_list, type_gen, true);
 	set_column("unit_details", types_list, race_gen, true);
 	set_update_function([&, this](const std::size_t index) {
+		find_widget<grid>("variation_gender_grid").set_visible(true);
+
 		const unit_type* ut = types_list[index];
 
 		gender_toggle_.set_members_enabled([&](const unit_race::GENDER& gender)->bool {
@@ -596,7 +588,7 @@ units_dialog& units_dialog::build_unit_list_dialog(const std::vector<unit_const_
 		return utils::join(unit->trait_names(), ", ");
 	}, true);
 	set_update_function([&, this](const std::size_t index) {
-		rename.set_visible(widget::visibility::visible);
+		rename.set_visible(true);
 		rename.set_active(!unit_list[index]->unrenamable());
 		find_widget<unit_preview_pane>("unit_details").set_display_data(*unit_list[index]);
 	});
@@ -728,9 +720,9 @@ units_dialog& units_dialog::build_recall_dialog(
 	});
 
 	set_update_function([&, this](const std::size_t index) {
-		rename.set_visible(widget::visibility::visible);
+		rename.set_visible(true);
 		rename.set_active(!recall_list[index]->unrenamable());
-		dismiss.set_visible(widget::visibility::visible);
+		dismiss.set_visible(true);
 		find_widget<unit_preview_pane>("unit_details").set_display_data(*recall_list[index]);
 	});
 
