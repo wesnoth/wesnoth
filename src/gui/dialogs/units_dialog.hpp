@@ -90,18 +90,6 @@ public:
 		return *this;
 	}
 
-	units_dialog& show_dismiss_option(const bool show_dismiss)
-	{
-		show_dismiss_ = show_dismiss;
-		return *this;
-	}
-
-	units_dialog& show_rename_option(const bool show_rename)
-	{
-		show_rename_ = show_rename;
-		return *this;
-	}
-
 	units_dialog& show_all_headers()
 	{
 		show_header_ = true;
@@ -124,18 +112,6 @@ public:
 	units_dialog& set_help_topic(const std::string& topic_id)
 	{
 		topic_id_ = topic_id;
-		return *this;
-	}
-
-	units_dialog& set_team(const team* team)
-	{
-		team_ = team;
-		return *this;
-	}
-
-	units_dialog& set_units(const std::vector<unit_const_ptr>& units)
-	{
-		unit_list_ = units;
 		return *this;
 	}
 
@@ -225,8 +201,6 @@ private:
 	bool show_header_;
 	bool show_variation_grid_;
 	bool show_gender_grid_;
-	bool show_dismiss_;
-	bool show_rename_;
 
 	std::map<std::string_view, std::function<std::string(std::size_t)>> column_generators_;
 	std::function<std::string(std::size_t)> tooltip_gen_;
@@ -244,8 +218,8 @@ private:
 	void filter_text_changed();
 
 	// FIXME only thing needing team
-	void dismiss_unit(const team& team);
-	void rename_unit();
+	void dismiss_unit(std::vector<unit_const_ptr>& unit_list, const team& team);
+	void rename_unit(std::vector<unit_const_ptr>& unit_list);
 
 	void show_list(listbox& list);
 	void show_help() const;
