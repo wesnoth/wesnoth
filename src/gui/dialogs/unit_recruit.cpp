@@ -181,7 +181,7 @@ void unit_recruit::list_item_clicked()
 	}
 
 	find_widget<unit_preview_pane>("recruit_details")
-		.set_displayed_type(*recruit_list_[selected_row]);
+		.set_display_data(*recruit_list_[selected_row]);
 }
 
 void unit_recruit::show_help()

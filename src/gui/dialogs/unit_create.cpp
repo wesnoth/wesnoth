@@ -168,7 +168,7 @@ void unit_create::update_displayed_type()
 		ut = &ut->get_variation(variation_);
 	}
 
-	find_widget<unit_preview_pane>("unit_details").set_displayed_type(*ut);
+	find_widget<unit_preview_pane>("unit_details").set_display_data(*ut);
 }
 
 void unit_create::list_item_clicked()

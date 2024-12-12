@@ -61,10 +61,10 @@ void unit_attack::pre_show()
 			std::bind(&unit_attack::damage_calc_callback, this));
 
 	find_widget<unit_preview_pane>("attacker_pane")
-		.set_displayed_unit(*attacker_itor_);
+		.set_display_data(*attacker_itor_);
 
 	find_widget<unit_preview_pane>("defender_pane")
-		.set_displayed_unit(*defender_itor_);
+		.set_display_data(*defender_itor_);
 
 	selected_weapon_ = -1;
 

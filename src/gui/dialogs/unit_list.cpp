@@ -171,7 +171,7 @@ void unit_list::list_item_clicked()
 	}
 
 	find_widget<unit_preview_pane>("unit_details")
-		.set_displayed_unit(*unit_list_[selected_row].get());
+		.set_display_data(*unit_list_[selected_row].get());
 }
 
 void unit_list::post_show()
