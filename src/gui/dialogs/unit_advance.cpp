@@ -101,7 +101,7 @@ void unit_advance::list_item_clicked()
 	}
 
 	find_widget<unit_preview_pane>("advancement_details")
-		.set_displayed_unit(*previews_[selected_row]);
+		.set_display_data(*previews_[selected_row]);
 }
 
 void unit_advance::show_help()

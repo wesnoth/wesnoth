@@ -47,10 +47,10 @@ public:
 	explicit unit_preview_pane(const implementation::builder_unit_preview_pane& builder);
 
 	/** Displays the stats of a specified unit type */
-	void set_displayed_type(const unit_type& type);
+	void set_display_data(const unit_type& type);
 
 	/** Displays the stats of a specific unit */
-	void set_displayed_unit(const unit& u);
+	void set_display_data(const unit& u);
 
 	/** Sets the facing of the unit image */
 	void set_image_mods(const std::string& mods);
@@ -71,7 +71,7 @@ protected:
 	/**
 	 * Initializes the internal sub-widget pointers.
 	 * Should be called when building the window, so the pointers
-	 * are initialized when set_displayed_type() is called.
+	 * are initialized when set_display_data() is called.
 	 */
 	void finalize_setup();
 

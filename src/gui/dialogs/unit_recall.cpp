@@ -419,7 +419,7 @@ void unit_recall::list_item_clicked()
 	const unit& selected_unit = *recall_list_[selected_row].get();
 
 	find_widget<unit_preview_pane>("unit_details")
-		.set_displayed_unit(selected_unit);
+		.set_display_data(selected_unit);
 
 	find_widget<button>("rename").set_active(!selected_unit.unrenamable());
 }
