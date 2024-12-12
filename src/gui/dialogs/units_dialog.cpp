@@ -65,7 +65,6 @@ REGISTER_DIALOG(units_dialog)
 
 units_dialog::units_dialog()
 	: modal_dialog(window_id())
-	, unit_type_list_()
 	, unit_list_()
 	, team_(nullptr)
 	, selected_index_(-1)
@@ -480,7 +479,6 @@ units_dialog& units_dialog::build_create_dialog(const std::vector<const unit_typ
 	set_help_topic("..units");
 	show_gender(true);
 	show_variations(true);
-	set_types(types_list);
 	set_row_num(types_list.size());
 	hide_all_headers();
 	set_column("unit_name", types_list, type_gen, true);
@@ -604,7 +602,6 @@ units_dialog& units_dialog::build_recruit_dialog(
 	set_title(_("Recruit Unit") + get_title_suffix(team.side()));
 	set_ok_label(_("Recruit"));
 	set_help_topic("recruit_and_recall");
-	set_types(recruit_list);
 	set_row_num(recruit_list.size());
 	set_team(&team);
 	hide_all_headers();
