@@ -147,11 +147,10 @@ void menu_handler::unit_list()
 		unit_list.push_back(i.get_shared_ptr());
 	}
 
-	gui2::dialogs::units_dialog unit_dlg;
-	unit_dlg.build_unit_list_dialog(unit_list);
+	const auto& unit_dlg = gui2::dialogs::units_dialog::build_unit_list_dialog(unit_list);
 
-	if (unit_dlg.show() && unit_dlg.is_selected()) {
-		const map_location& loc = unit_list[unit_dlg.get_selected_index()]->get_location();
+	if (unit_dlg->show() && unit_dlg->is_selected()) {
+		const map_location& loc = unit_list[unit_dlg->get_selected_index()]->get_location();
 		gui_->scroll_to_tile(loc, display::WARP);
 		gui_->select_hex(loc);
 	}
@@ -291,11 +290,11 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 		return;
 	}
 
-	gui2::dialogs::units_dialog dlg;
-	dlg.build_recruit_dialog(recruit_list, board().get_team(side_num));
+	const auto& dlg = gui2::dialogs::units_dialog::build_recruit_dialog(
+		recruit_list, board().get_team(side_num));
 
-	if(dlg.show() && dlg.is_selected()) {
-		const auto& type = recruit_list[dlg.get_selected_index()];
+	if(dlg->show() && dlg->is_selected()) {
+		const auto& type = recruit_list[dlg->get_selected_index()];
 		do_recruit(type->id(), side_num, last_hex);
 	}
 }
@@ -423,14 +422,13 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		return;
 	}
 
-	gui2::dialogs::units_dialog dlg;
-	dlg.build_recall_dialog(recall_list_team, current_team);
+	const auto& dlg = gui2::dialogs::units_dialog::build_recall_dialog(recall_list_team, current_team);
 
-	if(!dlg.show() || !dlg.is_selected()) {
+	if(!dlg->show() || !dlg->is_selected()) {
 		return;
 	}
 
-	const unit_const_ptr sel_unit = recall_list_team[dlg.get_selected_index()];
+	const unit_const_ptr sel_unit = recall_list_team[dlg->get_selected_index()];
 
 
 	// we need to check if unit has a specific recall cost
@@ -441,7 +439,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		team_recall_cost = sel_unit->recall_cost();
 	}
 
-	LOG_NG << "recall index: " << dlg.get_selected_index();
+	LOG_NG << "recall index: " << dlg->get_selected_index();
 	const events::command_disabler disable_commands;
 
 	map_location recall_location = last_hex;
@@ -708,18 +706,17 @@ typedef std::tuple<const unit_type*, unit_race::GENDER, std::string> type_gender
 type_gender_variation choose_unit()
 {
 	const auto& types_list = unit_types.types_list();
-	gui2::dialogs::units_dialog create_dlg;
-	create_dlg.build_create_dialog(types_list);
+	const auto& create_dlg = gui2::dialogs::units_dialog::build_create_dialog(types_list);
 
-	if (!create_dlg.show() || !create_dlg.is_selected()) {
+	if (!create_dlg->show() || !create_dlg->is_selected()) {
 		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id.";
 		return type_gender_variation(nullptr, unit_race::NUM_GENDERS, "");
 	}
 
-	const unit_type* ut = types_list[create_dlg.get_selected_index()];
+	const unit_type* ut = types_list[create_dlg->get_selected_index()];
 
-	unit_race::GENDER gender = create_dlg.gender();
-	return type_gender_variation(ut, gender, create_dlg.variation());
+	unit_race::GENDER gender = create_dlg->gender();
+	return type_gender_variation(ut, gender, create_dlg->variation());
 }
 
 /**
