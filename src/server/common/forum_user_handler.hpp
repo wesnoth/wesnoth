@@ -310,10 +310,10 @@ public:
 	 *
 	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
 	 * @param id The ID of the add-on.
-	 * @param primary_author The primary author of the add-on.
+	 * @param primary_authors The primary authors of the add-on.
 	 * @param secondary_authors The secondary authors of the add-on.
 	 */
-	void db_insert_addon_authors(const std::string& instance_version, const std::string& id, const std::string& primary_author, const std::vector<std::string>& secondary_authors);
+	void db_insert_addon_authors(const std::string& instance_version, const std::string& id, const std::vector<std::string>& primary_authors, const std::vector<std::string>& secondary_authors);
 
 	/**
 	 * Checks whether any author information exists for a particular addon and version, since if there's no author information then of course no primary or secondary authors will ever be found.

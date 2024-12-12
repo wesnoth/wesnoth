@@ -282,13 +282,16 @@ void fuh::db_delete_addon_authors(const std::string& instance_version, const std
 	conn_.delete_addon_authors(instance_version, id);
 }
 
-void fuh::db_insert_addon_authors(const std::string& instance_version, const std::string& id, const std::string& primary_author, const std::vector<std::string>& secondary_authors) {
-	conn_.insert_addon_author(instance_version, id, primary_author, 1);
-
+void fuh::db_insert_addon_authors(const std::string& instance_version, const std::string& id, const std::vector<std::string>& primary_authors, const std::vector<std::string>& secondary_authors) {
 	// ignore any duplicate authors
 	std::set<std::string> inserted_authors;
-	inserted_authors.emplace(primary_author);
 
+	for(const std::string& primary_author : primary_authors) {
+		if(inserted_authors.count(primary_author) == 0) {
+			inserted_authors.emplace(primary_author);
+			conn_.insert_addon_author(instance_version, id, primary_author, 1);
+		}
+	}
 	for(const std::string& secondary_author : secondary_authors) {
 		if(inserted_authors.count(secondary_author) == 0) {
 			inserted_authors.emplace(secondary_author);

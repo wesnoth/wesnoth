@@ -143,6 +143,6 @@ public:
 	virtual bool db_is_user_primary_author(const std::string& instance_version, const std::string& id, const std::string& username) = 0;
 	virtual bool db_is_user_secondary_author(const std::string& instance_version, const std::string& id, const std::string& username) = 0;
 	virtual void db_delete_addon_authors(const std::string& instance_version, const std::string& id) = 0;
-	virtual void db_insert_addon_authors(const std::string& instance_version, const std::string& id, const std::string& primary_author, const std::vector<std::string>& secondary_authors) = 0;
+	virtual void db_insert_addon_authors(const std::string& instance_version, const std::string& id, const std::vector<std::string>& primary_authors, const std::vector<std::string>& secondary_authors) = 0;
 	virtual bool db_do_any_authors_exist(const std::string& instance_version, const std::string& id) = 0;
 };
