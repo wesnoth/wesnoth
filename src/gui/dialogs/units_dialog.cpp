@@ -57,7 +57,7 @@ namespace gui2::dialogs
 namespace
 {
 // Index 2 is by-level
-static std::pair sort_default{ std::string{"unit_name"}, sort_order::type::descending };
+static std::pair sort_default{ std::string{"unit_name"}, sort_order::type::ascending };
 static utils::optional<decltype(sort_default)> sort_last;
 }
 
@@ -81,6 +81,7 @@ units_dialog::units_dialog()
 	, variation_()
 	, filter_options_()
 	, last_words_()
+	, gender_toggle_()
 {
 }
 
@@ -226,29 +227,27 @@ void units_dialog::rename_unit()
 {
 	listbox& list = find_widget<listbox>("main_list");
 
-	const int index = list.get_selected_row();
-	if (index == -1) {
+	selected_index_ = list.get_selected_row();
+	if (selected_index_ == -1) {
 		return;
 	}
 
-	unit& selected_unit = const_cast<unit&>(*unit_list_[index].get());
+	unit& selected_unit = const_cast<unit&>(*unit_list_[selected_index_].get());
 
 	std::string name = selected_unit.name();
-	const std::string dialog_title(_("Rename Unit"));
-	const std::string dialog_label(_("Name:"));
 
-	if(gui2::dialogs::edit_text::execute(dialog_title, dialog_label, name)) {
+	if(gui2::dialogs::edit_text::execute(_("Rename Unit"), _("Name:"), name)) {
 		selected_unit.rename(name);
 
-		list.get_row_grid(index)->find_widget<label>("unit_name").set_label(name);
+		list.get_row_grid(selected_index_)->find_widget<label>("unit_name").set_label(name);
 
-		filter_options_.erase(filter_options_.begin() + index);
+		filter_options_.erase(filter_options_.begin() + selected_index_);
 		std::ostringstream filter_text;
 		filter_text << selected_unit.type_name() << " " << name << " " << std::to_string(selected_unit.level());
 		for(const std::string& trait : selected_unit.trait_names()) {
 			filter_text << " " << trait;
 		}
-		filter_options_.insert(filter_options_.begin() + index, filter_text.str());
+		filter_options_.insert(filter_options_.begin() + selected_index_, filter_text.str());
 
 		list_item_clicked();
 		get_window()->invalidate_layout();
@@ -337,72 +336,6 @@ void units_dialog::list_item_clicked()
 	if (update_view_ != nullptr) {
 		update_view_(selected_index_);
 	}
-
-	// find_widget<button>("rename").set_active(!selected_unit.unrenamable());
-}
-
-unit_type units_dialog::update_gender_and_variations(const unit_type* ut)
-{
-	if (!show_gender_grid_) {
-		return *ut;
-	}
-
-	gender_toggle_.set_members_enabled([&](const unit_race::GENDER& gender)->bool {
-		return ut->has_gender_variation(gender);
-	});
-	ut = &ut->get_gender_unit_type(gender_);
-
-	if (!show_variation_grid_) {
-		return *ut;
-	}
-
-	if(!variation_.empty()) {
-		// This effectively translates to `ut = ut` if somehow variation_ does
-		// not refer to a variation that the unit type supports.
-		ut = &ut->get_variation(variation_);
-	}
-
-	menu_button& var_box = find_widget<menu_button>("variation_box");
-	std::vector<config> var_box_values;
-	var_box_values.emplace_back("label", _("unit_variation^Default Variation"), "variation_id", "");
-
-	const auto& uvars = ut->variation_types();
-
-	var_box.set_active(!uvars.empty());
-
-	unsigned n = 0, selection = 0;
-
-	for(const auto& pair : uvars) {
-		++n;
-
-		const std::string& uv_id = pair.first;
-		const unit_type& uv = pair.second;
-
-		std::string uv_label;
-		if(!uv.variation_name().empty()) {
-			uv_label = uv.variation_name() + " (" + uv_id + ")";
-		} else if(!uv.type_name().empty() && uv.type_name() != ut->type_name()) {
-			uv_label = uv.type_name() + " (" + uv_id + ")";
-		} else {
-			uv_label = uv_id;
-		}
-
-		var_box_values.emplace_back("label", uv_label, "variation_id", uv_id);
-
-		if(uv_id == variation_) {
-			selection = n;
-		}
-	}
-
-	// If we didn't find the variation selection again then the new selected
-	// unit type doesn't have that variation id.
-	if(!selection) {
-		variation_.clear();
-	}
-
-	var_box.set_values(var_box_values, selection);
-
-	return *ut;
 }
 
 void units_dialog::post_show()
@@ -463,29 +396,27 @@ void units_dialog::update_gender(const unit_race::GENDER val)
 {
 	gender_ = val;
 
-	const int selected_row = find_widget<listbox>("main_list").get_selected_row();
-	if(selected_row == -1) {
+	selected_index_ = find_widget<listbox>("main_list").get_selected_row();
+	if(selected_index_ == -1) {
 		return;
 	}
 
-	auto& unit_preview = find_widget<unit_preview_pane>("unit_details");
-	const unit_type* ut = &unit_type_list_[selected_row]->get_gender_unit_type(gender_);
-	unit_preview.set_display_data(*ut);
+	if (update_view_ != nullptr) {
+		update_view_(selected_index_);
+	}
 }
 
 void units_dialog::update_variation()
 {
-	menu_button& var_box = find_widget<menu_button>("variation_box");
-	variation_ = var_box.get_value_config()["variation_id"].str();
+	variation_ = find_widget<menu_button>("variation_box").get_value_config()["variation_id"].str();
 
-	const int selected_row = find_widget<listbox>("main_list").get_selected_row();
-	if(selected_row == -1) {
+	selected_index_ = find_widget<listbox>("main_list").get_selected_row();
+	if(selected_index_ == -1) {
 		return;
 	}
 
-	if(!variation_.empty()) {
-		auto& unit_preview = find_widget<unit_preview_pane>("unit_details");
-		unit_preview.set_display_data(unit_type_list_[selected_row]->get_variation(variation_));
+	if (update_view_ != nullptr) {
+		update_view_(selected_index_);
 	}
 }
 
@@ -504,6 +435,46 @@ units_dialog& units_dialog::build_create_dialog(const std::vector<const unit_typ
 		return type->race()->plural_name();
 	};
 
+	const auto populate_variations = [this](const unit_type* ut) {
+		// Populate variations box
+		menu_button& var_box = find_widget<menu_button>("variation_box");
+		std::vector<config> var_box_values;
+		var_box_values.emplace_back("label", _("unit_variation^Default Variation"), "variation_id", "");
+
+		const auto& uvars = ut->variation_types();
+
+		var_box.set_active(!uvars.empty());
+
+		unsigned n = 0, selection = 0;
+
+		for(const auto& [uv_id, uv] : uvars) {
+			++n;
+
+			std::string uv_label;
+			if(!uv.variation_name().empty()) {
+				uv_label = uv.variation_name() + " (" + uv_id + ")";
+			} else if(!uv.type_name().empty() && uv.type_name() != ut->type_name()) {
+				uv_label = uv.type_name() + " (" + uv_id + ")";
+			} else {
+				uv_label = uv_id;
+			}
+
+			var_box_values.emplace_back("label", uv_label, "variation_id", uv_id);
+
+			if(uv_id == variation()) {
+				selection = n;
+			}
+		}
+
+		// If we didn't find the variation selection again then the new selected
+		// unit type doesn't have that variation id.
+		// if(!selection) {
+		// 	variation_.clear();
+		// }
+
+		var_box.set_values(var_box_values, selection);
+	};
+
 	set_title(_("Create Unit"));
 	set_ok_label(_("Create"));
 	set_help_topic("..units");
@@ -515,7 +486,26 @@ units_dialog& units_dialog::build_create_dialog(const std::vector<const unit_typ
 	set_column("unit_name", types_list, type_gen, true);
 	set_column("unit_details", types_list, race_gen, true);
 	set_update_function([&, this](const std::size_t index) {
-		find_widget<unit_preview_pane>("unit_details").set_display_data(*types_list[index]);
+		const unit_type* ut = types_list[index];
+
+		gender_toggle_.set_members_enabled([&](const unit_race::GENDER& gender)->bool {
+			return ut->has_gender_variation(gender);
+		});
+
+		populate_variations(ut);
+
+		const auto& g = gender();
+		if (ut->has_gender_variation(g)) {
+			ut = &ut->get_gender_unit_type(g);
+		}
+
+		const auto& var = variation();
+		if (!var.empty()) {
+			ut = &ut->get_variation(var);
+		}
+
+		// Update preview
+		find_widget<unit_preview_pane>("unit_details").set_display_data(*ut);
 	});
 
 	return *this;
@@ -600,6 +590,7 @@ units_dialog& units_dialog::build_unit_list_dialog(const std::vector<unit_const_
 		return utils::join(unit->trait_names(), ", ");
 	}, true);
 	set_update_function([&, this](const std::size_t index) {
+		find_widget<button>("rename").set_active(!unit_list[index]->unrenamable());
 		find_widget<unit_preview_pane>("unit_details").set_display_data(*unit_list[index]);
 	});
 
@@ -750,6 +741,7 @@ units_dialog& units_dialog::build_recall_dialog(
 	});
 
 	set_update_function([&, this](const std::size_t index) {
+		find_widget<button>("rename").set_active(!recall_list[index]->unrenamable());
 		find_widget<unit_preview_pane>("unit_details").set_display_data(*recall_list[index]);
 	});
 

@@ -151,6 +151,10 @@ public:
 		return *this;
 	}
 
+	/**
+	 * Called to update the UI components, such as the preview pane, gender toggles
+	 * and variation box.
+	 */
 	units_dialog& set_update_function(const std::function<void(const std::size_t)>& update_func)
 	{
 		update_view_ = update_func;
@@ -245,15 +249,13 @@ private:
 	/** Callbacks */
 	void list_item_clicked();
 	void filter_text_changed();
-	void rename_unit();
 
 	// FIXME only thing needing team
 	void dismiss_unit(const team& team);
+	void rename_unit();
 
 	void show_list(listbox& list);
 	void show_help() const;
-
-	unit_type update_gender_and_variations(const unit_type* ut);
 
 	void update_gender(const unit_race::GENDER val);
 	void update_variation();
