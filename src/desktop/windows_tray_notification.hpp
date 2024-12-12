@@ -23,7 +23,7 @@
 #endif
 //defines that mingw misses
 #ifndef _WIN32_IE
-    #define _WIN32_IE _WIN32_WINNT_WIN7 //specifying target platform to be Windows 7 and higher
+    #define _WIN32_IE _WIN32_WINNT_WIN10 //specifying target platform to be Windows 10 and higher
 #endif
 #ifndef NIIF_USER
     #define NIIF_USER 0x00000004
