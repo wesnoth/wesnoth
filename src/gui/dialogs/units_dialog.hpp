@@ -166,12 +166,10 @@ public:
 	}
 
 	// } -------------------- BUILDERS -------------------- {
-	units_dialog& build_create_dialog(const std::vector<const unit_type*>& types_list);
-	units_dialog& build_unit_list_dialog(const std::vector<unit_const_ptr>& units_list);
-	units_dialog& build_recruit_dialog(
-		const std::vector<const unit_type*>& recruit_list, const team& team);
-	units_dialog& build_recall_dialog(
-		const std::vector<unit_const_ptr>& recall_list,	const team& team);
+	static std::unique_ptr<units_dialog> build_create_dialog(const std::vector<const unit_type*>& types_list);
+	static std::unique_ptr<units_dialog> build_recruit_dialog(const std::vector<const unit_type*>& recruit_list, const team& team);
+	static std::unique_ptr<units_dialog> build_recall_dialog(std::vector<unit_const_ptr>& recall_list, const team& team);
+	static std::unique_ptr<units_dialog> build_unit_list_dialog(std::vector<unit_const_ptr>& units_list);
 
 private:
 	std::vector<unit_const_ptr> unit_list_;
@@ -197,6 +195,10 @@ private:
 	std::vector<std::string> filter_options_;
 	std::vector<std::string> last_words_;
 	group<unit_race::GENDER> gender_toggle_;
+
+	group<unit_race::GENDER>& get_toggle() {
+		return gender_toggle_;
+	}
 
 	/** Callbacks */
 	void list_item_clicked();
