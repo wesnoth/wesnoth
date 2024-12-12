@@ -78,18 +78,6 @@ public:
 		return *this;
 	}
 
-	units_dialog& show_variations(const bool show_variation)
-	{
-		show_variation_grid_ = show_variation;
-		return *this;
-	}
-
-	units_dialog& show_gender(const bool show_gender)
-	{
-		show_gender_grid_ = show_gender;
-		return *this;
-	}
-
 	units_dialog& show_all_headers()
 	{
 		show_header_ = true;
@@ -104,8 +92,7 @@ public:
 
 	units_dialog& show_header(std::string_view id, const bool visible = true)
 	{
-		find_widget<toggle_button>(id).set_visible(
-			visible ? widget::visibility::visible : widget::visibility::invisible);
+		find_widget<toggle_button>(id).set_visible(visible);
 		return *this;
 	}
 
@@ -199,8 +186,6 @@ private:
 	std::string cancel_label_;
 	std::string topic_id_;
 	bool show_header_;
-	bool show_variation_grid_;
-	bool show_gender_grid_;
 
 	std::map<std::string_view, std::function<std::string(std::size_t)>> column_generators_;
 	std::function<std::string(std::size_t)> tooltip_gen_;
