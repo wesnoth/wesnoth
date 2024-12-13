@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-11-26 12:08-0600\n"
-"PO-Revision-Date: 2024-09-27 23:16+0200\n"
+"PO-Revision-Date: 2024-12-08 19:54+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -778,15 +778,14 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:251
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess-input-macros>I<\\ source-file>"
+#, no-wrap
 msgid "B<--preprocess-string>I<\\ source-string>"
-msgstr "B<--preprocess-input-macros>I<\\ zdrojový-soubor>"
+msgstr "B<--preprocess-string>I<\\ zdrojový-retězec>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:254
 msgid "preprocesses a given string and writes the output to stdout."
-msgstr ""
+msgstr "předzpracuje zadaný řetězec a výsledek vypíše na standardní výstup."
 
 #. type: TP
 #: doc/man/wesnoth.6:254
@@ -796,19 +795,14 @@ msgstr "B<--preprocess-defines=>I<DEFINICE1>B<,>I<DEFINICE2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:263
-#, fuzzy
-#| msgid ""
-#| "comma separated list of defines to be used by the B<--preprocess> "
-#| "command. If B<SKIP_CORE> is in the define list the \"data/core\" "
-#| "directory won't be preprocessed."
 msgid ""
 "comma separated list of defines to be used by the B<--preprocess> or B<--"
 "preprocess-string> command. If B<SKIP_CORE> is in the define list the \"data/"
 "core\" directory won't be preprocessed."
 msgstr ""
-"seznam definic oddělených čárkami, které budou použity příkazem B<--"
-"preprocess>. Pokud je v seznamu definic B<SKIP_CORE>, nebude předzpracován "
-"adresář „data/core“."
+"seznam definic oddělených čárkami, které budou použity příkazy B<--"
+"preprocess> nebo B<--preprocess-string>. Pokud je v seznamu definic "
+"B<SKIP_CORE>, nebude předzpracován adresář „data/core“."
 
 #. type: TP
 #: doc/man/wesnoth.6:263
@@ -818,18 +812,14 @@ msgstr "B<--preprocess-input-macros>I<\\ zdrojový-soubor>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:272
-#, fuzzy
-#| msgid ""
-#| "used only by the B<--preprocess> command. Specifies a file that contains "
-#| "B<[preproc_define]>s to be included before preprocessing."
 msgid ""
 "used only by the B<--preprocess> or B<--preprocess-string> command. "
 "Specifies a file that contains B<[preproc_define]>s to be included before "
 "preprocessing."
 msgstr ""
-"použito pouze příkazem B<--preprocess>. Určuje soubor, který obsahuje značky "
-"B<[preproc_define]>, pro začlenění definic dříve, než se spustí "
-"předzpracování."
+"použito pouze příkazy B<--preprocess> nebo B<--preprocess-string>. Určuje "
+"soubor, který obsahuje značky B<[preproc_define]>, pro začlenění definic "
+"dříve, než se spustí předzpracování."
 
 #. type: TP
 #: doc/man/wesnoth.6:272
@@ -839,13 +829,6 @@ msgstr "B<--preprocess-output-macros[>I<=cílový-soubor>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:285
-#, fuzzy
-#| msgid ""
-#| "used only by the B<--preprocess> command. Will output all preprocessed "
-#| "macros in the target file. If the file is not specified the output will "
-#| "be file '_MACROS_.cfg' in the target directory of preprocess's command. "
-#| "The output file can be passed to B<--preprocess-input-macros>.  This "
-#| "switch should be typed before the B<--preprocess> command."
 msgid ""
 "used only by the B<--preprocess> command (But not by the B<--preprocess-"
 "string> command). Will output all preprocessed macros in the target file. If "
@@ -854,11 +837,12 @@ msgid ""
 "B<--preprocess-input-macros>.  This switch should be typed before the B<--"
 "preprocess> command."
 msgstr ""
-"použito pouze příkazem B<--preprocess>. Zapíše všechna předzpracovaná makra "
-"do cílového souboru. Pokud soubor není určen, bude výstupem soubor „_MACROS_."
-"cfg“ v cílovém adresáři příkazu preprocess. Výstupní soubor může být předán "
-"volbě B<--preprocess-input-macros>. Tento přepínač by měl být napsán před "
-"příkazem B<--preprocess>."
+"použito pouze příkazem B<--preprocess> (ne však příkazem B<--preprocess-"
+"string>). Zapíše všechna předzpracovaná makra do cílového souboru. Pokud "
+"soubor není určen, bude výstupem soubor „_MACROS_.cfg“ v cílovém adresáři "
+"příkazu preprocess. Výstupní soubor může být předán volbě B<--preprocess-"
+"input-macros>. Tento přepínač by měl být napsán před příkazem B<--"
+"preprocess>."
 
 # type: TP
 #. type: TP
@@ -2171,10 +2155,10 @@ msgid ""
 "30 minutes."
 msgstr ""
 "Definice doby trvání. Formát je %d[%s[%d%s[...]]] kde %s je \"s\" (sekundy), "
-"\"m\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo "
-"\"Y\" (roky) a %d je číslo. Pokud není zadán druh délky, jsou předpokládány "
-"minuty (m). Například B<time=\"1D12H30m\"> představuje zákaz pro jeden den, "
-"12 hodin a 30 minut."
+"\"m\" (minuty), \"h\" (hodiny), \"D\" (dny), \"M\" (měsíce) nebo \"Y\" "
+"(roky) a %d je číslo. Pokud není zadán druh délky, jsou předpokládány minuty "
+"(m). Například B<time=\"1D12H30m\"> představuje zákaz pro jeden den, 12 "
+"hodin a 30 minut."
 
 # type: Plain text
 #. type: Plain text

@@ -9,7 +9,7 @@
    * Windows 10 or later is now required
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, Chinese (Simplified), Hungarian, Italian
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Hungarian, Italian
 ### Units
 ### User interface
    * The `screen_pitch_microns` variable is no longer available for UI formulas
