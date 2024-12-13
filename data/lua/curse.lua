@@ -9,7 +9,7 @@ function wesnoth.interface.game_display.unit_status()
 
     if u.status.cursed then
         table.insert(s, wml.tag.element{ 
-            image = "misc/cursed.png",
+            image = "misc/eye.png~CS(25,-75,50)",
             tooltip = _ "cursed: This unit is cursed. Its physical and elemental resistances are reduced by 20%."
         })
     end
@@ -32,7 +32,7 @@ local function on_hit(weapon, opponent)
         duration = 'turn end',
         wml.tag.effect{
             apply_to = 'image_mod',
-            replace = 'CS(25,0,50)'
+            replace = 'CS(25,-75,50)'
         },
         wml.tag.effect{
             apply_to = 'resistance',
