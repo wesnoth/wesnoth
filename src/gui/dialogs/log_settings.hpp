@@ -50,9 +50,6 @@ private:
 	virtual void post_show() override;
 
 	void filter_text_changed(const std::string& text);
-
-	std::vector<std::string> last_words_;
-
 };
 
 } // namespace dialogs

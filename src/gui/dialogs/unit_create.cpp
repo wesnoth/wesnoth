@@ -45,7 +45,6 @@ unit_create::unit_create()
 	, gender_(last_gender)
 	, choice_(last_chosen_type_id)
 	, variation_(last_variation)
-	, last_words_()
 {
 }
 
@@ -230,46 +229,25 @@ void unit_create::list_item_clicked()
 
 void unit_create::filter_text_changed(const std::string& text)
 {
-	listbox& list = find_widget<listbox>("unit_type_list");
+	auto& list = find_widget<listbox>("unit_type_list");
+	list.filter_rows_by([words = utils::split(text, ' '), &list, this](std::size_t row)
+	{
+		if(words.empty()) return true;
 
-	const std::vector<std::string> words = utils::split(text, ' ');
+		grid* row_grid = list.get_row_grid(row);
 
-	if(words == last_words_)
-		return;
-	last_words_ = words;
+		auto& type_label = row_grid->find_widget<label>("unit_type");
+		auto& race_label = row_grid->find_widget<label>("race");
 
-	boost::dynamic_bitset<> show_items;
-	show_items.resize(list.get_item_count(), true);
+		assert(row < units_.size());
+		const std::string& unit_type_id = units_[row] ? units_[row]->id() : "";
 
-	if(!text.empty()) {
-		for(unsigned int i = 0; i < list.get_item_count(); i++) {
-			grid* row = list.get_row_grid(i);
-
-//			grid::iterator it = row->begin();
-			label& type_label = row->find_widget<label>("unit_type");
-			label& race_label = row->find_widget<label>("race");
-
-			assert(i < units_.size());
-			const std::string& unit_type_id = units_[i] ? units_[i]->id() : "";
-
-			bool found = false;
-			for(const auto & word : words)
-			{
-				found = translation::ci_search(type_label.get_label().str(), word) ||
-				        translation::ci_search(race_label.get_label().str(), word) ||
-				        translation::ci_search(unit_type_id, word);
-
-				if(!found) {
-					// one word doesn't match, we don't reach words.end()
-					break;
-				}
-			}
-
-			show_items[i] = found;
-		}
-	}
-
-	list.set_row_shown(show_items);
+		return std::all_of(words.begin(), words.end(), [&](const auto& word) {
+			return translation::ci_search(type_label.get_label().str(), word)
+				|| translation::ci_search(race_label.get_label().str(), word)
+				|| translation::ci_search(unit_type_id, word);
+		});
+	});
 }
 
 void unit_create::gender_toggle_callback(const unit_race::GENDER val)

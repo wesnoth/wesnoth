@@ -32,7 +32,6 @@ REGISTER_DIALOG(log_settings)
 
 log_settings::log_settings()
 	: modal_dialog(window_id())
-	, last_words_()
 {
 	//list of names must match those in logging.cfg
 	widget_id_.push_back("none");
@@ -95,38 +94,15 @@ void log_settings::pre_show()
 
 void log_settings::filter_text_changed(const std::string& text)
 {
-	listbox& list = find_widget<listbox>("logger_listbox");
-
-	const std::vector<std::string> words = utils::split(text, ' ');
-
-	if(words == last_words_) {
-		return;
-	}
-
-	last_words_ = words;
-
-	boost::dynamic_bitset<> show_items;
-	show_items.resize(list.get_item_count(), true);
-
-	if(!text.empty()) {
-		for(unsigned int i = 0; i < list.get_item_count(); i++) {
-			assert(i < domain_list_.size());
-
-			bool found = false;
-
-			for(const auto& word : words)
-			{
-				found = translation::ci_search(domain_list_[i], word);
-				if(!found) {
-					break;
-				}
+	find_widget<listbox>("logger_listbox").filter_rows_by([words = utils::split(text, ' '), this](std::size_t row) {
+		for(const auto& word : words) {
+			if(!translation::ci_search(domain_list_[row], word)) {
+				return false;
 			}
-
-			show_items[i] = found;
 		}
-	}
 
-	list.set_row_shown(show_items);
+		return true;
+	});
 }
 
 void log_settings::post_show()
