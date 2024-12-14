@@ -81,7 +81,7 @@ code_blocks_target_translations = {
 # XCode #
 #=======#
 
-def add_to_xcode(filename, targets, remove):
+def modify_xcode(filename, targets, remove):
     """Add the given file to the specified targets.
     """
     projectfile = rootdir.joinpath(
@@ -121,7 +121,7 @@ def add_to_xcode(filename, targets, remove):
             raise Exception(f"problem finding '{d}' group in '{groupname}'")
         parent_group = found_groups[0]
 
-    if(remove):
+    if remove :
         # Remove from all targets if we want to remove
         for file in project.get_files_by_name(filename.name, parent=parent_group):
             project.remove_file_by_id(file.get_id())
@@ -153,7 +153,7 @@ def add_to_xcode(filename, targets, remove):
 # source_lists #
 #==============#
 
-def add_to_source_list(filename, source_list, remove):
+def modify_source_list(filename, source_list, remove):
     source_list_file = rootdir.joinpath("source_lists", source_list)
     sl_lines = open(source_list_file).readlines()
     file_line = filename.as_posix() + '\n'
@@ -179,18 +179,18 @@ def add_to_source_lists(filename, targets):
     translated_targets = [source_list_target_translations[t] for t in targets]
     print(" source_list targets:", translated_targets)
     for t in translated_targets:
-        add_to_source_list(filename, t, false)
+        modify_source_list(filename, t, False)
 
-def remove_from_source_lists(filename, targets):
+def remove_from_source_lists(filename):
     # remove from all tagerts if -r was specified.
     for t in source_list_target_translations.values():
-        add_to_source_list(filename, t, true)
+        modify_source_list(filename, t, True)
 
 #==============#
 # Code::Blocks #
 #==============#
 
-def add_to_code_blocks_target(filename, target, remove):
+def modify_code_blocks_target(filename, target, remove):
     cbp_file = rootdir.joinpath(
         "projectfiles",
         "CodeBlocks",
@@ -226,11 +226,11 @@ def add_to_code_blocks_target(filename, target, remove):
 
     open(cbp_file, 'w').writelines(cbp_lines)
 
-def add_to_code_blocks(filename, targets, remove):
+def modify_code_blocks(filename, targets, remove):
     translated_targets = code_blocks_target_translations.values() if remove else [code_blocks_target_translations[t] for t in targets]
     print(" code::blocks targets:", translated_targets)
     for t in translated_targets:
-        add_to_code_blocks_target(filename, t, remove)
+        modify_code_blocks_target(filename, t, remove)
 
 def sanity_check_existing_cpp_hpp(filenames):
     """
@@ -322,11 +322,11 @@ if __name__ == "__main__":
     for filename in filenames:
         if options.remove:
             print(f"removing '{filename}' from all targets")
-            add_to_xcode(filename, options.target, options.remove)
-            remove_from_source_lists(filename, options.target)
-            add_to_code_blocks(filename, options.target, options.remove)
+            modify_xcode(filename, options.target, True)
+            remove_from_source_lists(filename)
+            modify_code_blocks(filename, options.target, True)
         else:
             print(f"adding '{filename}' to targets: {options.target}")
-            add_to_xcode(filename, options.target, options.remove)
+            modify_xcode(filename, options.target, False)
             add_to_source_lists(filename, options.target)
-            add_to_code_blocks(filename, options.target, options.remove)
+            modify_code_blocks(filename, options.target, False)
