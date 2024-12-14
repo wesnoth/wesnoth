@@ -25,6 +25,8 @@
 #include <iomanip>
 #include <sstream>
 
+#include <boost/coroutine/exceptions.hpp>
+
 static lg::log_domain log_server("server");
 #define ERR_GAME LOG_STREAM(err, log_server)
 #define WRN_GAME LOG_STREAM(warn, log_server)

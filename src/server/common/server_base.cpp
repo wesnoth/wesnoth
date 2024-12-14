@@ -39,6 +39,9 @@
 #ifndef _WIN32
 #include <boost/asio/read_until.hpp>
 #endif
+#ifndef BOOST_NO_EXCEPTIONS
+#include <boost/exception/diagnostic_information.hpp>
+#endif
 
 #include <iostream>
 #include <queue>

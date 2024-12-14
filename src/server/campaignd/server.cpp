@@ -738,7 +738,7 @@ void server::handle_sighup(const boost::system::error_code&, int)
 
 void server::flush_cfg()
 {
-	flush_timer_.expires_from_now(std::chrono::minutes(10));
+	flush_timer_.expires_after(std::chrono::minutes(10));
 	flush_timer_.async_wait(std::bind(&server::handle_flush, this, std::placeholders::_1));
 }
 
