@@ -1883,6 +1883,10 @@ CURRENT_GETTER("schedule", lua_index_raw) {
 	return lua_index_raw(L);
 }
 
+CURRENT_GETTER("user_is_replaying", int) {
+	return k.pc().is_replay();
+}
+
 CURRENT_GETTER("event_context", config) {
 	const game_events::queued_event &ev = k.ev();
 	config cfg;
