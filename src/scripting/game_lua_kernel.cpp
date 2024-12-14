@@ -1883,7 +1883,7 @@ CURRENT_GETTER("schedule", lua_index_raw) {
 	return lua_index_raw(L);
 }
 
-CURRENT_GETTER("user_is_replaying", int) {
+CURRENT_GETTER("user_is_replaying", bool) {
 	return k.pc().is_replay();
 }
 
