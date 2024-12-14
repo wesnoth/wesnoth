@@ -43,6 +43,10 @@
 #endif
 #include <boost/asio/write.hpp>
 
+#ifndef BOOST_NO_EXCEPTIONS
+#include <boost/exception/diagnostic_information.hpp>
+#endif
+
 #include <array>
 #include <ctime>
 #include <functional>
