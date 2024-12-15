@@ -39,11 +39,12 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/markup.hpp"
 #include "utils/general.hpp"
+#include "utils/ci_searcher.hpp"
 #include "game_config_view.hpp"
 
 #include <functional>
-
-
+#include <ranges>
+#include <boost/locale.hpp>
 static lg::log_domain log_gameloaddlg{"gui/dialogs/game_load_dialog"};
 #define ERR_GAMELOADDLG   LOG_STREAM(err,   log_gameloaddlg)
 #define WRN_GAMELOADDLG   LOG_STREAM(warn,  log_gameloaddlg)
@@ -323,15 +324,8 @@ void game_load::filter_text_changed(const std::string& text)
 
 void game_load::apply_filter_text(const std::string& text)
 {
-	find_widget<listbox>("savegame_list").filter_rows_by([words = utils::split(text, ' '), this](std::size_t row) {
-		for(const auto& word : words) {
-			if(!translation::ci_search(games_[row].name(), word)) {
-				return false;
-			}
-		}
-
-		return true;
-	});
+	find_widget<listbox>("savegame_list").filter_rows_by(
+		[this, searcher = translation::ci_searcher{text}](std::size_t row) { return searcher(games_[row].name()); });
 }
 
 void game_load::evaluate_summary_string(std::stringstream& str, const config& cfg_summary)

@@ -28,6 +28,7 @@
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 #include "units/types.hpp"
+#include "utils/ci_searcher.hpp"
 
 #include <functional>
 
@@ -230,23 +231,16 @@ void unit_create::list_item_clicked()
 void unit_create::filter_text_changed(const std::string& text)
 {
 	auto& list = find_widget<listbox>("unit_type_list");
-	list.filter_rows_by([words = utils::split(text, ' '), &list, this](std::size_t row)
+	list.filter_rows_by([this, searcher = translation::ci_searcher{text}, &list](std::size_t row)
 	{
-		if(words.empty()) return true;
-
+		if(searcher.empty()) return true;
 		grid* row_grid = list.get_row_grid(row);
 
-		auto& type_label = row_grid->find_widget<label>("unit_type");
-		auto& race_label = row_grid->find_widget<label>("race");
-
-		assert(row < units_.size());
-		const std::string& unit_type_id = units_[row] ? units_[row]->id() : "";
-
-		return std::all_of(words.begin(), words.end(), [&](const auto& word) {
-			return translation::ci_search(type_label.get_label().str(), word)
-				|| translation::ci_search(race_label.get_label().str(), word)
-				|| translation::ci_search(unit_type_id, word);
-		});
+		return searcher(
+			row_grid->find_widget<label>("unit_type").get_label().str(),
+			row_grid->find_widget<label>("race").get_label().str(),
+			units_[row] ? units_[row]->id() : ""
+		);
 	});
 }
 

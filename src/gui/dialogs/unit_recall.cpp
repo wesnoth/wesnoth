@@ -37,6 +37,7 @@
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
 #include "units/types.hpp"
+#include "utils/ci_searcher.hpp"
 #include <functional>
 #include "whiteboard/manager.hpp"
 
@@ -442,15 +443,8 @@ void unit_recall::post_show()
 void unit_recall::filter_text_changed(const std::string& text)
 {
 	auto& list = find_widget<listbox>("recall_list");
-	list.filter_rows_by([words = utils::split(text, ' '), this](std::size_t row)
-	{
-		for(const auto& word : words) {
-			if(!translation::ci_search(filter_options_[row], word)) {
-				return false;
-			}
-		}
-
-		return true;
+	list.filter_rows_by([this, searcher = translation::ci_searcher{text}](std::size_t row) {
+		return searcher(filter_options_[row]);
 	});
 
 	// Disable rename and dismiss buttons if no units are shown

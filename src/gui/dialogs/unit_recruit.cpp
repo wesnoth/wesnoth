@@ -26,6 +26,7 @@
 #include "help/help.hpp"
 #include "team.hpp"
 #include "units/types.hpp"
+#include "utils/ci_searcher.hpp"
 
 #include <functional>
 
@@ -61,35 +62,25 @@ static inline std::string gray_if_unrecruitable(const std::string& text, const b
 // Compare unit_create::filter_text_change
 void unit_recruit::filter_text_changed(const std::string& text)
 {
-	find_widget<listbox>("recruit_list").filter_rows_by([words = utils::split(text, ' '), this](std::size_t row) {
-		const unit_type* type = recruit_list_[row];
-		if(!type) return true;
+	find_widget<listbox>("recruit_list")
+		.filter_rows_by([this, searcher = translation::ci_searcher{text}](std::size_t row) {
+			const unit_type* type = recruit_list_[row];
+			if(!type) return true;
 
-		const auto default_gender = !type->genders().empty()
-			? type->genders().front() : unit_race::MALE;
-		const auto race = type->race();
+			const auto default_gender = !type->genders().empty() ? type->genders().front() : unit_race::MALE;
+			const auto race = type->race();
 
-		// List of possible match criteria for this unit type.
-		// Empty values will never match.
-		const std::tuple criteria{
-			(game_config::debug ? type->id() : ""),
-			type->type_name(),
-			std::to_string(type->level()),
-			unit_type::alignment_description(type->alignment(), default_gender),
-			(race ? race->name(default_gender) : ""),
-			(race ? race->plural_name() : "")
-		};
-
-		for(const auto& word : words) {
-			if(!std::apply([&word](auto&&... criterion) {
-				return (translation::ci_search(criterion, word) || ...);
-			}, criteria)) {
-				return false;
-			}
-		}
-
-		return true;
-	});
+			// List of possible match criteria for this unit type.
+			// Empty values will never match.
+			return searcher(
+				(game_config::debug ? type->id() : ""),
+				type->type_name(),
+				std::to_string(type->level()),
+				unit_type::alignment_description(type->alignment(), default_gender),
+				(race ? race->name(default_gender) : ""),
+				(race ? race->plural_name() : "")
+			);
+		});
 }
 
 void unit_recruit::pre_show()

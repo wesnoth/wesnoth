@@ -22,6 +22,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
+#include "utils/ci_searcher.hpp"
 
 #include "log.hpp"
 
@@ -94,15 +95,8 @@ void log_settings::pre_show()
 
 void log_settings::filter_text_changed(const std::string& text)
 {
-	find_widget<listbox>("logger_listbox").filter_rows_by([words = utils::split(text, ' '), this](std::size_t row) {
-		for(const auto& word : words) {
-			if(!translation::ci_search(domain_list_[row], word)) {
-				return false;
-			}
-		}
-
-		return true;
-	});
+	find_widget<listbox>("logger_listbox").filter_rows_by(
+		[this, searcher = translation::ci_searcher{text}](std::size_t row) { return searcher(domain_list_[row]); });
 }
 
 void log_settings::post_show()
