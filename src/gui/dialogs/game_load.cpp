@@ -43,8 +43,8 @@
 #include "game_config_view.hpp"
 
 #include <functional>
-#include <ranges>
-#include <boost/locale.hpp>
+
+
 static lg::log_domain log_gameloaddlg{"gui/dialogs/game_load_dialog"};
 #define ERR_GAMELOADDLG   LOG_STREAM(err,   log_gameloaddlg)
 #define WRN_GAMELOADDLG   LOG_STREAM(warn,  log_gameloaddlg)
