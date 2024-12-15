@@ -176,10 +176,6 @@ int attack_type_callable::do_compare(const formula_callable* callable) const
 		return att_->type().compare(att_callable->att_->type());
 	}
 
-	if(att_->effective_damage_type().first != att_callable->att_->effective_damage_type().first) {
-		return att_->effective_damage_type().first.compare(att_callable->att_->effective_damage_type().first);
-	}
-
 	if(att_->range() != att_callable->att_->range()) {
 		return att_->range().compare(att_callable->att_->range());
 	}
