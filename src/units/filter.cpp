@@ -818,6 +818,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			else if (child.first == "has_attack") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
 					for(const attack_type& a : args.u.attacks()) {
+						auto ctx = a.specials_context((args.u).shared_from_this(), args.loc, true);
 						if(a.matches_filter(c.get_parsed_config())) {
 							return true;
 						}
