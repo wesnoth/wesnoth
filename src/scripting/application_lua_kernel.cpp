@@ -223,21 +223,21 @@ struct lua_context_backend {
 	{}
 };
 
-static int impl_context_backend(lua_State * L, std::shared_ptr<lua_context_backend> backend, std::string req_name)
+static int impl_context_backend(lua_State * L, const std::shared_ptr<lua_context_backend>& backend, std::string req_name)
 {
 	if (!backend->valid) {
 		luaL_error(L , "Error, you tried to use an invalid context object in a lua thread");
 	}
 
 	plugins_manager::event evt;
-	evt.name = req_name;
+	evt.name = std::move(req_name);
 	evt.data = luaW_checkconfig(L, -1);
 
 	backend->requests.push_back(evt);
 	return 0;
 }
 
-static int impl_context_accessor(lua_State * L, std::shared_ptr<lua_context_backend> backend, plugins_context::accessor_function func)
+static int impl_context_accessor(lua_State * L, const std::shared_ptr<lua_context_backend>& backend, const plugins_context::accessor_function& func)
 {
 	if (!backend->valid) {
 		luaL_error(L , "Error, you tried to use an invalid context object in a lua thread");

@@ -132,7 +132,8 @@ public:
 	/**
 	 * @see forum_user_handler::db_insert_game_info().
 	 */
-	void insert_game_info(const std::string& uuid,
+	void insert_game_info(
+		const std::string& uuid,
 		int game_id,
 		const std::string& version,
 		const std::string& name,
@@ -149,7 +150,8 @@ public:
 	/**
 	 * @see forum_user_handler::db_insert_game_player_info().
 	 */
-	void insert_game_player_info(const std::string& uuid,
+	void insert_game_player_info(
+		const std::string& uuid,
 		int game_id,
 		const std::string& username,
 		int side_number,
@@ -163,7 +165,8 @@ public:
 	/**
 	 * @see forum_user_handler::db_insert_game_content_info().
 	 */
-	unsigned long long insert_game_content_info(const std::string& uuid,
+	unsigned long long insert_game_content_info(
+		const std::string& uuid,
 		int game_id,
 		const std::string& type,
 		const std::string& name,
@@ -184,14 +187,15 @@ public:
 	/**
 	 * @see forum_user_handler::db_insert_addon_info().
 	 */
-	void insert_addon_info(const std::string& instance_version,
+	void insert_addon_info(
+		const std::string& instance_version,
 		const std::string& id,
 		const std::string& name,
 		const std::string& type,
 		const std::string& version,
 		bool forum_auth,
 		int topic_id,
-		const std::string uploader);
+		const std::string& uploader);
 
 	/**
 	 * @see forum_user_handler::db_insert_login().
@@ -235,7 +239,7 @@ public:
 	 * @see forum_user_handler::db_insert_addon_authors().
 	 */
 	void insert_addon_author(
-		const std::string& instance_version, const std::string& id, const std::string author, int is_primary);
+		const std::string& instance_version, const std::string& id, const std::string& author, int is_primary);
 
 	/**
 	 * @see forum_user_handler::do_any_authors_exist().
@@ -301,7 +305,7 @@ private:
 	 * @param params The parameterized values to be inserted into the query.
 	 */
 	void get_complex_results(
-		mariadb::connection_ref connection, rs_base& base, const std::string& sql, const sql_parameters& params);
+		const mariadb::connection_ref& connection, rs_base& base, const std::string& sql, const sql_parameters& params);
 
 	/**
 	 * @param connection The database connection that will be used to execute the query.
@@ -311,7 +315,7 @@ private:
 	 * @throws mariadb::exception::base when the query finds no value to be retrieved.
 	 */
 	std::string get_single_string(
-		mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
+		const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params);
 
 	/**
 	 * @param connection The database connection that will be used to execute the query.
@@ -320,7 +324,7 @@ private:
 	 * @return The single long value queried.
 	 * @throws mariadb::exception::base when the query finds no value to be retrieved.
 	 */
-	long get_single_long(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
+	long get_single_long(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params);
 
 	/**
 	 * @param connection The database connection that will be used to execute the query.
@@ -328,7 +332,7 @@ private:
 	 * @param params The parameterized values to be inserted into the query.
 	 * @return True if any data was returned by the query, otherwise false.
 	 */
-	bool exists(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
+	bool exists(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params);
 
 	/**
 	 * Executes a select statement.
@@ -339,7 +343,7 @@ private:
 	 * @return A result set containing the results of the select statement executed.
 	 */
 	mariadb::result_set_ref select(
-		mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
+		const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params);
 
 	/**
 	 * Executes non-select statements (ie: insert, update, delete).
@@ -349,7 +353,7 @@ private:
 	 * @param params The parameterized values to be inserted into the query.
 	 * @return The number of rows modified.
 	 */
-	unsigned long long modify(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
+	unsigned long long modify(const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params);
 
 	/**
 	 * Executes non-select statements (ie: insert, update, delete), but primarily intended for inserts that return a
@@ -361,7 +365,7 @@ private:
 	 * @return The value of an AUTO_INCREMENT column on the table being modified.
 	 */
 	unsigned long long modify_get_id(
-		mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
+		const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params);
 
 	/**
 	 * For a given connection, set the provided SQL and parameters on a statement.
@@ -372,5 +376,5 @@ private:
 	 * @return A statement ready to be executed.
 	 */
 	mariadb::statement_ref query(
-		mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
+		const mariadb::connection_ref& connection, const std::string& sql, const sql_parameters& params);
 };

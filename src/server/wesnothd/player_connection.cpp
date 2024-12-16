@@ -15,6 +15,8 @@
 
 #include "server/wesnothd/player_connection.hpp"
 
+#include <utility>
+
 #include "server/wesnothd/game.hpp"
 
 namespace wesnothd
@@ -36,7 +38,7 @@ int player_record::game_id() const
 
 void player_record::set_game(std::shared_ptr<game> new_game)
 {
-	game_ = new_game;
+	game_ = std::move(new_game);
 }
 
 void player_record::enter_lobby()

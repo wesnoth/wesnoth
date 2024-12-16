@@ -36,7 +36,7 @@ class tod_manager
 		~tod_manager() {}
 		tod_manager& operator=(const tod_manager& manager) = default;
 
-		config to_config(std::string textdomain = "") const;
+		config to_config(const std::string& textdomain = "") const;
 		/**
 			handles random_start_time, should be called before the game starts.
 		*/

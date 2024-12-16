@@ -135,7 +135,7 @@ wesnothd_connection::~wesnothd_connection()
 }
 
 // worker thread
-void wesnothd_connection::handle_resolve(const error_code& ec, results_type results)
+void wesnothd_connection::handle_resolve(const error_code& ec, const results_type& results)
 {
 	MPTEST_LOG;
 	if(ec) {

@@ -43,7 +43,7 @@ std::chrono::steady_clock::time_point get_next_idle_tick()
 
 const unit_animation* unit_animation_component::choose_animation(const map_location& loc,const std::string& event,
 		const map_location& second_loc,const int value,const strike_result::type hit,
-		const_attack_ptr attack, const_attack_ptr second_attack, int swing_num)
+		const const_attack_ptr& attack, const const_attack_ptr& second_attack, int swing_num)
 {
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
@@ -213,7 +213,7 @@ std::vector<std::string> unit_animation_component::get_flags() {
 	std::set<std::string> result;
 	for(const auto& anim : animations_) {
 		const std::vector<std::string>& flags = anim.get_flags();
-		std::copy_if(flags.begin(), flags.end(), std::inserter(result, result.begin()), [](const std::string flag) {
+		std::copy_if(flags.begin(), flags.end(), std::inserter(result, result.begin()), [](const std::string& flag) {
 			return !(flag.empty() || (flag.front() == '_' && flag.back() == '_'));
 		});
 	}

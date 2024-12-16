@@ -127,7 +127,7 @@ namespace { // Helpers for get_recalls()
 	 * that can be skipped (because they are already in @a result), and the
 	 * underlying ID of units added to @a result will be added to @a already_added.
 	 */
-	void add_leader_filtered_recalls(const unit_const_ptr leader,
+	void add_leader_filtered_recalls(const unit_const_ptr& leader,
 	                                 std::vector< unit_const_ptr > & result,
 	                                 std::set<std::size_t> * already_added = nullptr)
 	{
@@ -617,7 +617,7 @@ namespace { // Helpers for place_recruit()
 	}
 }// anonymous namespace
 //Used by recalls and recruits
-place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_location, const map_location& recruited_from,
+place_recruit_result place_recruit(const unit_ptr& u, const map_location &recruit_location, const map_location& recruited_from,
 	int cost, bool is_recall, map_location::direction facing, bool show, bool fire_event, bool full_movement,
 	bool wml_triggered)
 {

@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-11-26 12:08-0600\n"
-"PO-Revision-Date: 2024-11-23 12:35+0100\n"
+"PO-Revision-Date: 2024-12-07 22:23+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1727,7 +1727,7 @@ msgstr ""
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/deprecated-utils.cfg:400
 msgid "deflect"
-msgstr ""
+msgstr "deflessione"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/deprecated-utils.cfg:401
@@ -1735,6 +1735,8 @@ msgid ""
 "When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
 msgstr ""
+"Usata in difesa, questa tecnica riduce del 10% le possibilità di colpire di "
+"un avversario."
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/deprecated-utils.cfg:402
@@ -1742,11 +1744,13 @@ msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
 msgstr ""
+"La tecnica difensiva di quest'unità riduce le probabilità di successo di un "
+"attaco nemico."
 
 #. [damage]: id=absorb
 #: data/core/macros/deprecated-utils.cfg:416
 msgid "absorb"
-msgstr ""
+msgstr "smorzata"
 
 #. [damage]: id=absorb
 #: data/core/macros/deprecated-utils.cfg:417
@@ -1754,12 +1758,16 @@ msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
+"Questo attacco pone l'unità in una buona posizione difensiva, e assorbe "
+"parte del danno inflitto da un colpo del nemico."
 
 #. [damage]: id=absorb
 #: data/core/macros/deprecated-utils.cfg:418
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
+"Questa unità può bloccare i colpi nemici, in modo da ridurre i danni subiti "
+"quando viene colpita."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:23
@@ -3335,20 +3343,6 @@ msgstr ""
 
 #. Generator for ship names
 #: data/core/macros/names.cfg:251
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
-#| "{starting_consonnant}{vowel}{consonnant}{ending_vowel}|{starting_vowel}"
-#| "{consonnant}{vowel}{ending_consonnant}|{starting_consonnant}{vowel}"
-#| "{ending_consonnant}|{starting_vowel}{consonnant}{ending_vowel}\n"
-#| "starting_consonnant=B|Br|D|Dr|G|Gr|Gh|H|Kh|M|N|P|Pr|R|S|Sh|T|V\n"
-#| "starting_vowel=A|I|O|U\n"
-#| "consonnant=b|br|d|dr|g|gr|gh|kh|m|n|p|pr|r|s|sh|t|v|gz|zg|rb|br|dr|vr|khr|"
-#| "gd|shn\n"
-#| "vowel=a|i|o|u\n"
-#| "ending_consonnant=b|g|r|sh|k\n"
-#| "ending_vowel=o|u\n"
 msgid ""
 "\n"
 "main={prefix} {starting_consonnant}{vowel}{consonnant}{vowel}"
@@ -3365,17 +3359,20 @@ msgid ""
 "ending_vowel=a|ae|o|u\n"
 msgstr ""
 "\n"
-"main={starting_consonnant}{vowel}{consonnant}{vowel}{ending_consonnant}|"
-"{starting_consonnant}{vowel}{consonnant}{ending_vowel}|{starting_vowel}"
-"{consonnant}{vowel}{ending_consonnant}|{starting_consonnant}{vowel}"
-"{ending_consonnant}|{starting_vowel}{consonnant}{ending_vowel}\n"
-"starting_consonnant=B|Br|D|Dr|G|Gr|Gh|H|Kh|M|N|P|Pr|R|S|Sh|T|V\n"
-"starting_vowel=A|I|O|U\n"
-"consonnant=b|br|d|dr|g|gr|gh|kh|m|n|p|pr|r|s|sh|t|v|gz|zg|rb|br|dr|vr|khr|gd|"
-"shn\n"
-"vowel=a|i|o|u\n"
-"ending_consonnant=b|g|r|sh|k\n"
-"ending_vowel=o|u\n"
+"main={prefix} {starting_consonnant}{vowel}{consonnant}{vowel}"
+"{ending_consonnant}|{prefix_vowel}{starting_vowel}{consonnant}{ending_vowel}|"
+"{starting_vowel}{consonnant}{vowel}{ending_consonnant}|{prefix} "
+"{starting_consonnant}{vowel}{ending_consonnant}|{starting_vowel}{consonnant}"
+"{vowel}{consonnant}{ending_vowel}\n"
+"prefix=Benedetta|Dorata|Impavida|Possente|Fortunata|Vecchia|La|La|Valorosa\n"
+"prefix_vowel=Benedetta |Dorata |Impavida |Possente |Fortunata |Vecchia |L’|"
+"L’|Valorosa \n"
+"starting_consonnant=B|C|Cr|D|F|G|H|Kh|L|M|N|P|R|S|T|Th|V\n"
+"starting_vowel=A|E|I|O|U\n"
+"consonnant=b|br|ch|d|dr|g|gr|gh|kh|m|n|p|pr|r|s|sh|t|v|ol|z|vr|khr|shn\n"
+"vowel=a|ae|é|i|o|u\n"
+"ending_consonnant=yan|oic|ell|yll|tar|sh\n"
+"ending_vowel=a|ae|o|u\n"
 
 #: data/core/macros/names.cfg:264
 msgid ""
@@ -6934,18 +6931,12 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Questo server non permette l’uso di nickname non registrati."
 
 #: src/game_initialization/multiplayer.cpp:423
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums for $duration|."
 msgid "Your IP address is banned on this server for $duration|."
-msgstr ""
-"Il tuo indirizzo IP è stato bandito dai forum di questo server per "
-"$duration|."
+msgstr "Il tuo indirizzo IP è stato bandito da questo server per $duration|."
 
 #: src/game_initialization/multiplayer.cpp:425
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server."
-msgstr "Il tuo indirizzo IP è stato bandito dai forum di questo server."
+msgstr "Il tuo indirizzo IP è stato bandito da questo server."
 
 #: src/game_initialization/multiplayer.cpp:429
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
@@ -8835,9 +8826,6 @@ msgid "Overwrite?"
 msgstr "Sovrascrivere?"
 
 #: src/savegame.cpp:432
-#, fuzzy
-#| msgid ""
-#| "Save names should not end on ‘.gz’ or ‘.bz2’. Please remove the extension."
 msgid ""
 "Save names should not end with ‘.gz’ or ‘.bz2’. Please remove the extension."
 msgstr ""

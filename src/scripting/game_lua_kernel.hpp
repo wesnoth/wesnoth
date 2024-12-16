@@ -178,7 +178,7 @@ class game_lua_kernel : public lua_kernel_base
 	int impl_schedule_dir(lua_State *L);
 	int intf_scroll(lua_State *L);
 	int intf_get_all_vars(lua_State *L);
-	int impl_theme_item(lua_State *L, std::string name);
+	int impl_theme_item(lua_State *L, const std::string& name);
 	int impl_theme_items_get(lua_State *L);
 	int impl_theme_items_set(lua_State *L);
 	int impl_theme_items_dir(lua_State *L);

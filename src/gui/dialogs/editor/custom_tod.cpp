@@ -32,8 +32,9 @@
 #include "gui/widgets/text_box.hpp"
 #include "sound.hpp"
 
-#include <functional>
 #include <boost/filesystem.hpp>
+#include <functional>
+#include <utility>
 
 namespace gui2::dialogs
 {
@@ -58,7 +59,7 @@ static custom_tod::string_pair tod_getter_sound(const time_of_day& tod)
 
 REGISTER_DIALOG(custom_tod)
 
-custom_tod::custom_tod(const std::vector<time_of_day>& times, int current_time, const std::string addon_id)
+custom_tod::custom_tod(const std::vector<time_of_day>& times, int current_time, const std::string& addon_id)
 	: modal_dialog(window_id())
 	, addon_id_(addon_id)
 	, times_(times)
@@ -323,7 +324,7 @@ void custom_tod::update_selected_tod_info()
 	update_tod_display();
 }
 
-void custom_tod::copy_to_clipboard_callback(std::pair<std::string, tod_attribute_getter> data)
+void custom_tod::copy_to_clipboard_callback(const std::pair<std::string, tod_attribute_getter>& data)
 {
 	auto& [type, getter] = data;
 	button& copy_w = find_widget<button>("copy_" + type);
@@ -363,7 +364,7 @@ const std::vector<time_of_day> custom_tod::get_schedule()
 
 void custom_tod::register_callback(std::function<void(std::vector<time_of_day>)> update_func)
 {
-	update_map_and_schedule_ = update_func;
+	update_map_and_schedule_ = std::move(update_func);
 }
 
 void custom_tod::post_show()

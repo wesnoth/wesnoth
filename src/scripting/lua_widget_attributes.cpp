@@ -375,9 +375,9 @@ WIDGET_SETTER("value_compat,unfolded", bool, gui2::tree_view_node)
 WIDGET_SETTER("value_compat,unit", lua_index_raw, gui2::unit_preview_pane)
 {
 	if(const unit_type* ut = luaW_tounittype(L, value.index)) {
-		w.set_displayed_type(*ut);
+		w.set_display_data(*ut);
 	} else if(unit* u = luaW_tounit(L, value.index)) {
-		w.set_displayed_unit(*u);
+		w.set_display_data(*u);
 	} else {
 		luaW_type_error(L, value.index, "unit or unit type");
 	}

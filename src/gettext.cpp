@@ -80,7 +80,7 @@ namespace
 	class wesnoth_message_format : public bl::message_format<char>
 	{
 	public:
-		wesnoth_message_format(std::locale base, const std::set<std::string>& domains, const std::set<std::string>& paths)
+		wesnoth_message_format(const std::locale& base, const std::set<std::string>& domains, const std::set<std::string>& paths)
 			: base_loc_(base)
 		{
 			const bl::info& inf = std::use_facet<bl::info>(base);

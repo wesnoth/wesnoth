@@ -25,6 +25,7 @@
 #include <cassert>
 #include <set>
 #include <sstream>
+#include <utility>
 
 // This is here only for the below initialization code.
 // If other logging is required in this file, it should use a different logdomain
@@ -405,7 +406,7 @@ class unary_operator_expression : public formula_expression
 public:
 	unary_operator_expression(const std::string& op, expression_ptr arg)
 		: op_(),op_str_(op)
-		, operand_(arg)
+		, operand_(std::move(arg))
 	{
 		if(op == "not") {
 			op_ = NOT;
@@ -620,7 +621,7 @@ class dot_expression : public formula_expression
 {
 public:
 	dot_expression(expression_ptr left, expression_ptr right)
-		: left_(left), right_(right)
+		: left_(std::move(left)), right_(std::move(right))
 	{}
 
 	std::string str() const
@@ -667,7 +668,7 @@ class square_bracket_expression : public formula_expression
 {
 public:
 	square_bracket_expression(expression_ptr left, expression_ptr key)
-		: left_(left), key_(key)
+		: left_(std::move(left)), key_(std::move(key))
 	{}
 
 	std::string str() const
@@ -696,7 +697,7 @@ class operator_expression : public formula_expression
 {
 public:
 	operator_expression(const std::string& op, expression_ptr left, expression_ptr right)
-		: op_(OP(op[0])), op_str_(op), left_(left), right_(right)
+		: op_(OP(op[0])), op_str_(op), left_(std::move(left)), right_(std::move(right))
 	{
 		if(op == ">=") {
 			op_ = GTE;
@@ -812,7 +813,7 @@ public:
 	where_variables(const formula_callable &base, expr_table_ptr table, formula_debugger* fdb)
 		: formula_callable(false)
 		, base_(base)
-		, table_(table)
+		, table_(std::move(table))
 		, evaluated_table_()
 		, debugger_(fdb)
 	{
@@ -853,7 +854,7 @@ class where_expression: public formula_expression
 {
 public:
 	where_expression(expression_ptr body, expr_table_ptr clauses)
-		: body_(body), clauses_(clauses)
+		: body_(std::move(body)), clauses_(std::move(clauses))
 	{}
 
 	std::string str() const
@@ -1198,7 +1199,7 @@ static void parse_set_args(const tk::token* i1, const tk::token* i2,
 	}
 }
 
-static void parse_where_clauses(const tk::token* i1, const tk::token* i2, expr_table_ptr res, function_symbol_table* symbols)
+static void parse_where_clauses(const tk::token* i1, const tk::token* i2, const expr_table_ptr& res, function_symbol_table* symbols)
 {
 	int parens = 0;
 	const tk::token* original_i1_cached = i1;

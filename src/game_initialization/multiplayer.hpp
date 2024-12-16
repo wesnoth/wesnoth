@@ -80,7 +80,7 @@ class network_registrar
 public:
 	using handler = std::function<void(const config&)>;
 
-	network_registrar(handler func);
+	network_registrar(const handler& func);
 	~network_registrar();
 
 private:

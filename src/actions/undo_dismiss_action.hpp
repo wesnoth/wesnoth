@@ -22,7 +22,7 @@ struct dismiss_action : undo_action
 {
 	unit_ptr dismissed_unit;
 
-	explicit dismiss_action(const unit_const_ptr dismissed);
+	explicit dismiss_action(const unit_const_ptr& dismissed);
 	explicit dismiss_action(const config& cfg);
 
 	static const char* get_type_impl() { return "dismiss"; }

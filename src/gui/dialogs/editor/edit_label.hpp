@@ -51,7 +51,7 @@ private:
 	color_t& color_store;
 	int load_color_component(uint8_t color_t::* component);
 	void save_color_component(uint8_t color_t::* component, const int value);
-	void register_color_component(std::string widget_id, uint8_t color_t::* component);
+	void register_color_component(const std::string& widget_id, uint8_t color_t::* component);
 	virtual const std::string& window_id() const override;
 	virtual void pre_show() override;
 };

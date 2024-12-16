@@ -2053,8 +2053,8 @@ void complex_fight(attack_prediction_mode mode,
 		double& self_not_hit,
 		double& opp_not_hit,
 		bool levelup_considered,
-		std::vector<combat_slice> split,
-		std::vector<combat_slice> opp_split,
+		const std::vector<combat_slice>& split,
+		const std::vector<combat_slice>& opp_split,
 		double initially_slowed_chance,
 		double opp_initially_slowed_chance)
 {

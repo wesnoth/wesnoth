@@ -1883,6 +1883,10 @@ CURRENT_GETTER("schedule", lua_index_raw) {
 	return lua_index_raw(L);
 }
 
+CURRENT_GETTER("user_is_replaying", bool) {
+	return k.pc().is_replay();
+}
+
 CURRENT_GETTER("event_context", config) {
 	const game_events::queued_event &ev = k.ev();
 	config cfg;
@@ -4901,7 +4905,7 @@ namespace {
 /**
  * Executes its upvalue as a theme item generator.
  */
-int game_lua_kernel::impl_theme_item(lua_State *L, std::string m)
+int game_lua_kernel::impl_theme_item(lua_State *L, const std::string& m)
 {
 	reports::context temp_context = reports::context(board(), *game_display_, tod_man(), play_controller_.get_whiteboard(), play_controller_.get_mouse_handler_base());
 	luaW_pushconfig(L, reports_.generate_report(m.c_str(), temp_context , true));

@@ -436,7 +436,7 @@ void pango_text::add_attribute_fg_color(const unsigned start_offset, const unsig
 	}
 }
 
-void pango_text::add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, std::string family)
+void pango_text::add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, const std::string& family)
 {
 	attribute_start_offset_ = start_offset;
 	attribute_end_offset_ = end_offset;
@@ -1065,7 +1065,7 @@ bool pango_text::validate_markup(std::string_view text, char** raw_text, std::st
 	 * So only try to recover from broken ampersands, by simply replacing them
 	 * with the escaped version.
 	 */
-	semi_escaped = semi_escape_text(std::string(text));
+	semi_escaped = semi_escape_text(text);
 
 	/*
 	 * If at least one ampersand is replaced the semi-escaped string

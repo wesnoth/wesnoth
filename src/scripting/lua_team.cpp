@@ -266,6 +266,14 @@ SIDE_SETTER("carryover_percentage", int) {
 	t.set_carryover_percentage(value);
 }
 
+SIDE_GETTER("carryover_gold", int) {
+	return t.carryover_gold();
+}
+
+SIDE_SETTER("carryover_gold", int) {
+	t.set_carryover_gold(value);
+}
+
 SIDE_GETTER("carryover_add", bool) {
 	return t.carryover_add();
 }

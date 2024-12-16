@@ -30,7 +30,6 @@
 #include "resources.hpp"
 #include "seed_rng.hpp"
 #include "synced_checkup.hpp"
-#include "syncmp_handler.hpp"
 #include "units/id.hpp"
 #include "utils/general.hpp"
 #include "whiteboard/manager.hpp"
