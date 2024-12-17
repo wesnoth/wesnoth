@@ -89,8 +89,9 @@ public:
 	 *
 	 * @param cfg A config object whose contents are replaced with
 	 *            the server's list if available, cleared otherwise.
+	 * @param icons Whether to have the add-ons server populate the icon
 	 */
-	bool request_addons_list(config& cfg);
+	bool request_addons_list(config& cfg, bool icons);
 
 	/**
 	 * Retrieves the add-ons server web URL if available.

@@ -32,6 +32,8 @@ struct preferences_list_defines
 	ADDPREF(achievements)
 	/** player names marked as either friends or as ignored */
 	ADDPREF(acquaintance)
+	/** whether to get the add-on icons when downloading the add-ons list */
+	ADDPREF(addon_icons)
 	/** the sort direction, ie: ascending */
 	ADDPREF(addon_manager_saved_order_direction)
 	/** the name of the column in the add-ons manager to use by default to sort results */
@@ -554,7 +556,8 @@ struct preferences_list_defines
 		turn_changed_lobby,
 		game_created_sound,
 		game_created_notif,
-		game_created_lobby
+		game_created_lobby,
+		addon_icons
 	)
 };
 using prefs_list = string_enums::enum_base<preferences_list_defines>;

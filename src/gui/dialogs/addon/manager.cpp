@@ -539,7 +539,7 @@ void addon_manager::toggle_details(button& btn, stacked_widget& stk)
 
 void addon_manager::fetch_addons_list()
 {
-	bool success = client_.request_addons_list(cfg_);
+	bool success = client_.request_addons_list(cfg_, prefs::get().addon_icons());
 	if(!success) {
 		gui2::show_error_message(_("An error occurred while downloading the add-ons list from the server."));
 		close();
