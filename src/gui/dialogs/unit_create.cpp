@@ -230,17 +230,14 @@ void unit_create::list_item_clicked()
 
 void unit_create::filter_text_changed(const std::string& text)
 {
-	auto& list = find_widget<listbox>("unit_type_list");
-	list.filter_rows_by([this, match = translation::make_ci_matcher(text), &list](std::size_t row)
-	{
-		grid* row_grid = list.get_row_grid(row);
-
-		return match(
-			row_grid->find_widget<label>("unit_type").get_label().str(),
-			row_grid->find_widget<label>("race").get_label().str(),
-			units_[row] ? units_[row]->id() : ""
-		);
-	});
+	find_widget<listbox>("unit_type_list")
+		.filter_rows_by([this, match = translation::make_ci_matcher(text)](std::size_t row) {
+			return match(
+				units_[row]->type_name(),
+				units_[row]->race()->plural_name(),
+				units_[row]->id()
+			);
+		});
 }
 
 void unit_create::gender_toggle_callback(const unit_race::GENDER val)
