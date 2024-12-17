@@ -55,7 +55,7 @@ bool get_addons_list(addons_client& client, addons_list& list)
 	list.clear();
 
 	config cfg;
-	client.request_addons_list(cfg);
+	client.request_addons_list(cfg, prefs::get().addon_icons());
 
 	read_addons_list(cfg, list);
 

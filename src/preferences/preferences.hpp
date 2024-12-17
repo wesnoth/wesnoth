@@ -485,6 +485,7 @@ public:
 	 */
 	void set_sub_achievement(const std::string& content_for, const std::string& id, const std::string& sub_id);
 
+	PREF_GETTER_SETTER(addon_icons, bool, true)
 	PREF_GETTER_SETTER(show_ally_orb, bool, game_config::show_ally_orb)
 	PREF_GETTER_SETTER(show_status_on_ally_orb, bool, game_config::show_status_on_ally_orb)
 	PREF_GETTER_SETTER(show_enemy_orb, bool, game_config::show_enemy_orb)
@@ -811,6 +812,7 @@ private:
 		prefs_list::sp_modifications,
 		prefs_list::animate_map,
 		prefs_list::animate_water,
+		prefs_list::addon_icons,
 	};
 	static constexpr std::array synced_children_{
 		prefs_list::acquaintance,
