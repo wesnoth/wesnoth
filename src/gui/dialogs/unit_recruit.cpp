@@ -63,7 +63,7 @@ static inline std::string gray_if_unrecruitable(const std::string& text, const b
 void unit_recruit::filter_text_changed(const std::string& text)
 {
 	find_widget<listbox>("recruit_list")
-		.filter_rows_by([this, searcher = translation::ci_searcher{text}](std::size_t row) {
+		.filter_rows_by([this, match = translation::make_ci_matcher(text)](std::size_t row) {
 			const unit_type* type = recruit_list_[row];
 			if(!type) return true;
 
@@ -72,7 +72,7 @@ void unit_recruit::filter_text_changed(const std::string& text)
 
 			// List of possible match criteria for this unit type.
 			// Empty values will never match.
-			return searcher(
+			return match(
 				(game_config::debug ? type->id() : ""),
 				type->type_name(),
 				std::to_string(type->level()),

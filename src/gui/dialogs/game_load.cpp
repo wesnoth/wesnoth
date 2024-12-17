@@ -325,7 +325,7 @@ void game_load::filter_text_changed(const std::string& text)
 void game_load::apply_filter_text(const std::string& text)
 {
 	find_widget<listbox>("savegame_list").filter_rows_by(
-		[this, searcher = translation::ci_searcher{text}](std::size_t row) { return searcher(games_[row].name()); });
+		[this, match = translation::make_ci_matcher(text)](std::size_t row) { return match(games_[row].name()); });
 }
 
 void game_load::evaluate_summary_string(std::stringstream& str, const config& cfg_summary)

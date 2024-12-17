@@ -96,7 +96,7 @@ void log_settings::pre_show()
 void log_settings::filter_text_changed(const std::string& text)
 {
 	find_widget<listbox>("logger_listbox").filter_rows_by(
-		[this, searcher = translation::ci_searcher{text}](std::size_t row) { return searcher(domain_list_[row]); });
+		[this, match = translation::make_ci_matcher(text)](std::size_t row) { return match(domain_list_[row]); });
 }
 
 void log_settings::post_show()

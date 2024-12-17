@@ -443,8 +443,8 @@ void unit_recall::post_show()
 void unit_recall::filter_text_changed(const std::string& text)
 {
 	auto& list = find_widget<listbox>("recall_list");
-	list.filter_rows_by([this, searcher = translation::ci_searcher{text}](std::size_t row) {
-		return searcher(filter_options_[row]);
+	list.filter_rows_by([this, match = translation::make_ci_matcher(text)](std::size_t row) {
+		return match(filter_options_[row]);
 	});
 
 	// Disable rename and dismiss buttons if no units are shown

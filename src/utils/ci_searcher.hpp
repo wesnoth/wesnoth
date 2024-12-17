@@ -20,40 +20,19 @@
 
 namespace translation
 {
-/** Helper class to perform locale-aware case-insensitive search. */
-class ci_searcher
+/** Returns a function which performs locale-aware case-insensitive search. */
+auto make_ci_matcher(std::string_view filter_text)
 {
-public:
-	ci_searcher(std::string_view filter_text)
-		: words_(utils::split(filter_text, ' '))
-	{
-	}
-
-	/** Returns true if any filter words match any of the provided strings. */
-	template<typename... Criteria>
-	bool operator()(Criteria&&... criteria) const
-	{
-		if(empty()) {
-			return true;
-		}
-
-		for(const auto& word : words_) {
-			if(!(translation::ci_search(criteria, word) || ...)) {
+	return [words = utils::split(filter_text, ' ')](auto&&... to_match) {
+		// FIXME: I think this is O(n^2)
+		for(const auto& word : words) {
+			if(!(translation::ci_search(to_match, word) || ...)) {
 				return false;
 			}
 		}
 
 		return true;
-	}
-
-	/** Returns true if there are no filter terms. */
-	bool empty() const
-	{
-		return words_.empty();
-	}
-
-private:
-	std::vector<std::string> words_;
-};
+	};
+}
 
 } // namespace translation
