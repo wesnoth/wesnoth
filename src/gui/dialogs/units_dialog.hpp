@@ -60,6 +60,13 @@ public:
 		return variation_;
 	}
 
+	void clear_variation()
+	{
+		variation_.clear();
+	}
+
+	// } --------------- BUILDER HELPERS -------------- {
+
 	units_dialog& set_title(const std::string& title)
 	{
 		title_ = title;
@@ -78,15 +85,9 @@ public:
 		return *this;
 	}
 
-	units_dialog& show_all_headers()
+	units_dialog& show_all_headers(const bool show = true)
 	{
-		show_header_ = true;
-		return *this;
-	}
-
-	units_dialog& hide_all_headers()
-	{
-		show_header_ = false;
+		show_header_ = show;
 		return *this;
 	}
 
@@ -166,6 +167,7 @@ public:
 	}
 
 	// } -------------------- BUILDERS -------------------- {
+
 	static std::unique_ptr<units_dialog> build_create_dialog(const std::vector<const unit_type*>& types_list);
 	static std::unique_ptr<units_dialog> build_recruit_dialog(const std::vector<const unit_type*>& recruit_list, const team& team);
 	static std::unique_ptr<units_dialog> build_recall_dialog(std::vector<unit_const_ptr>& recall_list, const team& team);

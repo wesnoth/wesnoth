@@ -60,7 +60,6 @@
 #include "game_events/manager_impl.hpp" // for pending_event_handler
 #include "game_events/pump.hpp"         // for queued_event
 #include "preferences/preferences.hpp"  // for encountered_units
-#include "gui/dialogs/units_dialog.hpp"
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                  // for gamemap
 #include "map/label.hpp"
@@ -466,72 +465,6 @@ int game_lua_kernel::intf_get_unit(lua_State *L)
 
 	luaW_pushunit(L, ui->underlying_id());
 	return 1;
-}
-
-int game_lua_kernel::intf_show_recruit_dialog(lua_State* L)
-{
-	const size_t len = lua_rawlen(L, 1);
-	if (!lua_istable(L, 1)) {
-		return luaL_error(L, "List of unit types not specified!");
-	}
-
-	std::vector<const unit_type*> types;
-	types.reserve(len);
-	for (size_t i = 1; i <= len; i++) {
-		lua_rawgeti(L, 1, i);
-		const unit_type* ut = luaW_tounittype(L, -1);
-		if (ut) {
-			types.push_back(ut);
-		}
-		lua_pop(L, 1);
-	}
-
-	const display* disp = display::get_singleton();
-	if (!types.empty() && disp != nullptr) {
-		gui2::dialogs::units_dialog dlg;
-		dlg.build_recruit_dialog(types, disp->playing_team());
-		if(dlg.show() && dlg.is_selected()) {
-			luaW_pushunittype(L, *types[dlg.get_selected_index()]);
-			return 1;
-		}
-	} else {
-		ERR_LUA << "Unable to show recruit dialog";
-	}
-
-	return 0;
-}
-
-int game_lua_kernel::intf_show_recall_dialog(lua_State* L)
-{
-	const size_t len = lua_rawlen(L, 1);
-	if (!lua_istable(L, 1)) {
-		return luaL_error(L, "List of units not specified!");
-	}
-
-	std::vector<unit_const_ptr> units;
-	units.reserve(len);
-	for (size_t i = 1; i <= len; i++) {
-		lua_rawgeti(L, 1, i);
-		unit_const_ptr u(luaW_tounit_ptr(L, -1));
-		if (u) {
-			units.push_back(u);
-		}
-		lua_pop(L, 1);
-	}
-
-	const display* disp = display::get_singleton();
-	if (!units.empty() && disp != nullptr) {
-		gui2::dialogs::units_dialog dlg;
-		dlg.build_recall_dialog(units, disp->playing_team());
-		if(dlg.show() && dlg.is_selected()) {
-			luaW_pushunit(L, units[dlg.get_selected_index()]->underlying_id());
-			return 1;
-		}
-	} else {
-		ERR_LUA << "Unable to show recall dialog";
-	}
-
-	return 0;
 }
 
 /**
@@ -5310,11 +5243,11 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "get_era",                  &intf_get_era                  },
 		{ "get_resource",             &intf_get_resource             },
 		{ "modify_ai",                &intf_modify_ai_old            },
-		{ "cancel_action",             &dispatch<&game_lua_kernel::intf_cancel_action              >        },
-		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
-		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
-		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },
-		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
+		{ "cancel_action",            &dispatch<&game_lua_kernel::intf_cancel_action              >        },
+		{ "log_replay",               &dispatch<&game_lua_kernel::intf_log_replay                 >        },
+		{ "log",                      &dispatch<&game_lua_kernel::intf_log                        >        },
+		{ "redraw",                   &dispatch<&game_lua_kernel::intf_redraw                     >        },
+		{ "simulate_combat",          &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
 		{ nullptr, nullptr }
 	};lua_getglobal(L, "wesnoth");
 	if (!lua_istable(L,-1)) {
@@ -5327,9 +5260,9 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_getglobal(L, "gui");
 	lua_pushcfunction(L, &dispatch<&game_lua_kernel::intf_gamestate_inspector>);
 	lua_setfield(L, -2, "show_inspector");
-	lua_pushcfunction(L, &dispatch<&game_lua_kernel::intf_show_recruit_dialog>);
+	lua_pushcfunction(L, &lua_gui2::intf_show_recruit_dialog);
 	lua_setfield(L, -2, "show_recruit_dialog");
-	lua_pushcfunction(L, &dispatch<&game_lua_kernel::intf_show_recall_dialog>);
+	lua_pushcfunction(L, &lua_gui2::intf_show_recall_dialog);
 	lua_setfield(L, -2, "show_recall_dialog");
 	lua_pop(L, 1);
 

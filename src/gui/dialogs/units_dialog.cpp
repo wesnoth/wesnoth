@@ -430,9 +430,9 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 
 		// If we didn't find the variation selection again then the new selected
 		// unit type doesn't have that variation id.
-		// if(!selection) {
-		// 	variation_.clear();
-		// }
+		if(!selection) {
+			dlg->clear_variation();
+		}
 
 		var_box.set_values(var_box_values, selection);
 	};
@@ -441,7 +441,7 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 		.set_ok_label(_("Create"))
 		.set_help_topic("..units")
 		.set_row_num(types_list.size())
-		.hide_all_headers();
+		.show_all_headers(false);
 
 	// Gender and variation selectors
 	toggle_button& male_toggle = dlg->find_widget<toggle_button>("male_toggle");
@@ -498,7 +498,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 		.set_ok_label(_("Recruit"))
 		.set_help_topic("recruit_and_recall")
 		.set_row_num(recruit_list.size())
-		.hide_all_headers()
+		.show_all_headers(false)
 		.set_column("unit_image", recruit_list, [&](const auto& recruit) {
 			std::string image_string = recruit->image();
 			image_string += "~RC(" + recruit->flag_rgb() + ">" + team.color() + ")";
