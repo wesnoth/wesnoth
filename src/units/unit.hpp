@@ -1870,8 +1870,6 @@ public:
 	bool ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
 
 
-private:
-
 	/**
 	 * Helper similar to std::unique_lock for detecting when calculations such as abilities
 	 * have entered infinite recursion.
@@ -1909,6 +1907,8 @@ private:
 	};
 
 	recursion_guard update_variables_recursion(const config& ability) const;
+
+private:
 
 	const std::set<std::string> checking_tags_{"disable", "attacks", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison", "damage_type"};
 	/**

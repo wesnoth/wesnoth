@@ -1519,7 +1519,7 @@ namespace { // Helpers for attack_type::special_active()
 
 
 		attack_type::recursion_guard filter_lock;
-		if (weapon && (filter_child->optional_child("has_attack") || filter_child->optional_child("filter_weapon"))) {
+		if (weapon && filter_child->optional_child("filter_weapon")) {
 			filter_lock  = weapon->update_variables_recursion(filter);
 			if(!filter_lock) {
 				show_recursion_warning(weapon, filter);
@@ -1532,6 +1532,14 @@ namespace { // Helpers for attack_type::special_active()
 				return false;
 		}
 
+		unit::recursion_guard u_filter_lock;
+		if (filter_child->optional_child("has_attack")) {
+			u_filter_lock = u->update_variables_recursion(filter);
+			if(!u_filter_lock) {
+				show_recursion_warning(*u, filter);
+				return false;
+			}
+		}
 		// Passed.
 		// If the other unit doesn't exist, try matching without it
 		if (!u2) {
