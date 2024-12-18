@@ -46,13 +46,12 @@ private:
 	/** Update (both internally and visually) the list of games. */
 	void populate_game_list();
 
-	void filter_text_changed(const std::string& text);
 	void browse_button_callback();
 	void delete_button_callback();
 	void handle_dir_select();
 
 	/**
-	 * Implementation detail of filter_text_changed and handle_dir_select
+	 * Hides saves not matching the given filter.
 	 *
 	 * @param text Current contents of the textbox
 	 */

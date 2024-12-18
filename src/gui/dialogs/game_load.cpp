@@ -97,7 +97,7 @@ void game_load::pre_show()
 
 	text_box* filter = find_widget<text_box>("txtFilter", false, true);
 
-	filter->set_text_changed_callback(std::bind(&game_load::filter_text_changed, this, std::placeholders::_2));
+	filter->set_text_changed_callback(std::bind(&game_load::apply_filter_text, this, std::placeholders::_2));
 
 	listbox& list = find_widget<listbox>("savegame_list");
 
@@ -315,11 +315,6 @@ void game_load::display_savegame()
 
 	// Disable 'Enter' loading in the same circumstance
 	get_window()->set_enter_disabled(!successfully_displayed_a_game);
-}
-
-void game_load::filter_text_changed(const std::string& text)
-{
-	apply_filter_text(text);
 }
 
 void game_load::apply_filter_text(const std::string& text)
