@@ -176,8 +176,6 @@ public:
 private:
 	std::vector<unit_const_ptr> unit_list_;
 
-	const team* team_;
-
 	int selected_index_;
 	std::size_t row_num_;
 

@@ -424,11 +424,11 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 	group.add_member(&male_toggle, unit_race::MALE);
 	group.add_member(&female_toggle, unit_race::FEMALE);
 	group.set_member_states(unit_race::MALE);
-	group.set_callback_on_value_change([&](widget& /*w*/, const auto& gender){
+	group.set_callback_on_value_change([&dlg](widget& /*w*/, const auto& gender){
 		dlg->update_gender(gender);
 	});
 	menu_button& var_box = dlg->find_widget<menu_button>("variation_box");
-	connect_signal_notify_modified(var_box, std::bind([&]() {
+	connect_signal_notify_modified(var_box, std::bind([&dlg]() {
 		dlg->update_variation();
 	}));
 
@@ -473,12 +473,12 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 		.set_help_topic("recruit_and_recall")
 		.set_row_num(recruit_list.size())
 		.show_all_headers(false)
-		.set_column("unit_image", recruit_list, [&](const auto& recruit) {
+		.set_column("unit_image", recruit_list, [&team](const auto& recruit) {
 			std::string image_string = recruit->image();
 			image_string += "~RC(" + recruit->flag_rgb() + ">" + team.color() + ")";
 			return image_string;
 		})
-		.set_column("unit_details", recruit_list, [&](const auto& recruit) {
+		.set_column("unit_details", recruit_list, [](const auto& recruit) {
 			return recruit->type_name() + unit_helper::format_cost_string(recruit->cost());
 		}, true)
 		.set_update_function([&](const std::size_t index) {
@@ -502,40 +502,40 @@ std::unique_ptr<units_dialog> units_dialog::build_unit_list_dialog(std::vector<u
 		dlg->rename_unit(unit_list);
 	}));
 
-	dlg->set_column("unit_name", unit_list, [&](const auto& unit) {
+	dlg->set_column("unit_name", unit_list, [](const auto& unit) {
 		return !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
 	}, true);
 
-	dlg->set_column("unit_details", unit_list, [&](const auto& unit) {
+	dlg->set_column("unit_details", unit_list, [](const auto& unit) {
 		return unit->type_name().str();
 	}, true);
 
 	dlg->set_column("unit_level", unit_list,
-		[&](const auto& unit) {
+		[](const auto& unit) {
 			return unit_helper::format_level_string(unit->level(), true);
 		},
-		[&](const auto& u) {
+		[](const auto& u) {
 			return std::tuple(u->level(), -static_cast<int>(u->experience_to_advance()));
 		});
 
 	dlg->set_column("unit_moves", unit_list,
-		[&](const auto& unit) {
+		[](const auto& unit) {
 			return unit_helper::format_movement_string(unit->movement_left(), unit->total_movement());
 		},
-		[&](const auto& u) {
+		[](const auto& u) {
 			return u->movement_left();
 		});
 
 	dlg->set_column("unit_hp", unit_list,
-		[&](const auto& unit) {
+		[](const auto& unit) {
 			return markup::span_color(unit->hp_color(), unit->hitpoints(), "/", unit->max_hitpoints());
 		},
-	 	[&](const auto& u) {
+	 	[](const auto& u) {
 			return u->hitpoints();
 		});
 
 	dlg->set_column("unit_xp",  unit_list,
-		[&](const auto& unit) {
+		[](const auto& unit) {
 			std::stringstream exp_str;
 			if(unit->can_advance()) {
 				exp_str << unit->experience() << "/" << unit->max_experience();
@@ -544,12 +544,12 @@ std::unique_ptr<units_dialog> units_dialog::build_unit_list_dialog(std::vector<u
 			}
 			return markup::span_color(unit->xp_color(), exp_str.str());
 		},
-		[&](const auto& u) {
+		[](const auto& u) {
 			// this allows 0/35, 0/100 etc to be sorted
 			// also sorts 23/35 before 0/35, after which 0/100 comes
 			return u->experience() + u->max_experience();
 		});
-	dlg->set_column("unit_status", unit_list, [&](const auto& unit) {
+	dlg->set_column("unit_status", unit_list, [](const auto& unit) {
 		// Status
 		if(unit->incapacitated()) {
 			return "misc/petrified.png";
@@ -569,7 +569,7 @@ std::unique_ptr<units_dialog> units_dialog::build_unit_list_dialog(std::vector<u
 
 		return "";
 	});
-	dlg->set_column("unit_traits",  unit_list, [&](const auto& unit) {
+	dlg->set_column("unit_traits",  unit_list, [](const auto& unit) {
 		return utils::join(unit->trait_names(), ", ");
 	}, true);
 	dlg->set_update_function([&](const std::size_t index) {
@@ -618,7 +618,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		dlg->dismiss_unit(recall_list, team);
 	}));
 
-	dlg->set_column("unit_image", recall_list, [&, recallable](const auto& unit) {
+	dlg->set_column("unit_image", recall_list, [recallable](const auto& unit) {
 		std::string mods = unit->image_mods();
 		if(unit->can_recruit()) { mods += "~BLIT(" + unit::leader_crown() + ")"; }
 		for(const std::string& overlay : unit->overlays()) {
@@ -629,43 +629,43 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 	});
 
 	dlg->set_column("unit_name", recall_list,
-		[&, recallable](const auto& unit) {
+		[recallable](const auto& unit) {
 			const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
 			return unit_helper::maybe_inactive(name, recallable(unit));
 		},
-		[&](const auto& unit) { return unit->name().str(); });
+		[](const auto& unit) { return unit->name().str(); });
 
 	dlg->set_column("unit_details", recall_list,
-		[&, recallable](const auto& unit) {
+		[recallable, &team](const auto& unit) {
 			std::stringstream details;
 			details << unit_helper::maybe_inactive(unit->type_name().str(), recallable(unit));
 			details << unit_helper::format_cost_string(unit->recall_cost(), team.recall_cost());
 			return details.str();
 		},
-		[&](const auto& unit) { return unit->type_name().str(); });
+		[](const auto& unit) { return unit->type_name().str(); });
 
 	dlg->set_column("unit_moves", recall_list,
-		[&](const auto& unit) {
+		[](const auto& unit) {
 			return unit_helper::format_movement_string(unit->movement_left(), unit->total_movement());
 		},
-		[&](const auto& recall) { return recall->movement_left(); });
+		[](const auto& recall) { return recall->movement_left(); });
 
 	dlg->set_column("unit_level", recall_list,
-		[&, recallable](const auto& unit) {
+		[recallable](const auto& unit) {
 			return unit_helper::format_level_string(unit->level(), recallable(unit));
 		},
-		[&](const auto& recall) {
+		[](const auto& recall) {
 			return std::tuple(recall->level(), -static_cast<int>(recall->experience_to_advance()));
 		});
 
 	dlg->set_column("unit_hp", recall_list,
-		[&](const auto& unit) {
+		[](const auto& unit) {
 			return markup::span_color(unit->hp_color(), unit->hitpoints(), "/", unit->max_hitpoints());
 		},
-		[&](const auto& recall) { return recall->hitpoints(); });
+		[](const auto& recall) { return recall->hitpoints(); });
 
 	dlg->set_column("unit_xp", recall_list,
-		[&](const auto& unit) {
+		[](const auto& unit) {
 			std::stringstream exp_str;
 			if(unit->can_advance()) {
 				exp_str << unit->experience() << "/" << unit->max_experience();
@@ -674,21 +674,21 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 			}
 			return markup::span_color(unit->xp_color(), exp_str.str());
 		},
-		[&](const auto& recall) {
+		[](const auto& recall) {
 			// this allows 0/35, 0/100 etc to be sorted
 			// also sorts 23/35 before 0/35, after which 0/100 comes
 			return recall->experience() + recall->max_experience();
 		});
 
 	dlg->set_column("unit_traits", recall_list,
-		[&, recallable](const auto& unit) {
+		[recallable](const auto& unit) {
 			std::string traits;
 			for(const std::string& trait : unit->trait_names()) {
 				traits += (traits.empty() ? "" : "\n") + trait;
 			}
 			return unit_helper::maybe_inactive((!traits.empty() ? traits : font::unicode_en_dash), recallable(unit));
 		},
-		[&](const auto& recall) {
+		[](const auto& recall) {
 			return !recall->trait_names().empty() ? recall->trait_names().front().str() : "";
 		});
 
