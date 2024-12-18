@@ -1048,9 +1048,8 @@ void server::handle_request_campaign_list(const server::request& req)
 		j.remove_attributes("passphrase", "passhash", "passsalt", "upload_ip", "email");
 
 		// don't include icons if requested
-		// also skip DataURI options that are unreasonably large
-		if(!req.cfg["icons"].to_bool(true) || j["icon"].str().size() > 500'000) {
-			j["icon"] = "misc/blank-hex.png";
+		if(!req.cfg["send_icons"].to_bool(true)) {
+			j.remove_attribute("icon");
 		}
 
 		// Build a feedback_url string attribute from the internal [feedback]

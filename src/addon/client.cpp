@@ -118,7 +118,7 @@ bool addons_client::request_addons_list(config& cfg, bool icons)
 
 	config request;
 	config& req_child = request.add_child("request_campaign_list");
-	req_child["icons"] = icons;
+	req_child["send_icons"] = icons;
 
 	config response_buf;
 
