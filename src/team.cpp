@@ -105,7 +105,6 @@ const std::set<std::string> team::attributes {
 	"faction_lock",
 	"gold_lock",
 	"income_lock",
-	"leader",
 	"leader_lock",
 	"random_leader",
 	"team_lock",
