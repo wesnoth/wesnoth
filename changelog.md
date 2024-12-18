@@ -1,3 +1,18 @@
+## Version 1.19.7+dev
+### Add-ons client
+### Add-ons server
+### Campaigns
+### Editor
+### Multiplayer
+### Lua API
+### Packaging
+### Terrain
+### Translations
+### Units
+### User interface
+### WML Engine
+### Miscellaneous and Bug Fixes
+
 ## Version 1.19.7
 ### Multiplayer
    * Implemented an attempt to fix the multiplayer server crashing if someone requested game history and then disconnected before receiving the results
