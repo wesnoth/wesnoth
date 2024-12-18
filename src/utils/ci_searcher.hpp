@@ -21,10 +21,9 @@
 namespace translation
 {
 /** Returns a function which performs locale-aware case-insensitive search. */
-auto make_ci_matcher(std::string_view filter_text)
+inline auto make_ci_matcher(std::string_view filter_text)
 {
 	return [words = utils::split(filter_text, ' ')](auto&&... to_match) {
-		// FIXME: I think this is O(n^2)
 		for(const auto& word : words) {
 			if(!(translation::ci_search(to_match, word) || ...)) {
 				return false;
