@@ -39,6 +39,7 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/markup.hpp"
 #include "utils/general.hpp"
+#include "utils/ci_searcher.hpp"
 #include "game_config_view.hpp"
 
 #include <functional>
@@ -86,7 +87,6 @@ game_load::game_load(const game_config_view& cache_config, savegame::load_game_m
 	, summary_(data.summary)
 	, games_()
 	, cache_config_(cache_config)
-	, last_words_()
 {
 }
 
@@ -97,7 +97,7 @@ void game_load::pre_show()
 
 	text_box* filter = find_widget<text_box>("txtFilter", false, true);
 
-	filter->set_text_changed_callback(std::bind(&game_load::filter_text_changed, this, std::placeholders::_2));
+	filter->set_text_changed_callback(std::bind(&game_load::apply_filter_text, this, std::placeholders::_2));
 
 	listbox& list = find_widget<listbox>("savegame_list");
 
@@ -317,41 +317,10 @@ void game_load::display_savegame()
 	get_window()->set_enter_disabled(!successfully_displayed_a_game);
 }
 
-void game_load::filter_text_changed(const std::string& text)
+void game_load::apply_filter_text(const std::string& text)
 {
-	apply_filter_text(text, false);
-}
-
-void game_load::apply_filter_text(const std::string& text, bool force)
-{
-	listbox& list = find_widget<listbox>("savegame_list");
-
-	const std::vector<std::string> words = utils::split(text, ' ');
-
-	if(words == last_words_ && !force)
-		return;
-	last_words_ = words;
-
-	boost::dynamic_bitset<> show_items;
-	show_items.resize(list.get_item_count(), true);
-
-	if(!text.empty()) {
-		for(unsigned int i = 0; i < list.get_item_count() && i < games_.size(); i++) {
-			bool found = false;
-			for(const auto & word : words)
-			{
-				found = translation::ci_search(games_[i].name(), word);
-				if(!found) {
-					// one word doesn't match, we don't reach words.end()
-					break;
-				}
-			}
-
-			show_items[i] = found;
-		}
-	}
-
-	list.set_row_shown(show_items);
+	find_widget<listbox>("savegame_list").filter_rows_by(
+		[this, match = translation::make_ci_matcher(text)](std::size_t row) { return match(games_[row].name()); });
 }
 
 void game_load::evaluate_summary_string(std::stringstream& str, const config& cfg_summary)
@@ -541,7 +510,7 @@ void game_load::handle_dir_select()
 
 	populate_game_list();
 	if(auto* filter = find_widget<text_box>("txtFilter", false, true)) {
-		apply_filter_text(filter->get_value(), true);
+		apply_filter_text(filter->get_value());
 	}
 	display_savegame();
 }

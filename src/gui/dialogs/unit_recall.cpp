@@ -37,6 +37,7 @@
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
 #include "units/types.hpp"
+#include "utils/ci_searcher.hpp"
 #include <functional>
 #include "whiteboard/manager.hpp"
 
@@ -441,35 +442,10 @@ void unit_recall::post_show()
 
 void unit_recall::filter_text_changed(const std::string& text)
 {
-	listbox& list = find_widget<listbox>("recall_list");
-
-	const std::vector<std::string> words = utils::split(text, ' ');
-
-	if(words == last_words_)
-		return;
-	last_words_ = words;
-
-	boost::dynamic_bitset<> show_items;
-	show_items.resize(list.get_item_count(), true);
-
-	if(!text.empty()) {
-		for(unsigned int i = 0; i < list.get_item_count(); i++) {
-			bool found = false;
-
-			for(const auto & word : words) {
-				found = translation::ci_search(filter_options_[i], word);
-
-				if(!found) {
-					// one word doesn't match, we don't reach words.end()
-					break;
-				}
-			}
-
-			show_items[i] = found;
-		}
-	}
-
-	list.set_row_shown(show_items);
+	auto& list = find_widget<listbox>("recall_list");
+	list.filter_rows_by([this, match = translation::make_ci_matcher(text)](std::size_t row) {
+		return match(filter_options_[row]);
+	});
 
 	// Disable rename and dismiss buttons if no units are shown
 	const bool any_shown = list.any_rows_shown();

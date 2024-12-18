@@ -26,6 +26,7 @@
 #include "help/help.hpp"
 #include "team.hpp"
 #include "units/types.hpp"
+#include "utils/ci_searcher.hpp"
 
 #include <functional>
 
@@ -61,30 +62,17 @@ static inline std::string gray_if_unrecruitable(const std::string& text, const b
 // Compare unit_create::filter_text_change
 void unit_recruit::filter_text_changed(const std::string& text)
 {
-	listbox& list = find_widget<listbox>("recruit_list");
+	find_widget<listbox>("recruit_list")
+		.filter_rows_by([this, match = translation::make_ci_matcher(text)](std::size_t row) {
+			const unit_type* type = recruit_list_[row];
+			if(!type) return true;
 
-	const std::vector<std::string> words = utils::split(text, ' ');
+			const auto default_gender = !type->genders().empty() ? type->genders().front() : unit_race::MALE;
+			const auto race = type->race();
 
-	if(words == last_words_)
-		return;
-	last_words_ = words;
-
-	boost::dynamic_bitset<> show_items;
-	show_items.resize(list.get_item_count(), true);
-
-	if(!text.empty()) {
-		for(unsigned int i = 0; i < list.get_item_count(); i++) {
-			assert(i < recruit_list_.size());
-			const unit_type* type = recruit_list_[i];
-			if(!type) continue;
-
-			auto default_gender = !type->genders().empty()
-				? type->genders().front() : unit_race::MALE;
-			const auto* race = type->race();
-
-			// List of possible match criteria for this unit type. Empty values will
-			// never match.
-			auto criteria = std::make_tuple(
+			// List of possible match criteria for this unit type.
+			// Empty values will never match.
+			return match(
 				(game_config::debug ? type->id() : ""),
 				type->type_name(),
 				std::to_string(type->level()),
@@ -92,27 +80,7 @@ void unit_recruit::filter_text_changed(const std::string& text)
 				(race ? race->name(default_gender) : ""),
 				(race ? race->plural_name() : "")
 			);
-
-			bool found = false;
-			for(const auto & word : words)
-			{
-				// Search for the name in the local language.
-				// In debug mode, also search for the type id.
-				std::apply([&](auto&&... criterion) {
-					found = (translation::ci_search(criterion, word) || ...);
-				}, criteria);
-
-				if(!found) {
-					// one word doesn't match, we don't reach words.end()
-					break;
-				}
-			}
-
-			show_items[i] = found;
-		}
-	}
-
-	list.set_row_shown(show_items);
+		});
 }
 
 void unit_recruit::pre_show()

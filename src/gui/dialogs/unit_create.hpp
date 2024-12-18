@@ -69,8 +69,6 @@ private:
 
 	std::string variation_;
 
-	std::vector<std::string> last_words_;
-
 	virtual const std::string& window_id() const override;
 
 	virtual void pre_show() override;

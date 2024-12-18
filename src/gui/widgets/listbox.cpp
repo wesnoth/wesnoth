@@ -246,6 +246,18 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 	}
 }
 
+void listbox::filter_rows_by(const std::function<bool(std::size_t)>& filter)
+{
+	boost::dynamic_bitset<> mask;
+	mask.resize(get_item_count(), true);
+
+	for(std::size_t i = 0; i < mask.size(); ++i) {
+		mask[i] = std::invoke(filter, i);
+	}
+
+	set_row_shown(mask);
+}
+
 boost::dynamic_bitset<> listbox::get_rows_shown() const
 {
 	return generator_->get_items_shown();
