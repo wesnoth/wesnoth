@@ -246,7 +246,7 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 	}
 }
 
-void listbox::filter_rows_by(const std::function<bool(std::size_t)>& filter)
+std::size_t listbox::filter_rows_by(const std::function<bool(std::size_t)>& filter)
 {
 	boost::dynamic_bitset<> mask;
 	mask.resize(get_item_count(), true);
@@ -256,22 +256,12 @@ void listbox::filter_rows_by(const std::function<bool(std::size_t)>& filter)
 	}
 
 	set_row_shown(mask);
+	return mask.count();
 }
 
 boost::dynamic_bitset<> listbox::get_rows_shown() const
 {
 	return generator_->get_items_shown();
-}
-
-bool listbox::any_rows_shown() const
-{
-	for(std::size_t i = 0; i < get_item_count(); i++) {
-		if(generator_->get_item_shown(i)) {
-			return true;
-		}
-	}
-
-	return false;
 }
 
 const grid* listbox::get_row_grid(const unsigned row) const

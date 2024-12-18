@@ -442,15 +442,14 @@ void unit_recall::post_show()
 
 void unit_recall::filter_text_changed(const std::string& text)
 {
-	auto& list = find_widget<listbox>("recall_list");
-	list.filter_rows_by([this, match = translation::make_ci_matcher(text)](std::size_t row) {
-		return match(filter_options_[row]);
-	});
+	const std::size_t shown = find_widget<listbox>("recall_list")
+		.filter_rows_by([this, match = translation::make_ci_matcher(text)](std::size_t row) {
+			return match(filter_options_[row]);
+		});
 
 	// Disable rename and dismiss buttons if no units are shown
-	const bool any_shown = list.any_rows_shown();
-	find_widget<button>("rename").set_active(any_shown);
-	find_widget<button>("dismiss").set_active(any_shown);
+	find_widget<button>("rename").set_active(shown > 0);
+	find_widget<button>("dismiss").set_active(shown > 0);
 }
 
 } // namespace dialogs
