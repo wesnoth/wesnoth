@@ -19,11 +19,8 @@
 
 #include <string>
 
-namespace gui2
+namespace gui2::dialogs
 {
-namespace dialogs
-{
-
 /**
  * The popup class shows windows that are shown non-modal.
  *
@@ -69,5 +66,4 @@ private:
 	virtual const std::string& window_id() const { return widget::id(); }
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

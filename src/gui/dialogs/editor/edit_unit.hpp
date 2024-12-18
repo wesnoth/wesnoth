@@ -24,12 +24,8 @@
 
 #include <boost/dynamic_bitset.hpp>
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 /**
  * Dialog that allows user to create custom unit types.
  */
@@ -161,6 +157,4 @@ private:
 		SDL_Keymod modifier);
 };
 
-
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

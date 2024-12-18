@@ -21,12 +21,8 @@
 #include <vector>
 #include <functional>
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 class custom_tod : public modal_dialog
 {
 public:
@@ -107,5 +103,4 @@ private:
 	field_integer* color_field_b_;
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

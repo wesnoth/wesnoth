@@ -23,12 +23,8 @@
 
 #include <SDL2/SDL_keycode.h>
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 class game_load : public modal_dialog
 {
 public:
@@ -76,5 +72,5 @@ private:
 	std::vector<savegame::save_info> games_;
 	const game_config_view& cache_config_;
 };
-} // namespace dialogs
-} // namespace gui2
+
+} // namespace gui2::dialogs
