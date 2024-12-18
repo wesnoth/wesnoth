@@ -1,14 +1,8 @@
-## Version 1.19.6+dev
-### Add-ons client
-### Add-ons server
-### Campaigns
-### Editor
+## Version 1.19.7
 ### Multiplayer
    * Implemented an attempt to fix the multiplayer server crashing if someone requested game history and then disconnected before receiving the results
-### Lua API
 ### Packaging
    * Windows 10 or later is now required
-### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Hungarian, Italian
 ### Units
