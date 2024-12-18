@@ -4,6 +4,7 @@
 ### Campaigns
 ### Editor
 ### Multiplayer
+   * Implemented an attempt to fix the multiplayer server crashing if someone requested game history and then disconnected before receiving the results
 ### Lua API
 ### Packaging
    * Windows 10 or later is now required
@@ -11,11 +12,18 @@
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Hungarian, Italian
 ### Units
+   * Dawarf - Decreased Cost from 17 to 12, Decreased Level from 1 to 0, and Decreased XP from 50 to 25
+   * Elvish Champion: HP 72 -> 70, cost 61 -> 60, accuracy bonus is now explained via a weapon special
 ### User interface
    * The `screen_pitch_microns` variable is no longer available for UI formulas
+   * Added a red line to the bottom of chat window when entering lobby
 ### WML Engine
    * [stacked_widget] no longer accepts the long-deprecated [stack] tag
+   * The author attribute is now again a display only attribute. Instead the primary_authors attribute should be used, which supports specifying multiple primary authors.
+   * [side]'s `leader` attribute has been removed
 ### Miscellaneous and Bug Fixes
+   * Fixed the game quitting at scenario end when loading a mp campaign game in singleplayer in debug mode
+   * Fixed map editor crashing when creating or opening scenario after having played a local scenario before opening the map editor
 
 ## Version 1.19.6
 ### Add-ons client
