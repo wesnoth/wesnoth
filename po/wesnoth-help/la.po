@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 12:08-0600\n"
+"POT-Creation-Date: 2024-12-18 16:51-0600\n"
 "PO-Revision-Date: 2013-06-20 23:23-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -282,7 +282,7 @@ msgstr "occultatio"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:161
+#: data/core/macros/weapon_specials.cfg:174
 msgid "drains"
 msgstr "exhaurit"
 
@@ -322,7 +322,7 @@ msgstr "noctivagus"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:183
+#: data/core/macros/weapon_specials.cfg:196
 msgid "poison"
 msgstr "venenat"
 
@@ -5671,13 +5671,29 @@ msgstr ""
 "Magicalis:\n"
 "Haec oppugnatio semper probabilitatem LXX pro cento habet feriendi."
 
-#. [swarm]: id=swarm
+#. [chance_to_hit]: id=honed
 #: data/core/macros/weapon_specials.cfg:123
+msgid "honed"
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:124
+msgid "This attack is 10% more accurate than other attacks."
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:125
+msgid ""
+"This unit’s “honed” attack is slightly more accurate than other attacks."
+msgstr ""
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:136
 msgid "swarm"
 msgstr "fervet"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:124
+#: data/core/macros/weapon_specials.cfg:137
 #, fuzzy
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -5692,12 +5708,12 @@ msgstr ""
 "accipiet."
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:134
+#: data/core/macros/weapon_specials.cfg:147
 msgid "charge"
 msgstr "incurrit"
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:135
+#: data/core/macros/weapon_specials.cfg:148
 #, fuzzy
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
@@ -5708,24 +5724,24 @@ msgstr ""
 "damnum duplice ex oppugnatione scopi in vicem accipiat."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:148
+#: data/core/macros/weapon_specials.cfg:161
 msgid "guard"
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:149
+#: data/core/macros/weapon_specials.cfg:162
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:150
+#: data/core/macros/weapon_specials.cfg:163
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:162
+#: data/core/macros/weapon_specials.cfg:175
 #, fuzzy
 msgid ""
 "This unit drains health from living units, healing itself for half the "
@@ -5736,12 +5752,12 @@ msgstr ""
 "damni inflecti (ignorans fractiones)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:172
+#: data/core/macros/weapon_specials.cfg:185
 msgid "first strike"
 msgstr "primus ictus"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:173
+#: data/core/macros/weapon_specials.cfg:186
 #, fuzzy
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
@@ -5750,7 +5766,7 @@ msgstr ""
 "Haec unitas semper prima percutit, etsi defendit."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:184
+#: data/core/macros/weapon_specials.cfg:197
 #, fuzzy
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -5762,19 +5778,19 @@ msgstr ""
 "tractu amittunt donec sanantur aut ad I PS rediguntur."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:194
+#: data/core/macros/weapon_specials.cfg:207
 msgid "stun"
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:195
+#: data/core/macros/weapon_specials.cfg:208
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:196
+#: data/core/macros/weapon_specials.cfg:209
 #, fuzzy
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
@@ -5783,19 +5799,19 @@ msgstr ""
 "atque damnum oppugnationum."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:205
+#: data/core/macros/weapon_specials.cfg:218
 msgid "arcane"
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:206
+#: data/core/macros/weapon_specials.cfg:219
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:207
+#: data/core/macros/weapon_specials.cfg:220
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -6486,9 +6502,9 @@ msgstr "Machinae"
 #: data/core/units.cfg:296
 msgid ""
 "Ships are not living beings, but they are crafted and (usually) controlled "
-"by living beings.  Although inanimate objects, they are very dear to their "
+"by living beings. Although inanimate objects, they are very dear to their "
 "masters, needing care and attention in return for providing sustenance and "
-"protection.  For this reason, most are given names and attributed traits.  "
+"protection. For this reason, most are given names and attributed traits. "
 "Those traits may be technical or they may simply reflect the collective "
 "attitude of the crew, but they are real."
 msgstr ""

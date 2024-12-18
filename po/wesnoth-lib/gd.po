@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 12:08-0600\n"
+"POT-Creation-Date: 2024-12-18 16:51-0600\n"
 "PO-Revision-Date: 2022-01-13 19:16+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -2567,7 +2567,7 @@ msgstr "Thoir ainm ùr air"
 #. [label]
 #. [grid]
 #: data/gui/themes/default/window/addon_auth.cfg:99
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:216
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:217
 #: data/gui/themes/default/window/mp_create_game.cfg:1036
 #: data/gui/themes/default/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/themes/default/window/mp_login.cfg:143
@@ -2636,7 +2636,7 @@ msgstr "Ceart ma-thà"
 #: data/gui/themes/default/window/edit_text.cfg:130
 #: data/gui/themes/default/window/editor_choose_addon.cfg:207
 #: data/gui/themes/default/window/editor_edit_label.cfg:315
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:475
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:476
 #: data/gui/themes/default/window/editor_edit_pbl_translation.cfg:137
 #: data/gui/themes/default/window/editor_edit_scenario.cfg:301
 #: data/gui/themes/default/window/editor_edit_side.cfg:481
@@ -2826,7 +2826,7 @@ msgstr "Gun eisimeileachd"
 #. [label]
 #. [label]: id=translations_label
 #: data/gui/themes/default/window/addon_manager.cfg:733
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:228
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:229
 msgid "Translations:"
 msgstr "Eadar-theangachaidhean:"
 
@@ -2858,7 +2858,7 @@ msgstr "Tagaichean:"
 #. [label]: id=translations_language
 #. [button]: id=language
 #: data/gui/themes/default/window/addon_manager.cfg:870
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:257
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:258
 #: data/gui/themes/default/window/language_selection.cfg:227
 #: data/gui/themes/default/window/title_screen.cfg:494
 #: data/gui/themes/modern/dialogs/title_screen.cfg:459
@@ -3134,7 +3134,7 @@ msgstr "Cluich"
 #: data/gui/themes/default/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:262
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
-#: src/gui/dialogs/editor/edit_pbl.cpp:191
+#: src/gui/dialogs/editor/edit_pbl.cpp:197
 msgid "Difficulty"
 msgstr "Duilgheas"
 
@@ -3209,7 +3209,7 @@ msgstr "Luchdaich eitean"
 #. [button]: id=ok
 #: data/gui/themes/default/window/core_dialog.cfg:228
 #: data/gui/themes/default/window/language_selection.cfg:293
-#: src/gui/dialogs/editor/custom_tod.cpp:171
+#: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:312
 #: src/preferences/preferences.cpp:1306
 msgid "Select"
@@ -3285,7 +3285,7 @@ msgstr "Deasaich an sgeideal ama"
 #: data/gui/themes/default/window/screenshot_notification.cfg:120
 #: data/gui/themes/default/window/tod_new_schedule.cfg:86
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:181
-#: src/gui/dialogs/unit_recall.cpp:318
+#: src/gui/dialogs/unit_recall.cpp:321
 msgid "Name:"
 msgstr "Ainm:"
 
@@ -3362,9 +3362,9 @@ msgstr ""
 #. [label]
 #: data/gui/themes/default/window/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:973
-#: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/custom_tod.cpp:189
-#: src/gui/dialogs/editor/custom_tod.cpp:196
+#: src/gui/dialogs/editor/custom_tod.cpp:183
+#: src/gui/dialogs/editor/custom_tod.cpp:190
+#: src/gui/dialogs/editor/custom_tod.cpp:197
 #: src/gui/dialogs/editor/edit_unit.cpp:325
 #: src/gui/dialogs/editor/edit_unit.cpp:333
 #: src/gui/dialogs/editor/edit_unit.cpp:341
@@ -3594,39 +3594,53 @@ msgstr ""
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:214
 msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
-"upload updates for this add-on."
+"upload updates for this add-on or delete this add-on."
 msgstr ""
 
 #. [grid]
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:214
-msgid "Secondary Authors:"
+#, fuzzy
+#| msgid "Author"
+msgid "Primary Authors:"
+msgstr "Ùghdar"
+
+#. [grid]
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:215
+msgid ""
+"Comma delimited list of forum usernames of other people who are allowed to "
+"upload updates for this add-on."
 msgstr ""
 
 #. [grid]
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:215
+msgid "Secondary Authors:"
+msgstr ""
+
+#. [grid]
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:216
 msgid ""
 "An email address you can be contacted at in case of issues with your add-on."
 msgstr ""
 
 #. [grid]
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:215
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:216
 msgid "Email:"
 msgstr ""
 
 #. [grid]
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:216
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:217
 msgid ""
 "The add-on’s current password. Using forum authentication is recommended "
 "instead since this password is not stored securely."
 msgstr ""
 
 #. [label]: id=translations_title
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:274
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:275
 msgid "Title"
 msgstr ""
 
 #. [label]: id=translations_description
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:291
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:292
 #, fuzzy
 #| msgid "Description:"
 msgid "Description"
@@ -3634,7 +3648,7 @@ msgstr "Tuairisgeul:"
 
 #. [button]: id=translations_add
 #. [button]: id=server_add
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:406
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:407
 #: data/gui/themes/default/window/mp_connect.cfg:270
 msgid "Add"
 msgstr "Cuir ris"
@@ -3643,7 +3657,7 @@ msgstr "Cuir ris"
 #. [button]: id=delete_file
 #. [button]: id=delete
 #. [button]: id=server_delete
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:420
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:421
 #: data/gui/themes/default/window/file_dialog.cfg:349
 #: data/gui/themes/default/window/game_load.cfg:606
 #: data/gui/themes/default/window/mp_connect.cfg:284
@@ -3651,14 +3665,14 @@ msgid "Delete"
 msgstr "Sguab às"
 
 #. [button]: id=validate
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:451
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:452
 msgid "Validate"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #. [button]: id=save
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:463
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:464
 #: data/gui/themes/default/window/game_save.cfg:120
 #: data/gui/themes/default/window/screenshot_notification.cfg:201
 #: src/gui/dialogs/file_dialog.cpp:230 src/hotkey/hotkey_command.cpp:185
@@ -4524,7 +4538,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/window/game_stats.cfg:705
-#: src/gui/dialogs/game_stats.cpp:247
+#: src/gui/dialogs/game_stats.cpp:248
 msgid "Current Status"
 msgstr "An staid an-dràsta"
 
@@ -4536,7 +4550,7 @@ msgstr "Stadastaireachd a’ gheama"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/themes/default/window/game_stats.cfg:793
-#: src/gui/dialogs/game_stats.cpp:247
+#: src/gui/dialogs/game_stats.cpp:248
 msgid "Scenario Settings"
 msgstr "Roghainnean a’ chnàmh-sgeòil"
 
@@ -5815,7 +5829,7 @@ msgstr "Ainm an sgioba:"
 #: data/gui/themes/default/window/preferences.cfg:365
 #: data/gui/themes/default/window/title_screen.cfg:257
 #: data/gui/themes/modern/dialogs/title_screen.cfg:257
-#: src/gui/dialogs/game_load.cpp:397
+#: src/gui/dialogs/game_load.cpp:368
 msgid "Multiplayer"
 msgstr "Ioma-chluicheadair"
 
@@ -6136,7 +6150,7 @@ msgstr "Grad-iuchraichean"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:898
+#: src/gui/dialogs/preferences_dialog.cpp:899
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -6149,7 +6163,7 @@ msgstr "Ri fhaighinn sa gheama"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:899
+#: src/gui/dialogs/preferences_dialog.cpp:900
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -6162,7 +6176,7 @@ msgstr "Ri fhaighinn san deasaiche"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:900
+#: src/gui/dialogs/preferences_dialog.cpp:901
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -7062,7 +7076,7 @@ msgstr "Trus"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/window/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:270
 #: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "Mearachd"
@@ -7139,7 +7153,7 @@ msgstr "<chan eil fhios>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1786
+#: src/filesystem.cpp:1787
 msgid "language code for localized resources^en_US"
 msgstr "gd"
 
@@ -7183,95 +7197,6 @@ msgstr "$prefix, $next"
 msgid "disjunct end^$prefix, or $last"
 msgstr "$prefix no $last"
 
-#: src/formula/string_utils.cpp:299 src/formula/string_utils.cpp:339
-msgid "timespan^expired"
-msgstr "dh’fhalbh an ùine air"
-
-#. TRANSLATORS: The "timespan^$num xxxxx" strings originating from the same file
-#. as the string with this comment MUST be translated following the usual rules
-#. for WML variable interpolation -- that is, without including or translating
-#. the caret^ prefix, and leaving the $num variable specification intact, since
-#. it is technically code. The only translatable natural word to be found here
-#. is the time unit (year, month, etc.) For example, for French you would
-#. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
-#. generate output such as "39 ans" after variable interpolation.
-#: src/formula/string_utils.cpp:313
-#, fuzzy
-#| msgid "timespan^$num year"
-#| msgid_plural "timespan^$num years"
-msgid "timespan^$num year"
-msgid_plural "timespan^$num years"
-msgstr[0] "$num bhliadhna"
-msgstr[1] "$num bhliadhna"
-msgstr[2] "$num bhliadhna"
-msgstr[3] "$num bhliadhna"
-
-#: src/formula/string_utils.cpp:314
-#, fuzzy
-#| msgid "timespan^$num month"
-#| msgid_plural "timespan^$num months"
-msgid "timespan^$num month"
-msgid_plural "timespan^$num months"
-msgstr[0] "$num mhìos"
-msgstr[1] "$num mhìos"
-msgstr[2] "$num mhìos"
-msgstr[3] "$num mhìos"
-
-#: src/formula/string_utils.cpp:315
-#, fuzzy
-#| msgid "timespan^$num week"
-#| msgid_plural "timespan^$num weeks"
-msgid "timespan^$num week"
-msgid_plural "timespan^$num weeks"
-msgstr[0] "$num seachdain"
-msgstr[1] "$num seachdain"
-msgstr[2] "$num seachdain"
-msgstr[3] "$num seachdain"
-
-#: src/formula/string_utils.cpp:316
-#, fuzzy
-#| msgid "timespan^$num day"
-#| msgid_plural "timespan^$num days"
-msgid "timespan^$num day"
-msgid_plural "timespan^$num days"
-msgstr[0] "$num latha"
-msgstr[1] "$num latha"
-msgstr[2] "$num latha"
-msgstr[3] "$num latha"
-
-#: src/formula/string_utils.cpp:317
-#, fuzzy
-#| msgid "timespan^$num hour"
-#| msgid_plural "timespan^$num hours"
-msgid "timespan^$num hour"
-msgid_plural "timespan^$num hours"
-msgstr[0] "$num uair a thìde"
-msgstr[1] "$num uair a thìde"
-msgstr[2] "$num uair a thìde"
-msgstr[3] "$num uair a thìde"
-
-#: src/formula/string_utils.cpp:318
-#, fuzzy
-#| msgid "timespan^$num minute"
-#| msgid_plural "timespan^$num minutes"
-msgid "timespan^$num minute"
-msgid_plural "timespan^$num minutes"
-msgstr[0] "$num mhionaid"
-msgstr[1] "$num mhionaid"
-msgstr[2] "$num mhionaid"
-msgstr[3] "$num mhionaid"
-
-#: src/formula/string_utils.cpp:319
-#, fuzzy
-#| msgid "timespan^$num second"
-#| msgid_plural "timespan^$num seconds"
-msgid "timespan^$num second"
-msgid_plural "timespan^$num seconds"
-msgstr[0] "$num diog"
-msgstr[1] "$num diog"
-msgstr[2] "$num diog"
-msgstr[3] "$num diog"
-
 #: src/gui/core/canvas.cpp:263
 #, fuzzy
 #| msgid "Image doesn't fit on canvas."
@@ -7290,9 +7215,9 @@ msgstr "Cha deach staid no roinn tarraing a mhìneachadh."
 msgid "No resolution defined for "
 msgstr "Cha deach dùmhlachd-bhreacaidh a mhìneachadh."
 
-#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:426
-#: src/gui/widgets/multi_page.cpp:176 src/gui/widgets/panel.cpp:131
-#: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:224
+#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:427
+#: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
+#: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:229
 #: src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
 msgstr "Cha deach griod a mhìneachadh."
@@ -7662,23 +7587,23 @@ msgstr "%Y-%m-%d %H:%M"
 msgid "url^None"
 msgstr "Gun làrach-lìn"
 
-#: src/gui/dialogs/attack_predictions.cpp:118
+#: src/gui/dialogs/attack_predictions.cpp:119
 msgid "No usable weapon"
 msgstr "Gun arm feumail"
 
-#: src/gui/dialogs/attack_predictions.cpp:196
+#: src/gui/dialogs/attack_predictions.cpp:197
 msgid "Defender resistance vs"
 msgstr "Seasamh an dìonadair an aghaidh"
 
-#: src/gui/dialogs/attack_predictions.cpp:198
+#: src/gui/dialogs/attack_predictions.cpp:199
 msgid "Defender vulnerability vs"
 msgstr "Dìonadair so-leònta a thaobh"
 
-#: src/gui/dialogs/attack_predictions.cpp:202
+#: src/gui/dialogs/attack_predictions.cpp:203
 msgid "Attacker resistance vs"
 msgstr "Seasamh an ionnsaigheir an aghaidh"
 
-#: src/gui/dialogs/attack_predictions.cpp:204
+#: src/gui/dialogs/attack_predictions.cpp:205
 msgid "Attacker vulnerability vs"
 msgstr "Ionnsaighear so-leònta a thaobh"
 
@@ -7758,128 +7683,128 @@ msgstr ""
 "Chan eil an t-atharrachadh a thagh thu co-chòrdail ris an rèiteachadh agad.\n"
 "Feuch an tagh thu fear co-chòrdail."
 
-#: src/gui/dialogs/editor/custom_tod.cpp:170
+#: src/gui/dialogs/editor/custom_tod.cpp:171
 #: src/gui/dialogs/editor/edit_unit.cpp:311
 #, fuzzy
 #| msgid "Choose Test"
 msgid "Choose File"
 msgstr "Tagh deuchainn"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:178
+#: src/gui/dialogs/editor/custom_tod.cpp:179
 #: src/gui/dialogs/editor/edit_unit.cpp:320
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:171
+#: src/gui/dialogs/editor/edit_pbl.cpp:177
 #, fuzzy
 #| msgid "Load Core"
 msgid "Core"
 msgstr "Luchdaich eitean"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:172
+#: src/gui/dialogs/editor/edit_pbl.cpp:178
 #, fuzzy
 #| msgid "Campaigns"
 msgid "Campaign"
 msgstr "Iomairtean"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:173
+#: src/gui/dialogs/editor/edit_pbl.cpp:179
 #, fuzzy
 #| msgid "Start Campaign"
 msgid "Hybrid Campaign"
 msgstr "Tòisich iomairt"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:174
+#: src/gui/dialogs/editor/edit_pbl.cpp:180
 #, fuzzy
 #| msgid "Multiplayer Campaigns"
 msgid "Multiplayer Campaign"
 msgstr "Iomairtean ioma-chluicheadair"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:175
+#: src/gui/dialogs/editor/edit_pbl.cpp:181
 #, fuzzy
 #| msgid "Scenarios"
 msgid "Scenario"
 msgstr "Cnàmh-sgeulan"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:176
+#: src/gui/dialogs/editor/edit_pbl.cpp:182
 #, fuzzy
 #| msgid "Multiplayer Alerts"
 msgid "Multiplayer Scenario"
 msgstr "Brathan ioma-chluicheadair"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:177
+#: src/gui/dialogs/editor/edit_pbl.cpp:183
 #, fuzzy
 #| msgid "Action"
 msgid "Faction"
 msgstr "Gnìomh"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:178
+#: src/gui/dialogs/editor/edit_pbl.cpp:184
 #: src/gui/dialogs/multiplayer/lobby.cpp:421
 msgid "Era"
 msgstr "Linn"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:179
+#: src/gui/dialogs/editor/edit_pbl.cpp:185
 msgid "Map Pack"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:180
+#: src/gui/dialogs/editor/edit_pbl.cpp:186
 #, fuzzy
 #| msgid "Modifications"
 msgid "Modification"
 msgstr "Atharraichean"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:181
+#: src/gui/dialogs/editor/edit_pbl.cpp:187
 msgid "Media"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:182
+#: src/gui/dialogs/editor/edit_pbl.cpp:188
 msgid "Theme"
 msgstr "Ùrlar"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:183
+#: src/gui/dialogs/editor/edit_pbl.cpp:189
 #, fuzzy
 #| msgid "Other Games"
 msgid "Other"
 msgstr "Geamannan eile"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:189
+#: src/gui/dialogs/editor/edit_pbl.cpp:195
 #, fuzzy
 #| msgid "addon_tag^Cooperative"
 msgid "Cooperative"
 msgstr "Co-obrachadh"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:190
+#: src/gui/dialogs/editor/edit_pbl.cpp:196
 #, fuzzy
 #| msgid "addon_tag^Cosmetic"
 msgid "Cosmetic"
 msgstr "Coltas"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:192
+#: src/gui/dialogs/editor/edit_pbl.cpp:198
 msgid "RNG"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:193
+#: src/gui/dialogs/editor/edit_pbl.cpp:199
 #, fuzzy
 #| msgid "addon_tag^Survival"
 msgid "Survival"
 msgstr "Maireachdainn"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:194
+#: src/gui/dialogs/editor/edit_pbl.cpp:200
 #, fuzzy
 #| msgid "addon_tag^Terraforming"
 msgid "Terraforming"
 msgstr "Tìr-atharrachadh"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:377
+#: src/gui/dialogs/editor/edit_pbl.cpp:391
 msgid "No validation errors"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:377
+#: src/gui/dialogs/editor/edit_pbl.cpp:391
 msgid "Success"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:407
+#: src/gui/dialogs/editor/edit_pbl.cpp:421
 #, fuzzy
 #| msgid "Choose Starting Scenario"
 msgid "Choose an icon"
@@ -8018,7 +7943,7 @@ msgstr "Chan eil fhios"
 #: src/gui/dialogs/game_cache_options.cpp:97
 #: src/gui/dialogs/network_transmission.cpp:48
 #: src/gui/dialogs/network_transmission.cpp:49
-#: src/gui/dialogs/screenshot_notification.cpp:109
+#: src/gui/dialogs/screenshot_notification.cpp:110
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -8046,68 +7971,68 @@ msgstr "Chaidh tasgadan dàta a’ gheama a phurgaidicheadh."
 msgid "The game data cache could not be purged."
 msgstr "Cha b’ urrainn dhuinn tasgadan dàta a’ gheama a phurgaidicheadh."
 
-#: src/gui/dialogs/game_load.cpp:71
+#: src/gui/dialogs/game_load.cpp:72
 msgid "No Saved Games"
 msgstr "Gun gheama air a shàbhaladh"
 
-#: src/gui/dialogs/game_load.cpp:71
+#: src/gui/dialogs/game_load.cpp:72
 msgid "There are no saved games to load."
 msgstr "Chan eil geama air a shàbhaladh ri luchdadh ann."
 
-#: src/gui/dialogs/game_load.cpp:141
+#: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
 msgstr "An tionndadh làithreach"
 
-#: src/gui/dialogs/game_load.cpp:145
+#: src/gui/dialogs/game_load.cpp:147
 msgid "game_version^Wesnoth $version"
 msgstr "Beasnad $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
-#: src/gui/dialogs/game_load.cpp:232
+#: src/gui/dialogs/game_load.cpp:234
 msgid "$active active, $reserve reserve"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:287
+#: src/gui/dialogs/game_load.cpp:289
 msgid "The selected file is corrupt: "
 msgstr "Tha am faidhle a thagh thu coirbte: "
 
-#: src/gui/dialogs/game_load.cpp:358
+#: src/gui/dialogs/game_load.cpp:329
 msgid "(Invalid)"
 msgstr "(Mì-dhligheach)"
 
-#: src/gui/dialogs/game_load.cpp:388
+#: src/gui/dialogs/game_load.cpp:359
 msgid "Campaign: $campaign_name"
 msgstr "Iomairt: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:400
+#: src/gui/dialogs/game_load.cpp:371
 msgid "Tutorial"
 msgstr "Oideachadh"
 
-#: src/gui/dialogs/game_load.cpp:403
+#: src/gui/dialogs/game_load.cpp:374
 msgid "Test scenario"
 msgstr "Deuchainn air cnàmh-sgeul"
 
-#: src/gui/dialogs/game_load.cpp:413
+#: src/gui/dialogs/game_load.cpp:384
 msgid "Replay"
 msgstr "Ath-chluich"
 
-#: src/gui/dialogs/game_load.cpp:415
+#: src/gui/dialogs/game_load.cpp:386
 msgid "Turn"
 msgstr "Cuairt"
 
-#: src/gui/dialogs/game_load.cpp:417
+#: src/gui/dialogs/game_load.cpp:388
 msgid "Scenario start"
 msgstr "Tòisich cnàmh-sgeul"
 
-#: src/gui/dialogs/game_load.cpp:436
+#: src/gui/dialogs/game_load.cpp:407
 msgid "Difficulty: "
 msgstr "Duilgheas: "
 
-#: src/gui/dialogs/game_load.cpp:459
+#: src/gui/dialogs/game_load.cpp:430
 msgid "Version: "
 msgstr "Tionndadh: "
 
-#: src/gui/dialogs/game_load.cpp:464
+#: src/gui/dialogs/game_load.cpp:435
 msgid "Modifications: "
 msgstr "Atharraichean: "
 
@@ -8153,91 +8078,91 @@ msgstr "Leubailean nan sgioba"
 msgid "Side $side_number ($name)"
 msgstr "Taobh $side_number ($name)"
 
-#: src/gui/dialogs/loading_screen.cpp:45
+#: src/gui/dialogs/loading_screen.cpp:46
 msgid "Building terrain rules"
 msgstr "A’ togail riaghailtean crutha-thìre"
 
-#: src/gui/dialogs/loading_screen.cpp:46
+#: src/gui/dialogs/loading_screen.cpp:47
 msgid "Reading files and creating cache"
 msgstr "A’ leughadh faidhlichean is a’ cruthachadh tasgadan"
 
-#: src/gui/dialogs/loading_screen.cpp:47 src/gui/dialogs/loading_screen.cpp:50
+#: src/gui/dialogs/loading_screen.cpp:48 src/gui/dialogs/loading_screen.cpp:51
 msgid "Initializing display"
 msgstr "A’ tòiseachadh an uidheim-thaisbeanaidh"
 
-#: src/gui/dialogs/loading_screen.cpp:48
+#: src/gui/dialogs/loading_screen.cpp:49
 msgid "Reinitialize fonts for the current language"
 msgstr "Ag ath-thòiseachadh nan cruthan-clò airson a’ chànain làithrich"
 
-#: src/gui/dialogs/loading_screen.cpp:49
+#: src/gui/dialogs/loading_screen.cpp:50
 msgid "Initializing teams"
 msgstr "A’ tòiseachadh nan sgiobaidhean"
 
-#: src/gui/dialogs/loading_screen.cpp:51
+#: src/gui/dialogs/loading_screen.cpp:52
 msgid "Loading game configuration"
 msgstr "A’ luchdadh rèiteachadh a’ gheama"
 
-#: src/gui/dialogs/loading_screen.cpp:52
+#: src/gui/dialogs/loading_screen.cpp:53
 msgid "Loading data files"
 msgstr "A’ luchdadh faidhlichean dàta"
 
-#: src/gui/dialogs/loading_screen.cpp:53
+#: src/gui/dialogs/loading_screen.cpp:54
 msgid "Loading level"
 msgstr "A’ luchdadh an leibheil"
 
-#: src/gui/dialogs/loading_screen.cpp:54
+#: src/gui/dialogs/loading_screen.cpp:55
 msgid "Initializing scripting engine"
 msgstr "A’ tòiseachadh an einnsein-sgriobtachaidh"
 
-#: src/gui/dialogs/loading_screen.cpp:55
+#: src/gui/dialogs/loading_screen.cpp:56
 msgid "Initializing planning mode"
 msgstr "A’ tòiseachadh a’ mhodh planaidh"
 
-#: src/gui/dialogs/loading_screen.cpp:56
+#: src/gui/dialogs/loading_screen.cpp:57
 msgid "Reading unit files"
 msgstr "A’ leughadh faidhlichean nan aonad"
 
-#: src/gui/dialogs/loading_screen.cpp:57
+#: src/gui/dialogs/loading_screen.cpp:58
 msgid "Loading units"
 msgstr "A’ luchdadh nan aonadan"
 
-#: src/gui/dialogs/loading_screen.cpp:58
+#: src/gui/dialogs/loading_screen.cpp:59
 msgid "Searching for installed add-ons"
 msgstr "A’ sireadh tuilleadain air an stàladh"
 
-#: src/gui/dialogs/loading_screen.cpp:59
+#: src/gui/dialogs/loading_screen.cpp:60
 msgid "Starting game"
 msgstr "A’ tòiseachadh a’ gheama"
 
-#: src/gui/dialogs/loading_screen.cpp:60
+#: src/gui/dialogs/loading_screen.cpp:61
 msgid "Verifying cache"
 msgstr "A’ dearbhadh an tasgadain"
 
-#: src/gui/dialogs/loading_screen.cpp:61
+#: src/gui/dialogs/loading_screen.cpp:62
 msgid "Connecting to server"
 msgstr "A’ ceangal ris an fhrithealaiche"
 
-#: src/gui/dialogs/loading_screen.cpp:62
+#: src/gui/dialogs/loading_screen.cpp:63
 msgid "Logging in"
 msgstr "’Gad chlàradh a-steach"
 
-#: src/gui/dialogs/loading_screen.cpp:63
+#: src/gui/dialogs/loading_screen.cpp:64
 msgid "Waiting for server"
 msgstr "A’ feitheamh ris an fhrithealaiche"
 
-#: src/gui/dialogs/loading_screen.cpp:64
+#: src/gui/dialogs/loading_screen.cpp:65
 msgid "Connecting to redirected server"
 msgstr "A’ ceangal gu fhrithealaiche air a shìneadh air adhart"
 
-#: src/gui/dialogs/loading_screen.cpp:65
+#: src/gui/dialogs/loading_screen.cpp:66
 msgid "Waiting for next scenario"
 msgstr "A’ feitheamh airson an ath chnàmh-sgeòil"
 
-#: src/gui/dialogs/loading_screen.cpp:66
+#: src/gui/dialogs/loading_screen.cpp:67
 msgid "Getting game data"
 msgstr "A’ faighinn dàta a’ gheama"
 
-#: src/gui/dialogs/loading_screen.cpp:67
+#: src/gui/dialogs/loading_screen.cpp:68
 msgid "Downloading lobby data"
 msgstr "A’ luchdadh a-nuas dàta an lobaidh"
 
@@ -8520,25 +8445,25 @@ msgstr "caraid"
 msgid "ignored"
 msgstr "neo-shuim"
 
-#: src/gui/dialogs/preferences_dialog.cpp:256
-#: src/gui/dialogs/preferences_dialog.cpp:313
+#: src/gui/dialogs/preferences_dialog.cpp:255
+#: src/gui/dialogs/preferences_dialog.cpp:312
 msgid "No username specified"
 msgstr "Cha deach ainm-cleachdaiche a shònrachadh"
 
-#: src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/preferences_dialog.cpp:270
 msgid "Invalid username"
 msgstr "Ainm cleachdaiche mì-dhligheach"
 
-#: src/gui/dialogs/preferences_dialog.cpp:318
+#: src/gui/dialogs/preferences_dialog.cpp:317
 msgid "Not on friends or ignore lists"
 msgstr "Chan eil iad air liosta nan caraidean no neo-shuime agad"
 
-#: src/gui/dialogs/preferences_dialog.cpp:944
-#: src/gui/dialogs/preferences_dialog.cpp:1008
+#: src/gui/dialogs/preferences_dialog.cpp:945
+#: src/gui/dialogs/preferences_dialog.cpp:1009
 msgid "No hotkey selected"
 msgstr "Cha deach grad-iuchair a thaghadh"
 
-#: src/gui/dialogs/preferences_dialog.cpp:972
+#: src/gui/dialogs/preferences_dialog.cpp:973
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8547,20 +8472,20 @@ msgstr ""
 "b>”. A bheil thu airson a shònrachadh dha “<b>$new_hotkey_action|</b>” ’na "
 "àite?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:978
+#: src/gui/dialogs/preferences_dialog.cpp:979
 msgid "Reassign Hotkey"
 msgstr "Sònraich a’ ghrad-iuchair dhan nì ùr"
 
-#: src/gui/dialogs/preferences_dialog.cpp:995
+#: src/gui/dialogs/preferences_dialog.cpp:996
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 "Chaidh a h-uile grad-iuchair ath-shuidheachadh air an luach bhunaiteach."
 
-#: src/gui/dialogs/preferences_dialog.cpp:995
+#: src/gui/dialogs/preferences_dialog.cpp:996
 msgid "Hotkeys Reset"
 msgstr "Ath-shuidhich na grad-iuchraichean"
 
-#: src/gui/dialogs/screenshot_notification.cpp:94
+#: src/gui/dialogs/screenshot_notification.cpp:95
 msgid ""
 "Unsupported image format.\n"
 "\n"
@@ -8653,7 +8578,7 @@ msgstr "Tionndadh $version"
 msgid "Choose Test Scenario"
 msgstr "Tagh an cnàmh-sgeul tòiseachaidh"
 
-#: src/gui/dialogs/unit_create.cpp:189
+#: src/gui/dialogs/unit_create.cpp:191
 msgid "unit_variation^Default Variation"
 msgstr "Eugsamhlachadh bunaiteach"
 
@@ -8669,33 +8594,33 @@ msgstr ""
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "Cha ghabh an t-aonad seo ais-ghairm oir chan eil òr gu leòr agad."
 
-#: src/gui/dialogs/unit_recall.cpp:317 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/unit_recall.cpp:320 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "Ath-ainmich aonad"
 
-#: src/gui/dialogs/unit_recall.cpp:353
+#: src/gui/dialogs/unit_recall.cpp:356
 msgid "This unit is loyal and requires no upkeep."
 msgstr "Tha an t-aonad seo dìleas is chan eil e feumach air beathachadh"
 
-#: src/gui/dialogs/unit_recall.cpp:354 src/gui/dialogs/unit_recall.cpp:359
-#: src/gui/dialogs/unit_recall.cpp:364
+#: src/gui/dialogs/unit_recall.cpp:357 src/gui/dialogs/unit_recall.cpp:362
+#: src/gui/dialogs/unit_recall.cpp:367
 msgid "Do you really want to dismiss him?"
 msgstr "A bheil thu cinnteach gu bheil thu airson a chur à dreuchd?"
 
-#: src/gui/dialogs/unit_recall.cpp:355 src/gui/dialogs/unit_recall.cpp:360
-#: src/gui/dialogs/unit_recall.cpp:365
+#: src/gui/dialogs/unit_recall.cpp:358 src/gui/dialogs/unit_recall.cpp:363
+#: src/gui/dialogs/unit_recall.cpp:368
 msgid "Do you really want to dismiss her?"
 msgstr "A bheil thu cinnteach gu bheil thu airson a cur à dreuchd?"
 
-#: src/gui/dialogs/unit_recall.cpp:358
+#: src/gui/dialogs/unit_recall.cpp:361
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "’S e aonad eòlach a th’ ann le rang àrd."
 
-#: src/gui/dialogs/unit_recall.cpp:363
+#: src/gui/dialogs/unit_recall.cpp:366
 msgid "This unit is close to advancing a level."
 msgstr "Tha an t-aonad seo cha mhòr air an ath rang a ruigsinn."
 
-#: src/gui/dialogs/unit_recall.cpp:369
+#: src/gui/dialogs/unit_recall.cpp:372
 msgid "Dismiss Unit"
 msgstr "Cuir an t-aonad à dreuchd"
 
@@ -8723,15 +8648,20 @@ msgstr "Foillsichte, ro shean air an fhrithealaiche"
 msgid "Delete add-on from server"
 msgstr "Sguab às an tuilleadan air an fhrithealaiche"
 
-#: src/gui/widgets/chatbox.cpp:290
+#. TRANSLATORS: This is the new chat text indicator
+#: src/gui/widgets/chatbox.cpp:95
+msgid "NEW"
+msgstr ""
+
+#: src/gui/widgets/chatbox.cpp:300
 msgid "whisper to $receiver"
 msgstr "cagair gu $receiver"
 
-#: src/gui/widgets/chatbox.cpp:374
+#: src/gui/widgets/chatbox.cpp:384
 msgid "Joined <i>$name</i>"
 msgstr "Air tighinn a-steach gu <i>$name</i>"
 
-#: src/gui/widgets/chatbox.cpp:380
+#: src/gui/widgets/chatbox.cpp:390
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
@@ -8740,13 +8670,13 @@ msgstr ""
 "eil thu airson teachdaireachdan fhaighinn on chluicheadair seo, sgrìobh <i>/"
 "ignore $name</i>"
 
-#: src/gui/widgets/helper.cpp:122
+#: src/gui/widgets/helper.cpp:153
 #, fuzzy
 #| msgid "Mandatory widget '$id' hasn't been defined."
 msgid "Mandatory widget ‘$id’ hasn't been defined."
 msgstr "Cha deach am widget “$id” riatanach a mhìneachadh."
 
-#: src/gui/widgets/label.cpp:141 src/gui/widgets/multiline_text.cpp:427
+#: src/gui/widgets/label.cpp:141 src/gui/widgets/multiline_text.cpp:429
 msgid "Open link?"
 msgstr "Am fosgail thu an ceangal?"
 
@@ -8754,7 +8684,7 @@ msgstr "Am fosgail thu an ceangal?"
 msgid "Copied link!"
 msgstr "Chaidh lethbhreac dhen cheangal a dhèanamh!"
 
-#: src/gui/widgets/listbox.cpp:724 src/gui/widgets/multi_page.cpp:219
+#: src/gui/widgets/listbox.cpp:715 src/gui/widgets/multi_page.cpp:224
 #, fuzzy
 #| msgid ""
 #| "'list_data' must have the same number of columns as the 'list_definition'."
@@ -8764,23 +8694,21 @@ msgstr ""
 "Feumaidh an aon àireamh dhe chuilbh a bhith aig “list_data” ’s a tha aig an "
 "“list_definition.”"
 
-#: src/gui/widgets/listbox.cpp:769 src/gui/widgets/listbox.cpp:812
-#: src/gui/widgets/listbox.cpp:855 src/gui/widgets/scrollbar_panel.cpp:90
+#: src/gui/widgets/listbox.cpp:751 src/gui/widgets/scrollbar_panel.cpp:86
 msgid "No list defined."
 msgstr "Cha deach liosta a mhìneachadh."
 
-#: src/gui/widgets/listbox.cpp:774 src/gui/widgets/listbox.cpp:817
-#: src/gui/widgets/listbox.cpp:860
+#: src/gui/widgets/listbox.cpp:756
 #, fuzzy
 #| msgid "A 'list_definition' should contain one row."
 msgid "A ‘list_definition’ should contain one row."
 msgstr "Bu chòir do ràgh a bhith ann an “list_definition.”"
 
-#: src/gui/widgets/multi_page.cpp:195
+#: src/gui/widgets/multi_page.cpp:200
 msgid "No page defined."
 msgstr "Cha deach duilleag a mhìneachadh."
 
-#: src/gui/widgets/multiline_text.cpp:432
+#: src/gui/widgets/multiline_text.cpp:434
 #, fuzzy
 #| msgid "Opening links is not supported, contact your packager"
 msgid ""
@@ -8809,11 +8737,11 @@ msgstr[3] "$excess eile"
 msgid "multimenu^None Selected"
 msgstr "Gun taghadh"
 
-#: src/gui/widgets/pane.cpp:361
+#: src/gui/widgets/pane.cpp:359
 msgid "Need at least 1 parallel item."
 msgstr "Tha feum air co-dhiù 1 nì co-shìnte."
 
-#: src/gui/widgets/rich_label.cpp:249
+#: src/gui/widgets/rich_label.cpp:250
 msgid "corrupted original file"
 msgstr ""
 
@@ -8825,7 +8753,7 @@ msgstr "Meud mì-dhligheach."
 msgid "No widget defined."
 msgstr "Cha deach widget a mhìneachadh."
 
-#: src/gui/widgets/slider.cpp:356
+#: src/gui/widgets/slider.cpp:355
 #, fuzzy
 #| msgid "The number of value_labels and values don't match."
 msgid "The number of value_labels and values don’t match."
@@ -8845,11 +8773,11 @@ msgstr "Chaidh widget le gliocas-cobharach ach às aonais gliocas-sgrìn a lorg.
 msgid "No grid defined for tab container control"
 msgstr "Cha deach nòdan a mhìneachadh airson sealladh craoibhe."
 
-#: src/gui/widgets/tree_view.cpp:290
+#: src/gui/widgets/tree_view.cpp:288
 msgid "No nodes defined for a tree view."
 msgstr "Cha deach nòdan a mhìneachadh airson sealladh craoibhe."
 
-#: src/gui/widgets/tree_view.cpp:325
+#: src/gui/widgets/tree_view.cpp:318
 #, fuzzy
 #| msgid "[node]id 'root' is reserved for the implementation."
 msgid "[node]id ‘root’ is reserved for the implementation."
@@ -9817,11 +9745,11 @@ msgstr ""
 msgid "Find Server Application"
 msgstr "Lorg aplacaid frihealaiche"
 
-#: src/preferences/preferences.cpp:1760
+#: src/preferences/preferences.cpp:1759
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1762
+#: src/preferences/preferences.cpp:1761
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -9866,6 +9794,79 @@ msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missin
 msgstr ""
 "San earrann “[$section|],” cha deach an iuchair riatanach “$key|” a "
 "shuidheachadh."
+
+#~ msgid "timespan^expired"
+#~ msgstr "dh’fhalbh an ùine air"
+
+#, fuzzy
+#~| msgid "timespan^$num year"
+#~| msgid_plural "timespan^$num years"
+#~ msgid "timespan^$num year"
+#~ msgid_plural "timespan^$num years"
+#~ msgstr[0] "$num bhliadhna"
+#~ msgstr[1] "$num bhliadhna"
+#~ msgstr[2] "$num bhliadhna"
+#~ msgstr[3] "$num bhliadhna"
+
+#, fuzzy
+#~| msgid "timespan^$num month"
+#~| msgid_plural "timespan^$num months"
+#~ msgid "timespan^$num month"
+#~ msgid_plural "timespan^$num months"
+#~ msgstr[0] "$num mhìos"
+#~ msgstr[1] "$num mhìos"
+#~ msgstr[2] "$num mhìos"
+#~ msgstr[3] "$num mhìos"
+
+#, fuzzy
+#~| msgid "timespan^$num week"
+#~| msgid_plural "timespan^$num weeks"
+#~ msgid "timespan^$num week"
+#~ msgid_plural "timespan^$num weeks"
+#~ msgstr[0] "$num seachdain"
+#~ msgstr[1] "$num seachdain"
+#~ msgstr[2] "$num seachdain"
+#~ msgstr[3] "$num seachdain"
+
+#, fuzzy
+#~| msgid "timespan^$num day"
+#~| msgid_plural "timespan^$num days"
+#~ msgid "timespan^$num day"
+#~ msgid_plural "timespan^$num days"
+#~ msgstr[0] "$num latha"
+#~ msgstr[1] "$num latha"
+#~ msgstr[2] "$num latha"
+#~ msgstr[3] "$num latha"
+
+#, fuzzy
+#~| msgid "timespan^$num hour"
+#~| msgid_plural "timespan^$num hours"
+#~ msgid "timespan^$num hour"
+#~ msgid_plural "timespan^$num hours"
+#~ msgstr[0] "$num uair a thìde"
+#~ msgstr[1] "$num uair a thìde"
+#~ msgstr[2] "$num uair a thìde"
+#~ msgstr[3] "$num uair a thìde"
+
+#, fuzzy
+#~| msgid "timespan^$num minute"
+#~| msgid_plural "timespan^$num minutes"
+#~ msgid "timespan^$num minute"
+#~ msgid_plural "timespan^$num minutes"
+#~ msgstr[0] "$num mhionaid"
+#~ msgstr[1] "$num mhionaid"
+#~ msgstr[2] "$num mhionaid"
+#~ msgstr[3] "$num mhionaid"
+
+#, fuzzy
+#~| msgid "timespan^$num second"
+#~| msgid_plural "timespan^$num seconds"
+#~ msgid "timespan^$num second"
+#~ msgid_plural "timespan^$num seconds"
+#~ msgstr[0] "$num diog"
+#~ msgstr[1] "$num diog"
+#~ msgstr[2] "$num diog"
+#~ msgstr[3] "$num diog"
 
 #~ msgid "Limit FPS"
 #~ msgstr "Cuingich na FPS"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 12:08-0600\n"
+"POT-Creation-Date: 2024-12-18 16:51-0600\n"
 "PO-Revision-Date: 2014-06-05 23:38+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -280,7 +280,7 @@ msgstr "ẩn nấp"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:161
+#: data/core/macros/weapon_specials.cfg:174
 msgid "drains"
 msgstr "bòn rút"
 
@@ -320,7 +320,7 @@ msgstr "săn đêm"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:183
+#: data/core/macros/weapon_specials.cfg:196
 msgid "poison"
 msgstr "độc"
 
@@ -6620,13 +6620,29 @@ msgstr ""
 "Đòn này luôn có cơ hội đánh trúng 70% bất kể khả năng phòng thủ của đơn vị "
 "bị tấn công."
 
-#. [swarm]: id=swarm
+#. [chance_to_hit]: id=honed
 #: data/core/macros/weapon_specials.cfg:123
+msgid "honed"
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:124
+msgid "This attack is 10% more accurate than other attacks."
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:125
+msgid ""
+"This unit’s “honed” attack is slightly more accurate than other attacks."
+msgstr ""
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:136
 msgid "swarm"
 msgstr "liên hoàn"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:124
+#: data/core/macros/weapon_specials.cfg:137
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -6639,12 +6655,12 @@ msgstr ""
 "được phép."
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:134
+#: data/core/macros/weapon_specials.cfg:147
 msgid "charge"
 msgstr "xung kích"
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:135
+#: data/core/macros/weapon_specials.cfg:148
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -6654,24 +6670,24 @@ msgstr ""
 "đôi từ đòn phản công của đối phương."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:148
+#: data/core/macros/weapon_specials.cfg:161
 msgid "guard"
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:149
+#: data/core/macros/weapon_specials.cfg:162
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:150
+#: data/core/macros/weapon_specials.cfg:163
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:162
+#: data/core/macros/weapon_specials.cfg:175
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -6680,18 +6696,18 @@ msgstr ""
 "thân một lượng bằng một nửa lượng thiệt hại mà nó gây ra (làm tròn xuống)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:172
+#: data/core/macros/weapon_specials.cfg:185
 msgid "first strike"
 msgstr "đánh trước"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:173
+#: data/core/macros/weapon_specials.cfg:186
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "Đơn vị này luôn đánh trước với đòn này, kể cả khi đang phòng thủ."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:184
+#: data/core/macros/weapon_specials.cfg:197
 #, fuzzy
 #| msgid ""
 #| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -6707,19 +6723,19 @@ msgstr ""
 "máu. Bản thân chất độc không thể giết một đơn vị."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:194
+#: data/core/macros/weapon_specials.cfg:207
 msgid "stun"
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:195
+#: data/core/macros/weapon_specials.cfg:208
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:196
+#: data/core/macros/weapon_specials.cfg:209
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -6731,19 +6747,19 @@ msgstr ""
 "thiệt hại từ đòn tấn công của chúng đến khi chúng kết thúc lượt."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:205
+#: data/core/macros/weapon_specials.cfg:218
 msgid "arcane"
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:206
+#: data/core/macros/weapon_specials.cfg:219
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:207
+#: data/core/macros/weapon_specials.cfg:220
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -7778,9 +7794,9 @@ msgstr "Khalifate"
 #: data/core/units.cfg:296
 msgid ""
 "Ships are not living beings, but they are crafted and (usually) controlled "
-"by living beings.  Although inanimate objects, they are very dear to their "
+"by living beings. Although inanimate objects, they are very dear to their "
 "masters, needing care and attention in return for providing sustenance and "
-"protection.  For this reason, most are given names and attributed traits.  "
+"protection. For this reason, most are given names and attributed traits. "
 "Those traits may be technical or they may simply reflect the collective "
 "attitude of the crew, but they are real."
 msgstr ""

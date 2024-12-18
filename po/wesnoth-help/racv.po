@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 12:08-0600\n"
+"POT-Creation-Date: 2024-12-18 16:51-0600\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -310,7 +310,7 @@ msgstr "ocultació"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:161
+#: data/core/macros/weapon_specials.cfg:174
 msgid "drains"
 msgstr "drena"
 
@@ -348,7 +348,7 @@ msgstr "aguait nocturn"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:183
+#: data/core/macros/weapon_specials.cfg:196
 msgid "poison"
 msgstr "verí"
 
@@ -6076,13 +6076,29 @@ msgstr ""
 "Est atac sempre té un 70% de possibilitats de colpejar, indiferentment de "
 "l'habilitat defensiva de l'unitat atacada."
 
-#. [swarm]: id=swarm
+#. [chance_to_hit]: id=honed
 #: data/core/macros/weapon_specials.cfg:123
+msgid "honed"
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:124
+msgid "This attack is 10% more accurate than other attacks."
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:125
+msgid ""
+"This unit’s “honed” attack is slightly more accurate than other attacks."
+msgstr ""
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:136
 msgid "swarm"
 msgstr "eixam"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:124
+#: data/core/macros/weapon_specials.cfg:137
 #, fuzzy
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -6097,12 +6113,12 @@ msgstr ""
 "punts de vida màxims tindrà 3/4 dels seus colps."
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:134
+#: data/core/macros/weapon_specials.cfg:147
 msgid "charge"
 msgstr "càrrega"
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:135
+#: data/core/macros/weapon_specials.cfg:148
 #, fuzzy
 #| msgid ""
 #| "Charge:\n"
@@ -6118,24 +6134,24 @@ msgstr ""
 "fa que esta unitat reba el doble de dany dels contraatacs enemics."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:148
+#: data/core/macros/weapon_specials.cfg:161
 msgid "guard"
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:149
+#: data/core/macros/weapon_specials.cfg:162
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:150
+#: data/core/macros/weapon_specials.cfg:163
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:162
+#: data/core/macros/weapon_specials.cfg:175
 #, fuzzy
 #| msgid ""
 #| "Drain:\n"
@@ -6150,14 +6166,14 @@ msgstr ""
 "la mitat de la cantitat drenada (arredonint cap avall)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:172
+#: data/core/macros/weapon_specials.cfg:185
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
 msgstr "primer atac"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:173
+#: data/core/macros/weapon_specials.cfg:186
 #, fuzzy
 #| msgid ""
 #| "First Strike:\n"
@@ -6170,7 +6186,7 @@ msgstr ""
 "Esta unitat sempre ataca primer, encara que estiga defenent."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:184
+#: data/core/macros/weapon_specials.cfg:197
 #, fuzzy
 #| msgid ""
 #| "Poison:\n"
@@ -6188,19 +6204,19 @@ msgstr ""
 "pot, per si mateix, matar a una unitat."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:194
+#: data/core/macros/weapon_specials.cfg:207
 msgid "stun"
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:195
+#: data/core/macros/weapon_specials.cfg:208
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:196
+#: data/core/macros/weapon_specials.cfg:209
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -6212,19 +6228,19 @@ msgstr ""
 "seua velocitat de moviment i dany d'atac fins que acabe la tanda."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:205
+#: data/core/macros/weapon_specials.cfg:218
 msgid "arcane"
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:206
+#: data/core/macros/weapon_specials.cfg:219
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:207
+#: data/core/macros/weapon_specials.cfg:220
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -6915,9 +6931,9 @@ msgstr "Mecànics"
 #: data/core/units.cfg:296
 msgid ""
 "Ships are not living beings, but they are crafted and (usually) controlled "
-"by living beings.  Although inanimate objects, they are very dear to their "
+"by living beings. Although inanimate objects, they are very dear to their "
 "masters, needing care and attention in return for providing sustenance and "
-"protection.  For this reason, most are given names and attributed traits.  "
+"protection. For this reason, most are given names and attributed traits. "
 "Those traits may be technical or they may simply reflect the collective "
 "attitude of the crew, but they are real."
 msgstr ""

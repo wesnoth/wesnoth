@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Help-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 12:08-0600\n"
+"POT-Creation-Date: 2024-12-18 16:51-0600\n"
 "PO-Revision-Date: 2024-02-15 21:01+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -277,7 +277,7 @@ msgstr "dissimulation"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:161
+#: data/core/macros/weapon_specials.cfg:174
 msgid "drains"
 msgstr "drain"
 
@@ -315,7 +315,7 @@ msgstr "chasseur nocturne"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:183
+#: data/core/macros/weapon_specials.cfg:196
 msgid "poison"
 msgstr "empoisonnement"
 
@@ -7759,13 +7759,29 @@ msgstr ""
 "Cette attaque a toujours 70 % de chance d'atteindre sa cible quelle que soit "
 "la capacité défensive de l'ennemi."
 
-#. [swarm]: id=swarm
+#. [chance_to_hit]: id=honed
 #: data/core/macros/weapon_specials.cfg:123
+msgid "honed"
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:124
+msgid "This attack is 10% more accurate than other attacks."
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:125
+msgid ""
+"This unit’s “honed” attack is slightly more accurate than other attacks."
+msgstr ""
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:136
 msgid "swarm"
 msgstr "essaim"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:124
+#: data/core/macros/weapon_specials.cfg:137
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -7777,12 +7793,12 @@ msgstr ""
 "unité avec 3/4 de ses points de vie aura 3/4 de ses frappes."
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:134
+#: data/core/macros/weapon_specials.cfg:147
 msgid "charge"
 msgstr "charge"
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:135
+#: data/core/macros/weapon_specials.cfg:148
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -7792,24 +7808,24 @@ msgstr ""
 "lors de la riposte."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:148
+#: data/core/macros/weapon_specials.cfg:161
 msgid "guard"
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:149
+#: data/core/macros/weapon_specials.cfg:162
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:150
+#: data/core/macros/weapon_specials.cfg:163
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:162
+#: data/core/macros/weapon_specials.cfg:175
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -7818,18 +7834,18 @@ msgstr ""
 "des dégâts causés (arrondis à l'inférieur)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:172
+#: data/core/macros/weapon_specials.cfg:185
 msgid "first strike"
 msgstr "initiative"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:173
+#: data/core/macros/weapon_specials.cfg:186
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "Cette unité attaque toujours en premier, même quand elle se défend."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:184
+#: data/core/macros/weapon_specials.cfg:197
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -7840,12 +7856,12 @@ msgstr ""
 "qu'un seul point de vie. Le poison seul ne peut pas tuer une unité."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:194
+#: data/core/macros/weapon_specials.cfg:207
 msgid "stun"
 msgstr "étourdissant"
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:195
+#: data/core/macros/weapon_specials.cfg:208
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
@@ -7855,7 +7871,7 @@ msgstr ""
 "l'adversaire."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:196
+#: data/core/macros/weapon_specials.cfg:209
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
@@ -7863,14 +7879,14 @@ msgstr ""
 "contrôle."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:205
+#: data/core/macros/weapon_specials.cfg:218
 msgid "arcane"
 msgstr "arcane"
 
 # L'anglais n'est pas clair, mais la chaîne suivante clarifie un peu le sujet.
 # Le traduction est basée sur une compréhension de la capacité plutôt qu'une traduction littérale.
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:206
+#: data/core/macros/weapon_specials.cfg:219
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
@@ -7880,7 +7896,7 @@ msgstr ""
 "dommage original."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:207
+#: data/core/macros/weapon_specials.cfg:220
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -9096,9 +9112,9 @@ msgstr "Khâlifas"
 #: data/core/units.cfg:296
 msgid ""
 "Ships are not living beings, but they are crafted and (usually) controlled "
-"by living beings.  Although inanimate objects, they are very dear to their "
+"by living beings. Although inanimate objects, they are very dear to their "
 "masters, needing care and attention in return for providing sustenance and "
-"protection.  For this reason, most are given names and attributed traits.  "
+"protection. For this reason, most are given names and attributed traits. "
 "Those traits may be technical or they may simply reflect the collective "
 "attitude of the crew, but they are real."
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 12:08-0600\n"
+"POT-Creation-Date: 2024-12-18 16:51-0600\n"
 "PO-Revision-Date: 2008-02-21 10:21+0800\n"
 "Last-Translator: eve <eve_eso@yahoo.com>\n"
 "Language-Team: \n"
@@ -240,7 +240,7 @@ msgstr ""
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:161
+#: data/core/macros/weapon_specials.cfg:174
 msgid "drains"
 msgstr ""
 
@@ -278,7 +278,7 @@ msgstr ""
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:183
+#: data/core/macros/weapon_specials.cfg:196
 msgid "poison"
 msgstr "lason"
 
@@ -4999,13 +4999,29 @@ msgstr ""
 "Ang atakeng ito ay laging may 70% na tsansa sa pagtama na walang "
 "pagsasaalang-alang ng abilidad sa depensa ng yunit na sinasalakay. "
 
-#. [swarm]: id=swarm
+#. [chance_to_hit]: id=honed
 #: data/core/macros/weapon_specials.cfg:123
+msgid "honed"
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:124
+msgid "This attack is 10% more accurate than other attacks."
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:125
+msgid ""
+"This unit’s “honed” attack is slightly more accurate than other attacks."
+msgstr ""
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:136
 msgid "swarm"
 msgstr ""
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:124
+#: data/core/macros/weapon_specials.cfg:137
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -5014,50 +5030,50 @@ msgid ""
 msgstr ""
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:134
+#: data/core/macros/weapon_specials.cfg:147
 msgid "charge"
 msgstr ""
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:135
+#: data/core/macros/weapon_specials.cfg:148
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:148
+#: data/core/macros/weapon_specials.cfg:161
 msgid "guard"
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:149
+#: data/core/macros/weapon_specials.cfg:162
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:150
+#: data/core/macros/weapon_specials.cfg:163
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:162
+#: data/core/macros/weapon_specials.cfg:175
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:172
+#: data/core/macros/weapon_specials.cfg:185
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
 msgstr "unang tama"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:173
+#: data/core/macros/weapon_specials.cfg:186
 #, fuzzy
 #| msgid ""
 #| "First Strike:\n"
@@ -5071,7 +5087,7 @@ msgstr ""
 "dumidepensa."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:184
+#: data/core/macros/weapon_specials.cfg:197
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -5079,37 +5095,37 @@ msgid ""
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:194
+#: data/core/macros/weapon_specials.cfg:207
 msgid "stun"
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:195
+#: data/core/macros/weapon_specials.cfg:208
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:196
+#: data/core/macros/weapon_specials.cfg:209
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:205
+#: data/core/macros/weapon_specials.cfg:218
 msgid "arcane"
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:206
+#: data/core/macros/weapon_specials.cfg:219
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:207
+#: data/core/macros/weapon_specials.cfg:220
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -5800,9 +5816,9 @@ msgstr "Tao"
 #: data/core/units.cfg:296
 msgid ""
 "Ships are not living beings, but they are crafted and (usually) controlled "
-"by living beings.  Although inanimate objects, they are very dear to their "
+"by living beings. Although inanimate objects, they are very dear to their "
 "masters, needing care and attention in return for providing sustenance and "
-"protection.  For this reason, most are given names and attributed traits.  "
+"protection. For this reason, most are given names and attributed traits. "
 "Those traits may be technical or they may simply reflect the collective "
 "attitude of the crew, but they are real."
 msgstr ""

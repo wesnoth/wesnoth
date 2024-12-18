@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 12:08-0600\n"
+"POT-Creation-Date: 2024-12-18 16:51-0600\n"
 "PO-Revision-Date: 2008-10-25 11:30+0200\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -2493,7 +2493,7 @@ msgstr "Renomena la unitat"
 #. [label]
 #. [grid]
 #: data/gui/themes/default/window/addon_auth.cfg:99
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:216
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:217
 #: data/gui/themes/default/window/mp_create_game.cfg:1036
 #: data/gui/themes/default/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/themes/default/window/mp_login.cfg:143
@@ -2563,7 +2563,7 @@ msgstr "D'acord"
 #: data/gui/themes/default/window/edit_text.cfg:130
 #: data/gui/themes/default/window/editor_choose_addon.cfg:207
 #: data/gui/themes/default/window/editor_edit_label.cfg:315
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:475
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:476
 #: data/gui/themes/default/window/editor_edit_pbl_translation.cfg:137
 #: data/gui/themes/default/window/editor_edit_scenario.cfg:301
 #: data/gui/themes/default/window/editor_edit_side.cfg:481
@@ -2752,7 +2752,7 @@ msgstr ""
 #. [label]
 #. [label]: id=translations_label
 #: data/gui/themes/default/window/addon_manager.cfg:733
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:228
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:229
 msgid "Translations:"
 msgstr ""
 
@@ -2785,7 +2785,7 @@ msgstr ""
 #. [label]: id=translations_language
 #. [button]: id=language
 #: data/gui/themes/default/window/addon_manager.cfg:870
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:257
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:258
 #: data/gui/themes/default/window/language_selection.cfg:227
 #: data/gui/themes/default/window/title_screen.cfg:494
 #: data/gui/themes/modern/dialogs/title_screen.cfg:459
@@ -3083,7 +3083,7 @@ msgstr "Reproduix"
 #: data/gui/themes/default/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:262
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
-#: src/gui/dialogs/editor/edit_pbl.cpp:191
+#: src/gui/dialogs/editor/edit_pbl.cpp:197
 msgid "Difficulty"
 msgstr ""
 
@@ -3168,7 +3168,7 @@ msgstr "Carrega una partida"
 #. [button]: id=ok
 #: data/gui/themes/default/window/core_dialog.cfg:228
 #: data/gui/themes/default/window/language_selection.cfg:293
-#: src/gui/dialogs/editor/custom_tod.cpp:171
+#: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:312
 #: src/preferences/preferences.cpp:1306
 msgid "Select"
@@ -3243,7 +3243,7 @@ msgstr ""
 #: data/gui/themes/default/window/screenshot_notification.cfg:120
 #: data/gui/themes/default/window/tod_new_schedule.cfg:86
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:181
-#: src/gui/dialogs/unit_recall.cpp:318
+#: src/gui/dialogs/unit_recall.cpp:321
 #, fuzzy
 msgid "Name:"
 msgstr "Nom: "
@@ -3323,9 +3323,9 @@ msgstr ""
 #. [label]
 #: data/gui/themes/default/window/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:973
-#: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/custom_tod.cpp:189
-#: src/gui/dialogs/editor/custom_tod.cpp:196
+#: src/gui/dialogs/editor/custom_tod.cpp:183
+#: src/gui/dialogs/editor/custom_tod.cpp:190
+#: src/gui/dialogs/editor/custom_tod.cpp:197
 #: src/gui/dialogs/editor/edit_unit.cpp:325
 #: src/gui/dialogs/editor/edit_unit.cpp:333
 #: src/gui/dialogs/editor/edit_unit.cpp:341
@@ -3560,46 +3560,58 @@ msgstr ""
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:214
 msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
-"upload updates for this add-on."
+"upload updates for this add-on or delete this add-on."
 msgstr ""
 
 #. [grid]
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:214
-msgid "Secondary Authors:"
+msgid "Primary Authors:"
 msgstr ""
 
 #. [grid]
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:215
 msgid ""
-"An email address you can be contacted at in case of issues with your add-on."
+"Comma delimited list of forum usernames of other people who are allowed to "
+"upload updates for this add-on."
 msgstr ""
 
 #. [grid]
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:215
-msgid "Email:"
+msgid "Secondary Authors:"
 msgstr ""
 
 #. [grid]
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:216
+msgid ""
+"An email address you can be contacted at in case of issues with your add-on."
+msgstr ""
+
+#. [grid]
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:216
+msgid "Email:"
+msgstr ""
+
+#. [grid]
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:217
 msgid ""
 "The add-on’s current password. Using forum authentication is recommended "
 "instead since this password is not stored securely."
 msgstr ""
 
 #. [label]: id=translations_title
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:274
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:275
 msgid "Title"
 msgstr ""
 
 #. [label]: id=translations_description
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:291
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:292
 #, fuzzy
 msgid "Description"
 msgstr "Descriu la unitat"
 
 #. [button]: id=translations_add
 #. [button]: id=server_add
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:406
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:407
 #: data/gui/themes/default/window/mp_connect.cfg:270
 #, fuzzy
 #| msgid "Address"
@@ -3610,7 +3622,7 @@ msgstr "Adreça"
 #. [button]: id=delete_file
 #. [button]: id=delete
 #. [button]: id=server_delete
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:420
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:421
 #: data/gui/themes/default/window/file_dialog.cfg:349
 #: data/gui/themes/default/window/game_load.cfg:606
 #: data/gui/themes/default/window/mp_connect.cfg:284
@@ -3619,14 +3631,14 @@ msgid "Delete"
 msgstr "Suprimix fitxer"
 
 #. [button]: id=validate
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:451
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:452
 msgid "Validate"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #. [button]: id=save
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:463
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:464
 #: data/gui/themes/default/window/game_save.cfg:120
 #: data/gui/themes/default/window/screenshot_notification.cfg:201
 #: src/gui/dialogs/file_dialog.cpp:230 src/hotkey/hotkey_command.cpp:185
@@ -4501,7 +4513,7 @@ msgstr "Jugadors:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/window/game_stats.cfg:705
-#: src/gui/dialogs/game_stats.cpp:247
+#: src/gui/dialogs/game_stats.cpp:248
 #, fuzzy
 msgid "Current Status"
 msgstr "Taula d'estat"
@@ -4515,7 +4527,7 @@ msgstr "Camí de cova"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/themes/default/window/game_stats.cfg:793
-#: src/gui/dialogs/game_stats.cpp:247
+#: src/gui/dialogs/game_stats.cpp:248
 #, fuzzy
 #| msgid "Editor Settings"
 msgid "Scenario Settings"
@@ -5881,7 +5893,7 @@ msgstr "Equip 1"
 #: data/gui/themes/default/window/preferences.cfg:365
 #: data/gui/themes/default/window/title_screen.cfg:257
 #: data/gui/themes/modern/dialogs/title_screen.cfg:257
-#: src/gui/dialogs/game_load.cpp:397
+#: src/gui/dialogs/game_load.cpp:368
 msgid "Multiplayer"
 msgstr "Multijugador"
 
@@ -6214,7 +6226,7 @@ msgstr "Dreceres de teclat"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:898
+#: src/gui/dialogs/preferences_dialog.cpp:899
 msgid "game_hotkeys^G"
 msgstr ""
 
@@ -6227,7 +6239,7 @@ msgstr ""
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:899
+#: src/gui/dialogs/preferences_dialog.cpp:900
 msgid "editor_hotkeys^E"
 msgstr ""
 
@@ -6240,7 +6252,7 @@ msgstr ""
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:900
+#: src/gui/dialogs/preferences_dialog.cpp:901
 msgid "mainmenu_hotkeys^M"
 msgstr ""
 
@@ -7141,7 +7153,7 @@ msgstr "Recluta"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/window/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:270
 #: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "Error"
@@ -7216,7 +7228,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1786
+#: src/filesystem.cpp:1787
 msgid "language code for localized resources^en_US"
 msgstr "ca@valencia,ca"
 
@@ -7260,60 +7272,6 @@ msgstr ""
 msgid "disjunct end^$prefix, or $last"
 msgstr ""
 
-#: src/formula/string_utils.cpp:299 src/formula/string_utils.cpp:339
-msgid "timespan^expired"
-msgstr ""
-
-#. TRANSLATORS: The "timespan^$num xxxxx" strings originating from the same file
-#. as the string with this comment MUST be translated following the usual rules
-#. for WML variable interpolation -- that is, without including or translating
-#. the caret^ prefix, and leaving the $num variable specification intact, since
-#. it is technically code. The only translatable natural word to be found here
-#. is the time unit (year, month, etc.) For example, for French you would
-#. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
-#. generate output such as "39 ans" after variable interpolation.
-#: src/formula/string_utils.cpp:313
-msgid "timespan^$num year"
-msgid_plural "timespan^$num years"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/formula/string_utils.cpp:314
-msgid "timespan^$num month"
-msgid_plural "timespan^$num months"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/formula/string_utils.cpp:315
-msgid "timespan^$num week"
-msgid_plural "timespan^$num weeks"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/formula/string_utils.cpp:316
-msgid "timespan^$num day"
-msgid_plural "timespan^$num days"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/formula/string_utils.cpp:317
-msgid "timespan^$num hour"
-msgid_plural "timespan^$num hours"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/formula/string_utils.cpp:318
-msgid "timespan^$num minute"
-msgid_plural "timespan^$num minutes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/formula/string_utils.cpp:319
-msgid "timespan^$num second"
-msgid_plural "timespan^$num seconds"
-msgstr[0] ""
-msgstr[1] ""
-
 #: src/gui/core/canvas.cpp:263
 #, fuzzy
 msgid "Image doesn’t fit on canvas."
@@ -7331,9 +7289,9 @@ msgstr "No hi ha cap resolució definida."
 msgid "No resolution defined for "
 msgstr "No hi ha cap resolució definida."
 
-#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:426
-#: src/gui/widgets/multi_page.cpp:176 src/gui/widgets/panel.cpp:131
-#: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:224
+#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:427
+#: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
+#: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:229
 #: src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
 msgstr "No s'ha definit la graella."
@@ -7688,25 +7646,25 @@ msgstr ""
 msgid "url^None"
 msgstr "Cap"
 
-#: src/gui/dialogs/attack_predictions.cpp:118
+#: src/gui/dialogs/attack_predictions.cpp:119
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "No usable weapon"
 msgstr "Tria la resolució"
 
-#: src/gui/dialogs/attack_predictions.cpp:196
+#: src/gui/dialogs/attack_predictions.cpp:197
 msgid "Defender resistance vs"
 msgstr ""
 
-#: src/gui/dialogs/attack_predictions.cpp:198
+#: src/gui/dialogs/attack_predictions.cpp:199
 msgid "Defender vulnerability vs"
 msgstr ""
 
-#: src/gui/dialogs/attack_predictions.cpp:202
+#: src/gui/dialogs/attack_predictions.cpp:203
 msgid "Attacker resistance vs"
 msgstr ""
 
-#: src/gui/dialogs/attack_predictions.cpp:204
+#: src/gui/dialogs/attack_predictions.cpp:205
 msgid "Attacker vulnerability vs"
 msgstr ""
 
@@ -7780,122 +7738,122 @@ msgid ""
 "Please select a compatible one."
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:170
+#: src/gui/dialogs/editor/custom_tod.cpp:171
 #: src/gui/dialogs/editor/edit_unit.cpp:311
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Choose File"
 msgstr "Tria la resolució"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:178
+#: src/gui/dialogs/editor/custom_tod.cpp:179
 #: src/gui/dialogs/editor/edit_unit.cpp:320
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:171
+#: src/gui/dialogs/editor/edit_pbl.cpp:177
 #, fuzzy
 #| msgid "Forest"
 msgid "Core"
 msgstr "Bosc"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:172
+#: src/gui/dialogs/editor/edit_pbl.cpp:178
 #, fuzzy
 #| msgid "Campaign"
 msgid "Campaign"
 msgstr "Campanya"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:173
+#: src/gui/dialogs/editor/edit_pbl.cpp:179
 #, fuzzy
 #| msgid "Campaign"
 msgid "Hybrid Campaign"
 msgstr "Campanya"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:174
+#: src/gui/dialogs/editor/edit_pbl.cpp:180
 #, fuzzy
 #| msgid "Multiplayer Options"
 msgid "Multiplayer Campaign"
 msgstr "Opcions multijugador"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:175
+#: src/gui/dialogs/editor/edit_pbl.cpp:181
 #, fuzzy
 msgid "Scenario"
 msgstr "Objectius de l'escenari"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:176
+#: src/gui/dialogs/editor/edit_pbl.cpp:182
 #, fuzzy
 #| msgid "Multiplayer"
 msgid "Multiplayer Scenario"
 msgstr "Multijugador"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:177
+#: src/gui/dialogs/editor/edit_pbl.cpp:183
 #, fuzzy
 #| msgid "Action"
 msgid "Faction"
 msgstr "Acció"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:178
+#: src/gui/dialogs/editor/edit_pbl.cpp:184
 #: src/gui/dialogs/multiplayer/lobby.cpp:421
 #, fuzzy
 #| msgid "Era:"
 msgid "Era"
 msgstr "Era:"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:179
+#: src/gui/dialogs/editor/edit_pbl.cpp:185
 msgid "Map Pack"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:180
+#: src/gui/dialogs/editor/edit_pbl.cpp:186
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modification"
 msgstr "Tria la resolució"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:181
+#: src/gui/dialogs/editor/edit_pbl.cpp:187
 msgid "Media"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:182
+#: src/gui/dialogs/editor/edit_pbl.cpp:188
 msgid "Theme"
 msgstr "Tema"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:183
+#: src/gui/dialogs/editor/edit_pbl.cpp:189
 #, fuzzy
 msgid "Other"
 msgstr "Crea una partida"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:189
+#: src/gui/dialogs/editor/edit_pbl.cpp:195
 msgid "Cooperative"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:190
+#: src/gui/dialogs/editor/edit_pbl.cpp:196
 msgid "Cosmetic"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:192
+#: src/gui/dialogs/editor/edit_pbl.cpp:198
 msgid "RNG"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:193
+#: src/gui/dialogs/editor/edit_pbl.cpp:199
 msgid "Survival"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:194
+#: src/gui/dialogs/editor/edit_pbl.cpp:200
 #, fuzzy
 #| msgid "Set Terrain"
 msgid "Terraforming"
 msgstr "Definir el terreny"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:377
+#: src/gui/dialogs/editor/edit_pbl.cpp:391
 msgid "No validation errors"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:377
+#: src/gui/dialogs/editor/edit_pbl.cpp:391
 msgid "Success"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:407
+#: src/gui/dialogs/editor/edit_pbl.cpp:421
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Choose an icon"
@@ -8025,7 +7983,7 @@ msgstr ""
 #: src/gui/dialogs/game_cache_options.cpp:97
 #: src/gui/dialogs/network_transmission.cpp:48
 #: src/gui/dialogs/network_transmission.cpp:49
-#: src/gui/dialogs/screenshot_notification.cpp:109
+#: src/gui/dialogs/screenshot_notification.cpp:110
 msgid "unit_byte^B"
 msgstr ""
 
@@ -8053,77 +8011,77 @@ msgstr ""
 msgid "The game data cache could not be purged."
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:71
+#: src/gui/dialogs/game_load.cpp:72
 #, fuzzy
 #| msgid "Save Game"
 msgid "No Saved Games"
 msgstr "Alça la partida"
 
-#: src/gui/dialogs/game_load.cpp:71
+#: src/gui/dialogs/game_load.cpp:72
 #, fuzzy
 #| msgid "There are no alternative video modes available"
 msgid "There are no saved games to load."
 msgstr "No hi ha modes de vídeo alternatius disponibles"
 
-#: src/gui/dialogs/game_load.cpp:141
+#: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:145
+#: src/gui/dialogs/game_load.cpp:147
 #, fuzzy
 msgid "game_version^Wesnoth $version"
 msgstr "Versió"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
-#: src/gui/dialogs/game_load.cpp:232
+#: src/gui/dialogs/game_load.cpp:234
 msgid "$active active, $reserve reserve"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:287
+#: src/gui/dialogs/game_load.cpp:289
 msgid "The selected file is corrupt: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:358
+#: src/gui/dialogs/game_load.cpp:329
 msgid "(Invalid)"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:388
+#: src/gui/dialogs/game_load.cpp:359
 msgid "Campaign: $campaign_name"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:400
+#: src/gui/dialogs/game_load.cpp:371
 msgid "Tutorial"
 msgstr "Tutorial"
 
-#: src/gui/dialogs/game_load.cpp:403
+#: src/gui/dialogs/game_load.cpp:374
 msgid "Test scenario"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:413
+#: src/gui/dialogs/game_load.cpp:384
 #, fuzzy
 msgid "Replay"
 msgstr "jugador"
 
-#: src/gui/dialogs/game_load.cpp:415
+#: src/gui/dialogs/game_load.cpp:386
 #, fuzzy
 msgid "Turn"
 msgstr "Fi del torn"
 
-#: src/gui/dialogs/game_load.cpp:417
+#: src/gui/dialogs/game_load.cpp:388
 #, fuzzy
 msgid "Scenario start"
 msgstr "Objectius de l'escenari"
 
-#: src/gui/dialogs/game_load.cpp:436
+#: src/gui/dialogs/game_load.cpp:407
 msgid "Difficulty: "
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:459
+#: src/gui/dialogs/game_load.cpp:430
 #, fuzzy
 msgid "Version: "
 msgstr "Versió"
 
-#: src/gui/dialogs/game_load.cpp:464
+#: src/gui/dialogs/game_load.cpp:435
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications: "
@@ -8170,98 +8128,98 @@ msgstr "Posa una etiqueta d'equip"
 msgid "Side $side_number ($name)"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:45
+#: src/gui/dialogs/loading_screen.cpp:46
 msgid "Building terrain rules"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:46
+#: src/gui/dialogs/loading_screen.cpp:47
 msgid "Reading files and creating cache"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:47 src/gui/dialogs/loading_screen.cpp:50
+#: src/gui/dialogs/loading_screen.cpp:48 src/gui/dialogs/loading_screen.cpp:51
 msgid "Initializing display"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:48
+#: src/gui/dialogs/loading_screen.cpp:49
 msgid "Reinitialize fonts for the current language"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:49
+#: src/gui/dialogs/loading_screen.cpp:50
 msgid "Initializing teams"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:51
+#: src/gui/dialogs/loading_screen.cpp:52
 msgid "Loading game configuration"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:52
+#: src/gui/dialogs/loading_screen.cpp:53
 msgid "Loading data files"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:53
+#: src/gui/dialogs/loading_screen.cpp:54
 msgid "Loading level"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:54
+#: src/gui/dialogs/loading_screen.cpp:55
 msgid "Initializing scripting engine"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:55
+#: src/gui/dialogs/loading_screen.cpp:56
 msgid "Initializing planning mode"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:56
+#: src/gui/dialogs/loading_screen.cpp:57
 msgid "Reading unit files"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:57
+#: src/gui/dialogs/loading_screen.cpp:58
 msgid "Loading units"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:58
+#: src/gui/dialogs/loading_screen.cpp:59
 #, fuzzy
 msgid "Searching for installed add-ons"
 msgstr "Actualitza els complements"
 
-#: src/gui/dialogs/loading_screen.cpp:59
+#: src/gui/dialogs/loading_screen.cpp:60
 msgid "Starting game"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:60
+#: src/gui/dialogs/loading_screen.cpp:61
 msgid "Verifying cache"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:61
+#: src/gui/dialogs/loading_screen.cpp:62
 #, fuzzy
 #| msgid "Connect to Server"
 msgid "Connecting to server"
 msgstr "Connecta al servidor"
 
-#: src/gui/dialogs/loading_screen.cpp:62
+#: src/gui/dialogs/loading_screen.cpp:63
 #, fuzzy
 msgid "Logging in"
 msgstr "Acció"
 
-#: src/gui/dialogs/loading_screen.cpp:63
+#: src/gui/dialogs/loading_screen.cpp:64
 msgid "Waiting for server"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:64
+#: src/gui/dialogs/loading_screen.cpp:65
 #, fuzzy
 #| msgid "Connect to Server"
 msgid "Connecting to redirected server"
 msgstr "Connecta al servidor"
 
-#: src/gui/dialogs/loading_screen.cpp:65
+#: src/gui/dialogs/loading_screen.cpp:66
 msgid "Waiting for next scenario"
 msgstr ""
 
-#: src/gui/dialogs/loading_screen.cpp:66
+#: src/gui/dialogs/loading_screen.cpp:67
 #, fuzzy
 msgid "Getting game data"
 msgstr "Suprimix fitxer"
 
-#: src/gui/dialogs/loading_screen.cpp:67
+#: src/gui/dialogs/loading_screen.cpp:68
 msgid "Downloading lobby data"
 msgstr ""
 
@@ -8535,49 +8493,49 @@ msgstr "Llista d'amics"
 msgid "ignored"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:256
-#: src/gui/dialogs/preferences_dialog.cpp:313
+#: src/gui/dialogs/preferences_dialog.cpp:255
+#: src/gui/dialogs/preferences_dialog.cpp:312
 msgid "No username specified"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/preferences_dialog.cpp:270
 msgid "Invalid username"
 msgstr "El nom de l'usuari no és vàlid"
 
-#: src/gui/dialogs/preferences_dialog.cpp:318
+#: src/gui/dialogs/preferences_dialog.cpp:317
 #, fuzzy
 #| msgid "View and edit your friends and ignores list"
 msgid "Not on friends or ignore lists"
 msgstr "Mostra i edita la llista d'amics i ignorats"
 
-#: src/gui/dialogs/preferences_dialog.cpp:944
-#: src/gui/dialogs/preferences_dialog.cpp:1008
+#: src/gui/dialogs/preferences_dialog.cpp:945
+#: src/gui/dialogs/preferences_dialog.cpp:1009
 msgid "No hotkey selected"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:972
+#: src/gui/dialogs/preferences_dialog.cpp:973
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:978
+#: src/gui/dialogs/preferences_dialog.cpp:979
 #, fuzzy
 #| msgid "Save Hotkeys"
 msgid "Reassign Hotkey"
 msgstr "Desa les dreceres"
 
-#: src/gui/dialogs/preferences_dialog.cpp:995
+#: src/gui/dialogs/preferences_dialog.cpp:996
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:995
+#: src/gui/dialogs/preferences_dialog.cpp:996
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Hotkeys Reset"
 msgstr "Dreceres de teclat"
 
-#: src/gui/dialogs/screenshot_notification.cpp:94
+#: src/gui/dialogs/screenshot_notification.cpp:95
 msgid ""
 "Unsupported image format.\n"
 "\n"
@@ -8669,7 +8627,7 @@ msgstr "Versió"
 msgid "Choose Test Scenario"
 msgstr "Objectius de l'escenari"
 
-#: src/gui/dialogs/unit_create.cpp:189
+#: src/gui/dialogs/unit_create.cpp:191
 msgid "unit_variation^Default Variation"
 msgstr ""
 
@@ -8683,37 +8641,37 @@ msgstr ""
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:317 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/unit_recall.cpp:320 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "Renomena la unitat"
 
-#: src/gui/dialogs/unit_recall.cpp:353
+#: src/gui/dialogs/unit_recall.cpp:356
 msgid "This unit is loyal and requires no upkeep."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:354 src/gui/dialogs/unit_recall.cpp:359
-#: src/gui/dialogs/unit_recall.cpp:364
+#: src/gui/dialogs/unit_recall.cpp:357 src/gui/dialogs/unit_recall.cpp:362
+#: src/gui/dialogs/unit_recall.cpp:367
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to dismiss him?"
 msgstr "Segur que voleu eixir?"
 
-#: src/gui/dialogs/unit_recall.cpp:355 src/gui/dialogs/unit_recall.cpp:360
-#: src/gui/dialogs/unit_recall.cpp:365
+#: src/gui/dialogs/unit_recall.cpp:358 src/gui/dialogs/unit_recall.cpp:363
+#: src/gui/dialogs/unit_recall.cpp:368
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to dismiss her?"
 msgstr "Segur que voleu eixir?"
 
-#: src/gui/dialogs/unit_recall.cpp:358
+#: src/gui/dialogs/unit_recall.cpp:361
 msgid "This unit is an experienced one, having advanced levels."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:363
+#: src/gui/dialogs/unit_recall.cpp:366
 msgid "This unit is close to advancing a level."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:369
+#: src/gui/dialogs/unit_recall.cpp:372
 msgid "Dismiss Unit"
 msgstr ""
 
@@ -8741,25 +8699,30 @@ msgstr ""
 msgid "Delete add-on from server"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:290
+#. TRANSLATORS: This is the new chat text indicator
+#: src/gui/widgets/chatbox.cpp:95
+msgid "NEW"
+msgstr ""
+
+#: src/gui/widgets/chatbox.cpp:300
 msgid "whisper to $receiver"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:374
+#: src/gui/widgets/chatbox.cpp:384
 msgid "Joined <i>$name</i>"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:380
+#: src/gui/widgets/chatbox.cpp:390
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
 msgstr ""
 
-#: src/gui/widgets/helper.cpp:122
+#: src/gui/widgets/helper.cpp:153
 msgid "Mandatory widget ‘$id’ hasn't been defined."
 msgstr ""
 
-#: src/gui/widgets/label.cpp:141 src/gui/widgets/multiline_text.cpp:427
+#: src/gui/widgets/label.cpp:141 src/gui/widgets/multiline_text.cpp:429
 msgid "Open link?"
 msgstr ""
 
@@ -8767,27 +8730,25 @@ msgstr ""
 msgid "Copied link!"
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:724 src/gui/widgets/multi_page.cpp:219
+#: src/gui/widgets/listbox.cpp:715 src/gui/widgets/multi_page.cpp:224
 msgid ""
 "‘list_data’ must have the same number of columns as the ‘list_definition’."
 msgstr ""
 
-#: src/gui/widgets/listbox.cpp:769 src/gui/widgets/listbox.cpp:812
-#: src/gui/widgets/listbox.cpp:855 src/gui/widgets/scrollbar_panel.cpp:90
+#: src/gui/widgets/listbox.cpp:751 src/gui/widgets/scrollbar_panel.cpp:86
 msgid "No list defined."
 msgstr "No s'ha definit la llista."
 
-#: src/gui/widgets/listbox.cpp:774 src/gui/widgets/listbox.cpp:817
-#: src/gui/widgets/listbox.cpp:860
+#: src/gui/widgets/listbox.cpp:756
 msgid "A ‘list_definition’ should contain one row."
 msgstr ""
 
-#: src/gui/widgets/multi_page.cpp:195
+#: src/gui/widgets/multi_page.cpp:200
 #, fuzzy
 msgid "No page defined."
 msgstr "No s'ha definit la graella."
 
-#: src/gui/widgets/multiline_text.cpp:432
+#: src/gui/widgets/multiline_text.cpp:434
 msgid ""
 "Opening links is not supported, contact your packager. Link URL has been "
 "copied to the clipboard."
@@ -8811,11 +8772,11 @@ msgstr[1] ""
 msgid "multimenu^None Selected"
 msgstr ""
 
-#: src/gui/widgets/pane.cpp:361
+#: src/gui/widgets/pane.cpp:359
 msgid "Need at least 1 parallel item."
 msgstr ""
 
-#: src/gui/widgets/rich_label.cpp:249
+#: src/gui/widgets/rich_label.cpp:250
 msgid "corrupted original file"
 msgstr ""
 
@@ -8831,7 +8792,7 @@ msgstr "El nom de l'usuari no és vàlid"
 msgid "No widget defined."
 msgstr "No s'ha definit la llista."
 
-#: src/gui/widgets/slider.cpp:356
+#: src/gui/widgets/slider.cpp:355
 msgid "The number of value_labels and values don’t match."
 msgstr ""
 
@@ -8850,11 +8811,11 @@ msgstr ""
 msgid "No grid defined for tab container control"
 msgstr "No s'ha definit la graella."
 
-#: src/gui/widgets/tree_view.cpp:290
+#: src/gui/widgets/tree_view.cpp:288
 msgid "No nodes defined for a tree view."
 msgstr ""
 
-#: src/gui/widgets/tree_view.cpp:325
+#: src/gui/widgets/tree_view.cpp:318
 msgid "[node]id ‘root’ is reserved for the implementation."
 msgstr ""
 
@@ -9924,11 +9885,11 @@ msgstr ""
 msgid "Find Server Application"
 msgstr ""
 
-#: src/preferences/preferences.cpp:1760
+#: src/preferences/preferences.cpp:1759
 msgid "[%H:%M]"
 msgstr ""
 
-#: src/preferences/preferences.cpp:1762
+#: src/preferences/preferences.cpp:1761
 msgid "[%I:%M %p]"
 msgstr ""
 
