@@ -274,19 +274,25 @@ void game_version::report_issue() {
 
 void game_version::show_manual() {
 	if (desktop::open_object_is_supported()) {
-		std::string manual_filename = "manual." + get_language().localename + ".html";
-		std::string local_path = game_config::path + "/doc/manual/" + manual_filename;
-		if (filesystem::file_exists(local_path)) {
-			desktop::open_object("file://" + local_path);
-		} else {
+		const std::string& locale_code = get_language().localename;
+		const std::vector<std::string>& split_locale_code = utils::split(locale_code, '_');
+		// If the result of split() is empty then locale_code is empty (likely using System Language)
+		// Assume en is always available as a fall-back
+		const std::string& language_code = split_locale_code.empty() ? "en" : split_locale_code[0];
+
+		const std::string& local_directory = game_config::path + "doc/manual/";
+		const std::string& web_directory = "www.wesnoth.org/manual/dev/";
+		const std::string& locale_file_name = "manual." + locale_code + ".html";
+		const std::string& language_file_name = "manual." + language_code + ".html";
+
+		if(filesystem::file_exists(local_directory + locale_file_name)) {
+			desktop::open_object("file://" + local_directory + locale_file_name);
+		} else if(filesystem::file_exists(local_directory + language_file_name)) {
 			// If a filename like manual.en_GB.html is not found, try manual.en.html
-			manual_filename = "manual." + utils::split(get_language().localename, '_')[0] + ".html";
-			std::string local_path = game_config::path + "/doc/manual/" + manual_filename;
-			if (filesystem::file_exists(local_path)) {
-				desktop::open_object("file://" + local_path);
-			} else {
-				desktop::open_object("https://www.wesnoth.org/manual/dev/" + manual_filename);
-			}
+			desktop::open_object("file://" + local_directory + language_file_name);
+		} else {
+			// Use web manual as a last resort
+			desktop::open_object("https://" + web_directory + language_file_name);
 		}
 	} else {
 		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
