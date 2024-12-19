@@ -782,7 +782,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 	{
 		auto ctx = at.specials_context(u.shared_from_this(), hex, u.side() == rc.screen().playing_team().side());
 		int base_damage = at.damage();
-		int specials_damage = at.modified_damage();
+		double specials_damage = at.modified_damage();
 		int damage_multiplier = 100;
 		const_attack_ptr weapon  = at.shared_from_this();
 		unit_alignments::type attack_alignment = weapon->alignment().value_or(u.alignment());
