@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18 - wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-11-26 12:08-0600\n"
-"PO-Revision-Date: 2024-06-07 01:06+0200\n"
-"Last-Translator: René Genz <liebundartig@freenet.de>\n"
+"PO-Revision-Date: 2024-12-03 10:19+0100\n"
+"Last-Translator: Wuzzy <Wuzzy@disroot.org>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -299,18 +299,14 @@ msgid "No editor time-of-day found."
 msgstr "Keine Tageszeiten-Definitionen für den Editor gefunden."
 
 #: src/editor/controller/editor_controller.cpp:882
-#, fuzzy
-#| msgid "Add-on"
 msgid "Add-on Files"
-msgstr "Erweiterung"
+msgstr "Erweiterungsdateien"
 
 # kommt identisch in wesnoth-lib vor
 #: src/editor/controller/editor_controller.cpp:895
-#, fuzzy
-#| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
-"Zwischenablage-Unterstützung nicht gefunden, wenden Sie sich an Ihren "
+"Zwischenablage-Unterstützung nicht gefunden, wendet Euch an Euren "
 "Paketbetreuer"
 
 #: src/editor/controller/editor_controller.cpp:1315
@@ -331,11 +327,11 @@ msgstr "Name:"
 
 #: src/editor/editor_display.cpp:170
 msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
-msgstr ""
+msgstr "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
 
 #: src/editor/editor_display.cpp:172
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
-msgstr ""
+msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 
 #: src/editor/map/context_manager.cpp:217
 msgid "Load Map"
@@ -398,10 +394,8 @@ msgstr "Fehler"
 
 #: src/editor/map/context_manager.cpp:709
 #: src/editor/map/context_manager.cpp:758
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
-msgstr "Wollt Ihr wirklich beenden?"
+msgstr "Wollt Ihr wirklich $type1 in ein Verzeichnis von $type2 speichern?"
 
 #: src/editor/map/context_manager.cpp:717
 #: src/editor/map/context_manager.cpp:926
@@ -440,10 +434,8 @@ msgid "Scenario saved."
 msgstr "Szenario gespeichert."
 
 #: src/editor/map/context_manager.cpp:902
-#, fuzzy
-#| msgid "Map saved."
 msgid "Map saved"
-msgstr "Karte gespeichert."
+msgstr "Karte gespeichert"
 
 #: src/editor/map/context_manager.cpp:977
 msgid "Loaded embedded map data"
@@ -488,11 +480,9 @@ msgstr ""
 "»map_data« verweist nicht auf eine existierende Datei"
 
 #: src/editor/map/map_context.cpp:264
-#, fuzzy
-#| msgid ""
-#| "Found the characters '<<' indicating inline lua is present - aborting"
 msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
-msgstr "Fand die Zeichen '<<' als Hinweis auf eingebettetes Lua - breche ab"
+msgstr ""
+"Die Zeichen „<<“ gefunden, was auf eingebettetes Lua hindeutet – Abbruch"
 
 #: src/editor/map/map_context.cpp:269
 msgid "Failed to load the scenario, attempting to load only the map."
@@ -511,16 +501,12 @@ msgid "Unable to parse file to find map data"
 msgstr "Konnte Datei nicht parsen, um Karten-Daten zu finden"
 
 #: src/editor/map/map_context.cpp:824 src/editor/map/map_context.cpp:864
-#, fuzzy
-#| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
-msgstr "Das Szenario konnte nicht gespeichert werden: $msg"
+msgstr "Der Zeitplan konnte nicht gespeichert werden: $msg"
 
 #: src/editor/map/map_context.cpp:858
-#, fuzzy
-#| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
-msgstr "Zeitplaneditor"
+msgstr "Zeitplan gespeichert."
 
 #: src/editor/map/map_context.cpp:904
 msgid "Could not save the scenario: $msg"
@@ -549,10 +535,8 @@ msgid "Will not work in game without extra care."
 msgstr "Funktioniert nicht ohne weitere Anpassungen im WML."
 
 #: src/editor/palette/item_palette.cpp:33
-#, fuzzy
-#| msgid "Right-click: "
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr "Rechtsklick: "
+msgstr "Linksklick: Gegenstand $item platzieren | Rechtsklick zum Entfernen"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
@@ -607,8 +591,17 @@ msgstr "Strg + Mausklick: Gelände kopieren"
 #~ msgid "Select"
 #~ msgstr "Auswählen"
 
+#~ msgid ""
+#~ "This file is outside Wesnoth’s data dirs. Do you wish to copy it into "
+#~ "your add-on?"
+#~ msgstr ""
+#~ "Diese Datei befindet sich außerhalb Wesnoths Datenverzeichnissen. Möchtet "
+#~ "Ihr sie in Euer Add-on kopieren?"
+
+#~ msgid "Confirm"
+#~ msgstr "Bestätigen"
+
 #, fuzzy
-#~| msgid "Left-click: "
 #~ msgid "Left-click: Place item "
 #~ msgstr "Linksklick: "
 
