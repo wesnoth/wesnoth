@@ -116,6 +116,15 @@ const std::set<std::string> team::attributes {
 	"description"
 };
 
+// Update this list of child tags if you change what is used to define a side
+// (excluding those attributes used to define the side's leader).
+const std::set<std::string> team::tags {
+	"ai",
+	"leader",
+	"unit",
+	"variables",
+	"village"
+};
 team::team_info::team_info()
 	: gold(0)
 	, start_gold(0)
