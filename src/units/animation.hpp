@@ -211,7 +211,11 @@ public:
 		, const_attack_ptr attack = nullptr
 		, const_attack_ptr second_attack = nullptr
 		, int value2 = 0
-		, bool fromlua = false);
+		, bool fromlua = false
+		, unit_ptr move_unit_p = nullptr);
+
+	//mark impl this similar to what in add_animation
+	void unit_animator::move_unit_fake_queue(int& index_movement_anim);
 
 	/** has_animation : return an boolean value if animated unit present and have animation specified, used for verify prensence of [leading_anim] or [resistance_anim] for playability of [teaching_anim]
 	 * @return True if the  @a animated_unit is present and have animation.
@@ -275,8 +279,11 @@ private:
 		std::string text;
 		color_t text_color;
 		map_location src;
-		map_location::direction original_facing = map_location::direction::indeterminate;
 		bool with_bars = false;
+		map_location::direction original_facing = map_location::direction::indeterminate;
+		map_location move_dst = map_location::null_location();
+		unit_ptr move_up = nullptr;
+		bool is_movement = false;
 	};
 
 	std::vector<anim_elem> animated_units_;

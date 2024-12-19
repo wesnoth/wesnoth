@@ -28,6 +28,7 @@
 #include "units/unit.hpp"
 #include "variable.hpp"
 #include "log.hpp" 
+#include "game_events/action_wml.cpp"
 
 #include <algorithm>
 #include <thread>
@@ -1036,17 +1037,13 @@ std::chrono::milliseconds unit_animation::get_begin_time() const
 
 	return result;
 }
-<<<<<<< HEAD
 //mark start_animation_a after testing, facing seems can only be impl by actually change the facing status of unit before and after animating.
 //in other words: target only affect how the pool of chosen animations generated will be (before bug fix, this even don't work neither),
 //don't actually have anything to do with unit facing according to related impl codes.
 //in testing, first functionality has been proved to work.
 //so the next step is the second: finding out how to impl facing change with acceptable side effects.
-void unit_animation::start_animation(int start_time
-=======
 
 void unit_animation::start_animation(const std::chrono::milliseconds& start_time
->>>>>>> Fix_create_animator
 	, const map_location& src
 	, const map_location& dst
 	, const std::string& text
@@ -1055,7 +1052,6 @@ void unit_animation::start_animation(const std::chrono::milliseconds& start_time
 {
 	if(from_lua_) {
 		unit_anim_.accelerate = accelerate;
-
 		LOG_LUA << "now dst in start_anim is " << dst_;
 	} else {
 		unit_anim_.accelerate = accelerate;
@@ -1337,28 +1333,42 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 		, const_attack_ptr attack
 		, const_attack_ptr second_attack
 		, int value2
-		, bool fromlua)
+		, bool fromlua
+		, unit_ptr move_unit_p)
 {
 	if(!animated_unit) return;
 
+	// when dst is invalid, it shouldn't be processed whatsoever.
+	// from lua is not only an indicator from lua now. it actually indicates the need for changing unit facing
 	const unit_animation* anim =
-		animated_unit->anim_comp().choose_animation(src, event, dst, value, hit_type, attack, second_attack, value2, fromlua);
-	if(!anim) return;
-
-<<<<<<< HEAD
-	start_time_ = std::max<int>(start_time_, anim->get_begin_time());
+		 animated_unit->anim_comp().choose_animation(src, event, dst, value, hit_type, attack, second_attack, value2, fromlua);
+	if(anim) {
+		start_time_ = std::max(start_time_, anim->get_begin_time());
+	} else if(!move_unit_p)
+		return;
 
 	auto&& au_rvalue = std::move(animated_unit);
-	animated_units_.AGGREGATE_EMPLACE(au_rvalue, anim, text, text_color, src, au_rvalue->facing(), with_bars);
-	au_rvalue->set_facing(src.get_relative_dir(dst));
-	display* disp = display::get_singleton();
-	disp->invalidate(src);
-	disp->update();
-	LOG_LUA << "facing set to " << src.get_relative_dir(dst) << " expected, and actually is " << au_rvalue->facing();
-=======
-	start_time_ = std::max(start_time_, anim->get_begin_time());
-	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, with_bars);
->>>>>>> Fix_create_animator
+	if(fromlua) {
+		if(move_unit_p != nullptr) {
+			// Process movement animation
+			LOG_LUA << "Processing movement animation, dst = " << dst;
+			animated_units_.AGGREGATE_EMPLACE(
+				au_rvalue, anim, text, text_color, src, with_bars, au_rvalue->facing(), dst, move_unit_p, true);
+		} else {
+			// Process non-movement animation
+			animated_units_.AGGREGATE_EMPLACE(
+				au_rvalue, anim, text, text_color, src, with_bars, au_rvalue->facing(), dst);
+		}
+		au_rvalue->set_facing(src.get_relative_dir(dst));
+		display* disp = display::get_singleton();
+		disp->invalidate(src);
+		disp->update();
+		LOG_LUA << "facing set to " << src.get_relative_dir(dst) << " expected, and actually is "
+				<< au_rvalue->facing();
+	} else{
+		animated_units_.AGGREGATE_EMPLACE(au_rvalue, anim, text, text_color, src, with_bars);
+		LOG_LUA << "facing setting skipped for invalid dst or operation not from lua.";
+	}
 }
 
 void unit_animator::add_animation(unit_const_ptr animated_unit
@@ -1369,15 +1379,70 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 	, const color_t text_color)
 {
 	if(!animated_unit || !anim) return;
-
-<<<<<<< HEAD
-	start_time_ = std::max<int>(start_time_, anim->get_begin_time());
-	map_location::direction original_facing = map_location::direction::indeterminate;
-	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, original_facing, with_bars);
-=======
 	start_time_ = std::max(start_time_, anim->get_begin_time());
 	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, with_bars);
->>>>>>> Fix_create_animator
+}
+
+
+// the return value indicates where non-movement processing should continue
+// Notice: position of the moved unit should only be set after run(), in the last movement.
+//mark move_unit_fake_queue fixme:y=-999 when only changes x
+void unit_animator::move_unit_fake_queue(int& index_movement_anim)
+{
+	LOG_LUA << "Running move_unit_fake_queue";
+	const std::string tag = "move_unit_fake";
+	game_events::wml_action::map m = game_events::wml_action::registry();// m[tag] is call wml func by tag.
+	bool coherent_moving = false;
+	map_location u_initial_loc;
+	while (index_movement_anim < animated_units_.size() && animated_units_[index_movement_anim].is_movement)
+	{
+		auto& anim = animated_units_[index_movement_anim];
+		auto* last_anim_p = index_movement_anim > 0 ? &animated_units_[index_movement_anim - 1] : nullptr;
+		// only when start location and animated unit are the same with what in last animation, should the next movement animation run in coherence.
+		coherent_moving = last_anim_p && last_anim_p->is_movement
+			&& last_anim_p->move_up == anim.move_up && last_anim_p->src == anim.src;
+		unit_ptr& m_up = anim.move_up;
+		unit& m_u = *m_up;
+		map_location& m_src = coherent_moving ? last_anim_p->move_dst : anim.src;
+		map_location& m_dst = anim.move_dst;
+		// when animation is run, loc of the real unit could be different from m_src.
+		//use coherent_moving to indicate whether the location of real unit should be temporarily set to destination of last movement animation.
+		u_initial_loc = m_u.get_location();
+		m_u.set_hidden(true);
+		// temporarily changes the unit location for movement coherence.
+		if (coherent_moving){
+			m_u.set_location(last_anim_p->move_dst);
+		} else {
+			m_u.set_location(map_location::null_location());
+		}
+		m_dst = find_vacant_tile(m_dst, pathfind::VACANT_ANY, m_up.get());
+		config cfg;
+		cfg["type"] = m_u.type().id();
+		cfg["gender"] = m_u.gender();
+		cfg["variation"] = m_u.variation();
+		cfg["side"] = m_u.side();
+		//was write in cfg["x"] = std::to_string(m_src.wml_x()) + "," + std::to_string(m_src.wml_x()); and didn't find the bug for fucking decades I'm fucked for this
+		cfg["x"] = std::to_string(m_src.wml_x()) + "," + std::to_string(m_dst.wml_x());
+		cfg["y"] = std::to_string(m_src.wml_y()) + "," + std::to_string(m_dst.wml_y());
+		cfg["force_scroll"] = true;
+		vconfig vcfg = vconfig(cfg);
+		LOG_LUA << "Now vcfg has an y of " << vcfg["y"] << " and cfg has an y of " << cfg["y"];
+		LOG_LUA << "Now m_src.wml_y() is " << m_src.wml_y() << " and m_dst.y is " << m_dst.wml_y() << " and added is "
+				<< std::to_string(m_src.wml_y()) + "," + std::to_string(m_dst.wml_y());
+		LOG_LUA << "Now vcfg has an x of " << vcfg["x"] << " and cfg has an x of " << cfg["x"];
+		LOG_LUA << "Now m_src.wml_x() is " << m_src.wml_x() << " and m_dst.x is " << m_dst.wml_x() << " and added is "
+				<< std::to_string(m_src.wml_x()) + "," + std::to_string(m_dst.wml_x());
+		LOG_LUA << "src = " << m_src << " and dst = " << m_dst;
+		m[tag]({"","",map_location(),map_location(),config()},vcfg);
+		game_display* screen_p = game_display::get_singleton();
+		bool result = screen_p->maybe_rebuild();
+		if (!result){
+			screen_p->invalidate_all();
+		}
+		m_u.set_location(u_initial_loc);
+		m_u.set_hidden(false);
+		index_movement_anim++;
+	}
 }
 
 bool unit_animator::has_animation(unit_const_ptr animated_unit
@@ -1392,7 +1457,7 @@ bool unit_animator::has_animation(unit_const_ptr animated_unit
 {
 	return (animated_unit && animated_unit->anim_comp().choose_animation(src, event, dst, value, hit_type, attack, second_attack, value2));
 }
-
+//mark replace anim
 void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit
 	, const std::string& event
 	, const map_location &src
@@ -1413,9 +1478,10 @@ void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit
 		 animated_unit->anim_comp().get_animation()->matches(
 			src, dst, animated_unit, event, value, hit_type, attack, second_attack, value2) > unit_animation::MATCH_FAIL)
 	{
-		map_location::direction original_facing = map_location::direction::indeterminate;
-		animated_units_.AGGREGATE_EMPLACE(animated_unit, nullptr, text, text_color, src, original_facing, with_bars);
+		animated_units_.AGGREGATE_EMPLACE(animated_unit, nullptr, text, text_color, src, with_bars);
 	} else {
+		if (event == "movement")
+			LOG_LUA << "add_anim called by replace_anim";
 		add_animation(animated_unit,event,src,dst,value,with_bars,text,text_color,hit_type,attack,second_attack,value2);
 	}
 }
@@ -1425,7 +1491,7 @@ void unit_animator::start_animations()
 	auto begin_time = std::chrono::milliseconds::max();
 
 	for(const auto& anim : animated_units_) {
-		if(anim.my_unit->anim_comp().get_animation()) {
+		if(!anim.is_movement && anim.my_unit->anim_comp().get_animation()) {
 			if(anim.animation) {
 				begin_time = std::min(begin_time, anim.animation->get_begin_time());
 			} else  {
@@ -1433,19 +1499,28 @@ void unit_animator::start_animations()
 			}
 		}
 	}
+	int index = 0;
+	while(index < animated_units_.size()) {
+		unit_animator::anim_elem& anim = animated_units_[index];
+		if(anim.is_movement) {
+			move_unit_fake_queue(index);
+			continue;
+		}
 
-	for(auto& anim : animated_units_) {
 		if(anim.animation) {
 			LOG_LUA << "now dst in start_anims if is " << anim.animation->get_dst();
 			LOG_LUA << "and facing is " << anim.src.get_direction(anim.my_unit->facing());
-			anim.my_unit->anim_comp().start_animation(begin_time, anim.animation, anim.with_bars, anim.text, anim.text_color);
-			//mark anim set to nptr this is why crash
+			anim.my_unit->anim_comp().start_animation(
+				begin_time, anim.animation, anim.with_bars, anim.text, anim.text_color);
+			// mark anim set to nptr this is why crash
 			anim.animation = nullptr;
 		} else {
-			LOG_LUA << "now dst in start_anims else is " << anim.animation->get_dst();
+			LOG_LUA << "now dst in start_anims else is null";
 			LOG_LUA << "and facing is " << anim.src.get_direction(anim.my_unit->facing());
-			anim.my_unit->anim_comp().get_animation()->update_parameters(anim.src, anim.src.get_direction(anim.my_unit->facing()));
+			anim.my_unit->anim_comp().get_animation()->update_parameters(
+				anim.src, anim.src.get_direction(anim.my_unit->facing()));
 		}
+		index++;
 	}
 }
 //mark revert

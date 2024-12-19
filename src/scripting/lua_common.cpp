@@ -797,6 +797,37 @@ bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
 	return false;
 }
 
+bool luaW_todirection(lua_State *L, int index, map_location::direction& dir) {
+	if(!lua_checkstack(L, LUA_MINSTACK)) {
+		return false;
+	}
+	if(lua_isnoneornil(L, index)) {
+		// Need this special check because luaW_tovconfig returns true in this case
+		return false;
+	}
+
+	vconfig dummy_vcfg = vconfig::unconstructed_vconfig();
+
+	index = lua_absindex(L, index);
+
+	if(luaL_checkstring(L, index)) {
+		map_location::direction result = map_location::parse_direction(lua_tostring(L, index));
+		if(result != map_location::direction::indeterminate) {
+			dir = result;
+			return true;
+		}
+	}
+	return false;
+}
+
+map_location::direction luaW_checkdirection(lua_State *L, int index)
+{
+	map_location::direction result;
+	if (!luaW_todirection(L, index, result))
+		luaW_type_error(L, index, "direction");
+	return result;
+}
+
 map_location luaW_checklocation(lua_State *L, int index)
 {
 	map_location result;

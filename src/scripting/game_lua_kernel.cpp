@@ -267,13 +267,23 @@ static int impl_animator_collect(lua_State* L) {
 	anim.~unit_animator();
 	return 0;
 }
-
+//mark modify this: `target location must be ...`
+/*Soliton: about your comment related with target and facing field in https://github.com/wesnoth/wesnoth/issues/9032 , I
+ * agree with your idea that they are not the same thing, however I thought for a while and I found that maybe facing
+ * will hardly be useful when target is available. Animation appropriate for specified target can be chosen automatedly
+ * considering the unit's location(as dst in choose_animation), facing field seems just redundant in this case. I
+ * personally can't think of how an animation (possibly with movement, e.g. attacking) can properly run if user want to
+ * manually decide its facing, from my view it will just look weird. For those animation don't require movement, target
+ * will also serve its functionality, this is when it becomes facing and work. Thus it seems no need to add another
+ * parameter to add_animation, just keep using target and it should work , from my prospect. (and it's okay for users to
+ * use facing, it's interpreted as target anyway)*/
 static int impl_add_animation(lua_State* L)
 {
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
+	std::string which = luaL_checkstring(L, 3);
 	unit_ptr up = luaW_checkunit_ptr(L, 2, false);
 	unit& u = *up;
-	std::string which = luaL_checkstring(L, 3);
+	unit_ptr move_unit_p = (which == "movement") ? up : nullptr;
 
 	std::string hits_str = luaL_checkstring(L, 4);
 	strike_result::type hits = strike_result::get_enum(hits_str).value_or(strike_result::type::invalid);
@@ -287,20 +297,47 @@ static int impl_add_animation(lua_State* L)
 
 	if(lua_istable(L, 5)) {
 		lua_getfield(L, 5, "target");
-		if(luaW_tolocation(L, -1, dest)) {
-			if(dest == u.get_location()) {
-				return luaL_argerror(L, 5, "target location must be different from animated unit's location");
-			} else if(!tiles_adjacent(dest, u.get_location())) {
-				return luaL_argerror(L, 5, "target location must be adjacent to the animated unit");
-			}
-		} else {
-			// luaW_tolocation may set the location to (0,0) if it fails
-			dest = map_location();
-			if(!lua_isnoneornil(L, -1)) {
-				return luaW_type_error(L, 5, "target", "location table");
-			}
+		bool use_target = !lua_isnoneornil(L, -1);
+		lua_getfield(L, 5, "facing");
+		bool use_facing = !lua_isnoneornil(L, -1);
+		if(use_facing && use_target) {
+			return luaL_argerror(L, 5, "Target location and facing direction can't be used together");
 		}
-		lua_pop(L, 1);
+		if(use_facing && move_unit_p != nullptr) {
+			return luaL_argerror(L, 5, "Facing shouldn't be specified for movement animations");
+		}
+		bool use_anything = true;
+		if(use_target) {
+			lua_pop(L, 1);
+		} else if(use_facing) {
+			lua_remove(L, -2);
+		} else {
+			use_anything = false;
+		}
+		if(use_anything) {
+			if(luaW_tolocation(L, -1, dest)) {
+				if(dest == u.get_location()) {
+					return luaL_argerror(
+						L, 5, "Given target or facing location must be different from animated unit's location");
+				}
+			} else if(use_facing) {
+				map_location::direction dir;
+				if(luaW_todirection(L, -1, dir)) {
+					dest = u.get_location().get_direction(dir);
+				} else {
+					return luaW_type_error(L, 5, "facing", "location table or direction");
+				}
+			} else {
+				// luaW_tolocation may set the location to null location if it fails
+				dest = map_location::null_location();
+				if(!lua_isnoneornil(L, -1)) {
+					return luaW_type_error(L, 5, "target", "location table");
+				}
+			}
+			lua_pop(L, 1);
+		} else {
+			lua_pop(L, 2);
+		}
 
 		lua_getfield(L, 5, "value");
 		if(lua_isnumber(L, -1)) {
@@ -365,32 +402,15 @@ static int impl_add_animation(lua_State* L)
 		return luaW_type_error(L, 5, "table of options");
 	}
 	//u.set_facing(u.get_location().get_relative_dir(dest));
-	anim.add_animation(up, which, u.get_location(), dest, v1, bars, text, color, hits, primary, secondary, v2, true);
+	anim.add_animation(
+		up, which, u.get_location(), dest, v1, bars, text, color, hits, primary, secondary, v2, true, move_unit_p);
 	return 0;
 }
 
-// Todo: make a C++ impl to replace this method.
-int game_lua_kernel::impl_add_movement(lua_State* L)
-{
-	lua_getglobal(L, "wesnoth");
-	lua_getfield(L, -1, "interface");
-	lua_getfield(L, -1, "move_unit_fake_queue");
-	luaW_pushunit(L, luaW_checkunit_ptr(L, 2, false));
-	{
-		map_location temp = luaW_checklocation(L, 3);
-		lua_pushinteger(L, temp.wml_x());
-		lua_pushinteger(L, temp.wml_y());
-	}
-	lua_pushboolean(L, true);
-	if(lua_isnoneornil(L, 4)) {
-		lua_pushnil(L);
-	} else {
-		lua_pushboolean(L, luaW_toboolean(L, 4));
-	}
-	lua_call(L, 5, 0);
-	return 0;
-}
 
+/*	//mark how to impl move -> other -> move process: the lua impl part automatedly stops when movement animation phase end for the moment.
+	create a special function which uses a special mark when calling lua impl part, to inform the lua impl he should continue,
+	when other animations end	*/
 int game_lua_kernel::impl_run_animation(lua_State* L)
 {
 	if(video::headless() || resources::controller->is_skipping_replay()) {
@@ -399,16 +419,6 @@ int game_lua_kernel::impl_run_animation(lua_State* L)
 	events::command_disabler command_disabler;
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
 	play_controller_.play_slice();
-	lua_getglobal(L, "wesnoth");
-	lua_getfield(L, -1, "interface");
-	lua_getfield(L, -1, "move_unit_fake_queue");
-	lua_pushnil(L);
-	lua_pushnil(L);
-	lua_pushnil(L);
-	lua_pushboolean(L, false);
-	lua_pushnil(L);
-	lua_call(L, 5, 0);
-
 	anim.start_animations();
 	anim.wait_for_end();
 	anim.set_all_standing();
@@ -416,6 +426,8 @@ int game_lua_kernel::impl_run_animation(lua_State* L)
 	anim.clear();
 	return 0;
 }
+
+
 
 static int impl_clear_animation(lua_State* L)
 {
@@ -438,7 +450,6 @@ int game_lua_kernel::intf_create_animator(lua_State* L)
 			{"__gc", impl_animator_collect},
 			{"__index", impl_animator_get},
 			{"add", impl_add_animation},
-			{"add_movement", &dispatch<&game_lua_kernel::impl_add_movement>},
 			{"run", &dispatch<&game_lua_kernel::impl_run_animation>},
 			{"clear", impl_clear_animation},
 			{nullptr, nullptr},
@@ -5598,7 +5609,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 
 	// Create the playlist table with its metatable
 	cmd_log_ << lua_audio::register_table(L);
-
 	// Create the wml_actions table.
 	cmd_log_ << "Adding wml_actions table...\n";
 

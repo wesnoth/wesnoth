@@ -33,6 +33,11 @@
 
 #define LOG_DP LOG_STREAM(info, display)
 
+static lg::log_domain log_scripting_lua("scripting/lua");
+#define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
+#define LOG_LUA LOG_STREAM(info, log_scripting_lua)
+#define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
+#define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
 namespace unit_display
 {
@@ -126,6 +131,7 @@ void teleport_unit_between(const map_location& a, const map_location& b, unit& t
  * @returns  The animation potential until this animation will finish.
  *           milliseconds::min indicates that no animation is pending.
  */
+//mark move_unit_between solve the unit only move toward n or s issue.
 std::chrono::milliseconds move_unit_between(const map_location& a,
 		const map_location& b,
 		unit_ptr temp_unit,
@@ -140,6 +146,7 @@ std::chrono::milliseconds move_unit_between(const map_location& a,
 
 	temp_unit->set_location(a);
 	disp.invalidate(a);
+	LOG_LUA << "facing in move_unit_between temp unit set from " << temp_unit->facing() << " to " << a.get_relative_dir(b);
 	temp_unit->set_facing(a.get_relative_dir(b));
 	animator.replace_anim_if_invalid(temp_unit,"movement",a,b,step_num,
 			false,"",{0,0,0},strike_result::type::invalid,nullptr,nullptr,step_left);
@@ -287,6 +294,7 @@ void unit_mover::start(unit_ptr u)
 	}
 
 	// extra immobile movement animation for take-off
+	//mark udisplay start maybe this is where the problem is, causing unit moving to it's own dir
 	animator_.add_animation(temp_unit_ptr_.get_unit_ptr(), "pre_movement", path_[0], path_[1]);
 	animator_.start_animations();
 	animator_.wait_for_end();
@@ -311,6 +319,7 @@ void unit_mover::start(unit_ptr u)
  * wait (another call to proceed_to() or finish() will implicitly wait). The
  * unit must remain valid until the wait is finished.
  */
+//mark proceed
 void unit_mover::proceed_to(unit_ptr u, std::size_t path_index, bool update, bool wait)
 {
 	// Nothing to do here if animations cannot be shown.
@@ -502,6 +511,7 @@ void unit_mover::finish(unit_ptr u, map_location::direction dir)
  * so that while the unit is moving status etc.
  * will still display the correct number of units.
  */
+//mark move_unit
 void move_unit(const std::vector<map_location>& path, unit_ptr u,
                bool animate, map_location::direction dir,
                bool force_scroll)

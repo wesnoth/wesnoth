@@ -41,18 +41,21 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	---@param to_x integer
 	---@param to_y integer
 	---@param queued boolean
-	---@param scroll boolean
-	function wesnoth.interface.move_unit_fake_queue(u, to_x, to_y, queued, scroll)
+    ---@param scroll boolean
+	---@param wait boolean
+	function wesnoth.interface.move_unit_fake_queue(u, to_x, to_y, queued, scroll, wait)
 		if to_x and to_y and u then
 			if scroll == nil then
 				scroll = true
 			end
-			table.insert(queued_movements, { to_x = to_x, to_y = to_y, u = u, scroll = scroll })
+			table.insert(queued_movements, { to_x = to_x, to_y = to_y, u = u, scroll = scroll, wait = wait })
 		end
-		if queued then
+		if queued or queued_movements == nil or queued_movements == {} then
 			return
 		end
 
+		queued_movements[-1].wait = true
+		local index = 0
 		for _index, move in ipairs(queued_movements) do
 			local moving_unit = move.u
 			local from_x, from_y = moving_unit.x, moving_unit.y
@@ -72,8 +75,15 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			}
 			wesnoth.wml_actions.redraw {}
 			moving_unit.hidden = false;
+			if move.wait then
+				index = _index
+				break
+			end
 		end
-		queued_movements = {}
+		while index > 0 do
+			table.remove(queued_movements, index)
+			index = index - 1
+		end
 	end
 
 	wesnoth.delay = wesnoth.deprecate_api('wesnoth.delay', 'wesnoth.interface.delay', 1, nil, wesnoth.interface.delay)

@@ -116,6 +116,22 @@ void luaW_pushlocation(lua_State *L, const map_location& loc);
 bool luaW_tolocation(lua_State *L, int index, map_location &loc);
 
 /**
+ * Converts a string to a direction object.
+ * @param L the pointer to the lua interpreter.
+ * @param index stack position of the direction string.
+ * @param dir the direction to write to.
+ * @return false if a direction couldn't be matched.
+ */
+
+bool luaW_todirection(lua_State* L, int index, map_location::direction& dir);
+
+/**
+ * Converts a string to a direction object.
+ */
+
+map_location::direction luaW_checkdirection(lua_State* L, int index);
+
+/**
  * Converts an optional table or pair of integers to a map location object.
  * @note If a pair of integers was found, the first one will be removed
  *       from the stack when the function returns.

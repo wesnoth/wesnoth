@@ -60,23 +60,25 @@ const unit_animation* unit_animation_component::choose_animation(const map_locat
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
 	int max_val = unit_animation::MATCH_FAIL;
+	//mark only chosen anim's param is updated. however chosen anim is not surely used by move_unit_display, that's the problem
 	for(unit_animation& anim : animations_) {
 		//mark choose_ani
 		int matching = anim.matches(loc,second_loc,u_.shared_from_this(),event,value,hit,attack,second_attack,swing_num);
 		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
-			if (from_lua){
-				LOG_LUA << "now dst in choose_anim upper changed from " << second_loc << " to " << anim.get_dst();
+			// when event is "movement", also need to provent it from overriding by start_anim in animation.cpp
+			if (from_lua || event == "movement"){
+				LOG_LUA << "now dst in choose_anim upper changed from " << anim.get_dst() << " to " << second_loc;
 				anim.update_parameters(loc, second_loc);
-				anim.update_fromlua(from_lua);
+				anim.update_fromlua(from_lua || event == "movement");
 			}
 			options.push_back(&anim);
 		} else if(matching > max_val) {
 			max_val = matching;
 			options.clear();
-			if (from_lua){
-				LOG_LUA << "now dst in choose_anim lower changed from " << second_loc<< " to " << anim.get_dst();
+			if (from_lua || event == "movement"){
+				LOG_LUA << "now dst in choose_anim lower changed from " << anim.get_dst() << " to " << second_loc;
 				anim.update_parameters(loc, second_loc);
-				anim.update_fromlua(from_lua);
+				anim.update_fromlua(from_lua || event == "movement");
 			}
 			options.push_back(&anim);
 		}
@@ -148,6 +150,7 @@ void unit_animation_component::start_animation(const std::chrono::milliseconds& 
 	//u_.set_facing(u_.loc_.get_relative_dir(anim_->get_dst()));
 	anim_.reset(new unit_animation(*animation));
 	const auto real_start_time = start_time == std::chrono::milliseconds::max() ? anim_->get_begin_time() : start_time;
+	LOG_LUA << "u_.loc_.get_direction(u_.facing_) in start_anim is " << u_.loc_.get_direction(u_.facing_);
 	anim_->start_animation(real_start_time, u_.loc_, u_.loc_.get_direction(u_.facing_),
 		 text, text_color, accelerate);
 	frame_begin_time_ = anim_->get_begin_time() - 1ms;
