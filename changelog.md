@@ -16,8 +16,6 @@
 ## Version 1.19.7
 ### Multiplayer
    * Implemented an attempt to fix the multiplayer server crashing if someone requested game history and then disconnected before receiving the results
-### Packaging
-   * Windows 10 or later is now required
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Hungarian, Italian
 ### Units
