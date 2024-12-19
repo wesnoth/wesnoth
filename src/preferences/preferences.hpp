@@ -246,7 +246,7 @@ class prefs
 		std::string get_chat_timestamp(const std::chrono::system_clock::time_point& t);
 		compression::format save_compression_format();
 		std::vector<std::string>* get_history(const std::string& id);
-		std::vector<preferences::option>& get_advanced_preferences() {return advanced_prefs_;}
+		const std::vector<preferences::option>& get_advanced_preferences() { return advanced_prefs_; }
 
 		// non-trivial getters+setters
 		point resolution();
