@@ -1339,9 +1339,12 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 	if(!animated_unit) return;
 
 	// when dst is invalid, it shouldn't be processed whatsoever.
-	// from lua is not only an indicator from lua now. it actually indicates the need for changing unit facing
-	const unit_animation* anim =
-		 animated_unit->anim_comp().choose_animation(src, event, dst, value, hit_type, attack, second_attack, value2, fromlua);
+	// fromlua actually means the need for updating unit facing and destination before animation. Might change name of this param.
+	// movement animation with move_unit_p defined don't actually use the animation generated. It's the later called wml function which uses generated animation.
+	// so in this case nullptr is enough.
+	const unit_animation* anim = move_unit_p ? nullptr
+											 : animated_unit->anim_comp().choose_animation(src, event, dst, value,
+												   hit_type, attack, second_attack, value2, fromlua);
 	if(anim) {
 		start_time_ = std::max(start_time_, anim->get_begin_time());
 	} else if(!move_unit_p)
@@ -1353,18 +1356,21 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 			// Process movement animation
 			LOG_LUA << "Processing movement animation, dst = " << dst;
 			animated_units_.AGGREGATE_EMPLACE(
-				au_rvalue, anim, text, text_color, src, with_bars, au_rvalue->facing(), dst, move_unit_p, true);
+				au_rvalue, anim, text, text_color, src, with_bars, au_rvalue->facing(), dst, src.get_relative_dir(dst), move_unit_p, true);
 		} else {
 			// Process non-movement animation
+			LOG_LUA << "Processing non-movement animation, dst = " << dst;
 			animated_units_.AGGREGATE_EMPLACE(
-				au_rvalue, anim, text, text_color, src, with_bars, au_rvalue->facing(), dst);
+				au_rvalue, anim, text, text_color, src, with_bars, au_rvalue->facing(), dst, src.get_relative_dir(dst));
 		}
+		/* facing shouldn't be changed before animation runs. It should be changed right after run() is called, by
+		sequence. should remove these after main stuff proved to work.
 		au_rvalue->set_facing(src.get_relative_dir(dst));
 		display* disp = display::get_singleton();
 		disp->invalidate(src);
 		disp->update();
 		LOG_LUA << "facing set to " << src.get_relative_dir(dst) << " expected, and actually is "
-				<< au_rvalue->facing();
+				 au_rvalue->facing();*/
 	} else{
 		animated_units_.AGGREGATE_EMPLACE(au_rvalue, anim, text, text_color, src, with_bars);
 		LOG_LUA << "facing setting skipped for invalid dst or operation not from lua.";
@@ -1392,6 +1398,9 @@ void unit_animator::move_unit_fake_queue(int& index_movement_anim)
 	LOG_LUA << "Running move_unit_fake_queue";
 	const std::string tag = "move_unit_fake";
 	game_events::wml_action::map m = game_events::wml_action::registry();// m[tag] is call wml func by tag.
+	game_display* screen_p = game_display::get_singleton();
+	display* disp = display::get_singleton();
+	bool result;
 	bool coherent_moving = false;
 	map_location u_initial_loc;
 	while (index_movement_anim < animated_units_.size() && animated_units_[index_movement_anim].is_movement)
@@ -1409,19 +1418,19 @@ void unit_animator::move_unit_fake_queue(int& index_movement_anim)
 		//use coherent_moving to indicate whether the location of real unit should be temporarily set to destination of last movement animation.
 		u_initial_loc = m_u.get_location();
 		m_u.set_hidden(true);
-		// temporarily changes the unit location for movement coherence.
+		// temporarily changes the unit location to make space.
 		if (coherent_moving){
 			m_u.set_location(last_anim_p->move_dst);
 		} else {
 			m_u.set_location(map_location::null_location());
 		}
+		disp->invalidate(u_initial_loc);
 		m_dst = find_vacant_tile(m_dst, pathfind::VACANT_ANY, m_up.get());
 		config cfg;
 		cfg["type"] = m_u.type().id();
 		cfg["gender"] = m_u.gender();
 		cfg["variation"] = m_u.variation();
 		cfg["side"] = m_u.side();
-		//was write in cfg["x"] = std::to_string(m_src.wml_x()) + "," + std::to_string(m_src.wml_x()); and didn't find the bug for fucking decades I'm fucked for this
 		cfg["x"] = std::to_string(m_src.wml_x()) + "," + std::to_string(m_dst.wml_x());
 		cfg["y"] = std::to_string(m_src.wml_y()) + "," + std::to_string(m_dst.wml_y());
 		cfg["force_scroll"] = true;
@@ -1434,8 +1443,7 @@ void unit_animator::move_unit_fake_queue(int& index_movement_anim)
 				<< std::to_string(m_src.wml_x()) + "," + std::to_string(m_dst.wml_x());
 		LOG_LUA << "src = " << m_src << " and dst = " << m_dst;
 		m[tag]({"","",map_location(),map_location(),config()},vcfg);
-		game_display* screen_p = game_display::get_singleton();
-		bool result = screen_p->maybe_rebuild();
+		result = screen_p->maybe_rebuild();
 		if (!result){
 			screen_p->invalidate_all();
 		}
@@ -1486,6 +1494,7 @@ void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit
 	}
 }
 //mark start_anims call start_anim_ac
+//mark issue now: if movement and non-movement animations all operate at the same unit, non-movement animations will be override.
 void unit_animator::start_animations()
 {
 	auto begin_time = std::chrono::milliseconds::max();
@@ -1503,13 +1512,24 @@ void unit_animator::start_animations()
 	while(index < animated_units_.size()) {
 		unit_animator::anim_elem& anim = animated_units_[index];
 		if(anim.is_movement) {
+			wait_for_end();
 			move_unit_fake_queue(index);
 			continue;
 		}
-
+		LOG_LUA << "Running non-movement animation";
 		if(anim.animation) {
 			LOG_LUA << "now dst in start_anims if is " << anim.animation->get_dst();
 			LOG_LUA << "and facing is " << anim.src.get_direction(anim.my_unit->facing());
+			// temporarily changing the animated unit's facing to match expected animation.
+			if (anim.changed_facing != map_location::direction::indeterminate){
+				anim.my_unit->set_facing(anim.changed_facing);
+				display* disp = display::get_singleton();
+				disp->invalidate(anim.my_unit->get_location());
+				disp->update();
+				LOG_LUA << "facing in start_anim set to " << anim.changed_facing << " expected, and actually is "
+				<< anim.my_unit->facing();
+			}
+
 			anim.my_unit->anim_comp().start_animation(
 				begin_time, anim.animation, anim.with_bars, anim.text, anim.text_color);
 			// mark anim set to nptr this is why crash
@@ -1533,10 +1553,24 @@ void unit_animator::revert_facing()
 			LOG_LUA << "unit facing reset from " << anim.my_unit->facing();
 			anim.my_unit->set_facing(anim.original_facing);
 			LOG_LUA << " to " << anim.my_unit->facing();
-			disp->invalidate(anim.my_unit->get_location());
+			//disp->invalidate(anim.my_unit->get_location());
 		}
 	}
+	disp->invalidate_all();
 	disp->update();
+}
+
+// returns null location if no movement animation of the given unit is found.
+const map_location& unit_animator::get_unit_last_movement_animation_dst(unit_const_ptr ucp) const
+{
+	for(int index = animated_units_.size() - 1; index >= 0; index--) {
+		auto& anim = animated_units_[index];
+		//mark might go wrong if the equation of const unit ptr don't hold for same units.
+		if(anim.is_movement && ucp == anim.my_unit) {
+			return anim.move_dst;
+		}
+	}
+	return map_location::null_location();
 }
 
 bool unit_animator::would_end() const

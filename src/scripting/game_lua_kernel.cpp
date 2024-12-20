@@ -316,9 +316,18 @@ static int impl_add_animation(lua_State* L)
 		}
 		if(use_anything) {
 			if(luaW_tolocation(L, -1, dest)) {
-				if(dest == u.get_location()) {
-					return luaL_argerror(
-						L, 5, "Given target or facing location must be different from animated unit's location");
+				if(move_unit_p) {
+					if(dest == anim.get_unit_last_movement_animation_dst(move_unit_p)) {
+						return luaL_argerror(L, 5,
+							"Given target location for movement animation must be different from last destination of "
+							"the animated unit");
+					}
+				} else if(dest == u.get_location()) {
+					// add a impl here called `havemovement` to indicate whether the fact that given location being the
+					// same with unit's location should be considered as an error
+					return luaL_argerror(L, 5,
+						"Given target or facing location for non-movement animation must be different from animated "
+						"unit's location");
 				}
 			} else if(use_facing) {
 				map_location::direction dir;

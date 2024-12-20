@@ -239,6 +239,8 @@ public:
 		, const_attack_ptr second_attack = nullptr
 		, int value2 = 0) const;
 
+	const map_location& get_unit_last_movement_animation_dst(unit_const_ptr ucp) const;
+
 	void replace_anim_if_invalid(unit_const_ptr animated_unit
 		, const std::string& event
 		, const map_location& src = map_location::null_location()
@@ -282,6 +284,7 @@ private:
 		bool with_bars = false;
 		map_location::direction original_facing = map_location::direction::indeterminate;
 		map_location move_dst = map_location::null_location();
+		map_location::direction changed_facing = map_location::direction::indeterminate;
 		unit_ptr move_up = nullptr;
 		bool is_movement = false;
 	};
