@@ -23,7 +23,6 @@
 #include "desktop/version.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
-#include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -31,6 +30,7 @@
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/dialogs/end_credits.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
@@ -264,35 +264,21 @@ void game_version::show_license() {
 }
 
 void game_version::report_issue() {
-	if (!desktop::open_object_is_supported()) {
-		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
-		return;
-	} else {
+	if (desktop::open_object_is_supported()) {
 		desktop::open_object("https://bugs.wesnoth.org");
+	} else {
+		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
 	}
 }
 
 void game_version::show_manual() {
 	if (desktop::open_object_is_supported()) {
-		const std::string& locale_code = get_language().localename;
-		const std::vector<std::string>& split_locale_code = utils::split(locale_code, '_');
-		// If the result of split() is empty then locale_code is empty (likely using System Language)
-		// Assume en is always available as a fall-back
-		const std::string& language_code = split_locale_code.empty() ? "en" : split_locale_code[0];
-
-		const std::string& local_directory = game_config::path + "/doc/manual/";
-		const std::string& web_directory = "www.wesnoth.org/manual/dev/";
-		const std::string& locale_file_name = "manual." + locale_code + ".html";
-		const std::string& language_file_name = "manual." + language_code + ".html";
-
-		if(filesystem::file_exists(local_directory + locale_file_name)) {
-			desktop::open_object("file://" + local_directory + locale_file_name);
-		} else if(filesystem::file_exists(local_directory + language_file_name)) {
-			// If a filename like manual.en_GB.html is not found, try manual.en.html
-			desktop::open_object("file://" + local_directory + language_file_name);
+		const auto& manual_path = filesystem::get_game_manual_file(get_language().localename);
+		if (manual_path) {
+			desktop::open_object(manual_path.value());
 		} else {
 			// Use web manual as a last resort
-			desktop::open_object("https://" + web_directory + language_file_name);
+			desktop::open_object("https://www.wesnoth.org/manual/dev/manual." + get_language().localename + ".html");
 		}
 	} else {
 		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
