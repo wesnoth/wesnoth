@@ -280,7 +280,7 @@ void game_version::show_manual() {
 		// Assume en is always available as a fall-back
 		const std::string& language_code = split_locale_code.empty() ? "en" : split_locale_code[0];
 
-		const std::string& local_directory = game_config::path + "doc/manual/";
+		const std::string& local_directory = game_config::path + "/doc/manual/";
 		const std::string& web_directory = "www.wesnoth.org/manual/dev/";
 		const std::string& locale_file_name = "manual." + locale_code + ".html";
 		const std::string& language_file_name = "manual." + language_code + ".html";
