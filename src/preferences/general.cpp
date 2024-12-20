@@ -329,6 +329,13 @@ void set_allied_color(const std::string& color_id) {
 	prefs["ally_orb_color"] = color_id;
 }
 
+bool addon_icons() {
+	return prefs["addon_icons"].to_bool(true);
+}
+void set_addon_icons(bool icons) {
+	prefs["addon_icons"] = icons;
+}
+
 std::string core_id() {
 	std::string core_id = get("core");
 	if (core_id.empty())

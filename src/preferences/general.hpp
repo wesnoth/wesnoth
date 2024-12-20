@@ -72,6 +72,9 @@ namespace preferences {
 	config* get_prefs();
 	void load_base_prefs();
 
+	bool addon_icons();
+	void set_addon_icons(bool icons);
+
 	std::string core_id();
 	void set_core_id(const std::string& root);
 

@@ -1038,6 +1038,11 @@ void server::handle_request_campaign_list(const server::request& req)
 		// or irrelevant to clients
 		j.remove_attributes("passphrase", "passhash", "passsalt", "upload_ip", "email");
 
+		// don't include icons if requested
+		if(!req.cfg["send_icons"].to_bool(true)) {
+			j.remove_attribute("icon");
+		}
+
 		// Build a feedback_url string attribute from the internal [feedback]
 		// data or deliver an empty value, in case clients decide to assume its
 		// presence.

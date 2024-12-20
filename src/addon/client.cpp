@@ -115,16 +115,20 @@ void addons_client::connect()
 			   << " supports: " << utils::join(server_capabilities_, " ");
 }
 
-bool addons_client::request_addons_list(config& cfg)
+bool addons_client::request_addons_list(config& cfg, bool icons)
 {
 	cfg.clear();
 
 	config response_buf;
 
+	config request;
+	config& req_child = request.add_child("request_campaign_list");
+	req_child["send_icons"] = icons;
+
 	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness
 	 */
 
-	send_simple_request("request_campaign_list", response_buf);
+	send_request(request, response_buf);
 	wait_for_transfer_done(_("Downloading list of add-ons..."));
 
 	std::swap(cfg, response_buf.mandatory_child("campaigns"));
