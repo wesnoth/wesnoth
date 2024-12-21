@@ -289,6 +289,7 @@ server::server(const std::string& cfg_file, unsigned short port)
 	, hooks_()
 	, handlers_()
 	, server_id_()
+	, max_icon_size_(500'000)
 	, feedback_url_format_()
 	, web_url_()
 	, license_notice_()
@@ -352,6 +353,7 @@ void server::load_config()
 	const auto& svinfo_cfg = server_info();
 
 	server_id_ = svinfo_cfg["id"].str();
+	max_icon_size_ = svinfo_cfg["max_icon_size"].to_int(max_icon_size_);
 	feedback_url_format_ = svinfo_cfg["feedback_url_format"].str();
 	web_url_ = svinfo_cfg["web_url"].str(default_web_url);
 	license_notice_ = svinfo_cfg["license_notice"].str(default_license_notice);
@@ -1414,6 +1416,11 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 	if(upload["title"].empty()) {
 		LOG_CS << "Validation error: no add-on title specified";
 		return ADDON_CHECK_STATUS::NO_TITLE;
+	}
+
+	if(upload["icon"].str().size() > max_icon_size_) {
+		LOG_CS << "Validation error: icon too large";
+		return ADDON_CHECK_STATUS::ICON_TOO_LARGE;
 	}
 
 	if(is_text_markup_char(upload["title"].str()[0])) {

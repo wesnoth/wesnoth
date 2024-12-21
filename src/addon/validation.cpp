@@ -71,6 +71,10 @@ bool addon_filename_legal(const std::string& name)
 	return filesystem::is_legal_user_file_name(name, false);
 }
 
+bool addon_icon_too_large(const std::string& icon) {
+	return icon.size() > 500'000;
+}
+
 namespace {
 
 bool check_names_legal_internal(const config& dir, std::string current_prefix, std::vector<std::string>* badlist)
@@ -500,6 +504,10 @@ std::string addon_check_status_desc(unsigned int code)
 		{
 			ADDON_CHECK_STATUS::AUTH_TYPE_MISMATCH,
 			N_("The add-on’s forum_auth attribute does not match what was previously uploaded.")
+		},
+		{
+			ADDON_CHECK_STATUS::ICON_TOO_LARGE,
+			N_("The addon’s icon is too large.")
 		},
 
 		//

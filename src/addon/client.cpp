@@ -213,6 +213,11 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 		return false;
 	}
 
+	if(addon_icon_too_large(cfg["icon"].str())) {
+		last_error_ = VGETTEXT("The icon for the add-on <i>$addon_title</i> is too large.", i18n_symbols);
+		return false;
+	}
+
 	if(!local_only) {
 		// Try to make an upload pack if it's avaible on the server
 		config hashlist, hash_request;
