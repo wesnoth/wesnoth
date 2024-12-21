@@ -82,8 +82,8 @@ public:
 			}
 		}
 	}
-	int do_compare(const formula_callable* other) const {
-		const lua_callable* lua = dynamic_cast<const lua_callable*>(other);
+	int do_compare(const formula_callable& other) const {
+		const lua_callable* lua = dynamic_cast<const lua_callable*>(&other);
 		if(lua == nullptr) {
 			return formula_callable::do_compare(other);
 		}

@@ -63,7 +63,7 @@ public:
 	variant get_value(const std::string& key) const override;
 	void get_inputs(formula_input_vector& inputs) const override;
 
-	int do_compare(const formula_callable* callable) const override;
+	int do_compare(const formula_callable& callable) const override;
 
 private:
 	const map_location loc_;
@@ -104,7 +104,7 @@ private:
 	variant get_value(const std::string& key) const override;
 
 	void get_inputs(formula_input_vector& inputs) const override;
-	int do_compare(const formula_callable* callable) const override;
+	int do_compare(const formula_callable& callable) const override;
 };
 
 class attack_type_callable : public formula_callable
@@ -115,7 +115,7 @@ public:
 	variant get_value(const std::string& key) const override;
 	void get_inputs(formula_input_vector& inputs) const override;
 
-	int do_compare(const formula_callable* callable) const override;
+	int do_compare(const formula_callable& callable) const override;
 
 	const attack_type& get_attack_type() const { return *att_; }
 
@@ -136,7 +136,7 @@ public:
 	variant get_value(const std::string& key) const override;
 	void get_inputs(formula_input_vector& inputs) const override;
 
-	int do_compare(const formula_callable* callable) const override;
+	int do_compare(const formula_callable& callable) const override;
 
 	const unit& get_unit() const { return u_; }
 	const map_location& get_location() const { return loc_; }
@@ -157,7 +157,7 @@ public:
 	variant get_value(const std::string& key) const override;
 	void get_inputs(formula_input_vector& inputs) const override;
 
-	int do_compare(const formula_callable* callable) const override;
+	int do_compare(const formula_callable& callable) const override;
 
 	const unit_type& get_unit_type() const { return u_; }
 
@@ -172,7 +172,7 @@ public:
 
 	variant get_value(const std::string& key) const override;
 	void get_inputs(formula_input_vector& inputs) const override;
-	int do_compare(const formula_callable* callable) const override;
+	int do_compare(const formula_callable& callable) const override;
 
 	const config& get_config() const { return cfg_; }
 

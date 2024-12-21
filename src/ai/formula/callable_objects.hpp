@@ -63,7 +63,7 @@ public:
 	/** Compare two attacks in deterministic way or compare pointers
 	 * (nondeterministic in consequent game runs) if method argument is not
 	 * attack_callable */
-	int do_compare(const formula_callable* callable) const override;
+	int do_compare(const formula_callable& callable) const override;
 	variant execute_self(variant ctxt) override;
 };
 
@@ -83,7 +83,7 @@ class move_callable : public action_callable {
 		add_input(inputs, "dst");
 	}
 
-	int do_compare(const formula_callable* callable) const override;
+	int do_compare(const formula_callable& callable) const override;
 public:
 	move_callable(const map_location& src, const map_location& dst) :
 	  src_(src), dst_(dst)
@@ -112,7 +112,7 @@ class move_partial_callable : public action_callable {
 		add_input(inputs, "dst");
 	}
 
-	int do_compare(const formula_callable* callable) const override;
+	int do_compare(const formula_callable& callable) const override;
 public:
 	move_partial_callable(const map_location& src, const map_location& dst) :
 	  src_(src), dst_(dst)
