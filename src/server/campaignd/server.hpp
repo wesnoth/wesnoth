@@ -126,6 +126,7 @@ private:
 	request_handlers_table handlers_;
 
 	std::string server_id_;
+	std::size_t max_icon_size_;
 
 	std::string feedback_url_format_;
 
