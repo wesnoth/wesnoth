@@ -35,7 +35,7 @@ namespace wb {
 class move : public action
 {
 public:
-	move(std::size_t team_index, bool hidden, unit& mover, const pathfind::marked_route& route,
+	move(std::size_t team_index, bool hidden, const unit& mover, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	move(const config&, bool hidden); // For deserialization
 	virtual ~move();

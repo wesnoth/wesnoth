@@ -67,7 +67,7 @@ std::ostream& move::print(std::ostream &s) const
 	return s;
 }
 
-move::move(std::size_t team_index, bool hidden, unit& u, const pathfind::marked_route& route,
+move::move(std::size_t team_index, bool hidden, const unit& u, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 : action(team_index,hidden),
   unit_underlying_id_(u.underlying_id()),

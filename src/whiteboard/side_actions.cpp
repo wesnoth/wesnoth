@@ -744,15 +744,15 @@ side_actions::iterator side_actions::safe_erase(const iterator& itor)
 	resources::whiteboard->post_delete_action(action);
 	return return_itor;
 }
-side_actions::iterator side_actions::queue_move(std::size_t turn, unit& mover, const pathfind::marked_route& route, const arrow_ptr& arrow, fake_unit_ptr fake_unit)
+side_actions::iterator side_actions::queue_move(std::size_t turn, const unit& mover, const pathfind::marked_route& route, const arrow_ptr& arrow, fake_unit_ptr fake_unit)
 {
-	move_ptr new_move(std::make_shared<move>(team_index(), hidden_, std::ref(mover), route, arrow, std::move(fake_unit)));
+	move_ptr new_move(std::make_shared<move>(team_index(), hidden_, mover, route, arrow, std::move(fake_unit)));
 	return queue_action(turn, new_move);
 }
 
-side_actions::iterator side_actions::queue_attack(std::size_t turn, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route, const arrow_ptr& arrow, fake_unit_ptr fake_unit)
+side_actions::iterator side_actions::queue_attack(std::size_t turn, const unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route, const arrow_ptr& arrow, fake_unit_ptr fake_unit)
 {
-	attack_ptr new_attack(std::make_shared<attack>(team_index(), hidden_, std::ref(mover), target_hex, weapon_choice, route, arrow, std::move(fake_unit)));
+	attack_ptr new_attack(std::make_shared<attack>(team_index(), hidden_, mover, target_hex, weapon_choice, route, arrow, std::move(fake_unit)));
 	return queue_action(turn, new_attack);
 }
 
@@ -768,9 +768,9 @@ side_actions::iterator side_actions::queue_recall(std::size_t turn, const unit& 
 	return queue_action(turn, new_recall);
 }
 
-side_actions::iterator side_actions::queue_suppose_dead(std::size_t turn, unit& curr_unit, const map_location& loc)
+side_actions::iterator side_actions::queue_suppose_dead(std::size_t turn, const unit& curr_unit, const map_location& loc)
 {
-	suppose_dead_ptr new_suppose_dead(std::make_shared<suppose_dead>(team_index(), hidden_, std::ref(curr_unit), loc));
+	suppose_dead_ptr new_suppose_dead(std::make_shared<suppose_dead>(team_index(), hidden_, curr_unit, loc));
 	return queue_action(turn, new_suppose_dead);
 }
 

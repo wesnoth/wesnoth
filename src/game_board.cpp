@@ -210,16 +210,6 @@ bool game_board::has_visible_unit(const map_location& loc, const team& current_t
 	return true;
 }
 
-unit* game_board::get_visible_unit(const map_location& loc, const team& current_team, bool see_all)
-{
-	unit_map::iterator ui = find_visible_unit(loc, current_team, see_all);
-	if(ui == units_.end()) {
-		return nullptr;
-	}
-
-	return &*ui;
-}
-
 void game_board::side_drop_to(int side_num, side_controller::type ctrl, side_proxy_controller::type proxy)
 {
 	team& tm = get_team(side_num);

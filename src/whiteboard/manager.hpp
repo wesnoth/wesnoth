@@ -155,7 +155,7 @@ public:
 	bool save_recall(const unit& unit, int side_num, const map_location& recall_hex);
 
 	/** Creates a suppose-dead action for the current side */
-	void save_suppose_dead(unit& curr_unit, const map_location& loc);
+	void save_suppose_dead(const unit& curr_unit, const map_location& loc);
 
 	/** Executes first action in the queue for current side */
 	void contextual_execute();

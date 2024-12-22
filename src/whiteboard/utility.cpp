@@ -96,7 +96,7 @@ bool any_recruiter(int team_num, const map_location& loc, const std::function<bo
 	return false;
 }
 
-unit* future_visible_unit(map_location hex, int viewer_side)
+const unit* future_visible_unit(map_location hex, int viewer_side)
 {
 	future_map planned_unit_map;
 	if(!resources::whiteboard->has_planned_unit_map())
@@ -108,9 +108,9 @@ unit* future_visible_unit(map_location hex, int viewer_side)
 	return resources::gameboard->get_visible_unit(hex, resources::gameboard->get_team(viewer_side), false);
 }
 
-unit* future_visible_unit(int on_side, map_location hex, int viewer_side)
+const unit* future_visible_unit(int on_side, map_location hex, int viewer_side)
 {
-	unit* unit = future_visible_unit(hex, viewer_side);
+	const unit* unit = future_visible_unit(hex, viewer_side);
 	if (unit && unit->side() == on_side)
 		return unit;
 	else

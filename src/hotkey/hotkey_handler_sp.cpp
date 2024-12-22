@@ -184,7 +184,7 @@ void playsingle_controller::hotkey_handler::whiteboard_bump_down_action()
 
 void playsingle_controller::hotkey_handler::whiteboard_suppose_dead()
 {
-	unit* curr_unit;
+	const unit* curr_unit;
 	map_location loc;
 	{ wb::future_map future; //start planned unit map scope
 		curr_unit = &*menu_handler_.current_unit();
