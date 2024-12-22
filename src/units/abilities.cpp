@@ -1373,9 +1373,9 @@ std::set<std::string> attack_type::alternative_damage_types() const
 /**
  * Returns the damage per attack of this weapon, considering specials.
  */
-double attack_type::modified_damage() const
+int attack_type::modified_damage() const
 {
-	double damage_value = unit_abilities::effect(get_specials_and_abilities("damage"), damage(), shared_from_this()).get_composite_double_value();
+	int damage_value = composite_value(get_specials_and_abilities("damage"), damage());
 	return damage_value;
 }
 
@@ -2576,16 +2576,15 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 		effect_list_.push_back(val.second);
 	}
 
-	composite_double_value_ = (value_set + addition + substraction) * multiplier / divisor;
+	composite_value_ = std::round((value_set + addition + substraction) * multiplier / divisor);
 	//clamp what if min_value < max_value or one attribute only used.
 	if(max_value && min_value && *min_value < *max_value) {
-		composite_double_value_ = std::clamp(static_cast<double>(*min_value), static_cast<double>(*max_value), composite_double_value_);
+		composite_value_ = std::clamp(*min_value, *max_value, composite_value_);
 	} else if(max_value && !min_value) {
-		composite_double_value_ = std::min(static_cast<double>(*max_value), composite_double_value_);
+		composite_value_ = std::min(*max_value, composite_value_);
 	} else if(min_value && !max_value) {
-		composite_double_value_ = std::max(static_cast<double>(*min_value), composite_double_value_);
+		composite_value_ = std::max(*min_value, composite_value_);
 	}
-	composite_value_ = std::round(composite_double_value_);
 }
 
 } // end namespace unit_abilities
