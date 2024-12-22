@@ -72,7 +72,7 @@ bool addon_filename_legal(const std::string& name)
 }
 
 bool addon_icon_too_large(const std::string& icon) {
-	return icon.size() > 500'000;
+	return icon.size() > max_icon_size;
 }
 
 namespace {
@@ -507,7 +507,7 @@ std::string addon_check_status_desc(unsigned int code)
 		},
 		{
 			ADDON_CHECK_STATUS::ICON_TOO_LARGE,
-			N_("The addon’s icon is too large.")
+			N_("The addon’s icon’s file size is too large.")
 		},
 
 		//

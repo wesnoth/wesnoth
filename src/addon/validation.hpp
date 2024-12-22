@@ -126,6 +126,7 @@ bool addon_name_legal(const std::string& name);
 bool addon_filename_legal(const std::string& name);
 /** Checks whether an add-on icon is too large. */
 bool addon_icon_too_large(const std::string& icon);
+constexpr std::size_t max_icon_size = 500'000;
 
 /**
  * Scans an add-on archive for illegal names.

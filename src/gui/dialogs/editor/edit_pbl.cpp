@@ -389,7 +389,7 @@ void editor_edit_pbl::validate()
 	if(!validator->get_errors().empty()) {
 		gui2::show_error_message(utils::join(validator->get_errors(), "\n"));
 	} else if(addon_icon_too_large(temp["icon"].str())) {
-		gui2::show_error_message(_("The icon is too large"));
+		gui2::show_error_message(_("The icon’s file size is too large"));
 	} else {
 		gui2::show_message(_("Success"), _("No validation errors"), gui2::dialogs::message::button_style::auto_close);
 	}

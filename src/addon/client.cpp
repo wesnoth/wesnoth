@@ -214,7 +214,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	}
 
 	if(addon_icon_too_large(cfg["icon"].str())) {
-		last_error_ = VGETTEXT("The icon for the add-on <i>$addon_title</i> is too large.", i18n_symbols);
+		last_error_ = VGETTEXT("The file size for the icon for the add-on <i>$addon_title</i> is too large.", i18n_symbols);
 		return false;
 	}
 
