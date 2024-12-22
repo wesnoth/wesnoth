@@ -292,6 +292,11 @@ int variant::as_int() const
 {
 	if(is_null())    { return 0; }
 	if(is_decimal()) { return as_decimal() / 1000; }
+	if(is_string()) {
+		try {
+			return std::stoi(value_cast<variant_string>()->get_string());
+		} catch (std::invalid_argument&) {}
+	}
 
 	must_be(formula_variant::type::integer);
 	return value_cast<variant_int>()->get_numeric_value();
@@ -305,6 +310,10 @@ int variant::as_decimal() const
 		return value_cast<variant_int>()->get_numeric_value() * 1000;
 	} else if(is_null()) {
 		return 0;
+	} else if(is_string()) {
+		try {
+			return std::stod(value_cast<variant_string>()->get_string()) * 1000;
+		} catch (std::invalid_argument&) { }
 	}
 
 	throw type_error(was_expecting("an integer or a decimal", *this));
