@@ -17,7 +17,6 @@
 #pragma once
 
 #include "playsingle_controller.hpp"
-#include "syncmp_handler.hpp"
 
 struct mp_game_metadata;
 class playmp_controller : public playsingle_controller

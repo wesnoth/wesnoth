@@ -113,7 +113,7 @@ private:
 	};
 
 	/** Opens a new server connection and prompts the client for login credentials, if necessary. */
-	std::unique_ptr<wesnothd_connection> open_connection(std::string host);
+	std::unique_ptr<wesnothd_connection> open_connection(const std::string& host);
 
 	/** Opens the MP lobby. */
 	bool enter_lobby_mode();
@@ -152,7 +152,7 @@ public:
 		return session_info;
 	}
 
-	auto add_network_handler(decltype(process_handlers)::value_type func)
+	auto add_network_handler(const decltype(process_handlers)::value_type& func)
 	{
 		return [this, iter = process_handlers.insert(process_handlers.end(), func)]() { process_handlers.erase(iter); };
 	}
@@ -216,7 +216,7 @@ mp_manager::mp_manager(const utils::optional<std::string> host)
 	manager = this;
 }
 
-std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string host)
+std::unique_ptr<wesnothd_connection> mp_manager::open_connection(const std::string& host)
 {
 	DBG_MP << "opening connection";
 
@@ -832,7 +832,7 @@ void send_to_server(const config& data)
 	}
 }
 
-network_registrar::network_registrar(handler func)
+network_registrar::network_registrar(const handler& func)
 {
 	if(manager /*&& manager->connection*/) {
 		remove_handler = manager->add_network_handler(func);

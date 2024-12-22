@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-11-26 12:08-0600\n"
-"PO-Revision-Date: 2024-11-07 21:00+0100\n"
+"PO-Revision-Date: 2024-12-13 21:14+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -4738,10 +4738,8 @@ msgstr "Nápověda Bitvy o Wesnoth"
 
 #. [toggle_button]: id=contents
 #: data/gui/themes/default/window/help_browser.cfg:160
-#, fuzzy
-#| msgid "Show Credits"
 msgid "Show Topics"
-msgstr "Zobrazit poděkování"
+msgstr "Ukázat témata"
 
 #. [label]
 #: data/gui/themes/default/window/hotkey_bind.cfg:35
@@ -7453,16 +7451,12 @@ msgid "Attacker vulnerability vs"
 msgstr "Zranitelnost útočníka vs."
 
 #: src/gui/dialogs/campaign_selection.cpp:59
-#, fuzzy
-#| msgid "Remove Add-ons"
 msgid "game^Get Add-ons"
-msgstr "Odstranit rozšíření"
+msgstr "Získat rozšíření"
 
 #: src/gui/dialogs/campaign_selection.cpp:378
-#, fuzzy
-#| msgid "Campaigns"
 msgid "More campaigns..."
-msgstr "Tažení"
+msgstr "Další tažení..."
 
 #: src/gui/dialogs/campaign_selection.cpp:387
 msgid ""
@@ -7472,6 +7466,11 @@ msgid ""
 "multiplayer maps, additional media and various other content! Be sure to "
 "give it a try!"
 msgstr ""
+"Kromě tažení v hlavní hře má Wesnoth také stále rostoucí seznam přidaného "
+"obsahu vytvořeného ostatními hráči, který je k dispozici na serveru "
+"s rozšířeními, kde jsou mimo jiné další tažení pro jednoho a více hráčů, "
+"mapy pro hru více hráčů, grafika, hudba a různé jiné věci! Určitě to "
+"vyzkoušej!"
 
 #: src/gui/dialogs/campaign_selection.cpp:397
 msgid "Missing Campaigns"
@@ -9512,26 +9511,3 @@ msgstr "V sekci „[$section|]“ není nastaven povinný klíč „$key|“."
 #: src/wml_exception.cpp:104
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "V sekci „[$section|]“ chybí povinná podřízená značka „[$tag|]”."
-
-#~ msgid "Limit FPS"
-#~ msgstr "Limitovat FPS"
-
-#~ msgid ""
-#~ "Disabling this increases CPU usage, but may slightly improve performance "
-#~ "(requires restart to take effect)"
-#~ msgstr ""
-#~ "Vypnutí zvýší využití CPU, ale může trochu zlepšit výkon (vyžaduje "
-#~ "restart, aby to začalo působit)."
-
-#~ msgid "Connected Players"
-#~ msgstr "Připojení hráči"
-
-#~ msgid "The text contains invalid Pango markup: "
-#~ msgstr "Text obsahuje neplatné Pango značky: "
-
-#~ msgid "Text has a font size of 0."
-#~ msgstr "Text má výšku fontu nula."
-
-#~ msgid "Clipboard support not found, contact your packager"
-#~ msgstr ""
-#~ "Podpora pro schránku nebyla nalezena, kontaktuj správce svého balíčku"

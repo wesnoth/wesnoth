@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2024-11-26 12:08-0600\n"
-"PO-Revision-Date: 2024-11-23 14:54+0100\n"
+"PO-Revision-Date: 2024-12-08 23:27+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -803,15 +803,14 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:251
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess-input-macros>I<\\ source-file>"
+#, no-wrap
 msgid "B<--preprocess-string>I<\\ source-string>"
-msgstr "B<--preprocess-input-macros>I<\\ file sorgente>"
+msgstr "B<--preprocess-string>I<\\ stringa-sorgente>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:254
 msgid "preprocesses a given string and writes the output to stdout."
-msgstr ""
+msgstr "pre-processa una stringa data e scrive il suo esito in stdout."
 
 #. type: TP
 #: doc/man/wesnoth.6:254
@@ -821,19 +820,15 @@ msgstr "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:263
-#, fuzzy
-#| msgid ""
-#| "comma separated list of defines to be used by the B<--preprocess> "
-#| "command. If B<SKIP_CORE> is in the define list the \"data/core\" "
-#| "directory won't be preprocessed."
 msgid ""
 "comma separated list of defines to be used by the B<--preprocess> or B<--"
 "preprocess-string> command. If B<SKIP_CORE> is in the define list the \"data/"
 "core\" directory won't be preprocessed."
 msgstr ""
-"lista di definizioni separate da una virgola per il comando B<--preprocess>. "
-"Se il valore B<SKIP_CORE> è presente nella lista di definizioni della "
-"directory \"data/core\", la directory stessa non sarà processata."
+"lista di definizioni separate da una virgola per il comando B<--preprocess> "
+"o B<--preprocess-string>. Se il valore B<SKIP_CORE> è presente nella lista "
+"di definizioni della directory \"data/core\", la directory stessa non sarà "
+"processata."
 
 #. type: TP
 #: doc/man/wesnoth.6:263
@@ -843,17 +838,14 @@ msgstr "B<--preprocess-input-macros>I<\\ file sorgente>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:272
-#, fuzzy
-#| msgid ""
-#| "used only by the B<--preprocess> command. Specifies a file that contains "
-#| "B<[preproc_define]>s to be included before preprocessing."
 msgid ""
 "used only by the B<--preprocess> or B<--preprocess-string> command. "
 "Specifies a file that contains B<[preproc_define]>s to be included before "
 "preprocessing."
 msgstr ""
-"usato soltanto dal comando B<-preprocess>. Specifica il file che contiene i "
-"B<[preproc_define]> che devono essere inclusi prima del preprocessing."
+"usato soltanto dal comando B<-preprocess> o B<--preprocess-string>. "
+"Specifica il file che contiene i B<[preproc_define]> che devono essere "
+"inclusi prima del preprocessing."
 
 #. type: TP
 #: doc/man/wesnoth.6:272
@@ -863,13 +855,6 @@ msgstr "B<--preprocess-output-macros[>I<=file-destinazione>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:285
-#, fuzzy
-#| msgid ""
-#| "used only by the B<--preprocess> command. Will output all preprocessed "
-#| "macros in the target file. If the file is not specified the output will "
-#| "be file '_MACROS_.cfg' in the target directory of preprocess's command. "
-#| "The output file can be passed to B<--preprocess-input-macros>.  This "
-#| "switch should be typed before the B<--preprocess> command."
 msgid ""
 "used only by the B<--preprocess> command (But not by the B<--preprocess-"
 "string> command). Will output all preprocessed macros in the target file. If "
@@ -878,12 +863,12 @@ msgid ""
 "B<--preprocess-input-macros>.  This switch should be typed before the B<--"
 "preprocess> command."
 msgstr ""
-"usato soltanto dal comando B<-preprocess>. Stamperà tutte le macro "
-"preprocessate nel file destinazione. Se il file non viene specificato verrà "
-"utilizzato il file “_MACROS_.cfg” nella directory destinazione del comando "
-"di preprocess. Il file in uscita può essere passato a B<--preprocess-input-"
-"macros>. Questo parametro deve essere immesso prima del comando B<-"
-"preprocess>."
+"usato soltanto dal comando B<-preprocess> (ma non dal comando B<--preprocess-"
+"string> ). Stamperà tutte le macro preprocessate nel file destinazione. Se "
+"il file non viene specificato verrà utilizzato il file “_MACROS_.cfg” nella "
+"directory destinazione del comando di preprocess. Il file in uscita può "
+"essere passato a B<--preprocess-input-macros>. Questo parametro deve essere "
+"immesso prima del comando B<-preprocess>."
 
 # type: TP
 #. type: TP

@@ -452,7 +452,7 @@ void unit_type::build(BUILD_STATUS status,
 	}
 }
 
-const unit_type& unit_type::get_gender_unit_type(std::string gender) const
+const unit_type& unit_type::get_gender_unit_type(const std::string& gender) const
 {
 	if(gender == unit_race::s_female) {
 		return get_gender_unit_type(unit_race::FEMALE);
@@ -506,7 +506,7 @@ static void append_special_note(std::vector<t_string>& notes, const t_string& ne
 	notes.push_back(new_note);
 }
 
-std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, const config& abilities, const_attack_itors attacks, const movetype& mt)
+std::vector<t_string> combine_special_notes(const std::vector<t_string>& direct, const config& abilities, const const_attack_itors& attacks, const movetype& mt)
 {
 	std::vector<t_string> notes;
 	for(const auto& note : direct) {

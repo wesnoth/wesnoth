@@ -19,6 +19,8 @@
 
 #include "whiteboard/move.hpp"
 
+#include <utility>
+
 #include "whiteboard/visitor.hpp"
 #include "whiteboard/side_actions.hpp"
 #include "whiteboard/utility.hpp"
@@ -41,13 +43,13 @@
 
 namespace wb {
 
-std::ostream& operator<<(std::ostream &s, move_ptr move)
+std::ostream& operator<<(std::ostream &s, const move_ptr& move)
 {
 	assert(move);
 	return move->print(s);
 }
 
-std::ostream& operator<<(std::ostream &s, move_const_ptr move)
+std::ostream& operator<<(std::ostream &s, const move_const_ptr& move)
 {
 	assert(move);
 	return move->print(s);
@@ -73,7 +75,7 @@ move::move(std::size_t team_index, bool hidden, unit& u, const pathfind::marked_
   route_(new pathfind::marked_route(route)),
   movement_cost_(0),
   turn_number_(0),
-  arrow_(arrow),
+  arrow_(std::move(arrow)),
   fake_unit_(std::move(fake_unit)),
   arrow_brightness_(),
   arrow_texture_(),

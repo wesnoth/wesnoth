@@ -143,7 +143,7 @@ private:
 	bool hidden_;
 };
 
-std::ostream& operator<<(std::ostream& s, action_ptr action);
-std::ostream& operator<<(std::ostream& s, action_const_ptr action);
+std::ostream& operator<<(std::ostream& s, const action_ptr& action);
+std::ostream& operator<<(std::ostream& s, const action_const_ptr& action);
 
 } // end namespace wb

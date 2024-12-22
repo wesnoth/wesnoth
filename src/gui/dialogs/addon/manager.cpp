@@ -599,7 +599,7 @@ void addon_manager::load_addon_list()
 	apply_filters();
 }
 
-void addon_manager::reload_list_and_reselect_item(const std::string id)
+void addon_manager::reload_list_and_reselect_item(const std::string& id)
 {
 	load_addon_list();
 

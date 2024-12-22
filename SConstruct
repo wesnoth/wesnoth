@@ -193,7 +193,7 @@ if env['ccache']: env.Tool('ccache')
 if env['compile_db']:
     env.Tool('compilation_db')
     cdb = env.CompilationDatabase()
-    Alias('cdb', cdb) 
+    Alias('cdb', cdb)
 
 boost_version = "1.67"
 
@@ -385,6 +385,7 @@ if env["prereqs"]:
         conf.CheckBoost("program_options", require_version = boost_version) & \
         conf.CheckBoost("random", require_version = boost_version) & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
+        conf.CheckBoostCharconv() & \
 	CheckAsio(conf) & \
 	conf.CheckBoost("thread") & \
         conf.CheckBoost("locale") & \
@@ -671,7 +672,7 @@ for env in [test_env, client_env, env]:
         env[d] = os.path.join(env["prefix"], env[d])
 
     if env["PLATFORM"] == 'win32':
-        env.Append(LIBS = ["wsock32", "crypt32", "iconv", "z", "shlwapi", "winmm", "ole32", "uuid"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0601"])
+        env.Append(LIBS = ["wsock32", "crypt32", "iconv", "z", "shlwapi", "winmm", "ole32", "uuid"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0A00"])
 
     if env["PLATFORM"] == 'darwin':            # Mac OS X
         env.Append(FRAMEWORKS = "Cocoa")            # Cocoa GUI

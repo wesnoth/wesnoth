@@ -77,7 +77,7 @@ private:
 	void find_secondary_highlights();
 
 	/** Redraw the given move action when needed. */
-	void last_action_redraw(move_ptr);
+	void last_action_redraw(const move_ptr&);
 
 	map_location mouseover_hex_;
 	std::set<map_location> exclusive_display_hexes_;

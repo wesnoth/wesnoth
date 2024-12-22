@@ -243,7 +243,7 @@ class prefs
 		bool get_scroll_when_mouse_outside(bool def);
 		bool auto_open_whisper_windows();
 		bool show_combat();
-		std::string get_chat_timestamp(const std::time_t& t);
+		std::string get_chat_timestamp(const std::chrono::system_clock::time_point& t);
 		compression::format save_compression_format();
 		std::vector<std::string>* get_history(const std::string& id);
 		std::vector<preferences::option>& get_advanced_preferences() {return advanced_prefs_;}

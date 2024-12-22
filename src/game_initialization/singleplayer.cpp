@@ -83,7 +83,7 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 			// if we should quit the game or return to the main menu
 
 			// Checking for valid campaign name
-			const auto campaign = std::find_if(campaigns.begin(), campaigns.end(), [&jump_to_campaign](ng::create_engine::level_ptr level) {
+			const auto campaign = std::find_if(campaigns.begin(), campaigns.end(), [&jump_to_campaign](const ng::create_engine::level_ptr& level) {
 				return level->data()["id"] == jump_to_campaign.campaign_id;
 			});
 

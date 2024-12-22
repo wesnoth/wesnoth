@@ -20,11 +20,13 @@
 
 #include "ai/formula/ai.hpp"
 #include "ai/formula/engine_fai.hpp"
+
 #include "ai/composite/rca.hpp"
 #include "ai/formula/candidates.hpp"
 #include "ai/formula/stage_side_formulas.hpp"
 #include "ai/formula/stage_unit_formulas.hpp"
 #include "log.hpp"
+#include <utility>
 
 namespace ai {
 
@@ -36,7 +38,7 @@ static lg::log_domain log_ai_engine_fai("ai/engine/fai");
 class fai_candidate_action_wrapper : public candidate_action {
 public:
 	fai_candidate_action_wrapper( rca_context &context, const config &cfg, wfl::candidate_action_ptr fai_ca, formula_ai &_formula_ai )
-		: candidate_action(context,cfg),fai_ca_(fai_ca),formula_ai_(_formula_ai),cfg_(cfg)
+		: candidate_action(context,cfg),fai_ca_(std::move(fai_ca)),formula_ai_(_formula_ai),cfg_(cfg)
 	{
 
 }

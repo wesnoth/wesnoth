@@ -57,7 +57,7 @@ class theme
 		// This supports relocating of theme elements ingame.
 		// It is needed for [change] tags in theme WML.
 		void modify_location(const _rect& rect);
-		void modify_location(std::string rect_str, SDL_Rect rect_ref);
+		void modify_location(const std::string& rect_str, SDL_Rect rect_ref);
 
 		// All on-screen objects have 'anchoring' in the x and y dimensions.
 		// 'fixed' means that they have fixed co-ordinates and don't move.
@@ -288,7 +288,7 @@ private:
 	theme::object& find_element(const std::string& id);
 	void add_object(std::size_t sw, std::size_t sh, const config& cfg);
 	void remove_object(const std::string& id);
-	void set_object_location(theme::object& element, std::string rect_str, std::string ref_id);
+	void set_object_location(theme::object& element, const std::string& rect_str, std::string ref_id);
 
 	//notify observers that the theme has been rebuilt completely
 	//atm this is used for replay_controller to add replay controls to the standard theme

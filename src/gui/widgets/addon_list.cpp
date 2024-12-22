@@ -51,8 +51,8 @@ REGISTER_WIDGET(addon_list)
 addon_list::addon_list(const implementation::builder_addon_list& builder)
 	: container_base(builder, type())
 	, addon_vector_()
-	, install_status_visibility_(visibility::visible)
-	, install_buttons_visibility_(visibility::invisible)
+	, install_status_visibility_(builder.install_status_visibility)
+	, install_buttons_visibility_(builder.install_buttons_visibility)
 	, install_function_()
 	, uninstall_function_()
 	, publish_function_()
@@ -375,17 +375,18 @@ void addon_list::finalize_setup()
 {
 	listbox& list = get_listbox();
 
-	list.register_translatable_sorting_option(0, [this](const int i) { return addon_vector_[i]->display_title_full(); });
-	list.register_sorting_option(1, [this](const int i) { return addon_vector_[i]->author; });
-	list.register_sorting_option(2, [this](const int i) { return addon_vector_[i]->size; });
-	list.register_sorting_option(3, [this](const int i) { return addon_vector_[i]->downloads; });
-	list.register_translatable_sorting_option(4, [this](const int i) { return addon_vector_[i]->display_type(); });
+	list.set_sorters(
+		[this](const std::size_t i) { return t_string(addon_vector_[i]->display_title_full()); },
+		[this](const std::size_t i) { return addon_vector_[i]->author; },
+		[this](const std::size_t i) { return addon_vector_[i]->size; },
+		[this](const std::size_t i) { return addon_vector_[i]->downloads; },
+		[this](const std::size_t i) { return t_string(addon_vector_[i]->display_type()); }
+	);
 
-	auto order = std::pair(0, sort_order::type::ascending);
-	list.set_active_sorting_option(order);
+	list.set_active_sorter("sort_0", sort_order::type::ascending);
 }
 
-void addon_list::set_addon_order(addon_sort_func func)
+void addon_list::set_addon_order(const addon_sort_func& func)
 {
 	listbox& list = get_listbox();
 
@@ -446,15 +447,15 @@ static widget::visibility parse_visibility(const std::string& str)
 
 builder_addon_list::builder_addon_list(const config& cfg)
 	: builder_styled_widget(cfg)
-	, install_status_visibility_(widget::visibility::visible)
-	, install_buttons_visibility_(widget::visibility::invisible)
+	, install_status_visibility(widget::visibility::visible)
+	, install_buttons_visibility(widget::visibility::invisible)
 {
 	if(cfg.has_attribute("install_status_visibility")) {
-		install_status_visibility_ = parse_visibility(cfg["install_status_visibility"]);
+		install_status_visibility = parse_visibility(cfg["install_status_visibility"]);
 	}
 
 	if(cfg.has_attribute("install_buttons_visibility")) {
-		install_buttons_visibility_ = parse_visibility(cfg["install_buttons_visibility"]);
+		install_buttons_visibility = parse_visibility(cfg["install_buttons_visibility"]);
 	}
 }
 
@@ -469,10 +470,6 @@ std::unique_ptr<widget> builder_addon_list::build() const
 	assert(conf != nullptr);
 
 	widget->init_grid(*conf->grid);
-
-	widget->set_install_status_visibility(install_status_visibility_);
-	widget->set_install_buttons_visibility(install_buttons_visibility_);
-
 	widget->finalize_setup();
 
 	return widget;

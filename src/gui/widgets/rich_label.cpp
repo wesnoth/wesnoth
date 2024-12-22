@@ -38,9 +38,10 @@
 #include "video.hpp"
 #include "wml_exception.hpp"
 
+#include <boost/format.hpp>
 #include <functional>
 #include <string>
-#include <boost/format.hpp>
+#include <utility>
 
 static lg::log_domain log_rich_label("gui/widget/rich_label");
 #define DBG_GUI_RL LOG_STREAM(debug, log_rich_label)
@@ -108,7 +109,7 @@ point rich_label::get_image_size(config& img_cfg) const {
 	};
 }
 
-std::pair<size_t, size_t> rich_label::add_text(config& curr_item, std::string text) {
+std::pair<size_t, size_t> rich_label::add_text(config& curr_item, const std::string& text) {
 	auto& attr = curr_item["text"];
 	size_t start = attr.str().size();
 	attr = attr.str() + std::move(text);
@@ -116,7 +117,7 @@ std::pair<size_t, size_t> rich_label::add_text(config& curr_item, std::string te
 	return { start, end };
 }
 
-void rich_label::add_attribute(config& curr_item, std::string attr_name, size_t start, size_t end, std::string extra_data) {
+void rich_label::add_attribute(config& curr_item, const std::string& attr_name, size_t start, size_t end, const std::string& extra_data) {
 	curr_item.add_child("attribute", config{
 		"name"  , attr_name,
 		"start" , start,
@@ -125,13 +126,13 @@ void rich_label::add_attribute(config& curr_item, std::string attr_name, size_t 
 	});
 }
 
-std::pair<size_t, size_t> rich_label::add_text_with_attribute(config& curr_item, std::string text, std::string attr_name, std::string extra_data) {
+std::pair<size_t, size_t> rich_label::add_text_with_attribute(config& curr_item, const std::string& text, const std::string& attr_name, const std::string& extra_data) {
 	const auto [start, end] = add_text(curr_item, std::move(text));
 	add_attribute(curr_item, attr_name, start, end, extra_data);
 	return { start, end };
 }
 
-void rich_label::add_image(config& curr_item, std::string name, std::string align, bool has_prev_image, bool floating) {
+void rich_label::add_image(config& curr_item, const std::string& name, std::string align, bool has_prev_image, bool floating) {
 	// TODO: still doesn't cover the case where consecutive inline images have different heights
 	curr_item["name"] = name;
 
@@ -174,7 +175,7 @@ void rich_label::add_image(config& curr_item, std::string name, std::string alig
 	actions.str("");
 }
 
-void rich_label::add_link(config& curr_item, std::string name, std::string dest, const point& origin, int img_width) {
+void rich_label::add_link(config& curr_item, const std::string& name, const std::string& dest, const point& origin, int img_width) {
 	// TODO algorithm needs to be text_alignment independent
 
 	DBG_GUI_RL << "add_link: " << name << "->" << dest;
@@ -731,7 +732,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 	return { text_dom, point(w, h - origin.y) };
 } // function ends
 
-void rich_label::default_text_config(config* txt_ptr, t_string text) {
+void rich_label::default_text_config(config* txt_ptr, const t_string& text) {
 	if (txt_ptr != nullptr) {
 		(*txt_ptr)["text"] = text;
 		(*txt_ptr)["color"] = text_color_enabled_.to_rgba_string();
@@ -823,7 +824,7 @@ void rich_label::register_link_callback(std::function<void(std::string)> link_ha
 		std::bind(&rich_label::signal_handler_mouse_motion, this, std::placeholders::_3, std::placeholders::_5));
 	connect_signal<event::MOUSE_LEAVE>(
 		std::bind(&rich_label::signal_handler_mouse_leave, this, std::placeholders::_3));
-	link_handler_ = link_handler;
+	link_handler_ = std::move(link_handler);
 }
 
 

@@ -66,9 +66,9 @@ public:
 	 * Init the parameters of ai configuration parser
 	 * @param game_config game config
 	 */
-	static void init(const game_config_view &game_config);
-	static void add_era_ai_from_config(const config &game_config);
-	static void add_mod_ai_from_config(config::const_child_itors configs);
+	static void init(const game_config_view& game_config);
+	static void add_era_ai_from_config(const config& game_config);
+	static void add_mod_ai_from_config(const config::const_child_itors& configs);
 
 
 	/**
@@ -81,7 +81,7 @@ public:
 	/**
 	 * Return the config for a specified ai
 	 */
-	static const config& get_ai_config_for(const std::string &id);
+	static const config& get_ai_config_for(const std::string& id);
 
 
 	/**
@@ -99,7 +99,7 @@ public:
 	 * @retval true success
 	 * @retval false failure
 	 */
-	static bool get_side_config_from_file( const std::string& file, config& cfg );
+	static bool get_side_config_from_file(const std::string& file, config& cfg);
 
 
 	/**
@@ -110,14 +110,14 @@ public:
 	 * @retval true success
 	 * @retval false failure
 	 */
-	static bool parse_side_config(side_number side, const config& original_cfg, config &cfg);
+	static bool parse_side_config(side_number side, const config& original_cfg, config& cfg);
 
 
 	/**
 	 * Expand simplified aspects, similar to the change from 1.7.2 to 1.7.3
 	 * but with some additional syntax options.
 	 */
-	static void expand_simplified_aspects(side_number side, config &cfg);
+	static void expand_simplified_aspects(side_number side, config& cfg);
 private:
 
 	typedef std::map<std::string, description> description_map;

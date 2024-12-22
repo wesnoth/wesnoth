@@ -115,11 +115,13 @@ void unit_create::pre_show()
 				  << std::endl;
 	}
 
-	list.register_translatable_sorting_option(0, [this](const int i) { return (*units_[i]).race()->plural_name().str(); });
-	list.register_translatable_sorting_option(1, [this](const int i) { return (*units_[i]).type_name().str(); });
+	list.set_sorters(
+		[this](const std::size_t i) { return units_[i]->race()->plural_name(); },
+		[this](const std::size_t i) { return units_[i]->type_name(); }
+	);
 
 	// Select the first entry on sort if no previous selection was provided.
-	list.set_active_sorting_option({0, sort_order::type::ascending}, choice_.empty());
+	list.set_active_sorter("sort_0", sort_order::type::ascending, choice_.empty());
 
 	list_item_clicked();
 }
@@ -166,7 +168,7 @@ void unit_create::update_displayed_type()
 		ut = &ut->get_variation(variation_);
 	}
 
-	find_widget<unit_preview_pane>("unit_details").set_displayed_type(*ut);
+	find_widget<unit_preview_pane>("unit_details").set_display_data(*ut);
 }
 
 void unit_create::list_item_clicked()

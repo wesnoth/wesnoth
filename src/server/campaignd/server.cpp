@@ -51,6 +51,7 @@
 #include <ctime>
 #include <iomanip>
 #include <iostream>
+#include <utility>
 
 // the fork execute is unix specific only tested on Linux quite sure it won't
 // work on Windows not sure which other platforms have a problem with it.
@@ -491,9 +492,9 @@ std::ostream& operator<<(std::ostream& o, const server::request& r)
 void server::handle_new_client(tls_socket_ptr socket)
 {
 	boost::asio::spawn(
-		io_service_, [this, socket](boost::asio::yield_context yield) { serve_requests(socket, yield); }
+		io_service_, [this, socket](boost::asio::yield_context yield) { serve_requests(socket, std::move(yield)); }
 #if BOOST_VERSION >= 108000
-		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+		, [](const std::exception_ptr& e) { if (e) std::rethrow_exception(e); }
 #endif
 	);
 }
@@ -501,9 +502,9 @@ void server::handle_new_client(tls_socket_ptr socket)
 void server::handle_new_client(socket_ptr socket)
 {
 	boost::asio::spawn(
-		io_service_, [this, socket](boost::asio::yield_context yield) { serve_requests(socket, yield); }
+		io_service_, [this, socket](boost::asio::yield_context yield) { serve_requests(socket, std::move(yield)); }
 #if BOOST_VERSION >= 108000
-		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+		, [](const std::exception_ptr& e) { if (e) std::rethrow_exception(e); }
 #endif
 	);
 }
@@ -737,7 +738,7 @@ void server::handle_sighup(const boost::system::error_code&, int)
 
 void server::flush_cfg()
 {
-	flush_timer_.expires_from_now(std::chrono::minutes(10));
+	flush_timer_.expires_after(std::chrono::minutes(10));
 	flush_timer_.async_wait(std::bind(&server::handle_flush, this, std::placeholders::_1));
 }
 
@@ -1338,6 +1339,13 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 				return ADDON_CHECK_STATUS::USER_DOES_NOT_EXIST;
 			}
 
+			for(const std::string& primary_author : utils::split(upload["primary_authors"].str(), ',')) {
+				if(!user_handler_->user_exists(primary_author)) {
+					LOG_CS << "Validation error: forum auth requested for a primary author who doesn't exist";
+					return ADDON_CHECK_STATUS::USER_DOES_NOT_EXIST;
+				}
+			}
+
 			for(const std::string& secondary_author : utils::split(upload["secondary_authors"].str(), ',')) {
 				if(!user_handler_->user_exists(secondary_author)) {
 					LOG_CS << "Validation error: forum auth requested for a secondary author who doesn't exist";
@@ -1522,7 +1530,7 @@ void server::handle_upload(const server::request& req)
 	// Write general metadata attributes
 
 	addon.copy_or_remove_attributes(upload,
-		"title", "name", "uploader", "author", "secondary_authors", "description", "version", "icon",
+		"title", "name", "uploader", "author", "primary_authors", "secondary_authors", "description", "version", "icon",
 		"translate", "dependencies", "core", "type", "tags", "email", "forum_auth"
 	);
 
@@ -1564,7 +1572,7 @@ void server::handle_upload(const server::request& req)
 				// if p1 is primary, p2 is secondary, and p2 uploads, then this is skipped because the uploader is not the primary author
 				// if next time p2 is primary, p1 is secondary, and p1 uploads, then p1 is both uploader and secondary author
 				//   therefore p2's author information would not be reinserted if the uploader attribute were used instead
-				user_handler_->db_insert_addon_authors(server_id_, name, addon["author"].str(), utils::split(addon["secondary_authors"].str(), ','));
+				user_handler_->db_insert_addon_authors(server_id_, name, utils::split(addon["primary_authors"].str(), ','), utils::split(addon["secondary_authors"].str(), ','));
 			}
 		}
 		user_handler_->db_insert_addon_info(server_id_, name, addon["title"].str(), addon["type"].str(), addon["version"].str(), addon["forum_auth"].to_bool(), topic_id, upload["uploader"].str());

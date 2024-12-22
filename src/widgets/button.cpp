@@ -30,6 +30,7 @@
 #include "wml_separators.hpp"
 
 #include <boost/algorithm/string/predicate.hpp>
+#include <utility>
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -39,7 +40,7 @@ namespace gui {
 const int default_font_size = font::SIZE_BUTTON;
 
 button::button(const std::string& label, button::TYPE type,
-               std::string button_image_name, SPACE_CONSUMPTION spacing,
+               const std::string& button_image_name, SPACE_CONSUMPTION spacing,
                const bool auto_join, std::string overlay_image, int font_size)
 	: widget(auto_join), type_(type),
 	  label_text_(label),
@@ -48,7 +49,7 @@ button::button(const std::string& label, button::TYPE type,
 	  overlayImage_(nullptr), overlayPressedImage_(nullptr), overlayActiveImage_(nullptr),
 	  state_(NORMAL), pressed_(false),
 	  spacing_(spacing), base_height_(0), base_width_(0),
-	  button_image_name_(), button_overlay_image_name_(overlay_image),
+	  button_image_name_(), button_overlay_image_name_(std::move(overlay_image)),
 	  button_image_path_suffix_(),
 	  font_size_(font_size <= 0 ? (type != TYPE_CHECK && type != TYPE_RADIO ? default_font_size : font::SIZE_SMALL) : font_size),
 	  horizontal_padding_(font_size_),

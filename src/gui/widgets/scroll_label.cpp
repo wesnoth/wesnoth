@@ -186,9 +186,7 @@ namespace implementation
 {
 
 builder_scroll_label::builder_scroll_label(const config& cfg)
-	: implementation::builder_styled_widget(cfg)
-	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	: builder_scrollbar_container(cfg)
 	, wrap_on(cfg["wrap"].to_bool(true))
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 	, link_aware(cfg["link_aware"].to_bool(false))
@@ -198,9 +196,6 @@ builder_scroll_label::builder_scroll_label(const config& cfg)
 std::unique_ptr<widget> builder_scroll_label::build() const
 {
 	auto widget = std::make_unique<scroll_label>(*this);
-
-	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
-	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
 	const auto conf = widget->cast_config_to<scroll_label_definition>();
 	assert(conf);

@@ -25,7 +25,6 @@
 #include "ai/manager.hpp"
 #include "ai/testing.hpp"
 #include "display_chat_manager.hpp"
-#include "carryover_show_gold.hpp"
 #include "formula/string_utils.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events/pump.hpp"
@@ -410,8 +409,6 @@ void playsingle_controller::do_end_level()
 	}
 
 	persist_.end_transaction();
-	carryover_show_gold(gamestate(), is_observer() || is_replay(), is_observer(), saved_game_.classification().is_test());
-
 }
 
 level_result::type playsingle_controller::play_scenario(const config& level)
@@ -625,20 +622,14 @@ void playsingle_controller::linger()
 
 	update_gui_linger();
 
-	try {
-		if(replay_controller_.get() != nullptr) {
-			replay_controller_->play_side_impl();
-			if(player_type_changed_) {
-				replay_controller_.reset();
-			}
+	if(replay_controller_.get() != nullptr) {
+		replay_controller_->play_side_impl();
+		if(player_type_changed_) {
+			replay_controller_.reset();
 		}
-		while(!end_turn_requested_) {
-			play_slice();
-		}
-	} catch(const savegame::load_game_exception&) {
-		// Loading a new game is effectively a quit.
-		saved_game_.clear();
-		throw;
+	}
+	while(!end_turn_requested_) {
+		play_slice();
 	}
 
 	LOG_NG << "ending end-of-scenario linger";

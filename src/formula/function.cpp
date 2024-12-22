@@ -28,6 +28,7 @@
 #include <cctype>
 #include <chrono>
 #include <deque>
+#include <utility>
 
 using namespace boost::math::constants;
 
@@ -1483,8 +1484,8 @@ formula_function_expression::formula_function_expression(const std::string& name
 		const_formula_ptr precondition,
 		const std::vector<std::string>& arg_names)
 	: function_expression(name, args, arg_names.size(), arg_names.size())
-	, formula_(formula)
-	, precondition_(precondition)
+	, formula_(std::move(formula))
+	, precondition_(std::move(precondition))
 	, arg_names_(arg_names)
 	, star_arg_(-1)
 {
@@ -1542,7 +1543,7 @@ function_expression_ptr user_formula_function::generate_function_expression(
 	return std::make_shared<formula_function_expression>(name_, args, formula_, precondition_, args_);
 }
 
-function_symbol_table::function_symbol_table(std::shared_ptr<function_symbol_table> parent)
+function_symbol_table::function_symbol_table(const std::shared_ptr<function_symbol_table>& parent)
 	: parent(parent ? parent : get_builtins())
 {
 }
@@ -1670,7 +1671,7 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 	return std::shared_ptr<function_symbol_table>(&functions_table, [](function_symbol_table*) {});
 }
 
-action_function_symbol_table::action_function_symbol_table(std::shared_ptr<function_symbol_table> parent)
+action_function_symbol_table::action_function_symbol_table(const std::shared_ptr<function_symbol_table>& parent)
 	: function_symbol_table(parent)
 {
 	using namespace actions;

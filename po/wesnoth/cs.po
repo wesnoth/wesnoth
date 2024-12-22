@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-11-26 12:08-0600\n"
-"PO-Revision-Date: 2024-11-04 22:13+0100\n"
+"PO-Revision-Date: 2024-12-09 20:59+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -1710,7 +1710,7 @@ msgstr ""
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/deprecated-utils.cfg:400
 msgid "deflect"
-msgstr ""
+msgstr "odražení"
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/deprecated-utils.cfg:401
@@ -1718,6 +1718,8 @@ msgid ""
 "When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
 msgstr ""
+"Pokud je tento útok použit defenzivně, snižuje o 10 % šanci protivníka na "
+"zásah."
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/deprecated-utils.cfg:402
@@ -1725,11 +1727,12 @@ msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
 msgstr ""
+"Obranné techniky této jednotky snižují šanci na úspěšný útok nepřítele."
 
 #. [damage]: id=absorb
 #: data/core/macros/deprecated-utils.cfg:416
 msgid "absorb"
-msgstr ""
+msgstr "zmírnění"
 
 #. [damage]: id=absorb
 #: data/core/macros/deprecated-utils.cfg:417
@@ -1737,12 +1740,16 @@ msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
+"Tento útok staví jednotku do dobrého obranného postavení a tlumí část "
+"poškození utrženého při úderu nepřítele."
 
 #. [damage]: id=absorb
 #: data/core/macros/deprecated-utils.cfg:418
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
+"Tato jednotka může blokovat údery nepřátel, takže při zásahu utrpí menší "
+"poškození."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:23
@@ -6759,7 +6766,7 @@ msgstr ""
 
 #: src/game_initialization/mp_game_utils.cpp:78
 msgid "Defeat enemy leader(s)"
-msgstr "Znič nepřátelské(ho) vůdce"
+msgstr "Znič nepřátelské/ho vůdce"
 
 #: src/game_initialization/mp_game_utils.cpp:102
 msgid "Cannot find era ‘$era’"
@@ -6836,16 +6843,12 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Tento server nepovoluje použití neregistrovaných přezdívek."
 
 #: src/game_initialization/multiplayer.cpp:423
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums for $duration|."
 msgid "Your IP address is banned on this server for $duration|."
-msgstr "Tvoje IP adresa je zablokovaná na fórum tohoto serveru na $duration|."
+msgstr "Tvá IP adresa je na tomto serveru zakázána po dobu $duration|."
 
 #: src/game_initialization/multiplayer.cpp:425
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server."
-msgstr "Tvoje IP adresa je zablokovaná na fórum tohoto serveru."
+msgstr "Tvá IP adresa je na tomto serveru zakázána."
 
 #: src/game_initialization/multiplayer.cpp:429
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
@@ -6978,7 +6981,7 @@ msgid ""
 "check the ‘max hill size’ parameter)"
 msgstr ""
 "Nenalezeno žádné vhodné místo pro hrad. Možná je na mapě příliš mnoho nebo "
-"málo hor (zkontroluj nastavení max. velikosti hor)."
+"málo hor (zkontroluj nastavení max. velikosti kopce)."
 
 #: src/gui/core/linked_group_definition.cpp:40
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
@@ -7683,7 +7686,7 @@ msgstr "<id>"
 
 #: src/menu_events.cpp:1253
 msgid "Advance to the next scenario, or scenario identified by ‘id’"
-msgstr "Postoupí do dalšího scénáře, nebo scénáře určeného „id“"
+msgstr "Postoupí do dalšího scénáře nebo scénáře určeného pomocí „id“"
 
 #: src/menu_events.cpp:1255
 msgid "Choose next scenario"
@@ -8707,13 +8710,11 @@ msgid "Overwrite?"
 msgstr "Přepsat?"
 
 #: src/savegame.cpp:432
-#, fuzzy
-#| msgid ""
-#| "Save names should not end on ‘.gz’ or ‘.bz2’. Please remove the extension."
 msgid ""
 "Save names should not end with ‘.gz’ or ‘.bz2’. Please remove the extension."
 msgstr ""
-"Jména uložených her by neměla končit „.gz“ nebo „.bz2“. Vymaž prosím příponu."
+"Názvy ukládaných souborů by neměly končit příponou „.gz“ nebo „.bz2“. "
+"Odstraň prosím příponu."
 
 #: src/savegame.cpp:437
 msgid ""
@@ -8969,7 +8970,7 @@ msgstr "Hodnota „border_size“ by měla být mezi 0,0 a 0,5."
 
 #: src/theme.cpp:565 src/theme.cpp:570
 msgid "Hotkey(s): "
-msgstr "Zkratka(y): "
+msgstr "Zkratka/zkratky: "
 
 #: src/time_of_day.cpp:44
 msgid "Stub Time of Day"
@@ -9246,12 +9247,3 @@ msgstr "Skryj plány pro hráče $player"
 #: src/whiteboard/manager.cpp:1140
 msgid "Whiteboard Options"
 msgstr "Nastavení plánovacího módu"
-
-#~ msgid "Invalid Color"
-#~ msgstr "Neplatná barva"
-
-#~ msgid "Reference to unknown topic: "
-#~ msgstr "Odkaz na neznámé téma: "
-
-#~ msgid "corrupted original file"
-#~ msgstr "původní soubor je poškozený"

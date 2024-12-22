@@ -248,14 +248,14 @@ private:
 	unsigned padding_;
 
 	/** Create template for text config that can be shown in canvas */
-	void default_text_config(config* txt_ptr, t_string text = "");
+	void default_text_config(config* txt_ptr, const t_string& text = "");
 
-	std::pair<size_t, size_t> add_text(config& curr_item, std::string text);
-	void add_attribute(config& curr_item, std::string attr_name, size_t start = 0, size_t end = 0, std::string extra_data = "");
-	std::pair<size_t, size_t> add_text_with_attribute(config& curr_item, std::string text, std::string attr_name = "", std::string extra_data = "");
+	std::pair<size_t, size_t> add_text(config& curr_item, const std::string& text);
+	void add_attribute(config& curr_item, const std::string& attr_name, size_t start = 0, size_t end = 0, const std::string& extra_data = "");
+	std::pair<size_t, size_t> add_text_with_attribute(config& curr_item, const std::string& text, const std::string& attr_name = "", const std::string& extra_data = "");
 
-	void add_image(config& curr_item, std::string name, std::string align, bool has_prev_image, bool floating);
-	void add_link(config& curr_item, std::string name, std::string dest, const point& origin, int img_width);
+	void add_image(config& curr_item, const std::string& name, std::string align, bool has_prev_image, bool floating);
+	void add_link(config& curr_item, const std::string& name, const std::string& dest, const point& origin, int img_width);
 
 	/** size calculation functions */
 	point get_text_size(config& text_cfg, unsigned width = 0) const;

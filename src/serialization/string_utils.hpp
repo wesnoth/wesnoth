@@ -287,7 +287,7 @@ std::string indent(const std::string& string, std::size_t indent_size = 4);
  * * Although "-infinity--1", "2-infinity" and "-infinity-infinity" are all supported,
  * * ranges that can't match a reasonable number, e.g. "-infinity" or "infinity..infinity", may be treated as errors.
  */
-std::pair<int, int> parse_range(const std::string& str);
+std::pair<int, int> parse_range(std::string_view str);
 
 /**
  * Handles a comma-separated list of inputs to parse_range, in a context that does not expect
@@ -306,7 +306,7 @@ std::vector<std::pair<int, int>> parse_ranges_int(const std::string& str);
  *
  * For this function, "infinity" results in std::numeric_limits<double>::infinity.
  */
-std::pair<double, double> parse_range_real(const std::string& str);
+std::pair<double, double> parse_range_real(std::string_view str);
 
 std::vector<std::pair<double, double>> parse_ranges_real(const std::string& str);
 
@@ -319,7 +319,7 @@ inline std::string print_modifier(const std::string &mod)
 }
 
 /** Prepends a configurable set of characters with a backslash */
-std::string escape(const std::string &str, const char *special_chars);
+std::string escape(std::string_view str, const char *special_chars);
 
 /**
  * Prepend all special characters with a backslash.
@@ -327,21 +327,21 @@ std::string escape(const std::string &str, const char *special_chars);
  * Special characters are:
  * #@{}+-,\*=
  */
-inline std::string escape(const std::string &str)
+inline std::string escape(std::string_view str)
 {
 	return escape(str, "#@{}+-,\\*=");
 }
 
 /** Remove all escape characters (backslash) */
-std::string unescape(const std::string &str);
+std::string unescape(std::string_view str);
 
 /** Percent-escape characters in a UTF-8 string intended to be part of a URL. */
-std::string urlencode(const std::string &str);
+std::string urlencode(std::string_view str);
 
 /** Surround the string 'str' with double quotes. */
-inline std::string quote(const std::string &str)
+inline std::string quote(std::string_view str)
 {
-	return '"' + str + '"';
+	return '"' + std::string(str) + '"';
 }
 
 /** Convert no, false, off, 0, 0.0 to false, empty to def, and others to true */

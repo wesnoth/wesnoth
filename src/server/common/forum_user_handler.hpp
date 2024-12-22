@@ -126,14 +126,14 @@ public:
 	 *
 	 * @param io_service The boost io_service to use to post the query results back to the main boost::asio thread.
 	 * @param s The server instance the player is connected to.
-	 * @param player The player iterator used to communicate with the player's client.
+	 * @param socket The socket used to communicate with the player's client.
 	 * @param player_id The forum ID of the player to get the game history for.
 	 * @param offset Where to start returning rows to the client from the query results.
 	 * @param search_game_name Query for games matching this name. Supports leading and/or trailing wildcards.
 	 * @param search_content_type The content type to query for (ie: scenario)
 	 * @param search_content Query for games using this content ID. Supports leading and/or trailing wildcards.
 	 */
-	void async_get_and_send_game_history(boost::asio::io_service& io_service, wesnothd::server& s, wesnothd::player_iterator player, int player_id, int offset, std::string& search_game_name, int search_content_type, std::string& search_content);
+	void async_get_and_send_game_history(boost::asio::io_context& io_service, wesnothd::server& s, any_socket_ptr socket, int player_id, int offset, std::string& search_game_name, int search_content_type, std::string& search_content);
 
 	/**
 	 * Inserts game related information.
@@ -203,7 +203,7 @@ public:
 	 * @param io_service The boost io_service to use to post the query results back to the main boost::asio thread.
 	 * @param limit How many recursions to make in the query.
 	 */
-	void async_test_query(boost::asio::io_service& io_service, int limit);
+	void async_test_query(boost::asio::io_context& io_service, int limit);
 
 	/**
 	 * Checks whether a forum thread with @a topic_id exists.
@@ -310,10 +310,10 @@ public:
 	 *
 	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
 	 * @param id The ID of the add-on.
-	 * @param primary_author The primary author of the add-on.
+	 * @param primary_authors The primary authors of the add-on.
 	 * @param secondary_authors The secondary authors of the add-on.
 	 */
-	void db_insert_addon_authors(const std::string& instance_version, const std::string& id, const std::string& primary_author, const std::vector<std::string>& secondary_authors);
+	void db_insert_addon_authors(const std::string& instance_version, const std::string& id, const std::vector<std::string>& primary_authors, const std::vector<std::string>& secondary_authors);
 
 	/**
 	 * Checks whether any author information exists for a particular addon and version, since if there's no author information then of course no primary or secondary authors will ever be found.

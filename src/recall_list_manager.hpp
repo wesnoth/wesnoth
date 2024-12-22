@@ -65,7 +65,7 @@ public:
 	/** Erase by index. */
 	iterator erase_index(std::size_t index);
 	/** Erase an iterator to this object. */
-	iterator erase(iterator it);
+	iterator erase(const iterator& it);
 
 	/** Find the index of a unit by its id. */
 	std::size_t find_index(const std::string & unit_id) const;

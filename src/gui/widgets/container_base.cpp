@@ -221,13 +221,13 @@ const widget* container_base::find_at(const point& coordinate,
 	return grid_.find_at(coordinate, must_be_active);
 }
 
-widget* container_base::find(const std::string& id, const bool must_be_active)
+widget* container_base::find(const std::string_view id, const bool must_be_active)
 {
 	widget* result = styled_widget::find(id, must_be_active);
 	return result ? result : grid_.find(id, must_be_active);
 }
 
-const widget* container_base::find(const std::string& id,
+const widget* container_base::find(const std::string_view id,
 								 const bool must_be_active) const
 {
 	const widget* result = styled_widget::find(id, must_be_active);

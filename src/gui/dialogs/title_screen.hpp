@@ -71,7 +71,7 @@ private:
 
 	void init_callbacks();
 
-	void register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, std::function<void()> callback);
+	void register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, const std::function<void()>& callback);
 
 	/***** ***** ***** ***** Callbacks ***** ***** ****** *****/
 

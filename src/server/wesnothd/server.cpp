@@ -56,6 +56,7 @@
 #include <map>
 #include <set>
 #include <sstream>
+#include <utility>
 #include <vector>
 
 static lg::log_domain log_server("server");
@@ -188,9 +189,15 @@ static bool make_change_diff(const simple_wml::node& src,
 
 static std::string player_status(const wesnothd::player_record& player)
 {
+	auto logged_on_time = std::chrono::steady_clock::now() - player.login_time;
+	auto [d, h, m, s] = chrono::deconstruct_duration(chrono::format::days_hours_mins_secs, logged_on_time);
 	std::ostringstream out;
 	out << "'" << player.name() << "' @ " << player.client_ip()
-		<< " logged on for " << lg::format_timespan(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - player.login_time));
+		<< " logged on for "
+		<< d.count() << " days, "
+		<< h.count() << " hours, "
+		<< m.count() << " minutes, "
+		<< s.count() << " seconds";
 	return out.str();
 }
 
@@ -291,14 +298,14 @@ void server::handle_graceful_timeout(const boost::system::error_code& error)
 		process_command("msg All games ended. Shutting down now. Reconnect to the new server instance.", "system");
 		BOOST_THROW_EXCEPTION(server_shutdown("graceful shutdown timeout"));
 	} else {
-		timer_.expires_from_now(1s);
+		timer_.expires_after(1s);
 		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, std::placeholders::_1));
 	}
 }
 
 void server::start_lan_server_timer()
 {
-	lan_server_timer_.expires_from_now(lan_server_);
+	lan_server_timer_.expires_after(lan_server_);
 	lan_server_timer_.async_wait([this](const boost::system::error_code& ec) { handle_lan_server_shutdown(ec); });
 }
 
@@ -674,18 +681,18 @@ void server::refresh_tournaments(const boost::system::error_code& ec)
 
 void server::handle_new_client(socket_ptr socket)
 {
-	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(yield, socket); }
+	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(std::move(yield), socket); }
 #if BOOST_VERSION >= 108000
-		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+		, [](const std::exception_ptr& e) { if (e) std::rethrow_exception(e); }
 #endif
 	);
 }
 
 void server::handle_new_client(tls_socket_ptr socket)
 {
-	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(yield, socket); }
+	boost::asio::spawn(io_service_, [socket, this](boost::asio::yield_context yield) { login_client(std::move(yield), socket); }
 #if BOOST_VERSION >= 108000
-		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+		, [](const std::exception_ptr& e) { if (e) std::rethrow_exception(e); }
 #endif
 	);
 }
@@ -794,7 +801,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	boost::asio::spawn(io_service_,
 		[this, socket, new_player](boost::asio::yield_context yield) { handle_player(yield, socket, new_player); }
 #if BOOST_VERSION >= 108000
-		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+		, [](const std::exception_ptr& e) { if (e) std::rethrow_exception(e); }
 #endif
 	);
 
@@ -1176,7 +1183,7 @@ void server::handle_player_in_lobby(player_iterator player, simple_wml::document
 			std::string search_content = request->attr("search_content").to_string();
 			LOG_SERVER << "Querying game history requested by player `" << player->info().name() << "` for player id `" << player_id << "`."
 					   << "Searching for game name `" << search_game_name << "`, search content type `" << search_content_type << "`, search content `" << search_content << "`.";
-			user_handler_->async_get_and_send_game_history(io_service_, *this, player, player_id, offset, search_game_name, search_content_type, search_content);
+			user_handler_->async_get_and_send_game_history(io_service_, *this, player->socket(), player_id, offset, search_game_name, search_content_type, search_content);
 		}
 		return;
 	}
@@ -1499,7 +1506,7 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 
 	// send notification of changes to the game and user
 	simple_wml::document diff;
-	bool diff1 = make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", g->description(), diff);
+	bool diff1 = make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", g->changed_description(), diff);
 	bool diff2 = make_change_diff(games_and_users_list_.root(), nullptr, "user",
 		player->info().config_address(), diff);
 
@@ -1565,7 +1572,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 
 		assert(games_and_users_list_.child("gamelist")->children("game").empty() == false);
 
-		simple_wml::node& desc = *g.description();
+		simple_wml::node& desc = *g.description_for_writing();
 
 		// Update the game's description.
 		// If there is no shroud, then tell players in the lobby
@@ -1652,7 +1659,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			return;
 		}
 
-		simple_wml::node& desc = *g.description();
+		simple_wml::node& desc = *g.description_for_writing();
 
 		// Update the game's description.
 		if(const simple_wml::node* m = scenario->child("multiplayer")) {
@@ -1783,7 +1790,8 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		if(g.remove_player(p)) {
 			delete_game(g.id());
 		} else {
-			auto description = g.description();
+			bool has_diff = false;
+			simple_wml::document diff;
 
 			// After this line, the game object may be destroyed. Don't use `g`!
 			player_connections_.modify(p, std::bind(&player_record::enter_lobby, std::placeholders::_1));
@@ -1791,14 +1799,14 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			// Only run this if the game object is still valid
 			if(auto gStrong = g_ptr.lock()) {
 				gStrong->describe_slots();
+				//Don't update the game if it no longer exists.
+				has_diff |= make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", gStrong->description(), diff);
 			}
 
 			// Send all other players in the lobby the update to the gamelist.
-			simple_wml::document diff;
-			bool diff1 = make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", description, diff);
-			bool diff2 = make_change_diff(games_and_users_list_.root(), nullptr, "user", player.config_address(), diff);
+			has_diff |= make_change_diff(games_and_users_list_.root(), nullptr, "user", player.config_address(), diff);
 
-			if(diff1 || diff2) {
+			if(has_diff) {
 				send_to_lobby(diff, p);
 			}
 
@@ -1820,9 +1828,8 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			g.update_side_data();
 		}
 
-		if(g.describe_slots()) {
-			update_game_in_lobby(g);
-		}
+		g.describe_slots();
+		update_game_in_lobby(g);
 
 		g.send_data(data, p);
 		return;
@@ -1833,9 +1840,8 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		// If the owner of a side is changing the controller.
 	} else if(const simple_wml::node* change = data.child("change_controller")) {
 		g.transfer_side_control(p, *change);
-		if(g.describe_slots()) {
-			update_game_in_lobby(g);
-		}
+		g.describe_slots();
+		update_game_in_lobby(g);
 
 		return;
 		// If all observers should be muted. (toggles)
@@ -1864,9 +1870,9 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 
 		if(user) {
 			player_connections_.modify(*user, std::bind(&player_record::enter_lobby, std::placeholders::_1));
-			if(g.describe_slots()) {
-				update_game_in_lobby(g, user);
-			}
+			g.describe_slots();
+
+			update_game_in_lobby(g, user);
 
 			// Send all other players in the lobby the update to the gamelist.
 			simple_wml::document gamelist_diff;
@@ -1904,9 +1910,8 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		// Notify the game of the commands, and if it changes
 		// the description, then sync the new description
 		// to players in the lobby.
-		if(g.process_turn(data, p)) {
-			update_game_in_lobby(g);
-		}
+		g.process_turn(data, p);
+		update_game_in_lobby(g);
 
 		return;
 	} else if(data.child("whiteboard")) {
@@ -2126,7 +2131,7 @@ void server::shut_down_handler(
 		acceptor_v6_.close();
 		acceptor_v4_.close();
 
-		timer_.expires_from_now(10s);
+		timer_.expires_after(10s);
 		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, std::placeholders::_1));
 
 		process_command(
@@ -2157,7 +2162,7 @@ void server::restart_handler(const std::string& issuer_name,
 		graceful_restart = true;
 		acceptor_v6_.close();
 		acceptor_v4_.close();
-		timer_.expires_from_now(10s);
+		timer_.expires_after(10s);
 		timer_.async_wait(std::bind(&server::handle_graceful_timeout, this, std::placeholders::_1));
 
 		start_new_server();
@@ -2989,11 +2994,13 @@ void server::delete_game(int gameid, const std::string& reason)
 	}
 }
 
-void server::update_game_in_lobby(const wesnothd::game& g, utils::optional<player_iterator> exclude)
+void server::update_game_in_lobby(wesnothd::game& g, utils::optional<player_iterator> exclude)
 {
 	simple_wml::document diff;
-	if(make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", g.description(), diff)) {
-		send_to_lobby(diff, exclude);
+	if(auto p_desc = g.changed_description()) {
+		if(make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", p_desc, diff)) {
+			send_to_lobby(diff, exclude);
+		}
 	}
 }
 

@@ -31,7 +31,7 @@ static lg::log_domain log_engine("engine");
 
 namespace actions::undo
 {
-recruit_action::recruit_action(const unit_const_ptr recruited, const map_location& loc,
+recruit_action::recruit_action(const unit_const_ptr& recruited, const map_location& loc,
 			   const map_location& from)
 	: undo_action()
 	, shroud_clearing_action(recruited, loc)

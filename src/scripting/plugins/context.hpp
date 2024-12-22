@@ -46,13 +46,13 @@ public:
 	void play_slice();
 
 	void set_callback(const std::string & name, callback_function);
-	void set_callback(const std::string & name, std::function<void(config)> function, bool preserves_context);
+	void set_callback(const std::string & name, const std::function<void(config)>& function, bool preserves_context);
 	std::size_t erase_callback(const std::string & name);
 	std::size_t clear_callbacks();
 
 	void set_accessor(const std::string & name, accessor_function);
-	void set_accessor_string(const std::string & name, std::function<std::string(config)>);	//helpers which create a config from a simple type
-	void set_accessor_int(const std::string & name, std::function<int(config)>);
+	void set_accessor_string(const std::string & name, const std::function<std::string(config)>&);	//helpers which create a config from a simple type
+	void set_accessor_int(const std::string & name, const std::function<int(config)>&);
 	std::size_t erase_accessor(const std::string & name);
 	std::size_t clear_accessors();
 

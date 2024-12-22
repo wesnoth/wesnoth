@@ -47,9 +47,8 @@ static lg::log_domain log_display("display");
 namespace gui2::dialogs
 {
 
-// Index 2 is by-level
-static listbox::order_pair sort_last    {-1, sort_order::type::none};
-static listbox::order_pair sort_default { 2, sort_order::type::descending};
+static std::pair sort_default{ std::string{"sort_2"}, sort_order::type::descending };
+static utils::optional<decltype(sort_default)> sort_last;
 
 REGISTER_DIALOG(unit_recall)
 
@@ -286,18 +285,21 @@ void unit_recall::pre_show()
 		}
 	}
 
-	list.register_translatable_sorting_option(0, [this](const int i) { return recall_list_[i]->type_name().str(); });
-	list.register_translatable_sorting_option(1, [this](const int i) { return recall_list_[i]->name().str(); });
-	list.register_sorting_option(2, [this](const int i) {
-		const unit& u = *recall_list_[i];
-		return std::tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
-	});
-	list.register_sorting_option(3, [this](const int i) { return recall_list_[i]->experience(); });
-	list.register_translatable_sorting_option(4, [this](const int i) {
-		return !recall_list_[i]->trait_names().empty() ? recall_list_[i]->trait_names().front().str() : "";
-	});
+	list.set_sorters(
+		[this](const std::size_t i) { return recall_list_[i]->type_name(); },
+		[this](const std::size_t i) { return recall_list_[i]->name(); },
+		[this](const std::size_t i) {
+			const unit& u = *recall_list_[i];
+			return std::tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
+		},
+		[this](const std::size_t i) { return recall_list_[i]->experience(); },
+		[this](const std::size_t i) {
+			return !recall_list_[i]->trait_names().empty() ? recall_list_[i]->trait_names().front() : t_string();
+		}
+	);
 
-	list.set_active_sorting_option(sort_last.first >= 0 ? sort_last	: sort_default, true);
+	const auto [sorter_id, order] = sort_last.value_or(sort_default);
+	list.set_active_sorter(sorter_id, order, true);
 
 	list_item_clicked();
 }
@@ -417,7 +419,7 @@ void unit_recall::list_item_clicked()
 	const unit& selected_unit = *recall_list_[selected_row].get();
 
 	find_widget<unit_preview_pane>("unit_details")
-		.set_displayed_unit(selected_unit);
+		.set_display_data(selected_unit);
 
 	find_widget<button>("rename").set_active(!selected_unit.unrenamable());
 }
@@ -425,7 +427,12 @@ void unit_recall::list_item_clicked()
 void unit_recall::post_show()
 {
 	listbox& list = find_widget<listbox>("recall_list");
-	sort_last = list.get_active_sorting_option();
+
+	if(const auto [sorter, order] = list.get_active_sorter(); sorter) {
+		sort_last.emplace(sorter->id(), order);
+	} else {
+		sort_last.reset();
+	}
 
 	if(get_retval() == retval::OK) {
 		selected_index_ = list.get_selected_row();

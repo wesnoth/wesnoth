@@ -157,7 +157,6 @@ void get_screen_size_variables(wfl::map_formula_callable& variable)
 {
 	variable.add("screen_width", wfl::variant(settings::screen_width));
 	variable.add("screen_height", wfl::variant(settings::screen_height));
-	variable.add("screen_pitch_microns", wfl::variant(settings::screen_pitch_microns));
 	variable.add("gamemap_width", wfl::variant(settings::gamemap_width));
 	variable.add("gamemap_height", wfl::variant(settings::gamemap_height));
 	variable.add("gamemap_x_offset", wfl::variant(settings::gamemap_x_offset));

@@ -58,12 +58,12 @@ static std::string format_level_string(const int level)
 
 }
 
-static std::string format_if_leader(unit_const_ptr u, const std::string& str)
+static std::string format_if_leader(const unit_const_ptr& u, const std::string& str)
 {
 	return u->can_recruit() ? markup::span_color("#cdad00", str) : str;
 }
 
-static std::string format_movement_string(unit_const_ptr u)
+static std::string format_movement_string(const unit_const_ptr& u)
 {
 	const int moves_left = u->movement_left();
 	const int moves_max  = u->total_movement();
@@ -144,17 +144,19 @@ void unit_list::pre_show()
 		}
 	}
 
-	list.register_translatable_sorting_option(0, [this](const int i) { return unit_list_[i]->type_name().str(); });
-	list.register_translatable_sorting_option(1, [this](const int i) { return unit_list_[i]->name().str(); });
-	list.register_sorting_option(2, [this](const int i) { return unit_list_[i]->movement_left(); });
-	list.register_sorting_option(3, [this](const int i) { return unit_list_[i]->hitpoints(); });
-	list.register_sorting_option(4, [this](const int i) {
-		const unit& u = *unit_list_[i];
-		return std::tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
-	});
-	list.register_sorting_option(5, [this](const int i) { return unit_list_[i]->experience(); });
-	list.register_translatable_sorting_option(6, [this](const int i) {
-		return !unit_list_[i]->trait_names().empty() ? unit_list_[i]->trait_names().front().str() : ""; });
+	list.set_sorters(
+		[this](const std::size_t i) { return unit_list_[i]->type_name(); },
+		[this](const std::size_t i) { return unit_list_[i]->name(); },
+		[this](const std::size_t i) { return unit_list_[i]->movement_left(); },
+		[this](const std::size_t i) { return unit_list_[i]->hitpoints(); },
+		[this](const std::size_t i) {
+			const unit& u = *unit_list_[i];
+			return std::tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
+		},
+		[this](const std::size_t i) { return unit_list_[i]->experience(); },
+		[this](const std::size_t i) {
+			return !unit_list_[i]->trait_names().empty() ? unit_list_[i]->trait_names().front() : t_string(); }
+	);
 
 	list_item_clicked();
 }
@@ -169,7 +171,7 @@ void unit_list::list_item_clicked()
 	}
 
 	find_widget<unit_preview_pane>("unit_details")
-		.set_displayed_unit(*unit_list_[selected_row].get());
+		.set_display_data(*unit_list_[selected_row].get());
 }
 
 void unit_list::post_show()
