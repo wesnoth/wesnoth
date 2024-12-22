@@ -232,8 +232,12 @@ BOOST_AUTO_TEST_CASE( flg_map_settings9 )
 	config side;
 
 	// Valid leader unit.
-	side.clear();
-	side["type"] = "Shadow";
+	side = config {
+		"leader", config {
+			"type", "Shadow",
+		},
+	};
+
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "Shadow" );
@@ -250,8 +254,12 @@ BOOST_AUTO_TEST_CASE( flg_map_settings10 )
 	config side;
 
 	// Invalid leader unit.
-	side.clear();
-	side["type"] = "ThisUnitDoesNotExist";
+	side = config {
+		"leader", config {
+			"type", "ThisUnitDoesNotExist",
+		},
+	};
+
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "null" );
@@ -330,12 +338,17 @@ BOOST_AUTO_TEST_CASE( flg_map_settings15 )
 	config side;
 
 	// Carried over leader.
-	side.clear();
-	side["id"] = "LeaderID";
-	side["type"] = "Elvish Archer";
-	config& unit = side.add_child("unit");
-	unit["id"] = "LeaderID";
-	unit["type"] = "Elvish Ranger";
+	side = config {
+		"leader", config {
+			"type", "Elvish Archer",
+			"id", "LeaderID",
+		},
+		"unit", config {
+			"type", "Elvish Ranger",
+			"id", "LeaderID",
+		},
+	};
+
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "Elvish Ranger" );
@@ -363,8 +376,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings17 )
 	config side;
 
 	// Random leader.
-	side.clear();
-	side["type"] = "random";
+	side = config {
+		"leader", config {
+			"type", "random",
+		},
+	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 }
@@ -379,8 +395,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings18 )
 	config side;
 
 	// Leader with both genders.
-	side.clear();
-	side["type"] = "Elvish Archer";
+	side = config {
+		"leader", config {
+			"type", "Elvish Archer",
+		},
+	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 3 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "random" );
@@ -396,8 +415,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings19 )
 	config side;
 
 	// Leader with only male gender.
-	side.clear();
-	side["type"] = "Swordsman";
+	side = config {
+		"leader", config {
+			"type", "Swordsman",
+		},
+	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "male" );
@@ -413,8 +435,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings20 )
 	config side;
 
 	// Leader with only female gender.
-	side.clear();
-	side["type"] = "Elvish Druid";
+	side = config {
+		"leader", config {
+			"type", "Elvish Druid",
+		},
+	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "female" );
@@ -430,9 +455,12 @@ BOOST_AUTO_TEST_CASE( flg_map_settings21 )
 	config side;
 
 	// Valid leader with valid gender.
-	side.clear();
-	side["type"] = "White Mage";
-	side["gender"] = "female";
+	side = config {
+		"leader", config {
+			"type", "White Mage",
+			"gender", "female",
+		},
+	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "female" );
 }
@@ -447,9 +475,12 @@ BOOST_AUTO_TEST_CASE( flg_map_settings22 )
 	config side;
 
 	// Valid leader with invalid gender.
-	side.clear();
-	side["type"] = "Troll";
-	side["gender"] = "female";
+	side = config {
+		"leader", config {
+			"type", "Troll",
+			"gender", "female",
+		},
+	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "male" );
@@ -465,9 +496,12 @@ BOOST_AUTO_TEST_CASE( flg_map_settings23 )
 	config side;
 
 	// Leader with random gender.
-	side.clear();
-	side["type"] = "White Mage";
-	side["gender"] = "random";
+	side = config {
+		"leader", config {
+			"type", "White Mage",
+			"gender", "random",
+		},
+	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "random" );
 }
@@ -530,9 +564,12 @@ BOOST_AUTO_TEST_CASE( flg_map_settings27 )
 	config side;
 
 	// Resolve random faction with default leader.
-	side.clear();
-	side["faction"] = "Random";
-	side["type"] = "Troll";
+	side = config {
+		"faction" , "Random",
+		"leader", config {
+			"type", "Troll",
+		},
+	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->resolve_random(*rng);
 	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
@@ -550,10 +587,13 @@ BOOST_AUTO_TEST_CASE( flg_map_settings28 )
 	config side;
 
 	// Resolve random faction with default leader and gender.
-	side.clear();
-	side["faction"] = "Random";
-	side["type"] = "White Mage";
-	side["gender"] = "male";
+	side = config {
+		"faction" , "Random",
+		"leader", config {
+			"type", "White Mage",
+			"gender", "male",
+		},
+	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->resolve_random(*rng);
 	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
@@ -571,8 +611,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings29 )
 	config side;
 
 	// Resolve random leader.
-	side.clear();
-	side["type"] = "random";
+	side = config {
+		"leader", config {
+			"type", "random",
+		},
+	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->resolve_random(*rng);
 	BOOST_CHECK( side_engine->flg().current_leader() != "random" );
@@ -643,8 +686,11 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings4 )
 	config side;
 
 	// Explicit leader for faction with multiple leaders.
-	side.clear();
-	side["type"] = "Goblin Impaler";
+	side = config {
+		"leader", config {
+			"type", "Goblin Impaler",
+		},
+	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->flg().set_current_faction("Rebels");
 	BOOST_CHECK( side_engine->flg().choosable_leaders().size() > 1 );
@@ -660,9 +706,12 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings5 )
 	config side;
 
 	// Duplicate leaders.
-	side.clear();
-	side["faction"] = "Custom";
-	side["type"] = "Swordsman";
+	side = config {
+		"faction" , "Custom",
+		"leader", config {
+			"type", "Swordsman",
+		},
+	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK( side_engine->flg().choosable_leaders().size() > 1 );
 	const std::vector<std::string>& leaders = side_engine->flg().choosable_leaders();
@@ -679,8 +728,11 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings6 )
 	config side;
 
 	// Explicit gender for unit with both genders available.
-	side.clear();
-	side["gender"] = "female";
+	side = config {
+		"leader", config {
+			"gender", "female",
+		},
+	};
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->flg().set_current_faction("Rebels");
 	side_engine->flg().set_current_leader("Elvish Ranger");

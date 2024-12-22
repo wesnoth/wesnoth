@@ -1045,6 +1045,7 @@ config side_engine::new_config() const
 				LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " type=" << leader["type"]
 					   << " gender=" << leader["gender"];
 			} else if(!controller_lock_) {
+				//if controller_lock_ == false and controller_ == CNTR_EMPTY, this means the user disalbles this side, so remove it's leader.
 				res.remove_children("leader");
 			}
 		}
