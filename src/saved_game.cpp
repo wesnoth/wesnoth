@@ -265,8 +265,10 @@ void saved_game::set_defaults()
 				temp.append_children_by_move(side, tag);
 			}
 			for(const std::string& attr : team::attributes) {
-				temp[attr] = side[attr];
-				side.remove_attribute(attr);
+				if(side.has_attribute(attr)) {
+					temp[attr] = side[attr];
+					side.remove_attribute(attr);
+				}
 			}
 			temp.swap(side);
 			temp.swap(side.add_child_at("leader", config(), 0));
