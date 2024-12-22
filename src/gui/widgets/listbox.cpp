@@ -468,11 +468,15 @@ point listbox::calculate_best_size() const
 	point result = scrollbar_container::calculate_best_size();
 
 	if(const grid* header = get_grid().find_widget<const grid>("_header_grid", false, false)) {
-		result.y += header->get_best_size().y;
+		if(header->get_visible() != widget::visibility::invisible) {
+			result.y += header->get_best_size().y;
+		}
 	}
 
 	if(const grid* footer = get_grid().find_widget<const grid>("_footer_grid", false, false)) {
-		result.y += footer->get_best_size().y;
+		if(footer->get_visible() != widget::visibility::invisible) {
+			result.y += footer->get_best_size().y;
+		}
 	}
 
 	return result;
