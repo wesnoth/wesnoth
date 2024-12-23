@@ -79,14 +79,21 @@ function gui.show_help(topic) end
 function gui.show_inspector(title) end
 
 ---Show the recruit dialog with the given list of unit types and configuration
+---@class unit_dialog_options
+---@field title? string the title of the dialog
+---@field ok_label? string caption of the button with id "ok"
+---@field cancel_label? string caption of the button with id "cancel"
+---@field help_topic? string the help topic that is to be opened when the '?' button is clicked
+---@field show_headers? boolean whether to show column headers in the main list of the dialog
+
 ---@param unit_types_list unit_type[] list of units types to be shown as available recruits
----@param options? config a list of optional configuration keys supplied as a config.
+---@param options? unit_dialog_options a list of optional configuration keys supplied as a config.
 ---@return unit_type the selected unit type or nil if not selected
 function gui.show_recruit_dialog(unit_types_list, options) end
 
 ---Show the recall dialog with the given list of units and configuration
 ---@param units_list unit[] list of units types to be shown as available recalls
----@param options? config a list of optional configuration keys supplied as a config.
+---@param options? unit_dialog_options a list of optional configuration keys supplied as a config.
 ---@return unit the selected unit or nil if not selected
 function gui.show_recall_dialog(units_list, options) end
 
