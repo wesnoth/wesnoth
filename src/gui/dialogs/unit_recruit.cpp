@@ -86,8 +86,7 @@ void unit_recruit::filter_text_changed(const std::string& text)
 void unit_recruit::pre_show()
 {
 	text_box* filter = find_widget<text_box>("filter_box", false, true);
-	filter->set_text_changed_callback(
-			std::bind(&unit_recruit::filter_text_changed, this, std::placeholders::_2));
+	filter->on_modified([this](const auto& box) { filter_text_changed(box.text()); });
 
 	listbox& list = find_widget<listbox>("recruit_list");
 

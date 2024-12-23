@@ -838,7 +838,7 @@ void preferences_dialog::initialize_callbacks()
 	listbox& hotkey_list = setup_hotkey_list();
 
 	text_box& filter = find_widget<text_box>("filter");
-	filter.set_text_changed_callback(std::bind(&preferences_dialog::hotkey_filter_callback, this));
+	filter.on_modified([this](const auto&) { hotkey_filter_callback(); });
 
 	hotkey_list.set_sorters(
 		// Action column
