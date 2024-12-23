@@ -507,7 +507,7 @@ std::string addon_check_status_desc(unsigned int code)
 		},
 		{
 			ADDON_CHECK_STATUS::ICON_TOO_LARGE,
-			N_("The addon’s icon’s file size is too large.")
+			N_("The add-on’s icon’s file size is too large.")
 		},
 
 		//
