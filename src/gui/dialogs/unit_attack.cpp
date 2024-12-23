@@ -75,7 +75,6 @@ void unit_attack::pre_show()
 	listbox& weapon_list = find_widget<listbox>("weapon_list");
 	keyboard_capture(&weapon_list);
 
-	// Possible TODO: If a "blank weapon" is generally useful, add it as a static member in attack_type.
 	for (widget_data& data : bc_widget_data_vector_)
 		weapon_list.add_row(data);
 

@@ -1363,6 +1363,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		static const config empty;
 		static const_attack_ptr no_weapon(new attack_type(empty));
 
+		// Possible TODO: If a "blank weapon" is generally useful, add it as a static member in attack_type.
 		for(const auto& weapon : bc_vector) {
 			const battle_context_unit_stats& attacker_stats = weapon.get_attacker_stats();
 			const battle_context_unit_stats& defender_stats = weapon.get_defender_stats();
