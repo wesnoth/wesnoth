@@ -78,6 +78,18 @@ function gui.show_help(topic) end
 ---@param title? string A title to be displayed in the inspector. Can be used to disambiguate where it was called from.
 function gui.show_inspector(title) end
 
+---Show the recruit dialog with the given list of unit types and configuration
+---@param unit_types_list unit_type[] list of units types to be shown as available recruits
+---@param options? config a list of optional configuration keys supplied as a config.
+---@return unit_type the selected unit type or nil if not selected
+function gui.show_recruit_dialog(unit_types_list, options) end
+
+---Show the recall dialog with the given list of units and configuration
+---@param units_list unit[] list of units types to be shown as available recalls
+---@param options? config a list of optional configuration keys supplied as a config.
+---@return unit the selected unit or nil if not selected
+function gui.show_recall_dialog(units_list, options) end
+
 ---Open the in-game Lua console
 function gui.show_lua_console() end
 
