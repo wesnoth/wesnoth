@@ -160,8 +160,8 @@ private:
 	std::string cache_file_prefix_;
 
 	void read_file(const std::string& file, config& cfg);
-	void write_file(std::string file, const config& cfg);
-	void write_file(std::string file, const preproc_map& defines);
+	void write_file(const std::string& file, const config& cfg);
+	void write_file(const std::string& file, const preproc_map& defines);
 
 	void read_cache(const std::string& path, config& cfg, abstract_validator* validator = nullptr);
 

@@ -177,20 +177,6 @@ public:
 private:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_page_builders(const builder_grid_map& page_builders)
-	{
-		assert(!page_builders.empty());
-		page_builders_ = page_builders;
-	}
-
-	/**
-	 * Finishes the building initialization of the widget.
-	 *
-	 * @param generator           Generator for the list
-	 * @param page_data           The initial data to fill the widget with.
-	 */
-	void finalize(std::unique_ptr<generator_base> generator, const std::vector<widget_item>& page_data);
-
 	/**
 	 * Contains a pointer to the generator.
 	 *

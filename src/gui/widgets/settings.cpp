@@ -26,14 +26,6 @@ namespace settings
 {
 unsigned screen_width = 0;
 unsigned screen_height = 0;
-/** screen_pitch_microns is deprecated. Do not use it.
- *
- * This value corresponds to a physical DPI of 96. But physical DPI should
- * not be used to make rendering decisions. With the ability to set pixel
- * scale, it can be assumed that one pixel in draw-space is neither too
- * small nor too large.
- */
-const unsigned screen_pitch_microns = 265;
 unsigned gamemap_x_offset = 0;
 
 unsigned gamemap_width = 0;

@@ -73,8 +73,8 @@ bool modal_dialog::show(const unsigned auto_close_time)
 		if (pm && pm->any_running())
 		{
 			plugins_context pc("Dialog");
-			pc.set_callback("skip_dialog", [this](config) { retval_ = retval::OK; }, false);
-			pc.set_callback("quit", [](config) {}, false);
+			pc.set_callback("skip_dialog", [this](const config&) { retval_ = retval::OK; }, false);
+			pc.set_callback("quit", [](const config&) {}, false);
 			pc.play_slice();
 		}
 
@@ -128,9 +128,9 @@ T* modal_dialog::register_field(Args&&... args)
 field_bool* modal_dialog::register_bool(
 		const std::string& id,
 		const bool mandatory,
-		const std::function<bool()> callback_load_value,
-		const std::function<void(bool)> callback_save_value,
-		const std::function<void(widget&)> callback_change,
+		const std::function<bool()>& callback_load_value,
+		const std::function<void(bool)>& callback_save_value,
+		const std::function<void(widget&)>& callback_change,
 		const bool initial_fire)
 {
 	field_bool* field = new field_bool(id,
@@ -148,7 +148,7 @@ field_bool*
 modal_dialog::register_bool(const std::string& id,
 					   const bool mandatory,
 					   bool& linked_variable,
-					   const std::function<void(widget&)> callback_change,
+					   const std::function<void(widget&)>& callback_change,
 					   const bool initial_fire)
 {
 	field_bool* field
@@ -161,8 +161,8 @@ modal_dialog::register_bool(const std::string& id,
 field_integer* modal_dialog::register_integer(
 		const std::string& id,
 		const bool mandatory,
-		const std::function<int()> callback_load_value,
-		const std::function<void(const int)> callback_save_value)
+		const std::function<int()>& callback_load_value,
+		const std::function<void(int)>& callback_save_value)
 {
 	field_integer* field = new field_integer(
 			id, mandatory, callback_load_value, callback_save_value);
@@ -184,8 +184,8 @@ field_integer* modal_dialog::register_integer(const std::string& id,
 field_text* modal_dialog::register_text(
 		const std::string& id,
 		const bool mandatory,
-		const std::function<std::string()> callback_load_value,
-		const std::function<void(const std::string&)> callback_save_value,
+		const std::function<std::string()>& callback_load_value,
+		const std::function<void(const std::string&)>& callback_save_value,
 		const bool capture_focus)
 {
 	field_text* field = new field_text(

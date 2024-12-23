@@ -20,12 +20,8 @@
 #include "gui/widgets/group.hpp"
 #include "side_controller.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 class editor_edit_side : public modal_dialog
 {
 public:
@@ -46,5 +42,5 @@ private:
 
 	virtual const std::string& window_id() const override;
 };
-} // namespace dialogs
-} // namespace gui2
+
+} // namespace gui2::dialogs

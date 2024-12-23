@@ -146,7 +146,7 @@ void editor_toolkit::clear_mouseover_overlay()
 	gui_.clear_mouseover_hex_overlay();
 }
 
-void editor_toolkit::set_brush(std::string id) {
+void editor_toolkit::set_brush(const std::string& id) {
 
 	for (brush& i : brushes_) {
 		if (i.id() == id) {

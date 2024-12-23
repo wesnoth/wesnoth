@@ -85,7 +85,7 @@ struct scrollbar_container_implementation
 	static W*
 	find(utils::const_clone_ref<scrollbar_container, W>
 				 scrollbar_container,
-		 const std::string& id,
+		 const std::string_view id,
 		 const bool must_be_active)
 	{
 		// Inherited.

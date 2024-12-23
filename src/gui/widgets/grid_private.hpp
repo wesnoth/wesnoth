@@ -56,10 +56,8 @@ struct grid_implementation
 					  const point& coordinate,
 					  const bool must_be_active)
 	{
-		typedef utils::const_clone_t<grid::child, W> hack;
-		for(hack & child : grid.children_)
+		for(auto& child : grid.children_)
 		{
-
 			W* widget = child.get_widget();
 			if(!widget) {
 				continue;
@@ -71,19 +69,19 @@ struct grid_implementation
 			}
 		}
 
-		return 0;
+		return nullptr;
 	}
 
 	/**
 	 * Implementation for the wrappers for
-	 * [const] widget* grid::find(const std::string&,
+	 * [const] widget* grid::find(const std::string_view,
 	 * const bool) [const].
 	 *
 	 * @tparam W                  widget or const widget.
 	 */
 	template <class W>
 	static W* find(utils::const_clone_ref<grid, W> grid,
-				   const std::string& id,
+				   const std::string_view id,
 				   const bool must_be_active)
 	{
 		// Inherited.
@@ -92,10 +90,8 @@ struct grid_implementation
 			return widget;
 		}
 
-		typedef utils::const_clone_t<grid::child, W> hack;
-		for(hack & child : grid.children_)
+		for(auto& child : grid.children_)
 		{
-
 			widget = child.get_widget();
 			if(!widget) {
 				continue;
@@ -107,7 +103,7 @@ struct grid_implementation
 			}
 		}
 
-		return 0;
+		return nullptr;
 	}
 
 	/**

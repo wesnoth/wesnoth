@@ -214,7 +214,7 @@ void multimenu_button::select_option(const unsigned option, const bool selected)
 	update_label();
 }
 
-void multimenu_button::select_options(boost::dynamic_bitset<> states)
+void multimenu_button::select_options(const boost::dynamic_bitset<>& states)
 {
 	assert(states.size() == values_.size());
 	toggle_states_ = states;

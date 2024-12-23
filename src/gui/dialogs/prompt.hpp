@@ -16,12 +16,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 class prompt : public modal_dialog
 {
 public:
@@ -39,5 +35,4 @@ private:
 	std::string& value_;
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

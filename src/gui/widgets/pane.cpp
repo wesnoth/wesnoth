@@ -186,9 +186,7 @@ void pane::filter(const filter_functor_t& filter_functor)
 {
 	for(auto & item : items_)
 	{
-		item.item_grid->set_visible(filter_functor(item)
-									   ? widget::visibility::visible
-									   : widget::visibility::invisible);
+		item.item_grid->set_visible(filter_functor(item));
 	}
 
 	set_origin_children();

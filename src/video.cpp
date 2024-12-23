@@ -483,6 +483,11 @@ int get_pixel_scale()
 	return pixel_scale_;
 }
 
+int native_refresh_rate()
+{
+	return refresh_rate_;
+}
+
 int current_refresh_rate()
 {
 	// TODO: this should be more clever, depending on usage

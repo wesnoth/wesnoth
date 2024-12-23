@@ -26,10 +26,13 @@ struct recall_action : undo_action, shroud_clearing_action
 	map_location recall_from;
 
 
-	recall_action(const unit_const_ptr recalled, const map_location& loc,
-				  const map_location& from, int orig_village_owner, bool time_bonus);
-	recall_action(const config & cfg, const map_location & from);
-	virtual const char* get_type() const { return "recall"; }
+	recall_action(const unit_const_ptr& recalled, const map_location& loc,
+				  const map_location& from);
+	recall_action(const config & cfg);
+
+	static const char* get_type_impl() { return "recall"; }
+	virtual const char* get_type() const { return get_type_impl(); }
+
 	virtual ~recall_action() {}
 
 	/** Writes this into the provided config. */

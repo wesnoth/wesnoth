@@ -102,7 +102,7 @@ private:
 
 	void update_expand_direction();
 
-	void set_direction_icon(int index, std::string icon);
+	void set_direction_icon(int index, const std::string& icon);
 
 	virtual void pre_show() override;
 

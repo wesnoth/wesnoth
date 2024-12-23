@@ -775,12 +775,12 @@ const widget* window::find_at(const point& coordinate,
 	return panel::find_at(coordinate, must_be_active);
 }
 
-widget* window::find(const std::string& id, const bool must_be_active)
+widget* window::find(const std::string_view id, const bool must_be_active)
 {
 	return container_base::find(id, must_be_active);
 }
 
-const widget* window::find(const std::string& id, const bool must_be_active)
+const widget* window::find(const std::string_view id, const bool must_be_active)
 		const
 {
 	return container_base::find(id, must_be_active);

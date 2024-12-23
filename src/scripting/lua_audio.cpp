@@ -15,14 +15,15 @@
 #include "lua_audio.hpp"
 
 #include "log.hpp"
+#include "preferences/preferences.hpp"
+#include "resources.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/push_check.hpp"
 #include "sound.hpp"
 #include "sound_music_track.hpp"
-#include "preferences/preferences.hpp"
-#include "resources.hpp"
 #include "soundsource.hpp"
 #include <set>
+#include <utility>
 
 static lg::log_domain log_audio("audio");
 #define DBG_AUDIO LOG_STREAM(debug, log_audio)
@@ -36,7 +37,7 @@ class lua_music_track {
 	std::shared_ptr<sound::music_track> track;
 public:
 	explicit lua_music_track(int i) : track(sound::get_track(i)) {}
-	explicit lua_music_track(std::shared_ptr<sound::music_track> new_track) : track(new_track) {}
+	explicit lua_music_track(std::shared_ptr<sound::music_track> new_track) : track(std::move(new_track)) {}
 	bool valid() const {
 		return track && track->valid();
 	}
@@ -61,7 +62,7 @@ static lua_music_track* push_track(lua_State* L, int i) {
 }
 
 static lua_music_track* push_track(lua_State* L, std::shared_ptr<sound::music_track> new_track) {
-	lua_music_track* trk = new(L) lua_music_track(new_track);
+	lua_music_track* trk = new(L) lua_music_track(std::move(new_track));
 	luaL_setmetatable(L, Track);
 	return trk;
 }

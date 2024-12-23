@@ -112,16 +112,20 @@ void addons_client::connect()
 			   << " supports: " << utils::join(server_capabilities_, " ");
 }
 
-bool addons_client::request_addons_list(config& cfg)
+bool addons_client::request_addons_list(config& cfg, bool icons)
 {
 	cfg.clear();
+
+	config request;
+	config& req_child = request.add_child("request_campaign_list");
+	req_child["send_icons"] = icons;
 
 	config response_buf;
 
 	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness
 	 */
 
-	send_simple_request("request_campaign_list", response_buf);
+	send_request(request, response_buf);
 	wait_for_transfer_done(_("Downloading list of add-ons..."));
 
 	std::swap(cfg, response_buf.mandatory_child("campaigns"));
@@ -159,7 +163,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	response_message.clear();
 
 	utils::string_map i18n_symbols;
-	i18n_symbols["addon_title"] = font::escape_text(cfg["title"]);
+	i18n_symbols["addon_title"] = font::escape_text(cfg["title"].str());
 	if(i18n_symbols["addon_title"].empty()) {
 		i18n_symbols["addon_title"] = font::escape_text(make_addon_title(id));
 	}
@@ -275,7 +279,7 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 	config cfg = get_addon_pbl_info(id, false);
 
 	utils::string_map i18n_symbols;
-	i18n_symbols["addon_title"] = font::escape_text(cfg["title"]);
+	i18n_symbols["addon_title"] = font::escape_text(cfg["title"].str());
 	if(i18n_symbols["addon_title"].empty()) {
 		i18n_symbols["addon_title"] = font::escape_text(make_addon_title(id));
 	}

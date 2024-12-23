@@ -78,14 +78,14 @@ private:
 	void log_handlers();
 
 	friend pending_event_handler;
-	void finish_adding_event_handler(handler_ptr new_handler);
+	void finish_adding_event_handler(const handler_ptr& new_handler);
 
 public:
 	/** Utility to standardize the event names used in by_name_. */
 	static std::string standardize_name(const std::string& name);
 
 	/** Compare function to sort event handlers by priority. */
-	static bool cmp(const handler_ptr lhs, const handler_ptr rhs);
+	static bool cmp(const handler_ptr& lhs, const handler_ptr& rhs);
 
 	event_handlers()
 		: active_()
@@ -111,9 +111,6 @@ public:
 	{
 		return active_;
 	}
-
-	/** Access to the handlers with fixed event names, by event name. */
-	handler_list& get(const std::string& name);
 
 	/** Adds an event handler. */
 	pending_event_handler add_event_handler(const std::string& name, const std::string& id, bool repeat, double priority = 0., bool is_menu_item = false);

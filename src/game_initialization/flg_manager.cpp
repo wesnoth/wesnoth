@@ -42,7 +42,6 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	, savegame_gender_()
 	, original_faction_(get_default_faction(side)["faction"].str())
 	, original_recruit_(utils::split(get_default_faction(side)["recruit"].str()))
-	, choose_faction_by_leader_(side["leader"].str())
 	, saved_game_(saved_game)
 	, has_no_recruits_(original_recruit_.empty() && side["previous_recruits"].empty())
 	, faction_lock_(side["faction_lock"].to_bool(lock_settings))
@@ -452,10 +451,6 @@ int flg_manager::find_suitable_faction() const
 		// Choose based on recruit.
 		find = original_recruit_;
 		search_field = "recruit";
-	} else if(!choose_faction_by_leader_.empty()) {
-		// Choose based on leader.
-		find.push_back(choose_faction_by_leader_);
-		search_field = "leader";
 	} else {
 		find.push_back("Custom");
 		search_field = "id";

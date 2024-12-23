@@ -29,6 +29,7 @@
 #include <boost/program_options/variables_map.hpp>  // for variables_map, etc
 
 #include <array>
+#include <string>
 
 namespace po = boost::program_options;
 
@@ -291,6 +292,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("output,o", po::value<std::string>(), "output to specified file")
 		("patch,P", po::value<two_strings>()->multitoken(), "apply a patch to a preprocessed WML document." IMPLY_TERMINAL)
 		("preprocess,p", po::value<two_strings>()->multitoken(), "requires two arguments: <file/folder> <target directory>. Preprocesses a specified file/folder. The preprocessed file(s) will be written in the specified target directory: a plain cfg file and a processed cfg file." IMPLY_TERMINAL)
+		("preprocess-string", po::value<std::string>(), "preprocess given string" IMPLY_TERMINAL)
 		("preprocess-defines", po::value<std::string>(), "comma separated list of defines to be used by '--preprocess' command. If 'SKIP_CORE' is in the define list the data/core won't be preprocessed. Example: --preprocess-defines=FOO,BAR")
 		("preprocess-input-macros", po::value<std::string>(), "used only by the '--preprocess' command. Specifies source file <arg> that contains [preproc_define]s to be included before preprocessing.")
 		("preprocess-output-macros", po::value<std::string>()->implicit_value(std::string()), "used only by the '--preprocess' command. Will output all preprocessed macros in the target file <arg>. If the file is not specified the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.")
@@ -412,6 +414,10 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		preprocess = true;
 		preprocess_path = vm["preprocess"].as<two_strings>().first;
 		preprocess_target = vm["preprocess"].as<two_strings>().second;
+	}
+	if(vm.count("preprocess-string"))
+	{
+		preprocess_source_string = vm["preprocess-string"].as<std::string>();
 	}
 	if(vm.count("diff"))
 	{

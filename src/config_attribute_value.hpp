@@ -128,6 +128,15 @@ public:
 	config_attribute_value& operator=(const std::string_view &v);
 	config_attribute_value& operator=(const t_string &v);
 
+	//TODO: should this be a normal constructor?
+	template<typename T>
+	static config_attribute_value create(const T val)
+	{
+		config_attribute_value res;
+		res = val;
+		return res;
+	}
+
 	template<typename... Args>
 	config_attribute_value& operator=(const std::chrono::duration<Args...>& v)
 	{

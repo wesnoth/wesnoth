@@ -38,23 +38,23 @@ namespace utf16 {
  * back and forth.
  */
 namespace utf8 {
-	typedef ucs4::iterator_base<std::string, ucs4_convert_impl::convert_impl<char>::type> iterator;
+	typedef ucs4::iterator_base<std::string_view, ucs4_convert_impl::convert_impl<char>::type> iterator;
 
 	/** Returns a lowercased version of the string. */
-	std::string lowercase(const std::string& s);
+	std::string lowercase(std::string_view s);
 
 	/**
 	 * Codepoint index corresponding to the nth character in a UTF-8 string.
 	 *
 	 * @return str.length() if there are less than @p index characters.
 	 */
-	std::size_t index(const std::string& str, const std::size_t index);
+	std::size_t index(std::string_view str, const std::size_t index);
 
 	/** Length in characters of a UTF-8 string. */
-	std::size_t size(const std::string& str);
+	std::size_t size(std::string_view str);
 
 	/** Insert a UTF-8 string at the specified position. */
-	std::string& insert(std::string& str, const std::size_t pos, const std::string& insert);
+	std::string& insert(std::string& str, const std::size_t pos, const std::string& insert) ;
 
 	/**
 	 * Erases a portion of a UTF-8 string.

@@ -166,8 +166,9 @@ struct builder_toggle_button : public builder_styled_widget
 
 	virtual std::unique_ptr<widget> build() const override;
 
+	std::string icon_name;
+
 private:
-	std::string icon_name_;
 	std::string retval_id_;
 	int retval_;
 };

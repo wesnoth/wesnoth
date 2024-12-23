@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 11:10-0500\n"
+"POT-Creation-Date: 2024-11-26 12:08-0600\n"
 "PO-Revision-Date: 2017-05-31 13:43+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -275,15 +275,15 @@ msgstr "Rang: "
 msgid "Cost: "
 msgstr "Cosgais: "
 
-#: src/editor/controller/editor_controller.cpp:186
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "Mearachd mharbhtach"
 
-#: src/editor/controller/editor_controller.cpp:216
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "A bheil thu cinnteach gu bheil thu airson fàgail?"
 
-#: src/editor/controller/editor_controller.cpp:218
+#: src/editor/controller/editor_controller.cpp:219
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -291,7 +291,7 @@ msgstr ""
 "A bheil thu cinnteach gu bheil thu airson fàgail? Thèid na h-atharraichean a "
 "rinn thu air a’ mhapa an dèidh an t-sàbhalaidh mu dheireadh air chall."
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -300,34 +300,34 @@ msgstr ""
 "atharrachadh is thèid na h-atharraichean a rinn thu orra an dèidh an t-"
 "sàbhalaidh mu dheireadh air chall."
 
-#: src/editor/controller/editor_controller.cpp:237
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr "Cha deach àm dhen latha deasaiche a lorg."
 
-#: src/editor/controller/editor_controller.cpp:880
+#: src/editor/controller/editor_controller.cpp:882
 msgid "Add-on Files"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:893
+#: src/editor/controller/editor_controller.cpp:895
 #, fuzzy
 #| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
 "Cha do lorg sinn taic ris an stòr-bhòrd, cuir fios gun neach-pacaididh agad"
 
-#: src/editor/controller/editor_controller.cpp:1313
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "Change Unit ID"
 msgstr "Atharraich ID an aonaid"
 
-#: src/editor/controller/editor_controller.cpp:1314
+#: src/editor/controller/editor_controller.cpp:1316
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1330
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Rename Unit"
 msgstr "Thoir ainm ùr air an aonad"
 
-#: src/editor/controller/editor_controller.cpp:1331
+#: src/editor/controller/editor_controller.cpp:1333
 msgid "Name:"
 msgstr "Ainm:"
 
@@ -343,11 +343,11 @@ msgstr ""
 msgid "Load Map"
 msgstr "Luchdaich mapa"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1130
 msgid "New Map"
 msgstr "Mapa ùr"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1130
 msgid "New Scenario"
 msgstr "Cnàmh-sgeul ùr"
 
@@ -519,27 +519,27 @@ msgstr ""
 msgid "Unable to parse file to find map data"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:823 src/editor/map/map_context.cpp:863
+#: src/editor/map/map_context.cpp:824 src/editor/map/map_context.cpp:864
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "Cha b' urrainn dhuinn an cnàmh-sgeul a shàbhaladh: $msg"
 
-#: src/editor/map/map_context.cpp:857
+#: src/editor/map/map_context.cpp:858
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "Clàr-taice nan sgeidealan ama"
 
-#: src/editor/map/map_context.cpp:903
+#: src/editor/map/map_context.cpp:904
 msgid "Could not save the scenario: $msg"
 msgstr "Cha b' urrainn dhuinn an cnàmh-sgeul a shàbhaladh: $msg"
 
-#: src/editor/map/map_context.cpp:934
+#: src/editor/map/map_context.cpp:935
 msgid "Could not save into scenario"
 msgstr "Cha b' urrainn dhuinn sàbhaladh dhan chnàmh-sgeul"
 
-#: src/editor/map/map_context.cpp:944
+#: src/editor/map/map_context.cpp:945
 msgid "Could not save the map: $msg"
 msgstr "Cha b' urrainn dhuinn am mapa a shàbhaladh: $msg"
 
@@ -606,25 +606,11 @@ msgstr ""
 msgid "Ctrl + click: copy terrain"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:170
-msgid "Choose File"
-msgstr "Tagh faidhle"
+#~ msgid "Choose File"
+#~ msgstr "Tagh faidhle"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:171
-msgid "Select"
-msgstr "Tagh"
-
-#: src/gui/dialogs/editor/custom_tod.cpp:178
-msgid ""
-"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
-"add-on?"
-msgstr ""
-
-#: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/custom_tod.cpp:189
-#: src/gui/dialogs/editor/custom_tod.cpp:196
-msgid "Confirm"
-msgstr ""
+#~ msgid "Select"
+#~ msgstr "Tagh"
 
 #~ msgid "Clipboard support not found, contact your packager"
 #~ msgstr ""

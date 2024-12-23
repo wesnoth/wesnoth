@@ -190,7 +190,7 @@ void faction_select::profile_button_callback()
 	}
 }
 
-void faction_select::on_gender_select(const std::string val)
+void faction_select::on_gender_select(const std::string& val)
 {
 	flg_manager_.set_current_gender(val);
 

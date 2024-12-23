@@ -138,9 +138,6 @@ written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 \fB\-\-new\-widgets\fP
 现在有一个正在制作中的窗口部件工具库，此选项将启用此工具库。这个工具库还处在很早期的试验阶段，请不要发起缺陷报告，因为大多数缺陷是已知的。库的一部分被认为是稳定的，即使不使用本开关也会启用。
 .TP 
-\fB\-\-nodelay\fP
-无延迟地运行游戏，以执行图像基准测试。使用 \fB\-\-nogui\fP 时会自动启用本选项。
-.TP 
 \fB\-\-noaddons\fP
 禁止读取用户附加组件。
 .TP 
@@ -180,17 +177,26 @@ written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP
 有关预处理器的详情请见：http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor。
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-由逗号分隔的定义列表，用于 \fB\-\-preprocess\fP 命令。如果\fBSKIP_CORE\fP在定义列表中，则“data/core”目录不会被预处理。
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
-仅供 \fB\-\-preprocess\fP 命令使用。用于指定一个包含了一个或多个 \fB[preproc_define]\fP
-的文件，其中的定义将在预处理开始前生效。
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
-仅供 \fB\-\-preprocess\fP
-命令使用。将会输出目标文件中所有经过了预处理的宏。如果没有指定文件，那么目标文件将是preprocess命令所指定的目标目录中的“_MACROS_.cfg”。输出文件可传递给
-\fB\-\-preprocess\-input\-macros\fP 。这个开关选项必须出现在 \fB\-\-preprocess\fP 命令之前。
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 设定屏幕分辨率。例如：\fB\-r\fP \fB800x600\fP。

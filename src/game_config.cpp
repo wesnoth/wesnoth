@@ -278,7 +278,7 @@ void load_config(const config &v)
 	std::vector<std::string> zoom_levels_str = utils::split(v["zoom_levels"]);
 	if(!zoom_levels_str.empty()) {
 		zoom_levels.clear();
-		std::transform(zoom_levels_str.begin(), zoom_levels_str.end(), std::back_inserter(zoom_levels), [](const std::string zoom) {
+		std::transform(zoom_levels_str.begin(), zoom_levels_str.end(), std::back_inserter(zoom_levels), [](const std::string& zoom) {
 			int z = std::stoi(zoom);
 			if((z / 4) * 4 != z) {
 				ERR_NG << "zoom level " << z << " is not divisible by 4."

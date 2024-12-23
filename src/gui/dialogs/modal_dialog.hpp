@@ -228,9 +228,9 @@ protected:
 	field_bool*
 	register_bool(const std::string& id,
 				  const bool mandatory,
-				  const std::function<bool()> callback_load_value = nullptr,
-				  const std::function<void(bool)> callback_save_value = nullptr,
-				  const std::function<void(widget&)> callback_change = nullptr,
+				  const std::function<bool()>& callback_load_value = nullptr,
+				  const std::function<void(bool)>& callback_save_value = nullptr,
+				  const std::function<void(widget&)>& callback_change = nullptr,
 				  const bool initial_fire = false);
 
 	/**
@@ -253,7 +253,7 @@ protected:
 	register_bool(const std::string& id,
 				  const bool mandatory,
 				  bool& linked_variable,
-				  const std::function<void(widget&)> callback_change = nullptr,
+				  const std::function<void(widget&)>& callback_change = nullptr,
 				  const bool initial_fire = false);
 
 	/**
@@ -264,8 +264,8 @@ protected:
 	field_integer*
 	register_integer(const std::string& id,
 					 const bool mandatory,
-					 const std::function<int()> callback_load_value = nullptr,
-					 const std::function<void(int)> callback_save_value = nullptr);
+					 const std::function<int()>& callback_load_value = nullptr,
+					 const std::function<void(int)>& callback_save_value = nullptr);
 
 	/**
 	 * Creates a new integer field.
@@ -283,8 +283,8 @@ protected:
 	field_text* register_text(
 			const std::string& id,
 			const bool mandatory,
-			const std::function<std::string()> callback_load_value = nullptr,
-			const std::function<void(const std::string&)> callback_save_value = nullptr,
+			const std::function<std::string()>& callback_load_value = nullptr,
+			const std::function<void(const std::string&)>& callback_save_value = nullptr,
 			const bool capture_focus = false);
 
 	/**

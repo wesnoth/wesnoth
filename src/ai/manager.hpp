@@ -131,9 +131,7 @@ public:
 
 	manager();
 
-	/* The singleton can't be set to null in the destructor because member objects
-	(which access the singleton) are destroyed *after* the destructor has been run. */
-	~manager() = default;
+	~manager();
 
 	// =======================================================================
 	// ACCESS TO MANAGER

@@ -363,10 +363,8 @@ public:
 
 	/**
 	 * Set the description to the number of available slots.
-	 *
-	 * @returns True if the number of slots has changed.
 	 */
-	bool describe_slots();
+	void describe_slots();
 
 	/**
 	 * Sends a message to all players in this game that aren't excluded.
@@ -480,6 +478,27 @@ public:
 	simple_wml::node* description() const
 	{
 		return description_;
+	}
+
+	/**
+	 * @return The node containing the game's current description. and remembers that it was changed.
+	 */
+	simple_wml::node* description_for_writing()
+	{
+		description_updated_ = true;
+		return description_;
+	}
+
+	/**
+	 * @return The node containing the game's current description if it was changed.
+	 */
+	simple_wml::node* changed_description()
+	{
+		if(description_updated_) {
+			description_updated_ = false;
+			return description_;
+		}
+		return nullptr;
 	}
 
 	/**
@@ -602,7 +621,19 @@ private:
 	 */
 	std::size_t current_side() const
 	{
-		return nsides_ != 0 ? (current_side_index_ % nsides_) : 0;
+		// At the start of the game it can happen that current_side_index_ is 0,
+		// but the first side is empty. It's better to do this than to skip empty
+		// sides in start_game() in case the controller changes during start events.
+		return get_next_nonempty(current_side_index_);
+	}
+
+	/**
+	 * @return The player who owns the side at index @a index.
+	 * nullopt if wither index is invalid or the side is not owned.
+	 */
+	utils::optional<player_iterator> get_side_player(size_t index) const
+	{
+		return index >= sides_.size() ? utils::optional<player_iterator>() : sides_[index];
 	}
 
 	/**
@@ -610,7 +641,8 @@ private:
 	 */
 	utils::optional<player_iterator> current_player() const
 	{
-		return sides_[current_side()];
+		// sides_ should never be empty but just to be sure.
+		return get_side_player(current_side());
 	}
 
 	/**
@@ -742,13 +774,17 @@ private:
 
 	/**
 	 * Function which should be called every time a player ends their turn
-	 * (i.e. [end_turn] received). This will update the 'turn' attribute for
-	 * the game's description when appropriate.
+	 * (i.e. [end_turn] received).
 	 *
 	 * @param new_side The side number whose turn to move it has become.
-	 * @return True if the current side and-or current turn values have been updated, false otherwise.
 	 */
-	bool end_turn(int new_side);
+	void end_turn(int new_side);
+	/**
+	 * Function which should be called every time a player starts their turn
+	 * (i.e. [init_side] received). This will update the 'turn' attribute for
+	 * the game's description when appropriate.
+	 */
+	void init_turn();
 
 	/**
 	 * Set or update the current and max turn values in the game's description.
@@ -773,7 +809,7 @@ private:
 	 * @param users The users to create a comma separated list from.
 	 * @return A comma separated list of user names.
 	 */
-	std::string list_users(user_vector users) const;
+	std::string list_users(const user_vector& users) const;
 
 	/** calculates the initial value for sides_, side_controllerds_, nsides_*/
 	void reset_sides();
@@ -791,6 +827,13 @@ private:
 	 * @return A string listing the game IDs and side information.
 	 */
 	std::string debug_sides_info() const;
+
+	/// @return the side index for which we accept [init_side]
+	int get_next_side_index() const;
+	/**
+	 * finds the first side starting at @a side_index that is non empty.
+	 */
+	int get_next_nonempty(int side_index) const;
 
 	/** The wesnothd server instance this game exists on. */
 	wesnothd::server& server;
@@ -869,10 +912,18 @@ private:
 	/** Pointer to the game's description in the games_and_users_list_. */
 	simple_wml::node* description_;
 
+	/** Set to true whenever description_ was changed that an update needs to be sent to clients. */
+	bool description_updated_;
+
 	/** The game's current turn. */
 	int current_turn_;
 	/** The index of the current side. The side number is current_side_index_+1. */
 	int current_side_index_;
+	/**
+	 * after [end_turn] was received, this contains the side for who we accept [init_side].
+	 * -1 if we currently don't accept [init_side] because the current player didn't end his turn yet.
+	 **/
+	int next_side_index_;
 	/** The maximum number of turns before the game ends. */
 	int num_turns_;
 	/** Whether all observers should be treated as muted. */

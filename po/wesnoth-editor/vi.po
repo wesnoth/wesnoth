@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 11:10-0500\n"
+"POT-Creation-Date: 2024-11-26 12:08-0600\n"
 "PO-Revision-Date: 2014-06-05 21:43+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -267,15 +267,15 @@ msgstr "Cấp độ: "
 msgid "Cost: "
 msgstr "Chi phí: "
 
-#: src/editor/controller/editor_controller.cpp:186
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "Lỗi nghiêm trọng"
 
-#: src/editor/controller/editor_controller.cpp:216
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "Bạn có thực sự muốn thoát không?"
 
-#: src/editor/controller/editor_controller.cpp:218
+#: src/editor/controller/editor_controller.cpp:219
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -287,7 +287,7 @@ msgstr ""
 "Bạn có thực sự muốn thoát không? Các thay đổi trong bản đồ kể từ lần lưu "
 "cuối cùng sẽ bị mất."
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -295,31 +295,31 @@ msgstr ""
 "Bạn có thực sự muốn thoát không? Các bản đồ sau đã bị sửa đổi và mọi thay "
 "đổi kể từ lần lưu cuối cùng sẽ bị mất:"
 
-#: src/editor/controller/editor_controller.cpp:237
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr "Không tìm thấy thời điểm trong ngày của trình hiệu chỉnh."
 
-#: src/editor/controller/editor_controller.cpp:880
+#: src/editor/controller/editor_controller.cpp:882
 msgid "Add-on Files"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:893
+#: src/editor/controller/editor_controller.cpp:895
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1313
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "Change Unit ID"
 msgstr "Thay đổi định danh đơn vị"
 
-#: src/editor/controller/editor_controller.cpp:1314
+#: src/editor/controller/editor_controller.cpp:1316
 msgid "ID:"
 msgstr "Định danh:"
 
-#: src/editor/controller/editor_controller.cpp:1330
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Rename Unit"
 msgstr "Đổi tên đơn vị"
 
-#: src/editor/controller/editor_controller.cpp:1331
+#: src/editor/controller/editor_controller.cpp:1333
 msgid "Name:"
 msgstr "Tên:"
 
@@ -335,13 +335,13 @@ msgstr ""
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1130
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Bản đồ mới)"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1130
 #, fuzzy
 #| msgid "(New Scenario)"
 msgid "New Scenario"
@@ -529,27 +529,27 @@ msgstr ""
 msgid "Unable to parse file to find map data"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:823 src/editor/map/map_context.cpp:863
+#: src/editor/map/map_context.cpp:824 src/editor/map/map_context.cpp:864
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "Không thể lưu màn chơi: $msg"
 
-#: src/editor/map/map_context.cpp:857
+#: src/editor/map/map_context.cpp:858
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "Trình đơn thời gian biểu"
 
-#: src/editor/map/map_context.cpp:903
+#: src/editor/map/map_context.cpp:904
 msgid "Could not save the scenario: $msg"
 msgstr "Không thể lưu màn chơi: $msg"
 
-#: src/editor/map/map_context.cpp:934
+#: src/editor/map/map_context.cpp:935
 msgid "Could not save into scenario"
 msgstr "Không thể lưu vào màn chơi"
 
-#: src/editor/map/map_context.cpp:944
+#: src/editor/map/map_context.cpp:945
 msgid "Could not save the map: $msg"
 msgstr "Không thể lưu bản đồ: $msg"
 
@@ -616,25 +616,8 @@ msgstr ""
 msgid "Ctrl + click: copy terrain"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:170
-msgid "Choose File"
-msgstr "Chọn tập tin"
-
-#: src/gui/dialogs/editor/custom_tod.cpp:171
-msgid "Select"
-msgstr ""
-
-#: src/gui/dialogs/editor/custom_tod.cpp:178
-msgid ""
-"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
-"add-on?"
-msgstr ""
-
-#: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/custom_tod.cpp:189
-#: src/gui/dialogs/editor/custom_tod.cpp:196
-msgid "Confirm"
-msgstr ""
+#~ msgid "Choose File"
+#~ msgstr "Chọn tập tin"
 
 #~ msgid "player^None"
 #~ msgstr "Không có"

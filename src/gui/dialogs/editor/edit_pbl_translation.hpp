@@ -16,12 +16,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 class editor_edit_pbl_translation : public modal_dialog
 {
 public:
@@ -41,5 +37,4 @@ private:
 	std::string& description_;
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

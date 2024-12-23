@@ -119,14 +119,6 @@ public:
 
 private:
 	/**
-	 * Finishes the building initialization of the widget.
-	 *
-	 * @param generator           Generator for the list
-	 * @param widget_builders     The builder to build the contents of the widget.
-	 */
-	void finalize(std::unique_ptr<generator_base> generator, const std::vector<builder_grid>& widget_builders);
-
-	/**
 	 * Contains a pointer to the generator.
 	 *
 	 * The pointer is not owned by this class, it's stored in the content_grid_
@@ -159,7 +151,7 @@ private:
 	void update_selected_layer_index(const int i);
 
 	/** Internal implementation detail for selecting layers. */
-	void select_layer_impl(std::function<bool(unsigned int i)> display_condition);
+	void select_layer_impl(const std::function<bool(unsigned int i)>& display_condition);
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
@@ -174,10 +166,10 @@ private:
 
 public:
 	/** See @ref widget::find. */
-	virtual widget* find(const std::string& id, const bool must_be_active) override;
+	virtual widget* find(const std::string_view id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	virtual const widget* find(const std::string& id, const bool must_be_active) const override;
+	virtual const widget* find(const std::string_view id, const bool must_be_active) const override;
 };
 
 // }---------- DEFINITION ---------{

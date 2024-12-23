@@ -37,6 +37,7 @@
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
 #include "units/types.hpp"
+#include "utils/ci_searcher.hpp"
 #include <functional>
 #include "whiteboard/manager.hpp"
 
@@ -47,9 +48,8 @@ static lg::log_domain log_display("display");
 namespace gui2::dialogs
 {
 
-// Index 2 is by-level
-static listbox::order_pair sort_last    {-1, sort_order::type::none};
-static listbox::order_pair sort_default { 2, sort_order::type::descending};
+static std::pair sort_default{ std::string{"sort_2"}, sort_order::type::descending };
+static utils::optional<decltype(sort_default)> sort_last;
 
 REGISTER_DIALOG(unit_recall)
 
@@ -286,18 +286,21 @@ void unit_recall::pre_show()
 		}
 	}
 
-	list.register_translatable_sorting_option(0, [this](const int i) { return recall_list_[i]->type_name().str(); });
-	list.register_translatable_sorting_option(1, [this](const int i) { return recall_list_[i]->name().str(); });
-	list.register_sorting_option(2, [this](const int i) {
-		const unit& u = *recall_list_[i];
-		return std::tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
-	});
-	list.register_sorting_option(3, [this](const int i) { return recall_list_[i]->experience(); });
-	list.register_translatable_sorting_option(4, [this](const int i) {
-		return !recall_list_[i]->trait_names().empty() ? recall_list_[i]->trait_names().front().str() : "";
-	});
+	list.set_sorters(
+		[this](const std::size_t i) { return recall_list_[i]->type_name(); },
+		[this](const std::size_t i) { return recall_list_[i]->name(); },
+		[this](const std::size_t i) {
+			const unit& u = *recall_list_[i];
+			return std::tuple(u.level(), -static_cast<int>(u.experience_to_advance()));
+		},
+		[this](const std::size_t i) { return recall_list_[i]->experience(); },
+		[this](const std::size_t i) {
+			return !recall_list_[i]->trait_names().empty() ? recall_list_[i]->trait_names().front() : t_string();
+		}
+	);
 
-	list.set_active_sorting_option(sort_last.first >= 0 ? sort_last	: sort_default, true);
+	const auto [sorter_id, order] = sort_last.value_or(sort_default);
+	list.set_active_sorter(sorter_id, order, true);
 
 	list_item_clicked();
 }
@@ -417,7 +420,7 @@ void unit_recall::list_item_clicked()
 	const unit& selected_unit = *recall_list_[selected_row].get();
 
 	find_widget<unit_preview_pane>("unit_details")
-		.set_displayed_unit(selected_unit);
+		.set_display_data(selected_unit);
 
 	find_widget<button>("rename").set_active(!selected_unit.unrenamable());
 }
@@ -425,7 +428,12 @@ void unit_recall::list_item_clicked()
 void unit_recall::post_show()
 {
 	listbox& list = find_widget<listbox>("recall_list");
-	sort_last = list.get_active_sorting_option();
+
+	if(const auto [sorter, order] = list.get_active_sorter(); sorter) {
+		sort_last.emplace(sorter->id(), order);
+	} else {
+		sort_last.reset();
+	}
 
 	if(get_retval() == retval::OK) {
 		selected_index_ = list.get_selected_row();
@@ -434,40 +442,14 @@ void unit_recall::post_show()
 
 void unit_recall::filter_text_changed(const std::string& text)
 {
-	listbox& list = find_widget<listbox>("recall_list");
-
-	const std::vector<std::string> words = utils::split(text, ' ');
-
-	if(words == last_words_)
-		return;
-	last_words_ = words;
-
-	boost::dynamic_bitset<> show_items;
-	show_items.resize(list.get_item_count(), true);
-
-	if(!text.empty()) {
-		for(unsigned int i = 0; i < list.get_item_count(); i++) {
-			bool found = false;
-
-			for(const auto & word : words) {
-				found = translation::ci_search(filter_options_[i], word);
-
-				if(!found) {
-					// one word doesn't match, we don't reach words.end()
-					break;
-				}
-			}
-
-			show_items[i] = found;
-		}
-	}
-
-	list.set_row_shown(show_items);
+	const std::size_t shown = find_widget<listbox>("recall_list")
+		.filter_rows_by([this, match = translation::make_ci_matcher(text)](std::size_t row) {
+			return match(filter_options_[row]);
+		});
 
 	// Disable rename and dismiss buttons if no units are shown
-	const bool any_shown = list.any_rows_shown();
-	find_widget<button>("rename").set_active(any_shown);
-	find_widget<button>("dismiss").set_active(any_shown);
+	find_widget<button>("rename").set_active(shown > 0);
+	find_widget<button>("dismiss").set_active(shown > 0);
 }
 
 } // namespace dialogs

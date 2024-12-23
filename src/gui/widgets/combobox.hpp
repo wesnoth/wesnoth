@@ -38,7 +38,7 @@ class combobox : public text_box_base
 	friend struct implementation::builder_combobox;
 
 public:
-	explicit combobox(const implementation::builder_styled_widget& builder);
+	explicit combobox(const implementation::builder_combobox& builder);
 
 	void set_max_input_length(const std::size_t length)
 	{

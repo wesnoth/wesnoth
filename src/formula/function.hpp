@@ -232,7 +232,7 @@ typedef std::map<std::string, formula_function_ptr> functions_map;
 class function_symbol_table
 {
 public:
-	explicit function_symbol_table(std::shared_ptr<function_symbol_table> parent = nullptr);
+	explicit function_symbol_table(const std::shared_ptr<function_symbol_table>& parent = nullptr);
 
 	void add_function(const std::string& name, formula_function_ptr&& fcn);
 
@@ -260,7 +260,7 @@ private:
 class action_function_symbol_table : public function_symbol_table
 {
 public:
-	action_function_symbol_table(std::shared_ptr<function_symbol_table> parent = nullptr);
+	action_function_symbol_table(const std::shared_ptr<function_symbol_table>& parent = nullptr);
 };
 
 class wrapper_formula : public formula_expression

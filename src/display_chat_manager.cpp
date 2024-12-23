@@ -146,7 +146,7 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 
 	// Prepend message with timestamp.
 	std::stringstream message_complete;
-	message_complete << prefs::get().get_chat_timestamp(time) << str.str();
+	message_complete << prefs::get().get_chat_timestamp(std::chrono::system_clock::from_time_t(time)) << str.str();
 
 	const SDL_Rect rect = my_disp_.map_outside_area();
 

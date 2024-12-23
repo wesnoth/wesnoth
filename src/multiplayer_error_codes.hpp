@@ -30,6 +30,7 @@
 #define MP_NAME_AUTH_BAN_USER_ERROR    "107"
 #define MP_NAME_AUTH_BAN_IP_ERROR      "108"
 #define MP_NAME_AUTH_BAN_EMAIL_ERROR   "109"
+#define MP_SERVER_IP_BAN_ERROR         "110"
 
 #define MP_PASSWORD_REQUEST                     "200"
 #define MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME  "201"

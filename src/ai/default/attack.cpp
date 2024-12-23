@@ -40,7 +40,7 @@ static lg::log_domain log_ai("ai/attack");
 
 namespace ai {
 
-extern ai_context& get_ai_context(wfl::const_formula_callable_ptr for_fai);
+extern ai_context& get_ai_context(const wfl::const_formula_callable_ptr& for_fai);
 
 void attack_analysis::analyze(const gamemap& map, unit_map& units,
                               const readonly_context& ai_obj,

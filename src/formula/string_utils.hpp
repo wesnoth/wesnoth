@@ -78,27 +78,6 @@ std::string format_conjunct_list(const t_string& empty, const std::vector<t_stri
  */
 std::string format_disjunct_list(const t_string& empty, const std::vector<t_string>& elems);
 
-/**
- * Formats a timespan into human-readable text for player authentication functions.
- *
- * This is intentionally not a very thorough representation of time intervals.
- * See <https://github.com/wesnoth/wesnoth/issues/6036> for more information.
- *
- * @param time     The timespan in seconds.
- * @param detailed Whether to display more specific values such as "3 months, 2 days,
- *                 30 minutes, and 1 second". If not specified or set to @a false, the
- *                 return value will ONLY include most significant time unit (e.g. "3
- *                 months").
- * @return         A human-readable timespan description.
- *
- * @note The implementation is not very precise because not all months in the Gregorian
- *       calendar have 30 days. Furthermore, it doesn't take into account leap years or
- *       leap seconds. If you need to account for those, you are better off importing
- *       a new library and providing it with more specific information about the start and
- *       end times of the interval; otherwise your next best option is to hire a fortune
- *       teller to manually service your requests every time instead of this function.
- */
-std::string format_timespan(std::time_t time, bool detailed = false);
 }
 
 /**

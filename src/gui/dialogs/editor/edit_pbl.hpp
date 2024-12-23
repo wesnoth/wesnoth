@@ -16,12 +16,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 class editor_edit_pbl : public modal_dialog
 {
 public:
@@ -50,5 +46,4 @@ private:
 	std::vector<std::string> dirs_;
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

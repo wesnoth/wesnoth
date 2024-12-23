@@ -31,13 +31,13 @@
 
 namespace wb {
 
-std::ostream& operator<<(std::ostream& s, action_ptr action)
+std::ostream& operator<<(std::ostream& s, const action_ptr& action)
 {
 	assert(action);
 	return action->print(s);
 }
 
-std::ostream& operator<<(std::ostream& s, action_const_ptr action)
+std::ostream& operator<<(std::ostream& s, const action_const_ptr& action)
 {
 	assert(action);
 	return action->print(s);

@@ -543,7 +543,7 @@ void mp_create_game::on_tab_select()
 	find_widget<stacked_widget>("pager").select_layer(i);
 }
 
-void mp_create_game::on_mod_toggle(const std::string id, toggle_button* sender)
+void mp_create_game::on_mod_toggle(const std::string& id, toggle_button* sender)
 {
 	if(sender && (sender->get_value_bool() == create_engine_.dependency_manager().is_modification_active(id))) {
 		ERR_MP << "ignoring on_mod_toggle that is already set";

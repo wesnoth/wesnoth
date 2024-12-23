@@ -197,32 +197,33 @@ void game_stats::pre_show()
 	}
 
 	// Sorting options for the status list
-	stats_list.register_translatable_sorting_option(0, [this](const int i) {
-		unit_const_ptr leader = get_leader(i + 1);
-		return leader ? leader->name().str() : "";
-	});
-
-	stats_list.register_translatable_sorting_option(1, [this](const int i) {
-		return board_.teams()[i].user_team_name().str(); });
-	stats_list.register_sorting_option(2, [this](const int i) { return board_.teams()[i].gold(); });
-	stats_list.register_sorting_option(3, [this](const int i) { return board_.teams()[i].villages(); });
-	stats_list.register_sorting_option(4, [this](const int i) { return team_data_[i].units; });
-	stats_list.register_sorting_option(5, [this](const int i) { return team_data_[i].upkeep; });
-	stats_list.register_sorting_option(6, [this](const int i) { return team_data_[i].net_income; });
+	stats_list.set_sorters(
+		[this](const std::size_t i) {
+			unit_const_ptr leader = get_leader(i + 1);
+			return leader ? leader->name() : t_string();
+		},
+		[this](const std::size_t i) { return board_.teams()[i].user_team_name(); },
+		[this](const std::size_t i) { return board_.teams()[i].gold(); },
+		[this](const std::size_t i) { return board_.teams()[i].villages(); },
+		[this](const std::size_t i) { return team_data_[i].units; },
+		[this](const std::size_t i) { return team_data_[i].upkeep; },
+		[this](const std::size_t i) { return team_data_[i].net_income; }
+	);
 
 	// Sorting options for the settings list
-	settings_list.register_translatable_sorting_option(0, [this](const int i) {
-		unit_const_ptr leader = get_leader(i + 1);
-		return leader ? leader->name().str() : "";
-	});
-
-	settings_list.register_sorting_option(1, [this](const int i) { return board_.teams()[i].side(); });
-	settings_list.register_sorting_option(2, [this](const int i) { return board_.teams()[i].start_gold(); });
-	settings_list.register_sorting_option(3, [this](const int i) { return board_.teams()[i].base_income(); });
-	settings_list.register_sorting_option(4, [this](const int i) { return board_.teams()[i].village_gold(); });
-	settings_list.register_sorting_option(5, [this](const int i) { return board_.teams()[i].village_support(); });
-	settings_list.register_sorting_option(6, [this](const int i) { return board_.teams()[i].uses_fog(); });
-	settings_list.register_sorting_option(7, [this](const int i) { return board_.teams()[i].uses_shroud(); });
+	settings_list.set_sorters(
+		[this](const std::size_t i) {
+			unit_const_ptr leader = get_leader(i + 1);
+			return leader ? leader->name() : t_string();
+		},
+		[this](const std::size_t i) { return board_.teams()[i].side(); },
+		[this](const std::size_t i) { return board_.teams()[i].start_gold(); },
+		[this](const std::size_t i) { return board_.teams()[i].base_income(); },
+		[this](const std::size_t i) { return board_.teams()[i].village_gold(); },
+		[this](const std::size_t i) { return board_.teams()[i].village_support(); },
+		[this](const std::size_t i) { return board_.teams()[i].uses_fog(); },
+		[this](const std::size_t i) { return board_.teams()[i].uses_shroud(); }
+	);
 
 	//
 	// Set up tab control

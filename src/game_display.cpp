@@ -20,6 +20,8 @@
 
 #include "game_display.hpp"
 
+#include <utility>
+
 
 #include "cursor.hpp"
 #include "display_chat_manager.hpp"
@@ -63,7 +65,7 @@ game_display::game_display(game_board& board,
 		reports& reports_object,
 		const std::string& theme_id,
 		const config& level)
-	: display(&board, wb, reports_object, theme_id, level)
+	: display(&board, std::move(wb), reports_object, theme_id, level)
 	, overlay_map_()
 	, attack_indicator_src_()
 	, attack_indicator_dst_()
@@ -337,6 +339,11 @@ bool game_display::has_time_area() const
 void game_display::layout()
 {
 	display::layout();
+
+	// We need teams for the reports below
+	if(context().teams().empty()) {
+		return;
+	}
 
 	refresh_report("report_clock");
 	refresh_report("report_battery");

@@ -121,11 +121,11 @@ public:
 	int intf_show_lua_console(lua_State * L);
 protected:
 	// Execute a protected call. Error handler is called in case of an error, using syntax for log_error and throw_exception above. Returns true if successful.
-	bool protected_call(int nArgs, int nRets, error_handler);
+	bool protected_call(int nArgs, int nRets, const error_handler&);
 	// Execute a protected call, taking a lua_State as argument. For functions pushed into the lua environment, this version should be used, or the function cannot be used by coroutines without segfaulting (since they have a different lua_State pointer). This version is called by the above version.
-	static bool protected_call(lua_State * L, int nArgs, int nRets, error_handler);
+	static bool protected_call(lua_State * L, int nArgs, int nRets, const error_handler&);
 	// Load a string onto the stack as a function. Returns true if successful, error handler is called if not.
-	bool load_string(char const * prog, const std::string& name, error_handler);
+	bool load_string(char const * prog, const std::string& name, const error_handler&);
 
 	virtual bool protected_call(int nArgs, int nRets); 	// select default error handler polymorphically
 	virtual bool load_string(char const * prog, const std::string& name);		// select default error handler polymorphically

@@ -124,7 +124,7 @@ public:
 	 * Returns a gendered variant of this unit_type.
 	 * @param gender "male" or "female".
 	 */
-	const unit_type& get_gender_unit_type(std::string gender) const;
+	const unit_type& get_gender_unit_type(const std::string& gender) const;
 	/** Returns a gendered variant of this unit_type based on the given parameter. */
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 
@@ -455,4 +455,8 @@ private:
  *
  * @return the special notes for a unit or unit_type.
  */
-std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, const config& abilities, const_attack_itors attacks, const movetype& mt);
+std::vector<t_string> combine_special_notes(
+	const std::vector<t_string>& direct,
+	const config& abilities,
+	const const_attack_itors& attacks,
+	const movetype& mt);

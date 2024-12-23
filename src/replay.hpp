@@ -22,7 +22,7 @@
 
 #include "map/location.hpp"
 
-#include <ctime>
+#include <chrono>
 #include <iterator>
 class replay_recorder_base;
 class terrain_label;
@@ -33,14 +33,14 @@ public:
 	const std::string &text() const { return text_; }
 	const std::string &nick() const { return nick_; }
 	const std::string &color() const { return color_; }
-	const std::time_t &time() const { return time_; }
+	const auto& time() const { return time_; }
 	chat_msg(const config &cfg);
 	virtual ~chat_msg();
 private:
 	std::string color_;
 	std::string nick_;
 	std::string text_;
-	std::time_t time_;
+	std::chrono::system_clock::time_point time_;
 };
 
 enum class REPLAY_ACTION_TYPE

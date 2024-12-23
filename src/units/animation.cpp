@@ -375,8 +375,8 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 }
 
 int unit_animation::matches(const map_location& loc, const map_location& second_loc,
-		unit_const_ptr my_unit, const std::string& event, const int value, strike_result::type hit, const_attack_ptr attack,
-		const_attack_ptr second_attack, int value2) const
+		const unit_const_ptr& my_unit, const std::string& event, const int value, strike_result::type hit, const const_attack_ptr& attack,
+		const const_attack_ptr& second_attack, int value2) const
 {
 	int result = base_score_;
 	const display& disp = *display::get_singleton();
@@ -1302,8 +1302,8 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 		, const std::string& text
 		, const color_t text_color
 		, const strike_result::type hit_type
-		, const_attack_ptr attack
-		, const_attack_ptr second_attack
+		, const const_attack_ptr& attack
+		, const const_attack_ptr& second_attack
 		, int value2)
 {
 	if(!animated_unit) return;
@@ -1329,20 +1329,20 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, with_bars);
 }
 
-bool unit_animator::has_animation(unit_const_ptr animated_unit
+bool unit_animator::has_animation(const unit_const_ptr& animated_unit
 		, const std::string& event
 		, const map_location &src
 		, const map_location &dst
 		, const int value
 		, const strike_result::type hit_type
-		, const_attack_ptr attack
-		, const_attack_ptr second_attack
+		, const const_attack_ptr& attack
+		, const const_attack_ptr& second_attack
 		, int value2) const
 {
 	return (animated_unit && animated_unit->anim_comp().choose_animation(src, event, dst, value, hit_type, attack, second_attack, value2));
 }
 
-void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit
+void unit_animator::replace_anim_if_invalid(const unit_const_ptr& animated_unit
 	, const std::string& event
 	, const map_location &src
 	, const map_location & dst
@@ -1351,8 +1351,8 @@ void unit_animator::replace_anim_if_invalid(unit_const_ptr animated_unit
 	, const std::string& text
 	, const color_t text_color
 	, const strike_result::type hit_type
-	, const_attack_ptr attack
-	, const_attack_ptr second_attack
+	, const const_attack_ptr& attack
+	, const const_attack_ptr& second_attack
 	, int value2)
 {
 	if(!animated_unit) return;

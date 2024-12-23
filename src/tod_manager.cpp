@@ -93,7 +93,7 @@ void tod_manager::resolve_random(randomness::rng& r)
 	random_tod_ = false;
 }
 
-config tod_manager::to_config(std::string textdomain) const
+config tod_manager::to_config(const std::string& textdomain) const
 {
 	config cfg;
 	cfg["turn_at"] = turn_;

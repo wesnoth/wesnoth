@@ -153,6 +153,8 @@ std::string get_credentials_file();
 std::string get_default_prefs_file();
 std::string get_save_index_file();
 std::string get_lua_history_file();
+/** location of the game manual file correponding to the given locale (default: en) */
+utils::optional<std::string> get_game_manual_file(const std::string& locale_code = "en");
 /**
  * parent directory for everything that should be synced between systems.
  * implemented due to limitations of Steam's AutoCloud (non-SDK) syncing, but will also simplify things if it's ever added for any other platforms.
@@ -378,8 +380,8 @@ std::string normalize_path(const std::string& path,
 
 /** Helper function to convert absolute path to wesnoth relative path */
 bool to_asset_path(std::string& abs_path,
-                   std::string addon_id,
-                   std::string asset_type);
+                   const std::string& addon_id,
+                   const std::string& asset_type);
 
 /**
  * Sanitizes a path to remove references to the user's name.

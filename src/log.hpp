@@ -230,8 +230,6 @@ public:
 
 void timestamps(bool);
 void precise_timestamps(bool);
-/** TODO: we also have utils::format_timespan, which does something very similar... */
-std::string format_timespan(const std::chrono::seconds& span);
 std::string sanitize_log(const std::string& logstr);
 std::string get_log_file_path();
 

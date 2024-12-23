@@ -47,7 +47,7 @@ static lg::log_domain log_wml("wml");
 
 using namespace unit_filter_impl;
 
-unit_filter::unit_filter(vconfig cfg)
+unit_filter::unit_filter(const vconfig& cfg)
 	: cfg_(cfg)
 	, fc_(resources::filter_con)
 	, use_flat_tod_(false)
@@ -222,7 +222,7 @@ public:
 }
 
 
-unit_filter_compound::unit_filter_compound(vconfig cfg)
+unit_filter_compound::unit_filter_compound(const vconfig& cfg)
 	: children_()
 	, cond_children_()
 {
@@ -313,7 +313,7 @@ namespace {
 	}
 }
 
-void unit_filter_compound::fill(vconfig cfg)
+void unit_filter_compound::fill(const vconfig& cfg)
 	{
 		const config& literal = cfg.get_config();
 

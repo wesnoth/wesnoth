@@ -5,6 +5,9 @@
 # Victor Sergienko (singalen), 2018
 #
 
+### Variables
+DESIRED_TAG="v0.0.1"
+
 ###Functions
 time_interval_to_string() {
   local duration=$(($2 - $1)) days hours minutes seconds
@@ -29,7 +32,20 @@ time_interval_to_string() {
 }
 
 get_mcs() {
-  git clone -b "1.18" --depth 1 "https://github.com/hrubymar10/MacCompileStuff" "MacCompileStuff-1.18"
+  git clone --depth 1 --branch "${DESIRED_TAG}" "https://github.com/hrubymar10/MacCompileStuff" "MacCompileStuff-${DESIRED_TAG}"
+}
+
+check_and_checkout_tag() {
+  local repo_path="$1"
+
+  cd "$repo_path" || return 1
+
+  CURRENT_TAG=$(git describe --tags --exact-match 2>/dev/null)
+  if [ "${CURRENT_TAG}" != "${DESIRED_TAG}" ]; then
+    echo "==> Checking out tag ${DESIRED_TAG} ..."
+    git fetch --tags
+    git checkout "${DESIRED_TAG}" || return 1
+  fi
 }
 ###/Functions
 
@@ -37,10 +53,8 @@ SECONDS=0
 
 MY_PATH=$(cd "$(dirname "$0")" && pwd)
 if [ -z "$MY_PATH" ] ; then
-  # error; for some reason, the path is not accessible
-  # to the script (e.g. permissions re-evaled after suid)
   echo 'Error: Script path is for some reason not accessible' >&2
-  exit 1  # fail
+  exit 1
 fi
 cd "${MY_PATH}" || exit
 
@@ -56,27 +70,25 @@ fi
 
 mkdir -p "temp" || exit
 cd "temp" || exit
-rm -rf MacCompileStuff-master
 
-if ! [ -d "MacCompileStuff-1.18" ]; then
+if ! [ -d "MacCompileStuff-${DESIRED_TAG}" ]; then
   get_mcs
 else
-  cd "MacCompileStuff-1.18"
-  git pull --depth 5
-  if ! [ $? -eq 0 ]; then
-    echo 'Error: MacCompileStuff is too far from the local commit. Clonning again...' >&2
+  cd "MacCompileStuff-${DESIRED_TAG}"
+  if ! check_and_checkout_tag .; then
+    echo 'Error: Failed to checkout correct tag. Cloning again...' >&2
     cd ".." || exit
-    rm -rf "MacCompileStuff-1.18"
+    rm -rf "MacCompileStuff-${DESIRED_TAG}"
     get_mcs
   fi
 fi
 cd "${MY_PATH}" || exit
 
 rm -f "Headers"
-ln -s "temp/MacCompileStuff-1.18/Headers"
+ln -s "temp/MacCompileStuff-${DESIRED_TAG}/Headers"
 
 rm -f "lib"
-ln -s "temp/MacCompileStuff-1.18/lib"
+ln -s "temp/MacCompileStuff-${DESIRED_TAG}/lib"
 
 echo "==> DONE ..."
 echo

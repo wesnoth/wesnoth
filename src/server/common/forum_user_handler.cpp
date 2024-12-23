@@ -210,10 +210,10 @@ std::string fuh::get_tournaments(){
 	return conn_.get_tournaments();
 }
 
-void fuh::async_get_and_send_game_history(boost::asio::io_service& io_service, wesnothd::server& s, wesnothd::player_iterator player, int player_id, int offset, std::string& search_game_name, int search_content_type, std::string& search_content) {
-	boost::asio::post([this, &s, player, player_id, offset, &io_service, search_game_name, search_content_type, search_content] {
-		boost::asio::post(io_service, [player, &s, doc = conn_.get_game_history(player_id, offset, search_game_name, search_content_type, search_content)]{
-			s.send_to_player(player, *doc);
+void fuh::async_get_and_send_game_history(boost::asio::io_context& io_service, wesnothd::server& s, any_socket_ptr socket, int player_id, int offset, std::string& search_game_name, int search_content_type, std::string& search_content) {
+	boost::asio::post([this, &s, socket, player_id, offset, &io_service, search_game_name, search_content_type, search_content] {
+		boost::asio::post(io_service, [socket, &s, doc = conn_.get_game_history(player_id, offset, search_game_name, search_content_type, search_content)]{
+			s.send_to_player(socket, *doc);
 		});
 	 });
 }
@@ -238,7 +238,7 @@ void fuh::db_set_oos_flag(const std::string& uuid, int game_id){
 	conn_.set_oos_flag(uuid, game_id);
 }
 
-void fuh::async_test_query(boost::asio::io_service& io_service, int limit) {
+void fuh::async_test_query(boost::asio::io_context& io_service, int limit) {
 	boost::asio::post([this, limit, &io_service] {
 		ERR_UH << "async test query starts!";
 		int i = conn_.async_test_query(limit);
@@ -282,13 +282,16 @@ void fuh::db_delete_addon_authors(const std::string& instance_version, const std
 	conn_.delete_addon_authors(instance_version, id);
 }
 
-void fuh::db_insert_addon_authors(const std::string& instance_version, const std::string& id, const std::string& primary_author, const std::vector<std::string>& secondary_authors) {
-	conn_.insert_addon_author(instance_version, id, primary_author, 1);
-
+void fuh::db_insert_addon_authors(const std::string& instance_version, const std::string& id, const std::vector<std::string>& primary_authors, const std::vector<std::string>& secondary_authors) {
 	// ignore any duplicate authors
 	std::set<std::string> inserted_authors;
-	inserted_authors.emplace(primary_author);
 
+	for(const std::string& primary_author : primary_authors) {
+		if(inserted_authors.count(primary_author) == 0) {
+			inserted_authors.emplace(primary_author);
+			conn_.insert_addon_author(instance_version, id, primary_author, 1);
+		}
+	}
 	for(const std::string& secondary_author : secondary_authors) {
 		if(inserted_authors.count(secondary_author) == 0) {
 			inserted_authors.emplace(secondary_author);

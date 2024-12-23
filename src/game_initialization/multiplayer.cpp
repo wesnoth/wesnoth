@@ -19,6 +19,7 @@
 #include "commandline_options.hpp"
 #include "connect_engine.hpp"
 #include "events.hpp"
+#include "formula/format_timespan.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/playcampaign.hpp"
@@ -112,7 +113,7 @@ private:
 	};
 
 	/** Opens a new server connection and prompts the client for login credentials, if necessary. */
-	std::unique_ptr<wesnothd_connection> open_connection(std::string host);
+	std::unique_ptr<wesnothd_connection> open_connection(const std::string& host);
 
 	/** Opens the MP lobby. */
 	bool enter_lobby_mode();
@@ -151,7 +152,7 @@ public:
 		return session_info;
 	}
 
-	auto add_network_handler(decltype(process_handlers)::value_type func)
+	auto add_network_handler(const decltype(process_handlers)::value_type& func)
 	{
 		return [this, iter = process_handlers.insert(process_handlers.end(), func)]() { process_handlers.erase(iter); };
 	}
@@ -215,7 +216,7 @@ mp_manager::mp_manager(const utils::optional<std::string> host)
 	manager = this;
 }
 
-std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string host)
+std::unique_ptr<wesnothd_connection> mp_manager::open_connection(const std::string& host)
 {
 	DBG_MP << "opening connection";
 
@@ -396,7 +397,8 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 
 				const auto extra_data = error->optional_child("data");
 				if(extra_data) {
-					i18n_symbols["duration"] = utils::format_timespan((*extra_data)["duration"].to_time_t());
+					using namespace std::chrono_literals;
+					i18n_symbols["duration"] = utils::format_timespan(chrono::parse_duration((*extra_data)["duration"], 0s));
 				}
 
 				const std::string ec = (*error)["error_code"];
@@ -418,6 +420,12 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 				} else if(ec == MP_NAME_UNREGISTERED_ERROR) {
 					error_message = VGETTEXT("The nickname ‘$nick’ is not registered on this server.", i18n_symbols)
 							+ _(" This server disallows unregistered nicknames.");
+				} else if(ec == MP_SERVER_IP_BAN_ERROR) {
+					if(extra_data) {
+						error_message = VGETTEXT("Your IP address is banned on this server for $duration|.", i18n_symbols);
+					} else {
+						error_message = _("Your IP address is banned on this server.");
+					}
 				} else if(ec == MP_NAME_AUTH_BAN_USER_ERROR) {
 					if(extra_data) {
 						error_message = VGETTEXT("The nickname ‘$nick’ is banned on this server’s forums for $duration|.", i18n_symbols);
@@ -824,7 +832,7 @@ void send_to_server(const config& data)
 	}
 }
 
-network_registrar::network_registrar(handler func)
+network_registrar::network_registrar(const handler& func)
 {
 	if(manager /*&& manager->connection*/) {
 		remove_handler = manager->add_network_handler(func);

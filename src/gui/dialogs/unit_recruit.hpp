@@ -54,8 +54,6 @@ private:
 	team& team_;
 
 	int selected_index_;
-
-	std::vector<std::string> last_words_;
 };
 
 } // namespace dialogs

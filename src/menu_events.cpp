@@ -70,6 +70,7 @@
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
+#include "serialization/chrono.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/plugins/manager.hpp"
 #include "synced_context.hpp"
@@ -185,8 +186,6 @@ void menu_handler::show_chat_log()
 	config c;
 	c["name"] = "prototype of chat log";
 	gui2::dialogs::chat_log::display(vconfig(c), *resources::recorder);
-	// std::string text = resources::recorder->build_chat_log();
-	// gui::show_dialog(*gui_,nullptr,_("Chat Log"),"",gui::CLOSE_ONLY,nullptr,nullptr,"",&text);
 }
 
 void menu_handler::show_help()
@@ -1325,10 +1324,8 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 	config cfg;
 	cfg["id"] = prefs::get().login();
 	cfg["message"] = message;
-	const std::time_t time = ::std::time(nullptr);
-	std::stringstream ss;
-	ss << time;
-	cfg["time"] = ss.str();
+	auto now = std::chrono::system_clock::now();
+	cfg["time"] = chrono::serialize_timestamp(now);
 
 	const int side = board().is_observer() ? 0 : gui_->viewing_team().side();
 	if(!board().is_observer()) {
@@ -1347,7 +1344,8 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 
 	resources::recorder->speak(cfg);
 
-	add_chat_message(time, cfg["id"], side, message,
+	auto as_time_t = std::chrono::system_clock::to_time_t(now); // FIXME: remove
+	add_chat_message(as_time_t, cfg["id"], side, message,
 			private_message ? events::chat_handler::MESSAGE_PRIVATE : events::chat_handler::MESSAGE_PUBLIC);
 }
 

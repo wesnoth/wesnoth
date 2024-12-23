@@ -87,9 +87,11 @@ public:
 	const auto& get_end_time() const
 	{ return end_time_;	}
 
+	/** Returns the seconds remaining until than ban expires, or nullopt if permanent. */
+	utils::optional<std::chrono::seconds> get_remaining_ban_time() const;
+
 	std::string get_human_end_time() const;
 	std::string get_human_start_time() const;
-	std::string get_human_time_span() const;
 
 	std::string get_reason() const
 	{ return reason_; }
@@ -181,7 +183,7 @@ public:
 	void list_deleted_bans(std::ostringstream& out, const std::string& mask = "*") const;
 	void list_bans(std::ostringstream& out, const std::string& mask = "*");
 
-	std::string is_ip_banned(const std::string& ip);
+	banned_ptr get_ban_info(const std::string& ip);
 
 	const std::string& get_ban_help() const
 	{ return ban_help_; }

@@ -197,7 +197,7 @@ std::ostream& operator<<(std::ostream& os, const path_info& pinf)
 	return os << pinf.name << " [" << pinf.label << "] - " << pinf.path;
 }
 
-std::vector<path_info> game_paths(std::set<GAME_PATH_TYPES> paths)
+std::vector<path_info> game_paths(const std::set<GAME_PATH_TYPES>& paths)
 {
 	static const std::string& game_bin_dir = pretty_path(filesystem::get_exe_dir());
 	static const std::string& game_data_dir = pretty_path(game_config::path);
@@ -225,7 +225,7 @@ std::vector<path_info> game_paths(std::set<GAME_PATH_TYPES> paths)
 	return res;
 }
 
-std::vector<path_info> system_paths(std::set<SYSTEM_PATH_TYPES> paths)
+std::vector<path_info> system_paths(const std::set<SYSTEM_PATH_TYPES>& paths)
 {
 	static const std::string& home_dir = user_profile_dir();
 

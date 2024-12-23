@@ -81,7 +81,7 @@ const std::string hotkey_base::get_name() const
 	return ret += get_name_helper();
 }
 
-bool hotkey_base::bindings_equal(hotkey_ptr other)
+bool hotkey_base::bindings_equal(const hotkey_ptr& other)
 {
 	if(other == nullptr) {
 		return false;
@@ -325,7 +325,7 @@ bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 	return text_ == other_k->text_;
 }
 
-void del_hotkey(hotkey_ptr item)
+void del_hotkey(const hotkey_ptr& item)
 {
 	if(!hotkeys_.empty()) {
 		utils::erase(hotkeys_, item);

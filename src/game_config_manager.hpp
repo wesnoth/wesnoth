@@ -60,7 +60,7 @@ public:
 	static game_config_manager * get();
 
 private:
-	void set_enabled_addon(std::set<std::string> addon_ids);
+	void set_enabled_addon(const std::set<std::string>& addon_ids);
 	void set_enabled_addon_all();
 
 	void load_game_config(bool reload_everything, const game_classification* classification, const std::string& scenario_id);

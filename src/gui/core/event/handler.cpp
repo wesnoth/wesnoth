@@ -278,7 +278,7 @@ private:
 	 *                            which to execute the hotkey callback, false
 	 *                            otherwise.
 	 */
-	bool hotkey_pressed(const hotkey::hotkey_ptr key);
+	bool hotkey_pressed(const hotkey::hotkey_ptr& key);
 
 	/**
 	 * Fires a key down event.
@@ -786,7 +786,7 @@ void sdl_event_handler::text_editing(const std::string& unicode, int32_t start, 
 	}
 }
 
-bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr key)
+bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr& key)
 {
 	if(dispatcher* dispatcher = keyboard_dispatcher()) {
 		return dispatcher->execute_hotkey(hotkey::get_hotkey_command(key->get_command()).command);

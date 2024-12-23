@@ -96,7 +96,7 @@ static std::string format_mp_entry(const int cost, const int max_cost) {
 
 typedef t_translation::ter_list::const_iterator ter_iter;
 // Gets an english description of a terrain ter_list alias behavior: "Best of cave, hills", "Worst of Swamp, Forest" etc.
-static std::string print_behavior_description(ter_iter start, ter_iter end, const std::shared_ptr<terrain_type_data> & tdata, bool first_level = true, bool begin_best = true)
+static std::string print_behavior_description(const ter_iter& start, const ter_iter& end, const std::shared_ptr<terrain_type_data> & tdata, bool first_level = true, bool begin_best = true)
 {
 
 	if (start == end) return "";

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 11:11-0500\n"
+"POT-Creation-Date: 2024-12-18 16:51-0600\n"
 "PO-Revision-Date: 2024-07-10 11:00+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -2315,7 +2315,7 @@ msgstr "（按”$hotkey|”以查看更多信息）"
 #. [label]
 #. [toggle_button]: id=sort_1
 #: data/gui/themes/default/widget/addon_list.cfg:78
-#: data/gui/themes/default/window/campaign_dialog.cfg:214
+#: data/gui/themes/default/window/campaign_dialog.cfg:212
 #: data/gui/themes/default/window/game_load.cfg:170
 #: data/gui/themes/default/window/mp_connect.cfg:159
 #: data/gui/themes/default/window/terrain_layers.cfg:45
@@ -2421,7 +2421,7 @@ msgstr "消息等待中"
 #: data/gui/themes/default/window/game_version.cfg:992
 #: data/gui/themes/default/window/gamestate_inspector.cfg:398
 #: data/gui/themes/default/window/generator_settings.cfg:190
-#: data/gui/themes/default/window/help_browser.cfg:277
+#: data/gui/themes/default/window/help_browser.cfg:288
 #: data/gui/themes/default/window/lobby_player_info.cfg:292
 #: data/gui/themes/default/window/lua_interpreter.cfg:130
 #: data/gui/themes/default/window/message.cfg:135
@@ -2469,7 +2469,7 @@ msgstr "用户名："
 #. [label]
 #. [grid]
 #: data/gui/themes/default/window/addon_auth.cfg:99
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:216
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:217
 #: data/gui/themes/default/window/mp_create_game.cfg:1036
 #: data/gui/themes/default/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/themes/default/window/mp_login.cfg:143
@@ -2529,7 +2529,7 @@ msgstr "确定"
 #: data/gui/themes/default/window/addon_connect.cfg:211
 #: data/gui/themes/default/window/addon_license_prompt.cfg:114
 #: data/gui/themes/default/window/addon_uninstall_list.cfg:174
-#: data/gui/themes/default/window/campaign_dialog.cfg:535
+#: data/gui/themes/default/window/campaign_dialog.cfg:533
 #: data/gui/themes/default/window/campaign_difficulty.cfg:234
 #: data/gui/themes/default/window/core_dialog.cfg:241
 #: data/gui/themes/default/window/custom_tod.cfg:524
@@ -2538,7 +2538,7 @@ msgstr "确定"
 #: data/gui/themes/default/window/edit_text.cfg:130
 #: data/gui/themes/default/window/editor_choose_addon.cfg:207
 #: data/gui/themes/default/window/editor_edit_label.cfg:315
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:475
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:476
 #: data/gui/themes/default/window/editor_edit_pbl_translation.cfg:137
 #: data/gui/themes/default/window/editor_edit_scenario.cfg:301
 #: data/gui/themes/default/window/editor_edit_side.cfg:481
@@ -2674,7 +2674,7 @@ msgstr "最后更新于："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/window/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:581
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:580
 msgid "No description available."
 msgstr "没有可用的描述。"
 
@@ -2717,21 +2717,21 @@ msgstr "依赖项目："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/themes/default/window/addon_manager.cfg:713
-#: src/gui/dialogs/addon/manager.cpp:1079
+#: src/gui/dialogs/addon/manager.cpp:1076
 msgid "addon_dependencies^None"
 msgstr "无"
 
 #. [label]
 #. [label]: id=translations_label
 #: data/gui/themes/default/window/addon_manager.cfg:733
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:228
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:229
 msgid "Translations:"
 msgstr "翻译："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/themes/default/window/addon_manager.cfg:748
-#: src/gui/dialogs/addon/manager.cpp:1093
+#: src/gui/dialogs/addon/manager.cpp:1090
 msgid "translations^None"
 msgstr "无"
 
@@ -2756,7 +2756,7 @@ msgstr "标签："
 #. [label]: id=translations_language
 #. [button]: id=language
 #: data/gui/themes/default/window/addon_manager.cfg:870
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:257
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:258
 #: data/gui/themes/default/window/language_selection.cfg:227
 #: data/gui/themes/default/window/title_screen.cfg:494
 #: data/gui/themes/modern/dialogs/title_screen.cfg:459
@@ -2861,97 +2861,97 @@ msgid "Defender"
 msgstr "防守方"
 
 #. [toggle_button]: id=sort_name
-#: data/gui/themes/default/window/campaign_dialog.cfg:215
+#: data/gui/themes/default/window/campaign_dialog.cfg:213
 msgid "Sort by full campaign name in alphabetical order"
 msgstr "按照战役全名的字母顺序排序"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/window/campaign_dialog.cfg:226
+#: data/gui/themes/default/window/campaign_dialog.cfg:224
 msgid "Timeline"
 msgstr "时间线"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/window/campaign_dialog.cfg:227
+#: data/gui/themes/default/window/campaign_dialog.cfg:225
 msgid "Sort in approximate chronological order of story events"
 msgstr "按照故事事件的大略时间顺序排序"
 
 #. [multimenu_button]: id=filter_completion
-#: data/gui/themes/default/window/campaign_dialog.cfg:237
+#: data/gui/themes/default/window/campaign_dialog.cfg:235
 msgid "Filter by campaign completion status"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:240
+#: data/gui/themes/default/window/campaign_dialog.cfg:238
 msgid "Not Completed"
 msgstr ""
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
-#: data/gui/themes/default/window/campaign_dialog.cfg:242
+#: data/gui/themes/default/window/campaign_dialog.cfg:240
 msgid "Show campaigns not completed by player"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:246
+#: data/gui/themes/default/window/campaign_dialog.cfg:244
 msgid "Completed: Bronze"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:247
+#: data/gui/themes/default/window/campaign_dialog.cfg:245
 msgid "Show campaigns completed at easiest difficulty"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:251
+#: data/gui/themes/default/window/campaign_dialog.cfg:249
 #, fuzzy
 #| msgid "Computer Player"
 msgid "Completed: Silver"
 msgstr "电脑玩家"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:252
+#: data/gui/themes/default/window/campaign_dialog.cfg:250
 msgid "Show campaigns completed at intermediate difficulties"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:256
+#: data/gui/themes/default/window/campaign_dialog.cfg:254
 msgid "Completed: Gold"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:257
+#: data/gui/themes/default/window/campaign_dialog.cfg:255
 msgid "Show campaigns completed at hardest difficulty"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:261
+#: data/gui/themes/default/window/campaign_dialog.cfg:259
 msgid "Completed: All"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:262
+#: data/gui/themes/default/window/campaign_dialog.cfg:260
 msgid "Show completed campaigns"
 msgstr ""
 
 #. [label]
 #. [label]: id=mods_header
-#: data/gui/themes/default/window/campaign_dialog.cfg:313
+#: data/gui/themes/default/window/campaign_dialog.cfg:311
 #: data/gui/themes/default/window/mp_create_game.cfg:220
 msgid "Modifications:"
 msgstr "模组："
 
 #. [label]
-#: data/gui/themes/default/window/campaign_dialog.cfg:338
+#: data/gui/themes/default/window/campaign_dialog.cfg:336
 msgid "Combat:"
 msgstr "战斗："
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:353
+#: data/gui/themes/default/window/campaign_dialog.cfg:351
 msgid "Default RNG"
 msgstr "默认的随机数生成器"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:354
+#: data/gui/themes/default/window/campaign_dialog.cfg:352
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -2960,12 +2960,12 @@ msgid ""
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:359
+#: data/gui/themes/default/window/campaign_dialog.cfg:357
 msgid "Predictable RNG"
 msgstr "可预测的随机数生成器"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:360
+#: data/gui/themes/default/window/campaign_dialog.cfg:358
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -2975,14 +2975,14 @@ msgid ""
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:365
+#: data/gui/themes/default/window/campaign_dialog.cfg:363
 #, fuzzy
 #| msgid "Predictable RNG"
 msgid "Reduced RNG"
 msgstr "可预测的随机数生成器"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:366
+#: data/gui/themes/default/window/campaign_dialog.cfg:364
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -2992,33 +2992,36 @@ msgid ""
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/window/campaign_dialog.cfg:383
+#: data/gui/themes/default/window/campaign_dialog.cfg:381
 msgid "Difficulty:"
 msgstr "难度："
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:397
+#: data/gui/themes/default/window/campaign_dialog.cfg:395
 msgid "Easy"
 msgstr "简单"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:400
+#: data/gui/themes/default/window/campaign_dialog.cfg:398
 msgid "Normal"
 msgstr "普通"
 
 #. [option]
-#: data/gui/themes/default/window/campaign_dialog.cfg:403
+#: data/gui/themes/default/window/campaign_dialog.cfg:401
 msgid "Hard"
 msgstr "困难"
 
 #. [label]
-#: data/gui/themes/default/window/campaign_dialog.cfg:460
+#: data/gui/themes/default/window/campaign_dialog.cfg:458
 msgid "Play a Campaign"
 msgstr "玩一场战役"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=proceed
 #. [button]: id=ok
-#: data/gui/themes/default/window/campaign_dialog.cfg:524
+#: data/gui/themes/default/window/campaign_dialog.cfg:522
 #: data/gui/themes/default/window/campaign_difficulty.cfg:221
+#: src/gui/dialogs/campaign_selection.cpp:59
 msgid "game^Play"
 msgstr "开始游玩"
 
@@ -3029,7 +3032,7 @@ msgstr "开始游玩"
 #: data/gui/themes/default/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:262
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
-#: src/gui/dialogs/editor/edit_pbl.cpp:191
+#: src/gui/dialogs/editor/edit_pbl.cpp:197
 msgid "Difficulty"
 msgstr "难度"
 
@@ -3104,8 +3107,9 @@ msgstr "读取核心"
 #. [button]: id=ok
 #: data/gui/themes/default/window/core_dialog.cfg:228
 #: data/gui/themes/default/window/language_selection.cfg:293
+#: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:312
-#: src/preferences/preferences.cpp:1303
+#: src/preferences/preferences.cpp:1306
 msgid "Select"
 msgstr "选择"
 
@@ -3179,7 +3183,7 @@ msgstr "编辑日程表"
 #: data/gui/themes/default/window/screenshot_notification.cfg:120
 #: data/gui/themes/default/window/tod_new_schedule.cfg:86
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:181
-#: src/gui/dialogs/unit_recall.cpp:318
+#: src/gui/dialogs/unit_recall.cpp:321
 msgid "Name:"
 msgstr "名字："
 
@@ -3256,6 +3260,9 @@ msgstr ""
 #. [label]
 #: data/gui/themes/default/window/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:973
+#: src/gui/dialogs/editor/custom_tod.cpp:183
+#: src/gui/dialogs/editor/custom_tod.cpp:190
+#: src/gui/dialogs/editor/custom_tod.cpp:197
 #: src/gui/dialogs/editor/edit_unit.cpp:325
 #: src/gui/dialogs/editor/edit_unit.cpp:333
 #: src/gui/dialogs/editor/edit_unit.cpp:341
@@ -3485,39 +3492,53 @@ msgstr ""
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:214
 msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
-"upload updates for this add-on."
+"upload updates for this add-on or delete this add-on."
 msgstr ""
 
 #. [grid]
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:214
-msgid "Secondary Authors:"
+#, fuzzy
+#| msgid "Author"
+msgid "Primary Authors:"
+msgstr "作者"
+
+#. [grid]
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:215
+msgid ""
+"Comma delimited list of forum usernames of other people who are allowed to "
+"upload updates for this add-on."
 msgstr ""
 
 #. [grid]
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:215
+msgid "Secondary Authors:"
+msgstr ""
+
+#. [grid]
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:216
 msgid ""
 "An email address you can be contacted at in case of issues with your add-on."
 msgstr ""
 
 #. [grid]
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:215
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:216
 msgid "Email:"
 msgstr ""
 
 #. [grid]
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:216
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:217
 msgid ""
 "The add-on’s current password. Using forum authentication is recommended "
 "instead since this password is not stored securely."
 msgstr ""
 
 #. [label]: id=translations_title
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:274
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:275
 msgid "Title"
 msgstr ""
 
 #. [label]: id=translations_description
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:291
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:292
 #, fuzzy
 #| msgid "Description:"
 msgid "Description"
@@ -3525,7 +3546,7 @@ msgstr "描述："
 
 #. [button]: id=translations_add
 #. [button]: id=server_add
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:406
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:407
 #: data/gui/themes/default/window/mp_connect.cfg:270
 msgid "Add"
 msgstr "添加"
@@ -3534,7 +3555,7 @@ msgstr "添加"
 #. [button]: id=delete_file
 #. [button]: id=delete
 #. [button]: id=server_delete
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:420
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:421
 #: data/gui/themes/default/window/file_dialog.cfg:349
 #: data/gui/themes/default/window/game_load.cfg:606
 #: data/gui/themes/default/window/mp_connect.cfg:284
@@ -3542,14 +3563,14 @@ msgid "Delete"
 msgstr "删除"
 
 #. [button]: id=validate
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:451
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:452
 msgid "Validate"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #. [button]: id=save
-#: data/gui/themes/default/window/editor_edit_pbl.cfg:463
+#: data/gui/themes/default/window/editor_edit_pbl.cfg:464
 #: data/gui/themes/default/window/game_save.cfg:120
 #: data/gui/themes/default/window/screenshot_notification.cfg:201
 #: src/gui/dialogs/file_dialog.cpp:230 src/hotkey/hotkey_command.cpp:185
@@ -4406,7 +4427,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/window/game_stats.cfg:705
-#: src/gui/dialogs/game_stats.cpp:247
+#: src/gui/dialogs/game_stats.cpp:248
 msgid "Current Status"
 msgstr "当前状态"
 
@@ -4418,7 +4439,7 @@ msgstr "游戏统计"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/themes/default/window/game_stats.cfg:793
-#: src/gui/dialogs/game_stats.cpp:247
+#: src/gui/dialogs/game_stats.cpp:248
 msgid "Scenario Settings"
 msgstr "场景设置"
 
@@ -4733,6 +4754,13 @@ msgstr "显示标签"
 #: data/gui/themes/default/window/help_browser.cfg:148
 msgid "Battle For Wesnoth Help"
 msgstr "韦诺之战帮助"
+
+#. [toggle_button]: id=contents
+#: data/gui/themes/default/window/help_browser.cfg:160
+#, fuzzy
+#| msgid "Show Credits"
+msgid "Show Topics"
+msgstr "显示制作者名单"
 
 #. [label]
 #: data/gui/themes/default/window/hotkey_bind.cfg:35
@@ -5669,7 +5697,7 @@ msgstr "团队名称："
 #: data/gui/themes/default/window/preferences.cfg:365
 #: data/gui/themes/default/window/title_screen.cfg:257
 #: data/gui/themes/modern/dialogs/title_screen.cfg:257
-#: src/gui/dialogs/game_load.cpp:397
+#: src/gui/dialogs/game_load.cpp:368
 msgid "Multiplayer"
 msgstr "多人游戏"
 
@@ -5971,7 +5999,7 @@ msgstr "快捷键"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:902
+#: src/gui/dialogs/preferences_dialog.cpp:899
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -5984,7 +6012,7 @@ msgstr "游戏中可用"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:903
+#: src/gui/dialogs/preferences_dialog.cpp:900
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -5997,7 +6025,7 @@ msgstr "编辑器中可用"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:904
+#: src/gui/dialogs/preferences_dialog.cpp:901
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -6070,135 +6098,122 @@ msgid ""
 "(requires restart to take effect)"
 msgstr ""
 
-#. [toggle_button]: id=fps_limiter
-#: data/gui/themes/default/window/preferences/03_display.cfg:145
-msgid "Limit FPS"
-msgstr "限制FPS"
-
-#. [toggle_button]: id=fps_limiter
-#: data/gui/themes/default/window/preferences/03_display.cfg:146
-msgid ""
-"Disabling this increases CPU usage, but may slightly improve performance "
-"(requires restart to take effect)"
-msgstr ""
-"禁用此项将提高CPU使用率，但或许能够稍稍提升游戏性能（需要重启后才能生效）"
-
 #. [label]
-#: data/gui/themes/default/window/preferences/03_display.cfg:168
+#: data/gui/themes/default/window/preferences/03_display.cfg:152
 #, fuzzy
 #| msgid "Change the in-game theme"
 msgid "In-game theme:"
 msgstr "改变游戏中的主题"
 
 #. [menu_button]: id=choose_theme
-#: data/gui/themes/default/window/preferences/03_display.cfg:181
+#: data/gui/themes/default/window/preferences/03_display.cfg:165
 msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/window/preferences/03_display.cfg:192
+#: data/gui/themes/default/window/preferences/03_display.cfg:176
 msgid "UI theme:"
 msgstr ""
 
 #. [menu_button]: id=choose_gui2_theme
-#: data/gui/themes/default/window/preferences/03_display.cfg:208
+#: data/gui/themes/default/window/preferences/03_display.cfg:192
 msgid ""
 "Change the UI (GUI2) theme. Additional themes may be provided by community-"
 "made add-ons"
 msgstr ""
 
 #. [button]: id=apply
-#: data/gui/themes/default/window/preferences/03_display.cfg:217
+#: data/gui/themes/default/window/preferences/03_display.cfg:201
 msgid "Apply"
 msgstr ""
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/window/preferences/03_display.cfg:239
+#: data/gui/themes/default/window/preferences/03_display.cfg:223
 msgid "Combat damage indicators"
 msgstr ""
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/window/preferences/03_display.cfg:240
+#: data/gui/themes/default/window/preferences/03_display.cfg:224
 #, fuzzy
 #| msgid "Show damage and healing amounts above a unit"
 msgid "Show amount of damage inflicted or healed as fading labels above units"
 msgstr "在单位上方显示伤害和治疗数字"
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/window/preferences/03_display.cfg:253
+#: data/gui/themes/default/window/preferences/03_display.cfg:237
 msgid "Team color indicators"
 msgstr ""
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/window/preferences/03_display.cfg:254
+#: data/gui/themes/default/window/preferences/03_display.cfg:238
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "在单位脚底周围显示彩色圆环以显示其所属阵营"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/themes/default/window/preferences/03_display.cfg:267
+#: data/gui/themes/default/window/preferences/03_display.cfg:251
 msgid "Grid overlay"
 msgstr ""
 
 #. [toggle_button]: id=show_grid
-#: data/gui/themes/default/window/preferences/03_display.cfg:268
+#: data/gui/themes/default/window/preferences/03_display.cfg:252
 msgid "Overlay a grid over the map"
 msgstr "在地图上覆盖六角网格"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/window/preferences/03_display.cfg:303
+#: data/gui/themes/default/window/preferences/03_display.cfg:287
 msgid "Animate map"
 msgstr "显示地图动画"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/window/preferences/03_display.cfg:304
+#: data/gui/themes/default/window/preferences/03_display.cfg:288
 msgid "Display animated terrain graphics"
 msgstr "显示地形动画效果"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/themes/default/window/preferences/03_display.cfg:317
+#: data/gui/themes/default/window/preferences/03_display.cfg:301
 msgid "Animate water"
 msgstr "显示水面动画"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/themes/default/window/preferences/03_display.cfg:318
+#: data/gui/themes/default/window/preferences/03_display.cfg:302
 msgid "Display animated water graphics (can be slow)"
 msgstr "显示水面动画效果（可能会很慢）"
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/window/preferences/03_display.cfg:333
+#: data/gui/themes/default/window/preferences/03_display.cfg:317
 #, fuzzy
 #| msgid "Show unit standing animations"
 msgid "Unit standing animations"
 msgstr "显示单位站立动画"
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/window/preferences/03_display.cfg:334
+#: data/gui/themes/default/window/preferences/03_display.cfg:318
 msgid "Continuously animate standing units on the battlefield"
 msgstr "让战场上站立的单位持续地做小动作"
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/window/preferences/03_display.cfg:352
+#: data/gui/themes/default/window/preferences/03_display.cfg:336
 #, fuzzy
 #| msgid "Show unit idle animations"
 msgid "Unit idle animations"
 msgstr "显示单位空闲动画"
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/window/preferences/03_display.cfg:353
+#: data/gui/themes/default/window/preferences/03_display.cfg:337
 msgid "Play short random animations for idle units"
 msgstr "显示空闲单位的随机短小的空闲动画"
 
 #. [label]
-#: data/gui/themes/default/window/preferences/03_display.cfg:376
+#: data/gui/themes/default/window/preferences/03_display.cfg:360
 msgid "Frequency:"
 msgstr "频率："
 
 #. [slider]: id=idle_anim_frequency
-#: data/gui/themes/default/window/preferences/03_display.cfg:392
+#: data/gui/themes/default/window/preferences/03_display.cfg:376
 msgid "Set the frequency of unit idle animations"
 msgstr "设置单位空闲动画显示频率"
 
@@ -6874,7 +6889,7 @@ msgstr "征募"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/window/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:270
 #: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "错误"
@@ -6951,7 +6966,7 @@ msgstr "<未知>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1786
+#: src/filesystem.cpp:1787
 msgid "language code for localized resources^en_US"
 msgstr "zh_CN"
 
@@ -6995,60 +7010,6 @@ msgstr "$prefix|、$next"
 msgid "disjunct end^$prefix, or $last"
 msgstr "$prefix|或$last"
 
-#: src/formula/string_utils.cpp:299 src/formula/string_utils.cpp:339
-msgid "timespan^expired"
-msgstr "过期"
-
-#. TRANSLATORS: The "timespan^$num xxxxx" strings originating from the same file
-#. as the string with this comment MUST be translated following the usual rules
-#. for WML variable interpolation -- that is, without including or translating
-#. the caret^ prefix, and leaving the $num variable specification intact, since
-#. it is technically code. The only translatable natural word to be found here
-#. is the time unit (year, month, etc.) For example, for French you would
-#. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
-#. generate output such as "39 ans" after variable interpolation.
-#: src/formula/string_utils.cpp:313
-msgid "timespan^$num year"
-msgid_plural "timespan^$num years"
-msgstr[0] "$num|年"
-msgstr[1] "$num|年"
-
-#: src/formula/string_utils.cpp:314
-msgid "timespan^$num month"
-msgid_plural "timespan^$num months"
-msgstr[0] "$num|月"
-msgstr[1] "$num|月"
-
-#: src/formula/string_utils.cpp:315
-msgid "timespan^$num week"
-msgid_plural "timespan^$num weeks"
-msgstr[0] "$num|周"
-msgstr[1] "$num|周"
-
-#: src/formula/string_utils.cpp:316
-msgid "timespan^$num day"
-msgid_plural "timespan^$num days"
-msgstr[0] "$num|日"
-msgstr[1] "$num|日"
-
-#: src/formula/string_utils.cpp:317
-msgid "timespan^$num hour"
-msgid_plural "timespan^$num hours"
-msgstr[0] "$num|时"
-msgstr[1] "$num|时"
-
-#: src/formula/string_utils.cpp:318
-msgid "timespan^$num minute"
-msgid_plural "timespan^$num minutes"
-msgstr[0] "$num|分"
-msgstr[1] "$num|分"
-
-#: src/formula/string_utils.cpp:319
-msgid "timespan^$num second"
-msgid_plural "timespan^$num seconds"
-msgstr[0] "$num|秒"
-msgstr[1] "$num|秒"
-
 #: src/gui/core/canvas.cpp:263
 #, fuzzy
 #| msgid "Image doesn't fit on canvas."
@@ -7067,9 +7028,9 @@ msgstr "没有已定义的状态或绘图区域。"
 msgid "No resolution defined for "
 msgstr "没有已定义的分辨率。"
 
-#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:426
-#: src/gui/widgets/multi_page.cpp:176 src/gui/widgets/panel.cpp:131
-#: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:224
+#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:427
+#: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
+#: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:229
 #: src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
 msgstr "没有已定义的网格。"
@@ -7406,7 +7367,7 @@ msgstr "你要卸载’$addon|’吗？"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1033
+#: src/gui/dialogs/addon/manager.cpp:1034
 #, fuzzy
 #| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
@@ -7414,37 +7375,58 @@ msgstr "%Y-%m-%d %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1036
+#: src/gui/dialogs/addon/manager.cpp:1037
 #, fuzzy
 #| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
 msgstr "%Y-%m-%d %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1096
+#: src/gui/dialogs/addon/manager.cpp:1093
 msgid "url^None"
 msgstr "无"
 
-#: src/gui/dialogs/attack_predictions.cpp:118
+#: src/gui/dialogs/attack_predictions.cpp:119
 msgid "No usable weapon"
 msgstr "没有可用的武器"
 
-#: src/gui/dialogs/attack_predictions.cpp:196
+#: src/gui/dialogs/attack_predictions.cpp:197
 msgid "Defender resistance vs"
 msgstr "防守方抗性 vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:198
+#: src/gui/dialogs/attack_predictions.cpp:199
 msgid "Defender vulnerability vs"
 msgstr "防守方弱点 vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:202
+#: src/gui/dialogs/attack_predictions.cpp:203
 msgid "Attacker resistance vs"
 msgstr "进攻方抗性 vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:204
+#: src/gui/dialogs/attack_predictions.cpp:205
 msgid "Attacker vulnerability vs"
 msgstr "进攻方弱点 vs"
 
-#: src/gui/dialogs/campaign_selection.cpp:368
+#: src/gui/dialogs/campaign_selection.cpp:59
+#, fuzzy
+#| msgid "Remove Add-ons"
+msgid "game^Get Add-ons"
+msgstr "移除附加组件"
+
+#: src/gui/dialogs/campaign_selection.cpp:378
+#, fuzzy
+#| msgid "Campaigns"
+msgid "More campaigns..."
+msgstr "战役"
+
+#: src/gui/dialogs/campaign_selection.cpp:387
+msgid ""
+"In addition to the mainline campaigns, Wesnoth also has an ever-growing list "
+"of add-on content created by other players available via the Add-ons server, "
+"included but not limited to more single and multiplayer campaigns, "
+"multiplayer maps, additional media and various other content! Be sure to "
+"give it a try!"
+msgstr ""
+
+#: src/gui/dialogs/campaign_selection.cpp:397
 #, fuzzy
 #| msgid "Campaigns"
 msgid "Missing Campaigns"
@@ -7452,7 +7434,7 @@ msgstr "战役"
 
 #. TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
 #. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
-#: src/gui/dialogs/campaign_selection.cpp:379
+#: src/gui/dialogs/campaign_selection.cpp:408
 msgid ""
 "Wesnoth normally includes more than 15 mainline campaigns, even before "
 "installing any from the add-ons server. If you’ve installed the game via a "
@@ -7460,7 +7442,7 @@ msgid ""
 "game data."
 msgstr ""
 
-#: src/gui/dialogs/campaign_selection.cpp:410
+#: src/gui/dialogs/campaign_selection.cpp:439
 #: src/gui/dialogs/multiplayer/lobby.cpp:433
 msgid "active_modifications^None"
 msgstr "无"
@@ -7497,98 +7479,112 @@ msgstr ""
 "当前选定的模组与你的游戏配置不兼容。\n"
 "请选择一个兼容的模组。"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:171
+#: src/gui/dialogs/editor/custom_tod.cpp:171
+#: src/gui/dialogs/editor/edit_unit.cpp:311
+#, fuzzy
+#| msgid "Choose Test"
+msgid "Choose File"
+msgstr "选择测试"
+
+#: src/gui/dialogs/editor/custom_tod.cpp:179
+#: src/gui/dialogs/editor/edit_unit.cpp:320
+msgid ""
+"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
+"add-on?"
+msgstr ""
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:177
 msgid "Core"
 msgstr "核心"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:172
+#: src/gui/dialogs/editor/edit_pbl.cpp:178
 msgid "Campaign"
 msgstr "战役"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:173
+#: src/gui/dialogs/editor/edit_pbl.cpp:179
 msgid "Hybrid Campaign"
 msgstr "混合战役"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:174
+#: src/gui/dialogs/editor/edit_pbl.cpp:180
 msgid "Multiplayer Campaign"
 msgstr "多人战役"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:175
+#: src/gui/dialogs/editor/edit_pbl.cpp:181
 msgid "Scenario"
 msgstr "场景"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:176
+#: src/gui/dialogs/editor/edit_pbl.cpp:182
 msgid "Multiplayer Scenario"
 msgstr "多人场景"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:177
+#: src/gui/dialogs/editor/edit_pbl.cpp:183
 #, fuzzy
 #| msgid "Action"
 msgid "Faction"
 msgstr "动作"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:178
+#: src/gui/dialogs/editor/edit_pbl.cpp:184
 #: src/gui/dialogs/multiplayer/lobby.cpp:421
 msgid "Era"
 msgstr "时代"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:179
+#: src/gui/dialogs/editor/edit_pbl.cpp:185
 msgid "Map Pack"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:180
+#: src/gui/dialogs/editor/edit_pbl.cpp:186
 #, fuzzy
 #| msgid "Modifications"
 msgid "Modification"
 msgstr "模组"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:181
+#: src/gui/dialogs/editor/edit_pbl.cpp:187
 msgid "Media"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:182
+#: src/gui/dialogs/editor/edit_pbl.cpp:188
 msgid "Theme"
 msgstr "主题"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:183
+#: src/gui/dialogs/editor/edit_pbl.cpp:189
 #, fuzzy
 #| msgid "Other Games"
 msgid "Other"
 msgstr "其它游戏"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:189
+#: src/gui/dialogs/editor/edit_pbl.cpp:195
 #, fuzzy
 #| msgid "addon_tag^Cooperative"
 msgid "Cooperative"
 msgstr "协作"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:190
+#: src/gui/dialogs/editor/edit_pbl.cpp:196
 #, fuzzy
 #| msgid "addon_tag^Cosmetic"
 msgid "Cosmetic"
 msgstr "装饰性"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:192
+#: src/gui/dialogs/editor/edit_pbl.cpp:198
 msgid "RNG"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:193
+#: src/gui/dialogs/editor/edit_pbl.cpp:199
 msgid "Survival"
 msgstr "生存"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:194
+#: src/gui/dialogs/editor/edit_pbl.cpp:200
 msgid "Terraforming"
 msgstr "地形改造"
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:377
+#: src/gui/dialogs/editor/edit_pbl.cpp:391
 msgid "No validation errors"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:377
+#: src/gui/dialogs/editor/edit_pbl.cpp:391
 msgid "Success"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_pbl.cpp:407
+#: src/gui/dialogs/editor/edit_pbl.cpp:421
 #, fuzzy
 #| msgid "Choose Starting Scenario"
 msgid "Choose an icon"
@@ -7614,18 +7610,6 @@ msgstr ""
 
 #: src/gui/dialogs/editor/edit_unit.cpp:198
 msgid "healer"
-msgstr ""
-
-#: src/gui/dialogs/editor/edit_unit.cpp:311
-#, fuzzy
-#| msgid "Choose Test"
-msgid "Choose File"
-msgstr "选择测试"
-
-#: src/gui/dialogs/editor/edit_unit.cpp:320
-msgid ""
-"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
-"add-on?"
 msgstr ""
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1032
@@ -7731,7 +7715,7 @@ msgstr "未知"
 #: src/gui/dialogs/game_cache_options.cpp:97
 #: src/gui/dialogs/network_transmission.cpp:48
 #: src/gui/dialogs/network_transmission.cpp:49
-#: src/gui/dialogs/screenshot_notification.cpp:109
+#: src/gui/dialogs/screenshot_notification.cpp:110
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -7759,68 +7743,68 @@ msgstr "游戏数据缓存已完全清除。"
 msgid "The game data cache could not be purged."
 msgstr "游戏数据缓存无法完全清除。"
 
-#: src/gui/dialogs/game_load.cpp:71
+#: src/gui/dialogs/game_load.cpp:72
 msgid "No Saved Games"
 msgstr "没有游戏存档"
 
-#: src/gui/dialogs/game_load.cpp:71
+#: src/gui/dialogs/game_load.cpp:72
 msgid "There are no saved games to load."
 msgstr "没有可供载入的游戏存档。"
 
-#: src/gui/dialogs/game_load.cpp:141
+#: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
 msgstr "当前版本"
 
-#: src/gui/dialogs/game_load.cpp:145
+#: src/gui/dialogs/game_load.cpp:147
 msgid "game_version^Wesnoth $version"
 msgstr "韦诺 $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
-#: src/gui/dialogs/game_load.cpp:232
+#: src/gui/dialogs/game_load.cpp:234
 msgid "$active active, $reserve reserve"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:287
+#: src/gui/dialogs/game_load.cpp:289
 msgid "The selected file is corrupt: "
 msgstr "选定的文件是损坏的："
 
-#: src/gui/dialogs/game_load.cpp:358
+#: src/gui/dialogs/game_load.cpp:329
 msgid "(Invalid)"
 msgstr "（无效）"
 
-#: src/gui/dialogs/game_load.cpp:388
+#: src/gui/dialogs/game_load.cpp:359
 msgid "Campaign: $campaign_name"
 msgstr "战役：$campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:400
+#: src/gui/dialogs/game_load.cpp:371
 msgid "Tutorial"
 msgstr "教程"
 
-#: src/gui/dialogs/game_load.cpp:403
+#: src/gui/dialogs/game_load.cpp:374
 msgid "Test scenario"
 msgstr "测试场景"
 
-#: src/gui/dialogs/game_load.cpp:413
+#: src/gui/dialogs/game_load.cpp:384
 msgid "Replay"
 msgstr "录像"
 
-#: src/gui/dialogs/game_load.cpp:415
+#: src/gui/dialogs/game_load.cpp:386
 msgid "Turn"
 msgstr "回合"
 
-#: src/gui/dialogs/game_load.cpp:417
+#: src/gui/dialogs/game_load.cpp:388
 msgid "Scenario start"
 msgstr "场景开始"
 
-#: src/gui/dialogs/game_load.cpp:436
+#: src/gui/dialogs/game_load.cpp:407
 msgid "Difficulty: "
 msgstr "难度："
 
-#: src/gui/dialogs/game_load.cpp:459
+#: src/gui/dialogs/game_load.cpp:430
 msgid "Version: "
 msgstr "版本："
 
-#: src/gui/dialogs/game_load.cpp:464
+#: src/gui/dialogs/game_load.cpp:435
 msgid "Modifications: "
 msgstr "模组："
 
@@ -7865,91 +7849,91 @@ msgstr "团队标签"
 msgid "Side $side_number ($name)"
 msgstr "阵营$side_number|（$name）"
 
-#: src/gui/dialogs/loading_screen.cpp:44
+#: src/gui/dialogs/loading_screen.cpp:46
 msgid "Building terrain rules"
 msgstr "正在构建地形规则"
 
-#: src/gui/dialogs/loading_screen.cpp:45
+#: src/gui/dialogs/loading_screen.cpp:47
 msgid "Reading files and creating cache"
 msgstr "正在读取文件并创建缓存"
 
-#: src/gui/dialogs/loading_screen.cpp:46 src/gui/dialogs/loading_screen.cpp:49
+#: src/gui/dialogs/loading_screen.cpp:48 src/gui/dialogs/loading_screen.cpp:51
 msgid "Initializing display"
 msgstr "正在初始化显示"
 
-#: src/gui/dialogs/loading_screen.cpp:47
+#: src/gui/dialogs/loading_screen.cpp:49
 msgid "Reinitialize fonts for the current language"
 msgstr "正在为当前语言重新初始化字体"
 
-#: src/gui/dialogs/loading_screen.cpp:48
+#: src/gui/dialogs/loading_screen.cpp:50
 msgid "Initializing teams"
 msgstr "正在初始化团队"
 
-#: src/gui/dialogs/loading_screen.cpp:50
+#: src/gui/dialogs/loading_screen.cpp:52
 msgid "Loading game configuration"
 msgstr "正在载入游戏配置"
 
-#: src/gui/dialogs/loading_screen.cpp:51
+#: src/gui/dialogs/loading_screen.cpp:53
 msgid "Loading data files"
 msgstr "正在载入数据文件"
 
-#: src/gui/dialogs/loading_screen.cpp:52
+#: src/gui/dialogs/loading_screen.cpp:54
 msgid "Loading level"
 msgstr "正在载入关卡"
 
-#: src/gui/dialogs/loading_screen.cpp:53
+#: src/gui/dialogs/loading_screen.cpp:55
 msgid "Initializing scripting engine"
 msgstr "正在初始化脚本引擎"
 
-#: src/gui/dialogs/loading_screen.cpp:54
+#: src/gui/dialogs/loading_screen.cpp:56
 msgid "Initializing planning mode"
 msgstr "正在初始化计划模式"
 
-#: src/gui/dialogs/loading_screen.cpp:55
+#: src/gui/dialogs/loading_screen.cpp:57
 msgid "Reading unit files"
 msgstr "正在读取单位文件"
 
-#: src/gui/dialogs/loading_screen.cpp:56
+#: src/gui/dialogs/loading_screen.cpp:58
 msgid "Loading units"
 msgstr "正在载入单位"
 
-#: src/gui/dialogs/loading_screen.cpp:57
+#: src/gui/dialogs/loading_screen.cpp:59
 msgid "Searching for installed add-ons"
 msgstr "正在搜索已安装的附加组件"
 
-#: src/gui/dialogs/loading_screen.cpp:58
+#: src/gui/dialogs/loading_screen.cpp:60
 msgid "Starting game"
 msgstr "正在开始游戏"
 
-#: src/gui/dialogs/loading_screen.cpp:59
+#: src/gui/dialogs/loading_screen.cpp:61
 msgid "Verifying cache"
 msgstr "正在验证缓存"
 
-#: src/gui/dialogs/loading_screen.cpp:60
+#: src/gui/dialogs/loading_screen.cpp:62
 msgid "Connecting to server"
 msgstr "正在连接服务器"
 
-#: src/gui/dialogs/loading_screen.cpp:61
+#: src/gui/dialogs/loading_screen.cpp:63
 msgid "Logging in"
 msgstr "正在登录"
 
-#: src/gui/dialogs/loading_screen.cpp:62
+#: src/gui/dialogs/loading_screen.cpp:64
 msgid "Waiting for server"
 msgstr "正在等待服务器回复"
 
-#: src/gui/dialogs/loading_screen.cpp:63
+#: src/gui/dialogs/loading_screen.cpp:65
 msgid "Connecting to redirected server"
 msgstr "正在连接到重定向目标服务器"
 
-#: src/gui/dialogs/loading_screen.cpp:64
+#: src/gui/dialogs/loading_screen.cpp:66
 msgid "Waiting for next scenario"
 msgstr "正在等待下幕场景"
 
-#: src/gui/dialogs/loading_screen.cpp:65
+#: src/gui/dialogs/loading_screen.cpp:67
 msgid "Getting game data"
 msgstr "正在获取游戏数据"
 
-#: src/gui/dialogs/loading_screen.cpp:66
+#: src/gui/dialogs/loading_screen.cpp:68
 msgid "Downloading lobby data"
 msgstr "正在下载大厅数据"
 
@@ -8125,41 +8109,41 @@ msgstr "自定义场景"
 msgid "Random Maps"
 msgstr "随机地图"
 
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:192
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:193
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:194
 msgid "No games found."
 msgstr "未找到游戏。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:260
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:259
 msgid "No eras found."
 msgstr "未找到时代。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:261
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:260
 msgid "No eras found"
 msgstr "未找到时代"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:527
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:526
 msgid "No eras available for this game."
 msgstr "没有可用于此游戏的时代。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:733
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:732
 msgid "number of players^$min to $max"
 msgstr "$min|至$max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:847
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:846
 msgid "The selected game has no sides!"
 msgstr "选定的游戏没有阵营！"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:854
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:853
 msgid "The selected game cannot be created."
 msgstr "无法创建选定的游戏。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:926
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
 msgid "Choose Starting Scenario"
 msgstr "选择起始场景"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:926
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:925
 msgid "Select at which point to begin this campaign."
 msgstr "选择在何处开始此战役。"
 
@@ -8206,7 +8190,7 @@ msgstr "（无效）"
 msgid "Waiting for players to choose factions..."
 msgstr "正在等待玩家选择派系……"
 
-#: src/gui/dialogs/outro.cpp:56
+#: src/gui/dialogs/outro.cpp:58
 msgid "The End"
 msgstr "完结"
 
@@ -8218,25 +8202,25 @@ msgstr "好友"
 msgid "ignored"
 msgstr "忽略"
 
-#: src/gui/dialogs/preferences_dialog.cpp:256
-#: src/gui/dialogs/preferences_dialog.cpp:313
+#: src/gui/dialogs/preferences_dialog.cpp:255
+#: src/gui/dialogs/preferences_dialog.cpp:312
 msgid "No username specified"
 msgstr "未指定用户名"
 
-#: src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/preferences_dialog.cpp:270
 msgid "Invalid username"
 msgstr "无效用户名"
 
-#: src/gui/dialogs/preferences_dialog.cpp:318
+#: src/gui/dialogs/preferences_dialog.cpp:317
 msgid "Not on friends or ignore lists"
 msgstr "不在好友或忽略列表上"
 
-#: src/gui/dialogs/preferences_dialog.cpp:948
-#: src/gui/dialogs/preferences_dialog.cpp:1012
+#: src/gui/dialogs/preferences_dialog.cpp:945
+#: src/gui/dialogs/preferences_dialog.cpp:1009
 msgid "No hotkey selected"
 msgstr "未选定热键"
 
-#: src/gui/dialogs/preferences_dialog.cpp:976
+#: src/gui/dialogs/preferences_dialog.cpp:973
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8244,19 +8228,19 @@ msgstr ""
 "“<b>$hotkey_sequence</b>”目前已用于“<b>$old_hotkey_action</b>”。\n"
 "你希望将该快捷键序列重新指定给“<b>$new_hotkey_action|</b>”吗？"
 
-#: src/gui/dialogs/preferences_dialog.cpp:982
+#: src/gui/dialogs/preferences_dialog.cpp:979
 msgid "Reassign Hotkey"
 msgstr "重新指定快捷键"
 
-#: src/gui/dialogs/preferences_dialog.cpp:999
+#: src/gui/dialogs/preferences_dialog.cpp:996
 msgid "All hotkeys have been reset to their default values."
 msgstr "所有快捷键都已被重置为默认值。"
 
-#: src/gui/dialogs/preferences_dialog.cpp:999
+#: src/gui/dialogs/preferences_dialog.cpp:996
 msgid "Hotkeys Reset"
 msgstr "重置快捷键"
 
-#: src/gui/dialogs/screenshot_notification.cpp:94
+#: src/gui/dialogs/screenshot_notification.cpp:95
 msgid ""
 "Unsupported image format.\n"
 "\n"
@@ -8344,7 +8328,7 @@ msgstr "版本$version"
 msgid "Choose Test Scenario"
 msgstr "选择测试场景"
 
-#: src/gui/dialogs/unit_create.cpp:189
+#: src/gui/dialogs/unit_create.cpp:191
 msgid "unit_variation^Default Variation"
 msgstr "默认变化"
 
@@ -8358,33 +8342,33 @@ msgstr "不能召回此单位，因为到此时您的计划中的金币将不足
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "不能召回此单位，因为你的金币不足。"
 
-#: src/gui/dialogs/unit_recall.cpp:317 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/unit_recall.cpp:320 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "重命名单位"
 
-#: src/gui/dialogs/unit_recall.cpp:353
+#: src/gui/dialogs/unit_recall.cpp:356
 msgid "This unit is loyal and requires no upkeep."
 msgstr "此单位是忠诚的，不需要维护费用。"
 
-#: src/gui/dialogs/unit_recall.cpp:354 src/gui/dialogs/unit_recall.cpp:359
-#: src/gui/dialogs/unit_recall.cpp:364
+#: src/gui/dialogs/unit_recall.cpp:357 src/gui/dialogs/unit_recall.cpp:362
+#: src/gui/dialogs/unit_recall.cpp:367
 msgid "Do you really want to dismiss him?"
 msgstr "你真的要开除他吗？"
 
-#: src/gui/dialogs/unit_recall.cpp:355 src/gui/dialogs/unit_recall.cpp:360
-#: src/gui/dialogs/unit_recall.cpp:365
+#: src/gui/dialogs/unit_recall.cpp:358 src/gui/dialogs/unit_recall.cpp:363
+#: src/gui/dialogs/unit_recall.cpp:368
 msgid "Do you really want to dismiss her?"
 msgstr "你真的要开除她吗？"
 
-#: src/gui/dialogs/unit_recall.cpp:358
+#: src/gui/dialogs/unit_recall.cpp:361
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "此单位富有经验，拥有高等级。"
 
-#: src/gui/dialogs/unit_recall.cpp:363
+#: src/gui/dialogs/unit_recall.cpp:366
 msgid "This unit is close to advancing a level."
 msgstr "此单位快要升级了。"
 
-#: src/gui/dialogs/unit_recall.cpp:369
+#: src/gui/dialogs/unit_recall.cpp:372
 msgid "Dismiss Unit"
 msgstr "开除单位"
 
@@ -8412,15 +8396,20 @@ msgstr "已发布，服务器上的版本已过时"
 msgid "Delete add-on from server"
 msgstr "从服务器上删除附加组件"
 
-#: src/gui/widgets/chatbox.cpp:294
+#. TRANSLATORS: This is the new chat text indicator
+#: src/gui/widgets/chatbox.cpp:95
+msgid "NEW"
+msgstr ""
+
+#: src/gui/widgets/chatbox.cpp:300
 msgid "whisper to $receiver"
 msgstr "对$receiver|说悄悄话"
 
-#: src/gui/widgets/chatbox.cpp:378
+#: src/gui/widgets/chatbox.cpp:384
 msgid "Joined <i>$name</i>"
 msgstr "加入了<b>$name</b>"
 
-#: src/gui/widgets/chatbox.cpp:384
+#: src/gui/widgets/chatbox.cpp:390
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
@@ -8428,13 +8417,13 @@ msgstr ""
 "和<b>$name</b>的悄悄话开始。如果你不希望收到来自此玩家的消息，请输入<b>/"
 "ignore $name</b>"
 
-#: src/gui/widgets/helper.cpp:122
+#: src/gui/widgets/helper.cpp:153
 #, fuzzy
 #| msgid "Mandatory widget '$id' hasn't been defined."
 msgid "Mandatory widget ‘$id’ hasn't been defined."
 msgstr "必须的界面构件“$id|”尚未定义。"
 
-#: src/gui/widgets/label.cpp:141 src/gui/widgets/multiline_text.cpp:427
+#: src/gui/widgets/label.cpp:141 src/gui/widgets/multiline_text.cpp:429
 msgid "Open link?"
 msgstr "打开链接？"
 
@@ -8442,7 +8431,7 @@ msgstr "打开链接？"
 msgid "Copied link!"
 msgstr "已复制链接！"
 
-#: src/gui/widgets/listbox.cpp:724 src/gui/widgets/multi_page.cpp:219
+#: src/gui/widgets/listbox.cpp:715 src/gui/widgets/multi_page.cpp:224
 #, fuzzy
 #| msgid ""
 #| "'list_data' must have the same number of columns as the 'list_definition'."
@@ -8450,23 +8439,21 @@ msgid ""
 "‘list_data’ must have the same number of columns as the ‘list_definition’."
 msgstr "“list_data”与“list_definition”中的列数必须一致。"
 
-#: src/gui/widgets/listbox.cpp:769 src/gui/widgets/listbox.cpp:812
-#: src/gui/widgets/listbox.cpp:855 src/gui/widgets/scrollbar_panel.cpp:90
+#: src/gui/widgets/listbox.cpp:751 src/gui/widgets/scrollbar_panel.cpp:86
 msgid "No list defined."
 msgstr "没有已定义的列表。"
 
-#: src/gui/widgets/listbox.cpp:774 src/gui/widgets/listbox.cpp:817
-#: src/gui/widgets/listbox.cpp:860
+#: src/gui/widgets/listbox.cpp:756
 #, fuzzy
 #| msgid "A 'list_definition' should contain one row."
 msgid "A ‘list_definition’ should contain one row."
 msgstr "每个“list_definition”（列表定义）应该至少有一行。"
 
-#: src/gui/widgets/multi_page.cpp:195
+#: src/gui/widgets/multi_page.cpp:200
 msgid "No page defined."
 msgstr "没有已定义的页面。"
 
-#: src/gui/widgets/multiline_text.cpp:432
+#: src/gui/widgets/multiline_text.cpp:434
 #, fuzzy
 #| msgid "Opening links is not supported, contact your packager"
 msgid ""
@@ -8492,11 +8479,11 @@ msgstr[1] "及另$excess|个"
 msgid "multimenu^None Selected"
 msgstr "未选中"
 
-#: src/gui/widgets/pane.cpp:361
+#: src/gui/widgets/pane.cpp:359
 msgid "Need at least 1 parallel item."
 msgstr "还需要至少一件并行的物品。"
 
-#: src/gui/widgets/rich_label.cpp:253
+#: src/gui/widgets/rich_label.cpp:250
 msgid "corrupted original file"
 msgstr ""
 
@@ -8508,7 +8495,7 @@ msgstr "无效尺寸。"
 msgid "No widget defined."
 msgstr "没有已定义的界面构件。"
 
-#: src/gui/widgets/slider.cpp:356
+#: src/gui/widgets/slider.cpp:355
 #, fuzzy
 #| msgid "The number of value_labels and values don't match."
 msgid "The number of value_labels and values don’t match."
@@ -8528,11 +8515,11 @@ msgstr "发现有帮助提示但却没有提示小标签的界面构件。"
 msgid "No grid defined for tab container control"
 msgstr "没有已定义的树状视图节点。"
 
-#: src/gui/widgets/tree_view.cpp:290
+#: src/gui/widgets/tree_view.cpp:288
 msgid "No nodes defined for a tree view."
 msgstr "没有已定义的树状视图节点。"
 
-#: src/gui/widgets/tree_view.cpp:325
+#: src/gui/widgets/tree_view.cpp:318
 #, fuzzy
 #| msgid "[node]id 'root' is reserved for the implementation."
 msgid "[node]id ‘root’ is reserved for the implementation."
@@ -9467,11 +9454,11 @@ msgstr "显示Lua控制台"
 msgid "Unrecognized Command"
 msgstr "未识别的命令"
 
-#: src/preferences/preferences.cpp:1260
+#: src/preferences/preferences.cpp:1263
 msgid "No known themes. Try changing from within an existing game."
 msgstr "无已知主题。请尝试在游戏中切换主题。"
 
-#: src/preferences/preferences.cpp:1297
+#: src/preferences/preferences.cpp:1300
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9480,15 +9467,15 @@ msgstr ""
 "<b>$filename</b>服务器应用提供了多人游戏服务器机能，在主建本地联机游戏时是必"
 "须的。通常可以在游戏可执行文件的同一个目录下找到它。"
 
-#: src/preferences/preferences.cpp:1301
+#: src/preferences/preferences.cpp:1304
 msgid "Find Server Application"
 msgstr "查找服务器应用"
 
-#: src/preferences/preferences.cpp:1746
+#: src/preferences/preferences.cpp:1759
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1748
+#: src/preferences/preferences.cpp:1761
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -9528,6 +9515,44 @@ msgstr "在小节‘[$section|]’中，必须设定的主键‘$key|’没有�
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "在小节‘[$section|]’中，必须设定的主键‘$key|’没有设定值。"
 
+#~ msgid "timespan^expired"
+#~ msgstr "过期"
+
+#~ msgid "timespan^$num year"
+#~ msgid_plural "timespan^$num years"
+#~ msgstr[0] "$num|年"
+#~ msgstr[1] "$num|年"
+
+#~ msgid "timespan^$num month"
+#~ msgid_plural "timespan^$num months"
+#~ msgstr[0] "$num|月"
+#~ msgstr[1] "$num|月"
+
+#~ msgid "timespan^$num week"
+#~ msgid_plural "timespan^$num weeks"
+#~ msgstr[0] "$num|周"
+#~ msgstr[1] "$num|周"
+
+#~ msgid "timespan^$num day"
+#~ msgid_plural "timespan^$num days"
+#~ msgstr[0] "$num|日"
+#~ msgstr[1] "$num|日"
+
+#~ msgid "timespan^$num hour"
+#~ msgid_plural "timespan^$num hours"
+#~ msgstr[0] "$num|时"
+#~ msgstr[1] "$num|时"
+
+#~ msgid "timespan^$num minute"
+#~ msgid_plural "timespan^$num minutes"
+#~ msgstr[0] "$num|分"
+#~ msgstr[1] "$num|分"
+
+#~ msgid "timespan^$num second"
+#~ msgid_plural "timespan^$num seconds"
+#~ msgstr[0] "$num|秒"
+#~ msgstr[1] "$num|秒"
+
 #, fuzzy
 #~| msgid "Beach Sands"
 #~ msgid "Rocky Sands"
@@ -9565,6 +9590,15 @@ msgstr "在小节‘[$section|]’中，必须设定的主键‘$key|’没有�
 
 #~ msgid "<b>Faction:</b>"
 #~ msgstr "<b>派系：</b>"
+
+#~ msgid "Limit FPS"
+#~ msgstr "限制FPS"
+
+#~ msgid ""
+#~ "Disabling this increases CPU usage, but may slightly improve performance "
+#~ "(requires restart to take effect)"
+#~ msgstr ""
+#~ "禁用此项将提高CPU使用率，但或许能够稍稍提升游戏性能（需要重启后才能生效）"
 
 #~ msgid "View the credits"
 #~ msgstr "查看制作者名单"

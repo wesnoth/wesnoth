@@ -651,7 +651,7 @@ void config::remove_child(config_key_type key, std::size_t index)
 	remove_child(i, index);
 }
 
-void config::remove_children(config_key_type key, std::function<bool(const config&)> p)
+void config::remove_children(config_key_type key, const std::function<bool(const config&)>& p)
 {
 	child_map::iterator pos = children_.find(key);
 	if(pos == children_.end()) {

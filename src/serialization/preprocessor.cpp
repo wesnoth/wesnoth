@@ -1747,6 +1747,31 @@ filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map
 	return filesystem::scoped_istream(new preprocessor_scope_helper(fname, defines));
 }
 
+std::string preprocess_string(const std::string& contents, preproc_map* defines, const std::string& textdomain)
+{
+	log_scope("preprocessing string " + contents.substr(0, 10) + " ...");
+
+	std::unique_ptr<preprocessor_streambuf> buf;
+	std::unique_ptr<preproc_map> local_defines;
+
+	//
+	// If no defines were provided, we create a new local preproc_map and assign
+	// it to defines temporarily. In this case, the map will be deleted once this
+	// object is destroyed and defines will still be subsequently null.
+	//
+	if(!defines) {
+		local_defines.reset(new preproc_map);
+		defines = local_defines.get();
+	}
+
+	buf.reset(new preprocessor_streambuf(defines));
+
+	// Begin processing.
+	buf->add_preprocessor<preprocessor_data>(
+		std::unique_ptr<std::istream>(new std::istringstream(contents)), "<string>", "", 1, game_config::path, textdomain, nullptr);
+	return formatter() << buf.get();
+}
+
 void preprocess_resource(const std::string& res_name,
 		preproc_map* defines_map,
 		bool write_cfg,

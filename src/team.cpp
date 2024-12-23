@@ -105,7 +105,6 @@ const std::set<std::string> team::attributes {
 	"faction_lock",
 	"gold_lock",
 	"income_lock",
-	"leader",
 	"leader_lock",
 	"random_leader",
 	"team_lock",
@@ -440,9 +439,9 @@ game_events::pump_result_t team::get_village(const map_location& loc, const int 
 	game_events::pump_result_t res;
 
 	if(gamedata) {
-		config::attribute_value& var = gamedata->get_variable("owner_side");
-		const config::attribute_value old_value = var;
-		var = owner_side;
+		config::attribute_value var_owner_side;
+		var_owner_side = owner_side;
+		std::swap(var_owner_side, gamedata->get_variable("owner_side"));
 
 		// During team building, game_events pump is not guaranteed to exist yet. (At current revision.) We skip capture
 		// events in this case.
@@ -450,10 +449,10 @@ game_events::pump_result_t team::get_village(const map_location& loc, const int 
 			res = resources::game_events->pump().fire("capture", loc);
 		}
 
-		if(old_value.blank()) {
+		if(var_owner_side.blank()) {
 			gamedata->clear_variable("owner_side");
 		} else {
-			var = old_value;
+			std::swap(var_owner_side, gamedata->get_variable("owner_side"));
 		}
 	}
 

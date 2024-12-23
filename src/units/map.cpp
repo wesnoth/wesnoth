@@ -132,7 +132,7 @@ unit_map::umap_retval_pair_t unit_map::move(const map_location& src, const map_l
 	return std::pair(make_unit_iterator(uit), true);
 }
 
-unit_map::umap_retval_pair_t unit_map::insert(unit_ptr p)
+unit_map::umap_retval_pair_t unit_map::insert(const unit_ptr& p)
 {
 	// 1. Construct a unit_pod.
 	// 2. Try insertion into the umap.
@@ -213,7 +213,7 @@ unit_map::umap_retval_pair_t unit_map::insert(unit_ptr p)
 	return std::pair(make_unit_iterator(uinsert.first), true);
 }
 
-unit_map::umap_retval_pair_t unit_map::replace(const map_location& l, unit_ptr p)
+unit_map::umap_retval_pair_t unit_map::replace(const map_location& l, const unit_ptr& p)
 {
 	self_check();
 	p->set_location(l);

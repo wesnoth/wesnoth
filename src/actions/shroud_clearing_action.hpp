@@ -27,28 +27,22 @@ struct shroud_clearing_action
 	shroud_clearing_action(const config& cfg)
 		: route()
 		, view_info(cfg.child_or_empty("unit"))
-		, original_village_owner(cfg["village_owner"].to_int())
-		, take_village_timebonus(cfg["village_timebonus"].to_bool())
 	{
 		read_locations(cfg, route);
 	}
 
-	shroud_clearing_action(const unit_const_ptr u, const map_location& loc, int village_owner, bool village_bonus)
+	shroud_clearing_action(const unit_const_ptr u, const map_location& loc)
 		: route(1, loc)
 		, view_info(*u)
-		, original_village_owner(village_owner)
-		, take_village_timebonus(village_bonus)
 	{
 
 	}
 
 	typedef std::vector<map_location> route_t;
 
-	shroud_clearing_action(const unit_const_ptr u, const route_t::const_iterator& begin, const route_t::const_iterator& end, int village_owner, bool village_bonus)
+	shroud_clearing_action(const unit_const_ptr u, const route_t::const_iterator& begin, const route_t::const_iterator& end)
 		: route(begin, end)
 		, view_info(*u)
-		, original_village_owner(village_owner)
-		, take_village_timebonus(village_bonus)
 	{
 
 	}
@@ -60,25 +54,11 @@ struct shroud_clearing_action
 	route_t route;
 	/** A record of the affected unit's ability to see. */
 	clearer_info view_info;
-	/**
-	 * The number of the side that preivously owned the village that the unit stepped on
-	 * Note, that recruit/recall actions can also take a village if the unit was recruits/recalled onto a village
-	 */
-	int original_village_owner;
-	/** Whether this actions got a timebonus because it took a village. */
-	bool take_village_timebonus;
-
-	/** Change village owner on undo. */
-	void return_village();
-	/** Change village owner on redo. */
-	void take_village();
 
 	void write(config & cfg) const
 	{
 		write_locations(route, cfg);
 		view_info.write(cfg.add_child("unit"));
-		cfg["village_owner"] = original_village_owner;
-		cfg["village_timebonus"] = take_village_timebonus;
 	}
 
 	virtual ~shroud_clearing_action() {}

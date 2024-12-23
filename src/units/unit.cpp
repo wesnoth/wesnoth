@@ -55,6 +55,7 @@
 #include <exception>                    // for exception
 #include <iterator>                     // for back_insert_iterator, etc
 #include <string_view>
+#include <utility>
 
 namespace t_translation { struct terrain_code; }
 
@@ -1777,9 +1778,9 @@ static bool resistance_filter_matches_base(const config& cfg, bool attacker)
 	return true;
 }
 
-int unit::resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+int unit::resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon, const const_attack_ptr& opp_weapon) const
 {
-	unit_ability_list resistance_list = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
+	unit_ability_list resistance_list = get_abilities_weapons("resistance",loc, std::move(weapon), opp_weapon);
 	utils::erase_if(resistance_list, [&](const unit_ability& i) {
 		return !resistance_filter_matches_base(*i.ability_cfg, attacker);
 	});
@@ -1926,7 +1927,7 @@ std::vector<config> unit::get_modification_advances() const
 void unit::set_advancements(std::vector<config> advancements)
 {
 	set_attr_changed(UA_ADVANCEMENTS);
-	advancements_ = advancements;
+	advancements_ = std::move(advancements);
 }
 
 const std::string& unit::type_id() const
@@ -1967,7 +1968,7 @@ const std::set<std::string> unit::builtin_effects {
 	"status", "type", "variation", "vision", "vision_costs", "zoc"
 };
 
-std::string unit::describe_builtin_effect(std::string apply_to, const config& effect)
+std::string unit::describe_builtin_effect(const std::string& apply_to, const config& effect)
 {
 	if(apply_to == "attack") {
 		std::vector<t_string> attack_names;
@@ -2032,7 +2033,7 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 	return "";
 }
 
-void unit::apply_builtin_effect(std::string apply_to, const config& effect)
+void unit::apply_builtin_effect(const std::string& apply_to, const config& effect)
 {
 	config events;
 	appearance_changed_ = true;
@@ -2079,7 +2080,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 	} else if(apply_to == "remove_attacks") {
 		set_attr_changed(UA_ATTACKS);
-		utils::erase_if(attacks_, [&effect](attack_ptr a) { return a->matches_filter(effect); });
+		utils::erase_if(attacks_, [&effect](const attack_ptr& a) { return a->matches_filter(effect); });
 	} else if(apply_to == "attack") {
 		set_attr_changed(UA_ATTACKS);
 		for(attack_ptr a : attacks_) {
@@ -2744,7 +2745,7 @@ std::string unit::image_mods() const
 }
 
 // Called by the Lua API after resetting an attack pointer.
-bool unit::remove_attack(attack_ptr atk)
+bool unit::remove_attack(const attack_ptr& atk)
 {
 	set_attr_changed(UA_ATTACKS);
 	auto iter = std::find(attacks_.begin(), attacks_.end(), atk);

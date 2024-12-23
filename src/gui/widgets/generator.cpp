@@ -976,7 +976,7 @@ const widget* independent::find_at(const point& coordinate, const bool must_be_a
 	return grid.find_at(coordinate, must_be_active);
 }
 
-widget* independent::find(const std::string& id, const bool must_be_active)
+widget* independent::find(const std::string_view id, const bool must_be_active)
 {
 	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(is_selected(i)) {
@@ -989,7 +989,7 @@ widget* independent::find(const std::string& id, const bool must_be_active)
 	return nullptr;
 }
 
-const widget* independent::find(const std::string& id, const bool must_be_active) const
+const widget* independent::find(const std::string_view id, const bool must_be_active) const
 {
 	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(is_selected(i)) {

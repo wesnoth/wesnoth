@@ -114,7 +114,6 @@ private:
 	std::string savegame_gender_;
 	const std::string original_faction_;
 	const std::vector<std::string> original_recruit_;
-	const std::string choose_faction_by_leader_;
 	const bool saved_game_;
 	const bool has_no_recruits_;
 

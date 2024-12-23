@@ -44,12 +44,13 @@
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
 #include "utils/general.hpp"            // for contains
 
+#include <algorithm>                    // for sort, find, transform, etc
 #include <boost/algorithm/string.hpp>
 #include <cassert>                     // for assert
-#include <algorithm>                    // for sort, find, transform, etc
 #include <iterator>                     // for back_insert_iterator, etc
 #include <map>                          // for map, etc
 #include <set>
+#include <utility>
 
 static lg::log_domain log_help("help");
 #define WRN_HP LOG_STREAM(warn, log_help)
@@ -372,7 +373,7 @@ std::string generate_topic_text(const std::string &generator, const config *help
 
 topic_text& topic_text::operator=(std::shared_ptr<topic_generator> g)
 {
-	generator_ = g;
+	generator_ = std::move(g);
 	return *this;
 }
 

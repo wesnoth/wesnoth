@@ -633,6 +633,18 @@ public:
 	void set_visible(const visibility visible);
 	visibility get_visible() const;
 
+	/** Sets widget to visible if @a visible is true, else invisible. */
+	void set_visible(bool visible)
+	{
+		set_visible(visible ? visibility::visible : visibility::invisible);
+	}
+
+	/** Sets widget to visible if @a hidden is true, else hidden. */
+	void set_hidden(bool hidden)
+	{
+		set_visible(hidden ? visibility::visible : visibility::hidden);
+	}
+
 	redraw_action get_drawing_action() const;
 
 	void set_debug_border_mode(const debug_border debug_border_mode);
@@ -702,11 +714,10 @@ public:
 	 * @retval nullptr               No widget with the id found (or not active if
 	 *                            must_be_active was set).
 	 */
-	virtual widget* find(const std::string& id, const bool must_be_active);
+	virtual widget* find(const std::string_view id, const bool must_be_active);
 
 	/** The constant version of @ref find. */
-	virtual const widget* find(const std::string& id,
-								const bool must_be_active) const;
+	virtual const widget* find(const std::string_view id, const bool must_be_active) const;
 
 	/**
 	 * Does the widget contain the widget.
@@ -739,25 +750,25 @@ public:
 	 * @returns                   The widget with the id.
 	 */
 	template <class T>
-	NOT_DANGLING T* find_widget(
-		const std::string& id,
+	T* find_widget(
+		const std::string_view id,
 		const bool must_be_active,
 		const bool must_exist)
 	{
 		T* result = dynamic_cast<T*>(this->find(id, must_be_active));
-		VALIDATE(!must_exist || result, missing_widget(id));
+		VALIDATE(!must_exist || result, missing_widget(std::string(id)));
 
 		return result;
 	}
 
 	template <class T>
-	NOT_DANGLING const T* find_widget(
-		const std::string& id,
+	const T* find_widget(
+		const std::string_view id,
 		const bool must_be_active,
 		const bool must_exist) const
 	{
 		T* result = dynamic_cast<T*>(this->find(id, must_be_active));
-		VALIDATE(!must_exist || result, missing_widget(id));
+		VALIDATE(!must_exist || result, missing_widget(std::string(id)));
 
 		return result;
 	}
@@ -776,16 +787,16 @@ public:
 	 * @returns                   The widget with the id.
 	 */
 	template <class T>
-	NOT_DANGLING T& find_widget(
-		const std::string& id,
+	T& find_widget(
+		const std::string_view id,
 		const bool must_be_active = false)
 	{
 		return *(this->find_widget<T>(id, must_be_active, true));
 	}
 
 	template <class T>
-	NOT_DANGLING const T& find_widget(
-		const std::string& id,
+	const T& find_widget(
+		const std::string_view id,
 		const bool must_be_active = false) const
 	{
 		return *(this->find_widget<T>(id, must_be_active, true));

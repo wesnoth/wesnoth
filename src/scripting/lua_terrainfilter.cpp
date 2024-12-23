@@ -63,7 +63,7 @@ namespace {
 			return 0;
 		}
 
-		char** end = 0;
+		char** end = nullptr;
 		int res = strtol(&s[0], end, 10);
 		return res;
 	}
