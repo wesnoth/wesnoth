@@ -235,6 +235,7 @@ std::string addon_info::display_icon() const
 
 	if(!image::exists(image::locator{ret}) && !ret.empty()) {
 		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'";
+		ret = "misc/blank-hex.png";
 	} else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos) {
 		// HACK: prevent magenta icons, because they look awful
 		LOG_AC << "add-on '" << id << "' uses a unit baseframe as icon without TC/RC specifications";
