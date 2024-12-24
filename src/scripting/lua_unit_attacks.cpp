@@ -255,7 +255,7 @@ static int impl_unit_attack_get(lua_State *L)
 	return_bool_attrib("read_only", atk_ref.attack == nullptr);
 	return_string_attrib("description", attack.name());
 	return_string_attrib("name", attack.id());
-	return_string_attrib("type", attack.type());
+	return_string_attrib("type", attack.effective_damage_type().first);
 	return_string_attrib("icon", attack.icon());
 	return_string_attrib("range", attack.range());
 	return_string_attrib("alignment", attack.alignment_str());
