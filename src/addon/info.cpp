@@ -233,7 +233,11 @@ std::string addon_info::display_icon() const
 {
 	std::string ret = icon;
 
-	if(!image::exists(image::locator{ret}) && !ret.empty()) {
+	// make sure it's set to something when there are issues
+	// otherwise display errors will spam the log while the add-ons manager is open
+	if(ret.empty()) {
+		ret = "misc/blank-hex.png";
+	} if(!image::exists(image::locator{ret}) && !ret.empty()) {
 		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'";
 		ret = "misc/blank-hex.png";
 	} else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos) {
