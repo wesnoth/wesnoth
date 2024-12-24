@@ -87,13 +87,13 @@ function gui.show_inspector(title) end
 ---@field show_headers? boolean whether to show column headers in the main list of the dialog
 
 ---@param unit_types_list unit_type[] list of units types to be shown as available recruits
----@param options? unit_dialog_options a list of optional configuration keys supplied as a config.
+---@param options? unit_dialog_options a list of optional configuration keys.
 ---@return unit_type the selected unit type or nil if not selected
 function gui.show_recruit_dialog(unit_types_list, options) end
 
 ---Show the recall dialog with the given list of units and configuration
 ---@param units_list unit[] list of units types to be shown as available recalls
----@param options? unit_dialog_options a list of optional configuration keys supplied as a config.
+---@param options? unit_dialog_options a list of optional configuration keys.
 ---@return unit the selected unit or nil if not selected
 function gui.show_recall_dialog(units_list, options) end
 
