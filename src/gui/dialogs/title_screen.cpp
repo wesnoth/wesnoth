@@ -190,6 +190,11 @@ void title_screen::init_callbacks()
 
 	find_widget<image>("logo-bg").set_image(game_config::images::game_logo_background);
 	find_widget<image>("logo").set_image(game_config::images::game_logo);
+	auto panel_icon = find_widget<image>("panel_icon", false, false);
+	if (panel_icon) {
+		panel_icon->set_image(game_config::images::game_logo_background + "~SCALE(50%,50%)");
+	}
+
 
 	//
 	// Tip-of-the-day browser
@@ -241,6 +246,20 @@ void title_screen::init_callbacks()
 
 	register_button("previous_tip", hotkey::TITLE_SCREEN__PREVIOUS_TIP,
 		std::bind(&title_screen::update_tip, this, false));
+
+	// Tip panel visiblity and close button
+	panel& tip_panel = find_widget<panel>("tip_panel");
+	if (!prefs::get().show_tips()) {
+		tip_panel.set_visible(false);
+	} else {
+		auto close = find_widget<button>("close", false, false);
+		if (close) {
+			connect_signal_mouse_left_click(*close, std::bind([&]() {
+				prefs::get().set_show_tips(false);
+				tip_panel.set_visible(false);
+			}));
+		}
+	}
 
 	//
 	// Help
