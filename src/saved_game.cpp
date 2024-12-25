@@ -270,6 +270,7 @@ void saved_game::set_defaults()
 					side.remove_attribute(attr);
 				}
 			}
+			temp["side"] = side["side"];
 			temp.swap(side);
 			temp.swap(side.add_child_at("leader", config(), 0));
 		}

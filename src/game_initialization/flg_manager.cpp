@@ -56,13 +56,13 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	, default_leader_gender_("")
 {
 	std::string leader_id = side["id"];
-	const config* cfg_leader;
+	bool found_leader;
 
 	leader_lock_ = leader_lock_ && (use_map_settings || lock_settings || default_leader_type_.empty());
 	faction_lock_ = faction_lock_ && (use_map_settings || lock_settings);
 
 	auto set_leader = [&](const config& cfg) {
-		cfg_leader = &cfg;
+		found_leader = true;
 		leader_id = cfg["id"];
 		default_leader_type_ = cfg["type"];
 		default_leader_gender_ = cfg["gender"];
@@ -88,7 +88,7 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 		}
 	}
 
-	if(!cfg_leader) {
+	if(!found_leader) {
 		// Find a unit which can recruit.
 		if(auto p_cfg = side.find_child("unit", "canrecruit", "yes")) {
 			set_leader(*p_cfg);
