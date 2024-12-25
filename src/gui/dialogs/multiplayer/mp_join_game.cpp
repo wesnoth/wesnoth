@@ -385,7 +385,7 @@ void mp_join_game::generate_side_list()
 		data.emplace("side_number", item);
 
 		std::string leader_image = ng::random_enemy_picture;
-	
+
 		const config& leader = side.child_or_empty("leader");
 		std::string leader_type = leader["type"];
 		std::string leader_gender = leader["gender"];
