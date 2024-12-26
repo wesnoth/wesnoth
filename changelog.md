@@ -12,6 +12,7 @@
 ### Units
 ### User interface
 ### WML Engine
+   * [variables] in [side] no longer sets variables of the implicit leader unit (it now only sets the sides variables), to create a leader unit with variables, [leader] must be used instead. (issue #3742)
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.7
