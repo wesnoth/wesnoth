@@ -205,12 +205,6 @@ void connect_signal_notify_modified(dispatcher& dispatcher, const signal_notific
 	dispatcher.connect_signal<NOTIFY_MODIFIED>(signal);
 }
 
-void connect_signal_on_draw(dispatcher& dispatcher, const signal& signal)
-{
-	// TODO: evaluate whether draw events need go in this queue position.
-	dispatcher.connect_signal<DRAW>(signal, dispatcher::front_child);
-}
-
 } // namespace event
 
 } // namespace gui2

@@ -678,9 +678,6 @@ void connect_signal_mouse_left_double_click(dispatcher& dispatcher, const signal
 /** Connects a signal handler for getting a notification upon modification. */
 void connect_signal_notify_modified(dispatcher& dispatcher, const signal_notification& signal);
 
-/** Connects a signal handler for a callback when the widget is drawn. */
-void connect_signal_on_draw(dispatcher& dispatcher, const signal& signal);
-
 } // namespace event
 
 } // namespace gui2
