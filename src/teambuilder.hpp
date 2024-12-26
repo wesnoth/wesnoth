@@ -54,8 +54,6 @@ private:
 	// only used for objectives
 	const config& level_;
 	game_board& board_;
-	// only used for debug message
-	bool player_exists_;
 	std::set<std::string> seen_ids_;
 	int side_;
 	const config& side_cfg_;

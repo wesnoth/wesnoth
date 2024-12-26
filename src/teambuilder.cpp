@@ -38,7 +38,6 @@ team_builder::team_builder(const config& side_cfg, team& to_build, const config&
 	, leader_configs_()
 	, level_(level)
 	, board_(board)
-	, player_exists_(false)
 	, seen_ids_()
 	, side_(num)
 	, side_cfg_(side_cfg)
@@ -95,14 +94,9 @@ void team_builder::init()
 
 	log_step("init");
 
-	// track whether a [player] tag with persistence information exists (in addition to the [side] tag)
-	player_exists_ = false;
-
 	if(board_.map().empty()) {
 		throw game::load_game_failed("Map not found");
 	}
-
-	DBG_NG_TC << "snapshot: " << utils::bool_string(player_exists_);
 
 	unit_configs_.clear();
 	seen_ids_.clear();
