@@ -237,7 +237,7 @@ bool fire_event(const ui_event event,
 	bool halt = false;
 
 	/***** ***** ***** Pre ***** ***** *****/
-	for(const auto& [chain_target, chain_event] : utils::reversed_view(event_chain)) {
+	for(const auto& [chain_target, chain_event] : event_chain | utils::views::reverse) {
 		const auto& signal = dispatcher_implementation::event_signal<C>(*chain_target, chain_event);
 
 		for(const auto& pre_func : signal.pre_child) {
