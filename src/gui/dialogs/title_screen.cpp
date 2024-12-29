@@ -192,7 +192,7 @@ void title_screen::init_callbacks()
 	find_widget<image>("logo").set_image(game_config::images::game_logo);
 	auto panel_icon = find_widget<image>("panel_icon", false, false);
 	if (panel_icon) {
-		panel_icon->set_image(game_config::images::game_logo_background + "~SCALE(50%,50%)");
+		panel_icon->set_image(game_config::images::game_logo_background + "~CROP_TRANSPARENCY()~SCALE(75%,75%)");
 	}
 
 
