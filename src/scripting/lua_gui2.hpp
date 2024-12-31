@@ -34,6 +34,8 @@ int show_story(lua_State* L);
 int show_message_box(lua_State* L);
 int show_lua_console(lua_State*L, lua_kernel_base * lk);
 int show_gamestate_inspector(const std::string& name, const game_data& data, const game_state& state);
+int intf_show_recruit_dialog(lua_State* L);
+int intf_show_recall_dialog(lua_State* L);
 int luaW_open(lua_State *L);
 
 } // end namespace lua_gui2
