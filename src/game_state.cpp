@@ -434,6 +434,6 @@ void game_state::add_side_wml(config cfg)
 	cfg["controller"] = side_controller::none;
 	//TODO: is this it? are there caches which must be cleared?
 	board_.teams().emplace_back();
-	board_.teams().back().build(cfg, board_.map(), cfg["gold"].to_int());
+	board_.teams().back().build(cfg, board_.map());
 	config choice = synced_context::ask_server_choice(add_side_wml_choice());
 }
