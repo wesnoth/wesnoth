@@ -1062,7 +1062,7 @@ void selection::init(grid* g,
 			} else if(child_grid) {
 				init(child_grid, data, callback);
 			} else {
-				FAIL("Only toggle buttons and panels are allowed as the cells of a list definition.");
+				FAIL("In widget '" + widget->id() + "': only toggle buttons and panels are allowed as the cells of a list definition.");
 			}
 		}
 	}

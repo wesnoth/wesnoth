@@ -394,6 +394,15 @@ public:
 	typedef std::map<std::string,unit_type> unit_type_map;
 
 	const unit_type_map &types() const { return types_; }
+	const std::vector<const unit_type*> types_list() const {
+		std::vector<const unit_type*> types_list;
+		for(const auto& i : types()) {
+			// Make sure this unit type is built with the data we need.
+			build_unit_type(i.second, unit_type::FULL);
+			types_list.push_back(&i.second);
+		}
+		return types_list;
+	}
 	const race_map &races() const { return races_; }
 	const movement_type_map &movement_types() const { return movement_types_; }
 	config_array_view traits() const { return units_cfg().child_range("trait"); }
