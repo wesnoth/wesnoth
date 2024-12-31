@@ -34,8 +34,7 @@ static lg::log_domain log_engine_tc("engine/team_construction");
 #define DBG_NG_TC LOG_STREAM(debug, log_engine_tc)
 
 team_builder::team_builder(const config& side_cfg, team& to_build, const config& level, game_board& board, int num)
-	: gold_info_ngold_(0)
-	, leader_configs_()
+	: leader_configs_()
 	, level_(level)
 	, board_(board)
 	, seen_ids_()
@@ -50,9 +49,6 @@ void team_builder::build_team_stage_one()
 {
 	// initialize the context variables and flags, find relevant tags, set up everything
 	init();
-
-	// find out the correct qty of gold and handle gold carryover.
-	gold();
 
 	// builds the team for the given side
 	new_team();
@@ -102,19 +98,11 @@ void team_builder::init()
 	seen_ids_.clear();
 }
 
-void team_builder::gold()
-{
-	log_step("gold");
-
-	gold_info_ngold_ = side_cfg_["gold"].to_int();
-
-	DBG_NG_TC << "set gold to '" << gold_info_ngold_ << "'";
-}
 
 void team_builder::new_team()
 {
 	log_step("new team");
-	team_.build(side_cfg_, board_.map(), gold_info_ngold_);
+	team_.build(side_cfg_, board_.map());
 }
 
 void team_builder::objectives()
