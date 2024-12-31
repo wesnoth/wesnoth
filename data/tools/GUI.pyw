@@ -776,7 +776,7 @@ class WmllintTab(Frame):
         self.missing_check = Checkbutton(self.options_frame,
                                          # TRANSLATORS: 'side=' in this context refers to WML and should not be
                                          # translated.
-                                         text=_("Do not warn about tags without side= keys"),
+                                         text=_("Warn about tags without side= keys"),
                                          variable=self.missing_variable)
         self.missing_check.grid(row=1,
                                 column=0,
