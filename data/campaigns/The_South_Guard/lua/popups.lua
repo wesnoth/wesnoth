@@ -5,32 +5,6 @@ local _ = wesnoth.textdomain "wesnoth-tsg"
 -- metatable for GUI tags
 local T = wml.tag
 
--- helpful debug function for printing a table
-function tprint (tbl, indent)
-	if not indent then indent = 0 end
-	local toprint = string.rep(" ", indent) .. "{\r\n"
-	indent = indent + 2 
-	for k, v in pairs(tbl) do
-		toprint = toprint .. string.rep(" ", indent)
-		if (type(k) == "number") then
-			toprint = toprint .. "[" .. k .. "] = "
-		elseif (type(k) == "string") then
-			toprint = toprint  .. k ..  "= "   
-		end
-		if (type(v) == "number") then
-			toprint = toprint .. v .. ",\r\n"
-		elseif (type(v) == "string") then
-			toprint = toprint .. "\"" .. v .. "\",\r\n"
-		elseif (type(v) == "table") then
-			toprint = toprint .. tprint(v, indent + 2) .. ",\r\n"
-		else
-			toprint = toprint .. "\"" .. tostring(v) .. "\",\r\n"
-		end
-	end
-	toprint = toprint .. string.rep(" ", indent-2) .. "}"
-	return toprint
-end
-
 
 
 
@@ -61,19 +35,19 @@ function display_tip(cfg)
 	local tutor_title = cfg.title
 	local tutor_message = cfg.message
 	local tutor_image = cfg.image
-	
+
 	--###############################
 	-- DEFINE GRID
 	--###############################
 	local grid = T.grid{ T.row{
-		T.column{ T.label{  use_markup=true,  label="<span size='40000'> </span>"  }}, 
-		T.column{ border="right,left,bottom", border_size=18, T.grid{ 
+		T.column{ T.label{  use_markup=true,  label="<span size='40000'> </span>"  }},
+		T.column{ border="right,left,bottom", border_size=18, T.grid{
 			-------------------------
 			-- TITLE
 			-------------------------
 			T.row{ T.column{ T.image{  label="icons/banner3.png"  }}},
 			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='8000'> </span>"  }}},
-			T.row{ T.column{ 
+			T.row{ T.column{
 				horizontal_alignment="center",
 				T.label{  definition="title",  label=_"Tip: "..tutor_title,  }
 			}},
@@ -82,7 +56,7 @@ function display_tip(cfg)
 			-- INFO
 			-------------------------
 			T.row{ T.column{ T.grid{ T.row{
-				T.column{ 
+				T.column{
 					horizontal_alignment="left",
 					T.label{
 						use_markup=true,
@@ -114,7 +88,7 @@ function display_tip(cfg)
 		}},
 		T.column{ T.label{  use_markup=true,  label="<span size='40000'> </span>"  }},
 	}}
-	
+
 	--###############################
 	-- CREATE DIALOG
 	--###############################
