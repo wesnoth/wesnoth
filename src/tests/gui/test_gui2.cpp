@@ -38,7 +38,7 @@
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
-#include "gui/dialogs/addon/manager.hpp"	
+#include "gui/dialogs/addon/manager.hpp"
 #include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/attack_predictions.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
