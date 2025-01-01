@@ -76,6 +76,7 @@ const std::size_t max_loop = 65536;
 std::vector<server_info> server_list;
 
 bool allow_insecure = false;
+bool addon_server_info = false;
 
 //
 // Gamestate flags

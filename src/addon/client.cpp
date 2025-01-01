@@ -84,7 +84,7 @@ void addons_client::connect()
 	send_simple_request("server_id", response_buf);
 	wait_for_transfer_done(msg);
 
-	if(!update_last_error(response_buf)) {
+	if(!is_error_response(response_buf)) {
 		if(auto info = response_buf.optional_child("server_id")) {
 			server_id_ = info["id"].str();
 			server_version_ = info["version"].str();
@@ -112,6 +112,162 @@ void addons_client::connect()
 			   << " supports: " << utils::join(server_capabilities_, " ");
 }
 
+int addons_client::get_addon_count()
+{
+	config response;
+	config request;
+	request.add_child("addon_count");
+
+	send_request(request, response);
+	wait_for_transfer_done(_("Requesting add-on count..."));
+
+	if(is_error_response(response)) {
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
+		return -1;
+	}
+
+	return response["count"].to_int(-1);
+}
+
+
+std::map<std::string, int> addons_client::get_addon_count_by_type()
+{
+	std::map<std::string, int> counts;
+
+	config response;
+	config request;
+	request.add_child("addon_count_by_type");
+
+	send_request(request, response);
+	wait_for_transfer_done(_("Requesting add-on counts by type..."));
+
+	for(const auto& attr : response.attribute_range()) {
+		counts[attr.first] = attr.second.to_int();
+	}
+
+	if(is_error_response(response)) {
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
+		return counts;
+	}
+
+	return counts;
+}
+
+config addons_client::get_addon_downloads_by_version(const std::string& addon)
+{
+	config response;
+	config request;
+	config& child = request.add_child("addon_downloads_by_version");
+	child["addon"] = addon;
+
+	send_request(request, response);
+	wait_for_transfer_done(_("Requesting add-on downloads by version..."));
+
+	if(is_error_response(response)) {
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
+		config dummy;
+		return dummy;
+	}
+
+	return response;
+}
+
+config addons_client::get_forum_auth_usage()
+{
+	config response;
+	config request;
+	request.add_child("forum_auth_usage");
+
+	send_request(request, response);
+	wait_for_transfer_done(_("Requesting forum_auth usage..."));
+
+	if(is_error_response(response)) {
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
+		config dummy;
+		return dummy;
+	}
+
+	return response;
+}
+
+config addons_client::get_addon_admins()
+{
+	config response;
+	config request;
+	request.add_child("admins_list");
+
+	send_request(request, response);
+	wait_for_transfer_done(_("Requesting list of admins..."));
+
+	if(is_error_response(response)) {
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
+		config dummy;
+		return dummy;
+	}
+
+	return response;
+}
+
+config addons_client::get_hidden_addons(const std::string& username, const std::string& passphrase)
+{
+	config response;
+	config request;
+	config& child = request.add_child("list_hidden");
+	child["username"] = username;
+	child["passphrase"] = passphrase;
+
+	send_request(request, response);
+	wait_for_transfer_done(_("Getting list of hidden add-ons..."));
+
+	if(is_error_response(response)) {
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
+		config dummy;
+		return dummy;
+	}
+
+	return response;
+}
+
+bool addons_client::hide_addon(const std::string& addon, const std::string& username, const std::string& passphrase)
+{
+	config response;
+	config request;
+	config& child = request.add_child("hide_addon");
+	child["addon"] = addon;
+	child["username"] = username;
+	child["passphrase"] = passphrase;
+
+	send_request(request, response);
+	wait_for_transfer_done(_("Hiding add-on..."));
+
+	if(is_error_response(response)) {
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
+		return false;
+	}
+
+	return true;
+}
+
+bool addons_client::unhide_addon(const std::string& addon, const std::string& username, const std::string& passphrase)
+{
+	config response;
+	config request;
+	config& child = request.add_child("unhide_addon");
+	child["addon"] = addon;
+	child["username"] = username;
+	child["passphrase"] = passphrase;
+
+	send_request(request, response);
+	wait_for_transfer_done(_("Unhiding add-on..."));
+
+	if(is_error_response(response)) {
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
+		return false;
+	}
+
+	return true;
+}
+
 bool addons_client::request_addons_list(config& cfg, bool icons)
 {
 	cfg.clear();
@@ -130,7 +286,7 @@ bool addons_client::request_addons_list(config& cfg, bool icons)
 
 	std::swap(cfg, response_buf.mandatory_child("campaigns"));
 
-	return !update_last_error(response_buf);
+	return !is_error_response(response_buf);
 }
 
 bool addons_client::request_distribution_terms(std::string& terms)
@@ -153,7 +309,7 @@ bool addons_client::request_distribution_terms(std::string& terms)
 		terms = msg_cfg["message"].str();
 	}
 
-	return !update_last_error(response_buf);
+	return !is_error_response(response_buf);
 }
 
 bool addons_client::upload_addon(const std::string& id, std::string& response_message, config& cfg, bool local_only)
@@ -251,7 +407,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 					LOG_ADDONS << "server response: " << response_message;
 				}
 
-				if(!update_last_error(response_buf))
+				if(!is_error_response(response_buf))
 					return true;
 			}
 		}
@@ -272,16 +428,21 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 		LOG_ADDONS << "server response: " << response_message;
 	}
 
-	return !update_last_error(response_buf);
+	return !is_error_response(response_buf);
 
 }
 
-bool addons_client::delete_remote_addon(const std::string& id, std::string& response_message)
+bool addons_client::delete_remote_addon(const std::string& id, std::string& response_message, const std::set<std::string>& admin_set)
 {
 	response_message.clear();
 
-	// No point in validating when we're deleting it.
-	config cfg = get_addon_pbl_info(id, false);
+	config cfg;
+	if(admin_set.empty()) {
+		// No point in validating when we're deleting it.
+		cfg = get_addon_pbl_info(id, false);
+	} else {
+		cfg["primary_authors"] = utils::join(admin_set);
+	}
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = font::escape_text(cfg["title"].str());
@@ -299,7 +460,7 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 			config dummy;
 			config& error = dummy.add_child("error");
 			error["message"] = "Password not provided.";
-			return !update_last_error(dummy);
+			return !is_error_response(dummy);
 		} else {
 			prefs::get().set_password(prefs::get().campaign_server(), cfg["author"], cfg["passphrase"]);
 		}
@@ -320,7 +481,7 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 		LOG_ADDONS << "server response: " << response_message;
 	}
 
-	return !update_last_error(response_buf);
+	return !is_error_response(response_buf);
 }
 
 bool addons_client::download_addon(config& archive_cfg, const std::string& id, const std::string& title, const version_info& version, bool increase_downloads)
@@ -343,7 +504,7 @@ bool addons_client::download_addon(config& archive_cfg, const std::string& id, c
 	send_request(request_buf, archive_cfg);
 	wait_for_transfer_done(VGETTEXT("Downloading add-on <i>$addon_title</i>...", i18n_symbols));
 
-	return !update_last_error(archive_cfg);
+	return !is_error_response(archive_cfg);
 }
 
 bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
@@ -603,7 +764,7 @@ addons_client::install_result addons_client::install_addon_with_checks(const add
 	}
 }
 
-bool addons_client::update_last_error(config& response_cfg)
+bool addons_client::is_error_response(const config& response_cfg)
 {
 	if(auto error = response_cfg.optional_child("error")) {
 		if(error->has_attribute("status_code")) {
