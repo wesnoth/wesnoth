@@ -1526,9 +1526,13 @@ namespace { // Helpers for attack_type::special_active()
 				return false;
 			}
 		}
+		attack_type::tag_name_guard tag_name_lock;
+		if (weapon && (filter_child->optional_child("has_attack") || filter_child->optional_child("filter_weapon"))) {
+			tag_name_lock  = weapon->update_variables_tag_name(check_if_recursion);
+		}
 		// Check for a weapon match.
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
-			if ( !weapon || !weapon->matches_filter(*filter_weapon, check_if_recursion) )
+			if ( !weapon || !weapon->matches_filter(*filter_weapon) )
 				return false;
 		}
 
@@ -1570,6 +1574,10 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 
 unit_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
 {
+	const std::string& check_if_recursion = !open_tag_name_.empty() ? open_tag_name_.front() : "";
+	if(check_if_recursion == special){
+		return {};
+	}
 	// get all weapon specials of the provided type
 	unit_ability_list abil_list = get_specials(special);
 	// append all such weapon specials as abilities as well
