@@ -246,6 +246,21 @@ public:
 	 */
 	bool do_any_authors_exist(const std::string& instance_version, const std::string& id);
 
+	/**
+	 * @see forum_user_handler::get_addon_downloads_info().
+	 */
+	config get_addon_downloads_info(const std::string& instance_version, const std::string& id);
+
+	/**
+	 * @see forum_user_handler::get_forum_auth_usage().
+	 */
+	config get_forum_auth_usage(const std::string& instance_version);
+
+	/**
+	 * @see forum_user_handler::get_addon_admins().
+	 */
+	config get_addon_admins(int site_admin_group, int forum_admin_group);
+
 private:
 	/**
 	 * The account used to connect to the database.
@@ -306,6 +321,10 @@ private:
 	 */
 	void get_complex_results(
 		const mariadb::connection_ref& connection, rs_base& base, const std::string& sql, const sql_parameters& params);
+
+	template <typename F>
+	config get_complex_results(
+		const mariadb::connection_ref& connection, F* func, const std::string& sql, const sql_parameters& params);
 
 	/**
 	 * @param connection The database connection that will be used to execute the query.

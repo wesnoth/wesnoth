@@ -112,6 +112,75 @@ void addons_client::connect()
 			   << " supports: " << utils::join(server_capabilities_, " ");
 }
 
+int addons_client::get_addon_count()
+{
+	config response;
+	config request;
+	request.add_child("addon_count");
+
+	send_request(request, response);
+	wait_for_transfer_done(_("Requesting add-on count..."));
+	return response["count"].to_int(-1);
+}
+
+
+std::map<std::string, int> addons_client::get_addon_count_by_type()
+{
+	std::map<std::string, int> counts;
+
+	config response;
+	config request;
+	request.add_child("addon_count_by_type");
+
+	send_request(request, response);
+	wait_for_transfer_done(_("Requesting add-on counts by type..."));
+
+	for(const auto& attr : response.attribute_range()) {
+		counts[attr.first] = attr.second.to_int();
+	}
+
+	return counts;
+}
+
+config addons_client::get_addon_downloads_by_version(const std::string& addon)
+{
+	std::map<std::string, int> downloads;
+
+	config response;
+	config request;
+	config& child = request.add_child("addon_downloads_by_version");
+	child["addon"] = addon;
+
+	send_request(request, response);
+	wait_for_transfer_done(_("Requesting add-on downloads by version..."));
+
+	return response;
+}
+
+config addons_client::get_forum_auth_usage()
+{
+	config response;
+	config request;
+	request.add_child("forum_auth_usage");
+
+	send_request(request, response);
+	wait_for_transfer_done(_("Requesting forum_auth usage..."));
+
+	return response;
+}
+
+config addons_client::get_site_admins()
+{
+	config response;
+	config request;
+	request.add_child("admins_list");
+
+	send_request(request, response);
+	wait_for_transfer_done(_("Requesting list of admins..."));
+
+	return response;
+}
+
 bool addons_client::request_addons_list(config& cfg, bool icons)
 {
 	cfg.clear();
@@ -276,12 +345,17 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 
 }
 
-bool addons_client::delete_remote_addon(const std::string& id, std::string& response_message)
+bool addons_client::delete_remote_addon(const std::string& id, std::string& response_message, const std::set<std::string>& admin_set)
 {
 	response_message.clear();
 
-	// No point in validating when we're deleting it.
-	config cfg = get_addon_pbl_info(id, false);
+	config cfg;
+	if(admin_set.empty()) {
+		// No point in validating when we're deleting it.
+		cfg = get_addon_pbl_info(id, false);
+	} else {
+		cfg["primary_authors"] = utils::join(admin_set);
+	}
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = font::escape_text(cfg["title"].str());
