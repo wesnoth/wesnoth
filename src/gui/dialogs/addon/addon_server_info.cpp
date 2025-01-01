@@ -35,19 +35,19 @@ addon_server_info::addon_server_info(addons_client& client, const std::string& a
 	connect_signal_mouse_left_click(
 		find_widget<button>("addon_count"),
 		std::bind(&addon_server_info::addon_count, this));
-	
+
 	connect_signal_mouse_left_click(
 		find_widget<button>("addon_count_by_type"),
 		std::bind(&addon_server_info::addon_count_by_type, this));
-	
+
 	connect_signal_mouse_left_click(
 		find_widget<button>("downloads_by_version"),
 		std::bind(&addon_server_info::downloads_by_version, this));
-	
+
 	connect_signal_mouse_left_click(
 		find_widget<button>("addon_count_by_forum_auth"),
 		std::bind(&addon_server_info::addon_count_by_forum_auth, this));
-	
+
 	connect_signal_mouse_left_click(
 		find_widget<button>("admin_delete_addon"),
 		std::bind(&addon_server_info::admin_delete_addon, this));
@@ -55,12 +55,12 @@ addon_server_info::addon_server_info(addons_client& client, const std::string& a
 
 void addon_server_info::pre_show()
 {
-	
+
 }
 
 void addon_server_info::post_show()
 {
-	
+
 }
 
 void addon_server_info::addon_count()
@@ -91,7 +91,7 @@ void addon_server_info::addon_count_by_forum_auth()
 void addon_server_info::admin_delete_addon()
 {
 	config admins = client_.get_site_admins();
-	
+
 	std::set<std::string> admin_set;
 	for(const auto& admin : admins.child_range("admin")) {
 		admin_set.emplace(admin["username"]);

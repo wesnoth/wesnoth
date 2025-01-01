@@ -326,7 +326,7 @@ public:
 
 	/**
 	 * Gets a list of download count by version for add-ons.
-	 * 
+	 *
 	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
 	 * @param id The ID of the add-on.
 	 * @return The results of the query.

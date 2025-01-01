@@ -190,6 +190,7 @@ public:
 	 *
 	 * @param id               ID of the add-on to take down.
 	 * @param response_message The server response message on success, such as "add-on accepted".
+	 * @param admin_set        The list of admin usernames as provided by the server, if doing an admin-restricted action
 	 */
 	bool delete_remote_addon(const std::string& id, std::string& response_message, const std::set<std::string>& admin_set = {});
 

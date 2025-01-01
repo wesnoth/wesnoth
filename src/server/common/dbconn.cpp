@@ -584,7 +584,7 @@ bool dbconn::do_any_authors_exist(const std::string& instance_version, const std
 }
 
 config dbconn::get_addon_downloads_info(const std::string& instance_version, const std::string& id) {
-	auto cfg_result = [](mariadb::result_set_ref rslt) -> config { 
+	auto cfg_result = [](const mariadb::result_set_ref& rslt) -> config {
 		config c;
 
 		while(rslt->next()) {
@@ -602,7 +602,7 @@ config dbconn::get_addon_downloads_info(const std::string& instance_version, con
 }
 
 config dbconn::get_forum_auth_usage(const std::string& instance_version) {
-	auto cfg_result = [](mariadb::result_set_ref rslt) -> config { 
+	auto cfg_result = [](const mariadb::result_set_ref& rslt) -> config {
 		config c;
 
 		if(rslt->next()) {
@@ -620,7 +620,7 @@ config dbconn::get_forum_auth_usage(const std::string& instance_version) {
 }
 
 config dbconn::get_addon_admins(int site_admin_group, int forum_admin_group) {
-	auto cfg_result = [](mariadb::result_set_ref rslt) -> config { 
+	auto cfg_result = [](const mariadb::result_set_ref& rslt) -> config {
 		config c;
 
 		while(rslt->next()) {
