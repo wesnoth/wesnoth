@@ -151,7 +151,7 @@ public:
 
 	// In unit_types.cpp:
 
-	bool matches_filter(const config& filter, const std::string& check_if_recursion = "") const;
+	bool matches_filter(const config& filter) const;
 	bool apply_modification(const config& cfg);
 	bool describe_modification(const config& cfg,std::string* description);
 
@@ -177,7 +177,7 @@ public:
 		/**
 		 * Only expected to be called in update_variables_recursion(), which handles some of the checks.
 		 */
-		explicit recursion_guard(const attack_type& weapon, const config& special);
+		explicit recursion_guard(const attack_type& weapon, const config& special, const std::string& tag_name);
 	public:
 		/**
 		 * Construct an empty instance, only useful for extending the lifetime of a
@@ -211,7 +211,11 @@ public:
 	 * that assumption, for example its' mutable members are assumed to be set up by the current
 	 * caller (or caller's caller, probably several layers up).
 	 */
-	recursion_guard update_variables_recursion(const config& special) const;
+	recursion_guard update_variables_recursion(const config& special, const std::string& tag_name = "") const;
+	/**
+	 * Tests if equals to tag name of special, if yes, then don't call function checked.
+	 */
+	std::string open_tag_name() const {return !open_tag_name_.empty() ? open_tag_name_.back() : "";};
 
 private:
 	// In unit_abilities.cpp:
@@ -448,6 +452,8 @@ private:
 	 * which will pop the config off this stack when the recursion_guard is finalized.
 	 */
 	mutable std::vector<const config*> open_queries_;
+
+	mutable std::vector<std::string> open_tag_name_;
 };
 
 using attack_list = std::vector<attack_ptr>;

@@ -1519,7 +1519,7 @@ namespace { // Helpers for attack_type::special_active()
 
 		attack_type::recursion_guard filter_lock;
 		if (weapon && (filter_child->optional_child("has_attack") || filter_child->optional_child("filter_weapon"))) {
-			filter_lock  = weapon->update_variables_recursion(filter);
+			filter_lock  = weapon->update_variables_recursion(filter, check_if_recursion);
 			if(!filter_lock) {
 				show_recursion_warning(weapon, filter);
 				return false;
@@ -1527,7 +1527,7 @@ namespace { // Helpers for attack_type::special_active()
 		}
 		// Check for a weapon match.
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
-			if ( !weapon || !weapon->matches_filter(*filter_weapon, check_if_recursion) )
+			if ( !weapon || !weapon->matches_filter(*filter_weapon) )
 				return false;
 		}
 

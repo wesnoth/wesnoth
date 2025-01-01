@@ -102,7 +102,7 @@ std::string attack_type::accuracy_parry_description() const
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
  */
-static bool matches_simple_filter(const attack_type & attack, const config & filter, const std::string& check_if_recursion)
+static bool matches_simple_filter(const attack_type & attack, const config & filter)
 {
 	const std::set<std::string> filter_range = utils::split_set(filter["range"].str());
 	const std::string& filter_min_range = filter["min_range"];
@@ -163,7 +163,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		// should always use the base type of the weapon. Otherwise it will flip-flop between the
 		// special being active or inactive based on whether ATTACK_RECURSION_LIMIT is even or odd;
 		// without this it will also behave differently when calculating resistance_against.
-		if(check_if_recursion == "damage_type"){
+		if(attack.open_tag_name() == "damage_type"){
 			if (filter_type.count(attack.type()) == 0){
 				return false;
 			}
@@ -284,25 +284,25 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 /**
  * Returns whether or not *this matches the given @a filter.
  */
-bool attack_type::matches_filter(const config& filter, const std::string& check_if_recursion) const
+bool attack_type::matches_filter(const config& filter) const
 {
 	// Handle the basic filter.
-	bool matches = matches_simple_filter(*this, filter, check_if_recursion);
+	bool matches = matches_simple_filter(*this, filter);
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for(const auto [key, condition_cfg] : filter.all_children_view() )
 	{
 		// Handle [and]
 		if ( key == "and" )
-			matches = matches && matches_filter(condition_cfg, check_if_recursion);
+			matches = matches && matches_filter(condition_cfg);
 
 		// Handle [or]
 		else if ( key == "or" )
-			matches = matches || matches_filter(condition_cfg, check_if_recursion);
+			matches = matches || matches_filter(condition_cfg);
 
 		// Handle [not]
 		else if ( key == "not" )
-			matches = matches && !matches_filter(condition_cfg, check_if_recursion);
+			matches = matches && !matches_filter(condition_cfg);
 	}
 
 	return matches;
@@ -674,20 +674,22 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 	return true;
 }
 
-attack_type::recursion_guard attack_type::update_variables_recursion(const config& special) const
+attack_type::recursion_guard attack_type::update_variables_recursion(const config& special, const std::string& tag_name) const
 {
 	if(utils::contains(open_queries_, &special)) {
 		return recursion_guard();
 	}
-	return recursion_guard(*this, special);
+	return recursion_guard(*this, special, tag_name);
 }
 
 attack_type::recursion_guard::recursion_guard() = default;
 
-attack_type::recursion_guard::recursion_guard(const attack_type& weapon, const config& special)
+attack_type::recursion_guard::recursion_guard(const attack_type& weapon, const config& special, const std::string& tag_name)
 	: parent(weapon.shared_from_this())
 {
 	parent->open_queries_.emplace_back(&special);
+	std::string temp_tag = !tag_name.empty() ? tag_name : "empty";
+	parent->open_tag_name_.emplace_back(temp_tag);
 }
 
 attack_type::recursion_guard::recursion_guard(attack_type::recursion_guard&& other)
@@ -717,6 +719,9 @@ attack_type::recursion_guard::~recursion_guard()
 		// without checking that the top of the stack matches the filter passed to the constructor.
 		assert(!parent->open_queries_.empty());
 		parent->open_queries_.pop_back();
+		if(!parent->open_tag_name_.empty()){
+			parent->open_tag_name_.pop_back();
+		}
 	}
 }
 

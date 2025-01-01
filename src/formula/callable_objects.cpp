@@ -87,9 +87,9 @@ variant attack_type_callable::get_value(const std::string& key) const
 		return variant(att_->id());
 	} else if(key == "description") {
 		return variant(att_->name());
-	} else if(key == "base_type") {
+	} else if(key == "base_type" || (key == "type" && att_->open_tag_name() == "damage_type")) {
 		return variant(att_->type());
-	} else if(key == "type") {
+	} else if(key == "type" && att_->open_tag_name() != "damage_type") {
 		return variant(att_->effective_damage_type().first);
 	} else if(key == "icon") {
 		return variant(att_->icon());
