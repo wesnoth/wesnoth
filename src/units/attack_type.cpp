@@ -102,7 +102,7 @@ std::string attack_type::accuracy_parry_description() const
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
  */
-static bool matches_simple_filter(const attack_type & attack, const config & filter, const std::string& check_if_recursion)
+static bool matches_simple_filter(const attack_type & attack, const config & filter)
 {
 	const std::set<std::string> filter_range = utils::split_set(filter["range"].str());
 	const std::string& filter_min_range = filter["min_range"];
@@ -158,20 +158,9 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		return false;
 
 	if (!filter_type.empty()){
-		// Although there's a general guard against infinite recursion, the "damage_type" special
-		// should always use the base type of the weapon. Otherwise it will flip-flop between the
-		// special being active or inactive based on whether ATTACK_RECURSION_LIMIT is even or odd;
-		// without this it will also behave differently when calculating resistance_against.
-		if(check_if_recursion == "damage_type"){
-			if (filter_type.count(attack.type()) == 0){
-				return false;
-			}
-		} else {
-			//if the type is different from "damage_type" then damage_type() can be called for safe checking.
-			std::pair<std::string, std::string> damage_type = attack.damage_type();
-			if (filter_type.count(damage_type.first) == 0 && filter_type.count(damage_type.second) == 0){
-				return false;
-			}
+		std::pair<std::string, std::string> damage_type = attack.damage_type();
+		if (filter_type.count(damage_type.first) == 0 && filter_type.count(damage_type.second) == 0){
+			return false;
 		}
 	}
 
@@ -281,25 +270,25 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 /**
  * Returns whether or not *this matches the given @a filter.
  */
-bool attack_type::matches_filter(const config& filter, const std::string& check_if_recursion) const
+bool attack_type::matches_filter(const config& filter) const
 {
 	// Handle the basic filter.
-	bool matches = matches_simple_filter(*this, filter, check_if_recursion);
+	bool matches = matches_simple_filter(*this, filter);
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for(const auto [key, condition_cfg] : filter.all_children_view() )
 	{
 		// Handle [and]
 		if ( key == "and" )
-			matches = matches && matches_filter(condition_cfg, check_if_recursion);
+			matches = matches && matches_filter(condition_cfg);
 
 		// Handle [or]
 		else if ( key == "or" )
-			matches = matches || matches_filter(condition_cfg, check_if_recursion);
+			matches = matches || matches_filter(condition_cfg);
 
 		// Handle [not]
 		else if ( key == "not" )
-			matches = matches && !matches_filter(condition_cfg, check_if_recursion);
+			matches = matches && !matches_filter(condition_cfg);
 	}
 
 	return matches;
@@ -714,6 +703,52 @@ attack_type::recursion_guard::~recursion_guard()
 		// without checking that the top of the stack matches the filter passed to the constructor.
 		assert(!parent->open_queries_.empty());
 		parent->open_queries_.pop_back();
+	}
+}
+
+attack_type::tag_name_guard attack_type::update_variables_tag_name(const std::string& tag_name) const
+{
+	if(utils::contains(open_tag_name_, tag_name)) {
+		return tag_name_guard();
+	}
+	return tag_name_guard(*this, tag_name);
+}
+
+attack_type::tag_name_guard::tag_name_guard() = default;
+
+attack_type::tag_name_guard::tag_name_guard(const attack_type& weapon, const std::string& tag_name)
+	: parent(weapon.shared_from_this())
+{
+	parent->open_tag_name_.emplace_back(tag_name);
+}
+
+attack_type::tag_name_guard::tag_name_guard(attack_type::tag_name_guard&& other)
+{
+	std::swap(parent, other.parent);
+}
+
+attack_type::tag_name_guard::operator bool() const {
+	return bool(parent);
+}
+
+attack_type::tag_name_guard& attack_type::tag_name_guard::operator=(attack_type::tag_name_guard&& other)
+{
+	// This is only intended to move ownership to a longer-living variable. Assigning to an instance that
+	// already has a parent implies that the caller is going to recurse and needs a recursion allocation,
+	// but is accidentally dropping one of the allocations that it already has; hence the asserts.
+	assert(this != &other);
+	assert(!parent);
+	std::swap(parent, other.parent);
+	return *this;
+}
+
+attack_type::tag_name_guard::~tag_name_guard()
+{
+	if(parent) {
+		// As this only expects nested recursion, simply pop the top of the open_tag_name stack
+		// without checking that the top of the stack matches the filter passed to the constructor.
+		assert(!parent->open_tag_name_.empty());
+		parent->open_tag_name_.pop_back();
 	}
 }
 
