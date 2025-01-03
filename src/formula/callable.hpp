@@ -71,12 +71,12 @@ public:
 
 	bool equals(const formula_callable& other) const
 	{
-		return do_compare(&other) == 0;
+		return do_compare(other) == 0;
 	}
 
 	bool less(const formula_callable& other) const
 	{
-		return do_compare(&other) < 0;
+		return do_compare(other) < 0;
 	}
 
 	bool has_key(const std::string& key) const
@@ -143,17 +143,17 @@ protected:
 		PLAIN_LOG << "ERROR: cannot set key '" << key << "' on object";
 	}
 
-	virtual int do_compare(const formula_callable* callable) const
+	virtual int do_compare(const formula_callable& callable) const
 	{
-		if(type_ < callable->type_) {
+		if(type_ < callable.type_) {
 			return -1;
 		}
 
-		if(type_ > callable->type_) {
+		if(type_ > callable.type_) {
 			return 1;
 		}
 
-		return this < callable ? -1 : (this == callable ? 0 : 1);
+		return this < &callable ? -1 : (this == &callable ? 0 : 1);
 	}
 
 	// Note: this function should NOT overwrite str, but append text to it!

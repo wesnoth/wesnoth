@@ -69,9 +69,9 @@ void move_map_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "moves");
 }
 
-int move_callable::do_compare(const formula_callable* callable) const
+int move_callable::do_compare(const formula_callable& callable) const
 {
-	const move_callable* mv_callable = dynamic_cast<const move_callable*>(callable);
+	const move_callable* mv_callable = dynamic_cast<const move_callable*>(&callable);
 	if(mv_callable == nullptr) {
 		return formula_callable::do_compare(callable);
 	}
@@ -98,9 +98,9 @@ variant move_callable::execute_self(variant ctxt) {
 	return variant(move_result->is_gamestate_changed());
 }
 
-int move_partial_callable::do_compare(const formula_callable* callable) const
+int move_partial_callable::do_compare(const formula_callable& callable) const
 {
-	const move_partial_callable* mv_callable = dynamic_cast<const move_partial_callable*>(callable);
+	const move_partial_callable* mv_callable = dynamic_cast<const move_partial_callable*>(&callable);
 	if(mv_callable == nullptr) {
 		return formula_callable::do_compare(callable);
 	}
@@ -184,9 +184,9 @@ void attack_callable::get_inputs(formula_input_vector& inputs) const {
 	add_input(inputs, "move_from");
 }
 
-int attack_callable::do_compare(const wfl::formula_callable* callable)
+int attack_callable::do_compare(const wfl::formula_callable& callable)
 	const {
-	const attack_callable* a_callable = dynamic_cast<const attack_callable*>(callable);
+	const attack_callable* a_callable = dynamic_cast<const attack_callable*>(&callable);
 	if(a_callable == nullptr) {
 		return formula_callable::do_compare(callable);
 	}

@@ -58,9 +58,9 @@ void location_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "y");
 }
 
-int location_callable::do_compare(const formula_callable* callable) const
+int location_callable::do_compare(const formula_callable& callable) const
 {
-	const location_callable* loc_callable = dynamic_cast<const location_callable*>(callable);
+	const location_callable* loc_callable = dynamic_cast<const location_callable*>(&callable);
 	if(loc_callable == nullptr) {
 		return formula_callable::do_compare(callable);
 	}
@@ -150,9 +150,9 @@ void attack_type_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "specials");
 }
 
-int attack_type_callable::do_compare(const formula_callable* callable) const
+int attack_type_callable::do_compare(const formula_callable& callable) const
 {
-	const attack_type_callable* att_callable = dynamic_cast<const attack_type_callable*>(callable);
+	const attack_type_callable* att_callable = dynamic_cast<const attack_type_callable*>(&callable);
 	if(att_callable == nullptr) {
 		return formula_callable::do_compare(callable);
 	}
@@ -423,9 +423,9 @@ void unit_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "wml_vars");
 }
 
-int unit_callable::do_compare(const formula_callable* callable) const
+int unit_callable::do_compare(const formula_callable& callable) const
 {
-	const unit_callable* u_callable = dynamic_cast<const unit_callable*>(callable);
+	const unit_callable* u_callable = dynamic_cast<const unit_callable*>(&callable);
 	if(u_callable == nullptr) {
 		return formula_callable::do_compare(callable);
 	}
@@ -509,9 +509,9 @@ void unit_type_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "usage");
 }
 
-int unit_type_callable::do_compare(const formula_callable* callable) const
+int unit_type_callable::do_compare(const formula_callable& callable) const
 {
-	const unit_type_callable* u_callable = dynamic_cast<const unit_type_callable*>(callable);
+	const unit_type_callable* u_callable = dynamic_cast<const unit_type_callable*>(&callable);
 	if(u_callable == nullptr) {
 		return formula_callable::do_compare(callable);
 	}
@@ -594,9 +594,9 @@ void config_callable::get_inputs(formula_input_vector& inputs) const
 	}
 }
 
-int config_callable::do_compare(const formula_callable* callable) const
+int config_callable::do_compare(const formula_callable& callable) const
 {
-	const config_callable* cfg_callable = dynamic_cast<const config_callable*>(callable);
+	const config_callable* cfg_callable = dynamic_cast<const config_callable*>(&callable);
 	if(cfg_callable == nullptr) {
 		return formula_callable::do_compare(callable);
 	}
@@ -666,9 +666,9 @@ void terrain_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "owner_side");
 }
 
-int terrain_callable::do_compare(const formula_callable* callable) const
+int terrain_callable::do_compare(const formula_callable& callable) const
 {
-	const terrain_callable* terr_callable = dynamic_cast<const terrain_callable*>(callable);
+	const terrain_callable* terr_callable = dynamic_cast<const terrain_callable*>(&callable);
 	if(terr_callable == nullptr) {
 		return formula_callable::do_compare(callable);
 	}
