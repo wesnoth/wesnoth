@@ -551,6 +551,7 @@ public:
 	PREF_GETTER_SETTER(mp_era, std::string, std::string(""))
 	PREF_GETTER_SETTER(mp_level, std::string, std::string(""))
 	PREF_GETTER_SETTER(mp_level_type, int, 0)
+	PREF_GETTER_SETTER(mp_connect_type, int, 0)
 	PREF_GETTER_SETTER(skip_ai_moves, bool, false)
 	PREF_GETTER_SETTER(save_replays, bool, true)
 	PREF_GETTER_SETTER(delete_saves, bool, false)
@@ -752,6 +753,7 @@ private:
 		prefs_list::mp_countdown_turn_bonus,
 		prefs_list::mp_fog,
 		prefs_list::mp_level_type,
+		prefs_list::mp_connect_type,
 		prefs_list::mp_random_start_time,
 		prefs_list::mp_server_warning_disabled,
 		prefs_list::mp_shroud,
