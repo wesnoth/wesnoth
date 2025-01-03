@@ -24,6 +24,8 @@
 #include "gui/widgets/window.hpp"
 #include "serialization/markup.hpp"
 
+#include <cmath>
+
 using namespace std::chrono_literals;
 
 namespace
