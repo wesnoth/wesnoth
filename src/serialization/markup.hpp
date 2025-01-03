@@ -38,13 +38,13 @@ constexpr std::string_view br{"<br/>"};
  * Wraps the given data in the specified formatting tag.
  *
  * @param tag       The formatting tag ("b", "i", etc).
- * @param data      The content to wrap with @a tag. Each argument must be writable to
- *                  a stringstream via @c formatter.
+ * @param data      The content to wrap with @a tag.
+ *                  Each argument must be writable to a stringstream.
  *
  * @note            Special formatting characters in the input are not escaped.
  *                  If such behavior is needed, it must be handled by the caller.
  *                  If the concatenation of @a data results in an empty string,
- *                  an empty string is returned in lieu of @c <tag></tag>.
+ *                  an empty string is returned in lieu of formatting tags.
  */
 template<typename... Args>
 std::string tag(std::string_view tag, Args&&... data)
@@ -55,7 +55,7 @@ std::string tag(std::string_view tag, Args&&... data)
 }
 
 /**
- * Wraps the given data in a @c <span> tag with the specified attribute and value.
+ * Wraps the given data in a @c span tag with the specified attribute and value.
  *
  * @param key       The span attribute ("color", "size", etc).
  * @param value     The attribute value.
@@ -76,9 +76,9 @@ std::string span_attribute(std::string_view key, const Value& value, Args&&... d
  *
  * @param color     The color_t object from which to retrieve the color.
  * @param data      Variable list of content to enclose inside the span tag.
- *                  Each argument must be writable to a stringstream via @c formatter.
+ *                  Each argument must be writable to a stringstream.
  *
- * @returns         A markup string in the format @code{} <span color='#color'>#data</span>.
+ * @returns         @code `<span color='#color'>#data</span>` @endcode
  *
  * @note            Special formatting characters in the input are not escaped.
  *                  If such behavior is needed, it must be handled by the caller.
@@ -94,9 +94,9 @@ std::string span_color(const color_t& color, Args&&... data)
  *
  * @param color     The hex color string.
  * @param data      Variable list of content to enclose inside the span tag.
- *                  Each argument must be writable to a stringstream via @c formatter.
+ *                  Each argument must be writable to a stringstream.
  *
- * @returns         A markup string in the format @code{} <span color='#color'>#data</span>.
+ * @returns         @code `<span color='#color'>#data</span>` @endcode
  *
  * @note            Special formatting characters in the input are not escaped.
  *                  If such behavior is needed, it must be handled by the caller.
@@ -112,9 +112,9 @@ std::string span_color(std::string_view color, Args&&... data)
  *
  * @param size      A Pango string size specifier (large, small, x-large, etc).
  * @param data      Variable list of content to concatenate inside the span tag.
- *                  Each argument must be writable to a stringstream via @c formatter.
+ *                  Each argument must be writable to a stringstream.
  *
- * @returns         A markup string in the format @code{} <span size='#size'>#data</span>.
+ * @returns         @code `<span size='#size'>#data</span>` @endcode
  *
  * @note            Special formatting characters in the input are not escaped.
  *                  If such behavior is needed, it must be handled by the caller.
@@ -129,7 +129,7 @@ std::string span_size(std::string_view size, Args&&... data)
  * Applies bold Pango markup to the input.
  *
  * @param data      Variable list of content to concatenate inside the bold tag.
- *                  Each argument must be writable to a stringstream via @c formatter.
+ *                  Each argument must be writable to a stringstream.
  *
  * @note            Special formatting characters in the input are not escaped.
  *                  If such behavior is needed, it must be handled by the caller.
@@ -144,7 +144,7 @@ std::string bold(Args&&... data)
  * Applies italic Pango markup to the input.
  *
  * @param data      Variable list of content to enclose inside the italic tag.
- *                  Each argument must be writable to a stringstream via @c formatter.
+ *                  Each argument must be writable to a stringstream.
  *
  * @note            Special formatting characters in the input are not escaped.
  *                  If such behavior is needed, it must be handled by the caller.
