@@ -27,27 +27,13 @@ public:
 	enum class choice { JOIN = 0, CONNECT, HOST, LOCAL };
 
 	mp_method_selection()
-		: modal_dialog(window_id()) , user_name_(), choice_()
+		: modal_dialog(window_id())
 	{
 	}
 
-	const std::string& user_name() const
-	{
-		return user_name_;
-	}
-
-	choice get_choice() const
-	{
-		return choice_;
-	}
+	choice get_choice() const;
 
 private:
-	/** The name to use on the MP server. */
-	std::string user_name_;
-
-	/** The selected method to `connect' to the MP server. */
-	choice choice_;
-
 	virtual const std::string& window_id() const override;
 
 	virtual void pre_show() override;
