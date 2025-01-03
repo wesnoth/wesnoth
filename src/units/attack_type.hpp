@@ -98,18 +98,10 @@ public:
 	void modified_attacks(unsigned & min_attacks,
 	                      unsigned & max_attacks) const;
 
-	/**
-	 * Select best damage type based on frequency count for replacement_type and based on highest damage for alternative_type.
-	 *
-	 * @param damage_type_list list of [damage_type] to check.
-	 * @param key_name name of attribute checked 'alternative_type' or 'replacement_type'.
-	 * @param resistance_list list of "resistance" abilities to check for each type of damage checked.
-	 */
-	std::string select_damage_type(const unit_ability_list& damage_type_list, const std::string& key_name, const unit_ability_list& resistance_list) const;
-	/** return a modified damage type and/or add a secondary_type for hybrid use if special is active. */
-	std::pair<std::string, std::string> damage_type() const;
-	/** @return A list of alternative_type damage types. */
-	std::set<std::string> alternative_damage_types() const;
+	/** @return A type()/replacement_type and a list of alternative_types that should be displayed in the selected unit's report. */
+	std::pair<std::string, std::set<std::string>> damage_types() const;
+	/** @return The type of attack used and the resistance value that does the most damage. */
+	std::pair<std::string, int> effective_damage_type() const;
 
 	/** Returns the damage per attack of this weapon, considering specials. */
 	int modified_damage() const;
@@ -159,7 +151,7 @@ public:
 
 	// In unit_types.cpp:
 
-	bool matches_filter(const config& filter, const std::string& check_if_recursion = "") const;
+	bool matches_filter(const config& filter) const;
 	bool apply_modification(const config& cfg);
 	bool describe_modification(const config& cfg,std::string* description);
 
@@ -221,6 +213,44 @@ public:
 	 */
 	recursion_guard update_variables_recursion(const config& special) const;
 
+	/**
+	 * Helper similar to recusrion_guard but used to prevent recursion problems upstream when
+	 * when a filter checks an attribute modified by the special weapon that calls this filter and this filter can integrate this modification (damage_type).
+	 *
+	 * This assumes that there's only a single thread accessing the attack_type, it's a lightweight
+	 * increment/decrement counter rather than a mutex.
+	 */
+	class tag_name_guard {
+		friend class attack_type;
+		/**
+		 * Only expected to be called in update_variables_recursion(), which handles some of the checks.
+		 */
+		explicit tag_name_guard(const attack_type& weapon, const std::string& tag_name);
+	public:
+		/**
+		 * Construct an empty instance, only useful for extending the lifetime of a
+		 * tag_name_guard returned from weapon.update_variables_tag_name() by
+		 * std::moving it to an instance declared in a larger scope.
+		 */
+		explicit tag_name_guard();
+
+		/**
+		 * Returns true if a level of recursion was available at the time when update_variables_recursion()
+		 * created this object.
+		 */
+		operator bool() const;
+
+		tag_name_guard(tag_name_guard&& other);
+		tag_name_guard(const tag_name_guard& other) = delete;
+		tag_name_guard& operator=(tag_name_guard&&);
+		tag_name_guard& operator=(const tag_name_guard&) = delete;
+		~tag_name_guard();
+	private:
+		std::shared_ptr<const attack_type> parent;
+	};
+
+
+	tag_name_guard update_variables_tag_name(const std::string& tag_name) const;
 private:
 	// In unit_abilities.cpp:
 
@@ -235,6 +265,19 @@ private:
 	 * @return true if all attribute with ability checked
 	 */
 	bool special_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
+	/**
+	 * Select best damage type based on frequency count for replacement_type.
+	 *
+	 * @param damage_type_list list of [damage_type] to check.
+	 */
+	std::string select_replacement_type(const unit_ability_list& damage_type_list) const;
+	/**
+	 * Select best damage type based on highest damage for alternative_type.
+	 *
+	 * @param damage_type_list list of [damage_type] to check.
+	 * @param resistance_list list of "resistance" abilities to check for each type of damage checked.
+	 */
+	std::pair<std::string, int> select_alternative_type(const unit_ability_list& damage_type_list, const unit_ability_list& resistance_list) const;
 	/**
 	 * Filter a list of abilities or weapon specials, removing any entries that don't own
 	 * the overwrite_specials attributes.
@@ -443,6 +486,12 @@ private:
 	 * which will pop the config off this stack when the recursion_guard is finalized.
 	 */
 	mutable std::vector<const config*> open_queries_;
+	/**
+	 * While processing a recursive match, all the filters that are currently being checked, oldest first.
+	 * Each will have an instance of recursion_guard that is currently allocated permission to recurse, and
+	 * which will pop the string off this stack when the tag_name_guard is finalized.
+	 */
+	mutable std::vector<std::string> open_tag_name_;
 };
 
 using attack_list = std::vector<attack_ptr>;
