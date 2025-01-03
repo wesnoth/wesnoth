@@ -823,6 +823,7 @@ void game_launcher::start_wesnothd()
 
 bool game_launcher::play_multiplayer(mp_mode mode)
 {
+	game_config::set_debug(game_config::mp_debug);
 	try {
 		if(mode == mp_mode::HOST) {
 			try {
