@@ -176,6 +176,8 @@ struct preferences_list_defines
 	ADDPREF(mp_level)
 	/** most recently selected type of game: scenario, campaign, random map, etc */
 	ADDPREF(mp_level_type)
+	/** most recently selected mp playing mode/connection type */
+	ADDPREF(mp_connect_type)
 	/** list of the last selected multiplayer modifications */
 	ADDPREF(mp_modifications)
 	/** whether to use a random start time for the scenario */
@@ -448,6 +450,7 @@ struct preferences_list_defines
 		minimap_movement_coding,
 		minimap_terrain_coding,
 		moved_orb_color,
+		mp_connect_type,
 		mp_countdown,
 		mp_countdown_action_bonus,
 		mp_countdown_init_time,
