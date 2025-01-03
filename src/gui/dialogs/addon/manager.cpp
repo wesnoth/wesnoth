@@ -26,6 +26,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
 #include "gui/dialogs/addon/addon_auth.hpp"
+#include "gui/dialogs/addon/addon_server_info.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
@@ -489,6 +490,14 @@ void addon_manager::pre_show()
 		find_widget<button>("delete"),
 		std::bind(&addon_manager::delete_selected_addon, this));
 
+	if(game_config::addon_server_info) {
+		connect_signal_mouse_left_click(
+			find_widget<button>("info"),
+			std::bind(&addon_manager::info, this));
+	} else {
+		find_widget<button>("info").set_visible(false);
+	}
+
 	connect_signal_mouse_left_click(
 		find_widget<button>("update_all"),
 		std::bind(&addon_manager::update_all_addons, this));
@@ -894,6 +903,32 @@ void addon_manager::update_all_addons()
 
 	if(need_wml_cache_refresh_) {
 		load_addon_list();
+	}
+}
+
+void addon_manager::info()
+{
+	// TODO: make this a separate method to avoid code duplication
+
+	// Explicitly return to the main page if we're in low-res mode so the list is visible.
+	if(stacked_widget* stk = find_widget<stacked_widget>("main_stack", false, false)) {
+		stk->select_layer(0);
+		find_widget<button>("details_toggle").set_label(_("Add-on Details"));
+	}
+
+	addon_list& addons = find_widget<addon_list>("addons");
+	const addon_info* addon = addons.get_selected_addon();
+
+	bool needs_refresh = false;
+	if(addon == nullptr) {
+		gui2::dialogs::addon_server_info::execute(client_, "", needs_refresh);
+	} else {
+		gui2::dialogs::addon_server_info::execute(client_, addon->id, needs_refresh);
+	}
+
+	if(needs_refresh) {
+		fetch_addons_list();
+		reload_list_and_reselect_item("");
 	}
 }
 

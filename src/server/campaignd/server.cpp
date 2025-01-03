@@ -944,6 +944,98 @@ void server::register_handlers()
 	REGISTER_CAMPAIGND_HANDLER(upload);
 	REGISTER_CAMPAIGND_HANDLER(delete);
 	REGISTER_CAMPAIGND_HANDLER(change_passphrase);
+	REGISTER_CAMPAIGND_HANDLER(addon_count);
+	REGISTER_CAMPAIGND_HANDLER(addon_count_by_type);
+	REGISTER_CAMPAIGND_HANDLER(addon_downloads_by_version);
+	REGISTER_CAMPAIGND_HANDLER(forum_auth_usage);
+	REGISTER_CAMPAIGND_HANDLER(admins_list);
+}
+
+void server::handle_addon_count(const server::request& req)
+{
+	config response;
+	response["count"] = addons_.size();
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+}
+
+void server::handle_addon_count_by_type(const server::request& req)
+{
+	config response;
+
+	for(const auto& addon : addons_) {
+		response[addon.second["type"].str()] = response[addon.second["type"].str()].to_int()+1;
+	}
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+}
+
+void server::handle_addon_downloads_by_version(const server::request& req)
+{
+	config response;
+
+	if(user_handler_) {
+		response = user_handler_->db_get_addon_downloads_info(server_id_, req.cfg["addon"].str());
+	}
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+}
+
+void server::handle_forum_auth_usage(const server::request& req)
+{
+	config response;
+
+	if(user_handler_) {
+		response = user_handler_->db_get_forum_auth_usage(server_id_);
+	}
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+}
+
+void server::handle_admins_list(const server::request& req)
+{
+	config response;
+
+	if(user_handler_) {
+		response = user_handler_->db_get_addon_admins();
+	}
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
 }
 
 void server::handle_server_id(const server::request& req)

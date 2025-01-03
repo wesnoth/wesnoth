@@ -228,14 +228,19 @@ private:
 	 */
 	void register_handlers();
 
-	void handle_server_id(const request&);
-	void handle_request_campaign_list(const request&);//#TODO: rename with 'addon' later?
-	void handle_request_campaign(const request&);
-	void handle_request_campaign_hash(const request&);
-	void handle_request_terms(const request&);
-	void handle_upload(const request&);
-	void handle_delete(const request&);
-	void handle_change_passphrase(const request&);
+	void handle_server_id(const request& req);
+	void handle_request_campaign_list(const request& req);//#TODO: rename with 'addon' later?
+	void handle_request_campaign(const request& req);
+	void handle_request_campaign_hash(const request& req);
+	void handle_request_terms(const request& req);
+	void handle_upload(const request& req);
+	void handle_delete(const request& req);
+	void handle_change_passphrase(const request& req);
+	void handle_addon_count(const request& req);
+	void handle_addon_count_by_type(const request& req);
+	void handle_addon_downloads_by_version(const request& req);
+	void handle_forum_auth_usage(const request& req);
+	void handle_admins_list(const request& req);
 
 	/**
 	 * Send a client an informational message.

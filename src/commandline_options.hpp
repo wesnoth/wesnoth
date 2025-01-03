@@ -81,6 +81,7 @@ public:
 	 * Should only ever be used for local testing.
 	 */
 	bool allow_insecure;
+	bool addon_server_info;
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	/** Non-empty if --debug-dot-domain was given on the command line. */
 	utils::optional<std::string> debug_dot_domain;

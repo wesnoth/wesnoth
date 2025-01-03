@@ -77,6 +77,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, debug_lua(false)
 	, strict_lua(false)
 	, allow_insecure(false)
+	, addon_server_info(false)
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_dot_domain()
 	, debug_dot_level()
@@ -182,6 +183,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("debug-lua", "enables some Lua debugging mechanisms")
 		("strict-lua", "disallow deprecated Lua API calls")
 		("allow-insecure", "Allows sending a plaintext password over an unencrypted connection. Should only ever be used for local testing.")
+		("addon-server-info", "Shows a button on the add-ons manager to query the add-ons server for various information.")
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 		("debug-dot-level", po::value<std::string>(), "sets the level of the debug dot files. <arg> should be a comma separated list of levels. These files are used for debugging the widgets especially the for the layout engine. When enabled the engine will produce dot files which can be converted to images with the dot tool. Available levels: size (generate the size info of the widget), state (generate the state info of the widget).")
 		("debug-dot-domain", po::value<std::string>(), "sets the domain of the debug dot files. <arg> should be a comma separated list of domains. See --debug-dot-level for more info. Available domains: show (generate the data when the dialog is about to be shown), layout (generate the data during the layout phase - might result in multiple files). The data can also be generated when the F12 is pressed in a dialog.")
@@ -349,6 +351,8 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		strict_lua = true;
 	if(vm.count("allow-insecure"))
 		allow_insecure = true;
+	if(vm.count("addon-server-info"))
+		addon_server_info = true;
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	if(vm.count("debug-dot-domain")) {
 		debug_dot_domain = vm["debug-dot-domain"].as<std::string>();

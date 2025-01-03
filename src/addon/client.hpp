@@ -93,6 +93,12 @@ public:
 	 */
 	bool request_addons_list(config& cfg, bool icons);
 
+	int get_addon_count();
+	std::map<std::string, int> get_addon_count_by_type();
+	config get_addon_downloads_by_version(const std::string& addon);
+	config get_forum_auth_usage();
+	config get_site_admins();
+
 	/**
 	 * Retrieves the add-ons server web URL if available.
 	 */
@@ -182,10 +188,11 @@ public:
 	 *
 	 * @return @a true on success, @a false on failure. Retrieve the error message with @a get_last_server_error.
 	 *
-	 * @param id               Id. of the add-on to take down.
+	 * @param id               ID of the add-on to take down.
 	 * @param response_message The server response message on success, such as "add-on accepted".
+	 * @param admin_set        The list of admin usernames as provided by the server, if doing an admin-restricted action
 	 */
-	bool delete_remote_addon(const std::string& id, std::string& response_message);
+	bool delete_remote_addon(const std::string& id, std::string& response_message, const std::set<std::string>& admin_set = {});
 
 	/**
 	 * Returns whether the server supports the given named capability.
