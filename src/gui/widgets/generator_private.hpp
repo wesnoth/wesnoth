@@ -521,7 +521,7 @@ struct show : public virtual generator_base
 {
 	void select(grid& grid, const bool show)
 	{
-		grid.set_hidden(show);
+		grid.set_visible(show ? widget::visibility::visible : widget::visibility::hidden);
 	}
 
 	/**

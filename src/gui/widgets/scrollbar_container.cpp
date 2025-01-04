@@ -334,7 +334,7 @@ static void set_scrollbar_mode(grid* scrollbar_grid,
 
 	if(scrollbar_mode == scrollbar_container::AUTO_VISIBLE) {
 		const bool scrollbar_needed = items > visible_items;
-		scrollbar_grid->set_hidden(scrollbar_needed);
+		scrollbar_grid->set_visible(scrollbar_needed ? widget::visibility::visible : widget::visibility::hidden);
 	} else if(scrollbar_mode == scrollbar_container::AUTO_VISIBLE_FIRST_RUN) {
 		if(items <= visible_items && content_grid != nullptr
 				&& scrollbar_grid->get_visible() == widget::visibility::visible
@@ -394,7 +394,7 @@ static void adjust_scrollbar_mode(grid* scrollbar_grid,
 
 	if(scrollbar_mode == scrollbar_container::AUTO_VISIBLE) {
 		const bool scrollbar_needed = items_after > visible_items;
-		scrollbar_grid->set_hidden(scrollbar_needed);
+		scrollbar_grid->set_visible(scrollbar_needed ? widget::visibility::visible : widget::visibility::hidden);
 	}
 }
 
