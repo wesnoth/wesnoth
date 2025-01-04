@@ -355,7 +355,7 @@ std::string unit_topic_generator::operator()() const {
 	}
 
 	if (has_female_portrait) {
-		ss << markup::img(male_portrait + "~FL(horiz)", "right", true);
+		ss << markup::img(female_portrait + "~FL(horiz)", "right", true);
 	}
 
 	// Unit Images

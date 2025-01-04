@@ -1416,6 +1416,11 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 		return ADDON_CHECK_STATUS::NO_TITLE;
 	}
 
+	if(addon_icon_too_large(upload["icon"].str())) {
+		LOG_CS << "Validation error: icon too large";
+		return ADDON_CHECK_STATUS::ICON_TOO_LARGE;
+	}
+
 	if(is_text_markup_char(upload["title"].str()[0])) {
 		LOG_CS << "Validation error: add-on title starts with an illegal formatting character.";
 		return ADDON_CHECK_STATUS::TITLE_HAS_MARKUP;

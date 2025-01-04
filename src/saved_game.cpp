@@ -74,6 +74,7 @@
 #include "serialization/binary_or_text.hpp"
 #include "side_controller.hpp"
 #include "utils/general.hpp"
+#include "team.hpp" // for team::attributes, team::variables
 #include "variable.hpp" // for config_variable_set
 #include "variable_info.hpp"
 
@@ -251,6 +252,27 @@ void saved_game::set_defaults()
 		}
 		if(side["save_id"].empty()) {
 			side["save_id"] = side.child_or_empty("leader")["id"];
+		}
+
+		// If this side tag describes the leader of the side, convert it into a [leader] tag here, by doing this here,
+		// all code that follows, no longer has to hande the possibility of leader information directly in [side].
+
+		// If this side tag describes the leader of the side
+		if(!side["type"].empty() && side["type"] != "null") {
+			auto temp = config{};
+
+			for(const std::string& tag : team::tags) {
+				temp.append_children_by_move(side, tag);
+			}
+			for(const std::string& attr : team::attributes) {
+				if(side.has_attribute(attr)) {
+					temp[attr] = side[attr];
+					side.remove_attribute(attr);
+				}
+			}
+			temp["side"] = side["side"];
+			temp.swap(side);
+			temp.swap(side.add_child_at("leader", config(), 0));
 		}
 
 		if(!is_multiplayer_tag) {

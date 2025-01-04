@@ -380,8 +380,7 @@ public:
 				std::bind(&view::next_page, this));
 
 		model_.filter = window.find_widget<text_box>("filter", false, true);
-		model_.filter->set_text_changed_callback(
-				std::bind(&view::filter, this));
+		model_.filter->on_modified([this](const auto&) { filter(); });
 		window.keyboard_capture(model_.filter);
 
 		model_.copy_button = window.find_widget<button>("copy", false, true);

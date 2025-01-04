@@ -326,7 +326,7 @@ void addon_manager::pre_show()
 	addon_list& list = find_widget<addon_list>("addons");
 
 	text_box& filter = find_widget<text_box>("filter");
-	filter.set_text_changed_callback(std::bind(&addon_manager::apply_filters, this));
+	filter.on_modified([this](const auto&) { apply_filters(); });
 
 	list.set_install_function(std::bind(&addon_manager::install_addon,
 		this, std::placeholders::_1));

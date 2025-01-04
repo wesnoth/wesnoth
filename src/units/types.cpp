@@ -1480,6 +1480,10 @@ void unit_type::check_id(std::string& id)
 		throw error("Found unit type id with a leading whitespace \"" + id + "\"");
 	}
 
+	if(id == "random" || id == "null") {
+		throw error("Found unit type using a 'random' or 'null' as an id");
+	}
+
 	bool gave_warning = false;
 
 	for(std::size_t pos = 0; pos < id.size(); ++pos) {
