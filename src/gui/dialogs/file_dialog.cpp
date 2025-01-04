@@ -678,14 +678,14 @@ void file_dialog::on_row_selected()
 
 	// Need to do this every time so that input can still be sent to the
 	// textbox without clicking on it.
-	get_window()->keyboard_capture(&file_textbox);
+	keyboard_capture(&file_textbox);
 }
 
 void file_dialog::on_bookmark_selected()
 {
 	// Don't let us steal the focus from the primary widgets.
 	text_box& file_textbox = find_widget<text_box>("filename");
-	get_window()->keyboard_capture(&file_textbox);
+	keyboard_capture(&file_textbox);
 
 	listbox& bookmarks_bar = find_widget<listbox>("bookmarks");
 	const int new_selection = bookmarks_bar.get_selected_row();

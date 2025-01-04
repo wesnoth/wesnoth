@@ -488,9 +488,7 @@ void mp_join_game::generate_side_list()
 void mp_join_game::close_faction_select_dialog_if_open()
 {
 	if(flg_dialog_) {
-		if(window* w = flg_dialog_->get_window()) {
-			w->set_retval(retval::CANCEL);
-		}
+		flg_dialog_->set_retval(retval::CANCEL);
 	}
 }
 

@@ -211,7 +211,7 @@ void units_dialog::rename_unit(std::vector<unit_const_ptr>& unit_list)
 		filter_options_.insert(filter_options_.begin() + selected_index_, filter_text.str());
 
 		list_item_clicked();
-		get_window()->invalidate_layout();
+		invalidate_layout();
 	}
 }
 

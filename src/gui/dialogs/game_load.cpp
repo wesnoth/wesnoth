@@ -249,7 +249,7 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 
 	// The new label value may have more or less lines than the previous value, so invalidate the layout.
 	find_widget<styled_widget>("slblSummary").set_label(str.str());
-	//get_window()->invalidate_layout();
+	//invalidate_layout();
 
 	toggle_button& replay_toggle            = dynamic_cast<toggle_button&>(*show_replay_->get_widget());
 	toggle_button& cancel_orders_toggle     = dynamic_cast<toggle_button&>(*cancel_orders_->get_widget());
@@ -314,7 +314,7 @@ void game_load::display_savegame()
 	find_widget<button>("ok").set_active(successfully_displayed_a_game);
 
 	// Disable 'Enter' loading in the same circumstance
-	get_window()->set_enter_disabled(!successfully_displayed_a_game);
+	set_enter_disabled(!successfully_displayed_a_game);
 }
 
 void game_load::apply_filter_text(const std::string& text)

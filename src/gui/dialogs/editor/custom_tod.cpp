@@ -278,7 +278,7 @@ void custom_tod::update_image(const std::string& id_stem) {
 	std::string img_path = find_widget<text_box>("path_"+id_stem).get_value();
 	find_widget<image>("current_tod_" + id_stem).set_label(img_path);
 
-	get_window()->invalidate_layout();
+	invalidate_layout();
 }
 
 void custom_tod::update_tod_display()
@@ -289,7 +289,7 @@ void custom_tod::update_tod_display()
 	// The display handles invaliding whatever tiles need invalidating.
 	disp->update_tod(&get_selected_tod());
 
-	get_window()->invalidate_layout();
+	invalidate_layout();
 }
 
 void custom_tod::update_lawful_bonus()

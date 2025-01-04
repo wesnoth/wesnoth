@@ -585,7 +585,7 @@ void title_screen::button_callback_cores()
 		const std::string& core_id = cores[core_dlg.get_choice()]["id"];
 
 		prefs::get().set_core(core_id);
-		get_window()->set_retval(RELOAD_GAME_DATA);
+		set_retval(RELOAD_GAME_DATA);
 	}
 }
 

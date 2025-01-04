@@ -86,7 +86,7 @@ private:
 
 	void start_game()
 	{
-		get_window()->set_retval(retval::OK);
+		set_retval(retval::OK);
 	}
 
 	ng::connect_engine& connect_engine_;

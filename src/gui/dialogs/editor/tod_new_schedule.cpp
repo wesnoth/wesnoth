@@ -58,7 +58,7 @@ void tod_new_schedule::button_state_change() {
 		find_widget<button>("ok").set_active(true);
 	}
 
-	get_window()->queue_redraw();
+	queue_redraw();
 }
 
 void tod_new_schedule::post_show()
