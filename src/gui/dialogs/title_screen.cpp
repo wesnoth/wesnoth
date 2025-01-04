@@ -548,18 +548,18 @@ void title_screen::button_callback_multiplayer()
 		switch(res) {
 		case decltype(dlg)::choice::JOIN:
 			game_.select_mp_server(prefs::get().builtin_servers_list().front().address);
-			get_window()->set_retval(MP_CONNECT);
+			set_retval(MP_CONNECT);
 			break;
 		case decltype(dlg)::choice::CONNECT:
 			game_.select_mp_server("");
-			get_window()->set_retval(MP_CONNECT);
+			set_retval(MP_CONNECT);
 			break;
 		case decltype(dlg)::choice::HOST:
 			game_.select_mp_server("localhost");
-			get_window()->set_retval(MP_HOST);
+			set_retval(MP_HOST);
 			break;
 		case decltype(dlg)::choice::LOCAL:
-			get_window()->set_retval(MP_LOCAL);
+			set_retval(MP_LOCAL);
 			break;
 		}
 

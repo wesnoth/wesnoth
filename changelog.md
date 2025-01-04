@@ -5,6 +5,7 @@
 ### Editor
 ### Multiplayer
 ### Lua API
+   * New functions `gui.show_recruit_dialog()` and `gui.show_recall_dialog()` has been added which allow showing the recruit and recall dialogs in-game with a custom list of unit types or units respectively, along with some customizable features.
 ### Packaging
 ### Terrain
 ### Translations
@@ -12,6 +13,7 @@
 ### Units
 ### User interface
 ### WML Engine
+   * [variables] in [side] no longer sets variables of the implicit leader unit (it now only sets the sides variables), to create a leader unit with variables, [leader] must be used instead. (issue #3742)
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.7

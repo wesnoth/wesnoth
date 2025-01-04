@@ -97,7 +97,7 @@ void game_load::pre_show()
 
 	text_box* filter = find_widget<text_box>("txtFilter", false, true);
 
-	filter->set_text_changed_callback(std::bind(&game_load::apply_filter_text, this, std::placeholders::_2));
+	filter->on_modified([this](const auto& box) { apply_filter_text(box.text()); });
 
 	listbox& list = find_widget<listbox>("savegame_list");
 

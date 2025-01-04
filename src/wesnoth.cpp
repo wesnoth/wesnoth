@@ -72,7 +72,6 @@
 #include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
 #include "utils/optional_fwd.hpp"
 
-#include <algorithm> // for transform
 #include <cerrno>    // for ENOMEM
 #include <clocale>   // for setlocale, LC_ALL, etc
 #include <cstdio>    // for remove, fprintf, stderr
@@ -105,6 +104,10 @@
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
+
+// this file acts as a launcher for various gui2 dialogs
+// so this reduces some boilerplate.
+using namespace gui2::dialogs;
 
 static lg::log_domain log_config("config");
 #define LOG_CONFIG LOG_STREAM(info, log_config)
@@ -780,18 +783,18 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		utils::string_map symbols;
 		symbols["logdir"] = filesystem::get_logs_dir();
 		std::string msg = VGETTEXT("Unable to create log files in directory $logdir. This is often caused by incorrect folder permissions, anti-virus software restricting folder access, or using OneDrive to manage your My Documents folder.", symbols);
-		gui2::show_message(_("Logging Failure"), msg, gui2::dialogs::message::ok_button);
+		gui2::show_message(_("Logging Failure"), msg, message::ok_button);
 	}
 
 	game_config_manager config_manager(cmdline_opts);
 
 	if(game_config::check_migration) {
 		game_config::check_migration = false;
-		gui2::dialogs::migrate_version_selection::execute();
+		migrate_version_selection::execute();
 	}
 
-	gui2::dialogs::loading_screen::display([&res, &config_manager, &cmdline_opts]() {
-		gui2::dialogs::loading_screen::progress(loading_stage::load_config);
+	loading_screen::display([&res, &config_manager, &cmdline_opts]() {
+		loading_screen::progress(loading_stage::load_config);
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		if(res == false) {
@@ -799,7 +802,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 			return;
 		}
 
-		gui2::dialogs::loading_screen::progress(loading_stage::init_fonts);
+		loading_screen::progress(loading_stage::init_fonts);
 
 		res = font::load_font_config();
 		if(res == false) {
@@ -808,7 +811,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		}
 
 		if(!game_config::no_addons && !cmdline_opts.noaddons)  {
-			gui2::dialogs::loading_screen::progress(loading_stage::refresh_addons);
+			loading_screen::progress(loading_stage::refresh_addons);
 
 			refresh_addon_version_info_cache();
 		}
@@ -907,49 +910,46 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 		int retval;
 		{ // scope to not keep the title screen alive all game
-			gui2::dialogs::title_screen dlg(*game);
+			title_screen dlg(*game);
 
 			// Allows re-layout on resize.
 			// Since RELOAD_UI is not checked here, it causes
 			// the dialog to be closed and reshown with changes.
-			while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
+			while(dlg.get_retval() == title_screen::REDRAW_BACKGROUND) {
 				dlg.show();
 			}
 			retval = dlg.get_retval();
 		}
 
 		switch(retval) {
-		case gui2::dialogs::title_screen::QUIT_GAME:
+		case title_screen::QUIT_GAME:
 			LOG_GENERAL << "quitting game...";
 			return 0;
-		case gui2::dialogs::title_screen::MP_CONNECT:
-			game_config::set_debug(game_config::mp_debug);
+		case title_screen::MP_CONNECT:
 			game->play_multiplayer(game_launcher::mp_mode::CONNECT);
 			break;
-		case gui2::dialogs::title_screen::MP_HOST:
-			game_config::set_debug(game_config::mp_debug);
+		case title_screen::MP_HOST:
 			game->play_multiplayer(game_launcher::mp_mode::HOST);
 			break;
-		case gui2::dialogs::title_screen::MP_LOCAL:
-			game_config::set_debug(game_config::mp_debug);
+		case title_screen::MP_LOCAL:
 			game->play_multiplayer(game_launcher::mp_mode::LOCAL);
 			break;
-		case gui2::dialogs::title_screen::RELOAD_GAME_DATA:
-			gui2::dialogs::loading_screen::display([&config_manager]() {
+		case title_screen::RELOAD_GAME_DATA:
+			loading_screen::display([&config_manager]() {
 				config_manager.reload_changed_game_config();
 				gui2::init();
 				gui2::switch_theme(prefs::get().gui2_theme());
 			});
 			break;
-		case gui2::dialogs::title_screen::MAP_EDITOR:
+		case title_screen::MAP_EDITOR:
 			game->start_editor();
 			break;
-		case gui2::dialogs::title_screen::LAUNCH_GAME:
+		case title_screen::LAUNCH_GAME:
 			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
 			break;
-		case gui2::dialogs::title_screen::REDRAW_BACKGROUND:
+		case title_screen::REDRAW_BACKGROUND:
 			break;
-		case gui2::dialogs::title_screen::RELOAD_UI:
+		case title_screen::RELOAD_UI:
 			gui2::switch_theme(prefs::get().gui2_theme());
 			break;
 		}

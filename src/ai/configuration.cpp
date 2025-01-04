@@ -188,6 +188,10 @@ bool configuration::get_side_config_from_file(const std::string& file, config& c
 	} catch(const config::error&) {
 		ERR_AI_CONFIGURATION << "Error while reading AI configuration from file '" << file  << "'";
 		return false;
+	} catch(const std::exception&) {
+		//value() now throws on invalid paths.
+		ERR_AI_CONFIGURATION << "Error while reading AI configuration from file '" << file  << "'";
+		return false;
 	}
 	LOG_AI_CONFIGURATION << "Successfully read AI configuration from file '" << file  << "'";
 	return true;

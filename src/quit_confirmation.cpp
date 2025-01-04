@@ -27,7 +27,7 @@ bool quit_confirmation::quit()
 {
 	if(!open_) {
 		open_ = true;
-		for(quit_confirmation* blocker : utils::reversed_view(blockers_))
+		for(quit_confirmation* blocker : blockers_ | utils::views::reverse)
 		{
 			if(!blocker->prompt_()) {
 				open_ = false;

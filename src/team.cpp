@@ -47,9 +47,6 @@ static lg::log_domain log_engine_enemies("engine/enemies");
 #define LOG_NGE LOG_STREAM(info, log_engine_enemies)
 #define WRN_NGE LOG_STREAM(warn, log_engine_enemies)
 
-// Static member initialization
-const int team::default_team_gold_ = 100;
-
 // Update this list of attributes if you change what is used to define a side
 // (excluding those attributes used to define the side's leader).
 const std::set<std::string> team::attributes {
@@ -116,6 +113,15 @@ const std::set<std::string> team::attributes {
 	"description"
 };
 
+// Update this list of child tags if you change what is used to define a side
+// (excluding those attributes used to define the side's leader).
+const std::set<std::string> team::tags {
+	"ai",
+	"leader",
+	"unit",
+	"variables",
+	"village"
+};
 team::team_info::team_info()
 	: gold(0)
 	, start_gold(0)
@@ -218,10 +224,8 @@ void team::team_info::read(const config& cfg)
 	// value from the gold setting (or fall back to the gold default)
 	if(!cfg["start_gold"].empty()) {
 		start_gold = cfg["start_gold"].to_int();
-	} else if(!cfg["gold"].empty()) {
-		start_gold = gold;
 	} else {
-		start_gold = default_team_gold_;
+		start_gold = gold;
 	}
 
 	if(team_name.empty()) {
@@ -327,8 +331,7 @@ void team::team_info::write(config& cfg) const
 }
 
 team::team()
-	: gold_(0)
-	, villages_()
+	: villages_()
 	, shroud_()
 	, fog_()
 	, fog_clearer_()
@@ -349,9 +352,8 @@ team::~team()
 {
 }
 
-void team::build(const config& cfg, const gamemap& map, int gold)
+void team::build(const config& cfg, const gamemap& map)
 {
-	gold_ = gold;
 	info_.read(cfg);
 
 	fog_.set_enabled(cfg["fog"].to_bool());
@@ -370,17 +372,6 @@ void team::build(const config& cfg, const gamemap& map, int gold)
 				= map.parse_location_range(fog_override["x"], fog_override["y"], true);
 		fog_clearer_.insert(fog_vector.begin(), fog_vector.end());
 	}
-
-	// To ensure some minimum starting gold,
-	// gold is the maximum of 'gold' and what is given in the config file
-	gold_ = std::max(gold, info_.gold);
-	if(gold_ != info_.gold) {
-		info_.start_gold = gold;
-	}
-
-	// Old code was doing:
-	// info_.start_gold = std::to_string(gold) + " (" + info_.start_gold + ")";
-	// Was it correct?
 
 	// Load in the villages the side controls at the start
 	for(const config& v : cfg.child_range("village")) {
@@ -405,7 +396,6 @@ void team::write(config& cfg) const
 	cfg["auto_shroud"] = auto_shroud_updates_;
 	cfg["shroud"] = uses_shroud();
 	cfg["fog"] = uses_fog();
-	cfg["gold"] = gold_;
 
 	// Write village locations
 	for(const map_location& loc : villages_) {

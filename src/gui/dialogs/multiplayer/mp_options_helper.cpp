@@ -299,8 +299,7 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 				std::tie(textbox, val) = add_node_and_get_widget<text_box>(option_node, "option_text_entry", data, option_cfg);
 
 				textbox->set_value(val.str());
-				textbox->set_text_changed_callback(
-					std::bind(&mp_options_helper::update_options_data_map<text_box>, this, textbox, visible_options_.back()));
+				textbox->on_modified([this](const auto& box) { update_options_data_map(&box, visible_options_.back()); });
 			}
 		}
 

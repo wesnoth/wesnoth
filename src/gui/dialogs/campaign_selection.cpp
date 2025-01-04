@@ -308,8 +308,7 @@ void campaign_selection::filter_text_changed(const std::string& text)
 void campaign_selection::pre_show()
 {
 	text_box* filter = find_widget<text_box>("filter_box", false, true);
-	filter->set_text_changed_callback(
-			std::bind(&campaign_selection::filter_text_changed, this, std::placeholders::_2));
+	filter->on_modified([this](const auto& box) { filter_text_changed(box.text()); });
 
 	/***** Setup campaign tree. *****/
 	tree_view& tree = find_widget<tree_view>("campaign_tree");

@@ -36,6 +36,7 @@
 #include "scripting/lua_preferences.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
+#include "utils/ranges.hpp"
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -48,7 +49,6 @@
 #include <utility>
 
 #include <functional>
-#include <boost/range/adaptors.hpp>
 
 #include "lua/wrapper_lauxlib.h"
 
@@ -276,7 +276,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	// Now we have to create the context object. It is arranged as a table of boost functions.
 	auto this_context_backend = std::make_shared<lua_context_backend>();
 	lua_newtable(T_); // this will be the context table
-	for (const std::string & key : ctxt.callbacks_ | boost::adaptors::map_keys ) {
+	for (const std::string & key : ctxt.callbacks_ | utils::views::keys ) {
 		lua_pushstring(T_, key.c_str());
 		lua_cpp::push_function(T_, std::bind(&impl_context_backend, std::placeholders::_1, this_context_backend, key));
 		lua_settable(T_, -3);

@@ -174,8 +174,7 @@ void mp_create_game::pre_show()
 
 	text_box& filter = find_widget<text_box>("game_filter");
 
-	filter.set_text_changed_callback(
-		std::bind(&mp_create_game::on_filter_change<text_box>, this, "game_filter", true));
+	filter.on_modified([this](const auto&) { on_filter_change<text_box>("game_filter", true); });
 
 	// Note this cannot be in the keyboard chain or it will capture focus from other text boxes
 	keyboard_capture(&filter);

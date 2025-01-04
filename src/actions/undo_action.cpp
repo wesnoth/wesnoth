@@ -46,7 +46,7 @@ undo_action_container::undo_action_container()
 bool undo_action_container::undo(int side)
 {
 	int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
-	for(auto& p_step : utils::reversed_view(steps_)) {
+	for(auto& p_step : steps_ | utils::views::reverse) {
 		p_step->undo(side);
 	}
 	if(last_unit_id - unit_id_diff_ < 0) {
