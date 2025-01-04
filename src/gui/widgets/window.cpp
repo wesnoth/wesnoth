@@ -210,41 +210,34 @@ void manager::add(window& win)
 
 void manager::remove(window& win)
 {
-	for(std::map<unsigned, window*>::iterator itor = windows_.begin();
-		itor != windows_.end();
-		++itor) {
-
+	for(auto itor = windows_.begin(); itor != windows_.end(); ++itor) {
 		if(itor->second == &win) {
 			windows_.erase(itor);
 			return;
 		}
 	}
+
 	assert(false);
 }
 
 unsigned manager::get_id(window& win)
 {
-	for(std::map<unsigned, window*>::iterator itor = windows_.begin();
-		itor != windows_.end();
-		++itor) {
-
-		if(itor->second == &win) {
-			return itor->first;
+	for(const auto& [id, window_ptr] : windows_) {
+		if(window_ptr == &win) {
+			return id;
 		}
 	}
-	assert(false);
 
+	assert(false);
 	return 0;
 }
 
 window* manager::get_window(const unsigned id)
 {
-	std::map<unsigned, window*>::iterator itor = windows_.find(id);
-
-	if(itor == windows_.end()) {
-		return nullptr;
-	} else {
+	if(auto itor = windows_.find(id); itor != windows_.end()) {
 		return itor->second;
+	} else {
+		return nullptr;
 	}
 }
 
@@ -282,7 +275,7 @@ window::window(const builder_window::window_resolution& definition)
 	, debug_layout_(new debug_layout_graph(this))
 #endif
 	, event_distributor_(new event::distributor(*this, event::dispatcher::front_child))
-	, exit_hook_([](window&)->bool { return true; })
+	, exit_hook_([](window&) { return true; })
 {
 	manager::instance().add(*this);
 

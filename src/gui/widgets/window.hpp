@@ -60,7 +60,6 @@ class distributor;
 class window : public panel, public top_level_drawable
 {
 	friend class debug_layout_graph;
-	friend std::unique_ptr<window> build(const builder_window::window_resolution&);
 	friend struct window_implementation;
 	friend class invalidate_layout_blocker;
 	friend class pane;
