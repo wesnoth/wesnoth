@@ -58,8 +58,8 @@ namespace gui2::dialogs
 namespace
 {
 // Index 2 is by-level
-static std::pair sort_default{ std::string{"unit_name"}, sort_order::type::ascending };
-static utils::optional<decltype(sort_default)> sort_last;
+std::pair sort_default{ std::string{"unit_name"}, sort_order::type::ascending };
+utils::optional<decltype(sort_default)> sort_last;
 }
 
 REGISTER_DIALOG(units_dialog)
