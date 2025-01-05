@@ -49,18 +49,6 @@ modal_dialog::~modal_dialog()
 {
 }
 
-namespace {
-	struct window_stack_handler {
-		window_stack_handler(window* win) : local_window(win) {
-			open_window_stack.push_back(local_window);
-		}
-		~window_stack_handler() {
-			remove_from_window_stack(local_window);
-		}
-		window* local_window;
-	};
-}
-
 bool modal_dialog::show(const unsigned auto_close_time)
 {
 	if(video::headless() && !show_even_without_video_) {
@@ -85,9 +73,8 @@ bool modal_dialog::show(const unsigned auto_close_time)
 
 	pre_show();
 
-	{ // Scope the window stack
+	{
 		cursor::setter cur{cursor::NORMAL};
-		window_stack_handler push_window_stack(this);
 		retval_ = window::show(auto_close_time);
 	}
 
