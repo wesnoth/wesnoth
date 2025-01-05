@@ -195,6 +195,7 @@ display::display(const display_context* dc,
 	, reach_map_()
 	, reach_map_old_()
 	, reach_map_changed_(true)
+	, reach_map_team_index_(0)
 	, fps_handle_(0)
 	, invalidated_hexes_(0)
 	, drawn_hexes_(0)
@@ -3280,6 +3281,21 @@ void display::process_reachmap_changes()
 	}
 	reach_map_old_ = reach_map_;
 	reach_map_changed_ = false;
+
+	// Update the reachmap-context team, the selected unit's team shall override the displayed unit's.
+	if(context().units().count(selectedHex_)) {
+		reach_map_team_index_ = context().get_visible_unit(selectedHex_, viewing_team())->side();
+	} else if(context().get_visible_unit(mouseoverHex_, viewing_team()) != nullptr){
+		reach_map_team_index_ = context().get_visible_unit(mouseoverHex_, viewing_team())->side();
+	} else {
+		/**
+		 * If no unit is selected or displayed, the reachmap-context team should failsafe to
+		 * the viewing team index, this makes sure the team is invalid when getting the reachmap
+		 * images in game_display::get_reachmap_images().
+		 */
+		reach_map_team_index_ = viewing_team_index_;
+	}
+	DBG_DP << "Updated reachmap context team index to " << std::to_string(reach_map_team_index_);
 }
 
 display *display::singleton_ = nullptr;

@@ -667,14 +667,6 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 	const std::string* image_prefix_ = &game_config::reach_map_prefix;
 	DBG_DP << "Loaded image prefix: " << game_config::reach_map_prefix;
 
-	// As a failsafe, make sure the team is initialized with a valid value
-	team t = viewing_team();
-	// Get the reachmap-context team, the selected unit's team shall override the displayed unit's.
-	if(context().units().count(selectedHex_)) {
-		t = resources::gameboard->get_team(context().get_visible_unit(selectedHex_, viewing_team())->side());
-	} else if(context().get_visible_unit(displayedUnitHex_, viewing_team()) != nullptr){
-		t = resources::gameboard->get_team(context().get_visible_unit(displayedUnitHex_, viewing_team())->side());
-	}
 	for(int i = 0; i < 6; ++i) {
 		// look for units adjacent to loc
 		std::string test_location = std::to_string(adjacent[i].x) + "," + std::to_string(adjacent[i].y);
@@ -682,8 +674,17 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 		if(reach_map_.find(adjacent[i]) != reach_map_.end()) {
 			DBG_DP << test_location << " is REACHABLE";
 			tiles[i] = REACH;
-		} else if(u != nullptr && t.is_enemy(u->side())) {
-			// an enemy is reachable
+		}
+		/**
+		 * Make sure there is a unit selected or displayed when drawing the reachmap with enemy detection.
+		 * Enemy detection needs to be "disabled" when the reach_map_team_index_ failsafes to viewing_team_index.
+		 */
+		else if(display::reach_map_team_index_ == display::viewing_team_index_) {
+			DBG_DP << test_location << " is NOT REACHABLE";
+			tiles[i] = CLEAR;
+		}
+		// Grab the reachmap-context team index updated in "display::process_reachmap_changes()" and test for adjacent enemy units
+		else if(u != nullptr && resources::gameboard->get_team(display::reach_map_team_index_).is_enemy(u->side())) {
 			DBG_DP << test_location << " has an ENEMY";
 			tiles[i] = ENEMY;
 		} else {
