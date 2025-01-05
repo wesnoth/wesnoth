@@ -281,12 +281,10 @@ window::window(const builder_window::window_resolution& definition)
 
 	connect();
 
-	for(const auto& lg : definition.linked_groups) {
-		if(has_linked_size_group(lg.id)) {
-			FAIL(VGETTEXT("Linked ‘$id’ group has multiple definitions.", {{"id", lg.id}}));
+	for(const auto& [id, fixed_width, fixed_height] : definition.linked_groups) {
+		if(!init_linked_size_group(id, fixed_width, fixed_height)) {
+			FAIL(VGETTEXT("Linked ‘$id’ group has multiple definitions.", {{"id", id}}));
 		}
-
-		init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
 	}
 
 	const auto conf = cast_config_to<window_definition>();
@@ -779,14 +777,11 @@ const widget* window::find(const std::string_view id, const bool must_be_active)
 	return container_base::find(id, must_be_active);
 }
 
-void window::init_linked_size_group(const std::string& id,
-									 const bool fixed_width,
-									 const bool fixed_height)
+bool window::init_linked_size_group(const std::string& id, const bool fixed_width, const bool fixed_height)
 {
 	assert(fixed_width || fixed_height);
-	assert(!has_linked_size_group(id));
-
-	linked_size_[id] = linked_size(fixed_width, fixed_height);
+	auto [iter, success] = linked_size_.try_emplace(id, fixed_width, fixed_height);
+	return success;
 }
 
 bool window::has_linked_size_group(const std::string& id)
@@ -816,9 +811,7 @@ void window::remove_linked_widget(const std::string& id, const widget* wgt)
 	}
 
 	std::vector<widget*>& widgets = linked_size_[id].widgets;
-
-	std::vector<widget*>::iterator itor
-			= std::find(widgets.begin(), widgets.end(), wgt);
+	auto itor = std::find(widgets.begin(), widgets.end(), wgt);
 
 	if(itor != widgets.end()) {
 		widgets.erase(itor);

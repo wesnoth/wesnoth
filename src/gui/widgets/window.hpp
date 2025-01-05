@@ -344,8 +344,10 @@ public:
 	 * @param id                  The id of the group.
 	 * @param fixed_width         Does the group have a fixed width?
 	 * @param fixed_height        Does the group have a fixed height?
+	 *
+	 * @returns                   True if successful, false otherwise.
 	 */
-	void init_linked_size_group(const std::string& id,
+	bool init_linked_size_group(const std::string& id,
 								const bool fixed_width,
 								const bool fixed_height);
 
@@ -422,14 +424,14 @@ public:
 		variables_.add(key, value);
 		queue_redraw();
 	}
-	point get_linked_size(const std::string& linked_group_id) const
-	{
-		std::map<std::string, linked_size>::const_iterator it = linked_size_.find(linked_group_id);
-		if(it != linked_size_.end()) {
-			return point(it->second.width, it->second.height);
-		}
 
-		return point(-1, -1);
+	point get_linked_size(std::string_view group_id) const
+	{
+		if(auto it = linked_size_.find(group_id); it != linked_size_.end()) {
+			return { it->second.width, it->second.height };
+		} else {
+			return { -1, -1 };
+		}
 	}
 
 	enum class exit_hook {
@@ -598,7 +600,7 @@ private:
 	};
 
 	/** List of the widgets, whose size are linked together. */
-	std::map<std::string, linked_size> linked_size_;
+	std::map<std::string, linked_size, std::less<>> linked_size_;
 
 	/** List of widgets in the tabbing order. */
 	std::vector<widget*> tab_order;
