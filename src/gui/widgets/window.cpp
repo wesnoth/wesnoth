@@ -275,7 +275,7 @@ window::window(const builder_window::window_resolution& definition)
 	, debug_layout_(new debug_layout_graph(this))
 #endif
 	, event_distributor_(new event::distributor(*this, event::dispatcher::front_child))
-	, exit_hook_([](window&) { return true; })
+	, exit_hook_([] { return true; })
 {
 	manager::instance().add(*this);
 
@@ -563,7 +563,7 @@ int window::show(const unsigned auto_close_timeout)
 
 			// See if we should close.
 			if(status_ == status::REQUEST_CLOSE) {
-				status_ = exit_hook_(*this) ? status::CLOSED : status::SHOWING;
+				status_ = exit_hook_() ? status::CLOSED : status::SHOWING;
 			}
 
 			// Update the display. This will rate limit to vsync.

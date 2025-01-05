@@ -323,23 +323,23 @@ void file_dialog::pre_show()
 	//window.keyboard_capture(find_widget<text_box>("filename", false, true));
 	keyboard_capture(&file_textbox);
 	add_to_keyboard_chain(&filelist);
-	set_exit_hook(window::exit_hook::on_all, std::bind(&file_dialog::on_exit, this, std::placeholders::_1));
+	set_exit_hook(window::exit_hook::always, [this] { return on_exit(); });
 }
 
-bool file_dialog::on_exit(window& window)
+bool file_dialog::on_exit()
 {
-	if(window.get_retval() == FILE_DIALOG_ITEM_RETVAL) {
+	if(get_retval() == FILE_DIALOG_ITEM_RETVAL) {
 		// Attempting to exit by double clicking items -- only proceeds if the item
 		// was a file.
 		if(process_fileview_submit()) {
-			window.set_retval(retval::OK, false);
+			set_retval(retval::OK, false);
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	if(window.get_retval() == retval::OK) {
+	if(get_retval() == retval::OK) {
 		// Attempting to exit by pressing Enter/clicking OK -- only proceeds if the
 		// textbox was not altered by the user to point to a different directory.
 		return process_textbox_submit();

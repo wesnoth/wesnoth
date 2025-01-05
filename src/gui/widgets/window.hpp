@@ -435,10 +435,8 @@ public:
 	}
 
 	enum class exit_hook {
-		/** Always run hook */
-		on_all,
-		/** Run hook *only* if result is OK. */
-		on_ok,
+		always,
+		ok_only,
 	};
 
 	/**
@@ -446,18 +444,21 @@ public:
 	 *
 	 * A window will only close if the given function returns true under the specified mode.
 	 */
-	void set_exit_hook(exit_hook mode, std::function<bool(window&)> func)
+	template<typename Func>
+	void set_exit_hook(exit_hook mode, const Func& hook)
 	{
-		exit_hook_ = [mode, func](window& w) {
-			switch(mode) {
-			case exit_hook::on_all:
-				return func(w);
-			case exit_hook::on_ok:
-				return w.get_retval() != OK || func(w);
-			default:
-				return true;
-			}
-		};
+		switch(mode) {
+		case exit_hook::always:
+			exit_hook_ = hook;
+			break;
+
+		case exit_hook::ok_only:
+			exit_hook_ = [this, hook] { return get_retval() != OK || hook(); };
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	enum class show_mode {
@@ -766,7 +767,7 @@ private:
 
 	void signal_handler_close_window();
 
-	std::function<bool(window&)> exit_hook_;
+	std::function<bool()> exit_hook_;
 };
 
 // }---------- DEFINITION ---------{

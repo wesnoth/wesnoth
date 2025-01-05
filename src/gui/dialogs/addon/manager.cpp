@@ -523,7 +523,7 @@ void addon_manager::pre_show()
 	list.set_callback_order_change(std::bind(&addon_manager::on_order_changed, this, std::placeholders::_1, std::placeholders::_2));
 
 	// Use handle the special addon_list retval to allow installing addons on double click
-	set_exit_hook(window::exit_hook::on_all, std::bind(&addon_manager::exit_hook, this, std::placeholders::_1));
+	set_exit_hook(window::exit_hook::always, [this] { return exit_hook(); });
 }
 
 void addon_manager::toggle_details(button& btn, stacked_widget& stk)
@@ -1158,9 +1158,9 @@ void addon_manager::on_selected_version_change()
 	}
 }
 
-bool addon_manager::exit_hook(window& window)
+bool addon_manager::exit_hook()
 {
-	if(window.get_retval() == addon_list::DEFAULT_ACTION_RETVAL) {
+	if(get_retval() == addon_list::DEFAULT_ACTION_RETVAL) {
 		execute_default_action_on_selected_addon();
 		return false;
 	}

@@ -159,7 +159,7 @@ void mp_create_game::pre_show()
 		std::bind(&mp_create_game::load_game_callback, this));
 
 	// Custom dialog close hook
-	set_exit_hook(window::exit_hook::on_ok, [this](window& w) { return dialog_exit_hook(w); });
+	set_exit_hook(window::exit_hook::ok_only, [this] { return dialog_exit_hook(); });
 
 	//
 	// Set up the options manager. Needs to be done before selecting an initial tab
@@ -839,7 +839,7 @@ void mp_create_game::reset_timer_settings()
 	action_bonus_->set_widget_value(prefs::get().countdown_action_bonus().count());
 }
 
-bool mp_create_game::dialog_exit_hook(window& /*window*/)
+bool mp_create_game::dialog_exit_hook()
 {
 	if(!create_engine_.current_level_has_side_data()) {
 		gui2::show_transient_error_message(_("The selected game has no sides!"));
