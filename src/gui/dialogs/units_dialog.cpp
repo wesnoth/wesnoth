@@ -474,7 +474,10 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 		.set_row_num(recruit_list.size())
 		.show_all_headers(false)
 		.set_column("unit_image", recruit_list, [&team](const auto& recruit) {
-			std::string image_string = recruit->image();
+			std::string image_string = recruit->icon();
+			if (image_string.empty()) {
+				image_string = recruit->image();
+			}
 			image_string += "~RC(" + recruit->flag_rgb() + ">" + team.color() + ")";
 			image_string += "~SCALE_INTO(72,72)";
 			return image_string;
