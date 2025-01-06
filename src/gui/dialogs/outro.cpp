@@ -113,6 +113,11 @@ void outro::update()
 	const auto now = std::chrono::steady_clock::now();
 	canvas& window_canvas = window::get_canvas(0);
 
+	// TODO: Setting this in pre_show doesn't work, since it looks like it gets
+	// overwritten by styled_widget::update_canvas. But it's also weird to have
+	// this here. Find a better way to do this...
+	window_canvas.set_variable("text_wrap_mode", wfl::variant(PANGO_ELLIPSIZE_NONE));
+
 	const auto goto_stage = [this, &now](stage new_stage) {
 		stage_ = new_stage;
 		stage_start_ = now;
