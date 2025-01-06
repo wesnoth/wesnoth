@@ -582,8 +582,8 @@ point table::calculate_best_size() const
 
 		point row_size, total_size;
 
-		for(std::size_t n = 0; n < item_sizes.size(); n++) {
-			if(row_size.x + item_sizes[n].x > row_max_width) {
+		for(const auto& item_size : item_sizes) {
+			if(row_size.x + item_size.x > row_max_width) {
 
 				total_size.y += row_size.y;
 
@@ -594,10 +594,10 @@ point table::calculate_best_size() const
 				row_size = point();
 			}
 
-			row_size.x += item_sizes[n].x;
+			row_size.x += item_size.x;
 
-			if(row_size.y < item_sizes[n].y) {
-				row_size.y = item_sizes[n].y;
+			if(row_size.y < item_size.y) {
+				row_size.y = item_size.y;
 			}
 		}
 
