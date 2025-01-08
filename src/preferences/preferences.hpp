@@ -504,6 +504,7 @@ public:
 	PREF_GETTER_SETTER(idle_anim_rate, int, 0)
 	PREF_GETTER_SETTER(locale, std::string, std::string(""))
 	PREF_GETTER_SETTER(gui2_theme, std::string, std::string(""))
+	PREF_GETTER_SETTER(show_tips, bool, true)
 	PREF_GETTER_SETTER(stop_music_in_background, bool, false)
 	PREF_GETTER_SETTER(tile_size, unsigned, 0)
 	PREF_GETTER_SETTER(mouse_scrolling, bool, true)
@@ -830,6 +831,7 @@ private:
 		prefs_list::refresh_rate,
 		prefs_list::editor_chosen_addon,
 		prefs_list::gui2_theme,
+		prefs_list::show_tips,
 		prefs_list::mp_server_program_name,
 		prefs_list::pixel_scale,
 		prefs_list::sound_buffer_size,

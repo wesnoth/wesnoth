@@ -111,6 +111,7 @@ private:
 
 	int last_selected_item_;
 	unsigned current_gui_theme_;
+	bool is_reload_needed_;
 
 	std::vector<double> accl_speeds_;
 
