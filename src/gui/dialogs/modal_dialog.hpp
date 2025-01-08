@@ -212,7 +212,7 @@ protected:
 	 * in the child classes as access to a field.
 	 *
 	 * @param id                  Id of the widget, same value as in WML.
-	 * @param mandatory            Is the widget mandatory or mandatory.
+	 * @param mandatory           Is the widget mandatory or optional?
 	 * @param callback_load_value The callback function to set the initial value
 	 *                            of the widget.
 	 * @param callback_save_value The callback function to write the resulting
@@ -240,7 +240,7 @@ protected:
 	 * in the child classes as access to a field.
 	 *
 	 * @param id                  Id of the widget, same value as in WML.
-	 * @param mandatory            Is the widget mandatory or mandatory.
+	 * @param mandatory           Is the widget mandatory or optional?
 	 * @param linked_variable     The variable the widget is linked to. See
 	 *                            @ref field::field for more information.
 	 * @param callback_change     When the value of the widget changes this
@@ -310,7 +310,7 @@ protected:
 	 * depending on where used.
 	 *
 	 * @param id                  Id of the widget, same value as in WML.
-	 * @param mandatory           Is the widget mandatory or optional.
+	 * @param mandatory           Is the widget mandatory or optional?
 	 * @param text                The text for the label.
 	 * @param use_markup          Whether or not use markup for the label.
 	 */
