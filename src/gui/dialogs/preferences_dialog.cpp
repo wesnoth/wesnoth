@@ -114,6 +114,7 @@ preferences_dialog::preferences_dialog(const pref_constants::PREFERENCE_VIEW ini
 	, gui2_themes_() // populated by set_gui2_theme_list
 	, last_selected_item_(0)
 	, current_gui_theme_(0)
+	, is_reload_needed_(false)
 	, accl_speeds_({0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 3, 4, 8, 16})
 	, visible_hotkeys_()
 	, visible_categories_()
@@ -528,6 +529,16 @@ void preferences_dialog::initialize_callbacks()
 		find_widget<toggle_button>("auto_pixel_scale");
 	connect_signal_mouse_left_click(auto_ps_toggle,
 		std::bind(&preferences_dialog::apply_pixel_scale, this));
+
+	/* SHOW TIPS PANEL ON TITLESCREEN */
+	register_bool("show_tips", true,
+		[]() {return prefs::get().show_tips();},
+		[&](bool v) {
+			// if changed once: different value, reload
+			// if changed twice: double toggle, same value, don't reload
+			is_reload_needed_ = !is_reload_needed_;
+			prefs::get().set_show_tips(v);
+		});
 
 	/* SHOW FLOATING LABELS */
 	register_bool("show_floating_labels", true,
@@ -1243,6 +1254,11 @@ void preferences_dialog::post_show()
 	// Save new prefs to disk. This also happens on app close, but doing
 	// it here too ensures nothing is lost in case of, say, a crash.
 	prefs::get().write_preferences();
+
+	// Needed for applying changes to tip panel visiblity on dialog close
+	if (is_reload_needed_) {
+		set_retval(gui2::dialogs::title_screen::RELOAD_UI);
+	}
 }
 
 } // namespace dialogs
