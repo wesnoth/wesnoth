@@ -23,10 +23,8 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/menu_button.hpp"
-#include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
@@ -469,7 +467,6 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 			image_string = recruit->image();
 		}
 		image_string += "~RC(" + recruit->flag_rgb() + ">" + team.color() + ")";
-		image_string += "~SCALE_INTO(72,72)";
 		return image_string;
 	}, sort_type::none);
 
