@@ -119,50 +119,56 @@ public:
 		return *this;
 	}
 
-	/**
-	 * Corresponding to each widget in the row with id 'id', there is a lambda that generates
-	 * the corresponding label to set to that widget. This method sets those generator functions.
-	 * The 'id's must be the same as those defined for the various widgets
-	 * in the [list_definition] in the WML file.
-	 */
-	template<typename Value, typename Generator = std::function<std::string(const Value&)>>
-	units_dialog& set_column(
-		std::string_view id,
-		const std::vector<Value>& container,
-		const Generator& generator,
-		const bool use_as_sorter = false)
+	template<typename Value, typename Func>
+	static auto make_index_wrapper(const std::vector<Value>& list, const Func& func)
 	{
-		column_generators_.try_emplace(id, [&container, generator](std::size_t index) { return generator(container[index]); });
-		// use the generator function also as sorter function
-		if (use_as_sorter) {
-			find_widget<gui2::listbox>("main_list").set_single_sorter(
-				id, [&container, generator](std::size_t index) { return generator(container[index]); });
-		}
-		return *this;
+		return [&list, func](std::size_t index) { return func(list[index]); };
 	}
 
-	template<typename Value, typename Generator = std::function<std::string(const Value&)>
-	, typename Sorter = std::function<std::string(const Value&)>>
-	units_dialog& set_column(
-		std::string_view id,
-		const std::vector<Value>& container,
-		const Generator& generator,
-		const Sorter& sorter)
+	template<typename Sorter>
+	void set_sorter(std::string_view id, const Sorter& sorter)
 	{
-		column_generators_.try_emplace(id, [&container, generator](std::size_t index) { return generator(container[index]); });
-		find_widget<gui2::listbox>("main_list").set_single_sorter(
-			id, [&container, sorter](std::size_t index) { return sorter(container[index]); });
-		return *this;
+		find_widget<gui2::listbox>("main_list").set_single_sorter(id, sorter);
 	}
 
+	/** Controls the sort behavior for functions returned by @ref make_column_builder. */
+	enum class sort_type { generator, none };
+
 	/**
-	 * Sets the generator function for the tooltips
+	 * Creates a generator function which registers secondary generator and sorter
+	 * functions for the list column associated with the given ID.
+	 *
+	 * @param list     A list of values to associate with the generator functions.
+	 *                 These will be used to populate the dialog's listbox.
+	 *
+	 * @returns        A function which takes takes the following arguments:
+	 *                 - The widget ID whose value will be generated.
+	 *                 - The function which returns said widget's display value.
+	 *                 - A @ref sort_type flag or a function used to order the list.
+	 *                   If sort_type::generator is specified, the second argument
+	 *                   will be used as the sorter.
 	 */
-	template<typename Value, typename Generator = std::function<std::string(const Value&)>>
-	units_dialog& set_tooltip_generator(
-		const std::vector<Value>& container, const Generator& generator)
+	template<typename Value>
+	auto make_column_builder(const std::vector<Value>& list)
 	{
-		tooltip_gen_ = [&container, generator](std::size_t index) { return generator(container[index]); };
+		return [this, &list](std::string_view id, const auto& generator, const auto& sorter) {
+			auto wrapper = make_index_wrapper(list, generator);
+			column_generators_.try_emplace(id, wrapper);
+
+			if constexpr(utils::decayed_is_same<sort_type, decltype(sorter)>) {
+				if(sorter != sort_type::generator) return;
+				set_sorter(id, wrapper);
+			} else {
+				set_sorter(id, make_index_wrapper(list, sorter));
+			}
+		};
+	}
+
+	/** Sets the generator function for the tooltips. */
+	template<typename Value, typename Generator>
+	units_dialog& set_tooltip_generator(const std::vector<Value>& list, const Generator& generator)
+	{
+		tooltip_gen_ = make_index_wrapper(list, generator);
 		return *this;
 	}
 
