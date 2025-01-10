@@ -131,8 +131,23 @@ public:
 		find_widget<gui2::listbox>("main_list").set_single_sorter(id, sorter);
 	}
 
+	/** Controls the sort behavior for functions returned by @ref make_column_builder. */
 	enum class sort_type { generator, none };
 
+	/**
+	 * Creates a generator function which registers secondary generator and sorter
+	 * functions for the list column associated with the given ID.
+	 *
+	 * @param list     A list of values to associate with the generator functions.
+	 *                 These will be used to populate the dialog's listbox.
+	 *
+	 * @returns        A function which takes takes the following arguments:
+	 *                 - The widget ID whose value will be generated.
+	 *                 - The function which returns said widget's display value.
+	 *                 - A @ref sort_type flag or a function used to order the list.
+	 *                   If sort_type::generator is specified, the second argument
+	 *                   will be used as the sorter.
+	 */
 	template<typename Value>
 	auto make_column_builder(const std::vector<Value>& list)
 	{

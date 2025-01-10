@@ -723,7 +723,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 
 	dlg->set_tooltip_generator(recall_list, [&](const auto& unit) {
 		if(recallable(unit)) {
-			return "";
+			return std::string();
 		}
 
 		// Just set the tooltip on every single element in this row.
