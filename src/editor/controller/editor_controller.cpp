@@ -1353,11 +1353,10 @@ void editor_controller::unit_list()
 		unit_list.push_back(i.get_shared_ptr());
 	}
 
-	gui2::dialogs::units_dialog unit_dlg;
-	unit_dlg.build_unit_list_dialog(unit_list);
+	const auto& unit_dlg = gui2::dialogs::units_dialog::build_unit_list_dialog(unit_list);
 
-	if (unit_dlg.show() && unit_dlg.is_selected()) {
-		const map_location& loc = unit_list[unit_dlg.get_selected_index()]->get_location();
+	if (unit_dlg->show() && unit_dlg->is_selected()) {
+		const map_location& loc = unit_list[unit_dlg->get_selected_index()]->get_location();
 		gui().scroll_to_tile(loc, display::WARP);
 		gui().select_hex(loc);
 	}

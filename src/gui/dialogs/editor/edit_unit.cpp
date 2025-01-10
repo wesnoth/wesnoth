@@ -20,7 +20,6 @@
 #include "gui/dialogs/editor/edit_unit.hpp"
 
 #include "filesystem.hpp"
-#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/message.hpp"
@@ -30,7 +29,6 @@
 #include "gui/widgets/combobox.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/scroll_label.hpp"
@@ -352,14 +350,13 @@ void editor_edit_unit::select_file(const std::string& default_dir, const std::st
 
 void editor_edit_unit::load_unit_type() {
 	const auto& all_type_list = unit_types.types_list();
-	units_dialog type_select;
-	type_select.build_create_dialog(all_type_list);
+	const auto& type_select = gui2::dialogs::units_dialog::build_create_dialog(all_type_list);
 
-	if (!type_select.show() && !type_select.is_selected()) {
+	if (!type_select->show() && !type_select->is_selected()) {
 		return;
 	}
 
-	const auto& type = all_type_list[type_select.get_selected_index()];
+	const auto& type = all_type_list[type_select->get_selected_index()];
 
 	tab_container& tabs = find_widget<tab_container>("tabs");
 	tabs.select_tab(0);
