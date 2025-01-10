@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-28 12:38-0500\n"
-"PO-Revision-Date: 2024-05-12 17:56+0200\n"
+"PO-Revision-Date: 2024-12-15 00:38+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.3\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -2849,7 +2849,7 @@ msgstr "Uudelleenlataaminen muuttaa tulevia taistelutuloksia"
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:321
 msgid "Predictable RNG"
-msgstr "Ennustettava RNG"
+msgstr "Ennustettava-RNG"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:322
@@ -2972,45 +2972,43 @@ msgstr "Kopioi tämä loki leikepöydälle"
 #. Within the “Community” dialog, this chooses a tab with links to various Wesnoth websites.
 #: data/gui/window/community_dialog.cfg:42 data/gui/window/title_screen.cfg:262
 msgid "Community"
-msgstr ""
+msgstr "Yhteisö"
 
 #. [button]: id=forums
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/window/community_dialog.cfg:63
-#, fuzzy
-#| msgid "Forum URL"
 msgid "Forums"
-msgstr "Foorumi-URL"
+msgstr "Foorumit"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/window/community_dialog.cfg:82
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/window/community_dialog.cfg:101
 msgid "IRC"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/window/community_dialog.cfg:120
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/window/community_dialog.cfg:139
 msgid "Reddit"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/window/community_dialog.cfg:158
 msgid "Donate"
-msgstr ""
+msgstr "Lahjoita"
 
 #. [label]
 #: data/gui/window/core_dialog.cfg:44
@@ -3195,6 +3193,8 @@ msgstr "Vain joukkue"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:45
+#, fuzzy
+#| msgid "Add-on Selection"
 msgid "Add-on selection"
 msgstr "Lisäosan valinta"
 
@@ -4116,8 +4116,10 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/game_version.cfg:429
+#, fuzzy
+#| msgid "Show Battle for Wesnoth help"
 msgid "The Battle for Wesnoth"
-msgstr "Taistelu Wesnothista"
+msgstr "Näytä Taistelu Wesnothista -pelin ohjetiedosto"
 
 #. [widget]: id=tab_label
 #: data/gui/window/game_version.cfg:508
@@ -4161,10 +4163,8 @@ msgstr ""
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
 #: data/gui/window/game_version.cfg:635
-#, fuzzy
-#| msgid "Crater"
 msgid "Migrate"
-msgstr "kraateri"
+msgstr "Siirrä"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
@@ -5198,8 +5198,14 @@ msgstr "Kirjaudu sisään Wesnothin viralliselle moninpelipalvelimelle"
 
 #. [widget]: id=name
 #: data/gui/window/mp_method_selection.cfg:235
+#, fuzzy
+#| msgid ""
+#| "Join\n"
+#| "Official Server"
 msgid "Join Official Server"
-msgstr "Liity viralliselle palvelimelle"
+msgstr ""
+"Liity\n"
+"viralliselle palvelimelle"
 
 #. [column]
 #: data/gui/window/mp_method_selection.cfg:245
@@ -5488,10 +5494,8 @@ msgstr "Saatavilla editorissa"
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
 #: src/gui/dialogs/preferences_dialog.cpp:829
-#, fuzzy
-#| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
-msgstr "G"
+msgstr "M"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:145
@@ -5584,6 +5588,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:168
+#, fuzzy
+#| msgid "Interface theme:"
 msgid "Interface theme:"
 msgstr "Käyttöliittymän teema:"
 
@@ -6534,6 +6540,8 @@ msgstr[0] "$num sekuntti"
 msgstr[1] "$num sekuntit"
 
 #: src/gui/core/canvas.cpp:273
+#, fuzzy
+#| msgid "Image doesn't fit on canvas."
 msgid "Image doesn't fit on canvas."
 msgstr "Kuva ei sovi piirtoalueelle."
 
@@ -6546,6 +6554,8 @@ msgid "No draw section defined for state."
 msgstr "Piirtoaluetta ei ole määritetty."
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:133
+#, fuzzy
+#| msgid "No resolution defined."
 msgid "No resolution defined."
 msgstr "Resoluutiota ei ole määritetty."
 
@@ -6557,11 +6567,17 @@ msgid "No grid defined."
 msgstr "Ruudukkoa ei ole määritetty."
 
 #: src/gui/core/window_builder.cpp:221
+#, fuzzy
+#| msgid "Grid '$grid' row $row must have at least one column."
 msgid "Grid '$grid' row $row must have at least one column."
 msgstr ""
 "Ruudukko '$grid' rivi $row pitää sisältää vähintään yhden pystysarakkeen"
 
 #: src/gui/core/window_builder.cpp:233
+#, fuzzy
+#| msgid ""
+#| "Grid '$grid' row $row has a differing number of columns ($found found, "
+#| "$expected expected)"
 msgid ""
 "Grid '$grid' row $row has a differing number of columns ($found found, "
 "$expected expected)"
@@ -7360,6 +7376,8 @@ msgid "Downloading lobby data"
 msgstr "Ladataan auladataa"
 
 #: src/gui/dialogs/lua_interpreter.cpp:674
+#, fuzzy
+#| msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgstr ""
 "Lua-konsolia voi käyttää vain vianjäljintätilassa! (Suorita ensin ':debug' "
@@ -7383,6 +7401,11 @@ msgid "Incompatible User-made Content"
 msgstr "Yhteensopimatonta käyttäjän tekemää sisältöä"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:178
+#, fuzzy
+#| msgid ""
+#| "This game cannot be joined because the host has out-of-date add-ons that "
+#| "are incompatible with your version. You might wish to suggest that the "
+#| "host's add-ons be updated."
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -7459,6 +7482,9 @@ msgid "lobby"
 msgstr "aula"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:838
+#, fuzzy
+#| msgid ""
+#| "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr "Tämä peli ei salli tarkkailijoita. Tarkkaile moderoijan oikeuksilla?"
@@ -7813,6 +7839,8 @@ msgstr ""
 "viestejä tältä pelaajalta, kirjoita <i>/ignore $name</i>"
 
 #: src/gui/widgets/helper.cpp:93
+#, fuzzy
+#| msgid "Mandatory widget '$id' hasn't been defined."
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Pakollista widgettiä ”$id” ei ole määritetty."
 
@@ -7829,10 +7857,11 @@ msgid "Copied link!"
 msgstr "Linkki kopioitu!"
 
 #: src/gui/widgets/listbox.cpp:725 src/gui/widgets/multi_page.cpp:220
+#, fuzzy
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
-"’list_data’:lla täytyy olla sama määrä kolumneja kuin ’list_definition’:lla."
+"”list_data”:lla täytyy olla sama määrä kolumneja kuin ”list_definition”:lla."
 
 #: src/gui/widgets/listbox.cpp:769 src/gui/widgets/listbox.cpp:812
 #: src/gui/widgets/listbox.cpp:855 src/gui/widgets/scrollbar_panel.cpp:92
@@ -7841,6 +7870,8 @@ msgstr "Listaa ei ole määritetty."
 
 #: src/gui/widgets/listbox.cpp:774 src/gui/widgets/listbox.cpp:817
 #: src/gui/widgets/listbox.cpp:860
+#, fuzzy
+#| msgid "A 'list_definition' should contain one row."
 msgid "A 'list_definition' should contain one row."
 msgstr "’list_definition’:lla pitäisi olla yksi rivi."
 
@@ -7879,6 +7910,8 @@ msgid "No widget defined."
 msgstr "Widgettiä ei määritetty."
 
 #: src/gui/widgets/slider.cpp:357
+#, fuzzy
+#| msgid "The number of value_labels and values don't match."
 msgid "The number of value_labels and values don't match."
 msgstr "Kenttien value_labels ja values arvot eivät täsmää."
 
@@ -7897,6 +7930,8 @@ msgid "No nodes defined for a tree view."
 msgstr "Puunäkymää varten ei ole määritelty solmuja."
 
 #: src/gui/widgets/tree_view.cpp:326
+#, fuzzy
+#| msgid "[node]id 'root' is reserved for the implementation."
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "[solmu]tunniste root on erikoisasemassa."
 
@@ -7957,15 +7992,21 @@ msgid "Abilities"
 msgstr "Erikoistaidot"
 
 #: src/gui/widgets/window.cpp:431
+#, fuzzy
+#| msgid "Linked '$id' group has multiple definitions."
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Linkitetyllä ’$id’-ryhmällä on useampia määritelmiä."
 
 #: src/gui/widgets/window.cpp:917
+#, fuzzy
+#| msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Hylkäys klikkaamalla tarvitsee 'click_dismiss' tai 'ok' -napin."
 
 #: src/gui/widgets/window.cpp:942 src/gui/widgets/window.cpp:979
 #: src/tests/gui/test_gui2.cpp:736
+#, fuzzy
+#| msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Valintaikkunan näyttäminen epäonnistui, koska se ei mahtunut ruudulle."
 
@@ -8119,8 +8160,10 @@ msgid "Terrain Description"
 msgstr "Maaston kuvaus"
 
 #: src/hotkey/hotkey_command.cpp:102
+#, fuzzy
+#| msgid "Unit Type Description"
 msgid "Unit Description"
-msgstr "Yksikön kuvaus"
+msgstr "Yksikkö tyypin kuvaus"
 
 #: src/hotkey/hotkey_command.cpp:104
 msgid "Delete Unit"
@@ -8687,8 +8730,10 @@ msgid "Change Add-on ID"
 msgstr "Vaihda lisäosan tunniste"
 
 #: src/hotkey/hotkey_command.cpp:275
+#, fuzzy
+#| msgid "Scenario"
 msgid "Edit Scenario"
-msgstr "Muokkaa skenaariota"
+msgstr "Skenaario"
 
 #: src/hotkey/hotkey_command.cpp:276
 msgid "Edit Side"
@@ -8838,6 +8883,10 @@ msgstr ""
 "Raportoidessasi ohjelmavirhettä sisällytä seuraava virheviesti raporttiin:"
 
 #: src/wml_exception.cpp:89
+#, fuzzy
+#| msgid ""
+#| "In section '[$section|]' where '$primary_key| = $primary_value' the "
+#| "mandatory key '$key|' isn't set."
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -8846,8 +8895,426 @@ msgstr ""
 "avain $key| ei ole asetettu."
 
 #: src/wml_exception.cpp:92
+#, fuzzy
+#| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
+
+#~ msgid "Filter by campaign completion status"
+#~ msgstr "Suodata kampanjat niiden läpäisyjen mukaan"
+
+#~ msgid "Not Completed"
+#~ msgstr "Ei läpäisty"
+
+#~ msgid "Show campaigns not completed by player"
+#~ msgstr "Näytä kampanjat, joita ei ole läpäisty"
+
+#~ msgid "Completed: Bronze"
+#~ msgstr "Läpäisty: Pronssi"
+
+#~ msgid "Show campaigns completed at easiest difficulty"
+#~ msgstr "Näytä kampanjat jotka on läpäisty helpoimmalla vaikeusasteella"
+
+#~ msgid "Completed: Silver"
+#~ msgstr "Läpäisty: Hopea"
+
+#~ msgid "Show campaigns completed at intermediate difficulties"
+#~ msgstr "Näytä kampanjat jotka on läpäisty keskivaikealla vaikeusasteella"
+
+#~ msgid "Completed: Gold"
+#~ msgstr "Läpäisty: Kulta"
+
+#~ msgid "Show campaigns completed at hardest difficulty"
+#~ msgstr "Näytä kampanjat jotka on läpäisty vaikeimmalla vaikeusasteella"
+
+#~ msgid "Completed: All"
+#~ msgstr "Läpäisty: Kaikki"
+
+#~ msgid "Show completed campaigns"
+#~ msgstr "Näytä läpäistyt kampanjat"
+
+#~ msgid ""
+#~ "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
+#~ "\n"
+#~ "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
+#~ "once and miss once, but might also hit twice or miss twice."
+#~ msgstr ""
+#~ "Puhdas, puolueeton satunnaisuus; tapa, jolla Wesnoth on tarkoitettu "
+#~ "pelattavaksi.\n"
+#~ "\n"
+#~ "Esimerkki: Jos isket kahdesti 50 % tarkkuudella, todennäköisimmin osut "
+#~ "kerran, mutta toisella kertaa ohi, mutta saatat myös osua molemmilla "
+#~ "kerroilla tai molemmilla kerroilla ohi."
+
+#~ msgid ""
+#~ "Identical to Default RNG, except loading a saved game will not change the "
+#~ "outcome of an attack.\n"
+#~ "\n"
+#~ "Example: you strike twice and get lucky, hitting both strikes. You then "
+#~ "load an earlier save and make the same attack again. Both strikes will "
+#~ "still hit."
+#~ msgstr ""
+#~ "Samanlainen kuin Perus-RNG, mutta tallennetun pelin lataaminen ei muuta "
+#~ "hyökkäyksen lopputulosta.\n"
+#~ "\n"
+#~ "Esimerkki: Isket kahdesti ja onnistut molemmilla kerroilla. Lataat "
+#~ "aiemman tallennuksen ja teet saman hyökkäyksen uudelleen. Molemmat iskut "
+#~ "osuvat edelleen."
+
+#~ msgid "Reduced RNG"
+#~ msgstr "Vähennetty-RNG"
+
+#~ msgid ""
+#~ "Hits and misses are much more consistent. This tends to make small-scale "
+#~ "engagements easier to plan.\n"
+#~ "\n"
+#~ "Example: if you strike three times with 50% accuracy, you will always hit "
+#~ "at least once and miss at least once."
+#~ msgstr ""
+#~ "Osumat ovat paljon johdonmukaisempia. Tämä helpottaa yleensä "
+#~ "pienimuotoisten yhteenottojen suunnittelua.\n"
+#~ "\n"
+#~ "Esimerkki: Jos isket kolme kertaa 50 % tarkkuudella, osut aina vähintään "
+#~ "kerran ja ohi vähintään kerran."
+
+#, fuzzy
+#~| msgid "Previous page"
+#~ msgid "Preview image"
+#~ msgstr "Edellinen sivu"
+
+#, fuzzy
+#~| msgid "Player joins"
+#~ msgid "Play sound"
+#~ msgstr "Pelaaja liittyi"
+
+#, fuzzy
+#~| msgid "Image:"
+#~ msgid "Unit Image:"
+#~ msgstr "Kuva:"
+
+#~ msgid "Gender:"
+#~ msgstr "Sukupuoli:"
+
+#, fuzzy
+#~| msgid "gender^Random"
+#~ msgid "gender^Male"
+#~ msgstr "Satunnainen"
+
+#, fuzzy
+#~| msgid "Female"
+#~ msgid "gender^Female"
+#~ msgstr "Nainen"
+
+#, fuzzy
+#~| msgid "Advance Unit"
+#~ msgid "Advances to:"
+#~ msgstr "Ylennä yksikkö"
+
+#, fuzzy
+#~| msgid "Race"
+#~ msgid "Race:"
+#~ msgstr "Rotu"
+
+#, fuzzy
+#~| msgid "HP: "
+#~ msgid "HP:"
+#~ msgstr "EP: "
+
+#, fuzzy
+#~| msgid "XP: "
+#~ msgid "XP:"
+#~ msgstr "KP: "
+
+#, fuzzy
+#~| msgid "Movement Costs:"
+#~ msgid "Movement:"
+#~ msgstr "Liikkumiskulut:"
+
+#, fuzzy
+#~| msgid "Attack"
+#~ msgid "New Attack"
+#~ msgstr "Hyökkää"
+
+#, fuzzy
+#~| msgid "Select/Move/Attack"
+#~ msgid "Delete Attack"
+#~ msgstr "Valitse/Liikuta/Hyökkää"
+
+#, fuzzy
+#~| msgid "Damage"
+#~ msgid "Damage:"
+#~ msgstr "Vahinko"
+
+#, fuzzy
+#~| msgid "Hits"
+#~ msgid "Hits:"
+#~ msgstr "Osumia"
+
+#, fuzzy
+#~| msgid "Profile"
+#~ msgid "Small Profile"
+#~ msgstr "Profiili"
+
+#, fuzzy
+#~| msgid "Abilities"
+#~ msgid "Abilities:"
+#~ msgstr "Erikoistaidot"
+
+#, fuzzy
+#~| msgid "Content Type:"
+#~ msgid "Movetype:"
+#~ msgstr "Sisällön tyyppi:"
+
+#, fuzzy
+#~| msgid "Defender"
+#~ msgid "Defense:"
+#~ msgstr "Puolustaja"
+
+#, fuzzy
+#~| msgid "Resistances: "
+#~ msgid "Resistances:"
+#~ msgstr "Vastustukset: "
+
+#, fuzzy
+#~| msgid "Image:"
+#~ msgid "AI Usage:"
+#~ msgstr "Kuva:"
+
+#, fuzzy
+#~| msgid "Start Editor"
+#~ msgid "Unit Type Editor"
+#~ msgstr "Käynnistä muokkausohjelma"
+
+#, fuzzy
+#~| msgid "Game Stats"
+#~ msgid "Main Stats"
+#~ msgstr "Pelitilastot"
+
+#~ msgid "<span font_family='DejaVu Sans'>✦</span> <b>Version:</b>"
+#~ msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Versio:</b>"
+
+#~ msgid "<span font_family='DejaVu Sans'>✦</span> <b>Running on:</b>"
+#~ msgstr ""
+#~ "<span font_family='DejaVu Sans'>✦</span> <b>Suoritetaan alustalla:</b>"
+
+#~ msgid "<span font_family='DejaVu Sans'>✦</span> <b>Architecture:</b>"
+#~ msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Arkkitehtuuri:</b>"
+
+#~ msgid "<span font_family='DejaVu Sans'>✦</span> <b>Homepage:</b>"
+#~ msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Kotisivu:</b>"
+
+#~ msgid "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
+#~ msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
+
+#~ msgid ""
+#~ "<i><span font_family='DejaVu Sans'>➤</span> Copy a full report here:</i>"
+#~ msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
+
+#~ msgid ""
+#~ "<i><span font_family='DejaVu Sans'>➤</span> Report an issue or request a "
+#~ "feature:</i>"
+#~ msgstr ""
+#~ "<i><span font_family='DejaVu Sans'>➤</span> Ilmoita virheestä tai pyydä "
+#~ "toimintoa:</i>"
+
+#~ msgid "Report Issue"
+#~ msgstr "Ilmoita virheestä"
+
+#~ msgid "<i><span font_family='DejaVu Sans'>➤</span> View Game Manual:</i>"
+#~ msgstr ""
+#~ "<i><span font_family='DejaVu Sans'>➤</span> Näytä pelin ohjekirja:</i>"
+
+#~ msgid "View Manual"
+#~ msgstr "Näytä ohjekirja"
+
+#~ msgid ""
+#~ "<i><span font_family='DejaVu Sans'>➤</span> Re-open the version migrator "
+#~ "dialog:</i>"
+#~ msgstr ""
+#~ "<i><span font_family='DejaVu Sans'>➤</span> Avaa version siirtoikkuna "
+#~ "uudelleen:</i>"
+
+#~ msgid "An open source, turn-based strategy game with a high fantasy theme."
+#~ msgstr ""
+#~ "Avoimen lähdekoodin vuoropohjainen strategiapeli vahvalla "
+#~ "fantasiateemalla."
+
+#~ msgid "License"
+#~ msgstr "Lisenssi"
+
+#, fuzzy
+#~| msgid "Show Credits"
+#~ msgid "Show Topics"
+#~ msgstr "Näytä pelin tekijät"
+
+#~ msgid "Faction:"
+#~ msgstr "Liittouma:"
+
+#~ msgid ""
+#~ "Connect to\n"
+#~ "Server"
+#~ msgstr ""
+#~ "Yhdistä\n"
+#~ "palvelimelle"
+
+#~ msgid ""
+#~ "Host Networked\n"
+#~ "Game"
+#~ msgstr ""
+#~ "Isännöi oma\n"
+#~ "verkkopeli"
+
+#, fuzzy
+#~| msgid "Interface theme:"
+#~ msgid "UI theme:"
+#~ msgstr "Käyttöliittymän teema:"
+
+#, fuzzy
+#~| msgid ""
+#~| "Change the in-game interface theme. Additional themes may be provided by "
+#~| "community-made add-ons"
+#~ msgid ""
+#~ "Change the UI (GUI2) theme. Additional themes may be provided by "
+#~ "community-made add-ons"
+#~ msgstr ""
+#~ "Vaihda pelin käyttöliittymän teema. Yhteisön tekemät lisäosat voivat "
+#~ "tarjota lisää teemoja"
+
+#~ msgid "Apply"
+#~ msgstr "Hyväksy"
+
+#~ msgid "About"
+#~ msgstr "Tietoa"
+
+#, fuzzy
+#~| msgid "The Battle for Wesnoth"
+#~ msgid "General information about Battle for Wesnoth"
+#~ msgstr "Taistelu Wesnothista"
+
+#, fuzzy
+#~| msgid "addons_of_type^Cores"
+#~ msgid "addons_of_type^Themes"
+#~ msgstr "Ytimet"
+
+#, fuzzy
+#~| msgid "Add-ons"
+#~ msgid "game^Get Add-ons"
+#~ msgstr "Lisäosat"
+
+#, fuzzy
+#~| msgid "Campaign"
+#~ msgid "More campaigns..."
+#~ msgstr "Kampanjat"
+
+#, fuzzy
+#~| msgid "Choose Player"
+#~ msgid "Choose File"
+#~ msgstr "Valitse pelaaja"
+
+#~ msgid "Theme"
+#~ msgstr "Teema"
+
+#, fuzzy
+#~| msgid "Height:"
+#~ msgid "fighter"
+#~ msgstr "Korkeus:"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgid "archer"
+#~ msgstr "Etsi"
+
+#, fuzzy
+#~| msgid "Save already exists. Do you want to overwrite it?"
+#~ msgid "Unsaved changes will be lost. Do you want to leave?"
+#~ msgstr "Tallennus on jo olemassa. Haluatko korvata sen?"
+
+#, fuzzy
+#~| msgid "Opening links is not supported, contact your packager"
+#~ msgid "Opening files is not supported, contact your packager"
+#~ msgstr "Linkkien avaamista ei tueta, ota yhteyttä paketoijaan"
+
+#, fuzzy
+#~| msgid "Map Information"
+#~ msgid "No Other Version Found"
+#~ msgstr "Karttatietoa"
+
+#, fuzzy
+#~| msgid "(Invalid)"
+#~ msgid "Invalid Color"
+#~ msgstr "(Epäkelpo)"
+
+#, fuzzy
+#~| msgid ""
+#~| "'list_data' must have the same number of columns as the "
+#~| "'list_definition'."
+#~ msgid ""
+#~ "‘list_data’ must have the same number of columns as the ‘list_definition’."
+#~ msgstr ""
+#~ "’list_data’:lla täytyy olla sama määrä kolumneja kuin "
+#~ "’list_definition’:lla."
+
+#, fuzzy
+#~| msgid "Opening links is not supported, contact your packager"
+#~ msgid ""
+#~ "Opening links is not supported, contact your packager. Link URL has been "
+#~ "copied to the clipboard."
+#~ msgstr "Linkkien avaamista ei tueta, ota yhteyttä paketoijaan"
+
+#, fuzzy
+#~| msgid "No grid defined for tree view"
+#~ msgid "No grid defined for tab container control"
+#~ msgstr "Puunäkymää varten ei ole määritelty ruudukkoa."
+
+#, fuzzy
+#~| msgid "Loading..."
+#~ msgid "Load Turn..."
+#~ msgstr "Ladataan..."
+
+#, fuzzy
+#~| msgid "Create Unit (Debug!)"
+#~ msgid "Teleport Unit (Debug!)"
+#~ msgstr "Luo yksikkö (Debug!)"
+
+#, fuzzy
+#~| msgid "Next Unit"
+#~ msgid "New Unit Type"
+#~ msgstr "Seuraava yksikkö"
+
+#, fuzzy
+#~| msgid "Edit Scenario"
+#~ msgid "Load Map/Scenario"
+#~ msgstr "Muokkaa skenaariota"
+
+#, fuzzy
+#~| msgid "Select the add-on version"
+#~ msgid "Select active Add-on"
+#~ msgstr "Valitse lisäosan versio"
+
+#, fuzzy
+#~| msgid "Open saves folder"
+#~ msgid "Open Add-on folder"
+#~ msgstr "Avaa tallennuskansiota"
+
+#, fuzzy
+#~| msgid "Starting game"
+#~ msgid "Start Game (MP)"
+#~ msgstr "Aloitetaan peliä"
+
+#, fuzzy
+#~| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
+#~ msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
+#~ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
+
+#, fuzzy
+#~| msgid "page^Copy"
+#~ msgid "page^✔ Copied"
+#~ msgstr "Kopioi"
+
+#, fuzzy
+#~| msgid "Status"
+#~ msgid "Stats"
+#~ msgstr "Tila"
 
 #~ msgid "Choose your preferred language:"
 #~ msgstr "Valitse haluamasi kieli:"
@@ -8930,9 +9397,6 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~ msgid "Missing required state for tree view"
 #~ msgstr "Puuttuva vaadittu tila puunäkymää varten"
 
-#~ msgid "No grid defined for tree view"
-#~ msgstr "Puunäkymää varten ei ole määritelty ruudukkoa."
-
 #~ msgid "No node defined."
 #~ msgstr "Solmua ei ole määritetty."
 
@@ -8965,9 +9429,6 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 
 #~ msgid "Show grid"
 #~ msgstr "Näytä ruudukko"
-
-#~ msgid "Theme"
-#~ msgstr "Teema"
 
 #~ msgid "Change the in-game theme"
 #~ msgstr "Vaihda pelin sisäistä teemaa"
@@ -9033,9 +9494,6 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 
 #~ msgid "Leader:"
 #~ msgstr "Johtaja:"
-
-#~ msgid "Gender:"
-#~ msgstr "Sukupuoli:"
 
 #~ msgid "Starting position:"
 #~ msgstr "Aloituspaikka:"
@@ -9128,9 +9586,6 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~| msgid "Save Game"
 #~ msgid "Save random seed"
 #~ msgstr "Tallenna peli"
-
-#~ msgid "Choose Player"
-#~ msgstr "Valitse pelaaja"
 
 #~ msgid "Which player should start here?"
 #~ msgstr "Kuka aloittaa täältä?"
@@ -9273,11 +9728,6 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~ msgid "Settings:"
 #~ msgstr "Asetukset"
 
-#, fuzzy
-#~| msgid "Map Information"
-#~ msgid "No era information found."
-#~ msgstr "Karttatietoa"
-
 #~ msgid "Password Reminder"
 #~ msgstr "Salasanamuistutus"
 
@@ -9293,11 +9743,6 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~| msgid "Unknown era"
 #~ msgid "file_size^Unknown"
 #~ msgstr "Tuntematon aikakausi"
-
-#, fuzzy
-#~| msgid "Add-ons"
-#~ msgid "Get Add-ons"
-#~ msgstr "Lisäosat"
 
 #, fuzzy
 #~| msgid "Connect to Server"
@@ -9361,11 +9806,6 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~| msgid "Close Map"
 #~ msgid "User Maps"
 #~ msgstr "Sulje kartta"
-
-#, fuzzy
-#~| msgid "Campaign"
-#~ msgid "SP Campaigns"
-#~ msgstr "Kampanjat"
 
 #, fuzzy
 #~| msgid "No description available."
@@ -9575,9 +10015,6 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~ msgid "Custom"
 #~ msgstr "Mukautetut"
 
-#~ msgid "Apply"
-#~ msgstr "Hyväksy"
-
 #~ msgid "Sample rate (Hz):"
 #~ msgstr "Näytetaajuus (Hz):"
 
@@ -9633,11 +10070,6 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~ msgstr "Äänet"
 
 #, fuzzy
-#~| msgid "Height:"
-#~ msgid "Right"
-#~ msgstr "Korkeus:"
-
-#, fuzzy
 #~| msgid "Hut"
 #~ msgid "Hat"
 #~ msgstr "maja"
@@ -9656,11 +10088,6 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~| msgid "Animate map"
 #~ msgid "Share map"
 #~ msgstr "Animoi kartta"
-
-#, fuzzy
-#~| msgid "Start Editor"
-#~ msgid "Quit Editor"
-#~ msgstr "Käynnistä muokkausohjelma"
 
 #~ msgid "Next Generator"
 #~ msgstr "Seuraava generaattori"
@@ -9994,14 +10421,6 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 
 #~ msgid "Save The Map"
 #~ msgstr "Tallenna kartta"
-
-#, fuzzy
-#~ msgid ""
-#~ "'stack_data' must have the same number of columns as the "
-#~ "'list_definition'."
-#~ msgstr ""
-#~ "”list_data”:lla täytyy olla sama määrä kolumneja kuin ”list_definition”:"
-#~ "lla."
 
 #~ msgid "Adjust Gamma"
 #~ msgstr "Säädä kirkkautta"
