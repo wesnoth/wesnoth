@@ -294,20 +294,18 @@ bool dbconn::extra_row_exists(const std::string& name)
 
 bool dbconn::is_user_in_groups(const std::string& name, const std::vector<int>& group_ids)
 {
-	std::string group_params = "?";
-	for(std::size_t i = 1; i < group_ids.size(); i++) {
-		group_params += ",?";
-	}
+	std::set<int> group_params;
 
 	sql_parameters params;
 	params.emplace_back(name);
 	for(int group_id : group_ids) {
+		group_params.emplace(group_id);
 		params.emplace_back(group_id);
 	}
 
 	try
 	{
-		return exists(connection_, "SELECT 1 FROM `"+db_users_table_+"` u, `"+db_user_group_table_+"` ug WHERE UPPER(u.username)=UPPER(?) AND u.USER_ID = ug.USER_ID AND ug.GROUP_ID in ("+group_params+")",
+		return exists(connection_, "SELECT 1 FROM `"+db_users_table_+"` u, `"+db_user_group_table_+"` ug WHERE UPPER(u.username)=UPPER(?) AND u.USER_ID = ug.USER_ID AND ug.GROUP_ID in ("+utils::join(group_params)+")",
 		params);
 	}
 	catch(const mariadb::exception::base& e)

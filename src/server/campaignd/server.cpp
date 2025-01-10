@@ -944,14 +944,14 @@ void server::register_handlers()
 	REGISTER_CAMPAIGND_HANDLER(upload);
 	REGISTER_CAMPAIGND_HANDLER(delete);
 	REGISTER_CAMPAIGND_HANDLER(change_passphrase);
+	REGISTER_CAMPAIGND_HANDLER(hide_addon);
+	REGISTER_CAMPAIGND_HANDLER(unhide_addon);
+	REGISTER_CAMPAIGND_HANDLER(list_hidden);
 	REGISTER_CAMPAIGND_HANDLER(addon_count);
 	REGISTER_CAMPAIGND_HANDLER(addon_count_by_type);
 	REGISTER_CAMPAIGND_HANDLER(addon_downloads_by_version);
 	REGISTER_CAMPAIGND_HANDLER(forum_auth_usage);
 	REGISTER_CAMPAIGND_HANDLER(admins_list);
-	REGISTER_CAMPAIGND_HANDLER(hide_addon);
-	REGISTER_CAMPAIGND_HANDLER(unhide_addon);
-	REGISTER_CAMPAIGND_HANDLER(list_hidden);
 }
 
 void server::handle_list_hidden(const server::request& req)
@@ -2076,13 +2076,13 @@ void server::handle_delete(const server::request& req)
 			return;
 		}
 	} else {
-		if(!addon["forum_auth"].to_bool()) {
-			if(!authenticate(*addon, pass)) {
+		if(addon["forum_auth"].to_bool()) {
+			if(!authenticate_forum(erase, pass, true)) {
 				send_error("The passphrase is incorrect.", req.sock);
 				return;
 			}
 		} else {
-			if(!authenticate_forum(erase, pass, true)) {
+			if(!authenticate(*addon, pass)) {
 				send_error("The passphrase is incorrect.", req.sock);
 				return;
 			}
