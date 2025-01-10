@@ -1,4 +1,4 @@
-# Petr Šlejhar (Septim) <septim@centrum.cz>, 2008, 2009.
+# Petr Šlejhar (Septim) <septim@centrum.cz>, 2008, 2009, 2020
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2008 - 2011.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
 # Michal Žejdl <lachim@emer.cz>, 2020 - 2021, 2024
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-03-18 00:07 UTC\n"
-"PO-Revision-Date: 2024-10-22 21:33+0200\n"
+"PO-Revision-Date: 2024-12-28 23:11+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -609,9 +609,9 @@ msgstr "Výzkum"
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:125
 msgid ""
-"We are currently studying $player_$side_number|.research."
-"target_language_name|. To which end would you have our scholars devote their "
-"minds?\n"
+"We are currently studying "
+"$player_$side_number|.research.target_language_name|. To which end would you "
+"have our scholars devote their minds?\n"
 "\n"
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
@@ -652,13 +652,13 @@ msgstr "zemědělství"
 msgid ""
 "<span color='green'>Mining</span>\n"
 "Miners produce +1 gold\n"
-"Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
-"mining.target"
+"Study Progress: $player_$side_number|.mining.progress|/"
+"$player_$side_number|.mining.target"
 msgstr ""
 "<span color='green'>Těžba</span>\n"
 "Horníci produkují 1 zlato navíc\n"
-"Vývoj zkoumání: $player_$side_number|.mining.progress|/$player_$side_number|."
-"mining.target"
+"Vývoj zkoumání: $player_$side_number|.mining.progress|/"
+"$player_$side_number|.mining.target"
 
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:158
@@ -686,8 +686,8 @@ msgstr "válečnictví"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:207
 msgid ""
-"$player_$side_number|.name|’s farms now produce $player_$side_number|."
-"farming.gold gold."
+"$player_$side_number|.name|’s farms now produce "
+"$player_$side_number|.farming.gold gold."
 msgstr ""
 "Farmy, které vlastní $player_$side_number|.name|, nyní produkují "
 "$player_$side_number|.farming.gold zlatých."
@@ -695,8 +695,8 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:239
 msgid ""
-"$player_$side_number|.name|’s mines now produce $player_$side_number|.mining."
-"gold gold."
+"$player_$side_number|.name|’s mines now produce "
+"$player_$side_number|.mining.gold gold."
 msgstr ""
 "Doly, které vlastní $player_$side_number|.name|, nyní produkují "
 "$player_$side_number|.mining.gold zlatých."
