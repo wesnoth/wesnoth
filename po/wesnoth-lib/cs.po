@@ -4,13 +4,14 @@
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
 # Michal Žejdl <lachim@emer.cz>, 2019 - 2024
+# Petr Šlejhar (Septim) <septim@centrum.cz>, 2020, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-12-18 16:51-0600\n"
-"PO-Revision-Date: 2024-12-13 21:14+0100\n"
+"PO-Revision-Date: 2024-12-28 23:51+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -299,8 +300,8 @@ msgid ""
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Pouště'</italic> mají poněkud odlišné složení než malé jámy "
-"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na <ref>dst='.."
-"terrain_sand' text='písek'</ref>."
+"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na "
+"<ref>dst='..terrain_sand' text='písek'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -3486,7 +3487,7 @@ msgid ""
 "The numeric topic ID of a thread on the Wesnoth forums where players can "
 "post feedback."
 msgstr ""
-"Číselné ID tématu vlákna na fóru Wesnothu, kam mohou hráči posílat zpětnou "
+"Číselné ID tématu vlákna na fórech Wesnothu, kam mohou hráči posílat zpětnou "
 "vazbu."
 
 #. [grid]
@@ -3497,7 +3498,7 @@ msgstr "URL adresa fóra"
 #. [grid]
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:212
 msgid "The full URL of your feedback thread on the forums."
-msgstr "Úplná URL adresa tvého vlákna pro zpětnou vazbu na fóru."
+msgstr "Úplná URL adresa tvého vlákna pro zpětnou vazbu na fórech."
 
 #. [grid]
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:213
@@ -3515,23 +3516,17 @@ msgstr ""
 
 #. [grid]
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:214
-#, fuzzy
-#| msgid ""
-#| "Comma delimited list of forum usernames of other people who are allowed "
-#| "to upload updates for this add-on."
 msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on or delete this add-on."
 msgstr ""
 "Seznam uživatelských jmen z fóra oddělených čárkami, jež patří lidem, kteří "
-"mohou nahrávat pro toto rozšíření aktualizace."
+"mohou nahrávat pro toto rozšíření aktualizace nebo toto rozšíření smazat."
 
 #. [grid]
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:214
-#, fuzzy
-#| msgid "Secondary Authors:"
 msgid "Primary Authors:"
-msgstr "Vedlejší autoři:"
+msgstr "Hlavní autoři:"
 
 #. [grid]
 #: data/gui/themes/default/window/editor_edit_pbl.cfg:215
@@ -3539,7 +3534,7 @@ msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on."
 msgstr ""
-"Seznam uživatelských jmen z fóra oddělených čárkami, jež patří lidem, kteří "
+"Seznam uživatelských jmen z fór oddělených čárkami, jež patří lidem, kteří "
 "mohou nahrávat pro toto rozšíření aktualizace."
 
 #. [grid]
@@ -5710,7 +5705,7 @@ msgid ""
 "A registered account on the Wesnoth forums is required to join the official "
 "server."
 msgstr ""
-"K připojení na oficiální server je vyžadován registrovaný účet na fórum "
+"K připojení na oficiální server je vyžadován registrovaný účet na fórech "
 "Wesnothu."
 
 #. [button]: id=register
@@ -7366,12 +7361,12 @@ msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
-"Smazání '$addon|' natrvalo vymaže jeho počty stažení a nahrání na serveru "
+"Smazání „$addon|“ natrvalo vymaže jeho počty stažení a nahrání na serveru "
 "s rozšířeními. Opravdu si přeješ pokračovat?"
 
 #: src/gui/dialogs/addon/manager.cpp:1001
 msgid "Do you want to uninstall '$addon|'?"
-msgstr "Chceš odinstalovat '$addon|'?"
+msgstr "Chceš odinstalovat „$addon|“?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
@@ -8053,8 +8048,8 @@ msgid ""
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "S databází pro ověření verze rozšíření, která je potřebná pro čekárnu hry "
-"více hráčů, není něco v pořádku. Prosím nahlas to na https://bugs.wesnoth."
-"org."
+"více hráčů, není něco v pořádku. Prosím nahlas to na https://"
+"bugs.wesnoth.org."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:865
 msgid "This game is password protected. Join using moderator rights anyway?"
@@ -8390,7 +8385,7 @@ msgstr "Smazat rozšíření ze serveru"
 #. TRANSLATORS: This is the new chat text indicator
 #: src/gui/widgets/chatbox.cpp:95
 msgid "NEW"
-msgstr ""
+msgstr "NOVÉ"
 
 # v chatu, "levá část tabulky" (jméno) - nesmí být příliš dlouhé!
 #: src/gui/widgets/chatbox.cpp:300
@@ -9473,48 +9468,3 @@ msgstr "V sekci „[$section|]“ není nastaven povinný klíč „$key|“."
 #: src/wml_exception.cpp:104
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "V sekci „[$section|]“ chybí povinná podřízená značka „[$tag|]”."
-
-#~ msgid "timespan^expired"
-#~ msgstr "vypršel"
-
-#~ msgid "timespan^$num year"
-#~ msgid_plural "timespan^$num years"
-#~ msgstr[0] "$num rok"
-#~ msgstr[1] "$num roky"
-#~ msgstr[2] "$num let"
-
-#~ msgid "timespan^$num month"
-#~ msgid_plural "timespan^$num months"
-#~ msgstr[0] "$num měsíc"
-#~ msgstr[1] "$num měsíce"
-#~ msgstr[2] "$num měsíců"
-
-#~ msgid "timespan^$num week"
-#~ msgid_plural "timespan^$num weeks"
-#~ msgstr[0] "$num týden"
-#~ msgstr[1] "$num týdny"
-#~ msgstr[2] "$num týdnů"
-
-#~ msgid "timespan^$num day"
-#~ msgid_plural "timespan^$num days"
-#~ msgstr[0] "$num den"
-#~ msgstr[1] "$num dny"
-#~ msgstr[2] "$num dnů"
-
-#~ msgid "timespan^$num hour"
-#~ msgid_plural "timespan^$num hours"
-#~ msgstr[0] "$num hodina"
-#~ msgstr[1] "$num hodiny"
-#~ msgstr[2] "$num hodin"
-
-#~ msgid "timespan^$num minute"
-#~ msgid_plural "timespan^$num minutes"
-#~ msgstr[0] "$num minuta"
-#~ msgstr[1] "$num minuty"
-#~ msgstr[2] "$num minut"
-
-#~ msgid "timespan^$num second"
-#~ msgid_plural "timespan^$num seconds"
-#~ msgstr[0] "$num vteřina"
-#~ msgstr[1] "$num vteřiny"
-#~ msgstr[2] "$num vteřin"
