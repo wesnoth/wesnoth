@@ -22,6 +22,7 @@
 #include "game_classification.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/window.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/markup.hpp"
 
 #include <cmath>
@@ -130,7 +131,7 @@ void outro::update()
 	switch(stage_) {
 	case stage::fading_in:
 		if(now <= stage_start_ + fade_duration) {
-			window_canvas.set_variable("fade_alpha", wfl::variant(255.0 * get_fade_progress(now)));
+			window_canvas.set_variable("fade_alpha", wfl::variant(float_to_color(get_fade_progress(now))));
 		} else {
 			goto_stage(stage::waiting);
 		}
@@ -146,7 +147,7 @@ void outro::update()
 
 	case stage::fading_out:
 		if(now <= stage_start_ + fade_duration) {
-			window_canvas.set_variable("fade_alpha", wfl::variant(255.0 * (1.0 - get_fade_progress(now))));
+			window_canvas.set_variable("fade_alpha", wfl::variant(float_to_color(1.0 - get_fade_progress(now))));
 		} else if(++text_index_ < text_.size()) {
 			window_canvas.set_variable("outro_text", wfl::variant(text_[text_index_]));
 			goto_stage(stage::fading_in);
@@ -165,9 +166,7 @@ void outro::update()
 
 double outro::get_fade_progress(const std::chrono::steady_clock::time_point& now) const
 {
-	using fractional_milliseconds = std::chrono::duration<double, std::milli>;
-	const auto time = fractional_milliseconds{now - stage_start_} / fade_duration;
-	return std::clamp(time, 0.0, 1.0);
+	return chrono::normalize_progress(now - stage_start_, fade_duration);
 }
 
 } // namespace dialogs
