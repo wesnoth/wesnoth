@@ -621,8 +621,8 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 	}));
 
 	// Dismiss functionality
-	button& dismiss =  dlg->find_widget<button>("dismiss");
-	connect_signal_mouse_left_click(dlg->find_widget<button>("dismiss"), std::bind([&]() {
+	button& dismiss = dlg->find_widget<button>("dismiss");
+	connect_signal_mouse_left_click(dismiss, std::bind([&]() {
 		dlg->dismiss_unit(recall_list, team);
 	}));
 
