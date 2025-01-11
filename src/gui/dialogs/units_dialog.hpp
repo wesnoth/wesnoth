@@ -24,7 +24,6 @@
 #include "units/ptr.hpp"
 #include "units/types.hpp"
 
-#include <boost/dynamic_bitset/dynamic_bitset.hpp>
 #include <string>
 #include <vector>
 
@@ -97,6 +96,24 @@ public:
 		return *this;
 	}
 
+	units_dialog& set_show_rename(bool show = true)
+	{
+		show_rename_ = show;
+		return *this;
+	}
+
+	units_dialog& set_show_dismiss(bool show = true)
+	{
+		show_dismiss_ = show;
+		return *this;
+	}
+
+	units_dialog& set_show_variations(bool show = true)
+	{
+		show_variations_ = show;
+		return *this;
+	}
+
 	units_dialog& set_help_topic(const std::string& topic_id)
 	{
 		topic_id_ = topic_id;
@@ -105,18 +122,22 @@ public:
 
 	units_dialog& set_row_num(const std::size_t row_num)
 	{
-		row_num_ = row_num;
+		num_rows_ = row_num;
 		return *this;
 	}
 
 	/**
-	 * Called to update the UI components, such as the preview pane, gender toggles
-	 * and variation box.
+	 * Registers an function which will fired on NOTIFY_MODIFIED dialog events.
+	 *
+	 * @param f     The update function. This should return a const reference to the
+	 *              appropriate unit or unit type to display in the sidebar.
 	 */
-	units_dialog& set_update_function(const std::function<void(const std::size_t)>& update_func)
+	template<typename Func>
+	void on_modified(const Func& f)
 	{
-		update_view_ = update_func;
-		return *this;
+		connect_signal<event::NOTIFY_MODIFIED>([this, f](widget& w, auto&&...) {
+			w.find_widget<unit_preview_pane>("unit_details").set_display_data(f(get_selected_index()));
+		});
 	}
 
 	template<typename Value, typename Func>
@@ -155,20 +176,20 @@ public:
 			auto wrapper = make_index_wrapper(list, generator);
 			column_generators_.try_emplace(id, wrapper);
 
-			if constexpr(utils::decayed_is_same<sort_type, decltype(sorter)>) {
+			if constexpr(std::is_invocable_v<decltype(sorter), const Value&>) {
+				set_sorter(id, make_index_wrapper(list, sorter));
+			} else {
 				if(sorter != sort_type::generator) return;
 				set_sorter(id, wrapper);
-			} else {
-				set_sorter(id, make_index_wrapper(list, sorter));
 			}
 		};
 	}
 
 	/** Sets the generator function for the tooltips. */
-	template<typename Value, typename Generator>
-	units_dialog& set_tooltip_generator(const std::vector<Value>& list, const Generator& generator)
+	template<typename Generator>
+	units_dialog& set_tooltip_generator(const Generator& generator)
 	{
-		tooltip_gen_ = make_index_wrapper(list, generator);
+		tooltip_gen_ = generator;
 		return *this;
 	}
 
@@ -180,26 +201,26 @@ public:
 	static std::unique_ptr<units_dialog> build_unit_list_dialog(std::vector<unit_const_ptr>& units_list);
 
 private:
-	std::vector<unit_const_ptr> unit_list_;
-
 	int selected_index_;
-	std::size_t row_num_;
+	std::size_t num_rows_;
 
 	std::string title_;
 	std::string ok_label_;
 	std::string cancel_label_;
 	std::string topic_id_;
+
 	bool show_header_;
+	bool show_rename_;
+	bool show_dismiss_;
+	bool show_variations_;
 
 	std::map<std::string_view, std::function<std::string(std::size_t)>> column_generators_;
 	std::function<std::string(std::size_t)> tooltip_gen_;
-	std::function<void(const std::size_t)> update_view_;
 
 	unit_race::GENDER gender_;
 	std::string variation_;
 
 	std::vector<std::string> filter_options_;
-	std::vector<std::string> last_words_;
 	group<unit_race::GENDER> gender_toggle_;
 
 	group<unit_race::GENDER>& get_toggle() {
@@ -208,7 +229,7 @@ private:
 
 	/** Callbacks */
 	void list_item_clicked();
-	void filter_text_changed();
+	void filter_text_changed(const std::string& text);
 
 	// FIXME only thing needing team
 	void dismiss_unit(std::vector<unit_const_ptr>& unit_list, const team& team);
@@ -224,7 +245,6 @@ private:
 
 	virtual void pre_show() override;
 	virtual void post_show() override;
-
 };
 
 } // namespace gui2::dialogs

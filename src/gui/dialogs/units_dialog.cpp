@@ -67,14 +67,16 @@ REGISTER_DIALOG(units_dialog)
 units_dialog::units_dialog()
 	: modal_dialog(window_id())
 	, selected_index_(-1)
-	, row_num_(0)
+	, num_rows_(0)
 	, ok_label_(_("OK"))
 	, cancel_label_(_("Cancel"))
 	, show_header_(true)
+	, show_rename_(false)
+	, show_dismiss_(false)
+	, show_variations_(false)
 	, gender_(unit_race::GENDER::MALE)
 	, variation_()
 	, filter_options_()
-	, last_words_()
 	, gender_toggle_()
 {
 }
@@ -124,7 +126,7 @@ std::string get_title_suffix(int side_num)
 void units_dialog::pre_show()
 {
 	text_box& filter = find_widget<text_box>("filter_box");
-	connect_signal_notify_modified(filter, std::bind(&units_dialog::filter_text_changed, this));
+	filter.on_modified([this](const auto& box) { filter_text_changed(box.text()); });
 
 	listbox& list = find_widget<listbox>("main_list");
 	connect_signal_notify_modified(list, std::bind(&units_dialog::list_item_clicked, this));
@@ -143,21 +145,35 @@ void units_dialog::pre_show()
 	find_widget<label>("title").set_label(title_);
 	find_widget<button>("ok").set_label(ok_label_);
 	find_widget<button>("cancel").set_label(cancel_label_);
-	find_widget<button>("dismiss").set_visible(false);
-	find_widget<button>("rename").set_visible(false);
-	find_widget<grid>("variation_gender_grid").set_visible(false);
-	find_widget<grid>("_header_grid").set_visible(show_header_ );
+	find_widget<button>("dismiss").set_visible(show_dismiss_);
+	find_widget<button>("rename").set_visible(show_rename_);
+	find_widget<grid>("variation_gender_grid").set_visible(show_variations_);
+	find_widget<grid>("_header_grid").set_visible(show_header_);
+
+	// Gender and variation selectors
+	if(show_variations_) {
+		connect_signal_notify_modified(
+			find_widget<menu_button>("variation_box"), [this](auto&&...) { update_variation(); });
+
+		auto& group = get_toggle();
+		group.add_member(find_widget<toggle_button>("male_toggle", true, true), unit_race::MALE);
+		group.add_member(find_widget<toggle_button>("female_toggle", true, true), unit_race::FEMALE);
+
+		group.set_member_states(unit_race::MALE);
+		group.set_callback_on_value_change(
+			[this](widget&, const unit_race::GENDER& gender) { update_gender(gender); });
+	}
 
 	list_item_clicked();
 }
 
 void units_dialog::show_list(listbox& list)
 {
-	if (row_num_ == 0) {
+	if (num_rows_ == 0) {
 		return;
 	}
 
-	for(std::size_t i = 0; i < row_num_; i++) {
+	for(std::size_t i = 0; i < num_rows_; i++) {
 		widget_data row_data;
 		widget_item column;
 		formatter filter_fmt;
@@ -294,9 +310,7 @@ void units_dialog::list_item_clicked()
 		return;
 	}
 
-	if (update_view_ != nullptr) {
-		update_view_(selected_index_);
-	}
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 void units_dialog::post_show()
@@ -313,13 +327,11 @@ void units_dialog::post_show()
 	}
 }
 
-void units_dialog::filter_text_changed()
+void units_dialog::filter_text_changed(const std::string& text)
 {
-	const std::string& text = find_widget<text_box>("filter_box").get_value();
 	auto& list = find_widget<listbox>("main_list");
-	const std::size_t shown = list.filter_rows_by([this, match = translation::make_ci_matcher(text)](std::size_t row) {
-		return match(filter_options_[row]);
-	});
+	const std::size_t shown = list.filter_rows_by(
+		[this, match = translation::make_ci_matcher(text)](std::size_t row) { return match(filter_options_[row]); });
 
 	// Disable rename and dismiss buttons if no units are shown
 	find_widget<button>("rename").set_active(shown > 0);
@@ -335,9 +347,7 @@ void units_dialog::update_gender(const unit_race::GENDER val)
 		return;
 	}
 
-	if (update_view_ != nullptr) {
-		update_view_(selected_index_);
-	}
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 void units_dialog::update_variation()
@@ -349,9 +359,7 @@ void units_dialog::update_variation()
 		return;
 	}
 
-	if (update_view_ != nullptr) {
-		update_view_(selected_index_);
-	}
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 // } -------------------- BUILDERS -------------------- {
@@ -371,13 +379,13 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 		return type->race()->plural_name();
 	};
 
-	const auto populate_variations = [&dlg](const unit_type* ut) {
+	const auto populate_variations = [&dlg](const unit_type& ut) {
 		// Populate variations box
 		menu_button& var_box = dlg->find_widget<menu_button>("variation_box");
 		std::vector<config> var_box_values;
 		var_box_values.emplace_back("label", _("unit_variation^Default Variation"), "variation_id", "");
 
-		const auto& uvars = ut->variation_types();
+		const auto& uvars = ut.variation_types();
 
 		var_box.set_active(!uvars.empty());
 
@@ -389,7 +397,7 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 			std::string uv_label;
 			if(!uv.variation_name().empty()) {
 				uv_label = uv.variation_name() + " (" + uv_id + ")";
-			} else if(!uv.type_name().empty() && uv.type_name() != ut->type_name()) {
+			} else if(!uv.type_name().empty() && uv.type_name() != ut.type_name()) {
 				uv_label = uv.type_name() + " (" + uv_id + ")";
 			} else {
 				uv_label = uv_id;
@@ -415,22 +423,8 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 		.set_ok_label(_("Create"))
 		.set_help_topic("..units")
 		.set_row_num(types_list.size())
-		.show_all_headers(false);
-
-	// Gender and variation selectors
-	toggle_button& male_toggle = dlg->find_widget<toggle_button>("male_toggle");
-	toggle_button& female_toggle = dlg->find_widget<toggle_button>("female_toggle");
-	auto& group = dlg->get_toggle();
-	group.add_member(&male_toggle, unit_race::MALE);
-	group.add_member(&female_toggle, unit_race::FEMALE);
-	group.set_member_states(unit_race::MALE);
-	group.set_callback_on_value_change([&dlg](widget& /*w*/, const auto& gender){
-		dlg->update_gender(gender);
-	});
-	menu_button& var_box = dlg->find_widget<menu_button>("variation_box");
-	connect_signal_notify_modified(var_box, std::bind([&dlg]() {
-		dlg->update_variation();
-	}));
+		.show_all_headers(false)
+		.set_show_variations(true);
 
 	// Listbox data
 	auto set_column = dlg->make_column_builder(types_list);
@@ -438,30 +432,26 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 	set_column("unit_name", type_gen, sort_type::generator);
 	set_column("unit_details", race_gen, sort_type::generator);
 
-	dlg->set_update_function([&](const std::size_t index) {
-			dlg->find_widget<grid>("variation_gender_grid").set_visible(true);
+	dlg->on_modified([populate_variations, &dlg, &types_list](std::size_t index) -> const auto&{
+		const unit_type* ut = types_list[index];
 
-			const unit_type* ut = types_list[index];
+		dlg->get_toggle().set_members_enabled(
+			[ut](const unit_race::GENDER& gender) { return ut->has_gender_variation(gender); });
 
-			group.set_members_enabled([&](const unit_race::GENDER& gender)->bool {
-				return ut->has_gender_variation(gender);
-			});
+		populate_variations(*ut);
 
-			populate_variations(ut);
+		const auto& g = dlg->gender();
+		if(ut->has_gender_variation(g)) {
+			ut = &ut->get_gender_unit_type(g);
+		}
 
-			const auto& g = dlg->gender();
-			if (ut->has_gender_variation(g)) {
-				ut = &ut->get_gender_unit_type(g);
-			}
+		const auto& var = dlg->variation();
+		if(!var.empty()) {
+			ut = &ut->get_variation(var);
+		}
 
-			const auto& var = dlg->variation();
-			if (!var.empty()) {
-				ut = &ut->get_variation(var);
-			}
-
-			// Update preview
-			dlg->find_widget<unit_preview_pane>("unit_details").set_display_data(*ut);
-		});
+		return *ut;
+	});
 
 	return dlg;
 }
@@ -491,10 +481,9 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 		.set_ok_label(_("Recruit"))
 		.set_help_topic("recruit_and_recall")
 		.set_row_num(recruit_list.size())
-		.show_all_headers(false)
-		.set_update_function([&](const std::size_t index) {
-			dlg->find_widget<unit_preview_pane>("unit_details").set_display_data(*recruit_list[index]);
-		});
+		.show_all_headers(false);
+
+	dlg->on_modified([&recruit_list](std::size_t index) -> const auto& { return *recruit_list[index]; });
 
 	return dlg;
 }
@@ -505,7 +494,8 @@ std::unique_ptr<units_dialog> units_dialog::build_unit_list_dialog(std::vector<u
 	dlg->set_title(_("Unit List"))
 		.set_ok_label(_("Scroll To"))
 		.set_help_topic("..units")
-		.set_row_num(unit_list.size());
+		.set_row_num(unit_list.size())
+		.set_show_rename(true);
 
 	// Rename functionality
 	button& rename = dlg->find_widget<button>("rename");
@@ -590,10 +580,10 @@ std::unique_ptr<units_dialog> units_dialog::build_unit_list_dialog(std::vector<u
 		return utils::join(unit->trait_names(), ", ");
 	}, sort_type::generator);
 
-	dlg->set_update_function([&](const std::size_t index) {
-		rename.set_visible(true);
-		rename.set_active(!unit_list[index]->unrenamable());
-		dlg->find_widget<unit_preview_pane>("unit_details").set_display_data(*unit_list[index]);
+	dlg->on_modified([&unit_list, &rename](std::size_t index) -> const auto& {
+		auto& unit = unit_list[index];
+		rename.set_active(!unit->unrenamable());
+		return *unit;
 	});
 
 	return dlg;
@@ -610,19 +600,19 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 	}
 
 	// Lambda to check if a unit is recallable
-	const auto recallable = [wb_gold, team](const unit_const_ptr& unit) {
-		// Note: Our callers apply [filter_recall], but leave it to us
-		// to apply cost-based filtering.
-		const int recall_cost =
-			(unit->recall_cost() > -1 ? unit->recall_cost() : team.recall_cost());
-		return (recall_cost <= team.gold() - wb_gold);
+	const auto recallable = [wb_gold, &team](const unit& unit) {
+		// Note: Our callers apply [filter_recall], but leave it to us to apply cost-based filtering.
+		const int recall_cost = unit.recall_cost() > -1 ? unit.recall_cost() : team.recall_cost();
+		return recall_cost <= team.gold() - wb_gold;
 	};
 
 	auto dlg = std::make_unique<units_dialog>();
 	dlg->set_title(_("Recall Unit") + get_title_suffix(team.side()))
 		.set_ok_label(_("Recall"))
 		.set_help_topic("recruit_and_recall")
-		.set_row_num(recall_list.size());
+		.set_row_num(recall_list.size())
+		.set_show_rename(true)
+		.set_show_dismiss(true);
 
 	// Rename functionality
 	button& rename = dlg->find_widget<button>("rename");
@@ -644,7 +634,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		for(const std::string& overlay : unit->overlays()) {
 			mods += "~BLIT(" + overlay + ")";
 		}
-		if(!recallable(unit)) { mods += "~GS()"; }
+		if(!recallable(*unit)) { mods += "~GS()"; }
 		mods += "~SCALE_INTO(72,72)";
 		return unit->absolute_image() + mods;
 	}, sort_type::none);
@@ -652,7 +642,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 	set_column("unit_name",
 		[recallable](const auto& unit) {
 			const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
-			return unit_helper::maybe_inactive(name, recallable(unit));
+			return unit_helper::maybe_inactive(name, recallable(*unit));
 		},
 		[](const auto& unit) {
 			return unit->name().str();
@@ -661,7 +651,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 	set_column("unit_details",
 		[recallable, &team](const auto& unit) {
 			std::stringstream details;
-			details << unit_helper::maybe_inactive(unit->type_name().str(), recallable(unit));
+			details << unit_helper::maybe_inactive(unit->type_name().str(), recallable(*unit));
 			details << unit_helper::format_cost_string(unit->recall_cost(), team.recall_cost());
 			return details.str();
 		},
@@ -679,7 +669,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 
 	set_column("unit_level",
 		[recallable](const auto& unit) {
-			return unit_helper::format_level_string(unit->level(), recallable(unit));
+			return unit_helper::format_level_string(unit->level(), recallable(*unit));
 		},
 		[](const auto& unit) {
 			return std::tuple(unit->level(), -static_cast<int>(unit->experience_to_advance()));
@@ -713,7 +703,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 			for(const std::string& trait : unit->trait_names()) {
 				traits += (traits.empty() ? "" : "\n") + trait;
 			}
-			return unit_helper::maybe_inactive((!traits.empty() ? traits : font::unicode_en_dash), recallable(unit));
+			return unit_helper::maybe_inactive((!traits.empty() ? traits : font::unicode_en_dash), recallable(*unit));
 		},
 		[](const auto& unit) {
 			return !unit->trait_names().empty() ? unit->trait_names().front().str() : "";
@@ -721,8 +711,8 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 
 	dlg->show_header("unit_status", false);
 
-	dlg->set_tooltip_generator(recall_list, [&](const auto& unit) {
-		if(recallable(unit)) {
+	dlg->set_tooltip_generator([recallable, wb_gold, &recall_list](std::size_t index) {
+		if(recallable(*recall_list[index])) {
 			return std::string();
 		}
 
@@ -734,11 +724,10 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		}
 	});
 
-	dlg->set_update_function([&](const std::size_t index) {
-		rename.set_visible(true);
-		rename.set_active(!recall_list[index]->unrenamable());
-		dismiss.set_visible(true);
-		dlg->find_widget<unit_preview_pane>("unit_details").set_display_data(*recall_list[index]);
+	dlg->on_modified([&recall_list, &rename](std::size_t index) -> const auto& {
+		const auto& unit = recall_list[index];
+		rename.set_active(!unit->unrenamable());
+		return *unit;
 	});
 
 	return dlg;
