@@ -376,9 +376,29 @@ void addon_manager::pre_show()
 	// The type filter
 	multimenu_button& type_filter = find_widget<multimenu_button>("type_filter");
 
+	std::map<ADDON_TYPE, int> type_counts = {
+		{ADDON_SP_CAMPAIGN, 0},
+		{ADDON_SP_SCENARIO, 0},
+		{ADDON_SP_MP_CAMPAIGN, 0},
+		{ADDON_MP_CAMPAIGN, 0},
+		{ADDON_MP_SCENARIO, 0},
+		{ADDON_MP_MAPS, 0},
+		{ADDON_MP_ERA, 0},
+		{ADDON_MP_FACTION, 0},
+		{ADDON_MOD, 0},
+		{ADDON_CORE, 0},
+		{ADDON_THEME, 0},
+		{ADDON_MEDIA, 0},
+		{ADDON_OTHER, 0},
+		{ADDON_UNKNOWN, 0}
+	};
+	for(const auto& addon : addons_) {
+		type_counts[addon.second.type]++;
+	}
+
 	std::vector<config> type_filter_entries;
 	for(const auto& f : type_filter_types_) {
-		type_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN), "checkbox", false);
+		type_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN)+" ("+std::to_string(type_counts[f.first])+")", "checkbox", false);
 	}
 
 	type_filter.set_values(type_filter_entries);

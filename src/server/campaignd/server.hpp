@@ -240,7 +240,6 @@ private:
 	void handle_hide_addon(const request& req);
 	void handle_unhide_addon(const request& req);
 	void handle_addon_count(const request& req);
-	void handle_addon_count_by_type(const request& req);
 	void handle_addon_downloads_by_version(const request& req);
 	void handle_forum_auth_usage(const request& req);
 	void handle_admins_list(const request& req);
