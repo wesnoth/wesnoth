@@ -658,7 +658,7 @@ void preferences_dialog::initialize_callbacks()
 
 	lobby_joins_group.set_member_states(prefs::get().get_lobby_joins());
 
-	lobby_joins_group.set_callback_on_value_change([&](widget&, const pref_constants::lobby_joins val) {
+	lobby_joins_group.on_modified([&](widget&, const pref_constants::lobby_joins val) {
 		prefs::get().set_lobby_joins(val);
 	});
 

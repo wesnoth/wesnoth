@@ -160,7 +160,7 @@ void units_dialog::pre_show()
 		group.add_member(find_widget<toggle_button>("female_toggle", true, true), unit_race::FEMALE);
 
 		group.set_member_states(unit_race::MALE);
-		group.set_callback_on_value_change(
+		group.on_modified(
 			[this](widget&, const unit_race::GENDER& gender) { update_gender(gender); });
 	}
 
