@@ -596,6 +596,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			delete_addon(addon_id);
 		}
 	} else if(ctl == "hide" || ctl == "unhide") {
+		// there are also hides/unhides handler methods
 		if(ctl.args_count() != 1) {
 			ERR_CS << "Incorrect number of arguments for '" << ctl.cmd() << "'";
 		} else {
@@ -947,161 +948,9 @@ void server::register_handlers()
 	REGISTER_CAMPAIGND_HANDLER(hide_addon);
 	REGISTER_CAMPAIGND_HANDLER(unhide_addon);
 	REGISTER_CAMPAIGND_HANDLER(list_hidden);
-	REGISTER_CAMPAIGND_HANDLER(addon_count);
 	REGISTER_CAMPAIGND_HANDLER(addon_downloads_by_version);
 	REGISTER_CAMPAIGND_HANDLER(forum_auth_usage);
 	REGISTER_CAMPAIGND_HANDLER(admins_list);
-}
-
-void server::handle_list_hidden(const server::request& req)
-{
-	config response;
-	std::string username = req.cfg["username"].str();
-	std::string passphrase = req.cfg["passphrase"].str();
-
-	if(!authenticate_admin(username, passphrase)) {
-		send_error("The passphrase is incorrect.", req.sock);
-		return;
-	}
-
-	for(const auto& addon : addons_) {
-		if(addon.second["hidden"].to_bool()) {
-			config& child = response.add_child("hidden");
-			child["addon"] = addon.second["name"].str();
-		}
-	}
-
-	std::ostringstream ostr;
-	write(ostr, response);
-
-	const auto& wml = ostr.str();
-	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
-	doc.compress();
-
-	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
-}
-
-void server::handle_hide_addon(const server::request& req)
-{
-	std::string addon_id = req.cfg["addon"].str();
-	std::string username = req.cfg["username"].str();
-	std::string passphrase = req.cfg["passphrase"].str();
-
-	auto addon = get_addon(addon_id);
-
-	if(!addon) {
-		ERR_CS << "Add-on '" << addon_id << "' not found, cannot hide";
-		send_error("The add-on was not found.", req.sock);
-		return;
-	} else {
-		if(!authenticate_admin(username, passphrase)) {
-			send_error("The passphrase is incorrect.", req.sock);
-			return;
-		}
-
-		addon["hidden"] = true;
-		mark_dirty(addon_id);
-		write_config();
-		LOG_CS << "Add-on '" << addon_id << "' is now hidden";
-	}
-
-	send_message("Add-on hidden.", req.sock);
-}
-
-void server::handle_unhide_addon(const server::request& req)
-{
-	std::string addon_id = req.cfg["addon"].str();
-	std::string username = req.cfg["username"].str();
-	std::string passphrase = req.cfg["passphrase"].str();
-
-	auto addon = get_addon(addon_id);
-
-	if(!addon) {
-		ERR_CS << "Add-on '" << addon_id << "' not found, cannot unhide";
-		send_error("The add-on was not found.", req.sock);
-		return;
-	} else {
-		if(!authenticate_admin(username, passphrase)) {
-			send_error("The passphrase is incorrect.", req.sock);
-			return;
-		}
-
-		addon["hidden"] = false;
-		mark_dirty(addon_id);
-		write_config();
-		LOG_CS << "Add-on '" << addon_id << "' is now unhidden";
-	}
-
-	send_message("Add-on unhidden.", req.sock);
-}
-
-void server::handle_addon_count(const server::request& req)
-{
-	config response;
-	response["count"] = addons_.size();
-
-	std::ostringstream ostr;
-	write(ostr, response);
-
-	const auto& wml = ostr.str();
-	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
-	doc.compress();
-
-	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
-}
-
-void server::handle_addon_downloads_by_version(const server::request& req)
-{
-	config response;
-
-	if(user_handler_) {
-		response = user_handler_->db_get_addon_downloads_info(server_id_, req.cfg["addon"].str());
-	}
-
-	std::ostringstream ostr;
-	write(ostr, response);
-
-	const auto& wml = ostr.str();
-	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
-	doc.compress();
-
-	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
-}
-
-void server::handle_forum_auth_usage(const server::request& req)
-{
-	config response;
-
-	if(user_handler_) {
-		response = user_handler_->db_get_forum_auth_usage(server_id_);
-	}
-
-	std::ostringstream ostr;
-	write(ostr, response);
-
-	const auto& wml = ostr.str();
-	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
-	doc.compress();
-
-	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
-}
-
-void server::handle_admins_list(const server::request& req)
-{
-	config response;
-
-	if(user_handler_) {
-		response = user_handler_->db_get_addon_admins();
-	}
-
-	std::ostringstream ostr;
-	write(ostr, response);
-
-	const auto& wml = ostr.str();
-	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
-	doc.compress();
-
-	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
 }
 
 void server::handle_server_id(const server::request& req)
@@ -2110,6 +1959,144 @@ void server::handle_change_passphrase(const server::request& req)
 		write_config();
 		send_message("Passphrase changed.", req.sock);
 	}
+}
+
+// the fifo handler also hides add-ons
+void server::handle_hide_addon(const server::request& req)
+{
+	std::string addon_id = req.cfg["addon"].str();
+	std::string username = req.cfg["username"].str();
+	std::string passphrase = req.cfg["passphrase"].str();
+
+	auto addon = get_addon(addon_id);
+
+	if(!addon) {
+		ERR_CS << "Add-on '" << addon_id << "' not found, cannot hide";
+		send_error("The add-on was not found.", req.sock);
+		return;
+	} else {
+		if(!authenticate_admin(username, passphrase)) {
+			send_error("The passphrase is incorrect.", req.sock);
+			return;
+		}
+
+		addon["hidden"] = true;
+		mark_dirty(addon_id);
+		write_config();
+		LOG_CS << "Add-on '" << addon_id << "' is now hidden";
+	}
+
+	send_message("Add-on hidden.", req.sock);
+}
+
+// the fifo handler also unhides add-ons
+void server::handle_unhide_addon(const server::request& req)
+{
+	std::string addon_id = req.cfg["addon"].str();
+	std::string username = req.cfg["username"].str();
+	std::string passphrase = req.cfg["passphrase"].str();
+
+	auto addon = get_addon(addon_id);
+
+	if(!addon) {
+		ERR_CS << "Add-on '" << addon_id << "' not found, cannot unhide";
+		send_error("The add-on was not found.", req.sock);
+		return;
+	} else {
+		if(!authenticate_admin(username, passphrase)) {
+			send_error("The passphrase is incorrect.", req.sock);
+			return;
+		}
+
+		addon["hidden"] = false;
+		mark_dirty(addon_id);
+		write_config();
+		LOG_CS << "Add-on '" << addon_id << "' is now unhidden";
+	}
+
+	send_message("Add-on unhidden.", req.sock);
+}
+
+void server::handle_list_hidden(const server::request& req)
+{
+	config response;
+	std::string username = req.cfg["username"].str();
+	std::string passphrase = req.cfg["passphrase"].str();
+
+	if(!authenticate_admin(username, passphrase)) {
+		send_error("The passphrase is incorrect.", req.sock);
+		return;
+	}
+
+	for(const auto& addon : addons_) {
+		if(addon.second["hidden"].to_bool()) {
+			config& child = response.add_child("hidden");
+			child["addon"] = addon.second["name"].str();
+		}
+	}
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+}
+
+void server::handle_addon_downloads_by_version(const server::request& req)
+{
+	config response;
+
+	if(user_handler_) {
+		response = user_handler_->db_get_addon_downloads_info(server_id_, req.cfg["addon"].str());
+	}
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+}
+
+void server::handle_forum_auth_usage(const server::request& req)
+{
+	config response;
+
+	if(user_handler_) {
+		response = user_handler_->db_get_forum_auth_usage(server_id_);
+	}
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+}
+
+void server::handle_admins_list(const server::request& req)
+{
+	config response;
+
+	if(user_handler_) {
+		response = user_handler_->db_get_addon_admins();
+	}
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
 }
 
 bool server::authenticate_forum(const config& addon, const std::string& passphrase, bool is_delete) {

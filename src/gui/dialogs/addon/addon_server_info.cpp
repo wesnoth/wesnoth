@@ -35,10 +35,6 @@ addon_server_info::addon_server_info(addons_client& client, const std::string& a
 	, needs_refresh_(needs_refresh)
 {
 	connect_signal_mouse_left_click(
-		find_widget<button>("addon_count"),
-		std::bind(&addon_server_info::addon_count, this));
-
-	connect_signal_mouse_left_click(
 		find_widget<button>("downloads_by_version"),
 		std::bind(&addon_server_info::downloads_by_version, this));
 
@@ -71,11 +67,6 @@ void addon_server_info::pre_show()
 void addon_server_info::post_show()
 {
 
-}
-
-void addon_server_info::addon_count()
-{
-	PLAIN_LOG << "Count of all add-ons: " << client_.get_addon_count();
 }
 
 void addon_server_info::downloads_by_version()

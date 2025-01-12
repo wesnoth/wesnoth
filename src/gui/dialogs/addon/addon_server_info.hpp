@@ -35,7 +35,6 @@ private:
 
 	virtual void post_show() override;
 
-	void addon_count();
 	void downloads_by_version();
 	void addon_count_by_forum_auth();
 	void admin_delete_addon();

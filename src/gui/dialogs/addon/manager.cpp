@@ -350,7 +350,13 @@ void addon_manager::pre_show()
 
 	std::vector<config> status_filter_entries;
 	for(const auto& f : status_filter_types_) {
-		status_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN));
+		if(f.first == FILTER_ALL) {
+			status_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN)+" ("+std::to_string(addons_.size())+")");
+		} else if(f.first == FILTER_INSTALLED) {
+			status_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN)+" ("+std::to_string(installed_addons().size())+")");
+		} else {
+			status_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN));
+		}
 	}
 
 	status_filter.set_values(status_filter_entries);
