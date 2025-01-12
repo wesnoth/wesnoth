@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2024-12-22 08:42+0100\n"
+"PO-Revision-Date: 2024-10-20 11:33+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -379,8 +379,6 @@ msgid "number of keeps"
 msgstr "počet tvrzí"
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
-#, fuzzy
-#| msgid "$name|’s pet"
 msgid "$name|'s pet"
 msgstr "$name|ův mazánek"
 
@@ -2152,10 +2150,8 @@ msgstr "Počátek"
 
 #. [lua]: wc_ii_generate_scenario
 #: data/campaigns/World_Conquest/lua/map/main.lua:128
-#, fuzzy
-#| msgid "Scenario "
 msgid "Scenario"
-msgstr "Scénář "
+msgstr "Scénář"
 
 #. [lua]: wc_ii_generate_scenario
 #: data/campaigns/World_Conquest/lua/map/main.lua:130
@@ -3503,26 +3499,19 @@ msgstr ""
 "(Úroveň expert, 5 scénářů.)"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 4 players. It has 6 levels "
-#| "of difficulty.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 4 players. It has 6 level of "
 "difficulties.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"Náhodně generované kooperativní tažení pro čtyři hráče. Lze nastavit "
-"6 úrovní obtížnosti.\n"
+"Náhodně generované kooperativní tažení pro čtyři hráče. Lze nastavit 6 "
+"úrovní obtížnosti.\n"
 "(Úroveň expert, 5 scénářů.)"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:104
-#, fuzzy
-#| msgid "WC1p"
 msgid "WC"
-msgstr "DS1hr"
+msgstr "DS"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
@@ -3609,15 +3598,3 @@ msgstr "Testování"
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:165
 msgid "Campaign Maintenance"
 msgstr "Údržba kampaně"
-
-#~ msgid "Average remaining gold: "
-#~ msgstr "Průměrný zbytek zlata: "
-
-#~ msgid "WC2p"
-#~ msgstr "DS2hr"
-
-#~ msgid "WC3p"
-#~ msgstr "DS3hr"
-
-#~ msgid "WC4p"
-#~ msgstr "DS4hr"
