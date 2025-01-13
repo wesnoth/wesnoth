@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-12-18 16:51-0600\n"
-"PO-Revision-Date: 2024-05-12 17:56+0200\n"
+"PO-Revision-Date: 2024-12-15 00:38+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.3\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -2894,68 +2894,58 @@ msgstr ""
 #. [multimenu_button]: id=filter_completion
 #: data/gui/themes/default/window/campaign_dialog.cfg:235
 msgid "Filter by campaign completion status"
-msgstr ""
+msgstr "Suodata kampanjat niiden läpäisyjen mukaan"
 
 #. [option]
 #: data/gui/themes/default/window/campaign_dialog.cfg:238
-#, fuzzy
-#| msgid "Completed"
 msgid "Not Completed"
-msgstr "Valmis"
+msgstr "Ei läpäisty"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
 #: data/gui/themes/default/window/campaign_dialog.cfg:240
 msgid "Show campaigns not completed by player"
-msgstr ""
+msgstr "Näytä kampanjat, joita ei ole läpäisty"
 
 #. [option]
 #: data/gui/themes/default/window/campaign_dialog.cfg:244
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: Bronze"
-msgstr "Valmis"
+msgstr "Läpäisty: Pronssi"
 
 #. [option]
 #: data/gui/themes/default/window/campaign_dialog.cfg:245
 msgid "Show campaigns completed at easiest difficulty"
-msgstr ""
+msgstr "Näytä kampanjat jotka on läpäisty helpoimmalla vaikeusasteella"
 
 #. [option]
 #: data/gui/themes/default/window/campaign_dialog.cfg:249
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: Silver"
-msgstr "Valmis"
+msgstr "Läpäisty: Hopea"
 
 #. [option]
 #: data/gui/themes/default/window/campaign_dialog.cfg:250
 msgid "Show campaigns completed at intermediate difficulties"
-msgstr ""
+msgstr "Näytä kampanjat jotka on läpäisty keskivaikealla vaikeusasteella"
 
 #. [option]
 #: data/gui/themes/default/window/campaign_dialog.cfg:254
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: Gold"
-msgstr "Valmis"
+msgstr "Läpäisty: Kulta"
 
 #. [option]
 #: data/gui/themes/default/window/campaign_dialog.cfg:255
 msgid "Show campaigns completed at hardest difficulty"
-msgstr ""
+msgstr "Näytä kampanjat jotka on läpäisty vaikeimmalla vaikeusasteella"
 
 #. [option]
 #: data/gui/themes/default/window/campaign_dialog.cfg:259
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: All"
-msgstr "Valmis"
+msgstr "Läpäisty: Kaikki"
 
 #. [option]
 #: data/gui/themes/default/window/campaign_dialog.cfg:260
 msgid "Show completed campaigns"
-msgstr ""
+msgstr "Näytä läpäistyt kampanjat"
 
 #. [label]
 #. [label]: id=mods_header
@@ -2982,11 +2972,17 @@ msgid ""
 "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
 "once and miss once, but might also hit twice or miss twice."
 msgstr ""
+"Puhdas, puolueeton satunnaisuus; tapa, jolla Wesnoth on tarkoitettu "
+"pelattavaksi.\n"
+"\n"
+"Esimerkki: Jos isket kahdesti 50 % tarkkuudella, todennäköisimmin osut "
+"kerran, mutta toisella kertaa ohi, mutta saatat myös osua molemmilla "
+"kerroilla tai molemmilla kerroilla ohi."
 
 #. [option]
 #: data/gui/themes/default/window/campaign_dialog.cfg:357
 msgid "Predictable RNG"
-msgstr "Ennustettava RNG"
+msgstr "Ennustettava-RNG"
 
 #. [option]
 #: data/gui/themes/default/window/campaign_dialog.cfg:358
@@ -2997,13 +2993,17 @@ msgid ""
 "Example: you strike twice and get lucky, hitting both strikes. You then load "
 "an earlier save and make the same attack again. Both strikes will still hit."
 msgstr ""
+"Samanlainen kuin Perus-RNG, mutta tallennetun pelin lataaminen ei muuta "
+"hyökkäyksen lopputulosta.\n"
+"\n"
+"Esimerkki: Isket kahdesti ja onnistut molemmilla kerroilla. Lataat aiemman "
+"tallennuksen ja teet saman hyökkäyksen uudelleen. Molemmat iskut osuvat "
+"edelleen."
 
 #. [option]
 #: data/gui/themes/default/window/campaign_dialog.cfg:363
-#, fuzzy
-#| msgid "Predictable RNG"
 msgid "Reduced RNG"
-msgstr "Ennustettava RNG"
+msgstr "Vähennetty-RNG"
 
 #. [option]
 #: data/gui/themes/default/window/campaign_dialog.cfg:364
@@ -3014,6 +3014,11 @@ msgid ""
 "Example: if you strike three times with 50% accuracy, you will always hit at "
 "least once and miss at least once."
 msgstr ""
+"Osumat ovat paljon johdonmukaisempia. Tämä helpottaa yleensä pienimuotoisten "
+"yhteenottojen suunnittelua.\n"
+"\n"
+"Esimerkki: Jos isket kolme kertaa 50 % tarkkuudella, osut aina vähintään "
+"kerran ja ohi vähintään kerran."
 
 #. [label]
 #: data/gui/themes/default/window/campaign_dialog.cfg:381
@@ -3353,8 +3358,6 @@ msgstr "Vain joukkue"
 
 #. [label]
 #: data/gui/themes/default/window/editor_choose_addon.cfg:47
-#, fuzzy
-#| msgid "Add-on selection"
 msgid "Add-on Selection"
 msgstr "Lisäosan valinta"
 
@@ -4490,33 +4493,33 @@ msgstr "Vieritä tänne"
 #. [label]
 #: data/gui/themes/default/window/game_version.cfg:122
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Version:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Versio:</b>"
 
 #. [label]
 #: data/gui/themes/default/window/game_version.cfg:150
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Running on:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Suoritetaan alustalla:</b>"
 
 #. [label]
 #: data/gui/themes/default/window/game_version.cfg:179
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Architecture:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Arkkitehtuuri:</b>"
 
 #. [label]
 #: data/gui/themes/default/window/game_version.cfg:207
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Homepage:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Kotisivu:</b>"
 
 #. [label]
 #: data/gui/themes/default/window/game_version.cfg:239
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
 
 #. [label]
 #: data/gui/themes/default/window/game_version.cfg:279
 msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Copy a full report here:</i>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
 
 #. [label]
 #: data/gui/themes/default/window/game_version.cfg:299
@@ -4524,22 +4527,24 @@ msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Report an issue or request a "
 "feature:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Ilmoita virheestä tai pyydä "
+"toimintoa:</i>"
 
 #. [button]: id=issue
 #: data/gui/themes/default/window/game_version.cfg:313
 msgid "Report Issue"
-msgstr ""
+msgstr "Ilmoita virheestä"
 
 #. [label]
 #: data/gui/themes/default/window/game_version.cfg:322
 msgid "<i><span font_family='DejaVu Sans'>➤</span> View Game Manual:</i>"
-msgstr ""
+msgstr "<i><span font_family='DejaVu Sans'>➤</span> Näytä pelin ohjekirja:</i>"
 
 #. [button]: id=view_manual
 #. button to open the game manual in the platform's browser.
 #: data/gui/themes/default/window/game_version.cfg:335
 msgid "View Manual"
-msgstr ""
+msgstr "Näytä ohjekirja"
 
 #. [label]
 #: data/gui/themes/default/window/game_version.cfg:343
@@ -4547,14 +4552,14 @@ msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Re-open the version migrator "
 "dialog:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Avaa version siirtoikkuna "
+"uudelleen:</i>"
 
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
 #: data/gui/themes/default/window/game_version.cfg:356
-#, fuzzy
-#| msgid "Crater"
 msgid "Migrate"
-msgstr "kraateri"
+msgstr "Siirrä"
 
 #. [grid]
 #: data/gui/themes/default/window/game_version.cfg:393
@@ -4630,45 +4635,44 @@ msgstr ""
 #. [button]: id=forums
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/themes/default/window/game_version.cfg:654
-#, fuzzy
-#| msgid "Forum URL"
 msgid "Forums"
-msgstr "Foorumi-URL"
+msgstr "Foorumit"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/themes/default/window/game_version.cfg:673
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/themes/default/window/game_version.cfg:692
 msgid "IRC"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/themes/default/window/game_version.cfg:711
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/themes/default/window/game_version.cfg:730
 msgid "Reddit"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/themes/default/window/game_version.cfg:749
 msgid "Donate"
-msgstr ""
+msgstr "Lahjoita"
 
 #. [label]: id=description
 #: data/gui/themes/default/window/game_version.cfg:845
 msgid "An open source, turn-based strategy game with a high fantasy theme."
 msgstr ""
+"Avoimen lähdekoodin vuoropohjainen strategiapeli vahvalla fantasiateemalla."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [tab]
@@ -4704,7 +4708,7 @@ msgstr "Ominaisuudet"
 #: data/gui/themes/default/window/title_screen.cfg:262
 #: data/gui/themes/modern/dialogs/title_screen.cfg:262
 msgid "Community"
-msgstr ""
+msgstr "Yhteisö"
 
 #. [button]: id=credits
 #: data/gui/themes/default/window/game_version.cfg:958
@@ -4714,7 +4718,7 @@ msgstr "Tekijät"
 #. [button]: id=license
 #: data/gui/themes/default/window/game_version.cfg:973
 msgid "License"
-msgstr ""
+msgstr "Lisenssi"
 
 #. [label]
 #: data/gui/themes/default/window/gamestate_inspector.cfg:16
@@ -5630,10 +5634,8 @@ msgstr "Valitse liittouma ja johtaja tälle osapuolelle"
 #. [label]
 #: data/gui/themes/default/window/mp_join_game.cfg:155
 #: data/gui/themes/default/window/mp_staging.cfg:157
-#, fuzzy
-#| msgid "Faction"
 msgid "Faction:"
-msgstr "Liittouma"
+msgstr "Liittouma:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
@@ -5758,12 +5760,12 @@ msgstr "Kirjaudu sisään Wesnothin viralliselle moninpelipalvelimelle"
 
 #. [widget]: id=name
 #: data/gui/themes/default/window/mp_method_selection.cfg:247
-#, fuzzy
-#| msgid "Join Official Server"
 msgid ""
 "Join\n"
 "Official Server"
-msgstr "Liity viralliselle palvelimelle"
+msgstr ""
+"Liity\n"
+"viralliselle palvelimelle"
 
 #. [column]
 #: data/gui/themes/default/window/mp_method_selection.cfg:258
@@ -5772,12 +5774,12 @@ msgstr "Liity toiselle palvelimelle"
 
 #. [widget]: id=name
 #: data/gui/themes/default/window/mp_method_selection.cfg:267
-#, fuzzy
-#| msgid "Connect to Server"
 msgid ""
 "Connect to\n"
 "Server"
-msgstr "Yhdistä palvelimelle"
+msgstr ""
+"Yhdistä\n"
+"palvelimelle"
 
 #. [column]
 #: data/gui/themes/default/window/mp_method_selection.cfg:278
@@ -5786,12 +5788,12 @@ msgstr "Isännöi peliä käyttämällä dedikoitua palvelinta"
 
 #. [widget]: id=name
 #: data/gui/themes/default/window/mp_method_selection.cfg:287
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid ""
 "Host Networked\n"
 "Game"
-msgstr "Tee oma verkkopeli"
+msgstr ""
+"Isännöi oma\n"
+"verkkopeli"
 
 #. [column]
 #: data/gui/themes/default/window/mp_method_selection.cfg:298
@@ -6065,10 +6067,8 @@ msgstr "Saatavilla editorissa"
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:156
 #: src/gui/dialogs/preferences_dialog.cpp:901
-#, fuzzy
-#| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
-msgstr "G"
+msgstr "M"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/themes/default/window/preferences/02_hotkeys.cfg:157
@@ -6808,7 +6808,7 @@ msgstr "Lopeta peli"
 #: data/gui/themes/default/window/title_screen.cfg:472
 #: data/gui/themes/modern/dialogs/title_screen.cfg:437
 msgid "About"
-msgstr ""
+msgstr "Tietoa"
 
 #. [button]: id=about
 #: data/gui/themes/default/window/title_screen.cfg:473
@@ -8805,10 +8805,8 @@ msgid "Terrain Description"
 msgstr "Maaston kuvaus"
 
 #: src/hotkey/hotkey_command.cpp:102
-#, fuzzy
-#| msgid "Unit Description"
 msgid "Unit Type Description"
-msgstr "Yksikön kuvaus"
+msgstr "Yksikkö tyypin kuvaus"
 
 #: src/hotkey/hotkey_command.cpp:104
 msgid "Delete Unit"
@@ -10833,8 +10831,8 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~ "'stack_data' must have the same number of columns as the "
 #~ "'list_definition'."
 #~ msgstr ""
-#~ "”list_data”:lla täytyy olla sama määrä kolumneja kuin ”list_definition”:"
-#~ "lla."
+#~ "”list_data”:lla täytyy olla sama määrä kolumneja kuin "
+#~ "”list_definition”:lla."
 
 #~ msgid "Adjust Gamma"
 #~ msgstr "Säädä kirkkautta"

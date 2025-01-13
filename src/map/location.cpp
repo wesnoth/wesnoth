@@ -33,12 +33,12 @@
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
-std::ostream &operator<<(std::ostream &s, const map_location& l) {
+std::ostream& operator<<(std::ostream& s, const map_location& l) {
 	s << (l.wml_x()) << ',' << (l.wml_y());
 	return s;
 }
 
-std::ostream &operator<<(std::ostream &s, const std::vector<map_location>& v) {
+std::ostream& operator<<(std::ostream& s, const std::vector<map_location>& v) {
 	std::vector<map_location>::const_iterator i = v.begin();
 	for(; i!= v.end(); ++i) {
 		s << "(" << *i << ") ";
@@ -228,16 +228,16 @@ void map_location::write(config& cfg) const
 	cfg["y"] = y + 1;
 }
 
-static bool is_vertically_higher_than ( const map_location & m1, const map_location & m2 ) {
+static bool is_vertically_higher_than (const map_location& m1, const map_location& m2) {
 	return (is_odd(m1.wml_x()) && is_even(m2.wml_x())) ? (m1.wml_y() <= m2.wml_y()) : (m1.wml_y() < m2.wml_y());
 }
 
-map_location::direction map_location::get_relative_dir(const map_location & loc) const
+map_location::direction map_location::get_relative_dir(const map_location& loc) const
 {
 	return get_relative_dir(loc, map_location::RADIAL_SYMMETRY);
 }
 
-map_location::direction map_location::get_relative_dir(const map_location & loc, map_location::RELATIVE_DIR_MODE opt) const
+map_location::direction map_location::get_relative_dir(const map_location& loc, map_location::RELATIVE_DIR_MODE opt) const
 {
 	if (opt == map_location::DEFAULT) {
 		map_location::direction dir = direction::indeterminate;
@@ -298,7 +298,7 @@ map_location::direction map_location::get_relative_dir(const map_location & loc,
 	}
 }
 
-map_location map_location::rotate_right_around_center(const map_location & center, int k) const {
+map_location map_location::rotate_right_around_center(const map_location& center, int k) const {
 	auto me_as_cube = to_cubic(), c_as_cube = center.to_cubic();
 	auto vec = cubic_location{me_as_cube.q - c_as_cube.q, me_as_cube.r - c_as_cube.r, me_as_cube.s - c_as_cube.s};
 	// These represent the 6 possible rotation matrices on the hex grid.
@@ -319,7 +319,7 @@ map_location map_location::rotate_right_around_center(const map_location & cente
 	return from_cubic(vec);
 }
 
-bool map_location::matches_range(const std::string& xloc, const std::string &yloc) const
+bool map_location::matches_range(const std::string& xloc, const std::string& yloc) const
 {
 	const auto xlocs = utils::split(xloc);
 	const auto ylocs = utils::split(yloc);
@@ -439,7 +439,7 @@ void write_location_range(const std::set<map_location>& locs, config& cfg)
 	cfg["y"] = y.str();
 }
 
-static map_location read_locations_helper(const std::string & xi, const std::string & yi)
+static map_location read_locations_helper(const std::string& xi, const std::string& yi)
 {
 	return map_location(std::stoi(xi)-1, std::stoi(yi)-1);
 }

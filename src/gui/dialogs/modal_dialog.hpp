@@ -172,12 +172,6 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	/** Returns the cached window exit code. */
-	int get_retval() const
-	{
-		return retval_;
-	}
-
 	void set_always_save_fields(const bool always_save_fields)
 	{
 		always_save_fields_ = always_save_fields;
@@ -212,7 +206,7 @@ protected:
 	 * in the child classes as access to a field.
 	 *
 	 * @param id                  Id of the widget, same value as in WML.
-	 * @param mandatory            Is the widget mandatory or mandatory.
+	 * @param mandatory           Is the widget mandatory or optional?
 	 * @param callback_load_value The callback function to set the initial value
 	 *                            of the widget.
 	 * @param callback_save_value The callback function to write the resulting
@@ -240,7 +234,7 @@ protected:
 	 * in the child classes as access to a field.
 	 *
 	 * @param id                  Id of the widget, same value as in WML.
-	 * @param mandatory            Is the widget mandatory or mandatory.
+	 * @param mandatory           Is the widget mandatory or optional?
 	 * @param linked_variable     The variable the widget is linked to. See
 	 *                            @ref field::field for more information.
 	 * @param callback_change     When the value of the widget changes this
@@ -310,7 +304,7 @@ protected:
 	 * depending on where used.
 	 *
 	 * @param id                  Id of the widget, same value as in WML.
-	 * @param mandatory           Is the widget mandatory or optional.
+	 * @param mandatory           Is the widget mandatory or optional?
 	 * @param text                The text for the label.
 	 * @param use_markup          Whether or not use markup for the label.
 	 */
@@ -328,18 +322,6 @@ protected:
 	}
 
 private:
-	/**
-	 * The window's exit code (return value).
-	 *
-	 * We keep a copy here so it may be accessed even after the dialog is closed and
-	 * the window object is destroyed.
-	 *
-	 * This value is initially set to 0 (retval::NONE) meaning the dialog was not
-	 * shown. After @ref show returns, it will hold the most recent retval of the
-	 * window object, including any modifications made in @ref post_show.
-	 */
-	int retval_;
-
 	/**
 	 * Always save the fields upon closing.
 	 *

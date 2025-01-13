@@ -210,41 +210,34 @@ void manager::add(window& win)
 
 void manager::remove(window& win)
 {
-	for(std::map<unsigned, window*>::iterator itor = windows_.begin();
-		itor != windows_.end();
-		++itor) {
-
+	for(auto itor = windows_.begin(); itor != windows_.end(); ++itor) {
 		if(itor->second == &win) {
 			windows_.erase(itor);
 			return;
 		}
 	}
+
 	assert(false);
 }
 
 unsigned manager::get_id(window& win)
 {
-	for(std::map<unsigned, window*>::iterator itor = windows_.begin();
-		itor != windows_.end();
-		++itor) {
-
-		if(itor->second == &win) {
-			return itor->first;
+	for(const auto& [id, window_ptr] : windows_) {
+		if(window_ptr == &win) {
+			return id;
 		}
 	}
-	assert(false);
 
+	assert(false);
 	return 0;
 }
 
 window* manager::get_window(const unsigned id)
 {
-	std::map<unsigned, window*>::iterator itor = windows_.find(id);
-
-	if(itor == windows_.end()) {
-		return nullptr;
-	} else {
+	if(auto itor = windows_.find(id); itor != windows_.end()) {
 		return itor->second;
+	} else {
+		return nullptr;
 	}
 }
 
@@ -282,18 +275,16 @@ window::window(const builder_window::window_resolution& definition)
 	, debug_layout_(new debug_layout_graph(this))
 #endif
 	, event_distributor_(new event::distributor(*this, event::dispatcher::front_child))
-	, exit_hook_([](window&)->bool { return true; })
+	, exit_hook_([] { return true; })
 {
 	manager::instance().add(*this);
 
 	connect();
 
-	for(const auto& lg : definition.linked_groups) {
-		if(has_linked_size_group(lg.id)) {
-			FAIL(VGETTEXT("Linked ‘$id’ group has multiple definitions.", {{"id", lg.id}}));
+	for(const auto& [id, fixed_width, fixed_height] : definition.linked_groups) {
+		if(!init_linked_size_group(id, fixed_width, fixed_height)) {
+			FAIL(VGETTEXT("Linked ‘$id’ group has multiple definitions.", {{"id", id}}));
 		}
-
-		init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
 	}
 
 	const auto conf = cast_config_to<window_definition>();
@@ -572,7 +563,7 @@ int window::show(const unsigned auto_close_timeout)
 
 			// See if we should close.
 			if(status_ == status::REQUEST_CLOSE) {
-				status_ = exit_hook_(*this) ? status::CLOSED : status::SHOWING;
+				status_ = exit_hook_() ? status::CLOSED : status::SHOWING;
 			}
 
 			// Update the display. This will rate limit to vsync.
@@ -786,14 +777,11 @@ const widget* window::find(const std::string_view id, const bool must_be_active)
 	return container_base::find(id, must_be_active);
 }
 
-void window::init_linked_size_group(const std::string& id,
-									 const bool fixed_width,
-									 const bool fixed_height)
+bool window::init_linked_size_group(const std::string& id, const bool fixed_width, const bool fixed_height)
 {
 	assert(fixed_width || fixed_height);
-	assert(!has_linked_size_group(id));
-
-	linked_size_[id] = linked_size(fixed_width, fixed_height);
+	auto [iter, success] = linked_size_.try_emplace(id, fixed_width, fixed_height);
+	return success;
 }
 
 bool window::has_linked_size_group(const std::string& id)
@@ -823,9 +811,7 @@ void window::remove_linked_widget(const std::string& id, const widget* wgt)
 	}
 
 	std::vector<widget*>& widgets = linked_size_[id].widgets;
-
-	std::vector<widget*>::iterator itor
-			= std::find(widgets.begin(), widgets.end(), wgt);
+	auto itor = std::find(widgets.begin(), widgets.end(), wgt);
 
 	if(itor != widgets.end()) {
 		widgets.erase(itor);

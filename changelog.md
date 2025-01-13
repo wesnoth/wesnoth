@@ -9,9 +9,11 @@
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, Hungarian
+   * Updated translations: Bengali, British English, Czech, Finnish, Hungarian
 ### Units
 ### User interface
+   * The Modern theme has been renamed to Celes and received design updates to the titlescreen and common UI controls. The Default theme has been renamed to Parchment.
+   * A preference to show/hide the tips panel on titlescreen has been added under Display preferences (id `show_tips`). In the Celes theme, it can also be hidden by clicking the cross button located at the top-right of the panel.
 ### WML Engine
    * [variables] in [side] no longer sets variables of the implicit leader unit (it now only sets the sides variables), to create a leader unit with variables, [leader] must be used instead. (issue #3742)
 ### Miscellaneous and Bug Fixes

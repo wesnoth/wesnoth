@@ -40,9 +40,7 @@ void modeless_dialog::show(const bool allow_interaction, const unsigned /*auto_c
 	}
 
 	if(allow_interaction) {
-		open_window_stack.push_back(this);
 		window::show_non_modal();
-		remove_from_window_stack(this);
 	} else {
 		window::show_tooltip(/*auto_close_time*/);
 	}

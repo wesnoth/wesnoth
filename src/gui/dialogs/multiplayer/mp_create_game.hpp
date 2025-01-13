@@ -119,7 +119,7 @@ private:
 	 * This only fires when the retval is OK (ie, creating a game), meaning it does not fire
 	 * when loading a saved game.
 	 */
-	bool dialog_exit_hook(window&);
+	bool dialog_exit_hook();
 
 	int convert_to_game_filtered_index(const unsigned int initial_index);
 

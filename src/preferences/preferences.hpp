@@ -504,6 +504,7 @@ public:
 	PREF_GETTER_SETTER(idle_anim_rate, int, 0)
 	PREF_GETTER_SETTER(locale, std::string, std::string(""))
 	PREF_GETTER_SETTER(gui2_theme, std::string, std::string(""))
+	PREF_GETTER_SETTER(show_tips, bool, true)
 	PREF_GETTER_SETTER(stop_music_in_background, bool, false)
 	PREF_GETTER_SETTER(tile_size, unsigned, 0)
 	PREF_GETTER_SETTER(mouse_scrolling, bool, true)
@@ -551,6 +552,7 @@ public:
 	PREF_GETTER_SETTER(mp_era, std::string, std::string(""))
 	PREF_GETTER_SETTER(mp_level, std::string, std::string(""))
 	PREF_GETTER_SETTER(mp_level_type, int, 0)
+	PREF_GETTER_SETTER(mp_connect_type, int, 0)
 	PREF_GETTER_SETTER(skip_ai_moves, bool, false)
 	PREF_GETTER_SETTER(save_replays, bool, true)
 	PREF_GETTER_SETTER(delete_saves, bool, false)
@@ -752,6 +754,7 @@ private:
 		prefs_list::mp_countdown_turn_bonus,
 		prefs_list::mp_fog,
 		prefs_list::mp_level_type,
+		prefs_list::mp_connect_type,
 		prefs_list::mp_random_start_time,
 		prefs_list::mp_server_warning_disabled,
 		prefs_list::mp_shroud,
@@ -828,6 +831,7 @@ private:
 		prefs_list::refresh_rate,
 		prefs_list::editor_chosen_addon,
 		prefs_list::gui2_theme,
+		prefs_list::show_tips,
 		prefs_list::mp_server_program_name,
 		prefs_list::pixel_scale,
 		prefs_list::sound_buffer_size,

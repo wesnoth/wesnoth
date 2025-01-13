@@ -16,6 +16,7 @@
 
 #include "config_attribute_value.hpp"
 
+#include <algorithm>
 #include <chrono>
 #include <iomanip>
 #include <sstream>
@@ -70,6 +71,14 @@ template<typename Duration>
 inline auto parse_duration(const config_attribute_value& val, const Duration& def = Duration{0})
 {
 	return Duration{val.to_long_long(def.count())};
+}
+
+template<typename RepE, typename PeriodE, typename RepD, typename PeriodD>
+constexpr double normalize_progress(
+	const std::chrono::duration<RepE, PeriodE>& elapsed,
+	const std::chrono::duration<RepD, PeriodD>& duration)
+{
+	return std::clamp(std::chrono::duration<double, PeriodE>{elapsed} / duration, 0.0, 1.0);
 }
 
 template<typename... Ts, typename Rep, typename Period>

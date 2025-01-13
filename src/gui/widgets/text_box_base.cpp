@@ -22,6 +22,7 @@
 #include "gui/core/gui_definition.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/timer.hpp"
+#include "gui/widgets/window.hpp"
 #include "serialization/unicode.hpp"
 
 #include <functional>
@@ -317,8 +318,10 @@ void text_box_base::cursor_timer_callback()
 			cursor_alpha_ = 255;
 			return;
 		default:
+			// FIXME: very hacky way to check if the widget's owner is the top window
 			// back() on an empty vector is UB and was causing a crash when run on Wayland (see #7104 on github)
-			if(!open_window_stack.empty() && get_window() != open_window_stack.back()) {
+			const auto& dispatchers = event::get_all_dispatchers();
+			if(!dispatchers.empty() && static_cast<event::dispatcher*>(get_window()) != dispatchers.back()) {
 				cursor_alpha_ = 0;
 			} else {
 				cursor_alpha_ = (~cursor_alpha_) & 0xFF;

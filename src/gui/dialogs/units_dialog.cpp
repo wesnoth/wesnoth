@@ -58,8 +58,8 @@ namespace gui2::dialogs
 namespace
 {
 // Index 2 is by-level
-static std::pair sort_default{ std::string{"unit_name"}, sort_order::type::ascending };
-static utils::optional<decltype(sort_default)> sort_last;
+std::pair sort_default{ std::string{"unit_name"}, sort_order::type::ascending };
+utils::optional<decltype(sort_default)> sort_last;
 }
 
 REGISTER_DIALOG(units_dialog)
@@ -67,14 +67,16 @@ REGISTER_DIALOG(units_dialog)
 units_dialog::units_dialog()
 	: modal_dialog(window_id())
 	, selected_index_(-1)
-	, row_num_(0)
+	, num_rows_(0)
 	, ok_label_(_("OK"))
 	, cancel_label_(_("Cancel"))
 	, show_header_(true)
+	, show_rename_(false)
+	, show_dismiss_(false)
+	, show_variations_(false)
 	, gender_(unit_race::GENDER::MALE)
 	, variation_()
 	, filter_options_()
-	, last_words_()
 	, gender_toggle_()
 {
 }
@@ -124,7 +126,7 @@ std::string get_title_suffix(int side_num)
 void units_dialog::pre_show()
 {
 	text_box& filter = find_widget<text_box>("filter_box");
-	connect_signal_notify_modified(filter, std::bind(&units_dialog::filter_text_changed, this));
+	filter.on_modified([this](const auto& box) { filter_text_changed(box.text()); });
 
 	listbox& list = find_widget<listbox>("main_list");
 	connect_signal_notify_modified(list, std::bind(&units_dialog::list_item_clicked, this));
@@ -143,21 +145,35 @@ void units_dialog::pre_show()
 	find_widget<label>("title").set_label(title_);
 	find_widget<button>("ok").set_label(ok_label_);
 	find_widget<button>("cancel").set_label(cancel_label_);
-	find_widget<button>("dismiss").set_visible(false);
-	find_widget<button>("rename").set_visible(false);
-	find_widget<grid>("variation_gender_grid").set_visible(false);
-	find_widget<grid>("_header_grid").set_visible(show_header_ );
+	find_widget<button>("dismiss").set_visible(show_dismiss_);
+	find_widget<button>("rename").set_visible(show_rename_);
+	find_widget<grid>("variation_gender_grid").set_visible(show_variations_);
+	find_widget<grid>("_header_grid").set_visible(show_header_);
+
+	// Gender and variation selectors
+	if(show_variations_) {
+		connect_signal_notify_modified(
+			find_widget<menu_button>("variation_box"), [this](auto&&...) { update_variation(); });
+
+		auto& group = get_toggle();
+		group.add_member(find_widget<toggle_button>("male_toggle", true, true), unit_race::MALE);
+		group.add_member(find_widget<toggle_button>("female_toggle", true, true), unit_race::FEMALE);
+
+		group.set_member_states(unit_race::MALE);
+		group.on_modified(
+			[this](widget&, const unit_race::GENDER& gender) { update_gender(gender); });
+	}
 
 	list_item_clicked();
 }
 
 void units_dialog::show_list(listbox& list)
 {
-	if (row_num_ == 0) {
+	if (num_rows_ == 0) {
 		return;
 	}
 
-	for(std::size_t i = 0; i < row_num_; i++) {
+	for(std::size_t i = 0; i < num_rows_; i++) {
 		widget_data row_data;
 		widget_item column;
 		formatter filter_fmt;
@@ -294,9 +310,7 @@ void units_dialog::list_item_clicked()
 		return;
 	}
 
-	if (update_view_ != nullptr) {
-		update_view_(selected_index_);
-	}
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 void units_dialog::post_show()
@@ -313,13 +327,11 @@ void units_dialog::post_show()
 	}
 }
 
-void units_dialog::filter_text_changed()
+void units_dialog::filter_text_changed(const std::string& text)
 {
-	const std::string& text = find_widget<text_box>("filter_box").get_value();
 	auto& list = find_widget<listbox>("main_list");
-	const std::size_t shown = list.filter_rows_by([this, match = translation::make_ci_matcher(text)](std::size_t row) {
-		return match(filter_options_[row]);
-	});
+	const std::size_t shown = list.filter_rows_by(
+		[this, match = translation::make_ci_matcher(text)](std::size_t row) { return match(filter_options_[row]); });
 
 	// Disable rename and dismiss buttons if no units are shown
 	find_widget<button>("rename").set_active(shown > 0);
@@ -335,9 +347,7 @@ void units_dialog::update_gender(const unit_race::GENDER val)
 		return;
 	}
 
-	if (update_view_ != nullptr) {
-		update_view_(selected_index_);
-	}
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 void units_dialog::update_variation()
@@ -349,9 +359,7 @@ void units_dialog::update_variation()
 		return;
 	}
 
-	if (update_view_ != nullptr) {
-		update_view_(selected_index_);
-	}
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 // } -------------------- BUILDERS -------------------- {
@@ -371,13 +379,13 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 		return type->race()->plural_name();
 	};
 
-	const auto populate_variations = [&dlg](const unit_type* ut) {
+	const auto populate_variations = [&dlg](const unit_type& ut) {
 		// Populate variations box
 		menu_button& var_box = dlg->find_widget<menu_button>("variation_box");
 		std::vector<config> var_box_values;
 		var_box_values.emplace_back("label", _("unit_variation^Default Variation"), "variation_id", "");
 
-		const auto& uvars = ut->variation_types();
+		const auto& uvars = ut.variation_types();
 
 		var_box.set_active(!uvars.empty());
 
@@ -389,7 +397,7 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 			std::string uv_label;
 			if(!uv.variation_name().empty()) {
 				uv_label = uv.variation_name() + " (" + uv_id + ")";
-			} else if(!uv.type_name().empty() && uv.type_name() != ut->type_name()) {
+			} else if(!uv.type_name().empty() && uv.type_name() != ut.type_name()) {
 				uv_label = uv.type_name() + " (" + uv_id + ")";
 			} else {
 				uv_label = uv_id;
@@ -415,50 +423,35 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 		.set_ok_label(_("Create"))
 		.set_help_topic("..units")
 		.set_row_num(types_list.size())
-		.show_all_headers(false);
-
-	// Gender and variation selectors
-	toggle_button& male_toggle = dlg->find_widget<toggle_button>("male_toggle");
-	toggle_button& female_toggle = dlg->find_widget<toggle_button>("female_toggle");
-	auto& group = dlg->get_toggle();
-	group.add_member(&male_toggle, unit_race::MALE);
-	group.add_member(&female_toggle, unit_race::FEMALE);
-	group.set_member_states(unit_race::MALE);
-	group.set_callback_on_value_change([&dlg](widget& /*w*/, const auto& gender){
-		dlg->update_gender(gender);
-	});
-	menu_button& var_box = dlg->find_widget<menu_button>("variation_box");
-	connect_signal_notify_modified(var_box, std::bind([&dlg]() {
-		dlg->update_variation();
-	}));
+		.show_all_headers(false)
+		.set_show_variations(true);
 
 	// Listbox data
-	dlg->set_column("unit_name", types_list, type_gen, true)
-		.set_column("unit_details", types_list, race_gen, true)
-		.set_update_function([&](const std::size_t index) {
-			dlg->find_widget<grid>("variation_gender_grid").set_visible(true);
+	auto set_column = dlg->make_column_builder(types_list);
 
-			const unit_type* ut = types_list[index];
+	set_column("unit_name", type_gen, sort_type::generator);
+	set_column("unit_details", race_gen, sort_type::generator);
 
-			group.set_members_enabled([&](const unit_race::GENDER& gender)->bool {
-				return ut->has_gender_variation(gender);
-			});
+	dlg->on_modified([populate_variations, &dlg, &types_list](std::size_t index) -> const auto&{
+		const unit_type* ut = types_list[index];
 
-			populate_variations(ut);
+		dlg->get_toggle().set_members_enabled(
+			[ut](const unit_race::GENDER& gender) { return ut->has_gender_variation(gender); });
 
-			const auto& g = dlg->gender();
-			if (ut->has_gender_variation(g)) {
-				ut = &ut->get_gender_unit_type(g);
-			}
+		populate_variations(*ut);
 
-			const auto& var = dlg->variation();
-			if (!var.empty()) {
-				ut = &ut->get_variation(var);
-			}
+		const auto& g = dlg->gender();
+		if(ut->has_gender_variation(g)) {
+			ut = &ut->get_gender_unit_type(g);
+		}
 
-			// Update preview
-			dlg->find_widget<unit_preview_pane>("unit_details").set_display_data(*ut);
-		});
+		const auto& var = dlg->variation();
+		if(!var.empty()) {
+			ut = &ut->get_variation(var);
+		}
+
+		return *ut;
+	});
 
 	return dlg;
 }
@@ -468,23 +461,29 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 	const team& team)
 {
 	auto dlg = std::make_unique<units_dialog>();
+	auto set_column = dlg->make_column_builder(recruit_list);
+
+	set_column("unit_image", [&team](const auto& recruit) {
+		std::string image_string = recruit->icon();
+		if (image_string.empty()) {
+			image_string = recruit->image();
+		}
+		image_string += "~RC(" + recruit->flag_rgb() + ">" + team.color() + ")";
+		image_string += "~SCALE_INTO(72,72)";
+		return image_string;
+	}, sort_type::none);
+
+	set_column("unit_details", [](const auto& recruit) {
+		return recruit->type_name() + unit_helper::format_cost_string(recruit->cost());
+	}, sort_type::generator);
+
 	dlg->set_title(_("Recruit Unit") + get_title_suffix(team.side()))
 		.set_ok_label(_("Recruit"))
 		.set_help_topic("recruit_and_recall")
 		.set_row_num(recruit_list.size())
-		.show_all_headers(false)
-		.set_column("unit_image", recruit_list, [&team](const auto& recruit) {
-			std::string image_string = recruit->image();
-			image_string += "~RC(" + recruit->flag_rgb() + ">" + team.color() + ")";
-			image_string += "~SCALE_INTO(72,72)";
-			return image_string;
-		})
-		.set_column("unit_details", recruit_list, [](const auto& recruit) {
-			return recruit->type_name() + unit_helper::format_cost_string(recruit->cost());
-		}, true)
-		.set_update_function([&](const std::size_t index) {
-			dlg->find_widget<unit_preview_pane>("unit_details").set_display_data(*recruit_list[index]);
-		});
+		.show_all_headers(false);
+
+	dlg->on_modified([&recruit_list](std::size_t index) -> const auto& { return *recruit_list[index]; });
 
 	return dlg;
 }
@@ -495,7 +494,8 @@ std::unique_ptr<units_dialog> units_dialog::build_unit_list_dialog(std::vector<u
 	dlg->set_title(_("Unit List"))
 		.set_ok_label(_("Scroll To"))
 		.set_help_topic("..units")
-		.set_row_num(unit_list.size());
+		.set_row_num(unit_list.size())
+		.set_show_rename(true);
 
 	// Rename functionality
 	button& rename = dlg->find_widget<button>("rename");
@@ -503,39 +503,43 @@ std::unique_ptr<units_dialog> units_dialog::build_unit_list_dialog(std::vector<u
 		dlg->rename_unit(unit_list);
 	}));
 
-	dlg->set_column("unit_name", unit_list, [](const auto& unit) {
-		return !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
-	}, true);
+	auto set_column = dlg->make_column_builder(unit_list);
 
-	dlg->set_column("unit_details", unit_list, [](const auto& unit) {
-		return unit->type_name().str();
-	}, true);
+	set_column("unit_name",
+		[](const auto& unit) {
+			return !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
+		}, sort_type::generator);
 
-	dlg->set_column("unit_level", unit_list,
+	set_column("unit_details",
+		[](const auto& unit) {
+			return unit->type_name().str();
+		}, sort_type::generator);
+
+	set_column("unit_level",
 		[](const auto& unit) {
 			return unit_helper::format_level_string(unit->level(), true);
 		},
-		[](const auto& u) {
-			return std::tuple(u->level(), -static_cast<int>(u->experience_to_advance()));
+		[](const auto& unit) {
+			return std::tuple(unit->level(), -static_cast<int>(unit->experience_to_advance()));
 		});
 
-	dlg->set_column("unit_moves", unit_list,
+	set_column("unit_moves",
 		[](const auto& unit) {
 			return unit_helper::format_movement_string(unit->movement_left(), unit->total_movement());
 		},
-		[](const auto& u) {
-			return u->movement_left();
+		[](const auto& unit) {
+			return unit->movement_left();
 		});
 
-	dlg->set_column("unit_hp", unit_list,
+	set_column("unit_hp",
 		[](const auto& unit) {
 			return markup::span_color(unit->hp_color(), unit->hitpoints(), "/", unit->max_hitpoints());
 		},
-	 	[](const auto& u) {
-			return u->hitpoints();
+	 	[](const auto& unit) {
+			return unit->hitpoints();
 		});
 
-	dlg->set_column("unit_xp",  unit_list,
+	set_column("unit_xp",
 		[](const auto& unit) {
 			std::stringstream exp_str;
 			if(unit->can_advance()) {
@@ -545,12 +549,13 @@ std::unique_ptr<units_dialog> units_dialog::build_unit_list_dialog(std::vector<u
 			}
 			return markup::span_color(unit->xp_color(), exp_str.str());
 		},
-		[](const auto& u) {
+		[](const auto& unit) {
 			// this allows 0/35, 0/100 etc to be sorted
 			// also sorts 23/35 before 0/35, after which 0/100 comes
-			return u->experience() + u->max_experience();
+			return unit->experience() + unit->max_experience();
 		});
-	dlg->set_column("unit_status", unit_list, [](const auto& unit) {
+
+	set_column("unit_status", [](const auto& unit) {
 		// Status
 		if(unit->incapacitated()) {
 			return "misc/petrified.png";
@@ -569,14 +574,16 @@ std::unique_ptr<units_dialog> units_dialog::build_unit_list_dialog(std::vector<u
 		}
 
 		return "";
-	});
-	dlg->set_column("unit_traits",  unit_list, [](const auto& unit) {
+	}, sort_type::none);
+
+	set_column("unit_traits", [](const auto& unit) {
 		return utils::join(unit->trait_names(), ", ");
-	}, true);
-	dlg->set_update_function([&](const std::size_t index) {
-		rename.set_visible(true);
-		rename.set_active(!unit_list[index]->unrenamable());
-		dlg->find_widget<unit_preview_pane>("unit_details").set_display_data(*unit_list[index]);
+	}, sort_type::generator);
+
+	dlg->on_modified([&unit_list, &rename](std::size_t index) -> const auto& {
+		auto& unit = unit_list[index];
+		rename.set_active(!unit->unrenamable());
+		return *unit;
 	});
 
 	return dlg;
@@ -593,19 +600,19 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 	}
 
 	// Lambda to check if a unit is recallable
-	const auto& recallable = [wb_gold, team](const unit_const_ptr& unit) {
-		// Note: Our callers apply [filter_recall], but leave it to us
-		// to apply cost-based filtering.
-		const int recall_cost =
-			(unit->recall_cost() > -1 ? unit->recall_cost() : team.recall_cost());
-		return (recall_cost <= team.gold() - wb_gold);
+	const auto recallable = [wb_gold, &team](const unit& unit) {
+		// Note: Our callers apply [filter_recall], but leave it to us to apply cost-based filtering.
+		const int recall_cost = unit.recall_cost() > -1 ? unit.recall_cost() : team.recall_cost();
+		return recall_cost <= team.gold() - wb_gold;
 	};
 
 	auto dlg = std::make_unique<units_dialog>();
 	dlg->set_title(_("Recall Unit") + get_title_suffix(team.side()))
 		.set_ok_label(_("Recall"))
 		.set_help_topic("recruit_and_recall")
-		.set_row_num(recall_list.size());
+		.set_row_num(recall_list.size())
+		.set_show_rename(true)
+		.set_show_dismiss(true);
 
 	// Rename functionality
 	button& rename = dlg->find_widget<button>("rename");
@@ -614,106 +621,113 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 	}));
 
 	// Dismiss functionality
-	button& dismiss =  dlg->find_widget<button>("dismiss");
-	connect_signal_mouse_left_click(dlg->find_widget<button>("dismiss"), std::bind([&]() {
+	button& dismiss = dlg->find_widget<button>("dismiss");
+	connect_signal_mouse_left_click(dismiss, std::bind([&]() {
 		dlg->dismiss_unit(recall_list, team);
 	}));
 
-	dlg->set_column("unit_image", recall_list, [recallable](const auto& unit) {
+	auto set_column = dlg->make_column_builder(recall_list);
+
+	set_column("unit_image", [recallable](const auto& unit) {
 		std::string mods = unit->image_mods();
 		if(unit->can_recruit()) { mods += "~BLIT(" + unit::leader_crown() + ")"; }
 		for(const std::string& overlay : unit->overlays()) {
 			mods += "~BLIT(" + overlay + ")";
 		}
-		if(!recallable(unit)) { mods += "~GS()"; }
+		if(!recallable(*unit)) { mods += "~GS()"; }
 		mods += "~SCALE_INTO(72,72)";
 		return unit->absolute_image() + mods;
-	});
+	}, sort_type::none);
 
-	dlg->set_column("unit_name", recall_list,
+	set_column("unit_name",
 		[recallable](const auto& unit) {
 			const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
-			return unit_helper::maybe_inactive(name, recallable(unit));
+			return unit_helper::maybe_inactive(name, recallable(*unit));
 		},
-		[](const auto& unit) { return unit->name().str(); });
+		[](const auto& unit) {
+			return unit->name().str();
+		});
 
-	dlg->set_column("unit_details", recall_list,
+	set_column("unit_details",
 		[recallable, &team](const auto& unit) {
 			std::stringstream details;
-			details << unit_helper::maybe_inactive(unit->type_name().str(), recallable(unit));
+			details << unit_helper::maybe_inactive(unit->type_name().str(), recallable(*unit));
 			details << unit_helper::format_cost_string(unit->recall_cost(), team.recall_cost());
 			return details.str();
 		},
-		[](const auto& unit) { return unit->type_name().str(); });
+		[](const auto& unit) {
+			return unit->type_name().str();
+		});
 
-	dlg->set_column("unit_moves", recall_list,
+	set_column("unit_moves",
 		[](const auto& unit) {
 			return unit_helper::format_movement_string(unit->movement_left(), unit->total_movement());
 		},
-		[](const auto& recall) { return recall->movement_left(); });
-
-	dlg->set_column("unit_level", recall_list,
-		[recallable](const auto& unit) {
-			return unit_helper::format_level_string(unit->level(), recallable(unit));
-		},
-		[](const auto& recall) {
-			return std::tuple(recall->level(), -static_cast<int>(recall->experience_to_advance()));
+		[](const auto& unit) {
+			return unit->movement_left();
 		});
 
-	dlg->set_column("unit_hp", recall_list,
+	set_column("unit_level",
+		[recallable](const auto& unit) {
+			return unit_helper::format_level_string(unit->level(), recallable(*unit));
+		},
+		[](const auto& unit) {
+			return std::tuple(unit->level(), -static_cast<int>(unit->experience_to_advance()));
+		});
+
+	set_column("unit_hp",
 		[](const auto& unit) {
 			return markup::span_color(unit->hp_color(), unit->hitpoints(), "/", unit->max_hitpoints());
 		},
-		[](const auto& recall) { return recall->hitpoints(); });
-
-	dlg->set_column("unit_xp", recall_list,
 		[](const auto& unit) {
-			std::stringstream exp_str;
-			if(unit->can_advance()) {
-				exp_str << unit->experience() << "/" << unit->max_experience();
-			} else {
-				exp_str << font::unicode_en_dash;
-			}
-			return markup::span_color(unit->xp_color(), exp_str.str());
-		},
-		[](const auto& recall) {
-			// this allows 0/35, 0/100 etc to be sorted
-			// also sorts 23/35 before 0/35, after which 0/100 comes
-			return recall->experience() + recall->max_experience();
+			return unit->hitpoints();
 		});
 
-	dlg->set_column("unit_traits", recall_list,
+	set_column("unit_xp",
+		[](const auto& unit) {
+			if(unit->can_advance()) {
+				return markup::span_color(unit->xp_color(), unit->experience(), "/", unit->max_experience());
+			} else {
+				return markup::span_color(unit->xp_color(), font::unicode_en_dash);
+			}
+		},
+		[](const auto& unit) {
+			// this allows 0/35, 0/100 etc to be sorted
+			// also sorts 23/35 before 0/35, after which 0/100 comes
+			return unit->experience() + unit->max_experience();
+		});
+
+	set_column("unit_traits",
 		[recallable](const auto& unit) {
 			std::string traits;
 			for(const std::string& trait : unit->trait_names()) {
 				traits += (traits.empty() ? "" : "\n") + trait;
 			}
-			return unit_helper::maybe_inactive((!traits.empty() ? traits : font::unicode_en_dash), recallable(unit));
+			return unit_helper::maybe_inactive((!traits.empty() ? traits : font::unicode_en_dash), recallable(*unit));
 		},
-		[](const auto& recall) {
-			return !recall->trait_names().empty() ? recall->trait_names().front().str() : "";
+		[](const auto& unit) {
+			return !unit->trait_names().empty() ? unit->trait_names().front().str() : "";
 		});
 
 	dlg->show_header("unit_status", false);
 
-	dlg->set_tooltip_generator(recall_list, [&](const auto& recall) {
-		if (!recallable(recall)) {
-			// Just set the tooltip on every single element in this row.
-			if(wb_gold > 0) {
-				return _("This unit cannot be recalled because you will not have enough gold at this point in your plan.");
-			} else {
-				return _("This unit cannot be recalled because you do not have enough gold.");
-			}
-		} else {
+	dlg->set_tooltip_generator([recallable, wb_gold, &recall_list](std::size_t index) {
+		if(recallable(*recall_list[index])) {
 			return std::string();
+		}
+
+		// Just set the tooltip on every single element in this row.
+		if(wb_gold > 0) {
+			return _("This unit cannot be recalled because you will not have enough gold at this point in your plan.");
+		} else {
+			return _("This unit cannot be recalled because you do not have enough gold.");
 		}
 	});
 
-	dlg->set_update_function([&](const std::size_t index) {
-		rename.set_visible(true);
-		rename.set_active(!recall_list[index]->unrenamable());
-		dismiss.set_visible(true);
-		dlg->find_widget<unit_preview_pane>("unit_details").set_display_data(*recall_list[index]);
+	dlg->on_modified([&recall_list, &rename](std::size_t index) -> const auto& {
+		const auto& unit = recall_list[index];
+		rename.set_active(!unit->unrenamable());
+		return *unit;
 	});
 
 	return dlg;

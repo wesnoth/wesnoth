@@ -64,7 +64,7 @@ void faction_select::pre_show()
 
 	gender_toggle_.set_member_states("random");
 
-	gender_toggle_.set_callback_on_value_change(
+	gender_toggle_.on_modified(
 		std::bind(&faction_select::on_gender_select, this, std::placeholders::_2));
 
 	//

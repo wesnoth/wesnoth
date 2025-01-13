@@ -143,7 +143,7 @@ private:
 	boost::dynamic_bitset<> get_lang_filter_visibility() const;
 
 	void on_selected_version_change();
-	bool exit_hook(window& window);
+	bool exit_hook();
 };
 
 } // namespace dialogs

@@ -146,6 +146,7 @@ any_check_failed = False
 if len(removed) > 0:
     any_check_failed = True
     print("There are "+str(len(removed))+" removed files")
+    print(",".join(removed))
 
 count_missing_fields = len(missing_fields)
 count_extra_fields = len(extra_fields)

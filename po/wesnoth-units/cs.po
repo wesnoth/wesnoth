@@ -1,25 +1,26 @@
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
+# Petr Šlejhar (Septim) <septim@centrum.cz>, 2011, 2020 - 2022, 2024
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
 # Michal Žejdl <lachim@emer.cz>, 2019 - 2024
 # Tereza Žejdlová, 2020.
-# Petr Šlejhar (Septim) <septim@centrum.cz>, 2020 - 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-12-18 22:51 UTC\n"
-"PO-Revision-Date: 2024-12-11 19:17+0100\n"
-"Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
+"PO-Revision-Date: 2024-12-28 23:53+0100\n"
+"Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 3.5\n"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:30
@@ -1202,7 +1203,7 @@ msgstr ""
 #. [unit_type]: id=Derelict Hulk, race=transport
 #: data/core/units/boats/Derelict_Galleon.cfg:4
 msgid "Derelict Hulk"
-msgstr ""
+msgstr "Bludný vrak"
 
 #. [unit_type]: id=Derelict Hulk, race=transport
 #: data/core/units/boats/Derelict_Galleon.cfg:18
@@ -1211,11 +1212,15 @@ msgid ""
 "are merely ruined ships that will soon sink, but there are tales of others "
 "that haunt certain waterways for generations."
 msgstr ""
+"Bludné vraky jsou opuštěné lodě, které stále brázdí moře. Většina z nich "
+"jsou pouze lodě zničené, které se brzy potopí. Existují ale příběhy o "
+"jiných, které na určitých vodních cestách straší po mnoho pokolení."
 
+# Nejsou to úplně trosky, ale náklad, který byl úmyslně vhozen přes palubu, např. pro odlehčení lodi.
 #. [attack]: type=impact
 #: data/core/units/boats/Derelict_Galleon.cfg:135
 msgid "jetsam"
-msgstr ""
+msgstr "trosky"
 
 #. [unit_type]: id=Fireship, race=transport
 #: data/core/units/boats/Fireship.cfg:4
@@ -1230,16 +1235,21 @@ msgid ""
 "they also shed burning embers. Sometimes they have a skeleton crew to guide "
 "them, but often they just drift along on unseen winds and currents."
 msgstr ""
+"Zápalné lodě jsou obecně opuštěné či obětované lodě zapálené k vytvoření "
+"chaosu v ještě posledním vzepjetí bojovnosti. Hlavní nebezpečí při "
+"konfrontaci s nimi představuje ohnivá kolize, nicméně z nich také odlétávají "
+"hořící oharky. Někdy mají základní posádku, která je řídí, ale často jsou "
+"jen unášeny neznatelnými větry a spodními proudy."
 
 #. [attack]: type=fire
 #: data/core/units/boats/Fireship.cfg:135
 msgid "ember"
-msgstr ""
+msgstr "oharky"
 
 #. [attack]: type=fire
 #: data/core/units/boats/Fireship.cfg:144
 msgid "crash"
-msgstr ""
+msgstr "náraz"
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
@@ -7571,6 +7581,16 @@ msgid ""
 "absorbing some of the damage. Though their small shields do little against "
 "ranged attacks, this tactic nevertheless makes them sturdy fighters in melee."
 msgstr ""
+"Zkušení strážci nág se naučili jedinečnému stylu boje, odlišnému od těžké "
+"pěchoty jiných ras. Spojením setrvačnosti těžkého palcátu s ohebností svých "
+"těl dokáží zasadit řadu rychlých a drtivých úderů.\n"
+"\n"
+"Tato technika může být vzhledem ke své rychlé osvojitelnosti mocná, ale při "
+"defenzivním použití je značně náročná. Při obraně tedy místo toho štítonoši "
+"využívají svou přirozenou ohebnost, aby se chránili a ohýbali ve směru "
+"úderu, čímž anulují část poškození. I když jejich malé štíty jsou jen málo "
+"účinné proti útokům na dálku, tato taktika z nich přesto dělá silné "
+"bojovníky v boji zblízka."
 
 #. [unit_type]: id=Naga Myrmidon, race=naga, gender=male,female
 #: data/core/units/nagas/Myrmidon.cfg:4
@@ -7730,10 +7750,11 @@ msgstr ""
 "nepřátelské údery a v kritickém okamžiku použít svou těžkou zakřivenou čepel "
 "k odvrácení útoku či odvedení pozornosti."
 
+# Předloženo podle výslovnosti v sanskrtu.
 #. [attack]: type=pierce
 #: data/core/units/nagas/Sicarius.cfg:40
 msgid "trishula"
-msgstr ""
+msgstr "trišula"
 
 #. [female]: gender=female
 #: data/core/units/nagas/Sicarius.cfg:94
@@ -9420,14 +9441,3 @@ msgid ""
 msgstr ""
 "Tito stromoví muži jsou schopni přikázat lesním rostlinám, jako je réva a "
 "jiné popínavky, aby blokovaly nepřátele."
-
-#~ msgid ""
-#~ "The veteran naga guards are more difficult to dislodge from their posts "
-#~ "because of effective use of a shield in melee techniques. This tactic "
-#~ "does nothing against ranged attacks, but the nagas can usually seek "
-#~ "better terrain advantage in such situations."
-#~ msgstr ""
-#~ "Zkušené stráže nág je obtížnější vystrnadit z jejich pozic, protože při "
-#~ "technikách boje zblízka účinně využívají štít. Proti útokům na dálku tato "
-#~ "taktika moc nepomůže, ale v takových situacích mohou nágy obvykle "
-#~ "vyhledat terénní výhodu."
