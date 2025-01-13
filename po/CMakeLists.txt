@@ -16,7 +16,6 @@ set(NORMAL_DOMAINS
 	wesnoth-low
 	wesnoth-multiplayer
 	wesnoth-nr
-	wesnoth-resources
 	wesnoth-sof
 	wesnoth-sota
 	wesnoth-sotbe
