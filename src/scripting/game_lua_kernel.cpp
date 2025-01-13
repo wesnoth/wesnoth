@@ -124,6 +124,7 @@
 #include <new>                          // for operator new
 #include <set>                          // for set
 #include <sstream>                      // for operator<<, basic_ostream, etc
+#include <string_view>
 #include <thread>
 #include <utility>                      // for pair
 #include <algorithm>
@@ -262,17 +263,17 @@ static int intf_handle_user_interact(lua_State *)
 	return 0;
 }
 
-static const char animatorKey[] = "unit animator";
+static constexpr std::string_view animatorKey = "unit animator";
 
 static int impl_animator_collect(lua_State* L) {
-	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
+	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey.data()));
 	anim.~unit_animator();
 	return 0;
 }
 
 static int impl_add_animation(lua_State* L)
 {
-	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
+	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey.data()));
 	unit_ptr up = luaW_checkunit_ptr(L, 2, false);
 	unit& u = *up;
 	std::string which = luaL_checkstring(L, 3);
@@ -377,7 +378,7 @@ int game_lua_kernel::impl_run_animation(lua_State* L)
 		return 0;
 	}
 	events::command_disabler command_disabler;
-	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
+	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey.data()));
 	play_controller_.play_slice();
 	anim.start_animations();
 	anim.wait_for_end();
@@ -388,7 +389,7 @@ int game_lua_kernel::impl_run_animation(lua_State* L)
 
 static int impl_clear_animation(lua_State* L)
 {
-	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
+	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey.data()));
 	anim.clear();
 	return 0;
 }
@@ -402,7 +403,7 @@ static int impl_animator_get(lua_State* L)
 int game_lua_kernel::intf_create_animator(lua_State* L)
 {
 	new(L) unit_animator;
-	if(luaL_newmetatable(L, animatorKey)) {
+	if(luaL_newmetatable(L, animatorKey.data())) {
 		luaL_Reg metafuncs[] {
 			{"__gc", impl_animator_collect},
 			{"__index", impl_animator_get},
@@ -413,7 +414,7 @@ int game_lua_kernel::intf_create_animator(lua_State* L)
 		};
 		luaL_setfuncs(L, metafuncs, 0);
 		lua_pushstring(L, "__metatable");
-		lua_setfield(L, -2, animatorKey);
+		lua_setfield(L, -2, animatorKey.data());
 	}
 	lua_setmetatable(L, -2);
 	return 1;
@@ -2635,12 +2636,12 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 			loc = luaW_checklocation(L, -1);
 		}
 		if(luaW_tableget(L, 2, "halign")) {
-			static const char* options[] = {"left", "center", "right"};
-			alignment = font::ALIGN(luaL_checkoption(L, -1, nullptr, options));
+			static constexpr auto options = []() { return std::array{"left", "center", "right"}; }();
+			alignment = font::ALIGN(luaL_checkoption(L, -1, nullptr, options.data()));
 		}
 		if(luaW_tableget(L, 2, "valign")) {
-			static const char* options[] = {"top", "center", "bottom"};
-			vertical_alignment = font::ALIGN(luaL_checkoption(L, -1, nullptr, options));
+			static constexpr auto options = []() { return std::array{"top", "center", "bottom"}; }();
+			vertical_alignment = font::ALIGN(luaL_checkoption(L, -1, nullptr, options.data()));
 		}
 	}
 

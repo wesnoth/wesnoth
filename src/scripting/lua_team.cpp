@@ -26,6 +26,7 @@
 #include "map/map.hpp"
 
 #include <string>
+#include <string_view>
 
 
 /**
@@ -41,12 +42,12 @@
  */
 
 // Registry key
-static const char * Team = "side";
-static const char teamVar[] = "side variables";
+static constexpr std::string_view Team = "side";
+static constexpr std::string_view teamVar = "side variables";
 
 #define SIDE_GETTER(name, type) LATTR_GETTER(name, type, team, t)
 #define SIDE_SETTER(name, type) LATTR_SETTER(name, type, team, t)
-luaW_Registry sideReg{"wesnoth", "sides", Team};
+luaW_Registry sideReg{"wesnoth", "sides", Team.data()};
 
 template<> struct lua_object_traits<team> {
 	inline static auto metatable = Team;
@@ -348,7 +349,7 @@ SIDE_GETTER("variables", lua_index_raw) {
 	lua_createtable(L, 1, 0);
 	lua_pushvalue(L, 1);
 	lua_rawseti(L, -2, 1);
-	luaL_setmetatable(L, teamVar);
+	luaL_setmetatable(L, teamVar.data());
 	return lua_index_raw(L);
 }
 
@@ -503,7 +504,7 @@ namespace lua_team {
 
 		cmd_out << "Adding getside metatable...\n";
 
-		luaL_newmetatable(L, Team);
+		luaL_newmetatable(L, Team.data());
 
 		static luaL_Reg const callbacks[] {
 			{ "__index", 	    &impl_side_get},
@@ -515,13 +516,13 @@ namespace lua_team {
 		};
 		luaL_setfuncs(L, callbacks, 0);
 
-		lua_pushstring(L, Team);
+		lua_pushstring(L, Team.data());
 		lua_setfield(L, -2, "__metatable");
 
 		// Create the side variables metatable.
 		cmd_out << "Adding side variables metatable...\n";
 
-		luaL_newmetatable(L, teamVar);
+		luaL_newmetatable(L, teamVar.data());
 		lua_pushcfunction(L, impl_side_variables_get);
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_side_variables_set);
@@ -537,12 +538,12 @@ void luaW_pushteam(lua_State *L, team & tm)
 {
 	team** t = static_cast<team**>(lua_newuserdatauv(L, sizeof(team*), 0));
 	*t = &tm;
-	luaL_setmetatable(L, Team);
+	luaL_setmetatable(L, Team.data());
 }
 
 team& luaW_checkteam(lua_State* L, int idx)
 {
-	return **static_cast<team **>(luaL_checkudata(L, idx, Team));
+	return **static_cast<team **>(luaL_checkudata(L, idx, Team.data()));
 }
 
 team& luaW_checkteam(lua_State* L, int idx, game_board& board)
@@ -556,12 +557,12 @@ team& luaW_checkteam(lua_State* L, int idx, game_board& board)
 		}
 		return board.get_team(side);
 	}
-	return **static_cast<team **>(luaL_checkudata(L, idx, Team));
+	return **static_cast<team **>(luaL_checkudata(L, idx, Team.data()));
 }
 
 team* luaW_toteam(lua_State* L, int idx)
 {
-	if(void* p = luaL_testudata(L, idx, Team)) {
+	if(void* p = luaL_testudata(L, idx, Team.data())) {
 		return *static_cast<team **>(p);
 	}
 	return nullptr;

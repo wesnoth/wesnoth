@@ -23,14 +23,15 @@
 #include "game_board.hpp"
 #include "play_controller.hpp"
 
+#include <string_view>
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
-static const char terrainmapKey[] = "terrain map";
-static const char maplocationKey[] = "special locations";
-static const char mapReplaceIfFailedKey[] = "replace_if_failed terrain code";
+static constexpr std::string_view terrainmapKey = "terrain map";
+static constexpr std::string_view maplocationKey = "special locations";
+static constexpr std::string_view mapReplaceIfFailedKey = "replace_if_failed terrain code";
 
 namespace replace_if_failed_idx {
 	enum {CODE = 1, MODE = 2};
@@ -164,7 +165,7 @@ private:
 
 bool luaW_isterrainmap(lua_State* L, int index)
 {
-	return luaL_testudata(L, index, terrainmapKey) != nullptr || luaL_testudata(L, index, maplocationKey) != nullptr;
+	return luaL_testudata(L, index, terrainmapKey.data()) != nullptr || luaL_testudata(L, index, maplocationKey.data()) != nullptr;
 }
 
 
@@ -204,14 +205,14 @@ int intf_terrainmap_create(lua_State *L)
 		string_view data_str = luaL_checkstring(L, 1);
 		new(L) lua_map_ref(data_str);
 	}
-	luaL_setmetatable(L, terrainmapKey);
+	luaL_setmetatable(L, terrainmapKey.data());
 	return 1;
 }
 
 int intf_terrainmap_get(lua_State* L)
 {
 	new(L) lua_map_ref(const_cast<gamemap&>(resources::gameboard->map()));
-	luaL_setmetatable(L, terrainmapKey);
+	luaL_setmetatable(L, terrainmapKey.data());
 	return 1;
 }
 
@@ -236,7 +237,7 @@ static void impl_merge_terrain(lua_State* L, gamemap_base& map, map_location loc
 	auto mode = terrain_type_data::BOTH;
 	bool replace_if_failed = false;
 	string_view t_str;
-	if(luaL_testudata(L, 3, mapReplaceIfFailedKey)) {
+	if(luaL_testudata(L, 3, mapReplaceIfFailedKey.data())) {
 		replace_if_failed = true;
 		lua_getiuservalue(L, 3, replace_if_failed_idx::CODE);
 		t_str = luaL_checkstring(L, -1);
@@ -295,7 +296,7 @@ static int impl_terrainmap_get(lua_State *L)
 
 	if(strcmp(m, "special_locations") == 0) {
 		new(L) lua_map_ref(tm);
-		luaL_setmetatable(L, maplocationKey);
+		luaL_setmetatable(L, maplocationKey.data());
 		return 1;
 	}
 	if(luaW_getglobal(L, "wesnoth", "map", m)) {
@@ -550,13 +551,13 @@ int intf_replace_if_failed(lua_State* L)
 	lua_setiuservalue(L, -2, replace_if_failed_idx::MODE);
 	lua_pushvalue(L, 1);
 	lua_setiuservalue(L, -2, replace_if_failed_idx::CODE);
-	luaL_setmetatable(L, mapReplaceIfFailedKey);
+	luaL_setmetatable(L, mapReplaceIfFailedKey.data());
 	return 1;
 }
 
 static int impl_replace_if_failed_tostring(lua_State* L)
 {
-	static const char* mode_strs[] = {"base", "overlay", "both"};
+	static constexpr auto mode_strs = []() { return std::array{"base", "overlay", "both"}; }();
 	lua_getiuservalue(L, 1, replace_if_failed_idx::CODE);
 	string_view t_str = luaL_checkstring(L, -1);
 	lua_getiuservalue(L, 1, replace_if_failed_idx::MODE);
@@ -572,32 +573,32 @@ namespace lua_terrainmap {
 
 		cmd_out << "Adding terrain map metatable...\n";
 
-		luaL_newmetatable(L, terrainmapKey);
+		luaL_newmetatable(L, terrainmapKey.data());
 		lua_pushcfunction(L, impl_terrainmap_collect);
 		lua_setfield(L, -2, "__gc");
 		lua_pushcfunction(L, impl_terrainmap_get);
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_terrainmap_set);
 		lua_setfield(L, -2, "__newindex");
-		lua_pushstring(L, terrainmapKey);
+		lua_pushstring(L, terrainmapKey.data());
 		lua_setfield(L, -2, "__metatable");
 
-		luaL_newmetatable(L, mapReplaceIfFailedKey);
+		luaL_newmetatable(L, mapReplaceIfFailedKey.data());
 		lua_pushcfunction(L, impl_replace_if_failed_tostring);
 		lua_setfield(L, -2, "__tostring");
-		lua_pushstring(L, mapReplaceIfFailedKey);
+		lua_pushstring(L, mapReplaceIfFailedKey.data());
 		lua_setfield(L, -2, "__metatable");
 
 		cmd_out << "Adding special locations metatable...\n";
 
-		luaL_newmetatable(L, maplocationKey);
+		luaL_newmetatable(L, maplocationKey.data());
 		lua_pushcfunction(L, impl_slocs_get);
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_slocs_set);
 		lua_setfield(L, -2, "__newindex");
 		lua_pushcfunction(L, impl_slocs_iter);
 		lua_setfield(L, -2, "__pairs");
-		lua_pushstring(L, maplocationKey);
+		lua_pushstring(L, maplocationKey.data());
 		lua_setfield(L, -2, "__metatable");
 
 		return cmd_out.str();

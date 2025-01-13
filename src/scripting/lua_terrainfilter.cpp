@@ -29,6 +29,7 @@
 #include "formula/formula.hpp"
 
 #include <boost/dynamic_bitset.hpp>
+#include <string_view>
 #include <unordered_map>
 
 static lg::log_domain log_scripting_lua_mapgen("scripting/lua/mapgen");
@@ -51,7 +52,7 @@ using std::string_view;
 using dynamic_bitset  = boost::dynamic_bitset<>;
 using location_set = std::set<map_location>;
 
-static const char terrinfilterKey[] = "terrainfilter";
+static constexpr std::string_view terrainfilterKey = "terrainfilter";
 #define LOG_MATCHES(NAME) \
 LOG_LMG << #NAME << ":matches(" << l << ") line:" << __LINE__;
 
@@ -762,7 +763,7 @@ int intf_mg_get_tiles_radius(lua_State* L)
 
 bool luaW_is_mgfilter(lua_State* L, int index)
 {
-	return luaL_testudata(L, index, terrinfilterKey) != nullptr;
+	return luaL_testudata(L, index, terrainfilterKey.data()) != nullptr;
 }
 
 
@@ -792,7 +793,7 @@ lua_mapgen::filter_ptr luaW_check_mgfilter(lua_State *L, int index, bool allow_c
 
 void lua_mgfilter_setmetatable(lua_State *L)
 {
-	luaL_setmetatable(L, terrinfilterKey);
+	luaL_setmetatable(L, terrainfilterKey.data());
 }
 
 template<typename... T>
@@ -881,7 +882,7 @@ namespace lua_terrainfilter {
 
 		cmd_out << "Adding terrainmamap metatable...\n";
 
-		luaL_newmetatable(L, terrinfilterKey);
+		luaL_newmetatable(L, terrainfilterKey.data());
 		lua_pushcfunction(L, impl_terrainfilter_collect);
 		lua_setfield(L, -2, "__gc");
 		lua_pushcfunction(L, impl_terrainfilter_get);

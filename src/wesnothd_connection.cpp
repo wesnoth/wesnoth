@@ -30,6 +30,7 @@
 #include <cstdint>
 #include <deque>
 #include <functional>
+#include <string_view>
 
 static lg::log_domain log_network("network");
 #define DBG_NW LOG_STREAM(debug, log_network)
@@ -125,7 +126,7 @@ wesnothd_connection::~wesnothd_connection()
 		error_code ec;
 		// this sends close_notify for secure connection shutdown
 		(*socket)->async_shutdown([](const error_code&) {} );
-		const char buffer[] = "";
+		static constexpr std::string_view buffer = "";
 		// this write is needed to trigger immediate close instead of waiting for other side's close_notify
 		boost::asio::write(**socket, boost::asio::buffer(buffer, 0), ec);
 	}

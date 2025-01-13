@@ -1283,7 +1283,7 @@ std::ostream& operator<<(std::ostream& outstream, const config& cfg)
 std::string config::hash() const
 {
 	static const unsigned int hash_length = 128;
-	static const char hash_string[] = "+-,.<>0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	static constexpr std::string_view hash_string = "+-,.<>0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char hash_str[hash_length + 1];
 
 	unsigned int i;

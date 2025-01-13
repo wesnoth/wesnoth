@@ -29,7 +29,9 @@
 #include "units/map.hpp"
 #include "units/unit.hpp"
 
-static const char formulaKey[] = "formula";
+#include <string_view>
+
+static constexpr std::string_view formulaKey = "formula";
 
 using namespace wfl;
 
@@ -226,7 +228,7 @@ variant luaW_tofaivariant(lua_State* L, int i) {
 lua_formula_bridge::fpointer luaW_check_formula(lua_State* L, int idx, bool allow_str) {
 	using namespace lua_formula_bridge;
 	fpointer form;
-	if(void* ud = luaL_testudata(L, idx, formulaKey)) {
+	if(void* ud = luaL_testudata(L, idx, formulaKey.data())) {
 		form.get_deleter() = [](fwrapper*) {};
 		form.reset(static_cast<fwrapper*>(ud));
 		// Setting a no-op deleter guarantees the Lua-held object is not deleted
@@ -274,7 +276,7 @@ int lua_formula_bridge::intf_compile_formula(lua_State* L)
 		luaW_type_error(L, 1, "string");
 	}
 	new(L) fwrapper(lua_tostring(L, 1));
-	luaL_setmetatable(L, formulaKey);
+	luaL_setmetatable(L, formulaKey.data());
 	return 1;
 }
 
@@ -316,7 +318,7 @@ static int impl_formula_tostring(lua_State* L)
 
 std::string lua_formula_bridge::register_metatables(lua_State* L)
 {
-	luaL_newmetatable(L, formulaKey);
+	luaL_newmetatable(L, formulaKey.data());
 	lua_pushcfunction(L, impl_formula_collect);
 	lua_setfield(L, -2, "__gc");
 	lua_pushcfunction(L, impl_formula_tostring);

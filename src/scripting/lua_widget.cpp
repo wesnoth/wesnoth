@@ -26,21 +26,21 @@
 #include "scripting/lua_ptr.hpp"
 #include "scripting/push_check.hpp"
 
+#include <string>
+#include <string_view>
 
-
-
-static const char widgetKey[] = "widget";
-static char widgetdataKey[] = "widgetdata";
+static constexpr std::string_view widgetKey = "widget";
+static std::string widgetdataKey = "widgetdata";
 
 void luaW_pushwidget(lua_State* L, gui2::widget& w)
 {
 	new(L) lua_ptr<gui2::widget>(w);
-	luaL_setmetatable(L, widgetKey);
+	luaL_setmetatable(L, widgetKey.data());
 }
 
 gui2::widget& luaW_checkwidget(lua_State* L, int n)
 {
-	lua_ptr<gui2::widget>& lp =  *static_cast<lua_ptr<gui2::widget>*>(luaL_checkudata(L, n, widgetKey));
+	lua_ptr<gui2::widget>& lp =  *static_cast<lua_ptr<gui2::widget>*>(luaL_checkudata(L, n, widgetKey.data()));
 	auto ptr = lp.get_ptr();
 	if(!ptr) {
 		luaL_argerror(L, n, "widget was deleted");
@@ -50,7 +50,7 @@ gui2::widget& luaW_checkwidget(lua_State* L, int n)
 
 lua_ptr<gui2::widget>& luaW_checkwidget_ptr(lua_State* L, int n)
 {
-	lua_ptr<gui2::widget>& lp =  *static_cast<lua_ptr<gui2::widget>*>(luaL_checkudata(L, n, widgetKey));
+	lua_ptr<gui2::widget>& lp =  *static_cast<lua_ptr<gui2::widget>*>(luaL_checkudata(L, n, widgetKey.data()));
 	auto ptr = lp.get_ptr();
 	if(!ptr) {
 		luaL_argerror(L, n, "widget was deleted");
@@ -61,18 +61,18 @@ lua_ptr<gui2::widget>& luaW_checkwidget_ptr(lua_State* L, int n)
 
 bool luaW_iswidget(lua_State* L, int index)
 {
-	return luaL_testudata(L, index, widgetKey) != nullptr;
+	return luaL_testudata(L, index, widgetKey.data()) != nullptr;
 }
 
 
 static void luaW_pushwidgettablecontainer(lua_State* L)
 {
-	lua_pushlightuserdata(L, &widgetdataKey[0]);
+	lua_pushlightuserdata(L, widgetdataKey.data());
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	if(lua_isnoneornil(L, -1)) {
 		lua_pop(L, 1);
 		lua_createtable(L, 0, 0);
-		lua_pushlightuserdata(L, &widgetdataKey[0]);
+		lua_pushlightuserdata(L, widgetdataKey.data());
 		lua_pushvalue(L , -2);
 		lua_rawset(L, LUA_REGISTRYINDEX);
 	}
@@ -182,7 +182,7 @@ void luaW_callwidgetcallback(lua_State* L, gui2::widget* wg, gui2::window* owner
 
 static int impl_widget_collect(lua_State* L)
 {
-	lua_ptr<gui2::widget>* w = static_cast<lua_ptr<gui2::widget>*>(luaL_checkudata(L, 1, widgetKey));
+	lua_ptr<gui2::widget>* w = static_cast<lua_ptr<gui2::widget>*>(luaL_checkudata(L, 1, widgetKey.data()));
 	w->~lua_ptr<gui2::widget>();
 	return 0;
 }
@@ -212,7 +212,7 @@ namespace lua_widget {
 	void register_metatable(lua_State* L)
 	{
 
-		luaL_newmetatable(L, widgetKey);
+		luaL_newmetatable(L, widgetKey.data());
 		lua_pushcfunction(L, lua_widget::impl_widget_get);
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, lua_widget::impl_widget_set);
@@ -223,7 +223,7 @@ namespace lua_widget {
 		lua_setfield(L, -2, "__gc");
 		lua_pushcfunction(L, impl_widget_length);
 		lua_setfield(L, -2, "__len");
-		lua_pushstring(L, widgetKey);
+		lua_pushstring(L, widgetKey.data());
 		lua_setfield(L, -2, "__metatable");
 	}
 }

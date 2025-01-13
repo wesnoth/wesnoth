@@ -36,14 +36,15 @@
 #include <cstring>
 #include <iterator>                     // for distance, advance
 #include <string>                       // for string, basic_string
+#include <string_view>
 
 
-static const char gettextKey[] = "gettext";
-static const char vconfigKey[] = "vconfig";
-static const char vconfigpairsKey[] = "vconfig pairs";
-static const char vconfigipairsKey[] = "vconfig ipairs";
-static const char tstringKey[] = "translatable string";
-static const char executeKey[] = "err";
+static constexpr std::string_view gettextKey = "gettext";
+static constexpr std::string_view vconfigKey = "vconfig";
+static constexpr std::string_view vconfigpairsKey = "vconfig pairs";
+static constexpr std::string_view vconfigipairsKey = "vconfig ipairs";
+static constexpr std::string_view tstringKey = "translatable string";
+static constexpr std::string_view executeKey = "err";
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
@@ -98,7 +99,7 @@ int intf_textdomain(lua_State *L)
 	void *p = lua_newuserdatauv(L, l + 1, 0);
 	memcpy(p, m, l + 1);
 
-	luaL_setmetatable(L, gettextKey);
+	luaL_setmetatable(L, gettextKey.data());
 	return 1;
 }
 
@@ -118,7 +119,7 @@ static void tstring_concat_aux(lua_State *L, t_string &dst, int src)
 			return;
 		case LUA_TUSERDATA:
 			// Compare its metatable with t_string's metatable.
-			if (t_string * src_ptr = static_cast<t_string *> (luaL_testudata(L, src, tstringKey))) {
+			if (t_string * src_ptr = static_cast<t_string *> (luaL_testudata(L, src, tstringKey.data()))) {
 				dst += *src_ptr;
 				return;
 			}
@@ -135,7 +136,7 @@ static int impl_tstring_concat(lua_State *L)
 {
 	// Create a new t_string.
 	t_string *t = new(L) t_string;
-	luaL_setmetatable(L, tstringKey);
+	luaL_setmetatable(L, tstringKey.data());
 
 	// Append both arguments to t.
 	tstring_concat_aux(L, *t, 1);
@@ -163,16 +164,16 @@ static int impl_tstring_collect(lua_State *L)
 
 static int impl_tstring_lt(lua_State *L)
 {
-	t_string *t1 = static_cast<t_string *>(luaL_checkudata(L, 1, tstringKey));
-	t_string *t2 = static_cast<t_string *>(luaL_checkudata(L, 2, tstringKey));
+	t_string *t1 = static_cast<t_string *>(luaL_checkudata(L, 1, tstringKey.data()));
+	t_string *t2 = static_cast<t_string *>(luaL_checkudata(L, 2, tstringKey.data()));
 	lua_pushboolean(L, translation::compare(t1->get(), t2->get()) < 0);
 	return 1;
 }
 
 static int impl_tstring_le(lua_State *L)
 {
-	t_string *t1 = static_cast<t_string *>(luaL_checkudata(L, 1, tstringKey));
-	t_string *t2 = static_cast<t_string *>(luaL_checkudata(L, 2, tstringKey));
+	t_string *t1 = static_cast<t_string *>(luaL_checkudata(L, 1, tstringKey.data()));
+	t_string *t2 = static_cast<t_string *>(luaL_checkudata(L, 2, tstringKey.data()));
 	lua_pushboolean(L, translation::compare(t1->get(), t2->get()) < 1);
 	return 1;
 }
@@ -303,7 +304,7 @@ static int impl_vconfig_collect(lua_State *L)
 static int impl_vconfig_pairs_iter(lua_State *L)
 {
 	vconfig vcfg = luaW_checkvconfig(L, 1);
-	void* p = luaL_checkudata(L, lua_upvalueindex(1), vconfigpairsKey);
+	void* p = luaL_checkudata(L, lua_upvalueindex(1), vconfigpairsKey.data());
 	config::const_attr_itors& range = *static_cast<config::const_attr_itors*>(p);
 	if (range.empty()) {
 		return 0;
@@ -346,7 +347,7 @@ static int impl_vconfig_pairs(lua_State *L)
 {
 	vconfig vcfg = luaW_checkvconfig(L, 1);
 	new(L) config::const_attr_itors(vcfg.get_config().attribute_range());
-	luaL_newmetatable(L, vconfigpairsKey);
+	luaL_newmetatable(L, vconfigpairsKey.data());
 	lua_setmetatable(L, -2);
 	lua_pushcclosure(L, &impl_vconfig_pairs_iter, 1);
 	lua_pushvalue(L, 1);
@@ -362,7 +363,7 @@ static int impl_vconfig_ipairs_iter(lua_State *L)
 {
 	luaW_checkvconfig(L, 1);
 	int i = luaL_checkinteger(L, 2);
-	void* p = luaL_checkudata(L, lua_upvalueindex(1), vconfigipairsKey);
+	void* p = luaL_checkudata(L, lua_upvalueindex(1), vconfigipairsKey.data());
 	vconfig_child_range& range = *static_cast<vconfig_child_range*>(p);
 	if (range.first == range.second) {
 		return 0;
@@ -395,7 +396,7 @@ static int impl_vconfig_ipairs(lua_State *L)
 {
 	vconfig cfg = luaW_checkvconfig(L, 1);
 	new(L) vconfig_child_range(cfg.ordered_begin(), cfg.ordered_end());
-	luaL_newmetatable(L, vconfigipairsKey);
+	luaL_newmetatable(L, vconfigipairsKey.data());
 	lua_setmetatable(L, -2);
 	lua_pushcclosure(L, &impl_vconfig_ipairs_iter, 1);
 	lua_pushvalue(L, 1);
@@ -420,7 +421,7 @@ int intf_tovconfig(lua_State *L)
  */
 std::string register_gettext_metatable(lua_State *L)
 {
-	luaL_newmetatable(L, gettextKey);
+	luaL_newmetatable(L, gettextKey.data());
 
 	static luaL_Reg const callbacks[] {
 		{ "__call", 	    &impl_gettext},
@@ -440,7 +441,7 @@ std::string register_gettext_metatable(lua_State *L)
  */
 std::string register_tstring_metatable(lua_State *L)
 {
-	luaL_newmetatable(L, tstringKey);
+	luaL_newmetatable(L, tstringKey.data());
 
 	static luaL_Reg const callbacks[] {
 		{ "__concat", 	    &impl_tstring_concat},
@@ -472,7 +473,7 @@ std::string register_tstring_metatable(lua_State *L)
  */
 std::string register_vconfig_metatable(lua_State *L)
 {
-	luaL_newmetatable(L, vconfigKey);
+	luaL_newmetatable(L, vconfigKey.data());
 
 	static luaL_Reg const callbacks[] {
 		{ "__gc",           &impl_vconfig_collect},
@@ -493,12 +494,12 @@ std::string register_vconfig_metatable(lua_State *L)
 	// I don't bother setting __metatable because this
 	// userdata is only ever stored in the iterator's
 	// upvalues, so it's never visible to the user.
-	luaL_newmetatable(L, vconfigpairsKey);
+	luaL_newmetatable(L, vconfigpairsKey.data());
 	lua_pushstring(L, "__gc");
 	lua_pushcfunction(L, &impl_vconfig_pairs_collect);
 	lua_rawset(L, -3);
 
-	luaL_newmetatable(L, vconfigipairsKey);
+	luaL_newmetatable(L, vconfigipairsKey.data());
 	lua_pushstring(L, "__gc");
 	lua_pushcfunction(L, &impl_vconfig_ipairs_collect);
 	lua_rawset(L, -3);
@@ -539,13 +540,13 @@ bool luaW_getmetafield(lua_State *L, int idx, const char* key)
 void luaW_pushvconfig(lua_State *L, const vconfig& cfg)
 {
 	new(L) vconfig(cfg);
-	luaL_setmetatable(L, vconfigKey);
+	luaL_setmetatable(L, vconfigKey.data());
 }
 
 void luaW_pushtstring(lua_State *L, const t_string& v)
 {
 	new(L) t_string(v);
-	luaL_setmetatable(L, tstringKey);
+	luaL_setmetatable(L, tstringKey.data());
 }
 
 
@@ -594,7 +595,7 @@ bool luaW_toscalar(lua_State *L, int index, config::attribute_value& v)
 			break;
 		case LUA_TUSERDATA:
 		{
-			if (t_string * tptr = static_cast<t_string *>(luaL_testudata(L, -1, tstringKey))) {
+			if (t_string * tptr = static_cast<t_string *>(luaL_testudata(L, -1, tstringKey.data()))) {
 				v = *tptr;
 				break;
 			} else {
@@ -619,7 +620,7 @@ bool luaW_totstring(lua_State *L, int index, t_string &str)
 			break;
 		case LUA_TUSERDATA:
 		{
-			if (t_string * tstr = static_cast<t_string *> (luaL_testudata(L, index, tstringKey))) {
+			if (t_string * tstr = static_cast<t_string *> (luaL_testudata(L, index, tstringKey.data()))) {
 				str = *tstr;
 				break;
 			} else {
@@ -645,7 +646,7 @@ bool luaW_iststring(lua_State* L, int index)
 	if(lua_isstring(L, index)) {
 		return true;
 	}
-	if(lua_isuserdata(L, index) && luaL_testudata(L, index, tstringKey)) {
+	if(lua_isuserdata(L, index) && luaL_testudata(L, index, tstringKey.data())) {
 		return true;
 	}
 	return false;
@@ -720,7 +721,7 @@ void luaW_push_namedtuple(lua_State* L, const std::vector<std::string>& names)
 		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, callbacks, 0);
-	static const char baseName[] = "named tuple";
+	static constexpr std::string_view baseName = "named tuple";
 	std::ostringstream str;
 	str << baseName << '(';
 	if(!names.empty()) {
@@ -862,7 +863,7 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg)
 			break;
 		case LUA_TUSERDATA:
 		{
-			if (vconfig * ptr = static_cast<vconfig *> (luaL_testudata(L, index, vconfigKey))) {
+			if (vconfig * ptr = static_cast<vconfig *> (luaL_testudata(L, index, vconfigKey.data()))) {
 				cfg = ptr->get_parsed_config();
 				return true;
 			} else {
@@ -935,7 +936,7 @@ config luaW_checkconfig(lua_State *L, int index)
 config luaW_checkconfig(lua_State *L, int index, const vconfig*& vcfg)
 {
 	config result = luaW_checkconfig(L, index);
-	if(void* p = luaL_testudata(L, index, vconfigKey)) {
+	if(void* p = luaL_testudata(L, index, vconfigKey.data())) {
 		vcfg = static_cast<vconfig*>(p);
 	}
 	return result;
@@ -954,7 +955,7 @@ bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
 			break;
 		}
 		case LUA_TUSERDATA:
-			if (vconfig * ptr = static_cast<vconfig *> (luaL_testudata(L, index, vconfigKey))) {
+			if (vconfig * ptr = static_cast<vconfig *> (luaL_testudata(L, index, vconfigKey.data()))) {
 				vcfg = *ptr;
 			} else {
 				return false;
@@ -1044,7 +1045,7 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 			v.as_scalar() = lua_tostring(L, n);
 			return true;
 		case LUA_TUSERDATA:
-			if (t_string * t_str = static_cast<t_string*> (luaL_testudata(L, n, tstringKey))) {
+			if (t_string * t_str = static_cast<t_string*> (luaL_testudata(L, n, tstringKey.data()))) {
 				v.as_scalar() = *t_str;
 				return true;
 			}
@@ -1112,13 +1113,13 @@ void chat_message(const std::string& caption, const std::string& msg)
 void push_error_handler(lua_State *L)
 {
 	luaW_getglobal(L, "debug", "traceback");
-	lua_setfield(L, LUA_REGISTRYINDEX, executeKey);
+	lua_setfield(L, LUA_REGISTRYINDEX, executeKey.data());
 }
 
 int luaW_pcall_internal(lua_State *L, int nArgs, int nRets)
 {
 	// Load the error handler before the function and its arguments.
-	lua_getfield(L, LUA_REGISTRYINDEX, executeKey);
+	lua_getfield(L, LUA_REGISTRYINDEX, executeKey.data());
 	lua_insert(L, -2 - nArgs);
 
 	int error_handler_index = lua_gettop(L) - nArgs - 1;
