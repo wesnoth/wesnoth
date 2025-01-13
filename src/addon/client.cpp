@@ -112,24 +112,6 @@ void addons_client::connect()
 			   << " supports: " << utils::join(server_capabilities_, " ");
 }
 
-int addons_client::get_addon_count()
-{
-	config response;
-	config request;
-	request.add_child("addon_count");
-
-	send_request(request, response);
-	wait_for_transfer_done(_("Requesting add-on count..."));
-
-	if(is_error_response(response)) {
-		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
-		return -1;
-	}
-
-	return response["count"].to_int(-1);
-}
-
-
 std::map<std::string, int> addons_client::get_addon_count_by_type()
 {
 	std::map<std::string, int> counts;

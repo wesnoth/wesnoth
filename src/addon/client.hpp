@@ -93,7 +93,6 @@ public:
 	 */
 	bool request_addons_list(config& cfg, bool icons);
 
-	int get_addon_count();
 	std::map<std::string, int> get_addon_count_by_type();
 	config get_addon_downloads_by_version(const std::string& addon);
 	config get_forum_auth_usage();
