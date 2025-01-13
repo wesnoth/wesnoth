@@ -873,8 +873,9 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		const string_with_tooltip damage_and_num_attacks {flush(str), flush(tooltip)};
 
 		std::string range = string_table["range_" + at.range()];
-		std::string type = at.damage_type().first;
-		std::set<std::string> alt_types = at.alternative_damage_types();
+		std::pair<std::string, std::set<std::string>> all_damage_types = at.damage_types();
+		std::string type = all_damage_types.first;
+		std::set<std::string> alt_types = all_damage_types.second;
 		std::string lang_type = string_table["type_" + type];
 		for(auto alt_t : alt_types){
 			lang_type += ", " + string_table["type_" + alt_t];
