@@ -277,7 +277,7 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	const std::string& name = image_name_(variables);
 
 	if(name.empty()) {
-		DBG_GUI_D << "Image: formula returned no value, will not be drawn.";
+		DBG_GUI_D << "Image: name is empty or contains invalid formula, will not be drawn.";;
 		return;
 	}
 
