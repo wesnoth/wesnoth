@@ -70,7 +70,7 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 				id="wc2_config_enable_unitmarker",
 				default=true,
 				name="Enable unitmarker",
-				description="enables the buildin mod to mark units, disable this to be compatible with other mods that do the same thing",
+				description="enables the built-in mod to mark units, disable this to be compatible with other mods that do the same thing",
 			},
 		},
 		-- note: in later scenarios these variables will probably be overwritten by whatever is present in the carryover.
