@@ -307,7 +307,8 @@ map_location map_location::rotate_right_around_center(const map_location& center
 	// The absolute value indicates which (1-based) column is non-zero.
 	// The sign indicates whether that cell contains -1 or 1.
 	static const int rotations[6][3] = {{1,2,3}, {-2,-3,-1}, {3,1,2}, {-1,-2,-3}, {2,3,1}, {-3,-1,-2}};
-	int vec_temp[3] = {vec.q, vec.r, vec.s}, vec_temp2[3];
+	const int vec_temp[3] = {vec.q, vec.r, vec.s};
+	int vec_temp2[3];
 	const int i = ((k % 6) + 6) % 6; // modulo-clamp rotation count to the range [0,6)
 	assert(i >= 0 && i < 6);
 	#define sgn(x) ((x) < 0 ? -1 : 1) // Not quite right, but we know we won't be passing in a 0
