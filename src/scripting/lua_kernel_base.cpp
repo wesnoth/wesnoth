@@ -163,7 +163,7 @@ static int intf_make_version(lua_State* L)
 	if(lua_type(L, 1) == LUA_TSTRING) {
 		new(L) version_info(lua_check<std::string>(L, 1));
 	} else {
-		int major = luaL_checkinteger(L, 1), minor = luaL_optinteger(L, 2, 0), rev = luaL_optinteger(L, 3, 0);
+		const int major = luaL_checkinteger(L, 1), minor = luaL_optinteger(L, 2, 0), rev = luaL_optinteger(L, 3, 0);
 		std::string sep, special;
 		if(lua_type(L, -1) == LUA_TSTRING) {
 			special = lua_tostring(L, -1);

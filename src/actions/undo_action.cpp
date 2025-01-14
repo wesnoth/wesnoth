@@ -101,7 +101,7 @@ undo_event::undo_event(int fcn_idx, const config& args, const game_events::queue
 	, filter_loc2(ctx.loc2.filter_loc())
 	, uid1(), uid2()
 {
-	unit_const_ptr u1 = ctx.loc1.get_unit(), u2 = ctx.loc2.get_unit();
+	const unit_const_ptr u1 = ctx.loc1.get_unit(), u2 = ctx.loc2.get_unit();
 	if(u1) {
 		id1 = u1->id();
 		uid1 = u1->underlying_id();
@@ -121,7 +121,7 @@ undo_event::undo_event(const config& cmds, const game_events::queued_event& ctx)
 	, filter_loc2(ctx.loc2.filter_loc())
 	, uid1(), uid2()
 {
-	unit_const_ptr u1 = ctx.loc1.get_unit(), u2 = ctx.loc2.get_unit();
+	const unit_const_ptr u1 = ctx.loc1.get_unit(), u2 = ctx.loc2.get_unit();
 	if(u1) {
 		id1 = u1->id();
 		uid1 = u1->underlying_id();

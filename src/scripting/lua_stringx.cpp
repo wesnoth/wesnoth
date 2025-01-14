@@ -276,7 +276,7 @@ static int intf_str_join_map(lua_State* L) {
 	} else return luaL_error(L, "invalid arguments to join_map, should have map, separator, and key_value_separator");
 	std::map<std::string, std::string> pieces;
 	for(lua_pushnil(L); lua_next(L, map_idx); /*pop in loop body*/) {
-		int key_idx = lua_absindex(L, -2), val_idx = lua_absindex(L, -1);
+		const int key_idx = lua_absindex(L, -2), val_idx = lua_absindex(L, -1);
 		lua_getglobal(L, "tostring");
 		lua_pushvalue(L, key_idx);
 		lua_call(L, 1, 1);

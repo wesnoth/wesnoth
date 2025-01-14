@@ -4236,7 +4236,7 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 	game_events::manager & man = *game_state_.events_manager_;
 	using namespace std::literals;
 	std::string name, id = luaW_table_get_def(L, 1, "id", ""s);
-	bool repeat = !luaW_table_get_def(L, 1, "first_time_only", true), is_menu_item = luaW_table_get_def(L, 1, "menu_item", false);
+	const bool repeat = !luaW_table_get_def(L, 1, "first_time_only", true), is_menu_item = luaW_table_get_def(L, 1, "menu_item", false);
 	const double priority = luaW_table_get_def(L, 1, "priority", 0.);
 	if(luaW_tableget(L, 1, "name")) {
 		name = read_event_name(L, -1);

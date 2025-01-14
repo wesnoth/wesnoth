@@ -1890,7 +1890,7 @@ bool display::tile_nearly_on_screen(const map_location& loc) const
 {
 	const auto [x, y] = get_location(loc);
 	const rect area = map_area();
-	int hw = hex_width(), hs = hex_size();
+	const int hw = hex_width(), hs = hex_size();
 	return x + hs >= area.x - hw && x < area.x + area.w + hw &&
 	       y + hs >= area.y - hs && y < area.y + area.h + hs;
 }

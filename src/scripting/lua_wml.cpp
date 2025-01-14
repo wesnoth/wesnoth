@@ -139,7 +139,7 @@ static int intf_clone_wml(lua_State* L)
 */
 static int intf_wml_interpolate(lua_State* L)
 {
-	config cfg = luaW_checkconfig(L, 1), vars_cfg = luaW_checkconfig(L, 2);
+	const config cfg = luaW_checkconfig(L, 1), vars_cfg = luaW_checkconfig(L, 2);
 	const config_variable_set vars(vars_cfg);
 	const vconfig vcfg(cfg, vars);
 	luaW_pushconfig(L, vcfg.get_parsed_config());

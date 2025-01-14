@@ -1031,7 +1031,7 @@ DEFINE_WFL_FUNCTION(max_possible_damage, 2, 2)
 		return variant();
 	}
 
-	unit_adapter u_attacker(u1), u_defender(u2);
+	const unit_adapter u_attacker(u1), u_defender(u2);
 	int best = 0;
 	for(const attack_type& atk : u_attacker.attacks()) {
 		const int dmg = round_damage(atk.damage(), u_defender.damage_from(atk), 100) * atk.num_attacks();
