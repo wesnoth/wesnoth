@@ -307,6 +307,8 @@ do { \
 #define return_cfg_attrib(name, accessor) \
 do { \
 	if (strcmp(m, (name)) == 0) { \
+		/* Depending on how this function-like macro is called, cfg may or may not be modified. */ \
+		/* NOLINTNEXTLINE(misc-const-correctness)*/ \
 		config cfg; \
 		{accessor;} \
 		luaW_pushconfig(L, cfg); \
