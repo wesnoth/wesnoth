@@ -126,7 +126,7 @@ bool wml_type_intersection::matches(const config_attribute_value& value, const m
 bool wml_type_list::matches(const config_attribute_value& value_attr, const map& type_map) const
 {
 	auto value = value_attr.str();
-	boost::sregex_token_iterator it(value.begin(), value.end(), split_, -1), end;
+	const boost::sregex_token_iterator it(value.begin(), value.end(), split_, -1), end;
 	int n = 0;
 	const bool result = std::all_of(it, end, [this, &type_map, &n](const boost::ssub_match& match) {
 		// Not sure if this is necessary?

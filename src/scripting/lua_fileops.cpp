@@ -56,7 +56,7 @@ static int intf_get_image_size(lua_State *L)
  */
 static int intf_have_asset(lua_State* L)
 {
-	std::string type = luaL_checkstring(L, 1), name = luaL_checkstring(L, 2);
+	const std::string type = luaL_checkstring(L, 1), name = luaL_checkstring(L, 2);
 	lua_pushboolean(L, filesystem::get_binary_file_location(type, name).has_value());
 	return 1;
 }
@@ -69,7 +69,7 @@ static int intf_have_asset(lua_State* L)
  */
 static int intf_resolve_asset(lua_State* L)
 {
-	std::string type = luaL_checkstring(L, 1), name = luaL_checkstring(L, 2);
+	const std::string type = luaL_checkstring(L, 1), name = luaL_checkstring(L, 2);
 	lua_push(L, filesystem::get_independent_binary_file_path(type, name).value_or(""));
 	return 1;
 }

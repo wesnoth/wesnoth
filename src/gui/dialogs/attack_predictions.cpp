@@ -129,7 +129,7 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 	ss.str("");
 
 	// Set specials context (for safety, it should not have changed normally).
-	const_attack_ptr weapon = attacker.stats_.weapon, opp_weapon = defender.stats_.weapon;
+	const const_attack_ptr weapon = attacker.stats_.weapon, opp_weapon = defender.stats_.weapon;
 	auto ctx = weapon->specials_context(attacker.unit_, defender.unit_, attacker.unit_->get_location(), defender.unit_->get_location(), attacker.stats_.is_attacker, opp_weapon);
 	utils::optional<decltype(ctx)> opp_ctx;
 

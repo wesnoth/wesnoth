@@ -285,7 +285,7 @@ bool manager::does_conflict(const elem& elem1, const elem& elem2, bool directonl
 
 	// Checking for indirect conflicts (i.e. conflicts between dependencies)
 	if(!directonly) {
-		std::vector<std::string> req1 = get_required(elem1), req2 = get_required(elem2);
+		const std::vector<std::string> req1 = get_required(elem1), req2 = get_required(elem2);
 
 		for(const std::string& s : req1) {
 			const elem m(s, "modification");

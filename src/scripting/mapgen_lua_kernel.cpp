@@ -179,7 +179,7 @@ static int intf_default_generate_height_map(lua_State *L)
 static int intf_find_path(lua_State *L)
 {
 	const int arg = 1;
-	map_location src = luaW_checklocation(L, 1), dst = luaW_checklocation(L, 2);
+	const map_location src = luaW_checklocation(L, 1), dst = luaW_checklocation(L, 2);
 	if(lua_isfunction(L, arg)) {
 		const char *msg = lua_pushfstring(L, "%s expected, got %s", lua_typename(L, LUA_TFUNCTION), luaL_typename(L, 3));
 		return luaL_argerror(L, 3, msg);
