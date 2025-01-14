@@ -229,7 +229,8 @@ static std::string parse_name(std::string::const_iterator& beg, std::string::con
 
 static std::pair<std::string, std::string> parse_attribute(std::string::const_iterator& beg, std::string::const_iterator end, bool allow_empty)
 {
-	std::string attr = parse_name(beg, end), value;
+	const std::string attr = parse_name(beg, end);
+	std::string value;
 	if(attr.empty()) {
 		throw parse_error("missing attribute name");
 	}
