@@ -34,6 +34,7 @@
 #include "gettext.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/dialogs/addon/addon_auth.hpp"
+#include "gui/dialogs/addon/addon_server_info.hpp"
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
@@ -622,6 +623,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_achievements_dialog)
 {
 	test<achievements_dialog>();
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_addon_server_info)
+{
+	test<addon_server_info>();
+}
 BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_match_history_dialog)
 {
 	test<mp_match_history>();
@@ -741,6 +746,18 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 BOOST_AUTO_TEST_SUITE_END()
 
 namespace {
+
+template<>
+struct dialog_tester<addon_server_info>
+{
+	std::string s = "";
+	bool b = false;
+	addon_server_info* create()
+	{
+		addons_client client("localhost:15999");
+		return new addon_server_info(client, s, b);
+	}
+};
 
 template<>
 struct dialog_tester<addon_auth>

@@ -457,6 +457,10 @@ static int process_command_args(commandline_options& cmdline_opts)
 		game_config::allow_insecure = true;
 	}
 
+	if(cmdline_opts.addon_server_info) {
+		game_config::addon_server_info = true;
+	}
+
 	if(cmdline_opts.strict_lua) {
 		game_config::strict_lua = true;
 	}

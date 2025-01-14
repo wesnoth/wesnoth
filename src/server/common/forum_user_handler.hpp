@@ -324,6 +324,32 @@ public:
 	 */
 	bool db_do_any_authors_exist(const std::string& instance_version, const std::string& id);
 
+	/**
+	 * Gets a list of download count by version for add-ons.
+	 *
+	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
+	 * @param id The ID of the add-on.
+	 * @return The results of the query.
+	 */
+	config db_get_addon_downloads_info(const std::string& instance_version, const std::string& id);
+
+	/**
+	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
+	 * @return The total count of add-ons amd the count of add-ons using forum_auth.
+	 */
+	config db_get_forum_auth_usage(const std::string& instance_version);
+
+	/**
+	 * @return the list of account names that have admin abilities, ie deleting or hiding add-ons
+	 */
+	config db_get_addon_admins();
+
+	/**
+	 * @param name The provided username.
+	 * @return Whether the username is in any groups specified as admins.
+	 */
+	bool user_is_addon_admin(const std::string& name);
+
 private:
 	/** An instance of the class responsible for executing the queries and handling the database connection. */
 	dbconn conn_;
@@ -333,6 +359,10 @@ private:
 	std::string db_extra_table_;
 	/** The group ID of the forums MP Moderators group */
 	int mp_mod_group_;
+	/** The group ID of the forums Site Administrators group */
+	int site_admin_group_;
+	/** The group ID of the forums Forum Administrators group */
+	int forum_admin_group_;
 
 	/**
 	 * @param user The player's username.

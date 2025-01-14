@@ -43,11 +43,23 @@ fuh::fuh(const config& c)
 	, db_users_table_(c["db_users_table"].str())
 	, db_extra_table_(c["db_extra_table"].str())
 	, mp_mod_group_(0)
+	, site_admin_group_(0)
+	, forum_admin_group_(0)
 {
 	try {
 		mp_mod_group_ = std::stoi(c["mp_mod_group"].str());
 	} catch(...) {
 		ERR_UH << "Failed to convert the mp_mod_group value of '" << c["mp_mod_group"].str() << "' into an int!  Defaulting to " << mp_mod_group_ << ".";
+	}
+	try {
+		site_admin_group_ = std::stoi(c["site_admin_group"].str());
+	} catch(...) {
+		ERR_UH << "Failed to convert the site_admin_group_ value of '" << c["site_admin_group"].str() << "' into an int!  Defaulting to " << site_admin_group_ << ".";
+	}
+	try {
+		forum_admin_group_ = std::stoi(c["forum_admin_group"].str());
+	} catch(...) {
+		ERR_UH << "Failed to convert the forum_admin_group_ value of '" << c["forum_admin_group"].str() << "' into an int!  Defaulting to " << forum_admin_group_ << ".";
 	}
 }
 
@@ -121,7 +133,7 @@ bool fuh::user_is_moderator(const std::string& name) {
 	if(!user_exists(name)){
 		return false;
 	}
-	return conn_.get_user_int(db_extra_table_, "user_is_moderator", name) == 1 || (mp_mod_group_ != 0 && conn_.is_user_in_group(name, mp_mod_group_));
+	return conn_.get_user_int(db_extra_table_, "user_is_moderator", name) == 1 || (mp_mod_group_ != 0 && conn_.is_user_in_groups(name, { mp_mod_group_ }));
 }
 
 void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
@@ -302,6 +314,22 @@ void fuh::db_insert_addon_authors(const std::string& instance_version, const std
 
 bool fuh::db_do_any_authors_exist(const std::string& instance_version, const std::string& id) {
 	return conn_.do_any_authors_exist(instance_version, id);
+}
+
+config fuh::db_get_addon_downloads_info(const std::string& instance_version, const std::string& id) {
+	return conn_.get_addon_downloads_info(instance_version, id);
+}
+
+config fuh::db_get_forum_auth_usage(const std::string& instance_version) {
+	return conn_.get_forum_auth_usage(instance_version);
+}
+
+config fuh::db_get_addon_admins() {
+	return conn_.get_addon_admins(site_admin_group_, forum_admin_group_);
+}
+
+bool fuh::user_is_addon_admin(const std::string& name) {
+	return conn_.is_user_in_groups(name, { site_admin_group_, forum_admin_group_ });
 }
 
 #endif //HAVE_MYSQLPP

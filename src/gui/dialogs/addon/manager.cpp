@@ -26,6 +26,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
 #include "gui/dialogs/addon/addon_auth.hpp"
+#include "gui/dialogs/addon/addon_server_info.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
@@ -349,7 +350,13 @@ void addon_manager::pre_show()
 
 	std::vector<config> status_filter_entries;
 	for(const auto& f : status_filter_types_) {
-		status_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN));
+		if(f.first == FILTER_ALL) {
+			status_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN)+" ("+std::to_string(addons_.size())+")");
+		} else if(f.first == FILTER_INSTALLED) {
+			status_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN)+" ("+std::to_string(installed_addons().size())+")");
+		} else {
+			status_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN));
+		}
 	}
 
 	status_filter.set_values(status_filter_entries);
@@ -375,9 +382,29 @@ void addon_manager::pre_show()
 	// The type filter
 	multimenu_button& type_filter = find_widget<multimenu_button>("type_filter");
 
+	std::map<ADDON_TYPE, int> type_counts = {
+		{ADDON_SP_CAMPAIGN, 0},
+		{ADDON_SP_SCENARIO, 0},
+		{ADDON_SP_MP_CAMPAIGN, 0},
+		{ADDON_MP_CAMPAIGN, 0},
+		{ADDON_MP_SCENARIO, 0},
+		{ADDON_MP_MAPS, 0},
+		{ADDON_MP_ERA, 0},
+		{ADDON_MP_FACTION, 0},
+		{ADDON_MOD, 0},
+		{ADDON_CORE, 0},
+		{ADDON_THEME, 0},
+		{ADDON_MEDIA, 0},
+		{ADDON_OTHER, 0},
+		{ADDON_UNKNOWN, 0}
+	};
+	for(const auto& addon : addons_) {
+		type_counts[addon.second.type]++;
+	}
+
 	std::vector<config> type_filter_entries;
 	for(const auto& f : type_filter_types_) {
-		type_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN), "checkbox", false);
+		type_filter_entries.emplace_back("label", t_string(f.second, GETTEXT_DOMAIN)+" ("+std::to_string(type_counts[f.first])+")", "checkbox", false);
 	}
 
 	type_filter.set_values(type_filter_entries);
@@ -488,6 +515,14 @@ void addon_manager::pre_show()
 	connect_signal_mouse_left_click(
 		find_widget<button>("delete"),
 		std::bind(&addon_manager::delete_selected_addon, this));
+
+	if(game_config::addon_server_info) {
+		connect_signal_mouse_left_click(
+			find_widget<button>("info"),
+			std::bind(&addon_manager::info, this));
+	} else {
+		find_widget<button>("info").set_visible(false);
+	}
 
 	connect_signal_mouse_left_click(
 		find_widget<button>("update_all"),
@@ -894,6 +929,32 @@ void addon_manager::update_all_addons()
 
 	if(need_wml_cache_refresh_) {
 		load_addon_list();
+	}
+}
+
+void addon_manager::info()
+{
+	// TODO: make this a separate method to avoid code duplication
+
+	// Explicitly return to the main page if we're in low-res mode so the list is visible.
+	if(stacked_widget* stk = find_widget<stacked_widget>("main_stack", false, false)) {
+		stk->select_layer(0);
+		find_widget<button>("details_toggle").set_label(_("Add-on Details"));
+	}
+
+	addon_list& addons = find_widget<addon_list>("addons");
+	const addon_info* addon = addons.get_selected_addon();
+
+	bool needs_refresh = false;
+	if(addon == nullptr) {
+		gui2::dialogs::addon_server_info::execute(client_, "", needs_refresh);
+	} else {
+		gui2::dialogs::addon_server_info::execute(client_, addon->id, needs_refresh);
+	}
+
+	if(needs_refresh) {
+		fetch_addons_list();
+		reload_list_and_reselect_item("");
 	}
 }
 

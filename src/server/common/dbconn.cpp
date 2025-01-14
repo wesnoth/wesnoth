@@ -292,16 +292,25 @@ bool dbconn::extra_row_exists(const std::string& name)
 	}
 }
 
-bool dbconn::is_user_in_group(const std::string& name, int group_id)
+bool dbconn::is_user_in_groups(const std::string& name, const std::vector<int>& group_ids)
 {
+	std::set<int> group_params;
+
+	sql_parameters params;
+	params.emplace_back(name);
+	for(int group_id : group_ids) {
+		group_params.emplace(group_id);
+		params.emplace_back(group_id);
+	}
+
 	try
 	{
-		return exists(connection_, "SELECT 1 FROM `"+db_users_table_+"` u, `"+db_user_group_table_+"` ug WHERE UPPER(u.username)=UPPER(?) AND u.USER_ID = ug.USER_ID AND ug.GROUP_ID = ?",
-		{ name, group_id });
+		return exists(connection_, "SELECT 1 FROM `"+db_users_table_+"` u, `"+db_user_group_table_+"` ug WHERE UPPER(u.username)=UPPER(?) AND u.USER_ID = ug.USER_ID AND ug.GROUP_ID in ("+utils::join(group_params)+")",
+		params);
 	}
 	catch(const mariadb::exception::base& e)
 	{
-		log_sql_exception("Unable to check if the user '"+name+"' is in group '"+std::to_string(group_id)+"'!", e);
+		log_sql_exception("Unable to check if the user '"+name+"' is in groups!", e);
 		return false;
 	}
 }
@@ -583,6 +592,57 @@ bool dbconn::do_any_authors_exist(const std::string& instance_version, const std
 	}
 }
 
+config dbconn::get_addon_downloads_info(const std::string& instance_version, const std::string& id) {
+	auto cfg_result = [](const mariadb::result_set_ref& rslt) -> config {
+		config c;
+
+		while(rslt->next()) {
+			config& child = c.add_child("download_info");
+			child["name"] = rslt->get_string("ADDON_NAME");
+			child["version"] = rslt->get_string("VERSION");
+			child["uploaded"] = rslt->get_date_time("UPLOADED_ON").str();
+			child["downloads"] = rslt->get_unsigned32("DOWNLOAD_COUNT");
+		}
+
+		return c;
+	};
+	return get_complex_results(connection_, &cfg_result, "select ADDON_NAME, VERSION, UPLOADED_ON, DOWNLOAD_COUNT from "+db_addon_info_table_+" where INSTANCE_VERSION = ? and ADDON_ID = ? order by ADDON_NAME, UPLOADED_ON",
+		{ instance_version, id });
+}
+
+config dbconn::get_forum_auth_usage(const std::string& instance_version) {
+	auto cfg_result = [](const mariadb::result_set_ref& rslt) -> config {
+		config c;
+
+		if(rslt->next()) {
+			c["all_count"] = rslt->get_signed64("ALL_COUNT");
+			c["forum_auth_count"] = rslt->get_signed64("FORUM_AUTH_COUNT");
+		} else {
+			throw mariadb::exception::base("Count query somehow returned no rows!");
+		}
+
+		return c;
+	};
+	return get_complex_results(connection_, &cfg_result, "select (select count(distinct ADDON_ID) from "+db_addon_info_table_+" where INSTANCE_VERSION = ?) as ALL_COUNT, "
+		"(select count(distinct ADDON_ID) from "+db_addon_info_table_+" where INSTANCE_VERSION = ? and FORUM_AUTH = 1) as FORUM_AUTH_COUNT from dual",
+		{ instance_version, instance_version });
+}
+
+config dbconn::get_addon_admins(int site_admin_group, int forum_admin_group) {
+	auto cfg_result = [](const mariadb::result_set_ref& rslt) -> config {
+		config c;
+
+		while(rslt->next()) {
+			config& child = c.add_child("admin");
+			child["username"] = rslt->get_string("USERNAME");
+		}
+
+		return c;
+	};
+	return get_complex_results(connection_, &cfg_result, "SELECT u.USERNAME FROM `"+db_users_table_+"` u, `"+db_user_group_table_+"` ug WHERE u.USER_ID = ug.USER_ID AND ug.GROUP_ID in (?, ?)",
+		{ site_admin_group, forum_admin_group });
+}
+
 //
 // handle complex query results
 //
@@ -590,6 +650,14 @@ void dbconn::get_complex_results(const mariadb::connection_ref& connection, rs_b
 {
 	mariadb::result_set_ref rslt = select(connection, sql, params);
 	base.read(rslt);
+}
+
+template <typename F>
+config dbconn::get_complex_results(const mariadb::connection_ref& connection, F* func, const std::string& sql, const sql_parameters& params)
+{
+	mariadb::result_set_ref rslt = select(connection, sql, params);
+	config c = (*func)(rslt);
+	return c;
 }
 //
 // handle single values
