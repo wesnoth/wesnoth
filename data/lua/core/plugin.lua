@@ -41,13 +41,13 @@ if wesnoth.kernel_type() == "Application Lua Kernel" then
 	---Waits until the plugin reaches a specified context.
 	---Unless the idle function returns true, the context returned from this function is
 	---guaranteed to have the expected value.
-	---@param ctx string The context to wait for.
+	---@param ctx_name string The context to wait for.
 	---@param idle plugin_idle_function A function that will be called on each slice, taking as argument the events since the previous slice, and the name of the latest context. It can return true to break out of the wait.
 	---@return WMLTable #All the events that occurred while waiting
 	---@return plugin_context #The most recent context
 	---@return plugin_info #The most recent info
-	function wesnoth.plugin.wait_until(ctx, idle)
-		return wait_until(function(info) return info.name == ctx end, idle)
+	function wesnoth.plugin.wait_until(ctx_name, idle)
+		return wait_until(function(info) return info.name == ctx_name end, idle)
 	end
 
 	---Waits until the plugin reaches one of several specified contexts.
