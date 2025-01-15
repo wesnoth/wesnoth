@@ -44,7 +44,7 @@ editor_generate_map::editor_generate_map(std::vector<std::unique_ptr<map_generat
 
 void editor_generate_map::do_generator_selected()
 {
-	listbox& list = find_widget<listbox>("generators_list");
+	const listbox& list = find_widget<listbox>("generators_list");
 	const int current = list.get_selected_row();
 
 	if(current == -1 || static_cast<unsigned>(current) > map_generators_.size()) {

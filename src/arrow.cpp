@@ -131,7 +131,7 @@ const arrow_path_t& arrow::get_previous_path() const
 
 bool arrow::path_contains(const map_location& hex) const
 {
-	bool contains = symbols_map_.find(hex) != symbols_map_.end();
+	const bool contains = symbols_map_.find(hex) != symbols_map_.end();
 	return contains;
 }
 
@@ -182,7 +182,7 @@ void arrow::update_symbols()
 		bool end = false;
 
 		// teleport in if we teleported out last hex
-		bool teleport_in = teleport_out;
+		const bool teleport_in = teleport_out;
 		teleport_out = false;
 
 		// Determine some special cases

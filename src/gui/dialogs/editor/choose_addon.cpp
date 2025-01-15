@@ -40,7 +40,7 @@ editor_choose_addon::editor_choose_addon(std::string& addon_id)
 void editor_choose_addon::post_show()
 {
 	listbox& existing_addons = find_widget<listbox>("existing_addons");
-	int selected_row = existing_addons.get_selected_row();
+	const int selected_row = existing_addons.get_selected_row();
 
 	if(selected_row == 0) {
 		addon_id_ = "///newaddon///";
@@ -57,7 +57,7 @@ void editor_choose_addon::post_show()
 
 void editor_choose_addon::toggle_installed()
 {
-	toggle_button& show_all = find_widget<toggle_button>("show_all");
+	const toggle_button& show_all = find_widget<toggle_button>("show_all");
 	populate_list(show_all.get_value_bool());
 }
 

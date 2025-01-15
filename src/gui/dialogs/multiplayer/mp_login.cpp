@@ -51,7 +51,7 @@ void mp_login::load_password()
 
 void mp_login::save_password()
 {
-	password_box& pwd = find_widget<password_box>("password");
+	const password_box& pwd = find_widget<password_box>("password");
 	prefs::get().set_password(host_, username_->get_widget_value(), pwd.get_real_value());
 }
 

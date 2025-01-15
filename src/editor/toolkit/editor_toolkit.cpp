@@ -86,8 +86,8 @@ void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 
 	for (const theme::menu& menu : gui_.get_theme().menus()) {
 		if (menu.items().size() == 1) {
-			hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey_command(menu.items().front()["id"]).command;
-			mouse_action_map::iterator i = mouse_actions_.find(hk);
+			hotkey::HOTKEY_COMMAND const hk = hotkey::get_hotkey_command(menu.items().front()["id"]).command;
+			const mouse_action_map::iterator i = mouse_actions_.find(hk);
 			if (i != mouse_actions_.end()) {
 				i->second->set_toolbar_button(&menu);
 			}
@@ -101,7 +101,7 @@ void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 
 void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 {
-	mouse_action_map::iterator i = mouse_actions_.find(command);
+	const mouse_action_map::iterator i = mouse_actions_.find(command);
 	if (i != mouse_actions_.end()) {
 		palette_manager_->active_palette().hide(true);
 		mouse_action_ = i->second;
@@ -119,7 +119,7 @@ void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 
 bool editor_toolkit::is_mouse_action_set(hotkey::HOTKEY_COMMAND command) const
 {
-	mouse_action_map::const_iterator i = mouse_actions_.find(command);
+	const mouse_action_map::const_iterator i = mouse_actions_.find(command);
 	return (i != mouse_actions_.end()) && (i->second == mouse_action_);
 }
 
@@ -132,7 +132,7 @@ void editor_toolkit::update_mouse_action_highlights()
 {
 	DBG_ED << __func__;
 	auto [x, y] = sdl::get_mouse_location();
-	map_location hex_clicked = gui_.hex_clicked_on(x,y);
+	const map_location hex_clicked = gui_.hex_clicked_on(x, y);
 	get_mouse_action().update_brush_highlights(gui_, hex_clicked);
 }
 

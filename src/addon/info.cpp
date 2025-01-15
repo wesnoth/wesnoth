@@ -30,7 +30,7 @@ static lg::log_domain log_addons_client("addons-client");
 namespace {
 	void resolve_deps_recursive(const addons_list& addons, const std::string& base_id, std::set<std::string>& dest)
 	{
-		addons_list::const_iterator it = addons.find(base_id);
+		const addons_list::const_iterator it = addons.find(base_id);
 		if(it == addons.end()) {
 			LOG_AC << "resolve_deps_recursive(): " << base_id << " not in add-ons list";
 			return;
@@ -206,7 +206,7 @@ std::string addon_info::display_title_translated() const
 
 std::string addon_info::display_title_translated_or_original() const
 {
-	std::string title = display_title_translated();
+	const std::string title = display_title_translated();
 	return title.empty() ? display_title() : title;
 }
 
@@ -223,7 +223,7 @@ std::string addon_info::description_translated() const
 
 std::string addon_info::display_title_full() const
 {
-	std::string local_title = display_title_translated();
+	const std::string local_title = display_title_translated();
 	if(local_title.empty())
 		return display_title();
 	return local_title + " (" + display_title() + ")";

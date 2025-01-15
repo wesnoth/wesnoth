@@ -52,8 +52,8 @@ static lg::log_domain log_scripting_lua("scripting/lua");
  */
 int intf_show_dialog(lua_State* L)
 {
-	config def_cfg = luaW_checkconfig(L, 1);
-	gui2::builder_window::window_resolution def(def_cfg);
+	const config def_cfg = luaW_checkconfig(L, 1);
+	const gui2::builder_window::window_resolution def(def_cfg);
 
 	auto wp = std::make_unique<gui2::window>(def);
 
@@ -63,7 +63,7 @@ int intf_show_dialog(lua_State* L)
 		lua_call(L, 1, 0);
 	}
 
-	int v = wp->show();
+	const int v = wp->show();
 
 	if (!lua_isnoneornil(L, 3)) {
 		lua_pushvalue(L, 3);
@@ -83,7 +83,7 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 	{
 		if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w))
 		{
-			int v = lua_tointeger(L, i);
+			const int v = lua_tointeger(L, i);
 			if(v < 1) {
 				throw std::invalid_argument("negative index");
 			}
@@ -92,14 +92,14 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 				if(readonly) {
 					throw std::invalid_argument("index out of range");
 				}
-				gui2::widget_item dummy;
+				const gui2::widget_item dummy;
 				for(; n < v; ++n) {
 					list->add_row(dummy);
 				}
 			}
 			w = list->get_row_grid(v - 1);
 		} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(w)) {
-			int v = lua_tointeger(L, i);
+			const int v = lua_tointeger(L, i);
 			if(v < 1) {
 				throw std::invalid_argument("negative index");
 			}
@@ -108,7 +108,7 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 				if(readonly) {
 					throw std::invalid_argument("index out of range");
 				}
-				gui2::widget_item dummy;
+				const gui2::widget_item dummy;
 				for(; n < v; ++n) {
 					multi_page->add_page(dummy);
 				}
@@ -117,49 +117,49 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 		} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(w)) {
 			gui2::tree_view_node& tvn = tree_view->get_root_node();
 			if(lua_isnumber(L, i)) {
-				int v = lua_tointeger(L, i);
+				const int v = lua_tointeger(L, i);
 				if(v < 1) {
 					throw std::invalid_argument("negative index");
 				}
-				int n = tvn.count_children();
+				const int n = tvn.count_children();
 				if(v > n) {
 					throw std::invalid_argument("index out of range");
 				}
 				w = &tvn.get_child_at(v - 1);
 
 			} else {
-				std::string m = luaL_checkstring(L, i);
+				const std::string m = luaL_checkstring(L, i);
 				w = tvn.find(m, false);
 			}
 		} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(w)) {
 			if(lua_isnumber(L, i)) {
-				int v = lua_tointeger(L, i);
+				const int v = lua_tointeger(L, i);
 				if(v < 1) {
 					throw std::invalid_argument("negative index");
 				}
-				int n = tree_view_node->count_children();
+				const int n = tree_view_node->count_children();
 				if(v > n) {
 					throw std::invalid_argument("index out of range");
 				}
 				w = &tree_view_node->get_child_at(v - 1);
 
 			} else {
-				std::string m = luaL_checkstring(L, i);
+				const std::string m = luaL_checkstring(L, i);
 				w = tree_view_node->find(m, false);
 			}
 		} else if(gui2::stacked_widget* stacked_widget = dynamic_cast<gui2::stacked_widget*>(w)) {
 			if(lua_isnumber(L, i)) {
-				int v = lua_tointeger(L, i);
+				const int v = lua_tointeger(L, i);
 				if(v < 1) {
 					throw std::invalid_argument("negative index");
 				}
-				int n = stacked_widget->get_layer_count();
+				const int n = stacked_widget->get_layer_count();
 				if(v > n) {
 					throw std::invalid_argument("index out of range");
 				}
 				w = stacked_widget->get_layer_grid(v - 1);
 			} else {
-				std::string m = luaL_checkstring(L, i);
+				const std::string m = luaL_checkstring(L, i);
 				w = stacked_widget->find(m, false);
 			}
 		} else {
@@ -215,7 +215,7 @@ namespace
 	template<typename TWidget>
 	int check_index(lua_State* L, int arg, TWidget& w, bool for_insertion, utils::optional<int>& index)
 	{
-		int nitems = number_of_items(w);
+		const int nitems = number_of_items(w);
 
 		// index == nitems + 1 -> insert at the end.
 		int max = for_insertion ? nitems + 1 : nitems;
@@ -255,19 +255,19 @@ static int intf_remove_dialog_item(lua_State* L)
 {
 	gui2::widget* w = &luaW_checkwidget(L, 1);
 	utils::optional<int> pos = lua_check<utils::optional<int>>(L, 2);
-	int number = lua_check<utils::optional<int>>(L, 3).value_or(1);
+	const int number = lua_check<utils::optional<int>>(L, 3).value_or(1);
 
 	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w)) {
-		int realpos = check_index(L, 2, *list, false, pos);
+		const int realpos = check_index(L, 2, *list, false, pos);
 		list->remove_row(realpos, number);
 	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(w)) {
-		int realpos = check_index(L, 2, *multi_page,false, pos);
+		const int realpos = check_index(L, 2, *multi_page, false, pos);
 		multi_page->remove_page(realpos, number);
 	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(w)) {
-		int realpos = check_index(L, 2, *tree_view, false, pos);
+		const int realpos = check_index(L, 2, *tree_view, false, pos);
 		remove_treeview_node(tree_view->get_root_node(), realpos, number);
 	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(w)) {
-		int realpos = check_index(L, 2, *tree_view_node, false, pos);
+		const int realpos = check_index(L, 2, *tree_view_node, false, pos);
 		remove_treeview_node(*tree_view_node, realpos, number);
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
@@ -335,7 +335,7 @@ static int intf_set_dialog_callback(lua_State* L)
 	}
 
 	lua_pushvalue(L, 2);
-	bool already_exists = luaW_setwidgetcallback(L, w, wd, "callback");
+	const bool already_exists = luaW_setwidgetcallback(L, w, wd, "callback");
 	if(already_exists) {
 		return 0;
 	}
@@ -370,7 +370,7 @@ static int intf_set_dialog_callback(lua_State* L)
 static int intf_set_dialog_canvas(lua_State* L)
 {
 	gui2::widget* w = &luaW_checkwidget(L, 1);
-	int i = luaL_checkinteger(L, 2);
+	const int i = luaL_checkinteger(L, 2);
 	gui2::styled_widget* c = dynamic_cast<gui2::styled_widget*>(w);
 	if(!c) {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
@@ -381,7 +381,7 @@ static int intf_set_dialog_canvas(lua_State* L)
 		return luaL_argerror(L, 2, "out of bounds");
 	}
 
-	config cfg = luaW_checkconfig(L, 3);
+	const config cfg = luaW_checkconfig(L, 3);
 	cv[i - 1].set_cfg(cfg);
 	c->queue_redraw();
 	return 0;
@@ -416,13 +416,13 @@ static int intf_add_item_of_type(lua_State* L)
 	static const gui2::widget_data data;
 
 	if(gui2::tree_view_node* twn = dynamic_cast<gui2::tree_view_node*>(w)) {
-		int realpos = check_index(L, 2, *twn, true, insert_pos);
+		const int realpos = check_index(L, 2, *twn, true, insert_pos);
 		res = &twn->add_child(node_type, data, realpos);
 	} else if(gui2::tree_view* tw = dynamic_cast<gui2::tree_view*>(w)) {
-		int realpos = check_index(L, 2, *tw, true, insert_pos);
+		const int realpos = check_index(L, 2, *tw, true, insert_pos);
 		res = &tw->get_root_node().add_child(node_type, data, realpos);
 	} else if(gui2::multi_page* mp = dynamic_cast<gui2::multi_page*>(w)) {
-		int realpos = check_index(L, 2, *mp, true, insert_pos);
+		const int realpos = check_index(L, 2, *mp, true, insert_pos);
 		res = &mp->add_page(node_type, realpos, data);
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
@@ -448,7 +448,7 @@ static int intf_add_dialog_item(lua_State* L)
 	static const gui2::widget_data data;
 
 	if(gui2::listbox* lb = dynamic_cast<gui2::listbox*>(w)) {
-		int realpos = check_index(L, 2, *lb, true, insert_pos);
+		const int realpos = check_index(L, 2, *lb, true, insert_pos);
 		res = &lb->add_row(data, realpos);
 	} else {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");

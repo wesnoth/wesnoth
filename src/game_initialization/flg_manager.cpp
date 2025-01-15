@@ -353,7 +353,7 @@ void flg_manager::update_available_genders()
 				available_genders_.push_back("random");
 			}
 
-			for(unit_race::GENDER gender : unit->genders()) {
+			for(unit_race::GENDER const gender : unit->genders()) {
 				const std::string gender_str = gender == unit_race::FEMALE
 					? unit_race::s_female
 					: unit_race::s_male;
@@ -522,7 +522,7 @@ int flg_manager::gender_index(const std::string& gender) const
 
 void flg_manager::set_current_leader(const std::string& leader)
 {
-	int index = leader_index(leader);
+	const int index = leader_index(leader);
 	if(index < 0) {
 		ERR_MP << "Leader '" << leader << "' is not available for side " << side_num_ << " Ignoring";
 	} else {
@@ -532,7 +532,7 @@ void flg_manager::set_current_leader(const std::string& leader)
 
 void flg_manager::set_current_gender(const std::string& gender)
 {
-	int index = gender_index(gender);
+	const int index = gender_index(gender);
 	if(index < 0) {
 		ERR_MP << "Gender '" << gender << "' is not available for side " << side_num_ << " Ignoring";
 	} else {

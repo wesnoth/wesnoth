@@ -31,7 +31,7 @@ namespace editor {
 std::unique_ptr<editor_action> mouse_action_map_label::click_left(editor_display& disp, int x, int y)
 {
 	click_ = true;
-	map_location hex = disp.hex_clicked_on(x, y);
+	const map_location hex = disp.hex_clicked_on(x, y);
 	clicked_on_ = hex;
 	return nullptr;
 }
@@ -39,7 +39,7 @@ std::unique_ptr<editor_action> mouse_action_map_label::click_left(editor_display
 std::unique_ptr<editor_action> mouse_action_map_label::drag_left(editor_display& disp, int x, int y
 		, bool& /*partial*/, editor_action* /*last_undo*/)
 {
-	map_location hex = disp.hex_clicked_on(x, y);
+	const map_location hex = disp.hex_clicked_on(x, y);
 	click_ = (hex == clicked_on_);
 	return nullptr;
 }
@@ -56,7 +56,7 @@ std::unique_ptr<editor_action> mouse_action_map_label::up_left(editor_display& d
 
 	const terrain_label* old_label = disp.get_controller().get_current_map_context().get_labels().get_label(hex);
 	std::string label     = old_label ? old_label->text()              : "";
-	std::string team_name = old_label ? old_label->team_name()         : "";
+	const std::string team_name = old_label ? old_label->team_name() : "";
 	std::string category  = old_label ? old_label->category()          : "";
 	bool visible_shroud   = old_label ? old_label->visible_in_shroud() : false;
 	bool visible_fog      = old_label ? old_label->visible_in_fog()    : true;
@@ -81,7 +81,7 @@ std::unique_ptr<editor_action> mouse_action_map_label::click_right(editor_displa
 
 std::unique_ptr<editor_action> mouse_action_map_label::up_right(editor_display& disp, int x, int y)
 {
-	map_location hex = disp.hex_clicked_on(x, y);
+	const map_location hex = disp.hex_clicked_on(x, y);
 
 	//TODO
 //	const terrain_label* clicked_label = disp.get_map().get_map_labels().get_label(hex);
@@ -95,7 +95,7 @@ std::unique_ptr<editor_action> mouse_action_map_label::drag_end_left(editor_disp
 {
 	if (click_) return nullptr;
 
-	map_location hex = disp.hex_clicked_on(x, y);
+	const map_location hex = disp.hex_clicked_on(x, y);
 	if (!disp.get_map().on_board(hex))
 		return nullptr;
 

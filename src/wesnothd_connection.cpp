@@ -187,7 +187,7 @@ template<typename Verifier> auto verbose_verify(Verifier&& verifier)
 		char subject_name[256];
 		X509* cert = X509_STORE_CTX_get_current_cert(ctx.native_handle());
 		X509_NAME_oneline(X509_get_subject_name(cert), subject_name, 256);
-		bool verified = verifier(preverified, ctx);
+		const bool verified = verifier(preverified, ctx);
 		DBG_NW << "Verifying TLS certificate: " << subject_name << ": " <<
 			(verified ? "verified" : "failed");
 		BIO* bio = BIO_new(BIO_s_mem());
@@ -267,7 +267,7 @@ void wesnothd_connection::fallback_to_unencrypted()
 	assert(use_tls_ == true);
 	use_tls_ = false;
 
-	boost::asio::ip::tcp::endpoint endpoint { utils::get<raw_socket>(socket_)->remote_endpoint() };
+	const boost::asio::ip::tcp::endpoint endpoint{utils::get<raw_socket>(socket_)->remote_endpoint()};
 	utils::get<raw_socket>(socket_)->close();
 
 	utils::get<raw_socket>(socket_)->async_connect(endpoint,
@@ -379,7 +379,7 @@ std::size_t wesnothd_connection::is_write_complete(const boost::system::error_co
 	MPTEST_LOG;
 	if(ec) {
 		{
-			std::scoped_lock lock(last_error_mutex_);
+			const std::scoped_lock lock(last_error_mutex_);
 			last_error_ = ec;
 		}
 
@@ -403,7 +403,7 @@ void wesnothd_connection::handle_write(const boost::system::error_code& ec, std:
 
 	if(ec) {
 		{
-			std::scoped_lock lock(last_error_mutex_);
+			const std::scoped_lock lock(last_error_mutex_);
 			last_error_ = ec;
 		}
 
@@ -425,7 +425,7 @@ std::size_t wesnothd_connection::is_read_complete(const boost::system::error_cod
 	MPTEST_LOG;
 	if(ec) {
 		{
-			std::scoped_lock lock(last_error_mutex_);
+			const std::scoped_lock lock(last_error_mutex_);
 			last_error_ = ec;
 		}
 
@@ -466,7 +466,7 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 	bytes_to_read_ = 0;
 	if(last_error_ && ec != boost::asio::error::eof) {
 		{
-			std::scoped_lock lock(last_error_mutex_);
+			const std::scoped_lock lock(last_error_mutex_);
 			last_error_ = ec;
 		}
 
@@ -482,7 +482,7 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 	if(!data.empty()) { DBG_NW << "Received:\n" << data; }
 
 	{
-		std::scoped_lock lock(recv_queue_mutex_);
+		const std::scoped_lock lock(recv_queue_mutex_);
 		recv_queue_.emplace(std::move(data));
 		recv_queue_lock_.notify_all();
 	}
@@ -496,7 +496,7 @@ void wesnothd_connection::send()
 	MPTEST_LOG;
 	auto& buf = *send_queue_.front();
 
-	std::size_t buf_size = buf.size();
+	const std::size_t buf_size = buf.size();
 	bytes_to_write_ = buf_size + 4;
 	bytes_written_ = 0;
 	payload_size_ = htonl(buf_size);
@@ -531,7 +531,7 @@ bool wesnothd_connection::receive_data(config& result)
 	MPTEST_LOG;
 
 	{
-		std::scoped_lock lock(recv_queue_mutex_);
+		const std::scoped_lock lock(recv_queue_mutex_);
 		if(!recv_queue_.empty()) {
 			result.swap(recv_queue_.front());
 			recv_queue_.pop();
@@ -540,7 +540,7 @@ bool wesnothd_connection::receive_data(config& result)
 	}
 
 	{
-		std::scoped_lock lock(last_error_mutex_);
+		const std::scoped_lock lock(last_error_mutex_);
 		if(last_error_) {
 			std::string user_msg;
 
@@ -571,7 +571,7 @@ bool wesnothd_connection::wait_and_receive_data(config& data)
 
 void wesnothd_connection::set_keepalive(int seconds)
 {
-	boost::asio::socket_base::keep_alive option(true);
+	const boost::asio::socket_base::keep_alive option(true);
 	utils::get<raw_socket>(socket_)->set_option(option);
 
 #ifdef __linux__

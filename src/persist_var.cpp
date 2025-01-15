@@ -62,15 +62,15 @@ struct persist_choice: mp_sync::user_choice {
 
 static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 {
-	std::string global = pcfg["from_global"];
-	std::string local = pcfg["to_local"];
-	config::attribute_value pcfg_side = pcfg["side"];
+	const std::string global = pcfg["from_global"];
+	const std::string local = pcfg["to_local"];
+	const config::attribute_value pcfg_side = pcfg["side"];
 	const int side = pcfg_side.to_int(resources::controller->current_side());
-	persist_choice choice(ctx, global, side);
+	const persist_choice choice(ctx, global, side);
 	config cfg = mp_sync::get_user_choice("global_variable",choice,side).mandatory_child("variables");
 	try
 	{
-		std::size_t arrsize = cfg.child_count(global);
+		const std::size_t arrsize = cfg.child_count(global);
 		if (arrsize == 0) {
 			resources::gamedata->set_variable(local,cfg[global]);
 		} else {
@@ -87,7 +87,7 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 
 static void clear_global_variable(persist_context &ctx, const vconfig &pcfg)
 {
-	std::string global = pcfg["global"];
+	const std::string global = pcfg["global"];
 	ctx.clear_var(global, pcfg["immediate"].to_bool());
 }
 
@@ -96,11 +96,11 @@ static void set_global_variable(persist_context &ctx, const vconfig &pcfg)
 	if (pcfg["from_local"].empty()) {
 		clear_global_variable(ctx, pcfg);
 	} else {
-		std::string global = pcfg["to_global"];
-		std::string local = pcfg["from_local"];
+		const std::string global = pcfg["to_global"];
+		const std::string local = pcfg["from_local"];
 		config val;
 		const config &vars = resources::gamedata->get_variables();
-		std::size_t arraylen = vars.child_count(local);
+		const std::size_t arraylen = vars.child_count(local);
 		if (arraylen == 0) {
 			try
 			{
@@ -135,8 +135,9 @@ void verify_and_get_global_variable(const vconfig &pcfg)
 	}
 	if (resources::controller->is_networked_mp()) {
 			DBG_PERSIST << "verify_and_get_global_variable with from_global=" << pcfg["from_global"] << " from side " << pcfg["side"];
-			config::attribute_value pcfg_side = pcfg["side"];
-			int side = (pcfg_side.str() == "global" || pcfg_side.empty()) ? resources::controller->current_side() : pcfg_side.to_int();
+			const config::attribute_value pcfg_side = pcfg["side"];
+			const int side = (pcfg_side.str() == "global" || pcfg_side.empty()) ? resources::controller->current_side()
+																				: pcfg_side.to_int();
 			if (!resources::gameboard->has_team(side)) {
 				ERR_PERSIST << "[get_global_variable] attribute \"side\" specifies invalid side number.";
 				valid = false;
@@ -169,8 +170,8 @@ void verify_and_set_global_variable(const vconfig &pcfg)
 		valid = false;
 	}
 	if (resources::controller->is_networked_mp()) {
-		config::attribute_value pcfg_side = pcfg["side"];
-		int side = pcfg_side.to_int();
+		const config::attribute_value pcfg_side = pcfg["side"];
+		const int side = pcfg_side.to_int();
 		//Check side matching only if the side is not "global" or empty.
 		if (pcfg_side.str() != "global" && !pcfg_side.empty()) {
 			//Ensure that the side is valid.
@@ -208,7 +209,7 @@ void verify_and_clear_global_variable(const vconfig &pcfg)
 		valid = false;
 	}
 	if (resources::controller->is_networked_mp()) {
-		config::attribute_value pcfg_side = pcfg["side"];
+		const config::attribute_value pcfg_side = pcfg["side"];
 		const int side = pcfg_side.to_int();
 		//Check side matching only if the side is not "global" or empty.
 		if (pcfg_side.str() != "global" && !pcfg_side.empty()) {

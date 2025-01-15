@@ -80,7 +80,7 @@ bool utils::config_filters::int_matches_if_present(const config& filter, const c
 	if(filter[attribute] == "default" && def){
 		return (cfg[attribute].to_int(*def) == *def);
 	}
-	int value_def = def ? (*def) : 0;
+	const int value_def = def ? (*def) : 0;
 	return in_ranges<int>(cfg[attribute].to_int(value_def), utils::parse_ranges_int(filter[attribute].str()));
 }
 
@@ -101,7 +101,7 @@ bool utils::config_filters::int_matches_if_present_or_negative(
 		if(filter[attribute] == "default" && def){
 			return (cfg[attribute].to_int(*def) == *def);
 		}
-		int value_def = def ? (*def) : 0;
+		const int value_def = def ? (*def) : 0;
 		return in_ranges<int>(-cfg[opposite].to_int(value_def), utils::parse_ranges_int(filter[attribute].str()));
 	}
 
@@ -123,7 +123,7 @@ bool utils::config_filters::double_matches_if_present(const config& filter, cons
 	if(filter[attribute] == "default" && def){
 		return (cfg[attribute].to_int(*def) == *def);
 	}
-	double value_def = def ? (*def) : 1;
+	const double value_def = def ? (*def) : 1;
 	return in_ranges<double>(cfg[attribute].to_double(value_def), utils::parse_ranges_real(filter[attribute].str()));
 }
 
@@ -137,7 +137,7 @@ bool utils::config_filters::bool_or_empty(const config& filter, const config& cf
 		return true;
 	}
 
-	std::set<std::string> filter_attribute = utils::split_set(filter[attribute].str());
+	const std::set<std::string> filter_attribute = utils::split_set(filter[attribute].str());
 	bool is_matches = false;
 	if(cfg.has_attribute(attribute)){
 		if(filter_attribute.count("yes") != 0 || filter_attribute.count("true") != 0){

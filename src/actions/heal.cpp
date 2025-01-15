@@ -118,7 +118,7 @@ namespace {
 
 			// NOTE: At this point, this_cure will be *_SLOW or *_CURE.
 
-			unit_map::iterator cure_it = units.find(heal.teacher_loc);
+			const unit_map::iterator cure_it = units.find(heal.teacher_loc);
 			assert(cure_it != units.end());
 			const int cure_side = cure_it->side();
 
@@ -193,8 +193,8 @@ namespace {
 			               resources::gameboard->map().gives_healing(patient.get_location()));
 
 			// Regeneration?
-			unit_ability_list regen_list = patient.get_abilities("regenerate");
-			unit_abilities::effect regen_effect(regen_list, 0);
+			const unit_ability_list regen_list = patient.get_abilities("regenerate");
+			const unit_abilities::effect regen_effect(regen_list, 0);
 			update_healing(healing, harming, regen_effect.get_composite_value());
 		}
 
@@ -202,14 +202,14 @@ namespace {
 		unit_ability_list heal_list = patient.get_abilities("heals");
 		// Remove all healers not on this side (since they do not heal now).
 		utils::erase_if(heal_list, [&](const unit_ability& i) {
-			unit_map::iterator healer = units.find(i.teacher_loc);
+			const unit_map::iterator healer = units.find(i.teacher_loc);
 			assert(healer != units.end());
 
 			return healer->side() != side;
 		});
 
 		// Now we can get the aggregate healing amount.
-		unit_abilities::effect heal_effect(heal_list, 0);
+		const unit_abilities::effect heal_effect(heal_list, 0);
 		if ( update_healing(healing, harming, heal_effect.get_composite_value()) )
 		{
 			// Collect the healers involved.
@@ -257,7 +257,7 @@ namespace {
 			for ( std::list<heal_unit>::iterator check_it = unit_list.begin();
 			      check_it != unit_list.end(); ++check_it )
 			{
-				int distance = distance_between(last_loc, check_it->healed.get_location());
+				const int distance = distance_between(last_loc, check_it->healed.get_location());
 				if ( distance < min_dist ) {
 					min_dist = distance;
 					nearest = check_it;
@@ -326,8 +326,8 @@ void calculate_healing(int side, bool update_display)
 		}
 
 		// Cap the healing.
-		int max_heal = std::max(0, patient.max_hitpoints() - patient.hitpoints());
-		int min_heal = std::min(0, 1 - patient.hitpoints());
+		const int max_heal = std::max(0, patient.max_hitpoints() - patient.hitpoints());
+		const int min_heal = std::min(0, 1 - patient.hitpoints());
 		if ( healing < min_heal )
 			healing = min_heal;
 		else if ( healing > max_heal )

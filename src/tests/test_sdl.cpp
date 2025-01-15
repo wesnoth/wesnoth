@@ -51,7 +51,7 @@ surface array_to_surface(const std::array<uint32_t, w * h>& arr)
 	surface surf{w, h};
 
 	{
-		surface_lock surf_lock{surf};
+		const surface_lock surf_lock{surf};
 		uint32_t* const pixels = surf_lock.pixels();
 		for(size_t i = 0; i < w * h; ++i) {
 			pixels[i] = arr[i];
@@ -63,7 +63,7 @@ surface array_to_surface(const std::array<uint32_t, w * h>& arr)
 
 static std::vector<uint32_t> surface_to_vec(const surface& surf)
 {
-	const_surface_lock lock{surf};
+	const const_surface_lock lock{surf};
 	const uint32_t* const pixels = lock.pixels();
 	std::vector<uint32_t> pixel_vec;
 	const int surf_size = surf->w * surf->h;
@@ -75,22 +75,22 @@ BOOST_AUTO_TEST_SUITE(sdl)
 
 BOOST_AUTO_TEST_CASE(test_scale_sharp_nullptr)
 {
-	surface result = scale_surface_sharp(nullptr, 2, 2);
+	const surface result = scale_surface_sharp(nullptr, 2, 2);
 	BOOST_CHECK_EQUAL(result, nullptr);
 }
 
 BOOST_AUTO_TEST_CASE(test_scale_sharp_zero)
 {
-	surface src = array_to_surface<4, 4>(img_4x4);
-	surface result = scale_surface_sharp(src, 0, 0);
+	const surface src = array_to_surface<4, 4>(img_4x4);
+	const surface result = scale_surface_sharp(src, 0, 0);
 	BOOST_CHECK_EQUAL(result->w, 0);
 	BOOST_CHECK_EQUAL(result->h, 0);
 }
 
 BOOST_AUTO_TEST_CASE(test_scale_sharp_round)
 {
-	surface src = array_to_surface<4, 4>(img_4x4);
-	surface result = scale_surface_sharp(src, 2, 2);
+	const surface src = array_to_surface<4, 4>(img_4x4);
+	const surface result = scale_surface_sharp(src, 2, 2);
 	std::vector<uint32_t> result_pixels = surface_to_vec(result);
 	BOOST_CHECK_EQUAL_COLLECTIONS(
 		result_pixels.begin(), result_pixels.end(), img_4x4_to_2x2_result.begin(), img_4x4_to_2x2_result.end());
@@ -98,8 +98,8 @@ BOOST_AUTO_TEST_CASE(test_scale_sharp_round)
 
 BOOST_AUTO_TEST_CASE(test_scale_sharp_fractional)
 {
-	surface src = array_to_surface<4, 4>(img_4x4);
-	surface result = scale_surface_sharp(src, 3, 2);
+	const surface src = array_to_surface<4, 4>(img_4x4);
+	const surface result = scale_surface_sharp(src, 3, 2);
 	std::vector<uint32_t> result_pixels = surface_to_vec(result);
 	BOOST_CHECK_EQUAL_COLLECTIONS(
 		result_pixels.begin(), result_pixels.end(), img_4x4_to_3x2_result.begin(), img_4x4_to_3x2_result.end());

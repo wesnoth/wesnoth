@@ -89,14 +89,14 @@ namespace {
 
 		if(windiness_ > 1) {
 			// modified pseudo_random taken from builder.cpp
-			unsigned int a = (loc.x + 92872973) ^ 918273;
-			unsigned int b = (loc.y + 1672517) ^ 128123;
-			unsigned int c = a*b + a + b + seed_;
-			unsigned int random = c*c;
+			const unsigned int a = (loc.x + 92872973) ^ 918273;
+			const unsigned int b = (loc.y + 1672517) ^ 128123;
+			const unsigned int c = a * b + a + b + seed_;
+			const unsigned int random = c * c;
 			// this is just "big random number modulo windiness_"
 			// but avoid the "modulo by a low number (like 2)"
 			// because it can increase arithmetic patterns
-			int noise = random % (windiness_ * 137) / 137;
+			const int noise = random % (windiness_ * 137) / 137;
 			windiness += noise;
 		}
 
@@ -307,8 +307,10 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 		// Is this a negative hill? (i.e. a valley)
 		bool is_valley = false;
 
-		int x1 = island_size > 0 ? center_x - island_size + (rng_()%(island_size*2)) : static_cast<int>(rng_()%width);
-		int y1 = island_size > 0 ? center_y - island_size + (rng_()%(island_size*2)) : static_cast<int>(rng_()%height);
+		const int x1 = island_size > 0 ? center_x - island_size + (rng_() % (island_size * 2))
+									   : static_cast<int>(rng_() % width);
+		const int y1 = island_size > 0 ? center_y - island_size + (rng_() % (island_size * 2))
+									   : static_cast<int>(rng_() % height);
 
 		// We have to check whether this is actually a valley
 		if(island_size != 0) {
@@ -395,7 +397,7 @@ bool default_map_generator_job::generate_lake(terrain_map& terrain, int x, int y
 		return false;
 	}
 	//we checked for this eariler.
-	unsigned int ulake_fall_off = lake_fall_off;
+	const unsigned int ulake_fall_off = lake_fall_off;
 	terrain[x][y] = t_translation::SHALLOW_WATER;
 	locs_touched.insert(map_location(x,y));
 
@@ -466,7 +468,7 @@ bool default_map_generator_job::generate_river_internal(const height_map& height
 		return true;
 	}
 
-	map_location current_loc(x,y);
+	const map_location current_loc(x, y);
 	auto adj = get_adjacent_tiles(current_loc);
 	std::shuffle(std::begin(adj), std::end(adj), rng_);
 
@@ -586,7 +588,7 @@ static int rank_castle_location(int x, int y, const is_valid_terrain& valid_terr
 
 	const int border_ranking = min_distance - std::min<int>(x_from_border,y_from_border) + min_distance - x_from_border - y_from_border;
 
-	int current_ranking = border_ranking*2 + avg_distance*10 + lowest_distance*10;
+	const int current_ranking = border_ranking * 2 + avg_distance * 10 + lowest_distance * 10;
 	static const int num_nearby_locations = 11*11;
 
 	const int max_possible_ranking = current_ranking + num_nearby_locations;
@@ -629,7 +631,7 @@ static map_location place_village(const t_translation::ter_map& map,
 		const t_translation::terrain_code t = map[i.x][i.y];
 		const std::string str = t_translation::write_terrain_code(t);
 		if(auto child = cfg.find_child("village", "terrain", str)) {
-			tcode_list_cache::iterator l = adj_liked_cache.find(t);
+			const tcode_list_cache::iterator l = adj_liked_cache.find(t);
 			t_translation::ter_list *adjacent_liked;
 			if(l != adj_liked_cache.end()) {
 				adjacent_liked = &(l->second);
@@ -709,7 +711,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	// Try to find configuration for castles
 	auto castle_config = cfg.optional_child("castle");
 
-	utils::ms_optimer timer;
+	const utils::ms_optimer timer;
 
 	// We want to generate a map that is 9 times bigger than the actual size desired.
 	// Only the middle part of the map will be used, but the rest is so that the map we
@@ -816,7 +818,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				const std::string& name = river_name_generator->generate({{"base",  base_name}});
 				LOG_NG << "Named river '" << name << "'";
 
-				std::size_t name_frequency = 20;
+				const std::size_t name_frequency = 20;
 				for(std::vector<map_location>::const_iterator r = river.begin(); r != river.end(); ++r) {
 					const map_location loc(r->x-data.width/3,r->y-data.height/3);
 
@@ -931,12 +933,12 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 		for(int player = 0; player != data.nplayers; ++player) {
 			LOG_NG << "placing castle for " << player;
-			lg::scope_logger inner_scope_logging_object__(lg::general(), "placing castle");
+			const lg::scope_logger inner_scope_logging_object__(lg::general(), "placing castle");
 			const int min_x = data.width/3 + 3;
 			const int min_y = data.height/3 + 3;
 			const int max_x = (data.width/3)*2 - 4;
 			const int max_y = (data.height/3)*2 - 4;
-			int min_distance = castle_config["min_distance"].to_int();
+			const int min_distance = castle_config["min_distance"].to_int();
 
 			map_location best_loc;
 			int best_ranking = 0;
@@ -986,9 +988,9 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 	std::set<map_location> bridges;
 
-	road_path_calculator calc(terrain, cfg, rng_());
+	const road_path_calculator calc(terrain, cfg, rng_());
 	for(int road = 0; road != nroads; ++road) {
-		lg::scope_logger another_inner_scope_logging_object__(lg::general(), "creating road");
+		const lg::scope_logger another_inner_scope_logging_object__(lg::general(), "creating road");
 
 		/*
 		 * We want the locations to be on the portion of the map we're actually
@@ -1390,7 +1392,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				std::string name;
 
 				symbols["base"] = base_name_generator->generate();
-				std::shared_ptr<name_generator> village_name_generator = village_name_generator_factory.get_name_generator(name_type);
+				const std::shared_ptr<name_generator> village_name_generator
+					= village_name_generator_factory.get_name_generator(name_type);
 
 				for(std::size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
 					name = village_name_generator->generate(symbols);

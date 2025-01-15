@@ -110,7 +110,7 @@ void recruit::execute(bool& success, bool& complete)
 	assert(valid());
 	temporary_unit_hider const raii(*fake_unit_);
 	const std::size_t old_id = fake_unit_->underlying_id();
-	map_location loc = recruit_hex_;
+	const map_location loc = recruit_hex_;
 	const int side_num = team_index() + 1;
 	//Give back the spent gold so we don't get "not enough gold" message
 	resources::gameboard->teams().at(team_index()).get_side_actions()->change_gold_spent_by(-cost_);
@@ -173,8 +173,8 @@ void recruit::draw_hex(const map_location& hex)
 		//position 0,0 in the hex is the upper left corner
 		std::stringstream number_text;
 		number_text << font::unicode_minus << cost_;
-		std::size_t font_size = 16;
-		color_t color {255, 0, 0}; //red
+		const std::size_t font_size = 16;
+		const color_t color{255, 0, 0}; // red
 		display::get_singleton()->draw_text_in_hex(hex, drawing_layer::actions_numbering,
 						number_text.str(), font_size, color, x_offset, y_offset);
 	}
@@ -190,9 +190,9 @@ unit_ptr recruit::create_corresponding_unit()
 {
 	unit_type const* type = unit_types.find(unit_name_);
 	assert(type);
-	int side_num = team_index() + 1;
+	const int side_num = team_index() + 1;
 	//real_unit = false needed to avoid generating random traits and causing OOS
-	bool real_unit = false;
+	const bool real_unit = false;
 	unit_ptr result = unit::create(*type, side_num, real_unit);
 	result->set_movement(0, true);
 	result->set_attacks(0);
@@ -208,7 +208,7 @@ action::error recruit::check_validity() const
 	//Check that unit to recruit is still in side's recruit list
 	const std::set<std::string>& recruits = resources::gameboard->teams()[team_index()].recruits();
 	if(recruits.find(unit_name_) == recruits.end()) {
-		bool in_extra_recruit = any_recruiter(team_index() + 1, get_recruit_hex(), [&](unit& leader) {
+		const bool in_extra_recruit = any_recruiter(team_index() + 1, get_recruit_hex(), [&](unit& leader) {
 			return std::find(leader.recruits().begin(), leader.recruits().end(), unit_name_) != leader.recruits().end();
 		});
 		if (!in_extra_recruit) {

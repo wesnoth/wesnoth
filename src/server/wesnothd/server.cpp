@@ -330,7 +330,7 @@ void server::setup_fifo()
 		ERR_SERVER << "could not make fifo at '" << input_path_ << "' (" << strerror(errno) << ")";
 		return;
 	}
-	int fifo = open(input_path_.c_str(), O_RDWR | O_NONBLOCK);
+	const int fifo = open(input_path_.c_str(), O_RDWR | O_NONBLOCK);
 	input_.assign(fifo);
 	LOG_SERVER << "opened fifo at '" << input_path_ << "'. Server commands may be written to this file.";
 	read_from_fifo();
@@ -631,7 +631,7 @@ void server::dummy_player_updates(const boost::system::error_code& ec)
 		return;
 	}
 
-	int size = games_and_users_list_.root().children("user").size();
+	const int size = games_and_users_list_.root().children("user").size();
 	LOG_SERVER << "player count: " << size;
 	if(size % 2 == 0) {
 		simple_wml::node* dummy_user = games_and_users_list_.root().children("user").at(size-1);
@@ -776,18 +776,10 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	}
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
-	wesnothd::player player_data {
-			username,
-			player_cfg,
-			user_handler_ ? user_handler_->get_forum_id(username) : 0,
-			registered,
-			client_version,
-			client_source,
-			user_handler_ ? user_handler_->db_insert_login(username, client_address(socket), client_version) : 0,
-			default_max_messages_,
-			default_time_period_,
-			is_moderator
-	};
+	const wesnothd::player player_data{username, player_cfg, user_handler_ ? user_handler_->get_forum_id(username) : 0,
+		registered, client_version, client_source,
+		user_handler_ ? user_handler_->db_insert_login(username, client_address(socket), client_version) : 0,
+		default_max_messages_, default_time_period_, is_moderator};
 	bool inserted;
 	player_iterator new_player;
 	std::tie(new_player, inserted) = player_connections_.insert(player_connections::value_type(socket, player_data));
@@ -820,7 +812,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 
 	// Log the IP
 	if(!user_handler_) {
-		connection_log ip_name { username, client_address(socket), {} };
+		const connection_log ip_name{username, client_address(socket), {}};
 
 		if(std::find(ip_log_.begin(), ip_log_.end(), ip_name) == ip_log_.end()) {
 			ip_log_.push_back(ip_name);
@@ -865,7 +857,7 @@ template<class SocketPtr> bool server::is_login_allowed(boost::asio::yield_conte
 
 	// Check the username isn't already taken
 	auto p = player_connections_.get<name_t>().find(username);
-	bool name_taken = p != player_connections_.get<name_t>().end();
+	const bool name_taken = p != player_connections_.get<name_t>().end();
 
 	// Check for password
 
@@ -1015,7 +1007,7 @@ template<class SocketPtr> bool server::authenticate(
 			else if(!(user_handler_->login(username, hashed_password))) {
 				const auto steady_now = std::chrono::steady_clock::now();
 
-				login_log login_ip { client_address(socket), 0, steady_now };
+				const login_log login_ip{client_address(socket), 0, steady_now};
 				auto i = std::find(failed_logins_.begin(), failed_logins_.end(), login_ip);
 
 				if(i == failed_logins_.end()) {
@@ -1163,13 +1155,13 @@ void server::handle_player_in_lobby(player_iterator player, simple_wml::document
 
  	if(simple_wml::node* request = data.child("game_history_request")) {
 		if(user_handler_) {
-			int offset = request->attr("offset").to_int();
+			const int offset = request->attr("offset").to_int();
 			int player_id = 0;
 
 			// if search_for attribute for offline player -> query the forum database for the forum id
 			// if search_for attribute for online player -> get the forum id from wesnothd's player info
 			if(request->has_attr("search_player") && request->attr("search_player").to_string() != "") {
-				std::string player_name = request->attr("search_player").to_string();
+				const std::string player_name = request->attr("search_player").to_string();
 				auto player_ptr = player_connections_.get<name_t>().find(player_name);
 				if(player_ptr == player_connections_.get<name_t>().end()) {
 					player_id = user_handler_->get_forum_id(player_name);
@@ -1179,7 +1171,7 @@ void server::handle_player_in_lobby(player_iterator player, simple_wml::document
 			}
 
 			std::string search_game_name = request->attr("search_game_name").to_string();
-			int search_content_type = request->attr("search_content_type").to_int();
+			const int search_content_type = request->attr("search_content_type").to_int();
 			std::string search_content = request->attr("search_content").to_string();
 			LOG_SERVER << "Querying game history requested by player `" << player->info().name() << "` for player id `" << player_id << "`."
 					   << "Searching for game name `" << search_game_name << "`, search content type `" << search_content_type << "`, search content `" << search_content << "`.";
@@ -1318,7 +1310,7 @@ void server::handle_nickserv(player_iterator player, simple_wml::node& nickserv)
 	// A user requested a list of which details can be set
 	if(nickserv.child("info")) {
 		try {
-			std::string res = user_handler_->user_info((*nickserv.child("info"))["name"].to_string());
+			const std::string res = user_handler_->user_info((*nickserv.child("info"))["name"].to_string());
 			send_server_message(player, res, "info");
 		} catch(const user_handler::error& e) {
 			send_server_message(player,
@@ -1441,7 +1433,7 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 {
 	const bool observer = join.attr("observe").to_bool();
 	const std::string& password = join["password"].to_string();
-	int game_id = join["id"].to_int();
+	const int game_id = join["id"].to_int();
 
 	auto g_iter = player_connections_.get<game_t>().find(game_id);
 
@@ -1484,7 +1476,7 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 		return;
 	}
 
-	bool joined = g->add_player(player, observer);
+	const bool joined = g->add_player(player, observer);
 	if(!joined) {
 		WRN_SERVER << player->client_ip() << "\t" << player->info().name()
 				   << "\tattempted to observe game:\t\"" << g->name() << "\" (" << game_id
@@ -1506,8 +1498,8 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 
 	// send notification of changes to the game and user
 	simple_wml::document diff;
-	bool diff1 = make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", g->changed_description(), diff);
-	bool diff2 = make_change_diff(games_and_users_list_.root(), nullptr, "user",
+	const bool diff1 = make_change_diff(*games_and_users_list_.child("gamelist"), "gamelist", "game", g->changed_description(), diff);
+	const bool diff2 = make_change_diff(games_and_users_list_.root(), nullptr, "user",
 		player->info().config_address(), diff);
 
 	if(diff1 || diff2) {
@@ -1519,10 +1511,10 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 {
 	DBG_SERVER << "in process_data_game...";
 
-	wesnothd::player& player { p->info() };
+	const wesnothd::player& player{p->info()};
 
 	game& g = *(p->get_game());
-	std::weak_ptr<game> g_ptr{p->get_game()};
+	const std::weak_ptr<game> g_ptr{p->get_game()};
 
 	// If this is data describing the level for a game.
 	if(data.child("snapshot") || data.child("scenario")) {
@@ -1724,10 +1716,15 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			std::set<std::string> primary_keys;
 			for(const auto& addon : m.children("addon")) {
 				for(const auto& content : addon->children("content")) {
-					std::string key = uuid_+"-"+std::to_string(g.db_id())+"-"+content->attr("type").to_string()+"-"+content->attr("id").to_string()+"-"+addon->attr("id").to_string();
+					const std::string key = uuid_ + "-" + std::to_string(g.db_id()) + "-"
+						+ content->attr("type").to_string() + "-" + content->attr("id").to_string() + "-"
+						+ addon->attr("id").to_string();
 					if(primary_keys.count(key) == 0) {
 						primary_keys.emplace(key);
-						unsigned long long rows_inserted = user_handler_->db_insert_game_content_info(uuid_, g.db_id(), content->attr("type").to_string(), content->attr("name").to_string(), content->attr("id").to_string(), addon->attr("id").to_string(), addon->attr("version").to_string());
+						const unsigned long long rows_inserted = user_handler_->db_insert_game_content_info(uuid_,
+							g.db_id(), content->attr("type").to_string(), content->attr("name").to_string(),
+							content->attr("id").to_string(), addon->attr("id").to_string(),
+							addon->attr("version").to_string());
 						if(rows_inserted == 0) {
 							WRN_SERVER << "Did not insert content row for [addon] data with uuid '" << uuid_ << "', game ID '" << g.db_id() << "', type '" << content->attr("type").to_string() << "', and content ID '" << content->attr("id").to_string() << "'";
 						}
@@ -1863,7 +1860,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		return;
 		// The owner is kicking/banning someone from the game.
 	} else if(data.child("kick") || data.child("ban")) {
-		bool ban = (data.child("ban") != nullptr);
+		const bool ban = (data.child("ban") != nullptr);
 		auto user { ban
 			? g.ban_user(*data.child("ban"), p)
 			: g.kick_member(*data.child("kick"), p)};
@@ -1971,7 +1968,7 @@ void server::disconnect_player(player_iterator player)
 
 void server::remove_player(player_iterator iter)
 {
-	std::string ip = iter->client_ip();
+	const std::string ip = iter->client_ip();
 
 	const std::shared_ptr<game> g = iter->get_game();
 	bool game_ended = false;
@@ -1997,7 +1994,7 @@ void server::remove_player(player_iterator iter)
 	if(user_handler_) {
 		user_handler_->db_update_logout(iter->info().get_login_id());
 	} else {
-		connection_log ip_name { iter->info().name(), ip, {} };
+		const connection_log ip_name{iter->info().name(), ip, {}};
 
 		auto i = std::find(ip_log_.begin(), ip_log_.end(), ip_name);
 		if(i != ip_log_.end()) {
@@ -2068,7 +2065,7 @@ std::string server::process_command(std::string query, std::string issuer_name)
 		// (Mostly used for communication with IRC.)
 		auto issuer_end = std::find(query.begin(), query.end(), ':');
 
-		std::string issuer(query.begin() + 1, issuer_end);
+		const std::string issuer(query.begin() + 1, issuer_end);
 		if(!issuer.empty()) {
 			issuer_name = "+" + issuer + "+";
 			query = std::string(issuer_end + 1, query.end());
@@ -2263,7 +2260,7 @@ void server::roll_handler(const std::string& issuer_name,
 		return;
 	}
 	std::uniform_int_distribution<int> dice_distro(1, N);
-	std::string value = std::to_string(dice_distro(die_));
+	const std::string value = std::to_string(dice_distro(die_));
 
 	*out << "You rolled a die [1 - " + parameters + "] and got a " + value + ".";
 
@@ -2537,7 +2534,7 @@ void server::bans_handler(const std::string& /*issuer_name*/,
 		} else if(utf8::lowercase(parameters) == "deleted") {
 			ban_manager_.list_deleted_bans(*out);
 		} else if(utf8::lowercase(parameters).find("deleted") == 0) {
-			std::string mask = parameters.substr(7);
+			const std::string mask = parameters.substr(7);
 			ban_manager_.list_deleted_bans(*out, boost::trim_copy(mask));
 		} else {
 			boost::trim(parameters);
@@ -2584,7 +2581,7 @@ void server::ban_handler(
 		return;
 	}
 
-	std::string dummy_group;
+	const std::string dummy_group;
 
 	// if we find a '.' consider it an ip mask
 	/** @todo  FIXME: make a proper check for valid IPs. */
@@ -2646,7 +2643,7 @@ void server::kickban_handler(
 		return;
 	}
 
-	std::string dummy_group;
+	const std::string dummy_group;
 	std::vector<player_iterator> users_to_kick;
 
 	// if we find a '.' consider it an ip mask
@@ -2703,7 +2700,7 @@ void server::gban_handler(
 	auto second_space = std::find(first_space + 1, parameters.end(), ' ');
 	const std::string target(parameters.begin(), first_space);
 
-	std::string group = std::string(first_space + 1, second_space);
+	const std::string group = std::string(first_space + 1, second_space);
 	first_space = second_space;
 	second_space = std::find(first_space + 1, parameters.end(), ' ');
 
@@ -2938,7 +2935,7 @@ void server::stopgame(const std::string& /*issuer_name*/,
 	auto player = player_connections_.get<name_t>().find(nick);
 
 	if(player != player_connections_.get<name_t>().end()){
-		std::shared_ptr<game> g = player->get_game();
+		const std::shared_ptr<game> g = player->get_game();
 		if(g){
 			*out << "Player '" << nick << "' is in game with id '" << g->id() << ", " << g->db_id() << "' named '" << g->name() << "'.  Ending game for reason: '" << reason << "'...";
 			delete_game(g->id(), reason);
@@ -2982,7 +2979,7 @@ void server::delete_game(int gameid, const std::string& reason)
 	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 
 	for(const auto& it : range_vctor) {
-		player_iterator p { player_connections_.project<0>(it) };
+		const player_iterator p{player_connections_.project<0>(it)};
 		if(reason != "") {
 			simple_wml::document leave_game_doc_reason("[leave_game]\n[/leave_game]\n", simple_wml::INIT_STATIC);
 			leave_game_doc_reason.child("leave_game")->set_attr_dup("reason", reason.c_str());
@@ -3058,7 +3055,7 @@ int main(int argc, char** argv)
 			}
 
 			while(p != std::string::npos) {
-				std::size_t q = val.find(',', p + 1);
+				const std::size_t q = val.find(',', p + 1);
 				s = val.substr(p + 1, q == std::string::npos ? q : q - (p + 1));
 
 				if(!lg::set_log_domain_severity(s, severity)) {

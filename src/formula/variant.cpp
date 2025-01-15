@@ -405,7 +405,7 @@ variant variant::operator*(const variant& v) const
 variant variant::operator/(const variant& v) const
 {
 	if(is_decimal() || v.is_decimal()) {
-		int denominator = v.as_decimal();
+		const int denominator = v.as_decimal();
 
 		if(denominator == 0) {
 			throw type_error("decimal divide by zero error");
@@ -461,8 +461,7 @@ variant variant::operator%(const variant& v) const
 variant variant::operator^(const variant& v) const
 {
 	if(is_decimal() || v.is_decimal()) {
-
-		double res = std::pow(as_decimal() / 1000.0 , v.as_decimal() / 1000.0);
+		const double res = std::pow(as_decimal() / 1000.0, v.as_decimal() / 1000.0);
 
 		if(std::isnan(res)) {
 			return variant();
@@ -576,7 +575,7 @@ variant variant::concatenate(const variant& v) const
 		return variant(res);
 	} else if(is_string()) {
 		v.must_be(formula_variant::type::string);
-		std::string res = as_string() + v.as_string();
+		const std::string res = as_string() + v.as_string();
 		return variant(res);
 	}
 
@@ -671,7 +670,7 @@ variant variant::execute_variant(const variant& var)
 		}
 
 		if(auto action = vars.top().try_convert<action_callable>()) {
-			variant res = action->execute_self(*this);
+			const variant res = action->execute_self(*this);
 			if(res.is_int() && res.as_bool()) {
 				made_moves.push_back(vars.top());
 			}

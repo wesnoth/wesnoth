@@ -169,7 +169,7 @@ combat_slice::combat_slice(const summary_t& src_summary, unsigned num_strikes)
 */
 unsigned hp_for_next_attack(unsigned cur_hp, const battle_context_unit_stats& stats)
 {
-	unsigned old_strikes = stats.calc_blows(cur_hp);
+	const unsigned old_strikes = stats.calc_blows(cur_hp);
 
 	// A formula would have to deal with rounding issues; instead
 	// loop until we find more strikes.
@@ -206,7 +206,7 @@ std::vector<combat_slice> split_summary(
 		cur_end = hp_for_next_attack(cur_begin, unit_stats);
 
 		// Add this slice.
-		combat_slice slice(summary, cur_begin, cur_end, unit_stats.calc_blows(cur_begin));
+		const combat_slice slice(summary, cur_begin, cur_end, unit_stats.calc_blows(cur_begin));
 		if(slice.prob != 0.0) {
 			result.push_back(slice);
 			debug(("\t%2u-%2u hp; strikes: %u; probability: %6.2f\n", cur_begin, cur_end, slice.strikes,
@@ -457,7 +457,7 @@ void prob_matrix::initialize_plane(unsigned plane,
 		const std::vector<double>& b_initial)
 {
 	if(!a_initial.empty()) {
-		unsigned row_count = std::min<unsigned>(a_initial.size(), rows_);
+		const unsigned row_count = std::min<unsigned>(a_initial.size(), rows_);
 		// The probabilities for each row are contained in a_initial.
 		for(unsigned row = 0; row < row_count; ++row) {
 			if(a_initial[row] != 0.0) {
@@ -485,7 +485,7 @@ void prob_matrix::initialize_row(
 		unsigned plane, unsigned row, double row_prob, unsigned b_cur, const std::vector<double>& b_initial)
 {
 	if(!b_initial.empty()) {
-		unsigned col_count = std::min<unsigned>(b_initial.size(), cols_);
+		const unsigned col_count = std::min<unsigned>(b_initial.size(), cols_);
 		// The probabilities for each column are contained in b_initial.
 		for(unsigned col = 0; col < col_count; ++col) {
 			if(b_initial[col] != 0.0) {
@@ -528,7 +528,7 @@ void prob_matrix::xfer(unsigned dst_plane,
 {
 	double& src = val(src_plane, row_src, col_src);
 	if(src != 0.0) {
-		double diff = src * prob;
+		const double diff = src * prob;
 		src -= diff;
 
 		double& dst = val(dst_plane, row_dst, col_dst);
@@ -627,8 +627,8 @@ void prob_matrix::shift_cols_in_row(unsigned dst,
 		int drain_percent)
 {
 	// Some conversions to (signed) int.
-	int row_i = static_cast<int>(row);
-	int max_row = static_cast<int>(rows_) - 1;
+	const int row_i = static_cast<int>(row);
+	const int max_row = static_cast<int>(rows_) - 1;
 
 	// cols[0] is excluded since that should be 0, representing already dead.
 	unsigned col_x = 1;
@@ -637,14 +637,14 @@ void prob_matrix::shift_cols_in_row(unsigned dst,
 	for(; col_x < cols.size() && cols[col_x] < damage; ++col_x) {
 		// These variables are not strictly necessary, but they make the
 		// calculation easier to parse.
-		int col_i = static_cast<int>(cols[col_x]);
-		int drain_amount = col_i * drain_percent / 100 + drain_constant;
-		unsigned newrow = std::clamp(row_i + drain_amount, 1, max_row);
+		const int col_i = static_cast<int>(cols[col_x]);
+		const int drain_amount = col_i * drain_percent / 100 + drain_constant;
+		const unsigned newrow = std::clamp(row_i + drain_amount, 1, max_row);
 		xfer(dst, src, newrow, 0, row, cols[col_x], prob);
 	}
 
 	// The remaining columns use the specified drainmax.
-	unsigned newrow = std::clamp(row_i + drainmax, 1, max_row);
+	const unsigned newrow = std::clamp(row_i + drainmax, 1, max_row);
 	for(; col_x < cols.size(); ++col_x) {
 		xfer(dst, src, newrow, cols[col_x] - damage, row, cols[col_x], prob);
 	}
@@ -659,7 +659,7 @@ void prob_matrix::shift_cols_in_row(unsigned dst,
 void prob_matrix::shift_cols(
 		unsigned dst, unsigned src, unsigned damage, double prob, int drain_constant, int drain_percent)
 {
-	int drainmax = (drain_percent * (static_cast<signed>(damage)) / 100 + drain_constant);
+	const int drainmax = (drain_percent * (static_cast<signed>(damage)) / 100 + drain_constant);
 
 	if(drain_constant || drain_percent) {
 		debug(("Drains %i (%i%% of %u plus %i)\n", drainmax, drain_percent, damage, drain_constant));
@@ -700,8 +700,8 @@ void prob_matrix::shift_rows_in_col(unsigned dst,
 		int drain_percent)
 {
 	// Some conversions to (signed) int.
-	int col_i = static_cast<int>(col);
-	int max_col = static_cast<int>(cols_) - 1;
+	const int col_i = static_cast<int>(col);
+	const int max_col = static_cast<int>(cols_) - 1;
 
 	// rows[0] is excluded since that should be 0, representing already dead.
 	unsigned row_x = 1;
@@ -710,14 +710,14 @@ void prob_matrix::shift_rows_in_col(unsigned dst,
 	for(; row_x < rows.size() && rows[row_x] < damage; ++row_x) {
 		// These variables are not strictly necessary, but they make the
 		// calculation easier to parse.
-		int row_i = static_cast<int>(rows[row_x]);
-		int drain_amount = row_i * drain_percent / 100 + drain_constant;
-		unsigned newcol = std::clamp(col_i + drain_amount, 1, max_col);
+		const int row_i = static_cast<int>(rows[row_x]);
+		const int drain_amount = row_i * drain_percent / 100 + drain_constant;
+		const unsigned newcol = std::clamp(col_i + drain_amount, 1, max_col);
 		xfer(dst, src, 0, newcol, rows[row_x], col, prob);
 	}
 
 	// The remaining rows use the specified drainmax.
-	unsigned newcol = std::clamp(col_i + drainmax, 1, max_col);
+	const unsigned newcol = std::clamp(col_i + drainmax, 1, max_col);
 	for(; row_x < rows.size(); ++row_x) {
 		xfer(dst, src, rows[row_x] - damage, newcol, rows[row_x], col, prob);
 	}
@@ -732,7 +732,7 @@ void prob_matrix::shift_rows_in_col(unsigned dst,
 void prob_matrix::shift_rows(
 		unsigned dst, unsigned src, unsigned damage, double prob, int drain_constant, int drain_percent)
 {
-	int drainmax = (drain_percent * (static_cast<signed>(damage)) / 100 + drain_constant);
+	const int drainmax = (drain_percent * (static_cast<signed>(damage)) / 100 + drain_constant);
 
 	if(drain_constant || drain_percent) {
 		debug(("Drains %i (%i%% of %u plus %i)\n", drainmax, drain_percent, damage, drain_constant));
@@ -885,7 +885,7 @@ void prob_matrix::record_monte_carlo_result(unsigned int a_hp, unsigned int b_hp
 {
 	assert(a_hp <= rows_);
 	assert(b_hp <= cols_);
-	unsigned int plane = plane_index(a_slowed, b_slowed);
+	const unsigned int plane = plane_index(a_slowed, b_slowed);
 	++val(plane, a_hp, b_hp);
 	used_rows_[plane].insert(a_hp);
 	used_cols_[plane].insert(b_hp);
@@ -933,7 +933,7 @@ double prob_matrix::row_sum(unsigned plane, unsigned row) const
 	}
 
 	double sum = 0.0;
-	for(unsigned col : used_cols_[plane]) {
+	for(const unsigned col : used_cols_[plane]) {
 		sum += val(plane, row, col);
 	}
 	return sum;
@@ -949,7 +949,7 @@ double prob_matrix::col_sum(unsigned plane, unsigned column) const
 	}
 
 	double sum = 0.0;
-	for(unsigned row : used_rows_[plane]) {
+	for(const unsigned row : used_rows_[plane]) {
 		sum += val(plane, row, column);
 	}
 	return sum;
@@ -1123,7 +1123,7 @@ void combat_matrix::remove_petrify_distortion_a(unsigned damage, unsigned slow_d
 		}
 
 		// A is slow in planes 1 and 3.
-		unsigned actual_damage = (p & 1) ? slow_damage : damage;
+		const unsigned actual_damage = (p & 1) ? slow_damage : damage;
 		if(b_hp > actual_damage) {
 			// B was actually petrified, not killed.
 			move_column(p, p, b_hp - actual_damage, 0);
@@ -1139,7 +1139,7 @@ void combat_matrix::remove_petrify_distortion_b(unsigned damage, unsigned slow_d
 		}
 
 		// B is slow in planes 2 and 3.
-		unsigned actual_damage = (p & 2) ? slow_damage : damage;
+		const unsigned actual_damage = (p & 2) ? slow_damage : damage;
 		if(a_hp > actual_damage) {
 			// A was actually petrified, not killed.
 			move_row(p, p, a_hp - actual_damage, 0);
@@ -1303,10 +1303,10 @@ void probability_combat_matrix::receive_blow_b(double hit_chance)
 		}
 
 		// If A slows us, we go from 0=>2, 1=>3, 2=>2 3=>3.
-		int dst = a_slows_ ? src | 2 : src;
+		const int dst = a_slows_ ? src | 2 : src;
 
 		// A is slow in planes 1 and 3.
-		unsigned damage = (src & 1) ? a_slow_damage_ : a_damage_;
+		const unsigned damage = (src & 1) ? a_slow_damage_ : a_damage_;
 
 		shift_cols(dst, src, damage, hit_chance, a_drain_constant_, a_drain_percent_);
 	}
@@ -1324,10 +1324,10 @@ void probability_combat_matrix::receive_blow_a(double hit_chance)
 		}
 
 		// If B slows us, we go from 0=>1, 1=>1, 2=>3 3=>3.
-		int dst = b_slows_ ? src | 1 : src;
+		const int dst = b_slows_ ? src | 1 : src;
 
 		// B is slow in planes 2 and 3.
-		unsigned damage = (src & 2) ? b_slow_damage_ : b_damage_;
+		const unsigned damage = (src & 2) ? b_slow_damage_ : b_damage_;
 
 		shift_rows(dst, src, damage, hit_chance, b_drain_constant_, b_drain_percent_);
 	}
@@ -1354,9 +1354,9 @@ void probability_combat_matrix::extract_results(
 		}
 
 		// A is slow in planes 1 and 3.
-		unsigned dst_a = (p & 1) ? 1u : 0u;
+		const unsigned dst_a = (p & 1) ? 1u : 0u;
 		// B is slow in planes 2 and 3.
-		unsigned dst_b = (p & 2) ? 1u : 0u;
+		const unsigned dst_b = (p & 2) ? 1u : 0u;
 		sum(p, summary_a[dst_a], summary_b[dst_b]);
 	}
 }
@@ -1498,8 +1498,8 @@ void monte_carlo_combat_matrix::simulate()
 		// Thus the index returned by get_random_element corresponds directly to an amount of hp.
 		auto a_hp = static_cast<unsigned int>(rng.get_random_element(a_initial.begin(), a_initial.end()));
 		auto b_hp = static_cast<unsigned int>(rng.get_random_element(b_initial.begin(), b_initial.end()));
-		unsigned int a_strikes = calc_blows_a(a_hp);
-		unsigned int b_strikes = calc_blows_b(b_hp);
+		const unsigned int a_strikes = calc_blows_a(a_hp);
+		const unsigned int b_strikes = calc_blows_b(b_hp);
 
 		for(unsigned int j = 0u; j < rounds_ && a_hp > 0u && b_hp > 0u; ++j) {
 			for(unsigned int k = 0u; k < std::max(a_strikes, b_strikes); ++k) {
@@ -1511,7 +1511,8 @@ void monte_carlo_combat_matrix::simulate()
 						b_hit = true;
 						b_slowed |= a_slows_;
 
-						int drain_amount = (a_drain_percent_ * static_cast<signed>(damage) / 100 + a_drain_constant_);
+						const int drain_amount
+							= (a_drain_percent_ * static_cast<signed>(damage) / 100 + a_drain_constant_);
 						a_hp = std::clamp(a_hp + drain_amount, 1u, a_max_hp_);
 
 						b_hp -= damage;
@@ -1531,7 +1532,8 @@ void monte_carlo_combat_matrix::simulate()
 						a_hit = true;
 						a_slowed |= b_slows_;
 
-						int drain_amount = (b_drain_percent_ * static_cast<signed>(damage) / 100 + b_drain_constant_);
+						const int drain_amount
+							= (b_drain_percent_ * static_cast<signed>(damage) / 100 + b_drain_constant_);
 						b_hp = std::clamp(b_hp + drain_amount, 1u, b_max_hp_);
 
 						a_hp -= damage;
@@ -1577,9 +1579,9 @@ void monte_carlo_combat_matrix::extract_results(
 		}
 
 		// A is slow in planes 1 and 3.
-		unsigned dst_a = (p & 1) ? 1u : 0u;
+		const unsigned dst_a = (p & 1) ? 1u : 0u;
 		// B is slow in planes 2 and 3.
-		unsigned dst_b = (p & 2) ? 1u : 0u;
+		const unsigned dst_b = (p & 2) ? 1u : 0u;
 		sum(p, summary_a[dst_a], summary_b[dst_b]);
 	}
 
@@ -1893,8 +1895,8 @@ void no_death_fight(const battle_context_unit_stats& stats,
 
 		for(unsigned int i = 0; i < strikes; ++i) {
 			for(int j = i; j >= 0; j--) {
-				unsigned src_index = opp_stats.hp - j * stats.damage;
-				double move = opp_hp_dist[src_index] * hit_chance;
+				const unsigned src_index = opp_stats.hp - j * stats.damage;
+				const double move = opp_hp_dist[src_index] * hit_chance;
 				opp_hp_dist[src_index] -= move;
 				opp_hp_dist[src_index - stats.damage] += move;
 			}
@@ -1905,7 +1907,7 @@ void no_death_fight(const battle_context_unit_stats& stats,
 		// HP could be spread anywhere, iterate through whole thing.
 		for(unsigned int i = 0; i < strikes; ++i) {
 			for(unsigned int j = stats.damage; j < opp_hp_dist.size(); ++j) {
-				double move = opp_hp_dist[j] * hit_chance;
+				const double move = opp_hp_dist[j] * hit_chance;
 				opp_hp_dist[j] -= move;
 				opp_hp_dist[j - stats.damage] += move;
 			}
@@ -1924,8 +1926,8 @@ void no_death_fight(const battle_context_unit_stats& stats,
 		hp_dist[stats.hp] = 1.0;
 		for(unsigned int i = 0; i < opp_strikes; ++i) {
 			for(int j = i; j >= 0; j--) {
-				unsigned src_index = stats.hp - j * opp_stats.damage;
-				double move = hp_dist[src_index] * opp_hit_chance;
+				const unsigned src_index = stats.hp - j * opp_stats.damage;
+				const double move = hp_dist[src_index] * opp_hit_chance;
 				hp_dist[src_index] -= move;
 				hp_dist[src_index - opp_stats.damage] += move;
 			}
@@ -1936,7 +1938,7 @@ void no_death_fight(const battle_context_unit_stats& stats,
 		// HP could be spread anywhere, iterate through whole thing.
 		for(unsigned int i = 0; i < opp_strikes; ++i) {
 			for(unsigned int j = opp_stats.damage; j < hp_dist.size(); ++j) {
-				double move = hp_dist[j] * opp_hit_chance;
+				const double move = hp_dist[j] * opp_hit_chance;
 				hp_dist[j] -= move;
 				hp_dist[j - opp_stats.damage] += move;
 			}
@@ -1990,7 +1992,7 @@ void one_strike_fight(const battle_context_unit_stats& stats,
 	} else {
 		if(strikes == 1) {
 			for(unsigned int i = 1; i < opp_hp_dist.size(); ++i) {
-				double move = opp_hp_dist[i] * hit_chance;
+				const double move = opp_hp_dist[i] * hit_chance;
 				opp_hp_dist[i] -= move;
 				opp_hp_dist[std::max<int>(i - stats.damage, 0)] += move;
 			}
@@ -2015,7 +2017,7 @@ void one_strike_fight(const battle_context_unit_stats& stats,
 	} else {
 		if(opp_strikes == 1) {
 			for(unsigned int i = 1; i < hp_dist.size(); ++i) {
-				double move = hp_dist[i] * opp_hit_chance;
+				const double move = hp_dist[i] * opp_hit_chance;
 				hp_dist[i] -= move;
 				hp_dist[std::max<int>(i - opp_stats.damage, 0)] += move;
 			}
@@ -2059,7 +2061,7 @@ void complex_fight(attack_prediction_mode mode,
 		double opp_initially_slowed_chance)
 {
 	unsigned int rounds = std::max<unsigned int>(stats.rounds, opp_stats.rounds);
-	unsigned max_attacks = std::max(strikes, opp_strikes);
+	const unsigned max_attacks = std::max(strikes, opp_strikes);
 
 	debug(("A gets %u attacks, B %u.\n", strikes, opp_strikes));
 
@@ -2115,28 +2117,30 @@ void complex_fight(attack_prediction_mode mode,
 			for(unsigned int i = 0; i < max_attacks; ++i) {
 				if(i < strikes) {
 					debug(("A strikes\n"));
-					double b_already_dead = pm->dead_prob_b();
+					const double b_already_dead = pm->dead_prob_b();
 					pm->receive_blow_b(hit_chance);
 					pm->dump();
 
-					double first_hit = hit_chance * opp_hit_unknown;
+					const double first_hit = hit_chance * opp_hit_unknown;
 					opp_hit += first_hit;
 					opp_hit_unknown -= first_hit;
-					double both_were_alive = 1.0 - b_already_dead - pm->dead_prob_a();
-					double this_hit_killed_b = both_were_alive != 0.0 ? (pm->dead_prob_b() - b_already_dead) / both_were_alive : 1.0;
+					const double both_were_alive = 1.0 - b_already_dead - pm->dead_prob_a();
+					const double this_hit_killed_b
+						= both_were_alive != 0.0 ? (pm->dead_prob_b() - b_already_dead) / both_were_alive : 1.0;
 					self_hit_unknown *= (1.0 - this_hit_killed_b);
 				}
 				if(i < opp_strikes) {
 					debug(("B strikes\n"));
-					double a_already_dead = pm->dead_prob_a();
+					const double a_already_dead = pm->dead_prob_a();
 					pm->receive_blow_a(opp_hit_chance);
 					pm->dump();
 
-					double first_hit = opp_hit_chance * self_hit_unknown;
+					const double first_hit = opp_hit_chance * self_hit_unknown;
 					self_hit += first_hit;
 					self_hit_unknown -= first_hit;
-					double both_were_alive = 1.0 - a_already_dead - pm->dead_prob_b();
-					double this_hit_killed_a = both_were_alive != 0.0 ? (pm->dead_prob_a() - a_already_dead) / both_were_alive : 1.0;
+					const double both_were_alive = 1.0 - a_already_dead - pm->dead_prob_b();
+					const double this_hit_killed_a
+						= both_were_alive != 0.0 ? (pm->dead_prob_a() - a_already_dead) / both_were_alive : 1.0;
 					opp_hit_unknown *= (1.0 - this_hit_killed_a);
 				}
 			}
@@ -2158,13 +2162,15 @@ void complex_fight(attack_prediction_mode mode,
 			 * with simple addition.
 			 * Instead, just fetch the probability from the combat matrix.
 			 */
-			unsigned int plane = plane_index(stats, opp_stats);
-			double not_hit = pm->col_sum(plane, opp_stats.hp) + ((plane & 1) ? 0.0 : pm->col_sum(plane | 1, opp_stats.hp));
+			const unsigned int plane = plane_index(stats, opp_stats);
+			const double not_hit
+				= pm->col_sum(plane, opp_stats.hp) + ((plane & 1) ? 0.0 : pm->col_sum(plane | 1, opp_stats.hp));
 			opp_not_hit = original_opp_not_hit * not_hit;
 		}
 		if(opp_stats.slows) {
-			unsigned int plane = plane_index(stats, opp_stats);
-			double not_hit = pm->row_sum(plane, stats.hp) + ((plane & 2) ? 0.0 : pm->row_sum(plane | 2, stats.hp));
+			const unsigned int plane = plane_index(stats, opp_stats);
+			const double not_hit
+				= pm->row_sum(plane, stats.hp) + ((plane & 2) ? 0.0 : pm->row_sum(plane | 2, stats.hp));
 			self_not_hit = original_self_not_hit * not_hit;
 		}
 
@@ -2355,8 +2361,8 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	double opp_not_hit = 1.0;
 
 	// The probability of being already dead before the fight begins:
-	double self_already_dead = hp_dist[0];
-	double opp_already_dead = opponent.hp_dist[0];
+	const double self_already_dead = hp_dist[0];
+	const double opp_already_dead = opponent.hp_dist[0];
 
 	// If incoming slow probabilities are extremely close to 0 or 1, round them to exactly 0 or 1 (bug #3321)
 	round_prob_if_close_to_sure(slowed);
@@ -2367,8 +2373,8 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	const std::vector<combat_slice> split = split_summary(u_, summary);
 	const std::vector<combat_slice> opp_split = split_summary(opponent.u_, opponent.summary);
 
-	bool use_monte_carlo_simulation =
-		fight_complexity(split.size(), opp_split.size(), u_, opponent.u_) > MONTE_CARLO_SIMULATION_THRESHOLD
+	const bool use_monte_carlo_simulation
+		= fight_complexity(split.size(), opp_split.size(), u_, opponent.u_) > MONTE_CARLO_SIMULATION_THRESHOLD
 		&& prefs::get().damage_prediction_allow_monte_carlo_simulation();
 
 	if(use_monte_carlo_simulation) {
@@ -2464,8 +2470,8 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	}
 
 	// Chance that we / they were touched this time.
-	double touched = 1.0 - self_not_hit;
-	double opp_touched = 1.0 - opp_not_hit;
+	const double touched = 1.0 - self_not_hit;
+	const double opp_touched = 1.0 - opp_not_hit;
 
 	poisoned = calculate_probability_of_debuff(poisoned, opponent.u_.poisons, touched, 1.0 - hp_dist[0],
 		u_.experience + game_config::kill_xp(opponent.u_.level) >= u_.max_experience, opponent.hp_dist[0] - opp_already_dead);

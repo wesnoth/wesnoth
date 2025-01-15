@@ -65,8 +65,8 @@ statistics_attack_context::statistics_attack_context(
 
 statistics_attack_context::~statistics_attack_context()
 {
-	std::string attacker_key = "s" + attacker_res;
-	std::string defender_key = "s" + defender_res;
+	const std::string attacker_key = "s" + attacker_res;
+	const std::string defender_key = "s" + defender_res;
 
 	attacker_stats().attacks_inflicted[chance_to_hit_defender][attacker_key]++;
 	defender_stats().defends_inflicted[chance_to_hit_attacker][defender_key]++;
@@ -87,8 +87,8 @@ statistics_attack_context::stats& statistics_attack_context::defender_stats()
 
 void statistics_attack_context::attack_expected_damage(double attacker_inflict_, double defender_inflict_)
 {
-	int attacker_inflict = std::round(attacker_inflict_ * stats::decimal_shift);
-	int defender_inflict = std::round(defender_inflict_ * stats::decimal_shift);
+	const int attacker_inflict = std::round(attacker_inflict_ * stats::decimal_shift);
+	const int defender_inflict = std::round(defender_inflict_ * stats::decimal_shift);
 	stats &att_stats = attacker_stats(), &def_stats = defender_stats();
 	att_stats.expected_damage_inflicted += attacker_inflict;
 	att_stats.expected_damage_taken += defender_inflict;

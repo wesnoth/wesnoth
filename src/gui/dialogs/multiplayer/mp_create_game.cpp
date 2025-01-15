@@ -183,7 +183,7 @@ void mp_create_game::pre_show()
 	// Set up game types menu_button
 	//
 	std::vector<config> game_types;
-	for(level_type_info& type_info : level_types_) {
+	for(const level_type_info& type_info : level_types_) {
 		game_types.emplace_back("label", type_info.second);
 	}
 
@@ -620,7 +620,7 @@ void mp_create_game::display_games_of_type(level_type::type type, const std::str
 		on_filter_change<slider>("num_players", false);
 		on_filter_change<text_box>("game_filter", false);
 
-		int level_index = create_engine_.find_level_by_id(level).second;
+		const int level_index = create_engine_.find_level_by_id(level).second;
 		if(level_index >= 0 && std::size_t(level_index) < list.get_item_count()) {
 			list.select_row(level_index);
 		}
@@ -818,7 +818,7 @@ void mp_create_game::set_active_mods(const std::vector<std::string>& val)
 {
 	std::set<std::string> val2(val.begin(), val.end());
 	int i = 0;
-	std::set<std::string> res;
+	const std::set<std::string> res;
 	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
 		mod_list_->get_row_grid(i)->find_widget<toggle_button>("mod_active_state").set_value_bool(val2.find(mod->id) != val2.end());
 		++i;
@@ -959,7 +959,8 @@ void mp_create_game::post_show()
 		config_engine_->set_oos_debug(strict_sync_->get_widget_value());
 		config_engine_->set_shuffle_sides(shuffle_sides_->get_widget_value());
 
-		random_faction_mode::type type = random_faction_mode::get_enum(selected_rfm_index_).value_or(random_faction_mode::type::independent);
+		const random_faction_mode::type type
+			= random_faction_mode::get_enum(selected_rfm_index_).value_or(random_faction_mode::type::independent);
 		config_engine_->set_random_faction_mode(type);
 
 		// Since we don't have a field handling this option, we need to save the value manually

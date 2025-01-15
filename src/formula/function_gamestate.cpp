@@ -49,7 +49,7 @@ DEFINE_WFL_FUNCTION(locations_in_radius, 2, 2)
 {
 	const map_location loc = args()[0]->evaluate(variables, fdb).convert_to<location_callable>()->loc();
 
-	int range = args()[1]->evaluate(variables, fdb).as_int();
+	const int range = args()[1]->evaluate(variables, fdb).as_int();
 
 	if(range < 0) {
 		return variant();
@@ -90,7 +90,7 @@ DEFINE_WFL_FUNCTION(get_unit_type, 1, 1)
 
 DEFINE_WFL_FUNCTION(unit_at, 1, 1)
 {
-	variant loc_var = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "unit_at:location"));
+	const variant loc_var = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "unit_at:location"));
 	if(loc_var.is_null()) {
 		return variant();
 	}
@@ -105,8 +105,8 @@ DEFINE_WFL_FUNCTION(unit_at, 1, 1)
 
 DEFINE_WFL_FUNCTION(defense_on, 2, 2)
 {
-	variant u = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "defense_on:unit"));
-	variant loc_var = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "defense_on:location"));
+	const variant u = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "defense_on:unit"));
+	const variant loc_var = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "defense_on:location"));
 	if(u.is_null() || loc_var.is_null()) {
 		return variant();
 	}
@@ -154,8 +154,8 @@ DEFINE_WFL_FUNCTION(defense_on, 2, 2)
 
 DEFINE_WFL_FUNCTION(chance_to_hit, 2, 2)
 {
-	variant u = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "chance_to_hit:unit"));
-	variant loc_var = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "chance_to_hit:location"));
+	const variant u = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "chance_to_hit:unit"));
+	const variant loc_var = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "chance_to_hit:location"));
 	if(u.is_null() || loc_var.is_null()) {
 		return variant();
 	}
@@ -203,8 +203,8 @@ DEFINE_WFL_FUNCTION(chance_to_hit, 2, 2)
 
 DEFINE_WFL_FUNCTION(movement_cost, 2, 2)
 {
-	variant u = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "movement_cost:unit"));
-	variant loc_var = args()[1]->evaluate(variables, add_debug_info(fdb, 0, "movement_cost:location"));
+	const variant u = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "movement_cost:unit"));
+	const variant loc_var = args()[1]->evaluate(variables, add_debug_info(fdb, 0, "movement_cost:location"));
 	if(u.is_null() || loc_var.is_null()) {
 		return variant();
 	}
@@ -252,8 +252,8 @@ DEFINE_WFL_FUNCTION(movement_cost, 2, 2)
 
 DEFINE_WFL_FUNCTION(vision_cost, 2, 2)
 {
-	variant u = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "vision_cost:unit"));
-	variant loc_var = args()[1]->evaluate(variables, add_debug_info(fdb, 0, "vision_cost:location"));
+	const variant u = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "vision_cost:unit"));
+	const variant loc_var = args()[1]->evaluate(variables, add_debug_info(fdb, 0, "vision_cost:location"));
 	if(u.is_null() || loc_var.is_null()) {
 		return variant();
 	}
@@ -301,8 +301,8 @@ DEFINE_WFL_FUNCTION(vision_cost, 2, 2)
 
 DEFINE_WFL_FUNCTION(jamming_cost, 2, 2)
 {
-	variant u = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "jamming_cost:unit"));
-	variant loc_var = args()[1]->evaluate(variables, add_debug_info(fdb, 0, "jamming_cost:location"));
+	const variant u = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "jamming_cost:unit"));
+	const variant loc_var = args()[1]->evaluate(variables, add_debug_info(fdb, 0, "jamming_cost:location"));
 	if(u.is_null() || loc_var.is_null()) {
 		return variant();
 	}
@@ -350,8 +350,8 @@ DEFINE_WFL_FUNCTION(jamming_cost, 2, 2)
 
 DEFINE_WFL_FUNCTION(enemy_of, 2, 2)
 {
-	variant self_v = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "enemy_of:self"));
-	variant other_v = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "enemy_of:other"));
+	const variant self_v = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "enemy_of:self"));
+	const variant other_v = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "enemy_of:other"));
 	int self, other;
 
 	if(auto uc = self_v.try_convert<unit_callable>()) {
@@ -370,7 +370,7 @@ DEFINE_WFL_FUNCTION(enemy_of, 2, 2)
 		other = other_v.as_int();
 	}
 
-	int num_teams = resources::gameboard->teams().size();
+	const int num_teams = resources::gameboard->teams().size();
 	if(self < 1 || self > num_teams || other < 1 || other > num_teams) {
 		return variant(0);
 	}
@@ -379,13 +379,15 @@ DEFINE_WFL_FUNCTION(enemy_of, 2, 2)
 
 DEFINE_WFL_FUNCTION(resistance_on, 3, 4)
 {
-	variant u = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "resistance_on:unit"));
-	variant loc_var = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "resistance_on:location"));
+	const variant u = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "resistance_on:unit"));
+	const variant loc_var = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "resistance_on:location"));
 	if(u.is_null() || loc_var.is_null()) {
 		return variant();
 	}
-	std::string type = args()[2]->evaluate(variables, add_debug_info(fdb, 2, "resistance_on:type")).as_string();
-	bool attacker = args().size() > 3 ? args()[3]->evaluate(variables, add_debug_info(fdb, 3, "resistance_on:attacker")).as_bool() : false;
+	const std::string type = args()[2]->evaluate(variables, add_debug_info(fdb, 2, "resistance_on:type")).as_string();
+	const bool attacker = args().size() > 3
+		? args()[3]->evaluate(variables, add_debug_info(fdb, 3, "resistance_on:attacker")).as_bool()
+		: false;
 	const map_location& loc = loc_var.convert_to<location_callable>()->loc();
 
 	if(auto u_call = u.try_convert<unit_callable>()) {
@@ -402,13 +404,13 @@ DEFINE_WFL_FUNCTION(tod_bonus, 0, 2)
 	map_location loc;
 	int turn = resources::controller->turn();
 	if(args().size() > 0) {
-		variant loc_arg = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "tod_bonus:loc"));
+		const variant loc_arg = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "tod_bonus:loc"));
 		if(auto p = loc_arg.try_convert<location_callable>()) {
 			loc = p->loc();
 		} else return variant();
 
 		if(args().size() > 1) {
-			variant turn_arg = args()[1]->evaluate(variables, add_debug_info(fdb, 0, "tod_bonus:turn"));
+			const variant turn_arg = args()[1]->evaluate(variables, add_debug_info(fdb, 0, "tod_bonus:turn"));
 			if(turn_arg.is_int()) {
 				turn = turn_arg.as_int();
 			} else if(!turn_arg.is_null()) {
@@ -416,7 +418,10 @@ DEFINE_WFL_FUNCTION(tod_bonus, 0, 2)
 			}
 		}
 	}
-	int bonus = resources::tod_manager->get_illuminated_time_of_day(resources::gameboard->units(), resources::gameboard->map(), loc, turn).lawful_bonus;
+	const int bonus
+		= resources::tod_manager
+			  ->get_illuminated_time_of_day(resources::gameboard->units(), resources::gameboard->map(), loc, turn)
+			  .lawful_bonus;
 	return variant(bonus);
 }
 
@@ -425,13 +430,13 @@ DEFINE_WFL_FUNCTION(base_tod_bonus, 0, 2)
 	map_location loc;
 	int turn = resources::controller->turn();
 	if(args().size() > 0) {
-		variant loc_arg = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "tod_bonus:loc"));
+		const variant loc_arg = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "tod_bonus:loc"));
 		if(auto p = loc_arg.try_convert<location_callable>()) {
 			loc = p->loc();
 		} else return variant();
 
 		if(args().size() > 1) {
-			variant turn_arg = args()[1]->evaluate(variables, add_debug_info(fdb, 0, "tod_bonus:turn"));
+			const variant turn_arg = args()[1]->evaluate(variables, add_debug_info(fdb, 0, "tod_bonus:turn"));
 			if(turn_arg.is_int()) {
 				turn = turn_arg.as_int();
 			} else if(!turn_arg.is_null()) {
@@ -439,7 +444,7 @@ DEFINE_WFL_FUNCTION(base_tod_bonus, 0, 2)
 			}
 		}
 	}
-	int bonus = resources::tod_manager->get_time_of_day(loc, turn).lawful_bonus;
+	const int bonus = resources::tod_manager->get_time_of_day(loc, turn).lawful_bonus;
 	return variant(bonus);
 }
 

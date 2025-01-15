@@ -87,7 +87,7 @@ void invalidate_region(const rect& region)
 			return;
 		}
 		// maybe merge with another rect
-		rect m = r.minimal_cover(region);
+		const rect m = r.minimal_cover(region);
 		if (m.area() <= r.area() + region.area()) {
 			// This won't always be the best,
 			// but it also won't ever be the worst.
@@ -230,7 +230,7 @@ static bool expose()
 	bool drawn = false;
 next:
 	while (!invalidated_regions_.empty()) {
-		rect r = invalidated_regions_.back();
+		const rect r = invalidated_regions_.back();
 		invalidated_regions_.pop_back();
 		// check if this will be superceded by or should be merged with another
 		for (auto& other : invalidated_regions_) {
@@ -240,7 +240,7 @@ next:
 				//STREAMING_LOG << "-";
 				goto next;
 			}
-			rect m = other.minimal_cover(r);
+			const rect m = other.minimal_cover(r);
 			if (m.area() <= r.area() + other.area()) {
 				DBG_DM << "merging inefficient draws " << r;
 				//STREAMING_LOG << "=";
@@ -253,7 +253,7 @@ next:
 		auto clipper = draw::override_clip(r);
 		for (auto tld : top_level_drawables_) {
 			if (!tld) { continue; }
-			rect i = r.intersect(tld->screen_location());
+			const rect i = r.intersect(tld->screen_location());
 			if (i.empty()) {
 				//DBG_DM << "  skip " << static_cast<void*>(tld);
 				//STREAMING_LOG << "x";

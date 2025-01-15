@@ -169,7 +169,7 @@ void wml_menu_item::fire_event(const map_location& event_hex, const game_data& d
 {
 	if(!this->is_synced()) {
 		// It is possible to for example show a help menu during a [delay] of a synced event.
-		set_scontext_unsynced leave_synced_context;
+		const set_scontext_unsynced leave_synced_context;
 		assert(resources::game_events != nullptr);
 		resources::game_events->pump().fire(event_name_, event_hex);
 		return;

@@ -53,8 +53,8 @@ namespace builtin_conditions {
 		if(!resources::gameboard) {
 			return false;
 		}
-		std::vector<std::pair<int,int>> counts = cfg.has_attribute("count")
-			? utils::parse_ranges_unsigned(cfg["count"]) : default_counts;
+		const std::vector<std::pair<int, int>> counts
+			= cfg.has_attribute("count") ? utils::parse_ranges_unsigned(cfg["count"]) : default_counts;
 		int match_count = 0;
 		const unit_filter ufilt(cfg);
 		for(const unit &i : resources::gameboard->units()) {
@@ -75,7 +75,7 @@ namespace builtin_conditions {
 					if(counts == default_counts && match_count) {
 						break;
 					}
-					scoped_recall_unit auto_store("this_unit", team.save_id_or_number(), t);
+					const scoped_recall_unit auto_store("this_unit", team.save_id_or_number(), t);
 					if(ufilt(*team.recall_list()[t])) {
 						++match_count;
 					}
@@ -90,8 +90,8 @@ namespace builtin_conditions {
 		std::set<map_location> res;
 		terrain_filter(cfg, resources::filter_con, false).get_locations(res);
 
-		std::vector<std::pair<int,int>> counts = cfg.has_attribute("count")
-		? utils::parse_ranges_unsigned(cfg["count"]) : default_counts;
+		const std::vector<std::pair<int, int>> counts
+			= cfg.has_attribute("count") ? utils::parse_ranges_unsigned(cfg["count"]) : default_counts;
 		return in_ranges<int>(res.size(), counts);
 	}
 
@@ -103,7 +103,7 @@ namespace builtin_conditions {
 			return true;
 		}
 		const std::string name = values["name"];
-		config::attribute_value value = resources::gamedata->get_variable_const(name);
+		const config::attribute_value value = resources::gamedata->get_variable_const(name);
 
 		if(auto n = values.get_config().attribute_count(); n > 2) {
 			lg::log_to_chat() << "[variable] name='" << name << "' found with multiple comparison attributes\n";
@@ -116,8 +116,8 @@ namespace builtin_conditions {
 #define TEST_STR_ATTR(name, test) \
 		do { \
 			if (values.has_attribute(name)) { \
-				std::string attr_str = values[name].str(); \
-				std::string str_value = value.str(); \
+				const std::string attr_str = values[name].str(); \
+				const std::string str_value = value.str(); \
 				return (test); \
 			} \
 		} while (0)
@@ -125,8 +125,8 @@ namespace builtin_conditions {
 #define TEST_NUM_ATTR(name, test) \
 		do { \
 			if (values.has_attribute(name)) { \
-				double attr_num = values[name].to_double(); \
-				double num_value = value.to_double(); \
+				const double attr_num = values[name].to_double(); \
+				const double num_value = value.to_double(); \
 				return (test); \
 			} \
 		} while (0)
@@ -134,8 +134,8 @@ namespace builtin_conditions {
 #define TEST_BOL_ATTR(name, test) \
 		do { \
 			if (values.has_attribute(name)) { \
-				bool attr_bool = values[name].to_bool(); \
-				bool bool_value = value.to_bool(); \
+				const bool attr_bool = values[name].to_bool(); \
+				const bool bool_value = value.to_bool(); \
 				return (test); \
 			} \
 		} while (0)

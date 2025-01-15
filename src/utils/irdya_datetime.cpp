@@ -25,7 +25,7 @@ irdya_date irdya_date::read_date(const std::string& date)
 	irdya_date date_result;
 
 	// Currently only supports a year and an epoch.
-	std::size_t year_start = date.find_first_not_of(' ');
+	const std::size_t year_start = date.find_first_not_of(' ');
 	if(year_start == std::string::npos) {
 		// throw std::invalid_argument("Irdya date is missing year");
 		date_result.year = 0;
@@ -39,11 +39,11 @@ irdya_date irdya_date::read_date(const std::string& date)
 
 	date_result.year = std::stoi(date.substr(year_start, year_end - year_start));
 
-	std::size_t epoch_start = date.find_first_not_of(' ', year_end);
+	const std::size_t epoch_start = date.find_first_not_of(' ', year_end);
 	if(epoch_start == std::string::npos) {
 		date_result.epoch = wesnoth_epoch::type::wesnoth;
 	} else {
-		std::size_t epoch_end = date.find_first_of(' ', epoch_start);
+		const std::size_t epoch_end = date.find_first_of(' ', epoch_start);
 		date_result.epoch = wesnoth_epoch::get_enum(date.substr(epoch_start, epoch_end - epoch_start)).value_or(wesnoth_epoch::type::wesnoth);
 	}
 
@@ -52,7 +52,7 @@ irdya_date irdya_date::read_date(const std::string& date)
 
 std::string irdya_date::to_string() const
 {
-	utils::string_map args {{"year", std::to_string(year)}};
+	const utils::string_map args{{"year", std::to_string(year)}};
 
 	switch(epoch) {
 	case wesnoth_epoch::type::before_wesnoth:
