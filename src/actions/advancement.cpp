@@ -295,9 +295,13 @@ void advance_unit_at(const advance_unit_params& params)
 		const int side_for = resources::gamedata->has_current_player() ? 0 : u->side();
 		config selected = mp_sync::get_user_choice("choose",
 			unit_advancement_choice(params.loc_, unit_helper::number_of_possible_advances(*u), u->side(), params.force_dialog_), side_for);
-		//calls actions::advance_unit.
-		const bool result = animate_unit_advancement(
-			params.loc_, selected["value"].to_size_t(), params.fire_events_, params.animate_);
+		// Clang-format performs an incorrect linebreak before the first param
+		// instead of immediately after.
+		// clang-format off
+		// calls actions::advance_unit.
+		const bool result = animate_unit_advancement(params.loc_,
+			selected["value"].to_size_t(), params.fire_events_, params.animate_);
+		// clang-format on
 
 		DBG_NG << "animate_unit_advancement result = " << result;
 		u = resources::gameboard->units().find(params.loc_);
