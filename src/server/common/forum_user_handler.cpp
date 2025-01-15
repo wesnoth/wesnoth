@@ -145,22 +145,29 @@ void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
 
 fuh::ban_info fuh::user_is_banned(const std::string& name, const std::string& addr)
 {
-	ban_check b = conn_.get_ban_info(name, addr);
-	switch(b.get_ban_type())
+	config b = conn_.get_ban_info(name, addr);
+
+	std::chrono::seconds ban_duration(0);
+	if(b["ban_end"].to_unsigned() != 0) {
+		auto time_remaining = chrono::parse_timestamp(b["ban_end"].to_unsigned()) - std::chrono::system_clock::now();
+		ban_duration = std::chrono::duration_cast<std::chrono::seconds>(time_remaining);
+	}
+
+	switch(b["ban_type"].to_int())
 	{
 		case BAN_NONE:
 			return {};
 		case BAN_IP:
 			LOG_UH << "User '" << name << "' ip " << addr << " banned by IP address";
-			return { BAN_IP, b.get_ban_duration() };
+			return { BAN_IP, ban_duration };
 		case BAN_USER:
-			LOG_UH << "User '" << name << "' uid " << b.get_user_id() << " banned by uid";
-			return { BAN_USER, b.get_ban_duration() };
+			LOG_UH << "User '" << name << "' uid " << b["user_id"].str() << " banned by uid";
+			return { BAN_USER, ban_duration };
 		case BAN_EMAIL:
-			LOG_UH << "User '" << name << "' email " << b.get_email() << " banned by email address";
-			return { BAN_EMAIL, b.get_ban_duration() };
+			LOG_UH << "User '" << name << "' email " << b["email"].str() << " banned by email address";
+			return { BAN_EMAIL, ban_duration };
 		default:
-			ERR_UH << "Invalid ban type '" << b.get_ban_type() << "' returned for user '" << name << "'";
+			ERR_UH << "Invalid ban type '" << b["ban_type"].to_int() << "' returned for user '" << name << "'";
 			return {};
 	}
 }
