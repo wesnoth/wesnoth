@@ -103,7 +103,7 @@ std::string dbconn::get_tournaments()
 		return "";
 	}
 
-	auto cfg_result = [](const mariadb::result_set_ref& rslt) -> config {
+	auto cfg_result = [](const mariadb::result_set_ref& rslt) {
 		config c;
 
 		while(rslt->next()) {
@@ -135,7 +135,7 @@ std::string dbconn::get_tournaments()
 
 std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, int offset, std::string search_game_name, int search_content_type, std::string search_content)
 {
-	auto cfg_result = [](const mariadb::result_set_ref& rslt) -> config {
+	auto cfg_result = [](const mariadb::result_set_ref& rslt) {
 		config c;
 
 		while(rslt->next())
@@ -392,7 +392,7 @@ bool dbconn::is_user_in_groups(const std::string& name, const std::vector<int>& 
 config dbconn::get_ban_info(const std::string& name, const std::string& ip)
 {
 	// selected ban_type value must be part of user_handler::BAN_TYPE
-	auto cfg_result = [](const mariadb::result_set_ref& rslt) -> config {
+	auto cfg_result = [](const mariadb::result_set_ref& rslt) {
 		config c;
 
 		if(rslt->next()) {
@@ -679,7 +679,7 @@ bool dbconn::do_any_authors_exist(const std::string& instance_version, const std
 }
 
 config dbconn::get_addon_downloads_info(const std::string& instance_version, const std::string& id) {
-	auto cfg_result = [](const mariadb::result_set_ref& rslt) -> config {
+	auto cfg_result = [](const mariadb::result_set_ref& rslt) {
 		config c;
 
 		while(rslt->next()) {
@@ -706,7 +706,7 @@ config dbconn::get_addon_downloads_info(const std::string& instance_version, con
 }
 
 config dbconn::get_forum_auth_usage(const std::string& instance_version) {
-	auto cfg_result = [](const mariadb::result_set_ref& rslt) -> config {
+	auto cfg_result = [](const mariadb::result_set_ref& rslt) {
 		config c;
 
 		if(rslt->next()) {
@@ -733,7 +733,7 @@ config dbconn::get_forum_auth_usage(const std::string& instance_version) {
 }
 
 config dbconn::get_addon_admins(int site_admin_group, int forum_admin_group) {
-	auto cfg_result = [](const mariadb::result_set_ref& rslt) -> config {
+	auto cfg_result = [](const mariadb::result_set_ref& rslt) {
 		config c;
 
 		while(rslt->next()) {
@@ -760,10 +760,10 @@ config dbconn::get_addon_admins(int site_admin_group, int forum_admin_group) {
 // handle complex query results
 //
 template <typename F>
-config dbconn::get_complex_results(const mariadb::connection_ref& connection, F* func, const std::string& sql, const sql_parameters& params)
+config dbconn::get_complex_results(const mariadb::connection_ref& connection, F* handler, const std::string& sql, const sql_parameters& params)
 {
 	mariadb::result_set_ref rslt = select(connection, sql, params);
-	config c = (*func)(rslt);
+	config c = (*handler)(rslt);
 	return c;
 }
 //

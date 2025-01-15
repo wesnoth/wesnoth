@@ -308,18 +308,14 @@ private:
 	mariadb::connection_ref create_connection();
 
 	/**
-	 * Queries can return data with various types that can't be easily fit into a pre-determined structure.
-	 * Therefore for queries that can return multiple rows with multiple columns, a class that extends @ref rs_base
-	 * handles reading the results.
-	 *
 	 * @param connection The database connection that will be used to execute the query.
-	 * @param F The lambda that will handle reading the results into a config.
+	 * @param handler The lambda that will handle reading the results into a config.
 	 * @param sql The SQL text to be executed.
 	 * @param params The parameterized values to be inserted into the query.
 	 */
 	template <typename F>
 	config get_complex_results(
-		const mariadb::connection_ref& connection, F* func, const std::string& sql, const sql_parameters& params);
+		const mariadb::connection_ref& connection, F* handler, const std::string& sql, const sql_parameters& params);
 
 	/**
 	 * @param connection The database connection that will be used to execute the query.
