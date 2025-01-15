@@ -66,10 +66,6 @@
 		460D89B824DC7863000B1ABC /* fs_commit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D89B024DC7862000B1ABC /* fs_commit.cpp */; };
 		460D89B924DC7863000B1ABC /* blacklist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D89B424DC7862000B1ABC /* blacklist.cpp */; };
 		460D89BB24DC945F000B1ABC /* apple_video.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46A72F3C24D6F6B30033B5A9 /* apple_video.mm */; };
-		460D89C224DC95DD000B1ABC /* ban_check.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D89BE24DC95DC000B1ABC /* ban_check.cpp */; };
-		460D89C324DC95DD000B1ABC /* ban_check.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D89BE24DC95DC000B1ABC /* ban_check.cpp */; };
-		460D89C424DC95DD000B1ABC /* tournaments.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D89BF24DC95DC000B1ABC /* tournaments.cpp */; };
-		460D89C524DC95DD000B1ABC /* tournaments.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D89BF24DC95DC000B1ABC /* tournaments.cpp */; };
 		46181DCF2119F73A00908BC2 /* apple_battery_info.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46181DCE2119F73A00908BC2 /* apple_battery_info.mm */; };
 		46181DD22119F74D00908BC2 /* battery_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46181DD12119F74C00908BC2 /* battery_info.cpp */; };
 		461CE967205C3A8700E6E98F /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
@@ -174,8 +170,6 @@
 		4685124C24AE1A0B005B6EB1 /* game_config_view.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685124824AE1535005B6EB1 /* game_config_view.cpp */; };
 		4685124D24AE1A15005B6EB1 /* game_config_view.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685124824AE1535005B6EB1 /* game_config_view.cpp */; };
 		4685A5FB25B4501E006FD3A1 /* match_history.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685A5F925B4501E006FD3A1 /* match_history.cpp */; };
-		4685A60225B45064006FD3A1 /* game_history.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685A60025B45064006FD3A1 /* game_history.cpp */; };
-		4685A60325B45064006FD3A1 /* game_history.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685A60025B45064006FD3A1 /* game_history.cpp */; };
 		468A5B93258CD3B5004A80EF /* libboost_chrono-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B85258CD3B4004A80EF /* libboost_chrono-mt.dylib */; };
 		468A5B94258CD3B5004A80EF /* libboost_context-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B86258CD3B4004A80EF /* libboost_context-mt.dylib */; };
 		468A5B95258CD3B5004A80EF /* libboost_prg_exec_monitor-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B87258CD3B4004A80EF /* libboost_prg_exec_monitor-mt.dylib */; };
@@ -1646,11 +1640,6 @@
 		460D89B324DC7862000B1ABC /* blacklist.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = blacklist.hpp; path = ../../src/server/campaignd/blacklist.hpp; sourceTree = SOURCE_ROOT; };
 		460D89B424DC7862000B1ABC /* blacklist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = blacklist.cpp; path = ../../src/server/campaignd/blacklist.cpp; sourceTree = SOURCE_ROOT; };
 		460D89B524DC7862000B1ABC /* addon_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = addon_utils.hpp; path = ../../src/server/campaignd/addon_utils.hpp; sourceTree = SOURCE_ROOT; };
-		460D89BD24DC95DB000B1ABC /* rs_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = rs_base.hpp; path = ../../src/server/common/resultsets/rs_base.hpp; sourceTree = SOURCE_ROOT; };
-		460D89BE24DC95DC000B1ABC /* ban_check.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ban_check.cpp; path = ../../src/server/common/resultsets/ban_check.cpp; sourceTree = SOURCE_ROOT; };
-		460D89BF24DC95DC000B1ABC /* tournaments.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tournaments.cpp; path = ../../src/server/common/resultsets/tournaments.cpp; sourceTree = SOURCE_ROOT; };
-		460D89C024DC95DC000B1ABC /* ban_check.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ban_check.hpp; path = ../../src/server/common/resultsets/ban_check.hpp; sourceTree = SOURCE_ROOT; };
-		460D89C124DC95DC000B1ABC /* tournaments.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = tournaments.hpp; path = ../../src/server/common/resultsets/tournaments.hpp; sourceTree = SOURCE_ROOT; };
 		46181DCD2119F73A00908BC2 /* apple_battery_info.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = apple_battery_info.hpp; path = ../../src/desktop/apple_battery_info.hpp; sourceTree = "<group>"; };
 		46181DCE2119F73A00908BC2 /* apple_battery_info.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = apple_battery_info.mm; path = ../../src/desktop/apple_battery_info.mm; sourceTree = "<group>"; };
 		46181DD02119F74C00908BC2 /* battery_info.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = battery_info.hpp; sourceTree = "<group>"; };
@@ -1709,8 +1698,6 @@
 		4685124924AE1535005B6EB1 /* game_config_view.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_config_view.hpp; sourceTree = "<group>"; };
 		4685A5F925B4501E006FD3A1 /* match_history.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = match_history.cpp; sourceTree = "<group>"; };
 		4685A5FA25B4501E006FD3A1 /* match_history.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = match_history.hpp; sourceTree = "<group>"; };
-		4685A60025B45064006FD3A1 /* game_history.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_history.cpp; sourceTree = "<group>"; };
-		4685A60125B45064006FD3A1 /* game_history.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_history.hpp; sourceTree = "<group>"; };
 		4685E3702417F9BF00CB1ED8 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../../data; sourceTree = "<group>"; };
 		468A5B85258CD3B4004A80EF /* libboost_chrono-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_chrono-mt.dylib"; path = "lib/libboost_chrono-mt.dylib"; sourceTree = "<group>"; };
 		468A5B86258CD3B4004A80EF /* libboost_context-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_context-mt.dylib"; path = "lib/libboost_context-mt.dylib"; sourceTree = "<group>"; };
@@ -3644,7 +3631,6 @@
 				460D899624DC7842000B1ABC /* dbconn.hpp */,
 				460D899324DC7842000B1ABC /* forum_user_handler.cpp */,
 				460D898D24DC7841000B1ABC /* forum_user_handler.hpp */,
-				460D89BC24DC95A2000B1ABC /* resultsets */,
 				460D899824DC7842000B1ABC /* server_base.cpp */,
 				460D899724DC7842000B1ABC /* server_base.hpp */,
 				460D899524DC7842000B1ABC /* simple_wml.cpp */,
@@ -3652,20 +3638,6 @@
 				460D899124DC7842000B1ABC /* user_handler.hpp */,
 			);
 			path = common;
-			sourceTree = "<group>";
-		};
-		460D89BC24DC95A2000B1ABC /* resultsets */ = {
-			isa = PBXGroup;
-			children = (
-				460D89BE24DC95DC000B1ABC /* ban_check.cpp */,
-				460D89C024DC95DC000B1ABC /* ban_check.hpp */,
-				4685A60025B45064006FD3A1 /* game_history.cpp */,
-				4685A60125B45064006FD3A1 /* game_history.hpp */,
-				460D89BD24DC95DB000B1ABC /* rs_base.hpp */,
-				460D89BF24DC95DC000B1ABC /* tournaments.cpp */,
-				460D89C124DC95DC000B1ABC /* tournaments.hpp */,
-			);
-			path = resultsets;
 			sourceTree = "<group>";
 		};
 		46685C7F219D518A0009CFFE /* schema */ = {
@@ -6051,12 +6023,9 @@
 				464F7FDA25937D74006AB37B /* server_base.cpp in Sources */,
 				46CAC4CE29BF23CC004763BE /* mt_rng.cpp in Sources */,
 				91C548E01D886E2C00FE6A7B /* tstring.cpp in Sources */,
-				460D89C524DC95DD000B1ABC /* tournaments.cpp in Sources */,
 				460D89B624DC7863000B1ABC /* addon_utils.cpp in Sources */,
-				460D89C324DC95DD000B1ABC /* ban_check.cpp in Sources */,
 				91C548F01D88703300FE6A7B /* validation.cpp in Sources */,
 				46F57085205FCE48007031BF /* crypt_blowfish.c in Sources */,
-				4685A60325B45064006FD3A1 /* game_history.cpp in Sources */,
 				91C548F41D8870C700FE6A7B /* game_version.cpp in Sources */,
 				460D899E24DC7843000B1ABC /* forum_user_handler.cpp in Sources */,
 				915C68F21DF1F5C600594B07 /* color.cpp in Sources */,
@@ -6661,12 +6630,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				460D89C424DC95DD000B1ABC /* tournaments.cpp in Sources */,
 				EC0341E21ECF4712000F2E2B /* config_attribute_value.cpp in Sources */,
-				460D89C224DC95DD000B1ABC /* ban_check.cpp in Sources */,
 				460D898824DC7831000B1ABC /* player_connection.cpp in Sources */,
 				B5BB6C820F89437400444FBF /* color_range.cpp in Sources */,
-				4685A60225B45064006FD3A1 /* game_history.cpp in Sources */,
 				460D898624DC7831000B1ABC /* game.cpp in Sources */,
 				B5BB6C860F8943F600444FBF /* config_cache.cpp in Sources */,
 				46685CA1219D52DB0009CFFE /* parser.cpp in Sources */,
