@@ -283,7 +283,11 @@ static int impl_add_animation(lua_State* L)
 	std::string which = luaL_checkstring(L, 3);
 	unit_ptr up = luaW_checkunit_ptr(L, 2, false);
 	unit& u = *up;
+	// Possible TODO: change movement support to movement-like animations support (like cheering and moving)
+	// But only changes of tag expected in this case.
 	unit_ptr move_unit_p = (which == "movement") ? up : nullptr;
+	bool use_lockstep = false;
+	bool coherence = false;
 
 	std::string hits_str = luaL_checkstring(L, 4);
 	strike_result::type hits = strike_result::get_enum(hits_str).value_or(strike_result::type::invalid);
@@ -300,12 +304,28 @@ static int impl_add_animation(lua_State* L)
 		bool use_target = !lua_isnoneornil(L, -1);
 		lua_getfield(L, 5, "facing");
 		bool use_facing = !lua_isnoneornil(L, -1);
+		lua_getfield(L, 5, "lockstep");
+		lua_getfield(L, 5, "coherence");
 		if(use_facing && use_target) {
 			return luaL_argerror(L, 5, "Target location and facing direction can't be used together");
 		}
-		if(use_facing && move_unit_p != nullptr) {
-			return luaL_argerror(L, 5, "Facing shouldn't be specified for movement animations");
+		if(move_unit_p != nullptr) {
+			if(use_facing) {
+				return luaL_argerror(L, 5, "Facing shouldn't be specified for movement animations");
+			}
+			if(!lua_isnoneornil(L, -2)) {
+				use_lockstep = luaW_toboolean(L, -2);
+				LOG_LUA << "read lockstep " << use_lockstep;
+			}
+			if(!lua_isnoneornil(L, -1)) {
+				coherence = luaW_toboolean(L, -1);
+			} else {
+				coherence = true;
+			}
+		} else if(!lua_isnoneornil(L, -2) || !lua_isnoneornil(L, -1)) {
+			return luaL_argerror(L, 5, "lockstep or coherence status shouldn't be specified for non-movement animations");
 		}
+		lua_pop(L, 2);
 		bool use_anything = true;
 		if(use_target) {
 			lua_pop(L, 1);
@@ -317,7 +337,7 @@ static int impl_add_animation(lua_State* L)
 		if(use_anything) {
 			if(luaW_tolocation(L, -1, dest)) {
 				if(move_unit_p) {
-					if(dest == anim.get_unit_last_movement_animation_dst(move_unit_p)) {
+					if(dest == anim.get_unit_last_move_anim_dst(move_unit_p)) {
 						return luaL_argerror(L, 5,
 							"Given target location for movement animation must be different from last destination of "
 							"the animated unit");
@@ -412,7 +432,7 @@ static int impl_add_animation(lua_State* L)
 	}
 	//u.set_facing(u.get_location().get_relative_dir(dest));
 	anim.add_animation(
-		up, which, u.get_location(), dest, v1, bars, text, color, hits, primary, secondary, v2, true, move_unit_p);
+		up, which, u.get_location(), dest, v1, bars, text, color, hits, primary, secondary, v2, true, move_unit_p, use_lockstep, coherence);
 	return 0;
 }
 

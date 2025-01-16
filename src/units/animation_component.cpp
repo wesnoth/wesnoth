@@ -55,7 +55,7 @@ const unit_animation* unit_animation_component::choose_animation(const map_locat
 	const_attack_ptr attack,
 	const_attack_ptr second_attack,
 	int swing_num,
-	bool from_lua)
+	bool need_process)
 {
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
@@ -66,19 +66,19 @@ const unit_animation* unit_animation_component::choose_animation(const map_locat
 		int matching = anim.matches(loc,second_loc,u_.shared_from_this(),event,value,hit,attack,second_attack,swing_num);
 		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
 			// when event is "movement", also need to provent it from overriding by start_anim in animation.cpp
-			if (from_lua || event == "movement"){
+			if (need_process || event == "movement"){
 				LOG_LUA << "now dst in choose_anim upper changed from " << anim.get_dst() << " to " << second_loc;
 				anim.update_parameters(loc, second_loc);
-				anim.update_fromlua(from_lua || event == "movement");
+				anim.update_needproc(need_process || event == "movement");
 			}
 			options.push_back(&anim);
 		} else if(matching > max_val) {
 			max_val = matching;
 			options.clear();
-			if (from_lua || event == "movement"){
+			if (need_process || event == "movement"){
 				LOG_LUA << "now dst in choose_anim lower changed from " << anim.get_dst() << " to " << second_loc;
 				anim.update_parameters(loc, second_loc);
-				anim.update_fromlua(from_lua || event == "movement");
+				anim.update_needproc(need_process || event == "movement");
 			}
 			options.push_back(&anim);
 		}

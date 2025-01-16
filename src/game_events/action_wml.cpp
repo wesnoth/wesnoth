@@ -374,7 +374,7 @@ WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 		unit_display::move_unit(path, dummy_unit.get_unit_ptr(), true, map_location::direction::indeterminate, force_scroll);
 	}
 }
-
+//mark move_unit`s`_fake wml impl
 WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 {
 	set_scontext_unsynced leave_synced_context;
@@ -384,7 +384,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 	const bool force_scroll = cfg["force_scroll"].to_bool();
 	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
 	std::size_t num_units = unit_cfgs.size();
-	std::vector<fake_unit_ptr > units;
+	std::vector<fake_unit_ptr> units;
 	units.reserve(num_units);
 	std::vector<std::vector<map_location>> paths;
 	paths.reserve(num_units);

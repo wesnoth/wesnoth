@@ -806,8 +806,6 @@ bool luaW_todirection(lua_State *L, int index, map_location::direction& dir) {
 		return false;
 	}
 
-	vconfig dummy_vcfg = vconfig::unconstructed_vconfig();
-
 	index = lua_absindex(L, index);
 
 	if(luaL_checkstring(L, index)) {

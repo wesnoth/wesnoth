@@ -89,8 +89,8 @@ public:
 		, const bool accelerate = true);
 
 	void update_parameters(const map_location& src, const map_location& dst);
-	void update_fromlua(bool from_lua);
-	bool is_fromlua() const;
+	void update_needproc(bool from_lua);
+	bool need_process() const;
 	inline const map_location& get_dst() const {const map_location& _temp = dst_; return _temp;}
 	void pause_animation();
 	void restart_animation();
@@ -185,7 +185,7 @@ private:
 	// optimization
 	bool invalidated_;
 	bool play_offscreen_;
-	bool from_lua_ = false;
+	bool need_process_ = false;
 	std::set<map_location> overlaped_hex_;
 };
 
@@ -212,10 +212,14 @@ public:
 		, const_attack_ptr second_attack = nullptr
 		, int value2 = 0
 		, bool fromlua = false
-		, unit_ptr move_unit_p = nullptr);
+		, unit_ptr move_unit_p = nullptr
+		, bool use_lockstep = false
+		, bool coherence = false);
 
 	//mark impl this similar to what in add_animation
-	void unit_animator::move_unit_fake_queue(int& index_movement_anim);
+	bool unit_animator::move_unit_fake(int& index_movement_anim);
+	bool unit_animator::move_units_fake(int& index, const int& size);
+	void unit_animator::move_units_fake_queue(int& index_movement_anim);
 
 	/** has_animation : return an boolean value if animated unit present and have animation specified, used for verify prensence of [leading_anim] or [resistance_anim] for playability of [teaching_anim]
 	 * @return True if the  @a animated_unit is present and have animation.
@@ -239,7 +243,7 @@ public:
 		, const_attack_ptr second_attack = nullptr
 		, int value2 = 0) const;
 
-	const map_location& get_unit_last_movement_animation_dst(unit_const_ptr ucp) const;
+	const map_location& get_unit_last_move_anim_dst(unit_const_ptr ucp) const;
 
 	void replace_anim_if_invalid(unit_const_ptr animated_unit
 		, const std::string& event
@@ -287,8 +291,12 @@ private:
 		map_location::direction changed_facing = map_location::direction::indeterminate;
 		unit_ptr move_up = nullptr;
 		bool is_movement = false;
+		// Serial number is generated automatically and should not be assigned manually.
+		int serial_no = -1;
+		bool coherence = false;
 	};
 
+	int last_movement_serino = 0;
 	std::vector<anim_elem> animated_units_;
 	std::chrono::milliseconds start_time_ = std::chrono::milliseconds::min();
 };

@@ -74,7 +74,7 @@ public:
 		const_attack_ptr attack = nullptr,
 		const_attack_ptr second_attack = nullptr,
 		int swing_num = 0,
-		bool from_lua = false);
+		bool need_process = false);
 
 	/** Sets the animation state to standing. */
 	void set_standing(bool with_bars = true);
