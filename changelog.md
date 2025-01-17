@@ -9,7 +9,7 @@
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, Czech, Finnish, Hungarian
+   * Updated translations: Bengali, British English, Czech, Dutch, Finnish, Hungarian
 ### Units
 ### User interface
    * The Modern theme has been renamed to Celes and received design updates to the titlescreen and common UI controls. The Default theme has been renamed to Parchment.
