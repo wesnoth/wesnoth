@@ -70,8 +70,7 @@ public:
 
 		uint32_t format;
 		int access;
-		int w;
-		int h;
+		point size;
 	};
 
 	/** Queries metadata about the texture, such as its dimensions. */
@@ -86,8 +85,7 @@ public:
 	/** The texture access mode. Equivalent to get_info().access. */
 	int get_access() const;
 
-	/** The raw internal texture size.
-	  * Equivalent to point{get_info().w, get_info().h} */
+	/** The raw internal texture size. Equivalent to get_info().size. */
 	point get_raw_size() const;
 
 
@@ -100,18 +98,18 @@ public:
 	 *
 	 * This will usually be the real texture width in pixels, but may
 	 * differ in some situations. For high-DPI text, for example,
-	 * it will usually be equal to get_info().w / pixel_scale.
+	 * it will usually be equal to get_info().size.x / pixel_scale.
 	 */
-	int w() const { return w_; }
+	int w() const { return size_.x; }
 
 	/**
 	 * The draw-space height of the texture, in pixels.
 	 *
 	 * This will usually be the real texture height in pixels, but may
 	 * differ in some situations. For high-DPI text, for example,
-	 * it will usually be equal to get_info().h / pixel_scale.
+	 * it will usually be equal to get_info().size.y / pixel_scale.
 	 */
-	int h() const { return h_; }
+	int h() const { return size_.y; }
 
 	/**
 	 * The size of the texture in draw-space.
@@ -119,17 +117,17 @@ public:
 	 * This may differ from the raw texture size. To get that in stead,
 	 * use get_info() or get_raw_size().
 	 */
-	point draw_size() const { return {w_, h_}; }
+	point draw_size() const { return size_; }
 
 	/** Set the intended width of the texture, in draw-space. */
-	void set_draw_width(int w) { w_ = w; }
+	void set_draw_width(int w) { size_.x = w; }
 
 	/** Set the intended height of the texture, in draw-space. */
-	void set_draw_height(int h) { h_ = h; }
+	void set_draw_height(int h) { size_.y = h; }
 
 	/** Set the intended size of the texture, in draw-space. */
-	void set_draw_size(int w, int h) { w_ = w; h_ = h; }
-	void set_draw_size(const point& p);
+	void set_draw_size(int w, int h) { size_ = {w, h}; }
+	void set_draw_size(const point& size) { size_ = size; }
 
 
 	/*****************/
@@ -176,12 +174,12 @@ public:
 	uint8_t get_alpha_mod() const;
 
 	/** Blend mode. Modifies how draw operations are applied. */
-	void set_blend_mode(SDL_BlendMode);
+	void set_blend_mode(SDL_BlendMode mode);
 	SDL_BlendMode get_blend_mode() const;
 
 	/** Colour modifier. Multiplies each colour component when drawing. */
 	void set_color_mod(uint8_t r, uint8_t g, uint8_t b);
-	void set_color_mod(color_t);
+	void set_color_mod(const color_t& c);
 	color_t get_color_mod() const;
 
 	/** Releases ownership of the managed texture and resets the ptr to null. */
@@ -212,8 +210,7 @@ private:
 	void finalize();
 
 	std::shared_ptr<SDL_Texture> texture_ = nullptr;
-	int w_ = 0;
-	int h_ = 0;
+	point size_{0, 0};
 	bool has_src_ = false; /**< true iff the source rect is valid */
 	rect src_; /**< uninitialized by default. */
 };
