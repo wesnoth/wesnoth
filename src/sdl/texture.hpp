@@ -126,7 +126,7 @@ public:
 	void set_draw_height(int h) { size_.y = h; }
 
 	/** Set the intended size of the texture, in draw-space. */
-	void set_draw_size(int w, int h) { size_ = point(w, h); }
+	void set_draw_size(int w, int h) { size_ = {w, h}; }
 	void set_draw_size(const point& size) { size_ = size; }
 
 
