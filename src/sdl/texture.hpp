@@ -179,7 +179,7 @@ public:
 
 	/** Colour modifier. Multiplies each colour component when drawing. */
 	void set_color_mod(uint8_t r, uint8_t g, uint8_t b);
-	void set_color_mod(color_t& c);
+	void set_color_mod(const color_t& c);
 	color_t get_color_mod() const;
 
 	/** Releases ownership of the managed texture and resets the ptr to null. */

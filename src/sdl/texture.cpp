@@ -142,7 +142,7 @@ uint8_t texture::get_alpha_mod() const
 	return a;
 }
 
-void texture::set_color_mod(color_t& c)
+void texture::set_color_mod(const color_t& c)
 {
 	set_color_mod(c.r, c.g, c.b);
 }
