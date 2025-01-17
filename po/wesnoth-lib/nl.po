@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-28 12:38-0500\n"
-"PO-Revision-Date: 2023-02-14 17:45+0100\n"
+"PO-Revision-Date: 2024-03-17 17:34+0100\n"
 "Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -158,10 +158,8 @@ msgstr "Moeras"
 
 #. [terrain_type]: id=sea_kelp
 #: data/core/terrain.cfg:135
-#, fuzzy
-#| msgid "Palm Forest"
 msgid "Kelp Forest"
-msgstr "Palmbos"
+msgstr "Zeewierenbos"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:150
@@ -262,10 +260,8 @@ msgstr "Schone Grijze Keien"
 
 #. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:274
-#, fuzzy
-#| msgid "Beach Sands"
 msgid "Rocky Sands"
-msgstr "Strandzand"
+msgstr "Kiezelstrand"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:284
@@ -436,14 +432,12 @@ msgstr "IJzeren Hek"
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:534
 msgid "Palisade"
-msgstr ""
+msgstr "Palisade"
 
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:535
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Wooden Palisade"
-msgstr "Houten Brug"
+msgstr "Houten Pallisade"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:544
@@ -463,7 +457,7 @@ msgstr "Bloeiende Waterlelies"
 #. [terrain_type]: id=seashells
 #: data/core/terrain.cfg:573
 msgid "Seashells"
-msgstr ""
+msgstr "Zeeschelpen"
 
 #. [terrain_type]: id=detritus_trash
 #: data/core/terrain.cfg:584
@@ -477,10 +471,8 @@ msgstr "Restanten"
 
 #. [terrain_type]: id=wall_windows
 #: data/core/terrain.cfg:603
-#, fuzzy
-#| msgid "Close Window"
 msgid "Window"
-msgstr "Venster sluiten"
+msgstr "Raam"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_snowy
@@ -899,29 +891,27 @@ msgstr "Mijn Rails"
 #. [terrain_type]: id=high_border
 #: data/core/terrain.cfg:1216
 msgid "Bluff"
-msgstr ""
+msgstr "Klif"
 
 #. [terrain_type]: id=high_canyon
 #: data/core/terrain.cfg:1226
 msgid "Gulch"
-msgstr ""
+msgstr "Kloof"
 
 #. [terrain_type]: id=high_canyon_obst
 #: data/core/terrain.cfg:1237
-#, fuzzy
-#| msgid "Unwalkable Overlay"
 msgid "Unwalkable Ravine"
-msgstr "Onbewandelbare Overlay"
+msgstr "Onbegaanbaar Ravijn"
 
 #. [terrain_type]: id=high_border_woods
 #: data/core/terrain.cfg:1250
 msgid "Wooded Bluffs"
-msgstr ""
+msgstr "Houten Kliffen"
 
 #. [terrain_type]: id=high_canyon_woods
 #: data/core/terrain.cfg:1259
 msgid "Wooded Gulch"
-msgstr ""
+msgstr "Houten Kloof"
 
 #. [terrain_type]: id=canyon
 #. [terrain_type]: id=chasm_earthy
@@ -1028,21 +1018,18 @@ msgstr "Natuurlijke Zanderige Grotwand"
 
 #. [terrain_type]: id=cavewall_damaged
 #: data/core/terrain.cfg:1423
-#, fuzzy
-#| msgid "Natural Cave Wall"
 msgid "Damaged Cave Wall"
-msgstr "Naturlijke Grotwand"
+msgstr "Beschadigde Rotsmuur"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1433
 msgid "Thick Hedges"
-msgstr ""
+msgstr "Dichte Heggen"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1434
-#, fuzzy
 msgid "Hedges Wall"
-msgstr "Grotwand"
+msgstr "Hegwand"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
@@ -1107,17 +1094,13 @@ msgstr "Overwoekerde Stenen Muur"
 
 #. [terrain_type]: id=wall_stone_damaged
 #: data/core/terrain.cfg:1552
-#, fuzzy
-#| msgid "Stone Wall"
 msgid "Damaged Stone Wall"
-msgstr "Stenen Muur"
+msgstr "Beschadigde Stenen Muur"
 
 #. [terrain_type]: id=wall_stone_ruins
 #: data/core/terrain.cfg:1562
-#, fuzzy
-#| msgid "Mine Wall"
 msgid "Ruined Wall"
-msgstr "Mijn Grotwand"
+msgstr "Geruïneerde Muur"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -1345,10 +1328,8 @@ msgstr "Drakendorp"
 
 #. [terrain_type]: id=drake_snow_village
 #: data/core/terrain.cfg:2051
-#, fuzzy
-#| msgid "Drake Village"
 msgid "Snowy Drake Village"
-msgstr "Drakendorp"
+msgstr "Besneeuwd Drakendorp"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:2066
@@ -1833,10 +1814,8 @@ msgstr "Normale Stenen Brug"
 #. [terrain_type]: id=snow_stone_bridgediag2
 #: data/core/terrain.cfg:2930 data/core/terrain.cfg:2942
 #: data/core/terrain.cfg:2955
-#, fuzzy
-#| msgid "Basic Stone Bridge"
 msgid "Snowy Stone Bridge"
-msgstr "Normale Stenen Brug"
+msgstr "Besneeuwde Stenen Brug"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
@@ -1873,22 +1852,22 @@ msgstr "Houten Brug"
 #. [terrain_type]: id=mark_high
 #: data/core/terrain.cfg:3140
 msgid "Marker High"
-msgstr ""
+msgstr "Hoge Markering"
 
 #. [terrain_type]: id=mark_high2
 #: data/core/terrain.cfg:3150
 msgid "Marker High 2"
-msgstr ""
+msgstr "Hoge Markering 2"
 
 #. [terrain_type]: id=mark_low
 #: data/core/terrain.cfg:3160
 msgid "Marker Low"
-msgstr ""
+msgstr "Lage Markering"
 
 #. [terrain_type]: id=mark_low2
 #: data/core/terrain.cfg:3170
 msgid "Marker Low 2"
-msgstr ""
+msgstr "Lage Markering 2"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:3182
@@ -1903,7 +1882,7 @@ msgstr "Neppe Kaart Rand"
 #. [terrain_type]: id=overlay_artplaceholder
 #: data/core/terrain.cfg:3202
 msgid "Art Placeholder"
-msgstr ""
+msgstr "Kunst Placeholder"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
@@ -2311,17 +2290,13 @@ msgstr ""
 #: data/core/terrain.cfg:3476 data/core/terrain.cfg:3487
 #: data/core/terrain.cfg:3498 data/core/terrain.cfg:3509
 #: data/core/terrain.cfg:3520
-#, fuzzy
-#| msgid "Game created"
 msgid "Deprecated"
-msgstr "Spel aangemaakt"
+msgstr "Verouderd"
 
 #. [settings]
 #: data/gui/default.cfg:23
-#, fuzzy
-#| msgid " (Press '$hotkey' for more information)"
 msgid " (Press ‘$hotkey’ for more information)"
-msgstr " (Druk '$hotkey' voor meer informatie)"
+msgstr " (Druk op '$hotkey' voor meer informatie)"
 
 #. [button]: id=search
 #: data/gui/macros/_initial.cfg:363 data/gui/window/mp_match_history.cfg:589
@@ -2467,10 +2442,8 @@ msgstr "Profiel"
 #. [grid]
 #: data/gui/window/achievements_dialog.cfg:79
 #: data/gui/window/title_screen.cfg:261 src/hotkey/hotkey_command.cpp:97
-#, fuzzy
-#| msgid "Advancements"
 msgid "Achievements"
-msgstr "Promoties"
+msgstr "Prestaties"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
@@ -2479,10 +2452,8 @@ msgstr "Verifiëer"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:67
-#, fuzzy
-#| msgid "Rename"
 msgid "Username:"
-msgstr "Hernoemen"
+msgstr "Gebruikersnaam:"
 
 #. [label]
 #. [grid]
@@ -2687,10 +2658,8 @@ msgstr "Website:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:521
-#, fuzzy
-#| msgid "ID:"
 msgid "Id:"
-msgstr "ID:"
+msgstr "Id:"
 
 #. [button]: id=delete
 #: data/gui/window/addon_manager.cfg:659
@@ -3014,8 +2983,10 @@ msgstr ""
 #. [button]: id=forums
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/window/community_dialog.cfg:63
+#, fuzzy
+#| msgid "Forum URL"
 msgid "Forums"
-msgstr ""
+msgstr "Forum URL"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
@@ -3230,10 +3201,8 @@ msgstr "Alleen team"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:45
-#, fuzzy
-#| msgid "Add-on Details"
 msgid "Add-on selection"
-msgstr "Add-on Details"
+msgstr "Add-on selectie"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:62
@@ -3242,25 +3211,26 @@ msgid ""
 "New Add-on option is chosen, its ID can be changed via the Change Add-on ID "
 "option."
 msgstr ""
+"Kies een add-on die aan de huidige editorsessie moet worden gekoppeld. Als "
+"de optie Nieuwe add-on wordt gekozen, kan het ID ervan worden gewijzigd via "
+"de optie Add-on-ID wijzigen."
 
 #. [label]: id=existing_addon_id
 #: data/gui/window/editor_choose_addon.cfg:98
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on ID"
-msgstr "Add-ons"
+msgstr "Add-on ID"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:172
-#, fuzzy
-#| msgid "Show ally orb"
 msgid "Show all"
-msgstr "Toon bondgenoot bol"
+msgstr "Toon alle"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/editor_choose_addon.cfg:184
 msgid "Whether to show all installed add-ons or only your add-ons"
 msgstr ""
+"Selecteer of u alle geïnstalleerde add-ons of alleen uw add-ons wilt "
+"weergeven"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:106
@@ -3295,34 +3265,34 @@ msgstr "Zichtbaar in sluier"
 #. [label]: id=title
 #: data/gui/window/editor_edit_pbl.cfg:84
 msgid "Add-on Publishing Setup"
-msgstr ""
+msgstr "Add-on publicatie-instellingen"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
 msgid "The name of the add-on displayed in-game."
-msgstr ""
+msgstr "De naam van de add-on zoals die in het spel wordt weergegeven."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
 msgid "Title:"
-msgstr ""
+msgstr "Titel: "
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:151
 msgid "The description of the add-on to display in the add-ons manager."
 msgstr ""
+"De beschrijving van de add-on zoals die in de add-on manager wordt "
+"weergegeven."
 
 #. [label]: id=icon_label
 #: data/gui/window/editor_edit_pbl.cfg:162
 msgid "Icon:"
-msgstr ""
+msgstr "Symbool:"
 
 #. [button]: id=select_icon
 #: data/gui/window/editor_edit_pbl.cfg:182
-#, fuzzy
-#| msgid "Select None"
 msgid "Select an icon file"
-msgstr "Selecteer Niets"
+msgstr "Selecteer een symbool bestand"
 
 #. [text_box]: id=icon
 #: data/gui/window/editor_edit_pbl.cfg:195
@@ -3330,6 +3300,8 @@ msgid ""
 "The path to the icon image to display in the add-ons manager. Must be an "
 "image from mainline."
 msgstr ""
+"Het pad van de symbool afbeelding om in de add-on manager te tonen. Moet een "
+"afbeelding van de hoofdlijn zijn."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:206
@@ -3342,11 +3314,14 @@ msgid ""
 "The author of this add-on. If forum authentication is used, this is your "
 "forum username."
 msgstr ""
+"De auteur van deze add-on. Wanneer forum authenticatie gebruikt is, is dit "
+"je forum gebruikersnaam."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:207
 msgid "The add-on’s current version. This should be of the form X.Y.Z."
 msgstr ""
+"De huidige versie van de add-on, Dit zou in de vorm X.Y.Z. moeten zijn."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:208
@@ -3355,11 +3330,14 @@ msgid ""
 "depends on. The add-on ID is the folder name in your operating system’s file "
 "manager, not the add-on’s name."
 msgstr ""
+"Een door komma's gescheiden lijst met de ID's van eventuele andere add-ons "
+"waarvan deze add-on afhankelijk is. De add-on-ID is de mapnaam in de "
+"bestandsbeheerder van uw besturingssysteem, niet de naam van de add-on."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
 msgid "Forum thread:"
-msgstr ""
+msgstr "Forum berichtenreeks:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
@@ -3367,23 +3345,23 @@ msgid ""
 "The numeric topic ID of a thread on the Wesnoth forums where players can "
 "post feedback."
 msgstr ""
+"Het numerieke onderwerp ID van een reeks op de Wesnoth-forums waar spelers "
+"feedback kunnen plaatsen."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
 msgid "Forum URL"
-msgstr ""
+msgstr "Forum URL"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
 msgid "The full URL of your feedback thread on the forums."
-msgstr ""
+msgstr "De volledige URL van de feedback reeks op de forums."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
-#, fuzzy
-#| msgid "Authenticate"
 msgid "Forum Authentication:"
-msgstr "Verifiëer"
+msgstr "Forum Authenticatie"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
@@ -3391,6 +3369,8 @@ msgid ""
 "Whether to use your forum username and password when uploading or to store "
 "your password and email address in the add-on’s _server.pbl."
 msgstr ""
+"Of u uw forumgebruikersnaam en wachtwoord moet gebruiken bij het uploaden of "
+"uw wachtwoord en e-mailadres moet opslaan in de _server.pbl van de add-on."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:214
@@ -3398,22 +3378,26 @@ msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on."
 msgstr ""
+"Een door komma's gescheiden lijst met forumgebruikersnamen van andere mensen "
+"die updates voor deze add-on mogen uploaden."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:214
 msgid "Secondary Authors:"
-msgstr ""
+msgstr "Secundaire auteurs:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:215
 msgid ""
 "An email address you can be contacted at in case of issues with your add-on."
 msgstr ""
+"Een e-mailadres waarop er contact met u opgenomen kan worden in geval van "
+"problemen met uw add-on."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:215
 msgid "Email:"
-msgstr ""
+msgstr "Email:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:216
@@ -3421,18 +3405,19 @@ msgid ""
 "The add-on’s current password. Using forum authentication is recommended "
 "instead since this password is not stored securely."
 msgstr ""
+"Het huidige wachtwoord van de add-on. In plaats daarvan wordt het gebruik "
+"van forumauthenticatie aanbevolen, omdat dit wachtwoord niet veilig wordt "
+"opgeslagen."
 
 #. [label]: id=translations_title
 #: data/gui/window/editor_edit_pbl.cfg:274
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #. [label]: id=translations_description
 #: data/gui/window/editor_edit_pbl.cfg:291
-#, fuzzy
-#| msgid "Description:"
 msgid "Description"
-msgstr "Beschrijving:"
+msgstr "Beschrijving"
 
 #. [button]: id=translations_add
 #. [button]: id=server_add
@@ -3452,7 +3437,7 @@ msgstr "Verwijder"
 #. [button]: id=validate
 #: data/gui/window/editor_edit_pbl.cfg:451
 msgid "Validate"
-msgstr ""
+msgstr "Bevestigen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -3465,24 +3450,18 @@ msgstr "Opslaan"
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_pbl_translation.cfg:69
-#, fuzzy
-#| msgid "Translations:"
 msgid "Translation"
-msgstr "Vertalingen:"
+msgstr "Vertaling"
 
 #. [label]
 #: data/gui/window/editor_edit_pbl_translation.cfg:84
-#, fuzzy
-#| msgid "Password Required"
 msgid "* Required"
-msgstr "Wachtwoord Nodig"
+msgstr "* Verplicht"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:97
-#, fuzzy
-#| msgid "Language"
 msgid "* Language:"
-msgstr "Taal"
+msgstr "* Taal:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:97
@@ -3490,21 +3469,23 @@ msgid ""
 "The POSIX locale name of the translation, such as sv (Swedish) or zh_CN "
 "(Simplified Chinese)."
 msgstr ""
+"De POSIX lokale naam van de vertaling, zoals sv (Zweeds) of zh_CN "
+"(Versimpeld Chinees)."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
 msgid "* Title:"
-msgstr ""
+msgstr "* Titel:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
 msgid "The translation of the add-on’s title."
-msgstr ""
+msgstr "De vertaling van de add-on titel"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:99
 msgid "The translation of the add-on’s description."
-msgstr ""
+msgstr "De vertaling van de add-on beschrijving."
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_scenario.cfg:42
@@ -3560,10 +3541,8 @@ msgstr "Team naam:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:164
-#, fuzzy
-#| msgid "Recruits:"
 msgid "Recruit list:"
-msgstr "Rekruten:"
+msgstr "Rekrutenlijst:"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/window/editor_edit_side.cfg:218
@@ -4120,10 +4099,8 @@ msgstr "Logboeken:"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:141
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots:"
-msgstr "Schermafbeelding"
+msgstr "Schermafbeeldingen:"
 
 #. [label]
 #: data/gui/window/game_version.cfg:171
@@ -4180,19 +4157,17 @@ msgstr "Kopieer het volledige verslag naar klembord"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:622
-#, fuzzy
-#| msgid "Open Log File"
 msgid "Log File"
-msgstr "Open Logboek"
+msgstr "Logboek"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:623
-#, fuzzy
-#| msgid "Opens the log file, which may contain useful debug information"
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
-msgstr "Opent het logboek, dit kan nuttige debug informatie bevatten"
+msgstr ""
+"Opent het logboek van de huidige sessie, dit kan nuttige debug informatie "
+"bevatten"
 
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
@@ -4329,17 +4304,15 @@ msgstr "Laden..."
 
 #. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:75
-#, fuzzy
-#| msgid "General"
 msgid "General Lobby"
-msgstr "Algemeen"
+msgstr "Algemene Lobby"
 
 #. [widget]: id=tab_label
 #. Games which were created by a bot, there's discussion about the meaning and
 #. possibly better names in https://github.com/wesnoth/wesnoth/issues/8148
 #: data/gui/window/lobby_main.cfg:88
 msgid "Matchmaking"
-msgstr ""
+msgstr "Koppelen"
 
 #. [label]: id=map
 #: data/gui/window/lobby_main.cfg:140
@@ -4805,7 +4778,7 @@ msgstr "Staat dezelfde facties toe wanneer deze willekeurig worden gekozen"
 #. [option]
 #: data/gui/window/mp_create_game.cfg:177
 msgid "Independent"
-msgstr ""
+msgstr "Onafhankelijk"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:178
@@ -4815,7 +4788,7 @@ msgstr "Onafhankelijk: Willekeurige facties individueel toegewezen"
 #. [option]
 #: data/gui/window/mp_create_game.cfg:182
 msgid "No Mirror"
-msgstr ""
+msgstr "Geen Spiegel"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:183
@@ -4825,7 +4798,7 @@ msgstr "Geen Spiegel: Twee spelers kunnen niet dezelfde factie besturen"
 #. [option]
 #: data/gui/window/mp_create_game.cfg:187
 msgid "No Ally Mirror"
-msgstr ""
+msgstr "geen Bonsgenoot Spiegel"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:188
@@ -5157,31 +5130,25 @@ msgstr "Login:"
 
 #. [button]: id=replay_download
 #: data/gui/window/mp_match_history.cfg:159
-#, fuzzy
-#| msgid "Downloads"
 msgid "Download"
-msgstr "Downloads"
+msgstr "Download"
 
 #. [label]: id=players
 #. [label]: id=modifications
 #: data/gui/window/mp_match_history.cfg:185
 #: data/gui/window/mp_match_history.cfg:223
-#, fuzzy
-#| msgid "None"
 msgid "None"
 msgstr "Geen"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:375
 msgid "Info"
-msgstr ""
+msgstr "Informatie"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:388
-#, fuzzy
-#| msgid "Players:"
 msgid "Players"
-msgstr "Spelers:"
+msgstr "Spelers"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
@@ -5192,10 +5159,8 @@ msgstr "Aanpassingen"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:450
-#, fuzzy
-#| msgid "Players:"
 msgid "Player:"
-msgstr "Spelers:"
+msgstr "Speler:"
 
 #. [text_box]: id=search_player
 #. [text_box]: id=search_game_name
@@ -5204,21 +5169,17 @@ msgstr "Spelers:"
 #: data/gui/window/mp_match_history.cfg:506
 #: data/gui/window/mp_match_history.cfg:530
 msgid "Asterisks match all characters"
-msgstr ""
+msgstr "Sterretjes staan voor alle karakters"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:474
-#, fuzzy
-#| msgid "Content"
 msgid "Content Type:"
-msgstr "Inhoud"
+msgstr "Inhoud Type:"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:494
-#, fuzzy
-#| msgid "Team name:"
 msgid "Game name:"
-msgstr "Team naam:"
+msgstr "Spel naam:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5279,41 +5240,35 @@ msgstr "Lokaal spel"
 #. [label]
 #: data/gui/window/mp_report.cfg:50
 msgid "* Player being reported:"
-msgstr ""
+msgstr "* Speler wordt gerapporteerd:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:82
 msgid "* Reason for report:"
-msgstr ""
+msgstr "* Reden van rapporteren:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:114
 msgid "Location of occurrence:"
-msgstr ""
+msgstr "Locatie van gebeurtenis:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:146
-#, fuzzy
-#| msgid "Map Information"
 msgid "Additional information:"
-msgstr "Kaart Informatie"
+msgstr "Aanvullende informatie:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:191
 msgid "* required fields"
-msgstr ""
+msgstr "* verplichte velden"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
-#, fuzzy
-#| msgid "Change the side's controller"
 msgid "Change the side’s controller"
 msgstr "Verander de bestuurder van de kant"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
-#, fuzzy
-#| msgid "Change the AI side's behaviour"
 msgid "Change the AI side’s behaviour"
 msgstr "Verander het gedrag van de computer"
 
@@ -5434,7 +5389,7 @@ msgstr "Schakelt Planning Modus in wanneer het spel wordt gestart"
 #. [toggle_button]: id=whiteboard_hide_allies
 #: data/gui/window/preferences/01_general.cfg:142
 msgid "Hide allies’ plans by default"
-msgstr "Standaard verberg plannen van bondgenoten"
+msgstr "Verberg plannen van bondgenoten"
 
 #. [toggle_button]: id=whiteboard_hide_allies
 #: data/gui/window/preferences/01_general.cfg:143
@@ -5576,19 +5531,17 @@ msgstr "Verwijder Sneltoets"
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:15
 msgid "Window size:"
-msgstr ""
+msgstr "Schermgrootte;"
 
 #. [label]: id=help_text
 #: data/gui/window/preferences/03_display.cfg:39
 msgid "Pixel scale multiplier:"
-msgstr ""
+msgstr "Pixal schaal vermenigvuldiger:"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:73
-#, fuzzy
-#| msgid "Change the buffer size"
 msgid "Change the game window size"
-msgstr "De buffergrootte veranderen"
+msgstr "Verander de schermgrootte"
 
 #. [slider]: id=pixel_scale_slider
 #: data/gui/window/preferences/03_display.cfg:87
@@ -5596,6 +5549,8 @@ msgid ""
 "Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
 "make everything look twice as large."
 msgstr ""
+"Verander de pixel schaal vermenigvuldiger. Een pixel schaal vermenigvuldiger "
+"van 2 zorgt ervoor dat alles twee keer zo groot wordt."
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:102
@@ -5610,17 +5565,19 @@ msgstr "Schakel tussen volledig scherm en windowmodus"
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:114
 msgid "pixel_scale_multiplier^Automatic scale"
-msgstr ""
+msgstr "Automatische schaal"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:115
 msgid "Choose pixel scale multiplier automatically based on current resolution"
 msgstr ""
+"Kies automatisch de pixel schaal vermenigvuldiger, gebaseerd op de huidige "
+"resolutie"
 
 #. [toggle_button]: id=vsync
 #: data/gui/window/preferences/03_display.cfg:129
 msgid "VSync"
-msgstr ""
+msgstr "VSync"
 
 #. [toggle_button]: id=vsync
 #: data/gui/window/preferences/03_display.cfg:130
@@ -5628,6 +5585,8 @@ msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
 msgstr ""
+"Vermindert 'tearing' door de weergave te synchroniseren met de "
+"vernieuwingsfrequentie van de monitor (herstarten is vereist)"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:145
@@ -5646,7 +5605,7 @@ msgstr ""
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:168
 msgid "Interface theme:"
-msgstr ""
+msgstr "Gebruikersinterface thema:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:181
@@ -5654,23 +5613,25 @@ msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
 msgstr ""
+"Verander het gebruikersinterface thema. Aanvullende thema's kunnen worden "
+"gedownload via gemaakte add-ons"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:200
 msgid "Combat damage indicators"
-msgstr ""
+msgstr "Geveschtsschade indicatoren"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:201
-#, fuzzy
-#| msgid "Show damage and healing amounts above a unit"
 msgid "Show amount of damage inflicted or healed as fading labels above units"
-msgstr "Toon schade- en genezingsaantallen boven een eenheid"
+msgstr ""
+"Toon schade- en genezingsaantallen boven eenheden in de vorm van vervagende "
+"labels"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:214
 msgid "Team color indicators"
-msgstr ""
+msgstr "Teamkleur indicatoren"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:215
@@ -5684,7 +5645,7 @@ msgstr ""
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:228
 msgid "Grid overlay"
-msgstr ""
+msgstr "Raster overlay"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:229
@@ -5713,10 +5674,8 @@ msgstr "Toon geanimeerde waterbeelden (kan langzaam zijn)"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:293
-#, fuzzy
-#| msgid "Show unit standing animations"
 msgid "Unit standing animations"
-msgstr "Toon bewegingen van stilstaande eenheden"
+msgstr "Bewegingen van stilstaande eenheden"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:294
@@ -5725,15 +5684,13 @@ msgstr "Laat eenheden op het strijdveld continue bewegen"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:312
-#, fuzzy
-#| msgid "Show unit idle animations"
 msgid "Unit idle animations"
-msgstr "Toon bewegingen wachtende eenheden"
+msgstr "Bewegingen van wachtende eenheden"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:313
 msgid "Play short random animations for idle units"
-msgstr "Laat korte willekeurige animaties zien van wachtende eenheden"
+msgstr "Toon korte willekeurige animaties van wachtende eenheden"
 
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:336
@@ -5743,7 +5700,7 @@ msgstr "Frequentie:"
 #. [slider]: id=idle_anim_frequency
 #: data/gui/window/preferences/03_display.cfg:352
 msgid "Set the frequency of unit idle animations"
-msgstr "Zet de animatie frequentie van inactieve eenheden"
+msgstr "Stel de frequentie van animaties voor wachtende eenheden in"
 
 #. [label]
 #: data/gui/window/preferences/04_sound.cfg:38
@@ -5909,25 +5866,21 @@ msgstr "Vind en stel pad naar MP server in om LAN spellen te hosten"
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
-#, fuzzy
-#| msgid ""
-#| "Add this username to your friends list (add optional notes, e.g., "
-#| "'player_name notes on friend')"
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "‘player_name notes on friend’)"
-msgstr "Voeg deze gebruikersnaam toe aan je vriendenlijst"
+msgstr ""
+"Voeg deze gebruikersnaam toe aan je vriendenlijst (voeg optionele notities "
+"toe, zoals 'player_name genoteerd als vriend')"
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
-#, fuzzy
-#| msgid ""
-#| "Add this username to your ignore list (add optional reason, e.g., "
-#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "‘player_name reason ignored’)"
-msgstr "Voeg deze gebruikersnaam toe aan je negeerlijst"
+msgstr ""
+"Voeg deze gebruikersnaam toe aan je negeerlijst (voeg optionele notities "
+"toe, zoals 'player_name reden genegeerd')"
 
 #. [button]: id=remove
 #: data/gui/window/preferences/05_multiplayer.cfg:290
@@ -5966,8 +5919,6 @@ msgstr "Toon onbewogen bol"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:147
-#, fuzzy
-#| msgid "Show partial moved orb"
 msgid "Show partially moved orb"
 msgstr "Toon deels bewogen bol"
 
@@ -5977,11 +5928,14 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
+"Als een eenheid nog kan bewegen maar niet meer aan kan vallen, toon een "
+"twekleurige bol met de kleuren voor gedeeltelijk en volledig bewogen "
+"eenheden."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
 msgid "Use a two-color orb for disengaged units"
-msgstr ""
+msgstr "Gebruik een tweekleurige bol voor uitgeschakelde eenheden"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:150
@@ -5997,6 +5951,8 @@ msgstr "Toon bondgenoot bol"
 #: data/gui/window/select_orb_colors.cfg:154
 msgid "During ally’s turn, use a two-color orb to show movement"
 msgstr ""
+"Tijdens een geallieerde beurt, gebruik een tweekleurige bol om bewegingen te "
+"tonen"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
@@ -6005,6 +5961,9 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"Tijdens een geallieerde beurt, zijn/haar eenheden hebben een tweekleurige "
+"bol. Een helft is de kleur van de alliantie, en de andere toont of een "
+"eenheid nog onbewogen, gedeeltelijk bewogen of volledig bewogen is."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:156
@@ -6249,10 +6208,8 @@ msgstr "Configureer de instellingen van het spel"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:261
-#, fuzzy
-#| msgid "View: Each Team"
 msgid "View achievements"
-msgstr "Toon: Ieder Team"
+msgstr "Toon prestaties"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:262
@@ -6453,10 +6410,8 @@ msgid "filesystem_path_game^User preferences"
 msgstr "Gebruikers voorkeuren"
 
 #: src/desktop/paths.cpp:227
-#, fuzzy
-#| msgid "filesystem_path_game^Game data"
 msgid "filesystem_path_game^Editor maps"
-msgstr "Spel data"
+msgstr "Editor kaarten"
 
 #: src/desktop/paths.cpp:240
 msgid "filesystem_path_system^Home"
@@ -6617,10 +6572,8 @@ msgid "Text has a font size of 0."
 msgstr "Tekst heeft een lettergrootte van 0."
 
 #: src/gui/core/widget_definition.cpp:29
-#, fuzzy
-#| msgid "No state or draw section defined."
 msgid "No draw section defined for state."
-msgstr "Er is geen status of tekensectie gedefinieerd."
+msgstr "Er is geen tekensectie gedefinieerd for deze staat."
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:133
 msgid "No resolution defined."
@@ -6647,7 +6600,7 @@ msgstr ""
 
 #: src/gui/dialogs/achievements_dialog.cpp:137
 msgid "Completed"
-msgstr ""
+msgstr "Voltooid"
 
 #: src/gui/dialogs/addon/manager.cpp:157
 msgid "addons_view^All Add-ons"
@@ -6928,6 +6881,8 @@ msgstr ""
 #: src/gui/dialogs/addon/manager.cpp:943
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr ""
+"Het wachtwoordzin kenmerk kan niet aanwezig zijn wanneer forum_auth wordt "
+"gebruikt."
 
 #: src/gui/dialogs/addon/manager.cpp:948
 msgid "Invalid icon path. Make sure the path points to a valid image."
@@ -6964,18 +6919,14 @@ msgstr "Weet je zeker dat je '$addon|' wil verwijderen?"
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 #: src/gui/dialogs/addon/manager.cpp:1045
-#, fuzzy
-#| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
-msgstr "%d-%m-%Y %I:%M %p"
+msgstr "%d %B %Y, %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 #: src/gui/dialogs/addon/manager.cpp:1048
-#, fuzzy
-#| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
-msgstr "%d-%m-%Y %H:%M"
+msgstr "%d %B %Y, %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1109
 msgid "url^None"
@@ -7002,10 +6953,8 @@ msgid "Attacker vulnerability vs"
 msgstr "Aanvaller kwetsbaarheid tegen"
 
 #: src/gui/dialogs/campaign_selection.cpp:354
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Missing Campaigns"
-msgstr "Veldtochten"
+msgstr "Missende Veldtochten"
 
 #. TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
 #. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
@@ -7016,6 +6965,10 @@ msgid ""
 "package manager, there’s probably a separate package to install the complete "
 "game data."
 msgstr ""
+"Wesnoth bevat normaal gesproken meer dan 15 hoofdlijn veldtochten, zelfs "
+"voordat er een vanaf de add-onserver wordt geïnstalleerd. Als je de game via "
+"pakketbeheerder hebt geïnstalleerd, is er waarschijnlijk een apart pakket om "
+"de volledige gamegegevens te installeren."
 
 #: src/gui/dialogs/campaign_selection.cpp:396
 #: src/gui/dialogs/multiplayer/lobby.cpp:438
@@ -7064,46 +7017,32 @@ msgstr ""
 "Selecteer een geschikte aanpassing."
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:173
-#, fuzzy
-#| msgid "Cores"
 msgid "Core"
-msgstr "Bronnen"
+msgstr "Bron"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:174
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campaign"
 msgstr "Veldtocht"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:175
-#, fuzzy
-#| msgid "Campaign"
 msgid "Hybrid Campaign"
-msgstr "Veldtocht"
+msgstr "Hybride Veldtocht"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:176
-#, fuzzy
-#| msgid "Multiplayer Campaigns"
 msgid "Multiplayer Campaign"
-msgstr "Multiplayer Veldtohten"
+msgstr "Multiplayer Veldtocht"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:177
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Scenario"
-msgstr "Scenario Begin"
+msgstr "Scenario"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:178
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer Scenario"
-msgstr "Multiplayer Waarschuwingen"
+msgstr "Multiplayer Scenario"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:179
-#, fuzzy
-#| msgid "Action"
 msgid "Faction"
-msgstr "Actie"
+msgstr "Factie"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:180
 #: src/gui/dialogs/multiplayer/lobby.cpp:426
@@ -7112,65 +7051,51 @@ msgstr "Tijdperk"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:181
 msgid "Map Pack"
-msgstr ""
+msgstr "Kaartenbundel"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:182
-#, fuzzy
-#| msgid "Modifications"
 msgid "Modification"
-msgstr "Aanpassingen"
+msgstr "Aanpassing"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:183
 msgid "Media"
-msgstr ""
+msgstr "Media"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:184
-#, fuzzy
-#| msgid "Other Games"
 msgid "Other"
-msgstr "Andere Spellen"
+msgstr "Overig"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:190
-#, fuzzy
-#| msgid "addon_tag^Cooperative"
 msgid "Cooperative"
 msgstr "Samenwerken"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:191
-#, fuzzy
-#| msgid "addon_tag^Cosmetic"
 msgid "Cosmetic"
 msgstr "Cosmetisch"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:193
 msgid "RNG"
-msgstr ""
+msgstr "RNG"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:194
-#, fuzzy
-#| msgid "addon_tag^Survival"
 msgid "Survival"
 msgstr "Overleven"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:195
-#, fuzzy
-#| msgid "addon_tag^Terraforming"
 msgid "Terraforming"
 msgstr "Terreinaanpassing"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:378
 msgid "No validation errors"
-msgstr ""
+msgstr "Geen validatiefouten"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:378
 msgid "Success"
-msgstr ""
+msgstr "Succes"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:408
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose an icon"
-msgstr "Kies een resolutie"
+msgstr "Kies een symbool"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:71
 msgid "/1000 tiles"
@@ -7294,7 +7219,7 @@ msgstr "Wesnoth $version"
 #. TRANSLATORS: "reserve" refers to units on the recall list
 #: src/gui/dialogs/game_load.cpp:235
 msgid "$active active, $reserve reserve"
-msgstr ""
+msgstr "$active actief, $reserve reserve"
 
 #: src/gui/dialogs/game_load.cpp:284
 msgid "The selected file is corrupt: "
@@ -7349,10 +7274,8 @@ msgid "controller^Idle"
 msgstr "Afwachtend"
 
 #: src/gui/dialogs/game_stats.cpp:71
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Reserved"
-msgstr "Geen"
+msgstr "Omgekeerd"
 
 #: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:78
 msgid "Unknown"
@@ -7699,10 +7622,8 @@ msgid "Lobby"
 msgstr "Lobby"
 
 #: src/gui/dialogs/multiplayer/mp_report.cpp:50
-#, fuzzy
-#| msgid "Games"
 msgid "Game"
-msgstr "Spellen"
+msgstr "Spel"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:518
 msgid "Waiting for players to choose factions..."
@@ -7803,8 +7724,6 @@ msgstr ""
 "daadwerkelijke aantal toegebrachte/ontvangen treffers."
 
 #: src/gui/dialogs/statistics_dialog.cpp:368
-#, fuzzy
-#| msgid "Recruits"
 msgid "stats^Recruits"
 msgstr "Rekruten"
 
@@ -7843,10 +7762,8 @@ msgid "Screenshot"
 msgstr "Schermafbeelding"
 
 #: src/gui/dialogs/title_screen.cpp:478 src/hotkey/hotkey_command.cpp:303
-#, fuzzy
-#| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
-msgstr "Kies Start Scenario"
+msgstr "Kies Test Scenario"
 
 #: src/gui/dialogs/unit_create.cpp:196
 msgid "unit_variation^Default Variation"
@@ -8804,13 +8721,11 @@ msgstr "Voeg Nieuw Gebied Toe"
 
 #: src/hotkey/hotkey_command.cpp:272
 msgid "Add-on Publishing Editor"
-msgstr ""
+msgstr "Add=on Publicatie-editor"
 
 #: src/hotkey/hotkey_command.cpp:273
-#, fuzzy
-#| msgid "Manage Add-ons"
 msgid "Change Add-on ID"
-msgstr "Beheer Add-ons"
+msgstr "Wijzig Add-on ID"
 
 #: src/hotkey/hotkey_command.cpp:275
 msgid "Edit Scenario"
@@ -9398,8 +9313,8 @@ msgstr "In sectie '[$section|]' is het verplichte veld '$key|' niet gezet."
 #~ "een wachtwoord in te typen als je een geregistreerde gebruikersnaam wil "
 #~ "gebruiken.\n"
 #~ "\n"
-#~ "Het Battle for Wesnoth forum kan gevonden worden op http://www.wesnoth."
-#~ "org/forum/"
+#~ "Het Battle for Wesnoth forum kan gevonden worden op http://"
+#~ "www.wesnoth.org/forum/"
 
 #~ msgid "Password Reminder"
 #~ msgstr "Wachtwoordherinnering"
