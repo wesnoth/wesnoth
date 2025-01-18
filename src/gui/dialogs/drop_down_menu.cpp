@@ -199,9 +199,8 @@ void drop_down_menu::pre_show()
 
 			// Fire a NOTIFIED_MODIFIED event in the parent widget when the toggle state changes
 			if(parent_) {
-				connect_signal_notify_modified(*checkbox, std::bind([this]() {
-					parent_->fire(event::NOTIFY_MODIFIED, *parent_, nullptr);
-				}));
+				connect_signal_notify_modified(
+					*checkbox, [this](auto&&...) { parent_->fire(event::NOTIFY_MODIFIED, *parent_, nullptr); });
 			}
 
 			mi_grid.swap_child("icon", std::move(checkbox), false);
@@ -233,11 +232,11 @@ void drop_down_menu::pre_show()
 
 	// Dismiss on resize.
 	connect_signal<event::SDL_VIDEO_RESIZE>(
-		std::bind([this](){ resize_callback(*this); }), event::dispatcher::front_child);
+		[this](auto&&...){ resize_callback(*this); }, event::dispatcher::front_child);
 
 	// Handle embedded button toggling.
 	connect_signal_notify_modified(list,
-		std::bind([this](){ callback_flip_embedded_toggle(*this); }));
+		[this](auto&&...){ callback_flip_embedded_toggle(*this); });
 }
 
 void drop_down_menu::post_show()

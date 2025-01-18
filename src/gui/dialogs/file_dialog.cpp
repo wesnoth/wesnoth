@@ -304,7 +304,7 @@ void file_dialog::pre_show()
 
 	if (desktop::open_object_is_supported()) {
 		connect_signal_mouse_left_click(open_ext_button,
-			std::bind([this](){ desktop::open_object(path()); }));
+			[this](auto&&...) { desktop::open_object(path()); });
 	} else {
 		open_ext_button.set_active(false);
 		open_ext_button.set_tooltip(_("Opening files is not supported, contact your packager"));

@@ -600,9 +600,7 @@ void preferences_dialog::initialize_callbacks()
 	menu_button& gui2_theme_list = find_widget<menu_button>("choose_gui2_theme");
 	button& apply_btn = find_widget<button>("apply");
 	set_gui2_theme_list(gui2_theme_list);
-	connect_signal_notify_modified(gui2_theme_list, std::bind([&]() {
-		apply_btn.set_active(true);
-	}));
+	connect_signal_notify_modified(gui2_theme_list, [&](auto&&...) { apply_btn.set_active(true); });
 	apply_btn.set_active(false);
 	connect_signal_mouse_left_click(apply_btn,
 		std::bind(&preferences_dialog::handle_gui2_theme_select, this));
@@ -707,7 +705,7 @@ void preferences_dialog::initialize_callbacks()
 
 	/* SET WESNOTHD PATH */
 	connect_signal_mouse_left_click(
-			find_widget<button>("mp_wesnothd"), std::bind([]() {return prefs::get().show_wesnothd_server_search();}));
+			find_widget<button>("mp_wesnothd"), [](auto&&...) { return prefs::get().show_wesnothd_server_search(); });
 
 
 	//
@@ -809,9 +807,8 @@ void preferences_dialog::initialize_callbacks()
 				menu.set_use_markup(true);
 				menu.set_values(menu_data, selected);
 
-				// A lambda alone would be more verbose because it'd need to specify all the parameters.
 				connect_signal_notify_modified(menu,
-					std::bind([=](widget& w) { preferences_dialog_friend::set(pref_name, option_ids[dynamic_cast<menu_button&>(w).get_value()]); }, std::placeholders::_1));
+					[=](widget& w, auto&&...) { preferences_dialog_friend::set(pref_name, option_ids[dynamic_cast<menu_button&>(w).get_value()]); });
 
 				gui2::bind_status_label<menu_button>(main_grid, "setter", default_status_value_getter<menu_button>, "value");
 
