@@ -210,6 +210,27 @@ config addons_client::get_hidden_addons(const std::string& username, const std::
 	return response;
 }
 
+bool addons_client::change_passphrase(const std::string& addon, const std::string& username, const std::string& passphrase, const std::string& new_passphrase)
+{
+	config response;
+	config request;
+	config& child = request.add_child("change_passphrase");
+	child["addon"] = addon;
+	child["username"] = username;
+	child["passphrase"] = passphrase;
+	child["new_passphrase"] = new_passphrase;
+
+	send_request(request, response);
+	wait_for_transfer_done(_("Changing passphrase for add-on..."));
+
+	if(is_error_response(response)) {
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
+		return false;
+	}
+
+	return true;
+}
+
 bool addons_client::hide_addon(const std::string& addon, const std::string& username, const std::string& passphrase)
 {
 	config response;

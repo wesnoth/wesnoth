@@ -100,6 +100,7 @@ public:
 	bool hide_addon(const std::string& addon, const std::string& username, const std::string& passphrase);
 	bool unhide_addon(const std::string& addon, const std::string& username, const std::string& passphrase);
 	config get_hidden_addons(const std::string& username, const std::string& passphrase);
+	bool change_passphrase(const std::string& addon, const std::string& username, const std::string& passphrase, const std::string& new_passphrase);
 
 	/**
 	 * Retrieves the add-ons server web URL if available.

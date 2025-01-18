@@ -41,6 +41,7 @@ private:
 	void admin_hide_addon();
 	void admin_unhide_addon();
 	void admin_list_hidden();
+	void admin_change_passphrase();
 
 	addons_client& client_;
 	const std::string& addon_;

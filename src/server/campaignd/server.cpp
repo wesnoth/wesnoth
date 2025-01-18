@@ -951,6 +951,7 @@ void server::register_handlers()
 	REGISTER_CAMPAIGND_HANDLER(addon_downloads_by_version);
 	REGISTER_CAMPAIGND_HANDLER(forum_auth_usage);
 	REGISTER_CAMPAIGND_HANDLER(admins_list);
+	REGISTER_CAMPAIGND_HANDLER(change_passphrase);
 }
 
 void server::handle_server_id(const server::request& req)
@@ -1930,37 +1931,6 @@ void server::handle_delete(const server::request& req)
 	send_message("Add-on deleted.", req.sock);
 }
 
-void server::handle_change_passphrase(const server::request& req)
-{
-	const config& cpass = req.cfg;
-
-	if(read_only_) {
-		LOG_CS << "in read-only mode, request to change passphrase denied";
-		send_error("Cannot change passphrase: The server is currently in read-only mode.", req.sock);
-		return;
-	}
-
-	auto addon = get_addon(cpass["name"]);
-
-	if(!addon) {
-		send_error("No add-on with that name exists.", req.sock);
-	} else if(addon["forum_auth"].to_bool()) {
-		send_error("Changing the password for add-ons using forum_auth is not supported.", req.sock);
-	} else if(!authenticate(*addon, cpass["passphrase"])) {
-		send_error("Your old passphrase was incorrect.", req.sock);
-	} else if(addon["hidden"].to_bool()) {
-		LOG_CS << "Passphrase change denied - hidden add-on.";
-		send_error("Add-on passphrase change denied. Please contact the server administration for assistance.", req.sock);
-	} else if(cpass["new_passphrase"].empty()) {
-		send_error("No new passphrase was supplied.", req.sock);
-	} else {
-		set_passphrase(*addon, cpass["new_passphrase"]);
-		dirty_addons_.emplace(addon["name"]);
-		write_config();
-		send_message("Passphrase changed.", req.sock);
-	}
-}
-
 // the fifo handler also hides add-ons
 void server::handle_hide_addon(const server::request& req)
 {
@@ -2097,6 +2067,41 @@ void server::handle_admins_list(const server::request& req)
 	doc.compress();
 
 	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+}
+
+void server::handle_change_passphrase(const request& req)
+{
+	std::string addon_id = req.cfg["addon"].str();
+	std::string username = req.cfg["username"].str();
+	std::string passphrase = req.cfg["passphrase"].str();
+	std::string newpass = req.cfg["new_passphrase"].str();
+
+	auto addon = get_addon(addon_id);
+
+	if(!addon) {
+		ERR_CS << "Add-on '" << addon_id << "' not found, cannot set passphrase";
+		send_error("The add-on was not found.", req.sock);
+		return;
+	} else {
+		if(!authenticate_admin(username, passphrase)) {
+			send_error("The passphrase is incorrect.", req.sock);
+			return;
+		}
+
+		if(newpass.empty()) {
+			ERR_CS << "Add-on passphrases may not be empty!";
+			send_error("New passphrase is empty.", req.sock);
+		} else if(addon["forum_auth"].to_bool()) {
+			ERR_CS << "Can't set passphrase for add-on using forum_auth.";
+			send_error("The add-on uses forum_auth.", req.sock);
+		} else {
+			set_passphrase(*addon, newpass);
+			mark_dirty(addon_id);
+			write_config();
+			LOG_CS << "New passphrase set for '" << addon_id << "'";
+			send_message("Add-on passphrase changed.", req.sock);
+		}
+	}
 }
 
 bool server::authenticate_forum(const config& addon, const std::string& passphrase, bool is_delete) {

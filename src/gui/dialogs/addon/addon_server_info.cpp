@@ -57,6 +57,10 @@ addon_server_info::addon_server_info(addons_client& client, const std::string& a
 	connect_signal_mouse_left_click(
 		find_widget<button>("admin_list_hidden"),
 		std::bind(&addon_server_info::admin_list_hidden, this));
+
+	connect_signal_mouse_left_click(
+		find_widget<button>("admin_change_passphrase"),
+		std::bind(&addon_server_info::admin_change_passphrase, this));
 }
 
 void addon_server_info::pre_show()
@@ -169,6 +173,30 @@ void addon_server_info::admin_list_hidden()
 	}
 
 	PLAIN_LOG << client_.get_hidden_addons(cfg["uploader"].str(), cfg["passphrase"].str());
+}
+
+void addon_server_info::admin_change_passphrase()
+{
+	if(!addon_.empty()) {
+		config admins = client_.get_addon_admins();
+
+		std::set<std::string> admin_set;
+		for(const auto& admin : admins.child_range("admin")) {
+			admin_set.emplace(admin["username"]);
+		}
+
+		config cfg;
+		cfg["primary_authors"] = utils::join(admin_set);
+		if(!gui2::dialogs::addon_auth::execute(cfg)) {
+			gui2::show_error_message(_("Password not provided"));
+			return;
+		}
+
+		std::string new_passphrase;
+		gui2::dialogs::prompt::execute(new_passphrase);
+
+		client_.change_passphrase(addon_, cfg["uploader"].str(), cfg["passphrase"].str(), new_passphrase);
+	}
 }
 
 } // namespace dialogs
