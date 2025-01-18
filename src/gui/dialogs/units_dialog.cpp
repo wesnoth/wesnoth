@@ -70,7 +70,6 @@ units_dialog::units_dialog()
 	, num_rows_(0)
 	, ok_label_(_("OK"))
 	, cancel_label_(_("Cancel"))
-	, show_header_(true)
 	, show_rename_(false)
 	, show_dismiss_(false)
 	, show_variations_(false)
@@ -79,6 +78,13 @@ units_dialog::units_dialog()
 	, filter_options_()
 	, gender_toggle_()
 {
+	for(widget* sort_toggle : find_widget<grid>("_header_grid")) {
+		// FIXME: only proper (non-spacer) header options are currently given an ID.
+		// We want the spacers to remain for sizing, but this is pretty fragile.
+		if(!sort_toggle->id().empty()) {
+			sort_toggle->set_visible(widget::visibility::invisible);
+		}
+	}
 }
 
 namespace {
@@ -135,8 +141,6 @@ void units_dialog::pre_show()
 		find_widget<button>("show_help"),
 		std::bind(&units_dialog::show_help, this));
 
-	list.clear();
-
 	keyboard_capture(&filter);
 	add_to_keyboard_chain(&list);
 
@@ -148,7 +152,6 @@ void units_dialog::pre_show()
 	find_widget<button>("dismiss").set_visible(show_dismiss_);
 	find_widget<button>("rename").set_visible(show_rename_);
 	find_widget<grid>("variation_gender_grid").set_visible(show_variations_);
-	find_widget<grid>("_header_grid").set_visible(show_header_);
 
 	// Gender and variation selectors
 	if(show_variations_) {
@@ -423,7 +426,6 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 		.set_ok_label(_("Create"))
 		.set_help_topic("..units")
 		.set_row_num(types_list.size())
-		.show_all_headers(false)
 		.set_show_variations(true);
 
 	// Listbox data
@@ -432,7 +434,7 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 	set_column("unit_name", type_gen, sort_type::generator);
 	set_column("unit_details", race_gen, sort_type::generator);
 
-	dlg->on_modified([populate_variations, &dlg, &types_list](std::size_t index) -> const auto&{
+	dlg->on_modified([populate_variations, &dlg, &types_list](std::size_t index) -> const auto& {
 		const unit_type* ut = types_list[index];
 
 		dlg->get_toggle().set_members_enabled(
@@ -480,8 +482,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 	dlg->set_title(_("Recruit Unit") + get_title_suffix(team.side()))
 		.set_ok_label(_("Recruit"))
 		.set_help_topic("recruit_and_recall")
-		.set_row_num(recruit_list.size())
-		.show_all_headers(false);
+		.set_row_num(recruit_list.size());
 
 	dlg->on_modified([&recruit_list](std::size_t index) -> const auto& { return *recruit_list[index]; });
 
@@ -708,8 +709,6 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		[](const auto& unit) {
 			return !unit->trait_names().empty() ? unit->trait_names().front().str() : "";
 		});
-
-	dlg->show_header("unit_status", false);
 
 	dlg->set_tooltip_generator([recallable, wb_gold, &recall_list](std::size_t index) {
 		if(recallable(*recall_list[index])) {

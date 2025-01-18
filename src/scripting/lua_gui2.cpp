@@ -300,10 +300,6 @@ int intf_show_recruit_dialog(lua_State* L)
 			if (!cfg["help_topic"].empty()) {
 				dlg->set_help_topic(cfg["help_topic"]);
 			}
-
-			if (!cfg["show_headers"].empty()) {
-				dlg->show_all_headers(cfg["show_headers"].to_bool(true));
-			}
 		}
 
 		if(dlg->show() && dlg->is_selected()) {
@@ -358,10 +354,6 @@ int intf_show_recall_dialog(lua_State* L)
 
 			if (!cfg["help_topic"].empty()) {
 				dlg->set_help_topic(cfg["help_topic"]);
-			}
-
-			if (!cfg["show_headers"].empty()) {
-				dlg->show_all_headers(cfg["show_headers"].to_bool(true));
 			}
 		}
 
