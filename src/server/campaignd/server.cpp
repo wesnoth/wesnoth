@@ -944,7 +944,6 @@ void server::register_handlers()
 	REGISTER_CAMPAIGND_HANDLER(request_terms);
 	REGISTER_CAMPAIGND_HANDLER(upload);
 	REGISTER_CAMPAIGND_HANDLER(delete);
-	REGISTER_CAMPAIGND_HANDLER(change_passphrase);
 	REGISTER_CAMPAIGND_HANDLER(hide_addon);
 	REGISTER_CAMPAIGND_HANDLER(unhide_addon);
 	REGISTER_CAMPAIGND_HANDLER(list_hidden);
@@ -1926,37 +1925,6 @@ void server::handle_delete(const server::request& req)
 	delete_addon(id);
 
 	send_message("Add-on deleted.", req.sock);
-}
-
-void server::handle_change_passphrase(const server::request& req)
-{
-	const config& cpass = req.cfg;
-
-	if(read_only_) {
-		LOG_CS << "in read-only mode, request to change passphrase denied";
-		send_error("Cannot change passphrase: The server is currently in read-only mode.", req.sock);
-		return;
-	}
-
-	auto addon = get_addon(cpass["name"]);
-
-	if(!addon) {
-		send_error("No add-on with that name exists.", req.sock);
-	} else if(addon["forum_auth"].to_bool()) {
-		send_error("Changing the password for add-ons using forum_auth is not supported.", req.sock);
-	} else if(!authenticate(*addon, cpass["passphrase"])) {
-		send_error("Your old passphrase was incorrect.", req.sock);
-	} else if(addon["hidden"].to_bool()) {
-		LOG_CS << "Passphrase change denied - hidden add-on.";
-		send_error("Add-on passphrase change denied. Please contact the server administration for assistance.", req.sock);
-	} else if(cpass["new_passphrase"].empty()) {
-		send_error("No new passphrase was supplied.", req.sock);
-	} else {
-		set_passphrase(*addon, cpass["new_passphrase"]);
-		dirty_addons_.emplace(addon["name"]);
-		write_config();
-		send_message("Passphrase changed.", req.sock);
-	}
 }
 
 // the fifo handler also hides add-ons
