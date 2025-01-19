@@ -19,15 +19,17 @@
 #include "log.hpp"
 #include "game_config.hpp"
 
+#include <string_view>
+
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
-static const char colorKey[] = "color range";
+static constexpr std::string_view colorKey = "color range";
 
 static bool luaW_iscolor(lua_State* L, int index)
 {
-	return luaL_testudata(L, index, colorKey) != nullptr;
+	return luaL_testudata(L, index, colorKey.data()) != nullptr;
 }
 
 static color_range& LuaW_checkcolor(lua_State *L, int index)
@@ -43,7 +45,7 @@ static color_range& LuaW_checkcolor(lua_State *L, int index)
 static color_range* luaW_pushcolor(lua_State *L, const color_range& color)
 {
 	color_range* res = new(L) color_range(color);
-	luaL_setmetatable(L, colorKey);
+	luaL_setmetatable(L, colorKey.data());
 	return res;
 }
 
@@ -159,7 +161,7 @@ namespace lua_colors {
 		// Create the color metatable.
 		cmd_out << "Adding color metatable...\n";
 
-		luaL_newmetatable(L, colorKey);
+		luaL_newmetatable(L, colorKey.data());
 		lua_pushcfunction(L, impl_color_collect);
 		lua_setfield(L, -2, "__gc");
 		lua_pushcfunction(L, impl_color_equality);

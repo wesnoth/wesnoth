@@ -24,12 +24,12 @@
 #include "units/attack_type.hpp"
 #include "utils/const_clone.hpp"
 
-
+#include <string_view>
 #include <type_traits>
 #include <utility>
 
-static const char uattacksKey[] = "unit attacks table";
-static const char uattackKey[] = "unit attack";
+static constexpr std::string_view uattacksKey = "unit attacks table";
+static constexpr std::string_view uattackKey = "unit attack";
 
 struct attack_ref {
 	attack_ptr attack;
@@ -45,14 +45,14 @@ void push_unit_attacks_table(lua_State* L, int idx)
 	lua_pushvalue(L, idx);
 	// hack: store the unit_type at 0 because we want positive indices to refer to the attacks.
 	lua_rawseti(L, -2, 0);
-	luaL_setmetatable(L, uattacksKey);
+	luaL_setmetatable(L, uattacksKey.data());
 }
 
 void luaW_pushweapon(lua_State* L, const attack_ptr& weapon)
 {
 	if(weapon != nullptr) {
 		new(L) attack_ref(weapon);
-		luaL_setmetatable(L, uattackKey);
+		luaL_setmetatable(L, uattackKey.data());
 	} else {
 		lua_pushnil(L);
 	}
@@ -62,7 +62,7 @@ void luaW_pushweapon(lua_State* L, const const_attack_ptr& weapon)
 {
 	if(weapon != nullptr) {
 		new(L) attack_ref(weapon);
-		luaL_setmetatable(L, uattackKey);
+		luaL_setmetatable(L, uattackKey.data());
 	} else {
 		lua_pushnil(L);
 	}
@@ -70,12 +70,12 @@ void luaW_pushweapon(lua_State* L, const const_attack_ptr& weapon)
 
 static attack_ref& luaW_checkweapon_ref(lua_State* L, int idx)
 {
-	return *static_cast<attack_ref*>(luaL_checkudata(L, idx, uattackKey));
+	return *static_cast<attack_ref*>(luaL_checkudata(L, idx, uattackKey.data()));
 }
 
 const_attack_ptr luaW_toweapon(lua_State* L, int idx)
 {
-	if(void* p = luaL_testudata(L, idx, uattackKey)) {
+	if(void* p = luaL_testudata(L, idx, uattackKey.data())) {
 		return static_cast<attack_ref*>(p)->cattack;
 	}
 	return nullptr;
@@ -349,7 +349,7 @@ static int impl_unit_attack_match(lua_State* L)
 
 static int impl_unit_attack_collect(lua_State* L)
 {
-	attack_ref* atk = static_cast<attack_ref*>(luaL_checkudata(L, 1, uattackKey));
+	attack_ref* atk = static_cast<attack_ref*>(luaL_checkudata(L, 1, uattackKey.data()));
 	atk->~attack_ref();
 	return 0;
 }
@@ -369,7 +369,7 @@ namespace lua_units {
 		// Create the unit attacks metatable.
 		cmd_out << "Adding unit attacks metatable...\n";
 
-		luaL_newmetatable(L, uattacksKey);
+		luaL_newmetatable(L, uattacksKey.data());
 		lua_pushcfunction(L, impl_unit_attacks_get);
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_unit_attacks_set);
@@ -378,11 +378,11 @@ namespace lua_units {
 		lua_setfield(L, -2, "__len");
 		lua_pushcfunction(L, impl_unit_attacks_iter);
 		lua_setfield(L, -2, "__ipairs");
-		lua_pushstring(L, uattacksKey);
+		lua_pushstring(L, uattacksKey.data());
 		lua_setfield(L, -2, "__metatable");
 
 		// Create the unit attack metatable
-		luaL_newmetatable(L, uattackKey);
+		luaL_newmetatable(L, uattackKey.data());
 		lua_pushcfunction(L, impl_unit_attack_get);
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_unit_attack_set);
@@ -393,7 +393,7 @@ namespace lua_units {
 		lua_setfield(L, -2, "__tostring");
 		lua_pushcfunction(L, impl_unit_attack_collect);
 		lua_setfield(L, -2, "__gc");
-		lua_pushstring(L, uattackKey);
+		lua_pushstring(L, uattackKey.data());
 		lua_setfield(L, -2, "__metatable");
 		lua_pushcfunction(L, impl_unit_attack_match);
 		lua_setfield(L, -2, "matches");

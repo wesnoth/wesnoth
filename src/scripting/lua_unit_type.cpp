@@ -22,6 +22,7 @@
 #include "units/types.hpp"
 
 #include <string>
+#include <string_view>
 #include <cstring>
 
 
@@ -30,12 +31,12 @@
  */
 
 // Registry key
-static const char UnitType[] = "unit type";
-static const char UnitTypeTable[] = "unit types";
+static constexpr std::string_view UnitType = "unit type";
+static constexpr std::string_view UnitTypeTable = "unit types";
 
 #define UNIT_TYPE_GETTER(name, type) LATTR_GETTER(name, type, unit_type, ut)
 #define UNIT_TYPE_VALID(name) LATTR_VALID(name, unit_type, ut)
-luaW_Registry unitTypeReg{UnitType};
+luaW_Registry unitTypeReg{UnitType.data()};
 
 template<> struct lua_object_traits<unit_type> {
 	inline static auto metatable = UnitType;
@@ -138,7 +139,7 @@ UNIT_TYPE_VALID("variations") {
 UNIT_TYPE_GETTER("variations", lua_index_raw) {
 	// TODO: Should this only exist for base units?
 	*new(L) const unit_type* = &ut;
-	luaL_setmetatable(L, UnitTypeTable);
+	luaL_setmetatable(L, UnitTypeTable.data());
 	return lua_index_raw(L);
 }
 
@@ -175,7 +176,7 @@ static int impl_unit_type_equal(lua_State* L)
 
 static int impl_unit_type_list(lua_State* L) {
 	std::vector<std::string> keys;
-	if(const unit_type* base = *static_cast<const unit_type**>(luaL_testudata(L, 1, UnitTypeTable))) {
+	if(const unit_type* base = *static_cast<const unit_type**>(luaL_testudata(L, 1, UnitTypeTable.data()))) {
 		keys = base->variations();
 		if(base->has_gender_variation(unit_race::MALE)) {
 			keys.push_back("male");
@@ -197,7 +198,7 @@ static int impl_unit_type_lookup(lua_State* L)
 {
 	std::string id = luaL_checkstring(L, 2);
 	const unit_type* ut;
-	if(const unit_type* base = *static_cast<const unit_type**>(luaL_testudata(L, 1, UnitTypeTable))) {
+	if(const unit_type* base = *static_cast<const unit_type**>(luaL_testudata(L, 1, UnitTypeTable.data()))) {
 		if(id == "male" || id == "female") {
 			ut = &base->get_gender_unit_type(id);
 		} else {
@@ -229,7 +230,7 @@ static int impl_unit_type_count(lua_State* L)
 
 static int impl_unit_type_next(lua_State* L)
 {
-	const unit_type* base = *static_cast<const unit_type**>(luaL_checkudata(L, 1, UnitTypeTable));
+	const unit_type* base = *static_cast<const unit_type**>(luaL_checkudata(L, 1, UnitTypeTable.data()));
 	const auto& unit_map = base ? base->variation_types() : unit_types.types();
 	auto it = unit_map.end();
 	if(lua_isnoneornil(L, 2)) {
@@ -300,7 +301,7 @@ static int impl_unit_type_tostring(lua_State* L)
 namespace lua_unit_type {
 	std::string register_metatable(lua_State * L)
 	{
-		luaL_newmetatable(L, UnitType);
+		luaL_newmetatable(L, UnitType.data());
 
 		lua_pushcfunction(L, impl_unit_type_get);
 		lua_setfield(L, -2, "__index");
@@ -310,7 +311,7 @@ namespace lua_unit_type {
 		lua_setfield(L, -2, "__tostring");
 		lua_pushcfunction(L, impl_unit_type_equal);
 		lua_setfield(L, -2, "__eq");
-		lua_pushstring(L, UnitType);
+		lua_pushstring(L, UnitType.data());
 		lua_setfield(L, -2, "__metatable");
 
 		return "Adding unit type metatable...\n";
@@ -320,7 +321,7 @@ namespace lua_unit_type {
 	{
 		lua_getglobal(L, "wesnoth");
 		*new(L) unit_type* = nullptr;
-		luaL_newmetatable(L, UnitTypeTable);
+		luaL_newmetatable(L, UnitTypeTable.data());
 		lua_pushcfunction(L, impl_unit_type_lookup);
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_unit_type_list);
@@ -331,7 +332,7 @@ namespace lua_unit_type {
 		lua_setfield(L, -2, "__len");
 		lua_pushcfunction(L, impl_unit_type_pairs);
 		lua_setfield(L, -2, "__pairs");
-		lua_pushstring(L, UnitTypeTable);
+		lua_pushstring(L, UnitTypeTable.data());
 		lua_setfield(L, -2, "__metatable");
 		lua_setmetatable(L, -2);
 		lua_setfield(L, -2, "unit_types");
@@ -344,12 +345,12 @@ namespace lua_unit_type {
 void luaW_pushunittype(lua_State *L, const unit_type& ut)
 {
 	*static_cast<const unit_type**>(lua_newuserdatauv(L, sizeof(unit_type*), 0)) = &ut;
-	luaL_setmetatable(L, UnitType);
+	luaL_setmetatable(L, UnitType.data());
 }
 
 const unit_type* luaW_tounittype(lua_State* L, int idx)
 {
-	if(void* p = luaL_testudata(L, idx, UnitType)) {
+	if(void* p = luaL_testudata(L, idx, UnitType.data())) {
 		return *static_cast<const unit_type**>(p);
 	}
 	return nullptr;
@@ -357,5 +358,5 @@ const unit_type* luaW_tounittype(lua_State* L, int idx)
 
 const unit_type& luaW_checkunittype(lua_State* L, int idx)
 {
-	return **static_cast<const unit_type**>(luaL_checkudata(L, idx, UnitType));
+	return **static_cast<const unit_type**>(luaL_checkudata(L, idx, UnitType.data()));
 }

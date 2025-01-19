@@ -37,9 +37,9 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
-static const char getunitKey[] = "unit";
-static const char ustatusKey[] = "unit status";
-static const char unitvarKey[] = "unit variables";
+static constexpr std::string_view getunitKey = "unit";
+static constexpr std::string_view ustatusKey = "unit status";
+static constexpr std::string_view unitvarKey = "unit variables";
 
 lua_unit::~lua_unit()
 {
@@ -112,7 +112,7 @@ bool lua_unit::put_map(const map_location &loc)
 
 bool luaW_isunit(lua_State* L, int index)
 {
-	return luaL_testudata(L, index,getunitKey) != nullptr;
+	return luaL_testudata(L, index,getunitKey.data()) != nullptr;
 }
 
 enum {
@@ -206,7 +206,7 @@ lua_unit* luaW_checkunit_ref(lua_State *L, int index)
 
 void lua_unit::setmetatable(lua_State *L)
 {
-	luaL_setmetatable(L, getunitKey);
+	luaL_setmetatable(L, getunitKey.data());
 }
 
 lua_unit* luaW_pushlocalunit(lua_State *L, unit& u)
@@ -273,7 +273,7 @@ static int impl_unit_tostring(lua_State* L)
 
 #define UNIT_GETTER(name, type) LATTR_GETTER(name, type, unit, u)
 #define UNIT_SETTER(name, type) LATTR_SETTER(name, type, unit, u)
-luaW_Registry unitReg{"wesnoth", "units", getunitKey};
+luaW_Registry unitReg{"wesnoth", "units", getunitKey.data()};
 
 template<> struct lua_object_traits<lua_unit*> {
 	inline static auto metatable = getunitKey;
@@ -632,7 +632,7 @@ UNIT_GETTER("status", lua_index_raw) {
 	lua_createtable(L, 1, 0);
 	lua_pushvalue(L, 1);
 	lua_rawseti(L, -2, 1);
-	luaL_setmetatable(L, ustatusKey);
+	luaL_setmetatable(L, ustatusKey.data());
 	return lua_index_raw(L);
 }
 
@@ -641,7 +641,7 @@ UNIT_GETTER("variables", lua_index_raw) {
 	lua_createtable(L, 1, 0);
 	lua_pushvalue(L, 1);
 	lua_rawseti(L, -2, 1);
-	luaL_setmetatable(L, unitvarKey);
+	luaL_setmetatable(L, unitvarKey.data());
 	return lua_index_raw(L);
 }
 
@@ -946,7 +946,7 @@ namespace lua_units {
 		// Create the getunit metatable.
 		cmd_out << "Adding getunit metatable...\n";
 
-		luaL_newmetatable(L, getunitKey);
+		luaL_newmetatable(L, getunitKey.data());
 		lua_pushcfunction(L, impl_unit_collect);
 		lua_setfield(L, -2, "__gc");
 		lua_pushcfunction(L, impl_unit_equality);
@@ -965,7 +965,7 @@ namespace lua_units {
 		// Create the unit status metatable.
 		cmd_out << "Adding unit status metatable...\n";
 
-		luaL_newmetatable(L, ustatusKey);
+		luaL_newmetatable(L, ustatusKey.data());
 		lua_pushcfunction(L, impl_unit_status_get);
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_unit_status_set);
@@ -978,7 +978,7 @@ namespace lua_units {
 		// Create the unit variables metatable.
 		cmd_out << "Adding unit variables metatable...\n";
 
-		luaL_newmetatable(L, unitvarKey);
+		luaL_newmetatable(L, unitvarKey.data());
 		lua_pushcfunction(L, impl_unit_variables_get);
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_unit_variables_set);
