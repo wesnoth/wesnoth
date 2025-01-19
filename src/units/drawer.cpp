@@ -116,7 +116,7 @@ struct energy_bar
 	/** Returns the height of the bar in pixels. */
 	static constexpr auto get_height(int size, double scaling)
 	{
-		return size * scaling;
+		return int(size * scaling);
 	};
 
 	/** Returns the relative amount of the bar to be filled. */
