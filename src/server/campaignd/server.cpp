@@ -1886,8 +1886,6 @@ void server::handle_delete(const server::request& req)
 	LOG_CS << req << "Deleting add-on '" << id << "'";
 
 	auto addon = get_addon(id);
-	PLAIN_LOG << erase.debug() << "\n\n" << addon->debug();
-
 	if(!addon) {
 		send_error("The add-on does not exist.", req.sock);
 		return;
