@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 12:08-0600\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
 "PO-Revision-Date: 2024-11-23 14:02+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -338,11 +338,11 @@ msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgid "Load Map"
 msgstr "Carica mappa"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1130
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
 msgid "New Map"
 msgstr "Nuova mappa"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1130
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
 msgid "New Scenario"
 msgstr "Nuovo scenario"
 
@@ -388,7 +388,7 @@ msgid "Save Map As"
 msgstr "Salva mappa come"
 
 #: src/editor/map/context_manager.cpp:708
-#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:269
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Errore"
@@ -462,19 +462,19 @@ msgstr ""
 "Le dimensioni della mappa di destinazione sono diverse da quelle della mappa "
 "attuale"
 
-#: src/editor/map/map_context.cpp:182
+#: src/editor/map/map_context.cpp:186
 msgid "File not found"
 msgstr "File non trovato"
 
-#: src/editor/map/map_context.cpp:189
+#: src/editor/map/map_context.cpp:193
 msgid "Empty file"
 msgstr "File vuoto"
 
-#: src/editor/map/map_context.cpp:198
+#: src/editor/map/map_context.cpp:202
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Il file non ha una estensione .map o .cfg o .mask"
 
-#: src/editor/map/map_context.cpp:245
+#: src/editor/map/map_context.cpp:249
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -482,18 +482,18 @@ msgstr ""
 "Il file della mappa assomiglia a uno scenario, ma il valore map_data non "
 "indica un file esistente"
 
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:268
 msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
 msgstr ""
 "Trovati i caratteri «<<» che indicano la presenza di una inline lua - "
 "abortire"
 
-#: src/editor/map/map_context.cpp:269
+#: src/editor/map/map_context.cpp:273
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr ""
 "Impossibile caricare lo scenario, tentativo di caricamento della sola mappa."
 
-#: src/editor/map/map_context.cpp:276
+#: src/editor/map/map_context.cpp:280
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
@@ -501,27 +501,27 @@ msgstr ""
 "Il file della mappa assomiglia a uno scenario, ma il valore map_file non "
 "indica un file esistente"
 
-#: src/editor/map/map_context.cpp:291
+#: src/editor/map/map_context.cpp:295
 msgid "Unable to parse file to find map data"
 msgstr "Impossibile analizzare il file per trovare i dati della mappa"
 
-#: src/editor/map/map_context.cpp:824 src/editor/map/map_context.cpp:864
+#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
 msgid "Could not save time schedule: $msg"
 msgstr "Impossibile salvare lo schema temporale: $msg"
 
-#: src/editor/map/map_context.cpp:858
+#: src/editor/map/map_context.cpp:863
 msgid "Time schedule saved."
 msgstr "Schema temporale salvato."
 
-#: src/editor/map/map_context.cpp:904
+#: src/editor/map/map_context.cpp:909
 msgid "Could not save the scenario: $msg"
 msgstr "Impossibile salvare lo scenario: $msg"
 
-#: src/editor/map/map_context.cpp:935
+#: src/editor/map/map_context.cpp:940
 msgid "Could not save into scenario"
 msgstr "Impossibile salvare nello scenario"
 
-#: src/editor/map/map_context.cpp:945
+#: src/editor/map/map_context.cpp:950
 msgid "Could not save the map: $msg"
 msgstr "Impossibile salvare la mappa: $msg"
 

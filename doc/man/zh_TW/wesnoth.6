@@ -36,6 +36,10 @@ Battle for \fBWesnoth\fP是一個回合制奇幻風格的策略遊戲。
 .SH 選項
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 顯示所有在遊戲中的語言清單中的翻譯，即使它們被認為是不完整的。
 .TP 
@@ -169,8 +173,9 @@ Bug。部分函式庫被認為是穩定的，即使不開啟這個選項也會�
 當連線到一個伺服器時，使用 \fIpassword\fP，忽略其它偏好設定。不安全。
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-（實驗性）載入一個定義韋諾插件的 \fIscript\fP。與 \fB\-\-script\fP 相似，但 Lua
-檔案應該傳回一個函數，該函數將運行且週期性地喚醒並更新。
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 將一個 DiffWML 的補丁用於一個 WML 檔案。不會預處理任何輸入的檔案。輸出被補過的 WML 至標準輸出或者至 \fI\-\-output\fP
@@ -216,9 +221,6 @@ https://wiki.wesnoth.org/ImagePathFunctionWML。
 .TP 
 \fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
 不初始化螢幕的情況下將 \fImap\fP 螢幕的截圖儲存至 \fIoutput\fP。
-.TP 
-\fB\-\-script\fP\fI\ file\fP
-（實驗性）\fIfile\fP 包含一個用來控制客戶端的 Lua 腳本。
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 如果有指定任何主機的話，連接到指定的主機。否則，連接到偏好設定中的第一個伺服器。例如：\fB\-\-server\fP

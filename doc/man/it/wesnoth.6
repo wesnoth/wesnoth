@@ -46,6 +46,10 @@ con gli altri.
 .SH OPZIONI
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 Mostra tutte le traduzioni disponibili nella lista dei linguaggi di gioco,
 anche se non hanno un sufficiente livello di completezza.
@@ -215,10 +219,9 @@ utilizza \fIpassword\fP per la connessione ad un server, ignorando le altre
 scelte. Opzione non sicura.
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-(sperimentale) carica uno \fIscript\fP che definisce un plugin Wesnoth. Simile
-a \fB\-\-script\fP, ma il file Lua dovrebbe restituire un funzione che verrà
-eseguita come una coroutine e periodicamente risvegliata con gli
-aggiornamenti.
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ file\-base\fP\fB\ \fP\fIfile\-correzione\fP
 applica un file correzione DiffWML ad un file WML, senza pre\-processare
@@ -276,10 +279,6 @@ esempio:\fB\-\-rng\-seed\fP \fB0\fP.
 \fB\-\-screenshot\fP\fI\ mappa\fP\fB\ \fP\fIoutput\fP
 salva una schermata della \fImappa\fP nel file \fIoutput\fP senza inizializzare
 uno schermo.
-.TP 
-\fB\-\-script\fP\fI\ file\fP
-(sperimentale) \fIfile\fP contenente uno script Lua per il controllo del
-client.
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 si connette al server specificato se fornito, se no si connette al primo

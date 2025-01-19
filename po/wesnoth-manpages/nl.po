@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
-"POT-Creation-Date: 2024-11-26 12:08-0600\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
 "PO-Revision-Date: 2019-11-25 22:01+0100\n"
 "Last-Translator: Merijn de Vet <merijndevet@hotmail.com>\n"
 "Language-Team: Dutch translation team <foppe.benedictus@gmail.com>\n"
@@ -115,14 +115,28 @@ msgstr ""
 msgid "OPTIONS"
 msgstr "OPTIES"
 
+# type: TP
 #. type: TP
 #: doc/man/wesnoth.6:45
+#, fuzzy, no-wrap
+msgid "B<--addon-info>"
+msgstr "B<--nosound>"
+
+#. type: Plain text
+#: doc/man/wesnoth.6:48
+msgid ""
+"Shows a button on the add-ons manager to query the add-ons server for "
+"various information."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnoth.6:48
 #, no-wrap
 msgid "B<--all-translations>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:49
+#: doc/man/wesnoth.6:52
 msgid ""
 "Show all translations in the in-game language selection list, even if they "
 "are deemed insufficiently complete."
@@ -130,64 +144,64 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:49
+#: doc/man/wesnoth.6:52
 #, fuzzy, no-wrap
 msgid "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campaign>B<]>"
 msgstr "B<-d, --daemon>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:54
+#: doc/man/wesnoth.6:57
 msgid ""
 "goes directly to the campaign with id I<id_campaign>.  A selection menu will "
 "appear if no id was specified."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:54
+#: doc/man/wesnoth.6:57
 #, no-wrap
 msgid "B<--campaign-difficulty[>I<=difficulty>B<]>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:58
+#: doc/man/wesnoth.6:61
 msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:58
+#: doc/man/wesnoth.6:61
 #, no-wrap
 msgid "B<--campaign-scenario>I<\\ id_scenario>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:61
+#: doc/man/wesnoth.6:64
 msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:61
+#: doc/man/wesnoth.6:64
 #, no-wrap
 msgid "B<--campaign-skip-story>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:66
+#: doc/man/wesnoth.6:69
 msgid "Skip [story] screens and dialog through the end of the B<start> event."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:66
+#: doc/man/wesnoth.6:69
 #, fuzzy, no-wrap
 msgid "B<--clock>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:69
+#: doc/man/wesnoth.6:72
 msgid ""
 "Adds the option to show a clock for testing the drawing timer. Also adds the "
 "option for showing the GUI Test Dialog."
@@ -195,56 +209,56 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:69
+#: doc/man/wesnoth.6:72
 #, fuzzy, no-wrap
 msgid "B<--core>I<\\ id_core>"
 msgstr "B<--compress>I<\\ invoerbestand\\ uitvoerbestand>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:72
+#: doc/man/wesnoth.6:75
 #, fuzzy
 msgid "overrides the loaded core with the one whose id is specified."
 msgstr "selecteert de te gebruiken data map."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:72
+#: doc/man/wesnoth.6:75
 #, fuzzy, no-wrap
 msgid "B<--data-dir>I<\\ directory>"
 msgstr "B<--path>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:75
+#: doc/man/wesnoth.6:78
 #, fuzzy
 msgid "overrides the data directory with the one specified"
 msgstr "selecteert de te gebruiken data map."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:75
+#: doc/man/wesnoth.6:78
 #, fuzzy, no-wrap
 msgid "B<--data-path>"
 msgstr "B<--path>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:78
+#: doc/man/wesnoth.6:81
 #, fuzzy
 msgid "prints the path of the data directory and exits."
 msgstr "toont het pad van de speldata map en sluit af."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:78
+#: doc/man/wesnoth.6:81
 #, fuzzy, no-wrap
 msgid "B<-d, --debug>"
 msgstr "B<-d, --debug>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:83
+#: doc/man/wesnoth.6:86
 #, fuzzy
 msgid ""
 "enables additional command mode options in-game (see the wiki page at "
@@ -257,36 +271,36 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:83
+#: doc/man/wesnoth.6:86
 #, fuzzy, no-wrap
 msgid "B<--debug-lua>"
 msgstr "B<-d, --debug>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:86
+#: doc/man/wesnoth.6:89
 msgid "enables some Lua debugging mechanisms"
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:86
+#: doc/man/wesnoth.6:89
 #, fuzzy, no-wrap
 msgid "B<--strict-lua>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:89
+#: doc/man/wesnoth.6:92
 msgid "disallow deprecated Lua API calls"
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:89
+#: doc/man/wesnoth.6:92
 #, no-wrap
 msgid "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:95
+#: doc/man/wesnoth.6:98
 msgid ""
 "diffs the two WML files; does not preprocess them first (to do that, run "
 "them through B<-p> first). Outputs the diff as DiffWML on standard output or "
@@ -295,13 +309,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:95
+#: doc/man/wesnoth.6:98
 #, fuzzy, no-wrap
 msgid "B<-e[>I<file>B<],\\ --editor[>I<=file>B<]>"
 msgstr "B<-t, --test>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:102
+#: doc/man/wesnoth.6:105
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l> B<--load>."
@@ -309,14 +323,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:102
+#: doc/man/wesnoth.6:105
 #, fuzzy, no-wrap
 msgid "B<--fps>"
 msgstr "B<--fps>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:107
+#: doc/man/wesnoth.6:110
 #, fuzzy
 msgid ""
 "displays the number of frames per second the game is currently running at in "
@@ -328,28 +342,28 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:107
+#: doc/man/wesnoth.6:110
 #, fuzzy, no-wrap
 msgid "B<-f, --fullscreen>"
 msgstr "B<-f, --fullscreen>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:110
+#: doc/man/wesnoth.6:113
 #, fuzzy
 msgid "runs the game in full screen mode."
 msgstr "start het spel in volledig scherm."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:110 doc/man/wesnothd.6:51
+#: doc/man/wesnoth.6:113 doc/man/wesnothd.6:51
 #, fuzzy, no-wrap
 msgid "B<-h, --help>"
 msgstr "B<-h, --help>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:113
+#: doc/man/wesnoth.6:116
 #, fuzzy
 msgid ""
 "displays a summary of command line options to standard output, and exits."
@@ -357,13 +371,13 @@ msgstr "toont een samenvatting van command line opties en sluit af."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:113
+#: doc/man/wesnoth.6:116
 #, fuzzy, no-wrap
 msgid "B<-l,\\ --load>I<\\ file>"
 msgstr "B<--load>I<\\ opgeslagen spel>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:124
+#: doc/man/wesnoth.6:127
 msgid ""
 "loads the savegame I<file> from the standard save game directory. If the B<-"
 "e> or B<--editor> option is used as well, starts the editor with the map "
@@ -373,13 +387,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:124
+#: doc/man/wesnoth.6:127
 #, fuzzy, no-wrap
 msgid "B<-L,\\ --language>I<\\ lang>"
 msgstr "B<--load>I<\\ opgeslagen spel>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:131
+#: doc/man/wesnoth.6:134
 msgid ""
 "uses language I<lang> (symbol) this session.  Example: B<--language "
 "ang_GB@latin>"
@@ -387,14 +401,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:131 doc/man/wesnothd.6:54
+#: doc/man/wesnoth.6:134 doc/man/wesnothd.6:54
 #, fuzzy, no-wrap
 msgid "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 msgstr "B<--log->I<niveau>B<=>I<domein1>B<,>I<domein2>B<,>I<...>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:146
+#: doc/man/wesnoth.6:149
 #, fuzzy
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
@@ -408,25 +422,25 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:146
+#: doc/man/wesnoth.6:149
 #, fuzzy, no-wrap
 msgid "B<--log-precise>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:149
+#: doc/man/wesnoth.6:152
 msgid "shows the timestamps in log output with more precision."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:149
+#: doc/man/wesnoth.6:152
 #, fuzzy, no-wrap
 msgid "B<--log-strict>I<\\ level>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:158
+#: doc/man/wesnoth.6:161
 msgid ""
 "sets the strict I<level> of the logger. Any messages sent to log domains of "
 "this I<level> or more severe will cause the unit test to fail regardless of "
@@ -435,13 +449,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:158
+#: doc/man/wesnoth.6:161
 #, fuzzy, no-wrap
 msgid "B<--logdomains[>I<=filter>B<]>"
 msgstr "B<--logdomeinen>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:163
+#: doc/man/wesnoth.6:166
 msgid ""
 "lists defined log domains (only the ones containing I<filter> if used) and "
 "exits"
@@ -449,13 +463,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:163
+#: doc/man/wesnoth.6:166
 #, fuzzy, no-wrap
 msgid "B<--no-log-to-file>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:166
+#: doc/man/wesnoth.6:169
 msgid ""
 "prevents redirecting logged output to a file. The environment variable "
 "WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created "
@@ -464,13 +478,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:166
+#: doc/man/wesnoth.6:169
 #, fuzzy, no-wrap
 msgid "B<--log-to-file>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:169
+#: doc/man/wesnoth.6:172
 msgid ""
 "log output is written to a file. Cancels the effect of --no-log-to-file "
 "whether implicit or explicit."
@@ -478,13 +492,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:169
+#: doc/man/wesnoth.6:172
 #, fuzzy, no-wrap
 msgid "B<--no-log-sanitize>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:172
+#: doc/man/wesnoth.6:175
 msgid ""
 "disables the anonymization that's normally applied when logging, for example "
 "replacing usernames with USER."
@@ -492,13 +506,13 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:172
+#: doc/man/wesnoth.6:175
 #, fuzzy, no-wrap
 msgid "B<--wnoconsole>"
 msgstr "B<--nosound>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:175
+#: doc/man/wesnoth.6:178
 msgid ""
 "For Windows, when used with --no-log-to-file, results in output being "
 "written to cerr/cout instead of CONOUT. Otherwise, does nothing."
@@ -506,14 +520,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:175
+#: doc/man/wesnoth.6:178
 #, fuzzy, no-wrap
 msgid "B<--max-fps>I<\\ fps>"
 msgstr "B<--max-fps>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:182
+#: doc/man/wesnoth.6:185
 #, fuzzy
 msgid ""
 "the number of frames per second the game can show, the value should be "
@@ -524,14 +538,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:182
+#: doc/man/wesnoth.6:185
 #, fuzzy, no-wrap
 msgid "B<-m, --multiplayer>"
 msgstr "B<--multiplayer>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:188
+#: doc/man/wesnoth.6:191
 #, fuzzy
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
@@ -542,25 +556,25 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:188
+#: doc/man/wesnoth.6:191
 #, fuzzy, no-wrap
 msgid "B<--mp-test>"
 msgstr "B<-t, --test>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:191
+#: doc/man/wesnoth.6:194
 msgid "load the test mp scenarios."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:191
+#: doc/man/wesnoth.6:194
 #, fuzzy, no-wrap
 msgid "B<--new-widgets>"
 msgstr "B<--no-delay>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:194
+#: doc/man/wesnoth.6:197
 msgid ""
 "there is a new WIP widget toolkit, this option enables it. This is very "
 "experimental, don't fill bug reports since most are known. Parts of the "
@@ -569,41 +583,41 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:194
+#: doc/man/wesnoth.6:197
 #, fuzzy, no-wrap
 msgid "B<--noaddons>"
 msgstr "B<--nosound>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:197
+#: doc/man/wesnoth.6:200
 #, fuzzy
 msgid "disables loading of user addons."
 msgstr "schakelt het afvangen van speldata uit."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:197
+#: doc/man/wesnoth.6:200
 #, fuzzy, no-wrap
 msgid "B<--nocache>"
 msgstr "B<--nocache>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:200
+#: doc/man/wesnoth.6:203
 #, fuzzy
 msgid "disables caching of game data."
 msgstr "schakelt het afvangen van speldata uit."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:200
+#: doc/man/wesnoth.6:203
 #, fuzzy, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:208
+#: doc/man/wesnoth.6:211
 msgid ""
 "runs the game without the GUI. Only available in combination with B<--"
 "multiplayer> or B<--screenshot> or B<--plugin>."
@@ -611,39 +625,39 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:208
+#: doc/man/wesnoth.6:211
 #, fuzzy, no-wrap
 msgid "B<--nobanner>"
 msgstr "B<--nocache>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:211
+#: doc/man/wesnoth.6:214
 msgid "suppress the startup banner."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:211
+#: doc/man/wesnoth.6:214
 #, fuzzy, no-wrap
 msgid "B<--nomusic>"
 msgstr "B<--nogui>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:214
+#: doc/man/wesnoth.6:217
 #, fuzzy
 msgid "runs the game without music."
 msgstr "draait het spel zonder effecten en muziek."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:214
+#: doc/man/wesnoth.6:217
 #, fuzzy, no-wrap
 msgid "B<--noreplaycheck>"
 msgstr "B<--nocache>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:218
+#: doc/man/wesnoth.6:221
 msgid ""
 "don't try to validate replay of unit test. Only relevant when used with B<-"
 "u>."
@@ -651,39 +665,39 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:218
+#: doc/man/wesnoth.6:221
 #, fuzzy, no-wrap
 msgid "B<--nosound>"
 msgstr "B<--nosound>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:221
+#: doc/man/wesnoth.6:224
 #, fuzzy
 msgid "runs the game without sounds and music."
 msgstr "draait het spel zonder effecten en muziek."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:221
+#: doc/man/wesnoth.6:224
 #, fuzzy, no-wrap
 msgid "B<--output>I<\\ file>"
 msgstr "B<--gzip>I<\\ invoerbestand>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:224
+#: doc/man/wesnoth.6:227
 msgid "output to the specified file. Applicable to diffing operations."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:224
+#: doc/man/wesnoth.6:227
 #, fuzzy, no-wrap
 msgid "B<--password>I<\\ password>"
 msgstr "B<passwd>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:229
+#: doc/man/wesnoth.6:232
 msgid ""
 "uses I<password> when connecting to a server, ignoring other preferences. "
 "Unsafe."
@@ -691,27 +705,27 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:229
+#: doc/man/wesnoth.6:232
 #, fuzzy, no-wrap
 msgid "B<--plugin>I<\\ script>"
 msgstr "B<--gzip>I<\\ invoerbestand>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:236
+#: doc/man/wesnoth.6:237
 msgid ""
-"(experimental) load a I<script> which defines a Wesnoth plugin. Similar to "
-"B<--script>, but Lua file should return a function which will be run as a "
-"coroutine and periodically woken up with updates."
+"load a I<script> which defines a Wesnoth plugin. Lua file should return a "
+"function which will be run as a coroutine and periodically woken up with "
+"updates."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:236
+#: doc/man/wesnoth.6:237
 #, no-wrap
 msgid "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:241
+#: doc/man/wesnoth.6:242
 msgid ""
 "applies a DiffWML patch to a WML file; does not preprocess either of the "
 "files.  Outputs the patched WML to standard output or to the file indicated "
@@ -719,13 +733,13 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:241
+#: doc/man/wesnoth.6:242
 #, no-wrap
 msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:251
+#: doc/man/wesnoth.6:252
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -738,24 +752,24 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:251
+#: doc/man/wesnoth.6:252
 #, no-wrap
 msgid "B<--preprocess-string>I<\\ source-string>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:254
+#: doc/man/wesnoth.6:255
 msgid "preprocesses a given string and writes the output to stdout."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:254
+#: doc/man/wesnoth.6:255
 #, no-wrap
 msgid "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<...>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:263
+#: doc/man/wesnoth.6:264
 msgid ""
 "comma separated list of defines to be used by the B<--preprocess> or B<--"
 "preprocess-string> command. If B<SKIP_CORE> is in the define list the \"data/"
@@ -763,13 +777,13 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:263
+#: doc/man/wesnoth.6:264
 #, no-wrap
 msgid "B<--preprocess-input-macros>I<\\ source-file>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:272
+#: doc/man/wesnoth.6:273
 msgid ""
 "used only by the B<--preprocess> or B<--preprocess-string> command. "
 "Specifies a file that contains B<[preproc_define]>s to be included before "
@@ -777,13 +791,13 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:272
+#: doc/man/wesnoth.6:273
 #, no-wrap
 msgid "B<--preprocess-output-macros[>I<=target-file>B<]>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:285
+#: doc/man/wesnoth.6:286
 msgid ""
 "used only by the B<--preprocess> command (But not by the B<--preprocess-"
 "string> command). Will output all preprocessed macros in the target file. If "
@@ -795,41 +809,41 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:285
+#: doc/man/wesnoth.6:286
 #, fuzzy, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:290
+#: doc/man/wesnoth.6:291
 #, fuzzy
 msgid "sets the screen resolution. Example: B<-r> B<800x600>."
 msgstr "bepaalt de beeldresolutie. Bijvoorbeeld: B<-r 800x600>"
 
 #. type: TP
-#: doc/man/wesnoth.6:290
+#: doc/man/wesnoth.6:291
 #, no-wrap
 msgid "B<--render-image>I<\\ image>B<\\ >I<output>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:293
+#: doc/man/wesnoth.6:294
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://"
-"wiki.wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://wiki."
+"wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:293
+#: doc/man/wesnoth.6:294
 #, fuzzy, no-wrap
 msgid "B<-R,\\ --report>"
 msgstr "B<-r>,B<\\ --resolution>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:296
+#: doc/man/wesnoth.6:297
 msgid ""
 "initializes game directories, prints build information suitable for use in "
 "bug reports, and exits."
@@ -837,51 +851,39 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:296
+#: doc/man/wesnoth.6:297
 #, fuzzy, no-wrap
 msgid "B<--rng-seed>I<\\ number>"
 msgstr "B<--path>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:303
+#: doc/man/wesnoth.6:304
 msgid ""
 "seeds the random number generator with I<number>.  Example: B<--rng-seed> "
 "B<0>."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:303
+#: doc/man/wesnoth.6:304
 #, no-wrap
 msgid "B<--screenshot>I<\\ map>B<\\ >I<output>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:310
+#: doc/man/wesnoth.6:311
 msgid ""
 "saves a screenshot of I<map> to I<output> without initializing a screen."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:310
-#, fuzzy, no-wrap
-msgid "B<--script>I<\\ file>"
-msgstr "B<--gzip>I<\\ invoerbestand>"
-
-#. type: Plain text
-#: doc/man/wesnoth.6:315
-msgid "(experimental)  I<file> containing a Lua script to control the client."
-msgstr ""
-
-# type: TP
-#. type: TP
-#: doc/man/wesnoth.6:315
+#: doc/man/wesnoth.6:311
 #, fuzzy, no-wrap
 msgid "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
 msgstr "B<-v, --verbose>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:320
+#: doc/man/wesnoth.6:316
 msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server> B<server.wesnoth.org>."
@@ -889,35 +891,35 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:320
+#: doc/man/wesnoth.6:316
 #, fuzzy, no-wrap
 msgid "B<--showgui>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:324
+#: doc/man/wesnoth.6:320
 msgid "runs the game with the GUI, overriding any implicit B<--nogui>."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:324
+#: doc/man/wesnoth.6:320
 #, no-wrap
 msgid "B<--strict-validation>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:327
+#: doc/man/wesnoth.6:323
 msgid "validation errors are treated as fatal errors."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:327
+#: doc/man/wesnoth.6:323
 #, no-wrap
 msgid "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:337
+#: doc/man/wesnoth.6:333
 msgid ""
 "runs the game in a small test scenario. The scenario should be one defined "
 "with a B<[test]> WML tag. The default is B<test>.  A demonstration of the "
@@ -925,13 +927,13 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:337
+#: doc/man/wesnoth.6:333
 #, no-wrap
 msgid "B<--translations-over>I<\\ percent>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:343
+#: doc/man/wesnoth.6:339
 msgid ""
 "Set the standard for deeming a translation is complete enough to show in the "
 "in-game language list to I<percent>.  Valid values are 0 to 100."
@@ -939,25 +941,25 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:343
+#: doc/man/wesnoth.6:339
 #, fuzzy, no-wrap
 msgid "B<-u,\\ --unit>I<\\ scenario-id>"
 msgstr "B<-t, --test>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:347
+#: doc/man/wesnoth.6:343
 msgid "runs the specified test scenario as a unit test. Implies B<--nogui>."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:347
+#: doc/man/wesnoth.6:343
 #, fuzzy, no-wrap
 msgid "B<--unsafe-scripts>"
 msgstr "B<--path>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:352
+#: doc/man/wesnoth.6:348
 msgid ""
 "makes the B<package> package available to lua scripts, so that they can load "
 "arbitrary packages. Do not do this with untrusted scripts! This action gives "
@@ -966,25 +968,25 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:352
+#: doc/man/wesnoth.6:348
 #, fuzzy, no-wrap
 msgid "B<-S,\\ --use-schema>I<\\ path>"
 msgstr "B<--scenario=>I<waarde>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:356
+#: doc/man/wesnoth.6:352
 msgid "sets the WML schema for use with B<-V,\\ --validate>."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:356
+#: doc/man/wesnoth.6:352
 #, fuzzy, no-wrap
 msgid "B<--userdata-dir>I<\\ name>"
 msgstr "B<--path>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:365
+#: doc/man/wesnoth.6:361
 msgid ""
 "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
 "Games\" for windows.  You can also specify an absolute path for the userdata "
@@ -995,156 +997,156 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:365
+#: doc/man/wesnoth.6:361
 #, fuzzy, no-wrap
 msgid "B<--userdata-path>"
 msgstr "B<--path>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:368
+#: doc/man/wesnoth.6:364
 #, fuzzy
 msgid "prints the path of the userdata directory and exits."
 msgstr "toont het pad van de speldata map en sluit af."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:368
+#: doc/man/wesnoth.6:364
 #, fuzzy, no-wrap
 msgid "B<--username>I<\\ username>"
 msgstr "B<--path>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:373
+#: doc/man/wesnoth.6:369
 msgid ""
 "uses I<username> when connecting to a server, ignoring other preferences."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:373
+#: doc/man/wesnoth.6:369
 #, fuzzy, no-wrap
 msgid "B<--validate>I<\\ path>"
 msgstr "B<--path>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:376
+#: doc/man/wesnoth.6:372
 msgid "validates a file against the WML schema."
 msgstr ""
 
 #. type: TP
-#: doc/man/wesnoth.6:376
+#: doc/man/wesnoth.6:372
 #, no-wrap
 msgid "B<--validate-addon>I<\\ addon_id>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:379
+#: doc/man/wesnoth.6:375
 msgid "validates the WML of the given addon as you play."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:379
+#: doc/man/wesnoth.6:375
 #, fuzzy, no-wrap
 msgid "B<--validate-core>"
 msgstr "B<--nocache>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:382
+#: doc/man/wesnoth.6:378
 msgid "validates the core WML as you play."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:382
+#: doc/man/wesnoth.6:378
 #, fuzzy, no-wrap
 msgid "B<--validate-schema>I<\\ path>"
 msgstr "B<--nocache>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:385
+#: doc/man/wesnoth.6:381
 msgid "validates a file as a WML schema."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:385
+#: doc/man/wesnoth.6:381
 #, fuzzy, no-wrap
 msgid "B<--validcache>"
 msgstr "B<--nocache>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:388
+#: doc/man/wesnoth.6:384
 msgid "assumes that the cache is valid. (dangerous)"
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:388
+#: doc/man/wesnoth.6:384
 #, fuzzy, no-wrap
 msgid "B<-v, --version>"
 msgstr "B<-v, --version>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:391
+#: doc/man/wesnoth.6:387
 #, fuzzy
 msgid "shows the version number and exits."
 msgstr "toont het versienummer en sluit af."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:391
+#: doc/man/wesnoth.6:387
 #, fuzzy, no-wrap
 msgid "B<--simple-version>"
 msgstr "B<-v, --version>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:394
+#: doc/man/wesnoth.6:390
 #, fuzzy
 msgid "shows the version number and nothing else, then exits."
 msgstr "toont het versienummer en sluit af."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:394
+#: doc/man/wesnoth.6:390
 #, fuzzy, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w, --windowed>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:397
+#: doc/man/wesnoth.6:393
 #, fuzzy
 msgid "runs the game in windowed mode."
 msgstr "start het spel in een venster."
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:397
+#: doc/man/wesnoth.6:393
 #, fuzzy, no-wrap
 msgid "B<--with-replay>"
 msgstr "B<--no-delay>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:402
+#: doc/man/wesnoth.6:398
 msgid "replays the game loaded with the B<--load> option."
 msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:403
+#: doc/man/wesnoth.6:399
 #, fuzzy, no-wrap
 msgid "Options for --multiplayer"
 msgstr "Opties voor --multiplayer"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:410
+#: doc/man/wesnoth.6:406
 #, fuzzy
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
@@ -1158,27 +1160,27 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:410
+#: doc/man/wesnoth.6:406
 #, fuzzy, no-wrap
 msgid "B<--ai-config>I<\\ number>B<:>I<value>"
 msgstr "B<--side>I<nummer>B<=>I<waarde>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:413
+#: doc/man/wesnoth.6:409
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:413
+#: doc/man/wesnoth.6:409
 #, fuzzy, no-wrap
 msgid "B<--algorithm>I<\\ number>B<:>I<value>"
 msgstr "B<--algorithm>I<nummer>B<=>I<waarde>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:423
+#: doc/man/wesnoth.6:419
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. The algorithm is defined by an B<[ai]> tag, which can be a core one "
@@ -1188,14 +1190,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:423
+#: doc/man/wesnoth.6:419
 #, fuzzy, no-wrap
 msgid "B<--controller>I<\\ number>B<:>I<value>"
 msgstr "B<--controller>I<nummer>B<=>I<waarde>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:430
+#: doc/man/wesnoth.6:426
 #, fuzzy
 msgid ""
 "selects the controller for this side. Available values: B<human>, B<ai> and "
@@ -1206,14 +1208,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:430
+#: doc/man/wesnoth.6:426
 #, fuzzy, no-wrap
 msgid "B<--era>I<\\ value>"
 msgstr "B<--era=>I<waarde>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:437
+#: doc/man/wesnoth.6:433
 #, fuzzy
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
@@ -1226,14 +1228,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:437
+#: doc/man/wesnoth.6:433
 #, fuzzy, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:441
+#: doc/man/wesnoth.6:437
 #, fuzzy
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
@@ -1244,37 +1246,37 @@ msgstr ""
 "tonen waarbij de gebruiker op ok dient te drukken."
 
 #. type: TP
-#: doc/man/wesnoth.6:441
+#: doc/man/wesnoth.6:437
 #, no-wrap
 msgid "B<--ignore-map-settings>"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:444
+#: doc/man/wesnoth.6:440
 msgid "do not use map settings, use default values instead."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:444
+#: doc/man/wesnoth.6:440
 #, fuzzy, no-wrap
 msgid "B<--label>I<\\ label>"
 msgstr "B<--era=>I<waarde>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:449
+#: doc/man/wesnoth.6:445
 msgid "sets the I<label> for AIs."
 msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:449
+#: doc/man/wesnoth.6:445
 #, fuzzy, no-wrap
 msgid "B<--multiplayer-repeat>I<\\ value>"
 msgstr "B<--era=>I<waarde>"
 
 #. type: Plain text
-#: doc/man/wesnoth.6:456
+#: doc/man/wesnoth.6:452
 msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
@@ -1282,14 +1284,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:456
+#: doc/man/wesnoth.6:452
 #, fuzzy, no-wrap
 msgid "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
 msgstr "B<--parm>I<nummer>B<=>I<naam>B<:>I<waarde>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:465
+#: doc/man/wesnoth.6:461
 #, fuzzy
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
@@ -1303,14 +1305,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:465
+#: doc/man/wesnoth.6:461
 #, fuzzy, no-wrap
 msgid "B<--scenario>I<\\ value>"
 msgstr "B<--scenario=>I<waarde>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:469
+#: doc/man/wesnoth.6:465
 #, fuzzy
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
@@ -1321,14 +1323,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:469
+#: doc/man/wesnoth.6:465
 #, fuzzy, no-wrap
 msgid "B<--side>I<\\ number>B<:>I<value>"
 msgstr "B<--side>I<nummer>B<=>I<waarde>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:474
+#: doc/man/wesnoth.6:470
 #, fuzzy
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
@@ -1340,14 +1342,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: doc/man/wesnoth.6:474
+#: doc/man/wesnoth.6:470
 #, fuzzy, no-wrap
 msgid "B<--turns>I<\\ value>"
 msgstr "B<--turns=waarde>"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:477
+#: doc/man/wesnoth.6:473
 #, fuzzy
 msgid ""
 "sets the number of turns for the chosen scenario. By default no turn limit "
@@ -1356,13 +1358,13 @@ msgstr ""
 "stelt het aantal zetten voor het gekozen scenario in. De standaard is B<50>."
 
 #. type: SH
-#: doc/man/wesnoth.6:478 doc/man/wesnothd.6:265
+#: doc/man/wesnoth.6:474 doc/man/wesnothd.6:271
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:483
+#: doc/man/wesnoth.6:479
 msgid ""
 "Normal exit status is 0.  An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -1370,7 +1372,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: doc/man/wesnoth.6:493
+#: doc/man/wesnoth.6:489
 msgid ""
 "When running unit tests (withB<\\ -u>), the exit status is different. An "
 "exit status of 0 indicates that the test passed, and 1 indicates that the "
@@ -1382,32 +1384,32 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:494 doc/man/wesnothd.6:269
+#: doc/man/wesnoth.6:490 doc/man/wesnothd.6:275
 #, fuzzy, no-wrap
 msgid "AUTHOR"
 msgstr "AUTEUR"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:497
+#: doc/man/wesnoth.6:493
 #, fuzzy
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Geschreven door David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:499
+#: doc/man/wesnoth.6:495
 #, fuzzy
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
-"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
+"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
 "Bewerkt door Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
 "E<lt>ott@gaon.netE<gt> en Soliton E<lt>soliton.de@gmail.comE<gt>."
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:501
+#: doc/man/wesnoth.6:497
 #, fuzzy
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
@@ -1418,21 +1420,21 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:503 doc/man/wesnothd.6:276
+#: doc/man/wesnoth.6:499 doc/man/wesnothd.6:282
 #, fuzzy
 msgid "Visit the official homepage: https://www.wesnoth.org/"
 msgstr "Bezoek de officiele website: http://www.wesnoth.org/"
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:504 doc/man/wesnothd.6:277
+#: doc/man/wesnoth.6:500 doc/man/wesnothd.6:283
 #, fuzzy, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:507 doc/man/wesnothd.6:280
+#: doc/man/wesnoth.6:503 doc/man/wesnothd.6:286
 #, fuzzy
 msgid "Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
@@ -1440,7 +1442,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnoth.6:510 doc/man/wesnothd.6:283
+#: doc/man/wesnoth.6:506 doc/man/wesnothd.6:289
 #, fuzzy
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
@@ -1454,7 +1456,7 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: doc/man/wesnoth.6:511 doc/man/wesnothd.6:284
+#: doc/man/wesnoth.6:507 doc/man/wesnothd.6:290
 #, fuzzy, no-wrap
 msgid "SEE ALSO"
 msgstr "BEKIJK OOK"
@@ -1760,13 +1762,13 @@ msgstr "B<disallow_names>"
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: "
-"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
+"ai,ai?,computer,human,network,player>."
 msgstr ""
 "Namen die niet geaccepteerd worden door de sever. `*' en `?' als jokertekens "
 "zijn toegestaan. Bekijk B<glob>(7) voor meer details. Standaard waarden "
-"(gebruikt wanneer niet gespecificeerd) zijn: "
-"B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
+"(gebruikt wanneer niet gespecificeerd) zijn: B<*admin*,*admln*,*server*,ai,"
+"ai?,computer,human,network,player>."
 
 # type: TP
 #. type: TP
@@ -2305,8 +2307,27 @@ msgid ""
 "The ID of the forum group to be considered as having moderation authority."
 msgstr ""
 
+#. type: TP
+#: doc/man/wesnothd.6:263
+#, no-wrap
+msgid "B<forum_admin_group>"
+msgstr ""
+
 #. type: Plain text
-#: doc/man/wesnothd.6:268
+#: doc/man/wesnothd.6:266 doc/man/wesnothd.6:269
+msgid ""
+"The ID of one of the forum groups to be considered as having admin authority "
+"on the add-ons server."
+msgstr ""
+
+#. type: TP
+#: doc/man/wesnothd.6:266
+#, no-wrap
+msgid "B<site_admin_group>"
+msgstr ""
+
+#. type: Plain text
+#: doc/man/wesnothd.6:274
 msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
@@ -2314,14 +2335,14 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: doc/man/wesnothd.6:274
+#: doc/man/wesnothd.6:280
 #, fuzzy
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
-"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
-"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
+"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
+"Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Geschreven door David White E<lt>davidnwhite@verizon.netE<gt>.  Bewerkt door "
 "Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> en "
@@ -2330,10 +2351,15 @@ msgstr ""
 
 # type: TH
 #. type: Plain text
-#: doc/man/wesnothd.6:287
+#: doc/man/wesnothd.6:293
 #, fuzzy
 msgid "B<wesnoth>(6)"
 msgstr "wesnoth"
+
+# type: TP
+#, fuzzy, no-wrap
+#~ msgid "B<--script>I<\\ file>"
+#~ msgstr "B<--gzip>I<\\ invoerbestand>"
 
 # type: TP
 #, fuzzy, no-wrap
@@ -2432,8 +2458,8 @@ msgstr "wesnoth"
 #~ "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
 #~ "I<infile>."
 #~ msgstr ""
-#~ "comprimeert een bestand in gzip formaat, bewaart het als "
-#~ "I<invoerbestand>.gz en verwijdert I<invoerbestand>"
+#~ "comprimeert een bestand in gzip formaat, bewaart het als I<invoerbestand>."
+#~ "gz en verwijdert I<invoerbestand>"
 
 # type: TP
 #, fuzzy, no-wrap
@@ -2460,8 +2486,8 @@ msgstr "wesnoth"
 #~ "compresses a file in gzip format, stores it as I<infile>.gz and removes "
 #~ "I<infile>."
 #~ msgstr ""
-#~ "comprimeert een bestand in gzip formaat, bewaart het als "
-#~ "I<invoerbestand>.gz en verwijdert I<invoerbestand>"
+#~ "comprimeert een bestand in gzip formaat, bewaart het als I<invoerbestand>."
+#~ "gz en verwijdert I<invoerbestand>"
 
 # type: TP
 #, fuzzy
@@ -2756,9 +2782,9 @@ msgstr "wesnoth"
 #~ "E<lt>cyril@bouthors.orgE<gt>."
 #~ msgstr ""
 #~ "Geschreven door David White E<lt>davidnwhite@verizon.netE<gt>.  Bewerkt "
-#~ "door Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> en ott "
-#~ "E<lt>ott@gaon.netE<gt>.  Deze handleiding is oorspronkelijk geschreven "
-#~ "door Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+#~ "door Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> en ott E<lt>ott@gaon."
+#~ "netE<gt>.  Deze handleiding is oorspronkelijk geschreven door Cyril "
+#~ "Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #~ msgid "wesnoth(6), wesnothd(6)"

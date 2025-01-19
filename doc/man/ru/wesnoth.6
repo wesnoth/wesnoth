@@ -43,6 +43,10 @@ wesnoth \- Битва за Веснот, пошаговая стратегиче
 .SH ПАРАМЕТРЫ
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 Отобразить все переводы во внутриигровом списке выбора языка, даже если они
 считаются недостаточно полными.
@@ -202,10 +206,9 @@ replacing usernames with USER.
 предпочтения. Небезопасно.
 .TP 
 \fB\-\-plugin\fP\fI\ скрипт\fP
-(экспериментально) загрузить \fIскрипт\fP, определяющий плагин Веснота. В
-целом, похоже на \fB\-\-script\fP за исключением того, что файл Lua должен
-вернуть функцию, которую можно запустить в качестве сопрограммы и время от
-времени пробуждать обновлениями.
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 применяет патч DiffWML к WML\-файлу; ни один из этих файлов предварительно не
@@ -262,9 +265,6 @@ typed before the \fB\-\-preprocess\fP command.
 \fB\-\-screenshot\fP\fI\ карта\fP\fB\ \fP\fIрезультат\fP
 сохраняет снимок экрана \fIкарты\fP в файл \fIрезультат\fP , не запуская вывод на
 экран.
-.TP 
-\fB\-\-script\fP\fI\ файл\fP
-(экспериментально)  \fIфайл\fP , содержащий скрипт Lua управления клиентом.
 .TP 
 \fB\-s[\fP\fIхост\fP\fB],\ \-\-server[\fP\fI=хост\fP\fB]\fP
 подключиться к указанному хосту, если таковой имеется, иначе подключиться к

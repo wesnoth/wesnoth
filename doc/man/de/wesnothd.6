@@ -26,7 +26,7 @@ wesnothd \- »Battle for \fBWesnoth\fP«\-Mehrspielernetzwerkdienst
 .
 .SH ZUSAMMENFASSUNG
 .
-\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|]
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIPfad\fP\|] [\|\fB\-p\fP \fIPort\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
@@ -102,9 +102,9 @@ Legt fest, ob sich nur Spieler einloggen dürfen, welche beim \fBuser_handler\fP
 registriert sind. (Standard: false)
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
-patterns are supported. See \fBglob\fP(7)  for more details.  Default values
-(used if nothing is specified) are:
+Namen/Spitznamen, die der Server nicht akzeptiert. \fB*\fP und \fB?\fP sind als
+Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte
+(wenn sonst nichts angegeben wurde) sind:
 \fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
@@ -219,16 +219,16 @@ werden, für scons durch \fBforum_user_handler\fP.
 .RS
 .TP 
 \fBdb_host\fP
-Der Hostname des Datenbank\-Servers.
+Der Hostname des Datenbank\-Servers
 .TP 
 \fBdb_name\fP
-Der Name der Datenbank.
+Der Name der Datenbank
 .TP 
 \fBdb_user\fP
-Der Benutzername, der zur Anmeldung an der Datenbank verwendet werden soll.
+Der Benutzername, der zur Anmeldung an der Datenbank verwendet werden soll
 .TP 
 \fBdb_password\fP
-Das Passwort dieses Benutzers.
+Das Passwort dieses Benutzers
 .TP 
 \fBdb_users_table\fP
 Der Name der Tabelle, in der das phpbb\-Forum die Nutzerdaten ablegt. Dies
@@ -245,8 +245,9 @@ Der Name der Tabelle, in der wesnothd Informationen über die Spieler eines
 Spiels speichert.
 .TP 
 \fBdb_game_content_info_table\fP
-The name of the table in which wesnothd will save its own data about game
-content (scenario/era/modifications) used in a game.
+Der Name der Tabelle, in der wesnothd Informationen über seine eigenen Daten
+über Spielinhalte (Szenario/Epoche/Modifikationen), die in einem Spiel
+verwendet werden, abspeichert.
 .TP 
 \fBdb_user_group_table\fP
 Der Name der Tabelle, in der das phpbb\-Forum die Gruppendaten ablegt. Dies
@@ -254,8 +255,8 @@ ist höchstwahrscheinlich <table\-prefix>_user_group
 (z. B. phpbb3_user_group).
 .TP 
 \fBdb_tournament_query\fP
-The SQL query to find tournaments to announce on login. Should return
-tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
+Die SQL\-Abfrage, um anzukündigende Turniere beim Einloggen zu finden. Sollte
+Turnier\-\fBTitel\fP, \fBStatus\fP und \fBURL\fP zurückgeben.
 .TP 
 \fBdb_connection_history_table\fP
 Der Name der Tabelle die die Login\-/Logout\-Zeiten speichert und Zuordnungen
@@ -273,6 +274,14 @@ Banndaten ablegt. Dies ist höchstwahrscheinlich
 .TP 
 \fBmp_mod_group\fP
 Die ID der Forengruppe, welche über Moderationsrechte verfügt.
+.TP 
+\fBforum_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
+.TP 
+\fBsite_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
 .RE
 .
 .SH RÜCKGABEWERT

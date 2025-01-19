@@ -37,6 +37,10 @@ Battle for \fBWesnoth\fPはターン制のファンタジー戦略ゲームで�
 .SH オプション
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 ゲーム内の言語選択リストに、翻訳率が低いものを含むすべての翻訳を表示する。
 .TP 
@@ -172,8 +176,9 @@ BGMなしでゲームを実行する。
 サーバーへ接続時、他の設定を無視して、 \fIpassword\fP を使用する。危険。
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-（試験的）Wesnoth のプラグインを定義した \fIscript\fP を読み込む。\fB\-\-script\fP と類似しているが、Lua
-ファイルはコルーチンとして動作する関数を返し、定期的に呼び出されなければならない。
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 DiffWMLパッチをWMLファイルに適用する。どちらのファイルに対しても前処理は行われない。標準出力または \fI\-\-output\fP
@@ -220,9 +225,6 @@ typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
 画面の初期化なしに \fImap\fP のスクリーンショットを \fIoutput\fP に保存する
-.TP 
-\fB\-\-script\fP\fI\ file\fP
-（試験的）\fIfile\fP：クライアントコントロール用の Lua スクリプト。
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 指定したホストに接続する。指定がない場合は、設定内の最初のサーバに接続する。例： \fB\-\-server\fP \fBserver.wesnoth.org\fP

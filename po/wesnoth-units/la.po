@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-12-18 22:51 UTC\n"
+"POT-Creation-Date: 2025-01-19 17:47 UTC\n"
 "PO-Revision-Date: 2012-12-19 20:12-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -27,8 +27,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:30
 #: data/campaigns/Dead_Water/units/Warrior_King.cfg:31
 #: data/campaigns/Dead_Water/units/Young_King.cfg:26
-#: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:41
-#: data/campaigns/The_South_Guard/units/Mounted_General.cfg:42
 #: data/core/units/dunefolk/Alchemist.cfg:35
 #: data/core/units/dunefolk/Apothecary.cfg:36
 #: data/core/units/dunefolk/Cataphract.cfg:43
@@ -134,6 +132,9 @@ msgstr "unda tenebrarum"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:73
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:74
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:73
+#: data/campaigns/The_South_Guard/units/Mari2-relaxed.cfg:40
+#: data/campaigns/The_South_Guard/units/Mari2.cfg:39
+#: data/campaigns/The_South_Guard/units/Mari3.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:39
 #: data/core/units/dunefolk/Skirmisher.cfg:44
 #: data/core/units/humans/Outlaw.cfg:31
@@ -187,8 +188,6 @@ msgstr "dentes"
 
 #. [attack]: type=pierce
 #: data/campaigns/Eastern_Invasion/units/Human_Banneret.cfg:24
-#: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:30
-#: data/campaigns/The_South_Guard/units/Mounted_General.cfg:31
 #: data/core/units/dunefolk/Cataphract.cfg:52
 #: data/core/units/humans/Horse_Grand_Knight.cfg:33
 #: data/core/units/humans/Horse_Knight.cfg:32
@@ -259,6 +258,7 @@ msgstr "tactus"
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:33
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:36
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:38
+#: data/campaigns/The_South_Guard/units/MECH_Quintain.cfg:25
 #: data/campaigns/tutorial/units/Quintain.cfg:25
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:26
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:23
@@ -336,6 +336,7 @@ msgstr "gladius"
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Frontier_Sergeant.cfg:38
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Commander.cfg:55
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Lieutenant.cfg:53
+#: data/campaigns/The_South_Guard/units/Deoran3_Cavalier.cfg:51
 #: data/core/units/humans/Loyalist_Cavalier.cfg:45
 #: data/core/units/humans/Loyalist_Dragoon.cfg:63
 #: data/core/units/humans/Loyalist_Duelist.cfg:45
@@ -356,6 +357,7 @@ msgstr "scorpio"
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Commander.cfg:46
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Lieutenant.cfg:44
 #: data/campaigns/Liberty/units/Maddock.cfg:51
+#: data/campaigns/The_South_Guard/units/Deoran3_Cavalier.cfg:42
 #: data/core/units/humans/Horse_Grand_Knight.cfg:24
 #: data/core/units/humans/Loyalist_Cavalier.cfg:36
 #: data/core/units/humans/Loyalist_General.cfg:44
@@ -437,6 +439,8 @@ msgstr "procella gelida"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:942
+#: data/core/units/boats/Raider_Coastal.cfg:139
+#: data/core/units/boats/Raider_Iron.cfg:146
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -496,6 +500,9 @@ msgstr "ungues"
 #: data/campaigns/Secrets_of_the_Ancients/units/Bone_Captain.cfg:32
 #: data/campaigns/Secrets_of_the_Ancients/units/Sailor.cfg:23
 #: data/campaigns/Secrets_of_the_Ancients/units/Sea_Captain.cfg:26
+#: data/campaigns/The_South_Guard/units/Mari2-relaxed.cfg:29
+#: data/campaigns/The_South_Guard/units/Mari2.cfg:28
+#: data/campaigns/The_South_Guard/units/Mari3.cfg:27
 #: data/core/units/humans/Loyalist_Duelist.cfg:36
 #: data/core/units/humans/Loyalist_Fencer.cfg:59
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:31
@@ -756,7 +763,7 @@ msgstr ""
 #: data/core/units/dunefolk/Explorer.cfg:35
 #: data/core/units/dunefolk/Rover.cfg:32
 #: data/core/units/dunefolk/Wayfarer.cfg:43
-#: data/core/units/dwarves/Explorer.cfg:33
+#: data/core/units/dwarves/Explorer.cfg:37
 #: data/core/units/dwarves/Fighter.cfg:57
 #: data/core/units/dwarves/Pathfinder.cfg:36
 #: data/core/units/dwarves/Pathfinder.cfg:44
@@ -801,7 +808,6 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:28
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:37
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:32
-#: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:29
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:45
 #: data/core/units/drakes/Clasher.cfg:34 data/core/units/drakes/Thrasher.cfg:32
@@ -861,7 +867,7 @@ msgstr "pilum"
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:28
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:28
-#: data/core/units/dwarves/Explorer.cfg:24 data/core/units/dwarves/Lord.cfg:48
+#: data/core/units/dwarves/Explorer.cfg:28 data/core/units/dwarves/Lord.cfg:48
 #: data/core/units/dwarves/Steelclad.cfg:48
 #: data/core/units/undead/Skele_Death_Knight.cfg:33
 msgid "battle axe"
@@ -990,7 +996,8 @@ msgid "female^Elvish Shyde"
 msgstr "Hamadryas"
 
 #. [attack]: type=impact
-#: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:40
+#: data/campaigns/The_South_Guard/units/Gerrick2_Veteran_Infantryman.cfg:31
+#: data/campaigns/The_South_Guard/units/Gerrick3_Master_Infantryman.cfg:32
 #: data/core/units/dunefolk/Spearguard.cfg:42
 #: data/core/units/dunefolk/Spearmaster.cfg:45
 msgid "shield bash"
@@ -1157,12 +1164,12 @@ msgstr ""
 "Rates, remis velisve gubernatae, usui hominibus sunt causa paulum et in "
 "brevi eundi, ubi magnae naves navigare non possunt."
 
-#. [unit_type]: id=Derelict Hulk, race=transport
+#. [unit_type]: id=Derelict Hulk, race=ship
 #: data/core/units/boats/Derelict_Galleon.cfg:4
 msgid "Derelict Hulk"
 msgstr ""
 
-#. [unit_type]: id=Derelict Hulk, race=transport
+#. [unit_type]: id=Derelict Hulk, race=ship
 #: data/core/units/boats/Derelict_Galleon.cfg:18
 msgid ""
 "Derelicts are abandoned wrecks that continue to drift across the seas. Most "
@@ -1175,14 +1182,14 @@ msgstr ""
 msgid "jetsam"
 msgstr ""
 
-#. [unit_type]: id=Fireship, race=transport
+#. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:4
 #, fuzzy
 #| msgid "fire breath"
 msgid "Fireship"
 msgstr "aura ignis"
 
-#. [unit_type]: id=Fireship, race=transport
+#. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:18
 msgid ""
 "Fireships are generally derelict or doomed ships set ablaze to create chaos "
@@ -1192,12 +1199,12 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/boats/Fireship.cfg:135
+#: data/core/units/boats/Fireship.cfg:165
 msgid "ember"
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/boats/Fireship.cfg:144
+#: data/core/units/boats/Fireship.cfg:174
 msgid "crash"
 msgstr ""
 
@@ -1211,12 +1218,12 @@ msgstr "Navis Longa"
 msgid "Galleons are blue-water ships built for trade and transport."
 msgstr "Naves Longae pelagi sunt, mercaturae transferentique aedificatae."
 
-#. [unit_type]: id=Pirate Galleon, race=transport
+#. [unit_type]: id=Pirate Galleon, race=ship
 #: data/core/units/boats/Pirate_Galleon.cfg:4
 msgid "Pirate Galleon"
 msgstr "Navis Piratica"
 
-#. [unit_type]: id=Pirate Galleon, race=transport
+#. [unit_type]: id=Pirate Galleon, race=ship
 #: data/core/units/boats/Pirate_Galleon.cfg:22
 #, fuzzy
 msgid ""
@@ -1234,12 +1241,63 @@ msgstr ""
 msgid "ballista"
 msgstr "ballista"
 
-#. [unit_type]: id=Transport Galleon, race=transport
+#. [unit_type]: id=Coastal Raider, race=ship
+#: data/core/units/boats/Raider_Coastal.cfg:4
+#, fuzzy
+#| msgid "Wolf Rider"
+msgid "Coastal Raider"
+msgstr "Lupes"
+
+#. [unit_type]: id=Coastal Raider, race=ship
+#: data/core/units/boats/Raider_Coastal.cfg:30
+msgid ""
+"While many larger ships rely on impressive sails to harness the power of the "
+"wind, galleys and raiders are propelled by muscle-power of the crew manning "
+"the oars. This has the disadvantage of requiring a larger crew, and it does "
+"limit the speed and efficiency of transport. But these seeming weaknesses "
+"also make the vessel less vulnerable to the whims of weather and the "
+"predations of pirates.\n"
+"\n"
+"Coastal raider ships are a very basic warship, used by several races to move "
+"armed forces rapidly through shallow and coastal water. They do not possess "
+"any specific armaments, but there are always archers amongst the crew."
+msgstr ""
+
+#. [unit_type]: id=Iron Raider, race=ship
+#: data/core/units/boats/Raider_Iron.cfg:4
+#, fuzzy
+#| msgid "Gryphon Rider"
+msgid "Iron Raider"
+msgstr "Eques Grypum"
+
+#. [unit_type]: id=Iron Raider, race=ship
+#: data/core/units/boats/Raider_Iron.cfg:36
+msgid ""
+"While Galleons and Cogs rely on impressive sails to harness the power of the "
+"wind, galleys and raiders are propelled by muscle-power of the crew manning "
+"the oars. This has the disadvantage of requiring a larger crew, and it does "
+"limit the speed and efficiency of transport. But these seeming weaknesses "
+"also make the vessel less vulnerable to the whims of weather and the "
+"predations of pirates.\n"
+"\n"
+"Iron Raiders are Coastal Raiders that have been hardened to become tougher "
+"targets and harder hitters, at the expense of speed. They are often used as "
+"front-line escorts of slower cargo ships in rivers and coasts."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/boats/Raider_Iron.cfg:156
+#, fuzzy
+#| msgid "Cavalryman"
+msgid "naval ram"
+msgstr "Cataphractarius"
+
+#. [unit_type]: id=Transport Galleon, race=ship
 #: data/core/units/boats/Transport_Galleon.cfg:4
 msgid "Transport Galleon"
 msgstr "Navis Oneraria"
 
-#. [unit_type]: id=Transport Galleon, race=transport
+#. [unit_type]: id=Transport Galleon, race=ship
 #: data/core/units/boats/Transport_Galleon.cfg:20
 #, fuzzy
 msgid ""
@@ -1318,9 +1376,9 @@ msgstr "ungues proelii"
 #: data/core/units/drakes/Inferno.cfg:41 data/core/units/drakes/Sky.cfg:60
 #: data/core/units/drakes/Warrior.cfg:35
 #: data/core/units/monsters/Fire_Dragon.cfg:51
-#: data/core/units/monsters/Fire_Guardian.cfg:37
-#: data/core/units/monsters/Fire_Wisp.cfg:38
-#: data/core/units/monsters/Fire_Wraith.cfg:59
+#: data/core/units/monsters/Fire_Guardian.cfg:32
+#: data/core/units/monsters/Fire_Wisp.cfg:33
+#: data/core/units/monsters/Fire_Wraith.cfg:60
 msgid "fire breath"
 msgstr "aura ignis"
 
@@ -2560,7 +2618,7 @@ msgid "Dwarvish Explorer"
 msgstr "Explorator Pumilus"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
-#: data/core/units/dwarves/Explorer.cfg:18
+#: data/core/units/dwarves/Explorer.cfg:23
 msgid ""
 "Dwarvish Explorers are peerless survivalists. Using only the equipment they "
 "carry, they can range for months around the forests and mountains looking "
@@ -5669,7 +5727,7 @@ msgid "Fire Guardian"
 msgstr "Custos Ardens"
 
 #. [unit_type]: id=Fire Guardian, race=monster
-#: data/core/units/monsters/Fire_Guardian.cfg:25
+#: data/core/units/monsters/Fire_Guardian.cfg:20
 msgid ""
 "Fire Guardians are spirits of smoke and flame. No one is exactly sure where "
 "they come from, but they are occasionally summoned by powerful mages to do "
@@ -5678,8 +5736,8 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/monsters/Fire_Guardian.cfg:28
-#: data/core/units/monsters/Fire_Wraith.cfg:50
+#: data/core/units/monsters/Fire_Guardian.cfg:23
+#: data/core/units/monsters/Fire_Wraith.cfg:51
 msgid "fire claws"
 msgstr "ungues ignis"
 
@@ -5691,7 +5749,7 @@ msgid "Fire Wisp"
 msgstr "aura ignis"
 
 #. [unit_type]: id=Fire Wisp, race=monster
-#: data/core/units/monsters/Fire_Wisp.cfg:24
+#: data/core/units/monsters/Fire_Wisp.cfg:19
 msgid ""
 "Fire Wisps are spirits of smoke and flame. When not being ordered around "
 "they like to frolic in pools of lava and take great delight in burning "
@@ -5699,7 +5757,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/monsters/Fire_Wisp.cfg:29
+#: data/core/units/monsters/Fire_Wisp.cfg:24
 #, fuzzy
 #| msgid "fire breath"
 msgid "fire bash"
@@ -5713,7 +5771,7 @@ msgid "Fire Wraith"
 msgstr "aura ignis"
 
 #. [unit_type]: id=Fire Wraith, race=monster
-#: data/core/units/monsters/Fire_Wraith.cfg:47
+#: data/core/units/monsters/Fire_Wraith.cfg:48
 msgid ""
 "Fire Wraiths are spirits of smoke and flame. No one is exactly sure where "
 "they come from, but they are occasionally summoned by powerful mages to do "

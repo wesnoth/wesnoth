@@ -36,6 +36,10 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一款回合制奇幻策略游
 .SH 选项
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 在游戏中的语言选择列表中显示所有翻译，哪怕这些翻译被认为不够完整，也一样显示。
 .TP 
@@ -166,8 +170,9 @@ written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 在连接服务器时使用 \fIpassword\fP ，忽略其他首选项。不安全。
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-（实验性）读取定义了韦诺插件的
-\fIscript\fP。与\fB\-\-script\fP类似，但Lua文件应返回一个函数，该函数将作为协程运行，并周期性地使用更新地参数唤起。
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 将DiffWML补丁应用到WML文件上，不会预处理这两个文件中的任何一个。将打过补丁的WML输出到标准输出或由\fI\-\-output\fP指定的文件中。
@@ -212,9 +217,6 @@ typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
 将 \fImap\fP 的截图存入 \fIoutput\fP 而不初始化屏幕显示。
-.TP 
-\fB\-\-script\fP\fI\ file\fP
-（试验性）指定一个\fB文件\fP，其中包含了用于控制客户端的Lua脚本。
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 如果指定了主机的话，连接到指定的主机。否则，连接到首选项中的第一个服务器。例如：\fB\-\-server\fP \fBserver.wesnoth.org\fP。
