@@ -1,6 +1,4 @@
-## Version 1.19.7+dev
-### Add-ons client
-### Add-ons server
+## Version 1.19.8
 ### Campaigns
    * Eastern Invasion
      * S04c: give Mal-Ravanal gold to recruit more units when their army becomes too small
@@ -8,11 +6,8 @@
      * fix minor bugs with dialogues
 ### Editor
    * The PBL editor now validates whether DataURI images are too large
-### Multiplayer
 ### Lua API
    * New functions `gui.show_recruit_dialog()` and `gui.show_recall_dialog()` has been added which allow showing the recruit and recall dialogs in-game with a custom list of unit types or units respectively, along with some customizable features.
-### Packaging
-### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Czech, Dutch, Finnish, German, Hungarian
 ### Units
