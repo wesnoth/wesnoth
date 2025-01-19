@@ -2,7 +2,12 @@
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
+   * Eastern Invasion
+     * S04c: give Mal-Ravanal gold to recruit more units when their army becomes too small
+     * forbid all Dunefolk units to take the Plague Staff
+     * fix minor bugs with dialogues
 ### Editor
+   * The PBL editor now validates whether DataURI images are too large
 ### Multiplayer
 ### Lua API
    * New functions `gui.show_recruit_dialog()` and `gui.show_recall_dialog()` has been added which allow showing the recruit and recall dialogs in-game with a custom list of unit types or units respectively, along with some customizable features.
@@ -11,12 +16,23 @@
 ### Translations
    * Updated translations: Bengali, British English, Czech, Dutch, Finnish, German, Hungarian
 ### Units
+   * Dune Warmaster: HP 59 -> 61 scimitar damage 9 -> 10
+   * Dwarvish Explorer: physical resists reduced from 20% to 10%, melee damage increased from 10 to 11.
+   * Fire Wisps and Guardian - Fire Resistance changed from 50% to 70%
+   * Fire Wraith - Fire Resistance changed from 50% to 80%
+   * Orcish Crossbowman: melee 6-3 -> 4-3, experience to level 43 -> 57
+   * Added the Coastal and Iron Raider ship units
 ### User interface
    * The Modern theme has been renamed to Celes and received design updates to the titlescreen and common UI controls. The Default theme has been renamed to Parchment.
    * A preference to show/hide the tips panel on titlescreen has been added under Display preferences (id `show_tips`). In the Celes theme, it can also be hidden by clicking the cross button located at the top-right of the panel.
+   * Submenus are now positioned at the location of the menu item that spawned them, rather than the location of the mouse cursor at the time of click
+   * An advanced preference has been added to not download icons for the in-game add-ons manager.
+   * The end screen for campaigns now properly wraps text
+   * The themes have been renamed from Modern and Classic to Celes and Parchment, respectively. The Celes theme has also been further expanded to cover more UI elements.
 ### WML Engine
    * [variables] in [side] no longer sets variables of the implicit leader unit (it now only sets the sides variables), to create a leader unit with variables, [leader] must be used instead. (issue #3742)
 ### Miscellaneous and Bug Fixes
+   * Attempting to view the in-game manual no longer causes Wesnoth to crash
 
 ## Version 1.19.7
 ### Multiplayer
