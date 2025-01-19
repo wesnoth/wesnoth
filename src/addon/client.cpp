@@ -448,6 +448,7 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 		}
 	}
 
+	request_body["admin"] = admin_set.size() > 0;
 	request_body["name"] = id;
 	request_body["passphrase"] = cfg["passphrase"];
 	// needed in case of forum_auth authentication since the author stored on disk on the server is not necessarily the current primary author

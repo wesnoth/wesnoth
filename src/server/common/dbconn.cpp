@@ -103,7 +103,7 @@ std::string dbconn::get_tournaments()
 		return "";
 	}
 
-	auto cfg_result = [](const mariadb::result_set_ref& rslt) {
+	auto tournaments_handler = [](const mariadb::result_set_ref& rslt) {
 		config c;
 
 		while(rslt->next()) {
@@ -118,7 +118,7 @@ std::string dbconn::get_tournaments()
 
 	try
 	{
-		config t = get_complex_results(connection_, &cfg_result, db_tournament_query_, {});
+		config t = get_complex_results(connection_, &tournaments_handler, db_tournament_query_, {});
 		std::string text;
 		for(const auto& child : t.child_range("tournament"))
 		{
@@ -135,7 +135,7 @@ std::string dbconn::get_tournaments()
 
 std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, int offset, std::string search_game_name, int search_content_type, std::string search_content)
 {
-	auto cfg_result = [](const mariadb::result_set_ref& rslt) {
+	auto game_history_handler = [](const mariadb::result_set_ref& rslt) {
 		config c;
 
 		while(rslt->next())
@@ -284,7 +284,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 
 		DBG_SQL << "game history query text for player " << player_id << ": " << game_history_query;
 
-		config history = get_complex_results(connection, &cfg_result, game_history_query, params);
+		config history = get_complex_results(connection, &game_history_handler, game_history_query, params);
 
 		DBG_SQL << "after game history query for player " << player_id;
 
@@ -392,7 +392,7 @@ bool dbconn::is_user_in_groups(const std::string& name, const std::vector<int>& 
 config dbconn::get_ban_info(const std::string& name, const std::string& ip)
 {
 	// selected ban_type value must be part of user_handler::BAN_TYPE
-	auto cfg_result = [](const mariadb::result_set_ref& rslt) {
+	auto ban_info_handler = [](const mariadb::result_set_ref& rslt) {
 		config c;
 
 		if(rslt->next()) {
@@ -407,9 +407,8 @@ config dbconn::get_ban_info(const std::string& name, const std::string& ip)
 
 	try
 	{
-		config f = get_complex_results(connection_, &cfg_result, "select ban_userid, ban_email, case when ban_ip != '' then 1 when ban_userid != 0 then 2 when ban_email != '' then 3 end as ban_type, ban_end from `"+db_banlist_table_+"` where (ban_ip = ? or ban_userid = (select user_id from `"+db_users_table_+"` where UPPER(username) = UPPER(?)) or UPPER(ban_email) = (select UPPER(user_email) from `"+db_users_table_+"` where UPPER(username) = UPPER(?))) AND ban_exclude = 0 AND (ban_end = 0 OR ban_end >= ?)",
+		return get_complex_results(connection_, &ban_info_handler, "select ban_userid, ban_email, case when ban_ip != '' then 1 when ban_userid != 0 then 2 when ban_email != '' then 3 end as ban_type, ban_end from `"+db_banlist_table_+"` where (ban_ip = ? or ban_userid = (select user_id from `"+db_users_table_+"` where UPPER(username) = UPPER(?)) or UPPER(ban_email) = (select UPPER(user_email) from `"+db_users_table_+"` where UPPER(username) = UPPER(?))) AND ban_exclude = 0 AND (ban_end = 0 OR ban_end >= ?)",
 			{ ip, name, name, std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()) });
-		return f;
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -679,7 +678,7 @@ bool dbconn::do_any_authors_exist(const std::string& instance_version, const std
 }
 
 config dbconn::get_addon_downloads_info(const std::string& instance_version, const std::string& id) {
-	auto cfg_result = [](const mariadb::result_set_ref& rslt) {
+	auto addon_downloads_handler = [](const mariadb::result_set_ref& rslt) {
 		config c;
 
 		while(rslt->next()) {
@@ -695,7 +694,7 @@ config dbconn::get_addon_downloads_info(const std::string& instance_version, con
 
 	try
 	{
-		return get_complex_results(connection_, &cfg_result, "select ADDON_NAME, VERSION, UPLOADED_ON, DOWNLOAD_COUNT from "+db_addon_info_table_+" where INSTANCE_VERSION = ? and ADDON_ID = ? order by ADDON_NAME, UPLOADED_ON",
+		return get_complex_results(connection_, &addon_downloads_handler, "select ADDON_NAME, VERSION, UPLOADED_ON, DOWNLOAD_COUNT from "+db_addon_info_table_+" where INSTANCE_VERSION = ? and ADDON_ID = ? order by ADDON_NAME, UPLOADED_ON",
 			{ instance_version, id });
 	}
 	catch(const mariadb::exception::base& e)
@@ -706,7 +705,7 @@ config dbconn::get_addon_downloads_info(const std::string& instance_version, con
 }
 
 config dbconn::get_forum_auth_usage(const std::string& instance_version) {
-	auto cfg_result = [](const mariadb::result_set_ref& rslt) {
+	auto forum_auth_usage_handler = [](const mariadb::result_set_ref& rslt) {
 		config c;
 
 		if(rslt->next()) {
@@ -721,7 +720,7 @@ config dbconn::get_forum_auth_usage(const std::string& instance_version) {
 
 	try
 	{
-		return get_complex_results(connection_, &cfg_result, "select (select count(distinct ADDON_ID) from "+db_addon_info_table_+" where INSTANCE_VERSION = ?) as ALL_COUNT, "
+		return get_complex_results(connection_, &forum_auth_usage_handler, "select (select count(distinct ADDON_ID) from "+db_addon_info_table_+" where INSTANCE_VERSION = ?) as ALL_COUNT, "
 			"(select count(distinct ADDON_ID) from "+db_addon_info_table_+" where INSTANCE_VERSION = ? and FORUM_AUTH = 1) as FORUM_AUTH_COUNT from dual",
 			{ instance_version, instance_version });
 	}
@@ -733,7 +732,7 @@ config dbconn::get_forum_auth_usage(const std::string& instance_version) {
 }
 
 config dbconn::get_addon_admins(int site_admin_group, int forum_admin_group) {
-	auto cfg_result = [](const mariadb::result_set_ref& rslt) {
+	auto addon_admin_handler = [](const mariadb::result_set_ref& rslt) {
 		config c;
 
 		while(rslt->next()) {
@@ -746,7 +745,7 @@ config dbconn::get_addon_admins(int site_admin_group, int forum_admin_group) {
 
 	try
 	{
-		return get_complex_results(connection_, &cfg_result, "SELECT u.USERNAME FROM `"+db_users_table_+"` u, `"+db_user_group_table_+"` ug WHERE u.USER_ID = ug.USER_ID AND ug.GROUP_ID in (?, ?)",
+		return get_complex_results(connection_, &addon_admin_handler, "SELECT u.USERNAME FROM `"+db_users_table_+"` u, `"+db_user_group_table_+"` ug WHERE u.USER_ID = ug.USER_ID AND ug.GROUP_ID in (?, ?)",
 			{ site_admin_group, forum_admin_group });
 	}
 	catch(const mariadb::exception::base& e)
