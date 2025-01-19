@@ -235,6 +235,7 @@ private:
 	void handle_request_terms(const request& req);
 	void handle_upload(const request& req);
 	void handle_delete(const request& req);
+	void handle_change_passphrase(const request& req);
 	void handle_list_hidden(const server::request& req);
 	void handle_hide_addon(const request& req);
 	void handle_unhide_addon(const request& req);
