@@ -368,12 +368,12 @@ bool dbconn::extra_row_exists(const std::string& name)
 
 bool dbconn::is_user_in_groups(const std::string& name, const std::vector<int>& group_ids)
 {
-	std::set<std::string> group_params;
+	std::vector<std::string> group_params;
 
 	sql_parameters params;
 	params.emplace_back(name);
 	for(int group_id : group_ids) {
-		group_params.emplace("?");
+		group_params.emplace_back("?");
 		params.emplace_back(group_id);
 	}
 
