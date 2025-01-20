@@ -44,6 +44,10 @@ seferberliklerinizi yazabilir ve bunları başkaları ile paylaşabilirsiniz.
 .SH SEÇENEKLER
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 Oyun içi dil seçim listesindeki tüm çevirileri yeterli olmasalar bile,
 gösterir.
@@ -198,10 +202,9 @@ oyunu sesler ve müzikler olmaksızın çalıştırır.
 kullanılır. Güvenli değildir.
 .TP 
 \fB\-\-plugin\fP\fI\ betik\fP
-(deneysel) bir wesnoth eklentisini tanımlayan bir \fIbetik\fP
-yükler. \fB\-\-script\fP gibidir, ancak Lua dosyası, bir alt yordam olarak
-çalıştırılacak ve periyodik olarak güncellemelerle uyanacak bir işlev
-döndürmelidir.
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 DiffWML yamasını WML dosyasına uygular; dosyaları önişleme sokmaz.  Yamanmış
@@ -258,9 +261,6 @@ rasgele sayı üretecini \fIsayı\fP ile tohumlar. Örnek: \fB\-\-rng\-seed\fP \
 \fB\-\-screenshot\fP\fI\ harita\fP\fB\ \fP\fIçıktı\fP
 ekranı ilklendirmeksizin  \fIharita\fP ekran görüntüsünü \fIçıktı\fP dosyasına
 yazar.
-.TP 
-\fB\-\-script\fP\fI\ dosya\fP
-istemciyi yönetecek Lua betiğini içeren \fIdosya\fP (deneyseldir).
 .TP 
 \fB\-s[\fP\fIkonak\fP\fB],\ \-\-server[\fP\fI=konak\fP\fB]\fP
 varsa belirtilen sunucuya, yoksa tercihlerde belirtilen ilk sunucuya

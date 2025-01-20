@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.2+svn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 18:08 UTC\n"
+"POT-Creation-Date: 2025-01-19 17:47 UTC\n"
 "PO-Revision-Date: 2021-08-12 18:29+0700\n"
 "Last-Translator: Neko Nekowazarashi <i.musthafa66@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -17,14 +17,14 @@ msgstr ""
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
-msgid "Battle Training"
+#, fuzzy
+#| msgid "Battle Training"
+msgid "Battle Training — Old Tutorial"
 msgstr "Pelatihan Pertarungan"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
-#. [achievement_group]
-#: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:30
-#: data/campaigns/tutorial/achievements.cfg:3
+#: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:32
 msgid "Tutorial"
 msgstr "Pelatihan"
 
@@ -35,16 +35,30 @@ msgstr "Pelatihan"
 #| "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
 #| "first time players."
 msgid ""
-"Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first-"
-"time players."
+"Learn the basics of Wesnoth gameplay with a tutorial.\n"
+"    \n"
 msgstr ""
 "Pelajari dasar dari gaya permainan Wesnoth dengan tutorial. Direkomendasikan "
 "untuk pemain baru."
 
+#. [campaign]: id=Tutorial
+#: data/campaigns/tutorial/_main.cfg:23
+msgid ""
+"Note: No longer recommended for first-time players. Try <i>The South Guard</"
+"i> instead."
+msgstr ""
+
 #. [difficulty]
-#: data/campaigns/tutorial/_main.cfg:31
+#: data/campaigns/tutorial/_main.cfg:33
 msgid "Beginner"
 msgstr "Pemula"
+
+#. [achievement_group]
+#: data/campaigns/tutorial/achievements.cfg:3
+#, fuzzy
+#| msgid "Tutorial"
+msgid "Old Tutorial"
+msgstr "Pelatihan"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:7

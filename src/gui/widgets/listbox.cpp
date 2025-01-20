@@ -570,8 +570,13 @@ void listbox::initialize_sorter(std::string_view id, generator_sort_array&& arra
 	const std::size_t i = orders_.size();
 	orders_.emplace_back(toggle, std::move(array));
 
+	widget& w = dynamic_cast<widget&>(*toggle);
+
+	// If the toggle was hidden previously, show it
+	w.set_visible(widget::visibility::visible);
+
 	// TODO: we can bind the pair directly if we remove the on-order callback
-	connect_signal_notify_modified(dynamic_cast<widget&>(*toggle),
+	connect_signal_notify_modified(w,
 		std::bind(&listbox::order_by_column, this, i, std::placeholders::_1));
 }
 

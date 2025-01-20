@@ -130,6 +130,7 @@ private:
 	}
 
 	void update_all_addons();
+	void info();
 
 	void apply_filters();
 	void order_addons();

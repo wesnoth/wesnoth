@@ -41,7 +41,7 @@ texture::texture(SDL_Texture* txt)
 	: texture_(txt, &cleanup_texture)
 {
 	if (txt) {
-		SDL_QueryTexture(txt, nullptr, nullptr, &w_, &h_);
+		SDL_QueryTexture(txt, nullptr, nullptr, &size_.x, &size_.y);
 		finalize();
 	}
 }
@@ -63,15 +63,14 @@ texture::texture(const surface& surf, bool linear_interpolation)
 	}
 
 	// Filtering mode must be set before texture creation.
-	const char* scale_quality = linear_interpolation ? "linear" : "nearest";
-	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, scale_quality);
+	set_texture_scale_quality(linear_interpolation ? "linear" : "nearest");
 
 	texture_.reset(SDL_CreateTextureFromSurface(renderer, surf), &cleanup_texture);
 	if(!texture_) {
 		ERR_SDL << "When creating texture from surface: " << SDL_GetError();
 	}
 
-	w_ = surf->w; h_ = surf->h;
+	size_ = {surf->w, surf->h};
 
 	finalize();
 }
@@ -89,61 +88,39 @@ void texture::finalize()
 
 uint32_t texture::get_format() const
 {
-	uint32_t ret;
-	if(texture_) {
-		SDL_QueryTexture(texture_.get(), &ret, nullptr, nullptr, nullptr);
-	} else {
-		ret = SDL_PIXELFORMAT_UNKNOWN;
-	}
-	return ret;
+	return get_info().format;
 }
 
 int texture::get_access() const
 {
-	int ret;
-	if(texture_) {
-		SDL_QueryTexture(texture_.get(), nullptr, &ret, nullptr, nullptr);
-	} else {
-		ret = -1;
-	}
-	return ret;
+	return get_info().access;
 }
 
 point texture::get_raw_size() const
 {
-	point ret;
-	if(texture_) {
-		SDL_QueryTexture(texture_.get(), nullptr, nullptr, &ret.x, &ret.y);
-	} else {
-		ret = {0, 0};
-	}
-	return ret;
-}
-
-void texture::set_draw_size(const point& p)
-{
-	w_ = p.x;
-	h_ = p.y;
+	return get_info().size;
 }
 
 void texture::set_src(const rect& r)
 {
-	rect dsrc = r.intersect({0, 0, w_, h_});
+	rect dsrc = r.intersect(rect{{0, 0}, size_});
 	point rsize = get_raw_size();
 	if (draw_size() == rsize) {
 		src_ = dsrc;
 	} else {
-		src_.x = (dsrc.x * rsize.x) / w_;
-		src_.y = (dsrc.y * rsize.y) / h_;
-		src_.w = (dsrc.w * rsize.x) / w_;
-		src_.h = (dsrc.h * rsize.y) / h_;
+		src_ = rect {
+			(dsrc.x * rsize.x) / size_.x,
+			(dsrc.y * rsize.y) / size_.y,
+			(dsrc.w * rsize.x) / size_.x,
+			(dsrc.h * rsize.y) / size_.y
+		};
 	}
 	has_src_ = true;
 }
 
 void texture::set_src_raw(const rect& r)
 {
-	rect max = {{}, get_raw_size()};
+	rect max = {{0, 0}, get_raw_size()};
 	src_ = r.intersect(max);
 	has_src_ = true;
 }
@@ -165,12 +142,11 @@ uint8_t texture::get_alpha_mod() const
 	return a;
 }
 
-void texture::set_color_mod(color_t c)
+void texture::set_color_mod(const color_t& c)
 {
-	if (texture_) {
-		SDL_SetTextureColorMod(texture_.get(), c.r, c.g, c.b);
-	}
+	set_color_mod(c.r, c.g, c.b);
 }
+
 void texture::set_color_mod(uint8_t r, uint8_t g, uint8_t b)
 {
 	if (texture_) {
@@ -210,7 +186,7 @@ void texture::reset()
 	if(texture_) {
 		texture_.reset();
 	}
-	w_ = 0; h_ = 0;
+	size_ = {0, 0};
 	has_src_ = false;
 }
 
@@ -230,7 +206,7 @@ void texture::reset(int width, int height, SDL_TextureAccess access)
 		return;
 	}
 
-	w_ = width; h_ = height;
+	size_ = {width, height};
 	has_src_ = false;
 
 	finalize();
@@ -239,22 +215,16 @@ void texture::reset(int width, int height, SDL_TextureAccess access)
 void texture::assign(SDL_Texture* t)
 {
 	texture_.reset(t, &cleanup_texture);
-	if (t) {
-		SDL_QueryTexture(t, nullptr, nullptr, &w_, &h_);
-	} else {
-		w_ = 0;
-		h_ = 0;
-	}
+	size_ = get_raw_size();
 	has_src_ = false;
 }
 
 texture::info::info(SDL_Texture* t)
 	: format(SDL_PIXELFORMAT_UNKNOWN)
 	, access(-1)
-	, w(0)
-	, h(0)
+	, size(0, 0)
 {
 	if (t) {
-		SDL_QueryTexture(t, &format, &access, &w, &h);
+		SDL_QueryTexture(t, &format, &access, &size.x, &size.y);
 	}
 }

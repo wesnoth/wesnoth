@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-12-18 16:51-0600\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
 "PO-Revision-Date: 2024-09-11 15:05+0300\n"
 "Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
 "discord: amakri>\n"
@@ -64,41 +64,53 @@ msgstr "Великі текстові файли"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
+msgid "Show icons in the Add-ons manager"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:27
+msgid ""
+"Disabling saves bandwidth by not sending icons for the add-ons list in the "
+"add-ons manager"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:34
 msgid "Confirm deleting saves"
 msgstr "Підтверджувати видалення збережень"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:33
+#: data/advanced_preferences.cfg:41
 msgid "Mouse scrolling"
 msgstr "Прокрутка мишою"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:40
+#: data/advanced_preferences.cfg:48
 msgid "Middle-click scrolling"
 msgstr "Прокрутка середньою кнопкою"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:47
+#: data/advanced_preferences.cfg:55
 msgid "Keep scrolling when mouse leaves window"
 msgstr "Продовжувати прокрутку, коли миша покидає вікно"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:54
+#: data/advanced_preferences.cfg:62
 msgid "Show combat"
 msgstr "Показувати бій"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:61
+#: data/advanced_preferences.cfg:69
 msgid "Auto-open whisper windows in lobby"
 msgstr "Автоматично відкривати вікна приватів в фойє"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:68
+#: data/advanced_preferences.cfg:76
 msgid "Follow unit actions"
 msgstr "Слідкувати за діями бійця"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:69
+#: data/advanced_preferences.cfg:77
 msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
@@ -106,12 +118,12 @@ msgstr ""
 "Оберіть, чи буде камера слідкувати за бійцем, коли він виконує свій хід"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:76
+#: data/advanced_preferences.cfg:84
 msgid "Chat message aging"
 msgstr "Затримувати повідомлення в чаті"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:77
+#: data/advanced_preferences.cfg:85
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
@@ -119,22 +131,22 @@ msgstr ""
 "Час очікування до очистки ігрового чату в хвилинах. 0 — відключити очищення."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:87
+#: data/advanced_preferences.cfg:95
 msgid "Use 12-hour clock format"
 msgstr "12-годинний формат часу"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:94
+#: data/advanced_preferences.cfg:102
 msgid "Confirm loading saves from a different version"
 msgstr "Підтверджувати завантаження збережень з інших версій"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:101
+#: data/advanced_preferences.cfg:109
 msgid "Show all unit types in help"
 msgstr "Показувати в довідці всі типи бійців"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:102
+#: data/advanced_preferences.cfg:110
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
@@ -143,44 +155,44 @@ msgstr ""
 "будуть показуватися лише ті бійці, що зустрічались у грі."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:109
+#: data/advanced_preferences.cfg:117
 msgid "Editor recent files limit"
 msgstr "Кількість недавніх файлів у редакторі"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:110
+#: data/advanced_preferences.cfg:118
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr ""
 "Максимальна кількість елементів для показу в меню редактора Недавні файли"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:120
+#: data/advanced_preferences.cfg:128
 msgid "Show color cursors"
 msgstr "Показувати кольорові курсори"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:121
+#: data/advanced_preferences.cfg:129
 msgid "Use colored mouse cursors"
 msgstr "Використовувати кольорові курсори миші"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:128
+#: data/advanced_preferences.cfg:136
 msgid "Customize orb colors"
 msgstr "Налаштувати кольори сфер"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:134
+#: data/advanced_preferences.cfg:142
 msgid "Logging"
 msgstr "Логування"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:140
+#: data/advanced_preferences.cfg:148
 msgid "Allow damage calculation with Monte Carlo simulation"
 msgstr "Обчислення шкоди методом Монте-Карло"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:141
+#: data/advanced_preferences.cfg:149
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
@@ -189,12 +201,12 @@ msgstr ""
 "ймовірності"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:148
+#: data/advanced_preferences.cfg:156
 msgid "Show deprecation messages in-game"
 msgstr "Показувати у грі відхилені повідомлення"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:149
+#: data/advanced_preferences.cfg:157
 msgid ""
 "Show warnings about deprecated API in the in-game chat area. These messages "
 "will still be shown in the log, even if this is disabled. In addition, the "
@@ -206,12 +218,12 @@ msgstr ""
 "повідомлень зберігати."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:156
+#: data/advanced_preferences.cfg:164
 msgid "Font size scale (experimental)"
 msgstr "Масштабування шрифту (експериментально)"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:157
+#: data/advanced_preferences.cfg:165
 msgid ""
 "Scales all text up or down from the standard size for your resolution. "
 "Warning: Scaling text up may cause issues in the in-game sidebar."
@@ -221,12 +233,12 @@ msgstr ""
 "відображенні бокової панелі."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:167
+#: data/advanced_preferences.cfg:175
 msgid "Server disconnect timeout"
 msgstr "Тайм-аут відключення від сервера"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:168
+#: data/advanced_preferences.cfg:176
 msgid ""
 "The amount of time in seconds before a disconnect is detected. If currently "
 "logged into the multiplayer server, you must log out and then log back in "
@@ -443,218 +455,218 @@ msgid "Dutch Translation"
 msgstr "Голландський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:454
+#: data/core/about_i18n.cfg:457
 msgid "English (GB) Translation"
 msgstr "Англійський переклад (Британія)"
 
 #. [about]
-#: data/core/about_i18n.cfg:479
+#: data/core/about_i18n.cfg:482
 msgid "English (Shaw) Translation"
 msgstr "Англійський переклад (Шоу)"
 
 #. [about]
-#: data/core/about_i18n.cfg:497
+#: data/core/about_i18n.cfg:500
 msgid "Esperanto Translation"
 msgstr "Переклад на есперанто"
 
 #. [about]
-#: data/core/about_i18n.cfg:516
+#: data/core/about_i18n.cfg:519
 msgid "Estonian Translation"
 msgstr "Естонський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:526
+#: data/core/about_i18n.cfg:529
 msgid "Filipino Translation"
 msgstr "Філіппінський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:536
+#: data/core/about_i18n.cfg:539
 msgid "Finnish Translation"
 msgstr "Фінський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:601
+#: data/core/about_i18n.cfg:604
 msgid "French Translation"
 msgstr "Французький переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:769
+#: data/core/about_i18n.cfg:772
 msgid "Friulian Translation"
 msgstr "Фріульський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:773
+#: data/core/about_i18n.cfg:776
 msgid "Galician Translation"
 msgstr "Галісійський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:809
+#: data/core/about_i18n.cfg:812
 msgid "German Translation"
 msgstr "Німецький переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:934
+#: data/core/about_i18n.cfg:937
 msgid "Greek Translation"
 msgstr "Грецький переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:977
+#: data/core/about_i18n.cfg:980
 msgid "Hebrew Translation"
 msgstr "Переклад на іврит"
 
 #. [about]
-#: data/core/about_i18n.cfg:990
+#: data/core/about_i18n.cfg:993
 msgid "Hungarian Translation"
 msgstr "Угорський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1051
+#: data/core/about_i18n.cfg:1054
 msgid "Icelandic Translation"
 msgstr "Ісландський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1061
+#: data/core/about_i18n.cfg:1064
 msgid "Indonesian Translation"
 msgstr "Індонезійський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1089
+#: data/core/about_i18n.cfg:1092
 msgid "Irish Translation"
 msgstr "Ірландський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1096
+#: data/core/about_i18n.cfg:1099
 msgid "Italian Translation"
 msgstr "Італійський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1143
+#: data/core/about_i18n.cfg:1146
 msgid "Japanese Translation"
 msgstr "Японський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1236
+#: data/core/about_i18n.cfg:1239
 msgid "Korean Translation"
 msgstr "Корейський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1244
+#: data/core/about_i18n.cfg:1247
 msgid "Latin Translation"
 msgstr "Латинський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1270
+#: data/core/about_i18n.cfg:1273
 msgid "Latvian Translation"
 msgstr "Латвійський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1285
+#: data/core/about_i18n.cfg:1288
 msgid "Lithuanian Translation"
 msgstr "Литовський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1310
+#: data/core/about_i18n.cfg:1313
 msgid "Macedonian Translation"
 msgstr "Македонський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1317
+#: data/core/about_i18n.cfg:1320
 msgid "Marathi Translation"
 msgstr "Переклад на маратхі"
 
 #. [about]
-#: data/core/about_i18n.cfg:1326
+#: data/core/about_i18n.cfg:1329
 msgid "Norwegian Translation"
 msgstr "Норвезький переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1355
+#: data/core/about_i18n.cfg:1358
 msgid "Old English Translation"
 msgstr "Староанглійський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1373
+#: data/core/about_i18n.cfg:1376
 msgid "Polish Translation"
 msgstr "Польський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1448
+#: data/core/about_i18n.cfg:1451
 msgid "Portuguese Translation"
 msgstr "Португальський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1462
+#: data/core/about_i18n.cfg:1465
 msgid "Portuguese (Brazil) Translation"
 msgstr "Португальський переклад (Бразилія)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1520
+#: data/core/about_i18n.cfg:1523
 msgid "Romanian Translation"
 msgstr "Румунський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1528
+#: data/core/about_i18n.cfg:1531
 msgid "Russian Translation"
 msgstr "Російський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1635
+#: data/core/about_i18n.cfg:1638
 msgid "Scottish Gaelic Translation"
 msgstr "Шотландський гельський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1644
+#: data/core/about_i18n.cfg:1647
 msgid "Serbian Translation"
 msgstr "Сербський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1663
+#: data/core/about_i18n.cfg:1666
 msgid "Slovak Translation"
 msgstr "Словацький переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1698
+#: data/core/about_i18n.cfg:1701
 msgid "Slovenian Translation"
 msgstr "Словенський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1714
+#: data/core/about_i18n.cfg:1717
 msgid "Spanish Translation"
 msgstr "Іспанський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1804
+#: data/core/about_i18n.cfg:1807
 msgid "Swedish Translation"
 msgstr "Швецький переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1849
+#: data/core/about_i18n.cfg:1852
 msgid "Turkish Translation"
 msgstr "Турецький переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1874
+#: data/core/about_i18n.cfg:1877
 msgid "Ukrainian Translation"
 msgstr "Український переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1908
+#: data/core/about_i18n.cfg:1911
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Валенсійська (Південно-Каталонский діалект)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1921
+#: data/core/about_i18n.cfg:1924
 msgid "Vietnamese Translation"
 msgstr "В'єтнамський переклад"
 
 #. [about]
-#: data/core/about_i18n.cfg:1940
+#: data/core/about_i18n.cfg:1943
 msgid "Welsh Translation"
 msgstr "Валлійський переклад"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1949
+#: data/core/about_i18n.cfg:1952
 msgid "RACV’s Translation"
 msgstr "Переклад RACV"
 
@@ -4000,7 +4012,9 @@ msgid "Shroud"
 msgstr "Пелена"
 
 #. [color_range]: id=urbanjungle
-#: data/core/team-colors.cfg:256
+#. [terrain_type]: id=urbanjungle
+#: data/core/team-colors.cfg:256 data/resources/Urban_Jungle/terrain.cfg:6
+#: data/resources/Urban_Jungle/terrain.cfg:7
 msgid "Urban"
 msgstr "Місто"
 
@@ -4363,24 +4377,24 @@ msgid "Alternate Wesnoth Server"
 msgstr "Альтернативний сервер Wesnoth"
 
 #. [label]: id=title
-#: data/gui/themes/default/window/install_dependencies.cfg:37
+#: data/gui/themes/default/dialogs/install_dependencies.cfg:37
 msgid "Install Dependencies"
 msgstr "Встановити залежності"
 
 #. [button]: id=ok
-#: data/gui/themes/default/window/install_dependencies.cfg:84
+#: data/gui/themes/default/dialogs/install_dependencies.cfg:84
 msgid "Yes"
 msgstr "Так"
 
 #. [button]: id=cancel
-#: data/gui/themes/default/window/install_dependencies.cfg:95
+#: data/gui/themes/default/dialogs/install_dependencies.cfg:95
 msgid "No"
 msgstr "Ні"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/themes/default/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:629
+#: data/gui/themes/default/dialogs/screenshot_notification.cfg:95
+#: src/hotkey/command_executor.cpp:636
 msgid "Screenshot"
 msgstr "Знімок екрану"
 
@@ -4674,6 +4688,141 @@ msgstr "Зберегти"
 #: data/modifications/pick_advance/gui/pick_advance.cfg:143
 msgid "Cancel"
 msgstr "Скасувати"
+
+#. [advancement]: id=amla_default
+#: data/resources/AMLAs/_main.cfg:77
+#, fuzzy
+#| msgid "Max swarm bonus: "
+msgid "Max HP bonus +3, Max XP +20%"
+msgstr "Макс бонус рою: "
+
+#. [advancement]: id=hitpoints_increase
+#: data/resources/AMLAs/_main.cfg:99
+msgid "Gain +8 hitpoints."
+msgstr ""
+
+#. [advancement]: id=melee_increase1
+#: data/resources/AMLAs/_main.cfg:125
+msgid "Gain +4 melee damage."
+msgstr ""
+
+#. [advancement]: id=melee_increase2
+#: data/resources/AMLAs/_main.cfg:158
+msgid "Gain +2 melee damage."
+msgstr ""
+
+#. [advancement]: id=melee_increase3
+#: data/resources/AMLAs/_main.cfg:191
+msgid "Gain +1 melee damage."
+msgstr ""
+
+#. [advancement]: id=ranged_increase1
+#: data/resources/AMLAs/_main.cfg:221
+msgid "Gain +4 ranged damage."
+msgstr ""
+
+#. [advancement]: id=ranged_increase2
+#: data/resources/AMLAs/_main.cfg:254
+msgid "Gain +2 ranged damage."
+msgstr ""
+
+#. [advancement]: id=ranged_increase3
+#: data/resources/AMLAs/_main.cfg:287
+msgid "Gain +1 ranged damage."
+msgstr ""
+
+#. [message]: speaker=narrator
+#. newlines at the end are deliberate, and function as spacers before the [option]s
+#: data/resources/AMLAs/_main.cfg:361
+msgid ""
+"Congratulations, your $unit.language_name has leveled up... but they’re "
+"already at their max level!\n"
+"\n"
+"When this happens, <span color='#0D87B6'><b>some campaigns</b></span> — like "
+"this one — allow you to select a minor bonus to hitpoints or damage. These "
+"bonuses are called “AMLAs”: “After Maximum Level Advancements”. If your max-"
+"level units have normal, <span color='#0D87B6'><b>blue experience bars</b></"
+"span>, that means these AMLAs are available.\n"
+"\n"
+"<span color='#9608CF'><b><i>Other campaigns</i></b></span> don’t have these "
+"AMLA options, and instead always give max-level units +3 max hp when they "
+"level up. If your max-level units have <span color='#9608CF'><b>purple "
+"experience bars</b></span>, they’ll only get +3 max hp when they level up.\n"
+"\n"
+msgstr ""
+
+#. [option]
+#: data/resources/AMLAs/_main.cfg:369
+msgid "Ok, continue with the game"
+msgstr ""
+
+#. [option]
+#: data/resources/AMLAs/_main.cfg:372
+#, fuzzy
+#| msgid "Don’t show again"
+msgid "Don’t show this message again"
+msgstr "Не показувати знов"
+
+#. [terrain_type]: id=urbanjungle
+#: data/resources/Urban_Jungle/terrain.cfg:8
+msgid ""
+"Densely packed structures are less suitable for garrison than traditional "
+"villages, providing no income or healing. They are difficult to navigate "
+"quickly, but offer significant protection."
+msgstr ""
+
+#. [terrain_type]: id=urbanjungleA
+#. [terrain_type]: id=urbanjungle{ID}
+#: data/resources/Urban_Jungle/terrain.cfg:15
+#: data/resources/Urban_Jungle/terrain.cfg:16
+#: data/resources/Urban_Jungle/terrain.cfg:17
+#: data/resources/Urban_Jungle/terrain.cfg:30
+#: data/resources/Urban_Jungle/terrain.cfg:31
+#: data/resources/Urban_Jungle/terrain.cfg:32
+msgid "Urban Jungle"
+msgstr ""
+
+#. [time]: id=dawn_noweather
+#: data/resources/Weather/_main.cfg:147
+msgid "Dawn"
+msgstr ""
+
+#. [time]: id=morning_noweather
+#: data/resources/Weather/_main.cfg:158
+#, fuzzy
+#| msgid "Warning"
+msgid "Morning"
+msgstr "Попередження"
+
+#. [time]: id=midday_noweather
+#: data/resources/Weather/_main.cfg:166
+msgid "Midday"
+msgstr ""
+
+#. [time]: id=afternoon_noweather
+#: data/resources/Weather/_main.cfg:174
+msgid "Afternoon"
+msgstr ""
+
+#. [time]: id=dusk_noweather
+#: data/resources/Weather/_main.cfg:182
+msgid "Dusk"
+msgstr ""
+
+#. [time]: id=first_watch_noweather
+#: data/resources/Weather/_main.cfg:193
+msgid "First Watch"
+msgstr ""
+
+#. [time]: id=midnight_noweather
+#: data/resources/Weather/_main.cfg:204
+msgid "Midnight"
+msgstr ""
+
+#. [time]: id=second_watch_noweather
+#: data/resources/Weather/_main.cfg:215
+msgid "Second Watch"
+msgstr ""
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:412
@@ -5063,11 +5212,19 @@ msgstr "<i>― Халдрік II, 42 рік Е.В., Довідник з такт
 
 #. [tip]
 #: data/tips.cfg:64
+#, fuzzy
+#| msgid ""
+#| "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you "
+#| "won’t know what you’re facing. In this case, long-range scouting units "
+#| "are worth their cost. Try to choose scouts that can easily move across "
+#| "the surrounding terrain, because units can only see as far as they can "
+#| "move in one turn."
 msgid ""
 "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
 "know what you’re facing. In this case, long-range scouting units are worth "
 "their cost. Try to choose scouts that can easily move across the surrounding "
-"terrain, because units can only see as far as they can move in one turn."
+"terrain, because usually units can only see as far as they can move in one "
+"turn."
 msgstr ""
 "Якщо Ви граєте з ввімкненою <b>Пеленою</b> чи <b>Туманом війни</b>, то не "
 "зможете побачити, що Вас чекає. У такій ситуації бійці-розвідники варті "
@@ -5077,11 +5234,18 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:68
+#, fuzzy
+#| msgid ""
+#| "There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</"
+#| "i>, <i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have "
+#| "weaknesses against different types of attacks. Right-click on a unit and "
+#| "select <b>Unit Description</b> to see which attacks it is resistant to, "
+#| "and which will affect it the most."
 msgid ""
 "There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
 "<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
 "against different types of attacks. Right-click on a unit and select <b>Unit "
-"Description</b> to see which attacks it is resistant to, and which will "
+"Type Description</b> to see which attacks it is resistant to, and which will "
 "affect it the most."
 msgstr ""
 "Існує шість типів атаки: <i>колючий</i>, <i>ріжучий</i>, <i>ударний</i>, "
@@ -5847,15 +6011,62 @@ msgstr ""
 msgid "Connecting to $server_address|..."
 msgstr "З'єднуюсь з $server_address|..."
 
-#: src/addon/client.cpp:125
+#: src/addon/client.cpp:124
+#, fuzzy
+#| msgid "Requesting the addon to be deleted"
+msgid "Requesting add-on counts by type..."
+msgstr "Запитую видалення аддону"
+
+#: src/addon/client.cpp:131 src/addon/client.cpp:149 src/addon/client.cpp:167
+#: src/addon/client.cpp:185 src/addon/client.cpp:205 src/addon/client.cpp:226
+#: src/addon/client.cpp:246 src/addon/client.cpp:576
+#: src/gui/dialogs/multiplayer/match_history.cpp:248
+msgid "The server responded with an error:"
+msgstr "Сервер відповів помилкою:"
+
+#: src/addon/client.cpp:146
+msgid "Requesting add-on downloads by version..."
+msgstr ""
+
+#: src/addon/client.cpp:164
+#, fuzzy
+#| msgid "Requesting file index..."
+msgid "Requesting forum_auth usage..."
+msgstr "Запит індексу файлів..."
+
+#: src/addon/client.cpp:182
+#, fuzzy
+#| msgid "Requesting distribution terms..."
+msgid "Requesting list of admins..."
+msgstr "Запит умов розповсюдження..."
+
+#: src/addon/client.cpp:202
+#, fuzzy
+#| msgid "Downloading list of add-ons..."
+msgid "Getting list of hidden add-ons..."
+msgstr "Завантажую перелік аддонів..."
+
+#: src/addon/client.cpp:223
+#, fuzzy
+#| msgid "Sending add-on"
+msgid "Hiding add-on..."
+msgstr "Надсилаю аддон"
+
+#: src/addon/client.cpp:243
+#, fuzzy
+#| msgid "Sending add-on"
+msgid "Unhiding add-on..."
+msgstr "Надсилаю аддон"
+
+#: src/addon/client.cpp:267
 msgid "Downloading list of add-ons..."
 msgstr "Завантажую перелік аддонів..."
 
-#: src/addon/client.cpp:146
+#: src/addon/client.cpp:288
 msgid "Requesting distribution terms..."
 msgstr "Запит умов розповсюдження..."
 
-#: src/addon/client.cpp:170
+#: src/addon/client.cpp:312
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
@@ -5863,7 +6074,7 @@ msgstr ""
 "Аддон <i>$addon_title</i> має неправильний ідентифікатор '$addon_id' і не "
 "може бути опублікований."
 
-#: src/addon/client.cpp:182
+#: src/addon/client.cpp:324
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
@@ -5871,7 +6082,7 @@ msgstr ""
 "Аддон <i>$addon_title</i> має файл чи теку, ім'я якої містить невірні "
 "символи, і тому не може бути опублікованим."
 
-#: src/addon/client.cpp:190
+#: src/addon/client.cpp:332
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5887,7 +6098,7 @@ msgstr ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 
-#: src/addon/client.cpp:201
+#: src/addon/client.cpp:343
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
@@ -5896,7 +6107,7 @@ msgstr ""
 "У деяких файлів чи тек аддону <i>$addon_title</i> проблема з розкладкою. "
 "Ім'я файлів або тек не можуть відрізнятися лише великими та малими літерами."
 
-#: src/addon/client.cpp:208
+#: src/addon/client.cpp:350
 msgid ""
 "The connection to the remote server is not secure. The add-on "
 "<i>$addon_title</i> cannot be uploaded."
@@ -5904,35 +6115,42 @@ msgstr ""
 "З'єднання з віддаленим сервером не є безпечним. Аддон <i>$addon_title</i> не "
 "може бути вивантажений."
 
-#: src/addon/client.cpp:221
+#: src/addon/client.cpp:355
+#, fuzzy
+#| msgid "Sending add-on <i>$addon_title</i>..."
+msgid ""
+"The file size for the icon for the add-on <i>$addon_title</i> is too large."
+msgstr "Відсилаю аддон <i>$addon_title</i>..."
+
+#: src/addon/client.cpp:368
 msgid "Requesting file index..."
 msgstr "Запит індексу файлів..."
 
-#: src/addon/client.cpp:237
+#: src/addon/client.cpp:384
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "Відсилаю оновлення аддону <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:258
+#: src/addon/client.cpp:405
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Відсилаю аддон <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:307
+#: src/addon/client.cpp:460
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Видаляю аддон <i>$addon_title</i> з сервера..."
 
-#: src/addon/client.cpp:335
+#: src/addon/client.cpp:488
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Завантажую аддон <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:347 src/addon/client.cpp:708
+#: src/addon/client.cpp:500 src/addon/client.cpp:861
 msgid "Add-ons Manager"
 msgstr "Менеджер Аддонів"
 
-#: src/addon/client.cpp:347
+#: src/addon/client.cpp:500
 msgid "Installing add-on <i>$addon_title</i>..."
 msgstr "Встановлюю аддон <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:359 src/addon/client.cpp:385
+#: src/addon/client.cpp:512 src/addon/client.cpp:538
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5940,7 +6158,7 @@ msgstr ""
 "Аддон <i>$addon_title</i> має неправильне ім'я файлу чи теки і не може бути "
 "встановлений."
 
-#: src/addon/client.cpp:364 src/addon/client.cpp:390
+#: src/addon/client.cpp:517 src/addon/client.cpp:543
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5948,11 +6166,7 @@ msgstr ""
 "У деяких файлів чи тек аддону <i>$addon_title</i> проблема з розкладкою. Це "
 "може призвести до проблем."
 
-#: src/addon/client.cpp:423 src/gui/dialogs/multiplayer/match_history.cpp:248
-msgid "The server responded with an error:"
-msgstr "Сервер відповів помилкою:"
-
-#: src/addon/client.cpp:478
+#: src/addon/client.cpp:631
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5969,11 +6183,11 @@ msgstr[2] ""
 "Вибраний аддон має наступні залежності, які не встановлені або відсутні на "
 "сервері. Ви хочете продовжити?"
 
-#: src/addon/client.cpp:487
+#: src/addon/client.cpp:640
 msgid "Broken Dependencies"
 msgstr "Зламані залежності"
 
-#: src/addon/client.cpp:527
+#: src/addon/client.cpp:680
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5987,11 +6201,11 @@ msgstr[1] ""
 msgstr[2] ""
 "Наступні залежності не можуть бути встановлені. Ви все ще хочете продовжити?"
 
-#: src/addon/client.cpp:531
+#: src/addon/client.cpp:684
 msgid "Dependencies Installation Failed"
 msgstr "Не вдалось встановити залежності"
 
-#: src/addon/client.cpp:554
+#: src/addon/client.cpp:707
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5999,76 +6213,76 @@ msgstr ""
 "Аддон '$addon|' вже встановлений і містить додаткову інформацію, яка буде "
 "повністю втрачена, якщо ви продовжите:"
 
-#: src/addon/client.cpp:558
+#: src/addon/client.cpp:711
 msgid "Publishing information file (.pbl)"
 msgstr "Файл інформації про публікацію (.pbl)"
 
-#: src/addon/client.cpp:562
+#: src/addon/client.cpp:715
 msgid "Version control system (VCS) information"
 msgstr "Інформація системи керування версіями (VCS)"
 
-#: src/addon/client.cpp:566
+#: src/addon/client.cpp:719
 msgid "Do you really wish to continue?"
 msgstr "Ви дійсно хочете продовжити?"
 
-#: src/addon/client.cpp:568 src/addon/manager_ui.cpp:171
+#: src/addon/client.cpp:721 src/addon/manager_ui.cpp:171
 #: src/game_initialization/multiplayer.cpp:359
 msgid "Confirm"
 msgstr "Підтвердити"
 
-#: src/addon/info.cpp:253
+#: src/addon/info.cpp:256
 msgid "addon_type^Campaign"
 msgstr "Кампанія"
 
-#: src/addon/info.cpp:255
+#: src/addon/info.cpp:258
 msgid "addon_type^Scenario"
 msgstr "Сценарій"
 
-#: src/addon/info.cpp:257
+#: src/addon/info.cpp:260
 msgid "addon_type^SP/MP Campaign"
 msgstr "Кампанія для СП/МП"
 
-#: src/addon/info.cpp:259
+#: src/addon/info.cpp:262
 msgid "addon_type^MP era"
 msgstr "Ера для МП"
 
-#: src/addon/info.cpp:261
+#: src/addon/info.cpp:264
 msgid "addon_type^MP faction"
 msgstr "Фракція для МП"
 
-#: src/addon/info.cpp:263
+#: src/addon/info.cpp:266
 msgid "addon_type^MP map-pack"
 msgstr "Пакет карт для МП"
 
-#: src/addon/info.cpp:265
+#: src/addon/info.cpp:268
 msgid "addon_type^MP scenario"
 msgstr "Сценарій для МП"
 
-#: src/addon/info.cpp:267
+#: src/addon/info.cpp:270
 msgid "addon_type^MP campaign"
 msgstr "Кампанія для МП"
 
-#: src/addon/info.cpp:269
+#: src/addon/info.cpp:272
 msgid "addon_type^Modification"
 msgstr "Модифікація"
 
-#: src/addon/info.cpp:271
+#: src/addon/info.cpp:274
 msgid "addon_type^Core"
 msgstr "Ядро"
 
-#: src/addon/info.cpp:273
+#: src/addon/info.cpp:276
 msgid "addon_type^Resources"
 msgstr "Ресурси"
 
-#: src/addon/info.cpp:275
+#: src/addon/info.cpp:278
 msgid "addon_type^Other"
 msgstr "Інше"
 
-#: src/addon/info.cpp:277
+#: src/addon/info.cpp:280
 msgid "addon_type^(unknown)"
 msgstr "(невідомо)"
 
-#: src/addon/info.cpp:314
+#: src/addon/info.cpp:317
 msgid "unit_byte^B"
 msgstr "Б"
 
@@ -6162,48 +6376,48 @@ msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr "Не можу знайти на цьому сервері аддони з ідентифікаторами $addon_ids|."
 
-#: src/addon/validation.cpp:388
+#: src/addon/validation.cpp:392
 msgid "Success."
 msgstr "Успіх."
 
-#: src/addon/validation.cpp:392
+#: src/addon/validation.cpp:396
 msgid "Incorrect add-on passphrase."
 msgstr "Невірний пароль аддону."
 
-#: src/addon/validation.cpp:396
+#: src/addon/validation.cpp:400
 msgid ""
 "Forum authentication was requested for a user that is not registered on the "
 "forums."
 msgstr ""
 "Користувач спробував авторизуватися на сервері, не маючи профіля на форумі."
 
-#: src/addon/validation.cpp:400
+#: src/addon/validation.cpp:404
 msgid "Upload denied. Please contact the server administration for assistance."
 msgstr ""
 "Вивантаження відмовлено. Будь ласка, зверніться за допомогою до "
 "адміністратора серверу."
 
-#: src/addon/validation.cpp:404
+#: src/addon/validation.cpp:408
 msgid "Attempted to upload an update pack for a non-existent add-on."
 msgstr "Була спроба вивантажити оновлення для неіснуючого аддону."
 
-#: src/addon/validation.cpp:413
+#: src/addon/validation.cpp:417
 msgid "No add-on data was supplied by the client."
 msgstr "Клієнт не надав жодної інформації про аддон."
 
-#: src/addon/validation.cpp:417
+#: src/addon/validation.cpp:421
 msgid "Invalid upload pack."
 msgstr "Невірний пакет для вивантаження."
 
-#: src/addon/validation.cpp:421
+#: src/addon/validation.cpp:425
 msgid "Invalid add-on name."
 msgstr "Неправильна назва аддону."
 
-#: src/addon/validation.cpp:425
+#: src/addon/validation.cpp:429
 msgid "Formatting character in add-on name."
 msgstr "Символ форматування в назві аддону."
 
-#: src/addon/validation.cpp:429
+#: src/addon/validation.cpp:433
 msgid ""
 "The add-on contains files or directories with illegal names.\n"
 "\n"
@@ -6225,7 +6439,7 @@ msgstr ""
 "Також імена не можуть бути довшими за 255 символів та містити '..', or чи "
 "закінчуватися '.'."
 
-#: src/addon/validation.cpp:439
+#: src/addon/validation.cpp:443
 msgid ""
 "The add-on contains files or directories with case conflicts.\n"
 "\n"
@@ -6236,60 +6450,60 @@ msgstr ""
 "\n"
 "Ім'я файлів або тек не можуть відрізнятися лише великими та малими літерами."
 
-#: src/addon/validation.cpp:445
+#: src/addon/validation.cpp:449
 msgid "The add-on name contains an invalid UTF-8 sequence."
 msgstr "Ім'я аддону містить неправильну послідовність UTF-8."
 
-#: src/addon/validation.cpp:454
+#: src/addon/validation.cpp:458
 msgid "No add-on title specified."
 msgstr "Не вказано назву аддону."
 
-#: src/addon/validation.cpp:458
+#: src/addon/validation.cpp:462
 msgid "No add-on author/maintainer name specified."
 msgstr "Не вказано ім'я автора/підтримувача аддону."
 
-#: src/addon/validation.cpp:462
+#: src/addon/validation.cpp:466
 msgid "No add-on version specified."
 msgstr "Не вказано версію аддону."
 
-#: src/addon/validation.cpp:466
+#: src/addon/validation.cpp:470
 msgid "No add-on description specified."
 msgstr "Не вказано опис аддону."
 
-#: src/addon/validation.cpp:470
+#: src/addon/validation.cpp:474
 msgid "No add-on author/maintainer email specified."
 msgstr "Не було вказано пошту автора/підтримувача аддону."
 
-#: src/addon/validation.cpp:474
+#: src/addon/validation.cpp:478
 msgid "Missing passphrase."
 msgstr "Відсутня кодова фраза."
 
-#: src/addon/validation.cpp:478
+#: src/addon/validation.cpp:482
 msgid "Formatting character in add-on title."
 msgstr "Символ форматування в назві аддону."
 
-#: src/addon/validation.cpp:482
+#: src/addon/validation.cpp:486
 msgid "Invalid or unspecified add-on type."
 msgstr "Недійсний чи невказаний тип аддону."
 
-#: src/addon/validation.cpp:486
+#: src/addon/validation.cpp:490
 msgid "Version number not greater than the latest uploaded version."
 msgstr "Номер версії не перевищує останню завантажену версію."
 
-#: src/addon/validation.cpp:490
+#: src/addon/validation.cpp:494
 msgid "Feedback topic id is not a number."
 msgstr "ID теми зворотнього зв'язку не є числом."
 
-#: src/addon/validation.cpp:494
+#: src/addon/validation.cpp:498
 msgid "Feedback topic does not exist."
 msgstr "Теми зворотнього зв'язку не існує."
 
-#: src/addon/validation.cpp:498
+#: src/addon/validation.cpp:502
 msgid "The add-on publish information contains an invalid UTF-8 sequence."
 msgstr ""
 "Інформація про публікацію аддону містить неправильну послідовність UTF-8."
 
-#: src/addon/validation.cpp:502
+#: src/addon/validation.cpp:506
 #, fuzzy
 #| msgid ""
 #| "The add-on's forum_auth attribute does not match what was previously "
@@ -6300,28 +6514,32 @@ msgid ""
 msgstr ""
 "Атрибут forum_auth аддону не відповідає тому, що було завантажено раніше."
 
-#: src/addon/validation.cpp:511
+#: src/addon/validation.cpp:510
+msgid "The add-on’s icon’s file size is too large."
+msgstr ""
+
+#: src/addon/validation.cpp:519
 msgid "Unspecified server error."
 msgstr "Невстановлена помилка сервера."
 
-#: src/addon/validation.cpp:515
+#: src/addon/validation.cpp:523
 msgid "Server is in read-only mode."
 msgstr "Сервер працює лише в режимі зчитування."
 
-#: src/addon/validation.cpp:519
+#: src/addon/validation.cpp:527
 msgid "Corrupted server add-ons list."
 msgstr "Список аддонів сервера пошкоджений."
 
-#: src/addon/validation.cpp:523
+#: src/addon/validation.cpp:531
 msgid "Empty add-on version list on the server."
 msgstr "Список аддонів сервера пустий."
 
-#: src/addon/validation.cpp:527
+#: src/addon/validation.cpp:535
 msgid ""
 "This server does not support using the forum_auth attribute in your pbl."
 msgstr "Цей сервер не підтримує властивість forum_auth у вашому pbl."
 
-#: src/addon/validation.cpp:537
+#: src/addon/validation.cpp:545
 msgid "Unspecified validation failure."
 msgstr "Невстановлена помилка ідентифікації."
 
@@ -6543,7 +6761,7 @@ msgstr "$elem застарів і вилучений."
 msgid "Chat message"
 msgstr "Повідомлення чату"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:578
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:579
 msgid "The Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
@@ -6638,7 +6856,7 @@ msgstr[2] ""
 msgid "timespan^expired"
 msgstr ""
 
-#: src/game_config.cpp:526
+#: src/game_config.cpp:527
 msgid "Invalid color in range: "
 msgstr "Невірний колір в діапазоні: "
 
@@ -6753,7 +6971,7 @@ msgstr[1] ""
 msgstr[2] ""
 "Будь ласка, повідомте про це відповідним авторам або наглядачам цього аддону."
 
-#: src/game_events/pump.cpp:389 src/game_launcher.cpp:921
+#: src/game_events/pump.cpp:389 src/game_launcher.cpp:905
 msgid "Error: "
 msgstr "Помилка: "
 
@@ -6777,32 +6995,32 @@ msgstr "Гра $login"
 msgid "Team"
 msgstr "Команда"
 
-#: src/game_initialization/connect_engine.cpp:935
+#: src/game_initialization/connect_engine.cpp:941
 msgid "Anonymous player"
 msgstr "Анонімний гравець"
 
-#: src/game_initialization/connect_engine.cpp:940
-#: src/game_initialization/connect_engine.cpp:1205
+#: src/game_initialization/connect_engine.cpp:946
+#: src/game_initialization/connect_engine.cpp:1189
 msgid "Computer Player"
 msgstr "Комп'ютерний гравець"
 
-#: src/game_initialization/connect_engine.cpp:982
+#: src/game_initialization/connect_engine.cpp:988
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1201
+#: src/game_initialization/connect_engine.cpp:1185
 msgid "Network Player"
 msgstr "Мережний гравець"
 
-#: src/game_initialization/connect_engine.cpp:1204
+#: src/game_initialization/connect_engine.cpp:1188
 msgid "Local Player"
 msgstr "Локальний гравець"
 
-#: src/game_initialization/connect_engine.cpp:1206
+#: src/game_initialization/connect_engine.cpp:1190
 msgid "Nobody"
 msgstr "Нікого"
 
-#: src/game_initialization/connect_engine.cpp:1209
+#: src/game_initialization/connect_engine.cpp:1193
 msgid "Reserved"
 msgstr "Зарезервовано"
 
@@ -6864,15 +7082,15 @@ msgstr "Не усі обрані модифікації сумісні. Деяк
 msgid "A component"
 msgstr "Компонент"
 
-#: src/game_initialization/flg_manager.cpp:212
+#: src/game_initialization/flg_manager.cpp:216
 msgid "Only random sides in the current era."
 msgstr "Лише випадкові сторони в поточній ері."
 
-#: src/game_initialization/flg_manager.cpp:234
+#: src/game_initialization/flg_manager.cpp:238
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Не можу знайти тип лідера для фракції $faction"
 
-#: src/game_initialization/flg_manager.cpp:257
+#: src/game_initialization/flg_manager.cpp:261
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Не можна отримати стать для лідера $leader"
 
@@ -7109,20 +7327,20 @@ msgstr "Ви намагалися увійти надто багато разі�
 msgid "Password hashing failed."
 msgstr "Хешування паролю не вдалося."
 
-#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:874
+#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:858
 msgid "The game could not be loaded: "
 msgstr "Не вдалось завантажити гру: "
 
-#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:876
+#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:860
 msgid "Error while playing the game: "
 msgstr "Виникла помилка під час гри: "
 
-#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:913
+#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:897
 msgid "The game map could not be loaded: "
 msgstr "Не вдалось завантажити ігрову карту: "
 
-#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:878
-#: src/game_launcher.cpp:999
+#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:862
+#: src/game_launcher.cpp:983
 msgid "Map generator error: "
 msgstr "Помилка генератора карт: "
 
@@ -7149,29 +7367,29 @@ msgstr "Невідомий сценарій: '$scenario|'"
 msgid "No campaigns are available."
 msgstr "Немає доступних кампаній."
 
-#: src/game_launcher.cpp:681 src/game_launcher.cpp:700 src/replay.cpp:663
+#: src/game_launcher.cpp:660 src/game_launcher.cpp:679 src/replay.cpp:663
 msgid "The file you have tried to load is corrupt"
 msgstr "Файл, який Ви намагалися завантажити, пошкоджений"
 
-#: src/game_launcher.cpp:683 src/game_launcher.cpp:702
+#: src/game_launcher.cpp:662 src/game_launcher.cpp:681
 #: src/hotkey/hotkey_handler_sp.cpp:338 src/savegame.cpp:148
 #: src/savegame.cpp:309
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Файл, який Ви намагалися завантажити, пошкоджений: '"
 
-#: src/game_launcher.cpp:692
+#: src/game_launcher.cpp:671
 msgid "File I/O Error while reading the game"
 msgstr "Помилка вводу/виводу при читанні файлу з грою"
 
-#: src/game_launcher.cpp:694
+#: src/game_launcher.cpp:673
 msgid "File I/O Error while reading the game: '"
 msgstr "Помилка вводу/виводу при читанні файлу з грою: '"
 
-#: src/game_launcher.cpp:872
+#: src/game_launcher.cpp:856
 msgid "Error while starting server: "
 msgstr "Помилка запуску сервера: "
 
-#: src/game_launcher.cpp:894
+#: src/game_launcher.cpp:878
 msgid "Connection failed: "
 msgstr "Не вдалося встановити з'єднання: "
 
@@ -7347,10 +7565,6 @@ msgstr "Атаки: "
 msgid "Chance to hit: "
 msgstr "Шанс влучити: "
 
-#: src/gui/dialogs/unit_list.hpp:40
-msgid "No units found."
-msgstr "Бійці не знайдені."
-
 #: src/gui/widgets/status_label_helper.hpp:37
 msgid "no"
 msgstr "ні"
@@ -7465,7 +7679,7 @@ msgstr "Ви дійсно хочете здатися?"
 msgid "Surrender"
 msgstr "Здатися"
 
-#: src/hotkey/command_executor.cpp:805
+#: src/hotkey/command_executor.cpp:812
 msgid "Map-Screenshot"
 msgstr "Знімок карти"
 
@@ -7642,34 +7856,34 @@ msgstr[0] "Псевдонім"
 msgstr[1] "Псевдоніми"
 msgstr[2] "Псевдоніми"
 
-#: src/menu_events.cpp:157
+#: src/menu_events.cpp:174
 msgid "Save Map As"
 msgstr "Зберегти карту як"
 
-#: src/menu_events.cpp:168
+#: src/menu_events.cpp:185
 msgid "Map saved."
 msgstr "Карту збережено."
 
-#: src/menu_events.cpp:172
+#: src/menu_events.cpp:189
 msgid "Could not save the map: $msg"
 msgstr "Не вдалось зберегти карту: $msg"
 
-#: src/menu_events.cpp:198
+#: src/menu_events.cpp:215
 msgid "Message:"
 msgstr "Повідомлення:"
 
-#: src/menu_events.cpp:200
+#: src/menu_events.cpp:217
 msgid "Send to observers only"
 msgstr "Відправити лише спостерігачам"
 
-#: src/menu_events.cpp:201
+#: src/menu_events.cpp:218
 msgid "Send to allies only"
 msgstr "Відправити лише союзникам"
 
 #. TRANSLATORS: An error that should never happen, might happen when loading an old savegame. If there are
 #. any units that the player can recruit then their standard recruitment dialog will be shown after this
 #. error message, otherwise they'll get the "You have no units available to recruit." error after this one.
-#: src/menu_events.cpp:260
+#: src/menu_events.cpp:281
 msgid "Error: there’s an unknown unit type on your recruit list: $unknown_ids"
 msgid_plural ""
 "Error: there are several unknown unit types on your recruit list: "
@@ -7678,39 +7892,42 @@ msgstr[0] "Помилка: невідомий боєць у списку вер�
 msgstr[1] "Помилка: невідомі бійці у списку вербування: $unknown_ids"
 msgstr[2] "Помилка: невідомі бійці у списку вербування: $unknown_ids"
 
-#: src/menu_events.cpp:268
+#: src/menu_events.cpp:289
 msgid "You have no units available to recruit."
 msgstr "Немає бійців для вербування."
 
-#: src/menu_events.cpp:278
-msgid "No unit recruited."
-msgstr "Бійця не завербовано."
-
-#: src/menu_events.cpp:303
+#: src/menu_events.cpp:319
 msgid "Internal error. Please report this as a bug! Details:\n"
 msgstr "Внутрішня помилка. Будь ласка, повідомте про цей баг! Подробиці:\n"
 
-#: src/menu_events.cpp:309
+#: src/menu_events.cpp:325
 msgid "You cannot recruit a $unit_type_name at this time."
 msgstr "Зараз ви не можете вербувати $unit_type_name."
 
 #. TRANSLATORS: "plan" refers to Planning Mode
-#: src/menu_events.cpp:323
+#: src/menu_events.cpp:339
 msgid ""
 "At this point in your plan, you will not have enough gold to recruit this "
 "unit."
 msgstr ""
 "Зараз у режимі планування, у вас замало золота щоб найняти цього бійця."
 
-#: src/menu_events.cpp:325
+#: src/menu_events.cpp:341
 msgid "You do not have enough gold to recruit this unit."
 msgstr "У вас замало золота, щоб завербувати цього бійця."
 
-#: src/menu_events.cpp:368
+#: src/menu_events.cpp:385
 msgid "You are separated from your soldiers and may not recall them."
 msgstr "Ви відокремлені від ваших солдатів і не можете їх закликати."
 
-#: src/menu_events.cpp:389
+#: src/menu_events.cpp:403
+msgid "You must have at least 1 gold piece to recall a unit."
+msgid_plural "You must have at least $cost gold pieces to recall this unit."
+msgstr[0] "У Вас має бути хоча би 1 золотий для заклику бійця."
+msgstr[1] "У Вас має бути хоча би $cost золотих для заклику бійця."
+msgstr[2] "У Вас має бути хоча би $cost золотих для заклику бійця."
+
+#: src/menu_events.cpp:416
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
@@ -7718,53 +7935,42 @@ msgstr ""
 "Немає військ для заклику\n"
 "(У Вас мають бути бійці, що уціліли з минулого сценарію)"
 
-#: src/menu_events.cpp:393
+#: src/menu_events.cpp:421
 #, fuzzy
 #| msgid "You currently can't recall at the highlighted location."
 msgid "You currently can’t recall at the highlighted location."
 msgstr "Зараз Ви не можете закликати на цій клітинці."
 
-#: src/menu_events.cpp:405
-msgid "No unit recalled."
-msgstr "Бійця не закликано."
-
-#: src/menu_events.cpp:422
-msgid "You must have at least 1 gold piece to recall a unit."
-msgid_plural "You must have at least $cost gold pieces to recall this unit."
-msgstr[0] "У Вас має бути хоча би 1 золотий для заклику бійця."
-msgstr[1] "У Вас має бути хоча би $cost золотих для заклику бійця."
-msgstr[2] "У Вас має бути хоча би $cost золотих для заклику бійця."
-
-#: src/menu_events.cpp:567
+#: src/menu_events.cpp:581
 msgid "You cannot end your turn yet!"
 msgstr "Ви поки що не можете закінчити хід!"
 
-#: src/menu_events.cpp:582
+#: src/menu_events.cpp:596
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Ви ще не починали свій хід. Ви дійсно хочете завершити свій хід?"
 
-#: src/menu_events.cpp:591
+#: src/menu_events.cpp:605
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Деякі бійці ще можуть ходити. Ви дійсно хочете завершити свій хід?"
 
-#: src/menu_events.cpp:600
+#: src/menu_events.cpp:614
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr "Деякі бійці ще не походили. Ви дійсно хочете завершити хід?"
 
-#: src/menu_events.cpp:656
+#: src/menu_events.cpp:670
 msgid "Rename Unit"
 msgstr "Перейменувати бійця"
 
-#: src/menu_events.cpp:657
+#: src/menu_events.cpp:671
 msgid "Name:"
 msgstr "Ім'я:"
 
-#: src/menu_events.cpp:833
+#: src/menu_events.cpp:832
 msgid "Clear Labels"
 msgstr "Очистити мітки"
 
-#: src/menu_events.cpp:834
+#: src/menu_events.cpp:833
 msgid "Are you sure you want to clear map labels?"
 msgstr "Ви упевнені, що хочете всі мітки на карті?"
 
@@ -8367,36 +8573,36 @@ msgstr "Виявлена територія з ціною руху менше 1.
 msgid "waiting for^a global variable"
 msgstr "waiting for^глобальна змінна"
 
-#: src/play_controller.cpp:254
+#: src/play_controller.cpp:255
 msgid "time left for current turn"
 msgstr "залишилося часу на цей хід"
 
-#: src/play_controller.cpp:256
+#: src/play_controller.cpp:257
 msgid "current local time"
 msgstr "поточний місцевий час"
 
-#: src/play_controller.cpp:560
+#: src/play_controller.cpp:608
 msgid "Trying to create a corrupt file, please report this bug"
 msgstr "Спроба створити зламаний файл, будь ласка, повідомте про помилку"
 
-#: src/play_controller.cpp:1023
+#: src/play_controller.cpp:1071
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
 "Помилка синхронізації, немає сенсу продовжувати. Ви хочете зберегти гру?"
 
-#: src/play_controller.cpp:1024
+#: src/play_controller.cpp:1072
 msgid "Error details:"
 msgstr "Деталі помилки:"
 
-#: src/play_controller.cpp:1205
+#: src/play_controller.cpp:1253
 msgid "Warning: broken campaign branches"
 msgstr "Попередження: є зламані гілки кампаній"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1211
+#: src/play_controller.cpp:1259
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -8408,7 +8614,7 @@ msgstr[1] ""
 msgstr[2] ""
 "Декілька наступних сценаріїв відсутні, ви не зможете пройти цю кампанію."
 
-#: src/play_controller.cpp:1218
+#: src/play_controller.cpp:1266
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -8425,11 +8631,11 @@ msgstr[2] ""
 "Будь ласка, повідомте автору кампанії про відсутні сценарії:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1222
+#: src/play_controller.cpp:1270
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "Коли це починять, вам необхідно буде перезапустити цей сценарій."
 
-#: src/play_controller.cpp:1301
+#: src/play_controller.cpp:1349
 msgid "No objectives available"
 msgstr "Немає цілей"
 
@@ -9213,7 +9419,7 @@ msgstr "ввід"
 
 #. TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
-#: src/team.cpp:1005
+#: src/team.cpp:995
 msgid "“$color_id”"
 msgstr "\"$color_id\""
 
@@ -9485,7 +9691,7 @@ msgstr "$year до П."
 msgid "$year AF"
 msgstr "$year після П."
 
-#: src/wesnoth.cpp:782
+#: src/wesnoth.cpp:789
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
@@ -9495,7 +9701,7 @@ msgstr ""
 "неправильні дозволи папок та антивірусні програми, що обмежують доступи до "
 "папок, або при використанні OneDrive для керування папкою My Documents."
 
-#: src/wesnoth.cpp:783
+#: src/wesnoth.cpp:790
 msgid "Logging Failure"
 msgstr "Логування провалено"
 
@@ -9522,6 +9728,15 @@ msgstr "Сховати плани $player"
 #: src/whiteboard/manager.cpp:1140
 msgid "Whiteboard Options"
 msgstr "Параметри планувальника"
+
+#~ msgid "No units found."
+#~ msgstr "Бійці не знайдені."
+
+#~ msgid "No unit recruited."
+#~ msgstr "Бійця не завербовано."
+
+#~ msgid "No unit recalled."
+#~ msgstr "Бійця не закликано."
 
 #~ msgid "Invalid Color"
 #~ msgstr "Невірний колір"
@@ -9951,11 +10166,6 @@ msgstr "Параметри планувальника"
 #~ msgstr " (неактивно)"
 
 #, fuzzy
-#~| msgid "Max swarm bonus: "
-#~ msgid "Max HP bonus +6%"
-#~ msgstr "Макс бонус рою: "
-
-#, fuzzy
 #~| msgid "XP to advance"
 #~ msgid "$value| XP to advance"
 #~ msgstr "ДВ для поліпшення"
@@ -9982,13 +10192,6 @@ msgstr "Параметри планувальника"
 #~ "\n"
 #~ "Примітка: ця опція працює лише у одиночній грі, також необхідно ввімкнути "
 #~ "‘Зберегти випадкове зерно’ при створенні гри."
-
-#, fuzzy
-#~| msgid "Sending add-on <i>$addon_title</i>..."
-#~ msgid ""
-#~ "Requesting the older version composition for the add-on <i>$addon_title</"
-#~ "i>..."
-#~ msgstr "Відсилаю аддон <i>$addon_title</i>..."
 
 #, fuzzy
 #~| msgid "The Battle for Wesnoth"
@@ -11985,12 +12188,6 @@ msgstr "Параметри планувальника"
 #~ msgid "The server responded with an error: \"$error|\""
 #~ msgstr "Сервер відповів помилкою: \"$error|\""
 
-#~ msgid "Sending add-on"
-#~ msgstr "Надсилаю аддон"
-
-#~ msgid "Requesting the addon to be deleted"
-#~ msgstr "Запитую видалення аддону"
-
 #~ msgid "Downloading..."
 #~ msgstr "Завантажую..."
 
@@ -12057,9 +12254,6 @@ msgstr "Параметри планувальника"
 #~ msgstr ""
 #~ "Сервер працюватиме фоновим процесом, поки усі користувачі не "
 #~ "від'єднаються."
-
-#~ msgid "Don’t show again"
-#~ msgstr "Не показувати знов"
 
 #~ msgid "A map without a header is not supported"
 #~ msgstr "Карта без заголовка не підтримується"

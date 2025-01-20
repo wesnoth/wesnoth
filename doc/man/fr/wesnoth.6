@@ -45,6 +45,10 @@ scénarios ou vos campagnes et partagez\-les avec le reste du monde.
 .SH OPTIONS
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 Affiche toutes les traductions dans le menu du jeu, même si elles sont
 jugées insuffisamment complètes.
@@ -209,10 +213,9 @@ Utilise \fImot de passe\fP lors de la connexion à un serveur, en ignorant
 d'autres préférences. Dangereux.
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-(expérimental) charge un \fIscript\fP qui défini un plugin Wesnoth. Similaire à
-\fB\-\-script\fP, mais le fichier Lua devrait retourner une fonction qui sera
-exécutée comme une coroutine et réveillée périodiquement avec des mises à
-jour.
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 Applique une différence au format DiffWML à un fichier WML sans résolution
@@ -270,9 +273,6 @@ Initialise le générateur de nombre aléatoire avec le nombre
 \fB\-\-screenshot\fP\fI\ carte\fP\fB\ \fP\fIsortiee\fP
 Sauvegarde une capture d'écran de \fIcarte\fP vers \fIsortie\fP sans initialiser
 d'écran.
-.TP 
-\fB\-\-script\fP\fI\ fichier_d'entrée\fP
-(expérimental)  \fIfile\fP contenant un script Lua qui contrôle le client.
 .TP 
 \fB\-s[\fP\fIhôte\fP\fB],\ \-\-server[\fP\fI=hôte\fP\fB]\fP
 Se connecte à un hôte prédéfini s'il existe, sinon tente de se connecter au

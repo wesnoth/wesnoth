@@ -95,6 +95,7 @@ loading_screen::loading_screen(std::function<void()> f)
 
 	current_visible_stage_ = visible_stages_.end();
 	singleton_ = this;
+	set_allow_plugin_skip(false);
 }
 
 void loading_screen::pre_show()

@@ -574,6 +574,12 @@ void render_screen()
 	// Clear the render target so we're drawing to the window.
 	clear_render_target();
 
+	// Use fully transparent black to clear the window backbuffer
+	SDL_SetRenderDrawColor(*window, 0u, 0u, 0u, 0u);
+
+	// Clear the window backbuffer before rendering the render texture.
+	SDL_RenderClear(*window);
+
 	// Copy the render texture to the window.
 	SDL_RenderCopy(*window, render_texture_, nullptr, nullptr);
 

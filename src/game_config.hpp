@@ -62,6 +62,7 @@ namespace game_config
 		exit_at_end, disable_autosave, no_addons;
 
 	extern bool allow_insecure;
+	extern bool addon_server_info;
 
 	extern const bool& debug;
 	void set_debug(bool new_debug);

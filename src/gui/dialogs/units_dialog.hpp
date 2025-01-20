@@ -84,18 +84,6 @@ public:
 		return *this;
 	}
 
-	units_dialog& show_all_headers(const bool show = true)
-	{
-		show_header_ = show;
-		return *this;
-	}
-
-	units_dialog& show_header(std::string_view id, const bool visible = true)
-	{
-		find_widget<toggle_button>(id).set_visible(visible);
-		return *this;
-	}
-
 	units_dialog& set_show_rename(bool show = true)
 	{
 		show_rename_ = show;
@@ -209,7 +197,6 @@ private:
 	std::string cancel_label_;
 	std::string topic_id_;
 
-	bool show_header_;
 	bool show_rename_;
 	bool show_dismiss_;
 	bool show_variations_;

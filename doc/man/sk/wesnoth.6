@@ -44,6 +44,10 @@ hráčmi.
 .SH MOŽNOSTI
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 Zobraziť všetky preklady vo výberovom zozname jazykov v hre, aj keď sa
 považujú za nedokončené.
@@ -197,9 +201,9 @@ použije \fIpassword\fP pri pripojení na server, bez ohľadu na predvoľby. Nie
 bezpečné.
 .TP 
 \fB\-\-plugin\fP\fI\ skript\fP
-(experimentálne) načítajte \fIscript\fP, ktorý definuje doplnok
-Wesnoth. Podobne ako \fB\-\-script\fP, ale súbor Lua by mal vrátiť funkciu, ktorá
-sa spustí ako co\-rutina a bude sa pravidelne prebúdzať s aktualizáciami.
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 aplikuje patch DiffWML na súbor WML; nespracúva ani jeden zo
@@ -253,9 +257,6 @@ nasadí generátor náhodných čísel s \fInumber\fP.  Príklad: \fB\-\-rng\-se
 .TP 
 \fB\-\-screenshot\fP\fI\ mapa\fP\fB\ \fP\fIvýstup\fP
 uloží snímku obrazovky \fImap\fP do \fIoutput\fP bez inicializácie obrazovky.
-.TP 
-\fB\-\-script\fP\fI\ súbor\fP
-(experimentálne) \fIfile\fP obsahujúci Lua skript na ovládanie klienta.
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 pripojí sa na server, ak je zadaný, inak na prvý server uvedený v

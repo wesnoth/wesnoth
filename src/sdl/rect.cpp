@@ -129,13 +129,6 @@ point rect::point_at(double x, double y) const
 	};
 }
 
-rect rect::subrect(const SDL_FPoint& tl, const SDL_FPoint& br) const
-{
-	point p1 = point_at(tl.x, tl.y);
-	point p2 = point_at(br.x, br.y);
-	return { p1, p2 - p1 };
-}
-
 std::ostream& operator<<(std::ostream& s, const rect& r)
 {
 	s << '[' << r.x << ',' << r.y << '|' << r.w << ',' << r.h << ']';

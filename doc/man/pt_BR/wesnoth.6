@@ -43,6 +43,10 @@ unidades, cenários e campanhas e compartilhe\-os com os outros.
 .SH OPÇÕES
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 Mostra todas as traduções na lista de seleção de línguas do jogo, mesmo que
 elas não sejam consideradas como suficientemente completas.
@@ -197,9 +201,9 @@ usa \fIpassword\fP quando conectar a um servidor, ignorando as outras
 preferências. Perigoso.
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-(experimental)carrega um \fIscript\fP que define um plugin para o
-wesnoth. Identico ao \fB\-\-script\fP, mas arquivos Lua devem retornar uma função
-que irá agir como uma co\-rotina e periodicamente despertar com atualizações.
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 aplica um patch DiffWML para um arquivo WML; não pré\-processa nenhum dos
@@ -254,9 +258,6 @@ preenche o gerador de números aleatórios com \fInumber\fP.  Exemplo:
 .TP 
 \fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
 salva uma screenshot de \fImap\fP para \fIoutput\fP sem iniciar a tela.
-.TP 
-\fB\-\-script\fP\fI\ file\fP
-(experimental)  \fIfile\fP contem um script Lua para controlar o cliente.
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 conecta com o host especificado, caso um tenha sido especificado. Caso

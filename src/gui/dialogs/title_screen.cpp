@@ -249,10 +249,10 @@ void title_screen::init_callbacks()
 	} else {
 		auto close = find_widget<button>("close", false, false);
 		if (close) {
-			connect_signal_mouse_left_click(*close, std::bind([&]() {
+			connect_signal_mouse_left_click(*close, [&](auto&&...) {
 				prefs::get().set_show_tips(false);
 				tip_panel.set_visible(false);
-			}));
+			});
 		}
 	}
 

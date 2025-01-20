@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 12:08-0600\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
 "PO-Revision-Date: 2009-10-08 21:45-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -342,13 +342,13 @@ msgstr ""
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1130
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(𐑯𐑿 𐑥𐑨𐑐)"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1130
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Scenario"
@@ -402,7 +402,7 @@ msgid "Save Map As"
 msgstr "𐑕𐑱𐑝 𐑞 𐑥𐑨𐑐 𐑨𐑟"
 
 #: src/editor/map/context_manager.cpp:708
-#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:269
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr ""
@@ -492,21 +492,21 @@ msgstr ""
 msgid "The size of the target map is different from the current map"
 msgstr "𐑞 𐑕𐑲𐑟 𐑝 𐑞 𐑑𐑸𐑜𐑧𐑑 𐑥𐑨𐑐 𐑦𐑟 𐑛𐑦𐑓𐑼𐑩𐑯𐑑 𐑓𐑮𐑪𐑥 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑 𐑥𐑨𐑐"
 
-#: src/editor/map/map_context.cpp:182
+#: src/editor/map/map_context.cpp:186
 msgid "File not found"
 msgstr "𐑓𐑲𐑤 𐑯𐑪𐑑 𐑓𐑬𐑯𐑛"
 
-#: src/editor/map/map_context.cpp:189
+#: src/editor/map/map_context.cpp:193
 #, fuzzy
 #| msgid "Empty map file"
 msgid "Empty file"
 msgstr "𐑧𐑥𐑐𐑑𐑦 𐑥𐑨𐑐 𐑓𐑲𐑤"
 
-#: src/editor/map/map_context.cpp:198
+#: src/editor/map/map_context.cpp:202
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:245
+#: src/editor/map/map_context.cpp:249
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -514,15 +514,15 @@ msgstr ""
 "𐑞 𐑥𐑨𐑐 𐑓𐑲𐑤 𐑤𐑫𐑒𐑕 𐑤𐑲𐑒 𐑩 𐑕𐑦𐑯𐑺𐑰𐑴, 𐑚𐑳𐑑 𐑞 map_data 𐑝𐑨𐑤𐑿 𐑛𐑳𐑟 𐑯𐑪𐑑 𐑐𐑶𐑯𐑑 𐑑 𐑩𐑯 𐑧𐑒𐑟𐑦𐑕𐑑𐑦𐑙 "
 "𐑓𐑲𐑤"
 
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:268
 msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:269
+#: src/editor/map/map_context.cpp:273
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:276
+#: src/editor/map/map_context.cpp:280
 #, fuzzy
 #| msgid ""
 #| "The map file looks like a scenario, but the map_data value does not point "
@@ -534,31 +534,31 @@ msgstr ""
 "𐑞 𐑥𐑨𐑐 𐑓𐑲𐑤 𐑤𐑫𐑒𐑕 𐑤𐑲𐑒 𐑩 𐑕𐑦𐑯𐑺𐑰𐑴, 𐑚𐑳𐑑 𐑞 map_data 𐑝𐑨𐑤𐑿 𐑛𐑳𐑟 𐑯𐑪𐑑 𐑐𐑶𐑯𐑑 𐑑 𐑩𐑯 𐑧𐑒𐑟𐑦𐑕𐑑𐑦𐑙 "
 "𐑓𐑲𐑤"
 
-#: src/editor/map/map_context.cpp:291
+#: src/editor/map/map_context.cpp:295
 msgid "Unable to parse file to find map data"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:824 src/editor/map/map_context.cpp:864
+#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑕𐑱𐑝 𐑞 𐑥𐑨𐑐: $msg"
 
-#: src/editor/map/map_context.cpp:858
+#: src/editor/map/map_context.cpp:863
 msgid "Time schedule saved."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:904
+#: src/editor/map/map_context.cpp:909
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
 msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑕𐑱𐑝 𐑞 𐑥𐑨𐑐: $msg"
 
-#: src/editor/map/map_context.cpp:935
+#: src/editor/map/map_context.cpp:940
 msgid "Could not save into scenario"
 msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑕𐑱𐑝 𐑦𐑯𐑑𐑫 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/editor/map/map_context.cpp:945
+#: src/editor/map/map_context.cpp:950
 msgid "Could not save the map: $msg"
 msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑕𐑱𐑝 𐑞 𐑥𐑨𐑐: $msg"
 

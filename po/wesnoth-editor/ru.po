@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 12:08-0600\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
 "PO-Revision-Date: 2024-04-07 16:36+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -351,11 +351,11 @@ msgstr ""
 msgid "Load Map"
 msgstr "Загрузить Карту"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1130
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
 msgid "New Map"
 msgstr "Новая карта"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1130
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
 msgid "New Scenario"
 msgstr "Новый сценарий"
 
@@ -401,7 +401,7 @@ msgid "Save Map As"
 msgstr "Сохранить карту как"
 
 #: src/editor/map/context_manager.cpp:708
-#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:269
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Ошибка"
@@ -477,21 +477,21 @@ msgstr "Игрок $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "Размер целевой карты отличается от размера текущей"
 
-#: src/editor/map/map_context.cpp:182
+#: src/editor/map/map_context.cpp:186
 msgid "File not found"
 msgstr "Файл не найден"
 
-#: src/editor/map/map_context.cpp:189
+#: src/editor/map/map_context.cpp:193
 msgid "Empty file"
 msgstr "Файл пуст"
 
-#: src/editor/map/map_context.cpp:198
+#: src/editor/map/map_context.cpp:202
 #, fuzzy
 #| msgid "File does not have .map or .cfg extension"
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Файл не имеет разрешения .map или .cfg"
 
-#: src/editor/map/map_context.cpp:245
+#: src/editor/map/map_context.cpp:249
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -499,7 +499,7 @@ msgstr ""
 "Файл карты похож на сценарий, но значение map_data не указывает на "
 "существующий файл"
 
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:268
 #, fuzzy
 #| msgid ""
 #| "Found the characters '<<' indicating inline lua is present - aborting"
@@ -508,11 +508,11 @@ msgstr ""
 "Найдена последовательность \"<<\", присущая встроенному lua-коду — загрузка "
 "прекращена"
 
-#: src/editor/map/map_context.cpp:269
+#: src/editor/map/map_context.cpp:273
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr "Ошибка загрузки сценария. Попытка загрузить только карту."
 
-#: src/editor/map/map_context.cpp:276
+#: src/editor/map/map_context.cpp:280
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
@@ -520,31 +520,31 @@ msgstr ""
 "Файл карты похож на сценарий, но значение map_file не указывает на "
 "существующий файл"
 
-#: src/editor/map/map_context.cpp:291
+#: src/editor/map/map_context.cpp:295
 msgid "Unable to parse file to find map data"
 msgstr "Из файла не удаётся выделить данные карты"
 
-#: src/editor/map/map_context.cpp:824 src/editor/map/map_context.cpp:864
+#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "Невозможно сохранить сценарий: $msg"
 
-#: src/editor/map/map_context.cpp:858
+#: src/editor/map/map_context.cpp:863
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "Меню расписания"
 
-#: src/editor/map/map_context.cpp:904
+#: src/editor/map/map_context.cpp:909
 msgid "Could not save the scenario: $msg"
 msgstr "Невозможно сохранить сценарий: $msg"
 
-#: src/editor/map/map_context.cpp:935
+#: src/editor/map/map_context.cpp:940
 msgid "Could not save into scenario"
 msgstr "Невозможно сохранить сценарий"
 
-#: src/editor/map/map_context.cpp:945
+#: src/editor/map/map_context.cpp:950
 msgid "Could not save the map: $msg"
 msgstr "Невозможно сохранить карту: $msg"
 

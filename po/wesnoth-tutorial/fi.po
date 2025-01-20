@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tutorial-fi\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 18:08 UTC\n"
+"POT-Creation-Date: 2025-01-19 17:47 UTC\n"
 "PO-Revision-Date: 2024-06-26 10:17+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -20,30 +20,48 @@ msgstr ""
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
-msgid "Battle Training"
+#, fuzzy
+#| msgid "Battle Training"
+msgid "Battle Training — Old Tutorial"
 msgstr "Taistelukoulutus"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
-#. [achievement_group]
-#: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:30
-#: data/campaigns/tutorial/achievements.cfg:3
+#: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:32
 msgid "Tutorial"
 msgstr "Tutoriaali"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
+#| "first-time players."
 msgid ""
-"Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first-"
-"time players."
+"Learn the basics of Wesnoth gameplay with a tutorial.\n"
+"    \n"
 msgstr ""
 "Opi Wesnothin pelimekaniikan perusteet tässä tutoriaalissa. Suositellaan "
 "ensikertalaisille."
 
+#. [campaign]: id=Tutorial
+#: data/campaigns/tutorial/_main.cfg:23
+msgid ""
+"Note: No longer recommended for first-time players. Try <i>The South Guard</"
+"i> instead."
+msgstr ""
+
 #. [difficulty]
-#: data/campaigns/tutorial/_main.cfg:31
+#: data/campaigns/tutorial/_main.cfg:33
 msgid "Beginner"
 msgstr "Aloittelija"
+
+#. [achievement_group]
+#: data/campaigns/tutorial/achievements.cfg:3
+#, fuzzy
+#| msgid "Tutorial"
+msgid "Old Tutorial"
+msgstr "Tutoriaali"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:7
@@ -392,8 +410,8 @@ msgstr "<i>Nukellakin</i> on vuoro?"
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:586
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to $"
-"($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to "
+"$($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "Aivan. Se on maaginen harjoittelunukke. Sillä on viisi lyöntimahdollisuutta, "
 "ja jos se osuu, se tekee kolme pistettä vahinkoa. Jos se osuu joka kerta, "
@@ -2186,8 +2204,8 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1314
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, "
-"$unit.name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
+"name|."
 msgstr ""
 "Korkeamman tason yksiköt ovat vahvoja, mutta eivät haavoittumattomia. "
 "Hyvästi, $unit.name|."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 18:08 UTC\n"
+"POT-Creation-Date: 2025-01-19 17:47 UTC\n"
 "PO-Revision-Date: 2022-09-08 09:25-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: none\n"
@@ -21,30 +21,48 @@ msgstr ""
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
-msgid "Battle Training"
+#, fuzzy
+#| msgid "Battle Training"
+msgid "Battle Training — Old Tutorial"
 msgstr "Treinamento de Batalha"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
-#. [achievement_group]
-#: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:30
-#: data/campaigns/tutorial/achievements.cfg:3
+#: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:32
 msgid "Tutorial"
 msgstr "Tutorial"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
+#| "first-time players."
 msgid ""
-"Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first-"
-"time players."
+"Learn the basics of Wesnoth gameplay with a tutorial.\n"
+"    \n"
 msgstr ""
 "Aprenda os fundamentos de Wesnoth com um tutorial. Recomendado para "
 "jogadores novos."
 
+#. [campaign]: id=Tutorial
+#: data/campaigns/tutorial/_main.cfg:23
+msgid ""
+"Note: No longer recommended for first-time players. Try <i>The South Guard</"
+"i> instead."
+msgstr ""
+
 #. [difficulty]
-#: data/campaigns/tutorial/_main.cfg:31
+#: data/campaigns/tutorial/_main.cfg:33
 msgid "Beginner"
 msgstr "Iniciante"
+
+#. [achievement_group]
+#: data/campaigns/tutorial/achievements.cfg:3
+#, fuzzy
+#| msgid "Tutorial"
+msgid "Old Tutorial"
+msgstr "Tutorial"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:7

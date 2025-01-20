@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 12:08-0600\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
 "Last-Translator: RatArmy, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -342,11 +342,11 @@ msgstr ""
 msgid "Load Map"
 msgstr "マップ読み込み"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1130
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
 msgid "New Map"
 msgstr "新規マップ"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1130
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
 msgid "New Scenario"
 msgstr "新しいシナリオ"
 
@@ -392,7 +392,7 @@ msgid "Save Map As"
 msgstr "名前を付けてマップを保存"
 
 #: src/editor/map/context_manager.cpp:708
-#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:269
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "エラー"
@@ -466,21 +466,21 @@ msgstr "プレイヤー $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "ターゲットマップのサイズが現在のマップのサイズと異なります"
 
-#: src/editor/map/map_context.cpp:182
+#: src/editor/map/map_context.cpp:186
 msgid "File not found"
 msgstr "ファイルが見つかりません"
 
-#: src/editor/map/map_context.cpp:189
+#: src/editor/map/map_context.cpp:193
 msgid "Empty file"
 msgstr "ファイルが空です"
 
-#: src/editor/map/map_context.cpp:198
+#: src/editor/map/map_context.cpp:202
 #, fuzzy
 #| msgid "File does not have .map or .cfg extension"
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "ファイルの拡張子が .map か .cfg でありません"
 
-#: src/editor/map/map_context.cpp:245
+#: src/editor/map/map_context.cpp:249
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -488,7 +488,7 @@ msgstr ""
 "マップファイルはシナリオのようですが、map_data 値が存在するファイルを指し示し"
 "ていません"
 
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:268
 #, fuzzy
 #| msgid ""
 #| "Found the characters '<<' indicating inline lua is present - aborting"
@@ -496,11 +496,11 @@ msgid "Found the characters ‘<<’ indicating inline lua is present — aborti
 msgstr ""
 "インライン Lua が存在することを示す文字列「<<」が見つかりました -  中止します"
 
-#: src/editor/map/map_context.cpp:269
+#: src/editor/map/map_context.cpp:273
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr "シナリオの読み込みに失敗したため、マップのみの読み込みを試みます。"
 
-#: src/editor/map/map_context.cpp:276
+#: src/editor/map/map_context.cpp:280
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
@@ -508,31 +508,31 @@ msgstr ""
 "このマップファイルはシナリオのようですが、map_file の値が存在するファイルを指"
 "示していません"
 
-#: src/editor/map/map_context.cpp:291
+#: src/editor/map/map_context.cpp:295
 msgid "Unable to parse file to find map data"
 msgstr "マップデータを探すためのファイルのパースができません"
 
-#: src/editor/map/map_context.cpp:824 src/editor/map/map_context.cpp:864
+#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "シナリオを保存できませんでした: $msg"
 
-#: src/editor/map/map_context.cpp:858
+#: src/editor/map/map_context.cpp:863
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "タイムスケジュールメニュー"
 
-#: src/editor/map/map_context.cpp:904
+#: src/editor/map/map_context.cpp:909
 msgid "Could not save the scenario: $msg"
 msgstr "シナリオを保存できませんでした: $msg"
 
-#: src/editor/map/map_context.cpp:935
+#: src/editor/map/map_context.cpp:940
 msgid "Could not save into scenario"
 msgstr "シナリオに保存できませんでした。"
 
-#: src/editor/map/map_context.cpp:945
+#: src/editor/map/map_context.cpp:950
 msgid "Could not save the map: $msg"
 msgstr "マップを保存できませんでした: $msg"
 

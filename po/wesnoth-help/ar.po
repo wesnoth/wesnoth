@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-12-18 16:51-0600\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
 "PO-Revision-Date: 2024-11-22 20:35+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -268,7 +268,7 @@ msgstr "تخفي"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:174
+#: data/core/macros/weapon_specials.cfg:201
 msgid "drains"
 msgstr "استنزاف"
 
@@ -306,7 +306,7 @@ msgstr "تسلل"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:196
+#: data/core/macros/weapon_specials.cfg:223
 msgid "poison"
 msgstr "سم"
 
@@ -2146,8 +2146,10 @@ msgid ""
 "\n"
 "The Wesnothian calendar begins with the founding of Wesnoth in the year 1 YW "
 "(Year of Wesnoth). Years before that are counted based on the number of "
-"years before the founding of Wesnoth using BW (Before Wesnoth). After the "
-"Fall of Wesnoth dates use AF (After the Fall)."
+"years before the founding of Wesnoth using BW (Before Wesnoth).\n"
+"\n"
+"After the fall of Wesnoth many switched to using AF (After the Fall) and BF "
+"(Before the Fall)."
 msgstr ""
 "تتكون كل سنة في تقويم ويسنوث من 12 شهرًا. وهي بالترتيب:\n"
 "\n"
@@ -2261,17 +2263,22 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:57
 msgid ""
 "<header>text='Notable land features:'</header>\n"
-"    • Mount Morogor: An active volcanic mountain in the central island of "
-"Morogor."
+"    • Mount Morogor: The highest active volcanic mountain in the central "
+"island of Morogor.\n"
+"    • Isle of Gaall: A dangerous island slightly north of the central Isle "
+"of Morogor, used mostly as hunting ground by the drakes, who inhabit only a "
+"two small villages on the isle.\n"
+"    • Isle of Omarath: A major drakish island northwest of the main Isle of "
+"Morogor. It is the northernmost island of the Morogor Archipelago."
 msgstr ""
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:63
+#: data/core/encyclopedia/geography.cfg:65
 msgid "Green Isle"
 msgstr "الجزيرة الخضراء"
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:64
+#: data/core/encyclopedia/geography.cfg:66
 #, fuzzy
 #| msgid ""
 #| "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</"
@@ -2283,7 +2290,7 @@ msgstr "جزيرة أكبر تقع في <ref>dst='great_ocean' text='المحي�
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
-#: data/core/encyclopedia/geography.cfg:68
+#: data/core/encyclopedia/geography.cfg:70
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Southbay: The capital of the largest Islefolk Kingdom.\n"
@@ -2293,12 +2300,12 @@ msgid ""
 "Haldric I.\n"
 "    • Jevyan’s Haven: The Wesfolk capital and home of the famous lich-lord "
 "Jevyan.\n"
-"    • Blackmore: A small Wesfolk settlement."
+"    • Blackmore: A small settlement north of the Oldwood."
 msgstr ""
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
-#: data/core/encyclopedia/geography.cfg:77
+#: data/core/encyclopedia/geography.cfg:79
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • Broken Mountains: A mighty mountain range that cuts through the Green "
@@ -2308,12 +2315,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:85
+#: data/core/encyclopedia/geography.cfg:87
 msgid "Old Continent"
 msgstr "القارة القديمة"
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:86
+#: data/core/encyclopedia/geography.cfg:88
 #, fuzzy
 #| msgid ""
 #| "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
@@ -2328,12 +2335,12 @@ msgstr ""
 "<ref>dst='great_ocean' text='المحيط العظيم'</ref>."
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:91
+#: data/core/encyclopedia/geography.cfg:93
 msgid "Great Continent"
 msgstr "القارة العظمى"
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:92
+#: data/core/encyclopedia/geography.cfg:94
 msgid ""
 "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
@@ -2343,12 +2350,12 @@ msgstr ""
 "وساحلها الغربي محاط ب <ref>dst='great_ocean' text='المحيط العظيم'</ref>."
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:97
+#: data/core/encyclopedia/geography.cfg:99
 msgid "Irdya"
 msgstr "إرديا"
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:98
+#: data/core/encyclopedia/geography.cfg:100
 msgid ""
 "The name of the world in which the kingdom of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref> is situated is ‘Irdya’. This term is, however, only "
@@ -2361,12 +2368,12 @@ msgstr ""
 "الواسع\"."
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:103
+#: data/core/encyclopedia/geography.cfg:105
 msgid "Kingdom of Wesnoth"
 msgstr "مملكة ويسنوث"
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:104
+#: data/core/encyclopedia/geography.cfg:106
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -2377,13 +2384,15 @@ msgid ""
 "Swamp to the southeast.\n"
 "\n"
 "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier region. "
-"It is bounded to the south (off-map) by dense woods of which the Aethenwood "
-"may be considered a northernmost extension."
+"It is bounded to the south by dense woods of which the Aethenwood may be "
+"considered a northernmost extension. Kerlath is its southernmost province, "
+"marking the end of Wesnoth and the start of the mysterious "
+"<ref>dst='far_south' text='Far South'</ref>."
 msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
-#: data/core/encyclopedia/geography.cfg:110
+#: data/core/encyclopedia/geography.cfg:112
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Weldyn: The capital of Wesnoth.\n"
@@ -2392,20 +2401,22 @@ msgid ""
 "    • Carcyn: Located between the Grey Woods and the Great River.\n"
 "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
 "country, just west and north of Weldyn.\n"
-"    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
-"confluence of the Weldyn River and the Great River.\n"
+"    • Soradoc: The easternmost town of Wesnoth, controls the confluence of "
+"the Weldyn River and the Great River.\n"
 "    • Fort Tahn: The southernmost border outpost, controls the north/south "
 "road crossing the River Aethen.\n"
 "    • Tath: Important fort city north of Dan’Tonk, exerts control over the "
 "wilderness country around the east of the Brown Hills and north to the Ford "
 "of Abez.\n"
-"    • Westin: A small yet important town in Kerlath, a province of Southern "
-"Wesnoth. The old Citadel of Westin can be found there."
+"    • Westin: A small yet important town in Kerlath, the southernmost "
+"province of Wesnoth. The old Citadel of Westin can be found there.\n"
+"    • Southport: A small town in the southernmost reaches of Kerlath, near "
+"the Black Forest."
 msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
-#: data/core/encyclopedia/geography.cfg:123
+#: data/core/encyclopedia/geography.cfg:126
 #, fuzzy
 #| msgid ""
 #| "The Kingdom of Wesnoth is located in the north-central portion of the "
@@ -2536,12 +2547,12 @@ msgstr ""
 "وألدريل وتعتبر بشكل عام مسكونة بالأشباح."
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:140
+#: data/core/encyclopedia/geography.cfg:143
 msgid "Elensefar"
 msgstr "إلنسفار"
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:141
+#: data/core/encyclopedia/geography.cfg:144
 #, fuzzy
 #| msgid ""
 #| "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
@@ -2587,16 +2598,17 @@ msgstr ""
 
 #. [topic]: id=elensefar
 #. Geography of Elensefar area
-#: data/core/encyclopedia/geography.cfg:145
+#: data/core/encyclopedia/geography.cfg:148
 msgid ""
 "<header>text='Notable cities:'</header>\n"
-"    • Elensefar: The capital, located on an island in the Great River "
-"delta.\n"
+"    • Elensefar: The capital, located on an island in the Great River delta, "
+"though some peripheral farmland extends slightly on both sides of the Great "
+"River.\n"
 "    • Carcyn: City on the Wesnoth–Elensefar border, disputed with Wesnoth."
 msgstr ""
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:150
+#: data/core/encyclopedia/geography.cfg:153
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
@@ -2604,20 +2616,20 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:156
+#: data/core/encyclopedia/geography.cfg:159
 msgid "Northlands"
 msgstr "الأراضي الشمالية"
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:157
+#: data/core/encyclopedia/geography.cfg:160
 msgid ""
 "The Northlands are filled with unstable clans in endless conflict. It is an "
 "unlawful and perilous place plagued by its cold, icy terrain and constant "
-"war. Various groups of orcs, dwarves, men, gryphons, ogres, and even elves "
-"fight over the region. The northern and eastern borders of the Northlands "
-"are not defined, the southern border is the <ref>dst='great_river' "
-"text='Great River'</ref>, and the western border is the "
-"<ref>dst='great_ocean' text='ocean'</ref>.\n"
+"war. Various groups of orcs, dwarves, humans, gryphons, ogres, and even "
+"elves fight over the region. The northern and eastern borders of the "
+"Northlands are not defined, the southern border is the "
+"<ref>dst='great_river' text='Great River'</ref>, and the western border is "
+"the <ref>dst='great_ocean' text='ocean'</ref>.\n"
 "\n"
 "Yet despite the sheer wilderness above the Northlands, the subterranean "
 "Dwarvish Kingdoms of Knalga and Kal Kartha are exceptions to their chaotic "
@@ -2628,13 +2640,14 @@ msgstr ""
 
 #. [topic]: id=northlands
 #. Geography of the Northlands
-#: data/core/encyclopedia/geography.cfg:163
+#: data/core/encyclopedia/geography.cfg:166
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Glamdrol: An Orcish tribal capital.\n"
 "    • Wesmere: The location of the Ka’lian — the Elvish Council\n"
 "    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga in "
 "the southern Heart Mountains. A major trade center.\n"
+"    • Saurgrath: A former saurian capital in the Swamp of Dread.\n"
 "    • Dallben and Delwyn: Human villages originally built by settlers who "
 "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
 "abandoned. The forested area northeast of <ref>dst='elensefar' "
@@ -2644,7 +2657,7 @@ msgstr ""
 
 #. [topic]: id=northlands
 #. Geography of the Northlands
-#: data/core/encyclopedia/geography.cfg:170
+#: data/core/encyclopedia/geography.cfg:175
 #, fuzzy
 #| msgid ""
 #| "There is no government of the Northlands. Various groups of orcs, "
@@ -2746,12 +2759,12 @@ msgstr ""
 "مكان ما في شرق الأراضي الشمالية."
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:183
+#: data/core/encyclopedia/geography.cfg:188
 msgid "Southwest Elven Lands"
 msgstr "أراضي الإلف الجنوبية الغربية"
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:184
+#: data/core/encyclopedia/geography.cfg:189
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -2762,24 +2775,29 @@ msgstr ""
 
 #. [topic]: id=southwest_elven_lands
 #. Geography of the Southwest
-#: data/core/encyclopedia/geography.cfg:188
+#: data/core/encyclopedia/geography.cfg:193
 msgid ""
 "<header>text='Notable land features:'</header>\n"
-"    • Aethenwood: The largest southern forest, it extends far to the south "
-"and is home to <ref>dst='..race_elf' text='elves'</ref>. Although the elves "
-"make no such distinction, the southern part of the forest has been named "
-"Southwood by denizens of Kerlath."
+"    • Aethenwood: The largest southern forest, home to recluded <ref>dst='.."
+"race_elf' text='elves'</ref>.\n"
+"    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
+"Aethenwood. It contains the sacred Isle of Elrath.\n"
+"    • Lake Aelin: An elvish lake at the edge of their territory along the "
+"River Aethen.\n"
+"    • Black Forest: An ancient and likely haunted forest of which very "
+"little is known, believed to have been once inhabited by elves. Those who "
+"enter it seldom return."
 msgstr ""
 
 #. [topic]: id=heart_mountains
-#: data/core/encyclopedia/geography.cfg:194
+#: data/core/encyclopedia/geography.cfg:202
 msgid "Heart Mountains"
 msgstr "جبال القلب"
 
 #. [topic]: id=heart_mountains
 #. The Whitefang Clan’s primary description is in DiD
 #. Wesnoth 1.9.4 added Haggid-Dargor to the encyclopedia, but it has no other mention in mainline
-#: data/core/encyclopedia/geography.cfg:197
+#: data/core/encyclopedia/geography.cfg:205
 msgid ""
 "A virtually impassable barrier between the <ref>dst='arkan_thoria' "
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
@@ -2790,12 +2808,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:202
+#: data/core/encyclopedia/geography.cfg:210
 msgid "Far North"
 msgstr "أقصى الشمال"
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:203
+#: data/core/encyclopedia/geography.cfg:211
 #, fuzzy
 #| msgid ""
 #| "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
@@ -2874,25 +2892,28 @@ msgstr ""
 
 #. [topic]: id=far_north
 #. Geography of the Far North
-#: data/core/encyclopedia/geography.cfg:206
+#: data/core/encyclopedia/geography.cfg:215
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Barag Gor: A city home to the Orcish Council.\n"
 "    • Bitok\n"
 "    • Borstep\n"
 "    • Farzi\n"
-"    • Jotha: A large fortified capital of the local merfolk that lies within "
-"the bay of Jotha.\n"
+"    • Jotha: A large fortified capital of the local merfolk south of Bitok.\n"
 "    • Lmarig\n"
 "    • Melmog\n"
 "    • Prestim\n"
 "    • Tirigaz: A coastal orcish town that occasionally raids Jotha.\n"
-"    • Dorest: The northernmost human city."
+"    • Dorest: The northernmost human city.\n"
+"    • Arcanclave Citadel: A mythical fortress far beyond the woods of "
+"Lintanir, believed to have been forged by an earth elemental in the midst of "
+"battle. Its ruins have now become a military stronghold.\n"
+"    "
 msgstr ""
 
 #. [topic]: id=far_north
 #. Geography of the Far North
-#: data/core/encyclopedia/geography.cfg:219
+#: data/core/encyclopedia/geography.cfg:231
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • Desert of Death: An unusually dry desert in the Far North filled with "
@@ -2904,6 +2925,9 @@ msgid ""
 "nonetheless deadly to inexperienced travelers.\n"
 "    • Mountains of Haag: A group of high mountains inhabited by groups of "
 "orcs, trolls and dwarves.\n"
+"    • Mourned Hills: A series of rolling hills stretching south from the "
+"Mountains of Haag. The orcish town of Lmarig is at the southern edge of "
+"these hills.\n"
 "    • Greenwood: An elvish forest located near the Lintanir Forest. Some say "
 "it was once connected to it, until groups of savage orcs burned much of the "
 "forest.\n"
@@ -2921,32 +2945,35 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=far_south
-#: data/core/encyclopedia/geography.cfg:235
+#: data/core/encyclopedia/geography.cfg:248
 #, fuzzy
 #| msgid "Far North"
 msgid "Far South"
 msgstr "أقصى الشمال"
 
 #. [topic]: id=far_south
-#: data/core/encyclopedia/geography.cfg:236
+#: data/core/encyclopedia/geography.cfg:249
 msgid ""
-"A vast region south of Kerlath home to the Dunefolk Civilization. It is also "
-"inhabited by many local creatures, including the Jinn and Wyverns."
+"A vast region south of Kerlath home to many mysterious races, including the "
+"Jinn and Wyverns. Very little is known for certain about what lies here."
 msgstr ""
 
 #. [topic]: id=far_south
 #. Geography of the Far South
-#: data/core/encyclopedia/geography.cfg:240
+#: data/core/encyclopedia/geography.cfg:253
 msgid ""
 "<header>text='Notable land features:'</header>\n"
-"    • Sandy Wastes: A hot desert located south of Kerlath home to various "
-"Dunefolk settlements, as well as nomadic tribes in between. The northern "
-"parts of this desert are home to many treacherous monsters.\n"
-"    • Mountains of Peril: A tall and deadly mountain range in the far south "
+"    • Mountains of Peril: A tall and deadly mountain range in the Far South "
 "inhabited by bands of vicious barbarians and monsters.\n"
-"    • Black Forest: An ancient and likely haunted forest of which very "
-"little is known, believed to have been once inhabited by elves. Those who "
-"enter it seldom return."
+"    • Sandy Wastes: A hot and dry desert located southeast of Kerlath. It is "
+"considered an impassable barrier by Wesnothians, filled with very sparse "
+"vegetation consisting of no more than a few shrubs and cacti.\n"
+"    • Isanbar: A mysterious mountain in the Sandy Wastes, surrounded "
+"entirely by flatter desert. It is not part of any mountain range and its "
+"existence is doubted by many.\n"
+"    • Ashland Desert: A mysterious desert rumored to exist beyond even the "
+"remote Sandy Wastes, sometimes known simply as the Ashland. A far-off "
+"civilization is sometimes said to live around the desert."
 msgstr ""
 
 #. [section]: id=schedule
@@ -5431,6 +5458,17 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:638
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Cores enable total conversion of The Battle for Wesnoth. A core can "
+#| "replace all the content in Wesnoth: when a different core is loaded, the "
+#| "regular units, terrains and the like do not exist.\n"
+#| "\n"
+#| "Cores allow a significantly different game experience: for example, a "
+#| "World War II campaign, or even a different game altogether, as long as it "
+#| "can be represented as a hexagonal map with ’units’ in some way."
 msgid ""
 "\n"
 "\n"
@@ -5440,7 +5478,7 @@ msgid ""
 "\n"
 "Cores allow a significantly different game experience: for example, a World "
 "War II campaign, or even a different game altogether, as long as it can be "
-"represented as a hexagonal map with ’units’ in some way."
+"represented as a hexagonal map with ‘units’ in some way."
 msgstr ""
 "\n"
 "\n"
@@ -6336,7 +6374,7 @@ msgstr ""
 "باستثناء الوحدات المحصنة ضد الطاعون."
 
 #. [advancement]: id=amla_default
-#: data/core/macros/amla.cfg:10
+#: data/core/macros/amla.cfg:29
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr "الحد الأقصى لنقاط الصحة الإضافية 3، الحد الأقصى لنقاط الخبرة 20%"
 
@@ -7393,29 +7431,62 @@ msgstr ""
 "يتمتع هذا الهجوم دائمًا بفرصة 70% للاصابة بغض النظر عن القدرة الدفاعية للوحدة "
 "التي تتعرض للهجوم."
 
-#. [chance_to_hit]: id=honed
+#. [disable]: id=naval_ram
 #: data/core/macros/weapon_specials.cfg:123
+msgid "naval ram"
+msgstr ""
+
+#. [disable]: id=naval_ram
+#: data/core/macros/weapon_specials.cfg:124
+msgid "This attack can only be used against units in water terrain."
+msgstr ""
+
+#. [disable]: id=naval_ram
+#: data/core/macros/weapon_specials.cfg:132
+msgid ""
+"This unit has an attack that can only be used against units in watery "
+"terrain."
+msgstr ""
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:136
+#: data/core/macros/weapon_specials.cfg:174
+msgid "charge"
+msgstr "شحن"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:137
+#: data/core/macros/weapon_specials.cfg:175
+msgid ""
+"When used offensively, this attack deals double damage to the target. It "
+"also causes this unit to take double damage from the target’s counterattack."
+msgstr ""
+"عند استخدامها هجوميًا، تسبب هذه الهجمة الخاصة ضررًا مضاعفًا للهدف. كما تتسبب في "
+"تلقي هذه الوحدة ضررًا مضاعفًا من الهجوم المضاد للهدف."
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:150
 msgid "honed"
 msgstr ""
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:124
+#: data/core/macros/weapon_specials.cfg:151
 msgid "This attack is 10% more accurate than other attacks."
 msgstr ""
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:125
+#: data/core/macros/weapon_specials.cfg:152
 msgid ""
 "This unit’s “honed” attack is slightly more accurate than other attacks."
 msgstr ""
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:136
+#: data/core/macros/weapon_specials.cfg:163
 msgid "swarm"
 msgstr "سرب"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:137
+#: data/core/macros/weapon_specials.cfg:164
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -7426,39 +7497,25 @@ msgstr ""
 "الأقصى لنقاط الصحة التي تمتلكها الوحدة. على سبيل المثال، ستحصل الوحدة التي "
 "تمتلك 3/4 من الحد الأقصى لنقاط الصحة على 3/4 من عدد الضربات."
 
-#. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:147
-msgid "charge"
-msgstr "شحن"
-
-#. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:148
-msgid ""
-"When used offensively, this attack deals double damage to the target. It "
-"also causes this unit to take double damage from the target’s counterattack."
-msgstr ""
-"عند استخدامها هجوميًا، تسبب هذه الهجمة الخاصة ضررًا مضاعفًا للهدف. كما تتسبب في "
-"تلقي هذه الوحدة ضررًا مضاعفًا من الهجوم المضاد للهدف."
-
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:161
+#: data/core/macros/weapon_specials.cfg:188
 msgid "guard"
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:162
+#: data/core/macros/weapon_specials.cfg:189
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:163
+#: data/core/macros/weapon_specials.cfg:190
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:175
+#: data/core/macros/weapon_specials.cfg:202
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -7467,18 +7524,18 @@ msgstr ""
 "تسببه (مقربًا للأدنى)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:185
+#: data/core/macros/weapon_specials.cfg:212
 msgid "first strike"
 msgstr "الضربة الأولى"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:186
+#: data/core/macros/weapon_specials.cfg:213
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "هذه الوحدة دائمًا هي التي تضرب أولاً بهذا الهجوم، حتى لو كانت دفاعية."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:197
+#: data/core/macros/weapon_specials.cfg:224
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -7489,12 +7546,12 @@ msgstr ""
 "للسم في حد ذاته أن يقتل الوحدة."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:207
+#: data/core/macros/weapon_specials.cfg:234
 msgid "stun"
 msgstr "صعقة"
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:208
+#: data/core/macros/weapon_specials.cfg:235
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
@@ -7503,18 +7560,18 @@ msgstr ""
 "سيطرة. ويزول التأثير في الدور التالي للخصم."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:209
+#: data/core/macros/weapon_specials.cfg:236
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr "هذه الوحدة قادرة على صعق أعدائها وتعطيل مناطق سيطرتهم."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:218
+#: data/core/macros/weapon_specials.cfg:245
 msgid "arcane"
 msgstr "غامض"
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:219
+#: data/core/macros/weapon_specials.cfg:246
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
@@ -7523,7 +7580,7 @@ msgstr ""
 "النوع السحري المستخدم."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:220
+#: data/core/macros/weapon_specials.cfg:247
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -8642,21 +8699,21 @@ msgstr ""
 "هذا المصطلح يصف قطعة صنعها كائن ذكي. لا تتحرك معظم الأشياء الميكانيكية ولا "
 "تفكر من تلقاء نفسها، لكن بعضها يفعل ذلك نتيجة لسحر ما."
 
-#. [race]: id=transport
+#. [race]: id=ship
 #: data/core/units.cfg:294
 #, fuzzy
 #| msgid "race^Saurian"
 msgid "race^Ship"
 msgstr "سحلي"
 
-#. [race]: id=transport
+#. [race]: id=ship
 #: data/core/units.cfg:295
 #, fuzzy
 #| msgid "race+plural^Mechanical"
 msgid "race+plural^Ships"
 msgstr "ميكانيكيون"
 
-#. [race]: id=transport
+#. [race]: id=ship
 #: data/core/units.cfg:296
 msgid ""
 "Ships are not living beings, but they are crafted and (usually) controlled "

@@ -1065,10 +1065,10 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, const 
 	return true;
 }
 
-bool lua_kernel_base::load_string(char const * prog, const std::string& name, const error_handler& e_h)
+bool lua_kernel_base::load_string(const std::string& prog, const std::string& name, const error_handler& e_h, bool allow_unsafe)
 {
 	// pass 't' to prevent loading bytecode which is unsafe and can be used to escape the sandbox.
-	int errcode = luaL_loadbufferx(mState, prog, strlen(prog), name.empty() ? prog : name.c_str(), "t");
+	int errcode = luaL_loadbufferx(mState, prog.c_str(), prog.size(), name.empty() ? prog.c_str() : name.c_str(), allow_unsafe ? "tb" : "t");
 	if (errcode != LUA_OK) {
 		char const * msg = lua_tostring(mState, -1);
 		std::string message = msg ? msg : "null string";
@@ -1100,6 +1100,169 @@ void lua_kernel_base::run_lua_tag(const config& cfg)
 		++nArgs;
 	}
 	this->run(cfg["code"].str().c_str(), cfg["name"].str(), nArgs);
+}
+
+config luaW_serialize_function(lua_State* L, int func)
+{
+	if(lua_iscfunction(L, func)) {
+		throw luafunc_serialize_error("cannot serialize C function");
+	}
+	if(!lua_isfunction(L, func)) {
+		throw luafunc_serialize_error("cannot serialize callable non-function");
+	}
+	config data;
+	lua_Debug info;
+	lua_pushvalue(L, func); // push copy of function because lua_getinfo will pop it
+	lua_getinfo(L, ">u", &info);
+	data["params"] = info.nparams;
+	luaW_getglobal(L, "string", "dump");
+	lua_pushvalue(L, func);
+	lua_call(L, 1, 1);
+	data["code"] = lua_check<std::string>(L, -1);
+	lua_pop(L, 1);
+	config upvalues;
+	for(int i = 1; i <= info.nups; i++, lua_pop(L, 1)) {
+		std::string_view name = lua_getupvalue(L, func, i);
+		if(name == "_ENV") {
+			upvalues.add_child(name)["upvalue_type"] = "_ENV";
+			continue;
+		}
+		int idx = lua_absindex(L, -1);
+		switch(lua_type(L, idx)) {
+		case LUA_TBOOLEAN: case LUA_TNUMBER: case LUA_TSTRING:
+			luaW_toscalar(L, idx, upvalues[name]);
+			break;
+		case LUA_TFUNCTION:
+			upvalues.add_child(name, luaW_serialize_function(L, idx))["upvalue_type"] = "function";
+			break;
+		case LUA_TNIL:
+			upvalues.add_child(name, config{"upvalue_type", "nil"});
+			break;
+		case LUA_TTABLE:
+			if(std::vector<std::string> names = luaW_to_namedtuple(L, idx); !names.empty()) {
+				for(size_t i = 1; i <= lua_rawlen(L, -1); i++, lua_pop(L, 1)) {
+					lua_rawgeti(L, idx, i);
+					config& cfg = upvalues.add_child(name);
+					luaW_toscalar(L, -1, cfg["value"]);
+					cfg["name"] = names[0];
+					cfg["upvalue_type"] = "named tuple";
+					names.erase(names.begin());
+				}
+				break;
+			} else if(config cfg; luaW_toconfig(L, idx, cfg)) {
+				std::vector<std::string> names;
+				int save_top = lua_gettop(L);
+				if(luaL_getmetafield(L, idx, "__name") && lua_check<std::string>(L, -1) == "named tuple") {
+					luaL_getmetafield(L, -2, "__names");
+					names = lua_check<std::vector<std::string>>(L, -1);
+				}
+				lua_settop(L, save_top);
+				upvalues.add_child(name, cfg)["upvalue_type"] = names.empty() ? "config" : "named tuple";
+				break;
+			} else {
+				for(size_t i = 1; i <= lua_rawlen(L, -1); i++, lua_pop(L, 1)) {
+					lua_rawgeti(L, idx, i);
+					config& cfg = upvalues.add_child(name);
+					luaW_toscalar(L, -1, cfg["value"]);
+					cfg["upvalue_type"] = "array";
+				}
+				bool found_non_array = false;
+				for(lua_pushnil(L); lua_next(L, idx); lua_pop(L, 1)) {
+					if(lua_type(L, -2) != LUA_TNUMBER) {
+						found_non_array = true;
+						break;
+					}
+				}
+				if(!found_non_array) break;
+			}
+			[[fallthrough]];
+		default:
+			std::ostringstream os;
+			os << "cannot serialize function with upvalue " << name << " = ";
+			luaW_getglobal(L, "wesnoth", "as_text");
+			lua_pushvalue(L, idx);
+			lua_call(L, 1, 1);
+			os << luaL_checkstring(L, -1);
+			lua_pushboolean(L, false);
+			throw luafunc_serialize_error(os.str());
+		}
+	}
+	if(!upvalues.empty()) data.add_child("upvalues", upvalues);
+	return data;
+}
+
+bool lua_kernel_base::load_binary(const config& cfg, const error_handler& eh)
+{
+	if(!load_string(cfg["code"].str(), cfg["name"], eh, true)) return false;
+	if(auto upvalues = cfg.optional_child("upvalues")) {
+		lua_pushvalue(mState, -1); // duplicate function because lua_getinfo will pop it
+		lua_Debug info;
+		lua_getinfo(mState, ">u", &info);
+		int funcindex = lua_absindex(mState, -1);
+		for(int i = 1; i <= info.nups; i++) {
+			std::string_view name = lua_getupvalue(mState, funcindex, i);
+			lua_pop(mState, 1); // we only want the upvalue's name, not its value
+			if(name == "_ENV") {
+				lua_pushglobaltable(mState);
+			} else if(upvalues->has_attribute(name)) {
+				luaW_pushscalar(mState, (*upvalues)[name]);
+			} else if(upvalues->has_child(name)) {
+				const auto& child = upvalues->mandatory_child(name);
+				if(child["upvalue_type"] == "array") {
+					auto children = upvalues->child_range(name);
+					lua_createtable(mState, children.size(), 0);
+					for(const auto& cfg : children) {
+						luaW_pushscalar(mState, cfg["value"]);
+						lua_rawseti(mState, -2, lua_rawlen(mState, -2) + 1);
+					}
+				} else if(child["upvalue_type"] == "config") {
+					luaW_pushconfig(mState, child);
+				} else if(child["upvalue_type"] == "function") {
+					if(!load_binary(child, eh)) return false;
+				} else if(child["upvalue_type"] == "nil") {
+					lua_pushnil(mState);
+				}
+			} else continue;
+			lua_setupvalue(mState, funcindex, i);
+		}
+	}
+	return true;
+}
+
+config lua_kernel_base::run_binary_lua_tag(const config& cfg)
+{
+	int top = lua_gettop(mState);
+	try {
+		error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2 );
+		if(load_binary(cfg, eh)) {
+			lua_pushvalue(mState, -1);
+			protected_call(0, LUA_MULTRET, eh);
+		}
+	} catch (const game::lua_error & e) {
+		cmd_log_ << e.what() << "\n";
+		lua_kernel_base::log_error(e.what(), "In function lua_kernel::run()");
+		config error;
+		error["name"] = "execute_error";
+		error["error"] = e.what();
+		return error;
+	}
+	config result;
+	result["ref"] = cfg["ref"];
+	result.add_child("executed") = luaW_serialize_function(mState, top + 1);
+	lua_remove(mState, top + 1);
+	result["name"] = "execute_result";
+	for(int i = top + 1; i < lua_gettop(mState); i++) {
+		std::string index = std::to_string(i - top);
+		switch(lua_type(mState, i)) {
+		case LUA_TNUMBER: case LUA_TBOOLEAN: case LUA_TSTRING:
+			luaW_toscalar(mState, i, result[index]);
+			break;
+		case LUA_TTABLE:
+			luaW_toconfig(mState, i, result.add_child(index));
+			break;
+		}
+	}
+	return result;
 }
 // Call load_string and protected call. Make them throw exceptions.
 //

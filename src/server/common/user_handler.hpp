@@ -145,4 +145,8 @@ public:
 	virtual void db_delete_addon_authors(const std::string& instance_version, const std::string& id) = 0;
 	virtual void db_insert_addon_authors(const std::string& instance_version, const std::string& id, const std::vector<std::string>& primary_authors, const std::vector<std::string>& secondary_authors) = 0;
 	virtual bool db_do_any_authors_exist(const std::string& instance_version, const std::string& id) = 0;
+	virtual config db_get_addon_downloads_info(const std::string& instance_version, const std::string& id) = 0;
+	virtual config db_get_forum_auth_usage(const std::string& instance_version) = 0;
+	virtual config db_get_addon_admins() = 0;
+	virtual bool user_is_addon_admin(const std::string& name) = 0;
 };

@@ -174,7 +174,7 @@ struct lexical_caster<
 		if constexpr (std::is_same_v<bool, From>) {
 			return value ? "1" : "0";
 		} else {
-			return utils::charconv_buffer(value).to_string();
+			return utils::charconv_buffer<From>(value).to_string();
 		}
 	}
 };
