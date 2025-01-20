@@ -197,7 +197,7 @@ class log_in_progress {
 	bool auto_newline_ = true;
 public:
 	log_in_progress(std::ostream& stream);
-	void operator|(formatter&& message);
+	void operator|(const formatter& message);
 	void set_indent(int level);
 	void enable_timestamp();
 	void set_prefix(const std::string& prefix);

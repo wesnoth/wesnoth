@@ -247,7 +247,7 @@ DEFINE_WFL_FUNCTION(debug_float, 2, 3)
 {
 	const args_list& arguments = args();
 	const variant var0 = arguments[0]->evaluate(variables, fdb);
-	const variant var1 = arguments[1]->evaluate(variables, fdb);
+	variant var1 = arguments[1]->evaluate(variables, fdb);
 
 	const map_location location = var0.convert_to<location_callable>()->loc();
 	std::string text;
@@ -266,7 +266,7 @@ DEFINE_WFL_FUNCTION(debug_float, 2, 3)
 
 DEFINE_WFL_FUNCTION(debug_print, 1, 2)
 {
-	const variant var1 = args()[0]->evaluate(variables, fdb);
+	variant var1 = args()[0]->evaluate(variables, fdb);
 
 	std::string str1, str2;
 
@@ -1081,7 +1081,7 @@ DEFINE_WFL_FUNCTION(zip, 1, -1)
 DEFINE_WFL_FUNCTION(reduce, 2, 3)
 {
 	const variant items = args()[0]->evaluate(variables, fdb);
-	const variant initial = args().size() == 2 ? variant() : args()[1]->evaluate(variables, fdb);
+	variant initial = args().size() == 2 ? variant() : args()[1]->evaluate(variables, fdb);
 
 	if(items.num_elements() == 0) {
 		return initial;

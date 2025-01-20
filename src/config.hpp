@@ -864,7 +864,6 @@ public:
 	 * Adds children from @a cfg.
 	 */
 	void append_children(const config &cfg);
-	void append_children(config&& cfg);
 
 	/**
 	 * Adds children from @a cfg.
