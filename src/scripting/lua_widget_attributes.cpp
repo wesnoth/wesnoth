@@ -820,6 +820,25 @@ void dialog_callback(lua_State* L, lua_ptr<gui2::widget>& wp, const std::string&
 	luaW_callwidgetcallback(L, w, wd, id);
 }
 
+void link_callback(lua_State* L, lua_ptr<gui2::widget>& wp, const std::string& id, const std::string& dest)
+{
+	gui2::widget* w = wp.get_ptr();
+	if(!w) {
+		ERR_LUA << "widget was deleted";
+		return;
+	}
+	gui2::window* wd = w->get_window();
+	if(!wd) {
+		ERR_LUA << "cannot find window in widget callback";
+		return;
+	}
+	luaW_getwidgetcallback(L, w, wd, id);
+	assert(lua_isfunction(L, -1));
+	lua_pushstring(L, dest.c_str());
+	luaW_pushwidget(L, *w);
+	lua_call(L, 2, 0);
+}
+
 WIDGET_SETTER("on_modified", lua_index_raw, gui2::widget)
 {
 	gui2::window* wd = w.get_window();
@@ -829,6 +848,20 @@ WIDGET_SETTER("on_modified", lua_index_raw, gui2::widget)
 	lua_pushvalue(L, value.index);
 	if (!luaW_setwidgetcallback(L, &w, wd, "on_modified")) {
 		connect_signal_notify_modified(w, std::bind(&dialog_callback, L, lua_ptr<gui2::widget>(w), "on_modified"));
+	}
+}
+
+WIDGET_SETTER("on_link_click", lua_index_raw, gui2::rich_label)
+{
+	gui2::window* wd = w.get_window();
+	if(!wd) {
+		throw std::invalid_argument("the widget has no window assigned");
+	}
+
+	lua_pushvalue(L, value.index);
+	if (!luaW_setwidgetcallback(L, &w, wd, "on_link_click")) {
+		w.register_link_callback(
+			std::bind(&link_callback, L, lua_ptr<gui2::widget>(w), "on_link_click", std::placeholders::_1));
 	}
 }
 
