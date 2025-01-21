@@ -43,8 +43,6 @@ if subprocess.run(["cwebp", "-version"], stdout=subprocess.DEVNULL).returncode !
 image_dirs = [
     os.path.join("data", "campaigns", "Dead_Water", "images", "maps"),
     os.path.join("data", "campaigns", "Dead_Water", "images", "portraits"),
-    os.path.join("data", "campaigns", "Delfadors_Memoirs", "images", "story"),
-    os.path.join("data", "campaigns", "Delfadors_Memoirs", "images", "portraits"),
     os.path.join("data", "campaigns", "Descent_Into_Darkness", "images", "maps"),
     os.path.join("data", "campaigns", "Descent_Into_Darkness", "images", "portraits"),
     os.path.join("data", "campaigns", "Descent_Into_Darkness", "images", "story"),
@@ -67,6 +65,8 @@ image_dirs = [
     os.path.join("data", "campaigns", "Secrets_of_the_Ancients", "images", "portraits"),
     os.path.join("data", "campaigns", "Son_Of_The_Black_Eye", "images", "maps"),
     os.path.join("data", "campaigns", "Son_Of_The_Black_Eye", "images", "portraits"),
+    os.path.join("data", "campaigns", "The_Deceivers_Gambit", "images", "story"),
+    os.path.join("data", "campaigns", "The_Deceivers_Gambit", "images", "portraits"),
     os.path.join("data", "campaigns", "The_Hammer_of_Thursagan", "images", "maps"),
     os.path.join("data", "campaigns", "The_Hammer_of_Thursagan", "images", "portraits"),
     os.path.join("data", "campaigns", "The_Rise_Of_Wesnoth", "images", "maps"),
