@@ -185,7 +185,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 			OUTPUT ${PROJECT_SOURCE_DIR}/po/po_stat.dummy
 			COMMAND python3 utils/po_stat.py
 			--update-cfg
-			--textdomains=wesnoth,wesnoth-editor,wesnoth-help,wesnoth-lib,wesnoth-multiplayer,wesnoth-tutorial,wesnoth-units,wesnoth-anl
+			--textdomains=wesnoth,wesnoth-editor,wesnoth-help,wesnoth-lib,wesnoth-multiplayer,wesnoth-tsg,wesnoth-units,wesnoth-anl
 			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
 			COMMENT "pot-update Updated data/languages/*.cfg files."
 			# Needs to depend on the subset of .po files matching po_stat.py's --textdomains argument,

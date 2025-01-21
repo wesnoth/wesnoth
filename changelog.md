@@ -19,6 +19,11 @@
      * S04c: give Mal-Ravanal gold to recruit more units when their army becomes too small
      * forbid all Dunefolk units to take the Plague Staff
      * fix minor bugs with dialogues
+   * The South Guard
+     * Major rewrite of the campaign
+     * Adds an embedded tutorial, which is now the official starting campaign for new players
+   * Tutorial
+     * Description changed to explain that the standalone tutorial is no longer the recommended one
 ### Editor
    * The PBL editor now validates whether DataURI images are too large
 ### Lua API
