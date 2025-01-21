@@ -20,9 +20,9 @@ set(NORMAL_DOMAINS
 	wesnoth-sota
 	wesnoth-sotbe
 	wesnoth-tb
+	wesnoth-tdg
 	wesnoth-thot
 	wesnoth-tools
-	wesnoth-tdg
 	wesnoth-trow
 	wesnoth-tsg
 	wesnoth-tutorial
