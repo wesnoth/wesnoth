@@ -244,6 +244,7 @@ function gui.add_widget_definition(type, id, content) end
 ---@class rich_label : simple_widget
 ---@field link_color string
 ---@field wrap boolean
+---@field on_link_click fun(dest:string)
 
 ---A simple image
 ---@class image : simple_widget

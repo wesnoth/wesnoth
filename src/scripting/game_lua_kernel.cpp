@@ -2658,7 +2658,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 		font::remove_floating_label(*handle);
 	}
 
-	SDL_Rect rect = game_display_->map_outside_area();
+	const SDL_Rect rect = game_display_->map_outside_area();
 	if(width_ratio > 0) {
 		width = static_cast<int>(std::round(rect.w * width_ratio));
 	}
@@ -2666,23 +2666,12 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	switch(alignment) {
 		case font::ALIGN::LEFT_ALIGN:
 			x = rect.x + loc.wml_x();
-			if(width > 0) {
-				rect.w = std::min(rect.w, width);
-			}
 			break;
 		case font::ALIGN::CENTER_ALIGN:
 			x = rect.x + rect.w / 2 + loc.wml_x();
-			if(width > 0) {
-				rect.w = std::min(rect.w, width);
-				rect.x = x - rect.w / 2;
-			}
 			break;
 		case font::ALIGN::RIGHT_ALIGN:
 			x = rect.x + rect.w - loc.wml_x();
-			if(width > 0) {
-				rect.x = (rect.x + rect.w) - std::min(rect.w, width);
-				rect.w = std::min(rect.w, width);
-			}
 			break;
 	}
 	switch(vertical_alignment) {
@@ -2710,6 +2699,13 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	flabel.set_position(x, y);
 	flabel.set_lifetime(milliseconds{lifetime}, milliseconds{fadeout});
 	flabel.set_clip_rect(rect);
+
+	// Adjust fallback width (map area) to avoid text escaping when location != 0
+	if(width > 0) {
+		flabel.set_width(std::min(width, rect.w - loc.wml_x()));
+	} else {
+		flabel.set_width(rect.w - loc.wml_x());
+	}
 
 	*handle = font::add_floating_label(flabel);
 	lua_settop(L, handle_idx);
