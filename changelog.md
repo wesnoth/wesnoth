@@ -5,6 +5,7 @@
 ### Editor
 ### Multiplayer
 ### Lua API
+   * `rich_label` now has the new event handler `on_link_click`. If set, it will be fired when the user clicks on a link set via the `<ref>` tag inside the `rich_label`.
 ### Packaging
 ### Terrain
 ### Translations
