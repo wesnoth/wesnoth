@@ -32,6 +32,7 @@
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
+#include <boost/format.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
 #include <boost/process.hpp>
@@ -59,6 +60,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <set>
+#include <utility>
 
 // Copied from boost::predef, as it's there only since 1.55.
 #if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
@@ -807,7 +809,7 @@ bool rename_dir(const std::string& old_dir, const std::string& new_dir)
 
 static void set_cache_path(bfs::path newcache)
 {
-	cache_dir = newcache;
+	cache_dir = std::move(newcache);
 	if(!create_directory_if_missing_recursive(cache_dir)) {
 		ERR_FS << "could not open or create cache directory at " << cache_dir.string() << '\n';
 	}
@@ -822,6 +824,32 @@ static const bfs::path& get_user_data_path()
 {
 	assert(!user_data_dir.empty() && "Attempted to access userdata location before userdata initialization!");
 	return user_data_dir;
+}
+
+utils::optional<std::string> get_game_manual_file(const std::string& locale_code)
+{
+	utils::optional<std::string> manual_path_opt;
+	const std::string& manual_dir(game_config::path + "/doc/manual/");
+	boost::format manual_template(manual_dir + "manual.%s.html");
+	bfs::path manual_path((manual_template % locale_code).str());
+
+	if(bfs::exists(manual_path)) {
+		return "file://" + bfs::canonical(manual_path).string();
+	}
+
+	// Split the given locale code: "en_GB" -> "en", "GB"
+	// If the result of split() is empty then locale_code is empty (likely using System Language)
+	// Assume en is always available as a fall-back
+	const auto& split_locale_code = utils::split(locale_code, '_');
+	const std::string& language_code = split_locale_code.empty() ? "en" : split_locale_code[0];
+	manual_path = (manual_template % language_code).str();
+
+	if(bfs::exists(manual_path)) {
+		// If a filename like manual.en_GB.html is not found, try manual.en.html
+		return "file://" + bfs::canonical(manual_path).string();
+	}
+
+	return {};
 }
 
 std::string get_user_data_dir()
@@ -1395,7 +1423,7 @@ std::string normalize_path(const std::string& fpath, bool normalize_separators, 
 	}
 }
 
-bool to_asset_path(std::string& path, std::string addon_id, std::string asset_type)
+bool to_asset_path(std::string& path, const std::string& addon_id, const std::string& asset_type)
 {
 	std::string rel_path = "";
 	std::string core_asset_dir = get_dir(game_config::path + "/data/core/" + asset_type);

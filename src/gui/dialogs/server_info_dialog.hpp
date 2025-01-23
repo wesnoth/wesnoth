@@ -16,10 +16,7 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
-{
-
-namespace dialogs
+namespace gui2::dialogs
 {
 class server_info : public modal_dialog
 {
@@ -49,5 +46,5 @@ private:
 	const std::string& server_information_;
 	const std::string& announcements_;
 };
-}
-}
+
+} // namespace gui2::dialogs

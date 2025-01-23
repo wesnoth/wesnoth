@@ -6,7 +6,6 @@ set(NORMAL_DOMAINS
 	wesnoth
 	wesnoth-anl
 	wesnoth-did
-	wesnoth-dm
 	wesnoth-dw
 	wesnoth-editor
 	wesnoth-ei
@@ -21,6 +20,7 @@ set(NORMAL_DOMAINS
 	wesnoth-sota
 	wesnoth-sotbe
 	wesnoth-tb
+	wesnoth-tdg
 	wesnoth-thot
 	wesnoth-tools
 	wesnoth-trow

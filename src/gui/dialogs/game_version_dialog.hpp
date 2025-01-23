@@ -22,12 +22,8 @@
 #include <map>
 #include <array>
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 class game_version : public modal_dialog
 {
 public:
@@ -121,5 +117,5 @@ private:
 	 */
 	void show_manual();
 };
-} // namespace dialogs
-} // namespace gui2
+
+} // namespace gui2::dialogs

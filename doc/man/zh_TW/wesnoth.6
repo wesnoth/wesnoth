@@ -36,6 +36,10 @@ Battle for \fBWesnoth\fP是一個回合制奇幻風格的策略遊戲。
 .SH 選項
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 顯示所有在遊戲中的語言清單中的翻譯，即使它們被認為是不完整的。
 .TP 
@@ -141,9 +145,6 @@ replacing usernames with USER.
 有新的 WIP 物件工具，這個選項會啟用它。這個功能非常地具有實驗性，大部分的 Bug 是已知的，所以請勿回報任何
 Bug。部分函式庫被認為是穩定的，即使不開啟這個選項也會動作。
 .TP 
-\fB\-\-nodelay\fP
-為了進行圖形基準測試，以無延遲的方式來執行遊戲。啟用 \fB\-\-nogui\fP 選項時會自動啟用這個選項。
-.TP 
 \fB\-\-noaddons\fP
 停用使用者模組的載入。
 .TP 
@@ -172,8 +173,9 @@ Bug。部分函式庫被認為是穩定的，即使不開啟這個選項也會�
 當連線到一個伺服器時，使用 \fIpassword\fP，忽略其它偏好設定。不安全。
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-（實驗性）載入一個定義韋諾插件的 \fIscript\fP。與 \fB\-\-script\fP 相似，但 Lua
-檔案應該傳回一個函數，該函數將運行且週期性地喚醒並更新。
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 將一個 DiffWML 的補丁用於一個 WML 檔案。不會預處理任何輸入的檔案。輸出被補過的 WML 至標準輸出或者至 \fI\-\-output\fP
@@ -183,17 +185,26 @@ Bug。部分函式庫被認為是穩定的，即使不開啟這個選項也會�
 預處理指定的檔案/目錄。每個檔案未處理及已處理的 .cfg
 檔將會被寫入至指定的目標目錄中。如果有指定目錄，將會遞迴地按照已知的預處理規則預先處理。「data/core/macros」目錄裡的共用巨集將在指定資源之前被預先處理。例如：\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP。關於預先處理器的細節請參閱：https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor。
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-以逗號分隔的清單，清單中是一連串用於 \fB\-\-preprocess\fP 指令的定義。如果 \fBSKIP_CORE\fP
-在定義清單中，「data/core」將不會被預處理。
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
-只被 \fB\-\-preprocess\fP 指令用到。在預處理之前定義一個包含 \fB[preproc_define]\fP 的檔案。
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
-只被 \fB\-\-preprocess\fP
-指令用到。將輸出所有預處理過的巨集至目標檔案。如果沒有指定檔案，輸出將會是預處理指令的目標目錄中的「_MACROS_.cfg」檔案。輸出的檔案可以被傳至
-\fB\-\-preprocess\-input\-macros\fP。這個選項應在 \fB\-\-preprocess\fP 指令之前被輸入。
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 設定螢幕解析度。例如：\fB\-r\fP \fB800x600\fP。
@@ -210,9 +221,6 @@ https://wiki.wesnoth.org/ImagePathFunctionWML。
 .TP 
 \fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
 不初始化螢幕的情況下將 \fImap\fP 螢幕的截圖儲存至 \fIoutput\fP。
-.TP 
-\fB\-\-script\fP\fI\ file\fP
-（實驗性）\fIfile\fP 包含一個用來控制客戶端的 Lua 腳本。
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 如果有指定任何主機的話，連接到指定的主機。否則，連接到偏好設定中的第一個伺服器。例如：\fB\-\-server\fP

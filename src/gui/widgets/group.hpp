@@ -20,7 +20,6 @@
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/widget.hpp"
 
-#include <functional>
 #include <map>
 #include <vector>
 
@@ -50,7 +49,7 @@ public:
 		}
 
 		dynamic_cast<widget&>(*w).connect_signal<event::LEFT_BUTTON_CLICK>(
-			std::bind(&group::group_operator, this), event::dispatcher::front_child);
+			[this](auto&&...) { group_operator(); }, event::dispatcher::front_child);
 
 		member_order_.push_back(dynamic_cast<styled_widget*>(w));
 	}
@@ -118,10 +117,11 @@ public:
 	/**
 	 * Sets a common callback function for all members.
 	 */
-	void set_callback_on_value_change(std::function<void(widget&, const T)> func)
+	template<typename Func>
+	void on_modified(const Func& func)
 	{
 		// Ensure this callback is only called on the member being activated
-		const auto callback = [func, this](widget& widget) -> void {
+		const auto callback = [func, this](widget& widget, auto&&...) -> void {
 			if(auto& si = dynamic_cast<selectable_item&>(widget); si.get_value_bool()) {
 				for(auto& [v, w] : members_) {
 					if(&si == w) {
@@ -135,7 +135,7 @@ public:
 		};
 
 		for(auto& member : members_) {
-			event::connect_signal_notify_modified(dynamic_cast<widget&>(*member.second), std::bind(callback, std::placeholders::_1));
+			event::connect_signal_notify_modified(dynamic_cast<widget&>(*member.second), callback);
 		}
 	}
 
@@ -147,7 +147,8 @@ public:
 	 * If a selected widget is to be disabled, it is deselected and the first active member
 	 * selected instead. The same happens if no members were previously active at all.
 	 */
-	void set_members_enabled(std::function<bool(const T&)> predicate)
+	template<typename Func>
+	void set_members_enabled(const Func& predicate)
 	{
 		bool do_reselect = true;
 

@@ -86,7 +86,7 @@ title_screen::~title_screen()
 {
 }
 
-void title_screen::register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, std::function<void()> callback)
+void title_screen::register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, const std::function<void()>& callback)
 {
 	if(hk != hotkey::HOTKEY_NULL) {
 		register_hotkey(hk, std::bind(callback));
@@ -242,6 +242,20 @@ void title_screen::init_callbacks()
 	register_button("previous_tip", hotkey::TITLE_SCREEN__PREVIOUS_TIP,
 		std::bind(&title_screen::update_tip, this, false));
 
+	// Tip panel visiblity and close button
+	panel& tip_panel = find_widget<panel>("tip_panel");
+	if (!prefs::get().show_tips()) {
+		tip_panel.set_visible(false);
+	} else {
+		auto close = find_widget<button>("close", false, false);
+		if (close) {
+			connect_signal_mouse_left_click(*close, [&](auto&&...) {
+				prefs::get().set_show_tips(false);
+				tip_panel.set_visible(false);
+			});
+		}
+	}
+
 	//
 	// Help
 	//
@@ -356,7 +370,7 @@ void title_screen::init_callbacks()
 
 	auto clock = find_widget<button>("clock", false, false);
 	if(clock) {
-		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+		clock->set_visible(show_debug_clock_button);
 	}
 
 	//
@@ -367,7 +381,7 @@ void title_screen::init_callbacks()
 
 	auto test_dialog = find_widget<button>("test_dialog", false, false);
 	if(test_dialog) {
-		test_dialog->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+		test_dialog->set_visible(show_debug_clock_button);
 	}
 
 	//
@@ -548,18 +562,18 @@ void title_screen::button_callback_multiplayer()
 		switch(res) {
 		case decltype(dlg)::choice::JOIN:
 			game_.select_mp_server(prefs::get().builtin_servers_list().front().address);
-			get_window()->set_retval(MP_CONNECT);
+			set_retval(MP_CONNECT);
 			break;
 		case decltype(dlg)::choice::CONNECT:
 			game_.select_mp_server("");
-			get_window()->set_retval(MP_CONNECT);
+			set_retval(MP_CONNECT);
 			break;
 		case decltype(dlg)::choice::HOST:
 			game_.select_mp_server("localhost");
-			get_window()->set_retval(MP_HOST);
+			set_retval(MP_HOST);
 			break;
 		case decltype(dlg)::choice::LOCAL:
-			get_window()->set_retval(MP_LOCAL);
+			set_retval(MP_LOCAL);
 			break;
 		}
 
@@ -585,7 +599,7 @@ void title_screen::button_callback_cores()
 		const std::string& core_id = cores[core_dlg.get_choice()]["id"];
 
 		prefs::get().set_core(core_id);
-		get_window()->set_retval(RELOAD_GAME_DATA);
+		set_retval(RELOAD_GAME_DATA);
 	}
 }
 

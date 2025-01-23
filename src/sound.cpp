@@ -27,6 +27,7 @@
 
 #include <list>
 #include <string>
+#include <utility>
 
 static lg::log_domain log_audio("audio");
 #define DBG_AUDIO LOG_STREAM(debug, log_audio)
@@ -215,7 +216,7 @@ std::shared_ptr<music_track> get_previous_music_track()
 }
 void set_previous_track(std::shared_ptr<music_track> track)
 {
-	previous_track = track;
+	previous_track = std::move(track);
 }
 
 unsigned int get_num_tracks()

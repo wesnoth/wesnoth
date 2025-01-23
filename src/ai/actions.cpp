@@ -287,27 +287,20 @@ void attack_result::do_execute()
 		return;
 	}
 
-	if(!synced_context::is_synced())
-	{
-		synced_context::run_and_throw("attack",
-			replay_helper::get_attack(
-				attacker_loc_,
-				defender_loc_,
-				attacker_weapon,
-				defender_weapon,
-				a_->type_id(),
-				d_->type_id(),
-				a_->level(),
-				d_->level(),
-				resources::tod_manager->turn(),
-				resources::tod_manager->get_time_of_day()
-			)
-		);
-	}
-	else
-	{
-		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, true);
-	}
+	synced_context::run_in_synced_context_if_not_already("attack",
+		replay_helper::get_attack(
+			attacker_loc_,
+			defender_loc_,
+			attacker_weapon,
+			defender_weapon,
+			a_->type_id(),
+			d_->type_id(),
+			a_->level(),
+			d_->level(),
+			resources::tod_manager->turn(),
+			resources::tod_manager->get_time_of_day()
+		)
+	);
 
 
 	set_gamestate_changed();
@@ -470,17 +463,15 @@ void move_result::do_execute()
 
 	::actions::move_unit_spectator move_spectator(resources::gameboard->units());
 	move_spectator.set_unit(resources::gameboard->units().find(from_));
+	move_spectator.set_ai_move(true);
 
 	if (from_ != to_) {
-		std::size_t num_steps = ::actions::move_unit_and_record(
+		::actions::move_unit_and_record(
 			/*std::vector<map_location> steps*/ route_->steps,
-			/*::actions::undo_list* undo_stack*/ nullptr,
 			/*bool continue_move*/ true,
-			/*bool show_move*/ !prefs::get().skip_ai_moves(),
-			/*bool* interrupted*/ nullptr,
-			/*::actions::move_unit_spectator* move_spectator*/ &move_spectator);
+			/*::actions::move_unit_spectator* move_spectator*/ move_spectator);
 
-		if ( num_steps > 0 ) {
+		if( move_spectator.get_tiles_entered() > 0) {
 			set_gamestate_changed();
 		} else if ( move_spectator.get_ambusher().valid() ) {
 			// Unlikely, but some types of strange WML (or bad pathfinding)
@@ -652,14 +643,9 @@ void recall_result::do_execute()
 	}
 
 	// Do the actual recalling.
-	// We ignore possible errors (=unit doesn't exist on the recall list)
-	// because that was the previous behavior.
 	resources::undo_stack->clear();
 	synced_context::run_in_synced_context_if_not_already("recall",
-		replay_helper::get_recall(unit_id_, recall_location_, recall_from_),
-		false,
-		!prefs::get().skip_ai_moves(),
-		synced_context::ignore_error_function);
+		replay_helper::get_recall(unit_id_, recall_location_, recall_from_));
 
 	set_gamestate_changed();
 	try {
@@ -804,7 +790,7 @@ void recruit_result::do_execute()
 	}
 
 	resources::undo_stack->clear();
-	synced_context::run_in_synced_context_if_not_already("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, !prefs::get().skip_ai_moves());
+	synced_context::run_in_synced_context_if_not_already("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_));
 
 	set_gamestate_changed();
 	try {

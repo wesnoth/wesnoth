@@ -24,6 +24,7 @@ class spacer;
 
 namespace implementation
 {
+struct builder_scrollbar_container;
 struct builder_scroll_label;
 struct builder_scrollbar_panel;
 struct builder_styled_widget;
@@ -48,7 +49,7 @@ class scrollbar_container : public container_base
 	friend struct scrollbar_container_implementation;
 
 public:
-	explicit scrollbar_container(const implementation::builder_styled_widget& builder, const std::string& control_type);
+	explicit scrollbar_container(const implementation::builder_scrollbar_container& builder, const std::string& control_type);
 
 	virtual ~scrollbar_container()
 	{
@@ -129,10 +130,10 @@ public:
 	virtual const widget* find_at(const point& coordinate, const bool must_be_active) const override;
 
 	/** See @ref widget::find. */
-	widget* find(const std::string& id, const bool must_be_active) override;
+	widget* find(const std::string_view id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	const widget* find(const std::string& id, const bool must_be_active) const override;
+	const widget* find(const std::string_view id, const bool must_be_active) const override;
 
 	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
@@ -585,5 +586,17 @@ public:
 		return vertical_scrollbar_grid_;
 	}
 };
+
+namespace implementation
+{
+struct builder_scrollbar_container : public builder_styled_widget
+{
+	explicit builder_scrollbar_container(const config& cfg);
+
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
+};
+
+} // namespace implementation
 
 } // namespace gui2

@@ -348,6 +348,13 @@ manager::manager()
 	singleton_ = this;
 }
 
+manager::~manager() {
+	ai_map_.clear();
+	if(singleton_ == this) {
+		singleton_ = nullptr;
+	}
+}
+
 manager* manager::singleton_ = nullptr;
 
 void manager::add_observer( events::observer* event_observer){

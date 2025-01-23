@@ -18,11 +18,15 @@
 #include "filesystem.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
+#include "serialization/chrono.hpp"
 #include "server/wesnothd/player_network.hpp"
 #include "server/wesnothd/server.hpp"
+#include "utils/math.hpp"
 
 #include <iomanip>
 #include <sstream>
+
+#include <boost/coroutine/exceptions.hpp>
 
 static lg::log_domain log_server("server");
 #define ERR_GAME LOG_STREAM(err, log_server)
@@ -94,8 +98,10 @@ game::game(wesnothd::server& server, player_connections& player_connections,
 	, history_()
 	, chat_history_()
 	, description_(nullptr)
+	, description_updated_(false)
 	, current_turn_(0)
 	, current_side_index_(0)
+	, next_side_index_(0)
 	, num_turns_(0)
 	, all_observers_muted_(false)
 	, bans_()
@@ -175,7 +181,7 @@ std::string game::username(player_iterator iter) const
 	return iter->info().name();
 }
 
-std::string game::list_users(user_vector users) const
+std::string game::list_users(const user_vector& users) const
 {
 	std::string list;
 
@@ -303,15 +309,24 @@ void game::start_game(player_iterator starter)
 	DBG_GAME << "Number of sides: " << nsides_;
 	int turn = 1;
 	int side = 0;
+	int next_side = 0;
 
 	// Savegames have a snapshot that tells us which side starts.
 	if(const simple_wml::node* snapshot = level_.root().child("snapshot")) {
 		turn = lexical_cast_default<int>((*snapshot)["turn_at"], 1);
 		side = lexical_cast_default<int>((*snapshot)["playing_team"], 0);
-		LOG_GAME << "Reload from turn: " << turn << ". Current side is: " << side + 1 << ".";
+		if((*snapshot)["init_side_done"].to_bool(false)) {
+			next_side = -1;
+		} else {
+			next_side = side;
+		}
+		LOG_GAME << "Reload from turn: " << turn << ". Current side is: " << side + 1 << ". Next side is: " << next_side + 1;
 	}
+
 	current_turn_ = turn;
 	current_side_index_ = side;
+	next_side_index_ = next_side;
+
 	num_turns_ = lexical_cast_default<int>((*starting_pos(level_.root()))["turns"], -1);
 
 	update_turn_data();
@@ -629,10 +644,10 @@ void game::notify_new_host()
 	send_and_record_server_message(message);
 }
 
-bool game::describe_slots()
+void game::describe_slots()
 {
 	if(started_ || description_ == nullptr) {
-		return false;
+		return;
 	}
 
 	int available_slots = 0;
@@ -649,15 +664,10 @@ bool game::describe_slots()
 		++i;
 	}
 
-	simple_wml::node* slots_cfg = description_->child("slot_data");
-	if(!slots_cfg) {
-		slots_cfg = &description_->add_child("slot_data");
-	}
+	simple_wml::node& slots_cfg = description_for_writing()->child_or_add("slot_data");
 
-	slots_cfg->set_attr_int("vacant", available_slots);
-	slots_cfg->set_attr_int("max", num_sides);
-
-	return true;
+	slots_cfg.set_attr_int("vacant", available_slots);
+	slots_cfg.set_attr_int("max", num_sides);
 }
 
 bool game::player_is_banned(player_iterator player, const std::string& name) const
@@ -899,9 +909,14 @@ bool game::is_legal_command(const simple_wml::node& command, player_iterator use
 			return false;
 		}
 
-		if(from_side_index >= sides_.size() || sides_[from_side_index] != user) {
+		if(get_side_player(from_side_index) != user) {
 			return false;
 		}
+	}
+
+	if(command.child("init_side")) {
+		// If side init was already done, the rhs returns nullopt so this also return fale in this case.
+		return get_side_player(get_next_side_index()) == user;
 	}
 
 	if(is_current) {
@@ -926,7 +941,7 @@ bool game::is_legal_command(const simple_wml::node& command, player_iterator use
 		}
 
 		std::size_t side_number = sn.to_int();
-		if(side_number >= sides_.size() || sides_[side_number] != user) {
+		if(get_side_player(side_number) != user) {
 			return false;
 		} else {
 			return true;
@@ -1049,7 +1064,10 @@ bool game::process_turn(simple_wml::document& data, player_iterator user)
 			send_and_record_server_message(username(user) + " has surrendered.");
 		} else if(is_current_player(user) && (*command).child("end_turn")) {
 			simple_wml::node& endturn = *(*command).child("end_turn");
-			turn_ended = end_turn(endturn["next_player_number"].to_int());
+			end_turn(endturn["next_player_number"].to_int());
+		} else if(command->child("init_side")) {
+			//["side_number"]
+			init_turn();
 		}
 
 		++index;
@@ -1292,46 +1310,34 @@ void game::process_change_turns_wml(simple_wml::document& data, player_iterator 
 
 	assert(static_cast<int>(this->current_turn()) == current_turn);
 
-	simple_wml::node* turns_cfg = description_->child("turn_data");
-	if(!turns_cfg) {
-		turns_cfg = &description_->add_child("turn_data");
-	}
+	simple_wml::node& turns_cfg = description_for_writing()->child_or_add("turn_data");
 
-	ctw_node.copy_into(*turns_cfg);
+	ctw_node.copy_into(turns_cfg);
 
 	// Don't send or store this change, all players should have gotten it by wml.
 }
 
-bool game::end_turn(int new_side)
+void game::end_turn(int new_side)
 {
 	if(new_side > 0) {
-		current_side_index_ = new_side - 1;
+		next_side_index_ = new_side - 1;
+	} else {
+		next_side_index_ = current_side_index_ + 1;
 	}
-	else {
-		++current_side_index_;
+}
+
+void game::init_turn()
+{
+	int new_side = get_next_side_index();
+	if(new_side > current_side_index_) {
+		++current_turn_;
 	}
 
-	// Skip over empty sides.
-	for(int i = 0; i < nsides_ && side_controllers_[current_side()] == side_controller::type::none; ++i) {
-		++current_side_index_;
-	}
-
-	auto res = std::div(current_side_index_, nsides_ > 0 ? nsides_ : 1);
-
-	if(res.quot == 0) {
-		return false;
-	}
-	current_side_index_ = res.rem;
-	current_turn_ += res.quot;
-
-	if(description_ == nullptr) {
-		// TODO: why do we need this?
-		return false;
-	}
+	current_side_index_ = new_side;
+	next_side_index_ = -1;
 
 	update_turn_data();
 
-	return true;
 }
 
 void game::update_turn_data()
@@ -1340,13 +1346,10 @@ void game::update_turn_data()
 		return;
 	}
 
-	simple_wml::node* turns_cfg = description_->child("turn_data");
-	if(!turns_cfg) {
-		turns_cfg = &description_->add_child("turn_data");
-	}
+	simple_wml::node& turns_cfg = description_for_writing()->child_or_add("turn_data");
 
-	turns_cfg->set_attr_int("current", current_turn());
-	turns_cfg->set_attr_int("max", num_turns_);
+	turns_cfg.set_attr_int("current", current_turn());
+	turns_cfg.set_attr_int("max", num_turns_);
 }
 
 bool game::add_player(player_iterator player, bool observer)
@@ -1975,7 +1978,7 @@ void game::send_server_message(const char* message, utils::optional<player_itera
 		msg.set_attr("id", "server");
 		msg.set_attr_dup("message", message);
 		std::stringstream ss;
-		ss << ::std::time(nullptr);
+		ss << chrono::serialize_timestamp(std::chrono::system_clock::now());
 		msg.set_attr_dup("time", ss.str().c_str());
 	} else {
 		simple_wml::node& msg = doc.root().add_child("message");
@@ -1993,6 +1996,28 @@ bool game::is_reload() const
 {
 	const simple_wml::node& multiplayer = get_multiplayer(level_.root());
 	return multiplayer.has_attr("savegame") && multiplayer["savegame"].to_bool();
+}
+
+int game::get_next_side_index() const
+{
+	return get_next_nonempty(next_side_index_);
+}
+
+int game::get_next_nonempty(int side_index) const
+{
+	if(side_index == -1) {
+		return -1;
+	}
+	if(nsides_ == 0) {
+		return 0;
+	}
+	for(int i = 0; i < nsides_; ++i) {
+		int res = modulo(side_index + i, nsides_, 0);
+		if(side_controllers_[res] != side_controller::type::none) {
+			return res;
+		}
+	}
+	return -1;
 }
 
 } // namespace wesnothd

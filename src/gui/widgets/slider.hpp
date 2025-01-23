@@ -87,6 +87,11 @@ public:
 		queue_redraw(); // TODO: draw_manager - does the above change the size?
 	}
 
+	unsigned get_best_slider_length() const
+	{
+		return best_slider_length_;
+	}
+
 	void set_value_range(int min_value, int max_value);
 
 	void set_minimum_value_label(const t_string& minimum_value_label)
@@ -94,9 +99,19 @@ public:
 		minimum_value_label_ = minimum_value_label;
 	}
 
+	t_string get_minimum_value_label() const
+	{
+		return minimum_value_label_;
+	}
+
 	void set_maximum_value_label(const t_string& maximum_value_label)
 	{
 		maximum_value_label_ = maximum_value_label;
+	}
+
+	t_string get_maximum_value_label() const
+	{
+		return maximum_value_label_;
 	}
 
 	void set_value_labels(const std::vector<t_string>& value_labels);
@@ -250,8 +265,9 @@ struct builder_slider : public builder_styled_widget
 
 	virtual std::unique_ptr<widget> build() const override;
 
+	unsigned best_slider_length;
+
 private:
-	unsigned best_slider_length_;
 	int minimum_value_;
 	int maximum_value_;
 	unsigned step_size_;

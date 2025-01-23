@@ -66,6 +66,12 @@ public:
 
 	void set_text_alpha(unsigned short alpha);
 
+    /** See @ref styled_widget::get_link_aware. */
+    virtual bool get_link_aware() const override
+    {
+        return link_aware_;
+    }
+
 	void set_link_aware(bool l);
 
 	void set_text_max_width(int max_width) {
@@ -141,7 +147,7 @@ struct scroll_label_definition : public styled_widget_definition
 namespace implementation
 {
 
-struct builder_scroll_label : public builder_styled_widget
+struct builder_scroll_label : public builder_scrollbar_container
 {
 	explicit builder_scroll_label(const config& cfg);
 

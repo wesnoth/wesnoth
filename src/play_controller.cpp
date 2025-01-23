@@ -51,6 +51,7 @@
 #include "savegame.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
+#include "scripting/plugins/manager.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
 #include "statistics.hpp"
@@ -280,7 +281,54 @@ void play_controller::init(const config& level)
 		plugins_context_->set_callback("save_game", [this](const config& cfg) { save_game_auto(cfg["filename"]); }, true);
 		plugins_context_->set_callback("save_replay", [this](const config& cfg) { save_replay_auto(cfg["filename"]); }, true);
 		plugins_context_->set_callback("quit", [](const config&) { throw_quit_game_exception(); }, false);
-		plugins_context_->set_accessor_string("scenario_name", [this](config) { return get_scenario_name(); });
+		plugins_context_->set_callback_execute(*resources::lua_kernel);
+		plugins_context_->set_accessor_string("scenario_name", [this](const config&) { return get_scenario_name(); });
+		plugins_context_->set_accessor_int("current_side", [this](const config&) { return current_side(); });
+		plugins_context_->set_accessor_int("current_turn", [this](const config&) { return turn(); });
+		plugins_context_->set_accessor_bool("can_move", [this](const config&) { return !events::commands_disabled && gamestate().gamedata_.phase() == game_data::TURN_PLAYING; });
+		plugins_context_->set_callback("end_turn", [this](const config&) { require_end_turn(); }, false);
+		plugins_context_->set_callback("synced_command", [this](const config& cmd) {
+			auto& pm = *plugins_manager::get();
+			if(resources::whiteboard->has_planned_unit_map())
+			{
+				ERR_NG << "plugin called synced command while whiteboard is applied, ignoring";
+				pm.notify_event("synced_command_error", config{"error", "whiteboard"});
+				return;
+			}
+
+			auto& gamedata = gamestate().gamedata_;
+			const bool is_too_early = gamedata.phase() == game_data::INITIAL || resources::gamedata->phase() == game_data::PRELOAD;
+			const bool is_during_turn = gamedata.phase() == game_data::TURN_PLAYING;
+			const bool is_unsynced = synced_context::get_synced_state() == synced_context::UNSYNCED;
+			if(is_too_early) {
+				ERR_NG << "synced command called too early, only allowed at START or later";
+				pm.notify_event("synced_command_error", config{"error", "too-early"});
+				return;
+			}
+			if(is_unsynced && !is_during_turn) {
+				ERR_NG << "synced command can only be used during a turn when a user would also be able to invoke commands";
+				pm.notify_event("synced_command_error", config{"error", "not-your-turn"});
+				return;
+			}
+			if(is_unsynced && events::commands_disabled) {
+				ERR_NG << "synced command cannot be invoked while commands are blocked";
+				pm.notify_event("synced_command_error", config{"error", "disabled"});
+				return;
+			}
+			if(is_unsynced && !resources::controller->current_team().is_local()) {
+				ERR_NG << "synced command can only be used from clients that control the currently playing side";
+				pm.notify_event("synced_command_error", config{"error", "not-your-turn"});
+				return;
+			}
+			action_spectator spectator([&pm](const std::string& message) {
+				ERR_NG << "synced command from plugin raised an error: " << message;
+				pm.notify_event("synced_command_error", config{"error", "error", "message", message});
+			});
+			for(const auto [key, child] : cmd.all_children_range()) {
+				synced_context::run_in_synced_context_if_not_already(key, child, spectator);
+				ai::manager::get_singleton().raise_gamestate_changed();
+			}
+		}, false);
 	});
 }
 
@@ -1311,6 +1359,11 @@ void play_controller::toggle_skipping_replay()
 	if(skip_animation_button) {
 		skip_animation_button->set_check(skip_replay_);
 	}
+}
+
+bool play_controller::is_skipping_actions() const
+{
+	return is_skipping_replay() || (prefs::get().skip_ai_moves() && current_team().is_ai() && !is_replay());
 }
 
 bool play_controller::is_during_turn() const

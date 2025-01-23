@@ -69,6 +69,7 @@ mp_join_game::mp_join_game(saved_game& state, wesnothd_connection& connection, c
 	, flg_dialog_(nullptr)
 {
 	set_show_even_without_video(true);
+	set_allow_plugin_skip(false);
 }
 
 mp_join_game::~mp_join_game()
@@ -385,8 +386,10 @@ void mp_join_game::generate_side_list()
 		data.emplace("side_number", item);
 
 		std::string leader_image = ng::random_enemy_picture;
-		std::string leader_type = side["type"];
-		std::string leader_gender = side["gender"];
+
+		const config& leader = side.child_or_empty("leader");
+		std::string leader_type = leader["type"];
+		std::string leader_gender = leader["gender"];
 		std::string leader_name;
 
 		// If there is a unit which can recruit, use it as a leader.
@@ -486,9 +489,7 @@ void mp_join_game::generate_side_list()
 void mp_join_game::close_faction_select_dialog_if_open()
 {
 	if(flg_dialog_) {
-		if(window* w = flg_dialog_->get_window()) {
-			w->set_retval(retval::CANCEL);
-		}
+		flg_dialog_->set_retval(retval::CANCEL);
 	}
 }
 

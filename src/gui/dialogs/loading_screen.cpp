@@ -32,6 +32,7 @@
 
 #include <chrono>
 #include <functional>
+#include <utility>
 
 static lg::log_domain log_loadscreen("loadscreen");
 #define LOG_LS LOG_STREAM(info, log_loadscreen)
@@ -77,7 +78,7 @@ loading_screen* loading_screen::singleton_ = nullptr;
 
 loading_screen::loading_screen(std::function<void()> f)
 	: modal_dialog(window_id())
-	, load_funcs_{f}
+	, load_funcs_{std::move(f)}
 	, worker_result_()
 	, cursor_setter_()
 	, progress_stage_label_(nullptr)
@@ -94,6 +95,7 @@ loading_screen::loading_screen(std::function<void()> f)
 
 	current_visible_stage_ = visible_stages_.end();
 	singleton_ = this;
+	set_allow_plugin_skip(false);
 }
 
 void loading_screen::pre_show()
@@ -212,7 +214,7 @@ loading_screen::~loading_screen()
 	singleton_ = nullptr;
 }
 
-void loading_screen::display(std::function<void()> f)
+void loading_screen::display(const std::function<void()>& f)
 {
 	if(singleton_ || video::headless()) {
 		LOG_LS << "Directly executing loading function.";

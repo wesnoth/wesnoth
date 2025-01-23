@@ -34,6 +34,7 @@
 #include "gettext.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/dialogs/addon/addon_auth.hpp"
+#include "gui/dialogs/addon/addon_server_info.hpp"
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
@@ -113,10 +114,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/unit_advance.hpp"
 #include "gui/dialogs/unit_attack.hpp"
-#include "gui/dialogs/unit_create.hpp"
-#include "gui/dialogs/unit_list.hpp"
-#include "gui/dialogs/unit_recall.hpp"
-#include "gui/dialogs/unit_recruit.hpp"
+#include "gui/dialogs/units_dialog.hpp"
 #include "gui/dialogs/wml_error.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/settings.hpp"
@@ -605,10 +603,6 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_transient_message)
 {
 	test<transient_message>();
 }
-BOOST_AUTO_TEST_CASE(modal_dialog_test_unit_create)
-{
-	test<unit_create>();
-}
 BOOST_AUTO_TEST_CASE(modal_dialog_test_wml_error)
 {
 	test<wml_error>();
@@ -628,6 +622,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_wml_message_double)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_achievements_dialog)
 {
 	test<achievements_dialog>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_addon_server_info)
+{
+	test<addon_server_info>();
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_match_history_dialog)
 {
@@ -686,9 +684,7 @@ BOOST_AUTO_TEST_CASE(test_last)
 		"synched_choice_wait",
 		"drop_down_menu",
 		"preferences_dialog",
-		"unit_recruit",
-		"unit_recall",
-		"unit_list",
+		"units_dialog",
 		"unit_advance",
 		"mp_host_game_prompt",
 		"mp_create_game",
@@ -750,6 +746,18 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 BOOST_AUTO_TEST_SUITE_END()
 
 namespace {
+
+template<>
+struct dialog_tester<addon_server_info>
+{
+	std::string s = "";
+	bool b = false;
+	addon_server_info* create()
+	{
+		addons_client client("localhost:15999");
+		return new addon_server_info(client, s, b);
+	}
+};
 
 template<>
 struct dialog_tester<addon_auth>

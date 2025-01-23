@@ -23,6 +23,7 @@
 #include "gui/dialogs/prompt.hpp"
 #include "filesystem.hpp"
 #include "editor/action/action_base.hpp"
+#include "serialization/chrono.hpp"
 
 lg::log_domain log_editor("editor");
 
@@ -42,11 +43,16 @@ std::string initialize_addon()
 	}
 
 	if(addon_id == "///newaddon///") {
-		std::string& addon_id_new = addon_id;
-		std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
-		addon_id = "MyAwesomeAddon-"+std::to_string(current_millis);
-		if (gui2::dialogs::prompt::execute(addon_id_new)) {
-			addon_id = !addon_filename_legal(addon_id_new) ? "MyAwesomeAddon-"+std::to_string(current_millis) : addon_id_new;
+		static constexpr std::string_view ts_format = "%Y-%m-%d_%H-%M-%S";
+		std::string timestamp = chrono::format_local_timestamp(std::chrono::system_clock::now(), ts_format);
+
+		addon_id = "MyAwesomeAddon-" + timestamp;
+		std::string addon_id_new = addon_id;
+
+		if(gui2::dialogs::prompt::execute(addon_id_new)) {
+			if(addon_filename_legal(addon_id_new)) {
+				addon_id = addon_id_new;
+			}
 		}
 	}
 

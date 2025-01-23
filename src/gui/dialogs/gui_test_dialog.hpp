@@ -16,12 +16,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 /**
  * @ingroup GUIWindowDefinitionWML
  *
@@ -42,5 +38,4 @@ private:
 	virtual const std::string& window_id() const override;
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

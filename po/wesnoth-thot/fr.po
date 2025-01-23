@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The_Hammer_of_Thursagan-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-08-19 04:11 UTC\n"
+"POT-Creation-Date: 2025-01-19 17:47 UTC\n"
 "PO-Revision-Date: 2024-08-04 12:25+0200\n"
 "Last-Translator: alberic89 <alberic89@gmx.com>\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org> \n"
@@ -23,7 +23,9 @@ msgstr ""
 # Mise en fuzzy pour informer l'utilisateur de la traduction partielle.
 # Supprimer le fuzzy (sans changement) quand la traduction est complète.
 #. [campaign]: id=The_Hammer_of_Thursagan
+#. [achievement_group]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
+#: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:4
 #, fuzzy
 msgid "The Hammer of Thursagan"
 msgstr "Le Marteau de Thursagan"
@@ -108,6 +110,39 @@ msgstr "Conception, tests, support conjugal"
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:60
 msgid "Campaign Maintenance"
 msgstr "Maintenance de la campagne"
+
+#. [achievement]: id=gryphon_hunter
+#: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:8
+msgid "Gryphon Hunter"
+msgstr ""
+
+#. [achievement]: id=gryphon_hunter
+#: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:9
+msgid "Kill the Gryphon leader in High Pass"
+msgstr ""
+
+#. [achievement]: id=conqueror_of_the_forest
+#: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:16
+msgid "Conqueror of the Forest"
+msgstr ""
+
+#. [achievement]: id=conqueror_of_the_forest
+#: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:17
+msgid "Defeat an enemy leader in Forbidden Forest"
+msgstr ""
+
+# Mise en fuzzy pour informer l'utilisateur de la traduction partielle.
+# Supprimer le fuzzy (sans changement) quand la traduction est complète.
+#. [achievement]: id=new_thursagan
+#: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:23
+#, fuzzy
+msgid "New Thursagan"
+msgstr "Le Marteau de Thursagan"
+
+#. [achievement]: id=new_thursagan
+#: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:24
+msgid "Complete The Underlevels on challenging difficulty"
+msgstr ""
 
 #. [scenario]: id=01_At_the_East_Gate
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:5
@@ -869,7 +904,7 @@ msgstr ""
 "d'amusant."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:241
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:254
 msgid ""
 "It has begun to snow. Move, everyone! To be trapped here would be death."
 msgstr ""
@@ -877,7 +912,7 @@ msgstr ""
 "nous sommes piégés ici."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:250
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:263
 msgid ""
 "We’re snowed in. Our mission has failed, even if we live until the spring."
 msgstr ""
@@ -885,12 +920,12 @@ msgstr ""
 "survivons jusqu'au printemps."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:264
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:277
 msgid "We’re through the pass!"
 msgstr "Nous avons traversé la passe !"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:269
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:282
 msgid ""
 "That may not be a blessing. Something has been driving these orcish raiders "
 "to push into Alliance territory. Don’t you wonder what it is?"
@@ -900,7 +935,7 @@ msgstr ""
 "pas demandé de quoi il s'agissait ?"
 
 #. [message]: speaker=Movrur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:274
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:287
 msgid ""
 "The same that has been driving them to attack us at Kal Kartha. But, no "
 "matter the reason for their aggression, we shall slaughter them all the same."
@@ -909,7 +944,7 @@ msgstr ""
 "que soit la raison de leur agression, nous les abattrons à nouveau."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:279
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:292
 msgid ""
 "We are coming to Kal Kartha to study the Hammer of Thursagan, not mindlessly "
 "slay orcs."
@@ -918,7 +953,7 @@ msgstr ""
 "abattre bêtement des orcs."
 
 #. [message]: speaker=Movrur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:284
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:297
 msgid ""
 "Indeed, you are, but you musn’t lose sight of the end goal. Restoring the "
 "Hammer will revive the ancient art of runecraft and bring dwarven-kind back "
@@ -931,7 +966,7 @@ msgstr ""
 "sera plus jamais une menace pour nous. "
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:289
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:302
 #, fuzzy
 msgid ""
 "I hope so, for the sake of peace and the safety of our people. For now, "
@@ -1439,15 +1474,20 @@ msgstr ""
 "Qu'il en soit ainsi. Vos squelettes ne seront pas les premiers à alimenter "
 "la litière de notre forêt."
 
+#. [message]: speaker=second_unit
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:263
+msgid "We shall pass!"
+msgstr ""
+
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:284
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:303
 msgid ""
 "Rally on me, everyone. We have better things to do than brawl with elves."
 msgstr ""
 "Tous avec moi ! Nous avons mieux à faire que de nous bagarrer avec des elfes."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:293
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:312
 #, fuzzy
 #| msgid "Kal Kartha should be only another day’s march east of here."
 msgid "Kal Kartha should be only another day’s march north of here."
@@ -2323,12 +2363,12 @@ msgid "Aye, let us go."
 msgstr "Oui, allons-y."
 
 #. [message]: speaker=Dufon
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1308
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1315
 msgid "The master’s ritual... must not be... interrupted..."
 msgstr "Le rituel du maître... ne peut être... interrompu…."
 
 #. [message]: speaker=Dranath
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1320
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1327
 msgid ""
 "Imbeciles! Once the master’s dark rite is complete, I will return to slay "
 "you myself!"
@@ -2337,17 +2377,17 @@ msgstr ""
 "reviendrai vous anéantir moi-même !"
 
 #. [message]: speaker=Aragoth
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1332
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1339
 msgid "The heathens... have slain me-"
 msgstr "Les païens... m'ont tué..."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1343
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1350
 msgid "The air is cold with the stench of death."
 msgstr "L'air est froid avec un relent de mort."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1348
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1355
 msgid ""
 "No doubt it is this ritual that the masked ones spoke of. We must hurry and "
 "stop Karrag!"
@@ -2356,12 +2396,12 @@ msgstr ""
 "dépêcher et arrêter Karrag !"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1367
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1374
 msgid "I feel as if the life is being sapped out of my body!"
 msgstr "J'ai l'impression que la vie est aspirée en dehors de mon corps !"
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1372
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1379
 msgid ""
 "Karrag’s spell grows more powerful with every passing moment. If we do not "
 "defeat him now, we will all turn into his thralls!"
@@ -2370,7 +2410,7 @@ msgstr ""
 "pas maintenant, nous allons tous devenir ses esclaves!"
 
 #. [message]: speaker=Karrag
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1381
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1388
 msgid ""
 "HAHAHAHA! Yes, yes, YES! The rite of death is complete at last! Die, you "
 "filthy dirtgrubbers, die so that I may raise you again as my mindless slaves!"
@@ -2748,21 +2788,20 @@ msgid "Aiglondur"
 msgstr "Aiglondur"
 
 #: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:19
-#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:31
 msgid "Angarthing"
 msgstr "Angarthing"
 
-#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:43
+#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:31
 msgid "Movrur"
 msgstr "Movrur"
 
-#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:55
-#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:68
+#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:43
+#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:56
 msgid "Dulcatulos"
 msgstr "Dulcatulos"
 
-#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:81
-#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:90
+#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:69
+#: data/campaigns/The_Hammer_of_Thursagan/utils/characters.cfg:78
 msgid "Karrag"
 msgstr "Karrag"
 

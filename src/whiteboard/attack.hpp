@@ -27,7 +27,7 @@ namespace wb
 class attack: public move
 {
 public:
-	attack(std::size_t team_index, bool hidden, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
+	attack(std::size_t team_index, bool hidden, const unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	attack(const config&, bool hidden); // For deserialization
 	virtual ~attack();
@@ -87,7 +87,7 @@ private:
 };
 
 /** Dumps an attack on a stream, for debug purposes. */
-std::ostream& operator<<(std::ostream &s, attack_ptr attack);
-std::ostream& operator<<(std::ostream &s, attack_const_ptr attack);
+std::ostream& operator<<(std::ostream &s, const attack_ptr& attack);
+std::ostream& operator<<(std::ostream &s, const attack_const_ptr& attack);
 
 } // end namespace wb

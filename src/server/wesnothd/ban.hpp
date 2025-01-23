@@ -16,8 +16,8 @@
 #pragma once
 
 #include "exceptions.hpp"
+#include "utils/optional_fwd.hpp"
 
-#include <ctime>
 #include <list>
 #include <map>
 #include <queue>
@@ -52,7 +52,7 @@ private:
 typedef std::set<banned_ptr, banned_compare_subnet> ban_set;
 typedef std::list<banned_ptr> deleted_ban_list;
 typedef std::priority_queue<banned_ptr, std::vector<banned_ptr>, banned_compare> ban_time_queue;
-typedef std::map<std::string, std::size_t> default_ban_times;
+typedef std::map<std::string, std::chrono::seconds> default_ban_times;
 typedef std::pair<unsigned int, unsigned int> ip_mask;
 
 ip_mask parse_ip(const std::string&);
@@ -61,8 +61,8 @@ class banned {
 	unsigned int ip_;
 	unsigned int mask_;
 	std::string ip_text_;
-	std::time_t end_time_;
-	std::time_t start_time_;
+	utils::optional<std::chrono::system_clock::time_point> end_time_;
+	utils::optional<std::chrono::system_clock::time_point> start_time_;
 	std::string reason_;
 	std::string who_banned_;
 	std::string group_;
@@ -70,7 +70,13 @@ class banned {
 	static const std::string who_banned_default_;
 
 public:
-	banned(const std::string& ip, const std::time_t end_time, const std::string& reason, const std::string& who_banned=who_banned_default_, const std::string& group="", const std::string& nick="");
+	banned(const std::string& ip,
+		const utils::optional<std::chrono::system_clock::time_point>& end_time,
+		const std::string& reason,
+		const std::string& who_banned = who_banned_default_,
+		const std::string& group = "",
+		const std::string& nick = "");
+
 	banned(const config&);
 
 	banned(const std::string& ip);
@@ -78,13 +84,14 @@ public:
 	void read(const config&);
 	void write(config&) const;
 
-	std::time_t get_end_time() const
+	const auto& get_end_time() const
 	{ return end_time_;	}
+
+	/** Returns the seconds remaining until than ban expires, or nullopt if permanent. */
+	utils::optional<std::chrono::seconds> get_remaining_ban_time() const;
 
 	std::string get_human_end_time() const;
 	std::string get_human_start_time() const;
-	std::string get_human_time_span() const;
-	static std::string get_human_time(const std::time_t&);
 
 	std::string get_reason() const
 	{ return reason_; }
@@ -141,10 +148,10 @@ class ban_manager
 	}
 
 	void init_ban_help();
-	void check_ban_times(std::time_t time_now);
+	void check_ban_times(const std::chrono::system_clock::time_point& time_now);
 	inline void expire_bans()
 	{
-		check_ban_times(std::time(nullptr));
+		check_ban_times(std::chrono::system_clock::now());
 	}
 
 public:
@@ -160,16 +167,23 @@ public:
 	 * @returns false if an invalid time modifier is encountered.
 	 * *time is undefined in that case.
 	 */
-	bool parse_time(const std::string& duration, std::time_t* time) const;
+	std::pair<bool, utils::optional<std::chrono::system_clock::time_point>> parse_time(
+		const std::string& duration, std::chrono::system_clock::time_point start_time) const;
 
-	std::string ban(const std::string&, const std::time_t&, const std::string&, const std::string&, const std::string&, const std::string& = "");
+	std::string ban(const std::string& ip,
+		const utils::optional<std::chrono::system_clock::time_point>& end_time,
+		const std::string& reason,
+		const std::string& who_banned,
+		const std::string& group,
+		const std::string& nick = "");
+
 	void unban(std::ostringstream& os, const std::string& ip, bool immediate_write=true);
 	void unban_group(std::ostringstream& os, const std::string& group);
 
 	void list_deleted_bans(std::ostringstream& out, const std::string& mask = "*") const;
 	void list_bans(std::ostringstream& out, const std::string& mask = "*");
 
-	std::string is_ip_banned(const std::string& ip);
+	banned_ptr get_ban_info(const std::string& ip);
 
 	const std::string& get_ban_help() const
 	{ return ban_help_; }

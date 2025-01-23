@@ -257,7 +257,7 @@ gruppo dell’utente. Di solito questo valore è
 .TP 
 \fBdb_tournament_query\fP
 La query SQL per trovare tornei da annunciare al momento
-dell'accesso. Dovrebbe restituire \fBtitle\fP, \fBstatus\fP and \fBurl\fP di un
+dell’accesso. Dovrebbe restituire \fBtitle\fP, \fBstatus\fP and \fBurl\fP di un
 torneo.
 .TP 
 \fBdb_connection_history_table\fP
@@ -277,6 +277,14 @@ utenti bannati. Di solito questo valore è <table\-prefix>_banlist
 \fBmp_mod_group\fP
 ID del gruppo del forum da considerare come avente i diritti di moderazione
 del gruppo.
+.TP 
+\fBforum_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
+.TP 
+\fBsite_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
 .RE
 .
 .SH "STATO DI USCITA"

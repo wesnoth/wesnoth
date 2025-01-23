@@ -23,12 +23,8 @@
 
 class map_generator;
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 class editor_generate_map : public modal_dialog
 {
 public:
@@ -69,5 +65,4 @@ private:
 	std::string random_seed_;
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

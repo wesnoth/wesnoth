@@ -85,6 +85,13 @@ void draw::fill(const color_t& c)
 	draw::fill(c.r, c.g, c.b, c.a);
 }
 
+void draw::fill(const SDL_FRect& rect, const color_t& c)
+{
+	DBG_D << "sub-pixel fill";
+	SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
+	SDL_RenderFillRectF(renderer(), &rect);
+}
+
 void draw::fill(const SDL_Rect& area)
 {
 	DBG_D << "fill " << area;

@@ -258,16 +258,6 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event);
 } // namespace event
 
 /**
- * Keeps track of any open windows of any type (modal, non-modal, or tooltip) in the
- * order in which they were opened. Currently only used as a helper for is_in_dialog(),
- * but could potentially be useful for other things in the future.
- */
-extern std::vector<window*> open_window_stack;
-
-/** Removes a entry from the open_window_stack list. This should be used instead of pop_back. */
-void remove_from_window_stack(window* window);
-
-/**
  * Is a dialog open?
  *
  * @note added as backwards compatibility for gui::is_in_dialog.

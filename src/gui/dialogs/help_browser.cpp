@@ -82,12 +82,12 @@ void help_browser::pre_show()
 
 	if (video::window_size().x <= 800) {
 		contents.set_value(false);
-		connect_signal_mouse_left_click(contents, std::bind([&]() {
+		connect_signal_mouse_left_click(contents, [&](auto&&...) {
 			topic_tree.set_visible(topic_tree.get_visible() == widget::visibility::visible
 				? widget::visibility::invisible
 				: widget::visibility::visible);
 			invalidate_layout();
-		}));
+		});
 		topic_tree.set_visible(widget::visibility::invisible);
 	} else {
 		contents.set_value(true);

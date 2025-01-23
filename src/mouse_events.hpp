@@ -141,7 +141,7 @@ protected:
 
 	// fill weapon choices into bc_vector
 	// return the best weapon choice
-	int fill_weapon_choices(std::vector<battle_context>& bc_vector, unit_map::iterator attacker, unit_map::iterator defender);
+	int fill_weapon_choices(std::vector<battle_context>& bc_vector, const unit_map::iterator& attacker, const unit_map::iterator& defender);
 	// the real function but can throw bad_alloc
 	// choice is the attack chosen in the attack dialog
 	void attack_enemy_(const map_location& attacker_loc
@@ -157,7 +157,7 @@ protected:
 	 */
 	unit* find_unit_nonowning(const map_location& hex);
 	const unit* find_unit_nonowning(const map_location& hex) const;
-	bool unit_in_cycle(unit_map::const_iterator it);
+	bool unit_in_cycle(const unit_map::const_iterator& it);
 private:
 	team &current_team();
 

@@ -159,7 +159,7 @@ void mp_create_game::pre_show()
 		std::bind(&mp_create_game::load_game_callback, this));
 
 	// Custom dialog close hook
-	set_exit_hook(window::exit_hook::on_ok, [this](window& w) { return dialog_exit_hook(w); });
+	set_exit_hook(window::exit_hook::ok_only, [this] { return dialog_exit_hook(); });
 
 	//
 	// Set up the options manager. Needs to be done before selecting an initial tab
@@ -174,8 +174,7 @@ void mp_create_game::pre_show()
 
 	text_box& filter = find_widget<text_box>("game_filter");
 
-	filter.set_text_changed_callback(
-		std::bind(&mp_create_game::on_filter_change<text_box>, this, "game_filter", true));
+	filter.on_modified([this](const auto&) { on_filter_change<text_box>("game_filter", true); });
 
 	// Note this cannot be in the keyboard chain or it will capture focus from other text boxes
 	keyboard_capture(&filter);
@@ -415,9 +414,10 @@ void mp_create_game::pre_show()
 
 	plugins_context_->set_accessor("find_level",   [this](const config& cfg) {
 		const std::string id = cfg["id"].str();
+		auto result = create_engine_.find_level_by_id(id);
 		return config {
-			"index", create_engine_.find_level_by_id(id).second,
-			"type", level_type::get_string(create_engine_.find_level_by_id(id).first),
+			"index", result.second,
+			"type", level_type::get_string(result.first),
 		};
 	});
 
@@ -543,7 +543,7 @@ void mp_create_game::on_tab_select()
 	find_widget<stacked_widget>("pager").select_layer(i);
 }
 
-void mp_create_game::on_mod_toggle(const std::string id, toggle_button* sender)
+void mp_create_game::on_mod_toggle(const std::string& id, toggle_button* sender)
 {
 	if(sender && (sender->get_value_bool() == create_engine_.dependency_manager().is_modification_active(id))) {
 		ERR_MP << "ignoring on_mod_toggle that is already set";
@@ -840,7 +840,7 @@ void mp_create_game::reset_timer_settings()
 	action_bonus_->set_widget_value(prefs::get().countdown_action_bonus().count());
 }
 
-bool mp_create_game::dialog_exit_hook(window& /*window*/)
+bool mp_create_game::dialog_exit_hook()
 {
 	if(!create_engine_.current_level_has_side_data()) {
 		gui2::show_transient_error_message(_("The selected game has no sides!"));

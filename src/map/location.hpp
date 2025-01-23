@@ -93,13 +93,13 @@ struct map_location {
 	map_location(const config_attribute_value& x, const config_attribute_value& y, wml_loc);
 	map_location(const config& cfg, const variable_set *variables = nullptr);
 
-	static const map_location & ZERO()
+	static const map_location& ZERO()
 	{
 		static const map_location z(0,0);
 		return z;
 	}
 
-	static const map_location & null_location()
+	static const map_location& null_location()
 	{
 		static const map_location l;
 		return l;
@@ -134,12 +134,12 @@ struct map_location {
 		return map_location(-x, -y - (x & 1)); //subtract one if we're on an odd x coordinate
 	}
 
-	map_location vector_sum(const map_location &a) const
+	map_location vector_sum(const map_location& a) const
 	{
 		return map_location(*this).vector_sum_assign(a);
 	}
 
-	map_location& vector_sum_assign(const map_location &a)
+	map_location& vector_sum_assign(const map_location& a)
 	{
 		y += ((x & 1) && (a.x & 1)); //add one if both x coords are odd
 		x += a.x;
@@ -147,7 +147,7 @@ struct map_location {
 		return *this;
 	}
 
-	map_location& vector_difference_assign(const map_location &a)
+	map_location& vector_difference_assign(const map_location& a)
 	{
 		return vector_sum_assign(a.vector_negation());
 	}
@@ -160,8 +160,8 @@ struct map_location {
 	}
 
 	enum RELATIVE_DIR_MODE { DEFAULT , RADIAL_SYMMETRY };
-	direction get_relative_dir(const map_location & loc, map_location::RELATIVE_DIR_MODE mode /*= map_location::RADIAL_SYMMETRY*/ ) const;
-	direction get_relative_dir(const map_location & loc) const; //moved the default setting to .cpp file for ease of testing
+	direction get_relative_dir(const map_location& loc, map_location::RELATIVE_DIR_MODE mode /*= map_location::RADIAL_SYMMETRY*/ ) const;
+	direction get_relative_dir(const map_location& loc) const; //moved the default setting to .cpp file for ease of testing
 
 	cubic_location to_cubic() const {
 		int q = x;
@@ -176,7 +176,7 @@ struct map_location {
 	}
 
 	// Rotates the map_location clockwise in 60 degree increments around a center point. Negative numbers of steps are permitted.
-	map_location rotate_right_around_center(const map_location & center, int k) const;
+	map_location rotate_right_around_center(const map_location& center, int k) const;
 
 	friend std::size_t hash_value(const map_location& a);
 
@@ -230,9 +230,9 @@ void read_locations(const config& cfg, std::vector<map_location>& locs);
 void write_locations(const std::vector<map_location>& locs, config& cfg);
 
 /** Dumps a position on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &s, const map_location& l);
+std::ostream& operator<<(std::ostream& s, const map_location& l);
 /** Dumps a vector of positions on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &s, const std::vector<map_location>& v);
+std::ostream& operator<<(std::ostream& s, const std::vector<map_location>& v);
 
 /** Print a direction's string representation to stream. */
 std::ostream& operator<<(std::ostream& s, map_location::direction dir);

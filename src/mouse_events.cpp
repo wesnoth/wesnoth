@@ -1264,7 +1264,7 @@ std::size_t mouse_handler::move_unit_along_route(const std::vector<map_location>
 	}
 
 	LOG_NG << "move unit along route  from " << steps.front() << " to " << steps.back();
-	std::size_t moves = actions::move_unit_and_record(steps, &pc_.get_undo_stack(), false, true, &interrupted);
+	std::size_t moves = actions::move_unit_and_record(steps, false, &interrupted);
 
 	cursor::set(cursor::NORMAL);
 	gui().invalidate_game_status();
@@ -1312,7 +1312,7 @@ void mouse_handler::save_whiteboard_attack(
 }
 
 int mouse_handler::fill_weapon_choices(
-		std::vector<battle_context>& bc_vector, unit_map::iterator attacker, unit_map::iterator defender)
+		std::vector<battle_context>& bc_vector, const unit_map::iterator& attacker, const unit_map::iterator& defender)
 {
 	int best = 0;
 	for(unsigned int i = 0; i < attacker->attacks().size(); i++) {
@@ -1504,7 +1504,7 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator& u)
 	}
 }
 
-bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
+bool mouse_handler::unit_in_cycle(const unit_map::const_iterator& it)
 {
 	game_board& board = pc_.gamestate().board_;
 

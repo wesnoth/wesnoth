@@ -27,29 +27,31 @@
 #include "scripting/game_lua_kernel.hpp"
 
 #include "actions/attack.hpp"           // for battle_context_unit_stats, etc
-#include "actions/advancement.hpp"           // for advance_unit_at, etc
-#include "actions/move.hpp"		// for clear_shroud
-#include "actions/vision.hpp"		// for clear_shroud and create_jamming_map
+#include "actions/advancement.hpp"      // for advance_unit_at, etc
+#include "actions/move.hpp"             // for clear_shroud
+#include "actions/vision.hpp"           // for clear_shroud and create_jamming_map
+#include "actions/undo.hpp"             // for clear_shroud and create_jamming_map
+#include "actions/undo_action.hpp"      // for clear_shroud and create_jamming_map
 #include "ai/composite/ai.hpp"          // for ai_composite
 #include "ai/composite/component.hpp"   // for component, etc
 #include "ai/composite/contexts.hpp"    // for ai_context
-#include "ai/lua/engine_lua.hpp"  // for engine_lua
-#include "ai/composite/rca.hpp"  // for candidate_action
-#include "ai/composite/stage.hpp"  // for stage
+#include "ai/lua/engine_lua.hpp"        // for engine_lua
+#include "ai/composite/rca.hpp"         // for candidate_action
+#include "ai/composite/stage.hpp"       // for stage
 #include "ai/configuration.hpp"         // for configuration
 #include "ai/lua/core.hpp"              // for lua_ai_context, etc
 #include "ai/manager.hpp"               // for manager, holder
 #include "attack_prediction.hpp"        // for combatant
 #include "chat_events.hpp"              // for chat_handler, etc
 #include "config.hpp"                   // for config, etc
-#include "display_chat_manager.hpp"	// for clear_chat_messages
+#include "display_chat_manager.hpp"     // for clear_chat_messages
 #include "floating_label.hpp"
 #include "formatter.hpp"
 #include "game_board.hpp"               // for game_board
 #include "game_classification.hpp"      // for game_classification, etc
 #include "game_config.hpp"              // for debug, base_income, etc
 #include "game_config_manager.hpp"      // for game_config_manager
-#include "game_data.hpp"               // for game_data, etc
+#include "game_data.hpp"                // for game_data, etc
 #include "game_display.hpp"             // for game_display
 #include "game_errors.hpp"              // for game_error
 #include "game_events/conditional_wml.hpp"  // for conditional_passed
@@ -57,9 +59,9 @@
 #include "game_events/handlers.hpp"
 #include "game_events/manager_impl.hpp" // for pending_event_handler
 #include "game_events/pump.hpp"         // for queued_event
-#include "preferences/preferences.hpp"         // for encountered_units
+#include "preferences/preferences.hpp"  // for encountered_units
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "map/map.hpp"                      // for gamemap
+#include "map/map.hpp"                  // for gamemap
 #include "map/label.hpp"
 #include "map/location.hpp"             // for map_location
 #include "mouse_events.hpp"             // for mouse_handler
@@ -79,7 +81,7 @@
 #include "scripting/lua_unit_attacks.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
-#include "scripting/lua_gui2.hpp"	// for show_gamestate_inspector
+#include "scripting/lua_gui2.hpp"	    // for show_gamestate_inspector
 #include "scripting/lua_pathfind_cost_calculator.hpp"
 #include "scripting/lua_race.hpp"
 #include "scripting/lua_team.hpp"
@@ -87,25 +89,25 @@
 #include "scripting/lua_unit_type.hpp"
 #include "scripting/push_check.hpp"
 #include "synced_commands.hpp"
-#include "color.hpp"                // for surface
+#include "color.hpp"                    // for surface
 #include "side_filter.hpp"              // for side_filter
 #include "sound.hpp"                    // for commit_music_changes, etc
 #include "synced_context.hpp"           // for synced_context, etc
 #include "synced_user_choice.hpp"
 #include "team.hpp"                     // for team, village_owner
-#include "terrain/terrain.hpp"                  // for terrain_type
+#include "terrain/terrain.hpp"          // for terrain_type
 #include "terrain/filter.hpp"           // for terrain_filter
 #include "terrain/translation.hpp"      // for read_terrain_code, etc
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"              // for tod_manager
 #include "tstring.hpp"                  // for t_string, operator+
-#include "units/unit.hpp"                     // for unit
+#include "units/unit.hpp"                 // for unit
 #include "units/animation_component.hpp"  // for unit_animation_component
 #include "units/udisplay.hpp"
 #include "units/filter.hpp"
-#include "units/map.hpp"  // for unit_map, etc
-#include "units/ptr.hpp"                 // for unit_const_ptr, unit_ptr
-#include "units/types.hpp"    // for unit_type_data, unit_types, etc
+#include "units/map.hpp"                // for unit_map, etc
+#include "units/ptr.hpp"                // for unit_const_ptr, unit_ptr
+#include "units/types.hpp"              // for unit_type_data, unit_types, etc
 #include "utils/scope_exit.hpp"
 #include "variable.hpp"                 // for vconfig, etc
 #include "variable_info.hpp"
@@ -113,7 +115,7 @@
 #include "whiteboard/manager.hpp"       // for whiteboard
 #include "deprecation.hpp"
 
-#include <functional>               // for bind_t, bind
+#include <functional>                   // for bind_t, bind
 #include <array>
 #include <cassert>                      // for assert
 #include <cstring>                      // for strcmp
@@ -1881,6 +1883,10 @@ CURRENT_GETTER("schedule", lua_index_raw) {
 	return lua_index_raw(L);
 }
 
+CURRENT_GETTER("user_is_replaying", bool) {
+	return k.pc().is_replay();
+}
+
 CURRENT_GETTER("event_context", config) {
 	const game_events::queued_event &ev = k.ev();
 	config cfg;
@@ -2652,7 +2658,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 		font::remove_floating_label(*handle);
 	}
 
-	SDL_Rect rect = game_display_->map_outside_area();
+	const SDL_Rect rect = game_display_->map_outside_area();
 	if(width_ratio > 0) {
 		width = static_cast<int>(std::round(rect.w * width_ratio));
 	}
@@ -2660,23 +2666,12 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	switch(alignment) {
 		case font::ALIGN::LEFT_ALIGN:
 			x = rect.x + loc.wml_x();
-			if(width > 0) {
-				rect.w = std::min(rect.w, width);
-			}
 			break;
 		case font::ALIGN::CENTER_ALIGN:
 			x = rect.x + rect.w / 2 + loc.wml_x();
-			if(width > 0) {
-				rect.w = std::min(rect.w, width);
-				rect.x = x - rect.w / 2;
-			}
 			break;
 		case font::ALIGN::RIGHT_ALIGN:
 			x = rect.x + rect.w - loc.wml_x();
-			if(width > 0) {
-				rect.x = (rect.x + rect.w) - std::min(rect.w, width);
-				rect.w = std::min(rect.w, width);
-			}
 			break;
 	}
 	switch(vertical_alignment) {
@@ -2704,6 +2699,13 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	flabel.set_position(x, y);
 	flabel.set_lifetime(milliseconds{lifetime}, milliseconds{fadeout});
 	flabel.set_clip_rect(rect);
+
+	// Adjust fallback width (map area) to avoid text escaping when location != 0
+	if(width > 0) {
+		flabel.set_width(std::min(width, rect.w - loc.wml_x()));
+	} else {
+		flabel.set_width(rect.w - loc.wml_x());
+	}
 
 	*handle = font::add_floating_label(flabel);
 	lua_settop(L, handle_idx);
@@ -4212,10 +4214,10 @@ int game_lua_kernel::intf_add_undo_actions(lua_State *L)
 {
 	config cfg;
 	if(luaW_toconfig(L, 1, cfg)) {
-		synced_context::add_undo_commands(cfg, get_event_info());
+		game_state_.undo_stack_->add_custom<actions::undo_event>(cfg, get_event_info());
 	} else {
 		luaW_toconfig(L, 2, cfg);
-		synced_context::add_undo_commands(save_wml_event(1), cfg, get_event_info());
+		game_state_.undo_stack_->add_custom<actions::undo_event>(save_wml_event(1), cfg, get_event_info());
 	}
 	return 0;
 }
@@ -4318,7 +4320,7 @@ int game_lua_kernel::cfun_undoable_event(lua_State* L)
 	lua_pushvalue(L, lua_upvalueindex(1));
 	lua_push(L, 1);
 	luaW_pcall(L, 1, 0);
-	synced_context::add_undo_commands(lua_upvalueindex(2), get_event_info());
+	game_state_.undo_stack_->add_custom<actions::undo_event>(lua_upvalueindex(2), config(), get_event_info());
 	return 0;
 }
 
@@ -4899,7 +4901,7 @@ namespace {
 /**
  * Executes its upvalue as a theme item generator.
  */
-int game_lua_kernel::impl_theme_item(lua_State *L, std::string m)
+int game_lua_kernel::impl_theme_item(lua_State *L, const std::string& m)
 {
 	reports::context temp_context = reports::context(board(), *game_display_, tod_man(), play_controller_.get_whiteboard(), play_controller_.get_mouse_handler_base());
 	luaW_pushconfig(L, reports_.generate_report(m.c_str(), temp_context , true));
@@ -5237,11 +5239,11 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "get_era",                  &intf_get_era                  },
 		{ "get_resource",             &intf_get_resource             },
 		{ "modify_ai",                &intf_modify_ai_old            },
-		{ "cancel_action",             &dispatch<&game_lua_kernel::intf_cancel_action              >        },
-		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
-		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
-		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },
-		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
+		{ "cancel_action",            &dispatch<&game_lua_kernel::intf_cancel_action              >        },
+		{ "log_replay",               &dispatch<&game_lua_kernel::intf_log_replay                 >        },
+		{ "log",                      &dispatch<&game_lua_kernel::intf_log                        >        },
+		{ "redraw",                   &dispatch<&game_lua_kernel::intf_redraw                     >        },
+		{ "simulate_combat",          &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
 		{ nullptr, nullptr }
 	};lua_getglobal(L, "wesnoth");
 	if (!lua_istable(L,-1)) {
@@ -5254,6 +5256,10 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_getglobal(L, "gui");
 	lua_pushcfunction(L, &dispatch<&game_lua_kernel::intf_gamestate_inspector>);
 	lua_setfield(L, -2, "show_inspector");
+	lua_pushcfunction(L, &lua_gui2::intf_show_recruit_dialog);
+	lua_setfield(L, -2, "show_recruit_dialog");
+	lua_pushcfunction(L, &lua_gui2::intf_show_recall_dialog);
+	lua_setfield(L, -2, "show_recall_dialog");
 	lua_pop(L, 1);
 
 	if(play_controller_.get_classification().is_test()) {

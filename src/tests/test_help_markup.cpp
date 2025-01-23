@@ -16,6 +16,7 @@
 
 #include <boost/test/unit_test.hpp>
 
+#include "config.hpp"
 #include "serialization/markup.hpp"
 
 BOOST_AUTO_TEST_SUITE( help_markup )

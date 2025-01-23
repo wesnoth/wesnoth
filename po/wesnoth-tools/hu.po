@@ -3,36 +3,41 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2023.
 #
+# Berda Jenő <big4billy@gmail.com>, 2024
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 12:06-0500\n"
-"PO-Revision-Date: 2023-05-29 16:27-0500\n"
-"Last-Translator: Automatically generated\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
+"PO-Revision-Date: 2024-12-02 23:22+0100\n"
+"Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: none\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/tools/GUI.pyw:77
 msgid "Open a Graphical User Interface (GUI) to WML Tools"
-msgstr ""
+msgstr "Megnyit egy grafikus interfészt (GUI) a WML Eszközökhöz"
 
 #: data/tools/GUI.pyw:81
 msgid ""
 "Launch GUI.pyw in the specified language. Language code is expected as a "
 "POSIX locale name, refer to gettext.wesnoth.org for a full list."
 msgstr ""
+"GUI.pyw futtatása a megadott nyelven. A nyelv kódjának POSIX-kompatibilis "
+"névnek kell lennie. Páldákért lásd a gettext.wesnoth.org weboldalt."
 
 #: data/tools/GUI.pyw:87 data/tools/GUI.pyw:101 data/tools/GUI.pyw:1404
 #: data/tools/GUI.pyw:1453 data/tools/GUI.pyw:1496 data/tools/GUI.pyw:1525
 #: data/tools/GUI.pyw:1561 data/tools/GUI.pyw:1585 data/tools/GUI.pyw:1628
 #: data/tools/GUI.pyw:1647 data/tools/GUI.pyw:1973
 msgid "Error"
-msgstr ""
+msgstr "Hiba"
 
 #. TRANSLATORS: {0} is "translations", the directory where compiled translation files (.mo) are stored.
 #: data/tools/GUI.pyw:89
@@ -41,12 +46,14 @@ msgid ""
 "‘{0}’ directory not found. Please run the GUI.pyw program packaged with the "
 "Wesnoth installation."
 msgstr ""
+"‘{0}’ könyvtár nem található. Futtassa a GUI.pyw programot, mely a Wesnoth "
+"telepítőcsomag része."
 
 #. TRANSLATORS: {0} is the language argument entered by the user.
 #: data/tools/GUI.pyw:103
 #, python-brace-format
 msgid "Locale {0} not recognized."
-msgstr ""
+msgstr "{0} nyelvi fájl nem felismerhető."
 
 #. TRANSLATORS: {0} is the name of command being executed.
 #: data/tools/GUI.pyw:378
@@ -55,168 +62,170 @@ msgid ""
 "Running: {0}\n"
 "Please wait..."
 msgstr ""
+"{0} fut.\n"
+"Kérem várjon ..."
 
 #: data/tools/GUI.pyw:392
 msgid "Terminate script"
-msgstr ""
+msgstr "Szkript leállítása"
 
 #: data/tools/GUI.pyw:443
 msgid "Cut"
-msgstr ""
+msgstr "Kivág"
 
 #: data/tools/GUI.pyw:448
 msgid "Copy"
-msgstr ""
+msgstr "Másol"
 
 #: data/tools/GUI.pyw:454
 msgid "Paste"
-msgstr ""
+msgstr "Beilleszt"
 
 #: data/tools/GUI.pyw:460
 msgid "Select All"
-msgstr ""
+msgstr "Mindent kiválaszt"
 
 #: data/tools/GUI.pyw:533
 msgid "Working directory"
-msgstr ""
+msgstr "Munkakönyvtár"
 
 #: data/tools/GUI.pyw:545 data/tools/GUI.pyw:588
 msgid "Browse..."
-msgstr ""
+msgstr "Tallóz..."
 
 #. TRANSLATORS: Clear button for clearing the directory text box.
 #: data/tools/GUI.pyw:552 data/tools/GUI.pyw:595
 msgid "Clear"
-msgstr ""
+msgstr "Törlés"
 
 #: data/tools/GUI.pyw:645
 msgid "wmllint mode"
-msgstr ""
+msgstr "wmllint mód"
 
 #. TRANSLATORS: Normal run mode for the WML tool.
 #: data/tools/GUI.pyw:652 data/tools/GUI.pyw:1072
 msgid "Normal"
-msgstr ""
+msgstr "Normál"
 
 #. TRANSLATORS: Tooltip explanation for normal run mode.
 #: data/tools/GUI.pyw:661 data/tools/GUI.pyw:1081
 msgid "Perform conversion and save changes to file"
-msgstr ""
+msgstr "Konverzió végrehajtása és a változások mentése fájlba"
 
 #: data/tools/GUI.pyw:664 data/tools/GUI.pyw:1084
 msgid "Dry run"
-msgstr ""
+msgstr "Próbafuttatás"
 
 #. TRANSLATORS: Tooltip explanation for dry run mode.
 #: data/tools/GUI.pyw:673 data/tools/GUI.pyw:1093
 msgid "Perform conversion without saving changes to file"
-msgstr ""
+msgstr "Konverzió végrehajtása és a változások mentése nélkül"
 
 #: data/tools/GUI.pyw:676
 msgid "Clean"
-msgstr ""
+msgstr "Tisztít"
 
 #. TRANSLATORS: Tooltip explanation for clean mode.
 #: data/tools/GUI.pyw:685
 msgid "Delete back-up files"
-msgstr ""
+msgstr "Biztonsági mentések törlése"
 
 #: data/tools/GUI.pyw:688
 msgid "Diff"
-msgstr ""
+msgstr "Összehasonlítás"
 
 #. TRANSLATORS: Tooltip explanation for diff run mode.
 #: data/tools/GUI.pyw:697
 msgid "Show differences in converted files"
-msgstr ""
+msgstr "Különbségek megjelenítése a konvertált fájlokban"
 
 #: data/tools/GUI.pyw:700
 msgid "Revert"
-msgstr ""
+msgstr "Visszaállít"
 
 #. TRANSLATORS: Tooltip explanation for revert run mode.
 #: data/tools/GUI.pyw:709
 msgid "Revert conversions using back-up files"
-msgstr ""
+msgstr "Konverziók visszaállítása biztonsági mentésből"
 
 #: data/tools/GUI.pyw:712 data/tools/GUI.pyw:1096
 msgid "Verbosity level"
-msgstr ""
+msgstr "Részletességi szint"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:720 data/tools/GUI.pyw:1104
 msgid "Terse"
-msgstr ""
+msgstr "Tömörít"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:731
 msgid "Show changes"
-msgstr ""
+msgstr "Változások megjelenítése"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:741
 msgid "Name files before processing"
-msgstr ""
+msgstr "Nevezze el a fájlokat feldolgozás előtt"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:751
 msgid "Show parse details"
-msgstr ""
+msgstr "Elemzési részletek megjelenítése"
 
 #: data/tools/GUI.pyw:760
 msgid "wmllint options"
-msgstr ""
+msgstr "wmllint beállításai"
 
 #. TRANSLATORS: EOL = Special characters marking 'end-of-line'.
 #: data/tools/GUI.pyw:768
 msgid "Convert EOL characters to Unix format"
-msgstr ""
+msgstr "EOL karakterek konvertálása Unix formátumba"
 
 #. TRANSLATORS: 'side=' in this context refers to WML and should not be
 #. translated.
 #: data/tools/GUI.pyw:779
-msgid "Do not warn about tags without side= keys"
+msgid "Warn about tags without side= keys"
 msgstr ""
 
 #: data/tools/GUI.pyw:788
 msgid "Disable checks for unknown units"
-msgstr ""
+msgstr "Ismeretlen egységek ellenőrzésének letiltása"
 
 #: data/tools/GUI.pyw:797
 msgid "Disable spellchecking"
-msgstr ""
+msgstr "A helyesírás-ellenőrzés letiltása"
 
 #: data/tools/GUI.pyw:806
 msgid "Skip core directory"
-msgstr ""
+msgstr "Főkönyvtár kihagyása"
 
 #: data/tools/GUI.pyw:833
 msgid "wmlscope options"
-msgstr ""
+msgstr "wmlscope beállítások"
 
 #: data/tools/GUI.pyw:845
 msgid "Check for duplicate macro definitions"
-msgstr ""
+msgstr "Ismétlődő makródefiníciók ellenőrzése"
 
 #: data/tools/GUI.pyw:854
 msgid "Check for duplicate resource files"
-msgstr ""
+msgstr "Ismétlődő erőforrásfájlok ellenőrzése"
 
 #: data/tools/GUI.pyw:863
 msgid "Make definition list"
-msgstr ""
+msgstr "Definíciós lista készítése"
 
 #: data/tools/GUI.pyw:872
 msgid "List files that will be processed"
-msgstr ""
+msgstr "A feldolgozandó fájlok listázása"
 
 #: data/tools/GUI.pyw:881
 msgid "Report unresolved macro references"
-msgstr ""
+msgstr "Meghatározatlan makróhivatkozások jelentése"
 
 #: data/tools/GUI.pyw:890
 msgid "Extract help from macro definition comments"
-msgstr ""
+msgstr "Súgó kinyerése makródefiníciós megjegyzésekből"
 
 #: data/tools/GUI.pyw:899
 msgid "Report all macros with untyped formals"
@@ -224,142 +233,143 @@ msgstr ""
 
 #: data/tools/GUI.pyw:908
 msgid "Show progress"
-msgstr ""
+msgstr "Előrehaladás megjelenítése"
 
 #: data/tools/GUI.pyw:928 data/tools/GUI.pyw:1140
 msgid "Exclude file names matching regular expression:"
-msgstr ""
+msgstr "A reguláris kifejezésnek megfelelő fájlnevek kizárása:"
 
 #: data/tools/GUI.pyw:946
 msgid "Exclude file names not matching regular expression:"
-msgstr ""
+msgstr "A reguláris kifejezésnek nem megfelelő fájlnevek kizárása:"
 
 #. TRANSLATORS: 'n' in this context refers to number, as in 'n number of
 #. files'.
 #: data/tools/GUI.pyw:966
 msgid "Report only on macros referenced in exactly n files:"
-msgstr ""
+msgstr "Csak a pontosan n fájlban hivatkozott makrók jelentése:"
 
 #: data/tools/GUI.pyw:986
 msgid "Report macro definitions and usages in file:"
-msgstr ""
+msgstr "Makródefiníciók és használatuk jelentése egy fájlban:"
 
 #: data/tools/GUI.pyw:1004
 msgid "Allow unused macros with names matching regular expression:"
 msgstr ""
+"Reguláris kifejezésnek megfelelő nevű nem használt makrók engedélyezése:"
 
 #: data/tools/GUI.pyw:1066
 msgid "wmlindent mode"
-msgstr ""
+msgstr "wmlindent mód"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:1114
 msgid "Verbose"
-msgstr ""
+msgstr "Részletes"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:1124
 msgid "Report unchanged files"
-msgstr ""
+msgstr "Változatlan fájlok jelentése"
 
 #: data/tools/GUI.pyw:1133
 msgid "wmlindent options"
-msgstr ""
+msgstr "wmlindent beállításai"
 
 #. TRANSLATORS: Option to run 'quietly'.
 #: data/tools/GUI.pyw:1160
 msgid "Quiet mode"
-msgstr ""
+msgstr "Csendes mód"
 
 #. TRANSLATORS: Tooltip explanation for quiet option.
 #: data/tools/GUI.pyw:1168
 msgid "Do not generate output messages"
-msgstr ""
+msgstr "Ne hozzon létre kimeneti üzeneteket"
 
 #: data/tools/GUI.pyw:1188
 msgid "Output directory:"
-msgstr ""
+msgstr "Kimeneti könyvtár:"
 
 #: data/tools/GUI.pyw:1194
 msgid "Options"
-msgstr ""
+msgstr "Beállítások"
 
 #: data/tools/GUI.pyw:1199
 msgid "Scan subdirectories"
-msgstr ""
+msgstr "Alkönyvtárak vizsgálata"
 
 #: data/tools/GUI.pyw:1204
 msgid "Show optional warnings"
-msgstr ""
+msgstr "Opcionális figyelmeztetések megjelenítése"
 
 #. TRANSLATORS: Also called "Needs work".
 #: data/tools/GUI.pyw:1210
 msgid "Mark all strings as fuzzy"
-msgstr ""
+msgstr "Az összes karakterlánc megjelölése homályosként"
 
 #: data/tools/GUI.pyw:1214
 msgid "Advanced options"
-msgstr ""
+msgstr "Haladó beállítások"
 
 #: data/tools/GUI.pyw:1218
 msgid "Package version"
-msgstr ""
+msgstr "Csomag verziója"
 
 #: data/tools/GUI.pyw:1235
 msgid "Initial textdomain:"
-msgstr ""
+msgstr "Kezdeti szövegtartomány:"
 
 #: data/tools/GUI.pyw:1281 data/tools/GUI.pyw:1387
 msgid "Run wmllint"
-msgstr ""
+msgstr "A wmllint futtatása"
 
 #: data/tools/GUI.pyw:1288
 msgid "Save as text..."
-msgstr ""
+msgstr "Mentés szövegként..."
 
 #: data/tools/GUI.pyw:1295
 msgid "Clear output"
-msgstr ""
+msgstr "Kimenet törlése"
 
 #: data/tools/GUI.pyw:1302
 msgid "About..."
-msgstr ""
+msgstr "Rólam..."
 
 #: data/tools/GUI.pyw:1309
 msgid "Exit"
-msgstr ""
+msgstr "Kilépés"
 
 #: data/tools/GUI.pyw:1325 data/tools/GUI.pyw:1459
 msgid "wmllint"
-msgstr ""
+msgstr "wmllint"
 
 #: data/tools/GUI.pyw:1329 data/tools/GUI.pyw:1531
 msgid "wmlscope"
-msgstr ""
+msgstr "wmlscope"
 
 #: data/tools/GUI.pyw:1333 data/tools/GUI.pyw:1567
 msgid "wmlindent"
-msgstr ""
+msgstr "wmlindent"
 
 #: data/tools/GUI.pyw:1337 data/tools/GUI.pyw:1617
 msgid "wmlxgettext"
-msgstr ""
+msgstr "wmlxgettext"
 
 #: data/tools/GUI.pyw:1340
 msgid "Output"
-msgstr ""
+msgstr "Kimenet"
 
 #: data/tools/GUI.pyw:1390
 msgid "Run wmlscope"
-msgstr ""
+msgstr "A wmlscope futtatása"
 
 #: data/tools/GUI.pyw:1393
 msgid "Run wmlindent"
-msgstr ""
+msgstr "A wmlindent futtatása"
 
 #: data/tools/GUI.pyw:1396
 msgid "Run wmlxgettext"
-msgstr ""
+msgstr "A wmlxgettext futtatása"
 
 #: data/tools/GUI.pyw:1404
 msgid ""
@@ -367,6 +377,10 @@ msgid ""
 "\n"
 "Please select a directory or disable the \"Skip core directory\" option."
 msgstr ""
+"Nincs kiválasztva könyvtár.\n"
+"\n"
+"Válasszon ki egy könyvtárat, vagy tiltsa le az \"Főkönyvtár kihagyása\" "
+"opciót."
 
 #: data/tools/GUI.pyw:1439 data/tools/GUI.pyw:1511
 msgid ""
@@ -375,12 +389,16 @@ msgid ""
 "\n"
 "The tool will be run only on the Wesnoth core directory."
 msgstr ""
+"A főkönyvtár vagy annak alkönyvtára van kiválasztva a bővítmény-kiválasztó "
+"dobozban.\n"
+"\n"
+"Az eszköz csak a Wesnoth főkönyvtárában fog futni."
 
 #: data/tools/GUI.pyw:1439 data/tools/GUI.pyw:1447 data/tools/GUI.pyw:1511
 #: data/tools/GUI.pyw:1519 data/tools/GUI.pyw:1554 data/tools/GUI.pyw:1580
 #: data/tools/GUI.pyw:1599
 msgid "Warning"
-msgstr ""
+msgstr "Figyelmeztetés"
 
 #: data/tools/GUI.pyw:1447 data/tools/GUI.pyw:1519
 msgid ""
@@ -388,15 +406,19 @@ msgid ""
 "\n"
 "The tool will be run only on the Wesnoth core directory."
 msgstr ""
+"Nincs kiválasztva könyvtár.\n"
+"\n"
+"Az eszköz csak a Wesnoth főkönyvtárában fog futni."
 
 #: data/tools/GUI.pyw:1453 data/tools/GUI.pyw:1525 data/tools/GUI.pyw:1561
 #: data/tools/GUI.pyw:1585
 msgid "The selected directory does not exist."
-msgstr ""
+msgstr "A kiválasztott könyvtár nem létezik."
 
 #: data/tools/GUI.pyw:1496
 msgid "Invalid value. Value must be an integer in the range 0-999."
 msgstr ""
+"Helytelen érték. Az értéknek egész számnak kell lennie a 0-999 tartományban."
 
 #: data/tools/GUI.pyw:1554
 msgid ""
@@ -404,6 +426,9 @@ msgid ""
 "\n"
 "The tool will be run on the Wesnoth core directory."
 msgstr ""
+"Nincs kiválasztva könyvtár.\n"
+"\n"
+"Az eszköz a Wesnoth főkönyvtárában fog futni."
 
 #: data/tools/GUI.pyw:1580
 msgid ""
@@ -411,11 +436,14 @@ msgid ""
 "\n"
 "The tool will not be run."
 msgstr ""
+"Nincs kiválasztva könyvtár.\n"
+"\n"
+"Az eszköz nem fog futni."
 
 #. TRANSLATORS: Dialogue box title.
 #: data/tools/GUI.pyw:1592
 msgid "Overwrite Confirmation"
-msgstr ""
+msgstr "Felülírás megerősítése"
 
 #. TRANSLATORS: {0} is a placeholder for a file name, and not meant to be modified.
 #: data/tools/GUI.pyw:1594
@@ -424,6 +452,8 @@ msgid ""
 "File {0} already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
+"A {0} fájl már létezik.\n"
+"Felül akarod írni?"
 
 #: data/tools/GUI.pyw:1599
 msgid ""
@@ -431,6 +461,9 @@ msgid ""
 "\n"
 "The tool will not be run."
 msgstr ""
+"Nincs kimeneti fájl kiválasztva.\n"
+"\n"
+"Az eszköz nem fog futni."
 
 #: data/tools/GUI.pyw:1628
 #, python-brace-format
@@ -439,10 +472,13 @@ msgid ""
 "\n"
 "Error code: {1}"
 msgstr ""
+"Hiba történt {0} végrehajtása közben.\n"
+"\n"
+"Hibakód: {1}"
 
 #: data/tools/GUI.pyw:1639
 msgid "Text file"
-msgstr ""
+msgstr "Szövegfájl"
 
 #: data/tools/GUI.pyw:1647
 #, python-brace-format
@@ -454,10 +490,16 @@ msgid ""
 "\n"
 "{2}"
 msgstr ""
+"Hiba történt a következőre való írás közben:\n"
+"{0}\n"
+"\n"
+"Hibakód: {1}\n"
+"\n"
+"{2}"
 
 #: data/tools/GUI.pyw:1664
 msgid "About Maintenance Tools GUI"
-msgstr ""
+msgstr "A karbantartó eszközök GUI-ról"
 
 #. TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
 #: data/tools/GUI.pyw:1666
@@ -473,16 +515,24 @@ msgid ""
 "Icons are taken from the Tango Desktop Project (http://tango.freedesktop."
 "org), and are released in the Public Domain."
 msgstr ""
+"© Elvish_Hunter, 2014-2024\n"
+"\n"
+"Verzió: {0}\n"
+"\n"
+"A Harc Wesnothért projekt része, GNU GPL v2 licenc alatt jelent meg\n"
+"\n"
+"Az ikonok a Tango Desktop Projectből (http://tango.freedesktop.org) "
+"származnak, és közkincsként tették közzé őket."
 
 #. TRANSLATORS: Dialogue box title.
 #: data/tools/GUI.pyw:1680
 msgid "Exit Confirmation"
-msgstr ""
+msgstr "Kilépés megerősítése"
 
 #: data/tools/GUI.pyw:1681
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Tényleg ki akarsz lépni?"
 
 #: data/tools/GUI.pyw:1973
 msgid "This application must be placed into the wesnoth/data/tools directory."
-msgstr ""
+msgstr "Ezt az alkalmazást a wesnoth/data/tools könyvtárba kell elhelyezni."

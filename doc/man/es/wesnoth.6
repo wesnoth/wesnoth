@@ -46,6 +46,10 @@ compártalas con otros.
 .SH OPCIONES
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 Muestra todas las traducciones en la lista de selección de idioma del juego,
 incluso si se considera que no están lo bastante completas.
@@ -177,10 +181,6 @@ es muy experimental, no haga informes de errores hasta que se conozca la
 mayoría de ellos. Partes de la biblioteca se consideran estables y
 funcionarán sin este conmutador.
 .TP 
-\fB\-\-nodelay\fP
-ejecuta el juego sin pausas para hacer una prueba de rendimiento
-gráfico. Esto se activa automáticamente con \fB\-\-nogui\fP.
-.TP 
 \fB\-\-noaddons\fP
 deshabilita la carga de complementos de usuario.
 .TP 
@@ -212,10 +212,9 @@ utiliza \fIpassword\fP cuando se conecta a un servidor, ignorando otras
 preferencias. Método inseguro.
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-(experimental) carga un \fIscript\fP que define una extensión para
-Wesnoth. Similar a \fB\-\-script\fP, pero el fichero Lua debería devolver una
-función que se ejecutará como una corutina que se activará periódicamente
-con actualizaciones.
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 aplica un arreglo DiffWML a un archivo WML; no preprocesa ninguno de los
@@ -232,22 +231,26 @@ que los recursos especificados. Ejemplo:  \fB\-p ~/wesnoth/data/campaigns/tutori
 con el preprocesador visite:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-lista separada por comas de definiciones que van a ser usadas por el comando
-\fB\-\-preprocess\fP. Si \fBSKIP_CORE\fP está en la lista, el directorio «data/core»
-no se preprocesará.
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
-sólo utilizado por el comando \fB\-\-preprocess\fP. Especifica un archivo que
-contiene \fB[preproc_define]\fPs para ser incluido antes de la operación.
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
-sólo utilizado con el comando \fB\-\-preprocess\fP. Escribirá todas las macros
-preprocesadas en el archivo especificado. Si omite el nombre de archivo, se
-utilizará el archivo «_MACROS_.cfg» en el directorio de destino del comando
-preprocess. El archivo de salida puede ser enviado a
-\fB\-\-preprocess\-input\-macros\fP. Esta opción debe preceder al comando
-\fB\-\-preprocess\fP.
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 establece la resolución de la pantalla. Por ejemplo: \fB\-r\fP \fB800x600\fP.
@@ -269,9 +272,6 @@ inicializa el generador de números aleatorios con \fInumber\fP.  Ejemplo:
 \fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
 guarda una captura de pantalla de \fImap\fP en \fIoutput\fP sin inicializar una
 pantalla.
-.TP 
-\fB\-\-script\fP\fI\ file\fP
-(experimental)  \fIfile\fP contiene un script Lua para controlar el cliente.
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 se conecta al servidor especificado si lo hay, de otro modo se conecta al

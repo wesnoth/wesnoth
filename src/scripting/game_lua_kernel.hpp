@@ -82,6 +82,8 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_time_area(lua_State *);
 	int intf_animate_unit(lua_State *);
 	int intf_gamestate_inspector(lua_State *);
+	int intf_show_recruit_dialog(lua_State* L);
+	int intf_show_recall_dialog(lua_State* L);
 	int impl_run_animation(lua_State *);
 	int intf_create_animator(lua_State *);
 	int intf_get_unit(lua_State *);
@@ -178,7 +180,7 @@ class game_lua_kernel : public lua_kernel_base
 	int impl_schedule_dir(lua_State *L);
 	int intf_scroll(lua_State *L);
 	int intf_get_all_vars(lua_State *L);
-	int impl_theme_item(lua_State *L, std::string name);
+	int impl_theme_item(lua_State *L, const std::string& name);
 	int impl_theme_items_get(lua_State *L);
 	int impl_theme_items_set(lua_State *L);
 	int impl_theme_items_dir(lua_State *L);

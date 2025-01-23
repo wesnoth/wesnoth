@@ -114,6 +114,7 @@ preferences_dialog::preferences_dialog(const pref_constants::PREFERENCE_VIEW ini
 	, gui2_themes_() // populated by set_gui2_theme_list
 	, last_selected_item_(0)
 	, current_gui_theme_(0)
+	, is_reload_needed_(false)
 	, accl_speeds_({0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 3, 4, 8, 16})
 	, visible_hotkeys_()
 	, visible_categories_()
@@ -245,8 +246,7 @@ void preferences_dialog::update_friends_list_controls(listbox& list)
 
 	find_widget<button>("remove").set_active(!list_empty);
 
-	find_widget<label>("no_friends_notice").set_visible(
-		list_empty ? widget::visibility::visible : widget::visibility::invisible);
+	find_widget<label>("no_friends_notice").set_visible(list_empty);
 }
 
 void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& textbox)
@@ -530,6 +530,16 @@ void preferences_dialog::initialize_callbacks()
 	connect_signal_mouse_left_click(auto_ps_toggle,
 		std::bind(&preferences_dialog::apply_pixel_scale, this));
 
+	/* SHOW TIPS PANEL ON TITLESCREEN */
+	register_bool("show_tips", true,
+		[]() {return prefs::get().show_tips();},
+		[&](bool v) {
+			// if changed once: different value, reload
+			// if changed twice: double toggle, same value, don't reload
+			is_reload_needed_ = !is_reload_needed_;
+			prefs::get().set_show_tips(v);
+		});
+
 	/* SHOW FLOATING LABELS */
 	register_bool("show_floating_labels", true,
 		[]() {return prefs::get().floating_labels();},
@@ -590,9 +600,7 @@ void preferences_dialog::initialize_callbacks()
 	menu_button& gui2_theme_list = find_widget<menu_button>("choose_gui2_theme");
 	button& apply_btn = find_widget<button>("apply");
 	set_gui2_theme_list(gui2_theme_list);
-	connect_signal_notify_modified(gui2_theme_list, std::bind([&]() {
-		apply_btn.set_active(true);
-	}));
+	connect_signal_notify_modified(gui2_theme_list, [&](auto&&...) { apply_btn.set_active(true); });
 	apply_btn.set_active(false);
 	connect_signal_mouse_left_click(apply_btn,
 		std::bind(&preferences_dialog::handle_gui2_theme_select, this));
@@ -648,7 +656,7 @@ void preferences_dialog::initialize_callbacks()
 
 	lobby_joins_group.set_member_states(prefs::get().get_lobby_joins());
 
-	lobby_joins_group.set_callback_on_value_change([&](widget&, const pref_constants::lobby_joins val) {
+	lobby_joins_group.on_modified([&](widget&, const pref_constants::lobby_joins val) {
 		prefs::get().set_lobby_joins(val);
 	});
 
@@ -697,7 +705,7 @@ void preferences_dialog::initialize_callbacks()
 
 	/* SET WESNOTHD PATH */
 	connect_signal_mouse_left_click(
-			find_widget<button>("mp_wesnothd"), std::bind([]() {return prefs::get().show_wesnothd_server_search();}));
+			find_widget<button>("mp_wesnothd"), [](auto&&...) { return prefs::get().show_wesnothd_server_search(); });
 
 
 	//
@@ -799,9 +807,8 @@ void preferences_dialog::initialize_callbacks()
 				menu.set_use_markup(true);
 				menu.set_values(menu_data, selected);
 
-				// A lambda alone would be more verbose because it'd need to specify all the parameters.
 				connect_signal_notify_modified(menu,
-					std::bind([=](widget& w) { preferences_dialog_friend::set(pref_name, option_ids[dynamic_cast<menu_button&>(w).get_value()]); }, std::placeholders::_1));
+					[=](widget& w, auto&&...) { preferences_dialog_friend::set(pref_name, option_ids[dynamic_cast<menu_button&>(w).get_value()]); });
 
 				gui2::bind_status_label<menu_button>(main_grid, "setter", default_status_value_getter<menu_button>, "value");
 
@@ -839,20 +846,22 @@ void preferences_dialog::initialize_callbacks()
 	listbox& hotkey_list = setup_hotkey_list();
 
 	text_box& filter = find_widget<text_box>("filter");
-	filter.set_text_changed_callback(std::bind(&preferences_dialog::hotkey_filter_callback, this));
+	filter.on_modified([this](const auto&) { hotkey_filter_callback(); });
 
-	// Action column
-	hotkey_list.register_translatable_sorting_option(0, [this](const int i) { return visible_hotkeys_[i]->description.str(); });
+	hotkey_list.set_sorters(
+		// Action column
+		[this](const std::size_t i) { return visible_hotkeys_[i]->description; },
 
-	// Hotkey column
-	hotkey_list.register_sorting_option(1, [this](const int i) { return hotkey::get_names(visible_hotkeys_[i]->id); });
+		// Hotkey column
+		[this](const std::size_t i) { return hotkey::get_names(visible_hotkeys_[i]->id); },
 
-	// Scope columns
-	hotkey_list.register_sorting_option(2, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_GAME]; });
-	hotkey_list.register_sorting_option(3, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_EDITOR]; });
-	hotkey_list.register_sorting_option(4, [this](const int i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_MAIN_MENU]; });
+		// Scope columns
+		[this](const std::size_t i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_GAME]; },
+		[this](const std::size_t i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_EDITOR]; },
+		[this](const std::size_t i) { return !visible_hotkeys_[i]->scope[hotkey::SCOPE_MAIN_MENU]; }
+	);
 
-	hotkey_list.set_active_sorting_option({0, sort_order::type::ascending}, true);
+	hotkey_list.set_active_sorter("sort_0", sort_order::type::ascending, true);
 
 	connect_signal_mouse_left_click(
 		find_widget<button>("btn_add_hotkey"), std::bind(
@@ -998,7 +1007,7 @@ void preferences_dialog::default_hotkey_callback()
 
 	// Set up the list again and reselect the default sorting option.
 	listbox& hotkey_list = setup_hotkey_list();
-	hotkey_list.set_active_sorting_option({0, sort_order::type::ascending}, true);
+	hotkey_list.set_active_sorter("sort_0", sort_order::type::ascending, true);
 }
 
 void preferences_dialog::remove_hotkey_callback(listbox& hotkeys)
@@ -1242,6 +1251,11 @@ void preferences_dialog::post_show()
 	// Save new prefs to disk. This also happens on app close, but doing
 	// it here too ensures nothing is lost in case of, say, a crash.
 	prefs::get().write_preferences();
+
+	// Needed for applying changes to tip panel visiblity on dialog close
+	if (is_reload_needed_) {
+		set_retval(gui2::dialogs::title_screen::RELOAD_UI);
+	}
 }
 
 } // namespace dialogs

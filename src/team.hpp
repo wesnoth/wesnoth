@@ -153,8 +153,13 @@ public:
 	 * from a side's config before using it to create the side's leader.
 	 */
 	static const std::set<std::string> attributes;
+	/**
+	 * Stores the child tags recognized by [side]. These should be stripped
+	 * from a side's config before using it to create the side's leader.
+	 */
+	static const std::set<std::string> tags;
 
-	void build(const config &cfg, const gamemap &map, int gold = default_team_gold_);
+	void build(const config &cfg, const gamemap &map);
 
 	void write(config& cfg) const;
 
@@ -173,7 +178,7 @@ public:
 		{ return villages_.count(loc) > 0; }
 
 	int side() const { return info_.side; }
-	int gold() const { return gold_; }
+	int gold() const { return info_.gold; }
 	int start_gold() const { return info_.start_gold; }
 	int base_income() const { return info_.income + game_config::base_income; }
 	int village_gold() const { return info_.income_per_village; }
@@ -188,11 +193,11 @@ public:
 	void set_village_support(int support) { info_.support_per_village = support; }
 	/** Calculate total support capacity, based on support_per_village. */
 	int support() const { return static_cast<int>(villages_.size()) * village_support(); }
-	void new_turn() { gold_ += total_income(); }
+	void new_turn() { info_.gold += total_income(); }
 	void get_shared_maps();
-	void set_gold(int amount) { gold_ = amount; }
+	void set_gold(int amount) { info_.gold = amount; }
 	void set_start_gold(const int amount) { info_.start_gold = amount; }
-	void spend_gold(const int amount) { gold_ -= amount; }
+	void spend_gold(const int amount) { info_.gold -= amount; }
 	void set_base_income(int amount) { info_.income = amount - game_config::base_income; }
 	std::chrono::milliseconds countdown_time() const { return countdown_time_; }
 	void set_countdown_time(const std::chrono::milliseconds& amount) const { countdown_time_ = amount; }
@@ -402,7 +407,6 @@ private:
 	const std::vector<const shroud_map*>& ally_shroud(const std::vector<team>& teams) const;
 	const std::vector<const shroud_map*>& ally_fog(const std::vector<team>& teams) const;
 
-	int gold_;
 	std::set<map_location> villages_;
 
 	shroud_map shroud_, fog_;

@@ -22,6 +22,7 @@
 #include "gui/core/gui_definition.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/timer.hpp"
+#include "gui/widgets/window.hpp"
 #include "serialization/unicode.hpp"
 
 #include <functional>
@@ -47,7 +48,6 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	, cursor_timer_(0)
 	, cursor_alpha_(0)
 	, cursor_blink_rate_(750ms)
-	, text_changed_callback_()
 {
 	auto cfg = get_control(control_type, builder.definition);
 	set_font_family(cfg->text_font_family);
@@ -318,8 +318,10 @@ void text_box_base::cursor_timer_callback()
 			cursor_alpha_ = 255;
 			return;
 		default:
+			// FIXME: very hacky way to check if the widget's owner is the top window
 			// back() on an empty vector is UB and was causing a crash when run on Wayland (see #7104 on github)
-			if(!open_window_stack.empty() && get_window() != open_window_stack.back()) {
+			const auto& dispatchers = event::get_all_dispatchers();
+			if(!dispatchers.empty() && static_cast<event::dispatcher*>(get_window()) != dispatchers.back()) {
 				cursor_alpha_ = 0;
 			} else {
 				cursor_alpha_ = (~cursor_alpha_) & 0xFF;
@@ -449,10 +451,6 @@ void text_box_base::handle_commit(bool& handled, const std::string& unicode)
 		}
 		insert_char(unicode);
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
-
-		if(text_changed_callback_) {
-			text_changed_callback_(this, this->text());
-		}
 	}
 }
 
@@ -669,12 +667,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		default:
-			// Don't call the text changed callback if nothing happened.
 			return;
-	}
-
-	if(text_changed_callback_) {
-		text_changed_callback_(this, this->text());
 	}
 }
 

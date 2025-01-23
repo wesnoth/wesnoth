@@ -33,17 +33,13 @@ namespace gui2
 class selectable_item;
 namespace implementation
 {
-struct builder_listbox;
-struct builder_horizontal_listbox;
-struct builder_grid_listbox;
+struct builder_listbox_base;
 }
 
 /** The listbox class. */
 class listbox : public scrollbar_container
 {
-	friend struct implementation::builder_listbox;
-	friend struct implementation::builder_horizontal_listbox;
-	friend struct implementation::builder_grid_listbox;
+	friend struct implementation::builder_listbox_base;
 
 	friend class debug_layout_graph;
 
@@ -52,12 +48,8 @@ public:
 	 * Constructor.
 	 *
 	 * @param builder             The builder for the appropriate listbox variant.
-	 * @param placement           How are the items placed.
-	 * @param list_builder        Grid builder for the listbox definition grid.
 	 */
-	listbox(const implementation::builder_styled_widget& builder,
-			const generator_base::placement placement,
-			builder_grid_ptr list_builder);
+	listbox(const implementation::builder_listbox_base& builder);
 
 	/***** ***** ***** ***** Row handling. ***** ***** ****** *****/
 
@@ -141,13 +133,18 @@ public:
 	void set_row_shown(const boost::dynamic_bitset<>& shown);
 
 	/**
+	 * Hides all rows for which the given predicate returns false.
+	 *
+	 * @returns                   The number of rows now visible.
+	 */
+	std::size_t filter_rows_by(const std::function<bool(std::size_t)>& filter);
+
+	/**
 	 * Returns a list of visible rows
 	 *
 	 * @returns                   A mask indicating which rows are visible
 	 */
 	boost::dynamic_bitset<> get_rows_shown() const;
-
-	bool any_rows_shown() const;
 
 	/**
 	 * Returns the grid of the wanted row.
@@ -254,38 +251,78 @@ public:
 
 	void order_by(const generator_base::order_func& func);
 
-	void set_column_order(unsigned col, const generator_sort_array& func);
-
-	template<typename Func>
-	void register_sorting_option(const int col, const Func& f)
+private:
+	struct sort_helper
 	{
-		set_column_order(col, {{
-			[f](int lhs, int rhs) { return f(lhs) < f(rhs); },
-			[f](int lhs, int rhs) { return f(lhs) > f(rhs); }
-		}});
+		template<typename T>
+		static bool less(const T& lhs, const T& rhs) { return lhs < rhs; }
+
+		/** Performs case-insensitive comparison using the current locale. */
+		static bool less(const t_string& lhs, const t_string& rhs);
+
+		template<typename T>
+		static bool more(const T& lhs, const T& rhs) { return lhs > rhs; }
+
+		/** Performs case-insensitive comparison using the current locale. */
+		static bool more(const t_string& lhs, const t_string& rhs);
+	};
+
+	/** Implementation detail of @ref set_single_sorter */
+	void initialize_sorter(std::string_view id, generator_sort_array&&);
+
+	/** Implementation detail of @ref set_sorters */
+	template<std::size_t... Is, typename... Args>
+	void set_sorters_impl(std::index_sequence<Is...>, Args&&... fs)
+	{
+		(set_single_sorter("sort_" + std::to_string(Is), fs), ...);
 	}
 
-	using translatable_sorter_func_t = std::function<std::string(const int)>;
-
-	/** Registers a special sorting function specifically for translatable values. */
-	void register_translatable_sorting_option(const int col, translatable_sorter_func_t f);
-
-	using order_pair = std::pair<int, sort_order::type>;
+public:
+	/**
+	 * Registers a single sorting control by ID.
+	 *
+	 * @param id           The ID of the selectable_item header widget to bind to.
+	 * @param f            Any callable whose result is sortable.
+	 */
+	template<typename Func>
+	void set_single_sorter(std::string_view id, const Func& f)
+	{
+		initialize_sorter(id, {
+			[f](int lhs, int rhs) { return sort_helper::less(f(lhs), f(rhs)); },
+			[f](int lhs, int rhs) { return sort_helper::more(f(lhs), f(rhs)); }
+		});
+	}
 
 	/**
-	 * Sorts the listbox by a pre-set sorting option. The corresponding header widget will also be toggled.
-	 * The sorting option should already have been registered by @ref listbox::register_sorting_option().
+	 * Registers sorting controls using magic index IDs.
 	 *
-	 * @param sort_by         Pair of column index and sort direction. The column (first arguemnt)
-	 *                        argument will be sorted in the specified direction (second argument)
+	 * This function accepts any callable whose result is sortable. Each callable passed
+	 * will be bound to a corresponding selectable_item widget in the header, if present,
+	 * whose ID is sort_N, where N is the index of the callable in the parameter pack.
 	 *
-	 * @param select_first    If true, the first row post-sort will be selected. If false (default),
-	 *                        the selected row will be maintained post-sort  as per standard sorting
-	 *                        functionality.
+	 * @param functors     Zero or more callables with the signature T(std::size_t).
 	 */
-	void set_active_sorting_option(const order_pair& sort_by, const bool select_first = false);
+	template<typename... Args>
+	void set_sorters(Args&&... functors)
+	{
+		set_sorters_impl(std::index_sequence_for<Args...>{}, std::forward<Args>(functors)...);
+	}
 
-	const order_pair get_active_sorting_option();
+	/**
+	 * Sorts the listbox by a pre-set sorting option. The corresponding header widget
+	 * will also be toggled. The sorting option should already have been registered by
+	 * @ref listbox::set_sorters().
+	 *
+	 * @param id              The id of the sorter widget whose value to set.
+	 * @param order           The order to sort by (ascending, descending, or none).
+	 * @param select_first    If true, the first row post-sort will be selected.
+	 *                        If false (default), the selected row will be maintained
+	 *                        post-sort as per standard sorting functionality.
+	 */
+	void set_active_sorter(std::string_view id, sort_order::type order, bool select_first = false);
+
+	/** Returns a widget pointer to the active sorter, along with its corresponding order. */
+	std::pair<widget*, sort_order::type> get_active_sorter() const;
 
 	/** Deactivates all sorting toggle buttons at the top, making the list look like it's not sorted. */
 	void mark_as_unsorted();
@@ -335,19 +372,6 @@ private:
 	 */
 
 	/**
-	 * Finishes the building initialization of the widget.
-	 *
-	 * @param generator           Generator for the list
-	 * @param header              Builder for the header.
-	 * @param footer              Builder for the footer.
-	 * @param list_data           The initial data to fill the listbox with.
-	 */
-	void finalize(std::unique_ptr<generator_base> generator,
-			builder_grid_const_ptr header,
-			builder_grid_const_ptr footer,
-			const std::vector<widget_data>& list_data);
-
-	/**
 	 * Contains a pointer to the generator.
 	 *
 	 * The pointer is not owned by this class, it's stored in the content_grid_
@@ -355,13 +379,12 @@ private:
 	 */
 	generator_base* generator_;
 
-	const bool is_horizontal_;
+	generator_base::placement placement_;
 
 	/** Contains the builder for the new items. */
 	builder_grid_const_ptr list_builder_;
 
-	typedef std::vector<std::pair<selectable_item*, generator_sort_array>> torder_list;
-	torder_list orders_;
+	std::vector<std::pair<selectable_item*, generator_sort_array>> orders_;
 
 	std::function<void(unsigned, sort_order::type)> callback_order_change_;
 
@@ -431,17 +454,17 @@ struct listbox_definition : public styled_widget_definition
 
 namespace implementation
 {
-
-struct builder_listbox : public builder_styled_widget
+struct builder_listbox_base : public builder_scrollbar_container
 {
-	explicit builder_listbox(const config& cfg);
+	explicit builder_listbox_base(const config& cfg, const generator_base::placement placement);
 
 	using builder_styled_widget::build;
 
+	/** Inherited from builder_widget */
 	virtual std::unique_ptr<widget> build() const override;
 
-	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
+	/** Flag for vertical, horizontal, or grid placement. */
+	generator_base::placement placement;
 
 	builder_grid_ptr header;
 	builder_grid_ptr footer;
@@ -456,55 +479,28 @@ struct builder_listbox : public builder_styled_widget
 	 */
 	std::vector<widget_data> list_data;
 
-	bool has_minimum_, has_maximum_, allow_selection_;
+	bool has_minimum, has_maximum, allow_selection;
 };
 
-struct builder_horizontal_listbox : public builder_styled_widget
+struct builder_listbox : public builder_listbox_base
 {
-	explicit builder_horizontal_listbox(const config& cfg);
-
-	using builder_styled_widget::build;
-
-	virtual std::unique_ptr<widget> build() const override;
-
-	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
-
-	builder_grid_ptr list_builder;
-
-	/**
-	 * Listbox data.
-	 *
-	 * Contains a vector with the data to set in every cell, it's used to
-	 * serialize the data in the config, so the config is no longer required.
-	 */
-	std::vector<widget_data> list_data;
-
-	bool has_minimum_, has_maximum_;
+	explicit builder_listbox(const config& cfg);
 };
 
-struct builder_grid_listbox : public builder_styled_widget
+struct builder_horizontal_listbox : public builder_listbox_base
 {
-	explicit builder_grid_listbox(const config& cfg);
+	explicit builder_horizontal_listbox(const config& cfg)
+		: builder_listbox_base(cfg, generator_base::horizontal_list)
+	{
+	}
+};
 
-	using builder_styled_widget::build;
-
-	virtual std::unique_ptr<widget> build() const override;
-
-	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
-
-	builder_grid_ptr list_builder;
-
-	/**
-	 * Listbox data.
-	 *
-	 * Contains a vector with the data to set in every cell, it's used to
-	 * serialize the data in the config, so the config is no longer required.
-	 */
-	std::vector<widget_data> list_data;
-
-	bool has_minimum_, has_maximum_;
+struct builder_grid_listbox : public builder_listbox_base
+{
+	explicit builder_grid_listbox(const config& cfg)
+		: builder_listbox_base(cfg, generator_base::table)
+	{
+	}
 };
 
 } // namespace implementation

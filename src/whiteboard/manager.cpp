@@ -333,11 +333,11 @@ void manager::on_finish_side_turn(int side)
 	LOG_WB << "on_finish_side_turn()";
 }
 
-void manager::pre_delete_action(action_ptr)
+void manager::pre_delete_action(const action_ptr&)
 {
 }
 
-void manager::post_delete_action(action_ptr action)
+void manager::post_delete_action(const action_ptr& action)
 {
 	// The fake unit representing the destination of a chain of planned moves should have the regular animation.
 	// If the last remaining action of the unit that owned this move is a move as well,
@@ -682,7 +682,7 @@ void manager::create_temp_move()
 
 	if (route.steps.empty() || route.steps.size() < 2) return;
 
-	unit* temp_moved_unit =
+	const unit* temp_moved_unit =
 			future_visible_unit(resources::controller->get_mouse_handler_base().get_selected_hex(), viewer_side());
 	if (!temp_moved_unit) temp_moved_unit =
 			future_visible_unit(resources::controller->get_mouse_handler_base().get_last_hex(), viewer_side());
@@ -785,7 +785,7 @@ void manager::save_temp_move()
 	if (has_temp_move() && !executing_actions_ && !resources::controller->is_linger_mode())
 	{
 		side_actions& sa = *viewer_actions();
-		unit* u = future_visible_unit(route_->steps.front());
+		const unit* u = future_visible_unit(route_->steps.front());
 		assert(u);
 		std::size_t first_turn = sa.get_turn_num_of(*u);
 
@@ -856,7 +856,7 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 			route_->steps.push_back(attacker_loc);
 		}
 
-		unit* attacking_unit = future_visible_unit(source_hex);
+		const unit* attacking_unit = future_visible_unit(source_hex);
 		assert(attacking_unit);
 
 		validate_viewer_actions();
@@ -927,7 +927,7 @@ bool manager::save_recall(const unit& unit, int side_num, const map_location& re
 	return created_planned_recall;
 }
 
-void manager::save_suppose_dead(unit& curr_unit, const map_location& loc)
+void manager::save_suppose_dead(const unit& curr_unit, const map_location& loc)
 {
 	if(active_ && !executing_actions_ && !resources::controller->is_linger_mode())
 	{

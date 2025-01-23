@@ -43,8 +43,8 @@
 			<Add option="-D_GLIBCXX_USE_DEPRECATED=0" />
 			<Add option="-DBOOST_NO_CXX98_FUNCTION_BASE" />
 			<Add option="-D_WIN32_WINDOWS" />
-			<Add option="-D_WIN32_WINNT=0x0601" />
-			<Add option="-D_WIN32_IE=0x0601" />
+			<Add option="-D_WIN32_WINNT=0x0A00" />
+			<Add option="-D_WIN32_IE=0x0A00" />
 			<Add option="-DBOOST_TEST_DYN_LINK=1" />
 			<Add directory="../../src" />
 		</Compiler>
@@ -233,8 +233,6 @@
 		<Unit filename="../../src/campaign_type.hpp" />
 		<Unit filename="../../src/carryover.cpp" />
 		<Unit filename="../../src/carryover.hpp" />
-		<Unit filename="../../src/carryover_show_gold.cpp" />
-		<Unit filename="../../src/carryover_show_gold.hpp" />
 		<Unit filename="../../src/chat_command_handler.cpp" />
 		<Unit filename="../../src/chat_command_handler.hpp" />
 		<Unit filename="../../src/chat_events.cpp" />
@@ -748,14 +746,8 @@
 		<Unit filename="../../src/gui/dialogs/unit_advance.hpp" />
 		<Unit filename="../../src/gui/dialogs/unit_attack.cpp" />
 		<Unit filename="../../src/gui/dialogs/unit_attack.hpp" />
-		<Unit filename="../../src/gui/dialogs/unit_create.cpp" />
-		<Unit filename="../../src/gui/dialogs/unit_create.hpp" />
-		<Unit filename="../../src/gui/dialogs/unit_list.cpp" />
-		<Unit filename="../../src/gui/dialogs/unit_list.hpp" />
-		<Unit filename="../../src/gui/dialogs/unit_recall.cpp" />
-		<Unit filename="../../src/gui/dialogs/unit_recall.hpp" />
-		<Unit filename="../../src/gui/dialogs/unit_recruit.cpp" />
-		<Unit filename="../../src/gui/dialogs/unit_recruit.hpp" />
+		<Unit filename="../../src/gui/dialogs/units_dialog.cpp" />
+		<Unit filename="../../src/gui/dialogs/units_dialog.hpp" />
 		<Unit filename="../../src/gui/dialogs/wml_error.cpp" />
 		<Unit filename="../../src/gui/dialogs/wml_error.hpp" />
 		<Unit filename="../../src/gui/dialogs/wml_message.cpp" />
@@ -1150,8 +1142,6 @@
 		<Unit filename="../../src/synced_context.hpp" />
 		<Unit filename="../../src/synced_user_choice.cpp" />
 		<Unit filename="../../src/synced_user_choice.hpp" />
-		<Unit filename="../../src/syncmp_handler.cpp" />
-		<Unit filename="../../src/syncmp_handler.hpp" />
 		<Unit filename="../../src/team.cpp" />
 		<Unit filename="../../src/team.hpp" />
 		<Unit filename="../../src/team_shared_vision.hpp" />
@@ -1186,6 +1176,7 @@
 		<Unit filename="../../src/tests/test_image_modifications.cpp" />
 		<Unit filename="../../src/tests/test_irdya_date.cpp" />
 		<Unit filename="../../src/tests/test_lexical_cast.cpp" />
+		<Unit filename="../../src/tests/test_lua_ptr.cpp" />
 		<Unit filename="../../src/tests/test_map_location.cpp" />
 		<Unit filename="../../src/tests/test_mp_connect.cpp" />
 		<Unit filename="../../src/tests/test_recall_list.cpp" />

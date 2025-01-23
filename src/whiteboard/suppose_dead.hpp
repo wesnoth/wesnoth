@@ -30,7 +30,7 @@ namespace wb {
 class suppose_dead: public action
 {
 public:
-	suppose_dead(std::size_t team_index, bool hidden, unit& curr_unit, const map_location& loc);
+	suppose_dead(std::size_t team_index, bool hidden, const unit& curr_unit, const map_location& loc);
 	suppose_dead(const config&, bool hidden); // For deserialization
 	virtual ~suppose_dead();
 
@@ -84,6 +84,6 @@ private:
 };
 
 /** Dumps a suppose_dead on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &s, suppose_dead_ptr sup_d);
-std::ostream &operator<<(std::ostream &s, suppose_dead_const_ptr sup_d);
+std::ostream &operator<<(std::ostream &s, const suppose_dead_ptr& sup_d);
+std::ostream &operator<<(std::ostream &s, const suppose_dead_const_ptr& sup_d);
 } // end namespace wb

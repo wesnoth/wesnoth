@@ -50,6 +50,11 @@ public:
 
 	using scrollbar_container::finalize_setup;
 
+	const tree_view_node& get_root_node() const
+	{
+		return *root_node_;
+	}
+
 	tree_view_node& get_root_node()
 	{
 		return *root_node_;
@@ -83,6 +88,11 @@ public:
 	void set_indentation_step_size(const unsigned indentation_step_size)
 	{
 		indentation_step_size_ = indentation_step_size;
+	}
+
+	unsigned get_indentation_step_size() const
+	{
+		return indentation_step_size_;
 	}
 
 	tree_view_node* selected_item()
@@ -209,16 +219,13 @@ struct tree_view_definition : public styled_widget_definition
 namespace implementation
 {
 
-struct builder_tree_view : public builder_styled_widget
+struct builder_tree_view : public builder_scrollbar_container
 {
 	explicit builder_tree_view(const config& cfg);
 
 	using builder_styled_widget::build;
 
 	virtual std::unique_ptr<widget> build() const override;
-
-	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 
 	unsigned indentation_step_size;
 

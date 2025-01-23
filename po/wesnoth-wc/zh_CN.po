@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 16:11 UTC\n"
+"POT-Creation-Date: 2025-01-19 17:47 UTC\n"
 "PO-Revision-Date: 2023-09-10 09:13+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -404,6 +404,11 @@ msgstr "失去你的首领和所有指挥官"
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:10
 msgid "An in-game help is available: right-click on any empty hex."
 msgstr "游戏中有帮助可用：右击任意空六角格即可。"
+
+#. [lua]: carryover.remaining_gold_message
+#: data/campaigns/World_Conquest/lua/campaign/scenario.lua:87
+msgid "Average remaining gold: "
+msgstr ""
 
 #: data/campaigns/World_Conquest/lua/era/era.lua:12
 msgid "Tell me how my recruit works"
@@ -2601,18 +2606,20 @@ msgstr "（玩家不可使用）"
 
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
-#: data/campaigns/World_Conquest/lua/map/main.lua:126
+#: data/campaigns/World_Conquest/lua/map/main.lua:125
 #: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:146
 msgid "Start"
 msgstr "开始"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:128
-msgid "Scenario"
+#: data/campaigns/World_Conquest/lua/map/main.lua:127
+#, fuzzy
+#| msgid "Scenario"
+msgid "Scenario "
 msgstr "场景"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:130
+#: data/campaigns/World_Conquest/lua/map/main.lua:129
 msgid "Final Battle"
 msgstr "决战"
 
@@ -2890,7 +2897,7 @@ msgid "Enemies"
 msgstr "敌军"
 
 #. [lua]: add_player_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:59
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:60
 msgid "Allies"
 msgstr "盟军"
 
@@ -3868,6 +3875,22 @@ msgid "World Conquest 4p"
 msgstr "世界征服 1p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
+msgid "WC1p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:20
+msgid "WC2p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:23
+msgid "WC3p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:26
+msgid "WC4p"
+msgstr ""
+
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
 #, fuzzy
 #| msgid ""
 #| "A randomly generated campaign for 1 player. It has 6 level of "
@@ -3880,7 +3903,7 @@ msgstr ""
 "一个随机生成的单人战役。有6个级别的难度。\n"
 "（专家级别，5幕场景。）"
 
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:33
 #, fuzzy
 #| msgid ""
 #| "A randomly generated cooperative campaign for 2 players. It has 6 level "
@@ -3894,7 +3917,7 @@ msgstr ""
 "一个随机生成的2人合作战役。有6个级别的难度。\n"
 "（专家级别，5幕场景。）"
 
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:25
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:37
 #, fuzzy
 #| msgid ""
 #| "A randomly generated cooperative campaign for 3 players. It has 6 level "
@@ -3908,7 +3931,7 @@ msgstr ""
 "一个随机生成的3人合作战役。有6个级别的难度。\n"
 "（专家级别，5幕场景。）"
 
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:41
 #, fuzzy
 #| msgid ""
 #| "A randomly generated cooperative campaign for 2 players. It has 6 level "
@@ -3923,98 +3946,96 @@ msgstr ""
 "（专家级别，5幕场景。）"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:104
-msgid "WC"
-msgstr "WC"
-
-#. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:117
 msgid "Beginner"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:117
 msgid "Peasant"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:118
 msgid "Easy"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:118
 msgid "Sergeant"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:119
 msgid "Lieutenant"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:119
 msgid "Medium"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
 msgid "General"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
 msgid "Hard"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:121
 msgid "Challenging"
 msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:121
 #, fuzzy
 #| msgid "Granary"
 msgid "Grand Marshal"
 msgstr "粮仓"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:122
 #, fuzzy
 #| msgid "expert"
 msgid "Expert"
 msgstr "专家"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:122
 msgid "Nightmare"
 msgstr ""
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:113
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:125
 msgid "Campaign Design"
 msgstr ""
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:132
 msgid "Prose, Grammatical and Text Assistance"
 msgstr ""
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:136
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:148
 msgid "Minor Code Contributors"
 msgstr ""
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:146
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:158
 msgid "Playtesting"
 msgstr ""
 
 #. [about]
-#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:165
+#: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:177
 msgid "Campaign Maintenance"
 msgstr ""
+
+#~ msgid "WC"
+#~ msgstr "WC"
 
 #, fuzzy
 #~| msgid ""

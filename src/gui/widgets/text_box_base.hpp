@@ -154,11 +154,19 @@ public:
 		return plain_text ? std::string(plain_text) : std::string();
 	}
 
-	/** Set the text_changed callback. */
-	void set_text_changed_callback(
-			std::function<void(text_box_base* textbox, const std::string text)> cb)
+	/**
+	 * Registers a NOTIFY_MODIFIED handler.
+	 *
+	 * For convenience, the handler is invoked with a text_box_base reference
+	 * as its first (and only) argument, rather than the usual widget reference.
+	 *
+	 * @todo Should we pass the other callback parameters to the handler?
+	 */
+	template<typename Func>
+	void on_modified(const Func& f)
 	{
-		text_changed_callback_ = cb;
+		connect_signal<event::NOTIFY_MODIFIED>(
+			[f](widget& w, auto&&...) { f(dynamic_cast<text_box_base&>(w)); });
 	}
 
 	/**
@@ -196,7 +204,7 @@ public:
 	/**
 	 * Check whether text can be edited or not
 	 */
-	bool is_editable()
+	bool is_editable() const
 	{
 		return editable_;
 	}
@@ -605,17 +613,6 @@ protected:
 								int32_t length);
 
 private:
-	/**
-	 * Text changed callback.
-	 *
-	 * This callback is called in key_press after the key_press event has been
-	 * handled by the styled_widget. The parameters to the function are:
-	 * - The widget invoking the callback
-	 * - The new text of the textbox.
-	 */
-	std::function<void(text_box_base* textbox, const std::string text)>
-	text_changed_callback_;
-
 	/***** ***** ***** signal handlers ***** ****** *****/
 
 	void signal_handler_middle_button_click(const event::ui_event event,

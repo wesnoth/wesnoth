@@ -584,9 +584,9 @@ linechanges = (
         ("swing=", "value_second="),
         # Changed just before 1.7.3
         ("Drake Gladiator", "Drake Thrasher"),
-        ("gladiator-", "thrasher-"),
+        ("units/drakes/gladiator-", "units/drakes/thrasher-"),
         ("Drake Slasher", "Drake Arbiter"),
-        ("slasher-", "arbiter-"),
+        ("units/drakes/slasher-", "units/drakes/arbiter-"),
         # Changes after 1.7.5
         ("portraits/nagas/fighter+female.png", "portraits/nagas/fighter.png"),
         # Changes after 1.8rc1
@@ -3546,8 +3546,8 @@ See also: https://wiki.wesnoth.org/Maintenance_tools.''',
     mode.add_argument("-r", "--revert", action="store_true",
                       help="Revert the conversion from the -bak files.")
     parser.add_argument("-m", "--missing", action="store_true",
-                        help="""Don't warn about tags without side= keys now applying
-to all sides.""")
+                        help="""Warn about tags without side= keys now applying to all
+sides.""")
     parser.add_argument("-s", "--stripcr", action="store_true",
                         help="Convert DOS-style CR/LF to Unix-style LF.")
     parser.add_argument("-v", "--verbose", action="count", default=0,

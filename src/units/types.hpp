@@ -124,7 +124,7 @@ public:
 	 * Returns a gendered variant of this unit_type.
 	 * @param gender "male" or "female".
 	 */
-	const unit_type& get_gender_unit_type(std::string gender) const;
+	const unit_type& get_gender_unit_type(const std::string& gender) const;
 	/** Returns a gendered variant of this unit_type based on the given parameter. */
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 
@@ -394,6 +394,15 @@ public:
 	typedef std::map<std::string,unit_type> unit_type_map;
 
 	const unit_type_map &types() const { return types_; }
+	const std::vector<const unit_type*> types_list() const {
+		std::vector<const unit_type*> types_list;
+		for(const auto& i : types()) {
+			// Make sure this unit type is built with the data we need.
+			build_unit_type(i.second, unit_type::FULL);
+			types_list.push_back(&i.second);
+		}
+		return types_list;
+	}
 	const race_map &races() const { return races_; }
 	const movement_type_map &movement_types() const { return movement_types_; }
 	config_array_view traits() const { return units_cfg().child_range("trait"); }
@@ -455,4 +464,8 @@ private:
  *
  * @return the special notes for a unit or unit_type.
  */
-std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, const config& abilities, const_attack_itors attacks, const movetype& mt);
+std::vector<t_string> combine_special_notes(
+	const std::vector<t_string>& direct,
+	const config& abilities,
+	const const_attack_itors& attacks,
+	const movetype& mt);

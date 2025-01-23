@@ -78,7 +78,7 @@ void ai_testing::log_draw()
 	resources::recorder->add_log_data("ai_log","result","draw");
 }
 
-void ai_testing::log_victory(std::set<unsigned int> winners)
+void ai_testing::log_victory(const std::set<unsigned int>& winners)
 {
 	resources::recorder->add_log_data("ai_log","result","victory");
 	for(std::set<unsigned int>::const_iterator w = winners.begin(); w != winners.end(); ++w) {

@@ -417,11 +417,19 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	get_menu_images(gui, items);
 
 	int res = -1;
+	point selection_pos;
 	{
 		SDL_Rect pos {xloc, yloc, 1, 1};
 		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, true, false); // TODO: last value should be variable
 		if(mmenu.show()) {
 			res = mmenu.selected_item();
+			if(res >= 0) {
+				// Get selection coordinates for a potential submenu below
+				selection_pos = mmenu.selected_item_pos();
+				// Compensate for borders
+				selection_pos.x--;
+				selection_pos.y--;
+			}
 		}
 	} // This will kill the dialog.
 	if (res < 0 || std::size_t(res) >= items.size()) return;
@@ -429,8 +437,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	std::string id = items[res]["id"];
 	const theme::menu* submenu = gui.get_theme().get_menu_item(id);
 	if (submenu) {
-		auto [x, y] = sdl::get_mouse_location();
-		this->show_menu(submenu->items(), x, y, submenu->is_context(), gui);
+		this->show_menu(submenu->items(), selection_pos.x, selection_pos.y, submenu->is_context(), gui);
 	} else {
 		hotkey::ui_command cmd = hotkey::ui_command(id, res);
 		do_execute_command(cmd);

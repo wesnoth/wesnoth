@@ -38,12 +38,12 @@
 namespace wb
 {
 
-std::ostream& operator<<(std::ostream& s, recall_ptr recall)
+std::ostream& operator<<(std::ostream& s, const recall_ptr& recall)
 {
 	assert(recall);
 	return recall->print(s);
 }
-std::ostream& operator<<(std::ostream& s, recall_const_ptr recall)
+std::ostream& operator<<(std::ostream& s, const recall_const_ptr& recall)
 {
 	assert(recall);
 	return recall->print(s);
@@ -127,10 +127,7 @@ void recall::execute(bool& success, bool& complete)
 	}
 	current_team.get_side_actions()->change_gold_spent_by(-cost);
 	bool const result = synced_context::run_and_throw("recall",
-		replay_helper::get_recall(temp_unit_->id(), recall_hex_, map_location::null_location()),
-		true,
-		true,
-		synced_context::ignore_error_function);
+		replay_helper::get_recall(temp_unit_->id(), recall_hex_, map_location::null_location()));
 
 	if (!result) {
 		current_team.get_side_actions()->change_gold_spent_by(cost);

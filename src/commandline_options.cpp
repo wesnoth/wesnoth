@@ -29,6 +29,7 @@
 #include <boost/program_options/variables_map.hpp>  // for variables_map, etc
 
 #include <array>
+#include <string>
 
 namespace po = boost::program_options;
 
@@ -76,6 +77,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, debug_lua(false)
 	, strict_lua(false)
 	, allow_insecure(false)
+	, addon_server_info(false)
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_dot_domain()
 	, debug_dot_level()
@@ -127,7 +129,6 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, screenshot(false)
 	, screenshot_map_file()
 	, screenshot_output_file()
-	, script_file()
 	, plugin_file()
 	, script_unsafe_mode(false)
 	, strict_validation(false)
@@ -181,6 +182,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("debug-lua", "enables some Lua debugging mechanisms")
 		("strict-lua", "disallow deprecated Lua API calls")
 		("allow-insecure", "Allows sending a plaintext password over an unencrypted connection. Should only ever be used for local testing.")
+		("addon-server-info", "Shows a button on the add-ons manager to query the add-ons server for various information.")
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 		("debug-dot-level", po::value<std::string>(), "sets the level of the debug dot files. <arg> should be a comma separated list of levels. These files are used for debugging the widgets especially the for the layout engine. When enabled the engine will produce dot files which can be converted to images with the dot tool. Available levels: size (generate the size info of the widget), state (generate the state info of the widget).")
 		("debug-dot-domain", po::value<std::string>(), "sets the domain of the debug dot files. <arg> should be a comma separated list of domains. See --debug-dot-level for more info. Available domains: show (generate the data when the dialog is about to be shown), layout (generate the data during the layout phase - might result in multiple files). The data can also be generated when the F12 is pressed in a dialog.")
@@ -194,13 +196,12 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("nomusic", "runs the game without music.")
 		("nosound", "runs the game without sounds and music.")
 		("password", po::value<std::string>(), "uses <password> when connecting to a server, ignoring other preferences.")
-		("plugin", po::value<std::string>(), "(experimental) load a script which defines a wesnoth plugin. similar to --script below, but Lua file should return a function which will be run as a coroutine and periodically woken up with updates.")
+		("plugin", po::value<std::string>(), "load a script which defines a wesnoth plugin. Lua file should return a function which will be run as a coroutine and periodically woken up with updates.")
 		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid Wesnoth 'image path string' with image path functions, and writes it to a .png file." IMPLY_TERMINAL)
 		("generate-spritesheet", po::value<std::string>(), "generates a spritesheet from all png images in the given path, recursively (one sheet per directory)")
     ("report,R", "initializes game directories, prints build information suitable for use in bug reports, and exits." IMPLY_TERMINAL)
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
 		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work." IMPLY_TERMINAL)
-		("script", po::value<std::string>(), "(experimental) file containing a Lua script to control the client")
 		("server,s", po::value<std::string>()->implicit_value(std::string()), "connects to the host <arg> if specified or to the first host in your preferences.")
 		("strict-validation", "makes validation errors fatal")
 		("translations-over", po::value<unsigned int>(), "Specify the standard for determining whether a translation is complete.")
@@ -291,6 +292,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("output,o", po::value<std::string>(), "output to specified file")
 		("patch,P", po::value<two_strings>()->multitoken(), "apply a patch to a preprocessed WML document." IMPLY_TERMINAL)
 		("preprocess,p", po::value<two_strings>()->multitoken(), "requires two arguments: <file/folder> <target directory>. Preprocesses a specified file/folder. The preprocessed file(s) will be written in the specified target directory: a plain cfg file and a processed cfg file." IMPLY_TERMINAL)
+		("preprocess-string", po::value<std::string>(), "preprocesses the given string." IMPLY_TERMINAL)
 		("preprocess-defines", po::value<std::string>(), "comma separated list of defines to be used by '--preprocess' command. If 'SKIP_CORE' is in the define list the data/core won't be preprocessed. Example: --preprocess-defines=FOO,BAR")
 		("preprocess-input-macros", po::value<std::string>(), "used only by the '--preprocess' command. Specifies source file <arg> that contains [preproc_define]s to be included before preprocessing.")
 		("preprocess-output-macros", po::value<std::string>()->implicit_value(std::string()), "used only by the '--preprocess' command. Will output all preprocessed macros in the target file <arg>. If the file is not specified the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.")
@@ -347,6 +349,8 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		strict_lua = true;
 	if(vm.count("allow-insecure"))
 		allow_insecure = true;
+	if(vm.count("addon-server-info"))
+		addon_server_info = true;
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	if(vm.count("debug-dot-domain")) {
 		debug_dot_domain = vm["debug-dot-domain"].as<std::string>();
@@ -413,6 +417,10 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		preprocess_path = vm["preprocess"].as<two_strings>().first;
 		preprocess_target = vm["preprocess"].as<two_strings>().second;
 	}
+	if(vm.count("preprocess-string"))
+	{
+		preprocess_source_string = vm["preprocess-string"].as<std::string>();
+	}
 	if(vm.count("diff"))
 	{
 		do_diff = true;
@@ -454,8 +462,6 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		screenshot_map_file = vm["screenshot"].as<two_strings>().first;
 		screenshot_output_file = vm["screenshot"].as<two_strings>().second;
 	}
-	if(vm.count("script"))
-		script_file = vm["script"].as<std::string>();
 	if(vm.count("unsafe-scripts"))
 		script_unsafe_mode = true;
 	if(vm.count("plugin"))

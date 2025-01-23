@@ -483,10 +483,19 @@ int get_pixel_scale()
 	return pixel_scale_;
 }
 
+int native_refresh_rate()
+{
+	return refresh_rate_;
+}
+
 int current_refresh_rate()
 {
 	// TODO: this should be more clever, depending on usage
-	return std::min(prefs::get().refresh_rate(), refresh_rate_);
+	if(auto preferred = prefs::get().refresh_rate(); preferred > 0) {
+		return std::min(preferred, refresh_rate_);
+	} else {
+		return refresh_rate_;
+	}
 }
 
 void force_render_target(const texture& t)
@@ -564,6 +573,12 @@ void render_screen()
 
 	// Clear the render target so we're drawing to the window.
 	clear_render_target();
+
+	// Use fully transparent black to clear the window backbuffer
+	SDL_SetRenderDrawColor(*window, 0u, 0u, 0u, 0u);
+
+	// Clear the window backbuffer before rendering the render texture.
+	SDL_RenderClear(*window);
 
 	// Copy the render texture to the window.
 	SDL_RenderCopy(*window, render_texture_, nullptr, nullptr);

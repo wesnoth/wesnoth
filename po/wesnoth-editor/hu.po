@@ -4,20 +4,21 @@
 # Gabor Udvari <gabor.udvari@gmail.com>, 2009.
 # Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007-2009, 2011, 2015.
 # Krutki Tamás <krtamas@0x64.org>, 2018.
+# Berda Jenő <big4billy@gmail.com>, 2024
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-editor_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 11:10-0500\n"
-"PO-Revision-Date: 2018-08-08 15:08+0100\n"
-"Last-Translator: Krutki Tamás <krtamas-wesnoth@0x64.org>\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
+"PO-Revision-Date: 2024-11-27 22:57+0100\n"
+"Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Poedit 3.5\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -122,7 +123,7 @@ msgstr "különleges"
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr ""
+msgstr "emelkedés"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
@@ -163,7 +164,7 @@ msgstr "a Bukás után"
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
 msgid "theme^Editor"
-msgstr "Kilépés a szerkesztőből"
+msgstr "Szerkesztő"
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:61
@@ -183,7 +184,7 @@ msgstr "Térkép"
 #. [menu]: id=menu-unit-facing
 #: data/themes/editor.cfg:88
 msgid "Unit Facing"
-msgstr "Egség forgatása"
+msgstr "Egység forgatása"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:94
@@ -198,7 +199,7 @@ msgstr "Ablak"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "Kiegészítő"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:119
@@ -218,7 +219,7 @@ msgstr "Helyi napszak hozzárendelése"
 #. [menu]: id=menu-editor-unit
 #: data/themes/editor.cfg:141
 msgid "Unit"
-msgstr ""
+msgstr "Egység"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:151
@@ -252,33 +253,33 @@ msgstr "Napszak beosztás hozzárendelése"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
-msgstr "Azonostó:"
+msgstr "Azonostó: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Name: "
-msgstr "Név:"
+msgstr "Név: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Type: "
-msgstr "Típus:"
+msgstr "Típus: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Level: "
-msgstr "Szint:"
+msgstr "Szint: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Cost: "
-msgstr "Ár:"
+msgstr "Költség: "
 
-#: src/editor/controller/editor_controller.cpp:186
+#: src/editor/controller/editor_controller.cpp:187
 msgid "Fatal error"
 msgstr "Végzetes hiba"
 
-#: src/editor/controller/editor_controller.cpp:216
+#: src/editor/controller/editor_controller.cpp:217
 msgid "Do you really want to quit?"
 msgstr "Valóban ki akarsz lépni?"
 
-#: src/editor/controller/editor_controller.cpp:218
+#: src/editor/controller/editor_controller.cpp:219
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -286,7 +287,7 @@ msgstr ""
 "Valóban ki akarsz lépni? Az utolsó mentés utáni változtatások a térképen el "
 "fognak veszni."
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:221
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -294,34 +295,33 @@ msgstr ""
 "Valóban ki akarsz lépni? Az alábbi térképek lettek módosítva, és az utolsó "
 "mentés utáni összes változtatás el fog veszni:"
 
-#: src/editor/controller/editor_controller.cpp:237
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr "Nem található a szerkesztői napszak."
 
-#: src/editor/controller/editor_controller.cpp:880
+#: src/editor/controller/editor_controller.cpp:882
 msgid "Add-on Files"
-msgstr ""
+msgstr "Kiegészítő fájlok"
 
-#: src/editor/controller/editor_controller.cpp:893
-#, fuzzy
-#| msgid "Clipboard support not found, contact your packager"
+#: src/editor/controller/editor_controller.cpp:895
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
-"Vágólap támogatás nem található, vedd fel a kapcsolatot a csomag készítőjével"
+"A megnyitandó fájlok nem támogatottak, vedd fel a kapcsolatot a csomag "
+"készítőjével"
 
-#: src/editor/controller/editor_controller.cpp:1313
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "Change Unit ID"
 msgstr "Egység ID változtatása"
 
-#: src/editor/controller/editor_controller.cpp:1314
+#: src/editor/controller/editor_controller.cpp:1316
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1330
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Rename Unit"
 msgstr "Egység átnevezése"
 
-#: src/editor/controller/editor_controller.cpp:1331
+#: src/editor/controller/editor_controller.cpp:1333
 msgid "Name:"
 msgstr "Név:"
 
@@ -337,11 +337,11 @@ msgstr ""
 msgid "Load Map"
 msgstr "Térkép betöltése"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
 msgid "New Map"
 msgstr "Új térkép"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1129
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
 msgid "New Scenario"
 msgstr "Új küldetés"
 
@@ -387,17 +387,15 @@ msgid "Save Map As"
 msgstr "Térkép mentése másként"
 
 #: src/editor/map/context_manager.cpp:708
-#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:269
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Hiba"
 
 #: src/editor/map/context_manager.cpp:709
 #: src/editor/map/context_manager.cpp:758
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
-msgstr "Valóban ki akarsz lépni?"
+msgstr "Valóban el akarod menteni $type1-t a $type2 mappába?"
 
 #: src/editor/map/context_manager.cpp:717
 #: src/editor/map/context_manager.cpp:926
@@ -436,10 +434,8 @@ msgid "Scenario saved."
 msgstr "Küldetés sikeresen elmentve."
 
 #: src/editor/map/context_manager.cpp:902
-#, fuzzy
-#| msgid "Map saved."
 msgid "Map saved"
-msgstr "Térkép sikeresen elmentve."
+msgstr "Térkép sikeresen elmentve"
 
 #: src/editor/map/context_manager.cpp:977
 msgid "Loaded embedded map data"
@@ -451,14 +447,8 @@ msgid "Map loaded from scenario"
 msgstr "A küldetés térképe betöltődött"
 
 #: src/editor/map/context_manager.cpp:981
-#, fuzzy
-#| msgid ""
-#| "Loaded referenced map file:\n"
-#| "$new"
 msgid "Loaded referenced map file:"
-msgstr ""
-"Az alábbi térképfájl betöltődött:\n"
-"$new"
+msgstr "Betöltött térképfájl:"
 
 #: src/editor/map/editor_map.cpp:146
 #: src/editor/palette/location_palette.cpp:118
@@ -469,69 +459,64 @@ msgstr "$side_num. oldal"
 msgid "The size of the target map is different from the current map"
 msgstr "A cél térkép mérete különbözik a jelenlegi térkép méretétől"
 
-#: src/editor/map/map_context.cpp:182
+#: src/editor/map/map_context.cpp:186
 msgid "File not found"
 msgstr "A fájl nem található"
 
-#: src/editor/map/map_context.cpp:189
+#: src/editor/map/map_context.cpp:193
 msgid "Empty file"
 msgstr "Üres térképfájl"
 
-#: src/editor/map/map_context.cpp:198
+#: src/editor/map/map_context.cpp:202
 msgid "File does not have .map, .cfg, or .mask extension"
-msgstr ""
+msgstr "A fájlnak nincs .map, .cfg, vagy .mask kiterjesztése"
 
-#: src/editor/map/map_context.cpp:245
+#: src/editor/map/map_context.cpp:249
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
 "Ez a térkép egy pályának tűnik, de a map_data nem mutat egy létező fájlra sem"
 
-#: src/editor/map/map_context.cpp:264
+#: src/editor/map/map_context.cpp:268
 msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
 msgstr ""
+"Beépített Lua szkriptre utaló karaktersort (‘<<’) találtunk — folyamat leáll"
 
-#: src/editor/map/map_context.cpp:269
+#: src/editor/map/map_context.cpp:273
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr ""
+"A küldetés betöltése sikertelen, megpróbáljuk csak a térképet betölteni."
 
-#: src/editor/map/map_context.cpp:276
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
+#: src/editor/map/map_context.cpp:280
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
 msgstr ""
-"Ez a térkép egy pályának tűnik, de a map_data nem mutat egy létező fájlra sem"
+"Ez a térképfájl egy küldetésnek tűnik, de a map_file értéke nem mutat egy "
+"létező fájlra sem"
 
-#: src/editor/map/map_context.cpp:291
+#: src/editor/map/map_context.cpp:295
 msgid "Unable to parse file to find map data"
-msgstr ""
+msgstr "A fájlt nem lehet feldolgozni a térképadatok megkereséséhez"
 
-#: src/editor/map/map_context.cpp:823 src/editor/map/map_context.cpp:863
-#, fuzzy
-#| msgid "Could not save the scenario: $msg"
+#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
 msgid "Could not save time schedule: $msg"
-msgstr "A következő pályát nem lehet elmenteni: $msg"
+msgstr "A napszakot nem lehetett elmenteni: $msg"
 
-#: src/editor/map/map_context.cpp:857
-#, fuzzy
-#| msgid "Time Schedule Menu"
+#: src/editor/map/map_context.cpp:863
 msgid "Time schedule saved."
-msgstr "Napszak menü"
+msgstr "Időütemezés mentve."
 
-#: src/editor/map/map_context.cpp:903
+#: src/editor/map/map_context.cpp:909
 msgid "Could not save the scenario: $msg"
 msgstr "A következő pályát nem lehet elmenteni: $msg"
 
-#: src/editor/map/map_context.cpp:934
+#: src/editor/map/map_context.cpp:940
 msgid "Could not save into scenario"
 msgstr "Nem sikerült a pályába menteni"
 
-#: src/editor/map/map_context.cpp:944
+#: src/editor/map/map_context.cpp:950
 msgid "Could not save the map: $msg"
 msgstr "A következő pályát nem lehet elmenteni: $msg"
 
@@ -546,11 +531,11 @@ msgstr "(speciális terep)"
 #: src/editor/palette/editor_palettes.cpp:309
 msgid "Will not work in game without extra care."
 msgstr ""
-"Külön odafigyelést igényel, ellenkező esetben nem fog működni a játékban"
+"Külön odafigyelést igényel, ellenkező esetben nem fog működni a játékban."
 
 #: src/editor/palette/item_palette.cpp:33
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr ""
+msgstr "Bal gomb: $item elem elhelyezése | Jobb gomb: eltávolítása"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
@@ -574,50 +559,36 @@ msgstr "Törlés"
 
 #: src/editor/palette/terrain_palettes.cpp:224
 msgid "Left-click: "
-msgstr ""
+msgstr "Bal gomb: "
 
 #: src/editor/palette/terrain_palettes.cpp:225
 msgid "Right-click: "
-msgstr ""
+msgstr "Jobb gomb: "
 
 #. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
 #. because the logic of whether to show the "overlay only" or "base only" version depends on the
 #. terrain currently selected for the left button.
 #: src/editor/palette/terrain_palettes.cpp:230
 msgid "Shift + left-click: paint overlay layer only"
-msgstr ""
+msgstr "Shift + bal gomb: csak átfedő réteg rajzolása"
 
 #: src/editor/palette/terrain_palettes.cpp:232
 msgid "Shift + left-click: paint base layer only"
-msgstr ""
+msgstr "Shift + bal gomb: csak alap réteg rajzolása"
 
 #: src/editor/palette/terrain_palettes.cpp:235
 msgid "Cmd + click: copy terrain"
-msgstr ""
+msgstr "Cmd + egérgomb: terep másolása"
 
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Ctrl + click: copy terrain"
-msgstr ""
+msgstr "Ctrl + egérgomb: terep másolása"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:170
-msgid "Choose File"
-msgstr "Fájl kiválasztása"
+#~ msgid "Choose File"
+#~ msgstr "Fájl kiválasztása"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:171
-msgid "Select"
-msgstr "Kiválaszt"
-
-#: src/gui/dialogs/editor/custom_tod.cpp:178
-msgid ""
-"This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
-"add-on?"
-msgstr ""
-
-#: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/custom_tod.cpp:189
-#: src/gui/dialogs/editor/custom_tod.cpp:196
-msgid "Confirm"
-msgstr ""
+#~ msgid "Select"
+#~ msgstr "Kiválaszt"
 
 #~ msgid "Clipboard support not found, contact your packager"
 #~ msgstr ""

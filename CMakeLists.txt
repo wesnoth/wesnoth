@@ -1,4 +1,4 @@
-﻿# set minimum version
+# set minimum version
 cmake_minimum_required(VERSION 3.14)
 
 project(wesnoth)
@@ -171,6 +171,7 @@ option(GLIBCXX_ASSERTIONS "Whether to define _GLIBCXX_ASSERTIONS" OFF)
 option(GLIBCXX_DEBUG "Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC. Requires a version of Boost's program_options that's compiled with __GLIBCXX_DEBUG too." OFF)
 option(ENABLE_POT_UPDATE_TARGET "Enables the tools to update the pot files and manuals. This target has extra dependencies." OFF)
 option(FORCE_COLOR_OUTPUT "Always produce ANSI-colored output (GNU/Clang only)." FALSE)
+option(CLANG_TIDY "Enable clang-tidy linter checks." OFF)
 
 if(UNIX AND NOT APPLE AND NOT CYGWIN)
 	option(ENABLE_NOTIFICATIONS "Enable Window manager notification messages" ON)
@@ -253,6 +254,11 @@ if(NOT MSVC)
 		elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 			set(COMPILER_FLAGS "${COMPILER_FLAGS} -fcolor-diagnostics")
 		endif()
+	endif()
+
+### Enable clang-tidy linting
+	if (CLANG_TIDY)
+		set(CMAKE_CXX_CLANG_TIDY "clang-tidy -Wno-unknown-warning-option")
 	endif()
 
 ### Set the final compiler flags.
@@ -474,7 +480,7 @@ if(NOT MSVC)
 else()
 	set(CMAKE_CXX_FLAGS "/W3 /WX /wd4503 /wd4351 /wd4250 /wd4244 /wd4267 /we4239 /wd4275 /EHsc /utf-8 /Zc:__cplusplus" CACHE STRING "Global flags used by the CXX compiler during all builds." FORCE)
 	set(CMAKE_C_FLAGS "/WX" CACHE STRING "Global flags used by the C compiler during all builds." FORCE)
-	add_definitions(-D_WIN32_WINNT=0x0601 -D_CRT_SECURE_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS -DNOMINMAX)
+	add_definitions(-D_WIN32_WINNT=0x0A00 -D_CRT_SECURE_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS -DNOMINMAX)
 
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG_LUA")
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")

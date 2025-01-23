@@ -42,6 +42,8 @@
 #define DEBUG_THROW(id) throw id;
 #else
 
+#include "utils/charconv.hpp"
+
 #include "utils/optional_fwd.hpp"
 
 #include <cstdlib>
@@ -163,396 +165,129 @@ struct lexical_caster<
 	  std::string
 	, From
 	, void
-	, std::enable_if_t<std::is_integral_v<std::remove_pointer_t<From>>>
+	, std::enable_if_t<std::is_arithmetic_v<From>>
 >
 {
 	std::string operator()(From value, utils::optional<std::string>) const
 	{
-		DEBUG_THROW("specialized - To std::string - From integral (pointer)");
-
-		std::stringstream sstr;
-		sstr << value;
-		return sstr.str();
-	}
-};
-
-/**
- * Specialized conversion class.
- *
- * Specialized for returning a long long from a (const) char*.
- * @note is separate from the other signed types since a long long has a
- * performance penalty at 32 bit systems.
- */
-template <class From>
-struct lexical_caster<
-	  long long
-	, From
-	, void
-	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
-	>
-{
-	long long operator()(From value, utils::optional<long long> fallback) const
-	{
-		DEBUG_THROW("specialized - To long long - From (const) char*");
-
-		if(fallback) {
-			return lexical_cast_default<long long>(std::string(value), *fallback);
+		DEBUG_THROW("specialized - To std::string - From arithmetic");
+		if constexpr (std::is_same_v<bool, From>) {
+			return value ? "1" : "0";
 		} else {
-			return lexical_cast<long long>(std::string(value));
+			return utils::charconv_buffer<From>(value).to_string();
 		}
 	}
 };
 
-/**
- * Specialized conversion class.
- *
- * Specialized for returning a long long from a std::string.
- * @note is separate from the other signed types since a long long has a
- * performance penalty at 32 bit systems.
- */
-template <>
-struct lexical_caster<
-	  long long
-	, std::string
-	>
-{
-	long long operator()(const std::string& value, utils::optional<long long> fallback) const
-	{
-		DEBUG_THROW("specialized - To long long - From std::string");
 
-		if(value.empty()) {
-			if(fallback) {
-				return *fallback;
-			} else {
-				throw bad_lexical_cast();
-			}
-		}
-
-		try {
-			return std::stoll(value);
-		} catch(const std::invalid_argument&) {
-		} catch(const std::out_of_range&) {
-		}
-
-		if(fallback) {
-			return *fallback;
-		} else {
-			throw bad_lexical_cast();
-		}
-	}
-};
 
 /**
  * Specialized conversion class.
  *
- * Specialized for returning a signed type from a (const) char*.
- */
-template <class To, class From>
-struct lexical_caster<
-	  To
-	, From
-	, std::enable_if_t<std::is_integral_v<To> && std::is_signed_v<To> && !std::is_same_v<To, long long>>
-	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
-	>
-{
-	To operator()(From value, utils::optional<To> fallback) const
-	{
-		DEBUG_THROW("specialized - To signed - From (const) char*");
-
-		if(fallback) {
-			return lexical_cast_default<To>(std::string(value), *fallback);
-		} else {
-			return lexical_cast<To>(std::string(value));
-		}
-	}
-};
-
-/**
- * Specialized conversion class.
- *
- * Specialized for returning a signed type from a std::string.
- */
-template <class To>
-struct lexical_caster<
-	  To
-	, std::string
-	, std::enable_if_t<std::is_integral_v<To> && std::is_signed_v<To> && !std::is_same_v<To, long long>>
-	>
-{
-	To operator()(const std::string& value, utils::optional<To> fallback) const
-	{
-		DEBUG_THROW("specialized - To signed - From std::string");
-
-		if(value.empty()) {
-			if(fallback) {
-				return *fallback;
-			} else {
-				throw bad_lexical_cast();
-			}
-		}
-
-		try {
-			long res = std::stol(value);
-			if(std::numeric_limits<To>::lowest() <= res && std::numeric_limits<To>::max() >= res) {
-				return static_cast<To>(res);
-			}
-		} catch(const std::invalid_argument&) {
-		} catch(const std::out_of_range&) {
-		}
-
-		if(fallback) {
-			return *fallback;
-		} else {
-			throw bad_lexical_cast();
-		}
-	}
-};
-
-/**
- * Specialized conversion class.
- *
- * Specialized for returning a floating point type from a (const) char*.
- */
-template <class To, class From>
-struct lexical_caster<
-	  To
-	, From
-	, std::enable_if_t<std::is_floating_point_v<To>>
-	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
-	>
-{
-	To operator()(From value, utils::optional<To> fallback) const
-	{
-		DEBUG_THROW("specialized - To floating point - From (const) char*");
-
-		if(fallback) {
-			return lexical_cast_default<To>(std::string(value), *fallback);
-		} else {
-			return lexical_cast<To>(std::string(value));
-		}
-	}
-};
-
-/**
- * Specialized conversion class.
- *
- * Specialized for returning a floating point type from a std::string.
- */
-template <class To>
-struct lexical_caster<
-	  To
-	, std::string
-	, std::enable_if_t<std::is_floating_point_v<To>>
-	>
-{
-	To operator()(const std::string& value, utils::optional<To> fallback) const
-	{
-		DEBUG_THROW("specialized - To floating point - From std::string");
-
-		if(value.empty()) {
-			if(fallback) {
-				return *fallback;
-			} else {
-				throw bad_lexical_cast();
-			}
-		}
-
-		// Explicitly reject hexadecimal values. Unit tests of the config class require that.
-		if(value.find_first_of("Xx") != std::string::npos) {
-			if(fallback) {
-				return *fallback;
-			} else {
-				throw bad_lexical_cast();
-			}
-		}
-
-		try {
-			long double res = std::stold(value);
-			if((static_cast<long double>(std::numeric_limits<To>::lowest()) <= res) && (static_cast<long double>(std::numeric_limits<To>::max()) >= res)) {
-				return static_cast<To>(res);
-			}
-		} catch(const std::invalid_argument&) {
-		} catch(const std::out_of_range&) {
-		}
-
-		if(fallback) {
-			return *fallback;
-		} else {
-			throw bad_lexical_cast();
-		}
-	}
-};
-
-/**
- * Specialized conversion class.
- *
- * Specialized for returning a unsigned long long from a (const) char*.
- * @note is separate from the other unsigned types since a unsigned long long
- * has a performance penalty at 32 bit systems.
- */
-template <class From>
-struct lexical_caster<
-	  unsigned long long
-	, From
-	, void
-	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
-	>
-{
-	unsigned long long operator()(From value, utils::optional<unsigned long long> fallback) const
-	{
-		DEBUG_THROW(
-				"specialized - To unsigned long long - From (const) char*");
-
-		if(fallback) {
-			return lexical_cast_default<unsigned long long>(std::string(value), *fallback);
-		} else {
-			return lexical_cast<unsigned long long>(std::string(value));
-		}
-	}
-};
-
-/**
- * Specialized conversion class.
- *
- * Specialized for returning a unsigned long long from a std::string.
- * @note is separate from the other unsigned types since a unsigned long long
- * has a performance penalty at 32 bit systems.
- */
-template <>
-struct lexical_caster<
-	  unsigned long long
-	, std::string
-	>
-{
-	unsigned long long operator()(const std::string& value, utils::optional<unsigned long long> fallback) const
-	{
-		DEBUG_THROW("specialized - To unsigned long long - From std::string");
-
-		if(value.empty()) {
-			if(fallback) {
-				return *fallback;
-			} else {
-				throw bad_lexical_cast();
-			}
-		}
-
-		try {
-			return std::stoull(value);
-		} catch(const std::invalid_argument&) {
-		} catch(const std::out_of_range&) {
-		}
-
-		if(fallback) {
-			return *fallback;
-		} else {
-			throw bad_lexical_cast();
-		}
-	}
-};
-
-/**
- * Specialized conversion class.
- *
- * Specialized for returning a unsigned type from a (const) char*.
- */
-template <class To, class From>
-struct lexical_caster<
-	  To
-	, From
-	, std::enable_if_t<std::is_unsigned_v<To> && !std::is_same_v<To, unsigned long long>>
-	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
-	>
-{
-	To operator()(From value, utils::optional<To> fallback) const
-	{
-		DEBUG_THROW("specialized - To unsigned - From (const) char*");
-
-		if(fallback) {
-			return lexical_cast_default<To>(std::string(value), *fallback);
-		} else {
-			return lexical_cast<To>(std::string(value));
-		}
-	}
-};
-
-/**
- * Specialized conversion class.
- *
- * Specialized for returning a unsigned type from a std::string.
- */
-template <class To>
-struct lexical_caster<
-	  To
-	, std::string
-	, std::enable_if_t<std::is_unsigned_v<To>>
-	>
-{
-	To operator()(const std::string& value, utils::optional<To> fallback) const
-	{
-		DEBUG_THROW("specialized - To unsigned - From std::string");
-
-		if(value.empty()) {
-			if(fallback) {
-				return *fallback;
-			} else {
-				throw bad_lexical_cast();
-			}
-		}
-
-		try {
-			unsigned long res = std::stoul(value);
-			// No need to check the lower bound, it's zero for all unsigned types.
-			if(std::numeric_limits<To>::max() >= res) {
-				return static_cast<To>(res);
-			}
-		} catch(const std::invalid_argument&) {
-		} catch(const std::out_of_range&) {
-		}
-
-		if(fallback) {
-			return *fallback;
-		} else {
-			throw bad_lexical_cast();
-		}
-	}
-};
-
-/**
- * Specialized conversion class.
- *
- * Specialized for returning a bool from a std::string.
  * @note is specialized to silence C4804 from MSVC.
  */
 template <>
-struct lexical_caster<bool, std::string>
-{
-	bool operator()(const std::string& value, utils::optional<bool>) const
-	{
-		DEBUG_THROW("specialized - To bool - From std::string");
-
-		return value == "1";
-	}
-};
-
-/**
- * Specialized conversion class.
- *
- * Specialized for returning a bool from a (const) char*.
- * @note is specialized to silence C4804 from MSVC.
- */
-template <class From>
 struct lexical_caster<
 	  bool
-	, From
+	, std::string_view
 	, void
-	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*>>
-	>
+	, void
+>
 {
-	bool operator()(From value, utils::optional<bool>) const
+	bool operator()(std::string_view str, utils::optional<bool> fallback) const
 	{
-		DEBUG_THROW("specialized - To bool - From (const) char*");
+		DEBUG_THROW("specialized - To bool - From string");
+		utils::trim_for_from_chars(str);
+		if(str == "1") {
+			return true;
+		} else if(str == "0") {
+			return false;
+		} else if (fallback) {
+			return *fallback;
+		} else {
+			throw bad_lexical_cast();
+		}
+	}
+};
 
-		return lexical_cast<bool>(std::string(value));
+/**
+ * Specialized conversion class.
+ *
+ * Specialized for returning arithmetic from a string_view, also used by std::string and (const) char*
+ */
+template <typename To>
+struct lexical_caster<
+	  To
+	, std::string_view
+	, std::enable_if_t<std::is_arithmetic_v<To>>
+	, void
+>
+{
+	To operator()(std::string_view str, utils::optional<To> fallback) const
+	{
+		DEBUG_THROW("specialized - To arithmetic - From string");
+
+		To res = To();
+
+		utils::trim_for_from_chars(str);
+
+		auto [ptr, ec] = utils::charconv::from_chars(str.data(), str.data() + str.size(), res);
+		if(ec == std::errc()) {
+			return res;
+		} else if(fallback){
+			return *fallback;
+		} else {
+			throw bad_lexical_cast();
+		}
+	}
+};
+
+/**
+ * Specialized conversion class.
+ *
+ * Specialized for returning arithmetic from a std::string
+ */
+template <typename To>
+struct lexical_caster<
+	  To
+	, std::string
+	, std::enable_if_t<std::is_arithmetic_v<To>>
+	, void
+>
+{
+	To operator()(const std::string& value, utils::optional<To> fallback) const
+	{
+		// Dont DEBUG_THROW. the test shodul test what actual implementaiton is used in the end, not which specialazion that jsut forwards  to another
+		if(fallback) {
+			return lexical_cast_default<To>(std::string_view(value), *fallback);
+		} else {
+			return lexical_cast<To>(std::string_view(value));
+		}
+	}
+};
+
+
+/**
+ * Specialized conversion class.
+ *
+ * Specialized for returning arithmetic from a (const) char*.
+ */
+template <class To, class From>
+struct lexical_caster<
+	  To
+	, From
+	, std::enable_if_t<std::is_arithmetic_v<To> >
+	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*> >
+>
+{
+	To operator()(const std::string& value, utils::optional<To> fallback) const
+	{
+		// Dont DEBUG_THROW. the test shodul test what actual implementaiton is used in the end, not which specialazion that jsut forwards  to another
+		if(fallback) {
+			return lexical_cast_default<To>(std::string_view(value), *fallback);
+		} else {
+			return lexical_cast<To>(std::string_view(value));
+		}
 	}
 };
 

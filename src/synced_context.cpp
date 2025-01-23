@@ -30,8 +30,8 @@
 #include "resources.hpp"
 #include "seed_rng.hpp"
 #include "synced_checkup.hpp"
-#include "syncmp_handler.hpp"
 #include "units/id.hpp"
+#include "utils/general.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <cassert>
@@ -44,25 +44,20 @@ static lg::log_domain log_replay("replay");
 #define WRN_REPLAY LOG_STREAM(warn, log_replay)
 #define ERR_REPLAY LOG_STREAM(err, log_replay)
 
-bool synced_context::run(const std::string& commandname,
-	const config& data,
-	bool use_undo,
-	bool show,
-	synced_command::error_handler_function error_handler)
+bool synced_context::run(const std::string& commandname, const config& data, action_spectator& spectator)
 {
 	DBG_REPLAY << "run_in_synced_context:" << commandname;
-
-	assert(use_undo || (!resources::undo_stack->can_redo() && !resources::undo_stack->can_undo()));
 
 	// use this after resources::recorder->add_synced_command
 	// because set_scontext_synced sets the checkup to the last added command
 	set_scontext_synced sync;
+	resources::undo_stack->init_action();
 
-	synced_command::map::iterator it = synced_command::registry().find(commandname);
-	if(it == synced_command::registry().end()) {
-		error_handler("commandname [" + commandname + "] not found");
+	auto p_handler = utils::find(synced_command::registry(), commandname);
+	if(!p_handler) {
+		spectator.error("commandname [" + commandname + "] not found");
 	} else {
-		bool success = it->second(data, use_undo, show, error_handler);
+		bool success = p_handler->second(data, spectator);
 		if(!success) {
 			return false;
 		}
@@ -72,12 +67,10 @@ bool synced_context::run(const std::string& commandname,
 
 	sync.do_final_checkup();
 
-	// TODO: It would be nice if this could automaticially detect that
-	//       no entry was pushed to the undo stack for this action
-	//       and always clear the undo stack in that case.
+	resources::undo_stack->finish_action(!undo_blocked());
+
 	if(undo_blocked()) {
 		// This in particular helps the networking code to make sure this command is sent.
-		resources::undo_stack->clear();
 		send_user_choice();
 	}
 
@@ -85,11 +78,7 @@ bool synced_context::run(const std::string& commandname,
 	return true;
 }
 
-bool synced_context::run_and_store(const std::string& commandname,
-	const config& data,
-	bool use_undo,
-	bool show,
-	synced_command::error_handler_function error_handler)
+bool synced_context::run_and_store(const std::string& commandname, const config& data, action_spectator& spectator)
 {
 	if(resources::controller->is_replay()) {
 		ERR_REPLAY << "ignored attempt to invoke a synced command during replay";
@@ -98,21 +87,18 @@ bool synced_context::run_and_store(const std::string& commandname,
 
 	assert(resources::recorder->at_end());
 	resources::recorder->add_synced_command(commandname, data);
-	bool success = run(commandname, data, use_undo, show, error_handler);
+	bool success = run(commandname, data, spectator);
 	if(!success) {
 		resources::recorder->undo();
+	} else {
+		resources::undo_stack->cleanup_action();
 	}
-
 	return success;
 }
 
-bool synced_context::run_and_throw(const std::string& commandname,
-	const config& data,
-	bool use_undo,
-	bool show,
-	synced_command::error_handler_function error_handler)
+bool synced_context::run_and_throw(const std::string& commandname, const config& data, action_spectator& spectator)
 {
-	bool success = run_and_store(commandname, data, use_undo, show, error_handler);
+	bool success = run_and_store(commandname, data, spectator);
 	if(success) {
 		resources::controller->maybe_throw_return_to_play_side();
 	}
@@ -120,15 +106,12 @@ bool synced_context::run_and_throw(const std::string& commandname,
 	return success;
 }
 
-bool synced_context::run_in_synced_context_if_not_already(const std::string& commandname,
-	const config& data,
-	bool use_undo,
-	bool show,
-	synced_command::error_handler_function error_handler)
+bool synced_context::run_in_synced_context_if_not_already(
+	const std::string& commandname, const config& data, action_spectator& spectator)
 {
 	switch(synced_context::get_synced_state()) {
 	case(synced_context::UNSYNCED): {
-		return run_and_throw(commandname, data, use_undo, show, error_handler);
+		return run_and_throw(commandname, data, spectator);
 	}
 	case(synced_context::LOCAL_CHOICE):
 		ERR_REPLAY << "trying to execute action while being in a local_choice";
@@ -139,10 +122,10 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 	case(synced_context::SYNCED): {
 		synced_command::map::iterator it = synced_command::registry().find(commandname);
 		if(it == synced_command::registry().end()) {
-			error_handler("commandname [" + commandname + "] not found");
+			spectator.error("commandname [" + commandname + "] not found");
 			return false;
 		} else {
-			return it->second(data, /*use_undo*/ false, show, error_handler);
+			return it->second(data, spectator);
 		}
 	}
 	default:
@@ -151,20 +134,19 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 	}
 }
 
-void synced_context::default_error_function(const std::string& message)
+action_spectator& synced_context::get_default_spectator()
 {
-	ERR_REPLAY << "Unexpected Error during synced execution" << message;
-	assert(!"Unexpected Error during synced execution, more info in stderr.");
-}
+	static class : public action_spectator
+	{
+	public:
+		void error(const std::string& message)
+		{
+			ERR_REPLAY << "Unexpected Error during synced execution" << message;
+			assert(!"Unexpected Error during synced execution, more info in stderr.");
+		}
 
-void synced_context::just_log_error_function(const std::string& message)
-{
-	ERR_REPLAY << "Error during synced execution: " << message;
-}
-
-void synced_context::ignore_error_function(const std::string& message)
-{
-	DBG_REPLAY << "Ignored during synced execution: " << message;
+	} res;
+	return res;
 }
 
 namespace
@@ -199,31 +181,31 @@ std::string synced_context::generate_random_seed()
 	return seed_val.str();
 }
 
-void synced_context::set_is_simultaneous()
+void synced_context::block_undo(bool do_block, bool clear_undo)
 {
-	resources::undo_stack->clear();
-	is_simultaneous_ = true;
-}
+	if(!do_block) {
+		return;
+	}
+	is_undo_blocked_ = true;
 
-void synced_context::block_undo(bool do_block)
-{
-	is_undo_blocked_ |= do_block;
-	resources::undo_stack->clear();
+	if(clear_undo) {
+		resources::undo_stack->clear();
+	}
 	// Since the action cannot be undone, send it immidiately to the other players.
 	resources::controller->send_actions();
 }
 
 bool synced_context::undo_blocked()
 {
-	// this method should only works in a synced context.
+	// this method only works in a synced context.
 	assert(!is_unsynced());
 	// if we sent data of this action over the network already, undoing is blocked.
-	// if we called the rng, undoing is blocked.
 	// if the game has ended, undoing is blocked.
 	// if the turn has ended undoing is blocked.
-	return is_simultaneous_
-	    || is_undo_blocked_
-	    || (is_synced() && (randomness::generator->get_random_calls() != 0))
+
+	// Important: once this function returned true, it has to return true for the rest of the duration of the current action
+	// otherwise OOS happens, so the following code in particular relies on the inability to revoke a [end_turn]/[endlevel]
+	return is_undo_blocked_
 	    || resources::controller->is_regular_game_end()
 	    || resources::gamedata->end_turn_forced();
 }
@@ -251,7 +233,12 @@ std::shared_ptr<randomness::rng> synced_context::get_rng_for_action()
 {
 	const std::string& mode = resources::classification->random_mode;
 	if(mode == "deterministic" || mode == "biased") {
-		return std::make_shared<randomness::rng_deterministic>(resources::gamedata->rng());
+		auto get_rng = []() {
+			//rnd is nonundoable, even when the deterministic rng is used.
+			synced_context::block_undo(true, false);
+			return resources::gamedata->rng().get_next_random();
+		};
+		return std::make_shared<randomness::rng_proxy>(get_rng);
 	} else {
 		return std::make_shared<randomness::synced_rng>(generate_random_seed);
 	}
@@ -280,15 +267,12 @@ config synced_context::ask_server_choice(const server_choice& sch)
 		return sch.local_choice();
 	}
 
-	set_is_simultaneous();
+	block_undo(true, false);
 	resources::controller->increase_server_request_number();
 	const bool is_mp_game = resources::controller->is_networked_mp();
 	bool did_require = false;
 
 	DBG_REPLAY << "ask_server for random_seed";
-
-	// As soon as random or similar is involved, undoing is impossible.
-	resources::undo_stack->clear();
 
 	// There might be speak or similar commands in the replay before the user input.
 	while(true) {
@@ -360,21 +344,6 @@ config synced_context::ask_server_choice(const server_choice& sch)
 	}
 }
 
-void synced_context::add_undo_commands(const config& commands, const game_events::queued_event& ctx)
-{
-	undo_commands_.emplace_front(commands, ctx);
-}
-
-void synced_context::add_undo_commands(int idx, const game_events::queued_event& ctx)
-{
-	undo_commands_.emplace_front(idx, ctx);
-}
-
-void synced_context::add_undo_commands(int idx, const config& args, const game_events::queued_event& ctx)
-{
-	undo_commands_.emplace_front(idx, args, ctx);
-}
-
 bool synced_context::ignore_undo()
 {
 	auto& ct = resources::controller->current_team();
@@ -392,10 +361,8 @@ set_scontext_synced_base::set_scontext_synced_base()
 	assert(synced_context::get_synced_state() == synced_context::UNSYNCED);
 
 	synced_context::set_synced_state(synced_context::SYNCED);
-	synced_context::reset_is_simultaneous();
 	synced_context::reset_block_undo();
 	synced_context::set_last_unit_id(resources::gameboard->unit_id_manager().get_save_id());
-	synced_context::reset_undo_commands();
 
 	old_rng_ = randomness::generator;
 	randomness::generator = new_rng_.get();

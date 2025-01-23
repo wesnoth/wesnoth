@@ -23,7 +23,18 @@ class enable_lua_ptr
 {
 public:
 	enable_lua_ptr(T* tp) : self_(std::make_shared<T*>(tp)) {}
+	enable_lua_ptr(enable_lua_ptr&& o) : self_(std::move(o.self_))
+	{
+		*self_ = static_cast<T*>(this);
+	}
+	enable_lua_ptr& operator=(enable_lua_ptr&& o)
+	{
+		self_ = std::move(o.self_);
+		*self_ = static_cast<T*>(this);
+	}
 private:
+	enable_lua_ptr(const enable_lua_ptr& o) = delete;
+	enable_lua_ptr& operator=(const enable_lua_ptr& o) = delete;
 	friend class lua_ptr<T>;
 	std::shared_ptr<T*> self_;
 };
@@ -40,6 +51,18 @@ public:
 			return *pp;
 		}
 		return nullptr;
+	}
+	T* operator->()
+	{
+		return get_ptr();
+	}
+	operator bool() const
+	{
+		return bool(self_.lock());
+	}
+	bool operator!() const
+	{
+		return !operator bool();
 	}
 	std::weak_ptr<T*> self_;
 };

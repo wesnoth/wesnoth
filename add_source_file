@@ -81,7 +81,7 @@ code_blocks_target_translations = {
 # XCode #
 #=======#
 
-def add_to_xcode(filename, targets):
+def modify_xcode(filename, targets, remove):
     """Add the given file to the specified targets.
     """
     projectfile = rootdir.joinpath(
@@ -121,24 +121,29 @@ def add_to_xcode(filename, targets):
             raise Exception(f"problem finding '{d}' group in '{groupname}'")
         parent_group = found_groups[0]
 
-    # if the group already has an entry with the same filename, loudly skip.
-    # note: this doesn't allow adding to targets one at a time.
-    # a new file should be added to all targets at once...
-    # or maybe targets could be checked somehow,
-    # or maybe the file could simply be completely removed and readded.
-    if project.get_files_by_name(filename.name, parent=parent_group):
-        print("  '"+filename.name+"' already found in Xcode project '"+",".join(translated_targets)+"', skipping")
-        return
+    if remove :
+        # Remove from all targets if we want to remove
+        for file in project.get_files_by_name(filename.name, parent=parent_group):
+            project.remove_file_by_id(file.get_id())
+    else:
+        # if the group already has an entry with the same filename, loudly skip.
+        # note: this doesn't allow adding to targets one at a time.
+        # a new file should be added to all targets at once...
+        # or maybe targets could be checked somehow,
+        # or maybe the file could simply be completely removed and readded.
+        if project.get_files_by_name(filename.name, parent=parent_group):
+            print("  '"+filename.name+"' already found in Xcode project '"+",".join(translated_targets)+"', skipping")
+            return
 
-    # force is True here because otherwise a duplicate filename in
-    # a different place will block addition of the new file.
-    # the rest is just to match existing project file structure.
-    project.add_file(filename.name,
-        force=True,
-        tree="<group>",
-        parent=parent_group,
-        target_name=translated_targets,
-    )
+        # force is True here because otherwise a duplicate filename in
+        # a different place will block addition of the new file.
+        # the rest is just to match existing project file structure.
+        project.add_file(filename.name,
+            force=True,
+            tree="<group>",
+            parent=parent_group,
+            target_name=translated_targets,
+        )
 
     # that's done, save the file
     project.save()
@@ -148,7 +153,7 @@ def add_to_xcode(filename, targets):
 # source_lists #
 #==============#
 
-def add_to_source_list(filename, source_list):
+def modify_source_list(filename, source_list, remove):
     source_list_file = rootdir.joinpath("source_lists", source_list)
     sl_lines = open(source_list_file).readlines()
     file_line = filename.as_posix() + '\n'
@@ -157,12 +162,16 @@ def add_to_source_list(filename, source_list):
     if filename.suffix != ".cpp":
         return
 
-    # if the target already has an entry with the same filename, loudly skip
-    if file_line in sl_lines:
-        print(f"  '{filename}' already found in '{source_list}', skipping")
-        return
+    if remove:
+        if file_line in sl_lines: sl_lines.remove(file_line)
+    else:
+        # if the target already has an entry with the same filename, loudly skip
+        if file_line in sl_lines:
+            print(f"  '{filename}' already found in '{source_list}', skipping")
+            return
 
-    sl_lines.append(file_line)
+        sl_lines.append(file_line)
+
     sl_lines.sort()
     open(source_list_file, 'w').writelines(sl_lines)
 
@@ -170,13 +179,18 @@ def add_to_source_lists(filename, targets):
     translated_targets = [source_list_target_translations[t] for t in targets]
     print(" source_list targets:", translated_targets)
     for t in translated_targets:
-        add_to_source_list(filename, t)
+        modify_source_list(filename, t, False)
+
+def remove_from_source_lists(filename):
+    # remove from all tagerts if -r was specified.
+    for t in source_list_target_translations.values():
+        modify_source_list(filename, t, True)
 
 #==============#
 # Code::Blocks #
 #==============#
 
-def add_to_code_blocks_target(filename, target):
+def modify_code_blocks_target(filename, target, remove):
     cbp_file = rootdir.joinpath(
         "projectfiles",
         "CodeBlocks",
@@ -190,30 +204,33 @@ def add_to_code_blocks_target(filename, target):
 
     elem = f"\t\t<Unit filename=\"{filename_for_cbp}\" />\n"
 
-    # if the target already has an entry with the same filename, loudly skip
-    if elem in cbp_lines:
-        print(f"  '{filename}' already found in '{target}.cbp', skipping")
-        return
+    if remove:
+        if elem in cbp_lines: cbp_lines.remove(elem)
+    else:
+        # if the target already has an entry with the same filename, loudly skip
+        if elem in cbp_lines:
+            print(f"  '{filename}' already found in '{target}.cbp', skipping")
+            return
 
-    # find an appropriate line to add before/after
-    index = 0
-    for line in cbp_lines:
-        if line.startswith("\t\t<Unit "):
-            if elem < line:
+        # find an appropriate line to add before/after
+        index = 0
+        for line in cbp_lines:
+            if line.startswith("\t\t<Unit "):
+                if elem < line:
+                    break
+            elif line.startswith("\t\t<Extensions>"):
+                # we must be the last entry, as this comes after the Unit section
                 break
-        elif line.startswith("\t\t<Extensions>"):
-            # we must be the last entry, as this comes after the Unit section
-            break
-        index += 1
-    cbp_lines.insert(index, elem)
+            index += 1
+        cbp_lines.insert(index, elem)
 
     open(cbp_file, 'w').writelines(cbp_lines)
 
-def add_to_code_blocks(filename, targets):
-    translated_targets = [code_blocks_target_translations[t] for t in targets]
+def modify_code_blocks(filename, targets, remove):
+    translated_targets = code_blocks_target_translations.values() if remove else [code_blocks_target_translations[t] for t in targets]
     print(" code::blocks targets:", translated_targets)
     for t in translated_targets:
-        add_to_code_blocks_target(filename, t)
+        modify_code_blocks_target(filename, t, remove)
 
 def sanity_check_existing_cpp_hpp(filenames):
     """
@@ -285,6 +302,8 @@ if __name__ == "__main__":
         help="which build targets to add the file to")
     ap.add_argument("--no-checks", action="store_true",
         help="do not check whether the files exist, etc")
+    ap.add_argument("-r", "--remove", action="store_true",
+        help="remove the specified files from projectfiles instead of adding them, --target is then ignored")
     # By default, recognise --help too
     options = ap.parse_args()
 
@@ -301,7 +320,13 @@ if __name__ == "__main__":
         sanity_check_existing_cpp_hpp(filenames)
 
     for filename in filenames:
-        print(f"adding '{filename}' to targets: {options.target}")
-        add_to_xcode(filename, options.target)
-        add_to_source_lists(filename, options.target)
-        add_to_code_blocks(filename, options.target)
+        if options.remove:
+            print(f"removing '{filename}' from all targets")
+            modify_xcode(filename, options.target, True)
+            remove_from_source_lists(filename)
+            modify_code_blocks(filename, options.target, True)
+        else:
+            print(f"adding '{filename}' to targets: {options.target}")
+            modify_xcode(filename, options.target, False)
+            add_to_source_lists(filename, options.target)
+            modify_code_blocks(filename, options.target, False)

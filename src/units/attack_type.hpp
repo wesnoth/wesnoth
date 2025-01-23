@@ -85,7 +85,7 @@ public:
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials() const;
-	std::string weapon_specials_value(const std::set<std::string> checking_tags) const;
+	std::string weapon_specials_value(const std::set<std::string>& checking_tags) const;
 
 	/** Returns alignment specified by alignment_ variable.
 	 */
@@ -105,7 +105,7 @@ public:
 	 * @param key_name name of attribute checked 'alternative_type' or 'replacement_type'.
 	 * @param resistance_list list of "resistance" abilities to check for each type of damage checked.
 	 */
-	std::string select_damage_type(const unit_ability_list& damage_type_list, const std::string& key_name, unit_ability_list resistance_list) const;
+	std::string select_damage_type(const unit_ability_list& damage_type_list, const std::string& key_name, const unit_ability_list& resistance_list) const;
 	/** return a modified damage type and/or add a secondary_type for hybrid use if special is active. */
 	std::pair<std::string, std::string> damage_type() const;
 	/** @return A list of alternative_type damage types. */
@@ -282,9 +282,9 @@ private:
 	 */
 	static void weapon_specials_impl_self(
 		std::string& temp_string,
-		unit_const_ptr self,
-		const_attack_ptr self_attack,
-		const_attack_ptr other_attack,
+		const unit_const_ptr& self,
+		const const_attack_ptr& self_attack,
+		const const_attack_ptr& other_attack,
 		const map_location& self_loc,
 		AFFECTS whom,
 		std::set<std::string>& checking_name,
@@ -294,9 +294,9 @@ private:
 
 	static void weapon_specials_impl_adj(
 		std::string& temp_string,
-		unit_const_ptr self,
-		const_attack_ptr self_attack,
-		const_attack_ptr other_attack,
+		const unit_const_ptr& self,
+		const const_attack_ptr& self_attack,
+		const const_attack_ptr& other_attack,
 		const map_location& self_loc,
 		AFFECTS whom,
 		std::set<std::string>& checking_name,
@@ -316,10 +316,10 @@ private:
 	 * @param leader_bool If true, [leadership] abilities are checked.
 	 */
 	static bool check_self_abilities_impl(
-		const_attack_ptr self_attack,
-		const_attack_ptr other_attack,
+		const const_attack_ptr& self_attack,
+		const const_attack_ptr& other_attack,
 		const config& special,
-		unit_const_ptr u,
+		const unit_const_ptr& u,
 		const map_location& loc,
 		AFFECTS whom,
 		const std::string& tag_name,
@@ -341,10 +341,10 @@ private:
 	 * @param leader_bool If true, [leadership] abilities are checked.
 	 */
 	static bool check_adj_abilities_impl(
-		const_attack_ptr self_attack,
-		const_attack_ptr other_attack,
+		const const_attack_ptr& self_attack,
+		const const_attack_ptr& other_attack,
 		const config& special,
-		unit_const_ptr u,
+		const unit_const_ptr& u,
 		const unit& from,
 		int dir,
 		const map_location& loc,
@@ -354,8 +354,8 @@ private:
 	);
 
 	static bool special_active_impl(
-		const_attack_ptr self_attack,
-		const_attack_ptr other_attack,
+		const const_attack_ptr& self_attack,
+		const const_attack_ptr& other_attack,
 		const config& special,
 		AFFECTS whom,
 		const std::string& tag_name,

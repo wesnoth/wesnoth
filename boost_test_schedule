@@ -4,6 +4,7 @@ test_gui2/modal_dialog_test_achievements_dialog
 test_gui2/modal_dialog_test_addon_auth
 test_gui2/modal_dialog_test_addon_connect
 test_gui2/modal_dialog_test_addon_license_prompt
+test_gui2/modal_dialog_test_addon_server_info
 test_gui2/modal_dialog_test_campaign_difficulty
 test_gui2/modal_dialog_test_chat_log
 test_gui2/modal_dialog_test_editor_choose_addon
@@ -58,7 +59,6 @@ test_gui2/modal_dialog_test_surrender_quit
 test_gui2/modal_dialog_test_theme_list
 test_gui2/modal_dialog_test_tod_new_schedule
 test_gui2/modal_dialog_test_transient_message
-test_gui2/modal_dialog_test_unit_create
 test_gui2/modal_dialog_test_wml_error
 test_gui2/modal_dialog_test_wml_message_left
 test_gui2/modal_dialog_test_wml_message_right
@@ -171,20 +171,20 @@ test_lexical_cast_throw<unsigned long long>
 test_lexical_cast_throw<float>
 test_lexical_cast_throw<double>
 test_lexical_cast_throw<long double>
-test_lexical_cast_signed<signed char>
-test_lexical_cast_signed<short>
-test_lexical_cast_signed<int>
-test_lexical_cast_signed<long>
-test_lexical_cast_long_long
-test_lexical_cast_unsigned<unsigned char>
-test_lexical_cast_unsigned<unsigned short>
-test_lexical_cast_unsigned<unsigned int>
-test_lexical_cast_unsigned<unsigned long>
-test_lexical_cast_unsigned_long_long
+test_lexical_arethmetic_signed<signed char>
+test_lexical_arethmetic_signed<short>
+test_lexical_arethmetic_signed<int>
+test_lexical_arethmetic_signed<long>
+test_lexical_arethmetic_signed<long long>
+test_lexical_arethmetic_signed<unsigned char>
+test_lexical_arethmetic_signed<unsigned short>
+test_lexical_arethmetic_signed<unsigned int>
+test_lexical_arethmetic_signed<unsigned long>
+test_lexical_arethmetic_signed<unsigned long long>
+test_lexical_arethmetic_signed<float>
+test_lexical_arethmetic_signed<double>
+test_lexical_arethmetic_signed<long double>
 test_lexical_cast_bool
-test_lexical_cast_floating_point<float>
-test_lexical_cast_floating_point<double>
-test_lexical_cast_floating_point<long double>
 test_lexical_cast_result
 test_map_location/map_location_characterization_test_radial_mode
 test_map_location/reality_check_vector_negation

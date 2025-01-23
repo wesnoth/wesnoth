@@ -32,6 +32,8 @@ struct preferences_list_defines
 	ADDPREF(achievements)
 	/** player names marked as either friends or as ignored */
 	ADDPREF(acquaintance)
+	/** whether to get the add-on icons when downloading the add-ons list */
+	ADDPREF(addon_icons)
 	/** the sort direction, ie: ascending */
 	ADDPREF(addon_manager_saved_order_direction)
 	/** the name of the column in the add-ons manager to use by default to sort results */
@@ -174,6 +176,8 @@ struct preferences_list_defines
 	ADDPREF(mp_level)
 	/** most recently selected type of game: scenario, campaign, random map, etc */
 	ADDPREF(mp_level_type)
+	/** most recently selected mp playing mode/connection type */
+	ADDPREF(mp_connect_type)
 	/** list of the last selected multiplayer modifications */
 	ADDPREF(mp_modifications)
 	/** whether to use a random start time for the scenario */
@@ -234,6 +238,8 @@ struct preferences_list_defines
 	ADDPREF(show_side_colors)
 	/** whether to show unit status (moved, unmoved, etc) for allied units as well */
 	ADDPREF(show_status_on_ally_orb)
+	/** whether to show the tips panel on titlescreen */
+	ADDPREF(show_tips)
 	/** whether to show an orb over units that haven't done anything */
 	ADDPREF(show_unmoved_orb)
 	/** whether to randomly assign sides in multiplayer games */
@@ -446,6 +452,7 @@ struct preferences_list_defines
 		minimap_movement_coding,
 		minimap_terrain_coding,
 		moved_orb_color,
+		mp_connect_type,
 		mp_countdown,
 		mp_countdown_action_bonus,
 		mp_countdown_init_time,
@@ -485,6 +492,7 @@ struct preferences_list_defines
 		show_partial_orb,
 		show_side_colors,
 		show_status_on_ally_orb,
+		show_tips,
 		show_unmoved_orb,
 		shuffle_sides,
 		skip_ai_moves,
@@ -554,7 +562,8 @@ struct preferences_list_defines
 		turn_changed_lobby,
 		game_created_sound,
 		game_created_notif,
-		game_created_lobby
+		game_created_lobby,
+		addon_icons
 	)
 };
 using prefs_list = string_enums::enum_base<preferences_list_defines>;

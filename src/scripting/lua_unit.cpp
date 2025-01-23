@@ -390,7 +390,7 @@ UNIT_GETTER("id", std::string) {
 
 LATTR_SETTER("id", std::string, lua_unit*, lu) {
 	if(!lu->get()) return;
-	if(!lu->on_map()) luaL_argerror(L, 3, "can't modify id of on-map unit");
+	if(lu->on_map()) luaL_argerror(L, 3, "can't modify id of on-map unit");
 	(*lu)->set_id(value);
 }
 

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-21 11:10-0500\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
 "PO-Revision-Date: 2014-06-05 23:38+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -45,15 +45,15 @@ msgstr "dũng cảm"
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/weapon_specials.cfg:41
-#: data/core/macros/weapon_specials.cfg:52
+#: data/core/macros/weapon_specials.cfg:51
+#: data/core/macros/weapon_specials.cfg:62
 msgid "plague"
 msgstr "bệnh dịch"
 
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
-#: data/core/macros/weapon_specials.cfg:53
+#: data/core/macros/weapon_specials.cfg:63
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -240,14 +240,14 @@ msgstr "Luôn hồi máu như khi nghỉ ngơi"
 #. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
-#: data/core/macros/weapon_specials.cfg:21
+#: data/core/macros/weapon_specials.cfg:31
 msgid "backstab"
 msgstr "đánh lén"
 
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:500
-#: data/core/macros/abilities.cfg:389
+#: data/core/macros/abilities.cfg:408
 msgid "feeding"
 msgstr "bồi dưỡng"
 
@@ -280,7 +280,7 @@ msgstr "ẩn nấp"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:166
+#: data/core/macros/weapon_specials.cfg:201
 msgid "drains"
 msgstr "bòn rút"
 
@@ -304,7 +304,7 @@ msgstr "Đồi"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/weapon_specials.cfg:86
+#: data/core/macros/weapon_specials.cfg:96
 msgid "marksman"
 msgstr "thiện xạ"
 
@@ -320,7 +320,7 @@ msgstr "săn đêm"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:188
+#: data/core/macros/weapon_specials.cfg:223
 msgid "poison"
 msgstr "độc"
 
@@ -336,7 +336,7 @@ msgstr "đột nhập"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/weapon_specials.cfg:64
+#: data/core/macros/weapon_specials.cfg:74
 msgid "slows"
 msgstr "chậm"
 
@@ -948,7 +948,7 @@ msgid ""
 "\n"
 "• Event handlers and scripting\n"
 "\n"
-"The editor is not a tool to help you scripting the scenario’s event "
+"The editor is not a tool to help you with scripting the scenario’s event "
 "handlers.\n"
 "\n"
 "• Infinite Backwards Compatibility\n"
@@ -1059,7 +1059,7 @@ msgid ""
 "scenario mode\n"
 "• <span face='monospace'>scenarios/other.cfg</span>\n"
 "  ◦ this is the .cfg file containing everything that the scenario editor "
-"doesn't understand\n"
+"doesn’t understand\n"
 "• <span face='monospace'>scenarios/first.cfg</span>\n"
 "  ◦ inside the <span face='monospace'>[scenario]</span> element, use <span "
 "face='monospace'>map_file=&quot;first.map&quot;</span> to load the map file\n"
@@ -1076,8 +1076,8 @@ msgstr ""
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:439
 msgid ""
-"Masks can be applied to a base map for reusal in several scenarios playing "
-"at the same locations."
+"Masks can be applied to a base map for reuse in several scenarios playing at "
+"the same locations."
 msgstr ""
 
 #. [topic]: id=editor_time_schedule
@@ -1124,17 +1124,17 @@ msgstr ""
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:466
-msgid "Show all kinds of terrain</col></row>"
+msgid "Show all kinds of terrain"
 msgstr ""
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:467
-msgid "Show only water terrains</col></row>"
+msgid "Show only water terrains"
 msgstr ""
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:468
-msgid "Show only villages</col></row>"
+msgid "Show only villages"
 msgstr ""
 
 #. [topic]: id=editor_map_format
@@ -1152,11 +1152,10 @@ msgstr ""
 msgid ""
 "<header>Native</header>\n"
 "\n"
-"A map file consists of rows with comma separated terrain code strings. The "
+"A map file consists of rows with comma-separated terrain code strings. The "
 "only non-terrain information provided by the map syntax is the set of "
 "locations created by the <ref dst='editor_tool_starting'>Starting Locations "
-"Tool</ref>. The files can be edited with a general purpose text editor like "
-"notepad.\n"
+"Tool</ref>. The files can be edited with a general purpose text editor.\n"
 "\n"
 "These files can be used directly for multiplayer games, the number of "
 "players is automatically determined by the number of starting positions. "
@@ -1183,9 +1182,10 @@ msgstr ""
 msgid ""
 "<header>Embedded</header>\n"
 "\n"
-"The map data can stored as part of a scenario’s .cfg file, directly in the "
-"<italic>map_data</italic> attribute. In other words, in the place that the "
-"preprocessor would include it when using the preprocessor-include method.\n"
+"The map data can be stored as part of a scenario’s .cfg file, directly in "
+"the <italic>map_data</italic> attribute. In other words, in the place that "
+"the preprocessor would include it when using the preprocessor-include "
+"method.\n"
 "\n"
 "<header>Using Embedded Format in Terrain Mode</header>\n"
 "\n"
@@ -1265,8 +1265,10 @@ msgid ""
 "\n"
 "The Wesnothian calendar begins with the founding of Wesnoth in the year 1 YW "
 "(Year of Wesnoth). Years before that are counted based on the number of "
-"years before the founding of Wesnoth using BW (Before Wesnoth). After the "
-"Fall of Wesnoth dates use AF (After the Fall)."
+"years before the founding of Wesnoth using BW (Before Wesnoth).\n"
+"\n"
+"After the fall of Wesnoth many switched to using AF (After the Fall) and BF "
+"(Before the Fall)."
 msgstr ""
 
 #. [section]: id=geography
@@ -1385,17 +1387,22 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:57
 msgid ""
 "<header>text='Notable land features:'</header>\n"
-"    • Mount Morogor: An active volcanic mountain in the central island of "
-"Morogor."
+"    • Mount Morogor: The highest active volcanic mountain in the central "
+"island of Morogor.\n"
+"    • Isle of Gaall: A dangerous island slightly north of the central Isle "
+"of Morogor, used mostly as hunting ground by the drakes, who inhabit only a "
+"two small villages on the isle.\n"
+"    • Isle of Omarath: A major drakish island northwest of the main Isle of "
+"Morogor. It is the northernmost island of the Morogor Archipelago."
 msgstr ""
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:63
+#: data/core/encyclopedia/geography.cfg:65
 msgid "Green Isle"
 msgstr "Đảo Xanh"
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:64
+#: data/core/encyclopedia/geography.cfg:66
 #, fuzzy
 #| msgid ""
 #| "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</"
@@ -1409,7 +1416,7 @@ msgstr ""
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
-#: data/core/encyclopedia/geography.cfg:68
+#: data/core/encyclopedia/geography.cfg:70
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Southbay: The capital of the largest Islefolk Kingdom.\n"
@@ -1419,12 +1426,12 @@ msgid ""
 "Haldric I.\n"
 "    • Jevyan’s Haven: The Wesfolk capital and home of the famous lich-lord "
 "Jevyan.\n"
-"    • Blackmore: A small Wesfolk settlement."
+"    • Blackmore: A small settlement north of the Oldwood."
 msgstr ""
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
-#: data/core/encyclopedia/geography.cfg:77
+#: data/core/encyclopedia/geography.cfg:79
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • Broken Mountains: A mighty mountain range that cuts through the Green "
@@ -1434,12 +1441,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:85
+#: data/core/encyclopedia/geography.cfg:87
 msgid "Old Continent"
 msgstr "Cựu Lục Địa"
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:86
+#: data/core/encyclopedia/geography.cfg:88
 #, fuzzy
 #| msgid ""
 #| "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
@@ -1454,12 +1461,12 @@ msgstr ""
 "<ref>dst='great_ocean' text='Đại Dương Lớn'</ref>."
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:91
+#: data/core/encyclopedia/geography.cfg:93
 msgid "Great Continent"
 msgstr "Đại Lục Địa"
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:92
+#: data/core/encyclopedia/geography.cfg:94
 msgid ""
 "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
@@ -1470,12 +1477,12 @@ msgstr ""
 "Dương Lớn'</ref>."
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:97
+#: data/core/encyclopedia/geography.cfg:99
 msgid "Irdya"
 msgstr "Irdya"
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:98
+#: data/core/encyclopedia/geography.cfg:100
 msgid ""
 "The name of the world in which the kingdom of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref> is situated is ‘Irdya’. This term is, however, only "
@@ -1488,12 +1495,12 @@ msgstr ""
 "nói \"thế giới\", hoặc thơ mộng hơn, \"thế giới xanh rộng lớn\"."
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:103
+#: data/core/encyclopedia/geography.cfg:105
 msgid "Kingdom of Wesnoth"
 msgstr "Vương quốc Wesnoth"
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:104
+#: data/core/encyclopedia/geography.cfg:106
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -1504,13 +1511,15 @@ msgid ""
 "Swamp to the southeast.\n"
 "\n"
 "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier region. "
-"It is bounded to the south (off-map) by dense woods of which the Aethenwood "
-"may be considered a northernmost extension."
+"It is bounded to the south by dense woods of which the Aethenwood may be "
+"considered a northernmost extension. Kerlath is its southernmost province, "
+"marking the end of Wesnoth and the start of the mysterious "
+"<ref>dst='far_south' text='Far South'</ref>."
 msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
-#: data/core/encyclopedia/geography.cfg:110
+#: data/core/encyclopedia/geography.cfg:112
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Weldyn: The capital of Wesnoth.\n"
@@ -1519,20 +1528,22 @@ msgid ""
 "    • Carcyn: Located between the Grey Woods and the Great River.\n"
 "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
 "country, just west and north of Weldyn.\n"
-"    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
-"confluence of the Weldyn River and the Great River.\n"
+"    • Soradoc: The easternmost town of Wesnoth, controls the confluence of "
+"the Weldyn River and the Great River.\n"
 "    • Fort Tahn: The southernmost border outpost, controls the north/south "
 "road crossing the River Aethen.\n"
 "    • Tath: Important fort city north of Dan’Tonk, exerts control over the "
 "wilderness country around the east of the Brown Hills and north to the Ford "
 "of Abez.\n"
-"    • Westin: A small yet important town in Kerlath, a province of Southern "
-"Wesnoth. The old Citadel of Westin can be found there."
+"    • Westin: A small yet important town in Kerlath, the southernmost "
+"province of Wesnoth. The old Citadel of Westin can be found there.\n"
+"    • Southport: A small town in the southernmost reaches of Kerlath, near "
+"the Black Forest."
 msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
-#: data/core/encyclopedia/geography.cfg:123
+#: data/core/encyclopedia/geography.cfg:126
 #, fuzzy
 #| msgid ""
 #| "The Kingdom of Wesnoth is located in the north-central portion of the "
@@ -1676,12 +1687,12 @@ msgstr ""
 "Lớn. (Không hiện trên bản đồ chính)."
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:140
+#: data/core/encyclopedia/geography.cfg:143
 msgid "Elensefar"
 msgstr "Elensefar"
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:141
+#: data/core/encyclopedia/geography.cfg:144
 #, fuzzy
 #| msgid ""
 #| "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
@@ -1727,16 +1738,17 @@ msgstr ""
 
 #. [topic]: id=elensefar
 #. Geography of Elensefar area
-#: data/core/encyclopedia/geography.cfg:145
+#: data/core/encyclopedia/geography.cfg:148
 msgid ""
 "<header>text='Notable cities:'</header>\n"
-"    • Elensefar: The capital, located on an island in the Great River "
-"delta.\n"
+"    • Elensefar: The capital, located on an island in the Great River delta, "
+"though some peripheral farmland extends slightly on both sides of the Great "
+"River.\n"
 "    • Carcyn: City on the Wesnoth–Elensefar border, disputed with Wesnoth."
 msgstr ""
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:150
+#: data/core/encyclopedia/geography.cfg:153
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
@@ -1744,20 +1756,20 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:156
+#: data/core/encyclopedia/geography.cfg:159
 msgid "Northlands"
 msgstr "Vùng đất phương Bắc"
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:157
+#: data/core/encyclopedia/geography.cfg:160
 msgid ""
 "The Northlands are filled with unstable clans in endless conflict. It is an "
 "unlawful and perilous place plagued by its cold, icy terrain and constant "
-"war. Various groups of orcs, dwarves, men, gryphons, ogres, and even elves "
-"fight over the region. The northern and eastern borders of the Northlands "
-"are not defined, the southern border is the <ref>dst='great_river' "
-"text='Great River'</ref>, and the western border is the "
-"<ref>dst='great_ocean' text='ocean'</ref>.\n"
+"war. Various groups of orcs, dwarves, humans, gryphons, ogres, and even "
+"elves fight over the region. The northern and eastern borders of the "
+"Northlands are not defined, the southern border is the "
+"<ref>dst='great_river' text='Great River'</ref>, and the western border is "
+"the <ref>dst='great_ocean' text='ocean'</ref>.\n"
 "\n"
 "Yet despite the sheer wilderness above the Northlands, the subterranean "
 "Dwarvish Kingdoms of Knalga and Kal Kartha are exceptions to their chaotic "
@@ -1768,13 +1780,14 @@ msgstr ""
 
 #. [topic]: id=northlands
 #. Geography of the Northlands
-#: data/core/encyclopedia/geography.cfg:163
+#: data/core/encyclopedia/geography.cfg:166
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Glamdrol: An Orcish tribal capital.\n"
 "    • Wesmere: The location of the Ka’lian — the Elvish Council\n"
 "    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga in "
 "the southern Heart Mountains. A major trade center.\n"
+"    • Saurgrath: A former saurian capital in the Swamp of Dread.\n"
 "    • Dallben and Delwyn: Human villages originally built by settlers who "
 "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
 "abandoned. The forested area northeast of <ref>dst='elensefar' "
@@ -1784,7 +1797,7 @@ msgstr ""
 
 #. [topic]: id=northlands
 #. Geography of the Northlands
-#: data/core/encyclopedia/geography.cfg:170
+#: data/core/encyclopedia/geography.cfg:175
 #, fuzzy
 #| msgid ""
 #| "There is no government of the Northlands. Various groups of orcs, "
@@ -1888,12 +1901,12 @@ msgstr ""
 "đông của những vùng đất phương bắc"
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:183
+#: data/core/encyclopedia/geography.cfg:188
 msgid "Southwest Elven Lands"
 msgstr "Vùng đất thần tiên Tây Nam"
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:184
+#: data/core/encyclopedia/geography.cfg:189
 #, fuzzy
 #| msgid ""
 #| "The Wood Elves are separate from those of the north, and have only "
@@ -1929,49 +1942,29 @@ msgstr ""
 
 #. [topic]: id=southwest_elven_lands
 #. Geography of the Southwest
-#: data/core/encyclopedia/geography.cfg:188
-#, fuzzy
-#| msgid ""
-#| "The Wood Elves are separate from those of the north, and have only "
-#| "intermittent relations with them and most other countries. Its borders "
-#| "are the Green Swamp to the northeast, the desert (not shown) to the "
-#| "south, and the <ref>dst='great_ocean' text='Ocean'</ref> to the west.\n"
-#| "\n"
-#| "    • Notable cities\n"
-#| "          ◦ None known\n"
-#| "    • Notable land features:\n"
-#| "          ◦ Aethen Forest: The largest southern forest, it extends far to "
-#| "the southwest—much farther than is charted—and is home to <ref>dst='.."
-#| "race_elf' text='elves'</ref>."
+#: data/core/encyclopedia/geography.cfg:193
 msgid ""
 "<header>text='Notable land features:'</header>\n"
-"    • Aethenwood: The largest southern forest, it extends far to the south "
-"and is home to <ref>dst='..race_elf' text='elves'</ref>. Although the elves "
-"make no such distinction, the southern part of the forest has been named "
-"Southwood by denizens of Kerlath."
+"    • Aethenwood: The largest southern forest, home to recluded <ref>dst='.."
+"race_elf' text='elves'</ref>.\n"
+"    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
+"Aethenwood. It contains the sacred Isle of Elrath.\n"
+"    • Lake Aelin: An elvish lake at the edge of their territory along the "
+"River Aethen.\n"
+"    • Black Forest: An ancient and likely haunted forest of which very "
+"little is known, believed to have been once inhabited by elves. Those who "
+"enter it seldom return."
 msgstr ""
-"Các thần tiên tây nam bị cách biệt với các thần tiên phương bắc, và chỉ có "
-"liên lạc rời rạc với họ cũng như hầu hết các xứ sở khác. Biên giới là Đầm "
-"Lầy Xanh ở phía đông bắc, sa mạc (không vẽ) ở phía nam, và "
-"<ref>dst='great_ocean' text='đại dương'</ref> ở phía tây.\n"
-"\n"
-"    • Các thành phố đáng chú ý\n"
-"          ◦ Không có thành phố nào được biết\n"
-"\n"
-"    • Những vùng đất đáng chú ý:\n"
-"          ◦ Rừng Aethen: Khu rừng phương nam lớn nhất, mở rộng xa về phía "
-"tây nam - xa hơn nhiều hình ảnh trên bản đồ - và là nơi ở của các "
-"<ref>dst='..race_elf' text='thần tiên'</ref>."
 
 #. [topic]: id=heart_mountains
-#: data/core/encyclopedia/geography.cfg:194
+#: data/core/encyclopedia/geography.cfg:202
 msgid "Heart Mountains"
 msgstr "Dãy núi Trái Tim"
 
 #. [topic]: id=heart_mountains
 #. The Whitefang Clan’s primary description is in DiD
 #. Wesnoth 1.9.4 added Haggid-Dargor to the encyclopedia, but it has no other mention in mainline
-#: data/core/encyclopedia/geography.cfg:197
+#: data/core/encyclopedia/geography.cfg:205
 msgid ""
 "A virtually impassable barrier between the <ref>dst='arkan_thoria' "
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
@@ -1982,12 +1975,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:202
+#: data/core/encyclopedia/geography.cfg:210
 msgid "Far North"
 msgstr "Viễn Bắc"
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:203
+#: data/core/encyclopedia/geography.cfg:211
 #, fuzzy
 #| msgid ""
 #| "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
@@ -2066,25 +2059,28 @@ msgstr ""
 
 #. [topic]: id=far_north
 #. Geography of the Far North
-#: data/core/encyclopedia/geography.cfg:206
+#: data/core/encyclopedia/geography.cfg:215
 msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Barag Gor: A city home to the Orcish Council.\n"
 "    • Bitok\n"
 "    • Borstep\n"
 "    • Farzi\n"
-"    • Jotha: A large fortified capital of the local merfolk that lies within "
-"the bay of Jotha.\n"
+"    • Jotha: A large fortified capital of the local merfolk south of Bitok.\n"
 "    • Lmarig\n"
 "    • Melmog\n"
 "    • Prestim\n"
 "    • Tirigaz: A coastal orcish town that occasionally raids Jotha.\n"
-"    • Dorest: The northernmost human city."
+"    • Dorest: The northernmost human city.\n"
+"    • Arcanclave Citadel: A mythical fortress far beyond the woods of "
+"Lintanir, believed to have been forged by an earth elemental in the midst of "
+"battle. Its ruins have now become a military stronghold.\n"
+"    "
 msgstr ""
 
 #. [topic]: id=far_north
 #. Geography of the Far North
-#: data/core/encyclopedia/geography.cfg:219
+#: data/core/encyclopedia/geography.cfg:231
 msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • Desert of Death: An unusually dry desert in the Far North filled with "
@@ -2096,6 +2092,9 @@ msgid ""
 "nonetheless deadly to inexperienced travelers.\n"
 "    • Mountains of Haag: A group of high mountains inhabited by groups of "
 "orcs, trolls and dwarves.\n"
+"    • Mourned Hills: A series of rolling hills stretching south from the "
+"Mountains of Haag. The orcish town of Lmarig is at the southern edge of "
+"these hills.\n"
 "    • Greenwood: An elvish forest located near the Lintanir Forest. Some say "
 "it was once connected to it, until groups of savage orcs burned much of the "
 "forest.\n"
@@ -2113,32 +2112,35 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=far_south
-#: data/core/encyclopedia/geography.cfg:235
+#: data/core/encyclopedia/geography.cfg:248
 #, fuzzy
 #| msgid "Far North"
 msgid "Far South"
 msgstr "Viễn Bắc"
 
 #. [topic]: id=far_south
-#: data/core/encyclopedia/geography.cfg:236
+#: data/core/encyclopedia/geography.cfg:249
 msgid ""
-"A vast region south of Kerlath home to the Dunefolk Civilization. It is also "
-"inhabited by many local creatures, including the Jinn and Wyverns."
+"A vast region south of Kerlath home to many mysterious races, including the "
+"Jinn and Wyverns. Very little is known for certain about what lies here."
 msgstr ""
 
 #. [topic]: id=far_south
 #. Geography of the Far South
-#: data/core/encyclopedia/geography.cfg:240
+#: data/core/encyclopedia/geography.cfg:253
 msgid ""
 "<header>text='Notable land features:'</header>\n"
-"    • Sandy Wastes: A hot desert located south of Kerlath home to various "
-"Dunefolk settlements, as well as nomadic tribes in between. The northern "
-"parts of this desert are home to many treacherous monsters.\n"
-"    • Mountains of Peril: A tall and deadly mountain range in the far south "
+"    • Mountains of Peril: A tall and deadly mountain range in the Far South "
 "inhabited by bands of vicious barbarians and monsters.\n"
-"    • Black Forest: An ancient and likely haunted forest of which very "
-"little is known, believed to have been once inhabited by elves. Those who "
-"enter it seldom return."
+"    • Sandy Wastes: A hot and dry desert located southeast of Kerlath. It is "
+"considered an impassable barrier by Wesnothians, filled with very sparse "
+"vegetation consisting of no more than a few shrubs and cacti.\n"
+"    • Isanbar: A mysterious mountain in the Sandy Wastes, surrounded "
+"entirely by flatter desert. It is not part of any mountain range and its "
+"existence is doubted by many.\n"
+"    • Ashland Desert: A mysterious desert rumored to exist beyond even the "
+"remote Sandy Wastes, sometimes known simply as the Ashland. A far-off "
+"civilization is sometimes said to live around the desert."
 msgstr ""
 
 #. [section]: id=schedule
@@ -2224,12 +2226,12 @@ msgstr "Lệnh"
 #| "game simple, however — from these simple rules arise a wealth of "
 #| "strategy, making the game easy to learn but a challenge to master."
 msgid ""
-"<br/><italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy "
-"strategy game somewhat unusual among modern strategy games. While other "
-"games strive for complexity, <italic>text='Battle for Wesnoth'</italic> "
-"strives for simplicity of both rules and gameplay. This does not make the "
-"game simple, however — from these simple rules arises a wealth of strategy, "
-"making the game easy to learn but a challenge to master.\n"
+"<italic>Battle for Wesnoth</italic> is a turn-based fantasy strategy game "
+"somewhat unusual among modern strategy games. While other games strive for "
+"complexity, <italic>Battle for Wesnoth</italic> strives for simplicity of "
+"both rules and gameplay. This does not make the game simple, however — from "
+"these simple rules arises a wealth of strategy, making the game easy to "
+"learn but a challenge to master.\n"
 "\n"
 "The following pages outline all you need to know to play Wesnoth. As you "
 "play, new information is added to the various categories as you come across "
@@ -4112,8 +4114,8 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:578
 msgid ""
-"<br/>Land-based villages generally give the best defense and movement as "
-"well. These villages are mixed terrains, based on the village terrain type, "
+"Land-based villages generally give the best defense and movement as well. "
+"These villages are mixed terrains, based on the village terrain type, "
 "together with hill, swamp, and cave, respectively.\n"
 "\n"
 msgstr ""
@@ -4403,7 +4405,7 @@ msgid ""
 "\n"
 "Cores allow a significantly different game experience: for example, a World "
 "War II campaign, or even a different game altogether, as long as it can be "
-"represented as a hexagonal map with ’units’ in some way."
+"represented as a hexagonal map with ‘units’ in some way."
 msgstr ""
 
 #. [topic]: id=using_addons
@@ -5340,13 +5342,47 @@ msgstr ""
 "trừ khi chúng có đơn vị bên cạnh nó. Bất kỳ đơn vị kẻ thù nào phát hiện ra "
 "đơn vị này đều mất ngay lập tức toàn bộ điểm di chuyển còn lại."
 
-#. [dummy]: id=feeding
+#. [hides]: id=swamp_lurk
+#: data/core/macros/abilities.cfg:388
+msgid "swamp lurk"
+msgstr ""
+
+#. [hides]: id=swamp_lurk
+#: data/core/macros/abilities.cfg:389
+#, fuzzy
+#| msgid "female^weak"
+msgid "female^swamp lurk"
+msgstr "yếu ớt"
+
+#. [hides]: id=swamp_lurk
 #: data/core/macros/abilities.cfg:390
+#, fuzzy
+#| msgid ""
+#| "This unit can hide in forest, and remain undetected by its enemies.\n"
+#| "\n"
+#| "Enemy units cannot see this unit while it is in forest, except if they "
+#| "have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
+msgid ""
+"This unit can hide in swamp, and remain undetected by its enemies.\n"
+"\n"
+"Enemy units cannot see this unit while it is in swamp, except if they have "
+"units next to it. Any enemy unit that first discovers this unit immediately "
+"loses all its remaining movement."
+msgstr ""
+"Đơn vị này có thể ẩn nấp trong rừng, và không bị kẻ thù phát hiện.\n"
+"\n"
+"Các đơn vị kẻ thù không thể nhìn thấy đơn vị này khi nó ở trong rừng, trừ "
+"khi chúng có đơn vị bên cạnh nó. Bất kỳ đơn vị kẻ thù nào phát hiện ra đơn "
+"vị này đều mất ngay lập tức toàn bộ điểm di chuyển còn lại."
+
+#. [dummy]: id=feeding
+#: data/core/macros/abilities.cfg:409
 msgid "female^feeding"
 msgstr "bồi dưỡng"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:391
+#: data/core/macros/abilities.cfg:410
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -5355,7 +5391,7 @@ msgstr ""
 "miễn nhiễm với bệnh dịch."
 
 #. [advancement]: id=amla_default
-#: data/core/macros/amla.cfg:10
+#: data/core/macros/amla.cfg:29
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr "Thưởng lượng máu tối đa +3, KN tối đa +20%"
 
@@ -6480,13 +6516,28 @@ msgstr ""
 "Các đơn vị có đặc điểm <italic>text='già'</italic> giảm 8 máu, giảm 1 điểm "
 "di chuyển và lượng thiệt hại cận chiến."
 
+#. [disable]: id=unwieldy
+#: data/core/macros/weapon_specials.cfg:7
+msgid "unwieldy"
+msgstr ""
+
+#. [disable]: id=unwieldy
+#: data/core/macros/weapon_specials.cfg:8
+msgid "This attack can only be used offensively."
+msgstr ""
+
+#. [disable]: id=unwieldy
+#: data/core/macros/weapon_specials.cfg:10
+msgid "This unit has an unwieldy weapon, which cannot be used defensively."
+msgstr ""
+
 #. [berserk]: id=berserk
-#: data/core/macros/weapon_specials.cfg:9
+#: data/core/macros/weapon_specials.cfg:19
 msgid "berserk"
 msgstr "điên cuồng"
 
 #. [berserk]: id=berserk
-#: data/core/macros/weapon_specials.cfg:10
+#: data/core/macros/weapon_specials.cfg:20
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -6496,7 +6547,7 @@ msgstr ""
 "ra."
 
 #. [damage]: id=backstab
-#: data/core/macros/weapon_specials.cfg:22
+#: data/core/macros/weapon_specials.cfg:32
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -6507,7 +6558,7 @@ msgstr ""
 "bị mất khả năng (hóa đá hay bị tê liệt)."
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/weapon_specials.cfg:42
+#: data/core/macros/weapon_specials.cfg:52
 #, fuzzy
 #| msgid ""
 #| "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -6523,7 +6574,7 @@ msgstr ""
 "dịch. Đòn này không có tác dụng với ma quái hoặc các đơn vị ở trong làng."
 
 #. [slow]: id=slow
-#: data/core/macros/weapon_specials.cfg:65
+#: data/core/macros/weapon_specials.cfg:75
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -6536,12 +6587,12 @@ msgstr ""
 "tượng con ốc sên trong thông tin trạng thái khi chọn nó."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:75
+#: data/core/macros/weapon_specials.cfg:85
 msgid "petrifies"
 msgstr "hóa đá"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:76
+#: data/core/macros/weapon_specials.cfg:86
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -6550,45 +6601,20 @@ msgstr ""
 "đá không thể di chuyển hay tấn công."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/weapon_specials.cfg:87
+#: data/core/macros/weapon_specials.cfg:97
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "Khi được sử dụng để tấn công, đòn này luôn có cơ hội đánh trúng ít nhất cũng "
 "là 60%."
 
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/weapon_specials.cfg:100
-msgid "deflect"
-msgstr ""
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/weapon_specials.cfg:101
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
-msgid ""
-"When used defensively, this attack reduces the opponent’s chance to hit by "
-"10%."
-msgstr ""
-"Khi được sử dụng để tấn công, đòn này luôn có cơ hội đánh trúng ít nhất cũng "
-"là 60%."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/weapon_specials.cfg:102
-msgid ""
-"This unit’s defensive techniques reduce the chance of a successful enemy "
-"attack."
-msgstr ""
-
 #. [chance_to_hit]: id=magical
-#: data/core/macros/weapon_specials.cfg:115
+#: data/core/macros/weapon_specials.cfg:110
 msgid "magical"
 msgstr "phép thuật"
 
 #. [chance_to_hit]: id=magical
-#: data/core/macros/weapon_specials.cfg:116
+#: data/core/macros/weapon_specials.cfg:111
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -6596,13 +6622,63 @@ msgstr ""
 "Đòn này luôn có cơ hội đánh trúng 70% bất kể khả năng phòng thủ của đơn vị "
 "bị tấn công."
 
+#. [disable]: id=naval_ram
+#: data/core/macros/weapon_specials.cfg:123
+msgid "naval ram"
+msgstr ""
+
+#. [disable]: id=naval_ram
+#: data/core/macros/weapon_specials.cfg:124
+msgid "This attack can only be used against units in water terrain."
+msgstr ""
+
+#. [disable]: id=naval_ram
+#: data/core/macros/weapon_specials.cfg:132
+msgid ""
+"This unit has an attack that can only be used against units in watery "
+"terrain."
+msgstr ""
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:136
+#: data/core/macros/weapon_specials.cfg:174
+msgid "charge"
+msgstr "xung kích"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:137
+#: data/core/macros/weapon_specials.cfg:175
+msgid ""
+"When used offensively, this attack deals double damage to the target. It "
+"also causes this unit to take double damage from the target’s counterattack."
+msgstr ""
+"Khi được sử dụng để tấn công, đòn này gây lượng thiệt hại lớn gấp đôi cho "
+"đối phương. Nó cũng khiến cho đơn vị này phải chịu lượng thiệt hại lớn gấp "
+"đôi từ đòn phản công của đối phương."
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:150
+msgid "honed"
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:151
+msgid "This attack is 10% more accurate than other attacks."
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:152
+msgid ""
+"This unit’s “honed” attack is slightly more accurate than other attacks."
+msgstr ""
+
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:128
+#: data/core/macros/weapon_specials.cfg:163
 msgid "swarm"
 msgstr "liên hoàn"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:129
+#: data/core/macros/weapon_specials.cfg:164
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -6614,41 +6690,25 @@ msgstr ""
 "lượng máu bằng 3/4 lượng máu tối đa sẽ có số lần đánh bằng 3/4 số lần đánh "
 "được phép."
 
-#. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:139
-msgid "charge"
-msgstr "xung kích"
-
-#. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:140
-msgid ""
-"When used offensively, this attack deals double damage to the target. It "
-"also causes this unit to take double damage from the target’s counterattack."
-msgstr ""
-"Khi được sử dụng để tấn công, đòn này gây lượng thiệt hại lớn gấp đôi cho "
-"đối phương. Nó cũng khiến cho đơn vị này phải chịu lượng thiệt hại lớn gấp "
-"đôi từ đòn phản công của đối phương."
-
-#. [damage]: id=absorb
-#: data/core/macros/weapon_specials.cfg:153
-msgid "absorb"
+#. [damage]: id=guard
+#: data/core/macros/weapon_specials.cfg:188
+msgid "guard"
 msgstr ""
 
-#. [damage]: id=absorb
-#: data/core/macros/weapon_specials.cfg:154
-msgid ""
-"This attack puts the unit in good defensive position, and it absorbs some of "
-"the damage dealt by an enemy strike."
+#. [damage]: id=guard
+#: data/core/macros/weapon_specials.cfg:189
+msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr ""
 
-#. [damage]: id=absorb
-#: data/core/macros/weapon_specials.cfg:155
+#. [damage]: id=guard
+#: data/core/macros/weapon_specials.cfg:190
 msgid ""
-"This unit can block enemy strikes, so that it takes reduced damage when hit."
+"This unit’s guarding attack can halve incoming damage, but only when used in "
+"combat."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:167
+#: data/core/macros/weapon_specials.cfg:202
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -6657,18 +6717,18 @@ msgstr ""
 "thân một lượng bằng một nửa lượng thiệt hại mà nó gây ra (làm tròn xuống)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:177
+#: data/core/macros/weapon_specials.cfg:212
 msgid "first strike"
 msgstr "đánh trước"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:178
+#: data/core/macros/weapon_specials.cfg:213
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "Đơn vị này luôn đánh trước với đòn này, kể cả khi đang phòng thủ."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:189
+#: data/core/macros/weapon_specials.cfg:224
 #, fuzzy
 #| msgid ""
 #| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -6684,19 +6744,19 @@ msgstr ""
 "máu. Bản thân chất độc không thể giết một đơn vị."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:199
+#: data/core/macros/weapon_specials.cfg:234
 msgid "stun"
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:200
+#: data/core/macros/weapon_specials.cfg:235
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:201
+#: data/core/macros/weapon_specials.cfg:236
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -6708,19 +6768,19 @@ msgstr ""
 "thiệt hại từ đòn tấn công của chúng đến khi chúng kết thúc lượt."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:208
+#: data/core/macros/weapon_specials.cfg:245
 msgid "arcane"
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:209
+#: data/core/macros/weapon_specials.cfg:246
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:210
+#: data/core/macros/weapon_specials.cfg:247
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -7206,9 +7266,8 @@ msgid ""
 "in the northwest, and the great northern woods of which the Lintanir Forest "
 "is the southernmost edge.\n"
 "\n"
-"Elves are the eldest race of the continent, with the possible exception of "
-"trolls. Many of their settlements cannot be reliably dated, undoubtedly "
-"having existed for several millennia.\n"
+"Elves are among the eldest races of the continent. Many of their settlements "
+"cannot be reliably dated, undoubtedly having existed for several millennia.\n"
 "\n"
 "<header>text='Magic'</header>\n"
 "While elves are fundamentally different creatures than the fabled fair folk, "
@@ -7738,25 +7797,50 @@ msgstr ""
 "vật có trí tuệ. Hầu hết các đơn vị máy móc không tự di chuyển cũng không suy "
 "nghĩ, nhưng một số có thể làm thế nhờ bùa mê phép thuật."
 
-#. [race]: id=merman
+#. [race]: id=ship
 #: data/core/units.cfg:294
+#, fuzzy
+#| msgid "race^Saurian"
+msgid "race^Ship"
+msgstr "Thằn lằn"
+
+#. [race]: id=ship
+#: data/core/units.cfg:295
+#, fuzzy
+#| msgid "race+plural^Khalifate"
+msgid "race+plural^Ships"
+msgstr "Khalifate"
+
+#. [race]: id=ship
+#: data/core/units.cfg:296
+msgid ""
+"Ships are not living beings, but they are crafted and (usually) controlled "
+"by living beings. Although inanimate objects, they are very dear to their "
+"masters, needing care and attention in return for providing sustenance and "
+"protection. For this reason, most are given names and attributed traits. "
+"Those traits may be technical or they may simply reflect the collective "
+"attitude of the crew, but they are real."
+msgstr ""
+
+#. [race]: id=merman
+#: data/core/units.cfg:310
 msgid "race^Merman"
 msgstr "Người cá"
 
 #. [race]: id=merman
-#: data/core/units.cfg:295
+#: data/core/units.cfg:311
 msgid "race^Mermaid"
 msgstr "Người cá"
 
 #. [race]: id=merman
-#: data/core/units.cfg:296
+#: data/core/units.cfg:312
 #, fuzzy
 #| msgid "race^Troll"
 msgid "race^Merfolk"
 msgstr "Quỷ núi"
 
 #. [race]: id=merman
-#: data/core/units.cfg:298
+#: data/core/units.cfg:314
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -7779,22 +7863,22 @@ msgstr ""
 "phải vật lộn để di chuyển qua địa hình rừng hoặc gồ ghề."
 
 #. [race]: id=monster
-#: data/core/units.cfg:306
+#: data/core/units.cfg:322
 msgid "race^Monster"
 msgstr "Quái vật"
 
 #. [race]: id=monster
-#: data/core/units.cfg:307
+#: data/core/units.cfg:323
 msgid "race+female^Monster"
 msgstr "Quái vật"
 
 #. [race]: id=monster
-#: data/core/units.cfg:308
+#: data/core/units.cfg:324
 msgid "race^Monsters"
 msgstr "Quái vật"
 
 #. [race]: id=monster
-#: data/core/units.cfg:309
+#: data/core/units.cfg:325
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -7806,22 +7890,22 @@ msgstr ""
 "dân."
 
 #. [race]: id=naga
-#: data/core/units.cfg:316
+#: data/core/units.cfg:332
 msgid "race^Naga"
 msgstr "Người rắn"
 
 #. [race]: id=naga
-#: data/core/units.cfg:317
+#: data/core/units.cfg:333
 msgid "race^Nagini"
 msgstr "Người rắn"
 
 #. [race]: id=naga
-#: data/core/units.cfg:318
+#: data/core/units.cfg:334
 msgid "race^Nagas"
 msgstr "Người rắn"
 
 #. [race]: id=naga
-#: data/core/units.cfg:319
+#: data/core/units.cfg:335
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -7853,22 +7937,22 @@ msgstr ""
 "trống trải."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:327
+#: data/core/units.cfg:343
 msgid "race^Ogre"
 msgstr "Quỷ khổng lồ"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:328
+#: data/core/units.cfg:344
 msgid "race+female^Ogre"
 msgstr "Quỷ khổng lồ"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:329
+#: data/core/units.cfg:345
 msgid "race^Ogres"
 msgstr "Quỷ khổng lồ"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:330
+#: data/core/units.cfg:346
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -7901,22 +7985,22 @@ msgstr ""
 "hội qua lại."
 
 #. [race]: id=orc
-#: data/core/units.cfg:338
+#: data/core/units.cfg:354
 msgid "race^Orc"
 msgstr "Người thú"
 
 #. [race]: id=orc
-#: data/core/units.cfg:339
+#: data/core/units.cfg:355
 msgid "race+female^Orc"
 msgstr "Người thú"
 
 #. [race]: id=orc
-#: data/core/units.cfg:340
+#: data/core/units.cfg:356
 msgid "race^Orcs"
 msgstr "Người thú"
 
 #. [race]: id=orc
-#: data/core/units.cfg:341
+#: data/core/units.cfg:357
 #, fuzzy
 #| msgid ""
 #| "In appearance, orcs are half men and half beasts. They are taller, "
@@ -8085,7 +8169,7 @@ msgstr ""
 "môn hóa các kỹ năng khác, như bắn cung hoặc ám sát."
 
 #. [race]: id=orc
-#: data/core/units.cfg:352
+#: data/core/units.cfg:368
 msgid ""
 "\n"
 "\n"
@@ -8094,28 +8178,28 @@ msgid ""
 msgstr ""
 
 #. [race]: id=raven
-#: data/core/units.cfg:361
+#: data/core/units.cfg:377
 #, fuzzy
 #| msgid "race^Dwarves"
 msgid "race^Raven"
 msgstr "Người lùn"
 
 #. [race]: id=raven
-#: data/core/units.cfg:362
+#: data/core/units.cfg:378
 #, fuzzy
 #| msgid "race+female^Drake"
 msgid "race+female^Raven"
 msgstr "Người rồng"
 
 #. [race]: id=raven
-#: data/core/units.cfg:363
+#: data/core/units.cfg:379
 #, fuzzy
 #| msgid "race^Dwarves"
 msgid "race^Ravens"
 msgstr "Người lùn"
 
 #. [race]: id=raven
-#: data/core/units.cfg:364
+#: data/core/units.cfg:380
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
@@ -8135,22 +8219,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:375
+#: data/core/units.cfg:391
 msgid "race^Troll"
 msgstr "Quỷ núi"
 
 #. [race]: id=troll
-#: data/core/units.cfg:376
+#: data/core/units.cfg:392
 msgid "race+female^Troll"
 msgstr "Quỷ núi"
 
 #. [race]: id=troll
-#: data/core/units.cfg:377
+#: data/core/units.cfg:393
 msgid "race^Trolls"
 msgstr "Quỷ núi"
 
 #. [race]: id=troll
-#: data/core/units.cfg:378
+#: data/core/units.cfg:394
 #, fuzzy
 #| msgid ""
 #| "Trolls are ancient creatures, one of the oldest known races known to "
@@ -8261,22 +8345,22 @@ msgstr ""
 "qua."
 
 #. [race]: id=undead
-#: data/core/units.cfg:398
+#: data/core/units.cfg:414
 msgid "race^Undead"
 msgstr "Ma quái"
 
 #. [race]: id=undead
-#: data/core/units.cfg:399
+#: data/core/units.cfg:415
 msgid "race+female^Undead"
 msgstr "Ma quái"
 
 #. [race]: id=undead
-#: data/core/units.cfg:400
+#: data/core/units.cfg:416
 msgid "race+plural^Undead"
 msgstr "Ma quái"
 
 #. [race]: id=undead
-#: data/core/units.cfg:401
+#: data/core/units.cfg:417
 #, fuzzy
 #| msgid ""
 #| "Undead are not really a single race of creatures, although often treated "
@@ -8363,22 +8447,22 @@ msgstr ""
 "nghe nói về chúng trước đó."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:414
+#: data/core/units.cfg:430
 msgid "race^Wolf"
 msgstr "Chó sói"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:415
+#: data/core/units.cfg:431
 msgid "race+female^Wolf"
 msgstr "Chó sói"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:416
+#: data/core/units.cfg:432
 msgid "race^Wolves"
 msgstr "Chó sói"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:417
+#: data/core/units.cfg:433
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -8390,17 +8474,17 @@ msgid ""
 msgstr ""
 
 #. [race]: id=wose
-#: data/core/units.cfg:426
+#: data/core/units.cfg:442
 msgid "race^Wose"
 msgstr "Thần rừng"
 
 #. [race]: id=wose
-#: data/core/units.cfg:427
+#: data/core/units.cfg:443
 msgid "race^Woses"
 msgstr "Thần rừng"
 
 #. [race]: id=wose
-#: data/core/units.cfg:428
+#: data/core/units.cfg:444
 #, fuzzy
 #| msgid ""
 #| "The mighty wose resides within the deepest forests of the known world. To "
@@ -8809,6 +8893,50 @@ msgstr "Chi phí tầm nhìn"
 #: src/help/help_topic_generators.cpp:781
 msgid "Jamming Cost"
 msgstr "Chi phí phá rối"
+
+#, fuzzy
+#~| msgid ""
+#~| "The Wood Elves are separate from those of the north, and have only "
+#~| "intermittent relations with them and most other countries. Its borders "
+#~| "are the Green Swamp to the northeast, the desert (not shown) to the "
+#~| "south, and the <ref>dst='great_ocean' text='Ocean'</ref> to the west.\n"
+#~| "\n"
+#~| "    • Notable cities\n"
+#~| "          ◦ None known\n"
+#~| "    • Notable land features:\n"
+#~| "          ◦ Aethen Forest: The largest southern forest, it extends far "
+#~| "to the southwest—much farther than is charted—and is home to <ref>dst='.."
+#~| "race_elf' text='elves'</ref>."
+#~ msgid ""
+#~ "<header>text='Notable land features:'</header>\n"
+#~ "    • Aethenwood: The largest southern forest, it extends far to the "
+#~ "south and is home to <ref>dst='..race_elf' text='elves'</ref>. Although "
+#~ "the elves make no such distinction, the southern part of the forest has "
+#~ "been named Southwood by denizens of Kerlath."
+#~ msgstr ""
+#~ "Các thần tiên tây nam bị cách biệt với các thần tiên phương bắc, và chỉ "
+#~ "có liên lạc rời rạc với họ cũng như hầu hết các xứ sở khác. Biên giới là "
+#~ "Đầm Lầy Xanh ở phía đông bắc, sa mạc (không vẽ) ở phía nam, và "
+#~ "<ref>dst='great_ocean' text='đại dương'</ref> ở phía tây.\n"
+#~ "\n"
+#~ "    • Các thành phố đáng chú ý\n"
+#~ "          ◦ Không có thành phố nào được biết\n"
+#~ "\n"
+#~ "    • Những vùng đất đáng chú ý:\n"
+#~ "          ◦ Rừng Aethen: Khu rừng phương nam lớn nhất, mở rộng xa về phía "
+#~ "tây nam - xa hơn nhiều hình ảnh trên bản đồ - và là nơi ở của các "
+#~ "<ref>dst='..race_elf' text='thần tiên'</ref>."
+
+#, fuzzy
+#~| msgid ""
+#~| "When used offensively, this attack always has at least a 60% chance to "
+#~| "hit."
+#~ msgid ""
+#~ "When used defensively, this attack reduces the opponent’s chance to hit "
+#~ "by 10%."
+#~ msgstr ""
+#~ "Khi được sử dụng để tấn công, đòn này luôn có cơ hội đánh trúng ít nhất "
+#~ "cũng là 60%."
 
 #~ msgid "Close"
 #~ msgstr "Đóng"
@@ -9288,9 +9416,6 @@ msgstr "Chi phí phá rối"
 
 #~ msgid "race+female^Khalifate Human"
 #~ msgstr "Con người Khalifate"
-
-#~ msgid "race+plural^Khalifate"
-#~ msgstr "Khalifate"
 
 #~ msgid "female^nightstalk"
 #~ msgstr "săn đêm"

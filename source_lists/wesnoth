@@ -61,7 +61,6 @@ animated.cpp
 attack_prediction.cpp
 build_info.cpp
 carryover.cpp
-carryover_show_gold.cpp
 chat_command_handler.cpp
 chat_events.cpp
 chat_log.cpp
@@ -170,6 +169,7 @@ gui/core/window_builder/helper.cpp
 gui/core/window_builder/instance.cpp
 gui/dialogs/achievements_dialog.cpp
 gui/dialogs/addon/addon_auth.cpp
+gui/dialogs/addon/addon_server_info.cpp
 gui/dialogs/addon/connect.cpp
 gui/dialogs/addon/install_dependencies.cpp
 gui/dialogs/addon/license_prompt.cpp
@@ -261,10 +261,7 @@ gui/dialogs/tooltip.cpp
 gui/dialogs/transient_message.cpp
 gui/dialogs/unit_advance.cpp
 gui/dialogs/unit_attack.cpp
-gui/dialogs/unit_create.cpp
-gui/dialogs/unit_list.cpp
-gui/dialogs/unit_recall.cpp
-gui/dialogs/unit_recruit.cpp
+gui/dialogs/units_dialog.cpp
 gui/dialogs/wml_error.cpp
 gui/dialogs/wml_message.cpp
 gui/gui.cpp
@@ -366,7 +363,6 @@ synced_checkup.cpp
 synced_commands.cpp
 synced_context.cpp
 synced_user_choice.cpp
-syncmp_handler.cpp
 team.cpp
 teambuilder.cpp
 terrain/filter.cpp
@@ -388,6 +384,7 @@ units/race.cpp
 units/types.cpp
 units/udisplay.cpp
 units/unit.cpp
+utils/charconv.cpp
 utils/config_filters.cpp
 utils/context_free_grammar_generator.cpp
 utils/irdya_datetime.cpp

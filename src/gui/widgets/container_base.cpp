@@ -221,13 +221,13 @@ const widget* container_base::find_at(const point& coordinate,
 	return grid_.find_at(coordinate, must_be_active);
 }
 
-widget* container_base::find(const std::string& id, const bool must_be_active)
+widget* container_base::find(const std::string_view id, const bool must_be_active)
 {
 	widget* result = styled_widget::find(id, must_be_active);
 	return result ? result : grid_.find(id, must_be_active);
 }
 
-const widget* container_base::find(const std::string& id,
+const widget* container_base::find(const std::string_view id,
 								 const bool must_be_active) const
 {
 	const widget* result = styled_widget::find(id, must_be_active);
@@ -275,10 +275,9 @@ point container_base::border_space() const
 
 void container_base::inject_linked_groups()
 {
-	for(const auto& lg : get_config()->linked_groups) {
-		if(!get_window()->has_linked_size_group(lg.id)) {
-			get_window()->init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
-		}
+	for(const auto& [id, fixed_width, fixed_height] : get_config()->linked_groups) {
+		// No-op if group with this ID already exists
+		get_window()->init_linked_size_group(id, fixed_width, fixed_height);
 	}
 }
 

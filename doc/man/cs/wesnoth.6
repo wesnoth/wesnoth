@@ -44,6 +44,10 @@ s\ ostatními.
 .SH VOLBY
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 V\ seznamu pro výběr jazyka uvnitř hry ukázat všechny překlady, i\ když jsou
 považovány za nedostatečně hotové.
@@ -170,10 +174,6 @@ a\ tato volba ji zapíná. Tohle je velmi experimentální. Nevyplňuj žádná
 chybová hlášení, protože o\ většině chyb se ví. Část této knihovny je
 považována za stabilní a\ bude pracovat bez tohoto přepínače.
 .TP 
-\fB\-\-nodelay\fP
-spustí hru bez jakýchkoli zpoždění pro otestování grafiky. Tohle je
-automaticky zapnuto volbou \fB\-\-nogui\fP.
-.TP 
 \fB\-\-noaddons\fP
 vypne načtení uživatelských rozšíření.
 .TP 
@@ -204,9 +204,9 @@ při připojování k\ serveru použije \fIheslo\fP a\ nevšímá si jiných
 nastavení. Riskantní.
 .TP 
 \fB\-\-plugin\fP\fI\ skript\fP
-(experimentální) načte \fIskript\fP, který definuje zásuvný modul
-Wesnothu. Podobné volbě \fB\-\-script\fP, ale Lua soubor by měl vrátit funkci,
-která poběží jako koprogram a\ bude pravidelně probouzena aktualizacemi.
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ výchozí\-soubor\fP\fB\ \fP\fIsoubor\-se\-záplatou\fP
 použije na WML soubor DiffWML záplatu. Žádný ze souborů
@@ -222,22 +222,26 @@ předzpracována před zadanými zdroji. Příklad: \fB\-p ~/wesnoth/data/campai
 se preprocesoru navštiv:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ zdrojový\-retězec\fP
+předzpracuje zadaný řetězec a\ výsledek vypíše na standardní výstup.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINICE1\fP\fB,\fP\fIDEFINICE2\fP\fB,\fP\fI...\fP
-seznam definic oddělených čárkami, které budou použity příkazem
-\fB\-\-preprocess\fP. Pokud je v\ seznamu definic \fBSKIP_CORE\fP, nebude
-předzpracován adresář „data/core“.
+seznam definic oddělených čárkami, které budou použity příkazy
+\fB\-\-preprocess\fP nebo \fB\-\-preprocess\-string\fP. Pokud je v\ seznamu definic
+\fBSKIP_CORE\fP, nebude předzpracován adresář „data/core“.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ zdrojový\-soubor\fP
-použito pouze příkazem \fB\-\-preprocess\fP. Určuje soubor, který obsahuje značky
-\fB[preproc_define]\fP, pro začlenění definic dříve, než se spustí
-předzpracování.
+použito pouze příkazy \fB\-\-preprocess\fP nebo \fB\-\-preprocess\-string\fP. Určuje
+soubor, který obsahuje značky \fB[preproc_define]\fP, pro začlenění definic
+dříve, než se spustí předzpracování.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=cílový\-soubor\fP\fB]\fP
-použito pouze příkazem \fB\-\-preprocess\fP. Zapíše všechna předzpracovaná makra
-do cílového souboru. Pokud soubor není určen, bude výstupem soubor
-„_MACROS_.cfg“ v\ cílovém adresáři příkazu preprocess. Výstupní soubor může
-být předán volbě \fB\-\-preprocess\-input\-macros\fP. Tento přepínač by měl být
-napsán před příkazem \fB\-\-preprocess\fP.
+použito pouze příkazem \fB\-\-preprocess\fP (ne však příkazem
+\fB\-\-preprocess\-string\fP). Zapíše všechna předzpracovaná makra do cílového
+souboru. Pokud soubor není určen, bude výstupem soubor „_MACROS_.cfg“
+v\ cílovém adresáři příkazu preprocess. Výstupní soubor může být předán volbě
+\fB\-\-preprocess\-input\-macros\fP. Tento přepínač by měl být napsán před příkazem
+\fB\-\-preprocess\fP.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 nastaví rozlišení obrazovky. Příklad: \fB\-r\fP \fB800x600\fP.
@@ -257,9 +261,6 @@ inicializuje generátor náhodných čísel semínkem \fIčíslo\fP. Příklad:
 .TP 
 \fB\-\-screenshot\fP\fI\ mapa\fP\fB\ \fP\fIvýstup\fP
 uloží snímek mapy \fImapa\fP do souboru \fIvýstup\fP, aniž inicializuje obrazovku.
-.TP 
-\fB\-\-script\fP\fI\ soubor\fP
-(experimentální) \fIsoubor\fP obsahující Lua skript na ovládání klienta.
 .TP 
 \fB\-s[\fP\fIhostitel\fP\fB],\ \-\-server[\fP\fI=hostitel\fP\fB]\fP
 připojí se k\ hostiteli, pokud je nějaký zadán, jinak se připojí k\ prvnímu

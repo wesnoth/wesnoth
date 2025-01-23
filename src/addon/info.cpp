@@ -233,10 +233,13 @@ std::string addon_info::display_icon() const
 {
 	std::string ret = icon;
 
+	// make sure it's set to something when there are issues
+	// otherwise display errors will spam the log while the add-ons manager is open
 	if(ret.empty()) {
-		ERR_AC << "add-on '" << id << "' doesn't have an icon path set";
-	} else if(!image::exists(image::locator{ret})) {
+		ret = "misc/blank-hex.png";
+	} if(!image::exists(image::locator{ret}) && !ret.empty()) {
 		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'";
+		ret = "misc/blank-hex.png";
 	} else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos) {
 		// HACK: prevent magenta icons, because they look awful
 		LOG_AC << "add-on '" << id << "' uses a unit baseframe as icon without TC/RC specifications";

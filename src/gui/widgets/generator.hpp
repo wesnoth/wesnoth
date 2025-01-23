@@ -370,7 +370,7 @@ public:
 	virtual unsigned get_ordered_index(unsigned index) const = 0;
 
 	/**
-	 * If a sort-order is being applied, maps from sorted to unsorted indicies.
+	 * If a sort-order is being applied, maps from sorted to unsorted indices.
 	 * This does not take account of whether each object is shown or not.
 	 */
 	virtual unsigned get_item_at_ordered(unsigned index_ordered) const = 0;

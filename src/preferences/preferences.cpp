@@ -1752,13 +1752,13 @@ compression::format prefs::save_compression_format()
 	return compression::format::gzip;
 }
 
-std::string prefs::get_chat_timestamp(const std::time_t& t)
+std::string prefs::get_chat_timestamp(const std::chrono::system_clock::time_point& t)
 {
 	if(chat_timestamp()) {
 		if(use_twelve_hour_clock_format() == false) {
-			return lg::get_timestamp(t, _("[%H:%M]")) + " ";
+			return chrono::format_local_timestamp(t, _("[%H:%M]")) + " ";
 		} else {
-			return lg::get_timestamp(t, _("[%I:%M %p]")) + " ";
+			return chrono::format_local_timestamp(t, _("[%I:%M %p]")) + " ";
 		}
 	}
 
@@ -1932,15 +1932,15 @@ preferences::secure_buffer prefs::aes_encrypt(const preferences::secure_buffer& 
 	if(!ctx)
 	{
 		ERR_CFG << "AES EVP_CIPHER_CTX_new failed with error:";
-		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		ERR_CFG << ERR_error_string(ERR_get_error(), nullptr);
 		return preferences::secure_buffer();
 	}
 
 	// TODO: use EVP_EncryptInit_ex2 once openssl 3.0 is more widespread
-	if(EVP_EncryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, key.data(), iv) != 1)
+	if(EVP_EncryptInit_ex(ctx, EVP_aes_256_cbc(), nullptr, key.data(), iv) != 1)
 	{
 		ERR_CFG << "AES EVP_EncryptInit_ex failed with error:";
-		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		ERR_CFG << ERR_error_string(ERR_get_error(), nullptr);
 		EVP_CIPHER_CTX_free(ctx);
 		return preferences::secure_buffer();
 	}
@@ -1948,7 +1948,7 @@ preferences::secure_buffer prefs::aes_encrypt(const preferences::secure_buffer& 
 	if(EVP_EncryptUpdate(ctx, encrypted_buffer, &update_length, plaintext.data(), plaintext.size()) != 1)
 	{
 		ERR_CFG << "AES EVP_EncryptUpdate failed with error:";
-		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		ERR_CFG << ERR_error_string(ERR_get_error(), nullptr);
 		EVP_CIPHER_CTX_free(ctx);
 		return preferences::secure_buffer();
 	}
@@ -1957,7 +1957,7 @@ preferences::secure_buffer prefs::aes_encrypt(const preferences::secure_buffer& 
 	if(EVP_EncryptFinal_ex(ctx, encrypted_buffer + update_length, &extra_length) != 1)
 	{
 		ERR_CFG << "AES EVP_EncryptFinal failed with error:";
-		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		ERR_CFG << ERR_error_string(ERR_get_error(), nullptr);
 		EVP_CIPHER_CTX_free(ctx);
 		return preferences::secure_buffer();
 	}
@@ -2020,15 +2020,15 @@ preferences::secure_buffer prefs::aes_decrypt(const preferences::secure_buffer& 
 	if(!ctx)
 	{
 		ERR_CFG << "AES EVP_CIPHER_CTX_new failed with error:";
-		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		ERR_CFG << ERR_error_string(ERR_get_error(), nullptr);
 		return preferences::secure_buffer();
 	}
 
 	// TODO: use EVP_DecryptInit_ex2 once openssl 3.0 is more widespread
-	if(EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, key.data(), iv) != 1)
+	if(EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), nullptr, key.data(), iv) != 1)
 	{
 		ERR_CFG << "AES EVP_DecryptInit_ex failed with error:";
-		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		ERR_CFG << ERR_error_string(ERR_get_error(), nullptr);
 		EVP_CIPHER_CTX_free(ctx);
 		return preferences::secure_buffer();
 	}
@@ -2036,7 +2036,7 @@ preferences::secure_buffer prefs::aes_decrypt(const preferences::secure_buffer& 
 	if(EVP_DecryptUpdate(ctx, plaintext_buffer, &update_length, encrypted.data(), encrypted.size()) != 1)
 	{
 		ERR_CFG << "AES EVP_DecryptUpdate failed with error:";
-		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		ERR_CFG << ERR_error_string(ERR_get_error(), nullptr);
 		EVP_CIPHER_CTX_free(ctx);
 		return preferences::secure_buffer();
 	}
@@ -2045,7 +2045,7 @@ preferences::secure_buffer prefs::aes_decrypt(const preferences::secure_buffer& 
 	if(EVP_DecryptFinal_ex(ctx, plaintext_buffer + update_length, &extra_length) != 1)
 	{
 		ERR_CFG << "AES EVP_DecryptFinal failed with error:";
-		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		ERR_CFG << ERR_error_string(ERR_get_error(), nullptr);
 		EVP_CIPHER_CTX_free(ctx);
 		return preferences::secure_buffer();
 	}

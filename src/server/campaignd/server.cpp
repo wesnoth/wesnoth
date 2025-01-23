@@ -51,6 +51,7 @@
 #include <ctime>
 #include <iomanip>
 #include <iostream>
+#include <utility>
 
 // the fork execute is unix specific only tested on Linux quite sure it won't
 // work on Windows not sure which other platforms have a problem with it.
@@ -491,9 +492,9 @@ std::ostream& operator<<(std::ostream& o, const server::request& r)
 void server::handle_new_client(tls_socket_ptr socket)
 {
 	boost::asio::spawn(
-		io_service_, [this, socket](boost::asio::yield_context yield) { serve_requests(socket, yield); }
+		io_service_, [this, socket](boost::asio::yield_context yield) { serve_requests(socket, std::move(yield)); }
 #if BOOST_VERSION >= 108000
-		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+		, [](const std::exception_ptr& e) { if (e) std::rethrow_exception(e); }
 #endif
 	);
 }
@@ -501,9 +502,9 @@ void server::handle_new_client(tls_socket_ptr socket)
 void server::handle_new_client(socket_ptr socket)
 {
 	boost::asio::spawn(
-		io_service_, [this, socket](boost::asio::yield_context yield) { serve_requests(socket, yield); }
+		io_service_, [this, socket](boost::asio::yield_context yield) { serve_requests(socket, std::move(yield)); }
 #if BOOST_VERSION >= 108000
-		, [](std::exception_ptr e) { if (e) std::rethrow_exception(e); }
+		, [](const std::exception_ptr& e) { if (e) std::rethrow_exception(e); }
 #endif
 	);
 }
@@ -595,6 +596,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			delete_addon(addon_id);
 		}
 	} else if(ctl == "hide" || ctl == "unhide") {
+		// there are also hides/unhides handler methods
 		if(ctl.args_count() != 1) {
 			ERR_CS << "Incorrect number of arguments for '" << ctl.cmd() << "'";
 		} else {
@@ -737,7 +739,7 @@ void server::handle_sighup(const boost::system::error_code&, int)
 
 void server::flush_cfg()
 {
-	flush_timer_.expires_from_now(std::chrono::minutes(10));
+	flush_timer_.expires_after(std::chrono::minutes(10));
 	flush_timer_.async_wait(std::bind(&server::handle_flush, this, std::placeholders::_1));
 }
 
@@ -943,6 +945,12 @@ void server::register_handlers()
 	REGISTER_CAMPAIGND_HANDLER(upload);
 	REGISTER_CAMPAIGND_HANDLER(delete);
 	REGISTER_CAMPAIGND_HANDLER(change_passphrase);
+	REGISTER_CAMPAIGND_HANDLER(hide_addon);
+	REGISTER_CAMPAIGND_HANDLER(unhide_addon);
+	REGISTER_CAMPAIGND_HANDLER(list_hidden);
+	REGISTER_CAMPAIGND_HANDLER(addon_downloads_by_version);
+	REGISTER_CAMPAIGND_HANDLER(forum_auth_usage);
+	REGISTER_CAMPAIGND_HANDLER(admins_list);
 }
 
 void server::handle_server_id(const server::request& req)
@@ -1045,6 +1053,11 @@ void server::handle_request_campaign_list(const server::request& req)
 		// Remove attributes containing information that's considered sensitive
 		// or irrelevant to clients
 		j.remove_attributes("passphrase", "passhash", "passsalt", "upload_ip", "email");
+
+		// don't include icons if requested
+		if(!req.cfg["send_icons"].to_bool(true)) {
+			j.remove_attribute("icon");
+		}
 
 		// Build a feedback_url string attribute from the internal [feedback]
 		// data or deliver an empty value, in case clients decide to assume its
@@ -1338,6 +1351,13 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 				return ADDON_CHECK_STATUS::USER_DOES_NOT_EXIST;
 			}
 
+			for(const std::string& primary_author : utils::split(upload["primary_authors"].str(), ',')) {
+				if(!user_handler_->user_exists(primary_author)) {
+					LOG_CS << "Validation error: forum auth requested for a primary author who doesn't exist";
+					return ADDON_CHECK_STATUS::USER_DOES_NOT_EXIST;
+				}
+			}
+
 			for(const std::string& secondary_author : utils::split(upload["secondary_authors"].str(), ',')) {
 				if(!user_handler_->user_exists(secondary_author)) {
 					LOG_CS << "Validation error: forum auth requested for a secondary author who doesn't exist";
@@ -1401,6 +1421,11 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 	if(upload["title"].empty()) {
 		LOG_CS << "Validation error: no add-on title specified";
 		return ADDON_CHECK_STATUS::NO_TITLE;
+	}
+
+	if(addon_icon_too_large(upload["icon"].str())) {
+		LOG_CS << "Validation error: icon too large";
+		return ADDON_CHECK_STATUS::ICON_TOO_LARGE;
 	}
 
 	if(is_text_markup_char(upload["title"].str()[0])) {
@@ -1522,7 +1547,7 @@ void server::handle_upload(const server::request& req)
 	// Write general metadata attributes
 
 	addon.copy_or_remove_attributes(upload,
-		"title", "name", "uploader", "author", "secondary_authors", "description", "version", "icon",
+		"title", "name", "uploader", "author", "primary_authors", "secondary_authors", "description", "version", "icon",
 		"translate", "dependencies", "core", "type", "tags", "email", "forum_auth"
 	);
 
@@ -1564,7 +1589,7 @@ void server::handle_upload(const server::request& req)
 				// if p1 is primary, p2 is secondary, and p2 uploads, then this is skipped because the uploader is not the primary author
 				// if next time p2 is primary, p1 is secondary, and p1 uploads, then p1 is both uploader and secondary author
 				//   therefore p2's author information would not be reinserted if the uploader attribute were used instead
-				user_handler_->db_insert_addon_authors(server_id_, name, addon["author"].str(), utils::split(addon["secondary_authors"].str(), ','));
+				user_handler_->db_insert_addon_authors(server_id_, name, utils::split(addon["primary_authors"].str(), ','), utils::split(addon["secondary_authors"].str(), ','));
 			}
 		}
 		user_handler_->db_insert_addon_info(server_id_, name, addon["title"].str(), addon["type"].str(), addon["version"].str(), addon["forum_auth"].to_bool(), topic_id, upload["uploader"].str());
@@ -1861,8 +1886,6 @@ void server::handle_delete(const server::request& req)
 	LOG_CS << req << "Deleting add-on '" << id << "'";
 
 	auto addon = get_addon(id);
-	PLAIN_LOG << erase.debug() << "\n\n" << addon->debug();
-
 	if(!addon) {
 		send_error("The add-on does not exist.", req.sock);
 		return;
@@ -1875,15 +1898,22 @@ void server::handle_delete(const server::request& req)
 		return;
 	}
 
-	if(!addon["forum_auth"].to_bool()) {
-		if(!authenticate(*addon, pass)) {
+	if(erase["admin"].to_bool()) {
+		if(!authenticate_admin(erase["uploader"].str(), pass.str())) {
 			send_error("The passphrase is incorrect.", req.sock);
 			return;
 		}
 	} else {
-		if(!authenticate_forum(erase, pass, true)) {
-			send_error("The passphrase is incorrect.", req.sock);
-			return;
+		if(addon["forum_auth"].to_bool()) {
+			if(!authenticate_forum(erase, pass, true)) {
+				send_error("The passphrase is incorrect.", req.sock);
+				return;
+			}
+		} else {
+			if(!authenticate(*addon, pass)) {
+				send_error("The passphrase is incorrect.", req.sock);
+				return;
+			}
 		}
 	}
 
@@ -1929,6 +1959,144 @@ void server::handle_change_passphrase(const server::request& req)
 	}
 }
 
+// the fifo handler also hides add-ons
+void server::handle_hide_addon(const server::request& req)
+{
+	std::string addon_id = req.cfg["addon"].str();
+	std::string username = req.cfg["username"].str();
+	std::string passphrase = req.cfg["passphrase"].str();
+
+	auto addon = get_addon(addon_id);
+
+	if(!addon) {
+		ERR_CS << "Add-on '" << addon_id << "' not found, cannot hide";
+		send_error("The add-on was not found.", req.sock);
+		return;
+	} else {
+		if(!authenticate_admin(username, passphrase)) {
+			send_error("The passphrase is incorrect.", req.sock);
+			return;
+		}
+
+		addon["hidden"] = true;
+		mark_dirty(addon_id);
+		write_config();
+		LOG_CS << "Add-on '" << addon_id << "' is now hidden";
+	}
+
+	send_message("Add-on hidden.", req.sock);
+}
+
+// the fifo handler also unhides add-ons
+void server::handle_unhide_addon(const server::request& req)
+{
+	std::string addon_id = req.cfg["addon"].str();
+	std::string username = req.cfg["username"].str();
+	std::string passphrase = req.cfg["passphrase"].str();
+
+	auto addon = get_addon(addon_id);
+
+	if(!addon) {
+		ERR_CS << "Add-on '" << addon_id << "' not found, cannot unhide";
+		send_error("The add-on was not found.", req.sock);
+		return;
+	} else {
+		if(!authenticate_admin(username, passphrase)) {
+			send_error("The passphrase is incorrect.", req.sock);
+			return;
+		}
+
+		addon["hidden"] = false;
+		mark_dirty(addon_id);
+		write_config();
+		LOG_CS << "Add-on '" << addon_id << "' is now unhidden";
+	}
+
+	send_message("Add-on unhidden.", req.sock);
+}
+
+void server::handle_list_hidden(const server::request& req)
+{
+	config response;
+	std::string username = req.cfg["username"].str();
+	std::string passphrase = req.cfg["passphrase"].str();
+
+	if(!authenticate_admin(username, passphrase)) {
+		send_error("The passphrase is incorrect.", req.sock);
+		return;
+	}
+
+	for(const auto& addon : addons_) {
+		if(addon.second["hidden"].to_bool()) {
+			config& child = response.add_child("hidden");
+			child["addon"] = addon.second["name"].str();
+		}
+	}
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+}
+
+void server::handle_addon_downloads_by_version(const server::request& req)
+{
+	config response;
+
+	if(user_handler_) {
+		response = user_handler_->db_get_addon_downloads_info(server_id_, req.cfg["addon"].str());
+	}
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+}
+
+void server::handle_forum_auth_usage(const server::request& req)
+{
+	config response;
+
+	if(user_handler_) {
+		response = user_handler_->db_get_forum_auth_usage(server_id_);
+	}
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+}
+
+void server::handle_admins_list(const server::request& req)
+{
+	config response;
+
+	if(user_handler_) {
+		response = user_handler_->db_get_addon_admins();
+	}
+
+	std::ostringstream ostr;
+	write(ostr, response);
+
+	const auto& wml = ostr.str();
+	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
+	doc.compress();
+
+	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, req.sock);
+}
+
 bool server::authenticate_forum(const config& addon, const std::string& passphrase, bool is_delete) {
 	if(!user_handler_) {
 		return false;
@@ -1952,6 +2120,18 @@ bool server::authenticate_forum(const config& addon, const std::string& passphra
 	std::string hashed_password = hash_password(passphrase, salt, author);
 
 	return user_handler_->login(author, hashed_password);
+}
+
+bool server::authenticate_admin(const std::string& username, const std::string& passphrase)
+{
+	if(!user_handler_ || !user_handler_->user_is_addon_admin(username)) {
+		return false;
+	}
+
+	std::string salt = user_handler_->extract_salt(username);
+	std::string hashed_password = hash_password(passphrase, salt, username);
+
+	return user_handler_->login(username, hashed_password);
 }
 
 } // end namespace campaignd

@@ -227,7 +227,7 @@ private:
 	virtual void pre_show() override;
 
 	/** Handles dialog exit events and decides whether to proceed or not. */
-	bool on_exit(window& window);
+	bool on_exit();
 	/** Handles file/directory selection on single-click. */
 	void on_row_selected();
 	/** Handles selection or deselection of bookmarks. */

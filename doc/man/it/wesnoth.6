@@ -46,6 +46,10 @@ con gli altri.
 .SH OPZIONI
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 Mostra tutte le traduzioni disponibili nella lista dei linguaggi di gioco,
 anche se non hanno un sufficiente livello di completezza.
@@ -69,7 +73,7 @@ Salta le schermate [storia] e i dialoghi fino alla fine dell’evento
 \fB\-\-clock\fP
 Aggiunge l’opzione per mostrare un orologio per testare il drawing
 timer. Aggiunge anche l’opzione per mostrare un orologio per mostrare i
-dialoghi test dell'interfaccia grafica.
+dialoghi test dell’interfaccia grafica.
 .TP 
 \fB\-\-core\fP\fI\ identificatore\fP
 sostituisce la directory base caricata con quella specificata
@@ -92,7 +96,7 @@ abilita alcuni meccanismi di debug Lua
 \fB\-\-strict\-lua\fP
 non permette di utilizzare chiamate Lua API deprecate
 .TP 
-\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ file\-sinistro\fP\fB\ \fP\fIfile\-destro\fP
 esegue una differenza tra due file WML, senza prima pre\-processarli (per
 farlo, eseguili prima con \fB\-p\fP). La differenza verrà stampata come u file
 di tipo DiffWML nell’uscita standard o nel file indicato dall’opzione
@@ -156,7 +160,7 @@ il registro di output è scritto in un file. Annulla l’effetto di
 \-\-no\-log\-to\-file implicito o esplicito.
 .TP 
 \fB\-\-no\-log\-sanitize\fP
-disabilita l'anonimizzazione che viene normalmente applicata nella
+disabilita l’anonimizzazione che viene normalmente applicata nella
 memorizzazione dei log, ad esempio sostituendo i nomi utente con un generico
 USER.
 .TP 
@@ -182,10 +186,6 @@ se c’è un nuovo widget toolkit WIP, questa opzione lo abilita. Questo è
 molto sperimentale, perciò non sottomettete bugs perché la maggior parte di
 loro è già nota. Parti della libreria sono considerate stabili e
 funzioneranno senza questa opzione.
-.TP 
-\fB\-\-nodelay\fP
-esegue il gioco senza ritardi per determinare le prestazioni grafiche del
-sistema. Questa opzione è abilitata automaticamente da \fB\-\-nogui\fP.
 .TP 
 \fB\-\-noaddons\fP
 disabilita il caricamento delle estensioni utente.
@@ -219,12 +219,11 @@ utilizza \fIpassword\fP per la connessione ad un server, ignorando le altre
 scelte. Opzione non sicura.
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-(sperimentale) carica uno \fIscript\fP che definisce un plugin Wesnoth. Simile
-a \fB\-\-script\fP, ma il file Lua dovrebbe restituire un funzione che verrà
-eseguita come una coroutine e periodicamente risvegliata con gli
-aggiornamenti.
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
-\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+\fB\-P,\ \-\-patch\fP\fI\ file\-base\fP\fB\ \fP\fIfile\-correzione\fP
 applica un file correzione DiffWML ad un file WML, senza pre\-processare
 nessuno dei due. Restituisce il file WML modificato nell’uscita standard o
 nel file indicato da \fI\-\-output\fP.
@@ -239,29 +238,33 @@ risorse specificate. Esempio: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result\
 consultare
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ stringa\-sorgente\fP
+pre\-processa una stringa data e scrive il suo esito in stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-lista di definizioni separate da una virgola per il comando
-\fB\-\-preprocess\fP. Se il valore \fBSKIP_CORE\fP è presente nella lista di
-definizioni della directory "data/core", la directory stessa non sarà
+lista di definizioni separate da una virgola per il comando \fB\-\-preprocess\fP
+o \fB\-\-preprocess\-string\fP. Se il valore \fBSKIP_CORE\fP è presente nella lista
+di definizioni della directory "data/core", la directory stessa non sarà
 processata.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ file sorgente\fP
-usato soltanto dal comando \fB\-preprocess\fP. Specifica il file che contiene i
-\fB[preproc_define]\fP che devono essere inclusi prima del preprocessing.
+usato soltanto dal comando \fB\-preprocess\fP o
+\fB\-\-preprocess\-string\fP. Specifica il file che contiene i \fB[preproc_define]\fP
+che devono essere inclusi prima del preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=file\-destinazione\fP\fB]\fP
-usato soltanto dal comando \fB\-preprocess\fP. Stamperà tutte le macro
-preprocessate nel file destinazione. Se il file non viene specificato verrà
-utilizzato il file “_MACROS_.cfg” nella directory destinazione del comando
-di preprocess. Il file in uscita può essere passato a
-\fB\-\-preprocess\-input\-macros\fP. Questo parametro deve essere immesso prima del
-comando \fB\-preprocess\fP.
+usato soltanto dal comando \fB\-preprocess\fP (ma non dal comando
+\fB\-\-preprocess\-string\fP ). Stamperà tutte le macro preprocessate nel file
+destinazione. Se il file non viene specificato verrà utilizzato il file
+“_MACROS_.cfg” nella directory destinazione del comando di preprocess. Il
+file in uscita può essere passato a \fB\-\-preprocess\-input\-macros\fP. Questo
+parametro deve essere immesso prima del comando \fB\-preprocess\fP.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 imposta la risoluzione dello schermo. Esempio:\fB\-r\fP \fB800x600\fP.
 .TP 
 \fB\-\-render\-image\fP\fI\ immagine\fP\fB\ \fP\fIoutput\fP
-prende una stringa valida 'image path string' con funzioni immagine per
+prende una stringa valida «image path string» con funzioni immagine per
 wesnoth e restituisce un file in formato .png. Le funzioni per cartella
 immagini sono documentate in https://wiki.wesnoth.org/ImagePathFunctionWML.
 .TP 
@@ -276,10 +279,6 @@ esempio:\fB\-\-rng\-seed\fP \fB0\fP.
 \fB\-\-screenshot\fP\fI\ mappa\fP\fB\ \fP\fIoutput\fP
 salva una schermata della \fImappa\fP nel file \fIoutput\fP senza inizializzare
 uno schermo.
-.TP 
-\fB\-\-script\fP\fI\ file\fP
-(sperimentale) \fIfile\fP contenente uno script Lua per il controllo del
-client.
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 si connette al server specificato se fornito, se no si connette al primo
@@ -312,8 +311,8 @@ caricare qualsiasi package. Non abilitarlo per degli script non verificati!
 Questa azione consegna alla lua gli stessi permessi dell’eseguibile di
 wesnoth.
 .TP 
-\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
-sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
+\fB\-S,\ \-\-use\-schema\fP\fI\ percorso\fP
+imposta lo schema WML da utilizzare con \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ nome\fP
 imposta la directory dei dati dell’utente a \fInome\fP sotto $HOME o "My
@@ -339,7 +338,7 @@ valida il WML di una specifica estensione durante il gioco.
 \fB\-\-validate\-core\fP
 valida in nucleo WML durante il gioco.
 .TP 
-\fB\-\-validate\-schema\fP\fI\ path\fP
+\fB\-\-validate\-schema\fP\fI\ percorso\fP
 valida un file come schema WML.
 .TP 
 \fB\-\-validcache\fP

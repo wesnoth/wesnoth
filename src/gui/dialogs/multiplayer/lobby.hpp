@@ -127,8 +127,6 @@ private:
 
 	void skip_replay_changed_callback();
 
-	bool exit_hook(window& window);
-
 	static bool logout_prompt();
 
 	virtual const std::string& window_id() const override;

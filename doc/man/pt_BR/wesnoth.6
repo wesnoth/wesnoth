@@ -43,6 +43,10 @@ unidades, cenários e campanhas e compartilhe\-os com os outros.
 .SH OPÇÕES
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 Mostra todas as traduções na lista de seleção de línguas do jogo, mesmo que
 elas não sejam consideradas como suficientemente completas.
@@ -166,10 +170,6 @@ habilita\-o. Isto é muito experimental, portanto não relate bugs pois a
 maioria deles já são conhecidos. Partes da biblioteca são consideradas
 estáveis e funcionarão sem esta troca.
 .TP 
-\fB\-\-nodelay\fP
-executa o jogo sem atrasos para benchmark de gráficos. Isto é ativado
-automaticamente pela opção \fB\-\-nogui\fP.
-.TP 
 \fB\-\-noaddons\fP
 desabilida o carregamento de addons de usuários.
 .TP 
@@ -201,9 +201,9 @@ usa \fIpassword\fP quando conectar a um servidor, ignorando as outras
 preferências. Perigoso.
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-(experimental)carrega um \fIscript\fP que define um plugin para o
-wesnoth. Identico ao \fB\-\-script\fP, mas arquivos Lua devem retornar uma função
-que irá agir como uma co\-rotina e periodicamente despertar com atualizações.
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 aplica um patch DiffWML para um arquivo WML; não pré\-processa nenhum dos
@@ -219,22 +219,26 @@ comuns do diretório "data/core/macros" serão pré\-processados antes dos
 recursos especificados.  Exemplo: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP Para mais detalhes sobre o Pré\-processador, visite:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-vírgula separada lista as definições para serem usadas pelo \fB\-\-preprocess\fP
-comando. Se \fBSKIP_CORE\fP estiver na lista de definição, o diretório
-"data/core" não será pré\-processado.
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
-usado apenas pelo comando \fB\-\-preprocess\fP. Específica um arquivo que
-contenha \fB[preproc_define]\fP para ser incluido antes do processamento.
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
-usado apenas pelo comando \fB\-\-preprocess\fP. Colocará todos os macros
-processados no arquivo alvo. Se o arquivo não for especificado, o resultado
-será arquvio '_MACROS_.cfg' no diretório alvo do comando do
-pré\-processador. O arquivo resultante pode ser passado para
-\fB\-\-preprocess\-input\-macros\fP.  Esta opção deve ser digitada antes do comando
-\fB\-\-preprocess\fP.
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 define a resolução da tela. Exemplo: \fB\-r\fP \fB800x600\fP.
@@ -254,9 +258,6 @@ preenche o gerador de números aleatórios com \fInumber\fP.  Exemplo:
 .TP 
 \fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
 salva uma screenshot de \fImap\fP para \fIoutput\fP sem iniciar a tela.
-.TP 
-\fB\-\-script\fP\fI\ file\fP
-(experimental)  \fIfile\fP contem um script Lua para controlar o cliente.
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 conecta com o host especificado, caso um tenha sido especificado. Caso

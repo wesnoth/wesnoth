@@ -129,26 +129,21 @@ static void verify(const unit_map& units, const config& cfg) {
 	LOG_REPLAY << "verification passed";
 }
 
-static std::time_t get_time(const config &speak)
+static std::chrono::system_clock::time_point get_time(const config& speak)
 {
-	std::time_t time;
-	if (!speak["time"].empty())
-	{
-		std::stringstream ss(speak["time"].str());
-		ss >> time;
+	if(!speak["time"].empty()) {
+		return chrono::parse_timestamp(speak["time"]);
+	} else {
+		// fallback in case sender uses wesnoth that doesn't send timestamps
+		return std::chrono::system_clock::now();
 	}
-	else
-	{
-		//fallback in case sender uses wesnoth that doesn't send timestamps
-		time = std::time(nullptr);
-	}
-	return time;
 }
 
 chat_msg::chat_msg(const config &cfg)
 	: color_()
 	, nick_()
 	, text_(cfg["message"].str())
+	, time_(get_time(cfg))
 {
 	if(cfg["team_name"].empty() && cfg["to_sides"].empty())
 	{
@@ -163,17 +158,6 @@ chat_msg::chat_msg(const config &cfg)
 	} else {
 		color_ = team::get_side_highlight_pango(side);
 	}
-	time_ = get_time(cfg);
-	/*
-	} else if (side==1) {
-		color_ = "red";
-	} else if (side==2) {
-		color_ = "blue";
-	} else if (side==3) {
-		color_ = "green";
-	} else if (side==4) {
-		color_ = "purple";
-		}*/
 }
 
 chat_msg::~chat_msg()
@@ -689,11 +673,6 @@ bool replay::add_start_if_not_there_yet()
 	}
 }
 
-static void show_oos_error_error_function(const std::string& message)
-{
-	replay::process_error(message);
-}
-
 REPLAY_ACTION_TYPE get_replay_action_type(const config& command)
 {
 	if(command.all_children_count() != 1) {
@@ -771,7 +750,8 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				DBG_REPLAY << "tried to add a chat message twice.";
 				if (!resources::controller->is_skipping_replay() || is_whisper) {
 					int side = speak["side"].to_int();
-					game_display::get_singleton()->get_chat_manager().add_chat_message(get_time(*speak), speaker_name, side, message,
+					auto as_time_t = std::chrono::system_clock::to_time_t(get_time(*speak)); // FIXME: remove
+					game_display::get_singleton()->get_chat_manager().add_chat_message(as_time_t, speaker_name, side, message,
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
 						prefs::get().message_bell());
@@ -912,7 +892,8 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				/*
 					we need to use the undo stack during replays in order to make delayed shroud updated work.
 				*/
-				synced_context::run(commandname, data, true, !resources::controller->is_skipping_replay(), show_oos_error_error_function);
+				auto spectator = action_spectator([](const std::string& message) { replay::process_error(message); });
+				synced_context::run(commandname, data, spectator);
 				if(resources::controller->is_regular_game_end()) {
 					return REPLAY_FOUND_END_LEVEL;
 				}
