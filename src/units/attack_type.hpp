@@ -42,6 +42,7 @@ public:
 	const t_string& name() const { return description_; }
 	const std::string& id() const { return id_; }
 	const std::string& type() const { return type_; }
+	const std::string& lua_type() const { return lua_type_; }
 	const std::string& icon() const { return icon_; }
 	const std::string& range() const { return range_; }
 	int min_range() const { return min_range_; }
@@ -58,6 +59,7 @@ public:
 	void set_name(const t_string& value) { description_  = value; set_changed(true); }
 	void set_id(const std::string& value) { id_ = value; set_changed(true); }
 	void set_type(const std::string& value) { type_ = value; set_changed(true); }
+	void set_lua_type(const std::string& value) { lua_type_ = value; set_changed(true); }
 	void set_icon(const std::string& value) { icon_ = value; set_changed(true); }
 	void set_range(const std::string& value) { range_ = value; set_changed(true); }
 	void set_min_range(int value) { min_range_ = value; set_changed(true); }
@@ -427,6 +429,8 @@ private:
 	t_string description_;
 	std::string id_;
 	std::string type_;
+	//variable used only in lua_unit_attack
+	mutable std::string lua_type_;
 	std::string icon_;
 	std::string range_;
 	int min_range_, max_range_;

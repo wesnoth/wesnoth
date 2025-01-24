@@ -1322,6 +1322,7 @@ std::pair<std::string, int> attack_type::select_alternative_type(const unit_abil
  */
 std::pair<std::string, int> attack_type::effective_damage_type() const
 {
+	lua_type_ = "";
 	if(attack_empty()){
 		return {"", 100};
 	}
@@ -1345,6 +1346,7 @@ std::pair<std::string, int> attack_type::effective_damage_type() const
 		replacement_type = alternative_type.second > res ? alternative_type.first : replacement_type;
 		res = std::max(res, alternative_type.second);
 	}
+	lua_type_ = replacement_type;
 	return {replacement_type, res};
 }
 
