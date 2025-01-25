@@ -1225,7 +1225,7 @@ attack_type::specials_context_t::~specials_context_t()
 }
 
 attack_type::specials_context_t::specials_context_t(attack_type::specials_context_t&& other)
-	: parent(other.parent)
+	: parent(std::move(other.parent))
 {
 	other.was_moved = true;
 }
