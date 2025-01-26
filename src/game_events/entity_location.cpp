@@ -108,14 +108,16 @@ unit_const_ptr entity_location::get_unit() const
 	if(!resources::gameboard) {
 		return nullptr;
 	}
-	if(id_ == 0) {
-		auto un_it = resources::gameboard->units().find(*this);
-		if(un_it.valid()) {
-			return un_it.get_shared_ptr();
-		}
+
+	const auto un_it = id_ == 0
+		? resources::gameboard->units().find(*this)
+		: resources::gameboard->units().find(id_);
+
+	if(un_it.valid()) {
+		return un_it.get_shared_ptr();
+	} else {
 		return nullptr;
 	}
-	return resources::gameboard->units().find(id_).get_shared_ptr();
 }
 
 } // end namespace game_events
