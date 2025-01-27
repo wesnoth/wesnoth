@@ -183,7 +183,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	chance_to_hit = std::clamp(cth, 0, 100);
 
 	// Compute base damage done with the weapon.
-	int base_damage = weapon->modified_damage();
+	double base_damage = weapon->modified_damage();
 
 	// Get the damage multiplier applied to the base damage of the weapon.
 	int damage_multiplier = 100;
@@ -317,7 +317,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 
 	chance_to_hit = std::clamp(cth, 0, 100);
 
-	int base_damage = weapon->modified_damage();
+	double base_damage = weapon->modified_damage();
 	int damage_multiplier = 100;
 	unit_alignments::type alignment = weapon->alignment().value_or(u_type->alignment());
 	damage_multiplier
