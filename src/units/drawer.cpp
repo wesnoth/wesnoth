@@ -373,7 +373,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 
 		if(u.max_hitpoints() > 0) {
 			bars.AGGREGATE_EMPLACE(
-				energy_bar::get_height(u.max_hitpoints(), u.hp_bar_scaling()),
+				energy_bar::get_height(u.max_hitpoints(), game_config::hp_bar_scaling),
 				energy_bar::get_filled(u.hitpoints(), u.max_hitpoints()),
 				energy_bar::get_color(u.hp_color(), bar_focus)
 			);
@@ -381,7 +381,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 
 		if(u.experience() > 0 && u.can_advance()) {
 			bars.AGGREGATE_EMPLACE(
-				energy_bar::get_height(u.max_experience(), u.xp_bar_scaling() / std::max(u.level(), 1)),
+				energy_bar::get_height(u.max_experience(), game_config::xp_bar_scaling / std::max(u.level(), 1)),
 				energy_bar::get_filled(u.experience(), u.max_experience()),
 				energy_bar::get_color(u.xp_color(), bar_focus)
 			);
