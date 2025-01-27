@@ -1115,7 +1115,6 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		}
 
 		if(highlight) {
-			show_attack_options(unit);
 			gui().highlight_reach(current_paths_);
 		}
 
@@ -1463,45 +1462,6 @@ std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, i
 	}
 
 	return res;
-}
-
-/**
- * Causes attackable hexes to be highlighted.
- *
- * This checks the hexes that the provided unit can attack. If there is a valid
- * target there, that location is inserted into current_paths_.destinations.
- */
-void mouse_handler::show_attack_options(const unit_map::const_iterator& u)
-{
-	// Cannot attack if no attacks are left.
-	if(u->attacks_left() == 0) {
-		return;
-	}
-
-	// Get the teams involved.
-	const team& cur_team = current_team();
-	const team& u_team = pc_.get_teams()[u->side() - 1];
-
-	// Check each adjacent hex.
-	for(const map_location& loc : get_adjacent_tiles(u->get_location())) {
-		// No attack option shown if no visible unit present.
-		// (Visible to current team, not necessarily the unit's team.)
-		if(!pc_.get_map().on_board(loc)) {
-			continue;
-		}
-
-		unit_map::const_iterator i = pc_.get_units().find(loc);
-		if(!i || !i->is_visible_to_team(cur_team, false)) {
-			continue;
-		}
-
-		const unit& target = *i;
-
-		// Can only attack non-petrified enemies.
-		if(u_team.is_enemy(target.side()) && !target.incapacitated()) {
-			current_paths_.destinations.insert(loc);
-		}
-	}
 }
 
 bool mouse_handler::unit_in_cycle(const unit_map::const_iterator& it)

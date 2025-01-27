@@ -269,13 +269,20 @@ void game_display::draw_hex(const map_location& loc)
 	}
 
 	// Draw reach_map information.
-	// We remove the reachability mask of the unit that we want to attack.
-	if(!is_shrouded && !reach_map_.empty() && reach_map_.find(loc) != reach_map_.end() && loc != attack_indicator_dst_) {
-		drawing_buffer_add(drawing_layer::fog_shroud, loc, [images = get_reachmap_images(loc)](const rect& dest) {
-			for(const texture& t : images) {
-				draw::blit(t, dest);
-			}
+	if(!is_shrouded && !reach_map_.empty() && reach_map_.find(loc) != reach_map_.end()) {
+		// draw the blue tint below units and high terrain graphics
+		drawing_buffer_add(drawing_layer::reachmap_highlight, loc, [tex = image::get_texture(game_config::reach_map_prefix + ".png", image::HEXED)](const rect& dest) {
+			draw::blit(tex, dest);
 		});
+		// We remove the reachmap border mask of the hovered hex to avoid weird interactions with other visual objects.
+		if(loc != mouseoverHex_) {
+			// draw the highlight borders on top of units and terrain
+			drawing_buffer_add(drawing_layer::reachmap_border, loc, [images = get_reachmap_images(loc)](const rect& dest) {
+				for(const texture& t : images) {
+					draw::blit(t, dest);
+				}
+			});
+		}
 	}
 
 	if(std::shared_ptr<wb::manager> w = wb_.lock()) {
@@ -654,18 +661,33 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 	std::vector<std::string> names;
 	const auto adjacent = get_adjacent_tiles(loc);
 
-	enum visibility { REACH = 0, CLEAR = 1 };
+	enum visibility { REACH = 0, ENEMY = 1, CLEAR = 2 };
 	std::array<visibility, 6> tiles;
 
 	const std::string* image_prefix_ = &game_config::reach_map_prefix;
-	DBG_DP << "Loaded image prefix: " << game_config::reach_map_prefix;
 
 	for(int i = 0; i < 6; ++i) {
+		// look for units adjacent to loc
+		std::string test_location = std::to_string(adjacent[i].x) + "," + std::to_string(adjacent[i].y);
+		const unit *u = context().get_visible_unit(adjacent[i], viewing_team());
 		if(reach_map_.find(adjacent[i]) != reach_map_.end()) {
-			DBG_DP << "Adjacent " << std::to_string(i) << " to tile " << loc << " is REACHABLE";
+			DBG_DP << test_location << " is REACHABLE";
 			tiles[i] = REACH;
+		}
+		/**
+		 * Make sure there is a unit selected or displayed when drawing the reachmap with enemy detection.
+		 * Enemy detection needs to be "disabled" when the reach_map_team_index_ failsafes to viewing_team_index.
+		 */
+		else if(display::reach_map_team_index_ == display::viewing_team_index_) {
+			DBG_DP << test_location << " is NOT REACHABLE";
+			tiles[i] = CLEAR;
+		}
+		// Grab the reachmap-context team index updated in "display::process_reachmap_changes()" and test for adjacent enemy units
+		else if(u != nullptr && resources::gameboard->get_team(display::reach_map_team_index_).is_enemy(u->side())) {
+			DBG_DP << test_location << " has an ENEMY";
+			tiles[i] = ENEMY;
 		} else {
-			DBG_DP << "Adjacent " << std::to_string(i) << " to tile " << loc << " is NOT REACHABLE";
+			DBG_DP << test_location << " is NOT REACHABLE";
 			tiles[i] = CLEAR;
 		}
 	}
@@ -686,19 +708,19 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 			names.push_back(std::move(name));
 		}
 	}
-	else {
-		// else push the background image, as the rest of the graphics are meant to have it
-		names.push_back(*image_prefix_ + ".png");
-	}
 
 	// Find all the directions overlap occurs from
 	for(int i = 0, cap1 = 0; cap1 != 6; ++cap1) {
-		DBG_DP << "Testing " << get_direction(i);
 		if(tiles[i] != REACH) {
-			DBG_DP << "Direction " << get_direction(i) << " points to an unreachable hex";
 			std::ostringstream stream;
+			std::string suffix;
 			std::string name;
 			stream << *image_prefix_;
+			if(tiles[i] == ENEMY) {
+				suffix = ".png~RC(magenta>red)";
+			} else {
+				suffix = ".png~RC(magenta>teal)";
+			}
 
 			for(int cap2 = 0; tiles[i] != REACH && cap2 != 6; i = (i + 1) % 6, ++cap2) {
 				stream << get_direction(i);
@@ -714,10 +736,9 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 					name = stream.str();
 				}
 			}
-			DBG_DP << "Tried loading image: " << stream.str() + ".png on " << loc;
 
 			if(!name.empty()) {
-				names.push_back(name + ".png");
+				names.push_back(name + suffix);
 			}
 		} else {
 			i = (i + 1) % 6;
@@ -728,6 +749,7 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 	std::vector<texture> res;
 
 	for(const std::string& name : names) {
+		DBG_DP << "Pushing: " << name;
 		if(texture tex = image::get_texture(name, image::HEXED)) {
 			res.push_back(std::move(tex));
 		}
