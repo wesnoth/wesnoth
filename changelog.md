@@ -13,7 +13,7 @@
 ### Units
 ### User interface
 ### WML Engine
-   * [unit] and [unit_type] no longer accept hp_bar_scaling and xp_bar_scaling keys
+   * [unit] no longer accepts hp_bar_scaling and xp_bar_scaling keys
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.8
