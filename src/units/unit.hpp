@@ -726,6 +726,17 @@ public:
 	void set_hidden(bool state) const;
 
 	/**
+	 * The factor by which the HP bar should be scaled.
+	 * Convenience wrapper around the unit_type value.
+	 */
+	double hp_bar_scaling() const;
+	/**
+	 * The factor by which the XP bar should be scaled.
+	 * Convenience wrapper around the unit_type value.
+	 */
+	double xp_bar_scaling() const;
+
+	/**
 	 * Whether the unit has been instructed to hold its position.
 	 * This excludes it from the unit cycling function.
 	 * @return true if it is holding position

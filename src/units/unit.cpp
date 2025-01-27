@@ -2779,6 +2779,15 @@ void unit::set_hidden(bool state) const
 	anim_comp_->clear_haloes();
 }
 
+double unit::hp_bar_scaling() const
+{
+	return type().hp_bar_scaling();
+}
+double unit::xp_bar_scaling() const
+{
+	return type().xp_bar_scaling();
+}
+
 void unit::set_image_halo(const std::string& halo)
 {
 	appearance_changed_ = true;

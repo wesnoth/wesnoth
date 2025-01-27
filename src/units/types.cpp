@@ -59,6 +59,8 @@ unit_type::unit_type(const unit_type& o)
 	, type_name_(o.type_name_)
 	, description_(o.description_)
 	, hitpoints_(o.hitpoints_)
+	, hp_bar_scaling_(o.hp_bar_scaling_)
+	, xp_bar_scaling_(o.xp_bar_scaling_)
 	, level_(o.level_)
 	, recall_cost_(o.recall_cost_)
 	, movement_(o.movement_)
@@ -108,6 +110,8 @@ unit_type::unit_type(defaut_ctor_t, const config& cfg, const std::string & paren
 	, type_name_()
 	, description_()
 	, hitpoints_(0)
+	, hp_bar_scaling_(0.0)
+	, xp_bar_scaling_(0.0)
 	, level_(0)
 	, recall_cost_()
 	, movement_(0)
@@ -212,6 +216,9 @@ void unit_type::build_full(
 	zoc_ = get_cfg()["zoc"].to_bool(level_ > 0);
 
 	game_config::add_color_info(game_config_view::wrap(get_cfg()));
+
+	hp_bar_scaling_ = get_cfg()["hp_bar_scaling"].to_double(game_config::hp_bar_scaling);
+	xp_bar_scaling_ = get_cfg()["xp_bar_scaling"].to_double(game_config::xp_bar_scaling);
 
 	// Propagate the build to the variations.
 	for(variations_map::value_type& variation : variations_) {
