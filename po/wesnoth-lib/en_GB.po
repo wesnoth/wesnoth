@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-01-19 11:47-0600\n"
-"PO-Revision-Date: 2024-12-19 16:51+1100\n"
+"PO-Revision-Date: 2025-01-21 09:00+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -2340,14 +2340,12 @@ msgstr " (Press ‘$hotkey’ for more information)"
 #. [button]: id=close
 #: data/gui/themes/celes/dialogs/title_screen.cfg:157
 msgid "Hide"
-msgstr ""
+msgstr "Hide"
 
 #. [button]: id=close
 #: data/gui/themes/celes/dialogs/title_screen.cfg:158
-#, fuzzy
-#| msgid "Show next tip of the day"
 msgid "Hide tip of the day"
-msgstr "Show next tip of the day"
+msgstr "Hide tip of the day"
 
 #. [button]: id=previous_tip
 #. [button]: id=previous_page
@@ -2511,10 +2509,8 @@ msgstr "Help"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:246
-#, fuzzy
-#| msgid "Change the in-game theme"
 msgid "Visit the in-game help"
-msgstr "Change the in-game theme"
+msgstr "Visit the in-game help"
 
 #. [grid]
 #. [button]: id=cancel
@@ -2576,10 +2572,8 @@ msgstr "Copy"
 #. [draw]
 #. The heavy checkmark character is available in the DejaVu Sans font, but not in the default Lato font
 #: data/gui/themes/celes/widgets/button_success.cfg:269
-#, fuzzy
-#| msgid "page^<span font_family='DejaVu Sans'>✔</span> Copied"
 msgid "page^<b><span font_family='DejaVu Sans'>✔</span> Copied</b>"
-msgstr "<span font_family='DejaVu Sans'>✔</span> Copied"
+msgstr "<b><span font_family='DejaVu Sans'>✔</span> Copied</b>"
 
 #. [button]: id=click_dismiss
 #. [button]: id=ok
@@ -2983,36 +2977,32 @@ msgstr "Exit"
 #. [button]: id=downloads_by_version
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:59
 msgid "Add-on download count by version"
-msgstr ""
+msgstr "Add-on download count by version"
 
 #. [button]: id=addon_count_by_forum_auth
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:77
 msgid "Count of add-ons using forum_auth"
-msgstr ""
+msgstr "Count of add-ons using forum_auth"
 
 #. [button]: id=admin_delete_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:95
-#, fuzzy
-#| msgid "Select the add-on version"
 msgid "Delete selected add-on (admin)"
-msgstr "Select the add-on version"
+msgstr "Delete selected add-on (admin)"
 
 #. [button]: id=admin_hide_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:113
-#, fuzzy
-#| msgid "Select the add-on version"
 msgid "Hide selected add-on (admin)"
-msgstr "Select the add-on version"
+msgstr "Hide selected add-on (admin)"
 
 #. [button]: id=admin_unhide_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:131
 msgid "Unhide add-on by ID (admin)"
-msgstr ""
+msgstr "Unhide add-on by ID (admin)"
 
 #. [button]: id=admin_list_hidden
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:149
 msgid "List hidden add-ons (admin)"
-msgstr ""
+msgstr "List hidden add-ons (admin)"
 
 #. [scroll_label]
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:68
@@ -6287,17 +6277,13 @@ msgstr "Apply"
 
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
-#, fuzzy
-#| msgid "Show next tip of the day"
 msgid "Show tip of the day"
-msgstr "Show next tip of the day"
+msgstr "Show tip of the day"
 
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:224
-#, fuzzy
-#| msgid "Show next tip of the day"
 msgid "Show gameplay tips on the main menu"
-msgstr "Show next tip of the day"
+msgstr "Show game-play tips on the main menu"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:236
@@ -7102,10 +7088,8 @@ msgstr "Response"
 #: src/gui/dialogs/addon/addon_server_info.cpp:115
 #: src/gui/dialogs/addon/addon_server_info.cpp:143
 #: src/gui/dialogs/addon/addon_server_info.cpp:167
-#, fuzzy
-#| msgid "Password Required"
 msgid "Password not provided"
-msgstr "Password Required"
+msgstr "Password not provided"
 
 #: src/gui/dialogs/addon/manager.cpp:145
 msgid "addons_view^All Add-ons"
@@ -7611,7 +7595,7 @@ msgstr "Terraforming"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:392
 msgid "The icon’s file size is too large"
-msgstr ""
+msgstr "The icon’s file size is too large"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:394
 msgid "No validation errors"

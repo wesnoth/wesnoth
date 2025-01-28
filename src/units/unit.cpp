@@ -304,8 +304,6 @@ unit::unit(const unit& o)
 	, modification_descriptions_(o.modification_descriptions_)
 	, anim_comp_(new unit_animation_component(*this, *o.anim_comp_))
 	, hidden_(o.hidden_)
-	, hp_bar_scaling_(o.hp_bar_scaling_)
-	, xp_bar_scaling_(o.xp_bar_scaling_)
 	, modifications_(o.modifications_)
 	, abilities_(o.abilities_)
 	, advancements_(o.advancements_)
@@ -386,8 +384,6 @@ unit::unit(unit_ctor_t)
 	, modification_descriptions_()
 	, anim_comp_(new unit_animation_component(*this))
 	, hidden_(false)
-	, hp_bar_scaling_(0)
-	, xp_bar_scaling_(0)
 	, modifications_()
 	, abilities_()
 	, advancements_()
@@ -418,8 +414,6 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	//, facing_(map_location::direction::indeterminate)
 	//, anim_comp_(new unit_animation_component(*this))
 	hidden_ = cfg["hidden"].to_bool(false);
-	hp_bar_scaling_ = cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"].to_double();
-	xp_bar_scaling_ = cfg["xp_bar_scaling"].blank() ? type_->xp_bar_scaling() : cfg["xp_bar_scaling"].to_double();
 	random_traits_ = true;
 	generate_name_ = true;
 	side_ = cfg["side"].to_int();
@@ -1033,8 +1027,6 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	recall_cost_ = new_type.recall_cost();
 	alignment_ = new_type.alignment();
 	max_hit_points_ = new_type.hitpoints();
-	hp_bar_scaling_ = new_type.hp_bar_scaling();
-	xp_bar_scaling_ = new_type.xp_bar_scaling();
 	max_movement_ = new_type.movement();
 	vision_ = new_type.vision(true);
 	jamming_ = new_type.jamming();
@@ -2785,6 +2777,15 @@ void unit::set_hidden(bool state) const
 	// TODO: this should really hide the halo, not destroy it
 	// We need to get rid of haloes immediately to avoid display glitches
 	anim_comp_->clear_haloes();
+}
+
+double unit::hp_bar_scaling() const
+{
+	return type().hp_bar_scaling();
+}
+double unit::xp_bar_scaling() const
+{
+	return type().xp_bar_scaling();
 }
 
 void unit::set_image_halo(const std::string& halo)
