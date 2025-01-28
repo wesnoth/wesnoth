@@ -171,21 +171,6 @@ void config::append_children(const config& cfg)
 	}
 }
 
-void config::append_children(config&& cfg)
-{
-	if(children_.empty()) {
-		//optimisation
-		children_ = std::move(cfg.children_);
-		ordered_children = std::move(cfg.ordered_children);
-		cfg.clear_all_children();
-		return;
-	}
-	for(const auto [child_key, child_value] : cfg.all_children_view()) {
-		add_child(child_key, std::move(child_value));
-	}
-	cfg.clear_all_children();
-}
-
 void config::append_attributes(const config& cfg)
 {
 	for(const auto& [key, value] : cfg.values_) {
@@ -210,7 +195,18 @@ void config::append(const config& cfg)
 
 void config::append(config&& cfg)
 {
-	append_children(std::move(cfg));
+	if(children_.empty()) {
+		//optimisation
+		children_ = std::move(cfg.children_);
+		ordered_children = std::move(cfg.ordered_children);
+		cfg.clear_all_children();
+	}
+	else {
+		for(const auto [child_key, child_value] : cfg.all_children_view()) {
+			add_child(child_key, std::move(child_value));
+		}
+		cfg.clear_all_children();
+	}
 
 	if(values_.empty()) {
 		//optimisation.

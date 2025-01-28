@@ -112,7 +112,7 @@ point rich_label::get_image_size(config& img_cfg) const {
 std::pair<size_t, size_t> rich_label::add_text(config& curr_item, const std::string& text) {
 	auto& attr = curr_item["text"];
 	size_t start = attr.str().size();
-	attr = attr.str() + std::move(text);
+	attr = attr.str() + text;
 	size_t end = attr.str().size();
 	return { start, end };
 }
@@ -122,12 +122,12 @@ void rich_label::add_attribute(config& curr_item, const std::string& attr_name, 
 		"name"  , attr_name,
 		"start" , start,
 		"end"   , end == 0 ? curr_item["text"].str().size() : end,
-		"value" , std::move(extra_data)
+		"value" , extra_data
 	});
 }
 
 std::pair<size_t, size_t> rich_label::add_text_with_attribute(config& curr_item, const std::string& text, const std::string& attr_name, const std::string& extra_data) {
-	const auto [start, end] = add_text(curr_item, std::move(text));
+	const auto [start, end] = add_text(curr_item, text);
 	add_attribute(curr_item, attr_name, start, end, extra_data);
 	return { start, end };
 }
