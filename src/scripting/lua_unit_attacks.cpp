@@ -135,6 +135,10 @@ static int impl_unit_attacks_get(lua_State *L)
 	if(lu && lu->get()) {
 		unit* u = lu->get();
 		attack_ptr atk = lua_isnumber(L, 2) ? find_attack(u, luaL_checkinteger(L, 2) - 1) : find_attack(u, luaL_checkstring(L, 2));
+		if(atk && atk->lua_type().empty()){
+			auto ctx = atk->specials_context(u->shared_from_this(), u->get_location(), true);
+			atk->set_lua_type(atk->effective_damage_type().first);
+		}
 		luaW_pushweapon(L, atk);
 	} else if(ut) {
 		const_attack_ptr atk = lua_isnumber(L, 2) ? find_attack(ut, luaL_checkinteger(L, 2) - 1) : find_attack(ut, luaL_checkstring(L, 2));
@@ -255,7 +259,8 @@ static int impl_unit_attack_get(lua_State *L)
 	return_bool_attrib("read_only", atk_ref.attack == nullptr);
 	return_string_attrib("description", attack.name());
 	return_string_attrib("name", attack.id());
-	return_string_attrib("type", attack.type());
+	std::string lua_type = attack.lua_type().empty() ? attack.type() : attack.lua_type();
+	return_string_attrib("type", lua_type);
 	return_string_attrib("icon", attack.icon());
 	return_string_attrib("range", attack.range());
 	return_string_attrib("alignment", attack.alignment_str());

@@ -1772,25 +1772,13 @@ static bool resistance_filter_matches_base(const config& cfg, bool attacker)
 
 int unit::resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon, const const_attack_ptr& opp_weapon) const
 {
+	if(opp_weapon){
+		return opp_weapon->effective_damage_type().second;
+	}
 	unit_ability_list resistance_list = get_abilities_weapons("resistance",loc, std::move(weapon), opp_weapon);
 	utils::erase_if(resistance_list, [&](const unit_ability& i) {
 		return !resistance_filter_matches_base(*i.ability_cfg, attacker);
 	});
-	if(opp_weapon){
-		unit_ability_list damage_type_list = opp_weapon->get_specials_and_abilities("damage_type");
-		if(damage_type_list.empty()){
-			return resistance_value(resistance_list, damage_name);
-		}
-		std::string replacement_type = opp_weapon->select_damage_type(damage_type_list, "replacement_type", resistance_list);
-		std::string type_damage = replacement_type.empty() ? damage_name : replacement_type;
-		int max_res = resistance_value(resistance_list, type_damage);
-		for(auto& i : damage_type_list) {
-			if((*i.ability_cfg).has_attribute("alternative_type")){
-				max_res = std::max(max_res , resistance_value(resistance_list, (*i.ability_cfg)["alternative_type"].str()));
-			}
-		}
-		return max_res;
-	}
 	return resistance_value(resistance_list, damage_name);
 }
 

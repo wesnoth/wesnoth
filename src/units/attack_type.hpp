@@ -42,6 +42,7 @@ public:
 	const t_string& name() const { return description_; }
 	const std::string& id() const { return id_; }
 	const std::string& type() const { return type_; }
+	const std::string& lua_type() const { return lua_type_; }
 	const std::string& icon() const { return icon_; }
 	const std::string& range() const { return range_; }
 	int min_range() const { return min_range_; }
@@ -58,6 +59,7 @@ public:
 	void set_name(const t_string& value) { description_  = value; set_changed(true); }
 	void set_id(const std::string& value) { id_ = value; set_changed(true); }
 	void set_type(const std::string& value) { type_ = value; set_changed(true); }
+	void set_lua_type(const std::string& value) { lua_type_ = value; set_changed(true); }
 	void set_icon(const std::string& value) { icon_ = value; set_changed(true); }
 	void set_range(const std::string& value) { range_ = value; set_changed(true); }
 	void set_min_range(int value) { min_range_ = value; set_changed(true); }
@@ -98,18 +100,10 @@ public:
 	void modified_attacks(unsigned & min_attacks,
 	                      unsigned & max_attacks) const;
 
-	/**
-	 * Select best damage type based on frequency count for replacement_type and based on highest damage for alternative_type.
-	 *
-	 * @param damage_type_list list of [damage_type] to check.
-	 * @param key_name name of attribute checked 'alternative_type' or 'replacement_type'.
-	 * @param resistance_list list of "resistance" abilities to check for each type of damage checked.
-	 */
-	std::string select_damage_type(const unit_ability_list& damage_type_list, const std::string& key_name, const unit_ability_list& resistance_list) const;
-	/** return a modified damage type and/or add a secondary_type for hybrid use if special is active. */
-	std::pair<std::string, std::string> damage_type() const;
-	/** @return A list of alternative_type damage types. */
-	std::set<std::string> alternative_damage_types() const;
+	/** @return A type()/replacement_type and a list of alternative_types that should be displayed in the selected unit's report. */
+	std::pair<std::string, std::set<std::string>> damage_types() const;
+	/** @return The type of attack used and the resistance value that does the most damage. */
+	std::pair<std::string, int> effective_damage_type() const;
 
 	/** Returns the damage per attack of this weapon, considering specials. */
 	double modified_damage() const;
@@ -235,6 +229,19 @@ private:
 	 * @return true if all attribute with ability checked
 	 */
 	bool special_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
+	/**
+	 * Select best damage type based on frequency count for replacement_type.
+	 *
+	 * @param damage_type_list list of [damage_type] to check.
+	 */
+	std::string select_replacement_type(const unit_ability_list& damage_type_list) const;
+	/**
+	 * Select best damage type based on highest damage for alternative_type.
+	 *
+	 * @param damage_type_list list of [damage_type] to check.
+	 * @param resistance_list list of "resistance" abilities to check for each type of damage checked.
+	 */
+	std::pair<std::string, int> select_alternative_type(const unit_ability_list& damage_type_list, const unit_ability_list& resistance_list) const;
 	/**
 	 * Filter a list of abilities or weapon specials, removing any entries that don't own
 	 * the overwrite_specials attributes.
@@ -422,6 +429,8 @@ private:
 	t_string description_;
 	std::string id_;
 	std::string type_;
+	//variable used only in lua_unit_attack
+	mutable std::string lua_type_;
 	std::string icon_;
 	std::string range_;
 	int min_range_, max_range_;
