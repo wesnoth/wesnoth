@@ -35,15 +35,14 @@ const std::string unit_race::s_female("female");
 /** Standard string id (not translatable) for MALE */
 const std::string unit_race::s_male("male");
 
-
-static const config &empty_traits() {
-		static config cfg;
-		return cfg;
+static const config& empty_traits() {
+	static config cfg;
+	return cfg;
 }
 
-static const config &empty_topics() {
-		static config cfg;
-		return cfg;
+static const config& empty_topics() {
+	static config cfg;
+	return cfg;
 }
 
 unit_race::unit_race()
@@ -123,12 +122,12 @@ bool unit_race::uses_global_traits() const
 	return global_traits_;
 }
 
-const config::const_child_itors &unit_race::additional_traits() const
+const config::const_child_itors& unit_race::additional_traits() const
 {
 	return traits_;
 }
 
-const config::const_child_itors &unit_race::additional_topics() const
+const config::const_child_itors& unit_race::additional_topics() const
 {
 	return topics_;
 }
@@ -141,7 +140,6 @@ const std::string& gender_string(unit_race::GENDER gender) {
 	case unit_race::FEMALE:
 		return unit_race::s_female;
 	default:
-	case unit_race::MALE:
 		return unit_race::s_male;
 	}
 }
@@ -155,9 +153,9 @@ unit_race::GENDER string_gender(const std::string& str, unit_race::GENDER def) {
 	return def;
 }
 
-const config::attribute_value & gender_value(
-    const config & cfg, unit_race::GENDER gender, const std::string & male_key,
-    const std::string & female_key, const std::string & default_key)
+const config::attribute_value& gender_value(
+    const config& cfg, unit_race::GENDER gender, const std::string& male_key,
+    const std::string& female_key, const std::string& default_key)
 {
     return cfg.get_or(gender == unit_race::MALE ? male_key : female_key, default_key);
 }

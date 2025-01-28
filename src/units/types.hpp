@@ -15,7 +15,6 @@
 
 #pragma once
 
-#include "gettext.hpp"
 #include "movetype.hpp"
 #include "units/unit_alignments.hpp"
 #include "units/race.hpp"
@@ -43,7 +42,7 @@ class unit_type
 {
 private:
 	struct defaut_ctor_t {};
-	unit_type(defaut_ctor_t, const config& cfg, const std::string & parent_id);
+	unit_type(defaut_ctor_t, const config& cfg, const std::string& parent_id);
 
 public:
 	using error = unit_type_error;
@@ -53,13 +52,13 @@ public:
 	 * @note @a cfg is not copied, so it has to point to some permanent
 	 *       storage, that is, a child of unit_type_data::unit_cfg.
 	 */
-	explicit unit_type(const config &cfg, const std::string & parent_id="");
+	explicit unit_type(const config& cfg, const std::string& parent_id="");
 	/**
 	 * Creates a unit type for the given config, but delays its build
 	 * till later.
 	 * @note @a cfg is copied
 	 */
-	explicit unit_type(config && cfg, const std::string & parent_id="");
+	explicit unit_type(config&& cfg, const std::string& parent_id="");
 	unit_type();
 	unit_type(const unit_type& o);
 	unit_type(unit_type&& o) = default;
@@ -83,25 +82,25 @@ public:
 
 private: // These will be called by build().
 	/** Load data into an empty unit_type (build to FULL). */
-	void build_full(const movement_type_map &movement_types,
-		const race_map &races, const config_array_view &traits);
+	void build_full(const movement_type_map& movement_types,
+		const race_map& races, const config_array_view& traits);
 	/** Partially load data into an empty unit_type (build to HELP_INDEXED). */
-	void build_help_index(const movement_type_map &movement_types,
-		const race_map &races, const config_array_view &traits);
+	void build_help_index(const movement_type_map& movement_types,
+		const race_map& races, const config_array_view& traits);
 	/** Load the most needed data into an empty unit_type (build to CREATE). */
 	void build_created();
 
-	typedef std::map<std::string,unit_type> variations_map;
+	typedef std::map<std::string, unit_type> variations_map;
 public:
 	/** Performs a build of this to the indicated stage. */
-	void build(BUILD_STATUS status, const movement_type_map &movement_types,
-	           const race_map &races, const config_array_view &traits);
+	void build(BUILD_STATUS status, const movement_type_map& movement_types,
+	           const race_map& races, const config_array_view& traits);
 	/**
 	 * Performs a build of this to the indicated stage.
 	 * (This does not logically change the unit type, so allow const access.)
 	 */
-	void build(BUILD_STATUS status, const movement_type_map &movement_types,
-	           const race_map &races, const config_array_view &traits) const
+	void build(BUILD_STATUS status, const movement_type_map& movement_types,
+	           const race_map& races, const config_array_view& traits) const
 	{ const_cast<unit_type *>(this)->build(status, movement_types, races, traits); }
 
 
@@ -175,8 +174,8 @@ public:
 	const std::string& usage() const { return usage_; }
 	const std::string& image() const { return image_; }
 	const std::string& icon() const { return icon_; }
-	const std::string &small_profile() const { return small_profile_; }
-	const std::string &big_profile() const { return profile_; }
+	const std::string& small_profile() const { return small_profile_; }
+	const std::string& big_profile() const { return profile_; }
 	std::string halo() const { return get_cfg()["halo"]; }
 	std::string ellipse() const { return get_cfg()["ellipse"]; }
 	bool generate_name() const { return get_cfg()["generate_name"].to_bool(true); }
@@ -186,7 +185,7 @@ public:
 
 	const_attack_itors attacks() const;
 	const std::string movement_type_id() const {return movement_type_id_; }
-	const movetype & movement_type() const { return movement_type_; }
+	const movetype& movement_type() const { return movement_type_; }
 
 	int experience_needed(bool with_acceleration=true) const;
 
@@ -278,7 +277,7 @@ public:
 	bool hide_help() const;
 	bool do_not_list() const { return do_not_list_; }
 
-	const config &get_cfg() const
+	const config& get_cfg() const
 	{
 		if(built_cfg_) {
 			return *built_cfg_;
@@ -298,7 +297,7 @@ public:
 private:
 
 	/** Identical to unit::resistance_filter_matches. */
-	bool resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name, int res) const;
+	bool resistance_filter_matches(const config& cfg,bool attacker, const std::string& damage_name, int res) const;
 
 private:
 	config& writable_cfg() {
@@ -393,7 +392,7 @@ public:
 
 	typedef std::map<std::string,unit_type> unit_type_map;
 
-	const unit_type_map &types() const { return types_; }
+	const unit_type_map& types() const { return types_; }
 	const std::vector<const unit_type*> types_list() const {
 		std::vector<const unit_type*> types_list;
 		for(const auto& i : types()) {
@@ -403,29 +402,29 @@ public:
 		}
 		return types_list;
 	}
-	const race_map &races() const { return races_; }
-	const movement_type_map &movement_types() const { return movement_types_; }
+	const race_map& races() const { return races_; }
+	const movement_type_map& movement_types() const { return movement_types_; }
 	config_array_view traits() const { return units_cfg().child_range("trait"); }
-	void set_config(const game_config_view &cfg);
+	void set_config(const game_config_view& cfg);
 
 	/** Finds a unit_type by its id() and makes sure it is built to the specified level. */
-	const unit_type *find(const std::string &key, unit_type::BUILD_STATUS status = unit_type::FULL) const;
+	const unit_type *find(const std::string& key, unit_type::BUILD_STATUS status = unit_type::FULL) const;
 	void check_types(const std::vector<std::string>& types) const;
-	const unit_race *find_race(const std::string &) const;
+	const unit_race *find_race(const std::string&) const;
 
 	/** Makes sure the all unit_types are built to the specified level. */
 	void build_all(unit_type::BUILD_STATUS status);
 	/** Makes sure the provided unit_type is built to the specified level. */
-	void build_unit_type(const unit_type & ut, unit_type::BUILD_STATUS status) const;
+	void build_unit_type(const unit_type& ut, unit_type::BUILD_STATUS status) const;
 
 	/** Checks if the [hide_help] tag contains these IDs. */
-	bool hide_help(const std::string &type_id, const std::string &race_id) const;
+	bool hide_help(const std::string& type_id, const std::string& race_id) const;
 
 	void apply_scenario_fix(const config& cfg);
 	void remove_scenario_fixes();
 private:
 	/** Parses the [hide_help] tag. */
-	void read_hide_help(const config &cfg);
+	void read_hide_help(const config& cfg);
 
 	void clear();
 
