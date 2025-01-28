@@ -91,8 +91,8 @@ public:
 	virtual std::string str() const = 0;
 
 private:
-	virtual variant execute(const formula_callable& variables, formula_debugger* fdb = nullptr) const = 0;
-
+	virtual variant execute(const formula_callable& variables, formula_debugger *fdb = nullptr) const = 0;
+	formula_ptr parent_;
 	const std::string name_;
 	friend class formula_debugger;
 };
