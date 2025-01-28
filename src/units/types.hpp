@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include "gettext.hpp"
 #include "movetype.hpp"
 #include "units/unit_alignments.hpp"
 #include "units/race.hpp"
