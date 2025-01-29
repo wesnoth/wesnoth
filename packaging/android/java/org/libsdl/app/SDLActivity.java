@@ -390,7 +390,7 @@ public class SDLActivity extends Activity implements View.OnSystemUiVisibilityCh
 
         mClipboardHandler = new SDLClipboardHandler();
 
-        mHIDDeviceManager = HIDDeviceManager.acquire(this);
+//        mHIDDeviceManager = HIDDeviceManager.acquire(this);
 
         // Set up the surface
         mSurface = createSDLSurface(getApplication());
@@ -457,9 +457,9 @@ public class SDLActivity extends Activity implements View.OnSystemUiVisibilityCh
         Log.v(TAG, "onPause()");
         super.onPause();
 
-        if (mHIDDeviceManager != null) {
-            mHIDDeviceManager.setFrozen(true);
-        }
+//        if (mHIDDeviceManager != null) {
+//            mHIDDeviceManager.setFrozen(true);
+//        }
         if (!mHasMultiWindow) {
             pauseNativeThread();
         }
@@ -470,9 +470,9 @@ public class SDLActivity extends Activity implements View.OnSystemUiVisibilityCh
         Log.v(TAG, "onResume()");
         super.onResume();
 
-        if (mHIDDeviceManager != null) {
-            mHIDDeviceManager.setFrozen(false);
-        }
+//        if (mHIDDeviceManager != null) {
+//            mHIDDeviceManager.setFrozen(false);
+//        }
         if (!mHasMultiWindow) {
             resumeNativeThread();
         }
@@ -583,10 +583,10 @@ public class SDLActivity extends Activity implements View.OnSystemUiVisibilityCh
     protected void onDestroy() {
         Log.v(TAG, "onDestroy()");
 
-        if (mHIDDeviceManager != null) {
-            HIDDeviceManager.release(mHIDDeviceManager);
-            mHIDDeviceManager = null;
-        }
+//        if (mHIDDeviceManager != null) {
+//            HIDDeviceManager.release(mHIDDeviceManager);
+//            mHIDDeviceManager = null;
+//        }
 
         if (SDLActivity.mBrokenLibraries) {
            super.onDestroy();
