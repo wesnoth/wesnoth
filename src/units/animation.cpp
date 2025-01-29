@@ -1481,6 +1481,9 @@ bool unit_animator::move_unit_fake(int& index_movement_anim)
 // animator: (moving a from A to B, uselockstep = true), animator: (a,B->C,true)...animator: (b,C->D,true), don't need to worry about
 // correcting locations of these two units and such, they will be the same as before these fake moves, should be much more convinient.
 // however, it's also expected to work when manulally corrected locations of animated units.
+// the issue that units disappear after this function runned comes out because they are not assigned to the last valid location respectively.
+// their location don't need to be revert iteratively, and where they are actually also don't matter to the animation after the configs have been generated.
+// so just remember the last valid location of units respectively, and reset them before or after animation, should solve the issue.
 //mark move_units_fake
 bool unit_animator::move_units_fake(int& index, const int& size)
 {
@@ -1525,13 +1528,11 @@ bool unit_animator::move_units_fake(int& index, const int& size)
 		temp_index++;
 	}
 	anim_elem* last_anim_p = nullptr;
-	using uloc_pair = std::pair<std::reference_wrapper<unit_ptr>, map_location>;
 	std::vector<std::vector<config>> uconfig_queues;
-	std::vector<std::vector<uloc_pair>> initial_uloc_pairs;
+	std::vector<std::pair<std::reference_wrapper<unit_ptr>, map_location>> initial_uloc_pairs;
 	// generate configs judged if the moving can be coherent
 	for(auto& vec : processed_anim_queues) {
 		std::vector<config> judged_uconfigs;
-		std::vector<uloc_pair> initial_uloc_row;
 		for(auto iter = vec.begin(); iter != vec.cend(); iter++) {
 			auto& anim = (*iter).get();
 			coherent_moving
@@ -1541,14 +1542,25 @@ bool unit_animator::move_units_fake(int& index, const int& size)
 			unit& m_u = *m_up;
 			map_location& m_src = coherent_moving ? last_anim_p->move_dst : anim.src;
 			map_location& m_dst = anim.move_dst;
-			uloc_pair initial_uloc = std::make_pair(std::ref(m_up), m_u.get_location());
+
+			bool pair_found = false;
+			for (auto& elem : initial_uloc_pairs) {
+				if (elem.first.get() == m_up) {
+					pair_found = true;
+					break;
+				}
+			}
+			if (!pair_found) {
+				initial_uloc_pairs.emplace_back(std::ref(m_up), m_u.get_location());
+			}
+
 			m_u.set_hidden(true);
 			if(coherent_moving) {
 				m_u.set_location(last_anim_p->move_dst);
 			} else {
 				m_u.set_location(map_location::null_location());
 			}
-			disp->invalidate(initial_uloc.second);
+			disp->invalidate(m_u.get_location());
 			m_dst = find_vacant_tile(m_dst, pathfind::VACANT_ANY, m_up.get());
 			config cfg;
 			cfg["type"] = m_u.type().id();
@@ -1565,29 +1577,29 @@ bool unit_animator::move_units_fake(int& index, const int& size)
 					<< " and added is " << std::to_string(m_src.wml_x()) + "," + std::to_string(m_dst.wml_x());
 			LOG_LUA << "src = " << m_src << " and dst = " << m_dst;
 			judged_uconfigs.emplace_back(cfg);
-			initial_uloc_row.emplace_back(initial_uloc);
 			last_anim_p = &anim;
 		}
 		uconfig_queues.emplace_back(judged_uconfigs);
-		initial_uloc_pairs.emplace_back(initial_uloc_row);
+	}
+	// reset locations so that when the animated units are reverted from hidden, they will show up on screen normally.
+	for (auto iter = initial_uloc_pairs.begin(); iter != initial_uloc_pairs.cend(); iter++) {
+		auto& uloc = *(iter);
+		unit& m_u = *(uloc.first.get());
+		m_u.set_location(uloc.second);
+		m_u.anim_comp().set_standing();
 	}
 	// generate the needed fake_units by extracting one from each unit's config sequence
 	while(!uconfig_queues.empty()) {
-		std::vector<uloc_pair> initial_uloc_col;
 		config cfg;
 		for(auto index = 0; index < uconfig_queues.size(); index++) {
 			auto& vec = uconfig_queues[index];
-			auto& uloc_vec = initial_uloc_pairs[index];
 			if(vec.empty()) {
 				uconfig_queues.erase(uconfig_queues.begin() + index);
-				initial_uloc_pairs.erase(initial_uloc_pairs.begin() + index);
 				index--;
 				continue;
 			}
 			cfg.add_child("fake_unit", vec[0]);
-			initial_uloc_col.emplace_back(uloc_vec[0]);
 			vec.erase(vec.begin());
-			uloc_vec.erase(uloc_vec.begin());
 		}
 		cfg["force_scroll"] = true;
 		vconfig vcfg = vconfig(cfg);
@@ -1595,11 +1607,6 @@ bool unit_animator::move_units_fake(int& index, const int& size)
 		result = screen_p->maybe_rebuild();
 		if(!result) {
 			screen_p->invalidate_all();
-		}
-		for(auto iter = initial_uloc_col.begin(); iter != initial_uloc_col.cend(); iter++) {
-			auto& uloc = *(iter);
-			unit& m_u = *(uloc.first.get());
-			m_u.set_location(uloc.second);
 		}
 	}
 	index += size;
@@ -1718,6 +1725,7 @@ void unit_animator::start_animations()
 			anim.my_unit->anim_comp().get_animation()->update_parameters(
 				anim.src, anim.src.get_direction(anim.my_unit->facing()));
 		}
+		index++;
 	}
 }
 //mark revert
@@ -1743,11 +1751,17 @@ void unit_animator::revert_facing()
 // so this name needs change
 const map_location& unit_animator::get_unit_last_move_anim_dst(unit_const_ptr ucp) const
 {
-	for(auto iter = animated_units_.end() - 1; iter >= animated_units_.begin(); iter--) {
+	if (animated_units_.empty()) {
+		return map_location::null_location();
+	}
+	for (auto iter = animated_units_.end() - 1; iter >= animated_units_.begin(); iter--) {
 		auto& anim = *iter;
 		//mark might go wrong if the equation of const unit ptr don't hold for same units.
-		if(anim.is_movement && ucp == anim.my_unit) {
+		if (anim.is_movement && ucp == anim.my_unit) {
 			return anim.move_dst;
+		}
+		if (iter == animated_units_.begin()) {
+			break;
 		}
 	}
 	return map_location::null_location();
