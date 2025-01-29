@@ -39,6 +39,10 @@
 #include <boost/process.hpp>
 #include "game_config_view.hpp"
 
+#ifdef __ANDROID__
+#include <SDL2/SDL_system.h>
+#endif
+
 #ifdef _WIN32
 #include <boost/locale.hpp>
 
@@ -669,6 +673,11 @@ static void setup_user_data_dir()
 #if defined(__APPLE__) && !defined(__IPHONEOS__)
 	migrate_apple_config_directory_for_unsandboxed_builds();
 #endif
+
+#ifdef __ANDROID__
+	user_data_dir = bfs::path(SDL_AndroidGetExternalStoragePath());
+#endif
+
 	if(!file_exists(user_data_dir / "logs")) {
 		game_config::check_migration = true;
 	}
@@ -823,6 +832,11 @@ void set_cache_dir(const std::string& newcachedir)
 
 static const bfs::path& get_user_data_path()
 {
+	#ifdef __ANDROID__
+	if (user_data_dir.empty()) {
+		user_data_dir = bfs::path(SDL_AndroidGetExternalStoragePath());
+	}
+	#endif
 	assert(!user_data_dir.empty() && "Attempted to access userdata location before userdata initialization!");
 	return user_data_dir;
 }
