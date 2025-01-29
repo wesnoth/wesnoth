@@ -98,13 +98,22 @@ window::~window()
 
 void window::set_size(const int w, const int h)
 {
-	SDL_SetWindowSize(window_, w, h);
+	#ifdef __ANDROID__
+		SDL_RenderSetLogicalSize(SDL_GetRenderer(window_), w, h);
+		SDL_WarpMouseInWindow(window_, w / 2, h / 2);
+	#else
+	 	SDL_SetWindowSize(window_, w, h);
+	#endif
 }
 
 SDL_Point window::get_size()
 {
 	SDL_Point res;
-	SDL_GetWindowSize(*this, &res.x, &res.y);
+	#ifdef __ANDROID__
+		SDL_RenderGetLogicalSize(SDL_GetRenderer(window_), &res.x, &res.y);
+	#else
+	 	SDL_GetWindowSize(*this, &res.x, &res.y);
+	#endif
 
 	return res;
 }
@@ -119,27 +128,37 @@ SDL_Point window::get_output_size()
 
 void window::center()
 {
+#ifndef __ANDROID__
 	SDL_SetWindowPosition(window_, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+#endif
 }
 
 void window::maximize()
 {
+#ifndef __ANDROID__
 	SDL_MaximizeWindow(window_);
+#endif
 }
 
 void window::to_window()
 {
+#ifndef __ANDROID__
 	SDL_SetWindowFullscreen(window_, 0);
+#endif
 }
 
 void window::restore()
 {
+#ifndef __ANDROID__
 	SDL_RestoreWindow(window_);
+#endif
 }
 
 void window::full_screen()
 {
+#ifndef __ANDROID__
 	SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN_DESKTOP);
+#endif
 }
 
 void window::fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
@@ -158,12 +177,16 @@ void window::render()
 
 void window::set_title(const std::string& title)
 {
+#ifndef __ANDROID__
 	SDL_SetWindowTitle(window_, title.c_str());
+#endif
 }
 
 void window::set_icon(const surface& icon)
 {
+#ifndef __ANDROID__
 	SDL_SetWindowIcon(window_, icon);
+#endif
 }
 
 uint32_t window::get_flags()
@@ -173,7 +196,9 @@ uint32_t window::get_flags()
 
 void window::set_minimum_size(int min_w, int min_h)
 {
+#ifndef __ANDROID__
 	SDL_SetWindowMinimumSize(window_, min_w, min_h);
+#endif
 }
 
 int window::get_display_index()
