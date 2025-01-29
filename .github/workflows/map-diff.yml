@@ -31,6 +31,7 @@ jobs:
         sudo apt-get -y -q install pngquant
         comment_body=""
         log() { printf '\e[1m%s\e[m\n' "$*"; } # write log message in bold
+        err() { printf '\e[1;31m%s\e[m\n' "$*"; exit 1; } # write error message in bold red and exit
 
         ## Get changed maps
         git fetch --depth=1 origin "$SHA"
@@ -62,6 +63,7 @@ jobs:
           comment_body+=$html
         done
 
+        [[ $comment_body ]] || err Failed to generate comment
         printf 'COMMENT_BODY=%s\n' "$comment_body" >> "$GITHUB_OUTPUT"
     - name: Find comment
       uses: peter-evans/find-comment@v2
