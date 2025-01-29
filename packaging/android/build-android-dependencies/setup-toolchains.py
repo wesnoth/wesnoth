@@ -4,8 +4,10 @@ from subprocess import run
 from pathlib import Path
 from os import environ
 
-ndk = Path("/opt/android-sdk-update-manager/ndk/23.1.7779620")
-api = 29
+
+api = environ.get("API", 29)
+sdk = Path(environ.get("ANDROID_SDK_ROOT", environ.get("ANDROID_SDK", "/opt/android-sdk-update-manager")))
+ndk = Path(environ.get("ANDROID_NDK_ROOT", environ.get("ANDROID_NDK_HOME", sdk / "ndk/23.1.7779620")))
 
 abis = json.load(open(ndk / "meta/abis.json"))
 for abi, abi_data in abis.items():
