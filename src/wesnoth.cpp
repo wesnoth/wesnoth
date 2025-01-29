@@ -53,7 +53,6 @@
 #include "game_version.hpp"        // for version_info
 #include "video.hpp"          // for video::error and video::quit
 #include "wesconfig.h"        // for PACKAGE
-#include "widgets/button.hpp" // for button
 #include "wml_exception.hpp"  // for wml_exception
 
 #include "utils/spritesheet_generator.hpp"
@@ -68,6 +67,10 @@
 #endif // _MSC_VER
 
 #include <SDL2/SDL.h> // for SDL_Init, SDL_INIT_TIMER
+
+#ifdef __ANDROID__
+#define main SDL_main
+#endif
 
 #include <boost/program_options/errors.hpp>     // for error
 #include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
@@ -412,12 +415,12 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.usercache_path) {
-		std::cout << filesystem::get_cache_dir();
+		PLAIN_LOG << filesystem::get_cache_dir();
 		return 0;
 	}
 
 	if(cmdline_opts.userdata_path) {
-		std::cout << filesystem::get_user_data_dir();
+		PLAIN_LOG << filesystem::get_user_data_dir();
 		return 0;
 	}
 
@@ -600,6 +603,7 @@ static int process_command_args(commandline_options& cmdline_opts)
 		PLAIN_LOG << "That --preprocess-* option is only supported when using --preprocess or --validate.";
 		return 2;
 	}
+
 
 	// Not the most intuitive solution, but I wanted to leave current semantics for now
 	return -1;
@@ -785,7 +789,6 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	gui2::switch_theme(prefs::get().gui2_theme());
 	const gui2::event::manager gui_event_manager;
 
-	// if the log directory is not writable, then this is the error condition so show the error message.
 	// if the log directory is writable, then there's no issue.
 	// if the optional isn't set, then logging to file has been disabled, so there's no issue.
 	if(!lg::log_dir_writable().value_or(true)) {
@@ -804,19 +807,20 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 	loading_screen::display([&res, &config_manager, &cmdline_opts]() {
 		loading_screen::progress(loading_stage::load_config);
+
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		if(res == false) {
 			PLAIN_LOG << "could not initialize game config";
-			return;
+			return 1;
 		}
 
 		loading_screen::progress(loading_stage::init_fonts);
-
 		res = font::load_font_config();
+
 		if(res == false) {
 			PLAIN_LOG << "could not re-initialize fonts for the current language";
-			return;
+			return 1;
 		}
 
 		if(!game_config::no_addons && !cmdline_opts.noaddons)  {
@@ -824,6 +828,8 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 			refresh_addon_version_info_cache();
 		}
+
+		return 0;
 	});
 
 	if(res == false) {
@@ -1039,10 +1045,17 @@ int main(int argc, char** argv)
 	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
 #endif
 
+#ifdef __ANDROID__
+	putenv("PANGOCAIRO_BACKEND=fontconfig");
+	putenv("FONTCONFIG_PATH=/storage/emulated/0/Android/data/org.wesnoth.Wesnoth/files/gamedata/fonts");
+	game_config::path = SDL_AndroidGetExternalStoragePath() + std::string("/gamedata");
+	putenv("SDL_HINT_AUDIODRIVER=android");
+#endif
 	try {
 		commandline_options cmdline_opts = commandline_options(args);
 		int finished = process_command_args(cmdline_opts);
 
+#ifndef __ANDROID__
 		if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
 			if(std::string auto_dir = autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()) {
 				if(!nobanner) {
@@ -1057,14 +1070,15 @@ int main(int argc, char** argv)
 						break;
 					}
 				}
+
 				if (!data_dir_specified) {
 					PLAIN_LOG << "Cannot find a data directory. Specify one with --data-dir";
 					return 1;
 				}
 			}
-#endif
 			safe_exit(finished);
 		}
+#endif
 
 		SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
 		// Is there a reason not to just use SDL_INIT_EVERYTHING?
