@@ -17,7 +17,7 @@ for resource in resources:
 for target, source in zip(compiled_resources, resources):
     compiled += env.AaptCompile(target, source)
 
-apk = env.AaptLink(["base.apk", "gen/org/libsdl/app/R.java"], ["AndroidManifest.xml"] + compiled, AAPTJAVADIR = Dir("gen"))
+apk = env.AaptLink(["base.apk", "gen/org/wesnoth/Wesnoth/R.java"], ["AndroidManifest.xml"] + compiled, AAPTJAVADIR = Dir("gen"))
 
 classes = env.Java("classes", "java", JAVASOURCEPATH=Dir("gen"))
 bytecode = env.Dex("classes.dex", classes, DEXCLASSPATH=Dir("classes"))
