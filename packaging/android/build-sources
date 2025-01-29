@@ -1,9 +1,12 @@
 #!/bin/bash -xe
 
 REPO=`pwd`/../..
-ANDROID_HOME=/opt/android-sdk-update-manager/
-NDKDIR=$ANDROID_HOME/ndk/23.1.7779620
+ANDROID_HOME=${ANDROID_HOME:=/opt/android-sdk-update-manager/}
+NDKDIR=${ANDROID_NDK_ROOT:=$ANDROID_HOME/ndk/23.1.7779620}
 BUILDDIR_PREFIX=/tmp
+
+echo $ANDROID_HOME
+echo $NDKDIR
 
 for arch in "x86_64" "armeabi-v7a" "arm64-v8a" "x86"
 do
@@ -16,9 +19,11 @@ do
 
 	mkdir -p $LIBDIR
 	rm -f $LIBDIR/*.so
-	cp -v $BUILDDIR_PREFIX/android-prefix/$arch/lib/*.so $LIBDIR/
-	cp -v $BUILDDIR_PREFIX/wesnoth-$arch/packaging/android/lib/libmain.so $LIBDIR/
+	. $BUILDDIR_PREFIX/android-prefix/$arch/android.env
+	cp $TOOLCHAIN/sysroot/usr/lib/$HOST/libc++_shared.so $LIBDIR/
+	cp $BUILDDIR_PREFIX/android-prefix/$arch/lib/*.so $LIBDIR/
+	cp $BUILDDIR_PREFIX/wesnoth-$arch/packaging/android/lib/libmain.so $LIBDIR/
 
 	# rename libSDL2-2.0.so -> libSDL2.so, otherwise the final apk(s) won't be able to find it
-	mv -v $LIBDIR/libSDL2-2.0.so $LIBDIR/libSDL2.so
+	mv $LIBDIR/libSDL2-2.0.so $LIBDIR/libSDL2.so
 done

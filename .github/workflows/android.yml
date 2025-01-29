@@ -6,20 +6,132 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      API: 23
+      NDK_VER: r26d
+      BUILDBASEDIR: ${{ github.WORKSPACE }}/packaging/android
+      ANDROID_HOME: ${{ github.WORKSPACE }}/.android/sdk
+      ANDROID_SDK_ROOT: ${{ github.WORKSPACE }}/.android/sdk
+      ANDROID_NDK_ROOT: ${{ github.WORKSPACE }}/packaging/android/build/android-ndk-r26d
+      ANDROID_SDK_PACKAGES: 'tools platform-tools build-tools;34.0.0'
 
     steps:
-    - uses: actions/checkout@v4.1.1
-    - name: set up JDK 17
-      uses: actions/setup-java@v4.0.0
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: gradle
-        
-    - name: Download dependency
-      run: cd packaging/android; ./build-android-dependencies/build-android-deps.sh;
+      - name: Checkout Repo
+        uses: actions/checkout@v4
 
-    #- name: Grant execute permission for gradlew
-    #  run: chmod +x gradlew
-    #- name: Build with Gradle
-    #  run: ./gradlew build
+      - name: Fetch submodules
+        run: git submodule update --init --recursive; ls -lh;
+
+      - name: Install auxiliary build tools
+        run: sudo apt-get install -y meson gperf scons
+
+      - name: Restore Android NDK cache
+        id: restore-android-ndk
+        uses: actions/cache/restore@v4
+        with:
+          key: android-ndk ${{ env.ANDROID_SDK_PACKAGES }}
+          path: ${{ env.ANDROID_NDK_ROOT }}
+
+      - name: Set up Android NDK
+        if: ${{ steps.restore-android-ndk.outputs.cache-hit  != 'true' }}
+        env:
+          BUILDDIR: ${{ env.BUILDBASEDIR }}/build
+        run: |
+          wget -nc "https://dl.google.com/android/repository/android-ndk-$NDK_VER-linux.zip" -P $BUILDDIR
+          unzip "$BUILDDIR/android-ndk-$NDK_VER-linux.zip" -d "$BUILDDIR"
+          ls -lh "$BUILDDIR"
+
+      - name: Save Android NDK cache
+        if: ${{ steps.restore-android-ndk.outputs.cache-hit  != 'true' }}
+        uses: actions/cache/save@v4
+        with:
+          key: ${{ steps.restore-android-ndk.outputs.cache-primary-key}}
+          path: ${{ env.ANDROID_NDK_ROOT }}
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Restore Android SDK cache
+        id: restore-android-sdk
+        uses: actions/cache/restore@v4
+        with:
+          key: android-sdk ${{ env.ANDROID_SDK_PACKAGES }}
+          path: ${{ env.ANDROID_SDK_ROOT }}
+
+      - name: Set up Android SDK
+        if: ${{ steps.restore-android-sdk.outputs.cache-hit  != 'true' }}
+        uses: android-actions/setup-android@v3
+        with:
+          packages: ${{ env.ANDROID_SDK_PACKAGES }}
+
+      - name: Save Android SDK cache
+        if: ${{ steps.restore-android-sdk.outputs.cache-hit  != 'true' }}
+        uses: actions/cache/save@v4
+        with:
+          key: ${{ steps.restore-android-sdk.outputs.cache-primary-key}}
+          path: ${{ env.ANDROID_SDK_ROOT }}
+
+      - name: Restore Wesnoth dependencies cache
+        id: restore-deps-cache
+        uses: actions/cache/restore@v4
+        env:
+          PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
+        with:
+          key: wesnoth-android-deps-${{ hashFiles('packaging/android/build-android-dependencies/*') }}
+          path: ${{ env.PREFIXDIR }}
+
+      - name: Download and build wesnoth dependencies
+        if: ${{ steps.restore-deps-cache.outputs.cache-hit  != 'true' }}
+        env:
+          API: ${{ env.API }}
+          PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
+          DOWNLOADDIR: ${{ env.BUILDBASEDIR }}/download
+          BUILDDIR: ${{ env.BUILDBASEDIR }}/build
+        run: cd packaging/android; chmod +x ./gradlew; ./gradlew buildCppDepends;
+
+      - name: Save Wesnoth dependencies cache
+        if: ${{ steps.restore-deps-cache.outputs.cache-hit  != 'true' }}
+        uses: actions/cache/save@v4
+        env:
+          PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
+        with:
+          key: ${{ steps.restore-deps-cache.outputs.cache-primary-key }}
+          path: ${{ env.PREFIXDIR }}
+
+      - name: Build Wesnoth and create APKs and AAB
+        env:
+          PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
+        run: cd packaging/android; chmod +x ./gradlew; ./gradlew buildCppSource assembleDebug bundleDebug;
+
+      - name: Upload APK (armeabi-v7a)
+        uses: actions/upload-artifact@v4
+        with:
+          name: "wesnoth-armeabi-v7a.apk"
+          path: "packaging/android/app/build/outputs/apk/debug/app-armeabi-v7a-debug.apk"
+
+      - name: Upload APK (arm64-v8a)
+        uses: actions/upload-artifact@v4
+        with:
+          name: "wesnoth-arm64-v8a.apk"
+          path: "packaging/android/app/build/outputs/apk/debug/app-arm64-v8a-debug.apk"
+
+      - name: Upload APK (x86)
+        uses: actions/upload-artifact@v4
+        with:
+          name: "wesnoth-x86.apk"
+          path: "packaging/android/app/build/outputs/apk/debug/app-x86-debug.apk"
+
+      - name: Upload APK (x86_64)
+        uses: actions/upload-artifact@v4
+        with:
+          name: "wesnoth-x86_64.apk"
+          path: "packaging/android/app/build/outputs/apk/debug/app-x86_64-debug.apk"
+
+      - name: Upload AAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: "wesnoth.aab"
+          path: "packaging/android/app/build/outputs/bundle/debug/app-debug.aab"
