@@ -40,7 +40,7 @@ def generate(env):
 
     assert env["android_home"]
     env["ENV"]["ANDROID_HOME"] = env["android_home"]
-    env.AppendENVPath("PATH", env.subst("$android_home/build-tools/33.0.2/"))
+    env.AppendENVPath("PATH", env.subst("$android_home/build-tools/34.0.0/"))
     print(env["ENV"]["PATH"])
     env["DEX"] = "d8"
     env["AAPT"] = "aapt2"
