@@ -742,6 +742,7 @@ void connect_engine::send_level_data() const
 				"password", params_.password,
 				"ignored", prefs::get().get_ignored_delim(),
 				"auto_hosted", false,
+				"", mp_metadata_->is_queue_game,
 			},
 		});
 		mp::send_to_server(level_);

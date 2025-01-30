@@ -59,60 +59,61 @@ static const int LOAD_GAME = 100;
 
 REGISTER_DIALOG(mp_create_game)
 
-mp_create_game::mp_create_game(saved_game& state, bool local_mode)
+mp_create_game::mp_create_game(saved_game& state, bool local_mode, const config& presets)
 	: modal_dialog(window_id())
 	, create_engine_(state)
 	, options_manager_()
 	, selected_game_index_(-1)
 	, selected_rfm_index_(-1)
+	, presets_(presets.optional_child("presets"))
 	, use_map_settings_(register_bool( "use_map_settings", true,
-		[]() {return prefs::get().mp_use_map_settings();},
+		[this]() {return presets_ ? false : prefs::get().mp_use_map_settings();},
 		[](bool v) {prefs::get().set_mp_use_map_settings(v);},
 		std::bind(&mp_create_game::update_map_settings, this)))
 	, fog_(register_bool("fog", true,
-		[]() {return prefs::get().mp_fog();},
+		[this]() {return presets_ ? (*presets_)["fog"].to_bool() : prefs::get().mp_fog();},
 		[](bool v) {prefs::get().set_mp_fog(v);}))
 	, shroud_(register_bool("shroud", true,
-		[]() {return prefs::get().mp_shroud();},
+		[this]() {return presets_ ? (*presets_)["shroud"].to_bool() : prefs::get().mp_shroud();},
 		[](bool v) {prefs::get().set_mp_shroud(v);}))
 	, start_time_(register_bool("random_start_time", true,
-		[]() {return prefs::get().mp_random_start_time();},
+		[this]() {return presets_ ? (*presets_)["random_start_time"].to_bool() : prefs::get().mp_random_start_time();},
 		[](bool v) {prefs::get().set_mp_random_start_time(v);}))
 	, time_limit_(register_bool("time_limit", true,
-		[]() {return prefs::get().mp_countdown();},
+		[this]() {return presets_ ? (*presets_)["time_limit"].to_bool() : prefs::get().mp_countdown();},
 		[](bool v) {prefs::get().set_mp_countdown(v);},
 		std::bind(&mp_create_game::update_map_settings, this)))
 	, shuffle_sides_(register_bool("shuffle_sides", true,
-		[]() {return prefs::get().shuffle_sides();},
+		[this]() {return presets_ ? (*presets_)["shuffle_sides"].to_bool() : prefs::get().shuffle_sides();},
 		[](bool v) {prefs::get().set_shuffle_sides(v);}))
 	, observers_(register_bool("observers", true,
-		[]() {return prefs::get().allow_observers();},
+		[this]() {return presets_ ? (*presets_)["observers"].to_bool() : prefs::get().allow_observers();},
 		[](bool v) {prefs::get().set_allow_observers(v);}))
 	, strict_sync_(register_bool("strict_sync", true))
 	, private_replay_(register_bool("private_replay", true))
 	, turns_(register_integer("turn_count", true,
-		[]() {return prefs::get().mp_turns();},
+		[this]() {return presets_ ? (*presets_)["turn_count"].to_int() : prefs::get().mp_turns();},
 		[](int v) {prefs::get().set_mp_turns(v);}))
 	, gold_(register_integer("village_gold", true,
-		[]() {return prefs::get().village_gold();},
+		[this]() {return presets_ ? (*presets_)["village_gold"].to_int() : prefs::get().village_gold();},
 		[](int v) {prefs::get().set_village_gold(v);}))
 	, support_(register_integer("village_support", true,
-		[]() {return prefs::get().village_support();},
+		[this]() {return presets_ ? (*presets_)["village_support"].to_int() : prefs::get().village_support();},
 		[](int v) {prefs::get().set_village_support(v);}))
 	, experience_(register_integer("experience_modifier", true,
-		[]() {return prefs::get().xp_modifier();},
+		[this]() {return presets_ ? (*presets_)["experience_modifier"].to_int() : prefs::get().xp_modifier();},
 		[](int v) {prefs::get().set_xp_modifier(v);}))
 	, init_turn_limit_(register_integer("init_turn_limit", true,
-		[]() {return prefs::get().countdown_init_time().count();},
+		[this]() {return presets_ ? (*presets_)["init_turn_limit"].to_int() : prefs::get().countdown_init_time().count();},
 		[](int v) {prefs::get().set_countdown_init_time(std::chrono::seconds{v});}))
 	, turn_bonus_(register_integer("turn_bonus", true,
-		[]() {return prefs::get().countdown_turn_bonus().count();},
+		[this]() {return presets_ ? (*presets_)["turn_bonus"].to_int() : prefs::get().countdown_turn_bonus().count();},
 		[](int v) {prefs::get().set_countdown_turn_bonus(std::chrono::seconds{v});}))
 	, reservoir_(register_integer("reservoir", true,
-		[]() {return prefs::get().countdown_reservoir_time().count();},
+		[this]() {return presets_ ? (*presets_)["reservoir"].to_int() : prefs::get().countdown_reservoir_time().count();},
 		[](int v) {prefs::get().set_countdown_reservoir_time(std::chrono::seconds{v});}))
 	, action_bonus_(register_integer("action_bonus", true,
-		[]() {return prefs::get().countdown_action_bonus().count();},
+		[this]() {return presets_ ? (*presets_)["action_bonus"].to_int() : prefs::get().countdown_action_bonus().count();},
 		[](int v) {prefs::get().set_countdown_action_bonus(std::chrono::seconds{v});}))
 	, mod_list_()
 	, eras_menu_button_()
@@ -341,7 +342,7 @@ void mp_create_game::pre_show()
 	add_to_keyboard_chain(&list);
 
 	// This handles the initial game selection as well
-	display_games_of_type(level_types_[get_initial_type_index()].first, prefs::get().mp_level());
+	display_games_of_type(level_types_[get_initial_type_index()].first, presets_ ? (*presets_)["mp_scenario"].str() : prefs::get().mp_level());
 
 	// Initial tab selection must be done after game selection so the field widgets are set to their correct active state.
 	on_tab_select();
