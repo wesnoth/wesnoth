@@ -11,8 +11,9 @@ def fetch_date(version):
     result.raise_for_status()
     return result.json()["tagger"]["date"]
 
-def update_appdata(version, appdata_path):
-    date = fetch_date(version)
+def update_appdata(version, appdata_path, date):
+    if not date:
+        date = fetch_date(version)
 
     doc = minidom.parse(appdata_path)
     releases = doc.getElementsByTagName("releases")
@@ -32,6 +33,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('version', metavar='VERSION')
     parser.add_argument('appdata', metavar='APPDATA_FILE')
+    parser.add_argument('date', nargs='?')
 
     args = parser.parse_args()
-    update_appdata(args.version, args.appdata)
+    update_appdata(args.version, args.appdata, args.date)
