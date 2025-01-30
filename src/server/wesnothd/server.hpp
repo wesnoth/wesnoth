@@ -19,6 +19,7 @@
 #include "server/common/user_handler.hpp"
 #include "server/wesnothd/metrics.hpp"
 #include "server/wesnothd/ban.hpp"
+#include "server/wesnothd/game.hpp"
 #include "server/wesnothd/player.hpp"
 #include "server/common/simple_wml.hpp"
 #include "server/common/server_base.hpp"
@@ -192,18 +193,14 @@ private:
 
 	player_connections player_connections_;
 
-	std::deque<std::shared_ptr<game>> games() const
+	std::map<int, std::shared_ptr<game>> games() const
 	{
-		std::deque<std::shared_ptr<game>> result;
+		std::map<int, std::shared_ptr<game>> result;
 
 		for(const auto& iter : player_connections_.get<game_t>()) {
-			if(result.empty() || iter.get_game() != result.back()) {
-				result.push_back(iter.get_game());
+			if(iter.get_game()) {
+				result.try_emplace(iter.get_game()->id(), iter.get_game());
 			}
-		}
-
-		if(!result.empty() && result.front() == nullptr) {
-			result.pop_front();
 		}
 
 		return result;
