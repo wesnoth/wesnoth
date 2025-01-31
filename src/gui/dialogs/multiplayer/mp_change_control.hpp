@@ -27,15 +27,6 @@ namespace events
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the multiplayer change control dialog.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * sides_list        | @ref listbox |yes      |List of sides participating in the MP game.
- * nicks_list        | @ref listbox |yes      |List of nicks of all clients playing or observing the MP game.
- */
 class mp_change_control : public modal_dialog
 {
 public:
@@ -46,9 +37,9 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	void handle_sides_list_item_clicked();
 	void handle_nicks_list_item_clicked();

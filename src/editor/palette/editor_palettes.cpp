@@ -18,7 +18,7 @@
 #include "editor/palette/editor_palettes.hpp"
 
 #include "gettext.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "overlay.hpp"
 #include "filesystem.hpp"
 
@@ -52,7 +52,7 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items
 		std::string img = item_groups[mci].icon + "_30";
 		if (mci == active_group_index()) {
 			std::string pressed_img = img + "-pressed.png";
-			if(!filesystem::get_binary_file_location("images", pressed_img).empty()) {
+			if(filesystem::get_binary_file_location("images", pressed_img).has_value()) {
 				img = pressed_img;
 			} else {
 				img += ".png~CS(70,70,0)";
@@ -122,7 +122,6 @@ void editor_palette<Item>::set_group(const std::string& id)
 			found = true;
 			std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
 			if (palette_menu_button) {
-				//palette_menu_button->set_label(group.name);
 				palette_menu_button->set_tooltip_string(group.name);
 				palette_menu_button->set_overlay(group.icon);
 			}
@@ -298,36 +297,23 @@ void editor_palette<Item>::layout()
 		}
 
 		const std::string item_id = active_group()[item_index];
-		//typedef std::map<std::string, Item> item_map_wurscht;
 		typename item_map::iterator item = item_map_.find(item_id);
 
 		texture item_base, item_overlay;
 		std::stringstream tooltip_text;
 		setup_item((*item).second, item_base, item_overlay, tooltip_text);
-
 		bool is_core = non_core_items_.find(get_id((*item).second)) == non_core_items_.end();
 		if (!is_core) {
 			tooltip_text << " "
-					<< font::span_color(font::BAD_COLOR)
 			<< _("(non-core)") << "\n"
-			<< _("Will not work in game without extra care.")
-			<< "</span>";
+			<< _("Will not work in game without extra care.");
+			tile.set_tooltip_string(markup::span_color(font::BAD_COLOR, tooltip_text.str()));
+		} else {
+			tile.set_tooltip_string(tooltip_text.str());
 		}
 
-		tile.set_tooltip_string(tooltip_text.str());
 		tile.set_item_image(item_base, item_overlay);
 		tile.set_item_id(item_id);
-
-//		if (get_id((*item).second) == selected_bg_item_
-//				&& get_id((*item).second) == selected_fg_item_) {
-//			tile.set_pressed(gui::tristate_button::BOTH);
-//		} else if (get_id((*item).second) == selected_bg_item_) {
-//			tile.set_pressed(gui::tristate_button::RIGHT);
-//		} else if (get_id((*item).second) == selected_fg_item_) {
-//			tile.set_pressed(gui::tristate_button::LEFT);
-//		} else {
-//			tile.set_pressed(gui::tristate_button::NONE);
-//		}
 
 		if (is_selected_bg_item(get_id(item->second))
 				&& is_selected_fg_item(get_id(item->second))) {

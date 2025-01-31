@@ -19,6 +19,7 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
+#include "utils/general.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -102,12 +103,8 @@ bool is_legal_user_file_name(const std::string& name, bool allow_whitespace)
 
 void blacklist_pattern_list::remove_blacklisted_files_and_dirs(std::vector<std::string>& files, std::vector<std::string>& directories) const
 {
-	files.erase(
-		std::remove_if(files.begin(), files.end(), [this](const std::string& name) { return match_file(name); }),
-		files.end());
-	directories.erase(
-		std::remove_if(directories.begin(), directories.end(), [this](const std::string& name) { return match_dir(name); }),
-		directories.end());
+	utils::erase_if(files, [this](const std::string& name) { return match_file(name); });
+	utils::erase_if(directories, [this](const std::string& name) { return match_dir(name); });
 }
 
 bool blacklist_pattern_list::match_file(const std::string& name) const
@@ -122,14 +119,50 @@ bool blacklist_pattern_list::match_dir(const std::string& name) const
 					   std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
 }
 
-std::string get_prefs_file()
+std::string autodetect_game_data_dir(std::string exe_dir)
 {
-	return get_user_config_dir() + "/preferences";
+	std::string auto_dir;
+
+	// scons leaves the resulting binaries at the root of the source
+	// tree by default.
+	if(filesystem::file_exists(exe_dir + "/data/_main.cfg")) {
+		auto_dir = std::move(exe_dir);
+	}
+	// cmake encourages creating a subdir at the root of the source
+	// tree for the build, and the resulting binaries are found in it.
+	else if(filesystem::file_exists(exe_dir + "/../data/_main.cfg")) {
+		auto_dir = filesystem::normalize_path(exe_dir + "/..");
+	}
+	// Allow using the current working directory as the game data dir
+	else if(filesystem::file_exists(filesystem::get_cwd() + "/data/_main.cfg")) {
+		auto_dir = filesystem::get_cwd();
+	}
+#ifdef _WIN32
+	// In Windows builds made using Visual Studio and its CMake
+	// integration, the EXE is placed a few levels below the game data
+	// dir (e.g. .\out\build\x64-Debug).
+	else if(filesystem::file_exists(exe_dir + "/../../build") && filesystem::file_exists(exe_dir + "/../../../out")
+		&& filesystem::file_exists(exe_dir + "/../../../data/_main.cfg")) {
+		auto_dir = filesystem::normalize_path(exe_dir + "/../../..");
+	}
+#endif
+
+	return auto_dir;
+}
+
+std::string get_synced_prefs_file()
+{
+	return get_sync_dir() + "/preferences";
+}
+
+std::string get_unsynced_prefs_file()
+{
+	return get_user_data_dir() + "/preferences";
 }
 
 std::string get_credentials_file()
 {
-	return get_user_config_dir() + "/credentials-aes";
+	return get_user_data_dir() + "/credentials-aes";
 }
 
 std::string get_default_prefs_file()
@@ -146,9 +179,19 @@ std::string get_save_index_file()
 	return get_user_data_dir() + "/save_index";
 }
 
+std::string get_lua_history_file()
+{
+	return get_sync_dir() + "/lua_command_history";
+}
+
+std::string get_sync_dir()
+{
+	return get_user_data_dir() + "/sync";
+}
+
 std::string get_saves_dir()
 {
-	const std::string dir_path = get_user_data_dir() + "/saves";
+	const std::string dir_path = get_sync_dir() + "/saves";
 	return get_dir(dir_path);
 }
 
@@ -166,13 +209,13 @@ std::string get_addons_dir()
 
 std::string get_wml_persist_dir()
 {
-	const std::string dir_path = get_user_data_dir() + "/persist";
+	const std::string dir_path = get_sync_dir() + "/persist";
 	return get_dir(dir_path);
 }
 
 std::string get_legacy_editor_dir()
 {
-	const std::string dir_path = get_user_data_dir() + "/editor";
+	const std::string dir_path = get_sync_dir() + "/editor";
 	return get_dir(dir_path);
 }
 
@@ -245,25 +288,20 @@ bool file_tree_checksum::operator==(const file_tree_checksum &rhs) const
 		modified == rhs.modified;
 }
 
-bool ends_with(const std::string& str, const std::string& suffix)
-{
-	return str.size() >= suffix.size() && std::equal(suffix.begin(),suffix.end(),str.end()-suffix.size());
-}
-
 std::string read_map(const std::string& name)
 {
 	std::string res;
-	std::string map_location = get_wml_location(name);
-	if(map_location.empty()) {
+	auto map_location = get_wml_location(name);
+	if(!map_location) {
 		// Consult [binary_path] for maps as well.
 		map_location = get_binary_file_location("maps", name);
 	}
-	if(!map_location.empty()) {
-		res = read_file(map_location);
+	if(map_location) {
+		res = read_file(map_location.value());
 	}
 
 	if(res.empty()) {
-		res = read_file(get_user_data_dir() + "/editor/maps/" + name);
+		res = read_file(get_legacy_editor_dir() + "/maps/" + name);
 	}
 
 	return res;
@@ -272,17 +310,17 @@ std::string read_map(const std::string& name)
 std::string read_scenario(const std::string& name)
 {
 	std::string res;
-	std::string file_location = get_wml_location(name);
-	if(file_location.empty()) {
+	auto file_location = get_wml_location(name);
+	if(!file_location) {
 		// Consult [binary_path] for scenarios as well.
 		file_location = get_binary_file_location("scenarios", name);
 	}
-	if(!file_location.empty()) {
-		res = read_file(file_location);
+	if(file_location) {
+		res = read_file(file_location.value());
 	}
 
 	if(res.empty()) {
-		res = read_file(get_user_data_dir() + "/editor/scenarios/" + name);
+		res = read_file(get_legacy_editor_dir() + "/scenarios/" + name);
 	}
 
 	return res;

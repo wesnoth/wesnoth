@@ -1,0 +1,89 @@
+name: Image metadata check CI
+
+on:
+  push:
+    branches: [ master ]
+    paths: [ '**.webp', '**.png', '**.jpg', '**.jpeg' ]
+  pull_request:
+    paths: [ '**.webp', '**.png', '**.jpg', '**.jpeg' ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Image Metadata
+    runs-on: ubuntu-latest
+    env:
+      BASE_SHA: ${{ github.event_name == 'push' && github.event.before || 'HEAD^' }}
+      HEAD_SHA: ${{ github.event_name == 'push' && github.event.after  || 'HEAD' }}
+
+    steps:
+      - name: exiftool installation
+        run: |
+          sudo apt-get install --assume-yes exiftool
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: check image EXIF metadata
+        run: |
+          git log --graph --pretty=format:'%h %G?%d %s (%cr) <%an> (%cn)' "$BASE_SHA^".."$HEAD_SHA"
+          mapfile -t image_files < <(git diff --name-only --diff-filter=d "$BASE_SHA" "$HEAD_SHA" | grep -E '\.(webp|je?pg)$')
+          # cycle through the changed image files, make sure they have the right fields
+          for file in "${image_files[@]}"; do
+            # check Artist tag, fail if missing
+            artist="$(exiftool -p '$Artist' "$file")"
+            if [ "$artist" ]; then
+              printf 'Artist tag in %s is %s\n' "$file" "$artist"
+            else
+              printf 'no Artist EXIF tag in %s\n' "$file"
+              exit 1
+            fi
+            # check Copyright tag, fail if missing or wrong type
+            copyright="$(exiftool -p '$Copyright' "$file")"
+            case $copyright in
+              'GNU GPL v2+'|'CC BY-SA 4.0'|CC0)
+                printf 'Copyright tag in %s is %s\n' "$file" "$copyright"
+                ;;
+              '')
+                printf 'no Copyright EXIF tag in %s\n' "$file"
+                exit 1
+                ;;
+              *)
+                printf 'Copyright tag %s in file %s is not an accepted license! Must be one of: "GNU GPL v2+", "CC BY-SA 4.0", "CC0"\n' "$copyright" "$file"
+                exit 1
+                ;;
+            esac
+          done
+
+      - name: check png XMP metadata
+        run: |
+          mapfile -t image_files < <(git diff --name-only --diff-filter=d "$BASE_SHA" "$HEAD_SHA" | grep -E '\.png$')
+          # cycle through the changed image files, make sure they have the right fields
+          for file in "${image_files[@]}"; do
+            # check Creator tag, fail if missing
+            artist="$(exiftool -p '$XMP:Creator' "$file")"
+            if [ "$artist" ]; then
+              printf 'Creator tag in %s is %s\n' "$file" "$artist"
+            else
+              printf 'no Creator XMP tag in %s\n' "$file"
+              exit 1
+            fi
+            # check Rights tag, fail if missing or wrong type
+            copyright="$(exiftool -p '$XMP:Rights' "$file")"
+            case $copyright in
+              'GNU GPL v2+'|'CC BY-SA 4.0'|CC0)
+                printf 'Rights tag in %s is %s\n' "$file" "$copyright"
+                ;;
+              '')
+                printf 'no Rights XMP tag in %s\n' "$file"
+                exit 1
+                ;;
+              *)
+                printf 'Rights tag %s in file %s is not an accepted license! Must be one of: "GNU GPL v2+", "CC BY-SA 4.0", "CC0"\n' "$copyright" "$file"
+                exit 1
+                ;;
+            esac
+          done

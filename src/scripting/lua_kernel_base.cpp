@@ -29,6 +29,7 @@
 #include "scripting/debug_lua.hpp"
 #endif
 
+#include "scripting/lua_attributes.hpp"
 #include "scripting/lua_color.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
@@ -582,6 +583,18 @@ static int impl_get_dir_suffix(lua_State*L)
 				suffix = "ƒ";
 			}
 		}
+		lua_pop(L, 1);
+		if(suffix.size() == 1) {
+			// ie, the above block didn't identify it as a function
+			if(auto t = luaL_getmetafield(L, -1, "__dir_tablelike"); t == LUA_TBOOLEAN) {
+				if(luaW_toboolean(L, -1)) {
+					suffix = "†";
+				}
+				lua_pop(L, 1);
+			} else if(t != LUA_TNIL) {
+				lua_pop(L,  1);
+			}
+		}
 	}
 	suffix = " " + suffix;
 	lua_pushlstring(L, suffix.c_str(), suffix.size());
@@ -873,15 +886,17 @@ lua_kernel_base::lua_kernel_base()
 
 	static luaL_Reg const map_callbacks[] {
 		{ "get_direction",		&lua_map_location::intf_get_direction         		},
-		{ "vector_sum",			&lua_map_location::intf_vector_sum			},
-		{ "vector_diff",			&lua_map_location::intf_vector_diff			},
-		{ "vector_negation",		&lua_map_location::intf_vector_negation			},
+		{ "hex_vector_sum",			&lua_map_location::intf_vector_sum			},
+		{ "hex_vector_diff",			&lua_map_location::intf_vector_diff			},
+		{ "hex_vector_negation",		&lua_map_location::intf_vector_negation			},
 		{ "rotate_right_around_center",	&lua_map_location::intf_rotate_right_around_center	},
 		{ "are_hexes_adjacent",		&lua_map_location::intf_tiles_adjacent			},
 		{ "get_adjacent_hexes",		&lua_map_location::intf_get_adjacent_tiles		},
 		{ "get_hexes_in_radius",		&lua_map_location::intf_get_tiles_in_radius		},
+		{ "get_hexes_at_radius",		&lua_map_location::intf_get_tile_ring		},
 		{ "distance_between",		&lua_map_location::intf_distance_between		},
-		{ "get_in_basis_N_NE",		&lua_map_location::intf_get_in_basis_N_NE		},
+		{ "get_cubic",		&lua_map_location::intf_get_in_cubic		},
+		{ "from_cubic",		&lua_map_location::intf_get_from_cubic		},
 		{ "get_relative_dir",		&lua_map_location::intf_get_relative_dir		},
 		// Shroud bitmaps
 		{"parse_bitmap", intf_parse_shroud_bitmap},
@@ -906,6 +921,10 @@ lua_kernel_base::lua_kernel_base()
 	lua_setfield(L, -2, "__index");
 	lua_pushcfunction(L, &dispatch<&lua_kernel_base::impl_game_config_set>);
 	lua_setfield(L, -2, "__newindex");
+	lua_pushcfunction(L, &dispatch<&lua_kernel_base::impl_game_config_dir>);
+	lua_setfield(L, -2, "__dir");
+	lua_pushboolean(L, true);
+	lua_setfield(L, -2, "__dir_tablelike");
 	lua_pushstring(L, "game config");
 	lua_setfield(L, -2, "__metatable");
 	lua_setmetatable(L, -2);
@@ -1008,12 +1027,12 @@ bool lua_kernel_base::load_string(char const * prog, const std::string& name)
 	return this->load_string(prog, name, eh);
 }
 
-bool lua_kernel_base::protected_call(int nArgs, int nRets, error_handler e_h)
+bool lua_kernel_base::protected_call(int nArgs, int nRets, const error_handler& e_h)
 {
 	return this->protected_call(mState, nArgs, nRets, e_h);
 }
 
-bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_handler e_h)
+bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, const error_handler& e_h)
 {
 	int errcode = luaW_pcall_internal(L, nArgs, nRets);
 
@@ -1046,10 +1065,10 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 	return true;
 }
 
-bool lua_kernel_base::load_string(char const * prog, const std::string& name, error_handler e_h)
+bool lua_kernel_base::load_string(const std::string& prog, const std::string& name, const error_handler& e_h, bool allow_unsafe)
 {
 	// pass 't' to prevent loading bytecode which is unsafe and can be used to escape the sandbox.
-	int errcode = luaL_loadbufferx(mState, prog, strlen(prog), name.empty() ? prog : name.c_str(), "t");
+	int errcode = luaL_loadbufferx(mState, prog.c_str(), prog.size(), name.empty() ? prog.c_str() : name.c_str(), allow_unsafe ? "tb" : "t");
 	if (errcode != LUA_OK) {
 		char const * msg = lua_tostring(mState, -1);
 		std::string message = msg ? msg : "null string";
@@ -1081,6 +1100,169 @@ void lua_kernel_base::run_lua_tag(const config& cfg)
 		++nArgs;
 	}
 	this->run(cfg["code"].str().c_str(), cfg["name"].str(), nArgs);
+}
+
+config luaW_serialize_function(lua_State* L, int func)
+{
+	if(lua_iscfunction(L, func)) {
+		throw luafunc_serialize_error("cannot serialize C function");
+	}
+	if(!lua_isfunction(L, func)) {
+		throw luafunc_serialize_error("cannot serialize callable non-function");
+	}
+	config data;
+	lua_Debug info;
+	lua_pushvalue(L, func); // push copy of function because lua_getinfo will pop it
+	lua_getinfo(L, ">u", &info);
+	data["params"] = info.nparams;
+	luaW_getglobal(L, "string", "dump");
+	lua_pushvalue(L, func);
+	lua_call(L, 1, 1);
+	data["code"] = lua_check<std::string>(L, -1);
+	lua_pop(L, 1);
+	config upvalues;
+	for(int i = 1; i <= info.nups; i++, lua_pop(L, 1)) {
+		std::string_view name = lua_getupvalue(L, func, i);
+		if(name == "_ENV") {
+			upvalues.add_child(name)["upvalue_type"] = "_ENV";
+			continue;
+		}
+		int idx = lua_absindex(L, -1);
+		switch(lua_type(L, idx)) {
+		case LUA_TBOOLEAN: case LUA_TNUMBER: case LUA_TSTRING:
+			luaW_toscalar(L, idx, upvalues[name]);
+			break;
+		case LUA_TFUNCTION:
+			upvalues.add_child(name, luaW_serialize_function(L, idx))["upvalue_type"] = "function";
+			break;
+		case LUA_TNIL:
+			upvalues.add_child(name, config{"upvalue_type", "nil"});
+			break;
+		case LUA_TTABLE:
+			if(std::vector<std::string> names = luaW_to_namedtuple(L, idx); !names.empty()) {
+				for(size_t i = 1; i <= lua_rawlen(L, -1); i++, lua_pop(L, 1)) {
+					lua_rawgeti(L, idx, i);
+					config& cfg = upvalues.add_child(name);
+					luaW_toscalar(L, -1, cfg["value"]);
+					cfg["name"] = names[0];
+					cfg["upvalue_type"] = "named tuple";
+					names.erase(names.begin());
+				}
+				break;
+			} else if(config cfg; luaW_toconfig(L, idx, cfg)) {
+				std::vector<std::string> names;
+				int save_top = lua_gettop(L);
+				if(luaL_getmetafield(L, idx, "__name") && lua_check<std::string>(L, -1) == "named tuple") {
+					luaL_getmetafield(L, -2, "__names");
+					names = lua_check<std::vector<std::string>>(L, -1);
+				}
+				lua_settop(L, save_top);
+				upvalues.add_child(name, cfg)["upvalue_type"] = names.empty() ? "config" : "named tuple";
+				break;
+			} else {
+				for(size_t i = 1; i <= lua_rawlen(L, -1); i++, lua_pop(L, 1)) {
+					lua_rawgeti(L, idx, i);
+					config& cfg = upvalues.add_child(name);
+					luaW_toscalar(L, -1, cfg["value"]);
+					cfg["upvalue_type"] = "array";
+				}
+				bool found_non_array = false;
+				for(lua_pushnil(L); lua_next(L, idx); lua_pop(L, 1)) {
+					if(lua_type(L, -2) != LUA_TNUMBER) {
+						found_non_array = true;
+						break;
+					}
+				}
+				if(!found_non_array) break;
+			}
+			[[fallthrough]];
+		default:
+			std::ostringstream os;
+			os << "cannot serialize function with upvalue " << name << " = ";
+			luaW_getglobal(L, "wesnoth", "as_text");
+			lua_pushvalue(L, idx);
+			lua_call(L, 1, 1);
+			os << luaL_checkstring(L, -1);
+			lua_pushboolean(L, false);
+			throw luafunc_serialize_error(os.str());
+		}
+	}
+	if(!upvalues.empty()) data.add_child("upvalues", upvalues);
+	return data;
+}
+
+bool lua_kernel_base::load_binary(const config& cfg, const error_handler& eh)
+{
+	if(!load_string(cfg["code"].str(), cfg["name"], eh, true)) return false;
+	if(auto upvalues = cfg.optional_child("upvalues")) {
+		lua_pushvalue(mState, -1); // duplicate function because lua_getinfo will pop it
+		lua_Debug info;
+		lua_getinfo(mState, ">u", &info);
+		int funcindex = lua_absindex(mState, -1);
+		for(int i = 1; i <= info.nups; i++) {
+			std::string_view name = lua_getupvalue(mState, funcindex, i);
+			lua_pop(mState, 1); // we only want the upvalue's name, not its value
+			if(name == "_ENV") {
+				lua_pushglobaltable(mState);
+			} else if(upvalues->has_attribute(name)) {
+				luaW_pushscalar(mState, (*upvalues)[name]);
+			} else if(upvalues->has_child(name)) {
+				const auto& child = upvalues->mandatory_child(name);
+				if(child["upvalue_type"] == "array") {
+					auto children = upvalues->child_range(name);
+					lua_createtable(mState, children.size(), 0);
+					for(const auto& cfg : children) {
+						luaW_pushscalar(mState, cfg["value"]);
+						lua_rawseti(mState, -2, lua_rawlen(mState, -2) + 1);
+					}
+				} else if(child["upvalue_type"] == "config") {
+					luaW_pushconfig(mState, child);
+				} else if(child["upvalue_type"] == "function") {
+					if(!load_binary(child, eh)) return false;
+				} else if(child["upvalue_type"] == "nil") {
+					lua_pushnil(mState);
+				}
+			} else continue;
+			lua_setupvalue(mState, funcindex, i);
+		}
+	}
+	return true;
+}
+
+config lua_kernel_base::run_binary_lua_tag(const config& cfg)
+{
+	int top = lua_gettop(mState);
+	try {
+		error_handler eh = std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2 );
+		if(load_binary(cfg, eh)) {
+			lua_pushvalue(mState, -1);
+			protected_call(0, LUA_MULTRET, eh);
+		}
+	} catch (const game::lua_error & e) {
+		cmd_log_ << e.what() << "\n";
+		lua_kernel_base::log_error(e.what(), "In function lua_kernel::run()");
+		config error;
+		error["name"] = "execute_error";
+		error["error"] = e.what();
+		return error;
+	}
+	config result;
+	result["ref"] = cfg["ref"];
+	result.add_child("executed") = luaW_serialize_function(mState, top + 1);
+	lua_remove(mState, top + 1);
+	result["name"] = "execute_result";
+	for(int i = top + 1; i < lua_gettop(mState); i++) {
+		std::string index = std::to_string(i - top);
+		switch(lua_type(mState, i)) {
+		case LUA_TNUMBER: case LUA_TBOOLEAN: case LUA_TSTRING:
+			luaW_toscalar(mState, i, result[index]);
+			break;
+		case LUA_TTABLE:
+			luaW_toconfig(mState, i, result.add_child(index));
+			break;
+		}
+	}
+	return result;
 }
 // Call load_string and protected call. Make them throw exceptions.
 //
@@ -1227,29 +1409,125 @@ int lua_kernel_base::intf_kernel_type(lua_State* L)
 	lua_push(L, my_name());
 	return 1;
 }
-int lua_kernel_base::impl_game_config_get(lua_State* L)
+static void push_color_palette(lua_State* L, const std::vector<color_t>& palette) {
+	lua_createtable(L, palette.size(), 1);
+	lua_rotate(L, -2, 1); // swap new table with previous element on stack
+	lua_setfield(L, -2, "name");
+	for(size_t i = 0; i < palette.size(); i++) {
+		luaW_push_namedtuple(L, {"r", "g", "b", "a"});
+		lua_pushinteger(L, palette[i].r);
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, palette[i].g);
+		lua_rawseti(L, -2, 2);
+		lua_pushinteger(L, palette[i].b);
+		lua_rawseti(L, -2, 3);
+		lua_pushinteger(L, palette[i].a);
+		lua_rawseti(L, -2, 4);
+		lua_rawseti(L, -2, i);
+	}
+}
+static int impl_palette_get(lua_State* L)
 {
 	char const *m = luaL_checkstring(L, 2);
-	return_int_attrib("base_income", game_config::base_income);
-	return_int_attrib("village_income", game_config::village_income);
-	return_int_attrib("village_support", game_config::village_support);
-	return_int_attrib("poison_amount", game_config::poison_amount);
-	return_int_attrib("rest_heal_amount", game_config::rest_heal_amount);
-	return_int_attrib("recall_cost", game_config::recall_cost);
-	return_int_attrib("kill_experience", game_config::kill_experience);
-	return_int_attrib("combat_experience", game_config::combat_experience);
-	return_string_attrib_deprecated("version", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.current_version() instead", game_config::wesnoth_version.str());
-	return_bool_attrib("debug", game_config::debug);
-	return_bool_attrib("debug_lua", game_config::debug_lua);
-	return_bool_attrib("strict_lua", game_config::strict_lua);
-	return_bool_attrib("mp_debug", game_config::mp_debug);
-	return 0;
+	lua_pushvalue(L, 2);
+	push_color_palette(L, game_config::tc_info(m));
+	return 1;
 }
+
+// suppress missing prototype warning (not static because game_lua_kernel referenes it);
+luaW_Registry& gameConfigReg();
+luaW_Registry& gameConfigReg() {
+	static luaW_Registry gameConfigReg{"game config"};
+	return gameConfigReg;
+}
+static auto& dummy = gameConfigReg(); // just to ensure it's constructed.
+
+#define GAME_CONFIG_SIMPLE_GETTER(name) \
+GAME_CONFIG_GETTER(#name, decltype(game_config::name), lua_kernel_base) { \
+	(void) k; \
+	return game_config::name; \
+}
+
+namespace {
+GAME_CONFIG_SIMPLE_GETTER(base_income);
+GAME_CONFIG_SIMPLE_GETTER(village_income);
+GAME_CONFIG_SIMPLE_GETTER(village_support);
+GAME_CONFIG_SIMPLE_GETTER(poison_amount);
+GAME_CONFIG_SIMPLE_GETTER(rest_heal_amount);
+GAME_CONFIG_SIMPLE_GETTER(recall_cost);
+GAME_CONFIG_SIMPLE_GETTER(kill_experience);
+GAME_CONFIG_SIMPLE_GETTER(combat_experience);
+GAME_CONFIG_SIMPLE_GETTER(debug);
+GAME_CONFIG_SIMPLE_GETTER(debug_lua);
+GAME_CONFIG_SIMPLE_GETTER(strict_lua);
+GAME_CONFIG_SIMPLE_GETTER(mp_debug);
+
+GAME_CONFIG_GETTER("palettes", lua_index_raw, lua_kernel_base) {
+	(void)k;
+	lua_newtable(L);
+	if(luaL_newmetatable(L, "color palettes")) {
+		lua_pushcfunction(L, impl_palette_get);
+		lua_setfield(L, -2, "__index");
+	}
+	lua_setmetatable(L, -2);
+	return lua_index_raw(L);
+}
+
+GAME_CONFIG_GETTER("red_green_scale", lua_index_raw, lua_kernel_base) {
+	(void)k;
+	lua_pushstring(L, "red_green_scale");
+	push_color_palette(L, game_config::red_green_scale);
+	return lua_index_raw(L);
+}
+
+GAME_CONFIG_GETTER("red_green_scale_text", lua_index_raw, lua_kernel_base) {
+	(void)k;
+	lua_pushstring(L, "red_green_scale_text");
+	push_color_palette(L, game_config::red_green_scale_text);
+	return lua_index_raw(L);
+}
+
+GAME_CONFIG_GETTER("blue_white_scale", lua_index_raw, lua_kernel_base) {
+	(void)k;
+	lua_pushstring(L, "blue_white_scale");
+	push_color_palette(L, game_config::blue_white_scale);
+	return lua_index_raw(L);
+}
+
+GAME_CONFIG_GETTER("blue_white_scale_text", lua_index_raw, lua_kernel_base) {
+	(void)k;
+	lua_pushstring(L, "blue_white_scale_text");
+	push_color_palette(L, game_config::blue_white_scale_text);
+	return lua_index_raw(L);
+}
+}
+
+/**
+ * Gets some game_config data (__index metamethod).
+ * - Arg 1: userdata (ignored).
+ * - Arg 2: string containing the name of the property.
+ * - Ret 1: something containing the attribute.
+ */
+int lua_kernel_base::impl_game_config_get(lua_State* L)
+{
+	return gameConfigReg().get(L);
+}
+/**
+ * Sets some game_config data (__newindex metamethod).
+ * - Arg 1: userdata (ignored).
+ * - Arg 2: string containing the name of the property.
+ * - Arg 3: something containing the attribute.
+ */
 int lua_kernel_base::impl_game_config_set(lua_State* L)
 {
-	std::string err_msg = "unknown modifiable property of game_config: ";
-	err_msg += luaL_checkstring(L, 2);
-	return luaL_argerror(L, 2, err_msg.c_str());
+	return gameConfigReg().set(L);
+}
+/**
+ * Gets a list of game_config data (__dir metamethod).
+ */
+int lua_kernel_base::impl_game_config_dir(lua_State* L)
+{
+	return gameConfigReg().dir(L);
 }
 /**
  * Loads the "package" package into the Lua environment.

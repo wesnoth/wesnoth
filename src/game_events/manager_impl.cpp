@@ -19,6 +19,7 @@
 #include "formula/string_utils.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/general.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -75,22 +76,9 @@ std::string event_handlers::standardize_name(const std::string& name)
 	return retval;
 }
 
-bool event_handlers::cmp(const handler_ptr lhs, const handler_ptr rhs)
+bool event_handlers::cmp(const handler_ptr& lhs, const handler_ptr& rhs)
 {
 	return lhs->priority() < rhs->priority();
-}
-
-/**
- * Read-only access to the handlers with fixed event names, by event name.
- */
-handler_list& event_handlers::get(const std::string& name)
-{
-	// Empty list for the "not found" case.
-	static handler_list empty_list;
-
-	// Look for the name in the name map.
-	auto find_it = by_name_.find(standardize_name(name));
-	return find_it == by_name_.end() ? empty_list : find_it->second;
 }
 
 /**
@@ -129,7 +117,7 @@ pending_event_handler event_handlers::add_event_handler(const std::string& name,
 	return {*this, handler};
 }
 
-void event_handlers::finish_adding_event_handler(handler_ptr handler)
+void event_handlers::finish_adding_event_handler(const handler_ptr& handler)
 {
 	// Someone decided to register an empty event... bail.
 	if(handler->empty()) {
@@ -144,7 +132,6 @@ void event_handlers::finish_adding_event_handler(handler_ptr handler)
 	// construct weak_ptrs from the shared one.
 	DBG_EH << "inserting event handler for name=" << names << " with id=" << id;
 	active_.emplace_back(handler);
-	std::stable_sort(active_.rbegin(), active_.rend(), cmp);
 
 	// File by name.
 	if(utils::might_contain_variables(names)) {
@@ -160,6 +147,7 @@ void event_handlers::finish_adding_event_handler(handler_ptr handler)
 		id_map_[id] = active_.back();
 	}
 
+	std::stable_sort(active_.rbegin(), active_.rend(), cmp);
 	log_handlers();
 }
 
@@ -204,23 +192,19 @@ void event_handlers::remove_event_handler(const std::string& id)
 void event_handlers::clean_up_expired_handlers(const std::string& event_name)
 {
 	// First, remove all disabled handlers from the main list.
-	auto to_remove = std::remove_if(active_.begin(), active_.end(),
-		[](handler_ptr p) { return p->disabled(); }
-	);
-
-	active_.erase(to_remove, active_.end());
+	utils::erase_if(active_, [](const handler_ptr& p) { return p->disabled(); });
 
 	// Then remove any now-unlockable weak_ptrs from the by-name list.
 	// Might be more than one so we split.
 	for(const std::string& name : utils::split(event_name)) {
-		get(name).remove_if(
-			[](weak_handler_ptr ptr) { return ptr.expired(); }
+		by_name_[standardize_name(name)].remove_if(
+			[](const weak_handler_ptr& ptr) { return ptr.expired(); }
 		);
 	}
 
 	// And finally remove any now-unlockable weak_ptrs from the with-variables name list.
 	dynamic_.remove_if(
-		[](weak_handler_ptr ptr) { return ptr.expired(); }
+		[](const weak_handler_ptr& ptr) { return ptr.expired(); }
 	);
 }
 

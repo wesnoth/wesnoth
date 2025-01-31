@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "sdl/input.hpp" // for sdl::get_mods
 #include "serialization/unicode.hpp"
+#include "utils/general.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -55,7 +56,11 @@ const std::string hotkey_base::get_name() const
 
 	ret += (!ret.empty() && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
 	if(mod_ & KMOD_ALT) {
+#ifdef __APPLE__
+		ret += "opt";
+#else
 		ret += "alt";
+#endif
 	}
 
 	ret += (!ret.empty() && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
@@ -76,7 +81,7 @@ const std::string hotkey_base::get_name() const
 	return ret += get_name_helper();
 }
 
-bool hotkey_base::bindings_equal(hotkey_ptr other)
+bool hotkey_base::bindings_equal(const hotkey_ptr& other)
 {
 	if(other == nullptr) {
 		return false;
@@ -320,10 +325,10 @@ bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 	return text_ == other_k->text_;
 }
 
-void del_hotkey(hotkey_ptr item)
+void del_hotkey(const hotkey_ptr& item)
 {
 	if(!hotkeys_.empty()) {
-		hotkeys_.erase(std::remove(hotkeys_.begin(), hotkeys_.end(), item));
+		utils::erase(hotkeys_, item);
 	}
 }
 

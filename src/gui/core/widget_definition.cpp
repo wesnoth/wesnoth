@@ -30,17 +30,17 @@ state_definition::state_definition(const config& cfg)
 {}
 
 resolution_definition::resolution_definition(const config& cfg)
-	: window_width(cfg["window_width"])
-	, window_height(cfg["window_height"])
-	, min_width(cfg["min_width"])
-	, min_height(cfg["min_height"])
-	, default_width(cfg["default_width"])
-	, default_height(cfg["default_height"])
-	, max_width(cfg["max_width"])
-	, max_height(cfg["max_height"])
+	: window_width(cfg["window_width"].to_unsigned())
+	, window_height(cfg["window_height"].to_unsigned())
+	, min_width(cfg["min_width"].to_unsigned())
+	, min_height(cfg["min_height"].to_unsigned())
+	, default_width(cfg["default_width"].to_unsigned())
+	, default_height(cfg["default_height"].to_unsigned())
+	, max_width(cfg["max_width"].to_unsigned())
+	, max_height(cfg["max_height"].to_unsigned())
 	, linked_groups()
-	, text_extra_width(cfg["text_extra_width"])
-	, text_extra_height(cfg["text_extra_height"])
+	, text_extra_width(cfg["text_extra_width"].to_unsigned())
+	, text_extra_height(cfg["text_extra_height"].to_unsigned())
 	, text_font_size(cfg["text_font_size"])
 	, text_font_family(font::str_to_family_class(cfg["text_font_family"]))
 	, text_font_style(decode_font_style(cfg["text_font_style"]))
@@ -64,7 +64,7 @@ styled_widget_definition::styled_widget_definition(const config& cfg)
 	 * extra header dependencies.
 	 */
 	config::const_child_itors itors = cfg.child_range("resolution");
-	VALIDATE(!itors.empty(), _("No resolution defined."));
+	VALIDATE(!itors.empty(), _("No resolution defined for ") + id);
 }
 
 } // namespace gui2

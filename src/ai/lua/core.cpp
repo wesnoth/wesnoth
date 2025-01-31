@@ -125,7 +125,7 @@ void lua_ai_context::push_ai_table()
 	lua_ai_load ctx(*this, false);
 }
 
-static int transform_ai_action(lua_State *L, ai::action_result_ptr action_result)
+static int transform_ai_action(lua_State *L, const ai::action_result_ptr& action_result)
 {
 	lua_newtable(L);
 	lua_pushboolean(L,action_result->is_ok());
@@ -158,8 +158,8 @@ static int cfun_ai_get_suitable_keep(lua_State *L)
 		return 0;
 	}
 	else {
-		lua_pushnumber(L, res.wml_x());
-		lua_pushnumber(L, res.wml_y());
+		lua_pushinteger(L, res.wml_x());
+		lua_pushinteger(L, res.wml_y());
 		return 2;
 	}
 }
@@ -1098,7 +1098,7 @@ lua_ai_context::~lua_ai_context()
 	lua_pop(L, 1);
 }
 
-void lua_ai_action_handler::handle(const config &cfg, const config &filter_own, bool read_only, lua_object_ptr l_obj)
+void lua_ai_action_handler::handle(const config &cfg, const config &filter_own, bool read_only, const lua_object_ptr& l_obj)
 {
 	int initial_top = lua_gettop(L);//get the old stack size
 

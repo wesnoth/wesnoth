@@ -30,6 +30,8 @@
 ;--------------------------------
 ;Interface Settings
 
+  !define MUI_ICON "packaging\windows\icon-installer.ico"
+  !define MUI_UNICON "packaging\windows\icon-uninstaller.ico"
   !define MUI_WELCOMEFINISHPAGE_BITMAP packaging\windows\WindowsInstallerGraphic.bmp
   !define MUI_ABORTWARNING
   !define MUI_WELCOMEPAGE_TITLE_3LINES

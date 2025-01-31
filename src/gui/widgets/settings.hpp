@@ -23,6 +23,7 @@
 #include "gui/auxiliary/tips.hpp"
 #include "tstring.hpp"
 
+#include <chrono>
 #include <string>
 #include <vector>
 
@@ -42,7 +43,6 @@ namespace settings
  */
 extern unsigned screen_width;
 extern unsigned screen_height;
-extern const unsigned screen_pitch_microns; /* Deprecated, do not use */
 
 /**
  * The offset between the left edge of the screen and the gamemap.
@@ -57,11 +57,11 @@ extern unsigned gamemap_width;
 extern unsigned gamemap_height;
 
 /** These are copied from the active gui. */
-extern unsigned popup_show_delay;
-extern unsigned popup_show_time;
-extern unsigned help_show_time;
-extern unsigned double_click_time;
-extern unsigned repeat_button_repeat_time;
+extern std::chrono::milliseconds popup_show_delay;
+extern std::chrono::milliseconds popup_show_time;
+extern std::chrono::milliseconds help_show_time;
+extern std::chrono::milliseconds double_click_time;
+extern std::chrono::milliseconds repeat_button_repeat_time;
 
 extern std::string sound_button_click;
 extern std::string sound_toggle_button_click;

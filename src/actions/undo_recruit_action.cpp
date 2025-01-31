@@ -29,25 +29,34 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 
-namespace actions
+namespace actions::undo
 {
-namespace undo
-{
-
-recruit_action::recruit_action(const unit_const_ptr recruited, const map_location& loc,
-			   const map_location& from, int orig_village_owner, bool time_bonus)
+recruit_action::recruit_action(const unit_const_ptr& recruited, const map_location& loc,
+			   const map_location& from)
 	: undo_action()
-	, shroud_clearing_action(recruited, loc, orig_village_owner, time_bonus)
+	, shroud_clearing_action(recruited, loc)
 	, u_type(recruited->type())
 	, recruit_from(from)
 {}
 
-recruit_action::recruit_action(const config & cfg, const unit_type & type, const map_location& from)
-	: undo_action(cfg)
+static const unit_type& get_unit_type(const config& cfg)
+{
+	const config& child = cfg.mandatory_child("unit");
+	const unit_type* u_type = unit_types.find(child["type"]);
+
+	if(!u_type) {
+		// Bad data.
+		throw config::error("Invalid recruit; unit type '" + child["type"].str() + "' was not found.\n");
+	}
+	return *u_type;
+}
+recruit_action::recruit_action(const config & cfg)
+	: undo_action()
 	, shroud_clearing_action(cfg)
-	, u_type(type)
-	, recruit_from(from)
-{}
+	, u_type(get_unit_type(cfg))
+	, recruit_from(map_location(cfg.child_or_empty("leader"), nullptr))
+{
+}
 
 /**
  * Writes this into the provided config.
@@ -89,10 +98,8 @@ bool recruit_action::undo(int side)
 	// to also do the overlapped hexes
 	gui.invalidate(recruit_loc);
 	units.erase(recruit_loc);
-	this->return_village();
-	execute_undo_umc_wml();
 	return true;
 }
+static auto reg_undo_recruit = undo_action_container::subaction_factory<recruit_action>();
 
-}
 }

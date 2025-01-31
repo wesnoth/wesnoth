@@ -247,12 +247,6 @@ WML_HANDLER_FUNCTION(clear_global_variable,,pcfg)
 		verify_and_clear_global_variable(pcfg);
 }
 
-static void on_replay_error(const std::string& message)
-{
-	ERR_NG << "Error via [do_command]:";
-	ERR_NG << message;
-}
-
 // This tag exposes part of the code path used to handle [command]'s in replays
 // This allows to perform scripting in WML that will use the same code path as player actions, for example.
 WML_HANDLER_FUNCTION(do_command,, cfg)
@@ -306,12 +300,14 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 
 		//Note that this fires related events and everything else that also happens normally.
 		//have to watch out with the undo stack, therefore forbid [auto_shroud] and [update_shroud] here...
+		auto spectator = action_spectator([](const std::string& message) {
+			ERR_NG << "Error via [do_command]:";
+			ERR_NG << message;
+		});
 		synced_context::run_in_synced_context_if_not_already(
-			/*commandname*/ key,
-			/*data*/ child.get_parsed_config(),
-			/*use_undo*/ true,
-			/*show*/ true,
-			/*error_handler*/ &on_replay_error
+			key,
+			child.get_parsed_config(),
+			spectator
 		);
 		ai::manager::get_singleton().raise_gamestate_changed();
 	}
@@ -374,7 +370,7 @@ WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 	const std::vector<map_location>& path = fake_unit_path(*dummy_unit, xvals, yvals);
 	if (!path.empty()) {
 		// Always scroll.
-		unit_display::move_unit(path, dummy_unit.get_unit_ptr(), true, map_location::NDIRECTIONS, force_scroll);
+		unit_display::move_unit(path, dummy_unit.get_unit_ptr(), true, map_location::direction::indeterminate, force_scroll);
 	}
 }
 
@@ -399,7 +395,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 	for (const vconfig& config : unit_cfgs) {
 		const std::vector<std::string> xvals = utils::split(config["x"]);
 		const std::vector<std::string> yvals = utils::split(config["y"]);
-		int skip_steps = config["skip_steps"];
+		int skip_steps = config["skip_steps"].to_int();
 		fake_unit_ptr u = create_fake_unit(config);
 		units.push_back(u);
 		paths.push_back(fake_unit_path(*u, xvals, yvals));
@@ -424,7 +420,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 			DBG_NG << "Moving unit " << un << ", doing step " << step;
 			path_step[0] = paths[un][step - 1];
 			path_step[1] = paths[un][step];
-			unit_display::move_unit(path_step, units[un].get_unit_ptr(), true, map_location::NDIRECTIONS, force_scroll);
+			unit_display::move_unit(path_step, units[un].get_unit_ptr(), true, map_location::direction::indeterminate, force_scroll);
 			units[un]->set_location(path_step[1]);
 			units[un]->anim_comp().set_standing(false);
 		}
@@ -456,18 +452,18 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 	vconfig unit_filter_cfg(temp_config);
 	const vconfig & leader_filter = cfg.child("secondary_unit");
 
-	for(int index = 0; index < static_cast<int>(resources::gameboard->teams().size()); ++index) {
-		LOG_NG << "for side " << index + 1 << "...";
-		const std::string player_id = resources::gameboard->teams()[index].save_id_or_number();
+	for(team& t : resources::gameboard->teams()) {
+		LOG_NG << "for side " << t.side() << "...";
+		const std::string player_id = t.save_id_or_number();
 
-		if(resources::gameboard->teams()[index].recall_list().size() < 1) {
+		if(t.recall_list().size() < 1) {
 			DBG_NG << "recall list is empty when trying to recall!";
-			DBG_NG << "player_id: " << player_id << " side: " << index+1;
+			DBG_NG << "player_id: " << player_id << " side: " << t.side();
 			continue;
 		}
 
-		recall_list_manager & avail = resources::gameboard->teams()[index].recall_list();
-		std::vector<unit_map::unit_iterator> leaders = resources::gameboard->units().find_leaders(index + 1);
+		recall_list_manager & avail = t.recall_list();
+		std::vector<unit_map::unit_iterator> leaders = resources::gameboard->units().find_leaders(t.side());
 
 		const unit_filter ufilt(unit_filter_cfg);
 		const unit_filter lfilt(leader_filter); // Note that if leader_filter is null, this correctly gives a null filter that matches all units.
@@ -614,7 +610,7 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 		}
 	}
 
-	std::optional<std::string> errmsg = resources::gameboard->replace_map(map);
+	utils::optional<std::string> errmsg = resources::gameboard->replace_map(map);
 
 	if (errmsg) {
 		lg::log_to_chat() << *errmsg << '\n';
@@ -638,7 +634,7 @@ WML_HANDLER_FUNCTION(set_global_variable,,pcfg)
 
 WML_HANDLER_FUNCTION(set_variables,, cfg)
 {
-	const t_string& name = cfg["name"];
+	const std::string name = cfg["name"];
 	variable_access_create dest = resources::gamedata->get_variable_access_write(name);
 	if(name.empty()) {
 		ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().debug();
@@ -894,8 +890,16 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 		.allow_rename_side(true)
 		.allow_show(true);
 
-	uc.add_unit(parsed_cfg, &cfg);
+	try
+	{
+		uc.add_unit(parsed_cfg, &cfg);
+	}
+	catch(const unit_type::error& e)
+	{
+		ERR_WML << "Error occured inside [unit]: " << e.what();
 
+		throw;
+	}
 }
 
 } // end namespace game_events

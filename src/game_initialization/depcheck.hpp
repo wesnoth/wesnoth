@@ -138,7 +138,7 @@ public:
 	 *
 	 * @return true if activated, false is not
 	 */
-	bool is_modification_active(const std::string id) const;
+	bool is_modification_active(const std::string& id) const;
 
 	/**
 	 * Returns the selected era

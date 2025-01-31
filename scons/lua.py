@@ -5,7 +5,7 @@ from os.path import join
 import SCons.Conftest
 
 # Based on SCons.SConf.CheckLibWithHeader()
-def CheckLibsWithSystemHeader(context, libs, header, language) -> bool:
+def CheckLibsWithSystemHeader(context, libs, header, language):
     res = SCons.Conftest.CheckLib(context, libs,
             header = "#include <%s>" % header, language = language)
     context.did_show_result = 1

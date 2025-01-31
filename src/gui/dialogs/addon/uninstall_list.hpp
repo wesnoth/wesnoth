@@ -22,16 +22,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog with a checkbox list for choosing installed add-ons to remove.
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * addons_list       | @ref listbox  |yes      |A listbox containing add-on selection entries.
- * checkbox          | toggle_button |yes      |A toggle button allowing the user to mark/unmark the add-on.
- * name              | control       |no       |The name of the add-on.
- */
 class addon_uninstall_list : public modal_dialog
 {
 public:
@@ -58,9 +48,9 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 };
 
 } // namespace dialogs

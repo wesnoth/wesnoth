@@ -35,7 +35,7 @@ namespace wb {
 class move : public action
 {
 public:
-	move(std::size_t team_index, bool hidden, unit& mover, const pathfind::marked_route& route,
+	move(std::size_t team_index, bool hidden, const unit& mover, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	move(const config&, bool hidden); // For deserialization
 	virtual ~move();
@@ -134,7 +134,7 @@ private:
 };
 
 /** Dumps an move on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &s, move_ptr move);
-std::ostream &operator<<(std::ostream &s, move_const_ptr move);
+std::ostream &operator<<(std::ostream &s, const move_ptr& move);
+std::ostream &operator<<(std::ostream &s, const move_const_ptr& move);
 
 } // end namespace wb

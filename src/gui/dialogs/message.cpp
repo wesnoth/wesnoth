@@ -18,7 +18,6 @@
 #include "gui/dialogs/message.hpp"
 
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
@@ -51,7 +50,7 @@ struct message_implementation
 							message::button_status& button_status,
 							const std::string& id)
 	{
-		button_status.ptr = find_widget<button>(&window, id, false, true);
+		button_status.ptr = window.find_widget<button>(id, false, true);
 		button_status.ptr->set_visible(button_status.visible);
 
 		if(!button_status.caption.empty()) {
@@ -64,17 +63,16 @@ struct message_implementation
 	}
 };
 
-void message::pre_show(window& window)
+void message::pre_show()
 {
 	// ***** Validate the required buttons ***** ***** ***** *****
-	message_implementation::init_button(window, buttons_[left_1], "left_side");
-	message_implementation::init_button(window, buttons_[cancel], "cancel");
-	message_implementation::init_button(window, buttons_[ok], "ok");
-	message_implementation::init_button(
-			window, buttons_[right_1], "right_side");
+	message_implementation::init_button(*this, buttons_[left_1], "left_side");
+	message_implementation::init_button(*this, buttons_[cancel], "cancel");
+	message_implementation::init_button(*this, buttons_[ok], "ok");
+	message_implementation::init_button(*this, buttons_[right_1], "right_side");
 
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
-	styled_widget& title_widget = find_widget<label>(&window, "title", false);
+	styled_widget& title_widget = find_widget<label>("title");
 	if(!title_.empty()) {
 		title_widget.set_label(title_);
 		title_widget.set_use_markup(title_use_markup_);
@@ -82,26 +80,26 @@ void message::pre_show(window& window)
 		title_widget.set_visible(widget::visibility::invisible);
 	}
 
-	styled_widget& img_widget = find_widget<image>(&window, "image", false);
+	styled_widget& img_widget = find_widget<image>("image");
 	if(!image_.empty()) {
 		img_widget.set_label(image_);
 	} else {
 		img_widget.set_visible(widget::visibility::invisible);
 	}
 
-	styled_widget& label = find_widget<styled_widget>(&window, "label", false);
+	styled_widget& label = find_widget<styled_widget>("label");
 	label.set_label(message_);
 	label.set_use_markup(message_use_markup_);
 
 	// The label might not always be a scroll_label but the capturing
 	// shouldn't hurt.
-	window.keyboard_capture(&label);
+	keyboard_capture(&label);
 
 	// Override the user value, to make sure it's set properly.
-	window.set_click_dismiss(auto_close_);
+	set_click_dismiss(auto_close_);
 }
 
-void message::post_show(window& /*window*/)
+void message::post_show()
 {
 	for(auto & button_status : buttons_)
 	{

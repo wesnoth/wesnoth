@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/editor/edit_label.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -47,13 +46,13 @@ editor_edit_label::editor_edit_label(std::string& text,
 	register_color_component("slider_blue", &color_t::b);
 }
 
-void editor_edit_label::pre_show(window& win)
+void editor_edit_label::pre_show()
 {
-	win.add_to_tab_order(find_widget<text_box>(&win, "label", false, true));
-	win.add_to_tab_order(find_widget<text_box>(&win, "category", false, true));
+	add_to_tab_order(find_widget<text_box>("label", false, true));
+	add_to_tab_order(find_widget<text_box>("category", false, true));
 }
 
-void editor_edit_label::register_color_component(std::string widget_id, uint8_t color_t::* component) {
+void editor_edit_label::register_color_component(const std::string& widget_id, uint8_t color_t::* component) {
 	register_integer(widget_id, true,
 					 std::bind(&editor_edit_label::load_color_component, this, component),
 					 std::bind(&editor_edit_label::save_color_component, this, component, std::placeholders::_1));

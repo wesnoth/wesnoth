@@ -16,22 +16,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog for adding a translation while editing an add-on's _server.pbl.
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * language          | text_box      |yes      |The language code for this translation.
- * lang_title        | text_box      |yes      |The name of the language displayed on the UI.
- * description       | text_box      |yes      |The description of the translation.
- */
 class editor_edit_pbl_translation : public modal_dialog
 {
 public:
@@ -41,8 +27,8 @@ public:
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(editor_edit_pbl_translation)
 
 private:
-	virtual void pre_show(window& window) override;
-	virtual void post_show(window& window) override;
+	virtual void pre_show() override;
+	virtual void post_show() override;
 
 	virtual const std::string& window_id() const override;
 
@@ -51,5 +37,4 @@ private:
 	std::string& description_;
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

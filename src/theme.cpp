@@ -226,8 +226,8 @@ static config expand_partialresolution(const config& theme)
 
 		// cannot add [status] sub-elements, but who cares
 		for(const auto& add : part.child_range("add")) {
-			for(const auto child : add.all_children_range()) {
-				resolution.add_child(child.key, child.cfg);
+			for(const auto [key, cfg] : add.all_children_view()) {
+				resolution.add_child(key, cfg);
 			}
 		}
 
@@ -240,9 +240,9 @@ static config expand_partialresolution(const config& theme)
 static void do_resolve_rects(const config& cfg, config& resolved_config, config* resol_cfg = nullptr)
 {
 	// recursively resolve children
-	for(const config::any_child value : cfg.all_children_range()) {
-		config& childcfg = resolved_config.add_child(value.key);
-		do_resolve_rects(value.cfg, childcfg, value.key == "resolution" ? &childcfg : resol_cfg);
+	for(const auto [child_key, child_cfg] : cfg.all_children_view()) {
+		config& dest = resolved_config.add_child(child_key);
+		do_resolve_rects(child_cfg, dest, child_key == "resolution" ? &dest : resol_cfg);
 	}
 
 	// copy all key/values
@@ -401,7 +401,7 @@ void theme::object::modify_location(const _rect& rect)
 	location_modified_ = true;
 }
 
-void theme::object::modify_location(std::string rect_str, SDL_Rect location_ref_rect)
+void theme::object::modify_location(const std::string& rect_str, SDL_Rect location_ref_rect)
 {
 	_rect rect {0, 0, 0, 0};
 	const std::vector<std::string> items = utils::split(rect_str.c_str());
@@ -433,7 +433,7 @@ theme::label::label(std::size_t sw, std::size_t sh, const config& cfg)
 	: object(sw, sh, cfg)
 	, text_(cfg["prefix"].str() + cfg["prefix_literal"].str() + cfg["text"].str() + cfg["postfix_literal"].str() + cfg["postfix"].str())
 	, icon_(cfg["icon"])
-	, font_(cfg["font_size"])
+	, font_(cfg["font_size"].to_size_t())
 	, font_rgb_set_(false)
 	, font_rgb_(DefaultFontRGB)
 {
@@ -441,7 +441,7 @@ theme::label::label(std::size_t sw, std::size_t sh, const config& cfg)
 		font_ = DefaultFontSize;
 
 	if(cfg.has_attribute("font_rgb")) {
-		font_rgb_ = color_t::from_rgb_string(cfg["font_rgb"]);
+		font_rgb_ = color_t::from_rgb_string(cfg["font_rgb"].str());
 		font_rgb_set_ = true;
 	}
 }
@@ -451,7 +451,7 @@ theme::status_item::status_item(std::size_t sw, std::size_t sh, const config& cf
 	, prefix_(cfg["prefix"].str() + cfg["prefix_literal"].str())
 	, postfix_(cfg["postfix_literal"].str() + cfg["postfix"].str())
 	, label_()
-	, font_(cfg["font_size"])
+	, font_(cfg["font_size"].to_size_t())
 	, font_rgb_set_(false)
 	, font_rgb_(DefaultFontRGB)
 {
@@ -463,7 +463,7 @@ theme::status_item::status_item(std::size_t sw, std::size_t sh, const config& cf
 	}
 
 	if(cfg.has_attribute("font_rgb")) {
-		font_rgb_ = color_t::from_rgb_string(cfg["font_rgb"]);
+		font_rgb_ = color_t::from_rgb_string(cfg["font_rgb"].str());
 		font_rgb_set_ = true;
 	}
 }
@@ -610,8 +610,8 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	int current_rating = 1000000;
 	const config* current = nullptr;
 	for(const config& i : cfg_.child_range("resolution")) {
-		int width = i["width"];
-		int height = i["height"];
+		int width = i["width"].to_int();
+		int height = i["height"].to_int();
 		LOG_DP << "comparing resolution " << screen.w << "," << screen.h << " to " << width << "," << height;
 		if(screen.w >= width && screen.h >= height) {
 			LOG_DP << "loading theme: " << width << "," << height;
@@ -633,8 +633,8 @@ bool theme::set_resolution(const SDL_Rect& screen)
 		}
 		return false;
 	}
-	cur_spec_width_ = (*current)["width"];
-	cur_spec_height_ = (*current)["height"];
+	cur_spec_width_ = (*current)["width"].to_size_t();
+	cur_spec_height_ = (*current)["height"].to_size_t();
 
 	std::map<std::string, std::string> title_stash_menus;
 	std::vector<theme::menu>::iterator m;
@@ -689,8 +689,8 @@ void theme::add_object(std::size_t sw, std::size_t sh, const config& cfg)
 	}
 
 	if(const auto status_cfg = cfg.optional_child("status")) {
-		for(const config::any_child i : status_cfg->all_children_range()) {
-			status_[i.key].reset(new status_item(sw, sh, i.cfg));
+		for(const auto [child_key, child_cfg] : status_cfg->all_children_view()) {
+			status_[child_key].reset(new status_item(sw, sh, child_cfg));
 		}
 		if(const auto unit_image_cfg = status_cfg->optional_child("unit_image")) {
 			unit_image_ = object(sw, sh, unit_image_cfg.value());
@@ -802,7 +802,7 @@ void theme::remove_object(const std::string& id)
 	throw config::error(stream.str());
 }
 
-void theme::set_object_location(theme::object& element, std::string rect_str, std::string ref_id)
+void theme::set_object_location(theme::object& element, const std::string& rect_str, std::string ref_id)
 {
 	theme::object ref_element = element;
 	if(ref_id.empty()) {

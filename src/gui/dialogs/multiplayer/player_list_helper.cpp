@@ -14,20 +14,19 @@
 
 #include "gui/dialogs/multiplayer/player_list_helper.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
-#include "preferences/credentials.hpp"
+#include "preferences/preferences.hpp"
 
 namespace gui2
 {
 player_list_helper::player_list_helper(window* window)
-	: list_(find_widget<listbox>(window, "player_list", false))
+	: list_(window->find_widget<listbox>("player_list"))
 {
 	// add ourselves as the host
 	widget_data data = {
 		{ "player_type_icon", {{ "label", "misc/leader-crown.png~CROP(12, 1, 15, 15)"}}},
-		{ "player_name",      {{ "label", preferences::login()}}}
+		{ "player_name",      {{ "label", prefs::get().login()}}}
 	};
 	list_.add_row(data);
 	list_.select_row(0);
@@ -43,7 +42,7 @@ void player_list_helper::update_list(const config::const_child_itors& users)
 		widget_item item;
 
 		const std::string name = user["name"];
-		const bool is_you = name == preferences::login();
+		const bool is_you = name == prefs::get().login();
 
 		std::string icon;
 		if(user["host"].to_bool()) {

@@ -18,6 +18,8 @@
 #include "mp_game_settings.hpp"
 #include "saved_game.hpp"
 
+#include <chrono>
+
 namespace ng
 {
 /**
@@ -66,22 +68,22 @@ public:
 		return parameters_.xp_modifier;
 	}
 
-	int mp_countdown_init_time() const
+	auto mp_countdown_init_time() const
 	{
 		return parameters_.mp_countdown_init_time;
 	}
 
-	int mp_countdown_reservoir_time() const
+	auto mp_countdown_reservoir_time() const
 	{
 		return parameters_.mp_countdown_reservoir_time;
 	}
 
-	int mp_countdown_turn_bonus() const
+	auto mp_countdown_turn_bonus() const
 	{
 		return parameters_.mp_countdown_turn_bonus;
 	}
 
-	int mp_countdown_action_bonus() const
+	auto mp_countdown_action_bonus() const
 	{
 		return parameters_.mp_countdown_action_bonus;
 	}
@@ -165,22 +167,22 @@ public:
 		parameters_.xp_modifier = val;
 	}
 
-	void set_mp_countdown_init_time(int val)
+	void set_mp_countdown_init_time(const std::chrono::seconds& val)
 	{
 		parameters_.mp_countdown_init_time = val;
 	}
 
-	void set_mp_countdown_reservoir_time(int val)
+	void set_mp_countdown_reservoir_time(const std::chrono::seconds& val)
 	{
 		parameters_.mp_countdown_reservoir_time = val;
 	}
 
-	void set_mp_countdown_turn_bonus(int val)
+	void set_mp_countdown_turn_bonus(const std::chrono::seconds& val)
 	{
 		parameters_.mp_countdown_turn_bonus = val;
 	}
 
-	void set_mp_countdown_action_bonus(int val)
+	void set_mp_countdown_action_bonus(const std::chrono::seconds& val)
 	{
 		parameters_.mp_countdown_action_bonus = val;
 	}
@@ -246,10 +248,10 @@ public:
 	int village_gold_default() const;
 	int village_support_default() const;
 	int xp_modifier_default() const;
-	int mp_countdown_init_time_default() const;
-	int mp_countdown_reservoir_time_default() const;
-	int mp_countdown_turn_bonus_default() const;
-	int mp_countdown_action_bonus_default() const;
+	std::chrono::seconds mp_countdown_init_time_default() const;
+	std::chrono::seconds mp_countdown_reservoir_time_default() const;
+	std::chrono::seconds mp_countdown_turn_bonus_default() const;
+	std::chrono::seconds mp_countdown_action_bonus_default() const;
 	bool mp_countdown_default() const;
 	bool use_map_settings_default() const;
 	bool random_start_time_default() const;

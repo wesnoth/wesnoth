@@ -68,7 +68,7 @@ void mapbuilder::pre_build()
 		//Remove any unit the current side cannot see to avoid their detection by planning
 		//Units will be restored to the unit map by destruction of removers_
 
-		if(!on_current_side && !u.is_visible_to_team(resources::gameboard->teams()[viewer_team()], false)) {
+		if(!on_current_side && !u.is_visible_to_team(display::get_singleton()->viewing_team(), false)) {
 			removers_.emplace_back(new temporary_unit_remover(resources::gameboard->units(), u.get_location()));
 
 			//Don't do anything else to the removed unit!
@@ -180,7 +180,7 @@ void mapbuilder::post_visit_team(std::size_t turn)
 
 	// Go backwards through the actions of this turn to identify
 	// which ones are moves that end a turn.
-	for(action_ptr action : utils::reversed_view(applied_actions_this_turn_)) {
+	for(action_ptr action : applied_actions_this_turn_ | utils::views::reverse) {
 		move_ptr move = std::dynamic_pointer_cast<class move>(action);
 		if(move) {
 			move->set_turn_number(0);
@@ -200,7 +200,7 @@ void mapbuilder::post_visit_team(std::size_t turn)
 void mapbuilder::restore_normal_map()
 {
 	//applied_actions_ contain only the actions that we applied to the unit map
-	for(action_ptr act : utils::reversed_view(applied_actions_)) {
+	for(action_ptr act : applied_actions_ | utils::views::reverse) {
 		act->remove_temp_modifier(unit_map_);
 	}
 }

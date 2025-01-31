@@ -61,7 +61,7 @@ surface array_to_surface(const std::array<uint32_t, w * h>& arr)
 	return surf;
 }
 
-std::vector<uint32_t> surface_to_vec(const surface& surf)
+static std::vector<uint32_t> surface_to_vec(const surface& surf)
 {
 	const_surface_lock lock{surf};
 	const uint32_t* const pixels = lock.pixels();

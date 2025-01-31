@@ -16,6 +16,7 @@
 #pragma once
 
 class config;
+class config_attribute_value;
 class variable_set;
 
 #include <array>
@@ -27,6 +28,12 @@ class variable_set;
 
 struct wml_loc {};
 
+/// Represents a map location in cubic hexagonal coordinates.
+/// See <https://www.redblobgames.com/grids/hexagons/#coordinates-cube> for a more detailed explanation.
+struct cubic_location {
+	int q, r, s;
+};
+
 /**
  * Encapsulates the map of the game.
  *
@@ -37,48 +44,62 @@ struct wml_loc {};
 /** Represents a location on the map. */
 struct map_location {
 	/** Valid directions which can be moved in our hexagonal world. */
-	enum DIRECTION { NORTH=0, NORTH_EAST=1, SOUTH_EAST=2, SOUTH=3,
-					 SOUTH_WEST=4, NORTH_WEST=5, NDIRECTIONS=6 };
+	enum class direction {
+		north,
+		north_east,
+		south_east,
+		south,
+		south_west,
+		north_west,
+		indeterminate
+	};
 
-	static const std::vector<DIRECTION> & default_dirs();
+	static std::vector<direction> all_directions();
 
-	static DIRECTION rotate_right(DIRECTION d, unsigned int k = 1u)
+	/** Returns the direction one would face having taken @a steps clockwise around an undefined center. */
+	static constexpr direction rotate_direction(direction d, int steps = 1)
 	{
-		return (d == map_location::NDIRECTIONS) ? map_location::NDIRECTIONS : static_cast<map_location::DIRECTION>((d + (k%6u)) % 6u);
+		if(d == direction::indeterminate) {
+			return direction::indeterminate;
+		}
+
+		// Compensate for weirdness with the C++ % operator.
+		// The plain formula (d + (steps % 6)) % 6 works for almost every case, but it returns incorrect
+		// results for a counterclockwise rotation on direction::north. Instead, for any negative steps,
+		// cancel out the sign and scale by the highest possible direction value (viz., 5). This has the
+		// effect of a clockwise rotation ending at the same value as the specified counter-clockwise op.
+		int adjusted_steps = steps >= 0 ? steps : steps * -5;
+		return direction{(static_cast<int>(d) + (adjusted_steps % 6)) % 6};
 	}
 
-	static DIRECTION rotate_right(DIRECTION d, signed int k)
+	static constexpr direction get_opposite_direction(direction d)
 	{
-		return (k>=0) ? rotate_right(d, static_cast<unsigned int> (k)) : rotate_right(d, (static_cast<unsigned int>(-k) % 6u) * 5u);
+		return rotate_direction(d, 3);
 	}
 
-	static DIRECTION get_opposite_dir(DIRECTION d)
-	{
-		return rotate_right(d,3u);
-	}
-
-	static DIRECTION parse_direction(const std::string& str);
+	static direction parse_direction(const std::string& str);
 
 	/**
 	 * Parse_directions takes a comma-separated list, and filters out any
 	 * invalid directions
 	 */
-	static std::vector<DIRECTION> parse_directions(const std::string& str);
-	static std::string write_direction(DIRECTION dir);
-	static std::string write_translated_direction(DIRECTION dir);
+	static std::vector<direction> parse_directions(const std::string& str);
+	static std::string write_direction(direction dir);
+	static std::string write_translated_direction(direction dir);
 
 	map_location() : x(-1000), y(-1000) {}
 	map_location(int x, int y) : x(x), y(y) {}
 	map_location(int x, int y, wml_loc) : x(x - 1), y(y - 1) {}
+	map_location(const config_attribute_value& x, const config_attribute_value& y, wml_loc);
 	map_location(const config& cfg, const variable_set *variables = nullptr);
 
-	static const map_location & ZERO()
+	static const map_location& ZERO()
 	{
 		static const map_location z(0,0);
 		return z;
 	}
 
-	static const map_location & null_location()
+	static const map_location& null_location()
 	{
 		static const map_location l;
 		return l;
@@ -113,12 +134,12 @@ struct map_location {
 		return map_location(-x, -y - (x & 1)); //subtract one if we're on an odd x coordinate
 	}
 
-	map_location vector_sum(const map_location &a) const
+	map_location vector_sum(const map_location& a) const
 	{
 		return map_location(*this).vector_sum_assign(a);
 	}
 
-	map_location& vector_sum_assign(const map_location &a)
+	map_location& vector_sum_assign(const map_location& a)
 	{
 		y += ((x & 1) && (a.x & 1)); //add one if both x coords are odd
 		x += a.x;
@@ -126,27 +147,36 @@ struct map_location {
 		return *this;
 	}
 
-	map_location& vector_difference_assign(const map_location &a)
+	map_location& vector_difference_assign(const map_location& a)
 	{
 		return vector_sum_assign(a.vector_negation());
 	}
 
 	// Do n step in the direction d
-	map_location get_direction(DIRECTION dir, unsigned int n = 1u) const;
-	map_location get_direction(DIRECTION dir, signed int n) const
+	map_location get_direction(direction dir, unsigned int n = 1u) const;
+	map_location get_direction(direction dir, signed int n) const
 	{
-		return (n >= 0) ? get_direction(dir, static_cast<unsigned int> (n)) : get_direction(get_opposite_dir(dir), static_cast<unsigned int> (-n));
+		return (n >= 0) ? get_direction(dir, static_cast<unsigned int> (n)) : get_direction(get_opposite_direction(dir), static_cast<unsigned int> (-n));
 	}
 
 	enum RELATIVE_DIR_MODE { DEFAULT , RADIAL_SYMMETRY };
-	DIRECTION get_relative_dir(const map_location & loc, map_location::RELATIVE_DIR_MODE mode /*= map_location::RADIAL_SYMMETRY*/ ) const;
-	DIRECTION get_relative_dir(const map_location & loc) const; //moved the default setting to .cpp file for ease of testing
+	direction get_relative_dir(const map_location& loc, map_location::RELATIVE_DIR_MODE mode /*= map_location::RADIAL_SYMMETRY*/ ) const;
+	direction get_relative_dir(const map_location& loc) const; //moved the default setting to .cpp file for ease of testing
 
-	// Express as a vector in the basis N, NE. N, and NE may be obtained by zero.get_direction(NORTH), ...(NORTH_EAST), respectively.
-	std::pair<int,int> get_in_basis_N_NE() const;
+	cubic_location to_cubic() const {
+		int q = x;
+		int r = y - int((x - abs(x) % 2) / 2);
+		int s = -q - r;
+		return cubic_location{q, r, s};
+	}
+	static map_location from_cubic(cubic_location h) {
+		int x = h.q;
+		int y = h.r + int((h.q - abs(h.q) % 2) / 2);
+		return map_location(x, y);
+	}
 
 	// Rotates the map_location clockwise in 60 degree increments around a center point. Negative numbers of steps are permitted.
-	map_location rotate_right_around_center(const map_location & center, int k) const;
+	map_location rotate_right_around_center(const map_location& center, int k) const;
 
 	friend std::size_t hash_value(const map_location& a);
 
@@ -200,9 +230,12 @@ void read_locations(const config& cfg, std::vector<map_location>& locs);
 void write_locations(const std::vector<map_location>& locs, config& cfg);
 
 /** Dumps a position on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &s, const map_location& l);
+std::ostream& operator<<(std::ostream& s, const map_location& l);
 /** Dumps a vector of positions on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &s, const std::vector<map_location>& v);
+std::ostream& operator<<(std::ostream& s, const std::vector<map_location>& v);
+
+/** Print a direction's string representation to stream. */
+std::ostream& operator<<(std::ostream& s, map_location::direction dir);
 
 namespace std {
 template<>

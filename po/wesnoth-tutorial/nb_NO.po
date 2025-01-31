@@ -2,78 +2,95 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2009-04-07 22:15+0100\n"
+"POT-Creation-Date: 2025-01-19 17:47 UTC\n"
+"PO-Revision-Date: 2024-11-03 12:53+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: no\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
-msgid "Battle Training"
-msgstr ""
+#, fuzzy
+#| msgid "Battle Training"
+msgid "Battle Training — Old Tutorial"
+msgstr "Kampveiledning"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
-#. [achievement_group]
-#: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:30
-#: data/campaigns/tutorial/achievements.cfg:3
-#, fuzzy
-#| msgid "Wesnoth Tutorial"
+#: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:32
 msgid "Tutorial"
-msgstr "Wesnoth opplæring"
+msgstr "Veiledning"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
+#| "first-time players."
 msgid ""
-"Learn the basics of Wesnoth gameplay with a tutorial. Recommended for first-"
-"time players."
+"Learn the basics of Wesnoth gameplay with a tutorial.\n"
+"    \n"
+msgstr ""
+"Lær det grunnleggende om spilleopplevelsen i Wesnoth gjennom denne "
+"veiledningen. Anbefales for førstegangsspillere."
+
+#. [campaign]: id=Tutorial
+#: data/campaigns/tutorial/_main.cfg:23
+msgid ""
+"Note: No longer recommended for first-time players. Try <i>The South Guard</"
+"i> instead."
 msgstr ""
 
 #. [difficulty]
-#: data/campaigns/tutorial/_main.cfg:31
+#: data/campaigns/tutorial/_main.cfg:33
 msgid "Beginner"
-msgstr ""
+msgstr "Nybegynner"
+
+#. [achievement_group]
+#: data/campaigns/tutorial/achievements.cfg:3
+#, fuzzy
+#| msgid "Tutorial"
+msgid "Old Tutorial"
+msgstr "Veiledning"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:7
 msgid "Completed the Tutorial"
-msgstr ""
+msgstr "Fullført veiledningen"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:8
 msgid "Complete the Battle Training."
-msgstr ""
+msgstr "Fullfør kampveiledningen."
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:19
 msgid "Select Character"
-msgstr ""
+msgstr "Velg karakter"
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:30
-#, fuzzy
-#| msgid "Who would you like to play?"
 msgid "Who do you want to play as?"
-msgstr "Hvilken karakter vil du spille?"
+msgstr "Hvem vil du spille som?"
 
-#. [button]
+#. [widget]: id=name
 #. [side]: type=Fighter, id=student
-#: data/campaigns/tutorial/gui/character_selection.cfg:61
+#: data/campaigns/tutorial/gui/character_selection.cfg:106
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:33
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
 msgid "Konrad"
 msgstr "Konrad"
 
-#. [button]
+#. [widget]: id=name
 #. [lua]: wml_actions.select_character
 #. [modify_side]
-#: data/campaigns/tutorial/gui/character_selection.cfg:70
-#: data/campaigns/tutorial/lua/character_selection.lua:25
+#: data/campaigns/tutorial/gui/character_selection.cfg:118
+#: data/campaigns/tutorial/lua/character_selection.lua:34
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:178
 msgid "Li’sar"
 msgstr "Li’sar"
@@ -84,9 +101,8 @@ msgstr "Li’sar"
 #. If you have any questions, ask in the forums or, the #wesnoth-dev channel on irc.libera.chat,
 #. or https://discord.gg/battleforwesnoth.
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:9
-#, fuzzy
 msgid "Wesnoth Tutorial — Part I"
-msgstr "Wesnoth opplæring, del II"
+msgstr "Wesnoth veiledning — Del I"
 
 #. [side]: type=Fighter, id=student
 #. [side]
@@ -94,7 +110,7 @@ msgstr "Wesnoth opplæring, del II"
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:26
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:104
 msgid "team_name^Student"
-msgstr ""
+msgstr "Student"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:75
@@ -103,13 +119,6 @@ msgstr "Delfador"
 
 #. [objectives]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:119
-#, fuzzy
-#| msgid ""
-#| "You will learn the basics of:\n"
-#| "Movement\n"
-#| "Attacking\n"
-#| "Healing\n"
-#| "Recruiting"
 msgid ""
 "You will learn the basics of:\n"
 "• <small>Movement</small>\n"
@@ -117,11 +126,11 @@ msgid ""
 "• <small>Healing</small>\n"
 "• <small>Recruiting</small>"
 msgstr ""
-"Du vil få grunnleggende opplæring i:\n"
-"bevegelse\n"
-"angrep\n"
-"helbredelse\n"
-"rekruttering"
+"Du vil lære det grunnleggende om:\n"
+"- <small>Forflytning</small>.\n"
+"- <small>Angrep</small>.\n"
+"- <small>Helbredelse</small>.\n"
+"- <small>Rekruttering</small>."
 
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:125
@@ -138,15 +147,15 @@ msgstr "Bli drept i forsøket"
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
 msgstr ""
+"Du kan ikke avslutte runden før du har fullført leksjonen om forflytning!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:146
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:159
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:167
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:160
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:168
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:195
-#, fuzzy
 msgid "Welcome to Wesnoth!"
-msgstr "*Velkommen til Wesnoth!"
+msgstr "Velkommen til Wesnoth!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:148
@@ -155,58 +164,61 @@ msgid ""
 "Part 1 will teach you the basics about movement, attacking, healing, and "
 "recruiting. Firstly, you’ll choose a hero (both heroes play the same)."
 msgstr ""
+"Dette er en opplæring i to deler beregnet på deg som er ny i spillet. Del 1 "
+"vil lære deg det grunnleggende om forflytning, angrep, helbredelse og "
+"rekruttering. Først velger du en helt (begge heltene spiller likt)."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:161
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:162
 msgid ""
 "For this tutorial, you are playing as Konrad. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
-"Du står nå i vakttårnet ved Elverstrømmen.  Din læremester Delfador venter "
-"på den østre bredden."
+"I denne opplæringen spiller du som Konrad. Du står på borgen, og mentoren "
+"din, Delfador, befinner seg på østsiden av elven. Du kan føre musen over en "
+"enhet for å se en oversikt over enhetens evner og statistikk, som vises til "
+"høyre på skjermen."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:169
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:170
 msgid ""
 "For this tutorial, you are playing as Li’sar. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
-"Du står nå i vakttårnet ved Elverstrømmen.  Din læremester Delfador venter "
-"på den østre bredden."
+"I denne opplæringen spiller du som Li'sar. Du står på borgen, og mentoren "
+"din, Delfador, befinner seg på østsiden av elven. Du kan bevege musen over "
+"en enhet for å se en oversikt over enhetens evner og statistikk, som vises "
+"til høyre på skjermen."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:175
-#, fuzzy
-#| msgid "Left click on Konrad"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:176
 msgid "Click on Konrad"
 msgstr "Venstreklikk på Konrad"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:177
-#, fuzzy
-#| msgid "Left click on Li’sar"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:178
 msgid "Click on Li’sar"
 msgstr "Venstreklikk på Li'sar"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:319
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:320
 msgid "To undo your last move, press <b>u</b> or use the right-click menu."
 msgstr ""
-
-#. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:359
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:364
-msgid "Movement"
-msgstr ""
+"Hvis du vil angre det siste trekket, trykker du på <b>u</b> eller bruker "
+"høyreklikkmenyen."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:360
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:365
+msgid "Movement"
+msgstr "Forflytning"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:361
 msgid ""
 "When you hover over or select a unit, in this case Konrad, the places he can "
 "move to are highlighted. All units have a certain number of <i>movement "
@@ -215,9 +227,16 @@ msgid ""
 "simply click on Konrad and then your destination. (You can press <b>u</b> to "
 "undo a move if you move to the wrong place.)"
 msgstr ""
+"Når du holder musepekeren over eller velger en enhet, i dette tilfellet "
+"Konrad, markeres stedene han kan forflytte seg til. Alle enheter har et "
+"visst antall <i>forflytningspoeng</i>, som angir hvor mange felter enheten "
+"kan forflytte seg per runde. Normalt brukes det ett forflytningspoeng for å "
+"forflytte seg én rute i flatt terreng. For å forflytte deg klikker du bare "
+"på Konrad og deretter på destinasjonen. (Du kan trykke på <b>u</b> for å "
+"angre en forflytning hvis du forflytter deg til feil sted)."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:365
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:366
 msgid ""
 "When you hover over or select a unit, in this case Li’sar, the places she "
 "can move to are highlighted. All units have a certain number of <i>movement "
@@ -226,219 +245,179 @@ msgid ""
 "simply click on Li’sar and then your destination. (You can press <b>u</b> to "
 "undo a move if you move to the wrong place.)"
 msgstr ""
+"Når du holder musepekeren over eller velger en enhet, i dette tilfellet "
+"Li'sar, markeres stedene hun kan forflytte seg til. Alle enheter har et "
+"visst antall <i>forflytningspoeng</i>, som angir hvor mange felter enheten "
+"kan forflytte seg per runde. Normalt går det med ett forflytningspoeng til å "
+"forflytte seg én rute i flatt terreng. For å forflytte deg klikker du bare "
+"på Li'sar og deretter på destinasjonen. (Du kan trykke på <b>u</b> for å "
+"angre en forflytning hvis du forflytter deg til feil sted)."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:375
-#, fuzzy
-#| msgid "Move Konrad to the keep"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:376
 msgid "Move Konrad next to Delfador"
-msgstr "Flytt Konrad til vakttårnet"
+msgstr "Flytt Konrad ved siden av Delfador"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:377
-#, fuzzy
-#| msgid "Move Li’sar to the keep"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:378
 msgid "Move Li’sar next to Delfador"
-msgstr "Flytt Li'sar til vakttårnet"
+msgstr "Flytt Li'sar ved siden av Delfador"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:394
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:406
 msgid "Good morning, Delfador! Is it time to attack things?"
-msgstr "God morgen, Delfador!  Er det tid for å angripe ting?"
+msgstr "God morgen, Delfador! Er det tid for å angripe ting?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:395
-#, fuzzy
-#| msgid "Good morning, Delfador! Is it time to attack things?"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:407
 msgid "female^Good morning, Delfador! Is it time to attack things?"
-msgstr "God morgen, Delfador!  Er det tid for å angripe ting?"
+msgstr "God morgen, Delfador! Er det tid for å angripe ting?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:400
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:412
 msgid "Um, well..."
 msgstr "Hmm... vel, tja..."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:405
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:417
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Har du funnet en ork jeg kan filleriste, hva? ... eller et Troll??"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:406
-#, fuzzy
-#| msgid "Have you found an orc for me to fight, huh? A troll?"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:418
 msgid "female^Have you found an orc for me to fight, huh? A troll?"
 msgstr "Har du funnet en ork jeg kan filleriste, hva? ... eller et Troll??"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:411
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:423
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Stille! Jeg skal fremmane en fiende verdig en kriger som deg ..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:469
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:481
 msgid "... this quintain!"
 msgstr "... denne stråmannen!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:474
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:486
 msgid "A quintain? You want me to fight a dummy?"
 msgstr "En stråmann? Skal jeg lekesloss med en nikkedukke??"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:475
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:487
 msgid "female^A quintain? You want me to fight a dummy?"
 msgstr "En stråmann? Skal jeg lekesloss med en nikkedukke??"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:481
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:493
 msgid ""
 "Young man, you have $student_hp hitpoints and a sword. I’m fairly sure "
 "you’ll win."
 msgstr ""
-"Barn, du har 32 helsepoeng og et sverd. Med list og lempe er jeg brukbart "
-"sikker på at du kan vinne."
+"Unge mann, du har $student_hp helsepoeng og et sverd. Jeg er ganske sikker "
+"på at du vinner."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:486
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:498
 msgid ""
 "female^Young lady, you have $student_hp hitpoints and a sword. I’m fairly "
 "sure you’ll win."
 msgstr ""
-"Barn, du har 32 helsepoeng og et sverd. Med list og lempe er jeg brukbart "
-"sikker på at du kan vinne."
+"Unge dame, du har $student_hp helsepoeng og et sverd. Jeg er ganske sikker "
+"på at du vinner."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:492
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:497
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:504
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:509
 msgid "Attacking"
-msgstr ""
+msgstr "Angrep"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:493
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:505
 msgid ""
 "To attack the quintain, first select the attacker (Konrad), then the target "
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
 "you’re ready."
 msgstr ""
-"For å angripe stråmannen, velg først angriperen (Konrad) og så målet "
-"(stråmannen). Du vil få se en detaljert beskrivelse av angrepet. Om du "
-"trykker OK, vil Konrad angripe."
+"For å angripe stråmannen velger du først angriperen (Konrad) og deretter "
+"målet (stråmannen). Du vil se en beskrivelse av angrepet. Klikk på "
+"<b>Angrip</b> når du er klar."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:498
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:510
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar), then the target "
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
 "you’re ready."
 msgstr ""
-"For å angripe stråmannen, velg først angriperen (Li'sar) og så målet "
-"(stråmannen). Du vil få se en detaljert beskrivelse av angrepet. Om du "
-"trykker OK, vil Li'sar angripe."
+"For å angripe stråmannen velger du først angriperen (Li'sar) og deretter "
+"målet (stråmannen). Du vil se en beskrivelse av angrepet. Klikk på "
+"<b>Angrip</b> når du er klar."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:503
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:515
 msgid "You cannot end your turn until you have attacked the dummy!"
-msgstr ""
+msgstr "Du kan ikke avslutte runden din før du har angrepet stråmannen!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:517
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:534
 msgid "Hey! This quintain fights back!"
 msgstr "Hei! Stråmannen slår tilbake!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:522
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:539
 msgid "Hmm, perhaps we should have started with a doll."
-msgstr "Hmm, kanskje vi skulle startet med en filledukke."
+msgstr "Hmm, kanskje vi skulle startet med en lekedukke."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:527
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:544
 msgid "Should I retreat?"
 msgstr "Bør jeg trekke meg tilbake?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:528
-#, fuzzy
-#| msgid "Should I retreat?"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:545
 msgid "female^Should I retreat?"
 msgstr "Bør jeg trekke meg tilbake?"
 
 #. [message]: speaker=Delfador
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:533
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1072
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:550
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1078
 msgid "Good idea!"
 msgstr "God idé!"
 
-#. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:538
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:543
-msgid "Crowns"
-msgstr ""
-
-#. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:539
-msgid ""
-"The tiny golden crown above your leader (Konrad) indicates he is a side "
-"leader. In most scenarios, you will lose if your leader is killed. Be sure "
-"to keep him safe!"
-msgstr ""
-
-#. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:544
-msgid ""
-"The tiny golden crown above your leader (Li’sar) indicates she is a side "
-"leader. In most scenarios, you will lose if your leader is killed. Be sure "
-"to keep her safe!"
-msgstr ""
-
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:571
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:576
 msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
 "now gets to attack."
 msgstr ""
-"Uheldigvis har du brukt opp anledningene dine til å angripe denne runden. "
-"Stråmannen får nå gjøre sin tur."
+"Dessverre har du brukt opp din runde til å angripe stråmannen. Nå er det "
+"stråmannens tur til å angripe."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:576
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:581
 msgid "The <i>dummy</i> gets a turn?"
-msgstr "Får FUGLESKREMSELET en egen tur??"
+msgstr "Får <i>stråmannen</i> en egen runde??"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:581
-#, fuzzy
-#| msgid ""
-#| "Yes. It’s a magical quintain.\n"
-#| "Now, this quintain gets 5 chances to hit you for 3 damage each. If it "
-#| "hits every time, you’ll drop from $student_hp to $future_hp hit points. "
-#| "Brace yourself!"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:586
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
 "chances. If it hits every time, you’ll drop from $student_hp to "
 "$($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
-"Ja: det er en magisk stråmann.\n"
-"Nå får dukken fem sjanser til å treffe deg, og hvis den treffer med alle "
-"slagene faller du fra $student_hp til $future_hp helsepoeng. Stålsett deg!"
+"Ja, det er en magisk stråmann! Hvis den treffer deg, gjør den 3 skade og har "
+"5 treffsjanser. Hvis den treffer hver gang, går du fra $student_hp til "
+"$($student_hp-15) helsepoeng. Hold deg fast!"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:587
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:592
 msgid "Turns"
-msgstr ""
+msgstr "Runder"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:588
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:593
 msgid ""
 "Every turn, each side in a scenario gets a chance to make their move. Once "
 "you’ve completed everything you wish to do this turn, click on the <b>End "
@@ -448,159 +427,152 @@ msgid ""
 "turn it is, and any applicable turn limit, next to the flag icon at the top "
 "of the screen."
 msgstr ""
+"Hver runde får hver side i et scenario en sjanse til å gjøre sitt trekk. Når "
+"du har fullført alt du ønsker å gjøre denne runden, klikker du på knappen "
+"<b>Avslutt runde</b> nederst til høyre på skjermen. De andre sidene, enten "
+"de styres av den kunstige intelligensen eller andre menneskelige spillere, "
+"vil da gjøre sine trekk. Noen scenarier må fullføres i løpet av et visst "
+"antall runder. Du kan se hvilken runde det er, og eventuell "
+"rundebegrensning, ved siden av flaggikonet øverst på skjermen."
 
 #. [event]
 #. [else]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:591
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:669
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:773
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:596
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:678
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:790
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:498
 msgid "End your turn"
 msgstr "Avslutt runden din"
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:614
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:619
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
+"Du kan ikke avslutte runden før du har fullført leksjonen om helbredelse!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:625
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:634
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Auu! Jeg trenger helbredelse! Bare $student_hp hp igjen!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:626
-#, fuzzy
-#| msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:635
 msgid "female^Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Auu! Jeg trenger helbredelse! Bare $student_hp hp igjen!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:631
-#, fuzzy
-#| msgid ""
-#| "There is a village on the other side of the river. Visiting villages is a "
-#| "good idea, and ending your turn in one will heal you. To the village!"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:640
 msgid ""
 "There are two villages within your reach. Visiting villages is a good idea, "
 "and ending your turn on one will heal you. To a village!"
 msgstr ""
-"Det er en landsby på den andre siden av strømmen. Det er hyggelig å besøke "
-"landsbyer, og hvis du ender turen der, vil du bli helbredet: du bør nok "
-"trekke deg tilbake dit."
+"Det er to landsbyer innen rekkevidde. Det er en god idé å besøke landsbyer, "
+"og hvis du avslutter runden din i en av dem, blir du helbredet. Til en "
+"landsby!"
 
 #. [label]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:636
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:645
 msgid "Village"
 msgstr "Landsby"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:649
-#, fuzzy
-#| msgid "Move Konrad to capture a village"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:658
 msgid "Move Konrad to a nearby village"
-msgstr "Flytt Konrad for å befeste en landsby. "
+msgstr "Flytt Konrad til en nærliggende landsby"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:651
-#, fuzzy
-#| msgid "Move Li’sar to capture a village"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:660
 msgid "Move Li’sar to a nearby village"
-msgstr "Flytt Li'sar for å befeste en landsby. "
+msgstr "Flytt Li'sar til en nærliggende landsby"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:663
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:672
 msgid "Villages"
-msgstr "Landsby"
+msgstr "Landsbyer"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:664
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:673
 msgid ""
 "You have captured a village! It now flies your colors and has been added to "
 "your total village count (the house icon at the top of the screen shows how "
 "many villages you currently control). Villages provide the gold needed to "
 "recruit units. Each turn, you gain 2 gold, plus 1 for every village you own."
 msgstr ""
-"Nå 'eier' du denne landsbyen: Du kan se flagget ditt vaie over den, og det "
-"vil dukke opp et 1-tall ved siden av ikonet for landsbyer på toppen av "
-"skjermen. Landsbyer produserer gull: hver runde tjener du to gullstykker, "
-"pluss ett ekstra for hver landsby du eier."
+"Du har erobret en landsby! Den bærer nå dine farger og er lagt til i det "
+"totale antallet landsbyer (husikonet øverst på skjermen viser hvor mange "
+"landsbyer du kontrollerer for øyeblikket). Landsbyer gir deg det gullet du "
+"trenger for å rekruttere enheter. Hver runde får du 2 gull, pluss 1 for hver "
+"landsby du eier."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:679
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:688
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
+"Du kan ikke avslutte runden før du har fullført leksjonen om rekruttering!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:688
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:697
 msgid ""
 "Since you started your turn on a village, you regained some health! Villages "
 "heal units 8 hitpoints per turn, or enough to top off their health, "
 "whichever is less. In your case, you regained $student_hp_heal_amount "
 "hitpoints."
 msgstr ""
+"Siden du startet runden din i en landsby, har du fått tilbake litt helse! "
+"Landsbyer helbreder enheter med 8 helsepoeng per runde, eller nok til å "
+"fylle opp helsen deres, avhengig av hva som er minst. I ditt tilfelle fikk "
+"du tilbake $student_hp_heal_amount helsepoeng."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:693
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:702
 msgid "Now, it’s time to summon some help against that quintain."
-msgstr ""
-"Du blir straks helbredet $hp_difference helsepoeng.  Jeg tror nok du trenger "
-"litt hjelp med den stråmannen."
+msgstr "Nå er det på tide å tilkalle hjelp mot stråmannen."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:698
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
 msgid "I’ll recruit some elves!"
-msgstr "Ja! Jeg kan rekruttere noen alver!"
+msgstr "Jeg kan rekruttere noen alver!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:699
-#, fuzzy
-#| msgid "I’ll recruit some elves!"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:708
 msgid "female^I’ll recruit some elves!"
-msgstr "Ja! Jeg kan rekruttere noen alver!"
+msgstr "Jeg kan rekruttere noen alver!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:704
-#, fuzzy
-#| msgid ""
-#| "A splendid idea. You can recruit two units if you return to the keep. You "
-#| "have plenty of gold for that."
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:713
 msgid ""
 "A splendid idea! It’s probably best not to attempt attacking the quintain "
 "this turn. Instead, you should return to the keep and recruit two units; you "
 "have plenty of gold for that."
 msgstr ""
-"En strålende idé.  Hvis du vender tilbake til vakttårnet, kan du rekruttere "
-"to enheter. Du har rikelig med gull."
+"En glimrende idé! Det er nok best at du ikke forsøker å angripe stråmannen "
+"denne runden. I stedet bør du dra tilbake til borgen og rekruttere to "
+"enheter; du har nok av gull til det."
 
 #. [label]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:709
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:718
 msgid "Keep"
-msgstr "Vakttårn"
+msgstr "Borg"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:723
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:732
 msgid "Move Konrad to the keep"
-msgstr "Flytt Konrad til vakttårnet"
+msgstr "Flytt Konrad til borgen"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:725
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:734
 msgid "Move Li’sar to the keep"
-msgstr "Flytt Li'sar til vakttårnet"
+msgstr "Flytt Li'sar til borgen"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:742
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:751
 msgid "Recruiting"
-msgstr ""
+msgstr "Rekruttering"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:743
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:752
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
@@ -608,40 +580,53 @@ msgid ""
 "to use them next turn. For this scenario, you have only one type of unit to "
 "choose from: the Elvish Fighter."
 msgstr ""
-"Du kan alltid rekruttere enheter i borgen rundt når du står i et vakttårn. "
-"Høyreklikk på et borgfelt, og velg 'Rekrutter'. Denne gangen har du bare en "
-"type rekrutter å velge blant: alviske Infanterister."
+"Når du befinner deg på en <i>borg</i>, kan du <i>rekruttere</i> enheter på "
+"slottsbrikkene rundt den ved å høyreklikke og velge <b>Rekrutter</b>. Vær "
+"oppmerksom på at nyrekrutterte enheter ikke kan utføre handlinger den runden "
+"du rekrutterer dem; du kan bruke dem i neste runde. I dette scenariet har du "
+"bare én type enhet å velge mellom: infanteristen."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:746
-#, fuzzy
-#| msgid "Left click on an Elvish Fighter"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:755
 msgid "Recruit two Elvish Fighters"
-msgstr "Venstreklikk på en alvisk Infanterist."
+msgstr "Rekruttere to alviske infanterister"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:764
-msgid "Traits"
-msgstr ""
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:775
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:780
+msgid "Crowns"
+msgstr "Kroner"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:765
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:776
 msgid ""
-"Be sure to examine the <i>traits</i> of your new recruits. They are listed "
-"under its race in the sidebar. Traits can subtly affect how you use your "
-"troops. For example, units with the <i>quick</i> trait can move an extra hex "
-"each turn, and units with the <i>intelligent</i> trait require 20% less "
-"experience to level up."
+"The tiny golden crown above your leader (Konrad) indicates he is a side "
+"leader. In most scenarios, you will lose if your leader is killed. Be sure "
+"to keep him safe!"
 msgstr ""
+"Den lille gullkronen over lederen din (Konrad) indikerer at han er en "
+"sideleder. I de fleste scenarier vil du tape hvis lederen din blir drept. "
+"Sørg for å beskytte ham!"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:781
+msgid ""
+"The tiny golden crown above your leader (Li’sar) indicates she is a side "
+"leader. In most scenarios, you will lose if your leader is killed. Be sure "
+"to keep her safe!"
+msgstr ""
+"Den lille gullkronen over lederen din (Li'sar) indikerer at hun er en "
+"sideleder. I de fleste scenarier vil du tape hvis lederen din blir drept. "
+"Sørg for å beskytte henne!"
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:807
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:824
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
-msgstr ""
+msgstr "Du kan ikke avslutte runden før du har fullført leksjonen om angrep!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:816
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:833
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
@@ -649,10 +634,7 @@ msgstr ""
 "straks!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:817
-#, fuzzy
-#| msgid ""
-#| "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:834
 msgid ""
 "female^Hey, the quintain just healed 2 hitpoints! I’d better attack it at "
 "once!"
@@ -661,19 +643,14 @@ msgstr ""
 "straks!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:822
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:839
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 "Ja, hvis en enhet ikke foretar seg noe en hel runde, vil den langsomt "
 "helbredes."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:827
-#, fuzzy
-#| msgid ""
-#| "But before you send your fighters against the quintain, you should know "
-#| "they have two kinds of attack..."
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:844
 msgid ""
 "Before you send your fighters against the quintain, you should know they "
 "have two kinds of attacks..."
@@ -682,205 +659,195 @@ msgstr ""
 "to typer angrep..."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:832
-#, fuzzy
-#| msgid "I’ll tell them to use the one that does the most damage!"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:849
 msgid "I’ll tell them to use the one that does more damage!"
 msgstr "Jeg gir dem bare ordre om å bruke det angrepet som gjør mest skade!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:833
-#, fuzzy
-#| msgid "I’ll tell them to use the one that does the most damage!"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:850
 msgid "female^I’ll tell them to use the one that does more damage!"
 msgstr "Jeg gir dem bare ordre om å bruke det angrepet som gjør mest skade!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:838
-#, fuzzy
-#| msgid ""
-#| "And which would that be? The sword (5–4) or the bow (3–3)? I suppose "
-#| "you’ll find out..."
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:855
 msgid ""
 "And which would that be? The sword (5×4; or 5 damage on each hit, with 4 "
 "attacks) or the bow (3×3; or 3 damage on each hit, with 3 attacks)? I "
 "suppose you’ll find out..."
 msgstr ""
-"Og hvilket vil det være? Sverdet (5-4) eller buen (3-3)?  Du finner nok ut "
-"av det..."
+"Og hvilket vil det være? Sverdet (5×4; eller 5 skade ved hvert treff, med 4 "
+"angrep) eller buen (3×3; eller 3 skade ved hvert treff, med 3 angrep)? Jeg "
+"antar at du vil finne ut av det..."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:841
-#, fuzzy
-#| msgid "Attack the orc with an Archer"
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:858
 msgid "Attack the quintain with your fighters"
-msgstr "Angrip orken med en Skytter."
+msgstr "Angrip stråmannen med infanteristene dine."
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:862
+msgid "Traits"
+msgstr "Karaktertrekk"
+
+#. [hint_message]
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:863
+msgid ""
+"Be sure to examine the <i>traits</i> of your new recruits. They are listed "
+"under its race in the sidebar. Traits can subtly affect how you use your "
+"troops. For example, units with the <i>quick</i> trait can move an extra hex "
+"each turn, and units with the <i>intelligent</i> trait require 20% less "
+"experience to level up."
+msgstr ""
+"Husk å undersøke <i>karaktertrekkene</i> til de nye rekruttene dine. De er "
+"oppført under rasen i sidepanelet. Egenskapene kan på en subtil måte påvirke "
+"hvordan du bruker troppene dine. For eksempel kan enheter med "
+"karaktertrekket <i>rask</i> forflytte seg en ekstra rute hver runde, og "
+"enheter med karaktertrekket <i>intelligent</i> trenger 20 % mindre erfaring "
+"for å stige i nivå."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:852
-#, fuzzy
-#| msgid ""
-#| "You wouldn’t do anything stupid like charging that quintain yourself "
-#| "again, now would you?\n"
-#| "Use the fighters you recruited first; they’ll be a lot of help."
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:875
 msgid ""
 "You wouldn’t do anything stupid like charging that quintain yourself again, "
 "now would you? Use the fighters you recruited first; they’ll be a lot of "
 "help."
 msgstr ""
-"Du ville vel ikke gjøre noe så uforsiktig som å storme stråmannen helt "
-"alene, eller hva?\n"
-"Bruk først Infanteristene du rekrutterte; de vil være til stor hjelp. "
+"Du ville vel ikke gjøre noe så dumt som å angripe stråmannen helt alene "
+"igjen? Bruk infanteristene du rekrutterte først, de vil være til stor hjelp."
 
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:895
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-#| "attack. The quintain defended with its melee attack (3–5). The ranged "
-#| "attack was safer.\n"
-#| "End your turn, then attack again."
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:918
 msgid ""
 "Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
-"Alven brukte et sverd (5-4, eller 5 skade, 4 angrep), som er et "
-"nærkampvåpen. Stråmannen får forsvare seg med sitt eget nærkampangrep (3-5). "
-"Avstandsvåpnet var nok sikrere.\n"
-"Avslutt runden, og angrip så igjen."
+"Alven din brukte et sverd (6×4; eller 6 skade ved hvert treff, med 4 "
+"angrep), som er et <i>nærkamp</i>-angrep. Stråmannen forsvarte seg med sitt "
+"nærkampangrep (3×5; eller 3 skade ved hver treff, med 5 angrep). "
+"Avstandsangrepet (buen) ville ha vært tryggere."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:899
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:922
 msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
+"Infanterister gjør normalt 5×4 skade med sverdene sine, men denne alven har "
+"karaktertrekket <i>sterk</i>, som øker skadeeffekten til nærkampangrep."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:905
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-#| "attack. The quintain defended with its melee attack (3–5). The ranged "
-#| "attack was safer.\n"
-#| "End your turn, then attack again."
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:928
 msgid ""
 "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
-"Alven brukte et sverd (5-4, eller 5 skade, 4 angrep), som er et "
-"nærkampvåpen. Stråmannen får forsvare seg med sitt eget nærkampangrep (3-5). "
-"Avstandsvåpnet var nok sikrere.\n"
-"Avslutt runden, og angrip så igjen."
+"Alven din brukte et sverd (5×4; eller 5 skade ved hvert treff, med 4 "
+"angrep), som er et <i>nærkamp</i>-angrep. Stråmannen forsvarte seg med sitt "
+"nærkampangrep (3×5; eller 3 skade ved hver treff, med 5 angrep). "
+"Avstandsangrepet (buen) ville ha vært tryggere."
 
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:926
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:949
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (4×3; or 4 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
-"Alven brukte en bue (3-3, eller 3 skade, 3 angrep), som er et avstandsvåpen. "
-"Stråmannen har ikke noe avstandsangrep, kun nærkamp, så den kunne ikke "
-"forsvare seg."
+"Alven din brukte en bue, som er et <i>avstandsangrep</i> (4×3; eller 4 skade "
+"på hvert treff, med 3 angrep). Stråmannen har ikke noe avstandsangrep, bare "
+"et nærkampangrep, så den kunne ikke forsvare seg."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:930
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:953
 msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
+"Infanterister gjør normalt 3×3 skader med buen, men denne alven har "
+"karaktertrekket <i>hendig</i>, som øker skadeeffekten til avstandsangrep."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:936
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:959
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
-"Alven brukte en bue (3-3, eller 3 skade, 3 angrep), som er et avstandsvåpen. "
-"Stråmannen har ikke noe avstandsangrep, kun nærkamp, så den kunne ikke "
-"forsvare seg."
+"Alven din brukte en bue, som er et <i>avstandsangrep</i> (3×3; eller 3 skade "
+"på hvert treff, med 3 angrep). Stråmannen har ikke noe avstandsangrep, bare "
+"et nærkampangrep, så den kunne ikke forsvare seg."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:953
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:976
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Fortsett å angripe med begge alvene til stråmannen må bite i gresset!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:968
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:991
 msgid "Maybe you should recruit another elf?"
 msgstr "Kanskje du bør rekruttere enda en alv?"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:977
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1000
 msgid "Unit Descriptions"
-msgstr ""
+msgstr "Enhetsbeskrivelser"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:978
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1001
 msgid ""
 "You can right-click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
-"Merk:\n"
-"Du kan høyreklikke på en enhet for å se en detaljert enhetsbeskrivelse."
+"Du kan høyreklikke på en enhet for å se en detaljert <b>enhetsbeskrivelse</"
+"b>."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:987
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1010
 msgid "Protect Your Troops"
-msgstr ""
+msgstr "Beskytt troppene dine"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:988
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1011
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
 "needed. Take special care of units with the highest <i>experience points "
 "(XP)</i> so they can gain levels and become more powerful."
 msgstr ""
-"Merk:\n"
-"Husk å trekke skadde enheter tilbake til landsbyene, og rekrutter flere om "
-"nødvendig.  Ta spesielt vare på erfarne enheter med mange erfaringspoeng "
-"(XP)."
+"Husk å trekke sårede enheter tilbake til landsbyene og rekruttere flere ved "
+"behov. Ta spesielt vare på enheter med høyest <i>erfaringspoeng (EP)</i> "
+"slik at de kan nå høyere nivå og bli sterkere."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:997
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1020
 msgid "Support"
-msgstr ""
+msgstr "Støtte"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:998
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1021
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
 msgstr ""
-"Merk:\n"
-"Hver landsby du eier vil lønne en enhet gratis.  Utover det vil hver enhet "
-"koste deg et gullstykke hver runde."
+"Hver landsby du kontrollerer vil <i>støtte</i> én enhet gratis. Deretter "
+"koster hver enhet deg ett gull per runde."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1008
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1031
 msgid "You had really better finish off that quintain."
-msgstr ""
+msgstr "Det er best du tar deg av den stråmannen."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1017
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1040
 msgid "Advancement"
-msgstr ""
+msgstr "Forfremmelse"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1018
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1041
 msgid ""
 "When a unit gains enough experience points (the <i>experience bar</i>, if "
 "present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will gain a "
@@ -888,21 +855,19 @@ msgid ""
 "choose which one you want. However, second level units cost twice as much to "
 "support as first level units."
 msgstr ""
-"Merk:\n"
-"Når en enhet får nok erfaring (den minste av søylene til høyre for enheten "
-"viser erfaringen), vil den gå opp en grad. Infanterister har to valg, og du "
-"kan velge hvilken oppgradering du vil.  Merk at 2. grads enheter koster deg "
-"dobbelt så mye å lønne i forhold til 1. grads enheter."
+"Når en enhet får nok erfaringspoeng (<i>erfaringslinjen</i>, hvis den "
+"finnes, er til <b>høyre</b> for <i>helsepoeng-linjen</i>), får den et nivå. "
+"Infanterister har to muligheter for forfremmelse, og du kan velge hvilken du "
+"vil ha. Enheter på andre nivå koster imidlertid dobbelt så mye å støtte som "
+"enheter på første nivå."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1027
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1050
 msgid "Defenses"
-msgstr "Forsvar her"
+msgstr "Forsvarsspill"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1029
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1052
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -912,103 +877,94 @@ msgid ""
 "which always has a 70% chance of hitting no matter what terrain their "
 "targets occupy."
 msgstr ""
-"Merk:\n"
-"Når du har valgt en enhet, ser du ulike prosenter for ulike felter: en "
-"høyere prosent betyr bedre forsvar for enheten. For eksempel er det lett å "
-"forsvare seg i borger og landsbyer, men vanskelig stående til livet i en "
-"elv. Stråmennenes angrep er dessverre magiske, og magiske angrep har 70% "
-"sjanse for å treffe uansett hvor du står."
+"Når du velger en av enhetene dine, vil du se varierende prosentandeler når "
+"du beveger musen over kartet. Jo høyere prosentandel, desto bedre "
+"<i>forsvar</i> har enheten i det aktuelle terrenget. De fleste enheter har "
+"for eksempel godt forsvar i slott og landsbyer, men dårlig forsvar i elver. "
+"Noen enheter, som disse stråmennene, har et <i>magisk</i> angrep, som alltid "
+"har 70 % sjanse for å treffe, uansett hvilket terreng målet befinner seg i."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1041
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1064
 msgid "Agh! This training is too much for me..."
-msgstr ""
+msgstr "Agh! Denne treningen er for mye for meg..."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1042
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1065
 msgid "female^Agh! This training is too much for me..."
-msgstr ""
+msgstr "Agh! Denne treningen er for mye for meg..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1078
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1101
 msgid "The quintain is destroyed, and I have gained more experience!"
-msgstr "Stråmannen er død, mine herrer, og jeg har fått solid erfaring!"
+msgstr "Stråmannen er ødelagt, og jeg har fått mer erfaring!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1083
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1106
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful."
 msgstr ""
-"Ja, du vinner erfaring gjennom slag, og særlig ved å drepe en motstander: "
-"erfaring vil på sikt gjøre deg til et mer dødelig redskap i strid."
+"Ja, du vinner erfaring gjennom kamp, spesielt ved å drepe en motstander. "
+"Hvis du får nok erfaring, blir du sterkere."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1089
-#, fuzzy
-#| msgid ""
-#| " Now, Konrad, I will leave you with more dummies to practice on! After "
-#| "that, we have real work to do..."
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1112
 msgid ""
 "Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
-"Nå skal du få prøve deg på noen flere øvelsesdukker, Konrad! Deretter "
-"begynner den virkelige oppgaven..."
+"Nå skal du få prøve deg på noen flere stråmenn, Konrad! Deretter begynner "
+"den virkelige oppgaven..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1094
-#, fuzzy
-#| msgid ""
-#| " Now, Li’sar, I will leave you with more dummies to practice on! After "
-#| "that, we have real work to do..."
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1117
 msgid ""
 "Now, Li’sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
-"Nå skal du få prøve deg på noen flere øvelsesdukker, Li'sar! Deretter "
-"begynner den virkelige oppgaven..."
+"Nå skal du få prøve deg på noen flere stråmenn, Li'sar! Deretter begynner "
+"den virkelige oppgaven..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1156
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1179
 msgid "Note"
-msgstr ""
+msgstr "Merk"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1158
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1181
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
 msgstr ""
-"Merk:\n"
-"Disse øvingsdukkene angriper bare hvis du er et enkelt felt unna.  Med flid "
-"burde du kunne felle dem en om gangen."
+"Disse stråmennene angriper bare hvis du er ett felt unna. Hvis du er "
+"forsiktig, bør du kunne drepe dem én om gangen."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1167
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1190
 msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
 msgstr ""
+"Vel, jeg tror jeg kan det grunnleggende. Fremover! Kanskje jeg kan kjempe i "
+"et ekte slag neste gang?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1168
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1191
 msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
 msgstr ""
+"Vel, jeg tror jeg kan det grunnleggende. Fremover! Kanskje jeg kan kjempe i "
+"et ekte slag neste gang?"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1183
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1206
 msgid "Victory"
-msgstr ""
+msgstr "Seier"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1184
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1207
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
 "scenario is over; this is called <i>linger mode</i>. You will still be able "
@@ -1016,21 +972,21 @@ msgid ""
 "enemies. When you’re finished, click the <b>End Scenario</b> button to go on "
 "to the next scenario in the campaign."
 msgstr ""
-"Etter seiersbeskjeden blir kartet gråtonet for å vise at scenariet er over. "
-"Du kan likevel granske sluttposisjonen og troppenes tilstand i ro og fred "
-"før du trykker 'Avslutt Scenario' for å fortsette til neste kapittel."
+"Etter at du har fått seiersmeldingen, blir kartet nedtonet for å indikere at "
+"scenariet er over; dette kalles <i>dvelemodus</i>. Du vil fortsatt kunne se "
+"de endelige posisjonene og tilstanden til troppene dine og eventuelle "
+"overlevende fiender. Når du er ferdig, klikker du på knappen <b>Avslutt "
+"scenariet</b> for å gå videre til neste scenario i kampanjen."
 
 #. [scenario]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:5
-#, fuzzy
-#| msgid "Wesnoth Tutorial Part II"
 msgid "Wesnoth Tutorial — Part II"
-msgstr "Wesnoth opplæring, del II"
+msgstr "Wesnoth veiledning — del II"
 
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:43
 msgid "team_name^Orcs"
-msgstr ""
+msgstr "Orker"
 
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:47
@@ -1045,7 +1001,7 @@ msgstr "Galdrad"
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:124
 msgid "I hope I have a chance to retreat after this!"
-msgstr "Jeg håper jeg kan få avløsning etter dette!"
+msgstr "Jeg håper jeg får mulighet til å trekke meg tilbake etter dette!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:125
@@ -1054,42 +1010,38 @@ msgstr "Et heldig angrep av en orkisk Fotsoldat, og jeg er ferdig!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:126
-#, fuzzy
-#| msgid "Ouch! I could make use of some healing in a village."
 msgid "I could make use of some healing in a village."
-msgstr "Auu! Jeg kunne trenge helbredelse i en landsby."
+msgstr "Jeg kunne trenge helbredelse i en landsby."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:127
 msgid "I had better retreat, before I get caught out with such low health!"
 msgstr ""
+"Det er best jeg trekker meg tilbake før jeg blir overrumplet med så dårlig "
+"helse!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:128
-#, fuzzy
-#| msgid "I hope I have a chance to retreat after this!"
 msgid "female^I hope I have a chance to retreat after this!"
-msgstr "Jeg håper jeg kan få avløsning etter dette!"
+msgstr "Jeg håper jeg får mulighet til å trekke meg tilbake etter dette!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:129
-#, fuzzy
-#| msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
 msgid "female^One lucky attack by an Orcish Grunt, and I’m done for!"
-msgstr "Et heldig angrep av en orkisk Fotsoldat, og jeg er ferdig!"
+msgstr "Et heldig angrep av en orkisk fotsoldat, og jeg er ferdig!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:130
-#, fuzzy
-#| msgid "Ouch! I could make use of some healing in a village."
 msgid "female^I could make use of some healing in a village."
-msgstr "Auu! Jeg kunne trenge helbredelse i en landsby."
+msgstr "Jeg kunne trenge helbredelse i en landsby."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:131
 msgid ""
 "female^I had better retreat, before I get caught out with such low health!"
 msgstr ""
+"Det er best jeg trekker meg tilbake før jeg blir overrumplet med så dårlig "
+"helse!"
 
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:136
@@ -1108,10 +1060,8 @@ msgstr "Li'sar dør"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:163
-#, fuzzy
-#| msgid "Death of Konrad"
 msgid "Death of Galdrad"
-msgstr "Konrad dør"
+msgstr "Galdrad dør"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:184
@@ -1119,6 +1069,8 @@ msgid ""
 "You cannot end your turn until you have recruited troops and captured a "
 "village!"
 msgstr ""
+"Du kan ikke avslutte runden før du har rekruttert tropper og erobret en "
+"landsby!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
@@ -1127,76 +1079,63 @@ msgid ""
 "teach you about recalling units, abilities and weapon specials, income and "
 "upkeep, long-distance movement, zone of control, and time of day."
 msgstr ""
+"Velkommen tilbake! Dette er andre del av den todelte opplæringen. Del 2 vil "
+"lære deg om tilbakekalling av enheter, evner og våpenspesialiteter, inntekt "
+"og utgifter, langdistanseforflytning, kontrollsone og døgnsyklus."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:203
-#, fuzzy
 msgid ""
 "Ho, Galdrad! Has Delfador conjured something else to beat me with? A flock "
 "of scarecrows, perhaps?"
 msgstr ""
-"Ohoi Galdrad! Har Delfador fremtrollet noe annet å bryne meg mot?  Et dusin "
+"Ohoi, Galdrad! Har Delfador tryllet frem noe annet å bryne meg mot? En flokk "
 "fugleskremsler, kanskje?"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:204
-#, fuzzy
 msgid ""
 "female^Ho, Galdrad! Has Delfador conjured something else to beat me with? A "
 "flock of scarecrows, perhaps?"
 msgstr ""
-"Ohoi Galdrad! Har Delfador fremtrollet noe annet å bryne meg mot?  Et dusin "
+"Ohoi, Galdrad! Har Delfador tryllet frem noe annet å bryne meg mot? En flokk "
 "fugleskremsler, kanskje?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:210
-#, fuzzy
-#| msgid ""
-#| "Orcs have encamped across the river. This is elven country; they are "
-#| "fools to enter here. We Elves are fast and hard to hit in forests. You "
-#| "must defeat their leader so they never threaten us again. I will advise "
-#| "you."
 msgid ""
 "This is no game, Konrad! Orcs have encamped across the river. This is elven "
 "country; they are fools to enter here. We elves are fast and hard to hit in "
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
-"Orker har slått leir på andre siden av elven. Dette er alvisk jord: vi alver "
-"er snare og vanskelige å treffe i skogen. De er tåper som trenger seg inn "
-"hit. Du må bekjempe lederen deres, det er det eneste språket de forstår. Jeg "
-"vil gi deg råd."
+"Dette er ingen lek, Konrad! Orkene har slått leir på den andre siden av "
+"elven. Dette er alvisk jord. De er dumme som våger seg hit. Vi alver er "
+"raske og vanskelige å angripe i skogen. Du må bekjempe lederen deres, så de "
+"aldri truer oss igjen. Jeg skal gi deg et råd."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:215
-#, fuzzy
-#| msgid ""
-#| "Orcs have encamped across the river. This is elven country; they are "
-#| "fools to enter here. We Elves are fast and hard to hit in forests. You "
-#| "must defeat their leader so they never threaten us again. I will advise "
-#| "you."
 msgid ""
 "This is no game, Li’sar! Orcs have encamped across the river. This is elven "
 "country; they are fools to enter here. We elves are fast and hard to hit in "
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
-"Orker har slått leir på andre siden av elven. Dette er alvisk jord: vi alver "
-"er snare og vanskelige å treffe i skogen. De er tåper som trenger seg inn "
-"hit. Du må bekjempe lederen deres, det er det eneste språket de forstår. Jeg "
-"vil gi deg råd."
+"Dette er ingen lek, Li'sar! Orkene har slått leir på den andre siden av "
+"elven. Dette er alvisk jord. De er dumme som våger seg hit. Vi alver er "
+"raske og vanskelige å angripe i skogen. Du må bekjempe lederen deres, så de "
+"aldri truer oss igjen. Jeg skal gi deg et råd."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:221
 msgid "What should I do?"
-msgstr "Hva gjør jeg nå?"
+msgstr "Hva bør jeg gjøre?"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:222
-#, fuzzy
-#| msgid "What should I do?"
 msgid "female^What should I do?"
-msgstr "Hva gjør jeg nå?"
+msgstr "Hva bør jeg gjøre?"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:225
@@ -1209,7 +1148,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:227
-#, fuzzy
 msgid ""
 "By then, their leader will have recruited more units to send against us and "
 "the real fight will begin."
@@ -1219,7 +1157,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:229
-#, fuzzy
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
@@ -1245,13 +1182,13 @@ msgstr ""
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:235
 msgid "Let’s go! Attack!"
-msgstr ""
+msgstr "La oss sette i gang! Angrip!"
 
 #. [message]: speaker=student
 #. The "us" in "let's" refers to Galdrad and Li'sar.
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:237
 msgid "female^Let’s go! Attack!"
-msgstr ""
+msgstr "La oss sette i gang! Angrip!"
 
 #. [message]: speaker=Galdrad
 #. Addressing Konrad
@@ -1260,6 +1197,8 @@ msgid ""
 "Hang on! You need to gather your forces. Or do you intend to fight the orcs "
 "single-handedly?"
 msgstr ""
+"Vent litt! Du må samle styrkene dine. Eller har du tenkt å kjempe mot orkene "
+"alene?"
 
 #. [message]: speaker=Galdrad
 #. Addressing Li'sar
@@ -1268,6 +1207,8 @@ msgid ""
 "female^Hang on! You need to gather your forces. Or do you intend to fight "
 "the orcs single-handedly?"
 msgstr ""
+"Vent litt! Du må samle styrkene dine. Eller har du tenkt å kjempe mot orkene "
+"alene?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:264
@@ -1277,6 +1218,9 @@ msgid ""
 "carefully, though; if a unit has too little experience, it might be better "
 "to recruit a new one."
 msgstr ""
+"Jeg ser at du har veterantropper fra treningen din! Du bør <i>tilbakekalle</"
+"i> dem for å starte kampen med mer erfarne enheter. Men tenk deg godt om; "
+"hvis en enhet har for lite erfaring, kan det være bedre å rekruttere en ny."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:270
@@ -1284,6 +1228,8 @@ msgid ""
 "Some of your units have also managed to level up. They’re even more "
 "formidable, so you should recall them as well."
 msgstr ""
+"Noen av enhetene dine har også økt i nivå. De er enda mer formidable, så du "
+"bør tilbakekalle dem også."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:285
@@ -1293,11 +1239,15 @@ msgid ""
 "<i>recalled</i> them to battle this scenario. More experienced units would "
 "have been of help against these orcs."
 msgstr ""
+"Dessverre overlevde ingen av troppene dine treningen, så du må rekruttere "
+"nye enheter. Hvis du hadde hatt noen veterantropper, kunne du ha "
+"<i>tilbakekalt</i> dem til å kjempe i dette scenariet. Mer erfarne enheter "
+"ville ha vært til hjelp mot disse orkene."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:291
 msgid "Recalling"
-msgstr ""
+msgstr "Tilbakekalling"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:292
@@ -1310,6 +1260,14 @@ msgid ""
 "while your leader stands on a keep and select the <i>Recall</i> option. "
 "Remember to also recruit new troops in addition to recalling old ones."
 msgstr ""
+"I tillegg til å rekruttere nye enheter i hvert scenario, kan du også "
+"<i>tilbakekalle</i> erfarne veteraner fra tidligere scenarier, mot en "
+"kostnad på 20 gull per stykk. På denne måten kan du bygge opp en formidabel "
+"hær i løpet av flere scenarier ved å tilbakekalle de høyest rangerte "
+"troppene dine eller tropper med gode kombinasjoner av karaktertrekk og "
+"evner. For å tilbakekalle en enhet høyreklikker du mens lederen din står på "
+"en borg og velger alternativet <i>Tilbakekall</i>. Husk å rekruttere nye "
+"tropper i tillegg til å tilbakekalle gamle."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:297
@@ -1319,6 +1277,10 @@ msgid ""
 "them. Personally, I would recommend a balanced force of two archers, two "
 "fighters, and a shaman."
 msgstr ""
+"Du kan også rekruttere to nye typer enheter i dette scenariet: Alviske "
+"bueskyttere og alviske sjamaner. Jeg skal fortelle deg mer om dem når du "
+"rekrutterer dem. Personlig vil jeg anbefale en balansert styrke med to "
+"bueskyttere, to infanterister og en sjaman."
 
 #. [event]
 #. [on_undo]
@@ -1326,32 +1288,30 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:509
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:551
 msgid "Recruit or recall your troops"
-msgstr ""
+msgstr "Rekruttere eller tilbakekalle troppene dine"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:314
-#, fuzzy
-#| msgid "Shaman"
 msgid "Elvish Shaman"
-msgstr "Sjaman"
+msgstr "Alvisk sjaman"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:315
-#, fuzzy
 msgid ""
 "The Shaman has the ability to <i>heal</i> friendly units around her. She "
 "also has a special attack which <i>slows</i> enemies, halving the damage "
 "they do for one turn. However, she’s physically weaker than fighters and "
 "archers, so be careful when sending her into battle."
 msgstr ""
-"Sjamanen er en temmelig svak enhet, men har evnen til å helbrede enheter "
-"rundt seg. De har også et spesialangrep som sakner fienden, og halverer "
-"skaden de gjør!"
+"Sjamanen har evnen til å <i>helbrede</i> vennligsinnede enheter rundt seg. "
+"Hun har også et spesialangrep som <i>forsinker</i> fiender og halverer "
+"skaden de gjør i én omgang. Hun er imidlertid fysisk svakere enn "
+"infanterister og bueskyttere, så vær forsiktig når du sender henne i kamp."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:320
 msgid "The <i>Heal</i> Ability"
-msgstr ""
+msgstr "<i>Helbrede</i>-evnen"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
@@ -1365,11 +1325,19 @@ msgid ""
 "A detailed explanation of healing may be found in the <i>Gameplay</i> "
 "section of the help (default hotkey: <b>F1</b>)."
 msgstr ""
+"I begynnelsen av hver runde vil allierte enheter som er i nærheten av en "
+"sjaman, gjenopprette 4 helsepoeng, noe som bare er halvparten av det en "
+"landsby ville gitt. Sjamanen får ikke erfaring fra helbredelse, bare fra "
+"kamp, men det lønner seg å forfremme henne - hennes andre nivå som alvisk "
+"druide gir helbredelse tilsvarende en landsby.\n"
+"\n"
+"Du finner en detaljert forklaring på helbereding i <i>Spill</i>-delen av "
+"hjelpen (standard hurtigtast: <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:329
 msgid "Weapon Specials"
-msgstr ""
+msgstr "Våpenspesialiteter"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
@@ -1384,12 +1352,22 @@ msgid ""
 "A full list of abilities and weapon specials, along with traits, may be "
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
+"Våpenspesialiteter er spesielle angrepsmodifikatorer som gjør visse angrep "
+"kraftigere. I dette tilfellet har sjamanen spesialen <i>forsinkende</i> på "
+"<b>innfiltre</b>-angrepet sitt. Når dette angrepet treffer en fiende, "
+"halverer det skaden fienden gjør i én omgang. Andre våpenspesialiteter "
+"inkluderer <i>første slag</i>, som gjør at angrepet alltid treffer først "
+"uansett hvem som angriper først, og <i>magisk</i>, som gir angrepet en "
+"konstant 70 % sjanse til å treffe.\n"
+"\n"
+"En fullstendig liste over evner og våpenspesialiteter, sammen med "
+"karaktertrekk, finner du i hjelpen (standard hurtigtast: <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:361
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:372
 msgid "Multiple Healers"
-msgstr ""
+msgstr "Flere helbredere"
 
 #. [message]: speaker=narrator
 #. both healers are level one elvish shamans
@@ -1403,6 +1381,13 @@ msgid ""
 "adjacent units by 8 hitpoints per turn. A unit next to multiple healers is "
 "healed by the most advanced one."
 msgstr ""
+"Du har nå to helbredere. Hver enhet kan imidlertid bare motta helbredelse "
+"fra én helbreder - en enhet vil fortsatt bare bli helbredet med 4 helsepoeng "
+"per runde, selv om den står ved siden av begge sjamanene.\n"
+"\n"
+"Hvis en av sjamanene utvikler seg til druide, kan hun helbrede tilstøtende "
+"enheter med 8 helsepoeng per runde. En enhet ved siden av flere helbredere "
+"helbredes av den sterkeste."
 
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
@@ -1413,11 +1398,15 @@ msgid ""
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
+"Du har nå to healere. Druiden din kan helbrede tilstøtende enheter med 8 "
+"treffpunkter per runde, sammenlignet med sjamanens 4. Hver enhet kan "
+"imidlertid bare motta helbredelse fra én helbreder - en enhet ved siden av "
+"flere helbredere blir helbredet av den sterkeste."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:381
 msgid "Healers and Villages"
-msgstr ""
+msgstr "Helbredere og landsbyer"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:382
@@ -1425,6 +1414,8 @@ msgid ""
 "A unit in a village will receive healing from the village instead of from "
 "adjacent healers."
 msgstr ""
+"En enhet i en landsby vil motta helbredelse fra landsbyen i stedet for fra "
+"tilstøtende helbredere."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:386
@@ -1434,13 +1425,16 @@ msgid ""
 "movement — the 2 hitpoints from rest-healing does combine with other sources "
 "of healing, so it’s often better to move a healer instead of an injured unit."
 msgstr ""
+"Hvis du har mer enn én helbreder, kan de helbrede hverandre eller dekke "
+"forskjellige områder på slagmarken. Det kan også gi bedre taktisk "
+"forflytning - de 2 helsepoengene fra hvilehelbredelse kombineres med andre "
+"kilder til helbredelse, så det er ofte bedre å flytte en helbreder i stedet "
+"for en skadet enhet."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:401
-#, fuzzy
-#| msgid "Elvish Fighter"
 msgid "Elvish Archer"
-msgstr "Infanterist"
+msgstr "Alvisk bueskytter"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:402
@@ -1450,6 +1444,10 @@ msgid ""
 "melee attacks with strong ranged attacks, and vice versa. This allows your "
 "units to take less damage overall when your enemy counterattacks."
 msgstr ""
+"I motsetning til infanteristene, som har sterke nærkampangrep, har "
+"alvbueskytteren sterke avstandsangrep. Det er nyttig å angripe fiendtlige "
+"enheter med sterke nærkampangrep med sterke avstandsangrep, og omvendt. "
+"Dette gjør at enhetene dine tar mindre skade når fienden går til motangrep."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:428
@@ -1457,53 +1455,44 @@ msgid ""
 "You certainly have a fondness for shamans, I see. They will provide a lot of "
 "healing, but not much offensive potential."
 msgstr ""
+"Du har en forkjærlighet for sjamaner, ser jeg. De gir mye helbredelse, men "
+"ikke mye offensivt potensial."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:439
-#, fuzzy
-#| msgid ""
-#| "While none of your recruited units can move, you still can. Your five "
-#| "units cost you 5 gold in upkeep, leaving you 3 gold poorer per turn. You "
-#| "need more income."
 msgid ""
 "While none of your recruited units can move yet, you still can. You need "
 "more income; there are some villages near the keep you can capture."
 msgstr ""
-"Det er sant! Ingen av dine rekrutterte enheter kan flytte, men du kan. De "
-"fem enhetene koster deg 5 gullstykker i runden, med grunninntekten din på 2 "
-"gull vil du tape 3 gullstykker per runde. Du trenger mer inntekt."
+"Selv om ingen av de rekrutterte enhetene dine kan forflytte seg ennå, kan du "
+"fortsatt gjøre det. Du trenger mer inntekt; det er noen landsbyer i nærheten "
+"av borgen du kan erobre."
 
 #. [event]
 #. [on_undo]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:442
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:564
-#, fuzzy
-#| msgid "Move Konrad to capture a village"
 msgid "Capture a village"
-msgstr "Flytt Konrad for å befeste en landsby. "
+msgstr "Erobre en landsby"
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:445
-#, fuzzy
-#| msgid "Move Konrad to capture a village"
 msgid "You still have to capture a village!"
-msgstr "Flytt Konrad for å befeste en landsby. "
+msgstr "Du må fortsatt erobre en landsby!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:477
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:544
-#, fuzzy
 msgid ""
 "You forgot to recruit troops! You can press <b>u</b> to undo your last move."
 msgstr ""
-"*Husk:\n"
-"Du kan trykke 'u' for å gjøre det meste ugjort: nyttig når man angrer en "
-"feil."
+"Du glemte å rekruttere tropper! Du kan trykke på <b>u</b> for å angre det "
+"siste trekket ditt."
 
 #. [disallow_end_turn]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:480
 msgid "You still have to recruit troops!"
-msgstr ""
+msgstr "Du må fortsatt rekruttere tropper!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:488
@@ -1511,11 +1500,13 @@ msgid ""
 "Excellent! As Delfador mentioned earlier, each captured village will support "
 "one unit and provide you with 1 extra gold per turn."
 msgstr ""
+"Utmerket! Som Delfador nevnte tidligere, vil hver erobrede landsby støtte en "
+"enhet og gi deg 1 ekstra gull per runde."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:492
 msgid "Income and Upkeep"
-msgstr ""
+msgstr "Inntekter og utgifter"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:493
@@ -1526,17 +1517,20 @@ msgid ""
 "per turn. Be careful, as owning too many units can cause you to have "
 "negative income and lose gold each turn!"
 msgstr ""
+"Hver runde mottar du 2 gull, pluss ett for hver landsby du eier. Imidlertid "
+"trekkes <i>utgifter</i> fra dette. Du kan ha like mange enheter som antall "
+"landsbyer du eier, men utover det må du betale 1 gull per runde. Vær "
+"forsiktig, for hvis du eier for mange enheter, kan du få negativ inntekt og "
+"tape gull hver runde!"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:557
-#, fuzzy
 msgid ""
 "You forgot to capture a village! You can press <b>u</b> to undo your last "
 "move."
 msgstr ""
-"*Oppsann!\n"
-"Du flyttet til feil felt! Etter denne beskjeden kan du trykke på 'u' for "
-"ugjort, og gjøre trekket om igjen."
+"Du glemte å erobre en landsby! Du kan trykke på <b>u</b> for å angre det "
+"siste trekket ditt."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:576
@@ -1544,6 +1538,8 @@ msgid ""
 "Now, young man, it is time to discuss strategy. Your units are ready to "
 "attack, and the orcish leader has begun gathering his own troops."
 msgstr ""
+"Nå, unge mann, er det på tide å diskutere strategi. Enhetene dine er klare "
+"til å angripe, og orklederen har begynt å samle sine egne tropper."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:581
@@ -1551,6 +1547,8 @@ msgid ""
 "Now, young lady, it is time to discuss strategy. Your units are ready to "
 "attack, and the orcish leader has begun gathering his own troops."
 msgstr ""
+"Nå, unge dame, er det på tide å diskutere strategi. Enhetene dine er klare "
+"til å angripe, og orklederen har begynt å samle sine egne tropper."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:587
@@ -1558,6 +1556,8 @@ msgid ""
 "Galdrad, if I go by the ford, I could sneak up near his keep and dispatch "
 "him quickly."
 msgstr ""
+"Galdrad, hvis jeg går langs vadestedet, kan jeg snike meg nær borgen hans og "
+"ta ham raskt."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:588
@@ -1565,6 +1565,8 @@ msgid ""
 "female^Galdrad, if I go by the ford, I could sneak up near his keep and "
 "dispatch him quickly."
 msgstr ""
+"Galdrad, hvis jeg går langs vadestedet, kan jeg snike meg nær borgen hans og "
+"ta ham raskt."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:593
@@ -1576,6 +1578,12 @@ msgid ""
 "there; your Fighters will only suffer a 40% chance of being hit in return, "
 "while Shamans and Archers will only incur a 30% chance."
 msgstr ""
+"Det er mulig. Men alver (og orker) har dårlig <i>forsvar</i> i vann. Du vil "
+"være mer sårbar når du prøver å vade sakte over vadestedet; fienden vil ha "
+"80 % sjanse for å treffe deg. Siden alvene har et godt forsvar i skogen, vil "
+"jeg råde deg til å holde deg til trærne og angripe orkene derfra. "
+"Infanteristene dine har bare 40 % sjanse for å bli truffet, mens sjamaner og "
+"bueskyttere bare har 30 % sjanse."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:598
@@ -1584,12 +1592,16 @@ msgid ""
 "our forces. It might do to send a few units to defend the banks, and the "
 "village there."
 msgstr ""
+"Men hold øye med vadestedet. Orkene kan prøve å snike seg rundt bak styrkene "
+"våre. Det kan være lurt å sende noen enheter for å forsvare bredden og "
+"landsbyen der."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:603
 msgid ""
 "Alright. The bridge it is, then, but I’ll be careful about the crossing."
 msgstr ""
+"Ja vel. Da blir det broen, men jeg skal være forsiktig når jeg går over."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:604
@@ -1597,6 +1609,7 @@ msgid ""
 "female^Alright. The bridge it is, then, but I’ll be careful about the "
 "crossing."
 msgstr ""
+"Ja vel. Da blir det broen, men jeg skal være forsiktig når jeg går over."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:607
@@ -1608,50 +1621,47 @@ msgid ""
 "villages on this side of the river. You should secure them for income and "
 "healing."
 msgstr ""
+"Den orkiske fotsoldaten blokkerer fortsatt veien vår. Han har ingen "
+"avstandsangrep, så bueskytterne dine bør kunne angripe ham med liten risiko. "
+"Dessverre kan ikke enhetene dine nå ham denne runden, men du bør ikke la dem "
+"bli hengende! Flytt dem i posisjon slik at de kan angripe neste runde. Det "
+"er også andre landsbyer på denne siden av elven. Du bør sikre dem for "
+"inntekt og helbredelse."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:610
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:992
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:998
 msgid "Long-distance Movement"
-msgstr ""
+msgstr "Forflytning over lange avstander"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:611
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:993
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:999
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
-"Du kan få en enhet til å bevege seg over flere runder: velg enheten, og "
-"klikk så på målfeltet. Du ser et tall (2) som antyder hvor mange runder det "
-"tar å nå feltet."
+"Du kan beordre en enhet til å forflytte seg i flere omganger ved å velge "
+"enheten og klikke på destinasjonen. Et tall angir hvor mange runder det vil "
+"ta å komme dit."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:616
-#, fuzzy
-#| msgid ""
-#| "You’ve captured all the villages around the keep, but stay near so you "
-#| "can recruit more units."
 msgid ""
 "I think I’ll stick around the keep for now, in order to recruit more units."
 msgstr ""
-"Du har befestet alle landsbyene rundt vakttårnet, men hold deg i nærheten så "
-"du kan rekruttere flere enheter."
+"Jeg tror jeg holder meg i nærheten av borgen inntil videre for å rekruttere "
+"flere enheter."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:617
-#, fuzzy
-#| msgid ""
-#| "You’ve captured all the villages around the keep, but stay near so you "
-#| "can recruit more units."
 msgid ""
 "female^I think I’ll stick around the keep for now, in order to recruit more "
 "units."
 msgstr ""
-"Du har befestet alle landsbyene rundt vakttårnet, men hold deg i nærheten så "
-"du kan rekruttere flere enheter."
+"Jeg tror jeg holder meg i nærheten av borgen inntil videre for å rekruttere "
+"flere enheter."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:623
@@ -1661,6 +1671,9 @@ msgid ""
 "battle can turn quickly, and you don’t want to find yourself cut off from "
 "recruiting reinforcements."
 msgstr ""
+"Du har lært godt, Konrad. Det er en god idé å holde lederen din trygg og "
+"beskyttet i nærheten av borgen tidlig i spillet. Kampen kan fort snu, og du "
+"vil ikke bli avskåret fra å rekruttere forsterkninger."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:628
@@ -1670,11 +1683,14 @@ msgid ""
 "battle can turn quickly, and you don’t want to find yourself cut off from "
 "recruiting reinforcements."
 msgstr ""
+"Du har lært godt, Li'sar. Det er en god idé å holde lederen din trygg og "
+"beskyttet i nærheten av borgen tidlig i spillet. Kampen kan fort snu, og du "
+"vil ikke bli avskåret fra å rekruttere forsterkninger."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:698
 msgid "The tutorial isn’t meant to be this difficult"
-msgstr ""
+msgstr "Det er ikke meningen at opplæringen skal være så vanskelig."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:700
@@ -1685,67 +1701,61 @@ msgid ""
 "\n"
 "Please report the bug."
 msgstr ""
+"Det var meningen at orken på øya skulle forflytte seg over broen, slik at "
+"han kunne bli angrepet av flere alver samtidig. Noe har ødelagt den "
+"skriptbaserte hendelsen, noe som vil gjøre scenariet vanskeligere ved å "
+"etterlate ham i en defensiv posisjon.\n"
+"\n"
+"Vennligst rapporter feilen."
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:712
 msgid "Tracking Enemy Movement"
-msgstr ""
+msgstr "Sporing av fiendens forflytninger"
 
 #. [hint_message]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:713
-#, fuzzy
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
 "Du kan se hvor en fiende kan nå ved å holde musepekeren over dem. Du kan se "
-"alle mulige fiendtlige trekk samtidig med menyvalget Handlinger -> Vis "
-"fiendens rekkevidde."
+"alle mulige fiendeforflytninger samtidig med kommandoen <b>Vis fiendens "
+"forflytninger</b> fra menyen <b>Handlinger</b>."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:716
-#, fuzzy
-#| msgid ""
-#| "That Grunt is blocking the bridge! We must occupy that island before the "
-#| "Wolf Riders reach it."
 msgid "We must occupy that island before the Wolf Riders reach it!"
-msgstr ""
-"Orken blokkerer broen! Vi må okkupere den øya før Ulverytterne når dit."
+msgstr "Vi må okkupere øya før ulverytterne når den!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:721
-#, fuzzy
-#| msgid "Can’t our units just move around him?"
 msgid "Can’t we just move around the orcs?"
-msgstr "Kan ikke enhetene våre bare flytte forbi ham?"
+msgstr "Kan vi ikke bare gå rundt orkene?"
 
 #. [message]: speaker=student
 #. "we" refers to Li'sar, Galdrad, and the mixed-gender troops
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:723
-#, fuzzy
-#| msgid "Can’t our units just move around him?"
 msgid "female^Can’t we just move around the orcs?"
-msgstr "Kan ikke enhetene våre bare flytte forbi ham?"
+msgstr "Kan vi ikke bare gå rundt orkene?"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:736
-#, fuzzy
 msgid ""
 "No. Once you move close to an enemy unit, you are in its <i>Zone of Control</"
 "i> and cannot move further that turn. To move your troops onto that island "
 "without wading slowly through the water, you’ll have to kill the Grunt."
 msgstr ""
-"Nei:  med en gang du flytter inntil en fiendtlig enhet, er du i enhetens "
-"'kontrollsone' (forkortet ZoC - på engelsk 'Zone of Control'), og kan ikke "
-"flytte videre den runden.\n"
-"For å flytte tropper over til øya, uten å måtte vade sakte gjennom vannet, "
-"blir du nødt til å drepe ham."
+"Nei. Når du forflytter deg nær en fiendtlig enhet, befinner du deg i dens "
+"<i>kontrollsone</i> og kan ikke forflytte deg videre den runden. Hvis du vil "
+"flytte troppene dine til øya uten å vasse sakte gjennom vannet, må du drepe "
+"orken."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:740
 msgid "Zone of Control"
-msgstr ""
+msgstr "Kontrollsone"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:742
@@ -1757,143 +1767,148 @@ msgid ""
 "prevent stronger enemies from reaching key locations, such as villages, even "
 "if you have limited manpower."
 msgstr ""
+"De tilstøtende feltene rundt en enhet utgjør dens <i>Kontrollsone</i>. Når "
+"en fiendtlig enhet kommer inn i disse feltene, kan den ikke forflytte seg "
+"videre den runden. (Unntaket er enheter med evnen <i>linjebryter</i>, som "
+"ikke påvirkes av kontrollsoner). Dette kan brukes til å lage en blokade for "
+"å hindre sterkere fiender i å nå viktige steder, for eksempel landsbyer, "
+"selv om du har begrenset med mannskap."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:763
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:769
 msgid ""
 "I hope I will survive the counter-attack if my units can’t take this grunt "
 "out this turn. I should order them to grab more villages if they can and "
 "move everyone closer for next turn."
 msgstr ""
-"Ingen andre enheter kan trygt nå den orken: Jeg håper Skytteren min "
-"overlever motangrepet! Jeg bør nok få tak i flere landsbyer, og flytte alle "
-"nærmere før neste runde."
+"Jeg håper jeg overlever motangrepet hvis enhetene mine ikke klarer å ta ut "
+"orken i denne runden. Jeg bør beordre dem til å ta flere landsbyer hvis de "
+"kan og flytte alle nærmere til neste runde."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:768
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:774
 msgid ""
 "If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
 "at the beginning of the next turn."
 msgstr ""
-"Ja. Hvis Sjamanen din står rett bak enheten på broen, vil denne helbredes "
-"ved begynnelsen av neste runde."
+"Hvis en av sjamanene dine står rett bak deg, helbreder hun deg med 4 "
+"helsepoeng i begynnelsen av neste runde."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:774
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:780
 msgid ""
 "I hope my units will survive the counter-attack if I can’t take this grunt "
 "out this turn. I’d better grab more villages if I can and move everyone "
 "closer for next turn."
 msgstr ""
-"Ingen andre enheter kan trygt nå den orken: Jeg håper Skytteren min "
-"overlever motangrepet! Jeg bør nok få tak i flere landsbyer, og flytte alle "
-"nærmere før neste runde."
+"Jeg håper at enhetene mine vil overleve motangrepet hvis jeg ikke klarer å "
+"ta ut orken i denne runden. Det er best jeg tar flere landsbyer hvis jeg "
+"kan, og flytter alle nærmere til neste runde."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:779
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:785
 msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
 "each of them 4 hitpoints at the beginning of the next turn."
 msgstr ""
-"Ja. Hvis Sjamanen din står rett bak enheten på broen, vil denne helbredes "
-"ved begynnelsen av neste runde."
+"Hvis en av sjamanene dine står rett bak de sårede enhetene dine, helbreder "
+"hun hver av dem med 4 treffpunkter i begynnelsen av neste runde."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:815
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:821
 msgid ""
 "One fewer orc to deal with, and our way across the bridge is clear! I also "
 "gained experience from striking the killing blow!"
 msgstr ""
+"En ork mindre å hanskes med, og veien over broen er klar! Jeg fikk også "
+"erfaring ved å slå det avgjørende slaget!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:816
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:822
 msgid ""
 "female^One fewer orc to deal with, and our way across the bridge is clear! I "
 "also gained experience from striking the killing blow!"
 msgstr ""
+"En ork mindre å hanskes med, og veien over broen er klar! Jeg fikk også "
+"erfaring ved å slå det avgjørende slaget!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:837
-#, fuzzy
-#| msgid ""
-#| "Be careful: if you stand on the bridge you are exposed to attack from "
-#| "multiple directions!"
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:843
 msgid ""
 "Be careful! If you stand on the bridge you are exposed to attack from "
 "multiple directions! Even though the orcs have low defense in water, they "
 "will overwhelm you with their numbers."
 msgstr ""
-"Vær forsiktig:  Hvis du står på broen er du utsatt for angrep fra flere "
-"sider!"
+"Vær forsiktig! Hvis du står på broen, er du utsatt for angrep fra flere "
+"retninger! Selv om orkene har lavt forsvar i vann, vil de overvelde deg i "
+"antall."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:853
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:859
 msgid ""
 "Well done! The island village is ours. You can use the trees to set up a "
 "blockade against the orcs; they can only come across the bridge one by one "
 "without wading through the water, and you will be securely on a terrain with "
 "good defense."
 msgstr ""
+"Godt gjort! Landsbyen på øya er vår. Du kan bruke trærne til å sette opp en "
+"blokade mot orkene; de kan bare komme over broen én og én uten å vasse "
+"gjennom vannet, og du vil være trygt plassert i et terreng med godt forsvar."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:865
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:871
 msgid ""
 "Don’t forget about that last village near the channel. The orcs will capture "
 "it if they try to sneak around via the ford! It will be hard to dislodge "
 "them if they do."
 msgstr ""
+"Ikke glem den siste landsbyen nær kanalen. Orkene vil innta den hvis de "
+"prøver å snike seg rundt via vadestedet! I så fall blir det vanskelig å "
+"fordrive dem."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:882
-#, fuzzy
-#| msgid ""
-#| "It’s very dangerous to stand in water when there are enemies about! Your "
-#| "unit will have an 80% chance of being hit! Cancel, and wait for them to "
-#| "attack you!"
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:888
 msgid ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
 "unit will have an 80% chance of being hit. Get back, and wait for them to "
 "attack you!"
 msgstr ""
 "Det er svært farlig å stå i vannet med fiender i nærheten! Enheten din vil "
-"ha en 80% sjanse for å bli truffet! Gjør om, og vent på at de skal angripe "
-"deg! "
+"ha en 80% sjanse for å bli truffet! Trekk deg tilbake og vent til de "
+"angriper deg!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:908
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:914
 msgid ""
 "You’re venturing away from your keep. You might need to recruit more units, "
 "and I doubt the orc leader will let you use his! Careful!"
 msgstr ""
-"Hold deg i nærheten av vakttårnet: du må være i et vakttårn for å rekruttere "
-"enheter, og jeg tviler på at orkenes Høvding vil la deg bruke hans!"
+"Du våger deg bort fra borgen din. Du må kanskje rekruttere flere enheter, og "
+"jeg tviler på at orkelederen vil la deg bruke hans! Forsiktig!"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:917
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:923
 msgid ""
 "When moving a unit, the percentages shown are the unit’s defense on that "
 "hex. The higher the number, the less likely they are to get hit."
 msgstr ""
+"Når du flytter en enhet, viser prosenttallene enhetens forsvar på det "
+"aktuelle feltet. Jo høyere tallet er, desto mindre sannsynlig er det at de "
+"blir truffet."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:932
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:938
 msgid ""
 "We need to occupy that village, otherwise they will take it soon! Move a "
 "unit into the village to stop the orcs capturing it. Whichever unit you "
 "choose will benefit from the village’s healing, too."
 msgstr ""
-"Vi må befeste den landsbyen, ellers vil de ta den neste runde! Flytt dine "
-"sårede enheter for å ta den så de kan helbredes, og drep så orken."
+"Vi må erobre landsbyen, ellers tar de den snart! Flytt en enhet inn i "
+"landsbyen for å hindre at orkene erobrer den. Uansett hvilken enhet du "
+"velger, vil den også dra nytte av landsbyens helbredelse."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:938
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:944
 msgid ""
 "Careful! It is now nighttime. Orcs are <i>chaotic</i>, which means their "
 "attacks are now 25% stronger. By day, their attacks are 25% weaker, which is "
@@ -1901,18 +1916,19 @@ msgid ""
 "at night. Your elvish warriors are <i>neutral</i>: unaffected by the time of "
 "day."
 msgstr ""
-"Forsiktig! Det er natt nå. Orker er lyssky: angrepene deres er 25% sterkere "
-"om natten, 25% svakere om dagen. Du er hederlig: sterkere om dagen enn om "
-"natten. Alvene er nøytrale: upåvirket av natt og dag."
+"Forsiktig! Det er nå natt. Orkene er <i>kaotiske</i>, noe som betyr at "
+"angrepene deres nå er 25 % sterkere. Om dagen er angrepene deres 25 % "
+"svakere, noe som er en merkbar forskjell. Du er <i>lovlydig</i>: sterkere om "
+"dagen og svakere om natten. Alvekrigerne dine er <i>nøytrale</i>: upåvirket "
+"av døgnsyklusen."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:941
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:947
 msgid "Time of Day"
-msgstr "*Velkommen til Wesnoth!"
+msgstr "Døgnsyklus"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:942
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:948
 msgid ""
 "During a scenario, the time of day will shift as turns pass. There are four "
 "<i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or Liminal. Each "
@@ -1920,11 +1936,17 @@ msgid ""
 "You can hover over the sky image below the minimap on the right to see the "
 "current time of day and who has the advantage."
 msgstr ""
+"I løpet av et scenario vil tiden på døgnet endres etter hvert som rundene "
+"går. Det er fire <i>sinnelag</i> en enhet kan ha: lovlydig, nøytral, kaotisk "
+"eller diffus. Hver av disse får ulike bonuser eller ulemper avhengig av "
+"tidspunktet på dagen. Du kan holde musepekeren over himmelbildet under "
+"minikartet til høyre for å se gjeldende tid på døgnet og hvem som har "
+"fordelen."
 
 #. [then]
 #. [else]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:964
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:971
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:970
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:977
 msgid ""
 "Remember to retreat your wounded units to villages. Shamans can only heal 4 "
 "hitpoints per turn, while villages can heal them faster at 8 per turn.\n"
@@ -1938,15 +1960,26 @@ msgid ""
 "from villages or healers, combining for a total of up to 10 hitpoints per "
 "turn."
 msgstr ""
+"Husk å trekke sårede enheter tilbake til landsbyer. Sjamaner kan bare "
+"helbrede 4 helsepoeng per runde, mens landsbyer kan helbrede dem raskere med "
+"8 per runde.\n"
+"\n"
+"Ulike kilder til helbredelse kombineres vanligvis ikke. Hvis en enhet "
+"starter sin runde ved siden av flere helbredere, eller i en landsby og ved "
+"siden av en helbreder, blir den likevel bare helbredet én gang.\n"
+"\n"
+"Hvilehelbredelse er et unntak fra regelen - hvis en enhet ikke gjør noe i en "
+"runde, vil den helbrede 2 treffpunkter i tillegg til eventuell helbredelse "
+"den mottar fra landsbyer eller helbredere, noe som til sammen gir opptil 10 "
+"helsepoeng per runde."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1001
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1007
 msgid "Tracking Unused Units"
-msgstr ""
+msgstr "Sporing av ubenyttede enheter"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1002
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1008
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1954,98 +1987,102 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"Du kan forvisse deg om at du har brukt alle enhetene dine en runde: trykk "
-"'n' for å vise neste enhet med forflytning igjen, MELLOMROM for å indikere "
-"at en enhet er ferdig denne runden.\n"
-"Når 'n' ikke lenger viser nye enheter, kan du avslutte runden."
+"Du kan sikre at du bruker alle troppene dine ved å trykke på <b>n</b> for å "
+"gå fra en enhet til den neste. Hvis du trykker på <b>mellomrom</b>, kan du "
+"markere den valgte enheten som ferdig med sin runde, slik at du ikke flytter "
+"den ved et uhell senere. Når <b>n</b> ikke lenger velger en ny enhet, er det "
+"trygt å avslutte runden."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1010
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1016
 msgid "Status Table"
-msgstr ""
+msgstr "Statustabell"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1011
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1017
 msgid ""
 "The Status Table details the sides’ current status and starting conditions. "
 "Fog and shroud will affect what you can see in this table, and occasionally "
 "a side may be hidden; however, it is still useful to check this table when a "
 "scenario begins. You can access it in the <b>Menu</b> menu."
 msgstr ""
+"Statustabellen viser sidens nåværende status og startforhold. Tåke og slør "
+"vil påvirke hva du kan se i denne tabellen, og av og til kan en side være "
+"skjult, men det er likevel nyttig å sjekke denne tabellen når et scenario "
+"begynner. Du finner den i <b>Meny</b>-menyen."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1019
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1025
 msgid "Speeding Up Animations"
-msgstr ""
+msgstr "Hurtigere animasjoner"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1020
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1026
 msgid ""
 "Holding down <b>shift</b> will make the animations for moving and fighting "
 "quicker. The <b>acceleration factor</b> can be set, and turned on by "
 "default, in the <b>Preferences</b> menu’s <b>General</b> tab."
 msgstr ""
+"Hvis du holder nede <b>shift</b>, blir animasjonene for forflytninger og "
+"kamp raskere. <b>Akselerasjonsfaktoren</b> kan stilles inn, og er som "
+"standard slått på, i <b>Innstillinger</b>-menyen under fanen <b>Generelt</b>."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1028
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1034
 msgid "Victory Conditions"
-msgstr ""
+msgstr "Seiersbetingelser"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1029
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1035
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
 "conditions for a scenario are given under <b>Objectives</b> in the <b>Menu</"
 "b> menu."
 msgstr ""
+"I dette scenariet trenger du bare å beseire orkelederen for å vinne. "
+"Seiersbetingelsene for et scenario er angitt under <b>Scenariets mål</b> i "
+"<b>Meny</b>-menyen."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1038
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1044
 msgid "Hurry up and defeat the orcs before they become entrenched!"
-msgstr ""
+msgstr "Skynd deg å nedkjempe orkene før de får forskanset seg!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1066
-#, fuzzy
-#| msgid "I have no more money to recruit!"
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1072
 msgid "I have enough gold to recruit more units!"
-msgstr "Jeg har ikke penger å rekruttere for!"
+msgstr "Jeg har nok gull til å rekruttere flere enheter!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1067
-#, fuzzy
-#| msgid "I have no more money to recruit!"
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1073
 msgid "female^I have enough gold to recruit more units!"
-msgstr "Jeg har ikke penger å rekruttere for!"
+msgstr "Jeg har nok gull til å rekruttere flere enheter!"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1076
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1082
 msgid "Recruit the Right Units"
-msgstr ""
+msgstr "Rekruttere de riktige enhetene"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1077
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1083
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"Husk å rekruttere flere tropper, da du vil komme til å trenge dem: "
-"Bueskyttere er spesielt effektive mot Fotsoldater, Ulveryttere og orkenes "
-"Høvding."
+"Husk å rekruttere tropper som er nyttige i den aktuelle situasjonen. "
+"Bueskyttere er spesielt effektive mot fotsoldater, ulveryttere og orklederen."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1116
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1122
 msgid ""
 "Beware of those orcs crossing the river! If they get into the forest they’ll "
 "be hard to dislodge!"
 msgstr ""
 "Vær oppmerksom på orkene som krysser elven! Hvis de får fotfeste i skogen "
-"vil de være vanskelige å hive på sjøen."
+"vil de være vanskelige å fordrive."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1156
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1162
 msgid ""
 "That unit is about one kill (8 experience points) away from gaining a level! "
 "Do not let it die!"
@@ -2054,7 +2091,7 @@ msgstr ""
 "erfaringspoeng). Ikke la enheten din dø!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1178
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1184
 msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
@@ -2063,119 +2100,118 @@ msgstr ""
 "trodde: han blir helbredet og kan forsvare seg lettere."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1189
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1195
 msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
 "each turn and provides good defense."
 msgstr ""
-"Den enheten har befestet landsbyen vår! Du bør få ham ut derfra: han blir "
+"Den enheten har erobret landsbyen vår! Du bør få ham ut derfra: han blir "
 "helbredet og reduserer vår inntekt."
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1202
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1208
 msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
 msgstr ""
-"Det er risikabelt å bruke meg til å angripe med!  Jeg kan sakne ned "
+"Det er risikabelt å bruke meg til å angripe med! Jeg kan sakne ned "
 "motstanderen med avstandsangrepet mitt, men jeg håper du har en plan hvis "
 "jeg bommer!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1218
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1224
 msgid ""
 "You are close to killing their leader! Because he is second level, the unit "
 "who finishes him will gain 16 experience points. In a campaign, it’s "
 "important to decide which units you want to advance, and give those units "
 "the best chances to gain experience."
 msgstr ""
-"Du er nær ved å drepe Høvdingen deres! Enheten som feller ham vil motta 16 "
-"erfaringspoeng (8 per grad). Velg bøddelen med omhu! "
+"Du er nær ved å drepe Høvdingen deres! Fordi han er på andre nivå, vil "
+"enheten som utfører det endelige slaget få 16 erfaringspoeng. I en kampanje "
+"er det viktig å bestemme seg for hvilke enheter man ønsker å fremme, og gi "
+"disse enhetene de beste sjansene til å få erfaring."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1222
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1228
 msgid "You have almost finished the tutorial"
-msgstr ""
+msgstr "Du er nesten ferdig med veiledningen"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1224
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1230
 msgid ""
 "In a campaign you may have ten or even twenty scenarios to build your army, "
 "but this tutorial will conclude after you defeat Thrag."
 msgstr ""
+"I en kampanje har du kanskje ti eller til og med tjue scenarier til å bygge "
+"opp hæren din, men denne opplæringen avsluttes etter at du har beseiret "
+"Thrag."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1250
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1256
 msgid ""
 "We will miss $unit.name| because he had $unit.experience experience points. "
 "He would have advanced a level soon."
 msgstr ""
-"Vi kommer til å savne $deadguy.name|, han hadde hele $deadguy.experience "
-"erfaringspoeng, det betyr at han snart ville ha avansert til 2. grad."
+"Vi kommer til å savne $unit.name| fordi han hadde $unit.experience "
+"erfaringspoeng. Han ville snart ha avansert et nivå."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1256
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1262
 msgid ""
 "We will miss $unit.name| because she had $unit.experience experience points. "
 "She would have advanced a level soon."
 msgstr ""
-"Vi kommer til å savne $deadguy.name|, han hadde hele $deadguy.experience "
-"erfaringspoeng, det betyr at han snart ville ha avansert til 2. grad."
+"Vi kommer til å savne $unit.name| fordi hun hadde $unit.experience "
+"erfaringspoeng. Hun ville snart ha avansert et nivå."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1285
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1291
 msgid ""
 "We will miss $unit.name|, but at least he was not one of our experienced "
 "troops!"
 msgstr ""
-"Vi kommer til å savne $deadguy.name|, men heller ham enn en av våre erfarne "
-"soldater!"
+"Vi kommer til å savne $unit.name|, men han var i det minste ikke en av våre "
+"erfarne soldater!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1291
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1297
 msgid ""
 "We will miss $unit.name|, but at least she was not one of our experienced "
 "troops!"
 msgstr ""
-"Vi kommer til å savne $deadguy.name|, men heller ham enn en av våre erfarne "
-"soldater!"
+"Vi kommer til å savne $unit.name|, men hun var i det minste ikke en av våre "
+"erfarne soldater!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1308
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1314
 msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
 msgstr ""
-"Enheter av 2. grad er sterke, men ikke usårbare. Far vel, $deadguy.name|."
+"Enheter med høyere nivå er kraftige, men ikke uovervinnelige. Far vel, $unit."
+"name|."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1322
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1328
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
 msgstr ""
-"Å miste en helbreder er et tap for alle troppene!  Hold dem unna fiendens "
+"Å miste en helbreder er et tap for alle troppene! Hold dem unna fiendens "
 "rekkevidde!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1336
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1342
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
 msgstr ""
 "Ta deg i akt for Høvdingen: han kan gjøre 36 helsepoeng i skade om natten! "
-"Angrip med mange enheter samtidig, og om dagen!"
+"Angrip med mange enheter samtidig, og om dagen."
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1350
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1356
 msgid ""
 "Advancing a level has fully healed me! I am able to heal units 8 hitpoints "
 "per turn, instead of just 4, and may also cure them of poison if they cannot "
@@ -2183,161 +2219,172 @@ msgid ""
 "always has a 70% chance to hit, but it is not as powerful as the similar "
 "attack wielded by the Elvish Sorceress."
 msgstr ""
+"Å gå opp et nivå har helbredet meg fullstendig! Jeg kan helbrede enheter med "
+"8 helsepoeng per runde, i stedet for bare 4, og jeg kan også kurere dem for "
+"gift hvis de ikke kan nå en landsby! Jeg har også fått et nytt <i>magisk</i> "
+"angrep, noe som betyr at det alltid har 70 % sjanse til å treffe, men det er "
+"ikke like kraftig som det tilsvarende angrepet til alve-trollkvinnen."
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1364
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1370
 msgid ""
 "Advancing a level has fully healed me! I cannot heal adjacent units anymore, "
 "but to compensate, I have a new, powerful faerie fire attack that deals 7 "
 "damage each for 4 strikes. It also has the <i>magical</i> weapon special, "
 "meaning it always has a 70% chance to hit."
 msgstr ""
+"Å gå opp et nivå har helbredet meg fullstendig! Jeg kan ikke lenger helbrede "
+"tilstøtende enheter, men for å kompensere for dette har jeg et nytt, kraftig "
+"feild-angrep som gjør 7 skade med hver av mine 4 angrep. Det har også den "
+"<i>magiske</i> våpenspesialen, noe som betyr at det alltid har 70 % sjanse "
+"for å treffe."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1378
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1384
 msgid ""
 "Advancing a level has fully healed me! When attacking, I always have at "
 "least a 60% chance of hitting with my longbow thanks to my <i>Marksman</i> "
 "ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-to-"
 "hit units."
 msgstr ""
-"Jeg er fullstendig helbredet etter graderingen!\n"
-"Jeg har alltid 60% sjanse til å treffe med buen, og gjør 9 skade med hver av "
-"mine fire angrep. Bruk meg til å knekke enheter som er vanskelige å treffe."
+"Å gå opp et nivå har helbredet meg fullstendig! Når jeg angriper, har jeg "
+"alltid minst 60 % sjanse for å treffe med langbuen min takket være "
+"<i>Skarpskytter</i>-evnen min, og jeg gjør 9 skade med hver av mine 4 "
+"angrep. Bruk meg til å fjerne enheter som er vanskelige å treffe."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1379
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1385
 msgid ""
 "female^Advancing a level has fully healed me! When attacking, I always have "
 "at least a 60% chance of hitting with my longbow thanks to my <i>Marksman</"
 "i> ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-"
 "to-hit units."
 msgstr ""
-"Jeg er fullstendig helbredet etter graderingen!\n"
-"Jeg har alltid 60% sjanse til å treffe med buen, og gjør 9 skade med hver av "
-"mine fire angrep. Bruk meg til å knekke enheter som er vanskelige å treffe."
+"Å gå opp et nivå har helbredet meg fullstendig! Når jeg angriper, har jeg "
+"alltid minst 60 % sjanse for å treffe med langbuen min takket være "
+"<i>Skarpskytter</i>-evnen min, og jeg gjør 9 skade med hver av mine 4 "
+"angrep. Bruk meg til å fjerne enheter som er vanskelige å treffe."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1392
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1398
 msgid ""
 "Advancing a level has fully healed me! I am good with both bow and sword, "
 "and I have a special ability: <i>Ambush</i>. I can hide in forests where "
 "enemies can only see me if they are right next to me."
 msgstr ""
-"Jeg er fullstendig helbredet etter graderingen!\n"
-"Jeg er god med både bue og sverd, og har en spesiell egenskap: jeg kan snike "
-"meg usett fram i skog. Fienden ser meg bare hvis de er rett ved siden av meg."
+"Å gå opp et nivå har helbredet meg fullstendig! Jeg er god med både bue og "
+"sverd, og jeg har en spesiell evne: <i>Bakhold</i>. Jeg kan gjemme meg i "
+"skoger der fiender bare kan se meg hvis de er rett ved siden av meg."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1393
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1399
 msgid ""
 "female^Advancing a level has fully healed me! I am good with both bow and "
 "sword, and I have a special ability: <i>Ambush</i>. I can hide in forests "
 "where enemies can only see me if they are right next to me."
 msgstr ""
-"Jeg er fullstendig helbredet etter graderingen!\n"
-"Jeg er god med både bue og sverd, og har en spesiell egenskap: jeg kan snike "
-"meg usett fram i skog. Fienden ser meg bare hvis de er rett ved siden av meg."
+"Å gå opp et nivå har helbredet meg fullstendig! Jeg er god med både bue og "
+"sverd, og jeg har en spesiell evne: <i>Bakhold</i>. Jeg kan gjemme meg i "
+"skoger der fiender bare kan se meg hvis de er rett ved siden av meg."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1407
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1413
 msgid ""
 "Advancing a level has fully healed me! I am good with both bow and sword, "
 "and I have a special ability: <i>Leadership</i>. I do less damage myself "
 "than the Elvish Hero, but my ability allows my allies to fight better. First "
 "level units around me do 25% more damage, so position me carefully!"
 msgstr ""
-"Jeg er fullstendig helbredet etter graderingen!\n"
-"Jeg er god med både bue og sverd, men jeg har en spesiell egenskap: "
-"lederskap! 1. grads enheter rundt meg gjør 25% mer skade, så bruk meg "
-"taktisk."
+"Å gå opp et nivå har helbredet meg fullstendig! Jeg er god med både bue og "
+"sverd, og jeg har en spesiell evne: <i>Lederskap</i>. Jeg gjør mindre skade "
+"selv enn alvehelten, men evnen min gjør at mine allierte kan kjempe bedre. "
+"Enheter på første nivå rundt meg gjør 25 % mer skade, så plasser meg med "
+"omhu!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1420
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me!\n"
-#| "I am particularly good with the sword, dealing 8 damage in 4 attacks."
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1426
 msgid ""
 "Advancing a level has fully healed me! I am particularly good with the "
 "sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
 "abilities of the Elvish Captain, my superior fighting skills allow my "
 "attacks to do more damage!"
 msgstr ""
-"Jeg er fullstendig helbredet etter graderingen!\n"
-"Jeg er særlig god med sverdet: fire angrep med 8 skade for hvert treff!"
+"Å gå opp et nivå har helbredet meg fullstendig! Jeg er særlig god med sverd, "
+"og gjør 8 skade med hver av mine 4 angrep. Selv om jeg ikke har "
+"alvekapteinens lederegenskaper, gjør de overlegne kampferdighetene mine at "
+"angrepene mine gjør mer skade!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1433
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me!\n"
-#| "I am particularly good with the sword, dealing 8 damage in 4 attacks."
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1439
 msgid ""
 "Advancing a level has fully healed me! I have become better at using the "
 "sword, dealing 9 damage in 4 attacks. Although I do not have any special "
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
-"Jeg er fullstendig helbredet etter graderingen!\n"
-"Jeg er særlig god med sverdet: fire angrep med 8 skade for hvert treff!"
+"Å gå opp et nivå har helbredet meg fullstendig! Jeg har blitt bedre til å "
+"bruke sverdet, og jeg gjør 9 skade med hver av mine 4 angrep. Selv om jeg "
+"ikke har noen spesielle evner, vil kampferdighetene mine gjøre det mulig for "
+"meg å beseire orkene ved å gjøre mer skade!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1434
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me!\n"
-#| "I am particularly good with the sword, dealing 8 damage in 4 attacks."
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1440
 msgid ""
 "female^Advancing a level has fully healed me! I have become better at using "
 "the sword, dealing 9 damage in 4 attacks. Although I do not have any special "
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
-"Jeg er fullstendig helbredet etter graderingen!\n"
-"Jeg er særlig god med sverdet: fire angrep med 8 skade for hvert treff!"
+"Å gå opp et nivå har helbredet meg fullstendig! Jeg har blitt bedre til å "
+"bruke sverdet, og jeg gjør 9 skade med hver av mine 4 angrep. Selv om jeg "
+"ikke har noen spesielle evner, vil kampferdighetene mine gjøre det mulig for "
+"meg å beseire orkene ved å gjøre mer skade!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1443
-#, fuzzy
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1449
 msgid "You took too long! Now we’ll never be rid of these orcs!"
-msgstr "Du har brukt for lang tid. Vi blir aldri kvitt orkene nå!"
+msgstr "Du brukte for lang tid! Nå blir vi aldri kvitt disse orkene!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1459
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1465
 msgid "That... was foolish. Next time I should be more careful."
-msgstr ""
+msgstr "Det... var dumt. Neste gang bør jeg være mer forsiktig."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1460
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1466
 msgid "female^That... was foolish. Next time I should be more careful."
-msgstr ""
+msgstr "Det... var dumt. Neste gang bør jeg være mer forsiktig."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1478
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1484
 msgid "Agh! Who will guide you to victory now?"
-msgstr ""
+msgstr "Agh! Hvem skal lede deg til seier nå?"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1493
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1499
+#, fuzzy
+#| msgid ""
+#| "You have beaten the orcs! You may want to try one of the rookie-level "
+#| "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
+#| "i> is the easiest and is the recommended first campaign."
 msgid ""
-"You have beaten the orcs! You may want to try one of the rookie-level "
-"campaigns next, which include strategy hints. <i>A Tale of Two Brothers</i> "
-"is the easiest and is the recommended first campaign."
+"You have beaten the orcs! You may want to try one of the novice-level "
+"campaigns next. <i>A Tale of Two Brothers</i> is the easiest and is the "
+"recommended first campaign."
 msgstr ""
+"Du har beseiret orkene! Nå kan det være lurt å prøve en av kampanjene på "
+"nybegynnernivå, som inneholder strategitips. <i>En saga om to brødre</i> er "
+"den enkleste og anbefales som første kampanje."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1498
+#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1504
 msgid ""
 "You can also refer to the in-game help browser if you ever need to refresh "
 "your memory on gameplay mechanics."
 msgstr ""
+"Du kan også slå opp i spillets hjelpeside hvis du trenger å friske opp "
+"minnet rundt spillmekanismene."
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
@@ -2353,9 +2400,8 @@ msgid ""
 "attack from enemies. However, they have the potential to become great "
 "warriors one day."
 msgstr ""
-"Unge og fremadstormende er Infanteristene trent i sverdkamp. Skjønt de ennå "
-"er sårbare for angrep fra fiender, har de potensiale til en dag å bli en "
-"store krigere."
+"Infanteristene er unge og kjepphøye. Dyktige med sverd, men sårbare for "
+"fiendens angrep. De har imidlertid potensial til å bli store krigere en dag."
 
 #. [unit_type]: id=Fighteress, gender=female, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
@@ -2379,7 +2425,7 @@ msgstr ""
 #. [unit_type]: id=Warrior, race=human
 #: data/campaigns/tutorial/units/Warrior.cfg:4
 msgid "Warrior"
-msgstr ""
+msgstr "Kriger"
 
 #. [unit_type]: id=Warrior, race=human
 #. [unit_type]: id=Warrioress, gender=female, race=human
@@ -2389,39 +2435,37 @@ msgid ""
 "With more experience, Fighters have honed their skills with the sword and "
 "become powerful Warriors."
 msgstr ""
+"Med mer erfaring har infanteristene finpusset sverdteknikken sin og blitt "
+"mektige krigere."
 
 #. [unit_type]: id=Warrioress, gender=female, race=human
 #: data/campaigns/tutorial/units/Warrioress.cfg:4
-#, fuzzy
-#| msgid "female^Fighter"
 msgid "female^Warrior"
-msgstr "Infanterist"
+msgstr "Krigerske"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/utils/utils.cfg:63
 msgid "Undo"
-msgstr ""
+msgstr "Angre"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/utils/utils.cfg:65
-#, fuzzy
 msgid ""
 "Don’t forget, you can press <b>u</b> to undo most things if you make a "
 "mistake."
 msgstr ""
-"*Husk:\n"
-"Du kan trykke 'u' for å gjøre det meste ugjort: nyttig når man angrer en "
-"feil."
+"Husk at du kan trykke <b>u</b> for å angre det meste hvis du gjør en feil."
 
 #: data/campaigns/tutorial/utils/utils.cfg:126
-#, fuzzy
 msgid ""
 "\n"
 "\n"
 "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgstr ""
 "\n"
-"*Venstreklikk eller trykk mellomrom for å fortsette..."
+"\n"
+"<big>Klikk på en museknapp eller trykk på mellomromstasten for å fortsette..."
+"</big>"
 
 #, fuzzy
 #~ msgid ""

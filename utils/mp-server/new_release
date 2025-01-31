@@ -1,4 +1,12 @@
-#!/bin/sh
+#!/bin/bash
+#
+# Rewrites server config files to switch to a new version and makes
+# the server re-read those config files. Also sends a server messages
+# to announce the new version.
+# Has logic to handle a temporary server for the (now) previous version.
+#
+# Option -n can be used to do a "dry run".
+
 die() { echo >&2 "$@"; exit 1; }
 [ $# -ge 1 ] || die "Syntax: $0 [-n] <new minor version>"
 set -o errexit
@@ -7,41 +15,46 @@ set -x
 
 echo=""
 [ "$1" = "-n" ] && { echo=echo; shift; }
-[ $1 -ge 1 ] || die "New version must be at least 1!"
+[ "$1" -ge 1 ] || die "New version must be at least 1!"
 
-DEV_VERSION=$(readlink $HOME/servers/dev)
-NEW_VERSION=$DEV_VERSION.$1
-PREV_VERSION=$DEV_VERSION.$(($1-1))
-PPREV_VERSION=$DEV_VERSION.$(($1-2))
-NEXT_VERSION=$DEV_VERSION.$(($1+1))
-DEV_SERVER_CONFIG=$HOME/servers/$DEV_VERSION/wesnothd.cfg
-PREV_SERVER_CONFIG=$HOME/servers/$DEV_VERSION-prev/wesnothd.cfg
-PREV_SERVER_REDIRECT=$HOME/servers/$DEV_VERSION-prev/redirect.cfg
+dev_version=$(readlink "$HOME/servers/dev")
+dev_version_re=${dev_version//./\\.}
+new_version=$dev_version.$1
+new_version_re=${new_version//./\\.}
+prev_version=$dev_version.$(($1-1))
+prev_version_re=${prev_version//./\\.}
+pprev_version=$dev_version.$(($1-2))
+pprev_version_re=${pprev_version//./\\.}
+next_version=$dev_version.$(($1+1))
+dev_server_config=$HOME/servers/$dev_version/wesnothd.cfg
+prev_server_config=$HOME/servers/$dev_version-prev/wesnothd.cfg
+prev_server_redirect=$HOME/servers/$dev_version-prev/redirect.cfg
 
-PREV=no
-test -w $PREV_SERVER_CONFIG && PREV=yes
-[ $PREV = no -o $1 -gt 1 ] || die "New version must be greater than 1 when using a previous version server!"
+prev=no
+test -w "$prev_server_config" && prev=yes
+[ "$prev" = no ] || [ "$1" -gt 1 ] || die "New version must be greater than 1 when using a previous version server!"
 
 
-SERVER_MESSAGE="Version $NEW_VERSION has been released! Update now! (You need the new version in order to join this server again.)"
-[ $PREV = yes ] && SERVER_MESSAGE="Version $NEW_VERSION has been released! New users with the previous version will now get redirected to a temporary server that will run until binaries for all major OSes are out."
+server_message="Version $new_version has been released! Update now! (You need the new version in order to join this server again.)"
+[ "$prev" = yes ] && server_message="Version $new_version has been released! New users with the previous version will now get redirected to a temporary server that will run until binaries for all major OSes are out."
 
-#if ! ps -C wesnothd-$DEV_VERSION-prev>/dev/null; then
+#if ! ps -C wesnothd-$dev_version-prev>/dev/null; then
 #	echo "Previous server isn't running!"
 #	exit 1
 #fi
 
-[ $PREV = yes ] && $echo sed -i -e "/versions_accepted=/s/$PPREV_VERSION/$PREV_VERSION/" $PREV_SERVER_CONFIG
-[ $PREV = yes ] && $echo sed -i -e "/motd=/s/$PREV_VERSION/$NEW_VERSION/g" $PREV_SERVER_CONFIG
+# Handle the 15 character limit for process names of /proc/<pid>/stat
+reread_config() { $echo pkill -HUP "${1:0:15}"; }
+
+[ "$prev" = yes ] && $echo sed -i "/versions_accepted=/s/$pprev_version_re/$prev_version/;/motd=/s/$prev_version_re/$new_version/g" "$prev_server_config"
 # reload the config
-[ $PREV = yes ] && $echo killall -HUP wesnothd-$DEV_VERSION-prev
+[ "$prev" = yes ] && reread_config "wesnothd-$dev_version-prev"
 # check if we currently allow the previous version to prevent announcing the same version twice
-grep "versions_accepted=.*$PREV_VERSION" $DEV_SERVER_CONFIG || die "Previous version $PREV_VERSION currently not accepted. Announcing the right version? Aborting..."
-$echo sed -i -e "/versions_accepted=/{s/$NEW_VERSION/$NEXT_VERSION/;s/$PREV_VERSION/$NEW_VERSION/}" $DEV_SERVER_CONFIG
-$echo sed -i -e "/motd=/s/$PREV_VERSION/$NEW_VERSION/g" $DEV_SERVER_CONFIG
+grep "versions_accepted=.*${prev_version//./\\.}" "$dev_server_config" || die "Previous version $prev_version currently not accepted. Announcing the right version? Aborting..."
+$echo sed -i "s/^id=.*/id=$new_version/;/^versions_accepted=/{s/$new_version_re/$next_version/;s/$prev_version_re/$new_version/};/motd=/s/$prev_version_re/$new_version/g" "$dev_server_config"
 # update previous version redirect
-[ $PREV = yes ] && $echo sed -i -e "/\[redirect\]/N;/version=/s/$PPREV_VERSION/$PREV_VERSION/" $PREV_SERVER_REDIRECT
-[ $PREV = yes ] && $echo sed -i -e "s,#\({./$DEV_VERSION-prev-redirect.cfg}\),\1," $DEV_SERVER_CONFIG
+[ "$prev" = yes ] && $echo sed -i "/version=/s/$pprev_version_re/$prev_version/" "$prev_server_redirect"
+[ "$prev" = yes ] && $echo sed -i "s,#\({./$dev_version_re-prev-redirect.cfg}\),\1," "$dev_server_config"
 # reload the config
-$echo killall -HUP wesnothd-$DEV_VERSION
-$echo $HOME/bin/send_server_message $DEV_VERSION "$SERVER_MESSAGE"
+reread_config "wesnothd-$dev_version"
+$echo "$HOME/bin/send_server_message" "$dev_version" "$server_message"

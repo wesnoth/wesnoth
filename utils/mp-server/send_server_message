@@ -1,24 +1,25 @@
 #!/bin/sh
-die() {	echo >&2 "$@"; exit 1; }
-notfound() { echo >&2 "$SOCKET not found, sending to the '$1'."; SOCKET=$SERVERBASE/$1/var/run/socket; }
+die() {	printf '%s\n' "$*" >&2; exit 1; }
+notfound() { printf '%s not found, sending to the "%s".\n' "$fifo" "$1" >&2; fifo=$serverbase/$1/var/run/socket; }
 
 [ $# -ge 1 ] || die "Syntax: $0 <server version> [<message>]"
 
-SERVER=$1
-SERVERBASE=$HOME/servers/$SERVER
-SOCKET=$SERVERBASE/build/var/run/socket
-
-[ -d "$SERVERBASE" ] || die "Server '$SERVER' not found."
+server=$1
+serverbase=$HOME/servers/$server
+fifo=$serverbase/build/var/run/socket
 shift
+
+[ -d "$serverbase" ] || die "Server '$server' not found."
+
 if [ "$*" = "" ]; then
 	message="The server will get restarted now. Please don't forget to save your game!"
-	echo "Sending standard message: $message"
+	printf 'Sending standard message: \n' "$message"
 else
 	message=$*
 fi
 
-[ -e $SOCKET ] || { notfound oldbuild; [ -e $SOCKET ] || notfound revertedbuild; }
-[ -p $SOCKET ] || die "$SOCKET is not a named pipe (fifo).
-Is the $SERVER server running?"
+[ -e "$fifo" ] || { notfound oldbuild; [ -e "$fifo" ] || notfound revertedbuild; }
+[ -p "$fifo" ] || die "$fifo is not a named pipe (fifo).
+Is the $server server running?"
 
-echo "msg $message" > $SOCKET
+printf 'msg %s\n' "$message" > "$fifo"

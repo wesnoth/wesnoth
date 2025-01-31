@@ -167,7 +167,7 @@ void label::signal_handler_right_button_click(bool& handled)
 
 	DBG_GUI_E << "Right Clicked Link:\"" << link << "\"";
 
-	desktop::clipboard::copy_to_clipboard(link, false);
+	desktop::clipboard::copy_to_clipboard(link);
 
 	(void) show_message("", _("Copied link!"), dialogs::message::auto_close);
 
@@ -246,7 +246,7 @@ namespace implementation
 builder_label::builder_label(const config& cfg)
 	: builder_styled_widget(cfg)
 	, wrap(cfg["wrap"].to_bool())
-	, characters_per_line(cfg["characters_per_line"])
+	, characters_per_line(cfg["characters_per_line"].to_unsigned())
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 	, can_shrink(cfg["can_shrink"].to_bool(false))
 	, link_aware(cfg["link_aware"].to_bool(false))

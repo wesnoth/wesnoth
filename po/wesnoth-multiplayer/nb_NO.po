@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2009-02-27 21:27+0100\n"
+"POT-Creation-Date: 2024-10-21 16:11 UTC\n"
+"PO-Revision-Date: 2024-05-02 18:34+0200\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
-"Language: \n"
+"Language: no\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -25,22 +25,26 @@ msgstr "Brukerkart"
 #. [achievement_group]
 #: data/multiplayer/achievements.cfg:3
 msgid "Wesnoth Multiplayer (Survivals)"
-msgstr ""
+msgstr "Wesnoth flerspiller (Overlevelse)"
 
 #. [achievement]: id=Wesnoth_MP_Dark_Forecast
 #: data/multiplayer/achievements.cfg:9 data/multiplayer/achievements.cfg:10
 msgid "Foresight of Triumph"
-msgstr ""
+msgstr "Triumfens spådom"
 
 #. [achievement]: id=Wesnoth_MP_Dark_Forecast
 #: data/multiplayer/achievements.cfg:11
-msgid "Complete the survival scenario <i>2p - Dark Forecast</i>."
-msgstr ""
+#, fuzzy
+#| msgid "Complete the survival scenario <i>2p - Dark Forecast</i>."
+msgid "Complete the survival scenario <i>2p — Dark Forecast</i>."
+msgstr "Fullfør overlevelsesscenarioet <i>2sp - Mørkt forvarsel</i>."
 
 #. [achievement]: id=Wesnoth_MP_Dark_Forecast
 #: data/multiplayer/achievements.cfg:12
-msgid "Completed the survival scenario <i>2p - Dark Forecast</i>."
-msgstr ""
+#, fuzzy
+#| msgid "Completed the survival scenario <i>2p - Dark Forecast</i>."
+msgid "Completed the survival scenario <i>2p — Dark Forecast</i>."
+msgstr "Fullførte overlevelsesscenarioet <i>2sp - Mørkt forvarsel</i>."
 
 #. [achievement]: id=Wesnoth_MP_Isle_of_Mists
 #: data/multiplayer/achievements.cfg:20
@@ -54,13 +58,17 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Isle_of_Mists
 #: data/multiplayer/achievements.cfg:22
-msgid "Complete the survival scenario <i>2p - Isle of Mists</i>."
-msgstr ""
+#, fuzzy
+#| msgid "Complete the survival scenario <i>2p - Dark Forecast</i>."
+msgid "Complete the survival scenario <i>2p — Isle of Mists</i>."
+msgstr "Fullfør overlevelsesscenarioet <i>2sp - Mørkt forvarsel</i>."
 
 #. [achievement]: id=Wesnoth_MP_Isle_of_Mists
 #: data/multiplayer/achievements.cfg:23
-msgid "Completed the survival scenario <i>2p - Isle of Mists</i>."
-msgstr ""
+#, fuzzy
+#| msgid "Completed the survival scenario <i>2p - Dark Forecast</i>."
+msgid "Completed the survival scenario <i>2p — Isle of Mists</i>."
+msgstr "Fullførte overlevelsesscenarioet <i>2sp - Mørkt forvarsel</i>."
 
 #. [achievement]: id=Wesnoth_MP_Team_Survival
 #: data/multiplayer/achievements.cfg:31 data/multiplayer/achievements.cfg:32
@@ -69,13 +77,17 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_Team_Survival
 #: data/multiplayer/achievements.cfg:33
-msgid "Complete the survival scenario <i>6p - Team Survival</i>."
-msgstr ""
+#, fuzzy
+#| msgid "Complete the survival scenario <i>2p - Dark Forecast</i>."
+msgid "Complete the survival scenario <i>6p — Team Survival</i>."
+msgstr "Fullfør overlevelsesscenarioet <i>2sp - Mørkt forvarsel</i>."
 
 #. [achievement]: id=Wesnoth_MP_Team_Survival
 #: data/multiplayer/achievements.cfg:34
-msgid "Completed the survival scenario <i>6p - Team Survival</i>."
-msgstr ""
+#, fuzzy
+#| msgid "Completed the survival scenario <i>2p - Dark Forecast</i>."
+msgid "Completed the survival scenario <i>6p — Team Survival</i>."
+msgstr "Fullførte overlevelsesscenarioet <i>2sp - Mørkt forvarsel</i>."
 
 #. [achievement]: id=Wesnoth_MP_ANL
 #: data/multiplayer/achievements.cfg:42 data/multiplayer/achievements.cfg:43
@@ -84,13 +96,17 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL
 #: data/multiplayer/achievements.cfg:44
-msgid "Complete the survival scenario <i>4p - A New Land</i>."
-msgstr ""
+#, fuzzy
+#| msgid "Complete the survival scenario <i>2p - Dark Forecast</i>."
+msgid "Complete the survival scenario <i>4p — A New Land</i>."
+msgstr "Fullfør overlevelsesscenarioet <i>2sp - Mørkt forvarsel</i>."
 
 #. [achievement]: id=Wesnoth_MP_ANL
 #: data/multiplayer/achievements.cfg:45
-msgid "Completed the survival scenario <i>4p - A New Land</i>."
-msgstr ""
+#, fuzzy
+#| msgid "Completed the survival scenario <i>2p - Dark Forecast</i>."
+msgid "Completed the survival scenario <i>4p — A New Land</i>."
+msgstr "Fullførte overlevelsesscenarioet <i>2sp - Mørkt forvarsel</i>."
 
 #. [achievement]: id=Wesnoth_MP_ANL_mines
 #: data/multiplayer/achievements.cfg:52 data/multiplayer/achievements.cfg:53
@@ -99,12 +115,12 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_mines
 #: data/multiplayer/achievements.cfg:54
-msgid "Destroy all enemy mushroom mines in <i>4p - A New Land</i>."
+msgid "Destroy all enemy mushroom mines in <i>4p — A New Land</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_mines
 #: data/multiplayer/achievements.cfg:55
-msgid "Destroyed all enemy mushroom mines in <i>4p - A New Land</i>."
+msgid "Destroyed all enemy mushroom mines in <i>4p — A New Land</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_rescue_allies
@@ -114,12 +130,12 @@ msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_rescue_allies
 #: data/multiplayer/achievements.cfg:65
-msgid "Rescue the trapped units in <i>4p - A New Land</i>."
+msgid "Rescue the trapped units in <i>4p — A New Land</i>."
 msgstr ""
 
 #. [achievement]: id=Wesnoth_MP_ANL_rescue_allies
 #: data/multiplayer/achievements.cfg:66
-msgid "Rescued the trapped units in <i>4p - A New Land</i>."
+msgid "Rescued the trapped units in <i>4p — A New Land</i>."
 msgstr ""
 
 #. [era]: id=era_default, type=hybrid
@@ -129,10 +145,16 @@ msgstr "Standard"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:6
+#, fuzzy
+#| msgid ""
+#| "The standard era for Wesnoth multiplayer. Consists of six factions and is "
+#| "generally balanced."
 msgid ""
-"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"The standard era for Wesnoth multiplayer. Consists of seven factions and is "
 "generally balanced."
 msgstr ""
+"Standardæraen for flerspillerdelen av Wesnoth. Består av seks fraksjoner og "
+"er stort sett godt balansert."
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:14
@@ -141,45 +163,19 @@ msgstr "Heltenes æra"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:15
+#, fuzzy
+#| msgid ""
+#| "An era with higher level units: level three leaders, with level one and "
+#| "two units available for recruit. Consists of six factions. Not considered "
+#| "balanced."
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
-"units available for recruit. Consists of six factions. Not considered "
+"units available for recruit. Consists of seven factions. Not considered "
 "balanced."
 msgstr ""
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:22
-msgid "Default + Dunefolk"
-msgstr ""
-
-#. [era]: id=era_dunefolk
-#: data/multiplayer/eras.cfg:23
-msgid ""
-"An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:33
-#, fuzzy
-#| msgid "Age of Heroes"
-msgid "Age of Heroes + Dunefolk"
-msgstr "Heltenes æra"
-
-#. [era]: id=era_dunefolk_heroes
-#: data/multiplayer/eras.cfg:34
-msgid ""
-"An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
-"\n"
-"This era is still under development, so please be sure to report any "
-"problems that arise."
-msgstr ""
+"En æra med enheter på høyere nivå: ledere på nivå tre, med enheter på nivå "
+"én og to tilgjengelig for rekruttering. Består av seks fraksjoner. Ikke "
+"ansett som balansert."
 
 #. [lua]: res.show_turns_over_advantage
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
@@ -223,15 +219,15 @@ msgstr ""
 msgid "dialog^Turns Over"
 msgstr ""
 
-#. [multiplayer_side]: id=Drakes, type=random
+#. [multiplayer_side]: id=Drakes, type=random, description=<img>src='portraits/drakes/inferno.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 #: data/multiplayer/factions/drakes-default.cfg:4
 msgid "Drakes"
 msgstr "Draker"
 
-#. [multiplayer_side]: id=Drakes, type=random
-#: data/multiplayer/factions/drakes-aoh.cfg:14
-#: data/multiplayer/factions/drakes-default.cfg:14
+#. [multiplayer_side]: id=Drakes, type=random, description=<img>src='portraits/drakes/inferno.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/drakes-aoh.cfg:12
+#: data/multiplayer/factions/drakes-default.cfg:12
 msgid ""
 "The <bold>text='Drakes'</bold> are a faction of dragon-like "
 "<ref>text='Drakes' dst='..race_drake'</ref> and their lizard "
@@ -242,15 +238,15 @@ msgid ""
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction."
 msgstr ""
 
-#. [multiplayer_side]: id=Dunefolk, type=random
+#. [multiplayer_side]: id=Dunefolk, type=random, description=<img>src='portraits/dunefolk/herbalist.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
 #: data/multiplayer/factions/dunefolk-default.cfg:4
 msgid "Dunefolk"
-msgstr ""
+msgstr "Sandfolket"
 
-#. [multiplayer_side]: id=Dunefolk, type=random
-#: data/multiplayer/factions/dunefolk-aoh.cfg:14
-#: data/multiplayer/factions/dunefolk-default.cfg:14
+#. [multiplayer_side]: id=Dunefolk, type=random, description=<img>src='portraits/dunefolk/herbalist.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/dunefolk-aoh.cfg:12
+#: data/multiplayer/factions/dunefolk-default.cfg:12
 msgid ""
 "The <bold>text='Dunefolk'</bold> are a faction of humans from the deserts "
 "and hills of the southern lands. The Dunefolk specialize in using terrain "
@@ -261,15 +257,15 @@ msgid ""
 "especially on hilly terrains."
 msgstr ""
 
-#. [multiplayer_side]: id=Knalgan Alliance, type=random
+#. [multiplayer_side]: id=Knalgan Alliance, type=random, description=<img>src='portraits/dwarves/ulfserker.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 #: data/multiplayer/factions/knalgans-default.cfg:4
 msgid "Knalgan Alliance"
 msgstr "Knalgaforbundet"
 
-#. [multiplayer_side]: id=Knalgan Alliance, type=random
-#: data/multiplayer/factions/knalgans-aoh.cfg:13
-#: data/multiplayer/factions/knalgans-default.cfg:13
+#. [multiplayer_side]: id=Knalgan Alliance, type=random, description=<img>src='portraits/dwarves/ulfserker.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/knalgans-aoh.cfg:11
+#: data/multiplayer/factions/knalgans-default.cfg:11
 msgid ""
 "The <bold>text='Knalgan Alliance'</bold> is a faction of <ref>text='Dwarves' "
 "dst='..race_dwarf'</ref> and their outlaw <ref>text='Human' dst='.."
@@ -281,15 +277,15 @@ msgid ""
 "that dwarves are not good at fighting in."
 msgstr ""
 
-#. [multiplayer_side]: id=Loyalists, type=random
+#. [multiplayer_side]: id=Loyalists, type=random, description=<img>src='portraits/humans/grand-knight.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 #: data/multiplayer/factions/loyalists-default.cfg:4
 msgid "Loyalists"
 msgstr "Lojalister"
 
-#. [multiplayer_side]: id=Loyalists, type=random
-#: data/multiplayer/factions/loyalists-aoh.cfg:14
-#: data/multiplayer/factions/loyalists-default.cfg:14
+#. [multiplayer_side]: id=Loyalists, type=random, description=<img>src='portraits/humans/grand-knight.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/loyalists-aoh.cfg:12
+#: data/multiplayer/factions/loyalists-default.cfg:12
 msgid ""
 "The <bold>text='Loyalists'</bold> are a faction of <ref>text='Humans' dst='.."
 "race_human'</ref> who are loyal to the throne of Wesnoth. Humans are a "
@@ -298,15 +294,15 @@ msgid ""
 "ranged support from bowmen and mages."
 msgstr ""
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
+#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Nordfolk"
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
-#: data/multiplayer/factions/northerners-aoh.cfg:16
-#: data/multiplayer/factions/northerners-default.cfg:15
+#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/northerners-aoh.cfg:12
+#: data/multiplayer/factions/northerners-default.cfg:11
 msgid ""
 "The <bold>text='Northerners'</bold> are a faction of <ref>text='Orcs' dst='.."
 "race_orc'</ref> and their allies who live in the north of the Great "
@@ -318,15 +314,15 @@ msgid ""
 "HP soldiers."
 msgstr ""
 
-#. [multiplayer_side]: id=Rebels, type=random
+#. [multiplayer_side]: id=Rebels, type=random, description=<img>src='portraits/elves/druid.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
 msgstr "Utbrytere"
 
-#. [multiplayer_side]: id=Rebels, type=random
-#: data/multiplayer/factions/rebels-aoh.cfg:14
-#: data/multiplayer/factions/rebels-default.cfg:14
+#. [multiplayer_side]: id=Rebels, type=random, description=<img>src='portraits/elves/druid.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/rebels-aoh.cfg:12
+#: data/multiplayer/factions/rebels-default.cfg:12
 msgid ""
 "The <bold>text='Rebels'</bold> are a faction of <ref>text='Elves' dst='.."
 "race_elf'</ref> and their various forest-dwelling allies. They get their "
@@ -341,15 +337,15 @@ msgid ""
 "elves’ neutral alignment."
 msgstr ""
 
-#. [multiplayer_side]: id=Undead, type=random
+#. [multiplayer_side]: id=Undead, type=random, description=<img>src='portraits/undead/spectre.webp~BG()' align='middle'</img><br/>
 #: data/multiplayer/factions/undead-aoh.cfg:4
 #: data/multiplayer/factions/undead-default.cfg:4
 msgid "Undead"
 msgstr "Vandøde"
 
-#. [multiplayer_side]: id=Undead, type=random
-#: data/multiplayer/factions/undead-aoh.cfg:14
-#: data/multiplayer/factions/undead-default.cfg:14
+#. [multiplayer_side]: id=Undead, type=random, description=<img>src='portraits/undead/spectre.webp~BG()' align='middle'</img><br/>
+#: data/multiplayer/factions/undead-aoh.cfg:12
+#: data/multiplayer/factions/undead-default.cfg:12
 msgid ""
 "The <bold>text='Undead'</bold> are a faction of <ref>text='undead' dst='.."
 "race_undead'</ref> creatures and <ref>text='human' dst='..race_human'</ref> "
@@ -363,27 +359,52 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
-#, fuzzy
-#| msgid "2p — The Freelands"
 msgid "2p — Aethermaw"
-msgstr "2sp - Frilandene"
+msgstr "2sp — Aethermaw"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
+#, fuzzy
+#| msgid ""
+#| "Long ago, the Great Mage Sulla was imprisoned in the Aethermaw, a nexus "
+#| "of mystical energy whose chaotic nature was able to prevent her escape. "
+#| "Over the centuries, however, Sulla gradually attuned her powers to the "
+#| "maelstrom of disorder that is the Aethermaw, and has now begun to project "
+#| "its influence onto the material plane, drawing in entire regions of land "
+#| "from hundreds of different worlds, realities and time-periods. She "
+#| "experiments with these disparate pieces of the cosmos, manipulating them, "
+#| "merging them and sending them back and forth between the Aethermaw and "
+#| "their place of origin. Perhaps, as her mastery over the Aethermaw grows, "
+#| "Sulla will one day break free of its bonds. Until that time comes, she "
+#| "will continue to amuse herself by arranging battles between the mortal "
+#| "beings unlucky enough to be drawn into its depths. Designed by Doc "
+#| "Paterson."
 msgid ""
-"Long ago, the Great Mage Sulla was imprisoned in the Aethermaw, a nexus of "
-"mystical energy whose chaotic nature was able to prevent her escape. Over "
-"the centuries, however, Sulla gradually attuned her powers to the maelstrom "
-"of disorder that is the Aethermaw, and has now begun to project its "
-"influence onto the material plane, drawing in entire regions of land from "
-"hundreds of different worlds, realities and time-periods. She experiments "
-"with these disparate pieces of the cosmos, manipulating them, merging them "
-"and sending them back and forth between the Aethermaw and their place of "
-"origin. Perhaps, as her mastery over the Aethermaw grows, Sulla will one day "
-"break free of its bonds. Until that time comes, she will continue to amuse "
-"herself by arranging battles between the mortal beings unlucky enough to be "
-"drawn into its depths. Designed by Doc Paterson."
+"Long ago, the Legendary Aether Mage, Sulla, was imprisoned in the Aethermaw, "
+"a nexus of mystical energy whose chaotic nature was able to prevent her "
+"escape. Over the centuries, however, Sulla gradually attuned her powers to "
+"the maelstrom of disorder that is the Aethermaw, and has now begun to "
+"project its influence onto the material plane, drawing in entire regions of "
+"land from hundreds of different worlds, realities and time-periods. She now "
+"experiments with these disparate pieces of the cosmos, manipulating them, "
+"merging them and sending them back and forth between the Aethermaw and their "
+"place of origin. Perhaps, as her mastery over the Aethermaw grows, Sulla "
+"will one day break free of its bonds. Until that time comes, she will "
+"continue to amuse herself by arranging battles between the mortal beings "
+"unlucky enough to be drawn into its depths. Designed by Doc Paterson."
 msgstr ""
+"For lenge siden ble den store magikeren Sulla fengslet i Aethermaw, et "
+"knutepunkt av mystisk energi hvis kaotiske natur hindret henne i å flykte. I "
+"løpet av århundrene har Sulla imidlertid gradvis tilpasset kreftene sine til "
+"malstrømmen av uorden som er Aethermaw, og har nå begynt å projisere dens "
+"innflytelse på det materielle planet, og trekker inn hele landområder fra "
+"hundrevis av forskjellige verdener, virkeligheter og tidsperioder. Hun "
+"eksperimenterer med disse ulike delene av kosmos, manipulerer dem, smelter "
+"dem sammen og sender dem frem og tilbake mellom Etermaven og deres "
+"opprinnelsessted. Kanskje vil Sulla en dag frigjøre seg fra etermaven, etter "
+"hvert som hennes herredømme over den vokser. Inntil den tid kommer, vil hun "
+"fortsette å more seg med å arrangere kamper mellom de dødelige vesenene som "
+"er uheldige nok til å bli dratt ned i dens dyp. Designet av Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
@@ -462,14 +483,13 @@ msgstr "Sør"
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:308
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:154
-#, fuzzy
 msgid "Defeat the enemy leader"
 msgstr "Lagledernes død"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
 msgid ""
-"The Great Mage Sulla has transported your armies to this bizarre nexus, and "
+"The Aether Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
 msgstr ""
 
@@ -483,8 +503,8 @@ msgstr ""
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:318
 msgid ""
-"Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
-"of the battlefield. The process will be complete by the end of turn 6."
+"Beginning on turn 4, the Aether Mage Sulla will begin to unite the two "
+"halves of the battlefield. The process will be complete by the end of turn 6."
 msgstr ""
 
 #. [message]: speaker=narrator
@@ -589,7 +609,7 @@ msgstr "Vest"
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:37
 msgid "2p — Caves of the Basilisk"
-msgstr "2sp - Basiliskens huler"
+msgstr "2sp — Basiliskens huler"
 
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:39
@@ -605,10 +625,8 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:89
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:101
-#, fuzzy
-#| msgid "teamname^Southwest"
 msgid "teamname^Statues"
-msgstr "Sørvest"
+msgstr "Statuer"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:94
@@ -712,6 +730,18 @@ msgid ""
 "ability to locate and bind this powerful creature into his service, Oxsrrsk "
 "set out on his journey..."
 msgstr ""
+"For lenge siden ble den mektige magikeren Sulla fengslet i Aethermaw, et "
+"knutepunkt av mystisk energi hvis kaotiske natur hindret henne i å flykte. I "
+"løpet av århundrene har Sulla imidlertid gradvis tilpasset kreftene sine til "
+"malstrømmen av uorden som er Aethermaw, og har nå begynt å projisere dens "
+"innflytelse på det materielle planet, og trekker inn hele landområder fra "
+"hundrevis av forskjellige verdener, virkeligheter og tidsperioder. Hun "
+"eksperimenterer med disse ulike delene av kosmos, manipulerer dem, smelter "
+"dem sammen og sender dem frem og tilbake mellom Etermaven og deres "
+"opprinnelsessted. Kanskje vil Sulla en dag frigjøre seg fra etermaven, etter "
+"hvert som hennes herredømme over den vokser. Inntil den tid kommer, vil hun "
+"fortsette å more seg med å arrangere kamper mellom de dødelige vesenene som "
+"er uheldige nok til å bli dratt ned i dens dyp. Designet av Doc Paterson."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:134
@@ -949,10 +979,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Clearing_Gushes
 #: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:7
-#, fuzzy
-#| msgid "4p — Clash"
 msgid "2p — Clearing Gushes"
-msgstr "4sp - Sammenstøt"
+msgstr "2sp — Rensende strømmer"
 
 #. [multiplayer]: id=multiplayer_Clearing_Gushes
 #: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:8
@@ -965,11 +993,19 @@ msgid ""
 "rigorous discipline and organization of Wesnoth’s armies are in no small "
 "part driven by a constant need to patrol and defend these prosperous lands."
 msgstr ""
+"Breddene langs Den Store Elven er noe av det mest fruktbare landet i hele "
+"den kjente verden. Våren og sommeren bringer med seg oversvømmelser langs "
+"hele elvens lengde, noe som gjør jordsmonnet rikt og gir rikelige avlinger "
+"hver høst. Kongeriket Wesnoth har gjort dette landet til drivkraften bak sin "
+"rikdom og velstand - noe som har gjort det til mål for utallige plyndringer "
+"og angrep. Den strenge disiplinen og organiseringen av Wesnoths hærer er i "
+"stor grad drevet av et konstant behov for å patruljere og forsvare disse "
+"velstående landene."
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:6
 msgid "2p — Cynsaun Battlefield"
-msgstr "2sp - Cynsauns slagmark"
+msgstr "2sp — Cynsauns slagmark"
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:8
@@ -983,18 +1019,10 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
 msgid "2p — Dark Forecast (Survival)"
-msgstr "2sp - Dunkelt Forvarsel (Overlevelse) "
+msgstr "2sp — Mørkt forvarsel (Overlevelse)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly AI spawned units. Victory is achieved by "
-#| "surviving all enemy waves. During the course of play, the terrain will "
-#| "change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use map settings for the scenario to work right."
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
 "play against randomly-spawned AI units. Victory is achieved by surviving and "
@@ -1004,12 +1032,13 @@ msgid ""
 "Note: You need to use the default map settings for the scenario to work "
 "right."
 msgstr ""
-"Dunkelt Forvarsel er et overlevelsesscenarie for enkeltspiller eller "
-"lagspill mot tilfeldige AI-genererte fiender. Seieren oppnås ved å overleve "
-"bølgene av fiender. Under spillet vil terrenget endre seg dynamisk, basert "
-"på tilfeldige væreffekter.\n"
+"Mørkt forvarsel er et overlevelsesscenario for en- eller flerspillerlag mot "
+"tilfeldig genererte KI-enheter. Man vinner ved å overleve og beseire alle "
+"fiendens bølger. I løpet av spillet vil terrenget endre seg basert på "
+"tilfeldige væreffekter.\n"
 "\n"
-"Merk: Du må bruke forhåndsinnstillingene for at kartet skal virke."
+"Merk: Du må bruke standardkartinnstillingene for at scenariet skal fungere "
+"riktig."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:21
@@ -1028,9 +1057,8 @@ msgstr "Menneske"
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:114
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:135
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:274
-#, fuzzy
 msgid "Death of your leader"
-msgstr "Lagledernes død"
+msgstr "Din lagleders død"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:115
@@ -1043,9 +1071,8 @@ msgstr ""
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:118
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:143
-#, fuzzy
 msgid "Death of both of your team’s leaders"
-msgstr "Lagledernes død"
+msgstr "Begge laglederne dine dør"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:119
@@ -1053,22 +1080,21 @@ msgstr "Lagledernes død"
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
+"Siden laget ditt har to ledere, vil fiendens styrker være ved full styrke."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:146
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:171
-#, fuzzy
 msgid "Survive and defeat all enemy waves"
-msgstr "Overlen fiendens angrep"
+msgstr "Overlev og beseire alle fiendens angrep"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:166
 msgid "Dark Forecast — a random survival scenario"
-msgstr "Dunkelt Forvarsel - et tilfeldig generert overlevelsesscenario"
+msgstr "Mørkt forvarsel — et tilfeldig generert overlevelsesscenario"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:169
-#, fuzzy
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -1100,11 +1126,11 @@ msgstr ""
 "i vest. Bølgene ankommer med omtrent jevne mellomrom.\n"
 "\n"
 "\n"
-"Været endrer seg også tilfeldig, og har influens på kartutformingen.\n"
+"Været endrer seg også tilfeldig, og har påvirkning på kartutformingen.\n"
 "\n"
 "\n"
 "\n"
-"<span color='red'>Dunkelt Forvarsel er laget av:</span>\n"
+"<span color='red'>Mørkt forvarsel er laget av:</span>\n"
 "\n"
 "<span color='green'>jb</span>\n"
 "- kartdesign, fiendegrupper og scenariokonsept\n"
@@ -1114,9 +1140,8 @@ msgstr ""
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:188
-#, fuzzy
 msgid "So this is the accursed valley — a land ours for the taking."
-msgstr "Så dette er den forbannede dalen - la oss legge den under oss!"
+msgstr "Så dette er den forbannede dalen — la oss legge den under oss!"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:192
@@ -1171,7 +1196,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:264
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:311
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
-msgstr ""
+msgstr "Endrer gullverdien til fienden som oppstår med en viss prosentandel"
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Dark_Forecast.lua:300
@@ -1226,7 +1251,7 @@ msgstr "Tungt snøfall"
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 msgid "2p — Den of Onis"
-msgstr "2sp - Onienes Rede"
+msgstr "2sp — Onienes Rede"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:7
@@ -1249,7 +1274,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
 msgid "2p — Elensefar Courtyard"
-msgstr ""
+msgstr "2sp — Elensefar gårdsplass"
 
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:7
@@ -1257,16 +1282,18 @@ msgid ""
 "Fight through corridors and gardens, and dominate the eastern courtyard of "
 "what used to be the glorious city of Elensefar."
 msgstr ""
+"Kjemp deg gjennom korridorer og hager, og dominer den østlige gårdsplassen i "
+"det som en gang var den praktfulle byen Elensefar."
 
 #. [time]: id=underground_illum
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:114
 msgid "Underground"
-msgstr ""
+msgstr "Underjordisk"
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:7
 msgid "2p — Fallenstar Lake"
-msgstr "2sp - Meteorsjøen"
+msgstr "2sp — Meteorsjøen"
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:8
@@ -1280,27 +1307,21 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
 msgid "2p — Hamlets"
-msgstr "2sp - Tun og torp"
+msgstr "2sp — Tun og torp"
 
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:7
-#, fuzzy
-#| msgid ""
-#| "Warfare transforms the simple farms and villages of a peaceful region "
-#| "into a subtly parceled battlefield."
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Designed by Doc Paterson."
 msgstr ""
-"Krigen forvandler disse enkle farmene og landsbyene til en subtilt "
-"parsellert slagmark."
+"Krigføring forvandler de enkle gårdene og landsbyene i en fredelig region "
+"til en subtilt parsellert slagmark. Designet av Doc Paterson."
 
 #. [multiplayer]: id=multiplayer_Hellhole
 #: data/multiplayer/scenarios/2p_Hellhole.cfg:7
-#, fuzzy
-#| msgid "2p — Hamlets"
 msgid "2p — Hellhole"
-msgstr "2sp - Tun og torp"
+msgstr "2sp — Helveteshullet"
 
 #. [multiplayer]: id=multiplayer_Hellhole
 #: data/multiplayer/scenarios/2p_Hellhole.cfg:8
@@ -1313,11 +1334,18 @@ msgid ""
 "eternal scar on the land that to this day summons forth legions of wandering "
 "undead."
 msgstr ""
+"En gang var byen Myrilel en fredelig landsby ved menneskehetens østligste "
+"utkant. Dette forandret seg for alltid da krigsherren Mal-Ravanal, en "
+"heksekonge, kom til, og åpnet en portal med ubeskrivelig mørk trolldom i "
+"sentrum av byen som det første samlingspunktet for dødshærene sine. Selv om "
+"Mal-Ravanal ble beseiret, er Myrilel fortsatt et øde og ødelagt sted, og "
+"portalen er et evig arr i landet som den dag i dag fremkaller legioner av "
+"vandrende vandøde."
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:26
 msgid "2p — Hornshark Island"
-msgstr "2sp - Piggskateøya"
+msgstr "2sp — Hornhaiøya"
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:28
@@ -1325,6 +1353,8 @@ msgid ""
 "Players must forge strange alliances with the local inhabitants, in order to "
 "survive on this most unusual of islands. Designed by Doc Paterson."
 msgstr ""
+"Spillerne må inngå merkelige allianser med de lokale innbyggerne for å "
+"overleve på denne høyst uvanlige øya. Designet av Doc Paterson."
 
 #. [unit]: type=Young Ogre
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:91
@@ -1334,22 +1364,22 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:317
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:441
 msgid "Big Baby Bo"
-msgstr ""
+msgstr "Store Baby Bo"
 
 #. [unit]: type=Drake Fighter
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:103
 msgid "Rawffus the Dim"
-msgstr ""
+msgstr "Råvfus den Dumme"
 
 #. [unit]: type=Dwarvish Scout
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:151
 msgid "Kolbur"
-msgstr ""
+msgstr "Kolbur"
 
 #. [unit]: type=Dwarvish Scout
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:174
 msgid "Vilhelm Viskitynnyri"
-msgstr ""
+msgstr "Vilhelm Viskitynnyri"
 
 #. [unit]: type=Woodsman
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:231
@@ -1357,27 +1387,27 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:649
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:660
 msgid "Clockwork Boy"
-msgstr ""
+msgstr "Urverksgutt"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:291
 msgid "Neki the Brutal"
-msgstr ""
+msgstr "Neki den Brutale"
 
 #. [unit]: type=Elvish Fighter
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:329
 msgid "Drowsk Calbeht"
-msgstr ""
+msgstr "Drowsk Calbeht"
 
 #. [unit]: type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:387
 msgid "Rzrrt the Dauntless"
-msgstr ""
+msgstr "Rzrrt den Fryktløse"
 
 #. [unit]: type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:425
 msgid "Sorrek, Chosen of Death"
-msgstr ""
+msgstr "Sorrek, Dødens utvalgte"
 
 #. [unit]: type=Young Ogre
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:509
@@ -1387,47 +1417,47 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:734
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:858
 msgid "Big Baby Dro"
-msgstr ""
+msgstr "Store Baby Dro"
 
 #. [unit]: type=Drake Fighter
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:521
 msgid "Gawffus the Dim"
-msgstr ""
+msgstr "Gåvfus den Dumme"
 
 #. [unit]: type=Dwarvish Scout
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:569
 msgid "Rublok"
-msgstr ""
+msgstr "Rublok"
 
 #. [unit]: type=Dwarvish Scout
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:592
 msgid "Ulysses Mantyjuuri"
-msgstr ""
+msgstr "Ulysses Mantyjuuri"
 
 #. [unit]: type=Orcish Leader
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:708
 msgid "Neki the Brute"
-msgstr ""
+msgstr "Neki den Brutale"
 
 #. [unit]: type=Elvish Fighter
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:746
 msgid "Claiomh Dubh"
-msgstr ""
+msgstr "Claiomh Dubh"
 
 #. [unit]: type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:804
 msgid "Tyxrrn the Dauntless"
-msgstr ""
+msgstr "Tyxrrn den Fryktløse"
 
 #. [unit]: type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:842
 msgid "Rukhos, Chosen of Death"
-msgstr ""
+msgstr "Rukhos, Dødens utvalgte"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
 msgid "2p — Howling Ghost Badlands"
-msgstr "2sp - De hylende ånders Ødeland"
+msgstr "2sp — De hylende ånders Ødeland"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:6
@@ -1439,51 +1469,24 @@ msgstr ""
 "for plyndrere og banditter."
 
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:4
-#, fuzzy
 msgid ""
 "Your aim is to survive spawning waves of units and defeat the final "
 "archenemies. Spawns are randomly generated and will be different each time "
 "Isle of Mists is played. The waves appear at somewhat regular intervals. The "
 "weather will also change randomly, affecting the layout of the map."
 msgstr ""
-"Målet er å overleve fiendebølgene og overvinne de siste erkefiendene.\n"
-"\n"
-"Fiendebølgene genereres tilfeldig og vil være ulike ved hvert spill.\n"
-"\n"
-"\n"
-"De dukker opp langs kantene på kartet, i nord, sør, øst og vest, men oftest "
-"i vest. Bølgene ankommer med omtrent jevne mellomrom.\n"
-"\n"
-"\n"
-"Været endrer seg også tilfeldig, og har influens på kartutformingen.\n"
-"\n"
-"\n"
-"\n"
-"<span color='red'>Dunkelt Forvarsel er laget av:</span>\n"
-"\n"
-"<span color='green'>jb</span>\n"
-"- kartdesign, fiendegrupper og scenariokonsept\n"
-"\n"
-"<span color='green'>Rhuvaen</span>\n"
-"- WML implementasjon"
+"Målet ditt er å overleve bølger av enheter og beseire de siste erkefiendene. "
+"Bølgene genereres tilfeldig og vil være forskjellige hver gang Tåkeøya "
+"spilles. Bølgene dukker opp med noenlunde jevne mellomrom. Været vil også "
+"endre seg tilfeldig, noe som påvirker utformingen av kartet."
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:9
-#, fuzzy
-#| msgid "2p — Dark Forecast (Survival)"
 msgid "2p — Isle of Mists (Survival)"
-msgstr "2sp - Dunkelt Forvarsel (Overlevelse) "
+msgstr "2sp — Tåkeøya (Overlevelse) "
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:10
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly AI spawned units. Victory is achieved by "
-#| "surviving all enemy waves. During the course of play, the terrain will "
-#| "change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use map settings for the scenario to work right."
 msgid ""
 "Isle of Mists is a survival scenario which can be played alone or with "
 "another player against randomly spawned AI units, catered for experienced "
@@ -1492,30 +1495,28 @@ msgid ""
 "effects. Default map settings are required for the scenario to work "
 "properly. By Lord-Knightmare."
 msgstr ""
-"Dunkelt Forvarsel er et overlevelsesscenarie for enkeltspiller eller "
-"lagspill mot tilfeldige AI-genererte fiender. Seieren oppnås ved å overleve "
-"bølgene av fiender. Under spillet vil terrenget endre seg dynamisk, basert "
-"på tilfeldige væreffekter.\n"
+"Tåkeøya er et overlevelsesscenario som kan spilles alene eller sammen med en "
+"annen spiller mot tilfeldig skapte AI-enheter, og som passer for erfarne "
+"spillere. Seieren oppnås ved å overleve og beseire alle fiendens bølger. I "
+"løpet av spillet vil terrenget endre seg basert på tilfeldige væreffekter. "
+"Standard kartinnstillinger er påkrevd for at scenariet skal fungere "
+"skikkelig. Av Lord-Knightmare.\n"
 "\n"
-"Merk: Du må bruke forhåndsinnstillingene for at kartet skal virke."
+"Translated with DeepL.com (free version)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:25
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:38
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Invaders"
-msgstr "Senter"
+msgstr "Angripere"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:56
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:83
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:107
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:45
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Defenders"
-msgstr "Senter"
+msgstr "Forsvarere"
 
 #. [label]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:189
@@ -1524,10 +1525,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:213
-#, fuzzy
-#| msgid "Dark Forecast — a random survival scenario"
 msgid "Isle of Mists — a random survival scenario"
-msgstr "Dunkelt Forvarsel - et tilfeldig generert overlevelsesscenario"
+msgstr "Tåkeøya - et tilfeldig generert overlevelsesscenario"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:220
@@ -1664,10 +1663,8 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:38
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Shapeshifter"
-msgstr "Senter"
+msgstr "Formskifter"
 
 #. [unit]: type=Tentacle of the Deep
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:52
@@ -1896,10 +1893,8 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:166
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:167
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:168
-#, fuzzy
-#| msgid "statue"
 msgid "Statue"
-msgstr "statue"
+msgstr "Statue"
 
 #. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:7
@@ -2220,34 +2215,32 @@ msgid ""
 "throne of a king? This free for all map has 38 villages and bonus income for "
 "the leader on the center keep."
 msgstr ""
+"Kongen er død. Uten en arving kjemper nå de stridslystne herrene hans om "
+"tronen på høyden, og all makten og rikdommen den medfører. Er du sterk nok "
+"til å innta maktens sete før rivalene dine gjør det? Kan du holde stand mot "
+"deres mange snikmordere? Er du virkelig mektig nok til å fylle en "
+"kongetrone? Dette alle-mot-alle-kartet har 38 landsbyer og bonusinntekter "
+"for lederen på borgen i midten."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:63
-#, fuzzy
-#| msgid "teamname^Southwest"
 msgid "Southwest"
 msgstr "Sørvest"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:73
-#, fuzzy
-#| msgid "teamname^Southeast"
 msgid "Southeast"
 msgstr "Sørøst"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:83
-#, fuzzy
-#| msgid "Northerners"
 msgid "Northeast"
-msgstr "Nordfolk"
+msgstr "Nordøst"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:93
-#, fuzzy
-#| msgid "Northerners"
 msgid "Northwest"
-msgstr "Nordfolk"
+msgstr "Nordvest"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:106
@@ -2278,9 +2271,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:139
-#, fuzzy
 msgid "Defeat enemy leaders"
-msgstr "Lagledernes død"
+msgstr "Beseire fiendens ledere"
 
 #. [note]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:143
@@ -2450,20 +2442,13 @@ msgstr "5sp - Auksjon-X"
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
-#, fuzzy
-#| msgid ""
-#| "4 players surround a central keep, play vs the AI survival style, or as a "
-#| "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or "
-#| "FFA, and the best way to determine how much is an auction, LOWEST bid "
-#| "wins. It is a very small map so 75 gold is recommended for the other "
-#| "players."
 msgid ""
 "4 players surround a central keep, play vs. the AI survival style, or as a "
 "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or FFA, "
 "and the best way to determine how much is an auction, LOWEST bid wins. It is "
 "a very small map so 75 gold is recommended for the other players."
 msgstr ""
-"4 spillere omringer en sentral festning. Spill mot AI som et "
+"4 spillere omringer en sentral festning. Spill mot KI som et "
 "overlevelsesscenario, alle mot alle, eller fire mot en. Senterspilleren vil "
 "trenge mere gull i et 4 mot 1 oppsett. Bestem forskjellen i startgull ved "
 "auksjon - LAVESTE bud vinner. 75 gull er anbefalt for de fire andre "
@@ -2486,7 +2471,6 @@ msgstr "Fem hærførere sloss for overherredømmet i et variert landskap."
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:57
-#, fuzzy
 msgid "5p — The Wilderlands"
 msgstr "4sp - Villenlandene"
 
@@ -2507,49 +2491,38 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:95
-#, fuzzy
-#| msgid "teamname^Team 1"
 msgid "teamname^Team 3"
-msgstr "Lag 1"
+msgstr "Lag 3"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:106
-#, fuzzy
-#| msgid "teamname^Team 1"
 msgid "teamname^Team 4"
-msgstr "Lag 1"
+msgstr "Lag 4"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:128
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Monsters"
-msgstr "Senter"
+msgstr "Monstre"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:245
-#, fuzzy
 msgid "Defeat all enemy leaders"
-msgstr "Lagledernes død"
+msgstr "Beseire alle fiendens ledere"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:264
-#, fuzzy
-#| msgid "Defeat all waves"
 msgid "Defeat all monsters"
-msgstr "Nedkjemp alle fiendebølger."
+msgstr "Beseire alle monstre"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:282
-#, fuzzy
 msgid "Defeat the enemy leaders"
-msgstr "Lagledernes død"
+msgstr "Beseire fiendens ledere"
 
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:287
-#, fuzzy
 msgid "Death of all your units"
-msgstr "Lagledernes død"
+msgstr "Alle dine enheter dør"
 
 #. [note]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:292
@@ -2608,13 +2581,11 @@ msgstr "Forsvarer"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:390
-#, fuzzy
 msgid "Survive all enemy attacks"
 msgstr "Overlen fiendens angrep"
 
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:396
-#, fuzzy
 msgid "Death of your team leaders"
 msgstr "Lagledernes død"
 
@@ -2670,7 +2641,7 @@ msgstr "Fe"
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible!"
-msgstr ""
+msgstr "Gratulerer med å ha overlevd kartet som så mange hevder er umulig!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:564
@@ -2708,10 +2679,8 @@ msgstr "100 startgull, 33 landsbyer."
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:7
-#, fuzzy
-#| msgid "6p — Hexcake"
 msgid "6p — Volcano"
-msgstr "6sp - Sekskant"
+msgstr "6sp — Vulkan"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
@@ -2723,7 +2692,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
 msgid "6p — Waterloo Sunset"
-msgstr "6sp - Solnedgang over Waterloo"
+msgstr "6sp — Solnedgang over Waterloo"
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
@@ -2760,7 +2729,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid "8p — Morituri"
-msgstr "8sp - Morituri"
+msgstr "8sp — Morituri"
 
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
@@ -2774,7 +2743,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
 msgid "9p — Merkwuerdigliebe"
-msgstr "9sp - Merkwuerdigliebe"
+msgstr "9sp — Merkwuerdigliebe"
 
 #. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:9
@@ -2860,8 +2829,10 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:5
-msgid "3p - Elevation Test"
-msgstr ""
+#, fuzzy
+#| msgid "3p - Elevation Test"
+msgid "3p — Elevation Test"
+msgstr "3sp - Høydetest"
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:6
@@ -2869,6 +2840,30 @@ msgid ""
 "This map is an example of how to use the new (BfW v1.17) elevated terrain "
 "graphics. Please be advised that it is not intended for playing."
 msgstr ""
+"Dette kartet er et eksempel på hvordan du kan bruke den nye (KoW v1.17) "
+"forhøyede terrenggrafikken. Vær oppmerksom på at det ikke er ment for "
+"spilling."
+
+#~ msgid "Default + Dunefolk"
+#~ msgstr "Standard + Sandfolket"
+
+#~ msgid ""
+#~ "An era featuring an additional faction besides the six factions from "
+#~ "Default Era. Dunefolk units rely on careful use of terrain and "
+#~ "coordinated strikes around dusk or dawn.\n"
+#~ "\n"
+#~ "This era is still under development, so please be sure to report any "
+#~ "problems that arise."
+#~ msgstr ""
+#~ "En æra med en ekstra fraksjon i tillegg til de seks fraksjonene fra "
+#~ "standardæraen. Dunefolk-enheter er avhengige av forsiktig bruk av "
+#~ "terrenget og koordinerte angrep rundt skumring eller daggry.\n"
+#~ "\n"
+#~ "Denne æraen er fortsatt under utvikling, så husk å rapportere eventuelle "
+#~ "problemer som oppstår."
+
+#~ msgid "Age of Heroes + Dunefolk"
+#~ msgstr "Heltenes æra + Sandfolket"
 
 #, fuzzy
 #~| msgid ""

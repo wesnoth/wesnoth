@@ -21,11 +21,10 @@
 #include "game_end_exceptions.hpp"   // for LEVEL_RESULT, etc
 #include "hotkey/hotkey_manager.hpp" // for manager
 #include "picture.hpp"               // for manager
-#include "preferences/game.hpp"      // for manager
 #include "saved_game.hpp"            // for saved_game
 #include "savegame.hpp"              // for clean_saves, etc
 #include "sound.hpp"                 // for music_thinker
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #include <string>                       // for string
 #include <vector>                       // for vector
@@ -103,6 +102,7 @@ public:
 	void select_mp_server(const std::string& server) { multiplayer_server_ = server; }
 	bool play_multiplayer(mp_mode mode);
 	bool play_multiplayer_commandline();
+	bool play_campaign();
 	bool change_language();
 
 	void launch_game(reload_mode reload = reload_mode::RELOAD_DATA);
@@ -132,7 +132,6 @@ private:
 	bool start_in_fullscreen_ = false;
 
 	font::manager font_manager_;
-	const preferences::manager prefs_manager_;
 	const image::manager image_manager_;
 	const events::event_context main_event_context_;
 	const hotkey::manager hotkey_manager_;
@@ -151,5 +150,5 @@ private:
 	jump_to_campaign_info jump_to_campaign_;
 
 	bool jump_to_editor_;
-	std::optional<savegame::load_game_metadata> load_data_;
+	utils::optional<savegame::load_game_metadata> load_data_;
 };

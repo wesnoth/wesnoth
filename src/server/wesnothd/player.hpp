@@ -17,7 +17,7 @@
 
 #include "server/common/simple_wml.hpp"
 
-#include <ctime>
+#include <chrono>
 #include <set>
 
 namespace wesnothd {
@@ -32,7 +32,7 @@ public:
 	};
 
 	player(const std::string& n, simple_wml::node& cfg, long id, bool registered, const std::string& version, const std::string& source,
-	       unsigned long long login_id, const std::size_t max_messages=4, const std::size_t time_period=10,
+	       unsigned long long login_id, const std::size_t max_messages=4, const std::chrono::seconds& time_period=std::chrono::seconds{10},
 	       const bool moderator=false);
 
 	void set_status(STATUS status);
@@ -65,10 +65,10 @@ private:
 
 	bool registered_;
 
-	std::time_t flood_start_;
+	std::chrono::steady_clock::time_point flood_start_;
 	unsigned int messages_since_flood_start_;
 	const std::size_t MaxMessages;
-	const std::time_t TimePeriod;
+	const std::chrono::seconds TimePeriod;
 	STATUS status_;
 	bool moderator_;
 	unsigned long long login_id_;

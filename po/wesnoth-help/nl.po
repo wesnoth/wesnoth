@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-19 20:52-0600\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
 "PO-Revision-Date: 2023-02-14 17:31+0100\n"
 "Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -46,15 +46,15 @@ msgstr "dapper"
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/weapon_specials.cfg:41
-#: data/core/macros/weapon_specials.cfg:52
+#: data/core/macros/weapon_specials.cfg:51
+#: data/core/macros/weapon_specials.cfg:62
 msgid "plague"
 msgstr "ziekte"
 
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
-#: data/core/macros/weapon_specials.cfg:53
+#: data/core/macros/weapon_specials.cfg:63
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -221,14 +221,14 @@ msgstr "Rust en geneest altijd"
 #. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
-#: data/core/macros/weapon_specials.cfg:21
+#: data/core/macros/weapon_specials.cfg:31
 msgid "backstab"
 msgstr "ruggensteek"
 
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:500
-#: data/core/macros/abilities.cfg:387
+#: data/core/macros/abilities.cfg:408
 msgid "feeding"
 msgstr "voeden"
 
@@ -255,13 +255,13 @@ msgstr "Grot"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
-#: data/core/macros/abilities.cfg:346
+#: data/core/macros/abilities.cfg:348
 msgid "concealment"
 msgstr "verbergen"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:166
+#: data/core/macros/weapon_specials.cfg:201
 msgid "drains"
 msgstr "aftappen"
 
@@ -283,7 +283,7 @@ msgstr "Heuvels"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/weapon_specials.cfg:86
+#: data/core/macros/weapon_specials.cfg:96
 msgid "marksman"
 msgstr "precisieschutter"
 
@@ -293,13 +293,13 @@ msgstr "Paddenstoelenveld"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
-#: data/core/macros/abilities.cfg:326 data/core/macros/abilities.cfg:327
+#: data/core/macros/abilities.cfg:328 data/core/macros/abilities.cfg:329
 msgid "nightstalk"
 msgstr "nachtzicht"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:188
+#: data/core/macros/weapon_specials.cfg:223
 msgid "poison"
 msgstr "vergif"
 
@@ -315,7 +315,7 @@ msgstr "warzaaier"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/weapon_specials.cfg:64
+#: data/core/macros/weapon_specials.cfg:74
 msgid "slows"
 msgstr "vertraagt"
 
@@ -355,56 +355,51 @@ msgstr "Verf Gereedschap"
 #: data/core/editor/help.cfg:29
 msgid ""
 "Paint terrain tiles on the map.\n"
-"\n"
 "The paint tool utilizes the brush sizes and the terrain palette.\n"
 "\n"
-"<bold>text='Keyboard Modifiers'</bold>\n"
-"\n"
+"<header>Keyboard Modifiers</header>\n"
 "• Shift+mouse click: If a base terrain is selected, change the base without "
 "changing the overlay. If an overlay is selected, change the overlay without "
 "changing the base.\n"
 "• Control+mouse click: Select the terrain under the mouse cursor, as if it "
 "had been selected on the terrain palette (picks up both base and overlay).\n"
 "\n"
-"<bold>text='Brush Sizes'</bold>\n"
-"\n"
+"<header>Brush Sizes</header>\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
 
 #. [topic]: id=editor_tool_paint
-#: data/core/editor/help.cfg:41
+#: data/core/editor/help.cfg:39
 msgid "Paint single hexes."
 msgstr "Verf losse vakken."
 
 #. [topic]: id=editor_tool_paint
-#: data/core/editor/help.cfg:42
+#: data/core/editor/help.cfg:40
 msgid "Paint seven hexes at a time."
 msgstr "Verf zeven vakken in een keer."
 
 #. [topic]: id=editor_tool_paint
-#: data/core/editor/help.cfg:43
+#: data/core/editor/help.cfg:41
 msgid "Paint nineteen hexes at a time."
 msgstr "Verf negentien vakken in een keer."
 
 #. [topic]: id=editor_tool_paint
-#: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
+#: data/core/editor/help.cfg:42 data/core/editor/help.cfg:43
 msgid "Paint three hexes in a line."
 msgstr "Verf drie vakken in een lijn."
 
 #. [topic]: id=editor_tool_fill
-#: data/core/editor/help.cfg:52
+#: data/core/editor/help.cfg:51
 msgid "Fill Tool"
 msgstr "Opvul Gereedschap"
 
 #. [topic]: id=editor_tool_fill
-#: data/core/editor/help.cfg:53
+#: data/core/editor/help.cfg:52
 msgid ""
 "Fill continuous regions of terrain with a different one.\n"
-"\n"
 "The fill tool utilizes the terrain palette.\n"
 "\n"
-"<bold>text='Keyboard Modifiers'</bold>\n"
-"\n"
+"<header>Keyboard Modifiers</header>\n"
 "• Shift+mouse click: If a base terrain is selected, change the base without "
 "changing the overlay. If an overlay is selected, change the overlay without "
 "changing the base.\n"
@@ -413,59 +408,56 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:67
+#: data/core/editor/help.cfg:64
 msgid "Select Tool"
 msgstr "Selecteer Gereedschap"
 
 #. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:68
+#: data/core/editor/help.cfg:65
 msgid ""
 "Selects a set of hex fields, for use with with the cut, copy and fill-"
 "selection buttons below the menu bar.\n"
 "\n"
-"<bold>text='Keyboard Modifiers'</bold>\n"
-"\n"
+"<header>Keyboard Modifiers</header>\n"
 "• Shift+mouse click: ‘Magic Wand’ mode, select the hex under the mouse "
 "cursor, and adjoining hexes of the same terrain type.\n"
 "• Control+mouse click: Unselect hexes.\n"
 "\n"
-"<bold>text='Brush Sizes'</bold>\n"
-"\n"
+"<bold>Brush Sizes</bold>\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
 
 #. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:78
+#: data/core/editor/help.cfg:74
 msgid "Select single hexes."
 msgstr "Selecteer enkele vakken"
 
 #. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:79
+#: data/core/editor/help.cfg:75
 msgid "Select seven hexes at a time."
 msgstr "Selecteer zeven vakken in een keer."
 
 #. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:80
+#: data/core/editor/help.cfg:76
 msgid "Select nineteen hexes at a time."
 msgstr "Selecteer negentien vakken in een keer."
 
 #. [topic]: id=editor_tool_select
-#: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
+#: data/core/editor/help.cfg:77 data/core/editor/help.cfg:78
 msgid "Select three hexes in a line."
 msgstr "Selecteer drie vakken in een lijn."
 
 #. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:89
+#: data/core/editor/help.cfg:86
 msgid "Clipboard and Paste Tool"
 msgstr "Kopieer en Plak Gereedschap"
 
 #. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:90
+#: data/core/editor/help.cfg:87
 msgid ""
 "Rotate, flip and paste the terrain in the clipboard\n"
-"\n"
-"Hexes can be cut or copied to the clipboard using the "
-"<ref>dst='editor_tool_select' text='Select Tool'</ref>.\n"
+"Hexes can be cut or copied to the clipboard using the <ref "
+"dst='editor_tool_select'>Select Tool</ref>.\n"
 "\n"
 "The paste tool shows an outline of the clipboard, which can be pasted with a "
 "mouse-click. Only the outline is shown, but mistakes can be corrected with "
@@ -476,43 +468,42 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:97
+#: data/core/editor/help.cfg:94
 msgid "Rotate clockwise by 60°."
 msgstr "Draai 60° met de klok mee."
 
 #. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:98
+#: data/core/editor/help.cfg:95
 msgid "Rotate counter-clockwise by 60°."
 msgstr "Draai 60° tegen de klok in."
 
 #. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:99
+#: data/core/editor/help.cfg:96
 msgid "Flip horizontally"
 msgstr "Draai horizontaal om"
 
 #. [topic]: id=editor_tool_paste
-#: data/core/editor/help.cfg:100
+#: data/core/editor/help.cfg:97
 msgid "Flip vertically"
 msgstr "Draai verticaal om"
 
 #. [topic]: id=editor_tool_starting
-#: data/core/editor/help.cfg:107
+#: data/core/editor/help.cfg:105
 msgid "Starting Locations Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_starting
 #. the parts about "10" being shown as "Player 10" use the translatable string "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:110
+#: data/core/editor/help.cfg:108
 msgid ""
 "Defines the side leader starting position.\n"
-"\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both <ref>dst='.."
-"editor_mode_terrain' text='Terrain Editor'</ref> and <ref>dst='.."
-"editor_mode_scenario' text='Scenario Editor'</ref> modes. The location names "
-"are shown as a list in the editor palette, clicking on the map will place "
-"that name on a hex, each location can only be placed on a single hex, and "
-"the editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref dst='.."
+"editor_mode_terrain'>Terrain Editor</ref> and <ref dst='.."
+"editor_mode_scenario'>Scenario Editor</ref> modes. The location names are "
+"shown as a list in the editor palette, clicking on the map will place that "
+"name on a hex, each location can only be placed on a single hex, and the "
+"editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -523,12 +514,12 @@ msgid ""
 "10”.\n"
 "\n"
 "Named locations can be accessed from WML using the Standard Location "
-"Filter’s <italic>text='location_id='</italic>. Player starts can also be "
-"accessed from WML using <italic>text='location_id=1'</italic>, "
-"<italic>text='location_id=2'</italic>, etc — use only the number, without "
-"adding “Player ” in front of the number.\n"
+"Filter’s <italic>location_id=</italic>. Player starts can also be accessed "
+"from WML using <italic>location_id=1</italic>, <italic>location_id=2</"
+"italic>, etc — use only the number, without adding “Player ” in front of the "
+"number.\n"
 "\n"
-"<bold>text='Keyboard Modifiers'</bold>\n"
+"<bold>Keyboard Modifiers</bold>\n"
 "\n"
 "• Control+mouse click on a hex that already has a location: select that "
 "location for placing with a subsequent mouse click, as if it was selected in "
@@ -536,12 +527,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_terrain_overlays
-#: data/core/editor/help.cfg:128
+#: data/core/editor/help.cfg:125
 msgid "Editor Terrain-Overlay Graphics"
 msgstr ""
 
 #. [topic]: id=editor_terrain_overlays
-#: data/core/editor/help.cfg:129
+#: data/core/editor/help.cfg:126
 msgid ""
 "editor^Maps generally look similar in the editor to their appearance in the "
 "game. There are a few exceptions, where different graphics are used in the "
@@ -552,14 +543,13 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
 #. In English the text is “IO” for impassable and “UO” for unwalkable.
-#: data/core/editor/help.cfg:134
+#: data/core/editor/help.cfg:131
 msgid ""
-"editor^<bold>text='Movement Overlays'</bold>\n"
-"\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
-"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
-"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
-"Impassable and Unwalkable\n"
+"editor^<header>Movement Overlays</header>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' /><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
+"editor.png~O(0.5))' align=here /><br/><bold>Impassable and Unwalkable</"
+"bold>\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
 "the mixed terrains created by them look like the base terrain. They create a "
@@ -570,15 +560,12 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
 #. In English these images are the literal text “Castle overlay” and “Keep overlay”.
-#: data/core/editor/help.cfg:143
+#: data/core/editor/help.cfg:139
 msgid ""
-"editor^<bold>text='Castle Overlays'</bold>\n"
-"\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
-"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
-"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
-"img>\n"
-"\n"
+"editor^<header>Castle Overlays</header>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here /><img src='terrain/grass/green.png~BLIT(terrain/"
+"castle/keep-overlay-editor.png~O(0.5))' align=here />\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
 "\n"
@@ -592,41 +579,65 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #. The image here has text, while it could be translated I assume editor-only images won’t be.
 #. In English this image is the literal text “Village overlay”.
-#: data/core/editor/help.cfg:154
+#: data/core/editor/help.cfg:148
 msgid ""
-"editor^<bold>text='Village Overlay'</bold>\n"
-"\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
-"editor.png~O(0.5))' align=here box=yes</img>\n"
-"\n"
+"editor^<header>Village Overlay</header>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here />\n"
 "This turns any base terrain into a village, providing income and healing."
 msgstr ""
 
 #. [topic]: id=editor_terrain_overlays
 #. The image is an “S” on a solid black background.
-#: data/core/editor/help.cfg:162
+#: data/core/editor/help.cfg:154
 msgid ""
-"editor^<bold>text='Fake Shroud'</bold>\n"
-"\n"
-"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
-"\n"
+"editor^<header>Fake Shroud</header>\n"
+"<img src=terrain/void/shroud-editor.png align=left />\n"
 "Fake Shroud looks like an unexplored area, even in scenarios that have "
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:171
+#: data/core/editor/help.cfg:162
 #, fuzzy
 #| msgid "Terrain Editor"
 msgid "Terrain Elevation Graphics"
 msgstr "Terrein Editor"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:172
+#: data/core/editor/help.cfg:164
 msgid ""
+"\n"
 "A cosmetic elevation effect that looks a little different in the editor than "
 "in the game due to visual aids in the editor; all the overlays described "
-"here are found in the terrain palette’s “elevation” group."
+"here are found in the terrain palette’s “elevation” group.\n"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:167
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<bold>text='Advanced'</bold>"
+msgid "editor^<header>Direct Overlays</header>"
+msgstr ""
+"\n"
+"\n"
+"<bold>text='Gevorderd'</bold>"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:169
+msgid ""
+"\n"
+"<b>Bluffs and Gulch</b>\n"
+"\n"
+"The bluffs, gulches, and similar variations are much like a standard terrain "
+"overlay, and can simply be used that way. However, for larger areas of the "
+"map, where you will want to allow the use of other overlay terrains, you "
+"will want to combine these with the “markers” described in the next "
+"section.\n"
+"\n"
 msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
@@ -636,63 +647,27 @@ msgstr ""
 #| "\n"
 #| "\n"
 #| "<bold>text='Advanced'</bold>"
-msgid "editor^<bold>text='Direct Overlays'</bold>"
+msgid "editor^<header>Elevation Floodfill</header>"
 msgstr ""
 "\n"
 "\n"
 "<bold>text='Gevorderd'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:177
-msgid ""
-"Bluffs and Gulch\n"
-"\n"
-"The bluffs, gulches, and similar variations are much like a standard terrain "
-"overlay, and can simply be used that way. However, for larger areas of the "
-"map, where you will want to allow the use of other overlay terrains, you "
-"will want to combine these with the “markers” described in the next section."
-msgstr ""
-
-#. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:182
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<bold>text='Advanced'</bold>"
-msgid "editor^<bold>text='Elevation Floodfill'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='Gevorderd'</bold>"
-
-#. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:184
+#: data/core/editor/help.cfg:179
 msgid "Raised elevation on-map marker"
 msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:185
-msgid ""
-"Raised elevation editor palette icon\n"
-"\n"
-"To make a patch of terrain higher or lower, and still be able to use other "
-"overlay terrains such as trees, you will need to use these markers. Placing "
-"one of these arrows on the map will flood-fill the map with a color-coded "
-"haze; neither the haze nor the arrow will be visible in game. The hazed area "
-"will have a border ledge, making it look higher or lower than the adjacent "
-"tiles.\n"
-"\n"
-"There are two high markers and two low markers, so it is possible to make "
-"terraces of up to five levels (lowest, lower, normal, higher, highest). "
-"Placing a high region next to a low region does not result in larger "
-"cliffs.\n"
+#: data/core/editor/help.cfg:180
+msgid "Raised elevation editor palette icon"
 msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:192
+#: data/core/editor/help.cfg:187
 msgid ""
-"editor^<bold>text='How to Use'</bold>\n"
+"\n"
+"editor^<header>How to Use</header>\n"
 "\n"
 "The marker arrows are not very useful by themselves, but the bluffs/gulch-"
 "type terrains can be used to contain the floodfilled area.\n"
@@ -702,7 +677,7 @@ msgid ""
 "paint tool to outline a big blob over an empty, all-grass map.\n"
 "2.  Place a Marker High (^_mh) arrow on a tile inside the blob (not on the "
 "Bluffs border).\n"
-"3.  The blob should all be raised now, and as long as you don't overwrite "
+"3.  The blob should all be raised now, and as long as you don’t overwrite "
 "the Marker or Bluffs overlays, you can add other terrain overlays as "
 "needed.\n"
 "\n"
@@ -711,30 +686,30 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:203
+#: data/core/editor/help.cfg:199
 msgid ""
-"editor^<format>text='Note for UMC authors: The flood-filled tiles do not "
-"have their terrain codes changed, or any other properties affected, so "
-"filtering a location by elevation is not simple.' italic='yes' font_size=10 "
-"</format>"
+"editor^<span style='italic' font_size='15'>Note for UMC authors: The flood-"
+"filled tiles do not have their terrain codes changed, or any other "
+"properties affected, so filtering a location by elevation is not simple.</"
+"span>"
 msgstr ""
 
 #. [topic]: id=editor_deprecated_overlay
-#: data/core/editor/help.cfg:208
+#: data/core/editor/help.cfg:205
 msgid "Deprecated Terrain"
 msgstr "Verouderd Terrein"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
-#: data/core/editor/help.cfg:211
+#: data/core/editor/help.cfg:208
 msgid ""
-"editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
-"png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
+"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)' />\n"
+"The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
-"• the <ref>dst='terrain_fungus_grove_old' text='“^Uf” mushroom terrain'</"
-"ref>,\n"
+"• the <ref dst='terrain_fungus_grove_old'>“^Uf” mushroom terrain</ref>,\n"
 "• the “Xol” Lit Stone Wall, which is deprecated because several wall "
 "terrains now support the “^Efs” Sconce embellishment.\n"
 "\n"
@@ -743,96 +718,94 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:224
+#: data/core/editor/help.cfg:222
 msgid "Label Tool"
 msgstr "Label Gereedschap"
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:225
+#: data/core/editor/help.cfg:223
 msgid ""
 "Put text labels on the map.\n"
-"\n"
 "• Left-click will open a dialog box to create a new label or edit an "
 "existing one.\n"
 "• Right-click deletes.\n"
 "• Drag-and-drop with the left mouse button moves labels.\n"
 "\n"
 "This tool is only available in Scenario Mode; the decorations are "
-"implemented in the scenario using WML’s <italic>text='[label]'</italic> tag."
+"implemented in the scenario using WML’s <italic>[label]</italic> tag."
 msgstr ""
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:240
+#: data/core/editor/help.cfg:237
 msgid "Item Tool (Scenery Tool)"
 msgstr "Item Gereedschap (Omgeving Gereedschap)"
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:241
+#: data/core/editor/help.cfg:238
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
-"monoliths. Multiple items can be placed on the same hex.\n"
+"monoliths.\n"
+"Multiple items can be placed on the same hex.\n"
 "\n"
-"<bold>text='Note:'</bold> the tool doesn’t support deleting items once "
-"placed, nor does it support undo. Mistakes can currently only be fixed by "
-"editing the generated WML file.\n"
+"• Left-click will place a decoration on the clicked hex.\n"
+"• Right-click will remove the decoration.\n"
+"\n"
+"<bold>Note:</bold> the tool doesn’t support undo.\n"
 "\n"
 "This tool is only available in Scenario Mode; the decorations are not part "
 "of the terrain and are implemented in the scenario using WML’s "
-"<italic>text='[item]'</italic> tag."
+"<italic>[item]</italic> tag."
 msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:254
+#: data/core/editor/help.cfg:255
 msgid "Village Ownership Tool"
 msgstr "Dorp Eigenaar Gereedschap"
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:255
+#: data/core/editor/help.cfg:256
 msgid ""
-"This tool assigns ownership of villages at the start of a scenario. The "
-"villages must first be placed on the terrain with the "
-"<ref>dst='editor_tool_paint' text='Paint Tool'</ref>.\n"
+"This tool assigns ownership of villages at the start of a scenario.\n"
+"The villages must first be placed on the terrain with the <ref "
+"dst='editor_tool_paint'>Paint Tool</ref>.\n"
 "\n"
 "• Left-click will assign the village to the currently-selected side.\n"
 "• Right-click will set the village back to unowned.\n"
 "\n"
 "This tool is only available in Scenario Mode; ownership information is "
-"stored by adding WML <italic>text='[village]'</italic> tags to the "
-"appropriate <italic>text='[side]'</italic>."
+"stored by adding WML <italic>[village]</italic> tags to the appropriate "
+"<italic>[side]</italic>."
 msgstr ""
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:269
+#: data/core/editor/help.cfg:271
 msgid "Unit Tool"
 msgstr "Eenheid Gereedschap"
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:272
 msgid ""
 "Place units belonging to the currently-selected side.\n"
-"\n"
 "• Left-click will place a unit.\n"
 "• Left drag-and-drop will move an already-placed unit.\n"
 "• Various operations are added to the right-click menu when the hex contains "
 "a unit.\n"
 "\n"
-"This tool is only available in Scenario Mode; it adds WML "
-"<italic>text='[unit]'</italic> tags to the appropriate "
-"<italic>text='[side]'</italic>."
+"This tool is only available in Scenario Mode; it adds WML <italic>[unit]</"
+"italic> tags to the appropriate <italic>[side]</italic>."
 msgstr ""
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:285
+#: data/core/editor/help.cfg:286
 msgid "Named Areas"
 msgstr "Benoemde Gebieden"
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:286
+#: data/core/editor/help.cfg:287
 msgid ""
-"This tool create sets of tiles that can be used in WML scripts’ Standard "
+"This tool creates sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
-"area’s id in the filter’s <italic>text='area='</italic> attribute. For "
-"example:\n"
+"area’s id in the filter’s <italic>area=</italic> attribute. For example:\n"
 "\n"
 "• assigning a local time zone to this set of hexes\n"
 "• filtering the set of hexes which trigger an event when a unit moves on to "
@@ -840,32 +813,30 @@ msgid ""
 "\n"
 "To use the tool:\n"
 "\n"
-"• select hexes using the <ref>dst='editor_tool_select' text='select tool'</"
-"ref>\n"
+"• select hexes using the <ref dst='editor_tool_select'>select tool</ref>\n"
 "• in the Areas menu, select Add New Area\n"
 "• then in the Areas menu, select Save Selection to Area\n"
 "• then in the Areas menu, select Rename Selected Area and choose a name for "
 "the area\n"
 "\n"
 "This tool is only available in Scenario Mode; it adds WML "
-"<italic>text='[time_area]'</italic> tags to the scenario. Although the tag’s "
-"name implies time, it is now more generic and can be used for other purposes "
+"<italic>[time_area]</italic> tags to the scenario. Although the tag’s name "
+"implies time, it is now more generic and can be used for other purposes "
 "without needing to change the time-of-day schedule in the area."
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:307
+#: data/core/editor/help.cfg:308
 msgid "Playlist Manager"
 msgstr "Afspeellijst Beheer"
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:308
+#: data/core/editor/help.cfg:309
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
-"\n"
-"This tool is only available in Scenario Mode; it adds WML "
-"<italic>text='[music]'</italic> tags to the scenario."
+"This tool is only available in Scenario Mode; it adds WML <italic>[music]</"
+"italic> tags to the scenario."
 msgstr ""
 
 #. [topic]: id=editor_addon_id
@@ -909,29 +880,27 @@ msgid ""
 "of features for setting up a basic scenario as well as initializing an add-"
 "on which can be used to distribute the scenarios you create.\n"
 "\n"
-"The editor can be launched from the <italic>text='Map Editor'</italic> "
-"option at the title screen.\n"
+"The editor can be launched from the <italic>Map Editor</italic> option at "
+"the title screen.\n"
 "\n"
-"<header>text='Editing Modes'</header>\n"
+"<header>Editing Modes</header>\n"
 "\n"
 "The editor features two modes of operation: terrain mode and scenario mode.\n"
 "\n"
-"The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar to "
-"a simple paint application, with tools to <ref>dst='editor_tool_paint' "
-"text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
-"<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
-"<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
-"setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
-"locations'</ref>.\n"
+"The <ref dst='..editor_mode_terrain'>Terrain Mode</ref> is similar to a "
+"simple paint application, with tools to <ref dst='editor_tool_paint'>paint</"
+"ref>, <ref dst='editor_tool_fill'>fill</ref>, <ref "
+"dst='editor_tool_select'>select (and copy)</ref>, and <ref "
+"dst='editor_tool_paste'>paste</ref>. It also has the tool for setting the "
+"leaders’ <ref dst='editor_tool_starting'>starting locations</ref>.\n"
 "\n"
-"The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
-"addition to the tools available in terrain mode, adds support for adding "
-"<ref>dst='editor_tool_label' text='labels'</ref>, "
-"<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
-"<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
-"and assigning <ref>dst='editor_tool_village' text='village ownership'</ref> "
-"at the start of the scenario. There’s also a <ref>dst='editor_playlist' "
-"text='playlist manager'</ref> for the music."
+"The <ref dst='..editor_mode_scenario'>Scenario Mode</ref>, in addition to "
+"the tools available in terrain mode, adds support for adding <ref "
+"dst='editor_tool_label'>labels</ref>, <ref dst='editor_tool_scenery'>scenery "
+"items</ref>, <ref dst='editor_tool_unit'>units</ref> in addition to the "
+"leader, and assigning <ref dst='editor_tool_village'>village ownership</ref> "
+"at the start of the scenario. There’s also a <ref "
+"dst='editor_playlist'>playlist manager</ref> for the music."
 msgstr ""
 
 #. [topic]: id=..editor
@@ -949,7 +918,7 @@ msgstr ""
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:353
 msgid ""
-"<header>text='What you do *not* get'</header>\n"
+"<header>What you do *not* get</header>\n"
 "\n"
 "• Exactly the same map rendering as in-game\n"
 "\n"
@@ -960,7 +929,7 @@ msgid ""
 "\n"
 "• Event handlers and scripting\n"
 "\n"
-"The editor is not a tool to help you scripting the scenario’s event "
+"The editor is not a tool to help you with scripting the scenario’s event "
 "handlers.\n"
 "\n"
 "• Infinite Backwards Compatibility\n"
@@ -979,8 +948,8 @@ msgid ""
 "application.\n"
 "\n"
 "The right-hand sidebar contains, from top to bottom, the mini-map, the "
-"toolkit (see the pages for each tool), tool options, and "
-"<ref>dst='editor_palette' text='Palette'</ref>.\n"
+"toolkit (see the pages for each tool), tool options, and <ref "
+"dst='editor_palette'>Palette</ref>.\n"
 "\n"
 "When saved using “Save Map As” and saving to the default directory, the "
 "resulting map can be found in the “Custom Maps” game type of the multiplayer "
@@ -999,7 +968,7 @@ msgstr ""
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:387
 msgid ""
-"<header>text='Checking whether the editor is in scenario mode'</header>\n"
+"<header>Checking whether the editor is in scenario mode</header>\n"
 "\n"
 "You can check which mode the editor is in by looking at the menu bar.\n"
 "\n"
@@ -1010,7 +979,7 @@ msgstr ""
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:394
 msgid ""
-"<header>text='Entering scenario mode'</header>\n"
+"<header>Entering scenario mode</header>\n"
 "\n"
 "To start a new map in scenario mode, choose “New Scenario” from the “File” "
 "menu.\n"
@@ -1025,7 +994,7 @@ msgstr ""
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:402
 msgid ""
-"<header>text='The files: .map and .cfg'</header>\n"
+"<header>The files: .map and .cfg</header>\n"
 "\n"
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
@@ -1034,14 +1003,14 @@ msgid ""
 "cfg file. For .cfg files that were created by the scenario editor, it will "
 "open the .cfg in the scenario editor. However, for .cfg files that cannot be "
 "opened by the scenario editor, the editor will attempt to find the "
-"scenario's map data and open the corresponding .map file in terrain-only "
+"scenario’s map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:414
-msgid "Using a separate file for WML events"
+msgid "Separate Event Files"
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
@@ -1053,29 +1022,31 @@ msgid ""
 "\n"
 "One option is to create a separate WML file, also with the .cfg extension, "
 "which uses the WML preprocessor to include the editor-created file. This "
-"separate file contains both the [scenario] tag and any hand-edited WML such "
-"as events. With this workflow, the add-on’s file structure could look like "
-"this:\n"
+"separate file contains both the <span face='monospace'>[scenario]</span> tag "
+"and any hand-edited WML such as events. With this workflow, the add-on’s "
+"file structure could look like this:\n"
 "\n"
-"<header>text='Example'</header>\n"
+"<header>Example</header>\n"
 "If your add-on will only be used on 1.18 and later, it is instead "
 "recommended to use the new include_file attribute to load a .cfg file "
 "containing additional WML into the scenario.\n"
 "\n"
-"• _main.cfg:\n"
-"  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
-"which makes “map_file” search the “maps” directory\n"
-"• maps/first.map\n"
+"• <span face='monospace'>_main.cfg</span>\n"
+"  ◦ use <span face='monospace'>[binary_path]</span> to add add-on’s "
+"directories to the binary path, which makes “map_file” search the “maps” "
+"directory\n"
+"• <span face='monospace'>maps/first.map</span>\n"
 "  ◦ this is the .map file created by the scenario editor when saving in "
 "scenario mode\n"
-"• scenarios/other.cfg\n"
+"• <span face='monospace'>scenarios/other.cfg</span>\n"
 "  ◦ this is the .cfg file containing everything that the scenario editor "
-"doesn't understand\n"
-"• scenarios/first.cfg\n"
-"  ◦ inside the [scenario] element, use “map_file=\"first.map\"” to load the "
-"map file\n"
-"  ◦ inside the [scenario] element, use “include_file=\"other.cfg\"” to load "
-"the additional cfg file"
+"doesn’t understand\n"
+"• <span face='monospace'>scenarios/first.cfg</span>\n"
+"  ◦ inside the <span face='monospace'>[scenario]</span> element, use <span "
+"face='monospace'>map_file=&quot;first.map&quot;</span> to load the map file\n"
+"  ◦ inside the <span face='monospace'>[scenario]</span> element, use <span "
+"face='monospace'>include_file=&quot;other.cfg&quot;</span> to load the "
+"additional cfg file"
 msgstr ""
 
 #. [topic]: id=editor_masks
@@ -1085,9 +1056,13 @@ msgstr "Editor Laag Gebruik"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:439
+#, fuzzy
+#| msgid ""
+#| "Masks can be applied to a base map for reusal in several scenarios "
+#| "playing at the same locations."
 msgid ""
-"Masks can be applied to a base map for reusal in several scenarios playing "
-"at the same locations."
+"Masks can be applied to a base map for reuse in several scenarios playing at "
+"the same locations."
 msgstr ""
 "Lagen kunnen toegepast worden op een standaard kaart voor hergebruik in "
 "scenarios die zich op dezelfde locatie afspelen."
@@ -1103,22 +1078,21 @@ msgstr "Tijdschema Editor"
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
-"\n"
 "In terrain mode, this displays the map as it will be recolored at different "
 "times of day.\n"
 "\n"
 "In scenario mode, the button accesses an editor for individual schedules for "
-"<ref>dst='editor_named_area' text='time areas'</ref>."
+"<ref dst='editor_named_area'>time areas</ref>."
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:459
+#: data/core/editor/help.cfg:458
 msgid "Editor Palette"
 msgstr "Editor Kleur"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:461
+#: data/core/editor/help.cfg:460
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -1126,7 +1100,7 @@ msgid ""
 "available units. When using the Starting Locations Tool, the palette changes "
 "to a list of “Player 1”, “Player 2”, etc.\n"
 "\n"
-"<bold>text='Filter'</bold>\n"
+"<bold>Filter</bold>\n"
 "\n"
 "There is a filter function to show only a subset of the available items — "
 "this is the leftmost of the four buttons at the top of the palette, and the "
@@ -1135,39 +1109,44 @@ msgstr ""
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:466
+#, fuzzy
+#| msgid "Show all kinds of terrain"
 msgid "Show all kinds of terrain"
 msgstr "Toon alle soorten terreinen"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:467
+#, fuzzy
+#| msgid "Show only water terrains"
 msgid "Show only water terrains"
 msgstr "Toon alleen water terreinen"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:468
+#, fuzzy
+#| msgid "Show only villages"
 msgid "Show only villages"
 msgstr "Toon alleen dorpen"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:480
+#: data/core/editor/help.cfg:481
 msgid "Wesnoth Map Format"
 msgstr "Wesnoth Kaart Format"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:481
+#: data/core/editor/help.cfg:482
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:483
+#: data/core/editor/help.cfg:484
 msgid ""
-"<header>text='Native'</header>\n"
+"<header>Native</header>\n"
 "\n"
-"A map file consists of rows with comma separated terrain code strings. The "
+"A map file consists of rows with comma-separated terrain code strings. The "
 "only non-terrain information provided by the map syntax is the set of "
-"locations created by the <ref>dst='editor_tool_starting' text='Starting "
-"Locations Tool'</ref>. The files can be edited with a general purpose text "
-"editor like notepad.\n"
+"locations created by the <ref dst='editor_tool_starting'>Starting Locations "
+"Tool</ref>. The files can be edited with a general purpose text editor.\n"
 "\n"
 "These files can be used directly for multiplayer games, the number of "
 "players is automatically determined by the number of starting positions. "
@@ -1180,26 +1159,26 @@ msgid ""
 "providing additional information such as teams, custom events, and complex "
 "side setups. The .cfg file loads the map file with either of:\n"
 "\n"
-"• map_file=maps/01_First_Map.map <italic>text='— supported since Wesnoth "
-"1.14'</italic>\n"
-"• map_data=\"{maps/01_First_Map.map}\" <italic>text='— a WML preprocessor "
-"include'</italic>\n"
+"• <span face='monospace'>map_file=maps/01_First_Map.map</span> <italic>— "
+"supported since Wesnoth 1.14</italic>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
+"&quot;</span> <italic>— a WML preprocessor include</italic>\n"
 "\n"
-"The <italic>text='map_file'</italic> method is preferred over using a "
-"preprocessor include."
+"The <italic>map_file</italic> method is preferred over using a preprocessor "
+"include."
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:496
+#: data/core/editor/help.cfg:497
 msgid ""
-"<header>text='Embedded'</header>\n"
+"<header>Embedded</header>\n"
 "\n"
-"The map data can stored as part of a scenario’s .cfg file, directly in the "
-"<italic>text='map_data'</italic> attribute. In other words, in the place "
-"that the preprocessor would include it when using the preprocessor-include "
+"The map data can be stored as part of a scenario’s .cfg file, directly in "
+"the <italic>map_data</italic> attribute. In other words, in the place that "
+"the preprocessor would include it when using the preprocessor-include "
 "method.\n"
 "\n"
-"<header>text='Using Embedded Format in Terrain Mode'</header>\n"
+"<header>Using Embedded Format in Terrain Mode</header>\n"
 "\n"
 "If you are editing the map and not using the Scenario Mode support, then "
 "it’s trivial to move the data to a native map file before opening it in the "
@@ -1210,17 +1189,17 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:504
+#: data/core/editor/help.cfg:505
 msgid ""
-"<header>text='Files created by the Scenario Editor'</header>\n"
+"<header>Files created by the Scenario Editor</header>\n"
 "\n"
 "In scenario mode, the editor saves the scenario data as a .cfg file and the "
 "map data as a separate .map file. The scenario then references the .map file "
 "via map_file. When loading a .cfg file, the scenario editor understands "
 "files created by the scenario editor itself, but is likely to have "
 "difficulty with files that have been edited by hand; problems can be avoided "
-"by <ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
-"ref> for the hand-edited parts."
+"by <ref dst='editor_separate_events_file'>using a separate .cfg file</ref> "
+"for the hand-edited parts."
 msgstr ""
 
 #. [editor_times]: id=deep_underground
@@ -1258,8 +1237,26 @@ msgstr "Kalender"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
+#, fuzzy
+#| msgid ""
+#| "Each year in the Wesnoth calendar is composed of 12 months. These are, in "
+#| "order:\n"
+#| "\n"
+#| "Whitefire\n"
+#| "Bleeding Moon\n"
+#| "Scatterseed\n"
+#| "Deeproot\n"
+#| "Scryer’s Bloom\n"
+#| "Thorntress\n"
+#| "Summit Star\n"
+#| "Kindlefire\n"
+#| "Stillseed\n"
+#| "Reaper’s Moon\n"
+#| "Verglas Bloom\n"
+#| "Blackfire\n"
+#| "\n"
 msgid ""
-"Each year in the Wesnoth calendar is composed of 12 months. These are, in "
+"Each year in the Wesnothian calendar is composed of 12 months. These are, in "
 "order:\n"
 "\n"
 "Whitefire\n"
@@ -1275,6 +1272,12 @@ msgid ""
 "Verglas Bloom\n"
 "Blackfire\n"
 "\n"
+"The Wesnothian calendar begins with the founding of Wesnoth in the year 1 YW "
+"(Year of Wesnoth). Years before that are counted based on the number of "
+"years before the founding of Wesnoth using BW (Before Wesnoth).\n"
+"\n"
+"After the fall of Wesnoth many switched to using AF (After the Fall) and BF "
+"(Before the Fall)."
 msgstr ""
 "Ieder jaar in de kalender van Wesnoth bestaat uit 12 maanden. Dit zijn, "
 "opeenvolgend:\n"
@@ -1333,13 +1336,20 @@ msgstr ""
 "<ref>dst='great_ocean' text='oceaan'</ref> bij <ref>dst='elensefar' "
 "text='Elensefar'</ref>."
 
+#. [topic]: id=great_river
+#: data/core/encyclopedia/geography.cfg:35
+msgid ""
+"The Ford of Abez is a crossing between Wesnoth and the Northlands, and is "
+"the westernmost point where the Great River can be crossed without ships."
+msgstr ""
+
 #. [topic]: id=great_ocean
-#: data/core/encyclopedia/geography.cfg:38
+#: data/core/encyclopedia/geography.cfg:40
 msgid "Great Ocean"
 msgstr "Grote Oceaan"
 
 #. [topic]: id=great_ocean
-#: data/core/encyclopedia/geography.cfg:39
+#: data/core/encyclopedia/geography.cfg:41
 msgid ""
 "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
 "and all rivers eventually flow to it. Far to the west in the Great Ocean is "
@@ -1350,13 +1360,22 @@ msgstr ""
 "van de Grote Oceaan ligt een gigantische eilandengroep genaamd "
 "<ref>dst='morogor' text='Morogor'</ref>."
 
+#. [topic]: id=great_ocean
+#. Great Ocean
+#: data/core/encyclopedia/geography.cfg:45
+msgid ""
+"The Drakes once called this ocean the World Ocean. They believe it to extend "
+"in every direction from Morogor until eventually flowing into the abyss as "
+"an immense waterfall at the edge of the world."
+msgstr ""
+
 #. [topic]: id=morogor
-#: data/core/encyclopedia/geography.cfg:44
+#: data/core/encyclopedia/geography.cfg:50
 msgid "Morogor"
 msgstr "Morogor"
 
 #. [topic]: id=morogor
-#: data/core/encyclopedia/geography.cfg:45
+#: data/core/encyclopedia/geography.cfg:51
 msgid ""
 "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
 "Ocean'</ref> east of the <ref>dst='green_isle' text='Green Isle'</ref> and "
@@ -1371,40 +1390,91 @@ msgstr ""
 "Het wordt bewoond door <ref>dst='..race_drake' text='Draken'</ref>.\n"
 "Het grootste eiland van de eilandengroep heeft ook de naam 'Morogor'."
 
+#. [topic]: id=morogor
+#. Geography of Morogor
+#: data/core/encyclopedia/geography.cfg:57
+msgid ""
+"<header>text='Notable land features:'</header>\n"
+"    • Mount Morogor: The highest active volcanic mountain in the central "
+"island of Morogor.\n"
+"    • Isle of Gaall: A dangerous island slightly north of the central Isle "
+"of Morogor, used mostly as hunting ground by the drakes, who inhabit only a "
+"two small villages on the isle.\n"
+"    • Isle of Omarath: A major drakish island northwest of the main Isle of "
+"Morogor. It is the northernmost island of the Morogor Archipelago."
+msgstr ""
+
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:52
+#: data/core/encyclopedia/geography.cfg:65
 msgid "Green Isle"
 msgstr "Groene Eiland"
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:53
+#: data/core/encyclopedia/geography.cfg:66
+#, fuzzy
+#| msgid ""
+#| "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</"
+#| "ref>."
 msgid ""
-"A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
+"A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</"
+"ref>, formerly home to the Islefolk and Wesfolk."
 msgstr ""
 "Een redelijk groot eiland gelegen in de <ref>dst='great_ocean' text='Grote "
 "Oceaan'</ref>."
 
+#. [topic]: id=green_isle
+#. Geography of the Green Isle
+#: data/core/encyclopedia/geography.cfg:70
+msgid ""
+"<header>text='Notable cities:'</header>\n"
+"    • Southbay: The capital of the largest Islefolk Kingdom.\n"
+"    • Clearwater Port: The second largest Islefolk city and the location of "
+"a major port.\n"
+"    • Stormvale: A major Islefolk kingdom once ruled by the ancestors of "
+"Haldric I.\n"
+"    • Jevyan’s Haven: The Wesfolk capital and home of the famous lich-lord "
+"Jevyan.\n"
+"    • Blackmore: A small settlement north of the Oldwood."
+msgstr ""
+
+#. [topic]: id=green_isle
+#. Geography of the Green Isle
+#: data/core/encyclopedia/geography.cfg:79
+msgid ""
+"<header>text='Notable land features:'</header>\n"
+"    • Broken Mountains: A mighty mountain range that cuts through the Green "
+"Isle.\n"
+"    • Oldwood: A mysterious wood inhabited by some woses.\n"
+"    • Swamp of Esten: A small swamp located east of the Broken Mountains."
+msgstr ""
+
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:58
+#: data/core/encyclopedia/geography.cfg:87
 msgid "Old Continent"
 msgstr "Oude Continent"
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:59
+#: data/core/encyclopedia/geography.cfg:88
+#, fuzzy
+#| msgid ""
+#| "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
+#| "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgid ""
-"Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
-"<ref>dst='great_ocean' text='Great Ocean'</ref>."
+"Lies to the west of <ref>dst='morogor' text='Morogor'</ref> and the "
+"<ref>dst='green_isle' text='Green Isle'</ref> across the "
+"<ref>dst='great_ocean' text='Great Ocean'</ref>. It is the original homeland "
+"of both humans and orcs."
 msgstr ""
 "Ligt ten westen van <ref>dst='morogor' text='Morogor'</ref> aan de andere "
 "kant van de <ref>dst='great_ocean' text='Grote Oceaan'</ref>."
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:64
+#: data/core/encyclopedia/geography.cfg:93
 msgid "Great Continent"
 msgstr "Grote Continent"
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:65
+#: data/core/encyclopedia/geography.cfg:94
 msgid ""
 "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
@@ -1415,12 +1485,12 @@ msgstr ""
 "<ref>dst='great_ocean' text='Grote Oceaan'</ref>."
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:70
+#: data/core/encyclopedia/geography.cfg:99
 msgid "Irdya"
 msgstr "Irdya"
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:71
+#: data/core/encyclopedia/geography.cfg:100
 msgid ""
 "The name of the world in which the kingdom of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref> is situated is ‘Irdya’. This term is, however, only "
@@ -1433,12 +1503,12 @@ msgstr ""
 "meestal \"de wereld\" of, poëtischer, \"de wijde, groene wereld\"."
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:76
+#: data/core/encyclopedia/geography.cfg:105
 msgid "Kingdom of Wesnoth"
 msgstr "Koninkrijk van Wesnoth"
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:77
+#: data/core/encyclopedia/geography.cfg:106
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -1449,9 +1519,16 @@ msgid ""
 "Swamp to the southeast.\n"
 "\n"
 "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier region. "
-"It is bounded to the south (off-map) by dense woods of which the Aethenwood "
-"may be considered a northernmost extension.\n"
-"\n"
+"It is bounded to the south by dense woods of which the Aethenwood may be "
+"considered a northernmost extension. Kerlath is its southernmost province, "
+"marking the end of Wesnoth and the start of the mysterious "
+"<ref>dst='far_south' text='Far South'</ref>."
+msgstr ""
+
+#. [topic]: id=kingdom_wesnoth
+#. Geography of Wesnoth
+#: data/core/encyclopedia/geography.cfg:112
+msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Weldyn: The capital of Wesnoth.\n"
 "    • Aldril: City lying on the Bay of Pearls.\n"
@@ -1459,14 +1536,76 @@ msgid ""
 "    • Carcyn: Located between the Grey Woods and the Great River.\n"
 "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
 "country, just west and north of Weldyn.\n"
-"    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
-"confluence of the Weldyn River and the Great River.\n"
+"    • Soradoc: The easternmost town of Wesnoth, controls the confluence of "
+"the Weldyn River and the Great River.\n"
 "    • Fort Tahn: The southernmost border outpost, controls the north/south "
 "road crossing the River Aethen.\n"
 "    • Tath: Important fort city north of Dan’Tonk, exerts control over the "
 "wilderness country around the east of the Brown Hills and north to the Ford "
 "of Abez.\n"
-"\n"
+"    • Westin: A small yet important town in Kerlath, the southernmost "
+"province of Wesnoth. The old Citadel of Westin can be found there.\n"
+"    • Southport: A small town in the southernmost reaches of Kerlath, near "
+"the Black Forest."
+msgstr ""
+
+#. [topic]: id=kingdom_wesnoth
+#. Geography of Wesnoth
+#: data/core/encyclopedia/geography.cfg:126
+#, fuzzy
+#| msgid ""
+#| "The Kingdom of Wesnoth is located in the north-central portion of the "
+#| "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
+#| "mainline campaigns revolve around it. It is bounded on the map by the "
+#| "<ref>dst='great_river' text='Great River'</ref> to the north, the shore "
+#| "of the <ref>dst='great_ocean' text='ocean'</ref> to the west, the "
+#| "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
+#| "ref>, and the Bitter Swamp to the southeast.\n"
+#| "\n"
+#| "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
+#| "region. It is bounded to the south (off-map) by dense woods of which the "
+#| "Aethenwood may be considered a northernmost extension.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Weldyn: The capital of Wesnoth.\n"
+#| "    • Aldril: City lying on the Bay of Pearls.\n"
+#| "    • Blackwater Port: City lying south of the Bay of Pearls.\n"
+#| "    • Carcyn: Located between the Grey Woods and the Great River.\n"
+#| "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
+#| "country, just west and north of Weldyn.\n"
+#| "    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
+#| "confluence of the Weldyn River and the Great River.\n"
+#| "    • Fort Tahn: The southernmost border outpost, controls the north/"
+#| "south road crossing the River Aethen.\n"
+#| "    • Tath: Important fort city north of Dan’Tonk, exerts control over "
+#| "the wilderness country around the east of the Brown Hills and north to "
+#| "the Ford of Abez.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
+#| "    • Ford of Abez: Shallow part of the Great River, it is usually "
+#| "controlled by Wesnothian forces.\n"
+#| "    • Weldyn River: It branches from the Great River and goes south.\n"
+#| "    • Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and Fort "
+#| "Tahn, this plain is Wesnoth’s bread basket and home to most of its "
+#| "population.\n"
+#| "    • Dulatus Hills: These rolling hills bordering the Great Central "
+#| "Plain provide much of Wesnoth’s livestock and agriculture.\n"
+#| "    • Brown Hills: Wasteland surrounding Gryphon Mountain that is not "
+#| "well-populated and occasionally very dangerous.\n"
+#| "    • Horse Plains: Region of rolling plains just south of the Great "
+#| "River, bounded by Glyn’s Forest to the west and the River Weldyn to the "
+#| "east; the southern reach merges into the Central Plain. Home of the "
+#| "powerful Clans; the best horses in Wesnoth are bred here.\n"
+#| "    • Estmark Hills: Largish range rising south of the Great River and "
+#| "east of the Weldyn River. The northernmost portion, nearest the River "
+#| "Weldyn, has at various times been settled by Wesnothians, but the "
+#| "Kingdom’s control is tenuous at best and banditry is common.\n"
+#| "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one "
+#| "of Haldric II’s sons.\n"
+#| "    • Grey Woods: Large forest in the heart of the wilds of Wesnoth, "
+#| "located between Carcyn and Aldril and generally considered to be haunted."
+msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
 "    • Ford of Abez: Shallow part of the Great River, it is usually "
@@ -1480,8 +1619,8 @@ msgid ""
 "populated and occasionally very dangerous.\n"
 "    • Horse Plains: Region of rolling plains just south of the Great River, "
 "bounded by Glyn’s Forest to the west and the River Weldyn to the east; the "
-"southern reach merges into the Central Plain. Home of the powerful Clans; "
-"the best horses in Wesnoth are bred here.\n"
+"southern reach merges into the Central Plain. Home of the powerful Horse "
+"Clans; the best horses in Wesnoth are bred here.\n"
 "    • Estmark Hills: Largish range rising south of the Great River and east "
 "of the Weldyn River. The northernmost portion, nearest the River Weldyn, has "
 "at various times been settled by Wesnothians, but the Kingdom’s control is "
@@ -1489,7 +1628,12 @@ msgid ""
 "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one of "
 "Haldric II’s sons.\n"
 "    • Grey Woods: Large forest in the heart of the wilds of Wesnoth, located "
-"between Carcyn and Aldril and generally considered to be haunted."
+"between Carcyn and Aldril and generally considered to be haunted.\n"
+"    • Isle of Alduin: An important island off the coast of Wesnoth home to "
+"the Great Academy of Magic, where many of Wesnoth’s greatest mages were "
+"trained.\n"
+"    • Green Swamp: Large swamp on the banks of the Great River northeast of "
+"the Grey Woods."
 msgstr ""
 "Het Koninkrijk van Wesnoth is gelegen in het noordelijke, centrale deel van "
 "het <ref>dst='great_continent' text='Grote Continent'</ref>. De meeste "
@@ -1545,12 +1689,31 @@ msgstr ""
 "gelegen tussen Carcyn en Aldril en er wordt aangenomen dat het er spookt."
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:106
+#: data/core/encyclopedia/geography.cfg:143
 msgid "Elensefar"
 msgstr "Elensefar"
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:107
+#: data/core/encyclopedia/geography.cfg:144
+#, fuzzy
+#| msgid ""
+#| "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
+#| "text='Wesnoth'</ref>, at times an independent country, and at times in a "
+#| "treaty federation with Wesnoth. Its borders are the "
+#| "<ref>dst='great_river' text='Great River'</ref> to the north, a loosely "
+#| "defined line with Wesnoth to the east, the Bay of Pearls to the south, "
+#| "and the <ref>dst='great_ocean' text='ocean'</ref> to the west. More "
+#| "information is found in the historical narrative of Wesnoth.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Elensefar: The capital, located on an island in the Great River "
+#| "delta.\n"
+#| "    • Carcyn: City on the Wesnoth–Elensefar border, disputed with "
+#| "Wesnoth.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
+#| "this point, and only ships can cross it."
 msgid ""
 "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, at times an independent country, and at times in a "
@@ -1558,16 +1721,7 @@ msgid ""
 "text='Great River'</ref> to the north, a loosely defined line with Wesnoth "
 "to the east, the Bay of Pearls to the south, and the <ref>dst='great_ocean' "
 "text='ocean'</ref> to the west. More information is found in the historical "
-"narrative of Wesnoth.\n"
-"\n"
-"<header>text='Notable cities:'</header>\n"
-"    • Elensefar: The capital, located on an island in the Great River "
-"delta.\n"
-"    • Carcyn: City on the Wesnoth–Elensefar border, disputed with Wesnoth.\n"
-"\n"
-"<header>text='Notable land features:'</header>\n"
-"    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
-"this point, and only ships can cross it."
+"narrative of Wesnoth."
 msgstr ""
 "Elensefar is soms een provincie van <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, soms een onafhankelijk land, en soms een bondgenoot "
@@ -1587,39 +1741,119 @@ msgstr ""
 "    • <ref>dst='great_river' text='Grote Rivier'</ref>: Deze is zeer breed "
 "op deze plaats, enkel schepen kunnen hier oversteken."
 
+#. [topic]: id=elensefar
+#. Geography of Elensefar area
+#: data/core/encyclopedia/geography.cfg:148
+msgid ""
+"<header>text='Notable cities:'</header>\n"
+"    • Elensefar: The capital, located on an island in the Great River delta, "
+"though some peripheral farmland extends slightly on both sides of the Great "
+"River.\n"
+"    • Carcyn: City on the Wesnoth–Elensefar border, disputed with Wesnoth."
+msgstr ""
+
+#. [topic]: id=elensefar
+#: data/core/encyclopedia/geography.cfg:153
+msgid ""
+"<header>text='Notable land features:'</header>\n"
+"    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
+"this point, and only ships can cross it."
+msgstr ""
+
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:119
+#: data/core/encyclopedia/geography.cfg:159
 msgid "Northlands"
 msgstr "Noordelijke Landen"
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:120
+#: data/core/encyclopedia/geography.cfg:160
 msgid ""
-"There is no government of the Northlands. Various groups of orcs, dwarves, "
-"barbarian men and even elves populate the region. The northern and eastern "
-"borders are not defined, the southern border is the <ref>dst='great_river' "
-"text='Great River'</ref>, and the western border is the "
-"<ref>dst='great_ocean' text='ocean'</ref>.\n"
+"The Northlands are filled with unstable clans in endless conflict. It is an "
+"unlawful and perilous place plagued by its cold, icy terrain and constant "
+"war. Various groups of orcs, dwarves, humans, gryphons, ogres, and even "
+"elves fight over the region. The northern and eastern borders of the "
+"Northlands are not defined, the southern border is the "
+"<ref>dst='great_river' text='Great River'</ref>, and the western border is "
+"the <ref>dst='great_ocean' text='ocean'</ref>.\n"
 "\n"
+"Yet despite the sheer wilderness above the Northlands, the subterranean "
+"Dwarvish Kingdoms of Knalga and Kal Kartha are exceptions to their chaotic "
+"surroundings, providing both heat and protection to their people. While they "
+"may often be in conflict with orcs and trolls, the heart of Dwarvish "
+"territory is considered relatively safe in comparison."
+msgstr ""
+
+#. [topic]: id=northlands
+#. Geography of the Northlands
+#: data/core/encyclopedia/geography.cfg:166
+msgid ""
 "<header>text='Notable cities:'</header>\n"
 "    • Glamdrol: An Orcish tribal capital.\n"
-"    • Wesmere: The location of the Ka’lian — the Elvish Council.\n"
+"    • Wesmere: The location of the Ka’lian — the Elvish Council\n"
 "    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga in "
 "the southern Heart Mountains. A major trade center.\n"
+"    • Saurgrath: A former saurian capital in the Swamp of Dread.\n"
 "    • Dallben and Delwyn: Human villages originally built by settlers who "
 "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
 "abandoned. The forested area northeast of <ref>dst='elensefar' "
 "text='Elensefar'</ref>, where these villages were located, was named the "
-"Annuvin province by men but was known by the elves as Wesmere.\n"
-"\n"
+"Annuvin province by men but was known by the elves as Wesmere."
+msgstr ""
+
+#. [topic]: id=northlands
+#. Geography of the Northlands
+#: data/core/encyclopedia/geography.cfg:175
+#, fuzzy
+#| msgid ""
+#| "There is no government of the Northlands. Various groups of orcs, "
+#| "dwarves, barbarian men and even elves populate the region. The northern "
+#| "and eastern borders are not defined, the southern border is the "
+#| "<ref>dst='great_river' text='Great River'</ref>, and the western border "
+#| "is the <ref>dst='great_ocean' text='ocean'</ref>.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Glamdrol: An Orcish tribal capital.\n"
+#| "    • Wesmere: The location of the Ka’lian — the Elvish Council.\n"
+#| "    • Dwarven Doors: A mixed human/dwarven town in the region of Knalga "
+#| "in the southern Heart Mountains. A major trade center.\n"
+#| "    • Dallben and Delwyn: Human villages originally built by settlers who "
+#| "crossed the Great River during Wesnoth’s Golden Age expansion. Now "
+#| "abandoned. The forested area northeast of <ref>dst='elensefar' "
+#| "text='Elensefar'</ref>, where these villages were located, was named the "
+#| "Annuvin province by men but was known by the elves as Wesmere.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • <ref>dst='heart_mountains' text='Heart Mountains'</ref>: A "
+#| "virtually impassable barrier between the river country and the Northern "
+#| "Plains.\n"
+#| "    • Heartfangs: the particularly forbidding stretch of high peaks "
+#| "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
+#| "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
+#| "madmen, and mages live there.\n"
+#| "    • Swamp of Dread: a very large bog located between the Heart "
+#| "Mountains and the Great River. A notoriously dangerous place.\n"
+#| "    • Lake Vrug: A large mountain lake whose river carves the only "
+#| "pathway through the Northern Mountains.\n"
+#| "    • <ref>dst='arkan_thoria' text='Arkan-thoria'</ref>: The river that "
+#| "comes out of Lake Vrug. This is the elvish name; among humans it is "
+#| "called Longlier.\n"
+#| "    • River Listra: The south-running tributary of the Great River into "
+#| "which the Arkan-thoria empties.\n"
+#| "    • Lintanir Forest: The southernmost portion of the Great Northern "
+#| "Forest, a gigantic wood whose eastern and northern boundaries are known "
+#| "only to the elves. Their capital, Elensiria, has only seldom been visited "
+#| "by humans.\n"
+#| "    • <ref>dst='great_river' text='Great River'</ref>: The origin of this "
+#| "river is somewhere in the east of the northern lands."
+msgid ""
 "<header>text='Notable land features:'</header>\n"
 "    • <ref>dst='heart_mountains' text='Heart Mountains'</ref>: A virtually "
 "impassable barrier between the river country and the Northern Plains.\n"
-"    • Heartfangs: the particularly forbidding stretch of high peaks "
+"    • Heartfangs: The particularly forbidding stretch of high peaks "
 "southwest of Lake Vrug and north of the Forest of Wesmere. The most "
 "inhospitable and dangerous portion of the Heart Mountains; only hermits, "
 "madmen, and mages live there.\n"
-"    • Swamp of Dread: a very large bog located between the Heart Mountains "
+"    • Swamp of Dread: A very large bog located between the Heart Mountains "
 "and the Great River. A notoriously dangerous place.\n"
 "    • Lake Vrug: A large mountain lake whose river carves the only pathway "
 "through the Northern Mountains.\n"
@@ -1676,29 +1910,36 @@ msgstr ""
 "oosten van de Noordelijke Landen."
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:141
+#: data/core/encyclopedia/geography.cfg:188
 msgid "Southwest Elven Lands"
 msgstr "Zuidwestelijke Elfse Gebieden"
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:142
+#: data/core/encyclopedia/geography.cfg:189
+#, fuzzy
+#| msgid ""
+#| "The Wood Elves are separate from those of the north, and have only "
+#| "intermittent relations with them and most other countries. Its borders "
+#| "are the <ref>dst='great_ocean' text='ocean'</ref> to the west, the Black "
+#| "River to the south and southeast, the lands of Wesnoth to the north and "
+#| "the Kerlath province to the east.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • None known.\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • Aethenwood: The largest southern forest, it extends far to the "
+#| "south and is home to <ref>dst='..race_elf' text='elves'</ref>. Although "
+#| "the elves make no such distinction, the southern part of the forest has "
+#| "been named Southwood by denizens of Kerlath.\n"
+#| "    • Black Forest: An ancient forest of which very little is known, "
+#| "abandoned by the elves long ago."
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
 "the <ref>dst='great_ocean' text='ocean'</ref> to the west, the Black River "
 "to the south and southeast, the lands of Wesnoth to the north and the "
-"Kerlath province to the east.\n"
-"\n"
-"<header>text='Notable cities:'</header>\n"
-"    • None known.\n"
-"\n"
-"<header>text='Notable land features:'</header>\n"
-"    • Aethenwood: The largest southern forest, it extends far to the south "
-"and is home to <ref>dst='..race_elf' text='elves'</ref>. Although the elves "
-"make no such distinction, the southern part of the forest has been named "
-"Southwood by denizens of Kerlath.\n"
-"    • Black Forest: An ancient forest of which very little is known, "
-"abandoned by the elves long ago."
+"Kerlath province to the east."
 msgstr ""
 "De Bos Elfen zijn gescheiden van de noordelijke elfen en hebben enkel af en "
 "toe contact met hen en de meeste andere landen. De grenzen van het gebied "
@@ -1718,29 +1959,81 @@ msgstr ""
 "    • Zwarte Bos: Een eeuwenoud bos waarover weinig bekend is, lang geleden "
 "verlaten door de Elfen."
 
+#. [topic]: id=southwest_elven_lands
+#. Geography of the Southwest
+#: data/core/encyclopedia/geography.cfg:193
+msgid ""
+"<header>text='Notable land features:'</header>\n"
+"    • Aethenwood: The largest southern forest, home to recluded <ref>dst='.."
+"race_elf' text='elves'</ref>.\n"
+"    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
+"Aethenwood. It contains the sacred Isle of Elrath.\n"
+"    • Lake Aelin: An elvish lake at the edge of their territory along the "
+"River Aethen.\n"
+"    • Black Forest: An ancient and likely haunted forest of which very "
+"little is known, believed to have been once inhabited by elves. Those who "
+"enter it seldom return."
+msgstr ""
+
 #. [topic]: id=heart_mountains
-#: data/core/encyclopedia/geography.cfg:154
+#: data/core/encyclopedia/geography.cfg:202
 msgid "Heart Mountains"
 msgstr "Hartbergen"
 
 #. [topic]: id=heart_mountains
-#: data/core/encyclopedia/geography.cfg:155
+#. The Whitefang Clan’s primary description is in DiD
+#. Wesnoth 1.9.4 added Haggid-Dargor to the encyclopedia, but it has no other mention in mainline
+#: data/core/encyclopedia/geography.cfg:205
 msgid ""
 "A virtually impassable barrier between the <ref>dst='arkan_thoria' "
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
-"Plains'</ref>."
+"Plains'</ref>. The local orcs call them the Haggid-Dargor. The powerful "
+"Whitefang Clan in the region is named after the eastern edge of the "
+"mountains, which they call the Whitefang Mountains for their distinctive "
+"shape."
 msgstr ""
-"Een nagenoeg ondoordringbare barrière tussen de <ref>dst='arkan_thoria' "
-"text='Arkan-thoria'</ref>streek en de <ref>dst='far_north' text='Noordelijke "
-"Vlakten'</ref>."
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:160
+#: data/core/encyclopedia/geography.cfg:210
 msgid "Far North"
 msgstr "Verre Noorden"
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:161
+#: data/core/encyclopedia/geography.cfg:211
+#, fuzzy
+#| msgid ""
+#| "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
+#| "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' "
+#| "text='Heart Mountains'</ref>, which the Orcs call the Haggid-Dargor and "
+#| "claim (without merit) as their own. To the east lie the Unaligned Tribes "
+#| "of the Wild Steppe, who fell out of the control of the Clannate, instead "
+#| "roaming with wild human barbarians and clashing with the High Elves of "
+#| "the North Plains (known as North Elves in human lands). The High Elves "
+#| "themselves reside further east, where it is rumored they rule a vast "
+#| "kingdom.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Barag Gor, a city home to the Orcish Council\n"
+#| "    • Bitok\n"
+#| "    • Borstep\n"
+#| "    • Farzi\n"
+#| "    • Lmarig\n"
+#| "    • Melmog\n"
+#| "    • Prestim\n"
+#| "    • Tirigaz\n"
+#| "    • Dorest, the northernmost human city\n"
+#| "\n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • Black Marshes\n"
+#| "    • Mountains of Dorth\n"
+#| "    • Mountains of Haag\n"
+#| "    • Greenwood\n"
+#| "    • Silent Forest\n"
+#| "    • Forest of Thelien\n"
+#| "    • River Oumph\n"
+#| "    • River Bork\n"
+#| "    • Frosty Wastes\n"
+#| "    • Barren Plains"
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
 "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' text='Heart "
@@ -1749,30 +2042,7 @@ msgid ""
 "Steppe, who fell out of the control of the Clannate, instead roaming with "
 "wild human barbarians and clashing with the High Elves of the North Plains "
 "(known as North Elves in human lands). The High Elves themselves reside "
-"further east, where it is rumored they rule a vast kingdom.\n"
-"\n"
-"<header>text='Notable cities:'</header>\n"
-"    • Barag Gor, a city home to the Orcish Council\n"
-"    • Bitok\n"
-"    • Borstep\n"
-"    • Farzi\n"
-"    • Lmarig\n"
-"    • Melmog\n"
-"    • Prestim\n"
-"    • Tirigaz\n"
-"    • Dorest, the northernmost human city\n"
-"\n"
-"<header>text='Notable land features:'</header>\n"
-"    • Black Marshes\n"
-"    • Mountains of Dorth\n"
-"    • Mountains of Haag\n"
-"    • Greenwood\n"
-"    • Silent Forest\n"
-"    • Forest of Thelien\n"
-"    • River Oumph\n"
-"    • River Bork\n"
-"    • Frosty Wastes\n"
-"    • Barren Plains"
+"further east, where it is rumored they rule a vast kingdom."
 msgstr ""
 "Koud, wreed en ontoegankelijk. Het Verre Noorden is het voorouderlijke thuis "
 "van de Orkse Clans. Het ligt ten noorden van de <ref>dst='heart_mountains' "
@@ -1807,6 +2077,92 @@ msgstr ""
 "    • Bevroren Wildernis\n"
 "    • Dorre Vlakten"
 
+#. [topic]: id=far_north
+#. Geography of the Far North
+#: data/core/encyclopedia/geography.cfg:215
+msgid ""
+"<header>text='Notable cities:'</header>\n"
+"    • Barag Gor: A city home to the Orcish Council.\n"
+"    • Bitok\n"
+"    • Borstep\n"
+"    • Farzi\n"
+"    • Jotha: A large fortified capital of the local merfolk south of Bitok.\n"
+"    • Lmarig\n"
+"    • Melmog\n"
+"    • Prestim\n"
+"    • Tirigaz: A coastal orcish town that occasionally raids Jotha.\n"
+"    • Dorest: The northernmost human city.\n"
+"    • Arcanclave Citadel: A mythical fortress far beyond the woods of "
+"Lintanir, believed to have been forged by an earth elemental in the midst of "
+"battle. Its ruins have now become a military stronghold.\n"
+"    "
+msgstr ""
+
+#. [topic]: id=far_north
+#. Geography of the Far North
+#: data/core/encyclopedia/geography.cfg:231
+msgid ""
+"<header>text='Notable land features:'</header>\n"
+"    • Desert of Death: An unusually dry desert in the Far North filled with "
+"venomous Sand Scuttlers. It is extremely hot by day yet chilly by night.\n"
+"    • Black Marshes: A perilous swamp north of Tirigaz filled with violent "
+"monsters.\n"
+"    • Mountains of Dorth: A set of mountains north of the Heart Mountains. "
+"Though nowhere near as dangerous as its southern neighbour, it is "
+"nonetheless deadly to inexperienced travelers.\n"
+"    • Mountains of Haag: A group of high mountains inhabited by groups of "
+"orcs, trolls and dwarves.\n"
+"    • Mourned Hills: A series of rolling hills stretching south from the "
+"Mountains of Haag. The orcish town of Lmarig is at the southern edge of "
+"these hills.\n"
+"    • Greenwood: An elvish forest located near the Lintanir Forest. Some say "
+"it was once connected to it, until groups of savage orcs burned much of the "
+"forest.\n"
+"    • Silent Forest: A dense forest inhabited by a few elves, once known as "
+"Gitamoth.\n"
+"    • Forest of Thelien: A dense coniferous forest sometimes inhabited by "
+"elves.\n"
+"    • River Oumph: A river flowing from the Mountains of Haag to its delta "
+"just south of Bitok.\n"
+"    • River Bork: A river of the Far North flowing from a lake next to the "
+"Mourned Hills.\n"
+"    • Frosty Wastes: A cold, snowy desert in the far north inhabited only by "
+"the occasional monster.\n"
+"    • Barren Plains: A vast, sparsely populated snowy tundra."
+msgstr ""
+
+#. [topic]: id=far_south
+#: data/core/encyclopedia/geography.cfg:248
+#, fuzzy
+#| msgid "Far North"
+msgid "Far South"
+msgstr "Verre Noorden"
+
+#. [topic]: id=far_south
+#: data/core/encyclopedia/geography.cfg:249
+msgid ""
+"A vast region south of Kerlath home to many mysterious races, including the "
+"Jinn and Wyverns. Very little is known for certain about what lies here."
+msgstr ""
+
+#. [topic]: id=far_south
+#. Geography of the Far South
+#: data/core/encyclopedia/geography.cfg:253
+msgid ""
+"<header>text='Notable land features:'</header>\n"
+"    • Mountains of Peril: A tall and deadly mountain range in the Far South "
+"inhabited by bands of vicious barbarians and monsters.\n"
+"    • Sandy Wastes: A hot and dry desert located southeast of Kerlath. It is "
+"considered an impassable barrier by Wesnothians, filled with very sparse "
+"vegetation consisting of no more than a few shrubs and cacti.\n"
+"    • Isanbar: A mysterious mountain in the Sandy Wastes, surrounded "
+"entirely by flatter desert. It is not part of any mountain range and its "
+"existence is doubted by many.\n"
+"    • Ashland Desert: A mysterious desert rumored to exist beyond even the "
+"remote Sandy Wastes, sometimes known simply as the Ashland. A far-off "
+"civilization is sometimes said to live around the desert."
+msgstr ""
+
 #. [section]: id=schedule
 #: data/core/help.cfg:10
 msgid "Time of Day Schedule"
@@ -1820,72 +2176,85 @@ msgstr "Introductie"
 
 #. [section]: id=gameplay
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:23 data/core/help.cfg:167
+#: data/core/help.cfg:23 data/core/help.cfg:164
 msgid "Gameplay"
 msgstr "Gameplay"
 
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:531
-#: src/help/help_topic_generators.cpp:474
-#: src/help/help_topic_generators.cpp:497
+#: data/core/help.cfg:29 data/core/help.cfg:546
+#: src/help/help_topic_generators.cpp:508
+#: src/help/help_topic_generators.cpp:526
 msgid "Traits"
 msgstr "Karaktereigenschappen"
 
 #. [section]: id=units
 #. [topic]: id=..units
-#: data/core/help.cfg:37 data/core/help.cfg:118
+#: data/core/help.cfg:37 data/core/help.cfg:116
 msgid "Units"
 msgstr "Eenheden"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:46 data/core/help.cfg:138
+#: data/core/help.cfg:46 data/core/help.cfg:136
 msgid "Abilities"
 msgstr "Vaardigheden"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:54 data/core/help.cfg:147
+#: data/core/help.cfg:54 data/core/help.cfg:145
 msgid "Weapon Specials"
 msgstr "Wapenspecialiteiten"
 
 #. [section]: id=eras_section
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:62 data/core/help.cfg:127
+#: data/core/help.cfg:62 data/core/help.cfg:125
 msgid "Eras"
 msgstr "Tijdperken"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:70 data/core/help.cfg:546
+#: data/core/help.cfg:70 data/core/help.cfg:561
 msgid "Terrains"
 msgstr "Terrein"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:78 data/core/help.cfg:599
+#: data/core/help.cfg:78 data/core/help.cfg:604
 msgid "Add-ons"
 msgstr "Add-ons"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:84 data/core/help.cfg:672
+#: data/core/help.cfg:84 data/core/help.cfg:677
 msgid "Commands"
 msgstr "Opdrachten"
 
 #. [topic]: id=..introduction
 #: data/core/help.cfg:96
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy "
+#| "strategy game somewhat unusual among modern strategy games. While other "
+#| "games strive for complexity, <italic>text='Battle for Wesnoth'</italic> "
+#| "strives for simplicity of both rules and gameplay. This does not make the "
+#| "game simple, however — from these simple rules arises a wealth of "
+#| "strategy, making the game easy to learn but a challenge to master.\n"
+#| "\n"
+#| "The following pages outline all you need to know to play Wesnoth. As you "
+#| "play, new information is added to the various categories as you come "
+#| "across new aspects of the game. For more detailed information on special "
+#| "situations and exceptions, follow the included links."
 msgid ""
-"\n"
-"\n"
-"<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy strategy "
-"game somewhat unusual among modern strategy games. While other games strive "
-"for complexity, <italic>text='Battle for Wesnoth'</italic> strives for "
-"simplicity of both rules and gameplay. This does not make the game simple, "
-"however — from these simple rules arises a wealth of strategy, making the "
-"game easy to learn but a challenge to master.\n"
+"<italic>Battle for Wesnoth</italic> is a turn-based fantasy strategy game "
+"somewhat unusual among modern strategy games. While other games strive for "
+"complexity, <italic>Battle for Wesnoth</italic> strives for simplicity of "
+"both rules and gameplay. This does not make the game simple, however — from "
+"these simple rules arises a wealth of strategy, making the game easy to "
+"learn but a challenge to master.\n"
 "\n"
 "The following pages outline all you need to know to play Wesnoth. As you "
 "play, new information is added to the various categories as you come across "
@@ -1909,12 +2278,12 @@ msgstr ""
 "uitzonderingen, klik je op de links."
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:106
+#: data/core/help.cfg:104
 msgid "About the Game"
 msgstr "Over het Spel"
 
 #. [topic]: id=about_game
-#: data/core/help.cfg:107
+#: data/core/help.cfg:105
 msgid ""
 "The game takes place on a hex-based game field, where your units battle "
 "against those controlled by the computer, friends who each take turns on the "
@@ -1957,7 +2326,7 @@ msgstr ""
 "en sindsdien is er door veel vrijwilligers aan gewerkt."
 
 #. [topic]: id=..units
-#: data/core/help.cfg:119
+#: data/core/help.cfg:117
 msgid ""
 "This section will list all the units you discover as you explore the world "
 "of Wesnoth. When you see a new unit during a campaign or multiplayer "
@@ -1976,7 +2345,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:128
+#: data/core/help.cfg:126
 msgid ""
 "A faction is a collection of units and leaders. Factions are assigned to "
 "sides in multiplayer games.\n"
@@ -1987,7 +2356,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..eras_section
-#: data/core/help.cfg:130
+#: data/core/help.cfg:128
 msgid ""
 "An era is a collection of factions, intended to be played against one "
 "another. Besides the mainline eras that come with the game, many user-made "
@@ -2000,7 +2369,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..abilities_section
-#: data/core/help.cfg:139
+#: data/core/help.cfg:137
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -2017,7 +2386,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..weapon_specials
-#: data/core/help.cfg:148
+#: data/core/help.cfg:146
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
 "attacking with them. When you see a new weapon special during a campaign or "
@@ -2036,14 +2405,19 @@ msgstr ""
 "\n"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:157
+#: data/core/help.cfg:155
 msgid "Unknown Unit"
 msgstr "Onbekende Eenheid"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:158
+#: data/core/help.cfg:156
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "This unit is unknown for the moment. You must discover it in the game to "
+#| "be allowed to see its description."
 msgid ""
-"\n"
 "\n"
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
@@ -2054,7 +2428,7 @@ msgstr ""
 "ontdekken voordat je de beschrijving kan zien."
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:168
+#: data/core/help.cfg:165
 msgid ""
 "Wesnoth is comprised of a series of battles, called "
 "<italic>text='scenarios'</italic>, that pit your troops against the troops "
@@ -2114,7 +2488,7 @@ msgstr ""
 "behalen zijn en meer inzichten vereisen."
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:177
+#: data/core/help.cfg:174
 msgid ""
 "\n"
 "\n"
@@ -2127,7 +2501,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..gameplay
-#: data/core/help.cfg:177
+#: data/core/help.cfg:174
 msgid ""
 "While playing, keep in mind that you can mouse-over many items in the game, "
 "such as the information displayed in the status pane, to see a brief "
@@ -2142,12 +2516,12 @@ msgstr ""
 "tegenkomt."
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:189
+#: data/core/help.cfg:186
 msgid "Victory and Defeat"
 msgstr "Winnen en Verliezen"
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:190
+#: data/core/help.cfg:187
 msgid ""
 "\n"
 "\n"
@@ -2165,7 +2539,7 @@ msgstr ""
 "verder te gaan."
 
 #. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:190
+#: data/core/help.cfg:187
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. In most scenarios, you will achieve victory "
@@ -2183,12 +2557,12 @@ msgstr ""
 "beurten stand houden."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:199
+#: data/core/help.cfg:196
 msgid "Recruiting and Recalling"
 msgstr "Rekruteren en Oproepen"
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:200
+#: data/core/help.cfg:197
 msgid ""
 "\n"
 "\n"
@@ -2206,7 +2580,7 @@ msgstr ""
 "zolang je genoeg goud hebt."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:200
+#: data/core/help.cfg:197
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -2233,7 +2607,7 @@ msgstr ""
 "bold> om de eenheid te rekruteren."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:202
+#: data/core/help.cfg:199
 msgid ""
 "\n"
 "\n"
@@ -2247,7 +2621,7 @@ msgstr ""
 "beïnvloeden."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:204
+#: data/core/help.cfg:201
 msgid ""
 "\n"
 "\n"
@@ -2262,7 +2636,7 @@ msgstr ""
 "alle eenheden uit voorgaande scenario's."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:206
+#: data/core/help.cfg:203
 msgid ""
 "\n"
 "\n"
@@ -2277,12 +2651,12 @@ msgstr ""
 "onderhoud'</ref> voor meer informatie."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:215
+#: data/core/help.cfg:212
 msgid "Income and Upkeep"
 msgstr "Inkomen en Onderhoud"
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:216
+#: data/core/help.cfg:213
 msgid ""
 "\n"
 "\n"
@@ -2299,7 +2673,7 @@ msgstr ""
 "onderhoudskosten worden daar van afgetrokken, zoals hieronder beschreven."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:216
+#: data/core/help.cfg:213
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -2313,9 +2687,18 @@ msgstr ""
 "<italic>text='onderhoud'</italic>."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:220
+#: data/core/help.cfg:217
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Upkeep is also fairly simple. Each unit requires an amount of Upkeep "
+#| "equal to its level. You can support as many levels worth of units as you "
+#| "have villages, without paying any upkeep. However, for each level of unit "
+#| "beyond the number of villages you have, you must pay one gold per turn. "
+#| "For example, if you have twelve level one units and ten villages, you "
+#| "would have to pay two gold each turn in upkeep."
 msgid ""
-"\n"
 "\n"
 "Upkeep is also fairly simple. Each unit requires an amount of Upkeep equal "
 "to its level. You can support as many levels worth of units as you have "
@@ -2333,7 +2716,7 @@ msgstr ""
 "dorpjes. Je moet dan twee goudstukken per beurt betalen aan onderhoud."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:222
+#: data/core/help.cfg:218
 msgid ""
 "\n"
 "\n"
@@ -2348,9 +2731,18 @@ msgstr ""
 "hebben van 10 goudstukken per beurt."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:226
+#: data/core/help.cfg:222
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "In general, the base income, the amount of gold you get per village per "
+#| "turn, and the number of unit levels each village can support are "
+#| "configurable, but in campaigns they are almost always the values "
+#| "described above. The <italic>text='Scenario Settings'</italic> tab of the "
+#| "<italic>text='Status Table'</italic> dialog shows the values for the "
+#| "current scenario."
 msgid ""
-"\n"
 "\n"
 "In general, the base income, the amount of gold you get per village per "
 "turn, and the number of unit levels each village can support are "
@@ -2369,7 +2761,7 @@ msgstr ""
 "laat de juiste waarden voor het huidige gevecht zien."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:228
+#: data/core/help.cfg:223
 msgid ""
 "\n"
 "\n"
@@ -2390,12 +2782,12 @@ msgstr ""
 "Konrad) zal bijna altijd een leider zijn."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:237
+#: data/core/help.cfg:232
 msgid "Hitpoints and Experience"
 msgstr "Levenspunten en Ervaring"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:238
+#: data/core/help.cfg:233
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -2411,7 +2803,7 @@ msgstr ""
 "te vechten."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:242
+#: data/core/help.cfg:237
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -2422,7 +2814,7 @@ msgstr ""
 "hebben)."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:244
+#: data/core/help.cfg:239
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -2435,12 +2827,12 @@ msgstr ""
 "<ref>dst='advancement' text='promoveert'</ref>."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:251
+#: data/core/help.cfg:246
 msgid "Advancement"
 msgstr "Promotie"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:252
+#: data/core/help.cfg:247
 msgid ""
 "\n"
 "\n"
@@ -2458,7 +2850,7 @@ msgstr ""
 "sommige gevallen mag je kiezen tot wat de eenheid promoveert."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:252
+#: data/core/help.cfg:247
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -2472,7 +2864,7 @@ msgstr ""
 "voor een met rang 3, etc..."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:254
+#: data/core/help.cfg:249
 msgid ""
 "\n"
 "\n"
@@ -2500,12 +2892,12 @@ msgstr ""
 "het vaak verstandiger is eenheden van lagere rang te doen promoveren."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:263
+#: data/core/help.cfg:258
 msgid "Movement"
 msgstr "Verplaatsing"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:264
+#: data/core/help.cfg:259
 msgid ""
 "\n"
 "\n"
@@ -2533,7 +2925,7 @@ msgstr ""
 "eenheid nodig heeft voor elk van de terreinsoorten."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:264
+#: data/core/help.cfg:259
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -2564,7 +2956,7 @@ msgstr ""
 "dorpje heeft ingenomen (maar die kan nog wel aanvallen)."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:266
+#: data/core/help.cfg:261
 msgid ""
 "\n"
 "\n"
@@ -2587,7 +2979,7 @@ msgstr ""
 "beheersingszones."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:268
+#: data/core/help.cfg:263
 msgid ""
 "\n"
 "\n"
@@ -2601,13 +2993,29 @@ msgstr ""
 "v of Ctrl-v drukken. Ctrl-b of Ctrl-b toont waar de vijand heen kan bewegen "
 "als jouw eenheden niet in de weg zouden staan."
 
+#. [topic]: id=vision
+#: data/core/help.cfg:272
+#, fuzzy
+#| msgid "Vision:"
+msgid "Vision"
+msgstr "Zicht:"
+
+#. [topic]: id=vision
+#: data/core/help.cfg:273
+msgid ""
+"Vision determines how far a unit can see on the map. Normally, a unit’s "
+"vision range is calculated as its movement range plus one hex. Certain units "
+"with unique vision capabilities deviate from this rule and have vision cost "
+"independent of movement range."
+msgstr ""
+
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:277
+#: data/core/help.cfg:280
 msgid "Shroud and Fog of War"
 msgstr "Sluier en Oorlogsmist"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:278
+#: data/core/help.cfg:281
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -2651,12 +3059,12 @@ msgstr ""
 "daardoor het ongedaan maken van zetten mogelijk maken."
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:282
+#: data/core/help.cfg:285
 msgid "<header>text='Multiplayer and undo'</header>"
 msgstr "<header>text='Multiplayer en ongedaan maken'</header>"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:284
+#: data/core/help.cfg:287
 msgid ""
 "In multiplayer games, moves that have been sent to the network can’t be "
 "undone; the game delays sending data to try to preserve your undo ability. "
@@ -2667,12 +3075,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:291
+#: data/core/help.cfg:294
 msgid "Save-loading"
 msgstr "Spel-laden"
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:292
+#: data/core/help.cfg:295
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck — this is an expected part of the game. Going back to a previous "
@@ -2682,7 +3090,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:294
+#: data/core/help.cfg:297
 msgid ""
 "One of the challenges of the game is to work out how to protect your heroes. "
 "Small risks quickly build up: if you have five important units, and they "
@@ -2698,7 +3106,7 @@ msgstr ""
 "voltooid zonder dat dit gebeurd."
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:297
+#: data/core/help.cfg:300
 msgid ""
 "Small risks build up for your non-hero units too. While the story and "
 "dialogue usually aim to give you some emotional bond with your troops, the "
@@ -2709,7 +3117,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:299
+#: data/core/help.cfg:302
 msgid ""
 "The difficulty levels are balanced assuming that the player won’t save-load. "
 "In the mainline campaigns, harder difficulties generally have more enemies "
@@ -2719,19 +3127,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:301
+#: data/core/help.cfg:304
 msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:308
+#: data/core/help.cfg:311
 msgid "Learning from Losses"
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:309
+#: data/core/help.cfg:312
 msgid ""
 "<italic>text='Why did I lose that scenario?'</italic>\n"
 "\n"
@@ -2740,7 +3148,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:311
+#: data/core/help.cfg:314
 msgid ""
 "\n"
 "\n"
@@ -2751,7 +3159,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:313
+#: data/core/help.cfg:316
 msgid ""
 "\n"
 "\n"
@@ -2759,7 +3167,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:315
+#: data/core/help.cfg:318
 msgid ""
 "\n"
 "\n"
@@ -2768,7 +3176,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:317
+#: data/core/help.cfg:320
 msgid ""
 "\n"
 "\n"
@@ -2778,7 +3186,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:319
+#: data/core/help.cfg:322
 msgid ""
 "\n"
 "\n"
@@ -2789,7 +3197,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:321
+#: data/core/help.cfg:324
 msgid ""
 "\n"
 "\n"
@@ -2806,7 +3214,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:323
+#: data/core/help.cfg:326
 msgid ""
 "\n"
 "\n"
@@ -2819,7 +3227,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:325
+#: data/core/help.cfg:328
 msgid ""
 "\n"
 "\n"
@@ -2830,7 +3238,7 @@ msgstr ""
 "<header>text='Onwaarschijnlijke redenen'</header>"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:327
+#: data/core/help.cfg:330
 msgid ""
 "\n"
 "\n"
@@ -2839,7 +3247,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:329
+#: data/core/help.cfg:332
 msgid ""
 "\n"
 "\n"
@@ -2849,7 +3257,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:331
+#: data/core/help.cfg:334
 msgid ""
 "\n"
 "\n"
@@ -2862,7 +3270,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:333
+#: data/core/help.cfg:336
 msgid ""
 "\n"
 "\n"
@@ -2881,7 +3289,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:335
+#: data/core/help.cfg:338
 msgid ""
 "\n"
 "\n"
@@ -2893,7 +3301,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:337
+#: data/core/help.cfg:340
 msgid ""
 "\n"
 "\n"
@@ -2905,12 +3313,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:346
+#: data/core/help.cfg:349
 msgid "Combat"
 msgstr "Vechten"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:347
+#: data/core/help.cfg:350
 msgid ""
 "\n"
 "\n"
@@ -2921,7 +3329,7 @@ msgstr ""
 "<header>text='Volgorde en Aantal Slagen'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:347
+#: data/core/help.cfg:350
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -2947,7 +3355,7 @@ msgstr ""
 "vuurballen."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:349
+#: data/core/help.cfg:352
 msgid ""
 "\n"
 "\n"
@@ -2971,7 +3379,7 @@ msgstr ""
 "toebrengen."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:351
+#: data/core/help.cfg:354
 msgid ""
 "\n"
 "\n"
@@ -2982,7 +3390,7 @@ msgstr ""
 "<header>text='Raakkans'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:353
+#: data/core/help.cfg:356
 msgid ""
 "\n"
 "\n"
@@ -3007,7 +3415,7 @@ msgstr ""
 "aanvaller raakt, af van het terreinsoort waarin de aanvaller zich bevindt."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:355
+#: data/core/help.cfg:358
 msgid ""
 "\n"
 "\n"
@@ -3026,7 +3434,7 @@ msgstr ""
 "van het terrein."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:357
+#: data/core/help.cfg:360
 msgid ""
 "\n"
 "\n"
@@ -3037,7 +3445,7 @@ msgstr ""
 "<header>text=Schade</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:359
+#: data/core/help.cfg:362
 msgid ""
 "\n"
 "\n"
@@ -3061,7 +3469,7 @@ msgstr ""
 "aanvalselectievenster."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:361
+#: data/core/help.cfg:364
 msgid ""
 "\n"
 "\n"
@@ -3079,12 +3487,12 @@ msgstr ""
 "wanneer de eenheid met dit vermogen aanvalt."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:369
+#: data/core/help.cfg:372
 msgid "Damage Types and Resistance"
 msgstr "Aanvalssoorten en Weestand"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:370
+#: data/core/help.cfg:373
 msgid ""
 "\n"
 "\n"
@@ -3103,7 +3511,7 @@ msgstr ""
 "verdubbeld wordt."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:370
+#: data/core/help.cfg:373
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -3120,7 +3528,7 @@ msgstr ""
 "daadwerkelijk toegebrachte schade verandert."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:372
+#: data/core/help.cfg:375
 msgid ""
 "\n"
 "\n"
@@ -3135,7 +3543,7 @@ msgstr ""
 "kwetsbaar voor witte magie aanvallen."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:374
+#: data/core/help.cfg:377
 msgid ""
 "\n"
 "\n"
@@ -3149,12 +3557,12 @@ msgstr ""
 "zelfs als de verdediger 100% weerstand heeft tegen het aanvalstype."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:382
+#: data/core/help.cfg:385
 msgid "Orbs and ellipses"
 msgstr ""
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:383
+#: data/core/help.cfg:386
 msgid ""
 "There are colored indicators above the energy bars of some units, consisting "
 "of a colored orb (and sometimes a <ref>dst='crowns' text='crown'</ref>)."
@@ -3162,7 +3570,7 @@ msgstr ""
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
-#: data/core/help.cfg:395
+#: data/core/help.cfg:397
 msgid ""
 "The orbs show whether the unit can move or attack. The statuses and their "
 "standard colors are:\n"
@@ -3190,7 +3598,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:407
+#: data/core/help.cfg:409
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3203,7 +3611,7 @@ msgstr ""
 "<header>text='Bronnen'</header>"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:410
+#: data/core/help.cfg:412
 msgid ""
 "A team-colored shape is drawn on the ground under each unit. This is called "
 "the “ellipse”, although some units’ ellipses are not elliptical."
@@ -3211,7 +3619,7 @@ msgstr ""
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
-#: data/core/help.cfg:421
+#: data/core/help.cfg:422
 msgid ""
 "• Most units have a circular ellipse.\n"
 "• Units that can recruit have a seven-pointed star.\n"
@@ -3224,12 +3632,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=crowns
-#: data/core/help.cfg:432
+#: data/core/help.cfg:433
 msgid "Crowns and loyal markers"
 msgstr ""
 
 #. [topic]: id=crowns
-#: data/core/help.cfg:433
+#: data/core/help.cfg:434
 msgid ""
 "Some units have an additional marker superimposed on their <ref>dst='orbs' "
 "text='orb'</ref>, and a corresponding shape to their <ref>dst='orbs' "
@@ -3238,7 +3646,7 @@ msgstr ""
 
 #. [topic]: id=crowns
 #. The help page has a set of images above this paragraph, in the same order as the first set of bullet points, showing what the "loyal icon" is and the difference between "silver" and "blueish-silver".
-#: data/core/help.cfg:448
+#: data/core/help.cfg:446
 msgid ""
 "• Leaders are shown with a <bold>text='gold crown'</bold>.\n"
 "• Heroes have a <bold>text='blueish-silver crown'</bold>.\n"
@@ -3262,12 +3670,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:466
+#: data/core/help.cfg:464
 msgid "Time of Day"
 msgstr "Tijd van de Dag"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:467
+#: data/core/help.cfg:465
 #, fuzzy
 #| msgid ""
 #| "The time of day affects the damage of certain units as follows:\n"
@@ -3282,12 +3690,14 @@ msgstr "Tijd van de Dag"
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 "\n"
-"• <bold>text='Lawful'</bold> units get +25% damage in daytime, and −25% "
-"damage at night.\n"
-"• <bold>text='Chaotic'</bold> units get +25% damage at night, and −25% in "
-"daytime.\n"
-"• <bold>text='Neutral'</bold> units are unaffected by the time of day.\n"
-"• <bold>text='Liminal'</bold> units get +25% damage during twilight."
+"• <span face='Serif' size='15'>LAWFUL</span> units get +25% damage in "
+"daytime, and −25% damage at night.\n"
+"• <span face='Serif' size='15'>CHAOTIC</span> units get +25% damage at "
+"night, and −25% in daytime.\n"
+"• <span face='Serif' size='15'>NEUTRAL</span> units are unaffected by the "
+"time of day.\n"
+"• <span face='Serif' size='15'>LIMINAL</span> units get +25% damage during "
+"twilight."
 msgstr ""
 "De tijd van de dag beïnvloedt de toegebrachte schade van eenheden als "
 "volgend:\n"
@@ -3302,14 +3712,21 @@ msgstr ""
 "overdag als 's nachts."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:472
+#: data/core/help.cfg:470
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "The current time of day can be observed under the minimap in the status "
+#| "pane. For the usual day/night cycle, morning and afternoon count as day, "
+#| "first and second watch count as night:\n"
+#| "\n"
 msgid ""
 "\n"
 "\n"
 "The current time of day can be observed under the minimap in the status "
 "pane. For the usual day/night cycle, morning and afternoon count as day, "
-"first and second watch count as night:\n"
-"\n"
+"first and second watch count as night:"
 msgstr ""
 "\n"
 "\n"
@@ -3319,75 +3736,57 @@ msgstr ""
 "\n"
 
 #. [topic]: id=time_of_day
-#. [time]: id=dawn
-#. [time]: id=dawn_hour
-#: data/core/help.cfg:476 data/core/macros/schedules.cfg:16
-#: data/core/macros/schedules.cfg:290
-msgid "Dawn"
-msgstr "Zonsopgang"
-
-#. [topic]: id=time_of_day
-#. [time]: id=morning
-#: data/core/help.cfg:477 data/core/macros/schedules.cfg:28
-msgid "Morning"
-msgstr "Ochtend"
-
-#. [topic]: id=time_of_day
-#. [time]: id=afternoon
-#: data/core/help.cfg:478 data/core/macros/schedules.cfg:46
-msgid "Afternoon"
-msgstr "Middag"
-
-#. [topic]: id=time_of_day
-#. [time]: id=dusk
-#. [time]: id=dusk_hour
-#: data/core/help.cfg:479 data/core/macros/schedules.cfg:55
-#: data/core/macros/schedules.cfg:411
-msgid "Dusk"
-msgstr "Zonsondergang"
-
-#. [topic]: id=time_of_day
-#. [time]: id=first_watch
-#: data/core/help.cfg:480 data/core/macros/schedules.cfg:67
-msgid "First Watch"
-msgstr "Eerste Helft"
-
-#. [topic]: id=time_of_day
-#. [time]: id=second_watch
-#: data/core/help.cfg:481 data/core/macros/schedules.cfg:91
-msgid "Second Watch"
-msgstr "Tweede Helft"
-
-#. [topic]: id=time_of_day
-#: data/core/help.cfg:483
+#: data/core/help.cfg:497
+#, fuzzy
+#| msgid ""
+#| "Keep in mind that some scenarios take place underground, where it is "
+#| "perpetually night!\n"
 msgid ""
+"\n"
 "Keep in mind that some scenarios take place underground, where it is "
-"perpetually night!\n"
+"perpetually night!"
 msgstr ""
 "Houd er rekening mee dat sommige scenario's ondergronds plaatsvinden, waar "
 "het voortdurend nacht is!\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:485
+#: data/core/help.cfg:499
+#, fuzzy
+#| msgid ""
+#| "Some underground locations are illuminated. They are perpetually "
+#| "intermediate between day and night.\n"
 msgid ""
+"\n"
 "Some underground locations are illuminated. They are perpetually "
-"intermediate between day and night.\n"
+"intermediate between day and night."
 msgstr ""
 "Sommige ondergrondse locaties zijn verlicht. Zij zijn voortdurend geen dag "
 "en geen nacht.\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:487
+#: data/core/help.cfg:501
+#, fuzzy
+#| msgid ""
+#| "Some role-playing scenarios take place indoors — these regions are "
+#| "similarly intermediate.\n"
 msgid ""
+"\n"
 "Some role-playing scenarios take place indoors — these regions are similarly "
-"intermediate.\n"
+"intermediate."
 msgstr ""
 "Sommige rollenspel scenarios vinden binnen plaats — deze regio's zijn ook "
 "voortdurend tussen dag en nacht in.\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:489
+#: data/core/help.cfg:503
+#, fuzzy
+#| msgid ""
+#| "Finally, units with the <ref>dst='ability_illuminationilluminates' "
+#| "text='illuminates'</ref> ability and terrain features such as "
+#| "<ref>dst='terrain_lava' text='lava'</ref> change the time of day bonus "
+#| "around them."
 msgid ""
+"\n"
 "Finally, units with the <ref>dst='ability_illuminationilluminates' "
 "text='illuminates'</ref> ability and terrain features such as "
 "<ref>dst='terrain_lava' text='lava'</ref> change the time of day bonus "
@@ -3399,12 +3798,12 @@ msgstr ""
 "veranderen de tijd van de dag-bonus om hen heen."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:496
+#: data/core/help.cfg:511
 msgid "Healing"
 msgstr "Genezing"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:497
+#: data/core/help.cfg:512
 #, fuzzy
 msgid ""
 "\n"
@@ -3418,7 +3817,7 @@ msgstr ""
 "zal 2 LP genezen in de volgende beurt."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:497
+#: data/core/help.cfg:512
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -3430,7 +3829,7 @@ msgstr ""
 "plaatsvinden."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:499
+#: data/core/help.cfg:514
 msgid ""
 "\n"
 "• <bold>text='Villages'</bold>: A unit which starts a turn in a village or "
@@ -3439,7 +3838,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:500
+#: data/core/help.cfg:515
 msgid ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Regeneration'</ref>: "
@@ -3453,7 +3852,7 @@ msgstr ""
 "genezen worden."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:501
+#: data/core/help.cfg:516
 msgid ""
 "\n"
 "• <bold>text='Healing units'</bold>: Units with the "
@@ -3471,7 +3870,7 @@ msgstr ""
 "dat een vergiftiging de eenheid verwondt."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:502
+#: data/core/help.cfg:517
 msgid ""
 "\n"
 "• <bold>text='Curing units'</bold>: Units with the "
@@ -3486,7 +3885,7 @@ msgstr ""
 "het genezen van LP, als het deze vaardigheid ook heeft)."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:503
+#: data/core/help.cfg:518
 msgid ""
 "\n"
 "• <bold>text='Advancement'</bold>: When a unit <ref>dst='advancement' "
@@ -3500,7 +3899,7 @@ msgstr ""
 "wiens beurt het is."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:504
+#: data/core/help.cfg:519
 msgid ""
 "\n"
 "\n"
@@ -3516,7 +3915,7 @@ msgstr ""
 "worden eenheden volledig genezen."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:506
+#: data/core/help.cfg:521
 msgid ""
 "\n"
 "\n"
@@ -3527,7 +3926,7 @@ msgstr ""
 "<bold>text='Gevorderd'</bold>"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:508
+#: data/core/help.cfg:523
 msgid ""
 "\n"
 "\n"
@@ -3547,12 +3946,12 @@ msgstr ""
 "meerdere beurten genezen worden."
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:516
+#: data/core/help.cfg:531
 msgid "Wrap Up"
 msgstr "Afronding"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:517
+#: data/core/help.cfg:532
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -3568,12 +3967,12 @@ msgstr ""
 "plezier en succes!"
 
 #. [topic]: id=license
-#: data/core/help.cfg:522
+#: data/core/help.cfg:537
 msgid "License"
 msgstr "Licentie"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:533
+#: data/core/help.cfg:548
 msgid ""
 "\n"
 "\n"
@@ -3591,7 +3990,7 @@ msgstr ""
 "karaktereigenschappen. "
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:533
+#: data/core/help.cfg:548
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -3605,7 +4004,7 @@ msgstr ""
 "<italic>text='ras'</italic>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:535
+#: data/core/help.cfg:550
 msgid ""
 "\n"
 "\n"
@@ -3622,7 +4021,7 @@ msgstr ""
 "text='Flexibel'</ref>, en <ref>dst='traits_strong' text='Sterk'</ref>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:537
+#: data/core/help.cfg:552
 msgid ""
 "\n"
 "\n"
@@ -3645,12 +4044,18 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:547
+#: data/core/help.cfg:562
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Terrains come in two types: <italic>text='basic'</italic> and "
+#| "<italic>text='mixed'</italic>."
 msgid ""
 "\n"
 "\n"
-"Terrains come in two types: <italic>text='basic'</italic> and "
-"<italic>text='mixed'</italic>."
+"Terrains come in two types: <italic>basic</italic> and <italic>mixed</"
+"italic>."
 msgstr ""
 "\n"
 "\n"
@@ -3658,7 +4063,7 @@ msgstr ""
 "<italic>text='gemengd'</italic>."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:547
+#: data/core/help.cfg:562
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -3667,18 +4072,23 @@ msgstr ""
 "verplaatsingen en verdedigingsmogelijkheden beïnvloeden."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:549
+#: data/core/help.cfg:564
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Basic Terrain Types'</header>"
 msgid ""
 "\n"
 "\n"
-"<header>text='Basic Terrain Types'</header>"
+"<header>Basic Terrain Types</header>"
 msgstr ""
 "\n"
 "\n"
 "<header>text='Standaard Terreinsoorten'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:551
+#: data/core/help.cfg:566
 msgid ""
 "\n"
 "\n"
@@ -3696,10 +4106,32 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:555
+#: data/core/help.cfg:570
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Mixed Terrain Types'</header>"
 msgid ""
 "\n"
 "\n"
+"<header>Mixed Terrain Types</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Gemengde Terreinsoorten'</header>"
+
+#. [topic]: id=..terrains_section
+#: data/core/help.cfg:570
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Every unit has a defense rating and a movement cost for each of the basic "
+#| "terrain types, and these values are listed in the unit’s help page. Basic "
+#| "terrain types may have unique properties like illumination effects as "
+#| "well."
+msgid ""
 "Every unit has a defense rating and a movement cost for each of the basic "
 "terrain types, and these values are listed in the unit’s help page. Basic "
 "terrain types may have unique properties like illumination effects as well."
@@ -3711,27 +4143,26 @@ msgstr ""
 "terreinsoorten kunnen ook unieke eigenschappen hebben zoals verlicht."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:557
-msgid ""
-"\n"
-"\n"
-"<header>text='Mixed Terrain Types'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Gemengde Terreinsoorten'</header>"
-
-#. [topic]: id=..terrains_section
-#: data/core/help.cfg:559
+#: data/core/help.cfg:572
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Mixed terrain types share the properties of multiple basic terrain types "
+#| "— units generally receive the <italic>text='best defense'</italic> and "
+#| "<italic>text='worst movement'</italic> of the underlying basic types when "
+#| "they move onto a mixed type. For example, this is the case with "
+#| "<italic>text='forested hills'</italic>, <italic>text='sand hills'</"
+#| "italic>, and <italic>text='cave hills'</italic>.\n"
+#| "\n"
 msgid ""
 "\n"
 "\n"
 "Mixed terrain types share the properties of multiple basic terrain types — "
-"units generally receive the <italic>text='best defense'</italic> and "
-"<italic>text='worst movement'</italic> of the underlying basic types when "
-"they move onto a mixed type. For example, this is the case with "
-"<italic>text='forested hills'</italic>, <italic>text='sand hills'</italic>, "
-"and <italic>text='cave hills'</italic>.\n"
+"units generally receive the <italic>best defense</italic> and <italic>worst "
+"movement</italic> of the underlying basic types when they move onto a mixed "
+"type. For example, this is the case with <italic>forested hills</italic>, "
+"<italic>sand hills</italic>, and <italic>cave hills</italic>.\n"
 "\n"
 msgstr ""
 "\n"
@@ -3746,17 +4177,26 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:563
+#: data/core/help.cfg:576
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "One notable exception is bridge terrains, such as <italic>text='bridges "
+#| "over shallow water'</italic>, <italic>text='fords'</italic>, and "
+#| "<italic>text='bridges over chasms'</italic>. Fords are easily passable to "
+#| "both merfolk and humans — all units moving on a ford enjoy the best "
+#| "defense and best movement out of flat and shallow water, rather than the "
+#| "worse movement of the two. Similarly, bridges over chasms are passable to "
+#| "nonfliers (unsurprisingly).\n"
+#| "\n"
 msgid ""
-"\n"
-"\n"
-"One notable exception is bridge terrains, such as <italic>text='bridges over "
-"shallow water'</italic>, <italic>text='fords'</italic>, and "
-"<italic>text='bridges over chasms'</italic>. Fords are easily passable to "
-"both merfolk and humans — all units moving on a ford enjoy the best defense "
-"and best movement out of flat and shallow water, rather than the worse "
-"movement of the two. Similarly, bridges over chasms are passable to "
-"nonfliers (unsurprisingly).\n"
+"One notable exception is bridge terrains, such as <italic>bridges over "
+"shallow water</italic>, <italic>fords</italic>, and <italic>bridges over "
+"chasms</italic>. Fords are easily passable to both merfolk and humans — all "
+"units moving on a ford enjoy the best defense and best movement out of flat "
+"and shallow water, rather than the worse movement of the two. Similarly, "
+"bridges over chasms are passable to nonfliers (unsurprisingly).\n"
 "\n"
 msgstr ""
 "\n"
@@ -3772,10 +4212,16 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:567
+#: data/core/help.cfg:578
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Land-based villages generally give the best defense and movement as well. "
+#| "These villages are mixed terrains, based on the village terrain type, "
+#| "together with hill, swamp, and cave, respectively.\n"
+#| "\n"
 msgid ""
-"\n"
-"\n"
 "Land-based villages generally give the best defense and movement as well. "
 "These villages are mixed terrains, based on the village terrain type, "
 "together with hill, swamp, and cave, respectively.\n"
@@ -3789,10 +4235,16 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:571
+#: data/core/help.cfg:580
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Finally, water villages are generally inhospitable to land units, and do "
+#| "not give defense or movement benefits associated with the village terrain "
+#| "type. Instead, they count only as water tiles.\n"
+#| "\n"
 msgid ""
-"\n"
-"\n"
 "Finally, water villages are generally inhospitable to land units, and do not "
 "give defense or movement benefits associated with the village terrain type. "
 "Instead, they count only as water tiles.\n"
@@ -3806,10 +4258,38 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:575
+#: data/core/help.cfg:582
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "You can see what type of behavior the mixed terrain gives by mousing over "
+#| "its hex and viewing the <italic>text='terrain description'</italic> by "
+#| "either pressing the hotkey, or right clicking and selecting from the "
+#| "context menu."
 msgid ""
 "\n"
 "\n"
+"You can see what type of behavior the mixed terrain gives by mousing over "
+"its hex and viewing the <italic>terrain description</italic> by either "
+"pressing the hotkey, or right clicking and selecting from the context menu."
+msgstr ""
+"\n"
+"\n"
+"Je kan zien welk gedrag gemengd terrein vertoond door er met je muis "
+"overheen te bewegen en de <italic>text='terrein beschrijving'</italic> te "
+"bekijken door het indrukken van de sneltoets of via rechter muisknop."
+
+#. [topic]: id=..terrains_section
+#: data/core/help.cfg:582
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "You can see what basic types a mixed terrain is comprised of by mousing "
+#| "over its hex and checking the terrain type icons displayed in the upper "
+#| "right (under the default theme)."
+msgid ""
 "You can see what basic types a mixed terrain is comprised of by mousing over "
 "its hex and checking the terrain type icons displayed in the upper right "
 "(under the default theme)."
@@ -3821,40 +4301,36 @@ msgstr ""
 "bekijken (bij gebruik van standaard thema)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:577
+#: data/core/help.cfg:584
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Defense Caps'</header>"
 msgid ""
 "\n"
 "\n"
-"You can see what type of behavior the mixed terrain gives by mousing over "
-"its hex and viewing the <italic>text='terrain description'</italic> by "
-"either pressing the hotkey, or right clicking and selecting from the context "
-"menu."
-msgstr ""
-"\n"
-"\n"
-"Je kan zien welk gedrag gemengd terrein vertoond door er met je muis "
-"overheen te bewegen en de <italic>text='terrein beschrijving'</italic> te "
-"bekijken door het indrukken van de sneltoets of via rechter muisknop."
-
-#. [topic]: id=..terrains_section
-#: data/core/help.cfg:579
-msgid ""
-"\n"
-"\n"
-"<header>text='Defense Caps'</header>"
+"<header>Defense Caps</header>"
 msgstr ""
 "\n"
 "\n"
 "<header>text='Verdeding Maximum'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:581
+#: data/core/help.cfg:586
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Some units have <italic>text='defense caps'</italic> for a particular "
+#| "basic terrain type. These units suffer a penalty on mixed terrains with "
+#| "that type — their defense cannot exceed the cap."
 msgid ""
 "\n"
 "\n"
-"Some units have <italic>text='defense caps'</italic> for a particular basic "
-"terrain type. These units suffer a penalty on mixed terrains with that type "
-"— their defense cannot exceed the cap."
+"Some units have <italic>defense caps</italic> for a particular basic terrain "
+"type. These units suffer a penalty on mixed terrains with that type — their "
+"defense cannot exceed the cap."
 msgstr ""
 "\n"
 "\n"
@@ -3864,14 +4340,22 @@ msgstr ""
 "het maximum."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:583
+#: data/core/help.cfg:588
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "For example, the <ref>text='Loyalist Cavalryman' dst='unit_Cavalryman'</"
+#| "ref> has a defense rating of 30% on forests, and a defense cap for "
+#| "forests. Thus, on forested hills, he has a defense rating of 30% rather "
+#| "than 40%, because the mixed rating cannot exceed the cap."
 msgid ""
 "\n"
 "\n"
-"For example, the <ref>text='Loyalist Cavalryman' dst='unit_Cavalryman'</ref> "
-"has a defense rating of 30% on forests, and a defense cap for forests. Thus, "
-"on forested hills, he has a defense rating of 30% rather than 40%, because "
-"the mixed rating cannot exceed the cap."
+"For example, the <ref dst='unit_Cavalryman'>Loyalist Cavalryman</ref> has a "
+"defense rating of 30% on forests, and a defense cap for forests. Thus, on "
+"forested hills, he has a defense rating of 30% rather than 40%, because the "
+"mixed rating cannot exceed the cap."
 msgstr ""
 "\n"
 "\n"
@@ -3882,7 +4366,7 @@ msgstr ""
 "zijn dan het maximum."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:585
+#: data/core/help.cfg:590
 msgid ""
 "\n"
 "\n"
@@ -3896,11 +4380,17 @@ msgstr ""
 "niet hoger zijn)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:587
+#: data/core/help.cfg:592
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Basic Terrain Types'</header>\n"
+#| "\n"
 msgid ""
 "\n"
 "\n"
-"<header>text='Basic Terrain Types'</header>\n"
+"<header>Basic Terrain Types</header>\n"
 "\n"
 msgstr ""
 "\n"
@@ -3909,7 +4399,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:600
+#: data/core/help.cfg:605
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -3923,12 +4413,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:610
+#: data/core/help.cfg:615
 msgid "Using Add-ons"
 msgstr "Add-ons gebruiken"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:611
+#: data/core/help.cfg:616
 msgid ""
 "\n"
 "\n"
@@ -3939,7 +4429,7 @@ msgstr ""
 "<header>text='Veldtochten en Scenarios'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:611
+#: data/core/help.cfg:616
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
@@ -3948,7 +4438,7 @@ msgstr ""
 "allemaal even beschikbaar in iedere spelmodus."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:613
+#: data/core/help.cfg:618
 msgid ""
 "\n"
 "\n"
@@ -3965,7 +4455,7 @@ msgstr ""
 "<italic>text='Veldtochten'</italic> menu op het hoofdscherm."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:615
+#: data/core/help.cfg:620
 msgid ""
 "\n"
 "\n"
@@ -3977,7 +4467,7 @@ msgstr ""
 "header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:617
+#: data/core/help.cfg:622
 msgid ""
 "\n"
 "\n"
@@ -3993,7 +4483,7 @@ msgstr ""
 "multiplayer scenario bieden."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:619
+#: data/core/help.cfg:624
 msgid ""
 "\n"
 "\n"
@@ -4004,7 +4494,7 @@ msgstr ""
 "<header>text='Multiplayer Tijdperken en Facties'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:621
+#: data/core/help.cfg:626
 msgid ""
 "\n"
 "\n"
@@ -4029,7 +4519,7 @@ msgstr ""
 "bij dit tijdperk hoort om mee te spelen."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:625
+#: data/core/help.cfg:630
 msgid ""
 "\n"
 "\n"
@@ -4042,7 +4532,7 @@ msgstr ""
 "<ref>text='tijdperken' dst='..eras_section'</ref> van help."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:627
+#: data/core/help.cfg:632
 msgid ""
 "\n"
 "\n"
@@ -4053,7 +4543,7 @@ msgstr ""
 "<header>text='Aanpassingen'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:629
+#: data/core/help.cfg:634
 msgid ""
 "\n"
 "\n"
@@ -4068,7 +4558,7 @@ msgstr ""
 "aanpassingen kiezen en aanpassen wanneer je een nieuw spel maakt."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:631
+#: data/core/help.cfg:636
 msgid ""
 "\n"
 "\n"
@@ -4079,7 +4569,18 @@ msgstr ""
 "<header>text='Bronnen'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:633
+#: data/core/help.cfg:638
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Cores enable total conversion of The Battle for Wesnoth. A core can "
+#| "replace all the content in Wesnoth: when a different core is loaded, the "
+#| "regular units, terrains and the like do not exist.\n"
+#| "\n"
+#| "Cores allow a significantly different game experience: for example, a "
+#| "World War II campaign, or even a different game altogether, as long as it "
+#| "can be represented as a hexagonal map with ’units’ in some way."
 msgid ""
 "\n"
 "\n"
@@ -4089,7 +4590,7 @@ msgid ""
 "\n"
 "Cores allow a significantly different game experience: for example, a World "
 "War II campaign, or even a different game altogether, as long as it can be "
-"represented as a hexagonal map with ’units’ in some way."
+"represented as a hexagonal map with ‘units’ in some way."
 msgstr ""
 "\n"
 "\n"
@@ -4103,7 +4604,7 @@ msgstr ""
 "een of andere manier."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:637
+#: data/core/help.cfg:642
 msgid ""
 "\n"
 "\n"
@@ -4114,7 +4615,7 @@ msgstr ""
 "<header>text='Ontwerp Middelen'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:639
+#: data/core/help.cfg:644
 msgid ""
 "\n"
 "\n"
@@ -4134,12 +4635,12 @@ msgstr ""
 "worden."
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:648
+#: data/core/help.cfg:653
 msgid "Installing Add-ons"
 msgstr "Installeren Add-ons"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:649
+#: data/core/help.cfg:654
 #, fuzzy
 #| msgid ""
 #| "User-made add-ons can be obtained and updated through the "
@@ -4214,12 +4715,12 @@ msgstr ""
 "vertalingen."
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:662
+#: data/core/help.cfg:667
 msgid "Removing Add-ons"
 msgstr "Verwijderen Add-ons"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:663
+#: data/core/help.cfg:668
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -4242,19 +4743,19 @@ msgstr ""
 "systeem."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:678
+#: data/core/help.cfg:683
 msgid "General Commands"
 msgstr "Algemene Opdrachten"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:679 data/core/help.cfg:724 data/core/help.cfg:762
+#: data/core/help.cfg:684 data/core/help.cfg:729 data/core/help.cfg:767
 #, fuzzy
 #| msgid ""
 #| "These commands can either be issued via the command line by prefixing "
-#| "them with ':' (as shown here) or via the chat by prefixing them with '/' "
-#| "(press 'm' first to open the chat line).\n"
+#| "them with ':' (as shown here) or via the chat by prefixing them with "
+#| "'/' (press 'm' first to open the chat line).\n"
 #| "\n"
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
@@ -4269,7 +4770,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:681
+#: data/core/help.cfg:686
 msgid ""
 "\n"
 "Similar to the ‘fps’ command, but also forces everything to redraw instead "
@@ -4278,7 +4779,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:684
+#: data/core/help.cfg:689
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -4289,7 +4790,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:687
+#: data/core/help.cfg:692
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -4304,7 +4805,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:691
+#: data/core/help.cfg:696
 msgid ""
 "\n"
 "Switch a side between human and AI control. The second parameter can be "
@@ -4317,7 +4818,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:694
+#: data/core/help.cfg:699
 msgid ""
 "\n"
 "Display the controller status of a side.\n"
@@ -4328,7 +4829,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:697
+#: data/core/help.cfg:702
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4345,7 +4846,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:700
+#: data/core/help.cfg:705
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -4356,7 +4857,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:703
+#: data/core/help.cfg:708
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -4367,7 +4868,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:706
+#: data/core/help.cfg:711
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -4378,7 +4879,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:709
+#: data/core/help.cfg:714
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -4389,7 +4890,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:712
+#: data/core/help.cfg:717
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -4400,7 +4901,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:715
+#: data/core/help.cfg:720
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -4409,12 +4910,12 @@ msgstr ""
 "Spel opslaan en scenario afsluiten (zonder bevestiging)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:723
+#: data/core/help.cfg:728
 msgid "Multiplayer Commands"
 msgstr "Multiplayercommando's"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:726
+#: data/core/help.cfg:731
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -4430,7 +4931,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:729
+#: data/core/help.cfg:734
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -4451,7 +4952,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:732
+#: data/core/help.cfg:737
 msgid ""
 "\n"
 "Launch a dialog to assist the host in changing the human controllers of "
@@ -4464,7 +4965,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:735
+#: data/core/help.cfg:740
 msgid ""
 "\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
@@ -4477,7 +4978,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:738
+#: data/core/help.cfg:743
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -4492,7 +4993,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:741
+#: data/core/help.cfg:746
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -4507,7 +5008,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:744
+#: data/core/help.cfg:749
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -4520,7 +5021,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:747
+#: data/core/help.cfg:752
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -4531,7 +5032,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:750
+#: data/core/help.cfg:755
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -4546,7 +5047,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:753
+#: data/core/help.cfg:758
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -4557,12 +5058,12 @@ msgstr ""
 "lijst met waarnemers die de mond gesnoerd zijn gewist."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:761
+#: data/core/help.cfg:766
 msgid "Debug Mode Commands"
 msgstr "Debug Modus Commando's"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:764
+#: data/core/help.cfg:769
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -4575,7 +5076,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:767
+#: data/core/help.cfg:772
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -4586,7 +5087,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:770
+#: data/core/help.cfg:775
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -4597,7 +5098,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:773
+#: data/core/help.cfg:778
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -4608,7 +5109,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:776
+#: data/core/help.cfg:781
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -4619,7 +5120,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:779
+#: data/core/help.cfg:784
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -4630,7 +5131,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:782
+#: data/core/help.cfg:787
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -4641,7 +5142,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:785
+#: data/core/help.cfg:790
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -4652,7 +5153,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:788
+#: data/core/help.cfg:793
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -4665,7 +5166,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:791
+#: data/core/help.cfg:796
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -4905,17 +5406,17 @@ msgstr ""
 "verplaatsen."
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:305
+#: data/core/macros/abilities.cfg:306
 msgid "burrow"
 msgstr ""
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:306
+#: data/core/macros/abilities.cfg:307
 msgid "female^burrow"
 msgstr ""
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:307
+#: data/core/macros/abilities.cfg:308
 #, fuzzy
 #| msgid ""
 #| "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -4940,7 +5441,7 @@ msgstr ""
 "verplaatsen."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:328
+#: data/core/macros/abilities.cfg:330
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -4956,12 +5457,12 @@ msgstr ""
 "beurt niet meer verplaatsen."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:347
+#: data/core/macros/abilities.cfg:349
 msgid "female^concealment"
 msgstr "verbergen"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:348
+#: data/core/macros/abilities.cfg:350
 #, fuzzy
 #| msgid ""
 #| "This unit can hide in villages (with the exception of water villages), "
@@ -4989,17 +5490,17 @@ msgstr ""
 "niet meer verplaatsen."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:366
+#: data/core/macros/abilities.cfg:368
 msgid "submerge"
 msgstr "duiken"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:367
+#: data/core/macros/abilities.cfg:369
 msgid "female^submerge"
 msgstr "duiken"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:368
+#: data/core/macros/abilities.cfg:370
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -5014,13 +5515,49 @@ msgstr ""
 "eenheid als eerste ontdekt blijft geschrokken staan en kan zich die beurt "
 "niet meer verplaatsen."
 
-#. [dummy]: id=feeding
+#. [hides]: id=swamp_lurk
 #: data/core/macros/abilities.cfg:388
+msgid "swamp lurk"
+msgstr ""
+
+#. [hides]: id=swamp_lurk
+#: data/core/macros/abilities.cfg:389
+#, fuzzy
+#| msgid "female^weak"
+msgid "female^swamp lurk"
+msgstr "zwak"
+
+#. [hides]: id=swamp_lurk
+#: data/core/macros/abilities.cfg:390
+#, fuzzy
+#| msgid ""
+#| "This unit can hide in forest, and remain undetected by its enemies.\n"
+#| "\n"
+#| "Enemy units cannot see this unit while it is in forest, except if they "
+#| "have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
+msgid ""
+"This unit can hide in swamp, and remain undetected by its enemies.\n"
+"\n"
+"Enemy units cannot see this unit while it is in swamp, except if they have "
+"units next to it. Any enemy unit that first discovers this unit immediately "
+"loses all its remaining movement."
+msgstr ""
+"Deze eenheid kan zich verstoppen in het bos en zo onopgemerkt blijven door "
+"zijn tegenstanders.\n"
+"\n"
+"Vijandelijke eenheden kunnen deze eenheid niet zien in het bos, behalve als "
+"ze er eenheden naast hebben staan. Een vijandelijke eenheid die deze eenheid "
+"als eerste ontdekt blijft geschrokken staan en kan zich die beurt niet meer "
+"verplaatsen."
+
+#. [dummy]: id=feeding
+#: data/core/macros/abilities.cfg:409
 msgid "female^feeding"
 msgstr "voeden"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:389
+#: data/core/macros/abilities.cfg:410
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -5030,9 +5567,20 @@ msgstr ""
 "voor ziekte."
 
 #. [advancement]: id=amla_default
-#: data/core/macros/amla.cfg:10
+#: data/core/macros/amla.cfg:29
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr "Max LP bonus +3, Max EP +20%"
+
+#. [time]: id=dawn
+#. [time]: id=dawn_hour
+#: data/core/macros/schedules.cfg:16 data/core/macros/schedules.cfg:290
+msgid "Dawn"
+msgstr "Zonsopgang"
+
+#. [time]: id=morning
+#: data/core/macros/schedules.cfg:28
+msgid "Morning"
+msgstr "Ochtend"
 
 #. [time]: id=midday
 #. [time]: id=midday_hour
@@ -5040,11 +5588,32 @@ msgstr "Max LP bonus +3, Max EP +20%"
 msgid "Midday"
 msgstr "12 Uur Overdag"
 
+#. [time]: id=afternoon
+#: data/core/macros/schedules.cfg:46
+msgid "Afternoon"
+msgstr "Middag"
+
+#. [time]: id=dusk
+#. [time]: id=dusk_hour
+#: data/core/macros/schedules.cfg:55 data/core/macros/schedules.cfg:411
+msgid "Dusk"
+msgstr "Zonsondergang"
+
+#. [time]: id=first_watch
+#: data/core/macros/schedules.cfg:67
+msgid "First Watch"
+msgstr "Eerste Helft"
+
 #. [time]: id=midnight
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:79 data/core/macros/schedules.cfg:206
 msgid "Midnight"
 msgstr "Middernacht"
+
+#. [time]: id=second_watch
+#: data/core/macros/schedules.cfg:91
+msgid "Second Watch"
+msgstr "Tweede Helft"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:218
@@ -5990,13 +6559,28 @@ msgstr ""
 "Eenheden met het kenmerk <italic>text='oud'</italic> krijgen 1 levenspunt "
 "minder en doen op korte afstand 1 minder schade per aanval."
 
+#. [disable]: id=unwieldy
+#: data/core/macros/weapon_specials.cfg:7
+msgid "unwieldy"
+msgstr ""
+
+#. [disable]: id=unwieldy
+#: data/core/macros/weapon_specials.cfg:8
+msgid "This attack can only be used offensively."
+msgstr ""
+
+#. [disable]: id=unwieldy
+#: data/core/macros/weapon_specials.cfg:10
+msgid "This unit has an unwieldy weapon, which cannot be used defensively."
+msgstr ""
+
 #. [berserk]: id=berserk
-#: data/core/macros/weapon_specials.cfg:9
+#: data/core/macros/weapon_specials.cfg:19
 msgid "berserk"
 msgstr "razernij"
 
 #. [berserk]: id=berserk
-#: data/core/macros/weapon_specials.cfg:10
+#: data/core/macros/weapon_specials.cfg:20
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -6006,7 +6590,7 @@ msgstr ""
 "gevechtsrondes)."
 
 #. [damage]: id=backstab
-#: data/core/macros/weapon_specials.cfg:22
+#: data/core/macros/weapon_specials.cfg:32
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -6018,7 +6602,7 @@ msgstr ""
 "kant van het slachtoffer bevindt."
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/weapon_specials.cfg:42
+#: data/core/macros/weapon_specials.cfg:52
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
@@ -6029,7 +6613,7 @@ msgstr ""
 "bij Ondoden en eenheden in dorpen."
 
 #. [slow]: id=slow
-#: data/core/macros/weapon_specials.cfg:65
+#: data/core/macros/weapon_specials.cfg:75
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -6042,12 +6626,12 @@ msgstr ""
 "slakicoon in de zijbalk informatie staan wanneer de eenheid is geselecteerd."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:75
+#: data/core/macros/weapon_specials.cfg:85
 msgid "petrifies"
 msgstr "versteent"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:76
+#: data/core/macros/weapon_specials.cfg:86
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -6056,45 +6640,20 @@ msgstr ""
 "niet bewegen of aanvallen."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/weapon_specials.cfg:87
+#: data/core/macros/weapon_specials.cfg:97
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "Bij aanvallend gebruik, heeft deze aanval altijd een raakkans van ten minste "
 "60%."
 
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/weapon_specials.cfg:100
-msgid "deflect"
-msgstr ""
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/weapon_specials.cfg:101
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
-msgid ""
-"When used defensively, this attack reduces the opponent’s chance to hit by "
-"10%."
-msgstr ""
-"Bij aanvallend gebruik, heeft deze aanval altijd een raakkans van ten minste "
-"60%."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/weapon_specials.cfg:102
-msgid ""
-"This unit’s defensive techniques reduce the chance of a successful enemy "
-"attack."
-msgstr ""
-
 #. [chance_to_hit]: id=magical
-#: data/core/macros/weapon_specials.cfg:115
+#: data/core/macros/weapon_specials.cfg:110
 msgid "magical"
 msgstr "magisch"
 
 #. [chance_to_hit]: id=magical
-#: data/core/macros/weapon_specials.cfg:116
+#: data/core/macros/weapon_specials.cfg:111
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -6102,13 +6661,63 @@ msgstr ""
 "Deze aanval heeft altijd 70% kans om te raken ongeacht de verdediging van de "
 "aangevallen eenheid."
 
+#. [disable]: id=naval_ram
+#: data/core/macros/weapon_specials.cfg:123
+msgid "naval ram"
+msgstr ""
+
+#. [disable]: id=naval_ram
+#: data/core/macros/weapon_specials.cfg:124
+msgid "This attack can only be used against units in water terrain."
+msgstr ""
+
+#. [disable]: id=naval_ram
+#: data/core/macros/weapon_specials.cfg:132
+msgid ""
+"This unit has an attack that can only be used against units in watery "
+"terrain."
+msgstr ""
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:136
+#: data/core/macros/weapon_specials.cfg:174
+msgid "charge"
+msgstr "stormloop"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:137
+#: data/core/macros/weapon_specials.cfg:175
+msgid ""
+"When used offensively, this attack deals double damage to the target. It "
+"also causes this unit to take double damage from the target’s counterattack."
+msgstr ""
+"Bij aanvallend gebruik brengt deze aanval twee keer zo veel schade toe. Het "
+"zorgt er ook voor dat de eenheid twee keer zo veel schade ontvangt van de "
+"tegenaanval."
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:150
+msgid "honed"
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:151
+msgid "This attack is 10% more accurate than other attacks."
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:152
+msgid ""
+"This unit’s “honed” attack is slightly more accurate than other attacks."
+msgstr ""
+
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:128
+#: data/core/macros/weapon_specials.cfg:163
 msgid "swarm"
 msgstr "zwerm"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:129
+#: data/core/macros/weapon_specials.cfg:164
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -6120,41 +6729,25 @@ msgstr ""
 "aantal LP. Als een eenheid bijvoorbeeld 3/4 van zijn maximale LP heeft "
 "krijgt het 3/4 van zijn aantal aanvallen."
 
-#. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:139
-msgid "charge"
-msgstr "stormloop"
-
-#. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:140
-msgid ""
-"When used offensively, this attack deals double damage to the target. It "
-"also causes this unit to take double damage from the target’s counterattack."
-msgstr ""
-"Bij aanvallend gebruik brengt deze aanval twee keer zo veel schade toe. Het "
-"zorgt er ook voor dat de eenheid twee keer zo veel schade ontvangt van de "
-"tegenaanval."
-
-#. [damage]: id=absorb
-#: data/core/macros/weapon_specials.cfg:153
-msgid "absorb"
+#. [damage]: id=guard
+#: data/core/macros/weapon_specials.cfg:188
+msgid "guard"
 msgstr ""
 
-#. [damage]: id=absorb
-#: data/core/macros/weapon_specials.cfg:154
-msgid ""
-"This attack puts the unit in good defensive position, and it absorbs some of "
-"the damage dealt by an enemy strike."
+#. [damage]: id=guard
+#: data/core/macros/weapon_specials.cfg:189
+msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr ""
 
-#. [damage]: id=absorb
-#: data/core/macros/weapon_specials.cfg:155
+#. [damage]: id=guard
+#: data/core/macros/weapon_specials.cfg:190
 msgid ""
-"This unit can block enemy strikes, so that it takes reduced damage when hit."
+"This unit’s guarding attack can halve incoming damage, but only when used in "
+"combat."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:167
+#: data/core/macros/weapon_specials.cfg:202
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -6163,19 +6756,19 @@ msgstr ""
 "helft van de schade die hij toebrengt (naar beneden afgerond)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:177
+#: data/core/macros/weapon_specials.cfg:212
 msgid "first strike"
 msgstr "snelle slag"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:178
+#: data/core/macros/weapon_specials.cfg:213
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "Deze eenheid deelt altijd de eerste klap uit, ook wanneer hij verdedigt."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:189
+#: data/core/macros/weapon_specials.cfg:224
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -6186,19 +6779,19 @@ msgstr ""
 "zelf kan geen eenheid doden."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:199
+#: data/core/macros/weapon_specials.cfg:234
 msgid "stun"
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:200
+#: data/core/macros/weapon_specials.cfg:235
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:201
+#: data/core/macros/weapon_specials.cfg:236
 #, fuzzy
 #| msgid ""
 #| "This unit is able to slow its enemies, halving their movement speed and "
@@ -6210,19 +6803,19 @@ msgstr ""
 "effectiviteit van hun aanvallen gehalveerd worden."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:208
+#: data/core/macros/weapon_specials.cfg:245
 msgid "arcane"
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:209
+#: data/core/macros/weapon_specials.cfg:246
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:210
+#: data/core/macros/weapon_specials.cfg:247
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -6286,23 +6879,53 @@ msgstr ""
 "aangetroffen. Meestal worden vaak gehouden (en af en toe getemd) door "
 "degenen die hun liefde voor de nacht delen."
 
-#. [race]: id=drake
+#. [race]: id=cats
+#: data/core/units.cfg:49
+#, fuzzy
+#| msgid "race^Bat"
+msgid "race^Cat"
+msgstr "Vleermuis"
+
+#. [race]: id=cats
+#: data/core/units.cfg:50
+#, fuzzy
+#| msgid "race+female^Bat"
+msgid "race+female^Cat"
+msgstr "Vleermuis"
+
+#. [race]: id=cats
 #: data/core/units.cfg:51
+#, fuzzy
+#| msgid "race^Bats"
+msgid "race^Cats"
+msgstr "Vleermuizen"
+
+#. [race]: id=cats
+#: data/core/units.cfg:52
+msgid ""
+"Big cats are nimble, solitary predators that can cause trouble for any "
+"farmer or hunter that encounter them. The cats that hunt rodents and drive "
+"away lone wolves are tolerated by civilized folk, but some big cats are "
+"considered terrifying monsters."
+msgstr ""
+
+#. [race]: id=drake
+#: data/core/units.cfg:61
 msgid "race^Drake"
 msgstr "Draak"
 
 #. [race]: id=drake
-#: data/core/units.cfg:52
+#: data/core/units.cfg:62
 msgid "race+female^Drake"
 msgstr "Draak"
 
 #. [race]: id=drake
-#: data/core/units.cfg:53
+#: data/core/units.cfg:63
 msgid "race^Drakes"
 msgstr "Draken"
 
 #. [race]: id=drake
-#: data/core/units.cfg:54
+#: data/core/units.cfg:64
 #, fuzzy
 #| msgid ""
 #| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
@@ -6506,22 +7129,22 @@ msgstr ""
 "bevolken."
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:87
+#: data/core/units.cfg:97
 msgid "race^Dwarf"
 msgstr "Dwerg"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:88
+#: data/core/units.cfg:98
 msgid "race+female^Dwarf"
 msgstr "Dwerg"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:89
+#: data/core/units.cfg:99
 msgid "race^Dwarves"
 msgstr "Dwergen"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:90
+#: data/core/units.cfg:100
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -6619,22 +7242,22 @@ msgstr ""
 "versterken."
 
 #. [race]: id=elf
-#: data/core/units.cfg:107
+#: data/core/units.cfg:117
 msgid "race^Elf"
 msgstr "Elf"
 
 #. [race]: id=elf
-#: data/core/units.cfg:108
+#: data/core/units.cfg:118
 msgid "race+female^Elf"
 msgstr "Elf"
 
 #. [race]: id=elf
-#: data/core/units.cfg:109
+#: data/core/units.cfg:119
 msgid "race^Elves"
 msgstr "Elfen"
 
 #. [race]: id=elf
-#: data/core/units.cfg:111
+#: data/core/units.cfg:121
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -6651,9 +7274,8 @@ msgid ""
 "in the northwest, and the great northern woods of which the Lintanir Forest "
 "is the southernmost edge.\n"
 "\n"
-"Elves are the eldest race of the continent, with the possible exception of "
-"trolls. Many of their settlements cannot be reliably dated, undoubtedly "
-"having existed for several millennia.\n"
+"Elves are among the eldest races of the continent. Many of their settlements "
+"cannot be reliably dated, undoubtedly having existed for several millennia.\n"
 "\n"
 "<header>text='Magic'</header>\n"
 "While elves are fundamentally different creatures than the fabled fair folk, "
@@ -6701,22 +7323,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=falcon
-#: data/core/units.cfg:137
+#: data/core/units.cfg:147
 msgid "race^Falcon"
 msgstr "Valk"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:138
+#: data/core/units.cfg:148
 msgid "race+female^Falcon"
 msgstr "Valk"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:139
+#: data/core/units.cfg:149
 msgid "race^Falcons"
 msgstr "Valken"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:140
+#: data/core/units.cfg:150
 msgid ""
 "Falcons are birds of prey, noted for their exceptional speed and agility. "
 "Lighter and with less powerful talons than other raptors, falcons instead "
@@ -6739,22 +7361,22 @@ msgstr ""
 "ondersteuning van een leger."
 
 #. [race]: id=goblin
-#: data/core/units.cfg:148
+#: data/core/units.cfg:158
 msgid "race^Goblin"
 msgstr "Kobold"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:149
+#: data/core/units.cfg:159
 msgid "race+female^Goblin"
 msgstr "Kobold"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:150
+#: data/core/units.cfg:160
 msgid "race^Goblins"
 msgstr "Kobolds"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:151
+#: data/core/units.cfg:161
 msgid ""
 "\n"
 "\n"
@@ -6783,22 +7405,22 @@ msgstr ""
 "vertonen het beeld van het bewijs van hun kunnen voor de orks."
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:168
+#: data/core/units.cfg:178
 msgid "race^Gryphon"
 msgstr "Griffioen"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:169
+#: data/core/units.cfg:179
 msgid "race+female^Gryphon"
 msgstr "Griffioen"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:170
+#: data/core/units.cfg:180
 msgid "race^Gryphons"
 msgstr "Griffioenen"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:171
+#: data/core/units.cfg:181
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -6819,22 +7441,22 @@ msgstr ""
 "als hun oorsprong."
 
 #. [race]: id=horse
-#: data/core/units.cfg:181
+#: data/core/units.cfg:191
 msgid "race^Horse"
 msgstr "Paard"
 
 #. [race]: id=horse
-#: data/core/units.cfg:182
+#: data/core/units.cfg:192
 msgid "race+female^Horse"
 msgstr "Paard"
 
 #. [race]: id=horse
-#: data/core/units.cfg:183
+#: data/core/units.cfg:193
 msgid "race^Horses"
 msgstr "Paarden"
 
 #. [race]: id=horse
-#: data/core/units.cfg:184
+#: data/core/units.cfg:194
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -6848,22 +7470,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=human
-#: data/core/units.cfg:201
+#: data/core/units.cfg:211
 msgid "race^Human"
 msgstr "Mens"
 
 #. [race]: id=human
-#: data/core/units.cfg:202
+#: data/core/units.cfg:212
 msgid "race+female^Human"
 msgstr "Mens"
 
 #. [race]: id=human
-#: data/core/units.cfg:203
+#: data/core/units.cfg:213
 msgid "race^Humans"
 msgstr "Mensen"
 
 #. [race]: id=human
-#: data/core/units.cfg:204
+#: data/core/units.cfg:214
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -6947,22 +7569,22 @@ msgstr ""
 "en zwakke punten van deze groepen vullen elkaar aan."
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:219
+#: data/core/units.cfg:229
 msgid "race^Dunefolk Human"
 msgstr "Duinvolk Mens"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:220
+#: data/core/units.cfg:230
 msgid "race+female^Dunefolk Human"
 msgstr "Duinvolk Mens"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:221
+#: data/core/units.cfg:231
 msgid "race+plural^Dunefolk"
 msgstr "Duinvolk"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:223
+#: data/core/units.cfg:233
 #, fuzzy
 #| msgid ""
 #| "An offshoot of a forgotten nomadic civilization, the Dunefolk humans lay "
@@ -7138,22 +7760,89 @@ msgstr ""
 "exotische uithoeken van Irdya."
 
 #. [race]: id=lizard
-#: data/core/units.cfg:244
+#: data/core/units.cfg:254
 msgid "race^Saurian"
 msgstr "Sauriaan"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:245
+#: data/core/units.cfg:255
 msgid "race+female^Saurian"
 msgstr "Sauriaan"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:246
+#: data/core/units.cfg:256
 msgid "race^Saurians"
 msgstr "Saurianen"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:247
+#: data/core/units.cfg:257
+#, fuzzy
+#| msgid ""
+#| "Saurians are lizard-like creatures. Smaller and more slender than humans, "
+#| "they rarely stand taller than a ten year old child, though from tip of "
+#| "snout to end of tail a Saurian can be as long as the average man is tall. "
+#| "Light and nimble, the warriors prefer to fight as they hunt — slipping "
+#| "through enemy lines to target the weak and the injured while evading "
+#| "their attackers.\n"
+#| "\n"
+#| "<header>text='Society'</header>\n"
+#| "Saurians are very mysterious creatures due to their tendency to live in "
+#| "areas inhospitable to others, such as swamps. Fatalistic in the extreme, "
+#| "Saurians believe all the events in a life can be predicted by the use of "
+#| "a complex form of astrology.\n"
+#| "\n"
+#| "Saurian culture is sharply segregated between the genders. Within each "
+#| "gender the members compete, and through skill, determination, and "
+#| "reputation establish a clear pecking order, with a chief at the top. On "
+#| "those occasions when the two genders interact they do not contest for "
+#| "dominance; instead, the situation determines the dominant gender. The "
+#| "chief of the males is alpha within the clan's village or encampment while "
+#| "the chief of females is dominant anywhere else. This continues down the "
+#| "rank structure with each male or female being dominant over any member of "
+#| "the opposite gender with lower rank and submitting to members of the "
+#| "opposite gender with higher rank.\n"
+#| "\n"
+#| "The segregation and alternating gender-dominance of Saurian society is an "
+#| "outgrowth of their clearly defined gender roles. It is the responsibility "
+#| "of the female to hunt and find food, skills which ultimately train them "
+#| "to be warriors: the skirmishers, flankers, and ambushers other races so "
+#| "fear. Males, meanwhile, are responsible for guarding the clutch — the "
+#| "eggs left by the females. While this leaves time for the males to develop "
+#| "and hone the arts of astrology, healing, and magic, it also exposes them "
+#| "to significant danger, as they are stationary targets for a Saurian "
+#| "clan's number one enemy — other Saurian clans.\n"
+#| "\n"
+#| "New Saurian clans are started when the proper astrological signs are "
+#| "read. Called a “hatching,” each female indicated by the conjunction "
+#| "selects a group of individuals with lower rank and leave their source "
+#| "clan. Frequently all females with a specific trait will be indicated, "
+#| "causing multiple clans to “hatch” at the same time. Selection is a simple "
+#| "process: no group leaving can be larger than any other, all the groups "
+#| "together cannot be larger than the group being left, and higher ranking "
+#| "allows a female to overrule another female's choice of who they take.\n"
+#| "\n"
+#| "Because of their rapid population growth, frequent splits in clans, and "
+#| "the fact that cannibalism is not taboo, violence is one of the defining "
+#| "features of Saurian life. This limits the growth of the Saurian culture "
+#| "to fits and starts, as much of their knowledge is passed by oral "
+#| "tradition and their possessions must be mobile.\n"
+#| "\n"
+#| "<header>text='Geography'</header>\n"
+#| "Saurians can live in many different areas, though swamps are by far their "
+#| "most common habitat.\n"
+#| "\n"
+#| "<header>text='Biology'</header>\n"
+#| "Saurians live spectacularly short lives by comparison to most of the "
+#| "other races of Wesnoth, reaching full adulthood within three years and "
+#| "often dying by the time they are 10 to 15 years old. By far, the most "
+#| "common cause of death is violence. Saurian females produce clutches of "
+#| "about 20 eggs roughly once a year, which creates constant population "
+#| "pressure and would stress most carnivores' food supply. Hunters and "
+#| "scavengers, Saurians have extremely strong jaws and have a very powerful "
+#| "digestive system with highly acidic fluids, making them capable of eating "
+#| "and digesting all of their prey including skin, teeth, horns and bones. "
+#| "Further, they have no aversion to eating carrion and even committing "
+#| "cannibalism, which are both regular occurrences."
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -7173,7 +7862,7 @@ msgid ""
 "establish a clear pecking order, with a chief at the top. On those occasions "
 "when the two genders interact they do not contest for dominance; instead, "
 "the situation determines the dominant gender. The chief of the males is "
-"alpha within the clan's village or encampment while the chief of females is "
+"alpha within the clan’s village or encampment while the chief of females is "
 "dominant anywhere else. This continues down the rank structure with each "
 "male or female being dominant over any member of the opposite gender with "
 "lower rank and submitting to members of the opposite gender with higher "
@@ -7186,7 +7875,7 @@ msgid ""
 "Males, meanwhile, are responsible for guarding the clutch — the eggs left by "
 "the females. While this leaves time for the males to develop and hone the "
 "arts of astrology, healing, and magic, it also exposes them to significant "
-"danger, as they are stationary targets for a Saurian clan's number one enemy "
+"danger, as they are stationary targets for a Saurian clan’s number one enemy "
 "— other Saurian clans.\n"
 "\n"
 "New Saurian clans are started when the proper astrological signs are read. "
@@ -7196,7 +7885,7 @@ msgid ""
 "to “hatch” at the same time. Selection is a simple process: no group leaving "
 "can be larger than any other, all the groups together cannot be larger than "
 "the group being left, and higher ranking allows a female to overrule another "
-"female's choice of who they take.\n"
+"female’s choice of who they take.\n"
 "\n"
 "Because of their rapid population growth, frequent splits in clans, and the "
 "fact that cannibalism is not taboo, violence is one of the defining features "
@@ -7214,7 +7903,7 @@ msgid ""
 "by the time they are 10 to 15 years old. By far, the most common cause of "
 "death is violence. Saurian females produce clutches of about 20 eggs roughly "
 "once a year, which creates constant population pressure and would stress "
-"most carnivores' food supply. Hunters and scavengers, Saurians have "
+"most carnivores’ food supply. Hunters and scavengers, Saurians have "
 "extremely strong jaws and have a very powerful digestive system with highly "
 "acidic fluids, making them capable of eating and digesting all of their prey "
 "including skin, teeth, horns and bones. Further, they have no aversion to "
@@ -7292,17 +7981,17 @@ msgstr ""
 "zelfs kannibalisme, wat beide regelmatig voorkomt."
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:273
+#: data/core/units.cfg:283
 msgid "race^Mechanical"
 msgstr "Mechanisch"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:274
+#: data/core/units.cfg:284
 msgid "race+plural^Mechanical"
 msgstr "Mechanisch"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:275
+#: data/core/units.cfg:285
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -7314,23 +8003,48 @@ msgstr ""
 "van een intelligent wezen. De meeste mechanische dingen bewegen noch denken "
 "alleen, maar anderen doen dat als een gevolg van een magische betovering.."
 
+#. [race]: id=ship
+#: data/core/units.cfg:294
+#, fuzzy
+#| msgid "race^Saurian"
+msgid "race^Ship"
+msgstr "Sauriaan"
+
+#. [race]: id=ship
+#: data/core/units.cfg:295
+#, fuzzy
+#| msgid "race+plural^Mechanical"
+msgid "race+plural^Ships"
+msgstr "Mechanisch"
+
+#. [race]: id=ship
+#: data/core/units.cfg:296
+msgid ""
+"Ships are not living beings, but they are crafted and (usually) controlled "
+"by living beings. Although inanimate objects, they are very dear to their "
+"masters, needing care and attention in return for providing sustenance and "
+"protection. For this reason, most are given names and attributed traits. "
+"Those traits may be technical or they may simply reflect the collective "
+"attitude of the crew, but they are real."
+msgstr ""
+
 #. [race]: id=merman
-#: data/core/units.cfg:284
+#: data/core/units.cfg:310
 msgid "race^Merman"
 msgstr "Meerman"
 
 #. [race]: id=merman
-#: data/core/units.cfg:285
+#: data/core/units.cfg:311
 msgid "race^Mermaid"
 msgstr "Meermin"
 
 #. [race]: id=merman
-#: data/core/units.cfg:286
+#: data/core/units.cfg:312
 msgid "race^Merfolk"
 msgstr "Watervolk"
 
 #. [race]: id=merman
-#: data/core/units.cfg:288
+#: data/core/units.cfg:314
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -7354,22 +8068,22 @@ msgstr ""
 "over ruw of bebost terrein te bewegen."
 
 #. [race]: id=monster
-#: data/core/units.cfg:296
+#: data/core/units.cfg:322
 msgid "race^Monster"
 msgstr "Monster"
 
 #. [race]: id=monster
-#: data/core/units.cfg:297
+#: data/core/units.cfg:323
 msgid "race+female^Monster"
 msgstr "Monster"
 
 #. [race]: id=monster
-#: data/core/units.cfg:298
+#: data/core/units.cfg:324
 msgid "race^Monsters"
 msgstr "Monsters"
 
 #. [race]: id=monster
-#: data/core/units.cfg:299
+#: data/core/units.cfg:325
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -7380,22 +8094,22 @@ msgstr ""
 "komen ook grotendeels voor in de verhalen en nachtmerries van zijn bewoners."
 
 #. [race]: id=naga
-#: data/core/units.cfg:306
+#: data/core/units.cfg:332
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:307
+#: data/core/units.cfg:333
 msgid "race^Nagini"
 msgstr "Nagini"
 
 #. [race]: id=naga
-#: data/core/units.cfg:308
+#: data/core/units.cfg:334
 msgid "race^Nagas"
 msgstr "Nagas"
 
 #. [race]: id=naga
-#: data/core/units.cfg:309
+#: data/core/units.cfg:335
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -7428,22 +8142,22 @@ msgstr ""
 "net als voor open water."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:317
+#: data/core/units.cfg:343
 msgid "race^Ogre"
 msgstr "Boeman"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:318
+#: data/core/units.cfg:344
 msgid "race+female^Ogre"
 msgstr "Boevrouw"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:319
+#: data/core/units.cfg:345
 msgid "race^Ogres"
 msgstr "Boemannen"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:320
+#: data/core/units.cfg:346
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -7477,22 +8191,22 @@ msgstr ""
 "wederzijds opportunisme is, is niet bekend."
 
 #. [race]: id=orc
-#: data/core/units.cfg:328
+#: data/core/units.cfg:354
 msgid "race^Orc"
 msgstr "Ork"
 
 #. [race]: id=orc
-#: data/core/units.cfg:329
+#: data/core/units.cfg:355
 msgid "race+female^Orc"
 msgstr "Ork"
 
 #. [race]: id=orc
-#: data/core/units.cfg:330
+#: data/core/units.cfg:356
 msgid "race^Orcs"
 msgstr "Orks"
 
 #. [race]: id=orc
-#: data/core/units.cfg:331
+#: data/core/units.cfg:357
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -7597,7 +8311,7 @@ msgstr ""
 "fysiek verdord en broos en missen veel vaardigheid in de strijd.\n"
 
 #. [race]: id=orc
-#: data/core/units.cfg:342
+#: data/core/units.cfg:368
 msgid ""
 "\n"
 "\n"
@@ -7610,28 +8324,28 @@ msgstr ""
 "andere talenten zoals boogschutters of huurmoordenaars."
 
 #. [race]: id=raven
-#: data/core/units.cfg:351
+#: data/core/units.cfg:377
 #, fuzzy
 #| msgid "race^Dwarves"
 msgid "race^Raven"
 msgstr "Dwergen"
 
 #. [race]: id=raven
-#: data/core/units.cfg:352
+#: data/core/units.cfg:378
 #, fuzzy
 #| msgid "race+female^Drake"
 msgid "race+female^Raven"
 msgstr "Draak"
 
 #. [race]: id=raven
-#: data/core/units.cfg:353
+#: data/core/units.cfg:379
 #, fuzzy
 #| msgid "race^Dwarves"
 msgid "race^Ravens"
 msgstr "Dwergen"
 
 #. [race]: id=raven
-#: data/core/units.cfg:354
+#: data/core/units.cfg:380
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
@@ -7651,22 +8365,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:365
+#: data/core/units.cfg:391
 msgid "race^Troll"
 msgstr "Trol"
 
 #. [race]: id=troll
-#: data/core/units.cfg:366
+#: data/core/units.cfg:392
 msgid "race+female^Troll"
 msgstr "Trol"
 
 #. [race]: id=troll
-#: data/core/units.cfg:367
+#: data/core/units.cfg:393
 msgid "race^Trolls"
 msgstr "Trollen"
 
 #. [race]: id=troll
-#: data/core/units.cfg:368
+#: data/core/units.cfg:394
 #, fuzzy
 #| msgid ""
 #| "Trolls are ancient creatures, one of the oldest known races known to "
@@ -7775,22 +8489,22 @@ msgstr ""
 "heenreizen."
 
 #. [race]: id=undead
-#: data/core/units.cfg:388
+#: data/core/units.cfg:414
 msgid "race^Undead"
 msgstr "Ondode"
 
 #. [race]: id=undead
-#: data/core/units.cfg:389
+#: data/core/units.cfg:415
 msgid "race+female^Undead"
 msgstr "Ondode"
 
 #. [race]: id=undead
-#: data/core/units.cfg:390
+#: data/core/units.cfg:416
 msgid "race+plural^Undead"
 msgstr "Ondoden"
 
 #. [race]: id=undead
-#: data/core/units.cfg:391
+#: data/core/units.cfg:417
 #, fuzzy
 #| msgid ""
 #| "Undead are not really a single race of creatures, although often treated "
@@ -7879,22 +8593,22 @@ msgstr ""
 "onbekend bij elfen en dwergen."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:404
+#: data/core/units.cfg:430
 msgid "race^Wolf"
 msgstr "Wolf"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:405
+#: data/core/units.cfg:431
 msgid "race+female^Wolf"
 msgstr "Wolvin"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:406
+#: data/core/units.cfg:432
 msgid "race^Wolves"
 msgstr "Wolven"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:407
+#: data/core/units.cfg:433
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -7913,17 +8627,17 @@ msgstr ""
 "echter, slechts af en toe wordt er een poging gewaagd om vee aan te vallen."
 
 #. [race]: id=wose
-#: data/core/units.cfg:416
+#: data/core/units.cfg:442
 msgid "race^Wose"
 msgstr "Ent"
 
 #. [race]: id=wose
-#: data/core/units.cfg:417
+#: data/core/units.cfg:443
 msgid "race^Woses"
 msgstr "Enten"
 
 #. [race]: id=wose
-#: data/core/units.cfg:418
+#: data/core/units.cfg:444
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -8003,7 +8717,8 @@ msgstr ""
 "wereld, de ent zal alleen maar bewegen om de natuurlijke wereld en bossen "
 "die het thuis noemt te beschermen."
 
-#: data/lua/feeding.lua:30 data/lua/feeding.lua:43
+#. [lua]: action
+#: data/lua/feeding.lua:26 data/lua/feeding.lua:39
 msgid "+1 max HP"
 msgstr "+1 max LP"
 
@@ -8024,34 +8739,29 @@ msgstr "ondood"
 msgid "stunned"
 msgstr ""
 
-#: src/help/help.cpp:211
-msgid "Close"
-msgstr "Sluiten"
-
-#: src/help/help.cpp:215
-msgid "Help"
-msgstr "Help"
-
-#: src/help/help.cpp:267 src/help/help.cpp:271
-msgid "Parse error when parsing help text:"
-msgstr "Fout bij het verwerken van de helptekst:"
-
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Best of"
 msgstr "Beste van"
 
-#: src/help/help_topic_generators.cpp:64
+#: src/help/help_topic_generators.cpp:63
 msgid "Worst of"
 msgstr "Slechtste van"
 
-#: src/help/help_topic_generators.cpp:161
+#. TRANSLATORS: in a description of an overlay terrain, the terrain that it's placed on
+#: src/help/help_topic_generators.cpp:122
+#, fuzzy
+#| msgid "Base Terrain: "
+msgid "base terrain"
+msgstr "Basis Terrein: "
+
+#: src/help/help_topic_generators.cpp:197
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
-#: src/help/help_topic_generators.cpp:166
+#: src/help/help_topic_generators.cpp:202
 msgid ""
 "This terrain allows units to be cured of poison, or to heal a single "
 "hitpoint."
@@ -8061,195 +8771,293 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/help/help_topic_generators.cpp:173
+#: src/help/help_topic_generators.cpp:209
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr ""
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
-#: src/help/help_topic_generators.cpp:177
+#: src/help/help_topic_generators.cpp:213
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
 msgstr ""
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
-#: src/help/help_topic_generators.cpp:180
+#: src/help/help_topic_generators.cpp:216
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:600
-msgid "Special Notes:"
+#: src/help/help_topic_generators.cpp:220
+#: src/help/help_topic_generators.cpp:630
+#, fuzzy
+#| msgid "Special Notes:"
+msgid "Special Notes"
 msgstr "Bijzonderheden:"
 
-#: src/help/help_topic_generators.cpp:193
-msgid "Base Terrain: "
-msgstr "Basis Terrein: "
+#. TRANSLATORS: $types is a conjunct list, typical values will be "Castle" or "Flat and Shallow Water".
+#. The terrain names will be hypertext links to the help page of the corresponding terrain type.
+#. There will always be at least 1 item in the list, but unlikely to be more than 3.
+#: src/help/help_topic_generators.cpp:241
+#, fuzzy
+#| msgid "Base Terrain: "
+msgid "Basic terrain type: $types"
+msgid_plural "Basic terrain types: $types"
+msgstr[0] "Basis Terrein: "
+msgstr[1] "Basis Terrein: "
 
-#: src/help/help_topic_generators.cpp:213
+#. TRANSLATORS: In the help for a terrain type, for example Dwarven Village is often placed on Cave Floor
+#: src/help/help_topic_generators.cpp:253
+msgid "Typical base terrain: $type"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:259
 msgid "Movement properties: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:217
+#: src/help/help_topic_generators.cpp:263
 msgid "Defense properties: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:297
+#: src/help/help_topic_generators.cpp:341
 msgid "Level"
 msgstr "Rang"
 
-#: src/help/help_topic_generators.cpp:357
+#: src/help/help_topic_generators.cpp:392
 msgid "Advances from: "
 msgstr "Promoveert van: "
 
-#: src/help/help_topic_generators.cpp:359
+#: src/help/help_topic_generators.cpp:394
 msgid "Advances to: "
 msgstr "Promoveert naar: "
 
-#: src/help/help_topic_generators.cpp:388
+#: src/help/help_topic_generators.cpp:423
 msgid "Base unit: "
 msgstr "Basis eenheid: "
 
-#: src/help/help_topic_generators.cpp:393
+#: src/help/help_topic_generators.cpp:428
 msgid "Base units: "
 msgstr "Basis eenheden: "
 
-#: src/help/help_topic_generators.cpp:411
+#: src/help/help_topic_generators.cpp:446
 msgid "Variations: "
 msgstr "Variaties: "
 
-#: src/help/help_topic_generators.cpp:435
+#: src/help/help_topic_generators.cpp:469
 msgid "race^Miscellaneous"
 msgstr "Allerlei"
 
-#: src/help/help_topic_generators.cpp:437
+#: src/help/help_topic_generators.cpp:471
 msgid "Race: "
 msgstr "Ras: "
 
-#: src/help/help_topic_generators.cpp:507
+#: src/help/help_topic_generators.cpp:536
 msgid "Abilities: "
 msgstr "Vermogens: "
 
-#: src/help/help_topic_generators.cpp:533
+#: src/help/help_topic_generators.cpp:562
 msgid "Ability Upgrades: "
 msgstr "Vermogens verbeteringen: "
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:563
+#: src/help/help_topic_generators.cpp:592
 msgid "HP:"
 msgstr "LP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:567
+#: src/help/help_topic_generators.cpp:596
 msgid "Moves:"
 msgstr "Zetten:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:572
+#: src/help/help_topic_generators.cpp:601
 msgid "Vision:"
 msgstr "Zicht:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:578
+#: src/help/help_topic_generators.cpp:607
 msgid "Jamming:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:583
+#: src/help/help_topic_generators.cpp:612
 msgid "Cost:"
 msgstr "Prijs:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:587
+#: src/help/help_topic_generators.cpp:616
 msgid "Alignment:"
 msgstr "Alliantie:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:594
+#: src/help/help_topic_generators.cpp:623
 msgid "Required XP:"
 msgstr "Benodigde EP:"
 
-#: src/help/help_topic_generators.cpp:612
-msgid "unit help^Attacks"
-msgstr "Aanvallen"
+#: src/help/help_topic_generators.cpp:641
+#, fuzzy
+#| msgid "Attack Type"
+msgid "Attacks"
+msgstr "Aanvalstype"
 
-#: src/help/help_topic_generators.cpp:619
-msgid "unit help^Name"
-msgstr "Naam"
+#: src/help/help_topic_generators.cpp:646
+msgid "Icon"
+msgstr ""
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:647
+msgid "Name"
+msgstr ""
+
+#: src/help/help_topic_generators.cpp:648
 msgid "Strikes"
 msgstr "Aanvallen"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:649
 msgid "Range"
 msgstr "Bereik"
 
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:650
 msgid "Type"
 msgstr "Type"
 
-#: src/help/help_topic_generators.cpp:623
+#: src/help/help_topic_generators.cpp:651
 msgid "Special"
 msgstr "Speciaal"
 
-#: src/help/help_topic_generators.cpp:698
+#: src/help/help_topic_generators.cpp:739
 msgid "Resistances"
 msgstr "Weerstand"
 
-#: src/help/help_topic_generators.cpp:702
+#: src/help/help_topic_generators.cpp:743
 msgid "Attack Type"
 msgstr "Aanvalstype"
 
-#: src/help/help_topic_generators.cpp:703
+#: src/help/help_topic_generators.cpp:744
 msgid "Resistance"
 msgstr "Weerstanden"
 
-#: src/help/help_topic_generators.cpp:733
+#: src/help/help_topic_generators.cpp:772
 msgid "Terrain Modifiers"
 msgstr "Terrein Informatie"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:776
 msgid "Terrain"
 msgstr "Terrein"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:777
 msgid "Defense"
 msgstr "Verdediging"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:778
 msgid "Movement Cost"
 msgstr "Bewegingskosten"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:779
 msgid "Defense Cap"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:748
+#: src/help/help_topic_generators.cpp:780
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:781
 msgid "Jamming Cost"
 msgstr ""
+
+#, fuzzy
+#~| msgid ""
+#~| "The Wood Elves are separate from those of the north, and have only "
+#~| "intermittent relations with them and most other countries. Its borders "
+#~| "are the <ref>dst='great_ocean' text='ocean'</ref> to the west, the Black "
+#~| "River to the south and southeast, the lands of Wesnoth to the north and "
+#~| "the Kerlath province to the east.\n"
+#~| "\n"
+#~| "<header>text='Notable cities:'</header>\n"
+#~| "    • None known.\n"
+#~| "\n"
+#~| "<header>text='Notable land features:'</header>\n"
+#~| "    • Aethenwood: The largest southern forest, it extends far to the "
+#~| "south and is home to <ref>dst='..race_elf' text='elves'</ref>. Although "
+#~| "the elves make no such distinction, the southern part of the forest has "
+#~| "been named Southwood by denizens of Kerlath.\n"
+#~| "    • Black Forest: An ancient forest of which very little is known, "
+#~| "abandoned by the elves long ago."
+#~ msgid ""
+#~ "<header>text='Notable land features:'</header>\n"
+#~ "    • Aethenwood: The largest southern forest, it extends far to the "
+#~ "south and is home to <ref>dst='..race_elf' text='elves'</ref>. Although "
+#~ "the elves make no such distinction, the southern part of the forest has "
+#~ "been named Southwood by denizens of Kerlath."
+#~ msgstr ""
+#~ "De Bos Elfen zijn gescheiden van de noordelijke elfen en hebben enkel af "
+#~ "en toe contact met hen en de meeste andere landen. De grenzen van het "
+#~ "gebied zijn de <ref>dst='great_ocean' text='oceaan'</ref> in het westen, "
+#~ "de Zwarte Rivier in het zuiden en zuidwesten, het Koninkrijk van Wesnoth "
+#~ "in het noorden en de Kerlath provincie in het oosten.\n"
+#~ "\n"
+#~ "<header>text='Belangrijke steden:'</header>\n"
+#~ "    • Geen bekend \n"
+#~ "\n"
+#~ "<header>text='Belangrijke herkenningspunten:'</header>\n"
+#~ "    • Aethenwoud: Het grootste zuidelijke bos, het strekt zich tot ver in "
+#~ "het zuidwesten uit - veel verder dan in kaart gebracht is - en het is de "
+#~ "thuis van de <ref>dst='..race_elf' text='Elfen'</ref>. De Elfen maken "
+#~ "geen onderscheid maar het zuidelijke deel van het woud wordt Zuidwoud "
+#~ "genoemd door inwoners van Kerlath.\n"
+#~ "    • Zwarte Bos: Een eeuwenoud bos waarover weinig bekend is, lang "
+#~ "geleden verlaten door de Elfen."
+
+#, fuzzy
+#~| msgid ""
+#~| "When used offensively, this attack always has at least a 60% chance to "
+#~| "hit."
+#~ msgid ""
+#~ "When used defensively, this attack reduces the opponent’s chance to hit "
+#~ "by 10%."
+#~ msgstr ""
+#~ "Bij aanvallend gebruik, heeft deze aanval altijd een raakkans van ten "
+#~ "minste 60%."
+
+#~ msgid "Close"
+#~ msgstr "Sluiten"
+
+#~ msgid "Help"
+#~ msgstr "Help"
+
+#~ msgid "Parse error when parsing help text:"
+#~ msgstr "Fout bij het verwerken van de helptekst:"
+
+#~ msgid "unit help^Attacks"
+#~ msgstr "Aanvallen"
+
+#~ msgid "unit help^Name"
+#~ msgstr "Naam"
+
+#~ msgid ""
+#~ "A virtually impassable barrier between the <ref>dst='arkan_thoria' "
+#~ "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
+#~ "Plains'</ref>."
+#~ msgstr ""
+#~ "Een nagenoeg ondoordringbare barrière tussen de <ref>dst='arkan_thoria' "
+#~ "text='Arkan-thoria'</ref>streek en de <ref>dst='far_north' "
+#~ "text='Noordelijke Vlakten'</ref>."
 
 #, fuzzy
 #~| msgid "first strike"
@@ -8866,11 +9674,6 @@ msgstr ""
 #~| msgid "race+female^Human"
 #~ msgid "race+female^Khalifate Human"
 #~ msgstr "Mens"
-
-#, fuzzy
-#~| msgid "race+plural^Mechanical"
-#~ msgid "race+plural^Khalifate"
-#~ msgstr "Mechanisch"
 
 #~ msgid "female^nightstalk"
 #~ msgstr "nachtsluiper"

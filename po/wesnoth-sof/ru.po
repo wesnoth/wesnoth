@@ -1,11 +1,11 @@
 # (C) Fedor Khod'kov <fkhokdov@gmail.com> 2009-2014
-# (C) Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2022.
+# (C) Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-sof\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2022-08-28 19:39+0300\n"
+"POT-Creation-Date: 2024-11-26 18:08 UTC\n"
+"PO-Revision-Date: 2024-04-13 23:10+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
@@ -223,30 +223,28 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:221
-#, fuzzy
-#| msgid "Transport 5 caravans full of silver back to the dwarvish castle"
 msgid ""
 "Transport 5 caravans full of silver to the dwarvish stronghold in the "
 "northeast corner"
-msgstr "Приведите 5 повозок с серебром в цитадель гномов"
+msgstr ""
+"Приведите 5 повозок с серебром в цитадель гномов, что в северо-восточном углу"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:223
-#, fuzzy
-#| msgid "Transport 4 caravans full of silver back to the dwarvish castle"
 msgid ""
 "Transport 4 caravans full of silver to the dwarvish stronghold in the "
 "northeast corner"
-msgstr "Приведите 4 повозки с серебром в цитадель гномов"
+msgstr ""
+"Приведите 4 повозки с серебром в цитадель гномов, что в северо-восточном углу"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:231
-#, fuzzy
-#| msgid "Bring Alanin, who has the Ruby of Fire, to the dwarvish castle"
 msgid ""
 "Bring Alanin, who has the Ruby of Fire, to the dwarvish stronghold in the "
 "northeast corner"
-msgstr "Приведите Аланина, который везёт Рубин Огня, в цитадель гномов"
+msgstr ""
+"Приведите Аланина, который везёт Рубин Огня, в цитадель гномов, что в северо-"
+"восточном углу"
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:239
@@ -2957,12 +2955,6 @@ msgstr ""
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:563
-#, fuzzy
-#| msgid ""
-#| "I'm aware! Close the gates and keep them out! It should be easy to come "
-#| "up with a plan to outwit them later. Meanwhile, since the Shorbear's rune "
-#| "workshops are in here, you and your runecrafters might as well make the "
-#| "sceptre now."
 msgid ""
 "I’m aware! Close the gates and keep them out! It should be easy to come up "
 "with a plan to outwit them later. Meanwhile, since the Shorbear’s rune "
@@ -3272,11 +3264,16 @@ msgstr ""
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:457
+#, fuzzy
+#| msgid ""
+#| "The country between here and Knalga will be swarming with elves. We had "
+#| "better head back to the abandoned mines north of the Arkan-thoria, where "
+#| "we gathered our gold and coal. At least there Alanin will have some hope "
+#| "of finding us."
 msgid ""
 "The country between here and Knalga will be swarming with elves. We had "
 "better head back to the abandoned mines north of the Arkan-thoria, where we "
-"gathered our gold and coal. At least there Alanin will have some hope of "
-"finding us."
+"gathered our gold and coal."
 msgstr ""
 "Вся земля отсюда до Кналга будет кишеть эльфами. Нам лучше вернуться в "
 "заброшенные шахты к северу от Аркан-Тории, где мы добывали золото и уголь. "
@@ -3521,7 +3518,9 @@ msgstr ""
 
 #. [message]: id=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:278
-msgid "Oh no, more of them? And there I thought I could catch my breath…"
+#, fuzzy
+#| msgid "Oh no, more of them? And there I thought I could catch my breath…"
+msgid "Oh no, more of them? And there I thought I could catch my breath..."
 msgstr "О, нет, их еще больше? А я думал, что смогу там отдышаться.…"
 
 #. [message]: role=fighter
@@ -3595,10 +3594,6 @@ msgstr ""
 
 #. [message]: speaker=Hadlin  # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:600
-#, fuzzy
-#| msgid ""
-#| "I see. Well, come on in. I doubt they would be able to capture this fort, "
-#| "even if they did want to start a war, which I doubt."
 msgid ""
 "I see. Well, come on in. They could never capture this fort, even if they "
 "did want to start a war, which I doubt."
@@ -3736,18 +3731,13 @@ msgstr "Кого же из великих драконов мы повстреч
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:400
-#, fuzzy
-#| msgid ""
-#| "I am Khrakrahs, greatest dragon of all time! Haldric killed Shek’kahan my "
-#| "brother, but he was weaker than me, and you will not find me so easy to "
-#| "defeat. Now get out of my volcano!"
 msgid ""
 "I am Khrakrahs, greatest dragon of all time! Haldric killed Shek’kahan my "
 "rival, but he was weaker than me, and you will not find me so easy to "
 "defeat. Now get out of my volcano!"
 msgstr ""
 "Я Хракрас, величайший дракон всех времён! Хальдрик убил моего брата "
-"Шек'кахана, но он был слабее меня. Вам меня так просто не убить. А теперь "
+"Шеккахана, но он был слабее меня. Вам меня так просто не убить. А теперь "
 "убирайтесь из моего вулкана!"
 
 #. [message]: speaker=Rugnur
@@ -3888,7 +3878,9 @@ msgstr "Подземелье"
 
 #. [unit]: id=Gathor, type=Orcish Warrior
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:116
-msgid "Bar'Gathor"
+#, fuzzy
+#| msgid "Bar'Gathor"
+msgid "Bar’Gathor"
 msgstr "Бар'Гатор"
 
 #. [side]: type=Troll Warrior, id=Harohk
@@ -4871,7 +4863,7 @@ msgstr "Покинуть вагонетку"
 
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:6
 msgid "$cost|g"
-msgstr ""
+msgstr "$cost|з"
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:17
@@ -5023,11 +5015,6 @@ msgstr "Краа..."
 
 #. [note]
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:108
-#, fuzzy
-#| msgid ""
-#| "Thursagan's Rune Mastery: while Thursagan is on a keep, selecting an "
-#| "adjacent dwarf opens a dialog for obtaining temporary upgrades which last "
-#| "until the end of the scenario."
 msgid ""
 "Thursagan’s Rune Mastery: while Thursagan is on a keep, selecting an "
 "adjacent dwarf opens a dialog for obtaining temporary upgrades which last "

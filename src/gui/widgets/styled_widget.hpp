@@ -31,25 +31,6 @@ namespace implementation
 struct builder_styled_widget;
 } // namespace implementation
 
-/**
- * @ingroup GUIWidgetWML
- *
- * Base class for all visible items.
- *
- * All widgets placed in a cell of a grid have some values in common:
- * Key                          |Type                                |Default  |Description
- * -----------------------------|------------------------------------|---------|-----------
- * id                           | @ref guivartype_string "string"    |""       |This value is used for the engine to identify 'special' items. This means that for example a text_box can get the proper initial value. This value should be unique or empty. Those special values are documented at the window definition that uses them. NOTE: items starting with an underscore are used for composed widgets and these should be unique per composed widget.
- * definition                   | @ref guivartype_string "string"    |"default"|The id of the widget definition to use. This way it's possible to select a specific version of the widget e.g. a title label when the label is used as title.
- * linked_group                 | @ref guivartype_string "string"    |""       |The linked group the control belongs to.
- * label                        | @ref guivartype_t_string "t_string"|""       |Most widgets have some text associated with them, this field contain the value of that text. Some widgets use this value for other purposes, this is documented at the widget. E.g. an image uses the filename in this field.
- * tooltip                      | @ref guivartype_t_string "t_string"|""       |If you hover over a widget a while (the time it takes can differ per widget) a short help can show up.This defines the text of that message. This field may not be empty when 'help' is set.
- * help                         | @ref guivartype_t_string "t_string"|""       |If you hover over a widget and press F10 (or the key the user defined for the help tip) a help message can show up. This help message might be the same as the tooltip but in general (if used) this message should show more help. This defines the text of that message.
- * use_tooltip_on_label_overflow| @ref guivartype_bool "bool"        |true     |If the text on the label is truncated and the tooltip is empty the label can be used for the tooltip. If this variable is set to true this will happen.
- * debug_border_mode            | @ref guivartype_unsigned "unsigned"|0        |The mode for showing the debug border. This border shows the area reserved for a widget. This function is only meant for debugging and might not be available in all Wesnoth binaries. Available modes:<ul><li>0 - no border</li><li>1 - 1 pixel border</li><li>2 - floodfill the widget area</li></ul>
- * debug_border_color           | @ref guivartype_color "color"      |""       |The color of the debug border.
- * size_text                    | @ref guivartype_t_string "t_string"|""       |Sets the minimum width of the widget depending on the text in it. (Note: not implemented yet.)
- */
 class styled_widget : public widget
 {
 	friend class debug_layout_graph;
@@ -211,11 +192,10 @@ public:
 								   const bool must_be_active) const override;
 
 	/** See @ref widget::find. */
-	widget* find(const std::string& id, const bool must_be_active) override;
+	widget* find(const std::string_view id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	const widget* find(const std::string& id,
-						const bool must_be_active) const override;
+	const widget* find(const std::string_view id, const bool must_be_active) const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 	bool get_use_tooltip_on_label_overflow() const
@@ -328,7 +308,7 @@ protected:
 
 	void set_config(resolution_definition_ptr config)
 	{
-		config_ = config;
+		config_ = std::move(config);
 	}
 
 	/***** ***** ***** ***** miscellaneous ***** ***** ***** *****/
@@ -365,6 +345,17 @@ protected:
 	 * maximum height is based on the height of the widget.
 	 */
 	int get_text_maximum_height() const;
+
+public:
+	/**
+	 * Set how wide the text can become. If the text is bigger
+	 * than this limit, it gets wrapped
+	 */
+	void set_text_maximum_width(int max_width) {
+		if (max_width > 0) {
+			text_maximum_width_ = max_width;
+		}
+	}
 
 private:
 	/**
@@ -533,6 +524,7 @@ private:
 
 // }---------- BUILDER -----------{
 
+class styled_widget;
 
 namespace implementation
 {

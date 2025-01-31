@@ -22,12 +22,12 @@
 
 static std::vector<map_location> preset_locs;
 static map_location va,vb,vc,vz,vt1,vt2,vt3,vs1,vs2,vs3,vs4;
-static map_location::DIRECTION n = map_location::NORTH;
-static map_location::DIRECTION ne = map_location::NORTH_EAST;
-static map_location::DIRECTION nw = map_location::NORTH_WEST;
-static map_location::DIRECTION s = map_location::SOUTH;
-static map_location::DIRECTION se = map_location::SOUTH_EAST;
-static map_location::DIRECTION sw = map_location::SOUTH_WEST;
+static map_location::direction n = map_location::direction::north;
+static map_location::direction ne = map_location::direction::north_east;
+static map_location::direction nw = map_location::direction::north_west;
+static map_location::direction s = map_location::direction::south;
+static map_location::direction se = map_location::direction::south_east;
+static map_location::direction sw = map_location::direction::south_west;
 
 
 struct MLFixture
@@ -76,11 +76,11 @@ static map_location vector_difference(const map_location & v1, const map_locatio
 }
 #endif
 
-static void characterization_distance_direction (const std::vector<map_location> & locs, const std::vector<map_location::DIRECTION> & dir_answers, const std::vector<std::size_t> & int_answers, map_location::RELATIVE_DIR_MODE mode)
+static void characterization_distance_direction (const std::vector<map_location> & locs, const std::vector<map_location::direction> & dir_answers, const std::vector<std::size_t> & int_answers, map_location::RELATIVE_DIR_MODE mode)
 {
 	BOOST_CHECK_EQUAL(dir_answers.size(), int_answers.size());
 
-	std::vector<map_location::DIRECTION>::const_iterator dir_it = dir_answers.begin();
+	std::vector<map_location::direction>::const_iterator dir_it = dir_answers.begin();
 	std::vector<std::size_t>::const_iterator int_it = int_answers.begin();
 
 	for (std::vector<map_location>::const_iterator it_a = locs.begin(); it_a != locs.end(); ++it_a) {
@@ -92,13 +92,13 @@ static void characterization_distance_direction (const std::vector<map_location>
 				<< map_location::write_direction( a.get_relative_dir(b,mode)) << "\"))" << std::endl;
 #else
 			int expected_dist = *(int_it++);
-			map_location::DIRECTION expected_dir = *(dir_it++);
+			map_location::direction expected_dir = *(dir_it++);
 			BOOST_CHECK_EQUAL( expected_dist, distance_between(a,b) );
 			BOOST_CHECK_EQUAL( expected_dist, distance_between(b,a) );
 			BOOST_CHECK_EQUAL( expected_dir, a.get_relative_dir(b, mode) );
 			//Note: This is not a valid assertion. get_relative_dir has much symmetry but not radial.
 			if (mode == map_location::RADIAL_SYMMETRY) {
-				BOOST_CHECK_EQUAL( map_location::get_opposite_dir(expected_dir), b.get_relative_dir(a,mode) );
+				BOOST_CHECK_EQUAL( map_location::get_opposite_direction(expected_dir), b.get_relative_dir(a,mode) );
 			}
 			BOOST_CHECK_EQUAL( a.vector_sum(b), b.vector_sum(a));
 			map_location temp1 = a;
@@ -126,8 +126,8 @@ static void characterization_distance_direction (const std::vector<map_location>
 	BOOST_CHECK_MESSAGE( int_it == int_answers.end(), "Did not exhaust answers list.");
 }
 
-static std::size_t get_first (std::pair<std::size_t, std::string> arg) {return arg.first; }
-static map_location::DIRECTION get_second (std::pair<std::size_t, std::string> arg) {return map_location::parse_direction(arg.second); }
+static std::size_t get_first (const std::pair<std::size_t, std::string>& arg) {return arg.first; }
+static map_location::direction get_second (const std::pair<std::size_t, std::string>& arg) {return map_location::parse_direction(arg.second); }
 
 /* This has to be recomputed, I'm commenting out the test so that it doesn't fail in the meantime. --iceiceice
 
@@ -190,7 +190,7 @@ BOOST_AUTO_TEST_CASE ( map_location_characterization_test_default_mode )
 (std::make_pair(1,	"sw")).to_container(generated_answers);
 
 	std::vector<std::size_t> ans1;
-	std::vector<map_location::DIRECTION> ans2;
+	std::vector<map_location::direction> ans2;
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans1), &get_first);
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans2), &get_second);
 
@@ -257,17 +257,17 @@ std::make_pair(3,	"s"),
 std::make_pair(1,	"nw")};
 
 	std::vector<std::size_t> ans1;
-	std::vector<map_location::DIRECTION> ans2;
+	std::vector<map_location::direction> ans2;
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans1), &get_first);
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans2), &get_second);
 
 	characterization_distance_direction(preset_locs, ans2, ans1, map_location::RADIAL_SYMMETRY);
 }
 
-static std::pair<map_location , map_location> mirror_walk( std::pair<map_location,map_location> p, map_location::DIRECTION d)
+static std::pair<map_location , map_location> mirror_walk( std::pair<map_location,map_location> p, map_location::direction d)
 {
 	p.first = p.first.get_direction(d);
-	p.second = p.second.get_direction(map_location::get_opposite_dir(d));
+	p.second = p.second.get_direction(map_location::get_opposite_direction(d));
 	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
 	return p;
 }
@@ -291,7 +291,7 @@ BOOST_AUTO_TEST_CASE ( reality_check_vector_negation )
 	p = mirror_walk(p, sw);
 }
 
-static void reality_check_get_direction_helper(const map_location & loc, const map_location::DIRECTION d)
+static void reality_check_get_direction_helper(const map_location & loc, const map_location::direction d)
 {
 	map_location lz(vz.get_direction(d));
 
@@ -322,60 +322,60 @@ BOOST_AUTO_TEST_CASE ( reality_check_get_direction )
 	reality_check_get_direction_helper(b,se);
 }
 
-static map_location::DIRECTION legacy_get_opposite_dir(map_location::DIRECTION d)
+static map_location::direction legacy_get_opposite_dir(map_location::direction d)
 {
 	switch (d) {
-		case map_location::NORTH:
-			return map_location::SOUTH;
-		case map_location::NORTH_EAST:
-			return map_location::SOUTH_WEST;
-		case map_location::SOUTH_EAST:
-			return map_location::NORTH_WEST;
-		case map_location::SOUTH:
-			return map_location::NORTH;
-		case map_location::SOUTH_WEST:
-			return map_location::NORTH_EAST;
-		case map_location::NORTH_WEST:
-			return map_location::SOUTH_EAST;
-		case map_location::NDIRECTIONS:
+		case map_location::direction::north:
+			return map_location::direction::south;
+		case map_location::direction::north_east:
+			return map_location::direction::south_west;
+		case map_location::direction::south_east:
+			return map_location::direction::north_west;
+		case map_location::direction::south:
+			return map_location::direction::north;
+		case map_location::direction::south_west:
+			return map_location::direction::north_east;
+		case map_location::direction::north_west:
+			return map_location::direction::south_east;
+		case map_location::direction::indeterminate:
 		default:
-			return map_location::NDIRECTIONS;
+			return map_location::direction::indeterminate;
 	}
 }
 
 BOOST_AUTO_TEST_CASE ( check_get_opposite_dir_refactor )
 {
 	for (unsigned int i = 0; i < 7; i++ ) {
-		map_location::DIRECTION d = static_cast<map_location::DIRECTION> (i);
-		BOOST_CHECK_EQUAL ( map_location::get_opposite_dir(d), legacy_get_opposite_dir(d) );
+		map_location::direction d = static_cast<map_location::direction> (i);
+		BOOST_CHECK_EQUAL ( map_location::get_opposite_direction(d), legacy_get_opposite_dir(d) );
 	}
 }
 
 BOOST_AUTO_TEST_CASE ( check_rotate )
 {
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::NORTH) , map_location::NORTH_EAST );
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::NORTH_EAST,-1) , map_location::NORTH);
+	static_assert(map_location::rotate_direction(map_location::direction::north) == map_location::direction::north_east);
+	static_assert(map_location::rotate_direction(map_location::direction::north_east, -1) == map_location::direction::north);
 
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::NORTH_EAST) , map_location::SOUTH_EAST );
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::SOUTH_EAST,-1) , map_location::NORTH_EAST );
+	static_assert(map_location::rotate_direction(map_location::direction::north_east) == map_location::direction::south_east);
+	static_assert(map_location::rotate_direction(map_location::direction::south_east, -1) == map_location::direction::north_east);
 
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::SOUTH_EAST) , map_location::SOUTH );
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::SOUTH, -1) , map_location::SOUTH_EAST );
+	static_assert(map_location::rotate_direction(map_location::direction::south_east) == map_location::direction::south);
+	static_assert(map_location::rotate_direction(map_location::direction::south, -1) == map_location::direction::south_east);
 
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::SOUTH), map_location::SOUTH_WEST);
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::SOUTH_WEST,-1) , map_location::SOUTH );
+	static_assert(map_location::rotate_direction(map_location::direction::south) == map_location::direction::south_west);
+	static_assert(map_location::rotate_direction(map_location::direction::south_west, -1) == map_location::direction::south);
 
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::SOUTH_WEST), map_location::NORTH_WEST);
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::NORTH_WEST,-1) , map_location::SOUTH_WEST );
+	static_assert(map_location::rotate_direction(map_location::direction::south_west) == map_location::direction::north_west);
+	static_assert(map_location::rotate_direction(map_location::direction::north_west, -1) == map_location::direction::south_west);
 
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::NORTH_WEST), map_location::NORTH);
-	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::NORTH,-1) , map_location::NORTH_WEST );
+	static_assert(map_location::rotate_direction(map_location::direction::north_west) == map_location::direction::north);
+	static_assert(map_location::rotate_direction(map_location::direction::north, -1) == map_location::direction::north_west);
 
 
 	for (unsigned int i = 0; i < 7; i++ ) {
-		map_location::DIRECTION d = static_cast<map_location::DIRECTION> (i);
-		BOOST_CHECK_EQUAL ( map_location::get_opposite_dir(d), map_location::rotate_right(d,3) );
-		BOOST_CHECK_EQUAL ( map_location::rotate_right(d,-2), map_location::rotate_right(d,4) );
+		map_location::direction d = static_cast<map_location::direction> (i);
+		BOOST_CHECK_EQUAL ( map_location::get_opposite_direction(d), map_location::rotate_direction(d,3) );
+		BOOST_CHECK_EQUAL ( map_location::rotate_direction(d,-2), map_location::rotate_direction(d,4) );
 	}
 }
 
@@ -408,15 +408,15 @@ BOOST_AUTO_TEST_CASE ( check_rotate_around_center )
  */
 
 /*
-static std::string dir_to_terrain (const map_location::DIRECTION dir)
+static std::string dir_to_terrain (const map_location::direction dir)
 {
 	switch(dir) {
-		case map_location::NORTH:      return "Gg";
-		case map_location::SOUTH:      return "Ai";
-		case map_location::SOUTH_EAST: return "Gs^Fp";
-		case map_location::SOUTH_WEST: return "Ss";
-		case map_location::NORTH_EAST: return "Hd";
-		case map_location::NORTH_WEST: return "Md";
+		case map_location::direction::north:      return "Gg";
+		case map_location::direction::south:      return "Ai";
+		case map_location::direction::south_east: return "Gs^Fp";
+		case map_location::direction::south_west: return "Ss";
+		case map_location::direction::north_east: return "Hd";
+		case map_location::direction::north_west: return "Md";
 		default: return "Xv";
 	}
 }

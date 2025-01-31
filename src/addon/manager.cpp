@@ -20,6 +20,7 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/schema_validator.hpp"
+#include "utils/general.hpp"
 #include "game_version.hpp"
 #include "wml_exception.hpp"
 
@@ -75,7 +76,7 @@ config get_addon_pbl_info(const std::string& addon_name, bool do_validate)
 		filesystem::scoped_istream stream = filesystem::istream_file(pbl_path);
 		std::unique_ptr<schema_validation::schema_validator> validator;
 		if(do_validate) {
-			validator = std::make_unique<schema_validation::schema_validator>(filesystem::get_wml_location("schema/pbl.cfg"));
+			validator = std::make_unique<schema_validation::schema_validator>(filesystem::get_wml_location("schema/pbl.cfg").value());
 			validator->set_create_exceptions(true);
 		}
 		read(cfg, *stream, validator.get());
@@ -231,8 +232,7 @@ static std::string strip_cr(std::string str, bool strip)
 {
 	if(!strip)
 		return str;
-	std::string::iterator new_end = std::remove_if(str.begin(), str.end(), IsCR);
-	str.erase(new_end, str.end());
+	utils::erase_if(str, IsCR);
 	return str;
 }
 
@@ -268,8 +268,7 @@ static filesystem::blacklist_pattern_list read_ignore_patterns(const std::string
 static void archive_file(const std::string& path, const std::string& fname, config& cfg)
 {
 	cfg["name"] = fname;
-	const bool is_cfg = (fname.size() > 4 ? (fname.substr(fname.size() - 4) == ".cfg") : false);
-	cfg["contents"] = encode_binary(strip_cr(filesystem::read_file(path + '/' + fname),is_cfg));
+	cfg["contents"] = encode_binary(strip_cr(filesystem::read_file(path + '/' + fname), filesystem::is_cfg(fname)));
 }
 
 static void archive_dir(const std::string& path, const std::string& dirname, config& cfg, const filesystem::blacklist_pattern_list& ignore_patterns)
@@ -307,7 +306,7 @@ static void unarchive_file(const std::string& path, const config& cfg)
 	filesystem::write_file(path + '/' + cfg["name"].str(), unencode_binary(cfg["contents"]));
 }
 
-static void unarchive_dir(const std::string& path, const config& cfg, std::function<void()> file_callback = {})
+static void unarchive_dir(const std::string& path, const config& cfg, const std::function<void()>& file_callback = {})
 {
 	std::string dir;
 	if (cfg["name"].empty())

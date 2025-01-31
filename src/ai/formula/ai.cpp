@@ -66,9 +66,9 @@ using ca_ptr = wfl::candidate_action_ptr;
 ca_ptr formula_ai::load_candidate_action_from_config(const config& rc_action)
 {
 	ca_ptr new_ca;
-	const t_string &name = rc_action["name"];
+	const std::string name = rc_action["name"];
 	try {
-		const t_string &type = rc_action["type"];
+		const std::string& type = rc_action["type"];
 
 		if( type == "movement") {
 			new_ca = std::make_shared<move_candidate_action>(name, type, rc_action, &function_table_);
@@ -173,7 +173,7 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 	}
 }
 
-wfl::variant formula_ai::make_action(wfl::const_formula_ptr formula_, const wfl::formula_callable& variables)
+wfl::variant formula_ai::make_action(const wfl::const_formula_ptr& formula_, const wfl::formula_callable& variables)
 {
 	if (!formula_) {
 		throw formula_error("null formula passed to make_action","","formula",0);
@@ -206,7 +206,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
 
 	if( dst_un != units_.end() ) {
 		//there is unit standing at dst, let's try to find free hex to move to
-		const map_location::DIRECTION preferred = destination.get_relative_dir(src);
+		const map_location::direction preferred = destination.get_relative_dir(src);
 
 		int best_rating = 100;//smaller is better
 		const auto adj = get_adjacent_tiles(destination);
@@ -220,10 +220,10 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
 				continue;
 			}
 
-			static const std::size_t NDIRECTIONS = map_location::NDIRECTIONS;
-			unsigned int difference = std::abs(static_cast<int>(preferred - n));
-			if(difference > NDIRECTIONS/2) {
-				difference = NDIRECTIONS - difference;
+			static constexpr std::size_t ndirections = static_cast<int>(map_location::direction::indeterminate);
+			unsigned int difference = std::abs(static_cast<int>(static_cast<int>(preferred) - n));
+			if(difference > ndirections/2) {
+				difference = ndirections - difference;
 			}
 
 			const int rating = difference * 2;
@@ -250,7 +250,7 @@ pathfind::teleport_map formula_ai::get_allowed_teleports(unit_map::iterator& uni
 	return pathfind::get_teleport_locations(*unit_it, current_team(), true);
 }
 
-void formula_ai::add_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args)
+void formula_ai::add_formula_function(const std::string& name, const const_formula_ptr& formula, const const_formula_ptr& precondition, const std::vector<std::string>& args)
 {
 	function_table_.add_function(name, std::make_shared<user_formula_function>(name, formula, precondition, args));
 }
@@ -389,8 +389,8 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "teams")
 	{
 		std::vector<variant> vars;
-		for(std::vector<team>::const_iterator i = resources::gameboard->teams().begin(); i != resources::gameboard->teams().end(); ++i) {
-			vars.emplace_back(std::make_shared<team_callable>(*i));
+		for(const team& t : resources::gameboard->teams()) {
+			vars.emplace_back(std::make_shared<team_callable>(t));
 		}
 		return variant(vars);
 
@@ -418,15 +418,8 @@ variant formula_ai::get_value(const std::string& key) const
 
 		unit_types.build_all(unit_type::FULL);
 
-		const std::set<std::string>& recruits = current_team().recruits();
-		if(recruits.empty()) {
-			return variant(vars);
-		}
-		for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i)
-		{
-			const unit_type *ut = unit_types.find(*i);
-			if (ut)
-			{
+		for(const std::string& recruit : current_team().recruits()) {
+			if(const unit_type* ut = unit_types.find(recruit)) {
 				vars.emplace_back(std::make_shared<unit_type_callable>(*ut));
 			}
 		}
@@ -435,24 +428,13 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "recruits_of_side")
 	{
 		std::vector<variant> vars;
-		std::vector< std::vector< variant>> tmp;
+		std::vector<std::vector<variant>> tmp(resources::gameboard->teams().size());
 
 		unit_types.build_all(unit_type::FULL);
 
-		for( std::size_t i = 0; i<resources::gameboard->teams().size(); ++i)
-		{
-			std::vector<variant> v;
-			tmp.push_back( v );
-
-			const std::set<std::string>& recruits = resources::gameboard->teams()[i].recruits();
-			if(recruits.empty()) {
-				continue;
-			}
-			for(std::set<std::string>::const_iterator str_it = recruits.begin(); str_it != recruits.end(); ++str_it)
-			{
-				const unit_type *ut = unit_types.find(*str_it);
-				if (ut)
-				{
+		for(std::size_t i = 0; i < tmp.size(); ++i) {
+			for(const std::string& recruit : resources::gameboard->teams()[i].recruits()) {
+				if(const unit_type* ut = unit_types.find(recruit)) {
 					tmp[i].emplace_back(std::make_shared<unit_type_callable>(*ut));
 				}
 			}
@@ -465,20 +447,15 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "units")
 	{
 		std::vector<variant> vars;
-		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-			vars.emplace_back(std::make_shared<unit_callable>(*i));
+		for(const unit& u : units) {
+			vars.emplace_back(std::make_shared<unit_callable>(u));
 		}
 		return variant(vars);
 
 	} else if(key == "units_of_side")
 	{
 		std::vector<variant> vars;
-		std::vector< std::vector< variant>> tmp;
-		for( std::size_t i = 0; i<resources::gameboard->teams().size(); ++i)
-		{
-			std::vector<variant> v;
-			tmp.push_back( v );
-		}
+		std::vector<std::vector<variant>> tmp(resources::gameboard->teams().size());
 		for(const unit &u : units) {
 			tmp[u.side() - 1].emplace_back(std::make_shared<unit_callable>(u));
 		}
@@ -489,9 +466,9 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "my_units")
 	{
 		std::vector<variant> vars;
-		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-			if (i->side() == get_side()) {
-				vars.emplace_back(std::make_shared<unit_callable>(*i));
+		for(const unit& u : units) {
+			if(u.side() == get_side()) {
+				vars.emplace_back(std::make_shared<unit_callable>(u));
 			}
 		}
 		return variant(vars);
@@ -499,11 +476,9 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "enemy_units")
 	{
 		std::vector<variant> vars;
-		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-			if (current_team().is_enemy(i->side())) {
-				if (!i->incapacitated()) {
-					vars.emplace_back(std::make_shared<unit_callable>(*i));
-				}
+		for(const unit& u : units) {
+			if(current_team().is_enemy(u.side()) && !u.incapacitated()) {
+				vars.emplace_back(std::make_shared<unit_callable>(u));
 			}
 		}
 		return variant(vars);
@@ -530,9 +505,8 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "recall_list")
 	{
 		std::vector<variant> tmp;
-
-		for(std::vector<unit_ptr >::const_iterator i = current_team().recall_list().begin(); i != current_team().recall_list().end(); ++i) {
-			tmp.emplace_back(std::make_shared<unit_callable>(**i));
+		for(const unit_ptr& ptr : current_team().recall_list()) {
+			tmp.emplace_back(std::make_shared<unit_callable>(*ptr));
 		}
 
 		return variant(tmp);
@@ -552,13 +526,8 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "villages_of_side")
 	{
 		std::vector<variant> vars;
-		for(std::size_t i = 0; i<resources::gameboard->teams().size(); ++i)
-		{
-			vars.emplace_back();
-		}
-		for(std::size_t i = 0; i<vars.size(); ++i)
-		{
-			vars[i] = villages_from_set(resources::gameboard->teams()[i].villages());
+		for(const team& t : resources::gameboard->teams()) {
+			vars.push_back(villages_from_set(t.villages()));
 		}
 		return variant(vars);
 
@@ -658,11 +627,11 @@ void formula_ai::on_create(){
 
 	for(const config &func : cfg_.child_range("function"))
 	{
-		const t_string &name = func["name"];
-		const t_string &inputs = func["inputs"];
-		const t_string &formula_str = func["formula"];
+		const std::string name = func["name"];
+		const std::string inputs = func["inputs"];
+		const std::string formula_str = func["formula"];
 
-		std::vector<std::string> args = utils::split(inputs.str());
+		std::vector<std::string> args = utils::split(inputs);
 		try {
 			add_formula_function(name,
 					     create_optional_formula(formula_str),
@@ -678,21 +647,21 @@ void formula_ai::on_create(){
 	if (const auto ai_vars = cfg_.optional_child("vars"))
 	{
 		variant var;
-		for(const config::attribute &i : ai_vars->attribute_range()) {
-			var.serialize_from_string(i.second);
-			vars_.add(i.first, var);
+		for(const auto& [key, value] : ai_vars->attribute_range()) {
+			var.serialize_from_string(value);
+			vars_.add(key, var);
 		}
 	}
 
 }
 
-void formula_ai::evaluate_candidate_action(ca_ptr fai_ca)
+void formula_ai::evaluate_candidate_action(const ca_ptr& fai_ca)
 {
 	fai_ca->evaluate(this,resources::gameboard->units());
 
 }
 
-bool formula_ai::execute_candidate_action(ca_ptr fai_ca)
+bool formula_ai::execute_candidate_action(const ca_ptr& fai_ca)
 {
 	map_formula_callable callable(fake_ptr());
 	fai_ca->update_callable_map( callable );

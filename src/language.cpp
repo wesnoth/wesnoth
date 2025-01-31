@@ -17,7 +17,7 @@
 #include "gettext.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "game_config_manager.hpp"
@@ -104,7 +104,7 @@ bool load_language_list()
 {
 	config cfg;
 	try {
-		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("hardwired/language.cfg"));
+		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("hardwired/language.cfg").value());
 		read(cfg, *stream);
 	} catch(const config::error &) {
 		return false;
@@ -138,6 +138,11 @@ language_list get_languages(bool all)
 		[](const language_def& lang) { return lang.percent >= min_translation_percent; });
 
 	return result;
+}
+
+int get_min_translation_percent()
+{
+	return min_translation_percent;
 }
 
 void set_min_translation_percent(int percent) {
@@ -302,23 +307,17 @@ void set_language(const language_def& locale)
 
 bool load_strings(bool complain)
 {
-	DBG_G << "Loading strings";
 	config cfg;
 
-	LOG_G << "There are " << languages_.size() << " [language] blocks";
 	if (complain && languages_.empty()) {
 		PLAIN_LOG << "No [language] block found";
 		return false;
 	}
 	for (const config &lang : languages_) {
-		DBG_G << "[language]";
-		for (const config::attribute &j : lang.attribute_range()) {
-			DBG_G << j.first << "=\"" << j.second << "\"";
-			strings_[j.first] = j.second;
+		for(const auto& [key, value] : lang.attribute_range()) {
+			strings_[key] = value;
 		}
-		DBG_G << "[/language]";
 	}
-	DBG_G << "done";
 
 	return true;
 }
@@ -331,7 +330,7 @@ const language_def& get_locale()
 
 	assert(!known_languages.empty());
 
-	const std::string& prefs_locale = preferences::language();
+	const std::string& prefs_locale = prefs::get().locale();
 	if(prefs_locale.empty() == false) {
 		translation::set_language(prefs_locale, nullptr);
 		for(language_list::const_iterator i = known_languages.begin();
@@ -372,16 +371,11 @@ void init_textdomains(const game_config_view& cfg)
 
 		if(path.empty()) {
 			t_string::add_textdomain(name, filesystem::get_intl_dir());
+		} else if(auto location = filesystem::get_binary_dir_location("", path)) {
+			t_string::add_textdomain(name, location.value());
 		} else {
-			std::string location = filesystem::get_binary_dir_location("", path);
-
-			if (location.empty()) {
-				//if location is empty, this causes a crash on Windows, so we
-				//disallow adding empty domains
-				WRN_G << "no location found for '" << path << "', skipping textdomain";
-			} else {
-				t_string::add_textdomain(name, location);
-			}
+			// If location is empty, this causes a crash on Windows, so we disallow adding empty domains
+			WRN_G << "no location found for '" << path << "', skipping textdomain";
 		}
 	}
 }

@@ -25,14 +25,14 @@ std::ostream& operator<<(std::ostream& s, const tod_color& c)
 }
 
 time_of_day::time_of_day(const config& cfg)
-	: lawful_bonus(cfg["lawful_bonus"])
+	: lawful_bonus(cfg["lawful_bonus"].to_int())
 	, bonus_modified(0)
 	, image(cfg["image"])
 	, name(cfg["name"].t_str())
 	, description(cfg["description"].t_str())
 	, id(cfg["id"])
 	, image_mask(cfg["mask"])
-	, color(cfg["red"], cfg["green"], cfg["blue"])
+	, color(cfg["red"].to_int(), cfg["green"].to_int(), cfg["blue"].to_int())
 	, sounds(cfg["sound"])
 {
 }
@@ -50,7 +50,7 @@ time_of_day::time_of_day()
 {
 }
 
-void time_of_day::write(config& cfg, std::string textdomain) const
+void time_of_day::write(config& cfg, const std::string& textdomain) const
 {
 	cfg["lawful_bonus"] = lawful_bonus;
 	cfg["red"] = color.r;

@@ -34,7 +34,7 @@
 #include "fake_unit_ptr.hpp"
 #include "formula/string_utils.hpp"
 #include "game_board.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "game_state.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
@@ -81,7 +81,7 @@ manager::manager():
 		team_plans_hidden_(resources::gameboard->teams().size()),
 		units_owning_moves_()
 {
-	if(preferences::hide_whiteboard()) {
+	if(prefs::get().hide_whiteboard()) {
 		team_plans_hidden_.flip();
 	}
 	LOG_WB << "Manager initialized.";
@@ -314,7 +314,7 @@ void manager::on_init_side()
 	wait_for_side_init_ = false;
 	LOG_WB << "on_init_side()";
 
-	if (self_activate_once_ && preferences::enable_whiteboard_mode_on_start())
+	if (self_activate_once_ && prefs::get().enable_planning_mode_on_start())
 	{
 		self_activate_once_ = false;
 		set_active(true);
@@ -333,11 +333,11 @@ void manager::on_finish_side_turn(int side)
 	LOG_WB << "on_finish_side_turn()";
 }
 
-void manager::pre_delete_action(action_ptr)
+void manager::pre_delete_action(const action_ptr&)
 {
 }
 
-void manager::post_delete_action(action_ptr action)
+void manager::post_delete_action(const action_ptr& action)
 {
 	// The fake unit representing the destination of a chain of planned moves should have the regular animation.
 	// If the last remaining action of the unit that owned this move is a move as well,
@@ -386,8 +386,11 @@ void manager::update_plan_hiding(std::size_t team_index)
 	}
 	validate_viewer_actions();
 }
+
 void manager::update_plan_hiding()
-	{update_plan_hiding(viewer_team());}
+{
+	update_plan_hiding(display::get_singleton()->viewing_team_index());
+}
 
 void manager::on_viewer_change(std::size_t team_index)
 {
@@ -483,7 +486,7 @@ static void draw_numbers(const map_location& hex, side_actions::numbers_t number
 		color_t color = team::get_side_color(static_cast<int>(team_numbers[i]+1));
 		const double x_in_hex = x_origin + x_offset;
 		const double y_in_hex = y_origin + y_offset;
-		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+		display::get_singleton()->draw_text_in_hex(hex, drawing_layer::actions_numbering,
 				number_text, font_size, color, x_in_hex, y_in_hex);
 		x_offset += x_offset_base;
 		y_offset += y_offset_base;
@@ -650,7 +653,7 @@ void manager::process_network_data(const config& cfg)
 		std::size_t count = wb_cfg->child_count("net_cmd");
 		LOG_WB << "Received wb data (" << count << ").";
 
-		team& team_from = resources::gameboard->get_team(wb_cfg["side"]);
+		team& team_from = resources::gameboard->get_team(wb_cfg["side"].to_int());
 		for(const side_actions::net_cmd& cmd : wb_cfg->child_range("net_cmd"))
 			team_from.get_side_actions()->execute_net_cmd(cmd);
 	}
@@ -679,12 +682,12 @@ void manager::create_temp_move()
 
 	if (route.steps.empty() || route.steps.size() < 2) return;
 
-	unit* temp_moved_unit =
+	const unit* temp_moved_unit =
 			future_visible_unit(resources::controller->get_mouse_handler_base().get_selected_hex(), viewer_side());
 	if (!temp_moved_unit) temp_moved_unit =
 			future_visible_unit(resources::controller->get_mouse_handler_base().get_last_hex(), viewer_side());
 	if (!temp_moved_unit) return;
-	if (temp_moved_unit->side() != display::get_singleton()->viewing_side()) return;
+	if (temp_moved_unit->side() != display::get_singleton()->viewing_team().side()) return;
 
 	/*
 	 * DONE CHECKING PRE-CONDITIONS, CREATE THE TEMP MOVE
@@ -782,7 +785,7 @@ void manager::save_temp_move()
 	if (has_temp_move() && !executing_actions_ && !resources::controller->is_linger_mode())
 	{
 		side_actions& sa = *viewer_actions();
-		unit* u = future_visible_unit(route_->steps.front());
+		const unit* u = future_visible_unit(route_->steps.front());
 		assert(u);
 		std::size_t first_turn = sa.get_turn_num_of(*u);
 
@@ -853,7 +856,7 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 			route_->steps.push_back(attacker_loc);
 		}
 
-		unit* attacking_unit = future_visible_unit(source_hex);
+		const unit* attacking_unit = future_visible_unit(source_hex);
 		assert(attacking_unit);
 
 		validate_viewer_actions();
@@ -875,7 +878,7 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 	bool created_planned_recruit = false;
 
 	if (active_ && !executing_actions_ && !resources::controller->is_linger_mode()) {
-		if (side_num != display::get_singleton()->viewing_side())
+		if (side_num != display::get_singleton()->viewing_team().side())
 		{
 			LOG_WB <<"manager::save_recruit called for a different side than viewing side.";
 			created_planned_recruit = false;
@@ -904,7 +907,7 @@ bool manager::save_recall(const unit& unit, int side_num, const map_location& re
 
 	if (active_ && !executing_actions_ && !resources::controller->is_linger_mode())
 	{
-		if (side_num != display::get_singleton()->viewing_side())
+		if (side_num != display::get_singleton()->viewing_team().side())
 		{
 			LOG_WB <<"manager::save_recall called for a different side than viewing side.";
 			created_planned_recall = false;
@@ -924,7 +927,7 @@ bool manager::save_recall(const unit& unit, int side_num, const map_location& re
 	return created_planned_recall;
 }
 
-void manager::save_suppose_dead(unit& curr_unit, const map_location& loc)
+void manager::save_suppose_dead(const unit& curr_unit, const map_location& loc)
 {
 	if(active_ && !executing_actions_ && !resources::controller->is_linger_mode())
 	{

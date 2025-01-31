@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"POT-Creation-Date: 2025-01-19 17:47 UTC\n"
 "PO-Revision-Date: 2023-11-22 15:05+0100\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
@@ -129,11 +129,6 @@ msgstr ""
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:21
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr "omráčená: Táto jednotka je omráčená. Nemôže blokovať oblasť kontroly."
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:27
 msgid ""
 "dazed: This unit is dazed. It suffers a -10% penalty to both its defense and "
 "chance to hit (except for magical attacks)."
@@ -288,17 +283,17 @@ msgid "Taliu"
 msgstr "Táli"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:232
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:250
 msgid "Hey Kaleh, are you in there?"
 msgstr "Hej Kaleh, si tam niekde?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:237
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:255
 msgid "Nym, is that you?"
 msgstr "Nym, si to ty?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:242
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:260
 msgid ""
 "Yes, come on out already. The storm has passed. With the morning light Naia "
 "has ended the terrible night."
@@ -306,12 +301,12 @@ msgstr ""
 "Áno, poď von. Búrka už prešla. So svitaním, Naia ukončila tú hroznú noc."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:247
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:265
 msgid "Has the sky really stopped falling?"
 msgstr "Naozaj už prestal padať oheň?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:252
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:270
 msgid ""
 "I already told you, the sky is clear and empty. Now come quickly, silly, "
 "others may need our help."
@@ -320,17 +315,22 @@ msgstr ""
 "iní, ktorí potrebujú našu pomoc."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:257
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:275
+#, fuzzy
+#| msgid ""
+#| "What’s happened? Oh Eloh, the craters are everywhere, everything is gone, "
+#| "ruined. I can hardly recognize our village. I didn’t think it could be "
+#| "this bad."
 msgid ""
-"What’s happened? Oh Eloh, the craters are everywhere, everything is gone, "
-"ruined. I can hardly recognize our village. I didn’t think it could be this "
+"What’s happened? Oh Eloh! The craters are everywhere. Everything is gone, "
+"ruined! I can hardly recognize our village. I didn’t think it could be this "
 "bad."
 msgstr ""
 "Čo sa vlastne stalo? Ó Eloh, všade samé krátery, všetko je preč, zničené. "
 "Sotva poznávam našu dedinu. Nemyslel som, že to bude až také zlé."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:262
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:280
 msgid ""
 "Come on, Kaleh, we have to go see if anyone is hurt or needs help. I think I "
 "hear people calling from the south. Now is not a time for fear, we must be "
@@ -347,7 +347,7 @@ msgstr ""
 "niekto prežil noc."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:267
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:285
 msgid ""
 "Wait, our keep is just to the east. Our leader Tanuil must surely be "
 "recruiting others to help deal with the devastation. Perhaps we should go to "
@@ -358,7 +358,7 @@ msgstr ""
 "opevneniu, skôr než začneme prehľadávať dedinu."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:284
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:302
 msgid ""
 "Tanuil’s keep, our beautiful fortress, it is destroyed. How will we summon "
 "our people to battle?"
@@ -367,7 +367,7 @@ msgstr ""
 "ľudí do boja?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:289
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:307
 msgid ""
 "We must rally those survivors we can find amidst the rubble. It doesn’t look "
 "like anyone survived, but at least we can thank Eloh it was a quick death. "
@@ -378,50 +378,50 @@ msgstr ""
 "nemá zmysel plakať nad mŕtvymi, keď treba pomáhať živým."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:294
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:312
 msgid "But if Tanuil is dead, who will lead us?"
 msgstr "Ale keď je Tanuil mŕtvy, kto nás povedie?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:299
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:317
 msgid "That’s a question for another time. Let’s keep exploring the wreckage."
 msgstr "To je otázka na inokedy. Pokračujme v prehľadávaní dediny."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:344
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:362
 msgid "Vecnu"
 msgstr "Veknu"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:345
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:363
 msgid "Eranor"
 msgstr "Eranor"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:346
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:364
 msgid "Seil"
 msgstr "Seil"
 
 #. [message]: speaker=Vecnu
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:380
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:581
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:398
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:599
 msgid "Kaleh, Nym, help us!"
 msgstr "Kaleh, Nym, pomôžte nám!"
 
 #. [message]: speaker=Nym
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:385
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:586
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:811
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:403
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:604
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:835
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4574
 msgid "What in Uria’s name is that?"
 msgstr "Čo je to, v mene Urie?"
 
 #. [message]: speaker=Vecnu
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:391
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:592
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:409
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:610
 msgid ""
 "They came with the stones that fell from the sky. I know not what they are, "
 "but more seem to be emerging from the craters. If we don’t stop them there "
@@ -432,55 +432,55 @@ msgstr ""
 "ľudí toho veľa nezostane."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:396
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:597
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:414
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:615
 msgid "To battle, my friends! There are still those left who can fight."
 msgstr "Do boja, priatelia! Ešte stále je tu dosť ľudí, ktorí dokážu bojovať."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:403
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:421
 msgid "There are more of our people fighting the mud monsters!"
 msgstr "Tam je viac našincov, čo bojujú s tými bahennými netvormi!"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:408
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:426
 msgid "Then let’s join the battle!"
 msgstr "Tak sa pridajme!"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:441
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:459
 msgid "Eloshi"
 msgstr "Eloši"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:442
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:460
 msgid "Illuvin"
 msgstr "Illuvin"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:448
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:450
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:466
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:468
 msgid "Raynor"
 msgstr "Rajnor"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:473
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:491
 msgid "More of these muddy crawlies, let’s get rid of them with haste."
 msgstr ""
 "Je tu ešte zopár tej zablatenej hávede, poďme na to, zbavme sa ich čím skôr."
 
 #. [event]: role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:558
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:576
 msgid "Jorazan"
 msgstr "Jorazan"
 
 #. [event]: role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror, role=Rocky Horror
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:559
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:577
 msgid "Zyar"
 msgstr "Zyar"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:567
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:585
 msgid ""
 "This is our training ground. And look, there is Garak, the captain of the "
 "guard. He and his fighters have survived the night!"
@@ -489,17 +489,17 @@ msgstr ""
 "jednotkou strážcov prežil noc!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:603
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:621
 msgid "But they are fighting many mud creatures. Quick, we must help them!"
 msgstr "Ale teraz bojujú s tými blatovcami. Rýchlo, musíme im pomôcť!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:631
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:649
 msgid "Ha! They’re destroyed at last."
 msgstr "Ha! Tak sme si s nimi nakoniec poradili."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:636
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:654
 msgid ""
 "Thanks for the help. I am glad to see that so many have survived the night. "
 "But there’s no time to talk, we must save the rest of our people and crush "
@@ -510,12 +510,12 @@ msgstr ""
 "netvorov."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:665
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:683
 msgid "This bridge leads to the holy island at the center of our lake."
 msgstr "Tento most vedie na posvätný ostrov uprostred nášho jazera."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:670
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:688
 msgid ""
 "Hmmmm. Some of the druids that worship on the island may still be alive. We "
 "should go check."
@@ -524,14 +524,14 @@ msgstr ""
 "to skontrolovať."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:675
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:693
 msgid ""
 "Be careful. The bridge is broken, so we’ll have to wade through the shallow "
 "water."
 msgstr "Buď opatrný. Most je poškodený a asi budeme musieť prebrodiť plytčinu."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:707
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:725
 msgid ""
 "The great tree! It has been buried under the rocks. Our most holy sanctuary, "
 "defiled. Oh, Eloh, what shall we do?"
@@ -540,32 +540,32 @@ msgstr ""
 "Eloh, čo máme robiť?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:712
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:730
 msgid "Is anyone still alive?"
 msgstr "Je ešte niekto nažive?"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:722
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:740
 msgid "Ryoko"
 msgstr "Ryoko"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:724
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:742
 msgid "Yuni"
 msgstr "Juni"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:728
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:746
 msgid "Finally! We were worried that no one else had survived."
 msgstr "Konečne! Už sme sa obávali, že nikto iný neprežil."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:733
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:751
 msgid "Mother priestess, are you all right?"
 msgstr "Matka predstavená, ste v poriadku?"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:738
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:756
 msgid ""
 "There’s no time to stand on ceremony. I’m fine. I’m afraid only a few of us "
 "survived, but we will lend you what skills we have. Show me to those who "
@@ -576,12 +576,12 @@ msgstr ""
 "potrebujú pomoc liečiteľa."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:743
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:761
 msgid "But the great tree, it has been destroyed!"
 msgstr "Ale, Svätý Strom, ten bol zničený!"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:748
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:766
 msgid ""
 "All things of this world come to an end, but the power of Eloh endures. A "
 "new one shall grow in its place. Come now, let us see to the needs of our "
@@ -592,12 +592,12 @@ msgstr ""
 "našich ľudí."
 
 #. [unit]: type=Cuttle Fish
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:774
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:798
 msgid "Deep One"
 msgstr "Ortokón"
 
 #. [unit]: type=Cuttle Fish
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:775
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:799
 msgid ""
 "The Deep Ones are gigantic aquatic monsters that lurk in the dark places of "
 "the world. Rarely do they come to the surface, and when they do the best way "
@@ -612,7 +612,7 @@ msgstr ""
 "ale rovnako dokážu z diaľky na protivníka striekať jedovatý čierny atrament."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:805
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:829
 msgid ""
 "The water of the lake suddenly goes dark and unsettled, only to erupt in a "
 "swarm of tentacles the moment the first elf set foot off the island."
@@ -621,7 +621,7 @@ msgstr ""
 "chápadiel v momente, keď prvý elf vykročil mimo ostrova."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:817
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:841
 msgid ""
 "I felt a great darkness in this lake, but I knew not what it was. The "
 "falling rocks must have woken it from its sleep."
@@ -630,7 +630,7 @@ msgstr ""
 "to museli prebudiť zo spánku."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:822
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:846
 msgid ""
 "Protect the priestesses, we shall send this monstrosity back to the depths "
 "it came from!"
@@ -639,32 +639,32 @@ msgstr ""
 "odkiaľ prišlo!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:839
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:863
 msgid "These fields seem strangely vacant. Where are the dustboks?"
 msgstr "Tieto polia sa zdajú byť zvláštne prázdne. Kde sú prašné kone?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:844
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:868
 msgid "Maybe they’re hiding in the stables. Let’s go check."
 msgstr "Možno sa ukryli do stajní. Poďme sa pozrieť."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:882
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:906
 msgid "Naru"
 msgstr "Naru"
 
 #. [message]: speaker=Naru
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:886
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:910
 msgid "Is it safe to come out? I was so scared."
 msgstr "Už je bezpečné vyjsť? Mal som taký strach."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:891
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:915
 msgid "Where are all the other dustboks?"
 msgstr "Kde sú všetky ostatné prašné kone?"
 
 #. [message]: speaker=Naru
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:896
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:920
 msgid ""
 "A hunting party left just yesterday, so unless the rocks fell all over the "
 "land, many of the dustboks have probably survived. The few that remained "
@@ -677,7 +677,7 @@ msgstr ""
 "všetok svoj talent, aby som tu udržal Jásiho a zabránil mu ujsť."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:901
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:925
 msgid ""
 "We’ll need your help in checking to see if the outer settlements survived. "
 "Who knows what kinds of damage they suffered in the night? And perhaps some "
@@ -689,27 +689,27 @@ msgstr ""
 "púšte dokázali zadržať ušlé prašné kone."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:906
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:930
 msgid "We can only hope that hunting party returns soon."
 msgstr "Tak dúfajme, že sa lovci čoskoro vrátia."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:916
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:940
 msgid "Hey, Nisen, the rocks have stopped falling. You can come out now!"
 msgstr "Hej Nisa, tie skaly už prestali padať. Už môžeš vyjsť!"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:920
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:944
 msgid "Nisen"
 msgstr "Nisa"
 
 #. [message]: speaker=Nisen
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:931
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:955
 msgid "Oh, thank Eloh, I thought they would never stop."
 msgstr "Ach, vďaka Eloh, už som si myslel, že to nikdy neprestane."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1043
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1086
 msgid ""
 "Oh good, some elves have survived in this outer settlement. They’ve agreed "
 "to help us search for other survivors."
@@ -718,12 +718,12 @@ msgstr ""
 "že nám pomôžu pri hľadaní ďalších zachránených."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1051
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1094
 msgid "The encampment is empty. I wonder what happened to the inhabitants?"
 msgstr "Tábor je prázdny. Ktovie čo sa stalo s jeho obyvateľmi?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1063
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1109
 msgid ""
 "This encampment has been abandoned. There are signs of a struggle and a few "
 "bloodstains but nothing else. I fear for those elves who lived out here."
@@ -732,12 +732,12 @@ msgstr ""
 "strach o tých, čo tu kedysi žili."
 
 #. [unit]: type=Necromancer, type=Dark Sorcerer, id=Xanthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1111
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1157
 msgid "Xanthos"
 msgstr "Xantos"
 
 #. [message]: speaker=Xanthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1131
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1177
 msgid ""
 "This place reeks of death, I could smell it from miles away. Oh, how I love "
 "it, it is the smell of power, the inevitable triumph of death over life. "
@@ -750,7 +750,7 @@ msgstr ""
 "sklonia pred černokňažníkom Xantosom!"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1136
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1182
 msgid ""
 "His timing couldn’t be worse. I know that undead cultists often prey on "
 "small targets, but they haven’t had the guts to attack us for years. Why has "
@@ -761,7 +761,7 @@ msgstr ""
 "na nás nakopila toľko utrpenia?"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1142
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1188
 msgid ""
 "Have some more faith, girl, the goddess does not send us more than we can "
 "handle. With Eloh’s grace we shall yet triumph over this pretender."
@@ -771,7 +771,7 @@ msgstr ""
 "prišelcom."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1147
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1193
 msgid ""
 "Bah, I’ve fought these dark cultists before. They can be killed just like "
 "anyone else, and our riders can easily defeat their skeleton armies."
@@ -781,7 +781,7 @@ msgstr ""
 "kostlivcov."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1152
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1198
 msgid ""
 "I have heard of your kind, foul necromancer. You travel the sands, daring to "
 "bring back and enslave those who have passed on. But we will prove to you "
@@ -795,7 +795,7 @@ msgstr ""
 "pred hnevom Eloh a tiež kuenotských elfov!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1184
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1230
 msgid ""
 "Some of our people felt crowded in the village, and wanted to live out on "
 "the open sands. They thought they could flee to the safety of our walls if "
@@ -807,17 +807,17 @@ msgstr ""
 "stať."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1213
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1259
 msgid "The necromancer is finally vanquished."
 msgstr "Černokňažník konečne zmizol."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1218
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1264
 msgid "And at last the dead shall have their rest."
 msgstr "Konečne nájdu i mŕtvi svoj pokoj."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1229
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1275
 msgid ""
 "The necromancer is dead, but I don’t think we’ve explored the entire "
 "village. There may still be elves that need rescuing. We should go back and "
@@ -827,44 +827,44 @@ msgstr ""
 "tu elfi, ktorých by sme mohli zachrániť. Poďme nazad a pozrime sa na to."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1246
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1292
 msgid ""
 "We’ve explored the village, and I think we’ve rescued the last of the "
 "survivors."
 msgstr "Prezreli sme dedinu a myslím, že sme zachránili posledných preživších."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1283
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1329
 msgid "Pythos"
 msgstr "Pýtos"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1285
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1331
 msgid "Shea"
 msgstr "Šia"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1287
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1333
 msgid "Narn"
 msgstr "Narn"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1289
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1335
 msgid "Jokli"
 msgstr "Jokli"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1291
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1337
 msgid "Lyer"
 msgstr "Lyer"
 
 #. [message]: speaker=Pythos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1299
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1345
 msgid "Hail, is anyone still alive?"
 msgstr "Zdravíme vospolok, je ešte niekto nažive?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1304
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1350
 msgid ""
 "Yes, and we could certainly use your help. A necromancer has been attacking "
 "us, he intends to use our fallen comrades as fodder for his evil magics. "
@@ -875,7 +875,7 @@ msgstr ""
 "Kde vlastne ste boli doteraz?"
 
 #. [message]: speaker=Pythos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1309
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1355
 msgid ""
 "We were out far in the sands, searching for prey and roaming orcs. As soon "
 "as we saw the rock storm we raced back as fast as we could. I only wish we "
@@ -886,32 +886,32 @@ msgstr ""
 "dokázali prísť skôr."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1314
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1360
 msgid "No use crying over spilt water. But we’re sure glad you’re here now."
 msgstr "Nemá zmysel plakať nad rozliatym mliekom. Ale sme radi, že už ste tu."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1328
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1374
 msgid "It seems that we finally have some peace. But what do we do now?"
 msgstr "Vyzerá to, že konečne máme pokoj. Čo ďalej?"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1333
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1379
 msgid "Where is Tanuil and his family?"
 msgstr "Kde ja Tanuil so svojou rodinou?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1338
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1384
 msgid "The keep has been crushed by the rocks. We could find no survivors."
 msgstr "Jeho pevnosť bola rozdrvená kamením. Nenašli sme nikoho nažive."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1343
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1389
 msgid "Too many have died this night."
 msgstr "Príliš veľa elfov zahynulo tejto noci."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1348
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1394
 msgid ""
 "Our village is in ruins. The walls that were built by our ancestors over "
 "generations have been demolished in a space of hours. Most of our dwellings "
@@ -923,7 +923,7 @@ msgstr ""
 "Jedno je jasné, tu už ostať nemôžeme."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1354
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1400
 msgid ""
 "You are a fool to despair. This has always been our home. The water here is "
 "good, we know this land. We can rebuild; Eloh willing, we can thrive again."
@@ -933,7 +933,7 @@ msgstr ""
 "nám tu opäť dariť."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1359
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1405
 msgid ""
 "Think for a moment. Who else has seen the rock storm? What other foes are "
 "coming to pick over the remains of our people? There is no mercy in the "
@@ -946,18 +946,18 @@ msgstr ""
 "slabosti."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1365
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1411
 msgid ""
 "Impudent girl, you should not speak so to your elders, or to your betters."
 msgstr "Drzé dievčisko, takto sa nerozpráva so staršími alebo s nadriadenými."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1370
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1416
 msgid "I have a right to speak my mind!"
 msgstr "Mám právo povedať svoj názor!"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1376
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1422
 msgid ""
 "Peace, please calm yourselves. In chaos there is nothing but death and "
 "destruction. Even in this time of trial we must show our fortitude, and "
@@ -972,7 +972,7 @@ msgstr ""
 "to, Kaleh?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1381
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1427
 msgid ""
 "Last night, before the rock storm, I heard a voice in my sleep. It sounded "
 "like sweet music, and somehow I knew it was Eloh. I still remember her exact "
@@ -995,7 +995,7 @@ msgstr ""
 "pripravila nový domov, tak vás tam povediem."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1386
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1432
 msgid ""
 "I fear what dangers lurk in the harsh sands and beyond to the north, but "
 "because you are our leader, I will follow where you go."
@@ -1004,7 +1004,7 @@ msgstr ""
 "ale keďže ty si náš vodca, budem nasledovať tvoju voľbu."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1391
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1437
 msgid ""
 "Then let us collect what supplies we can from the wreckage and head north "
 "with great haste. Our home is protection no longer, we must find a new haven "
@@ -1014,7 +1014,7 @@ msgstr ""
 "sever. Náš domov nám už viac neposkytuje ochranu, a tak si musíme nájsť nový."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1396
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1442
 msgid ""
 "What about the bodies of the dead? We can’t leave them to be torn by crows "
 "or desecrated by other dark mages."
@@ -1023,7 +1023,7 @@ msgstr ""
 "krkavcom, alebo aby ich nejaký temnú čarodejník zneuctil."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1402
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1448
 msgid ""
 "I agree, we should not forget our dead. We should build a huge pyre and burn "
 "them with proper ceremony, so that the smoke may carry them on to the next "
@@ -1033,7 +1033,7 @@ msgstr ""
 "spálime, so všetkými ceremóniami, nech ich dym zanesie do posmrtnej ríše."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1407
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1453
 msgid ""
 "Kaleh, I don’t want to tarry longer than necessary, but I agree that we must "
 "see to the dead before we leave. Garak, you and your men start collecting "
@@ -1045,7 +1045,7 @@ msgstr ""
 "postavili tú hranicu."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1412
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1458
 msgid ""
 "And so it was done. The dead were laid reverently on top of what little wood "
 "we could find. But the fire was big enough to burn the bodies to ashes and "
@@ -1061,7 +1061,7 @@ msgstr ""
 "mŕtvi na tejto veľkej výprave, ale ako sa ukázalo, zďaleka neboli poslední..."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1465
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1514
 msgid ""
 "What’s that to the north? It looks like even more undead! The rock storm "
 "must have attracted other necromancers. There’s no way we can defeat them "
@@ -1330,14 +1330,14 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:505
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:702
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:705
 msgid "Should I take this ring?"
 msgstr "Mám si vziať ten prsteň?"
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:507
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1544
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:704
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:707
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:583
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:575
 msgid "Yes, I’ll take it."
@@ -1355,7 +1355,7 @@ msgstr "Jednotka, ktorá nosí tento prsteň, sa nestane dehydrovanou na púšti
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:548
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:736
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:739
 msgid "No, I think someone else should wear it."
 msgstr "Nie, myslím, že by ho mal niesť niekto iný."
 
@@ -3010,7 +3010,7 @@ msgid "Kaleh must reach the exit tunnel at the north edge of the map"
 msgstr "Kaleh dosiahne chodbu na severnom okraji mapy"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:354
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:357
 msgid ""
 "Those mountains are huge! I never thought they would be so big. And what’s "
 "that white stuff on the tops of the peaks?"
@@ -3019,7 +3019,7 @@ msgstr ""
 "je to tá biela vec tam na vrcholkoch?"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:359
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:362
 msgid ""
 "I wish Garak were here, he’d know more about these lands than I do. I’ve "
 "never been up here, but I heard stories from the few who have made the "
@@ -3036,7 +3036,7 @@ msgstr ""
 "určite sa skrývajú v niektorej z mnohých jaskýň a tunelov pod povrchom."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:370
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:373
 msgid ""
 "Speaking of these lands, we may not have Garak to guide us, but all the "
 "terrain in this area perfectly matches the map we got from the orcs last "
@@ -3050,7 +3050,7 @@ msgstr ""
 "zalarmovali."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:377
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:380
 msgid ""
 "I had another vision last night, Eloh told me that we had to continue north, "
 "but instead of trying to go over the mountains, she said that we had to go "
@@ -3061,12 +3061,12 @@ msgstr ""
 "aby sme išli popod ne."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:382
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:385
 msgid "Underneath them? But how?"
 msgstr "Popod kopce? Ale ako?"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:387
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:390
 msgid ""
 "Orcs and goblins have been living here for hundreds of years and their "
 "network of tunnels and caves is more extensive than you might think. Who "
@@ -3081,7 +3081,7 @@ msgstr ""
 "možno nebudeme mať na výber."
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:392
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:395
 msgid ""
 "Other creatures besides orcs dig tunnels in the earth. Long ago dwarves "
 "mined mountains such as these, and huge trolls like to hide in the deep dark "
@@ -3098,7 +3098,7 @@ msgstr ""
 "ohňa a svetla."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:397
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:400
 msgid ""
 "Well if we are going to go under these mountains, we’re certainly going to "
 "have our hands full fighting all those orcs and goblins."
@@ -3106,7 +3106,7 @@ msgstr ""
 "Ak zídeme do podzemia, určite budeme mať plné ruky práce s orkami a goblinmi."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:402
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:405
 msgid ""
 "Indeed. I want to warn you again, Kaleh, this isn’t the desert. The orcs "
 "love fighting in hills and caves, and we won’t have the advantages of "
@@ -3124,7 +3124,7 @@ msgstr ""
 "to v podzemí bude obrana jednoduchšia než v otvorenej krajine."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:407
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:410
 msgid ""
 "Strike hard and fast and also be careful—right, this is going to be fun."
 msgstr ""
@@ -3132,45 +3132,45 @@ msgstr ""
 "to."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:436
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:439
 msgid "Goblin Coward"
 msgstr "Goblin zbabelec"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:441
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:445
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:449
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:453
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:461
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:465
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:469
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:476
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:480
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:484
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:593
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:594
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:444
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:448
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:452
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:456
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:464
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:468
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:472
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:479
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:483
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:487
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:596
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:597
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:599
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:600
 msgid "Goblin Scout"
 msgstr "Goblin prieskumník"
 
 #. [message]: speaker=Goblin Scout
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:495
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:498
 msgid "Attack!"
 msgstr "Útok!"
 
 #. [message]: speaker=Goblin Coward
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:500
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:503
 msgid "Run away!"
 msgstr "Utečte!"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:505
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:508
 msgid "Goblins are so predictable."
 msgstr "Goblini sú tak vypočítateľní..."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:516
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:519
 msgid ""
 "Merely a few steps in and all these goblins already know we’re here! I guess "
 "it’s not that easy to sneak around in someone else’s home territory."
@@ -3179,37 +3179,37 @@ msgstr ""
 "také ľahké zakrádať sa na cudzom území."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:541
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:543
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:544
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:546
 msgid "Orac"
 msgstr "Orak"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:549
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:551
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:552
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:554
 msgid "Scylla"
 msgstr "Scylla"
 
 #. [event]
 #. name of an enemy unit in water, not a geographic feature
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:560
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:563
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:565
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:566
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:568
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:569
 msgid "Lake Naga"
 msgstr "Jazerný Naga"
 
 #. [event]
 #. name of an enemy unit in water, not a geographic feature
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:562
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:563
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:565
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:566
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:568
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:569
 msgid "female^Lake Naga"
 msgstr "Jazerná Naga"
 
 #. [message]: speaker=Orac
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:602
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:605
 msgid ""
 "Come forth, creatures of the lake! Fulfill the oaths you have made and help "
 "us drive these hated creatures from our lands."
@@ -3218,18 +3218,18 @@ msgstr ""
 "votrelcov nazad do púšte."
 
 #. [message]: speaker=Scylla
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:607
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:767
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:610
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:770
 msgid "Yesss, we remember the oath... Sssslay them all!"
 msgstr "Áno, pamätáme si prísahu... Zzzzabite ich všetkých!"
 
 #. [message]: speaker=Panok
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:628
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:631
 msgid "These elves are stronger than we thought. Send for more reinforcements!"
 msgstr "Títo elfi sú silnejší, než sme si mysleli. Zavolajte posily!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:633
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:636
 msgid ""
 "How can he move that fast? He is faster than any goblin rider I have ever "
 "seen. It’s almost unnatural."
@@ -3238,12 +3238,12 @@ msgstr ""
 "jazdec, ktorého sme videli. To je takmer nadprirodzené."
 
 #. [message]: speaker=Panok
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:648
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:651
 msgid "Gaaghh!!"
 msgstr "Gaagghhh!!!"
 
 #. [message]: speaker=$speaking_unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:661
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:664
 msgid ""
 "Wait a minute. He was wearing a silver ring on one of his fingers. I think "
 "the ring might be magical. Maybe that’s why he was moving so fast."
@@ -3252,17 +3252,17 @@ msgstr ""
 "magický prsteň. Možno to je dôvodom, prečo sa pohybuje tak rýchlo."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:669
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:672
 msgid "I think, Kaleh, that you should take the ring."
 msgstr "Myslím, Kaleh, že by si mu ten prsteň mal zabaviť."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:674
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:677
 msgid "Why me?"
 msgstr "Prečo ja?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:679
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:682
 msgid ""
 "Because you tend to move slowly and if we’re going into the caves you’ll "
 "need all the speed you can get. And besides, we can’t afford to lose you; "
@@ -3274,17 +3274,17 @@ msgstr ""
 "nevieš, kedy sa ti schopnosť utekať o čosi rýchlejšie môže hodiť."
 
 #. [object]: id=SpeedyRing
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:709
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:712
 msgid "Ring of Speed"
 msgstr "Prsteň Bežcov"
 
 #. [object]: id=SpeedyRing
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:711
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:714
 msgid "This ring will increase your maximum speed by 1."
 msgstr "Tento prsteň zvýši tvoju maximálnu rýchlosť o 1 bod."
 
 #. [message]: speaker=Orac
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:762
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:765
 msgid ""
 "The elves have killed Panok the goblin! The other goblins may flee to the "
 "caves, but we will not give up these hills without a fight. Come forth, "
@@ -3296,7 +3296,7 @@ msgstr ""
 "jazerné! Naplňte svoj sľub a pomôžte nám odtiaľto vyhnať týchto votrelcov."
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:795
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:798
 msgid ""
 "Ugh! These tunnels are pitch black! It’s as bad as fighting in a moonless "
 "night, and it stinks of orc filth. I can hardly think of a place I would "
@@ -3307,7 +3307,7 @@ msgstr ""
 "menej, než toto tu."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:800
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:803
 msgid ""
 "We have no choice. We cannot cross over these mountains, so we must go "
 "beneath them. If the orcs skulk in their tunnels and block our way, we must "
@@ -3318,7 +3318,7 @@ msgstr ""
 "nimi, bez ohľadu na podmienky."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:806
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:809
 msgid ""
 "Remember, Kaleh, it’s nasty fighting underground. We will be at a "
 "disadvantage against orcs and other things that prefer the darkness."
@@ -3327,7 +3327,7 @@ msgstr ""
 "orkom a iným tvorom obľubujúcim temnotu."
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:811
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:814
 msgid ""
 "Also, any time you find a particularly tough orc blocking a passage, my "
 "fireballs can blast him quick enough."
@@ -3336,19 +3336,19 @@ msgstr ""
 "blokovať našu cestu, tak moje ohnivé strely si s ním rýchlo poradia."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:826
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:829
 msgid "Greebo"
 msgstr "Gríbo"
 
 #. [message]: speaker=Greebo
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:833
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:836
 msgid ""
 "Greebo keeps shinies safe from nasty orcses. And ’specially stinking elves."
 msgstr ""
 "Gríbo ochráni vzácne veci pred škaredým orkom. A tiež pred hnusným elfom."
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:857
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:860
 msgid ""
 "Looks like he’s been squirreling away his stolen loot in this cave. Not that "
 "he had much. Must be hard times."
@@ -3357,7 +3357,7 @@ msgstr ""
 "mal nejak veľa. Asi naň prišli ťažké časy."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:885
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:888
 msgid ""
 "How odd. Someone has carved a crude fountain out of the stone at the end of "
 "the passage. The freezing water pours out into a large pool. At the bottom "
@@ -3376,12 +3376,12 @@ msgstr ""
 "pekný meč, ale mám odvahu to risknúť?"
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:887
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:890
 msgid "I fear no creature, I will take the blade!"
 msgstr "Ja sa nikoho nebojím, ja si po ten meč pôjdem!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:891
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:894
 msgid ""
 "The blade is chill to the touch and gives off a cold glow. I wonder how it "
 "came to be here."
@@ -3390,12 +3390,12 @@ msgstr ""
 "dostala."
 
 #. [object]: id=ColdBlade
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:902
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:905
 msgid "Cold Blade"
 msgstr "Ľadová čepeľ"
 
 #. [object]: id=ColdBlade
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:903
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:907
 msgid ""
 "The unit who wields this blade will deal cold damage with its melee attack."
 msgstr ""
@@ -3403,32 +3403,32 @@ msgstr ""
 "útok."
 
 #. [command]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:912
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:921
 msgid "Purple Abomination"
 msgstr "Purpurová ohava"
 
 #. [message]: speaker=Purple Abomination
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:916
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:925
 msgid "I am an abomination, please kill me."
 msgstr "Som netvor, zabite ma prosím."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:921
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:930
 msgid "I’ve seen some ugly creatures in my day, but that thing is just wrong."
 msgstr "Už som videl kdejaké hnusné netvory, ale táto je nejaká divná."
 
 #. [message]: speaker=Purple Abomination
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:926
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:935
 msgid "The voices say I have no choice, I must attack!"
 msgstr "Hlasy mi hovoria, že nemám na výber, musím zaútočiť!"
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:936
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:945
 msgid "I don’t like the sound of this. I’m out of here."
 msgstr "To sa mi vôbec nepáči. Radšej odtiaľto vypadnem."
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:962
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:971
 msgid ""
 "This is the end of the line. The water is too deep for me to continue any "
 "further. I’m freezing cold, wet, and I can’t see a thing. I’m not exactly "
@@ -3441,34 +3441,34 @@ msgstr ""
 "prečo som si myslel, že to bude na niečo dobré."
 
 #. [unit]: type=Dark Assassin Cloaked, id=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:997
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2114
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1006
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2111
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2396
 msgid "Cloaked Figure"
 msgstr "Zahalená postava"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1030
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1039
 msgid "Kaleh, I am death incarnate."
 msgstr "Kaleh, ja som stelesnenie smrti."
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1036
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1045
 msgid "And I shall avenge all those you have killed!"
 msgstr "A pomstím sa ti za všetkých, ktorých si ty zabil!"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1052
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1061
 msgid "I promise we shall meet again."
 msgstr "Sľubujem, že sa ešte stretneme."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1063
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1072
 msgid "He just disappeared. That’s odd."
 msgstr "Jednoducho zmizol. To je divné."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1091
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1100
 msgid ""
 "This passage seems different from the other tunnels and caves. It is wide "
 "and smooth and leads sharply downwards. I bet this was the way that Eloh was "
@@ -3479,7 +3479,7 @@ msgstr ""
 "rozprávala Eloh."
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1096
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1105
 msgid ""
 "This is no natural passage, and the walls are too well carved and smooth to "
 "be made by orcs. I wouldn’t be surprised if this was once carved out by "
@@ -3490,7 +3490,7 @@ msgstr ""
 "vytesané trpaslíkmi. Ktovie, či ešte nejakí v týchto horách žijú..."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1110
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1119
 msgid ""
 "Having killed all the orc and goblin leaders in the immediate vicinity, we "
 "can take our time and should have no trouble bringing the rest of our people "
@@ -3505,7 +3505,7 @@ msgstr ""
 "Eloh, nech nás teda ona vedie - ako doposiaľ."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1117
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1126
 msgid ""
 "Now that you’ve found the way we should be able to get the rest of our "
 "people past the orcs. It’s odd, I guess we’re trading the dangers we know "
@@ -3519,7 +3519,7 @@ msgstr ""
 "doposiaľ."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1124
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1133
 msgid ""
 "I’ll just be happy when I can breathe fresh air again and see the suns and "
 "stars. Still, who knows what we’ll encounter deep under the earth?"
@@ -3529,12 +3529,12 @@ msgstr ""
 "hlbinách?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1129
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1138
 msgid "Well, there’s only one way to find out."
 msgstr "Je iba jediný spôsob ako sa to dozvedieť."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1140
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1149
 msgid ""
 "We’ve taken too long to get our people into the tunnels! Even more orcs are "
 "coming across the foothills from the east and west and flanking us. There’s "
@@ -3555,7 +3555,7 @@ msgstr "Zápas v podzemí"
 #. [modify_side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:48
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:96
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1181
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1178
 msgid "team_name^Trolls"
 msgstr "Trolovia"
 
@@ -3563,7 +3563,7 @@ msgstr "Trolovia"
 #. [modify_side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:146
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:195
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1159
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1156
 msgid "team_name^Dwarves"
 msgstr "Trpaslíci"
 
@@ -3825,7 +3825,7 @@ msgstr ""
 "pozícia."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:687
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:693
 msgid ""
 "Whoa! Did you see that? That huge stalactite just fell and crushed the "
 "spider. Aren’t we lucky!"
@@ -3834,12 +3834,12 @@ msgstr ""
 "to ale šťastie!"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:692
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:698
 msgid "Eloh must indeed be watching over us."
 msgstr "Eloh nad nami asi fakt bdie."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:711
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:705
 msgid ""
 "You know, if all we discover down here are insects, I’ll be very "
 "disappointed."
@@ -3848,38 +3848,38 @@ msgstr ""
 "sklamaný."
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:722
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:716
 msgid "Spiders aren’t insects."
 msgstr "Pavúky nie sú hmyz..."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:727
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:721
 msgid "Thanks for the clarification."
 msgstr "Oj, vďaka za objasnenie..."
 
 #. [message]: speaker=Wounded Dwarf
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:747
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:741
 msgid "Help! They’re everywhere!"
 msgstr "Pomoc! Sú všade!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:757
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:751
 msgid "Nym, your timing is impeccable."
 msgstr "Načasovala si si to super, Nym."
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:768
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:762
 msgid "That’s a dwarf, but it looks like he’s been beaten to a pulp."
 msgstr ""
 "Toto vyzerá na trpaslíka, ale vyzerá to tiež, že bol zmlátený ako žito."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:775
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:769
 msgid "Short and hairy, he must be a dwarf. But he’s been beaten to a pulp."
 msgstr "Malé a chlpaté, to musí byť trpaslík. Ale zmlátený ako žito."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:782
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:776
 msgid ""
 "I don’t know what ‘they’ are, but we can’t go back. Prepare yourselves for "
 "anything, everyone."
@@ -3888,71 +3888,71 @@ msgstr ""
 "čokoľvek, každý."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:840
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:841
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:842
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:852
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:854
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:856
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:879
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:837
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:838
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:839
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:849
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:851
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:853
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:876
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:884
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:885
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:886
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:887
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:888
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:889
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:890
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:898
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:901
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:904
 msgid "Dwarf Defender"
 msgstr "Trpaslík obranca"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:845
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:846
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:860
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:864
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:868
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:870
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:893
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:894
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:895
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:842
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:843
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:857
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:861
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:865
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:867
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:890
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:891
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:892
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:907
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:909
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:910
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:912
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:913
 msgid "Troll Defender"
 msgstr "Trol obranca"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:853
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:850
 msgid "Dwarf Leader"
 msgstr "Vodca trpaslíkov"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:873
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:870
 msgid "Troll Leader"
 msgstr "Vodca trolov"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:942
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:939
 msgid "Whoa."
 msgstr "Úha."
 
 #. [message]: speaker=$explorer.id
 #. "this" refers to the trolls and dwarves fighting
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:949
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:946
 msgid "Whoa. Kaleh, you have to come see this."
 msgstr "Páni. Kaleh, toto musíš vidieť."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1055
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1052
 msgid "I think I preferred the spider and the ants..."
 msgstr "Myslím, že ten pavúk a mravce sa mi pozdávali viac..."
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1060
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1057
 msgid "Stand firm, boys, here they come!"
 msgstr "Už prichádzajú, všetci, do obrany!"
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1065
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1062
 msgid ""
 "You invade our tunnels, you slaughter our people, by Griknagh we will make "
 "you pay!"
@@ -3961,7 +3961,7 @@ msgstr ""
 "zaplatíte!"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1070
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1067
 msgid ""
 "Tenacious savages, aren’t they? But these tunnels are rich in ore, and we "
 "won’t let a couple of trolls keep them from us."
@@ -3970,44 +3970,44 @@ msgstr ""
 "nenecháme zopár trolov, aby nám ju ukradli."
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1075
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1072
 msgid "Wait... What... Who are you?"
 msgstr "Počkajte... Čo... Pardón, kto si?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1080
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1077
 msgid "Uh..."
 msgstr "Uh..."
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1085
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1082
 msgid "What by the names of my forefathers are they?"
 msgstr "Čo sú zač, pri všetkých predkoch?"
 
 #. [message]: speaker=first_dwarf
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1090
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1087
 msgid "Wait a minute... Vacuous eyes, pointy ears — they must be elves."
 msgstr "Tak počkať... Prázdne oči, špicaté uši - to musia byť elfovia."
 
 #. [message]: speaker=second_dwarf
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1095
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1092
 msgid "Elves?! What in the nine hells are elves doing down here?"
 msgstr "Elfi!?! A čo do pekla robia elfi tuto v podzemí?"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1100
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1097
 msgid "Never mind that, who are you?"
 msgstr "To je jedno. Hej, čo si zač?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1105
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1102
 msgid ""
 "I am Kaleh, and we are the Quenoth Elves. What in Eloh’s name is going on "
 "here?"
 msgstr "Ja som Kaleh a my sme Quenothskí elfovia. Čo sa to tu, preboha, deje?"
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1110
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1107
 msgid ""
 "They invade our land and kill our young. Dwarves always want more, always "
 "greedy for glittery rocks."
@@ -4016,7 +4016,7 @@ msgstr ""
 "sú hrozne lakomí, keď príde na jagavé kamienky."
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1115
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1112
 msgid ""
 "Those monsters killed me boys. Kaleh, if you be of stout heart, help us "
 "drive these lummoxes from our tunnels."
@@ -4025,12 +4025,12 @@ msgstr ""
 "správnom mieste, pomôž nám vyhnať týchto švábov z našich tunelov."
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1120
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1117
 msgid "No, this is our home. Help us, little ones, and we will help you."
 msgstr "Nie, toto je náš domov. Pomôžte nám maličkí a my pomôžeme vám."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1125
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1122
 msgid ""
 "There’s too many of them for us to try to take them both on, and besides "
 "with all these branching tunnels we’ll have no idea which way to go. I think "
@@ -4043,7 +4043,7 @@ msgstr ""
 "stranou, aby nám potom pomohli nájsť cestu nazad na povrch."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1130
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1127
 msgid ""
 "But even if we do, what about all of our people? How can we safely escort "
 "them through this war zone?"
@@ -4052,7 +4052,7 @@ msgstr ""
 "túto bojovú líniu?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1136
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1133
 msgid ""
 "We won’t. If we keep the majority of our people hidden back up the passage "
 "we should be able to protect them, at least for a little while. In the "
@@ -4066,18 +4066,18 @@ msgstr ""
 "šťastie, možno sa nám podarí vyjednať bezpečný prechod cez jaskyne."
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1145
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1142
 msgid "But they both look evenly matched. Who should we ally with?"
 msgstr ""
 "Akurát, že obe strany vyzerajú dosť vyrovnane. S kým pôjdeme do spojenectva?"
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1148
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1145
 msgid "Let’s aid the dwarves."
 msgstr "Pomôžme trpaslíkom."
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1164
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1161
 msgid ""
 "Bah! Your kind all the same. Everyone turns on trolls. But you’ll see, "
 "Griknagh will smash you all."
@@ -4086,12 +4086,12 @@ msgstr ""
 "vás Griknag rozmláti."
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1170
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1167
 msgid "Let’s aid the trolls."
 msgstr "Pomôžme trolom."
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1186
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1183
 msgid ""
 "I knew elves couldn’t be trusted. Foolish boy, you will regret your "
 "betrayal. Taste dwarven steel!"
@@ -4100,7 +4100,7 @@ msgstr ""
 "našu oceľ!"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1201
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1198
 msgid ""
 "There seems to be an abandoned dwarvish fortress right in front of us. If we "
 "can fight our way to the keep, we should be able to start rallying our "
@@ -4111,69 +4111,69 @@ msgstr ""
 
 #. [then]
 #. [modify_unit]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1215
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1217
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1218
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1220
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1221
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1223
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1287
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1284
 msgid "Troll Skirmisher"
 msgstr "Trol záškodník"
 
 #. [else]
 #. [modify_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1231
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1233
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1235
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1241
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1342
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1228
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1230
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1232
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1238
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1339
 msgid "Dwarf Skirmisher"
 msgstr "Trpaslík záškodník"
 
 #. [else]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1238
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1235
 msgid "Dwarf Thunderer"
 msgstr "Trpaslík strelec"
 
 #. [unit]: type=Dwarvish Explorer, id=Fundin
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1351
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1348
 msgid "Fundin"
 msgstr "Fundin"
 
 #. [unit]: type=Dwarvish Explorer, id=Nori
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1364
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1361
 msgid "Nori"
 msgstr "Nori"
 
 #. [unit]: type=Troll Warrior, id=Thungar
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1379
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1376
 msgid "Thungar"
 msgstr "Tungár"
 
 #. [unit]: type=Troll Warrior, id=Gnarl
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1392
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1389
 msgid "Gnarl"
 msgstr "Gnarl"
 
 #. [then]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1519
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1530
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1542
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1553
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1516
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1527
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1539
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1550
 msgid "Troll Flamecaster"
 msgstr "Trol vrhač ohňa"
 
 #. [message]: speaker=Troll Flamecaster
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1558
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1555
 msgid "Burn, burn and die!"
 msgstr "Zhorte, zhorte a umrite!"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1569
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1566
 msgid "Dive for cover!"
 msgstr "Kry sa!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1574
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1571
 msgid ""
 "Those new troll shamans are decimating the dwarves with blasts of fire! This "
 "doesn’t look good."
@@ -4182,28 +4182,28 @@ msgstr ""
 "dobre."
 
 #. [message]: id=$casualty
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1613
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1610
 msgid "Aauughh!"
 msgstr "Aaauuuu!"
 
 #. [message]: id=$casualty
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1622
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1798
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1619
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1795
 msgid "No...!"
 msgstr "Nieee...!"
 
 #. [message]: id=$casualty
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1631
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1628
 msgid "Help me!!"
 msgstr "Pomôžte mi!!!"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1660
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1657
 msgid "More accursed troll magic. Fall back!"
 msgstr "Stále viac trolských čarodejníkov. Ústup!"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1666
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1663
 msgid ""
 "I need to go back and rally more reinforcements. We’re hurtin’, Kaleh, I’ll "
 "need your men to cover for us. Do your best, boy, and may your ancestors "
@@ -4213,16 +4213,16 @@ msgstr ""
 "tvojich mužov, aby nás kryli. Snaž sa chlapče, nech ťa predkovia ochraňujú."
 
 #. [else]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1686
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1695
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1706
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1718
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1729
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1683
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1692
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1703
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1715
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1726
 msgid "Dwarf Grenadier"
 msgstr "Trpaslík granátometník"
 
 #. [message]: speaker=Dwarf Grenadier
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1734
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1731
 msgid ""
 "Let’s blast those monsters back to the pits they spawned from! Fire in the "
 "hole!"
@@ -4230,12 +4230,12 @@ msgstr ""
 "Vyrazme tie hnusoby nazad do hlbín, odkiaľ vyliezli! Páľte do tej diery!"
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1745
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1742
 msgid "More dwarven trickery! Fall back!"
 msgstr "To je nejaký trpasličí trik! Ústup!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1750
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1747
 msgid ""
 "Those new dwarves are lobbing explosives at the trolls with devastating "
 "effect! I don’t think the trolls can take this much longer."
@@ -4244,17 +4244,17 @@ msgstr ""
 "presnosťou! Mám pocit, že trolovia toho už veľa nevydržia."
 
 #. [message]: id=$casualty
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1789
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1786
 msgid "Aaughh!"
 msgstr "Aaauuuuu!"
 
 #. [message]: id=$casualty
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1807
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1804
 msgid "Gaaghh!"
 msgstr "Aaach!!!"
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1836
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1833
 msgid ""
 "I must go back and find more trolls to fight. You must hold them back, "
 "Kaleh. Be strong like rock. Griknagh will be with you."
@@ -4263,32 +4263,32 @@ msgstr ""
 "Kaleh. Buď ako kameň. Griknág buď s tebou."
 
 #. [unit]: type=Troll Shaman, id=Thu'lok, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1869
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1866
 msgid "Thu’lok"
 msgstr "Túlok"
 
 #. [unit]: type=Troll Whelp, id=Harpo, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1884
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1881
 msgid "Harpo"
 msgstr "Harpo"
 
 #. [unit]: type=Troll Whelp, id=Groucho, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1899
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1896
 msgid "Groucho"
 msgstr "Graučo"
 
 #. [unit]: type=Troll Whelp, id=Chico, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1914
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1911
 msgid "Chico"
 msgstr "Čiko"
 
 #. [unit]: type=Troll Rocklobber, id=Groo, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1930
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1927
 msgid "Groo"
 msgstr "Groo"
 
 #. [message]: speaker=Thu'lok
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1945
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1942
 msgid ""
 "Our leader sent us to help you. We fight for you until all the dwarves are "
 "dead. We will avenge the deaths of our people!"
@@ -4297,7 +4297,7 @@ msgstr ""
 "neporazíme trpaslíkov. Pomstíme sa za smrť našich padlých!"
 
 #. [message]: role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1959
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1956
 msgid ""
 "The dwarves use stone cairns to mark their territory. What a waste of good "
 "throwing stones."
@@ -4306,32 +4306,32 @@ msgstr ""
 "Zbytočné mrhanie dobrými skalami, čo by sa dali použiť v boji."
 
 #. [unit]: type=Dwarvish Fighter, id=Dwalim, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1979
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1976
 msgid "Dwalim"
 msgstr "Dvalím"
 
 #. [unit]: type=Dwarvish Pathfinder, id=Moin, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1996
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1993
 msgid "Moin"
 msgstr "Moin"
 
 #. [unit]: type=Dwarvish Thunderer, id=Nordi, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2013
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2010
 msgid "Nordi"
 msgstr "Nordi"
 
 #. [unit]: type=Dwarvish Berserker, id=Byorn, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2030
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2027
 msgid "Byorn"
 msgstr "Bjorn"
 
 #. [unit]: type=Dwarvish Fighter, id=Runin, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2049
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2046
 msgid "Runin"
 msgstr "Runín"
 
 #. [message]: speaker=Dwalim
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2066
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2063
 msgid ""
 "Looks like we came just in time. Our chief told us we’re to fight with you "
 "until all the trolls are dead. Tell us where to go — I want to kill me some "
@@ -4342,7 +4342,7 @@ msgstr ""
 "chuť klepnúť pár trolov po hlave!"
 
 #. [message]: role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2081
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2078
 msgid ""
 "The trolls display the skulls of their enemies as a way of marking their "
 "territory. How barbaric."
@@ -4351,7 +4351,7 @@ msgstr ""
 "teritória. To je barbarstvo."
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2146
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2143
 msgid ""
 "Did you think you had escaped me, Kaleh? I am your shadow, I will always be "
 "there until you pay for what you have done."
@@ -4360,7 +4360,7 @@ msgstr ""
 "nablízku, až kým nezaplatíš za všetko, čo si vykonal."
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2152
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2149
 msgid ""
 "You want to flee, don’t you? But you cannot. They couldn’t escape her "
 "either. Even death could not save them. She will devour us all. But first I "
@@ -4371,12 +4371,12 @@ msgstr ""
 "pomstím. Zatancuj mi tvoj posledný tanec, Kaleh! Tancuj! Tancuj!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2224
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2221
 msgid "Nasty dwarves and stinkin’ elves, we will smash you all!"
 msgstr "Hnusní trpaslíci a smradľaví elfi, všetkých vás tu rozmetáme!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2232
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2229
 msgid ""
 "Kill the elves! We must stop them here. This is our land, crush the "
 "intruders!"
@@ -4384,14 +4384,14 @@ msgstr ""
 "Zabite elfov! Musíme ich zastaviť. Toto je naša krajina, zbavme sa votrelcov!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2238
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2235
 msgid ""
 "What are you doing back here? The trolls hide in the southern tunnels, not "
 "this way."
 msgstr "A čo tu ty robíš? Trolovia sa ukrývajú v južných tuneloch, nie tu."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2254
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2251
 msgid ""
 "Treacherous elves, how can you fight with such horrid creatures as trolls? I "
 "will cleave all in two with my axe!"
@@ -4400,7 +4400,7 @@ msgstr ""
 "trolovia. Nasekám vás svojou sekerou na dvoje!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2262
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2259
 msgid ""
 "If you think you can take these caves from us, then you are fools. We are "
 "masters of fighting underground and we will die to defend our home. Fight "
@@ -4411,7 +4411,7 @@ msgstr ""
 "domovov. Do boja bratia!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2268
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2265
 msgid ""
 "What you doing back here? Nasty dwarves are to the north, no dwarves this "
 "way. Go back and fight bravely."
@@ -4420,34 +4420,34 @@ msgstr ""
 "nazad a statočne bojuj."
 
 #. [message]: speaker=Fundin
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2299
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2296
 msgid "The rest is silence..."
 msgstr "A už je len ticho..."
 
 #. [message]: speaker=Nori
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2312
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2309
 msgid "I go to my ancestors..."
 msgstr "Odchádzam k svojim predkom..."
 
 #. [message]: speaker=Thungar
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2325
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2322
 msgid "Arrghh!!"
 msgstr "Arrggg!!!"
 
 #. [message]: speaker=Gnarl
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2338
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2335
 msgid "I will be avenged..."
 msgstr "Niekto ma raz pomstí..."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2432
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2429
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:351
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1658
 msgid "Zurg"
 msgstr "Zurg"
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2450
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2447
 msgid ""
 "Congratulations! Some of trolls didn’t think you strong enough to beat "
 "dwarves."
@@ -4456,13 +4456,13 @@ msgstr ""
 "porazili trpaslíkov."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2455
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2552
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2452
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2549
 msgid "Where did you come from?"
 msgstr "Odkiaľ ste prišli?"
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2460
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2457
 msgid ""
 "There many secret tunnels that you sun dwellers not know of. Only troll "
 "know. We smarter than you think. Zurg would have killed dwarves himself, but "
@@ -4473,12 +4473,12 @@ msgstr ""
 "ale musel odísť tam, kde sa skutočne bojuje."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2465
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2462
 msgid "The real fighting? I thought that was what we were waist-deep in?"
 msgstr "Skutočný boj? Mal som pocit, že sme v ňom až po krk?"
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2471
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2468
 msgid ""
 "While you fighting, another clan of dwarves sneak around and flank us. They "
 "tricksy like that. We must leave you and run back to defend women and little "
@@ -4493,12 +4493,12 @@ msgstr ""
 "trpaslík myslieť. Vy byť naša tajná zbraň!"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2476
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2473
 msgid "How do you mean?"
 msgstr "Čo tým chceš povedať?"
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2481
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2478
 msgid ""
 "Right before battle, we find secret passage just to the north leading "
 "straight to big dwarf stronghold. Hiding in stronghold is big important "
@@ -4519,8 +4519,8 @@ msgstr ""
 "cestu na povrch. Vy teraz nasledovať Zurga, on ukáže cestu do tajnej chodby."
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2486
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2582
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2483
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2579
 msgid ""
 "Their knowledge of these tunnels is uncanny. I could have sworn a minute ago "
 "that that wall was solid rock."
@@ -4529,7 +4529,7 @@ msgstr ""
 "byť z pevného kameňa a teraz chodba..."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2497
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2494
 msgid ""
 "Wait a moment, Zurg, we must deal with this mysterious cloaked figure before "
 "we can follow you."
@@ -4538,7 +4538,7 @@ msgstr ""
 "predtým, než pôjdeme za tebou."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2507
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2504
 msgid ""
 "It sounds like our work is not yet done. Very well, gather yourselves "
 "together, we must follow Zurg."
@@ -4548,21 +4548,21 @@ msgstr ""
 
 #. [event]
 #. [unit]: type=Dwarvish Pathfinder, id=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2533
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2530
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:263
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1465
 msgid "Grimnir"
 msgstr "Grimnír"
 
 #. [message]: speaker=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2547
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2544
 msgid ""
 "Congratulations, some of me boys didn’t think you could beat the trolls."
 msgstr ""
 "Blahoželám, pár mojich chlapcov si myslelo, že nezvládnete poraziť trolov."
 
 #. [message]: speaker=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2557
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2554
 msgid ""
 "Don’t think you know all the tunnels and passages that twist through these "
 "caves, elf. I would have killed him myself, but I was just sent back from "
@@ -4573,12 +4573,12 @@ msgstr ""
 "poslali na hlavný front."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2562
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2559
 msgid "The front? I thought this was the front."
 msgstr "Hlavný front? Myslel som, že toto tu bol hlavný front."
 
 #. [message]: speaker=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2567
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2564
 msgid ""
 "While you were fighting, a separate clan of trolls sneaked around our "
 "sentries and flanked us, attacking our supply depots. There are more of "
@@ -4594,12 +4594,12 @@ msgstr ""
 "víťazstvo tu nám poskytlo neočakávanú príležitosť."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2572
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2569
 msgid "It has?"
 msgstr "Naozaj?"
 
 #. [message]: speaker=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2577
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2574
 msgid ""
 "Right before the trolls overran this area of the mines, our scouts had found "
 "an old tunnel south of here that leads almost straight to the main lair of "
@@ -4624,7 +4624,7 @@ msgstr ""
 "Nie je to veľmi ďaleko."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2593
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2590
 msgid ""
 "Wait a moment, Grimnir, we must deal with this mysterious cloaked figure "
 "before we can follow you."
@@ -4633,7 +4633,7 @@ msgstr ""
 "zahalenou postavou, predtým než pôjdeme do tvojej chodby."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2603
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2600
 msgid ""
 "It sounds like our work is not yet done. Very well, gather yourselves "
 "together, we must follow Grimnir."
@@ -4642,7 +4642,7 @@ msgstr ""
 "ísť za Grimnírom."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2640
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2637
 msgid ""
 "Where did he go? How does he disappear like that? And what in Uria’s name "
 "was he ranting about? Whoever that is is starting to make me get edgy."
@@ -4651,7 +4651,7 @@ msgstr ""
 "ktokoľvek, začína ma rozčuľovať."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2655
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2652
 msgid ""
 "The cloaked figure is gone. Still, our work is not yet done. Gather "
 "yourselves together; we must follow Zurg."
@@ -4660,7 +4660,7 @@ msgstr ""
 "Pozbierajte sa, musíme ísť za Zurgom."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2677
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2674
 msgid ""
 "The cloaked figure is gone. Still, our work is not yet done. Gather "
 "yourselves together; we must follow Grimnir."
@@ -4669,7 +4669,7 @@ msgstr ""
 "Pozbierajte sa, musíme ísť za Grimnírom."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2703
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2700
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1769
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:2013
 msgid ""
@@ -15468,8 +15468,8 @@ msgstr ""
 #. [attack]: type=impact
 #. [effect]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:42
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:383
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:700
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:384
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:701
 msgid "bolas"
 msgstr "bola laso"
 
@@ -15915,152 +15915,152 @@ msgstr ""
 "temných časoch."
 
 #. [advancement]: id=swordsmanship_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:84
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:452
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:85
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:453
 msgid "Swordsmanship Training"
 msgstr "Výcvik šermu"
 
 #. [advancement]: id=strong_strikes
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:105
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:106
 msgid "Strong Strikes"
 msgstr "Silné údery"
 
 #. [advancement]: id=swordsman
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:122
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:123
 msgid "Swordsman"
 msgstr "Šermiar"
 
 #. [advancement]: id=taunt
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:144
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:145
 msgid "Taunt"
 msgstr "Posmech"
 
 #. [advancement]: id=stronger_grip
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:285
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:286
 msgid "Stronger Grip"
 msgstr "Silnejší úchop"
 
 #. [advancement]: id=overwhelming_power
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:298
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:299
 msgid "Overwhelming Power"
 msgstr "Ohromujúca sila"
 
 #. [advancement]: id=stamina_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:323
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:634
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:324
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:635
 msgid "Stamina Training"
 msgstr "Tréning výdrže"
 
 #. [advancement]: id=endurance_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:338
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:339
 msgid "Endurance Training"
 msgstr "Vytrvalostný tréning"
 
 #. [advancement]: id=skirmisher
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:358
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:675
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:359
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:676
 msgid "Skirmisher"
 msgstr "Záškodník"
 
 #. [advancement]: id=training_with_bolas
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:377
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:694
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:378
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:695
 msgid "Training with Bolas"
 msgstr "Výcvik s Bolasom"
 
 #. [advancement]: id=slow
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:397
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:726
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:398
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:727
 msgid "Slow"
 msgstr "Pomalé"
 
 #. [advancement]: id=opportunist
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:417
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:418
 msgid "Opportunist"
 msgstr "Oportunistické"
 
 #. [advancement]: id=inspiring
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:436
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:437
 msgid "Inspiring"
 msgstr "Inšpirujúce"
 
 #. [advancement]: id=accurate_strikes
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:473
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:474
 msgid "Accurate Strikes"
 msgstr "Presné zásahy"
 
 #. [advancement]: id=faster_strikes
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:490
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:491
 msgid "Faster Strikes"
 msgstr "Rýchlejšie zásahy"
 
 #. [advancement]: id=sword_dance
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:502
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:503
 msgid "Sword Dance"
 msgstr "Tanec s mečom"
 
 #. [advancement]: id=bowmanship_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:526
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:527
 msgid "Bowmanship Training"
 msgstr "Výcvik ovládania luku"
 
 #. [advancement]: id=quickdraw
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:543
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:544
 msgid "Quickdraw"
 msgstr "Rýchle natiahnutie"
 
 #. [advancement]: id=ranger
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:555
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:556
 msgid "Ranger"
 msgstr "Hraničiar"
 
 #. [advancement]: id=rain_of_arrows
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:573
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:574
 msgid "Rain of Arrows"
 msgstr "Dážď šípov"
 
 #. [advancement]: id=toxic_rain
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:602
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:603
 msgid "Toxic Rain"
 msgstr "Toxický dážď"
 
 #. [advancement]: id=twin_arrows
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:620
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:621
 msgid "Twin Arrows"
 msgstr "Dvojité šípy"
 
 #. [advancement]: id=footwork
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:649
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:650
 msgid "Footwork"
 msgstr "Práca s nohami"
 
 #. [advancement]: id=run_by_bolas
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:714
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:715
 msgid "Run By (Bolas)"
 msgstr "Ísť podľa (Bolas)"
 
 #. [advancement]: id=bolaship
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:746
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:747
 msgid "Bolaship"
 msgstr "Bola laso"
 
 #. [advancement]: id=herbalism
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:759
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:760
 msgid "Herbalism"
 msgstr "Bylinkárstvo"
 
 #. [advancement]: id=run_by_sword_and_bow
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:777
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:778
 msgid "Run By (Sword and Bow)"
 msgstr "Ísť podľa (Meč a luk)"
 
 #. [unit_type]: id=Quenoth Youth, race=quenoth, gender=male,female, description={QUENOTH_YOUTH_DESCRIPTION}
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:910
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:911
 msgid "Quenoth Youth"
 msgstr "Kuenotský mladík"
 
 #. [female]: gender=female, description={NYM_DESCRIPTION}
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:965
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:961
 msgid "female^Quenoth Youth"
 msgstr "Kuenotská dievčina"
 
@@ -16765,11 +16765,16 @@ msgid "cooldown 2"
 msgstr "čakacia doba 2"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1551
-msgid "After using this attack, you can't use it during your next turn."
+#, fuzzy
+#| msgid "After using this attack, you can't use it during your next turn."
+msgid "After using this attack, you can’t use it during your next turn."
 msgstr "Po použití tohto útoku ho nemôžete použiť počas nasledujúceho ťahu."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1554
-msgid "After using this attack, you can't use it during your next two turns."
+#, fuzzy
+#| msgid ""
+#| "After using this attack, you can't use it during your next two turns."
+msgid "After using this attack, you can’t use it during your next two turns."
 msgstr ""
 "Po použití tohto útoku ho nemôžete použiť počas nasledujúcich dvoch ťahov."
 
@@ -17919,6 +17924,11 @@ msgstr "Hrad prízrakov"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "Pevnosť prízrakov"
+
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr ""
+#~ "omráčená: Táto jednotka je omráčená. Nemôže blokovať oblasť kontroly."
 
 #~ msgid "Hunter"
 #~ msgstr "Lovec"

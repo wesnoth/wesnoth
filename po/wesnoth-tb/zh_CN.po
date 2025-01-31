@@ -10,16 +10,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-08-20 01:56 UTC\n"
-"PO-Revision-Date: 2023-09-10 09:10+0800\n"
-"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
+"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
+"PO-Revision-Date: 2024-06-28 12:16+0800\n"
+"Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -53,11 +53,16 @@ msgstr "高阶骑士"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
+#, fuzzy
+#| msgid ""
+#| "An evil mage is threatening the small village of Maghre and its "
+#| "inhabitants. The village’s mage sends to his warrior brother for help, "
+#| "but not all goes as planned. Can you help?\n"
+#| "\n"
 msgid ""
 "An evil mage is threatening the small village of Maghre and its inhabitants. "
 "The village’s mage sends to his warrior brother for help, but not all goes "
-"as planned. Can you help?\n"
-"\n"
+"as planned. Can you help?"
 msgstr ""
 "一个邪恶的法师威胁着玛格雷小村和它的居民们。村里的法师向他的武士哥哥求助，但"
 "事态的发展并不如所料。你能帮忙吗？\n"
@@ -65,36 +70,44 @@ msgstr ""
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
+msgid ""
+"This campaign has two difficulties, with a large difference between them. "
+"The Grand Knight difficulty is intended for players who’ve already completed "
+"Liberty and Heir to the Throne."
+msgstr ""
+
+#. [campaign]: id=Two_Brothers
+#: data/campaigns/Two_Brothers/_main.cfg:25
 msgid "(Novice level, 4 scenarios.)"
 msgstr "（新手级别，4幕场景。）"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:30
+#: data/campaigns/Two_Brothers/_main.cfg:32
 msgid "Campaign Design"
 msgstr "战役设计"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:39
+#: data/campaigns/Two_Brothers/_main.cfg:41
 msgid "Prose and Story Edits"
 msgstr "散文与故事编辑"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:48
+#: data/campaigns/Two_Brothers/_main.cfg:50
 msgid "Campaign Maintenance"
 msgstr "战役维护"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:57
+#: data/campaigns/Two_Brothers/_main.cfg:59
 msgid "Artwork and Graphics Design"
 msgstr "美工与图像设计"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:73
+#: data/campaigns/Two_Brothers/_main.cfg:75
 msgid "Miscellaneous"
 msgstr "其他"
 
 #. [entry]
-#: data/campaigns/Two_Brothers/_main.cfg:87
+#: data/campaigns/Two_Brothers/_main.cfg:89
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "也特别感谢我没有提到的其他人。"
 
@@ -107,13 +120,6 @@ msgstr "铲除法师"
 #. This text is shown with the journey map, showing the village in the foothills along the route between Aldril and Dan’Tonk.
 #. I'm assuming the beacons either use smoke signals or basic fire signals, with a few agreed ones to request goods or indicate that surplus is for sale.
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:52
-#, fuzzy
-#| msgid ""
-#| "The remote freehold of Maghre in the western reaches of the Kingdom of "
-#| "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
-#| "comings and goings of the wider world. Wars and the rumor of wars touched "
-#| "them not, until the day a dark mage settled in the region and began "
-#| "seeking sacrifices for his evil summonings."
 msgid ""
 "The remote freehold of Maghre in the western reaches of the Kingdom of "
 "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
@@ -122,19 +128,11 @@ msgid ""
 "and Dan’Tonk might send a wagon when called by the beacon tower."
 msgstr ""
 "韦诺王国西面的偏远乐土玛格雷曾经是一个和平的地方，它的居民们很少会注意到外面"
-"世界的风云变幻。战争，或是战争的传闻一直与他们无关，直到有一天，一名黑暗法师"
-"迁入了这个地方，并开始为他邪恶的召唤魔法寻找祭品。"
+"世界的风云变幻。战争，或是战争的传闻一直与他们无关。即使是商人也很少出现，尽"
+"管艾尔德里尔和丹·冬克之间的商队可能会在烽火台召唤时派出一辆马车。"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:57
-#, fuzzy
-#| msgid ""
-#| "Skeletons and zombies killed cattle and fired fields. <i>“Fear and obey "
-#| "Mordak the Mage!”</i> they cried in fell voices as they did their foul "
-#| "deeds. People vanished from isolated farmsteads. Men and women began to "
-#| "fear the night, and their children even the bright day. But the nearest "
-#| "lord was more than a day’s ride distant, and messengers sent to seek his "
-#| "help did not return."
 msgid ""
 "Then came the day that a dark mage settled in the region and began seeking "
 "sacrifices for his summonings.\n"
@@ -146,6 +144,8 @@ msgid ""
 "more than a day’s ride distant, and messengers sent to seek his help did not "
 "return."
 msgstr ""
+"然后有一天，一位黑暗法师在该地区定居下来，并开始为他的集会寻找祭品。\n"
+"\n"
 "骷髅和僵尸杀死牲畜，烧毁田园。<b>“畏服法师魔达克吧！”</b>他们边行丑恶之事，边"
 "以邪恶之音喊叫。人们从孤立的农场里消失。男人和女人都开始害怕夜晚，而他们的孩"
 "子甚至在白天也担惊受怕。但是到最近领主的居所，骑马需要走一天多，派去请他帮忙"
@@ -169,14 +169,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:68
-#, fuzzy
-#| msgid ""
-#| "Now Baran had a brother named Arvith who had also left Maghre to seek his "
-#| "fortune, and had become the leader of a small band of horsemen who hired "
-#| "out as guards to merchant caravans. Fortunate it was for all that when "
-#| "Baran was but an apprentice mage, he had made a pair of amulets for "
-#| "himself and his brother, with which they might call to each other when in "
-#| "dire need. Baran sent out that call."
 msgid ""
 "Now Baran had a brother named Arvith who had also left Maghre to seek his "
 "fortune, and had become the leader of a small band of horsemen who hired out "
@@ -185,8 +177,8 @@ msgid ""
 "in dire need. Baran sent out that call."
 msgstr ""
 "巴兰有一个哥哥名叫阿维斯，他也离开了玛格雷去闯天下，后来成为了一小队骑手的首"
-"领，他们作为佣兵，保护商队。万幸的是，在巴兰还只是法师学徒时，他为自己和哥哥"
-"制作了一对护身符，当情况紧迫时，可以呼唤对方。巴兰呼唤了自己的哥哥。"
+"领，他们作为佣兵，保护商队。万幸的是，在比较好的时代，两兄弟谈到在紧急情况下"
+"使用贸易信标作为信号。巴兰呼唤了自己的哥哥。"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:72
@@ -197,14 +189,14 @@ msgstr ""
 #| "\n"
 #| "If I could but face this ‘Mordak’! I think my magic might prove stronger "
 #| "than his. But he bides in the hills, well-guarded by his servants, and I "
-#| "muster frightened peasants to fight his minions with blades and sticks. I "
-#| "need my brother; he always had a better head for battle than I.\n"
+#| "muster frightened peasants to fight his minions with blades and sticks.\n"
 #| "\n"
-#| "Will he heed the call? I do not know if he has kept the amulet; we have "
-#| "not spoken since that evil day at Toen Caric. If he will not come for me, "
-#| "perhaps he will return to aid our village in its hour of desperate need."
+#| "I need my brother; he always had a better head for battle than I. Yet we "
+#| "have not spoken since that evil day at Toen Caric. If he will not come "
+#| "for me, perhaps he will return to aid our village in its hour of "
+#| "desperate need."
 msgid ""
-"12 V, 363 YW\n"
+"12 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
 "\n"
 "If I could but face this ‘Mordak’! I think my magic might prove stronger "
@@ -219,25 +211,20 @@ msgstr ""
 "摘自玛格雷的巴兰的日记\n"
 "\n"
 "要是我能面对这个‘魔达克’就好了！我想我的魔法也许比他的强。但是他藏身在丘陵"
-"里，被仆人们层层保护着，而我只能召集这些担惊受怕的农夫用刀棍去对付他的奴仆。"
-"我需要我哥哥；在作战方面，他向来比我有头脑。\n"
+"里，被仆人们层层保护着，而我只能召集这些担惊受怕的农夫用刀棍去对付他的奴"
+"仆。\n"
 "\n"
-"他会注意到我的呼唤吗？我不知道他是不是还留着护身符；自从在托恩·卡里克的该死的"
-"那天以来，我们就再也没有交谈过了。就算他不会为我而来，但也许他会回来拯救我们"
-"这个急需救助的村子吧。"
+"我需要我哥哥；在作战方面，他向来比我有头脑。只是自从在托恩·卡里克的该死的那天"
+"以来，我们就再也没有交谈过了。就算他不会为我而来，但也许他会回来拯救我们这个"
+"急需救助的村子吧。"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:81
-#, fuzzy
-#| msgid ""
-#| "Heeding the call of his amulet, Arvith gathered such men as he could and "
-#| "hurried to Maghre to help Baran."
 msgid ""
 "Heeding the call, Arvith gathered such men as he could and hurried to Maghre "
 "to help Baran."
 msgstr ""
-"留意到护身符的呼唤后，阿维斯召集了所有他能召集的人手，并立即赶往玛格雷去帮助"
-"巴兰。"
+"留意到呼唤后，阿维斯召集了所有他能召集的人手，并立即赶往玛格雷去帮助巴兰。"
 
 #. [side]
 #. [side]: type=Longbowman, id=Reeve Hoban
@@ -491,8 +478,27 @@ msgstr "阿维斯和他的队伍骑马去北方寻找他失踪的弟弟。"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:34
+#, fuzzy
+#| msgid ""
+#| "16 V, 363 YW\n"
+#| "Excerpt from the journal of Arvith of Maghre\n"
+#| "\n"
+#| "We’ve been searching three days for Baran, and turned up nothing. My best "
+#| "hunch was to head north into the borderlands, where the necromancer’s "
+#| "minions could safely hide; everywhere else is more farmland. At first I "
+#| "thought the search might be useless, but late in the first day we found a "
+#| "set of tracks. Some of them had been made by skeletal feet, although "
+#| "after their first campsite the tracks were merely those of men carrying "
+#| "heavy loads.\n"
+#| "\n"
+#| "We’re close enough to be certain now: those tracks are heading into the "
+#| "Grey Woods. No one from Maghre or any of the other villages has gone into "
+#| "that forest in living memory. Stories have been passed down for "
+#| "generations warning against it. Supposedly the place is haunted by lost "
+#| "souls who hunger for the living, and anyone who dies there is doomed to "
+#| "join them."
 msgid ""
-"16 V, 363 YW\n"
+"16 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
 "\n"
 "We’ve been searching three days for Baran, and turned up nothing. My best "
@@ -525,8 +531,24 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:43
+#, fuzzy
+#| msgid ""
+#| "16 V, 363 YW\n"
+#| "Excerpt from the journal of Arvith of Maghre\n"
+#| "\n"
+#| "But I’m past superstitions now; I’ve seen enough of the world to guess at "
+#| "the truth behind these sorts of tales. The forest is home to elves — "
+#| "unfriendly ones, if the stories have any basis at all. I worry for my "
+#| "men; horses don’t fight well in forests, and the elves will be more "
+#| "dangerous in their own territory. But there are things that need done and "
+#| "questions that need answered. Something bigger is happening. One "
+#| "necromancer terrorizing townsfolk is nothing new, but why didn’t his "
+#| "servants scatter when he was killed? Where are they headed now? And most "
+#| "importantly, why did they take Baran with them?\n"
+#| "\n"
+#| "Besides... I want my brother back."
 msgid ""
-"16 V, 363 YW\n"
+"16 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
 "\n"
 "But I’m past superstitions now; I’ve seen enough of the world to guess at "
@@ -926,8 +948,28 @@ msgstr "戒备森严的城堡"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:26
+#, fuzzy
+#| msgid ""
+#| "19 V, 363 YW\n"
+#| "Excerpt from the journal of Rotharik the Clanless\n"
+#| "\n"
+#| "The last of Mordak’s servants arrived this morning bearing the news of "
+#| "his death, as well as a bundle so well-bound it was barely recognizable "
+#| "as a man. Mordak was always reckless. This whole desperate scheme was "
+#| "his, and I suppose I could blame him for everything that we have suffered "
+#| "through if it still mattered. It was he who brought the wrath of the orcs "
+#| "down on us, too. But all the same, he managed to accomplish what he set "
+#| "out to do. I still cannot believe the finality of what has happened; "
+#| "until now we had always managed to make it through somehow.\n"
+#| "\n"
+#| "We had hoped to deliver the mage to Tairach in return for our lives. I do "
+#| "not know what the warlord wants with this man, but he matches the "
+#| "description. I suppose that Mordak’s plan would have worked perfectly if "
+#| "not for the appearance of the horse warriors. Now they are coming here, "
+#| "led by a man rumored to be this mage’s brother. If that is true, he will "
+#| "stop at nothing, no more than would I if they held Mordak."
 msgid ""
-"19 V, 363 YW\n"
+"19 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
 "\n"
 "The last of Mordak’s servants arrived this morning bearing the news of his "
@@ -962,8 +1004,23 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:34
+#, fuzzy
+#| msgid ""
+#| "19 V, 363 YW\n"
+#| "Excerpt from the journal of Rotharik the Clanless\n"
+#| "\n"
+#| "I have done what I can to fortify this dilapidated castle. The orcs who "
+#| "came with us stand guard at the gates, and I am gathering all of my "
+#| "servants to me in the inner sanctum. But ill fate awaits. Whether I "
+#| "defeat this horse-warrior or no, the orcs will still come for me; they "
+#| "have been scouring the borderlands and raiding the northern farm country "
+#| "in search of us.\n"
+#| "\n"
+#| "Yet for some reason I fear these brothers more. If Mordak were here it "
+#| "would be different, but we are broken... and these two men are whole. In "
+#| "each other, in the ties that bind them, they have strength."
 msgid ""
-"19 V, 363 YW\n"
+"19 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
 "\n"
 "I have done what I can to fortify this dilapidated castle. The orcs who came "
@@ -1382,8 +1439,25 @@ msgstr "回到村庄"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:26
+#, fuzzy
+#| msgid ""
+#| "27 V, 363 YW\n"
+#| "Excerpt from the journal of Baran of Maghre\n"
+#| "\n"
+#| "Almost home now. The last week has been full of mixed feelings for me — "
+#| "blissful and difficult by turns. It was wonderful to be out of that "
+#| "dungeon cell and in the sunlight again without the threat of death or "
+#| "worse hanging over my head... but with that behind me, I turned to the "
+#| "almost equally daunting task of making amends with my brother.\n"
+#| "\n"
+#| "Arvith had largely forgiven me by the time he freed me from my cell. All "
+#| "the same, it has taken all of the past week for us to rebuild the sense "
+#| "of comfort in each other we once had. It is fortunate that we have been "
+#| "able to take our time getting back — we gave the Grey Woods a wide berth, "
+#| "and on our way around it we traveled through some truly beautiful "
+#| "countryside. It has given us plenty of time to talk."
 msgid ""
-"27 V, 363 YW\n"
+"27 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
 "\n"
 "Almost home now. The last week has been full of mixed feelings for me — "
@@ -1414,8 +1488,28 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:34
+#, fuzzy
+#| msgid ""
+#| "27 V, 363 YW\n"
+#| "Excerpt from the journal of Baran of Maghre\n"
+#| "\n"
+#| "Though I am more at ease now, my thoughts often turn back to Toen Caric. "
+#| "We should have been able to repel the orcs without great loss — the "
+#| "pincer attack Arvith devised would surely have carried the day but for "
+#| "me. It was reckless of me to leave my men behind — I wounded the warlord "
+#| "and forced him to flee the field, but the cost far outweighed the gain. "
+#| "Those under my command could have been saved if I had remained with "
+#| "them.\n"
+#| "\n"
+#| "I can hardly blame Arvith for having taken their deaths ill, and I can "
+#| "never undo the wrong that I have done, but I suppose that time heals some "
+#| "things. We return to the village as brothers once more.\n"
+#| "\n"
+#| "But I am still troubled. I wonder... is this sense of foreboding I feel "
+#| "merely a remnant of my time locked away in that dungeon, or is it a sign "
+#| "of something real?"
 msgid ""
-"27 V, 363 YW\n"
+"27 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
 "\n"
 "Though I am more at ease now, my thoughts often turn back to Toen Caric. We "
@@ -1605,15 +1699,11 @@ msgstr ""
 #. [message]: speaker=Arvith
 #. "you have my word" is a idiom for promising to do something
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:366
-#, fuzzy
-#| msgid ""
-#| "I must go back to earning my living. But we have our amulets, little "
-#| "brother. If you are beset again, I will come."
 msgid ""
 "I must go back to earning my living. But you have my word, little brother; "
 "if you are beset again, I will come."
 msgstr ""
-"我得回去继续我的生计。不过我们有护身符，弟弟。如果你又被包围了，我会回来的。"
+"我得回去继续我的生计。不过我向你保证，弟弟。如果你又被包围了，我会回来的。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:384
@@ -1632,8 +1722,23 @@ msgstr "兄弟传说 — 尾声"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:18
+#, fuzzy
+#| msgid ""
+#| "22 IX, 365 YW\n"
+#| "Excerpt from the journal of Arvith of Maghre\n"
+#| "\n"
+#| "Maghre is looking much better than the last time I saw it. Baran has done "
+#| "wonders in two years. The village is rebuilt, and the surrounding "
+#| "farmlands are restored and reoccupied. Despite my brother’s worries, our "
+#| "people have faced no new threats in that time.\n"
+#| "\n"
+#| "It has been more difficult to stay away in those two years, but I have my "
+#| "calling and Baran has his, and we have had little opportunity to meet "
+#| "again. But as the company and I are passing through this part of the "
+#| "kingdom with a new patron, I have asked leave of him to visit my brother "
+#| "and he gave it."
 msgid ""
-"22 IX, 365 YW\n"
+"22 Stillseed, 365 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
 "\n"
 "Maghre is looking much better than the last time I saw it. Baran has done "
@@ -1658,8 +1763,19 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:27
+#, fuzzy
+#| msgid ""
+#| "22 IX, 365 YW\n"
+#| "Excerpt from the journal of Arvith of Maghre\n"
+#| "\n"
+#| "This patron is, of all things, an elf. I never thought I’d befriend one, "
+#| "but he is less arrogant than the rest. Kalenz, he calls himself. He’s "
+#| "seen too much; I can tell that just by meeting his eyes. I think we will "
+#| "have to work for our pay soon.\n"
+#| "\n"
+#| "In the meantime, though, it’s good to relax and enjoy the peace."
 msgid ""
-"22 IX, 365 YW\n"
+"22 Stillseed, 365 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
 "\n"
 "This patron is, of all things, an elf. I never thought I’d befriend one, but "

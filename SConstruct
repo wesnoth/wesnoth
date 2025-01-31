@@ -123,6 +123,7 @@ opts.AddVariables(
     BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False),
     BoolVariable("history", "Clear to disable GNU history support in lua console", True),
     BoolVariable('force_color', 'Always produce ANSI-colored output (GNU/Clang only).', False),
+    BoolVariable('compile_db', 'Produce a compile_commands.json file.', False),
     )
 
 #
@@ -192,6 +193,11 @@ if env['distcc']:
 
 if env['ccache']: env.Tool('ccache')
 
+if env['compile_db']:
+    env.Tool('compilation_db')
+    cdb = env.CompilationDatabase()
+    Alias('cdb', cdb)
+
 boost_version = "1.67"
 
 def SortHelpText(a, b):
@@ -229,6 +235,7 @@ You can make the following special build targets:
     update-po = merge message catalog templates with localized message catalogs for particular lingua
     update-po4a = update translations of manual and manpages
     af bg ca ... = linguas for update-po
+    translations = build all translations
     dist = make distribution tarball as wesnoth.tar.bz2 (*).
     data-dist = make data tarball as wesnoth-data.tar.bz2 (*).
     binary-dist = make data tarball as wesnoth-binaries.tar.bz2 (*).
@@ -363,7 +370,7 @@ if env["prereqs"]:
 
     def have_sdl_other():
         return \
-            conf.CheckSDL2('2.0.10') & \
+            conf.CheckSDL2('2.0.18') & \
             conf.CheckSDL2Mixer() & \
             conf.CheckSDL2Image()
 
@@ -378,6 +385,7 @@ if env["prereqs"]:
         conf.CheckBoost("program_options", require_version = boost_version) & \
         conf.CheckBoost("random", require_version = boost_version) & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
+        conf.CheckBoostCharconv() & \
 	CheckAsio(conf) & \
 	conf.CheckBoost("thread") & \
         conf.CheckBoost("locale") & \
@@ -664,7 +672,7 @@ for env in [test_env, client_env, env]:
         env[d] = os.path.join(env["prefix"], env[d])
 
     if env["PLATFORM"] == 'win32':
-        env.Append(LIBS = ["wsock32", "crypt32", "iconv", "z", "shlwapi", "winmm", "ole32", "uuid"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0601"])
+        env.Append(LIBS = ["wsock32", "crypt32", "iconv", "z", "shlwapi", "winmm", "ole32", "uuid"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0A00"])
 
     if env["PLATFORM"] == 'darwin':            # Mac OS X
         env.Append(FRAMEWORKS = "Cocoa")            # Cocoa GUI

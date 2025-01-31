@@ -2,17 +2,18 @@
 # Stephan Grochtmann <stephan.grochtmann@gmx.com>, 2005 - 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.16\n"
+"Project-Id-Version: Battle for Wesnoth 1.18 - wesnoth-trow\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2023-01-22 16:05+0100\n"
+"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
+"PO-Revision-Date: 2024-03-22 02:02+0100\n"
+"Last-Translator: \n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #. [scenario]: id=22_The_Rise_of_Wesnoth
@@ -7248,25 +7249,23 @@ msgstr ""
 #. [unit_type]: id=Jevyan Cloaked, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan.cfg:5
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan_Cloaked.cfg:5
-#, fuzzy
-#| msgid "Lich-Lord Caror"
 msgid "Lich Lord"
-msgstr "Lichfürst Caror"
+msgstr "Lichfürst"
 
 #. [attack]: type=arcane
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan.cfg:34
 msgid "touch"
-msgstr ""
+msgstr "Berührung"
 
 #. [attack]: type=cold
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan.cfg:46
 msgid "chill tempest"
-msgstr ""
+msgstr "Froststurm"
 
 #. [attack]: type=arcane
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan.cfg:58
 msgid "shadow wave"
-msgstr ""
+msgstr "Schattenpfeile"
 
 #. [unit_type]: id=Noble Commander, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:4
@@ -7348,7 +7347,7 @@ msgid "female^Vampire Lady"
 msgstr "Vampirin"
 
 #. [unit_type]: id=Vampire Lady, gender=female, race=undead
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:19
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:20
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
 "the blood of the living."
@@ -7357,7 +7356,7 @@ msgstr ""
 "sie das Blut der Lebenden trinkt."
 
 #. [attack]: type=blade
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:23
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:24
 msgid "blood kiss"
 msgstr "Kuss des Blutes"
 
@@ -7382,8 +7381,8 @@ msgid "female^Wesfolk Lady"
 msgstr "Wesvolk Adlige"
 
 # Zwei Fehler:
-# Dieser deutsche Text ist ein Übersetztung des Text des L1 Einheit.
-# Wahrscheinlich in 1.16.3 wird das L2 Einheit den Text des L3 statt diesen Text benutzen.
+# Dieser deutsche Text ist eine Übersetzung des Text der L1-Einheit.
+# Wahrscheinlich in 1.16.3 wird die L2-Einheit den Text der L3, statt diesen Text benutzen.
 # https://github.com/wesnoth/wesnoth/pull/6143#discussion_r785381259
 #. [unit_type]: id=Wesfolk Lady, race=human, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:21
@@ -7597,6 +7596,3 @@ msgid ""
 msgstr ""
 "Das sind fürwahr gute Nachrichten. Unsere Anzahl hat sich verdoppelt. Nun "
 "zum Tagesgeschäft."
-
-#~ msgid "Southbay Guard"
-#~ msgstr "Wache von Südbucht"

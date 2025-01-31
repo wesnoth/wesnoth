@@ -17,6 +17,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
+#include <chrono>
+
 class game_classification;
 
 namespace gui2::dialogs
@@ -30,11 +32,6 @@ public:
 	/**
 	 * Displays a simple fading screen with any user-provided text.
 	 * Used after the end of single-player campaigns.
-	 *
-	 * @param text     Text to display, centered on the screen.
-	 *
-	 * @param duration In milliseconds, for how much time the text will
-	 *                 be displayed on screen.
 	 */
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(outro)
 
@@ -44,21 +41,25 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	/** Returns a normalized [0.0 .. 1.0] value representing elapsed fade time. */
+	double get_fade_progress(const std::chrono::steady_clock::time_point& now) const;
 
+	/** The text to draw. Each entry is shown for the specified duration. */
 	std::vector<std::string> text_;
-	std::string current_text_;
+
+	/** The index of the text currently being shown. */
 	std::size_t text_index_;
 
-	unsigned int duration_;
-	int fade_alpha_;
-	uint32_t fade_start_;
+	/** How long to display each text entry. */
+	std::chrono::milliseconds display_duration_;
 
-	bool fading_in_;
+	/** Tracks whether we're fading in, displaying text, or fading out. */
+	enum class stage { fading_in, waiting, fading_out } stage_;
 
-	std::size_t timer_id_;
+	/** The time point at which the current stage began. */
+	std::chrono::steady_clock::time_point stage_start_;
 };
 
 } // namespace dialogs

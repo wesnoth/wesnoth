@@ -34,13 +34,6 @@ namespace implementation
 
 // ------------ WIDGET -----------{
 
-/**
- * @ingroup GUIWidgetWML
- *
- * Key          |Type                                |Default  |Description
- * -------------|------------------------------------|---------|-----------
- * label        | @ref guivartype_t_string "t_string"|""       |The initial text of the password box.
- */
 class password_box : public text_box
 {
 public:
@@ -56,7 +49,7 @@ public:
 
 protected:
 	void insert_char(const std::string& unicode) override;
-	void paste_selection(const bool mouse) override;
+	void paste_selection() override;
 	void delete_selection() override;
 
 	// We do not override copy_selection because we

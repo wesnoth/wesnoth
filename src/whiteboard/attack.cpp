@@ -19,6 +19,8 @@
 
 #include "whiteboard/attack.hpp"
 
+#include <utility>
+
 #include "whiteboard/visitor.hpp"
 
 #include "config.hpp"
@@ -33,13 +35,13 @@
 namespace wb
 {
 
-std::ostream &operator<<(std::ostream &s, attack_ptr attack)
+std::ostream &operator<<(std::ostream &s, const attack_ptr& attack)
 {
 	assert(attack);
 	return attack->print(s);
 }
 
-std::ostream &operator<<(std::ostream &s, attack_const_ptr attack)
+std::ostream &operator<<(std::ostream &s, const attack_const_ptr& attack)
 {
 	assert(attack);
 	return attack->print(s);
@@ -52,9 +54,9 @@ std::ostream& attack::print(std::ostream& s) const
 	return s;
 }
 
-attack::attack(std::size_t team_index, bool hidden, unit& u, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
+attack::attack(std::size_t team_index, bool hidden, const unit& u, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
-	: move(team_index, hidden, u, route, arrow, std::move(fake_unit)),
+	: move(team_index, hidden, u, route, std::move(arrow), std::move(fake_unit)),
 	target_hex_(target_hex),
 	weapon_choice_(weapon_choice),
 	attack_movement_cost_(u.attacks()[weapon_choice_].movement_used()),
@@ -201,9 +203,9 @@ void attack::draw_hex(const map_location& hex)
 		return;
 	}
 
-	//@todo: replace this by either the use of transparency + LAYER_ATTACK_INDICATOR,
+	//@todo: replace this by either the use of transparency + drawing_layer::attack_indicator,
 	//or a dedicated layer
-	const display::drawing_layer layer = display::LAYER_FOOTSTEPS;
+	const drawing_layer layer = drawing_layer::footsteps;
 
 	//calculate direction (valid for both hexes)
 	const std::string direction_text = map_location::write_direction(get_dest_hex().get_relative_dir(target_hex_));

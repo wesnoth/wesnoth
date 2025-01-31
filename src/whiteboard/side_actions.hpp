@@ -93,20 +93,20 @@ public:
 	 * @return           The inserted action's position.
 	 * @retval end()     When the action can't be inserted.
 	 */
-	iterator insert(iterator position, action_ptr action);
+	iterator insert(iterator position, const action_ptr& action);
 
 	/**
 	 * Queues an action to be executed last
 	 * @return The queued action's position
 	 * @retval end() when the action can't be inserted
 	 */
-	iterator queue(std::size_t turn_num, action_ptr action);
+	iterator queue(std::size_t turn_num, const action_ptr& action);
 
 	/**
 	 * Pushes an action in front of a given turn.
 	 * @return The inserted action's position
 	 */
-	iterator push_front(std::size_t turn, action_ptr action);
+	iterator push_front(std::size_t turn, const action_ptr& action);
 
 	/**
 	 * Moves an action earlier in the execution order.
@@ -365,13 +365,13 @@ public:
 	 * Inserts an action at the specified position. The begin() and end() functions might prove useful here.
 	 * @return The inserted action's position.
 	 */
-	iterator insert_action(iterator position, action_ptr action);
+	iterator insert_action(iterator position, const action_ptr& action);
 
 	/**
 	 * Queues an action to be executed last
 	 * @return The queued action's position
 	 */
-	iterator queue_action(std::size_t turn_num, action_ptr action);
+	iterator queue_action(std::size_t turn_num, const action_ptr& action);
 
 	/**
 	 * Moves an action earlier in the execution order.
@@ -516,15 +516,15 @@ public:
 	 * Queues a move to be executed last
 	 * @return The queued move's position
 	 */
-	iterator queue_move(std::size_t turn_num, unit& mover, const pathfind::marked_route& route,
-			arrow_ptr arrow, fake_unit_ptr fake_unit);
+	iterator queue_move(std::size_t turn_num, const unit& mover, const pathfind::marked_route& route,
+			const arrow_ptr& arrow, fake_unit_ptr fake_unit);
 
 	/**
 	 * Queues an attack or attack-move to be executed last
 	 * @return The queued attack's position
 	 */
-	iterator queue_attack(std::size_t turn_num, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
-			arrow_ptr arrow, fake_unit_ptr fake_unit);
+	iterator queue_attack(std::size_t turn_num, const unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
+			const arrow_ptr& arrow, fake_unit_ptr fake_unit);
 
 	/**
 	 * Queues a recruit to be executed last
@@ -542,7 +542,7 @@ public:
 	 * Queues a suppose_dead to be executed last
 	 * @return The queued suppose_dead's position (an iterator to it)
 	 */
-	iterator queue_suppose_dead(std::size_t turn_num, unit& curr_unit, const map_location& loc);
+	iterator queue_suppose_dead(std::size_t turn_num, const unit& curr_unit, const map_location& loc);
 
 	/**
 	 * Network code. A net_cmd object (a config in disguise) represents a modification
@@ -552,19 +552,19 @@ public:
 	 */
 	typedef config net_cmd;
 	void execute_net_cmd(const net_cmd&);
-	net_cmd make_net_cmd_insert(std::size_t turn_num, std::size_t pos, action_const_ptr) const;
-	net_cmd make_net_cmd_insert(const const_iterator& pos, action_const_ptr) const;
-	net_cmd make_net_cmd_replace(const const_iterator& pos, action_const_ptr) const;
+	net_cmd make_net_cmd_insert(std::size_t turn_num, std::size_t pos, const action_const_ptr&) const;
+	net_cmd make_net_cmd_insert(const const_iterator& pos, const action_const_ptr&) const;
+	net_cmd make_net_cmd_replace(const const_iterator& pos, const action_const_ptr&) const;
 	net_cmd make_net_cmd_remove(const const_iterator& pos) const;
 	net_cmd make_net_cmd_bump_later(const const_iterator& pos) const;
 	net_cmd make_net_cmd_clear() const;
 	net_cmd make_net_cmd_refresh() const;
 
 private:
-	iterator safe_insert(std::size_t turn_num, std::size_t pos, action_ptr to_insert);
+	iterator safe_insert(std::size_t turn_num, std::size_t pos, const action_ptr& to_insert);
 	iterator synced_erase(iterator itor);
-	iterator synced_insert(iterator itor, action_ptr to_insert);
-	iterator synced_enqueue(std::size_t turn_num, action_ptr to_insert);
+	iterator synced_insert(iterator itor, const action_ptr& to_insert);
+	iterator synced_enqueue(std::size_t turn_num, const action_ptr& to_insert);
 	iterator safe_erase(const iterator& itor);
 
 	container actions_;

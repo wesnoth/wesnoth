@@ -20,11 +20,12 @@
 #include "exceptions.hpp"
 #include "filesystem.hpp"
 #include "game_version.hpp"
+#include "utils/optional_fwd.hpp"
 
 #include <iosfwd>
 #include <map>
 #include <string>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <vector>
 
 class config_writer;
@@ -61,7 +62,7 @@ struct preproc_define
 			int line,
 			const std::string& loc,
 			const std::string& dep_msg,
-			std::optional<DEP_LEVEL> dep_lvl, const version_info& dep_ver)
+			utils::optional<DEP_LEVEL> dep_lvl, const version_info& dep_ver)
 		: value(val)
 		, arguments(args)
 		, optional_arguments(optargs)
@@ -88,7 +89,7 @@ struct preproc_define
 
 	std::string deprecation_message;
 
-	std::optional<DEP_LEVEL> deprecation_level;
+	utils::optional<DEP_LEVEL> deprecation_level;
 
 	version_info deprecation_version;
 
@@ -142,8 +143,24 @@ std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& de
  */
 filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map* defines = nullptr);
 
-void preprocess_resource(const std::string& res_name,
-		preproc_map* defines_map,
-		bool write_cfg = false,
-		bool write_plain_cfg = false,
-		const std::string& target_directory = "");
+/**
+ * Function to use the WML preprocessor on a string.
+ *
+ * @param defines                 A map of symbols defined.
+ * @param contents                The string to be preprocessed.
+ * @param textdomain              The textdomain to associate the contents.
+ *                                Default: wesnoth
+ *
+ * @returns                       The resulting preprocessed string.
+ */
+std::string preprocess_string(
+	const std::string& contents,
+	preproc_map* defines,
+	const std::string& textdomain = "wesnoth");
+
+void preprocess_resource(
+	const std::string& res_name,
+	preproc_map* defines_map,
+	bool write_cfg = false,
+	bool write_plain_cfg = false,
+	const std::string& target_directory = "");

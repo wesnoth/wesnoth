@@ -20,35 +20,17 @@
 #include "build_info.hpp"
 
 #include <map>
-
 #include <array>
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog displaying the various paths used by the game to locate resource and configuration files.
- *
- * There are several item types used to build widget ids in this dialog.
- * All references to TYPE below refer to the following suffixes: datadir, config, userdata, saves, addons, cache.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * path_TYPE         | text_box     |yes      |Textbox containing the filesystem path for the given item.
- * copy_TYPE         | @ref button  |yes      |Copies the given item's path to clipboard.
- * browse_TYPE       | @ref button  |yes      |Launches the default file browser on the given item's path.
- */
 class game_version : public modal_dialog
 {
 public:
 	/**
 	 * Constructor.
 	 */
-	game_version();
+	game_version(unsigned start_page = 0);
 
 	/**
 	 * The display function.
@@ -74,11 +56,13 @@ private:
 
 	std::string report_;
 
+	unsigned start_page_;
+
 	void generate_plain_text_report();
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	//
 	// Widget event callbacks.
@@ -98,8 +82,9 @@ private:
 	 * Callback function for copy-to-clipboard action buttons.
 	 *
 	 * @param path Filesystem path associated with the widget.
+	 * @param btn_id Id of the button that calls this method
 	 */
-	void copy_to_clipboard_callback(const std::string& path);
+	void copy_to_clipboard_callback(const std::string& path, const std::string& btn_id);
 
 	/**
 	 * Callback function for browse-directory action buttons.
@@ -107,6 +92,30 @@ private:
 	 * @param path Filesystem path associated with the widget.
 	 */
 	void browse_directory_callback(const std::string& path);
+
+	/**
+	 * Show credits dialogs
+	 */
+	void show_credits_dialog();
+	/**
+	 * Show license
+	 */
+	void show_license();
+
+	/**
+	 * Open browser to report issue
+	 */
+	void report_issue();
+
+	/**
+	 * Re-runs the version migration dialog.
+	 */
+	void run_migrator();
+
+	/**
+	 * Opens the game manual in the platform's browser
+	 */
+	void show_manual();
 };
-} // namespace dialogs
-} // namespace gui2
+
+} // namespace gui2::dialogs

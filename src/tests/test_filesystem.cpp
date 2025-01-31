@@ -42,7 +42,7 @@ BOOST_AUTO_TEST_CASE( test_fs_game_path_reverse_engineering )
 {
 	const std::string maincfg = "_main.cfg";
 
-	std::string gamedata_rev = get_wml_location("_main.cfg");
+	std::string gamedata_rev = get_wml_location("_main.cfg").value();
 
 	const std::size_t strip_len = (maincfg + "/data/").length();
 	BOOST_REQUIRE(gamedata_rev.length() > strip_len);
@@ -158,44 +158,44 @@ BOOST_AUTO_TEST_CASE( test_fs_binary_path )
 	//load_language_list();
 	game_config::load_config(main_config.mandatory_child("game_config"));
 
-	BOOST_CHECK_EQUAL( get_binary_dir_location("images", "."), gamedata + "/images/." );
+	BOOST_CHECK_EQUAL( get_binary_dir_location("images", ".").value(), gamedata + "/images/." );
 
-	BOOST_CHECK_EQUAL( get_binary_file_location("images", "wesnoth-icon.png"),
+	BOOST_CHECK_EQUAL( get_binary_file_location("images", "wesnoth-icon.png").value(),
 	                   gamedata + "/data/core/images/wesnoth-icon.png" );
 
-	BOOST_CHECK_EQUAL( get_binary_file_location("music", "silence.ogg"),
+	BOOST_CHECK_EQUAL( get_binary_file_location("music", "silence.ogg").value(),
 	                   gamedata + "/data/core/music/silence.ogg" );
 
-	BOOST_CHECK_EQUAL( get_binary_file_location("sounds", "explosion.ogg"),
+	BOOST_CHECK_EQUAL( get_binary_file_location("sounds", "explosion.ogg").value(),
 	                   gamedata + "/data/core/sounds/explosion.ogg" );
 
-	BOOST_CHECK_EQUAL( get_independent_binary_file_path("images", "wesnoth-icon.png"),
+	BOOST_CHECK_EQUAL( get_independent_binary_file_path("images", "wesnoth-icon.png").value(),
 	                   "data/core/images/wesnoth-icon.png" );
 
 	// Inexistent paths are resolved empty.
-	BOOST_CHECK( get_binary_dir_location("images", "").empty() );
-	BOOST_CHECK( get_binary_dir_location("inexistent_resource_type", "").empty() );
-	BOOST_CHECK( get_binary_file_location("image", "wesnoth-icon.png").empty() );
-	BOOST_CHECK( get_binary_file_location("images", "bunnies_and_ponies_and_rainbows_oh_em_gee.psd").empty() );
-	BOOST_CHECK( get_binary_file_location("music", "this_track_does_not_exist.aiff").empty() );
-	BOOST_CHECK( get_binary_file_location("sounds", "rude_noises.aiff").empty() );
-	BOOST_CHECK( get_independent_binary_file_path("images", "dopefish.txt").empty() );
+	BOOST_CHECK( !get_binary_dir_location("images", "").has_value() );
+	BOOST_CHECK( !get_binary_dir_location("inexistent_resource_type", "").has_value() );
+	BOOST_CHECK( !get_binary_file_location("image", "wesnoth-icon.png").has_value() );
+	BOOST_CHECK( !get_binary_file_location("images", "bunnies_and_ponies_and_rainbows_oh_em_gee.psd").has_value() );
+	BOOST_CHECK( !get_binary_file_location("music", "this_track_does_not_exist.aiff").has_value() );
+	BOOST_CHECK( !get_binary_file_location("sounds", "rude_noises.aiff").has_value() );
+	BOOST_CHECK( !get_independent_binary_file_path("images", "dopefish.txt").has_value() );
 }
 
 BOOST_AUTO_TEST_CASE( test_fs_wml_path )
 {
 	const std::string& userdata = get_user_data_dir();
 
-	BOOST_CHECK_EQUAL( get_wml_location(""), "" );
+	BOOST_CHECK_EQUAL( get_wml_location("").value_or(""), "" );
 
-	BOOST_CHECK_EQUAL( get_wml_location("_main.cfg"), gamedata + "/data/_main.cfg" );
-	BOOST_CHECK_EQUAL( get_wml_location("core/_main.cfg"), gamedata + "/data/core/_main.cfg" );
-	BOOST_CHECK_EQUAL( get_wml_location("."), gamedata + "/data/." );
+	BOOST_CHECK_EQUAL( get_wml_location("_main.cfg").value_or(""), gamedata + "/data/_main.cfg" );
+	BOOST_CHECK_EQUAL( get_wml_location("core/_main.cfg").value_or(""), gamedata + "/data/core/_main.cfg" );
+	BOOST_CHECK_EQUAL( get_wml_location(".", std::string("")).value_or(""), "." );
 
-	BOOST_CHECK_EQUAL( get_wml_location("~/"), userdata + "/data/" );
+	BOOST_CHECK_EQUAL( get_wml_location("~/").value_or(""), userdata + "/data/" );
 
 	// Inexistent paths are resolved empty.
-	BOOST_CHECK( get_wml_location("why_would_anyone_ever_name_a_file_like_this").empty() );
+	BOOST_CHECK( !get_wml_location("why_would_anyone_ever_name_a_file_like_this").has_value() );
 }
 
 BOOST_AUTO_TEST_CASE( test_fs_search )
@@ -215,8 +215,6 @@ BOOST_AUTO_TEST_CASE( test_fs_search )
 
 BOOST_AUTO_TEST_CASE( test_fs_fluff )
 {
-	BOOST_CHECK( ends_with("foobarbazbat", "bazbat") );
-
 	BOOST_CHECK( looks_like_pbl("foo.pbl") );
 	BOOST_CHECK( looks_like_pbl("FOO.PBL") );
 	BOOST_CHECK( looks_like_pbl("Foo.Pbl") );

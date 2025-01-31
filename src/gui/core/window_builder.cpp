@@ -33,25 +33,6 @@
 
 namespace gui2
 {
-
-std::unique_ptr<window> build(const builder_window::window_resolution& definition)
-{
-	// We set the values from the definition since we can only determine the
-	// best size (if needed) after all widgets have been placed.
-	auto win = std::make_unique<window>(definition);
-	assert(win);
-	win->finish_build(definition);
-	return win;
-}
-
-std::unique_ptr<window> build(const std::string& type)
-{
-	const builder_window::window_resolution& definition = get_window_builder(type);
-	auto window = build(definition);
-	window->set_id(type);
-	return window;
-}
-
 builder_widget::builder_widget(const config& cfg)
 	: id(cfg["id"])
 	, linked_group(cfg["linked_group"])
@@ -76,23 +57,23 @@ builder_widget::builder_widget(const config& cfg)
 
 builder_widget_ptr create_widget_builder(const config& cfg)
 {
-	config::const_all_children_itors children = cfg.all_children_range();
-	VALIDATE(children.size() == 1, "Grid cell does not have exactly 1 child.");
+	VALIDATE(cfg.all_children_count() == 1, "Grid cell does not have exactly 1 child.");
+	auto [widget_key, widget_cfg] = *cfg.ordered_begin();
 
-	if(const auto grid = cfg.optional_child("grid")) {
-		return std::make_shared<builder_grid>(grid.value());
+	if(widget_key == "grid") {
+		return std::make_shared<builder_grid>(widget_cfg);
 	}
 
-	if(const auto instance = cfg.optional_child("instance")) {
-		return std::make_shared<implementation::builder_instance>(instance.value());
+	if(widget_key == "instance") {
+		return std::make_shared<implementation::builder_instance>(widget_cfg);
 	}
 
-	if(const auto pane = cfg.optional_child("pane")) {
-		return std::make_shared<implementation::builder_pane>(pane.value());
+	if(widget_key == "pane") {
+		return std::make_shared<implementation::builder_pane>(widget_cfg);
 	}
 
-	if(const auto viewport = cfg.optional_child("viewport")) {
-		return std::make_shared<implementation::builder_viewport>(viewport.value());
+	if(widget_key == "viewport") {
+		return std::make_shared<implementation::builder_viewport>(widget_cfg);
 	}
 
 	for(const auto& [type, builder] : widget_builder_lookup()) {
@@ -100,8 +81,8 @@ builder_widget_ptr create_widget_builder(const config& cfg)
 			continue;
 		}
 
-		if(const auto c = cfg.optional_child(type)) {
-			return builder(c.value());
+		if(widget_key == type) {
+			return builder(widget_cfg);
 		}
 	}
 
@@ -109,7 +90,7 @@ builder_widget_ptr create_widget_builder(const config& cfg)
 	//
 	// To fix this: add your new widget to source-lists/libwesnoth_widgets and rebuild.
 
-	FAIL("Unknown widget type " + cfg.ordered_begin()->key);
+	FAIL("Unknown widget type " + widget_key);
 }
 
 std::unique_ptr<widget> build_single_widget_instance_helper(const std::string& type, const config& cfg)
@@ -129,7 +110,7 @@ void builder_window::read(const config& cfg)
 	DBG_GUI_P << "Window builder: reading data for window " << id_ << ".";
 
 	config::const_child_itors cfgs = cfg.child_range("resolution");
-	VALIDATE(!cfgs.empty(), _("No resolution defined."));
+	VALIDATE(!cfgs.empty(), _("No resolution defined for ") + id_);
 
 	for(const auto& i : cfgs) {
 		resolutions.emplace_back(i);
@@ -137,8 +118,8 @@ void builder_window::read(const config& cfg)
 }
 
 builder_window::window_resolution::window_resolution(const config& cfg)
-	: window_width(cfg["window_width"])
-	, window_height(cfg["window_height"])
+	: window_width(cfg["window_width"].to_unsigned())
+	, window_height(cfg["window_height"].to_unsigned())
 	, automatic_placement(cfg["automatic_placement"].to_bool(true))
 	, x(cfg["x"])
 	, y(cfg["y"])
@@ -202,13 +183,13 @@ builder_grid::builder_grid(const config& cfg)
 	for(const auto& row : cfg.child_range("row")) {
 		unsigned col = 0;
 
-		row_grow_factor.push_back(row["grow_factor"]);
+		row_grow_factor.push_back(row["grow_factor"].to_unsigned());
 
 		for(const auto& c : row.child_range("column")) {
 			flags.push_back(implementation::read_flags(c));
-			border_size.push_back(c["border_size"]);
+			border_size.push_back(c["border_size"].to_unsigned());
 			if(rows == 0) {
-				col_grow_factor.push_back(c["grow_factor"]);
+				col_grow_factor.push_back(c["grow_factor"].to_unsigned());
 			}
 
 			widgets.push_back(create_widget_builder(c));
@@ -217,7 +198,7 @@ builder_grid::builder_grid(const config& cfg)
 		}
 
 		if(col == 0) {
-			const t_string msg = VGETTEXT("Grid '$grid' row $row must have at least one column.", {
+			const t_string msg = VGETTEXT("Grid ‘$grid’ row $row must have at least one column.", {
 				{"grid", id}, {"row", std::to_string(rows)}
 			});
 
@@ -229,7 +210,7 @@ builder_grid::builder_grid(const config& cfg)
 		if(rows == 1) {
 			cols = col;
 		} else if(col != cols) {
-			const t_string msg = VGETTEXT("Grid '$grid' row $row has a differing number of columns ($found found, $expected expected)", {
+			const t_string msg = VGETTEXT("Grid ‘$grid’ row $row has a differing number of columns ($found found, $expected expected)", {
 				{"grid", id}, {"row", std::to_string(rows)}, {"found", std::to_string(col)}, {"expected", std::to_string(cols)}
 			});
 

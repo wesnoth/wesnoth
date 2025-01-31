@@ -73,12 +73,12 @@ std::string default_map_generator::config_name() const
 	return std::string();
 }
 
-std::string default_map_generator::create_map(std::optional<uint32_t> randomseed)
+std::string default_map_generator::create_map(utils::optional<uint32_t> randomseed)
 {
 	return generate_map(nullptr, randomseed);
 }
 
-std::string default_map_generator::generate_map(std::map<map_location,std::string>* labels, std::optional<uint32_t> randomseed)
+std::string default_map_generator::generate_map(std::map<map_location,std::string>* labels, utils::optional<uint32_t> randomseed)
 {
 	uint32_t seed;
 	if(randomseed) {
@@ -166,7 +166,7 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 	return map;
 }
 
-config default_map_generator::create_scenario(std::optional<uint32_t> randomseed)
+config default_map_generator::create_scenario(utils::optional<uint32_t> randomseed)
 {
 	DBG_NG << "creating scenario...";
 

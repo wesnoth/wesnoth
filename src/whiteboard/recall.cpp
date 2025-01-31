@@ -38,12 +38,12 @@
 namespace wb
 {
 
-std::ostream& operator<<(std::ostream& s, recall_ptr recall)
+std::ostream& operator<<(std::ostream& s, const recall_ptr& recall)
 {
 	assert(recall);
 	return recall->print(s);
 }
-std::ostream& operator<<(std::ostream& s, recall_const_ptr recall)
+std::ostream& operator<<(std::ostream& s, const recall_const_ptr& recall)
 {
 	assert(recall);
 	return recall->print(s);
@@ -77,7 +77,7 @@ recall::recall(const config& cfg, bool hidden)
 	, original_recall_pos_(0)
 {
 	// Construct and validate temp_unit_
-	std::size_t underlying_id = cfg["temp_unit_"];
+	std::size_t underlying_id = cfg["temp_unit_"].to_size_t();
 	for(const unit_ptr & recall_unit : resources::gameboard->teams().at(team_index()).recall_list())
 	{
 		if(recall_unit->underlying_id()==underlying_id)
@@ -127,10 +127,7 @@ void recall::execute(bool& success, bool& complete)
 	}
 	current_team.get_side_actions()->change_gold_spent_by(-cost);
 	bool const result = synced_context::run_and_throw("recall",
-		replay_helper::get_recall(temp_unit_->id(), recall_hex_, map_location::null_location()),
-		true,
-		true,
-		synced_context::ignore_error_function);
+		replay_helper::get_recall(temp_unit_->id(), recall_hex_, map_location::null_location()));
 
 	if (!result) {
 		current_team.get_side_actions()->change_gold_spent_by(cost);
@@ -206,7 +203,7 @@ void recall::draw_hex(const map_location& hex)
 		}
 		std::size_t font_size = 16;
 		color_t color {255, 0, 0}; //red
-		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+		display::get_singleton()->draw_text_in_hex(hex, drawing_layer::actions_numbering,
 						number_text.str(), font_size, color, x_offset, y_offset);
 	}
 }

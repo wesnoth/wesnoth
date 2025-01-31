@@ -16,7 +16,6 @@
 
 #include "gui/dialogs/unit_advance.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
@@ -40,16 +39,16 @@ unit_advance::unit_advance(const std::vector<unit_const_ptr>& samples, std::size
 {
 }
 
-void unit_advance::pre_show(window& window)
+void unit_advance::pre_show()
 {
-	listbox& list = find_widget<listbox>(&window, "advance_choice", false);
+	listbox& list = find_widget<listbox>("advance_choice");
 
 	connect_signal_notify_modified(list, std::bind(&unit_advance::list_item_clicked, this));
 
-	window.keyboard_capture(&list);
+	keyboard_capture(&list);
 
 	connect_signal_mouse_left_click(
-		find_widget<button>(&window, "show_help", false),
+		find_widget<button>("show_help"),
 		std::bind(&unit_advance::show_help, this));
 
 	for(std::size_t i = 0; i < previews_.size(); i++) {
@@ -63,7 +62,8 @@ void unit_advance::pre_show(window& window)
 		// This checks if we've finished iterating over the last unit type advancements
 		// and are into the modification-based advancements.
 		if(i >= last_real_advancement_) {
-			const auto& back = sample.get_modifications().child_range("advancement").back();
+			const auto range = sample.get_modifications().child_range("advancement");
+			const auto& back = range.back();
 
 			if(back.has_attribute("image")) {
 				image_string = back["image"].str();
@@ -88,20 +88,20 @@ void unit_advance::pre_show(window& window)
 	list_item_clicked();
 
 	// Disable ESC existing
-	window.set_escape_disabled(true);
+	set_escape_disabled(true);
 }
 
 void unit_advance::list_item_clicked()
 {
 	const int selected_row
-		= find_widget<listbox>(get_window(), "advance_choice", false).get_selected_row();
+		= find_widget<listbox>("advance_choice").get_selected_row();
 
 	if(selected_row == -1) {
 		return;
 	}
 
-	find_widget<unit_preview_pane>(get_window(), "advancement_details", false)
-		.set_displayed_unit(*previews_[selected_row]);
+	find_widget<unit_preview_pane>("advancement_details")
+		.set_display_data(*previews_[selected_row]);
 }
 
 void unit_advance::show_help()
@@ -109,10 +109,10 @@ void unit_advance::show_help()
 	help::show_help("advancement");
 }
 
-void unit_advance::post_show(window& window)
+void unit_advance::post_show()
 {
 	if(get_retval() == retval::OK) {
-		selected_index_ = find_widget<listbox>(&window, "advance_choice", false)
+		selected_index_ = find_widget<listbox>("advance_choice")
 			.get_selected_row();
 	}
 }

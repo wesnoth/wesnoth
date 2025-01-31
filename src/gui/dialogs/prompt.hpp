@@ -16,20 +16,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog for getting a single text value from the player.
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * prompt_box        | text_box      |yes      |The text box to enter the value into.
- */
 class prompt : public modal_dialog
 {
 public:
@@ -39,13 +27,12 @@ public:
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(prompt)
 
 private:
-	virtual void pre_show(window& window) override;
-	virtual void post_show(window& window) override;
+	virtual void pre_show() override;
+	virtual void post_show() override;
 
 	virtual const std::string& window_id() const override;
 
 	std::string& value_;
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

@@ -18,7 +18,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "chat_command_handler.hpp"
-#include "preferences/credentials.hpp"
+#include "preferences/preferences.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -133,7 +133,7 @@ void chat_handler::send_whisper(const std::string& receiver, const std::string& 
 	config cwhisper, data;
 	cwhisper["receiver"] = receiver;
 	cwhisper["message"] = message;
-	cwhisper["sender"] = preferences::login();
+	cwhisper["sender"] = prefs::get().login();
 	data.add_child("whisper", std::move(cwhisper));
 	send_to_server(data);
 }
@@ -158,14 +158,14 @@ void chat_handler::send_chat_room_message(const std::string& room,
 	config cmsg, data;
 	cmsg["room"] = room;
 	cmsg["message"] = message;
-	cmsg["sender"] = preferences::login();
+	cmsg["sender"] = prefs::get().login();
 	data.add_child("message", std::move(cmsg));
 	send_to_server(data);
 }
 
 void chat_handler::add_chat_room_message_sent(const std::string &room, const std::string &message)
 {
-	add_chat_room_message_received(room, preferences::login(), message);
+	add_chat_room_message_received(room, prefs::get().login(), message);
 }
 
 void chat_handler::add_chat_room_message_received(const std::string &room,

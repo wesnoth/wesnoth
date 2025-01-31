@@ -17,12 +17,12 @@
 
 #include "gui/dialogs/formula_debugger.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/window.hpp"
 #include "formula/debugger.hpp"
 #include "font/pango/escape.hpp"
+#include "serialization/markup.hpp"
 
 #include <functional>
 
@@ -31,11 +31,11 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(formula_debugger)
 
-void formula_debugger::pre_show(window& window)
+void formula_debugger::pre_show()
 {
 	// stack label
 	scroll_label* stack_label
-			= find_widget<scroll_label>(&window, "stack", false, true);
+			= find_widget<scroll_label>("stack", false, true);
 
 	std::stringstream stack_text;
 	std::string indent = "  ";
@@ -45,20 +45,19 @@ void formula_debugger::pre_show(window& window)
 		for(int d = 0; d < c; ++d) {
 			stack_text << indent;
 		}
-		stack_text << "#<span color=\"#00ff00\">" << i.counter()
-				   << "</span>: \"<span color=\"#00ff00\">" << font::escape_text(i.name())
-				   << "</span>\": (" << font::escape_text(i.str()) << ") " << std::endl;
+		stack_text << "#" << markup::span_color("#00ff00", i.counter())
+				   << ": \"" << markup::span_color("#00ff00", font::escape_text(i.name()))
+				   << "\": (" << font::escape_text(i.str()) << ") " << std::endl;
 		++c;
 	}
 
 	stack_label->set_use_markup(true);
 	stack_label->set_label(stack_text.str());
 	stack_label->scroll_vertical_scrollbar(scrollbar_base::END);
-	window.keyboard_capture(stack_label);
+	keyboard_capture(stack_label);
 
 	// execution trace label
-	scroll_label* execution_label
-			= find_widget<scroll_label>(&window, "execution", false, true);
+	scroll_label* execution_label = find_widget<scroll_label>("execution", false, true);
 
 	std::stringstream execution_text;
 	for(const auto & i : fdb_.get_execution_trace())
@@ -67,16 +66,15 @@ void formula_debugger::pre_show(window& window)
 			execution_text << indent;
 		}
 		if(!i.evaluated()) {
-			execution_text << "#<span color=\"#00ff00\">" << i.counter()
-						   << "</span>: \"<span color=\"#00ff00\">" << font::escape_text(i.name())
-						   << "</span>\": (" << font::escape_text(i.str()) << ") " << std::endl;
+			execution_text << "#" << markup::span_color("#00ff00", i.counter())
+				   		   << ": \"" << markup::span_color("#00ff00", font::escape_text(i.name()))
+				   		   << "\": (" << font::escape_text(i.str()) << ") " << std::endl;
 		} else {
-			execution_text << "#<span color=\"#ffff00\">" << i.counter()
-						   << "</span>: \"<span color=\"#ffff00\">" << font::escape_text(i.name())
-						   << "</span>\": (" << font::escape_text(i.str()) << ") = "
-						   << "<span color=\"#ffa500\">"
-						   << font::escape_text(i.value().to_debug_string())
-						   << "</span>" << std::endl;
+			execution_text << "#" << markup::span_color("#ffff00", i.counter())
+				   		   << ": \"" << markup::span_color("#ffff00", font::escape_text(i.name()))
+				   		   << "\": (" << font::escape_text(i.str()) << ") ="
+						   << markup::span_color("#ffa500", font::escape_text(i.value().to_debug_string()))
+						   << std::endl;
 		}
 	}
 
@@ -95,25 +93,25 @@ void formula_debugger::pre_show(window& window)
 		}
 	}
 
-	find_widget<styled_widget>(&window, "state", false).set_label(state_str);
+	find_widget<styled_widget>("state").set_label(state_str);
 
 	// callbacks
-	button& step_button = find_widget<button>(&window, "step", false);
+	button& step_button = find_widget<button>("step");
 	connect_signal_mouse_left_click(
 			step_button,
 			std::bind(&formula_debugger::callback_step_button, this));
 
-	button& stepout_button = find_widget<button>(&window, "stepout", false);
+	button& stepout_button = find_widget<button>("stepout");
 	connect_signal_mouse_left_click(
 			stepout_button,
 			std::bind(&formula_debugger::callback_stepout_button, this));
 
-	button& next_button = find_widget<button>(&window, "next", false);
+	button& next_button = find_widget<button>("next");
 	connect_signal_mouse_left_click(
 			next_button,
 			std::bind(&formula_debugger::callback_next_button, this));
 
-	button& continue_button = find_widget<button>(&window, "continue", false);
+	button& continue_button = find_widget<button>("continue");
 	connect_signal_mouse_left_click(
 			continue_button,
 			std::bind(&formula_debugger::callback_continue_button, this));

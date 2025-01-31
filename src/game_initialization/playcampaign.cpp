@@ -28,13 +28,14 @@
 #include "game_initialization/multiplayer.hpp"
 #include "generators/map_generator.hpp"
 #include "gettext.hpp"
+#include "gui/gui.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/outro.hpp"
 #include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "map/exception.hpp"
 #include "playmp_controller.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "saved_game.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
@@ -56,9 +57,9 @@ level_result::type campaign_controller::playsingle_scenario(end_level_data &end_
 		? state_.get_replay_starting_point()
 		: state_.get_starting_point();
 
-	playsingle_controller playcontroller(starting_point, state_, false);
+	playsingle_controller playcontroller(starting_point, state_);
 
-	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks());
+	LOG_NG << "created objects... " << playcontroller.timer();
 	if(is_replay_) {
 		playcontroller.enable_replay(is_unit_test_);
 	}
@@ -182,12 +183,12 @@ level_result::type campaign_controller::play_game()
 			return res;
 		}
 
-		if(preferences::delete_saves()) {
+		if(prefs::get().delete_saves()) {
 			savegame::clean_saves(state_.classification().label);
 		}
 
-		if(preferences::save_replays() && end_level.replay_save) {
-			savegame::replay_savegame save(state_, preferences::save_compression_format());
+		if(prefs::get().save_replays() && end_level.replay_save) {
+			savegame::replay_savegame save(state_, prefs::get().save_compression_format());
 			save.save_game_automatic(true);
 		}
 
@@ -197,14 +198,13 @@ level_result::type campaign_controller::play_game()
 		if(state_.get_scenario_id().empty()) {
 			// Don't show The End for multiplayer scenarios.
 			if(res == level_result::type::victory && !state_.classification().is_normal_mp_game()) {
-				preferences::add_completed_campaign(
+				prefs::get().add_completed_campaign(
 					state_.classification().campaign, state_.classification().difficulty);
 
 				if(state_.classification().end_credits) {
 					gui2::dialogs::outro::display(state_.classification());
 				}
 			}
-
 			return res;
 		} else if(res == level_result::type::observer_end && mp_info_ && !mp_info_->is_host) {
 			const int dlg_res = gui2::show_message(_("Game Over"),
@@ -245,7 +245,7 @@ level_result::type campaign_controller::play_game()
 
 				ng::connect_engine connect_engine(state_, false, mp_info_);
 
-				if(!connect_engine.can_start_game() || (game_config::debug && state_.classification().is_multiplayer())) {
+				if(!connect_engine.can_start_game()) {
 					// Opens staging dialog to allow users to make an adjustments for scenario.
 					if(!mp::goto_mp_staging(connect_engine)) {
 						return level_result::type::quit;
@@ -266,7 +266,7 @@ level_result::type campaign_controller::play_game()
 				// For multiplayer, we want the save to contain the starting position.
 				// For campaigns however, this is the start-of-scenario save and the
 				// starting position needs to be empty, to force a reload of the scenario config.
-				savegame::scenariostart_savegame save(state_, preferences::save_compression_format());
+				savegame::scenariostart_savegame save(state_, prefs::get().save_compression_format());
 				save.save_game_automatic();
 			}
 		}
@@ -276,7 +276,7 @@ level_result::type campaign_controller::play_game()
 		utils::string_map symbols;
 		symbols["scenario"] = state_.get_scenario_id();
 
-		std::string message = _("Unknown scenario: '$scenario|'");
+		std::string message = _("Unknown scenario: ‘$scenario|’");
 		message = utils::interpolate_variables_into_string(message, &symbols);
 
 		gui2::show_error_message(message);
@@ -284,10 +284,17 @@ level_result::type campaign_controller::play_game()
 	}
 
 	if(state_.classification().is_scenario()) {
-		if(preferences::delete_saves()) {
+		if(prefs::get().delete_saves()) {
 			savegame::clean_saves(state_.classification().label);
 		}
 	}
 
 	return level_result::type::victory;
+}
+
+campaign_controller::~campaign_controller()
+{
+	// If the scenario changed the current gui2 theme,
+	// change it back to the value stored in preferences
+	gui2::switch_theme(prefs::get().gui2_theme());
 }

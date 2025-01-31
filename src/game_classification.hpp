@@ -17,6 +17,7 @@
 
 #include "campaign_type.hpp"
 
+#include <chrono>
 #include <vector>
 #include <set>
 
@@ -50,7 +51,7 @@ public:
 	std::string abbrev;                              /**< the campaign abbreviation */
 	bool end_credits = true;                                /**< whether to show the standard credits at the end */
 	std::string end_text;                            /**< end-of-campaign text */
-	unsigned int end_text_duration;                  /**< for how long the end-of-campaign text is shown */
+	std::chrono::milliseconds end_text_duration;     /**< for how long the end-of-campaign text is shown */
 	std::string difficulty = DEFAULT_DIFFICULTY; /**< The difficulty level the game is being played on. */
 	std::string random_mode = "";
 	bool oos_debug = false;

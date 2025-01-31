@@ -180,14 +180,14 @@ config vconfig::get_parsed_config() const
 
 	config res;
 
-	for (const config::attribute &i : cfg_->attribute_range()) {
-		res[i.first] = expand(i.first);
+	for(const auto& [key, _] : cfg_->attribute_range()) {
+		res[key] = expand(key);
 	}
 
-	for (const config::any_child child : cfg_->all_children_range())
+	for(const auto [key, cfg] : cfg_->all_children_view())
 	{
-		if (child.key == "insert_tag") {
-			vconfig insert_cfg(child.cfg, *variables_);
+		if (key == "insert_tag") {
+			vconfig insert_cfg(cfg, *variables_);
 			std::string name = insert_cfg["name"];
 			std::string vname = insert_cfg["variable"];
 			if(!vconfig_recursion.insert(vname).second) {
@@ -217,23 +217,23 @@ config vconfig::get_parsed_config() const
 			}
 			vconfig_recursion.erase(vname);
 		} else {
-			res.add_child(child.key, vconfig(child.cfg, *variables_).get_parsed_config());
+			res.add_child(key, vconfig(cfg, *variables_).get_parsed_config());
 		}
 	}
 	return res;
 }
 
-vconfig::child_list vconfig::get_children(const std::string& key) const
+vconfig::child_list vconfig::get_children(const std::string& key_to_get) const
 {
 	vconfig::child_list res;
 
-	for (const config::any_child child : cfg_->all_children_range())
+	for(const auto [key, cfg] : cfg_->all_children_view())
 	{
-		if (child.key == key) {
-			res.push_back(vconfig(child.cfg, cache_, *variables_));
-		} else if (child.key == "insert_tag") {
-			vconfig insert_cfg(child.cfg, *variables_);
-			if(insert_cfg["name"] == key)
+		if (key == key_to_get) {
+			res.push_back(vconfig(cfg, cache_, *variables_));
+		} else if (key == "insert_tag") {
+			vconfig insert_cfg(cfg, *variables_);
+			if(insert_cfg["name"] == key_to_get)
 			{
 				try
 				{
@@ -253,17 +253,17 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 	return res;
 }
 
-std::size_t vconfig::count_children(const std::string& key) const
+std::size_t vconfig::count_children(const std::string& key_to_count) const
 {
 	std::size_t n = 0;
 
-	for (const config::any_child child : cfg_->all_children_range())
+	for(const auto [key, cfg] : cfg_->all_children_view())
 	{
-		if (child.key == key) {
+		if (key == key_to_count) {
 			n++;
-		} else if (child.key == "insert_tag") {
-			vconfig insert_cfg(child.cfg, *variables_);
-			if(insert_cfg["name"] == key)
+		} else if (key == "insert_tag") {
+			vconfig insert_cfg(cfg, *variables_);
+			if(insert_cfg["name"] == key_to_count)
 			{
 				try
 				{

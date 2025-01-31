@@ -21,7 +21,9 @@
 #include "game_initialization/saved_game_mode.hpp"
 #include "game_version.hpp"
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
+
+#include <chrono>
 
 struct mp_game_settings
 {
@@ -45,10 +47,10 @@ struct mp_game_settings
 	int village_gold;
 	int village_support;
 	int xp_modifier;
-	int mp_countdown_init_time;
-	int mp_countdown_reservoir_time;
-	int mp_countdown_turn_bonus;
-	int mp_countdown_action_bonus;
+	std::chrono::seconds mp_countdown_init_time;
+	std::chrono::seconds mp_countdown_reservoir_time;
+	std::chrono::seconds mp_countdown_turn_bonus;
+	std::chrono::seconds mp_countdown_action_bonus;
 	bool mp_countdown;
 	bool use_map_settings;
 	bool random_start_time;
@@ -73,8 +75,8 @@ struct mp_game_settings
 
 	struct addon_version_info
 	{
-		std::optional<version_info> version;
-		std::optional<version_info> min_version;
+		utils::optional<version_info> version;
+		utils::optional<version_info> min_version;
 		std::string name;
 		bool required;
 		std::vector<addon_content> content;

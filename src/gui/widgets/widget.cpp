@@ -152,6 +152,16 @@ grid* widget::get_parent_grid()
 	return result ? dynamic_cast<grid*>(result) : nullptr;
 }
 
+const grid* widget::get_parent_grid() const
+{
+	const widget* result = parent_;
+	while(result && dynamic_cast<const grid*>(result) == nullptr) {
+		result = result->parent_;
+	}
+
+	return result ? dynamic_cast<const grid*>(result) : nullptr;
+}
+
 void widget::set_parent(widget* parent)
 {
 	parent_ = parent;
@@ -198,11 +208,10 @@ point widget::get_best_size() const
 	if(result == point()) {
 		result = calculate_best_size();
 		//Adjust to linked widget size if linked widget size was already calculated.
-		if(!get_window()->get_need_layout() && !linked_group_.empty())
-		{
-			point linked_size = get_window()->get_linked_size(linked_group_);
-			result.x = std::max(result.x, linked_size.x);
-			result.y = std::max(result.y, linked_size.y);
+		if (get_window() && !get_window()->get_need_layout() && !linked_group_.empty()) {
+				point linked_size = get_window()->get_linked_size(linked_group_);
+				result.x = std::max(result.x, linked_size.x);
+				result.y = std::max(result.y, linked_size.y);
 		}
 	}
 
@@ -387,7 +396,6 @@ bool widget::draw_background()
 	clip.shift(-get_origin());
 	auto clip_setter = draw::reduce_clip(clip);
 
-	draw_debug_border();
 	return impl_draw_background();
 }
 
@@ -430,6 +438,7 @@ bool widget::draw_foreground()
 	clip.shift(-get_origin());
 	auto clip_setter = draw::reduce_clip(clip);
 
+	draw_debug_border();
 	return impl_draw_foreground();
 }
 
@@ -517,21 +526,17 @@ void widget::set_debug_border_color(const color_t debug_border_color)
 
 void widget::draw_debug_border()
 {
-	SDL_Rect r = redraw_action_ == redraw_action::partly
-		? calculate_clipping_rectangle()
-		: calculate_blitting_rectangle();
-
 	switch(debug_border_mode_) {
 		case debug_border::none:
 			/* DO NOTHING */
 			break;
 
 		case debug_border::outline:
-			draw::rect(r, debug_border_color_);
+			draw::rect(rect{{0, 0}, get_size()}, debug_border_color_);
 			break;
 
 		case debug_border::fill:
-			draw::fill(r, debug_border_color_);
+			draw::fill(rect{{0, 0}, get_size()}, debug_border_color_);
 			break;
 
 		default:
@@ -552,13 +557,12 @@ const widget* widget::find_at(const point& coordinate,
 	return is_at(coordinate, must_be_active) ? this : nullptr;
 }
 
-widget* widget::find(const std::string& id, const bool /*must_be_active*/)
+widget* widget::find(const std::string_view id, const bool /*must_be_active*/)
 {
 	return id_ == id ? this : nullptr;
 }
 
-const widget* widget::find(const std::string& id,
-							 const bool /*must_be_active*/) const
+const widget* widget::find(const std::string_view id, const bool /*must_be_active*/) const
 {
 	return id_ == id ? this : nullptr;
 }

@@ -14,13 +14,13 @@
 # Azamat H. Hackimov <azazello1984@mail.ru>, 2005.
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2007.
 # Fedor Khodkov <fkhodkov@gmail.com>, 2014.
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2021.
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-12-16 20:59-0600\n"
-"PO-Revision-Date: 2021-08-20 20:55+0300\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
+"PO-Revision-Date: 2024-04-07 16:36+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [brush]: id=brush-1
@@ -135,7 +135,7 @@ msgstr "особое"
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr ""
+msgstr "подъём"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
@@ -211,7 +211,7 @@ msgstr "Окно"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "Аддон"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:119
@@ -228,53 +228,58 @@ msgstr "Назначить местное время"
 msgid "Assign Local Time Schedule"
 msgstr "Назначить местное расписание"
 
-#. [menu]: id=menu-editor-side
+#. [menu]: id=menu-editor-unit
 #: data/themes/editor.cfg:141
+msgid "Unit"
+msgstr ""
+
+#. [menu]: id=menu-editor-side
+#: data/themes/editor.cfg:151
 msgid "Side"
 msgstr "Сторона"
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:158
+#: data/themes/editor.cfg:168
 msgid "villages"
 msgstr "деревни"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:174
+#: data/themes/editor.cfg:184
 msgid "units"
 msgstr "бойцы"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:453
+#: data/themes/editor.cfg:479
 msgid "Time Schedule Menu"
 msgstr "Меню расписания"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:464
+#: data/themes/editor.cfg:490
 msgid "Playlist"
 msgstr "Плейлист"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:470
+#: data/themes/editor.cfg:496
 msgid "Assign Time Schedule"
 msgstr "Назначить расписание"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:64
+#: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
 msgstr "Идентификатор:"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:66
+#: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Name: "
 msgstr "Имя:"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
+#: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Type: "
 msgstr "Вид:"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:69
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Level: "
 msgstr "Уровень:"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:70
+#: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Cost: "
 msgstr "Цена:"
 
@@ -302,140 +307,169 @@ msgstr ""
 "Действительно хотите выйти? У вас есть несохранённые карты, все изменения в "
 "них будут утрачены:"
 
-#: src/editor/controller/editor_controller.cpp:230
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr "Редактор времени суток не найден."
 
-#: src/editor/controller/editor_controller.cpp:1254
+#: src/editor/controller/editor_controller.cpp:882
+#, fuzzy
+#| msgid "Add-on"
+msgid "Add-on Files"
+msgstr "Аддон"
+
+#: src/editor/controller/editor_controller.cpp:895
+#, fuzzy
+#| msgid "Clipboard support not found, contact your packager"
+msgid "Opening files is not supported, contact your packager"
+msgstr "Буфер обмена не поддерживается, обратитесь к сборщику вашей версии"
+
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "Change Unit ID"
 msgstr "Сменить ИД бойца"
 
-#: src/editor/controller/editor_controller.cpp:1255
+#: src/editor/controller/editor_controller.cpp:1316
 msgid "ID:"
 msgstr "ИД:"
 
-#: src/editor/controller/editor_controller.cpp:1271
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Rename Unit"
 msgstr "Переименовать бойца"
 
-#: src/editor/controller/editor_controller.cpp:1272
+#: src/editor/controller/editor_controller.cpp:1333
 msgid "Name:"
 msgstr "Имя:"
 
-#: src/editor/map/context_manager.cpp:219
+#: src/editor/editor_display.cpp:170
+msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
+msgstr ""
+
+#: src/editor/editor_display.cpp:172
+msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:217
 msgid "Load Map"
 msgstr "Загрузить Карту"
 
-#: src/editor/map/context_manager.cpp:315 src/editor/map/map_context.cpp:1112
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
 msgid "New Map"
 msgstr "Новая карта"
 
-#: src/editor/map/context_manager.cpp:328 src/editor/map/map_context.cpp:1112
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
 msgid "New Scenario"
 msgstr "Новый сценарий"
 
-#: src/editor/map/context_manager.cpp:384
+#: src/editor/map/context_manager.cpp:382
 msgid "No Recent Files"
 msgstr "Нет Недавних Файлов"
 
-#: src/editor/map/context_manager.cpp:422
+#: src/editor/map/context_manager.cpp:420
 msgid "Unnamed Area"
 msgstr "Неназванная область"
 
-#: src/editor/map/context_manager.cpp:453
+#: src/editor/map/context_manager.cpp:451
 msgid "New Side"
 msgstr "Новая сторона"
 
-#: src/editor/map/context_manager.cpp:509
+#: src/editor/map/context_manager.cpp:507
 msgid "Apply Mask"
 msgstr "Применить Маску"
 
-#: src/editor/map/context_manager.cpp:518
+#: src/editor/map/context_manager.cpp:516
 msgid "Error loading mask"
 msgstr "Не удалось заглузить маску"
 
-#: src/editor/map/context_manager.cpp:538
+#: src/editor/map/context_manager.cpp:536
 msgid "Identifier:"
 msgstr "Идентификатор:"
 
-#: src/editor/map/context_manager.cpp:538
+#: src/editor/map/context_manager.cpp:536
 msgid "Rename Area"
 msgstr "Переименовать область"
 
-#: src/editor/map/context_manager.cpp:552
+#: src/editor/map/context_manager.cpp:550
 msgid "Choose Target Map"
 msgstr "Выберите целевую карту"
 
-#: src/editor/map/context_manager.cpp:561
-#: src/editor/map/context_manager.cpp:959
+#: src/editor/map/context_manager.cpp:559
+#: src/editor/map/context_manager.cpp:985
 msgid "Error loading map"
 msgstr "Не удалось загрузить карту"
 
-#: src/editor/map/context_manager.cpp:689
+#: src/editor/map/context_manager.cpp:691
 msgid "Save Map As"
 msgstr "Сохранить карту как"
 
-#: src/editor/map/context_manager.cpp:700
-#: src/editor/map/context_manager.cpp:902
+#: src/editor/map/context_manager.cpp:708
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
+#: src/editor/palette/location_palette.cpp:263
+msgid "Error"
+msgstr "Ошибка"
+
+#: src/editor/map/context_manager.cpp:709
+#: src/editor/map/context_manager.cpp:758
+#, fuzzy
+#| msgid "Do you really want to quit?"
+msgid "Do you really want to save $type1 in $type2 folder?"
+msgstr "Действительно хотите выйти?"
+
+#: src/editor/map/context_manager.cpp:717
+#: src/editor/map/context_manager.cpp:926
 msgid "This map is already open."
 msgstr "Вы уже открыли эту карту"
 
-#: src/editor/map/context_manager.cpp:721
+#: src/editor/map/context_manager.cpp:740
 msgid "Save Scenario As"
 msgstr "Сохранить сценарий как"
 
-#: src/editor/map/context_manager.cpp:733
+#: src/editor/map/context_manager.cpp:766
 msgid "This scenario is already open."
 msgstr "Вы уже открыли этот сценарий."
 
-#: src/editor/map/context_manager.cpp:767
+#: src/editor/map/context_manager.cpp:800
 msgid "No random map generators found."
 msgstr "Генераторы случайных карт не найдены."
 
-#: src/editor/map/context_manager.cpp:780
-#: src/editor/map/context_manager.cpp:785
+#: src/editor/map/context_manager.cpp:813
+#: src/editor/map/context_manager.cpp:818
 msgid "Map creation failed."
 msgstr "Не удалось создать карту."
 
-#: src/editor/map/context_manager.cpp:800
+#: src/editor/map/context_manager.cpp:833
 msgid "Unsaved Changes"
 msgstr "Несохранённые изменения"
 
-#: src/editor/map/context_manager.cpp:801
+#: src/editor/map/context_manager.cpp:834
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Вы действительно хотите сбросить все изменения, которые внесли с последнего "
 "сохранения карты?"
 
-#: src/editor/map/context_manager.cpp:863
+#: src/editor/map/context_manager.cpp:887
 msgid "Scenario saved."
 msgstr "Сценарий сохранен."
 
-#: src/editor/map/context_manager.cpp:878
-msgid "Map saved."
+#: src/editor/map/context_manager.cpp:902
+#, fuzzy
+#| msgid "Map saved."
+msgid "Map saved"
 msgstr "Карта сохранена."
 
-#: src/editor/map/context_manager.cpp:951
+#: src/editor/map/context_manager.cpp:977
 msgid "Loaded embedded map data"
 msgstr "Загрузил встроенные в карту данные"
 
-#: src/editor/map/context_manager.cpp:952
-#: src/editor/map/context_manager.cpp:955
+#: src/editor/map/context_manager.cpp:978
+#: src/editor/map/context_manager.cpp:981
 msgid "Map loaded from scenario"
 msgstr "Карта загружена из сценария"
 
-#: src/editor/map/context_manager.cpp:955
-#, fuzzy
-#| msgid ""
-#| "Loaded referenced map file:\n"
-#| "$new"
+#: src/editor/map/context_manager.cpp:981
 msgid "Loaded referenced map file:"
-msgstr ""
-"Загрузил файл карты по ссылке:\n"
-"$new"
+msgstr "Загружена связанная карта:"
 
 #: src/editor/map/editor_map.cpp:146
-#: src/editor/palette/location_palette.cpp:119
+#: src/editor/palette/location_palette.cpp:118
 msgid "Player $side_num"
 msgstr "Игрок $side_num"
 
@@ -443,19 +477,21 @@ msgstr "Игрок $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "Размер целевой карты отличается от размера текущей"
 
-#: src/editor/map/map_context.cpp:183
+#: src/editor/map/map_context.cpp:186
 msgid "File not found"
 msgstr "Файл не найден"
 
-#: src/editor/map/map_context.cpp:190
+#: src/editor/map/map_context.cpp:193
 msgid "Empty file"
 msgstr "Файл пуст"
 
-#: src/editor/map/map_context.cpp:196
-msgid "File does not have .map or .cfg extension"
-msgstr ""
+#: src/editor/map/map_context.cpp:202
+#, fuzzy
+#| msgid "File does not have .map or .cfg extension"
+msgid "File does not have .map, .cfg, or .mask extension"
+msgstr "Файл не имеет разрешения .map или .cfg"
 
-#: src/editor/map/map_context.cpp:242
+#: src/editor/map/map_context.cpp:249
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -463,77 +499,90 @@ msgstr ""
 "Файл карты похож на сценарий, но значение map_data не указывает на "
 "существующий файл"
 
-#: src/editor/map/map_context.cpp:261
-msgid "Found the characters '<<' indicating inline lua is present - aborting"
-msgstr ""
-
-#: src/editor/map/map_context.cpp:266
-#: src/editor/palette/location_palette.cpp:265
-msgid "Error"
-msgstr "Ошибка"
-
-#: src/editor/map/map_context.cpp:266
-msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
-
-#: src/editor/map/map_context.cpp:273
+#: src/editor/map/map_context.cpp:268
 #, fuzzy
 #| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
+#| "Found the characters '<<' indicating inline lua is present - aborting"
+msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
+msgstr ""
+"Найдена последовательность \"<<\", присущая встроенному lua-коду — загрузка "
+"прекращена"
+
+#: src/editor/map/map_context.cpp:273
+msgid "Failed to load the scenario, attempting to load only the map."
+msgstr "Ошибка загрузки сценария. Попытка загрузить только карту."
+
+#: src/editor/map/map_context.cpp:280
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
 msgstr ""
-"Файл карты похож на сценарий, но значение map_data не указывает на "
+"Файл карты похож на сценарий, но значение map_file не указывает на "
 "существующий файл"
 
-#: src/editor/map/map_context.cpp:288
+#: src/editor/map/map_context.cpp:295
 msgid "Unable to parse file to find map data"
-msgstr ""
+msgstr "Из файла не удаётся выделить данные карты"
 
-#: src/editor/map/map_context.cpp:806 src/editor/map/map_context.cpp:845
-#: src/editor/map/map_context.cpp:886
+#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
+#, fuzzy
+#| msgid "Could not save the scenario: $msg"
+msgid "Could not save time schedule: $msg"
+msgstr "Невозможно сохранить сценарий: $msg"
+
+#: src/editor/map/map_context.cpp:863
+#, fuzzy
+#| msgid "Time Schedule Menu"
+msgid "Time schedule saved."
+msgstr "Меню расписания"
+
+#: src/editor/map/map_context.cpp:909
 msgid "Could not save the scenario: $msg"
 msgstr "Невозможно сохранить сценарий: $msg"
 
-#: src/editor/map/map_context.cpp:917
+#: src/editor/map/map_context.cpp:940
 msgid "Could not save into scenario"
 msgstr "Невозможно сохранить сценарий"
 
-#: src/editor/map/map_context.cpp:927
+#: src/editor/map/map_context.cpp:950
 msgid "Could not save the map: $msg"
 msgstr "Невозможно сохранить карту: $msg"
 
-#: src/editor/palette/editor_palettes.cpp:52
+#: src/editor/palette/editor_palettes.cpp:50
 msgid "(Unknown Group)"
 msgstr "(Неизвестная группа)"
 
-#: src/editor/palette/editor_palettes.cpp:314
+#: src/editor/palette/editor_palettes.cpp:308
 msgid "(non-core)"
 msgstr "(не-базовые)"
 
-#: src/editor/palette/editor_palettes.cpp:315
+#: src/editor/palette/editor_palettes.cpp:309
 msgid "Will not work in game without extra care."
 msgstr "В игре не заработает без поддержки кодом."
 
-#: src/editor/palette/location_palette.cpp:249
+#: src/editor/palette/item_palette.cpp:33
+#, fuzzy
+#| msgid "Right-click: "
+msgid "Left-click: Place item $item | Right-click to remove"
+msgstr "Правая кнопка мыши: "
+
+#: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
 msgstr "Перейти"
 
-#: src/editor/palette/location_palette.cpp:256
+#: src/editor/palette/location_palette.cpp:254
 msgid "Add"
 msgstr "Добавить"
 
-#: src/editor/palette/location_palette.cpp:258
+#: src/editor/palette/location_palette.cpp:256
 msgid "New Location Identifier"
 msgstr "Идентификатор Новой Позиции"
 
-#: src/editor/palette/location_palette.cpp:266
+#: src/editor/palette/location_palette.cpp:264
 msgid "Invalid location id"
 msgstr "Неверный идентификатор позиции"
 
-#: src/editor/palette/location_palette.cpp:273
+#: src/editor/palette/location_palette.cpp:271
 msgid "Delete"
 msgstr "Удалить"
 
@@ -564,17 +613,19 @@ msgstr "Cmd + щелчок: копировать местность"
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + щелчок: копировать местность"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:95
-msgid "Clipboard support not found, contact your packager"
-msgstr "Буфер обмена не поддерживается, обратитесь к сборщику вашей версии"
+#~ msgid "Choose File"
+#~ msgstr "Выберите файл"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:163
-msgid "Choose File"
-msgstr "Выберите файл"
+#~ msgid "Select"
+#~ msgstr "Выбрать"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:164
-msgid "Select"
-msgstr "Выбрать"
+#, fuzzy
+#~| msgid "Left-click: "
+#~ msgid "Left-click: Place item "
+#~ msgstr "Левая кнопка мыши: "
+
+#~ msgid "Clipboard support not found, contact your packager"
+#~ msgstr "Буфер обмена не поддерживается, обратитесь к сборщику вашей версии"
 
 #~ msgid "player^None"
 #~ msgstr "Нет"

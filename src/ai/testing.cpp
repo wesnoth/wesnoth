@@ -78,7 +78,7 @@ void ai_testing::log_draw()
 	resources::recorder->add_log_data("ai_log","result","draw");
 }
 
-void ai_testing::log_victory(std::set<unsigned int> winners)
+void ai_testing::log_victory(const std::set<unsigned int>& winners)
 {
 	resources::recorder->add_log_data("ai_log","result","victory");
 	for(std::set<unsigned int>::const_iterator w = winners.begin(); w != winners.end(); ++w) {
@@ -89,10 +89,9 @@ void ai_testing::log_victory(std::set<unsigned int> winners)
 
 void ai_testing::log_game_start()
 {
-	for (std::vector<team>::const_iterator tm = resources::gameboard->teams().begin(); tm != resources::gameboard->teams().end(); ++tm) {
-		int side = tm-resources::gameboard->teams().begin()+1;
+	for(const team& tm : resources::gameboard->teams()) {
+		int side = tm.side();
 		LOG_AI_TESTING << "AI_IDENTIFIER " << side << ": " << ai::manager::get_singleton().get_active_ai_identifier_for_side(side);
-		LOG_AI_TESTING << "TEAM " << side << ": " << tm->side();
 		resources::recorder->add_log_data("ai_log", "ai_id" + std::to_string(side), ai::manager::get_singleton().get_active_ai_identifier_for_side(side));
 	}
 	LOG_AI_TESTING << "VERSION: " << game_config::revision;
@@ -104,9 +103,9 @@ void ai_testing::log_game_end()
 	LOG_AI_TESTING << "GAME_END_TURN: "<< resources::tod_manager->turn();
 	resources::recorder->add_log_data("ai_log","end_turn",
 		std::to_string(resources::tod_manager->turn()));
-	for (std::vector<team>::const_iterator tm = resources::gameboard->teams().begin(); tm != resources::gameboard->teams().end(); ++tm) {
-		int side = tm-resources::gameboard->teams().begin()+1;
-		resources::recorder->add_log_data("ai_log","end_gold"+std::to_string(side),std::to_string(tm->gold()));
+	for(const team& tm : resources::gameboard->teams()) {
+		int side = tm.side();
+		resources::recorder->add_log_data("ai_log","end_gold"+std::to_string(side),std::to_string(tm.gold()));
 		resources::recorder->add_log_data("ai_log","end_units"+std::to_string(side),std::to_string(resources::gameboard->side_units(side)));
 	}
 }

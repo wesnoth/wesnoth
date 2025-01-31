@@ -33,32 +33,29 @@ class editor_toolkit;
 class unit_palette : public editor_palette<const unit_type&> {
 public:
 
-	unit_palette(editor_display &gui,
-	             const game_config_view& cfg,
-	             editor_toolkit &toolkit);
+	unit_palette(editor_display &gui, editor_toolkit &toolkit);
 
-	virtual void setup(const game_config_view& cfg);
+	virtual void setup(const game_config_view& cfg) override;
 
-	virtual std::string get_help_string();
+	virtual std::string get_help_string() const override;
 
-	bool supports_swap() { return false; }
+	virtual bool supports_swap() override { return false; }
 
 	const std::set<std::string>& get_selected_bg_items() { return selected_bg_items_; }
 
 private:
-	virtual const std::string& get_id(const unit_type& terrain);
+	virtual const std::string& get_id(const unit_type& terrain) override;
 
 	virtual void setup_item(
 		const unit_type& item,
 		texture& item_base_image,
 		texture& item_overlay_image,
 		std::stringstream& tooltip
-	);
+	) override;
 
-	virtual bool is_selected_bg_item(const std::string& id);
+	virtual bool is_selected_bg_item(const std::string& id) override;
 
-	virtual void select_bg_item(const std::string& item_id);
-//	virtual void update_report();
+	virtual void select_bg_item(const std::string& item_id) override;
 
 	std::set<std::string> selected_bg_items_;
 

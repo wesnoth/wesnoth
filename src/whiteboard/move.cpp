@@ -19,6 +19,8 @@
 
 #include "whiteboard/move.hpp"
 
+#include <utility>
+
 #include "whiteboard/visitor.hpp"
 #include "whiteboard/side_actions.hpp"
 #include "whiteboard/utility.hpp"
@@ -41,13 +43,13 @@
 
 namespace wb {
 
-std::ostream& operator<<(std::ostream &s, move_ptr move)
+std::ostream& operator<<(std::ostream &s, const move_ptr& move)
 {
 	assert(move);
 	return move->print(s);
 }
 
-std::ostream& operator<<(std::ostream &s, move_const_ptr move)
+std::ostream& operator<<(std::ostream &s, const move_const_ptr& move)
 {
 	assert(move);
 	return move->print(s);
@@ -65,7 +67,7 @@ std::ostream& move::print(std::ostream &s) const
 	return s;
 }
 
-move::move(std::size_t team_index, bool hidden, unit& u, const pathfind::marked_route& route,
+move::move(std::size_t team_index, bool hidden, const unit& u, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 : action(team_index,hidden),
   unit_underlying_id_(u.underlying_id()),
@@ -73,7 +75,7 @@ move::move(std::size_t team_index, bool hidden, unit& u, const pathfind::marked_
   route_(new pathfind::marked_route(route)),
   movement_cost_(0),
   turn_number_(0),
-  arrow_(arrow),
+  arrow_(std::move(arrow)),
   fake_unit_(std::move(fake_unit)),
   arrow_brightness_(),
   arrow_texture_(),
@@ -103,7 +105,7 @@ move::move(const config& cfg, bool hidden)
 	, fake_unit_hidden_(false)
 {
 	// Construct and validate unit_
-	unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"]);
+	unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"].to_size_t());
 	if(unit_itor == resources::gameboard->units().end())
 		throw action::ctor_err("move: Invalid underlying_id");
 	unit_underlying_id_ = unit_itor->underlying_id();
@@ -112,13 +114,13 @@ move::move(const config& cfg, bool hidden)
 	auto route_cfg = cfg.optional_child("route_");
 	if(!route_cfg)
 		throw action::ctor_err("move: Invalid route_");
-	route_->move_cost = route_cfg["move_cost"];
+	route_->move_cost = route_cfg["move_cost"].to_int();
 	for(const config& loc_cfg : route_cfg->child_range("step")) {
 		route_->steps.emplace_back(loc_cfg["x"],loc_cfg["y"], wml_loc());
 	}
 	for(const config& mark_cfg : route_cfg->child_range("mark")) {
 		route_->marks[map_location(mark_cfg["x"],mark_cfg["y"], wml_loc())]
-			= pathfind::marked_route::mark(mark_cfg["turns"],
+			= pathfind::marked_route::mark(mark_cfg["turns"].to_int(),
 				mark_cfg["zoc"].to_bool(),
 				mark_cfg["capture"].to_bool(),
 				mark_cfg["invisible"].to_bool());
@@ -398,7 +400,7 @@ void move::draw_hex(const map_location& hex)
 	{
 		std::stringstream turn_text;
 		turn_text << turn_number_;
-		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_MOVE_INFO, turn_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
+		display::get_singleton()->draw_text_in_hex(hex, drawing_layer::move_info, turn_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
 	}
 }
 
@@ -478,7 +480,7 @@ action::error move::check_validity() const
 	}
 
 	//If the path has at least two hexes (it can have less with the attack subclass), ensure destination hex is free
-	if(get_route().steps.size() >= 2 && resources::gameboard->get_visible_unit(get_dest_hex(),resources::gameboard->teams().at(viewer_team())) != nullptr) {
+	if(get_route().steps.size() >= 2 && resources::gameboard->get_visible_unit(get_dest_hex(), display::get_singleton()->viewing_team()) != nullptr) {
 		return LOCATION_OCCUPIED;
 	}
 
@@ -545,7 +547,7 @@ int move::calculate_moves_left(unit& u)
 
 		// @todo: find a better treatment of movement points when defining moves out-of-turn
 		if(u.movement_left() - route_->move_cost < 0
-				&& resources::controller->current_side() == display::get_singleton()->viewing_side()) {
+				&& resources::controller->current_side() == display::get_singleton()->viewing_team().side()) {
 			WRN_WB << shared_from_this() << " defined with insufficient movement left.";
 		}
 

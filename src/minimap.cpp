@@ -25,7 +25,7 @@
 #include "picture.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "terrain/type_data.hpp"
@@ -45,18 +45,18 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 		bool ignore_terrain_disabled)
 {
 	// Drawing mode flags.
-	const bool preferences_minimap_draw_terrain   = preferences::minimap_draw_terrain() || ignore_terrain_disabled;
-	const bool preferences_minimap_terrain_coding = preferences::minimap_terrain_coding();
-	const bool preferences_minimap_draw_villages  = preferences::minimap_draw_villages();
-	const bool preferences_minimap_draw_units     = preferences::minimap_draw_units();
-	const bool preferences_minimap_unit_coding    = preferences::minimap_movement_coding();
+	const bool preferences_minimap_draw_terrain   = prefs::get().minimap_draw_terrain() || ignore_terrain_disabled;
+	const bool preferences_minimap_terrain_coding = prefs::get().minimap_terrain_coding();
+	const bool preferences_minimap_draw_villages  = prefs::get().minimap_draw_villages();
+	const bool preferences_minimap_draw_units     = prefs::get().minimap_draw_units();
+	const bool preferences_minimap_unit_coding    = prefs::get().minimap_movement_coding();
 
 	const int scale = (preferences_minimap_draw_terrain && preferences_minimap_terrain_coding) ? 24 : 4;
 
 	DBG_DP << "Creating minimap: " << static_cast<int>(map.w() * scale * 0.75) << ", " << map.h() * scale;
 
-	const std::size_t map_width  = std::max(0, map.w()) * scale * 3 / 4;
-	const std::size_t map_height = std::max(0, map.h()) * scale;
+	const std::size_t map_width  = static_cast<size_t>(std::max(0, map.w())) * scale * 3 / 4;
+	const std::size_t map_height = static_cast<size_t>(std::max(0, map.h())) * scale;
 
 	// No map!
 	if(map_width == 0 || map_height == 0) {
@@ -144,16 +144,17 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 						}
 
 						// FIXME: use shaders instead of textures for this once we can actually do that
+						using namespace std::string_literals;
 
 						if(fogged(loc)) {
 							// Hex-shaped texture to apply #000000 at 40% opacity
-							static const texture fog_overlay = image::get_texture("terrain/minimap-fog.png");
+							static const texture fog_overlay = image::get_texture("terrain/minimap-fog.png"s);
 							draw::blit(fog_overlay, dest);
 						}
 
 						if(highlighted) {
 							// Hex-shaped texture to apply #ffffff at 40% opacity
-							static const texture fog_overlay = image::get_texture("terrain/minimap-highlight.png");
+							static const texture fog_overlay = image::get_texture("terrain/minimap-highlight.png"s);
 							draw::blit(fog_overlay, dest);
 						}
 					}
@@ -235,11 +236,11 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 						col = team::get_minimap_color(side_num);
 					} else {
 						if(vw->owns_village(loc)) {
-							col = game_config::color_info(preferences::unmoved_color()).rep();
+							col = game_config::color_info(prefs::get().unmoved_color()).rep();
 						} else if(vw->is_enemy(side_num)) {
-							col = game_config::color_info(preferences::enemy_color()).rep();
+							col = game_config::color_info(prefs::get().enemy_color()).rep();
 						} else {
-							col = game_config::color_info(preferences::allied_color()).rep();
+							col = game_config::color_info(prefs::get().allied_color()).rep();
 						}
 					}
 				}
@@ -272,7 +273,7 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 					if(is_enemy) {
 						status = orb_status::enemy;
 					} else if(vw && vw->side() == side) {
-						status = disp->get_disp_context().unit_orb_status(u);
+						status = disp->context().unit_orb_status(u);
 					} else {
 						// no-op, status is already set to orb_status::allied;
 					}

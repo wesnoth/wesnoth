@@ -20,7 +20,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "serialization/parser.hpp"
 #include "tls_root_store.hpp"
 
@@ -135,7 +135,7 @@ wesnothd_connection::~wesnothd_connection()
 }
 
 // worker thread
-void wesnothd_connection::handle_resolve(const error_code& ec, results_type results)
+void wesnothd_connection::handle_resolve(const error_code& ec, const results_type& results)
 {
 	MPTEST_LOG;
 	if(ec) {
@@ -169,8 +169,8 @@ void wesnothd_connection::handshake()
 {
 	MPTEST_LOG;
 
-	DBG_NW << "Connecting with keepalive of: " << preferences::keepalive_timeout();
-	set_keepalive(preferences::keepalive_timeout());
+	DBG_NW << "Connecting with keepalive of: " << prefs::get().keepalive_timeout();
+	set_keepalive(prefs::get().keepalive_timeout());
 
 	static const uint32_t handshake = 0;
 	static const uint32_t tls_handshake = htonl(uint32_t(1));

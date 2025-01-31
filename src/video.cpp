@@ -19,12 +19,11 @@
 #include "font/text.hpp"
 #include "log.hpp"
 #include "picture.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "sdl/point.hpp"
 #include "sdl/texture.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/window.hpp"
-#include "widgets/menu.hpp" // for bluebg_style.unload_images
 
 #ifdef TARGET_OS_OSX
 #include "desktop/apple_video.hpp"
@@ -122,7 +121,6 @@ void deinit()
 	font::flush_texture_cache();
 	render_texture_.reset();
 	current_render_target_.reset();
-	gui::menu::bluebg_style.unload_images();
 
 	// Destroy the window, and thus also the renderer.
 	window.reset();
@@ -229,25 +227,25 @@ bool update_framebuffer()
 	// Find max valid pixel scale at current output size.
 	point osize(window->get_output_size());
 	int max_scale = std::min(
-		osize.x / preferences::min_window_width,
-		osize.y / preferences::min_window_height);
-	max_scale = std::min(max_scale, preferences::max_pixel_scale);
+		osize.x / pref_constants::min_window_width,
+		osize.y / pref_constants::min_window_height);
+	max_scale = std::min(max_scale, pref_constants::max_pixel_scale);
 
 	// Determine best pixel scale according to preference and window size
 	int scale = 1;
-	if (preferences::auto_pixel_scale()) {
+	if (prefs::get().auto_pixel_scale()) {
 		// Try to match the default size (1280x720) but do not reduce below
 		int def_scale = std::min(
-			osize.x / preferences::def_window_width,
-			osize.y / preferences::def_window_height);
+			osize.x / pref_constants::def_window_width,
+			osize.y / pref_constants::def_window_height);
 		scale = std::min(max_scale, def_scale);
 		// Otherwise reduce to keep below the max window size (1920x1080).
 		int min_scale = std::min(
-			osize.x / (preferences::max_window_width+1) + 1,
-			osize.y / (preferences::max_window_height+1) + 1);
+			osize.x / (pref_constants::max_window_width+1) + 1,
+			osize.y / (pref_constants::max_window_height+1) + 1);
 		scale = std::max(scale, min_scale);
 	} else {
-		scale = std::min(max_scale, preferences::pixel_scale());
+		scale = std::min(max_scale, prefs::get().pixel_scale());
 	}
 	// Cache it for easy access.
 	if (pixel_scale_ != scale) {
@@ -259,9 +257,9 @@ bool update_framebuffer()
 	point lsize(window->get_logical_size());
 	point wsize(window->get_size());
 	if (lsize.x != osize.x / scale || lsize.y != osize.y / scale) {
-		if (!preferences::auto_pixel_scale() && scale < preferences::pixel_scale()) {
+		if (!prefs::get().auto_pixel_scale() && scale < prefs::get().pixel_scale()) {
 			LOG_DP << "reducing pixel scale from desired "
-				<< preferences::pixel_scale() << " to maximum allowable "
+				<< prefs::get().pixel_scale() << " to maximum allowable "
 				<< scale;
 		}
 		LOG_DP << "pixel scale: " << scale;
@@ -317,12 +315,12 @@ bool update_framebuffer()
 
 	rect active_area = to_output(draw_area());
 	if (active_area.size() != osize) {
-		LOG_DP << "render target offset: LT " << active_area.pos() << " RB "
-		       << osize - active_area.size() - active_area.pos();
+		LOG_DP << "render target offset: LT " << active_area.origin() << " RB "
+		       << osize - active_area.size() - active_area.origin();
 		// Translate active_area into display coordinates as input_area_
 		input_area_ = {
-			(active_area.pos() * wsize) / osize,
-			(active_area.size() * wsize) / osize
+			(active_area.origin() * wsize) / osize,
+			(active_area.origin() * wsize) / osize
 		};
 		LOG_DP << "input area: " << input_area_;
 	}
@@ -354,11 +352,11 @@ void init_test_window()
 void init_window(bool hidden)
 {
 	// Position
-	const int x = preferences::fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
-	const int y = preferences::fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
+	const int x = prefs::get().fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
+	const int y = prefs::get().fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
 
 	// Dimensions
-	const point res = preferences::resolution();
+	const point res = prefs::get().resolution();
 	const int w = res.x;
 	const int h = res.y;
 
@@ -368,9 +366,9 @@ void init_window(bool hidden)
 	window_flags |= SDL_WINDOW_RESIZABLE;
 	window_flags |= SDL_WINDOW_ALLOW_HIGHDPI;
 
-	if(preferences::fullscreen()) {
+	if(prefs::get().fullscreen()) {
 		window_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
-	} else if(preferences::maximized()) {
+	} else if(prefs::get().maximized()) {
 		window_flags |= SDL_WINDOW_MAXIMIZED;
 	}
 
@@ -381,7 +379,7 @@ void init_window(bool hidden)
 
 	uint32_t renderer_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE;
 
-	if(preferences::vsync()) {
+	if(prefs::get().vsync()) {
 		LOG_DP << "VSYNC on";
 		renderer_flags |= SDL_RENDERER_PRESENTVSYNC;
 	}
@@ -395,7 +393,7 @@ void init_window(bool hidden)
 
 	PLAIN_LOG << "Setting mode to " << w << "x" << h;
 
-	window->set_minimum_size(preferences::min_window_width, preferences::min_window_height);
+	window->set_minimum_size(pref_constants::min_window_width, pref_constants::min_window_height);
 
 	SDL_DisplayMode currentDisplayMode;
 	SDL_GetCurrentDisplayMode(window->get_display_index(), &currentDisplayMode);
@@ -470,7 +468,7 @@ rect to_output(const rect& r)
 	// Multiply r by integer scale, adding draw_offset to the position.
 	point dsize = current_render_target_.draw_size();
 	point osize = current_render_target_.get_raw_size();
-	point pos = (r.pos() * (osize / dsize)) + draw_offset();
+	point pos = (r.origin() * (osize / dsize)) + draw_offset();
 	point size = r.size() * (osize / dsize);
 	return {pos, size};
 }
@@ -485,10 +483,19 @@ int get_pixel_scale()
 	return pixel_scale_;
 }
 
+int native_refresh_rate()
+{
+	return refresh_rate_;
+}
+
 int current_refresh_rate()
 {
 	// TODO: this should be more clever, depending on usage
-	return refresh_rate_;
+	if(auto preferred = prefs::get().refresh_rate(); preferred > 0) {
+		return std::min(preferred, refresh_rate_);
+	} else {
+		return refresh_rate_;
+	}
 }
 
 void force_render_target(const texture& t)
@@ -566,6 +573,12 @@ void render_screen()
 
 	// Clear the render target so we're drawing to the window.
 	clear_render_target();
+
+	// Use fully transparent black to clear the window backbuffer
+	SDL_SetRenderDrawColor(*window, 0u, 0u, 0u, 0u);
+
+	// Clear the window backbuffer before rendering the render texture.
+	SDL_RenderClear(*window);
 
 	// Copy the render texture to the window.
 	SDL_RenderCopy(*window, render_texture_, nullptr, nullptr);
@@ -717,7 +730,7 @@ std::vector<point> get_available_resolutions(const bool include_current)
 		return result;
 	}
 
-	const point min_res(preferences::min_window_width, preferences::min_window_height);
+	const point min_res(pref_constants::min_window_width, pref_constants::min_window_height);
 
 	// The maximum size to which this window can be set. For some reason this won't
 	// pop up as a display mode of its own.
@@ -779,7 +792,7 @@ void set_fullscreen(bool fullscreen)
 	if (window && is_fullscreen() != fullscreen) {
 		if (fullscreen) {
 			window->full_screen();
-		} else if (preferences::maximized()) {
+		} else if (prefs::get().maximized()) {
 			window->to_window();
 			window->maximize();
 		} else {
@@ -790,12 +803,12 @@ void set_fullscreen(bool fullscreen)
 	}
 
 	// Update the config value in any case.
-	preferences::_set_fullscreen(fullscreen);
+	prefs::get().set_fullscreen(fullscreen);
 }
 
 void toggle_fullscreen()
 {
-	set_fullscreen(!preferences::fullscreen());
+	set_fullscreen(!prefs::get().fullscreen());
 }
 
 bool set_resolution(const point& resolution)
@@ -822,8 +835,8 @@ bool set_resolution(const point& resolution)
 
 	// Change the saved values in preferences.
 	LOG_DP << "updating resolution to " << resolution;
-	preferences::_set_resolution(resolution);
-	preferences::_set_maximized(false);
+	prefs::get().set_resolution(resolution);
+	prefs::get().set_maximized(false);
 
 	return true;
 }

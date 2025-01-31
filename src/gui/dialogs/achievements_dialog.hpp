@@ -1,6 +1,5 @@
 /*
 	Copyright (C) 2003 - 2024
-	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -23,18 +22,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows a dialog displaying achievements.
- *
- * Key                       |Type           |Mandatory|Description
- * --------------------------|-------------|---------|-----------
- * selected_achievements_list|menu_button  |yes      |Allows selecting achievements by what content they're for.
- * name                      |label        |yes      |The user displayed name of the achievement.
- * description               |label        |yes      |The achievement's longer description.
- * icon                      |image        |yes      |An icon to display to the left of the achievement.
- */
 class achievements_dialog : public modal_dialog
 {
 public:
@@ -54,9 +41,9 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 };
 
 } // namespace gui2::dialogs

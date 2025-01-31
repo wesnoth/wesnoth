@@ -145,7 +145,8 @@ def checksentence(mystring, finfo, *, islua=False):
         return 0
 
 
-
+# When handling a PendingLuaString, if the string has a plural version then
+# this class is used for the PendingLuaString.plural object.
 class PendingPlural:
     def __init__(self):
         self.string = ''
@@ -156,14 +157,21 @@ class PendingPlural:
         #                         close parenthesis
         #    'wait_close'     --> expect close parenthesis
         self.status = 'wait_string'
+        # pluraltype values, used for both single-line and multiline strings
+        #    0: initial value, should have been changed if a string was found
+        #    1: delimited by double-quotes
+        #    2: delimited by single-quotes
+        #    3: delimited by long brackets, self.numequals is the level of brackets
         self.pluraltype = 0
         self.numequals = 0
         self.ismultiline = False
 
     def addline(self, value, isfirstline=False):
-        if self.pluraltype != 3:
-            value = re.sub('\\\s*$', '', value)
-        else:
+        if self.pluraltype == 3 and isfirstline and value == "":
+            # This should be handled by not adding (self.string + '\n') on the next call,
+            # but someone can implement that if they start using long-bracket strings.
+            raise NotImplementedError("Not implemented: handling of long-bracket strings that start with a newline.")
+        if self.pluraltype == 3:
             value = value.replace('\\', r'\\')
         if isfirstline:
             self.string = value
@@ -202,9 +210,11 @@ class PendingLuaString:
         self.plural = plural
 
     def addline(self, value, isfirstline=False):
-        if self.luatype != 'luastr3':
-            value = re.sub('\\\s*$', '', value)
-        else:
+        if self.luatype == 'luastr3' and isfirstline and value == "":
+            # This should be handled by not adding (self.string + '\n') on the next call,
+            # but someone can implement that if they start using long-bracket strings.
+            raise NotImplementedError("Not implemented: handling of long-bracket strings that start with a newline.")
+        if self.luatype == 'luastr3':
             value = value.replace('\\', r'\\')
         if isfirstline:
             self.luastring = value

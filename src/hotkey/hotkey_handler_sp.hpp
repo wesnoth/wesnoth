@@ -48,6 +48,7 @@ public:
 	virtual void rename_unit() override;
 	virtual void create_unit() override;
 	virtual void change_side() override;
+	virtual void select_teleport() override;
 	virtual void kill_unit() override;
 	virtual void label_terrain(bool) override;
 	virtual void clear_labels() override;

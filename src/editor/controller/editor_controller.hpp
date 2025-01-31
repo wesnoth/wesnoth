@@ -65,10 +65,7 @@ class editor_controller : public controller_base,
 		editor_controller& operator=(const editor_controller&) = delete;
 
 		/**
-		 * The constructor. A initial map context can be specified here, the controller
-		 * will assume ownership and delete the pointer during destruction, but changes
-		 * to the map can be retrieved between the main loop's end and the controller's
-		 * destruction.
+		 * The constructor.
 		 */
 		editor_controller(bool clear_id);
 
@@ -83,11 +80,14 @@ class editor_controller : public controller_base,
 		/** Show a quit confirmation dialog and returns true if the user pressed 'yes' */
 		bool quit_confirm();
 
+		/** Show Unit Editor dialog */
+		void unit_editor_dialog();
+
 		/** Display the settings dialog, used to control e.g. the lighting settings */
 		void custom_tods_dialog();
 
 		/** Updates schedule and the map display */
-		void update_map_schedule(std::vector<time_of_day> schedule);
+		void update_map_schedule(const std::vector<time_of_day>& schedule);
 
 		/** Save the map, open dialog if not named yet. */
 		void save_map() override {context_manager_->save_map();}
@@ -161,6 +161,11 @@ class editor_controller : public controller_base,
 		{
 			return context_manager_->get_map_context();
 		}
+
+		/** Initialize an addon if the addon id is empty
+		 * @return    If the initialization succeeded.
+		 * */
+		bool initialize_addon();
 
 	protected:
 		/* controller_base overrides */

@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/drop_down_menu.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/image.hpp"
@@ -62,14 +61,14 @@ namespace
 {
 	void callback_flip_embedded_toggle(window& window)
 	{
-		listbox& list = find_widget<listbox>(&window, "list", true);
+		listbox& list = window.find_widget<listbox>("list", true);
 
 		/* If the currently selected row has a toggle button, toggle it.
 		 * Note this cannot be handled in mouse_up_callback since at that point the new row selection has not registered,
 		 * meaning the currently selected row's button is toggled.
 		 */
 		grid* row_grid = list.get_row_grid(list.get_selected_row());
-		if(toggle_button* checkbox = find_widget<toggle_button>(row_grid, "checkbox", false, false)) {
+		if(toggle_button* checkbox = row_grid->find_widget<toggle_button>("checkbox", false, false)) {
 			checkbox->set_value_bool(!checkbox->get_value_bool(), true);
 		}
 	}
@@ -86,6 +85,7 @@ drop_down_menu::drop_down_menu(styled_widget* parent, const std::vector<config>&
 	, items_(items.begin(), items.end())
 	, button_pos_(parent->get_rectangle())
 	, selected_item_(selected_item)
+	, selected_item_pos_(-1, -1)
 	, use_markup_(parent->get_use_markup())
 	, keep_open_(keep_open)
 	, mouse_down_happened_(false)
@@ -110,7 +110,7 @@ void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate)
 		return;
 	}
 
-	listbox& list = find_widget<listbox>(get_window(), "list", true);
+	listbox& list = find_widget<listbox>("list", true);
 
 	/* Disregard clicks on scrollbars and toggle buttons so the dropdown menu can be scrolled or have an embedded
 	 * toggle button selected without the menu closing.
@@ -126,7 +126,7 @@ void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate)
 		return;
 	}
 
-	if(dynamic_cast<toggle_button*>(get_window()->find_at(coordinate, true)) != nullptr) {
+	if(dynamic_cast<toggle_button*>(find_at(coordinate, true)) != nullptr) {
 		return;
 	}
 
@@ -142,7 +142,7 @@ void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate)
 		list.select_row(sel, false);
 	}
 
-	if(!get_window()->get_rectangle().contains(coordinate)) {
+	if(!get_rectangle().contains(coordinate)) {
 		set_retval(retval::CANCEL);
 	} else if(!keep_open_) {
 		set_retval(retval::OK);
@@ -154,14 +154,14 @@ void drop_down_menu::mouse_down_callback()
 	mouse_down_happened_ = true;
 }
 
-void drop_down_menu::pre_show(window& window)
+void drop_down_menu::pre_show()
 {
-	window.set_variable("button_x", wfl::variant(button_pos_.x));
-	window.set_variable("button_y", wfl::variant(button_pos_.y));
-	window.set_variable("button_w", wfl::variant(button_pos_.w));
-	window.set_variable("button_h", wfl::variant(button_pos_.h));
+	set_variable("button_x", wfl::variant(button_pos_.x));
+	set_variable("button_y", wfl::variant(button_pos_.y));
+	set_variable("button_w", wfl::variant(button_pos_.w));
+	set_variable("button_h", wfl::variant(button_pos_.h));
 
-	listbox& list = find_widget<listbox>(&window, "list", true);
+	listbox& list = find_widget<listbox>("list", true);
 
 	for(const auto& entry : items_) {
 		widget_data data;
@@ -187,10 +187,10 @@ void drop_down_menu::pre_show(window& window)
 		}
 
 		grid& new_row = list.add_row(data);
-		grid& mi_grid = find_widget<grid>(&new_row, "menu_item", false);
+		grid& mi_grid = new_row.find_widget<grid>("menu_item");
 
 		// Set the tooltip on the whole panel
-		find_widget<toggle_panel>(&new_row, "panel", false).set_tooltip(entry.tooltip);
+		new_row.find_widget<toggle_panel>("panel").set_tooltip(entry.tooltip);
 
 		if(entry.checkbox) {
 			auto checkbox = build_single_widget_instance<toggle_button>(config{"definition", "no_label"});
@@ -199,9 +199,8 @@ void drop_down_menu::pre_show(window& window)
 
 			// Fire a NOTIFIED_MODIFIED event in the parent widget when the toggle state changes
 			if(parent_) {
-				connect_signal_notify_modified(*checkbox, std::bind([this]() {
-					parent_->fire(event::NOTIFY_MODIFIED, *parent_, nullptr);
-				}));
+				connect_signal_notify_modified(
+					*checkbox, [this](auto&&...) { parent_->fire(event::NOTIFY_MODIFIED, *parent_, nullptr); });
 			}
 
 			mi_grid.swap_child("icon", std::move(checkbox), false);
@@ -219,42 +218,52 @@ void drop_down_menu::pre_show(window& window)
 		list.select_row(selected_item_);
 	}
 
-	window.keyboard_capture(&list);
+	keyboard_capture(&list);
 
 	// Dismiss on clicking outside the window.
-	window.connect_signal<event::SDL_LEFT_BUTTON_UP>(
+	connect_signal<event::SDL_LEFT_BUTTON_UP>(
 		std::bind(&drop_down_menu::mouse_up_callback, this, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5), event::dispatcher::front_child);
 
-	window.connect_signal<event::SDL_RIGHT_BUTTON_UP>(
+	connect_signal<event::SDL_RIGHT_BUTTON_UP>(
 		std::bind(&drop_down_menu::mouse_up_callback, this, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5), event::dispatcher::front_child);
 
-	window.connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
+	connect_signal<event::SDL_LEFT_BUTTON_DOWN>(
 		std::bind(&drop_down_menu::mouse_down_callback, this), event::dispatcher::front_child);
 
 	// Dismiss on resize.
-	window.connect_signal<event::SDL_VIDEO_RESIZE>(
-		std::bind(&resize_callback, std::ref(window)), event::dispatcher::front_child);
+	connect_signal<event::SDL_VIDEO_RESIZE>(
+		[this](auto&&...){ resize_callback(*this); }, event::dispatcher::front_child);
 
 	// Handle embedded button toggling.
 	connect_signal_notify_modified(list,
-		std::bind(&callback_flip_embedded_toggle, std::ref(window)));
+		[this](auto&&...){ callback_flip_embedded_toggle(*this); });
 }
 
-void drop_down_menu::post_show(window& window)
+void drop_down_menu::post_show()
 {
-	selected_item_ = find_widget<listbox>(&window, "list", true).get_selected_row();
+	const listbox& list = find_widget<listbox>("list", true);
+	selected_item_ = list.get_selected_row();
+	if(selected_item_ != -1) {
+		const grid* row_grid = list.get_row_grid(selected_item_);
+		if(row_grid) {
+			selected_item_pos_.x = row_grid->get_x();
+			selected_item_pos_.y = row_grid->get_y();
+		}
+	} else {
+		selected_item_pos_.x = selected_item_pos_.y = -1;
+	}
 }
 
 boost::dynamic_bitset<> drop_down_menu::get_toggle_states() const
 {
-	const listbox& list = find_widget<const listbox>(get_window(), "list", true);
+	const listbox& list = find_widget<const listbox>("list", true);
 
 	boost::dynamic_bitset<> states;
 
 	for(unsigned i = 0; i < list.get_item_count(); ++i) {
 		const grid* row_grid = list.get_row_grid(i);
 
-		if(const toggle_button* checkbox = find_widget<const toggle_button>(row_grid, "checkbox", false, false)) {
+		if(const toggle_button* checkbox = row_grid->find_widget<const toggle_button>("checkbox", false, false)) {
 			states.push_back(checkbox->get_value_bool());
 		} else {
 			states.push_back(false);

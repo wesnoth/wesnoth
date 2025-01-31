@@ -17,6 +17,7 @@
 
 #include "server/common/forum_user_handler.hpp"
 #include "server/wesnothd/server.hpp"
+#include "serialization/chrono.hpp"
 #include "hash.hpp"
 #include "log.hpp"
 #include "config.hpp"
@@ -42,11 +43,23 @@ fuh::fuh(const config& c)
 	, db_users_table_(c["db_users_table"].str())
 	, db_extra_table_(c["db_extra_table"].str())
 	, mp_mod_group_(0)
+	, site_admin_group_(0)
+	, forum_admin_group_(0)
 {
 	try {
 		mp_mod_group_ = std::stoi(c["mp_mod_group"].str());
 	} catch(...) {
 		ERR_UH << "Failed to convert the mp_mod_group value of '" << c["mp_mod_group"].str() << "' into an int!  Defaulting to " << mp_mod_group_ << ".";
+	}
+	try {
+		site_admin_group_ = std::stoi(c["site_admin_group"].str());
+	} catch(...) {
+		ERR_UH << "Failed to convert the site_admin_group_ value of '" << c["site_admin_group"].str() << "' into an int!  Defaulting to " << site_admin_group_ << ".";
+	}
+	try {
+		forum_admin_group_ = std::stoi(c["forum_admin_group"].str());
+	} catch(...) {
+		ERR_UH << "Failed to convert the forum_admin_group_ value of '" << c["forum_admin_group"].str() << "' into an int!  Defaulting to " << forum_admin_group_ << ".";
 	}
 }
 
@@ -99,7 +112,8 @@ std::string fuh::extract_salt(const std::string& name) {
 }
 
 void fuh::user_logged_in(const std::string& name) {
-	conn_.write_user_int("user_lastvisit", name, static_cast<int>(std::time(nullptr)));
+	auto now = chrono::serialize_timestamp(std::chrono::system_clock::now());
+	conn_.write_user_int("user_lastvisit", name, static_cast<int>(now));
 }
 
 bool fuh::user_exists(const std::string& name) {
@@ -119,7 +133,7 @@ bool fuh::user_is_moderator(const std::string& name) {
 	if(!user_exists(name)){
 		return false;
 	}
-	return conn_.get_user_int(db_extra_table_, "user_is_moderator", name) == 1 || (mp_mod_group_ != 0 && conn_.is_user_in_group(name, mp_mod_group_));
+	return conn_.get_user_int(db_extra_table_, "user_is_moderator", name) == 1 || (mp_mod_group_ != 0 && conn_.is_user_in_groups(name, { mp_mod_group_ }));
 }
 
 void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
@@ -131,22 +145,29 @@ void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
 
 fuh::ban_info fuh::user_is_banned(const std::string& name, const std::string& addr)
 {
-	ban_check b = conn_.get_ban_info(name, addr);
-	switch(b.get_ban_type())
+	config b = conn_.get_ban_info(name, addr);
+
+	std::chrono::seconds ban_duration(0);
+	if(b["ban_end"].to_unsigned() != 0) {
+		auto time_remaining = chrono::parse_timestamp(b["ban_end"].to_unsigned()) - std::chrono::system_clock::now();
+		ban_duration = std::chrono::duration_cast<std::chrono::seconds>(time_remaining);
+	}
+
+	switch(b["ban_type"].to_int())
 	{
 		case BAN_NONE:
 			return {};
 		case BAN_IP:
 			LOG_UH << "User '" << name << "' ip " << addr << " banned by IP address";
-			return { BAN_IP, b.get_ban_duration() };
+			return { BAN_IP, ban_duration };
 		case BAN_USER:
-			LOG_UH << "User '" << name << "' uid " << b.get_user_id() << " banned by uid";
-			return { BAN_USER, b.get_ban_duration() };
+			LOG_UH << "User '" << name << "' uid " << b["user_id"].str() << " banned by uid";
+			return { BAN_USER, ban_duration };
 		case BAN_EMAIL:
-			LOG_UH << "User '" << name << "' email " << b.get_email() << " banned by email address";
-			return { BAN_EMAIL, b.get_ban_duration() };
+			LOG_UH << "User '" << name << "' email " << b["email"].str() << " banned by email address";
+			return { BAN_EMAIL, ban_duration };
 		default:
-			ERR_UH << "Invalid ban type '" << b.get_ban_type() << "' returned for user '" << name << "'";
+			ERR_UH << "Invalid ban type '" << b["ban_type"].to_int() << "' returned for user '" << name << "'";
 			return {};
 	}
 }
@@ -156,14 +177,15 @@ std::string fuh::user_info(const std::string& name) {
 		throw error("No user with the name '" + name + "' exists.");
 	}
 
-	std::time_t reg_date = get_registrationdate(name);
-	std::time_t ll_date = get_lastlogin(name);
+	auto reg_date = get_registrationdate(name);
+	auto ll_date = get_lastlogin(name);
 
-	std::string reg_string = ctime(&reg_date);
+	static constexpr std::string_view format = "%a %b %d %T %Y"; // equivalent to std::ctime
+	std::string reg_string = chrono::format_local_timestamp(reg_date, format);
 	std::string ll_string;
 
-	if(ll_date) {
-		ll_string = ctime(&ll_date);
+	if(ll_date > decltype(ll_date){}) {
+		ll_string = chrono::format_local_timestamp(ll_date, format);
 	} else {
 		ll_string = "Never\n";
 	}
@@ -191,12 +213,12 @@ void fuh::db_update_addon_download_count(const std::string& instance_version, co
 	return conn_.update_addon_download_count(instance_version, id, version);
 }
 
-std::time_t fuh::get_lastlogin(const std::string& user) {
-	return std::time_t(conn_.get_user_int(db_extra_table_, "user_lastvisit", user));
+std::chrono::system_clock::time_point fuh::get_lastlogin(const std::string& user) {
+	return chrono::parse_timestamp(conn_.get_user_int(db_extra_table_, "user_lastvisit", user));
 }
 
-std::time_t fuh::get_registrationdate(const std::string& user) {
-	return std::time_t(conn_.get_user_int(db_users_table_, "user_regdate", user));
+std::chrono::system_clock::time_point fuh::get_registrationdate(const std::string& user) {
+	return chrono::parse_timestamp(conn_.get_user_int(db_users_table_, "user_regdate", user));
 }
 
 std::string fuh::get_uuid(){
@@ -207,10 +229,10 @@ std::string fuh::get_tournaments(){
 	return conn_.get_tournaments();
 }
 
-void fuh::async_get_and_send_game_history(boost::asio::io_service& io_service, wesnothd::server& s, wesnothd::player_iterator player, int player_id, int offset, std::string& search_game_name, int search_content_type, std::string& search_content) {
-	boost::asio::post([this, &s, player, player_id, offset, &io_service, search_game_name, search_content_type, search_content] {
-		boost::asio::post(io_service, [player, &s, doc = conn_.get_game_history(player_id, offset, search_game_name, search_content_type, search_content)]{
-			s.send_to_player(player, *doc);
+void fuh::async_get_and_send_game_history(boost::asio::io_context& io_service, wesnothd::server& s, any_socket_ptr socket, int player_id, int offset, std::string& search_game_name, int search_content_type, std::string& search_content) {
+	boost::asio::post([this, &s, socket, player_id, offset, &io_service, search_game_name, search_content_type, search_content] {
+		boost::asio::post(io_service, [socket, &s, doc = conn_.get_game_history(player_id, offset, search_game_name, search_content_type, search_content)]{
+			s.send_to_player(socket, *doc);
 		});
 	 });
 }
@@ -235,7 +257,7 @@ void fuh::db_set_oos_flag(const std::string& uuid, int game_id){
 	conn_.set_oos_flag(uuid, game_id);
 }
 
-void fuh::async_test_query(boost::asio::io_service& io_service, int limit) {
+void fuh::async_test_query(boost::asio::io_context& io_service, int limit) {
 	boost::asio::post([this, limit, &io_service] {
 		ERR_UH << "async test query starts!";
 		int i = conn_.async_test_query(limit);
@@ -279,13 +301,16 @@ void fuh::db_delete_addon_authors(const std::string& instance_version, const std
 	conn_.delete_addon_authors(instance_version, id);
 }
 
-void fuh::db_insert_addon_authors(const std::string& instance_version, const std::string& id, const std::string& primary_author, const std::vector<std::string>& secondary_authors) {
-	conn_.insert_addon_author(instance_version, id, primary_author, 1);
-
+void fuh::db_insert_addon_authors(const std::string& instance_version, const std::string& id, const std::vector<std::string>& primary_authors, const std::vector<std::string>& secondary_authors) {
 	// ignore any duplicate authors
 	std::set<std::string> inserted_authors;
-	inserted_authors.emplace(primary_author);
 
+	for(const std::string& primary_author : primary_authors) {
+		if(inserted_authors.count(primary_author) == 0) {
+			inserted_authors.emplace(primary_author);
+			conn_.insert_addon_author(instance_version, id, primary_author, 1);
+		}
+	}
 	for(const std::string& secondary_author : secondary_authors) {
 		if(inserted_authors.count(secondary_author) == 0) {
 			inserted_authors.emplace(secondary_author);
@@ -296,6 +321,22 @@ void fuh::db_insert_addon_authors(const std::string& instance_version, const std
 
 bool fuh::db_do_any_authors_exist(const std::string& instance_version, const std::string& id) {
 	return conn_.do_any_authors_exist(instance_version, id);
+}
+
+config fuh::db_get_addon_downloads_info(const std::string& instance_version, const std::string& id) {
+	return conn_.get_addon_downloads_info(instance_version, id);
+}
+
+config fuh::db_get_forum_auth_usage(const std::string& instance_version) {
+	return conn_.get_forum_auth_usage(instance_version);
+}
+
+config fuh::db_get_addon_admins() {
+	return conn_.get_addon_admins(site_admin_group_, forum_admin_group_);
+}
+
+bool fuh::user_is_addon_admin(const std::string& name) {
+	return conn_.is_user_in_groups(name, { site_admin_group_, forum_admin_group_ });
 }
 
 #endif //HAVE_MYSQLPP

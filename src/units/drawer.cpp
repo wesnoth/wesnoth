@@ -21,12 +21,13 @@
 #include "draw.hpp"
 #include "formatter.hpp"
 #include "game_display.hpp"
+#include "global.hpp"
 #include "halo.hpp"
 #include "log.hpp"
 #include "map/location.hpp"
 #include "map/map.hpp"
 #include "picture.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "team.hpp"
 #include "units/animation.hpp"
 #include "units/animation_component.hpp"
@@ -68,7 +69,7 @@ std::unique_ptr<image::locator> get_orb_image(orb_status os)
  */
 std::unique_ptr<image::locator> get_playing_ally_orb_image(orb_status os)
 {
-	if(!preferences::show_status_on_ally_orb())
+	if(!prefs::get().show_status_on_ally_orb())
 		return get_orb_image(orb_status::allied);
 
 	// This is conditional on prefs_show_orb, because a user might want to disable the standard
@@ -86,65 +87,99 @@ std::unique_ptr<image::locator> get_playing_ally_orb_image(orb_status os)
 			+ allied_color + ")~RC(magenta>" + status_color + ")");
 }
 
-void draw_bar(int xpos, int ypos, int bar_height, double filled, const color_t& col)
+struct energy_bar
 {
-	// Magic width number
-	static constexpr unsigned int bar_width = 4;
+	/** Bar height in pixels. */
+	int bar_h{};
 
-	static constexpr color_t bar_color_bg{0, 0, 0, 80};
-	static constexpr color_t bar_color_border{213, 213, 213, 200};
+	/** The extent to which the bar is filled, ranging [0, 1]. */
+	float filled{};
 
-	// We used to use an image for the bar instead of drawing it procedurally. Its x,y position
-	// within the file was 19,13, so we offset the origin by that much to make it line up with
-	// the crowns as before. Should probably compensate for this better in the future.
-	const point offset = display::scaled_to_zoom(point{19, 13});
+	/** Color for the bar's filled area. */
+	color_t fill_color{};
 
-	// Full bar dimensions.
-	rect bar_rect = display::scaled_to_zoom({
-		xpos + offset.x,
-		ypos + offset.y,
-		bar_width,
-		bar_height
-	});
+	/** Initial coordinates for the first bar drawn. */
+	static constexpr point def_origin{14, 13};
 
-	// Bar dimensions should not overflow 80% of the scaled hex dimensions.
-	// The 80% comes from an approximation of the length of a segment drawn
-	// inside a regular hexagon that runs parallel to its outer left side.
-	bar_rect.w = std::clamp<int>(bar_rect.w, 0, display::hex_size() * 0.80 - offset.x);
-	bar_rect.h = std::clamp<int>(bar_rect.h, 0, display::hex_size() * 0.80 - offset.y);
+	/** Default width for all bars. */
+	static constexpr int def_w = 4;
 
-	filled = std::clamp<double>(filled, 0.0, 1.0);
-	const int unfilled = static_cast<std::size_t>(bar_rect.h * (1.0 - filled));
+	/** Distance between the top left corner of subsequent bars. */
+	static constexpr int spacing = def_w + 1;
 
-	// Filled area dimensions.
-	const rect fill_rect {
-		bar_rect.x,
-		bar_rect.y + unfilled,
-		bar_rect.w,
-		bar_rect.h - unfilled
+	/** Background color for the unfilled bar area. */
+	static constexpr color_t background_color{0, 0, 0, 80};
+
+	/** Border color surrounding the whole bar. */
+	static constexpr color_t border_color{213, 213, 213, 200};
+
+	/** Returns the height of the bar in pixels. */
+	static constexpr auto get_height(int size, double scaling)
+	{
+		return int(size * scaling);
 	};
 
-	// Tinted background.
-	draw::fill(bar_rect, bar_color_bg);
+	/** Returns the relative amount of the bar to be filled. */
+	static constexpr auto get_filled(int size, int max)
+	{
+		return std::clamp(float(size) / max, 0.0f, 1.0f);
+	};
 
-	// Filled area.
-	draw::fill(fill_rect, col);
+	/** Returns the fill color with the appropriate alpha depending on the focused state. */
+	static constexpr auto get_color(const color_t& c, bool focused)
+	{
+		return color_t{c.r, c.g, c.b, float_to_color(focused ? 1.0 : 0.8)};
+	}
+};
 
-	// Bar outline.
-	draw::rect(bar_rect, bar_color_border);
+void draw_bar(int index, const energy_bar& data, const rect& bounds)
+{
+	// All absolute bar coordinates are normalized relative to the standard 72px hex.
+	using game_config::tile_size;
+
+	SDL_FPoint p1{
+		float(energy_bar::def_origin.x + energy_bar::spacing * index) / tile_size,
+		float(energy_bar::def_origin.y                              ) / tile_size,
+	};
+
+	// If the top of the bar sits 13px from the top of the scaled hex rect, the bottom
+	// of the bar should extend no closer than 13px from the bottom.
+	SDL_FPoint p2{
+		std::min(p1.x + float(data.def_w) / tile_size, 1.0f - p1.x),
+		std::min(p1.y + float(data.bar_h) / tile_size, 1.0f - p1.y)
+	};
+
+	// Full bar dimensions
+	const SDL_FRect bar_rect = sdl::precise_subrect(bounds, p1, p2);
+	draw::fill(bar_rect, energy_bar::border_color);
+
+	// Size of a single pixel relative to the standard hex
+	const float one_pixel = 1.0f / tile_size;
+
+	SDL_FPoint bg1{ p1.x + one_pixel, p1.y + one_pixel };
+	SDL_FPoint bg2{ p2.x - one_pixel, p2.y - one_pixel };
+
+	// Full inner dimensions
+	const SDL_FRect inner_rect = sdl::precise_subrect(bounds, bg1, bg2);
+	draw::fill(inner_rect, energy_bar::background_color);
+
+	SDL_FPoint fill1{ 0.0f, 1.0f - data.filled };
+	SDL_FPoint fill2{ 1.0f, 1.0f };
+
+	// Filled area, relative to the bottom of the inner bar area
+	const SDL_FRect fill_rect = sdl::precise_subrect(inner_rect, fill1, fill2);
+	draw::fill(fill_rect, data.fill_color);
 }
-}
+
+} // anon namespace
 
 unit_drawer::unit_drawer(display& thedisp)
 	: disp(thedisp)
-	, dc(disp.get_disp_context())
+	, dc(disp.context())
 	, map(dc.map())
-	, teams(dc.teams())
 	, halo_man(thedisp.get_halo_manager())
-	, viewing_team(disp.viewing_team())
-	, playing_team(disp.playing_team())
-	, viewing_team_ref(teams[viewing_team])
-	, playing_team_ref(teams[playing_team])
+	, viewing_team_ref(disp.viewing_team())
+	, playing_team_ref(disp.playing_team())
 	, is_blindfolded(disp.is_blindfolded())
 	, show_everything(disp.show_everything())
 	, sel_hex(disp.selected_hex())
@@ -156,11 +191,12 @@ unit_drawer::unit_drawer(display& thedisp)
 	if(const game_display* game_display = dynamic_cast<class game_display*>(&disp)) {
 		units_that_can_reach_goal = game_display->units_that_can_reach_goal();
 	}
+}
 
-	// This used to be checked in the drawing code, where it simply triggered skipping some logic.
-	// However, I think it's obsolete, and that the initialization of viewing_team_ref would already
-	// be undefined behavior in the situation where this assert fails.
-	assert(disp.team_valid());
+bool unit_drawer::selected_or_reachable(const map_location& loc) const
+{
+	const bool is_highlighted_enemy = units_that_can_reach_goal.count(loc) > 0;
+	return loc == sel_hex || is_highlighted_enemy;
 }
 
 void unit_drawer::redraw_unit(const unit& u) const
@@ -172,29 +208,11 @@ void unit_drawer::redraw_unit(const unit& u) const
 
 	bool hidden = u.get_hidden();
 	bool is_flying = u.is_flying();
-	map_location::DIRECTION facing = u.facing();
-	int hitpoints = u.hitpoints();
-	int max_hitpoints = u.max_hitpoints();
+	map_location::direction facing = u.facing();
 
 	bool can_recruit = u.can_recruit();
-	bool can_advance = u.can_advance();
 
-	int experience = u.experience();
-	int max_experience = u.max_experience();
-
-	bool emit_zoc = u.emits_zoc();
-
-	color_t hp_color=u.hp_color();
-	color_t xp_color=u.xp_color();
-
-	std::string ellipse=u.image_ellipse();
-
-	const bool is_highlighted_enemy = units_that_can_reach_goal.count(loc) > 0;
-	const bool is_selected_hex = (loc == sel_hex || is_highlighted_enemy);
-
-	// Override the filled area's color's alpha.
-	hp_color.a = (loc == mouse_hex || is_selected_hex) ? 255u : float_to_color(0.8);
-	xp_color.a = hp_color.a;
+	const bool is_selected_hex = selected_or_reachable(loc);
 
 	if(hidden || is_blindfolded || !u.is_visible_to_team(viewing_team_ref, show_everything)) {
 		ac.clear_haloes();
@@ -270,64 +288,20 @@ void unit_drawer::redraw_unit(const unit& u) const
 	const frame_parameters adjusted_params = ac.anim_->get_current_params(params);
 
 	const map_location dst = loc.get_direction(facing);
-	const int xsrc = disp.get_location_x(loc);
-	const int ysrc = disp.get_location_y(loc);
-	const int xdst = disp.get_location_x(dst);
-	const int ydst = disp.get_location_y(dst);
+	const auto [xsrc, ysrc] = disp.get_location(loc);
+	const auto [xdst, ydst] = disp.get_location(dst);
+
+	// FIXME: double check whether the shift amount accounts for zoom level
+	rect unit_rect = disp.get_location_rect(loc).shifted_by(0, adjusted_params.y);
 
 	// We draw bars only if wanted, visible on the map view
-	bool draw_bars = ac.draw_bars_ ;
-	if (draw_bars) {
-		rect unit_rect {xsrc, ysrc +adjusted_params.y, hex_size, hex_size};
-		draw_bars = unit_rect.overlaps(disp.map_outside_area());
-	}
+	if(ac.draw_bars_ && unit_rect.overlaps(disp.map_outside_area())) {
 
-	texture ellipse_front;
-	texture ellipse_back;
-	int ellipse_floating = 0;
-	// Always show the ellipse for selected units
-	if(draw_bars && (preferences::show_side_colors() || is_selected_hex)) {
-		if(adjusted_params.submerge > 0.0) {
-			// The division by 2 seems to have no real meaning,
-			// It just works fine with the current center of ellipse
-			// and prevent a too large adjust if submerge = 1.0
-			ellipse_floating = static_cast<int>(adjusted_params.submerge * hex_size_by_2);
+		// Always show the ellipse for selected units
+		if(prefs::get().show_side_colors() || is_selected_hex) {
+			draw_ellipses(u, adjusted_params);
 		}
 
-		if(ellipse.empty()){
-			ellipse="misc/ellipse";
-		}
-
-		if(ellipse != "none") {
-			// check if the unit has a ZoC or can recruit
-			const std::string nozoc    = !emit_zoc      ? "nozoc-"    : "";
-			const std::string leader   = can_recruit    ? "leader-"   : "";
-			const std::string selected = is_selected_hex? "selected-" : "";
-			const std::string tc       = team::get_side_color_id(side);
-
-			const std::string ellipse_top = formatter() << ellipse << "-" << leader << nozoc << selected << "top.png~RC(ellipse_red>" << tc << ")";
-			const std::string ellipse_bot = formatter() << ellipse << "-" << leader << nozoc << selected << "bottom.png~RC(ellipse_red>" << tc << ")";
-
-			// Load the ellipse parts recolored to match team color
-			ellipse_back = image::get_texture(image::locator(ellipse_top));
-			ellipse_front = image::get_texture(image::locator(ellipse_bot));
-		}
-	}
-
-	disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc, [=, adj_y = adjusted_params.y](const rect& d) {
-		// Both front and back have the same origin
-		const point origin { d.x, d.y + adj_y - ellipse_floating };
-
-		if(ellipse_back) {
-			draw::blit(ellipse_back, display::scaled_to_zoom({origin.x, origin.y, ellipse_back.w(), ellipse_back.h()}));
-		}
-
-		if(ellipse_front) {
-			draw::blit(ellipse_front, display::scaled_to_zoom({origin.x, origin.y, ellipse_front.w(), ellipse_front.h()}));
-		}
-	});
-
-	if(draw_bars) {
 		const auto& type_cfg = u.type().get_cfg();
 		const auto& cfg_offset_x = type_cfg["bar_offset_x"];
 		const auto& cfg_offset_y = type_cfg["bar_offset_y"];
@@ -351,15 +325,15 @@ void unit_drawer::redraw_unit(const unit& u) const
 		if(viewing_team_ref.is_enemy(side)) {
 			if(!u.incapacitated())
 				orb_img = get_orb_image(orb_status::enemy);
-		} else if(static_cast<std::size_t>(side) != playing_team + 1) {
+		} else if(side != playing_team_ref.side()) {
 			// We're looking at either the player's own unit or an ally's unit, but either way it
 			// doesn't belong to the playing_team and isn't expected to move until after its next
 			// turn refresh.
 			auto os = orb_status::moved;
-			if(static_cast<std::size_t>(side) != viewing_team + 1)
+			if(side != viewing_team_ref.side())
 				os = orb_status::allied;
 			orb_img = get_orb_image(os);
-		} else if(static_cast<std::size_t>(side) != viewing_team + 1) {
+		} else if(side != viewing_team_ref.side()) {
 			// We're looking at an ally's unit, during that ally's turn.
 			auto os = dc.unit_orb_status(u);
 			orb_img = get_playing_ally_orb_image(os);
@@ -372,7 +346,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 		// All the various overlay textures to draw with the HP/XP bars
 		std::vector<texture> textures;
 
-		if(orb_img != nullptr) {
+		if(orb_img) {
 			textures.push_back(image::get_texture(*orb_img));
 		}
 
@@ -388,39 +362,44 @@ void unit_drawer::redraw_unit(const unit& u) const
 			}
 		};
 
-		const std::vector<std::string> overlays_abilities = u.overlays_abilities();
-		for(const std::string& ov : overlays_abilities) {
+		for(const std::string& ov : u.overlays_abilities()) {
 			if(texture tex = image::get_texture(ov)) {
 				textures.push_back(std::move(tex));
 			}
 		};
 
-		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, [=,
-			textures      = std::move(textures),
-			adj_y         = adjusted_params.y,
-			//origin        = point{xsrc + xoff, ysrc + yoff + adjusted_params.y},
-			bar_hp_height = static_cast<int>(max_hitpoints  * u.hp_bar_scaling()),
-			bar_xp_height = static_cast<int>(max_experience * u.xp_bar_scaling() / std::max<int>(u.level(), 1))
-		](const rect& d) {
-			const point origin { d.x + xoff, d.y + yoff + adj_y };
+		const bool bar_focus = (loc == mouse_hex || is_selected_hex);
+		std::vector<energy_bar> bars;
 
-			for(const texture& tex : textures) {
-				draw::blit(tex, display::scaled_to_zoom({origin.x, origin.y, tex.w(), tex.h()}));
-			}
+		if(u.max_hitpoints() > 0) {
+			bars.AGGREGATE_EMPLACE(
+				energy_bar::get_height(u.max_hitpoints(), u.hp_bar_scaling()),
+				energy_bar::get_filled(u.hitpoints(), u.max_hitpoints()),
+				energy_bar::get_color(u.hp_color(), bar_focus)
+			);
+		}
 
-			if(max_hitpoints > 0) {
-				// Offset slightly to make room for the XP bar
-				const int hp_offset = static_cast<int>(-5 * display::get_zoom_factor());
+		if(u.experience() > 0 && u.can_advance()) {
+			bars.AGGREGATE_EMPLACE(
+				energy_bar::get_height(u.max_experience(), u.xp_bar_scaling() / std::max(u.level(), 1)),
+				energy_bar::get_filled(u.experience(), u.max_experience()),
+				energy_bar::get_color(u.xp_color(), bar_focus)
+			);
+		}
 
-				double filled = static_cast<double>(hitpoints) / static_cast<double>(max_hitpoints);
-				draw_bar(origin.x + hp_offset, origin.y, bar_hp_height, filled, hp_color);
-			}
+		disp.drawing_buffer_add(drawing_layer::unit_bar, loc,
+			[textures = std::move(textures), bars = std::move(bars), shift = point{xoff, yoff + adjusted_params.y}](
+				const rect& dest) {
+				const rect shifted = dest.shifted_by(shift);
 
-			if(experience > 0 && can_advance) {
-				double filled = static_cast<double>(experience) / static_cast<double>(max_experience);
-				draw_bar(origin.x, origin.y, bar_xp_height, filled, xp_color);
-			}
-		});
+				for(const texture& tex : textures) {
+					draw::blit(tex, shifted);
+				}
+
+				for(std::size_t i = 0; i < bars.size(); ++i) { // bar bar bar
+					draw_bar(i, bars[i], shifted);
+				}
+			});
 	}
 
 	// Smooth unit movements from terrain of different elevation.
@@ -509,4 +488,53 @@ void unit_drawer::redraw_unit(const unit& u) const
 
 	ac.anim_->redraw(params, halo_man);
 	ac.refreshing_ = false;
+}
+
+void unit_drawer::draw_ellipses(const unit& u, const frame_parameters& params) const
+{
+	std::string ellipse = u.image_ellipse();
+	if(ellipse == "none") {
+		return;
+	}
+
+	auto path = formatter{};
+	if(!ellipse.empty()) {
+		path << ellipse;
+	} else {
+		path << "misc/ellipse";
+	}
+
+	// Build the path based on whether the unit has a ZoC can recruit
+	if(u.can_recruit())
+		path << "-leader";
+
+	if(!u.emits_zoc())
+		path << "-nozoc";
+
+	if(selected_or_reachable(u.get_location()))
+		path << "-selected";
+
+	// Load the ellipse parts recolored to match team color
+	const std::string ipf = formatter{} << "~RC(ellipse_red>" << team::get_side_color_id(u.side()) << ")";
+
+	std::array images {
+		image::get_texture(image::locator{path.str() + "-top.png", ipf}),
+		image::get_texture(image::locator{path.str() + "-bottom.png", ipf})
+	};
+
+	// The division by 2 seems to have no real meaning,
+	// It just works fine with the current center of ellipse
+	// and prevent a too large adjust if submerge = 1.0
+	const int y_shift = params.submerge > 0.0
+		? params.y - static_cast<int>(params.submerge * hex_size_by_2)
+		: params.y;
+
+	disp.drawing_buffer_add(drawing_layer::unit_first, u.get_location(),
+		[images = std::move(images), y_shift](const rect& dest) {
+			for(const texture& tex : images) {
+				if(tex) {
+					draw::blit(tex, dest.shifted_by(0, y_shift));
+				}
+			}
+		});
 }

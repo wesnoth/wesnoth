@@ -35,8 +35,12 @@
 #include "color.hpp"
 #include "exceptions.hpp"               // for error
 #include "font/constants.hpp"
+#include "font/standard_colors.hpp"
 #include "gettext.hpp"
-#include <optional>
+#include "serialization/string_utils.hpp"
+#include "utils/optional_fwd.hpp"
+
+#include <cstring>
 #include <list>                         // for list
 #include <memory>
 #include <sstream>
@@ -44,9 +48,9 @@
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, etc
 #include <boost/logic/tribool.hpp>
+#include "config.hpp"
 
 class game_config_view;
-class config;
 class unit_type;
 class terrain_type_data;
 
@@ -79,7 +83,7 @@ public:
  */
 class topic_text
 {
-	mutable std::vector< std::string > parsed_text_;
+	mutable config parsed_text_;
 	mutable std::shared_ptr<topic_generator> generator_;
 public:
 	topic_text() = default;
@@ -103,7 +107,7 @@ public:
 	topic_text& operator=(const topic_text& t) = default;
 	topic_text& operator=(std::shared_ptr<topic_generator> g);
 
-	const std::vector<std::string>& parsed_text() const;
+	const config& parsed_text() const;
 };
 
 /** A topic contains a title, an id and some text. */
@@ -207,12 +211,6 @@ public:
 	}
 };
 
-/** Thrown when the help system fails to parse something. */
-struct parse_error : public game::error
-{
-	parse_error(const std::string& msg) : game::error(msg) {}
-};
-
 // Generator stuff below. Maybe move to a separate file? This one is
 // getting crowded. Dunno if much more is needed though so I'll wait and
 // see.
@@ -220,10 +218,15 @@ struct parse_error : public game::error
 /** Dispatch generators to their appropriate functions. */
 void generate_sections(const config *help_cfg, const std::string &generator, section &sec, int level);
 std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
-std::string generate_topic_text(const std::string &generator, const config *help_cfg,
-const section &sec, const std::vector<topic>& generated_topics);
-std::string generate_contents_links(const std::string& section_name, const config *help_cfg);
-std::string generate_contents_links(const section &sec, const std::vector<topic>& topics);
+std::string generate_topic_text(const std::string &generator, const config *help_cfg, const section &sec);
+std::string generate_contents_links(const std::string& section_name, config const *help_cfg);
+std::string generate_contents_links(const section &sec);
+
+/** Thrown when the help system fails to parse something. */
+struct parse_error : public game::error
+{
+	parse_error(const std::string& msg) : game::error(msg) {}
+};
 
 /**
  * return a hyperlink with the unit's name and pointing to the unit page
@@ -303,32 +306,7 @@ const topic *find_topic(const section &sec, const std::string &id);
 const section *find_section(const section &sec, const std::string &id);
 section *find_section(section &sec, const std::string &id);
 
-/**
- * Parse a text string. Return a vector with the different parts of the
- * text. Each markup item is a separate part while the text between
- * markups are separate parts.
- */
-std::vector<std::string> parse_text(const std::string &text);
-
-/**
- * Convert the contents to wml attributes, surrounded within
- * [element_name]...[/element_name]. Return the resulting WML.
- */
-std::string convert_to_wml(const std::string &element_name, const std::string &contents);
-
-/**
- * Return the color the string represents. Return font::NORMAL_COLOR if
- * the string is empty or can't be matched against any other color.
- */
-color_t string_to_color(const std::string &s);
-
-/** Make a best effort to word wrap s. All parts are less than width. */
-std::vector<std::string> split_in_width(const std::string &s, const int font_size, const unsigned width);
-
 std::string remove_first_space(const std::string& text);
-
-/** Prepend all chars with meaning inside attributes with a backslash. */
-std::string escape(const std::string &s);
 
 /** Return the first word in s, not removing any spaces in the start of it. */
 std::string get_first_word(const std::string &s);
@@ -378,50 +356,5 @@ bool is_visible_id(const std::string &id);
  * be defined in the config.
  */
 bool is_valid_id(const std::string &id);
-
-	// Helpers for making generation of topics easier.
-
-inline std::string make_link(const std::string& text, const std::string& dst)
-	{
-		// some sorting done on list of links may rely on the fact that text is first
-		return "<ref>text='" + help::escape(text) + "' dst='" + help::escape(dst) + "'</ref>";
-	}
-
-inline std::string jump_to(const unsigned pos)
-	{
-		std::stringstream ss;
-		ss << "<jump>to=" << pos << "</jump>";
-		return ss.str();
-	}
-
-inline std::string jump(const unsigned amount)
-	{
-		std::stringstream ss;
-		ss << "<jump>amount=" << amount << "</jump>";
-		return ss.str();
-	}
-
-inline std::string bold(const std::string &s)
-	{
-		std::stringstream ss;
-		ss << "<bold>text='" << help::escape(s) << "'</bold>";
-		return ss.str();
-	}
-
-// A string to be displayed and its width.
-typedef std::pair< std::string, unsigned > item;
-
-typedef std::vector<std::vector<help::item>> table_spec;
-// Create a table using the table specs. Return markup with jumps
-// that create a table. The table spec contains a vector with
-// vectors with pairs. The pairs are the markup string that should
-// be in a cell, and the width of that cell.
-std::string generate_table(const table_spec &tab, const unsigned int spacing=font::relative_size(20));
-
-// Return the width for the image with filename.
-unsigned image_width(const std::string &filename);
-
-// Add to the vector v an help::item for the string s, preceded by the given image if any.
-void push_tab_pair(std::vector<help::item> &v, const std::string &s, const std::optional<std::string> &image = {}, unsigned padding = 0);
 
 } // end namespace help

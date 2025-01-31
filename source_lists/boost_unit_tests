@@ -12,9 +12,11 @@ tests/test_filesystem.cpp
 tests/test_formula_core.cpp
 tests/test_formula_function.cpp
 tests/test_formula_timespan.cpp
+tests/test_help_markup.cpp
 tests/test_image_modifications.cpp
 tests/test_irdya_date.cpp
 tests/test_lexical_cast.cpp
+tests/test_lua_ptr.cpp
 tests/test_map_location.cpp
 tests/test_mp_connect.cpp
 tests/test_recall_list.cpp
@@ -30,6 +32,6 @@ tests/test_whiteboard_side_actions.cpp
 tests/utils/fake_display.cpp
 tests/utils/game_config_manager_tests.cpp
 tests/utils/wml_equivalence.cpp
-tests/wml/test_macro_define.cpp
-tests/wml/schema/test_schema_validator.cpp
 tests/wml/schema/test_schema_self_validator.cpp
+tests/wml/schema/test_schema_validator.cpp
+tests/wml/test_macro_define.cpp

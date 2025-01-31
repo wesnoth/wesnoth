@@ -16,13 +16,12 @@
 
 #include "gui/widgets/chatbox.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/multi_page.hpp"
-#include "gui/widgets/scroll_label.hpp"
+#include "gui/widgets/scroll_text.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -32,10 +31,9 @@
 #include "game_initialization/multiplayer.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
-#include "preferences/lobby.hpp"
+#include "preferences/preferences.hpp"
 #include "scripting/plugins/manager.hpp"
+#include "serialization/markup.hpp"
 #include "wml_exception.hpp"
 
 static lg::log_domain log_lobby("lobby");
@@ -74,16 +72,16 @@ chatbox::chatbox(const implementation::builder_chatbox& builder)
 
 void chatbox::finalize_setup()
 {
-	roomlistbox_ = find_widget<listbox>(this, "room_list", false, true);
+	roomlistbox_ = find_widget<listbox>("room_list", false, true);
 
 	// We need to bind a lambda here since switch_to_window is overloaded.
 	// A lambda alone would be more verbose because it'd need to specify all the parameters.
 	connect_signal_notify_modified(*roomlistbox_,
-		std::bind([this]() { switch_to_window(roomlistbox_->get_selected_row()); }));
+		[this](auto&&...) { switch_to_window(roomlistbox_->get_selected_row()); });
 
-	chat_log_container_ = find_widget<multi_page>(this, "chat_log_container", false, true);
+	chat_log_container_ = find_widget<multi_page>("chat_log_container", false, true);
 
-	chat_input_ = find_widget<text_box>(this, "chat_input", false, true);
+	chat_input_ = find_widget<text_box>("chat_input", false, true);
 
 	connect_signal_pre_key_press(*chat_input_,
 		std::bind(&chatbox::chat_input_keypress_callback, this, std::placeholders::_5));
@@ -91,14 +89,24 @@ void chatbox::finalize_setup()
 
 void chatbox::load_log(std::map<std::string, chatroom_log>& log, bool show_lobby)
 {
-	for(const auto& l : log) {
+	const std::string new_tip = formatter()
+		<< "\n"
+		// TRANSLATORS: This is the new chat text indicator
+		<< markup::span_color("#FF0000", "============", _("NEW"), "============");
+
+	for(auto& l : log) {
 		const bool is_lobby = l.first == "lobby";
 
 		if(!show_lobby && is_lobby && !l.second.whisper) {
 			continue;
 		}
 
-		find_or_create_window(l.first, l.second.whisper, true, !is_lobby, l.second.log);
+		const std::size_t new_tip_index = l.second.log.find(new_tip);
+
+		if(new_tip_index != std::string::npos) {
+			l.second.log.replace(new_tip_index, new_tip.length(), "");
+		}
+		find_or_create_window(l.first, l.second.whisper, true, !is_lobby, l.second.log + new_tip);
 	}
 
 	log_ = &log;
@@ -110,7 +118,7 @@ void chatbox::active_window_changed()
 
 	// Clear pending messages notification in room listbox
 	grid* grid = roomlistbox_->get_row_grid(active_window_);
-	find_widget<image>(grid, "pending_messages", false).set_visible(widget::visibility::hidden);
+	grid->find_widget<image>("pending_messages").set_visible(widget::visibility::hidden);
 
 	t.pending_messages = 0;
 
@@ -177,10 +185,9 @@ void chatbox::chat_input_keypress_callback(const SDL_Keycode key)
 			break;
 		}
 
-		// TODO: very inefficient! Very! D:
 		std::vector<std::string> matches;
 		for(const auto& ui : li->users()) {
-			if(ui.name != preferences::login()) {
+			if(ui.name != prefs::get().login()) {
 				matches.push_back(ui.name);
 			}
 		}
@@ -216,17 +223,17 @@ void chatbox::append_to_chatbox(const std::string& text, const bool force_scroll
 void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const bool force_scroll)
 {
 	grid& grid = chat_log_container_->page_grid(id);
+	scroll_text& log = grid.find_widget<scroll_text>("log_text");
 
-	scroll_label& log = find_widget<scroll_label>(&grid, "log_text", false);
 	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
 	const unsigned chatbox_position = log.get_vertical_scrollbar_item_position();
 
-	const std::string before_message = log.get_label().empty() ? "" : "\n";
+	const std::string before_message = log.get_value().empty() ? "" : "\n";
 	const std::string new_text = formatter()
-		<< log.get_label() << before_message << "<span color='#bcb088'>" << preferences::get_chat_timestamp(std::time(0)) << text << "</span>";
+		<< log.get_value() << before_message << markup::span_color("#bcb088", prefs::get().get_chat_timestamp(std::chrono::system_clock::now()), text);
 
 	log.set_use_markup(true);
-	log.set_label(new_text);
+	log.set_value(new_text);
 
 	if(log_ != nullptr) {
 		try {
@@ -245,9 +252,9 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 
 void chatbox::send_chat_message(const std::string& message, bool /*allies_only*/)
 {
-	add_chat_message(std::time(nullptr), preferences::login(), 0, message);
+	add_chat_message(std::time(nullptr), prefs::get().login(), 0, message);
 
-	::config c {"message", ::config {"message", message, "sender", preferences::login()}};
+	::config c {"message", ::config {"message", message, "sender", prefs::get().login()}};
 	send_to_server(c);
 }
 
@@ -255,7 +262,7 @@ void chatbox::clear_messages()
 {
 	const auto id = active_window_;
 	grid& grid = chat_log_container_->page_grid(id);
-	scroll_label& log = find_widget<scroll_label>(&grid, "log_text", false);
+	scroll_text& log = grid.find_widget<scroll_text>("log_text");
 	log.set_label("");
 }
 
@@ -273,14 +280,10 @@ void chatbox::add_chat_message(const std::time_t& /*time*/,
 	events::chat_handler::MESSAGE_TYPE /*type*/)
 {
 	std::string text;
-
-	// FIXME: the chat_command_handler class (which handles chat commands) dispatches a
-	// message consisting of '/me insert text here' in the case the '/me' or '/emote'
-	// commands are used, so we need to do some manual preprocessing here.
 	if(message.compare(0, 4, "/me ") == 0) {
-		text = formatter() << "<i>" << speaker << " " << font::escape_text(message.substr(4)) << "</i>";
+		text = formatter() << markup::italic(speaker, " ", font::escape_text(message.substr(4)));
 	} else {
-		text = formatter() << "<b>" << speaker << ":</b> " << font::escape_text(message);
+		text = formatter() << markup::bold(speaker, ":") << font::escape_text(message);
 	}
 
 	append_to_chatbox(text);
@@ -289,10 +292,10 @@ void chatbox::add_chat_message(const std::time_t& /*time*/,
 void chatbox::add_whisper_sent(const std::string& receiver, const std::string& message)
 {
 	if(whisper_window_active(receiver)) {
-		add_active_window_message(preferences::login(), message, true);
-	} else if(lobby_chat_window* t = whisper_window_open(receiver, preferences::auto_open_whisper_windows())) {
+		add_active_window_message(prefs::get().login(), message, true);
+	} else if(lobby_chat_window* t = whisper_window_open(receiver, prefs::get().auto_open_whisper_windows())) {
 		switch_to_window(t);
-		add_active_window_message(preferences::login(), message, true);
+		add_active_window_message(prefs::get().login(), message, true);
 	} else {
 		add_active_window_whisper(VGETTEXT("whisper to $receiver", {{"receiver", receiver}}), message, true);
 	}
@@ -300,8 +303,8 @@ void chatbox::add_whisper_sent(const std::string& receiver, const std::string& m
 
 void chatbox::add_whisper_received(const std::string& sender, const std::string& message)
 {
-	bool can_go_to_active = !preferences::whisper_friends_only() || preferences::is_friend(sender);
-	bool can_open_new = preferences::auto_open_whisper_windows() && can_go_to_active;
+	bool can_go_to_active = !prefs::get().lobby_whisper_friends_only() || prefs::get().is_friend(sender);
+	bool can_open_new = prefs::get().auto_open_whisper_windows() && can_go_to_active;
 
 	if(whisper_window_open(sender, can_open_new)) {
 		if(whisper_window_active(sender)) {
@@ -334,7 +337,7 @@ void chatbox::add_chat_room_message_sent(const std::string& room, const std::str
 		switch_to_window(t);
 	}
 
-	add_active_window_message(preferences::login(), message, true);
+	add_active_window_message(prefs::get().login(), message, true);
 }
 
 void chatbox::add_chat_room_message_received(const std::string& room,
@@ -354,9 +357,9 @@ void chatbox::add_chat_room_message_received(const std::string& room,
 
 	if(speaker == "server") {
 		notify_mode = mp::notify_mode::server_message;
-	} else if (utils::word_match(message, preferences::login())) {
+	} else if (utils::word_match(message, prefs::get().login())) {
 		notify_mode = mp::notify_mode::own_nick;
-	} else if (preferences::is_friend(speaker)) {
+	} else if (prefs::get().is_friend(speaker)) {
 		notify_mode = mp::notify_mode::friend_message;
 	}
 
@@ -439,7 +442,7 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	//
 	// Set up the Close Window button.
 	//
-	button& close_button = find_widget<button>(&row_grid, "close_window", false);
+	button& close_button = row_grid.find_widget<button>("close_window");
 
 	if(!allow_close) {
 		close_button.set_visible(widget::visibility::hidden);
@@ -476,7 +479,7 @@ void chatbox::increment_waiting_whispers(const std::string& name)
 			DBG_LB << "do whisper pending mark row " << (t - &open_windows_[0]) << " with " << t->name;
 
 			grid* grid = roomlistbox_->get_row_grid(t - &open_windows_[0]);
-			find_widget<image>(grid, "pending_messages", false).set_visible(widget::visibility::visible);
+			grid->find_widget<image>("pending_messages").set_visible(widget::visibility::visible);
 		}
 	}
 }
@@ -492,7 +495,7 @@ void chatbox::increment_waiting_messages(const std::string& room)
 			DBG_LB << "do room pending mark row " << idx << " with " << t->name;
 
 			grid* grid = roomlistbox_->get_row_grid(idx);
-			find_widget<image>(grid, "pending_messages", false).set_visible(widget::visibility::visible);
+			grid->find_widget<image>("pending_messages").set_visible(widget::visibility::visible);
 		}
 	}
 }
@@ -505,7 +508,7 @@ void chatbox::add_whisper_window_whisper(const std::string& sender, const std::s
 		return;
 	}
 
-	const std::string text = formatter() << "<b>" << sender << ":</b> " << font::escape_text(message);
+	const std::string text = formatter() << markup::bold(sender, ": ") << font::escape_text(message);
 	append_to_chatbox(text, t - &open_windows_[0], false);
 }
 
@@ -513,7 +516,7 @@ void chatbox::add_active_window_whisper(const std::string& sender,
 	const std::string& message,
 	const bool force_scroll)
 {
-	const std::string text = formatter() << "<b>" << "whisper: " << sender << ":</b> " << font::escape_text(message);
+	const std::string text = formatter() << markup::bold("whisper: ", sender, ": ") << font::escape_text(message);
 	append_to_chatbox(text, force_scroll);
 }
 
@@ -562,7 +565,7 @@ void chatbox::add_room_window_message(const std::string& room,
 		return;
 	}
 
-	const std::string text = formatter() << "<b>" << sender << ":</b> " << font::escape_text(message);
+	const std::string text = formatter() << markup::bold(sender, ": ") << font::escape_text(message);
 	append_to_chatbox(text, t - &open_windows_[0], false);
 }
 
@@ -570,7 +573,7 @@ void chatbox::add_active_window_message(const std::string& sender,
 	const std::string& message,
 	const bool force_scroll)
 {
-	const std::string text = formatter() << "<b>" << sender << ":</b> " << font::escape_text(message);
+	const std::string text = formatter() << markup::bold(sender, ": ") << font::escape_text(message);
 	append_to_chatbox(text, force_scroll);
 }
 
@@ -580,17 +583,17 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 	DBG_LB << "process message from " << sender << " " << (whisper ? "(w)" : "")
 		<< ", len " << data["message"].str().size();
 
-	if(preferences::is_ignored(sender)) {
+	if(prefs::get().is_ignored(sender)) {
 		return;
 	}
 
 	const std::string& message = data["message"];
-	//preferences::parse_admin_authentication(sender, message); TODO: replace
+	//prefs::get().parse_admin_authentication(sender, message); TODO: replace
 
 	if(whisper) {
 		add_whisper_received(sender, message);
 	} else {
-		if (!preferences::parse_should_show_lobby_join(sender, message)) return;
+		if (!prefs::get().parse_should_show_lobby_join(sender, message)) return;
 
 		std::string room = data["room"];
 

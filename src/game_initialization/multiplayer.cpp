@@ -19,6 +19,7 @@
 #include "commandline_options.hpp"
 #include "connect_engine.hpp"
 #include "events.hpp"
+#include "formula/format_timespan.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/playcampaign.hpp"
@@ -33,8 +34,7 @@
 #include "log.hpp"
 #include "map_settings.hpp"
 #include "multiplayer_error_codes.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
 #include "saved_game.hpp"
@@ -43,7 +43,7 @@
 #include "wesnothd_connection.hpp"
 
 #include <functional>
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <thread>
 
 static lg::log_domain log_mp("mp/main");
@@ -68,7 +68,7 @@ public:
 	friend void mp::send_to_server(const config&);
 	friend mp::lobby_info* mp::get_lobby_info();
 
-	mp_manager(const std::optional<std::string> host);
+	mp_manager(const utils::optional<std::string> host);
 
 	~mp_manager()
 	{
@@ -113,7 +113,7 @@ private:
 	};
 
 	/** Opens a new server connection and prompts the client for login credentials, if necessary. */
-	std::unique_ptr<wesnothd_connection> open_connection(std::string host);
+	std::unique_ptr<wesnothd_connection> open_connection(const std::string& host);
 
 	/** Opens the MP lobby. */
 	bool enter_lobby_mode();
@@ -152,13 +152,13 @@ public:
 		return session_info;
 	}
 
-	auto add_network_handler(decltype(process_handlers)::value_type func)
+	auto add_network_handler(const decltype(process_handlers)::value_type& func)
 	{
 		return [this, iter = process_handlers.insert(process_handlers.end(), func)]() { process_handlers.erase(iter); };
 	}
 };
 
-mp_manager::mp_manager(const std::optional<std::string> host)
+mp_manager::mp_manager(const utils::optional<std::string> host)
 	: network_worker()
 	, stop(false)
 	, connection(nullptr)
@@ -216,7 +216,7 @@ mp_manager::mp_manager(const std::optional<std::string> host)
 	manager = this;
 }
 
-std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string host)
+std::unique_ptr<wesnothd_connection> mp_manager::open_connection(const std::string& host)
 {
 	DBG_MP << "opening connection";
 
@@ -266,7 +266,7 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 			i18n_symbols["required_version"] = version;
 			i18n_symbols["your_version"] = game_config::wesnoth_version.str();
 
-			const std::string errorstring = VGETTEXT("The server accepts versions '$required_version', but you are using version '$your_version'", i18n_symbols);
+			const std::string errorstring = VGETTEXT("The server accepts versions ‘$required_version’, but you are using version ‘$your_version’", i18n_symbols);
 			throw wesnothd_error(errorstring);
 		}
 
@@ -314,7 +314,7 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 
 		// Enter login loop
 		while(true) {
-			std::string login = preferences::login();
+			std::string login = prefs::get().login();
 
 			config response;
 			config& sp = response.add_child("login");
@@ -353,7 +353,7 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 			if(!error) break;
 
 			do {
-				std::string password = preferences::password(host, login);
+				std::string password = prefs::get().password(host, login);
 
 				const bool fall_through = (*error)["force_confirmation"].to_bool()
 					? (gui2::show_message(_("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::retval::CANCEL)
@@ -397,7 +397,8 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 
 				const auto extra_data = error->optional_child("data");
 				if(extra_data) {
-					i18n_symbols["duration"] = utils::format_timespan((*extra_data)["duration"]);
+					using namespace std::chrono_literals;
+					i18n_symbols["duration"] = utils::format_timespan(chrono::parse_duration((*extra_data)["duration"], 0s));
 				}
 
 				const std::string ec = (*error)["error_code"];
@@ -419,6 +420,12 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 				} else if(ec == MP_NAME_UNREGISTERED_ERROR) {
 					error_message = VGETTEXT("The nickname ‘$nick’ is not registered on this server.", i18n_symbols)
 							+ _(" This server disallows unregistered nicknames.");
+				} else if(ec == MP_SERVER_IP_BAN_ERROR) {
+					if(extra_data) {
+						error_message = VGETTEXT("Your IP address is banned on this server for $duration|.", i18n_symbols);
+					} else {
+						error_message = _("Your IP address is banned on this server.");
+					}
 				} else if(ec == MP_NAME_AUTH_BAN_USER_ERROR) {
 					if(extra_data) {
 						error_message = VGETTEXT("The nickname ‘$nick’ is banned on this server’s forums for $duration|.", i18n_symbols);
@@ -468,7 +475,7 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 				}
 
 			// If we have got a new username we have to start all over again
-			} while(login == preferences::login());
+			} while(login == prefs::get().login());
 
 			// Somewhat hacky...
 			// If we broke out of the do-while loop above error is still going to be nullopt
@@ -585,7 +592,7 @@ void mp_manager::enter_staging_mode()
 	// If we have a connection, set the appropriate info. No connection means we're in local game mode.
 	if(connection) {
 		metadata = std::make_unique<mp_game_metadata>(*connection);
-		metadata->connected_players.insert(preferences::login());
+		metadata->connected_players.insert(prefs::get().login());
 		metadata->is_host = true;
 	}
 
@@ -620,9 +627,9 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 		metadata.current_turn = gi->current_turn;
 	}
 
-	if(preferences::skip_mp_replay() || preferences::blindfold_replay()) {
+	if(prefs::get().skip_mp_replay() || prefs::get().blindfold_replay()) {
 		metadata.skip_replay = true;
-		metadata.skip_replay_blindfolded = preferences::blindfold_replay();
+		metadata.skip_replay_blindfolded = prefs::get().blindfold_replay();
 	}
 
 	bool dlg_ok = false;
@@ -681,9 +688,9 @@ void start_local_game()
 {
 	DBG_MP << "starting local game";
 
-	preferences::set_message_private(false);
+	prefs::get().set_message_private(false);
 
-	mp_manager(std::nullopt).enter_create_mode();
+	mp_manager(utils::nullopt).enter_create_mode();
 }
 
 void start_local_game_commandline(const commandline_options& cmdline_opts)
@@ -695,7 +702,7 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 	// The setup is done equivalently to lobby MP games using as much of existing
 	// code as possible.  This means that some things are set up that are not
 	// needed in commandline mode, but they are required by the functions called.
-	preferences::set_message_private(false);
+	prefs::get().set_message_private(false);
 
 	DBG_MP << "entering create mode";
 
@@ -763,9 +770,9 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 	state.expand_mp_options();
 
 	// Should number of turns be determined from scenario data?
-	if(parameters.use_map_settings && state.get_starting_point()["turns"]) {
+	if(parameters.use_map_settings && state.get_starting_point().has_attribute("turns")) {
 		DBG_MP << "setting turns from scenario data: " << state.get_starting_point()["turns"];
-		parameters.num_turns = state.get_starting_point()["turns"];
+		parameters.num_turns = state.get_starting_point()["turns"].to_int();
 	}
 
 	DBG_MP << "entering connect mode";
@@ -825,7 +832,7 @@ void send_to_server(const config& data)
 	}
 }
 
-network_registrar::network_registrar(handler func)
+network_registrar::network_registrar(const handler& func)
 {
 	if(manager /*&& manager->connection*/) {
 		remove_handler = manager->add_network_handler(func);

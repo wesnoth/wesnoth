@@ -51,7 +51,7 @@ private:
 	{
 	public:
 		connection_data*& connection_;
-		virtual void process(events::pump_info&);
+		virtual void process();
 
 		pump_monitor(connection_data*& connection)
 			: connection_(connection), window_()
@@ -67,9 +67,9 @@ public:
 						  const std::string& subtitle);
 
 protected:
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 private:
 	/**

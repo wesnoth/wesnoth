@@ -36,11 +36,11 @@ namespace test_throw {
 #pragma warning(pop)
 #endif
 
-using test_match_types = std::tuple<
+using test_bool_types = std::tuple<
 	/* note Wesnoth's coding style doesn't allow w_char so ignore them. */
+	bool>;
 
-	bool,
-
+using test_integral_types = std::tuple<
 	/*
 	* We don't want chars to match since a string cast of a char is
 	* ambiguous; does the user want it interpreted as a char or as a number?
@@ -51,9 +51,15 @@ using test_match_types = std::tuple<
 	unsigned short, unsigned int, unsigned long, unsigned long long
 	>;
 
-using test_nomatch_types = std::tuple<float, double, long double>;
+using test_floating_point_types = std::tuple<float, double, long double>;
 
+
+
+using test_match_types = decltype(std::tuple_cat(test_bool_types{}, test_integral_types{}));
+using test_nomatch_types = decltype(std::tuple_cat(test_floating_point_types{}));
 using test_types = decltype(std::tuple_cat(test_nomatch_types{}, test_match_types{}));
+
+using test_arethmetic_types = decltype(std::tuple_cat(test_integral_types{}, test_floating_point_types{}));
 
 namespace {
 
@@ -78,9 +84,9 @@ constexpr bool contains_type(std::tuple<Types...>)
 
 } // namespace
 
-#define TEST_CASE(type_send, initializer)                           \
+#define TEST_CASE(type_send)                           \
 	{                                                               \
-	type_send val = initializer value;                              \
+	type_send val = value;                              \
                                                                     \
 	BOOST_CHECK_EXCEPTION(                                          \
 			lexical_cast<std::string>(val), const char*, validate); \
@@ -90,145 +96,51 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(test_lexical_cast_throw, T, test_types)
 {
 	T value = T();
 
-	if constexpr(contains_type<T>(test_match_types{})) {
-		result = "specialized - To std::string - From integral (pointer)";
-	} else {
-		result = "generic";
-	}
+	result = "specialized - To std::string - From arithmetic";
 
-	TEST_CASE(T, );
-	TEST_CASE(const T, );
 
-	TEST_CASE(T&, );
-	TEST_CASE(const T&, );
+	TEST_CASE(T);
+	TEST_CASE(const T);
 
-	TEST_CASE(T*, &);
-	TEST_CASE(const T*, &);
-
-	TEST_CASE(T* const, &);
-	TEST_CASE(const T* const, &);
+	TEST_CASE(T&);
+	TEST_CASE(const T&);
 }
 
 #undef TEST_CASE
 
-using test_lexical_cast_signed_types = std::tuple<
-	  signed char
-	, short
-	, int
-	, long>;
-
 BOOST_AUTO_TEST_CASE_TEMPLATE(
-		test_lexical_cast_signed, T, test_lexical_cast_signed_types)
+		test_lexical_arethmetic_signed, T, test_arethmetic_types)
 {
-	result = "specialized - To signed - From (const) char*";
+	result = "specialized - To arithmetic - From string";
 
 	const char* value = "test";
 	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
 			value), const char*, validate);
 	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
 			const_cast<char*>(value)), const char*, validate);
-
-	result = "specialized - To signed - From std::string";
-
 	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
 			std::string(value)), const char*, validate);
-}
-
-BOOST_AUTO_TEST_CASE(test_lexical_cast_long_long)
-{
-	result = "specialized - To long long - From (const) char*";
-
-	const char* value = "test";
-	BOOST_CHECK_EXCEPTION(lexical_cast<long long>(
-			value), const char*, validate);
-	BOOST_CHECK_EXCEPTION(lexical_cast<long long>(
-			const_cast<char*>(value)), const char*, validate);
-
-	result = "specialized - To long long - From std::string";
-
-	BOOST_CHECK_EXCEPTION(lexical_cast<long long>(
-			std::string(value)), const char*, validate);
-}
-
-using test_lexical_cast_unsigned_types = std::tuple<
-	  unsigned char
-	, unsigned short
-	, unsigned int
-	, unsigned long>;
-
-BOOST_AUTO_TEST_CASE_TEMPLATE(
-		test_lexical_cast_unsigned, T, test_lexical_cast_unsigned_types)
-{
-	result = "specialized - To unsigned - From (const) char*";
-
-	const char* value = "test";
 	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
-			value), const char*, validate);
-	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
-			const_cast<char*>(value)), const char*, validate);
-
-	result = "specialized - To unsigned - From std::string";
-
-	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
-			std::string(value)), const char*, validate);
-
-}
-
-BOOST_AUTO_TEST_CASE(test_lexical_cast_unsigned_long_long)
-{
-	result = "specialized - To unsigned long long - From (const) char*";
-
-	const char* value = "test";
-	BOOST_CHECK_EXCEPTION(lexical_cast<unsigned long long>(
-			value), const char*, validate);
-	BOOST_CHECK_EXCEPTION(lexical_cast<unsigned long long>(
-			const_cast<char*>(value)), const char*, validate);
-
-	result = "specialized - To unsigned long long - From std::string";
-
-	BOOST_CHECK_EXCEPTION(lexical_cast<unsigned long long>(
-			std::string(value)), const char*, validate);
+			std::string_view(value)), const char*, validate);
 }
 
 BOOST_AUTO_TEST_CASE(test_lexical_cast_bool)
 {
-	result = "specialized - To bool - From (const) char*";
+	result = "specialized - To bool - From string";
 
 	const char* value = "test";
 	BOOST_CHECK_EXCEPTION(lexical_cast<bool>(
 			value), const char*, validate);
 	BOOST_CHECK_EXCEPTION(lexical_cast<bool>(
 			const_cast<char*>(value)), const char*, validate);
-
-	result = "specialized - To bool - From std::string";
-
 	BOOST_CHECK_EXCEPTION(lexical_cast<bool>(
 			std::string(value)), const char*, validate);
-}
-
-using test_lexical_cast_floating_point_types = std::tuple<
-	  float
-	, double
-	, long double>;
-
-BOOST_AUTO_TEST_CASE_TEMPLATE(
-		test_lexical_cast_floating_point, T, test_lexical_cast_floating_point_types)
-{
-	result = "specialized - To floating point - From (const) char*";
-
-	const char* value = "test";
-	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
-			value), const char*, validate);
-	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
-			const_cast<char*>(value)), const char*, validate);
-
-	result = "specialized - To floating point - From std::string";
-
-	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
-		std::string(value)), const char*, validate);
+	BOOST_CHECK_EXCEPTION(lexical_cast<bool>(
+			std::string_view(value)), const char*, validate);
 }
 
 } //  namespace test_throw
+
 
 BOOST_AUTO_TEST_CASE(test_lexical_cast_result)
 {
@@ -245,7 +157,11 @@ BOOST_AUTO_TEST_CASE(test_lexical_cast_result)
 	BOOST_CHECK_EQUAL(lexical_cast<int>("-1"), -1);
 	BOOST_CHECK_EQUAL(lexical_cast<unsigned>("1"), 1);
 	BOOST_CHECK_EQUAL(lexical_cast<double>("1.2"), 1.2);
-	BOOST_CHECK_THROW(lexical_cast<double>("0x11"), bad_lexical_cast);
+
+	// The unit [effect] code uses this a lot
+	BOOST_CHECK_EQUAL(lexical_cast_default<int>("80%"), 80);
+
+	BOOST_CHECK_EQUAL(lexical_cast<double>("0x11"), 0);
 
 	std::string a = "01234567890123456789";
 	BOOST_CHECK_EQUAL(lexical_cast<long long>(a), 1234567890123456789ll);

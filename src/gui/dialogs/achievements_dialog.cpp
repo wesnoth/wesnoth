@@ -1,6 +1,5 @@
 /*
 	Copyright (C) 2003 - 2024
-	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -19,14 +18,14 @@
 
 #include "game_config_manager.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
+#include "serialization/markup.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
@@ -41,19 +40,19 @@ REGISTER_DIALOG(achievements_dialog)
 achievements_dialog::achievements_dialog()
 	: modal_dialog(window_id())
 	, achieve_()
-	, last_selected_(preferences::selected_achievement_group())
+	, last_selected_(prefs::get().selected_achievement_group())
 	, achievements_box_(nullptr)
 	, content_names_(nullptr)
 {
 }
 
-void achievements_dialog::pre_show(window& win)
+void achievements_dialog::pre_show()
 {
 	std::vector<config> content_list;
-	content_names_ = &find_widget<menu_button>(&win, "selected_achievements_list", false);
+	content_names_ = &find_widget<menu_button>("selected_achievements_list");
 	connect_signal_notify_modified(*content_names_, std::bind(&achievements_dialog::set_achievements_row, this));
 
-	achievements_box_ = find_widget<listbox>(&win, "achievements_list", false, true);
+	achievements_box_ = find_widget<listbox>("achievements_list", false, true);
 
 	std::vector<achievement_group> groups = game_config_manager::get()->get_achievements();
 	int selected = 0;
@@ -75,9 +74,9 @@ void achievements_dialog::pre_show(window& win)
 	}
 }
 
-void achievements_dialog::post_show(window&)
+void achievements_dialog::post_show()
 {
-	preferences::set_selected_achievement_group(last_selected_);
+	prefs::get().set_selected_achievement_group(last_selected_);
 }
 
 void achievements_dialog::set_achievements_row()
@@ -103,7 +102,7 @@ void achievements_dialog::set_achievements_row()
 		if(!ach.achieved_) {
 			t_string name = ach.name_;
 			if(ach.max_progress_ != 0 && ach.current_progress_ != -1) {
-				name += " ("+std::to_string(ach.current_progress_)+"/"+std::to_string(ach.max_progress_)+")";
+				name += (formatter() << " (" << ach.current_progress_ << "/" << ach.max_progress_).str();
 			}
 			item["label"] = name;
 		} else {
@@ -115,7 +114,7 @@ void achievements_dialog::set_achievements_row()
 		if(!ach.achieved_) {
 			item["label"] = ach.description_;
 		} else {
-			item["label"] = "<span color='green'>"+ach.description_completed_+"</span>";
+			item["label"] = markup::span_color("green", ach.description_completed_);
 		}
 		row.emplace("description", item);
 
@@ -134,7 +133,7 @@ void achievements_dialog::set_achievements_row()
 		set_sub_achievements(newrow, ach);
 	}
 
-	label* achieved_label = find_widget<label>(get_window(), "achievement_count", false, true);
+	label* achieved_label = find_widget<label>("achievement_count", false, true);
 	achieved_label->set_label(_("Completed")+" "+std::to_string(achieved_count)+"/"+std::to_string(list.achievements_.size()));
 }
 

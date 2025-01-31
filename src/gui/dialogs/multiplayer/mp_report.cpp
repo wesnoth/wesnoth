@@ -19,7 +19,6 @@
 #include "gui/dialogs/multiplayer/mp_report.hpp"
 
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -41,35 +40,35 @@ mp_report::mp_report(std::string& report_text)
 {
 }
 
-void mp_report::pre_show(window& win)
+void mp_report::pre_show()
 {
 	std::vector<config> occurrence_location_entries;
 	occurrence_location_entries.emplace_back("label", _("Lobby"));
 	occurrence_location_entries.emplace_back("label", _("Whisper"));
 	occurrence_location_entries.emplace_back("label", _("Game"));
 
-	find_widget<menu_button>(&win, "occurrence_location", false).set_values(occurrence_location_entries);
+	find_widget<menu_button>("occurrence_location").set_values(occurrence_location_entries);
 
-	button& ok = find_widget<button>(&win, "ok", false);
+	button& ok = find_widget<button>("ok");
 	ok.set_active(false);
 
-	text_box& reportee = find_widget<text_box>(&win, "reportee", false);
-	reportee.set_text_changed_callback(std::bind(&mp_report::reportee_changed, this, std::placeholders::_2));
+	text_box& reportee = find_widget<text_box>("reportee");
+	reportee.on_modified([this](const auto& box) { reportee_changed(box.text()); });
 
-	text_box& report_reason = find_widget<text_box>(&win, "report_reason", false);
-	report_reason.set_text_changed_callback(std::bind(&mp_report::report_reason_changed, this, std::placeholders::_2));
+	text_box& report_reason = find_widget<text_box>("report_reason");
+	report_reason.on_modified([this](const auto& box) { report_reason_changed(box.text()); });
 
-	win.set_exit_hook(window::exit_hook::on_ok, [this](window&) { return !reportee_empty_ && !report_reason_empty_; });
+	set_exit_hook(window::exit_hook::ok_only, [this] { return !reportee_empty_ && !report_reason_empty_; });
 }
 
-void mp_report::post_show(window& window)
+void mp_report::post_show()
 {
 	if(get_retval() == gui2::retval::OK)
 	{
-		const text_box& reportee = find_widget<const text_box>(&window, "reportee", false);
-		const text_box& report_reason = find_widget<const text_box>(&window, "report_reason", false);
-		const menu_button& occurrence_location = find_widget<const menu_button>(&window, "occurrence_location", false);
-		const std::string additional_information = find_widget<const text_box>(&window, "additional_information", false).get_value();
+		const text_box& reportee = find_widget<const text_box>("reportee");
+		const text_box& report_reason = find_widget<const text_box>("report_reason");
+		const menu_button& occurrence_location = find_widget<const menu_button>("occurrence_location");
+		const std::string additional_information = find_widget<const text_box>("additional_information").get_value();
 
 		std::ostringstream report;
 		report << "Reporting player '" << reportee.get_value() << "' for reason '" << report_reason.get_value() << "'."
@@ -86,7 +85,7 @@ void mp_report::reportee_changed(const std::string& text)
 {
 	reportee_empty_ = text.empty();
 
-	button& ok = find_widget<button>(get_window(), "ok", false);
+	button& ok = find_widget<button>("ok");
 	ok.set_active(!reportee_empty_ && !report_reason_empty_);
 }
 
@@ -94,7 +93,7 @@ void mp_report::report_reason_changed(const std::string& text)
 {
 	report_reason_empty_ = text.empty();
 
-	button& ok = find_widget<button>(get_window(), "ok", false);
+	button& ok = find_widget<button>("ok");
 	ok.set_active(!reportee_empty_ && !report_reason_empty_);
 }
 

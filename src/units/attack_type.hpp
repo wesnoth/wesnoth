@@ -25,6 +25,7 @@
 #include <boost/dynamic_bitset_fwd.hpp>
 
 #include "units/ptr.hpp" // for attack_ptr
+#include "units/unit_alignments.hpp"
 
 class unit_ability_list;
 class unit_type;
@@ -59,6 +60,9 @@ public:
 	void set_type(const std::string& value) { type_ = value; set_changed(true); }
 	void set_icon(const std::string& value) { icon_ = value; set_changed(true); }
 	void set_range(const std::string& value) { range_ = value; set_changed(true); }
+	void set_min_range(int value) { min_range_ = value; set_changed(true); }
+	void set_max_range(int value) { max_range_ = value; set_changed(true); }
+	void set_attack_alignment(const std::string& value) { alignment_ = unit_alignments::get_enum(value); set_changed(true); }
 	void set_accuracy(int value) { accuracy_ = value; set_changed(true); }
 	void set_parry(int value) { parry_ = value; set_changed(true); }
 	void set_damage(int value) { damage_ = value; set_changed(true); }
@@ -81,17 +85,34 @@ public:
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials() const;
-	std::string weapon_specials_value(const std::set<std::string> checking_tags) const;
+	std::string weapon_specials_value(const std::set<std::string>& checking_tags) const;
+
+	/** Returns alignment specified by alignment_ variable.
+	 */
+	utils::optional<unit_alignments::type> alignment() const { return alignment_; }
+	/** Returns alignment specified by alignment() for filtering when exist.
+	 */
+	std::string alignment_str() const { return alignment_ ? unit_alignments::get_string(*alignment_) : ""; }
 
 	/** Calculates the number of attacks this weapon has, considering specials. */
 	void modified_attacks(unsigned & min_attacks,
 	                      unsigned & max_attacks) const;
 
+	/**
+	 * Select best damage type based on frequency count for replacement_type and based on highest damage for alternative_type.
+	 *
+	 * @param damage_type_list list of [damage_type] to check.
+	 * @param key_name name of attribute checked 'alternative_type' or 'replacement_type'.
+	 * @param resistance_list list of "resistance" abilities to check for each type of damage checked.
+	 */
+	std::string select_damage_type(const unit_ability_list& damage_type_list, const std::string& key_name, const unit_ability_list& resistance_list) const;
 	/** return a modified damage type and/or add a secondary_type for hybrid use if special is active. */
 	std::pair<std::string, std::string> damage_type() const;
+	/** @return A list of alternative_type damage types. */
+	std::set<std::string> alternative_damage_types() const;
 
 	/** Returns the damage per attack of this weapon, considering specials. */
-	int modified_damage() const;
+	double modified_damage() const;
 
 	/** Return the special weapon value, considering specials.
 	 * @param abil_list The list of special checked.
@@ -119,10 +140,26 @@ public:
 	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
 	bool has_special_or_ability(const std::string& special, bool special_id=true, bool special_tags=true) const;
+	/**
+	 * Returns true if this is a dummy attack_type, for example the placeholder that the unit_attack dialog
+	 * uses when a defender has no weapon for a given range.
+	 */
+	bool attack_empty() const {return (id().empty() && name().empty() && type().empty() && range().empty());}
+	/** remove special if matche condition
+	 * @param filter if special check with filter, it will be removed.
+	 */
+	void remove_special_by_filter(const config& filter);
+	/** check if special matche
+	 * @return True if special matche with filter(if 'active' filter is true, check if special active).
+	 * @param filter if special check with filter, return true.
+	 */
+	bool has_special_with_filter(const config & filter) const;
+	bool has_ability_with_filter(const config & filter) const;
+	bool has_special_or_ability_with_filter(const config & filter) const;
 
 	// In unit_types.cpp:
 
-	bool matches_filter(const config& filter, const std::string& tag_name = "") const;
+	bool matches_filter(const config& filter, const std::string& check_if_recursion = "") const;
 	bool apply_modification(const config& cfg);
 	bool describe_modification(const config& cfg,std::string* description);
 
@@ -135,11 +172,69 @@ public:
 	inline config to_config() const { config c; write(c); return c; }
 
 	void add_formula_context(wfl::map_formula_callable&) const;
+
+	/**
+	 * Helper similar to std::unique_lock for detecting when calculations such as has_special
+	 * have entered infinite recursion.
+	 *
+	 * This assumes that there's only a single thread accessing the attack_type, it's a lightweight
+	 * increment/decrement counter rather than a mutex.
+	 */
+	class recursion_guard {
+		friend class attack_type;
+		/**
+		 * Only expected to be called in update_variables_recursion(), which handles some of the checks.
+		 */
+		explicit recursion_guard(const attack_type& weapon, const config& special);
+	public:
+		/**
+		 * Construct an empty instance, only useful for extending the lifetime of a
+		 * recursion_guard returned from weapon.update_variables_recursion() by
+		 * std::moving it to an instance declared in a larger scope.
+		 */
+		explicit recursion_guard();
+
+		/**
+		 * Returns true if a level of recursion was available at the time when update_variables_recursion()
+		 * created this object.
+		 */
+		operator bool() const;
+
+		recursion_guard(recursion_guard&& other);
+		recursion_guard(const recursion_guard& other) = delete;
+		recursion_guard& operator=(recursion_guard&&);
+		recursion_guard& operator=(const recursion_guard&) = delete;
+		~recursion_guard();
+	private:
+		std::shared_ptr<const attack_type> parent;
+	};
+
+	/**
+	 * Tests which might otherwise cause infinite recursion should call this, check that the
+	 * returned object evaluates to true, and then keep the object returned as long as the
+	 * recursion might occur, similar to a reentrant mutex that's limited to a small number of
+	 * reentrances.
+	 *
+	 * This only expects to be called in a single thread, but the whole of attack_type makes
+	 * that assumption, for example its' mutable members are assumed to be set up by the current
+	 * caller (or caller's caller, probably several layers up).
+	 */
+	recursion_guard update_variables_recursion(const config& special) const;
+
 private:
 	// In unit_abilities.cpp:
 
 	// Configured as a bit field, in case that is useful.
 	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
+	/**
+	 * Filter a list of abilities or weapon specials
+	 * @param cfg config of ability checked
+	 * @param tag_name le type of ability who is checked
+	 * @param filter config contain list of attribute who are researched in cfg
+	 *
+	 * @return true if all attribute with ability checked
+	 */
+	bool special_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
 	/**
 	 * Filter a list of abilities or weapon specials, removing any entries that don't own
 	 * the overwrite_specials attributes.
@@ -187,9 +282,9 @@ private:
 	 */
 	static void weapon_specials_impl_self(
 		std::string& temp_string,
-		unit_const_ptr self,
-		const_attack_ptr self_attack,
-		const_attack_ptr other_attack,
+		const unit_const_ptr& self,
+		const const_attack_ptr& self_attack,
+		const const_attack_ptr& other_attack,
 		const map_location& self_loc,
 		AFFECTS whom,
 		std::set<std::string>& checking_name,
@@ -199,9 +294,9 @@ private:
 
 	static void weapon_specials_impl_adj(
 		std::string& temp_string,
-		unit_const_ptr self,
-		const_attack_ptr self_attack,
-		const_attack_ptr other_attack,
+		const unit_const_ptr& self,
+		const const_attack_ptr& self_attack,
+		const const_attack_ptr& other_attack,
 		const map_location& self_loc,
 		AFFECTS whom,
 		std::set<std::string>& checking_name,
@@ -221,10 +316,10 @@ private:
 	 * @param leader_bool If true, [leadership] abilities are checked.
 	 */
 	static bool check_self_abilities_impl(
-		const_attack_ptr self_attack,
-		const_attack_ptr other_attack,
+		const const_attack_ptr& self_attack,
+		const const_attack_ptr& other_attack,
 		const config& special,
-		unit_const_ptr u,
+		const unit_const_ptr& u,
 		const map_location& loc,
 		AFFECTS whom,
 		const std::string& tag_name,
@@ -246,10 +341,10 @@ private:
 	 * @param leader_bool If true, [leadership] abilities are checked.
 	 */
 	static bool check_adj_abilities_impl(
-		const_attack_ptr self_attack,
-		const_attack_ptr other_attack,
+		const const_attack_ptr& self_attack,
+		const const_attack_ptr& other_attack,
 		const config& special,
-		unit_const_ptr u,
+		const unit_const_ptr& u,
 		const unit& from,
 		int dir,
 		const map_location& loc,
@@ -259,8 +354,8 @@ private:
 	);
 
 	static bool special_active_impl(
-		const_attack_ptr self_attack,
-		const_attack_ptr other_attack,
+		const const_attack_ptr& self_attack,
+		const const_attack_ptr& other_attack,
 		const config& special,
 		AFFECTS whom,
 		const std::string& tag_name,
@@ -330,6 +425,7 @@ private:
 	std::string icon_;
 	std::string range_;
 	int min_range_, max_range_;
+	utils::optional<unit_alignments::type> alignment_;
 	int damage_;
 	int num_attacks_;
 	double attack_weight_;
@@ -341,6 +437,12 @@ private:
 	int parry_;
 	config specials_;
 	bool changed_;
+	/**
+	 * While processing a recursive match, all the filters that are currently being checked, oldest first.
+	 * Each will have an instance of recursion_guard that is currently allocated permission to recurse, and
+	 * which will pop the config off this stack when the recursion_guard is finalized.
+	 */
+	mutable std::vector<const config*> open_queries_;
 };
 
 using attack_list = std::vector<attack_ptr>;

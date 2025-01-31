@@ -44,8 +44,15 @@ function wesnoth.map.replace_if_failed(terrain, mode) end
 ---Get a list of hexes matching a filter
 ---@param map terrain_map
 ---@param filter terrain_filter
----@param in_list? location[]
+---@param in_list location[]
 ---@return location[]
+---@overload fun(map:terrain_map, filter:terrain_filter):location[]
+---@overload fun(map:terrain_map, filter:terrain_filter, at_loc:location):location[]
+---@overload fun(map:terrain_map, filter:terrain_filter, at_x:integer, at_y:integer):location[]
+---@overload fun(map:terrain_map, filter:terrain_filter_tag):location[]
+---@overload fun(map:terrain_map, filter:terrain_filter_tag, in_list:location[]):location[]
+---@overload fun(map:terrain_map, filter:terrain_filter_tag, at_loc:location):location[]
+---@overload fun(map:terrain_map, filter:terrain_filter_tag, at_x:integer, at_y:integer):location[]
 function wesnoth.map.find(map, filter, in_list) end
 
 ---Get a list of hexes matching a filter within a given circles
@@ -54,6 +61,11 @@ function wesnoth.map.find(map, filter, in_list) end
 ---@param radius integer
 ---@param filter terrain_filter
 ---@return location[]
+---@overload fun(map:terrain_map, centers:location[], radius:integer, filter:terrain_filter):location[]
+---@overload fun(map:terrain_map, center_x:integer, center_y:integer, radius:integer, filter:terrain_filter):location[]
+---@overload fun(map:terrain_map, center:location, radius:integer, filter:terrain_filter_tag):location[]
+---@overload fun(map:terrain_map, centers:location[], radius:integer, filter:terrain_filter_tag):location[]
+---@overload fun(map:terrain_map, center_x:integer, center_y:integer, radius:integer, filter:terrain_filter_tag):location[]
 function wesnoth.map.find_in_radius(map, center, radius, filter) end
 
 ---Parse a mapgen location filter
@@ -276,5 +288,49 @@ function wesnoth.map.are_hexes_adjacent(loc1, loc2) end
 ---@return integer
 ---@overload fun(x1:integer, y1:integer, loc2:location):integer
 ---@overload fun(loc1:location, x2:integer, y2:integer):integer
----@overload fun(x1:integer, y1:integer, x2:integer, y2:integer):integer``
+---@overload fun(x1:integer, y1:integer, x2:integer, y2:integer):integer
 function wesnoth.map.distance_between(loc1, loc2) end
+
+---Represents a map location expressed in cubic coordinates.
+---Each axis covers a "diagonal" direction on the hexagonal grid.
+---To put it another way, it's the directions corresponding to
+--- the hex's vertices, rather than the edges.
+---@class location_cube
+---@field q integer Horizontal (e/w) component
+---@field r integer Positive diagonal (nne/ssw) component
+---@field s integer Negative diagonal (nnw/sse) component
+
+---Convert a hex location into cubic coordinates
+---@param loc location
+---@return location_cube
+---@overload fun(x:integer, y:integer):location_cube
+function wesnoth.map.get_cubic(loc) end
+
+---Convert a cubic hex location back into standard hex coordinates
+---@param vec location_cube
+---@return location
+function wesnoth.map.from_cubic(vec) end
+
+---Add two hex vectors together
+---@param v1 location
+---@param v2 location
+---@return location
+---@overload fun(x1:integer, y1:integer, x2:integer, y2:integer):location
+---@overload fun(loc1:location, x2:integer, y2:integer):location
+---@overload fun(x1: integer, y1:integer, loc2:location):location
+function wesnoth.map.hex_vector_sum(v1, v2) end
+
+---Take the difference of two hex vectors
+---@param v1 location
+---@param v2 location
+---@return location
+---@overload fun(x1:integer, y1:integer, x2:integer, y2:integer):location
+---@overload fun(loc1:location, x2:integer, y2:integer):location
+---@overload fun(x1: integer, y1:integer, loc2:location):location
+function wesnoth.map.hex_vector_diff(v1, v2) end
+
+---Reverse the direction of a hex vector
+---@param vec location
+---@return location
+---@overload fun(x:integer, y:integer):location
+function wesnoth.map.hex_vector_negation(vec) end

@@ -696,7 +696,7 @@ double recruitment::get_average_defense(const std::string& u_type) const {
 		const t_translation::terrain_code& terrain = entry.first;
 		int count = entry.second;
 		int defense = 100 - u_info->movement_type().defense_modifier(terrain);
-		summed_defense += defense * count;
+		summed_defense += static_cast<long>(defense) * count;
 		total_terrains += count;
 	}
 	double average_defense = (total_terrains == 0) ? 0.0 :
@@ -757,7 +757,7 @@ void recruitment::show_important_hexes() const {
 	display::get_singleton()->labels().clear_all();
 	for (const map_location& loc : important_hexes_) {
 		// Little hack: use map_location north from loc and make 2 linebreaks to center the "X".
-		display::get_singleton()->labels().set_label(loc.get_direction(map_location::NORTH), "\n\nX");
+		display::get_singleton()->labels().set_label(loc.get_direction(map_location::direction::north), "\n\nX");
 	}
 }
 
@@ -1093,7 +1093,7 @@ struct attack_simulation {
 
 	attack_simulation(const unit_type* attacker, const unit_type* defender,
 			double attacker_defense, double defender_defense,
-			const_attack_ptr att_weapon, const_attack_ptr def_weapon,
+			const const_attack_ptr& att_weapon, const const_attack_ptr& def_weapon,
 			int average_lawful_bonus) :
 			attacker_type(attacker),
 			defender_type(defender),

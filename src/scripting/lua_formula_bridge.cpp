@@ -33,7 +33,7 @@ static const char formulaKey[] = "formula";
 
 using namespace wfl;
 
-void luaW_pushfaivariant(lua_State* L, variant val);
+void luaW_pushfaivariant(lua_State* L, const variant& val);
 variant luaW_tofaivariant(lua_State* L, int i);
 
 class lua_callable : public formula_callable {
@@ -119,7 +119,7 @@ public:
 	}
 };
 
-void luaW_pushfaivariant(lua_State* L, variant val) {
+void luaW_pushfaivariant(lua_State* L, const variant& val) {
 	if(val.is_int()) {
 		lua_pushinteger(L, val.as_int());
 	} else if(val.is_decimal()) {
@@ -218,6 +218,29 @@ variant luaW_tofaivariant(lua_State* L, int i) {
 }
 
 /**
+ * Get a formula from the stack. If @a allow_str is true, it compiles a formula string if found.
+ * Otherwise, it must be an already-compiled formula.
+ * Raises an error if a formula is not found, or if there's an error in compilation.
+ * Thus, it never returns a null pointer.
+ */
+lua_formula_bridge::fpointer luaW_check_formula(lua_State* L, int idx, bool allow_str) {
+	using namespace lua_formula_bridge;
+	fpointer form;
+	if(void* ud = luaL_testudata(L, idx, formulaKey)) {
+		form.get_deleter() = [](fwrapper*) {};
+		form.reset(static_cast<fwrapper*>(ud));
+		// Setting a no-op deleter guarantees the Lua-held object is not deleted
+	} else if(allow_str) {
+		form.get_deleter() = std::default_delete<fwrapper>();
+		form.reset(new fwrapper(luaL_checkstring(L, idx)));
+		// Set deleter to default so it's deleted properly later
+	} else {
+		luaW_type_error(L, idx, "formula");
+	}
+	return form;
+}
+
+/**
  * Evaluates a formula in the formula engine.
  * - Arg 1: Formula string.
  * - Arg 2: optional context; can be a unit or a Lua table.
@@ -225,14 +248,7 @@ variant luaW_tofaivariant(lua_State* L, int i) {
  */
 int lua_formula_bridge::intf_eval_formula(lua_State *L)
 {
-	bool need_delete = false;
-	fwrapper* form;
-	if(void* ud = luaL_testudata(L, 1, formulaKey)) {
-		form = static_cast<fwrapper*>(ud);
-	} else {
-		need_delete = true;
-		form = new fwrapper(luaL_checkstring(L, 1));
-	}
+	fpointer form = luaW_check_formula(L, 1, true);
 	std::shared_ptr<formula_callable> context, fallback;
 	if(unit* u = luaW_tounit(L, 2)) {
 		context.reset(new unit_callable(*u));
@@ -249,9 +265,6 @@ int lua_formula_bridge::intf_eval_formula(lua_State *L)
 	}
 	variant result = form->evaluate(*context);
 	luaW_pushfaivariant(L, result);
-	if(need_delete) {
-		delete form;
-	}
 	return 1;
 }
 

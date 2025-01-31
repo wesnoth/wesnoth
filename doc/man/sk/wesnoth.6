@@ -44,17 +44,13 @@ hráčmi.
 .SH MOŽNOSTI
 .
 .TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
 \fB\-\-all\-translations\fP
 Zobraziť všetky preklady vo výberovom zozname jazykov v hre, aj keď sa
 považujú za nedokončené.
-.TP 
-\fB\-\-bunzip2\fP\fI\ vstupný\-súbor.bz2\fP
-rozbalí súbor, ktorý by mal byť vo formáte bzip2, a uloží ho bez prípony
-\&.bz2. Súbor \fIvstupný_súbor.bz2\fP sa vymaže.
-.TP 
-\fB—bzip2\fP\fI\ vstupný\-súbor\fP
-zbalí uloženú hru do formátu bzip2, uloží ju ako \fIvstupný_súbor\fP.bz2 a
-vymaže \fIvstupný_súbor\fP.
 .TP 
 \fB\-c[\fP\fIid kampane\fP\fB],\ \-\-campaign[\fP\fI=id kampane\fP\fB]\fP
 prejde priamo do kampane s ID \fIid_campaign\fP. Ak nebolo zadané žiadne ID,
@@ -71,13 +67,8 @@ Identifikátor scény vo zvolenej výprave. Predvolená je prvá scéna.
 Preskoč [príbehové] obrazovky a dialógy až do konca \fBstart\fP udalosti.
 .TP 
 \fB\-\-clock\fP
-Pridáva možnosť zobraziť hodiny na testovanie časovača kreslenia.
-.TP 
-\fB\-\-config\-dir\fP\fI\ názov\fP
-Zastarané, použi \fB\-\-userdata\-dir\fP.
-.TP 
-\fB\-\-config\-path\fP
-Zastarané, použite \fB\-\-userdata\-path\fP.
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
 .TP 
 \fB\-\-core\fP\fI\ id\fP
 prepíše načítané jadro jadrom, ktorého id je zadané.
@@ -98,7 +89,7 @@ umožní využívať niektoré debuggovacie mechanizmy jazyka Lua
 \fB\-\-strict\-lua\fP
 znemožní používať zastarané Lua API volania
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 porovnáva dva súbory WML; najprv ich nespracuje (aby ste to urobili, najprv
 ich spustite cez \fB\-p\fP). Vypíše rozdiel ako DiffWML na štandardný výstup
 alebo do súboru označeného \fI\-\-output\fP.
@@ -114,14 +105,6 @@ zapisuje tieto hodnoty do súboru v adresári užívateľských údajov.
 \fB\-f, \-\-fullscreen\fP
 spustí hru na ploche celej obrazovky.
 .TP 
-\fB\-\-gunzip\fP\fI\ vstupný_súbor.gz\fP
-rozbalí súbor, ktorý by mal byť vo formáte gzip, a uloží ho bez prípony
-\&.gz. Súbor \fIvstupný_súbor.gz\fP sa vymaže.
-.TP 
-\fB\-\-gzip\fP\fI\ vstupný_súbor\fP
-zbalí uloženú hru do formátu gzip, uloží ju ako \fIvstupný_súbor\fP.gz a vymaže
-\fIvstupný_súbor\fP.
-.TP 
 \fB\-h, \-\-help\fP
 vypíše súhrn možností príkazového riadku do štandardného výstupu, a skončí.
 .TP 
@@ -132,8 +115,7 @@ použitá aj voľba \fB\-e\fP alebo \fB\-\-editor\fP, potom spustí editor s map
 tohto adresára.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ jazyk\fP
-používa jazyk \fIlang\fP (symbol) v tejto relácii. Príklad: \fB\-\-language
-ang_GB@latin\fP
+používa jazyk \fIlang\fP (symbol) v tejto relácii. Príklad: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdoména1\fP\fB,\fP\fIdoména2\fP\fB,\fP\fI...\fP
 nastaví úroveň závažnosti zapisovacích domén. \fBall\fP znamená všetky
@@ -144,23 +126,27 @@ zapisovacie domény. Možné úrovne: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\
 \fB\-\-log\-precise\fP
 zobrazuje časové pečiatky vo výstupe protokolu s väčšou presnosťou.
 .TP 
-\fB\-\-log\-strict\fP
-nastavuje prísnu úroveň zapisovača. Všetky správy odoslané do domén tejto
-úrovne alebo závažnejších spôsobia zlyhanie testu jednotky bez ohľadu na
-výsledok víťazstva. Relevantné len pri použití s \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 vypíše definované protokolovacie domény domény protokolovania (iba tie ktoré
 obsahujú reťazec \fIfilter\fP) a skončí
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-zabraňuje presmerovaniu zaznamenaného výstupu do súboru. Súbory denníkov sa
-vytvárajú v adresári logs v priečinku userdata.
+prevents redirecting logged output to a file. The environment variable
+WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
+in the logs directory under the userdata folder.
 .TP 
 \fB\-\-log\-to\-file\fP
-výstup protokolu sa zapisuje do súboru okrem štandardného
-výstupu/chyby. Zruší efekt \-\-no\-log\-to\-file, či už implicitný alebo
-explicitný.
+log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
+whether implicit or explicit.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
 .TP 
 \fB\-\-wnoconsole\fP
 Pre Windows, keď sa použije s \-\-no\-log\-to\-file, výstup sa zapíše do
@@ -182,10 +168,6 @@ existuje nová sada nástrojov widgetov WIP, táto možnosť ju aktivuje. Toto j
 veľmi experimentálne, nevypĺňajte hlásenia o chybách, pretože väčšina z nich
 je známa. Časti knižnice sa považujú za stabilné a budú fungovať bez tohto
 prepínača.
-.TP 
-\fB\-\-nodelay\fP
-spustí hru bez akýchkoľvek oneskorení pre grafický benchmarking. Toto je
-automaticky povolené pomocou \fB\-\-nogui\fP.
 .TP 
 \fB\-\-noaddons\fP
 vypne automatické načítanie herných rozšírení.
@@ -219,11 +201,11 @@ použije \fIpassword\fP pri pripojení na server, bez ohľadu na predvoľby. Nie
 bezpečné.
 .TP 
 \fB\-\-plugin\fP\fI\ skript\fP
-(experimentálne) načítajte \fIscript\fP, ktorý definuje doplnok
-Wesnoth. Podobne ako \fB\-\-script\fP, ale súbor Lua by mal vrátiť funkciu, ktorá
-sa spustí ako co\-rutina a bude sa pravidelne prebúdzať s aktualizáciami.
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ základný súbor\fP\fB\ \fP\fIpatch\-súbor\fP
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 aplikuje patch DiffWML na súbor WML; nespracúva ani jeden zo
 súborov. Extrahuje opravený WML na štandardný výstup alebo do súboru
 označeného \fI\-\-output\fP.
@@ -233,26 +215,30 @@ spracuje preprocesorom zadaný súbor/adresár. Pre každý súbor bude do
 cieľového adresára zapísaný základný .cfg súbor a spracovaný .cfg súbor. Ak
 je zadaný adresár, bude spracovaný rekurzívne podľa pravidiel
 preprocesora. Spoločné makrá z adresára "data/core/macros" budú spracované
-pred zadanými zdrojmi (resources). Príklad: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result\fP. Pre detailné informácie o
+pred zadanými zdrojmi (resources). Príklad: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result\fP. Pre detailné informácie o
 preprocesore navštívte
 http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-čiarkou oddelený zoznam definícié pre príkaz \fB\-\-preprocess\fP. Ak je v
-zozname \fBSKIP_CORE\fP potom nebude adresár "data/core" spracovaný
-preprocesorom.
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ zdrojový súbor\fP
-použitý len s príkazom \fB\-\-preprocess\fP. Určuje súbor, ktorý obsahuje
-definície \fB[preproc_define]\fP, ktoré majú byť vložené pred spracovaním
-preprocesorom.
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=cieľový\-súbor\fP\fB]\fP
-použitý len s príkazom \fB\-\-preprocess\fP. Vypíše všetky spracované makrá v
-cieľovom súbore. Ak súbor nie je zadaný, súborom bude '_MACROS_.cfg' v
-cieľovom adresári príkazu \fB\-\-preprocess\-input\-macros\fP. Tento prepínač by
-mal byť uvedený pred príkazom \fB\-\-preprocess\fP.
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 nastaví rozlíšenie obrazovky. Napríklad: \fB\-r\fP \fB800x600\fP.
@@ -271,9 +257,6 @@ nasadí generátor náhodných čísel s \fInumber\fP.  Príklad: \fB\-\-rng\-se
 .TP 
 \fB\-\-screenshot\fP\fI\ mapa\fP\fB\ \fP\fIvýstup\fP
 uloží snímku obrazovky \fImap\fP do \fIoutput\fP bez inicializácie obrazovky.
-.TP 
-\fB\-\-script\fP\fI\ súbor\fP
-(experimentálne) \fIfile\fP obsahujúci Lua skript na ovládanie klienta.
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 pripojí sa na server, ak je zadaný, inak na prvý server uvedený v
@@ -304,20 +287,8 @@ sprístupní balík \fBpackage\fP skriptom lua, aby mohli načítať ľubovoľn�
 balíky. Nerobte to s nedôveryhodnými skriptami! Táto akcia dáva jazyku lua
 rovnaké oprávnenia ako spustiteľnému súboru wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ cesta\fP
-nastaví schému WML na použitie s \fB\-V,\-\-validate\fP.
-.TP 
-\fB\-\-userconfig\-dir\fP\fI\ názov\fP
-nastaví konfiguračný adresár používateľa na \fInázov\fP pod $HOME alebo "My
-Documents\eMy Games" pre Windows.  Môžete tiež zadať absolútnu cestu pre
-konfiguračný adresár mimo $HOME alebo "My Documents\eMy Games". V systéme
-Windows je možné zadať aj adresár relatívny k pracovnému adresáru procesu
-pomocou cesty začínajúcej na ".\e" alebo "..\e".  V systéme X11 je to
-predvolená cesta $XDG_CONFIG_HOME alebo $HOME/.config/wesnoth, v ostatných
-systémoch cesta userdata.
-.TP 
-\fB\-\-userconfig\-path\fP
-vypíše názov adresára s používateľskými nastaveniami a skončí.
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ názov\fP
 nastaví adresár userdata na \fIname\fP pod $HOME alebo "My Documents\eMy Games"
@@ -342,7 +313,7 @@ validuje WML daného doplnku počas hrania.
 \fB\-\-validate\-core\fP
 validuje WML základu hry počas hrania.
 .TP 
-\fB—validate\-schema \ cesta\fP
+\fB\-\-validate\-schema\fP\fI\ path\fP
 overí súbor ako schému WML.
 .TP 
 \fB\-\-validcache\fP
@@ -414,8 +385,7 @@ nastaví frakciu danej éry pre túto stranu. Frakcia sa vyberá pomocou
 id. Frakcie sú popísané v súbore data/multiplayer.cfg.
 .TP 
 \fB\-\-turns\fP\fI\ hodnota\fP
-nastaví limit na počet ťahov pre danú scénu. Základná hodnota je \fBbez
-limitu\fP.
+nastaví limit na počet ťahov pre danú scénu. Základná hodnota je \fBbez limitu\fP.
 .
 .SH "NÁVRATOVÝ KÓD"
 .

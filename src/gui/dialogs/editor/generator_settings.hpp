@@ -33,7 +33,7 @@ public:
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(generator_settings)
 
 private:
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	void adjust_minimum_size_by_players();
 

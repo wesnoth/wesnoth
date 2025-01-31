@@ -31,7 +31,7 @@
  */
 inline bool is_shrouded(const display* disp, const map_location& loc)
 {
-	return disp->shrouded(loc) || disp->shrouded(loc.get_direction(map_location::SOUTH));
+	return disp->shrouded(loc) || disp->shrouded(loc.get_direction(map_location::direction::south));
 }
 
 /**
@@ -291,8 +291,8 @@ const std::vector<std::string>& map_labels::all_categories() const
 		categories.clear();
 		categories.push_back("team");
 
-		for(std::size_t i = 1; i <= resources::gameboard->teams().size(); i++) {
-			categories.push_back("side:" + std::to_string(i));
+		for(const team& t : resources::gameboard->teams()) {
+			categories.push_back("side:" + std::to_string(t.side()));
 		}
 
 		std::set<std::string> unique_cats;
@@ -361,10 +361,10 @@ terrain_label::terrain_label(const map_labels& parent, const config& cfg)
 terrain_label::terrain_label(terrain_label&& l)
 	: handle_(l.handle_)
 	, tooltip_handle_(l.tooltip_handle_)
-	, text_(l.text_)
-	, tooltip_(l.tooltip_)
-	, category_(l.category_)
-	, team_name_(l.team_name_)
+	, text_(std::move(l.text_))
+	, tooltip_(std::move(l.tooltip_))
+	, category_(std::move(l.category_))
+	, team_name_(std::move(l.team_name_))
 	, visible_in_fog_(l.visible_in_fog_)
 	, visible_in_shroud_(l.visible_in_shroud_)
 	, immutable_(l.immutable_)
@@ -500,21 +500,16 @@ void terrain_label::calculate_shroud()
 
 SDL_Rect terrain_label::get_rect() const
 {
-	SDL_Rect rect {0, 0, 0, 0};
-
 	display* disp = display::get_singleton();
 	if(!disp) {
-		return rect;
+		return sdl::empty_rect;
 	}
 
-	int hex_size = disp->hex_size();
+	SDL_Rect res = disp->get_location_rect(loc_);
+	res.x += disp->hex_size() / 4;
+	res.w -= disp->hex_size() / 2;
 
-	rect.x = disp->get_location_x(loc_) + hex_size / 4;
-	rect.y = disp->get_location_y(loc_);
-	rect.h = disp->hex_size();
-	rect.w = disp->hex_size() - hex_size / 2;
-
-	return rect;
+	return res;
 }
 
 static int scale_to_map_zoom(int val)
@@ -540,10 +535,10 @@ void terrain_label::recalculate()
 	}
 
 	// Note: the y part of loc_nextx is not used at all.
-	const map_location loc_nextx = loc_.get_direction(map_location::NORTH_EAST);
-	const map_location loc_nexty = loc_.get_direction(map_location::SOUTH);
-	const int xloc = (disp->get_location_x(loc_) + disp->get_location_x(loc_nextx) * 2) / 3;
-	const int yloc = disp->get_location_y(loc_nexty) - scale_to_map_zoom(font::SIZE_NORMAL);
+	const map_location loc_nextx = loc_.get_direction(map_location::direction::north_east);
+	const map_location loc_nexty = loc_.get_direction(map_location::direction::south);
+	const int xloc = (disp->get_location(loc_).x + disp->get_location(loc_nextx).x * 2) / 3;
+	const int yloc = disp->get_location(loc_nexty).y - scale_to_map_zoom(font::SIZE_NORMAL);
 
 	// If a color is specified don't allow to override it with markup. (prevents faking map labels for example)
 	// FIXME: @todo Better detect if it's team label and not provided by the scenario.
@@ -580,7 +575,7 @@ bool terrain_label::hidden() const
 	// Respect user's label preferences
 	std::string category = "cat:" + category_;
 	std::string creator = "side:" + std::to_string(creator_ + 1);
-	const std::vector<std::string>& hidden_categories = disp->get_disp_context().hidden_label_categories();
+	const std::vector<std::string>& hidden_categories = disp->context().hidden_label_categories();
 
 	if(std::find(hidden_categories.begin(), hidden_categories.end(), category) != hidden_categories.end()) {
 		return true;
@@ -628,7 +623,7 @@ bool terrain_label::viewable(const display& disp) const
 	}
 
 	// Observers are not privvy to team labels.
-	const bool can_see_team_labels = !disp.get_disp_context().is_observer();
+	const bool can_see_team_labels = !disp.context().is_observer();
 
 	// Global labels are shown unless covered by a team label.
 	if(team_name_.empty()) {

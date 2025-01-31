@@ -37,6 +37,10 @@ public:
 			const config& level);
 
 	~game_display();
+
+	game_display(const game_display&) = delete;
+	game_display& operator=(const game_display&) = delete;
+
 	static game_display* get_singleton()
 	{
 		return static_cast<game_display*>(singleton_);
@@ -168,6 +172,8 @@ protected:
 
 	std::set<map_location> units_that_can_reach_goal_;
 
+	std::vector<texture> get_reachmap_images(const map_location& loc) const;
+
 public:
 	/** Set the attack direction indicator. */
 	void set_attack_indicator(const map_location& src, const map_location& dst);
@@ -181,23 +187,7 @@ public:
 			attack_indicator_src_.get_relative_dir(attack_indicator_dst_));
 	}
 
-	// Functions used in the editor:
-
-	//void draw_terrain_palette(int x, int y, terrain_type::TERRAIN selected);
-	t_translation::terrain_code get_terrain_on(int palx, int paly, int x, int y);
-
 	virtual const map_location &displayed_unit_hex() const override { return displayedUnitHex_; }
-
-	/**
-	 * annotate hex with number, useful for debugging or UI prototype
-	 */
-	static int& debug_highlight(const map_location& loc);
-	static void clear_debug_highlights() { debugHighlights_.clear(); }
-
-	/** The playing team is the team whose turn it is. */
-	virtual int playing_side() const override { return static_cast<int>(activeTeam_) + 1; }
-
-	std::string current_team_name() const;
 
 	display_chat_manager & get_chat_manager() { return *chat_man_; }
 
@@ -227,9 +217,6 @@ public:
 	bool maybe_rebuild();
 
 private:
-	game_display(const game_display&);
-	void operator=(const game_display&);
-
 	overlay_map overlay_map_;
 
 	// Locations of the attack direction indicator's parts
@@ -247,9 +234,6 @@ private:
 	const std::unique_ptr<display_chat_manager> chat_man_;
 
 	game_mode mode_;
-
-	// For debug mode
-	static std::map<map_location, int> debugHighlights_;
 
 	bool needs_rebuild_;
 

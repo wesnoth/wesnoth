@@ -166,11 +166,31 @@ public:
 	 */
 	bool is_combined() const { return combined_; }
 
+	/**
+	 * Overlay terrains defined by a [terrain_type] can declare a fallback base
+	 * terrain, for use when the overlay is selected in the editor, or when the
+	 * overlay is placed on the map using [terrain]replace_if_failed=true.
+	 *
+	 * If there's no default, returns a sentinel value; see has_default_base().
+	 */
 	t_translation::terrain_code default_base() const { return editor_default_base_; }
+	bool has_default_base() const { return editor_default_base_ != t_translation::NONE_TERRAIN; }
+
+	/**
+	 * Return the overlay part of this terrain, on the default_base(). Might
+	 * return an unknown terrain, if there's a typo in the default base.
+	 *
+	 * If this terrain has no overlay, it returns the terrain itself, ignoring
+	 * the default_base() even if the terrain has a default_base().
+	 *
+	 * This is intended for the editor's single-layer placement, or for
+	 * replacing terrains via ActionWML, where the user or WML author intends
+	 * to only use one layer of the current terrain.
+	 */
 	t_translation::terrain_code terrain_with_default_base() const;
 
 	/**
-	 * Returns true if all most of the data matches. The ones that don't need to match:
+	 * Returns true if most of the data matches. The ones that don't need to match:
 	 * - editor_group_
 	 * - icon_image_
 	 * - description_

@@ -90,8 +90,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
                     --keyword=_ --keyword=N_ --keyword=sgettext --keyword=vgettext --keyword=VGETTEXT \
                     --keyword=_n:1,2 --keyword=N_n:1,2 --keyword=sngettext:1,2 --keyword=vngettext:1,2 --keyword=VNGETTEXT:1,2 \
                     --files-from={files_from} --copyright-holder='Wesnoth development team' --msgid-bugs-address=https://bugs.wesnoth.org/ \
-                    --output=$TARGET \
-                    ; sed -i s/charset=CHARSET/charset=UTF-8/ $TARGET \
+                    --output=- | sed s/charset=CHARSET/charset=UTF-8/ > $TARGET \
                     """.format(default_domain=domain, language=language, files_from=files_from)
                 )
                 intermediate_files.append(target_path)
@@ -119,7 +118,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
             )
         env.Command(pot, new_pot, Action(update_pot))
 
-    env.Alias("pot-update", "../translations", "python3 utils/po_stat.py --update-cfg --textdomains=wesnoth,wesnoth-editor,wesnoth-help,wesnoth-lib,wesnoth-multiplayer,wesnoth-tutorial,wesnoth-units")
+    env.Alias("pot-update", "../translations", "python3 utils/po_stat.py --update-cfg --textdomains=wesnoth,wesnoth-editor,wesnoth-help,wesnoth-lib,wesnoth-multiplayer,wesnoth-tsg,wesnoth-units,wesnoth-anl")
 
 if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS or "update-po4a" in COMMAND_LINE_TARGETS:
     for domain in textdomains:

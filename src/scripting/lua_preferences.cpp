@@ -16,8 +16,7 @@
 #include "scripting/lua_preferences.hpp"
 
 #include "config.hpp"
-#include "preferences/advanced.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/push_check.hpp"
 
@@ -27,10 +26,10 @@
  * Parameter 2: preference name, must be a string.
  * Returns: preference value. If there isn't such a preference, returns nil.
  */
-static int impl_preferences_get(lua_State* L)
+int impl_preferences_get(lua_State* L)
 {
 	std::string preference_name = luaL_checkstring(L, 2);
-	luaW_pushscalar(L, preferences::get_as_attribute(preference_name));
+	luaW_pushscalar(L, prefs::get().preferences_[preference_name]);
 	return 1;
 }
 
@@ -41,23 +40,26 @@ static int impl_preferences_get(lua_State* L)
  * Parameter 3: preference value.
  * Returns nothing.
  */
-static int impl_preferences_set(lua_State* L)
+int impl_preferences_set(lua_State* L)
 {
 	std::string preference_name = luaL_checkstring(L, 2);
 	config::attribute_value value;
 	luaW_toscalar(L, 3, value);
-	preferences::set(preference_name, value);
+	prefs::get().preferences_["preferences_name"] = value;
 	return 0;
 }
 
 static int impl_preferences_dir(lua_State* L)
 {
 	std::vector<std::string> all_prefs;
-	for(const auto& [key, value] : preferences::get_prefs()->attribute_range()) {
-		all_prefs.push_back(key);
+
+	for(const std::string& attr : prefs::get().all_attributes()) {
+		all_prefs.push_back(attr);
 	}
-	// This will result in some duplicates, but dir() automatically strips those out so who cares,
-	for(const auto& pref : preferences::get_advanced_preferences()) {
+
+	// This will result in some duplicates since the advanced preferences' values are stored in the same file as the regular preferences
+	// but dir() automatically strips those out so who cares
+	for(const auto& pref : prefs::get().get_advanced_preferences()) {
 		all_prefs.push_back(pref.field);
 	}
 	lua_push(L, all_prefs);
@@ -79,7 +81,7 @@ namespace lua_preferences
 		lua_setfield(L, -2, "__newindex");
 		lua_pushcfunction(L, impl_preferences_dir);
 		lua_setfield(L, -2, "__dir");
-		lua_pushstring(L, "src/scripting/lua_preferences.cpp");
+		lua_pushstring(L, "preferences");
 		lua_setfield(L, -2, "__metatable");
 
 		// Set the table as its own metatable

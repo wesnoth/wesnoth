@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-12-16 20:59-0600\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
 "PO-Revision-Date: 2011-11-30 16:10+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -222,53 +222,58 @@ msgstr ""
 msgid "Assign Local Time Schedule"
 msgstr ""
 
-#. [menu]: id=menu-editor-side
+#. [menu]: id=menu-editor-unit
 #: data/themes/editor.cfg:141
+msgid "Unit"
+msgstr ""
+
+#. [menu]: id=menu-editor-side
+#: data/themes/editor.cfg:151
 msgid "Side"
 msgstr ""
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:158
+#: data/themes/editor.cfg:168
 msgid "villages"
 msgstr "sela"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:174
+#: data/themes/editor.cfg:184
 msgid "units"
 msgstr ""
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:453
+#: data/themes/editor.cfg:479
 msgid "Time Schedule Menu"
 msgstr ""
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:464
+#: data/themes/editor.cfg:490
 msgid "Playlist"
 msgstr ""
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:470
+#: data/themes/editor.cfg:496
 msgid "Assign Time Schedule"
 msgstr ""
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:64
+#: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
 msgstr ""
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:66
+#: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Name: "
 msgstr ""
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
+#: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Type: "
 msgstr ""
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:69
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Level: "
 msgstr ""
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:70
+#: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Cost: "
 msgstr ""
 
@@ -300,121 +305,150 @@ msgstr ""
 "Želite li zaista da napustite? Sledeće mape su izmenjene i sve izmene od "
 "poslednjeg upisa biće izgubljene:"
 
-#: src/editor/controller/editor_controller.cpp:230
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr "Nema doba dana u uređivaču."
 
-#: src/editor/controller/editor_controller.cpp:1254
+#: src/editor/controller/editor_controller.cpp:882
+msgid "Add-on Files"
+msgstr ""
+
+#: src/editor/controller/editor_controller.cpp:895
+msgid "Opening files is not supported, contact your packager"
+msgstr ""
+
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "Change Unit ID"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1255
+#: src/editor/controller/editor_controller.cpp:1316
 msgid "ID:"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1271
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Rename Unit"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:1272
+#: src/editor/controller/editor_controller.cpp:1333
 msgid "Name:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:219
+#: src/editor/editor_display.cpp:170
+msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
+msgstr ""
+
+#: src/editor/editor_display.cpp:172
+msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:217
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:315 src/editor/map/map_context.cpp:1112
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(nova mapa)"
 
-#: src/editor/map/context_manager.cpp:328 src/editor/map/map_context.cpp:1112
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Scenario"
 msgstr "(nova mapa)"
 
-#: src/editor/map/context_manager.cpp:384
+#: src/editor/map/context_manager.cpp:382
 msgid "No Recent Files"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:422
+#: src/editor/map/context_manager.cpp:420
 #, fuzzy
 #| msgid "(New Map)"
 msgid "Unnamed Area"
 msgstr "(nova mapa)"
 
-#: src/editor/map/context_manager.cpp:453
+#: src/editor/map/context_manager.cpp:451
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Side"
 msgstr "(nova mapa)"
 
-#: src/editor/map/context_manager.cpp:509
+#: src/editor/map/context_manager.cpp:507
 msgid "Apply Mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:518
+#: src/editor/map/context_manager.cpp:516
 msgid "Error loading mask"
 msgstr "Greška pri učitavanju maske"
 
-#: src/editor/map/context_manager.cpp:538
+#: src/editor/map/context_manager.cpp:536
 msgid "Identifier:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:538
+#: src/editor/map/context_manager.cpp:536
 msgid "Rename Area"
 msgstr ""
 
 # наслов
-#: src/editor/map/context_manager.cpp:552
+#: src/editor/map/context_manager.cpp:550
 msgid "Choose Target Map"
 msgstr "Izbor ciljne mape"
 
-#: src/editor/map/context_manager.cpp:561
-#: src/editor/map/context_manager.cpp:959
+#: src/editor/map/context_manager.cpp:559
+#: src/editor/map/context_manager.cpp:985
 msgid "Error loading map"
 msgstr "Greška pri učitavanju mape"
 
-#: src/editor/map/context_manager.cpp:689
+#: src/editor/map/context_manager.cpp:691
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Sačuvaj mapu kao"
 
-#: src/editor/map/context_manager.cpp:700
-#: src/editor/map/context_manager.cpp:902
+#: src/editor/map/context_manager.cpp:708
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
+#: src/editor/palette/location_palette.cpp:263
+msgid "Error"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:709
+#: src/editor/map/context_manager.cpp:758
+#, fuzzy
+#| msgid "Do you really want to quit?"
+msgid "Do you really want to save $type1 in $type2 folder?"
+msgstr "Želite li zaista da napustite?"
+
+#: src/editor/map/context_manager.cpp:717
+#: src/editor/map/context_manager.cpp:926
 msgid "This map is already open."
 msgstr "Ova mapa je već otvorena."
 
-#: src/editor/map/context_manager.cpp:721
+#: src/editor/map/context_manager.cpp:740
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Scenario As"
 msgstr "Sačuvaj mapu kao"
 
-#: src/editor/map/context_manager.cpp:733
+#: src/editor/map/context_manager.cpp:766
 #, fuzzy
 #| msgid "This map is already open."
 msgid "This scenario is already open."
 msgstr "Ova mapa je već otvorena."
 
-#: src/editor/map/context_manager.cpp:767
+#: src/editor/map/context_manager.cpp:800
 msgid "No random map generators found."
 msgstr "Nema nijednog generatora nasumičnih mapa."
 
-#: src/editor/map/context_manager.cpp:780
-#: src/editor/map/context_manager.cpp:785
+#: src/editor/map/context_manager.cpp:813
+#: src/editor/map/context_manager.cpp:818
 msgid "Map creation failed."
 msgstr "Stvaranje mape nije uspelo."
 
-#: src/editor/map/context_manager.cpp:800
+#: src/editor/map/context_manager.cpp:833
 msgid "Unsaved Changes"
 msgstr "Nesačuvane izmene"
 
-#: src/editor/map/context_manager.cpp:801
+#: src/editor/map/context_manager.cpp:834
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -422,27 +456,29 @@ msgstr "Nesačuvane izmene"
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "Želite li da odbacite sve izmene nad mapom od poslednjeg upisa?"
 
-#: src/editor/map/context_manager.cpp:863
+#: src/editor/map/context_manager.cpp:887
 #, fuzzy
 #| msgid "Map saved."
 msgid "Scenario saved."
 msgstr "Mapa je sačuvana."
 
-#: src/editor/map/context_manager.cpp:878
-msgid "Map saved."
+#: src/editor/map/context_manager.cpp:902
+#, fuzzy
+#| msgid "Map saved."
+msgid "Map saved"
 msgstr "Mapa je sačuvana."
 
-#: src/editor/map/context_manager.cpp:951
+#: src/editor/map/context_manager.cpp:977
 msgid "Loaded embedded map data"
 msgstr "Učitani ugnežđeni podaci mape."
 
 # >> @title:window
-#: src/editor/map/context_manager.cpp:952
-#: src/editor/map/context_manager.cpp:955
+#: src/editor/map/context_manager.cpp:978
+#: src/editor/map/context_manager.cpp:981
 msgid "Map loaded from scenario"
 msgstr "Mapa učitana iz scenarija"
 
-#: src/editor/map/context_manager.cpp:955
+#: src/editor/map/context_manager.cpp:981
 #, fuzzy
 #| msgid ""
 #| "Loaded referenced map file:\n"
@@ -453,7 +489,7 @@ msgstr ""
 "$new"
 
 #: src/editor/map/editor_map.cpp:146
-#: src/editor/palette/location_palette.cpp:119
+#: src/editor/palette/location_palette.cpp:118
 #, fuzzy
 #| msgid "Player $player_number"
 msgid "Player $side_num"
@@ -463,21 +499,21 @@ msgstr "Igrač $player_number"
 msgid "The size of the target map is different from the current map"
 msgstr "Veličina ciljne mape je različita od tekuće"
 
-#: src/editor/map/map_context.cpp:183
+#: src/editor/map/map_context.cpp:186
 msgid "File not found"
 msgstr "Datoteka nije nađena."
 
-#: src/editor/map/map_context.cpp:190
+#: src/editor/map/map_context.cpp:193
 #, fuzzy
 #| msgid "Empty map file"
 msgid "Empty file"
 msgstr "Prazna datoteka mape."
 
-#: src/editor/map/map_context.cpp:196
-msgid "File does not have .map or .cfg extension"
+#: src/editor/map/map_context.cpp:202
+msgid "File does not have .map, .cfg, or .mask extension"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:242
+#: src/editor/map/map_context.cpp:249
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -485,20 +521,15 @@ msgstr ""
 "Datoteka mape liči na scenario, ali vrednost map_data ne pokazuje na "
 "postojeću datoteku."
 
-#: src/editor/map/map_context.cpp:261
-msgid "Found the characters '<<' indicating inline lua is present - aborting"
-msgstr ""
-
-#: src/editor/map/map_context.cpp:266
-#: src/editor/palette/location_palette.cpp:265
-msgid "Error"
-msgstr ""
-
-#: src/editor/map/map_context.cpp:266
-msgid "Failed to load the scenario, attempting to load only the map."
+#: src/editor/map/map_context.cpp:268
+msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
 msgstr ""
 
 #: src/editor/map/map_context.cpp:273
+msgid "Failed to load the scenario, attempting to load only the map."
+msgstr ""
+
+#: src/editor/map/map_context.cpp:280
 #, fuzzy
 #| msgid ""
 #| "The map file looks like a scenario, but the map_data value does not point "
@@ -510,55 +541,68 @@ msgstr ""
 "Datoteka mape liči na scenario, ali vrednost map_data ne pokazuje na "
 "postojeću datoteku."
 
-#: src/editor/map/map_context.cpp:288
+#: src/editor/map/map_context.cpp:295
 msgid "Unable to parse file to find map data"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:806 src/editor/map/map_context.cpp:845
-#: src/editor/map/map_context.cpp:886
+#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
+#, fuzzy
+#| msgid "Could not save the map: $msg"
+msgid "Could not save time schedule: $msg"
+msgstr "Ne mogu da sačuvam mapu: $msg"
+
+#: src/editor/map/map_context.cpp:863
+msgid "Time schedule saved."
+msgstr ""
+
+#: src/editor/map/map_context.cpp:909
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
 msgstr "Ne mogu da sačuvam mapu: $msg"
 
-#: src/editor/map/map_context.cpp:917
+#: src/editor/map/map_context.cpp:940
 msgid "Could not save into scenario"
 msgstr "Ne mogu da sačuvam u scenario."
 
-#: src/editor/map/map_context.cpp:927
+#: src/editor/map/map_context.cpp:950
 msgid "Could not save the map: $msg"
 msgstr "Ne mogu da sačuvam mapu: $msg"
 
-#: src/editor/palette/editor_palettes.cpp:52
+#: src/editor/palette/editor_palettes.cpp:50
 msgid "(Unknown Group)"
 msgstr ""
 
 # >> non-core terrain
-#: src/editor/palette/editor_palettes.cpp:314
+#: src/editor/palette/editor_palettes.cpp:308
 msgid "(non-core)"
 msgstr "(spoljašnji)"
 
-#: src/editor/palette/editor_palettes.cpp:315
+#: src/editor/palette/editor_palettes.cpp:309
 msgid "Will not work in game without extra care."
 msgstr "Neće raditi u igri bez dodatne brige."
 
-#: src/editor/palette/location_palette.cpp:249
+#: src/editor/palette/item_palette.cpp:33
+msgid "Left-click: Place item $item | Right-click to remove"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:256
+#: src/editor/palette/location_palette.cpp:254
 msgid "Add"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:258
+#: src/editor/palette/location_palette.cpp:256
 msgid "New Location Identifier"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:266
+#: src/editor/palette/location_palette.cpp:264
 msgid "Invalid location id"
 msgstr ""
 
-#: src/editor/palette/location_palette.cpp:273
+#: src/editor/palette/location_palette.cpp:271
 msgid "Delete"
 msgstr ""
 
@@ -587,18 +631,6 @@ msgstr ""
 
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Ctrl + click: copy terrain"
-msgstr ""
-
-#: src/gui/dialogs/editor/custom_tod.cpp:95
-msgid "Clipboard support not found, contact your packager"
-msgstr ""
-
-#: src/gui/dialogs/editor/custom_tod.cpp:163
-msgid "Choose File"
-msgstr ""
-
-#: src/gui/dialogs/editor/custom_tod.cpp:164
-msgid "Select"
 msgstr ""
 
 #~ msgid "player^None"

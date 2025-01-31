@@ -35,14 +35,12 @@ namespace gui2::dialogs
 
 modal_dialog::modal_dialog(const std::string& window_id)
 	: window(get_window_builder(window_id))
-	, retval_(retval::NONE)
 	, always_save_fields_(false)
 	, fields_()
 	, focus_()
 	, allow_plugin_skip_(true)
 	, show_even_without_video_(false)
 {
-	window::finish_build(get_window_builder(window_id));
 	widget::set_id(window_id);
 }
 
@@ -50,46 +48,38 @@ modal_dialog::~modal_dialog()
 {
 }
 
-namespace {
-	struct window_stack_handler {
-		window_stack_handler(window* win) : local_window(win) {
-			open_window_stack.push_back(local_window);
-		}
-		~window_stack_handler() {
-			remove_from_window_stack(local_window);
-		}
-		window* local_window;
-	};
-}
-
 bool modal_dialog::show(const unsigned auto_close_time)
 {
 	if(video::headless() && !show_even_without_video_) {
 		DBG_DP << "modal_dialog::show denied";
-		if(!allow_plugin_skip_) {
-			return false;
-		}
+		return false;
+	}
+	if(allow_plugin_skip_) {
+		bool skipped = false;
 
 		plugins_manager* pm = plugins_manager::get();
 		if (pm && pm->any_running())
 		{
 			plugins_context pc("Dialog");
-			pc.set_callback("skip_dialog", [this](config) { retval_ = retval::OK; }, false);
-			pc.set_callback("quit", [](config) {}, false);
+			pc.set_callback("skip_dialog", [this, &skipped](const config&) { set_retval(retval::OK); skipped = true; }, false);
+			pc.set_callback("quit", [this, &skipped](const config&) { set_retval(retval::CANCEL); skipped = true; }, false);
+			pc.set_callback("select", [this, &skipped](const config& c) { set_retval(c["retval"].to_int()); skipped = true; }, false);
+			pc.set_accessor_string("id", [this](const config&) { return window_id(); });
 			pc.play_slice();
 		}
 
-		return false;
+		if(skipped) {
+			return false;
+		}
 	}
 
 	init_fields();
 
-	pre_show(*this);
+	pre_show();
 
-	{ // Scope the window stack
+	{
 		cursor::setter cur{cursor::NORMAL};
-		window_stack_handler push_window_stack(this);
-		retval_ = window::show(auto_close_time);
+		window::show(auto_close_time);
 	}
 
 	/*
@@ -106,14 +96,12 @@ bool modal_dialog::show(const unsigned auto_close_time)
 	 */
 	SDL_FlushEvent(DOUBLE_CLICK_EVENT);
 
-	finalize_fields((retval_ == retval::OK || always_save_fields_));
+	finalize_fields(get_retval() == retval::OK || always_save_fields_);
 
-	post_show(*this);
+	post_show();
 
-	// post_show may have updated the window retval. Update it here.
-	retval_ = window::get_retval();
-
-	return retval_ == retval::OK;
+	// post_show may update the window retval
+	return get_retval() == retval::OK;
 }
 
 template<typename T, typename... Args>
@@ -129,9 +117,9 @@ T* modal_dialog::register_field(Args&&... args)
 field_bool* modal_dialog::register_bool(
 		const std::string& id,
 		const bool mandatory,
-		const std::function<bool()> callback_load_value,
-		const std::function<void(bool)> callback_save_value,
-		const std::function<void(widget&)> callback_change,
+		const std::function<bool()>& callback_load_value,
+		const std::function<void(bool)>& callback_save_value,
+		const std::function<void(widget&)>& callback_change,
 		const bool initial_fire)
 {
 	field_bool* field = new field_bool(id,
@@ -149,7 +137,7 @@ field_bool*
 modal_dialog::register_bool(const std::string& id,
 					   const bool mandatory,
 					   bool& linked_variable,
-					   const std::function<void(widget&)> callback_change,
+					   const std::function<void(widget&)>& callback_change,
 					   const bool initial_fire)
 {
 	field_bool* field
@@ -162,8 +150,8 @@ modal_dialog::register_bool(const std::string& id,
 field_integer* modal_dialog::register_integer(
 		const std::string& id,
 		const bool mandatory,
-		const std::function<int()> callback_load_value,
-		const std::function<void(const int)> callback_save_value)
+		const std::function<int()>& callback_load_value,
+		const std::function<void(int)>& callback_save_value)
 {
 	field_integer* field = new field_integer(
 			id, mandatory, callback_load_value, callback_save_value);
@@ -185,8 +173,8 @@ field_integer* modal_dialog::register_integer(const std::string& id,
 field_text* modal_dialog::register_text(
 		const std::string& id,
 		const bool mandatory,
-		const std::function<std::string()> callback_load_value,
-		const std::function<void(const std::string&)> callback_save_value,
+		const std::function<std::string()>& callback_load_value,
+		const std::function<void(const std::string&)>& callback_save_value,
 		const bool capture_focus)
 {
 	field_text* field = new field_text(
@@ -226,12 +214,12 @@ field_label* modal_dialog::register_label(const std::string& id,
 	return field;
 }
 
-void modal_dialog::pre_show(window& /*window*/)
+void modal_dialog::pre_show()
 {
 	/* DO NOTHING */
 }
 
-void modal_dialog::post_show(window& /*window*/)
+void modal_dialog::post_show()
 {
 	/* DO NOTHING */
 }

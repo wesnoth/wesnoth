@@ -115,7 +115,7 @@ private:
 
 	bool read_only_;
 	int compress_level_; /**< Used for add-on archives. */
-	time_t update_pack_lifespan_;
+	std::chrono::seconds update_pack_lifespan_;
 
 	bool strict_versions_;
 
@@ -228,14 +228,20 @@ private:
 	 */
 	void register_handlers();
 
-	void handle_server_id(const request&);
-	void handle_request_campaign_list(const request&);//#TODO: rename with 'addon' later?
-	void handle_request_campaign(const request&);
-	void handle_request_campaign_hash(const request&);
-	void handle_request_terms(const request&);
-	void handle_upload(const request&);
-	void handle_delete(const request&);
-	void handle_change_passphrase(const request&);
+	void handle_server_id(const request& req);
+	void handle_request_campaign_list(const request& req);//#TODO: rename with 'addon' later?
+	void handle_request_campaign(const request& req);
+	void handle_request_campaign_hash(const request& req);
+	void handle_request_terms(const request& req);
+	void handle_upload(const request& req);
+	void handle_delete(const request& req);
+	void handle_change_passphrase(const request& req);
+	void handle_list_hidden(const server::request& req);
+	void handle_hide_addon(const request& req);
+	void handle_unhide_addon(const request& req);
+	void handle_addon_downloads_by_version(const request& req);
+	void handle_forum_auth_usage(const request& req);
+	void handle_admins_list(const request& req);
 
 	/**
 	 * Send a client an informational message.
@@ -276,6 +282,13 @@ private:
 	 * @return Whether the provided information matches what's in the forum database.
 	 */
 	bool authenticate_forum(const config& addon, const std::string& passphrase, bool is_delete);
+
+	/**
+	 * @param username The username to check the passphrase against.
+	 * @param passphrase The passphrase to use for authentication.
+	 * @return Whether the provided username is an admin and the provided password matches.
+	 */
+	bool authenticate_admin(const std::string& username, const std::string& passphrase);
 };
 
 } // end namespace campaignd

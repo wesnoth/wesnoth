@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-21 00:47 UTC\n"
+"POT-Creation-Date: 2024-08-19 04:11 UTC\n"
 "PO-Revision-Date: 2024-03-03 09:07+0100\n"
 "Last-Translator: Johannes Löhnert <loehnert.kde@gmx.de>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
@@ -485,7 +485,7 @@ msgstr "Besiegt Grogor-Tuk"
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:193
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:110
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:184
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:416
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:419
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:157
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:117
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:101
@@ -3268,8 +3268,8 @@ msgid ""
 "Kill these filthy elves! Show all warlords the might of Zorlan! When they "
 "accept him as sovereign we will all be rewarded!"
 msgstr ""
-"Tötet diese stinkenden Elfen! Zeigt den Kriegsherren werden Zorlans Macht! "
-"Wenn sie ihn als König anerkennen, werden wir reich belohnt werden!"
+"Tötet diese stinkenden Elfen! Zeigt den Kriegsherren die Macht Zorlans! Wenn "
+"sie ihn als König anerkennen, werden wir alle reich belohnt werden!"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:213
@@ -3405,7 +3405,7 @@ msgid ""
 "Parthyn Ford. I have come north partly because I am thinking to fetch the "
 "Book of Crelanu so I can take it to him."
 msgstr ""
-"Delfador, ein Magier, der das volle Vertrauen ihres Königs genießt. Er hat "
+"Delfador, ein Magier, der das volle Vertrauen seines Königs genießt. Er hat "
 "das Land der Toten durchquert – und ist dabei nicht nur am Leben, sondern "
 "auch unverdorben geblieben. Er half uns, die Orks zu besiegen, als sie "
 "Lintanir bedrohten und ich habe an seiner Seite an der Furt von Parthyn "
@@ -4288,7 +4288,7 @@ msgstr "Besiegt Gruv-Malal"
 #. [objective]: condition=lose
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:114
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:188
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:420
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:423
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:169
 msgid "Death of Ulrek"
 msgstr "Ulrek fällt in der Schlacht"
@@ -4558,7 +4558,10 @@ msgstr ""
 "Rolle mehr − ich werde dich vernichten!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:335
+#. The same text is used both before and after closing the portal.
+#. Shown if the player kills Iliah-Malal instead of following the hints to run away,
+#. this is his last breath event, but he gets fully healed and the battle continues.
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:338
 msgid ""
 "We cannot defeat him now. We must allow some time to pass after the portal "
 "has been closed. By then, his power will have weakened, rendering him "
@@ -4569,22 +4572,22 @@ msgstr ""
 "geworden ist."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:354
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:357
 msgid "Earth, rise and shut this gate of evil for good!"
 msgstr "Erde, erhebe dich und schließe dieses Tor des Bösen für immer!"
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:367
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:370
 msgid "Portal, reopen! No! What have you done?"
 msgstr "Tor, öffne dich wieder! Nein! Was habt ihr getan?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:372
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:375
 msgid "Your portal is shut. And you cannot open another one."
 msgstr "Euer Tor ist geschlossen. Und ihr könnt kein neues öffnen."
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:376
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:379
 msgid ""
 "Delfador, you have proven your skill. I have an offer for you. Join me, and "
 "you will live as my right hand. Together, our magic skills will be unmatched "
@@ -4596,19 +4599,19 @@ msgstr ""
 "entgegenzustellen."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:380
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:383
 msgid "Join you?"
 msgstr "Ich mich euch anschließen?"
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:384
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:387
 msgid "Or, fight me and die. I will then resurrect you as my slave."
 msgstr ""
 "Oder kämpft gegen mich und sterbt – dann werde ich euch als mein Sklave "
 "wiedererwecken."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:388
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:391
 msgid ""
 "My path is set. Your path must end. I will not dishonor my oaths, and will "
 "not abandon friends and country."
@@ -4617,7 +4620,7 @@ msgstr ""
 "Schwur verletzen noch meine Freunde und meine Heimat im Stich lassen."
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:392
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:395
 msgid ""
 "Then you shall perish. After I finish with these pesky elves and dwarves, "
 "Weldyn will be mine. Wesnoth has no army to resist me."
@@ -4627,7 +4630,7 @@ msgstr ""
 "sich mir in den Weg zu stellen."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:396
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:399
 msgid ""
 "(<i>To the dwarves</i>). Now that the portal is closed, his power will start "
 "to weaken. It will be some time until he is rendered vulnerable; at the "
@@ -4640,7 +4643,7 @@ msgstr ""
 "die Tunnel! Ich gehe als Letzter und versperre den Eingang."
 
 #. [objective]: condition=win
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:412
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:415
 msgid "All the player’s units must reach the tunnel. Then Delfador."
 msgstr ""
 "Alle Einheiten des Spielers müssen den Tunnel erreichen, als Letzter "

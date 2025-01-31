@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-12-16 20:59-0600\n"
+"POT-Creation-Date: 2025-01-19 11:47-0600\n"
 "PO-Revision-Date: 2023-10-08 11:46+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -218,53 +218,58 @@ msgstr "Gosod Amser Lleol"
 msgid "Assign Local Time Schedule"
 msgstr "Gosod Amserlen Lleol"
 
-#. [menu]: id=menu-editor-side
+#. [menu]: id=menu-editor-unit
 #: data/themes/editor.cfg:141
+msgid "Unit"
+msgstr ""
+
+#. [menu]: id=menu-editor-side
+#: data/themes/editor.cfg:151
 msgid "Side"
 msgstr "Ochr"
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:158
+#: data/themes/editor.cfg:168
 msgid "villages"
 msgstr "pentrefi"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:174
+#: data/themes/editor.cfg:184
 msgid "units"
 msgstr "unedau"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:453
+#: data/themes/editor.cfg:479
 msgid "Time Schedule Menu"
 msgstr "Dewislen Amserlen"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:464
+#: data/themes/editor.cfg:490
 msgid "Playlist"
 msgstr "Rhestr Chwarae"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:470
+#: data/themes/editor.cfg:496
 msgid "Assign Time Schedule"
 msgstr "Dynodi Amserlen"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:64
+#: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
 msgstr "Adnabydd (ID):"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:66
+#: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Name: "
 msgstr "Enw:"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:68
+#: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Type: "
 msgstr "Math:"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:69
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Level: "
 msgstr "Lefel:"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:70
+#: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Cost: "
 msgstr "Cost:"
 
@@ -292,129 +297,162 @@ msgstr ""
 "Ydych chi eisiau gadael go iawn? Newidiwyd y mapiau canlynol a byddwch yn "
 "colli unrhyw newidiadau ers eu cadw ddiwethaf:"
 
-#: src/editor/controller/editor_controller.cpp:230
+#: src/editor/controller/editor_controller.cpp:238
 msgid "No editor time-of-day found."
 msgstr "Ni chafwyd hyd i adeg-o'r-dydd."
 
-#: src/editor/controller/editor_controller.cpp:1254
+#: src/editor/controller/editor_controller.cpp:882
+msgid "Add-on Files"
+msgstr ""
+
+#: src/editor/controller/editor_controller.cpp:895
+#, fuzzy
+#| msgid "Clipboard support not found, contact your packager"
+msgid "Opening files is not supported, contact your packager"
+msgstr "Nid yw'r clipfwrdd wedi'i gefnogi, cysylltwch â'ch pecynnydd"
+
+#: src/editor/controller/editor_controller.cpp:1315
 msgid "Change Unit ID"
 msgstr "Newid ID yr uned"
 
-#: src/editor/controller/editor_controller.cpp:1255
+#: src/editor/controller/editor_controller.cpp:1316
 msgid "ID:"
 msgstr "ID"
 
-#: src/editor/controller/editor_controller.cpp:1271
+#: src/editor/controller/editor_controller.cpp:1332
 msgid "Rename Unit"
 msgstr "Ailenwi'r Uned"
 
-#: src/editor/controller/editor_controller.cpp:1272
+#: src/editor/controller/editor_controller.cpp:1333
 msgid "Name:"
 msgstr "Enw:"
 
-#: src/editor/map/context_manager.cpp:219
+#: src/editor/editor_display.cpp:170
+msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
+msgstr ""
+
+#: src/editor/editor_display.cpp:172
+msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:217
 msgid "Load Map"
 msgstr "Llwytho Map"
 
-#: src/editor/map/context_manager.cpp:315 src/editor/map/map_context.cpp:1112
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1135
 msgid "New Map"
 msgstr "Map Newydd"
 
-#: src/editor/map/context_manager.cpp:328 src/editor/map/map_context.cpp:1112
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1135
 msgid "New Scenario"
 msgstr "Senario Newydd"
 
-#: src/editor/map/context_manager.cpp:384
+#: src/editor/map/context_manager.cpp:382
 msgid "No Recent Files"
 msgstr "Dim Ffeiliau Diweddar"
 
-#: src/editor/map/context_manager.cpp:422
+#: src/editor/map/context_manager.cpp:420
 msgid "Unnamed Area"
 msgstr "Ardal Heb ei Enwi "
 
-#: src/editor/map/context_manager.cpp:453
+#: src/editor/map/context_manager.cpp:451
 msgid "New Side"
 msgstr "Ochr Newydd"
 
-#: src/editor/map/context_manager.cpp:509
+#: src/editor/map/context_manager.cpp:507
 msgid "Apply Mask"
 msgstr "Gosod Llen"
 
-#: src/editor/map/context_manager.cpp:518
+#: src/editor/map/context_manager.cpp:516
 msgid "Error loading mask"
 msgstr "Gwall wrth lwytho'r llen"
 
-#: src/editor/map/context_manager.cpp:538
+#: src/editor/map/context_manager.cpp:536
 msgid "Identifier:"
 msgstr "Adnabydd:"
 
-#: src/editor/map/context_manager.cpp:538
+#: src/editor/map/context_manager.cpp:536
 msgid "Rename Area"
 msgstr "Ailenwi'r Ardal"
 
-#: src/editor/map/context_manager.cpp:552
+#: src/editor/map/context_manager.cpp:550
 msgid "Choose Target Map"
 msgstr "Dewis Map Targed"
 
-#: src/editor/map/context_manager.cpp:561
-#: src/editor/map/context_manager.cpp:959
+#: src/editor/map/context_manager.cpp:559
+#: src/editor/map/context_manager.cpp:985
 msgid "Error loading map"
 msgstr "Gwall wrth lwytho'r map"
 
-#: src/editor/map/context_manager.cpp:689
+#: src/editor/map/context_manager.cpp:691
 msgid "Save Map As"
 msgstr "Dewisiadau Cadw'r Map:"
 
-#: src/editor/map/context_manager.cpp:700
-#: src/editor/map/context_manager.cpp:902
+#: src/editor/map/context_manager.cpp:708
+#: src/editor/map/context_manager.cpp:757 src/editor/map/map_context.cpp:273
+#: src/editor/palette/location_palette.cpp:263
+msgid "Error"
+msgstr "Gwall"
+
+#: src/editor/map/context_manager.cpp:709
+#: src/editor/map/context_manager.cpp:758
+#, fuzzy
+#| msgid "Do you really want to quit?"
+msgid "Do you really want to save $type1 in $type2 folder?"
+msgstr "Ydych chi eisiau gadael go iawn?"
+
+#: src/editor/map/context_manager.cpp:717
+#: src/editor/map/context_manager.cpp:926
 msgid "This map is already open."
 msgstr "Mae'r map hwn ar agor yn barod."
 
-#: src/editor/map/context_manager.cpp:721
+#: src/editor/map/context_manager.cpp:740
 msgid "Save Scenario As"
 msgstr "Dewisiadau Cadw'r Senario"
 
-#: src/editor/map/context_manager.cpp:733
+#: src/editor/map/context_manager.cpp:766
 msgid "This scenario is already open."
 msgstr "Mae'r senario hwn ar agor yn barod."
 
-#: src/editor/map/context_manager.cpp:767
+#: src/editor/map/context_manager.cpp:800
 msgid "No random map generators found."
 msgstr "Ni chafwyd hyd i hap-gynhyrchwr mapiau."
 
-#: src/editor/map/context_manager.cpp:780
-#: src/editor/map/context_manager.cpp:785
+#: src/editor/map/context_manager.cpp:813
+#: src/editor/map/context_manager.cpp:818
 msgid "Map creation failed."
 msgstr "Methwyd creu'r map."
 
-#: src/editor/map/context_manager.cpp:800
+#: src/editor/map/context_manager.cpp:833
 msgid "Unsaved Changes"
 msgstr "Newidiadau Heb eu Cadw"
 
-#: src/editor/map/context_manager.cpp:801
+#: src/editor/map/context_manager.cpp:834
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Ydych chi eisiau gwaredu pob newid a wnaed i'r map ers y tro diwethaf i chi "
 "ei gadw?"
 
-#: src/editor/map/context_manager.cpp:863
+#: src/editor/map/context_manager.cpp:887
 msgid "Scenario saved."
 msgstr "Cadwyd y senario."
 
-#: src/editor/map/context_manager.cpp:878
-msgid "Map saved."
+#: src/editor/map/context_manager.cpp:902
+#, fuzzy
+#| msgid "Map saved."
+msgid "Map saved"
 msgstr "Cadwyd y map."
 
-#: src/editor/map/context_manager.cpp:951
+#: src/editor/map/context_manager.cpp:977
 msgid "Loaded embedded map data"
 msgstr "Llwythwyd data'r map."
 
-#: src/editor/map/context_manager.cpp:952
-#: src/editor/map/context_manager.cpp:955
+#: src/editor/map/context_manager.cpp:978
+#: src/editor/map/context_manager.cpp:981
 msgid "Map loaded from scenario"
 msgstr "Llwythwyd map o senario."
 
-#: src/editor/map/context_manager.cpp:955
+#: src/editor/map/context_manager.cpp:981
 #, fuzzy
 #| msgid ""
 #| "Loaded referenced map file:\n"
@@ -425,7 +463,7 @@ msgstr ""
 "$new"
 
 #: src/editor/map/editor_map.cpp:146
-#: src/editor/palette/location_palette.cpp:119
+#: src/editor/palette/location_palette.cpp:118
 msgid "Player $side_num"
 msgstr "Chwaraewr $side_num"
 
@@ -433,19 +471,19 @@ msgstr "Chwaraewr $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "Mae maint y map targed yn wahanol i'r map presennol"
 
-#: src/editor/map/map_context.cpp:183
+#: src/editor/map/map_context.cpp:186
 msgid "File not found"
 msgstr "Ni chafwyd hyd i'r ffeil"
 
-#: src/editor/map/map_context.cpp:190
+#: src/editor/map/map_context.cpp:193
 msgid "Empty file"
 msgstr "Ffeil gwag"
 
-#: src/editor/map/map_context.cpp:196
-msgid "File does not have .map or .cfg extension"
+#: src/editor/map/map_context.cpp:202
+msgid "File does not have .map, .cfg, or .mask extension"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:242
+#: src/editor/map/map_context.cpp:249
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -453,20 +491,15 @@ msgstr ""
 "Mae golwg senario ar ffeil y map, ond nid yw'r maes map_data yn cyfeirio at "
 "ffeil sy'n bodoli"
 
-#: src/editor/map/map_context.cpp:261
-msgid "Found the characters '<<' indicating inline lua is present - aborting"
-msgstr ""
-
-#: src/editor/map/map_context.cpp:266
-#: src/editor/palette/location_palette.cpp:265
-msgid "Error"
-msgstr "Gwall"
-
-#: src/editor/map/map_context.cpp:266
-msgid "Failed to load the scenario, attempting to load only the map."
+#: src/editor/map/map_context.cpp:268
+msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
 msgstr ""
 
 #: src/editor/map/map_context.cpp:273
+msgid "Failed to load the scenario, attempting to load only the map."
+msgstr ""
+
+#: src/editor/map/map_context.cpp:280
 #, fuzzy
 #| msgid ""
 #| "The map file looks like a scenario, but the map_data value does not point "
@@ -478,52 +511,69 @@ msgstr ""
 "Mae golwg senario ar ffeil y map, ond nid yw'r maes map_data yn cyfeirio at "
 "ffeil sy'n bodoli"
 
-#: src/editor/map/map_context.cpp:288
+#: src/editor/map/map_context.cpp:295
 msgid "Unable to parse file to find map data"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:806 src/editor/map/map_context.cpp:845
-#: src/editor/map/map_context.cpp:886
+#: src/editor/map/map_context.cpp:829 src/editor/map/map_context.cpp:869
+#, fuzzy
+#| msgid "Could not save the scenario: $msg"
+msgid "Could not save time schedule: $msg"
+msgstr "Nid oedd modd cadw'r senario: $msg"
+
+#: src/editor/map/map_context.cpp:863
+#, fuzzy
+#| msgid "Time Schedule Menu"
+msgid "Time schedule saved."
+msgstr "Dewislen Amserlen"
+
+#: src/editor/map/map_context.cpp:909
 msgid "Could not save the scenario: $msg"
 msgstr "Nid oedd modd cadw'r senario: $msg"
 
-#: src/editor/map/map_context.cpp:917
+#: src/editor/map/map_context.cpp:940
 msgid "Could not save into scenario"
 msgstr "Nid oedd modd cadw i'r senario"
 
-#: src/editor/map/map_context.cpp:927
+#: src/editor/map/map_context.cpp:950
 msgid "Could not save the map: $msg"
 msgstr "Nid oedd modd cadw'r map: $msg"
 
-#: src/editor/palette/editor_palettes.cpp:52
+#: src/editor/palette/editor_palettes.cpp:50
 msgid "(Unknown Group)"
 msgstr "(Grŵp Anhysbys)"
 
-#: src/editor/palette/editor_palettes.cpp:314
+#: src/editor/palette/editor_palettes.cpp:308
 msgid "(non-core)"
 msgstr "(heb fod yn greiddiol)"
 
-#: src/editor/palette/editor_palettes.cpp:315
+#: src/editor/palette/editor_palettes.cpp:309
 msgid "Will not work in game without extra care."
 msgstr "Ni fydd yn gweithio yn y gêm heb ofal arbennig."
 
-#: src/editor/palette/location_palette.cpp:249
+#: src/editor/palette/item_palette.cpp:33
+#, fuzzy
+#| msgid "Right-click: "
+msgid "Left-click: Place item $item | Right-click to remove"
+msgstr "Clic-dde:"
+
+#: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
 msgstr "Ewch i"
 
-#: src/editor/palette/location_palette.cpp:256
+#: src/editor/palette/location_palette.cpp:254
 msgid "Add"
 msgstr "Ychwanegu"
 
-#: src/editor/palette/location_palette.cpp:258
+#: src/editor/palette/location_palette.cpp:256
 msgid "New Location Identifier"
 msgstr "Adnabydd newydd i'r Lleoliad"
 
-#: src/editor/palette/location_palette.cpp:266
+#: src/editor/palette/location_palette.cpp:264
 msgid "Invalid location id"
 msgstr "ID y lleoliad yn annilys "
 
-#: src/editor/palette/location_palette.cpp:273
+#: src/editor/palette/location_palette.cpp:271
 msgid "Delete"
 msgstr "Dileu"
 
@@ -554,14 +604,16 @@ msgstr "Cmd + clic: copïo'r dirwedd"
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + clic: copïo'r dirwedd"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:95
-msgid "Clipboard support not found, contact your packager"
-msgstr "Nid yw'r clipfwrdd wedi'i gefnogi, cysylltwch â'ch pecynnydd"
+#~ msgid "Choose File"
+#~ msgstr "Dewis Ffeil"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:163
-msgid "Choose File"
-msgstr "Dewis Ffeil"
+#~ msgid "Select"
+#~ msgstr "Dewis"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:164
-msgid "Select"
-msgstr "Dewis"
+#, fuzzy
+#~| msgid "Left-click: "
+#~ msgid "Left-click: Place item "
+#~ msgstr "Clic-chwith:"
+
+#~ msgid "Clipboard support not found, contact your packager"
+#~ msgstr "Nid yw'r clipfwrdd wedi'i gefnogi, cysylltwch â'ch pecynnydd"

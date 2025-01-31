@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2023 - 2024
-	by babaissarkar(Subhraman Sarkar) <suvrax@gmail.com>
+	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -32,39 +32,6 @@ namespace implementation
 struct builder_scroll_text;
 }
 
-/**
- * @ingroup GUIWidgetWML
- *
- * Scrollable text area
- *
- * A multiline text area that shows a scrollbar if the text gets too long.
- *
- * Key          |Type                        |Default  |Description
- * -------------|----------------------------|---------|-----------
- * grid         | @ref guivartype_grid "grid"|mandatory|A grid containing the widgets for main widget.
- *
- * TODO: we need one definition for a vertical scrollbar since this is the second time we use it.
- *
- * ID (return value)|Type                        |Default  |Description
- * -----------------|----------------------------|---------|-----------
- * _content_grid    | @ref guivartype_grid "grid"|mandatory|A grid which should only contain one multiline_text widget.
- * _scrollbar_grid  | @ref guivartype_grid "grid"|mandatory|A grid for the scrollbar (Merge with listbox info.)
- *
- * Description of necessary widgets contained inside _content_grid :
- *
- * ID (return value)|Type                            |Default  |Description
- * -----------------|--------------------------------|---------|-----------
- * _text            | @ref gui2::text_box            |mandatory|The text_box that shows the value.
- * The following states exist:
- * * state_enabled - the scroll text is enabled.
- * * state_disabled - the scroll text is disabled.
- * List with the scrollbar container specific variables:
- * Key                      |Type                                            |Default     |Description
- * -------------------------|------------------------------------------------|------------|-----------
- * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * editable                 | @ref guivartype_bool "bool"                    |"true"      |If the contents of included multiline_text can be edited.
- */
 class scroll_text : public scrollbar_container
 {
 	friend struct implementation::builder_scroll_text;
@@ -86,9 +53,6 @@ public:
 	/** See @ref styled_widget::set_text_alignment. */
 	virtual void set_text_alignment(const PangoAlignment text_alignment) override;
 
-	/** See @ref styled_widget::set_use_markup. */
-	virtual void set_use_markup(bool use_markup) override;
-
 	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
 
@@ -103,12 +67,20 @@ public:
 	bool can_wrap() const override;
 	void set_can_wrap(bool can_wrap);
 
+	void set_link_aware(bool l);
+
+	/** See @ref styled_widget::get_link_aware. */
+	virtual bool get_link_aware() const override
+	{
+		return link_aware_;
+	}
+
 	void set_editable(bool editable)
 	{
 		editable_ = editable;
 	}
 
-	bool is_editable()
+	bool is_editable() const
 	{
 		return editable_;
 	}
@@ -142,6 +114,8 @@ private:
 	bool editable_;
 
 	point max_size_;
+
+	bool link_aware_;
 
 	void finalize_subclass() override;
 
@@ -204,7 +178,7 @@ struct scroll_text_definition : public styled_widget_definition
 namespace implementation
 {
 
-struct builder_scroll_text : public builder_styled_widget
+struct builder_scroll_text : public builder_scrollbar_container
 {
 	explicit builder_scroll_text(const config& cfg);
 
@@ -212,10 +186,9 @@ struct builder_scroll_text : public builder_styled_widget
 
 	virtual std::unique_ptr<widget> build() const override;
 
-	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
-	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 	const PangoAlignment text_alignment;
 	bool editable;
+	bool link_aware;
 };
 
 } // namespace implementation

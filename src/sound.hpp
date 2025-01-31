@@ -17,7 +17,7 @@
 
 #include "events.hpp"
 #include "sound_music_track.hpp"
-#include <optional>
+#include "utils/optional_fwd.hpp"
 
 #include <string>
 
@@ -92,14 +92,16 @@ void play_sound_positioned(const std::string &files, int id, int repeats, unsign
 void play_bell(const std::string& files);
 
 // Play sound, or random one of comma-separated sounds in timer channel
-void play_timer(const std::string& files, int loop_ticks, int fadein_ticks);
+void play_timer(const std::string& files,
+	const std::chrono::milliseconds& loop_ticks,
+	const std::chrono::milliseconds& fadein_ticks);
 
 // Play user-interface sound, or random one of comma-separated sounds.
 void play_UI_sound(const std::string& files);
 
 // A class to periodically check for new music that needs to be played
 class music_thinker : public events::pump_monitor {
-	void process(events::pump_info &info);
+	void process();
 };
 
 // A class to mute music when the game is in background
@@ -120,7 +122,7 @@ void set_sound_volume(int vol);
 void set_bell_volume(int vol);
 void set_UI_volume(int vol);
 
-std::optional<unsigned int> get_current_track_index();
+utils::optional<unsigned int> get_current_track_index();
 std::shared_ptr<sound::music_track> get_current_track();
 std::shared_ptr<sound::music_track> get_previous_music_track();
 void set_previous_track(std::shared_ptr<music_track>);

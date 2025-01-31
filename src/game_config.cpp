@@ -20,13 +20,17 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "game_version.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <cmath>
+#include <random>
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
+
+using namespace std::chrono_literals;
 
 namespace game_config
 {
@@ -51,7 +55,7 @@ const int gold_carryover_percentage = 80;
 unsigned int tile_size = 72;
 
 std::string default_terrain;
-std::string shroud_prefix, fog_prefix;
+std::string shroud_prefix, fog_prefix, reach_map_prefix;
 
 std::vector<unsigned int> zoom_levels {36, 72, 144};
 
@@ -64,14 +68,15 @@ double xp_bar_scaling  = 0.5;
 //
 // Misc
 //
-unsigned lobby_network_timer  = 100;
-unsigned lobby_refresh        = 4000;
+std::chrono::milliseconds lobby_network_timer  = 100ms;
+std::chrono::milliseconds lobby_refresh        = 4000ms;
 
 const std::size_t max_loop = 65536;
 
 std::vector<server_info> server_list;
 
 bool allow_insecure = false;
+bool addon_server_info = false;
 
 //
 // Gamestate flags
@@ -84,7 +89,6 @@ bool
 	ignore_replay_errors = false,
 	mp_debug             = false,
 	exit_at_end          = false,
-	no_delay             = false,
 	disable_autosave     = false,
 	no_addons            = false;
 
@@ -137,8 +141,8 @@ std::string flag_rgb, unit_rgb;
 std::vector<color_t> red_green_scale;
 std::vector<color_t> red_green_scale_text;
 
-static std::vector<color_t> blue_white_scale;
-static std::vector<color_t> blue_white_scale_text;
+std::vector<color_t> blue_white_scale;
+std::vector<color_t> blue_white_scale_text;
 
 std::map<std::string, color_range, std::less<>> team_rgb_range;
 // Map [color_range]id to [color_range]name, or "" if no name
@@ -193,7 +197,6 @@ std::string
 	mouseover,
 	selected,
 	editor_brush,
-	unreachable,
 	linger,
 	// GUI elements
 	observer,
@@ -269,14 +272,14 @@ void load_config(const config &v)
 	recall_cost      = v["recall_cost"].to_int(20);
 	kill_experience  = v["kill_experience"].to_int(8);
 	combat_experience= v["combat_experience"].to_int(1);
-	lobby_refresh    = v["lobby_refresh"].to_int(2000);
+	lobby_refresh    = chrono::parse_duration(v["lobby_refresh"], 2000ms);
 	default_terrain  = v["default_terrain"].str();
 	tile_size        = v["tile_size"].to_int(72);
 
 	std::vector<std::string> zoom_levels_str = utils::split(v["zoom_levels"]);
 	if(!zoom_levels_str.empty()) {
 		zoom_levels.clear();
-		std::transform(zoom_levels_str.begin(), zoom_levels_str.end(), std::back_inserter(zoom_levels), [](const std::string zoom) {
+		std::transform(zoom_levels_str.begin(), zoom_levels_str.end(), std::back_inserter(zoom_levels), [](const std::string& zoom) {
 			int z = std::stoi(zoom);
 			if((z / 4) * 4 != z) {
 				ERR_NG << "zoom level " << z << " is not divisible by 4."
@@ -313,8 +316,19 @@ void load_config(const config &v)
 	if(auto i = v.optional_child("images")){
 		using namespace game_config::images;
 
+		if (!i["game_title_background"].blank()) {
+			// Select a background at random
+			const auto backgrounds = utils::split(i["game_title_background"].str());
+			if (backgrounds.size() > 1) {
+				int r = rand() % (backgrounds.size());
+				game_title_background = backgrounds.at(r);
+			} else if (backgrounds.size() == 1) {
+				game_title_background = backgrounds.at(0);
+			}
+		}
+
+		// Allow game_title to be empty
 		game_title            = i["game_title"].str();
-		game_title_background = i["game_title_background"].str();
 		game_logo             = i["game_logo"].str();
 		game_logo_background  = i["game_logo_background"].str();
 
@@ -338,7 +352,6 @@ void load_config(const config &v)
 		mouseover    = i["mouseover"].str();
 		selected     = i["selected"].str();
 		editor_brush = i["editor_brush"].str();
-		unreachable  = i["unreachable"].str();
 		linger       = i["linger"].str();
 
 		observer   = i["observer"].str();
@@ -359,6 +372,7 @@ void load_config(const config &v)
 
 	shroud_prefix = v["shroud_prefix"].str();
 	fog_prefix    = v["fog_prefix"].str();
+	reach_map_prefix 	= v["reach_map_prefix"].str();
 
 	add_color_info(game_config_view::wrap(v), true);
 
@@ -465,11 +479,8 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 
 		LOG_NG << "registered color range '" << id << "': " << team_rgb_range[id].debug();
 
-		// Ggenerate palette of same name;
-		std::vector<color_t> tp = palette(team_rgb_range[id]);
-		if(!tp.empty()) {
-			team_rgb_colors.emplace(id, tp);
-		}
+		// Generate palette of same name;
+		team_rgb_colors.emplace(id, palette(team_rgb_range[id]));
 
 		if(build_defaults && teamC["default"].to_bool()) {
 			default_colors.push_back(*a1);
@@ -477,18 +488,18 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 	}
 
 	for(const config &cp : v.child_range("color_palette")) {
-		for(const config::attribute& rgb : cp.attribute_range()) {
+		for(const auto& [key, value] : cp.attribute_range()) {
 			std::vector<color_t> temp;
-			for(const auto& s : utils::split(rgb.second)) {
+			for(const auto& s : utils::split(value)) {
 				try {
 					temp.push_back(color_t::from_hex_string(s));
-				} catch(const std::invalid_argument&) {
-					ERR_NG << "Invalid color in palette: " << s;
+				} catch(const std::invalid_argument& e) {
+					ERR_NG << "Invalid color in palette: " << s << " (" << e.what() << ")";
 				}
 			}
 
-			team_rgb_colors.emplace(rgb.first, temp);
-			LOG_NG << "registered color palette: " << rgb.first;
+			team_rgb_colors.emplace(key, temp);
+			LOG_NG << "registered color palette: " << key;
 		}
 	}
 }
@@ -532,9 +543,9 @@ const std::vector<color_t>& tc_info(std::string_view name)
 	for(const auto& s : utils::split(name)) {
 		try {
 			temp.push_back(color_t::from_hex_string(s));
-		} catch(const std::invalid_argument&) {
+		} catch(const std::invalid_argument& e) {
 			static std::vector<color_t> stv;
-			ERR_NG << "Invalid color in palette: " << s;
+			ERR_NG << "Invalid color in palette: " << s << " (" << e.what() << ")";
 			return stv;
 		}
 	}

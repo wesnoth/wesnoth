@@ -1,0 +1,52 @@
+diff --git a/data/schema/core/actionwml.cfg b/data/schema/core/actionwml.cfg
+index 0eff8c99f10..98e94c8cc6c 100644
+--- a/data/schema/core/actionwml.cfg
++++ b/data/schema/core/actionwml.cfg
+@@ -1445,5 +1445,34 @@
+ 			{SIMPLE_KEY y s_unsigned}
+ 		[/tag]
+ 	[/tag]
+-	any_tag=yes
++	# custom mainline campaign tags
++	# EI
++	{DATA_TAG "item_dialog" 0 infinite any}
++	{DATA_TAG "item_dialog_musttake" 0 infinite any}
++	{DATA_TAG "spread_bandit_villages" 0 infinite any}
++	{DATA_TAG "bandit_village_capture" 0 infinite any}
++	# HttT
++	{DATA_TAG "show_countdown" 0 infinite any}
++	# LoW
++	{DATA_TAG "replace_map_section" 0 infinite any}
++	{DATA_TAG "shift_labels" 0 infinite any}
++	{DATA_TAG "persistent_carryover_store" 0 infinite any}
++	# NR
++	{DATA_TAG "find_respawn_point" 0 infinite any}
++	# SoF
++	{DATA_TAG "rune_choice" 0 infinite any}
++	# TDG
++	{DATA_TAG "listen_for_mousemove" 0 infinite any}
++	{DATA_TAG "select_delfador_skills" 0 infinite any}
++	{DATA_TAG "display_skills_dialog" 0 infinite any}
++	# TSG
++	{DATA_TAG "display_tip" 0 infinite any}
++	# tutorial
++	{DATA_TAG "select_character" 0 infinite any}
++	{DATA_TAG "hint_message" 0 infinite any}
++	# tests
++	{DATA_TAG "foo" 0 infinite any}
++	{DATA_TAG "test_do_attack_by_id" 0 infinite any}
++	{DATA_TAG "my_lua_action" 0 infinite any}
++	{DATA_TAG "check_substitution" 0 infinite any}
+ [/tag]
+diff --git a/data/schema/core/conditionalwml.cfg b/data/schema/core/conditionalwml.cfg
+index 22a66d1fa18..86216e6de00 100644
+--- a/data/schema/core/conditionalwml.cfg
++++ b/data/schema/core/conditionalwml.cfg
+@@ -79,5 +79,6 @@
+ 		name="not"
+ 		super="$conditional_wml"
+ 	[/tag]
+-	any_tag=yes
++	# tests
++	{DATA_TAG "foo" 0 infinite any}
+ [/tag]

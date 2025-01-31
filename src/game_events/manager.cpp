@@ -83,9 +83,9 @@ void manager::add_event_handler_from_wml(const config& handler, game_lua_kernel&
 			}
 			args[attr] = val;
 		}
-		for(auto child : handler.all_children_range()) {
-			if(child.key.compare(0, 6, "filter") != 0) {
-				args.add_child(child.key, child.cfg);
+		for(auto [key, cfg] : handler.all_children_view()) {
+			if(key.compare(0, 6, "filter") != 0) {
+				args.add_child(key, cfg);
 			}
 		}
 		new_handler->set_arguments(args);
@@ -202,7 +202,7 @@ void manager::write_events(config& cfg, bool include_nonserializable) const
 	wml_menu_items_.to_config(cfg);
 }
 
-void manager::execute_on_events(const std::string& event_id, manager::event_func_t func)
+void manager::execute_on_events(const std::string& event_id, const manager::event_func_t& func)
 {
 	const std::string standardized_event_id = event_handlers::standardize_name(event_id);
 	const game_data* gd = resources::gamedata;

@@ -25,7 +25,6 @@
 #include "ai/manager.hpp"
 #include "ai/testing.hpp"
 #include "display_chat_manager.hpp"
-#include "carryover_show_gold.hpp"
 #include "formula/string_utils.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events/pump.hpp"
@@ -36,8 +35,7 @@
 #include "log.hpp"
 #include "map/label.hpp"
 #include "map/map.hpp"
-#include "playturn.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "replay_controller.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
@@ -51,6 +49,7 @@
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"
 
+#include <thread>
 
 static lg::log_domain log_aitesting("ai/testing");
 #define LOG_AIT LOG_STREAM(info, log_aitesting)
@@ -64,12 +63,9 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
-playsingle_controller::playsingle_controller(const config& level, saved_game& state_of_game, bool skip_replay)
-	: play_controller(level, state_of_game, skip_replay, true) // start faded
+playsingle_controller::playsingle_controller(const config& level, saved_game& state_of_game)
+	: play_controller(level, state_of_game)
 	, cursor_setter_(cursor::NORMAL)
-	, replay_sender_(*resources::recorder)
-	, network_reader_([this](config& cfg) { return receive_from_wesnothd(cfg); })
-	, turn_data_(replay_sender_, network_reader_)
 	, end_turn_requested_(false)
 	, ai_fallback_(false)
 	, replay_controller_()
@@ -99,7 +95,7 @@ std::string playsingle_controller::describe_result() const
 
 void playsingle_controller::init_gui()
 {
-	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks());
+	LOG_NG << "Initializing GUI... " << timer();
 	// If we are retarting replay from linger mode.
 	update_gui_linger();
 	play_controller::init_gui();
@@ -135,7 +131,7 @@ void playsingle_controller::init_gui()
 	gui_->set_prevent_draw(false);
 	gui_->queue_repaint();
 	if(!video::headless() && !video::testing()) {
-		gui_->fade_to({0,0,0,0}, 500);
+		gui_->fade_to({0,0,0,0}, std::chrono::milliseconds{500});
 	} else {
 		gui_->set_fade({0,0,0,0});
 	}
@@ -184,7 +180,7 @@ void playsingle_controller::play_scenario_init(const config& level)
 		gui2::show_transient_message(
 			// TODO: find a better title
 			_("Game Error"),
-			_("This multiplayer game uses an alternative random mode, if you don't know what this message means, then "
+			_("This multiplayer game uses an alternative random mode, if you don’t know what this message means, then "
 			  "most likely someone is cheating or someone reloaded a corrupt game."));
 	}
 }
@@ -229,11 +225,36 @@ void playsingle_controller::play_some()
 	}
 
 	if (gamestate().in_phase(game_data::GAME_ENDED)) {
-		if(!get_end_level_data().transient.linger_mode || get_teams().empty() || video::headless()) {
-			end_turn_requested_ = true;
-		}
+		end_turn_requested_ = !get_end_level_data().transient.linger_mode || get_teams().empty() || video::headless();
 		maybe_linger();
 	}
+}
+
+void playsingle_controller::play_side()
+{
+	do {
+		if(std::find_if(get_teams().begin(), get_teams().end(), [](const team& t) { return !t.is_empty(); }) == get_teams().end()){
+			throw game::game_error("The scenario has no (non-empty) sides defined");
+		}
+		update_viewing_player();
+
+		maybe_do_init_side();
+		if(is_regular_game_end()) {
+			return;
+		}
+		// This flag can be set by derived classes (in overridden functions).
+		player_type_changed_ = false;
+
+
+		play_side_impl();
+
+		if(is_regular_game_end()) {
+			return;
+		}
+	} while(player_type_changed_);
+
+	// Keep looping if the type of a team (human/ai/networked) has changed mid-turn
+	sync_end_turn();
 }
 
 void playsingle_controller::finish_side_turn()
@@ -287,7 +308,7 @@ void playsingle_controller::finish_side_turn()
 
 void playsingle_controller::play_scenario_main_loop()
 {
-	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks());
+	LOG_NG << "starting main loop\n" << timer();
 
 	ai_testing::log_game_start();
 	while(!(gamestate().in_phase(game_data::GAME_ENDED) && end_turn_requested_ )) {
@@ -309,7 +330,7 @@ void playsingle_controller::play_scenario_main_loop()
 				get_saved_game().statistics().clear_current_scenario();
 			}
 
-			reset_gamestate(*ex.level, (*ex.level)["replay_pos"]);
+			reset_gamestate(*ex.level, (*ex.level)["replay_pos"].to_int());
 
 			for(std::size_t i = 0; i < local_players.size(); ++i) {
 				resources::gameboard->teams()[i].set_local(local_players[i]);
@@ -388,8 +409,6 @@ void playsingle_controller::do_end_level()
 	}
 
 	persist_.end_transaction();
-	carryover_show_gold(gamestate(), is_observer() || is_replay(), is_observer(), saved_game_.classification().is_test());
-
 }
 
 level_result::type playsingle_controller::play_scenario(const config& level)
@@ -436,7 +455,7 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 		throw;
 	} catch(const wesnothd_error& e) {
 		scoped_savegame_snapshot snapshot(*this);
-		savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
+		savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
 		if(e.message == "") {
 			save.save_game_interactive(
 				_("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"),
@@ -459,7 +478,8 @@ void playsingle_controller::play_idle_loop()
 {
 	while(!should_return_to_play_side()) {
 		play_slice_catch();
-		SDL_Delay(10);
+		using namespace std::chrono_literals;
+		std::this_thread::sleep_for(10ms);
 	}
 }
 
@@ -479,9 +499,9 @@ void playsingle_controller::play_side_impl()
 			require_end_turn();
 		}
 
-		before_human_turn();
 
 		if(!end_turn_requested_) {
+			before_human_turn();
 			play_human_turn();
 		}
 
@@ -517,21 +537,21 @@ void playsingle_controller::before_human_turn()
 		return;
 	}
 
-	if(!did_autosave_this_turn_ && !game_config::disable_autosave && preferences::autosavemax() > 0) {
+	if(!did_autosave_this_turn_ && !game_config::disable_autosave && prefs::get().auto_save_max() > 0) {
 		did_autosave_this_turn_ = true;
 		scoped_savegame_snapshot snapshot(*this);
-		savegame::autosave_savegame save(saved_game_, preferences::save_compression_format());
-		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
+		savegame::autosave_savegame save(saved_game_, prefs::get().save_compression_format());
+		save.autosave(game_config::disable_autosave, prefs::get().auto_save_max(), pref_constants::INFINITE_AUTO_SAVES);
 	}
 
-	if(preferences::turn_bell()) {
+	if(prefs::get().turn_bell()) {
 		sound::play_bell(game_config::sounds::turn_bell);
 	}
 }
 
 void playsingle_controller::show_turn_dialog()
 {
-	if(preferences::turn_dialog() && !is_regular_game_end()) {
+	if(prefs::get().turn_dialog() && !is_regular_game_end()) {
 		blindfold b(*gui_, true); // apply a blindfold for the duration of this dialog
 		gui_->queue_rerender();
 		std::string message = _("It is now $name|’s turn");
@@ -558,7 +578,7 @@ void playsingle_controller::play_human_turn()
 {
 	show_turn_dialog();
 
-	if(!preferences::disable_auto_moves()) {
+	if(!prefs::get().disable_auto_moves()) {
 		execute_gotos();
 	}
 
@@ -578,6 +598,12 @@ void playsingle_controller::update_gui_linger()
 		gui_->set_game_mode(game_display::LINGER);
 		// change the end-turn button text from "End Turn" to "End Scenario"
 		gui_->get_theme().refresh_title2("button-endturn", "title2");
+
+		if(get_end_level_data().transient.reveal_map) {
+			// Change the view of all players and observers
+			// to see the whole map regardless of shroud and fog.
+			update_gui_to_player(gui_->viewing_team_index(), true);
+		}
 	} else {
 		gui_->set_game_mode(game_display::RUNNING);
 		// change the end-turn button text from "End Scenario" to "End Turn"
@@ -596,20 +622,14 @@ void playsingle_controller::linger()
 
 	update_gui_linger();
 
-	try {
-		if(replay_controller_.get() != nullptr) {
-			replay_controller_->play_side_impl();
-			if(player_type_changed_) {
-				replay_controller_.reset();
-			}
+	if(replay_controller_.get() != nullptr) {
+		replay_controller_->play_side_impl();
+		if(player_type_changed_) {
+			replay_controller_.reset();
 		}
-		while(!end_turn_requested_) {
-			play_slice();
-		}
-	} catch(const savegame::load_game_exception&) {
-		// Loading a new game is effectively a quit.
-		saved_game_.clear();
-		throw;
+	}
+	while(!end_turn_requested_) {
+		play_slice();
 	}
 
 	LOG_NG << "ending end-of-scenario linger";
@@ -635,7 +655,6 @@ void playsingle_controller::play_ai_turn()
 	LOG_NG << "is ai...";
 
 	end_turn_enable(false);
-	gui_->recalculate_minimap();
 
 	const cursor::setter cursor_setter(cursor::WAIT);
 
@@ -650,7 +669,6 @@ void playsingle_controller::play_ai_turn()
 	}
 
 	undo_stack().clear();
-	turn_data_.send_data();
 
 	try {
 		try {
@@ -665,19 +683,12 @@ void playsingle_controller::play_ai_turn()
 		}
 	} catch(...) {
 		DBG_NG << "Caught exception playing ai turn: " << utils::get_unknown_exception_type();
-		turn_data_.sync_network();
 		throw;
 	}
 
 	if(!should_return_to_play_side()) {
 		require_end_turn();
 	}
-
-	turn_data_.sync_network();
-	gui_->recalculate_minimap();
-	gui_->invalidate_unit();
-	gui_->invalidate_game_status();
-	gui_->invalidate_all();
 }
 
 /**
@@ -702,7 +713,7 @@ void playsingle_controller::play_network_turn()
 void playsingle_controller::handle_generic_event(const std::string& name)
 {
 	if(name == "ai_user_interact") {
-		play_slice(false);
+		play_slice();
 	}
 }
 
@@ -729,7 +740,7 @@ void playsingle_controller::require_end_turn()
 void playsingle_controller::check_objectives()
 {
 	if(!get_teams().empty()) {
-		const team& t = get_teams()[gui_->viewing_team()];
+		const team& t = gui_->viewing_team();
 
 		if(!is_regular_game_end() && !is_browsing() && t.objectives_changed()) {
 			show_objectives();
@@ -769,12 +780,37 @@ void playsingle_controller::sync_end_turn()
 	}
 }
 
+bool playsingle_controller::is_team_visible(int team_num, bool observer) const
+{
+	const team& t = gamestate().board_.get_team(team_num);
+	if(observer) {
+		return !t.get_disallow_observers() && !t.is_empty();
+	} else {
+		return t.is_local_human() && !t.is_idle();
+	}
+}
+
+int playsingle_controller::find_viewing_side() const
+{
+	const int num_teams = get_teams().size();
+	const bool observer = is_observer();
+
+	for(int i = 0; i < num_teams; i++) {
+		const int team_num = modulo(current_side() + i, num_teams, 1);
+		if(is_team_visible(team_num, observer)) {
+			return team_num;
+		}
+	}
+
+	return 0;
+}
+
 void playsingle_controller::update_viewing_player()
 {
 	if(replay_controller_ && replay_controller_->is_controlling_view()) {
 		replay_controller_->update_viewing_player();
-	} else if(int side_num = play_controller::find_viewing_side()) {
-		if(side_num != gui_->viewing_side() || gui_->show_everything()) {
+	} else if(int side_num = find_viewing_side()) {
+		if(side_num != gui_->viewing_team().side() || gui_->show_everything()) {
 			update_gui_to_player(side_num - 1);
 		}
 	}
@@ -808,7 +844,9 @@ bool playsingle_controller::should_return_to_play_side() const
 {
 	if(player_type_changed_ || is_regular_game_end()) {
 		return true;
-	} else if((gamestate().in_phase(game_data::TURN_STARTING_WAITING) || end_turn_requested_) && replay_controller_.get() == 0 && current_team().is_local() && !current_team().is_idle()) {
+	} else if(gamestate().in_phase(game_data::TURN_ENDED)) {
+		return true;
+	} else if((gamestate().in_phase(game_data::TURN_STARTING_WAITING) || end_turn_requested_) && replay_controller_.get() == nullptr && current_team().is_local() && !current_team().is_idle()) {
 		// When we are a locally controlled side and havent done init_side yet also return to play_side
 		return true;
 	} else {
@@ -834,4 +872,3 @@ void playsingle_controller::on_replay_end(bool is_unit_test)
 		replay_controller_->stop_replay();
 	}
 }
-

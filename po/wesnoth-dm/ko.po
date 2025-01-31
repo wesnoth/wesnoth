@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-21 00:47 UTC\n"
+"POT-Creation-Date: 2024-08-19 04:11 UTC\n"
 "PO-Revision-Date: 2011-11-21 18:15+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -509,7 +509,7 @@ msgstr "Grogor-Tuk를 격파하라"
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:193
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:110
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:184
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:416
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:419
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:157
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:117
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:101
@@ -4416,7 +4416,7 @@ msgstr "Gruv-Malal을 쳐부술 것"
 #. [objective]: condition=lose
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:114
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:188
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:420
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:423
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:169
 msgid "Death of Ulrek"
 msgstr "Ulrek의 사망"
@@ -4703,7 +4703,10 @@ msgstr ""
 "찬가지다! 나는 생사를 초월한 자다. 곧 돌아와서 널 없애주마!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:335
+#. The same text is used both before and after closing the portal.
+#. Shown if the player kills Iliah-Malal instead of following the hints to run away,
+#. this is his last breath event, but he gets fully healed and the battle continues.
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:338
 msgid ""
 "We cannot defeat him now. We must allow some time to pass after the portal "
 "has been closed. By then, his power will have weakened, rendering him "
@@ -4711,22 +4714,22 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:354
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:357
 msgid "Earth, rise and shut this gate of evil for good!"
 msgstr "대지여, 솟아올라 악의 문을 봉인하라!"
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:367
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:370
 msgid "Portal, reopen! No! What have you done?"
 msgstr "전이문이여, 다시 열려라! 안돼! 대체 무슨 짓을 한거냐?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:372
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:375
 msgid "Your portal is shut. And you cannot open another one."
 msgstr "너의 전이문은 닫혔다. 이제 다른 문도 열 수 없다."
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:376
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:379
 #, fuzzy
 #| msgid ""
 #| "Delfador, you have proven your skill. I have an offer for you. Join me "
@@ -4741,17 +4744,17 @@ msgstr ""
 "내 오른팔이 될거다. 우리의 마법이 함께한다면 그 누구도 대항할 수 없을 것이다."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:380
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:383
 msgid "Join you?"
 msgstr "너와 함께하라고?"
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:384
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:387
 msgid "Or, fight me and die. I will then resurrect you as my slave."
 msgstr "아니면 나와 싸우다 죽게 된다. 그리고 나는 널 되살려 노예로 쓰겠지."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:388
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:391
 msgid ""
 "My path is set. Your path must end. I will not dishonor my oaths, and will "
 "not abandon friends and country."
@@ -4760,7 +4763,7 @@ msgstr ""
 "들과 나라를 저버리지도 않겠다."
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:392
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:395
 msgid ""
 "Then you shall perish. After I finish with these pesky elves and dwarves, "
 "Weldyn will be mine. Wesnoth has no army to resist me."
@@ -4769,7 +4772,7 @@ msgstr ""
 "Weldyn은 내것이 될거야. Wesnoth에는 내게 대항할 군대가 없다."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:396
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:399
 #, fuzzy
 #| msgid ""
 #| "(<i>To the dwarves</i>). Quickly, back in the tunnel! I will stay last to "
@@ -4783,7 +4786,7 @@ msgstr ""
 "(<i>드워프들에게</i>). 어서 터널로 돌아가시오! 내가 남아서 입구를 봉인하겠소."
 
 #. [objective]: condition=win
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:412
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:415
 msgid "All the player’s units must reach the tunnel. Then Delfador."
 msgstr "모든 유닛들이 터널에 들어가야 합니다. Delfador는 마지막입니다."
 

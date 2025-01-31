@@ -85,6 +85,13 @@ void draw::fill(const color_t& c)
 	draw::fill(c.r, c.g, c.b, c.a);
 }
 
+void draw::fill(const SDL_FRect& rect, const color_t& c)
+{
+	DBG_D << "sub-pixel fill";
+	SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
+	SDL_RenderFillRectF(renderer(), &rect);
+}
+
 void draw::fill(const SDL_Rect& area)
 {
 	DBG_D << "fill " << area;
@@ -428,6 +435,51 @@ void draw::tiled_highres(const texture& tex, const SDL_Rect& dst,
 	}
 }
 
+void draw::smooth_shaded(const texture& tex, const SDL_Rect& dst,
+	const SDL_Color& cTL, const SDL_Color& cTR,
+	const SDL_Color& cBL, const SDL_Color& cBR,
+	const SDL_FPoint& uvTL, const SDL_FPoint& uvTR,
+	const SDL_FPoint& uvBL, const SDL_FPoint& uvBR)
+{
+	const SDL_FPoint pTL{float(dst.x), float(dst.y)};
+	const SDL_FPoint pTR{float(dst.x + dst.w), float(dst.y)};
+	const SDL_FPoint pBL{float(dst.x), float(dst.y + dst.h)};
+	const SDL_FPoint pBR{float(dst.x + dst.w), float(dst.y + dst.h)};
+	std::array<SDL_Vertex,4> verts {
+		SDL_Vertex{pTL, cTL, uvTL},
+		SDL_Vertex{pTR, cTR, uvTR},
+		SDL_Vertex{pBL, cBL, uvBL},
+		SDL_Vertex{pBR, cBR, uvBR},
+	};
+	draw::smooth_shaded(tex, verts);
+}
+
+void draw::smooth_shaded(const texture& tex, const SDL_Rect& dst,
+	const SDL_Color& cTL, const SDL_Color& cTR,
+	const SDL_Color& cBL, const SDL_Color& cBR)
+{
+	SDL_FPoint uv[4] = {
+		{0.f, 0.f}, // top left
+		{1.f, 0.f}, // top right
+		{0.f, 1.f}, // bottom left
+		{1.f, 1.f}, // bottom right
+	};
+	draw::smooth_shaded(tex, dst, cTL, cTR, cBL, cBR,
+		uv[0], uv[1], uv[2], uv[3]);
+}
+
+void draw::smooth_shaded(const texture& tex,
+	const std::array<SDL_Vertex, 4>& verts)
+{
+	DBG_D << "smooth shade, verts:";
+	for (const SDL_Vertex& v : verts) {
+		DBG_D << "  {(" << v.position.x << ',' << v.position.y << ") "
+			<< v.color << " (" << v.tex_coord.x << ',' << v.tex_coord.y
+			<< ")}";
+	}
+	int indices[6] = {0, 1, 2, 2, 1, 3};
+	SDL_RenderGeometry(renderer(), tex, &verts[0], 4, indices, 6);
+}
 
 /***************************/
 /* RAII state manipulation */
@@ -580,10 +632,10 @@ SDL_Rect draw::get_viewport()
 	return viewport;
 }
 
-
 draw::render_target_setter::render_target_setter(const texture& t)
 	: target_()
 	, viewport_()
+	, clip_()
 {
 	// Validate we can render to this texture.
 	assert(!t || t.get_access() == SDL_TEXTUREACCESS_TARGET);
@@ -595,6 +647,7 @@ draw::render_target_setter::render_target_setter(const texture& t)
 
 	target_ = video::get_render_target();
 	SDL_RenderGetViewport(renderer(), &viewport_);
+	SDL_RenderGetClipRect(renderer(), &clip_);
 
 	if (t) {
 		video::force_render_target(t);
@@ -611,6 +664,8 @@ draw::render_target_setter::~render_target_setter()
 	}
 	video::force_render_target(target_);
 	SDL_RenderSetViewport(renderer(), &viewport_);
+	if(clip_ == sdl::empty_rect) return;
+	SDL_RenderSetClipRect(renderer(), &clip_);
 }
 
 draw::render_target_setter draw::set_render_target(const texture& t)

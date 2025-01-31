@@ -285,7 +285,7 @@ public:
 
 	virtual void recalculate() const
 	{
-		for(const auto& f : utils::reversed_view(facets_)) {
+		for(const auto& f : facets_ | utils::views::reverse) {
 			if (f->active()) {
 				this->value_ = f->get_ptr();
 				this->valid_ = true;

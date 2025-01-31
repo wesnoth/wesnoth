@@ -95,15 +95,6 @@ public:
 
 typedef control_NEW<state_default> tbase;
 
-/**
- * @ingroup GUIWidgetWML
- *
- * List with the matrix specific variables:
- * Key                      |Type                                            |Default     |Description
- * -------------------------|------------------------------------------------|------------|-----------
- * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
- */
 class matrix : public tbase
 {
 	friend class debug_layout_graph;
@@ -143,11 +134,10 @@ public:
 								   const bool must_be_active) const override;
 
 	/** See @ref widget::find. */
-	widget* find(const std::string& id, const bool must_be_active) override;
+	widget* find(const std::string_view id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	const widget* find(const std::string& id,
-						const bool must_be_active) const override;
+	const widget* find(const std::string_view id, const bool must_be_active) const override;
 
 	/***** ***** ***** ***** Forwarded to pane_. ***** ***** ****** *****/
 	/**

@@ -132,10 +132,11 @@ public:
 	 *
 	 * @param offset              The position to insert the text.
 	 * @param text                The UTF-8 text to insert.
+	 * @param use_markup          If the text is formatted or not.
 	 *
 	 * @returns                   The number of characters inserted.
 	 */
-	unsigned insert_text(const unsigned offset, const std::string& text);
+	unsigned insert_text(const unsigned offset, const std::string& text, const bool use_markup = false);
 
 	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
 
@@ -161,8 +162,8 @@ public:
 	/**
 	 * Gets the location for the cursor, in drawing coordinates.
 	 *
-	 * @param column              The column offset of the cursor.
-	 * @param line                The line offset of the cursor.
+	 * @param column              The column character index of the cursor.
+	 * @param line                The line character index of the cursor.
 	 *
 	 * @returns                   The position of the top of the cursor. It the
 	 *                            requested location is out of range 0,0 is
@@ -172,16 +173,15 @@ public:
 		const unsigned column, const unsigned line = 0) const;
 
 	/**
-	 * Gets the correct number of columns to move the cursor
-	 * from Pango. Needed in case the text contains multibyte
-	 * characters. Return value == column if the text has no
-	 * multibyte characters.
+	 * Gets the location for the cursor, in drawing coordinates.
 	 *
-	 * @param column              The column offset of the cursor.
+	 * @param offset              The column byte index of the cursor.
 	 *
-	 * @returns                   Corrected column offset.
+	 * @returns                   The position of the top of the cursor. It the
+	 *                            requested location is out of range 0,0 is
+	 *                            returned.
 	 */
-	int get_byte_offset(const unsigned column) const;
+	point get_cursor_pos_from_index(const unsigned offset) const;
 
 	/**
 	 * Get maximum length.
@@ -224,6 +224,8 @@ public:
 	 */
 	point get_column_line(const point& position) const;
 
+	int xy_to_index(const point& position) const;
+
 	/**
 	 * Retrieves a list of strings with contents for each rendered line.
 	 *
@@ -234,6 +236,25 @@ public:
 	 *       least once.
 	 */
 	std::vector<std::string> get_lines() const;
+
+	/**
+	 * Get a specific line from the pango layout
+	 *
+	 * @param index    the line number of the line to retrieve
+	 *
+	 * @returns        the PangoLayoutLine* corresponding to line number index
+	 */
+	PangoLayoutLine* get_line(int index);
+
+	/**
+	 * Given a byte index, find out at which line the corresponding character
+	 * is located.
+	 *
+	 * @param offset   the byte index
+	 *
+	 * @returns        the line number corresponding to the given index
+	 */
+	int get_line_num_from_offset(const unsigned offset);
 
 	/**
 	 * Get number of lines in the text.
@@ -297,20 +318,74 @@ public:
 
 	pango_text& set_add_outline(bool do_add);
 
+	// The following add attribute methods are thin wrappers around the corresponding pango
+	// add attribute methods. For more details, refer to the Pango docs.
+
 	/**
-	* Mark a specific portion of text for highlighting. Used for selection box.
-	* BGColor is set in set_text(), this just marks the area to be colored.
-	* Markup not used because the user may enter their own markup or special characters
-	* @param start_offset        Column offset of the cursor where selection/highlight starts
- 	* @param end_offset          Column offset of the cursor where selection/highlight ends
- 	* @param color               Highlight color
-	*/
-	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color)
-	{
-		highlight_start_offset_ = start_offset;
-		highlight_end_offset_ = end_offset;
-		highlight_color_ = color;
-	}
+	 * Add pango font weight attribute to a specific portion of text. This changes the font weight
+	 * of the corresponding part of the text.
+	 * @param start_offset        Byte index of the cursor where font weight change starts
+ 	 * @param end_offset          Byte index of the cursor where font weight change ends
+ 	 * @param weight              Pango font weight
+	 */
+	void add_attribute_weight(const unsigned start_offset, const unsigned end_offset, PangoWeight weight);
+
+	/**
+	 * Add pango font style attribute to a specific portion of text, used to set italic/oblique text
+	 * @param start_offset        Byte index of the cursor where font style change starts
+ 	 * @param end_offset          Byte index of the cursor where font style change ends
+ 	 * @param style               Pango font style (normal/italic/oblique)
+	 */
+	void add_attribute_style(const unsigned start_offset, const unsigned end_offset, PangoStyle style);
+
+	/**
+	 * Add pango underline attribute to a specific portion of text. This adds an underline to the
+	 * corresponding part of the text.
+	 * @param start_offset        Byte index of the cursor where underline starts
+ 	 * @param end_offset          Byte index of the cursor where underline change ends
+ 	 * @param underline           Pango underline style
+	 */
+	void add_attribute_underline(const unsigned start_offset, const unsigned end_offset, PangoUnderline underline);
+
+	/**
+	 * Add pango fg color attribute to a specific portion of text. This changes the foreground
+	 * color of the corresponding part of the text.
+	 * @param start_offset        Byte index of the cursor where color change starts
+ 	 * @param end_offset          Byte index of the cursor where color change ends
+ 	 * @param color               Foreground color
+	 */
+	void add_attribute_fg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color);
+
+	/**
+	 * Mark a specific portion of text for highlighting. Used for selection box.
+	 * BGColor is set in set_text(), this just marks the area to be colored.
+	 * Markup not used because the user may enter their own markup or special characters
+	 * @param start_offset        Byte index of the cursor where selection/highlight starts
+ 	 * @param end_offset          Byte index of the cursor where selection/highlight ends
+ 	 * @param color               Highlight/Background color
+	 */
+	void add_attribute_bg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color);
+
+	/**
+	 * Add pango font size attribute to a specific portion of text. This changes the font size
+	 * of the corresponding part of the text.
+	 * @param start_offset        Byte index of the cursor where size change starts
+ 	 * @param end_offset          Byte index of the cursor where size change ends
+ 	 * @param size                Font size
+	 */
+	void add_attribute_size(const unsigned start_offset, const unsigned end_offset, int size);
+
+	/**
+	 * Add pango font family attribute to a specific portion of text. This changes
+	 * the font family of the corresponding part of the text.
+	 * @param start_offset        Byte index of the cursor where size change starts
+ 	 * @param end_offset          Byte index of the cursor where size change ends
+ 	 * @param family              The font family
+	 */
+	void add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, const std::string& family);
+
+	/** Clears all attributes from the global attribute list */
+	void clear_attribute_list();
 
 private:
 
@@ -409,9 +484,15 @@ private:
 	/** Length of the text. */
 	mutable std::size_t length_;
 
-	unsigned highlight_start_offset_;
-	unsigned highlight_end_offset_;
+	unsigned attribute_start_offset_;
+	unsigned attribute_end_offset_;
 	color_t	highlight_color_;
+
+	/**
+	 * Global pango attribute list. All attributes in this list
+	 * will be applied one by one to the text
+	 */
+	PangoAttrList* global_attribute_list_;
 
 	/** The pixel scale, used to render high-DPI text. */
 	int pixel_scale_;
@@ -421,9 +502,6 @@ private:
 
 	/** Calculates surface size. */
 	PangoRectangle calculate_size(PangoLayout& layout) const;
-
-	/** Allow specialization of std::hash for pango_text. */
-	friend struct std::hash<pango_text>;
 
 	/**
 	 * Equivalent to create_surface(viewport), where the viewport's top-left is
@@ -531,14 +609,3 @@ int get_max_height(unsigned size, font::family_class fclass = font::FONT_SANS_SE
 constexpr float get_line_spacing_factor() { return 1.3f; };
 
 } // namespace font
-
-// Specialize std::hash for pango_text
-namespace std
-{
-template<>
-struct hash<font::pango_text>
-{
-	std::size_t operator()(const font::pango_text&) const;
-};
-
-} // namespace std

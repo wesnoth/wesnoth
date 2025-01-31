@@ -24,20 +24,6 @@ class button;
 namespace dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * A Preferences subdialog including a report on the location and size of the game's WML cache,
- * buttons to copy its path to clipboard or browse to it, and the possibility of clearing stale files from the cache or purging it entirely.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * path              | text_box     |yes      |Cache dir path.
- * copy              | @ref button  |yes      |Copies the cache path to clipboard.
- * browse            | @ref button  |yes      |Browses to the cache path using the platform's file management application.
- * size              | @ref label   |yes      |Current total size of the cache dir's contents.
- * clean             | @ref button  |yes      |Cleans the cache, erasing stale files not used by the Wesnoth version presently running the dialog.
- * purge             | @ref button  |yes      |Purges the cache in its entirety.
- */
 class game_cache_options : public modal_dialog
 {
 public:
@@ -72,9 +58,9 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 };
 
 } // namespace dialogs

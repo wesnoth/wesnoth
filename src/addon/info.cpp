@@ -20,6 +20,7 @@
 #include "gettext.hpp"
 #include "picture.hpp"
 #include "log.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 
 static lg::log_domain log_addons_client("addons-client");
@@ -80,9 +81,9 @@ void addon_info::read(const config& cfg)
 	current_version = cfg["version"].str();
 	versions.emplace(cfg["version"].str());
 	author = cfg["author"].str();
-	size = cfg["size"];
-	downloads = cfg["downloads"];
-	uploads = cfg["uploads"];
+	size = cfg["size"].to_int();
+	downloads = cfg["downloads"].to_int();
+	uploads = cfg["uploads"].to_int();
 	type = get_addon_type(cfg["type"].str());
 
 	for(const config& version : cfg.child_range("version")) {
@@ -102,8 +103,8 @@ void addon_info::read(const config& cfg)
 	tags = utils::split(cfg["tags"].str());
 	feedback_url = cfg["feedback_url"].str();
 
-	updated = cfg["timestamp"].to_time_t();
-	created = cfg["original_timestamp"].to_time_t();
+	updated = chrono::parse_timestamp(cfg["timestamp"]);
+	created = chrono::parse_timestamp(cfg["original_timestamp"]);
 
 	local_only = cfg["local_only"].to_bool();
 }
@@ -137,8 +138,8 @@ void addon_info::write(config& cfg) const
 	cfg["tags"] = utils::join(tags);
 	cfg["feedback_url"] = feedback_url;
 
-	cfg["timestamp"] = updated;
-	cfg["original_timestamp"] = created;
+	cfg["timestamp"] = chrono::serialize_timestamp(updated);
+	cfg["original_timestamp"] = chrono::serialize_timestamp(created);
 }
 
 void addon_info::write_minimal(config& cfg) const
@@ -232,10 +233,13 @@ std::string addon_info::display_icon() const
 {
 	std::string ret = icon;
 
+	// make sure it's set to something when there are issues
+	// otherwise display errors will spam the log while the add-ons manager is open
 	if(ret.empty()) {
-		ERR_AC << "add-on '" << id << "' doesn't have an icon path set";
-	} else if(!image::exists(image::locator{ret})) {
+		ret = "misc/blank-hex.png";
+	} if(!image::exists(image::locator{ret}) && !ret.empty()) {
 		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'";
+		ret = "misc/blank-hex.png";
 	} else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos) {
 		// HACK: prevent magenta icons, because they look awful
 		LOG_AC << "add-on '" << id << "' uses a unit baseframe as icon without TC/RC specifications";

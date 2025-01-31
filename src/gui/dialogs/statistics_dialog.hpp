@@ -19,12 +19,8 @@
 
 class team;
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 class statistics_dialog : public modal_dialog
 {
 public:
@@ -35,7 +31,7 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	/**
 	 * Picks out the stats structure that was selected for displaying.
@@ -83,5 +79,4 @@ private:
 	std::vector<const statistics_t::stats::str_int_map*> main_stat_table_;
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

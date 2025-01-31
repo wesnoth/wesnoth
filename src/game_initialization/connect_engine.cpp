@@ -20,8 +20,7 @@
 #include "game_initialization/mp_game_utils.hpp"
 #include "game_initialization/multiplayer.hpp"
 #include "game_initialization/playcampaign.hpp"
-#include "preferences/credentials.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -204,10 +203,10 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 
 	if(first_scenario_) {
 		// Add host to the connected users list.
-		import_user(preferences::login(), false);
+		import_user(prefs::get().login(), false);
 	} else {
 		// Add host but don't assign a side to him.
-		import_user(preferences::login(), true);
+		import_user(prefs::get().login(), true);
 
 		// Load reserved players information into the sides.
 		load_previous_sides_users();
@@ -370,7 +369,7 @@ std::multimap<std::string, config> side_engine::get_side_children()
 	return children;
 }
 
-void side_engine::set_side_children(std::multimap<std::string, config> children)
+void side_engine::set_side_children(const std::multimap<std::string, config>& children)
 {
 	for(const std::string& children_to_remove : children_to_swap) {
 		cfg_.clear_children(children_to_remove);
@@ -741,7 +740,7 @@ void connect_engine::send_level_data() const
 			"create_game", config {
 				"name", params_.name,
 				"password", params_.password,
-				"ignored", preferences::get_ignored_delim(),
+				"ignored", prefs::get().get_ignored_delim(),
 				"auto_hosted", false,
 			},
 		});
@@ -831,7 +830,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	, team_(0)
 	, color_(std::min(index, gamemap::MAX_PLAYERS - 1))
 	, gold_(cfg["gold"].to_int(100))
-	, income_(cfg["income"])
+	, income_(cfg["income"].to_int())
 	, reserved_for_(cfg["current_player"])
 	, player_id_()
 	, ai_algorithm_()
@@ -847,29 +846,24 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 
 	// Save default attributes that could be overwritten by the faction, so that correct faction lists would be
 	// initialized by flg_manager when the new side config is sent over network.
+	cfg_.clear_children("default_faction");
 	cfg_.add_child("default_faction", config {
-		"type",    cfg_["type"],
-		"gender",  cfg_["gender"],
 		"faction", cfg_["faction"],
 		"recruit", cfg_["recruit"],
 	});
+	if(auto p_cfg = cfg_.optional_child("leader")) {
+		cfg_.mandatory_child("default_faction").add_child("leader", config {
+			"type", (p_cfg)["type"],
+			"gender", (p_cfg)["gender"],
+		});
+	}
+
 
 	if(cfg_["side"].to_int(index_ + 1) != index_ + 1) {
 		ERR_CF << "found invalid side=" << cfg_["side"].to_int(index_ + 1) << " in definition of side number " << index_ + 1;
 	}
 
 	cfg_["side"] = index_ + 1;
-
-	// Check if this side should give its control to some other side.
-	const std::size_t side_cntr_index = cfg_["controller"].to_int(-1) - 1;
-	if(side_cntr_index < parent_.side_engines().size()) {
-		// Remove this attribute to avoid locking side
-		// to non-existing controller type.
-		cfg_.remove_attribute("controller");
-
-		cfg_["previous_save_id"] = parent_.side_engines()[side_cntr_index]->previous_save_id();
-		ERR_MP << "controller=<number> is deperecated";
-	}
 
 	if(cfg_["controller"] != side_controller::human && cfg_["controller"] != side_controller::ai && cfg_["controller"] != side_controller::none) {
 		//an invalid controller type was specified. Remove it to prevent asertion failures later.
@@ -979,13 +973,13 @@ config side_engine::new_config() const
 	// The hosts receives the serversided controller tweaks after the start event, but
 	// for mp sync it's very important that the controller types are correct
 	// during the start/prestart event (otherwise random unit creation during prestart fails).
-	res["is_local"] = player_id_ == preferences::login() || controller_ == CNTR_COMPUTER || controller_ == CNTR_LOCAL;
+	res["is_local"] = player_id_ == prefs::get().login() || controller_ == CNTR_COMPUTER || controller_ == CNTR_LOCAL;
 
 	// This function (new_config) is only meant to be called by the host's machine, which is why this check
 	// works. It essentially certifies that whatever side has the player_id that matches the host's login
 	// will be flagged. The reason we cannot check mp_game_metadata::is_host is because that flag is *always*
 	// true on the host's machine, meaning this flag would be set to true for every side.
-	res["is_host"] = player_id_ == preferences::login();
+	res["is_host"] = player_id_ == prefs::get().login();
 
 	std::string desc = user_description();
 	if(!desc.empty()) {
@@ -1022,17 +1016,17 @@ config side_engine::new_config() const
 	// The "player_id" is the id of the client who controls that side. It's always the host for Local and AI players and
 	// always empty for free/reserved sides or null controlled sides. You can use !res["player_id"].empty() to check
 	// whether a side is already taken.
-	assert(!preferences::login().empty());
+	assert(!prefs::get().login().empty());
 	if(controller_ == CNTR_LOCAL) {
-		res["player_id"] = preferences::login();
-		res["current_player"] = preferences::login();
+		res["player_id"] = prefs::get().login();
+		res["current_player"] = prefs::get().login();
 	} else if(controller_ == CNTR_RESERVED) {
 		res.remove_attribute("player_id");
 		res["current_player"] = reserved_for_;
 	} else if(controller_ == CNTR_COMPUTER) {
 		// TODO: what is the content of player_id_ here ?
 		res["current_player"] = desc;
-		res["player_id"] = preferences::login();
+		res["player_id"] = prefs::get().login();
 	} else if(!player_id_.empty()) {
 		res["player_id"] = player_id_;
 		res["current_player"] = player_id_;
@@ -1042,79 +1036,24 @@ config side_engine::new_config() const
 	res["chose_random"] = chose_random_;
 
 	if(parent_.params_.saved_game != saved_game_mode::type::midgame) {
-		// Find a config where a default leader is and set a new type and gender values for it.
-		config* leader = &res;
 
-		if(flg_.default_leader_cfg() != nullptr) {
-			for(config& side_unit : res.child_range("unit")) {
-				if(*flg_.default_leader_cfg() != side_unit) {
-					continue;
-				}
-
-				leader = &side_unit;
-
-				if(flg_.current_leader() != (*leader)["type"]) {
-					// If a new leader type was selected from carryover, make sure that we reset the leader.
-					std::string leader_id = (*leader)["id"];
-					leader->clear();
-
-					if(!leader_id.empty()) {
-						(*leader)["id"] = leader_id;
-					}
-				}
-
-				break;
+		if(!flg_.leader_lock()) {
+			if(controller_ != CNTR_EMPTY) {
+				auto& leader = res.child_or_add("leader");
+				leader["type"] = flg_.current_leader();
+				leader["gender"] = flg_.current_gender();
+				LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " type=" << leader["type"]
+					   << " gender=" << leader["gender"];
+			} else if(!controller_lock_) {
+				//if controller_lock_ == false and controller_ == CNTR_EMPTY, this means the user disalbles this side, so remove it's leader.
+				res.remove_children("leader");
 			}
 		}
 
-		// NOTE: the presence of a type= key overrides no_leader
-		if(controller_ != CNTR_EMPTY) {
-			(*leader)["type"] = flg_.current_leader();
-			(*leader)["gender"] = flg_.current_gender();
-			LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " type=" << (*leader)["type"] << " gender=" << (*leader)["gender"];
-		} else if(!controller_lock_) {
-			// TODO: FIX THIS SHIT! We shouldn't have a special string to denote no-leader-ness...
-			(*leader)["type"] = "null";
-			(*leader)["gender"] = "null";
-		}
+		const std::string& new_team_name = parent_.team_data_[team_].team_name;
 
-		res["team_name"] = parent_.team_data_[team_].team_name;
-
-		// TODO: Fix this mess!
-		//
-		// There is a fundamental disconnect, here. One the one hand we have the idea of
-		// 'teams' (which don't actually exist). A 'team' has a name (internal key:
-		// team_name) and a translatable display name (internal key: user_team_name). But
-		// what we actually have are sides. Sides relate to each other by 'team' (internal
-		// key: team_name) and each side has it's own name for the team (internal key:
-		// user_team_name).
-		//
-		// The confusion is that the keys from the side have names which one might expect
-		// always refer to the 'team' concept. THEY DO NOT! They are simply named in such
-		// a way to confuse the unwary.
-		//
-		// There is no simple, clean way to clear up the confusion. So, I'm applying the
-		// Principle of Least Surprise. The user can see the user_team_name, and it should
-		// not change. So if the side already has a user_team_name, use it.
-		//
-		// In the rare and unlikely (like, probably never happens) case that the side does
-		// not have a user_team_name, but an (nebulous and non-deterministic term here)
-		// EARLIER side has the same team_name and that side gives a user_team_name, we'll
-		// use it.
-		//
-		// The effect of this mess, and my lame fix for it, is probably only visible when
-		// randomizing the sides on a team for multi-player games. But the effect when it's
-		// not fixed is an obvious mistake on the player's screen when playing a campaign
-		// in single-player mode.
-		//
-		// At some level, all this is probably wrong, but it is the least breakage from the
-		// mess I found; so deal with it, or fix it.
-		//
-		// If, by now, you get the impression this is a kludged-together mess which cries
-		// out for an honest design and a thoughtful implementation, you're correct! But
-		// I'm tired, and I'm cranky from wasting a over day on this, and so I'm exercising
-		// my prerogative as a grey-beard and leaving this for someone else to clean up.
-		if(res["user_team_name"].empty() || !parent_.params_.use_map_settings) {
+		if(res["user_team_name"].empty() || !parent_.params_.use_map_settings || res["team_name"] != new_team_name) {
+			res["team_name"] = new_team_name;
 			res["user_team_name"] = parent_.team_data_[team_].user_team_name;
 		}
 
@@ -1157,7 +1096,7 @@ bool side_engine::ready_for_start() const
 	}
 
 	if(controller_ == CNTR_NETWORK) {
-		if(player_id_ == preferences::login() || !waiting_to_choose_faction_ || !allow_changes_) {
+		if(player_id_ == prefs::get().login() || !waiting_to_choose_faction_ || !allow_changes_) {
 			// The host is ready. A network player, who got a chance
 			// to choose faction if allowed, is also ready.
 			return true;

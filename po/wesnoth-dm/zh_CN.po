@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-21 00:47 UTC\n"
+"POT-Creation-Date: 2024-10-28 17:38 UTC\n"
 "PO-Revision-Date: 2023-09-10 08:30+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -463,7 +463,7 @@ msgstr "击败格罗高-图克"
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:193
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:110
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:184
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:416
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:419
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:157
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:117
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:101
@@ -857,8 +857,8 @@ msgid ""
 "and bandits, and by evil creatures that roamed the night in the shapes of "
 "men."
 msgstr ""
-"陛下，坏消息。兽人大量集结在雅碧滩的北岸。我们与纳尔伽矮人之间的联系已被切断"
-"——有传言说兽人准备占领纳尔伽，然后转移目标攻打韦诺。我们北方省份的人民已在逃"
+"陛下，坏消息。兽人大量集结在雅碧滩的北岸。我们与纳尔迦矮人之间的联系已被切断"
+"——有传言说兽人准备占领纳尔迦，然后转移目标攻打韦诺。我们北方省份的人民已在逃"
 "亡，那些地区一片混乱。暴徒和强盗，还有那些长着人形、昼伏夜出的邪恶生物攻击过"
 "我们不止一次了。"
 
@@ -3862,7 +3862,7 @@ msgstr "打败格鲁-玛拉"
 #. [objective]: condition=lose
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:114
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:188
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:420
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:423
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:169
 msgid "Death of Ulrek"
 msgstr "乌尔雷克死亡"
@@ -4107,7 +4107,10 @@ msgid ""
 msgstr "傻瓜！你无法在冥界杀死我，在人间也不行！我超越了生死，并将毁灭你！"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:335
+#. The same text is used both before and after closing the portal.
+#. Shown if the player kills Iliah-Malal instead of following the hints to run away,
+#. this is his last breath event, but he gets fully healed and the battle continues.
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:338
 msgid ""
 "We cannot defeat him now. We must allow some time to pass after the portal "
 "has been closed. By then, his power will have weakened, rendering him "
@@ -4117,22 +4120,22 @@ msgstr ""
 "弱，这样就能伤到他了。"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:354
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:357
 msgid "Earth, rise and shut this gate of evil for good!"
 msgstr "大地，高耸吧，最终关上这邪恶之门吧！"
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:367
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:370
 msgid "Portal, reopen! No! What have you done?"
 msgstr "传送门，重开！不！你究竟做了什么？"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:372
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:375
 msgid "Your portal is shut. And you cannot open another one."
 msgstr "你的传送门关上了。你也没法再打开一个了。"
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:376
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:379
 msgid ""
 "Delfador, you have proven your skill. I have an offer for you. Join me, and "
 "you will live as my right hand. Together, our magic skills will be unmatched "
@@ -4142,17 +4145,17 @@ msgstr ""
 "上。我们的法力将无人匹敌，所向披靡。"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:380
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:383
 msgid "Join you?"
 msgstr "加入你？"
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:384
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:387
 msgid "Or, fight me and die. I will then resurrect you as my slave."
 msgstr "或者，挑战我，然后去死。我会把你复活成我的奴隶的。"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:388
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:391
 msgid ""
 "My path is set. Your path must end. I will not dishonor my oaths, and will "
 "not abandon friends and country."
@@ -4160,7 +4163,7 @@ msgstr ""
 "我的前路已定，而你的前路必将终结。我不会玷污誓言，也不会背叛朋友和国家。"
 
 #. [message]: speaker=Iliah-Malal
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:392
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:395
 msgid ""
 "Then you shall perish. After I finish with these pesky elves and dwarves, "
 "Weldyn will be mine. Wesnoth has no army to resist me."
@@ -4169,7 +4172,7 @@ msgstr ""
 "军队可以抵抗我。"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:396
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:399
 msgid ""
 "(<i>To the dwarves</i>). Now that the portal is closed, his power will start "
 "to weaken. It will be some time until he is rendered vulnerable; at the "
@@ -4180,7 +4183,7 @@ msgstr ""
 "伤到他。现在，我们得撤退。快，退回地道！我来断后关闭入口。"
 
 #. [objective]: condition=win
-#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:412
+#: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:415
 msgid "All the player’s units must reach the tunnel. Then Delfador."
 msgstr "所有玩家的单位必须到达地道。最后是德法多。"
 

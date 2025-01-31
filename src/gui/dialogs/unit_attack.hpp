@@ -22,22 +22,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog for attacking units.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * attacker_portrait | @ref image   |no       |Shows the portrait of the attacking unit.
- * attacker_icon     | @ref image   |no       |Shows the icon of the attacking unit.
- * attacker_name     | control      |no       |Shows the name of the attacking unit.
- * defender_portrait | @ref image   |no       |Shows the portrait of the defending unit.
- * defender_icon     | @ref image   |no       |Shows the icon of the defending unit.
- * defender_name     | control      |no       |Shows the name of the defending unit.
- * weapon_list       | @ref listbox |yes      |The list with weapons to choose from.
- * attacker_weapon   | control      |no       |The weapon for the attacker to use.
- * defender_weapon   | control      |no       |The weapon for the defender to use.
- */
 class unit_attack : public modal_dialog
 {
 public:
@@ -56,9 +40,9 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	void damage_calc_callback();
 

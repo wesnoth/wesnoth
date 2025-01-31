@@ -19,6 +19,7 @@
 
 #include <algorithm>
 #include <iterator>
+#include <utility>
 
 #include "whiteboard/highlighter.hpp"
 
@@ -38,6 +39,7 @@
 #include "units/unit.hpp"
 #include "units/animation_component.hpp"
 #include "units/map.hpp"
+#include "utils/general.hpp"
 #include "utils/ranges.hpp"
 
 namespace wb
@@ -51,7 +53,7 @@ highlighter::highlighter(side_actions_ptr side_actions)
 	, selected_action_()
 	, main_highlight_()
 	, secondary_highlights_()
-	, side_actions_(side_actions)
+	, side_actions_(std::move(side_actions))
 {
 }
 
@@ -103,7 +105,7 @@ void highlighter::set_mouseover_hex(const map_location& hex)
 	if(side_actions_->empty()) {
 		return;
 	}
-	for(action_ptr act : utils::reversed_view(*side_actions_)) {
+	for(action_ptr act : *side_actions_ | utils::views::reverse) {
 		/**@todo "is_numbering_hex" is not the "correct" criterion by which to
 		 * select the highlighted/selected action. It's just convenient for me
 		 * to use at the moment since it happens to coincide with the "correct"
@@ -178,7 +180,7 @@ void highlighter::unhighlight()
 	exclusive_display_hexes_.clear();
 }
 
-void highlighter::last_action_redraw(move_ptr move)
+void highlighter::last_action_redraw(const move_ptr& move)
 {
 	//Last action with a fake unit always gets normal appearance
 	if(move->get_fake_unit()) {
@@ -225,7 +227,7 @@ void highlighter::find_secondary_highlights()
 	std::deque<action_ptr> actions = find_actions_of(*owner_unit_);
 
 	// Remove main_highlight_ if present
-	actions.erase(std::remove(actions.begin(), actions.end(), main_highlight_.lock()), actions.end());
+	utils::erase(actions, main_highlight_.lock());
 
 	// Copy in secondary_highlights_
 	std::copy(actions.begin(), actions.end(), std::back_inserter(secondary_highlights_));

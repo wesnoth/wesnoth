@@ -29,7 +29,7 @@
 #include "filter_context.hpp"
 #include "game_events/pump.hpp"
 #include "game_state.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -127,7 +127,7 @@ namespace { // Helpers for get_recalls()
 	 * that can be skipped (because they are already in @a result), and the
 	 * underlying ID of units added to @a result will be added to @a already_added.
 	 */
-	void add_leader_filtered_recalls(const unit_const_ptr leader,
+	void add_leader_filtered_recalls(const unit_const_ptr& leader,
 	                                 std::vector< unit_const_ptr > & result,
 	                                 std::set<std::size_t> * already_added = nullptr)
 	{
@@ -591,7 +591,7 @@ namespace { // Helpers for place_recruit()
 		const unit_map & units = resources::gameboard->units();
 		unit_map::const_iterator unit_itor;
 		map_location min_loc;
-		int min_dist = INT_MAX;
+		int min_dist = std::numeric_limits<int>::max();
 
 		for ( unit_itor = units.begin(); unit_itor != units.end(); ++unit_itor ) {
 			if (resources::gameboard->get_team(unit_itor->side()).is_enemy(new_unit.side()) &&
@@ -603,12 +603,12 @@ namespace { // Helpers for place_recruit()
 				}
 			}
 		}
-		if (min_dist < INT_MAX) {
+		if (min_dist < std::numeric_limits<int>::max()) {
 			// Face towards closest enemy
 			new_unit_itor->set_facing(recruit_loc.get_relative_dir(min_loc));
 		} else if (leader_loc != map_location::null_location()) {
 			// Face away from leader
-			new_unit_itor->set_facing(map_location::get_opposite_dir(recruit_loc.get_relative_dir(leader_loc)));
+			new_unit_itor->set_facing(map_location::get_opposite_direction(recruit_loc.get_relative_dir(leader_loc)));
 		} else {
 			// Face towards center of map
 			const map_location center(map->w()/2, map->h()/2);
@@ -617,8 +617,8 @@ namespace { // Helpers for place_recruit()
 	}
 }// anonymous namespace
 //Used by recalls and recruits
-place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_location, const map_location& recruited_from,
-	int cost, bool is_recall, map_location::DIRECTION facing, bool show, bool fire_event, bool full_movement,
+place_recruit_result place_recruit(const unit_ptr& u, const map_location &recruit_location, const map_location& recruited_from,
+	int cost, bool is_recall, map_location::direction facing, bool show, bool fire_event, bool full_movement,
 	bool wml_triggered)
 {
 	place_recruit_result res(false, 0, false);
@@ -626,6 +626,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 	if (full_movement) {
 		u->set_movement(u->total_movement(), true);
 	} else {
+		//TODO: it looks to me like this change of unit stats is not properly undone yet.
 		u->set_movement(0, true);
 		u->set_attacks(0);
 	}
@@ -645,7 +646,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 
 	map_location current_loc = recruit_location;
 
-	if (facing == map_location::NDIRECTIONS) {
+	if (facing == map_location::direction::indeterminate) {
 		set_recruit_facing(new_unit_itor, *u, recruit_location, leader_loc);
 	} else {
 		new_unit_itor->set_facing(facing);
@@ -671,7 +672,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 			return std::tuple(true, 0, false);
 		new_unit_itor->set_hidden(true);
 	}
-	preferences::encountered_units().insert(new_unit_itor->type_id());
+	prefs::get().encountered_units().insert(new_unit_itor->type_id());
 	current_team.spend_gold(cost);
 
 	if ( show ) {
@@ -714,26 +715,21 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 }
 
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
-                  const map_location & from, bool show, bool use_undo)
+                  const map_location & from)
 {
+	bool show = !resources::controller->is_skipping_actions();
 	const unit_ptr new_unit = unit::create(u_type, side_num, true);
 
 
 	// Place the recruit.
-	place_recruit_result res = place_recruit(new_unit, loc, from, u_type.cost(), false, map_location::NDIRECTIONS, show);
+	resources::undo_stack->add_recruit(new_unit, loc, from);
+	place_recruit_result res
+		= place_recruit(new_unit, loc, from, u_type.cost(), false, map_location::direction::indeterminate, show);
 	resources::controller->statistics().recruit_unit(*new_unit);
 
-	// To speed things a bit, don't bother with the undo stack during
-	// an AI turn. The AI will not undo nor delay shroud updates.
-	// (Undo stack processing is also suppressed when redoing a recruit.)
-	if ( use_undo ) {
-		resources::undo_stack->add_recruit(new_unit, loc, from, std::get<1>(res), std::get<2>(res));
-		// Check for information uncovered or randomness used.
+	// Check for information uncovered or randomness used.
 
-		if ( std::get<0>(res) || synced_context::undo_blocked()) {
-			resources::undo_stack->clear();
-		}
-	}
+	synced_context::block_undo(std::get<0>(res));
 
 	// Update the screen.
 	if (display::get_singleton() != nullptr )
@@ -743,40 +739,26 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 
 bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
-                 map_location::DIRECTION facing, bool show, bool use_undo)
+                 map_location::direction facing)
 {
+	bool show = !resources::controller->is_skipping_actions();
 	unit_ptr recall = current_team.recall_list().extract_if_matches_id(id);
 
 	if ( !recall )
 		return false;
 
-
-	// ** IMPORTANT: id might become invalid at this point!
-	// (Use recall.id() instead, if needed.)
-
+	resources::undo_stack->add_recall(recall, loc, from);
 	// Place the recall.
 	// We also check to see if a custom unit level recall has been set if not,
 	// we use the team's recall cost otherwise the unit's.
-	place_recruit_result res;
-	if (recall->recall_cost() < 0) {
-		res = place_recruit(recall, loc, from, current_team.recall_cost(),
-	                             true, facing, show);
-	}
-	else {
-		res = place_recruit(recall, loc, from, recall->recall_cost(),
-	                             true, facing, show);
-	}
-	resources::controller->statistics().recall_unit(*recall);
+	int cost = recall->recall_cost() >= 0 ? recall->recall_cost() : current_team.recall_cost();
 
-	// To speed things a bit, don't bother with the undo stack during
-	// an AI turn. The AI will not undo nor delay shroud updates.
-	// (Undo stack processing is also suppressed when redoing a recall.)
-	if ( use_undo ) {
-		resources::undo_stack->add_recall(recall, loc, from, std::get<1>(res), std::get<2>(res));
-		if ( std::get<0>(res) || synced_context::undo_blocked()) {
-			resources::undo_stack->clear();
-		}
-	}
+	place_recruit_result res = place_recruit(recall, loc, from, cost,
+	                             true, facing, show);
+
+	resources::controller->statistics().recall_unit(*recall);
+	synced_context::block_undo(std::get<0>(res));
+
 
 	// Update the screen.
 	if (display::get_singleton() != nullptr )
@@ -785,6 +767,5 @@ bool recall_unit(const std::string & id, team & current_team,
 
 	return true;
 }
-
 
 }//namespace actions

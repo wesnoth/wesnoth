@@ -77,7 +77,9 @@ static std::vector<char*> gArgs;
 - (IBAction) openChangelog:(id)sender
 {
 	(void) sender;
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/wesnoth/wesnoth/blob/master/changelog.md"]];
+	NSString* version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+	NSString* url = [NSString stringWithFormat:@"https://changelog.wesnoth.org/%@", version];
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
 }
 
 /* Called when the internal event loop has just started running */

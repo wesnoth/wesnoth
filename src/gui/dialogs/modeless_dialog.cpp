@@ -26,7 +26,6 @@ namespace gui2::dialogs
 modeless_dialog::modeless_dialog(const std::string& window_id)
 	: window(get_window_builder(window_id))
 {
-	window::finish_build(get_window_builder(window_id));
 	widget::set_id(window_id);
 }
 
@@ -41,9 +40,7 @@ void modeless_dialog::show(const bool allow_interaction, const unsigned /*auto_c
 	}
 
 	if(allow_interaction) {
-		open_window_stack.push_back(this);
 		window::show_non_modal();
-		remove_from_window_stack(this);
 	} else {
 		window::show_tooltip(/*auto_close_time*/);
 	}

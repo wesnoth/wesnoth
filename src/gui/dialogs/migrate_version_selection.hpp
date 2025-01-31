@@ -19,8 +19,6 @@
 namespace gui2::dialogs
 {
 /**
- * @ingroup GUIWindowDefinitionWML
- *
  * This shows the dialog to select a previous version of Wesnoth to migrate preferences from and redownload add-ons.
  */
 class migrate_version_selection : public modal_dialog
@@ -30,9 +28,12 @@ public:
 	static void execute();
 
 private:
-	virtual void pre_show(window& window) override;
-	virtual void post_show(window& window) override;
+	virtual void pre_show() override;
+	virtual void post_show() override;
 	virtual const std::string& window_id() const override;
+
+	std::string old_config_dir();
+	void migrate_credentials(const std::string& credentials_dir);
 
 	std::vector<std::string> versions_;
 };

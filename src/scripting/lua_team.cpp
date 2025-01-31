@@ -15,6 +15,7 @@
 
 #include "scripting/lua_team.hpp"
 
+#include "scripting/lua_attributes.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/push_check.hpp"
 #include "scripting/game_lua_kernel.hpp"
@@ -43,6 +44,342 @@
 static const char * Team = "side";
 static const char teamVar[] = "side variables";
 
+#define SIDE_GETTER(name, type) LATTR_GETTER(name, type, team, t)
+#define SIDE_SETTER(name, type) LATTR_SETTER(name, type, team, t)
+luaW_Registry sideReg{"wesnoth", "sides", Team};
+
+template<> struct lua_object_traits<team> {
+	inline static auto metatable = Team;
+	inline static team& get(lua_State* L, int n) {
+		return luaW_checkteam(L, n);
+	}
+};
+
+SIDE_GETTER("side", int) {
+	return t.side();
+}
+
+SIDE_GETTER("save_id", std::string) {
+	return t.save_id();
+}
+//maybe add a setter for save_id too?
+
+SIDE_GETTER("gold", int) {
+	return t.gold();
+}
+
+SIDE_SETTER("gold", int) {
+	t.set_gold(value);
+}
+
+SIDE_GETTER("objectives", t_string) {
+	return t.objectives();
+}
+
+SIDE_SETTER("objectives", t_string) {
+	t.set_objectives(value, true);
+}
+
+SIDE_GETTER("village_gold", int) {
+	return t.village_gold();
+}
+
+SIDE_SETTER("village_gold", int) {
+	t.set_village_support(value);
+}
+
+SIDE_GETTER("village_support", int) {
+	return t.village_support();
+}
+
+SIDE_SETTER("village_support", int) {
+	t.set_village_support(value);
+}
+
+SIDE_GETTER("num_villages", int) {
+	return t.villages().size();
+}
+
+SIDE_GETTER("recall_cost", int) {
+	return t.recall_cost();
+}
+
+SIDE_SETTER("recall_cost", int) {
+	t.set_recall_cost(value);
+}
+
+SIDE_GETTER("base_income", int) {
+	return t.base_income();
+}
+
+SIDE_SETTER("base_income", int) {
+	t.set_base_income(value);
+}
+
+SIDE_GETTER("total_income", int) {
+	return t.total_income();
+}
+
+SIDE_GETTER("objectives_changed", bool) {
+	return t.objectives_changed();
+}
+
+SIDE_SETTER("objectives_changed", bool) {
+	t.set_objectives_changed(value);
+}
+
+SIDE_GETTER("fog", bool) {
+	return t.uses_fog();
+}
+
+SIDE_SETTER("fog", bool) {
+	t.set_fog(value);
+}
+
+SIDE_GETTER("shroud", bool) {
+	return t.uses_shroud();
+}
+
+SIDE_SETTER("shroud", bool) {
+	t.set_shroud(value);
+}
+
+SIDE_GETTER("hidden", bool) {
+	return t.hidden();
+}
+
+SIDE_SETTER("hidden", bool) {
+	t.set_hidden(value);
+}
+
+SIDE_GETTER("scroll_to_leader", bool) {
+	return t.get_scroll_to_leader();
+}
+
+SIDE_SETTER("scroll_to_leader", bool) {
+	t.set_scroll_to_leader(value);
+}
+
+static void reinit_flag_for_team(lua_State* L, const team& t) {
+   auto* disp = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).get_display();
+   if(disp) {
+	   disp->reinit_flags_for_team(t);
+   }
+}
+
+SIDE_GETTER("color", std::string) {
+	return t.color();
+}
+
+SIDE_SETTER("color", std::string) {
+	t.set_color(value);
+	reinit_flag_for_team(L, t);
+}
+
+SIDE_GETTER("flag", std::string) {
+	return t.flag().empty() ? game_config::images::flag : t.flag();
+}
+
+SIDE_SETTER("flag", std::string) {
+	t.set_flag(value);
+	reinit_flag_for_team(L, t);
+}
+
+SIDE_GETTER("flag_icon", std::string) {
+	return t.flag_icon().empty() ? game_config::images::flag_icon : t.flag_icon();
+}
+
+SIDE_SETTER("flag_icon", std::string) {
+	t.set_flag_icon(value);
+}
+
+SIDE_GETTER("user_team_name", t_string) {
+	return t.user_team_name();
+}
+
+SIDE_SETTER("user_team_name", t_string) {
+	t.change_team(t.team_name(), value);
+}
+
+SIDE_GETTER("team_name", std::string) {
+	return t.team_name();
+}
+
+SIDE_SETTER("team_name", std::string) {
+	t.change_team(value, t.user_team_name());
+}
+
+SIDE_GETTER("faction", std::string) {
+	return t.faction();
+}
+
+SIDE_GETTER("faction_name", t_string) {
+	return t.faction_name();
+}
+
+SIDE_GETTER("controller", std::string) {
+	return side_controller::get_string(t.controller());
+}
+
+SIDE_SETTER("controller", std::string) {
+	t.change_controller_by_wml(value);
+}
+
+SIDE_GETTER("is_local", bool) {
+	return t.is_local();
+}
+
+SIDE_GETTER("defeat_condition", std::string) {
+	return defeat_condition::get_string(t.defeat_cond());
+}
+
+SIDE_SETTER("defeat_condition", std::string) {
+	t.set_defeat_condition_string(value);
+}
+
+SIDE_GETTER("share_vision", std::string) {
+	return team_shared_vision::get_string(t.share_vision());
+}
+
+SIDE_SETTER("share_vision", std::string) {
+	auto v = team_shared_vision::get_enum(value);
+	if(v) {
+		t.set_share_vision(*v);
+	} else {
+		throw luaL_argerror(L, 3, "Invalid share_vision value (should be 'all', 'none', or 'shroud')");
+	}
+}
+
+SIDE_GETTER("carryover_bonus", double) {
+	return t.carryover_bonus();
+}
+
+SIDE_SETTER("carryover_bonus", double) {
+	t.set_carryover_bonus(value);
+}
+
+SIDE_GETTER("carryover_percentage", int) {
+	return t.carryover_percentage();
+}
+
+SIDE_SETTER("carryover_percentage", int) {
+	t.set_carryover_percentage(value);
+}
+
+SIDE_GETTER("carryover_gold", int) {
+	return t.carryover_gold();
+}
+
+SIDE_SETTER("carryover_gold", int) {
+	t.set_carryover_gold(value);
+}
+
+SIDE_GETTER("carryover_add", bool) {
+	return t.carryover_add();
+}
+
+SIDE_SETTER("carryover_add", bool) {
+	t.set_carryover_add(value);
+}
+
+SIDE_GETTER("lost", bool) {
+	return t.lost();
+}
+
+SIDE_SETTER("lost", bool) {
+	t.set_lost(value);
+}
+
+SIDE_GETTER("persistent", bool) {
+	return t.persistent();
+}
+
+SIDE_SETTER("persistent", bool) {
+	t.set_persistent(value);
+}
+
+SIDE_GETTER("suppress_end_turn_confirmation", bool) {
+	return t.no_turn_confirmation();
+}
+
+SIDE_SETTER("suppress_end_turn_confirmation", bool) {
+	t.set_no_turn_confirmation(value);
+}
+
+SIDE_GETTER("share_maps", bool) {
+	return t.share_maps();
+}
+
+SIDE_GETTER("share_view", bool) {
+	return t.share_view();
+}
+
+SIDE_GETTER("chose_random", bool) {
+	return t.chose_random();
+}
+
+SIDE_GETTER("side_name", t_string) {
+	return t.side_name_tstr();
+}
+
+SIDE_SETTER("side_name", t_string) {
+	t.set_side_name(value);
+}
+
+SIDE_GETTER("shroud_data", std::string) {
+	return t.shroud_data();
+}
+
+SIDE_SETTER("shroud_data", std::string) {
+	t.reshroud();
+	t.merge_shroud_map_data(value);
+}
+
+SIDE_GETTER("recruit", std::set<std::string>) {
+	return t.recruits();
+}
+
+SIDE_SETTER("recruit", std::set<std::string>) {
+	t.set_recruits(value);
+}
+
+SIDE_GETTER("variables", lua_index_raw) {
+	(void)t;
+	lua_createtable(L, 1, 0);
+	lua_pushvalue(L, 1);
+	lua_rawseti(L, -2, 1);
+	luaL_setmetatable(L, teamVar);
+	return lua_index_raw(L);
+}
+
+SIDE_GETTER("starting_location", utils::optional<map_location>) {
+	const map_location& starting_pos = resources::gameboard->map().starting_position(t.side());
+	if(!resources::gameboard->map().on_board(starting_pos)) return utils::nullopt;
+	return starting_pos;
+}
+
+SIDE_GETTER("num_units", int) {
+	return team_data(*resources::gameboard, t).units;
+}
+
+SIDE_GETTER("total_upkeep", int) {
+	return team_data(*resources::gameboard, t).upkeep;
+}
+
+SIDE_GETTER("expenses", int) {
+	return team_data(*resources::gameboard, t).expenses;
+}
+
+SIDE_GETTER("net_income", int) {
+	return team_data(*resources::gameboard, t).net_income;
+}
+
+SIDE_GETTER("__cfg", config) {
+	config cfg;
+	t.write(cfg);
+	return cfg;
+}
+
 /**
  * Gets some data on a side (__index metamethod).
  * - Arg 1: full userdata containing the team.
@@ -51,87 +388,17 @@ static const char teamVar[] = "side variables";
  */
 static int impl_side_get(lua_State *L)
 {
-	// Hidden metamethod, so arg1 has to be a pointer to a team.
-	team &t = luaW_checkteam(L, 1);
-	char const *m = luaL_checkstring(L, 2);
+	return sideReg.get(L);
+}
 
-	// Find the corresponding attribute.
-	return_int_attrib("side", t.side());
-	return_string_attrib("save_id", t.save_id());
-	return_int_attrib("gold", t.gold());
-	return_tstring_attrib("objectives", t.objectives());
-	return_int_attrib("village_gold", t.village_gold());
-	return_int_attrib("village_support", t.village_support());
-	return_int_attrib("num_villages", t.villages().size());
-	return_int_attrib("recall_cost", t.recall_cost());
-	return_int_attrib("base_income", t.base_income());
-	return_int_attrib("total_income", t.total_income());
-	return_bool_attrib("objectives_changed", t.objectives_changed());
-	return_bool_attrib("fog", t.uses_fog());
-	return_bool_attrib("shroud", t.uses_shroud());
-	return_bool_attrib("hidden", t.hidden());
-	return_bool_attrib("scroll_to_leader", t.get_scroll_to_leader());
-	return_string_attrib("flag", t.flag().empty() ? game_config::images::flag : t.flag());
-	return_string_attrib("flag_icon", t.flag_icon().empty() ? game_config::images::flag_icon : t.flag_icon());
-	return_tstring_attrib("user_team_name", t.user_team_name());
-	return_string_attrib("team_name", t.team_name());
-	return_string_attrib("faction", t.faction());
-	return_tstring_attrib("faction_name", t.faction_name());
-	return_string_attrib("color", t.color());
-	return_string_attrib("controller", side_controller::get_string(t.controller()));
-	return_bool_attrib("is_local", t.is_local());
-	return_string_attrib("defeat_condition", defeat_condition::get_string(t.defeat_cond()));
-	return_string_attrib("share_vision", team_shared_vision::get_string(t.share_vision()));
-	return_float_attrib("carryover_bonus", t.carryover_bonus());
-	return_int_attrib("carryover_percentage", t.carryover_percentage());
-	return_bool_attrib("carryover_add", t.carryover_add());
-	return_bool_attrib("lost", t.lost());
-	return_bool_attrib("persistent", t.persistent());
-	return_bool_attrib("suppress_end_turn_confirmation", t.no_turn_confirmation());
-	return_bool_attrib("share_maps", t.share_maps());
-	return_bool_attrib("share_view", t.share_view());
-	return_bool_attrib("chose_random", t.chose_random());
-	return_tstring_attrib("side_name", t.side_name_tstr());
-	return_string_attrib("shroud_data", t.shroud_data());
-
-	if (strcmp(m, "recruit") == 0) {
-		const std::set<std::string>& recruits = t.recruits();
-		lua_createtable(L, recruits.size(), 0);
-		int i = 1;
-		for (const std::string& r : t.recruits()) {
-			lua_pushstring(L, r.c_str());
-			lua_rawseti(L, -2, i++);
-		}
-		return 1;
-	}
-	if(strcmp(m, "variables") == 0) {
-		lua_createtable(L, 1, 0);
-		lua_pushvalue(L, 1);
-		lua_rawseti(L, -2, 1);
-		luaL_setmetatable(L, teamVar);
-		return 1;
-	}
-	if(strcmp(m, "starting_location") == 0) {
-		const map_location& starting_pos = resources::gameboard->map().starting_position(t.side());
-		if(!resources::gameboard->map().on_board(starting_pos)) return 0;
-
-		luaW_pushlocation(L, starting_pos);
-		return 1;
-	}
-
-	// These are blocked together because they are all part of the team_data struct.
-	// Some of these values involve iterating over the units map to calculate them.
-	auto d = [&](){ return team_data(*resources::gameboard, t); };
-	return_int_attrib("num_units", d().units);
-	return_int_attrib("total_upkeep", d().upkeep);
-	return_int_attrib("expenses", d().expenses);
-	return_int_attrib("net_income", d().net_income);
-
-	return_cfg_attrib("__cfg", t.write(cfg));
-	if(luaW_getglobal(L, "wesnoth", "sides", m)) {
-		return 1;
-	}
-	return 0;
+/**
+ * Gets a list of data on a side (__dir metamethod).
+ * - Arg 1: full userdata containing the team.
+ * - Ret 1: a list of attributes.
+ */
+static int impl_side_dir(lua_State *L)
+{
+	return sideReg.dir(L);
 }
 
 /**
@@ -160,79 +427,7 @@ static int impl_side_tostring(lua_State* L)
  */
 static int impl_side_set(lua_State *L)
 {
-	// Hidden metamethod, so arg1 has to be a pointer to a team.
-	team &t = luaW_checkteam(L, 1);
-	char const *m = luaL_checkstring(L, 2);
-
-	const auto& reinit_flag_for_team = [&L] (const team& t) -> void {
-		auto* disp = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).get_display();
-		if(disp) {
-			disp->reinit_flags_for_team(t);
-		}
-	};
-	// Find the corresponding attribute.
-	modify_int_attrib("gold", t.set_gold(value));
-	modify_tstring_attrib("objectives", t.set_objectives(value, true));
-	//maybe add a setter for save_id too?
-	modify_int_attrib("village_gold", t.set_village_gold(value));
-	modify_int_attrib("village_support", t.set_village_support(value));
-	modify_int_attrib("recall_cost", t.set_recall_cost(value));
-	modify_int_attrib("base_income", t.set_base_income(value));
-	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value));
-	modify_bool_attrib("hidden", t.set_hidden(value));
-	modify_bool_attrib("scroll_to_leader", t.set_scroll_to_leader(value));
-	modify_string_attrib("flag", {
-		t.set_flag(value);
-		reinit_flag_for_team(t);
-	});
-	modify_string_attrib("flag_icon", t.set_flag_icon(value));
-	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
-	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
-	modify_string_attrib("controller", t.change_controller_by_wml(value));
-	modify_string_attrib("color", {
-		t.set_color(value);
-		reinit_flag_for_team(t);
-	});
-	modify_string_attrib("defeat_condition", t.set_defeat_condition_string(value));
-	modify_int_attrib("carryover_percentage", t.set_carryover_percentage(value));
-	modify_bool_attrib("carryover_add", t.set_carryover_add(value));
-	modify_bool_attrib("lost", t.set_lost(value));
-	modify_bool_attrib("persistent", t.set_persistent(value));
-	modify_bool_attrib("suppress_end_turn_confirmation", t.set_no_turn_confirmation(value));
-	modify_bool_attrib("shroud", t.set_shroud(value));
-	modify_bool_attrib("fog", t.set_fog(value));
-	modify_string_attrib("flag_icon", t.set_flag_icon(value));
-	modify_tstring_attrib("side_name", t.set_side_name(value));
-	modify_string_attrib("shroud_data", t.reshroud(); t.merge_shroud_map_data(value));
-	modify_string_attrib("share_vision", {
-		auto v = team_shared_vision::get_enum(value);
-		if(v) {
-			t.set_share_vision(*v);
-		} else {
-			return luaL_argerror(L, 3, "Invalid share_vision value (should be 'all', 'none', or 'shroud')");
-		}
-	});
-
-	if (strcmp(m, "carryover_bonus") == 0) {
-		t.set_carryover_bonus(luaL_checknumber(L, 3));
-		return 0;
-	}
-
-	if (strcmp(m, "recruit") == 0) {
-		t.set_recruits(std::set<std::string>());
-		if (!lua_istable(L, 3)) return 0;
-		for (int i = 1;; ++i) {
-			lua_rawgeti(L, 3, i);
-			if (lua_isnil(L, -1)) break;
-			t.add_recruit(lua_tostring(L, -1));
-			lua_pop(L, 1);
-		}
-		return 0;
-	}
-
-	std::string err_msg = "unknown modifiable property of side: ";
-	err_msg += m;
-	return luaL_argerror(L, 2, err_msg.c_str());
+	return sideReg.set(L);
 }
 
 static int impl_side_equal(lua_State *L)
@@ -313,6 +508,7 @@ namespace lua_team {
 		static luaL_Reg const callbacks[] {
 			{ "__index", 	    &impl_side_get},
 			{ "__newindex",	    &impl_side_set},
+			{ "__dir",          &impl_side_dir},
 			{ "__eq",	        &impl_side_equal},
 			{ "__tostring",     &impl_side_tostring},
 			{ nullptr, nullptr }

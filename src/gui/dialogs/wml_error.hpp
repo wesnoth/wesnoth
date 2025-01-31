@@ -20,18 +20,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * WML preprocessor/parser error report dialog.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * summary           | control      |yes      |Label used for displaying a brief summary of the error(s).
- * files             | control      |yes      |Label used to display the list of affected add-ons or files, if applicable. It is hidden otherwise. It is recommended to place it after the summary label.
- * post_summary      | control      |yes      |Label used for displaying instructions for reporting the error. It is recommended to place it after the file list label. It may be hidden if empty.
- * details           | control      |yes      |Full report of the parser or preprocessor error(s) found.
- * copy              | @ref button  |yes      |Button that the user can click on to copy the error report to the system clipboard.
- */
 class wml_error : public modal_dialog
 {
 public:
@@ -72,7 +60,7 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	void copy_report_callback();
 };

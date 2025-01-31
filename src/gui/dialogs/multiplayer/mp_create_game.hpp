@@ -45,9 +45,9 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
-	virtual void post_show(window& window) override;
+	virtual void post_show() override;
 
 	ng::create_engine create_engine_;
 	std::unique_ptr<ng::configure_engine> config_engine_;
@@ -99,7 +99,7 @@ private:
 	void on_game_select();
 	void on_tab_select();
 	void on_era_select();
-	void on_mod_toggle(const std::string id, toggle_button* sender);
+	void on_mod_toggle(const std::string& id, toggle_button* sender);
 	void on_random_faction_mode_select();
 
 	std::vector<std::string> get_active_mods();
@@ -119,7 +119,7 @@ private:
 	 * This only fires when the retval is OK (ie, creating a game), meaning it does not fire
 	 * when loading a saved game.
 	 */
-	bool dialog_exit_hook(window&);
+	bool dialog_exit_hook();
 
 	int convert_to_game_filtered_index(const unsigned int initial_index);
 

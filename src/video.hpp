@@ -135,10 +135,16 @@ std::vector<std::string> enumerate_drivers();
 /**
  * The refresh rate of the screen.
  *
+ * In most cases, this will be the native refresh rate of the display, but
+ * could be lower if FPS has been artificially capped (i.e., through --max-fps).
+ *
  * If a refresh cannot be detected, this may return 0, or it may return a
  * substitute value.
  */
 int current_refresh_rate();
+
+/** The native refresh rate of display, not taking any user preferences into account. */
+int native_refresh_rate();
 
 /** True iff the window is not hidden. */
 bool window_is_visible();
@@ -225,7 +231,7 @@ rect input_area();
  * This is equal to output_size() / game_canvas_size().
  * Currently it is always integer, and the same in both dimensions.
  *
- * This may differ from preferences::pixel_scale() in some cases,
+ * This may differ from prefs::get().pixel_scale() in some cases,
  * For example if the window is too small to fit the desired scale.
  *
  * @returns     The currently active pixel scale multiplier.

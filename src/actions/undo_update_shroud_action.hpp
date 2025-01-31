@@ -16,37 +16,33 @@
 
 #include "undo_action.hpp"
 
-namespace actions
+namespace actions::undo
 {
-namespace undo
-{
-
-struct auto_shroud_action : undo_action_base {
+struct auto_shroud_action : undo_action {
 	bool active;
 
 	explicit auto_shroud_action(bool turned_on)
-		: undo_action_base()
+		: undo_action()
 		, active(turned_on)
-	{}
-	virtual const char* get_type() const { return "auto_shroud"; }
-	virtual ~auto_shroud_action() {}
+	{
+	}
+	explicit auto_shroud_action(const config& cfg)
+		: undo_action()
+		, active(cfg["active"].to_bool())
+	{
+	}
+
+	static const char* get_type_impl() { return "auto_shroud"; }
+	virtual const char* get_type() const { return get_type_impl(); }
+
+	virtual bool undo(int);
+
+	virtual ~auto_shroud_action()
+	{
+	}
 
 	/** Writes this into the provided config. */
 	virtual void write(config & cfg) const;
 };
 
-struct update_shroud_action : undo_action_base {
-	// No additional data.
-
-	update_shroud_action()
-		: undo_action_base()
-	{}
-	virtual const char* get_type() const { return "update_shroud"; }
-	virtual ~update_shroud_action() {}
-
-	/** Writes this into the provided config. */
-	virtual void write(config & cfg) const;
-};
-
-}
 }

@@ -131,8 +131,7 @@ common_palette& editor_toolkit::get_palette()
 void editor_toolkit::update_mouse_action_highlights()
 {
 	DBG_ED << __func__;
-	int x, y;
-	sdl::get_mouse_state(&x, &y);
+	auto [x, y] = sdl::get_mouse_location();
 	map_location hex_clicked = gui_.hex_clicked_on(x,y);
 	get_mouse_action().update_brush_highlights(gui_, hex_clicked);
 }
@@ -147,7 +146,7 @@ void editor_toolkit::clear_mouseover_overlay()
 	gui_.clear_mouseover_hex_overlay();
 }
 
-void editor_toolkit::set_brush(std::string id) {
+void editor_toolkit::set_brush(const std::string& id) {
 
 	for (brush& i : brushes_) {
 		if (i.id() == id) {

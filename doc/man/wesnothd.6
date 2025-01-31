@@ -24,15 +24,11 @@ multiplayer network daemon
 .SH SYNOPSIS
 .
 .B wesnothd
-.RB [\| \-dv \|]
+.RB [\| \-dvw \|]
 .RB [\| \-c
 .IR path \|]
 .RB [\| \-p
 .IR port \|]
-.RB [\| \-t
-.IR number \|]
-.RB [\| \-T
-.IR number \|]
 .br
 .B wesnothd
 .B \-V
@@ -75,17 +71,6 @@ binds the server to the specified port. If no port is specified, port
 .B 15000
 will be used.
 .TP
-.BI -t\  number ,\ --threads \ number
-sets the maximum number of waiting worker threads for network I/O to n (default:
-.BR 5 ,\ max:\  30 ).
-.TP
-.BI -T\  number ,\ --max-threads \ number
-sets the maximum number of worker threads that will be created.
-If set to
-.B 0
-there will be no limit (default:
-.BR 0 ).
-.TP
 .B -V, --version
 shows version number and exits.
 .TP
@@ -116,9 +101,6 @@ Set it to \fByes\fR to allow remote shutdown via a /query by an administrator.
 Full or relative path to a (gzip compressed) file that the server can read and write.
 Bans will be saved to this file and read again on server start.
 .TP
-.B compress_stored_rooms
-Determines whether the rooms file should be read and written to in compressed form. Defaults to \fByes\fR.
-.TP
 .B connections_allowed
 The number of allowed connections from the same IP. \fB0\fR means infinite. (default: \fB5\fR)
 .TP
@@ -132,11 +114,14 @@ Names/nicks that are not accepted by the server. \fB*\fR and \fB?\fR from wildca
 .BR glob (7)
 for more details.
 Default values (used if nothing is specified) are:
-.BR *admin*,*admln*,*server*,ai,ai?,computer,human,network,player .
+.BR *admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player .
 .TP
 .B fifo_path
 The path to the fifo you can echo server commands into (same as /query ... from wesnoth).
 If not specified defaults to the compile-time path (default: \fB/var/run/wesnothd/socket\fR).
+.TP
+.B id
+The ID of the server when using the database functionality to store game information. Generally is the major.minor version of accepted clients, such as 1.16 or 1.17.
 .TP
 .B max_messages
 The number of allowed messages in \fBmessages_time_period\fR. (default: \fB4\fR)
@@ -147,9 +132,6 @@ The time period (in seconds) message flooding is detected in. (default: \fB10\fR
 .B motd
 The message of the day.
 .TP
-.B new_room_policy
-Determines who can create new rooms on the server. Available values are \fBeveryone\fR, \fBregistered\fR, \fBadmin\fR and \fBnobody\fR, and give the permission respectively to everyone, registered users, admin users or disables new room creation. Default value is \fBeveryone\fR.
-.TP
 .B passwd
 The password used to gain admin privileges (via \fB/query admin \fIpassword\fR).
 .TP
@@ -158,9 +140,6 @@ The directory where the server stores game replays. (Don't forget the trailing /
 .TP
 .B restart_command
 The command that the server uses to start a new server process via the \fBrestart\fR command. (Can only be issued via the fifo. See the \fBallow_remote_shutdown\fR setting.)
-.TP
-.B room_save_file
-Path to a file where the room info should be stored. This file is read on server startup and written to later. If empty or not set, rooms are not loaded and not saved.
 .TP
 .B save_replays
 Defines whether the server will automatically save replays of games. (default: \fBfalse\fR)
@@ -182,9 +161,6 @@ A comma separated list of version strings to be accepted by the server. \fB*\fR 
 (defaults to the corresponding wesnoth version)
 .br
 Example: \fBversions_accepted="*"\fR accepts any version string.
-.TP
-.B id
-The ID of the server when using the database functionality to store game information. Generally is the major.minor version of accepted clients, such as 1.16 or 1.17.
 .
 .SS "Global tags:"
 .
@@ -264,11 +240,14 @@ The name of the table in which wesnothd will save its own data about games.
 .B db_game_player_info_table
 The name of the table in which wesnothd will save its own data about the players in a game.
 .TP
-.B db_game_modification_info_table
-The name of the table in which wesnothd will save its own data about the modifications used in a game.
+.B db_game_content_info_table
+The name of the table in which wesnothd will save its own data about game content (scenario/era/modifications) used in a game.
 .TP
 .B db_user_group_table
 The name of the table in which your phpbb forum saves its user group data. Most likely this will be <table-prefix>_user_group  (e.g. phpbb3_user_group).
+.TP
+.B db_tournament_query
+The SQL query to find tournaments to announce on login. Should return tournament \fBtitle\fR, \fBstatus\fR and \fBurl\fR.
 .TP
 .B db_connection_history_table
 The name of the table in which to store login/logout times. Also used for matching IPs to users and vice versa.
@@ -281,6 +260,12 @@ The name of the table in which your phpbb forum saves its user bans data. Most l
 .TP
 .B mp_mod_group
 The ID of the forum group to be considered as having moderation authority.
+.TP
+.B forum_admin_group
+The ID of one of the forum groups to be considered as having admin authority on the add-ons server.
+.TP
+.B site_admin_group
+The ID of one of the forum groups to be considered as having admin authority on the add-ons server.
 .RE
 .
 .SH EXIT STATUS

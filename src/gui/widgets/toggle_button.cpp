@@ -42,7 +42,7 @@ toggle_button::toggle_button(const implementation::builder_toggle_button& builde
 	, state_(ENABLED)
 	, state_num_(0)
 	, retval_(retval::NONE)
-	, icon_name_()
+	, icon_name_(builder.icon_name)
 {
 	connect_signal<event::MOUSE_ENTER>(std::bind(
 			&toggle_button::signal_handler_mouse_enter, this, std::placeholders::_2, std::placeholders::_3));
@@ -223,9 +223,9 @@ namespace implementation
 
 builder_toggle_button::builder_toggle_button(const config& cfg)
 	: builder_styled_widget(cfg)
-	, icon_name_(cfg["icon"])
+	, icon_name(cfg["icon"])
 	, retval_id_(cfg["return_value_id"])
-	, retval_(cfg["return_value"])
+	, retval_(cfg["return_value"].to_int())
 {
 }
 
@@ -233,7 +233,6 @@ std::unique_ptr<widget> builder_toggle_button::build() const
 {
 	auto widget = std::make_unique<toggle_button>(*this);
 
-	widget->set_icon_name(icon_name_);
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 
 	DBG_GUI_G << "Window builder: placed toggle button '" << id

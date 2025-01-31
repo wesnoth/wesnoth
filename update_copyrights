@@ -2,7 +2,8 @@
 # encoding: utf-8
 
 ##
-# This script checks all media files in the repository for whether they've been modified or added without updating the file tracking image, sound, and music copyright
+# This script checks all sound/music files in the repository for whether they've been modified or added without updating the file tracking sound or music copyright
+# This check was used in continuous integration for image files as well prior to September 2024.  
 ##
 
 import argparse
@@ -57,13 +58,10 @@ def do_hash(file):
 
 args = argparse.ArgumentParser()
 args.add_argument("--repo", default=".", help="The directory of the Wesnoth repository to run this script against.")
-args.add_argument("--output", default="output.csv", help="The file to write the results of this script to.")
+args.add_argument("--output", default="copyrights.csv", help="The file to write the results of this script to.")
 args.add_argument("--input", default="copyrights.csv", help="The file to read the existing copyright data from.")
 options = args.parse_args()
 os.chdir(options.repo)
-
-with contextlib.suppress(FileNotFoundError):
-    os.remove(options.output)
 
 csv_data = {}
 # Too few fields
@@ -80,8 +78,6 @@ incomplete = []
 update = []
 unchanged = []
 removed = []
-# Sanity-check that the input is in the same order as the output would be
-csvfile_needs_sorting = False
 # Sanity-check for known licenses
 unknown_licenses = []
 
@@ -93,8 +89,6 @@ with open(options.input, encoding="utf-8") as csvfile:
             continue
 
         file = row[1]
-        if file < previous_file:
-            csvfile_needs_sorting = True
         previous_file = file
 
         if not os.path.exists(file):
@@ -103,45 +97,44 @@ with open(options.input, encoding="utf-8") as csvfile:
 
         csv_data[file] = row
 
+with contextlib.suppress(FileNotFoundError):
+    os.remove(options.output)
+
 for root, _, files in os.walk(options.repo):
     for filename in files:
         filetype = Path(filename).suffix
-        if filetype == ".png" or filetype == ".jpg" or filetype == ".webp" or filetype == ".wav" or filetype == ".ogg":
-            file = os.path.normpath(os.path.join(root, filename))
-            hash = do_hash(file)
+        if filetype == ".wav" or filetype == ".ogg":
+            file_path = os.path.normpath(os.path.join(root, filename))
+            if os.path.sep != '/':
+                # Always use slashes for the file path irrespective of OS used to run the update
+                file_path = file_path.replace(os.path.sep, '/')
+            file_hash = do_hash(file_path)
 
-            if not file in csv_data:
-                added.append(["", file, "", "", "", do_git(file), hash])
-            elif len(csv_data[file]) < 7:
-                missing_fields.append(csv_data[file])
-            elif len(csv_data[file]) > 7:
-                extra_fields.append(csv_data[file])
-            elif csv_data[file][5] != "":
-                update.append(csv_data[file])
-            elif csv_data[file][6] != hash:
-                csv_data[file][5] = do_git(file)
-                csv_data[file][6] = hash
-                changed.append(csv_data[file])
-            elif csv_data[file][2].strip() == "" or csv_data[file][3].strip() == "":
-                incomplete.append(csv_data[file])
-            elif not csv_data[file][2] in known_licenses:
-                unknown_licenses.append(csv_data[file][2])
-                incomplete.append(csv_data[file])
+            if not file_path in csv_data:
+                added.append(["", file_path, "", "", "", do_git(file_path), file_hash])
+            elif len(csv_data[file_path]) < 7:
+                missing_fields.append(csv_data[file_path])
+            elif len(csv_data[file_path]) > 7:
+                extra_fields.append(csv_data[file_path])
+            elif csv_data[file_path][5] != "":
+                update.append(csv_data[file_path])
+            elif csv_data[file_path][6] != file_hash:
+                csv_data[file_path][5] = do_git(file_path)
+                csv_data[file_path][6] = file_hash
+                changed.append(csv_data[file_path])
+            elif csv_data[file_path][2].strip() == "" or csv_data[file_path][3].strip() == "":
+                incomplete.append(csv_data[file_path])
+            elif not csv_data[file_path][2] in known_licenses:
+                unknown_licenses.append(csv_data[file_path][2])
+                incomplete.append(csv_data[file_path])
             else:
-                unchanged.append(csv_data[file])
-
-missing_fields.sort(key=itemgetter(1))
-extra_fields.sort(key=itemgetter(1))
-added.sort(key=itemgetter(1))
-changed.sort(key=itemgetter(1))
-incomplete.sort(key=itemgetter(1))
-update.sort(key=itemgetter(1))
-unchanged.sort(key=itemgetter(1))
+                unchanged.append(csv_data[file_path])
 
 final_output = missing_fields + extra_fields + added + changed + incomplete + update + unchanged
+final_output.sort(key=itemgetter(1))
 
 if options.output != "":
-    with open(options.output, 'w') as f:
+    with open(options.output, 'w', encoding="utf-8") as f:
         writer = csv.writer(f, lineterminator="\n")
         writer.writerow(["Date", "File", "License", "Author - Real Name(other name);Real Name(other name);etc", "Notes", "Needs Update", "MD5"])
         writer.writerows(final_output)
@@ -152,24 +145,24 @@ else:
 any_check_failed = False
 if len(removed) > 0:
     any_check_failed = True
-    print("There are "+str(len(removed))+" removed images")
+    print("There are "+str(len(removed))+" removed files")
+    print(",".join(removed))
 
-if len(missing_fields) > 0 or len(extra_fields) > 0 or len(added) > 0 or len(changed) > 0 or len(incomplete) > 0 or len(update) > 0:
+count_missing_fields = len(missing_fields)
+count_extra_fields = len(extra_fields)
+count_added = len(added)
+count_changed = len(changed)
+count_incomplete = len(incomplete)
+count_update = len(update)
+
+if count_missing_fields > 0 or count_extra_fields > 0 or count_added > 0 or count_changed > 0 or count_incomplete > 0 or count_update > 0:
     any_check_failed = True
-    print("There are "+str(len(missing_fields))+" rows with too few fields")
-    print("There are "+str(len(extra_fields))+" rows with too many fields, possibly due to an unquoted comma")
-    print("There are "+str(len(added))+" new images")
-    print("There are "+str(len(changed))+" changed images")
-    print("There are "+str(len(incomplete))+" images that lack license or author information")
-    print("There are "+str(len(update))+" images that need updated information")
-    if options.output != "":
-        print("These are at the top of the output for easy editing, run the tool again after editing to sort the file")
-
-if csvfile_needs_sorting:
-    print("The input file isn’t sorted by filename")
-
-    if options.output != "" and final_output == unchanged:
-        print("The new output file is correctly sorted")
+    print("\nThere are "+str(count_missing_fields)+" rows with too few fields:\n"+"\n".join(",".join(a) for a in missing_fields))
+    print("\nThere are "+str(count_extra_fields)+" rows with too many fields, possibly due to an unquoted comma:\n"+"\n".join(",".join(a) for a in extra_fields))
+    print("\nThere are "+str(count_added)+" new files:\n"+"\n".join(a[1] for a in added))
+    print("\nThere are "+str(count_changed)+" changed files:\n"+"\n".join(a[1] for a in changed))
+    print("\nThere are "+str(count_incomplete)+" files that lack license or author information:\n"+"\n".join(a[1] for a in incomplete))
+    print("\nThere are "+str(count_update)+" files that need updated information:\n"+"\n".join(a[1] for a in update))
 
 if len(unknown_licenses) > 0:
     any_check_failed = True

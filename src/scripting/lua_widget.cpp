@@ -16,6 +16,11 @@
 #include "scripting/lua_widget.hpp"
 #include "scripting/lua_widget_attributes.hpp"
 
+#include "gui/widgets/listbox.hpp"
+#include "gui/widgets/multi_page.hpp"
+#include "gui/widgets/stacked_widget.hpp"
+#include "gui/widgets/tree_view.hpp"
+#include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/widget.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_ptr.hpp"
@@ -182,6 +187,26 @@ static int impl_widget_collect(lua_State* L)
 	return 0;
 }
 
+// merge in number_of_items stuff from wiget_methods here?
+static int impl_widget_length(lua_State* L)
+{
+	gui2::widget& w = luaW_checkwidget(L, 1);
+	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(&w)) {
+		lua_pushinteger(L, list->get_item_count());
+	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(&w)) {
+		lua_pushinteger(L, multi_page->get_page_count());
+	} else if(gui2::stacked_widget* stacked_widget = dynamic_cast<gui2::stacked_widget*>(&w)) {
+		lua_pushinteger(L, stacked_widget->get_layer_count());
+	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(&w)) {
+		lua_pushinteger(L, tree_view->get_root_node().count_children());
+	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(&w)) {
+		lua_pushinteger(L, tree_view_node->count_children());
+	} else {
+		luaW_tableget(L, 1, "type");
+		return luaL_error(L, "unsupported widget for # operator: %s", luaL_checkstring(L, -1));
+	}
+	return 1;
+}
 
 namespace lua_widget {
 	void register_metatable(lua_State* L)
@@ -196,6 +221,8 @@ namespace lua_widget {
 		lua_setfield(L, -2, "__dir");
 		lua_pushcfunction(L, impl_widget_collect);
 		lua_setfield(L, -2, "__gc");
+		lua_pushcfunction(L, impl_widget_length);
+		lua_setfield(L, -2, "__len");
 		lua_pushstring(L, widgetKey);
 		lua_setfield(L, -2, "__metatable");
 	}

@@ -11,7 +11,7 @@ jobs:
   checks: # checks that don't need a wesnoth binary
     runs-on: ubuntu-latest
     container:
-      image: wesnoth/wesnoth:2204-master
+      image: wesnoth/wesnoth:2404-master
       options: --tty # docker create options
       env:
         CLICOLOR_FORCE: 1
@@ -31,6 +31,9 @@ jobs:
       - name: Whitespace and WML indentation check
         if: success() || failure()
         run: ./utils/CI/fix_whitespace.sh; git status; git diff --exit-code
+      - name: WML missing images check
+        if: success() || failure()
+        run: utils/CI/check_wml_images.sh
       - name: Run luacheck
         if: success() || failure()
         run: luacheck .
@@ -38,31 +41,33 @@ jobs:
         if: success() || failure()
         run: doxygen doc/doxygen/Doxyfile
 
-  copyright: # check takes a bit longer and does not need to run in docker
+  copyright: # check takes a bit longer and does not need to run in docker (sound/music only)
     runs-on: ubuntu-latest
     steps:
       - { uses: actions/checkout@v4, with: { fetch-depth: 50 } }
 
-      - name: Copyright check
-        run: ./update_copyrights --output=
+      - name: Sound/Music copyright check
+        run: ./update_copyrights
 
   ubuntu:
     strategy:
       fail-fast: false
       matrix:
         include:
-          - { tool: scons, cc: gcc,   cxx: g++,     cfg: debug,   lto: false, sys_lua: false }
-          - { tool: cmake, cc: clang, cxx: clang++, cfg: release, lto: true,  sys_lua: true  }
+          # the check for WML tests below may need to be adjusted if configurations are changed
+          - { cfg: debug,   tool: scons, cc: gcc,   cxx: g++,     std: 17, lto: false, sys_lua: false }
+          - { cfg: release, tool: cmake, cc: gcc,   cxx: g++,     std: 20, lto: true,  sys_lua: false }
+          - { cfg: release, tool: cmake, cc: clang, cxx: clang++, std: 17, lto: true,  sys_lua: true  }
     runs-on: ubuntu-latest
     container:
-      image: wesnoth/wesnoth:2204-master
+      image: wesnoth/wesnoth:2404-master
       options: --tty # docker create options
       env:
         TOOL: ${{ matrix.tool }}
         CFG: ${{ matrix.cfg }}
         CC: ${{ matrix.cc }}
         CXX: ${{ matrix.cxx }}
-        CXX_STD: 17
+        CXX_STD: ${{ matrix.std }}
         LTO: ${{ matrix.lto }}
         SYS_LUA: ${{ matrix.sys_lua }}
         CLICOLOR_FORCE: 1
@@ -85,9 +90,14 @@ jobs:
                 scons "$@" build="$CFG" ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
                   extra_flags_config="-pipe" forum_user_handler=true \
                   nls=false enable_lto="$LTO" system_lua="$SYS_LUA" force_color=true \
-                  jobs=2 --debug=time glibcxx_debug=true glibcxx_assertions=true
+                  jobs=2 --debug=time glibcxx_debug=true glibcxx_assertions=true compile_db=true
               }
               build strict=true wesnoth boost_unit_tests
+
+              build cdb
+              # disable all warnings since we have coverage on them in a standard build, and clang-tidy
+              # triggers false positive compiler warnings that clang itself won't
+              run-clang-tidy -quiet -use-color -j 2 -extra-arg="-w" -warnings-as-errors='*' '^(?!.*src/modules/|.*build/)'
 
               apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
 
@@ -99,7 +109,7 @@ jobs:
                 cmake "$@" -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
                   -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_MYSQL=true \
                   -DENABLE_NLS=false -DENABLE_LTO="$LTO" -DFORCE_COLOR_OUTPUT=true -DLTO_JOBS=2 \
-                  -DENABLE_SYSTEM_LUA="$SYS_LUA" .
+                  -DENABLE_SYSTEM_LUA="$SYS_LUA -DCLANG_TIDY=true" .
               }
               rm -R /usr/local/lib/cmake
               rm /usr/local/lib/libboost*
@@ -118,18 +128,27 @@ jobs:
         if: success() || steps.build.outcome == 'success'
         run: |
           ./wesnoth --version
-          for opt in config data userconfig userdata
+          for opt in data userdata usercache
           do
             output=$(./wesnoth --nobanner --"$opt"-path)
             if [ "$output" = "" ]; then printf 'option --%s-path prints nothing to stdout!\n' "$opt" >&2; exit 1; fi
             printf '%s-path: %s\n' "$opt" "$output"
           done
       - name: WML validation
-        if: success() || steps.build.outcome == 'success'
+        # only run on release builds (takes ~10 times as long on debug); since there are multiple release builds
+        # but running the following tests multiple times doesn't make much sense use cc==clang as the check
+        if: matrix.cc == 'clang' && (success() || steps.build.outcome == 'success')
         run: ./utils/CI/schema_validation.sh
       - name: Run WML tests
-        if: success() || steps.build.outcome == 'success'
-        run: ./run_wml_tests -g -c -t 20 -bt 1000
+        # only run on release builds (takes ~6 times as long on debug)
+        if: matrix.cc == 'clang' && (success() || steps.build.outcome == 'success')
+        run: ./run_wml_tests -v -v -g -c -t 20 -bt 1000 -a=--userdata-dir=ud
+      - name: Upload userdata files from WML unit tests (logs, replays)
+        if: matrix.cc == 'clang' && (success() || failure())
+        uses: actions/upload-artifact@v4
+        with:
+          name: WMLTest-userdata-Linux
+          path: ud
       - name: Run play tests
         if: success() || steps.build.outcome == 'success'
         run: ./utils/CI/play_test_executor.sh
@@ -200,7 +219,7 @@ jobs:
           # write to an ignored filename so the build is not marked as modified
           jq '.modules |= map(select(.name == "wesnoth").sources[0]={type:"dir",path:"."})' packaging/flatpak/org.wesnoth.Wesnoth.json > wesnoth-manifest.json
           git config --global --add safe.directory "$PWD"
-          branch=ci-$(git describe)
+          branch=ci-$(git describe || git log -n 1 --format=%h) # if git describe fails fall back to the commit hash
           flatpak-builder --force-clean --default-branch="$branch" --disable-rofiles-fuse --jobs=2 wesnoth-app wesnoth-manifest.json
           flatpak build-export export wesnoth-app "$branch"
           flatpak build-bundle export wesnoth.flatpak org.wesnoth.Wesnoth "$branch" --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo
@@ -214,7 +233,7 @@ jobs:
   translations:
     runs-on: ubuntu-latest
     container:
-      image: wesnoth/wesnoth:2204-master
+      image: wesnoth/wesnoth:2404-master
       env:
        LANGUAGE: en_US.UTF-8
        LANG: en_US.UTF-8
@@ -234,7 +253,7 @@ jobs:
           make pot-update; echo "Ran make pot-update"
           make mo-update; echo "Ran make mo-update"
           make clean
-          
+
           scons translations build=release --debug=time nls=true jobs=2; echo "Ran scons translations"
           scons pot-update; echo "Ran scons pot-update"
           scons update-po4a; echo "Ran scons update-po4a"
@@ -244,8 +263,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cfg: [ Debug, Release ]
-    runs-on: macos-11.0
+        cfg: [ Release ]
+    runs-on: macos-13
     env:
       CFG: ${{ matrix.cfg }}
 
@@ -260,15 +279,18 @@ jobs:
           ./projectfiles/Xcode/Fix_Xcode_Dependencies
       - name: Build translations
         run: scons translations build=release --debug=time nls=true jobs=2
-      - name: Build wesnoth and unit tests
+      - name: Build wesnoth, wesnothd, campaignd and unit tests
         working-directory: projectfiles/Xcode
         run: |
-          xcodebuild ARCHS=x86_64 -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -target "unit_tests" -configuration "$CFG"
+          xcodebuild ARCHS=x86_64 -project "The Battle for Wesnoth.xcodeproj" -configuration "$CFG" -target "The Battle for Wesnoth" -target "unit_tests" -target wesnothd -target campaignd
           # xcodebuild or maybe clang do not appear to fail properly when input files cannot be found; double check executables were produced
           [ -x "build/$CFG/The Battle for Wesnoth.app" ] || { printf 'Failed to build wesnoth executable!\n' >&2; exit 1; }
+          [ -x "build/$CFG/wesnothd"   ] || { printf 'Failed to build wesnothd executable!\n' >&2; exit 1; }
+          [ -x "build/$CFG/campaignd"  ] || { printf 'Failed to build campaignd executable!\n' >&2; exit 1; }
           [ -x "build/$CFG/unit_tests" ] || { printf 'Failed to build unit test executable!\n' >&2; exit 1; }
       - name: Create disk image
         working-directory: projectfiles/Xcode
+        continue-on-error: true  # allow failures since this is not essential and it does fail spuriously (hdiutil: create failed - Resource busy)
         run: hdiutil create -volname "Wesnoth_$CFG" -fs 'HFS+' -srcfolder "build/$CFG" -ov -format UDBZ "Wesnoth_${CFG}.dmg"
       - name: Upload disk image
         uses: actions/upload-artifact@v4
@@ -277,7 +299,13 @@ jobs:
           path: projectfiles/Xcode/Wesnoth_${{ matrix.cfg }}.dmg
       - name: Run WML tests
         if: matrix.cfg == 'Release'
-        run: ./run_wml_tests -g -c -t 30 -p "projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth"
+        run: ./run_wml_tests -g -c -t 30 -bt 350 -p "projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth" -a=--userdata-dir="$PWD/ud"
+      - name: Upload userdata files from WML unit tests (logs, replays)
+        if: matrix.cfg == 'Release' && (success() || failure())
+        uses: actions/upload-artifact@v4
+        with:
+          name: WMLTest-userdata-MacOS
+          path: ud
       - name: Run unit tests
         run: ./run_boost_tests --path=projectfiles/Xcode/build/"$CFG" --executable=unit_tests
 
@@ -285,7 +313,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cfg: [Debug, Release]
+        cfg: [Release]
     env:
       CFG: ${{ matrix.cfg }}
       VCPKG_FEATURE_FLAGS: dependencygraph
@@ -294,7 +322,7 @@ jobs:
     defaults:
       run:
         shell: cmd
-    runs-on: windows-2019
+    runs-on: windows-latest
 
     steps:
       - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
@@ -317,14 +345,21 @@ jobs:
         run: cmake -DCMAKE_BUILD_TYPE=%CFG% -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true
           -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false
           -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -DVCPKG_INSTALL_OPTIONS=--debug
-          -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
+          -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 17 2022" .
 
       - name: Build wesnoth, wesnothd, campaignd and unit tests
         run: MSBuild.exe wesnoth.sln -p:Configuration=%CFG%
 
       - name: Run WML unit tests
         if: matrix.cfg == 'Release'
-        run: python run_wml_tests -v -g -c -t 20 -p %CFG%/wesnoth.exe
+        run: python run_wml_tests -v -g -c -t 20 -p %CFG%/wesnoth.exe -a=--userdata-dir=ud
+
+      - name: Upload userdata files from WML unit tests (logs, replays)
+        if: matrix.cfg == 'Release' && (success() || failure())
+        uses: actions/upload-artifact@v4
+        with:
+          name: WMLTest-userdata-Windows
+          path: ud
 
 # run after all other jobs have completed to check overall build status
   notification:

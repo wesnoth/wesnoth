@@ -26,8 +26,7 @@ wesnothd \- Battle for \fBWesnoth\fP マルチプレイヤー・ネットワー�
 .
 .SH 書式
 .
-\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
-\fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
@@ -56,12 +55,6 @@ wesnothd をデーモンとして実行する。
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
 指定ポートにサーバーをバインドする。もしポートが指定されないなら、 \fB15000\fP番ポートが使用される。
-.TP 
-\fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
-ネットワーク I/O 用の作業スレッドの数の最大値を n に設定する。(既定値: \fB5\fP、\ 最大: \fB30\fP)
-.TP 
-\fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
-作成される作業スレッドの数の最大値を設定する。 \fB0\fP が指定された場合、制限なしとなる。(既定値: \fB0\fP)
 .TP 
 \fB\-V, \-\-version\fP
 バージョン番号を表示して、終了する。
@@ -92,9 +85,6 @@ wesnothd をデーモンとして実行する。
 \fBban_save_file\fP
 サーバーが読み書きする（gzip 圧縮の）ファイルへの完全パスまたは相対パス。 ban はこのファイルへ保存され、サーバー開始時に再度読み込まれる。
 .TP 
-\fBcompress_stored_rooms\fP
-部屋ファイルが圧縮形式で読み書きされるか決定する。既定値は \fByes\fP。
-.TP 
 \fBconnections_allowed\fP
 同じ IP から許可される接続数。 \fB0\fP は無限大を意味する。(既定値: \fB5\fP)
 .TP 
@@ -102,13 +92,18 @@ wesnothd をデーモンとして実行する。
 \fBuser_handler\fP に登録されていないユーザーのログインを拒否する。（デフォルト：false）
 .TP 
 \fBdisallow_names\fP
-サーバーによって受けつけられない名前やニックネーム。 \fB*\fP と \fB?\fP からなるワイルドカードのパターンに対応。詳細は \fBglob\fP(7)
-を参照。既定の値(何も指定されなかった際に使用される)は
-\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP。
+Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+\fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
 サーバーコマンド(wesnoth からの /query ... と同じ)をエコーする fifo
 へのパス。指定されない場合の既定値はコンパイル時に指定されたパス(既定値: \fB/var/run/wesnothd/socket\fP)。
+.TP 
+\fBid\fP
+ゲーム情報を保存するためにデータベース機能を使用する場合のサーバーのID。一般的には、1.16 や 1.17 のように、接続したクライアントアプリの
+メジャー番号.マイナー番号 で構成されるバージョン番号。
 .TP 
 \fBmax_messages\fP
 \fBmessages_time_period\fP の時間内に許可されるメッセージ数。(既定値: \fB4\fP)
@@ -118,10 +113,6 @@ wesnothd をデーモンとして実行する。
 .TP 
 \fBmotd\fP
 本日のメッセージ。
-.TP 
-\fBnew_room_policy\fP
-サーバー上で新しい部屋を立てられる者を決定する。使用可能な値は \fBeveryone\fP と \fBregistered\fP と \fBadmin\fP と
-\fBnobody\fP で、それぞれ全員、登録ユーザー、管理者ユーザーに権限を与えるか、新しい部屋を立てられなくする。既定値は \fBeveryone\fP。
 .TP 
 \fBpasswd\fP
 管理者権限の獲得に用いられるパスワード。(\fB/query admin \fP\fIpassword\fP で)
@@ -133,35 +124,27 @@ wesnothd をデーモンとして実行する。
 \fBrestart_command\fP
 \fBrestart\fP コマンドで新しいサーバープロセスを開始するのにサーバーが使用するコマンド。(fifo で問題があるときのみ。)
 .TP 
-\fBroom_save_file\fP
-部屋情報が置かれるファイルへのパス。このファイルはサーバー開始時に読み込まれ、後で書き出される。空欄か未設定の場合は、部屋は読み込まれず保存されない。
-.TP 
 \fBsave_replays\fP
 サーバーが自動的にゲームのリプレイを保存するか定義する。(既定値: \fBfalse\fP)
 .TP 
 \fBtls_enabled\fP
-Enable use of TLS. If true, requires 3 following options to be set too.
+TLSの使用を有効にする。trueの場合は、以下の3つのオプションも設定する必要がある。
 .TP 
 \fBtls_fullchain\fP
-TLS full certificate chain in .pem format
+\&.pem形式のTLSフル証明書チェーン
 .TP 
 \fBtls_private_key\fP
-private key for TLS in .pem format
+\&.pem形式のTLS用秘密鍵
 .TP 
 \fBtls_dh\fP
-TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
-filename.pem 4096\fP
+\&.pemファイルとして生成される TLS DHパラメータ。　\fBopenssl dhparam \-out filename.pem 4096\fP
+で生成する。
 .TP 
 \fBversions_accepted\fP
 カンマで区切られた、サーバーに受けつけられるバージョン文字列のリスト。 \fB*\fP と \fB?\fP からなるワイルドカードのパターンに対応。(既定値では
 wesnoth のバージョンに一致する)
 .br
 例: \fBversions_accepted="*"\fP で、どのようなバージョン文字列も受けつける。
-.TP 
-\fBid\fP
-The ID of the server when using the database functionality to store game
-information. Generally is the major.minor version of accepted clients, such
-as 1.16 or 1.17.
 .
 .SS グローバルタグ:
 .
@@ -217,8 +200,8 @@ Y (年) で %d は数字。もし時間修飾子がない場合は分(m)が指�
 ユーザーのパスワード
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forum saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+phpbbフォーラムがユーザーデータを保存するテーブル名。<table\-prefix>_users
+（例：phpbb3_users）である可能性が高い。
 .TP 
 \fBdb_extra_table\fP
 ユーザーに関するデータをwesnothdが保存するテーブル名。
@@ -229,30 +212,39 @@ likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 \fBdb_game_player_info_table\fP
 ゲーム内プレイヤーに関するデータをwesnothdが保存するテーブル名。
 .TP 
-\fBdb_game_modification_info_table\fP
-ゲームで使用されるMODに関するデータをwesnothdが保存するテーブル名。
+\fBdb_game_content_info_table\fP
+The name of the table in which wesnothd will save its own data about game
+content (scenario/era/modifications) used in a game.
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forum saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+ユーザーグループデータをphpbbフォーラムが保存するテーブル名。<table\-prefix>_user_group
+（例：phpbb3_user_group）である可能性が高い
+.TP 
+\fBdb_tournament_query\fP
+The SQL query to find tournaments to announce on login. Should return
+tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
 .TP 
 \fBdb_connection_history_table\fP
-The name of the table in which to store login/logout times. Also used for
-matching IPs to users and vice versa.
+ログイン/ログアウトの回数を保存するためのDBテーブル名。または IP とユーザーのマッチングにも使用される。
 .TP 
 \fBdb_topics_table\fP
-The name of the table in which your phpbb forum saves its topic (thread)
-information. Most likely this will be <table\-prefix>_topics
-(e.g. phpbb3_topics).
+トピック（スレッド）情報をphpbbフォーラムが保存するテーブル名。 <table\-prefix>_topics
+（例：phpbb3_user_group）である可能性が高い。
 .TP 
 \fBdb_banlist_table\fP
-The name of the table in which your phpbb forum saves its user bans
-data. Most likely this will be <table\-prefix>_banlist
-(e.g. phpbb3_banlist).
+ユーザーの入室禁止データをphpbbフォーラムが保存するテーブル名。<table\-prefix>_banlist
+（例：phpbb3_banlist）である可能性が高い。
 .TP 
 \fBmp_mod_group\fP
 モデレーション権限を持つフォーラムグループのID。
+.TP 
+\fBforum_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
+.TP 
+\fBsite_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
 .RE
 .
 .SH 終了ステータス

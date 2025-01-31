@@ -26,6 +26,7 @@
 #include "units/abilities.hpp"
 #include "units/unit.hpp"
 #include "units/unit_alignments.hpp"
+#include "utils/general.hpp"
 
 #include <algorithm>
 #include <iterator>
@@ -79,7 +80,7 @@ void tod_manager::resolve_random(randomness::rng& r)
 	}
 
 	// Remove non-positive times
-	output.erase(std::remove_if(output.begin(), output.end(), [](int time) { return time <= 0; }), output.end());
+	utils::erase_if(output, [](int time) { return time <= 0; });
 
 	if(!output.empty()) {
 		int chosen = output[r.next_random() % output.size()];
@@ -92,7 +93,7 @@ void tod_manager::resolve_random(randomness::rng& r)
 	random_tod_ = false;
 }
 
-config tod_manager::to_config(std::string textdomain) const
+config tod_manager::to_config(const std::string& textdomain) const
 {
 	config cfg;
 	cfg["turn_at"] = turn_;
@@ -241,7 +242,7 @@ const time_of_day tod_manager::get_illuminated_time_of_day(
 			if(itor != units.end() && !itor->incapacitated()) {
 				unit_ability_list illum = itor->get_abilities("illuminates");
 				if(!illum.empty()) {
-					unit_abilities::effect illum_effect(illum, terrain_light);
+					unit_abilities::effect illum_effect(illum, terrain_light, nullptr, unit_abilities::EFFECT_WITHOUT_CLAMP_MIN_MAX);
 					const int unit_mod = illum_effect.get_composite_value();
 
 					// Record this value.

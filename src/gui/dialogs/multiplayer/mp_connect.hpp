@@ -30,15 +30,6 @@ class listbox;
 namespace dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog to the MP server to connect to.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * start_table       | text_box     |yes      |The name of the server to connect to.
- * list              | @ref button  |no       |Shows a dialog with a list of predefined servers to connect to.
- */
 class mp_connect : public modal_dialog
 {
 	/** The unit test needs to be able to test the mp_connect dialog. */
@@ -53,7 +44,7 @@ public:
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	// Signal handlers
 
@@ -85,12 +76,7 @@ private:
 			return owner_ && row_ >= 0;
 		}
 
-		bool user_defined() const
-		{
-			// An invalid selection is the same as one from the read-only list of
-			// built-in servers for interaction purposes since it can't be written to.
-			return valid() && std::size_t(row_) >= owner_->builtin_servers_.size();
-		}
+		bool user_defined() const;
 
 		unsigned row() const;
 

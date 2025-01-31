@@ -61,7 +61,7 @@ public:
 	bool victory_when_enemies_defeated_;
 	bool remove_from_carryover_on_defeat_;
 
-	std::optional<end_level_data> end_level_data_;
+	utils::optional<end_level_data> end_level_data_;
 	// used to sync with the mpserver
 	int server_request_number_;
 
@@ -135,6 +135,8 @@ public:
 	/** Checks if any of the sides leaders can recruit at a location */
 	bool side_can_recruit_on(int side, map_location loc) const;
 
+	/** Checks whether this is not the last scenario (usually of a campaign)*/
+	bool has_next_scenario() const;
 	/** creates a new side during a game. @todo: maybe add parameters like id etc? */
 	void add_side_wml(config cfg);
 };

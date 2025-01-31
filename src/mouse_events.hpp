@@ -62,7 +62,7 @@ public:
 
 	unit_map::iterator selected_unit();
 
-	pathfind::marked_route get_route(const unit* un, map_location go_to, team &team) const;
+	pathfind::marked_route get_route(const unit* un, map_location go_to, const team &team) const;
 
 	const pathfind::marked_route& get_current_route() const { return current_route_; }
 
@@ -80,13 +80,16 @@ public:
 
 	void select_hex(const map_location& hex, const bool browse,
 		const bool highlight = true,
-		const bool fire_event = true);
+		const bool fire_event = true,
+		const bool force_unhighlight = false);
 
 	void move_action(bool browse) override;
+	void teleport_action();
 
 	void touch_action(const map_location hex, bool browse) override;
 
 	void select_or_action(bool browse);
+	void select_teleport();
 
 	/**
 	 * Uses SDL and @ref game_display::hex_clicked_on
@@ -138,7 +141,7 @@ protected:
 
 	// fill weapon choices into bc_vector
 	// return the best weapon choice
-	int fill_weapon_choices(std::vector<battle_context>& bc_vector, unit_map::iterator attacker, unit_map::iterator defender);
+	int fill_weapon_choices(std::vector<battle_context>& bc_vector, const unit_map::iterator& attacker, const unit_map::iterator& defender);
 	// the real function but can throw bad_alloc
 	// choice is the attack chosen in the attack dialog
 	void attack_enemy_(const map_location& attacker_loc
@@ -154,10 +157,8 @@ protected:
 	 */
 	unit* find_unit_nonowning(const map_location& hex);
 	const unit* find_unit_nonowning(const map_location& hex) const;
-	bool unit_in_cycle(unit_map::const_iterator it);
+	bool unit_in_cycle(const unit_map::const_iterator& it);
 private:
-	team& viewing_team();
-	const team& viewing_team() const;
 	team &current_team();
 
 	// Some common code from mouse_motion and touch_motion.
@@ -192,6 +193,7 @@ private:
 	bool over_route_;
 	bool reachmap_invalid_;
 	bool show_partial_move_;
+	bool teleport_selected_;
 
 	static mouse_handler * singleton_;
 

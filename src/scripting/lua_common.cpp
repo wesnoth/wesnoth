@@ -235,12 +235,12 @@ static int impl_vconfig_get(lua_State *L)
 	if (shallow_literal || strcmp(m, "__shallow_parsed") == 0)
 	{
 		lua_newtable(L);
-		for (const config::attribute &a : v->get_config().attribute_range()) {
+		for(const auto& [key, value] : v->get_config().attribute_range()) {
 			if (shallow_literal)
-				luaW_pushscalar(L, a.second);
+				luaW_pushscalar(L, value);
 			else
-				luaW_pushscalar(L, v->expand(a.first));
-			lua_setfield(L, -2, a.first.c_str());
+				luaW_pushscalar(L, v->expand(key));
+			lua_setfield(L, -2, key.c_str());
 		}
 		vconfig::all_children_iterator i = v->ordered_begin(),
 			i_end = v->ordered_end();
@@ -569,7 +569,7 @@ namespace {
 		void operator()(double d) const
 		{ lua_pushnumber(L, d); }
 		void operator()(const std::string& s) const
-		{ lua_pushstring(L, s.c_str()); }
+		{ lua_pushlstring(L, s.c_str(), s.size()); }
 		void operator()(const t_string& s) const
 		{ luaW_pushtstring(L, s); }
 	};
@@ -590,7 +590,7 @@ bool luaW_toscalar(lua_State *L, int index, config::attribute_value& v)
 			v = lua_tonumber(L, -1);
 			break;
 		case LUA_TSTRING:
-			v = lua_tostring(L, -1);
+			v = std::string(luaW_tostring(L, -1));
 			break;
 		case LUA_TUSERDATA:
 		{
@@ -657,26 +657,26 @@ void luaW_filltable(lua_State *L, const config& cfg)
 		return;
 
 	int k = 1;
-	for (const config::any_child ch : cfg.all_children_range())
+	for(const auto [child_key, child_cfg] : cfg.all_children_view())
 	{
 		luaW_push_namedtuple(L, {"tag", "contents"});
-		lua_pushstring(L, ch.key.c_str());
+		lua_pushstring(L, child_key.c_str());
 		lua_rawseti(L, -2, 1);
 		lua_newtable(L);
-		luaW_filltable(L, ch.cfg);
+		luaW_filltable(L, child_cfg);
 		lua_rawseti(L, -2, 2);
 		lua_rawseti(L, -2, k++);
 	}
-	for (const config::attribute &attr : cfg.attribute_range())
+	for(const auto& [key, value] : cfg.attribute_range())
 	{
-		luaW_pushscalar(L, attr.second);
-		lua_setfield(L, -2, attr.first.c_str());
+		luaW_pushscalar(L, value);
+		lua_setfield(L, -2, key.c_str());
 	}
 }
 
 static int impl_namedtuple_get(lua_State* L)
 {
-	if(lua_isstring(L, 2)) {
+	if(lua_type(L, 2) == LUA_TSTRING) {
 		std::string k = lua_tostring(L, 2);
 		luaL_getmetafield(L, 1, "__names");
 		auto names = lua_check<std::vector<std::string>>(L, -1);
@@ -687,6 +687,26 @@ static int impl_namedtuple_get(lua_State* L)
 			return 1;
 		}
 	}
+	return 0;
+}
+
+static int impl_namedtuple_set(lua_State* L)
+{
+	if(lua_type(L, 2) == LUA_TSTRING) {
+		std::string k = lua_tostring(L, 2);
+		luaL_getmetafield(L, 1, "__names");
+		auto names = lua_check<std::vector<std::string>>(L, -1);
+		auto iter = std::find(names.begin(), names.end(), k);
+		if(iter != names.end()) {
+			int i = std::distance(names.begin(), iter) + 1;
+			lua_pushvalue(L, 3);
+			lua_rawseti(L, 1, i);
+			return 0;
+		}
+	}
+	// If it's not one of the special names, just assign normally
+	lua_settop(L, 3);
+	lua_rawset(L, 1);
 	return 0;
 }
 
@@ -709,22 +729,80 @@ static int impl_namedtuple_tostring(lua_State* L)
 	return 1;
 }
 
+static int impl_namedtuple_compare(lua_State* L) {
+	// Comparing a named tuple with any other table is always false.
+	if(lua_type(L, 1) != LUA_TTABLE || lua_type(L, 2) != LUA_TTABLE) {
+		NOT_EQUAL:
+		lua_pushboolean(L, false);
+		return 1;
+	}
+	luaL_getmetafield(L, 1, "__name");
+	luaL_getmetafield(L, 2, "__name");
+	if(!lua_rawequal(L, 3, 4)) goto NOT_EQUAL;
+	lua_pop(L, 2);
+	// Named tuples can be equal only if they both have the exact same set of names.
+	luaL_getmetafield(L, 1, "__names");
+	luaL_getmetafield(L, 2, "__names");
+	auto lnames = lua_check<std::vector<std::string>>(L, 3);
+	auto rnames = lua_check<std::vector<std::string>>(L, 4);
+	if(lnames != rnames) goto NOT_EQUAL;
+	lua_pop(L, 2);
+	// They are equal if all of the corresponding members in each tuple are equal.
+	for(size_t i = 1; i <= lnames.size(); i++) {
+		lua_rawgeti(L, 1, i);
+		lua_rawgeti(L, 2, i);
+		if(!lua_compare(L, 3, 4, LUA_OPEQ)) goto NOT_EQUAL;
+		lua_pop(L, 2);
+	}
+	// Theoretically, they could have other members besides the special named ones.
+	// But we ignore those for the purposes of equality.
+	lua_pushboolean(L, true);
+	return 1;
+}
+
 void luaW_push_namedtuple(lua_State* L, const std::vector<std::string>& names)
 {
 	lua_createtable(L, names.size(), 0);
-	lua_createtable(L, 0, 4);
+	lua_createtable(L, 0, 8);
 	static luaL_Reg callbacks[] = {
 		{ "__index", &impl_namedtuple_get },
+		{ "__newindex", &impl_namedtuple_set },
 		{ "__dir", &impl_namedtuple_dir },
+		{ "__eq", &impl_namedtuple_compare },
 		{ "__tostring", &impl_namedtuple_tostring },
 		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, callbacks, 0);
-	lua_pushliteral(L, "named tuple");
+	static const char baseName[] = "named tuple";
+	std::ostringstream str;
+	str << baseName << '(';
+	if(!names.empty()) {
+		str << names[0];
+	}
+	for(size_t i = 1; i < names.size(); i++) {
+		str << ", " << names[i];
+	}
+	str << ')';
+	lua_push(L, str.str());
 	lua_setfield(L, -2, "__metatable");
 	lua_push(L, names);
 	lua_setfield(L, -2, "__names");
+	lua_pushstring(L, "named tuple");
+	lua_setfield(L, -2, "__name");
 	lua_setmetatable(L, -2);
+}
+
+std::vector<std::string> luaW_to_namedtuple(lua_State* L, int idx) {
+	std::vector<std::string> names;
+	if(luaL_getmetafield(L, idx, "__name")) {
+		if(lua_check<std::string>(L, -1) == "named tuple") {
+			luaL_getmetafield(L, idx, "__names");
+			names = lua_check<std::vector<std::string>>(L, -1);
+			lua_pop(L, 1);
+		}
+		lua_pop(L, 1);
+	}
+	return names;
 }
 
 void luaW_pushlocation(lua_State *L, const map_location& ml)
@@ -830,8 +908,25 @@ void luaW_pushconfig(lua_State *L, const config& cfg)
 	luaW_filltable(L, cfg);
 }
 
+luaW_PrintStack luaW_debugstack(lua_State* L) {
+	return {L};
+}
 
-
+std::ostream& operator<<(std::ostream& os, const luaW_PrintStack& s) {
+	int top = lua_gettop(s.L);
+	os << "Lua Stack\n";
+	for(int i = 1; i <= top; i++) {
+		luaW_getglobal(s.L, "wesnoth", "as_text");
+		lua_pushvalue(s.L, i);
+		lua_call(s.L, 1, 1);
+		auto value = luaL_checkstring(s.L, -1);
+		lua_pop(s.L, 1);
+		os << '[' << i << ']' << value << '\n';
+	}
+	if(top == 0) os << "(empty)\n";
+	os << std::flush;
+	return os;
+}
 
 #define return_misformed() \
   do { lua_settop(L, initial_top); return false; } while (0)
@@ -1031,7 +1126,7 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 			v.as_scalar() = lua_tonumber(L, n);
 			return true;
 		case LUA_TSTRING:
-			v.as_scalar() = lua_tostring(L, n);
+			v.as_scalar() = std::string(luaW_tostring(L, n));
 			return true;
 		case LUA_TUSERDATA:
 			if (t_string * t_str = static_cast<t_string*> (luaL_testudata(L, n, tstringKey))) {

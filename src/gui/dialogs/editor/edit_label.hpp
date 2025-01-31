@@ -20,16 +20,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog for editing gamemap labels.
- * Key               |Type           |Mandatory|Description
- * ------------------|---------------|---------|-----------
- * title             | @ref label    |yes      |Dialog title label.
- * label             | @ref text_box |yes      |Input field for the map label.
- * team_only_toggle  | toggle_button |yes      |Checkbox for whether to make the label visible to the player's team only or not.
- */
 class editor_edit_label : public modal_dialog
 {
 public:
@@ -61,8 +51,8 @@ private:
 	color_t& color_store;
 	int load_color_component(uint8_t color_t::* component);
 	void save_color_component(uint8_t color_t::* component, const int value);
-	void register_color_component(std::string widget_id, uint8_t color_t::* component);
+	void register_color_component(const std::string& widget_id, uint8_t color_t::* component);
 	virtual const std::string& window_id() const override;
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 };
 } // namespace dialogs

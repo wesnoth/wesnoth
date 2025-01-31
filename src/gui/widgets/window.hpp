@@ -54,15 +54,12 @@ class distributor;
 } // namespace event
 
 /**
- * @ingroup GUIWidgetWML
- *
  * base class of top level items, the only item which needs to store the final canvases to draw on.
  * A window is a kind of panel see the panel for which fields exist.
  */
 class window : public panel, public top_level_drawable
 {
 	friend class debug_layout_graph;
-	friend std::unique_ptr<window> build(const builder_window::window_resolution&);
 	friend struct window_implementation;
 	friend class invalidate_layout_blocker;
 	friend class pane;
@@ -83,8 +80,6 @@ public:
 
 	/** Gets the retval for the default buttons. */
 	static retval get_retval_by_id(const std::string& id);
-
-	void finish_build(const builder_window::window_resolution&);
 
 	/**
 	 * Shows the window, running an event loop until it should close.
@@ -275,11 +270,10 @@ public:
 	}
 
 	/** See @ref widget::find. */
-	widget* find(const std::string& id, const bool must_be_active) override;
+	widget* find(const std::string_view id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	const widget* find(const std::string& id,
-						const bool must_be_active) const override;
+	const widget* find(const std::string_view id, const bool must_be_active) const override;
 
 #if 0
 	/** @todo Implement these functions. */
@@ -350,8 +344,10 @@ public:
 	 * @param id                  The id of the group.
 	 * @param fixed_width         Does the group have a fixed width?
 	 * @param fixed_height        Does the group have a fixed height?
+	 *
+	 * @returns                   True if successful, false otherwise.
 	 */
-	void init_linked_size_group(const std::string& id,
+	bool init_linked_size_group(const std::string& id,
 								const bool fixed_width,
 								const bool fixed_height);
 
@@ -428,21 +424,19 @@ public:
 		variables_.add(key, value);
 		queue_redraw();
 	}
-	point get_linked_size(const std::string& linked_group_id) const
-	{
-		std::map<std::string, linked_size>::const_iterator it = linked_size_.find(linked_group_id);
-		if(it != linked_size_.end()) {
-			return point(it->second.width, it->second.height);
-		}
 
-		return point(-1, -1);
+	point get_linked_size(std::string_view group_id) const
+	{
+		if(auto it = linked_size_.find(group_id); it != linked_size_.end()) {
+			return { it->second.width, it->second.height };
+		} else {
+			return { -1, -1 };
+		}
 	}
 
 	enum class exit_hook {
-		/** Always run hook */
-		on_all,
-		/** Run hook *only* if result is OK. */
-		on_ok,
+		always,
+		ok_only,
 	};
 
 	/**
@@ -450,18 +444,21 @@ public:
 	 *
 	 * A window will only close if the given function returns true under the specified mode.
 	 */
-	void set_exit_hook(exit_hook mode, std::function<bool(window&)> func)
+	template<typename Func>
+	void set_exit_hook(exit_hook mode, const Func& hook)
 	{
-		exit_hook_ = [mode, func](window& w) {
-			switch(mode) {
-			case exit_hook::on_all:
-				return func(w);
-			case exit_hook::on_ok:
-				return w.get_retval() != OK || func(w);
-			default:
-				return true;
-			}
-		};
+		switch(mode) {
+		case exit_hook::always:
+			exit_hook_ = hook;
+			break;
+
+		case exit_hook::ok_only:
+			exit_hook_ = [this, hook] { return get_retval() != OK || hook(); };
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	enum class show_mode {
@@ -604,7 +601,7 @@ private:
 	};
 
 	/** List of the widgets, whose size are linked together. */
-	std::map<std::string, linked_size> linked_size_;
+	std::map<std::string, linked_size, std::less<>> linked_size_;
 
 	/** List of widgets in the tabbing order. */
 	std::vector<widget*> tab_order;
@@ -672,7 +669,7 @@ private:
 	void finalize(const builder_grid& content_grid);
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	debug_layout_graph* debug_layout_;
+	std::unique_ptr<debug_layout_graph> debug_layout_;
 
 public:
 	/** wrapper for debug_layout_graph::generate_dot_file. */
@@ -770,7 +767,7 @@ private:
 
 	void signal_handler_close_window();
 
-	std::function<bool(window&)> exit_hook_;
+	std::function<bool()> exit_hook_;
 };
 
 // }---------- DEFINITION ---------{

@@ -25,7 +25,8 @@
 #include "persist_manager.hpp"
 #include "tod_manager.hpp"
 #include "game_state.hpp"
-#include <optional>
+#include "utils/optimer.hpp"
+#include "utils/optional_fwd.hpp"
 
 #include <set>
 
@@ -61,9 +62,7 @@ class play_controller : public controller_base, public events::observer, public 
 {
 public:
 	play_controller(const config& level,
-			saved_game& state_of_game,
-			bool skip_replay,
-			bool start_faded = false);
+			saved_game& state_of_game);
 	virtual ~play_controller();
 
 	//event handler, overridden from observer
@@ -100,6 +99,7 @@ public:
 	void init_side_end();
 
 	virtual void force_end_turn() = 0;
+	virtual void require_end_turn() = 0;
 	virtual void check_objectives() = 0;
 
 	virtual void on_not_observer() = 0;
@@ -110,6 +110,8 @@ public:
 	 * @throw quit_game_exception If the user wants to abort.
 	 */
 	virtual void process_oos(const std::string& msg) const;
+
+	bool reveal_map_default() const;
 
 	void set_end_level_data(const end_level_data& data)
 	{
@@ -125,8 +127,6 @@ public:
 	{
 		return gamestate().end_level_data_.has_value();
 	}
-
-	bool check_regular_game_end();
 
 	const end_level_data& get_end_level_data() const
 	{
@@ -210,6 +210,7 @@ public:
 	config to_config() const;
 
 	bool is_skipping_replay() const { return skip_replay_; }
+	bool is_skipping_actions() const;
 	void toggle_skipping_replay();
 	void do_autosave();
 
@@ -228,8 +229,6 @@ public:
 
 	game_events::wml_event_pump& pump();
 
-	int get_ticks() const;
-
 	virtual soundsource::manager* get_soundsource_man() override;
 	virtual plugins_context* get_plugins_context() override;
 	hotkey::command_executor* get_hotkey_command_executor() override;
@@ -242,6 +241,8 @@ public:
 
 	virtual replay_controller * get_replay_controller() const { return nullptr; }
 	bool is_replay() const { return get_replay_controller() != nullptr; }
+
+	replay& recorder() const { return *replay_; }
 
 	t_string get_scenario_name() const
 	{
@@ -270,16 +271,12 @@ public:
 
 	void maybe_throw_return_to_play_side() const;
 
-	virtual void play_side_impl() {}
-
-	void play_side();
-
 	team& current_team();
 	const team& current_team() const;
 
 	bool can_use_synced_wml_menu() const;
 	std::set<std::string> all_players() const;
-	int ticks() const { return ticks_; }
+	const auto& timer() const { return timer_; }
 	game_display& get_display() override;
 
 	void update_savegame_snapshot() const;
@@ -287,6 +284,11 @@ public:
 	 * Changes the UI for this client to the passed side index.
 	 */
 	void update_gui_to_player(const int team_index, const bool observe = false);
+
+	/// Sends replay [command]s to the server
+	virtual void send_actions() { }
+	/// Reads and executes replay [command]s from the server
+	virtual void receive_actions() { }
 
 	virtual bool is_networked_mp() const { return false; }
 	virtual void send_to_wesnothd(const config&, const std::string& = "unknown") const { }
@@ -331,14 +333,11 @@ protected:
 	void textbox_move_vertically(bool up);
 	void tab();
 
-
-	bool is_team_visible(int team_num, bool observer) const;
 public:
 	/** returns 0 if no such team was found. */
-	int find_viewing_side() const;
-
+	virtual int find_viewing_side() const = 0;
 private:
-	const int ticks_;
+	utils::ms_optimer timer_;
 
 protected:
 	//gamestate

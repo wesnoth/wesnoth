@@ -34,7 +34,7 @@ brush::brush(const config& cfg)
 	, name_(cfg["name"])
 	, id_(cfg["id"])
 {
-	int radius = cfg["radius"];
+	int radius = cfg["radius"].to_int();
 	if (radius > 0) {
 		std::vector<map_location> in_radius;
 		get_tiles_in_radius(map_location(0, 0), radius, in_radius);
@@ -44,8 +44,8 @@ brush::brush(const config& cfg)
 	}
 	for (const config &relative : cfg.child_range("relative"))
 	{
-		int x = relative["x"];
-		int y = relative["y"];
+		int x = relative["x"].to_int();
+		int y = relative["y"].to_int();
 		add_relative_location(x, y);
 	}
 	if (relative_tiles_.empty()) {

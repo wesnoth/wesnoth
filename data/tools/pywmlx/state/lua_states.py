@@ -71,7 +71,9 @@ class LuaCommentState:
         return (xline, 'lua_idle')
 
 
-
+# This matches translations enclosed in round brackets, such as a normal _("a") or
+# the plural _("a", "aa", x), and passes them to the plural-string handling
+# functions, even if it later turns out that it's not a plural.
 class LuaStr00:
     def __init__(self):
         self.regex = re.compile(r'((?:_)|(?:.*?\(_)|(?:.*?\s+_))\s*\(')
@@ -272,7 +274,7 @@ class LuaStr30:
 
 # Plural Idle 1:
 #  When argument 1 or 2 is expected
-#  Here we expect " ' or a [ wich will say us what kind of string we will add.
+#  Here we expect " ' or a [ which will tell us what kind of string we will add.
 class LuaPlIdle1:
     def __init__(self):
         self.regex = None
@@ -363,7 +365,7 @@ class LuaPlIdle3:
 #.....................
 
 
-
+# Double-quote delimited strings
 class LuaPl01:
     def __init__(self):
         rx = r'"((?:\\"|[^"])*)("?)'
@@ -414,7 +416,7 @@ class LuaPl01:
             return (xline, _nextstate)
 
 
-
+# Single-quote delimited strings
 class LuaPl02:
     def __init__(self):
         rx = r"'((?:\\'|[^'])*)('?)"
@@ -465,7 +467,7 @@ class LuaPl02:
             return (xline, _nextstate)
 
 
-
+# Long-bracketed strings, with the ending on the same line
 class LuaPl03:
     def __init__(self):
         rx = r'\[(=*)\[(.*?)]\1]'
@@ -478,23 +480,18 @@ class LuaPl03:
         _nextstate = 'lua_plidle2'
         if status == 'wait_string':
             _nextstate = 'lua_plidle2'
-            # we must fix values for luatype (wich is used later by
-            #                                 PendingLuaString.store() )
             pywmlx.state.machine._pending_luastring.luatype = 'luastr3'
-            # storing string into PendingLuaString
-            pywmlx.state.machine._pending_luastring.luastring = (
-                match.group(2)
+            pywmlx.state.machine._pending_luastring.addline(
+                match.group(2), True
             )
             pywmlx.state.machine._pending_luastring.plural.status = (
                 'wait_plural'
             )
         else:
             _nextstate = 'lua_plidle3'
-            # we must fix values for plural.pluraltype
-            pywmlx.state.machine._pending_luastring.plural.pluraltype = 2
-            # storing plural.string into PendingLuaString
-            pywmlx.state.machine._pending_luastring.plural.string = (
-                match.group(2)
+            pywmlx.state.machine._pending_luastring.plural.pluraltype = 3
+            pywmlx.state.machine._pending_luastring.plural.addline(
+                match.group(2), True
             )
             pywmlx.state.machine._pending_luastring.plural.status = (
                 'wait_close'
@@ -503,6 +500,7 @@ class LuaPl03:
 
 
 
+# Long-bracketed strings, first line of a multiline string
 class LuaPl03o:
     def __init__(self):
         rx = r'\[(=*)\[(.*)'
@@ -515,8 +513,8 @@ class LuaPl03o:
         if status == 'wait_string':
             pywmlx.state.machine._pending_luastring.ismultiline = True
             pywmlx.state.machine._pending_luastring.luatype = 'luastr3'
-            pywmlx.state.machine._pending_luastring.luastring = (
-                match.group(2)
+            pywmlx.state.machine._pending_luastring.addline(
+                match.group(2), True
             )
             pywmlx.state.machine._pending_luastring.numequals = (
                 len(match.group(1))
@@ -524,8 +522,8 @@ class LuaPl03o:
         else:
             pywmlx.state.machine._pending_luastring.plural.ismultiline = True
             pywmlx.state.machine._pending_luastring.plural.pluraltype = 3
-            pywmlx.state.machine._pending_luastring.plural.string = (
-                match.group(2)
+            pywmlx.state.machine._pending_luastring.plural.addline(
+                match.group(2), True
             )
             pywmlx.state.machine._pending_luastring.plural.numequals = (
                 len(match.group(1))
@@ -534,6 +532,7 @@ class LuaPl03o:
 
 
 
+# A previous line opened a double-quote delimited string inside a "_( ... )" translation bracket
 # well... the regex will always be true on this state, so iffail will never
 # be executed
 class LuaPl10:
@@ -547,19 +546,19 @@ class LuaPl10:
         if status == 'wait_string':
             pywmlx.state.machine._pending_luastring.addline( match.group(1) )
         else:
-            pywmlx.state.machine_pending_luastring.plural.addline(
+            pywmlx.state.machine._pending_luastring.plural.addline(
                 match.group(1)
             )
         if match.group(2) == '"':
             xline = xline [ match.end(): ]
             if status == 'wait_string':
                 _nextstate = 'lua_plidle2'
-                pywmlx.state.machine_pending_luastring.plural.status = (
+                pywmlx.state.machine._pending_luastring.plural.status = (
                     'wait_plural'
                 )
             else:
                 _nextstate = 'lua_plidle3'
-                pywmlx.state.machine_pending_luastring.plural.status = (
+                pywmlx.state.machine._pending_luastring.plural.status = (
                     'wait_close'
                 )
         else:
@@ -568,6 +567,7 @@ class LuaPl10:
 
 
 
+# A previous line opened a single-quote delimited string inside a "_( ... )" translation bracket
 # well... the regex will always be true on this state, so iffail will never
 # be executed
 class LuaPl20:
@@ -581,19 +581,19 @@ class LuaPl20:
         if status == 'wait_string':
             pywmlx.state.machine._pending_luastring.addline( match.group(1) )
         else:
-            pywmlx.state.machine_pending_luastring.plural.addline(
+            pywmlx.state.machine._pending_luastring.plural.addline(
                 match.group(1)
             )
-        if match.group(2) == '"':
+        if match.group(2) == "'":
             xline = xline [ match.end(): ]
             if status == 'wait_string':
                 _nextstate = 'lua_plidle2'
-                pywmlx.state.machine_pending_luastring.plural.status = (
+                pywmlx.state.machine._pending_luastring.plural.status = (
                     'wait_plural'
                 )
             else:
                 _nextstate = 'lua_plidle3'
-                pywmlx.state.machine_pending_luastring.plural.status = (
+                pywmlx.state.machine._pending_luastring.plural.status = (
                     'wait_close'
                 )
         else:

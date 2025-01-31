@@ -34,12 +34,9 @@ class terrain_palette : public editor_palette<t_translation::terrain_code> {
 
 public:
 
-	terrain_palette(editor_display &gui, const game_config_view& cfg,
-	                editor_toolkit &toolkit);
+	terrain_palette(editor_display &gui, editor_toolkit &toolkit);
 
-	const gamemap& map() const { return gui_.get_map(); }
-
-	virtual void setup(const game_config_view& cfg);
+	virtual void setup(const game_config_view& cfg) override;
 
 	void select_bg_item(const t_translation::terrain_code& terrain);
 	void select_fg_item(const t_translation::terrain_code& terrain);
@@ -47,21 +44,21 @@ public:
 	const t_translation::terrain_code& selected_fg_item() const;
 	const t_translation::terrain_code& selected_bg_item() const;
 
-	virtual std::string get_help_string();
+	virtual std::string get_help_string() const override;
 
 private:
 
-	virtual void select_bg_item(const std::string& item_id);
-	virtual void select_fg_item(const std::string& item_id);
+	virtual void select_bg_item(const std::string& item_id) override;
+	virtual void select_fg_item(const std::string& item_id) override;
 
-	virtual const std::string& get_id(const t_translation::terrain_code& terrain);
+	virtual const std::string& get_id(const t_translation::terrain_code& terrain) override;
 
 	virtual void setup_item(
 		const t_translation::terrain_code& item,
 		texture& item_base_image,
 		texture& item_overlay_image,
 		std::stringstream& tooltip
-	);
+	) override;
 };
 
 }

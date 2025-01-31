@@ -15,10 +15,9 @@
 
 #include "gui/dialogs/multiplayer/lobby_player_list_helper.hpp"
 
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view.hpp"
@@ -40,7 +39,7 @@ lobby_player_list_helper::sub_list::sub_list(tree_view* parent_tree, const std::
 		root->unfold();
 	}
 
-	label_player_count = find_widget<label>(root, "player_count", false, true);
+	label_player_count = root->find_widget<label>("player_count", false, true);
 	assert(label_player_count);
 }
 
@@ -77,11 +76,11 @@ void lobby_player_list_helper::update(const std::vector<mp::user_info>& user_inf
 			icon_ss << "-lobby";
 			break;
 		case mp::user_info::user_state::SEL_GAME:
-			name = font::span_color({0, 255, 255}, name);
+			name = markup::span_color(color_t(0, 255, 255), name);
 			icon_ss << (user.observing ? "-obs" : "-playing");
 			break;
 		case mp::user_info::user_state::GAME:
-			name = font::span_color(font::GRAY_COLOR, name);
+			name = markup::span_color(font::GRAY_COLOR, name);
 			icon_ss << (user.observing ? "-obs" : "-playing");
 			break;
 		}
@@ -150,7 +149,7 @@ void lobby_player_list_helper::update(const std::vector<mp::user_info>& user_inf
 			info_map.try_emplace(node, info);
 
 			connect_signal_mouse_left_double_click(
-				find_widget<toggle_panel>(node, "tree_view_node_label", false),
+				node->find_widget<toggle_panel>("tree_view_node_label"),
 				std::bind(user_callback, info)
 			);
 		}
@@ -166,7 +165,7 @@ void lobby_player_list_helper::update(const std::vector<mp::user_info>& user_inf
 
 void lobby_player_list_helper::init(window& w)
 {
-	tree = find_widget<tree_view>(&w, "player_tree", false, true);
+	tree = w.find_widget<tree_view>("player_tree", false, true);
 
 	player_lists = {
 		sub_list{tree, _("Selected Game"), true},

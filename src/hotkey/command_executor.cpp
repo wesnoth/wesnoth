@@ -16,6 +16,7 @@
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_item.hpp"
 
+#include "gui/gui.hpp"
 #include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
@@ -25,7 +26,7 @@
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "display.hpp"
 #include "quit_confirmation.hpp"
 #include "sdl/surface.hpp"
@@ -197,6 +198,9 @@ bool command_executor::do_execute_command(const hotkey::ui_command& cmd, bool pr
 		case HOTKEY_KILL_UNIT:
 			kill_unit();
 			break;
+		case HOTKEY_TELEPORT_UNIT:
+			select_teleport();
+			break;
 		case HOTKEY_PREFERENCES:
 			preferences();
 			break;
@@ -358,29 +362,30 @@ bool command_executor::do_execute_command(const hotkey::ui_command& cmd, bool pr
 			quit_confirmation::quit_to_desktop();
 			break;
 		case HOTKEY_QUIT_GAME:
+			gui2::switch_theme(prefs::get().gui2_theme());
 			quit_confirmation::quit_to_title();
 			break;
 		case HOTKEY_SURRENDER:
 			surrender_game();
 			break;
 		case HOTKEY_MINIMAP_DRAW_TERRAIN:
-			preferences::toggle_minimap_draw_terrain();
+			prefs::get().set_minimap_draw_terrain(!prefs::get().minimap_draw_terrain());
 			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_CODING_TERRAIN:
-			preferences::toggle_minimap_terrain_coding();
+			prefs::get().set_minimap_terrain_coding(!prefs::get().minimap_terrain_coding());
 			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_CODING_UNIT:
-			preferences::toggle_minimap_movement_coding();
+			prefs::get().set_minimap_movement_coding(!prefs::get().minimap_movement_coding());
 			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_DRAW_UNITS:
-			preferences::toggle_minimap_draw_units();
+			prefs::get().set_minimap_draw_units(!prefs::get().minimap_draw_units());
 			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_DRAW_VILLAGES:
-			preferences::toggle_minimap_draw_villages();
+			prefs::get().set_minimap_draw_villages(!prefs::get().minimap_draw_villages());
 			recalculate_minimap();
 			break;
 		case HOTKEY_ACHIEVEMENTS:
@@ -399,7 +404,7 @@ void command_executor::surrender_game() {
 	if(gui2::show_message(_("Surrender"), _("Do you really want to surrender the game?"), gui2::dialogs::message::yes_no_buttons) != gui2::retval::CANCEL) {
 		playmp_controller* pmc = dynamic_cast<playmp_controller*>(resources::controller);
 		if(pmc && !pmc->is_linger_mode() && !pmc->is_observer()) {
-			pmc->surrender(display::get_singleton()->viewing_team());
+			pmc->surrender(display::get_singleton()->viewing_team_index());
 		}
 	}
 }
@@ -412,11 +417,19 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	get_menu_images(gui, items);
 
 	int res = -1;
+	point selection_pos;
 	{
 		SDL_Rect pos {xloc, yloc, 1, 1};
 		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, true, false); // TODO: last value should be variable
 		if(mmenu.show()) {
 			res = mmenu.selected_item();
+			if(res >= 0) {
+				// Get selection coordinates for a potential submenu below
+				selection_pos = mmenu.selected_item_pos();
+				// Compensate for borders
+				selection_pos.x--;
+				selection_pos.y--;
+			}
 		}
 	} // This will kill the dialog.
 	if (res < 0 || std::size_t(res) >= items.size()) return;
@@ -424,9 +437,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	std::string id = items[res]["id"];
 	const theme::menu* submenu = gui.get_theme().get_menu_item(id);
 	if (submenu) {
-		int y,x;
-		sdl::get_mouse_state(&x,&y);
-		this->show_menu(submenu->items(), x, y, submenu->is_context(), gui);
+		this->show_menu(submenu->items(), selection_pos.x, selection_pos.y, submenu->is_context(), gui);
 	} else {
 		hotkey::ui_command cmd = hotkey::ui_command(id, res);
 		do_execute_command(cmd);
@@ -625,10 +636,10 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 			make_screenshot(_("Screenshot"), false);
 			break;
 		case HOTKEY_ANIMATE_MAP:
-			preferences::set_animate_map(!preferences::animate_map());
+			prefs::get().set_animate_map(!prefs::get().animate_map());
 			break;
 		case HOTKEY_MOUSE_SCROLL:
-			preferences::enable_mouse_scroll(!preferences::mouse_scroll_enabled());
+			prefs::get().set_mouse_scrolling(!prefs::get().mouse_scrolling());
 			break;
 		case HOTKEY_MUTE:
 			{
@@ -638,19 +649,19 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 					bool playing_sound,playing_music;
 					before_muted_s() : playing_sound(false),playing_music(false){}
 				} before_muted;
-				if (preferences::music_on() || preferences::sound_on())
+				if (prefs::get().music_on() || prefs::get().sound())
 				{
 					// then remember settings and mute both
-					before_muted.playing_sound = preferences::sound_on();
-					before_muted.playing_music = preferences::music_on();
-					preferences::set_sound(false);
-					preferences::set_music(false);
+					before_muted.playing_sound = prefs::get().sound();
+					before_muted.playing_music = prefs::get().music_on();
+					prefs::get().set_sound(false);
+					prefs::get().set_music(false);
 				}
 				else
 				{
 					// then set settings before mute
-					preferences::set_sound(before_muted.playing_sound);
-					preferences::set_music(before_muted.playing_music);
+					prefs::get().set_sound(before_muted.playing_sound);
+					prefs::get().set_music(before_muted.playing_music);
 				}
 			}
 			break;

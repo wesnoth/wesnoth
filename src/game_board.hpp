@@ -21,8 +21,9 @@
 #include "terrain/type_data.hpp"
 #include "units/map.hpp"
 #include "units/id.hpp"
+#include "utils/optional_fwd.hpp"
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <set>
 #include <vector>
 
@@ -151,8 +152,8 @@ public:
 
 	// Manipulator from actionwml
 
-	bool try_add_unit_to_recall_list(const map_location& loc, const unit_ptr u);
-	std::optional<std::string> replace_map(const gamemap & r);
+	bool try_add_unit_to_recall_list(const map_location& loc, const unit_ptr& u);
+	utils::optional<std::string> replace_map(const gamemap & r);
 
 	bool change_terrain(const map_location &loc, const std::string &t, const std::string & mode, bool replace_if_failed); //used only by lua and debug commands
 	bool change_terrain(const map_location &loc, const t_translation::terrain_code &t, terrain_type_data::merge_mode& mode, bool replace_if_failed); //used only by lua and debug commands
@@ -163,8 +164,6 @@ public:
 	unit_map::iterator find_visible_unit(const map_location & loc, std::size_t team, bool see_all = false) { return find_visible_unit(loc, teams_[team], see_all); }
 	bool has_visible_unit (const map_location & loc, const team & team, bool see_all = false) const;
 	bool has_visible_unit (const map_location & loc, std::size_t team, bool see_all = false) const { return has_visible_unit(loc, teams_[team], see_all); }
-
-	unit* get_visible_unit(const map_location &loc, const team &current_team, bool see_all = false); //TODO: can this not return a pointer?
 
 	// Wrapped functions from unit_map. These should ultimately provide notification to observers, pathfinding.
 

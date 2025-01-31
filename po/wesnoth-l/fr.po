@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Liberty-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
 "PO-Revision-Date: 2023-11-04 15:24+0100\n"
 "Last-Translator: Ismaël Brunet Pac <ismael.brunet@free.fr>\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -525,8 +525,13 @@ msgstr "Stupide gobelin."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:416
+#, fuzzy
+#| msgid ""
+#| "Hey, someone left their pack here. I could use it to carry some more "
+#| "rocks."
 msgid ""
-"Hey, someone left their pack here. I could use it to carry some more rocks."
+"Hey, someone left their pack here. I could use it to carry some heavier "
+"rocks."
 msgstr ""
 "Quelqu'un a laissé son sac ici. Je pourrais l'utiliser pour porter quelques "
 "pierres en plus."
@@ -641,7 +646,7 @@ msgstr ""
 #. [side]
 #. [side]: type=Bandit, id=Baldras
 #. [side]: type=Highwayman_Peasant, gender=female, id=Relana
-#. [side]: type=General, id=Lord Maddock
+#. [side]: type=Lord of Elensefar, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman, id=Baldras
 #. [side]: type=Shadow Lord, id=Helicrom
@@ -1301,7 +1306,7 @@ msgstr "Elensefar"
 msgid "Port of Elensefar"
 msgstr "Port d'Elensefar"
 
-#. [side]: type=General, id=Lord Maddock
+#. [side]: type=Lord of Elensefar, id=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:45
 msgid "Lord Maddock"
 msgstr "Seigneur Maddock"
@@ -3238,6 +3243,25 @@ msgid ""
 msgstr ""
 "Alors comme ça ils ont survécu ! Ces îles sont un peu loin, mais j'pense que "
 "ces vieux os peuvent encore se traîner pour une aventure..."
+
+#. [unit_type]: id=Lord of Elensefar, race=human
+#: data/campaigns/Liberty/units/Maddock.cfg:4
+#, fuzzy
+#| msgid "Port of Elensefar"
+msgid "Lord of Elensefar"
+msgstr "Port d'Elensefar"
+
+#. [unit_type]: id=Lord of Elensefar, race=human
+#: data/campaigns/Liberty/units/Maddock.cfg:7
+msgid ""
+"The grand city-state of Elensefar is the wealthiest human settlement on the "
+"Great Continent, commanding a reputation and power that belies its "
+"relatively small population. Unlike the more war-minded inland nobles, "
+"Elensefar’s governors master the art of commerce and the skill of sailing, "
+"and are known to be particularly agreeable. Yet behind that merchant charm "
+"lies a fierce independence, a trait that sometimes puts them at odds with "
+"the aristocrats of other regions."
+msgstr ""
 
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5

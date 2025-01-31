@@ -35,12 +35,12 @@
 namespace wb
 {
 
-std::ostream& operator<<(std::ostream& s, recruit_ptr recruit)
+std::ostream& operator<<(std::ostream& s, const recruit_ptr& recruit)
 {
 	assert(recruit);
 	return recruit->print(s);
 }
-std::ostream& operator<<(std::ostream& s, recruit_const_ptr recruit)
+std::ostream& operator<<(std::ostream& s, const recruit_const_ptr& recruit)
 {
 	assert(recruit);
 	return recruit->print(s);
@@ -175,7 +175,7 @@ void recruit::draw_hex(const map_location& hex)
 		number_text << font::unicode_minus << cost_;
 		std::size_t font_size = 16;
 		color_t color {255, 0, 0}; //red
-		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+		display::get_singleton()->draw_text_in_hex(hex, drawing_layer::actions_numbering,
 						number_text.str(), font_size, color, x_offset, y_offset);
 	}
 }

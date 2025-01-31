@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include <chrono>
 #include <string>
 #include <memory>
 
@@ -39,8 +40,8 @@ public:
 	bool immediate() const { return immediate_; }
 	bool shuffle() const { return shuffle_; }
 	bool play_once() const { return once_; }
-	int ms_before() const { return ms_before_; }
-	int ms_after()  const { return ms_after_;  }
+	auto ms_before() const { return ms_before_; }
+	auto ms_after()  const { return ms_after_;  }
 
 	const std::string& file_path() const { return file_path_; }
 	const std::string& id() const { return id_; }
@@ -48,8 +49,8 @@ public:
 
 	void set_play_once(bool v) { once_ = v; }
 	void set_shuffle(bool v) { shuffle_ = v; }
-	void set_ms_before(int v) { ms_before_ = v; }
-	void set_ms_after(int v) { ms_after_ = v; }
+	void set_ms_before(const std::chrono::milliseconds& v) { ms_before_ = v; }
+	void set_ms_after(const std::chrono::milliseconds& v) { ms_after_ = v; }
 	void set_title(const std::string& v) { title_ = v; }
 
 private:
@@ -59,7 +60,7 @@ private:
 	std::string file_path_;
 	std::string title_;
 
-	int ms_before_, ms_after_;
+	std::chrono::milliseconds ms_before_, ms_after_;
 
 	bool once_;
 	bool append_;

@@ -25,20 +25,6 @@ class formula_debugger;
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the debugger for the formulas.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * stack             | control      |yes      |A stack.
- * execution         | control      |yes      |Execution trace label.
- * state             | control      |yes      |The state.
- * step              | @ref button  |yes      |Button to step into the execution.
- * stepout           | @ref button  |yes      |Button to step out of the execution.
- * next              | @ref button  |yes      |Button to execute the next statement.
- * continue          | @ref button  |yes      |Button to continue the execution.
- */
 class formula_debugger : public modal_dialog
 {
 public:
@@ -50,7 +36,7 @@ public:
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(formula_debugger)
 
 private:
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	virtual const std::string& window_id() const override;
 

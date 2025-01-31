@@ -30,6 +30,7 @@
 #include "play_controller.hpp"
 #include "playsingle_controller.hpp"
 #include "resources.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 #include "synced_context.hpp"
 #include "units/types.hpp"
@@ -45,9 +46,6 @@ static lg::log_domain log_engine_enemies("engine/enemies");
 #define DBG_NGE LOG_STREAM(debug, log_engine_enemies)
 #define LOG_NGE LOG_STREAM(info, log_engine_enemies)
 #define WRN_NGE LOG_STREAM(warn, log_engine_enemies)
-
-// Static member initialization
-const int team::default_team_gold_ = 100;
 
 // Update this list of attributes if you change what is used to define a side
 // (excluding those attributes used to define the side's leader).
@@ -104,7 +102,6 @@ const std::set<std::string> team::attributes {
 	"faction_lock",
 	"gold_lock",
 	"income_lock",
-	"leader",
 	"leader_lock",
 	"random_leader",
 	"team_lock",
@@ -116,6 +113,15 @@ const std::set<std::string> team::attributes {
 	"description"
 };
 
+// Update this list of child tags if you change what is used to define a side
+// (excluding those attributes used to define the side's leader).
+const std::set<std::string> team::tags {
+	"ai",
+	"leader",
+	"unit",
+	"variables",
+	"village"
+};
 team::team_info::team_info()
 	: gold(0)
 	, start_gold(0)
@@ -164,8 +170,8 @@ team::team_info::team_info()
 
 void team::team_info::read(const config& cfg)
 {
-	gold = cfg["gold"];
-	income = cfg["income"];
+	gold = cfg["gold"].to_int();
+	income = cfg["income"].to_int();
 	team_name = cfg["team_name"].str();
 	user_team_name = cfg["user_team_name"];
 	side_name = cfg["side_name"];
@@ -174,7 +180,7 @@ void team::team_info::read(const config& cfg)
 	save_id = cfg["save_id"].str();
 	current_player = cfg["current_player"].str();
 	countdown_time = cfg["countdown_time"].str();
-	action_bonus_count = cfg["action_bonus_count"];
+	action_bonus_count = cfg["action_bonus_count"].to_int();
 	flag = cfg["flag"].str();
 	flag_icon = cfg["flag_icon"].str();
 	id = cfg["id"].str();
@@ -217,11 +223,9 @@ void team::team_info::read(const config& cfg)
 	// at the start of a scenario "start_gold" is not set, we need to take the
 	// value from the gold setting (or fall back to the gold default)
 	if(!cfg["start_gold"].empty()) {
-		start_gold = cfg["start_gold"];
-	} else if(!cfg["gold"].empty()) {
-		start_gold = gold;
+		start_gold = cfg["start_gold"].to_int();
 	} else {
-		start_gold = default_team_gold_;
+		start_gold = gold;
 	}
 
 	if(team_name.empty()) {
@@ -327,8 +331,7 @@ void team::team_info::write(config& cfg) const
 }
 
 team::team()
-	: gold_(0)
-	, villages_()
+	: villages_()
 	, shroud_()
 	, fog_()
 	, fog_clearer_()
@@ -349,9 +352,8 @@ team::~team()
 {
 }
 
-void team::build(const config& cfg, const gamemap& map, int gold)
+void team::build(const config& cfg, const gamemap& map)
 {
-	gold_ = gold;
 	info_.read(cfg);
 
 	fog_.set_enabled(cfg["fog"].to_bool());
@@ -371,17 +373,6 @@ void team::build(const config& cfg, const gamemap& map, int gold)
 		fog_clearer_.insert(fog_vector.begin(), fog_vector.end());
 	}
 
-	// To ensure some minimum starting gold,
-	// gold is the maximum of 'gold' and what is given in the config file
-	gold_ = std::max(gold, info_.gold);
-	if(gold_ != info_.gold) {
-		info_.start_gold = gold;
-	}
-
-	// Old code was doing:
-	// info_.start_gold = std::to_string(gold) + " (" + info_.start_gold + ")";
-	// Was it correct?
-
 	// Load in the villages the side controls at the start
 	for(const config& v : cfg.child_range("village")) {
 		map_location loc(v);
@@ -392,8 +383,8 @@ void team::build(const config& cfg, const gamemap& map, int gold)
 		}
 	}
 
-	countdown_time_ = cfg["countdown_time"];
-	action_bonus_count_ = cfg["action_bonus_count"];
+	countdown_time_ = chrono::parse_duration<std::chrono::milliseconds>(cfg["countdown_time"]);
+	action_bonus_count_ = cfg["action_bonus_count"].to_int();
 
 	planned_actions_.reset(new wb::side_actions());
 	planned_actions_->set_team_index(info_.side - 1);
@@ -405,7 +396,6 @@ void team::write(config& cfg) const
 	cfg["auto_shroud"] = auto_shroud_updates_;
 	cfg["shroud"] = uses_shroud();
 	cfg["fog"] = uses_fog();
-	cfg["gold"] = gold_;
 
 	// Write village locations
 	for(const map_location& loc : villages_) {
@@ -439,9 +429,9 @@ game_events::pump_result_t team::get_village(const map_location& loc, const int 
 	game_events::pump_result_t res;
 
 	if(gamedata) {
-		config::attribute_value& var = gamedata->get_variable("owner_side");
-		const config::attribute_value old_value = var;
-		var = owner_side;
+		config::attribute_value var_owner_side;
+		var_owner_side = owner_side;
+		std::swap(var_owner_side, gamedata->get_variable("owner_side"));
 
 		// During team building, game_events pump is not guaranteed to exist yet. (At current revision.) We skip capture
 		// events in this case.
@@ -449,10 +439,10 @@ game_events::pump_result_t team::get_village(const map_location& loc, const int 
 			res = resources::game_events->pump().fire("capture", loc);
 		}
 
-		if(old_value.blank()) {
+		if(var_owner_side.blank()) {
 			gamedata->clear_variable("owner_side");
 		} else {
-			var = old_value;
+			std::swap(var_owner_side, gamedata->get_variable("owner_side"));
 		}
 	}
 
@@ -677,9 +667,9 @@ bool team::fogged(const map_location& loc) const
 const std::vector<const shroud_map*>& team::ally_shroud(const std::vector<team>& teams) const
 {
 	if(ally_shroud_.empty()) {
-		for(std::size_t i = 0; i < teams.size(); ++i) {
-			if(!is_enemy(i + 1) && (&(teams[i]) == this || teams[i].share_view() || teams[i].share_maps())) {
-				ally_shroud_.push_back(&(teams[i].shroud_));
+		for(const team& t : teams) {
+			if(!is_enemy(t.side()) && (&t == this || t.share_view() || t.share_maps())) {
+				ally_shroud_.push_back(&t.shroud_);
 			}
 		}
 	}
@@ -690,9 +680,9 @@ const std::vector<const shroud_map*>& team::ally_shroud(const std::vector<team>&
 const std::vector<const shroud_map*>& team::ally_fog(const std::vector<team>& teams) const
 {
 	if(ally_fog_.empty()) {
-		for(std::size_t i = 0; i < teams.size(); ++i) {
-			if(!is_enemy(i + 1) && (&(teams[i]) == this || teams[i].share_view())) {
-				ally_fog_.push_back(&(teams[i].fog_));
+		for(const team& t : teams) {
+			if(!is_enemy(t.side()) && (&t == this || t.share_view())) {
+				ally_fog_.push_back(&t.fog_);
 			}
 		}
 	}

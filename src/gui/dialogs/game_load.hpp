@@ -23,27 +23,8 @@
 
 #include <SDL2/SDL_keycode.h>
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog to select and load a savegame file.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * txtFilter         | text         |yes      |The filter for the listbox items.
- * savegame_list     | @ref listbox |yes      |List of savegames.
- * filename          | control      |yes      |Name of the savegame.
- * date              | control      |no       |Date the savegame was created.
- * preview_pane      | widget       |yes      |Container widget or grid that contains the items for a preview. The visible status of this container depends on whether or not something is selected.
- * minimap           | @ref minimap |yes      |Minimap of the selected savegame.
- * imgLeader         | @ref image   |yes      |The image of the leader in the selected savegame.
- * lblScenario       | @ref label   |yes      |The name of the scenario of the selected savegame.
- * lblSummary        | @ref label   |yes      |Summary of the selected savegame.
- */
 class game_load : public modal_dialog
 {
 public:
@@ -52,7 +33,7 @@ public:
 	static bool execute(const game_config_view& cache_config, savegame::load_game_metadata& data);
 
 private:
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	virtual const std::string& window_id() const override;
 
@@ -61,10 +42,16 @@ private:
 	/** Update (both internally and visually) the list of games. */
 	void populate_game_list();
 
-	void filter_text_changed(const std::string& text);
 	void browse_button_callback();
 	void delete_button_callback();
 	void handle_dir_select();
+
+	/**
+	 * Hides saves not matching the given filter.
+	 *
+	 * @param text Current contents of the textbox
+	 */
+	void apply_filter_text(const std::string& text);
 
 	/** Part of display_savegame that might throw a config::error if the savegame data is corrupt. */
 	void display_savegame_internal(const savegame::save_info& game);
@@ -84,8 +71,6 @@ private:
 
 	std::vector<savegame::save_info> games_;
 	const game_config_view& cache_config_;
-
-	std::vector<std::string> last_words_;
 };
-} // namespace dialogs
-} // namespace gui2
+
+} // namespace gui2::dialogs

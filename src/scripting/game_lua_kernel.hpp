@@ -68,6 +68,10 @@ class game_lua_kernel : public lua_kernel_base
 	static config preload_config;
 
 	friend class game_config_manager; // to allow it to call extract_preload_scripts
+	friend struct current_tag;
+	friend struct scenario_tag;
+	friend struct schedule_tag;
+	friend struct game_config_glk_tag;
 
 	// Private lua callbacks
 	int intf_allow_end_turn(lua_State *);
@@ -78,6 +82,8 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_time_area(lua_State *);
 	int intf_animate_unit(lua_State *);
 	int intf_gamestate_inspector(lua_State *);
+	int intf_show_recruit_dialog(lua_State* L);
+	int intf_show_recall_dialog(lua_State* L);
 	int impl_run_animation(lua_State *);
 	int intf_create_animator(lua_State *);
 	int intf_get_unit(lua_State *);
@@ -93,6 +99,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_view_locked(lua_State *L);
 	int intf_lock_view(lua_State *L);
 	int impl_get_terrain_info(lua_State *L);
+	int impl_get_terrain_list(lua_State *L);
 	template<bool consider_illuminates>
 	int intf_get_time_of_day(lua_State *L);
 	int impl_schedule_get(lua_State *L);
@@ -102,11 +109,11 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_set_village_owner(lua_State *L);
 	int intf_get_mouseover_tile(lua_State *L);
 	int intf_get_selected_tile(lua_State *L);
-	int impl_game_config_get(lua_State *L) override;
-	int impl_game_config_set(lua_State *L) override;
 	int impl_scenario_get(lua_State *L);
 	int impl_scenario_set(lua_State *L);
+	int impl_scenario_dir(lua_State *L);
 	int impl_current_get(lua_State *L);
+	int impl_current_dir(lua_State *L);
 	int intf_clear_messages(lua_State*);
 	int impl_end_level_data_set(lua_State*);
 	int intf_end_turn(lua_State*);
@@ -170,11 +177,13 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_redraw(lua_State *L);
 	int intf_replace_schedule(lua_State *l);
 	int impl_schedule_set(lua_State *L);
+	int impl_schedule_dir(lua_State *L);
 	int intf_scroll(lua_State *L);
 	int intf_get_all_vars(lua_State *L);
-	int impl_theme_item(lua_State *L, std::string name);
+	int impl_theme_item(lua_State *L, const std::string& name);
 	int impl_theme_items_get(lua_State *L);
 	int impl_theme_items_set(lua_State *L);
+	int impl_theme_items_dir(lua_State *L);
 	int cfun_builtin_effect(lua_State *L);
 	int cfun_wml_action(lua_State *L);
 	int intf_fire_event(lua_State *L, const bool by_id);

@@ -19,49 +19,49 @@
 
 #include "desktop/open.hpp"
 #include "game_initialization/multiplayer.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "gui/widgets/window.hpp"
-#include "preferences/credentials.hpp"
+#include "preferences/preferences.hpp"
 
 namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(mp_method_selection)
 
+/** Link to the wesnoth forum account registration page */
 static const std::string forum_registration_url = "https://forums.wesnoth.org/ucp.php?mode=register";
 
-void mp_method_selection::pre_show(window& window)
+void mp_method_selection::pre_show()
 {
-	user_name_ = preferences::login();
-
-	text_box* user_widget = find_widget<text_box>(&window, "user_name", false, true);
-	user_widget->set_value(user_name_);
+	text_box* user_widget = find_widget<text_box>("user_name", false, true);
+	user_widget->set_value(prefs::get().login());
 	user_widget->set_maximum_length(mp::max_login_size);
 
-	window.keyboard_capture(user_widget);
+	listbox* list = find_widget<listbox>("method_list", false, true);
+	list->select_row(prefs::get().mp_connect_type());
 
-	listbox* list = find_widget<listbox>(&window, "method_list", false, true);
-	window.add_to_keyboard_chain(list);
+	add_to_tab_order(list);
+	add_to_tab_order(user_widget);
 
-	connect_signal_mouse_left_click(find_widget<button>(&window, "register", false),
+	connect_signal_mouse_left_click(find_widget<button>("register"),
 		std::bind(&desktop::open_object, forum_registration_url));
 }
 
-void mp_method_selection::post_show(window& window)
+void mp_method_selection::post_show()
 {
+	prefs::get().set_mp_connect_type(find_widget<listbox>("method_list").get_selected_row());
+
 	if(get_retval() == retval::OK) {
-		listbox& list = find_widget<listbox>(&window, "method_list", false);
-		choice_ = static_cast<choice>(list.get_selected_row());
-
-		text_box& user_widget = find_widget<text_box>(&window, "user_name", false);
+		text_box& user_widget = find_widget<text_box>("user_name");
 		user_widget.save_to_history();
-
-		user_name_ = user_widget.get_value();
-		preferences::set_login(user_name_);
+		prefs::get().set_login(user_widget.get_value());
 	}
+}
+
+mp_method_selection::choice mp_method_selection::get_choice() const
+{
+	return static_cast<choice>(prefs::get().mp_connect_type());
 }
 
 } // namespace dialogs

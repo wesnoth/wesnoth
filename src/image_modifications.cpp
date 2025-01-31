@@ -15,6 +15,8 @@
 
 #include "image_modifications.hpp"
 
+#include <utility>
+
 #include "color.hpp"
 #include "config.hpp"
 #include "game_config.hpp"
@@ -26,7 +28,7 @@
 #include "utils/from_chars.hpp"
 
 #include "formula/formula.hpp"
-#include "formula/callable.hpp"
+#include "formula/callable_objects.hpp"
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
@@ -149,29 +151,24 @@ modification_queue modification::decode(const std::string& encoded_mods)
 	return mods;
 }
 
-surface rc_modification::operator()(const surface& src) const
+void rc_modification::operator()(surface& src) const
 {
-	// unchecked
-	return recolor_image(src, rc_map_);
+	recolor_image(src, rc_map_);
 }
 
-surface fl_modification::operator()(const surface& src) const
+void fl_modification::operator()(surface& src) const
 {
-	surface ret = src;
-
 	if(horiz_  && vert_ ) {
 		// Slightly faster than doing both a flip and a flop.
-		ret = rotate_180_surface(ret);
+		src = rotate_180_surface(src);
 	} else if(horiz_) {
-		ret = flip_surface(ret);
+		flip_surface(src);
 	} else if(vert_) {
-		ret = flop_surface(ret);
+		flop_surface(src);
 	}
-
-	return ret;
 }
 
-surface rotate_modification::operator()(const surface& src) const
+void rotate_modification::operator()(surface& src) const
 {
 	// Convert the number of degrees to the interval [0,360].
 	const int normalized = degrees_ >= 0 ?
@@ -180,69 +177,83 @@ surface rotate_modification::operator()(const surface& src) const
 
 	switch ( normalized )
 	{
-		case 0:   return src;
-		case 90:  return rotate_90_surface(src, true);
-		case 180: return rotate_180_surface(src);
-		case 270: return rotate_90_surface(src, false);
-		case 360: return src;
+		case 0:
+			return;
+		case 90:
+			src = rotate_90_surface(src, true);
+			return;
+		case 180:
+			src = rotate_180_surface(src);
+			return;
+		case 270:
+			src = rotate_90_surface(src, false);
+			return;
+		case 360:
+			return;
 	}
 
-	return rotate_any_surface(src, normalized, zoom_, offset_);
+	src = rotate_any_surface(src, normalized, zoom_, offset_);
 }
 
-surface gs_modification::operator()(const surface& src) const
+void gs_modification::operator()(surface& src) const
 {
-	return greyscale_image(src);
+	greyscale_image(src);
 }
 
-surface crop_transparency_modification::operator()(const surface& src) const
+void crop_transparency_modification::operator()(surface& src) const
 {
-	return get_non_transparent_portion(src);
+	rect src_rect = get_non_transparent_portion(src);
+	if(src_rect.w == src->w && src_rect.h == src->h) {
+		return;
+	}
+
+	if(surface cropped = get_surface_portion(src, src_rect)) {
+		src = cropped;
+	} else {
+		ERR_DP << "Failed to either crop or scale the surface";
+	}
 }
 
-surface bw_modification::operator()(const surface& src) const
+void bw_modification::operator()(surface& src) const
 {
-	return monochrome_image(src, threshold_);
+	monochrome_image(src, threshold_);
 }
 
-surface sepia_modification::operator()(const surface &src) const
+void sepia_modification::operator()(surface& src) const
 {
-	return sepia_image(src);
+	sepia_image(src);
 }
 
-surface negative_modification::operator()(const surface &src) const
+void negative_modification::operator()(surface& src) const
 {
-	return negative_image(src, red_, green_, blue_);
+	negative_image(src, red_, green_, blue_);
 }
 
-surface plot_alpha_modification::operator()(const surface& src) const
+void plot_alpha_modification::operator()(surface& src) const
 {
-	return alpha_to_greyscale(src);
+	alpha_to_greyscale(src);
 }
 
-surface wipe_alpha_modification::operator()(const surface& src) const
+void wipe_alpha_modification::operator()(surface& src) const
 {
-	return wipe_alpha(src);
+	wipe_alpha(src);
 }
 
 // TODO: Is this useful enough to move into formula/callable_objects?
-class pixel_callable : public wfl::formula_callable
+class pixel_callable : public wfl::color_callable
 {
 public:
 	pixel_callable(SDL_Point p, color_t clr, uint32_t w, uint32_t h)
-		: p(p), clr(clr), w(w), h(h)
+		: color_callable(clr), p(p), w(w), h(h)
 	{}
 
 	void get_inputs(wfl::formula_input_vector& inputs) const override
 	{
+		color_callable::get_inputs(inputs);
 		add_input(inputs, "x");
 		add_input(inputs, "y");
 		add_input(inputs, "u");
 		add_input(inputs, "v");
-		add_input(inputs, "red");
-		add_input(inputs, "green");
-		add_input(inputs, "blue");
-		add_input(inputs, "alpha");
 		add_input(inputs, "height");
 		add_input(inputs, "width");
 	}
@@ -254,14 +265,6 @@ public:
 			return variant(p.x);
 		} else if(key == "y") {
 			return variant(p.y);
-		} else if(key == "red") {
-			return variant(clr.r);
-		} else if(key == "green") {
-			return variant(clr.g);
-		} else if(key == "blue") {
-			return variant(clr.b);
-		} else if(key == "alpha") {
-			return variant(clr.a);
 		} else if(key == "width") {
 			return variant(w);
 		} else if(key == "height") {
@@ -272,34 +275,22 @@ public:
 			return variant(p.y / static_cast<float>(h));
 		}
 
-		return variant();
+		return color_callable::get_value(key);
 	}
 
 private:
 	SDL_Point p;
-	color_t clr;
 	uint32_t w, h;
 };
 
-surface adjust_alpha_modification::operator()(const surface & src) const
+void adjust_alpha_modification::operator()(surface& src) const
 {
-	if(src == nullptr) {
-		return nullptr;
-	}
+	if(src) {
+		wfl::formula new_alpha(formula_);
 
-	wfl::formula new_alpha(formula_);
-
-	surface nsurf = src.clone();
-
-	if(nsurf == nullptr) {
-		PLAIN_LOG << "could not make neutral surface...";
-		return nullptr;
-	}
-
-	{
-		surface_lock lock(nsurf);
+		surface_lock lock(src);
 		uint32_t* cur = lock.pixels();
-		uint32_t* const end = cur + nsurf->w * src->h;
+		uint32_t* const end = cur + src.area();
 		uint32_t* const beg = cur;
 
 		while(cur != end) {
@@ -311,42 +302,29 @@ surface adjust_alpha_modification::operator()(const surface & src) const
 
 			int i = cur - beg;
 			SDL_Point p;
-			p.y = i / nsurf->w;
-			p.x = i % nsurf->w;
+			p.y = i / src->w;
+			p.x = i % src->w;
 
-			pixel_callable px(p, pixel, nsurf->w, nsurf->h);
+			pixel_callable px(p, pixel, src->w, src->h);
 			pixel.a = std::min<unsigned>(new_alpha.evaluate(px).as_int(), 255);
 			*cur = (pixel.a << 24) + (pixel.r << 16) + (pixel.g << 8) + pixel.b;
 
 			++cur;
 		}
 	}
-
-	return nsurf;
 }
 
-surface adjust_channels_modification::operator()(const surface & src) const
+void adjust_channels_modification::operator()(surface& src) const
 {
-	if(src == nullptr) {
-		return nullptr;
-	}
+	if(src) {
+		wfl::formula new_red(formulas_[0]);
+		wfl::formula new_green(formulas_[1]);
+		wfl::formula new_blue(formulas_[2]);
+		wfl::formula new_alpha(formulas_[3]);
 
-	wfl::formula new_red(formulas_[0]);
-	wfl::formula new_green(formulas_[1]);
-	wfl::formula new_blue(formulas_[2]);
-	wfl::formula new_alpha(formulas_[3]);
-
-	surface nsurf = src.clone();
-
-	if(nsurf == nullptr) {
-		PLAIN_LOG << "could not make neutral surface...";
-		return nullptr;
-	}
-
-	{
-		surface_lock lock(nsurf);
+		surface_lock lock(src);
 		uint32_t* cur = lock.pixels();
-		uint32_t* const end = cur + nsurf->w * src->h;
+		uint32_t* const end = cur + src.area();
 		uint32_t* const beg = cur;
 
 		while(cur != end) {
@@ -358,10 +336,10 @@ surface adjust_channels_modification::operator()(const surface & src) const
 
 			int i = cur - beg;
 			SDL_Point p;
-			p.y = i / nsurf->w;
-			p.x = i % nsurf->w;
+			p.y = i / src->w;
+			p.x = i % src->w;
 
-			pixel_callable px(p, pixel, nsurf->w, nsurf->h);
+			pixel_callable px(p, pixel, src->w, src->h);
 			pixel.r = std::min<unsigned>(new_red.evaluate(px).as_int(), 255);
 			pixel.g = std::min<unsigned>(new_green.evaluate(px).as_int(), 255);
 			pixel.b = std::min<unsigned>(new_blue.evaluate(px).as_int(), 255);
@@ -371,11 +349,9 @@ surface adjust_channels_modification::operator()(const surface & src) const
 			++cur;
 		}
 	}
-
-	return nsurf;
 }
 
-surface crop_modification::operator()(const surface& src) const
+void crop_modification::operator()(surface& src) const
 {
 	SDL_Rect area = slice_;
 	if(area.w == 0) {
@@ -386,18 +362,10 @@ surface crop_modification::operator()(const surface& src) const
 		area.h = src->h;
 	}
 
-	/*
-	 * Unlike other image functions cut_surface does not convert the input
-	 * surface to a neutral surface, nor does it convert its return surface
-	 * to an optimised surface.
-	 *
-	 * Since it seems to work for most cases, rather change this caller instead
-	 * of the function signature. (The issue was discovered in bug #20876).
-	 */
-	return cut_surface(src, area);
+	src = cut_surface(src, area);
 }
 
-surface blit_modification::operator()(const surface& src) const
+void blit_modification::operator()(surface& src) const
 {
 	if(x_ >= src->w) {
 		std::stringstream sstr;
@@ -433,39 +401,36 @@ surface blit_modification::operator()(const surface& src) const
 		throw imod_exception(sstr);
 	}
 
-	surface nsrc = src.clone();
 	SDL_Rect r {x_, y_, 0, 0};
-	sdl_blit(surf_, nullptr, nsrc, &r);
-	return nsrc;
+	sdl_blit(surf_, nullptr, src, &r);
 }
 
-surface mask_modification::operator()(const surface& src) const
+void mask_modification::operator()(surface& src) const
 {
-	if(src->w == mask_->w &&  src->h == mask_->h && x_ == 0 && y_ == 0) {
-		return mask_surface(src, mask_);
+	if(src->w == mask_->w && src->h == mask_->h && x_ == 0 && y_ == 0) {
+		mask_surface(src, mask_);
+		return;
 	}
 
 	SDL_Rect r {x_, y_, 0, 0};
 	surface new_mask(src->w, src->h);
 	sdl_blit(mask_, nullptr, new_mask, &r);
-	return mask_surface(src, new_mask);
+	mask_surface(src, new_mask);
 }
 
-surface light_modification::operator()(const surface& src) const {
-	if(src == nullptr) { return nullptr; }
+void light_modification::operator()(surface& src) const
+{
+	if(src == nullptr) { return; }
 
 	// light_surface wants a neutral surface having same dimensions
-	surface nsurf;
 	if(surf_->w != src->w || surf_->h != src->h) {
-		nsurf = scale_surface(surf_, src->w, src->h);
+		light_surface(src, scale_surface(surf_, src->w, src->h));
 	} else {
-		nsurf = surf_;
+		light_surface(src, surf_);
 	}
-
-	return light_surface(src, nsurf);
 }
 
-surface scale_modification::operator()(const surface& src) const
+void scale_modification::operator()(surface& src) const
 {
 	point size = target_size_;
 
@@ -494,40 +459,31 @@ surface scale_modification::operator()(const surface& src) const
 	}
 
 	if(flags_ & SCALE_SHARP) {
-		return scale_surface_sharp(src, size.x, size.y);
+		src = scale_surface_sharp(src, size.x, size.y);
 	} else {
-		return scale_surface_legacy(src, size.x, size.y);
+		src = scale_surface_legacy(src, size.x, size.y);
 	}
 }
 
-surface xbrz_modification::operator()(const surface& src) const
+void xbrz_modification::operator()(surface& src) const
 {
-	if(z_ == 1) {
-		return src;
+	if(z_ != 1) {
+		src = scale_surface_xbrz(src, z_);
 	}
-
-	return scale_surface_xbrz(src, z_);
 }
 
 /*
  * The Opacity IPF doesn't seem to work with surface-wide alpha and instead needs per-pixel alpha.
  * If this is needed anywhere else it can be moved back to sdl/utils.*pp.
  */
-surface o_modification::operator()(const surface& src) const
+void o_modification::operator()(surface& src) const
 {
-	surface nsurf = src.clone();
+	if(src) {
+		uint8_t alpha_mod = float_to_color(opacity_);
 
-	if(nsurf == nullptr) {
-		PLAIN_LOG << "could not make neutral surface...";
-		return nullptr;
-	}
-
-	uint8_t alpha_mod = float_to_color(opacity_);
-
-	{
-		surface_lock lock(nsurf);
+		surface_lock lock(src);
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf->w * src->h;
+		uint32_t* end = beg + src.area();
 
 		while(beg != end) {
 			uint8_t alpha = (*beg) >> 24;
@@ -545,40 +501,36 @@ surface o_modification::operator()(const surface& src) const
 			++beg;
 		}
 	}
-
-	return nsurf;
 }
 
-surface cs_modification::operator()(const surface& src) const
+void cs_modification::operator()(surface& src) const
 {
-	return((r_ != 0 || g_ != 0 || b_ != 0)
-		? adjust_surface_color(src, r_, g_, b_)
-		: src
-	);
+	if((r_ != 0 || g_ != 0 || b_ != 0)) {
+		adjust_surface_color(src, r_, g_, b_);
+	}
 }
 
-surface blend_modification::operator()(const surface& src) const
+void blend_modification::operator()(surface& src) const
 {
-	return blend_surface(src, static_cast<double>(a_), color_t(r_, g_, b_));
+	blend_surface(src, static_cast<double>(a_), color_t(r_, g_, b_));
 }
 
-surface bl_modification::operator()(const surface& src) const
+void bl_modification::operator()(surface& src) const
 {
-	return blur_alpha_surface(src, depth_);
+	blur_alpha_surface(src, depth_);
 }
 
-surface background_modification::operator()(const surface &src) const
+void background_modification::operator()(surface& src) const
 {
 	surface ret = src.clone();
-	SDL_FillRect(ret, nullptr, SDL_MapRGBA(ret->format, color_.r, color_.g,
-					    color_.b, color_.a));
+	SDL_FillRect(ret, nullptr, SDL_MapRGBA(ret->format, color_.r, color_.g, color_.b, color_.a));
 	sdl_blit(src, nullptr, ret, nullptr);
-	return ret;
+	src = ret;
 }
 
-surface swap_modification::operator()(const surface &src) const
+void swap_modification::operator()(surface& src) const
 {
-	return swap_channels_image(src, red_, green_, blue_, alpha_);
+	swap_channels_image(src, red_, green_, blue_, alpha_);
 }
 
 namespace {
@@ -587,7 +539,7 @@ struct parse_mod_registration
 {
 	parse_mod_registration(const char* name, mod_parser parser)
 	{
-		mod_parsers[name] = parser;
+		mod_parsers[name] = std::move(parser);
 	}
 };
 
@@ -890,10 +842,10 @@ REGISTER_MOD_PARSER(CS, args)
 	r = utils::from_chars<int>(factors[0]).value_or(0);
 
 	if(s > 1 ) {
-		g = utils::from_chars<int>(factors[0]).value_or(0);
+		g = utils::from_chars<int>(factors[1]).value_or(0);
 	}
 	if(s > 2 ) {
-		b = utils::from_chars<int>(factors[0]).value_or(0);
+		b = utils::from_chars<int>(factors[2]).value_or(0);
 	}
 
 	return std::make_unique<cs_modification>(r, g , b);
@@ -959,7 +911,7 @@ REGISTER_MOD_PARSER(CROP, args)
 
 static bool check_image(const image::locator& img, std::stringstream & message)
 {
-	if(img.file_exists()) return true;
+	if(image::exists(img)) return true;
 	message << " image not found: '" << img.get_filename() << "'\n";
 	ERR_DP << message.str();
 	return false;
@@ -1055,13 +1007,13 @@ std::pair<int, bool> parse_scale_value(std::string_view arg)
 }
 
 /** Common helper function to parse scaling IPF inputs. */
-std::optional<std::pair<point, uint8_t>> parse_scale_args(std::string_view args)
+utils::optional<std::pair<point, uint8_t>> parse_scale_args(std::string_view args)
 {
 	const auto scale_params = utils::split_view(args, ',', utils::STRIP_SPACES);
 	const std::size_t num_args = scale_params.size();
 
 	if(num_args == 0 || (num_args == 1 && scale_params[0].empty())) {
-		return std::nullopt;
+		return utils::nullopt;
 	}
 
 	uint8_t flags = 0;
@@ -1135,12 +1087,8 @@ REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 // xBRZ
 REGISTER_MOD_PARSER(XBRZ, args)
 {
-	int z = utils::from_chars<int>(args).value_or(0);
-	if(z < 1 || z > 5) {
-		z = 5; //only values 2 - 5 are permitted for xbrz scaling factors.
-	}
-
-	return std::make_unique<xbrz_modification>(z);
+	const int factor = std::clamp(utils::from_chars<int>(args).value_or(1), 1, 6);
+	return std::make_unique<xbrz_modification>(factor);
 }
 
 // Gaussian-like blur

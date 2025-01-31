@@ -17,12 +17,12 @@
 
 #include "gui/widgets/stacked_widget.hpp"
 
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/generator.hpp"
 #include "gettext.hpp"
 #include "utils/const_clone.hpp"
+#include "wml_exception.hpp"
 
 #include <functional>
 
@@ -40,7 +40,7 @@ struct stacked_widget_implementation
 {
 	template<typename W>
 	static W* find(utils::const_clone_ref<stacked_widget, W> stack,
-			const std::string& id,
+			const std::string_view id,
 			const bool must_be_active)
 	{
 		// Use base method if find-in-all-layer isn't set.
@@ -64,6 +64,26 @@ stacked_widget::stacked_widget(const implementation::builder_stacked_widget& bui
 	, selected_layer_(-1)
 	, find_in_all_layers_(false)
 {
+	const auto conf = cast_config_to<stacked_widget_definition>();
+	assert(conf);
+
+	init_grid(*conf->grid);
+
+	auto generator = generator_base::build(false, false, generator_base::independent, false);
+
+	// Save our *non-owning* pointer before this gets moved into the grid.
+	generator_ = generator.get();
+	assert(generator_);
+
+	const widget_item empty_data;
+	for(const auto& layer_builder : builder.stack) {
+		generator->create_item(-1, layer_builder, empty_data, nullptr);
+	}
+
+	// TODO: can we use the replacements system here?
+	swap_grid(nullptr, &get_grid(), std::move(generator), "_content_grid");
+
+	select_layer(-1);
 }
 
 bool stacked_widget::get_active() const
@@ -84,27 +104,12 @@ void stacked_widget::layout_children()
 	}
 }
 
-void stacked_widget::finalize(std::unique_ptr<generator_base> generator, const std::vector<builder_grid>& widget_builders)
-{
-	// Save our *non-owning* pointer before this gets moved into the grid.
-	generator_ = generator.get();
-	assert(generator_);
-
-	widget_item empty_data;
-	for(const auto & builder : widget_builders) {
-		generator->create_item(-1, builder, empty_data, nullptr);
-	}
-	swap_grid(nullptr, &get_grid(), std::move(generator), "_content_grid");
-
-	select_layer(-1);
-}
-
 void stacked_widget::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */
 }
 
-void stacked_widget::select_layer_impl(std::function<bool(unsigned int i)> display_condition)
+void stacked_widget::select_layer_impl(const std::function<bool(unsigned int i)>& display_condition)
 {
 	const unsigned int num_layers = get_layer_count();
 
@@ -193,12 +198,12 @@ const grid* stacked_widget::get_layer_grid(unsigned int i) const
 	return &generator_->item(i);
 }
 
-widget* stacked_widget::find(const std::string& id, const bool must_be_active)
+widget* stacked_widget::find(const std::string_view id, const bool must_be_active)
 {
 	return stacked_widget_implementation::find<widget>(*this, id, must_be_active);
 }
 
-const widget* stacked_widget::find(const std::string& id, const bool must_be_active) const
+const widget* stacked_widget::find(const std::string_view id, const bool must_be_active) const
 {
 	return stacked_widget_implementation::find<const widget>(*this, id, must_be_active);
 }
@@ -231,14 +236,9 @@ stacked_widget_definition::resolution::resolution(const config& cfg)
 namespace implementation
 {
 
-builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
-	: builder_styled_widget(real_cfg), stack()
+builder_stacked_widget::builder_stacked_widget(const config& cfg)
+	: builder_styled_widget(cfg), stack()
 {
-	const config& cfg = real_cfg.has_child("stack") ? real_cfg.mandatory_child("stack") : real_cfg;
-	if(&cfg != &real_cfg) {
-		lg::log_to_chat() << "Stacked widgets no longer require a [stack] tag. Instead, place [layer] tags directly in the widget definition.\n";
-		ERR_WML << "Stacked widgets no longer require a [stack] tag. Instead, place [layer] tags directly in the widget definition.";
-	}
 	VALIDATE(cfg.has_child("layer"), _("No stack layers defined."));
 	for(const auto & layer : cfg.child_range("layer"))
 	{
@@ -249,18 +249,7 @@ builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
 std::unique_ptr<widget> builder_stacked_widget::build() const
 {
 	auto widget = std::make_unique<stacked_widget>(*this);
-
-	DBG_GUI_G << "Window builder: placed stacked widget '" << id
-			  << "' with definition '" << definition << "'.";
-
-	const auto conf = widget->cast_config_to<stacked_widget_definition>();
-	assert(conf);
-
-	widget->init_grid(*conf->grid);
-
-	auto generator = generator_base::build(false, false, generator_base::independent, false);
-	widget->finalize(std::move(generator), stack);
-
+	DBG_GUI_G << "Window builder: placed stacked widget '" << id << "' with definition '" << definition << "'.";
 	return widget;
 }
 

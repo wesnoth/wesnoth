@@ -45,14 +45,16 @@ std::stack<std::set<int>> label_contexts;
 
 }
 
+using namespace std::chrono_literals;
+
 namespace font
 {
-floating_label::floating_label(const std::string& text, const surface& surf)
+floating_label::floating_label(const std::string& text)
 	: tex_()
 	, screen_loc_()
 	, alpha_(0)
 	, fadeout_(0)
-	, time_start_(0)
+	, time_start_()
 	, text_(text)
 	, font_size_(SIZE_SMALL)
 	, color_(NORMAL_COLOR)
@@ -71,9 +73,6 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 	, scroll_(ANCHOR_LABEL_SCREEN)
 	, use_markup_(true)
 {
-	if (surf.get()) {
-		tex_ = texture(surf);
-	}
 }
 
 void floating_label::move(double xmove, double ymove)
@@ -96,12 +95,12 @@ int floating_label::xpos(std::size_t width) const
 
 rect floating_label::get_bg_rect(const rect& text_rect) const
 {
-	return {
-		text_rect.x -  border_,
-		text_rect.y -  border_,
-		text_rect.w + (border_ * 2),
-		text_rect.h + (border_ * 2)
-	};
+	return text_rect.padded_by(border_);
+}
+
+void floating_label::clear_texture()
+{
+	tex_.reset();
 }
 
 bool floating_label::create_texture()
@@ -120,7 +119,7 @@ bool floating_label::create_texture()
 		return false;
 	}
 
-	DBG_FT << "creating floating label texture";
+	DBG_FT << "creating floating label texture, text: " << text_.substr(0,15);
 	font::pango_text& text = font::get_text_renderer();
 
 	text.set_link_aware(false)
@@ -158,7 +157,7 @@ void floating_label::undraw()
 	screen_loc_ = {};
 }
 
-void floating_label::update(int time)
+void floating_label::update(const clock::time_point& time)
 {
 	if(video::headless() || text_.empty()) {
 		return;
@@ -221,27 +220,31 @@ void floating_label::draw()
 	draw::blit(tex_, screen_loc_);
 }
 
-void floating_label::set_lifetime(int lifetime, int fadeout)
+void floating_label::set_lifetime(const std::chrono::milliseconds& lifetime, const std::chrono::milliseconds& fadeout)
 {
 	lifetime_ = lifetime;
 	fadeout_ = fadeout;
-	time_start_	= SDL_GetTicks();
+	time_start_	= std::chrono::steady_clock::now();
 }
 
-
-point floating_label::get_pos(int time)
+std::chrono::milliseconds floating_label::get_time_alive(const clock::time_point& current_time) const
 {
-	int time_alive = get_time_alive(time);
+	return std::chrono::duration_cast<std::chrono::milliseconds>(current_time - time_start_);
+}
+
+point floating_label::get_pos(const clock::time_point& time)
+{
+	auto time_alive = get_time_alive(time);
 	return {
-		static_cast<int>(time_alive * xmove_ + xpos(tex_.w())),
-		static_cast<int>(time_alive * ymove_ + ypos_)
+		static_cast<int>(time_alive.count() * xmove_ + xpos(tex_.w())),
+		static_cast<int>(time_alive.count() * ymove_ + ypos_)
 	};
 }
 
-uint8_t floating_label::get_alpha(int time)
+uint8_t floating_label::get_alpha(const clock::time_point& time)
 {
-	if(lifetime_ >= 0 && fadeout_ > 0) {
-		int time_alive = get_time_alive(time);
+	if(lifetime_ >= 0ms && fadeout_ > 0ms) {
+		auto time_alive = get_time_alive(time);
 		if(time_alive >= lifetime_ && tex_ != nullptr) {
 			// fade out moving floating labels
 			int alpha_sub = 255 * (time_alive - lifetime_) / fadeout_;
@@ -284,15 +287,15 @@ void scroll_floating_labels(double xmove, double ymove)
 	}
 }
 
-void remove_floating_label(int handle, int fadeout)
+void remove_floating_label(int handle, const std::chrono::milliseconds& fadeout)
 {
 	const label_map::iterator i = labels.find(handle);
 	if(i != labels.end()) {
-		if(fadeout > 0) {
-			i->second.set_lifetime(0, fadeout);
+		if(fadeout > 0ms) {
+			i->second.set_lifetime(0ms, fadeout);
 			return;
-		} else if(fadeout < 0) {
-			i->second.set_lifetime(0, i->second.get_fade_time());
+		} else if(fadeout < 0ms) {
+			i->second.set_lifetime(0ms, i->second.get_fade_time());
 			return;
 		}
 		// Queue a redraw of where the label was.
@@ -327,6 +330,13 @@ SDL_Rect get_floating_label_rect(int handle)
 
 floating_label_context::floating_label_context()
 {
+	// hacky but the whole floating label system needs to be redesigned...
+	for(auto& [id, label] : labels) {
+		if(label_contexts.top().count(id) > 0) {
+			label.undraw();
+		}
+	}
+
 	//TODO: 'pause' floating labels in other contexrs
 	label_contexts.emplace();
 }
@@ -367,7 +377,7 @@ void update_floating_labels()
 	if(label_contexts.empty()) {
 		return;
 	}
-	int time = SDL_GetTicks();
+	auto time = std::chrono::steady_clock::now();
 
 	std::set<int>& context = label_contexts.top();
 

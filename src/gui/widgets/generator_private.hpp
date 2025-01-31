@@ -455,10 +455,10 @@ struct independent : public virtual generator_base
 	virtual const widget* find_at(const point& coordinate, const bool must_be_active) const override;
 
 	/** See @ref widget::find. */
-	widget* find(const std::string& id, const bool must_be_active) override;
+	widget* find(const std::string_view id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	const widget* find(const std::string& id, const bool must_be_active) const override;
+	const widget* find(const std::string_view id, const bool must_be_active) const override;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
@@ -638,7 +638,7 @@ public:
 		if(items_[index]->shown != show) {
 			/*** Set the proper visible state. ***/
 			items_[index]->shown = show;
-			items_[index]->child_grid.set_visible(show ? widget::visibility::visible : widget::visibility::invisible);
+			items_[index]->child_grid.set_visible(show);
 
 			/*** Update the selection. ***/
 			minimum_selection::set_item_shown(index, show);

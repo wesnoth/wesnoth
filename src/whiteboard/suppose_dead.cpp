@@ -32,13 +32,13 @@
 namespace wb
 {
 
-std::ostream& operator<<(std::ostream &s, suppose_dead_ptr sup_d)
+std::ostream& operator<<(std::ostream &s, const suppose_dead_ptr& sup_d)
 {
 	assert(sup_d);
 	return sup_d->print(s);
 }
 
-std::ostream& operator<<(std::ostream &s, suppose_dead_const_ptr sup_d)
+std::ostream& operator<<(std::ostream &s, const suppose_dead_const_ptr& sup_d)
 {
 	assert(sup_d);
 	return sup_d->print(s);
@@ -51,7 +51,7 @@ std::ostream& suppose_dead::print(std::ostream &s) const
 	return s;
 }
 
-suppose_dead::suppose_dead(std::size_t team_index, bool hidden, unit& curr_unit, const map_location& loc)
+suppose_dead::suppose_dead(std::size_t team_index, bool hidden, const unit& curr_unit, const map_location& loc)
 	: action(team_index,hidden)
 	, unit_underlying_id_(curr_unit.underlying_id())
 	, unit_id_(curr_unit.id())
@@ -67,7 +67,7 @@ suppose_dead::suppose_dead(const config& cfg, bool hidden)
 	, loc_(cfg.mandatory_child("loc_")["x"],cfg.mandatory_child("loc_")["y"], wml_loc())
 {
 	// Construct and validate unit_
-	unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"]);
+	unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"].to_size_t());
 	if(unit_itor == resources::gameboard->units().end())
 		throw action::ctor_err("suppose_dead: Invalid underlying_id");
 
@@ -134,7 +134,7 @@ void suppose_dead::draw_hex(const map_location& hex)
 	}
 
 	//@todo: Possibly use a different layer
-	const display::drawing_layer layer = display::LAYER_ARROWS;
+	const drawing_layer layer = drawing_layer::arrows;
 
 	display::get_singleton()->drawing_buffer_add(
 		layer, loc_, [tex = image::get_texture(image::locator{"whiteboard/suppose_dead.png"}, image::HEXED)](const rect& d) {

@@ -23,6 +23,47 @@
 #include <string>
 #include <utility>
 
+static bool luaW_tocubeloc(lua_State* L, int idx, cubic_location& out) {
+	if(!lua_istable(L, idx)) {
+		return false;
+	}
+	int n = lua_absindex(L, -1);
+	if(!luaW_tableget(L, n, "q")) {
+		return false;
+	}
+	out.q = luaL_checkinteger(L, -1);
+	if(!luaW_tableget(L, n, "r")) {
+		return false;
+	}
+	out.r = luaL_checkinteger(L, -1);
+	if(luaW_tableget(L, n, "s")) {
+		out.s = luaL_checkinteger(L, -1);
+	} else {
+		out.s = -out.q - out.r;
+	}
+	if(out.q + out.s + out.r != 0) {
+		return false;
+	}
+	return true;
+}
+
+static cubic_location luaW_checkcubeloc(lua_State* L, int idx) {
+	cubic_location loc;
+	if(!luaW_tocubeloc(L, idx, loc)) {
+		luaL_argerror(L, idx, "expected cubic location");
+	}
+	return loc;
+}
+
+static void luaW_pushcubeloc(lua_State* L, cubic_location loc) {
+	luaW_push_namedtuple(L, {"q", "r", "s"});
+	lua_pushinteger(L, loc.q);
+	lua_rawseti(L, -2, 1);
+	lua_pushinteger(L, loc.r);
+	lua_rawseti(L, -2, 2);
+	lua_pushinteger(L, loc.s);
+	lua_rawseti(L, -2, 3);
+}
 
 namespace lua_map_location {
 
@@ -50,7 +91,7 @@ int intf_get_direction(lua_State* L)
 		lua_pop(L,1);
 	}
 
-	map_location::DIRECTION d;
+	map_location::direction d;
 	if (lua_isstring(L, -1)) {
 		d = map_location::parse_direction(luaL_checkstring(L,-1));
 		lua_pop(L,1);
@@ -165,10 +206,32 @@ int intf_get_adjacent_tiles(lua_State* L)
 }
 
 /**
- * Expose map_location get_tiles_in_radius
+ * Expose map_location get_tile_ring
  * - Arg 1: A location
+ * - Arg 2: A radius
  * - Ret: The locations
  */
+int intf_get_tile_ring(lua_State* L)
+{
+	map_location l1;
+	if(!luaW_tolocation(L, 1, l1)) {
+		return luaL_argerror(L, 1, "expected a location");
+	}
+	int radius = luaL_checkinteger(L, 2);
+
+	std::vector<map_location> locs;
+	get_tile_ring(l1, radius, locs);
+	lua_push(L, locs);
+
+	return 1;
+}
+
+/**
+* Expose map_location get_tiles_in_radius
+* - Arg 1: A location
+* - Arg 2: A radius
+* - Ret: The locations
+*/
 int intf_get_tiles_in_radius(lua_State* L)
 {
 	map_location l1;
@@ -202,19 +265,39 @@ int intf_distance_between(lua_State* L)
 }
 
 /**
- * Expose map_location get_in_basis_N_NE
+ * Expose map_location to_cubic
+ * - Arg: Location
+ * - Ret: Location in cubic coordinates
  */
-int intf_get_in_basis_N_NE(lua_State* L)
+int intf_get_in_cubic(lua_State* L)
 {
 	map_location l1;
 	if(!luaW_tolocation(L, 1, l1)) {
 		return luaL_argerror(L, 1, "expected a location");
 	}
+	cubic_location h = l1.to_cubic();
+	// Due to the way that locations in Lua have are 1 more on each coordinate
+	// compared to the C++ coordinates, the output here also needs to be adjusted.
+	h.q++;
+	h.s--;
+	luaW_pushcubeloc(L, h);
+	return 1;
+}
 
-	std::pair<int, int> r = l1.get_in_basis_N_NE();
-	lua_pushinteger(L, r.first);
-	lua_pushinteger(L, r.second);
-	return 2;
+/**
+ * Expose map_location from_cubic
+ * - Arg: Location in cubic coordinates
+ * - Ret: Location
+ */
+int intf_get_from_cubic(lua_State* L)
+{
+	cubic_location h = luaW_checkcubeloc(L, 1);
+	// Adjust it from the WML location system
+	h.q--;
+	h.s++;
+	map_location l = map_location::from_cubic(h);
+	luaW_pushlocation(L, l);
+	return 1;
 }
 
 /**

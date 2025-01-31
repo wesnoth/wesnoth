@@ -43,21 +43,12 @@ campaigns, and share them with others.
 .SH OPTIONS
 .
 .TP
+.B --addon-info
+Shows a button on the add-ons manager to query the add-ons server for various information.
+.TP
 .B --all-translations
 Show all translations in the in-game language selection list,
 even if they are deemed insufficiently complete.
-.TP
-.BI --bunzip2 \ infile.bz2
-decompresses a file which should be in bzip2 format and stores it
-without the .bz2 suffix. The
-.I infile.bz2
-will be removed.
-.TP
-.BI --bzip2 \ infile
-compresses a file in bzip2 format, stores it as
-.IR infile .bz2
-and removes
-.IR infile .
 .TP
 .BI -c[ id_campaign ],\ --campaign[ =id_campaign ]
 goes directly to the campaign with id
@@ -77,15 +68,7 @@ Skip [story] screens and dialog through the end of the
 event.
 .TP
 .B --clock
-Adds the option to show a clock for testing the drawing timer.
-.TP
-.BI --config-dir \ name
-Deprecated, use
-.BR --userdata-dir .
-.TP
-.B --config-path
-Deprecated, use
-.BR --userdata-path .
+Adds the option to show a clock for testing the drawing timer. Also adds the option for showing the GUI Test Dialog.
 .TP
 .BI --core \ id_core
 overrides the loaded core with the one whose id is specified.
@@ -107,7 +90,7 @@ enables some Lua debugging mechanisms
 .B --strict-lua
 disallow deprecated Lua API calls
 .TP
-.BI -D,--diff \ left-file \  right-file
+.BI -D,\ --diff \ left-file \  right-file
 diffs the two WML files; does not preprocess them first (to do that, run them through
 .B -p
 first). Outputs the diff as DiffWML on standard output or to the file indicated by
@@ -127,18 +110,6 @@ in the userdata directory.
 .TP
 .B -f, --fullscreen
 runs the game in full screen mode.
-.TP
-.BI --gunzip \ infile.gz
-decompresses a file which should be in gzip format and stores it
-without the .gz suffix. The
-.I infile.gz
-will be removed.
-.TP
-.BI --gzip \ infile
-compresses a file in gzip format, stores it as
-.IR infile .gz
-and removes
-.IR infile .
 .TP
 .B -h, --help
 displays a summary of command line options to standard output, and exits.
@@ -179,9 +150,12 @@ option.
 .B --log-precise
 shows the timestamps in log output with more precision.
 .TP
-.B --log-strict
-sets the strict level of the logger. Any messages sent to log domains
-of this level or more severe will cause the unit test to fail regardless
+.BI --log-strict \ level
+sets the strict
+.I level
+of the logger. Any messages sent to log domains of this
+.I level
+or more severe will cause the unit test to fail regardless
 of the victory result. Only relevant when used with
 .BR -u .
 .TP
@@ -195,6 +169,9 @@ prevents redirecting logged output to a file. The environment variable WESNOTH_N
 .TP
 .B --log-to-file
 log output is written to a file. Cancels the effect of --no-log-to-file whether implicit or explicit.
+.TP
+.B --no-log-sanitize
+disables the anonymization that's normally applied when logging, for example replacing usernames with USER.
 .TP
 .B --wnoconsole
 For Windows, when used with --no-log-to-file, results in output being written to cerr/cout instead of CONOUT. Otherwise, does nothing.
@@ -217,10 +194,6 @@ load the test mp scenarios.
 .TP
 .B --new-widgets
 there is a new WIP widget toolkit, this option enables it. This is very experimental, don't fill bug reports since most are known. Parts of the library are deemed stable and will work without this switch.
-.TP
-.B --nodelay
-runs the game without any delays for graphic benchmarking. This is automatically enabled by
-.BR --nogui .
 .TP
 .B --noaddons
 disables loading of user addons.
@@ -258,13 +231,11 @@ uses
 when connecting to a server, ignoring other preferences. Unsafe.
 .TP
 .BI --plugin \ script
-(experimental) load a
+load a
 .I script
-which defines a Wesnoth plugin. Similar to
-.BR --script ,
-but Lua file should return a function which will be run as a coroutine and periodically woken up with updates.
+which defines a Wesnoth plugin. Lua file should return a function which will be run as a coroutine and periodically woken up with updates.
 .TP
-.BI -P,--patch \ base-file \  patch-file
+.BI -P,\ --patch \ base-file \  patch-file
 applies a DiffWML patch to a WML file; does not preprocess either of the files.
 Outputs the patched WML to standard output or to the file indicated by
 .IR --output .
@@ -279,9 +250,14 @@ Example:
 For details regarding the preprocessor visit:
 https://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor.
 .TP
+.BI --preprocess-string \ source-string
+preprocesses a given string and writes the output to stdout.
+.TP
 .BI --preprocess-defines= DEFINE1 , DEFINE2 , ...
 comma separated list of defines to be used by the
 .B --preprocess
+or
+.B --preprocess-string
 command. If
 .B SKIP_CORE
 is in the define list the "data/core" directory won't be preprocessed.
@@ -289,6 +265,8 @@ is in the define list the "data/core" directory won't be preprocessed.
 .BI --preprocess-input-macros \ source-file
 used only by the
 .B --preprocess
+or
+.B --preprocess-string
 command. Specifies a file that contains
 .BR [preproc_define] s
 to be included before preprocessing.
@@ -296,7 +274,9 @@ to be included before preprocessing.
 .BI --preprocess-output-macros[ =target-file ]
 used only by the
 .B --preprocess
-command. Will output all preprocessed macros in the target file. If the file is not specified
+command (But not by the
+.B --preprocess-string
+command). Will output all preprocessed macros in the target file. If the file is not specified
 the output will be file '_MACROS_.cfg' in the target directory of preprocess's command. The
 output file can be passed to
 .BR --preprocess-input-macros .
@@ -328,11 +308,6 @@ saves a screenshot of
 to
 .I output
 without initializing a screen.
-.TP
-.BI --script \ file
-(experimental)
-.I file
-containing a Lua script to control the client.
 .TP
 .BI -s[ host ],\ --server[ =host ]
 connects to the specified host if any, otherwise connect to the first server in preferences. Example:
@@ -371,23 +346,9 @@ makes the
 .B package
 package available to lua scripts, so that they can load arbitrary packages. Do not do this with untrusted scripts! This action gives lua the same permissions as the wesnoth executable.
 .TP
-.BI -S,--use-schema  \ path
+.BI -S,\ --use-schema  \ path
 sets the WML schema for use with
-.BR -V,--validate .
-.TP
-.BI --userconfig-dir \ name
-sets the user configuration directory to
-.I name
-under $HOME or "My Documents\\My Games" for windows.
-You can also specify an absolute path for the configuration directory outside
-the $HOME or "My Documents\\My Games". On Windows it is also possible to
-specify a directory relative to the process working directory by using path
-starting with ".\\" or "..\\".
-Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth,
-on other systems to the userdata path.
-.TP
-.B --userconfig-path
-prints the path of the user configuration directory and exits.
+.BR -V,\ --validate .
 .TP
 .BI --userdata-dir \ name
 sets the userdata directory to
@@ -415,7 +376,7 @@ validates the WML of the given addon as you play.
 .B --validate-core
 validates the core WML as you play.
 .TP
-.B --validate-schema \ path
+.BI --validate-schema \ path
 validates a file as a WML schema.
 .TP
 .B --validcache

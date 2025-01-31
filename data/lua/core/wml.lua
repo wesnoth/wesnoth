@@ -1,4 +1,5 @@
 --[========[Config Manipulation Functions]========]
+---@diagnostic disable: deprecated
 print("Loading WML module...")
 
 local function ensure_config(cfg)
@@ -65,14 +66,13 @@ end
 ---@return integer? #The overall index of the child tag
 function wml.find_child(cfg, name, filter)
 	ensure_config(cfg)
-	if filter == nil then
+	if filter == nil and type(name) == 'table' then
 		filter = name
 		name = nil
 	end
 	for i,v in ipairs(cfg) do
-		if name == nil or v[1] == name then
-			local w = v[2]
-			if wml.matches_filter(w, filter) then return w, i end
+		if name == nil or v.tag == name then
+			if wml.matches_filter(v.contents, filter) then return v.contents, i end
 		end
 	end
 end
@@ -188,10 +188,10 @@ wml.tag = setmetatable({}, create_tag_mt)
 ---@param cfg WML
 ---@return WMLTable
 function wml.literal(cfg)
-	if type(cfg) == "userdata" then
-		return cfg.__literal
-	else
+	if type(cfg) == "table" then
 		return cfg or {}
+	else
+		return cfg.__literal
 	end
 end
 
@@ -201,10 +201,10 @@ end
 ---@param cfg WML
 ---@return WMLTable
 function wml.parsed(cfg)
-	if type(cfg) == "userdata" then
-		return cfg.__parsed
-	else
+	if type(cfg) == "table" then
 		return cfg or {}
+	else
+		return cfg.__parsed
 	end
 end
 
@@ -214,10 +214,10 @@ end
 ---@param cfg WML
 ---@return WMLTable
 function wml.shallow_literal(cfg)
-	if type(cfg) == "userdata" then
-		return cfg.__shallow_literal
-	else
+	if type(cfg) == "table" then
 		return cfg or {}
+	else
+		return cfg.__shallow_literal
 	end
 end
 
@@ -228,10 +228,10 @@ end
 ---@param cfg WML
 ---@return WMLTable
 function wml.shallow_parsed(cfg)
-	if type(cfg) == "userdata" then
-		return cfg.__shallow_parsed
-	else
+	if type(cfg) == "table" then
 		return cfg or {}
+	else
+		return cfg.__shallow_parsed
 	end
 end
 

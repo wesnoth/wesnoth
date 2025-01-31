@@ -24,7 +24,7 @@
 #include "ai/manager.hpp"  // for manager, holder
 #include "ai/lua/aspect_advancements.hpp"
 #include "game_events/pump.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "game_data.hpp" //resources::gamedata->phase()
 #include "gettext.hpp"
 #include "gui/dialogs/unit_advance.hpp"
@@ -44,7 +44,7 @@
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
-#define WRN_NG LOG_STREAM(err, log_engine)
+#define WRN_NG LOG_STREAM(warn, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
 static lg::log_domain log_config("config");
@@ -67,7 +67,7 @@ namespace
 		std::vector<unit_const_ptr> previews;
 
 		for (const std::string& advance : u.advances_to()) {
-			preferences::encountered_units().insert(advance);
+			prefs::get().encountered_units().insert(advance);
 			previews.push_back(get_advanced_unit(u, advance));
 		}
 
@@ -75,7 +75,7 @@ namespace
 		bool always_display = false;
 
 		for (const config& advance : u.get_modification_advances()) {
-			if (advance["always_display"]) {
+			if (advance["always_display"].to_bool()) {
 				always_display = true;
 			}
 			previews.push_back(get_amla_unit(u, advance));
@@ -296,7 +296,7 @@ void advance_unit_at(const advance_unit_params& params)
 		config selected = mp_sync::get_user_choice("choose",
 			unit_advancement_choice(params.loc_, unit_helper::number_of_possible_advances(*u), u->side(), params.force_dialog_), side_for);
 		//calls actions::advance_unit.
-		bool result = animate_unit_advancement(params.loc_, selected["value"], params.fire_events_, params.animate_);
+		bool result = animate_unit_advancement(params.loc_, selected["value"].to_size_t(), params.fire_events_, params.animate_);
 
 		DBG_NG << "animate_unit_advancement result = " << result;
 		u = resources::gameboard->units().find(params.loc_);
@@ -386,7 +386,7 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	if ( !use_amla )
 	{
 		resources::controller->statistics().advance_unit(*new_unit);
-		preferences::encountered_units().insert(new_unit->type_id());
+		prefs::get().encountered_units().insert(new_unit->type_id());
 		LOG_CF << "Added '" << new_unit->type_id() << "' to the encountered units.";
 	}
 	u->anim_comp().clear_haloes();

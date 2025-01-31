@@ -15,6 +15,8 @@
 #include "formula/variant.hpp"
 #include "formula/variant_value.hpp"
 
+#include <utility>
+
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
 
@@ -77,7 +79,7 @@ std::string variant_decimal::to_string_impl(const bool sign_value) const
 }
 
 variant_callable::variant_callable(const_formula_callable_ptr callable)
-	: callable_(callable)
+	: callable_(std::move(callable))
 {
 	if(callable_) {
 		callable_->subscribe_dtor(this);
@@ -291,9 +293,14 @@ bool variant_container<T>::iterator_equals(const utils::any& first, const utils:
 template class variant_container<variant_vector>;
 template class variant_container<variant_map_raw>;
 
-variant variant_list::list_op(value_base_ptr second, std::function<variant(variant&, variant&)> op_func)
+variant_list::variant_list(const variant_vector& vec)
+	: variant_container<variant_vector>(vec)
 {
-	const auto& other_list = value_cast<variant_list>(second);
+}
+
+variant variant_list::list_op(value_base_ptr second, const std::function<variant(variant&, variant&)>& op_func)
+{
+	const auto& other_list = value_cast<variant_list>(std::move(second));
 
 	if(num_elements() != other_list->num_elements()) {
 		throw type_error("List op requires two lists of the same length");

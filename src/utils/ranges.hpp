@@ -14,24 +14,32 @@
 
 #pragma once
 
-#include "global.hpp"
-
-#ifdef HAVE_CXX20
+#ifdef __cpp_lib_ranges
 #include <ranges>
 #else
+#include <boost/range/adaptor/filtered.hpp>
+#include <boost/range/adaptor/map.hpp>
 #include <boost/range/adaptor/reversed.hpp>
+#include <boost/range/adaptor/transformed.hpp>
 #endif
 
-namespace utils
+namespace utils::views
 {
-template<typename T>
-inline auto reversed_view(T& container)
-{
-#ifdef HAVE_CXX20
-	return std::views::reverse(container);
+#ifdef __cpp_lib_ranges
+
+using std::views::filter;
+using std::views::keys;
+using std::views::reverse;
+using std::views::transform;
+using std::views::values;
+
 #else
-	return boost::adaptors::reverse(container);
-#endif
-}
 
-} // namespace utils
+constexpr auto filter    = boost::adaptors::filtered;
+constexpr auto keys      = boost::adaptors::map_keys;
+constexpr auto reverse   = boost::adaptors::reversed;
+constexpr auto transform = boost::adaptors::transformed;
+constexpr auto values    = boost::adaptors::map_values;
+
+#endif
+} // namespace utils::views

@@ -301,7 +301,7 @@ const widget* styled_widget::find_at(const point& coordinate,
 				   : nullptr;
 }
 
-widget* styled_widget::find(const std::string& id, const bool must_be_active)
+widget* styled_widget::find(const std::string_view id, const bool must_be_active)
 {
 	return (widget::find(id, must_be_active)
 			&& (!must_be_active || get_active()))
@@ -309,7 +309,7 @@ widget* styled_widget::find(const std::string& id, const bool must_be_active)
 				   : nullptr;
 }
 
-const widget* styled_widget::find(const std::string& id, const bool must_be_active)
+const widget* styled_widget::find(const std::string_view id, const bool must_be_active)
 		const
 {
 	return (widget::find(id, must_be_active)
@@ -487,7 +487,7 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 		<< "Status:\n"
 		<< "minimum_size: " << minimum_size << "\n"
 		<< "maximum_size: " << maximum_size << "\n"
-		<< "text_maximum_width_: " << text_maximum_width_ << "\n"
+		<< "maximum width of text: " << text_maximum_width_ << "\n"
 		<< "can_wrap: " << can_wrap() << "\n"
 		<< "characters_per_line: " << get_characters_per_line() << "\n"
 		<< "truncated: " << renderer_.is_truncated() << "\n"

@@ -161,19 +161,17 @@ halo_impl::effect::effect(int xpos, int ypos,
 
 	set_location(xpos, ypos);
 
-	images_.start_animation(0, infinite);
+	images_.start_animation(std::chrono::milliseconds{0}, infinite);
 
 	update();
 }
 
 void halo_impl::effect::set_location(int x, int y)
 {
-	int new_x = x - disp->get_location_x(map_location::ZERO());
-	int new_y = y - disp->get_location_y(map_location::ZERO());
-	if (new_x != abs_mid_.x || new_y != abs_mid_.y) {
-		DBG_HL << "setting halo location " << point{new_x,new_y};
-		abs_mid_.x = new_x;
-		abs_mid_.y = new_y;
+	point new_center = point{x, y} - disp->get_location(map_location::ZERO());
+	if(new_center != abs_mid_) {
+		DBG_HL << "setting halo location " << new_center;
+		abs_mid_ = new_center;
 	}
 }
 
@@ -191,10 +189,8 @@ void halo_impl::effect::update()
 	if(map_loc_.x != -1 && map_loc_.y != -1) {
 		// If the halo is attached to a particular map location,
 		// make sure it stays attached.
-		set_location(
-			disp->get_location_x(map_loc_) + disp->hex_size() / 2,
-			disp->get_location_y(map_loc_) + disp->hex_size() / 2
-		);
+		auto [x, y] = disp->get_location_rect(map_loc_).center();
+		set_location(x, y);
 	} else {
 		// It would be good to attach to a position within a hex,
 		// or persistently to an item or unit. That's not the case,
@@ -218,8 +214,7 @@ void halo_impl::effect::update()
 	int w(tex_.w() * disp->get_zoom_factor());
 	int h(tex_.h() * disp->get_zoom_factor());
 
-	const int zero_x = disp->get_location_x(map_location::ZERO());
-	const int zero_y = disp->get_location_y(map_location::ZERO());
+	const auto [zero_x, zero_y] = disp->get_location(map_location::ZERO());
 
 	const int xpos = zero_x + abs_mid_.x - w/2;
 	const int ypos = zero_y + abs_mid_.y - h/2;

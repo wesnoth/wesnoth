@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
-"PO-Revision-Date: 2024-01-30 14:40+0200\n"
+"POT-Creation-Date: 2024-09-18 02:19 UTC\n"
+"PO-Revision-Date: 2024-12-18 08:29+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. [campaign]: id=Liberty
 #. [achievement_group]
@@ -516,10 +516,11 @@ msgstr "Tyhmä hiisi."
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:416
 msgid ""
-"Hey, someone left their pack here. I could use it to carry some more rocks."
+"Hey, someone left their pack here. I could use it to carry some heavier "
+"rocks."
 msgstr ""
-"Hei, joku on jättänyt laukkunsa tänne. Voin käyttää sitä kantamaan lisää "
-"kiviä."
+"Hei, joku on jättänyt laukkunsa tänne. Voin käyttää sitä painavempien kivien "
+"kantamiseen."
 
 # Reaktio kun yksikkö asetetaan linnunpelättimen päälle. - styxnix 2023
 #. [message]: speaker=unit
@@ -632,7 +633,7 @@ msgstr ""
 #. [side]
 #. [side]: type=Bandit, id=Baldras
 #. [side]: type=Highwayman_Peasant, gender=female, id=Relana
-#. [side]: type=General, id=Lord Maddock
+#. [side]: type=Lord of Elensefar, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman, id=Baldras
 #. [side]: type=Shadow Lord, id=Helicrom
@@ -1290,7 +1291,7 @@ msgstr "Elensefar"
 msgid "Port of Elensefar"
 msgstr "Elensefarin satamat"
 
-#. [side]: type=General, id=Lord Maddock
+#. [side]: type=Lord of Elensefar, id=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:45
 msgid "Lord Maddock"
 msgstr "Lordi Maddock"
@@ -3206,6 +3207,30 @@ msgid ""
 msgstr ""
 "Joten he ovat elossa! Vaikka ne saaret ovat hiukan kaukana ja minä vanha, "
 "niin kyllä tähän elämään vielä yksi seikkailu mahtuu..."
+
+#. [unit_type]: id=Lord of Elensefar, race=human
+#: data/campaigns/Liberty/units/Maddock.cfg:4
+msgid "Lord of Elensefar"
+msgstr "Elensefarin lordi"
+
+#. [unit_type]: id=Lord of Elensefar, race=human
+#: data/campaigns/Liberty/units/Maddock.cfg:7
+msgid ""
+"The grand city-state of Elensefar is the wealthiest human settlement on the "
+"Great Continent, commanding a reputation and power that belies its "
+"relatively small population. Unlike the more war-minded inland nobles, "
+"Elensefar’s governors master the art of commerce and the skill of sailing, "
+"and are known to be particularly agreeable. Yet behind that merchant charm "
+"lies a fierce independence, a trait that sometimes puts them at odds with "
+"the aristocrats of other regions."
+msgstr ""
+"Elensefarin suuri kaupunkivaltio on Suurmantereen vaurain ihmisten asutus, "
+"jonka maine ja valta ylittävät sen suhteellisen pienen väkiluvun. Toisin "
+"kuin sotaan suuntautuneet sisämaan aateliset, Elensefarin hallitsijat ovat "
+"mestareita kaupankäynnissä ja purjehduksessa, ja heidät tunnetaan erityisen "
+"sovinnollisina. Kaupallisen viehätyksen takana piilee kuitenkin tinkimätön "
+"itsenäisyys, ominaisuus, joka toisinaan asettaa heidät ristiriitaan muiden "
+"alueiden aristokraattien kanssa."
 
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5

@@ -23,6 +23,9 @@
 #include "log.hpp"
 #include "filesystem.hpp"
 #include "mt_rng.hpp"
+#include "serialization/chrono.hpp"
+#include "serialization/string_utils.hpp"
+#include "utils/general.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -88,8 +91,10 @@ static bool timestamp = true;
 static bool precise_timestamp = false;
 static std::mutex log_mutex;
 
+static bool log_sanitization = true;
+
 /** whether the current logs directory is writable */
-static std::optional<bool> is_log_dir_writable_ = std::nullopt;
+static utils::optional<bool> is_log_dir_writable_ = utils::nullopt;
 /** alternative stream to write data to */
 static std::ostream *output_stream_ = nullptr;
 
@@ -137,7 +142,7 @@ void rotate_logs(const std::string& log_dir)
 	std::vector<std::string> files;
 	filesystem::get_files_in_dir(log_dir, &files);
 
-	files.erase(std::remove_if(files.begin(), files.end(), is_not_log_file), files.end());
+	utils::erase_if(files, is_not_log_file);
 
 	if(files.size() <= lg::max_logs) {
 		return;
@@ -297,7 +302,7 @@ void set_log_to_file()
 
 		// make stdout unbuffered - otherwise some output might be lost
 		// in practice shouldn't make much difference either way, given how little output goes through stdout/std::cout
-		if(setvbuf(stdout, NULL, _IONBF, 2) == -1) {
+		if(setvbuf(stdout, nullptr, _IONBF, 2) == -1) {
 			std::cerr << "Failed to set stdout to be unbuffered";
 		}
 
@@ -305,14 +310,14 @@ void set_log_to_file()
 	}
 }
 
-std::optional<bool> log_dir_writable()
+utils::optional<bool> log_dir_writable()
 {
 	return is_log_dir_writable_;
 }
 
 std::string get_log_file_path()
 {
-	return output_file_path_+lg::log_file_suffix;
+	return output_file_path_.empty() ? "" : output_file_path_+lg::log_file_suffix;
 }
 
 redirect_output_setter::redirect_output_setter(std::ostream& stream)
@@ -429,44 +434,16 @@ bool broke_strict() {
 	return strict_threw_;
 }
 
-std::string get_timestamp(const std::time_t& t, const std::string& format) {
-	std::ostringstream ss;
-
-	ss << std::put_time(std::localtime(&t), format.c_str());
-
-	return ss.str();
-}
-std::string get_timespan(const std::time_t& t) {
-	std::ostringstream sout;
-	// There doesn't seem to be any library function for this
-	const std::time_t minutes = t / 60;
-	const std::time_t days = minutes / 60 / 24;
-	if(t <= 0) {
-		sout << "expired";
-	} else if(minutes == 0) {
-		sout << t << " seconds";
-	} else if(days == 0) {
-		sout << minutes / 60 << " hours, " << minutes % 60 << " minutes";
-	} else {
-		sout << days << " days, " << (minutes / 60) % 24 << " hours, " << minutes % 60 << " minutes";
-	}
-	return sout.str();
-}
-
-static void print_precise_timestamp(std::ostream& out) noexcept
-{
-	try {
-		int64_t micros = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
-		std::time_t seconds = micros/1'000'000;
-		int fractional = micros-(seconds*1'000'000);
-		char c = out.fill('0');
-		out << std::put_time(std::localtime(&seconds), "%Y%m%d %H:%M:%S") << "." << std::setw(6) << fractional << ' ';
-		out.fill(c);
-	} catch(...) {}
+void set_log_sanitize(bool sanitize) {
+	log_sanitization = sanitize;
 }
 
 std::string sanitize_log(const std::string& logstr)
 {
+	if(!log_sanitization) {
+		return logstr;
+	}
+
 	std::string str = logstr;
 
 #ifdef _WIN32
@@ -517,17 +494,20 @@ log_in_progress::log_in_progress(std::ostream& stream)
 	: stream_(stream)
 {}
 
-void log_in_progress::operator|(formatter&& message)
+void log_in_progress::operator|(const formatter& message)
 {
 	std::scoped_lock lock(log_mutex);
 	for(int i = 0; i < indent; ++i)
 		stream_ << "  ";
 	if(timestamp_) {
+		auto now = std::chrono::system_clock::now();
+		stream_ << chrono::format_local_timestamp(now); // Truncates precision to seconds
 		if(precise_timestamp) {
-			print_precise_timestamp(stream_);
-		} else {
-			stream_ << get_timestamp(std::time(nullptr));
+			auto as_seconds = std::chrono::time_point_cast<std::chrono::seconds>(now);
+			auto fractional = std::chrono::duration_cast<std::chrono::microseconds>(now - as_seconds);
+			stream_ << "." << std::setw(6) << fractional.count();
 		}
+		stream_ << " ";
 	}
 	stream_ << prefix_ << sanitize_log(message.str());
 	if(auto_newline_) {
@@ -554,24 +534,20 @@ void log_in_progress::set_auto_newline(bool auto_newline) {
 void scope_logger::do_log_entry(const std::string& str) noexcept
 {
 	str_ = str;
-	try {
-		ticks_ = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
-	} catch(...) {}
+	start_ = std::chrono::steady_clock::now();
 	debug()(domain_, false, true) | formatter() << "{ BEGIN: " << str_;
 	++indent;
 }
 
 void scope_logger::do_log_exit() noexcept
 {
-	long ticks = 0;
-	try {
-		ticks = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count() - ticks_;
-	} catch(...) {}
 	--indent;
 	auto output = debug()(domain_, false, true);
 	output.set_indent(indent);
 	if(timestamp) output.enable_timestamp();
-	output | formatter() << "} END: " << str_ << " (took " << ticks << "us)";
+	auto now = std::chrono::steady_clock::now();
+	auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(now - start_);
+	output | formatter() << "} END: " << str_ << " (took " << elapsed.count() << "us)"; // FIXME c++20 stream: operator
 }
 
 std::stringstream& log_to_chat()

@@ -55,7 +55,7 @@ public:
 
 	ai_composite& get_ai_ref();
 
-	const std::string describe_ai();
+	std::string describe_ai() const;
 
 	config to_config() const;
 
@@ -64,11 +64,11 @@ public:
 
 	void append_ai(const config& cfg);
 
-	const std::string get_ai_overview();
+	std::string get_ai_overview();
 
-	const std::string get_ai_structure();
+	std::string get_ai_structure();
 
-	const std::string get_ai_identifier() const;
+	std::string get_ai_identifier() const;
 
 	component* get_component(component *root, const std::string &path); // Ai debug method
 
@@ -131,9 +131,7 @@ public:
 
 	manager();
 
-	/* The singleton can't be set to null in the destructor because member objects
-	(which access the singleton) are destroyed *after* the destructor has been run. */
-	~manager() = default;
+	~manager();
 
 	// =======================================================================
 	// ACCESS TO MANAGER
@@ -431,7 +429,7 @@ private:
 	events::generic_event tod_changed_;
 	events::generic_event gamestate_changed_;
 	events::generic_event turn_started_;
-	int last_interact_;
+	std::chrono::steady_clock::time_point last_interact_;
 	int num_interact_;
 
 	AI_map_of_stacks ai_map_;

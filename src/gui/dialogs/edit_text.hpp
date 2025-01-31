@@ -20,14 +20,6 @@
 namespace gui2::dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Dialog for renaming units in-game.
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * name              | text_box     |yes      |Input field for the unit name.
- */
 class edit_text : public modal_dialog
 {
 public:
@@ -52,19 +44,13 @@ public:
 	/**
 	 * Executes the dialog.
 	 * See @ref modal_dialog for more information.
-	 *
-	 * @param [in, out] text      The parameter's usage is:
-	 *                            - Input:  The initial value of the unit name.
-	 *                            - Output: The new unit name the user entered
-	 *                              if this method returns @a true, undefined
-	 *                              otherwise.
 	 */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(edit_text)
 
 private:
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	void on_text_change();
 

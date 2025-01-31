@@ -18,10 +18,19 @@
 #include "team.hpp"
 #include "units/unit.hpp"
 
-namespace actions
+namespace actions::undo
 {
-namespace undo
+dismiss_action::dismiss_action(const unit_const_ptr& dismissed)
+	: undo_action()
+	, dismissed_unit(dismissed->clone())
 {
+}
+
+dismiss_action::dismiss_action(const config& cfg)
+	: undo_action()
+	, dismissed_unit(unit::create(cfg.mandatory_child("unit")))
+{
+}
 
 /**
  * Writes this into the provided config.
@@ -41,9 +50,9 @@ bool dismiss_action::undo(int side)
 	team &current_team = resources::gameboard->get_team(side);
 
 	current_team.recall_list().add(dismissed_unit);
-	execute_undo_umc_wml();
 	return true;
 }
 
-}
+static auto red_undo_dismiss = undo_action_container::subaction_factory<dismiss_action>();
+
 }

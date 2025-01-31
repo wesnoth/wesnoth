@@ -46,13 +46,15 @@ public:
 	void play_slice();
 
 	void set_callback(const std::string & name, callback_function);
-	void set_callback(const std::string & name, std::function<void(config)> function, bool preserves_context);
+	void set_callback(const std::string & name, const std::function<void(config)>& function, bool preserves_context);
+	void set_callback_execute(class lua_kernel_base& kernel);
 	std::size_t erase_callback(const std::string & name);
 	std::size_t clear_callbacks();
 
 	void set_accessor(const std::string & name, accessor_function);
-	void set_accessor_string(const std::string & name, std::function<std::string(config)>);	//helpers which create a config from a simple type
-	void set_accessor_int(const std::string & name, std::function<int(config)>);
+	void set_accessor_string(const std::string & name, const std::function<std::string(config)>&);	//helpers which create a config from a simple type
+	void set_accessor_int(const std::string & name, const std::function<int(config)>&);
+	void set_accessor_bool(const std::string & name, const std::function<bool(config)>&);
 	std::size_t erase_accessor(const std::string & name);
 	std::size_t clear_accessors();
 
@@ -67,4 +69,5 @@ private:
 	callback_list callbacks_;
 	accessor_list accessors_;
 	std::string name_;
+	lua_kernel_base* execute_kernel_;
 };

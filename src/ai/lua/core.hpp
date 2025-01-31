@@ -80,7 +80,7 @@ private:
 public:
 	~lua_ai_action_handler();
 	//void handle(const config &cfg, bool read_only, lua_object_ptr l_obj);
-	void handle(const config &cfg, const config &filter_own, bool read_only, lua_object_ptr l_obj);
+	void handle(const config &cfg, const config &filter_own, bool read_only, const lua_object_ptr& l_obj);
 	friend class ::game_lua_kernel;
 };
 

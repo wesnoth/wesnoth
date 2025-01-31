@@ -31,21 +31,6 @@ class stacked_widget;
 namespace dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * Shows the list of addons on the server available for installation.
- *
- * Key               |Type          |Mandatory|Description
- * ------------------|--------------|---------|-----------
- * addons            | @ref listbox |yes      |A listbox that will contain the info about all addons on the server.
- * name              | label        |yes      |The name of the addon.
- * version_filter    | menu_button  |yes      |List allowing current or older versions to be selected.
- * author            | label        |yes      |The author of the addon.
- * downloads         | label        |yes      |The number of times the addon has been downloaded.
- * size              | label        |yes      |The size of the addon.
- * tags              | label        |yes      |Contents of the PblWML "tags" attribute.
- */
 class addon_manager : public modal_dialog
 {
 public:
@@ -82,12 +67,12 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	void fetch_addons_list();
 	void load_addon_list();
 
-	void reload_list_and_reselect_item(const std::string id);
+	void reload_list_and_reselect_item(const std::string& id);
 
 	/** Config which contains the list with the campaigns. */
 	config cfg_;
@@ -145,6 +130,7 @@ private:
 	}
 
 	void update_all_addons();
+	void info();
 
 	void apply_filters();
 	void order_addons();
@@ -158,7 +144,7 @@ private:
 	boost::dynamic_bitset<> get_lang_filter_visibility() const;
 
 	void on_selected_version_change();
-	bool exit_hook(window& window);
+	bool exit_hook();
 };
 
 } // namespace dialogs

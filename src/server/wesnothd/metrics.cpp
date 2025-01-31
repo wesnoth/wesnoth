@@ -20,6 +20,8 @@
 
 #include "server/wesnothd/metrics.hpp"
 
+#include "serialization/chrono.hpp"
+
 #include <algorithm>
 #include <ostream>
 
@@ -42,7 +44,7 @@ metrics::metrics()
 	, current_requests_(0)
 	, nrequests_(0)
 	, nrequests_waited_(0)
-	, started_at_(std::time(nullptr))
+	, started_at_(std::chrono::steady_clock::now())
 	, terminations_()
 {
 }
@@ -74,7 +76,9 @@ void metrics::no_requests()
 	current_requests_ = 0;
 }
 
-void metrics::record_sample(const simple_wml::string_span& name, clock_t parsing_time, clock_t processing_time)
+void metrics::record_sample(const simple_wml::string_span& name,
+	const std::chrono::steady_clock::duration& parsing_time,
+	const std::chrono::steady_clock::duration& processing_time)
 {
 	auto isample = std::lower_bound(samples_.begin(), samples_.end(), name,compare_samples_to_stringspan());
 	if(isample == samples_.end() || isample->name != name) {
@@ -128,34 +132,32 @@ std::ostream& metrics::requests(std::ostream& out) const
 	out << "\nSampled request types:\n";
 
 	std::size_t n = 0;
-	std::size_t pa = 0;
-	std::size_t pr = 0;
+	std::chrono::steady_clock::duration pa{0};
+	std::chrono::steady_clock::duration pr{0};
 	for(const auto& s : ordered_samples) {
 		out << "'" << s.name << "' called " << s.nsamples << " times "
-			<< s.parsing_time << "("<< s.max_parsing_time <<") parsing time, "
-			<< s.processing_time << "("<<s.max_processing_time<<") processing time\n";
+			<< s.parsing_time.count() << "(" << s.max_parsing_time.count() << ") parsing time, "
+			<< s.processing_time.count() << "(" << s.max_processing_time.count() << ") processing time\n";
 		n += s.nsamples;
 		pa += s.parsing_time;
 		pr += s.processing_time;
 	}
 	out << "Total number of request samples = " << n << "\n"
-		<< "Total parsing time = " << pa << "\n"
-		<< "Total processing time = " << pr;
+		<< "Total parsing time = " << pa.count() << "\n"
+		<< "Total processing time = " << pr.count();
 
 	return out;
 }
 
 std::ostream& operator<<(std::ostream& out, metrics& met)
 {
-	const std::time_t time_up = std::time(nullptr) - met.started_at_;
-	const int seconds = time_up%60;
-	const int minutes = (time_up/60)%60;
-	const int hours = (time_up/(60*60))%24;
-	const int days = time_up/(60*60*24);
+	const auto time_up = std::chrono::steady_clock::now() - met.started_at_;
+	auto [days, hours, minutes, seconds] = chrono::deconstruct_duration(chrono::format::days_hours_mins_secs, time_up);
+
 	const int requests_immediate = met.nrequests_ - met.nrequests_waited_;
 	const int percent_immediate = (requests_immediate*100)/(met.nrequests_ > 0 ? met.nrequests_ : 1);
-	out << "METRICS\nUp " << days << " days, " << hours << " hours, "
-	    << minutes << " minutes, " << seconds << " seconds\n"
+	out << "METRICS\nUp " << days.count() << " days, " << hours.count() << " hours, "
+	    << minutes.count() << " minutes, " << seconds.count() << " seconds\n"
 	    << met.nrequests_ << " requests serviced. " << requests_immediate
 	    << " (" << percent_immediate << "%) "
 	    << "requests were serviced immediately.\n"

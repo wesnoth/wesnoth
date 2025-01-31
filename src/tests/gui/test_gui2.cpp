@@ -34,6 +34,7 @@
 #include "gettext.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/dialogs/addon/addon_auth.hpp"
+#include "gui/dialogs/addon/addon_server_info.hpp"
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
@@ -56,6 +57,7 @@
 #include "gui/dialogs/editor/edit_pbl_translation.hpp"
 #include "gui/dialogs/editor/edit_scenario.hpp"
 #include "gui/dialogs/editor/edit_side.hpp"
+#include "gui/dialogs/editor/edit_unit.hpp"
 #include "gui/dialogs/editor/generate_map.hpp"
 #include "gui/dialogs/editor/generator_settings.hpp"
 #include "gui/dialogs/editor/new_map.hpp"
@@ -72,6 +74,7 @@
 #include "gui/dialogs/game_stats.hpp"
 #include "gui/dialogs/game_version_dialog.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
+#include "gui/dialogs/gui_test_dialog.hpp"
 #include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/hotkey_bind.hpp"
 #include "gui/dialogs/label_settings.hpp"
@@ -80,6 +83,7 @@
 #include "gui/dialogs/log_settings.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 #include "gui/dialogs/multiplayer/lobby.hpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
@@ -110,10 +114,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/unit_advance.hpp"
 #include "gui/dialogs/unit_attack.hpp"
-#include "gui/dialogs/unit_create.hpp"
-#include "gui/dialogs/unit_list.hpp"
-#include "gui/dialogs/unit_recall.hpp"
-#include "gui/dialogs/unit_recruit.hpp"
+#include "gui/dialogs/units_dialog.hpp"
 #include "gui/dialogs/wml_error.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/settings.hpp"
@@ -518,6 +519,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_generator_settings)
 {
 	test<generator_settings>();
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_gui_test_dialog)
+{
+	test<gui_test_dialog>();
+}
 BOOST_AUTO_TEST_CASE(modal_dialog_test_hotkey_bind)
 {
 	test<hotkey_bind>();
@@ -598,10 +603,6 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_transient_message)
 {
 	test<transient_message>();
 }
-BOOST_AUTO_TEST_CASE(modal_dialog_test_unit_create)
-{
-	test<unit_create>();
-}
 BOOST_AUTO_TEST_CASE(modal_dialog_test_wml_error)
 {
 	test<wml_error>();
@@ -622,9 +623,17 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_achievements_dialog)
 {
 	test<achievements_dialog>();
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_addon_server_info)
+{
+	test<addon_server_info>();
+}
 BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_match_history_dialog)
 {
 	test<mp_match_history>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_migrate_version_selection_dialog)
+{
+	test<gui2::dialogs::migrate_version_selection>();
 }
 BOOST_AUTO_TEST_CASE(modeless_dialog_test_debug_clock)
 {
@@ -641,6 +650,11 @@ BOOST_AUTO_TEST_CASE(tooltip_test_tooltip)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_tod_new_schedule)
 {
 	test<tod_new_schedule>();
+}
+
+BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_edit_unit)
+{
+	test<editor_edit_unit>();
 }
 
 // execute last - checks that there aren't any unaccounted for GUIs
@@ -670,9 +684,7 @@ BOOST_AUTO_TEST_CASE(test_last)
 		"synched_choice_wait",
 		"drop_down_menu",
 		"preferences_dialog",
-		"unit_recruit",
-		"unit_recall",
-		"unit_list",
+		"units_dialog",
 		"unit_advance",
 		"mp_host_game_prompt",
 		"mp_create_game",
@@ -723,7 +735,7 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 		message dlg("title", "message", true, false, false);
 		dlg.show(1);
 	} catch(const wml_exception& e) {
-		BOOST_CHECK(e.user_message == _("Failed to show a dialog, which doesn't fit on the screen."));
+		BOOST_CHECK(e.user_message == _("Failed to show a dialog, which doesn’t fit on the screen."));
 		return;
 	} catch(...) {
 		BOOST_ERROR("Didn't catch the wanted exception, instead caught " << utils::get_unknown_exception_type() << ".");
@@ -734,6 +746,18 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 BOOST_AUTO_TEST_SUITE_END()
 
 namespace {
+
+template<>
+struct dialog_tester<addon_server_info>
+{
+	std::string s = "";
+	bool b = false;
+	addon_server_info* create()
+	{
+		addons_client client("localhost:15999");
+		return new addon_server_info(client, s, b);
+	}
+};
 
 template<>
 struct dialog_tester<addon_auth>
@@ -1066,6 +1090,15 @@ struct dialog_tester<mp_match_history>
 	mp_match_history* create()
 	{
 		return new mp_match_history("", connection, false);
+	}
+};
+
+template<>
+struct dialog_tester<gui2::dialogs::migrate_version_selection>
+{
+	gui2::dialogs::migrate_version_selection* create()
+	{
+		return new gui2::dialogs::migrate_version_selection();
 	}
 };
 
@@ -1409,11 +1442,42 @@ template<>
 struct dialog_tester<tod_new_schedule>
 {
 	std::string id = "id";
-	std::string name = "name";
+	t_string name = "name";
 	dialog_tester() {}
 	tod_new_schedule* create()
 	{
 		return new tod_new_schedule(id, name);
+	}
+};
+
+template<>
+struct dialog_tester<editor_edit_unit>
+{
+	config cfg;
+	game_config_view view;
+
+	dialog_tester() {}
+	editor_edit_unit* create()
+	{
+		config& units = cfg.add_child("units");
+		cfg.add_child("race");
+		config& movetype = units.add_child("movetype");
+		movetype["name"] = "Test Movetype";
+		movetype.add_child("defense");
+		movetype.add_child("resistance");
+		movetype.add_child("movement_costs");
+		view = game_config_view::wrap(cfg);
+		return new editor_edit_unit(view, "test_addon");
+	}
+};
+
+template<>
+struct dialog_tester<gui_test_dialog>
+{
+	dialog_tester() {}
+	gui_test_dialog* create()
+	{
+		return new gui_test_dialog();
 	}
 };
 

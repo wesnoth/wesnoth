@@ -17,11 +17,10 @@
 #include "gui/dialogs/label_settings.hpp"
 
 #include "display.hpp"
-#include "font/text_formatting.hpp"
+#include "serialization/markup.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -57,14 +56,12 @@ label_settings::label_settings(display_context& dc)
 		all_labels_[hidden_cat] = false;
 	}
 
-	for(std::size_t i = 0; i < viewer_.teams().size(); i++) {
-		const team& team = viewer_.teams()[i];
-		const std::string label_cat_key = "side:" + std::to_string(i + 1);
+	for(const team& team : viewer_.teams()) {
+		const std::string label_cat_key = "side:" + std::to_string(team.side());
 
 		if(team.hidden()) {
 			labels_display_[label_cat_key] = "";
 			continue;
-
 		}
 
 		std::string team_name = team.side_name();
@@ -77,15 +74,15 @@ label_settings::label_settings(display_context& dc)
 		}
 
 		utils::string_map subst;
-		subst["side_number"] = std::to_string(i + 1);
+		subst["side_number"] = std::to_string(team.side());
 		subst["name"] = team_name;
 		labels_display_[label_cat_key] = VGETTEXT("Side $side_number ($name)", subst);
 	}
 }
 
-void label_settings::pre_show(window& window)
+void label_settings::pre_show()
 {
-	listbox& cats_listbox = find_widget<listbox>(&window, "label_types", false);
+	listbox& cats_listbox = find_widget<listbox>("label_types");
 	widget_data list_data;
 
 	for(const auto& label_entry : all_labels_) {
@@ -102,25 +99,25 @@ void label_settings::pre_show(window& window)
 			const int team = std::stoi(category.substr(5)) - 1;
 			const color_t tc = game_config::tc_info(viewer_.teams()[team].color())[0];
 
-			name = (formatter() << font::span_color(tc) << name << "</span>").str();
+			name = markup::span_color(tc, name);
 		}
 
 		list_data["cat_name"]["label"] = name;
 		grid* grid = &cats_listbox.add_row(list_data);
 
-		toggle_button& status = find_widget<toggle_button>(grid, "cat_status", false);
+		toggle_button& status = grid->find_widget<toggle_button>("cat_status");
 		status.set_value(visible);
 
 		connect_signal_notify_modified(status, std::bind(&label_settings::toggle_category, this, std::placeholders::_1, category));
 
 		if(category.substr(0, 5) == "side:") {
-			label& cat_name = find_widget<label>(grid, "cat_name", false);
+			label& cat_name = grid->find_widget<label>("cat_name");
 			cat_name.set_use_markup(true);
 		}
 	}
 }
 
-void label_settings::post_show(window& /*window*/)
+void label_settings::post_show()
 {
 	if(get_retval() == retval::OK) {
 		std::vector<std::string> hidden_categories;

@@ -25,27 +25,6 @@ class toggle_button;
 namespace dialogs
 {
 
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * This shows the dialog to resize the current map.
- * Key               |Type              |Mandatory|Description
- * ------------------|------------------|---------|-----------
- * old_width         | @ref label       |no       |Shows the old width of the map.
- * old_height        | @ref label       |no       |Shows the old height of the map.
- * width             | @ref slider      |yes      |Determines the new width of the map.
- * height            | @ref slider      |yes      |Determines the new height of the map.
- * copy_edge_terrain | boolean_selector |yes      |Determines whether the border terrains should be used to expand or not.
- * expand0           | toggle_button    |yes      |Determines in which direction to expand, shows the north east marker.
- * expand1           | toggle_button    |yes      |Determines in which direction to expand, shows the north marker.
- * expand2           | toggle_button    |yes      |Determines in which direction to expand, shows the north west marker.
- * expand3           | toggle_button    |yes      |Determines in which direction to expand, shows the east marker.
- * expand4           | toggle_button    |yes      |Determines in which direction to expand, shows the center marker.
- * expand5           | toggle_button    |yes      |Determines in which direction to expand, shows the west marker.
- * expand6           | toggle_button    |yes      |Determines in which direction to expand, shows the south east marker.
- * expand7           | toggle_button    |yes      |Determines in which direction to expand, shows the south marker.
- * expand8           | toggle_button    |yes      |Determines in which direction to expand, shows the south west marker.
- */
 class editor_resize_map : public modal_dialog
 {
 public:
@@ -123,9 +102,9 @@ private:
 
 	void update_expand_direction();
 
-	void set_direction_icon(int index, std::string icon);
+	void set_direction_icon(int index, const std::string& icon);
 
-	virtual void pre_show(window& window) override;
+	virtual void pre_show() override;
 
 	virtual const std::string& window_id() const override;
 };

@@ -632,6 +632,14 @@ const node* node::child(const char* name) const
 	return nullptr;
 }
 
+node& node::child_or_add(const char* name)
+{
+	if(node* res = child(name)) {
+		return *res;
+	}
+	return add_child(name);
+}
+
 const node::child_list& node::children(const char* name) const
 {
 	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
@@ -756,12 +764,16 @@ void node::output(char*& buf, CACHE_STATUS cache_status)
 
 	for(std::vector<attribute>::iterator i = attr_.begin(); i != attr_.end(); ++i) {
 		memcpy(buf, i->key.begin(), i->key.size());
-		i->key = string_span(buf, i->key.size());
+		if(cache_status == REFRESH_CACHE) {
+			i->key = string_span(buf, i->key.size());
+		}
 		buf += i->key.size();
 		*buf++ = '=';
 		*buf++ = '"';
 		memcpy(buf, i->value.begin(), i->value.size());
-		i->value = string_span(buf, i->value.size());
+		if(cache_status == REFRESH_CACHE) {
+			i->value = string_span(buf, i->value.size());
+		}
 		buf += i->value.size();
 		*buf++ = '"';
 		*buf++ = '\n';
@@ -774,7 +786,9 @@ void node::output(char*& buf, CACHE_STATUS cache_status)
 		string_span& attr = children_[i->child_map_index].first;
 		*buf++ = '[';
 		memcpy(buf, attr.begin(), attr.size());
-		attr = string_span(buf, attr.size());
+		if(cache_status == REFRESH_CACHE) {
+			attr = string_span(buf, attr.size());
+		}
 		buf += attr.size();
 		*buf++ = ']';
 		*buf++ = '\n';

@@ -63,7 +63,9 @@ public:
 
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string_base(const t_string_base&);
+	t_string_base(t_string_base&&) noexcept = default;
 	t_string_base(const std::string& string);
+	t_string_base(std::string&& string);
 	t_string_base(const std::string& string, const std::string& textdomain);
 	t_string_base(const std::string& sing, const std::string& pl, int count, const std::string& textdomain);
 	t_string_base(const char* string);
@@ -73,6 +75,7 @@ public:
 
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string_base& operator=(const t_string_base&);
+	t_string_base& operator=(t_string_base&&) noexcept = default;
 	t_string_base& operator=(const std::string&);
 	t_string_base& operator=(const char*);
 
@@ -101,6 +104,7 @@ public:
 	std::string::size_type size() const              { return str().size(); }
 
 	operator const std::string&() const              { return str(); }
+	operator std::string_view() const                { return str(); }
 	const std::string& str() const;
 	const char* c_str() const                        { return str().c_str(); }
 	bool translatable() const						 { return translatable_; }
@@ -139,12 +143,17 @@ public:
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string(const t_string&);
 
+	t_string(t_string&&) noexcept = default;
+
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string& operator=(const t_string&);
+
+	t_string& operator=(t_string&&) noexcept = default;
 
 	t_string(const base &);
 	t_string(const char *);
 	t_string(const std::string &);
+	t_string(std::string&&);
 	t_string(const std::string &str, const std::string &textdomain);
 	t_string(const std::string& sing, const std::string& pl, int count, const std::string& textdomain);
 
@@ -188,6 +197,7 @@ public:
 
 	operator const std::string&() const { return get(); }
 	const std::string& str() const { return get().str(); }
+	operator std::string_view() const { return get().str(); }
 	const char* c_str() const { return get().c_str(); }
 	bool translatable() const { return get().translatable(); }
 	const std::string& value() const { return get().value(); }

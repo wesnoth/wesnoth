@@ -20,7 +20,8 @@
 #include "server/common/simple_wml.hpp"
 #include "side_controller.hpp"
 
-#include <optional>
+#include "utils/optional_fwd.hpp"
+
 #include <vector>
 
 // class player;
@@ -28,7 +29,7 @@
 namespace wesnothd
 {
 typedef std::vector<player_iterator> user_vector;
-typedef std::vector<std::optional<player_iterator>> side_vector;
+typedef std::vector<utils::optional<player_iterator>> side_vector;
 class server;
 
 class game
@@ -243,7 +244,7 @@ public:
 	 * @param kicker The player doing the kicking.
 	 * @return The iterator to the removed member if successful, empty optional otherwise.
 	 */
-	std::optional<player_iterator> kick_member(const simple_wml::node& kick, player_iterator kicker);
+	utils::optional<player_iterator> kick_member(const simple_wml::node& kick, player_iterator kicker);
 
 	/**
 	 * Ban a user by name.
@@ -254,7 +255,7 @@ public:
 	 * @param banner The player doing the banning.
 	 * @return The iterator to the banned player if he was in this game, empty optional otherwise.
 	 */
-	std::optional<player_iterator> ban_user(const simple_wml::node& ban, player_iterator banner);
+	utils::optional<player_iterator> ban_user(const simple_wml::node& ban, player_iterator banner);
 
 	/**
 	 * Unban a user by name.
@@ -362,10 +363,8 @@ public:
 
 	/**
 	 * Set the description to the number of available slots.
-	 *
-	 * @returns True if the number of slots has changed.
 	 */
-	bool describe_slots();
+	void describe_slots();
 
 	/**
 	 * Sends a message to all players in this game that aren't excluded.
@@ -373,11 +372,11 @@ public:
 	 * @param message The message to send.
 	 * @param exclude The players to not send the message to.
 	 */
-	void send_server_message_to_all(const char* message, std::optional<player_iterator> exclude = {});
+	void send_server_message_to_all(const char* message, utils::optional<player_iterator> exclude = {});
 	/**
 	 * @ref send_server_message_to_all
 	 */
-	void send_server_message_to_all(const std::string& message, std::optional<player_iterator> exclude = {})
+	void send_server_message_to_all(const std::string& message, utils::optional<player_iterator> exclude = {})
 	{
 		send_server_message_to_all(message.c_str(), exclude);
 	}
@@ -390,12 +389,12 @@ public:
 	 * @param doc The document to create the message in. If nullptr then a new document is created.
 	 */
 	void send_server_message(
-			const char* message, std::optional<player_iterator> player = {}, simple_wml::document* doc = nullptr) const;
+			const char* message, utils::optional<player_iterator> player = {}, simple_wml::document* doc = nullptr) const;
 	/**
 	 * @ref send_server_message
 	 */
 	void send_server_message(
-			const std::string& message, std::optional<player_iterator> player = {}, simple_wml::document* doc = nullptr) const
+			const std::string& message, utils::optional<player_iterator> player = {}, simple_wml::document* doc = nullptr) const
 	{
 		send_server_message(message.c_str(), player, doc);
 	}
@@ -407,11 +406,11 @@ public:
 	 * @param message The message to send.
 	 * @param exclude The players to not send the message to.
 	 */
-	void send_and_record_server_message(const char* message, std::optional<player_iterator> exclude = {});
+	void send_and_record_server_message(const char* message, utils::optional<player_iterator> exclude = {});
 	/**
 	 * @ref send_and_record_server_message
 	 */
-	void send_and_record_server_message(const std::string& message, std::optional<player_iterator> exclude = {})
+	void send_and_record_server_message(const std::string& message, utils::optional<player_iterator> exclude = {})
 	{
 		send_and_record_server_message(message.c_str(), exclude);
 	}
@@ -425,7 +424,7 @@ public:
 	 * @param exclude The player from @a players to not send the data to.
 	 */
 	template<typename Container>
-	void send_to_players(simple_wml::document& data, const Container& players, std::optional<player_iterator> exclude = {});
+	void send_to_players(simple_wml::document& data, const Container& players, utils::optional<player_iterator> exclude = {});
 
 	/**
 	 * Send data to all players and observers except those excluded.
@@ -433,7 +432,7 @@ public:
 	 * @param data The data to send.
 	 * @param exclude The players/observers to not send the data to.
 	 */
-	void send_data(simple_wml::document& data, std::optional<player_iterator> exclude = {});
+	void send_data(simple_wml::document& data, utils::optional<player_iterator> exclude = {});
 
 	/**
 	 * Clears the history of recorded WML documents.
@@ -479,6 +478,27 @@ public:
 	simple_wml::node* description() const
 	{
 		return description_;
+	}
+
+	/**
+	 * @return The node containing the game's current description. and remembers that it was changed.
+	 */
+	simple_wml::node* description_for_writing()
+	{
+		description_updated_ = true;
+		return description_;
+	}
+
+	/**
+	 * @return The node containing the game's current description if it was changed.
+	 */
+	simple_wml::node* changed_description()
+	{
+		if(description_updated_) {
+			description_updated_ = false;
+			return description_;
+		}
+		return nullptr;
 	}
 
 	/**
@@ -601,15 +621,28 @@ private:
 	 */
 	std::size_t current_side() const
 	{
-		return nsides_ != 0 ? (current_side_index_ % nsides_) : 0;
+		// At the start of the game it can happen that current_side_index_ is 0,
+		// but the first side is empty. It's better to do this than to skip empty
+		// sides in start_game() in case the controller changes during start events.
+		return get_next_nonempty(current_side_index_);
+	}
+
+	/**
+	 * @return The player who owns the side at index @a index.
+	 * nullopt if wither index is invalid or the side is not owned.
+	 */
+	utils::optional<player_iterator> get_side_player(size_t index) const
+	{
+		return index >= sides_.size() ? utils::optional<player_iterator>() : sides_[index];
 	}
 
 	/**
 	 * @return The player who owns the current side.
 	 */
-	std::optional<player_iterator> current_player() const
+	utils::optional<player_iterator> current_player() const
 	{
-		return sides_[current_side()];
+		// sides_ should never be empty but just to be sure.
+		return get_side_player(current_side());
 	}
 
 	/**
@@ -707,7 +740,7 @@ private:
 	 */
 	void send_data_sides(simple_wml::document& data,
 			const simple_wml::string_span& sides,
-			std::optional<player_iterator> exclude = {});
+			utils::optional<player_iterator> exclude = {});
 
 	/**
 	 * Send a document per observer in the game.
@@ -715,7 +748,7 @@ private:
 	 *
 	 * @param player The observer who joined.
 	 */
-	void send_observerjoins(std::optional<player_iterator> player = {});
+	void send_observerjoins(utils::optional<player_iterator> player = {});
 	void send_observerquit(player_iterator observer);
 	void send_history(player_iterator sock) const;
 	void send_chat_history(player_iterator sock) const;
@@ -729,7 +762,7 @@ private:
 	 * @param name The name of the user to find.
 	 * @return The player if found, else empty.
 	 */
-	std::optional<player_iterator> find_user(const simple_wml::string_span& name);
+	utils::optional<player_iterator> find_user(const simple_wml::string_span& name);
 
 	bool is_legal_command(const simple_wml::node& command, player_iterator user);
 
@@ -741,13 +774,17 @@ private:
 
 	/**
 	 * Function which should be called every time a player ends their turn
-	 * (i.e. [end_turn] received). This will update the 'turn' attribute for
-	 * the game's description when appropriate.
+	 * (i.e. [end_turn] received).
 	 *
 	 * @param new_side The side number whose turn to move it has become.
-	 * @return True if the current side and-or current turn values have been updated, false otherwise.
 	 */
-	bool end_turn(int new_side);
+	void end_turn(int new_side);
+	/**
+	 * Function which should be called every time a player starts their turn
+	 * (i.e. [init_side] received). This will update the 'turn' attribute for
+	 * the game's description when appropriate.
+	 */
+	void init_turn();
 
 	/**
 	 * Set or update the current and max turn values in the game's description.
@@ -760,7 +797,7 @@ private:
 	 *
 	 * @param exclude The players to not send the list of users to.
 	 */
-	void send_user_list(std::optional<player_iterator> exclude = {});
+	void send_user_list(utils::optional<player_iterator> exclude = {});
 
 	/**
 	 * @param pl The player.
@@ -772,7 +809,7 @@ private:
 	 * @param users The users to create a comma separated list from.
 	 * @return A comma separated list of user names.
 	 */
-	std::string list_users(user_vector users) const;
+	std::string list_users(const user_vector& users) const;
 
 	/** calculates the initial value for sides_, side_controllerds_, nsides_*/
 	void reset_sides();
@@ -790,6 +827,13 @@ private:
 	 * @return A string listing the game IDs and side information.
 	 */
 	std::string debug_sides_info() const;
+
+	/// @return the side index for which we accept [init_side]
+	int get_next_side_index() const;
+	/**
+	 * finds the first side starting at @a side_index that is non empty.
+	 */
+	int get_next_nonempty(int side_index) const;
 
 	/** The wesnothd server instance this game exists on. */
 	wesnothd::server& server;
@@ -868,10 +912,18 @@ private:
 	/** Pointer to the game's description in the games_and_users_list_. */
 	simple_wml::node* description_;
 
+	/** Set to true whenever description_ was changed that an update needs to be sent to clients. */
+	bool description_updated_;
+
 	/** The game's current turn. */
 	int current_turn_;
 	/** The index of the current side. The side number is current_side_index_+1. */
 	int current_side_index_;
+	/**
+	 * after [end_turn] was received, this contains the side for who we accept [init_side].
+	 * -1 if we currently don't accept [init_side] because the current player didn't end his turn yet.
+	 **/
+	int next_side_index_;
 	/** The maximum number of turns before the game ends. */
 	int num_turns_;
 	/** Whether all observers should be treated as muted. */

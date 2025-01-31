@@ -147,10 +147,10 @@ namespace
 
 pump_manager::pump_manager(pump_impl& impl)
 	: impl_(impl)
-	, x1_(resources::gamedata->get_variable("x1"))
-	, x2_(resources::gamedata->get_variable("x2"))
-	, y1_(resources::gamedata->get_variable("y1"))
-	, y2_(resources::gamedata->get_variable("y2"))
+	, x1_(resources::gamedata->get_variable("x1").to_int())
+	, x2_(resources::gamedata->get_variable("x2").to_int())
+	, y1_(resources::gamedata->get_variable("y1").to_int())
+	, y2_(resources::gamedata->get_variable("y2").to_int())
 	, queue_()
 	, pumped_count_(0) // Filled later with a swap().
 {

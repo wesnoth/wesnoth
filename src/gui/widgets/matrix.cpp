@@ -18,13 +18,13 @@
 #include "gui/widgets/matrix.hpp"
 
 #include "gettext.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/core/register_widget.hpp"
+#include "wml_exception.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -84,7 +84,7 @@ matrix::matrix(const implementation::builder_matrix& builder)
 	cfg->content->build(content_, replacements);
 	content_.set_parent(this);
 
-	pane_ = find_widget<pane>(&content_, "pane", false, true);
+	pane_ = content_.find_widget<pane>("pane", false, true);
 }
 
 unsigned
@@ -131,7 +131,7 @@ const widget* matrix::find_at(const point& coordinate,
 	return content_.find_at(coordinate, must_be_active);
 }
 
-widget* matrix::find(const std::string& id, const bool must_be_active)
+widget* matrix::find(const std::string_view id, const bool must_be_active)
 {
 	if(widget* result = widget::find(id, must_be_active)) {
 		return result;
@@ -140,7 +140,7 @@ widget* matrix::find(const std::string& id, const bool must_be_active)
 	}
 }
 
-const widget* matrix::find(const std::string& id, const bool must_be_active)
+const widget* matrix::find(const std::string_view id, const bool must_be_active)
 		const
 {
 	if(const widget* result = widget::find(id, must_be_active)) {

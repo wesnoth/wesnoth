@@ -94,7 +94,7 @@ public:
 	}
 
 	/**
-	 * Adds a sibbling for a node at the end of the list.
+	 * Adds a sibling for a node at the end of the list.
 	 *
 	 * @param id                  The id of the node definition to use for the
 	 *                            new node.
@@ -126,7 +126,7 @@ public:
 	 * node. This node has no parent node and some other special features so
 	 * several code paths need to check whether they are the parent node.
 	 *
-	 * This also returns true for a detecthed node returned with @ref tree_view::remove_node.
+	 * This also returns true for a detached node returned with @ref tree_view::remove_node.
 	 */
 	bool is_root_node() const
 	{
@@ -191,11 +191,10 @@ public:
 								   const bool must_be_active) const override;
 
 	/** See @ref widget::find. */
-	widget* find(const std::string& id, const bool must_be_active) override;
+	widget* find(const std::string_view id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	const widget* find(const std::string& id,
-						const bool must_be_active) const override;
+	const widget* find(const std::string_view id, const bool must_be_active) const override;
 
 	/**
 	 * The number of children in this widget.
@@ -237,7 +236,7 @@ public:
 	/**
 	 * Calculates the node indices needed to get from the root node to this node.
 	 */
-	std::vector<int> describe_path();
+	std::vector<int> describe_path() const;
 
 	tree_view_node* get_last_visible_parent_node();
 	tree_view_node* get_node_above();
@@ -314,8 +313,7 @@ private:
 	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children() override;
 
-	// FIXME rename to icon
-	void signal_handler_left_button_click(const event::ui_event event);
+	void signal_handler_toggle_left_click(const event::ui_event event);
 
 	void signal_handler_label_left_button_click(const event::ui_event event,
 												bool& handled,

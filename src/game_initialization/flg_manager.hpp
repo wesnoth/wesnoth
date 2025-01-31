@@ -71,15 +71,14 @@ public:
 	const std::string& current_gender() const
 		{ return current_gender_; }
 
-	const config* default_leader_cfg() const
-		{ return default_leader_cfg_; }
-
 	int current_faction_index() const;
 
 	int current_leader_index() const
 		{ return leader_index(current_leader_); }
 	int current_gender_index() const
 		{ return gender_index(current_gender_); }
+	bool leader_lock() const
+		{ return leader_lock_; }
 
 private:
 	flg_manager(const flg_manager&) = delete;
@@ -109,12 +108,8 @@ private:
 	const int side_num_;
 	const bool faction_from_recruit_;
 
-	const std::string original_type_;
-	const std::string original_gender_;
-	std::string savegame_gender_;
 	const std::string original_faction_;
 	const std::vector<std::string> original_recruit_;
-	const std::string choose_faction_by_leader_;
 	const bool saved_game_;
 	const bool has_no_recruits_;
 
@@ -136,7 +131,6 @@ private:
 
 	std::string default_leader_type_;
 	std::string default_leader_gender_;
-	const config* default_leader_cfg_;
 
 	static const config& get_default_faction(const config& cfg);
 };

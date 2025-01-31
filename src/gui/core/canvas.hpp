@@ -27,6 +27,7 @@
 #include "sdl/texture.hpp"
 #include "sdl/rect.hpp"
 
+namespace wfl { class variant; }
 struct point;
 
 namespace gui2
@@ -155,6 +156,11 @@ public:
 		variables_.add(key, std::move(value));
 	}
 
+	wfl::variant get_variable(const std::string& key)
+	{
+		return variables_.query_value(key);
+	}
+
 private:
 	/** Vector with the shapes to draw. */
 	std::vector<std::unique_ptr<shape>> shapes_;
@@ -197,7 +203,7 @@ private:
 	 * the config object is no longer required and thus not stored in the
 	 * object.
 	 *
-	 * @param cfg                 The config object with the data to draw, see @ref GUICanvasWML
+	 * @param cfg                 The config object with the data to draw
 	 */
 	void parse_cfg(const config& cfg);
 

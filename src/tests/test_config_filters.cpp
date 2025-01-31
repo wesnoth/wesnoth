@@ -25,21 +25,6 @@ using namespace utils::config_filters;
 
 BOOST_AUTO_TEST_SUITE(config_filters)
 
-BOOST_AUTO_TEST_CASE(test_int_positive_filter)
-{
-	// These can be used both as the filter and as the input to be filtered,
-	// but for the unsigned_matches_if_present function only one of them is
-	// a valid filter.
-	config minus_3 {"x", -3};
-	config plus_3 {"x", 3};
-
-	BOOST_ASSERT(!unsigned_matches_if_present(minus_3, minus_3, "x"));
-	BOOST_ASSERT(unsigned_matches_if_present(plus_3, plus_3, "x"));
-
-	BOOST_ASSERT(!unsigned_matches_if_present(minus_3, plus_3, "x"));
-	BOOST_ASSERT(!unsigned_matches_if_present(plus_3, minus_3, "x"));
-}
-
 BOOST_AUTO_TEST_CASE(test_int_signed_filter)
 {
 	// These can be used both as the filter and as the input to be filtered.

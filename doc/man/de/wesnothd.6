@@ -18,22 +18,21 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2022 wesnothd "Battle for Wesnoth\-Mehrspielernetzwerkdaemon"
+.TH WESNOTHD 6 2022 wesnothd "»Battle for Wesnoth«\-Mehrspielernetzwerkdienst"
 .
 .SH NAME
 .
-wesnothd \- Battle for \fBWesnoth\fP Mehrspielernetzwerkdaemon
+wesnothd \- »Battle for \fBWesnoth\fP«\-Mehrspielernetzwerkdienst
 .
 .SH ZUSAMMENFASSUNG
 .
-\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIPfad\fP\|] [\|\fB\-p\fP \fIPort\fP\|] [\|\fB\-t\fP
-\fINummer\fP\|] [\|\fB\-T\fP \fINummer\fP\|]
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIPfad\fP\|] [\|\fB\-p\fP \fIPort\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
 .SH BESCHREIBUNG
 .
-Verwaltet Battle for Wesnoth Mehrspieler Partien. Siehe
+Verwaltet »Battle for Wesnoth«\-Mehrspieler\-Partien. Siehe
 https://www.wesnoth.org/wiki/ServerAdministration für die Befehle, die der
 Server von Wesnoth (/query ...) oder über die FIFO entgegennimmt.
 .
@@ -42,17 +41,17 @@ Server von Wesnoth (/query ...) oder über die FIFO entgegennimmt.
 .TP 
 \fB\-c\ \fP\fIPfad\fP\fB,\ \-\-config\fP\fI\ Pfad\fP
 Sagt wesnothd wo es die Konfigurationsdatei findet. Siehe den Abschnitt
-\fBSERVER KONFIGURATION\fP unterhalb für die genaue Syntax. Sie können die
+\fBSERVER\-KONFIGURATION\fP unterhalb für die genaue Syntax. Sie können die
 Konfigurationsdatei durch senden eines SIGHUP an den Serverprozess neu
 laden.
 .TP 
 \fB\-d, \-\-daemon\fP
-Startet wesnothd als Dämon.
+Startet wesnothd als Dienst.
 .TP 
 \fB\-h, \-\-help\fP
 Gibt die möglichen Kommandozeilenoptionen aus.
 .TP 
-\fB\-\-log\-\fP\fIstufe\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
+\fB\-\-log\-\fP\fIStufe\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
 Setzt die Stufe der Logausgabe. Verwenden Sie \fBall\fP, um sämtliche Domänen
 zu verwenden. Verfügbare \fIStufen\fP: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Standardmäßig wird die Stufe \fBerror\fP benutzt und die Stufe
 \fBinfo\fP für die Domäne \fBserver\fP verwendet.
@@ -61,21 +60,13 @@ zu verwenden. Verfügbare \fIStufen\fP: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP
 Bindet den Server an den angegebenen Port. Wenn kein Port angegeben ist,
 wird Port \fB15000\fP genommen.
 .TP 
-\fB\-t\ \fP\fINummer\fP\fB,\ \-\-threads\fP\fI\ Nummer\fP
-Legt die maximale Anzahl an für Netzwerk E/A reservierten Arbeiterthreads
-fest. (Standard: \fB5\fP,\ Maximum:\ \fB30\fP)
-.TP 
-\fB\-T,\ \-\-max\-threads\fP\fI\ Nummer\fP
-Legt die maximal zu erzeugende Anzahl an Arbeiterthreads fest. Bei einem
-Wert von \fB0\fP gibt es keine Beschränkung. (Standard: \fB0\fP)
-.TP 
 \fB\-V, \-\-version\fP
 Zeigt die Versionsnummer an und beendet das Programm.
 .TP 
 \fB\-v, \-\-verbose\fP
 Aktiviert mehr Details in der Logausgabe, einschließlich der Stufe \fBdebug\fP.
 .
-.SH "SERVER KONFIGURATION"
+.SH SERVER\-KONFIGURATION
 .
 .SS "Die allgemeine Syntax ist:"
 .
@@ -99,15 +90,11 @@ kommen. Ein Einstellen auf \fByes\fP erlaubt es einem Administrator durch ein
 .TP 
 \fBban_save_file\fP
 Kompletter oder relativer Pfad zu einer (gzip\-komprimierten) Datei, die der
-Server lesen und schreiben kann. Bans werden in diese Datei gespeichert und
+Server lesen und schreiben kann. Banne werden in diese Datei gespeichert und
 beim Start vom Server eingelesen.
 .TP 
-\fBcompress_stored_rooms\fP
-Legt fest, ob die Datei für die Räume in komprimierter Form gelesen und
-geschrieben werden soll. Die Voreinstellung ist \fByes\fP.
-.TP 
 \fBconnections_allowed\fP
-Die Anzahl zulässiger Verbindungen von der gleichen IP Adresse. \fB0\fP heißt
+Die Anzahl zulässiger Verbindungen von der gleichen IP\-Adresse. \fB0\fP heißt
 unendlich. (Standard: \fB5\fP)
 .TP 
 \fBdeny_unregistered_login\fP
@@ -115,16 +102,21 @@ Legt fest, ob sich nur Spieler einloggen dürfen, welche beim \fBuser_handler\fP
 registriert sind. (Standard: false)
 .TP 
 \fBdisallow_names\fP
-Namen/Spitznamen die der Server nicht akzeptiert. \fB*\fP und \fB?\fP sind als
+Namen/Spitznamen, die der Server nicht akzeptiert. \fB*\fP und \fB?\fP sind als
 Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte
 (wenn sonst nichts angegeben wurde) sind:
-\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+\fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
 Der Pfad zur FIFO\-Datei, in die Befehle für den Server geschrieben werden
 können (das gleiche wie mit /query ... in Wesnoth selbst). Falls nicht
 angegeben, wird die einkompilierte Voreinstellung verwendet (Standard:
 \fB/var/run/wesnothd/socket\fP).
+.TP 
+\fBid\fP
+Die ID des Servers wenn die Datenbank\-Funktionalität
+Spielinformationsspeicherung genutzt wird. Ist allgemein die
+"major.minor"\-Versionsnummer akzeptierter Clients, z. B. "1.16" oder "1.17".
 .TP 
 \fBmax_messages\fP
 Die Anzahl der erlaubten Nachrichten in \fBmessages_time_period\fP. (Standard:
@@ -136,13 +128,6 @@ wird. (Standard: \fB10\fP)
 .TP 
 \fBmotd\fP
 Die "Nachricht des Tages".
-.TP 
-\fBnew_room_policy\fP
-Legt fest, wer neue Räume auf dem Server erstellen kann. Verwendbare Werte
-sind \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP und \fBnobody\fP und erteilen die
-Berechtigung entsprechend an jeden, registrierte Benutzer, Administratoren
-beziehungsweise deaktiviert die Erstellung neuer Räume. Der voreingestellte
-Wert ist \fBeveryone\fP (jeder).
 .TP 
 \fBpasswd\fP
 Das Passwort, um auf dem Server Administratorrechte zu erhalten (über
@@ -158,40 +143,29 @@ Der Befehl, den der Server verwendet, um einen neuen Server\-Prozess über den
 \fBrestart\fP\-Befehl zu starten. (Kann nur über die FIFO angefordert
 werden. Siehe die \fBallow_remote_shutdown\fP\-Einstellung.)
 .TP 
-\fBroom_save_file\fP
-Pfad zu einer Datei, in die die Rauminformationen gespeichert werden
-sollen. Die Datei wird beim Starten des Servers gelesen und später
-beschrieben. Falls der Wert leer oder nicht gesetzt ist, werden Räume weder
-geladen noch gespeichert.
-.TP 
 \fBsave_replays\fP
 Legt fest, ob vom Server automatisch Wiederholungen gespeichert werden
 sollen. (Standard: \fBfalse\fP)
 .TP 
 \fBtls_enabled\fP
-Enable use of TLS. If true, requires 3 following options to be set too.
+Aktiviert TLS\-Nutzung. Wenn "true", dann müssen die folgenden 3 Optionen
+auch gesetzt sein.
 .TP 
 \fBtls_fullchain\fP
-TLS full certificate chain in .pem format
+vollständige TLS\-Zertifikatskette im .pem\-Format
 .TP 
 \fBtls_private_key\fP
-private key for TLS in .pem format
+privater Schlüssel für TLS im .pem\-Format
 .TP 
 \fBtls_dh\fP
-TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
-filename.pem 4096\fP
+TLS\-DH\-Parameter als .pem\-Datei. Erstelle mit \fBopenssl dhparam \-out Dateiname.pem 4096\fP
 .TP 
 \fBversions_accepted\fP
 Eine durch Komma getrennte Liste der Programmversionen, die der Server
-zulässt. \fB*\fP und \fB?\fP sind erlaubt. (Standard: Die aktuell installierte
-Wesnoth\-Version)
+zulässt. Platzhalter \fB*\fP und \fB?\fP sind erlaubt. (Standard: die aktuell
+installierte Wesnoth\-Version)
 .br
 Beispiel: \fBversions_accepted="*"\fP akzeptiert alle Versionen.
-.TP 
-\fBid\fP
-The ID of the server when using the database functionality to store game
-information. Generally is the major.minor version of accepted clients, such
-as 1.16 or 1.17.
 .
 .SS "Globale Tags:"
 .
@@ -213,23 +187,23 @@ sollen. Verhält sich in Bezug auf Wildcards genauso wie
 \fBversions_accepted\fP.
 .RE
 .P
-\fB[ban_time]\fP Eine Tag um Bannzeiten zur einfacheren Benutzung einem Alias
+\fB[ban_time]\fP Ein Tag, um Bannzeiten zur einfacheren Benutzung einem Alias
 zuzuordnen.
 .RS
 .TP 
 \fBname\fP
-Der Name, um die Bann\-Zeit zu referenzieren.
+Der Name, um die Bannzeit zu referenzieren.
 .TP 
 \fBtime\fP
 Die Zeitlängen\-Definition. Das Format lautet: %d[%s[%d%s[...]]] wobei %s für
 s (Sekunden), m (Minuten), h (Stunden), D (Tage), M (Monate) oder Y (Jahre)
 und %d für eine Nummer steht. Falls keine Zeitdefinition verwendet wird,
 werden Minuten (m) angenommen. Beispiel: \fBtime="1D12h30m"\fP steht für eine
-Ban\-Zeit von einem Tag, 12 Stunden und 30 Minuten.
+Bannzeit von einem Tag, 12 Stunden und 30 Minuten.
 .RE
 .P
 \fB[proxy]\fP Ein Tag, durch den der Server wie ein Proxy agiert und somit alle
-Anfragen der mit ihm verbundenen Rechners an den angegebenen Server
+Anfragen der mit ihm verbundenen Rechner an den angegebenen Server
 weiterleitet. Es werden die gleichen Schlüssel wie bei \fB[redirect]\fP
 akzeptiert.
 .RE
@@ -239,26 +213,26 @@ akzeptiert.
 Nutzerauthentifizierung auf dem Server zu verwenden. Alle zusätzlichen
 Datenbanktabellen, welche für den \fBforum_user_handler\fP benötigt werden,
 können über die Datei table_definitions.sql angelegt werden, welche im
-Wesnoth Code\-Repository zu finden ist. Erfordert, dass die
-MySQL\-Unterstützung aktiviert ist. Für cmake kann diese durch
-\fBENABLE_MYSQL\fP erreicht werden, für scons durch \fBforum_user_handler\fP.
+Wesnoth\-Code\-Repository zu finden ist. Erfordert aktivierte
+MySQL\-Unterstützung. Für cmake kann dies durch \fBENABLE_MYSQL\fP erreicht
+werden, für scons durch \fBforum_user_handler\fP.
 .RS
 .TP 
 \fBdb_host\fP
-Der Hostname des Datenbank\-Servers.
+Der Hostname des Datenbank\-Servers
 .TP 
 \fBdb_name\fP
-Der Name der Datenbank.
+Der Name der Datenbank
 .TP 
 \fBdb_user\fP
-Der Benutzername, der zur Anmeldung an der Datenbank verwendet werden soll.
+Der Benutzername, der zur Anmeldung an der Datenbank verwendet werden soll
 .TP 
 \fBdb_password\fP
-Das Passwort dieses Benutzers.
+Das Passwort dieses Benutzers
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forum saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+Der Name der Tabelle, in der das phpbb\-Forum die Nutzerdaten ablegt. Dies
+ist höchstwahrscheinlich <table\-prefix>_users (z. B. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
 Der Name der Tabelle, in der wesnothd Informationen über Nutzer speichert.
@@ -270,31 +244,44 @@ Der Name der Tabelle, in der wesnothd Informationen über Spiele speichert.
 Der Name der Tabelle, in der wesnothd Informationen über die Spieler eines
 Spiels speichert.
 .TP 
-\fBdb_game_modification_info_table\fP
-Der Name der Tabelle, in der wesnothd Informationen über sie in einem Spiel
-verwendeten Modifikationen speichert.
+\fBdb_game_content_info_table\fP
+Der Name der Tabelle, in der wesnothd Informationen über seine eigenen Daten
+über Spielinhalte (Szenario/Epoche/Modifikationen), die in einem Spiel
+verwendet werden, abspeichert.
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forum saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+Der Name der Tabelle, in der das phpbb\-Forum die Gruppendaten ablegt. Dies
+ist höchstwahrscheinlich <table\-prefix>_user_group
+(z. B. phpbb3_user_group).
+.TP 
+\fBdb_tournament_query\fP
+Die SQL\-Abfrage, um anzukündigende Turniere beim Einloggen zu finden. Sollte
+Turnier\-\fBTitel\fP, \fBStatus\fP und \fBURL\fP zurückgeben.
 .TP 
 \fBdb_connection_history_table\fP
-The name of the table in which to store login/logout times. Also used for
-matching IPs to users and vice versa.
+Der Name der Tabelle die die Login\-/Logout\-Zeiten speichert und Zuordnungen
+zwischen IP\-Adresse und Benutzer.
 .TP 
 \fBdb_topics_table\fP
-The name of the table in which your phpbb forum saves its topic (thread)
-information. Most likely this will be <table\-prefix>_topics
-(e.g. phpbb3_topics).
+Der Name der Tabelle, in der das phpbb\-Forum die Gesprächsfadendaten
+ablegt. Dies ist höchstwahrscheinlich <table\-prefix>_topics
+(z. B. phpbb3_topics).
 .TP 
 \fBdb_banlist_table\fP
-The name of the table in which your phpbb forum saves its user bans
-data. Most likely this will be <table\-prefix>_banlist
-(e.g. phpbb3_banlist).
+(für user_handler=forum) Der Name der Tabelle, in der das phpbb\-Forum die
+Banndaten ablegt. Dies ist höchstwahrscheinlich
+<table\-prefix>_banlist (z. B. phpbb3_banlist).
 .TP 
 \fBmp_mod_group\fP
-Die ID der Forengruppe, welche über Moderationsrechte verfügt
+Die ID der Forengruppe, welche über Moderationsrechte verfügt.
+.TP 
+\fBforum_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
+.TP 
+\fBsite_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
 .RE
 .
 .SH RÜCKGABEWERT
@@ -321,16 +308,11 @@ Besuchen Sie auch die offizielle Webseite: https://www.wesnoth.org/
 Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
 .br
 Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
-GNU General Public License, wie von der Free Software Foundation
-veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 2
-der Lizenz oder (nach Ihrer Option) jeder späteren Version. Die
+GNU General Public License (GPL) Version 2, wie von der Free Software
+Foundation veröffentlicht, weitergeben und/oder modifizieren. Die
 Veröffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von
 Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite
-Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN
-ZWECK. Details finden Sie in der GNU General Public License. Sie sollten
-eine Kopie der GNU General Public License zusammen mit diesem Programm
-erhalten haben. Falls nicht, schreiben Sie an die Free Software Foundation,
-Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110\-1301, USA.
+Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK.
 .
 .SH ANDERE
 .

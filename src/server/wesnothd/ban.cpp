@@ -18,6 +18,7 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/binary_or_text.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
@@ -67,8 +68,8 @@ banned::banned(const std::string& ip)
 	: ip_(0)
 	, mask_(0)
 	, ip_text_()
-	, end_time_(0)
-	, start_time_(0)
+	, end_time_()
+	, start_time_()
 	, reason_()
 	, who_banned_(who_banned_default_)
 	, group_()
@@ -80,7 +81,7 @@ banned::banned(const std::string& ip)
 }
 
 banned::banned(const std::string& ip,
-		const std::time_t end_time,
+		const utils::optional<std::chrono::system_clock::time_point>& end_time,
 		const std::string& reason,
 		const std::string& who_banned,
 		const std::string& group,
@@ -89,7 +90,7 @@ banned::banned(const std::string& ip,
 	, mask_(0)
 	, ip_text_(ip)
 	, end_time_(end_time)
-	, start_time_(std::time(0))
+	, start_time_(std::chrono::system_clock::now())
 	, reason_(reason)
 	, who_banned_(who_banned)
 	, group_(group)
@@ -104,8 +105,8 @@ banned::banned(const config& cfg)
 	: ip_(0)
 	, mask_(0)
 	, ip_text_()
-	, end_time_(0)
-	, start_time_(0)
+	, end_time_()
+	, start_time_()
 	, reason_()
 	, who_banned_(who_banned_default_)
 	, group_()
@@ -172,11 +173,11 @@ void banned::read(const config& cfg)
 	nick_ = cfg["nick"].str();
 
 	if(cfg.has_attribute("end_time")) {
-		end_time_ = cfg["end_time"].to_time_t(0);
+		end_time_ = chrono::parse_timestamp(cfg["end_time"]);
 	}
 
 	if(cfg.has_attribute("start_time")) {
-		start_time_ = cfg["start_time"].to_time_t(0);
+		start_time_ = chrono::parse_timestamp(cfg["start_time"]);
 	}
 
 	reason_ = cfg["reason"].str();
@@ -196,16 +197,12 @@ void banned::write(config& cfg) const
 	cfg["ip"] = get_ip();
 	cfg["nick"] = get_nick();
 
-	if(end_time_ > 0) {
-		std::stringstream ss;
-		ss << end_time_;
-		cfg["end_time"] = ss.str();
+	if(end_time_) {
+		cfg["end_time"] = chrono::serialize_timestamp(*end_time_);
 	}
 
-	if(start_time_ > 0) {
-		std::stringstream ss;
-		ss << start_time_;
-		cfg["start_time"] = ss.str();
+	if(start_time_) {
+		cfg["start_time"] = chrono::serialize_timestamp(*start_time_);
 	}
 
 	cfg["reason"] = reason_;
@@ -219,36 +216,38 @@ void banned::write(config& cfg) const
 	}
 }
 
+utils::optional<std::chrono::seconds> banned::get_remaining_ban_time() const
+{
+	if(end_time_) {
+		const auto time_left = *end_time_ - std::chrono::system_clock::now();
+		return std::chrono::duration_cast<std::chrono::seconds>(time_left);
+	} else {
+		return {};
+	}
+}
+
 std::string banned::get_human_start_time() const
 {
-	if(start_time_ == 0) {
+	if(start_time_) {
+		return chrono::format_local_timestamp(*start_time_);
+	} else {
 		return "unknown";
 	}
-
-	return lg::get_timestamp(start_time_);
 }
 
 std::string banned::get_human_end_time() const
 {
-	if(end_time_ == 0) {
+	if(end_time_) {
+		return chrono::format_local_timestamp(*end_time_);
+	} else {
 		return "permanent";
 	}
-
-	return lg::get_timestamp(end_time_);
-}
-
-std::string banned::get_human_time_span() const
-{
-	if(end_time_ == 0) {
-		return "permanent";
-	}
-
-	return lg::get_timespan(end_time_ - std::time(nullptr));
 }
 
 bool banned::operator>(const banned& b) const
 {
-	return end_time_ > b.get_end_time();
+	static constexpr std::chrono::system_clock::time_point epoch;
+	return end_time_.value_or(epoch) > b.get_end_time().value_or(epoch);
 }
 
 unsigned int banned::get_mask_ip(unsigned int mask) const
@@ -284,7 +283,7 @@ void ban_manager::read()
 			auto new_ban = std::make_shared<banned>(b);
 			assert(bans_.insert(new_ban).second);
 
-			if (new_ban->get_end_time() != 0)
+			if (new_ban->get_end_time())
 				time_queue_.push(new_ban);
 		} catch(const banned::error& e) {
 			ERR_SERVER << e.message << " while reading bans";
@@ -330,13 +329,12 @@ void ban_manager::write()
 	writer.write(cfg);
 }
 
-bool ban_manager::parse_time(const std::string& duration, std::time_t* time) const
+std::pair<bool, utils::optional<std::chrono::system_clock::time_point>> ban_manager::parse_time(
+	const std::string& duration, std::chrono::system_clock::time_point start_time) const
 {
-	if (!time) return false;
-
 	if(duration.substr(0, 4) == "TIME") {
-		std::tm* loc;
-		loc = std::localtime(time);
+		auto as_time_t = std::chrono::system_clock::to_time_t(start_time);
+		std::tm* loc = std::localtime(&as_time_t);
 
 		std::size_t number = 0;
 		for(auto i = duration.begin() + 4; i != duration.end(); ++i) {
@@ -369,24 +367,21 @@ bool ban_manager::parse_time(const std::string& duration, std::time_t* time) con
 				number = 0;
 			}
 		}
-		*time = mktime(loc);
-		return true;
+		return { true, std::chrono::system_clock::from_time_t(std::mktime(loc)) };
 	}
-
-	const auto time_itor = ban_times_.find(duration);
 
 	std::string dur_lower;
 	try {
 		dur_lower = utf8::lowercase(duration);
 	} catch(const utf8::invalid_utf8_exception& e) {
 		ERR_SERVER << "While parsing ban command duration string, caught an invalid utf8 exception: " << e.what();
-		return false;
+		return { false, utils::nullopt };
 	}
 
 	if(dur_lower == "permanent" || duration == "0") {
-		*time = 0;
-	} else if(ban_times_.find(duration) != ban_times_.end()) {
-		*time += time_itor->second;
+		return { true, utils::nullopt };
+	} else if(const auto time_itor = ban_times_.find(duration); time_itor != ban_times_.end()) {
+		return { true, start_time + time_itor->second };
 	} else {
 		std::string::const_iterator i = duration.begin();
 		int number = -1;
@@ -406,7 +401,7 @@ bool ban_manager::parse_time(const std::string& duration, std::time_t* time) con
 						&&  ++i != d_end && tolower(*i) == 'r'
 						&&  ++i != d_end && tolower(*i) == 's') {
 						} else --i;
-						*time += number * 365*24*60*60; // a year;
+						start_time += chrono::years{number};
 						break;
 					case 'M':
 						if (++i != d_end && tolower(*i) == 'i') {
@@ -416,7 +411,7 @@ bool ban_manager::parse_time(const std::string& duration, std::time_t* time) con
 							&&  ++i != d_end && tolower(*i) == 'e'
 							&&  ++i != d_end && tolower(*i) == 's') {
 							} else --i;
-							*time += number * 60;
+							start_time += std::chrono::minutes{number};
 							break;
 						}
 						--i;
@@ -426,7 +421,7 @@ bool ban_manager::parse_time(const std::string& duration, std::time_t* time) con
 						&&  ++i != d_end && tolower(*i) == 'h'
 						&&  ++i != d_end && tolower(*i) == 's') {
 						} else --i;
-						*time += number * 30*24*60*60; // 30 days
+						start_time += chrono::months{number};
 						break;
 					case 'D':
 					case 'd':
@@ -434,7 +429,7 @@ bool ban_manager::parse_time(const std::string& duration, std::time_t* time) con
 						&&  ++i != d_end && tolower(*i) == 'y'
 						&&  ++i != d_end && tolower(*i) == 's') {
 						} else --i;
-						*time += number * 24*60*60;
+						start_time += chrono::days{number};
 						break;
 					case 'H':
 					case 'h':
@@ -443,7 +438,7 @@ bool ban_manager::parse_time(const std::string& duration, std::time_t* time) con
 						&&  ++i != d_end && tolower(*i) == 'r'
 						&&  ++i != d_end && tolower(*i) == 's') {
 						} else --i;
-						*time += number * 60*60;
+						start_time += std::chrono::hours{number};
 						break;
 					case 'm':
 						if (++i != d_end && tolower(*i) == 'o') {
@@ -452,7 +447,7 @@ bool ban_manager::parse_time(const std::string& duration, std::time_t* time) con
 							&&  ++i != d_end && tolower(*i) == 'h'
 							&&  ++i != d_end && tolower(*i) == 's') {
 							} else --i;
-							*time += number * 30*24*60*60; // 30 days
+							start_time += chrono::months{number};
 							break;
 						}
 						--i;
@@ -463,7 +458,7 @@ bool ban_manager::parse_time(const std::string& duration, std::time_t* time) con
 						&&  ++i != d_end && tolower(*i) == 'e'
 						&&  ++i != d_end && tolower(*i) == 's') {
 						} else --i;
-						*time += number * 60;
+						start_time += std::chrono::minutes{number};
 						break;
 					case 'S':
 					case 's':
@@ -474,10 +469,10 @@ bool ban_manager::parse_time(const std::string& duration, std::time_t* time) con
 						&&  ++i != d_end && tolower(*i) == 'd'
 						&&  ++i != d_end && tolower(*i) == 's') {
 						} else --i;
-						*time += number;
+						start_time += std::chrono::seconds{number};
 						break;
 					default:
-						return false;
+						return { false, utils::nullopt };
 						break;
 				}
 				number = -1;
@@ -485,15 +480,15 @@ bool ban_manager::parse_time(const std::string& duration, std::time_t* time) con
 		}
 
 		if(is_digit(*--i)) {
-			*time += number * 60; // default to minutes
+			start_time += std::chrono::minutes{number}; // default to minutes
 		}
-	}
 
-	return true;
+		return { true, start_time };
+	}
 }
 
 std::string ban_manager::ban(const std::string& ip,
-	const std::time_t& end_time,
+	const utils::optional<std::chrono::system_clock::time_point>& end_time,
 	const std::string& reason,
 	const std::string& who_banned,
 	const std::string& group,
@@ -515,7 +510,7 @@ std::string ban_manager::ban(const std::string& ip,
 	try {
 		auto new_ban = std::make_shared<banned>(ip, end_time, reason, who_banned, group, nick);
 		bans_.insert(new_ban);
-		if(end_time != 0) {
+		if(end_time) {
 			time_queue_.push(new_ban);
 		}
 		ret << *new_ban;
@@ -568,20 +563,26 @@ void ban_manager::unban_group(std::ostringstream& os, const std::string& group)
 	write();
 }
 
-void ban_manager::check_ban_times(std::time_t time_now)
+void ban_manager::check_ban_times(const std::chrono::system_clock::time_point& time_now)
 {
 	while(!time_queue_.empty()) {
 		banned_ptr ban = time_queue_.top();
+		const auto& end_time = ban->get_end_time();
 
-		if(ban->get_end_time() > time_now) {
+		if(!end_time || *end_time > time_now) {
 			// No bans going to expire
-			DBG_SERVER << "ban " << ban->get_ip() << " not removed. time: " << time_now << " end_time "
-					   << ban->get_end_time();
+			DBG_SERVER
+				<< "Ban on " << ban->get_ip() << " not removed."
+				<< " time: "     <<             chrono::format_local_timestamp(time_now)
+				<< " end_time: " << (end_time ? chrono::format_local_timestamp(*end_time) : "none");
 			break;
 		}
 
 		// This ban is going to expire so delete it.
-		LOG_SERVER << "Remove a ban " << ban->get_ip() << ". time: " << time_now << " end_time " << ban->get_end_time();
+		LOG_SERVER
+			<< "Removing ban on " << ban->get_ip() << "."
+			<< " time: "     << chrono::format_local_timestamp(time_now)
+			<< " end_time: " << chrono::format_local_timestamp(*end_time);
 		std::ostringstream os;
 		unban(os, ban->get_ip(), false);
 		time_queue_.pop();
@@ -654,20 +655,18 @@ void ban_manager::list_bans(std::ostringstream& out, const std::string& mask)
 	}
 }
 
-std::string ban_manager::is_ip_banned(const std::string& ip)
+banned_ptr ban_manager::get_ban_info(const std::string& ip)
 {
 	expire_bans();
-	ip_mask pair;
+	ip_mask mask;
 	try {
-		pair = parse_ip(ip);
+		mask = parse_ip(ip);
 	} catch (const banned::error&) {
-		return "";
+		return nullptr;
 	}
 
-	auto ban = std::find_if(bans_.begin(), bans_.end(), [pair](const banned_ptr& p) { return p->match_ip(pair); });
-	if (ban == bans_.end()) return "";
-	const std::string& nick = (*ban)->get_nick();
-	return (*ban)->get_reason() + (nick.empty() ? "" : " (" + nick + ")") + " (Remaining ban duration: " + (*ban)->get_human_time_span() + ")";
+	auto ban = std::find_if(bans_.begin(), bans_.end(), [&mask](const banned_ptr& p) { return p->match_ip(mask); });
+	return ban != bans_.end() ? *ban : nullptr;
 }
 
 void ban_manager::init_ban_help()
@@ -698,9 +697,12 @@ void ban_manager::load_config(const config& cfg)
 {
 	ban_times_.clear();
 	for(const config& bt : cfg.child_range("ban_time")) {
-		std::time_t duration = 0;
-		if(parse_time(bt["time"], &duration)) {
-			ban_times_.emplace(bt["name"], duration);
+		// Use the zero time point so we can easily convert the end time point to a duration
+		auto [success, end_time] = parse_time(bt["time"], {});
+
+		if(success) {
+			auto duration = end_time.value_or(decltype(end_time)::value_type{}).time_since_epoch();
+			ban_times_.emplace(bt["name"], std::chrono::duration_cast<std::chrono::seconds>(duration));
 		}
 	}
 

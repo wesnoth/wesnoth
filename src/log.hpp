@@ -52,9 +52,10 @@
 #endif
 
 #include <iosfwd> // needed else all files including log.hpp need to do it.
-#include <optional>
+#include "utils/optional_fwd.hpp"
 #include <string>
 #include <utility>
+#include <chrono>
 #include <ctime>
 #include <cstdint>
 
@@ -66,8 +67,8 @@ namespace lg {
 // This is used to find old files to delete.
 const std::string log_file_prefix = "wesnoth-";
 const std::string log_file_suffix = ".log";
-// stdout file for Windows
-const std::string out_log_file_suffix = ".out.log";
+// stdout file for Windows; needs to end in log_file_suffix so log rotation works for both
+const std::string out_log_file_suffix = ".out" + log_file_suffix;
 
 // Maximum number of older log files to keep intact. Other files are deleted.
 // Note that this count does not include the current log file!
@@ -137,6 +138,9 @@ void set_strict_severity(severity severity);
 void set_strict_severity(const logger &lg);
 bool broke_strict();
 
+/** toggle log sanitization */
+void set_log_sanitize(bool sanitize);
+
 /**
  * Do the initial redirection to a log file if the logs directory is writable.
  * Also performs log rotation to delete old logs.
@@ -159,7 +163,7 @@ void check_log_dir_writable();
  *
  * @return true if the log directory is writable, false otherwise.
  */
-std::optional<bool> log_dir_writable();
+utils::optional<bool> log_dir_writable();
 
 /**
  * Use the defined prefix and suffix to determine if a filename is a log file.
@@ -193,7 +197,7 @@ class log_in_progress {
 	bool auto_newline_ = true;
 public:
 	log_in_progress(std::ostream& stream);
-	void operator|(formatter&& message);
+	void operator|(const formatter& message);
 	void set_indent(int level);
 	void enable_timestamp();
 	void set_prefix(const std::string& prefix);
@@ -226,8 +230,6 @@ public:
 
 void timestamps(bool);
 void precise_timestamps(bool);
-std::string get_timestamp(const std::time_t& t, const std::string& format="%Y%m%d %H:%M:%S ");
-std::string get_timespan(const std::time_t& t);
 std::string sanitize_log(const std::string& logstr);
 std::string get_log_file_path();
 
@@ -236,19 +238,19 @@ log_domain& general();
 
 class scope_logger
 {
-	int64_t ticks_;
+	std::chrono::steady_clock::time_point start_;
 	const log_domain& domain_;
 	std::string str_;
 public:
 	scope_logger(const log_domain& domain, const char* str)
-		: ticks_(0)
+		: start_()
 		, domain_(domain)
 		, str_()
 	{
 		if (!debug().dont_log(domain)) do_log_entry(str);
 	}
 	scope_logger(const log_domain& domain, const std::string& str)
-		: ticks_(0)
+		: start_()
 		, domain_(domain)
 		, str_()
 	{

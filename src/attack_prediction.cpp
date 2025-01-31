@@ -32,7 +32,7 @@
 
 #include "actions/attack.hpp"
 #include "game_config.hpp"
-#include "preferences/general.hpp"
+#include "preferences/preferences.hpp"
 #include "random.hpp"
 
 #include <array>
@@ -438,10 +438,7 @@ prob_matrix::prob_matrix(unsigned int a_max,
 /** Allocate a new probability array, initialized to 0. */
 std::unique_ptr<double[]> prob_matrix::new_plane() const
 {
-	const unsigned int size = rows_ * cols_;
-	std::unique_ptr<double[]> res(new double[size]);
-	std::fill_n(res.get(), size, 0);
-	return res;
+	return std::make_unique<double[]>(std::size_t{rows_ * cols_});
 }
 
 /**
@@ -2056,8 +2053,8 @@ void complex_fight(attack_prediction_mode mode,
 		double& self_not_hit,
 		double& opp_not_hit,
 		bool levelup_considered,
-		std::vector<combat_slice> split,
-		std::vector<combat_slice> opp_split,
+		const std::vector<combat_slice>& split,
+		const std::vector<combat_slice>& opp_split,
 		double initially_slowed_chance,
 		double opp_initially_slowed_chance)
 {
@@ -2090,15 +2087,29 @@ void complex_fight(attack_prediction_mode mode,
 	double opp_hit_unknown = 1.0; // Ditto for B
 
 	// Prepare the matrix that will do our calculations.
-	std::unique_ptr<combat_matrix> m;
+	std::unique_ptr<combat_matrix> matrix;
+
 	if(mode == attack_prediction_mode::probability_calculation) {
 		debug(("Using exact probability calculations.\n"));
 
-		probability_combat_matrix* pm = new probability_combat_matrix(stats.max_hp, opp_stats.max_hp, stats.hp,
-				opp_stats.hp, summary, opp_summary, stats.slows, opp_stats.slows,
-				a_damage, b_damage, a_slow_damage, b_slow_damage,
-				stats.drain_percent, opp_stats.drain_percent, stats.drain_constant, opp_stats.drain_constant);
-		m.reset(pm);
+		auto pm = std::make_unique<probability_combat_matrix>(
+			stats.max_hp,
+			opp_stats.max_hp,
+			stats.hp,
+			opp_stats.hp,
+			summary,
+			opp_summary,
+			stats.slows,
+			opp_stats.slows,
+			a_damage,
+			b_damage,
+			a_slow_damage,
+			b_slow_damage,
+			stats.drain_percent,
+			opp_stats.drain_percent,
+			stats.drain_constant,
+			opp_stats.drain_constant
+		);
 
 		do {
 			for(unsigned int i = 0; i < max_attacks; ++i) {
@@ -2156,15 +2167,37 @@ void complex_fight(attack_prediction_mode mode,
 			double not_hit = pm->row_sum(plane, stats.hp) + ((plane & 2) ? 0.0 : pm->row_sum(plane | 2, stats.hp));
 			self_not_hit = original_self_not_hit * not_hit;
 		}
+
+		// Pass ownership back to the containing block
+		matrix = std::move(pm);
 	} else {
 		debug(("Using Monte Carlo simulation.\n"));
 
-		monte_carlo_combat_matrix* mcm = new monte_carlo_combat_matrix(stats.max_hp, opp_stats.max_hp, stats.hp,
-				opp_stats.hp, summary, opp_summary, stats.slows, opp_stats.slows,
-				a_damage, b_damage, a_slow_damage, b_slow_damage,
-				stats.drain_percent, opp_stats.drain_percent, stats.drain_constant, opp_stats.drain_constant, rounds,
-				hit_chance, opp_hit_chance, split, opp_split, initially_slowed_chance, opp_initially_slowed_chance);
-		m.reset(mcm);
+		auto mcm = std::make_unique<monte_carlo_combat_matrix>(
+			stats.max_hp,
+			opp_stats.max_hp,
+			stats.hp,
+			opp_stats.hp,
+			summary,
+			opp_summary,
+			stats.slows,
+			opp_stats.slows,
+			a_damage,
+			b_damage,
+			a_slow_damage,
+			b_slow_damage,
+			stats.drain_percent,
+			opp_stats.drain_percent,
+			stats.drain_constant,
+			opp_stats.drain_constant,
+			rounds,
+			hit_chance,
+			opp_hit_chance,
+			split,
+			opp_split,
+			initially_slowed_chance,
+			opp_initially_slowed_chance
+		);
 
 		mcm->simulate();
 		debug(("Combat ends:\n"));
@@ -2172,32 +2205,35 @@ void complex_fight(attack_prediction_mode mode,
 
 		self_not_hit = 1.0 - mcm->get_a_hit_probability();
 		opp_not_hit = 1.0 - mcm->get_b_hit_probability();
+
+		// Pass ownership back to the containing block
+		matrix = std::move(mcm);
 	}
 
 	if(stats.petrifies) {
-		m->remove_petrify_distortion_a(stats.damage, stats.slow_damage, opp_stats.hp);
+		matrix->remove_petrify_distortion_a(stats.damage, stats.slow_damage, opp_stats.hp);
 	}
 
 	if(opp_stats.petrifies) {
-		m->remove_petrify_distortion_b(opp_stats.damage, opp_stats.slow_damage, stats.hp);
+		matrix->remove_petrify_distortion_b(opp_stats.damage, opp_stats.slow_damage, stats.hp);
 	}
 
 	if(levelup_considered) {
 		if(stats.experience + game_config::combat_xp(opp_stats.level) >= stats.max_experience) {
-			m->forced_levelup_a();
+			matrix->forced_levelup_a();
 		} else if(stats.experience + game_config::kill_xp(opp_stats.level) >= stats.max_experience) {
-			m->conditional_levelup_a();
+			matrix->conditional_levelup_a();
 		}
 
 		if(opp_stats.experience + game_config::combat_xp(stats.level) >= opp_stats.max_experience) {
-			m->forced_levelup_b();
+			matrix->forced_levelup_b();
 		} else if(opp_stats.experience + game_config::kill_xp(stats.level) >= opp_stats.max_experience) {
-			m->conditional_levelup_b();
+			matrix->conditional_levelup_b();
 		}
 	}
 
 	// We extract results separately, then combine.
-	m->extract_results(summary, opp_summary);
+	matrix->extract_results(summary, opp_summary);
 }
 
 /**
@@ -2333,7 +2369,7 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 
 	bool use_monte_carlo_simulation =
 		fight_complexity(split.size(), opp_split.size(), u_, opponent.u_) > MONTE_CARLO_SIMULATION_THRESHOLD
-		&& preferences::damage_prediction_allow_monte_carlo_simulation();
+		&& prefs::get().damage_prediction_allow_monte_carlo_simulation();
 
 	if(use_monte_carlo_simulation) {
 		// A very complex fight. Use Monte Carlo simulation instead of exact

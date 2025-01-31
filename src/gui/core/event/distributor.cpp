@@ -328,7 +328,8 @@ void mouse_motion::start_hover_timer(widget* widget, const point& coordinate)
 	DBG_GUI_E << LOG_HEADER << "Start hover timer for widget '" << widget->id()
 			  << "' at address " << widget << ".";
 
-	hover_timer_ = add_timer(50, std::bind(&mouse_motion::show_tooltip, this));
+	using namespace std::chrono_literals;
+	hover_timer_ = add_timer(50ms, std::bind(&mouse_motion::show_tooltip, this));
 
 	if(hover_timer_) {
 		hover_widget_ = widget;
@@ -405,7 +406,7 @@ constexpr std::array mouse_data{
 template<std::size_t I>
 mouse_button<I>::mouse_button(widget& owner, const dispatcher::queue_position queue_position)
 	: mouse_motion(owner, queue_position)
-	, last_click_stamp_(0)
+	, last_click_stamp_()
 	, last_clicked_widget_(nullptr)
 	, focus_(nullptr)
 	, is_down_(false)
@@ -434,9 +435,9 @@ mouse_button<I>::mouse_button(widget& owner, const dispatcher::queue_position qu
 template<std::size_t I>
 void mouse_button<I>::initialize_state(int32_t button_state)
 {
-	last_click_stamp_ = 0;
+	last_click_stamp_ = {};
 	last_clicked_widget_ = nullptr;
-	focus_ = 0;
+	focus_ = nullptr;
 	// SDL_BUTTON_LEFT, SDL_BUTTON_MIDDLE, and SDL_BUTTON_RIGHT correspond to 1,2,3
 	is_down_ = button_state & SDL_BUTTON(I + 1);
 }
@@ -551,12 +552,12 @@ void mouse_button<I>::signal_handler_sdl_button_up(
 template<std::size_t I>
 void mouse_button<I>::mouse_button_click(widget* widget)
 {
-	uint32_t stamp = SDL_GetTicks();
+	auto stamp = std::chrono::steady_clock::now();
 	if(last_click_stamp_ + settings::double_click_time >= stamp && last_clicked_widget_ == widget) {
 		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_double_click_event << ".";
 
 		owner_.fire(mouse_data[I].button_double_click_event, *widget);
-		last_click_stamp_ = 0;
+		last_click_stamp_ = {};
 		last_clicked_widget_ = nullptr;
 
 	} else {

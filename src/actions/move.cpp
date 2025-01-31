@@ -24,7 +24,7 @@
 #include "actions/vision.hpp"
 
 #include "game_events/pump.hpp"
-#include "preferences/game.hpp"
+#include "preferences/preferences.hpp"
 #include "gettext.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "hotkey/hotkey_command.hpp"
@@ -50,6 +50,7 @@
 #include <set>
 
 static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
 
@@ -98,8 +99,25 @@ const unit_map::const_iterator& move_unit_spectator::get_unit() const
 }
 
 
-move_unit_spectator::move_unit_spectator(const unit_map &units)
-	: ambusher_(units.end()),failed_teleport_(units.end()),seen_enemies_(),seen_friends_(),unit_(units.end())
+move_unit_spectator::move_unit_spectator(const unit_map& units)
+	: ambusher_(units.end())
+	, failed_teleport_(units.end())
+	, seen_enemies_()
+	, seen_friends_()
+	, unit_(units.end())
+	, tiles_entered_(0)
+	, interrupted_(false)
+{
+}
+
+move_unit_spectator::move_unit_spectator()
+	: ambusher_()
+	, failed_teleport_()
+	, seen_enemies_()
+	, seen_friends_()
+	, unit_()
+	, tiles_entered_(0)
+	, interrupted_(false)
 {
 }
 
@@ -115,8 +133,14 @@ void move_unit_spectator::reset(const unit_map &units)
 	seen_enemies_.clear();
 	seen_friends_.clear();
 	unit_ = units.end();
+	tiles_entered_ = 0;
+	interrupted_ = false;
 }
 
+void move_unit_spectator::error(const std::string& message)
+{
+	ERR_NG << message;
+}
 
 void move_unit_spectator::set_ambusher(const unit_map::const_iterator &u)
 {
@@ -135,7 +159,63 @@ void move_unit_spectator::set_unit(const unit_map::const_iterator &u)
 	unit_ = u;
 }
 
+namespace {
 
+/**
+ * The number of the side that preivously owned the village that the unit stepped on
+ * Note, that recruit/recall actions can also take a village if the unit was recruits/recalled onto a village
+ */
+struct take_village_step : undo_action
+{
+	int original_village_owner;
+	bool take_village_timebonus;
+	map_location loc;
+
+	take_village_step(
+		int orig_village_owner, bool time_bonus, map_location loc)
+		: original_village_owner(orig_village_owner)
+		, take_village_timebonus(time_bonus)
+		, loc(loc)
+	{
+	}
+
+	take_village_step(const config& cfg)
+		: original_village_owner(cfg["village_owner"].to_int())
+		, take_village_timebonus(cfg["village_timebonus"].to_bool())
+		, loc(cfg)
+	{
+	}
+
+	static const char* get_type_impl() { return "take_village"; }
+	virtual const char* get_type() const { return get_type_impl(); }
+
+	virtual ~take_village_step() { }
+
+	/** Writes this into the provided config. */
+	virtual void write(config& cfg) const
+	{
+		undo_action::write(cfg);
+		cfg["village_owner"] = original_village_owner;
+		cfg["village_timebonus"] = take_village_timebonus;
+		loc.write(cfg);
+	}
+
+	/** Undoes this action. */
+	virtual bool undo(int)
+	{
+		team& current_team = resources::controller->current_team();
+		if(resources::gameboard->map().is_village(loc)) {
+			get_village(loc, original_village_owner, nullptr, false);
+			// MP_COUNTDOWN take away capture bonus
+			if(take_village_timebonus) {
+				current_team.set_action_bonus_count(current_team.action_bonus_count() - 1);
+			}
+		}
+		return true;
+	}
+};
+
+}
 game_events::pump_result_t get_village(const map_location& loc, int side, bool *action_timebonus, bool fire_event)
 {
 	std::vector<team> &teams = resources::gameboard->teams();
@@ -151,12 +231,12 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
 	int old_owner_side = 0;
 	// We strip the village off all other sides, unless it is held by an ally
 	// and our side is already defeated (and thus we can't occupy it)
-	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
-		int i_side = std::distance(teams.begin(), i) + 1;
+	for(team& tm : teams) {
+		int i_side = tm.side();
 		if (!t || not_defeated || t->is_enemy(i_side)) {
-			if(i->owns_village(loc)) {
+			if(tm.owns_village(loc)) {
 				old_owner_side = i_side;
-				i->lose_village(loc);
+				tm.lose_village(loc);
 			}
 			if (side != i_side && action_timebonus) {
 				grants_timebonus = true;
@@ -177,6 +257,7 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
 		if (display::get_singleton() != nullptr) {
 			display::get_singleton()->invalidate(loc);
 		}
+		resources::undo_stack->add_custom<take_village_step>(old_owner_side, grants_timebonus, loc);
 		return t->get_village(loc, old_owner_side, fire_event ? resources::gamedata : nullptr);
 	}
 
@@ -204,9 +285,11 @@ namespace { // Private helpers for move_unit()
 		/** Attempts to move the unit along the expected path. */
 		void try_actual_movement(bool show);
 		/** Does some bookkeeping and event firing, for use after movement. */
-		void post_move(undo_list *undo_stack);
+		void post_move();
 		/** Shows the various on-screen messages, for use after movement. */
 		void feedback() const;
+		/** Attempts to teleport the unit to a map_location. */
+		void try_teleport(bool show);
 
 		/** After checking expected movement, this is the expected path. */
 		std::vector<map_location> expected_path() const
@@ -241,7 +324,10 @@ namespace { // Private helpers for move_unit()
 		                    const route_iterator & current,
 	                        const route_iterator & other);
 		/** AI moves are supposed to not change the "goto" order. */
-		bool is_ai_move() const	{ return spectator_ != nullptr; }
+		bool is_ai_move() const
+		{
+			return spectator_ && spectator_->is_ai_move();
+		}
 		/** Checks how far it appears we can move this turn. */
 		route_iterator plot_turn(const route_iterator & start,
 		                         const route_iterator & stop);
@@ -273,6 +359,10 @@ namespace { // Private helpers for move_unit()
 		inline bool do_move(const route_iterator & step_from,
 		                    const route_iterator & step_to,
 		                    unit_display::unit_mover & animator);
+
+		/** Teleports the unit. */
+		inline bool do_teleport(unit_display::unit_mover& animator);
+
 		/** Clears fog/shroud and handles units being sighted. */
 		inline void handle_fog(const map_location & hex, bool new_animation);
 		inline bool is_reasonable_stop(const map_location & hex) const;
@@ -306,8 +396,8 @@ namespace { // Private helpers for move_unit()
 
 		// This data stores the state from before the move started.
 		const int orig_side_;
-		const int orig_moves_;
-		const map_location::DIRECTION orig_dir_;
+		int orig_moves_;
+		const map_location::direction orig_dir_;
 		const map_location goto_;
 
 		// This data tracks the current state as the move is in progress.
@@ -352,7 +442,7 @@ namespace { // Private helpers for move_unit()
 		: spectator_(move_spectator)
 		, skip_sighting_(skip_sightings)
 		, skip_ally_sighting_(skip_ally_sightings)
-		, playing_team_is_viewing_(display::get_singleton()->playing_team() == display::get_singleton()->viewing_team() || display::get_singleton()->show_everything())
+		, playing_team_is_viewing_(display::get_singleton()->viewing_team_is_playing() || display::get_singleton()->show_everything())
 		, route_(route)
 		, begin_(route.begin())
 		, full_end_(route.end())
@@ -517,6 +607,9 @@ namespace { // Private helpers for move_unit()
 		auto [unit_it, success] = resources::gameboard->units().move(*move_loc_, *step_to);
 
 		if(success) {
+			resources::undo_stack->add_move(
+				unit_it.get_shared_ptr(), move_loc_, step_to + 1, orig_moves_, unit_it->facing());
+			orig_moves_ = unit_it->movement_left();
 			// Update the moving unit.
 			move_it_ = unit_it;
 			move_it_->set_facing(step_from->get_relative_dir(*step_to));
@@ -538,6 +631,40 @@ namespace { // Private helpers for move_unit()
 		return success;
 	}
 
+	/**
+	 * Teleports the unit to begin_ + 1.
+	 * @a animator is the unit_display::unit_mover being used.
+	 * @return whether or not we started a new animation.
+	 */
+	inline bool unit_mover::do_teleport(unit_display::unit_mover& animator)
+	{
+		game_display& disp = *game_display::get_singleton();
+		const route_iterator step_to = begin_ + 1;
+
+		// Invalidate before moving so we invalidate neighbor hexes if needed.
+		move_it_->anim_comp().invalidate(disp);
+
+		// Attempt actually moving. Fails if *step_to is occupied.
+		auto [unit_it, success] = resources::gameboard->units().move(*begin_, *step_to);
+
+		if(success) {
+			// Update the moving unit.
+			move_it_ = unit_it;
+			move_it_->set_facing(begin_->get_relative_dir(*step_to));
+
+			move_it_->anim_comp().set_standing(false);
+			disp.invalidate_unit_after_move(*begin_, *step_to);
+			disp.invalidate(*step_to);
+			move_loc_ = step_to;
+
+			// Show this move.
+			animator.proceed_to(move_it_.get_shared_ptr(), step_to - begin_, move_it_->appearance_changed(), false);
+
+			move_it_->set_appearance_changed(false);
+			disp.redraw_minimap();
+		}
+		return success;
+	}
 
 	/**
 	 * Clears fog/shroud and raises events for units being sighted.
@@ -1012,12 +1139,56 @@ namespace { // Private helpers for move_unit()
 		event_mutated_mid_move_ = wml_removed_unit_ || wml_move_aborted_;
 	}
 
+	/**
+	 * Attempts to teleport the unit to a map_location.
+	 *
+	 * @param[in]  show            Set to false to suppress animations.
+	 */
+	void unit_mover::try_teleport(bool show)
+	{
+		const route_iterator step_from = real_end_ - 1;
+
+		std::vector<int> not_seeing = get_sides_not_seeing(*move_it_);
+
+		// Prepare to animate.
+		unit_display::unit_mover animator(route_, show);
+		animator.start(move_it_.get_shared_ptr());
+		fire_hex_event("exit hex", step_from, begin_);
+
+		bool new_animation = do_teleport(animator);
+
+		if(current_uses_fog_)
+			handle_fog(*(begin_ + 1), new_animation);
+
+		animator.wait_for_anims();
+
+		fire_hex_event("enter hex", begin_, step_from);
+
+		if(is_reasonable_stop(*step_from)) {
+			pump_sighted(step_from);
+		}
+
+		pump_sighted(step_from);
+
+		if(move_it_.valid()) {
+			// Finish animating.
+			animator.finish(move_it_.get_shared_ptr());
+
+			// Check for the moving unit being seen.
+			auto [wml_undo_blocked, wml_move_aborted] = actor_sighted(*move_it_, &not_seeing);
+
+			wml_move_aborted_ |= wml_move_aborted;
+			wml_undo_disabled_ |= wml_undo_blocked;
+		}
+
+		post_move();
+	}
 
 	/**
 	 * Does some bookkeeping and event firing, for use after movement.
 	 * This includes village capturing and the undo stack.
 	 */
-	void unit_mover::post_move(undo_list *undo_stack)
+	void unit_mover::post_move()
 	{
 		const map_location & final_loc = final_hex();
 
@@ -1061,22 +1232,20 @@ namespace { // Private helpers for move_unit()
 		// Record keeping.
 		if (spectator_) {
 			spectator_->set_unit(move_it_);
+			spectator_->set_interrupted(interrupted());
+			spectator_->set_tiles_entered(steps_travelled());
 		}
-		if ( undo_stack ) {
-			const bool mover_valid = move_it_.valid();
 
-			if ( mover_valid ) {
-				// MP_COUNTDOWN: added param
-				undo_stack->add_move(
-					move_it_.get_shared_ptr(), begin_, real_end_, orig_moves_,
-					action_time_bonus, orig_village_owner, orig_dir_);
-			}
+		const bool mover_valid = move_it_.valid();
 
-			if ( !mover_valid  ||  undo_blocked()  ||
-				(resources::whiteboard->is_active() && resources::whiteboard->should_clear_undo()) || synced_context::undo_blocked())
-			{
-				undo_stack->clear();
-			}
+
+		if(!mover_valid || undo_blocked()) {
+			synced_context::block_undo();
+		}
+
+		// TODO: this looks wrong, whiteboard shouldn't effect the undo stack during a synced action.
+		if(resources::whiteboard->is_active() && resources::whiteboard->should_clear_undo()) {
+			synced_context::block_undo();
 		}
 
 		// Update the screen.
@@ -1163,14 +1332,10 @@ namespace { // Private helpers for move_unit()
 }//end anonymous namespace
 
 
-static std::size_t move_unit_internal(undo_list* undo_stack,
-	bool show_move, bool* interrupted, unit_mover& mover)
+static void move_unit_internal(unit_mover& mover)
 {
+	bool show_move = !resources::controller->is_skipping_replay() && !resources::controller->is_skipping_actions();
 	const events::command_disabler disable_commands;
-	// Default return value.
-	if (interrupted) {
-		*interrupted = false;
-	}
 
 	// Attempt moving.
 	mover.try_actual_movement(show_move);
@@ -1192,17 +1357,10 @@ static std::size_t move_unit_internal(undo_list* undo_stack,
 
 	// Bookkeeping, etc.
 	// also fires the moveto event
-	mover.post_move(undo_stack);
+	mover.post_move();
 	if (show_move) {
 		mover.feedback();
 	}
-
-	// Set return value.
-	if (interrupted) {
-		*interrupted = mover.interrupted();
-	}
-
-	return mover.steps_travelled();
 }
 
 /**
@@ -1215,27 +1373,92 @@ static std::size_t move_unit_internal(undo_list* undo_stack,
  * supplied path.)
  *
  * @param[in]  steps                The route to be traveled. The unit to be moved is at the beginning of this route.
- * @param      undo_stack           If supplied, then either this movement will be added to the stack or the stack will be cleared.
- * @param[in]  continued_move       If set to true, this is a continuation of an earlier move (movement is not interrupted should units be spotted).
- * @param[in]  show_move            Controls whether or not the movement is animated for the player.
- * @param[out] interrupted          If supplied, then this is set to true if information was uncovered that warrants interrupting a chain of actions (and set to false otherwise).
- * @param[out] move_spectator       If supplied, this will be given the information uncovered by the move (and the unit's "goto" instruction will be preserved).
+ * @param[in]  continued_move       If set to true, this is a continuation of an earlier move (movement is not
+ * interrupted should units be spotted).
+ * @param[in]  skip_ally_sighted    If set to true, movement is not interrupted should allied units be spotted.
+ * @param[out] move_spectator       If supplied, this will be given the information uncovered by the move and about the
+ * move
+ */
+void execute_move_unit(const std::vector<map_location>& steps,
+	bool continued_move,
+	bool skip_ally_sighted,
+	move_unit_spectator* move_spectator)
+{
+	// Evaluate this move.
+	unit_mover mover(steps, move_spectator, continued_move, skip_ally_sighted);
+	if(!mover.check_expected_movement()) {
+		DBG_NG  << "found expected empty move, aborting";
+		return;
+	}
+
+	move_unit_internal(mover);
+}
+
+void teleport_unit_and_record(const map_location& teleport_from,
+	const map_location& teleport_to,
+	move_unit_spectator* /* move_spectator */)
+{
+	synced_context::run_and_throw("debug_teleport",
+			config{"teleport_from_x", teleport_from.wml_x(), "teleport_from_y", teleport_from.wml_y(), "teleport_to_x",
+				teleport_to.wml_x(), "teleport_to_y", teleport_to.wml_y()});
+}
+
+void teleport_unit_from_replay(const std::vector<map_location> &steps,
+	bool continued_move, bool skip_ally_sighted, bool show_move)
+{
+	unit_mover mover(steps, nullptr, continued_move, skip_ally_sighted);
+	mover.try_teleport(show_move);
+}
+
+
+
+/**
+ * Wrapper around the other overload.
+ *
+ * @param[in]  steps                The route to be traveled. The unit to be moved is at the beginning of this route.
+ * @param[in]  continued_move       If set to true, this is a continuation of an earlier move (movement is not
+ * interrupted should units be spotted).
+ * @param[out] interrupted          If supplied, then this is set to true if information was uncovered that warrants
+ * interrupting a chain of actions (and set to false otherwise).
  *
  * @returns The number of hexes entered. This can safely be used as an index
  *          into @a steps to get the location where movement ended, provided
  *          @a steps is not empty (the return value is guaranteed to be less
  *          than steps.size() ).
  */
-std::size_t move_unit_and_record(const std::vector<map_location> &steps,
-	undo_list* undo_stack, bool continued_move, bool show_move,
-	bool* interrupted, move_unit_spectator* move_spectator)
+std::size_t move_unit_and_record(
+	const std::vector<map_location>& steps, bool continued_move, bool* interrupted)
+{
+	auto move_spectator = move_unit_spectator();
+	move_unit_and_record(steps, continued_move, move_spectator);
+	if(interrupted) {
+		*interrupted = move_spectator.get_interrupted();
+	}
+	return move_spectator.get_tiles_entered();
+}
+
+/**
+ * Moves a unit across the board.
+ *
+ * This function handles actual movement, checking terrain costs as well as
+ * things that might interrupt movement (e.g. ambushes). If the full path
+ * cannot be reached this turn, the remainder is stored as the unit's "goto"
+ * instruction. (The unit itself is whatever unit is at the beginning of the
+ * supplied path.)
+ *
+ * @param[in]  steps                The route to be traveled. The unit to be moved is at the beginning of this route.
+ * @param[in]  continued_move       If set to true, this is a continuation of an earlier move (movement is not interrupted should units be spotted).
+ * @param[out] move_spectator       If supplied, this will be given the information uncovered by the move and about the move
+ */
+void move_unit_and_record(
+	const std::vector<map_location>& steps, bool continued_move, move_unit_spectator& move_spectator)
 {
 
 	// Avoid some silliness.
 	if ( steps.size() < 2  ||  (steps.size() == 2 && steps.front() == steps.back()) ) {
 		DBG_NG << "Ignoring a unit trying to jump on its hex at " <<
 		          ( steps.empty() ? map_location::null_location() : steps.front() ) << ".";
-		return 0;
+		return;
 	}
 	//if we have no fog activated then we always skip sighted
 	if(resources::gameboard->units().find(steps.front()) != resources::gameboard->units().end())
@@ -1244,45 +1467,11 @@ std::size_t move_unit_and_record(const std::vector<map_location> &steps,
 			resources::gameboard->units().find(steps.front())->side() - 1];
 		continued_move |= !current_team.fog_or_shroud();
 	}
-	const bool skip_ally_sighted = !preferences::interrupt_when_ally_sighted();
+	const bool skip_ally_sighted = !prefs::get().ally_sighted_interrupts();
 
-	// Evaluate this move.
-	unit_mover mover(steps, move_spectator, continued_move, skip_ally_sighted);
-	if ( !mover.check_expected_movement() )
-		return 0;
-	if(synced_context::get_synced_state() != synced_context::SYNCED)
-	{
-		/*
-			enter the synced mode and do the actual movement.
-		*/
-		resources::recorder->add_synced_command("move",replay_helper::get_movement(steps, continued_move, skip_ally_sighted));
-		set_scontext_synced sync;
-		std::size_t r =  move_unit_internal(undo_stack, show_move, interrupted, mover);
-		resources::controller->check_victory();
-		resources::controller->maybe_throw_return_to_play_side();
-		sync.do_final_checkup();
-		return r;
-	}
-	else
-	{
-		//we are already in synced mode and don't need to reenter it again.
-		return  move_unit_internal(undo_stack, show_move, interrupted, mover);
-	}
-}
+	synced_context::run_and_throw(
+		"move", replay_helper::get_movement(steps, continued_move, skip_ally_sighted), move_spectator);
 
-std::size_t move_unit_from_replay(const std::vector<map_location> &steps,
-	undo_list* undo_stack, bool continued_move, bool skip_ally_sighted,
-	bool show_move)
-{
-	// Evaluate this move.
-	unit_mover mover(steps, nullptr, continued_move,skip_ally_sighted);
-	if ( !mover.check_expected_movement() )
-	{
-		replay::process_error("found corrupt movement in replay.");
-		return 0;
-	}
-
-	return move_unit_internal(undo_stack, show_move, nullptr, mover);
 }
 
 

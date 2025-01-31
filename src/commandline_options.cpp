@@ -29,6 +29,7 @@
 #include <boost/program_options/variables_map.hpp>  // for variables_map, etc
 
 #include <array>
+#include <string>
 
 namespace po = boost::program_options;
 
@@ -64,9 +65,7 @@ bad_commandline_tuple::bad_commandline_tuple(const std::string& str,
 
 
 commandline_options::commandline_options(const std::vector<std::string>& args)
-	: bunzip2()
-	, bzip2()
-	, campaign()
+	: campaign()
 	, campaign_difficulty()
 	, campaign_scenario()
 	, campaign_skip_story(false)
@@ -78,6 +77,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, debug_lua(false)
 	, strict_lua(false)
 	, allow_insecure(false)
+	, addon_server_info(false)
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_dot_domain()
 	, debug_dot_level()
@@ -85,8 +85,6 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, editor()
 	, fps(false)
 	, fullscreen(false)
-	, gunzip()
-	, gzip()
 	, help()
 	, language()
 	, log()
@@ -109,7 +107,6 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, max_fps()
 	, noaddons(false)
 	, nocache(false)
-	, nodelay(false)
 	, nogui(false)
 	, nobanner(false)
 	, nomusic(false)
@@ -128,10 +125,10 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, password()
 	, render_image()
 	, render_image_dst()
+	, generate_spritesheet()
 	, screenshot(false)
 	, screenshot_map_file()
 	, screenshot_output_file()
-	, script_file()
 	, plugin_file()
 	, script_unsafe_mode(false)
 	, strict_validation(false)
@@ -142,8 +139,6 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, mptest(false)
 	, usercache_path(false)
 	, usercache_dir()
-	, userconfig_path(false)
-	, userconfig_dir()
 	, userdata_path(false)
 	, userdata_dir()
 	, validcache(false)
@@ -161,6 +156,12 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, report(false)
 	, windowed(false)
 	, with_replay(false)
+#ifdef _WIN32
+	, no_console(false)
+#endif
+	, no_log_sanitize(false)
+	, log_to_file(false)
+	, no_log_to_file(false)
 	, translation_percent()
 	, args_(args.begin() + 1, args.end())
 	, args0_(*args.begin())
@@ -173,11 +174,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	po::options_description general_opts("General options");
 	general_opts.add_options()
 		("all-translations", "Show all translations, even incomplete ones.")
-		("bunzip2", po::value<std::string>(), "decompresses a file (<arg>.bz2) in bzip2 format and stores it without the .bz2 suffix. <arg>.bz2 will be removed." IMPLY_TERMINAL)
-		("bzip2", po::value<std::string>(), "compresses a file (<arg>) in bzip2 format, stores it as <arg>.bz2 and removes <arg>." IMPLY_TERMINAL)
 		("clock", "Adds the option to show a clock for testing the drawing timer.")
-		("config-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. DEPRECATED: use userdata-dir instead.")
-		("config-path", "prints the path of the userdata directory and exits. DEPRECATED: use userdata-path instead." IMPLY_TERMINAL)
 		("core", po::value<std::string>(), "overrides the loaded core with the one whose id is specified.")
 		("data-dir", po::value<std::string>(), "overrides the data directory with the one specified.")
 		("data-path", "prints the path of the data directory and exits." IMPLY_TERMINAL)
@@ -185,37 +182,33 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("debug-lua", "enables some Lua debugging mechanisms")
 		("strict-lua", "disallow deprecated Lua API calls")
 		("allow-insecure", "Allows sending a plaintext password over an unencrypted connection. Should only ever be used for local testing.")
+		("addon-server-info", "Shows a button on the add-ons manager to query the add-ons server for various information.")
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 		("debug-dot-level", po::value<std::string>(), "sets the level of the debug dot files. <arg> should be a comma separated list of levels. These files are used for debugging the widgets especially the for the layout engine. When enabled the engine will produce dot files which can be converted to images with the dot tool. Available levels: size (generate the size info of the widget), state (generate the state info of the widget).")
 		("debug-dot-domain", po::value<std::string>(), "sets the domain of the debug dot files. <arg> should be a comma separated list of domains. See --debug-dot-level for more info. Available domains: show (generate the data when the dialog is about to be shown), layout (generate the data during the layout phase - might result in multiple files). The data can also be generated when the F12 is pressed in a dialog.")
 #endif
 		("editor,e", po::value<std::string>()->implicit_value(std::string()), "starts the in-game map editor directly. If file <arg> is specified, equivalent to -e --load <arg>.")
-		("gunzip", po::value<std::string>(), "decompresses a file (<arg>.gz) in gzip format and stores it without the .gz suffix. <arg>.gz will be removed." IMPLY_TERMINAL)
-		("gzip", po::value<std::string>(), "compresses a file (<arg>) in gzip format, stores it as <arg>.gz and removes <arg>." IMPLY_TERMINAL)
 		("help,h", "prints this message and exits." IMPLY_TERMINAL)
 		("language,L", po::value<std::string>(), "uses language <arg> (symbol) this session. Example: --language ang_GB@latin")
 		("load,l", po::value<std::string>(), "loads the save <arg> from the standard save game directory. When launching the map editor via -e, the map <arg> is loaded, relative to the current directory. If it is a directory, the editor will start with a load map dialog opened there.")
 		("noaddons", "disables the loading of all add-ons.")
 		("nocache", "disables caching of game data.")
-		("nodelay", "runs the game without any delays.")
 		("nomusic", "runs the game without music.")
 		("nosound", "runs the game without sounds and music.")
 		("password", po::value<std::string>(), "uses <password> when connecting to a server, ignoring other preferences.")
-		("plugin", po::value<std::string>(), "(experimental) load a script which defines a wesnoth plugin. similar to --script below, but Lua file should return a function which will be run as a coroutine and periodically woken up with updates.")
+		("plugin", po::value<std::string>(), "load a script which defines a wesnoth plugin. Lua file should return a function which will be run as a coroutine and periodically woken up with updates.")
 		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid Wesnoth 'image path string' with image path functions, and writes it to a .png file." IMPLY_TERMINAL)
-		("report,R", "initializes game directories, prints build information suitable for use in bug reports, and exits." IMPLY_TERMINAL)
+		("generate-spritesheet", po::value<std::string>(), "generates a spritesheet from all png images in the given path, recursively (one sheet per directory)")
+    ("report,R", "initializes game directories, prints build information suitable for use in bug reports, and exits." IMPLY_TERMINAL)
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
 		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work." IMPLY_TERMINAL)
-		("script", po::value<std::string>(), "(experimental) file containing a Lua script to control the client")
 		("server,s", po::value<std::string>()->implicit_value(std::string()), "connects to the host <arg> if specified or to the first host in your preferences.")
 		("strict-validation", "makes validation errors fatal")
 		("translations-over", po::value<unsigned int>(), "Specify the standard for determining whether a translation is complete.")
 		("unsafe-scripts", "makes the \'package\' package available to Lua scripts, so that they can load arbitrary packages. Do not do this with untrusted scripts! This action gives ua the same permissions as the Wesnoth executable.")
 		("usercache-dir", po::value<std::string>(), "sets the path of the cache directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. Defaults to $HOME/.cache/wesnoth on X11 and to the userdata-dir on other systems.")
 		("usercache-path", "prints the path of the cache directory and exits.")
-		("userconfig-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. Defaults to $HOME/.config/wesnoth on X11 and to the userdata-dir on other systems.")
-		("userconfig-path", "prints the path of the user config directory and exits.")
-		("userdata-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory.")
+		("userdata-dir", po::value<std::string>(), "sets the path of the userdata directory. You can use ~ to denote $HOME or My Documents\\My Games on Windows.")
 		("userdata-path", "prints the path of the userdata directory and exits." IMPLY_TERMINAL)
 		("username", po::value<std::string>(), "uses <username> when connecting to a server, ignoring other preferences.")
 		("validcache", "assumes that the cache is valid. (dangerous)")
@@ -252,8 +245,11 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("log-none", po::value<std::vector<std::string>>()->composing(), "sets the severity level of the specified log domain(s) to 'none'. Similar to --log-error.")
 		("log-precise", "shows the timestamps in log output with more precision.")
 		("no-log-to-file", "log output is written only to standard error rather than to a file. The environment variable WESNOTH_NO_LOG_FILE can also be set as an alternative.")
-		("log-to-file", "log output is written to a file. Cancels the effect of --no-log-to-file whether implicit or explicit.")
+		("log-to-file", "log output is written to the log file instead of standard error. Cancels the effect of --no-log-to-file whether implicit or explicit.")
+		("no-log-sanitize", "disables the anonymization that's normally applied when logging, for example replacing usernames with USER.")
+#ifdef _WIN32
 		("wnoconsole", "For Windows, when used with --no-log-to-file, results in output being written to cerr/cout instead of CONOUT. Otherwise, does nothing.")
+#endif
 		;
 
 	po::options_description multiplayer_opts("Multiplayer options");
@@ -296,6 +292,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("output,o", po::value<std::string>(), "output to specified file")
 		("patch,P", po::value<two_strings>()->multitoken(), "apply a patch to a preprocessed WML document." IMPLY_TERMINAL)
 		("preprocess,p", po::value<two_strings>()->multitoken(), "requires two arguments: <file/folder> <target directory>. Preprocesses a specified file/folder. The preprocessed file(s) will be written in the specified target directory: a plain cfg file and a processed cfg file." IMPLY_TERMINAL)
+		("preprocess-string", po::value<std::string>(), "preprocesses the given string." IMPLY_TERMINAL)
 		("preprocess-defines", po::value<std::string>(), "comma separated list of defines to be used by '--preprocess' command. If 'SKIP_CORE' is in the define list the data/core won't be preprocessed. Example: --preprocess-defines=FOO,BAR")
 		("preprocess-input-macros", po::value<std::string>(), "used only by the '--preprocess' command. Specifies source file <arg> that contains [preproc_define]s to be included before preprocessing.")
 		("preprocess-output-macros", po::value<std::string>()->implicit_value(std::string()), "used only by the '--preprocess' command. Will output all preprocessed macros in the target file <arg>. If the file is not specified the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.")
@@ -326,10 +323,6 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		multiplayer_ai_config = parse_to_uint_string_tuples_(vm["ai-config"].as<std::vector<std::string>>());
 	if(vm.count("algorithm"))
 		multiplayer_algorithm = parse_to_uint_string_tuples_(vm["algorithm"].as<std::vector<std::string>>());
-	if(vm.count("bunzip2"))
-		bunzip2 = vm["bunzip2"].as<std::string>();
-	if(vm.count("bzip2"))
-		bzip2 = vm["bzip2"].as<std::string>();
 	if(vm.count("campaign"))
 		campaign = vm["campaign"].as<std::string>();
 	if(vm.count("campaign-difficulty"))
@@ -342,10 +335,6 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		clock = true;
 	if(vm.count("core"))
 		core_id = vm["core"].as<std::string>();
-	if(vm.count("config-dir"))
-		userdata_dir = vm["config-dir"].as<std::string>(); //TODO: complain and remove
-	if(vm.count("config-path"))
-		userdata_path = true; //TODO: complain and remove
 	if(vm.count("controller"))
 		multiplayer_controller = parse_to_uint_string_tuples_(vm["controller"].as<std::vector<std::string>>());
 	if(vm.count("data-dir"))
@@ -360,6 +349,8 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		strict_lua = true;
 	if(vm.count("allow-insecure"))
 		allow_insecure = true;
+	if(vm.count("addon-server-info"))
+		addon_server_info = true;
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	if(vm.count("debug-dot-domain")) {
 		debug_dot_domain = vm["debug-dot-domain"].as<std::string>();
@@ -378,10 +369,6 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		fps = true;
 	if(vm.count("fullscreen"))
 		fullscreen = true;
-	if(vm.count("gunzip"))
-		gunzip = vm["gunzip"].as<std::string>();
-	if(vm.count("gzip"))
-		gzip = vm["gzip"].as<std::string>();
 	if(vm.count("help"))
 		help = true;
 	if(vm.count("ignore-map-settings"))
@@ -412,8 +399,6 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		noaddons = true;
 	if(vm.count("nocache"))
 		nocache = true;
-	if(vm.count("nodelay"))
-		nodelay = true;
 	if(vm.count("nomusic"))
 		nomusic = true;
 	if(vm.count("noreplaycheck"))
@@ -431,6 +416,10 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		preprocess = true;
 		preprocess_path = vm["preprocess"].as<two_strings>().first;
 		preprocess_target = vm["preprocess"].as<two_strings>().second;
+	}
+	if(vm.count("preprocess-string"))
+	{
+		preprocess_source_string = vm["preprocess-string"].as<std::string>();
 	}
 	if(vm.count("diff"))
 	{
@@ -465,14 +454,14 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		render_image = vm["render-image"].as<two_strings>().first;
 		render_image_dst = vm["render-image"].as<two_strings>().second;
 	}
+	if(vm.count("generate-spritesheet"))
+		generate_spritesheet = vm["generate-spritesheet"].as<std::string>();
 	if(vm.count("screenshot"))
 	{
 		screenshot = true;
 		screenshot_map_file = vm["screenshot"].as<two_strings>().first;
 		screenshot_output_file = vm["screenshot"].as<two_strings>().second;
 	}
-	if(vm.count("script"))
-		script_file = vm["script"].as<std::string>();
 	if(vm.count("unsafe-scripts"))
 		script_unsafe_mode = true;
 	if(vm.count("plugin"))
@@ -506,10 +495,6 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		usercache_dir = vm["usercache-dir"].as<std::string>();
 	if(vm.count("usercache-path"))
 		usercache_path = true;
-	if(vm.count("userconfig-dir"))
-		userconfig_dir = vm["userconfig-dir"].as<std::string>();
-	if(vm.count("userconfig-path"))
-		userconfig_path = true;
 	if(vm.count("userdata-dir"))
 		userdata_dir = vm["userdata-dir"].as<std::string>();
 	if(vm.count("userdata-path"))
@@ -539,6 +524,16 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		windowed = true;
 	if(vm.count("with-replay"))
 		with_replay = true;
+#ifdef _WIN32
+	if(vm.count("wnoconsole"))
+		no_console = true;
+#endif
+	if(vm.count("no-log-sanitize"))
+		no_log_sanitize = true;
+	if(vm.count("log-to-file"))
+		log_to_file = true;
+	if(vm.count("no-log-to-file"))
+		no_log_to_file = true;
 	if(vm.count("all-translations"))
 		translation_percent = 0;
 	else if(vm.count("translations-over"))

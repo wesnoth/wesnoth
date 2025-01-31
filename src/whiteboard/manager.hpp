@@ -95,9 +95,9 @@ public:
 	void on_change_controller(int side, const team& t);
 	void on_kill_unit();
 	/** Handles various cleanup right before removing an action from the queue */
-	void pre_delete_action(action_ptr action);
+	void pre_delete_action(const action_ptr& action);
 	/** Handles various cleanup right after removing an action from the queue */
-	void post_delete_action(action_ptr action);
+	void post_delete_action(const action_ptr& action);
 
 	/** Called by replay_network_sender to add whiteboard data to the outgoing network packets */
 	void send_network_data();
@@ -155,7 +155,7 @@ public:
 	bool save_recall(const unit& unit, int side_num, const map_location& recall_hex);
 
 	/** Creates a suppose-dead action for the current side */
-	void save_suppose_dead(unit& curr_unit, const map_location& loc);
+	void save_suppose_dead(const unit& curr_unit, const map_location& loc);
 
 	/** Executes first action in the queue for current side */
 	void contextual_execute();
@@ -198,7 +198,7 @@ private:
 	void validate_actions_if_needed();
 	/** Called by all of the save_***() methods after they have added their action to the queue */
 	void update_plan_hiding(std::size_t viewing_team);
-	void update_plan_hiding(); //same as above, but uses wb::viewer_team() as default argument
+	void update_plan_hiding(); //same as above, but uses display::viewer_team_index() as default argument
 
 	/** Tracks whether the whiteboard is active. */
 	bool active_;

@@ -14,8 +14,8 @@ end
 local function get_sheep_to_herd(cfg)
     local all_sheep = wesnoth.units.find_on_map {
         side = wesnoth.current.side,
-        { "and", wml.get_child(cfg, "filter_second") },
-        { "not", { { "filter_adjacent", { side = wesnoth.current.side, { "and", wml.get_child(cfg, "filter") } } } } }
+        wml.tag["and"] ( wml.get_child(cfg, "filter_second") ),
+        wml.tag["not"] { wml.tag.filter_adjacent { side = wesnoth.current.side, wml.tag["and"] ( wml.get_child(cfg, "filter") ) } }
     }
 
     local sheep_to_herd = {}

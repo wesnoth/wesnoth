@@ -83,7 +83,7 @@ private:
 		CURRENT_TEAM,
 		SHOW_ALL,
 	};
-	std::optional<REPLAY_VISION> vision_;
+	utils::optional<REPLAY_VISION> vision_;
 	/// When the "Reset" button is pressed reset the gamestate to this
 	/// serialized gamestaten, the initial gamestate.
 	std::shared_ptr<config> reset_state_;

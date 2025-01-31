@@ -89,8 +89,17 @@ public:
 	 *
 	 * @param cfg A config object whose contents are replaced with
 	 *            the server's list if available, cleared otherwise.
+	 * @param icons Whether to have the add-ons server populate the icon
 	 */
-	bool request_addons_list(config& cfg);
+	bool request_addons_list(config& cfg, bool icons);
+
+	std::map<std::string, int> get_addon_count_by_type();
+	config get_addon_downloads_by_version(const std::string& addon);
+	config get_forum_auth_usage();
+	config get_addon_admins();
+	bool hide_addon(const std::string& addon, const std::string& username, const std::string& passphrase);
+	bool unhide_addon(const std::string& addon, const std::string& username, const std::string& passphrase);
+	config get_hidden_addons(const std::string& username, const std::string& passphrase);
 
 	/**
 	 * Retrieves the add-ons server web URL if available.
@@ -181,10 +190,11 @@ public:
 	 *
 	 * @return @a true on success, @a false on failure. Retrieve the error message with @a get_last_server_error.
 	 *
-	 * @param id               Id. of the add-on to take down.
+	 * @param id               ID of the add-on to take down.
 	 * @param response_message The server response message on success, such as "add-on accepted".
+	 * @param admin_set        The list of admin usernames as provided by the server, if doing an admin-restricted action
 	 */
-	bool delete_remote_addon(const std::string& id, std::string& response_message);
+	bool delete_remote_addon(const std::string& id, std::string& response_message, const std::set<std::string>& admin_set = {});
 
 	/**
 	 * Returns whether the server supports the given named capability.
@@ -320,7 +330,17 @@ private:
 	 */
 	void wait_for_transfer_done(const std::string& status_message, transfer_mode mode = transfer_mode::download);
 
-	bool update_last_error(config& response_cfg);
+	/**
+	 * If the response has the [error] child, then check for the status_code attribute.
+	 * If the error response has the status_code attribute, then the status_code attribute is assigned to last_error_, else the message attribute is assigned to last_error_.
+	 * If the error response doesn't have the status_code attribute, then assign the message attribute to last_error.
+	 * Also assign the error response's extra_data attribute to last_error_data_.
+	 * If there is no [error] child, then clear last_error_ and last_error_data_.
+	 *
+	 * @param response_cfg The config returned by the add-ons server.
+	 * @return true if response_cfg had an [error] child, false otherwise.
+	 */
+	bool is_error_response(const config& response_cfg);
 
 	void clear_last_error();
 

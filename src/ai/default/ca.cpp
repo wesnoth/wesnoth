@@ -670,7 +670,6 @@ void get_villages_phase::find_villages(
 
 	std::size_t min_distance = 100000;
 	const gamemap &map_ = resources::gameboard->map();
-	std::vector<team> &teams_ = resources::gameboard->teams();
 
 	// When a unit is dispatched we need to make sure we don't
 	// dispatch this unit a second time, so store them here.
@@ -699,9 +698,9 @@ void get_villages_phase::find_villages(
 		}
 
 		bool want_village = true, owned = false;
-		for(std::size_t n = 0; n != teams_.size(); ++n) {
-			owned = teams_[n].owns_village(current_loc);
-			if(owned && !current_team().is_enemy(n+1)) {
+		for(const team& t : resources::gameboard->teams()) {
+			owned = t.owns_village(current_loc);
+			if(owned && !current_team().is_enemy(t.side())) {
 				want_village = false;
 			}
 
@@ -934,7 +933,7 @@ bool get_villages_phase::remove_village(
 	bool result = false;
 	treachmap::iterator itor = reachmap.begin();
 	while(itor != reachmap.end()) {
-		itor->second.erase(std::remove(itor->second.begin(), itor->second.end(), village), itor->second.end());
+		utils::erase(itor->second, village);
 		if(itor->second.empty()) {
 			result = true;
 			itor = remove_unit(reachmap, moves, itor);

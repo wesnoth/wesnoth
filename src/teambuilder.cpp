@@ -34,11 +34,9 @@ static lg::log_domain log_engine_tc("engine/team_construction");
 #define DBG_NG_TC LOG_STREAM(debug, log_engine_tc)
 
 team_builder::team_builder(const config& side_cfg, team& to_build, const config& level, game_board& board, int num)
-	: gold_info_ngold_(0)
-	, leader_configs_()
+	: leader_configs_()
 	, level_(level)
 	, board_(board)
-	, player_exists_(false)
 	, seen_ids_()
 	, side_(num)
 	, side_cfg_(side_cfg)
@@ -51,9 +49,6 @@ void team_builder::build_team_stage_one()
 {
 	// initialize the context variables and flags, find relevant tags, set up everything
 	init();
-
-	// find out the correct qty of gold and handle gold carryover.
-	gold();
 
 	// builds the team for the given side
 	new_team();
@@ -95,32 +90,19 @@ void team_builder::init()
 
 	log_step("init");
 
-	// track whether a [player] tag with persistence information exists (in addition to the [side] tag)
-	player_exists_ = false;
-
 	if(board_.map().empty()) {
 		throw game::load_game_failed("Map not found");
 	}
-
-	DBG_NG_TC << "snapshot: " << utils::bool_string(player_exists_);
 
 	unit_configs_.clear();
 	seen_ids_.clear();
 }
 
-void team_builder::gold()
-{
-	log_step("gold");
-
-	gold_info_ngold_ = side_cfg_["gold"];
-
-	DBG_NG_TC << "set gold to '" << gold_info_ngold_ << "'";
-}
 
 void team_builder::new_team()
 {
 	log_step("new team");
-	team_.build(side_cfg_, board_.map(), gold_info_ngold_);
+	team_.build(side_cfg_, board_.map());
 }
 
 void team_builder::objectives()
@@ -189,14 +171,6 @@ void team_builder::handle_leader(const config& leader)
 	leader_configs_.push_back(leader);
 	config& stored = leader_configs_.back();
 
-	// Remove the attributes used to define a side.
-	for(const std::string& attr : team::attributes) {
-		stored.remove_attribute(attr);
-	}
-
-    // Remove [ai] tag as it is already added for the side
-	stored.remove_children("ai");
-
 	// Provide some default values, if not specified.
 	config::attribute_value& a1 = stored["canrecruit"];
 	if(a1.blank()) {
@@ -215,16 +189,6 @@ void team_builder::handle_leader(const config& leader)
 void team_builder::leader()
 {
 	log_step("leader");
-	// If this side tag describes the leader of the side, we can simply add it to front of unit queue
-	// there was a hack: if this side tag describes the leader of the side,
-	// we may replace the leader with someone from recall list who can recruit, but take positioning from [side]
-	// this hack shall be removed, since it messes up with 'multiple leaders'
-
-	// If this side tag describes the leader of the side
-	if(!side_cfg_["type"].empty() && side_cfg_["type"] != "null") {
-		handle_leader(side_cfg_);
-	}
-
 	for(const config& l : side_cfg_.child_range("leader")) {
 		handle_leader(l);
 	}

@@ -43,7 +43,7 @@ REGISTER_WIDGET(slider)
 
 slider::slider(const implementation::builder_slider& builder)
 	: slider_base(builder, type())
-	, best_slider_length_(0)
+	, best_slider_length_(builder.best_slider_length)
 	, minimum_value_(0)
 	, step_size_(1)
 	, minimum_value_label_()
@@ -302,9 +302,9 @@ slider_definition::slider_definition(const config& cfg)
 
 slider_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
-	, positioner_length(cfg["minimum_positioner_length"])
-	, left_offset(cfg["left_offset"])
-	, right_offset(cfg["right_offset"])
+	, positioner_length(cfg["minimum_positioner_length"].to_unsigned())
+	, left_offset(cfg["left_offset"].to_unsigned())
+	, right_offset(cfg["right_offset"].to_unsigned())
 {
 	VALIDATE(positioner_length, missing_mandatory_wml_key("resolution", "minimum_positioner_length"));
 
@@ -321,11 +321,11 @@ namespace implementation
 {
 builder_slider::builder_slider(const config& cfg)
 	: implementation::builder_styled_widget(cfg)
-	, best_slider_length_(cfg["best_slider_length"])
-	, minimum_value_(cfg["minimum_value"])
-	, maximum_value_(cfg["maximum_value"])
+	, best_slider_length(cfg["best_slider_length"].to_unsigned())
+	, minimum_value_(cfg["minimum_value"].to_int())
+	, maximum_value_(cfg["maximum_value"].to_int())
 	, step_size_(cfg["step_size"].to_int(1))
-	, value_(cfg["value"])
+	, value_(cfg["value"].to_int())
 	, minimum_value_label_(cfg["minimum_value_label"].t_str())
 	, maximum_value_label_(cfg["maximum_value_label"].t_str())
 	, value_labels_()
@@ -344,7 +344,6 @@ std::unique_ptr<widget> builder_slider::build() const
 {
 	auto widget = std::make_unique<slider>(*this);
 
-	widget->set_best_slider_length(best_slider_length_);
 	widget->set_value_range(minimum_value_, maximum_value_);
 	widget->set_step_size(step_size_);
 	widget->set_value(value_);
@@ -353,7 +352,7 @@ std::unique_ptr<widget> builder_slider::build() const
 
 	if(!value_labels_.empty()) {
 		VALIDATE(value_labels_.size() == static_cast<std::size_t>(widget->get_item_count()),
-				 _("The number of value_labels and values don't match."));
+				 _("The number of value_labels and values don’t match."));
 
 		widget->set_value_labels(value_labels_);
 
