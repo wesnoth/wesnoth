@@ -744,6 +744,7 @@ void rich_label::default_text_config(config* txt_ptr, const t_string& text) {
 		(*txt_ptr)["y"] = "(pos_y)";
 		(*txt_ptr)["w"] = "(text_width)";
 		(*txt_ptr)["h"] = "(text_height)";
+		(*txt_ptr)["parse_text_as_formula"] = false;
 		// tw -> table width, used for wrapping text inside table cols
 		// ww -> wrap width, used for wrapping around floating image
 		// max text width shouldn't go beyond the rich_label's specified width
