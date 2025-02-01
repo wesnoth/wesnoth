@@ -2,7 +2,10 @@ FROM wesnoth/wesnoth:2404-master
 
 RUN apt update
 # install flatpak
-RUN apt install -y flatpak flatpak-builder jq
+RUN apt install -y -qq flatpak
+RUN apt install -y -qq flatpak-builder
+# other misc things
+RUN apt install -y -qq jq python3-requests
 RUN flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
 # install runtime
 RUN flatpak install -y flathub org.freedesktop.Platform/x86_64/22.08 org.freedesktop.Sdk/x86_64/22.08 org.freedesktop.Platform/x86_64/23.08 org.freedesktop.Sdk/x86_64/23.08
