@@ -222,7 +222,7 @@ jobs:
           branch=ci-$(git log -n 1 --format=%h)
           version=$(sed -n 's/#define VERSION "\(.*\)"/\1/p' src/wesconfig.h)
           date=$(TZ=UTC0 git log -1 --date=iso-local --format=%cd)
-          apt install python3-requests
+          apt install -y python3-requests
           cp packaging/org.wesnoth.Wesnoth.appdata.xml .
           # add release info so the flatpak shows the version
           utils/update_appdata "$version" org.wesnoth.Wesnoth.appdata.xml "$date"
