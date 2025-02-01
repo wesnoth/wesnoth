@@ -70,7 +70,7 @@ opts.AddVariables(
     PathVariable('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathVariable.PathAccept),
     BoolVariable('desktop_entry','Clear to disable desktop-entry', True),
     BoolVariable('appdata_file','Clear to not install appdata file', True),
-    PathVariable('appdata_filepath','Path of appdata file to install', "packaging/org.wesnoth.Wesnoth.appdata.xml"),
+    PathVariable('appdata_filepath','Path of appdata file to install', "packaging/org.wesnoth.Wesnoth.appdata.xml", PathVariable.PathAccept),
     BoolVariable('systemd','Install systemd unit file for wesnothd', bool(WhereIs("systemctl"))),
     PathVariable('datarootdir', 'sets the root of data directories to a non-default location', "share", PathVariable.PathAccept),
     PathVariable('datadirname', 'sets the name of data directory', "wesnoth$version_suffix", PathVariable.PathAccept),
