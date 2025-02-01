@@ -231,13 +231,15 @@ bool have_wml(const utils::optional_reference<const config>& cfg)
  *
  * Null WML objects are skipped.
  */
-template<typename... Vals>
-utils::optional<std::vector<std::string>> multi_find_illegal_names(const Vals&... args)
+std::vector<std::string> multi_find_illegal_names(const std::initializer_list<optional_const_config>& cfgs)
 {
 	std::vector<std::string> names;
-	((args && check_names_legal(*args, &names)), ...);
-
-	return !names.empty() ? utils::optional(names) : utils::nullopt;
+	for(auto cfg : cfgs) {
+		if(cfg) {
+			check_names_legal(*cfg, &names);
+		}
+	}
+	return names;
 }
 
 /**
@@ -245,13 +247,15 @@ utils::optional<std::vector<std::string>> multi_find_illegal_names(const Vals&..
  *
  * Null WML objects are skipped.
  */
-template<typename... Vals>
-utils::optional<std::vector<std::string>> multi_find_case_conflicts(const Vals&... args)
+std::vector<std::string> multi_find_case_conflicts(const std::initializer_list<optional_const_config>& cfgs)
 {
 	std::vector<std::string> names;
-	((args && check_case_insensitive_duplicates(*args, &names)), ...);
-
-	return !names.empty() ? utils::optional(names) : utils::nullopt;
+	for(auto cfg : cfgs) {
+		if(cfg) {
+			check_case_insensitive_duplicates(*cfg, &names);
+		}
+	}
+	return names;
 }
 
 /**
@@ -1469,15 +1473,15 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 		return ADDON_CHECK_STATUS::NO_EMAIL;
 	}
 
-	if(const auto badnames = multi_find_illegal_names(data, addlist, removelist)) {
-		error_data = utils::join(*badnames, "\n");
-		LOG_CS << "Validation error: invalid filenames in add-on pack (" << badnames->size() << " entries)";
+	if(std::vector<std::string> badnames = multi_find_illegal_names({data, addlist, removelist}); !badnames.empty()) {
+		error_data = utils::join(badnames, "\n");
+		LOG_CS << "Validation error: invalid filenames in add-on pack (" << badnames.size() << " entries)";
 		return ADDON_CHECK_STATUS::ILLEGAL_FILENAME;
 	}
 
-	if(const auto badnames = multi_find_case_conflicts(data, addlist, removelist)) {
-		error_data = utils::join(*badnames, "\n");
-		LOG_CS << "Validation error: case conflicts in add-on pack (" << badnames->size() << " entries)";
+	if(std::vector<std::string> badnames = multi_find_case_conflicts({data, addlist, removelist}); !badnames.empty()) {
+		error_data = utils::join(badnames, "\n");
+		LOG_CS << "Validation error: case conflicts in add-on pack (" << badnames.size() << " entries)";
 		return ADDON_CHECK_STATUS::FILENAME_CASE_CONFLICT;
 	}
 

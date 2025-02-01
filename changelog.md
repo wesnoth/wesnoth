@@ -9,10 +9,11 @@
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: British English
+   * Updated translations: Bengali, British English, Hungarian
 ### Units
 ### User interface
 ### WML Engine
+   * [unit] no longer accepts hp_bar_scaling and xp_bar_scaling keys
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.8

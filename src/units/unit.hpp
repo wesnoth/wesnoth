@@ -727,21 +727,14 @@ public:
 
 	/**
 	 * The factor by which the HP bar should be scaled.
-	 * @todo: document further
+	 * Convenience wrapper around the unit_type value.
 	 */
-	double hp_bar_scaling() const
-	{
-		return hp_bar_scaling_;
-	}
-
+	double hp_bar_scaling() const;
 	/**
 	 * The factor by which the XP bar should be scaled.
-	 * @todo: document further
+	 * Convenience wrapper around the unit_type value.
 	 */
-	double xp_bar_scaling() const
-	{
-		return xp_bar_scaling_;
-	}
+	double xp_bar_scaling() const;
 
 	/**
 	 * Whether the unit has been instructed to hold its position.
@@ -2095,7 +2088,6 @@ private:
 	std::unique_ptr<unit_animation_component> anim_comp_;
 
 	mutable bool hidden_;
-	double hp_bar_scaling_, xp_bar_scaling_;
 
 	config modifications_;
 	config abilities_;
