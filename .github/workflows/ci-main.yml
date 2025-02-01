@@ -212,17 +212,22 @@ jobs:
       options: --tty --cap-add=ALL --privileged # docker create options
 
     steps:
-      - { uses: actions/checkout@v4, with: { submodules: "recursive", fetch-depth: 500, fetch-tags: true } }
+      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
 
       - name: Flatpak
         run: |
           # write to an ignored filename so the build is not marked as modified
-          jq '.modules |= map(select(.name == "wesnoth").sources[0]={type:"dir",path:"."})' packaging/flatpak/org.wesnoth.Wesnoth.json > wesnoth-manifest.json
+          jq '.modules |= map(if .name == "wesnoth" then ."build-commands"[0]+=" appdata_filepath=org.wesnoth.Wesnoth.appdata.xml" | .sources[0]={type:"dir",path:"."} else . end)' packaging/flatpak/org.wesnoth.Wesnoth.json > wesnoth-manifest.json
           git config --global --add safe.directory "$PWD"
-          branch=ci-$(git describe || git log -n 1 --format=%h) # if git describe fails fall back to the commit hash
-          flatpak-builder --force-clean --default-branch="$branch" --disable-rofiles-fuse --jobs=2 wesnoth-app wesnoth-manifest.json
-          flatpak build-export export wesnoth-app "$branch"
-          flatpak build-bundle export wesnoth.flatpak org.wesnoth.Wesnoth "$branch" --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo
+          branch=ci-$(git log -n 1 --format=%h)
+          version=$(sed -n 's/#define VERSION "\(.*\)"/\1/p' src/wesconfig.h)
+          date=$(TZ=UTC0 git log -1 --date=iso-local --format=%cd)
+          cp packaging/org.wesnoth.Wesnoth.appdata.xml .
+          # add release info so the flatpak shows the version
+          utils/update_appdata "$version" org.wesnoth.Wesnoth.appdata.xml "$date"
+          flatpak-builder --force-clean --disable-rofiles-fuse --jobs=2 wesnoth-app wesnoth-manifest.json
+          flatpak build-export export-repo wesnoth-app "$branch"
+          flatpak build-bundle --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo export-repo wesnoth.flatpak org.wesnoth.Wesnoth "$branch"
 
       - name: Upload flatpak bundle
         uses: actions/upload-artifact@v4

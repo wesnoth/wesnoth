@@ -70,6 +70,7 @@ opts.AddVariables(
     PathVariable('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathVariable.PathAccept),
     BoolVariable('desktop_entry','Clear to disable desktop-entry', True),
     BoolVariable('appdata_file','Clear to not install appdata file', True),
+    PathVariable('appdata_filepath','Path of appdata file to install', "packaging/org.wesnoth.Wesnoth.appdata.xml"),
     BoolVariable('systemd','Install systemd unit file for wesnothd', bool(WhereIs("systemctl"))),
     PathVariable('datarootdir', 'sets the root of data directories to a non-default location', "share", PathVariable.PathAccept),
     PathVariable('datadirname', 'sets the name of data directory', "wesnoth$version_suffix", PathVariable.PathAccept),
@@ -790,7 +791,7 @@ if have_client_prereqs and have_X and env["desktop_entry"]:
      env.InstallData("icondir", "wesnoth", "packaging/icons")
      env.InstallData("desktopdir", "wesnoth", "packaging/org.wesnoth.Wesnoth.desktop")
 if have_client_prereqs and "linux" in sys.platform and env["appdata_file"]:
-     env.InstallData("appdatadir", "wesnoth", "packaging/org.wesnoth.Wesnoth.appdata.xml")
+     env.InstallData("appdatadir", "wesnoth", env["appdata_filepath"])
 
 # Python tools
 env.InstallData("bindir", "pytools", [os.path.join("data", "tools", tool) for tool in pythontools])
