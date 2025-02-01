@@ -272,7 +272,7 @@ private:
 	 */
 	bool check_adj_abilities(const config& cfg, const std::string& special, int dir, const unit& from) const;
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
-	                    const std::string& filter_self ="filter_self") const;
+	                    bool in_abilities_tag = false) const;
 
 /** weapon_specials_impl_self and weapon_specials_impl_adj : check if special name can be added.
 	 * @param[in,out] temp_string the string modified and returned
@@ -364,7 +364,7 @@ private:
 		const config& special,
 		AFFECTS whom,
 		const std::string& tag_name,
-		const std::string& filter_self ="filter_self"
+		bool in_abilities_tag = false
 	);
 
 	// Used via specials_context() to control which specials are
