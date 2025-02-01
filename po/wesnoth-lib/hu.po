@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-10-28 12:38-0500\n"
-"PO-Revision-Date: 2024-11-23 18:26+0100\n"
+"PO-Revision-Date: 2025-01-31 00:06+0100\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
@@ -1868,22 +1868,22 @@ msgstr "Deszkahíd"
 #. [terrain_type]: id=mark_high
 #: data/core/terrain.cfg:3140
 msgid "Marker High"
-msgstr ""
+msgstr "Magasság jelölő"
 
 #. [terrain_type]: id=mark_high2
 #: data/core/terrain.cfg:3150
 msgid "Marker High 2"
-msgstr ""
+msgstr "Magasság jelölő 2"
 
 #. [terrain_type]: id=mark_low
 #: data/core/terrain.cfg:3160
 msgid "Marker Low"
-msgstr ""
+msgstr "Mélység jelölő"
 
 #. [terrain_type]: id=mark_low2
 #: data/core/terrain.cfg:3170
 msgid "Marker Low 2"
-msgstr ""
+msgstr "Mélység jelölő 2"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:3182
@@ -4824,7 +4824,7 @@ msgstr ""
 #. [option]
 #: data/gui/window/mp_create_game.cfg:182
 msgid "No Mirror"
-msgstr ""
+msgstr "Nincs tükrözés"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:183
@@ -4834,7 +4834,7 @@ msgstr "Nincs tükör: Nem lesz két játékos ugyanazzal a szövetséggel"
 #. [option]
 #: data/gui/window/mp_create_game.cfg:187
 msgid "No Ally Mirror"
-msgstr ""
+msgstr "Nincs szövetséges tükrözés"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:188
@@ -5207,7 +5207,7 @@ msgstr "Játékos:"
 #: data/gui/window/mp_match_history.cfg:506
 #: data/gui/window/mp_match_history.cfg:530
 msgid "Asterisks match all characters"
-msgstr ""
+msgstr "A csillagnak bármely karakter megfeleltethető"
 
 # Tartalom?
 #. [label]
@@ -6064,11 +6064,15 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hitpoints inflicted/taken."
 msgstr ""
+"A tényleges eredmény és az elvárt eredmény különbsége százalékban.\n"
+"A zárójelben lévő első szám a bevitt/kapott találatok várható száma.\n"
+"A zárójelben lévő két szám összege (vagy különbsége) a bevitt/kapott "
+"találatok tényleges száma."
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:561
 msgid "stats dialog^Ratio of actual to expected"
-msgstr ""
+msgstr "A tényleges és az elvárt aránya"
 
 #. [column]
 #: data/gui/window/statistics_dialog.cfg:576
@@ -6089,6 +6093,19 @@ msgid ""
 "Green values indicate this side fared better than expected.\n"
 "Red values indicate this side fared worse than expected."
 msgstr ""
+"Annak az <i>elvi</i> valószínűsége, hogy legfeljebb ennyi találatot visz be/"
+"kap, százalékban.\n"
+"\n"
+"Magyarán ez annak a mértéke, hogy a véletlenszerűség hogyan befolyásolta ezt "
+"az oldalt.\n"
+"A 0 és 50 közötti értékek arra utalnak, hogy a találatok száma a vártnál "
+"kevesebb volt.\n"
+"Az 50 és 100 közötti értékek arra utalnak, hogy a találatok száma több volt "
+"a vártnál.\n"
+"\n"
+"A zöld értékek azt jelzik, hogy ez az oldal a vártnál jobban teljesített.\n"
+"A piros értékek azt jelzik, hogy ez az oldal a vártnál rosszabbul "
+"teljesített."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -6601,10 +6618,8 @@ msgid "Text has a font size of 0."
 msgstr "A szöveg betűmérete 0."
 
 #: src/gui/core/widget_definition.cpp:29
-#, fuzzy
-#| msgid "No state or draw section defined."
 msgid "No draw section defined for state."
-msgstr "Az állapot vagy a térképrészlet nincs megadva."
+msgstr "Nincs meghatározva rajzszakasz az állapothoz."
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:133
 #, fuzzy
@@ -6617,7 +6632,7 @@ msgstr "A felbontás nincs megadva ehhez: "
 #: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
 #: src/gui/widgets/toggle_panel.cpp:321
 msgid "No grid defined."
-msgstr "Nincs mezőháló megadva."
+msgstr "Nincs definiálva rács."
 
 #: src/gui/core/window_builder.cpp:221
 #, fuzzy
@@ -6922,6 +6937,7 @@ msgstr ""
 #: src/gui/dialogs/addon/manager.cpp:943
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr ""
+"A jelszó tulajdonság nem lehet jelen, ha fórum hitelesítés van használatban."
 
 #: src/gui/dialogs/addon/manager.cpp:948
 msgid "Invalid icon path. Make sure the path points to a valid image."
@@ -6958,13 +6974,13 @@ msgstr "Törölni akarod ezt a kiegészítőt: '$addon|'?"
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 #: src/gui/dialogs/addon/manager.cpp:1045
 msgid "%B %d %Y, %I:%M %p"
-msgstr ""
+msgstr "%B %d %Y, %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 #: src/gui/dialogs/addon/manager.cpp:1048
 msgid "%B %d %Y, %H:%M"
-msgstr ""
+msgstr "%B %d %Y, %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1109
 msgid "url^None"
@@ -7056,10 +7072,8 @@ msgstr ""
 "Válassz egy másikat."
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:173
-#, fuzzy
-#| msgid "Cores"
 msgid "Core"
-msgstr "Játékmagok"
+msgstr "Játékmag"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:174
 msgid "Campaign"
@@ -7826,6 +7840,8 @@ msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr ""
+"Ezt az egységet nem lehet visszahívni, mert nem lesz elég aranyad a terved "
+"ezen pontján."
 
 #: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
@@ -7980,7 +7996,7 @@ msgstr "Nincs modul megadva."
 
 #: src/gui/widgets/slider.cpp:357
 #, fuzzy
-#| msgid "The number of value_labels and values don't match."
+#| msgid "The number of value_labels and values don’t match."
 msgid "The number of value_labels and values don't match."
 msgstr "Az értékek és az „értékcímkék” száma nem egyezik."
 
@@ -8067,10 +8083,11 @@ msgstr "A következő csoport több definícióval is rendelkezik: „$id”."
 
 #: src/gui/widgets/window.cpp:917
 #, fuzzy
-#| msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
+#| msgid "Click dismiss needs a ‘click_dismiss’ or ‘ok’ button."
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
-"A távozáshoz egy „kattints a távozásra” vagy egy „rendben” gomb szükséges."
+"Az elvetésre kattintáshoz egy „kattints az elvetéshez” vagy egy „OK” gomb "
+"szükséges."
 
 #: src/gui/widgets/window.cpp:942 src/gui/widgets/window.cpp:979
 #: src/tests/gui/test_gui2.cpp:736
@@ -8724,7 +8741,7 @@ msgstr "Kijelölt terület kitöltése"
 
 #: src/hotkey/hotkey_command.cpp:246
 msgid "Randomize Tiles in Selection"
-msgstr "Mezők véletlenszerűen a kijelölt ter."
+msgstr "Mezők összekeverése a kijelölésben"
 
 #: src/hotkey/hotkey_command.cpp:249
 msgid "Apply a Mask"
@@ -8954,14 +8971,14 @@ msgstr "A hiba jelentésekor kérem, mellékelje a következő hibaüzenetet:"
 #: src/wml_exception.cpp:89
 #, fuzzy
 #| msgid ""
-#| "In section '[$section|]' where '$primary_key| = $primary_value' the "
-#| "mandatory key '$key|' isn't set."
+#| "In section ‘[$section|]’ where ‘$primary_key|’ = ‘$primary_value’ the "
+#| "mandatory key ‘$key|’ isn’t set."
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
-"A '[$section|] részben, ahol '$primary_key| = $primary_value', a kötelező "
-"'$key|' kulcs nincs beállítva."
+"A ‘[$section|]’ részben, ahol ‘$primary_key|’ = ‘$primary_value’, a kötelező "
+"‘$key|’ kulcs nincs beállítva."
 
 #: src/wml_exception.cpp:92
 #, fuzzy
@@ -8972,8 +8989,41 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~ msgid "Gravel"
 #~ msgstr "Föveny"
 
-#~ msgid "page^<span font_family='DejaVu Sans'>✔</span> Copied"
-#~ msgstr "oldal^<span font_family='DejaVu Sans'>✔</span> átmásolva"
+#~ msgid "Hide"
+#~ msgstr "Elrejt"
+
+#~ msgid "Hide tip of the day"
+#~ msgstr "Napi tipp elrejtése"
+
+#~ msgid "Visit the in-game help"
+#~ msgstr "Játékon belüli súgó megtekintése"
+
+#~ msgid "About"
+#~ msgstr "Rólunk"
+
+#~ msgid "General information about Battle for Wesnoth"
+#~ msgstr "Általános információk a Harc Wesnothért játékról"
+
+#~ msgid "page^<b><span font_family='DejaVu Sans'>✔</span> Copied</b>"
+#~ msgstr "<b><span font_family='DejaVu Sans'>✔</span> átmásolva</b>"
+
+#~ msgid "Add-on download count by version"
+#~ msgstr "Bővítmények letöltéseinek száma verzió szerint"
+
+#~ msgid "Count of add-ons using forum_auth"
+#~ msgstr "Fórum hitelesítést használó bővítmények száma"
+
+#~ msgid "Delete selected add-on (admin)"
+#~ msgstr "A kijelölt bővítmény törlése (admin)"
+
+#~ msgid "Hide selected add-on (admin)"
+#~ msgstr "A kijelölt bővítmény elrejtése (admin)"
+
+#~ msgid "Unhide add-on by ID (admin)"
+#~ msgstr "Bővítmény felfedése azonosító alapján (admin)"
+
+#~ msgid "List hidden add-ons (admin)"
+#~ msgstr "Rejtett bővítmények listázása (admin)"
 
 #~ msgid "Filter by campaign completion status"
 #~ msgstr "Hadjárat befejezettség szerinti szűrés"
@@ -9057,6 +9107,19 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 
 #~ msgid "Play sound"
 #~ msgstr "Hang lejátszás"
+
+#~ msgid "Preview color changes on map"
+#~ msgstr "Színváltozások előnézete a térképen"
+
+#~ msgid ""
+#~ "Comma delimited list of forum usernames of other people who are allowed "
+#~ "to upload updates for this add-on or delete this add-on."
+#~ msgstr ""
+#~ "Vesszővel tagolt lista más személyek fórum felhasználóneveiről, akik "
+#~ "frissíthetik vagy törölhetik ezt a kiegészítőt."
+
+#~ msgid "Primary Authors:"
+#~ msgstr "Fő szerzők:"
 
 #~ msgid "Load Unit Type"
 #~ msgstr "Egységtípus betöltése"
@@ -9152,6 +9215,9 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~ msgid "WML View"
 #~ msgstr "WML nézet"
 
+#~ msgid "Open External"
+#~ msgstr "Külső megnyitás"
+
 #~ msgid "Open selected using platform’s default applications"
 #~ msgstr "A kijelöltek megnyitása a platform alapértelmezett alkalmazásaival"
 
@@ -9207,6 +9273,9 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~ msgid "License"
 #~ msgstr "Licensz"
 
+#~ msgid "Show Topics"
+#~ msgstr "Témakörök megjelenítése"
+
 #~ msgid "Faction:"
 #~ msgstr "Szövetség:"
 
@@ -9237,17 +9306,55 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~ msgid "Apply"
 #~ msgstr "Alkalmaz"
 
-#~ msgid "About"
-#~ msgstr "Rólunk"
+#~ msgid "Show tip of the day"
+#~ msgstr "Napi tipp megjelenítése"
 
-#~ msgid "General information about Battle for Wesnoth"
-#~ msgstr "Általános információk a Harc Wesnothért játékról"
+#~ msgid "Show gameplay tips on the main menu"
+#~ msgstr "Játéktippek megjelenítése a főmenüben"
+
+#~ msgid "page^<span font_family='DejaVu Sans'>✔</span> Copied"
+#~ msgstr "oldal^<span font_family='DejaVu Sans'>✔</span> átmásolva"
+
+#~ msgid "Password not provided"
+#~ msgstr "Jelszó nem meghatározott"
 
 #~ msgid "addons_of_type^Themes"
 #~ msgstr "Témák"
 
+#~ msgid "game^Get Add-ons"
+#~ msgstr "Kiegészítők beszerzése"
+
+#~ msgid "More campaigns..."
+#~ msgstr "Még több hadjárat..."
+
+#~ msgid ""
+#~ "In addition to the mainline campaigns, Wesnoth also has an ever-growing "
+#~ "list of add-on content created by other players available via the Add-ons "
+#~ "server, included but not limited to more single and multiplayer "
+#~ "campaigns, multiplayer maps, additional media and various other content! "
+#~ "Be sure to give it a try!"
+#~ msgstr ""
+#~ "A fő kampányok mellett a játéknak egyre bővülő listája van a más "
+#~ "játékosok által készített kiegészítő tartalmakról is, amelyek elérhetők "
+#~ "az Add-ons szerveren keresztül, beleértve, de nem kizárólagosan több egy- "
+#~ "és többjátékos kampányt, többjátékos térképeket, kiegészítő eszközöket és "
+#~ "különféle egyéb tartalmakat! Mindenképpen próbáld ki!"
+
+#~ msgid "Choose File"
+#~ msgstr "Válassz fájlt"
+
+#~ msgid ""
+#~ "This file is outside Wesnoth’s data dirs. Do you wish to copy it into "
+#~ "your add-on?"
+#~ msgstr ""
+#~ "Ez a fájl kívül esik a Wesnoth adatkönyvtárain. Be akarod másolni a "
+#~ "bővítményedbe?"
+
 #~ msgid "Theme"
 #~ msgstr "Téma"
+
+#~ msgid "The icon’s file size is too large"
+#~ msgstr "Az ikonfájl mérete túl nagy"
 
 #~ msgid "scout"
 #~ msgstr "felderítő"
@@ -9263,16 +9370,6 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 
 #~ msgid "healer"
 #~ msgstr "gyógyító"
-
-#~ msgid "Choose File"
-#~ msgstr "Válassz fájlt"
-
-#~ msgid ""
-#~ "This file is outside Wesnoth’s data dirs. Do you wish to copy it into "
-#~ "your add-on?"
-#~ msgstr ""
-#~ "Ez a fájl kívül esik a Wesnoth adatkönyvtárain. Be akarod másolni a "
-#~ "bővítményedbe?"
 
 #~ msgid "Unsaved changes will be lost. Do you want to leave?"
 #~ msgstr "A nem mentett változtatások elvesznek. Vissza akarsz lépni?"
@@ -9317,6 +9414,9 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~ msgid "Invalid Color"
 #~ msgstr "Érvénytelen szín"
 
+#~ msgid "NEW"
+#~ msgstr "ÚJ"
+
 #~ msgid ""
 #~ "Opening links is not supported, contact your packager. Link URL has been "
 #~ "copied to the clipboard."
@@ -9327,10 +9427,8 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~ msgid "corrupted original file"
 #~ msgstr "hibás eredeti fájl"
 
-#, fuzzy
-#~| msgid "No nodes defined for a tree view."
 #~ msgid "No grid defined for tab container control"
-#~ msgstr "Nincsenek csomópontok megadva a fanézethez."
+#~ msgstr "Nincs rács definiálva a laptároló vezérlőhöz"
 
 #~ msgid "Load Turn..."
 #~ msgstr "Kör betöltése..."
@@ -9750,11 +9848,6 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~ msgstr "Ismeretlen"
 
 #, fuzzy
-#~| msgid "Add-ons"
-#~ msgid "Get Add-ons"
-#~ msgstr "Kiegészítők"
-
-#, fuzzy
 #~| msgid "Connect to Server"
 #~ msgid "Send new version to server"
 #~ msgstr "Csatlakozás a kiszolgálóhoz"
@@ -9821,11 +9914,6 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~| msgid "Close Map"
 #~ msgid "User Maps"
 #~ msgstr "Térkép bezárása"
-
-#, fuzzy
-#~| msgid "Campaign"
-#~ msgid "SP Campaigns"
-#~ msgstr "Hadjárat"
 
 #, fuzzy
 #~| msgid "No description available."
