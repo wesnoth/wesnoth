@@ -8,4 +8,4 @@ RUN apt install -y -qq flatpak-builder
 RUN apt install -y -qq jq python3-requests
 RUN flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
 # install runtime
-RUN flatpak install -y flathub org.freedesktop.Platform/x86_64/22.08 org.freedesktop.Sdk/x86_64/22.08 org.freedesktop.Platform/x86_64/23.08 org.freedesktop.Sdk/x86_64/23.08
+RUN flatpak install -y flathub org.freedesktop.Platform/x86_64/23.08 org.freedesktop.Sdk/x86_64/23.08 org.freedesktop.Platform/x86_64/24.08 org.freedesktop.Sdk/x86_64/24.08
