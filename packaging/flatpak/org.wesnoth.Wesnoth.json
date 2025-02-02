@@ -30,21 +30,6 @@
    },
    "modules":[
       {
-         "name":"boost",
-         "buildsystem":"simple",
-         "sources":[
-            {
-               "type":"archive",
-               "url":"https://archives.boost.io/release/1.87.0/source/boost_1_87_0.tar.bz2",
-               "sha256":"af57be25cb4c4f4b413ed692fe378affb4352ea50fbe294a11ef548f4d527d89"
-            }
-         ],
-         "build-commands":[
-            "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread,coroutine,context,graph,charconv",
-            "./b2 -j$FLATPAK_BUILDER_N_JOBS install cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 link=static variant=release address-model=64 --layout=system"
-         ]
-      },
-      {
          "name":"scons",
          "buildsystem":"simple",
          "cleanup":[
@@ -58,7 +43,22 @@
             }
          ],
          "build-commands":[
-            "python -m pip install scons"
+            "pip3 install --prefix=/app ."
+         ]
+      },
+      {
+         "name":"boost",
+         "buildsystem":"simple",
+         "sources":[
+            {
+               "type":"archive",
+               "url":"https://archives.boost.io/release/1.87.0/source/boost_1_87_0.tar.bz2",
+               "sha256":"af57be25cb4c4f4b413ed692fe378affb4352ea50fbe294a11ef548f4d527d89"
+            }
+         ],
+         "build-commands":[
+            "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread,coroutine,context,graph,charconv",
+            "./b2 -j$FLATPAK_BUILDER_N_JOBS install cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 link=static variant=release address-model=64 --layout=system"
          ]
       },
       {
