@@ -55,7 +55,7 @@
                 }
             ],
             "build-commands": [
-                "python3 setup.py install --prefix=/app"
+                "python -m pip install scons"
             ]
         },
         {
