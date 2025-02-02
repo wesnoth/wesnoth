@@ -43,7 +43,7 @@
             }
          ],
          "build-commands":[
-            "pip3 install --prefix=/app ."
+            "python3 setup.py install --prefix=/app"
          ]
       },
       {
