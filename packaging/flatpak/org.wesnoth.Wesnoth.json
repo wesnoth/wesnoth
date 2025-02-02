@@ -30,20 +30,17 @@
    },
    "modules":[
       {
-         "name":"scons",
+         "name":"python3-scons",
          "buildsystem":"simple",
-         "cleanup":[
-            "*"
+         "build-commands":[
+            "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"scons\" --no-build-isolation"
          ],
          "sources":[
             {
-               "type":"archive",
-               "url":"https://sourceforge.net/projects/scons/files/scons/4.8.1/SCons-4.8.1.tar.gz",
-               "sha256":"cad573b329b6a5bc7e654b01f0231064acc979026af68a9e467ddb32bf2ee501"
+               "type":"file",
+               "url":"https://files.pythonhosted.org/packages/b8/a7/823091100c88d7d992c8c608d82a88ed59e227d13f8ccb33ea7a96d43d51/SCons-4.8.1-py3-none-any.whl",
+               "sha256":"a4c3b434330e2d7d975002fd6783284ba348bf394db94c8f83fdc5bf69cdb8d7"
             }
-         ],
-         "build-commands":[
-            "python3 setup.py install --prefix=/app"
          ]
       },
       {
