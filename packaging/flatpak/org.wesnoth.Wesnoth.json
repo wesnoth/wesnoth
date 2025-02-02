@@ -39,7 +39,7 @@
                 }
             ],
             "build-commands": [
-                "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread,coroutine,context,graph",
+                "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread,coroutine,context,graph,charconv",
                 "./b2 -j$FLATPAK_BUILDER_N_JOBS install cxxflags='-fPIE -fstack-protector-strong' define=_FORTIFY_SOURCE=2 link=static variant=release address-model=64 --layout=system"
             ]
         },
@@ -50,7 +50,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://sourceforge.net/projects/scons/files/scons/4.5.2/SCons-4.5.2.tar.gz/download",
+                    "url": "https://sourceforge.net/projects/scons/files/scons/4.5.2/SCons-4.5.2.tar.gz",
                     "sha256": "ce26aac95d350a79a4192196b0beac3cb24f4ccabce0123eb28d3370f576f072"
                 }
             ],
