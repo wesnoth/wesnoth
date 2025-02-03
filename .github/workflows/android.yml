@@ -16,11 +16,7 @@ jobs:
       ANDROID_SDK_PACKAGES: 'tools platform-tools build-tools;34.0.0'
 
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Fetch submodules
-        run: git submodule update --init --recursive; ls -lh;
+      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
 
       - name: Install auxiliary build tools
         run: sudo apt-get install -y meson gperf scons
