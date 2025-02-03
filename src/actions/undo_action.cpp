@@ -21,6 +21,7 @@
 #include "variable.hpp" // vconfig
 #include "game_data.hpp"
 #include "units/unit.hpp"
+#include "utils/general.hpp"
 #include "utils/ranges.hpp"
 #include "sound.hpp"
 
@@ -65,8 +66,12 @@ void undo_action_container::add(t_step_ptr&& action)
 void undo_action_container::read(const config& cfg)
 {
 	for(const config& step : cfg.child_range("step")) {
-		auto& factory = get_factories()[step["type"]];
-		add(factory(step));
+		auto* factory = utils::find(get_factories(), step["type"].str());
+		if(factory) {
+			add((*factory)(step));
+		} else {
+			throw config::error("Invalid undo action type: '" + step["type"].str() + "'");
+		}
 	}
 }
 void undo_action_container::write(config& cfg)
