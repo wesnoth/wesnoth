@@ -215,6 +215,8 @@ struct take_village_step : undo_action
 	}
 };
 
+static auto reg_undo_take_village_step = undo_action_container::subaction_factory<take_village_step>();
+
 }
 game_events::pump_result_t get_village(const map_location& loc, int side, bool *action_timebonus, bool fire_event)
 {
