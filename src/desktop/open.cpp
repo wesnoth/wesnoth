@@ -36,7 +36,7 @@
 #include <shellapi.h> // ShellExecute()
 
 #elif defined(__ANDROID__)
-#include <SDL2/SDL.h> // For SDL_AndroidGetJNIEnv()
+#include <SDL2/SDL.h> // For SDL Android functions
 #include <jni.h>
 
 #endif
