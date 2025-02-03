@@ -4,12 +4,6 @@ RUN apt update
 
 RUN apt install -y -qq apt-utils
 
-# boost
-RUN apt install -y -qq libboost-filesystem1.83-dev libboost-filesystem1.83.0 libboost-iostreams1.83-dev libboost-iostreams1.83.0 libboost-locale1.83-dev libboost-locale1.83.0 libboost-regex1.83-dev libboost-regex1.83.0 libboost-serialization1.83-dev libboost-serialization1.83.0 libasio-dev libboost-program-options1.83-dev libboost-program-options1.83.0 libboost-random1.83-dev libboost-random1.83.0 libboost-system1.83-dev libboost-system1.83.0 libboost-thread1.83-dev libboost-thread1.83.0 libboost-test-dev libboost-context1.83.0 libboost-context1.83-dev libboost-coroutine1.83.0 libboost-coroutine1.83-dev libboost-graph1.83-dev
-
-# SDL
-RUN apt install -y -qq libsdl2-2.0-0 libsdl2-dev libsdl2-image-2.0-0 libsdl2-image-dev libsdl2-mixer-2.0-0 libsdl2-mixer-dev
-
 # make tzdata not prompt for a timezone
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -17,14 +11,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt install -y -qq asciidoc dos2unix xsltproc po4a docbook-xsl language-pack-en
 RUN locale-gen en_US.UTF-8
 
-# misc
-RUN apt install -y -qq libpng16-16 libpng-dev libreadline6-dev libvorbis-dev libcairo2 libcairo2-dev libpango-1.0-0 libpango1.0-dev libbz2-1.0 libbz2-dev zlib1g zlib1g-dev libpangocairo-1.0-0 libssl-dev libmysqlclient-dev expect-dev moreutils ca-certificates libcurl4-openssl-dev liblua5.4-dev
-
 # programs
 RUN apt install -y -qq openssl gdb xvfb bzip2 git scons cmake make ccache gcc g++ clang clang-tidy lld doxygen graphviz lua-check curl meson gperf
 
 # android stuff
-WORKDIR /home/wesnoth-android
+WORKDIR /home/wesnoth-android/.android/sdk
 
 RUN apt install -y -qq meson gperf openjdk-17-jdk-headless wget
 RUN wget -nc "https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip" -P .
@@ -33,6 +24,8 @@ RUN mkdir cmdline-tools/latest
 RUN mv ./cmdline-tools/bin cmdline-tools/latest/bin
 RUN mv ./cmdline-tools/lib cmdline-tools/latest/lib
 
-RUN yes | ./cmdline-tools/latest/bin/sdkmanager "tools" "platform-tools" "build-tools;34.0.0" "ndk;27.2.12479018"
+RUN yes | ./cmdline-tools/latest/bin/sdkmanager "tools" "platform-tools" "platforms;android-34" "build-tools;34.0.0" "ndk;27.2.12479018"
 
-WORKDIR /home/wesnoth-travis
+ENV ANDROID_HOME=/home/wesnoth-android/.android/sdk
+ENV ANDROID_SDK_ROOT=/home/wesnoth-android/.android/sdk
+ENV ANDROID_NDK_ROOT=/home/wesnoth-android/.android/sdk/ndk/27.2.12479018
