@@ -84,6 +84,9 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 
+// This file acts as launcher for many gui2 dialogs
+using namespace gui2::dialogs;
+
 namespace events
 {
 menu_handler::menu_handler(game_display* gui, play_controller& pc)
@@ -132,7 +135,7 @@ void menu_handler::objectives()
 
 void menu_handler::show_statistics(int side_num)
 {
-	gui2::dialogs::statistics_dialog::display(pc_.statistics(), board().get_team(side_num));
+	statistics_dialog::display(pc_.statistics(), board().get_team(side_num));
 }
 
 void menu_handler::unit_list()
@@ -147,7 +150,7 @@ void menu_handler::unit_list()
 		unit_list.push_back(i.get_shared_ptr());
 	}
 
-	const auto& unit_dlg = gui2::dialogs::units_dialog::build_unit_list_dialog(unit_list);
+	const auto& unit_dlg = units_dialog::build_unit_list_dialog(unit_list);
 
 	if (unit_dlg->show() && unit_dlg->is_selected()) {
 		const map_location& loc = unit_list[unit_dlg->get_selected_index()]->get_location();
@@ -160,7 +163,7 @@ void menu_handler::status_table()
 {
 	int selected_side;
 
-	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team(), selected_side)) {
+	if(game_stats::execute(board(), gui_->viewing_team(), selected_side)) {
 		gui_->scroll_to_leader(selected_side);
 	}
 }
@@ -169,7 +172,7 @@ void menu_handler::save_map()
 {
 	const std::string input_name = filesystem::get_legacy_editor_dir() + "/maps/";
 
-	gui2::dialogs::file_dialog dlg;
+	file_dialog dlg;
 
 	dlg.set_title(_("Save Map As"))
 	   .set_save_mode(true)
@@ -193,7 +196,7 @@ void menu_handler::save_map()
 
 void menu_handler::preferences()
 {
-	gui2::dialogs::preferences_dialog::display();
+	preferences_dialog::display();
 	// Needed after changing fullscreen/windowed mode or display resolution
 	gui_->queue_rerender();
 }
@@ -202,7 +205,7 @@ void menu_handler::show_chat_log()
 {
 	config c;
 	c["name"] = "prototype of chat log";
-	gui2::dialogs::chat_log::display(vconfig(c), *resources::recorder);
+	chat_log::display(vconfig(c), *resources::recorder);
 }
 
 void menu_handler::show_help()
@@ -290,7 +293,7 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 		return;
 	}
 
-	const auto& dlg = gui2::dialogs::units_dialog::build_recruit_dialog(
+	const auto& dlg = units_dialog::build_recruit_dialog(
 		recruit_list, board().get_team(side_num));
 
 	if(dlg->show() && dlg->is_selected()) {
@@ -422,7 +425,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		return;
 	}
 
-	const auto& dlg = gui2::dialogs::units_dialog::build_recall_dialog(recall_list_team, current_team);
+	const auto& dlg = units_dialog::build_recall_dialog(recall_list_team, current_team);
 
 	if(!dlg->show() || !dlg->is_selected()) {
 		return;
@@ -594,7 +597,7 @@ bool menu_handler::end_turn(int side_num)
 			&& units_alive(side_num, pc_.get_units())) {
 		const int res = gui2::show_message("",
 				_("You have not started your turn yet. Do you really want to end your turn?"),
-				gui2::dialogs::message::yes_no_buttons);
+				message::yes_no_buttons);
 		if(res == gui2::retval::CANCEL) {
 			return false;
 		}
@@ -603,7 +606,7 @@ bool menu_handler::end_turn(int side_num)
 	else if(prefs::get().yellow_confirm() && partmoved_units(side_num, pc_.get_units(), board(), pc_.get_whiteboard())) {
 		const int res = gui2::show_message("",
 				_("Some units have movement left. Do you really want to end your turn?"),
-				gui2::dialogs::message::yes_no_buttons);
+				message::yes_no_buttons);
 		if(res == gui2::retval::CANCEL) {
 			return false;
 		}
@@ -612,7 +615,7 @@ bool menu_handler::end_turn(int side_num)
 	else if(prefs::get().green_confirm() && unmoved_units(side_num, pc_.get_units(), board(), pc_.get_whiteboard())) {
 		const int res = gui2::show_message("",
 				_("Some units have not moved. Do you really want to end your turn?"),
-				gui2::dialogs::message::yes_no_buttons);
+				message::yes_no_buttons);
 		if(res == gui2::retval::CANCEL) {
 			return false;
 		}
@@ -670,7 +673,7 @@ void menu_handler::rename_unit()
 	const std::string title(_("Rename Unit"));
 	const std::string label(_("Name:"));
 
-	if(gui2::dialogs::edit_text::execute(title, label, name)) {
+	if(edit_text::execute(title, label, name)) {
 		resources::recorder->add_rename(name, un->get_location());
 		un->rename(name);
 		gui_->invalidate_unit();
@@ -706,7 +709,7 @@ typedef std::tuple<const unit_type*, unit_race::GENDER, std::string> type_gender
 type_gender_variation choose_unit()
 {
 	const auto& types_list = unit_types.types_list();
-	const auto& create_dlg = gui2::dialogs::units_dialog::build_create_dialog(types_list);
+	const auto& create_dlg = units_dialog::build_create_dialog(types_list);
 
 	if (!create_dlg->show() || !create_dlg->is_selected()) {
 		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id.";
@@ -809,7 +812,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 	const terrain_label* old_label = gui_->labels().get_label(loc);
 	std::string label = old_label ? old_label->text() : "";
 
-	if(gui2::dialogs::edit_label::execute(label, team_only)) {
+	if(edit_label::execute(label, team_only)) {
 		std::string team_name;
 		color_t color = font::LABEL_COLOR;
 
@@ -831,7 +834,7 @@ void menu_handler::clear_labels()
 		const int res = gui2::show_message(
 			_("Clear Labels"),
 			_("Are you sure you want to clear map labels?"),
-			gui2::dialogs::message::yes_no_buttons
+			message::yes_no_buttons
 		);
 
 		if(res == gui2::retval::OK) {
@@ -844,7 +847,7 @@ void menu_handler::clear_labels()
 
 void menu_handler::label_settings()
 {
-	if(gui2::dialogs::label_settings::execute(board())) {
+	if(label_settings::execute(board())) {
 		gui_->labels().recalculate_labels();
 	}
 }
@@ -1421,7 +1424,7 @@ void menu_handler::do_search(const std::string& new_search)
 		const std::string msg = VGETTEXT("Could not find label or unit "
 										 "containing the string ‘$search’.",
 				symbols);
-		(void) gui2::show_message("", msg, gui2::dialogs::message::auto_close);
+		(void) gui2::show_message("", msg, message::auto_close);
 	}
 }
 
@@ -1743,7 +1746,7 @@ void console_handler::do_layers()
 	// -- vultraz, 2017-09-21
 	//
 	if(menu_handler_.pc_.get_map().on_board_with_border(loc)) {
-		gui2::dialogs::terrain_layers::display(disp, loc);
+		terrain_layers::display(disp, loc);
 	}
 }
 
@@ -1821,7 +1824,7 @@ void console_handler::do_choose_level()
 	std::sort(options.begin(), options.end());
 	int choice = std::distance(options.begin(), std::lower_bound(options.begin(), options.end(), next));
 	{
-		gui2::dialogs::simple_item_selector dlg(_("Choose Scenario (Debug!)"), "", options);
+		simple_item_selector dlg(_("Choose Scenario (Debug!)"), "", options);
 		dlg.set_selected_index(choice);
 		dlg.show();
 		choice = dlg.selected_index();
@@ -1890,7 +1893,7 @@ void console_handler::do_unsafe_lua()
 	const int retval = gui2::show_message(_("WARNING! Unsafe Lua Mode"),
 		_("Executing Lua code in in this manner opens your computer to potential security breaches from any "
 		"malicious add-ons or other programs you may have installed.\n\n"
-		"Do not continue unless you really know what you are doing."), gui2::dialogs::message::ok_cancel_buttons);
+		"Do not continue unless you really know what you are doing."), message::ok_cancel_buttons);
 
 	if(retval == gui2::retval::OK) {
 		print(get_cmd(), _("Unsafe mode enabled!"));
@@ -1954,13 +1957,13 @@ void console_handler::do_show_var()
 void console_handler::do_inspect()
 {
 	vconfig cfg = vconfig::empty_vconfig();
-	gui2::dialogs::gamestate_inspector::display(
+	gamestate_inspector::display(
 		menu_handler_.gamedata().get_variables(), *resources::game_events, menu_handler_.board());
 }
 
 void console_handler::do_control_dialog()
 {
-	gui2::dialogs::mp_change_control::display(menu_handler_);
+	mp_change_control::display(menu_handler_);
 }
 
 void console_handler::do_unit()
@@ -2019,7 +2022,7 @@ void console_handler::do_discover()
 void console_handler::do_undiscover()
 {
 	const int res = gui2::show_message("Undiscover",
-			_("Do you wish to clear all of your discovered units from help?"), gui2::dialogs::message::yes_no_buttons);
+			_("Do you wish to clear all of your discovered units from help?"), message::yes_no_buttons);
 	if(res != gui2::retval::CANCEL) {
 		prefs::get().encountered_units().clear();
 	}
