@@ -934,7 +934,7 @@ function wesnoth.wml_actions.zoom(cfg)
 	wesnoth.interface.zoom(cfg.factor, cfg.relative)
 end
 
-function wesnoth.wml_actions.get_zoom(cfg)
+function wesnoth.wml_actions.store_zoom(cfg)
 	wml.variables[cfg.variable or "zoom"] = wesnoth.interface.zoom(1, true)
 end
 
