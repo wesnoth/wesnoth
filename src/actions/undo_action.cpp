@@ -68,7 +68,7 @@ void undo_action_container::read(const config& cfg)
 	for(const config& step : cfg.child_range("step")) {
 		auto* factory = utils::find(get_factories(), step["type"].str());
 		if(factory) {
-			add((*factory)(step));
+			add(factory->second(step));
 		} else {
 			throw config::error("Invalid undo action type: '" + step["type"].str() + "'");
 		}
