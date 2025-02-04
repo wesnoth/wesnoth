@@ -18,11 +18,16 @@
  * Support functions for dealing with units.
  */
 
+#include "actions/create.hpp"
+#include "formula/string_utils.hpp"
+#include "resources.hpp"
 #include "units/unit.hpp"
 #include "units/helper.hpp"
 #include "units/types.hpp"
 #include "play_controller.hpp"
 #include "serialization/markup.hpp"
+#include "utils/general.hpp"
+#include "whiteboard/manager.hpp"
 
 namespace unit_helper {
 
@@ -93,6 +98,18 @@ std::string maybe_inactive(const std::string& str, bool active)
 	return (active ? str : markup::span_color(font::INACTIVE_COLOR, str));
 }
 
+std::string format_cost_string(int unit_recall_cost, bool active)
+{
+	std::stringstream str;
+	if (active) {
+		str << markup::img("themes/gold.png") << unit_recall_cost;
+	} else {
+		str << markup::img("themes/gold.png~GS()")
+			<< maybe_inactive(std::to_string(unit_recall_cost), false);
+	}
+	return str.str();
+}
+
 std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
 {
 	std::stringstream str;
@@ -102,19 +119,14 @@ std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
 	}
 
 	if(unit_recall_cost > team_recall_cost) {
-		str << markup::img("themes/gold.png") << markup::span_color(font::BAD_COLOR, unit_recall_cost);
+		format_cost_string(unit_recall_cost, false);
 	} else if(unit_recall_cost == team_recall_cost) {
-		str << markup::img("themes/gold.png") << unit_recall_cost;
+		format_cost_string(unit_recall_cost, true);
 	} else if(unit_recall_cost < team_recall_cost) {
-		str << markup::img("themes/gold.png~GS()") << markup::span_color(font::GREEN_COLOR, unit_recall_cost);
+		str << markup::img("themes/gold.png") << markup::span_color(font::GREEN_COLOR, unit_recall_cost);
 	}
 
 	return str.str();
-}
-
-std::string format_cost_string(int unit_cost)
-{
-	return formatter() << markup::img("themes/gold.png") << unit_cost;
 }
 
 std::string format_level_string(const int level, bool recallable)
@@ -145,6 +157,59 @@ std::string format_movement_string(const int moves_left, const int moves_max)
 	} else {
 		return markup::span_color(font::GREEN_COLOR, moves_left, "/", moves_max);
 	}
+}
+
+// TODO: Return multiple strings here, in case more than one error applies? For
+// example, if you start AOI S5 with 0GP and recruit a Mage, two reasons apply,
+// leader not on keep (extrarecruit=Mage) and not enough gold.
+utils::optional<std::string> recruit_message(
+	const std::string& type_id,
+	const map_location& target_hex,
+	const map_location& recruited_from,
+	const team& current_team)
+{
+	const unit_type* u_type = unit_types.find(type_id);
+	if(u_type == nullptr) {
+		return _("Internal error. Please report this as a bug! Details:\n")
+			+ "unit_helper::recruit_message: u_type == nullptr for " + type_id;
+	}
+
+	// search for the unit to be recruited in recruits
+	if(!utils::contains(actions::get_recruits(current_team.side(), target_hex), type_id)) {
+		return VGETTEXT("You cannot recruit a $unit_type_name at this time.",
+				utils::string_map{{ "unit_type_name", u_type->type_name() }});
+	}
+
+	// TODO take a wb::future_map RAII as unit_recruit::pre_show does
+	int wb_gold = 0;
+	{
+		wb::future_map future;
+		wb_gold = (resources::controller->get_whiteboard()
+			? resources::controller->get_whiteboard()->get_spent_gold_for(current_team.side())
+			: 0);
+	}
+	if(u_type->cost() > current_team.gold() - wb_gold)
+	{
+		if(wb_gold > 0)
+			// TRANSLATORS: "plan" refers to Planning Mode
+			return _("At this point in your plan, you will not have enough gold to recruit this unit.");
+		else
+			return _("You do not have enough gold to recruit this unit.");
+	}
+
+	current_team.last_recruit();
+	const events::command_disabler disable_commands;
+
+	{
+		wb::future_map_if_active future; /* start planned unit map scope if in planning mode */
+		std::string msg = actions::find_recruit_location(
+			current_team.side(), const_cast<map_location&>(target_hex), const_cast<map_location&>(recruited_from), type_id);
+		if(!msg.empty()) {
+			return msg;
+		}
+	} // end planned unit map scope
+
+	return {};
 }
 
 }

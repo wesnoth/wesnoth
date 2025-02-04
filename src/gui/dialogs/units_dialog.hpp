@@ -20,6 +20,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
+#include "map/location.hpp"
 #include "team.hpp"
 #include "units/ptr.hpp"
 #include "units/types.hpp"
@@ -184,7 +185,10 @@ public:
 	// } -------------------- BUILDERS -------------------- {
 
 	static std::unique_ptr<units_dialog> build_create_dialog(const std::vector<const unit_type*>& types_list);
-	static std::unique_ptr<units_dialog> build_recruit_dialog(const std::vector<const unit_type*>& recruit_list, const team& team);
+	static std::unique_ptr<units_dialog> build_recruit_dialog(
+		const std::vector<const unit_type*>& recruit_list,
+		const team& team,
+		const map_location& recruit_hex = map_location::null_location());
 	static std::unique_ptr<units_dialog> build_recall_dialog(std::vector<unit_const_ptr>& recall_list, const team& team);
 	static std::unique_ptr<units_dialog> build_unit_list_dialog(std::vector<unit_const_ptr>& units_list);
 

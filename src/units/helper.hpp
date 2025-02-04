@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include "team.hpp"
 #include "units/map.hpp"
 #include "units/types.hpp"
 
@@ -71,8 +72,10 @@ std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
 /**
  * @return Help markup string with gold icon followed by unit_cost.
  * Eg. `<img src='themes/gold.png'/>40`
+ * If active, do nothing. If inactive, surround with pango tag that
+ * changes font color to grey and grayscales the gold icon.
  */
-std::string format_cost_string(int unit_cost);
+std::string format_cost_string(int unit_cost, bool active = true);
 
 /**
  * @return A pango formatted string representation of level.
@@ -95,4 +98,12 @@ std::string format_level_string(const int level, bool recallable);
  * moves_left is greater than moves_max: "moves_left/moves_max" colored in yellow
  */
 std::string format_movement_string(const int moves_left, const int moves_max);
+
+/** @return If the recruit is possible, an empty optional and set @a recruited_from;
+	otherwise, return an error message string describing the reason. */
+utils::optional<std::string> recruit_message(
+	const std::string& type_id,
+	const map_location& target_hex,
+	const map_location& recruited_from,
+	const team& current_team);
 }
