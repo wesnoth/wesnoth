@@ -273,12 +273,13 @@ void units_dialog::dismiss_unit(std::vector<unit_const_ptr>& unit_list, const te
 
 	unit_list.erase(unit_list.begin() + selected_index_);
 
+	// Remove the entry from the filter list
+	filter_options_.erase(filter_options_.begin() + selected_index_);
+
 	// Remove the entry from the dialog list
 	list.remove_row(selected_index_);
 	list_item_clicked();
 
-	// Remove the entry from the filter list
-	filter_options_.erase(filter_options_.begin() + selected_index_);
 	assert(filter_options_.size() == list.get_item_count());
 
 	LOG_DP << "Dismissing a unit, side = " << u.side() << ", id = '" << u.id() << "'";
