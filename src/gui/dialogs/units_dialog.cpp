@@ -276,6 +276,8 @@ void units_dialog::dismiss_unit(std::vector<unit_const_ptr>& unit_list, const te
 
 	// Remove the entry from the dialog list
 	list.remove_row(selected_index_);
+
+	// This line can change selected_index_, so the erasing needs to be done before it
 	list_item_clicked();
 
 	assert(filter_options_.size() == list.get_item_count());
