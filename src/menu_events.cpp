@@ -52,7 +52,6 @@
 #include "gui/dialogs/terrain_layers.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/units_dialog.hpp"
-#include "gui/dialogs/unit_attack.hpp"
 #include "gui/widgets/retval.hpp"
 #include "help/help.hpp"
 #include "log.hpp"
@@ -196,7 +195,8 @@ void menu_handler::save_map()
 
 void menu_handler::preferences()
 {
-	preferences_dialog::display();
+	// Causes MSVC ambiguity
+	gui2::dialogs::preferences_dialog::display();
 	// Needed after changing fullscreen/windowed mode or display resolution
 	gui_->queue_rerender();
 }
@@ -267,13 +267,7 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 			continue;
 		}
 
-		map_location ignored;
-		std::string err_msg = can_recruit(type->id(), side_num, last_hex, ignored);
-		if (err_msg.empty()) {
-			recruit_list.push_back(type);
-		} else {
-			gui2::show_error_message(err_msg);
-		}
+		recruit_list.push_back(type);
 	}
 
 	if(!unknown_units.empty()) {
@@ -310,73 +304,23 @@ void menu_handler::repeat_recruit(int side_num, const map_location& last_hex)
 	}
 }
 
-// TODO: Return multiple strings here, in case more than one error applies? For
-// example, if you start AOI S5 with 0GP and recruit a Mage, two reasons apply,
-// leader not on keep (extrarecruit=Mage) and not enough gold.
-t_string menu_handler::can_recruit(const std::string& name, int side_num, const map_location& loc, const map_location& recruited_from)
-{
-	team& current_team = board().get_team(side_num);
-
-	const unit_type* u_type = unit_types.find(name);
-	if(u_type == nullptr) {
-		return _("Internal error. Please report this as a bug! Details:\n")
-			+ "menu_handler::can_recruit: u_type == nullptr for " + name;
-	}
-
-	// search for the unit to be recruited in recruits
-	if(!utils::contains(actions::get_recruits(side_num, loc), name)) {
-		return VGETTEXT("You cannot recruit a $unit_type_name at this time.",
-				utils::string_map{{ "unit_type_name", u_type->type_name() }});
-	}
-
-	// TODO take a wb::future_map RAII as unit_recruit::pre_show does
-	int wb_gold = 0;
-	{
-		wb::future_map future;
-		wb_gold = (pc_.get_whiteboard() ? pc_.get_whiteboard()->get_spent_gold_for(side_num) : 0);
-	}
-	if(u_type->cost() > current_team.gold() - wb_gold)
-	{
-		if(wb_gold > 0)
-			// TRANSLATORS: "plan" refers to Planning Mode
-			return _("At this point in your plan, you will not have enough gold to recruit this unit.");
-		else
-			return _("You do not have enough gold to recruit this unit.");
-	}
-
-	current_team.last_recruit(name);
-	const events::command_disabler disable_commands;
-
-	{
-		wb::future_map_if_active future; /* start planned unit map scope if in planning mode */
-		std::string msg = actions::find_recruit_location(
-			side_num, const_cast<map_location&>(loc), const_cast<map_location&>(recruited_from), name);
-		if(!msg.empty()) {
-			return msg;
-		}
-	} // end planned unit map scope
-
-	return "";
-}
-
 bool menu_handler::do_recruit(const std::string& name, int side_num, const map_location& loc)
 {
 	map_location recruited_from = map_location::null_location();
-	const std::string res = can_recruit(name, side_num, loc, recruited_from);
 	team& current_team = board().get_team(side_num);
+	const auto& res = unit_helper::recruit_message(name, loc, recruited_from, current_team);
 
-	if(res.empty() && (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recruit(name, side_num, loc))) {
+	if(!res.has_value() && (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recruit(name, side_num, loc))) {
 		// MP_COUNTDOWN grant time bonus for recruiting
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 		// Do the recruiting.
-
 		synced_context::run_and_throw("recruit", replay_helper::get_recruit(name, loc, recruited_from));
 		return true;
-	} else if(res.empty()) {
+	} else if(!res.has_value()) {
 		return false;
 	} else {
-		gui2::show_transient_message("", res);
+		gui2::show_transient_message("", res.value());
 		return false;
 	}
 

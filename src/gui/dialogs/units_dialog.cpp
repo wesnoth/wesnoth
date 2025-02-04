@@ -23,10 +23,8 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/menu_button.hpp"
-#include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
@@ -461,29 +459,40 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 
 std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 	const std::vector<const unit_type*>& recruit_list,
-	const team& team)
+	const team& team,
+	const map_location& recruit_hex)
 {
 	auto dlg = std::make_unique<units_dialog>();
 	auto set_column = dlg->make_column_builder(recruit_list);
 
-	set_column("unit_image", [&team](const auto& recruit) {
+	set_column("unit_image", [&team, &recruit_hex](const auto& recruit) {
 		std::string image_string = recruit->icon();
 		if (image_string.empty()) {
 			image_string = recruit->image();
 		}
 		image_string += "~RC(" + recruit->flag_rgb() + ">" + team.color() + ")";
 		image_string += "~SCALE_INTO(72,72)";
+		bool recruitable = unit_helper::recruit_message(recruit->id(), recruit_hex, map_location::null_location(), team).has_value();
+		if (!recruitable) {
+			image_string += "~GS()";
+		}
 		return image_string;
 	}, sort_type::none);
 
-	set_column("unit_details", [](const auto& recruit) {
-		return recruit->type_name() + unit_helper::format_cost_string(recruit->cost());
+	set_column("unit_details", [&team, &recruit_hex](const auto& recruit) {
+		bool recruitable = unit_helper::recruit_message(recruit->id(), recruit_hex, map_location::null_location(), team).has_value();
+		return unit_helper::maybe_inactive(recruit->type_name(), recruitable)
+			+ unit_helper::format_cost_string(recruit->cost(), recruitable);
 	}, sort_type::generator);
 
 	dlg->set_title(_("Recruit Unit") + get_title_suffix(team.side()))
 		.set_ok_label(_("Recruit"))
 		.set_help_topic("recruit_and_recall")
 		.set_row_num(recruit_list.size());
+
+	dlg->set_tooltip_generator([&team, &recruit_hex, &recruit_list](std::size_t index) {
+		return unit_helper::recruit_message(recruit_list[index]->id(), recruit_hex, map_location::null_location(), team).value();
+	});
 
 	dlg->on_modified([&recruit_list](std::size_t index) -> const auto& { return *recruit_list[index]; });
 
