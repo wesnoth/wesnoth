@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-10-28 12:38-0500\n"
+"POT-Creation-Date: 2025-02-05 12:06-0600\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -68,59 +68,71 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
+msgid "Whether to show icons in the add-ons list on the add-ons manager"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:27
+msgid ""
+"Disabling saves bandwidth by not sending icons for the add-ons list in the "
+"add-ons manager"
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:34
 #, fuzzy
 #| msgid "Confirm deleting saves"
 msgid "Confirm deleting saves"
 msgstr "𐑒𐑪𐑯𐑓𐑻𐑥 𐑛𐑦𐑤𐑰𐑑𐑦𐑙 𐑕𐑱𐑝𐑟"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:33
+#: data/advanced_preferences.cfg:41
 msgid "Mouse scrolling"
 msgstr "𐑥𐑬𐑕 𐑕𐑒𐑮𐑴𐑤𐑦𐑙"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:40
+#: data/advanced_preferences.cfg:48
 msgid "Middle-click scrolling"
 msgstr "𐑥𐑦𐑛𐑩𐑤-𐑒𐑤𐑦𐑒 𐑕𐑒𐑮𐑴𐑤𐑦𐑙"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:47
+#: data/advanced_preferences.cfg:55
 #, fuzzy
 #| msgid "Keep scrolling when mouse leaves window"
 msgid "Keep scrolling when mouse leaves window"
 msgstr "𐑒𐑰𐑐 𐑕𐑒𐑮𐑴𐑤𐑦𐑙 𐑢𐑧𐑯 𐑥𐑬𐑕 𐑤𐑰𐑝𐑟 𐑢𐑦𐑯𐑛𐑴"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:54
+#: data/advanced_preferences.cfg:62
 msgid "Show combat"
 msgstr "𐑖𐑴 𐑒𐑪𐑥𐑚𐑨𐑑"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:61
+#: data/advanced_preferences.cfg:69
 #, fuzzy
 #| msgid "Auto-open whisper windows in lobby"
 msgid "Auto-open whisper windows in lobby"
 msgstr "𐑷𐑑𐑴-𐑴𐑐𐑩𐑯 𐑢𐑦𐑕𐑐𐑻 𐑢𐑦𐑯𐑛𐑴𐑟 𐑦𐑯 𐑤𐑭𐑚𐑰"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:68
+#: data/advanced_preferences.cfg:76
 msgid "Follow unit actions"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:69
+#: data/advanced_preferences.cfg:77
 msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:76
+#: data/advanced_preferences.cfg:84
 msgid "Chat message aging"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:77
+#: data/advanced_preferences.cfg:85
 #, fuzzy
 #| msgid ""
 #| "Number of seconds to wait for a ping reply before we time out. Disable "
@@ -131,77 +143,77 @@ msgid ""
 msgstr "𐑯𐑳𐑥𐑚𐑻 𐑝 𐑕𐑧𐑒𐑩𐑯𐑛𐑟 𐑑 𐑢𐑱𐑑 𐑓𐑹 𐑩 𐑐𐑦𐑙 𐑮𐑦𐑐𐑤𐑲 𐑚𐑦𐑓𐑹 𐑢𐑰 𐑑𐑲𐑥 𐑬𐑑. 𐑛𐑦𐑕𐑱𐑚𐑩𐑤 𐑢𐑦𐑞 0."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:87
+#: data/advanced_preferences.cfg:95
 msgid "Use 12-hour clock format"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:94
+#: data/advanced_preferences.cfg:102
 msgid "Confirm loading saves from a different version"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:101
+#: data/advanced_preferences.cfg:109
 msgid "Show all unit types in help"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:102
+#: data/advanced_preferences.cfg:110
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:109
+#: data/advanced_preferences.cfg:117
 msgid "Editor recent files limit"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:110
+#: data/advanced_preferences.cfg:118
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:120
+#: data/advanced_preferences.cfg:128
 msgid "Show color cursors"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:121
+#: data/advanced_preferences.cfg:129
 msgid "Use colored mouse cursors"
 msgstr ""
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:128
+#: data/advanced_preferences.cfg:136
 msgid "Customize orb colors"
 msgstr ""
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:134
+#: data/advanced_preferences.cfg:142
 msgid "Logging"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:140
+#: data/advanced_preferences.cfg:148
 msgid "Allow damage calculation with Monte Carlo simulation"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:141
+#: data/advanced_preferences.cfg:149
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:148
+#: data/advanced_preferences.cfg:156
 msgid "Show deprecation messages in-game"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:149
+#: data/advanced_preferences.cfg:157
 msgid ""
 "Show warnings about deprecated API in the in-game chat area. These messages "
 "will still be shown in the log, even if this is disabled. In addition, the "
@@ -209,26 +221,26 @@ msgid ""
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:156
+#: data/advanced_preferences.cfg:164
 msgid "Font size scale (experimental)"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:157
+#: data/advanced_preferences.cfg:165
 msgid ""
 "Scales all text up or down from the standard size for your resolution. "
 "Warning: Scaling text up may cause issues in the in-game sidebar."
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:167
+#: data/advanced_preferences.cfg:175
 #, fuzzy
 #| msgid "Connection timed out"
 msgid "Server disconnect timeout"
 msgstr "𐑒𐑩𐑯𐑧𐑒𐑖𐑩𐑯 𐑑𐑲𐑥𐑛 𐑬𐑑"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:168
+#: data/advanced_preferences.cfg:176
 msgid ""
 "The amount of time in seconds before a disconnect is detected. If currently "
 "logged into the multiplayer server, you must log out and then log back in "
@@ -450,219 +462,219 @@ msgid "Dutch Translation"
 msgstr "𐑛𐑳𐑗 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:454
+#: data/core/about_i18n.cfg:457
 msgid "English (GB) Translation"
 msgstr "·𐑰𐑙𐑜𐑤𐑦𐑖 (GB) 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:479
+#: data/core/about_i18n.cfg:482
 #, fuzzy
 msgid "English (Shaw) Translation"
 msgstr "·𐑰𐑙𐑜𐑤𐑦𐑖 (GB) 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:497
+#: data/core/about_i18n.cfg:500
 msgid "Esperanto Translation"
 msgstr "𐑧𐑕𐑐𐑻𐑨𐑯𐑑𐑴 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:516
+#: data/core/about_i18n.cfg:519
 msgid "Estonian Translation"
 msgstr "𐑧𐑕𐑑𐑴𐑯𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:526
+#: data/core/about_i18n.cfg:529
 msgid "Filipino Translation"
 msgstr "𐑓𐑦𐑤𐑩𐑐𐑰𐑯𐑴 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:536
+#: data/core/about_i18n.cfg:539
 msgid "Finnish Translation"
 msgstr "𐑓𐑦𐑯𐑦𐑖 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:601
+#: data/core/about_i18n.cfg:604
 msgid "French Translation"
 msgstr "𐑓𐑮𐑧𐑯𐑗 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:769
+#: data/core/about_i18n.cfg:772
 msgid "Friulian Translation"
 msgstr "𐑓𐑮𐑰𐑵𐑤𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:773
+#: data/core/about_i18n.cfg:776
 msgid "Galician Translation"
 msgstr "𐑜𐑨𐑤𐑦𐑕𐑾𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:809
+#: data/core/about_i18n.cfg:812
 msgid "German Translation"
 msgstr "𐑡𐑻𐑥𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:934
+#: data/core/about_i18n.cfg:937
 msgid "Greek Translation"
 msgstr "𐑜𐑮𐑰𐑒 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:977
+#: data/core/about_i18n.cfg:980
 msgid "Hebrew Translation"
 msgstr "𐑣𐑰𐑚𐑮𐑵 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:990
+#: data/core/about_i18n.cfg:993
 msgid "Hungarian Translation"
 msgstr "𐑣𐑩𐑙𐑜𐑺𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1051
+#: data/core/about_i18n.cfg:1054
 msgid "Icelandic Translation"
 msgstr "𐑲𐑕𐑤𐑨𐑯𐑛𐑦𐑒 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1061
+#: data/core/about_i18n.cfg:1064
 msgid "Indonesian Translation"
 msgstr "𐑦𐑯𐑛𐑴𐑯𐑰𐑠𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1089
+#: data/core/about_i18n.cfg:1092
 #, fuzzy
 msgid "Irish Translation"
 msgstr "𐑑𐑻𐑒𐑦𐑖 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1096
+#: data/core/about_i18n.cfg:1099
 msgid "Italian Translation"
 msgstr "𐑦𐑑𐑨𐑤𐑦𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1143
+#: data/core/about_i18n.cfg:1146
 msgid "Japanese Translation"
 msgstr "𐑡𐑨𐑐𐑩𐑯𐑰𐑟 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1236
+#: data/core/about_i18n.cfg:1239
 msgid "Korean Translation"
 msgstr "𐑒𐑹𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1244
+#: data/core/about_i18n.cfg:1247
 msgid "Latin Translation"
 msgstr "·𐑤𐑨𐑑𐑦𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1270
+#: data/core/about_i18n.cfg:1273
 msgid "Latvian Translation"
 msgstr "𐑤𐑨𐑑𐑝𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1285
+#: data/core/about_i18n.cfg:1288
 msgid "Lithuanian Translation"
 msgstr "𐑤𐑦𐑔𐑩𐑢𐑱𐑯𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1310
+#: data/core/about_i18n.cfg:1313
 msgid "Macedonian Translation"
 msgstr "𐑥𐑨𐑕𐑩𐑛𐑴𐑯𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1317
+#: data/core/about_i18n.cfg:1320
 msgid "Marathi Translation"
 msgstr "𐑥𐑼𐑭𐑑𐑰 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1326
+#: data/core/about_i18n.cfg:1329
 msgid "Norwegian Translation"
 msgstr "𐑯𐑹𐑢𐑰𐑡𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1355
+#: data/core/about_i18n.cfg:1358
 #, fuzzy
 msgid "Old English Translation"
 msgstr "·𐑰𐑙𐑜𐑤𐑦𐑖 (GB) 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1373
+#: data/core/about_i18n.cfg:1376
 msgid "Polish Translation"
 msgstr "𐑐𐑪𐑤𐑦𐑖 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1448
+#: data/core/about_i18n.cfg:1451
 msgid "Portuguese Translation"
 msgstr "𐑐𐑹𐑗𐑩𐑜𐑰𐑟 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1462
+#: data/core/about_i18n.cfg:1465
 msgid "Portuguese (Brazil) Translation"
 msgstr "𐑐𐑹𐑗𐑩𐑜𐑰𐑟 (𐑚𐑮𐑩𐑟𐑦𐑤) 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1520
+#: data/core/about_i18n.cfg:1523
 msgid "Romanian Translation"
 msgstr "𐑮𐑴𐑥𐑱𐑯𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1528
+#: data/core/about_i18n.cfg:1531
 msgid "Russian Translation"
 msgstr "𐑮𐑳𐑖𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1635
+#: data/core/about_i18n.cfg:1638
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "𐑜𐑨𐑤𐑦𐑕𐑾𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1644
+#: data/core/about_i18n.cfg:1647
 msgid "Serbian Translation"
 msgstr "𐑕𐑻𐑚𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1663
+#: data/core/about_i18n.cfg:1666
 msgid "Slovak Translation"
 msgstr "𐑕𐑤𐑴𐑝𐑨𐑒 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1698
+#: data/core/about_i18n.cfg:1701
 msgid "Slovenian Translation"
 msgstr "𐑕𐑤𐑴𐑝𐑰𐑯𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1714
+#: data/core/about_i18n.cfg:1717
 msgid "Spanish Translation"
 msgstr "𐑕𐑐𐑨𐑯𐑦𐑖 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1804
+#: data/core/about_i18n.cfg:1807
 msgid "Swedish Translation"
 msgstr "𐑕𐑢𐑰𐑛𐑦𐑖 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1849
+#: data/core/about_i18n.cfg:1852
 msgid "Turkish Translation"
 msgstr "𐑑𐑻𐑒𐑦𐑖 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1874
+#: data/core/about_i18n.cfg:1877
 #, fuzzy
 #| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "𐑮𐑴𐑥𐑱𐑯𐑰𐑩𐑯 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1908
+#: data/core/about_i18n.cfg:1911
 msgid "Valencian (southern Catalan) Translation"
 msgstr "𐑝𐑨𐑤𐑧𐑯𐑕𐑰𐑨𐑯 (𐑕𐑳𐑞𐑼𐑯 𐑒𐑨𐑑𐑩𐑤𐑩𐑯) 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1921
+#: data/core/about_i18n.cfg:1924
 msgid "Vietnamese Translation"
 msgstr "𐑝𐑰𐑧𐑑𐑯𐑭𐑥𐑰𐑕 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
-#: data/core/about_i18n.cfg:1940
+#: data/core/about_i18n.cfg:1943
 #, fuzzy
 #| msgid "Polish Translation"
 msgid "Welsh Translation"
@@ -670,7 +682,7 @@ msgstr "𐑐𐑪𐑤𐑦𐑖 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1949
+#: data/core/about_i18n.cfg:1952
 msgid "RACV’s Translation"
 msgstr "RACV’s 𐑑𐑮𐑩𐑯𐑕𐑤𐑱𐑖𐑩𐑯"
 
@@ -5240,19 +5252,19 @@ msgstr ""
 msgid "Connecting to $server_address|..."
 msgstr "𐑒𐑩𐑯𐑧𐑒𐑑𐑦𐑙 𐑑 𐑕𐑻𐑝𐑻..."
 
-#: src/addon/client.cpp:128
+#: src/addon/client.cpp:132
 #, fuzzy
 #| msgid "Requesting list of add-ons"
 msgid "Downloading list of add-ons..."
 msgstr "𐑮𐑦𐑒𐑢𐑧𐑕𐑑𐑦𐑙 𐑤𐑦𐑕𐑑 𐑝 𐑨𐑛-𐑭𐑯𐑟"
 
-#: src/addon/client.cpp:149
+#: src/addon/client.cpp:153
 #, fuzzy
 #| msgid "Requesting list of add-ons"
 msgid "Requesting distribution terms..."
 msgstr "𐑮𐑦𐑒𐑢𐑧𐑕𐑑𐑦𐑙 𐑤𐑦𐑕𐑑 𐑝 𐑨𐑛-𐑭𐑯𐑟"
 
-#: src/addon/client.cpp:173
+#: src/addon/client.cpp:177
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5261,7 +5273,7 @@ msgid ""
 "published."
 msgstr "𐑞 𐑨𐑛-𐑪𐑯 𐑣𐑨𐑟 𐑩𐑯 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑓𐑲𐑤 𐑹 𐑛𐑲𐑮𐑧𐑒𐑑𐑼𐑦 𐑯𐑱𐑥 𐑯 𐑒𐑨𐑯 𐑯𐑪𐑑 𐑚𐑰 𐑦𐑯𐑕𐑑𐑷𐑤𐑛."
 
-#: src/addon/client.cpp:185
+#: src/addon/client.cpp:189
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5270,7 +5282,7 @@ msgid ""
 "characters and cannot be published."
 msgstr "𐑞 𐑨𐑛-𐑪𐑯 𐑣𐑨𐑟 𐑩𐑯 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑓𐑲𐑤 𐑹 𐑛𐑲𐑮𐑧𐑒𐑑𐑼𐑦 𐑯𐑱𐑥 𐑯 𐑒𐑨𐑯 𐑯𐑪𐑑 𐑚𐑰 𐑦𐑯𐑕𐑑𐑷𐑤𐑛."
 
-#: src/addon/client.cpp:193
+#: src/addon/client.cpp:197
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5280,7 +5292,7 @@ msgid ""
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
 
-#: src/addon/client.cpp:204
+#: src/addon/client.cpp:208
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5290,55 +5302,55 @@ msgid ""
 "the same string."
 msgstr "𐑞 𐑨𐑛-𐑪𐑯 𐑣𐑨𐑟 𐑩𐑯 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑓𐑲𐑤 𐑹 𐑛𐑲𐑮𐑧𐑒𐑑𐑼𐑦 𐑯𐑱𐑥 𐑯 𐑒𐑨𐑯 𐑯𐑪𐑑 𐑚𐑰 𐑦𐑯𐑕𐑑𐑷𐑤𐑛."
 
-#: src/addon/client.cpp:211
+#: src/addon/client.cpp:215
 msgid ""
 "The connection to the remote server is not secure. The add-on "
 "<i>$addon_title</i> cannot be uploaded."
 msgstr ""
 
-#: src/addon/client.cpp:224
+#: src/addon/client.cpp:228
 #, fuzzy
 #| msgid "Requesting list of add-ons"
 msgid "Requesting file index..."
 msgstr "𐑮𐑦𐑒𐑢𐑧𐑕𐑑𐑦𐑙 𐑤𐑦𐑕𐑑 𐑝 𐑨𐑛-𐑭𐑯𐑟"
 
-#: src/addon/client.cpp:240
+#: src/addon/client.cpp:244
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "𐑛𐑬𐑯𐑤𐑴𐑛𐑦𐑙 𐑨𐑛-𐑪𐑯: $addon_title|..."
 
-#: src/addon/client.cpp:261
+#: src/addon/client.cpp:265
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "𐑛𐑬𐑯𐑤𐑴𐑛𐑦𐑙 𐑨𐑛-𐑪𐑯: $addon_title|..."
 
-#: src/addon/client.cpp:310
+#: src/addon/client.cpp:314
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "𐑛𐑬𐑯𐑤𐑴𐑛𐑦𐑙 𐑨𐑛-𐑪𐑯: $addon_title|..."
 
-#: src/addon/client.cpp:338
+#: src/addon/client.cpp:342
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "𐑛𐑬𐑯𐑤𐑴𐑛𐑦𐑙 𐑨𐑛-𐑪𐑯: $addon_title|..."
 
-#: src/addon/client.cpp:350 src/addon/client.cpp:711
+#: src/addon/client.cpp:354 src/addon/client.cpp:715
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Manager"
 msgstr "𐑨𐑛-𐑪𐑯 𐑦𐑯𐑕𐑑𐑷𐑤𐑛"
 
-#: src/addon/client.cpp:350
+#: src/addon/client.cpp:354
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Installing add-on <i>$addon_title</i>..."
 msgstr "𐑛𐑬𐑯𐑤𐑴𐑛𐑦𐑙 𐑨𐑛-𐑪𐑯: $addon_title|..."
 
-#: src/addon/client.cpp:362 src/addon/client.cpp:388
+#: src/addon/client.cpp:366 src/addon/client.cpp:392
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5347,7 +5359,7 @@ msgid ""
 "cannot be installed."
 msgstr "𐑞 𐑨𐑛-𐑪𐑯 𐑣𐑨𐑟 𐑩𐑯 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑓𐑲𐑤 𐑹 𐑛𐑲𐑮𐑧𐑒𐑑𐑼𐑦 𐑯𐑱𐑥 𐑯 𐑒𐑨𐑯 𐑯𐑪𐑑 𐑚𐑰 𐑦𐑯𐑕𐑑𐑷𐑤𐑛."
 
-#: src/addon/client.cpp:367 src/addon/client.cpp:393
+#: src/addon/client.cpp:371 src/addon/client.cpp:397
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5356,13 +5368,13 @@ msgid ""
 "conflicts. This may cause problems."
 msgstr "𐑞 𐑨𐑛-𐑪𐑯 𐑣𐑨𐑟 𐑩𐑯 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑓𐑲𐑤 𐑹 𐑛𐑲𐑮𐑧𐑒𐑑𐑼𐑦 𐑯𐑱𐑥 𐑯 𐑒𐑨𐑯 𐑯𐑪𐑑 𐑚𐑰 𐑦𐑯𐑕𐑑𐑷𐑤𐑛."
 
-#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:250
+#: src/addon/client.cpp:430 src/gui/dialogs/multiplayer/match_history.cpp:250
 #, fuzzy
 #| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
 msgstr "𐑞 𐑕𐑻𐑝𐑻 𐑮𐑰𐑕𐑐𐑪𐑯𐑛𐑧𐑛 𐑢𐑦𐑞 𐑩𐑯 𐑻𐑹: \""
 
-#: src/addon/client.cpp:481
+#: src/addon/client.cpp:485
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5372,12 +5384,12 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/client.cpp:490
+#: src/addon/client.cpp:494
 #, fuzzy
 msgid "Broken Dependencies"
 msgstr "𐑛𐑦𐑐𐑧𐑯𐑛𐑩𐑯𐑕𐑰𐑟"
 
-#: src/addon/client.cpp:530
+#: src/addon/client.cpp:534
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5387,94 +5399,94 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/client.cpp:534
+#: src/addon/client.cpp:538
 msgid "Dependencies Installation Failed"
 msgstr ""
 
-#: src/addon/client.cpp:557
+#: src/addon/client.cpp:561
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 
-#: src/addon/client.cpp:561
+#: src/addon/client.cpp:565
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/client.cpp:565
+#: src/addon/client.cpp:569
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/client.cpp:569
+#: src/addon/client.cpp:573
 #, fuzzy
 #| msgid "Do you want to save your game?"
 msgid "Do you really wish to continue?"
 msgstr "𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑕𐑱𐑝 𐑿𐑼 𐑜𐑱𐑥?"
 
-#: src/addon/client.cpp:571 src/addon/manager_ui.cpp:171
+#: src/addon/client.cpp:575 src/addon/manager_ui.cpp:171
 #: src/game_initialization/multiplayer.cpp:362
 msgid "Confirm"
 msgstr "𐑒𐑪𐑯𐑓𐑻𐑥"
 
-#: src/addon/info.cpp:253
+#: src/addon/info.cpp:251
 msgid "addon_type^Campaign"
 msgstr "𐑒𐑨𐑥𐑐𐑱𐑯"
 
-#: src/addon/info.cpp:255
+#: src/addon/info.cpp:253
 msgid "addon_type^Scenario"
 msgstr "𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/addon/info.cpp:257
+#: src/addon/info.cpp:255
 #, fuzzy
 #| msgid "addon_type^MP campaign"
 msgid "addon_type^SP/MP Campaign"
 msgstr "MP 𐑒𐑨𐑥𐑐𐑱𐑯"
 
-#: src/addon/info.cpp:259
+#: src/addon/info.cpp:257
 msgid "addon_type^MP era"
 msgstr "MP 𐑽𐑩"
 
-#: src/addon/info.cpp:261
+#: src/addon/info.cpp:259
 msgid "addon_type^MP faction"
 msgstr "MP 𐑓𐑨𐑒𐑖𐑩𐑯"
 
-#: src/addon/info.cpp:263
+#: src/addon/info.cpp:261
 msgid "addon_type^MP map-pack"
 msgstr "MP 𐑥𐑨𐑐-𐑐𐑨𐑒"
 
-#: src/addon/info.cpp:265
+#: src/addon/info.cpp:263
 msgid "addon_type^MP scenario"
 msgstr "MP 𐑕𐑦𐑯𐑺𐑰𐑴"
 
-#: src/addon/info.cpp:267
+#: src/addon/info.cpp:265
 msgid "addon_type^MP campaign"
 msgstr "MP 𐑒𐑨𐑥𐑐𐑱𐑯"
 
-#: src/addon/info.cpp:269
+#: src/addon/info.cpp:267
 #, fuzzy
 #| msgid "addon_type^MP faction"
 msgid "addon_type^Modification"
 msgstr "MP 𐑓𐑨𐑒𐑖𐑩𐑯"
 
-#: src/addon/info.cpp:271
+#: src/addon/info.cpp:269
 #, fuzzy
 #| msgid "addon_type^Resources"
 msgid "addon_type^Core"
 msgstr "𐑮𐑦𐑟𐑹𐑕𐑩𐑟"
 
-#: src/addon/info.cpp:273
+#: src/addon/info.cpp:271
 msgid "addon_type^Resources"
 msgstr "𐑮𐑦𐑟𐑹𐑕𐑩𐑟"
 
-#: src/addon/info.cpp:275
+#: src/addon/info.cpp:273
 msgid "addon_type^Other"
 msgstr "𐑳𐑞𐑼"
 
-#: src/addon/info.cpp:277
+#: src/addon/info.cpp:275
 msgid "addon_type^(unknown)"
 msgstr "(𐑳𐑯𐑯𐑴𐑯)"
 
-#: src/addon/info.cpp:314
+#: src/addon/info.cpp:312
 msgid "unit_byte^B"
 msgstr ""
 
