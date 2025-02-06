@@ -37,54 +37,6 @@ using namespace std::chrono_literals;
 
 /**
  *
- * These legacy map_location functions moved here from map_location.?pp.
- * We have refactored them out of everything but this class. Hopefully
- * the end is near...
- *
-	// Adds an absolute location to a "delta" location
-	// This is not the mathematically correct behavior, it is neither
-	// commutative nor associative. Negative coordinates may give strange
-	// results. It is retained because terrain builder code relies in this
-	// broken behavior. Best avoid.
-	map_location legacy_negation() const;
-	map_location legacy_sum(const map_location &a) const;
-	map_location& legacy_sum_assign(const map_location &a);
-	map_location legacy_difference(const map_location &a) const;
- *
- */
-
-static map_location legacy_negation(const map_location& me)
-{
-	return map_location(-me.x, -me.y);
-}
-
-static map_location& legacy_sum_assign(map_location& me, const map_location& a)
-{
-	bool parity = (me.x & 1) != 0;
-	me.x += a.x;
-	me.y += a.y;
-	if((a.x > 0) && (a.x % 2) && parity)
-		me.y++;
-	if((a.x < 0) && (a.x % 2) && !parity)
-		me.y--;
-
-	return me;
-}
-
-static map_location legacy_sum(const map_location& me, const map_location& a)
-{
-	map_location ret(me);
-	legacy_sum_assign(ret, a);
-	return ret;
-}
-
-static map_location legacy_difference(const map_location& me, const map_location& a)
-{
-	return legacy_sum(me, legacy_negation(a));
-}
-
-/**
- *
  * This file holds the terrain_builder implementation.
  *
  */
@@ -482,13 +434,10 @@ bool terrain_builder::load_images(building_rule& rule)
 
 void terrain_builder::rotate(terrain_constraint& ret, int angle)
 {
-	static const struct
-	{
-		int ii;
-		int ij;
-		int ji;
-		int jj;
-	} rotations[6] {{1, 0, 0, 1}, {1, 1, -1, 0}, {0, 1, -1, -1}, {-1, 0, 0, -1}, {-1, -1, 1, 0}, {0, -1, 1, 1}};
+	assert(angle >= 0);
+	angle %= 6;
+
+	ret.loc = ret.loc.rotate_right_around_center(map_location::ZERO(), angle);
 
 	// The following array of matrices is intended to rotate the (x,y)
 	// coordinates of a point in a wesnoth hex (and wesnoth hexes are not
@@ -531,20 +480,6 @@ void terrain_builder::rotate(terrain_constraint& ret, int angle)
 		{ -1./2.,  3./4., -1., -1./2.},
 		{ 1./2. ,  3./4., -1., 1./2. },
 	};
-
-	assert(angle >= 0);
-
-	angle %= 6;
-
-	// Vector i is going from n to s, vector j is going from ne to sw.
-	int vi = ret.loc.y - ret.loc.x / 2;
-	int vj = ret.loc.x;
-
-	int ri = rotations[angle].ii * vi + rotations[angle].ij * vj;
-	int rj = rotations[angle].ji * vi + rotations[angle].jj * vj;
-
-	ret.loc.x = rj;
-	ret.loc.y = ri + (rj >= 0 ? rj / 2 : (rj - 1) / 2);
 
 	for(rule_imagelist::iterator itor = ret.images.begin(); itor != ret.images.end(); ++itor) {
 		double vx, vy, rx, ry;
@@ -633,13 +568,20 @@ void terrain_builder::rotate_rule(building_rule& ret, int angle, const std::vect
 		miny = std::min<int>(2 * cons.loc.y + (cons.loc.x & 1), miny);
 	}
 
-	if((miny & 1) && (minx & 1) && (minx < 0))
-		miny += 2;
-	if(!(miny & 1) && (minx & 1) && (minx > 0))
-		miny -= 2;
+	if((minx & 1) != (miny & 1)) {
+		// if for examplein thtis case we have the locations (2,1) and (1,1),we want to start at (1,0)
+		//    /00\__
+		//    \__/10\__
+		//    /01\__/21\_
+		//    \__/11\__/
+		//       \__/
+		miny -= 1;
+	}
+
+	map_location min_loc = map_location(minx, miny / 2).vector_negation();
 
 	for(terrain_constraint& cons : ret.constraints) {
-		legacy_sum_assign(cons.loc, map_location(-minx, -((miny - 1) / 2)));
+		cons.loc.vector_sum_assign(min_loc);
 	}
 
 	replace_rotate_tokens(ret, angle, rot);
@@ -1039,7 +981,7 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule& rule,
 
 	for(const terrain_constraint& cons : rule.constraints) {
 		// Translated location
-		const map_location tloc = legacy_sum(loc, cons.loc);
+		const map_location tloc = loc.vector_sum(cons.loc);
 
 		if(!tile_map_.on_map(tloc)) {
 			return false;
@@ -1076,7 +1018,7 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule& rule, con
 	unsigned int rand_seed = get_noise(loc, rule.get_hash());
 
 	for(const terrain_constraint& constraint : rule.constraints) {
-		const map_location tloc = legacy_sum(loc, constraint.loc);
+		const map_location tloc = loc.vector_sum( constraint.loc);
 		if(!tile_map_.on_map(tloc)) {
 			return;
 		}
@@ -1181,7 +1123,7 @@ void terrain_builder::build_terrains()
 
 			if(constraint_size < min_size) {
 				min_size = constraint_size;
-				min_types = matching_types;
+				min_types = std::move(matching_types);
 				min_constraint = &constraint;
 				if(min_size == 0) {
 					// a constraint is never matched on this map
@@ -1194,11 +1136,10 @@ void terrain_builder::build_terrains()
 		assert(min_constraint != nullptr);
 
 		// NOTE: if min_types is not empty, we have found a valid min_constraint;
-		for(t_translation::ter_list::const_iterator t = min_types.begin(); t != min_types.end(); ++t) {
-			const std::vector<map_location>* locations = &terrain_by_type_[*t];
+		for(const auto& t: min_types) {
 
-			for(std::vector<map_location>::const_iterator itor = locations->begin(); itor != locations->end(); ++itor) {
-				const map_location loc = legacy_difference(*itor, min_constraint->loc);
+			for(map_location loc1 : terrain_by_type_[t]) {
+				const map_location loc = loc1.vector_difference(min_constraint->loc);
 
 				if(rule_matches(rule, loc, min_constraint)) {
 					apply_rule(rule, loc);
