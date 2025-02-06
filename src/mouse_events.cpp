@@ -1344,7 +1344,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	unit_map::iterator attacker;
 	unit_map::iterator defender;
 	std::vector<battle_context> bc_vector;
-	std::vector<gui2::widget_data> data_vector;
+	std::vector<gui2::widget_data> bc_widget_data_vector;
 	int best;
 	int leadership_bonus = 0;
 	{
@@ -1360,6 +1360,13 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		}
 
 		best = fill_weapon_choices(bc_vector, attacker, defender);
+
+		if (bc_vector.empty()) {
+			gui2::show_transient_message(_("No Attacks"), _("This unit has no usable weapons."));
+
+			return -1;
+		}
+
 		static const config empty;
 		static const_attack_ptr no_weapon(new attack_type(empty));
 
@@ -1521,17 +1528,11 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 			item["label"] = defender_weapon.icon();
 			data.emplace("defender_weapon_icon", item);
 
-			data_vector.emplace_back(data);
-		}
-
-		if(bc_vector.empty()) {
-			gui2::show_transient_message(_("No Attacks"), _("This unit has no usable weapons."));
-
-			return -1;
+			bc_widget_data_vector.emplace_back(data);
 		}
 	}
-	//data_vector's element could be empty. find a way to deal with it
-	gui2::dialogs::unit_attack dlg(attacker, defender, std::move(bc_vector), best, data_vector, leadership_bonus);
+	// bc_widget_data_vector won't be empty when it reaches here.
+	gui2::dialogs::unit_attack dlg(attacker, defender, std::move(bc_vector), best, bc_widget_data_vector, leadership_bonus);
 
 	if(dlg.show()) {
 		return dlg.get_selected_weapon();
