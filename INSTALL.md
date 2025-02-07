@@ -87,7 +87,7 @@ NOTE 3: opening the source folder in Visual Studio with the "open a local folder
 
 NOTE 4: When cloning vcpkg, it is advisable to avoid spaces in the directory path.
 
-NOTE 5: antivirus software may potentially slow down (by scanning) or even interrupt the installation process by false-flagging libraries. If you are unable to install the dependencies, you may whitelist the vcpkg folder AT YOUR OWN RISK, to fix the issue and allow the installation to continue.
+NOTE 5: antivirus software may potentially slow down (by scanning) or even interrupt the installation process by false-flagging libraries. If you are unable to install the dependencies while an antivirus is active, you may whitelist the vcpkg folder AT YOUR OWN RISK, to fix the issue and allow the installation to continue.
 
 ## SCons Build
 
