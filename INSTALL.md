@@ -79,15 +79,13 @@ Wesnoth uses CMake for project configuration and vcpkg for installing dependenci
 
 NOTE 1: You will need to run `vcpkg integrate install` on the command line to make Visual Studio aware of vcpkg. If Visual Studio is open when this is executed, then you will need to close and re-open Visual Studio.
 
-NOTE 2: Depending on your hardware, when building wesnoth for the first time or when wesnoth's dependency list is updated, vcpkg may take multiple hours or even days to build all necessary dependencies automatically. 
+NOTE 2: vcpkg install guide (steps 1-2 are relevant for Wesnoth, steps 3 and later are for making vcpkg projects from scratch, Wesnoth itself already has vcpkg.json.): https://learn.microsoft.com/en-us/vcpkg/get_started/get-started?pivots=shell-powershell
 
-NOTE 3: vcpkg install guide (steps 1-2 are relevant for Wesnoth, steps 3 and later are for making vcpkg projects from scratch, wesnoth itself already has vcpkg.json.): https://learn.microsoft.com/en-us/vcpkg/get_started/get-started?pivots=shell-powershell
+When installing vcpkg, it is recommended to do so by cloning https://github.com/microsoft/vcpkg, as the Wesnoth project occasionally updates to newer versions of vcpkg, and the databases on older versions of vcpkg may not have the necessary library versions.
 
-When installing vcpkg, it is recommended to do so by cloning https://github.com/microsoft/vcpkg, as the wesnoth project occasionally updates to newer versions of vcpkg, and the databases on older versions of vcpkg may not have the necessary library versions.
+NOTE 3: opening the source folder in Visual Studio with the "open a local folder" option automatically runs CMake/vcpkg integrate install when opening the project.
 
-NOTE 4: opening the source folder in Visual Studio with the "open a local folder" option automatically runs CMake/vcpkg integrate install when opening the project.
-
-NOTE 5: Additionally, when you clone vcpkg, make sure the folder path to it does not include any spaces!
+NOTE 4: When cloning vcpkg, it is advisable to avoid spaces in the directory path.
 
 ## SCons Build
 
