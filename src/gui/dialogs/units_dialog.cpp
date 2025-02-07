@@ -474,15 +474,16 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 		}
 		image_string += "~RC(" + recruit->flag_rgb() + ">" + team.color() + ")";
 		image_string += "~SCALE_INTO(72,72)";
-		bool recruitable = unit_helper::recruit_message(recruit->id(), recruit_hex, map_location::null_location(), team).has_value();
-		if (!recruitable) {
+		bool not_recruitable = unit_helper::recruit_message(
+			recruit->id(), recruit_hex, map_location::null_location(), team).has_value();
+		if (not_recruitable) {
 			image_string += "~GS()";
 		}
 		return image_string;
 	}, sort_type::none);
 
 	set_column("unit_details", [&team, &recruit_hex](const auto& recruit) {
-		bool recruitable = unit_helper::recruit_message(recruit->id(), recruit_hex, map_location::null_location(), team).has_value();
+		bool recruitable = !unit_helper::recruit_message(recruit->id(), recruit_hex, map_location::null_location(), team).has_value();
 		return unit_helper::maybe_inactive(recruit->type_name(), recruitable)
 			+ unit_helper::format_cost_string(recruit->cost(), recruitable);
 	}, sort_type::generator);
@@ -493,7 +494,8 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 		.set_row_num(recruit_list.size());
 
 	dlg->set_tooltip_generator([&team, &recruit_hex, &recruit_list](std::size_t index) {
-		return unit_helper::recruit_message(recruit_list[index]->id(), recruit_hex, map_location::null_location(), team).value();
+		const auto& msg = unit_helper::recruit_message(recruit_list[index]->id(), recruit_hex, map_location::null_location(), team);
+		return msg.has_value() ? msg.value() : std::string();
 	});
 
 	dlg->on_modified([&recruit_list](std::size_t index) -> const auto& { return *recruit_list[index]; });
