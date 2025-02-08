@@ -24,7 +24,7 @@ public class SDLControllerManager
     public static native int nativeAddJoystick(int device_id, String name, String desc,
                                                int vendor_id, int product_id,
                                                boolean is_accelerometer, int button_mask,
-                                               int naxes, int nhats, int nballs);
+                                               int naxes, int axis_mask, int nhats, int nballs);
     public static native int nativeRemoveJoystick(int device_id);
     public static native int nativeAddHaptic(int device_id, String name);
     public static native int nativeRemoveHaptic(int device_id);
@@ -42,7 +42,7 @@ public class SDLControllerManager
 
     public static void initialize() {
         if (mJoystickHandler == null) {
-            if (Build.VERSION.SDK_INT >= 19) {
+            if (Build.VERSION.SDK_INT >= 19 /* Android 4.4 (KITKAT) */) {
                 mJoystickHandler = new SDLJoystickHandler_API19();
             } else {
                 mJoystickHandler = new SDLJoystickHandler_API16();
@@ -50,7 +50,7 @@ public class SDLControllerManager
         }
 
         if (mHapticHandler == null) {
-            if (Build.VERSION.SDK_INT >= 26) {
+            if (Build.VERSION.SDK_INT >= 26 /* Android 8.0 (O) */) {
                 mHapticHandler = new SDLHapticHandler_API26();
             } else {
                 mHapticHandler = new SDLHapticHandler();
@@ -168,6 +168,32 @@ class SDLJoystickHandler_API16 extends SDLJoystickHandler {
                 arg1Axis = MotionEvent.AXIS_GAS;
             }
 
+            // Make sure the AXIS_Z is sorted between AXIS_RY and AXIS_RZ.
+            // This is because the usual pairing are:
+            // - AXIS_X + AXIS_Y (left stick).
+            // - AXIS_RX, AXIS_RY (sometimes the right stick, sometimes triggers).
+            // - AXIS_Z, AXIS_RZ (sometimes the right stick, sometimes triggers).
+            // This sorts the axes in the above order, which tends to be correct
+            // for Xbox-ish game pads that have the right stick on RX/RY and the
+            // triggers on Z/RZ.
+            //
+            // Gamepads that don't have AXIS_Z/AXIS_RZ but use
+            // AXIS_LTRIGGER/AXIS_RTRIGGER are unaffected by this.
+            //
+            // References:
+            // - https://developer.android.com/develop/ui/views/touch-and-input/game-controllers/controller-input
+            // - https://www.kernel.org/doc/html/latest/input/gamepad.html
+            if (arg0Axis == MotionEvent.AXIS_Z) {
+                arg0Axis = MotionEvent.AXIS_RZ - 1;
+            } else if (arg0Axis > MotionEvent.AXIS_Z && arg0Axis < MotionEvent.AXIS_RZ) {
+                --arg0Axis;
+            }
+            if (arg1Axis == MotionEvent.AXIS_Z) {
+                arg1Axis = MotionEvent.AXIS_RZ - 1;
+            } else if (arg1Axis > MotionEvent.AXIS_Z && arg1Axis < MotionEvent.AXIS_RZ) {
+                --arg1Axis;
+            }
+
             return arg0Axis - arg1Axis;
         }
     }
@@ -210,7 +236,7 @@ class SDLJoystickHandler_API16 extends SDLJoystickHandler {
                     mJoysticks.add(joystick);
                     SDLControllerManager.nativeAddJoystick(joystick.device_id, joystick.name, joystick.desc,
                             getVendorId(joystickDevice), getProductId(joystickDevice), false,
-                            getButtonMask(joystickDevice), joystick.axes.size(), joystick.hats.size()/2, 0);
+                            getButtonMask(joystickDevice), joystick.axes.size(), getAxisMask(joystick.axes), joystick.hats.size()/2, 0);
                 }
             }
         }
@@ -291,6 +317,9 @@ class SDLJoystickHandler_API16 extends SDLJoystickHandler {
     public int getVendorId(InputDevice joystickDevice) {
         return 0;
     }
+    public int getAxisMask(List<InputDevice.MotionRange> ranges) {
+        return -1;
+    }
     public int getButtonMask(InputDevice joystickDevice) {
         return -1;
     }
@@ -306,6 +335,43 @@ class SDLJoystickHandler_API19 extends SDLJoystickHandler_API16 {
     @Override
     public int getVendorId(InputDevice joystickDevice) {
         return joystickDevice.getVendorId();
+    }
+
+    @Override
+    public int getAxisMask(List<InputDevice.MotionRange> ranges) {
+        // For compatibility, keep computing the axis mask like before,
+        // only really distinguishing 2, 4 and 6 axes.
+        int axis_mask = 0;
+        if (ranges.size() >= 2) {
+            // ((1 << SDL_GAMEPAD_AXIS_LEFTX) | (1 << SDL_GAMEPAD_AXIS_LEFTY))
+            axis_mask |= 0x0003;
+        }
+        if (ranges.size() >= 4) {
+            // ((1 << SDL_GAMEPAD_AXIS_RIGHTX) | (1 << SDL_GAMEPAD_AXIS_RIGHTY))
+            axis_mask |= 0x000c;
+        }
+        if (ranges.size() >= 6) {
+            // ((1 << SDL_GAMEPAD_AXIS_LEFT_TRIGGER) | (1 << SDL_GAMEPAD_AXIS_RIGHT_TRIGGER))
+            axis_mask |= 0x0030;
+        }
+        // Also add an indicator bit for whether the sorting order has changed.
+        // This serves to disable outdated gamecontrollerdb.txt mappings.
+        boolean have_z = false;
+        boolean have_past_z_before_rz = false;
+        for (InputDevice.MotionRange range : ranges) {
+            int axis = range.getAxis();
+            if (axis == MotionEvent.AXIS_Z) {
+                have_z = true;
+            } else if (axis > MotionEvent.AXIS_Z && axis < MotionEvent.AXIS_RZ) {
+                have_past_z_before_rz = true;
+            }
+        }
+        if (have_z && have_past_z_before_rz) {
+            // If both these exist, the compare() function changed sorting order.
+            // Set a bit to indicate this fact.
+            axis_mask |= 0x8000;
+        }
+        return axis_mask;
     }
 
     @Override
@@ -480,13 +546,15 @@ class SDLHapticHandler {
             if (haptic == null) {
                 InputDevice device = InputDevice.getDevice(deviceIds[i]);
                 Vibrator vib = device.getVibrator();
-                if (vib.hasVibrator()) {
-                    haptic = new SDLHaptic();
-                    haptic.device_id = deviceIds[i];
-                    haptic.name = device.getName();
-                    haptic.vib = vib;
-                    mHaptics.add(haptic);
-                    SDLControllerManager.nativeAddHaptic(haptic.device_id, haptic.name);
+                if (vib != null) {
+                    if (vib.hasVibrator()) {
+                        haptic = new SDLHaptic();
+                        haptic.device_id = deviceIds[i];
+                        haptic.name = device.getName();
+                        haptic.vib = vib;
+                        mHaptics.add(haptic);
+                        SDLControllerManager.nativeAddHaptic(haptic.device_id, haptic.name);
+                    }
                 }
             }
         }
@@ -743,7 +811,7 @@ class SDLGenericMotionListener_API26 extends SDLGenericMotionListener_API24 {
 
     @Override
     public boolean supportsRelativeMouse() {
-        return (!SDLActivity.isDeXMode() || (Build.VERSION.SDK_INT >= 27));
+        return (!SDLActivity.isDeXMode() || Build.VERSION.SDK_INT >= 27 /* Android 8.1 (O_MR1) */);
     }
 
     @Override
@@ -753,7 +821,7 @@ class SDLGenericMotionListener_API26 extends SDLGenericMotionListener_API24 {
 
     @Override
     public boolean setRelativeMouseEnabled(boolean enabled) {
-        if (!SDLActivity.isDeXMode() || (Build.VERSION.SDK_INT >= 27)) {
+        if (!SDLActivity.isDeXMode() || Build.VERSION.SDK_INT >= 27 /* Android 8.1 (O_MR1) */) {
             if (enabled) {
                 SDLActivity.getContentView().requestPointerCapture();
             } else {

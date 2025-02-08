@@ -15,7 +15,7 @@ https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.14.2.tar.xz
 https://www.cairographics.org/releases/cairo-1.16.0.tar.xz
 https://github.com/harfbuzz/harfbuzz/releases/download/7.1.0/harfbuzz-7.1.0.tar.xz
 https://download.gnome.org/sources/pango/1.50/pango-1.50.14.tar.xz
-https://github.com/libsdl-org/SDL/releases/download/release-2.30.11/SDL2-2.30.11.tar.gz
+https://github.com/libsdl-org/SDL/releases/download/release-2.30.12/SDL2-2.30.12.tar.gz
 https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.4.0.tar.gz
 https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.6.3.tar.gz
 https://downloads.xiph.org/releases/ogg/libogg-1.3.5.tar.xz
