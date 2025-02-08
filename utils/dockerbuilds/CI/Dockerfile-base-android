@@ -17,15 +17,16 @@ RUN apt install -y -qq openssl gdb xvfb bzip2 git scons cmake make ccache gcc g+
 # android stuff
 WORKDIR /home/wesnoth-android/.android/sdk
 
-RUN apt install -y -qq meson gperf openjdk-17-jdk-headless wget
+RUN apt install -y -qq meson gperf openjdk-17-jdk-headless wget autoconf pkg-config
 RUN wget -nc "https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip" -P .
 RUN unzip ./commandlinetools-linux-11076708_latest.zip -d .
 RUN mkdir cmdline-tools/latest
 RUN mv ./cmdline-tools/bin cmdline-tools/latest/bin
 RUN mv ./cmdline-tools/lib cmdline-tools/latest/lib
 
-RUN yes | ./cmdline-tools/latest/bin/sdkmanager "tools" "platform-tools" "platforms;android-34" "build-tools;34.0.0" "ndk;27.2.12479018"
+RUN yes | ./cmdline-tools/latest/bin/sdkmanager "tools" "platform-tools" "platforms;android-34" "build-tools;34.0.0" "ndk;26.3.11579264"
 
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 ENV ANDROID_HOME=/home/wesnoth-android/.android/sdk
 ENV ANDROID_SDK_ROOT=/home/wesnoth-android/.android/sdk
-ENV ANDROID_NDK_ROOT=/home/wesnoth-android/.android/sdk/ndk/27.2.12479018
+ENV ANDROID_NDK_ROOT=/home/wesnoth-android/.android/sdk/ndk/26.3.11579264
