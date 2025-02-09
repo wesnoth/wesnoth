@@ -431,7 +431,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	// We first need to determine the size of the text which need the rendered
 	// text. So resolve and render the text first and then start to resolve
 	// the other formulas.
-	const t_string text = text_(variables);
+	const t_string& text = cfg_["parse_text_as_formula"].to_bool(true) ? text_(variables) : cfg_["text"].t_str();
 
 	if(text.empty()) {
 		DBG_GUI_D << "Text: no text to render, leave.";
