@@ -160,6 +160,8 @@ prefs::~prefs()
 
 void prefs::load_advanced_prefs(const game_config_view& gc)
 {
+	advanced_prefs_.clear();
+
 	for(const config& pref : gc.child_range("advanced_preference")) {
 		try {
 			advanced_prefs_.emplace_back(pref);

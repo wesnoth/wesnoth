@@ -23,10 +23,8 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/menu_button.hpp"
-#include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/unit_preview_pane.hpp"
@@ -273,12 +271,15 @@ void units_dialog::dismiss_unit(std::vector<unit_const_ptr>& unit_list, const te
 
 	unit_list.erase(unit_list.begin() + selected_index_);
 
-	// Remove the entry from the dialog list
-	list.remove_row(selected_index_);
-	list_item_clicked();
-
 	// Remove the entry from the filter list
 	filter_options_.erase(filter_options_.begin() + selected_index_);
+
+	// Remove the entry from the dialog list
+	list.remove_row(selected_index_);
+
+	// This line can change selected_index_, so the erasing needs to be done before it
+	list_item_clicked();
+
 	assert(filter_options_.size() == list.get_item_count());
 
 	LOG_DP << "Dismissing a unit, side = " << u.side() << ", id = '" << u.id() << "'";
@@ -460,29 +461,42 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 
 std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 	const std::vector<const unit_type*>& recruit_list,
-	const team& team)
+	const team& team,
+	const map_location& recruit_hex)
 {
 	auto dlg = std::make_unique<units_dialog>();
 	auto set_column = dlg->make_column_builder(recruit_list);
 
-	set_column("unit_image", [&team](const auto& recruit) {
+	set_column("unit_image", [&team, &recruit_hex](const auto& recruit) {
 		std::string image_string = recruit->icon();
 		if (image_string.empty()) {
 			image_string = recruit->image();
 		}
 		image_string += "~RC(" + recruit->flag_rgb() + ">" + team.color() + ")";
 		image_string += "~SCALE_INTO(72,72)";
+		bool not_recruitable = unit_helper::recruit_message(
+			recruit->id(), recruit_hex, map_location::null_location(), team).has_value();
+		if (not_recruitable) {
+			image_string += "~GS()";
+		}
 		return image_string;
 	}, sort_type::none);
 
-	set_column("unit_details", [](const auto& recruit) {
-		return recruit->type_name() + unit_helper::format_cost_string(recruit->cost());
+	set_column("unit_details", [&team, &recruit_hex](const auto& recruit) {
+		bool recruitable = !unit_helper::recruit_message(recruit->id(), recruit_hex, map_location::null_location(), team).has_value();
+		return unit_helper::maybe_inactive(recruit->type_name(), recruitable)
+			+ unit_helper::format_cost_string(recruit->cost(), recruitable);
 	}, sort_type::generator);
 
 	dlg->set_title(_("Recruit Unit") + get_title_suffix(team.side()))
 		.set_ok_label(_("Recruit"))
 		.set_help_topic("recruit_and_recall")
 		.set_row_num(recruit_list.size());
+
+	dlg->set_tooltip_generator([&team, &recruit_hex, &recruit_list](std::size_t index) {
+		const auto& msg = unit_helper::recruit_message(recruit_list[index]->id(), recruit_hex, map_location::null_location(), team);
+		return msg.has_value() ? msg.value() : std::string();
+	});
 
 	dlg->on_modified([&recruit_list](std::size_t index) -> const auto& { return *recruit_list[index]; });
 

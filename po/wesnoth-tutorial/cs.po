@@ -3,7 +3,7 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2024
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2025
 # Petr Šlejhar (Septim) <septim@centrum.cz>, 2020, 2021
 #
 msgid ""
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-01-19 17:47 UTC\n"
-"PO-Revision-Date: 2024-12-28 23:53+0100\n"
+"PO-Revision-Date: 2025-01-25 20:01+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -22,10 +22,8 @@ msgstr ""
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
-#, fuzzy
-#| msgid "Battle Training"
 msgid "Battle Training — Old Tutorial"
-msgstr "Bojový výcvik"
+msgstr "Bojový výcvik – starý tutoriál"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
@@ -35,15 +33,12 @@ msgstr "Tutoriál"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
-#| "first-time players."
 msgid ""
 "Learn the basics of Wesnoth gameplay with a tutorial.\n"
 "    \n"
 msgstr ""
-"Nauč se v tutoriálu základy hry Wesnoth. Doporučeno pro začínající hráče."
+"Nauč se v tutoriálu základy hry Wesnoth.\n"
+"    \n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:23
@@ -51,6 +46,8 @@ msgid ""
 "Note: No longer recommended for first-time players. Try <i>The South Guard</"
 "i> instead."
 msgstr ""
+"Poznámka: Pro začínající hráče se již nedoporučuje. Zkus raději <i>Jižní "
+"hlídku</i>."
 
 #. [difficulty]
 #: data/campaigns/tutorial/_main.cfg:33
@@ -59,10 +56,8 @@ msgstr "Začátečník"
 
 #. [achievement_group]
 #: data/campaigns/tutorial/achievements.cfg:3
-#, fuzzy
-#| msgid "Tutorial"
 msgid "Old Tutorial"
-msgstr "Tutoriál"
+msgstr "Starý tutoriál"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:7
@@ -402,8 +397,8 @@ msgstr "Tenhle <i>panák</i> bude mít tah?"
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:586
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to "
-"$($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to $"
+"($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "Ano. Je to kouzelný panák! Když tě zasáhne, ubere 3 body života a má 5 "
 "pokusů. Pokud tě zasáhne pokaždé, zbude ti jen $($student_hp-15) ze "
@@ -2161,8 +2156,8 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1314
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
-"name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, "
+"$unit.name|."
 msgstr ""
 "Jednotky vyšší úrovně jsou sice silné, ale ne nezranitelné. Budeš nám "
 "chybět, $unit.name|."

@@ -50,7 +50,6 @@ jobs:
     - name: Install dependencies
       if: matrix.language == 'cpp'
       run: |
-        utils/autorevision.sh -t h > src/revision.h
         sudo apt update
         sudo apt install scons libboost-system1.83-dev libboost-filesystem1.83-dev libboost-iostreams1.83-dev \
           libboost-serialization1.83-dev libboost-locale1.83-dev libboost-regex1.83-dev libboost-random1.83-dev \

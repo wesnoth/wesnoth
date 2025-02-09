@@ -18,7 +18,6 @@
 #include "gettext.hpp"
 #include "gui/widgets/addon_list.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/window.hpp"
 #include "tstring.hpp"
 
 namespace gui2::dialogs
