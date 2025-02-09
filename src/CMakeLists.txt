@@ -102,7 +102,7 @@ endif()
 # Depending on the flag create a real file or an empty dummy.
 #
 # Since the code is executed every build run of Wesnoth we need to make sure
-# that no modifications don't turn into a rebuild. Therefore a the dummy is
+# that no modifications don't turn into a rebuild. Therefore a dummy is
 # created and the second target only copies the file if modified.
 if(ENABLE_DISPLAY_REVISION)
 	add_custom_target(wesnoth-revision_dummy
@@ -238,7 +238,7 @@ if(ENABLE_GAME)
 	endif()
 
 	if(ENABLE_DISPLAY_REVISION)
-		add_dependencies(wesnoth wesnoth-revision)
+		add_dependencies(wesnoth-common wesnoth-revision) # game_version.cpp, where LOAD_REVISION is used, is in wesnoth-common
 	endif()
 
 	set_target_properties(wesnoth PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnoth${BINARY_SUFFIX})
