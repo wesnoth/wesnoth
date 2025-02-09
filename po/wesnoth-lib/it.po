@@ -5,13 +5,13 @@
 #
 # Automatically generated, 2004.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009, 2010.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2024.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-01-19 11:47-0600\n"
-"PO-Revision-Date: 2024-11-30 16:08+0100\n"
+"PO-Revision-Date: 2025-01-25 21:45+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -2379,14 +2379,12 @@ msgstr " (Premi ’$hotkey’ per ulteriori informazioni)"
 #. [button]: id=close
 #: data/gui/themes/celes/dialogs/title_screen.cfg:157
 msgid "Hide"
-msgstr ""
+msgstr "Nascondi"
 
 #. [button]: id=close
 #: data/gui/themes/celes/dialogs/title_screen.cfg:158
-#, fuzzy
-#| msgid "Show next tip of the day"
 msgid "Hide tip of the day"
-msgstr "Mostra il suggerimento successivo"
+msgstr "Nascondi il suggerimento del giorno"
 
 #. [button]: id=previous_tip
 #. [button]: id=previous_page
@@ -2550,10 +2548,8 @@ msgstr "Aiuto"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:246
-#, fuzzy
-#| msgid "Change the in-game theme"
 msgid "Visit the in-game help"
-msgstr "Cambia il tema della partita"
+msgstr "Consulta la guida del gioco"
 
 #. [grid]
 #. [button]: id=cancel
@@ -2615,10 +2611,8 @@ msgstr "Copia"
 #. [draw]
 #. The heavy checkmark character is available in the DejaVu Sans font, but not in the default Lato font
 #: data/gui/themes/celes/widgets/button_success.cfg:269
-#, fuzzy
-#| msgid "page^<span font_family='DejaVu Sans'>✔</span> Copied"
 msgid "page^<b><span font_family='DejaVu Sans'>✔</span> Copied</b>"
-msgstr "<span font_family='DejaVu Sans'>✔</span> Copiato"
+msgstr "<span font_family='DejaVu Sans'>✔</span> Copiata"
 
 #. [button]: id=click_dismiss
 #. [button]: id=ok
@@ -3022,36 +3016,32 @@ msgstr "Esci"
 #. [button]: id=downloads_by_version
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:59
 msgid "Add-on download count by version"
-msgstr ""
+msgstr "Numero di scaricamenti dell’estensione per versione"
 
 #. [button]: id=addon_count_by_forum_auth
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:77
 msgid "Count of add-ons using forum_auth"
-msgstr ""
+msgstr "Conta le estesioni usando forum_auth"
 
 #. [button]: id=admin_delete_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:95
-#, fuzzy
-#| msgid "Select the add-on version"
 msgid "Delete selected add-on (admin)"
-msgstr "Seleziona la versione dell’estensione"
+msgstr "Elimina l’estensione selezionata (amministratore)"
 
 #. [button]: id=admin_hide_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:113
-#, fuzzy
-#| msgid "Select the add-on version"
 msgid "Hide selected add-on (admin)"
-msgstr "Seleziona la versione dell’estensione"
+msgstr "Nascondi l’estensione selezionata"
 
 #. [button]: id=admin_unhide_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:131
 msgid "Unhide add-on by ID (admin)"
-msgstr ""
+msgstr "Disvela estensioni in base all’ID )amministratore)"
 
 #. [button]: id=admin_list_hidden
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:149
 msgid "List hidden add-ons (admin)"
-msgstr ""
+msgstr "Elenca le estensioni nascoste (amministratore)"
 
 #. [scroll_label]
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:68
@@ -3142,7 +3132,7 @@ msgstr "Ordina alfabeticamente per nome completo della campagna"
 #. [toggle_button]: id=sort_time
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:224
 msgid "Timeline"
-msgstr "Temporale"
+msgstr "Cronologia"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:225
@@ -3157,7 +3147,7 @@ msgstr "Filtra per stato di completamento delle campagne"
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:238
 msgid "Not Completed"
-msgstr "Non Completato"
+msgstr "Non Completata"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
@@ -3168,7 +3158,7 @@ msgstr "Mostra le campagne non completate dal giocatore"
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:244
 msgid "Completed: Bronze"
-msgstr "Completato: Bronzo"
+msgstr "Completate: Bronzo"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:245
@@ -3178,7 +3168,7 @@ msgstr "Mostra le campagne completate al livello di difficoltà facile"
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:249
 msgid "Completed: Silver"
-msgstr "Completato: Argento"
+msgstr "Completate: Argento"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:250
@@ -3188,17 +3178,17 @@ msgstr "Mostra le campagne completate al livello di difficoltà intermedio"
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:254
 msgid "Completed: Gold"
-msgstr "Completato: Oro"
+msgstr "Completate: Oro"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:255
 msgid "Show campaigns completed at hardest difficulty"
-msgstr "Mostra le campagne completate al livello di difficoltà più difficile"
+msgstr "Mostra le campagne completate al livello di difficoltà più alto"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:259
 msgid "Completed: All"
-msgstr "Completato: Tutto"
+msgstr "Completata: Tutte"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:260
@@ -3761,23 +3751,17 @@ msgstr ""
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
-#, fuzzy
-#| msgid ""
-#| "Comma delimited list of forum usernames of other people who are allowed "
-#| "to upload updates for this add-on."
 msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on or delete this add-on."
 msgstr ""
-"Lista, separata da virgole, di utenze del forum di altre persone autorizzate "
-"ad inviare aggiornamenti di questa estensione."
+"Lista, separata da virgole, di utenze del forum contenente altre persone "
+"autorizzate ad inviare aggiornamenti di questa estensione o a cancellarla."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
-#, fuzzy
-#| msgid "Secondary Authors:"
 msgid "Primary Authors:"
-msgstr "Autori Secondari:"
+msgstr "Autori Principali:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:215
@@ -3791,7 +3775,7 @@ msgstr ""
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:215
 msgid "Secondary Authors:"
-msgstr "Autori Secondari:"
+msgstr "Co-autori:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:216
@@ -6357,17 +6341,13 @@ msgstr "Applica"
 
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
-#, fuzzy
-#| msgid "Show next tip of the day"
 msgid "Show tip of the day"
-msgstr "Mostra il suggerimento successivo"
+msgstr "Mostra il suggerimento del giorno"
 
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:224
-#, fuzzy
-#| msgid "Show next tip of the day"
 msgid "Show gameplay tips on the main menu"
-msgstr "Mostra il suggerimento successivo"
+msgstr "Mostra i suggerimenti di gioco nel menu principale"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:236
@@ -7181,10 +7161,8 @@ msgstr "Risposta"
 #: src/gui/dialogs/addon/addon_server_info.cpp:115
 #: src/gui/dialogs/addon/addon_server_info.cpp:143
 #: src/gui/dialogs/addon/addon_server_info.cpp:167
-#, fuzzy
-#| msgid "Password Required"
 msgid "Password not provided"
-msgstr "Password necessaria"
+msgstr "Password non inserita"
 
 #: src/gui/dialogs/addon/manager.cpp:145
 msgid "addons_view^All Add-ons"
@@ -7700,7 +7678,7 @@ msgstr "Terraforming"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:392
 msgid "The icon’s file size is too large"
-msgstr ""
+msgstr "La dimensione del file-icona è troppo grande."
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:394
 msgid "No validation errors"
@@ -8558,7 +8536,7 @@ msgstr "Elimina estensione dal server"
 #. TRANSLATORS: This is the new chat text indicator
 #: src/gui/widgets/chatbox.cpp:95
 msgid "NEW"
-msgstr ""
+msgstr "NOVITÁ"
 
 #: src/gui/widgets/chatbox.cpp:300
 msgid "whisper to $receiver"
