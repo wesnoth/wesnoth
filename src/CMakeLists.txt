@@ -212,7 +212,6 @@ if(ENABLE_GAME)
 	endif()
 
 	target_link_libraries(wesnoth
-		wesnoth-common
 		${WIDGETS_LIB}
 		wesnoth-client
 		wesnoth-common
@@ -259,7 +258,6 @@ if(ENABLE_TESTS)
 	endif()
 
 	target_link_libraries(boost_unit_tests
-		wesnoth-common
 		${WIDGETS_LIB}
 		wesnoth-client
 		wesnoth-common
