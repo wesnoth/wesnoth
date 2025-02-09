@@ -126,7 +126,7 @@ bool show_status_on_ally_orb;
 bool show_unmoved_orb;
 
 //
-// Reach Map UI flags
+// Reach map opacity variables
 //
 
 int reach_map_border_opacity;
