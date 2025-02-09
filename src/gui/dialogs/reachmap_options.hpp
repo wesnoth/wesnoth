@@ -39,7 +39,6 @@ private:
 	 * connecting the callbacks for user interaction.
 	 *
 	 * @param base_id which group of checkboxes and buttons to affect
-	 * @param shown the checkbox's ticked state (input and asynchronous output)
 	 * @param initial which color to select (input only)
 	 */
 	void setup_reachmap_group(const std::string& base_id, const std::string& initial);
