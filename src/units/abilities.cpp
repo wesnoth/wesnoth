@@ -469,32 +469,45 @@ bool unit::ability_active_impl(const std::string& ability,const config& cfg,cons
 
 	const unit_map& units = get_unit_map();
 
-	for (const config &i : cfg.child_range("filter_adjacent"))
-	{
+	for(const config &i : cfg.child_range("filter_adjacent")) {
+		std::size_t radius = i["radius"].to_int(1);
 		std::size_t count = 0;
 		unit_filter ufilt{ vconfig(i) };
 		ufilt.set_use_flat_tod(illuminates);
-		std::vector<map_location::direction> dirs = i["adjacent"].empty() ? map_location::all_directions() : map_location::parse_directions(i["adjacent"]);
-		for (const map_location::direction index : dirs)
-		{
-			unit_map::const_iterator unit = units.find(adjacent[static_cast<int>(index)]);
-			if (unit == units.end())
+		for(const unit& u : units) {
+			const map_location& from_loc = u.get_location();
+			std::size_t distance = distance_between(from_loc, loc);
+			if(distance > radius || !ufilt(u, *this)) {
 				continue;
-			if (!ufilt(*unit, *this))
-				continue;
-			if((*this).id() == (*unit).id())
-				continue;
-			if (i.has_attribute("is_enemy")) {
-				const display_context& dc = resources::filter_con->get_disp_context();
-				if (i["is_enemy"].to_bool() != dc.get_team(unit->side()).is_enemy(side_)) {
+			}
+			int dir = 0;
+			for(unsigned j = 0; j < adjacent.size(); ++j) {
+				bool adj_or_dist = distance != 1 ? distance_between(adjacent[j], from_loc) == (distance - 1) : adjacent[j] == from_loc;
+				if(adj_or_dist) {
+					dir = j;
+					break;
+				}
+			}
+			assert(dir >= 0 && dir <= 5);
+			map_location::direction direction{ dir };
+			if(i.has_attribute("adjacent")) { //key adjacent defined
+				if(!utils::contains(map_location::parse_directions(i["adjacent"]), direction)) {
 					continue;
 				}
 			}
-			count++;
+			if(i.has_attribute("is_enemy")) {
+				const display_context& dc = resources::filter_con->get_disp_context();
+				if(i["is_enemy"].to_bool() != dc.get_team(u.side()).is_enemy(side_)) {
+					continue;
+				}
+			}
+			++count;
 		}
-		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
-		config::attribute_value i_count =i["count"];
-		if(!in_ranges<int>(count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts)){
+
+		if(i["count"].empty() && count == 0) {
+			return false;
+		}
+		if(!i["count"].empty() && !in_ranges<int>(count, utils::parse_ranges_unsigned(i["count"].str()))) {
 			return false;
 		}
 	}
@@ -519,6 +532,7 @@ bool unit::ability_active_impl(const std::string& ability,const config& cfg,cons
 			return false;
 		}
 	}
+
 	return true;
 }
 
@@ -2368,27 +2382,44 @@ bool attack_type::special_active_impl(
 	const auto adjacent = get_adjacent_tiles(self_loc);
 
 	// Filter the adjacent units.
-	for (const config &i : special.child_range(filter_adjacent))
-	{
+	for(const config &i : special.child_range(filter_adjacent)) {
+		std::size_t radius = i["radius"].to_int(1);
 		std::size_t count = 0;
-		std::vector<map_location::direction> dirs = i["adjacent"].empty() ? map_location::all_directions() : map_location::parse_directions(i["adjacent"]);
-		unit_filter filter{ vconfig(i) };
-		for (const map_location::direction index : dirs)
-		{
-			unit_map::const_iterator unit = units.find(adjacent[static_cast<int>(index)]);
-			if (unit == units.end() || !filter.matches(*unit, adjacent[static_cast<int>(index)], *self))
+		unit_filter ufilt{ vconfig(i) };
+		for(const unit& u : units) {
+			const map_location& from_loc = u.get_location();
+			std::size_t distance = distance_between(from_loc, self_loc);
+			if(distance > radius || !ufilt(u, *self)) {
 				continue;
-			if (i.has_attribute("is_enemy")) {
-				const display_context& dc = resources::filter_con->get_disp_context();
-				if (i["is_enemy"].to_bool() != dc.get_team(unit->side()).is_enemy(self->side())) {
+			}
+			int dir = 0;
+			for(unsigned j = 0; j < adjacent.size(); ++j) {
+				bool adj_or_dist = distance != 1 ? distance_between(adjacent[j], from_loc) == (distance - 1) : adjacent[j] == from_loc;
+				if(adj_or_dist) {
+					dir = j;
+					break;
+				}
+			}
+			assert(dir >=0 && dir <= 5);
+			map_location::direction direction{ dir };
+			if(i.has_attribute("adjacent")) { //key adjacent defined
+				if(!utils::contains(map_location::parse_directions(i["adjacent"]), direction)) {
 					continue;
 				}
 			}
-			count++;
+			if(i.has_attribute("is_enemy")) {
+				const display_context& dc = resources::filter_con->get_disp_context();
+				if(i["is_enemy"].to_bool() != dc.get_team(u.side()).is_enemy(self->side())) {
+					continue;
+				}
+			}
+			++count;
 		}
-		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
-		config::attribute_value i_count =i["count"];
-		if(!in_ranges<int>(count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts)){
+
+		if(i["count"].empty() && count == 0) {
+			return false;
+		}
+		if(!i["count"].empty() && !in_ranges<int>(count, utils::parse_ranges_unsigned(i["count"].str()))) {
 			return false;
 		}
 	}

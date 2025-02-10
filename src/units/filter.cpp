@@ -129,30 +129,47 @@ struct unit_filter_adjacent : public unit_filter_base
 	{
 		const unit_map& units = args.context().get_disp_context().units();
 		const auto adjacent = get_adjacent_tiles(args.loc);
-		int match_count=0;
+		int match_count = 0;
+		std::size_t radius = cfg_["radius"].to_int(1);
 
 		config::attribute_value i_adjacent = cfg_["adjacent"];
 		std::vector<map_location::direction> dirs;
-		if (i_adjacent.empty()) {
-			dirs = map_location::all_directions();
-		} else {
-			dirs = map_location::parse_directions(i_adjacent);
-		}
-		for (map_location::direction dir : dirs) {
-			unit_map::const_iterator unit_itor = units.find(adjacent[static_cast<int>(dir)]);
-			if (unit_itor == units.end() || !child_.matches(unit_filter_args{*unit_itor, unit_itor->get_location(), &args.u, args.fc, args.use_flat_tod} )) {
+		for(const unit& u : units) {
+			const map_location& from_loc = u.get_location();
+			std::size_t distance = distance_between(from_loc, args.loc);
+			if(distance > radius || !child_.matches(unit_filter_args{u, from_loc, &args.u, args.fc, args.use_flat_tod} )) {
 				continue;
 			}
+			int dir = 0;
+			for(unsigned j = 0; j < adjacent.size(); ++j) {
+				bool adj_or_dist = distance != 1 ? distance_between(adjacent[j], from_loc) == (distance - 1) : adjacent[j] == from_loc;
+				if(adj_or_dist) {
+					dir = j;
+					break;
+				}
+			}
+			assert(dir >= 0 && dir <= 5);
+			map_location::direction direction{ dir };
+			if(!i_adjacent.empty()) { //key adjacent defined
+				if(!utils::contains(map_location::parse_directions(i_adjacent), direction)) {
+					continue;
+				}
+			}
 			auto is_enemy = cfg_["is_enemy"];
-			if (!is_enemy.empty() && is_enemy.to_bool() != args.context().get_disp_context().get_team(args.u.side()).is_enemy(unit_itor->side())) {
+			if (!is_enemy.empty() && is_enemy.to_bool() != args.context().get_disp_context().get_team(args.u.side()).is_enemy(u.side())) {
 				continue;
 			}
 			++match_count;
 		}
 
-		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
 		config::attribute_value i_count = cfg_["count"];
-		return in_ranges(match_count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts);
+		if(i_count.empty() && match_count == 0) {
+			return false;
+		}
+		if(!i_count.empty() && !in_ranges<int>(match_count, utils::parse_ranges_unsigned(i_count.str()))) {
+			return false;
+		}
+		return true;
 	}
 
 	const unit_filter_compound child_;
