@@ -1093,7 +1093,6 @@
 		91E356F91CACC97400774252 /* menu_item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC44E37E181DDAF90037A62F /* menu_item.cpp */; };
 		91E356FA1CACC97400774252 /* pump.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E7217B9063D00C16B75 /* pump.cpp */; };
 		91E356FB1CACC97400774252 /* wmi_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC44E380181DDAF90037A62F /* wmi_manager.cpp */; };
-		91E356FC1CACC9B200774252 /* configure_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F5FFD1A048E210018C9D6 /* configure_engine.cpp */; };
 		91E356FD1CACC9B200774252 /* connect_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F5FFE1A048E210018C9D6 /* connect_engine.cpp */; };
 		91E356FE1CACC9B200774252 /* create_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F5FFF1A048E210018C9D6 /* create_engine.cpp */; };
 		91E356FF1CACC9B200774252 /* depcheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F60001A048E210018C9D6 /* depcheck.cpp */; };
@@ -1339,7 +1338,6 @@
 		EC2864331967990500168DFF /* variable_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2864311967990500168DFF /* variable_info.cpp */; };
 		EC28C58F19423426003B0F5E /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC28C58D19423426003B0F5E /* utils.cpp */; };
 		EC28C59119423529003B0F5E /* save_index.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC28C59019423528003B0F5E /* save_index.cpp */; };
-		EC2F600D1A048E220018C9D6 /* configure_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F5FFD1A048E210018C9D6 /* configure_engine.cpp */; };
 		EC2F600E1A048E220018C9D6 /* connect_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F5FFE1A048E210018C9D6 /* connect_engine.cpp */; };
 		EC2F600F1A048E220018C9D6 /* create_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F5FFF1A048E210018C9D6 /* create_engine.cpp */; };
 		EC2F60101A048E220018C9D6 /* depcheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2F60001A048E210018C9D6 /* depcheck.cpp */; };
@@ -2331,7 +2329,6 @@
 		91B621BB1B76B2CD00B00E0F /* version.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
 		91B621BC1B76B35A00B00E0F /* manager_impl.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = manager_impl.hpp; sourceTree = "<group>"; };
 		91B621BD1B76B35D00B00E0F /* manager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = manager.hpp; sourceTree = "<group>"; };
-		91B621BE1B76B44300B00E0F /* configure_engine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = configure_engine.hpp; sourceTree = "<group>"; };
 		91B621BF1B76B44300B00E0F /* connect_engine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = connect_engine.hpp; sourceTree = "<group>"; };
 		91B621C01B76B44300B00E0F /* create_engine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = create_engine.hpp; sourceTree = "<group>"; };
 		91B621C11B76B44300B00E0F /* depcheck.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = depcheck.hpp; sourceTree = "<group>"; };
@@ -2811,7 +2808,6 @@
 		EC28C58D19423426003B0F5E /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utils.cpp; sourceTree = "<group>"; };
 		EC28C58E19423426003B0F5E /* utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
 		EC28C59019423528003B0F5E /* save_index.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = save_index.cpp; sourceTree = "<group>"; };
-		EC2F5FFD1A048E210018C9D6 /* configure_engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = configure_engine.cpp; sourceTree = "<group>"; };
 		EC2F5FFE1A048E210018C9D6 /* connect_engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = connect_engine.cpp; sourceTree = "<group>"; };
 		EC2F5FFF1A048E210018C9D6 /* create_engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = create_engine.cpp; sourceTree = "<group>"; };
 		EC2F60001A048E210018C9D6 /* depcheck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = depcheck.cpp; sourceTree = "<group>"; };
@@ -4428,8 +4424,6 @@
 			isa = PBXGroup;
 			children = (
 				9577DD202C1E0D7F0031135F /* component_availability.hpp */,
-				EC2F5FFD1A048E210018C9D6 /* configure_engine.cpp */,
-				91B621BE1B76B44300B00E0F /* configure_engine.hpp */,
 				EC2F5FFE1A048E210018C9D6 /* connect_engine.cpp */,
 				91B621BF1B76B44300B00E0F /* connect_engine.hpp */,
 				EC2F5FFF1A048E210018C9D6 /* create_engine.cpp */,
@@ -5506,7 +5500,6 @@
 				B54AC69D0FEA9E8F006F6FBD /* configuration.cpp in Sources */,
 				46F92DCD2174F6A300602C1C /* log_settings.cpp in Sources */,
 				46F92E032174F6A400602C1C /* sp_options_configure.cpp in Sources */,
-				EC2F600D1A048E220018C9D6 /* configure_engine.cpp in Sources */,
 				EC2F600E1A048E220018C9D6 /* connect_engine.cpp in Sources */,
 				46F92E772174F6A400602C1C /* drawing.cpp in Sources */,
 				62D24F321519987400350848 /* context_manager.cpp in Sources */,
@@ -6374,7 +6367,6 @@
 				46F92E622174F6A400602C1C /* toggle_button.cpp in Sources */,
 				91E356FB1CACC97400774252 /* wmi_manager.cpp in Sources */,
 				46F92D9A2174F6A300602C1C /* transient_message.cpp in Sources */,
-				91E356FC1CACC9B200774252 /* configure_engine.cpp in Sources */,
 				91E356FD1CACC9B200774252 /* connect_engine.cpp in Sources */,
 				91E356FE1CACC9B200774252 /* create_engine.cpp in Sources */,
 				ECDC907F23BBDFC900A07ADA /* lua_wml.cpp in Sources */,
