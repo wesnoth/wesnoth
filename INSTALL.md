@@ -83,7 +83,7 @@ NOTE 2: vcpkg install guide (steps 1-2 are relevant for Wesnoth, steps 3 and lat
 
 When installing vcpkg, it is recommended to do so by cloning https://github.com/microsoft/vcpkg, as the Wesnoth project occasionally updates to newer versions of vcpkg, and the databases on older versions of vcpkg may not have the necessary library versions.
 
-NOTE 3: opening the source folder in Visual Studio with the "open a local folder" option automatically runs CMake/vcpkg integrate install when opening the project.
+NOTE 3: opening the source folder in Visual Studio with the "open a local folder" option automatically runs CMake/vcpkg install when opening the project.
 
 NOTE 4: When cloning vcpkg, it is advisable to avoid spaces in the directory path.
 
