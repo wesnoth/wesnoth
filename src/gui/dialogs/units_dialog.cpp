@@ -247,7 +247,7 @@ void units_dialog::dismiss_unit(std::vector<unit_const_ptr>& unit_list, const te
 	// If the unit is of level > 1, or is close to advancing, we warn the player about it
 	std::stringstream message;
 	// first case: has no upkeep but is not a loyal unit, and not a level zero
-	if(u.upkeep() == 0 && u.level() > 1 && !u.loyal()) {
+	if(u.upkeep() == 0 && u.level() >= 1 && !u.loyal()) {
 		message << _("This unit requires no upkeep.") << " " << (u.gender() == unit_race::MALE
 		         ? _("Do you really want to dismiss him?")
 		         : _("Do you really want to dismiss her?"));
