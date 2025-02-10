@@ -124,8 +124,8 @@ rect rect::shifted_by(const point& other) const
 point rect::point_at(double x, double y) const
 {
 	return {
-		static_cast<int>(this->x + this->w * std::clamp(x, 0.0, 1.0)),
-		static_cast<int>(this->y + this->h * std::clamp(y, 0.0, 1.0))
+		static_cast<int>(this->x + std::round(this->w * std::clamp(x, 0.0, 1.0))),
+		static_cast<int>(this->y + std::round(this->h * std::clamp(y, 0.0, 1.0)))
 	};
 }
 
