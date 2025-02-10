@@ -45,19 +45,6 @@ texture pango_render_text(const std::string& text, int size, const color_t& colo
 std::pair<int, int> pango_line_size(const std::string& line, int font_size, font::pango_text::FONT_STYLE font_style = font::pango_text::STYLE_NORMAL);
 
 /**
- * Determine the width of a line of text given a certain font size.
- */
-inline int pango_line_width(const std::string& line, int font_size, font::pango_text::FONT_STYLE font_style = font::pango_text::STYLE_NORMAL)
-{
-	return pango_line_size(line, font_size, font_style).first;
-}
-
-/**
- * If the text exceeds the specified max width, end it with an ellipsis (...)
- */
-std::string pango_line_ellipsize(const std::string& text, int font_size, int max_width, font::pango_text::FONT_STYLE font_style = font::pango_text::STYLE_NORMAL);
-
-/**
  * Uses Pango to word wrap text.
  */
 std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, int max_width, int max_height = -1, int max_lines = -1, bool partial_line = false);

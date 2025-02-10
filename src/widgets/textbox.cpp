@@ -322,7 +322,7 @@ texture textbox::add_text_line(const std::u32string& text, const color_t& color)
 			visible_string = "";
 		}
 
-		int w = font::pango_line_width(visible_string, font_size_);
+		auto [w, _] = font::pango_line_size(visible_string, font_size_);
 
 		if(wrap_ && w >= inner_location().w) {
 			if(backup_itor != text.end()) {
