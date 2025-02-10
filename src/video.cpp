@@ -118,7 +118,6 @@ void deinit()
 	// Clear any static texture caches,
 	// lest they try to delete textures after SDL_Quit.
 	image::flush_cache();
-	font::flush_texture_cache();
 	render_texture_.reset();
 	current_render_target_.reset();
 

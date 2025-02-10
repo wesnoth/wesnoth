@@ -42,27 +42,6 @@ static lg::log_domain log_font("font");
 
 namespace font
 {
-
-namespace
-{
-/**
- * The text texture cache.
- *
- * Each time a specific bit of text is rendered, a corresponding texture is created and
- * added to the cache. We don't store the surface since there isn't really any use for
- * it. If we need texture size that can be easily queried.
- *
- * @todo Figure out how this can be optimized with a texture atlas. It should be possible
- * to store smaller bits of text in the atlas and construct new textures from hem.
- */
-std::map<std::size_t, texture> rendered_cache{};
-} // anon namespace
-
-void flush_texture_cache()
-{
-	rendered_cache.clear();
-}
-
 pango_text::pango_text()
 	: context_(pango_font_map_create_context(pango_cairo_font_map_get_default()), g_object_unref)
 	, layout_(pango_layout_new(context_.get()), g_object_unref)
