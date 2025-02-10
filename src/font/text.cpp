@@ -436,13 +436,14 @@ void pango_text::add_attribute_fg_color(const unsigned start_offset, const unsig
 	}
 }
 
-void pango_text::add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, const std::string& family)
+void pango_text::add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, font::family_class family)
 {
 	attribute_start_offset_ = start_offset;
 	attribute_end_offset_ = end_offset;
 
 	if (attribute_start_offset_ != attribute_end_offset_) {
-		PangoAttribute *attr = pango_attr_family_new(family.c_str());
+		const t_string& family_name = get_font_families(family);
+		PangoAttribute *attr = pango_attr_family_new(family_name.c_str());
 		attr->start_index = attribute_start_offset_;
 		attr->end_index = attribute_end_offset_;
 

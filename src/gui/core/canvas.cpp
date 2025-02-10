@@ -473,7 +473,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 		} else if (name == "font_size"||name == "size") {
 			text_renderer.add_attribute_size(start, end, attr["value"].to_int(font::SIZE_NORMAL));
 		} else if (name == "font_family"||name == "face") {
-			text_renderer.add_attribute_font_family(start, end, attr["value"].str(font::get_font_families(font::FONT_SANS_SERIF)));
+			text_renderer.add_attribute_font_family(start, end, font::str_to_family_class(attr["value"]));
 		} else if (name == "weight") {
 			text_renderer.add_attribute_weight(start, end, decode_text_weight(attr["value"]));
 		} else if (name == "style") {
