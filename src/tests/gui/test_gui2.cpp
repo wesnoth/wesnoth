@@ -102,6 +102,7 @@
 #include "gui/dialogs/prompt.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
+#include "gui/dialogs/reachmap_options.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/sp_options_configure.hpp"
 #include "gui/dialogs/statistics_dialog.hpp"
@@ -586,6 +587,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_screenshot_notification)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_select_orb_colors)
 {
 	test<select_orb_colors>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_reachmap_options)
+{
+	test<reachmap_options>();
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_statistics_dialog)
 {
