@@ -20,7 +20,6 @@
 #include "gui/dialogs/multiplayer/mp_options_helper.hpp"
 
 #include "game_initialization/create_engine.hpp"
-#include "game_initialization/configure_engine.hpp"
 
 
 namespace gui2
@@ -50,7 +49,6 @@ private:
 	virtual void post_show() override;
 
 	ng::create_engine create_engine_;
-	std::unique_ptr<ng::configure_engine> config_engine_;
 	std::unique_ptr<mp_options_helper> options_manager_;
 
 	int selected_game_index_;
