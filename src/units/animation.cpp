@@ -1360,15 +1360,15 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 			LOG_LUA << "Processing movement animation, dst = " << dst;
 			if(!animated_units_.empty() && animated_units_[animated_units_.size() - 1].is_movement) {
 				if(!use_lockstep) {
-					last_movement_serino++;
+					last_movement_serino_++;
 				}
-				LOG_LUA << "	serial number is " << last_movement_serino;
+				LOG_LUA << "	serial number is " << last_movement_serino_;
 				animated_units_.AGGREGATE_EMPLACE(au_rvalue, anim, text, text_color, src, with_bars,
-					au_rvalue->facing(), dst, src.get_relative_dir(dst), move_unit_p, true, last_movement_serino, coherence);
+					au_rvalue->facing(), dst, src.get_relative_dir(dst), move_unit_p, true, last_movement_serino_, coherence);
 			} else {
-				last_movement_serino = 0;
+				last_movement_serino_ = 0;
 				animated_units_.AGGREGATE_EMPLACE(au_rvalue, anim, text, text_color, src, with_bars,
-					au_rvalue->facing(), dst, src.get_relative_dir(dst), move_unit_p, true, last_movement_serino, coherence);
+					au_rvalue->facing(), dst, src.get_relative_dir(dst), move_unit_p, true, last_movement_serino_, coherence);
 			}
 		} else {
 			// Process non-movement animation

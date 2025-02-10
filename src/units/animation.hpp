@@ -296,7 +296,7 @@ private:
 		bool coherence = false;
 	};
 
-	int last_movement_serino = 0;
+	int last_movement_serino_ = 0;
 	std::vector<anim_elem> animated_units_;
 	std::chrono::milliseconds start_time_ = std::chrono::milliseconds::min();
 };
