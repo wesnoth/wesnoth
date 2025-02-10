@@ -484,10 +484,6 @@ private:
 	/** Length of the text. */
 	mutable std::size_t length_;
 
-	unsigned attribute_start_offset_;
-	unsigned attribute_end_offset_;
-	color_t	highlight_color_;
-
 	/**
 	 * Global pango attribute list. All attributes in this list
 	 * will be applied one by one to the text

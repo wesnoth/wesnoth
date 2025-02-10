@@ -84,9 +84,6 @@ pango_text::pango_text()
 	, maximum_length_(std::string::npos)
 	, calculation_dirty_(true)
 	, length_(0)
-	, attribute_start_offset_(0)
-	, attribute_end_offset_(0)
-	, highlight_color_()
 	, pixel_scale_(1)
 	, surface_buffer_()
 {
@@ -332,13 +329,11 @@ int pango_text::xy_to_index(const point& position) const
 void pango_text::add_attribute_size(const unsigned start_offset, const unsigned end_offset, int size)
 {
 	size = prefs::get().font_scaled(size) * pixel_scale_;
-	attribute_start_offset_ = start_offset;
-	attribute_end_offset_ = end_offset;
 
-	if (attribute_start_offset_ != attribute_end_offset_) {
+	if (start_offset != end_offset) {
 		PangoAttribute *attr = pango_attr_size_new_absolute(PANGO_SCALE * size);
-		attr->start_index = attribute_start_offset_;
-		attr->end_index = attribute_end_offset_;
+		attr->start_index = start_offset;
+		attr->end_index = end_offset;
 
 		DBG_GUI_D << "attribute: size";
 		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
@@ -350,13 +345,10 @@ void pango_text::add_attribute_size(const unsigned start_offset, const unsigned 
 
 void pango_text::add_attribute_weight(const unsigned start_offset, const unsigned end_offset, PangoWeight weight)
 {
-	attribute_start_offset_ = start_offset;
-	attribute_end_offset_ = end_offset;
-
-	if (attribute_start_offset_ != attribute_end_offset_) {
+	if (start_offset != end_offset) {
 		PangoAttribute *attr = pango_attr_weight_new(weight);
-		attr->start_index = attribute_start_offset_;
-		attr->end_index = attribute_end_offset_;
+		attr->start_index = start_offset;
+		attr->end_index = end_offset;
 
 		DBG_GUI_D << "attribute: weight";
 		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
@@ -368,17 +360,13 @@ void pango_text::add_attribute_weight(const unsigned start_offset, const unsigne
 
 void pango_text::add_attribute_style(const unsigned start_offset, const unsigned end_offset, PangoStyle style)
 {
-	attribute_start_offset_ = start_offset;
-	attribute_end_offset_ = end_offset;
-
-	if (attribute_start_offset_ != attribute_end_offset_) {
-
+	if (start_offset != end_offset) {
 		PangoAttribute *attr = pango_attr_style_new(style);
-		attr->start_index = attribute_start_offset_;
-		attr->end_index = attribute_end_offset_;
+		attr->start_index = start_offset;
+		attr->end_index = end_offset;
 
 		DBG_GUI_D << "attribute: style";
-		DBG_GUI_D << "attribute start: " << attribute_start_offset_ << " end : " << attribute_end_offset_;
+		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
 
 		// Insert all attributes
 		pango_attr_list_insert(global_attribute_list_, attr);
@@ -387,13 +375,10 @@ void pango_text::add_attribute_style(const unsigned start_offset, const unsigned
 
 void pango_text::add_attribute_underline(const unsigned start_offset, const unsigned end_offset, PangoUnderline underline)
 {
-	attribute_start_offset_ = start_offset;
-	attribute_end_offset_ = end_offset;
-
-	if (attribute_start_offset_ != attribute_end_offset_) {
+	if (start_offset != end_offset) {
 		PangoAttribute *attr = pango_attr_underline_new(underline);
-		attr->start_index = attribute_start_offset_;
-		attr->end_index = attribute_end_offset_;
+		attr->start_index = start_offset;
+		attr->end_index = end_offset;
 
 		DBG_GUI_D << "attribute: underline";
 		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
@@ -418,17 +403,14 @@ std::tuple<uint16_t, uint16_t, uint16_t> color_to_uint16(const color_t& color)
 
 void pango_text::add_attribute_fg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color)
 {
-	attribute_start_offset_ = start_offset;
-	attribute_end_offset_ = end_offset;
-
-	if (attribute_start_offset_ != attribute_end_offset_) {
+	if (start_offset != end_offset) {
 		auto [col_r, col_g, col_b] = color_to_uint16(color);
 		PangoAttribute *attr = pango_attr_foreground_new(col_r, col_g, col_b);
 		attr->start_index = start_offset;
 		attr->end_index = end_offset;
 
 		DBG_GUI_D << "attribute: fg color";
-		DBG_GUI_D << "attribute start: " << attribute_start_offset_ << " end : " << attribute_end_offset_;
+		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
 		DBG_GUI_D << "color: " << col_r << "," << col_g << "," << col_b;
 
 		// Insert all attributes
@@ -438,14 +420,11 @@ void pango_text::add_attribute_fg_color(const unsigned start_offset, const unsig
 
 void pango_text::add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, font::family_class family)
 {
-	attribute_start_offset_ = start_offset;
-	attribute_end_offset_ = end_offset;
-
-	if (attribute_start_offset_ != attribute_end_offset_) {
+	if (start_offset != end_offset) {
 		const t_string& family_name = get_font_families(family);
 		PangoAttribute *attr = pango_attr_family_new(family_name.c_str());
-		attr->start_index = attribute_start_offset_;
-		attr->end_index = attribute_end_offset_;
+		attr->start_index = start_offset;
+		attr->end_index = end_offset;
 
 		DBG_GUI_D << "attribute: font family";
 		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
@@ -456,22 +435,19 @@ void pango_text::add_attribute_font_family(const unsigned start_offset, const un
 	}
 }
 
-void pango_text::add_attribute_bg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color) {
-	attribute_start_offset_ = start_offset;
-	attribute_end_offset_ = end_offset;
-	highlight_color_ = color;
-
+void pango_text::add_attribute_bg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color)
+{
 	// Highlight
-	int col_r = highlight_color_.r / 255.0 * 65535.0;
-	int col_g = highlight_color_.g / 255.0 * 65535.0;
-	int col_b = highlight_color_.b / 255.0 * 65535.0;
+	int col_r = color.r / 255.0 * 65535.0;
+	int col_g = color.g / 255.0 * 65535.0;
+	int col_b = color.b / 255.0 * 65535.0;
 
-	DBG_GUI_D << "highlight start: " << attribute_start_offset_ << "end : " << attribute_end_offset_;
+	DBG_GUI_D << "highlight start: " << start_offset << "end : " << end_offset;
 	DBG_GUI_D << "highlight color: " << col_r << "," << col_g << "," << col_b;
 
 	PangoAttribute *attr = pango_attr_background_new(col_r, col_g, col_b);
-	attr->start_index = attribute_start_offset_;
-	attr->end_index = attribute_end_offset_;
+	attr->start_index = start_offset;
+	attr->end_index = end_offset;
 
 	// Insert all attributes
 	pango_attr_list_change(global_attribute_list_, attr);
