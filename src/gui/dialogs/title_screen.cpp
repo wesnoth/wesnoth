@@ -244,16 +244,22 @@ void title_screen::init_callbacks()
 
 	// Tip panel visiblity and close button
 	panel& tip_panel = find_widget<panel>("tip_panel");
-	if (!prefs::get().show_tips()) {
-		tip_panel.set_visible(false);
-	} else {
-		auto close = find_widget<button>("close", false, false);
-		if (close) {
-			connect_signal_mouse_left_click(*close, [&](auto&&...) {
-				prefs::get().set_show_tips(false);
-				tip_panel.set_visible(false);
-			});
-		}
+
+	tip_panel.set_visible(prefs::get().show_tips()
+		? widget::visibility::visible
+		: widget::visibility::hidden);
+
+	if(auto toggle_tips = find_widget<button>("toggle_tip_panel", false, false)) {
+		connect_signal_mouse_left_click(*toggle_tips, [&tip_panel](auto&&...) {
+			const bool currently_hidden = tip_panel.get_visible() == widget::visibility::hidden;
+
+			tip_panel.set_visible(currently_hidden
+				? widget::visibility::visible
+				: widget::visibility::hidden);
+
+			// If previously hidden, will now be visible, so we can reuse the same value
+			prefs::get().set_show_tips(currently_hidden);
+		});
 	}
 
 	//
