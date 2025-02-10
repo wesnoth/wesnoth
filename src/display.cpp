@@ -1423,9 +1423,18 @@ void display::draw_label(const theme::label& label)
 			tooltips::add_tooltip(loc,text);
 		}
 	} else if(text.empty() == false) {
-		font::pango_draw_text(true, loc, label.font_size(),
-			text_color, text, loc.x, loc.y
-		);
+		font::pango_text& renderer = font::get_text_renderer();
+		renderer.set_text(text, false);
+		renderer.set_family_class(font::FONT_SANS_SERIF);
+		renderer.set_font_size(label.font_size());
+		renderer.set_font_style(font::pango_text::STYLE_NORMAL);
+		renderer.set_foreground_color(text_color);
+		renderer.set_ellipse_mode(PANGO_ELLIPSIZE_END);
+		renderer.set_maximum_width(loc.w);
+		renderer.set_maximum_height(loc.h, true);
+
+		auto t = renderer.render_and_get_texture();
+		draw::blit(t, rect{ loc.origin(), t.draw_size() });
 	}
 }
 
