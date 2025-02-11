@@ -22,7 +22,6 @@
 #include "tstring.hpp"
 #include "video.hpp"
 
-#include <cassert>
 #include <memory>
 
 namespace font
@@ -41,8 +40,6 @@ public:
 	attribute(PangoAttribute* attr, unsigned offset_start, unsigned offset_end)
 		: value_(attr, &pango_attribute_destroy)
 	{
-		assert(offset_start != offset_end);
-
 		attr->start_index = offset_start;
 		attr->end_index = offset_end;
 	}
