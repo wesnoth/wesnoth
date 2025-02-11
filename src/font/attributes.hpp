@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <Pango/Pango-layout.h>
+#include <pango/pango-layout.h>
 
 struct color_t;
 
