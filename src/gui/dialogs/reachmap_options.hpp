@@ -21,11 +21,6 @@
 
 namespace gui2::dialogs
 {
-/**
- * @ingroup GUIWindowDefinitionWML
- *
- * A test dialog for testing various gui2 features
- */
 class reachmap_options : public modal_dialog
 {
 public:
