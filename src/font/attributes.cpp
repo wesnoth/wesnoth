@@ -23,17 +23,23 @@
 #include "video.hpp"
 
 #include <cassert>
+#include <memory>
 
 namespace font
 {
 namespace
 {
-/** Private helper class to ensure offsets are properly initialized. */
+/**
+ * Private helper class to manage a single PangoAttribute.
+ *
+ * This object owns its attribute until relinquished to an attribute_list
+ * by calling @ref add_to or @ref modify_in.
+ */
 class attribute
 {
 public:
 	attribute(PangoAttribute* attr, unsigned offset_start, unsigned offset_end)
-		: value_(attr)
+		: value_(attr, &pango_attribute_destroy)
 	{
 		assert(offset_start != offset_end);
 
@@ -41,18 +47,18 @@ public:
 		attr->end_index = offset_end;
 	}
 
-	void add_to(font::attribute_list& list) const
+	void add_to(font::attribute_list& list)
 	{
-		list.insert(value_);
+		list.insert(value_.release());
 	}
 
-	void modify_in(font::attribute_list& list) const
+	void modify_in(font::attribute_list& list)
 	{
-		list.modify(value_);
+		list.modify(value_.release());
 	}
 
 private:
-	PangoAttribute* value_;
+	std::unique_ptr<PangoAttribute, void(*)(PangoAttribute*)> value_;
 };
 
 /** Pango sometimes handles colors as 16 bit integers. */
@@ -72,7 +78,7 @@ void add_attribute_size(attribute_list& list, unsigned offset_start, unsigned of
 	// TODO: we shouldn't be doing scaling stuff here...
 	size = prefs::get().font_scaled(size) * video::get_pixel_scale();
 
-	const attribute attr {
+	attribute attr {
 		pango_attr_size_new_absolute(PANGO_SCALE * size),
 		offset_start, offset_end
 	};
@@ -85,7 +91,7 @@ void add_attribute_size(attribute_list& list, unsigned offset_start, unsigned of
 
 void add_attribute_weight(attribute_list& list, unsigned offset_start, unsigned offset_end, PangoWeight weight)
 {
-	const attribute attr {
+	attribute attr {
 		pango_attr_weight_new(weight),
 		offset_start, offset_end
 	};
@@ -98,7 +104,7 @@ void add_attribute_weight(attribute_list& list, unsigned offset_start, unsigned 
 
 void add_attribute_style(attribute_list& list, unsigned offset_start, unsigned offset_end, PangoStyle style)
 {
-	const attribute attr {
+	attribute attr {
 		pango_attr_style_new(style),
 		offset_start, offset_end
 	};
@@ -111,7 +117,7 @@ void add_attribute_style(attribute_list& list, unsigned offset_start, unsigned o
 
 void add_attribute_underline(attribute_list& list, unsigned offset_start, unsigned offset_end, PangoUnderline underline)
 {
-	const attribute attr {
+	attribute attr {
 		pango_attr_underline_new(underline),
 		offset_start, offset_end
 	};
@@ -126,7 +132,7 @@ void add_attribute_fg_color(attribute_list& list, unsigned offset_start, unsigne
 {
 	auto [col_r, col_g, col_b] = color_to_uint16(color);
 
-	const attribute attr {
+	attribute attr {
 		pango_attr_foreground_new(col_r, col_g, col_b),
 		offset_start, offset_end
 	};
@@ -142,7 +148,7 @@ void add_attribute_bg_color(attribute_list& list, unsigned offset_start, unsigne
 {
 	auto [col_r, col_g, col_b] = color_to_uint16(color);
 
-	const attribute attr {
+	attribute attr {
 		pango_attr_background_new(col_r, col_g, col_b),
 		offset_start, offset_end
 	};
@@ -157,7 +163,7 @@ void add_attribute_font_family(attribute_list& list, unsigned offset_start, unsi
 {
 	const t_string& family_name = get_font_families(family);
 
-	const attribute attr {
+	attribute attr {
 		pango_attr_family_new(family_name.c_str()),
 		offset_start, offset_end
 	};

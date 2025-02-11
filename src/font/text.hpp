@@ -317,6 +317,7 @@ public:
 
 	pango_text& set_add_outline(bool do_add);
 
+	void clear_attributes();
 	void apply_attributes(const font::attribute_list& attrs);
 
 private:

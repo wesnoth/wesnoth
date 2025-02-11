@@ -492,7 +492,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	}
 
 	font::pango_text& text_renderer = font::get_text_renderer();
-	//text_renderer.clear_attributes();
+	text_renderer.clear_attributes();
 
 	text_renderer
 		.set_link_aware(link_aware_(variables))

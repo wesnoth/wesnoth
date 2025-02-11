@@ -22,16 +22,10 @@ namespace font
 {
 enum family_class;
 
-/**
- * Helper class to encapsulate the management of a PangoAttrList.
- *
- * This class represents an *owning* view of an attribute list. Creating an instance
- * of this object will allocate a new list destroy it along with it.
- */
+/** Helper class to encapsulate the management of a PangoAttrList. */
 class attribute_list
 {
 public:
-	/** Allocates an empty attribute list */
 	attribute_list()
 		: attributes_(pango_attr_list_new())
 	{
@@ -41,6 +35,9 @@ public:
 	{
 		pango_attr_list_unref(attributes_);
 	}
+
+	attribute_list(const attribute_list&) = delete;
+	attribute_list& operator=(const attribute_list&) = delete;
 
 	void insert(PangoAttribute* attr)
 	{
@@ -60,11 +57,6 @@ public:
 	void splice_into(PangoAttrList* target) const
 	{
 		pango_attr_list_splice(target, attributes_, 0, 0);
-	}
-
-	GSList* as_list() const
-	{
-		return pango_attr_list_get_attributes(attributes_);
 	}
 
 private:
