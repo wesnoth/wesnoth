@@ -16,12 +16,12 @@
 
 #include <pango/pango-layout.h>
 
+#include "font/font_options.hpp"
+
 struct color_t;
 
 namespace font
 {
-enum family_class;
-
 /** Helper class to encapsulate the management of a PangoAttrList. */
 class attribute_list
 {

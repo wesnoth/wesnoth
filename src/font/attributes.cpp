@@ -14,7 +14,6 @@
 
 #include "font/attributes.hpp"
 #include "font/font_config.hpp"
-#include "font/font_options.hpp"
 
 #include "color.hpp"
 #include "gui/core/log.hpp"

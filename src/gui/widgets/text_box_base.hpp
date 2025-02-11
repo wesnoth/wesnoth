@@ -121,7 +121,6 @@ public:
 	/**
 	 * Wrapper function, sets the area between column start and end
 	 * offset to be highlighted in a specific color.
-	 * See @ref font::pango_text::add_attribute_bg_color.
 	 */
 	void set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color);
 
