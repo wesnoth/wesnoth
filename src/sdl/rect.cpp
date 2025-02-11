@@ -16,6 +16,7 @@
 #include "sdl/point.hpp"
 #include "sdl/rect.hpp"
 
+#include <cmath>
 #include <algorithm>
 #include <ostream>
 
