@@ -54,7 +54,7 @@ void reachmap_options::pre_show()
 	//set the sliders to the current value of opacity settings
 
 	find_widget<slider>("reachmap_opacity_border").set_value(prefs::get().reach_map_border_opacity());
-    find_widget<slider>("reachmap_opacity_tint").set_value(prefs::get().reach_map_tint_opacity());
+	find_widget<slider>("reachmap_opacity_tint").set_value(prefs::get().reach_map_tint_opacity());
 
 	connect_signal_mouse_left_click(
 		find_widget<button>("reachmap_defaults"), std::bind(&reachmap_options::reset_reachmap_callback, this));
