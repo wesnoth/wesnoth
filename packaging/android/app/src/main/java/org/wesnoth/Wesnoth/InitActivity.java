@@ -130,6 +130,30 @@ public class InitActivity extends Activity {
 				}
 			}
 
+			// Extract certificates file
+			try {
+				File certDir = new File(dataDir, "certificates");
+				if (!certDir.exists()) {
+					certDir.mkdir();
+				}
+				File certFile = new File(certDir, "cacert.pem");
+				if (!certFile.exists()) {
+					certFile.createNewFile();
+					InputStream cin = getResources().openRawResource(R.raw.cacert);
+					OutputStream cout = new FileOutputStream(certFile);
+					byte[] buffer = new byte[8192];
+					int length;
+					while ((length = cin.read(buffer)) > 0) {
+						cout.write(buffer, 0, length);
+					}
+					cout.close();
+					cin.close();
+
+				}
+			} catch (Exception e) {
+				Log.e("InitActivity", "Exception", e);
+			}
+
 			runOnUiThread(() -> progressText.setText("Unpacking finished..."));
 			try {
 				status.store(new FileOutputStream(statusFile), "Wesnoth Assets Status");
@@ -150,11 +174,6 @@ public class InitActivity extends Activity {
 				finish();
 			});
 		});
-	}
-
-	private void launchWesnothActivity() {
-		Intent launchIntent = new Intent(InitActivity.this, WesnothActivity.class);
-		startActivity(launchIntent);
 	}
 
 	private void updateDownloadProgress(int progress, String type) {

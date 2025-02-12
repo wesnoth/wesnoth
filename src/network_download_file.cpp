@@ -19,6 +19,10 @@
 #include "gui/dialogs/message.hpp"
 #include "log.hpp"
 
+#ifdef __ANDROID__
+#include <SDL2/SDL_system.h>
+#endif
+
 #include <curl/curl.h>
 
 static lg::log_domain log_network("network");
@@ -45,6 +49,9 @@ namespace network
 		error[CURL_ERROR_SIZE-1] = '\0';
 
 		if(curl) {
+#ifdef __ANDROID__
+			curl_easy_setopt(curl, CURLOPT_CAINFO, (game_config::path + "/certificates/cacert.pem").c_str());
+#endif
 			curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
 			curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
 			curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
