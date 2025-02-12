@@ -29,6 +29,7 @@
 #include "game_board.hpp"           // for game_board
 #include "game_config.hpp"          // for add_color_info, etc
 #include "game_data.hpp"
+#include "game_state.hpp"
 #include "game_events/manager.hpp" // for add_events
 #include "game_version.hpp"
 #include "lexical_cast.hpp"
@@ -442,6 +443,12 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 				for(const vconfig& ability_event : ability_events) {
 					events_.add_child("event", ability_event.get_config());
 				}
+				const vconfig::child_list& affect_distants = child.get_children("affect_distant");
+				for(const vconfig& affect_distant : affect_distants) {
+					if(affect_distant.has_attribute("radius")){
+						dynamic_cast<game_state&>(*resources::filter_con).set_affect_distant_max_radius(affect_distant["radius"].to_int());
+					}
+				}
 			}
 		}
 		const vconfig::child_list& attacks = vcfg->get_children("attack");
@@ -466,6 +473,11 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 			for(const auto [key, ability] : abilities.all_children_view()) {
 				for(const config& ability_event : ability.child_range("event")) {
 					events_.add_child("event", ability_event);
+				}
+				for(const config& affect_distant : ability.child_range("affect_distant")) {
+					if(affect_distant.has_attribute("radius")){
+						dynamic_cast<game_state&>(*resources::filter_con).set_affect_distant_max_radius(affect_distant["radius"].to_int());
+					}
 				}
 			}
 		}
@@ -1082,6 +1094,11 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 			for(const auto [key, ability] : abilities.all_children_view()) {
 				for(const config& ability_event : ability.child_range("event")) {
 					events.add_child("event", ability_event);
+				}
+				for(const config& affect_distant : ability.child_range("affect_distant")) {
+					if(affect_distant.has_attribute("radius")){
+						dynamic_cast<game_state&>(*resources::filter_con).set_affect_distant_max_radius(affect_distant["radius"].to_int());
+					}
 				}
 			}
 		}
@@ -2233,6 +2250,11 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 					to_append.add_child(key, cfg);
 					for(const config& event : cfg.child_range("event")) {
 						events.add_child("event", event);
+					}
+					for(const config& affect_distant : cfg.child_range("affect_distant")) {
+						if(affect_distant.has_attribute("radius")){
+							dynamic_cast<game_state&>(*resources::filter_con).set_affect_distant_max_radius(affect_distant["radius"].to_int());
+						}
 					}
 				}
 			}
