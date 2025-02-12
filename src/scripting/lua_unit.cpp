@@ -98,8 +98,10 @@ bool lua_unit::put_map(const map_location &loc)
 		if (ui != resources::gameboard->units().end()) {
 			map_location from = ui->get_location();
 			if (from != loc) { // This check is redundant in current usage
+				ui->set_affect_distant(false);
 				resources::gameboard->units().erase(loc);
 				resources::gameboard->units().move(from, loc);
+				ui->set_affect_distant(true);
 			}
 			// No need to change our contents
 		} else {

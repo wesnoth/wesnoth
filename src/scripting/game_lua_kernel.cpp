@@ -2765,11 +2765,17 @@ namespace
 	}
 	void reset_affect_adjacent(const unit& u_)
 	{
+		bool affect_distant = false;
 		bool affect_adjacent = false;
 		for(const auto [key, cfg] : u_.abilities().all_children_view()) {
 			bool image_or_hides = (key == "hides" || cfg.has_attribute("halo_image") || cfg.has_attribute("overlay_image"));
-			if(image_or_hides && cfg.has_child("affect_adjacent")){
+			if(!affect_adjacent && image_or_hides && cfg.has_child("affect_adjacent")){
 				affect_adjacent = true;
+			}
+			if(!affect_distant && image_or_hides && cfg.has_child("affect_distant")){
+				affect_distant = true;
+			}
+			if(affect_adjacent && affect_distant){
 				break;
 			}
 		}
@@ -2783,6 +2789,14 @@ namespace
 				if ( &*it == &u_ )
 					continue;
 				it->anim_comp().set_standing();
+			}
+		}
+		if(affect_distant){
+			for(const unit& unit_itor : units){
+				if (unit_itor.incapacitated() || &(unit_itor) == &u_) {
+					continue;
+				}
+				unit_itor.anim_comp().set_standing();
 			}
 		}
 	}
@@ -2845,10 +2859,15 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		}
 
 		unit_ptr u = unit::create(cfg, true, vcfg);
+		unit_map::iterator ou = units().find(loc);
+		if(ou){
+			ou->set_affect_distant(false);
+		}
 		units().erase(loc);
 		put_unit_helper(loc);
 		u->set_location(loc);
 		units().insert(u);
+		u->set_affect_distant(true);
 		reset_affect_adjacent(*u);
 	}
 
@@ -2878,6 +2897,7 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 			if (!map().on_board(loc)) {
 				return luaL_argerror(L, 1, "invalid location");
 			}
+			u->set_affect_distant(false);
 			reset_affect_adjacent(*u);
 		} else if (int side = u.on_recall_list()) {
 			team &t = board().get_team(side);
@@ -2938,6 +2958,7 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 	t.recall_list().add(u);
 	if (lu) {
 		if (lu->on_map()) {
+			u->set_affect_distant(false);
 			units().erase(u->get_location());
 			resources::whiteboard->on_kill_unit();
 			u->anim_comp().clear_haloes();
@@ -2963,6 +2984,7 @@ int game_lua_kernel::intf_extract_unit(lua_State *L)
 	unit_ptr u = lu->get_shared();
 
 	if (lu->on_map()) {
+		u->set_affect_distant(false);
 		u = units().extract(u->get_location());
 		assert(u);
 		u->anim_comp().clear_haloes();
@@ -3049,6 +3071,9 @@ static int intf_create_unit(lua_State *L)
 		reset_affect_adjacent(*u);
 	}
 	luaW_pushunit(L, u);
+	if (u->get_location().valid()) {
+		reset_affect_adjacent(*u);
+	}
 	return 1;
 }
 
@@ -3210,6 +3235,7 @@ static int intf_transform_unit(lua_State *L)
 	u.advance_to(*utp);
 	if (u.get_location().valid()) {
 		reset_affect_adjacent(u);
+
 	}
 
 	return 0;

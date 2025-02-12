@@ -1298,6 +1298,7 @@ void attack::unit_killed(unit_info& attacker,
 		return;
 	}
 
+	defender.get_unit().set_affect_distant(false);
 	units_.erase(defender.loc_);
 	resources::whiteboard->on_kill_unit();
 
@@ -1325,6 +1326,7 @@ void attack::unit_killed(unit_info& attacker,
 
 			newunit->set_location(death_loc);
 			units_.insert(newunit);
+			newunit->set_affect_distant(true);
 
 			game_events::entity_location reanim_loc(defender.loc_, newunit->underlying_id());
 			resources::game_events->pump().fire("unit_placed", reanim_loc);

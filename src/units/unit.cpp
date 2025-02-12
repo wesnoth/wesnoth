@@ -2242,6 +2242,7 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 			emit_zoc_ = v->to_bool();
 		}
 	} else if(apply_to == "new_ability") {
+		set_affect_distant(false);
 		if(auto ab_effect = effect.optional_child("abilities")) {
 			set_attr_changed(UA_ABILITIES);
 			config to_append;
@@ -2255,7 +2256,9 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 			}
 			abilities_.append(to_append);
 		}
+		set_affect_distant(true);
 	} else if(apply_to == "remove_ability") {
+		set_affect_distant(false);
 		if(auto ab_effect = effect.optional_child("abilities")) {
 			for(const auto [key, cfg] : ab_effect->all_children_view()) {
 				remove_ability_by_id(cfg["id"]);
@@ -2268,6 +2271,7 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 			deprecated_message("experimental_filter_ability", DEP_LEVEL::INDEFINITE, "", "Use filter_ability instead.");
 			remove_ability_by_attribute(*fab_effect);
 		}
+		set_affect_distant(true);
 	} else if(apply_to == "image_mod") {
 		LOG_UT << "applying image_mod";
 		std::string mod = effect["replace"];

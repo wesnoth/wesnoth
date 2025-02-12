@@ -643,6 +643,7 @@ place_recruit_result place_recruit(const unit_ptr& u, const map_location &recrui
 	// Add the unit to the board.
 	auto [new_unit_itor, success] = resources::gameboard->units().insert(u);
 	assert(success);
+	u->set_affect_distant(true);
 
 	map_location current_loc = recruit_location;
 

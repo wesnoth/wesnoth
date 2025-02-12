@@ -182,6 +182,34 @@ void game_board::check_victory(bool& continue_level,
 	continue_level = false;
 }
 
+void game_board::set_affect_distant(const std::string& tag_name, bool increase)
+{
+	if(increase){
+		affect_distant_[tag_name] += 1;
+		affect_distant_for_filtering_ += 1;
+	}
+	else {
+		if(affect_distant_[tag_name] > 0){
+			affect_distant_[tag_name] -= 1;
+		}
+		if(affect_distant_for_filtering_ > 0){
+			affect_distant_for_filtering_ -= 1;
+		}
+	}
+}
+
+void game_board::set_affect_distant_image(bool increase)
+{
+	if(increase){
+		affect_distant_for_image_ += 1;
+	}
+	else {
+		if(affect_distant_for_image_ > 0){
+			affect_distant_for_image_ -= 1;
+		}
+	}
+}
+
 unit_map::iterator game_board::find_visible_unit(const map_location& loc, const team& current_team, bool see_all)
 {
 	if(!map_->on_board(loc)) {

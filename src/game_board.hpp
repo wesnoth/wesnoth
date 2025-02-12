@@ -53,6 +53,17 @@ class game_board : public display_context
 	unit_map units_;
 
 	/**
+	 * Variables used for define radius for abilities [affect_distant]radius= checking.
+	 *
+	 * @ affect_distant_ is used for checking in abilities of defined type.
+	 * @ affect_distant_for_filtering_ used when checking abilities in [filter] or animations.
+	 * @ affect_distant_for_image_ define radius for images in abilities.
+	 **/
+	std::map<std::string, int> affect_distant_;
+	int affect_distant_for_filtering_;
+	int affect_distant_for_image_;
+
+	/**
 	 * Temporary unit move structs:
 	 *
 	 * Probably don't remove these friends, this is actually fairly useful. These structs are used by:
@@ -130,6 +141,13 @@ public:
 	game_board& operator=(const game_board& other) = delete;
 
 	friend void swap(game_board & one, game_board & other);
+
+	//when used define radius max for check unit who own a ability with [affect_distant] tag.
+	int affect_distant(const std::string& value){return affect_distant_[value];}
+	int affect_distant_for_filtering() const {return affect_distant_for_filtering_;}
+	int affect_distant_for_image() const {return affect_distant_for_image_;}
+	void set_affect_distant(const std::string& tag_name, bool increase);
+	void set_affect_distant_image(bool increase);
 
 	// Saving
 
