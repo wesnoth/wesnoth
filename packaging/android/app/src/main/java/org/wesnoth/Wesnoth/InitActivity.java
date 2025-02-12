@@ -39,17 +39,12 @@ import android.widget.TextView;
 
 public class InitActivity extends Activity {
 	private int length = 0;
+	private long max = 0;
 
 	@Override
 	protected void onCreate(Bundle savedState) {
 		super.onCreate(savedState);
 		this.setContentView(R.layout.activity_init);
-
-		if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        != PackageManager.PERMISSION_GRANTED)
-        {
-                    requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-        }
 
 		Thread thread = new Thread(new Runnable() {
 			@Override
@@ -81,7 +76,7 @@ public class InitActivity extends Activity {
 			"Downloading game data... ("
 			+ progressBar.getProgress()
 			+ "/"
-			+ progressBar.getMax()
+			+ max
 			+ ")");
 	}
 
@@ -110,6 +105,8 @@ public class InitActivity extends Activity {
 
 			ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
 			progressBar.setMax(in.available());
+			
+			max = conn.getContentLengthLong();
 
 			while ((length = in.read(buffer)) > 0) {
 				out.write(buffer, 0, length);
