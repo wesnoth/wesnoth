@@ -272,7 +272,10 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 
 		map_location ignored;
 		map_location recruit_hex = last_hex;
-		err_msgs_map[type] = unit_helper::recruit_message(type->id(), recruit_hex, ignored, current_team);
+		t_string err_msg = unit_helper::recruit_message(type->id(), recruit_hex, ignored, current_team);
+		if (!err_msg.empty()) {
+			err_msgs_map[type] = err_msg;
+		}
 		recruit_list.push_back(type);
 	}
 
