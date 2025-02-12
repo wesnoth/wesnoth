@@ -200,11 +200,17 @@ void unit_animation_component::reset_after_advance(const unit_type * newtype)
 
 void unit_animation_component::reset_affect_adjacent(const display & disp)
 {
+	bool affect_distant = false;
 	bool affect_adjacent = false;
 	for(const auto [key, cfg] : u_.abilities().all_children_view()) {
 		bool image_or_hides = (key == "hides" || cfg.has_attribute("halo_image") || cfg.has_attribute("overlay_image"));
-		if(image_or_hides && cfg.has_child("affect_adjacent")){
+		if(!affect_adjacent && image_or_hides && cfg.has_child("affect_adjacent")){
 			affect_adjacent = true;
+		}
+		if(!affect_distant && image_or_hides && cfg.has_child("affect_distant")){
+			affect_distant = true;
+		}
+		if(affect_adjacent && affect_distant){
 			break;
 		}
 	}
@@ -218,6 +224,14 @@ void unit_animation_component::reset_affect_adjacent(const display & disp)
 			if ( &*it == &u_ )
 				continue;
 			it->anim_comp().set_standing();
+		}
+	}
+	if(affect_distant){
+		for(const unit& unit_itor : units){
+			if (unit_itor.incapacitated() || &(unit_itor) == &u_) {
+				continue;
+			}
+			unit_itor.anim_comp().set_standing();
 		}
 	}
 }
