@@ -317,17 +317,17 @@ bool menu_handler::do_recruit(const std::string& name, int side_num, map_locatio
 	team& current_team = board().get_team(side_num);
 	const auto& res = unit_helper::recruit_message(name, loc, recruited_from, current_team);
 
-	if(!res.has_value() && (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recruit(name, side_num, loc))) {
+	if(res.empty() && (!pc_.get_whiteboard() || !pc_.get_whiteboard()->save_recruit(name, side_num, loc))) {
 		// MP_COUNTDOWN grant time bonus for recruiting
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 		// Do the recruiting.
 		synced_context::run_and_throw("recruit", replay_helper::get_recruit(name, loc, recruited_from));
 		return true;
-	} else if(!res.has_value()) {
+	} else if(res.empty()) {
 		return false;
 	} else {
-		gui2::show_transient_message("", res.value());
+		gui2::show_transient_message("", res);
 		return false;
 	}
 

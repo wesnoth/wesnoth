@@ -101,7 +101,7 @@ std::string format_movement_string(const int moves_left, const int moves_max);
 
 /** @return If the recruit is possible, an empty optional and set @a recruited_from;
 	otherwise, return an error message string describing the reason. */
-utils::optional<t_string> recruit_message(
+t_string recruit_message(
 	const std::string& type_id,
 	map_location& target_hex,
 	map_location& recruited_from,

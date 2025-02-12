@@ -162,7 +162,7 @@ std::string format_movement_string(const int moves_left, const int moves_max)
 // TODO: Return multiple strings here, in case more than one error applies? For
 // example, if you start AOI S5 with 0GP and recruit a Mage, two reasons apply,
 // leader not on keep (extrarecruit=Mage) and not enough gold.
-utils::optional<t_string> recruit_message(
+t_string recruit_message(
 	const std::string& type_id,
 	map_location& target_hex,
 	map_location& recruited_from,
