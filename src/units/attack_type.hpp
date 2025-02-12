@@ -271,6 +271,14 @@ private:
 	 * @param from unit adjacent to self_ is checked.
 	 */
 	bool check_adj_abilities(const config& cfg, const std::string& special, int dir, const unit& from) const;
+	/** check_dist_abilities : return an boolean value for checking of activities of abilities used like weapon
+	 * @return True if the special @a special is active.
+	 * @param cfg the config to one special ability checked.
+	 * @param special The special ability type who is being checked.
+	 * @param from unit distant to self_ is checked.
+	 * @param from_loc location of @ from
+	 */
+	bool check_dist_abilities(const config& cfg, const std::string& special, const unit& from, const map_location& from_loc) const;
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
 	                    bool in_abilities_tag = false) const;
 
@@ -356,6 +364,32 @@ private:
 		AFFECTS whom,
 		const std::string& tag_name,
 		bool leader_bool=false
+	);
+
+	/** check_dist_abilities_impl : return an boolean value for checking of activities of abilities used like weapon in unit adjacent to fighter
+	 * @return True if the special @a tag_name is active.
+	 * @param self_attack the attack used by unit who fight.
+	 * @param other_attack the attack used by opponent.
+	 * @param special the config to one special ability checked.
+	 * @param u the unit who is or not affected by an abilities owned by @a from.
+	 * @param from unit distant to @a u is checked.
+	 * @param loc location of the unit checked.
+	 * @param from_loc location of the unit distant to @a u.
+	 * @param whom determine if unit affected or not by special ability.
+	 * @param tag_name The special ability type who is being checked.
+	 * @param leader_bool If true, [leadership] abilities are checked.
+	 */
+	static bool check_dist_abilities_impl(
+		const const_attack_ptr& self_attack,
+		const const_attack_ptr& other_attack,
+		const config& special,
+		const unit_const_ptr& u,
+		const unit& from,
+		const map_location& loc,
+		const map_location& from_loc,
+		AFFECTS whom,
+		const std::string& tag_name,
+		bool leader_bool = false
 	);
 
 	static bool special_active_impl(
