@@ -2750,6 +2750,63 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	return 1;
 }
 
+namespace
+{
+	const unit_map& get_unit_map()
+	{
+		// Used if we're in the game, including during the construction of the display_context
+		if(resources::gameboard) {
+			return resources::gameboard->units();
+		}
+
+		// If we get here, we're in the scenario editor
+		assert(display::get_singleton());
+		return display::get_singleton()->context().units();
+	}
+	void reset_affect_distant(const unit& u_)
+	{
+		bool affect_adjacent = false;
+		utils::optional<int> max_radius;
+		for(const auto [key, cfg] : u_.abilities().all_children_view()) {
+			bool image_or_hides = (key == "hides" || cfg.has_attribute("halo_image") || cfg.has_attribute("overlay_image"));
+			if(!affect_adjacent && image_or_hides && cfg.has_child("affect_adjacent")){
+				affect_adjacent = true;
+			}
+			if(image_or_hides && cfg.has_child("affect_distant")){
+				for(const config& affect_distant : cfg.child_range("affect_distant")) {
+					if(affect_distant.has_attribute("radius") && (!max_radius || *max_radius < affect_distant["radius"].to_int())){
+						max_radius = affect_distant["radius"].to_int();
+					}
+				}
+			}
+		}
+		const unit_map& units = get_unit_map();
+		if(affect_adjacent){
+			const auto adjacent = get_adjacent_tiles(u_.get_location());
+			for(unsigned i = 0; i < adjacent.size(); ++i) {
+				const unit_map::const_iterator it = units.find(adjacent[i]);
+				if (it == units.end() || it->incapacitated())
+					continue;
+				if ( &*it == &u_ )
+					continue;
+				it->anim_comp().set_standing();
+			}
+		}
+
+		if(max_radius){
+			std::vector<map_location> surrounding;
+			get_tiles_in_radius(u_.get_location(), (*max_radius + 1), surrounding);
+			for(unsigned j = 0; j < surrounding.size(); ++j){
+				unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+				if (unit_itor == units.end() || unit_itor->incapacitated() || &(*unit_itor) == &u_) {
+					continue;
+				}
+				unit_itor->anim_comp().set_standing();
+			}
+		}
+	}
+}
+
 void game_lua_kernel::put_unit_helper(const map_location& loc)
 {
 	if(game_display_) {
@@ -2795,6 +2852,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		put_unit_helper(loc);
 		u.put_map(loc);
 		u.get_shared()->anim_comp().set_standing();
+		reset_affect_distant(*u);
 	} else if(!lua_isnoneornil(L, 1)) {
 		const vconfig* vcfg = nullptr;
 		config cfg = luaW_checkconfig(L, 1, vcfg);
@@ -2806,11 +2864,15 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		}
 
 		unit_ptr u = unit::create(cfg, true, vcfg);
+		units_distant().erase(loc);
 		units().erase(loc);
 		put_unit_helper(loc);
 		u->set_location(loc);
 		units().insert(u);
+		resources::gameboard->unit_distant(u);
+		reset_affect_distant(*u);
 	}
+
 
 	// Fire event if using the deprecated version or if the final argument is not false
 	// If the final boolean argument is omitted, the actual final argument (the unit or location) will always yield true.
@@ -2838,6 +2900,7 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 			if (!map().on_board(loc)) {
 				return luaL_argerror(L, 1, "invalid location");
 			}
+			reset_affect_distant(*u);
 		} else if (int side = u.on_recall_list()) {
 			team &t = board().get_team(side);
 			// Should it use underlying ID instead?
@@ -2853,6 +2916,7 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 		return luaL_argerror(L, 1, "expected unit or location");
 	}
 
+	units_distant().erase(loc);
 	units().erase(loc);
 	resources::whiteboard->on_kill_unit();
 	return 0;
@@ -2897,9 +2961,11 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 	t.recall_list().add(u);
 	if (lu) {
 		if (lu->on_map()) {
+			units_distant().erase(u->get_location());
 			units().erase(u->get_location());
 			resources::whiteboard->on_kill_unit();
 			u->anim_comp().clear_haloes();
+			reset_affect_distant(*u);
 		}
 		lu->lua_unit::~lua_unit();
 		new(lu) lua_unit(side, uid);
@@ -2921,9 +2987,11 @@ int game_lua_kernel::intf_extract_unit(lua_State *L)
 	unit_ptr u = lu->get_shared();
 
 	if (lu->on_map()) {
+		units_distant().erase(u->get_location());
 		u = units().extract(u->get_location());
 		assert(u);
 		u->anim_comp().clear_haloes();
+		reset_affect_distant(*u);
 	} else if (int side = lu->on_recall_list()) {
 		team &t = board().get_team(side);
 		unit_ptr v = u->clone();
@@ -2956,6 +3024,7 @@ int game_lua_kernel::intf_find_vacant_tile(lua_State *L)
 			const vconfig* vcfg = nullptr;
 			config cfg = luaW_checkconfig(L, 2, vcfg);
 			u = unit::create(cfg, false, vcfg);
+			reset_affect_distant(*u);
 		}
 	}
 
@@ -3000,6 +3069,9 @@ static int intf_create_unit(lua_State *L)
 	config cfg = luaW_checkconfig(L, 1, vcfg);
 	unit_ptr u  = unit::create(cfg, true, vcfg);
 	luaW_pushunit(L, u);
+	if (u->get_location().valid()) {
+		reset_affect_distant(*u);
+	}
 	return 1;
 }
 
@@ -3159,6 +3231,9 @@ static int intf_transform_unit(lua_State *L)
 		utp = &utp->get_variation(m2);
 	}
 	u.advance_to(*utp);
+	if (u.get_location().valid()) {
+		reset_affect_distant(u);
+	}
 
 	return 0;
 }
@@ -5216,6 +5291,10 @@ game_board & game_lua_kernel::board() {
 
 unit_map & game_lua_kernel::units() {
 	return game_state_.board_.units();
+}
+
+unit_map & game_lua_kernel::units_distant() {
+	return game_state_.board_.units_distant();
 }
 
 std::vector<team> & game_lua_kernel::teams() {

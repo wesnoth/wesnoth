@@ -40,6 +40,7 @@ game_board::game_board(const config& level)
 	, map_(std::make_unique<gamemap>(level["map_data"]))
 	, unit_id_manager_(level["next_underlying_unit_id"].to_size_t())
 	, units_()
+	, units_distant_()
 {
 }
 
@@ -49,6 +50,7 @@ game_board::game_board(const game_board& other)
 	, map_(new gamemap(*(other.map_)))
 	, unit_id_manager_(other.unit_id_manager_)
 	, units_(other.units_)
+	, units_distant_(other.units_distant_)
 {
 }
 
@@ -63,6 +65,7 @@ void swap(game_board& one, game_board& other)
 {
 	std::swap(one.teams_, other.teams_);
 	std::swap(one.units_, other.units_);
+	std::swap(one.units_distant_, other.units_distant_);
 	std::swap(one.unit_id_manager_, other.unit_id_manager_);
 	one.map_.swap(other.map_);
 }

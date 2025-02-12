@@ -52,6 +52,7 @@ class game_lua_kernel : public lua_kernel_base
 
 	// Private functions to ease access to parts of game_state
 	unit_map & units();
+	unit_map & units_distant();
 	game_data & gamedata();
 	tod_manager & tod_man();
 

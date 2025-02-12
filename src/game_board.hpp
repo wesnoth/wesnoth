@@ -51,6 +51,8 @@ class game_board : public display_context
 	std::unique_ptr<gamemap> map_;
 	n_unit::id_manager unit_id_manager_;
 	unit_map units_;
+	unit_map units_distant_;
+
 
 	/**
 	 * Temporary unit move structs:
@@ -114,6 +116,15 @@ public:
 		return units_;
 	}
 
+	unit_map& units_distant()
+	{
+		return units_distant_;
+	}
+
+	void unit_distant(const unit_ptr& u);
+
+	void unit_distant_replace(const map_location& loc, const unit_ptr& u);
+
 	virtual const std::vector<std::string>& hidden_label_categories() const override
 	{
 		return labels_;
@@ -130,6 +141,7 @@ public:
 	game_board& operator=(const game_board& other) = delete;
 
 	friend void swap(game_board & one, game_board & other);
+
 
 	// Saving
 

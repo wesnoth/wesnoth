@@ -74,7 +74,14 @@ unit_ptr lua_unit::get_shared() const
 bool lua_unit::put_map(const map_location &loc)
 {
 	if (ptr) {
+        resources::gameboard->unit_distant_replace(loc, ptr);
 		auto [unit_it, success] = resources::gameboard->units().replace(loc, ptr);
+		for(const auto [key, cfg] :ptr->abilities().all_children_view()) {
+				if(cfg.has_child("affect_distant")){
+					resources::gameboard->units_distant().replace(loc, ptr);
+					break;
+				}
+			}
 
 		if(success) {
 			ptr.reset();
@@ -88,6 +95,12 @@ bool lua_unit::put_map(const map_location &loc)
 		if (it) {
 			side = 0;
 			// uid may be changed by unit_map on insertion
+			for(const auto [key, cfg] :it->abilities().all_children_view()) {
+				if(cfg.has_child("affect_distant")){
+					resources::gameboard->units_distant().replace(loc, it).first->underlying_id();;
+					break;
+				}
+			}
 			uid = resources::gameboard->units().replace(loc, it).first->underlying_id();
 		} else {
 			ERR_LUA << "Could not find unit " << uid << " on recall list of side " << side;
@@ -99,7 +112,9 @@ bool lua_unit::put_map(const map_location &loc)
 			map_location from = ui->get_location();
 			if (from != loc) { // This check is redundant in current usage
 				resources::gameboard->units().erase(loc);
+				resources::gameboard->units_distant().erase(loc);
 				resources::gameboard->units().move(from, loc);
+				resources::gameboard->units_distant().move(from, loc);
 			}
 			// No need to change our contents
 		} else {

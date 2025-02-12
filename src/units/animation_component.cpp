@@ -17,9 +17,12 @@
 
 #include "config.hpp"
 #include "display.hpp"
+#include "game_board.hpp"
 #include "map/map.hpp"
 #include "preferences/preferences.hpp"
 #include "random.hpp"
+#include "resources.hpp"
+#include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
 
@@ -194,6 +197,49 @@ void unit_animation_component::reset_after_advance(const unit_type * newtype)
 
 	refreshing_ = false;
 	anim_.reset();
+}
+
+void unit_animation_component::reset_affect_distant(const display & disp)
+{
+	bool affect_adjacent = false;
+	utils::optional<int> max_radius;
+	for(const auto [key, cfg] : u_.abilities().all_children_view()) {
+		bool image_or_hides = (key == "hides" || cfg.has_attribute("halo_image") || cfg.has_attribute("overlay_image"));
+		if(!affect_adjacent && image_or_hides && cfg.has_child("affect_adjacent")){
+			affect_adjacent = true;
+		}
+		if(image_or_hides && cfg.has_child("affect_distant")){
+			for(const config& affect_distant : cfg.child_range("affect_distant")) {
+				if(affect_distant.has_attribute("radius") && (!max_radius || *max_radius < affect_distant["radius"].to_int())){
+					max_radius = affect_distant["radius"].to_int();
+				}
+			}
+		}
+	}
+	const unit_map& units = disp.context().units();
+	if(affect_adjacent){
+		const auto adjacent = get_adjacent_tiles(u_.get_location());
+		for(unsigned i = 0; i < adjacent.size(); ++i) {
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if (it == units.end() || it->incapacitated())
+				continue;
+			if ( &*it == &u_ )
+				continue;
+			it->anim_comp().set_standing();
+		}
+	}
+
+	if(max_radius){
+		std::vector<map_location> surrounding;
+		get_tiles_in_radius(u_.get_location(), (*max_radius + 1), surrounding);
+		for(unsigned j = 0; j < surrounding.size(); ++j){
+			unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+			if (unit_itor == units.end() || unit_itor->incapacitated() || &(*unit_itor) == &u_) {
+				continue;
+			}
+			unit_itor->anim_comp().set_standing();
+		}
+	}
 }
 
 void unit_animation_component::apply_new_animation_effect(const config & effect) {

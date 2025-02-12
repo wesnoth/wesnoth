@@ -483,8 +483,10 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child, /*spectator*/)
 			// Don't remove the unit until after we've verified there are no errors in creating the new one,
 			// or else the unit would simply be removed from the map with no replacement.
 			resources::gameboard->units().erase(loc);
+			resources::gameboard->units_distant().erase(loc);
 			resources::whiteboard->on_kill_unit();
 			resources::gameboard->units().insert(new_u);
+			resources::gameboard->unit_distant(new_u);
 		} catch(const unit_type::error& e) {
 			ERR_REPLAY << e.what(); // TODO: more appropriate error message log
 			return false;
@@ -524,7 +526,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child, spectator)
 	unit_map::unit_iterator unit_it;
 
 	// Add the unit to the board.
+	resources::gameboard->unit_distant_replace(loc, created);
 	std::tie(unit_it, std::ignore) = resources::gameboard->units().replace(loc, created);
+
 
 	game_display::get_singleton()->invalidate_unit();
 	resources::game_events->pump().fire("unit_placed", loc);
@@ -593,7 +597,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, /*spectator*/)
 		}
 		resources::controller->pump().fire("die", loc, loc);
 		if (i.valid()) {
+            resources::gameboard->units_distant().erase(i);
 			resources::gameboard->units().erase(i);
+
 		}
 		resources::whiteboard->on_kill_unit();
 		actions::recalculate_fog(dying_side);

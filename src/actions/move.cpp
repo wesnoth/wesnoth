@@ -609,6 +609,7 @@ namespace { // Private helpers for move_unit()
 		auto [unit_it, success] = resources::gameboard->units().move(*move_loc_, *step_to);
 
 		if(success) {
+            resources::gameboard->units_distant().move(*move_loc_, *step_to);
 			resources::undo_stack->add_move(
 				unit_it.get_shared_ptr(), move_loc_, step_to + 1, orig_moves_, unit_it->facing());
 			orig_moves_ = unit_it->movement_left();
@@ -648,6 +649,7 @@ namespace { // Private helpers for move_unit()
 
 		// Attempt actually moving. Fails if *step_to is occupied.
 		auto [unit_it, success] = resources::gameboard->units().move(*begin_, *step_to);
+		resources::gameboard->units_distant().move(*begin_, *step_to);
 
 		if(success) {
 			// Update the moving unit.
