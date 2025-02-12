@@ -1311,6 +1311,25 @@ public:
 		return is_healthy_;
 	}
 
+	/** Gets if this unit own ability of @a tag_name type with [affect_distant] subtags. */
+	bool affect_distant(const std::string& tag_name) const
+	{
+		std::map<std::string, bool> temp_ = affect_distant_;
+		return temp_[tag_name];
+	}
+
+	/** Gets if this unit own ability with [affect_distant] subtags. */
+	bool has_ability_distant() const
+	{
+		return has_ability_distant_;
+	}
+
+	/** Gets if this unit own ability with [affect_distant] subtags in same time what halo_image or overlay_image attributes. */
+	bool has_ability_distant_image() const
+	{
+		return has_ability_distant_image_;
+	}
+
 	/**
 	 * @}
 	 * @defgroup unit_mvmt Movement and location functions
@@ -1788,6 +1807,27 @@ public:
 	 */
 	bool get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from, const const_attack_ptr& weapon=nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
 
+	/** Checks whether this unit is affected by a given ability, and that that ability is active.
+	 * @return True if the ability @a tag_name is active.
+	 * @param cfg the const config to one of abilities @a ability checked.
+	 * @param ability name of ability type checked.
+	 * @param loc location of the unit checked.
+	 * @param from unit distant to @a this is checked in case of [affect_distant] abilities.
+	 * @param from_loc the 'other unit' location.
+	 */
+	bool get_dist_ability_bool(const config& cfg, const std::string& ability, const map_location& loc, const unit& from, const map_location& from_loc) const;
+	/** Checks whether this unit is affected by a given ability of leadership type
+	 * @return True if the ability @a tag_name is active.
+	 * @param special the const config to one of abilities @a tag_name checked.
+	 * @param tag_name name of ability type checked.
+	 * @param loc location of the unit checked.
+	 * @param from unit adjacent to @a this is checked in case of [affect_distant] abilities.
+	 * @param from_loc location of the @a from unit.
+	 * @param weapon the attack used by unit checked in this function.
+	 * @param opp_weapon the attack used by opponent to unit checked.
+	 */
+	bool get_dist_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const unit& from, const map_location& from_loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const;
+
 	/**
 	 * Gets the unit's active abilities of a particular type if it were on a specified location.
 	 * @param tag_name The type of ability to check for
@@ -1947,6 +1987,15 @@ private:
 	 */
 	bool ability_affects_adjacent(const std::string& ability, const config& cfg, int dir, const map_location& loc, const unit& from) const;
 
+	/**
+	 * Check if an ability affects distant units.
+	 * @param ability The type (tag name) of the ability
+	 * @param cfg an ability WML structure
+	 * @param loc The location on which to resolve the ability
+	 * @param from The "other unit" for filter matching
+	 * @param from_loc the "other unit" location
+	 */
+	bool ability_affects_distant(const std::string& ability, const config& cfg, const map_location& loc, const unit& from, const map_location& from_loc) const;
 	/**
 	 * Check if an ability affects the owning unit.
 	 * @param ability The type (tag name) of the ability
@@ -2150,6 +2199,22 @@ private:
 	{
 		invisibility_cache_.clear();
 	}
+
+	/**
+	 * Used for easing checking if unit own a ability of specified type with [affect_distant] sub tag.
+	 *
+	 */
+	std::map<std::string, bool> affect_distant_;
+	/**
+	 * Used for easing checking if unit own a ability with [affect_distant] sub tag.
+	 *
+	 */
+	bool has_ability_distant_;
+	/**
+	 * used if ability own halo_image or overlay_image attributes in same time what [affect_distant].
+	 */
+	bool has_ability_distant_image_;
+	void set_has_ability_distant();
 };
 
 /**
