@@ -182,6 +182,27 @@ void game_board::check_victory(bool& continue_level,
 	continue_level = false;
 }
 
+void game_board::set_affect_distant_max_radius(utils::optional<int> value, const std::string& tag_name)
+{
+	if(value){
+		if(!affect_distant_max_radius_[tag_name] || *affect_distant_max_radius_[tag_name] < *value){
+			affect_distant_max_radius_[tag_name] = value;
+		}
+		if(!affect_distant_max_radius_for_filtering_ || *affect_distant_max_radius_for_filtering_ < *value){
+			affect_distant_max_radius_for_filtering_ = value;
+		}
+	}
+}
+
+void game_board::set_affect_distant_max_radius_image(utils::optional<int> value)
+{
+	if(value){
+		if(!affect_distant_max_radius_for_image_ || *affect_distant_max_radius_for_image_ < *value){
+			affect_distant_max_radius_for_image_ = value;
+		}
+	}
+}
+
 unit_map::iterator game_board::find_visible_unit(const map_location& loc, const team& current_team, bool see_all)
 {
 	if(!map_->on_board(loc)) {

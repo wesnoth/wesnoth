@@ -406,6 +406,36 @@ unit::unit(unit_ctor_t)
 {
 }
 
+namespace
+{
+	void set_affect_distant_max_radius(utils::optional<int> value, const std::string& tag_name)
+	{
+		if(resources::gameboard) {
+			resources::gameboard->set_affect_distant_max_radius(value, tag_name);
+		}
+	}
+
+	void set_affect_distant_max_radius(const config& cfg, const std::string& tag_name)
+	{
+		for(const config& affect_distant : cfg.child_range("affect_distant")) {
+			if(affect_distant.has_attribute("radius")){
+				set_affect_distant_max_radius(affect_distant["radius"].to_int(), tag_name);
+				if(resources::gameboard && (cfg.has_attribute("halo_image") || cfg.has_attribute("overlay_image"))){
+					resources::gameboard->set_affect_distant_max_radius_image(affect_distant["radius"].to_int());
+				}
+			}
+		}
+	}
+}
+
+utils::optional<int> unit::affect_distant_max_radius(const std::string& tag_name) const
+{
+	if(resources::gameboard) {
+		return !tag_name.empty() ? resources::gameboard->affect_distant_max_radius(tag_name) : resources::gameboard->affect_distant_max_radius_for_filtering();
+	}
+	return utils::nullopt;
+}
+
 void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 {
 	loc_ = map_location(cfg["x"], cfg["y"], wml_loc());
@@ -448,6 +478,15 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 				for(const vconfig& ability_event : ability_events) {
 					events_.add_child("event", ability_event.get_config());
 				}
+				const vconfig::child_list& affect_distants = child.get_children("affect_distant");
+				for(const vconfig& affect_distant : affect_distants) {
+					if(affect_distant.has_attribute("radius")){
+						set_affect_distant_max_radius(affect_distant["radius"].to_int(), key);
+						if(resources::gameboard && (child.has_attribute("halo_image") || child.has_attribute("overlay_image"))){
+							resources::gameboard->set_affect_distant_max_radius_image(affect_distant["radius"].to_int());
+						}
+					}
+				}
 			}
 		}
 		const vconfig::child_list& attacks = vcfg->get_children("attack");
@@ -473,6 +512,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 				for(const config& ability_event : ability.child_range("event")) {
 					events_.add_child("event", ability_event);
 				}
+				set_affect_distant_max_radius(ability, key);
 			}
 		}
 		for(const config& attack : cfg.child_range("attack")) {
@@ -1098,6 +1138,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 				for(const config& ability_event : ability.child_range("event")) {
 					events.add_child("event", ability_event);
 				}
+				set_affect_distant_max_radius(ability, key);
 			}
 		}
 		for(const config& attack : cfg.child_range("attack")) {
@@ -2251,6 +2292,7 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 					for(const config& event : cfg.child_range("event")) {
 						events.add_child("event", event);
 					}
+					set_affect_distant_max_radius(cfg, key);
 				}
 			}
 			abilities_.append(to_append);

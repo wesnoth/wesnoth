@@ -19,6 +19,7 @@
 #include "log.hpp"
 #include "preferences/preferences.hpp"
 #include "random.hpp"
+#include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
 
@@ -200,11 +201,17 @@ void unit_animation_component::reset_after_advance(const unit_type * newtype)
 
 void unit_animation_component::reset_affect_adjacent(const unit_map& units)
 {
+	bool affect_distant = false;
 	bool affect_adjacent = false;
 	for(const auto [key, cfg] : u_.abilities().all_children_view()) {
 		bool image_or_hides = (key == "hides" || cfg.has_attribute("halo_image") || cfg.has_attribute("overlay_image"));
-		if(image_or_hides && cfg.has_child("affect_adjacent")){
+		if(!affect_adjacent && image_or_hides && cfg.has_child("affect_adjacent")){
 			affect_adjacent = true;
+		}
+		if(!affect_distant && image_or_hides && cfg.has_child("affect_distant")){
+			affect_distant = true;
+		}
+		if(affect_adjacent && affect_distant){
 			break;
 		}
 	}
@@ -220,6 +227,18 @@ void unit_animation_component::reset_affect_adjacent(const unit_map& units)
 				continue;
 			}
 			it->anim_comp().set_standing();
+		}
+	}
+	utils::optional<int> max_radius = u_.affect_distant_max_radius();
+	if(max_radius && affect_distant){
+		std::vector<map_location> surrounding;
+		get_tiles_in_radius(u_.get_location(), (*max_radius + 1), surrounding);
+		for(unsigned j = 0; j < surrounding.size(); ++j){
+			unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+			if (unit_itor == units.end() || unit_itor->incapacitated() || &(*unit_itor) == &u_) {
+				continue;
+			}
+			unit_itor->anim_comp().set_standing();
 		}
 	}
 }

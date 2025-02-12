@@ -214,6 +214,22 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 			}
 		}
 	}
+	utils::optional<int> max_radius = affect_distant_max_radius(tag_name);
+	if(max_radius){
+		std::vector<map_location> surrounding;
+		get_tiles_in_radius(loc, *max_radius, surrounding);
+		for(unsigned j = 0; j < surrounding.size(); ++j){
+			unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+			if (unit_itor == units.end() || unit_itor->incapacitated() || &(*unit_itor) == this) {
+				continue;
+			}
+			for(const config& i : unit_itor->abilities_.child_range(tag_name)) {
+				if(get_dist_ability_bool(i, tag_name, loc, *unit_itor, surrounding[j])){
+					return true;
+				}
+			}
+		}
+	}
 
 
 	return false;
@@ -247,6 +263,22 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		for(const config& j : it->abilities_.child_range(tag_name)) {
 			if(get_adj_ability_bool(j, tag_name, i, loc,*it)) {
 				res.emplace_back(&j, loc, adjacent[i]);
+			}
+		}
+	}
+	utils::optional<int> max_radius = affect_distant_max_radius(tag_name);
+	if(max_radius){
+		std::vector<map_location> surrounding;
+		get_tiles_in_radius(loc, *max_radius, surrounding);
+		for(unsigned j = 0; j < surrounding.size(); ++j){
+			unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+			if (unit_itor == units.end() || unit_itor->incapacitated() || &(*unit_itor) == this) {
+				continue;
+			}
+			for(const config& i : unit_itor->abilities_.child_range(tag_name)) {
+				if(get_dist_ability_bool(i, tag_name, loc, *unit_itor, surrounding[j])){
+					res.emplace_back(&i, loc, surrounding[j]);
+				}
 			}
 		}
 	}
@@ -523,6 +555,44 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 	return false;
 }
 
+bool unit::ability_affects_distant(const std::string& ability, const config& cfg, const map_location& loc, const unit& from, const map_location& from_loc) const
+{
+	unsigned int radius = 0;
+	bool illuminates = ability == "illuminates";
+	for (const config &i : cfg.child_range("affect_distant"))
+	{
+		radius = i["radius"].to_int(0);
+		if(radius == 0){
+			continue;
+		}
+		unsigned int distance = distance_between(from_loc, loc);
+		if(distance > radius){
+			continue;
+		}
+		auto filter = i.optional_child("filter");
+		if (!filter || //filter tag given
+			unit_filter(vconfig(*filter)).set_use_flat_tod(illuminates).matches(*this, loc, from) ) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool unit::get_dist_ability_bool(const config& cfg, const std::string& ability, const map_location& loc, const unit& from, const map_location& from_loc) const
+{
+	auto filter_lock = from.update_variables_recursion(cfg);
+	if(!filter_lock) {
+		show_recursion_warning(from, cfg);
+		return false;
+	}
+	return (ability_affects_distant(ability, cfg, loc, from, from_loc) && affects_side(cfg, side(), from.side()) && from.ability_active_impl(ability, cfg, from_loc));
+}
+
+bool unit::get_dist_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const unit& from, const map_location& from_loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const
+{
+	return (get_dist_ability_bool(special, tag_name, loc, from, from_loc) && ability_affects_weapon(special, weapon, false) && ability_affects_weapon(special, opp_weapon, true));
+}
+
 bool unit::ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	auto filter = cfg.optional_child("filter_self");
@@ -555,13 +625,24 @@ bool unit::has_ability_type(const std::string& ability) const
 	return !abilities_.child_range(ability).empty();
 }
 
-//these two functions below are used in order to add to the unit
+//these functions below are used in order to add to the unit
 //a second set of halo encoded in the abilities (like illuminates halo in [illuminates] ability for example)
-static void add_string_to_vector(std::vector<std::string>& image_list, const config& cfg, const std::string& attribute_name)
+namespace
 {
-	auto ret = std::find(image_list.begin(), image_list.end(), cfg[attribute_name].str());
-	if(ret == image_list.end()){
-		image_list.push_back(cfg[attribute_name].str());
+	void add_string_to_vector(std::vector<std::string>& image_list, const config& cfg, const std::string& attribute_name)
+	{
+		auto ret = std::find(image_list.begin(), image_list.end(), cfg[attribute_name].str());
+		if(ret == image_list.end()){
+			image_list.push_back(cfg[attribute_name].str());
+		}
+	}
+
+	utils::optional<int> affect_distant_max_radius_image()
+	{
+		if(resources::gameboard) {
+			return resources::gameboard->affect_distant_max_radius_for_image();
+		}
+		return utils::nullopt;
 	}
 }
 
@@ -595,6 +676,23 @@ std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_t
 			if(!cfg[image_type + "_image"].str().empty() && affects_side(cfg, side(), it->side()) && it->ability_active(key, cfg, adjacent[i]) && ability_affects_adjacent(key, cfg, i, loc_, *it))
 			{
 				add_string_to_vector(image_list, cfg, image_type + "_image");
+			}
+		}
+	}
+	utils::optional<int> max_radius = affect_distant_max_radius_image();
+	if(max_radius){
+		std::vector<map_location> surrounding;
+		get_tiles_in_radius(loc_, *max_radius, surrounding);
+		for(unsigned j = 0; j < surrounding.size(); ++j){
+			unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+			if (unit_itor == units.end() || unit_itor->incapacitated() || &(*unit_itor) == this) {
+				continue;
+			}
+			for(const auto [key, cfg] : unit_itor->abilities_.all_children_view()) {
+				if(!cfg[image_type + "_image"].str().empty() && get_dist_ability_bool(cfg, key, loc_, *unit_itor, surrounding[j]))
+				{
+					add_string_to_vector(image_list, cfg, image_type + "_image");
+				}
 			}
 		}
 	}
@@ -1787,6 +1885,26 @@ bool attack_type::check_adj_abilities_impl(const const_attack_ptr& self_attack, 
 	}
 	return false;
 }
+
+bool attack_type::check_dist_abilities(const config& cfg, const std::string& special, const unit& from, const map_location& from_loc) const
+{
+	return check_dist_abilities_impl(shared_from_this(), other_attack_, cfg, self_, from, self_loc_, from_loc, AFFECT_SELF, special, "filter_student");
+}
+
+bool attack_type::check_dist_abilities_impl(const const_attack_ptr& self_attack, const const_attack_ptr& other_attack, const config& special, const unit_const_ptr& u, const unit& from, const map_location& loc, const map_location& from_loc, AFFECTS whom, const std::string& tag_name, bool leader_bool)
+{
+	if(tag_name == "leadership" && leader_bool){
+		if((*u).get_dist_ability_bool_weapon(special, tag_name, loc, from, from_loc, self_attack, other_attack)) {
+			return true;
+		}
+	}
+	if((*u).checking_tags().count(tag_name) != 0){
+		if((*u).get_dist_ability_bool(special, tag_name, loc, from, from_loc) && special_active_impl(self_attack, other_attack, special, whom, tag_name, "filter_student")) {
+			return true;
+		}
+	}
+	return false;
+}
 /**
  * Returns whether or not @a *this has a special ability with a tag or id equal to
  * @a special. the Check is for a special ability
@@ -1797,6 +1915,7 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 {
 	const unit_map& units = get_unit_map();
 	if(self_){
+		utils::optional<int> max_radius = self_->affect_distant_max_radius(special_tags ? special : "");
 		std::vector<special_match> special_tag_matches_self;
 		std::vector<special_match> special_id_matches_self;
 		get_ability_children(special_tag_matches_self, special_id_matches_self, (*self_).abilities(), special, special_id , special_tags);
@@ -1841,9 +1960,39 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 				}
 			}
 		}
+		if(max_radius){
+			std::vector<map_location> surrounding;
+			get_tiles_in_radius(self_loc_, *max_radius, surrounding);
+			for(unsigned j = 0; j < surrounding.size(); ++j){
+				unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+				if (unit_itor == units.end() || unit_itor->incapacitated())
+					continue;
+				if ( &*unit_itor == self_.get() )
+					continue;
+
+				std::vector<special_match> special_tag_matches_dist;
+				std::vector<special_match> special_id_matches_dist;
+				get_ability_children(special_tag_matches_dist, special_id_matches_dist, unit_itor->abilities(), special, special_id , special_tags);
+				if(special_tags){
+					for(const special_match& entry : special_tag_matches_dist) {
+						if(check_dist_abilities(*entry.cfg, entry.tag_name, *unit_itor, surrounding[j])){
+							return true;
+						}
+					}
+				}
+				if(special_id){
+					for(const special_match& entry : special_id_matches_dist) {
+						if(check_dist_abilities(*entry.cfg, entry.tag_name, *unit_itor, surrounding[j])){
+							return true;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	if(other_){
+		utils::optional<int> max_radius = other_->affect_distant_max_radius(special_tags ? special : "");
 		std::vector<special_match> special_tag_matches_other;
 		std::vector<special_match> special_id_matches_other;
 		get_ability_children(special_tag_matches_other, special_id_matches_other, (*other_).abilities(), special, special_id , special_tags);
@@ -1886,6 +2035,35 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 				for(const special_match& entry : special_id_matches_oadj) {
 					if(check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, entry.tag_name)){
 						return true;
+					}
+				}
+			}
+		}
+		if(max_radius){
+			std::vector<map_location> surrounding;
+			get_tiles_in_radius(other_loc_, *max_radius, surrounding);
+			for(unsigned j = 0; j < surrounding.size(); ++j){
+				unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+				if (unit_itor == units.end() || unit_itor->incapacitated())
+					continue;
+				if ( &*unit_itor == other_.get() )
+					continue;
+
+				std::vector<special_match> special_tag_matches_odist;
+				std::vector<special_match> special_id_matches_odist;
+				get_ability_children(special_tag_matches_odist, special_id_matches_odist, unit_itor->abilities(), special, special_id , special_tags);
+				if(special_tags){
+					for(const special_match& entry : special_tag_matches_odist) {
+						if(check_dist_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, *unit_itor, other_loc_, surrounding[j], AFFECT_OTHER, entry.tag_name)){
+							return true;
+						}
+					}
+				}
+				if(special_id){
+					for(const special_match& entry : special_id_matches_odist) {
+						if(check_dist_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, *unit_itor, other_loc_, surrounding[j], AFFECT_OTHER, entry.tag_name)){
+							return true;
+						}
 					}
 				}
 			}
@@ -2143,6 +2321,7 @@ bool attack_type::has_ability_with_filter(const config & filter) const
 	}
 	const unit_map& units = get_unit_map();
 	if(self_){
+		utils::optional<int> max_radius = self_->affect_distant_max_radius();
 		for(const auto [key, cfg] : (*self_).abilities().all_children_view()) {
 			if(self_->ability_matches_filter(cfg, key, filter)){
 				if(check_self_abilities(cfg, key)){
@@ -2165,9 +2344,27 @@ bool attack_type::has_ability_with_filter(const config & filter) const
 				}
 			}
 		}
+		if(max_radius){
+			std::vector<map_location> surrounding;
+			get_tiles_in_radius(self_loc_, *max_radius, surrounding);
+			for(unsigned j = 0; j < surrounding.size(); ++j){
+				unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+				if (unit_itor == units.end() || unit_itor->incapacitated())
+					continue;
+				if ( &*unit_itor == self_.get() )
+					continue;
+
+				for(const auto [key, cfg] : unit_itor->abilities().all_children_view()) {
+					if(unit_itor->ability_matches_filter(cfg, key, filter) && check_dist_abilities(cfg, key, *unit_itor, surrounding[j])){
+						return true;
+					}
+				}
+			}
+		}
 	}
 
 	if(other_){
+		utils::optional<int> max_radius = other_->affect_distant_max_radius();
 		for(const auto [key, cfg] : (*other_).abilities().all_children_view()) {
 			if(other_->ability_matches_filter(cfg, key, filter) && check_self_abilities_impl(other_attack_, shared_from_this(), cfg, other_, other_loc_, AFFECT_OTHER, key)){
 				return true;
@@ -2185,6 +2382,23 @@ bool attack_type::has_ability_with_filter(const config & filter) const
 			for(const auto [key, cfg] : it->abilities().all_children_view()) {
 				if(it->ability_matches_filter(cfg, key, filter) && check_adj_abilities_impl(other_attack_, shared_from_this(), cfg, other_, *it, i, other_loc_, AFFECT_OTHER, key)){
 					return true;
+				}
+			}
+		}
+		if(max_radius){
+			std::vector<map_location> surrounding;
+			get_tiles_in_radius(other_loc_, *max_radius, surrounding);
+			for(unsigned j = 0; j < surrounding.size(); ++j){
+				unit_map::const_iterator unit_itor = units.find(surrounding[j]);
+				if (unit_itor == units.end() || unit_itor->incapacitated())
+					continue;
+				if ( &*unit_itor == other_.get() )
+					continue;
+
+				for(const auto [key, cfg] : unit_itor->abilities().all_children_view()) {
+					if(unit_itor->ability_matches_filter(cfg, key, filter) && check_dist_abilities_impl(other_attack_, shared_from_this(), cfg, other_, *unit_itor, other_loc_, surrounding[j], AFFECT_OTHER, key)){
+						return true;
+					}
 				}
 			}
 		}
