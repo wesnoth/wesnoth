@@ -441,6 +441,19 @@ void unit_filter_compound::fill(const vconfig& cfg)
 							}
 						}
 					}
+					for(const unit& u : units) {
+						if (u.incapacitated())
+							continue;
+						if (&u == (args.u.shared_from_this()).get())
+							continue;
+						std::vector<ability_match> ability_id_matches_dist;
+						get_ability_children_id(ability_id_matches_dist, u.abilities(), ability);
+						for(const ability_match& entry : ability_id_matches_dist) {
+							if(args.u.get_dist_ability_bool(*entry.cfg, entry.tag_name, args.loc, u, u.get_location())){
+								return true;
+							}
+						}
+					}
 				}
 				return false;
 			}
@@ -815,6 +828,17 @@ void unit_filter_compound::fill(const vconfig& cfg)
 									if (args.u.get_adj_ability_bool(cfg, key, i, args.loc, *it)) {
 										return true;
 									}
+								}
+							}
+						}
+						for(const unit& u : units) {
+							if (u.incapacitated())
+								continue;
+							if (&u == (args.u.shared_from_this()).get())
+								continue;
+							for(const auto [key, cfg] : u.abilities().all_children_view()) {
+								if(args.u.get_dist_ability_bool(cfg, key, args.loc, u, u.get_location())){
+									return true;
 								}
 							}
 						}
