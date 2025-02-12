@@ -475,15 +475,16 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 		}
 		image_string += "~RC(" + recruit->flag_rgb() + ">" + team.color() + ")";
 		image_string += "~SCALE_INTO(72,72)";
-		bool not_recruitable = err_msgs_map[recruit].has_value();
-		if (not_recruitable) {
+		// Does the unit have error message? If so, grey out image.
+		if (!err_msgs_map[recruit].empty()) {
 			image_string += "~GS()";
 		}
 		return image_string;
 	}, sort_type::none);
 
 	set_column("unit_details", [&](const auto& recruit) {
-		bool recruitable = !err_msgs_map[recruit].has_value();
+		// Does the unit have error message? If so, grey out text here.
+		bool recruitable = err_msgs_map[recruit].empty();
 		return unit_helper::maybe_inactive(recruit->type_name(), recruitable)
 			+ unit_helper::format_cost_string(recruit->cost(), recruitable);
 	}, sort_type::generator);
@@ -494,8 +495,8 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 		.set_row_num(recruit_list.size());
 
 	dlg->set_tooltip_generator([&](std::size_t index) {
-		const auto& msg = err_msgs_map[recruit_list[index]];
-		return msg.has_value() ? msg.value() : t_string();
+		// Show the error message in case of disabled units, if any.
+		return err_msgs_map[recruit_list[index]];
 	});
 
 	dlg->on_modified([&recruit_list](std::size_t index) -> const auto& { return *recruit_list[index]; });

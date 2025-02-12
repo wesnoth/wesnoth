@@ -280,7 +280,7 @@ int intf_show_recruit_dialog(lua_State* L)
 
 	const display* disp = display::get_singleton();
 	if (!types.empty() && disp != nullptr) {
-		std::map<const unit_type*, utils::optional<t_string>> dummy; // TODO implement recruitability
+		std::map<const unit_type*, t_string> dummy; // TODO implement recruitability
 		auto dlg = gui2::dialogs::units_dialog::build_recruit_dialog(types, dummy, disp->playing_team());
 
 		idx++;

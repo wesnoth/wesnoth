@@ -256,7 +256,7 @@ bool menu_handler::has_friends() const
 
 void menu_handler::recruit(int side_num, const map_location& last_hex)
 {
-	std::map<const unit_type*, utils::optional<t_string>> err_msgs_map;
+	std::map<const unit_type*, t_string> err_msgs_map;
 	std::vector<const unit_type*> recruit_list;
 	std::set<std::string> recruits = actions::get_recruits(side_num, last_hex);
 	std::vector<t_string> unknown_units;

@@ -184,7 +184,7 @@ public:
 
 	// } -------------------- BUILDERS -------------------- {
 
-	using recruit_msgs_map = std::map<const unit_type*, utils::optional<t_string>>;
+	using recruit_msgs_map = std::map<const unit_type*, t_string>;
 
 	static std::unique_ptr<units_dialog> build_create_dialog(const std::vector<const unit_type*>& types_list);
 	static std::unique_ptr<units_dialog> build_recruit_dialog(
