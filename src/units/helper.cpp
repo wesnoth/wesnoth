@@ -162,11 +162,11 @@ std::string format_movement_string(const int moves_left, const int moves_max)
 // TODO: Return multiple strings here, in case more than one error applies? For
 // example, if you start AOI S5 with 0GP and recruit a Mage, two reasons apply,
 // leader not on keep (extrarecruit=Mage) and not enough gold.
-utils::optional<std::string> recruit_message(
+utils::optional<t_string> recruit_message(
 	const std::string& type_id,
-	const map_location& target_hex,
-	const map_location& recruited_from,
-	const team& current_team)
+	map_location& target_hex,
+	map_location& recruited_from,
+	team& current_team)
 {
 	const unit_type* u_type = unit_types.find(type_id);
 	if(u_type == nullptr) {
@@ -180,7 +180,7 @@ utils::optional<std::string> recruit_message(
 				utils::string_map{{ "unit_type_name", u_type->type_name() }});
 	}
 
-	// TODO take a wb::future_map RAII as unit_recruit::pre_show does
+	// TODO take a wb::future_map RAII as units_dialog does
 	int wb_gold = 0;
 	{
 		wb::future_map future;
@@ -202,8 +202,7 @@ utils::optional<std::string> recruit_message(
 
 	{
 		wb::future_map_if_active future; /* start planned unit map scope if in planning mode */
-		std::string msg = actions::find_recruit_location(
-			current_team.side(), const_cast<map_location&>(target_hex), const_cast<map_location&>(recruited_from), type_id);
+		std::string msg = actions::find_recruit_location(current_team.side(), target_hex, recruited_from, type_id);
 		if(!msg.empty()) {
 			return msg;
 		}

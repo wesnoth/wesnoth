@@ -184,11 +184,11 @@ public:
 
 	// } -------------------- BUILDERS -------------------- {
 
+	using recruit_msgs_map = std::map<const unit_type*, utils::optional<t_string>>;
+
 	static std::unique_ptr<units_dialog> build_create_dialog(const std::vector<const unit_type*>& types_list);
 	static std::unique_ptr<units_dialog> build_recruit_dialog(
-		const std::vector<const unit_type*>& recruit_list,
-		const team& team,
-		const map_location& recruit_hex = map_location::null_location());
+		const std::vector<const unit_type*>& recruit_list, recruit_msgs_map& err_msgs_map, const team& team);
 	static std::unique_ptr<units_dialog> build_recall_dialog(std::vector<unit_const_ptr>& recall_list, const team& team);
 	static std::unique_ptr<units_dialog> build_unit_list_dialog(std::vector<unit_const_ptr>& units_list);
 
