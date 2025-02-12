@@ -51,6 +51,7 @@ class game_board : public display_context
 	std::unique_ptr<gamemap> map_;
 	n_unit::id_manager unit_id_manager_;
 	unit_map units_;
+	std::optional<int> affect_distant_max_radius_;
 
 	/**
 	 * Temporary unit move structs:
@@ -131,8 +132,13 @@ public:
 
 	friend void swap(game_board & one, game_board & other);
 
-	// Saving
 
+	//when used define radius max for check unit who own a ability with [affect_distant] tag.
+	std::optional<int> affect_distant_max_radius() const {return affect_distant_max_radius_;}
+	void set_affect_distant_max_radius(std::optional<int> value);
+	void set_affect_distant_max_radius(const config& cfg);
+
+	// Saving
 	void write_config(config & cfg) const;
 
 	// Manipulators from play_controller
