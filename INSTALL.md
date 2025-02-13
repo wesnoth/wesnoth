@@ -79,6 +79,16 @@ Wesnoth uses CMake for project configuration and vcpkg for installing dependenci
 
 NOTE 1: You will need to run `vcpkg integrate install` on the command line to make Visual Studio aware of vcpkg. If Visual Studio is open when this is executed, then you will need to close and re-open Visual Studio.
 
+NOTE 2: vcpkg install guide (steps 1-2 are relevant for Wesnoth, steps 3 and later are for making vcpkg projects from scratch, Wesnoth itself already has vcpkg.json.): https://learn.microsoft.com/en-us/vcpkg/get_started/get-started?pivots=shell-powershell
+
+When installing vcpkg, it is recommended to do so by cloning https://github.com/microsoft/vcpkg, as the Wesnoth project occasionally updates to newer versions of vcpkg, and the databases on older versions of vcpkg may not have the necessary library versions.
+
+NOTE 3: opening the source folder in Visual Studio with the "open a local folder" option automatically runs CMake/vcpkg install when opening the project.
+
+NOTE 4: When cloning vcpkg, it is advisable to avoid spaces in the directory path.
+
+NOTE 5: antivirus software may potentially slow down (by scanning) or even interrupt the installation process by false-flagging libraries. If you are unable to install the dependencies while an antivirus is active, you may whitelist the vcpkg folder AT YOUR OWN RISK, to fix the issue and allow the installation to continue.
+
 ## SCons Build
 
 Unlike CMake or the classic "autotools" build-system (configure && make),
