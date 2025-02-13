@@ -21,13 +21,12 @@
 			
 		<Space
 			android:layout_width="wrap_content"
-			android:layout_height="50dp"/>
+			android:layout_height="40dp"/>
 		
 		<TextView
 			android:id="@+id/download_msg"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="Downloading data..."
 			android:textColor="@color/white"
 			android:textSize="16sp"/>
 		
@@ -38,6 +37,7 @@
 		<ProgressBar
 			style="@android:style/Widget.ProgressBar.Horizontal"
 			android:id="@+id/download_progress"
+			android:min="0"
 			android:layout_width="400dp"
 			android:layout_height="wrap_content"
 			android:progressTint="#003E5F"/>
