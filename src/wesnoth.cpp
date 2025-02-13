@@ -102,6 +102,10 @@
 
 #endif // _WIN32
 
+#ifdef __ANDROID__
+#include <android/log.h>
+#endif
+
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
@@ -984,6 +988,9 @@ int main(int argc, char** argv)
 #endif
 {
 	events::set_main_thread();
+#ifdef __ANDROID__
+	__android_log_write(ANDROID_LOG_INFO, "wesnoth", "Wesnoth started");
+#endif
 	auto args = read_argv(argc, argv);
 	assert(!args.empty());
 
