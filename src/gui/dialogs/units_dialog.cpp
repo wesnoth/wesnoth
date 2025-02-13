@@ -183,17 +183,24 @@ void units_dialog::show_list(listbox& list)
 			column["tooltip"] = tooltip_gen_(i);
 		}
 
+		// if custom filter text generator exists, use it to generate the filter text
+		if (filter_gen_) {
+			filter_options_.push_back(filter_gen_(i));
+		}
+
 		for (const auto& [id, gen] : column_generators_) {
 			column["use_markup"] = "true";
 			// generate label for ith row and column with 'id'
 			column["label"] = gen(i);
-			if (id != "unit_image") {
+			if (!filter_gen_ && id != "unit_image") {
 				filter_fmt << column["label"];
 			}
 			row_data.emplace(id, column);
 		}
 
-		filter_options_.push_back(filter_fmt.str());
+		if (!filter_gen_) {
+			filter_options_.push_back(filter_fmt.str());
+		}
 		list.add_row(row_data);
 	}
 
@@ -596,6 +603,25 @@ std::unique_ptr<units_dialog> units_dialog::build_unit_list_dialog(std::vector<u
 		return utils::join(unit->trait_names(), ", ");
 	}, sort_type::generator);
 
+	dlg->set_filter_generator([&unit_list](std::size_t index) {
+		const auto& unit = unit_list[index];
+
+		const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
+		// Since the table widgets use heavy formatting, we save a bare copy
+		// of certain options to filter on.
+		std::string filter_text = unit->type_name() + " " + name + " " + std::to_string(unit->level())
+			+ " " + unit_type::alignment_description(unit->alignment(), unit->gender());
+		if(const auto* race = unit->race()) {
+			filter_text += " " + race->name(unit->gender()) + " " + race->plural_name();
+		}
+
+		for(const std::string& trait : unit->trait_names()) {
+			filter_text += " " + trait;
+		}
+
+		return filter_text;
+	});
+
 	dlg->on_modified([&unit_list, &rename](std::size_t index) -> const auto& {
 		auto& unit = unit_list[index];
 		rename.set_active(!unit->unrenamable());
@@ -736,6 +762,33 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		} else {
 			return _("This unit cannot be recalled because you do not have enough gold.");
 		}
+	});
+
+	dlg->set_filter_generator([recallable, &recall_list](std::size_t index) {
+		const auto& unit = recall_list[index];
+
+		const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
+		// Since the table widgets use heavy formatting, we save a bare copy
+		// of certain options to filter on.
+		std::string filter_text = unit->type_name() + " " + name + " " + std::to_string(unit->level())
+			+ " " + unit_type::alignment_description(unit->alignment(), unit->gender());
+		if(const auto* race = unit->race()) {
+			filter_text += " " + race->name(unit->gender()) + " " + race->plural_name();
+		}
+
+		if(recallable(*unit)) {
+			// This is to allow filtering for recallable units by typing "vvv" in the search box.
+			// That's intended to be easy to type and unlikely to match unit or type names.
+			//
+			// TODO: document this. (Also, implement a "Hide non-recallable units" checkbox.)
+			filter_text += " vvv";
+		}
+
+		for(const std::string& trait : unit->trait_names()) {
+			filter_text += " " + trait;
+		}
+
+		return filter_text;
 	});
 
 	dlg->on_modified([&recall_list, &rename](std::size_t index) -> const auto& {

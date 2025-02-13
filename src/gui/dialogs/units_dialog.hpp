@@ -182,6 +182,14 @@ public:
 		return *this;
 	}
 
+	/** Sets the generator function for filter text. */
+	template<typename Generator>
+	units_dialog& set_filter_generator(const Generator& generator)
+	{
+		filter_gen_ = generator;
+		return *this;
+	}
+
 	// } -------------------- BUILDERS -------------------- {
 
 	using recruit_msgs_map = std::map<const unit_type*, t_string>;
@@ -207,6 +215,7 @@ private:
 
 	std::map<std::string_view, std::function<std::string(std::size_t)>> column_generators_;
 	std::function<std::string(std::size_t)> tooltip_gen_;
+	std::function<std::string(std::size_t)> filter_gen_;
 
 	unit_race::GENDER gender_;
 	std::string variation_;
