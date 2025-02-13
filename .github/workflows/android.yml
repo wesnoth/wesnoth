@@ -14,17 +14,17 @@ jobs:
     steps:
       - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
 
-      - name: Restore Wesnoth dependencies cache
-        id: restore-deps-cache
-        uses: actions/cache/restore@v4
-        env:
-          PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
-        with:
-          key: wesnoth-android-deps-${{ hashFiles('packaging/android/build-android-dependencies/*') }}
-          path: ${{ env.PREFIXDIR }}
+#      - name: Restore Wesnoth dependencies cache
+#        id: restore-deps-cache
+#        uses: actions/cache/restore@v4
+#        env:
+#          PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
+#        with:
+#          key: wesnoth-android-deps-${{ hashFiles('packaging/android/build-android-dependencies/*') }}
+#          path: ${{ env.PREFIXDIR }}
 
       - name: Download and build wesnoth dependencies
-        if: ${{ steps.restore-deps-cache.outputs.cache-hit  != 'true' }}
+#        if: ${{ steps.restore-deps-cache.outputs.cache-hit  != 'true' }}
         env:
           API: ${{ env.API }}
           PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
@@ -33,7 +33,7 @@ jobs:
         run: cd packaging/android; chmod +x ./gradlew; ./gradlew buildCppDepends;
 
       - name: Save Wesnoth dependencies cache
-        if: ${{ steps.restore-deps-cache.outputs.cache-hit  != 'true' }}
+#        if: ${{ steps.restore-deps-cache.outputs.cache-hit  != 'true' }}
         uses: actions/cache/save@v4
         env:
           PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
