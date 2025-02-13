@@ -39,12 +39,20 @@ import android.widget.TextView;
 
 public class InitActivity extends Activity {
 	private int length = 0;
+	private int progress = 0;
 	private long max = 0;
+	
+	private String toSizeString(long bytes) {
+		return String.format("%4.2f MB", (bytes * 1.0f)/(1e6));
+	}
 
 	@Override
 	protected void onCreate(Bundle savedState) {
 		super.onCreate(savedState);
 		this.setContentView(R.layout.activity_init);
+		
+		TextView progressText = (TextView) findViewById(R.id.download_msg);
+		progressText.setText("Connecting...");
 
 		Thread thread = new Thread(new Runnable() {
 			@Override
@@ -68,16 +76,17 @@ public class InitActivity extends Activity {
 		startActivity(launchIntent);
 	}
 
-	public void updateUI(int increment) {
+	public void updateUI(int progress) {
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
 		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
-		progressBar.incrementProgressBy(increment);
+		progressBar.setProgress(progress);
 		progressText.setText(
 			"Downloading game data... ("
-			+ progressBar.getProgress()
+			+ toSizeString(progress)
 			+ "/"
-			+ max
-			+ ")");
+			+ toSizeString(max)
+			+ ")"
+		);
 	}
 
 	public void downloadFile(String url, String destpath) {
@@ -102,21 +111,22 @@ public class InitActivity extends Activity {
 			OutputStream out = new FileOutputStream(new File(destpath));
 
 			byte[] buffer = new byte[4096];
-
-			ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
-			progressBar.setMax(in.available());
 			
 			max = conn.getContentLengthLong();
+			progress = 0;
+
+			runOnUiThread(() -> {
+				ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
+				progressBar.setMax((int) max);
+				progressBar.setProgress(0);
+			});
 
 			while ((length = in.read(buffer)) > 0) {
+				progress += length;
 				out.write(buffer, 0, length);
-				runOnUiThread(new Runnable() {
-					@Override
-					public void run() {
-						updateUI(length);
-					}
-				});
+				runOnUiThread(() -> updateUI(progress));
 			}
+			
 			out.close();
 			in.close();
 		} catch (MalformedURLException mue) {
@@ -127,21 +137,4 @@ public class InitActivity extends Activity {
 			Log.e("Download", "Security error", se);
 		}
 	}
-
-//	private void downloadFile(String url, String destpath) {
-//        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-//        request.setTitle("file.tar.bz2");
-//        request.setDescription("Downloading data...");
-//        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-//        request.setShowRunningNotification(true);
-//        String destinationPath = getExternalFilesDir(null) + "/file.tar.bz2";  Change the file name as needed
-//        request.setDestinationInExternalFilesDir(this, getExternalFilesDir(null).toString(), "file.tar.bz2");
-
-//        DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-//        if (downloadManager != null) {
-//            downloadManager.enqueue(request);
-//            Log.e("Download", "Download started...");
-//        }
-//    }
-
 }
