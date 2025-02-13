@@ -20,7 +20,6 @@
 #include "gui/dialogs/multiplayer/mp_options_helper.hpp"
 
 #include "game_initialization/create_engine.hpp"
-#include "game_initialization/configure_engine.hpp"
 
 
 namespace gui2
@@ -50,7 +49,6 @@ private:
 	virtual void post_show() override;
 
 	ng::create_engine create_engine_;
-	std::unique_ptr<ng::configure_engine> config_engine_;
 	std::unique_ptr<mp_options_helper> options_manager_;
 
 	int selected_game_index_;
@@ -126,6 +124,30 @@ private:
 	void load_game_callback();
 
 	enum tab { TAB_GENERAL, TAB_OPTIONS, TAB_SETTINGS };
+
+	//
+	// mp_parameter defaults
+	//
+	void set_default_values();
+	bool force_lock_settings();
+
+	static std::string game_name_default();
+	int num_turns_default();
+	int village_gold_default();
+	int village_support_default();
+	int xp_modifier_default();
+	std::chrono::seconds mp_countdown_init_time_default();
+	std::chrono::seconds mp_countdown_reservoir_time_default();
+	std::chrono::seconds mp_countdown_turn_bonus_default();
+	std::chrono::seconds mp_countdown_action_bonus_default();
+	bool mp_countdown_default();
+	bool use_map_settings_default();
+	bool random_start_time_default();
+	bool fog_game_default();
+	bool shroud_game_default();
+	bool allow_observers_default();
+	bool shuffle_sides_default();
+	random_faction_mode::type random_faction_mode_default();
 };
 
 } // namespace dialogs

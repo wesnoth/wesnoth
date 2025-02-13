@@ -1406,12 +1406,10 @@ struct dialog_tester<sp_options_configure>
 {
 	saved_game state;
 	ng::create_engine create_eng;
-	ng::configure_engine config_eng;
-	dialog_tester() : create_eng(state)
-		, config_eng(create_eng.get_state()) {}
+	dialog_tester() : create_eng(state) {}
 	sp_options_configure* create()
 	{
-		return new sp_options_configure(create_eng, config_eng);
+		return new sp_options_configure(create_eng);
 	}
 };
 
