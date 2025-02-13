@@ -639,7 +639,7 @@ for env in [test_env, client_env, env]:
 
             if env["enable_lto"] == True:
                 rel_comp_flags += " -flto=" + str(env["jobs"])
-                rel_link_flags += rel_comp_flags + " -fuse-ld=gold -Wno-stringop-overflow"
+                rel_link_flags += rel_comp_flags + " -Wno-stringop-overflow"
         elif "clang" in env["CXX"]:
             if env["pgo_data"] == "generate":
                 rel_comp_flags += " -fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
