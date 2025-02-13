@@ -9,68 +9,10 @@ jobs:
     container: wesnoth/wesnoth:android
     env:
       API: 23
-      NDK_VER: r26d
       BUILDBASEDIR: ${{ github.WORKSPACE }}/packaging/android
-      #ANDROID_HOME: ${{ github.WORKSPACE }}/.android/sdk
-      #ANDROID_SDK_ROOT: ${{ github.WORKSPACE }}/.android/sdk
-      #JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
-      #ANDROID_NDK_ROOT: ${{ github.WORKSPACE }}/packaging/android/build/android-ndk-r26d
-      #ANDROID_SDK_PACKAGES: 'tools platform-tools build-tools;34.0.0'
 
     steps:
       - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
-
-#      - name: Install auxiliary build tools
-#        run: apt-get install -y autoconf pkg-config
-
-#      - name: Restore Android NDK cache
-#        id: restore-android-ndk
-#        uses: actions/cache/restore@v4
-#        with:
-#          key: android-ndk ${{ env.ANDROID_SDK_PACKAGES }}
-#          path: ${{ env.ANDROID_NDK_ROOT }}
-
-#      - name: Set up Android NDK
-#        if: ${{ steps.restore-android-ndk.outputs.cache-hit  != 'true' }}
-#        env:
-#          BUILDDIR: ${{ env.BUILDBASEDIR }}/build
-#        run: |
-#          wget -nc "https://dl.google.com/android/repository/android-ndk-$NDK_VER-linux.zip" -P $BUILDDIR
-#          unzip "$BUILDDIR/android-ndk-$NDK_VER-linux.zip" -d "$BUILDDIR"
-#          ls -lh "$BUILDDIR"
-
-#      - name: Save Android NDK cache
-#        if: ${{ steps.restore-android-ndk.outputs.cache-hit  != 'true' }}
-#        uses: actions/cache/save@v4
-#        with:
-#          key: ${{ steps.restore-android-ndk.outputs.cache-primary-key}}
-#          path: ${{ env.ANDROID_NDK_ROOT }}
-
-#      - name: Set up JDK 17
-#        uses: actions/setup-java@v4
-#        with:
-#          java-version: '17'
-#          distribution: 'temurin'
-
-#      - name: Restore Android SDK cache
-#        id: restore-android-sdk
-#        uses: actions/cache/restore@v4
-#        with:
-#          key: android-sdk ${{ env.ANDROID_SDK_PACKAGES }}
-#          path: ${{ env.ANDROID_SDK_ROOT }}
-
-#      - name: Set up Android SDK
-#        if: ${{ steps.restore-android-sdk.outputs.cache-hit  != 'true' }}
-#        uses: android-actions/setup-android@v3
-#        with:
-#          packages: ${{ env.ANDROID_SDK_PACKAGES }}
-
-#      - name: Save Android SDK cache
-#        if: ${{ steps.restore-android-sdk.outputs.cache-hit  != 'true' }}
-#        uses: actions/cache/save@v4
-#        with:
-#          key: ${{ steps.restore-android-sdk.outputs.cache-primary-key}}
-#          path: ${{ env.ANDROID_SDK_ROOT }}
 
       - name: Restore Wesnoth dependencies cache
         id: restore-deps-cache
