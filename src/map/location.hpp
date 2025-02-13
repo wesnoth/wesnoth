@@ -152,6 +152,11 @@ struct map_location {
 		return vector_sum_assign(a.vector_negation());
 	}
 
+	map_location vector_difference(const map_location& a)
+	{
+		return vector_sum(a.vector_negation());
+	}
+
 	// Do n step in the direction d
 	map_location get_direction(direction dir, unsigned int n = 1u) const;
 	map_location get_direction(direction dir, signed int n) const
