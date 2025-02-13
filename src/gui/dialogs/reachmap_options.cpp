@@ -26,6 +26,7 @@
 
 #include "game_config.hpp"
 #include "preferences/preferences.hpp"
+
 #include <functional>
 
 namespace gui2::dialogs
