@@ -756,6 +756,13 @@ void mp_lobby::process_network_data(const config& data)
 			announcements_ = info["message"].str();
 			return;
 		}
+	} else if(auto create = data.optional_child("create_game")) {
+		queue_game_scenario_id = create["mp_scenario"];
+		set_retval(CREATE_PRESET);
+		return;
+	} else if(auto join = data.optional_child("join_redirect")) {
+		enter_game_by_id(join["id"].to_int(), JOIN_MODE::DO_JOIN);
+		return;
 	}
 
 	chatbox_->process_network_data(data);
@@ -870,11 +877,15 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 		join_data["password"] = password;
 	}
 
+	join_data["mp_scenario"] = game.scenario_id;
 	mp::send_to_server(response);
-	joined_game_id_ = game.id;
 
-	// We're all good. Close lobby and proceed to game!
-	set_retval(try_join ? JOIN : OBSERVE);
+	if(game.id != -1) {
+		joined_game_id_ = game.id;
+
+		// We're all good. Close lobby and proceed to game!
+		set_retval(try_join ? JOIN : OBSERVE);
+	}
 }
 
 void mp_lobby::enter_game_by_index(const int index, JOIN_MODE mode)
