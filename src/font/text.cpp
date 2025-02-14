@@ -17,6 +17,7 @@
 
 #include "font/text.hpp"
 
+#include "font/attributes.hpp"
 #include "font/font_config.hpp"
 
 #include "font/pango/escape.hpp"
@@ -31,7 +32,6 @@
 #include "serialization/unicode.hpp"
 #include "preferences/preferences.hpp"
 #include "video.hpp"
-
 
 #include <cassert>
 #include <cstring>
@@ -66,9 +66,6 @@ pango_text::pango_text()
 	, pixel_scale_(1)
 	, surface_buffer_()
 {
-	// Initialize global list
-	global_attribute_list_ = pango_attr_list_new();
-
 	// With 72 dpi the sizes are the same as with SDL_TTF so hardcoded.
 	pango_cairo_context_set_resolution(context_.get(), 72.0);
 
@@ -305,136 +302,18 @@ int pango_text::xy_to_index(const point& position) const
 	return index;
 }
 
-void pango_text::add_attribute_size(const unsigned start_offset, const unsigned end_offset, int size)
+void pango_text::clear_attributes()
 {
-	size = prefs::get().font_scaled(size) * pixel_scale_;
+	pango_layout_set_attributes(layout_.get(), nullptr);
+}
 
-	if (start_offset != end_offset) {
-		PangoAttribute *attr = pango_attr_size_new_absolute(PANGO_SCALE * size);
-		attr->start_index = start_offset;
-		attr->end_index = end_offset;
-
-		DBG_GUI_D << "attribute: size";
-		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
-
-		// Insert all attributes
-		pango_attr_list_insert(global_attribute_list_, attr);
+void pango_text::apply_attributes(const font::attribute_list& attrs)
+{
+	if(PangoAttrList* current_attrs = pango_layout_get_attributes(layout_.get())) {
+		attrs.splice_into(current_attrs);
+	} else {
+		attrs.apply_to(layout_.get());
 	}
-}
-
-void pango_text::add_attribute_weight(const unsigned start_offset, const unsigned end_offset, PangoWeight weight)
-{
-	if (start_offset != end_offset) {
-		PangoAttribute *attr = pango_attr_weight_new(weight);
-		attr->start_index = start_offset;
-		attr->end_index = end_offset;
-
-		DBG_GUI_D << "attribute: weight";
-		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
-
-		// Insert all attributes
-		pango_attr_list_insert(global_attribute_list_, attr);
-	}
-}
-
-void pango_text::add_attribute_style(const unsigned start_offset, const unsigned end_offset, PangoStyle style)
-{
-	if (start_offset != end_offset) {
-		PangoAttribute *attr = pango_attr_style_new(style);
-		attr->start_index = start_offset;
-		attr->end_index = end_offset;
-
-		DBG_GUI_D << "attribute: style";
-		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
-
-		// Insert all attributes
-		pango_attr_list_insert(global_attribute_list_, attr);
-	}
-}
-
-void pango_text::add_attribute_underline(const unsigned start_offset, const unsigned end_offset, PangoUnderline underline)
-{
-	if (start_offset != end_offset) {
-		PangoAttribute *attr = pango_attr_underline_new(underline);
-		attr->start_index = start_offset;
-		attr->end_index = end_offset;
-
-		DBG_GUI_D << "attribute: underline";
-		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
-
-		// Insert all attributes
-		pango_attr_list_insert(global_attribute_list_, attr);
-	}
-}
-
-namespace
-{
-std::tuple<uint16_t, uint16_t, uint16_t> color_to_uint16(const color_t& color)
-{
-	return {
-		color.r / 255.0 * std::numeric_limits<uint16_t>::max(),
-		color.g / 255.0 * std::numeric_limits<uint16_t>::max(),
-		color.b / 255.0 * std::numeric_limits<uint16_t>::max()
-	};
-}
-
-} // end anon namespace
-
-void pango_text::add_attribute_fg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color)
-{
-	if (start_offset != end_offset) {
-		auto [col_r, col_g, col_b] = color_to_uint16(color);
-		PangoAttribute *attr = pango_attr_foreground_new(col_r, col_g, col_b);
-		attr->start_index = start_offset;
-		attr->end_index = end_offset;
-
-		DBG_GUI_D << "attribute: fg color";
-		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
-		DBG_GUI_D << "color: " << col_r << "," << col_g << "," << col_b;
-
-		// Insert all attributes
-		pango_attr_list_insert(global_attribute_list_, attr);
-	}
-}
-
-void pango_text::add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, font::family_class family)
-{
-	if (start_offset != end_offset) {
-		const t_string& family_name = get_font_families(family);
-		PangoAttribute *attr = pango_attr_family_new(family_name.c_str());
-		attr->start_index = start_offset;
-		attr->end_index = end_offset;
-
-		DBG_GUI_D << "attribute: font family";
-		DBG_GUI_D << "attribute start: " << start_offset << " end : " << end_offset;
-		DBG_GUI_D << "font family: " << family;
-
-		// Insert all attributes
-		pango_attr_list_insert(global_attribute_list_, attr);
-	}
-}
-
-void pango_text::add_attribute_bg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color)
-{
-	// Highlight
-	int col_r = color.r / 255.0 * 65535.0;
-	int col_g = color.g / 255.0 * 65535.0;
-	int col_b = color.b / 255.0 * 65535.0;
-
-	DBG_GUI_D << "highlight start: " << start_offset << "end : " << end_offset;
-	DBG_GUI_D << "highlight color: " << col_r << "," << col_g << "," << col_b;
-
-	PangoAttribute *attr = pango_attr_background_new(col_r, col_g, col_b);
-	attr->start_index = start_offset;
-	attr->end_index = end_offset;
-
-	// Insert all attributes
-	pango_attr_list_change(global_attribute_list_, attr);
-}
-
-void pango_text::clear_attribute_list() {
-	global_attribute_list_ = pango_attr_list_new();
-	pango_layout_set_attributes(layout_.get(), global_attribute_list_);
 }
 
 bool pango_text::set_text(const std::string& text, const bool markedup)
@@ -460,11 +339,6 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 		} else {
 			pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
 		}
-
-		pango_layout_set_attributes(layout_.get(), global_attribute_list_);
-
-		// Clear list. Using pango_attr_list_unref() causes segfault
-		global_attribute_list_ = pango_attr_list_new();
 
 		text_ = narrow;
 		length_ = wide.size();
@@ -951,14 +825,6 @@ bool pango_text::set_markup(std::string_view text, PangoLayout& layout)
 		} else {
 			pango_layout_set_markup(&layout, text.data(), text.size());
 		}
-
-		// append any manual attributes to those generated by pango_layout_set_markup
-		PangoAttrList* markup_list = pango_layout_get_attributes(&layout);
-		for (auto* l = pango_attr_list_get_attributes(global_attribute_list_); l != nullptr; l = l->next) {
-			PangoAttribute* attr = static_cast<PangoAttribute*>(l->data);
-			pango_attr_list_change(markup_list, attr);
-		}
-		global_attribute_list_ = markup_list;
 	}
 
 	return valid;
