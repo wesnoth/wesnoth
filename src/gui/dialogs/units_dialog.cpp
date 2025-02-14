@@ -12,6 +12,7 @@
 	See the COPYING file for more details.
 */
 
+#include "font/standard_colors.hpp"
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/units_dialog.hpp"
@@ -694,7 +695,12 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		[recallable, &team](const auto& unit) {
 			std::stringstream details;
 			details << unit_helper::maybe_inactive(unit->type_name().str(), recallable(*unit));
-			details << unit_helper::format_cost_string(unit->recall_cost(), team.recall_cost());
+			const int recall_cost = unit->recall_cost() == -1 ? team.recall_cost() : unit->recall_cost();
+			if (recallable(*unit)) {
+				details << unit_helper::format_cost_string(recall_cost, team.recall_cost());
+			} else {
+				details << unit_helper::format_cost_string(recall_cost, false);
+			}
 			return details.str();
 		},
 		[](const auto& unit) {
@@ -702,8 +708,9 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		});
 
 	set_column("unit_moves",
-		[](const auto& unit) {
-			return unit_helper::format_movement_string(unit->movement_left(), unit->total_movement());
+		[recallable](const auto& unit) {
+			return unit_helper::format_movement_string(
+				unit->movement_left(), unit->total_movement(), recallable(*unit));
 		},
 		[](const auto& unit) {
 			return unit->movement_left();
@@ -718,19 +725,21 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		});
 
 	set_column("unit_hp",
-		[](const auto& unit) {
-			return markup::span_color(unit->hp_color(), unit->hitpoints(), "/", unit->max_hitpoints());
+		[recallable](const auto& unit) {
+			const color_t& col = recallable(*unit) ? unit->hp_color() : font::GRAY_COLOR;
+			return markup::span_color(col, unit->hitpoints(), "/", unit->max_hitpoints());
 		},
 		[](const auto& unit) {
 			return unit->hitpoints();
 		});
 
 	set_column("unit_xp",
-		[](const auto& unit) {
+		[recallable](const auto& unit) {
+			const color_t& col = recallable(*unit) ? unit->xp_color() : font::GRAY_COLOR;
 			if(unit->can_advance()) {
-				return markup::span_color(unit->xp_color(), unit->experience(), "/", unit->max_experience());
+				return markup::span_color(col, unit->experience(), "/", unit->max_experience());
 			} else {
-				return markup::span_color(unit->xp_color(), font::unicode_en_dash);
+				return markup::span_color(col, font::unicode_en_dash);
 			}
 		},
 		[](const auto& unit) {
@@ -764,7 +773,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		}
 	});
 
-	dlg->set_filter_generator([recallable, &recall_list](std::size_t index) {
+	dlg->set_filter_generator([&recall_list](std::size_t index) {
 		const auto& unit = recall_list[index];
 
 		const std::string& name = !unit->name().empty() ? unit->name().str() : font::unicode_en_dash;
@@ -774,14 +783,6 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 			+ " " + unit_type::alignment_description(unit->alignment(), unit->gender());
 		if(const auto* race = unit->race()) {
 			filter_text += " " + race->name(unit->gender()) + " " + race->plural_name();
-		}
-
-		if(recallable(*unit)) {
-			// This is to allow filtering for recallable units by typing "vvv" in the search box.
-			// That's intended to be easy to type and unlikely to match unit or type names.
-			//
-			// TODO: document this. (Also, implement a "Hide non-recallable units" checkbox.)
-			filter_text += " vvv";
 		}
 
 		for(const std::string& trait : unit->trait_names()) {

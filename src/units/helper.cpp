@@ -112,18 +112,21 @@ std::string format_cost_string(int unit_recall_cost, bool active)
 
 std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
 {
-	std::stringstream str;
-
 	if(unit_recall_cost < 0) {
 		unit_recall_cost = team_recall_cost;
 	}
 
+	std::stringstream str;
+	str << markup::img("themes/gold.png");
+
 	if(unit_recall_cost > team_recall_cost) {
-		format_cost_string(unit_recall_cost, false);
-	} else if(unit_recall_cost == team_recall_cost) {
-		format_cost_string(unit_recall_cost, true);
+		str << markup::span_color(font::BAD_COLOR, unit_recall_cost);
 	} else if(unit_recall_cost < team_recall_cost) {
-		str << markup::img("themes/gold.png") << markup::span_color(font::GREEN_COLOR, unit_recall_cost);
+		str << markup::span_color(font::GREEN_COLOR, unit_recall_cost);
+	} else {
+		// Default: show cost in white font color.
+		// Should handle the unit cost = team cost case.
+		str << unit_recall_cost;
 	}
 
 	return str.str();
@@ -148,9 +151,11 @@ std::string format_level_string(const int level, bool recallable)
 	}
 }
 
-std::string format_movement_string(const int moves_left, const int moves_max)
+std::string format_movement_string(const int moves_left, const int moves_max, bool active)
 {
-	if(moves_left == 0) {
+	if (!active) {
+		return markup::span_color(font::GRAY_COLOR, moves_left, "/", moves_max);
+	} else if(moves_left == 0) {
 		return markup::span_color(font::BAD_COLOR, moves_left, "/", moves_max);
 	} else if(moves_left > moves_max) {
 		return markup::span_color(font::YELLOW_COLOR, moves_left, "/", moves_max);
