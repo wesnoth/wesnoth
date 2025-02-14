@@ -18,12 +18,18 @@ package org.wesnoth.Wesnoth;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
 import java.net.MalformedURLException;
 import java.net.HttpURLConnection;
+import java.util.Enumeration;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipException;
+import java.util.zip.ZipFile;
+import java.util.zip.ZipOutputStream;
 
 import android.app.Activity;
 import android.app.DownloadManager;
@@ -41,55 +47,92 @@ public class InitActivity extends Activity {
 	private int length = 0;
 	private int progress = 0;
 	private long max = 0;
-	
+
+	private final String name = "master.zip";
+	private final String[] packages = {"master.zip", "music.zip"};
+	private final String archiveURL =
+		"https://sourceforge.net/projects/wesnoth/files/android/" + name + "/download";
+
+	private String dataDir;
+	private String archivePath;
+
 	private String toSizeString(long bytes) {
-		return String.format("%4.2f MB", (bytes * 1.0f)/(1e6));
+		return String.format("%4.2f MB", (bytes * 1.0f) / (1e6));
 	}
 
 	@Override
 	protected void onCreate(Bundle savedState) {
 		super.onCreate(savedState);
 		this.setContentView(R.layout.activity_init);
-		
+
+		// Initialize gamedata directory
+		dataDir = getExternalFilesDir(null) + "/gamedata";
+		File fDataDir = new File(dataDir);
+		if (!fDataDir.exists()) {
+			fDataDir.mkdir();
+		}
+		Log.e("Initialize", dataDir);
+
+		// Download file
+		File f = new File(dataDir + "/" + name);
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
 		progressText.setText("Connecting...");
-
-		Thread thread = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					downloadFile(
-						"https://sourceforge.net/projects/wesnoth/files/wesnoth/wesnoth-1.19.8/wesnoth-1.19.8.tar.bz2/download",
-						getExternalFilesDir(null) + "/gamedata/wesnoth-1.19.8.tar.bz2"
-					);
-				} catch (Exception e) {
-					Log.e("Download", "security error", e);
+		if (!f.exists()) {
+			Thread threadDnld = new Thread(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						downloadFile(archiveURL, dataDir + "/" + name);
+					} catch (Exception e) {
+						Log.e("Download", "security error", e);
+					}
 				}
-			}
-		});
+			});
 
-		thread.start();
+			threadDnld.start();
+		}
+
+		// Unpack archive
+		if (f.exists()) {
+			progressText.setText("Unpacking assets...");
+			Thread threadUnpk = new Thread(new Runnable() {
+				@Override
+				public void run() {
+					unpackArchive(dataDir + "/" + name, dataDir);
+				}
+			});
+			
+			threadUnpk.start();
+			progressText.setText("Unpacking finished...");
+		}
+		
+		// Launch Wesnoth
+		// TODO: check data existence
+		progressText.setText("Launching Wesnoth...");
+		// TODO: launch WesnothActivity
 	}
 
-	public void launchWesnothActivity() {
+	private void launchWesnothActivity() {
 		Intent launchIntent = new Intent(InitActivity.this, WesnothActivity.class);
 		startActivity(launchIntent);
 	}
 
-	public void updateUI(int progress) {
+	private void updateDownloadProgress(int progress) {
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
 		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
 		progressBar.setProgress(progress);
-		progressText.setText(
-			"Downloading game data... ("
-			+ toSizeString(progress)
-			+ "/"
-			+ toSizeString(max)
-			+ ")"
-		);
+		progressText.setText("Downloading game data... (" + toSizeString(progress) + "/" + toSizeString(max) + ")");
+	}
+	
+	private void updateUnpackProgress(int progress) {
+		TextView progressText = (TextView) findViewById(R.id.download_msg);
+		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
+		progressBar.setProgress(progress);
+		// progress starts from 0 but asset counting starts from 1.
+		progressText.setText("Unpacking assets... (" + (progress+1) + "/" + max + ")");
 	}
 
-	public void downloadFile(String url, String destpath) {
+	private void downloadFile(String url, String destpath) {
 		// based on https://stackoverflow.com/a/4896527/22060628
 		try {
 			URL downloadURL = new URL(url);
@@ -111,7 +154,7 @@ public class InitActivity extends Activity {
 			OutputStream out = new FileOutputStream(new File(destpath));
 
 			byte[] buffer = new byte[4096];
-			
+
 			max = conn.getContentLengthLong();
 			progress = 0;
 
@@ -124,17 +167,69 @@ public class InitActivity extends Activity {
 			while ((length = in.read(buffer)) > 0) {
 				progress += length;
 				out.write(buffer, 0, length);
-				runOnUiThread(() -> updateUI(progress));
+				runOnUiThread(() -> updateDownloadProgress(progress));
 			}
-			
+
 			out.close();
 			in.close();
 		} catch (MalformedURLException mue) {
-			Log.e("Download", "Malformed url error", mue);
+			Log.e("Download", "Malformed url exception", mue);
 		} catch (IOException ioe) {
-			Log.e("Download", "IO error", ioe);
+			Log.e("Download", "IO exception", ioe);
 		} catch (SecurityException se) {
-			Log.e("Download", "Security error", se);
+			Log.e("Download", "Security exception", se);
 		}
 	}
+
+	private void unpackArchive(String path, String destdir) {
+		File sFile = new File(path);
+		if (sFile != null) {
+			try {
+				ZipFile zf = new ZipFile(sFile);
+				Enumeration<? extends ZipEntry> e = zf.entries();
+				
+				progress = 0;
+				max = zf.size();
+				
+				runOnUiThread(() -> {
+					ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
+					progressBar.setMax((int) max);
+					progressBar.setProgress(0);
+				});
+				
+				while (e.hasMoreElements()) {
+					ZipEntry ze = (ZipEntry) e.nextElement();
+					
+					runOnUiThread(() -> updateUnpackProgress(progress));
+					
+					if (ze.isDirectory()) {
+						File dir = new File(destdir + "/" + ze.getName());
+						if (!dir.exists()) {
+							dir.mkdir();
+						}
+					} else {
+						InputStream in = zf.getInputStream(ze);
+						OutputStream out = new FileOutputStream(new File(destdir + "/" + ze.getName()));
+						byte[] buffer = new byte[4096];
+						int length;
+						while ((length = in.read(buffer)) > 0) {
+							out.write(buffer, 0, length);
+						}
+						out.close();
+						in.close();
+					}
+					
+					progress++;
+				}
+				zf.close();
+			} catch (ZipException e) {
+				Log.e("Unpack", "ZIP exception", e);
+			} catch (FileNotFoundException e) {
+				Log.e("Unpack", "File not found", e);
+			} catch (IOException e) {
+				Log.e("Unpack", "IO exception", e);
+			}
+		}
+	}
+
 }
