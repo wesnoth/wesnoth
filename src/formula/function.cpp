@@ -1547,6 +1547,7 @@ function_symbol_table::function_symbol_table(const std::shared_ptr<function_symb
 	: parent(parent ? parent : get_builtins())
 {
 }
+
 void function_symbol_table::add_function(const std::string& name, formula_function_ptr&& fcn)
 {
 	auto iter = custom_formulas_.find(name);
