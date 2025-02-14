@@ -15,7 +15,18 @@ android {
     }
 
     buildTypes {
+        debug {
+            ndk {
+                debugSymbolLevel 'FULL'
+            }
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
         release {
+            ndk {
+                debugSymbolLevel 'NONE'
+            }
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -24,7 +35,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    
+
     splits {
         abi {
             enable true

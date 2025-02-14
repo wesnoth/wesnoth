@@ -170,7 +170,7 @@ public class HIDDeviceManager {
                 Log.i(TAG,"  Interface protocol: " + mUsbInterface.getInterfaceProtocol());
                 Log.i(TAG,"  Endpoint count: " + mUsbInterface.getEndpointCount());
 
-                // Get endpoint details 
+                // Get endpoint details
                 for (int epi = 0; epi < mUsbInterface.getEndpointCount(); epi++)
                 {
                     UsbEndpoint mEndpoint = mUsbInterface.getEndpoint(epi);
@@ -251,6 +251,8 @@ public class HIDDeviceManager {
             0x20d6, // PowerA
             0x24c6, // PowerA
             0x2c22, // Qanba
+            0x2dc8, // 8BitDo
+            0x9886, // ASTRO Gaming
         };
 
         if (usbInterface.getInterfaceClass() == UsbConstants.USB_CLASS_VENDOR_SPEC &&
@@ -271,15 +273,20 @@ public class HIDDeviceManager {
         final int XB1_IFACE_SUBCLASS = 71;
         final int XB1_IFACE_PROTOCOL = 208;
         final int[] SUPPORTED_VENDORS = {
+            0x03f0, // HP
+            0x044f, // Thrustmaster
             0x045e, // Microsoft
             0x0738, // Mad Catz
+            0x0b05, // ASUS
             0x0e6f, // PDP
             0x0f0d, // Hori
+            0x10f5, // Turtle Beach
             0x1532, // Razer Wildcat
             0x20d6, // PowerA
             0x24c6, // PowerA
-            0x2dc8, /* 8BitDo */
+            0x2dc8, // 8BitDo
             0x2e24, // Hyperkin
+            0x3537, // GameSir
         };
 
         if (usbInterface.getId() == 0 &&
@@ -353,13 +360,19 @@ public class HIDDeviceManager {
     private void initializeBluetooth() {
         Log.d(TAG, "Initializing Bluetooth");
 
-        if (Build.VERSION.SDK_INT <= 30 &&
+        if (Build.VERSION.SDK_INT >= 31 /* Android 12  */ &&
+            mContext.getPackageManager().checkPermission(android.Manifest.permission.BLUETOOTH_CONNECT, mContext.getPackageName()) != PackageManager.PERMISSION_GRANTED) {
+            Log.d(TAG, "Couldn't initialize Bluetooth, missing android.permission.BLUETOOTH_CONNECT");
+            return;
+        }
+
+        if (Build.VERSION.SDK_INT <= 30 /* Android 11.0 (R) */ &&
             mContext.getPackageManager().checkPermission(android.Manifest.permission.BLUETOOTH, mContext.getPackageName()) != PackageManager.PERMISSION_GRANTED) {
             Log.d(TAG, "Couldn't initialize Bluetooth, missing android.permission.BLUETOOTH");
             return;
         }
 
-        if (!mContext.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE) || (Build.VERSION.SDK_INT < 18)) {
+        if (!mContext.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE) || (Build.VERSION.SDK_INT < 18 /* Android 4.3 (JELLY_BEAN_MR2) */)) {
             Log.d(TAG, "Couldn't initialize Bluetooth, this version of Android does not support Bluetooth LE");
             return;
         }
@@ -524,7 +537,7 @@ public class HIDDeviceManager {
             for (HIDDevice device : mDevicesById.values()) {
                 device.setFrozen(frozen);
             }
-        }        
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -573,12 +586,18 @@ public class HIDDeviceManager {
             try {
                 final int FLAG_MUTABLE = 0x02000000; // PendingIntent.FLAG_MUTABLE, but don't require SDK 31
                 int flags;
-                if (Build.VERSION.SDK_INT >= 31) {
+                if (Build.VERSION.SDK_INT >= 31 /* Android 12.0 (S) */) {
                     flags = FLAG_MUTABLE;
                 } else {
                     flags = 0;
                 }
-                mUsbManager.requestPermission(usbDevice, PendingIntent.getBroadcast(mContext, 0, new Intent(HIDDeviceManager.ACTION_USB_PERMISSION), flags));
+                if (Build.VERSION.SDK_INT >= 33 /* Android 14.0 (U) */) {
+                   Intent intent = new Intent(HIDDeviceManager.ACTION_USB_PERMISSION);
+                   intent.setPackage(mContext.getPackageName());
+                   mUsbManager.requestPermission(usbDevice, PendingIntent.getBroadcast(mContext, 0, intent, flags));
+               } else {
+                   mUsbManager.requestPermission(usbDevice, PendingIntent.getBroadcast(mContext, 0, new Intent(HIDDeviceManager.ACTION_USB_PERMISSION), flags));
+               }
             } catch (Exception e) {
                 Log.v(TAG, "Couldn't request permission for USB device " + usbDevice);
                 HIDDeviceOpenResult(deviceID, false);
