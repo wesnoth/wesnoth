@@ -87,6 +87,8 @@ namespace game_config
 	extern std::string moved_orb_color;
 	extern std::string partial_orb_color;
 	extern std::string unmoved_orb_color;
+	extern std::string reach_map_color;
+	extern std::string reach_map_enemy_color;
 	extern std::string default_color_list;
 	} // colors
 
@@ -97,6 +99,8 @@ namespace game_config
 	extern bool show_partial_orb;
 	extern bool show_status_on_ally_orb;
 	extern bool show_unmoved_orb;
+	extern int reach_map_border_opacity;
+	extern int reach_map_tint_opacity;
 
 	namespace images {
 	extern std::string game_title,
