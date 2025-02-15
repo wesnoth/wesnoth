@@ -270,8 +270,11 @@ void game_display::draw_hex(const map_location& loc)
 
 	// Draw reach_map information.
 	if(!is_shrouded && !reach_map_.empty() && reach_map_.find(loc) != reach_map_.end()) {
-		// draw the blue tint below units and high terrain graphics
-		drawing_buffer_add(drawing_layer::reachmap_highlight, loc, [tex = image::get_texture(game_config::reach_map_prefix + ".png", image::HEXED)](const rect& dest) {
+		// draw the reachmap tint below units and high terrain graphics
+		std::string color = prefs::get().reach_map_color();
+		std::string tint_opacity = std::to_string(prefs::get().reach_map_tint_opacity());
+
+		drawing_buffer_add(drawing_layer::reachmap_highlight, loc, [tex = image::get_texture(game_config::reach_map_prefix + ".png~RC(magenta>"+color+")~O("+tint_opacity+"%)", image::HEXED)](const rect& dest) {
 			draw::blit(tex, dest);
 		});
 		// We remove the reachmap border mask of the hovered hex to avoid weird interactions with other visual objects.
@@ -716,10 +719,15 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 			std::string suffix;
 			std::string name;
 			stream << *image_prefix_;
+
+			std::string color = prefs::get().reach_map_color();
+			std::string enemy_color = prefs::get().reach_map_enemy_color();
+			std::string border_opacity = std::to_string(prefs::get().reach_map_border_opacity());
+
 			if(tiles[i] == ENEMY) {
-				suffix = ".png~RC(magenta>red)";
+				suffix = ".png~RC(magenta>"+enemy_color+")~O("+border_opacity+"%)";
 			} else {
-				suffix = ".png~RC(magenta>teal)";
+				suffix = ".png~RC(magenta>"+color+")~O("+border_opacity+"%)";
 			}
 
 			for(int cap2 = 0; tiles[i] != REACH && cap2 != 6; i = (i + 1) % 6, ++cap2) {
